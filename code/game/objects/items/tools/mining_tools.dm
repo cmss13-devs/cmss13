@@ -23,9 +23,10 @@
 	var/excavation_amount = 100
 
 /obj/item/tool/pickaxe/hammer
-	name = "sledgehammer"
-	//icon_state = "sledgehammer" Waiting on sprite
-	desc = "A mining hammer made of reinforced metal. You feel like smashing your boss in the face with this."
+	name = "mining sledgehammer"
+	icon_state = "minesledge"
+	item_state = "minesledge"
+	desc = "A mining hammer made of reinforced metal. Works just as well as a pickaxe."
 
 /obj/item/tool/pickaxe/silver
 	name = "silver pickaxe"
@@ -77,6 +78,7 @@
 	desc = "A rock cutter that uses bursts of hot plasma. You could use it to cut limbs off of xenos! Or, you know, mine stuff."
 	drill_verb = "cutting"
 	heat_source = 3800
+	flags_item = IGNITING_ITEM
 
 /obj/item/tool/pickaxe/diamond
 	name = "diamond pickaxe"

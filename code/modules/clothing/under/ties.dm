@@ -344,15 +344,20 @@
 
 //patches
 /obj/item/clothing/accessory/patch
-	name = "\improper USCM patch"
+	name = "USCM patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
 	icon_state = "uscmpatch"
 	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
 /obj/item/clothing/accessory/patch/falcon
-	name = "\improper Falling Falcons patch"
+	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
+
+/obj/item/clothing/accessory/patch/forecon
+	name = "USCM Force Reconnaissance patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the USS Hanyut, USCM FORECON."
+	icon_state = "forecon_patch"
 
 /obj/item/clothing/accessory/poncho
 	name = "USCM Poncho"
@@ -596,7 +601,7 @@
 		/obj/item/tool/kitchen/utensil/pknife,
 		/obj/item/tool/kitchen/knife,
 		/obj/item/attachable/bayonet,
-		/obj/item/weapon/melee/throwing_knife,
+		/obj/item/weapon/throwing_knife,
 	)
 
 /obj/item/clothing/accessory/storage/knifeharness/duelling
@@ -609,12 +614,12 @@
 	storage_slots = 2
 	max_storage_space = 2
 	can_hold = list(
-		/obj/item/weapon/melee/unathiknife,
+		/obj/item/weapon/unathiknife,
 	)
 
 /obj/item/storage/internal/accessory/knifeharness/duelling/fill_preset_inventory()
-	new /obj/item/weapon/melee/unathiknife(src)
-	new /obj/item/weapon/melee/unathiknife(src)
+	new /obj/item/weapon/unathiknife(src)
+	new /obj/item/weapon/unathiknife(src)
 
 /obj/item/clothing/accessory/storage/droppouch
 	name = "drop pouch"
@@ -622,6 +627,7 @@
 	icon_state = "drop_pouch"
 
 	hold = /obj/item/storage/internal/accessory/drop_pouch
+
 
 /obj/item/storage/internal/accessory/drop_pouch
 	w_class = SIZE_LARGE //Allow storage containers that's medium or below
@@ -784,3 +790,10 @@
 	new /obj/item/clothing/accessory/holobadge/cord(src)
 	..()
 	return
+
+/obj/item/clothing/accessory/storage/owlf_vest
+	name = "\improper OWLF agent vest"
+	desc = "This is a fancy-looking ballistics vest, meant to be attached to a uniform." //No stats for these yet, just placeholder implementation.
+	icon = 'icons/obj/items/clothing/ties.dmi'
+	icon_state = "owlf_vest"
+	item_state = "owlf_vest"

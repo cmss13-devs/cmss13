@@ -75,6 +75,7 @@
 	GLOB.cable_list += src
 
 /obj/structure/cable/Destroy()
+	breaker_box = null
 	GLOB.cable_list -= src
 	return ..()
 
@@ -121,7 +122,7 @@
 		for(var/mob/O in viewers(src, null))
 			O.show_message(SPAN_WARNING("[user] cuts the cable."), SHOW_MESSAGE_VISIBLE)
 		// wires are irrelevant so I have disabled this message for now
-		//message_staff("[key_name(user)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo;extra=\ref[user]'>?</A>) cut a wire at ([x],[y],[z]) - <A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>")
+		//message_admins("[key_name(user)] cut a wire at ([x],[y],[z]) [ADMIN_JMP(src)]")
 
 		return // not needed, but for clarity
 

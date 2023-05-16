@@ -5,6 +5,7 @@
 /obj/item/weapon/gun/smartgun
 	name = "\improper M56B smartgun"
 	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m56"
 	item_state = "m56"
 	fire_sound = "gun_smartgun"
@@ -18,6 +19,12 @@
 	wield_delay = WIELD_DELAY_FAST
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	var/powerpack = null
+	/// Whether the smartgun drains the powerpack battery (Ignored if requires_powerpack is false)
+	var/requires_power = TRUE
+	/// Whether the smartgun requires a powerpack to be worn
+	var/requires_powerpack = TRUE
+	/// Whether the smartgun requires a harness to use
+	var/requires_harness = TRUE
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
@@ -64,6 +71,12 @@
 	MD = new(src)
 	. = ..()
 	update_icon()
+
+/obj/item/weapon/gun/smartgun/Destroy()
+	ammo_primary = null
+	ammo_secondary = null
+	QDEL_NULL(MD)
+	. = ..()
 
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
@@ -289,19 +302,13 @@
 		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 			to_chat(H, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return FALSE
-		if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
-			to_chat(H, SPAN_WARNING("You need a harness suit to be able to fire \the [src]..."))
-			return FALSE
+		if(requires_harness)
+			if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
+				to_chat(H, SPAN_WARNING("You need a harness suit to be able to fire [src]..."))
+				return FALSE
 		if(cover_open)
 			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
 			return FALSE
-
-/obj/item/weapon/gun/smartgun/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
-	if(!current_mag)
-		return
-	qdel(projectile_to_fire)
-	if(refund) current_mag.current_rounds++
-	return TRUE
 
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)
 	if(isobserver(usr) || isxeno(usr))
@@ -343,12 +350,19 @@
 		link_powerpack(usr)
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
+	if(!requires_powerpack)
+		..()
+		return
+
 	if(!powerpack || (powerpack && user.back != powerpack))
 		if(!link_powerpack(user))
 			to_chat(user, SPAN_WARNING("You need a powerpack to be able to fire \the [src]..."))
 			unlink_powerpack()
 			return
 	if(powerpack)
+		if(!requires_power)
+			..()
+			return
 		var/obj/item/smartgun_powerpack/pp = user.back
 		if(istype(pp))
 			var/obj/item/cell/c = pp.pcell
@@ -360,6 +374,9 @@
 
 
 /obj/item/weapon/gun/smartgun/proc/link_powerpack(mob/user)
+	if(!requires_powerpack)
+		return TRUE
+
 	if(!QDELETED(user) && !QDELETED(user.back))
 		if(istype(user.back, /obj/item/smartgun_powerpack))
 			powerpack = user.back
@@ -684,3 +701,8 @@
 /obj/item/weapon/gun/smartgun/clf/Initialize(mapload, ...)
 	. = ..()
 	MD.iff_signal = FACTION_CLF
+
+/obj/item/weapon/gun/smartgun/admin
+	requires_power = FALSE
+	requires_powerpack = FALSE
+	requires_harness = FALSE

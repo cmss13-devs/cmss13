@@ -2,7 +2,6 @@
 	ERT Shuttles
 */
 
-#define ERT_SHUTTLE_DEFAULT_CALLTIME 30 SECONDS
 #define ERT_SHUTTLE_DEFAULT_RECHARGE 90 SECONDS
 
 #define ADMIN_LANDING_PAD_1 "base-ert1"
@@ -18,7 +17,7 @@
 	area_type = /area/shuttle/ert
 	width = 7
 	height = 13
-	callTime = ERT_SHUTTLE_DEFAULT_CALLTIME // 30s flight time
+	callTime = ERT_SHUTTLE_TRANSIT_DURATION
 	rechargeTime = ERT_SHUTTLE_DEFAULT_RECHARGE // 90s cooldown to recharge
 	var/list/doors = list()
 	var/list/external_doors = list()

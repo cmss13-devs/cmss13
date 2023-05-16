@@ -1,4 +1,4 @@
-GLOBAL_DATUM(revdata, /datum/getrev)
+GLOBAL_DATUM_INIT(revdata, /datum/getrev, new)
 
 /datum/getrev
 	var/commit  // git rev-parse HEAD

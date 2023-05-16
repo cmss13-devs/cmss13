@@ -18,15 +18,16 @@
 	chemfiresupp = TRUE
 	burncolor = "#6897f7"
 	burncolormod = 2
-	properties = list(PROPERTY_ALCOHOLIC = 4, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
-	var/boozepwr = 5 //higher numbers mean the booze will have an effect faster.
-	var/booze_data = 0
-	var/dizzy_adj = 3
-	var/adj_drowsy = 0
-	var/adj_sleepy = 0
-	var/slurr_adj = 3
-	var/confused_adj = 2
-	var/slur_start = 300 //(formerly 180) amount absorbed after which mob starts slurring
+	properties = list(PROPERTY_ALCOHOLIC = 5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
+	overdose = HIGH_REAGENTS_OVERDOSE
+	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
+	///higher numbers mean the booze will have an effect faster.
+	var/boozepwr = 5
+	///If it's a normal drink, let them drink a bit before they start feeling it.
+	var/accumulated_alcohol = 0
+	///This is when the properties are gonna hit. Drink in moderation.
+	var/effect_start = 150
+
 
 /datum/reagent/ethanol/on_mob_life(mob/living/M, alien)
 	//This is all way too snowflake to accurately transition to the property system so it stays here
@@ -35,23 +36,10 @@
 	M:nutrition += nutriment_factor
 	holder.remove_reagent(src.id, (alien ? FOOD_METABOLISM : ALCOHOL_METABOLISM)) // Catch-all for creatures without livers.
 
-	if(adj_drowsy) M.drowsyness = max(0,M.drowsyness + adj_drowsy)
-	if(adj_sleepy) M.sleeping = max(0,M.sleeping + adj_sleepy)
+	accumulated_alcohol += boozepwr
 
-	booze_data += boozepwr
-
-	var/d = booze_data
-
-	// make all the beverages work together
-	for(var/datum/reagent/ethanol/A in holder.reagent_list)
-		if(A.booze_data) d += A.booze_data
-
-	M.pain.apply_pain_reduction(max(d*-0.16, PAIN_REDUCTION_HEAVY)) // Max reduction at d=250, between slurring and confusion, helps slightly less than tramadol.
-
-	M.dizziness += dizzy_adj
-	if(d >= slur_start)
-		if(!M.slurring) M.slurring = 1
-		M.slurring += slurr_adj
+	if(accumulated_alcohol >= effect_start)
+		. = ..()
 
 /datum/reagent/ethanol/reaction_obj(obj/O, volume)
 	if(istype(O,/obj/item/paper))
@@ -72,6 +60,7 @@
 	id = "beer"
 	description = "An alcoholic beverage made from malted grains, hops, yeast, and water."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
 	nutriment_factor = 1 * FOOD_METABOLISM
 
@@ -86,10 +75,8 @@
 	id = "kahlua"
 	description = "A widely known, Mexican coffee-flavoured liqueur. In production since 1936!"
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
-	dizzy_adj = -5
-	adj_drowsy = -3
-	adj_sleepy = -2
 
 /datum/reagent/ethanol/kahlua/on_mob_life(mob/living/M)
 	. = ..()
@@ -102,30 +89,31 @@
 	id = "whiskey"
 	description = "A superb and well-aged single-malt whiskey. Damn."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
-	dizzy_adj = 4
 
 /datum/reagent/ethanol/specialwhiskey
 	name = "Special Blend Whiskey"
 	id = "specialwhiskey"
 	description = "Just when you thought regular station whiskey was good... This silky, amber goodness has to come along and ruin everything."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
-	dizzy_adj = 4
 
 /datum/reagent/ethanol/sake
 	name = "Sake"
 	id = "sake"
 	description = "A potent rice-wine."
 	color = "#0064C8" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
-	dizzy_adj = 4
 
 /datum/reagent/ethanol/thirteenloko
 	name = "Thirteen Loko"
 	id = "thirteenloko"
 	description = "A potent mixture of caffeine and alcohol."
 	color = "#102000" // rgb: 16, 32, 0
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
 	nutriment_factor = 1 * FOOD_METABOLISM
 
@@ -143,6 +131,7 @@
 	id = "vodka"
 	description = "Number one drink AND fueling choice for Russians worldwide."
 	color = "#0064C8" // rgb: 0, 100, 200
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
 
 /datum/reagent/ethanol/bilk
@@ -150,6 +139,7 @@
 	id = "bilk"
 	description = "This appears to be beer mixed with milk. Disgusting."
 	color = "#895C4C" // rgb: 137, 92, 76
+	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
 	nutriment_factor = 2 * FOOD_METABOLISM
 
@@ -158,6 +148,7 @@
 	id = "threemileisland"
 	description = "Made for a woman, strong enough for a man."
 	color = "#666340" // rgb: 102, 99, 64
+	properties = list(PROPERTY_ALCOHOLIC = 5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 5
 
 /datum/reagent/ethanol/threemileisland/on_mob_life(mob/living/M)
@@ -171,14 +162,15 @@
 	id = "gin"
 	description = "It's gin. In space. I say, good sir."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
-	dizzy_adj = 3
 
 /datum/reagent/ethanol/rum
 	name = "Rum"
 	id = "rum"
 	description = "Yohoho and all that."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
 
 /datum/reagent/ethanol/tequila
@@ -186,6 +178,7 @@
 	id = "tequila"
 	description = "A strong and mildly flavoured, mexican produced spirit. Feeling thirsty hombre?"
 	color = "#FFFF91" // rgb: 255, 255, 145
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
 
 /datum/reagent/ethanol/vermouth
@@ -193,6 +186,7 @@
 	id = "vermouth"
 	description = "You suddenly feel a craving for a martini..."
 	color = "#91FF91" // rgb: 145, 255, 145
+	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
 
 /datum/reagent/ethanol/wine
@@ -200,22 +194,23 @@
 	id = "wine"
 	description = "A premium alcoholic beverage made from distilled grape juice."
 	color = "#7E4043" // rgb: 126, 64, 67
+	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
-	dizzy_adj = 2
 
 /datum/reagent/ethanol/cognac
 	name = "Cognac"
 	id = "cognac"
 	description = "A sweet and strongly alcoholic drink, made after numerous distillations and years of maturing. Classy as fornication."
 	color = "#AB3C05" // rgb: 171, 60, 5
+	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
-	dizzy_adj = 4
 
 /datum/reagent/ethanol/hooch
 	name = "Hooch"
 	id = "hooch"
 	description = "Either someone's failure at cocktail making or attempt in alcohol production. In any case, do you really want to drink that?"
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
 
 /datum/reagent/ethanol/ale
@@ -223,6 +218,7 @@
 	id = "ale"
 	description = "A dark alcoholic beverage made by malted barley and yeast."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
 
 /datum/reagent/ethanol/absinthe
@@ -230,8 +226,8 @@
 	id = "absinthe"
 	description = "Watch out that the Green Fairy doesn't come for you!"
 	color = "#33EE00" // rgb: 51, 238, 0
+	properties = list(PROPERTY_ALCOHOLIC = 4, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 4
-	dizzy_adj = 5
 
 
 /datum/reagent/ethanol/pwine
@@ -239,12 +235,13 @@
 	id = "pwine"
 	description = "Is this even wine? Toxic! Hallucinogenic! Probably consumed in boatloads by your superiors!"
 	color = "#000000" // rgb: 0, 0, 0 SHOCKER
+	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
 
 /datum/reagent/ethanol/pwine/on_mob_life(mob/living/M,alien)
 	M.druggy = max(M.druggy, 50)
-	booze_data++
-	switch(booze_data)
+	accumulated_alcohol++
+	switch(accumulated_alcohol)
 		if(1 to 25)
 			if(!M.stuttering) M.stuttering = 1
 			M.make_dizzy(1)
@@ -292,6 +289,7 @@
 	id = "rum"
 	description = "Popular with the sailors. Not very popular with everyone else."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
 
 /datum/reagent/ethanol/deadrum/on_mob_life(mob/living/M)
@@ -306,7 +304,16 @@
 	id = "sake"
 	description = "Rice wine invented in the Orient."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
+
+/datum/reagent/ethanol/blackout //Added for testing the property quickly
+	name = "Blackout Stout"
+	id = "blackout"
+	description = "You probably shouldn't drink this."
+	color = "#34220F"
+	properties = list(PROPERTY_ALCOHOLIC = 50) //You WILL die in record time
+	boozepwr = 250
 
 //*****************************************************************************************************/
 //***************************************Cocktail Entities*********************************************/
@@ -317,6 +324,7 @@
 	id = "goldschlager"
 	description = "100 proof cinnamon schnapps, made for alcoholic teen girls on spring break."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 
 /datum/reagent/ethanol/patron
@@ -324,6 +332,7 @@
 	id = "patron"
 	description = "Tequila with silver in it, a favorite of alcoholic women in the club scene."
 	color = "#585840" // rgb: 88, 88, 64
+	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
 
 /datum/reagent/ethanol/gintonic
@@ -331,6 +340,7 @@
 	id = "gintonic"
 	description = "An all time classic, mild cocktail."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
 
 /datum/reagent/ethanol/cuba_libre
@@ -338,6 +348,7 @@
 	id = "cubalibre"
 	description = "Rum, mixed with cola. Viva la revolucion."
 	color = "#3E1B00" // rgb: 62, 27, 0
+	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
 
 /datum/reagent/ethanol/whiskey_cola
@@ -345,6 +356,7 @@
 	id = "whiskeycola"
 	description = "Whiskey, mixed with cola. Surprisingly refreshing."
 	color = "#3E1B00" // rgb: 62, 27, 0
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
 
 /datum/reagent/ethanol/martini
@@ -352,6 +364,7 @@
 	id = "martini"
 	description = "Vermouth with Gin. Not quite how 007 enjoyed it, but still delicious."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
 
 /datum/reagent/ethanol/vodkamartini
@@ -359,6 +372,7 @@
 	id = "vodkamartini"
 	description = "Vodka with Gin. Not quite how 007 enjoyed it, but still delicious."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 4, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 4
 
 /datum/reagent/ethanol/white_russian
@@ -366,6 +380,7 @@
 	id = "whiterussian"
 	description = "That's just, like, your opinion, man..."
 	color = "#A68340" // rgb: 166, 131, 64
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 
 /datum/reagent/ethanol/screwdrivercocktail
@@ -373,6 +388,7 @@
 	id = "screwdrivercocktail"
 	description = "Vodka, mixed with plain ol' orange juice. The result is surprisingly delicious."
 	color = "#A68310" // rgb: 166, 131, 16
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 
 /datum/reagent/ethanol/booger
@@ -380,6 +396,7 @@
 	id = "booger"
 	description = "Ewww..."
 	color = "#8CFF8C" // rgb: 140, 255, 140
+	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
 
 /datum/reagent/ethanol/bloody_mary
@@ -387,6 +404,7 @@
 	id = "bloodymary"
 	description = "A strange yet pleasurable mixture made of vodka, tomato and lime juice. Or at least you THINK the red stuff is tomato juice."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 
 /datum/reagent/ethanol/brave_bull
@@ -394,6 +412,7 @@
 	id = "bravebull"
 	description = "It's just as effective as Dutch-Courage!"
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 
 /datum/reagent/ethanol/tequila_sunrise
@@ -401,6 +420,7 @@
 	id = "tequilasunrise"
 	description = "Tequila and orange juice. Much like a Screwdriver, only Mexican~"
 	color = "#FFE48C" // rgb: 255, 228, 140
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
 
 /datum/reagent/ethanol/toxins_special
@@ -409,6 +429,7 @@
 	description = "This thing is ON FIRE! CALL THE DAMN SHUTTLE!"
 	reagent_state = LIQUID
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 5
 
 /datum/reagent/ethanol/toxins_special/on_mob_life(mob/living/M)
@@ -423,6 +444,7 @@
 	id = "irishcream"
 	description = "Whiskey-imbued cream, what else would you expect from the Irish."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
 
 /datum/reagent/ethanol/manly_dorf
@@ -430,6 +452,7 @@
 	id = "manlydorf"
 	description = "Beer and Ale, brought together in a delicious mix. Intended for true men only."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
 
 /datum/reagent/ethanol/longislandicedtea
@@ -437,6 +460,7 @@
 	id = "longislandicedtea"
 	description = "The liquor cabinet, brought together in a delicious mix. Intended for middle-aged alcoholic women only."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 4, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 4
 
 /datum/reagent/ethanol/moonshine
@@ -444,6 +468,7 @@
 	id = "moonshine"
 	description = "You've really hit rock bottom now... your liver packed its bags and left last night."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 4, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 4
 
 /datum/reagent/ethanol/b52
@@ -451,6 +476,7 @@
 	id = "b52"
 	description = "Coffee, Irish Cream, and cognac. You will get bombed."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 4, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 4
 
 /datum/reagent/ethanol/irishcoffee
@@ -458,6 +484,7 @@
 	id = "irishcoffee"
 	description = "Coffee, and alcohol. More fun than a Mimosa to drink in the morning."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 
 /datum/reagent/ethanol/margarita
@@ -465,6 +492,7 @@
 	id = "margarita"
 	description = "On the rocks with salt on the rim. Arriba~!"
 	color = "#8CFF8C" // rgb: 140, 255, 140
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 
 /datum/reagent/ethanol/black_russian
@@ -472,6 +500,7 @@
 	id = "blackrussian"
 	description = "For the lactose-intolerant. Still as classy as a White Russian."
 	color = "#360000" // rgb: 54, 0, 0
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 
 /datum/reagent/ethanol/manhattan
@@ -479,6 +508,7 @@
 	id = "manhattan"
 	description = "The Detective's undercover drink of choice. He never could stomach gin..."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 
 /datum/reagent/ethanol/manhattan_proj
@@ -486,6 +516,7 @@
 	id = "manhattan_proj"
 	description = "A scientist's drink of choice, for pondering ways to blow up the station."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 5
 
 /datum/reagent/ethanol/manhattan_proj/on_mob_life(mob/living/M)
@@ -499,6 +530,7 @@
 	id = "whiskeysoda"
 	description = "For the more refined griffon."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 
 /datum/reagent/ethanol/antifreeze
@@ -506,6 +538,7 @@
 	id = "antifreeze"
 	description = "Ultimate refreshment."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 4, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 4
 
 /datum/reagent/ethanol/antifreeze/on_mob_life(mob/living/M)
@@ -519,6 +552,7 @@
 	id = "barefoot"
 	description = "Barefoot and pregnant"
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
 
 /datum/reagent/ethanol/snowwhite
@@ -526,6 +560,7 @@
 	id = "snowwhite"
 	description = "A cold refreshment"
 	color = "#FFFFFF" // rgb: 255, 255, 255
+	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
 
 /datum/reagent/ethanol/melonliquor
@@ -533,6 +568,7 @@
 	id = "melonliquor"
 	description = "A relatively sweet and fruity 46 proof liquor."
 	color = "#138808" // rgb: 19, 136, 8
+	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
 
 /datum/reagent/ethanol/bluecuracao
@@ -540,6 +576,7 @@
 	id = "bluecuracao"
 	description = "Exotically blue, fruity drink, distilled from oranges."
 	color = "#0000CD" // rgb: 0, 0, 205
+	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
 
 /datum/reagent/ethanol/suidream
@@ -547,6 +584,7 @@
 	id = "suidream"
 	description = "Comprised of: White soda, blue curacao, melon liquor."
 	color = "#00A86B" // rgb: 0, 168, 107
+	properties = list(PROPERTY_ALCOHOLIC = 0.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 0.5
 
 /datum/reagent/ethanol/demonsblood
@@ -554,12 +592,14 @@
 	id = "demonsblood"
 	description = "AHHHH!!!!"
 	color = "#820000" // rgb: 130, 0, 0
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 /datum/reagent/ethanol/vodkatonic
 	name = "Vodka and Tonic"
 	id = "vodkatonic"
 	description = "For when a gin and tonic isn't russian enough."
 	color = "#0064C8" // rgb: 0, 100, 200
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 
 /datum/reagent/ethanol/ginfizz
@@ -567,6 +607,7 @@
 	id = "ginfizz"
 	description = "Refreshingly lemony, deliciously dry."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
 
 /datum/reagent/ethanol/bahama_mama
@@ -574,6 +615,7 @@
 	id = "bahama_mama"
 	description = "Tropical cocktail."
 	color = "#FF7F3B" // rgb: 255, 127, 59
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
 
 /datum/reagent/ethanol/singulo
@@ -581,6 +623,7 @@
 	id = "singulo"
 	description = "A blue-space beverage!"
 	color = "#2E6671" // rgb: 46, 102, 113
+	properties = list(PROPERTY_ALCOHOLIC = 5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 5
 
 /datum/reagent/ethanol/sbiten
@@ -588,6 +631,7 @@
 	id = "sbiten"
 	description = "A spicy Vodka! Might be a little hot for the little guys!"
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 
 /datum/reagent/ethanol/sbiten/on_mob_life(mob/living/M)
@@ -602,6 +646,7 @@
 	id = "devilskiss"
 	description = "Creepy time!"
 	color = "#A68310" // rgb: 166, 131, 16
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 
 /datum/reagent/ethanol/red_mead
@@ -609,6 +654,7 @@
 	id = "red_mead"
 	description = "The true Viking's drink! Even though it has a strange red color."
 	color = "#C73C00" // rgb: 199, 60, 0
+	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
 
 /datum/reagent/ethanol/mead
@@ -617,6 +663,7 @@
 	description = "A Viking's drink, though a cheap one."
 	reagent_state = LIQUID
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
 	nutriment_factor = 1 * FOOD_METABOLISM
 
@@ -625,6 +672,7 @@
 	id = "iced_beer"
 	description = "A beer which is so cold the air around it freezes."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
 
 /datum/reagent/ethanol/iced_beer/on_mob_life(mob/living/M)
@@ -640,6 +688,7 @@
 	description = "Watered down rum, Weyland-Yutani approves!"
 	reagent_state = LIQUID
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 0.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 0.5
 
 /datum/reagent/ethanol/aloe
@@ -647,6 +696,7 @@
 	id = "aloe"
 	description = "So very, very, very good."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 
 /datum/reagent/ethanol/andalusia
@@ -654,6 +704,7 @@
 	id = "andalusia"
 	description = "A nice, strangely named drink."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 
 /datum/reagent/ethanol/alliescocktail
@@ -661,6 +712,7 @@
 	id = "alliescocktail"
 	description = "A drink made from your allies, not as sweet as when made from your enemies."
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
 
 /datum/reagent/ethanol/acid_spit
@@ -669,6 +721,7 @@
 	description = "A drink for the daring, can be deadly if incorrectly prepared!"
 	reagent_state = LIQUID
 	color = "#365000" // rgb: 54, 80, 0
+	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
 
 /datum/reagent/ethanol/amasec
@@ -677,6 +730,7 @@
 	description = "Official drink of the Weyland-Yutani Gun-Club!"
 	reagent_state = LIQUID
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
 
 /datum/reagent/ethanol/changelingsting
@@ -684,6 +738,7 @@
 	id = "changelingsting"
 	description = "You take a tiny sip and feel a burning sensation..."
 	color = "#2E6671" // rgb: 46, 102, 113
+	properties = list(PROPERTY_ALCOHOLIC = 5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 5
 
 /datum/reagent/ethanol/irishcarbomb
@@ -691,14 +746,15 @@
 	id = "irishcarbomb"
 	description = "Mmm, tastes like chocolate cake..."
 	color = "#2E6671" // rgb: 46, 102, 113
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
-	dizzy_adj = 5
 
 /datum/reagent/ethanol/syndicatebomb
 	name = "Syndicate Bomb"
 	id = "syndicatebomb"
 	description = "Tastes like terrorism!"
 	color = "#2E6671" // rgb: 46, 102, 113
+	properties = list(PROPERTY_ALCOHOLIC = 5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 5
 
 /datum/reagent/ethanol/spikedeggnog
@@ -706,6 +762,7 @@
 	id = "spikedeggnog"
 	description = "A rich and sweet alcoholic beverage traditionally consumed around Christmastime."
 	color = "#DFD7AF" // rgb: 223, 215, 175
+	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
 
 /datum/reagent/ethanol/erikasurprise
@@ -713,6 +770,7 @@
 	id = "erikasurprise"
 	description = "The surprise is it's green!"
 	color = "#2E6671" // rgb: 46, 102, 113
+	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
 
 /datum/reagent/ethanol/driestmartini
@@ -721,6 +779,7 @@
 	description = "Only for the experienced. You think you see sand floating in the glass."
 	nutriment_factor = 1 * FOOD_METABOLISM
 	color = "#2E6671" // rgb: 46, 102, 113
+	properties = list(PROPERTY_ALCOHOLIC = 4, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 4
 
 /datum/reagent/ethanol/bananahonk
@@ -729,6 +788,7 @@
 	description = "A drink from Clown Heaven."
 	nutriment_factor = 1 * REAGENTS_METABOLISM
 	color = "#FFFF91" // rgb: 255, 255, 140
+	properties = list(PROPERTY_ALCOHOLIC = 4, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 4
 
 /datum/reagent/ethanol/silencer
@@ -737,18 +797,19 @@
 	description = "A drink from Mime Heaven."
 	nutriment_factor = 1 * FOOD_METABOLISM
 	color = "#664300" // rgb: 102, 67, 0
+	properties = list(PROPERTY_ALCOHOLIC = 4, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 4
 
 /datum/reagent/ethanol/silencer/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.)
 		return
-	booze_data++
+	accumulated_alcohol++
 	M.dizziness +=10
-	if(booze_data >= 55 && booze_data <115)
+	if(accumulated_alcohol >= 55 && accumulated_alcohol <115)
 		if(!M.stuttering) M.stuttering = 1
 		M.stuttering += 10
-	else if(booze_data >= 115 && prob(33))
+	else if(accumulated_alcohol >= 115 && prob(33))
 		M.confused = max(M.confused+15,15)
 
 /datum/reagent/ethanol/mojito
@@ -756,4 +817,5 @@
 	id = "mojito"
 	description = "You can almost feel the old fresh winds of Cuba with this one."
 	color = "#C0FF00" // rgb: 192, 255, 0
+	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1

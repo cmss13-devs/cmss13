@@ -3,7 +3,7 @@
 /turf/template_noop,
 /area/template_noop)
 "h" = (
-/obj/item/ammo_magazine/rifle/hunting{
+/obj/item/ammo_magazine/rifle/l42a/abr40{
 	pixel_x = 8;
 	pixel_y = 2
 	},
@@ -18,7 +18,7 @@
 /turf/template_noop,
 /area/template_noop)
 "W" = (
-/obj/item/weapon/gun/rifle/hunting{
+/obj/item/weapon/gun/rifle/l42a/abr40{
 	pixel_y = 15
 	},
 /obj/item/device/binoculars/civ{

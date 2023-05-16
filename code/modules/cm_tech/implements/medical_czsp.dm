@@ -130,7 +130,7 @@
 /obj/item/weapon/gun/pill
 	name = "pill gun"
 	desc = "A spring-loaded rifle designed to fit pills, designed to inject patients from a distance."
-	icon = 'icons/obj/items/weapons/guns/gun.dmi'
+	icon = 'icons/obj/items/weapons/guns/legacy/old_cmguns.dmi'
 	icon_state = "syringegun"
 	item_state = "syringegun"
 	w_class = SIZE_MEDIUM

@@ -50,7 +50,7 @@
 	name = "Dress Blues - (E-6) Staff Sergeant"
 	paygrade = "ME6"
 	skills = /datum/skills/SEA
-	access = list(ACCESS_MARINE_COMMANDER, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP)
 
 /datum/equipment_preset/uscm_event/dress/nco/snco/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
@@ -83,7 +83,7 @@
 	paygrade = "MO1"
 	idtype = /obj/item/card/id/silver
 	skills = /datum/skills/SO
-	access = list(ACCESS_MARINE_COMMANDER, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_MEDBAY)
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)

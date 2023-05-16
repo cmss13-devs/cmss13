@@ -99,6 +99,12 @@ var/list/department_radio_keys = list(
 		var/list/listening = list()
 		var/list/listening_obj = list()
 
+		if(HAS_TRAIT(src, TRAIT_LISPING))
+			var/old_message = message
+			message = lisp_replace(message)
+			if(old_message != message)
+				verb = "lisps"
+
 		if(T)
 			var/list/hearturfs = list()
 

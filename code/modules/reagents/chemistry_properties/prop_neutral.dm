@@ -130,25 +130,59 @@
 	category = PROPERTY_TYPE_STIMULANT
 	value = 0
 
-/datum/chem_property/neutral/alcoholic/process(mob/living/M, potency = 1, delta_time)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
+/datum/chem_property/neutral/alcoholic/process(mob/living/mob, potency = 1, delta_time)
+	if(ishuman(mob))
+		var/mob/living/carbon/human/human = mob
+		if(human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
 			return
-	M.confused = min(M.confused + 0.5 * potency * delta_time, 5 * potency)
-	M.drowsyness = min(M.drowsyness + 0.5 * potency * delta_time, 5 * potency)
 
-/datum/chem_property/neutral/alcoholic/process_overdose(mob/living/M, potency = 1, delta_time)
-	M.confused += min(M.confused + potency * delta_time, 10 * potency)
-	M.drowsyness += min(M.drowsyness + potency * delta_time, 10 * potency)
-	M.apply_damage(0.25 * potency * delta_time, TOX)
+	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_VVLOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
+	mob.drowsyness = min(mob.drowsyness + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
 
-/datum/chem_property/neutral/alcoholic/process_critical(mob/living/M, potency = 1, delta_time)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
-		if(L)
-			L.take_damage(POTENCY_MULTIPLIER_LOW * potency, TRUE)
+	if(prob(50 * delta_time) || potency >= 5)
+		mob.confused = min(mob.confused + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
+		mob.slurring = min(mob.slurring + POTENCY_MULTIPLIER_VLOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
+
+/datum/chem_property/neutral/alcoholic/process_overdose(mob/living/mob, potency = 1, delta_time)
+	mob.apply_damage(POTENCY_MULTIPLIER_VLOW * potency * delta_time, TOX)
+	mob.apply_damage(POTENCY_MULTIPLIER_LOW * potency * delta_time, OXY)
+
+	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_VLOW * potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
+	mob.drowsyness = min(mob.drowsyness + potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
+
+	if(prob(POTENCY_MULTIPLIER_MEDIUM * delta_time))
+		mob.sleeping = min(mob.sleeping + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
+
+	if(prob(POTENCY_MULTIPLIER_MEDIUM * potency * delta_time) && ishuman(mob))
+		var/mob/living/carbon/human/human = mob
+		human.vomit()
+
+	if(prob(75 * delta_time) || potency >= 5)
+		mob.confused = min(mob.confused + potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
+		mob.slurring = min(mob.slurring + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
+
+/datum/chem_property/neutral/alcoholic/process_critical(mob/living/mob, potency = 1, delta_time)
+	mob.apply_damage(POTENCY_MULTIPLIER_LOW * potency * delta_time, TOX)
+	mob.apply_damage(potency * delta_time, OXY)
+
+	mob.confused = min(mob.confused + POTENCY_MULTIPLIER_MEDIUM * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
+	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
+	mob.drowsyness = min(mob.drowsyness + POTENCY_MULTIPLIER_MEDIUM * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
+	mob.slurring = min(mob.slurring + potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
+
+	if(prob(POTENCY_MULTIPLIER_VHIGH * potency * delta_time))
+		mob.sleeping = min(mob.sleeping + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
+
+	if(prob(POTENCY_MULTIPLIER_VHIGH * potency * delta_time) && ishuman(mob))
+		var/mob/living/carbon/human/human = mob
+		human.vomit()
+
+	if(ishuman(mob))
+		var/mob/living/carbon/human/human = mob
+		var/datum/internal_organ/liver/liver = human.internal_organs_by_name["liver"]
+		if(liver)
+			liver.take_damage(POTENCY_MULTIPLIER_LOW * potency, TRUE)
+
 /datum/chem_property/neutral/hallucinogenic
 	name = PROPERTY_HALLUCINOGENIC
 	code = "HLG"

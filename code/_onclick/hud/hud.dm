@@ -173,7 +173,7 @@
 	if(!screenmob.client)
 		return FALSE
 
-	screenmob.client.screen = list()
+	screenmob.client.clear_screen()
 	screenmob.client.apply_clickcatcher()
 
 	var/display_hud_version = version

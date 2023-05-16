@@ -1,6 +1,7 @@
 /datum/xeno_mutator/eggsac
 	name = "STRAIN: Carrier - Eggsac"
-	description = "In exchange for your ability to store huggers, you gain the ability to form new eggs by sacrificing your plasma stores."
+	description = "In exchange for your ability to store huggers and place traps, you gain larger plasma stores, strong pheromones, and the ability to lay eggs by using your plasma stores. In addition, you can now carry twelve eggs at once and can place eggs one pace further than normal."
+	flavor_description = "An egg is always an adventure; the next one may be different."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_CARRIER)
@@ -12,7 +13,7 @@
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/active_toggle/generate_egg,
-		/datum/action/xeno_action/activable/retrieve_egg // readding it so it gets at the end of the ability list
+		/datum/action/xeno_action/activable/retrieve_egg, // readding it so it gets at the end of the ability list
 	)
 	keystone = TRUE
 

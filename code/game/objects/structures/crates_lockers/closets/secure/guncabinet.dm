@@ -9,7 +9,7 @@
 	icon_locked ="base"
 	icon_closed ="base"
 	icon_opened = "base"
-	req_access = list(ACCESS_MARINE_WO) //Trusting the CMP to be able to open the lockers on any alert level, just in case
+	req_access = list(ACCESS_MARINE_ARMORY)
 	var/req_level = SEC_LEVEL_GREEN
 
 /obj/structure/closet/secure_closet/guncabinet/get_examine_text(mob/user)
@@ -84,7 +84,7 @@
 	name = "riot control equipment closet"
 // req_access = list(ACCESS_MARINE_BRIG)
 	storage_capacity = 55 //lots of stuff to fit in
-	req_level = SEC_LEVEL_RED
+	req_level = SEC_LEVEL_BLUE
 
 /obj/structure/closet/secure_closet/guncabinet/riot_control/Initialize()
 	. = ..()

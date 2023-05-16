@@ -301,7 +301,10 @@ var/list/global/item_storage_box_cache = list()
 
 		for(var/i in 1 to length(S.click_border_start))
 			if(S.click_border_start[i] <= click_x && click_x <= S.click_border_end[i])
-				I = LAZYACCESS(S.contents, i)
+				var/list/content_items = list()
+				for(var/obj/item/content_item in S.contents)
+					content_items += content_item
+				I = LAZYACCESS(content_items, i)
 				if(I && I.Adjacent(user)) //Catches pulling items out of nested storage.
 					if(I.clicked(user, mods)) //Examine, alt-click etc.
 						return TRUE
@@ -405,8 +408,8 @@ var/list/global/item_storage_box_cache = list()
 		if(L.mode)
 			return 0
 
-	if(W.heat_source && !isigniter(W))
-		to_chat(usr, SPAN_ALERT("[W] is on fire!"))
+	if(W.heat_source && !(W.flags_item & IGNITING_ITEM))
+		to_chat(usr, SPAN_ALERT("[W] is ignited, you can't store it!"))
 		return
 
 	if(!can_hold_type(W.type))
@@ -670,6 +673,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		item_obj = contents[1]
 	else
 		item_obj = contents[contents.len]
+	if(!istype(item_obj))
+		return
 	remove_from_storage(item_obj, tile)
 	user.visible_message(SPAN_NOTICE("[user] shakes \the [src] and \a [item_obj] falls out."),
 		SPAN_NOTICE("You shake \the [src] and \a [item_obj] falls out."))
@@ -840,7 +845,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(isturf(target) && get_dist(src, target) <= 1 && storage_flags & STORAGE_CLICK_EMPTY)
 		empty(user, target)
 
-/obj/item/storage/hear_talk(mob/living/M as mob, msg, verb="says", datum/language/speaking, italics = 0)
+/obj/item/storage/hear_talk(mob/living/M, msg, verb, datum/language/speaking, italics)
 	// Whatever is stored in /storage/ substypes should ALWAYS be an item
 	for (var/obj/item/I as anything in hearing_items)
 		I.hear_talk(M, msg, verb, speaking, italics)

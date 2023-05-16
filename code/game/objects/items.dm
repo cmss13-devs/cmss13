@@ -147,6 +147,11 @@
 	var/inhand_x_dimension = 32
 	var/inhand_y_dimension = 32
 
+	/// checks if the item is set up in the table or not
+	var/table_setup = FALSE
+	/// checks if the item will be specially placed on the table
+	var/has_special_table_placement = FALSE
+
 	var/list/inherent_traits
 
 /obj/item/Initialize(mapload, ...)
@@ -164,6 +169,9 @@
 
 	if(flags_item & ITEM_PREDATOR)
 		AddElement(/datum/element/yautja_tracked_item)
+
+	if(flags_item & MOB_LOCK_ON_EQUIP)
+		AddComponent(/datum/component/id_lock)
 
 /obj/item/Destroy()
 	flags_item &= ~DELONDROP //to avoid infinite loop of unequip, delete, unequip, delete.
@@ -299,6 +307,9 @@ cases. Override_icon_state should be a list.*/
 // Due to storage type consolidation this should get used more now.
 // I have cleaned it up a little, but it could probably use more.  -Sayu
 /obj/item/attackby(obj/item/W, mob/user)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACKED, W, user) & COMPONENT_CANCEL_ITEM_ATTACK)
+		return
+
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W
 		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
@@ -404,8 +415,6 @@ cases. Override_icon_state should be a list.*/
 	SHOULD_CALL_PARENT(TRUE)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
-	if((flags_item & MOB_LOCK_ON_EQUIP) && !locked_to_mob)
-		locked_to_mob = user
 
 	if(item_action_slot_check(user, slot))
 		add_verb(user, verbs)
@@ -457,14 +466,8 @@ cases. Override_icon_state should be a list.*/
 	if(!M)
 		return FALSE
 
-	if(flags_item & MOB_LOCK_ON_EQUIP && locked_to_mob)
-		if(locked_to_mob.undefibbable && locked_to_mob.stat == DEAD || QDELETED(locked_to_mob))
-			locked_to_mob = null
-
-		if(locked_to_mob != M)
-			if(!disable_warning)
-				to_chat(M, SPAN_WARNING("This item has been ID-locked to [locked_to_mob]."))
-			return FALSE
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTEMPTING_EQUIP, M) & COMPONENT_CANCEL_EQUIP)
+		return FALSE
 
 	if(ishuman(M))
 		//START HUMAN
@@ -820,6 +823,7 @@ cases. Override_icon_state should be a list.*/
 	zoom = !zoom
 	COOLDOWN_START(user, zoom_cooldown, 20)
 	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
+	SEND_SIGNAL(src, COMSIG_ITEM_UNZOOM, user)
 	UnregisterSignal(src, list(
 		COMSIG_ITEM_DROPPED,
 		COMSIG_ITEM_UNWIELD,
@@ -877,6 +881,7 @@ cases. Override_icon_state should be a list.*/
 				user.client.pixel_x = -viewoffset
 				user.client.pixel_y = 0
 
+	SEND_SIGNAL(src, COMSIG_ITEM_ZOOM, user)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
 	user.visible_message(SPAN_NOTICE("[user] peers through \the [zoom_device]."),
 	SPAN_NOTICE("You peer through \the [zoom_device]."))
@@ -989,6 +994,35 @@ cases. Override_icon_state should be a list.*/
 	SEND_SIGNAL(src, COMSIG_ATOM_TEMPORARY_ANIMATION_START, 3)
 	// This is instant on byond's end, but to our clients this looks like a quick drop
 	animate(src, alpha = old_alpha, pixel_x = old_x, pixel_y = old_y, transform = old_transform, time = 3, easing = CUBIC_EASING)
+
+
+/**
+ * Set the item up on a table.
+ * @param target: table which is being used to host the item.
+ */
+/obj/item/proc/set_to_table(obj/structure/surface/target)
+	if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		table_setup = TRUE
+		usr.drop_inv_item_to_loc(src, target.loc)
+	else
+		to_chat(usr, SPAN_WARNING("You fail to setup the [name]"))
+
+/**
+ * Called to reset the state of the item to not be settled on the table.
+ */
+/obj/item/proc/teardown()
+	table_setup = FALSE
+
+/**
+ * Grab item when its placed on table
+ */
+/obj/item/MouseDrop(over_object)
+	if(!has_special_table_placement)
+		return ..()
+
+	if(over_object == usr && Adjacent(usr) && has_special_table_placement)
+		teardown()
+		usr.put_in_any_hand_if_possible(src, disable_warning = TRUE)
 
 /atom/movable/proc/do_item_attack_animation(atom/attacked_atom, visual_effect_icon, obj/item/used_item)
 	var/image/attack_image

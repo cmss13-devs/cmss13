@@ -214,7 +214,7 @@
 /datum/language/zombie
 	name = "Zombie"
 	desc = "If you select this from the language screen, expect a ban."
-	colour = "zombie"
+	color = "zombie"
 
 	speech_verb = "groans"
 	ask_verb = "groans"

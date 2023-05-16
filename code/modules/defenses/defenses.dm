@@ -49,10 +49,14 @@
 	update_icon()
 	connect()
 
+/obj/structure/machinery/defenses/Destroy()
+	if(!QDESTROYING(HD))
+		QDEL_NULL(HD)
+	return ..()
+
 /obj/structure/machinery/defenses/proc/connect()
 	if(static)
 		return FALSE
-	sleep(0.5 SECONDS)
 	if(placed && !HD)
 		HD = new handheld_type
 		if(!HD.TR)
@@ -120,7 +124,7 @@
 	switch(category)
 		if("nickname")
 			nickname = selection
-			message_staff("[key_name_admin(user)] has labelled structure to [nickname]", user.x, user.y, user.z)
+			message_admins("[key_name_admin(user)] has labelled structure to [nickname]", user.x, user.y, user.z)
 			return TRUE
 	return FALSE
 

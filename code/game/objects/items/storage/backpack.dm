@@ -53,7 +53,7 @@
 
 	user.visible_message(SPAN_NOTICE("\The [user] starts strapping \the [src] onto [target_mob]."), \
 	SPAN_NOTICE("You start strapping \the [src] onto [target_mob]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
-	if(!do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, target_mob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+	if(!do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(SKILL_CQC), INTERRUPT_ALL, BUSY_ICON_GENERIC, target_mob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return FALSE
 
@@ -79,7 +79,7 @@
 		to_chat(H, SPAN_NOTICE("You lock \the [src]!"))
 		locking_id = card
 	else
-		if(locking_id.registered_name == card.registered_name || (lock_overridable && (ACCESS_MARINE_COMMANDER in card.access)))
+		if(locking_id.registered_name == card.registered_name || (lock_overridable && (ACCESS_MARINE_SENIOR in card.access)))
 			to_chat(H, SPAN_NOTICE("You unlock \the [src]!"))
 			locking_id = null
 		else
@@ -359,17 +359,17 @@
 
 /obj/item/storage/backpack/satchel/vir
 	name = "virologist satchel"
-	desc = "A sterile satchel with virologist colours."
+	desc = "A sterile satchel with virologist colors."
 	icon_state = "satchel-vir"
 
 /obj/item/storage/backpack/satchel/chem
 	name = "chemist satchel"
-	desc = "A sterile satchel with chemist colours."
+	desc = "A sterile satchel with chemist colors."
 	icon_state = "satchel-chem"
 
 /obj/item/storage/backpack/satchel/gen
 	name = "geneticist satchel"
-	desc = "A sterile satchel with geneticist colours."
+	desc = "A sterile satchel with geneticist colors."
 	icon_state = "satchel-gen"
 
 /obj/item/storage/backpack/satchel/tox
@@ -460,10 +460,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 	flags_item = ITEM_OVERRIDE_NORTHFACE
 
-	uniform_restricted = list(/obj/item/clothing/under/marine/rto)
 	var/obj/structure/transmitter/internal/internal_transmitter
 
-	var/phone_category = PHONE_RTO
+	var/phone_category = PHONE_MARINE
 	var/network_receive = FACTION_MARINE
 	var/list/networks_transmit = list(FACTION_MARINE)
 	var/base_icon
@@ -477,12 +476,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	button.overlays += IMG
 
 /datum/action/item_action/rto_pack/use_phone/action_activate()
-	if(!istype(owner, /mob/living/carbon/human))
+	for(var/obj/item/storage/backpack/marine/satchel/rto/radio_backpack in owner)
+		radio_backpack.use_phone(owner)
 		return
-	var/mob/living/carbon/human/user = owner
-	if(istype(user.back, /obj/item/storage/backpack/marine/satchel/rto))
-		var/obj/item/storage/backpack/marine/satchel/rto/R = user.back
-		R.use_phone(user)
 
 /obj/item/storage/backpack/marine/satchel/rto/post_skin_selection()
 	base_icon = icon_state
@@ -516,11 +512,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		icon_state = "[base_icon]_ring"
 	else
 		icon_state = base_icon
-
-/obj/item/storage/backpack/marine/satchel/rto/item_action_slot_check(mob/user, slot)
-	if(slot == WEAR_BACK)
-		return TRUE
-	return FALSE
 
 /obj/item/storage/backpack/marine/satchel/rto/forceMove(atom/dest)
 	. = ..()
@@ -558,10 +549,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	internal_transmitter.enabled = FALSE
 
 /obj/item/storage/backpack/marine/satchel/rto/proc/use_phone(mob/user)
-	if(user.back == src)
-		internal_transmitter.attack_hand(user)
-	else if(internal_transmitter.get_calling_phone())
-		internal_transmitter.attack_hand(user)
+	internal_transmitter.attack_hand(user)
 
 
 /obj/item/storage/backpack/marine/satchel/rto/attackby(obj/item/W, mob/user)
@@ -578,9 +566,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "\improper USCM Small Radio Telephone Pack"
 	max_storage_space = 10
 
-	uniform_restricted = null
-	phone_category = PHONE_MARINE
-
 
 /obj/item/storage/backpack/marine/satchel/rto/small/upp_net
 	network_receive = FACTION_UPP
@@ -589,10 +574,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/marine/satchel/rto/io
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/intel)
-
-/obj/item/storage/backpack/marine/satchel/rto/io/Initialize()
-	. = ..()
-	internal_transmitter.phone_category = "IO"
+	phone_category = PHONE_IO
 
 /obj/item/storage/backpack/marine/smock
 	name = "\improper M3 sniper's smock"
@@ -660,7 +642,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/general_belt/equipped(mob/user, slot)
 	switch(slot)
-		if(WEAR_WAIST, WEAR_J_STORE) //The G8 can be worn on several armours.
+		if(WEAR_WAIST, WEAR_J_STORE) //The G8 can be worn on several armors.
 			mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 	..()
 
@@ -944,6 +926,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "ERT_satchel"
 	worn_accessible = TRUE
 
+/obj/item/storage/backpack/lightpack/five_slot
+	max_storage_space = 15
+
 /obj/item/storage/backpack/marine/engineerpack/ert
 	name = "\improper lightweight technician welderpack"
 	desc = "A small, lightweight pack for expeditions and short-range operations. Features a small fueltank for quick blowtorch refueling."
@@ -985,7 +970,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	var/list/smartguns = typesof(/obj/item/weapon/gun/smartgun)
 	var/list/training_guns = list(
 		/obj/item/weapon/gun/rifle/m41a/training,
-		/obj/item/weapon/gun/rifle/l42a/training,
+		/obj/item/weapon/gun/rifle/m4ra/training,
 		/obj/item/weapon/gun/smg/m39/training,
 		/obj/item/weapon/gun/pistol/m4a3/training,
 		/obj/item/weapon/gun/pistol/mod88/training) //Ivan doesn't carry toys.

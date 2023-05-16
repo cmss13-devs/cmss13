@@ -29,6 +29,9 @@ var/bomb_set = FALSE
 	update_minimap_icon()
 
 /obj/structure/machinery/nuclearbomb/proc/update_minimap_icon()
+	if(!is_ground_level(z))
+		return
+
 	SSminimaps.remove_marker(src)
 	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "nuke[timing ? "_on" : "_off"]", 'icons/ui_icons/map_blips_large.dmi')
 
@@ -192,12 +195,12 @@ var/bomb_set = FALSE
 						explosion_time = world.time + timeleft
 						start_processing()
 						announce_to_players()
-						message_staff("[src] has been activated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=[usr]'>JMP</A>)")
+						message_admins("\The [src] has been activated by [key_name(ui.user, 1)] [ADMIN_JMP_USER(ui.user)]")
 					else
 						bomb_set = FALSE
 				else
 					disable()
-					message_staff("[src] has been deactivated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=[usr]'>JMP</A>)")
+					message_admins("\The [src] has been deactivated by [key_name(ui.user, 1)] [ADMIN_JMP_USER(ui.user)]")
 				playsound(src.loc, 'sound/effects/thud.ogg', 100, 1)
 			being_used = FALSE
 			. = TRUE
@@ -244,12 +247,12 @@ var/bomb_set = FALSE
 					acc += H.wear_id.GetAccess()
 				if(H.get_active_hand())
 					acc += H.get_active_hand().GetAccess()
-				if(!(ACCESS_MARINE_BRIDGE in acc))
+				if(!(ACCESS_MARINE_COMMAND in acc))
 					to_chat(usr, SPAN_DANGER("Access denied!"))
 					return
 
 				command_lockout = TRUE
-				req_one_access = list(ACCESS_MARINE_BRIDGE)
+				req_one_access = list(ACCESS_MARINE_COMMAND)
 				to_chat(usr, SPAN_DANGER("Command lockout engaged."))
 			. = TRUE
 
@@ -414,8 +417,8 @@ var/bomb_set = FALSE
 
 /obj/structure/machinery/nuclearbomb/Destroy()
 	if(timing != -1)
-		message_staff("[src] has been unexpectedly deleted at ([x],[y],[x]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
-		log_game("[src] has been unexpectedly deleted at ([x],[y],[x]).")
+		message_admins("\The [src] has been unexpectedly deleted at ([x],[y],[x]). [ADMIN_JMP(src)]")
+		log_game("\The [src] has been unexpectedly deleted at ([x],[y],[x]).")
 	bomb_set = FALSE
 	SSminimaps.remove_marker(src)
 	return ..()

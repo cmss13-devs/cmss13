@@ -46,7 +46,8 @@ Additional game mode variables.
 	var/datum/mind/CO_survivor = null
 	var/datum/mind/hellhounds[] = list() //Hellhound spawning is not supported at round start.
 	var/list/dead_queens // A list of messages listing the dead queens
-	var/predators = list()
+	var/list/predators	= list()
+	var/list/joes		= list()
 
 	var/xeno_required_num = 0 //We need at least one. You can turn this off in case we don't care if we spawn or don't spawn xenos.
 	var/xeno_starting_num = 0 //To clamp starting xenos.
@@ -67,7 +68,6 @@ Additional game mode variables.
 	var/round_checkwin = 0
 	var/round_finished
 	var/round_started = 5 //This is a simple timer so we don't accidently check win conditions right in post-game
-	var/list/round_fog = list() //List of the fog locations.
 	var/list/round_toxic_river = list() //List of all toxic river locations
 	var/round_time_lobby //Base time for the lobby, for fog dispersal.
 	var/round_time_river
@@ -80,12 +80,15 @@ Additional game mode variables.
 	/// List of role titles to override to different roles when starting game
 	var/list/role_mappings
 
+	//current amount of survivors by type
+	var/list/survivors_by_type_amounts = list()
+
 	//Bioscan related.
 	var/bioscan_current_interval = 5 MINUTES//5 minutes in
 	var/bioscan_ongoing_interval = 1 MINUTES//every 1 minute
 
 	var/lz_selection_timer = 25 MINUTES //25 minutes in
-	var/round_time_pooled_cutoff = 25 MINUTES //Time for when free pooled larvae stop spawning.
+	var/round_time_burrowed_cutoff = 25 MINUTES //Time for when free burrowed larvae stop spawning.
 
 	var/round_time_resin = 40 MINUTES //Time for when resin placing is allowed close to LZs
 
@@ -97,7 +100,7 @@ Additional game mode variables.
 
 
 /datum/game_mode/proc/get_roles_list()
-	return ROLES_REGULAR_ALL
+	return ROLES_USCM
 
 //===================================================\\
 
@@ -291,13 +294,13 @@ Additional game mode variables.
 
 			if(!new_xeno)
 				hive.stored_larva++
-				hive.hive_ui.update_pooled_larva()
+				hive.hive_ui.update_burrowed_larva()
 				continue  //Looks like we didn't get anyone. Keep going.
 
 			setup_new_xeno(new_xeno)
 
 			xenomorphs[hive] += new_xeno
-		else //Out of candidates, fill the xeno hive with pooled larva
+		else //Out of candidates, fill the xeno hive with burrowed larva
 			remaining_slots = round((xeno_starting_num - i))
 			break
 
@@ -349,7 +352,7 @@ Additional game mode variables.
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(!hive.hardcore && hive.stored_larva && (hive.spawn_pool || (world.time < 30 MINUTES + SSticker.round_start_time)))
+		if(!hive.hardcore && hive.stored_larva && (hive.hive_location || (world.time < 30 MINUTES + SSticker.round_start_time)))
 			if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
 				available_xenos |= "any buried larva"
 				LAZYADD(available_xenos["any buried larva"], hive)
@@ -359,7 +362,7 @@ Additional game mode variables.
 				available_xenos[larva_option] = list(hive)
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
-		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or pooled larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy."))
+		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy."))
 		return FALSE
 
 	var/mob/living/carbon/xenomorph/new_xeno
@@ -386,8 +389,8 @@ Additional game mode variables.
 				if(isnewplayer(xeno_candidate))
 					var/mob/new_player/noob = xeno_candidate
 					noob.close_spawn_windows()
-				if(picked_hive.spawn_pool)
-					picked_hive.spawn_pool.spawn_pooled_larva(xeno_candidate)
+				if(picked_hive.hive_location)
+					picked_hive.hive_location.spawn_burrowed_larva(xeno_candidate)
 				else if((world.time < 30 MINUTES + SSticker.round_start_time))
 					picked_hive.do_buried_larva_spawn(xeno_candidate)
 				else
@@ -648,10 +651,17 @@ Additional game mode variables.
 /datum/game_mode/proc/survivor_old_equipment(mob/living/carbon/human/equipping_human, is_synth = FALSE, is_CO = FALSE)
 	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
 
+	//creates soft caps for survivor variants, if there are more than the maximum of your preference you get a completely random variant which can include your preference, should minimize stacking while allowing for interesting randomness
+	var/preferred_variant = ANY_SURVIVOR
+	if(equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR)
+		preferred_variant = equipping_human.client?.prefs?.preferred_survivor_variant
+		if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && survivors_by_type_amounts[preferred_variant] && survivors_by_type_amounts[preferred_variant] >= MAX_SURVIVOR_PER_TYPE[preferred_variant])
+			preferred_variant = ANY_SURVIVOR
+
 	if(is_synth)
-		survivor_types = equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
+		survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
 	else
-		survivor_types = equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant] : SSmapping.configs[GROUND_MAP].survivor_types
+		survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].survivor_types
 	if(is_CO)
 		survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
 
@@ -662,6 +672,7 @@ Additional game mode variables.
 		not_a_xenomorph = FALSE
 	arm_equipment(equipping_human, randjob, FALSE, not_a_xenomorph)
 
+	survivors_by_type_amounts[preferred_variant] += 1
 
 /datum/game_mode/proc/survivor_event_transform(mob/living/carbon/human/H, obj/effect/landmark/survivor_spawner/spawner, is_synth = FALSE, is_CO = FALSE)
 	H.forceMove(get_turf(spawner))
@@ -816,3 +827,88 @@ Additional game mode variables.
 // for the toolbox
 /datum/game_mode/proc/end_round_message()
 	return "Extended round has ended."
+
+/datum/game_mode/proc/get_escape_menu()
+	return "On the [SSmapping.configs[SHIP_MAP].map_name], orbiting..."
+
+
+//===================================================\\
+
+				//JOE INITIALIZE\\
+
+//===================================================\\
+
+/datum/game_mode/proc/initialize_joe(mob/living/carbon/human/joe)
+	joes += joe.ckey
+
+/datum/game_mode/proc/attempt_to_join_as_joe(mob/joe_candidate)
+	var/mob/living/carbon/human/new_joe = transform_joe(joe_candidate) //Initialized and ready.
+	if(!new_joe)
+		return
+
+	msg_admin_niche("Ghost ([new_joe.key]) has joined as Working Joe, [new_joe.real_name].")
+
+	if(joe_candidate)
+		joe_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+
+/datum/game_mode/proc/check_joe_late_join(mob/joe_candidate, show_warning = 1)
+
+	if(!joe_candidate.client)
+		return
+
+	var/datum/job/joe_job = RoleAuthority.roles_by_name[JOB_WORKING_JOE]
+
+	if(!joe_job)
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
+		return
+
+	if(!(RoleAuthority.roles_whitelist[joe_candidate.ckey] & WHITELIST_JOE))
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
+		return
+
+	if(joe_candidate.ckey in joes)
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("You already were a Working Joe this round!"))
+		return
+
+	// council doesn't count towards this conditional.
+	if(joe_job.get_whitelist_status(RoleAuthority.roles_whitelist, joe_candidate.client) == WHITELIST_NORMAL)
+		var/joe_max = joe_job.total_positions
+		if(joe_job.current_positions >= joe_max)
+			if(show_warning)
+				to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))
+			return
+
+	if(!enter_allowed)
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("There is an administrative lock from entering the game."))
+		return
+
+	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Working Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+		return
+
+	return TRUE
+
+/datum/game_mode/proc/transform_joe(mob/joe_candidate)
+	set waitfor = FALSE
+
+	if(!joe_candidate.client) // Legacy - probably due to spawn code sync sleeps
+		log_debug("Null client attempted to transform_joe")
+		return
+
+	var/turf/spawn_point = get_turf(pick(GLOB.latejoin))
+	var/mob/living/carbon/human/synthetic/new_joe = new(spawn_point)
+	joe_candidate.mind.transfer_to(new_joe, TRUE)
+	var/datum/job/joe_job = RoleAuthority.roles_by_name[JOB_WORKING_JOE]
+
+	if(!joe_job)
+		qdel(new_joe)
+		return
+	// This is usually done in assign_role, a proc which is not executed in this case, since check_joe_late_join is running its own checks.
+	joe_job.current_positions++
+	RoleAuthority.equip_role(new_joe, joe_job, new_joe.loc)
+	GLOB.data_core.manifest_inject(new_joe)
+	SSticker.minds += new_joe.mind
+	return new_joe

@@ -4,7 +4,7 @@
 /atom/movable/screen/ghost/MouseEntered()
 	flick(icon_state + "_anim", src)
 
-/atom/movable/screen/ghost/attack_ghost(mob/dead/observer/user)
+/atom/movable/screen/attack_ghost(mob/dead/observer/user)
 	Click()
 
 /atom/movable/screen/ghost/follow_ghosts
@@ -80,7 +80,8 @@
 	if(!.)
 		return
 	var/mob/screenmob = viewmob || mymob
-/* if(!screenmob.client.prefs.ghost_hud)
+
+	if(!hud_shown)
 		screenmob.client.screen -= static_inventory
-	else*/
-	screenmob.client.screen += static_inventory
+	else
+		screenmob.client.screen += static_inventory

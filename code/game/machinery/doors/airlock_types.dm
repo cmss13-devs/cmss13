@@ -358,7 +358,7 @@
 /obj/structure/machinery/door/airlock/almayer/command
 	name = "\improper Command Airlock"
 	icon = 'icons/obj/structures/doors/comdoor.dmi'
-	req_access = list(ACCESS_MARINE_BRIDGE)
+	req_access = list(ACCESS_MARINE_COMMAND)
 
 /obj/structure/machinery/door/airlock/almayer/command/colony
 	req_access = null
@@ -378,7 +378,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure
 	name = "\improper Secure Airlock"
 	icon = 'icons/obj/structures/doors/securedoor.dmi'
-	req_access = list(ACCESS_MARINE_BRIDGE)
+	req_access = list(ACCESS_MARINE_COMMAND)
 
 /obj/structure/machinery/door/airlock/almayer/secure/colony
 	req_access = null
@@ -399,13 +399,16 @@
 	name = "\improper Maintenance Hatch"
 	icon = 'icons/obj/structures/doors/maintdoor.dmi'
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_MAINT)
+	req_one_access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_MAINT)
+
+/obj/structure/machinery/door/airlock/almayer/maint/autoname
+	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/maint/colony
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
-/obj/structure/machinery/door/airlock/almayer/maint/autoname
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname
 	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced
@@ -422,7 +425,7 @@
 	opacity = FALSE
 	glass = 1
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_ENGINEERING)
+	req_one_access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_ENGINEERING)
 
 /obj/structure/machinery/door/airlock/almayer/engineering/colony
 	req_access = null
@@ -455,13 +458,13 @@
 	opacity = FALSE
 	glass = TRUE
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_OT)
+	req_one_access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_OT)
 
 /obj/structure/machinery/door/airlock/almayer/medical
 	name = "\improper Medical Airlock"
 	icon = 'icons/obj/structures/doors/medidoor.dmi'
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIDGE)
+	req_one_access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_COMMAND)
 
 /obj/structure/machinery/door/airlock/almayer/medical/colony
 	req_access = null
@@ -476,7 +479,7 @@
 	opacity = FALSE
 	glass = 1
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIDGE, ACCESS_CIVILIAN_PUBLIC)
+	req_one_access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_COMMAND)
 
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony
 	req_access = null
@@ -558,7 +561,7 @@
 	name = "\improper Requisitions Bay"
 	icon = 'icons/obj/structures/doors/prepdoor.dmi'
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO)
+	req_one_access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_CARGO)
 	opacity = FALSE
 	glass = 1
 
@@ -570,7 +573,7 @@
 	name = "\improper Alpha Squad Preparations"
 	icon = 'icons/obj/structures/doors/prepdoor_alpha.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA)
+	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA)
 	opacity = FALSE
 	glass = 1
 
@@ -618,7 +621,7 @@
 	name = "\improper Bravo Squad Preparations"
 	icon = 'icons/obj/structures/doors/prepdoor_bravo.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_BRAVO)
+	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_BRAVO)
 	opacity = FALSE
 	glass = 1
 
@@ -666,7 +669,7 @@
 	name = "\improper Charlie Squad Preparations"
 	icon = 'icons/obj/structures/doors/prepdoor_charlie.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE)
+	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE)
 	opacity = FALSE
 	glass = 1
 
@@ -714,7 +717,7 @@
 	name = "\improper Delta Squad Preparations"
 	icon = 'icons/obj/structures/doors/prepdoor_delta.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_DELTA)
+	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_DELTA)
 	opacity = FALSE
 	glass = 1
 
@@ -758,30 +761,30 @@
 	opacity = FALSE
 	glass = 1
 
-//RTO doors, yes this is stupid
+//TL doors, yes this is stupid
 
-/obj/structure/machinery/door/airlock/almayer/marine/alpha/rto
-	name = "\improper Alpha Squad Radio Telephone Operator Preparations"
+/obj/structure/machinery/door/airlock/almayer/marine/alpha/tl
+	name = "\improper Alpha Squad Fireteam Leader Preparations"
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_RTO_PREP)
+	req_one_access = list(ACCESS_MARINE_TL_PREP)
 	dir = SOUTH
 
-/obj/structure/machinery/door/airlock/almayer/marine/bravo/rto
-	name = "\improper Bravo Squad Radio Telephone Operator Preparations"
+/obj/structure/machinery/door/airlock/almayer/marine/bravo/tl
+	name = "\improper Bravo Squad Fireteam Leader Preparations"
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_RTO_PREP)
+	req_one_access = list(ACCESS_MARINE_TL_PREP)
 	dir = SOUTH
 
-/obj/structure/machinery/door/airlock/almayer/marine/charlie/rto
-	name = "\improper Charlie Squad Radio Telephone Operator Preparations"
+/obj/structure/machinery/door/airlock/almayer/marine/charlie/tl
+	name = "\improper Charlie Squad Fireteam Leader Preparations"
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_RTO_PREP)
+	req_one_access = list(ACCESS_MARINE_TL_PREP)
 	dir = SOUTH
 
-/obj/structure/machinery/door/airlock/almayer/marine/delta/rto
-	name = "\improper Delta Squad Radio Telephone Operator Preparations"
+/obj/structure/machinery/door/airlock/almayer/marine/delta/tl
+	name = "\improper Delta Squad Fireteam Leader Preparations"
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_RTO_PREP)
+	req_one_access = list(ACCESS_MARINE_TL_PREP)
 	dir = SOUTH
 
 //SQUAD PREP SHARED DOORS
@@ -789,15 +792,14 @@
 /obj/structure/machinery/door/airlock/almayer/marine/shared
 	name = "\improper Squads Preparations"
 	icon = 'icons/obj/structures/doors/prepdoor.dmi'
-	req_access = list(ACCESS_MARINE_PREP)
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
+	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/shared/alpha_bravo
 	name = "\improper Alpha-Bravo Squads Preparations"
 	icon = 'icons/obj/structures/doors/prepdoor_alpha.dmi'
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO)
+	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO)
 
 /obj/structure/machinery/door/airlock/almayer/marine/shared/alpha_bravo/yellow
 	icon = 'icons/obj/structures/doors/prepdoor_bravo.dmi'
@@ -805,7 +807,7 @@
 /obj/structure/machinery/door/airlock/almayer/marine/shared/charlie_delta
 	name = "\improper Charlie-Delta Squads Preparations"
 	icon = 'icons/obj/structures/doors/prepdoor_charlie.dmi'
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
+	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 
 /obj/structure/machinery/door/airlock/almayer/marine/shared/charlie_delta/blue
 	icon = 'icons/obj/structures/doors/prepdoor_delta.dmi'
@@ -826,9 +828,23 @@
 	return
 
 /obj/structure/machinery/door/airlock/dropship_hatch/unlock()
-	if(is_loworbit_level(z)) // in flight
+	if(is_reserved_level(z)) // in flight
 		return
 	..()
+
+/obj/structure/machinery/door/airlock/dropship_hatch/attack_alien(mob/living/carbon/xenomorph/xeno)
+
+	if(xeno.hive_pos != XENO_QUEEN)
+		return ..()
+
+	if(!locked)
+		return ..()
+
+	to_chat(xeno, SPAN_NOTICE("You try and force the doors open"))
+	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		unlock(TRUE)
+		open(1)
+		lock(TRUE)
 
 /obj/structure/machinery/door/airlock/dropship_hatch/two
 	icon = 'icons/obj/structures/doors/dropship2_side.dmi' //Tiles with is here FOR SAFETY PURPOSES

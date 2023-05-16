@@ -106,6 +106,9 @@
 
 /mob/var/knocked_out_timer
 
+/mob/proc/knocked_out_start()
+	return
+
 /mob/proc/knocked_out_callback()
 	knocked_out = 0
 	handle_regular_status_updates(FALSE)
@@ -114,6 +117,7 @@
 
 /mob/proc/knocked_out_callback_check()
 	if(knocked_out && knocked_out < recovery_constant)
+		knocked_out_start()
 		knocked_out_timer = addtimer(CALLBACK(src, PROC_REF(knocked_out_callback)), (knocked_out/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) // times whatever amount we have per tick
 		return
 	else if(!knocked_out)

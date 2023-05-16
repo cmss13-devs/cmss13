@@ -1,7 +1,10 @@
 {
 	"map_name": "LV-522 Chance's Claim",
+    "short_name": "Chance's Claim",
 	"map_path": "map_files/LV522_Chances_Claim",
 	"map_file": "LV522_Chances_Claim.dmm",
+    "webmap_url": "LV552",
+
     "weather_holder": "/datum/weather_ss_map_holder/lv522_chances_claim",
     "survivor_types": [
         "/datum/equipment_preset/survivor/forecon/standard"
@@ -26,6 +29,7 @@
         "neaera",
         "stok"
     ],
+    "environment_traits": { "Fog": true },
     "traits": [{ "Ground": true }],
     "xvx_hives": {
         "xeno_hive_alpha": 0,

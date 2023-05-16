@@ -41,8 +41,6 @@
 	knock_down_reduction = 5
 	stun_reduction = 5
 
-	acid_blood_dodge_chance = 35
-
 	inherent_verbs = list(
 		/mob/living/carbon/human/synthetic/proc/toggle_HUD,
 	)
@@ -111,7 +109,7 @@
 	name = SYNTH_WORKING_JOE
 	name_plural = "Working Joes"
 	uses_ethnicity = FALSE
-	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT)
 
 	hair_color = "#000000"
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'

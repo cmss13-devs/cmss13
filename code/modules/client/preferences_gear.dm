@@ -306,37 +306,37 @@ var/global/list/gear_datums = list()
 //
 /datum/gear/tornscarfclassic
 	display_name = "Scarf (Grey)"
-	path = /obj/item/clothing/mask/rebreather/tornscarf
+	path = /obj/item/clothing/mask/tornscarf
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tornscarfgreen
 	display_name = "Scarf (Green)"
-	path = /obj/item/clothing/mask/rebreather/tornscarf/green
+	path = /obj/item/clothing/mask/tornscarf/green
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tornscarfwhite
 	display_name = "Scarf (White)"
-	path = /obj/item/clothing/mask/rebreather/tornscarf/snow
+	path = /obj/item/clothing/mask/tornscarf/snow
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tornscarfdesert
 	display_name = "Scarf (Desert)"
-	path = /obj/item/clothing/mask/rebreather/tornscarf/desert
+	path = /obj/item/clothing/mask/tornscarf/desert
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tornscarfurban
 	display_name = "Scarf (Urban)"
-	path = /obj/item/clothing/mask/rebreather/tornscarf/urban
+	path = /obj/item/clothing/mask/tornscarf/urban
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tornscarfblack
 	display_name = "Scarf (Black)"
-	path = /obj/item/clothing/mask/rebreather/tornscarf/black
+	path = /obj/item/clothing/mask/tornscarf/black
 	slot = WEAR_FACE
 	cost = 2
 //
@@ -396,13 +396,13 @@ var/global/list/gear_datums = list()
 
 /datum/gear/m8_cartridge_bayonet
 	display_name = "M8 Cartridge Bayonet"
-	path = /obj/item/storage/box/c02_knife
+	path = /obj/item/storage/box/co2_knife
 	slot = WEAR_IN_BACK
 	cost = 4
 
-/datum/gear/m43pistol
-	display_name = "M43 Holdout Pistol"
-	path = /obj/item/storage/box/m43
+/datum/gear/clfpistol
+	display_name = "D18 Holdout Pistol"
+	path = /obj/item/storage/box/clf
 	slot = WEAR_IN_BACK
 	cost = 4
 

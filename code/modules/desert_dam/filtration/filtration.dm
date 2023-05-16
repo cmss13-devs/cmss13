@@ -319,7 +319,7 @@ var/global/east_riverstart = 0
 
 /*
 /obj/effect/blocker/toxic_water/connector
-	icon_state = "null"
+	icon_state = null
 
 //something to stop this stuff from killing people
 

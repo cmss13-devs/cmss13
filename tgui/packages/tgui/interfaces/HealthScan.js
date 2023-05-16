@@ -1,15 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Section,
-  ProgressBar,
-  Box,
-  LabeledList,
-  NoticeBox,
-  Stack,
-  Icon,
-  Divider,
-  Flex,
-} from '../components';
+import { Section, ProgressBar, Box, LabeledList, NoticeBox, Stack, Icon, Divider, Flex } from '../components';
 import { Window } from '../layouts';
 
 export const HealthScan = (props, context) => {
@@ -101,8 +91,8 @@ export const HealthScan = (props, context) => {
                   {permadead
                     ? 'Permanently deceased'
                     : Synthetic
-                    ? 'Central power system shutdown, reboot possible.'
-                    : 'Cardiac arrest, defibrillation possible'}
+                      ? 'Central power system shutdown, reboot possible.'
+                      : 'Cardiac arrest, defibrillation possible'}
                 </Box>
               </LabeledList.Item>
             ) : null}
@@ -244,7 +234,7 @@ export const HealthScan = (props, context) => {
               {advice.map((advice) => (
                 <Stack.Item key={advice.advice}>
                   <Box inline>
-                    <Icon name={advice.icon} ml={0.2} color={advice.colour} />
+                    <Icon name={advice.icon} ml={0.2} color={advice.color} />
                     <Box inline width={'5px'} />
                     {advice.advice}
                   </Box>
@@ -274,7 +264,7 @@ const ScannerChems = (props, context) => {
         {chemicals.map((chemical) => (
           <Stack.Item key={chemical.name}>
             <Box inline>
-              <Icon name={'flask'} ml={0.2} color={chemical.colour} />
+              <Icon name={'flask'} ml={0.2} color={chemical.color} />
               <Box inline width={'5px'} />
               <Box
                 inline

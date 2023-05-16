@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				msg += " Administrators have been informed."
 				log_game("[key_name(src)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
 				message_admins("[key_name(usr)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
-			to_chat(src, "<span class='danger'>[msg]</span>")
+			to_chat(src, SPAN_DANGER("[msg]"))
 			return
 
 	var/stl = CONFIG_GET(number/second_topic_limit)
@@ -97,12 +97,17 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			topiclimiter[SECOND_COUNT] = 0
 		topiclimiter[SECOND_COUNT] += 1
 		if (topiclimiter[SECOND_COUNT] > stl)
-			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
+			to_chat(src, SPAN_DANGER("Your previous action was ignored because you've done too many in a second"))
 			return
 
 	// Tgui Topic middleware
 	if(tgui_Topic(href_list))
 		return
+
+	//Logs all other hrefs
+	if(CONFIG_GET(flag/log_hrefs) && GLOB.world_href_log)
+		WRITE_LOG(GLOB.world_href_log, "<small>[src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>")
+
 	if(href_list["reload_tguipanel"])
 		nuke_chat()
 	if(href_list["reload_statbrowser"])
@@ -115,7 +120,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	//byond bug ID:2256651
 	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
-		to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
+		to_chat(src, SPAN_DANGER("An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)"))
 		src << browse("...", "window=asset_cache_browser")
 		return
 
@@ -126,7 +131,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//search the href for script injection
 	if(findtext(href,"<script",1,0) )
 		world.log << "Attempted use of scripts within a topic call, by [src]"
-		message_staff("Attempted use of scripts within a topic call, by [src]")
+		message_admins("Attempted use of scripts within a topic call, by [src]")
 		//del(usr)
 		return
 
@@ -144,8 +149,17 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return
 
 	else if(href_list["FaxView"])
-		var/info = locate(href_list["FaxView"])
-		show_browser(usr, "<body class='paper'>[info]</body>", "Fax Message", "Fax Message")
+
+		var/datum/fax/info = locate(href_list["FaxView"])
+
+		if(!istype(info))	
+			return
+
+		if(info.photo_list)
+			for(var/photo in info.photo_list)
+				usr << browse_rsc(info.photo_list[photo], photo)
+
+		show_browser(usr, "<body class='paper'>[info.data]</body>", "Fax Message", "Fax Message")
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)
@@ -194,10 +208,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		var/datum/entity/player/P = get_player_from_key(key)
 		P.remove_note(index)
 
-	//Logs all hrefs
-	if(CONFIG_GET(flag/log_hrefs) && href_logfile)
-		href_logfile << "<small>[time2text(world.timeofday,"hh:mm")] [src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>"
-
 	switch(href_list["_src_"])
 		if("admin_holder")
 			hsrc = admin_holder
@@ -228,7 +238,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			if(proc_to_call in GLOB.whitelisted_client_procs)
 				call(src, proc_to_call)()
 			else
-				message_staff("[key_name_admin(src)] attempted to do a href exploit. (Inputted command: [html_encode(proc_to_call)])")
+				message_admins("[key_name_admin(src)] attempted to do a href exploit. (Inputted command: [html_encode(proc_to_call)])")
 			return // Don't call hsrc in this case since it's ourselves
 
 	if(href_list[CLAN_ACTION])
@@ -462,7 +472,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	unansweredAhelps?.Remove(computer_id)
 	log_access("Logout: [key_name(src)]")
 	if(CLIENT_IS_STAFF(src))
-		message_staff("Admin logout: [key_name(src)]")
+		message_admins("Admin logout: [key_name(src)]")
+
+		var/list/adm = get_admin_counts(R_MOD)
+		REDIS_PUBLISH("byond.access", "type" = "logout", "key" = src.key, "remaining" = length(adm["total"]), "afk" = length(adm["afk"]))
 
 	..()
 	return QDEL_HINT_HARDDEL_NOW
@@ -476,7 +489,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /client/proc/notify_login()
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[byond_version].[byond_build]")
 	if(CLIENT_IS_STAFF(src))
-		message_staff("Admin login: [key_name(src)]")
+		message_admins("Admin login: [key_name(src)]")
+
+		var/list/adm = get_admin_counts(R_MOD)
+		REDIS_PUBLISH("byond.access", "type" = "login", "key" = src.key, "remaining" = length(adm["total"]), "afk" = length(adm["afk"]))
+
 	if(CONFIG_GET(flag/log_access))
 		for(var/mob/M in GLOB.player_list)
 			if( M.key && (M.key != key) )
@@ -489,10 +506,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					spawn() alert("You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
 				if(matches)
 					if(M.client)
-						message_staff("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as <A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(M)]</A>.")]", 1)
+						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as <A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(M)]</A>.")]", 1)
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)].")
 					else
-						message_staff("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in).")]", 1)
+						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in).")]", 1)
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in).")
 
 
@@ -528,7 +545,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		// var/datum/entity/player_entity/P = player_entities["[key_ref]"]
 		// P.save_statistics()
 	log_debug("STATISTICS: Statistics saving complete.")
-	message_staff("STATISTICS: Statistics saving complete.")
+	message_admins("STATISTICS: Statistics saving complete.")
 
 /client/proc/clear_chat_spam_mute(warn_level = 1, message = FALSE, increase_warn = FALSE)
 	if(talked > warn_level)
@@ -762,6 +779,16 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(admin_holder)
 		admin_holder.filteriffic = new /datum/filter_editor(in_atom)
 		admin_holder.filteriffic.tgui_interact(mob)
+
+/// Clears the client's screen, aside from ones that opt out
+/client/proc/clear_screen()
+	for (var/object in screen)
+		if (istype(object, /atom/movable/screen))
+			var/atom/movable/screen/screen_object = object
+			if (!screen_object.clear_with_screen)
+				continue
+
+		screen -= object
 
 ///opens the particle editor UI for the in_atom object for this client
 /client/proc/open_particle_editor(atom/movable/in_atom)

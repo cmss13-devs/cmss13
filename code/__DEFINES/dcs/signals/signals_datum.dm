@@ -58,3 +58,6 @@
 /// From /datum/element/drop_retrieval usage: /obj/item/attachable/magnetic_harness/can_be_attached_to_gun(), /obj/item/storage/pouch/sling/can_be_inserted() (/obj/item/I)
 #define COMSIG_DROP_RETRIEVAL_CHECK "drop_retrieval_check"
 	#define COMPONENT_DROP_RETRIEVAL_PRESENT (1<<0)
+
+// from /datum/emergency_call/proc/spawn_candidates()
+#define COMSIG_ERT_SETUP "ert_setup"

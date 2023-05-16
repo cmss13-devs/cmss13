@@ -30,12 +30,6 @@
 	icon_state = "flight_recorder"
 	w_class = SIZE_LARGE
 
-/obj/item/prop/almayer/lantern_pod
-	name = "\improper LANTERN pod"
-	desc = "A long green box mounted into a dropship to provide various optical support for its ground targeting systems."
-	icon_state = "lantern_pod"
-	w_class = SIZE_LARGE
-
 /obj/item/prop/almayer/flare_launcher
 	name = "\improper MJU-77/C case"
 	desc = "A flare launcher that usually gets mounted onto dropships to help survivability against infrared tracking missiles."
@@ -284,6 +278,10 @@
 	icon_state = "1"
 	unslashable = TRUE
 	unacidable = TRUE
+
+/obj/structure/prop/almayer/particle_cannon/corsat
+	name = "\improper CORSAT-PROTO-QUANTUM-CALCULATOR"
+	desc = ""
 
 /obj/structure/prop/almayer/name_stencil
 	name = "USS Almayer"

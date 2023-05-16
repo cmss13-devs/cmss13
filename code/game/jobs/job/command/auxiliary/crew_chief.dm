@@ -14,4 +14,5 @@ AddTimelock(/datum/job/command/crew_chief, list(
 
 /obj/effect/landmark/start/crew_chief
 	name = JOB_DROPSHIP_CREW_CHIEF
+	icon_state = "dcc_spawn"
 	job = /datum/job/command/crew_chief

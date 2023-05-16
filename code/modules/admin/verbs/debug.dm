@@ -65,7 +65,7 @@
 		spawn(10)
 			M:Alienize()
 
-		message_staff("[key_name_admin(usr)] made [key_name(M)] into an alien.")
+		message_admins("[key_name_admin(usr)] made [key_name(M)] into an alien.")
 	else
 		alert("Invalid mob")
 
@@ -88,9 +88,9 @@
 		to_chat(usr, "Mode not found?")
 	round_should_check_for_win = !round_should_check_for_win
 	if (round_should_check_for_win)
-		message_staff("[key_name(src)] enabled checking for round-end.")
+		message_admins("[key_name(src)] enabled checking for round-end.")
 	else
-		message_staff("[key_name(src)] disabled checking for round-end.")
+		message_admins("[key_name(src)] disabled checking for round-end.")
 
 
 
@@ -122,7 +122,7 @@
 							else
 								qdel(O)
 							del_amt++
-					message_staff("[key_name_admin(src)] has deleted all instances of [hsbitem] ([del_amt]).", 0)
+					message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem] ([del_amt]).", 0)
 		else
 			to_chat(usr, SPAN_WARNING("Not a valid type path."))
 
@@ -131,7 +131,7 @@
 	set name = "Generate Powernets"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") != "Yes") return
 	makepowernets()
-	message_staff("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
+	message_admins("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
 
 
 /client/proc/cmd_admin_grantfullaccess(mob/M in GLOB.mob_list)
@@ -163,7 +163,7 @@
 	else
 		alert("Invalid mob")
 
-	message_staff("[key_name_admin(usr)] has granted [M.key] full access.")
+	message_admins("[key_name_admin(usr)] has granted [M.key] full access.")
 
 /client/proc/cmd_admin_grantallskills(mob/M in GLOB.mob_list)
 	set category = null
@@ -180,7 +180,7 @@
 	else
 		alert("Invalid mob")
 
-	message_staff("[key_name_admin(usr)] has given [M.key] null skills.")
+	message_admins("[key_name_admin(usr)] has given [M.key] null skills.")
 
 /client/proc/admin_create_account(mob/target in GLOB.mob_list)
 	set category = null
@@ -216,7 +216,7 @@
 	generated_account = create_account(account_user.real_name, starting_amount, account_paygrade)
 	if(card)
 		card.associated_account_number = generated_account.account_number
-		card.paygrade = account_paygrade
+		card.paygrade = account_paygrade.paygrade
 	if(account_user.mind)
 		var/remembered_info = ""
 		remembered_info += "<b>Your account number is:</b> #[generated_account.account_number]<br>"
@@ -254,7 +254,7 @@
 
 	usr.mind.transfer_to(M, TRUE)
 
-	message_staff("[key_name_admin(usr)] assumed direct control of [M].")
+	message_admins("[key_name_admin(usr)] assumed direct control of [M].")
 
 /client/proc/cmd_debug_list_processing_items()
 	set category = "Debug.Controllers"

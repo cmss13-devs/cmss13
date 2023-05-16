@@ -177,7 +177,7 @@
 	viewed_report.incident.status |= BRIG_SENTENCE_PARDONED
 	viewed_report.name += " (PARDONED)"
 
-	message_staff("[key_name(user, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[user]'>JMP</A>) has pardoned [viewed_report.incident.criminal_name].")
+	message_admins("[key_name(user, 1)][ADMIN_JMP_USER(user)] has pardoned [viewed_report.incident.criminal_name].")
 	log_admin("[key_name(user)] pardoned [viewed_report.incident.criminal_name] for [viewed_report.incident.charges_to_string()].")
 	ai_silent_announcement("BRIG REPORT: [viewed_report.incident.criminal_name] has been pardoned for [viewed_report.incident.charges_to_string()].")
 
@@ -227,7 +227,7 @@
 	incident.status &= ~BRIG_SENTENCE_ACTIVE
 	incident.time_served = (incident.brig_sentence * 600) - (incident.time_to_release - REALTIMEOFDAY)
 
-	message_staff("[key_name(user, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[user]'>JMP</A>) has paused the jail timer of [incident.criminal_name].")
+	message_admins("[key_name(user, 1)][ADMIN_JMP_USER(user)] has paused the jail timer of [incident.criminal_name].")
 	log_admin("[key_name(user)] paused the jail timer of [incident.criminal_name], [incident.charges_to_string()].")
 
 	active_report = null
@@ -246,7 +246,7 @@
 	incident.status |= BRIG_SENTENCE_SERVED
 
 	if (user)
-		message_staff("[key_name(user, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[user]'>JMP</A>) has prematurely ended the jail timer of [incident.criminal_name].")
+		message_admins("[key_name(user, 1)][ADMIN_JMP_USER(user)] has prematurely ended the jail timer of [incident.criminal_name].")
 		log_admin("[key_name(user)] prematurely ended the jail timer of [incident.criminal_name], [incident.charges_to_string()].")
 
 	active_report = null
@@ -266,7 +266,7 @@
 	incident.status &= ~BRIG_SENTENCE_PARDONED
 	incident.status &= ~BRIG_SENTENCE_SERVED
 
-	message_staff("[key_name(user, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[user]'>JMP</A>) has reset the jail timer of [incident.criminal_name].")
+	message_admins("[key_name(user, 1)][ADMIN_JMP_USER(user)] has reset the jail timer of [incident.criminal_name].")
 	log_admin("[key_name(user)] reset the jail timer of [incident.criminal_name], [incident.charges_to_string()].")
 	ai_silent_announcement("BRIG REPORT: [incident.criminal_name] had their jail time reset by [user].", ":p")
 

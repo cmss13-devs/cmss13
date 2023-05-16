@@ -32,7 +32,7 @@
 	crit_health = 0
 	crit_grace_time = 0
 	gib_chance = 75
-	mob_size = 0
+	mob_size = MOB_SIZE_SMALL
 	death_fontsize = 2
 	life_value = 0
 	default_honor_value = 0
@@ -145,11 +145,11 @@
 	var/area/hug_area = get_area(src)
 	if(hug_area)
 		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[hug_area]</b>" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[human.loc.x];Y=[human.loc.y];Z=[human.loc.z]'>JMP</a>)"))
+			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[hug_area]</b>" + " [OBSERVER_JMP(observer, human)]"))
 		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[hug_area]</b>"))
 	else
 		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b>" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[human.loc.x];Y=[human.loc.y];Z=[human.loc.z]'>JMP</a>)"))
+			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b>" + " [OBSERVER_JMP(observer, human)]"))
 		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b>"))
 	qdel(src)
 	if(hug_area)
@@ -222,3 +222,6 @@
 	visible_message(SPAN_WARNING("\The [src] scuttles underneath \the [current_structure]!"), \
 	SPAN_WARNING("You squeeze and scuttle underneath \the [current_structure]."), null, 5)
 	forceMove(current_structure.loc)
+
+/mob/living/carbon/xenomorph/facehugger/emote(act, m_type, message, intentional, force_silence)
+	playsound(loc, "alien_roar_larva", 15)

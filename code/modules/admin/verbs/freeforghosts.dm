@@ -8,7 +8,7 @@
 
 	free_for_ghosts(M)
 
-	message_staff("[key_name_admin(usr)] freed [key_name(M)] for ghosts to take.")
+	message_admins("[key_name_admin(usr)] freed [key_name(M)] for ghosts to take.")
 
 /client/proc/free_for_ghosts(mob/living/M in GLOB.living_mob_list)
 	if(!ismob(M))
@@ -36,4 +36,4 @@
 	for(var/mob/living/M in view())
 		free_for_ghosts(M)
 
-	message_staff(WRAP_STAFF_LOG(usr, "freed all mobs in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "freed all mobs in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)

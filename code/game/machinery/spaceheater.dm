@@ -19,6 +19,11 @@
 	cell.charge += 500
 	update_icon()
 
+/obj/structure/machinery/space_heater/Destroy()
+	QDEL_NULL(cell)
+	. = ..()
+
+
 /obj/structure/machinery/space_heater/update_icon()
 	overlays.Cut()
 	icon_state = "sheater[on]"

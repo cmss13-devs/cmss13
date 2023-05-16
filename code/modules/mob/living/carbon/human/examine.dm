@@ -26,7 +26,7 @@
 		if(stat == DEAD)
 			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is dead.\n</span>"
 		else if(stat || !client)
-			msg += "<span class='xenowarning'>It doesn't seem responsive.\n</span>"
+			msg += SPAN_XENOWARNING("It doesn't seem responsive.\n")
 		msg += "</span>"
 		return list(msg)
 
@@ -102,10 +102,10 @@
 	if(head)
 		msg += "[t_He] [t_is] wearing [head.get_examine_line(user)] [head.get_examine_location(src, user, WEAR_HEAD, t_He, t_his, t_him, t_has, t_is)].\n"
 
-	//suit/armour
+	//suit/armor
 	if(wear_suit)
 		msg += "[t_He] [t_is] [wear_suit.get_examine_location(src, user, WEAR_JACKET, t_He, t_his, t_him, t_has, t_is)].\n"
-	//suit/armour storage
+	//suit/armor storage
 	if(s_store && !skipsuitstorage)
 		msg += "[t_He] [t_is] carrying [s_store.get_examine_line(user)] [s_store.get_examine_location(src, user, WEAR_J_STORE, t_He, t_his, t_him, t_has, t_is)].\n"
 
@@ -194,7 +194,7 @@
 	var/distance = get_dist(user,src)
 	if(istype(user, /mob/dead/observer) || user.stat == DEAD) // ghosts can see anything
 		distance = 1
-	if (stat)
+	if (stat || status_flags & FAKEDEATH)
 		msg += SPAN_WARNING("[t_He] [t_is]n't responding to anything around [t_him] and seems to be asleep.\n")
 		if(stat == DEAD && distance <= 3)
 			msg += SPAN_WARNING("[t_He] does not appear to be breathing.\n")
@@ -203,15 +203,15 @@
 		if(ishuman(user) && !user.stat && Adjacent(user))
 			user.visible_message("<b>[user]</b> checks [src]'s pulse.", "You check [src]'s pulse.", null, 4)
 		spawn(15)
-			if(user && src && distance <= 1 && user.stat != 1)
-				if(pulse == PULSE_NONE)
-					to_chat(user, "<span class='deadsay'>[t_He] has no pulse[client ? "" : " and [t_his] soul has departed"]...</span>")
+			if(user && src && distance <= 1)
+				if(pulse == PULSE_NONE || status_flags & FAKEDEATH)
+					to_chat(user, SPAN_DEADSAY("[t_He] has no pulse[client ? "" : " and [t_his] soul has departed"]..."))
 				else
-					to_chat(user, "<span class='deadsay'>[t_He] has a pulse!</span>")
+					to_chat(user, SPAN_DEADSAY("[t_He] has a pulse!"))
 
 	if((species && !species.has_organ["brain"] || has_brain()) && stat != DEAD && stat != CONSCIOUS)
 		if(!key)
-			msg += "<span class='deadsay'>[t_He] [t_is] fast asleep. It doesn't look like they are waking up anytime soon.\n</span>"
+			msg += SPAN_DEADSAY("[t_He] [t_is] fast asleep. It doesn't look like they are waking up anytime soon.\n")
 		else if(!client)
 			msg += "[t_He] [t_has] suddenly fallen asleep.\n"
 

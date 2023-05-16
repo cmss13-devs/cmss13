@@ -36,7 +36,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 /obj/item/stack/update_icon()
 	..()
 	if((isstorage(loc) || ismob(loc)) && display_maptext)
-		maptext = "<span class='langchat'>[(amount > 1)? "[amount]" : ""]</span>"
+		maptext = SPAN_LANGCHAT("[(amount > 1)? "[amount]" : ""]")
 	else
 		maptext = ""
 

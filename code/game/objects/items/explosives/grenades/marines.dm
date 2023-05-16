@@ -197,6 +197,88 @@
 
 /*
 //================================================
+				M203 Grenades
+//================================================
+*/
+
+/obj/item/explosive/grenade/incendiary/impact
+	name = "\improper 40mm incendiary grenade"
+	desc = "This is a 40mm grenade, designed to be launched by a grenade launcher and detonate on impact. This one is marked as a incendiary grenade, watch your fire."
+	icon_state = "grenade_40mm_inc"
+	det_time = 0
+	item_state = "grenade_fire"
+	hand_throwable = FALSE
+	dangerous = TRUE
+	underslug_launchable = TRUE
+	flame_level = BURN_TIME_TIER_2
+	burn_level = BURN_LEVEL_TIER_3
+	flameshape = FLAMESHAPE_DEFAULT
+	radius = 2
+	fire_type = FIRE_VARIANT_DEFAULT
+
+/obj/item/explosive/grenade/incendiary/impact/prime()
+	return
+
+/obj/item/explosive/grenade/incendiary/impact/launch_impact(atom/hit_atom)
+	..()
+	var/detonate = TRUE
+	var/turf/hit_turf = null
+	if(isobj(hit_atom) && !rebounding)
+		detonate = FALSE
+	if(isturf(hit_atom))
+		hit_turf = hit_atom
+		if(hit_turf.density && !rebounding)
+			detonate = FALSE
+	if(active && detonate) // Active, and we reached our destination.
+		var/angle = dir2angle(last_move_dir)
+		var/turf/target = locate(x + sin(angle)*radius, y + cos(angle)*radius, z)
+		if(target)
+			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, target)
+		else
+			//Not stellar, but if we can't find a direction, fall back to HIDP behaviour.
+			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, FLAMESHAPE_DEFAULT, target)
+		playsound(src, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
+		qdel(src)
+
+/obj/item/explosive/grenade/high_explosive/impact //omega hell killer grenade of doom from hell
+	name = "\improper 40mm HE grenade"
+	desc = "This is a 40mm grenade, designed to be launched by a grenade launcher and detonate on impact. This one is marked as a High-Explosive grenade, watch your fire."
+	icon_state = "grenade_40mm_he"
+	item_state = "grenade_hedp"
+	det_time = 0
+	hand_throwable = FALSE
+	dangerous = TRUE
+	underslug_launchable = TRUE
+	explosion_power = 100 //hedp
+	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+
+/obj/item/explosive/grenade/high_explosive/impact/prime()
+// We don't prime, we use launch_impact.
+
+/obj/item/explosive/grenade/high_explosive/impact/launch_impact(atom/hit_atom)
+	..()
+	var/detonate = TRUE
+	if(isobj(hit_atom) && !rebounding)
+		detonate = FALSE
+	if(isturf(hit_atom) && hit_atom.density && !rebounding)
+		detonate = FALSE
+	if(active && detonate) // Active, and we reached our destination.
+		if(explosion_power)
+			cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, last_move_dir, cause_data)
+		qdel(src)
+
+/obj/item/explosive/grenade/high_explosive/airburst/buckshot
+	name = "\improper 40mm Buckshot Shell"
+	desc = "A classic of grenade launchers everywhere, this is a 40mm shell loaded with buckshot; very dangerous, watch your fire."
+	icon_state = "grenade_40mm_buckshot"
+	item_state = "grenade_hornet_active"
+	shrapnel_count = 10
+	shrapnel_type = /datum/ammo/bullet/shotgun/spread
+	direct_hit_shrapnel = 5
+	dispersion_angle = 35//big
+
+/*
+//================================================
 				Incendiary Grenades
 //================================================
 */
@@ -326,6 +408,10 @@
 	smoke = new /datum/effect_system/smoke_spread/bad
 	smoke.attach(src)
 
+/obj/item/explosive/grenade/smokebomb/Destroy()
+	QDEL_NULL(smoke)
+	return ..()
+
 /obj/item/explosive/grenade/smokebomb/prime()
 	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
 	smoke.set_up(smoke_radius, 0, get_turf(src), null, 6)
@@ -344,16 +430,20 @@
 	harmful = TRUE
 	var/smoke_radius = 3
 
+/obj/item/explosive/grenade/phosphorus/Destroy()
+	QDEL_NULL(smoke)
+	return ..()
+
 /obj/item/explosive/grenade/phosphorus/weak
 	desc = "The M40 HPDP is a small, but powerful phosphorus grenade. Word on the block says that the HPDP doesn't actually release White Phosphorus, but some other chemical developed in W-Y labs."
 
 /obj/item/explosive/grenade/phosphorus/Initialize()
-	..()
+	. = ..()
 	smoke = new /datum/effect_system/smoke_spread/phosphorus
 	smoke.attach(src)
 
 /obj/item/explosive/grenade/phosphorus/weak/Initialize()
-	..()
+	. = ..()
 	smoke = new /datum/effect_system/smoke_spread/phosphorus/weak
 	smoke.attach(src)
 
@@ -581,3 +671,20 @@
 	s.set_up(12, get_turf(src), metal_foam = foam_metal_type) //Metalfoam 1 for aluminum foam, 2 for iron foam (Stronger), 12 amt = 2 tiles radius (5 tile length diamond)
 	s.start()
 	qdel(src)
+
+// abstract grenades used for hijack explosions
+
+/obj/item/explosive/grenade/high_explosive/bursting_pipe
+	name = "bursting pipe"
+	alpha = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/item/explosive/grenade/incendiary/bursting_pipe
+	name = "bursting pipe"
+	alpha = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+	flame_level = BURN_TIME_TIER_3
+	burn_level = BURN_LEVEL_TIER_3
+	radius = 2
+	fire_type = FIRE_VARIANT_DEFAULT

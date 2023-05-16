@@ -14,6 +14,7 @@
 	speed = XENO_SPEED_TIER_7
 
 	evolution_allowed = FALSE
+	minimum_evolve_time = 0
 
 	tackle_min = 3
 	tackle_max = 6
@@ -73,6 +74,8 @@
 	hunter_data.dishonored_set = src
 	hud_set_hunter()
 
+	AddComponent(/datum/component/footstep, 4, 25, 11, 2, "alien_footstep_medium")
+
 /mob/living/carbon/xenomorph/predalien/proc/announce_spawn()
 	if(!loc)
 		return FALSE
@@ -103,12 +106,11 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 
 	kills = min(kills + 1, max_kills)
 
-/datum/behavior_delegate/predalien_base/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
-	if(!iscarbonsizehuman(A))
-		return
-	var/mob/living/carbon/human/H = A
-	if(isspeciesyautja(H))
-		original_damage *= 1.5
+/datum/behavior_delegate/predalien_base/melee_attack_modify_damage(original_damage, mob/living/carbon/attacked_mob)
+	if(ishuman(attacked_mob))
+		var/mob/living/carbon/human/attacked_human = attacked_mob
+		if(isspeciesyautja(attacked_human))
+			original_damage *= 1.5
 
 	return original_damage + kills * 2.5
 

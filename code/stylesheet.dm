@@ -27,6 +27,8 @@ em {font-style: normal; font-weight: bold;}
 .mod {color: #735638; font-weight: bold;}
 .adminmod {color: #402A14; font-weight: bold;}
 .mentorsay {color: #d4af57; font-weight: bold;}
+.mentorhelp {color: #009900; font-weight: bold;}
+.mentorstaff {color: #b5850d; font-weight: bold;}
 .staffsay {color: #b5850d; font-weight: bold;}
 
 .name { font-weight: bold;}

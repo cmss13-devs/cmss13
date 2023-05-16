@@ -30,7 +30,7 @@
 		to_world("<B>New players may no longer join the game.</B>")
 	else
 		to_world("<B>New players may now join the game.</B>")
-	message_staff("[key_name_admin(usr)] toggled new player game joining.")
+	message_admins("[key_name_admin(usr)] toggled new player game joining.")
 	world.update_status()
 
 /datum/admins/proc/toggledsay()
@@ -43,7 +43,7 @@
 		to_world("<B>Deadchat has been globally enabled!</B>")
 	else
 		to_world("<B>Deadchat has been globally disabled!</B>")
-	message_staff("[key_name_admin(usr)] toggled deadchat.")
+	message_admins("[key_name_admin(usr)] toggled deadchat.")
 
 /datum/admins/proc/toggleooc()
 	set name = "Toggle OOC"
@@ -55,7 +55,7 @@
 		to_world("<B>The OOC channel has been globally enabled!</B>")
 	else
 		to_world("<B>The OOC channel has been globally disabled!</B>")
-	message_staff("[key_name_admin(usr)] toggled OOC.")
+	message_admins("[key_name_admin(usr)] toggled OOC.")
 
 /datum/admins/proc/togglelooc()
 	set name = "Toggle LOOC"
@@ -67,4 +67,4 @@
 		to_world("<B>The LOOC channel has been globally enabled!</B>")
 	else
 		to_world("<B>The LOOC channel has been globally disabled!</B>")
-	message_staff("[key_name_admin(usr)] toggled LOOC.")
+	message_admins("[key_name_admin(usr)] toggled LOOC.")

@@ -219,6 +219,8 @@
 				M_job = "Living"
 		else if(istype(M,/mob/new_player))
 			M_job = "New player"
+		else if(istype(M,/mob/camera/imaginary_friend))
+			M_job = "Imaginary Friend"
 		else if(isobserver(M))
 			M_job = "Ghost"
 

@@ -1,15 +1,8 @@
 ////////////////////////////////
-/proc/message_admins(msg) // +ADMIN and above
-	msg = "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
-	log_admin(msg)
-	for(var/client/C as anything in GLOB.admins)
-		if(C && C.admin_holder && (R_ADMIN & C.admin_holder.rights))
-			to_chat(C, msg)
-
-/proc/message_staff(msg, jmp_x=0, jmp_y=0, jmp_z=0) // +MOD and above, not mentors
+/proc/message_admins(msg, jmp_x=0, jmp_y=0, jmp_z=0) // +MOD and above, not mentors
 	log_admin(msg)
 
-	msg = "<span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]"
+	msg = "<span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]"
 	if(jmp_x && jmp_y && jmp_z)
 		msg += " (<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jmp_x];Y=[jmp_y];Z=[jmp_z]'>JMP</a>)"
 	msg += "</span>"
@@ -172,7 +165,7 @@
 		to_world("<B>You may now respawn.</B>")
 	else
 		to_world("<B>You may no longer respawn :(</B>")
-	message_staff("[key_name_admin(usr)] toggled respawn to [CONFIG_GET(flag/respawn) ? "On" : "Off"].")
+	message_admins("[key_name_admin(usr)] toggled respawn to [CONFIG_GET(flag/respawn) ? "On" : "Off"].")
 	world.update_status()
 
 

@@ -214,7 +214,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	for(var/datum/chem_property/P in properties)
 		P.on_delete(M)
 
-	return
+	return M
 
 /datum/reagent/proc/make_alike(datum/reagent/C)
 	name = C.name

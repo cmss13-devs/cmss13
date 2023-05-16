@@ -16,7 +16,7 @@
 #define TURF_LAYER 2
 
 #define ABOVE_TURF_LAYER 2.01
-#define INTERIOR_WALL_NORTH_LAYER 2.02
+#define WALL_LAYER 2.02
 
 #define LATTICE_LAYER 2.15
 
@@ -67,6 +67,9 @@
 
 /// Under all objects if opened. 2.85 due to tables being at 2.8
 #define DOOR_OPEN_LAYER 2.85
+
+///For hatches on the floor.
+#define HATCH_LAYER 2.9
 
 #define BELOW_VAN_LAYER 2.98
 
@@ -180,17 +183,17 @@
 
 #define GHOST_PLANE 80
 
-//---------- LIGHTING -------------
 #define LIGHTING_PLANE 100
 #define EXTERIOR_LIGHTING_PLANE 101
 
-///--------------- FULLSCREEN RUNECHAT BUBBLES ------------
 ///Popup Chat Messages
 #define RUNECHAT_PLANE 501
 
-//-------------------- Rendering ---------------------
 #define RENDER_PLANE_GAME 990
 #define RENDER_PLANE_NON_GAME 995
+
+#define ESCAPE_MENU_PLANE 997
+
 #define RENDER_PLANE_MASTER 999
 
 //-------------------- HUD ---------------------
@@ -205,3 +208,4 @@
 
 /// Plane master controller keys
 #define PLANE_MASTERS_GAME "plane_masters_game"
+#define PLANE_MASTERS_NON_MASTER "plane_masters_non_master"

@@ -43,8 +43,8 @@
 /mob/living/carbon/human/proc/parse_say(message)
 	. = list("message", "language", "modes")
 	var/list/ml_and_modes = parse_say_modes(message)
-	.["modes"] = ml_and_modes["modes"]
-	.["fail_with"] = ml_and_modes["fail_with"]
+	.["modes"] = stat ? list(RADIO_MODE_WHISPER) : ml_and_modes["modes"]
+	.["fail_with"] = stat ? null : ml_and_modes["fail_with"]
 	var/message_and_language = ml_and_modes["message_and_language"]
 	var/parsed_language = parse_language(message_and_language)
 	if(parsed_language)
@@ -69,9 +69,9 @@
 			to_chat(src, SPAN_DANGER("You cannot speak in IC (Muted)."))
 			return
 
-	message =  trim(strip_html(message))
+	message = trim(strip_html(message))
 
-	if(stat == 2)
+	if(stat == DEAD)
 		return say_dead(message)
 
 	if(copytext(message,1,2) == "*")
@@ -121,7 +121,7 @@
 		verb = handle_r[2]
 		speech_problem_flag = handle_r[3]
 
-	if(!message || stat)
+	if(!message)
 		return
 
 	// Automatic punctuation
@@ -277,6 +277,9 @@ for it but just ignore it.
 				verb = pick("whinnies","neighs", "says")
 				handled = 1
 
+	var/braindam = getBrainLoss()
+	if(slurring || stuttering || dazed || braindam >= 60)
+		msg_admin_niche("[key_name(src)] stuttered while saying: \"[message]\"") //Messages that get modified by the 4 reasons below have their original message logged too
 	if(slurring)
 		message = slur(message)
 		verb = pick("stammers","stutters")
@@ -289,15 +292,19 @@ for it but just ignore it.
 		message = DazedText(message)
 		verb = pick("mumbles", "babbles")
 		handled = 1
-	var/braindam = getBrainLoss()
 	if(braindam >= 60)
 		handled = 1
 		if(prob(braindam/4))
-			message = stutter(message)
+			message = stutter(message, stuttering)
 			verb = pick("stammers", "stutters")
 		if(prob(braindam))
 			message = uppertext(message)
 			verb = pick("yells like an idiot","says rather loudly")
+	if(HAS_TRAIT(src, TRAIT_LISPING))
+		var/old_message = message
+		message = lisp_replace(message)
+		if(old_message != message)
+			verb = "lisps"
 
 	returns[1] = message
 	returns[2] = verb

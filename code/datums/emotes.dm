@@ -16,6 +16,9 @@
 	var/key_third_person = ""
 	/// Message displayed when emote is used.
 	var/message = ""
+	///Message displayed for audible emotes if someone's deaf. Only use this if key_third_person can't be acceptably used.
+	///ie. if someone says *medic and someone's deaf, they'd receive [X] calls for a medic! silently.,  which is not ideal.
+	var/alt_message
 	/// Message with %t at the end to allow adding params to the message, like for mobs doing an emote relatively to something else.
 	var/message_param = ""
 	/// Whether the emote is visible and/or audible bitflag
@@ -96,8 +99,9 @@
 	else if(tmp_sound && should_play_sound(user, intentional))
 		if(TIMER_COOLDOWN_CHECK(user, COOLDOWN_MOB_AUDIO))
 			return
-		TIMER_COOLDOWN_START(user, type, audio_cooldown)
-		TIMER_COOLDOWN_START(user, COOLDOWN_MOB_AUDIO, 20 SECONDS)
+		if(!HAS_TRAIT(user, TRAIT_EMOTE_CD_EXEMPT))
+			TIMER_COOLDOWN_START(user, type, audio_cooldown)
+			TIMER_COOLDOWN_START(user, COOLDOWN_MOB_AUDIO, 20 SECONDS)
 		playsound(user, tmp_sound, volume, vary)
 
 	log_emote("[user.name]/[user.key] : [msg ? msg : key]")
@@ -107,7 +111,6 @@
 
 	var/paygrade = user.get_paygrade()
 	var/formatted_message = "<b>[paygrade][user]</b> [msg]"
-
 	var/user_turf = get_turf(user)
 	if (user.client)
 		for(var/mob/ghost as anything in GLOB.dead_mob_list)
@@ -115,10 +118,11 @@
 				continue
 			if(ghost.client.prefs.toggles_chat & CHAT_GHOSTSIGHT && !(ghost in viewers(user_turf, null)))
 				ghost.show_message(formatted_message)
-	if(emote_type & (EMOTE_AUDIBLE | EMOTE_VISIBLE)) //emote is audible and visible
-		user.audible_message(formatted_message)
-	else if(emote_type & EMOTE_VISIBLE)	//emote is only visible
-		user.visible_message(formatted_message, blind_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>")
+	if(emote_type & EMOTE_AUDIBLE) //emote is audible
+		var/formatted_deaf_message = "<b>[paygrade][user]</b> [alt_message ? alt_message : key_third_person] silently."
+		user.audible_message(formatted_message, deaf_message = formatted_deaf_message)
+	else if(emote_type & EMOTE_VISIBLE)	//emote is visible
+		user.visible_message(formatted_message, blind_message = SPAN_EMOTE("You see how <b>[user]</b> [msg]"))
 	if(emote_type & EMOTE_IMPORTANT)
 		for(var/mob/living/viewer in viewers())
 			if(is_blind(viewer) && isdeaf(viewer))

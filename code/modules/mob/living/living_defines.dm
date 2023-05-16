@@ -32,6 +32,8 @@
 	var/melee_damage_upper = 0
 	var/attacktext = "attacks"
 	var/attack_sound = null
+	/// Custom sound if the mob gets slashed by a xenomorph
+	var/custom_slashed_sound
 	var/friendly = "nuzzles"
 	var/wall_smash = 0
 
@@ -75,8 +77,12 @@
 		/obj/item/alien_embryo
 	)
 	//blood.dm
-	var/blood_volume = 0 //how much blood the mob has
-	var/max_blood = BLOOD_VOLUME_NORMAL  // how much they should have
+	///How much blood the mob has
+	var/blood_volume = 0
+	///How much blood the mob should ideally have
+	var/max_blood = BLOOD_VOLUME_NORMAL
+	///How much blood the mob can have
+	var/limit_blood = BLOOD_VOLUME_MAXIMUM
 
 	var/hivenumber
 

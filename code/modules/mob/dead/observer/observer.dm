@@ -53,6 +53,7 @@
 	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/own_orbit_size = 0
+	var/observer_actions = list(/datum/action/observer_action/join_xeno)
 	var/datum/action/minimap/observer/minimap
 	alpha = 127
 
@@ -102,15 +103,29 @@
 	if(!own_orbit_size)
 		own_orbit_size = 32
 
-	if(!isturf(spawn_turf)) spawn_turf = get_turf(pick(GLOB.latejoin)) //Safety in case we cannot find the body's position
-	forceMove(spawn_turf)
+	if(!isturf(spawn_turf))
+		spawn_turf = get_turf(SAFEPICK(GLOB.latejoin)) //Safety in case we cannot find the body's position
+	if(spawn_turf)
+		forceMove(spawn_turf)
 
 	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
+	if(name == "Unknown")
+		if(body)
+			name = body.real_name
 	change_real_name(src, name)
+
+	//To prevent weirdly offset ghosts.
+	if(ishuman(body))
+		pixel_x = 0
+		pixel_y = 0
 
 	minimap = new
 	minimap.give_to(src)
+
+	for(var/path in subtypesof(/datum/action/observer_action))
+		var/datum/action/observer_action/new_action = new path()
+		new_action.give_to(src)
 
 	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
@@ -161,7 +176,7 @@
 	if(!target.hud_used)
 		return
 
-	client.screen = list()
+	client.clear_screen()
 	LAZYINITLIST(target.observers)
 	target.observers |= src
 	target.hud_used.show_hud(target.hud_used.hud_version, src)
@@ -180,12 +195,18 @@
 	if(!hud_used)
 		return
 
-	client.screen = list()
+	client.clear_screen()
 	hud_used.show_hud(hud_used.hud_version)
 
 /mob/dead/observer/Login()
 	..()
+
+	if(!(locate(/datum/action/join_predator) in actions) && RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_PREDATOR)
+		var/datum/action/join_predator/new_action = new()
+		new_action.give_to(src)
+
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
+
 
 /mob/dead/observer/Destroy()
 	QDEL_NULL(orbit_menu)
@@ -355,6 +376,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Ghost"
 	set desc = "Relinquish your life and enter the land of the dead."
 
+	do_ghost()
+
+/mob/living/proc/do_ghost()
 	if(stat == DEAD)
 		if(mind && mind.player_entity)
 			mind.player_entity.update_panel_data(round_statistics)
@@ -371,7 +395,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
 		var/turf/location = get_turf(src)
 		if(location) //to avoid runtime when a mob ends up in nullspace
-			msg_admin_niche("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
+			msg_admin_niche("[key_name_admin(usr)] has ghosted. [ADMIN_JMP(location)]")
 		log_game("[key_name_admin(usr)] has ghosted.")
 		var/mob/dead/observer/ghost = ghostize(FALSE) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost && !is_admin_level(z))
@@ -878,6 +902,22 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(SSticker.mode.check_predator_late_join(src))
 		SSticker.mode.attempt_to_join_as_predator(src)
+
+/mob/dead/verb/join_as_joe()
+	set category = "Ghost.Join"
+	set name = "Join as a Working Joe"
+	set desc = "If you are whitelisted, you'll be able to join in."
+
+	if (!client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_joe_late_join(src))
+		SSticker.mode.attempt_to_join_as_joe(src)
+
 
 /mob/dead/verb/drop_vote()
 	set category = "Ghost"

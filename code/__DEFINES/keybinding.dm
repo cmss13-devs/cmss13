@@ -188,6 +188,7 @@
 
 #define COMSIG_KB_OBSERVER_JOIN_XENO "keybinding_observer_join_as_xeno"
 #define COMSIG_KB_OBSERVER_JOIN_ERT "keybinding_observer_join_ert"
+#define COMSIG_KB_OBSERVER_JOIN_PREDATOR "keybinding_observer_join_pred"
 
 #define CATEGORY_CLIENT "CLIENT"
 #define CATEGORY_EMOTE "EMOTE"

@@ -48,8 +48,8 @@
 		connect_to_shuttle(SSshuttle.get_containing_shuttle(src))
 
 		for(var/port_id in SSshuttle.stationary)
-			var/obj/docking_port/stationary/S = SSshuttle.stationary[port_id]
-			if(S.id == shuttleId)
+			var/obj/docking_port/stationary/shuttle = SSshuttle.stationary[port_id]
+			if(shuttle && shuttle.id == shuttleId)
 				jumpto_ports[S.id] = TRUE
 
 	for(var/V in SSshuttle.stationary)
@@ -361,6 +361,9 @@
 	var/nvg_vision_possible = TRUE
 
 /mob/camera/eye/remote/shuttle_docker/Initialize(mapload, obj/structure/machinery/computer/camera_advanced/origin)
+	if(!origin)
+		return INITIALIZE_HINT_QDEL
+
 	src.origin = origin
 	return ..()
 

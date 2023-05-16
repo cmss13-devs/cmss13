@@ -207,25 +207,6 @@
 
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
 
-/mob/dead/observer/proc/toggle_predator_action()
-	var/key_to_use = ckey || persistent_ckey
-
-	if(!(RoleAuthority.roles_whitelist[key_to_use] & WHITELIST_PREDATOR))
-		return
-
-	if(SSticker.mode.flags_round_type & MODE_PREDATOR)
-		if(locate(/datum/action/join_predator) in actions)
-			return
-
-		var/datum/action/join_predator/new_action = new()
-		new_action.give_to(src)
-		return
-
-	var/datum/action/join_predator/old_action = locate() in actions
-	if(old_action)
-		qdel(old_action)
-
-
 /mob/dead/observer/Destroy()
 	QDEL_NULL(orbit_menu)
 	QDEL_NULL(last_health_display)
@@ -1066,3 +1047,24 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			&& src.z == nearby_observer.z && get_dist(src, nearby_observer) <= observer_client.view)
 			to_chat(observer_client, SPAN_DEADSAY("<b>[src]</b> points to [A] [nearby_observer.format_jump(A)]"))
 	return TRUE
+
+/// This proc is called when a predator round is toggled by the admin verb, as well as when a ghost logs in
+/mob/dead/observer/proc/toggle_predator_action()
+	SIGNAL_HANDLER
+
+	var/key_to_use = ckey || persistent_ckey
+
+	if(!(RoleAuthority.roles_whitelist[key_to_use] & WHITELIST_PREDATOR))
+		return
+
+	if(SSticker.mode.flags_round_type & MODE_PREDATOR)
+		if(locate(/datum/action/join_predator) in actions)
+			return
+
+		var/datum/action/join_predator/new_action = new()
+		new_action.give_to(src)
+		return
+
+	var/datum/action/join_predator/old_action = locate() in actions
+	if(old_action)
+		qdel(old_action)

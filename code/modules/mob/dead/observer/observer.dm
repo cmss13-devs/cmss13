@@ -123,12 +123,12 @@
 	minimap = new
 	minimap.give_to(src)
 
-	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
-
 	for(var/path in subtypesof(/datum/action/observer_action))
 		var/datum/action/observer_action/new_action = new path()
 		new_action.give_to(src)
+
+	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
 
 	verbs -= /mob/verb/pickup_item
 	verbs -= /mob/verb/pull_item
@@ -200,7 +200,13 @@
 
 /mob/dead/observer/Login()
 	..()
+
+	if(!(locate(/datum/action/join_predator) in actions) && RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_PREDATOR)
+		var/datum/action/join_predator/new_action = new()
+		new_action.give_to(src)
+
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
+
 
 /mob/dead/observer/Destroy()
 	QDEL_NULL(orbit_menu)
@@ -389,7 +395,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
 		var/turf/location = get_turf(src)
 		if(location) //to avoid runtime when a mob ends up in nullspace
-			msg_admin_niche("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
+			msg_admin_niche("[key_name_admin(usr)] has ghosted. [ADMIN_JMP(location)]")
 		log_game("[key_name_admin(usr)] has ghosted.")
 		var/mob/dead/observer/ghost = ghostize(FALSE) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost && !is_admin_level(z))

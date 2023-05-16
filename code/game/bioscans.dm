@@ -36,7 +36,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 /datum/bioscan_data/proc/get_scan_data()
 	clear_data()
 	/// All larva on all hives
-	var/larva = 0
+	larva = 0
 
 
 	/// Count all larva across all hives

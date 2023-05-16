@@ -816,7 +816,7 @@ var/list/rebel_rifles = list(
 
 
 /datum/equipment_preset/proc/add_pmc_survivor_weapon(mob/living/carbon/human/H) // Random Weapons a WY PMC may have during a deployment on a colony. They are not equiped with the elite weapons than their space station counterparts but they do bear some of the better weapons the outer rim has to offer.
-	var/random_weapon = rand(0,5)
+	var/random_weapon = rand(0,6)
 	switch(random_weapon)
 		if(0)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5(H), WEAR_L_HAND)
@@ -836,6 +836,9 @@ var/list/rebel_rifles = list(
 		if(5)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/merc(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/shotgun_ammo, WEAR_WAIST)
+		if(6)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/corporate/no_lock(H), WEAR_L_HAND)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41a(H), WEAR_WAIST)
 
 /**
  * Randomizes the primary weapon a survivor might find at the start of the outbreak in a gun cabinet.

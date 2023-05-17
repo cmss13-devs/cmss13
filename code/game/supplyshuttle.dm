@@ -1246,7 +1246,7 @@ var/datum/controller/supply/supply_controller = new()
 
 /datum/controller/supply/proc/black_market_CMB_investigation()
 	black_market_heat = -1
-	SSticker.mode.get_specific_call("Inspection - Colonial Marshal Ledger Investigation Team", FALSE, FALSE)
+	SSticker.mode.get_specific_call("Inspection - Colonial Marshal Ledger Investigation Team", TRUE, FALSE)
 
 /obj/structure/machinery/computer/supplycomp/proc/is_buyable(datum/supply_packs/supply_pack)
 

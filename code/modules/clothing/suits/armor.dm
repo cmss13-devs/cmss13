@@ -238,6 +238,9 @@
 	time_to_unequip = 20
 	time_to_equip = 20
 
+/obj/item/clothing/suit/armor/riot/marine/vintage_riot
+	desc = "Barring the slightly off-color plates, it's preserved quite well."
+	icon_state = "old_riot"
 
 /obj/item/clothing/suit/armor/swat
 	name = "swat suit"

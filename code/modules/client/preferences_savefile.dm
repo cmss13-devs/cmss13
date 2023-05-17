@@ -90,7 +90,7 @@
 
 /proc/sanitize_keybindings(value)
 	var/list/base_bindings = sanitize_islist(value, list())
-	if(!base_bindings)
+	if(!length(base_bindings))
 		base_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key)
 	for(var/key in base_bindings)
 		base_bindings[key] = base_bindings[key] & GLOB.keybindings_by_name
@@ -638,10 +638,10 @@
 
 		if(hotkeys)
 			for(var/entry in conflicted.hotkey_keys)
-				key_bindings[entry] -= conflicted.name
+				LAZYREMOVE(key_bindings[entry], conflicted.name)
 		else
 			for(var/entry in conflicted.classic_keys)
-				key_bindings[entry] -= conflicted.name
+				LAZYREMOVE(key_bindings[entry], conflicted.name)
 
 		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
 

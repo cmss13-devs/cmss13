@@ -298,6 +298,9 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.speed_modifier = initial(xeno.speed_modifier)// Reset the speed modifier should you be disrupted while zooming or whatnot
 
+	if(xeno.observed_xeno)
+		return
+
 	if(xeno.is_zoomed)
 		xeno.zoom_out() // will also handle icon_state
 		xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."), \

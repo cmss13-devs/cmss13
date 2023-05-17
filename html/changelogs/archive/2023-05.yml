@@ -117,3 +117,201 @@
   - maptweak: removes CLF uniform from Almayer
   harryob:
   - bugfix: Some missing WO role icons have been restored
+2023-05-05:
+  BeagleGaming1:
+  - balance: Most armor blocks surgery when worn
+  CapCamIII:
+  - rscadd: New undershirt options, black versions of the current undershirts, and
+      a long-sleeved undershirt with black and tan option.
+  - imagedel: Deletes 1 pixel from side faced sleeved undershirts to make them slightly
+      shorter than rolled jackets.
+  - rscadd: UPP standard, medic, and engi uniforms now have a no-jacket state, with
+      a Telnyashka
+  Emanthealmighty:
+  - rscadd: Xenomorphs can now clear eggs from other hives
+  FreetoZ:
+  - rscadd: added cas simulator.
+2023-05-06:
+  Drathek:
+  - server: 'hrefs.log will now include more commands: Now anything that isn''t an
+      expected asset_cache_confirm_arrival, a tgui_Topic, or rate limited will be
+      logged.'
+  FreetoZ:
+  - bugfix: hotifx for cas
+2023-05-07:
+  Diegoflores31:
+  - bugfix: Fixed Queen being able to hijack the shuttle from far away
+  - bugfix: Added 10 second timeout on hijack "landing" options to avoid multiple
+      windows at the same time
+  Hopek:
+  - balance: Alamo and Normandy now have a Reinforced Metal Ceiling meaning that CAS
+      and OB's can't penetrate it.
+  LTNTS:
+  - bugfix: apc on window in medbay lobby
+  - bugfix: research to req delivery chute borked
+  Mister-moon1:
+  - balance: Allows preds to use medicomp surgery with their armour on
+  harryob:
+  - bugfix: resolves a runtime around keybind conflict code
+2023-05-08:
+  Drathek:
+  - bugfix: Fixed burrowers being able to tail stab when burrowed
+  FreetoZ:
+  - rscadd: Added functionality for faxing photos and paper bundles
+  - bugfix: Fixed examine text for fax machines
+  - bugfix: Fixed examine text for paper
+  Hopek:
+  - rscadd: Medics can now just purchase the EZ Autoinjectors so they don't have to
+      go through 12+ injector pouches to take them out specifically.
+  IowaPotatoFarmer:
+  - maptweak: Switched the outdated CLF ship airlocks to new generic ones.
+  - rscadd: The CLF crashed ship insert on LV-624 now has one guaranteed medic and
+      one guaranteed engineer.
+  - bugfix: The CLF crash intro text no longer includes inaccurate info about the
+      sentries.
+  NewyearnewmeUwu:
+  - bugfix: fixed yautja loudroars displaying nothing
+  Waseemq1235:
+  - spellcheck: Fixes some repetitive words when getting shelled or CASd
+  harryob:
+  - bugfix: fixes the tacmap
+  sleepynecrons:
+  - imagedel: random white pixel on the peace and love flair was removed
+2023-05-09:
+  Drathek:
+  - rscdel: Removed some toilet code and reduced flush spam
+  JackieEstegado:
+  - bugfix: Fixed an edge case that caused the melee strength's value to be shown
+      as the throwing strength, when examining a weapon.
+  harryob:
+  - bugfix: fixes fultons
+2023-05-10:
+  Drathek:
+  - ui: Fixed xeno hide icon not resetting after a pounce
+  Molto:
+  - rscadd: Re-added the old riot armor on the Almayer
+  Segrain:
+  - bugfix: Chemical Investigation Goons should now properly be shown their actual
+      objective.
+  Tisx:
+  - imageadd: Added weapon case sprites to PFC vendors
+  - imagedel: Removed old PFC kit sprites from PFC vendors
+  morrowwolf:
+  - config: Extra larva per burst config option
+2023-05-11:
+  BeagleGaming1:
+  - bugfix: Fixes a tape recorder runtime
+  Drathek:
+  - bugfix: Fixed xeno toggle_long_range ability from being used when observing a
+      xeno or mark
+  Hopek:
+  - rscadd: Boots can now hold a scalpel
+  TeDGamer:
+  - bugfix: Infected mobs tackle counters no longer reset instantly.
+  blackcrystall:
+  - bugfix: bioscan larvaes issue fixed
+2023-05-12:
+  BeagleGaming1:
+  - bugfix: Fixes a runtime involving vehicle hardpoints
+  Drathek:
+  - rscadd: Added cash support to vending machines
+  - bugfix: Fixed ATM account security levels (now a ID card is actually optional
+      like it says!)
+  - bugfix: Fixed ATM not resetting failed attempts on successful login
+  - bugfix: Fixed vendors not checking access requirements
+  - soundadd: Added a ker-chunk sound for vending
+  - spellcheck: Improperified all /obj/structure/machinery/vending names
+  - code_imp: Cleanup vending.dm
+  - bugfix: Fix a runtime with the weldersatchel in the synth snowflake vendor
+  - bugfix: Fix several runtimes regarding surgery movements
+  - bugfix: Fix a runtime with the bad_leg trait in character creator
+  - bugfix: Fix a warning about incorrect Z level count
+  - bugfix: Fix a runtime when health scanning mice
+  - bugfix: Fix a runtime when queen de-ovis while in queen eye mode
+  - bugfix: Fix a runtime when queen is observing a xeno that gets gibbed
+  - bugfix: Fixed multiple runtimes regarding xeno marks
+  - ui: Added the xeno mark tracking HUD to larva
+  I3LiP:
+  - mapadd: Reworked the IO area and added an overwatch type area for shipside IOs.
+  Tsunamico:
+  - bugfix: Patched custom prefixes for admin events.
+  harryob:
+  - server: the server can now support automated discord certification
+  spartanbobby:
+  - bugfix: Fixes USS Almayer basketball court score not counting up along with missing
+      lights
+2023-05-13:
+  Jackie_Estegado:
+  - bugfix: APCs no longer become unslashable in specific cases.
+  - bugfix: Doorcontrol buttons no longer stay powered despite their area losing power.
+  Morrow, Huffie56, Drathek:
+  - rscadd: Blood bags can now be used in the field
+  - rscadd: Medics spawn with blood bags
+  - balance: Hemogenic property now takes nutrient to work
+  - balance: Blood over 100% will normalize to 100%
+  - balance: Blood effects from lower tiers now continue to apply as the tiers increase.
+  - bugfix: Blood should no longer go above the maximum limit
+  morrowwolf:
+  - bugfix: Extra larva per burst non-integer fix
+  realforest2001:
+  - bugfix: Fixes missing walking icons for xenonids
+  usnpeepoo:
+  - bugfix: Point blanks with ammo types that spawn additional projectiles will now
+      hit targeted limbs instead of only chest
+2023-05-14:
+  Drathek:
+  - bugfix: Fixed attack log not occuring when a thrown weapon gibs its target
+  Morrow:
+  - balance: Adds a throw delay of 0.4 seconds which takes effect after throwing twice.
+      Two hands, two throws.
+  foxtrot1322:
+  - bugfix: Fixed the issue with ERT first-aid pouches being unable to hold injectors
+      once taken out
+  harryob:
+  - admin: allows admins to send ahelps to mentors
+2023-05-15:
+  BeagleGaming1:
+  - rscadd: Adds the "Hardcore" trait for Riflemen
+  Drathek:
+  - bugfix: Fixed runtimes with the ID Console
+  - bugfix: Account numbers are now far less likely to match another person's account
+  - ui: Changed linked account field in the ID Console to a restricted input field
+  - admin: Tweaked and added more server log verbs
+  - code_imp: Removed dead code in lurker rush suggesting it lowered cooldown on a
+      successful hit
+  Emanthealmighty:
+  - bugfix: Fixed predaliens being unable to attack enemy xenomorphs.
+  Frans_Feiffer:
+  - imageadd: Resprited Dinodubba and Eonoc's donor gear.
+  - rscadd: Adds the ability to toggle open Eonoc's donor gear.
+  LynxSolstice:
+  - soundadd: Cleaned up the sonic boom sound effect to remove the "missile launching"
+      sound, which caused an inconsistency when the dropship wasn't using missiles.
+2023-05-16:
+  BeagleGaming1:
+  - rscadd: You can whisper and hear nearby people while knocked out. Getting knocked
+      out changes the sound environment to reflect that.
+  Drathek:
+  - bugfix: Fixed marking faxes and prays
+  - code_imp: Replaced most admin HREF topic links to use define macros instead
+  - admin: Removed missing HREF topic links for adminmoreinfo (? button)
+  TeDGamer:
+  - bugfix: Playable huggers no longer block xeno ammo / spits.
+2023-05-17:
+  Emanthealmighty:
+  - bugfix: Fixed huggers occasionally dying before they can impregnate a host.
+  Git-Nivrak:
+  - balance: Removed the cooldown on missing Dancer's impale and tail trip abilities.
+  - bugfix: Dancer's slash tag no longer gets consumed by tail trip if the target
+      is out of range.
+  SpartanBobby:
+  - bugfix: fixed problems with some fire shutters being the wrong DIR or out of place
+  - maptweak: fixed problem with warning stripes not being flush with walls and placed
+      warning stripe tiles under some blastdoors that lacked them
+  TeDGamer:
+  - bugfix: Sniper's Aimed Shot and Spotter's Target cooldown is applied consistently
+      in can_check_use.
+  harryob:
+  - qol: observer hud buttons for view crew manifest, hive status and joining the
+      hunt (if you're a pred), along with keybinds for joining the hunt
+  - bugfix: you can now hide the buttons at the bottom of the ghost hud with f12

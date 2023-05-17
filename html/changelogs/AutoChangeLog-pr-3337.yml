@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - bugfix: "space is now uninhabitable again"

@@ -517,7 +517,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
 						if(weapon_cause_data.cause_name)
 							H.track_friendly_fire(weapon_cause_data.cause_name)
-						var/ff_msg = "[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) ([user.client ? "<a href='?priv_msg=[user.client.ckey]'>PM</a>" : "NO CLIENT"])"
+						var/ff_msg = "[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] [ADMIN_JMP(user)] [ADMIN_PM(user)]"
 						var/ff_living = TRUE
 						if(H.stat == DEAD)
 							ff_living = FALSE

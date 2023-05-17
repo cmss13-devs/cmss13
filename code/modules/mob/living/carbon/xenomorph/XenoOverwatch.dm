@@ -74,7 +74,8 @@
 
 		if(oldXeno)
 			to_chat(src, SPAN_XENOWARNING("You stop watching [oldXeno]."))
-			oldXeno.hud_set_queen_overwatch()
+			if(!QDELETED(oldXeno))
+				oldXeno.hud_set_queen_overwatch()
 	else
 		if(!hive)
 			return

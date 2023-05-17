@@ -51,17 +51,8 @@
 				WR.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
 				total_resin_cost = XENO_THICKEN_MEMBRANE_COST
 			else
-				if (WR.damage <= 0)
-					to_chat(src, SPAN_XENOWARNING("[WR] can't be repaired or made any thicker."))
-					return SECRETE_RESIN_FAIL
-				
-				if(!do_after(src, 15, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, WR))
-					return SECRETE_RESIN_FAIL
-
-				total_resin_cost = round(XENO_RESIN_REPAIR_COST * WR.damage / 100)
-
-				WR.damage = 0
-
+				to_chat(src, SPAN_XENOWARNING("[WR] can't be made thicker."))
+				return SECRETE_RESIN_FAIL
 			thickened = TRUE
 
 		else if(istype(A, /obj/structure/mineral_door/resin))
@@ -80,17 +71,8 @@
 				new /obj/structure/mineral_door/resin/thick (oldloc, DR.hivenumber)
 				total_resin_cost = XENO_THICKEN_DOOR_COST
 			else
-				if (DR.health >= initial(DR.health))
-					to_chat(src, SPAN_XENOWARNING("[DR] can't be repaired or made any thicker."))
-					return SECRETE_RESIN_FAIL
-				
-				if(!do_after(src, 15, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, DR))
-					return SECRETE_RESIN_FAIL
-
-				total_resin_cost = round(XENO_RESIN_REPAIR_COST * (initial(DR.health) - DR.health) / 100)
-
-				DR.health = initial(DR.health)
-
+				to_chat(src, SPAN_XENOWARNING("[DR] can't be made thicker."))
+				return SECRETE_RESIN_FAIL
 			thickened = TRUE
 
 		if(thickened)

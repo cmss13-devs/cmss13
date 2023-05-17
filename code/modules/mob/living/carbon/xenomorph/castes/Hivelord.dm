@@ -39,6 +39,7 @@
 
 /datum/caste_datum/hivelord/New()
 	. = ..()
+
 	resin_build_order = GLOB.resin_build_order_hivelord
 
 /mob/living/carbon/xenomorph/hivelord
@@ -77,12 +78,6 @@
 
 	icon_xeno = 'icons/mob/xenos/hivelord.dmi'
 	icon_xenonid = 'icons/mob/xenonids/hivelord.dmi'
-
-
-/mob/living/carbon/xenomorph/hivelord/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
-	. = ..()
-	sight |= (SEE_MOBS|SEE_OBJS|SEE_TURFS)
-
 
 /datum/behavior_delegate/hivelord_base
 	name = "Base Hivelord Behavior Delegate"

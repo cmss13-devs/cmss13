@@ -1,5 +1,0 @@
-author: "SpartanBobby"
-delete-after: True
-changes:
-  - bugfix: "fixed problems with some fire shutters being the wrong DIR or out of place"
-  - maptweak: "fixed problem with warning stripes not being flush with walls and placed warning stripe tiles under some blastdoors that lacked them"

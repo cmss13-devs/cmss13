@@ -177,8 +177,6 @@
 	S["key_bindings"] >> key_bindings
 	check_keybindings()
 
-	S["preferred_survivor_variant"]	>> preferred_survivor_variant
-
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
 
@@ -244,7 +242,6 @@
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
 	commander_status = sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Colonel's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
-	preferred_survivor_variant = sanitize_inlist(preferred_survivor_variant, SURVIVOR_VARIANT_LIST, ANY_SURVIVOR)
 	yautja_status = sanitize_inlist(yautja_status, whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status = sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))
 	key_bindings = sanitize_keybindings(key_bindings)
@@ -346,8 +343,6 @@
 	S["pred_h_style"] << predator_h_style
 	S["pred_skin_color"] << predator_skin_color
 	S["pred_flavor_text"] << predator_flavor_text
-
-	S["preferred_survivor_variant"] << preferred_survivor_variant
 
 	S["commander_status"] << commander_status
 	S["co_sidearm"] << commander_sidearm

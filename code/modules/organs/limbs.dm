@@ -280,7 +280,7 @@
 	if(!is_ff && take_damage_organ_damage(brute, sharp))
 		brute /= 2
 
-	if(CONFIG_GET(flag/bones_can_break) && !(status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
+	if(CONFIG_GET(flag/bones_can_break) && !(status & (LIMB_SYNTHSKIN)))
 		take_damage_bone_break(brute)
 
 	if(status & LIMB_BROKEN && prob(40) && brute > 10)
@@ -1055,7 +1055,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			return FALSE
 
 /obj/limb/proc/fracture(bonebreak_probability)
-	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_ROBOT|LIMB_SYNTHSKIN))
+	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_UNCALIBRATED_PROSTHETIC|LIMB_SYNTHSKIN))
 		if (knitting_time != -1)
 			knitting_time = -1
 			to_chat(owner, SPAN_WARNING("You feel your [display_name] stop knitting together as it absorbs damage!"))
@@ -1067,8 +1067,13 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			SPAN_WARNING("Your [display_name] withstands the blow!"))
 		return
 
-	if((owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE) || owner.species.flags & SPECIAL_BONEBREAK) //stops division by zero
+	//stops division by zero
+	if(owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE)
 		bonebreak_probability = 0
+
+	//If you have this special flag you are exempt from the endurance bone break check
+	if(owner.species.flags & SPECIAL_BONEBREAK)
+		bonebreak_probability = 100
 
 	if(!owner.skills)
 		bonebreak_probability = null
@@ -1083,17 +1088,36 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 	if(prob(bonebreak_probability))
 		owner.recalculate_move_delay = TRUE
-		owner.visible_message(\
-			SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),
-			SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"),
-			SPAN_HIGHDANGER("You hear a sickening crack!"))
-		playsound(owner, "bone_break", 45, TRUE)
+		if(status & (LIMB_ROBOT))
+			owner.visible_message(\
+				SPAN_WARNING("You see sparks coming from [owner]'s [display_name]!"),
+				SPAN_HIGHDANGER("Something feels like it broke in your [display_name] as it spits out sparks!"),
+				SPAN_HIGHDANGER("You hear electrical sparking!"))
+			var/datum/effect_system/spark_spread/spark_system = new()
+			spark_system.set_up(5, 0, owner)
+			spark_system.attach(owner)
+			spark_system.start()
+			QDEL_IN(spark_system, 1 SECONDS)
+		else
+			owner.visible_message(\
+				SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),
+				SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"),
+				SPAN_HIGHDANGER("You hear a sickening crack!"))
+			playsound(owner, "bone_break", 45, TRUE)
 		start_processing()
-
-		status |= LIMB_BROKEN
-		owner.pain.apply_pain(PAIN_BONE_BREAK)
-		broken_description = pick("broken","fracture","hairline fracture")
-		perma_injury = min_broken_damage
+		if(status & LIMB_ROBOT)
+			status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC
+			if(parent)
+				if(parent.status & LIMB_ROBOT)
+					parent.status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC
+			for(var/obj/limb/l as anything in children)
+				if(l.status & LIMB_ROBOT)
+					l.status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC
+		else
+			status |= LIMB_BROKEN
+			owner.pain.apply_pain(PAIN_BONE_BREAK)
+			broken_description = pick("broken","fracture","hairline fracture")
+			perma_injury = min_broken_damage
 	else
 		owner.visible_message(\
 			SPAN_WARNING("[owner] seems to withstand the blow!"),

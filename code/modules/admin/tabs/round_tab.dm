@@ -165,12 +165,13 @@
 	set name = "Start Round"
 	set desc = "Start the round RIGHT NOW"
 	set category = "Server.Round"
-
-	if (!SSticker)
-		alert("Unable to start the game as it is not set up.")
-		return
 	if (alert("Are you sure you want to start the round early?",,"Yes","No") != "Yes")
 		return
+	if (SSticker.current_state == GAME_STATE_STARTUP)
+		message_admins("Game is setting up and will launch as soon as it is ready.")
+		message_admins(SPAN_ADMINNOTICE("[usr.key] has started the process to start the game when loading is finished."))
+		while (SSticker.current_state == GAME_STATE_STARTUP)
+			sleep(50) // it patiently waits for the game to be ready here before moving on.
 	if (SSticker.current_state == GAME_STATE_PREGAME)
 		SSticker.request_start()
 		message_admins(SPAN_BLUE("[usr.key] has started the game."))

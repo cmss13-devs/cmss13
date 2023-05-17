@@ -4,6 +4,8 @@
 	var/datum/paygrade/P = GLOB.paygrades[paygrade]
 
 	if(size)//Builds the prefix, if one should exist.
+		if(!P)//For custom admin-made paygrades to not cause runtimes.
+			return "[paygrade] "
 		var/NP = ""
 		if(P.fprefix)//Factional (pre)prefix
 			NP = "[P.fprefix] "
@@ -18,6 +20,8 @@
 					NP = "Mx. " //inclusivity win!
 		return NP
 	else
+		if(!P)//For custom admin-made paygrades to not cause runtimes.
+			return "[paygrade]"
 		return P.name
 
 /proc/get_rank_pins(paygrade)

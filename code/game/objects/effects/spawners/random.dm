@@ -175,6 +175,13 @@
 
 /obj/effect/spawner/random/supply_kit/item_to_spawn()
 	return pick(prob(3);/obj/item/storage/box/kit/pursuit,\
+				prob(3);/obj/item/storage/box/kit/self_defense,\
+				prob(3);/obj/item/storage/box/kit/mini_medic,\
+				prob(2);/obj/item/storage/box/kit/mou53_sapper,\
+				prob(1);/obj/item/storage/box/kit/heavy_support)
+
+/obj/effect/spawner/random/supply_kit/market/item_to_spawn()
+	return pick(prob(3);/obj/item/storage/box/kit/pursuit,\
 				prob(3);/obj/item/storage/box/kit/mini_intel,\
 				prob(3);/obj/item/storage/box/kit/mini_jtac,\
 				prob(2);/obj/item/storage/box/kit/mou53_sapper,\

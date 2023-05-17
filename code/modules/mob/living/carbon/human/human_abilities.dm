@@ -273,7 +273,7 @@ CULT
 
 	var/mob/living/carbon/human/H = user
 
-	if(H.job != JOB_SQUAD_RTO)
+	if(H.job != JOB_SQUAD_TEAM_LEADER)
 		return FALSE
 
 	return ..()

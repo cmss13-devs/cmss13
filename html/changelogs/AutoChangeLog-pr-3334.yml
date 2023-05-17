@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - rscadd: "Handheld maps added to all squad marine vendors."

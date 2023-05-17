@@ -1054,6 +1054,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/key_to_use = ckey || persistent_ckey
 
+	if(!key_to_use)
+		return
+
 	if(!(RoleAuthority.roles_whitelist[key_to_use] & WHITELIST_PREDATOR))
 		return
 

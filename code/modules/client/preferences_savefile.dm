@@ -149,6 +149,7 @@
 	S["xeno_vision_level_pref"] >> xeno_vision_level_pref
 	S["view_controller"] >> View_MC
 	S["observer_huds"] >> observer_huds
+	S["pref_special_job_options"] >> pref_special_job_options
 
 	S["synth_name"] >> synthetic_name
 	S["synth_type"] >> synthetic_type
@@ -191,8 +192,6 @@
 
 	S["custom_cursors"] >> custom_cursors
 	S["autofit_viewport"] >> auto_fit_viewport
-
-	S["pref_special_job_options"] >> pref_special_job_options
 
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -327,6 +326,7 @@
 
 	S["view_controller"] << View_MC
 	S["observer_huds"] << observer_huds
+	S["pref_special_job_options"] << pref_special_job_options
 
 	S["synth_name"] << synthetic_name
 	S["synth_type"] << synthetic_type
@@ -367,8 +367,6 @@
 	S["no_radials_preference"] << no_radials_preference
 	S["no_radial_labels_preference"] << no_radial_labels_preference
 	S["custom_cursors"] << custom_cursors
-
-	S["pref_special_job_options"] << pref_special_job_options
 
 	return TRUE
 

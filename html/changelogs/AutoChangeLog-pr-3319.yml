@@ -1,5 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - qol: "observer hud buttons for view crew manifest, hive status and joining the hunt (if you're a pred), along with keybinds for joining the hunt"
-  - bugfix: "you can now hide the buttons at the bottom of the ghost hud with f12"

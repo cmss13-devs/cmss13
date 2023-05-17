@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - qol: "whitelisted predators now only see the option to join pred rounds as a ghost in the top left when it is a pred round"

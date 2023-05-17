@@ -684,10 +684,12 @@ var/const/MAX_SAVE_SLOTS = 10
 		HTML += "<b>[job.disp_title]</b></td><td width='10%' align='center'>"
 
 		if(job.job_options)
-			if(!pref_special_job_options || !pref_special_job_options[role_name])
+			if(pref_special_job_options)
+				pref_special_job_options[role_name] = sanitize_inlist(pref_special_job_options[role_name], job.job_options, job.job_options[1])
+			else
 				pref_special_job_options[role_name] = job.job_options[1]
 
-			var/txt = pref_special_job_options[role_name]
+			var/txt = job.job_options[pref_special_job_options[role_name]]
 			HTML += "<a href='?_src_=prefs;preference=special_job_select;task=input;text=[job.title]'><b>[txt]</b></a>"
 
 		HTML += "</td><td width='50%'>"

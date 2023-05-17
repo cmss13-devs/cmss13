@@ -3,6 +3,7 @@
 	GLOB.dead_mob_list -= src
 	GLOB.alive_mob_list -= src
 	GLOB.player_list -= src
+	GLOB.freed_mob_list -= src
 
 	ghostize(FALSE)
 

@@ -213,6 +213,12 @@ var/list/global/item_storage_box_cache = list()
 	end = new()
 	end.icon_state = "stored_end"
 
+/datum/item_storage_box/Destroy(force, ...)
+	. = ..()
+	QDEL_NULL(start)
+	QDEL_NULL(continued)
+	QDEL_NULL(end)
+
 /obj/item/storage/proc/space_orient_objs(list/obj/item/display_contents)
 	var/baseline_max_storage_space = 21 //should be equal to default backpack capacity
 	var/storage_cap_width = 2 //length of sprite for start and end of the box representing total storage space

@@ -104,6 +104,11 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data
 	else
 		chemical_networks[C.network] = C
 
+/datum/chemical_data/proc/remove_chem_storage(obj/structure/machinery/chem_storage/C)
+	if(!istype(C))
+		return FALSE
+	return chemical_networks.Remove(C.network)
+
 /datum/chemical_data/proc/connect_chem_storage(network)
 	var/obj/structure/machinery/chem_storage/C = chemical_networks[network]
 	if(!C)
@@ -114,6 +119,15 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data
 	C.energy = C.max_energy
 	return C
 
+/datum/chemical_data/proc/disconnect_chem_storage(network)
+	var/obj/structure/machinery/chem_storage/C = chemical_networks[network]
+	if(!C)
+		return FALSE
+	//Make the chem storage scale with number of dispensers
+	C.recharge_rate -= 5
+	C.max_energy -= 50
+	C.energy = C.max_energy
+	return TRUE
 
 /datum/chemical_data/proc/complete_chemical(datum/reagent/S)
 	update_credits(2)

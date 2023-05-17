@@ -486,9 +486,15 @@
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/glass/bucket(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/mop(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/wet_sign(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/bag/trash(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/lights/mixed(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/bag/trash(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/circuitboard/apc(H.back), WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/circuitboard/airlock(H.back), WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/cell(H.back), WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/cell(H.back), WEAR_IN_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/lightreplacer(H.back), WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack(H.back), WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/stack/sheet/glass/medium_stack(H.back), WEAR_IN_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/maintenance_jack(H), WEAR_J_STORE)
 
 

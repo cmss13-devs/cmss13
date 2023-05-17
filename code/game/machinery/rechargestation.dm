@@ -1,8 +1,8 @@
 /obj/structure/machinery/recharge_station
-	name = "robot recharge station"
+	name = "synthetic maintenance station"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "borgcharger0"
-	desc = "A recharge and repair station for robots and synthetics. Simply put the synthetic in need of repair in here and they will be fixed up in no time!"
+	desc = "A Synthetic Maintenance Station designed to recharge, repair and maintain various sizes of artificial people. Simply place the synthetic or android in need of repair in here and they will be fixed up in no time!"
 	density = TRUE
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
@@ -171,7 +171,7 @@
 				doing_stuff = TRUE
 
 		if(!doing_stuff)
-			to_chat(occupant, "Maintenance complete! Have a nice day!")
+			to_chat(occupant, "Maintenance cycle completed. All systems nominal.")
 			go_out()
 
 

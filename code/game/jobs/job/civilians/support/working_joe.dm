@@ -31,7 +31,7 @@
 
 
 /datum/job/civilian/working_joe/announce_entry_message(mob/living/carbon/human/H)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ai_announcement), "[H.real_name] has been deployed to help with operations."), 1.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ai_announcement), "[H.real_name] has been activated."), 1.5 SECONDS)
 	return ..()
 
 /obj/effect/landmark/start/working_joe

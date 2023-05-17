@@ -1134,9 +1134,9 @@
 	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR)
 
 /datum/hive_status/mutated/weave
-	name = "The Weave"
+	name = "The Weave Nexus"
 	hivenumber = XENO_HIVE_WEAVE
-	prefix = "Weave "
+	prefix = ""
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE

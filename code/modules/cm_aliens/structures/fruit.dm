@@ -345,7 +345,7 @@
 	glow_color = "#287A90"
 	consumed_icon_state = "fruit_spent_2"
 
-/obj/effect/alien/resin/fruit/weave/consume_effect(mob/living/carbon/Xenomorph/recipient)
+/obj/effect/alien/resin/fruit/weave/consume_effect(mob/living/carbon/xenomorph/recipient)
 	if(!mature)
 		return
 	if(recipient && !QDELETED(recipient))

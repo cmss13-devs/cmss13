@@ -282,6 +282,12 @@
 /mob/living/carbon/xenomorph/proc/update_wounds()
 	if(!wound_icon_carrier)
 		return
+	if(caste.caste_type in WEAVE_CASTES)
+		wound_icon_carrier.icon = 'icons/mob/xenonids/weave.dmi'
+	else if(HAS_TRAIT(src, TRAIT_XENONID))
+		wound_icon_carrier.icon = 'icons/mob/xenonids/wounds.dmi'
+	else
+		wound_icon_carrier.icon = 'icons/mob/xenos/wounds.dmi'
 
 	var/health_threshold
 	wound_icon_carrier.layer = layer + 0.01

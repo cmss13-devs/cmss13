@@ -30,7 +30,7 @@
 	widen_cooldown = 70
 	tremor_cooldown = 450
 
-/mob/living/carbon/Xenomorph/Weaveling
+/mob/living/carbon/xenomorph/weaveling
 	hivenumber = XENO_HIVE_WEAVE
 	caste_type = WEAVE_CASTE_WEAVELING
 	name = WEAVE_CASTE_WEAVELING
@@ -54,11 +54,11 @@
 		/datum/action/xeno_action/onclick/plant_resin_fruit/weave,
 		/datum/action/xeno_action/onclick/place_trap, //second macro
 		/datum/action/xeno_action/activable/burrow, //third macro
-		/datum/action/xeno_action/activable/tremor //fourth macro
+		/datum/action/xeno_action/onclick/tremor //fourth macro
 		)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
-		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		)
 	mutation_type = WEAVE_NORMAL
 
@@ -69,49 +69,49 @@
 	available_fruits = list(/obj/effect/alien/resin/fruit/weave)
 	selected_fruit = /obj/effect/alien/resin/fruit/weave
 
-/mob/living/carbon/Xenomorph/Weaveling/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+/mob/living/carbon/xenomorph/weaveling/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
 	. = ..()
 	sight |= SEE_THRU//Changes what counts as Line-of-Sight, allowing Psychic speech through walls, but not hearing replies.
 
-/mob/living/carbon/Xenomorph/Weaveling/update_canmove()
+/mob/living/carbon/xenomorph/weaveling/update_canmove()
 	. = ..()
 	if(burrow)
 		density = FALSE
 		canmove = FALSE
 		return canmove
 
-/mob/living/carbon/Xenomorph/Weaveling/ex_act(severity)
+/mob/living/carbon/xenomorph/weaveling/ex_act(severity)
 	if(burrow)
 		return
 	..()
 
-/mob/living/carbon/Xenomorph/Weaveling/attack_hand()
+/mob/living/carbon/xenomorph/weaveling/attack_hand()
 	if(burrow)
 		return
 	..()
 
-/mob/living/carbon/Xenomorph/Weaveling/attackby()
+/mob/living/carbon/xenomorph/weaveling/attackby()
 	if(burrow)
 		return
 	..()
 
-/mob/living/carbon/Xenomorph/Weaveling/get_projectile_hit_chance()
+/mob/living/carbon/xenomorph/weaveling/get_projectile_hit_chance()
 	. = ..()
 	if(burrow)
 		return 0
 
-/mob/living/carbon/Xenomorph/Weaveling/update_icons()
+/mob/living/carbon/xenomorph/weaveling/update_icons()
 	if (stat == DEAD)
-		icon_state = "[mutation_type] Weaveling Dead"
+		icon_state = "Weaveling Dead"
 	else if (lying)
 		if ((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[mutation_type] Weaveling Sleeping"
+			icon_state = "Weaveling Sleeping"
 		else
-			icon_state = "[mutation_type] Weaveling Knocked Down"
+			icon_state = "Weaveling Knocked Down"
 	else if (burrow)
-		icon_state = "[mutation_type] Weaveling Burrowed"
+		icon_state = "Weaveling Burrowed"
 	else
-		icon_state = "[mutation_type] Weaveling Running"
+		icon_state = "Weaveling Running"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
 	update_wounds()

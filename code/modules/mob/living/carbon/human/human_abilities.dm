@@ -356,7 +356,7 @@ CULT
 /datum/action/human_action/activable/cult/xeno_leader
 	name = "Activable Leader Ability"
 
-/datum/action/human_action/activable/cult/xeno_leader/proc/can_target(var/mob/living/carbon/human/H)
+/datum/action/human_action/activable/cult/xeno_leader/proc/can_target(mob/living/carbon/human/H)
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/Hu = owner
@@ -388,7 +388,7 @@ CULT
 	name = "Convert"
 	action_icon_state = "cultist_channel_convert"
 
-/datum/action/human_action/activable/cult/xeno_leader/convert/use_ability(var/mob/M)
+/datum/action/human_action/activable/cult/xeno_leader/convert/use_ability(mob/M)
 	var/datum/hive_status/hive = get_hive()
 
 	if(!istype(hive))
@@ -434,7 +434,7 @@ CULT
 
 	cooldown = 1 MINUTES
 
-/datum/action/human_action/activable/cult/xeno_leader/stun/use_ability(var/mob/M)
+/datum/action/human_action/activable/cult/xeno_leader/stun/use_ability(mob/M)
 	if(!action_cooldown_check())
 		return
 

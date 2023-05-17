@@ -380,7 +380,7 @@
 	category = PROPERTY_TYPE_ANOMALOUS
 	value = 666
 
-/datum/chem_property/special/weaving/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/special/weaving/process(mob/living/M, potency = 1, delta_time)
 	M.adjustBrainLoss(3 * potency * delta_time)
 	if(ishuman(M) && M.brainloss >= 100)
 		var/mob/living/carbon/human/H = M
@@ -389,15 +389,15 @@
 
 
 
-/datum/chem_property/special/organhealing/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/special/organhealing/process(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
 	for(var/datum/internal_organ/O in H.internal_organs)
 		M.apply_internal_damage(-0.5 * potency * delta_time, O)
 
-/datum/chem_property/special/organhealing/process_overdose(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/special/organhealing/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.adjustCloneLoss(potency * delta_time)
 
-/datum/chem_property/special/organhealing/process_critical(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/special/organhealing/process_critical(mob/living/M, potency = 1, delta_time)
 	M.take_limb_damage(1.5 * potency * delta_time, 1.5 * potency * delta_time)

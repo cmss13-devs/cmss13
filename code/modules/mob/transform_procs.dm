@@ -295,7 +295,7 @@
 
 
 
-/mob/living/carbon/human/proc/WeaveClaim(var/cause = 1)
+/mob/living/carbon/human/proc/WeaveClaim(cause = 1)
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
 
 	var/truecause = "Divine Intervention"
@@ -308,7 +308,7 @@
 			truecause = "The Prime Weaver"
 
 	if(!istype(hive))
-		message_staff("[truecause] attempted to make [key_name(src)] a Weave cultist, but The Weave doesn't exist!")
+		message_admins("[truecause] attempted to make [key_name(src)] a Weave cultist, but The Weave doesn't exist!")
 		return
 
 	var/datum/equipment_preset/other/weave_cultist/WC = new()

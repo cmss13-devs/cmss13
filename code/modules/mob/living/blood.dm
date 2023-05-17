@@ -256,11 +256,11 @@
 
 /mob/living/carbon/xenomorph/get_blood_color()
 	return "#dffc00"
-/mob/living/carbon/Xenomorph/Weaveling/get_blood_color()
+/mob/living/carbon/xenomorph/weaveling/get_blood_color()
 	return "#5adfe4"
-/mob/living/carbon/Xenomorph/Weaver/get_blood_color()
+/mob/living/carbon/xenomorph/weaver/get_blood_color()
 	return "#5adfe4"
-/mob/living/carbon/Xenomorph/PrimeWeaver/get_blood_color()
+/mob/living/carbon/xenomorph/primeWeaver/get_blood_color()
 	return "#135f72"
 
 /mob/living/carbon/human/get_blood_color()
@@ -280,11 +280,11 @@
 /mob/living/carbon/xenomorph/praetorian/get_blood_id()
 	return "xenobloodroyal"
 
-/mob/living/carbon/Xenomorph/Weaveling/get_blood_id()
+/mob/living/carbon/xenomorph/weaveling/get_blood_id()
 	return "xenobloodweave"
-/mob/living/carbon/Xenomorph/Weaver/get_blood_id()
+/mob/living/carbon/xenomorph/weaver/get_blood_id()
 	return "xenobloodweave"
-/mob/living/carbon/Xenomorph/PrimeWeaver/get_blood_id()
+/mob/living/carbon/xenomorph/primeWeaver/get_blood_id()
 	return "xenobloodweave"
 
 /mob/living/carbon/human/get_blood_id()

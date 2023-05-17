@@ -990,7 +990,7 @@
 	. = ..()
 	access = get_all_civilian_accesses()
 
-/datum/equipment_preset/other/weave_cultist/load_race(mob/living/carbon/human/H, var/hivenumber = XENO_HIVE_WEAVE)
+/datum/equipment_preset/other/weave_cultist/load_race(mob/living/carbon/human/H, hivenumber = XENO_HIVE_WEAVE)
 	. = ..()
 	H.hivenumber = hivenumber
 
@@ -1015,7 +1015,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
 
 //*****************************************************************************************************/
-/datum/equipment_preset/other/weave_cultist/load_status(mob/living/carbon/human/H, var/hivenumber = XENO_HIVE_WEAVE)
+/datum/equipment_preset/other/weave_cultist/load_status(mob/living/carbon/human/H, hivenumber = XENO_HIVE_WEAVE)
 	if(SSticker.mode && H.mind)
 		SSticker.mode.xenomorphs += H.mind
 

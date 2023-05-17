@@ -24,23 +24,30 @@
 	if(cur_chan > FREE_CHAN_END)
 		cur_chan = 1
 
-//Proc used to play a sound effect. Avoid using this proc for non-IC sounds, as there are others
-//source: self-explanatory.
-//soundin: the .ogg to use.
-//vol: the initial volume of the sound, 0 is no sound at all, 75 is loud queen screech.
-//freq: the frequency of the sound. Setting it to 1 will assign it a random frequency
-//sound_range: the maximum theoretical range (in tiles) of the sound, by default is equal to the volume.
-//vol_cat: the category of this sound, used in client volume. There are 3 volume categories: VOLUME_SFX (Sound effects), VOLUME_AMB (Ambience and Soundscapes) and VOLUME_ADM (Admin sounds and some other stuff)
-//channel: use this only when you want to force the sound to play on a specific channel
-//status: the regular 4 sound flags
-//falloff: max range till sound volume starts dropping as distance increases
-
-/proc/playsound(atom/source, soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status , falloff = 1, echo, y_s_offset,x_s_offset)
+/**
+ * Sound effect
+ *
+ * Proc used to play a sound effect. Avoid using this proc for non-IC sounds, as there are others
+ * Arguments:
+ * * source - self-explanatory
+ * * soundin - the .ogg to use
+ * * vol - the initial volume of the sound, 0 is no sound at all, 75 is loud queen screech
+ * * vary - the frequency of the sound. Setting it to 1 will assign it a random frequency
+ * * sound_range - the maximum theoretical range (in tiles) of the sound, by default is equal to the volume
+ * * vol_cat - the category of this sound, used in client volume. There are 3 volume categories: VOLUME_SFX (Sound effects), VOLUME_AMB (Ambience and Soundscapes) and VOLUME_ADM (Admin sounds and some other stuff)
+ * * channel - use this only when you want to force the sound to play on a specific channel
+ * * status - the regular 4 sound flags
+ * * falloff - max range till sound volume starts dropping as distance increases
+ * * echo - based byond vars for make sound more flufy and 3D
+ * * y_s_offset - vertical sound initial place offset
+ * * x_s_offset - horizontal sound initial place offset
+ */
+/proc/playsound(atom/source, soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status, falloff = 1, list/echo, y_s_offset, x_s_offset)
 	if(isarea(source))
 		error("[source] is an area and is trying to make the sound: [soundin]")
 		return FALSE
-	var/datum/sound_template/S = new()
 
+	var/datum/sound_template/S = new()
 	var/sound/SD = soundin
 	if(istype(SD))
 		S.file = SD.file
@@ -53,7 +60,8 @@
 	S.falloff = falloff
 	S.volume = vol
 	S.volume_cat = vol_cat
-	S.echo = echo
+	for(var/i in echo)
+		S.echo[i] = echo[i]
 	S.y_s_offset = y_s_offset
 	S.x_s_offset = x_s_offset
 	if(vary != FALSE)
@@ -88,7 +96,8 @@
 				S.x = new_turf_source.x
 				S.y = new_turf_source.y
 				S.z = new_turf_source.z
-			else sound_range = 0
+			else
+				sound_range = 0
 	// Range for 'nearby interiors' aswell
 	for(var/datum/interior/VI in SSinterior.interiors)
 		if(VI?.ready && VI.exterior?.z == turf_source.z && get_dist(VI.exterior, turf_source) <= sound_range)
@@ -96,8 +105,6 @@
 
 	SSsound.queue(S, null, extra_interiors)
 	return S.channel
-
-
 
 //This is the replacement for playsound_local. Use this for sending sounds directly to a client
 /proc/playsound_client(client/C, soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, y_s_offset, x_s_offset)
@@ -123,7 +130,8 @@
 	S.volume_cat = vol_cat
 	S.channel = channel
 	S.status = status
-	S.echo = echo
+	for(var/i in echo)
+		S.echo[i] = echo[i]
 	S.y_s_offset = y_s_offset
 	S.x_s_offset = x_s_offset
 	SSsound.queue(S, list(C))
@@ -133,11 +141,19 @@
 	if(!isarea(A))
 		return FALSE
 	var/datum/sound_template/S = new()
-	S.file = soundin
+	var/sound/SD = soundin
+	if(istype(SD))
+		S.file = SD.file
+		S.wait = SD.wait
+		S.repeat = SD.repeat
+	else
+		S.file = get_sfx(soundin)
 	S.volume = vol
 	S.channel = channel
 	S.status = status
 	S.volume_cat = vol_cat
+	for(var/i in echo)
+		S.echo[i] = echo[i]
 
 	var/list/hearers = list()
 	for(var/mob/living/M in A.contents)
@@ -152,15 +168,21 @@
 	if(prefs && prefs.toggles_sound & SOUND_LOBBY)
 		playsound_client(src, SSticker.login_music, null, 70, 0, VOLUME_LOBBY, SOUND_CHANNEL_LOBBY, SOUND_STREAM)
 
-
 /// Play sound for all on-map clients on a given Z-level. Good for ambient sounds.
 /proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX, echo, y_s_offset, x_s_offset)
 	var/datum/sound_template/S = new()
-	S.file = soundin
+	var/sound/SD = soundin
+	if(istype(SD))
+		S.file = SD.file
+		S.wait = SD.wait
+		S.repeat = SD.repeat
+	else
+		S.file = get_sfx(soundin)
 	S.volume = volume
 	S.channel = SOUND_CHANNEL_Z
 	S.volume_cat = vol_cat
-	S.echo = echo
+	for(var/i in echo)
+		S.echo[i] = echo[i]
 	S.y_s_offset = y_s_offset
 	S.x_s_offset = x_s_offset
 	var/list/hearers = list()

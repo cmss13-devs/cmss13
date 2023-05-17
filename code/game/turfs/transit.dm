@@ -101,48 +101,48 @@
 	icon_state = "speedspace_ns_4"
 
 /turf/open/space/transit/north/shuttlespace_ns5
-		auto_space_icon = FALSE
-		icon_state = "speedspace_ns_5"
+	auto_space_icon = FALSE
+	icon_state = "speedspace_ns_5"
 
 /turf/open/space/transit/north/shuttlespace_ns6
-		auto_space_icon = FALSE
-		icon_state = "speedspace_ns_6"
+	auto_space_icon = FALSE
+	icon_state = "speedspace_ns_6"
 
 /turf/open/space/transit/north/shuttlespace_ns7
-		auto_space_icon = FALSE
-		icon_state = "speedspace_ns_7"
+	auto_space_icon = FALSE
+	icon_state = "speedspace_ns_7"
 
 /turf/open/space/transit/north/shuttlespace_ns8
-		auto_space_icon = FALSE
-		icon_state = "speedspace_ns_8"
+	auto_space_icon = FALSE
+	icon_state = "speedspace_ns_8"
 
 /turf/open/space/transit/north/shuttlespace_ns9
-		auto_space_icon = FALSE
-		icon_state = "speedspace_ns_9"
+	auto_space_icon = FALSE
+	icon_state = "speedspace_ns_9"
 
 /turf/open/space/transit/north/shuttlespace_ns10
-		auto_space_icon = FALSE
-		icon_state = "speedspace_ns_10"
+	auto_space_icon = FALSE
+	icon_state = "speedspace_ns_10"
 
 /turf/open/space/transit/north/shuttlespace_ns11
-		auto_space_icon = FALSE
-		icon_state = "speedspace_ns_11"
+	auto_space_icon = FALSE
+	icon_state = "speedspace_ns_11"
 
 /turf/open/space/transit/north/shuttlespace_ns12
-		auto_space_icon = FALSE
-		icon_state = "speedspace_ns_12"
+	auto_space_icon = FALSE
+	icon_state = "speedspace_ns_12"
 
 /turf/open/space/transit/north/shuttlespace_ns13
-		auto_space_icon = FALSE
-		icon_state = "speedspace_ns_13"
+	auto_space_icon = FALSE
+	icon_state = "speedspace_ns_13"
 
 /turf/open/space/transit/north/shuttlespace_ns14
-		auto_space_icon = FALSE
-		icon_state = "speedspace_ns_14"
+	auto_space_icon = FALSE
+	icon_state = "speedspace_ns_14"
 
 /turf/open/space/transit/north/shuttlespace_ns15
-		auto_space_icon = FALSE
-		icon_state = "speedspace_ns_15"
+	auto_space_icon = FALSE
+	icon_state = "speedspace_ns_15"
 
 /turf/open/space/transit/east/shuttlespace_ew1
 	auto_space_icon = FALSE

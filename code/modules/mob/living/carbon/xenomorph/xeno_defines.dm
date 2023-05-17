@@ -1136,11 +1136,13 @@
 /datum/hive_status/mutated/weave
 	name = "The Weave Nexus"
 	hivenumber = XENO_HIVE_WEAVE
-	prefix = ""
+	prefix = "Weave "
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
 	xeno_colors = FALSE
+	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR, TRAIT_NO_PREFIX)
+
 	var/bioscan_time = 0
 
 /datum/hive_status/corrupted/tamed

@@ -408,6 +408,8 @@
 
 /mob/living/carbon/xenomorph/queen/handle_name(datum/hive_status/in_hive)
 	var/name_prefix = in_hive.prefix
+	if(HAS_TRAIT(src, TRAIT_NO_PREFIX))
+		name_prefix = ""
 	if(queen_aged)
 		age_xeno()
 		switch(age)

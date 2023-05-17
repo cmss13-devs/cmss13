@@ -79,6 +79,10 @@
 	icon_xeno = 'icons/mob/xenos/hivelord.dmi'
 	icon_xenonid = 'icons/mob/xenonids/hivelord.dmi'
 
+/mob/living/carbon/xenomorph/hivelord/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
+	. = ..()
+	sight |= (SEE_OBJS|SEE_TURFS)
+
 /datum/behavior_delegate/hivelord_base
 	name = "Base Hivelord Behavior Delegate"
 

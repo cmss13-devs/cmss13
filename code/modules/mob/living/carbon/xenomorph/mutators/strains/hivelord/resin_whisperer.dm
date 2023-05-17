@@ -25,6 +25,9 @@
 		return
 
 	var/mob/living/carbon/xenomorph/hivelord/hivelord = mutator_set.xeno
+	hivelord.sight &= !(SEE_OBJS|SEE_TURFS) // Having to guess if something is in your view or not would be annoying
+	hivelord.sight |= SEE_MOBS
+
 	hivelord.plasmapool_modifier = 0.8 // -20% plasma pool
 	hivelord.extra_build_dist = 12 // 1 + 12 = 13 tile build range
 	hivelord.can_stack_builds = TRUE

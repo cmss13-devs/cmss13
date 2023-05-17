@@ -333,8 +333,8 @@
 
 //Weave
 /obj/effect/alien/resin/fruit/weave
-	desc = "A fluctuating node of fey energies. It pulses with an aura of uncertainty..."
 	name = XENO_FRUIT_WEAVE
+	desc = "A fluctuating node of fey energies. It pulses with an aura of uncertainty..."
 	time_to_mature = 60 SECONDS
 	heal_amount = 150
 	regeneration_amount_total = 200
@@ -343,7 +343,7 @@
 	mature_icon_state = "fruit_weave"
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/weave
 	glow_color = "#287A90"
-	consumed_icon_state = "fruit_spent_2"
+	consumed_icon_state = "fruit_spent"
 
 /obj/effect/alien/resin/fruit/weave/consume_effect(mob/living/carbon/xenomorph/recipient)
 	if(!mature)
@@ -355,6 +355,18 @@
 		recipient.evolution_stored = max((recipient.evolution_threshold/2), (recipient.evolution_stored + 200))
 	finish_consume(recipient)
 
+/obj/effect/alien/resin/fruit/weave/exalted
+	name = XENO_FRUIT_WEAVE_EX
+	desc = "A highly concentrated node of fey energies. It pulses with an aura of destiny..."
+	time_to_mature = 120 SECONDS
+	heal_amount = 450
+	regeneration_amount_total = 400
+	regeneration_ticks = 12
+	icon_state = "fruit_weave_ex_immature"
+	mature_icon_state = "fruit_weave_ex"
+	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/weave/exalted
+	glow_color = "#60c5e0"
+	consumed_icon_state = "fruit_spent"
 
 #undef CAN_CONSUME_AT_FULL_HEALTH
 
@@ -538,3 +550,12 @@
 
 /obj/item/reagent_container/food/snacks/resin_fruit/weave/add_juice()
 	reagents.add_reagent(PLASMA_WEAVE, 6)
+
+/obj/item/reagent_container/food/snacks/resin_fruit/weave/exalted
+	name = XENO_FRUIT_WEAVE
+	icon_state = "fruit_weave_ex_item"
+	fruit_type = /obj/effect/alien/resin/fruit/weave/exalted
+
+/obj/item/reagent_container/food/snacks/resin_fruit/weave/exalted/add_juice()
+	reagents.add_reagent(PLASMA_WEAVE, 16)
+	reagents.add_reagent(PLASMA_WEAVE_EXALTED, 1)

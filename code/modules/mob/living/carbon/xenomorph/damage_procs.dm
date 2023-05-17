@@ -1,4 +1,6 @@
 /mob/living/carbon/xenomorph/attackby(obj/item/item, mob/user)
+	if(burrow)
+		return FALSE
 	if(user.a_intent != INTENT_HELP)
 		return ..()
 	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL) && ishuman(user))
@@ -33,6 +35,8 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0)
+	if(burrow)
+		return FALSE
 
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER

@@ -664,6 +664,7 @@
 #define XENO_FRUIT_SPEED "Alacrit Resin Fruit"
 #define XENO_FRUIT_PLASMA "Cruor Resin Fruit"
 #define XENO_FRUIT_WEAVE "Flux Node"
+#define XENO_FRUIT_WEAVE_EX "Flux Foci"
 
 
 // turf weedable states

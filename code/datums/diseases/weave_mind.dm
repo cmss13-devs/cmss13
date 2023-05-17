@@ -33,5 +33,5 @@
 			affected_mob.updatehealth()
 			if(prob(40))
 				var/mob/living/carbon/human/H = affected_mob
-				H.WeaveClaim(2)
+				H.WeaveClaim(CAUSE_ESSENCE)
 				src.cure()

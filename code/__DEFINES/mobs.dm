@@ -137,6 +137,11 @@
 
 #define ALL_XENO_HIVES list(XENO_HIVE_NORMAL, XENO_HIVE_CORRUPTED, XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA, XENO_HIVE_FERAL, XENO_HIVE_TAMED, XENO_HIVE_MUTATED, XENO_HIVE_FORSAKEN, XENO_HIVE_YAUTJA)
 
+// Weave Cult Cause
+#define CAUSE_ADMIN 1
+#define CAUSE_ESSENCE 2
+#define CAUSE_WEAVER 3
+
 //=================================================
 
 // =============================

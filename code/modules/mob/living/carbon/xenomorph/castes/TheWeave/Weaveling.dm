@@ -1,16 +1,16 @@
 /datum/caste_datum/weaveling
 	caste_type = WEAVE_CASTE_WEAVELING
-	tier = 2
+	tier = 1
 
 	melee_damage_lower = XENO_DAMAGE_TIER_2
 	melee_damage_upper = XENO_DAMAGE_TIER_2
-	max_health = XENO_HEALTH_QUEEN
+	max_health = XENO_HEALTH_TIER_13
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
-	plasma_max = XENO_PLASMA_TIER_10
+	plasma_max = XENO_PLASMA_TIER_8
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_4
 	armor_deflection = XENO_ARMOR_TIER_2
-	evasion = XENO_EVASION_LOW
-	speed = XENO_SPEED_TIER_6
+	evasion = XENO_EVASION_MEDIUM
+	speed = XENO_SPEED_TIER_8
 
 	evolves_to = list(WEAVE_CASTE_WEAVER)
 	deevolves_to = null
@@ -19,11 +19,11 @@
 	weed_level = WEED_LEVEL_STANDARD
 	evolution_allowed = TRUE
 
-	tackle_min = 3
-	tackle_max = 5
 	tackle_chance = 40
-	tacklestrength_min = 4
-	tacklestrength_max = 5
+	tackle_min = 2
+	tackle_max = 4
+	tacklestrength_min = 3
+	tacklestrength_max = 4
 
 	burrow_cooldown = 20
 	tunnel_cooldown = 70
@@ -43,6 +43,8 @@
 	plasma_types = list(PLASMA_WEAVE, PLASMA_WEAVE)//Deliberate doubling, to affect ratio of extracted blood and plasma.
 	pixel_x = -12
 	old_x = -12
+	base_pixel_x = 0
+	base_pixel_y = -20
 	tier = 2
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -54,7 +56,8 @@
 		/datum/action/xeno_action/onclick/plant_resin_fruit/weave,
 		/datum/action/xeno_action/onclick/place_trap, //second macro
 		/datum/action/xeno_action/activable/burrow, //third macro
-		/datum/action/xeno_action/onclick/tremor //fourth macro
+		/datum/action/xeno_action/onclick/tremor, //fourth macro
+		/datum/action/xeno_action/onclick/psychic_whisper,
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -65,7 +68,7 @@
 	icon_xeno = 'icons/mob/xenonids/weave.dmi'
 	icon_xenonid = 'icons/mob/xenonids/weave.dmi'
 
-	max_placeable = 1
+	max_placeable = 2
 	available_fruits = list(/obj/effect/alien/resin/fruit/weave)
 	selected_fruit = /obj/effect/alien/resin/fruit/weave
 
@@ -79,26 +82,6 @@
 		density = FALSE
 		canmove = FALSE
 		return canmove
-
-/mob/living/carbon/xenomorph/weaveling/ex_act(severity)
-	if(burrow)
-		return
-	..()
-
-/mob/living/carbon/xenomorph/weaveling/attack_hand()
-	if(burrow)
-		return
-	..()
-
-/mob/living/carbon/xenomorph/weaveling/attackby()
-	if(burrow)
-		return
-	..()
-
-/mob/living/carbon/xenomorph/weaveling/get_projectile_hit_chance()
-	. = ..()
-	if(burrow)
-		return 0
 
 /mob/living/carbon/xenomorph/weaveling/update_icons()
 	if (stat == DEAD)

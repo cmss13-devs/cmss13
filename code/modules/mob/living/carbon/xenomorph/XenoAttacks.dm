@@ -21,6 +21,8 @@
 			updatehealth()
 
 /mob/living/carbon/xenomorph/attack_hand(mob/living/carbon/human/M)
+	if(burrow)
+		return FALSE
 	if(..())
 		return TRUE
 

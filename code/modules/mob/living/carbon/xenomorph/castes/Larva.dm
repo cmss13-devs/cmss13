@@ -107,6 +107,8 @@
 
 	if(hive)
 		name_prefix = hive.prefix
+		if(HAS_TRAIT(src, TRAIT_NO_PREFIX))
+			name_prefix = ""
 		if(hive.xeno_colors)
 			color = hive.color
 

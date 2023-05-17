@@ -295,16 +295,16 @@
 
 
 
-/mob/living/carbon/human/proc/WeaveClaim(cause = 1)
+/mob/living/carbon/human/proc/WeaveClaim(cause = CAUSE_ADMIN)
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
 
 	var/truecause = "Divine Intervention"
 	switch(cause)
-		if(1)
+		if(CAUSE_ADMIN)
 			truecause = "Divine Intervention"
-		if(2)
+		if(CAUSE_ESSENCE)
 			truecause = "Essence Exposure"
-		if(3)
+		if(CAUSE_WEAVER)
 			truecause = "The Prime Weaver"
 
 	if(!istype(hive))

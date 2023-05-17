@@ -297,3 +297,21 @@
   - admin: Removed missing HREF topic links for adminmoreinfo (? button)
   TeDGamer:
   - bugfix: Playable huggers no longer block xeno ammo / spits.
+2023-05-17:
+  Emanthealmighty:
+  - bugfix: Fixed huggers occasionally dying before they can impregnate a host.
+  Git-Nivrak:
+  - balance: Removed the cooldown on missing Dancer's impale and tail trip abilities.
+  - bugfix: Dancer's slash tag no longer gets consumed by tail trip if the target
+      is out of range.
+  SpartanBobby:
+  - bugfix: fixed problems with some fire shutters being the wrong DIR or out of place
+  - maptweak: fixed problem with warning stripes not being flush with walls and placed
+      warning stripe tiles under some blastdoors that lacked them
+  TeDGamer:
+  - bugfix: Sniper's Aimed Shot and Spotter's Target cooldown is applied consistently
+      in can_check_use.
+  harryob:
+  - qol: observer hud buttons for view crew manifest, hive status and joining the
+      hunt (if you're a pred), along with keybinds for joining the hunt
+  - bugfix: you can now hide the buttons at the bottom of the ghost hud with f12

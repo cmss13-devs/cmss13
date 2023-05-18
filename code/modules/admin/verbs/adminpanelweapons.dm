@@ -24,7 +24,7 @@
 	if(tgui_alert(src, "Are you sure you want to open fire at the [MAIN_SHIP_NAME] with those parameters?", "Choose wisely!", list("Yes", "No"), 20 SECONDS) != "Yes")
 		return
 
-	shipwide_ai_announcement("DANGER: [weapontype ? "RAILGUN EMISSIONS DETECTED" : "MISSILE [salvo ? "WARNING. LAUNCH" : "SALVO"]"], [salvo ? "SALVO INCOMING. BRACE, BRACE, BRACE. SALVO SIZE: [quantity]," : "INCOMING SHOT. BRACE, BRACE, BRACE."] ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
+	shipwide_ai_announcement("DANGER: [weapontype ? "RAILGUN EMISSIONS DETECTED, INCOMING SHOT." : "MISSILE WARNING, LAUNCH DETECTED."]BRACE, BRACE, BRACE. [salvo ? "SALVO SIZE: [quantity],"] ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), weapontype, targets, point_defense, salvo), hiteta SECONDS)
 	message_admins("[key_name_admin(src)] Fired a [salvo ? "salvo of [quantity]" : "single"] [weapontype ? "Missile" : "Railgun Slug"] at the Almayer, with point defense as [point_defense]")
 	if(point_defense)

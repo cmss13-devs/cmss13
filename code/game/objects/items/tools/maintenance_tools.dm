@@ -654,14 +654,19 @@ Welding backpack
 /obj/item/tool/weldpack/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(!proximity) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
 		return
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
-		O.reagents.trans_to(src, max_fuel)
-		to_chat(user, SPAN_NOTICE(" You crack the cap off the top of \the [src] and fill it back up again from the tank."))
-		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+	//excluding the dispenser that contain gaz or custom to only leave fuel tank.
+	if (istype(O, /obj/structure/reagent_dispensers/fueltank/custom)||istype(O, /obj/structure/reagent_dispensers/fueltank/gas))
 		return
-	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
-		to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
-		return
+	if (istype(O, /obj/structure/reagent_dispensers/fueltank))
+		if(src.reagents.total_volume < max_fuel)
+			O.reagents.trans_to(src, max_fuel)
+			to_chat(user, SPAN_NOTICE(" You crack the cap off the top of \the [src] and fill it back up again from the tank."))
+			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+			return
+		else if (src.reagents.total_volume == max_fuel)
+			to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
+			return
+	..()
 
 /obj/item/tool/weldpack/get_examine_text(mob/user)
 	. = ..()

@@ -60,7 +60,7 @@
 	S.falloff = falloff
 	S.volume = vol
 	S.volume_cat = vol_cat
-	for(var/i = 1 to echo.len)
+	for(var/i = 1 to length(echo))
 		if(!echo[i])
 			continue
 		S.echo[i] = echo[i]
@@ -132,7 +132,7 @@
 	S.volume_cat = vol_cat
 	S.channel = channel
 	S.status = status
-	for(var/i = 1 to echo.len)
+	for(var/i = 1 to length(echo))
 		if(!echo[i])
 			continue
 		S.echo[i] = echo[i]
@@ -156,7 +156,7 @@
 	S.channel = channel
 	S.status = status
 	S.volume_cat = vol_cat
-	for(var/i = 1 to echo.len)
+	for(var/i = 1 to length(echo))
 		if(!echo[i])
 			continue
 		S.echo[i] = echo[i]
@@ -187,7 +187,7 @@
 	S.volume = volume
 	S.channel = SOUND_CHANNEL_Z
 	S.volume_cat = vol_cat
-	for(var/i = 1 to echo.len)
+	for(var/i = 1 to length(echo))
 		if(!echo[i])
 			continue
 		S.echo[i] = echo[i]

@@ -32,16 +32,11 @@
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING TARGET[salvo ? "S" : ""], SPOOLING UP POINT DEFENSE. ATTEMPTING TO INTERCEPT." , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
 
 /proc/shipside_random_turf_picker(turfquantity)
-	var/picked_atom
-	var/picked_area
 	var/list/targets = list()
-	var/list/turfs_of_area = list()
-	for(var/currentturf in 1 to turfquantity)
-		for(var/limiter in 1 to 120)
-			picked_area = pick(GLOB.ship_areas)
-			for(var/turf/my_turf in picked_area)
+	for(var/currentturf = 1 to turfquantity)
+		var/list/turfs_of_area = list()
+		for(var/area in GLOB.ship_areas)
+			for(var/turf/my_turf in area)
 				turfs_of_area += my_turf
-			picked_atom = pick(turfs_of_area)
-			targets += picked_atom
-			break
+		targets += pick(turfs_of_area)
 	return targets

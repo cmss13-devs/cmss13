@@ -7,7 +7,7 @@
 		return
 	weapon_type = GLOB.space_weapons[weapon_type]
 
-	var/ammo_type = tgui_alert(src, "What weapon?", "Choose wisely!", weapon_type.possibly_ammunition + "Random", 20 SECONDS)
+	var/ammo_type = tgui_alert(src, "What weapon?", "Choose wisely!", weapon_type.possibly_ammunition + list("Random"), 20 SECONDS)
 	if(!ammo_type)
 		return
 	if(ammo_type == "Random")

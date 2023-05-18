@@ -1,7 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - bugfix: "fix being able to launch elevator without fixing power in the concerned areas."
-  - code_imp: "connected the APC inside the elevator to the power net ground."
-  - code_imp: "add the ability for the elevator area to loose power."
-  - maptweak: "move all the call buttons for the elevator inside area that have APC."

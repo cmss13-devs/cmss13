@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - bugfix: "new players will now no longer have no hotkeys, and be unable to move or talk, because that sucks"

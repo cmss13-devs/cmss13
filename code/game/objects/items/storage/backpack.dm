@@ -894,6 +894,20 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	fuel_type = "utnapthal"
 	has_gamemode_skin = TRUE
 
+/obj/item/storage/backpack/marine/engineerpack/flamethrower/afterattack(obj/O as obj, mob/user as mob, proximity)
+	if(!proximity) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
+		return
+	if (istype(O, /obj/structure/reagent_dispensers/fueltank))
+		if(src.reagents.total_volume < max_fuel)
+			O.reagents.trans_to(src, max_fuel)
+			to_chat(user, SPAN_NOTICE(" You crack the cap off the top of the pack and fill it back up again from the tank."))
+			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
+			return
+		else if (src.reagents.total_volume == max_fuel)
+			to_chat(user, SPAN_NOTICE(" The pack is already full!"))
+			return
+	..()
+
 /obj/item/storage/backpack/marine/engineerpack/flamethrower/attackby(obj/item/W, mob/living/user)
 	if (istype(W, /obj/item/ammo_magazine/flamer_tank))
 		var/obj/item/ammo_magazine/flamer_tank/FTL = W

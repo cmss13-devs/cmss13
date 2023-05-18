@@ -55,15 +55,17 @@
 		template.repeat = sound.repeat
 	else
 		template.file = get_sfx(soundin)
+
 	template.channel = channel ? channel : get_free_channel()
 	template.status = status
 	template.falloff = falloff
 	template.volume = vol
 	template.volume_cat = vol_cat
-	for(var/i = 1 to length(echo))
-		if(!echo[i])
+	for(var/pos = 1 to length(echo))
+		if(!echo[pos])
 			continue
-		template.echo[i] = echo[i]
+		template.echo[pos] = echo[pos]
+
 	template.y_s_offset = y_s_offset
 	template.x_s_offset = x_s_offset
 	if(vary != FALSE)
@@ -80,6 +82,7 @@
 	var/turf/turf_source = get_turf(source)
 	if(!turf_source || !turf_source.z)
 		return FALSE
+
 	template.x = turf_source.x
 	template.y = turf_source.y
 	template.z = turf_source.z
@@ -101,6 +104,7 @@
 				template.z = new_turf_source.z
 			else
 				sound_range = 0
+
 	// Range for 'nearby interiors' aswell
 	for(var/datum/interior/interior in SSinterior.interiors)
 		if(interior?.ready && interior.exterior?.z == turf_source.z && get_dist(interior.exterior, turf_source) <= sound_range)
@@ -114,11 +118,12 @@
 	if(!istype(C) || !C.soundOutput) return FALSE
 	var/datum/sound_template/template = new()
 	if(origin)
-		var/turf/T = get_turf(origin)
-		if(T)
-			template.x = T.x
-			template.y = T.y
-			template.z = T.z
+		var/turf/turf = get_turf(origin)
+		if(turf)
+			template.x = turf.x
+			template.y = turf.y
+			template.z = turf.z
+
 	var/sound/sound = soundin
 	if(istype(sound))
 		template.file = sound.file
@@ -129,14 +134,16 @@
 
 	if(random_freq)
 		template.frequency = GET_RANDOM_FREQ
+
 	template.volume = vol
 	template.volume_cat = vol_cat
 	template.channel = channel
 	template.status = status
-	for(var/i = 1 to length(echo))
-		if(!echo[i])
+	for(var/pos = 1 to length(echo))
+		if(!echo[pos])
 			continue
-		template.echo[i] = echo[i]
+		template.echo[pos] = echo[pos]
+
 	template.y_s_offset = y_s_offset
 	template.x_s_offset = x_s_offset
 	SSsound.queue(template, list(C))
@@ -145,6 +152,7 @@
 /proc/playsound_area(area/A, soundin, vol = 100, channel = 0, status, vol_cat = VOLUME_SFX, list/echo, y_s_offset, x_s_offset)
 	if(!isarea(A))
 		return FALSE
+
 	var/datum/sound_template/template = new()
 	var/sound/sound = soundin
 	if(istype(sound))
@@ -153,25 +161,28 @@
 		template.repeat = sound.repeat
 	else
 		template.file = get_sfx(soundin)
+
 	template.volume = vol
 	template.channel = channel
 	template.status = status
 	template.volume_cat = vol_cat
-	for(var/i = 1 to length(echo))
-		if(!echo[i])
+	for(var/pos = 1 to length(echo))
+		if(!echo[pos])
 			continue
-		template.echo[i] = echo[i]
+		template.echo[pos] = echo[pos]
 
 	var/list/hearers = list()
 	for(var/mob/living/M in A.contents)
 		if(!M || !M.client || !M.client.soundOutput)
 			continue
 		hearers += M.client
+
 	SSsound.queue(template, hearers)
 
 /client/proc/playtitlemusic()
 	if(!SSticker?.login_music)
 		return FALSE
+
 	if(prefs && prefs.toggles_sound & SOUND_LOBBY)
 		playsound_client(src, SSticker.login_music, null, 70, 0, VOLUME_LOBBY, SOUND_CHANNEL_LOBBY, SOUND_STREAM)
 
@@ -185,19 +196,22 @@
 		template.repeat = sound.repeat
 	else
 		template.file = get_sfx(soundin)
+
 	template.volume = volume
 	template.channel = SOUND_CHANNEL_Z
 	template.volume_cat = vol_cat
-	for(var/i = 1 to length(echo))
-		if(!echo[i])
+	for(var/pos = 1 to length(echo))
+		if(!echo[pos])
 			continue
-		template.echo[i] = echo[i]
+		template.echo[pos] = echo[pos]
+
 	template.y_s_offset = y_s_offset
 	template.x_s_offset = x_s_offset
 	var/list/hearers = list()
 	for(var/mob/M in GLOB.player_list)
 		if((M.z in z) && M.client.soundOutput)
 			hearers += M.client
+
 	SSsound.queue(template, hearers)
 
 /proc/get_muffle(area/target_area)
@@ -433,7 +447,7 @@
 	var/y = tgui_input_number(usr, "Center Y")
 	var/z = tgui_input_number(usr, "Z level")
 	var/datum/sound_template/template
-	for(var/i = 1, i <= ammount, i++)
+	for(var/pos = 1, pos <= ammount, pos++)
 		template = new
 		template.file = get_sfx("male_warcry") // warcry has variable length, lots of variations
 		template.channel = get_free_channel() // i'm convinced this is bad, but it's here to mirror playsound() behaviour

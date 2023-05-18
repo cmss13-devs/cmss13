@@ -8,7 +8,7 @@
 	if(!hiteta)
 		return
 
-	var/point_defense = tgui_alert(src, "Allow Point Defence of the ship to intercept, or for the weapon to miss?", "standard PD/miss chance is 30%.", list("Yes", "No"), 20 SECONDS) == "Yes"
+	var/point_defense = tgui_alert(src, "Chance Point Defence of the ship to intercept, or for the weapon to miss?", "standard PD/miss chance is 0%.", 0, 100, 0, 20 SECONDS)
 
 	var/targets
 	var/salvo = FALSE
@@ -26,7 +26,7 @@
 
 	shipwide_ai_announcement("DANGER: [weapontype ? "RAILGUN EMISSIONS DETECTED, INCOMING SHOT." : "MISSILE WARNING, LAUNCH DETECTED."] BRACE, BRACE, BRACE. [salvo ? "SALVO SIZE: [quantity]," : ""] ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), weapontype, targets, point_defense, salvo), hiteta SECONDS)
-	message_admins("[key_name_admin(src)] Fired a [salvo ? "salvo of [quantity]" : "single"] [weapontype ? "Missile" : "Railgun Slug"] at the Almayer, with point defense as [point_defense]")
+	message_admins("[key_name_admin(src)] Fired a [salvo ? "salvo of [quantity]" : "single"] [weapontype ? "Missile" : "Railgun Slug"] at the Almayer, with point defense as [point_defense]%")
 	if(point_defense)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING TARGET[salvo ? "S" : ""], SPOOLING UP POINT DEFENSE. ATTEMPTING TO INTERCEPT." , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), (hiteta - 4) SECONDS)
 

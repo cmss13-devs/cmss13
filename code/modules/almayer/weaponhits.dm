@@ -1,5 +1,3 @@
-#define HIT_CHANCE_CHEAT 100
-#define HIT_CHANCE_STANDARD 70
 /**
  * Proc called to hit the ship with weapons
  *
@@ -14,9 +12,9 @@
  * * salvo - identifies it as a salvo or not.
  */
 /proc/weaponhits(weaponused, location, point_defense = FALSE)
-	var/hitchance = HIT_CHANCE_CHEAT
+	var/hitchance = 100
 	if(point_defense)
-		hitchance = HIT_CHANCE_STANDARD
+		hitchance -= point_defense
 
 	var/datum/cause_data/cause_data = create_cause_data(weaponused ? "Railgun shot" : "Anti-Ship missile")
 	var/hit
@@ -54,6 +52,3 @@
 				playsound(picked_atom, 'sound/effects/laser_point_defence_success.ogg', 15, 1, 100, echo = echo_list)
 			sleep(2 SECONDS)
 		shipwide_ai_announcement("[hit] ROCKET[hit > 1 ? "S" : ""] HIT AND [length(location) - hit] MISS OR INTERCEPTED!", MAIN_AI_SYSTEM, 'sound/effects/alert.ogg')
-
-#undef HIT_CHANCE_CHEAT
-#undef HIT_CHANCE_STANDARD

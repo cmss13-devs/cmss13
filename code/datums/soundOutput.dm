@@ -28,9 +28,9 @@
 		if(owner_turf)
 			// We're in an interior and sound came from outside
 			if(SSinterior.in_interior(owner_turf) && owner_turf.z != T.z)
-				var/datum/interior/VI = SSinterior.get_interior_by_coords(owner_turf.x, owner_turf.y, owner_turf.z)
-				if(VI && VI.exterior)
-					var/turf/candidate = get_turf(VI.exterior)
+				var/datum/interior/interior = SSinterior.get_interior_by_coords(owner_turf.x, owner_turf.y, owner_turf.z)
+				if(interior && interior.exterior)
+					var/turf/candidate = get_turf(interior.exterior)
 					if(candidate.z != T.z)
 						return
 					S.falloff /= 2

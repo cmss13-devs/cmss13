@@ -28,8 +28,7 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), weapontype, targets, point_defense, salvo), hiteta SECONDS)
 	message_admins("[key_name_admin(src)] Fired a [salvo ? "salvo of [quantity]" : "single"] [weapontype ? "Missile" : "Railgun Slug"] at the Almayer, with point defense as [point_defense]")
 	if(point_defense)
-		var/spoolup = hiteta - 4
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING TARGET[salvo ? "S" : ""], SPOOLING UP POINT DEFENSE. ATTEMPTING TO INTERCEPT." , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING TARGET[salvo ? "S" : ""], SPOOLING UP POINT DEFENSE. ATTEMPTING TO INTERCEPT." , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), (hiteta - 4) SECONDS)
 
 /proc/shipside_random_turf_picker(turfquantity)
 	var/list/targets = list()

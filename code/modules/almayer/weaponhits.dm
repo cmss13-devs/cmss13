@@ -33,10 +33,10 @@
 				hit++
 			else
 				echo_list[ECHO_OBSTRUCTION] = -5000
-				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), picked_atom, 'sound/effects/railgun_miss.ogg', 5, 1, 100, VOLUME_SFX, 0, null, 1, echo_list), 2 SECONDS)
-				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), picked_atom, 'sound/effects/laser_point_defence_success.ogg', 15, 1, 100, VOLUME_SFX, 0, null, 1, echo_list), 2 SECONDS)
+				playsound(picked_atom, 'sound/effects/railgun_miss.ogg', 5, 1, 100, echo = echo_list)
+				playsound(picked_atom, 'sound/effects/laser_point_defence_success.ogg', 15, 1, 100, echo = echo_list)
 			sleep(2 SECONDS)
-		shipwide_ai_announcement("[hit] railgun projectile[hit > 1 ? "s" : ""] hit and [length(location) - hit] miss / intercepred", MAIN_AI_SYSTEM, 'sound/effects/alert.ogg')
+		shipwide_ai_announcement("[hit] RAILGUN PROJECTILE[hit > 1 ? "S" : ""] HIT AND [length(location) - hit] MISS OR INTERCEPTED!", MAIN_AI_SYSTEM, 'sound/effects/alert.ogg')
 	else
 		for(var/turf/picked_atom in location)
 			if(prob(hitchance))
@@ -50,10 +50,10 @@
 				hit++
 			else
 				echo_list[ECHO_OBSTRUCTION] = -5000
-				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), picked_atom, 'sound/effects/metal_shatter.ogg', 5, 1, 100, VOLUME_SFX, 0, null, 1, echo_list), 2 SECONDS)
-				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), picked_atom, 'sound/effects/laser_point_defence_success.ogg', 15, 1, 100, VOLUME_SFX, 0, null, 1, echo_list), 2 SECONDS)
+				playsound(picked_atom, 'sound/effects/metal_shatter.ogg', 5, 1, 100, echo = echo_list)
+				playsound(picked_atom, 'sound/effects/laser_point_defence_success.ogg', 15, 1, 100, echo = echo_list)
 			sleep(2 SECONDS)
-		shipwide_ai_announcement("[hit] rocket[hit > 1 ? "s" : ""] hit and [length(location) - hit] miss / intercepred", MAIN_AI_SYSTEM, 'sound/effects/alert.ogg')
+		shipwide_ai_announcement("[hit] ROCKET[hit > 1 ? "S" : ""] HIT AND [length(location) - hit] MISS OR INTERCEPTED!", MAIN_AI_SYSTEM, 'sound/effects/alert.ogg')
 
 #undef HIT_CHANCE_CHEAT
 #undef HIT_CHANCE_STANDARD

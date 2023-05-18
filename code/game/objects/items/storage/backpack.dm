@@ -858,6 +858,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		return
 	//excluding the dispenser that contain gaz or custom to only leave fuel tank.
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank/custom)||istype(O, /obj/structure/reagent_dispensers/fueltank/gas))
+		to_chat(user, SPAN_NOTICE(" You can't fill this with anything but with a fuel tank."))
 		return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank))
 		if(src.reagents.total_volume < max_fuel)

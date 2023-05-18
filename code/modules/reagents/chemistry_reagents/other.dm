@@ -1023,8 +1023,8 @@
 	id = PLASMA_WEAVE_EXALTED
 	description = "The Weave calls..."
 	color = "#135f72"
-	overdose = 2
-	overdose_critical = 2
+	overdose = 3
+	overdose_critical = 3
 	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_WEAVING = 3, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_TRANSFORMATIVE = 4, PROPERTY_ANTIADDICTIVE = 6)
 

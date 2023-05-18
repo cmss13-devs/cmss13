@@ -65,9 +65,9 @@
 
 /datum/space_weapon_ammo/rail_gun/miss_target(picked_atom, intercepted)
 	var/list/echo_list = new(18)
-	echo_list[ECHO_OBSTRUCTION] = -3500
+	echo_list[ECHO_OBSTRUCTION] = -2500
 	if(intercepted)
-		playsound(picked_atom, 'sound/effects/laser_point_defence_success.ogg', 15, 1, 100, echo = echo_list)
+		playsound(picked_atom, 'sound/effects/laser_point_defence_success.ogg', 100, 1, 100, echo = echo_list)
 	else
 		playsound(picked_atom, miss_sound, 5, 1, 100, echo = echo_list)
 	shipwide_ai_announcement("[capitalize(name)] [intercepted ? "INTERCEPTED" : "MISSED"]!", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')
@@ -94,9 +94,9 @@
 
 /datum/space_weapon_ammo/rocket_launcher/miss_target(picked_atom, intercepted)
 	var/list/echo_list = new(18)
-	echo_list[ECHO_OBSTRUCTION] = -3500
+	echo_list[ECHO_OBSTRUCTION] = -2500
 	if(intercepted)
-		playsound(picked_atom, 'sound/effects/laser_point_defence_success.ogg', 15, 1, 100, echo = echo_list)
+		playsound(picked_atom, 'sound/effects/laser_point_defence_success.ogg', 100, 1, 100, echo = echo_list)
 	else
 		playsound(picked_atom, miss_sound, 5, 1, 100, echo = echo_list)
 	shipwide_ai_announcement("[capitalize(name)] [intercepted ? "INTERCEPTED" : "MISSED"]!", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')
@@ -114,3 +114,22 @@
 /datum/space_weapon_ammo/rocket_launcher/swing_rockets
 	name = "Swing High Pierce Shreder Rockets"
 	base_miss_chance = 0
+
+/datum/space_weapon_ammo/rocket_launcher/hit_target(picked_atom)
+	var/list/echo_list = new(18)
+	echo_list[ECHO_OBSTRUCTION] = -500
+	var/list/turf_list = list()
+	for(var/turf/turf in range(7, picked_atom))
+		turf_list += turf
+
+	playsound(picked_atom, "pry", 25, 1, 200, echo = echo_list)
+	playsound(picked_atom, hit_sound, 50, 1, 200, echo = echo_list)
+	playsound(picked_atom, "bigboom", 50, 1, 200, echo = echo_list)
+	for(var/i = 1 to 12)
+		var/turf/turf = pick(turf_list)
+		cell_explosion(turf, 100, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, create_cause_data(name))
+		playsound(turf, "bigboom", 40, 1, 20, echo = echo_list)
+		shakeship(2, 2, FALSE, FALSE)
+		sleep(1)
+
+	shipwide_ai_announcement("WARNING, [capitalize(name)] HIT SHIP HULL, CAUSED MASSIVE DOT DAMAGE!", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')

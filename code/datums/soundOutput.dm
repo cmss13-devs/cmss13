@@ -103,7 +103,7 @@
 				else
 					S.volume = 0
 		muffle += target_area.base_muffle
-		S.echo = list(muffle)
+		S.echo[ECHO_ROOM] = list(muffle)
 	sound_to(owner, S)
 
 

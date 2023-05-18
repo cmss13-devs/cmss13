@@ -61,6 +61,8 @@
 	S.volume = vol
 	S.volume_cat = vol_cat
 	for(var/i in echo)
+		if(!echo[i])
+			continue
 		S.echo[i] = echo[i]
 	S.y_s_offset = y_s_offset
 	S.x_s_offset = x_s_offset
@@ -131,6 +133,8 @@
 	S.channel = channel
 	S.status = status
 	for(var/i in echo)
+		if(!echo[i])
+			continue
 		S.echo[i] = echo[i]
 	S.y_s_offset = y_s_offset
 	S.x_s_offset = x_s_offset
@@ -153,6 +157,8 @@
 	S.status = status
 	S.volume_cat = vol_cat
 	for(var/i in echo)
+		if(!echo[i])
+			continue
 		S.echo[i] = echo[i]
 
 	var/list/hearers = list()
@@ -182,6 +188,8 @@
 	S.channel = SOUND_CHANNEL_Z
 	S.volume_cat = vol_cat
 	for(var/i in echo)
+		if(!echo[i])
+			continue
 		S.echo[i] = echo[i]
 	S.y_s_offset = y_s_offset
 	S.x_s_offset = x_s_offset

@@ -54,8 +54,7 @@
 		/datum/action/xeno_action/activable/corrosive_acid/strong,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/onclick/change_fruit/weave,
-		/datum/action/xeno_action/onclick/plant_resin_fruit/weave/pure,
-		/datum/action/xeno_action/onclick/place_trap, //second macro
+		/datum/action/xeno_action/onclick/plant_resin_fruit/weave/pure, //second macro
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
 		/datum/action/xeno_action/onclick/emit_pheromones,

@@ -15,7 +15,7 @@
 	evolves_to = list(WEAVE_CASTE_WEAVER)
 	deevolves_to = null
 	caste_desc = "Born to the Weave!"
-	acid_level = 2
+	acid_level = 1
 	weed_level = WEED_LEVEL_STANDARD
 	evolution_allowed = TRUE
 
@@ -45,12 +45,12 @@
 	old_x = -12
 	base_pixel_x = 0
 	base_pixel_y = -20
-	tier = 2
+	tier = 1
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/corrosive_acid,
+		/datum/action/xeno_action/activable/corrosive_acid/weak,
 		/datum/action/xeno_action/onclick/build_tunnel,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/onclick/plant_resin_fruit/weave,

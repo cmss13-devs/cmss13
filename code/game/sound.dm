@@ -48,11 +48,11 @@
 		return FALSE
 
 	var/datum/sound_template/template = new()
-	var/sound/SD = soundin
-	if(istype(SD))
-		template.file = SD.file
-		template.wait = SD.wait
-		template.repeat = SD.repeat
+	var/sound/sound = soundin
+	if(istype(sound))
+		template.file = sound.file
+		template.wait = sound.wait
+		template.repeat = sound.repeat
 	else
 		template.file = get_sfx(soundin)
 	template.channel = channel ? channel : get_free_channel()
@@ -119,11 +119,11 @@
 			template.x = T.x
 			template.y = T.y
 			template.z = T.z
-	var/sound/SD = soundin
-	if(istype(SD))
-		template.file = SD.file
-		template.wait = SD.wait
-		template.repeat = SD.repeat
+	var/sound/sound = soundin
+	if(istype(sound))
+		template.file = sound.file
+		template.wait = sound.wait
+		template.repeat = sound.repeat
 	else
 		template.file = get_sfx(soundin)
 
@@ -146,11 +146,11 @@
 	if(!isarea(A))
 		return FALSE
 	var/datum/sound_template/template = new()
-	var/sound/SD = soundin
-	if(istype(SD))
-		template.file = SD.file
-		template.wait = SD.wait
-		template.repeat = SD.repeat
+	var/sound/sound = soundin
+	if(istype(sound))
+		template.file = sound.file
+		template.wait = sound.wait
+		template.repeat = sound.repeat
 	else
 		template.file = get_sfx(soundin)
 	template.volume = vol
@@ -178,11 +178,11 @@
 /// Play sound for all on-map clients on a given Z-level. Good for ambient sounds.
 /proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX, list/echo, y_s_offset, x_s_offset)
 	var/datum/sound_template/template = new()
-	var/sound/SD = soundin
-	if(istype(SD))
-		template.file = SD.file
-		template.wait = SD.wait
-		template.repeat = SD.repeat
+	var/sound/sound = soundin
+	if(istype(sound))
+		template.file = sound.file
+		template.wait = sound.wait
+		template.repeat = sound.repeat
 	else
 		template.file = get_sfx(soundin)
 	template.volume = volume

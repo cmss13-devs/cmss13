@@ -267,7 +267,7 @@
 /datum/emergency_call/inspection_cmb/black_market
 	name = "Inspection - Colonial Marshal Ledger Investigation Team"
 	mob_max = 3 //Marshal, Deputy, ICC CL
-	mob_min = 0
+	mob_min = 2
 	shuttle_id = "Distress_PMC"
 
 	max_synths = 0

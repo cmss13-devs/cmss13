@@ -106,6 +106,7 @@
 	if(human && human.loc)
 		if(human.stat == DEAD)
 			human.revive(TRUE)
+			human.remove_language(LANGUAGE_ENGLISH) // You lose the ability to understand english. Language processing is handled in the mind not the body.
 			var/datum/species/zombie/zombie_species = GLOB.all_species[SPECIES_ZOMBIE]
 			zombie_species.handle_alert_ghost(human)
 		playsound(human.loc, 'sound/hallucinations/wail.ogg', 25, 1)

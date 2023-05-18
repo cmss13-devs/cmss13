@@ -24,6 +24,7 @@
 	stun_reduction = 10
 	knock_out_reduction = 5
 	has_organ = list()
+	set_languages(list(LANGUAGE_ZOMBIE))
 
 	has_species_tab_items = TRUE
 

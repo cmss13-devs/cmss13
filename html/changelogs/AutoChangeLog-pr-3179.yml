@@ -1,5 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - balance: "Removed the cooldown on missing Dancer's impale and tail trip abilities."
-  - bugfix: "Dancer's slash tag no longer gets consumed by tail trip if the target is out of range."

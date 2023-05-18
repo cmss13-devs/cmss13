@@ -1,0 +1,4 @@
+author: "Drathek harryob"
+delete-after: True
+changes:
+  - server: "Moved the local.db database location from root to the data folder"

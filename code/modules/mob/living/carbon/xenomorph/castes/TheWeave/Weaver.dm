@@ -42,7 +42,6 @@
 	icon = 'icons/mob/xenonids/weave.dmi'
 	icon_size = 64
 	icon_state = "Weaver Walking"
-	layer = MOB_LAYER
 	plasma_stored = 100
 	plasma_types = list(PLASMA_WEAVE, PLASMA_WEAVE, PLASMA_WEAVE)//Deliberate tripling, to affect ratio of extracted blood and plasma.
 	pixel_x = -16

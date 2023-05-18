@@ -298,7 +298,7 @@
 /mob/living/carbon/human/proc/WeaveClaim(cause = CAUSE_ADMIN)
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
 
-	var/truecause = "Divine Intervention"
+	var/truecause = "Unknown Means"
 	switch(cause)
 		if(CAUSE_ADMIN)
 			truecause = "Divine Intervention"

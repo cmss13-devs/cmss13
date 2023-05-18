@@ -557,5 +557,5 @@
 	fruit_type = /obj/effect/alien/resin/fruit/weave/exalted
 
 /obj/item/reagent_container/food/snacks/resin_fruit/weave/exalted/add_juice()
-	reagents.add_reagent(PLASMA_WEAVE, 16)
-	reagents.add_reagent(PLASMA_WEAVE_EXALTED, 1)
+	reagents.add_reagent(PLASMA_WEAVE, 12)
+	reagents.add_reagent(PLASMA_WEAVE_EXALTED, 3)

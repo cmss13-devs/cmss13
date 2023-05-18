@@ -15,7 +15,7 @@
 	evolves_to = null
 	deevolves_to = null
 	caste_desc = "The Weave Incarnate!"
-	acid_level = 2
+	acid_level = 3
 	weed_level = WEED_LEVEL_HIVE
 	evolution_allowed = FALSE
 
@@ -42,7 +42,6 @@
 	icon = 'icons/mob/xenonids/weave.dmi'
 	icon_size = 64
 	icon_state = "Prime Weaver Walking"
-	layer = MOB_LAYER
 	plasma_stored = 100
 	plasma_types = list(PLASMA_WEAVE, PLASMA_WEAVE, PLASMA_WEAVE, PLASMA_WEAVE_EXALTED)//Deliberate tripling, to affect ratio of extracted blood and plasma.
 	pixel_x = -16
@@ -52,10 +51,10 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/corrosive_acid,
+		/datum/action/xeno_action/activable/corrosive_acid/strong,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
-		/datum/action/xeno_action/onclick/change_fruit,
-		/datum/action/xeno_action/onclick/plant_resin_fruit/weave,
+		/datum/action/xeno_action/onclick/change_fruit/weave,
+		/datum/action/xeno_action/onclick/plant_resin_fruit/weave/pure,
 		/datum/action/xeno_action/onclick/place_trap, //second macro
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
@@ -64,6 +63,7 @@
 		/datum/action/xeno_action/activable/secrete_resin/hivelord/weave_macro,
 		/datum/action/xeno_action/onclick/psychic_whisper,
 		/datum/action/xeno_action/onclick/psychic_radiance,
+		/datum/action/xeno_action/activable/weave_bless,
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,

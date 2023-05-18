@@ -634,7 +634,7 @@ CULT
 
 /datum/action/human_action/activable/cult/weave/weave_sense
 	name = "Read The Weave"
-	action_icon_state = "cultist_channel_equipment"
+	action_icon_state = "cultist_channel_stun"
 	cooldown = 15 MINUTES
 
 /datum/action/human_action/activable/cult/weave/weave_sense/action_activate()
@@ -661,8 +661,8 @@ CULT
 
 	if(!do_after(owner, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		to_chat(owner, SPAN_XENOWARNING("You decide not to read The Weave."))
-		enter_cooldown(15 MINUTES)
-		hive.bioscan_time = world.time + 15 MINUTES
+		enter_cooldown(10 SECONDS)
 		return
-	enter_cooldown()
-	to_chat(owner, SPAN_XENONOTICE("The Weave reveals there are [marines] humans alive and [xenos] other living biosigns."))
+	enter_cooldown(15 MINUTES)
+	hive.bioscan_time = world.time + 15 MINUTES
+	to_chat(owner, SPAN_XENONOTICE("The Weave reveals there are [marines] humans and [xenos] other biosigns alive on the colony."))

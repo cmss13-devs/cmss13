@@ -380,7 +380,7 @@
 	value = 666
 
 /datum/chem_property/special/weaving/process(mob/living/M, potency = 1, delta_time)
-	M.adjustBrainLoss(3 * potency * delta_time)
-	if(ishuman(M) && M.brainloss >= 100)
+	M.adjustBrainLoss(2 * potency * delta_time)
+	if(ishuman(M) && M.brainloss >= 25)
 		var/mob/living/carbon/human/H = M
 		H.contract_disease(new /datum/disease/weave_mind(0),1)

@@ -1013,8 +1013,8 @@
 	id = PLASMA_WEAVE
 	description = "A fey liquid of complete uncertainty..."
 	color = "#5adfe4"
-	overdose = LOW_REAGENTS_OVERDOSE
-	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
+	overdose = 13
+	overdose_critical = 15
 	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_ADDICTIVE = 2, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_NEUROINHIBITING = 2, PROPERTY_TRANSFORMATIVE = 2)
 
@@ -1024,9 +1024,9 @@
 	description = "The Weave calls..."
 	color = "#135f72"
 	overdose = 2
-	overdose_critical = 3
+	overdose_critical = 2
 	chemclass = CHEM_CLASS_SPECIAL
-	properties = list(PROPERTY_WEAVING = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_TRANSFORMATIVE = 4)
+	properties = list(PROPERTY_WEAVING = 3, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_TRANSFORMATIVE = 4, PROPERTY_ANTIADDICTIVE = 6)
 
 /datum/reagent/fruit_resin
 	name = "Fruit Resin"

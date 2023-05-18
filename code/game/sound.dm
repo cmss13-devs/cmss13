@@ -60,7 +60,7 @@
 	S.falloff = falloff
 	S.volume = vol
 	S.volume_cat = vol_cat
-	for(var/i in echo)
+	for(var/i = 1 to echo.len)
 		if(!echo[i])
 			continue
 		S.echo[i] = echo[i]
@@ -132,7 +132,7 @@
 	S.volume_cat = vol_cat
 	S.channel = channel
 	S.status = status
-	for(var/i in echo)
+	for(var/i = 1 to echo.len)
 		if(!echo[i])
 			continue
 		S.echo[i] = echo[i]
@@ -156,7 +156,7 @@
 	S.channel = channel
 	S.status = status
 	S.volume_cat = vol_cat
-	for(var/i in echo)
+	for(var/i = 1 to echo.len)
 		if(!echo[i])
 			continue
 		S.echo[i] = echo[i]
@@ -175,7 +175,7 @@
 		playsound_client(src, SSticker.login_music, null, 70, 0, VOLUME_LOBBY, SOUND_CHANNEL_LOBBY, SOUND_STREAM)
 
 /// Play sound for all on-map clients on a given Z-level. Good for ambient sounds.
-/proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX, echo, y_s_offset, x_s_offset)
+/proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX, list/echo, y_s_offset, x_s_offset)
 	var/datum/sound_template/S = new()
 	var/sound/SD = soundin
 	if(istype(SD))
@@ -187,7 +187,7 @@
 	S.volume = volume
 	S.channel = SOUND_CHANNEL_Z
 	S.volume_cat = vol_cat
-	for(var/i in echo)
+	for(var/i = 1 to echo.len)
 		if(!echo[i])
 			continue
 		S.echo[i] = echo[i]

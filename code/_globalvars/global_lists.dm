@@ -106,6 +106,9 @@ var/global/list/list/chemical_gen_classes_list = list("C" = list(),"C1" = list()
 //properties generated in chemicals, helps to make sure the same property doesn't show up 10 times
 GLOBAL_LIST_INIT_TYPED(generated_properties, /list, list("positive" = list(), "negative" = list(), "neutral" = list()))
 
+GLOBAL_LIST_INIT_TYPED(space_weapons, /datum/space_weapon, name)
+GLOBAL_LIST_INIT_TYPED(space_weapons_ammo, /datum/space_weapon_ammo, name)
+
 GLOBAL_LIST_INIT_TYPED(ammo_list, /datum/ammo, setup_ammo()) //List of all ammo types. Used by guns to tell the projectile how to act.
 GLOBAL_REFERENCE_LIST_INDEXED(joblist, /datum/job, title) //List of all jobstypes, minus borg and AI
 

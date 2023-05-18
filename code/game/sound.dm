@@ -199,6 +199,19 @@
 			hearers += M.client
 	SSsound.queue(S, hearers)
 
+/proc/get_muffle(area/target_area)
+	var/muffle
+	if(target_area.ceiling_muffle)
+		switch(target_area.ceiling)
+			if(CEILING_NONE)
+				muffle = 0
+			if(CEILING_GLASS)
+				muffle = MUFFLE_MEDIUM
+			if(CEILING_METAL)
+				muffle = MUFFLE_HIGH
+	muffle += target_area.base_muffle
+	return muffle
+
 // The pick() proc has a built-in chance that can be added to any option by adding ,X; to the end of an option, where X is the % chance it will play.
 /proc/get_sfx(S)
 	if(istext(S))

@@ -36,7 +36,7 @@
 	var/rare_variance = TRUE
 
 /datum/species/zombie/handle_post_spawn(mob/living/carbon/human/zombie)
-	zombie.set_languages(list(LANGUAGE_ZOMBIE))
+	zombie.set_languages(list("Zombie"))
 
 	zombie.faction = FACTION_ZOMBIE
 	zombie.faction_group = list(FACTION_ZOMBIE)

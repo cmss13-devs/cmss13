@@ -164,6 +164,9 @@
 	///list of weakrefs of recently dropped objects
 	var/list/remembered_dropped_objects = list()
 
+	///list of active transfusions from blood bags or iv stands
+	var/list/active_transfusions = list()
+
 /client/var/cached_human_playtime
 
 /client/proc/get_total_human_playtime(skip_cache = FALSE)

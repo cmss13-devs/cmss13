@@ -26,11 +26,10 @@ export class CanvasLayer extends Component {
     this.isPainting = false;
     this.lastX = null;
     this.lastY = null;
-
   }
 
   componentDidMount() {
-    this.ctx = this.canvasRef.current.getContext("2d");
+    this.ctx = this.canvasRef.current.getContext('2d');
     this.ctx.lineWidth = 2;
     this.ctx.lineCap = 'round';
 
@@ -46,12 +45,17 @@ export class CanvasLayer extends Component {
     this.canvasRef.current.addEventListener('mousedown', this.handleMouseDown);
     this.canvasRef.current.addEventListener('mousemove', this.handleMouseMove);
     this.canvasRef.current.addEventListener('mouseup', this.handleMouseUp);
-
   }
 
   componentWillUnmount() {
-    this.canvasRef.current.removeEventListener('mousedown', this.handleMouseDown);
-    this.canvasRef.current.removeEventListener('mousemove', this.handleMouseMove);
+    this.canvasRef.current.removeEventListener(
+      'mousedown',
+      this.handleMouseDown
+    );
+    this.canvasRef.current.removeEventListener(
+      'mousemove',
+      this.handleMouseMove
+    );
     this.canvasRef.current.removeEventListener('mouseup', this.handleMouseUp);
   }
 
@@ -66,89 +70,113 @@ export class CanvasLayer extends Component {
     this.ctx.moveTo(this.lastX, this.lastY);
     this.lastX = x;
     this.lastY = y;
-  }
+  };
 
   handleMouseMove = (e) => {
-  if(!this.isPainting || !this.state.selection) {
-    return;
-  }
+    if (!this.isPainting || !this.state.selection) {
+      return;
+    }
 
-  // defaults to black sometimes, it's a bug I think maybe.
-  this.ctx.strokeStyle = this.state.selection;
+    // defaults to black sometimes, it's a bug I think maybe.
+    this.ctx.strokeStyle = this.state.selection;
 
-  const rect = this.canvasRef.current.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
+    const rect = this.canvasRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-  if (this.lastX !== null && this.lastY !== null) {
-    this.ctx.moveTo(this.lastX, this.lastY);
-    this.ctx.lineTo(x, y);
-    this.ctx.stroke();
-    this.currentLine.push([this.lastX, this.lastY, x, y, this.state.selection]);
+    if (this.lastX !== null && this.lastY !== null) {
+      this.ctx.moveTo(this.lastX, this.lastY);
+      this.ctx.lineTo(x, y);
+      this.ctx.stroke();
+      this.currentLine.push([
+        this.lastX,
+        this.lastY,
+        x,
+        y,
+        this.state.selection,
+      ]);
+    }
 
-  }
-
-  this.lastX = x;
-  this.lastY = y;
-
-  }
+    this.lastX = x;
+    this.lastY = y;
+  };
 
   handleMouseUp = () => {
     this.isPainting = false;
     this.lineStack.push([...this.currentLine]);
     this.currentLine = [];
     this.ctx.beginPath();
-  }
+  };
 
   handleSelectionChange = () => {
     const { selection } = this.props;
 
-      if (selection === 'clear') {
-        this.ctx.clearRect(0, 0, this.canvasRef.current.width, this.canvasRef.current.height);
-        this.ctx.drawImage(this.img, 0, 0, this.canvasRef.current.width, this.canvasRef.current.height);
+    if (selection === 'clear') {
+      this.ctx.clearRect(
+        0,
+        0,
+        this.canvasRef.current.width,
+        this.canvasRef.current.height
+      );
+      this.ctx.drawImage(
+        this.img,
+        0,
+        0,
+        this.canvasRef.current.width,
+        this.canvasRef.current.height
+      );
 
-        this.lineStack = [];
+      this.lineStack = [];
+      return;
+    }
+
+    if (selection === 'undo') {
+      if (this.lineStack.length === 0) {
         return;
-
       }
+      const line = this.lineStack[this.lineStack.length - 1];
 
-      if (selection === 'undo') {
-        if (this.lineStack.length === 0) {
-          return;
+      // selects last color before line is yeeted, this is buggy sometimes.
+      const prevColor = line[0][4];
+      this.lineStack.pop();
 
-        }
-        const line = this.lineStack[this.lineStack.length - 1];
+      this.ctx.clearRect(
+        0,
+        0,
+        this.canvasRef.current.width,
+        this.canvasRef.current.height
+      );
+      this.ctx.drawImage(
+        this.img,
+        0,
+        0,
+        this.canvasRef.current.width,
+        this.canvasRef.current.height
+      );
+      this.ctx.globalCompositeOperation = 'source-over';
 
-        // selects last color before line is yeeted, this is buggy sometimes.
-        const prevColor = line[0][4];
-        this.lineStack.pop();
-
-        this.ctx.clearRect(0, 0, this.canvasRef.current.width, this.canvasRef.current.height);
-        this.ctx.drawImage(this.img, 0, 0, this.canvasRef.current.width, this.canvasRef.current.height);
-        this.ctx.globalCompositeOperation = "source-over";
-
-        this.lineStack.forEach((currentLine) => {
-          currentLine.forEach(([lastX, lastY, x, y, colorSelection]) => {
-            this.ctx.strokeStyle = colorSelection;
-            this.ctx.beginPath();
-            this.ctx.moveTo(lastX, lastY);
-            this.ctx.lineTo(x, y);
-            this.ctx.stroke();
-          });
+      this.lineStack.forEach((currentLine) => {
+        currentLine.forEach(([lastX, lastY, x, y, colorSelection]) => {
+          this.ctx.strokeStyle = colorSelection;
+          this.ctx.beginPath();
+          this.ctx.moveTo(lastX, lastY);
+          this.ctx.lineTo(x, y);
+          this.ctx.stroke();
         });
+      });
 
-        this.setState({ selection: prevColor });
-        return;
-      }
-      // this has barely been tested, and might be unfunctional, also a better way to do this according to paul.
-      if (selection === 'export') {
-        const exportDrawnImage = new Image();
-        exportDrawnImage.src = this.canvasRef.current.toDataURL();
-        exportDrawnImage.onload = () => {
-          onImageExport(exportDrawnImage);
-        };
-        return;
-      }
+      this.setState({ selection: prevColor });
+      return;
+    }
+    // this has barely been tested, and might be unfunctional, also a better way to do this according to paul.
+    if (selection === 'export') {
+      const exportDrawnImage = new Image();
+      exportDrawnImage.src = this.canvasRef.current.toDataURL();
+      exportDrawnImage.onload = () => {
+        onImageExport(exportDrawnImage);
+      };
+      return;
+    }
 
     this.setState({ selection: selection });
   };
@@ -160,22 +188,29 @@ export class CanvasLayer extends Component {
   }
 
   drawCanvas() {
-      this.img.onload = () => { // this onload may or may not be causing problems.
-        this.ctx.drawImage(this.img, 0, 0, this.canvasRef.current.width, this.canvasRef.current.height);
-      };
+    this.img.onload = () => {
+      // this onload may or may not be causing problems.
+      this.ctx.drawImage(
+        this.img,
+        0,
+        0,
+        this.canvasRef.current.width,
+        this.canvasRef.current.height
+      );
+    };
   }
 
   render() {
     return (
-    <canvas
-    ref={this.canvasRef}
-    style={{
-      height: "100%", // causes discrepency between mouse and drawing line, fix later.
-      width:  "100%",
-    }}
-    width={650}
-    height={590}
-  />
+      <canvas
+        ref={this.canvasRef}
+        style={{
+          height: '100%', // causes discrepency between mouse and drawing line, fix later.
+          width: '100%',
+        }}
+        width={650}
+        height={590}
+      />
     );
   }
 }

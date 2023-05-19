@@ -23,20 +23,26 @@ export const TacticalMap = (props, context) => {
     <Window title={'Tactical Map'} theme="usmc" width={650} height={750}>
       <Window.Content>
         <Section>
-          <CanvasLayer selection={data.toolbarSelection} imageSrc={data.imageSrc} onImageExport={handleTacMapExport} />
+          <CanvasLayer
+            selection={data.toolbarSelection}
+            imageSrc={data.imageSrc}
+            onImageExport={handleTacMapExport}
+          />
         </Section>
         <Section title="Canvas Options">
           <Stack>
-          <Stack.Item grow>
-            <Button // we should add some icon here maybe, someone redo the ui plz; it's shit.
-              fontSize="9px"
-              fluid={1}
-              color="grey"
-              content="Announce"
-              className="text-center"
-              onClick={() => act('selectAnnouncement', { image: data.exportedTacMapImage })}
-            />
-          </Stack.Item>
+            <Stack.Item grow>
+              <Button // we should add some icon here maybe, someone redo the ui plz; it's shit.
+                fontSize="9px"
+                fluid={1}
+                color="grey"
+                content="Announce"
+                className="text-center"
+                onClick={() =>
+                  act('selectAnnouncement', { image: data.exportedTacMapImage })
+                }
+              />
+            </Stack.Item>
             <Stack.Item grow>
               <Button
                 fontSize="7px"
@@ -61,12 +67,12 @@ export const TacticalMap = (props, context) => {
             </Stack.Item>
             <Stack.Item grow>
               <Button
-              fontSize="12px"
-              fluid={1}
-              color="red"
-              content="Red"
-              className="text-center"
-              onClick={() => act('selectRed')}
+                fontSize="12px"
+                fluid={1}
+                color="red"
+                content="Red"
+                className="text-center"
+                onClick={() => act('selectRed')}
               />
             </Stack.Item>
             <Stack.Item grow>
@@ -114,4 +120,4 @@ export const TacticalMap = (props, context) => {
       </Window.Content>
     </Window>
   );
- };
+};

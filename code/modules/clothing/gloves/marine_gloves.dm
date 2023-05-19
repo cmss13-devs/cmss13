@@ -170,7 +170,6 @@
 	icon_state = "working_joe"
 	item_state = "working_joe"
 	siemens_coefficient = 0
-	flags_inventory = CANTSTRIP
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_MEDIUM
 	armor_bomb = CLOTHING_ARMOR_MEDIUM

@@ -62,8 +62,8 @@
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
-		/mob/living/carbon/xenomorph/proc/rename_tunnel,
-		)
+		/mob/living/carbon/xenomorph/proc/rename_tunnel
+	)
 	mutation_type = WEAVE_NORMAL
 
 	icon_xeno = 'icons/mob/xenonids/weave.dmi'

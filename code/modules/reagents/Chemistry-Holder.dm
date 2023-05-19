@@ -675,7 +675,7 @@
 		var/source_mob_name = "unknown"
 		if(source_atom)
 			source_mob_name = "[source_atom]"
-		msg_admin_niche("WARNING: Ingestion based explosion attempted in containing mob [key_name(H)] made by [key_name(source_mob_name)] in area [sourceturf.loc] at ([H.loc.x],[H.loc.y],[H.loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[H.loc.x];Y=[H.loc.y];Z=[H.loc.z]'>JMP</a>)")
+		msg_admin_niche("WARNING: Ingestion based explosion attempted in containing mob [key_name(H)] made by [key_name(source_mob_name)] in area [sourceturf.loc] at ([H.loc.x],[H.loc.y],[H.loc.z]) [ADMIN_JMP(H.loc)]")
 		exploded = TRUE
 		return
 

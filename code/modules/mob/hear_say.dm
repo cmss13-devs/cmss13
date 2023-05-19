@@ -7,8 +7,8 @@
 	if(!client && !(mind && mind.current != src))
 		return
 
-	if(sleeping || stat == 1)
-		hear_sleep(message)
+	if(stat == UNCONSCIOUS)
+		hear_sleep(src, message, src == speaker, Adjacent(speaker))
 		return
 
 	var/style = "body"
@@ -67,8 +67,8 @@
 	if(!client && !(mind && mind.current != src))
 		return
 
-	if(sleeping || stat==1) //If unconscious or sleeping
-		hear_sleep(message)
+	if(stat == UNCONSCIOUS)
+		hear_sleep(src, message, FALSE, FALSE)
 		return
 	var/comm_paygrade = ""
 
@@ -207,9 +207,24 @@
 			M.show_message(message)
 	src.show_message(message)
 
-/mob/proc/hear_sleep(message)
+/mob/proc/hear_sleep(mob/speaker = null, message, hearing_self = FALSE, proximity_flag = FALSE)
 	var/heard = ""
-	if(prob(15))
+
+	if(sdisabilities & DISABILITY_DEAF || ear_deaf)
+		if(speaker == src)
+			to_chat(src, SPAN_WARNING("You cannot hear yourself speak!"))
+		else
+			to_chat(src, SPAN_LOCALSAY("Someone near talks but you cannot hear them."))
+		return
+
+	if(hearing_self)
+		heard = SPAN_LOCALSAY("You mutter something about... [stars(message, clear_char_probability = 99)]")
+
+	else if(!sleeping && proximity_flag)
+		heard = SPAN_LOCALSAY("You hear someone near you say something... [stars(message, clear_char_probability = 90)]")
+
+	else if(prob(15))
+
 		var/list/punctuation = list(",", "!", ".", ";", "?")
 		var/list/messages = splittext(message, " ")
 		var/R = rand(1, messages.len)
@@ -218,9 +233,9 @@
 			heardword = copytext(heardword,2)
 		if(copytext(heardword,-1) in punctuation)
 			heardword = copytext(heardword,1,length(heardword))
-		heard = SPAN_LOCALSAY("<span class = 'game_say'>...You hear something about...[heardword]</span>")
+		heard = SPAN_LOCALSAY("...You hear something about...[heardword]")
 
 	else
-		heard = SPAN_LOCALSAY("<span class = 'game_say'>...<i>You almost hear someone talking</i>...</span>")
+		heard = SPAN_LOCALSAY("...<i>You almost hear someone talking</i>...")
 
 	to_chat(src, heard)

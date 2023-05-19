@@ -383,6 +383,10 @@
 	tethered_icon.icon_state = "status_0"
 	infodisplay += tethered_icon
 
+	transfusion_icon = new /atom/movable/screen()
+	transfusion_icon.icon = ui_datum.ui_style_icon
+	transfusion_icon.icon_state = "status_0"
+	infodisplay += transfusion_icon
 
 /mob/living/carbon/human/create_hud()
 	if(client && client.prefs && !hud_used)

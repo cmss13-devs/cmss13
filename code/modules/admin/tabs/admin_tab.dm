@@ -238,7 +238,7 @@
 		color = "headminsay"
 
 	if(check_rights(R_ADMIN,0))
-		msg = "<span class='[color]'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> (<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[mob]'>JMP</a>): <span class='message'>[msg]</span></span>"
+		msg = "<span class='[color]'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>"
 		for(var/client/C in GLOB.admins)
 			if(R_ADMIN & C.admin_holder.rights)
 				to_chat(C, msg)
@@ -366,7 +366,7 @@
 	channel = "[admin_holder.rank]:"
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> (<A HREF='?src=\ref[C.admin_holder];[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>")
+			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>")
 
 /client/proc/get_mod_say()
 	var/msg = input(src, null, "msay \"text\"") as text|null
@@ -796,3 +796,21 @@
 
 	SSticker.mode.toggleable_flags ^= MODE_SHIPSIDE_SD
 	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD) ? "toggled SD protection off, Yautja can now big self destruct anywhere" : "toggled SD protection on, Yautja can now only big self destruct on the hunting grounds"].")
+
+/client/proc/toggle_hardcore_perma()
+	set name = "Toggle Hardcore"
+	set category = "Admin.Flags"
+
+	if(!admin_holder || !check_rights(R_MOD, FALSE))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) && tgui_alert(usr, "Are you sure you want to toggle Hardcore mode on? This will cause all humans to instantly go perma on death.", "Confirmation", list("Yes", "Cancel")) != "Yes")
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
+	message_admins("[src] has toggled Hardcore [MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) ? "on, causing all humans to instantly go perma on death" : "off, causing all humans to die like normal"].")
+

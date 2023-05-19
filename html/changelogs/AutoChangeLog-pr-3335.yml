@@ -1,0 +1,7 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - rscadd: "Added a HUD icon \"blood\" for when someone or something is giving or taking blood from you."
+  - bugfix: "Fixed some duplicate code in /mob/living/carbon/human/Destroy()"
+  - bugfix: "Fixed a runtime in blood packs when disconnecting a blood pack"
+  - bugfix: "Fixed mobs that don't feel pain screaming in pain when blood bags disconnect."

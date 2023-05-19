@@ -104,7 +104,7 @@
 	key = "h"
 
 /datum/language/zombie
-	name = LANGUAGE_ZOMBIE
+	name = "Zombie"
 	desc = "A growling, guttural method of communication, only Zombies seem to be capable of producing these sounds."
 	speech_verb = "growls"
 	ask_verb = "grumbles"

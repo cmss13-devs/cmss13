@@ -213,17 +213,17 @@
 	reagents.add_reagent("antiZed", 30)
 
 /datum/language/zombie
-	name = "Zombie"
-	desc = "If you select this from the language screen, expect a ban."
-	color = "zombie"
-
-	speech_verb = "groans"
-	ask_verb = "groans"
-	exclaim_verb = "groans"
-
-	key = "4"
+	name = LANGUAGE_ZOMBIE
+	desc = "A growling, guttural method of communication, only Zombies seem to be capable of producing these sounds."
+	speech_verb = "growls"
+	ask_verb = "grumbles"
+	exclaim_verb = "snarls"
+	color = "monkey"
+	key = "h"
 	flags = RESTRICTED
 
+/datum/language/zombie/scramble(input)
+	return pick("Urrghh...", "Rrraaahhh...", "Aaaarghhh...", "Mmmrrrgggghhh...", "Huuuuhhhh...", "Sssssgrrrr...")
 
 /obj/item/clothing/glasses/zombie_eyes
 	name = "zombie eyes"

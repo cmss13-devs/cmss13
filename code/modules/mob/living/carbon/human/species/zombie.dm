@@ -24,7 +24,6 @@
 	stun_reduction = 10
 	knock_out_reduction = 5
 	has_organ = list()
-	set_languages(list(LANGUAGE_ZOMBIE))
 
 	has_species_tab_items = TRUE
 
@@ -37,7 +36,7 @@
 	var/rare_variance = TRUE
 
 /datum/species/zombie/handle_post_spawn(mob/living/carbon/human/zombie)
-	zombie.set_languages(list("Zombie"))
+	zombie.set_languages(list(LANGUAGE_ZOMBIE))
 
 	zombie.faction = FACTION_ZOMBIE
 	zombie.faction_group = list(FACTION_ZOMBIE)

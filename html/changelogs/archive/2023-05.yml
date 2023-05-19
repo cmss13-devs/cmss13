@@ -315,3 +315,39 @@
   - qol: observer hud buttons for view crew manifest, hive status and joining the
       hunt (if you're a pred), along with keybinds for joining the hunt
   - bugfix: you can now hide the buttons at the bottom of the ghost hud with f12
+2023-05-18:
+  Huffie56:
+  - bugfix: fix being able to launch elevator without fixing power in the concerned
+      areas.
+  - code_imp: connected the APC inside the elevator to the power net ground.
+  - code_imp: add the ability for the elevator area to loose power.
+  - maptweak: move all the call buttons for the elevator inside area that have APC.
+  Morrow:
+  - rscadd: Handheld maps added to all squad marine vendors.
+  - rscadd: Wardens are now staff sergeants
+  fira:
+  - bugfix: Fixed opening paper maps breaking some hotkey usage.
+  harryob:
+  - qol: whitelisted predators now only see the option to join pred rounds as a ghost
+      in the top left when it is a pred round
+  - bugfix: space is now uninhabitable again
+  - bugfix: new players will now no longer have no hotkeys, and be unable to move
+      or talk, because that sucks
+  realforest2001:
+  - spellcheck: Adjusted names of Solaris Ridge walls to represent what they are without
+      using the colony's name.
+2023-05-19:
+  BeagleGaming1:
+  - admin: Adds an event toggle for staff to toggle "Hardcore", causing all humans
+      to be unrevivable on death
+  Drathek harryob:
+  - server: Moved the local.db database location from root to the data folder
+  Huffie56:
+  - code_imp: Regroup all the code of the vendors that are in squads prep into the
+      same file squad_prep.
+  - code_imp: use the general uniform to hold the common items that are vended in
+      it and all the squad prep vendors.
+  - code_imp: move the training weapon vendor into the file of requisition.dm
+  ghostsheet:
+  - bugfix: Announcement are included in 'Radio' chat filter
+  - bugfix: Overwatch messages are included in 'Radio' chat filter

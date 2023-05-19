@@ -430,7 +430,7 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	if(tgui_alert(src, "This will strip ALL mobs within your view range. Are you sure?", "Confirmation", list("Yes", "Cancel")) == "Cancel")
+	if(tgui_alert(src, "This will strip ALL mobs within your view range. Are you sure?", "Confirmation", list("Yes", "Cancel")) != "Yes")
 		return
 
 	for(var/mob/living/current_mob in view())

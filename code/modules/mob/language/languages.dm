@@ -103,18 +103,6 @@
 	color = "monkey"
 	key = "h"
 
-/datum/language/zombie
-	name = "Zombie"
-	desc = "A growling, guttural method of communication, only Zombies seem to be capable of producing these sounds."
-	speech_verb = "growls"
-	ask_verb = "grumbles"
-	exclaim_verb = "snarls"
-	color = "monkey"
-	key = "h"
-
-/datum/language/zombie/scramble(input)
-	return pick("Urrghh...", "Rrraaahhh...", "Aaaarghhh...", "Mmmrrrgggghhh...", "Huuuuhhhh...", "Sssssgrrrr...")
-
 /datum/language/hellhound/scramble(input)
 	return pick("Grrr...", "Grah!", "Gurrr...")
 

@@ -13,8 +13,8 @@ export class CanvasLayer extends Component {
     };
 
     // needs to be of type png of jpg
-    this.img = null
-    this.imageSrc = this.props.imageSrc
+    this.img = null;
+    this.imageSrc = this.props.imageSrc;
 
     // stores the stacked lines
     this.lineStack = [];
@@ -22,7 +22,7 @@ export class CanvasLayer extends Component {
     // stores the individual line drawn
     this.currentLine = [];
 
-    this.ctx = null
+    this.ctx = null;
     this.isPainting = false;
     this.lastX = null;
     this.lastY = null;
@@ -39,7 +39,7 @@ export class CanvasLayer extends Component {
     // hardcoded value for testing pngs
     // this.img.src = "https://cm-ss13.com/wiki/images/6/6f/LV624.png"
 
-    this.img.src = this.imageSrc
+    this.img.src = this.imageSrc;
 
     this.drawCanvas();
 
@@ -69,8 +69,9 @@ export class CanvasLayer extends Component {
   }
 
   handleMouseMove = (e) => {
-  if(!this.isPainting || !this.state.selection)
+  if(!this.isPainting || !this.state.selection) {
     return;
+  }
 
   // defaults to black sometimes, it's a bug I think maybe.
   this.ctx.strokeStyle = this.state.selection;
@@ -84,20 +85,22 @@ export class CanvasLayer extends Component {
     this.ctx.lineTo(x, y);
     this.ctx.stroke();
     this.currentLine.push([this.lastX, this.lastY, x, y, this.state.selection]);
+
   }
 
   this.lastX = x;
   this.lastY = y;
+
   }
 
   handleMouseUp = () => {
     this.isPainting = false;
-    this.lineStack.push([...this.currentLine])
+    this.lineStack.push([...this.currentLine]);
     this.currentLine = [];
     this.ctx.beginPath();
   }
 
-  handleSelectionChange = (prevSelection) => {
+  handleSelectionChange = () => {
     const { selection } = this.props;
 
       if (selection === 'clear') {
@@ -106,11 +109,13 @@ export class CanvasLayer extends Component {
 
         this.lineStack = [];
         return;
+
       }
 
       if (selection === 'undo') {
         if (this.lineStack.length === 0) {
           return;
+
         }
         const line = this.lineStack[this.lineStack.length - 1];
 
@@ -142,7 +147,7 @@ export class CanvasLayer extends Component {
         exportDrawnImage.onload = () => {
           onImageExport(exportDrawnImage);
         };
-        return
+        return;
       }
 
     this.setState({ selection: selection });
@@ -150,7 +155,7 @@ export class CanvasLayer extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.selection !== this.props.selection) {
-      this.handleSelectionChange(prevProps.selection);
+      this.handleSelectionChange();
     }
   }
 

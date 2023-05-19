@@ -16,14 +16,12 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
 
-/datum/action/xeno_action/activable/weave_bless
-	name = "Weave Blessing"
-	action_icon_state = "queen_give_plasma"
+/datum/action/xeno_action/onclick/exude_energy
+	name = "Exude Energy"
+	action_icon_state = "empower"
 	ability_name = "weave blessing"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
-	xeno_cooldown = 20 SECONDS
+	xeno_cooldown = 60 SECONDS
 	plasma_cost = 500
-
-	var/activation_delay = 20 SECONDS
 

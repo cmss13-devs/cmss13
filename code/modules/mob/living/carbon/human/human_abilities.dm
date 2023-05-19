@@ -617,14 +617,14 @@ CULT
 
 /datum/action/human_action/activable/cult/weave/speak_hivemind/action_activate()
 	if(!can_use_action())
-		return
+		return FALSE
 	var/mob/living/carbon/human/H = owner
 	var/input = input(H, "Weave Communion", "Weave Chat")
 	if(!input)
-		return
+		return FALSE
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
 	if(!istype(hive))
-		return
+		return FALSE
 	H.hivemind_broadcast(input, hive)
 
 /datum/action/human_action/activable/cult/weave/speak_hivemind/can_use_action()
@@ -639,30 +639,104 @@ CULT
 
 /datum/action/human_action/activable/cult/weave/weave_sense/action_activate()
 	if(!can_use_action())
-		return
+		return FALSE
 	if(!action_cooldown_check())
-		return
+		return FALSE
 	var/list/nums = SSticker.mode.count_humans_and_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))
 	var/marines = nums[1]
 	var/xenos = nums[2]
-	var/datum/hive_status/mutated/weave/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
-	if(!istype(hive))
+	var/datum/hive_status/mutated/weave/nexus = GLOB.hive_datum[XENO_HIVE_WEAVE]
+	if(!istype(nexus))
 		to_chat(owner, SPAN_WARNING("Error: Weave Hive not found. Ping forest2001."))
-		return
-	xenos = xenos - (hive.totalXenos.len)
+		return FALSE
+	xenos = xenos - (nexus.totalXenos.len)
 
 
 	owner.visible_message(SPAN_DANGER("[owner] gets onto their knees, their eyes glazed, and begins muttering incomprehensible nonsense."), \
 	SPAN_XENOWARNING("You get onto your knees and your eyes glaze over as you stare into The Weave."))
 
-	if(hive.bioscan_time > world.time)
+	if(nexus.bioscan_time > world.time)
 		to_chat(owner, SPAN_XENOWARNING("The Weave is too disturbed to be read at this time."))
-		return
+		return FALSE
+	if (!nexus.can_use_energy(300))
+		to_chat(owner, SPAN_XENOWARNING("The Weave is not strong enough here to do that!"))
+		return FALSE
 
 	if(!do_after(owner, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		to_chat(owner, SPAN_XENOWARNING("You decide not to read The Weave."))
 		enter_cooldown(10 SECONDS)
-		return
-	enter_cooldown(15 MINUTES)
-	hive.bioscan_time = world.time + 15 MINUTES
-	to_chat(owner, SPAN_XENONOTICE("The Weave reveals there are [marines] humans and [xenos] other biosigns alive on the colony."))
+		return FALSE
+
+	if(nexus.use_energy(300))
+		enter_cooldown(cooldown)
+		nexus.bioscan_time = world.time + 15 MINUTES
+		to_chat(owner, SPAN_XENONOTICE("The Weave reveals there are [marines] humans and [xenos] other biosigns alive on the colony."))
+		return TRUE
+	else
+		to_chat(owner, SPAN_XENOWARNING("The Weave is not strong enough here to do that!"))
+		return FALSE
+
+
+/datum/action/human_action/activable/cult/weave/exude_energy
+	name = "Exude Energy"
+	action_icon_state = "cultist_channel_exude"
+	cooldown = 3 MINUTES
+
+/datum/action/human_action/activable/cult/weave/exude_energy/action_activate()
+	if(!can_use_action())
+		return FALSE
+	if(!action_cooldown_check())
+		return FALSE
+	var/datum/hive_status/mutated/weave/nexus = GLOB.hive_datum[XENO_HIVE_WEAVE]
+	if(!istype(nexus))
+		to_chat(owner, SPAN_WARNING("Error: Weave Hive not found. Ping forest2001."))
+		return FALSE
+	var/mob/living/carbon/human/cultist = owner
+	if (cultist.blood_volume < BLOOD_VOLUME_SAFE)
+		to_chat(cultist, SPAN_XENOWARNING("You do not have enough blood to do this safely! The Weave will not risk harming you."))
+		return FALSE
+
+	if (do_after(cultist, 10 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY))
+		if (cultist.blood_volume < BLOOD_VOLUME_SAFE)
+			to_chat(cultist, SPAN_XENOWARNING("You do not have enough blood to do this safely! The Weave will not risk harming you."))
+			return FALSE
+		else
+			cultist.blood_volume -= 100
+			nexus.weave_energy += 100
+			cultist.visible_message(SPAN_XENONOTICE("[cultist] exudes energy back into The Weave!"), SPAN_XENONOTICE("You release some of your energy into The Weave!"))
+			enter_cooldown(cooldown)
+			return TRUE
+
+/datum/action/human_action/activable/cult/weave/regenerate_wounds
+	name = "Regenerate Wounds"
+	action_icon_state = "cultist_channel_heal"
+	cooldown = 3 MINUTES
+	var/energy_cost = 150
+
+/datum/action/human_action/activable/cult/weave/regenerate_wounds/action_activate()
+	if(!can_use_action())
+		return FALSE
+	if(!action_cooldown_check())
+		return FALSE
+	var/datum/hive_status/mutated/weave/nexus = GLOB.hive_datum[XENO_HIVE_WEAVE]
+	if(!istype(nexus))
+		to_chat(owner, SPAN_WARNING("Error: Weave Hive not found. Ping forest2001."))
+		return FALSE
+	var/mob/living/carbon/human/cultist = owner
+	if (!nexus.can_use_energy(energy_cost))
+		to_chat(cultist, SPAN_XENOWARNING("The Weave is not strong enough here to do that!"))
+		return FALSE
+	if(cultist.bruteloss < 10 && cultist.fireloss < 10)
+		to_chat(cultist, SPAN_XENOWARNING("You are not sufficiently injured for The Weave to aid you."))
+		return FALSE
+
+	if (do_after(cultist, 10 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_MEDICAL))
+		if(!nexus.use_energy(energy_cost))
+			to_chat(cultist, SPAN_XENOWARNING("The Weave is not strong enough here to do that!"))
+			return FALSE
+		else
+			cultist.visible_message(SPAN_XENONOTICE("[cultist] is wrapped in energies from The Weave as their wounds close!"), SPAN_XENONOTICE("Your wounds close as The Weave wraps around you!"))
+			cultist.apply_damage(-20, BRUTE)
+			cultist.apply_damage(-20, BURN)
+			enter_cooldown(cooldown)
+			return TRUE

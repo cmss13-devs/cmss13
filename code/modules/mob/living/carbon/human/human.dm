@@ -136,6 +136,10 @@
 		if(eta_status)
 			. += "Evacuation: [eta_status]"
 
+	if(HAS_TRAIT(src, TRAIT_WEAVE_SENSITIVE))
+		var/datum/hive_status/mutated/weave/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
+		. += "Weave Energy: [hive.weave_energy]"
+
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data)
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER

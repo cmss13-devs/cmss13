@@ -1141,9 +1141,23 @@
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
 	xeno_colors = FALSE
-	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR, TRAIT_NO_PREFIX)
+	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR, TRAIT_NO_PREFIX, TRAIT_WEAVE_SENSITIVE)
 
 	var/bioscan_time = 0
+	var/weave_energy = 1000
+
+/datum/hive_status/mutated/weave/proc/can_use_energy(cost)
+	if((weave_energy - cost) < 0)
+		return FALSE
+	else
+		return TRUE
+
+/datum/hive_status/mutated/weave/proc/use_energy(cost)
+	if((weave_energy - cost) < 0)
+		return FALSE
+	else
+		weave_energy -= cost
+		return TRUE
 
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"

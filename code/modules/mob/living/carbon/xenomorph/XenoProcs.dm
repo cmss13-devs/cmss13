@@ -144,6 +144,10 @@
 		else
 			. += "Hive Orders: -"
 
+	if(HAS_TRAIT(src, TRAIT_WEAVE_SENSITIVE))
+		var/datum/hive_status/mutated/weave/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
+		. += "Weave Energy: [hive.weave_energy]"
+
 	. += ""
 
 //A simple handler for checking your state. Used in pretty much all the procs.

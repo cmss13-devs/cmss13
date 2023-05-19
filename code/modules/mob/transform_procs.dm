@@ -325,6 +325,7 @@
 	to_chat(src, SPAN_XENODANGER("Worship The Weave and listen to the Prime Weaver for orders. You are bound to peace and fanatic neutrality, however, you may defend yourself and The Weave if there is no alternative.<hr>"))
 
 	xeno_message("[src] has been claimed by The Weave!", 2, XENO_HIVE_WEAVE)
+	ADD_TRAIT(src, TRAIT_WEAVE_SENSITIVE, TRAIT_SOURCE_ADMIN)
 
 	allow_gun_usage = FALSE
 	adjustBrainLoss(-100)

@@ -1,55 +1,30 @@
-/datum/action/xeno_action/activable/weave_bless/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/prime_weaver/self = owner
+
+/datum/action/xeno_action/onclick/exude_energy/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/self = owner
+	plasma_cost = (self.plasma_max / 2)
 
 	if (!action_cooldown_check())
-		return
+		return FALSE
 
 	if (!self.check_state())
-		return
+		return FALSE
 
-	var/mob/living/carbon/human/human = target
-	if	(!ishuman(human) || !human.allow_gun_usage)
-		to_chat(self, SPAN_XENOWARNING("You must target a non believer!"))
-		return
+	var/datum/hive_status/mutated/weave/nexus = self.hive
+	if(!istype(nexus))
+		to_chat(self, SPAN_XENOWARNING("You cannot reach The Weave!"))
+		return FALSE
 
-	if (get_dist_sqrd(human, self) > 2)
-		to_chat(self, SPAN_XENOWARNING("[target] is too far away!"))
-		return
+	self.visible_message(SPAN_XENONOTICE("[self] begins to focus their energy!"), SPAN_XENONOTICE("You start to focus your energies!"))
+	if (do_after(self, 10 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY))
+		if (!check_and_use_plasma_owner())
+			to_chat(self, SPAN_XENOWARNING("You do not have enough plasma stored to do this. You have [self.plasma_stored]/[plasma_cost]!"))
+			return FALSE
 
-	if (human.stat == DEAD)
-		to_chat(self, SPAN_XENOWARNING("[human] is dead, why would you want to touch them?"))
-		return
+		self.visible_message(SPAN_XENONOTICE("[self] exudes energy back into The Weave!"), SPAN_XENONOTICE("You release some of your energy into The Weave!"))
 
-	if (!check_and_use_plasma_owner())
-		return
-
-	human.frozen = 1
-	human.update_canmove()
-	human.update_xeno_hostile_hud()
-
-	apply_cooldown()
-
-	self.frozen = 1
-	self.anchored = TRUE
-	self.update_canmove()
-
-	if (do_after(self, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		self.visible_message(SPAN_XENOHIGHDANGER("[self] floods [human]'s mind with The Weave!"), SPAN_XENOHIGHDANGER("You flood the mind of [human] with The Weave!"))
-
-		human.apply_effect(get_xeno_stun_duration(human, 0.5), WEAKEN)
-
-		self.animation_attack_on(human)
-		self.flick_attack_overlay(human, "tail")
-
-		human.WeaveClaim(CAUSE_WEAVER)
-
-	self.frozen = 0
-	self.anchored = FALSE
-	self.update_canmove()
-
-	unroot_human(human)
-
-	self.visible_message(SPAN_XENODANGER("[self] rapidly slices into [human]!"))
+		nexus.weave_energy += plasma_cost
+	else
+		self.visible_message(SPAN_XENOWARNING("[self] decides not to release their energy."), SPAN_XENOWARNING("You decide not to release your energy."))
 
 	. = ..()
-	return
+	return TRUE

@@ -131,6 +131,8 @@
 // HIVE TRAITS
 /// If the Hive is a Xenonid Hive
 #define TRAIT_XENONID "t_xenonid"
+/// If the mob is sensitive to The Weave
+#define TRAIT_WEAVE_SENSITIVE "t_weave_sensitive"
 /// If the Hive delays round end (this is overriden for some hives). Does not occur naturally. Must be applied in events.
 #define TRAIT_NO_HIVE_DELAY "t_no_hive_delay"
 /// If the Hive uses it's colors on the mobs. Does not occur naturally, excepting the Mutated hive.

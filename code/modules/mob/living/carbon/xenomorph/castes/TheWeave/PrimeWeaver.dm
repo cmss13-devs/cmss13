@@ -62,7 +62,9 @@
 		/datum/action/xeno_action/activable/secrete_resin/hivelord/weave_macro,
 		/datum/action/xeno_action/onclick/psychic_whisper,
 		/datum/action/xeno_action/onclick/psychic_radiance,
+		/datum/action/xeno_action/onclick/exude_energy,
 		/datum/action/xeno_action/activable/weave_bless,
+		/datum/action/xeno_action/onclick/weave_heal
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,

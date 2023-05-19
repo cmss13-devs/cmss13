@@ -100,7 +100,6 @@ export class CanvasLayer extends Component {
   handleSelectionChange = (prevSelection) => {
     const { selection } = this.props;
 
-    if (prevSelection !== selection) {
       if (selection === 'clear') {
         this.ctx.clearRect(0, 0, this.canvasRef.current.width, this.canvasRef.current.height);
         this.ctx.drawImage(this.img, 0, 0, this.canvasRef.current.width, this.canvasRef.current.height);
@@ -146,7 +145,6 @@ export class CanvasLayer extends Component {
         return
       }
 
-    }
     this.setState({ selection: selection });
   };
 

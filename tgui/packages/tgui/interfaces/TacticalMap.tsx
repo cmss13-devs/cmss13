@@ -23,7 +23,7 @@ export const TacticalMap = (props, context) => {
     <Window title={'Tactical Map'} theme="usmc" width={650} height={750}>
       <Window.Content>
         <Section>
-          <CanvasLayer selection={data.toolbarSelection} imageSrc={data.imageSrc} onImageExport={handleTacMapExport}/>
+          <CanvasLayer selection={data.toolbarSelection} imageSrc={data.imageSrc} onImageExport={handleTacMapExport} />
         </Section>
         <Section title="Canvas Options">
           <Stack>

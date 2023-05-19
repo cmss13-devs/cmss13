@@ -1,4 +1,0 @@
-author: "BeagleGaming1"
-delete-after: True
-changes:
-  - admin: "Adds an event toggle for staff to toggle \"Hardcore\", causing all humans to be unrevivable on death"

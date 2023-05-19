@@ -1,7 +1,8 @@
 import { useBackend } from '../backend';
 import { Button, Section, Stack } from '../components';
 import { Window } from '../layouts';
-import { CanvasLayer } from './CanvasLayer'
+import { CanvasLayer } from './CanvasLayer';
+
 // byondUI map ref was removed for testing purposes, could be added as a separate tab.
 interface TacMapProps {
   // mapRef: string;
@@ -15,15 +16,14 @@ export const TacticalMap = (props, context) => {
 
   // maybe this is the right way of doing this, maybe not, idk.
   const handleTacMapExport = (image: any) => {
-    data.exportedTacMapImage = image
+    data.exportedTacMapImage = image;
   };
 
   return (
     <Window title={'Tactical Map'} theme="usmc" width={650} height={750}>
       <Window.Content>
         <Section>
-          <CanvasLayer selection={data.toolbarSelection} imageSrc={data.imageSrc} onImageExport={handleTacMapExport}>
-          </CanvasLayer>
+          <CanvasLayer selection={data.toolbarSelection} imageSrc={data.imageSrc} onImageExport={handleTacMapExport}/>
         </Section>
         <Section title="Canvas Options">
           <Stack>
@@ -34,7 +34,7 @@ export const TacticalMap = (props, context) => {
               color="grey"
               content="Announce"
               className="text-center"
-              onClick={() => act('selectAnnouncement', { image: data.exportedTacMapImage})}
+              onClick={() => act('selectAnnouncement', { image: data.exportedTacMapImage })}
             />
           </Stack.Item>
             <Stack.Item grow>
@@ -113,4 +113,5 @@ export const TacticalMap = (props, context) => {
         </Section>
       </Window.Content>
     </Window>
-  );}
+  );
+ };

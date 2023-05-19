@@ -171,7 +171,7 @@ export class CanvasLayer extends Component {
     ref={this.canvasRef}
     style={{
       height: "100%", // causes discrepency between mouse and drawing line, fix later.
-      width:  "100%"
+      width:  "100%",
     }}
     width={650}
     height={590}

@@ -1201,8 +1201,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					commander_sidearm = new_co_sidearm
 
 				if("co_affiliation")
-					var/list/options = list("Doves", "Hawks", "Magpies", "Unaligned")
-					var/new_co_affiliation = tgui_input_list(user, "Choose your faction affiliation.", "Commanding Officer's Affiliation", options)
+					var/new_co_affiliation = tgui_input_list(user, "Choose your faction affiliation.", "Commanding Officer's Affiliation", FACTION_ALLEGIANCE_USCM_COMMANDER)
 					if(!new_co_affiliation)
 						return
 					affiliation = new_co_affiliation

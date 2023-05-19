@@ -442,7 +442,10 @@ SUBSYSTEM_DEF(minimaps)
 	var/targeted_ztrait = ZTRAIT_GROUND
 	var/atom/owner
 
+	// used in cic tactical maps for drawing on the canvas, defaults to blue.
+	var/toolbar_selection = "blue"
 	var/datum/tacmap_holder/map_holder
+	var/img_ref
 
 /datum/tacmap/New(atom/source, minimap_type)
 	allowed_flags = minimap_type
@@ -462,14 +465,62 @@ SUBSYSTEM_DEF(minimaps)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
+
+		// this is not the right way to do this, this should also not go here. I was debugging.
+		var/icon/map_icon = icon(map_holder.map.icon) // change this to flatten, also make sure to get all the toplayered icons as well
+		img_ref = icon2html(map_icon, user, sourceonly = TRUE)
+
 		user.client.register_map_obj(map_holder.map)
 		ui = new(user, src, "TacticalMap")
 		ui.open()
 
-/datum/tacmap/ui_static_data(mob/user)
+
+/datum/tacmap/ui_data(mob/user)
 	var/list/data = list()
-	data["mapRef"] = map_holder.map_ref
+	// data["mapRef"] = map_holder.map_ref
+	data["imageSrc"] = img_ref
+	data["toolbarSelection"] = toolbar_selection
 	return data
+
+/datum/tacmap/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state){
+	. = ..()
+	if(.)
+		return
+
+	switch (action)
+		if ("clearCanvas")  // boiler plate code.
+			toolbar_selection = "clear"
+			. = TRUE
+
+		if ("undoChange")
+			toolbar_selection = "undo"
+			. = TRUE
+
+		if ("selectRed")
+			toolbar_selection = "red"
+			. = TRUE
+
+		if ("selectOrange")
+			toolbar_selection = "orange"
+			. = TRUE
+
+		if ("selectBlue")
+			toolbar_selection = "blue"
+			. = TRUE
+
+		if ("selectPurple")
+			toolbar_selection = "purple"
+			. = TRUE
+
+		if ("selectGreen")
+			toolbar_selection = "green"
+			. = TRUE
+
+		if ("selectAnnouncement")
+			// params["image"] <- "should" be of type png returned from tgui
+			. = TRUE
+
+}
 
 /datum/tacmap/ui_status(mob/user)
 	if(!(isatom(owner)))

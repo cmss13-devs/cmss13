@@ -3,6 +3,16 @@
 	//You absolutely must run last
 	priority = TEST_CREATE_AND_DESTROY
 
+/obj/structure/bad_test
+
+/obj/structure/bad_test/Initialize(mapload, ...)
+	. = ..()
+	GLOB.hijack_bustable_ladders += src
+
+/obj/structure/bad_test/Destroy()
+	//GLOB.hijack_bustable_ladders -= src // We didn't remove ourself from hijack_bustable_ladders like we're supposed to
+	return ..()
+
 GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 /datum/unit_test/create_and_destroy/Run()
 	//We'll spawn everything here
@@ -46,6 +56,8 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 				original_baseturfs = islist(spawn_at.baseturfs) ? spawn_at.baseturfs.Copy() : spawn_at.baseturfs
 				original_baseturf_count = length(original_baseturfs)
 		else
+			//if(ispath(type_path, /obj/structure/bad_test)) // Commented out to not give this iteration more cpu cycles than any other
+				//log_test("We're testing a [type_path]!") // Uncomment to confirm we're successfully testing it
 			var/atom/creation = new type_path(spawn_at)
 			if(QDELETED(creation))
 				continue

@@ -12,7 +12,7 @@
 	/// extra damage multiplier, divided by 1000
 	var/bonus_damage_stacks = 0
 	/// extra damage multiplier, divided by 1000
-	var/bonus_damage_cap = 100
+	var/bonus_damage_cap = 1000
 	/// Last world.time that the afflicted was hit by a holo-targeting round.
 	var/last_stack
 

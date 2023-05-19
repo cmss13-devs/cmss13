@@ -196,7 +196,7 @@
 
 /obj/item/prop/magazine/book/starshiptroopers
 	name = "Starship Troopers"
-	desc = "Written by Robert A. Heinlein, this book really missed the mark when it comes to the individual equipment it depects 'troopers' having, but it's still issued to every marine in basic so it must have some value."
+	desc = "Written by Robert A. Heinlein, this book really missed the mark when it comes to the individual equipment it depicts 'troopers' having, but it's still issued to every marine in basic so it must have some value."
 
 /obj/item/prop/magazine/book/theartofwar
 	name = "The Art of War"

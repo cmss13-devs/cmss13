@@ -558,7 +558,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/reddot
 	name = "S5 red-dot sight"
 	desc = "An ARMAT S5 red-dot sight. A zero-magnification optic that offers faster, and more accurate target acquisition."
-	desc_lore = "Allweather collimator sight, designated as AN/PVQ-64 Dot Sight, equipped with sunshade to increase clarity in bright conditions and resist weathering. Compact and efficient, a marvel of military design, until you realize this is actually an off-the-shelf design that got a designation slapped on."
+	desc_lore = "An all-weather collimator sight, designated as the AN/PVQ-64 Dot Sight. Equipped with a sunshade to increase clarity in bright conditions and resist weathering. Compact and efficient, a marvel of military design, until you realize that this is actually just an off-the-shelf design that got a military designation slapped on."
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "reddot"
 	attach_icon = "reddot_a"
@@ -573,7 +573,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/reflex
 	name = "S6 reflex sight"
 	desc = "An ARMAT S6 reflex sight. A zero-magnification alternative to iron sights with a more open optic window when compared to the S5 red-dot. Helps to reduce scatter during automated fire."
-	desc_lore = "A collapsible folding reflex sight designated as AN/PVG-72 Reflex Sight. Mounts to most rail systems. Bulky and built to last, can link with HUD for limited point of aim calculation."
+	desc_lore = "A simple folding reflex sight designated as the AN/PVG-72 Reflex Sight, compatible with most rail systems. Bulky and built to last, it can link with military HUDs for limited point-of-aim calculations."
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "reflex"
 	attach_icon = "reflex_a"
@@ -803,7 +803,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "sniperscope"
 	attach_icon = "sniperscope_a"
 	desc = "An ARMAT S8 telescopic eye piece. Fixed at 4x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
-	desc_lore = "Intermediate power Armat scope designated as AN/PVQ-31 4x Optic. Fairly basic, but durable enough. 780 meters is about as far as one can push the 10x24mm cartridge, really."
+	desc_lore = "An intermediate-power Armat scope designated as the AN/PVQ-31 4x Optic. Fairly basic, but both durable and functional... enough. 780 meters is about as far as one can push the 10x24mm cartridge, really."
 	slot = "rail"
 	aim_speed_mod = SLOWDOWN_ADS_SCOPE //Extra slowdown when wielded
 	wield_delay_mod = WIELD_DELAY_FAST
@@ -950,7 +950,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "miniscope"
 	attach_icon = "miniscope_a"
 	desc = "An ARMAT S4 telescoping eye piece. Fixed at a modest 2x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
-	desc_lore = "Light duty optic, designated as AN/PVQ-45 2x Optic, suited towards short to medium range engagements. Advised to zero it often; under sustained use the first batch had a tendency to drift in one direction or another."
+	desc_lore = "A light-duty optic, designated as the AN/PVQ-45 2x Optic. Suited towards short to medium-range engagements. Users are advised to zero it often, as the first mass-production batch had a tendency to drift in one direction or another with sustained use."
 	slot = "rail"
 	zoom_offset = 6
 	zoom_viewsize = 7
@@ -1018,7 +1018,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "iffbarrel"
 	attach_icon = "iffbarrel_a"
 	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the M4RA Battle Rifle and M44 Combat Revolver."
-	desc_lore = "A fire control optic IFF-enabled system, designated XAN/PVG-110, for the M4RA battle rifle and M44 Combat Revolver. Experimental tech from Armat, who's assured that all issues with false negative IFF recognition are solved. Just make sure to service it after every op, just in case."
+	desc_lore = "An experimental fire-control optic capable of linking into compatible IFF systems on certain weapons, designated the XAN/PVG-110 Smart Scope. Currently programmed for usage with the M4RA battle rifle and M44 Combat Revolver, due to their relatively lower rates of fire. Experimental technology developed by Armat, who have assured that all previously reported issues with false-negative IFF recognitions have been solved. Make sure to check the sight after every op, just in case."
 	slot = "rail"
 	zoom_offset = 6
 	zoom_viewsize = 7
@@ -2529,7 +2529,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/lasersight
 	name = "laser sight"
 	desc = "A laser sight that attaches to the underside of most weapons. Increases accuracy and decreases scatter, especially while one-handed."
-	desc_lore = "Standard visible band laser module designated as AN/PEQ-42. Can mount to any firearm that has a rail large enough to accommodate it."
+	desc_lore = "A standard visible-band laser module designated as the AN/PEQ-42 Laser Sight. Can be mounted onto any firearm that has a lower rail large enough to accommodate it."
 	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "lasersight"
 	attach_icon = "lasersight_a"

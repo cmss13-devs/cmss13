@@ -101,5 +101,5 @@
 	var/jmp_message = message
 	for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
 		if(target)
-			jmp_message = "[message] (<a href='?src=\ref[observer];jumptocoord=1;X=[target.x];Y=[target.y];Z=[target.z]'>JMP</a>)"
+			jmp_message = "[message] [OBSERVER_JMP(observer, target)]"
 		to_chat(observer, FONT_SIZE_LARGE(SPAN_DEADSAY("<b>ALERT:</b> [jmp_message]")))

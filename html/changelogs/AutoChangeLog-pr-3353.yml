@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added a warning/reminder to cryomarine spawns to ahelp if they want to cryo/ghost upon spawning in, to stop people wasting the ERT call."

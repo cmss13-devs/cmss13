@@ -354,14 +354,14 @@
 			if(!SL.stat && SL.client)
 				if(plus_name)
 					SL << sound('sound/effects/tech_notification.ogg')
-				to_chat(SL, "[SPAN_BLUE("<B>SL Overwatch:</b> [nametext][text]")]")
+				to_chat(SL, "[SPAN_BLUE("<B>SL Overwatch:</b> [nametext][text]")]", type = MESSAGE_TYPE_RADIO)
 				return
 	else
 		for(var/mob/living/carbon/human/M in marines_list)
 			if(!M.stat && M.client) //Only living and connected people in our squad
 				if(plus_name)
 					M << sound('sound/effects/tech_notification.ogg')
-				to_chat(M, "[SPAN_BLUE("<B>Overwatch:</b> [nametext][text]")]")
+				to_chat(M, "[SPAN_BLUE("<B>Overwatch:</b> [nametext][text]")]", type = MESSAGE_TYPE_RADIO)
 
 
 

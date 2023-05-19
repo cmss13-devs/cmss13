@@ -113,3 +113,21 @@
 	..()
 
 //datum/character_trait/biology/bad_leg/unapply_trait(mob/living/carbon/human/target) // IMPOSSIBLE
+
+/datum/character_trait/biology/hardcore
+	trait_name = "Hardcore"
+	trait_desc = "One life. One chance. (Rifleman Only)"
+	applyable = TRUE
+	cost = 1
+
+/datum/character_trait/biology/hardcore/apply_trait(mob/living/carbon/human/target, datum/equipment_preset/preset)
+	if(target.job != JOB_SQUAD_MARINE)
+		to_chat(target, SPAN_WARNING("Only riflemen can have the Hardcore trait."))
+		return
+
+	ADD_TRAIT(target, TRAIT_HARDCORE, TRAIT_SOURCE_QUIRK)
+	..()
+
+/datum/character_trait/biology/hardcore/unapply_trait(mob/living/carbon/human/target)
+	REMOVE_TRAIT(target, TRAIT_HARDCORE, TRAIT_SOURCE_QUIRK)
+	..()

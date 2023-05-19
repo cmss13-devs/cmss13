@@ -269,3 +269,85 @@
       once taken out
   harryob:
   - admin: allows admins to send ahelps to mentors
+2023-05-15:
+  BeagleGaming1:
+  - rscadd: Adds the "Hardcore" trait for Riflemen
+  Drathek:
+  - bugfix: Fixed runtimes with the ID Console
+  - bugfix: Account numbers are now far less likely to match another person's account
+  - ui: Changed linked account field in the ID Console to a restricted input field
+  - admin: Tweaked and added more server log verbs
+  - code_imp: Removed dead code in lurker rush suggesting it lowered cooldown on a
+      successful hit
+  Emanthealmighty:
+  - bugfix: Fixed predaliens being unable to attack enemy xenomorphs.
+  Frans_Feiffer:
+  - imageadd: Resprited Dinodubba and Eonoc's donor gear.
+  - rscadd: Adds the ability to toggle open Eonoc's donor gear.
+  LynxSolstice:
+  - soundadd: Cleaned up the sonic boom sound effect to remove the "missile launching"
+      sound, which caused an inconsistency when the dropship wasn't using missiles.
+2023-05-16:
+  BeagleGaming1:
+  - rscadd: You can whisper and hear nearby people while knocked out. Getting knocked
+      out changes the sound environment to reflect that.
+  Drathek:
+  - bugfix: Fixed marking faxes and prays
+  - code_imp: Replaced most admin HREF topic links to use define macros instead
+  - admin: Removed missing HREF topic links for adminmoreinfo (? button)
+  TeDGamer:
+  - bugfix: Playable huggers no longer block xeno ammo / spits.
+2023-05-17:
+  Emanthealmighty:
+  - bugfix: Fixed huggers occasionally dying before they can impregnate a host.
+  Git-Nivrak:
+  - balance: Removed the cooldown on missing Dancer's impale and tail trip abilities.
+  - bugfix: Dancer's slash tag no longer gets consumed by tail trip if the target
+      is out of range.
+  SpartanBobby:
+  - bugfix: fixed problems with some fire shutters being the wrong DIR or out of place
+  - maptweak: fixed problem with warning stripes not being flush with walls and placed
+      warning stripe tiles under some blastdoors that lacked them
+  TeDGamer:
+  - bugfix: Sniper's Aimed Shot and Spotter's Target cooldown is applied consistently
+      in can_check_use.
+  harryob:
+  - qol: observer hud buttons for view crew manifest, hive status and joining the
+      hunt (if you're a pred), along with keybinds for joining the hunt
+  - bugfix: you can now hide the buttons at the bottom of the ghost hud with f12
+2023-05-18:
+  Huffie56:
+  - bugfix: fix being able to launch elevator without fixing power in the concerned
+      areas.
+  - code_imp: connected the APC inside the elevator to the power net ground.
+  - code_imp: add the ability for the elevator area to loose power.
+  - maptweak: move all the call buttons for the elevator inside area that have APC.
+  Morrow:
+  - rscadd: Handheld maps added to all squad marine vendors.
+  - rscadd: Wardens are now staff sergeants
+  fira:
+  - bugfix: Fixed opening paper maps breaking some hotkey usage.
+  harryob:
+  - qol: whitelisted predators now only see the option to join pred rounds as a ghost
+      in the top left when it is a pred round
+  - bugfix: space is now uninhabitable again
+  - bugfix: new players will now no longer have no hotkeys, and be unable to move
+      or talk, because that sucks
+  realforest2001:
+  - spellcheck: Adjusted names of Solaris Ridge walls to represent what they are without
+      using the colony's name.
+2023-05-19:
+  BeagleGaming1:
+  - admin: Adds an event toggle for staff to toggle "Hardcore", causing all humans
+      to be unrevivable on death
+  Drathek harryob:
+  - server: Moved the local.db database location from root to the data folder
+  Huffie56:
+  - code_imp: Regroup all the code of the vendors that are in squads prep into the
+      same file squad_prep.
+  - code_imp: use the general uniform to hold the common items that are vended in
+      it and all the squad prep vendors.
+  - code_imp: move the training weapon vendor into the file of requisition.dm
+  ghostsheet:
+  - bugfix: Announcement are included in 'Radio' chat filter
+  - bugfix: Overwatch messages are included in 'Radio' chat filter

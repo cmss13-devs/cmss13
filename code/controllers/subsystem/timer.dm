@@ -171,8 +171,8 @@ SUBSYSTEM_DEF(timer)
 
 			// Invoke callback if possible
 			if (!timer.spent)
-				callBack.InvokeAsync()
 				timer.spent = world.time
+				callBack.InvokeAsync()
 				last_invoke_tick = world.time
 
 			if (timer.flags & TIMER_LOOP) // Prepare valid looping timers to re-enter the queue

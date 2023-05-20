@@ -438,7 +438,6 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	layer = ABOVE_XENO_LAYER
 	projectile_coverage = PROJECTILE_COVERAGE_NONE
 
-
 /obj/structure/flora/jungle/shrub
 	desc = "Pretty thick scrub, it'll take something sharp and a lot of determination to clear away."
 	icon_state = "grass4"
@@ -448,10 +447,15 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	desc = "Some kind of bizarre alien tree. It oozes with a sickly yellow sap."
 	icon_state = "plantbot1"
 
+/obj/structure/flora/jungle/cart_wreck
+	name = "old janicart"
+	desc = "Doesn't look like it'll do much cleaning any more."
+	icon_state = "cart_wreck"
+
 /obj/structure/flora/jungle/alienplant1
 	name = "strange tree"
 	desc = "Some kind of bizarre alien tree. It oozes with a sickly yellow sap."
-	icon_state = "alienplant1";
+	icon_state = "alienplant1"
 	luminosity = 2
 
 /obj/structure/flora/jungle/bioluminescent/Destroy()

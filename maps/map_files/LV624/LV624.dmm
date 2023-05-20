@@ -9483,11 +9483,7 @@
 	},
 /area/lv624/lazarus/yggdrasil)
 "aND" = (
-/obj/structure/flora/jungle/plantbot1{
-	desc = "Doesn't look like it'll do much cleaning any more.";
-	icon_state = "cart_wreck";
-	name = "old janicart"
-	},
+/obj/structure/flora/jungle/cart_wreck,
 /turf/open/gm/river,
 /area/lv624/lazarus/yggdrasil)
 "aNE" = (

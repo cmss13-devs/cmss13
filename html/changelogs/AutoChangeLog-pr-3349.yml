@@ -1,4 +1,0 @@
-author: "ghostsheet"
-delete-after: True
-changes:
-  - bugfix: "Announcement are included in 'Radio' chat filter"

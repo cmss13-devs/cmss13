@@ -336,3 +336,18 @@
   realforest2001:
   - spellcheck: Adjusted names of Solaris Ridge walls to represent what they are without
       using the colony's name.
+2023-05-19:
+  BeagleGaming1:
+  - admin: Adds an event toggle for staff to toggle "Hardcore", causing all humans
+      to be unrevivable on death
+  Drathek harryob:
+  - server: Moved the local.db database location from root to the data folder
+  Huffie56:
+  - code_imp: Regroup all the code of the vendors that are in squads prep into the
+      same file squad_prep.
+  - code_imp: use the general uniform to hold the common items that are vended in
+      it and all the squad prep vendors.
+  - code_imp: move the training weapon vendor into the file of requisition.dm
+  ghostsheet:
+  - bugfix: Announcement are included in 'Radio' chat filter
+  - bugfix: Overwatch messages are included in 'Radio' chat filter

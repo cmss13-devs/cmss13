@@ -11,18 +11,18 @@
 	. = ..()
 	access = get_antagonist_access()
 
-/datum/equipment_preset/clf/load_name(mob/living/carbon/human/H, randomise)
-	H.gender = pick(60;MALE, 40;FEMALE)
+/datum/equipment_preset/clf/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = pick(60;MALE, 40;FEMALE)
 	var/random_name
 	var/first_name
 	var/last_name
 	//gender checks
-	if(H.gender == MALE)
+	if(new_human.gender == MALE)
 		if(prob(40))
 			first_name = "[capitalize(randomly_generate_japanese_word(rand(1, 3)))]"
 		else
 			first_name = "[pick(first_names_male_clf)]"
-		H.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
+		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 	else
 		if(prob(40))
 			first_name = "[capitalize(randomly_generate_japanese_word(rand(1, 3)))]"
@@ -35,14 +35,14 @@
 		last_name = "[pick(last_names_clf)]"
 	//put them together
 	random_name = "[first_name] [last_name]"
-	H.change_real_name(H, random_name)
-	H.age = rand(17,45)
-	H.r_hair = 25
-	H.g_hair = 25
-	H.b_hair = 35
-	H.r_eyes = 139
-	H.g_eyes = 62
-	H.b_eyes = 19
+	new_human.change_real_name(new_human, random_name)
+	new_human.age = rand(17,45)
+	new_human.r_hair = 25
+	new_human.g_hair = 25
+	new_human.b_hair = 35
+	new_human.r_eyes = 139
+	new_human.g_eyes = 62
+	new_human.b_eyes = 19
 
 //*****************************************************************************************************/
 
@@ -55,27 +55,27 @@
 
 	skills = /datum/skills/clf
 
-/datum/equipment_preset/clf/soldier/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/clf/soldier/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/colonist/clf/jumpsuit = new()
 	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	jumpsuit.attach_accessory(H, W)
-	H.equip_to_slot_or_del(jumpsuit, WEAR_BODY)
-	spawn_rebel_suit(H)
-	spawn_rebel_helmet(H)
-	spawn_rebel_shoes(H)
-	spawn_rebel_gloves(H)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_R_STORE)
+	jumpsuit.attach_accessory(new_human, W)
+	new_human.equip_to_slot_or_del(jumpsuit, WEAR_BODY)
+	spawn_rebel_suit(new_human)
+	spawn_rebel_helmet(new_human)
+	spawn_rebel_shoes(new_human)
+	spawn_rebel_gloves(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
 
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/full/random(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb(H), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/full/random(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb(new_human), WEAR_BACK)
 	if(prob(50))
-		spawn_rebel_smg(H)
+		spawn_rebel_smg(new_human)
 	else
-		spawn_rebel_rifle(H)
+		spawn_rebel_rifle(new_human)
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(H), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/clf/soldier/get_antag_clothing_equipment()
 	return list(
@@ -159,35 +159,35 @@
 
 	skills = /datum/skills/clf/combat_engineer
 
-/datum/equipment_preset/clf/engineer/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/clf/engineer/load_gear(mob/living/carbon/human/new_human)
 
 	var/obj/item/clothing/under/colonist/clf/M = new()
 	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	M.attach_accessory(H, W)
-	H.equip_to_slot_or_del(M, WEAR_BODY)
+	M.attach_accessory(new_human, W)
+	new_human.equip_to_slot_or_del(M, WEAR_BODY)
 
-	spawn_rebel_suit(H)
-	spawn_rebel_shoes(H)
-	spawn_rebel_gloves(H)
+	spawn_rebel_suit(new_human)
+	spawn_rebel_shoes(new_human)
+	spawn_rebel_gloves(new_human)
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson, WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/welding, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/cct, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/low_grade_full, WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/cct, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/low_grade_full, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_R_STORE)
 
-	spawn_rebel_weapon(H)
-	spawn_rebel_weapon(H,1)
+	spawn_rebel_weapon(new_human)
+	spawn_rebel_weapon(new_human,1)
 
 /datum/equipment_preset/clf/engineer/get_antag_clothing_equipment()
 	return list(
@@ -283,38 +283,38 @@
 	role_comm_title = "MED"
 	skills = /datum/skills/clf/combat_medic
 
-/datum/equipment_preset/clf/medic/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/clf/medic/load_gear(mob/living/carbon/human/new_human)
 
 	var/obj/item/clothing/under/colonist/clf/CLF = new()
 	var/obj/item/clothing/accessory/storage/surg_vest/equipped/W = new()
-	CLF.attach_accessory(H, W)
-	H.equip_to_slot_or_del(CLF, WEAR_BODY)
+	CLF.attach_accessory(new_human, W)
+	new_human.equip_to_slot_or_del(CLF, WEAR_BODY)
 
-	spawn_rebel_suit(H)
-	spawn_rebel_helmet(H)
-	spawn_rebel_shoes(H)
-	spawn_rebel_gloves(H)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_defib_and_analyzer(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BELT)
+	spawn_rebel_suit(new_human)
+	spawn_rebel_helmet(new_human)
+	spawn_rebel_shoes(new_human)
+	spawn_rebel_gloves(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_defib_and_analyzer(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BELT)
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/medic(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/structure/bed/portable_surgery(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/surgery/surgical_line, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
-	if(H.disabilities & NEARSIGHTED)
-		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/medic(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/structure/bed/portable_surgery(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/surgical_line, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_BACK)
+	if(new_human.disabilities & NEARSIGHTED)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(new_human), WEAR_EYES)
 	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large(H), WEAR_R_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large(new_human), WEAR_R_STORE)
 
-	spawn_rebel_smg(H)
+	spawn_rebel_smg(new_human)
 
 /datum/equipment_preset/clf/medic/get_antag_clothing_equipment()
 	return list(
@@ -439,44 +439,44 @@
 	role_comm_title = "SPC"
 	skills = /datum/skills/clf/specialist
 
-/datum/equipment_preset/clf/specialist/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/clf/specialist/load_gear(mob/living/carbon/human/new_human)
 
 	//jumpsuit and their webbing
 	var/obj/item/clothing/under/colonist/clf/CLF = new()
 	var/obj/item/clothing/accessory/storage/webbing/five_slots/W = new()
-	CLF.attach_accessory(H, W)
-	H.equip_to_slot_or_del(CLF, WEAR_BODY)
+	CLF.attach_accessory(new_human, W)
+	new_human.equip_to_slot_or_del(CLF, WEAR_BODY)
 	//clothing
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/swat(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night(H), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/swat(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night(new_human), WEAR_EYES)
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/cct(H), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/cct(new_human), WEAR_L_EAR)
 	//standard backpack stuff
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_BACK)
 	//specialist backpack stuff
-	H.equip_to_slot_or_del(new /obj/item/prop/folded_anti_tank_sadar(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs(H), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/prop/folded_anti_tank_sadar(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs(new_human), WEAR_IN_BACK)
 
-	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_IN_BACK)
 	//storage items
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
 
 	if(prob(75))
-		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_BACK)
-		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_BACK)
-		spawn_rebel_specialist_weapon(H, 10)
+		new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(new_human), WEAR_IN_BACK)
+		new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(new_human), WEAR_IN_BACK)
+		spawn_rebel_specialist_weapon(new_human, 10)
 	else
-		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_JACKET)
-		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(H), WEAR_IN_JACKET)
-		spawn_weapon(/obj/item/weapon/gun/lever_action/r4t, /obj/item/ammo_magazine/handful/lever_action, H)
+		new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(new_human), WEAR_IN_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(new_human), WEAR_IN_JACKET)
+		spawn_weapon(/obj/item/weapon/gun/lever_action/r4t, /obj/item/ammo_magazine/handful/lever_action, new_human)
 
 /datum/equipment_preset/clf/specialist/get_antag_clothing_equipment()
 	return list(
@@ -558,21 +558,21 @@
 	role_comm_title = "CMDR"
 	skills = /datum/skills/clf/commander
 
-/datum/equipment_preset/clf/commander/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary/miner(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/command(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia/smartgun(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba/highimpact(H), WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba/highimpact(H), WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/clf(H), WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack/clf(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/clf/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(H), WEAR_FEET)
+/datum/equipment_preset/clf/commander/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary/miner(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/command(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia/smartgun(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba/highimpact(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba/highimpact(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/clf(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/smartgun_powerpack/clf(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/clf/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
 
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_R_STORE)
 
 /datum/equipment_preset/clf/commander/get_antag_clothing_equipment()
 	return list(
@@ -684,36 +684,36 @@
 	role_comm_title = "LDR"
 	skills = /datum/skills/clf/leader
 
-/datum/equipment_preset/clf/leader/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/clf/leader/load_gear(mob/living/carbon/human/new_human)
 
 	//No random armor, so that it's more clear that he's the leader
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/sec/hos(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine(H), WEAR_WAIST)
-	if(H.disabilities & NEARSIGHTED)
-		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/sensor/prescription(H), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/sec/hos(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine(new_human), WEAR_WAIST)
+	if(new_human.disabilities & NEARSIGHTED)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/sensor/prescription(new_human), WEAR_EYES)
 	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/sensor(H), WEAR_EYES)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/sensor(new_human), WEAR_EYES)
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/command(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied_incendiary(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied_incendiary(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/screwdriver(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/multitool(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/command(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied_incendiary(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied_incendiary(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/screwdriver(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/multitool(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
 
-	spawn_weapon(/obj/item/weapon/gun/rifle/mar40, /obj/item/ammo_magazine/rifle/mar40, H)
+	spawn_weapon(/obj/item/weapon/gun/rifle/mar40, /obj/item/ammo_magazine/rifle/mar40, new_human)
 
 /datum/equipment_preset/clf/leader/get_antag_clothing_equipment()
 	return list(
@@ -830,62 +830,62 @@
 	role_comm_title = "Syn"
 
 
-/datum/equipment_preset/clf/synth/load_name(mob/living/carbon/human/H, randomise)
-	H.gender = pick(50;MALE,50;FEMALE)
+/datum/equipment_preset/clf/synth/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = pick(50;MALE,50;FEMALE)
 	var/datum/preferences/A = new()
-	A.randomize_appearance(H)
+	A.randomize_appearance(new_human)
 	var/random_name
 	if(prob(10))
 		random_name = "[capitalize(randomly_generate_japanese_word(rand(2, 3)))]"
-	else if(H.gender == MALE)
+	else if(new_human.gender == MALE)
 		random_name = "[pick(first_names_male_clf)]"
 	else
 		random_name = "[pick(first_names_female_clf)]"
 
-	if(H.gender == MALE)
-		H.f_style = "5 O'clock Shadow"
+	if(new_human.gender == MALE)
+		new_human.f_style = "5 O'clock Shadow"
 
-	H.change_real_name(H, random_name)
-	H.r_hair = 15
-	H.g_hair = 15
-	H.b_hair = 25
-	H.r_eyes = 139
-	H.g_eyes = 62
-	H.b_eyes = 19
+	new_human.change_real_name(new_human, random_name)
+	new_human.r_hair = 15
+	new_human.g_hair = 15
+	new_human.b_hair = 25
+	new_human.r_eyes = 139
+	new_human.g_eyes = 62
+	new_human.b_eyes = 19
 	idtype = /obj/item/card/id/data
 
-/datum/equipment_preset/clf/synth/load_race(mob/living/carbon/human/H)
-	H.set_species(SYNTH_COLONY_GEN_ONE)
+/datum/equipment_preset/clf/synth/load_race(mob/living/carbon/human/new_human)
+	new_human.set_species(SYNTH_COLONY_GEN_ONE)
 
-/datum/equipment_preset/clf/synth/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/clf/synth/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/colonist/clf/CLF = new()
 	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	CLF.attach_accessory(H, W)
-	H.equip_to_slot_or_del(CLF, WEAR_BODY)
+	CLF.attach_accessory(new_human, W)
+	new_human.equip_to_slot_or_del(CLF, WEAR_BODY)
 
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_suture_and_graft, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H), WEAR_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_suture_and_graft, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 
-	spawn_weapon(/obj/item/weapon/gun/rifle/mar40/carbine, /obj/item/ammo_magazine/rifle/mar40/extended, H, 0, 10)
+	spawn_weapon(/obj/item/weapon/gun/rifle/mar40/carbine, /obj/item/ammo_magazine/rifle/mar40/extended, new_human, 0, 10)
 
-	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp, WEAR_FACE)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/command(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/synth, WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire, WEAR_R_STORE)
-	if(H.disabilities & NEARSIGHTED)
-		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp, WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/command(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/synth, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire, WEAR_R_STORE)
+	if(new_human.disabilities & NEARSIGHTED)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(new_human), WEAR_EYES)
 	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
 
 /datum/equipment_preset/clf/synth/get_antag_clothing_equipment()
 	return list(

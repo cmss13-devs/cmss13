@@ -128,11 +128,12 @@
 		if(isnull(range_to_spawn_on))
 			range_to_spawn_on = 0
 
+		var/turf/spawn_turf
 		if(range_to_spawn_on)
-			for(var/turf/T in range(initial_turf, range_to_spawn_on))
-				if(!T || istype(T, /turf/closed))
+			for(spawn_turf in range(initial_turf, range_to_spawn_on))
+				if(!spawn_turf || istype(spawn_turf, /turf/closed))
 					continue
-				turfs += T
+				turfs += spawn_turf
 		else
 			turfs = list(initial_turf)
 
@@ -140,23 +141,23 @@
 			return
 
 		var/list/humans = list()
-		var/mob/living/carbon/human/H
+		var/mob/living/carbon/human/spawned_human
 		for(var/i = 0 to humans_to_spawn-1)
-			var/turf/to_spawn_at = pick(turfs)
-			H = new(to_spawn_at)
+			spawn_turf = pick(turfs)
+			spawned_human = new(spawn_turf)
 
-			if(!H.hud_used)
-				H.create_hud()
+			if(!spawned_human.hud_used)
+				spawned_human.create_hud()
 
 			if(free_the_humans)
-				owner.free_for_ghosts(H)
+				owner.free_for_ghosts(spawned_human)
 
-			arm_equipment(H, job_name, TRUE, FALSE)
+			arm_equipment(spawned_human, job_name, TRUE, FALSE)
 
-			humans += H
+			humans += spawned_human
 
 			if(strip_the_humans)
-				for(var/obj/item/current_item in H)
+				for(var/obj/item/current_item in spawned_human)
 					//no more deletion of ID cards
 					if(istype(current_item, /obj/item/card/id/))
 						continue
@@ -164,13 +165,35 @@
 
 				continue
 
+			var/obj/item_storage
 			if(strip_weapons)
-				for(var/obj/item/current_item in H.GetAllContents(3))
+				for(var/obj/item/current_item in spawned_human.GetAllContents(3))
+					if(istype(current_item, /obj/item/ammo_magazine))
+
+						item_storage = current_item.loc
+						qdel(current_item)
+
+						if(istype(item_storage, /obj/item/storage))
+							item_storage.update_icon()
+
+						continue
+
 					if(istype(current_item, /obj/item/weapon))
 						qdel(current_item)
 						continue
+
 					if(istype(current_item, /obj/item/explosive))
 						qdel(current_item)
+
+				for(var/obj/item/hand_item in spawned_human.hands)
+					if(istype(hand_item, /obj/item/weapon))
+						qdel(hand_item)
+						continue
+
+					if(istype(hand_item, /obj/item/explosive))
+						qdel(hand_item)
+
+
 
 		if (offer_as_ert)
 			var/datum/emergency_call/custom/em_call = new()
@@ -222,11 +245,12 @@
 		if(isnull(range_to_spawn_on))
 			range_to_spawn_on = 0
 
+		var/turf/spawn_turf
 		if(range_to_spawn_on)
-			for(var/turf/T in range(initial_turf, range_to_spawn_on))
-				if(!T || istype(T, /turf/closed))
+			for(spawn_turf in range(initial_turf, range_to_spawn_on))
+				if(!spawn_turf || istype(spawn_turf, /turf/closed))
 					continue
-				turfs += T
+				turfs += spawn_turf
 		else
 			turfs = list(initial_turf)
 
@@ -238,8 +262,8 @@
 		var/list/xenos = list()
 		var/mob/living/carbon/xenomorph/X
 		for(var/i = 0 to xenos_to_spawn - 1)
-			var/turf/to_spawn_at = pick(turfs)
-			X = new caste_type(to_spawn_at, null, xeno_hive)
+			spawn_turf = pick(turfs)
+			X = new caste_type(spawn_turf, null, xeno_hive)
 
 			if(!X.hud_used)
 				X.create_hud()

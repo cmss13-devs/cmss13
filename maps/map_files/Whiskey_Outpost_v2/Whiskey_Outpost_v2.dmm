@@ -1628,7 +1628,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "fJ" = (
-/obj/structure/flora/jungle/bioluminescent,
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/one_south)
 "fL" = (
@@ -2541,7 +2541,7 @@
 /turf/open/floor/plating,
 /area/whiskey_outpost/inside/hospital)
 "iD" = (
-/obj/structure/flora/jungle/bioluminescent,
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/four_south)
 "iF" = (
@@ -6370,7 +6370,7 @@
 	},
 /area/whiskey_outpost/inside/bunker)
 "wb" = (
-/obj/structure/flora/jungle/bioluminescent,
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/coast{
 	icon_state = "beachcorner2"
 	},
@@ -9076,7 +9076,7 @@
 /turf/open/gm/coast,
 /area/whiskey_outpost/outside/lane/four_north)
 "FH" = (
-/obj/structure/flora/jungle/bioluminescent,
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/west)
 "FI" = (
@@ -10812,7 +10812,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "MR" = (
-/obj/structure/flora/jungle/bioluminescent,
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/two_north)
 "MU" = (
@@ -10947,7 +10947,7 @@
 /turf/open/jungle/impenetrable,
 /area/whiskey_outpost/outside/south/very_far)
 "Nv" = (
-/obj/structure/flora/jungle/bioluminescent,
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/grass{
 	icon_state = "grassbeach"
 	},
@@ -11096,7 +11096,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "Ob" = (
-/obj/structure/flora/jungle/bioluminescent,
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/one_north)
 "Oc" = (
@@ -11217,7 +11217,7 @@
 	},
 /area/whiskey_outpost/outside/river/east)
 "OA" = (
-/obj/structure/flora/jungle/bioluminescent,
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/four_north)
 "OD" = (
@@ -11398,7 +11398,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/northwest)
 "Pr" = (
-/obj/structure/flora/jungle/bioluminescent,
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river)
 "Ps" = (
@@ -11548,7 +11548,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_north)
 "Qa" = (
-/obj/structure/flora/jungle/bioluminescent,
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/east)
 "Qc" = (

@@ -214,10 +214,10 @@ var/list/global/item_storage_box_cache = list()
 	end.icon_state = "stored_end"
 
 /datum/item_storage_box/Destroy(force, ...)
-	. = ..()
 	QDEL_NULL(start)
 	QDEL_NULL(continued)
 	QDEL_NULL(end)
+	return ..()
 
 /obj/item/storage/proc/space_orient_objs(list/obj/item/display_contents)
 	var/baseline_max_storage_space = 21 //should be equal to default backpack capacity

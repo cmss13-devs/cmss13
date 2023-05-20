@@ -691,6 +691,10 @@
 	density = FALSE
 	luminosity = 5
 
+/obj/structure/prop/brazier/torch/Destroy()
+	SetLuminosity(0)
+	return ..()
+
 /obj/structure/prop/brazier/torch/frame
 	name = "unlit torch"
 	desc = "It's a torch, but it's not lit.  Use something hot to ignite it, like a welding tool."

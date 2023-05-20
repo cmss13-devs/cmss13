@@ -448,6 +448,16 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	desc = "Some kind of bizarre alien tree. It oozes with a sickly yellow sap."
 	icon_state = "plantbot1"
 
+/obj/structure/flora/jungle/bioluminescent
+	name = "strange tree"
+	desc = "Some kind of bizarre alien tree. It oozes with a sickly yellow sap."
+	icon_state = "alienplant1";
+	luminosity = 2
+
+/obj/structure/flora/jungle/bioluminescent/Destroy()
+	SetLuminosity(0)
+	return ..()
+
 /obj/structure/flora/jungle/planttop1
 	name = "strange tree"
 	desc = "Some kind of bizarre alien tree. It oozes with a sickly yellow sap."

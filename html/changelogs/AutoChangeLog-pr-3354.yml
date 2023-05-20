@@ -1,7 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - bugfix: "Preferences for job options (e.g. civilian/military correspondent) now properly save between rounds."
-  - bugfix: "WO Field Doctor no longer inherits regular doctor's job options (and associated rank)."
-  - qol: "Selecting job options is now better readable."
-  - qol: "Survivor variant preference is moved to job selection screen."

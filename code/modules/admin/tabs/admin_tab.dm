@@ -430,18 +430,16 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	if(tgui_alert(src, "This will strip ALL mobs within your view range. Are you sure?", "Confirmation", list("Yes", "Cancel")) != "Yes")
+	if(tgui_alert(src, "This will strip ALL mobs within your view range. Are you sure?", "Confirmation", list("Yes", "Cancel")))
 		return
 
 	var/strip_self = FALSE
-	if(tgui_alert(src, "Do you want to strip yourself as well?", "Confirmation", list("Yes", "No")) != "Yes")
+	if(tgui_alert(src, "Do you want to strip yourself as well?", "Confirmation", list("Yes", "No") != "Yes"))
 		strip_self = TRUE
 
 	// These for loops are basically exactly the same, however the "if strip self" was done outside of loop for (minor) performance reasons
 	if(strip_self)
 		for(var/mob/living/current_mob in view())
-			if(usr == current_mob)
-				continue
 			for (var/obj/item/current_item in current_mob)
 				//no more deletion of ID cards
 				if(istype(current_item, /obj/item/card/id))
@@ -450,6 +448,8 @@
 
 	else
 		for(var/mob/living/current_mob in view())
+			if(usr == current_mob)
+				continue
 			for (var/obj/item/current_item in current_mob)
 				//no more deletion of ID cards
 				if(istype(current_item, /obj/item/card/id))

@@ -96,7 +96,7 @@
 				zombie.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You are dead...</u></span><br>You will rise again in one minute.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
 			to_chat(zombie, SPAN_XENOWARNING("You fall... but your body is slowly regenerating itself."))
 			var/weak_ref = WEAKREF(zombie)
-			to_revive[weak_ref] = addtimer(CALLBACK(src, PROC_REF(revive_from_death), zombie, "[REF(zombie)]", 1 MINUTES, TIMER_STOPPABLE|TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+			to_revive[weak_ref] = addtimer(CALLBACK(src, PROC_REF(revive_from_death), zombie, "[REF(zombie)]"), 1 MINUTES, TIMER_STOPPABLE|TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 			revive_times[weak_ref] = world.time + 1 MINUTES
 		else
 			if(zombie.client)
@@ -128,7 +128,7 @@
 
 /datum/species/zombie/proc/remove_from_revive(mob/living/carbon/human/zombie)
 	var/weak_ref = WEAKREF(zombie)
-	if(weak_ref) in to_revive)
+	if(weak_ref in to_revive)
 		deltimer(to_revive[weak_ref])
 		to_revive -= weak_ref)
 	revive_times -= weak_ref)

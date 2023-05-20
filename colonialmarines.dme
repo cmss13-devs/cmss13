@@ -13,6 +13,7 @@
 // BEGIN_INCLUDE
 #include "code\_byond_version_compat.dm"
 #include "code\_compile_options.dm"
+#include "code\_experiments.dm"
 #include "code\_macros.dm"
 #include "code\global.dm"
 #include "code\names.dm"

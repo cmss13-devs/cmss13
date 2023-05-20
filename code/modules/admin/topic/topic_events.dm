@@ -165,8 +165,9 @@
 
 				continue
 
-			var/obj/item_storage
+
 			if(strip_weapons)
+				var/obj/item_storage
 				for(var/obj/item/current_item in spawned_human.GetAllContents(3))
 					if(istype(current_item, /obj/item/ammo_magazine))
 

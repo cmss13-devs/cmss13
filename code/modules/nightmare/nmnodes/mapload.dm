@@ -99,8 +99,8 @@
 	for(var/filename in dircontents)
 		if(!matcher.Find(filename))
 			continue
-		var/fprob = Clamp(text2num(matcher.group[1]) / 100, 0, 1)
 #if !defined(UNIT_TESTS)
+		var/fprob = Clamp(text2num(matcher.group[1]) / 100, 0, 1)
 		if(fprob < rand())
 			continue
 #endif // Remove the possibility of chance for testing

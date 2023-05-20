@@ -458,7 +458,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_state = "alienplant1"
 	luminosity = 2
 
-/obj/structure/flora/jungle/bioluminescent/Destroy()
+/obj/structure/flora/jungle/alienplant1/Destroy()
 	SetLuminosity(0)
 	return ..()
 

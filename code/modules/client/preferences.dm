@@ -104,8 +104,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	///holds our preferred job options for jobs
 	var/pref_special_job_options = list()
 
-	var/preferred_survivor_variant = ANY_SURVIVOR
-
 	//WL Council preferences.
 	var/yautja_status = WHITELIST_NORMAL
 	var/commander_status = WHITELIST_NORMAL
@@ -622,11 +620,6 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Spawn as Miscellaneous:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_MISC]'><b>[toggles_ert & PLAY_MISC ? "Yes" : "No"]</b></a><br>"
 			dat += "</div>"
 
-			dat += "<div id='column2'>"
-			dat += "<h2><b><u>Survivor Settings:</u></b></h2>"
-			dat += "<b>Preferred Survivor Variant:</b> <a href='?_src_=prefs;preference=preferred_survivor_variant;task=input'><b>[preferred_survivor_variant]</b></a>"
-			dat += "</div>"
-
 	dat += "</div></body>"
 
 	winshow(user, "preferencewindow", TRUE)
@@ -684,10 +677,12 @@ var/const/MAX_SAVE_SLOTS = 10
 		HTML += "<b>[job.disp_title]</b></td><td width='10%' align='center'>"
 
 		if(job.job_options)
-			if(!pref_special_job_options || !pref_special_job_options[role_name])
+			if(pref_special_job_options)
+				pref_special_job_options[role_name] = sanitize_inlist(pref_special_job_options[role_name], job.job_options, job.job_options[1])
+			else
 				pref_special_job_options[role_name] = job.job_options[1]
 
-			var/txt = pref_special_job_options[role_name]
+			var/txt = job.job_options[pref_special_job_options[role_name]]
 			HTML += "<a href='?_src_=prefs;preference=special_job_select;task=input;text=[job.title]'><b>[txt]</b></a>"
 
 		HTML += "</td><td width='50%'>"
@@ -1554,12 +1549,6 @@ var/const/MAX_SAVE_SLOTS = 10
 							religion = strip_html(raw_choice) // This only updates itself in the UI when another change is made, eg. save slot or changing other char settings.
 						return
 					religion = choice
-
-				if("preferred_survivor_variant")
-					var/new_preferred_survivor_variant = tgui_input_list(user, "Choose your preferred survivor variant:", "Preferred Survivor Variant", SURVIVOR_VARIANT_LIST)
-					if(!new_preferred_survivor_variant)
-						return
-					preferred_survivor_variant = new_preferred_survivor_variant
 
 				if("special_job_select")
 					var/datum/job/job = RoleAuthority.roles_by_name[href_list["text"]]

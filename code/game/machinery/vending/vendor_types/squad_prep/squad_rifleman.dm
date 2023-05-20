@@ -10,6 +10,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
 
+		list("ENTRENCHMENT EQUIPMENT (OPTIONAL)", 0, null, null, null),
+		list("Entrenching Tool (ET)", 0, /obj/item/tool/shovel/etool/folded, MARINE_CAN_BUY_ETOOL, VENDOR_ITEM_RECOMMENDED),
+		list("Sandbags", 5, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_RECOMMENDED),
+
 		list("ARMOR (CHOOSE 1)", 0, null, null, null),
 		list("Light Armor", 0, /obj/item/clothing/suit/storage/marine/light, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 		list("Medium Armor", 0, /obj/item/clothing/suit/storage/marine/medium, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),

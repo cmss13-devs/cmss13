@@ -130,8 +130,8 @@
 	var/weak_ref = WEAKREF(zombie)
 	if(weak_ref in to_revive)
 		deltimer(to_revive[weak_ref])
-		to_revive -= weak_ref)
-	revive_times -= weak_ref)
+		to_revive -= weak_ref
+	revive_times -= weak_ref
 
 /datum/species/zombie/get_status_tab_items(mob/living/carbon/human/zombie)
 	var/list/static_tab_items = list()

@@ -205,7 +205,7 @@ var/list/global/item_storage_box_cache = list()
 	var/atom/movable/screen/storage/continued = null
 	var/atom/movable/screen/storage/end = null
 
-/datum/item_storage_box/Initialize()
+/datum/item_storage_box/New()
 	start = new()
 	start.icon_state = "stored_start"
 	continued = new()

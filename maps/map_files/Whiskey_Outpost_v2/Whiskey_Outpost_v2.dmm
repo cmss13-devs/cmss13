@@ -1674,11 +1674,7 @@
 	},
 /area/whiskey_outpost/inside/living)
 "fU" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/jungle{
 	bushes_spawn = 0;
 	icon_state = "grass_impenetrable"
@@ -2146,11 +2142,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "hy" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirtgrassborder{
 	dir = 8
 	},
@@ -3014,11 +3006,7 @@
 	},
 /area/whiskey_outpost/inside/living)
 "ke" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/south/far)
 "kg" = (
@@ -3340,11 +3328,7 @@
 	},
 /area/whiskey_outpost)
 "lp" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/south/very_far)
 "lq" = (
@@ -5689,11 +5673,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "tK" = (
@@ -6255,11 +6235,7 @@
 	},
 /area/whiskey_outpost/inside/bunker)
 "vF" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "vG" = (
@@ -6850,11 +6826,7 @@
 	},
 /area/whiskey_outpost/inside/bunker)
 "xK" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
@@ -7444,11 +7416,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
 "zK" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/inside/caves/caverns)
 "zM" = (
@@ -8581,11 +8549,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "DU" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_south)
 "DV" = (
@@ -9301,11 +9265,7 @@
 /area/whiskey_outpost/outside/north/beach)
 "GA" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "GB" = (
@@ -9678,11 +9638,7 @@
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/one_north)
 "HX" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/effect/decal/cleanable/blood/writing,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south/very_far)
@@ -9858,11 +9814,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_north)
 "IC" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/north/northwest)
 "IF" = (
@@ -9886,11 +9838,7 @@
 /turf/open/floor,
 /area/whiskey_outpost/outside/south/far)
 "IK" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirtgrassborder{
 	dir = 8
 	},
@@ -10424,11 +10372,7 @@
 	},
 /area/whiskey_outpost/inside/hospital/triage)
 "Lp" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/disposalpipe/segment,
 /turf/open/gm/grass,
 /area/whiskey_outpost/outside/north/northwest)
@@ -10556,11 +10500,7 @@
 	},
 /area/whiskey_outpost/outside/lane/three_south)
 "LR" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/disposalpipe/segment,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
@@ -10847,11 +10787,7 @@
 /turf/open/gm/coast,
 /area/whiskey_outpost/outside/lane/four_north)
 "Nc" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/jungle{
 	bushes_spawn = 0;
 	icon_state = "grass_impenetrable"
@@ -11231,11 +11167,7 @@
 	},
 /area/whiskey_outpost/outside/lane/three_north)
 "OF" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
 "OG" = (
@@ -11579,11 +11511,7 @@
 	},
 /area/whiskey_outpost/outside/south)
 "Ql" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -11745,11 +11673,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north)
 "QV" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_north)
 "QW" = (
@@ -12296,11 +12220,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "Th" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/barricade/plasteel/wired,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/one_north)
@@ -12725,19 +12645,11 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "UO" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/grass,
 /area/whiskey_outpost/outside/north/northwest)
 "UP" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/jungle{
 	bushes_spawn = 0;
 	icon_state = "grass_impenetrable"
@@ -13981,11 +13893,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/two)
 "ZT" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},

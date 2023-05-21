@@ -165,7 +165,7 @@
 				return TRUE
 		else
 			var/obj/limb/affecting = get_limb(check_zone(M.zone_selected))
-			if(initiate_surgery_moment(null, src, affecting, M))
+			if(affecting && initiate_surgery_moment(null, src, affecting, M))
 				return TRUE
 
 	for(var/datum/disease/D in viruses)

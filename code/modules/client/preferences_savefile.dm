@@ -90,7 +90,7 @@
 
 /proc/sanitize_keybindings(value)
 	var/list/base_bindings = sanitize_islist(value, list())
-	if(!base_bindings)
+	if(!length(base_bindings))
 		base_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key)
 	for(var/key in base_bindings)
 		base_bindings[key] = base_bindings[key] & GLOB.keybindings_by_name
@@ -149,6 +149,7 @@
 	S["xeno_vision_level_pref"] >> xeno_vision_level_pref
 	S["view_controller"] >> View_MC
 	S["observer_huds"] >> observer_huds
+	S["pref_special_job_options"] >> pref_special_job_options
 
 	S["synth_name"] >> synthetic_name
 	S["synth_type"] >> synthetic_type
@@ -176,8 +177,6 @@
 	S["key_bindings"] >> key_bindings
 	check_keybindings()
 
-	S["preferred_survivor_variant"]	>> preferred_survivor_variant
-
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
 
@@ -191,8 +190,6 @@
 
 	S["custom_cursors"] >> custom_cursors
 	S["autofit_viewport"] >> auto_fit_viewport
-
-	S["pref_special_job_options"] >> pref_special_job_options
 
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -245,7 +242,6 @@
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
 	commander_status = sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Colonel's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
-	preferred_survivor_variant = sanitize_inlist(preferred_survivor_variant, SURVIVOR_VARIANT_LIST, ANY_SURVIVOR)
 	yautja_status = sanitize_inlist(yautja_status, whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status = sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))
 	key_bindings = sanitize_keybindings(key_bindings)
@@ -327,6 +323,7 @@
 
 	S["view_controller"] << View_MC
 	S["observer_huds"] << observer_huds
+	S["pref_special_job_options"] << pref_special_job_options
 
 	S["synth_name"] << synthetic_name
 	S["synth_type"] << synthetic_type
@@ -347,8 +344,6 @@
 	S["pred_skin_color"] << predator_skin_color
 	S["pred_flavor_text"] << predator_flavor_text
 
-	S["preferred_survivor_variant"] << preferred_survivor_variant
-
 	S["commander_status"] << commander_status
 	S["co_sidearm"] << commander_sidearm
 	S["yautja_status"] << yautja_status
@@ -367,8 +362,6 @@
 	S["no_radials_preference"] << no_radials_preference
 	S["no_radial_labels_preference"] << no_radial_labels_preference
 	S["custom_cursors"] << custom_cursors
-
-	S["pref_special_job_options"] << pref_special_job_options
 
 	return TRUE
 
@@ -616,16 +609,17 @@
 		var/addedbind = FALSE
 		if(hotkeys)
 			for(var/hotkeytobind in kb.hotkey_keys)
-				if(!length(key_bindings[hotkeytobind]))
+				if(!length(key_bindings[hotkeytobind]) || hotkeytobind == "Unbound") //Only bind to the key if nothing else is bound expect for Unbound
 					LAZYADD(key_bindings[hotkeytobind], kb.name)
 					addedbind = TRUE
 		else
 			for(var/classickeytobind in kb.classic_keys)
-				if(!length(key_bindings[classickeytobind]))
+				if(!length(key_bindings[classickeytobind]) || classickeytobind == "Unbound") //Only bind to the key if nothing else is bound expect for Unbound
 					LAZYADD(key_bindings[classickeytobind], kb.name)
 					addedbind = TRUE
 		if(!addedbind)
 			notadded += kb
+	save_preferences()
 	if(length(notadded))
 		addtimer(CALLBACK(src, PROC_REF(announce_conflict), notadded), 5 SECONDS)
 
@@ -637,10 +631,10 @@
 
 		if(hotkeys)
 			for(var/entry in conflicted.hotkey_keys)
-				key_bindings[entry] -= conflicted.name
+				LAZYREMOVE(key_bindings[entry], conflicted.name)
 		else
 			for(var/entry in conflicted.classic_keys)
-				key_bindings[entry] -= conflicted.name
+				LAZYREMOVE(key_bindings[entry], conflicted.name)
 
 		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
 

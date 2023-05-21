@@ -37,7 +37,7 @@
 	var/b_type = "A+" //Player's bloodtype
 
 	var/underwear = "Boxers (Camo Conforming)" //Which underwear the player wants
-	var/undershirt = "Undershirt" //Which undershirt the player wants.
+	var/undershirt = "Undershirt (Tan)" //Which undershirt the player wants.
 	var/backbag = 2 //Which backpack type the player has chosen. Satchel or Backpack.
 
 	var/datum/species/species //Contains icon generation and language information, set during New().
@@ -163,6 +163,9 @@
 
 	///list of weakrefs of recently dropped objects
 	var/list/remembered_dropped_objects = list()
+
+	///list of active transfusions from blood bags or iv stands
+	var/list/active_transfusions = list()
 
 /client/var/cached_human_playtime
 

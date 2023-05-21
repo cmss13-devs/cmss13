@@ -84,6 +84,19 @@
 			</div>
 			{{/if}}
 	</div>
+	<div style="padding-top: 10px">
+		<h3>Fire Mission Simulator:</h3>
+			{{if data.shuttle_state != "in_transit"}}
+				<div class="item">
+					{{:helper.link("Switch To Simulation", null, {'switch_to_simulation' : 1}, null , null)}}
+				</div>
+				<br/>
+				{{else}}
+					<div class="item">
+						Have to be Stationary, have to select a Fire Mission and Fire Mission has to be without errors.
+					</div>
+			{{/if}}
+	</div>
 	{{/if}}
 {{else data.screen_mode == 1}}
 	<h3>Weapon Selected: <span class="white">{{:data.selected_eqp}}</span></h3>

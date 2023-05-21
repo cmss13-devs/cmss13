@@ -545,19 +545,21 @@
 //SOLARIS RIDGE TILESET//
 
 /turf/closed/wall/solaris
-	name = "solaris ridge colony wall"
+	name = "colony wall"
 	icon = 'icons/turf/walls/solaris/solaris.dmi'
 	icon_state = "solaris_interior"
 	desc = "Tough looking walls that have been blasted by sand since the day they were erected. A testament to human willpower."
 	walltype = WALL_SOLARIS
 
 /turf/closed/wall/solaris/reinforced
+	name = "reinforced colony wall"
 	icon_state = "solaris_interior_r"
 	walltype = WALL_SOLARISR
 	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
 
 /turf/closed/wall/solaris/reinforced/hull
+	name = "heavy reinforced colony wall"
 	icon_state = "solaris_interior_h"
 	hull = 1
 
@@ -565,7 +567,7 @@
 	name = "Colony Windbreaker"
 
 /turf/closed/wall/solaris/rock
-	name = "solaris ridge rock wall"
+	name = "rock wall"
 	icon_state = "solaris_rock"
 	walltype = WALL_SOLARIS_ROCK
 	hull = 1

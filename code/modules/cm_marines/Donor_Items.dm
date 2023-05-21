@@ -348,21 +348,22 @@
 	desc = "Powered by the magic of FRIENDSHIP. (Can be toggled opened or closed)  UNIQUE DONOR ITEM"
 	icon_state = "AlexLermire_u"
 	item_state = "AlexLermire_u"
-	var/open = 0
+	var/open = FALSE
+
 /obj/item/clothing/suit/storage/marine/fluff/AlexLemire/verb/verb_toggleopen()
 	set src in usr
 	set category = "Object"
 	set name = "Toggle Open"
-	if(open ==0)
+	if(!open)
 		icon_state = "AlexLermire_on_u"
 		item_state = "AlexLermire_on_u"
-		open = 1
+		open = TRUE
 	else
-		open = 0
+		open = FALSE
 		icon_state = "AlexLermire_u"
 		item_state = "AlexLermire_u"
 	update_icon()
-	return
+	usr.update_inv_wear_suit()
 
 /obj/item/clothing/suit/storage/marine/fluff/titus
 	name = "ODST Armor"
@@ -387,6 +388,22 @@
 	desc = "You can't take the sky from me...  DONOR ITEM"
 	icon_state = "Eonoc_coat"
 	item_state = "Eonoc_coat"
+	var/open = FALSE
+
+/obj/item/clothing/suit/storage/marine/fluff/eonoc/verb/verb_toggleopen()
+	set src in usr
+	set category = "Object"
+	set name = "Toggle Open"
+	if(!open)
+		icon_state = "Eonoc_coat_o"
+		item_state = "Eonoc_coat_o"
+		open = TRUE
+	else
+		open = FALSE
+		icon_state = "Eonoc_coat"
+		item_state = "Eonoc_coat"
+	update_icon()
+	usr.update_inv_wear_suit()
 
 /obj/item/clothing/suit/storage/marine/fluff/kaila
 	name = "Custom Engineering Armor"

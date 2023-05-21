@@ -200,7 +200,7 @@
 			if(input == oldname || !input)
 				to_chat(user, SPAN_NOTICE("You changed [target] to... well... [target]."))
 			else
-				msg_admin_niche("[key_name(usr)] changed \the [src]'s name to [input] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+				msg_admin_niche("[key_name(usr)] changed \the [src]'s name to [input] [ADMIN_JMP(src)]")
 				target.AddComponent(/datum/component/rename, input, target.desc)
 				var/datum/component/label/label = target.GetComponent(/datum/component/label)
 				if(label)
@@ -218,7 +218,7 @@
 			if(input == olddesc || !input)
 				to_chat(user, SPAN_NOTICE("You decide against changing [target]'s description."))
 			else
-				msg_admin_niche("[key_name(usr)] changed \the [src]'s description to [input] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+				msg_admin_niche("[key_name(usr)] changed \the [src]'s description to [input] [ADMIN_JMP(src)]")
 				target.AddComponent(/datum/component/rename, target.name, input)
 				to_chat(user, SPAN_NOTICE("You have successfully changed [target]'s description."))
 				obj_target.renamedByPlayer = TRUE

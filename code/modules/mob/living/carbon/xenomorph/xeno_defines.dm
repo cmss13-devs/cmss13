@@ -102,6 +102,9 @@
 
 	var/caste_luminosity = 0
 
+	/// if fire_immunity is set to be vulnerable, how much will fire damage be multiplied. Defines in xeno.dm
+	var/fire_vulnerability_mult = 0
+
 	var/burrow_cooldown = 5 SECONDS
 	var/tunnel_cooldown = 100
 	var/widen_cooldown = 10 SECONDS
@@ -249,6 +252,9 @@
 	var/list/open_xeno_leader_positions = list(1, 2) // Ordered list of xeno leader positions (indexes in xeno_leader_list) that are not occupied
 	var/list/xeno_leader_list[2] // Ordered list (i.e. index n holds the nth xeno leader)
 	var/stored_larva = 0
+
+	///used by /datum/hive_status/proc/increase_larva_after_burst() to support non-integer increases to larva
+	var/partial_larva = 0
 	/// Assoc list of free slots available to specific castes
 	var/list/free_slots = list(
 		/datum/caste_datum/burrower = 1,
@@ -769,15 +775,13 @@
 			if(2) slots[TIER_2][GUARANTEED_SLOTS][initial(C.caste_type)] = slot_count
 			if(3) slots[TIER_3][GUARANTEED_SLOTS][initial(C.caste_type)] = slot_count
 
-	var/total_xenos = 0
 	var/effective_total = burrowed_factor
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(xeno.counts_for_slots)
-			total_xenos++
 			effective_total++
 
 	// Tier 3 slots are always 20% of the total xenos in the hive
-	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.20*total_xenos/tier_slot_multiplier) - used_tier_3_slots)
+	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.20*effective_total/tier_slot_multiplier) - used_tier_3_slots)
 	// Tier 2 slots are between 30% and 50% of the hive, depending
 	// on how many T3s there are.
 	slots[TIER_2][OPEN_SLOTS] = max(0, Ceiling(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
@@ -927,7 +931,7 @@
 		return FALSE
 	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of \the [spawning_turf]!"),
 	SPAN_XENODANGER("You burrow out of \the [spawning_turf] and awaken from your slumber. For the Hive!"))
-	msg_admin_niche("[key_name(new_xeno)] burrowed out from \a [spawning_turf]. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[spawning_turf.x];Y=[spawning_turf.y];Z=[spawning_turf.z]'>JMP</a>)")
+	msg_admin_niche("[key_name(new_xeno)] burrowed out from \a [spawning_turf]. [ADMIN_JMP(spawning_turf)]")
 	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 	to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))
 	if(new_xeno.client)
@@ -1006,6 +1010,14 @@
 	hugger.visible_message(SPAN_XENODANGER("A facehugger suddenly emerges out of \the [A]!"), SPAN_XENODANGER("You emerge out of \the [A] and awaken from your slumber. For the Hive!"))
 	playsound(hugger, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
 	hugger.generate_name()
+
+///Called by /obj/item/alien_embryo when a host is bursting to determine extra larva per burst
+/datum/hive_status/proc/increase_larva_after_burst()
+	var/extra_per_burst = CONFIG_GET(number/extra_larva_per_burst)
+	partial_larva += extra_per_burst
+	for(var/i = 1 to partial_larva)
+		partial_larva--
+		stored_larva++
 
 /datum/hive_status/corrupted
 	name = "Corrupted Hive"

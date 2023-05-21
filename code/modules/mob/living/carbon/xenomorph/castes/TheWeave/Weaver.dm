@@ -66,7 +66,7 @@
 		/datum/action/xeno_action/onclick/exude_energy,
 		)
 	inherent_verbs = list(
-		/mob/living/carbon/xenomorph/proc/rename_tunnel
+		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 	)
 	mutation_type = WEAVE_NORMAL
 

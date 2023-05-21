@@ -141,7 +141,7 @@ SUBSYSTEM_DEF(garbage)
 
 #ifdef EXPERIMENT_515_QDEL_HARD_REFERENCE
 // 1 from the hard reference in the queue, and 1 from the variable used before this
-#define IS_DELETED(datum) (refcount(##datum) == 2)
+#define IS_DELETED(datum, _) (refcount(##datum) == 2)
 #else
 #define IS_DELETED(datum, gcd_at_time) (isnull(##datum) || ##datum.gc_destroyed != gcd_at_time)
 #endif
@@ -173,9 +173,7 @@ SUBSYSTEM_DEF(garbage)
 			continue
 
 		var/queued_at_time = L[GC_QUEUE_ITEM_QUEUE_TIME]
-#ifndef EXPERIMENT_515_QDEL_HARD_REFERENCE
-		var/GCd_at_time = L[GC_QUEUE_ITEM_GCD_DESTROYED]
-#endif
+
 		if(queued_at_time > cut_off_time)
 			break // Everything else is newer, skip them
 		count++
@@ -183,16 +181,13 @@ SUBSYSTEM_DEF(garbage)
 #ifdef EXPERIMENT_515_QDEL_HARD_REFERENCE
 		var/datum/D = L[GC_QUEUE_ITEM_REF]
 #else
+		var/GCd_at_time = L[GC_QUEUE_ITEM_GCD_DESTROYED]
 		var/refID = L[GC_QUEUE_ITEM_REF]
 		var/datum/D
 		D = locate(refID)
 #endif
 
-#ifdef EXPERIMENT_515_QDEL_HARD_REFERENCE
-		if (IS_DELETED(D)) // So if something else coincidently gets the same ref, it's not deleted by mistake
-#else
 		if (IS_DELETED(D, GCd_at_time)) // So if something else coincidently gets the same ref, it's not deleted by mistake
-#endif
 			++gcedlasttick
 			++totalgcs
 			pass_counts[level]++

@@ -22,7 +22,7 @@
 
 		self.visible_message(SPAN_XENONOTICE("[self] exudes energy back into The Weave!"), SPAN_XENONOTICE("You release some of your energy into The Weave!"))
 
-		nexus.weave_energy += plasma_cost
+		nexus.weave_energy += (plasma_cost / 10)
 	else
 		self.visible_message(SPAN_XENOWARNING("[self] decides not to release their energy."), SPAN_XENOWARNING("You decide not to release your energy."))
 

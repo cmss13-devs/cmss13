@@ -57,6 +57,8 @@
 		/datum/action/xeno_action/onclick/place_trap, //second macro
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
+		/datum/action/xeno_action/onclick/choose_resin,
+		/datum/action/xeno_action/activable/secrete_resin/weave_macro,
 		/datum/action/xeno_action/onclick/psychic_whisper,
 		/datum/action/xeno_action/onclick/exude_energy,
 		)
@@ -72,10 +74,12 @@
 	max_placeable = 2
 	available_fruits = list(/obj/effect/alien/resin/fruit/weave)
 	selected_fruit = /obj/effect/alien/resin/fruit/weave
+	universal_understand = TRUE
 
 /mob/living/carbon/xenomorph/weaveling/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
 	. = ..()
 	sight |= SEE_THRU//Changes what counts as Line-of-Sight, allowing Psychic speech through walls, but not hearing replies.
+	resin_build_order = GLOB.resin_build_order_drone
 
 /mob/living/carbon/xenomorph/weaveling/update_canmove()
 	. = ..()

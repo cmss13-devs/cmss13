@@ -81,6 +81,7 @@
 	extra_build_dist = 9
 	can_stack_builds = TRUE
 	mob_size = MOB_SIZE_BIG
+	universal_understand = TRUE
 
 /mob/living/carbon/xenomorph/prime_weaver/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
 	. = ..()

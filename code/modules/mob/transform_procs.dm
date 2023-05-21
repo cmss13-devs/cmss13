@@ -328,7 +328,7 @@
 	ADD_TRAIT(src, TRAIT_WEAVE_SENSITIVE, TRAIT_SOURCE_ADMIN)
 
 	allow_gun_usage = FALSE
-	adjustBrainLoss(-100)
+	setBrainLoss(0)
 	KnockOut(5)
 	make_jittery(105)
 

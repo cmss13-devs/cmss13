@@ -45,9 +45,6 @@
 
 			human.apply_effect(get_xeno_stun_duration(human, 0.5), WEAKEN)
 
-			self.animation_attack_on(human)
-			self.flick_attack_overlay(human, "tail")
-
 			human.WeaveClaim(CAUSE_WEAVER)
 		else
 			to_chat(self, SPAN_XENOWARNING("The Weave is not strong enough here to do that!"))

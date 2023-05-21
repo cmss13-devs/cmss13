@@ -552,7 +552,7 @@
 	reagents.add_reagent(PLASMA_WEAVE, 6)
 
 /obj/item/reagent_container/food/snacks/resin_fruit/weave/exalted
-	name = XENO_FRUIT_WEAVE
+	name = XENO_FRUIT_WEAVE_EX
 	icon_state = "fruit_weave_ex_item"
 	fruit_type = /obj/effect/alien/resin/fruit/weave/exalted
 

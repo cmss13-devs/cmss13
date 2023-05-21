@@ -89,6 +89,10 @@
 
 	plasma_cost = 1
 
+/datum/action/xeno_action/activable/secrete_resin/weave_macro
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
+
 /datum/action/xeno_action/activable/secrete_resin/can_use_action()
 	. = ..()
 	if(!.)

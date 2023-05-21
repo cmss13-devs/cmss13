@@ -79,6 +79,7 @@
 
 	extra_build_dist = 3
 	can_stack_builds = TRUE
+	universal_understand = TRUE
 
 /mob/living/carbon/xenomorph/weaver/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
 	. = ..()

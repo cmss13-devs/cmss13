@@ -351,3 +351,25 @@
   ghostsheet:
   - bugfix: Announcement are included in 'Radio' chat filter
   - bugfix: Overwatch messages are included in 'Radio' chat filter
+2023-05-20:
+  Morrow:
+  - rscadd: Added a HUD icon "blood" for when someone or something is giving or taking
+      blood from you.
+  - bugfix: Fixed some duplicate code in /mob/living/carbon/human/Destroy()
+  - bugfix: Fixed a runtime in blood packs when disconnecting a blood pack
+  - bugfix: Fixed mobs that don't feel pain screaming in pain when blood bags disconnect.
+  Morrow, KoishiVibe, Kaga:
+  - rscadd: Added lore to scopes/sights.
+  Segrain:
+  - bugfix: Preferences for job options (e.g. civilian/military correspondent) now
+      properly save between rounds.
+  - bugfix: WO Field Doctor no longer inherits regular doctor's job options (and associated
+      rank).
+  - qol: Selecting job options is now better readable.
+  - qol: Survivor variant preference is moved to job selection screen.
+  realforest2001:
+  - rscadd: Added a warning/reminder to cryomarine spawns to ahelp if they want to
+      cryo/ghost upon spawning in, to stop people wasting the ERT call.
+2023-05-21:
+  BeagleGaming1:
+  - qol: lets player facehuggers see their lifetime hugs on the status panel

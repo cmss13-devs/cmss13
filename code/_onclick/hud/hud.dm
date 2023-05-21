@@ -107,6 +107,7 @@
 			qdel(thing)
 		infodisplay.Cut()
 
+	mymob = null
 	qdel(hide_actions_toggle)
 	hide_actions_toggle = null
 

@@ -24,7 +24,7 @@
 	if(usr?.client)
 		usr.client.running_find_references = type
 
-	log_reftracker("Beginning search for references to a [type].")
+	log_reftracker("Beginning search for references to '[src]' a [type].")
 
 	var/starting_time = world.time
 
@@ -131,6 +131,11 @@
 					continue //End early, don't want these logging
 				#endif
 				log_reftracker("Found [type] [text_ref(src)] in list [container_name].")
+				var/msg
+				for(var/i in 1 to min(10, potential_cache.len))
+					msg += "[potential_cache[i]],"
+				if(msg)
+					log_reftracker("List contents: [msg]")
 				continue
 
 			var/assoc_val = null
@@ -144,6 +149,11 @@
 					continue //End early, don't want these logging
 				#endif
 				log_reftracker("Found [type] [text_ref(src)] in list [container_name]\[[element_in_list]\]")
+				var/msg
+				for(var/i in 1 to min(10, potential_cache.len))
+					msg += "[potential_cache[i]],"
+				if(msg)
+					log_reftracker("List contents: [msg]")
 				continue
 			//We need to run both of these checks, since our object could be hiding in either of them
 			//Check normal sublists

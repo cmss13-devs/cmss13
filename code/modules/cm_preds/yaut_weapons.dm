@@ -188,10 +188,10 @@
 		xenomorph.interference = 30
 
 /obj/item/weapon/yautja/scythe
-	name = "double war scythe"
-	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
+	name = "dual war scythe"
+	desc = "A huge, incredibly sharp dual blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
 	icon_state = "predscythe"
-	item_state = "scythe"
+	item_state = "scythe_dual"
 	flags_atom = FPRINT|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
@@ -211,12 +211,18 @@
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 15
 
-
 	if(prob(15))
 		user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
+		user.spin(5, 1)
 		..() //Do it again! CRIT! This will be replaced by a bleed effect.
 
 	return
+
+/obj/item/weapon/yautja/scythe/alt
+	name = "double war scythe"
+	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
+	icon_state = "predscythe_alt"
+	item_state = "scythe_double"
 
 //Combistick
 /obj/item/weapon/yautja/combistick
@@ -251,6 +257,7 @@
 		return FALSE
 	charged = FALSE
 	remove_filter("combistick_charge")
+	unwield(user) //Otherwise stays wielded even when thrown
 	return TRUE
 
 
@@ -492,7 +499,28 @@
 		hide.stack_id = "[victim.name]-hide"
 		hide.amount = skin_amount
 
+/obj/item/weapon/yautja/knife/afterattack(obj/attacked_obj, mob/living/user, proximity)
+	if(!proximity)
+		return
 
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		return
+
+	if(!istype(attacked_obj, /obj/item/limb))
+		return
+	var/obj/item/limb/current_limb = attacked_obj
+
+	if(current_limb.flayed)
+		to_chat(user, SPAN_NOTICE("This limb has already been flayed."))
+		return
+
+	playsound(loc, 'sound/weapons/pierce.ogg', 25)
+	to_chat(user, SPAN_WARNING("You start flaying the skin from [current_limb]."))
+	if(!do_after(user, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, current_limb))
+		to_chat(user, SPAN_NOTICE("You decide not to flay [current_limb]."))
+		return
+	to_chat(user, SPAN_WARNING("You finish flaying [current_limb]."))
+	current_limb.flayed = TRUE
 
 /*#########################################
 ########### Two Handed Weapons ############
@@ -590,6 +618,10 @@
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
+
+/obj/item/weapon/twohanded/yautja/glaive/alt
+	icon_state = "glaive_alt"
+	item_state = "glaive_alt"
 
 /obj/item/weapon/twohanded/yautja/glaive/damaged
 	name = "ancient war glaive"
@@ -896,6 +928,7 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster
 	name = "plasma caster"
 	desc = "A powerful, shoulder-mounted energy weapon."
+	icon_state = "plasma_ebony"
 	var/base_icon_state = "plasma"
 	var/base_item_state = "plasma_wear"
 	item_icons = list(

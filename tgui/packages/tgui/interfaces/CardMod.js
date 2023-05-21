@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Stack, Input, Section, Tabs, Table } from '../components';
+import { Box, Button, Stack, Input, Section, Tabs, Table, NumberInput } from '../components';
 import { Window } from '../layouts';
 import { AccessList } from './common/AccessList';
 import { map } from 'common/collections';
@@ -126,16 +126,22 @@ export const CardContent = (props, context) => {
           content={id_name}
           onClick={() => act('PRG_eject')}
         />
-        Linked Account:
-        <Input
-          value={id_account}
-          width="150px"
-          onInput={(e, value) =>
-            act('PRG_account', {
-              account: value,
-            })
-          }
-        />
+        {!!has_id && !!authenticated && (
+          <Fragment>
+            Linked Account:
+            <NumberInput
+              value={id_account}
+              minValue={111111}
+              maxValue={999999}
+              width="60px"
+              onChange={(e, value) =>
+                act('PRG_account', {
+                  account: value,
+                })
+              }
+            />
+          </Fragment>
+        )}
       </Section>
       {!!has_id && !!authenticated && (
         <Box>

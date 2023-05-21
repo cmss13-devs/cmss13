@@ -216,8 +216,14 @@
 	addtimer(CALLBACK(V, TYPE_PROC_REF(/datum/reagents/vessel, inject_vessel), target, INGEST, TRUE, 0.5 SECONDS), 9.5 SECONDS)
 	return amount
 
-/datum/reagents/proc/set_source_mob(new_source_mob)
+///You can search for specific reagents using the specific reagents arg.
+/datum/reagents/proc/set_source_mob(new_source_mob, specific_reagent)
 	for(var/datum/reagent/R in reagent_list)
+		if(specific_reagent)
+			if(istype(R, specific_reagent))
+				R.last_source_mob = WEAKREF(new_source_mob)
+				return
+			continue
 		R.last_source_mob = WEAKREF(new_source_mob)
 
 /datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1, safety = 0)
@@ -669,7 +675,7 @@
 		var/source_mob_name = "unknown"
 		if(source_atom)
 			source_mob_name = "[source_atom]"
-		msg_admin_niche("WARNING: Ingestion based explosion attempted in containing mob [key_name(H)] made by [key_name(source_mob_name)] in area [sourceturf.loc] at ([H.loc.x],[H.loc.y],[H.loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[H.loc.x];Y=[H.loc.y];Z=[H.loc.z]'>JMP</a>)")
+		msg_admin_niche("WARNING: Ingestion based explosion attempted in containing mob [key_name(H)] made by [key_name(source_mob_name)] in area [sourceturf.loc] at ([H.loc.x],[H.loc.y],[H.loc.z]) [ADMIN_JMP(H.loc)]")
 		exploded = TRUE
 		return
 

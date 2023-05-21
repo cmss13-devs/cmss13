@@ -95,7 +95,7 @@
 #define SPAN_SUICIDE(X) "<span class='suicide'>[X]</span>"
 #define SPAN_SCANNERB(X) "<span class='scannerb'>[X]</span>"
 
-// Colours
+// Colors
 #define SPAN_BLUE(X) "<span class='blue'>[X]</span>"
 #define SPAN_GREEN(X) "<span class='green'>[X]</span>"
 #define SPAN_RED(X) "<span class='red'>[X]</span>"

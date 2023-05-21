@@ -109,7 +109,6 @@
 	target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
 	playsound(get_turf(target), 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
 	shake_camera(target, 2, 1)
-	apply_cooldown(0.65)
 
 /datum/action/xeno_action/activable/flurry/use_ability(atom/targeted_atom) //flurry ability
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -213,7 +212,7 @@
 				apply_cooldown(cooldown_modifier = 0.5)
 				return
 
-	if(!isxeno_human(hit_target) || xeno.can_not_harm(hit_target))
+	if(!isxeno_human(hit_target) || xeno.can_not_harm(hit_target) || hit_target.stat == DEAD)
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.2)
 		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
@@ -276,6 +275,12 @@
 
 	if(!xeno.Adjacent(target_carbon))
 		to_chat(xeno, SPAN_XENOHIGHDANGER("You can only headbite an unconscious, adjacent target!"))
+		return
+
+	if(xeno.stat == UNCONSCIOUS)
+		return
+
+	if(xeno.stat == DEAD)
 		return
 
 	if(xeno.action_busy)

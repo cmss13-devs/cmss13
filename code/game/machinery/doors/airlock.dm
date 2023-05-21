@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 /obj/structure/machinery/door/airlock
 	name = "airlock"
-	icon = 'icons/obj/structures/doors/Doorint.dmi'
+	icon = 'icons/obj/structures/doors/Door1.dmi'
 	icon_state = "door_closed"
 	power_channel = POWER_CHANNEL_ENVIRON
 
@@ -604,6 +604,32 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				else
 					welded = null
 				update_icon()
+		return
+
+	if(istype(C, /obj/item/maintenance_jack) && locked)
+		var/obj/item/maintenance_jack/current_jack = C
+
+		if(current_jack.crowbar_mode)
+			return
+
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MASTER)) //Engi 3 is much faster
+			user.visible_message(SPAN_DANGER("[user] begins to search for [src]'s bolts!"),\
+			SPAN_NOTICE("You search for [src]'s bolts."))
+			if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL)) //Otherwise it takes an extra 15 seconds
+				to_chat(user, SPAN_WARNING("You fail to find the bolts on [src]."))
+				return
+
+		user.visible_message(SPAN_DANGER("[user] begins to disable [src]'s bolts!"),\
+		SPAN_NOTICE("You start to disable [src]'s bolts."))
+		playsound(src, "pry", 25, TRUE)
+
+		if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
+			to_chat(user, SPAN_WARNING("You decide not to disable the bolts on [src]."))
+			return
+
+		user.visible_message(SPAN_DANGER("[user] disables the bolts on [src]."),\
+		SPAN_NOTICE("You unbolt [src]."))
+		unlock(TRUE)
 		return
 
 	else if(HAS_TRAIT(C, TRAIT_TOOL_SCREWDRIVER))

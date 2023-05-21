@@ -100,12 +100,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	//CO-specific preferences
 	var/commander_sidearm = "Mateba"
 	//SEA specific preferences
-	var/sea_path = "Command"
 
 	///holds our preferred job options for jobs
 	var/pref_special_job_options = list()
-
-	var/preferred_survivor_variant = ANY_SURVIVOR
 
 	//WL Council preferences.
 	var/yautja_status = WHITELIST_NORMAL
@@ -123,7 +120,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/age = 19 //age of character
 	var/spawnpoint = "Arrivals Shuttle" //where this character will spawn (0-2).
 	var/underwear = "Boxers (Camo Conforming)" //underwear type
-	var/undershirt = "Undershirt" //undershirt type
+	var/undershirt = "Undershirt (Tan)" //undershirt type
 	var/backbag = 2 //backpack type
 
 	var/h_style = "Crewcut" //Hair type
@@ -528,10 +525,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				dat += "<b>You do not have the whitelist for this role.</b>"
 		if(MENU_MENTOR)
 			if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_MENTOR)
-				dat += "<div id='column1'>"
-				dat += "<h2><b><u>Mentor Settings:</u></b></h2>"
-				dat += "<b>SEA Grade Path:</b> <a href='?_src_=prefs;preference=grade_path;task=input'><b>[sea_path]</b></a><br>"
-				dat += "</div>"
+				dat += "<b>Nothing here. For now.</b>"
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
 		if(MENU_SETTINGS)
@@ -626,11 +620,6 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Spawn as Miscellaneous:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_MISC]'><b>[toggles_ert & PLAY_MISC ? "Yes" : "No"]</b></a><br>"
 			dat += "</div>"
 
-			dat += "<div id='column2'>"
-			dat += "<h2><b><u>Survivor Settings:</u></b></h2>"
-			dat += "<b>Preferred Survivor Variant:</b> <a href='?_src_=prefs;preference=preferred_survivor_variant;task=input'><b>[preferred_survivor_variant]</b></a>"
-			dat += "</div>"
-
 	dat += "</div></body>"
 
 	winshow(user, "preferencewindow", TRUE)
@@ -657,7 +646,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/list/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
 	if(!active_role_names)
-		active_role_names = ROLES_REGULAR_ALL
+		active_role_names = ROLES_DISTRESS_SIGNAL
 
 	for(var/role_name as anything in active_role_names)
 		var/datum/job/job = RoleAuthority.roles_by_name[role_name]
@@ -672,26 +661,28 @@ var/const/MAX_SAVE_SLOTS = 10
 		HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>"
 
 		if(jobban_isbanned(user, job.title))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='right'></td><td><b>BANNED</b></td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td><b>BANNED</b></td></tr>"
 			continue
 		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !(RoleAuthority.roles_whitelist[user.ckey] & job.flags_whitelist))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='right'></td><td>WHITELISTED</td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
 			var/list/missing_requirements = job.get_role_requirements(user.client)
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='right'></td><td>TIMELOCKED</td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td>TIMELOCKED</td></tr>"
 			for(var/r in missing_requirements)
 				var/datum/timelock/T = r
-				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='right'></td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
+				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='center'></td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
 			continue
 
-		HTML += "<b>[job.disp_title]</b></td><td width='10%' align='right'>"
+		HTML += "<b>[job.disp_title]</b></td><td width='10%' align='center'>"
 
 		if(job.job_options)
-			if(!pref_special_job_options || !pref_special_job_options[role_name])
+			if(pref_special_job_options)
+				pref_special_job_options[role_name] = sanitize_inlist(pref_special_job_options[role_name], job.job_options, job.job_options[1])
+			else
 				pref_special_job_options[role_name] = job.job_options[1]
 
-			var/txt = pref_special_job_options[role_name]
+			var/txt = job.job_options[pref_special_job_options[role_name]]
 			HTML += "<a href='?_src_=prefs;preference=special_job_select;task=input;text=[job.title]'><b>[txt]</b></a>"
 
 		HTML += "</td><td width='50%'>"
@@ -1129,7 +1120,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					predator_mask_material = new_pred_mask_mat
 				if("pred_armor_mat")
-					var/new_pred_armor_mat = tgui_input_list(user, "Choose your armour material:", "Armor Material", PRED_MATERIALS)
+					var/new_pred_armor_mat = tgui_input_list(user, "Choose your armor material:", "Armor Material", PRED_MATERIALS)
 					if(!new_pred_armor_mat)
 						return
 					predator_armor_material = new_pred_armor_mat
@@ -1206,13 +1197,6 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!new_co_sidearm)
 						return
 					commander_sidearm = new_co_sidearm
-
-				if("grade_path")
-					var/list/options = list("Command", "Technical")
-					var/new_path = tgui_input_list(user, "Choose your preferred promotion path.", "Promotion Paths", options)
-					if(!new_path)
-						return
-					sea_path = new_path
 
 				if("yautja_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)
@@ -1566,12 +1550,6 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					religion = choice
 
-				if("preferred_survivor_variant")
-					var/new_preferred_survivor_variant = tgui_input_list(user, "Choose your preferred survivor variant:", "Preferred Survivor Variant", SURVIVOR_VARIANT_LIST)
-					if(!new_preferred_survivor_variant)
-						return
-					preferred_survivor_variant = new_preferred_survivor_variant
-
 				if("special_job_select")
 					var/datum/job/job = RoleAuthority.roles_by_name[href_list["text"]]
 					if(!job)
@@ -1579,7 +1557,9 @@ var/const/MAX_SAVE_SLOTS = 10
 						ShowChoices(user)
 						return
 
-					var/new_special_job_variant = tgui_input_list(user, "Choose your preferred job variant:", "Preferred Job Variant", job.job_options)
+					var/list/filtered_options = job.filter_job_option(user)
+
+					var/new_special_job_variant = tgui_input_list(user, "Choose your preferred job variant:", "Preferred Job Variant", filtered_options)
 					if(!new_special_job_variant)
 						return
 					pref_special_job_options[job.title] = new_special_job_variant

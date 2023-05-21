@@ -69,9 +69,12 @@
 		if(affected_mob.reagents) // Annoying QC check
 			if(affected_mob.reagents.get_reagent_amount("thwei"))
 				blood_loss -= THWEI_BLOOD_REDUCTION
-			if(affected_mob.reagents.get_reagent_amount("quickclot"))
-				buffer_blood_loss = 0
-				return FALSE
+
+			var/mob/living/carbon/human/affected_human = affected_mob
+			if(istype(affected_human))
+				if(affected_human.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
+					buffer_blood_loss = 0
+					return FALSE
 		affected_mob.drip(buffer_blood_loss)
 		buffer_blood_loss = 0
 
@@ -94,15 +97,14 @@
 	if(affected_mob.bodytemperature < T0C && (affected_mob.reagents && affected_mob.reagents.get_reagent_amount("cryoxadone") || affected_mob.reagents.get_reagent_amount("clonexadone")))
 		blood_loss -= CRYO_BLOOD_REDUCTION
 
-	var/bicaridine = affected_mob.reagents?.get_reagent_amount("bicaridine")
-	if(bicaridine > REAGENTS_OVERDOSE && affected_mob.getBruteLoss() <= 0)
-		blood_loss -= BICAOD_BLOOD_REDUCTION
-
 	if(affected_mob.reagents) // Annoying QC check
 		if(affected_mob.reagents.get_reagent_amount("thwei"))
 			blood_loss -= THWEI_BLOOD_REDUCTION
-		if(affected_mob.reagents.get_reagent_amount("quickclot"))
-			return FALSE
+
+		var/mob/living/carbon/human/affected_human = affected_mob
+		if(istype(affected_human))
+			if(affected_human.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
+				return FALSE
 
 	affected_mob.blood_volume = max(affected_mob.blood_volume - blood_loss, 0)
 

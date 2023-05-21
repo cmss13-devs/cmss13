@@ -167,7 +167,7 @@
 
 /obj/item/clothing/accessory/health/scrap
 	name = "scrap metal"
-	desc = "A weak armour plate, only able to protect from a little bit of damage. Perhaps that will be enough."
+	desc = "A weak armor plate, only able to protect from a little bit of damage. Perhaps that will be enough."
 	icon_state = "scrap_100"
 	base_icon_state = "scrap"
 	health_states = list(

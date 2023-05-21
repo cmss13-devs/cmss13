@@ -85,8 +85,9 @@
 		if("PRG_print")
 			if(!printing)
 				if(params["mode"])
-					if(!authenticated)
+					if(!authenticated || !target_id_card)
 						return
+
 					printing = TRUE
 					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
 					sleep(40)
@@ -164,7 +165,7 @@
 						return TRUE
 			return FALSE
 		if("PRG_terminate")
-			if(!authenticated)
+			if(!authenticated || !target_id_card)
 				return
 
 			target_id_card.assignment = "Terminated"
@@ -175,6 +176,7 @@
 		if("PRG_edit")
 			if(!authenticated || !target_id_card)
 				return
+
 			var/new_name = params["name"] // reject_bad_name() can be added here
 			if(!new_name)
 				visible_message(SPAN_NOTICE("[src] buzzes rudely."))
@@ -210,8 +212,9 @@
 			message_admins("[key_name_admin(usr)] gave the ID of [target_id_card.registered_name] the assignment '[target_id_card.assignment]'.")
 			return TRUE
 		if("PRG_access")
-			if(!authenticated)
+			if(!authenticated || !target_id_card)
 				return
+
 			var/access_type = params["access_target"]
 			if(params["access_target"] in factions)
 				if(!target_id_card.faction_group)
@@ -233,23 +236,26 @@
 					log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted access '[access_type]'. </font>")
 				return TRUE
 		if("PRG_grantall")
-			if(!authenticated)
+			if(!authenticated || !target_id_card)
 				return
+
 			target_id_card.access |= (is_centcom ? get_all_centcom_access() : get_all_accesses())
 			target_id_card.faction_group |= factions
 			log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted the ID all access and USCM IFF. </font>")
 			return TRUE
 		if("PRG_denyall")
-			if(!authenticated)
+			if(!authenticated || !target_id_card)
 				return
+
 			var/list/access = target_id_card.access
 			access.Cut()
 			target_id_card.faction_group -= factions
 			log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] removed all accesses and USCM IFF. </font>")
 			return TRUE
 		if("PRG_grantregion")
-			if(!authenticated)
+			if(!authenticated || !target_id_card)
 				return
+
 			if(params["region"] == "Faction (IFF system)")
 				target_id_card.faction_group |= factions
 				log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted USCM IFF. </font>")
@@ -262,8 +268,9 @@
 			log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted all [additions] accesses. </font>")
 			return TRUE
 		if("PRG_denyregion")
-			if(!authenticated)
+			if(!authenticated || !target_id_card)
 				return
+
 			if(params["region"] == "Faction (IFF system)")
 				target_id_card.faction_group -= factions
 				log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked USCM IFF. </font>")
@@ -276,8 +283,9 @@
 			log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked all [additions] accesses. </font>")
 			return TRUE
 		if("PRG_account")
-			if(!authenticated)
+			if(!authenticated || !target_id_card)
 				return
+
 			var/account = text2num(params["account"])
 			target_id_card.associated_account_number = account
 			log_idmod(target_id_card, "<font color='orange'> [key_name_admin(usr)] changed the account number to '[account]'. </font>")
@@ -912,6 +920,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_CMO = 40,
 				JOB_RESEARCHER = 41,
 				JOB_DOCTOR = 42,
+				JOB_SURGEON = 42,
 				JOB_NURSE = 43,
 				// 50-59: Engineering
 				JOB_CHIEF_ENGINEER = 50,
@@ -992,7 +1001,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				else squad_name += " "
 				jobs += list(
 					"[squad_name][JOB_SQUAD_LEADER]" = (squad_number),
-					"[squad_name][JOB_SQUAD_RTO]" = (squad_number + 1),
+					"[squad_name][JOB_SQUAD_TEAM_LEADER]" = (squad_number + 1),
 					"[squad_name][JOB_SQUAD_SPECIALIST]" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST] (Scout)" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST] (Sniper)" = (squad_number + 2),

@@ -83,7 +83,7 @@
 /datum/character_trait/biology/bad_leg/New()
 	. = ..()
 	// Not on definition as several lists are added
-	inapplicable_roles = list(JOB_NURSE, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_INTEL, JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CARGO_TECH, JOB_MARINE) + JOB_SQUAD_ROLES_LIST + JOB_MARINE_RAIDER_ROLES_LIST
+	inapplicable_roles = list(JOB_NURSE, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_INTEL, JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CARGO_TECH, JOB_MARINE) + JOB_SQUAD_ROLES_LIST + JOB_MARINE_RAIDER_ROLES_LIST + JOB_ERT_GRUNT_LIST
 	bad_cane_roles = list(JOB_SURVIVOR, JOB_STOWAWAY)
 	fancy_cane_roles = list(JOB_CO_SURVIVOR, CORPORATE_SURVIVOR, JOB_CMO, JOB_CORPORATE_LIAISON, JOB_SEA, JOB_CHIEF_ENGINEER) + JOB_COMMAND_ROLES_LIST
 	inapplicable_species = list(SPECIES_SYNTHETIC, SPECIES_YAUTJA)
@@ -113,3 +113,21 @@
 	..()
 
 //datum/character_trait/biology/bad_leg/unapply_trait(mob/living/carbon/human/target) // IMPOSSIBLE
+
+/datum/character_trait/biology/hardcore
+	trait_name = "Hardcore"
+	trait_desc = "One life. One chance. (Rifleman Only)"
+	applyable = TRUE
+	cost = 1
+
+/datum/character_trait/biology/hardcore/apply_trait(mob/living/carbon/human/target, datum/equipment_preset/preset)
+	if(target.job != JOB_SQUAD_MARINE)
+		to_chat(target, SPAN_WARNING("Only riflemen can have the Hardcore trait."))
+		return
+
+	ADD_TRAIT(target, TRAIT_HARDCORE, TRAIT_SOURCE_QUIRK)
+	..()
+
+/datum/character_trait/biology/hardcore/unapply_trait(mob/living/carbon/human/target)
+	REMOVE_TRAIT(target, TRAIT_HARDCORE, TRAIT_SOURCE_QUIRK)
+	..()

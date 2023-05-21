@@ -243,22 +243,14 @@
 	desc = "It can contain autoinjectors, ointments, and bandages. This one has some extra stuff."
 	icon_state = "firstaid"
 	storage_slots = 5
-	can_hold = list(
-		/obj/item/stack/medical/ointment,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/storage/pill_bottle/packet/tramadol,
-		/obj/item/storage/pill_bottle/packet/tricordrazine,
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint,
-		/obj/item/reagent_container/hypospray/autoinjector/emergency,
-	)
 
 /obj/item/storage/pouch/firstaid/ert/fill_preset_inventory()
-	new /obj/item/stack/medical/ointment(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless(src)
 	new /obj/item/stack/medical/bruise_pack(src)
-	new /obj/item/stack/medical/splint(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
+
 
 ///Pistol pouch.
 /obj/item/storage/pouch/pistol
@@ -326,7 +318,7 @@
 ///CO pouch. This pouch can hold only 1 of each type of item: 1 sidearm, 1 pair of binoculars, 1 CO tablet
 /obj/item/storage/pouch/pistol/command
 	name = "command pouch"
-	desc = "A specialized, sturdy pouch issued to Captains. Can hold their sidearm, the command tablet and a set of binoculars."
+	desc = "A specialized, sturdy pouch issued to Commanding Officers. Can hold their sidearm, the command tablet and a set of binoculars."
 	storage_slots = 3
 	icon_state = "command_pouch"
 	can_hold = list(
@@ -425,6 +417,7 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/sniper,
+		/obj/item/ammo_magazine/m60,
 		/obj/item/ammo_magazine/handful,
 	)
 
@@ -557,6 +550,10 @@
 /obj/item/storage/pouch/magazine/large/smg_heap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/m39/heap(src)
+
+/obj/item/storage/pouch/magazine/large/m60/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/m60(src)
 
 /obj/item/storage/pouch/shotgun
 	name = "shotgun shell pouch"

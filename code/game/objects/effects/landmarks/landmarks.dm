@@ -33,6 +33,29 @@
 	GLOB.newplayer_start -= src
 	return ..()
 
+/obj/effect/landmark/sim_target
+	name = "simulator_target"
+
+/obj/effect/landmark/sim_target/Initialize(mapload, ...)
+	. = ..()
+	GLOB.simulator_targets += src
+
+/obj/effect/landmark/sim_target/Destroy()
+	GLOB.simulator_targets -= src
+	return ..()
+
+/obj/effect/landmark/sim_camera
+	name = "simulator_camera"
+	color = "#FFFF00"
+
+/obj/effect/landmark/sim_camera/Initialize(mapload, ...)
+	. = ..()
+	GLOB.simulator_cameras += src
+
+/obj/effect/landmark/sim_camera/Destroy()
+	GLOB.simulator_cameras -= src
+	return ..()
+
 /obj/effect/landmark/observer_start
 	name = "Observer Landmark"
 	icon = 'icons/mob/mob.dmi'
@@ -251,9 +274,9 @@
 	icon_state = "leader_spawn"
 	job = /datum/job/marine/leader/whiskey
 
-/obj/effect/landmark/start/whiskey/rto
-	icon_state = "rto_spawn"
-	job = /datum/job/marine/rto //Need to create a WO variant in the future
+/obj/effect/landmark/start/whiskey/tl
+	icon_state = "tl_spawn"
+	job = /datum/job/marine/tl //Need to create a WO variant in the future
 
 /obj/effect/landmark/start/whiskey/spec
 	icon_state = "spec_spawn"

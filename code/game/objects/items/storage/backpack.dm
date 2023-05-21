@@ -408,14 +408,14 @@
 	can_hold = list(/obj/item/ammo_box)
 	max_w_class = SIZE_MASSIVE
 	xeno_types = null
-	var/base_icon_state = "ammo_pack_"
+	var/base_icon_state = "ammo_pack"
 /obj/item/storage/backpack/marine/ammo_rack/Initialize(mapload)
 	. = ..()
 	update_icon()
 
 /obj/item/storage/backpack/marine/ammo_rack/update_icon()
 	. = ..()
-	icon_state = "[base_icon_state][length(contents)]"
+	icon_state = "[base_icon_state]_[length(contents)]"
 /obj/item/storage/backpack/marine/medic
 	name = "\improper USCM corpsman backpack"
 	desc = "A standard-issue backpack worn by USCM medics."

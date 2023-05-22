@@ -11420,7 +11420,7 @@
 	},
 /area/strata/ag/interior/dorms)
 "aIs" = (
-/obj/structure/flora/grass/ice/brown,
+/obj/structure/flora/grass/ice/brown/snowgrassbb_1,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/southresearch)
 "aIw" = (
@@ -14752,7 +14752,7 @@
 "aTh" = (
 /obj/item/lightstick/red/planted,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/flora/grass/ice/brown,
+/obj/structure/flora/grass/ice/brown/snowgrassbb_1,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "aTi" = (
@@ -25406,9 +25406,7 @@
 	},
 /area/strata/ag/interior/dorms/canteen)
 "bPy" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_3"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_3,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/shed_five_caves)
 "bPA" = (
@@ -30609,7 +30607,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/med1)
 "dZl" = (
-/obj/structure/flora/grass/ice/brown,
+/obj/structure/flora/grass/ice/brown/snowgrassbb_1,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/north_outpost)
 "dZm" = (
@@ -31436,7 +31434,7 @@
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
 "fwV" = (
-/obj/structure/flora/grass/ice/brown,
+/obj/structure/flora/grass/ice/brown/snowgrassbb_1,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/north_outpost)
 "fxM" = (
@@ -31501,9 +31499,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
 "fAS" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_3"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_3,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "fBh" = (
@@ -32020,9 +32016,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "goG" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_2"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_2,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/north_outpost)
 "gpp" = (
@@ -32569,9 +32563,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "hir" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_3"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_3,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "hiL" = (
@@ -33215,9 +33207,7 @@
 	},
 /area/strata/ag/exterior/landingzone_2)
 "iws" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_2"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_2,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "iwH" = (
@@ -34001,9 +33991,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "jLc" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_3"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_3,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/nearlz2)
 "jLY" = (
@@ -34303,7 +34291,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "kim" = (
-/obj/structure/flora/grass/ice/brown,
+/obj/structure/flora/grass/ice/brown/snowgrassbb_1,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "kjc" = (
@@ -34483,7 +34471,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "kBL" = (
-/obj/structure/flora/grass/ice/brown,
+/obj/structure/flora/grass/ice/brown/snowgrassbb_1,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/nearlz2)
 "kCf" = (
@@ -34494,9 +34482,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "kCk" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_2"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_2,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/marsh/center)
 "kDb" = (
@@ -34720,9 +34706,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/dorms)
 "kWS" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_3"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_3,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/southresearch)
 "kXi" = (
@@ -35792,9 +35776,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "mDF" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_2"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_2,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/vanyard)
 "mEk" = (
@@ -36216,9 +36198,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "nrp" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_2"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_2,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/river)
 "nrP" = (
@@ -36526,9 +36506,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/landingzone_checkpoint)
 "ocz" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_2"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_2,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/marsh)
 "ocE" = (
@@ -36845,9 +36823,7 @@
 	},
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "oKl" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_3"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_3,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/center)
 "oKo" = (
@@ -37650,9 +37626,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/research_decks/security)
 "pRp" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_3"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_3,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/north_outpost)
 "pSc" = (
@@ -37973,9 +37947,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "qvy" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_2"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_2,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "qvJ" = (
@@ -39506,7 +39478,7 @@
 	},
 /area/strata/ag/exterior/north_lz_caves)
 "tfM" = (
-/obj/structure/flora/grass/ice/brown,
+/obj/structure/flora/grass/ice/brown/snowgrassbb_1,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/shed_five_caves)
 "tgr" = (
@@ -39640,9 +39612,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/paths/north_outpost)
 "tqK" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_3"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_3,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "trr" = (
@@ -39785,7 +39755,7 @@
 /turf/open/floor/plating,
 /area/strata/ag/exterior/landingzone_2)
 "tDo" = (
-/obj/structure/flora/grass/ice/brown,
+/obj/structure/flora/grass/ice/brown/snowgrassbb_1,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/center)
 "tEf" = (
@@ -39992,9 +39962,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "tSb" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_2"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_2,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "tSi" = (
@@ -40045,9 +40013,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "tUu" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_3"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_3,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "tUN" = (
@@ -40096,9 +40062,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "tWf" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_3"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_3,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "tWJ" = (
@@ -40741,7 +40705,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "vaZ" = (
-/obj/structure/flora/grass/ice/brown,
+/obj/structure/flora/grass/ice/brown/snowgrassbb_1,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "vbw" = (
@@ -41119,7 +41083,7 @@
 /obj/structure/platform/strata/metal{
 	dir = 8
 	},
-/obj/structure/flora/grass/ice/brown,
+/obj/structure/flora/grass/ice/brown/snowgrassbb_1,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "vwV" = (
@@ -41370,13 +41334,11 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/minehead)
 "vXt" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_2"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_2,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/southresearch)
 "vYf" = (
-/obj/structure/flora/grass/ice/brown,
+/obj/structure/flora/grass/ice/brown/snowgrassbb_1,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "vYD" = (
@@ -41495,9 +41457,7 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ag/interior/tcomms)
 "wjv" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_2"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_2,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/center)
 "wkv" = (
@@ -41832,9 +41792,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "wWS" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_3"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_3,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "wXb" = (
@@ -42059,9 +42017,7 @@
 	},
 /area/strata/ag/exterior/research_decks)
 "xre" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_3"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_3,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "xrx" = (
@@ -42226,7 +42182,7 @@
 	},
 /area/strata/ag/interior/dorms/hive)
 "xEV" = (
-/obj/structure/flora/grass/ice/brown,
+/obj/structure/flora/grass/ice/brown/snowgrassbb_1,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/marsh)
 "xFc" = (
@@ -42426,9 +42382,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
 "xOL" = (
-/obj/structure/flora/grass/ice/brown{
-	icon_state = "snowgrassbb_2"
-	},
+/obj/structure/flora/grass/ice/brown/snowgrassbb_2,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/dorms_quad)
 "xPv" = (

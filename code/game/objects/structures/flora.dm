@@ -128,14 +128,25 @@ ICE GRASS
 	icon_state = ""
 	variations = 3
 
+//brown
 /obj/structure/flora/grass/ice/brown
-	icon_state = "snowgrassbb_1"
 	icon_tag = "snowgrassbb"
 
-/obj/structure/flora/grass/ice/green
-	icon_state = "snowgrassgb_1"
-	icon_tag = "snowgrassgb"
+/obj/structure/flora/grass/ice/brown/snowgrassbb_1
+	icon_state = "snowgrassbb_1"
 
+/obj/structure/flora/grass/ice/brown/snowgrassbb_2
+	icon_state = "snowgrassbb_2"
+
+/obj/structure/flora/grass/ice/brown/snowgrassbb_3
+	icon_state = "snowgrassbb_3"
+
+//green
+/obj/structure/flora/grass/ice/green
+	icon_tag = "snowgrassgb"
+	icon_state = "snowgrassgb_1"
+
+//both
 /obj/structure/flora/grass/ice/both
 	icon_state = "snowgrassall_1"
 	icon_tag = "snowgrassall"

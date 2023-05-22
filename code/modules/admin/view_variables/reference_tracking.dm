@@ -60,7 +60,7 @@
 	log_reftracker("Finished searching clients")
 #endif
 
-	log_reftracker("Completed search for references to a [type].")
+	log_reftracker("Completed search for references to '[src]' a [type].")
 
 	if(usr?.client)
 		usr.client.running_find_references = null
@@ -110,7 +110,7 @@
 					found_refs[varname] = TRUE
 					continue //End early, don't want these logging
 				#endif
-				log_reftracker("Found [type] [text_ref(src)] in [datum_container.type]'s [text_ref(datum_container)] [varname] var. [container_name]")
+				log_reftracker("Found [type] [text_ref(src)] in '[datum_container]' a [datum_container.type]'s [text_ref(datum_container)] [varname] var. [container_name]")
 				continue
 
 			if(islist(variable))

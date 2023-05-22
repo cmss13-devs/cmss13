@@ -535,7 +535,7 @@
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
 /area/kutjevo/interior/power)
 "aIu" = (
-/obj/structure/flora/grass/desert,
+/obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "aIw" = (
@@ -2478,7 +2478,7 @@
 	},
 /area/kutjevo/interior/colony_South/power2)
 "dqK" = (
-/obj/structure/flora/grass/desert,
+/obj/structure/flora/grass/desert/lightgrass_1,
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/oob/dev_room)
@@ -7368,7 +7368,7 @@
 	},
 /area/kutjevo/interior/construction)
 "kne" = (
-/obj/structure/flora/grass/desert,
+/obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/runoff_dunes)
 "kni" = (

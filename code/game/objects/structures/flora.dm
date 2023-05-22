@@ -212,7 +212,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 
 //heavy desert grass
 
-/obj/structure/flora/grass/desert/heavy
+/obj/structure/flora/grass/desert/heavygrass_1
 	icon_state = "heavygrass_1"
 
 /obj/structure/flora/grass/desert/heavygrass_2
@@ -238,6 +238,9 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 
 /obj/structure/flora/grass/desert/heavygrass_9
 	icon_state = "heavygrass_9"
+
+/obj/structure/flora/grass/desert/heavygrass_10
+	icon_state = "heavygrass_10"
 
 /*
 

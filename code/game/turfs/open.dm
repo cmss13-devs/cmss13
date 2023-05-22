@@ -327,9 +327,21 @@
 
 /turf/open/gm/grass
 	name = "grass"
-	icon_state = "grass1"
 	baseturfs = /turf/open/gm/grass
 	scorchable = "grass1"
+
+/turf/open/gm/grass/grass1
+	icon_state = "grass1"
+
+/turf/open/gm/grass/grass2
+	icon_state = "grass2"
+
+/turf/open/gm/grass/grassbeach
+	icon_state = "grassbeach"
+
+/turf/open/gm/grass/gbcorner
+	icon_state = "gbcorner"
+
 
 /turf/open/gm/grass/Initialize(mapload, ...)
 	. = ..()

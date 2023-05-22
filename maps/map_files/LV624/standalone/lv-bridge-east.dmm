@@ -224,7 +224,7 @@
 /area/lv624/ground/river/central_river)
 "bq" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "br" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -269,20 +269,18 @@
 /area/lv624/ground/jungle/north_jungle)
 "bE" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "bH" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_jungle)
 "bK" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "bN" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "cp" = (
 /obj/structure/flora/jungle/alienplant1,
@@ -305,7 +303,7 @@
 /area/lv624/ground/jungle/north_jungle)
 "px" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "pW" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -342,7 +340,7 @@
 /area/lv624/ground/river/central_river)
 "BA" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "DQ" = (
 /obj/structure/flora/bush/ausbushes/reedbush,

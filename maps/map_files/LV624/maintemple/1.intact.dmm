@@ -356,7 +356,7 @@
 	desc = "The oranges aren't done yet... this sucks.";
 	name = "orange tree"
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/sand_temple)
 "gL" = (
 /turf/open/floor/strata{
@@ -1809,7 +1809,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "Vu" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/sand_temple)
 "Wl" = (
 /obj/structure/bed/chair/comfy/black{

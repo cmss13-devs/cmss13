@@ -255,7 +255,7 @@
 	desc = "The oranges aren't done yet... this sucks.";
 	name = "orange tree"
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/sand_temple)
 "gL" = (
 /turf/open/floor/strata{
@@ -899,7 +899,7 @@
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 1
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/sand_temple)
 "wS" = (
 /obj/structure/showcase{
@@ -1542,7 +1542,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "Kk" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Kr" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
@@ -1920,7 +1920,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "Vu" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/sand_temple)
 "Wl" = (
 /obj/structure/flora/jungle/vines/heavy,

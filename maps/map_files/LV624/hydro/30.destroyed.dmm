@@ -110,7 +110,7 @@
 /area/lv624/lazarus/hydroponics)
 "jg" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "jy" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
@@ -343,7 +343,7 @@
 /area/lv624/lazarus/hydroponics)
 "BL" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "Cp" = (
 /obj/structure/surface/rack,
@@ -452,7 +452,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "Km" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "Lk" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -476,7 +476,7 @@
 /area/lv624/lazarus/hydroponics)
 "Mm" = (
 /obj/effect/landmark/crap_item,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "MM" = (
 /obj/structure/barricade/deployable{
@@ -659,11 +659,11 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "XA" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "XJ" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "YJ" = (
 /obj/item/storage/firstaid,

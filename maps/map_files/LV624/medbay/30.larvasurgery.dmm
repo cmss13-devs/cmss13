@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ac" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "ae" = (
 /turf/closed/wall/r_wall,
@@ -10,7 +10,7 @@
 /area/lv624/lazarus/medbay)
 "ag" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "ai" = (
 /obj/structure/machinery/medical_pod/sleeper,
@@ -29,7 +29,7 @@
 /area/lv624/lazarus/medbay)
 "al" = (
 /obj/structure/flora/jungle/planttop1,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "an" = (
 /obj/structure/surface/table,
@@ -100,7 +100,7 @@
 /area/lv624/lazarus/medbay)
 "au" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "av" = (
 /turf/open/floor{
@@ -364,7 +364,7 @@
 /area/lv624/lazarus/medbay)
 "qK" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "qP" = (
 /obj/structure/machinery/power/apc{
@@ -410,7 +410,7 @@
 /area/lv624/lazarus/medbay)
 "we" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "wz" = (
 /obj/structure/fence,
@@ -423,7 +423,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "zE" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "zF" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
@@ -433,7 +433,7 @@
 /area/lv624/lazarus/medbay)
 "zL" = (
 /obj/structure/flora/jungle/planttop1,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "AO" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -474,7 +474,7 @@
 /area/lv624/lazarus/medbay)
 "Es" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "ES" = (
 /turf/open/gm/dirtgrassborder,
@@ -510,14 +510,14 @@
 /area/lv624/lazarus/medbay)
 "LQ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "Np" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "Pe" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "Pi" = (
 /obj/structure/surface/table,

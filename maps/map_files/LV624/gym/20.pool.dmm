@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "bA" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "bQ" = (
 /turf/open/floor{
@@ -56,9 +56,7 @@
 /turf/open/floor,
 /area/lv624/lazarus/fitness)
 "ic" = (
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/central_jungle)
 "iv" = (
 /obj/item/toy/inflatable_duck,
@@ -130,7 +128,7 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 9
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "oK" = (
 /obj/item/shard,
@@ -179,22 +177,22 @@
 /area/lv624/ground/colony/south_medbay_road)
 "wH" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
 "wO" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 8
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "xt" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "xS" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "yO" = (
 /obj/item/toy/beach_ball,
@@ -313,18 +311,18 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "JM" = (
 /obj/effect/landmark/crap_item,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "KS" = (
 /obj/structure/fence,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/north_nexus_road)
 "NC" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "Ot" = (
 /obj/structure/window_frame/colony,
@@ -377,11 +375,11 @@
 /area/lv624/lazarus/fitness)
 "Td" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "Ua" = (
 /obj/structure/flora/grass/tallgrass/jungle,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "Us" = (
 /obj/structure/closet/athletic_mixed,
@@ -422,7 +420,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "Wj" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
 "WV" = (
 /turf/open/gm/dirtgrassborder{

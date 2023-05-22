@@ -102,20 +102,14 @@
 /area/lv624/ground/jungle/west_jungle)
 "ay" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/west_jungle)
 "az" = (
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/west_jungle)
 "aA" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/west_jungle)
 "aB" = (
 /turf/open/gm/dirtgrassborder{
@@ -125,49 +119,41 @@
 /area/lv624/ground/jungle/west_jungle)
 "aC" = (
 /obj/structure/flora/jungle/vines/light_2,
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/west_jungle)
 "aD" = (
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/west_jungle)
 "aE" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "aF" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
 	},
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/west_jungle)
 "aG" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
 	},
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/west_jungle)
 "aH" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "aI" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "aJ" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "aK" = (
 /turf/open/gm/dirtgrassborder{
@@ -178,7 +164,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/river/west_river)
 "aV" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "aX" = (
 /turf/open/gm/coast{

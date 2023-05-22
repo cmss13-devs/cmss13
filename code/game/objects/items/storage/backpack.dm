@@ -409,9 +409,6 @@
 	max_w_class = SIZE_MASSIVE
 	xeno_types = null
 	var/base_icon_state = "ammo_pack"
-/obj/item/storage/backpack/marine/ammo_rack/Initialize(mapload)
-	. = ..()
-	update_icon()
 
 /obj/item/storage/backpack/marine/ammo_rack/update_icon()
 	. = ..()

@@ -763,7 +763,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		closeOther.close()
 	return ..(forced)
 
-/obj/structure/machinery/door/airlock/close(forced=0)
+/obj/structure/machinery/door/airlock/close(forced = FALSE)
 	if(operating || welded || locked || !loc)
 		return
 	if(!forced)
@@ -809,12 +809,12 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	..()
 	return
 
-/obj/structure/machinery/door/airlock/proc/lock(forced=0)
+/obj/structure/machinery/door/airlock/proc/lock(forced = FALSE)
 	if((operating && !forced) || locked)
 		return
 
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 25)
-	locked = 1
+	locked = TRUE
 	visible_message(SPAN_NOTICE("\The [src] airlock emits a loud thunk, then a click."))
 	update_icon()
 
@@ -822,7 +822,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(operating || !locked) return
 
 	if(forced || (arePowerSystemsOn())) //only can raise bolts if power's on
-		locked = 0
+		locked = FALSE
 
 		playsound(loc, 'sound/machines/hydraulics_2.ogg', 25)
 		visible_message(SPAN_NOTICE("\The [src] airlock emits a click, then hums slightly."))

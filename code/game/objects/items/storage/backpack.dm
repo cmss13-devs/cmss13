@@ -900,13 +900,13 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank))
 		if(reagents.total_volume < max_fuel)
 			O.reagents.trans_to(src, max_fuel)
-			to_chat(user, SPAN_NOTICE(" You crack the cap off the top of the pack and fill it back up again from the tank."))
+			to_chat(user, SPAN_NOTICE("You crack the cap off the top of the pack and fill it back up again from the tank."))
 			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 			return
 		if (src.reagents.total_volume == max_fuel)
-			to_chat(user, SPAN_NOTICE(" The pack is already full!"))
+			to_chat(user, SPAN_NOTICE("The pack is already full!"))
 			return
-	..()
+	return ..()
 
 /obj/item/storage/backpack/marine/engineerpack/flamethrower/attackby(obj/item/W, mob/living/user)
 	if (istype(W, /obj/item/ammo_magazine/flamer_tank))

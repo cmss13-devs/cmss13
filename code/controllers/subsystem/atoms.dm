@@ -45,7 +45,8 @@ SUBSYSTEM_DEF(atoms)
 	clear_tracked_initalize()
 
 	if(late_loaders.len)
-		for(var/atom/A as anything in late_loaders)
+		for(var/I in 1 to late_loaders.len)
+			var/atom/A = late_loaders[I]
 			//I hate that we need this
 			if(QDELETED(A))
 				continue
@@ -67,10 +68,11 @@ SUBSYSTEM_DEF(atoms)
 		count = atoms.len
 		#endif
 
-		for(var/atom/A as anything in atoms)
+		for(var/I in 1 to atoms.len)
+			var/atom/A = atoms[I]
 			if(!(A.flags_atom & INITIALIZED))
-				InitAtom(A, TRUE, mapload_arg)
 				CHECK_TICK
+				InitAtom(A, TRUE, mapload_arg)
 	else
 		#ifdef TESTING
 		count = 0

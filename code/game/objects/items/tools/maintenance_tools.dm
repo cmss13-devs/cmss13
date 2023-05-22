@@ -666,7 +666,7 @@ Welding backpack
 		if (reagents.total_volume == max_fuel)
 			to_chat(user, SPAN_NOTICE(" [src] is already full!"))
 			return
-	..()
+	return ..()
 
 /obj/item/tool/weldpack/get_examine_text(mob/user)
 	. = ..()

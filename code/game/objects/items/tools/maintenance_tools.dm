@@ -658,7 +658,7 @@ Welding backpack
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank/custom) || istype(O, /obj/structure/reagent_dispensers/fueltank/gas))
 		return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank))
-		if(src.reagents.total_volume < max_fuel)
+		if(reagents.total_volume < max_fuel)
 			O.reagents.trans_to(src, max_fuel)
 			to_chat(user, SPAN_NOTICE(" You crack the cap off the top of \the [src] and fill it back up again from the tank."))
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)

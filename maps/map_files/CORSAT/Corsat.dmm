@@ -20399,9 +20399,7 @@
 /area/corsat/gamma/freezer)
 "bcR" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/coast{
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner,
 /area/corsat/theta/biodome)
 "bcS" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -20410,10 +20408,7 @@
 	},
 /area/corsat/theta/biodome)
 "bcT" = (
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/dir_4,
 /area/corsat/theta/biodome)
 "bcU" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
@@ -20596,48 +20591,31 @@
 	},
 /area/corsat/theta/biodome)
 "bdz" = (
-/turf/open/gm/coast{
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner,
 /area/corsat/theta/biodome)
 "bdA" = (
 /turf/open/gm/coast,
 /area/corsat/theta/biodome)
 "bdB" = (
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/dir_1,
 /area/corsat/theta/biodome)
 "bdC" = (
-/turf/open/gm/coast{
-	dir = 6
-	},
+/turf/open/gm/coast/dir_6,
 /area/corsat/theta/biodome)
 "bdD" = (
 /turf/open/gm/river,
 /area/corsat/theta/biodome)
 "bdE" = (
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/dir_1,
 /area/corsat/theta/biodome)
 "bdF" = (
-/turf/open/gm/coast{
-	dir = 4
-	},
+/turf/open/gm/coast/dir_4,
 /area/corsat/theta/biodome)
 "bdG" = (
-/turf/open/gm/coast{
-	dir = 8
-	},
+/turf/open/gm/coast/dir_8,
 /area/corsat/theta/biodome)
 "bdI" = (
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/dir_4,
 /area/corsat/theta/biodome)
 "bdJ" = (
 /turf/open/gm/dirtgrassborder{
@@ -20652,25 +20630,16 @@
 	},
 /area/corsat/theta/biodome)
 "bdL" = (
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/dir_1,
 /area/corsat/theta/biodome)
 "bdM" = (
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/dir_8,
 /area/corsat/theta/biodome)
 "bdN" = (
-/turf/open/gm/coast{
-	dir = 5
-	},
+/turf/open/gm/coast/dir_5,
 /area/corsat/theta/biodome)
 "bdO" = (
-/turf/open/gm/coast{
-	dir = 9
-	},
+/turf/open/gm/coast/dir_9,
 /area/corsat/theta/biodome)
 "bdP" = (
 /obj/structure/flora/jungle/vines/light_1,
@@ -39401,9 +39370,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/dir_1,
 /area/corsat/theta/biodome)
 "eBl" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -57794,9 +57761,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/coast{
-	dir = 8
-	},
+/turf/open/gm/coast/dir_8,
 /area/corsat/theta/biodome)
 "siU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -62033,10 +61998,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/dir_8,
 /area/corsat/theta/biodome)
 "vnF" = (
 /obj/structure/bed/chair/office/light{
@@ -62982,10 +62944,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/dir_4,
 /area/corsat/theta/biodome)
 "wbK" = (
 /obj/structure/flora/pottedplant{
@@ -64130,9 +64089,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/coast{
-	dir = 4
-	},
+/turf/open/gm/coast/dir_4,
 /area/corsat/theta/biodome)
 "wSq" = (
 /obj/structure/pipes/standard/simple/hidden/green,

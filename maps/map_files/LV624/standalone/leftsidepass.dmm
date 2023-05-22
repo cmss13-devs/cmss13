@@ -8,9 +8,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_west_barrens)
 "ad" = (
-/turf/open/gm/coast{
-	dir = 4
-	},
+/turf/open/gm/coast/dir_4,
 /area/lv624/ground/river/west_river)
 "ae" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
@@ -32,9 +30,7 @@
 /area/lv624/ground/river/west_river)
 "ai" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/coast{
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner,
 /area/lv624/ground/river/west_river)
 "aj" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
@@ -49,22 +45,13 @@
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
 "ao" = (
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/dir_4,
 /area/lv624/ground/river/west_river)
 "aq" = (
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/dir_8,
 /area/lv624/ground/river/west_river)
 "ar" = (
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/dir_4,
 /area/lv624/ground/river/west_river)
 "as" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -89,10 +76,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "aw" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/dir_8,
 /area/lv624/ground/jungle/west_jungle)
 "ax" = (
 /turf/open/gm/dirtgrassborder{
@@ -167,10 +151,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "aX" = (
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/dir_8,
 /area/lv624/ground/river/west_river)
 "bc" = (
 /turf/open/gm/river,
@@ -187,23 +168,17 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_west_barrens)
 "bm" = (
-/turf/open/gm/coast{
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2,
 /area/lv624/ground/river/west_river)
 "bt" = (
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/dir_1,
 /area/lv624/ground/river/west_river)
 "bx" = (
 /obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_west_barrens)
 "bz" = (
-/turf/open/gm/coast{
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner,
 /area/lv624/ground/river/west_river)
 "bL" = (
 /turf/open/gm/coast,
@@ -222,10 +197,7 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/river/west_river)
 "kE" = (
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/dir_4,
 /area/lv624/ground/jungle/west_jungle)
 "qG" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -236,9 +208,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
 "zW" = (
-/turf/open/gm/coast{
-	dir = 4
-	},
+/turf/open/gm/coast/dir_4,
 /area/lv624/ground/jungle/west_jungle)
 "Dw" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -257,9 +227,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
 "Ms" = (
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/dir_1,
 /area/lv624/ground/jungle/west_jungle)
 "Ok" = (
 /obj/structure/flora/jungle/alienplant1,

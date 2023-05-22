@@ -556,6 +556,53 @@
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
 
+/turf/open/gm/coast/dir_1
+	dir = 1
+
+/turf/open/gm/coast/dir_4
+	dir = 4
+
+/turf/open/gm/coast/dir_5
+	dir = 5
+
+/turf/open/gm/coast/dir_6
+	dir = 6
+
+/turf/open/gm/coast/dir_8
+	dir = 8
+
+/turf/open/gm/coast/dir_9
+	dir = 9
+
+/turf/open/gm/coast/dir_10
+	dir = 10
+
+/turf/open/gm/coast/beachcorner
+	icon_state = "beachcorner"
+
+/turf/open/gm/coast/beachcorner/dir_1
+	dir = 1
+
+/turf/open/gm/coast/beachcorner/dir_4
+	dir = 4
+
+/turf/open/gm/coast/beachcorner/dir_8
+	dir = 8
+
+/turf/open/gm/coast/beachcorner2
+	icon_state = "beachcorner2"
+
+/turf/open/gm/coast/beachcorner2/dir_1
+	dir = 1
+
+/turf/open/gm/coast/beachcorner2/dir_2
+	dir = 2
+
+/turf/open/gm/coast/beachcorner2/dir_4
+	dir = 4
+
+/turf/open/gm/coast/beachcorner2/dir_8
+	dir = 8
 
 /turf/open/gm/riverdeep
 	name = "river"

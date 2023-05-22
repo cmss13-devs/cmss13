@@ -1905,10 +1905,7 @@
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8
 	},
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/dir_1,
 /area/lv624/ground/river/east_river)
 "Zt" = (
 /obj/structure/prop/brazier,

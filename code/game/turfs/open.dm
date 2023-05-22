@@ -339,9 +339,26 @@
 /turf/open/gm/grass/grassbeach
 	icon_state = "grassbeach"
 
+/turf/open/gm/grass/grassbeach/dir_1
+	dir = 1
+
+/turf/open/gm/grass/grassbeach/dir_4
+	dir = 4
+
+/turf/open/gm/grass/grassbeach/dir_8
+	dir = 8
+
 /turf/open/gm/grass/gbcorner
 	icon_state = "gbcorner"
 
+/turf/open/gm/grass/gbcorner/dir_1
+	dir = 1
+
+/turf/open/gm/grass/gbcorner/dir_4
+	dir = 4
+
+/turf/open/gm/grass/gbcorner/dir_8
+	dir = 8
 
 /turf/open/gm/grass/Initialize(mapload, ...)
 	. = ..()

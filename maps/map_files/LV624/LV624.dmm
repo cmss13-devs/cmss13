@@ -7003,9 +7003,7 @@
 "aEt" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass/grassbeach{
-	dir = 4
-	},
+/turf/open/gm/grass/grassbeach/dir_4,
 /area/lv624/lazarus/yggdrasil)
 "aEu" = (
 /obj/effect/landmark/crap_item,
@@ -8751,9 +8749,7 @@
 "aKH" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/grass/gbcorner{
-	dir = 8
-	},
+/turf/open/gm/grass/gbcorner/dir_8,
 /area/lv624/lazarus/yggdrasil)
 "aKI" = (
 /obj/structure/flora/jungle/vines/light_2,
@@ -8829,9 +8825,7 @@
 /area/lv624/lazarus/yggdrasil)
 "aLg" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/gbcorner{
-	dir = 8
-	},
+/turf/open/gm/grass/gbcorner/dir_8,
 /area/lv624/lazarus/yggdrasil)
 "aLh" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
@@ -8923,9 +8917,7 @@
 "aLJ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/grassbeach{
-	dir = 4
-	},
+/turf/open/gm/grass/grassbeach/dir_4,
 /area/lv624/lazarus/yggdrasil)
 "aLK" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
@@ -8933,14 +8925,10 @@
 /area/lv624/lazarus/yggdrasil)
 "aLL" = (
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/grass/grassbeach{
-	dir = 1
-	},
+/turf/open/gm/grass/grassbeach/dir_1,
 /area/lv624/lazarus/yggdrasil)
 "aLM" = (
-/turf/open/gm/grass/grassbeach{
-	dir = 1
-	},
+/turf/open/gm/grass/grassbeach/dir_1,
 /area/lv624/lazarus/yggdrasil)
 "aLN" = (
 /turf/open/gm/river,
@@ -9173,15 +9161,11 @@
 "aMQ" = (
 /obj/structure/flora/tree/jungle/bigtreeTL,
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/grassbeach{
-	dir = 4
-	},
+/turf/open/gm/grass/grassbeach/dir_4,
 /area/lv624/lazarus/yggdrasil)
 "aMS" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass/grassbeach{
-	dir = 1
-	},
+/turf/open/gm/grass/grassbeach/dir_1,
 /area/lv624/lazarus/yggdrasil)
 "aMT" = (
 /obj/structure/flora/tree/jungle/bigtreeTR,
@@ -9197,9 +9181,7 @@
 "aMW" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/grass/grassbeach{
-	dir = 8
-	},
+/turf/open/gm/grass/grassbeach/dir_8,
 /area/lv624/lazarus/yggdrasil)
 "aMX" = (
 /obj/structure/machinery/deployable/barrier,
@@ -9321,9 +9303,7 @@
 /area/lv624/lazarus/yggdrasil)
 "aNC" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/grassbeach{
-	dir = 4
-	},
+/turf/open/gm/grass/grassbeach/dir_4,
 /area/lv624/lazarus/yggdrasil)
 "aND" = (
 /obj/structure/flora/jungle/cart_wreck,
@@ -9348,9 +9328,7 @@
 /turf/open/gm/river,
 /area/lv624/lazarus/yggdrasil)
 "aNI" = (
-/turf/open/gm/grass/grassbeach{
-	dir = 8
-	},
+/turf/open/gm/grass/grassbeach/dir_8,
 /area/lv624/lazarus/yggdrasil)
 "aNJ" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
@@ -9529,9 +9507,7 @@
 /area/lv624/lazarus/sleep_female)
 "aOs" = (
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/grass/grassbeach{
-	dir = 4
-	},
+/turf/open/gm/grass/grassbeach/dir_4,
 /area/lv624/lazarus/yggdrasil)
 "aOt" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
@@ -9734,9 +9710,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "aPg" = (
 /obj/structure/flora/jungle/vines/light_2,
-/turf/open/gm/grass/gbcorner{
-	dir = 4
-	},
+/turf/open/gm/grass/gbcorner/dir_4,
 /area/lv624/lazarus/yggdrasil)
 "aPh" = (
 /turf/open/gm/grass/grassbeach,
@@ -9747,9 +9721,7 @@
 /area/lv624/lazarus/yggdrasil)
 "aPj" = (
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/grass/grassbeach{
-	dir = 8
-	},
+/turf/open/gm/grass/grassbeach/dir_8,
 /area/lv624/lazarus/yggdrasil)
 "aPk" = (
 /obj/structure/flora/jungle/vines/light_3,
@@ -10037,35 +10009,25 @@
 "aQp" = (
 /obj/structure/machinery/colony_floodlight,
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/gbcorner{
-	dir = 4
-	},
+/turf/open/gm/grass/gbcorner/dir_4,
 /area/lv624/lazarus/yggdrasil)
 "aQr" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/grassbeach{
-	dir = 1
-	},
+/turf/open/gm/grass/grassbeach/dir_1,
 /area/lv624/lazarus/yggdrasil)
 "aQs" = (
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/grass/grassbeach{
-	dir = 1
-	},
+/turf/open/gm/grass/grassbeach/dir_1,
 /area/lv624/lazarus/yggdrasil)
 "aQt" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/structure/flora/jungle/vines/light_2,
-/turf/open/gm/grass/grassbeach{
-	dir = 1
-	},
+/turf/open/gm/grass/grassbeach/dir_1,
 /area/lv624/lazarus/yggdrasil)
 "aQu" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/grassbeach{
-	dir = 1
-	},
+/turf/open/gm/grass/grassbeach/dir_1,
 /area/lv624/lazarus/yggdrasil)
 "aQw" = (
 /obj/structure/flora/jungle/vines/heavy,

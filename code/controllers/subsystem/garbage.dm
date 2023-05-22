@@ -271,18 +271,28 @@ SUBSYSTEM_DEF(garbage)
 		return
 	var/queue_time = world.time
 
+	var/list/queue = queues[level]
+
 #ifdef EXPERIMENT_515_QDEL_HARD_REFERENCE
 	var/refid = D
 #else
 	var/refid = text_ref(D)
+
+	// For some unknown reason right now, either the ref proc is worthless
+	// or byond is making us re-use a refid we just used which screws up this garbage subsystem
+	// And yes TG is experiencing the same symptoms; but they probably don't care because they are using 515
+	// It could be a memory leak if the old didn't get deleted, otherwise its just flaw in this subsystem
+	// not dequeuing things when it needs to
+	if (queue.len && queue[queue.len][GC_QUEUE_ITEM_REF] == refid)
+		debug_log("It looks like we're re-queueing \[[refid]\] now as a [D.type]. Removing the old [(queue[queue.len][4])]...")
+		queue.Cut(queue.len)
+
 #endif
 
 	if (D.gc_destroyed <= 0)
 		D.gc_destroyed = queue_time
 
-	var/list/queue = queues[level]
-
-	queue[++queue.len] = list(queue_time, refid, D.gc_destroyed) // not += for byond reasons
+	queue[++queue.len] = list(queue_time, refid, D.gc_destroyed, D.type) // not += for byond reasons
 
 //this is mainly to separate things profile wise.
 /datum/controller/subsystem/garbage/proc/HardDelete(datum/D, force)

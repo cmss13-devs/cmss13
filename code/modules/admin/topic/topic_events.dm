@@ -162,9 +162,7 @@
 					if(istype(current_item, /obj/item/card/id/))
 						continue
 					qdel(current_item)
-
 				continue
-
 
 			if(strip_weapons)
 				var/obj/item_storage

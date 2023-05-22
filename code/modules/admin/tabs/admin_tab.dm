@@ -433,9 +433,7 @@
 	if(tgui_alert(src, "This will strip ALL mobs within your view range. Are you sure?", "Confirmation", list("Yes", "Cancel")))
 		return
 
-	var/strip_self = FALSE
-	if(tgui_alert(src, "Do you want to strip yourself as well?", "Confirmation", list("Yes", "No") == "Yes"))
-		strip_self = TRUE
+	var/strip_self = tgui_alert(src, "Do you want to strip yourself as well?", "Confirmation", list("Yes", "No") == "Yes")
 
 	// These for loops are basically exactly the same, however the "if strip self" was done outside of loop for (minor) performance reasons
 	if(strip_self)

@@ -14993,10 +14993,7 @@
 	},
 /area/corsat/gamma/hangar/checkpoint)
 "aPJ" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -20804,10 +20801,7 @@
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "bem" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "ben" = (
@@ -20832,10 +20826,7 @@
 	},
 /area/corsat/sigma/biodome/gunrange)
 "ber" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "bes" = (
@@ -20889,10 +20880,7 @@
 /turf/open/gm/river,
 /area/corsat/theta/biodome)
 "beB" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/corsat/theta/biodome)
 "beD" = (
@@ -23718,10 +23706,6 @@
 	icon_state = "red"
 	},
 /area/corsat/gamma/hangar/arrivals)
-"bmQ" = (
-/obj/structure/lattice,
-/turf/open/space,
-/area/space)
 "bmS" = (
 /obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
@@ -42201,10 +42185,7 @@
 	},
 /area/corsat/gamma/airlock/control)
 "gFh" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -53181,10 +53162,7 @@
 	},
 /area/corsat/sigma/biodome/gunrange)
 "oLe" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
@@ -59830,9 +59808,6 @@
 	icon_state = "whitetan"
 	},
 /area/corsat/gamma/residential/west)
-"tJe" = (
-/turf/open/ice,
-/area/corsat/gamma/biodome)
 "tJf" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/dirtgrassborder{
@@ -60743,10 +60718,7 @@
 	},
 /area/corsat/sigma/checkpoint)
 "usK" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/dirtgrassborder{
 	dir = 1
 	},
@@ -62018,12 +61990,6 @@
 	icon_state = "retrosquareslight"
 	},
 /area/corsat/gamma/biodome/virology)
-"vkS" = (
-/obj/effect/landmark/xeno_spawn,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/omega/biodome)
 "vkW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -67475,7 +67441,7 @@ bfc
 bfc
 bfc
 sFF
-tJe
+bfc
 bfc
 sFF
 bfc
@@ -69280,7 +69246,7 @@ aFe
 hwe
 avX
 aFe
-vkS
+aFe
 aFe
 aFe
 avX

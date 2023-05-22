@@ -72,7 +72,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("M41AE2 Heavy Pulse Rifle", 18, /obj/item/storage/box/guncase/lmg, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
-		list("M3 B12 Pattern Armor", 28, /obj/item/clothing/suit/storage/marine/leader, null, VENDOR_ITEM_REGULAR),
+		list("B12 Pattern Armor", 28, /obj/item/clothing/suit/storage/marine/leader, null, VENDOR_ITEM_REGULAR),
+		list("B12 Pattern Padless Marine Armor", 28, /obj/item/clothing/suit/storage/marine/leader/padless, null, VENDOR_ITEM_REGULAR),
 		list("M4 Pattern Armor", 28, /obj/item/clothing/suit/storage/marine/rto, null, VENDOR_ITEM_REGULAR),
 		list("Range Finder", 6, /obj/item/device/binoculars/range, null, VENDOR_ITEM_REGULAR),
 		list("Laser Designator", 8, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),

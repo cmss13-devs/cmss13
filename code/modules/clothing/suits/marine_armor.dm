@@ -441,6 +441,12 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "B12 pattern marine"
 
+/obj/item/clothing/suit/storage/marine/leader/padless
+	name = "\improper B12 pattern padless marine armor"
+	desc = "A lightweight suit of carbon fiber body armor built for quick movement. Designed in a lovely forest green. This one is missing it's shoulder pads! Use it to toggle the built-in flashlight."
+	icon_state = "7_b"
+	specialty = "B12 pattern padless marine"
+	flags_atom = NO_SNOW_TYPE
 /obj/item/clothing/suit/storage/marine/tanker
 	name = "\improper M3 pattern tanker armor"
 	desc = "A modified and refashioned suit of M3 Pattern armor designed to be worn by the loader of a USCM vehicle crew. While the suit is a bit more encumbering to wear with the crewman uniform, it offers the loader a degree of protection that would otherwise not be enjoyed."

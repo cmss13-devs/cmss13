@@ -48,6 +48,9 @@
 	var/min_creation_cost = 0
 	var/creation_od_level = 10 //a cache for new_od_level when switching between modes
 
+	unslashable = TRUE
+	unacidable = TRUE
+
 /obj/structure/machinery/chem_simulator/Initialize()
 	. = ..()
 	LAZYINITLIST(simulations)

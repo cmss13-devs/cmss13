@@ -648,6 +648,10 @@
 	health = 150
 	luminosity = 6
 
+/obj/structure/prop/brazier/Destroy()
+	SetLuminosity(0)
+	return ..()
+
 /obj/structure/prop/brazier/Initialize()
 	. = ..()
 	if(luminosity)

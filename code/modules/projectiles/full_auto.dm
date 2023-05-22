@@ -90,10 +90,7 @@
 		return
 
 	user.face_atom(fa_target)
-	if(user.gun_mode && !(fa_target in target))
-		PreFire(fa_target, user, fa_params)
-	else
-		Fire(fa_target, user, fa_params)
+	Fire(fa_target, user, fa_params)
 
 	addtimer(CALLBACK(src, PROC_REF(repeat_fire), user), fa_delay)
 

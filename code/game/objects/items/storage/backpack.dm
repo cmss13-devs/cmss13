@@ -410,7 +410,7 @@
 	throw_range = 0
 	xeno_types = null
 	var/base_icon_state = "ammo_pack"
-	var/move_delay_mult = 2
+	var/move_delay_mult = 1
 
 /obj/item/storage/backpack/marine/ammo_rack/update_icon()
 	. = ..()
@@ -423,7 +423,7 @@
 /obj/item/storage/backpack/marine/ammo_rack/proc/handle_movedelay(mob/user, list/movedata)
 	SIGNAL_HANDLER
 	if(locate(/obj/item/storage/backpack/marine/ammo_rack) in user.contents)
-		movedata["move_delay"] *= move_delay_mult
+		movedata["move_delay"] += move_delay_mult
 
 /obj/item/storage/backpack/marine/ammo_rack/dropped(mob/user, silent)
 	. = ..()

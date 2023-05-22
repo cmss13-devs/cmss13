@@ -898,7 +898,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	if(!proximity) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
 		return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank))
-		if(src.reagents.total_volume < max_fuel)
+		if(reagents.total_volume < max_fuel)
 			O.reagents.trans_to(src, max_fuel)
 			to_chat(user, SPAN_NOTICE(" You crack the cap off the top of the pack and fill it back up again from the tank."))
 			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)

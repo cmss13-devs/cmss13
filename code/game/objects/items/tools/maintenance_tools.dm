@@ -664,7 +664,7 @@ Welding backpack
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 			return
 		else if (src.reagents.total_volume == max_fuel)
-			to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
+			to_chat(user, SPAN_NOTICE(" [src] is already full!"))
 			return
 	..()
 

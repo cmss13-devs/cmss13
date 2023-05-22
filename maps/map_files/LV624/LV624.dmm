@@ -8753,8 +8753,7 @@
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/gbcorner{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/lv624/lazarus/yggdrasil)
 "aKI" = (
@@ -8832,8 +8831,7 @@
 "aLg" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/gbcorner{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/lv624/lazarus/yggdrasil)
 "aLh" = (
@@ -9747,8 +9745,7 @@
 "aPg" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/gbcorner{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/lv624/lazarus/yggdrasil)
 "aPh" = (
@@ -10052,16 +10049,14 @@
 /obj/structure/machinery/colony_floodlight,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/gbcorner{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/lv624/lazarus/yggdrasil)
 "aQr" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grassbeach{
-	dir = 1;
-	
+	dir = 1
 	},
 /area/lv624/lazarus/yggdrasil)
 "aQs" = (

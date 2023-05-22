@@ -2232,8 +2232,7 @@
 /area/whiskey_outpost/inside/hospital)
 "hI" = (
 /turf/open/gm/grass/gbcorner{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/whiskey_outpost/outside/lane/one_north)
 "hJ" = (
@@ -3876,8 +3875,7 @@
 /area/whiskey_outpost)
 "nj" = (
 /turf/open/gm/grass/gbcorner{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/whiskey_outpost/outside/south)
 "nk" = (
@@ -5493,8 +5491,7 @@
 /area/whiskey_outpost/inside/supply)
 "ti" = (
 /turf/open/gm/grass/gbcorner{
-	dir = 1;
-	
+	dir = 1
 	},
 /area/whiskey_outpost/outside/south)
 "tj" = (
@@ -6278,8 +6275,7 @@
 /area/whiskey_outpost/inside/supply)
 "vQ" = (
 /turf/open/gm/grass/gbcorner{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/whiskey_outpost/outside/lane/one_south)
 "vR" = (
@@ -10550,8 +10546,7 @@
 /area/whiskey_outpost/outside/lane/four_north)
 "Me" = (
 /turf/open/gm/grass/gbcorner{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/whiskey_outpost/outside/lane/one_south)
 "Mf" = (
@@ -11813,8 +11808,7 @@
 /area/whiskey_outpost/outside/south)
 "RG" = (
 /turf/open/gm/grass/gbcorner{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/whiskey_outpost/outside/north/northwest)
 "RH" = (

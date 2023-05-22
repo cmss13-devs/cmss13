@@ -199,7 +199,7 @@
 	counterfeit = TRUE
 
 /proc/spawn_money(sum, spawnloc, mob/living/carbon/human/human_user as mob)
-	if(sum in list(1000,500,200,100,50,20,10,1))
+	if(sum in list(1000000,100000,10000,1000,500,200,100,50,20,10,1))
 		var/cash_type = text2path("/obj/item/spacecash/c[sum]")
 		var/obj/cash = new cash_type (usr.loc)
 		if(ishuman(human_user) && !human_user.get_active_hand())

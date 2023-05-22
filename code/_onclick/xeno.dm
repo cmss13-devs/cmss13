@@ -30,9 +30,13 @@
 			target = alt
 		if (T && ignores_resin) // Will not target resin walls and doors if this is set to true. This is normally only set to true through a directional attack.
 			if(istype(T, /obj/structure/mineral_door/resin))
-				return FALSE
+				var/obj/structure/mineral_door/resin/attacked_door = T
+				if(hivenumber == attacked_door.hivenumber)
+					return FALSE
 			if(istype(T, /turf/closed/wall/resin))
-				return FALSE
+				var/turf/closed/wall/resin/attacked_wall = T
+				if(hivenumber == attacked_wall.hivenumber)
+					return FALSE
 
 	target = target.handle_barriers(src, , (PASS_MOB_THRU_XENO|PASS_TYPE_CRAWLER)) // Checks if target will be attacked by the current alien OR if the blocker will be attacked
 	switch(target.attack_alien(src))

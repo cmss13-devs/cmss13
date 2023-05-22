@@ -663,7 +663,7 @@ Welding backpack
 			to_chat(user, SPAN_NOTICE(" You crack the cap off the top of \the [src] and fill it back up again from the tank."))
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 			return
-		else if (src.reagents.total_volume == max_fuel)
+		if (reagents.total_volume == max_fuel)
 			to_chat(user, SPAN_NOTICE(" [src] is already full!"))
 			return
 	..()

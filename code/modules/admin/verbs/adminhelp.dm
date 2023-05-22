@@ -614,7 +614,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		dat += "<br>Closed at: [gameTimestamp(wtime = closed_at)] (Approx [DisplayTimeText(world.time - closed_at)] ago)"
 	dat += "<br>"
 	if(initiator)
-		dat += "[FullMonty(ref_src)]<br>"//All the action buttons for tickets/ahelps
+		dat += "[FullMonty(ref_src)]<br>" //All the action buttons for tickets/ahelps
 	else
 		dat += "<b>DISCONNECTED</b>[FOURSPACES][ClosureLinks(ref_src)]<br>"
 	dat += "<br><b>Log:</b><br><br>"

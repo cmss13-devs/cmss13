@@ -1,0 +1,4 @@
+author: "Emanthealmighty"
+delete-after: True
+changes:
+  - bugfix: "Fixed huggers not passively dying if they fail to attach to a target."

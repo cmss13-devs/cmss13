@@ -168,12 +168,76 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 
 */
 
+//Light desert grass
+
 /obj/structure/flora/grass/desert
 	icon = 'icons/obj/structures/props/dam.dmi'
+
+// to replace with
+/obj/structure/flora/grass/desert/lightgrass_1
 	icon_state = "lightgrass_1"
+
+/obj/structure/flora/grass/desert/lightgrass_2
+	icon_state = "lightgrass_2"
+
+/obj/structure/flora/grass/desert/lightgrass_3
+	icon_state = "lightgrass_3"
+
+/obj/structure/flora/grass/desert/lightgrass_4
+	icon_state = "lightgrass_4"
+
+/obj/structure/flora/grass/desert/lightgrass_5
+	icon_state = "lightgrass_5"
+
+/obj/structure/flora/grass/desert/lightgrass_6
+	icon_state = "lightgrass_6"
+
+/obj/structure/flora/grass/desert/lightgrass_7
+	icon_state = "lightgrass_7"
+
+/obj/structure/flora/grass/desert/lightgrass_8
+	icon_state = "lightgrass_8"
+
+/obj/structure/flora/grass/desert/lightgrass_9
+	icon_state = "lightgrass_9"
+
+/obj/structure/flora/grass/desert/lightgrass_10
+	icon_state = "lightgrass_10"
+
+/obj/structure/flora/grass/desert/lightgrass_11
+	icon_state = "lightgrass_11"
+
+/obj/structure/flora/grass/desert/lightgrass_12
+	icon_state = "lightgrass_12"
+
+//heavy desert grass
 
 /obj/structure/flora/grass/desert/heavy
 	icon_state = "heavygrass_1"
+
+/obj/structure/flora/grass/desert/heavygrass_2
+	icon_state = "heavygrass_2"
+
+/obj/structure/flora/grass/desert/heavygrass_3
+	icon_state = "heavygrass_3"
+
+/obj/structure/flora/grass/desert/heavygrass_4
+	icon_state = "heavygrass_4"
+
+/obj/structure/flora/grass/desert/heavygrass_5
+	icon_state = "heavygrass_5"
+
+/obj/structure/flora/grass/desert/heavygrass_6
+	icon_state = "heavygrass_6"
+
+/obj/structure/flora/grass/desert/heavygrass_7
+	icon_state = "heavygrass_7"
+
+/obj/structure/flora/grass/desert/heavygrass_8
+	icon_state = "heavygrass_8"
+
+/obj/structure/flora/grass/desert/heavygrass_9
+	icon_state = "heavygrass_9"
 
 /*
 

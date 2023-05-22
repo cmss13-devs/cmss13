@@ -13463,19 +13463,16 @@
 /obj/structure/toilet{
 	pixel_y = 13
 	},
-/obj/structure/sign/poster{
-	desc = "Wawaweewa.";
-	icon_state = "poster17";
-	name = "magazine";
-	pixel_x = -6;
-	pixel_y = -7
-	},
 /obj/item/paper_bin/uscm{
 	pixel_x = 9;
 	pixel_y = -3
 	},
 /obj/structure/machinery/light/small{
 	dir = 4
+	},
+/obj/item/prop/magazine/dirty{
+	pixel_x = -6;
+	pixel_y = -10
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -25883,13 +25880,9 @@
 	pixel_x = -10;
 	pixel_y = 6
 	},
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "The only official USCM magazine, the headline reads 'Corporate Liaison 'emotionally exhausted' from screwing so many people over.'";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster15";
-	name = "Boots!: Issue No.160";
-	pixel_x = -5;
-	pixel_y = -7
+/obj/item/prop/magazine/boots/n160{
+	pixel_x = -6;
+	pixel_y = -5
 	},
 /obj/structure/transmitter/rotary{
 	name = "Flight Deck Telephone";
@@ -29477,12 +29470,9 @@
 	pixel_x = 1;
 	pixel_y = 25
 	},
-/obj/item/book{
-	desc = "An autobiography penned by Derik A.W. Tomahawk it recounts his service in the USCM. The book was harshly criticised for its bland and uncreative writing and wasn't well received by the general public or members of the UA military. However, artificial soldiers typically value the information contained within.";
-	icon_state = "bookSpaceLaw";
-	name = "\improper Born to Kill";
+/obj/item/prop/magazine/book/borntokill{
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 7
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -32110,9 +32100,7 @@
 /area/almayer/engineering/upper_engineering/port)
 "eiq" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/sign/poster{
-	serial_number = 15
-	},
+/obj/item/prop/magazine/dirty,
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
 "eiw" = (
@@ -32427,12 +32415,7 @@
 /area/almayer/hull/lower_hull/l_m_s)
 "eni" = (
 /obj/structure/surface/table/almayer,
-/obj/item/book{
-	desc = "An autobiography focusing on the events of 'Fury 161' in August 2179 following the arrival of 'Ellen Ripley' and an unknown alien creature known as 'The Dragon' the books writing is extremely crude and was book banned shorty after publication.";
-	icon_state = "bookSpaceLaw";
-	name = "\improper Space Beast, by Robert Morse";
-	pixel_y = 3
-	},
+/obj/item/prop/magazine/book/spacebeast,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red"
@@ -35532,12 +35515,8 @@
 /area/almayer/squads/req)
 "fIZ" = (
 /obj/structure/surface/table/almayer,
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "The only official USCM magazine, the headline reads 'STOP CANNING' the short paragraph further explains the dangers of marines throwing CN-20 Nerve gas into bathrooms as a prank.";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster15";
-	name = "Boots!: Issue No.117";
-	pixel_x = -5;
+/obj/item/prop/magazine/boots/n117{
+	pixel_x = -4;
 	pixel_y = 6
 	},
 /turf/open/floor/almayer{
@@ -39009,11 +38988,7 @@
 /area/almayer/living/briefing)
 "htL" = (
 /obj/structure/surface/table/almayer,
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "The only official USCM magazine, the headline reads 'UPP Rations, The truth.' the short paragraph further explains UPP field rations aren't standardized and are produced at a local level. Because of this, captured and confiscated UPP rations have included some odd choices such as duck liver pâté, century eggs, lutefisk, pickled pig snout, canned tripe, and dehydrated candied radish snacks.";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster15";
-	name = "Boots!: Issue No.150";
+/obj/item/prop/magazine/boots/n150{
 	pixel_x = -5;
 	pixel_y = 6
 	},
@@ -46198,21 +46173,10 @@
 /area/almayer/hull/lower_hull/l_m_p)
 "kRP" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster17";
-	name = "\improper torn magazine page";
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster3";
-	name = "\improper torn magazine page";
-	pixel_x = 5;
-	pixel_y = 14
+/obj/item/prop/magazine/dirty/torn,
+/obj/item/prop/magazine/dirty/torn/alt{
+	pixel_x = 7;
+	pixel_y = 11
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
@@ -49955,12 +49919,9 @@
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = -17
 	},
-/obj/item/book{
-	desc = "In the dark undercity of Luna 2119, blade runner Richard Ford is called out of retirement to terminate a cult of replicants who have escaped Earth seeking the meaning of their existence.";
-	icon_state = "bookSpaceLaw";
-	name = "\improper Bladerunner: A True Detectives Story";
-	pixel_x = -6;
-	pixel_y = 6
+/obj/item/prop/magazine/book/bladerunner{
+	pixel_x = -1;
+	pixel_y = 9
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -54927,17 +54888,13 @@
 "oZp" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/light,
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "The only official USCM magazine, the headline reads 'TEN tips to keep your UD4 cockpit both safer and more relaxing.'";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster15";
-	name = "Boots!: Issue No.55";
-	pixel_x = -5;
-	pixel_y = 5
-	},
 /obj/item/reagent_container/food/snacks/grilledcheese{
 	pixel_x = 6;
 	pixel_y = 8
+	},
+/obj/item/prop/magazine/boots/n055{
+	pixel_x = -9;
+	pixel_y = 5
 	},
 /turf/open/floor/almayer{
 	dir = 10;
@@ -63423,27 +63380,17 @@
 	pixel_x = 7;
 	pixel_y = 9
 	},
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster17";
-	name = "\improper torn magazine page";
-	pixel_x = -5;
-	pixel_y = 5
-	},
 /obj/item/trash/semki{
 	layer = 2;
 	pixel_x = -13;
 	pixel_y = 14
 	},
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "The only official USCM magazine, the headline reads 'ARMAT strikes back against litigants in M41A-MK2 self cleaning case'";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster15";
-	layer = 3.6;
-	name = "Boots!: Issue No.54";
-	pixel_x = 27;
-	pixel_y = 4
+/obj/item/prop/magazine/boots/n054{
+	pixel_x = 29
+	},
+/obj/item/prop/magazine/dirty/torn{
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/item/clothing/glasses/disco_fever{
 	pixel_x = 5;
@@ -70159,14 +70106,11 @@
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/sign/poster{
-	desc = "Wawaweewa.";
-	icon_state = "poster17";
-	name = "magazine";
-	pixel_x = 3;
-	pixel_y = 4
+/obj/item/tool/pen{
+	pixel_x = 9;
+	pixel_y = -5
 	},
-/obj/item/tool/pen,
+/obj/item/prop/magazine/book/theartofwar,
 /turf/open/floor/almayer,
 /area/almayer/living/bridgebunks)
 "vWB" = (
@@ -72006,16 +71950,9 @@
 "wNl" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/USCMtray{
-	pixel_x = 5
-	},
-/obj/item/trash/USCMtray{
 	layer = 3.2;
 	pixel_x = 4;
 	pixel_y = 17
-	},
-/obj/item/reagent_container/food/snacks/bearmeat{
-	pixel_x = 4;
-	pixel_y = -1
 	},
 /obj/item/reagent_container/food/drinks/cans/souto{
 	pixel_x = -10;
@@ -72025,6 +71962,10 @@
 	layer = 3.3;
 	pixel_x = 1;
 	pixel_y = 13
+	},
+/obj/item/prop/magazine/book/starshiptroopers{
+	pixel_x = 8;
+	pixel_y = -3
 	},
 /turf/open/floor/almayer{
 	dir = 10;

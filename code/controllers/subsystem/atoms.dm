@@ -25,6 +25,7 @@ SUBSYSTEM_DEF(atoms)
 	initialized = INITIALIZATION_INNEW_MAPLOAD
 	InitializeAtoms()
 	initialized = INITIALIZATION_INNEW_REGULAR
+	old_initialized = initialized
 
 	// Set up roundstart seed list. This is here because vendors were
 	// bugging out and not populating with the correct packet names

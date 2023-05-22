@@ -171,7 +171,8 @@ SUBSYSTEM_DEF(atoms)
 		old_initialized = initialized
 		initialized = value
 	else
-		stack_trace("We started maploading while we were already maploading. You doing something odd?")
+		// TG has this as a stack_trace, but currently is a non-issue so lets not escalate it to be a runtime
+		debug_log("We started maploading while we were already maploading. You doing something odd?")
 	initialized_changed += 1
 
 /datum/controller/subsystem/atoms/proc/clear_tracked_initalize()

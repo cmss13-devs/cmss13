@@ -581,6 +581,11 @@
 	desc = "This is used by the marine Alpha combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
+/obj/item/device/radio/headset/almayer/marine/alpha/driver
+	name = "marine alpha driver radio headset"
+	desc = "This is used by the marine Alpha driver. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
+
 /obj/item/device/radio/headset/almayer/marine/alpha/med
 	name = "marine alpha corpsman radio headset"
 	desc = "This is used by the marine Alpha combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
@@ -608,6 +613,11 @@
 /obj/item/device/radio/headset/almayer/marine/bravo/engi
 	name = "marine bravo engineer radio headset"
 	desc = "This is used by the marine Bravo combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
+
+/obj/item/device/radio/headset/almayer/marine/bravo/driver
+	name = "marine bravo driver radio headset"
+	desc = "This is used by the marine Bravo driver. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/bravo/med
@@ -639,6 +649,11 @@
 	desc = "This is used by the marine Charlie combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
+/obj/item/device/radio/headset/almayer/marine/charlie/driver
+	name = "marine charlie driver radio headset"
+	desc = "This is used by the marine Charlie driver. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
+
 /obj/item/device/radio/headset/almayer/marine/charlie/med
 	name = "marine charlie corpsman radio headset"
 	desc = "This is used by the marine Charlie combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
@@ -666,6 +681,11 @@
 /obj/item/device/radio/headset/almayer/marine/delta/engi
 	name = "marine delta engineer radio headset"
 	desc = "This is used by the marine Delta combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
+
+/obj/item/device/radio/headset/almayer/marine/delta/driver
+	name = "marine delta driver radio headset"
+	desc = "This is used by the marine Delta driver. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/delta/med
@@ -697,6 +717,11 @@
 	desc = "This is used by the marine Echo combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
+/obj/item/device/radio/headset/almayer/marine/echo/driver
+	name = "marine echo driver radio headset"
+	desc = "This is used by the marine Echo driver. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
+
 /obj/item/device/radio/headset/almayer/marine/echo/med
 	name = "marine echo corpsman radio headset"
 	desc = "This is used by the marine Echo combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
@@ -725,6 +750,11 @@
 /obj/item/device/radio/headset/almayer/marine/cryo/engi
 	name = "marine foxtrot engineer radio headset"
 	desc = "This is used by the marine Foxtrot combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
+
+/obj/item/device/radio/headset/almayer/marine/cryo/driver
+	name = "marine foxtrot driver radio headset"
+	desc = "This is used by the marine Foxtrot driver. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/cryo/med
@@ -788,6 +818,9 @@
 					keys += new /obj/item/device/encryptionkey/med(src)
 				if(JOB_SQUAD_ENGI)
 					name = "marine combat technician " + name
+					keys += new /obj/item/device/encryptionkey/engi(src)
+				if(JOB_SQUAD_DRIVER)
+					name = "marine afv operator " + name
 					keys += new /obj/item/device/encryptionkey/engi(src)
 				if(JOB_SQUAD_TEAM_LEADER)
 					name = "marine fireteam leader " + name

@@ -948,6 +948,15 @@ United States Colonial Marines
 		SKILL_JTAC = SKILL_JTAC_BEGINNER,
 	)
 
+/datum/skills/squad_driver
+	name = "AFV Operator"
+	skills = list(
+		SKILL_VEHICLE = SKILL_VEHICLE_CREWMAN,
+		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_JTAC = SKILL_JTAC_BEGINNER,
+	)
+
 /datum/skills/smartgunner
 	name = "Squad Smartgunner"
 	skills = list(

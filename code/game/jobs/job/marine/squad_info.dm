@@ -165,6 +165,8 @@
 					rank = "Eng"
 				if(JOB_SQUAD_MEDIC)
 					rank = "Med"
+				if(JOB_SQUAD_DRIVER)
+					rank = "AFV"
 				if(JOB_SQUAD_SMARTGUN)
 					rank = "SG"
 				if(JOB_SQUAD_SPECIALIST)
@@ -242,6 +244,8 @@
 						rank = "Eng"
 					if(JOB_SQUAD_MEDIC)
 						rank = "Med"
+					if(JOB_SQUAD_DRIVER)
+						rank = "AFV"
 					if(JOB_SQUAD_SMARTGUN)
 						rank = "SG"
 					if(JOB_SQUAD_SPECIALIST)
@@ -289,6 +293,8 @@
 						rank = "Eng"
 					if(JOB_SQUAD_MEDIC)
 						rank = "Med"
+					if(JOB_SQUAD_DRIVER)
+						rank = "AFV"
 					if(JOB_SQUAD_SMARTGUN)
 						rank = "SG"
 					if(JOB_SQUAD_SPECIALIST)

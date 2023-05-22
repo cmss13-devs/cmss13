@@ -787,6 +787,32 @@
 	req_one_access = list(ACCESS_MARINE_TL_PREP)
 	dir = SOUTH
 
+// Squad Driver
+
+/obj/structure/machinery/door/airlock/almayer/marine/alpha/driver
+	name = "\improper Alpha Squad Driver Preparations"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_TL_PREP)
+	dir = SOUTH
+
+/obj/structure/machinery/door/airlock/almayer/marine/bravo/driver
+	name = "\improper Bravo Squad Driver Preparations"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_TL_PREP)
+	dir = SOUTH
+
+/obj/structure/machinery/door/airlock/almayer/marine/charlie/driver
+	name = "\improper Charlie Squad Driver Preparations"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_TL_PREP)
+	dir = SOUTH
+
+/obj/structure/machinery/door/airlock/almayer/marine/delta/driver
+	name = "\improper Delta Squad Driver Preparations"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_TL_PREP)
+	dir = SOUTH
+
 //SQUAD PREP SHARED DOORS
 
 /obj/structure/machinery/door/airlock/almayer/marine/shared

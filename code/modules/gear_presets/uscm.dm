@@ -140,6 +140,77 @@
 
 //*****************************************************************************************************/
 
+/datum/equipment_preset/uscm/driver
+	name = "USCM Squad AFV Operator (Cryo)"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+	access = list(
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_DRIVER_PREP,
+		ACCESS_MARINE_CREWMAN // here for compatibility with the APC elevator, can be dealt with later on
+	)
+	assignment = JOB_SQUAD_DRIVER
+	rank = JOB_SQUAD_DRIVER
+	paygrade = "ME1"
+	role_comm_title = "AFV"
+	skills = /datum/skills/squad_driver
+
+	minimap_icon = "vc"
+
+/datum/equipment_preset/uscm/driver/load_gear(mob/living/carbon/human/H)
+	var/back_item = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+
+	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/tanker, WEAR_IN_BACK)
+
+/datum/equipment_preset/uscm/driver/load_rank(mob/living/carbon/human/rankee)
+	if(rankee?.client?.prefs?.pref_special_job_options[rank])
+		paygrade = rankee.client.prefs.pref_special_job_options[rank]
+
+	return paygrade
+
+/datum/equipment_preset/uscm/driver/cryo
+	name = "USCM Cryo Squad AFV Operator"
+	auto_squad_name = SQUAD_MARINE_CRYO
+
+/datum/equipment_preset/uscm/driver/cryo/load_gear(mob/living/carbon/human/H)
+	..()
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/driver(H), WEAR_L_EAR)
+
+/datum/equipment_preset/uscm/driver/load_status()
+	return
+
+//*****************************************************************************************************/
+// this is far from done
+/datum/equipment_preset/uscm/driver/full
+	name = "USCM Squad AFV Operator"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+	utility_under = list(/obj/item/clothing/under/marine/officer/tanker)
+
+/datum/equipment_preset/uscm/tank/full/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/vc(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/tanker(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/tanker(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/tool/weldpack(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tech/tanker(H), WEAR_HEAD)
+
+	spawn_weapon(/obj/item/weapon/gun/smg/m39, /obj/item/ammo_magazine/smg/m39/extended, H, 0, 3)
+
+/datum/equipment_preset/uscm/tank/full/load_status()
+	return
+
+//*****************************************************************************************************/
+
+//*****************************************************************************************************/
+
 /datum/equipment_preset/uscm/tank
 	name = "USCM Vehicle Crewman (CRMN) (Cryo)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE

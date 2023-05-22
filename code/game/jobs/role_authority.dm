@@ -458,6 +458,12 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 				else
 					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
 					return
+			if(JOB_SQUAD_DRIVER)
+				if(sq.num_drv > 0)
+					sq.num_drv--
+				else
+					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
+					return
 			if(JOB_SQUAD_SPECIALIST)
 				if(sq.num_specialists > 0)
 					sq.num_specialists--
@@ -714,6 +720,19 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 						else if(S.num_specialists < lowest.num_specialists)
 							lowest = S
 
+			if(JOB_SQUAD_DRIVER)
+				for(var/datum/squad/S in mixed_squads)
+					if(S.usable && S.roundstart)
+						if(!skip_limit && S.num_drv >= S.max_drv) continue
+						if(pref_squad_name && S.name == pref_squad_name)
+							S.put_marine_in_squad(H) //fav squad has a spot for us.
+							return
+
+						if(!lowest)
+							lowest = S
+						else if(S.num_drv < lowest.num_drv)
+							lowest = S
+
 			if(JOB_SQUAD_TEAM_LEADER)
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable && S.roundstart)
@@ -846,6 +865,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 				return TRUE
 		if(JOB_SQUAD_SPECIALIST)
 			if(new_squad.num_specialists >= new_squad.max_specialists)
+				return TRUE
+		if(JOB_SQUAD_DRIVER)
+			if(new_squad.num_drv >= new_squad.max_drv)
 				return TRUE
 		if(JOB_SQUAD_ENGI)
 			if(new_squad.num_engineers >= new_squad.max_engineers)

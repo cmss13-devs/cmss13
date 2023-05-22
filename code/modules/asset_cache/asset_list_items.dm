@@ -278,6 +278,7 @@
 		list("ass", "hudsquad_ass"),
 		list("Eng", "hudsquad_engi"),
 		list("Med", "hudsquad_med"),
+		list("Drv", "hudsquad_drv"),
 		list("SG", "hudsquad_gun"),
 		list("Spc", "hudsquad_spec"),
 		list("TL", "hudsquad_tl"),

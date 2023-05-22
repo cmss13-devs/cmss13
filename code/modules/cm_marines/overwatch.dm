@@ -161,6 +161,8 @@
 		var/medic_count = 0
 		var/engi_text = ""
 		var/engi_count = 0
+		var/drive_text = ""
+		var/drive_count = 0
 		var/smart_text = ""
 		var/smart_count = 0
 		var/marine_text = ""
@@ -294,6 +296,9 @@
 				if(JOB_SQUAD_ENGI)
 					engi_text += marine_infos
 					engi_count++
+				if(JOB_SQUAD_DRIVER)
+					drive_text += marine_infos
+					drive_count++
 				if(JOB_SQUAD_SMARTGUN)
 					smart_text += marine_infos
 					smart_count++
@@ -307,6 +312,7 @@
 		dat += "<b>Fireteam Leaders: [tl_count ? "[tl_count]" : SET_CLASS("No Fireteam Leaders Deployed!", INTERFACE_RED)]</b><BR>"
 		dat += "<b>[spec_count ? "Squad Specialist Deployed" : SET_CLASS("No Specialist Deployed!", INTERFACE_RED)]</b><BR>"
 		dat += "<b>[smart_count ? "Squad Smartgunner Deployed" : SET_CLASS("No Smartgunner Deployed!", INTERFACE_RED)]</b><BR>"
+		dat += "<b>[drive_count ? "Squad Driver Deployed" : SET_CLASS("No Driver Deployed!", INTERFACE_RED)]</b><BR>"
 		dat += "<b>Squad Hospital Corpsmen: [medic_count] Deployed | Squad Combat Technicians: [engi_count] Deployed</b><BR>"
 		dat += "<b>Squad Riflemen: [marine_count] Deployed</b><BR>"
 		dat += "<b>Total: [current_squad.marines_list.len] Deployed</b><BR>"
@@ -315,7 +321,7 @@
 		dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"
 		dat += "<th>Name</th><th>Role</th><th>State</th><th>Location</th><th>SL Distance</th><th>Filter</th></tr>"
 		if(!living_marines_sorting)
-			dat += leader_text + tl_text + spec_text + medic_text + engi_text + smart_text + marine_text + misc_text
+			dat += leader_text + tl_text + spec_text + medic_text + engi_text + drive_text + smart_text + marine_text + misc_text
 		else
 			dat += conscious_text + unconscious_text + dead_text
 		dat += "</table>"

@@ -278,6 +278,10 @@
 	icon_state = "tl_spawn"
 	job = /datum/job/marine/tl //Need to create a WO variant in the future
 
+/obj/effect/landmark/start/whiskey/driver
+	icon_state = "leader_spawn"
+	job = /datum/job/marine/driver // Is this really needed?
+
 /obj/effect/landmark/start/whiskey/spec
 	icon_state = "spec_spawn"
 	job = /datum/job/marine/specialist/whiskey

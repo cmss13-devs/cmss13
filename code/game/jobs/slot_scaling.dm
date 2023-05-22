@@ -18,6 +18,9 @@
 /proc/engi_slot_formula(playercount)
 	return job_slot_formula(playercount,50,1,2,4)
 
+/proc/driver_slot_formula(playercount)
+	return job_slot_formula(playercount,40,1,3,5)
+
 /proc/mp_slot_formula(playercount)
 	return job_slot_formula(playercount,25,2,4,8)
 

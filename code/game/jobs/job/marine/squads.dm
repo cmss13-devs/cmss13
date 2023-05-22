@@ -33,6 +33,7 @@
 	var/omni_squad_vendor = FALSE /// Can use any squad vendor regardless of squad connection
 	var/max_engineers = 3 //maximum # of engineers allowed in squad
 	var/max_medics = 4 //Ditto, squad medics
+	var/max_drv = 1 // Squad driver.
 	var/max_specialists = 1
 	var/max_tl = 2
 	var/max_smartgun = 1
@@ -66,6 +67,7 @@
 
 	var/num_engineers = 0
 	var/num_medics = 0
+	var/num_drv = 0
 	var/num_leaders = 0
 	var/num_smartgun = 0
 	var/num_specialists = 0
@@ -401,6 +403,9 @@
 			assignment = JOB_SQUAD_MEDIC
 			num_medics++
 			C.claimedgear = FALSE
+		if(JOB_SQUAD_DRIVER)
+			assignment = JOB_SQUAD_DRIVER
+			num_drv++
 		if(JOB_SQUAD_SPECIALIST)
 			assignment = JOB_SQUAD_SPECIALIST
 			num_specialists++
@@ -516,6 +521,8 @@
 			num_engineers--
 		if(JOB_SQUAD_MEDIC)
 			num_medics--
+		if(JOB_SQUAD_DRIVER)
+			num_drv--
 		if(JOB_SQUAD_SPECIALIST)
 			num_specialists--
 		if(JOB_SQUAD_SMARTGUN)
@@ -542,6 +549,8 @@
 			old_lead.comm_title = "HM"
 		if(JOB_SQUAD_TEAM_LEADER)
 			old_lead.comm_title = "TL"
+		if(JOB_SQUAD_DRIVER)
+			old_lead.comm_title = "AFV"
 		if(JOB_SQUAD_SMARTGUN)
 			old_lead.comm_title = "SG"
 		if(JOB_SQUAD_LEADER)

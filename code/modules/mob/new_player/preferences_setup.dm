@@ -230,6 +230,8 @@
 			return /datum/equipment_preset/uscm/leader_equipped
 		if(JOB_SQUAD_MEDIC)
 			return /datum/equipment_preset/uscm/medic_equipped
+		if(JOB_SQUAD_DRIVER)
+			return /datum/equipment_preset/uscm/tank/full
 		if(JOB_SQUAD_SPECIALIST)
 			return /datum/equipment_preset/uscm/specialist_equipped
 		if(JOB_SQUAD_SMARTGUN)

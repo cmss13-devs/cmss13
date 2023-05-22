@@ -655,7 +655,7 @@ Welding backpack
 	if(!proximity) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
 		return
 	//excluding the dispenser that contain gaz or custom to only leave fuel tank.
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank/custom)||istype(O, /obj/structure/reagent_dispensers/fueltank/gas))
+	if (istype(O, /obj/structure/reagent_dispensers/fueltank/custom) || istype(O, /obj/structure/reagent_dispensers/fueltank/gas))
 		return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank))
 		if(src.reagents.total_volume < max_fuel)

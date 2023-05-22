@@ -1,9 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "al" = (
 /obj/structure/flora/jungle/vines/light_2,
-/obj/structure/flora/jungle/vines/heavy{
-	pixel_x = 0
-	},
+/obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
 "aK" = (
@@ -17,20 +15,12 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/lazarus/landing_zones/lz1)
-"eR" = (
-/obj/structure/flora/jungle/vines/heavy{
-	pixel_x = 0;
-	pixel_y = 0
-	},
-/turf/closed/wall/mineral/sandstone/runed,
-/area/lv624/ground/jungle/south_east_jungle)
 "gO" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "gU" = (
 /obj/structure/flora/jungle/vines/heavy{
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/structure/flora/jungle/vines/light_2{
@@ -39,9 +29,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "jc" = (
-/obj/structure/flora/jungle/vines/heavy{
-	pixel_x = 0
-	},
+/obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
 "kd" = (
@@ -50,16 +38,13 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "lV" = (
 /obj/structure/flora/jungle/vines/heavy{
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/structure/flora/jungle/vines/light_3,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_east_jungle)
 "nI" = (
-/obj/structure/flora/jungle/vines/heavy{
-	pixel_x = 0
-	},
+/obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "qo" = (
@@ -67,7 +52,6 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "rA" = (
 /obj/structure/flora/jungle/vines/heavy{
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/closed/wall/strata_ice/jungle,
@@ -78,7 +62,6 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "uk" = (
 /obj/structure/flora/jungle/vines/heavy{
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/closed/wall/mineral/sandstone/runed,
@@ -102,7 +85,6 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "yg" = (
 /obj/structure/flora/jungle/vines/heavy{
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/structure/flora/jungle/vines/light_3,
@@ -118,7 +100,6 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "CW" = (
 /obj/structure/flora/jungle/vines/heavy{
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/effect/decal/cleanable/cobweb,
@@ -136,7 +117,6 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "NU" = (
 /obj/structure/flora/jungle/vines/heavy{
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/open/gm/dirt,
@@ -147,7 +127,6 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "Uc" = (
 /obj/structure/flora/jungle/vines/heavy{
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/open/floor/sandstone/runed,
@@ -199,9 +178,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
 "XR" = (
-/obj/structure/flora/jungle/vines/heavy{
-	pixel_x = 0
-	},
+/obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_east_jungle)
 "XS" = (
@@ -217,7 +194,6 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "Yz" = (
 /obj/structure/flora/jungle/vines/heavy{
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /turf/closed/wall/strata_ice/jungle,
@@ -229,7 +205,6 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "Zi" = (
 /obj/structure/flora/jungle/vines/heavy{
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/flora/jungle/vines/light_1,
@@ -298,7 +273,7 @@ Wl
 CW
 Xl
 Xl
-eR
+XS
 XS
 XS
 aK

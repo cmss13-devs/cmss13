@@ -2341,6 +2341,9 @@
 	dir = 2;
 	name = "\improper Atmospherics Wing"
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -2361,6 +2364,7 @@
 /area/almayer/hallways/aft_hallway)
 "ahJ" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/almayer/engineering/starboard_atmos)
 "ahM" = (
@@ -5044,6 +5048,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/almayer/engineering/upper_engineering)
 "aqk" = (
@@ -5693,6 +5700,9 @@
 /area/almayer/stair_clone/upper)
 "asn" = (
 /obj/structure/window/framed/almayer/white,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/almayer/medical/upper_medical)
 "aso" = (
@@ -8815,7 +8825,6 @@
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering)
 "aBm" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -8856,9 +8865,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering)
 "aBq" = (
-/obj/structure/window/framed/almayer,
-/turf/open/floor/plating,
-/area/almayer/engineering/upper_engineering)
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/hallways/aft_hallway)
 "aBr" = (
 /obj/structure/ladder{
 	height = 2;
@@ -10325,6 +10335,9 @@
 	name = "\improper Engineering Lounge"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -17544,6 +17557,9 @@
 /area/almayer/medical/operating_room_one)
 "bsw" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/almayer/living/chapel)
 "bsy" = (
@@ -30070,6 +30086,9 @@
 "dof" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
 	name = "\improper Upper Engineering"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -43075,7 +43094,6 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "jnw" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -46569,6 +46587,9 @@
 	dir = 2;
 	id = "CIC Lockdown";
 	name = "\improper Combat Information Center Blast Door"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
 	},
 /turf/open/floor/plating,
 /area/almayer/command/cic)
@@ -51369,10 +51390,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
 "nph" = (
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
 	},
-/area/almayer/engineering/upper_engineering)
+/turf/open/floor/plating,
+/area/almayer/engineering/starboard_atmos)
 "npt" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -56568,6 +56591,7 @@
 	id = "containmentlockdown_E";
 	name = "\improper Containment Lockdown"
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -56596,7 +56620,6 @@
 	},
 /area/almayer/medical/containment/cell/cl)
 "pRL" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -59327,6 +59350,17 @@
 	icon_state = "containment_window_h"
 	},
 /area/almayer/medical/containment/cell/cl)
+"rfg" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/hull/upper_hull/u_m_s)
 "rfI" = (
 /obj/structure/sign/safety/airlock{
 	pixel_y = -32
@@ -73197,6 +73231,9 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
 	name = "\improper Engineering Storage"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -98412,7 +98449,7 @@ kOB
 awZ
 aiX
 jnw
-atL
+aBq
 pRL
 awF
 aEM
@@ -110581,7 +110618,7 @@ acD
 aao
 aap
 aap
-aiv
+rfg
 bYe
 amO
 bYe
@@ -115246,11 +115283,11 @@ ahg
 aap
 aap
 aap
-aiv
+rfg
 aiw
 ahh
 aiw
-ahJ
+nph
 aiC
 ajF
 aiC
@@ -115453,7 +115490,7 @@ aar
 afP
 ahh
 aiw
-ahJ
+nph
 aiC
 anG
 aiC
@@ -115656,7 +115693,7 @@ aar
 afQ
 aiw
 aiw
-ahJ
+nph
 aiC
 anG
 aiC
@@ -119517,7 +119554,7 @@ psm
 ndJ
 anJ
 aoS
-aBq
+inw
 amA
 amx
 amx
@@ -119531,7 +119568,7 @@ amx
 atq
 amx
 aoT
-aBq
+inw
 aiB
 anJ
 mnG
@@ -119734,7 +119771,7 @@ ayd
 atq
 atq
 wwJ
-aBq
+inw
 alG
 aYj
 apd
@@ -119923,7 +119960,7 @@ psm
 ylJ
 aDZ
 aoD
-aBq
+inw
 qHM
 emn
 rdI
@@ -119937,7 +119974,7 @@ aye
 amx
 amx
 aBs
-aBq
+inw
 alG
 aYj
 apd
@@ -120944,9 +120981,9 @@ atq
 aoT
 alO
 alO
-azn
+alR
 aBm
-azn
+alR
 alO
 xBe
 xBe
@@ -122572,7 +122609,7 @@ amA
 amx
 aDr
 aFw
-aBq
+inw
 aJh
 arq
 ufx
@@ -122775,7 +122812,7 @@ amA
 amx
 aDr
 aFy
-aBq
+inw
 aJi
 azs
 atq
@@ -123181,7 +123218,7 @@ amA
 atq
 aDr
 aFz
-aBq
+inw
 amA
 ayl
 amx
@@ -123384,7 +123421,7 @@ azq
 auy
 aDB
 aFA
-aBq
+inw
 aJl
 amx
 atq
@@ -123790,7 +123827,7 @@ azt
 auA
 aDD
 aFD
-aBq
+inw
 xEO
 xEO
 lnP
@@ -124196,7 +124233,7 @@ arm
 atc
 atc
 atc
-aBq
+inw
 xEO
 xEO
 aOV
@@ -124393,7 +124430,7 @@ alR
 arK
 atc
 civ
-nph
+kwd
 atq
 atq
 amA
@@ -124800,11 +124837,11 @@ aPa
 eky
 eky
 alO
-aBq
-aBq
+aqY
+aqY
 alO
-aBq
-aBq
+aqY
+aqY
 alO
 eky
 eky

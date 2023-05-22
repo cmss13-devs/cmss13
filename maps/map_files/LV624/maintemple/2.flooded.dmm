@@ -75,9 +75,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "bP" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "bZ" = (
@@ -207,9 +205,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "eY" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/caves/sand_temple)
 "fl" = (
@@ -238,9 +234,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "fP" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/coast{
 	dir = 8
 	},
@@ -323,9 +317,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/caves/sand_temple)
 "ic" = (
@@ -385,18 +377,14 @@
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
 "ja" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/ground/caves/sand_temple)
 "jZ" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
 	},
@@ -819,9 +807,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "vC" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
 	icon_state = "grassdirt_corner2"
@@ -904,9 +890,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "wQ" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder{
 	dir = 8
 	},
@@ -945,9 +929,7 @@
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
 "xu" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "xx" = (
@@ -1253,9 +1235,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "Es" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/coast{
 	dir = 1;
 	icon_state = "beachcorner"
@@ -1328,9 +1308,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "FS" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /obj/item/hunting_trap{
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
@@ -1689,9 +1667,7 @@
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
 "MX" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "Nt" = (
@@ -1828,9 +1804,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
@@ -1897,9 +1871,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "TY" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},

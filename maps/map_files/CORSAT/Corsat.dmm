@@ -14979,7 +14979,7 @@
 /area/corsat/gamma/foyer)
 "aPG" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
@@ -14994,7 +14994,7 @@
 /area/corsat/gamma/hangar/checkpoint)
 "aPJ" = (
 /obj/structure/flora/jungle/alienplant1,
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner2"
@@ -20305,17 +20305,17 @@
 	},
 /area/corsat/theta/biodome/complex)
 "bcD" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner"
 	},
 /area/corsat/theta/biodome)
 "bcE" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder,
 /area/corsat/theta/biodome)
 "bcF" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
 	},
@@ -20338,7 +20338,7 @@
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "bcJ" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -20347,7 +20347,7 @@
 	},
 /area/corsat/theta/biodome)
 "bcK" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner"
@@ -20673,7 +20673,7 @@
 	},
 /area/corsat/theta/biodome)
 "bdP" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "bdQ" = (
@@ -20689,7 +20689,7 @@
 /area/corsat/theta/biodome)
 "bdT" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner"
 	},
@@ -20700,7 +20700,7 @@
 /area/corsat/theta/biodome)
 "bdV" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
@@ -20741,7 +20741,7 @@
 	},
 /area/corsat/theta/biodome)
 "bec" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -20885,23 +20885,23 @@
 /area/corsat/theta/biodome)
 "beD" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
 	},
 /area/corsat/theta/biodome)
 "beE" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
 /area/corsat/theta/biodome)
 "beF" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "beG" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
 	icon_state = "grassdirt_corner"
@@ -20909,20 +20909,20 @@
 /area/corsat/theta/biodome)
 "beH" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
 	icon_state = "grassdirt_corner2"
 	},
 /area/corsat/theta/biodome)
 "beI" = (
-/obj/structure/flora/jungle/vines,
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "beJ" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
 	icon_state = "grassdirt_corner"
@@ -39468,7 +39468,7 @@
 /area/corsat/omega/complex)
 "eDM" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	dir = 1
 	},
@@ -40418,7 +40418,7 @@
 	},
 /area/corsat/gamma/foyer)
 "fpI" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
@@ -40581,7 +40581,7 @@
 	},
 /area/corsat/omega/airlocknorth/id)
 "fwq" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
@@ -42370,7 +42370,7 @@
 	},
 /area/corsat/sigma/north)
 "gOk" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/gm/dirtgrassborder{
 	dir = 1
@@ -43065,7 +43065,7 @@
 /turf/open/floor/wood,
 /area/corsat/theta/biodome/complex)
 "hkp" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -43686,7 +43686,7 @@
 /turf/open/floor/corsat,
 /area/corsat/gamma/cargo/disposal)
 "hDO" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -45432,7 +45432,7 @@
 	},
 /area/corsat/gamma/residential/researcher)
 "iQH" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
@@ -47489,7 +47489,7 @@
 	},
 /area/corsat/theta/biodome)
 "kDL" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/gm/dirtgrassborder{
 	dir = 4
@@ -50948,7 +50948,7 @@
 /area/corsat/theta/biodome)
 "nck" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
@@ -52613,7 +52613,7 @@
 	},
 /area/corsat/gamma/sigmaremote)
 "ooX" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
@@ -53409,7 +53409,7 @@
 	},
 /area/corsat/gamma/cargo)
 "oUJ" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
@@ -53584,7 +53584,7 @@
 	},
 /area/corsat/theta/biodome)
 "paH" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
@@ -56795,7 +56795,7 @@
 	},
 /area/corsat/sigma/hangar/security)
 "rzy" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	dir = 1
 	},
@@ -57323,7 +57323,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "rTj" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -57360,7 +57360,7 @@
 	},
 /area/corsat/gamma/medbay/lobby)
 "rUq" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
@@ -59679,7 +59679,7 @@
 	},
 /area/corsat/gamma/hangar/checkpoint)
 "tDK" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner2"
@@ -59911,7 +59911,7 @@
 	},
 /area/corsat/sigma/biodome)
 "tNp" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/vents/pump,
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/weedable,
@@ -60980,7 +60980,7 @@
 	},
 /area/corsat/gamma/residential/showers)
 "uBH" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -61736,12 +61736,12 @@
 	},
 /area/corsat/theta/biodome/complex)
 "vcx" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/vents/pump,
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "vcy" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
@@ -61875,7 +61875,7 @@
 	},
 /area/corsat/theta/airlock/control)
 "vhZ" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
 	icon_state = "grassdirt_corner"
@@ -63713,7 +63713,7 @@
 	},
 /area/corsat/gamma/medbay/morgue)
 "wCI" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -65679,7 +65679,7 @@
 	},
 /area/corsat/gamma/airlock/control)
 "yfH" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder{
 	dir = 8
 	},

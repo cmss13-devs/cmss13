@@ -570,16 +570,29 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_state = "" //will this break it?? - Nope
 	density = TRUE
 
+//light vines
 /obj/structure/flora/jungle/vines
 	name = "vines"
 	desc = "A mass of twisted vines."
 	icon = 'icons/effects/spacevines.dmi'
-	icon_state = "light_1"
 	icon_tag = "light"
 	variations = 3
 	cut_level = PLANT_CUT_MACHETE
 	fire_flag = FLORA_BURN_NO_SPREAD
 
+/obj/structure/flora/jungle/vines/light_1
+	icon_state = "light_1"
+	icon_tag = "light_1"
+
+/obj/structure/flora/jungle/vines/light_2
+	icon_state = "light_2"
+	icon_tag = "light_2"
+
+/obj/structure/flora/jungle/vines/light_3
+	icon_state = "light_3"
+	icon_tag = "light_3"
+
+//heavy hide you
 /obj/structure/flora/jungle/vines/heavy
 	desc = "A thick, coiled mass of twisted vines."
 	opacity = TRUE

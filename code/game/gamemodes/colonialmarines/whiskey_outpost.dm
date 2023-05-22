@@ -91,7 +91,7 @@
 		xeno_spawns += X.loc
 	for(var/obj/effect/landmark/whiskey_outpost/supplydrops/S)
 		supply_spawns += S.loc
-
+	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
 
 	//  WO waves
 	var/list/paths = typesof(/datum/whiskey_outpost_wave) - /datum/whiskey_outpost_wave - /datum/whiskey_outpost_wave/random

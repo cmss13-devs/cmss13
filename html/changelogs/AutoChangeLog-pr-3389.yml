@@ -1,0 +1,4 @@
+author: "TopHatPenguin"
+delete-after: True
+changes:
+  - bugfix: "Adds missing fire shutters to a number of key areas in the upper deck and removes duplicate ones."

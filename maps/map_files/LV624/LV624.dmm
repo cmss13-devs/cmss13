@@ -8915,7 +8915,7 @@
 	},
 /area/lv624/ground/jungle/central_jungle)
 "aLb" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/tree_1,
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
 	},

@@ -80,10 +80,29 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	icon = 'icons/obj/structures/props/pinetrees.dmi'
 	icon_state = "pine_c"
 
+//dead
 /obj/structure/flora/tree/dead
 	icon = 'icons/obj/structures/props/deadtrees.dmi'
+
+/obj/structure/flora/tree/dead/tree_1
 	icon_state = "tree_1"
 
+/obj/structure/flora/tree/dead/tree_2
+	icon_state = "tree_2"
+
+/obj/structure/flora/tree/dead/tree_3
+	icon_state = "tree_3"
+
+/obj/structure/flora/tree/dead/tree_4
+	icon_state = "tree_4"
+
+/obj/structure/flora/tree/dead/tree_5
+	icon_state = "tree_5"
+
+/obj/structure/flora/tree/dead/tree_6
+	icon_state = "tree_6"
+
+//joshua
 /obj/structure/flora/tree/joshua
 	name = "joshua tree"
 	desc = "A tall tree covered in spiky-like needles, covering its trunk."

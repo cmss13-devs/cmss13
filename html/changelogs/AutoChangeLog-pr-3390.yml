@@ -1,0 +1,6 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - bugfix: "Boiler's slowdown for zooming now properly resets on unzooming regardless of what causes it."
+  - bugfix: "Trapper's zoomed vision is no longer unintentionally offset."
+  - bugfix: "Trapper no longer gets globber's Acid Shroud ability messing its keybinds."

@@ -379,3 +379,44 @@
       destroy.
   morrowwolf:
   - balance: DS part fabricator, chem simulator, chem storage are now unslashable/unacidable
+2023-05-23:
+  Emanthealmighty:
+  - bugfix: Fixed huggers not passively dying if they fail to attach to a target.
+  Hopek:
+  - balance: Zombies now have their own language and don't understand English
+  - rscadd: Medics finally get medic clothing racks on WO
+  - bugfix: Xeno Directional attack no longer friendly fires their own walls and doors.
+      You need to actually click on the sprite if you mean to destroy it
+  Huffie56:
+  - bugfix: fix the dead will now be properly turn into zombie when infected by black
+      go virus.
+  LynxSolstice:
+  - rscadd: Added an M276 Pattern Combat Toolbelt rig to the SEA's vendor machine.
+  Morrow:
+  - balance: Acid blood damage from 12 to 20.
+  NewyearnewmeUwu:
+  - rscadd: Adds the basis for CO (and other) faction preferences
+  Segrain:
+  - bugfix: Boiler's slowdown for zooming now properly resets on unzooming regardless
+      of what causes it.
+  - bugfix: Trapper's zoomed vision is no longer unintentionally offset.
+  - bugfix: Trapper no longer gets globber's Acid Shroud ability messing its keybinds.
+  - rscadd: Using Show Held Item is now visible in abovehead popup.
+  - bugfix: IV drips work with xenomorphs once again.
+  SpartanBobby:
+  - rscadd: Added two books to the USS Almayer
+  - maptweak: made instances of books and magazines on the USS Almayer into actual
+      items
+  TOBKA4:
+  - admin: Larva surge can now be toggled per-hive with the no_burrowed var
+  TopHatPenguin:
+  - bugfix: Adds missing fire shutters to a number of key areas in the upper deck
+      and removes duplicate ones.
+  fluffe9911:
+  - bugfix: Zombies should no longer randomly decide to take a hour to revive.
+  realforest2001:
+  - admin: Added more ticket autoreplies and re-ordered the interaction buttons.
+  stanalbatross:
+  - spellcheck: renamed the advanced burn kit and advanced trauma kit to burn kit
+      and trauma kit. tweaked some first-aid kit descriptions.
+  - spellcheck: renamed the "Advanced XRF scanner" to "XRF scanner"

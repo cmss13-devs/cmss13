@@ -1,4 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - bugfix: "fix the dead will now be properly turn into zombie when infected by black go virus."

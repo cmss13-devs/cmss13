@@ -95,7 +95,7 @@
 /mob/living/carbon/xenomorph/facehugger/pull_response(mob/puller)
 	return TRUE
 
-/mob/living/carbon/xenomorph/facehugger/UnarmedAttack(atom/A, proximity, click_parameters, tile_attack)
+/mob/living/carbon/xenomorph/facehugger/UnarmedAttack(atom/A, proximity, click_parameters, tile_attack, ignores_resin = FALSE)
 	a_intent = INTENT_HELP //Forces help intent for all interactions.
 	if(!caste)
 		return FALSE

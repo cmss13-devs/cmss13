@@ -90,7 +90,7 @@ also doesn't really matter. You can only reload them with handfuls.
 	desc = "An internal magazine. It is not supposed to be seen or removed."
 	default_ammo = /datum/ammo/bullet/shotgun/slug
 	caliber = "12g"
-	max_rounds = 9
+	max_rounds = 4 // Accounting for an extra round being loaded after pumping
 	chamber_closed = 0
 
 /obj/item/ammo_magazine/internal/shotgun/double //For a double barrel.

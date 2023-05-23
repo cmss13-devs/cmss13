@@ -1112,7 +1112,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/pump/set_gun_config_values()
 	..()
 	burst_amount = BURST_AMOUNT_TIER_1
-	fire_delay = FIRE_DELAY_TIER_7 * 5
+	fire_delay = FIRE_DELAY_TIER_5 * 5
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_6

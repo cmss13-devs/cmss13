@@ -108,6 +108,9 @@
 				continue
 			qdel(timer)
 
+	if(cooldowns)
+		cooldowns.Cut()
+
 	//BEGIN: ECS SHIT
 	signal_enabled = FALSE
 

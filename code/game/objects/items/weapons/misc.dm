@@ -73,5 +73,4 @@
 /obj/item/weapon/dart/green
 	name = "green throwing dart"
 	desc = "A dart. For throwing. This one's green."
-	icon = 'icons/obj/items/items.dmi'
 	icon_state = "green_dart"

@@ -51,7 +51,7 @@ SUBSYSTEM_DEF(atoms)
 /// Processes all late_loaders, checking the length each iteration and prevents duplicate calls
 /// This is necessary because of an edge case where there might be simultanious calls to InitializeAtoms
 /datum/controller/subsystem/atoms/proc/InitializeLateLoaders()
-	if(processing_late_loaders)
+	if(processing_late_loaders) // If we still manage to double this proc, try a ++ here, or solve the root of the problem
 		#ifdef TESTING
 		testing("Ignoring duplicate request to InitializeLateLoaders")
 		#endif
@@ -59,9 +59,8 @@ SUBSYSTEM_DEF(atoms)
 
 	processing_late_loaders = TRUE
 
-	var/I = 1
-	while(I <= late_loaders.len)
-		var/atom/A = late_loaders[I++]
+	for(var/I = 1; I <= late_loaders.len; I++)
+		var/atom/A = late_loaders[I]
 		//I hate that we need this
 		if(QDELETED(A))
 			continue

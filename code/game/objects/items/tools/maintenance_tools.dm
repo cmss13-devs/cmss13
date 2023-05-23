@@ -659,7 +659,7 @@
 			playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 			flooring.make_plating()
 			return
-	. = ..()
+	return ..()
 /*
 Welding backpack
 */

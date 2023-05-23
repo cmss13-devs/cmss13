@@ -12,6 +12,7 @@ SUBSYSTEM_DEF(atoms)
 	/// A count of how many initalize changes we've made. We want to prevent old_initialize being overriden by some other value, breaking init code
 	var/initialized_changed = 0
 	var/init_start_time
+	var/processing_late_loaders = FALSE
 
 	var/list/late_loaders = list()
 	var/list/roundstart_loaders = list()
@@ -45,17 +46,32 @@ SUBSYSTEM_DEF(atoms)
 	CreateAtoms(atoms)
 	clear_tracked_initalize()
 
-	if(late_loaders.len)
-		for(var/I in 1 to late_loaders.len)
-			var/atom/A = late_loaders[I]
-			//I hate that we need this
-			if(QDELETED(A))
-				continue
-			A.LateInitialize()
+	InitializeLateLoaders()
+
+/// Processes all late_loaders, checking the length each iteration and prevents duplicate calls
+/// This is necessary because of an edge case where there might be simultanious calls to InitializeAtoms
+/datum/controller/subsystem/atoms/proc/InitializeLateLoaders()
+	if(processing_late_loaders)
 		#ifdef TESTING
-		testing("Late initialized [late_loaders.len] atoms")
+		testing("Ignoring duplicate request to InitializeLateLoaders")
 		#endif
-		late_loaders.Cut()
+		return
+
+	processing_late_loaders = TRUE
+
+	var/I = 1
+	while(I <= late_loaders.len)
+		var/atom/A = late_loaders[I++]
+		//I hate that we need this
+		if(QDELETED(A))
+			continue
+		A.LateInitialize()
+
+	#ifdef TESTING
+	testing("Late initialized [late_loaders.len] atoms")
+	#endif
+	late_loaders.Cut()
+	processing_late_loaders = FALSE
 
 /// Actually creates the list of atoms. Exists soley so a runtime in the creation logic doesn't cause initalized to totally break
 /datum/controller/subsystem/atoms/proc/CreateAtoms(list/atoms)

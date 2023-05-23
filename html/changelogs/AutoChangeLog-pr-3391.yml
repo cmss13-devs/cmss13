@@ -1,4 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - rscadd: "Using Show Held Item is now visible in abovehead popup."

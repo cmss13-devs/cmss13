@@ -1,4 +1,0 @@
-author: "TOBKA4"
-delete-after: True
-changes:
-  - admin: "Larva surge can now be toggled per-hive with the no_burrowed var"

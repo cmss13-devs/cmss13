@@ -1,4 +1,0 @@
-author: "Hopek"
-delete-after: True
-changes:
-  - bugfix: "Xeno Directional attack no longer friendly fires their own walls and doors. You need to actually click on the sprite if you mean to destroy it"

@@ -155,7 +155,6 @@
 	worth = 500
 
 /obj/item/spacecash/c500/counterfeit
-	// If you're going to slap down huge sums of cash in easily reachable spots for RP or flavor reasons, make them counterfeit, so they don't break the black market - they will be rejected.
 	counterfeit = TRUE
 
 /obj/item/spacecash/c1000
@@ -165,32 +164,29 @@
 	worth = 1000
 
 /obj/item/spacecash/c1000/counterfeit
-	// If you're going to slap down huge sums of cash in easily reachable spots for RP or flavor reasons, make them counterfeit, so they don't break the black market - they will be rejected.
 	counterfeit = TRUE
 	
 /obj/item/spacecash/c10000
 	name = "10,000 dollars"
-	icon_state = "spacecash1000"
+	icon_state = "spacecash10000"
 	desc = "One hundred US Government minted hundred-dollar bills. Every single damn one of them has Ben Fucking Franklin on them. This is great -- it's like winning the sweepstakes! Isn't it?"
 	worth = 10000
 	
 /obj/item/spacecash/c10000/counterfeit
-	// If you're going to slap down huge sums of cash in easily reachable spots for RP or flavor reasons, make them counterfeit, so they don't break the black market - they will be rejected.
 	counterfeit = TRUE
 	
 /obj/item/spacecash/c100000
 	name = "100,000 dollars"
-	icon_state = "spacecash1000"
+	icon_state = "spacecash100000"
 	desc = "One hundred thousand dollars! You're one lucky son of a gun. What are you going to do with all this money?"
 	worth = 100000
 	
 /obj/item/spacecash/c100000/counterfeit
-	// If you're going to slap down huge sums of cash in easily reachable spots for RP or flavor reasons, make them counterfeit, so they don't break the black market - they will be rejected.
 	counterfeit = TRUE
 	
 /obj/item/spacecash/c1000000
 	name = "1,000,000 dollars"
-	icon_state = "spacecash1000"
+	icon_state = "spacecash1000000"
 	desc = "One million actual genuine dollars?! You're rich!"
 	worth = 1000000
 	

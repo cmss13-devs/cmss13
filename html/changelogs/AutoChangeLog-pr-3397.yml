@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - bugfix: "IV drips work with xenomorphs once again."

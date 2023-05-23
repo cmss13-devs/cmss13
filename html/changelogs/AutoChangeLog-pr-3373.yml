@@ -1,4 +1,0 @@
-author: "morrowwolf"
-delete-after: True
-changes:
-  - balance: "DS part fabricator, chem simulator, chem storage are now unslashable/unacidable"

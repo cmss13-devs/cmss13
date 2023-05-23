@@ -5,8 +5,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("Essential Medical Set", 0, /obj/effect/essentials_set/medic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("FIELD SUPPLIES", 0, null, null, null),
-		list("Adv Burn Kit", 2, /obj/item/stack/medical/advanced/ointment, null, VENDOR_ITEM_RECOMMENDED),
-		list("Adv Trauma Kit", 2, /obj/item/stack/medical/advanced/bruise_pack, null, VENDOR_ITEM_RECOMMENDED),
+		list("Burn Kit", 2, /obj/item/stack/medical/advanced/ointment, null, VENDOR_ITEM_RECOMMENDED),
+		list("Trauma Kit", 2, /obj/item/stack/medical/advanced/bruise_pack, null, VENDOR_ITEM_RECOMMENDED),
 		list("Medical Splints", 1, /obj/item/stack/medical/splint, null, VENDOR_ITEM_RECOMMENDED),
 		list("Gauze", 1, /obj/item/stack/medical/bruise_pack, null, VENDOR_ITEM_REGULAR),
 		list("Ointment", 1, /obj/item/stack/medical/ointment, null, VENDOR_ITEM_REGULAR),

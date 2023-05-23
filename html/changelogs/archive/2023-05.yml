@@ -373,3 +373,9 @@
 2023-05-21:
   BeagleGaming1:
   - qol: lets player facehuggers see their lifetime hugs on the status panel
+2023-05-22:
+  Huffie56:
+  - bugfix: remove the luminosity when torch and plant that produce the light are
+      destroy.
+  morrowwolf:
+  - balance: DS part fabricator, chem simulator, chem storage are now unslashable/unacidable

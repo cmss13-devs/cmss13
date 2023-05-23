@@ -7219,6 +7219,15 @@
 	icon_state = "asteroidwarning"
 	},
 /area/whiskey_outpost/outside/north/platform)
+"yW" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/machinery/cm_vending/clothing/medic,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/whiskey_outpost/inside/bunker/bunker/front)
 "yX" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor{
@@ -7850,6 +7859,15 @@
 	icon_state = "asteroidwarning"
 	},
 /area/whiskey_outpost/outside/north/platform)
+"Br" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/machinery/cm_vending/clothing/medic,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/whiskey_outpost/inside/bunker/bunker/front)
 "Bs" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -8218,11 +8236,12 @@
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/one_north)
 "CE" = (
-/turf/open/jungle{
-	bushes_spawn = 0;
-	icon_state = "grass_impenetrable"
+/obj/structure/machinery/cm_vending/clothing/medic,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
 	},
-/area/whiskey_outpost/outside/lane/two_north)
+/area/whiskey_outpost)
 "CG" = (
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_south)
@@ -11873,6 +11892,13 @@
 	dir = 1
 	},
 /area/whiskey_outpost/outside/lane/one_north)
+"RU" = (
+/obj/structure/machinery/cm_vending/clothing/medic,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area)
 "RV" = (
 /obj/item/storage/box/m94,
 /turf/open/shuttle/dropship{
@@ -23668,8 +23694,8 @@ hb
 JT
 ix
 qz
-kh
-kh
+CE
+RU
 kA
 lB
 lO
@@ -26986,7 +27012,7 @@ UR
 Gw
 UR
 UR
-Gw
+yW
 Nf
 ks
 tV
@@ -27996,7 +28022,7 @@ UR
 ik
 FT
 UR
-ik
+Br
 Nf
 ks
 MF

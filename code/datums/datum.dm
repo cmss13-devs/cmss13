@@ -100,6 +100,12 @@
 	datum_flags &= ~DF_USE_TAG //In case something tries to REF us
 	weak_reference = null //ensure prompt GCing of weakref.
 
+	if(cooldowns)
+		for(var/cooldown as anything in cooldowns)
+			var/cd_id = cooldowns[cooldown]
+			if(cd_id != -1)
+				deltimer(cd_id)
+
 	if(active_timers)
 		var/list/timers = active_timers
 		active_timers = null
@@ -107,9 +113,6 @@
 			if (timer.spent && !(timer.flags & TIMER_DELETE_ME))
 				continue
 			qdel(timer)
-
-	if(cooldowns)
-		cooldowns.Cut()
 
 	//BEGIN: ECS SHIT
 	signal_enabled = FALSE

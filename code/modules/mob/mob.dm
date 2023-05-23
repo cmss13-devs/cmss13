@@ -22,7 +22,7 @@
 	QDEL_NULL_LIST(viruses)
 	resistances?.Cut()
 	QDEL_LIST_ASSOC_VAL(implants)
-	qdel(hud_used)
+	qdel(hud_used) // The hud will null it
 
 	. = ..()
 

@@ -166,9 +166,9 @@
 	for(var/xscan = x0; xscan < x1; xscan++)
 		for(var/yscan = y0; yscan < y1; yscan++)
 			var/turf/searchspot = locate(xscan, yscan, src.z)
-			for(var/obj/structure/machinery/landinglight/L in searchspot)
-				landing_lights += L
-				L.linked_port = src
+			for(var/obj/structure/machinery/landinglight/light in searchspot)
+				landing_lights += light
+				light.linked_port = src
 
 /obj/docking_port/stationary/marine_dropship/proc/turn_on_landing_lights()
 	for(var/obj/structure/machinery/landinglight/light in landing_lights)

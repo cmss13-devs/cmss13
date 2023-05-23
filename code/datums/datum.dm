@@ -117,16 +117,17 @@
 	//BEGIN: ECS SHIT
 	signal_enabled = FALSE
 
-	var/list/dc = datum_components
-	if(dc)
-		var/all_components = dc[/datum/component]
+	if(datum_components)
+		var/all_components = datum_components[/datum/component]
 		if(length(all_components))
 			for(var/datum/component/component as anything in all_components)
 				qdel(component, FALSE, TRUE)
 		else
 			var/datum/component/C = all_components
 			qdel(C, FALSE, TRUE)
-		dc.Cut()
+		if(datum_components)
+			debug_log("'[src]' datum_components was not null after removing all components! [datum_components.len] entries remained...")
+			datum_components.Cut()
 
 	var/list/lookup = comp_lookup
 	if(lookup)

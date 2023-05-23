@@ -134,7 +134,6 @@
 
 	knock_down_reduction = 5
 	stun_reduction = 5
-	
 
 	inherent_verbs = null
 

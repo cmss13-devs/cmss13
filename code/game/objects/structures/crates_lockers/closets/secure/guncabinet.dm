@@ -110,6 +110,12 @@
 	new /obj/item/clothing/suit/armor/riot/marine(src)
 	new /obj/item/clothing/suit/armor/riot/marine(src)
 	new /obj/item/storage/box/flashbangs(src)
+	new /obj/item/storage/box/packet/baton_slug (src)
+	new /obj/item/storage/box/packet/baton_slug (src)
+	new /obj/item/storage/box/packet/baton_slug (src)
+	new /obj/item/storage/box/packet/baton_slug (src)
+	new /obj/item/storage/box/packet/baton_slug (src)
+	new /obj/item/storage/box/packet/baton_slug (src)
 
 
 /obj/structure/closet/secure_closet/guncabinet/green

@@ -89,7 +89,6 @@
 /obj/item/storage/box/guncase/m79/fill_preset_inventory()
 	new /obj/item/weapon/gun/launcher/grenade/m81/m79(src)
 	new /obj/item/storage/box/packet/flare(src)
-	new /obj/item/storage/box/packet/baton_slug(src)
 	new /obj/item/storage/box/packet/hornet(src)
 
 //------------

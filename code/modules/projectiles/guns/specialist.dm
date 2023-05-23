@@ -965,9 +965,12 @@
 
 /obj/item/weapon/gun/launcher/grenade/m81/riot
 	name = "\improper M81 riot grenade launcher"
-	desc = "A lightweight, single-shot low-angle grenade launcher to launch tear gas grenades. Used by the Colonial Marines Military Police during riots."
-	valid_munitions = list(/obj/item/explosive/grenade/custom/teargas)
-	preload = /obj/item/explosive/grenade/custom/teargas
+	desc = "A lightweight, single-shot low-angle grenade launcher to launch tear gas grenades or baton slugs. Used by the Colonial Marines Military Police during riots."
+	valid_munitions = list(/obj/item/explosive/grenade/custom/teargas, /obj/item/explosive/grenade/slug/baton)
+	fire_sound = 'sound/weapons/handling/m79_shoot.ogg'
+	cocked_sound = 'sound/weapons/handling/m79_break_open.ogg'
+	reload_sound = 'sound/weapons/handling/m79_reload.ogg'
+	unload_sound = 'sound/weapons/handling/m79_unload.ogg'
 
 //-------------------------------------------------------
 //M79 Grenade Launcher subtype of the M81
@@ -979,7 +982,6 @@
 	icon_state = "m79"
 	item_state = "m79"
 	flags_equip_slot = SLOT_BACK
-	preload = /obj/item/explosive/grenade/slug/baton
 	is_lobbing = TRUE
 	actions_types = list(/datum/action/item_action/toggle_firing_level)
 

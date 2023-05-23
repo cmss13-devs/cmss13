@@ -5,7 +5,7 @@
 	density = FALSE
 	drag_delay = 1
 
-	var/mob/living/carbon/human/attached = null
+	var/mob/living/carbon/attached = null
 	var/mode = 1 // 1 is injecting, 0 is taking blood.
 	var/obj/item/reagent_container/beaker = null
 

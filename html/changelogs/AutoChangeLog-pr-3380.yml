@@ -1,0 +1,5 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - spellcheck: "renamed the advanced burn kit and advanced trauma kit to burn kit and trauma kit. tweaked some first-aid kit descriptions."
+  - spellcheck: "renamed the \"Advanced XRF scanner\" to \"XRF scanner\""

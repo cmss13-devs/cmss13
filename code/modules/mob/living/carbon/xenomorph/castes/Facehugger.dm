@@ -41,6 +41,10 @@
 	counts_for_roundend = FALSE
 	refunds_larva_if_banished = FALSE
 	can_hivemind_speak = FALSE
+	/// The lifetime hugs from this hugger
+	var/total_facehugs = 0
+	/// How many hugs the hugger needs to age
+	var/next_facehug_goal = FACEHUG_TIER_1
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
@@ -164,16 +168,20 @@
 
 	age = XENO_NORMAL
 
-	var/total_facehugs = get_client_stat(client, PLAYER_STAT_FACEHUGS)
+	total_facehugs = get_client_stat(client, PLAYER_STAT_FACEHUGS)
 	switch(total_facehugs)
 		if(FACEHUG_TIER_1 to FACEHUG_TIER_2)
 			age = XENO_MATURE
+			next_facehug_goal = FACEHUG_TIER_2
 		if(FACEHUG_TIER_2 to FACEHUG_TIER_3)
 			age = XENO_ELDER
+			next_facehug_goal = FACEHUG_TIER_3
 		if(FACEHUG_TIER_3 to FACEHUG_TIER_4)
 			age = XENO_ANCIENT
+			next_facehug_goal = FACEHUG_TIER_4
 		if(FACEHUG_TIER_4 to INFINITY)
 			age = XENO_PRIME
+			next_facehug_goal = null
 
 	// For people who wish to remain anonymous
 	if(!client.prefs.playtime_perks)
@@ -225,3 +233,10 @@
 
 /mob/living/carbon/xenomorph/facehugger/emote(act, m_type, message, intentional, force_silence)
 	playsound(loc, "alien_roar_larva", 15)
+
+/mob/living/carbon/xenomorph/facehugger/get_status_tab_items()
+	. = ..()
+	if(next_facehug_goal)
+		. += "Lifetime Hugs: [total_facehugs] / [next_facehug_goal]"
+	else
+		. += "Lifetime Hugs: [total_facehugs]"

@@ -14,6 +14,9 @@
 	var/energy = 50
 	var/max_energy = 50
 
+	unslashable = TRUE
+	unacidable = TRUE
+
 /obj/structure/machinery/chem_storage/medbay
 	name = "Chemical Storage System (Medbay)"
 	network = "Medbay"

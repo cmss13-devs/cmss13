@@ -66,14 +66,6 @@
 		QDEL_NULL(hud_used)
 	. = ..()
 
-	species = null
-	limbs_to_process = null
-	brute_mod_override = null
-	burn_mod_override = null
-	assigned_squad = null
-	selected_ability = null
-	remembered_dropped_objects = null
-
 	overlays_standing = null
 
 	//Equipment slots
@@ -98,7 +90,6 @@
 	assigned_squad = null
 	selected_ability = null
 	remembered_dropped_objects = null
-
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()

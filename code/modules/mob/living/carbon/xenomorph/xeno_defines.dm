@@ -289,6 +289,8 @@
 	var/evolution_without_ovipositor = TRUE //Temporary for the roundstart.
 	var/allow_queen_evolve = TRUE // Set to true if you want to prevent evolutions into Queens
 	var/hardcore = FALSE // Set to true if you want to prevent bursts and spawns of new xenos. Will also prevent healing if the queen no longer exists
+	/// Default TRUE. Letting hive get burrowed larva from latejoin marines. Setting FALSE prevent that 
+	var/latejoin_burrowed = TRUE  
 
 	var/list/hive_inherant_traits
 
@@ -1025,6 +1027,7 @@
 	prefix = "Corrupted "
 	color = "#80ff80"
 	ui_color ="#4d994d"
+	latejoin_burrowed = FALSE
 
 	need_round_end_check = TRUE
 
@@ -1047,6 +1050,7 @@
 	prefix = "Alpha "
 	color = "#ff4040"
 	ui_color = "#992626"
+	latejoin_burrowed = FALSE
 
 	dynamic_evolution = FALSE
 
@@ -1056,6 +1060,7 @@
 	prefix = "Bravo "
 	color = "#ffff80"
 	ui_color = "#99994d"
+	latejoin_burrowed = FALSE
 
 	dynamic_evolution = FALSE
 
@@ -1065,6 +1070,7 @@
 	prefix = "Charlie "
 	color = "#bb40ff"
 	ui_color = "#702699"
+	latejoin_burrowed = FALSE
 
 	dynamic_evolution = FALSE
 
@@ -1074,6 +1080,7 @@
 	prefix = "Delta "
 	color = "#8080ff"
 	ui_color = "#4d4d99"
+	latejoin_burrowed = FALSE
 
 	dynamic_evolution = FALSE
 
@@ -1090,6 +1097,7 @@
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
+	latejoin_burrowed = FALSE
 
 /datum/hive_status/forsaken
 	name = "Forsaken Hive"
@@ -1102,6 +1110,7 @@
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
+	latejoin_burrowed = FALSE
 
 	need_round_end_check = TRUE
 
@@ -1117,6 +1126,7 @@
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
+	latejoin_burrowed = FALSE
 
 	need_round_end_check = TRUE
 
@@ -1131,6 +1141,7 @@
 	ui_color = "#6abd99"
 
 	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR)
+	latejoin_burrowed = FALSE
 
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"
@@ -1142,6 +1153,7 @@
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
+	latejoin_burrowed = FALSE
 
 	var/mob/living/carbon/human/leader
 	var/list/allied_factions

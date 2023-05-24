@@ -197,6 +197,9 @@ GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/y
 
 	//Backpacks
 var/global/list/backbaglist = list("Backpack", "Satchel")
+	//Armor styles
+var/global/list/armor_style_list = list("Random", "Padded", "Padless", "Ridged",  "Skull", "Smooth")
+
 // var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
 var/global/round_should_check_for_win = TRUE
 

@@ -122,6 +122,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/underwear = "Boxers (Camo Conforming)" //underwear type
 	var/undershirt = "Undershirt (Tan)" //undershirt type
 	var/backbag = 2 //backpack type
+	var/preferred_armor = "Random"
 
 	var/h_style = "Crewcut" //Hair type
 	var/r_hair = 0 //Hair color
@@ -368,6 +369,8 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Undershirt:</b> <a href='?_src_=prefs;preference=undershirt;task=input'><b>[undershirt]</b></a><br>"
 
 			dat += "<b>Backpack Type:</b> <a href ='?_src_=prefs;preference=bag;task=input'><b>[backbaglist[backbag]]</b></a><br>"
+
+			dat += "<b>Preferred Armor:</b> <a href ='?_src_=prefs;preference=prefarmor;task=input'><b>[preferred_armor]</b></a><br>"
 
 			dat += "<b>Show Job Gear:</b> <a href ='?_src_=prefs;preference=toggle_job_gear'><b>[show_job_gear ? "True" : "False"]</b></a><br>"
 			dat += "<b>Background:</b> <a href ='?_src_=prefs;preference=cycle_bg'><b>Cycle Background</b></a><br>"
@@ -1449,7 +1452,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("bag")
 					var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference")  as null|anything in backbaglist
 					if(new_backbag)
-						backbag = backbaglist.Find(new_backbag)
+						backbag = new_backbag
 
 				if("nt_relation")
 					var/new_relation = input(user, "Choose your relation to the Weyland-Yutani company. Note that this represents what others can find out about your character by researching your background, not what your character actually thinks.", "Character Preference")  as null|anything in list("Loyal", "Supportive", "Neutral", "Skeptical", "Opposed")
@@ -1460,6 +1463,11 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/new_pref_squad = input(user, "Choose your preferred squad.", "Character Preference")  as null|anything in list("Alpha", "Bravo", "Charlie", "Delta", "None")
 					if(new_pref_squad)
 						preferred_squad = new_pref_squad
+
+				if("prefarmor")
+					var/new_pref_armor = tgui_input_list(user, "Choose your character's default style of armor:", "Character Preferences", armor_style_list)
+					if(new_pref_armor)
+						preferred_armor = new_pref_armor
 
 				if("limbs")
 					var/limb_name = tgui_input_list(user, "Which limb do you want to change?", list("Left Leg","Right Leg","Left Arm","Right Arm","Left Foot","Right Foot","Left Hand","Right Hand"))

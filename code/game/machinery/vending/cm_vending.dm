@@ -1178,6 +1178,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			new_item.add_fingerprint(user)
 		else
 			new_item = new prod_type(target_turf)
+		if(istype(new_item, /obj/item/clothing/suit/storage/marine/))
+			var/obj/item/clothing/suit/storage/marine/new_armor = new_item
+			new_armor.post_creation_handling(istype(vendor, /obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep) ? null : user)
 
 		if(vend_flags & VEND_LIMITED_INVENTORY)
 			itemspec[2]--

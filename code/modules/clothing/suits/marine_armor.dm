@@ -132,10 +132,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	drop_sound = "armorequip"
 	equip_sounds = list('sound/handling/putting_on_armor1.ogg')
 	var/armor_variation = 0
-
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 
-/obj/item/clothing/suit/storage/marine/Initialize()
+/obj/item/clothing/suit/storage/marine/Initialize(mapload)
 	. = ..()
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
@@ -143,8 +142,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 			name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: generals).
 		else
 			name += " armor"
-	if(armor_variation)
-		icon_state = replacetext(icon_state,"1","[rand(1,armor_variation)]")
 
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type)
@@ -157,6 +154,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/ammo_magazine/sniper,
 	)
 	pockets.max_storage_space = 8
+	if(mapload)
+		post_creation_handling()
 
 /obj/item/clothing/suit/storage/marine/update_icon(mob/user)
 	var/image/I
@@ -170,6 +169,26 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		overlays += I
 	else armor_overlays["lamp"] = null
 	if(user) user.update_inv_wear_suit()
+
+
+/obj/item/clothing/suit/storage/marine/proc/post_creation_handling(mob/user)
+	if(!armor_variation)
+		return
+
+	if(!user || !user.client)
+		icon_state = replacetext(icon_state,"1","[rand(1,armor_variation)]")
+		armor_variation = 0
+		update_icon()
+		return
+
+	if(user.client.prefs.preferred_armor)
+		var/new_look = armor_style_list.Find(user.client.prefs.preferred_armor)
+		if(!new_look)
+			new_look = rand(1,armor_variation)
+		icon_state = replacetext(icon_state,"1","[new_look]")
+
+	armor_variation = 0
+	update_icon()
 
 /obj/item/clothing/suit/storage/marine/pickup(mob/user)
 	if(flags_marine_armor & ARMOR_LAMP_ON)

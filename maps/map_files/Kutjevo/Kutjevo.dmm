@@ -86,7 +86,7 @@
 /obj/structure/flora/bush/ausbushes/ppflowers{
 	icon_state = "brflowers_1"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "ahD" = (
 /obj/structure/bed/chair{
@@ -1180,7 +1180,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "bGX" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -1670,7 +1670,7 @@
 /obj/structure/flora/bush/ausbushes/ppflowers{
 	icon_state = "fullgrass_1"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "csE" = (
 /obj/structure/girder,
@@ -4485,7 +4485,7 @@
 /obj/structure/flora/bush/ausbushes/ppflowers{
 	icon_state = "brflowers_3"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "fRZ" = (
 /obj/structure/platform/kutjevo/smooth{
@@ -5282,7 +5282,7 @@
 /area/kutjevo/exterior/lz_dunes)
 "gZq" = (
 /obj/structure/bed/chair,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "han" = (
 /obj/structure/platform_decoration/kutjevo/rock{
@@ -5871,7 +5871,7 @@
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "hVQ" = (
 /obj/structure/machinery/light{
@@ -7139,7 +7139,7 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "jWM" = (
 /obj/structure/platform/kutjevo{
@@ -10402,7 +10402,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "oor" = (
 /obj/structure/surface/rack,
@@ -11682,7 +11682,7 @@
 	dir = 4;
 	pixel_y = 13
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "pZx" = (
 /obj/structure/platform_decoration/kutjevo,
@@ -14632,7 +14632,7 @@
 /area/kutjevo/interior/complex/med)
 "ujo" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "ujG" = (
 /obj/structure/platform_decoration/kutjevo/rock{
@@ -14761,7 +14761,7 @@
 /obj/structure/flora/bush/ausbushes/ppflowers{
 	icon_state = "fullgrass_3"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "urm" = (
 /obj/structure/stairs/perspective/kutjevo{
@@ -16708,7 +16708,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med)
 "wYp" = (
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "wYE" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,

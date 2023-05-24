@@ -574,7 +574,7 @@
 /obj/structure/flora/bush/ausbushes/var3/brflowers{
 	icon_state = "brflowers_3"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "aCl" = (
 /obj/structure/machinery/door/airlock/strata/autoname{
@@ -938,7 +938,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/cargo)
 "aOg" = (
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "aOi" = (
 /turf/open/floor/shiva{
@@ -3415,7 +3415,7 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers{
 	icon_state = "ywflowers_3"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "cSb" = (
 /obj/structure/surface/rack,
@@ -6530,7 +6530,7 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers{
 	icon_state = "ywflowers_2"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "fPv" = (
 /obj/structure/machinery/power/apc{
@@ -7239,7 +7239,7 @@
 /area/varadero/interior/maintenance/north)
 "gsm" = (
 /obj/structure/prop/rock/brown,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "gsq" = (
 /obj/structure/machinery/vending/coffee,
@@ -8044,7 +8044,7 @@
 /area/varadero/interior/mess)
 "hiE" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "hjj" = (
 /obj/item/ammo_magazine/handful/shotgun/buckshot{
@@ -8401,7 +8401,7 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers{
 	icon_state = "ywflowers_4"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "hza" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -13489,7 +13489,7 @@
 /area/varadero/interior/hall_NW)
 "lVQ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "lVW" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -17333,7 +17333,7 @@
 /obj/structure/flora/bush/ausbushes/var3/brflowers{
 	icon_state = "brflowers_2"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "pie" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -20712,7 +20712,7 @@
 /area/varadero/interior/research)
 "rWN" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "rWX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -27149,7 +27149,7 @@
 /area/varadero/interior/records)
 "xGV" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "xHt" = (
 /obj/structure/desertdam/decals/road_edge{

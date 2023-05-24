@@ -1,0 +1,5 @@
+author: "c4xmaniac2"
+delete-after: True
+changes:
+  - mapadd: "added 4 new NM inserts to Science Annex"
+  - maptweak: "sentry in the park no longer terrorizes new players, and the stupid fucking console doesn't block movement."

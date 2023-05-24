@@ -707,14 +707,6 @@ var/list/robot_verbs_default = list(
 		else
 			overlays += "ov-openpanel -c"
 
-//Call when target overlay should be added/removed
-/mob/living/silicon/robot/update_targeted()
-	if(!targeted_by && target_locked)
-		QDEL_NULL(target_locked)
-	update_icons()
-	if (targeted_by && target_locked)
-		overlays += target_locked
-
 /mob/living/silicon/robot/proc/installed_modules()
 	if(weapon_lock)
 		to_chat(src, SPAN_DANGER("Weapon lock active, unable to use modules! Count:[weaponlock_time]"))

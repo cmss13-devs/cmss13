@@ -152,7 +152,8 @@
 	. = ..()
 	for(var/obj/structure/machinery/landinglight/light in landing_lights)
 		light.linked_port = null
-	landing_lights.Cut()
+	if(landing_lights)
+		landing_lights.Cut()
 	landing_lights = null // We didn't make them, so lets leave them
 
 /obj/docking_port/stationary/marine_dropship/proc/link_landing_lights()

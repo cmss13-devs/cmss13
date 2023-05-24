@@ -33,7 +33,8 @@
 		trigger.linked_egg = null
 		trigger.linked_eggmorph = null
 		qdel(trigger)
-	egg_triggers.Cut()
+	if(egg_triggers)
+		egg_triggers.Cut()
 	egg_triggers = null
 
 /obj/effect/alien/egg/ex_act(severity)

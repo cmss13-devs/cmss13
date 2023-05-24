@@ -161,10 +161,10 @@
 	..(null,"suddenly breaks apart.")
 	qdel(src)
 
-/mob/living/simple_animal/hostile/retaliate/malf_drone/Destroy()
+/mob/living/simple_animal/hostile/retaliate/malf_drone/Destroy(force)
 	QDEL_NULL(ion_trail)
 
-	if(!has_loot)
+	if(!has_loot || force)
 		return ..()
 
 	//some random debris left behind

@@ -12,7 +12,7 @@
 			SSgarbage.update_nextfire(reset_time = TRUE)
 			return
 
-#ifndef UNIT_TESTS // Without this we just get thousands of warnings about sleeps in qdel
+#if !defined(UNIT_TESTS) && !defined(SPACEMAN_DMM) // Without this we just get thousands of warnings about sleeps in qdel
 		if(!skip_alert && tgui_alert(usr,"Running this will lock everything up for about 5 minutes.  Would you like to begin the search?", "Find References", list("Yes", "No")) != "Yes")
 			running_find_references = null
 			return

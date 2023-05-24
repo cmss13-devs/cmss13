@@ -602,7 +602,7 @@
 
 /obj/item/weapon/gun/pistol/vp78/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/lasersight/VP = new(src)
+	var/obj/item/attachable/flashlight/laser_light_combo/VP = new(src)
 	VP.flags_attach_features &= ~ATTACH_REMOVABLE
 	VP.hidden = FALSE
 	VP.Attach(src)

@@ -732,6 +732,30 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_NOTICE("Hold on there cowboy, that grip is bolted on. You are unable to modify it."))
 	return
 
+/obj/item/attachable/flashlight/laser_light_combo
+	name = "underbarrel laser-light combo"
+	desc = "Holy smokes RO man, they put a grip on a flashlight! \nReduces recoil and scatter by a tiny amount. Boosts accuracy by a tiny amount. Works as a light source."
+	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
+	icon_state = "laserlight"
+	attach_icon = "laserlight_a"
+	slot = "under"
+	original_state = "laserlight"
+	original_attach = "laserlight_a"
+	attachment_action_type = /datum/action/item_action/toggle
+
+/obj/item/attachable/flashlight/laser_light_combo/New()
+	..()
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	scatter_mod = -SCATTER_AMOUNT_TIER_10
+	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_9
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
+
+/obj/item/attachable/flashlight/laser_light_combo/attackby(obj/item/I, mob/user)
+	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
+		to_chat(user, SPAN_NOTICE("Hold on there cowboy, You are unable to modify it."))
+	return
+
 /obj/item/attachable/magnetic_harness
 	name = "magnetic harness"
 	desc = "A magnetically attached harness kit that attaches to the rail mount of a weapon. When dropped, the weapon will sling to any set of USCM armor."

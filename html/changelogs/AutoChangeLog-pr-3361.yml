@@ -1,4 +1,0 @@
-author: "fluffe9911"
-delete-after: True
-changes:
-  - bugfix: "Zombies should no longer randomly decide to take a hour to revive."

@@ -25,7 +25,7 @@
 					var/damage = rand(3,5)
 					I.take_damage(damage)
 					pain.apply_pain(damage * PAIN_ORGAN_DAMAGE_MULTIPLIER)
-				if(E.is_broken() && prob(15))
+				if(E.is_broken() && prob(3))
 					var/damage = rand(3,5)
 					E.add_bleeding(E, TRUE, damage)
 					custom_pain("You feel broken bones cutting at you in your [E.display_name]!", 1)

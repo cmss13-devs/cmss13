@@ -26,8 +26,10 @@
 					I.take_damage(damage)
 					pain.apply_pain(damage * PAIN_ORGAN_DAMAGE_MULTIPLIER)
 				if(E.is_broken() && prob(15))
-					E.add_bleeding(E, TRUE, rand(3,5))
+					var/damage = rand(3,5)
+					E.add_bleeding(E, TRUE, damage)
 					custom_pain("You feel broken bones cutting at you in your [E.display_name]!", 1)
+					pain.apply_pain(damage * 1.5)
 
 	if(!lying && !buckled && prob(2))
 		var/left_leg_crippled = FALSE

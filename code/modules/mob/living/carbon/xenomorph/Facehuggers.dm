@@ -254,13 +254,13 @@
 		var/mob/living/carbon/xenomorph/X = loc
 		X.drop_inv_item_on_ground(src)
 
-	attached = TRUE
-
 	if(isturf(H.loc))
 		forceMove(H.loc)//Just checkin
 
 	if(!H.handle_hugger_attachment(src))
 		return FALSE
+
+	attached = TRUE
 
 	forceMove(H)
 	icon_state = initial(icon_state)

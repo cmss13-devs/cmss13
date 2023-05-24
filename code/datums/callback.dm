@@ -52,7 +52,8 @@ HELP TO PROC TYPEPATH SHORTCUTS (Purely based on the path in the code)
 
 /datum/callback/Destroy(force, ...)
 	delegate = null
-	arguments.Cut()
+	if(arguments)
+		arguments.Cut()
 	arguments = null
 	return ..()
 

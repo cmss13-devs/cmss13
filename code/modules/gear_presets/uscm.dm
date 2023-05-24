@@ -33,6 +33,10 @@
 	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
 		GLOB.data_core.manifest_inject(H)
 
+	var/obj/item/card/id/ID = new_human.wear_id
+	var/datum/money_account/acct = create_account(new_human, rand(30, 50), GLOB.paygrades[ID.paygrade])
+	ID.associated_account_number = acct.account_number
+
 	var/datum/squad/auto_squad = get_squad_by_name(auto_squad_name)
 	if(auto_squad)
 		transfer_marine_to_squad(H, auto_squad, H.assigned_squad, H.wear_id)

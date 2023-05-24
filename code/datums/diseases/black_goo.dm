@@ -107,6 +107,7 @@
 	if(human && human.loc)
 		if(human.stat == DEAD)
 			human.revive(TRUE)
+			human.remove_language(LANGUAGE_ENGLISH) // You lose the ability to understand english. Language processing is handled in the mind not the body.
 			var/datum/species/zombie/zombie_species = GLOB.all_species[SPECIES_ZOMBIE]
 			zombie_species.handle_alert_ghost(human)
 		playsound(human.loc, 'sound/hallucinations/wail.ogg', 25, 1)
@@ -214,16 +215,16 @@
 
 /datum/language/zombie
 	name = "Zombie"
-	desc = "If you select this from the language screen, expect a ban."
-	color = "zombie"
-
-	speech_verb = "groans"
-	ask_verb = "groans"
-	exclaim_verb = "groans"
-
-	key = "4"
+	desc = "A growling, guttural method of communication, only Zombies seem to be capable of producing these sounds."
+	speech_verb = "growls"
+	ask_verb = "grumbles"
+	exclaim_verb = "snarls"
+	color = "monkey"
+	key = "h"
 	flags = RESTRICTED
 
+/datum/language/zombie/scramble(input)
+	return pick("Urrghh...", "Rrraaahhh...", "Aaaarghhh...", "Mmmrrrgggghhh...", "Huuuuhhhh...", "Sssssgrrrr...")
 
 /obj/item/clothing/glasses/zombie_eyes
 	name = "zombie eyes"

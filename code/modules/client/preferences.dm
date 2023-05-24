@@ -99,6 +99,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_flavor_text = ""
 	//CO-specific preferences
 	var/commander_sidearm = "Mateba"
+	var/affiliation = "Unaligned"
 	//SEA specific preferences
 
 	///holds our preferred job options for jobs
@@ -474,6 +475,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				dat += "<h2><b><u>Commander Settings:</u></b></h2>"
 				dat += "<b>Commander Whitelist Status:</b> <a href='?_src_=prefs;preference=commander_status;task=input'><b>[commander_status]</b></a><br>"
 				dat += "<b>Commander Sidearm:</b> <a href='?_src_=prefs;preference=co_sidearm;task=input'><b>[commander_sidearm]</b></a><br>"
+				dat += "<b>Commander Affiliation:</b> <a href='?_src_=prefs;preference=co_affiliation;task=input'><b>[affiliation]</b></a><br>"
 				dat += "</div>"
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
@@ -1197,6 +1199,13 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!new_co_sidearm)
 						return
 					commander_sidearm = new_co_sidearm
+
+				if("co_affiliation")
+					var/new_co_affiliation = tgui_input_list(user, "Choose your faction affiliation.", "Commanding Officer's Affiliation", FACTION_ALLEGIANCE_USCM_COMMANDER)
+					if(!new_co_affiliation)
+						return
+					affiliation = new_co_affiliation
+
 
 				if("yautja_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)

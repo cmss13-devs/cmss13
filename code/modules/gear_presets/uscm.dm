@@ -26,12 +26,12 @@
 /datum/equipment_preset/uscm/load_status(mob/living/carbon/human/H)
 	H.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)
 
-/datum/equipment_preset/uscm/load_preset(mob/living/carbon/human/H, randomise, count_participant)
+/datum/equipment_preset/uscm/load_preset(mob/living/carbon/human/new_human, randomise, count_participant)
 	. = ..()
-	if(!auto_squad_name || is_admin_level(H.z))
+	if(!auto_squad_name || is_admin_level(new_human.z))
 		return
-	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
-		GLOB.data_core.manifest_inject(H)
+	if(!GLOB.data_core.manifest_modify(new_human.real_name, WEAKREF(new_human), assignment, rank))
+		GLOB.data_core.manifest_inject(new_human)
 
 	var/obj/item/card/id/ID = new_human.wear_id
 	var/datum/money_account/acct = create_account(new_human, rand(30, 50), GLOB.paygrades[ID.paygrade])
@@ -39,22 +39,22 @@
 
 	var/datum/squad/auto_squad = get_squad_by_name(auto_squad_name)
 	if(auto_squad)
-		transfer_marine_to_squad(H, auto_squad, H.assigned_squad, H.wear_id)
+		transfer_marine_to_squad(new_human, auto_squad, new_human.assigned_squad, new_human.wear_id)
 	if(!auto_squad.active)
 		auto_squad.engage_squad(FALSE)
 
-	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
+	new_human.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
+	new_human.sec_hud_set_ID()
+	new_human.hud_set_squad()
 
-	if(H.wear_l_ear)
-		if(istype(H.wear_l_ear, /obj/item/device/radio/headset/almayer/marine))
-			var/obj/item/device/radio/headset/almayer/marine/equipped_headset = H.wear_l_ear
-			equipped_headset.add_hud_tracker(H)
-	else if(H.wear_r_ear)
-		if(istype(H.wear_r_ear, /obj/item/device/radio/headset/almayer/marine))
-			var/obj/item/device/radio/headset/almayer/marine/equipped_headset = H.wear_r_ear
-			equipped_headset.add_hud_tracker(H)
+	if(new_human.wear_l_ear)
+		if(istype(new_human.wear_l_ear, /obj/item/device/radio/headset/almayer/marine))
+			var/obj/item/device/radio/headset/almayer/marine/equipped_headset = new_human.wear_l_ear
+			equipped_headset.add_hud_tracker(new_human)
+	else if(new_human.wear_r_ear)
+		if(istype(new_human.wear_r_ear, /obj/item/device/radio/headset/almayer/marine))
+			var/obj/item/device/radio/headset/almayer/marine/equipped_headset = new_human.wear_r_ear
+			equipped_headset.add_hud_tracker(new_human)
 
 
 //*****************************************************************************************************/

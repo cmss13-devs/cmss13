@@ -68,7 +68,6 @@
 	throw_range = 5
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("stabbed", "poked", "attacked")
-	edge = 0
 
 /obj/item/weapon/dart/green
 	name = "green throwing dart"

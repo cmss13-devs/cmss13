@@ -11,6 +11,11 @@
 	hostility = TRUE
 
 /datum/emergency_call/upp_commando/print_backstory(mob/living/carbon/human/M)
+	var/key = "1"
+	var/datum/language/commando/sign_language = locate() in M.languages
+	if(sign_language)
+		key = sign_language.key
+
 	to_chat(M, SPAN_BOLD("You grew up in relativly simple family in [pick(75;"Eurasia", 25;"a famished UPP colony")] with few belongings or luxuries."))
 	to_chat(M, SPAN_BOLD("The family you grew up with were [pick(50;"getting by", 25;"impoverished", 25;"starving")] and you were one of [pick(10;"two", 20;"three", 20;"four", 30;"five", 20;"six")] children."))
 	to_chat(M, SPAN_BOLD("You come from a long line of [pick(40;"crop-harvesters", 20;"soldiers", 20;"factory workers", 5;"scientists", 15;"engineers")], and quickly enlisted to improve your living conditions."))
@@ -23,7 +28,7 @@
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to Colonel Ganbaatar.")))
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the Smoldering Sons.")))
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the UPP.")))
-	to_chat(M, SPAN_NOTICE(" Use say :l <text> to speak in tactical sign language, understood only by similarly trained commando units."))
+	to_chat(M, SPAN_NOTICE(" Use say :[key] <text> to speak in tactical sign language, understood only by similarly trained commando units."))
 	to_chat(M, SPAN_NOTICE(" This allows you to speak privately with your fellow UPP Kommandos."))
 	to_chat(M, SPAN_NOTICE(" Utilize it with your radio to prevent enemy radio interceptions."))
 	to_chat(M, SPAN_NOTICE("Your experimental cloak allows firing while cloaked, but it is not as effective in hiding you as its USCM counterpart."))

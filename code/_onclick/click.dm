@@ -99,10 +99,6 @@
 			throw_buffer++
 		return
 
-	// Last thing clicked is tracked for something somewhere.
-	if(!isgun(A) && !isturf(A) && !istype(A,/atom/movable/screen))
-		last_target_click = world.time
-
 	var/obj/item/W = get_active_hand()
 
 	// Special gun mode stuff.

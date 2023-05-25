@@ -1,4 +1,0 @@
-author: "Emanthealmighty"
-delete-after: True
-changes:
-  - bugfix: "Fixed huggers occasionally dying before they can impregnate a host."

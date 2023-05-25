@@ -653,8 +653,8 @@ Additional game mode variables.
 
 	//creates soft caps for survivor variants, if there are more than the maximum of your preference you get a completely random variant which can include your preference, should minimize stacking while allowing for interesting randomness
 	var/preferred_variant = ANY_SURVIVOR
-	if(equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR)
-		preferred_variant = equipping_human.client?.prefs?.preferred_survivor_variant
+	if(equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR)
+		preferred_variant = equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR]
 		if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && survivors_by_type_amounts[preferred_variant] && survivors_by_type_amounts[preferred_variant] >= MAX_SURVIVOR_PER_TYPE[preferred_variant])
 			preferred_variant = ANY_SURVIVOR
 

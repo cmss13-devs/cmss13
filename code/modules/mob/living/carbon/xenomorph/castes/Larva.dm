@@ -146,7 +146,7 @@
 /mob/living/carbon/xenomorph/larva/pull_response(mob/puller)
 	return TRUE
 
-/mob/living/carbon/xenomorph/larva/UnarmedAttack(atom/A, proximity, click_parameters, tile_attack)
+/mob/living/carbon/xenomorph/larva/UnarmedAttack(atom/A, proximity, click_parameters, tile_attack, ignores_resin = FALSE)
 	a_intent = INTENT_HELP //Forces help intent for all interactions.
 	if(!caste)
 		return FALSE

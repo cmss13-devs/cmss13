@@ -31,6 +31,7 @@
 	. = ..()
 	QDEL_NULL(emag)
 	QDEL_NULL(jetpack)
+	QDEL_NULL_LIST(modules)
 
 /obj/item/circuitboard/robot_module/proc/respawn_consumable(mob/living/silicon/robot/R)
 

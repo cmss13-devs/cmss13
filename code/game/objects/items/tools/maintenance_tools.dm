@@ -552,7 +552,7 @@
 	ADD_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
 
 /obj/item/maintenance_jack/proc/handle_airlock_attack(source, obj/structure/machinery/door/airlock/attacked_door, mob/user)
-	. = COMPONENT_CANCEL_ATTACK
+	. = COMPONENT_CANCEL_AIRLOCK_ATTACK
 	if(crowbar_mode)
 		if(attacked_door.locked) //Bolted
 			to_chat(user, SPAN_DANGER("You can't pry open [attacked_door] while it is bolted shut."))

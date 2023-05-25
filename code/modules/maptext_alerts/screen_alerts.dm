@@ -101,6 +101,7 @@
 ///handles post-play effects like fade out after the fade out delay
 /atom/movable/screen/text/screen_text/proc/after_play(client/player)
 	if(QDELETED(player))
+		end_play(player)
 		return
 	if(!fade_out_time)
 		end_play(player)
@@ -110,7 +111,7 @@
 
 ///ends the play then deletes this screen object and plays the next one in queue if it exists
 /atom/movable/screen/text/screen_text/proc/end_play(client/player)
-	if(QDELETED(player))
+	if(!player)
 		return
 	player.screen -= src
 	LAZYREMOVE(player.screen_texts, src)

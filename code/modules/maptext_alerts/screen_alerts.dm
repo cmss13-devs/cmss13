@@ -71,7 +71,7 @@
  * * player: client to play to
  */
 /atom/movable/screen/text/screen_text/proc/play_to_client(client/player)
-	if(!player)
+	if(QDELETED(player))
 		return
 	player?.screen += src
 	if(fade_in_time)
@@ -100,7 +100,7 @@
 
 ///handles post-play effects like fade out after the fade out delay
 /atom/movable/screen/text/screen_text/proc/after_play(client/player)
-	if(!player)
+	if(QDELETED(player))
 		return
 	if(!fade_out_time)
 		end_play(player)
@@ -110,7 +110,7 @@
 
 ///ends the play then deletes this screen object and plays the next one in queue if it exists
 /atom/movable/screen/text/screen_text/proc/end_play(client/player)
-	if(!player)
+	if(QDELETED(player))
 		return
 	player.screen -= src
 	LAZYREMOVE(player.screen_texts, src)

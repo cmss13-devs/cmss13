@@ -149,9 +149,8 @@ var/datum/controller/supply/supply_controller = new()
 	//If any computers are able to order contraband, it's enabled. Otherwise, it's disabled!
 
 /obj/structure/machinery/computer/supplycomp/proc/lock_black_market(market_locked = FALSE)
-	for(var/obj/structure/machinery/computer/supplycomp/computer as anything in supply_controller.bound_supply_computer_list)
-		if(market_locked)
-			black_market_lockout = TRUE
+	if(market_locked)
+		black_market_lockout = TRUE
 
 /obj/structure/machinery/computer/ordercomp
 	name = "Supply ordering console"

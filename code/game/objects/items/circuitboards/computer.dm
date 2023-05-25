@@ -201,6 +201,10 @@
 			to_chat(user, SPAN_NOTICE("[src] has already been reset."))
 			return
 
+		if(user.action_busy)
+			to_chat(user, "You are too busy with other actions to fix any tampering.")
+			return
+
 		playsound(tool, 'sound/machines/lockenable.ogg', 25)
 		user.visible_message(SPAN_NOTICE("[user] attaches [tool] to [src]."),\
 		SPAN_NOTICE("You begin to fix any tampering to [src]."))

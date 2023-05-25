@@ -249,7 +249,7 @@
  */
 /obj/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null,\
 							list/forbidden_limbs = list(),
-							no_limb_loss, damage_source = "dismemberment",\
+							no_limb_loss, damage_source = create_cause_data("amputation"),\
 							mob/attack_source = null,\
 							brute_reduced_by = -1, burn_reduced_by = -1)
 	if((brute <= 0) && (burn <= 0))

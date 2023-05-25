@@ -457,6 +457,10 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	user.visible_message( "[user] takes something out of [src].", "You take [stashed_item] from [src].")
 	stashed_item = null
 
+/obj/structure/flora/pottedplant/Destroy()
+	if(stashed_item)
+		QDEL_NULL(stashed_item)
+	return ..()
 /obj/structure/flora/pottedplant/random
 	icon_tag = "pottedplant"
 	variations = "30"

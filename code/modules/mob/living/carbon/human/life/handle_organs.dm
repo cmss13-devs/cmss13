@@ -18,6 +18,8 @@
 			E.process()
 
 			if(!lying && world.time - l_move_time < 15)
+				///Limbs that cannot get IB from fractures
+				var/potential_limbs = list("l_foot","r_foot","l_hand","r_hand")
 			// Moving around with fractured ribs won't do you any good
 				if(E.is_broken() && E.internal_organs && prob(15))
 					var/datum/internal_organ/I = pick(E.internal_organs)
@@ -25,7 +27,7 @@
 					var/damage = rand(3,5)
 					I.take_damage(damage)
 					pain.apply_pain(damage * PAIN_ORGAN_DAMAGE_MULTIPLIER)
-				if(E.is_broken() && prob(3))
+				if(E.is_broken() && prob(2) && !(E.name in potential_limbs))
 					var/damage = rand(3,5)
 					var/datum/wound/internal_bleeding/internal_bleed = new
 					E.add_bleeding(internal_bleed, TRUE, damage)

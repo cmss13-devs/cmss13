@@ -1184,10 +1184,8 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/caves/sand_temple)
 "Ds" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
+/obj/structure/flora/jungle/alienplant1{
 	layer = 4.13;
-	luminosity = 2;
 	pixel_y = 18
 	},
 /turf/open/gm/dirtgrassborder,

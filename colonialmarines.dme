@@ -13,6 +13,7 @@
 // BEGIN_INCLUDE
 #include "code\_byond_version_compat.dm"
 #include "code\_compile_options.dm"
+#include "code\_experiments.dm"
 #include "code\_macros.dm"
 #include "code\global.dm"
 #include "code\names.dm"
@@ -259,6 +260,7 @@
 #include "code\controllers\subsystem\predships.dm"
 #include "code\controllers\subsystem\projectiles.dm"
 #include "code\controllers\subsystem\quadtrees.dm"
+#include "code\controllers\subsystem\reagents.dm"
 #include "code\controllers\subsystem\redis.dm"
 #include "code\controllers\subsystem\round_recording.dm"
 #include "code\controllers\subsystem\shuttle.dm"
@@ -2040,7 +2042,6 @@
 #include "code\modules\projectiles\homing_projectile_component.dm"
 #include "code\modules\projectiles\item_to_box_mapping.dm"
 #include "code\modules\projectiles\projectile.dm"
-#include "code\modules\projectiles\targeting.dm"
 #include "code\modules\projectiles\ammo_boxes\ammo_boxes.dm"
 #include "code\modules\projectiles\ammo_boxes\box_structures.dm"
 #include "code\modules\projectiles\ammo_boxes\grenade_packets.dm"

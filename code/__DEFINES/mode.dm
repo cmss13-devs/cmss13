@@ -286,6 +286,9 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 
 #define FACTION_LIST_XENOMORPH list(FACTION_XENOMORPH, FACTION_XENOMORPH_CORRPUTED, FACTION_XENOMORPH_ALPHA, FACTION_XENOMORPH_BRAVO, FACTION_XENOMORPH_CHARLIE, FACTION_XENOMORPH_DELTA)
 
+// Faction allegiances within a certain faction.
+
+#define FACTION_ALLEGIANCE_USCM_COMMANDER list("Doves", "Hawks", "Magpies", "Unaligned")
 
 // global vars to prevent spam of the "one xyz alive" messages
 

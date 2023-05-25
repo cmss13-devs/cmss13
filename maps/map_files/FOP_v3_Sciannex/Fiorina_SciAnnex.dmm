@@ -639,6 +639,12 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
+"arn" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "researchprestine"
+	},
+/turf/closed/wall/prison,
+/area/fiorina/station/research_cells)
 "arq" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
@@ -4109,6 +4115,12 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
+"cvL" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "gamertime"
+	},
+/turf/closed/wall/prison,
+/area/fiorina/tumor/servers)
 "cwB" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -7219,6 +7231,16 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/tumor/ice_lab)
+"evv" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "nogear"
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
 "evD" = (
 /obj/structure/lz_sign/prison_sign,
 /turf/open/floor/prison,
@@ -11932,7 +11954,8 @@
 "hpJ" = (
 /obj/structure/bed/roller,
 /obj/structure/machinery/filtration/console{
-	pixel_y = 22
+	pixel_y = 22;
+	can_block_movement = 0
 	},
 /obj/item/trash/used_stasis_bag,
 /turf/open/floor/plating/prison,
@@ -12597,6 +12620,12 @@
 /obj/item/clothing/head/helmet/marine/specialist/hefa,
 /turf/open/floor/prison,
 /area/fiorina/station/park)
+"hMK" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "pizzatime"
+	},
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/station/power_ring)
 "hMX" = (
 /obj/item/weapon/twohanded/spear,
 /turf/open/floor/prison{
@@ -15548,13 +15577,10 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "jFO" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8
+/obj/effect/landmark/nightmare{
+	insert_tag = "poolparty"
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrown2"
-	},
+/turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/park)
 "jGd" = (
 /obj/structure/machinery/light/double/blue{
@@ -22719,6 +22745,12 @@
 /obj/structure/machinery/computer/arcade,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
+"obI" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "engineeroffice"
+	},
+/turf/closed/wall/prison,
+/area/fiorina/tumor/civres)
 "obL" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
@@ -24142,6 +24174,13 @@
 "oUg" = (
 /turf/closed/wall/prison,
 /area/fiorina/station/telecomm/lz1_cargo)
+"oUP" = (
+/obj/structure/lattice,
+/obj/effect/landmark/nightmare{
+	insert_tag = "wardenofficedecorated"
+	},
+/turf/open/space,
+/area/fiorina/oob)
 "oVn" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
@@ -32984,6 +33023,12 @@
 	icon_state = "sterile_white"
 	},
 /area/fiorina/station/medbay)
+"uCD" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "medicalhold"
+	},
+/turf/closed/wall/prison,
+/area/fiorina/station/medbay)
 "uCW" = (
 /obj/item/reagent_container/glass/bucket/janibucket,
 /turf/open/floor/prison{
@@ -34047,6 +34092,9 @@
 	},
 /area/fiorina/station/research_cells)
 "vmj" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "podholder"
+	},
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_1"
 	},
@@ -35492,6 +35540,12 @@
 /obj/item/device/flashlight/flare/on,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
+"wgi" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "scavshipholder"
+	},
+/turf/open/space,
+/area/fiorina/oob)
 "wgH" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
@@ -39513,7 +39567,7 @@ bQM
 bQM
 bQM
 bQM
-bQM
+wgi
 bQM
 bQM
 bQM
@@ -46658,7 +46712,7 @@ fBP
 dIo
 dIo
 dIo
-dIo
+obI
 wlz
 dXG
 qty
@@ -51207,7 +51261,7 @@ lRI
 uGM
 cdD
 ajK
-itN
+jFO
 itN
 itN
 itN
@@ -57131,7 +57185,7 @@ aRT
 kjT
 qun
 oyC
-jFO
+cdD
 ajK
 aRT
 kjT
@@ -58702,7 +58756,7 @@ gEF
 jXz
 jXz
 jXz
-jXz
+cvL
 lwK
 hoZ
 fGb
@@ -67503,7 +67557,7 @@ ceC
 xNm
 ceC
 ceC
-flC
+evv
 fnB
 fnB
 bZY
@@ -67544,7 +67598,7 @@ aPH
 aPH
 aPH
 aPH
-kPz
+oUP
 kPz
 bQM
 bQM
@@ -68490,7 +68544,7 @@ oZz
 vWe
 hVI
 hVI
-hVI
+uCD
 hVI
 hVI
 hVI
@@ -74835,7 +74889,7 @@ tOp
 cKa
 kzh
 tOp
-cKa
+arn
 jXD
 roY
 nhz
@@ -84476,7 +84530,7 @@ mxQ
 iyf
 bzO
 bzO
-bzO
+hMK
 bQM
 bQM
 bQM

@@ -20,7 +20,6 @@
 	if(ready)
 		readied_players--
 	GLOB.new_player_list -= src
-	GLOB.dead_mob_list -= src
 	return ..()
 
 /mob/new_player/verb/new_player_panel()
@@ -263,12 +262,13 @@
 
 	if(SSticker.mode.latejoin_larva_drop && SSticker.mode.latejoin_tally >= SSticker.mode.latejoin_larva_drop)
 		SSticker.mode.latejoin_tally -= SSticker.mode.latejoin_larva_drop
-		var/datum/hive_status/HS
+		var/datum/hive_status/hive
 		for(var/hivenumber in GLOB.hive_datum)
-			HS = GLOB.hive_datum[hivenumber]
-			if(length(HS.totalXenos))
-				HS.stored_larva++
-				HS.hive_ui.update_burrowed_larva()
+			hive = GLOB.hive_datum[hivenumber]
+			if(hive.latejoin_burrowed == TRUE)
+				if(length(hive.totalXenos))
+					hive.stored_larva++
+					hive.hive_ui.update_burrowed_larva()
 
 	if(character.mind && character.mind.player_entity)
 		var/datum/entity/player_entity/player = character.mind.player_entity

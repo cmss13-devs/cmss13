@@ -34,6 +34,10 @@
 	chemical_data.add_chem_storage(src)
 	start_processing()
 
+/obj/structure/machinery/chem_storage/Destroy()
+	chemical_data.remove_chem_storage(src)
+	return ..()
+
 /obj/structure/machinery/chem_storage/get_examine_text(mob/user)
 	. = ..()
 	if(in_range(user, src) || istype(user, /mob/dead/observer))

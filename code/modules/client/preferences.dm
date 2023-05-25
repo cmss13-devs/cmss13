@@ -1452,7 +1452,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("bag")
 					var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference")  as null|anything in backbaglist
 					if(new_backbag)
-						backbag = new_backbag
+						backbag = backbaglist.Find(new_backbag)
 
 				if("nt_relation")
 					var/new_relation = input(user, "Choose your relation to the Weyland-Yutani company. Note that this represents what others can find out about your character by researching your background, not what your character actually thinks.", "Character Preference")  as null|anything in list("Loyal", "Supportive", "Neutral", "Skeptical", "Opposed")

@@ -515,6 +515,10 @@
 	///How long extra will it take (in seconds) people who do not have engi 3 (if requires_skills_unbolt is true)
 	var/unskilled_unbolt_time = 15 SECONDS
 
+/obj/item/maintenance_jack/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_ITEM_ATTACK_AIRLOCK, PROC_REF(handle_airlock_attack))
+
 /obj/item/maintenance_jack/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("Interact with the Maintenance Jack to change modes.")
@@ -547,77 +551,72 @@
 	REMOVE_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
 	ADD_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
 
-/obj/item/maintenance_jack/afterattack(atom/attacked_obj, mob/living/user, proximity)
-	if(!proximity)
+/obj/item/maintenance_jack/proc/handle_airlock_attack(source, obj/structure/machinery/door/airlock/attacked_door, mob/user)
+	. = COMSIG_ITEM_CANCEL_AIRLOCK_ATTACK
+	if(crowbar_mode)
+		if(attacked_door.locked) //Bolted
+			to_chat(user, SPAN_DANGER("You can't pry open [attacked_door] while it is bolted shut."))
+			return
+		if(!attacked_door.arePowerSystemsOn()) //Opens like normal if unpowered
+			return
+
+		if(requires_superstrength_pry)
+			if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
+				return
+		if(!attacked_door.density) //If its open
+			return
+		if(attacked_door.heavy) //Unopenable
+			to_chat(usr, SPAN_DANGER("You cannot force [attacked_door] open."))
+			return
+		if(user.action_busy)
+			return
+
+		user.visible_message(SPAN_DANGER("[user] jams [src] into [attacked_door] and starts to pry it open."),
+		SPAN_DANGER("You jam [src] into [attacked_door] and start to pry it open."))
+		playsound(src, "pry", 15, TRUE)
+		if(!do_after(user, prying_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			return
+
+		if(!attacked_door.density)
+			return
+		if(attacked_door.locked)
+			user.visible_message(SPAN_DANGER("[user] fails to force [attacked_door] open with [src]."),
+			SPAN_DANGER("You fail to force [attacked_door] open with [src]."))
+			return
+
+		user.visible_message(SPAN_DANGER("[user] forces [attacked_door] open with [src]."),
+		SPAN_DANGER("You force [attacked_door] open with [src]."))
+		attacked_door.open(TRUE)
 		return
 
-	if(istype(attacked_obj, /obj/structure/machinery/door/airlock))
-		var/obj/structure/machinery/door/airlock/airlock = attacked_obj
+	//Wrench Mode
+	if(!attacked_door.locked)
+		to_chat(user, SPAN_NOTICE("You cannot disable bolts on a door that is already unbolted."))
+		return
 
-		if(crowbar_mode)
-			if(airlock.locked) //Bolted
-				to_chat(user, SPAN_DANGER("You can't pry open [airlock] while it is bolted shut."))
-				return
-			if(!airlock.arePowerSystemsOn()) //Opens like normal if unpowered
-				if(airlock.density)
-					airlock.open(TRUE)
-				else
-					airlock.close(TRUE)
-				return
-
-			if(requires_superstrength_pry)
-				if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
-					return ..()
-			if(!airlock.density) //If its open
-				return
-			if(airlock.heavy) //Unopenable
-				to_chat(usr, SPAN_DANGER("You cannot force [airlock] open."))
-				return FALSE
-			if(user.action_busy)
+	if(requires_skills_unbolt)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MASTER)) //Engi 3 is much faster
+			user.visible_message(SPAN_DANGER("[user] begins to search for [attacked_door]'s bolts!"),\
+			SPAN_NOTICE("You search for [attacked_door]'s bolts."))
+			if(!do_after(user, unskilled_unbolt_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL)) //Otherwise it takes an extra 15 seconds
+				to_chat(user, SPAN_WARNING("You fail to find the bolts on [attacked_door]."))
 				return
 
-			user.visible_message(SPAN_DANGER("[user] jams [src] into [airlock] and starts to pry it open."),
-			SPAN_DANGER("You jam [src] into [airlock] and start to pry it open."))
-			playsound(src, "pry", 15, TRUE)
-			if(!do_after(user, prying_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-				return
+	user.visible_message(SPAN_DANGER("[user] begins to disable [attacked_door]'s bolts!"),\
+	SPAN_NOTICE("You start to disable [attacked_door]'s bolts."))
+	playsound(attacked_door, "pry", 25, TRUE)
 
-			if(!airlock.density)
-				return
-			if(airlock.locked)
-				user.visible_message(SPAN_DANGER("[user] fails to force [airlock] open with [src]."),
-				SPAN_DANGER("You fail to force [airlock] open with [src]."))
-				return
+	if(!do_after(user, unbolt_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
+		to_chat(user, SPAN_WARNING("You decide not to disable the bolts on [attacked_door]."))
+		return
 
-			user.visible_message(SPAN_DANGER("[user] forces [airlock] open with [src]."),
-			SPAN_DANGER("You force [airlock] open with [src]."))
-			airlock.open(TRUE)
-			return
+	user.visible_message(SPAN_DANGER("[user] disables the bolts on [attacked_door]."),\
+	SPAN_NOTICE("You unbolt [attacked_door]."))
+	attacked_door.unlock(TRUE)
+	return
 
-		//Wrench Mode
-		if(!airlock.locked)
-			to_chat(user, SPAN_NOTICE("You cannot disable bolts on a door that is already unbolted."))
-			return
-
-		if(requires_skills_unbolt)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MASTER)) //Engi 3 is much faster
-				user.visible_message(SPAN_DANGER("[user] begins to search for [airlock]'s bolts!"),\
-				SPAN_NOTICE("You search for [airlock]'s bolts."))
-				if(!do_after(user, unskilled_unbolt_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL)) //Otherwise it takes an extra 15 seconds
-					to_chat(user, SPAN_WARNING("You fail to find the bolts on [airlock]."))
-					return
-
-		user.visible_message(SPAN_DANGER("[user] begins to disable [airlock]'s bolts!"),\
-		SPAN_NOTICE("You start to disable [airlock]'s bolts."))
-		playsound(airlock, "pry", 25, TRUE)
-
-		if(!do_after(user, unbolt_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
-			to_chat(user, SPAN_WARNING("You decide not to disable the bolts on [airlock]."))
-			return
-
-		user.visible_message(SPAN_DANGER("[user] disables the bolts on [airlock]."),\
-		SPAN_NOTICE("You unbolt [airlock]."))
-		airlock.unlock(TRUE)
+/obj/item/maintenance_jack/afterattack(atom/attacked_obj, mob/living/user, proximity)
+	if(!proximity)
 		return
 
 	if(istype(attacked_obj, /obj/structure/mineral_door/resin))

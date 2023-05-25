@@ -558,7 +558,7 @@
 			to_chat(user, SPAN_DANGER("You can't pry open [attacked_door] while it is bolted shut."))
 			return
 		if(!attacked_door.arePowerSystemsOn()) //Opens like normal if unpowered
-			return
+			return FALSE
 
 		if(requires_superstrength_pry)
 			if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR

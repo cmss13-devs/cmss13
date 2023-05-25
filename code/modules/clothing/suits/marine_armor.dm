@@ -177,17 +177,15 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 	if(!user || !user.client)
 		icon_state = replacetext(icon_state,"1","[rand(1,armor_variation)]")
-		armor_variation = 0
 		update_icon()
 		return
 
 	if(user.client.prefs.preferred_armor)
 		var/new_look = armor_style_list.Find(user.client.prefs.preferred_armor)
-		if(!new_look)
+		if(new_look == 7)
 			new_look = rand(1,armor_variation)
 		icon_state = replacetext(icon_state,"1","[new_look]")
 
-	armor_variation = 0
 	update_icon()
 
 /obj/item/clothing/suit/storage/marine/pickup(mob/user)

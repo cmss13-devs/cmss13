@@ -83,6 +83,7 @@
 #include "timer_sanity.dm"
 #include "unit_test.dm"
 #include "spawn_humans.dm"
+#include "check_runtimes.dm"
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL

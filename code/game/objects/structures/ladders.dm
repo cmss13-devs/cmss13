@@ -265,7 +265,7 @@
 	GLOB.hijack_bustable_ladders += src
 
 /obj/structure/ladder/fragile_almayer/Destroy()
-	GLOB.hijack_bustable_windows -= src
+	GLOB.hijack_bustable_ladders -= src
 	return ..()
 
 /obj/structure/ladder/fragile_almayer/deconstruct()

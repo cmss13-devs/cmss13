@@ -8574,7 +8574,8 @@
 /area/lv624/lazarus/yggdrasil)
 "aKE" = (
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/grass/gbcorner/north_west/area/lv624/lazarus/yggdrasil)
+/turf/open/gm/grass/gbcorner/north_west,
+/area/lv624/lazarus/yggdrasil)
 "aKF" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grassbeach/north,
@@ -8646,7 +8647,8 @@
 "aLc" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/grass/gbcorner/north_west/area/lv624/lazarus/yggdrasil)
+/turf/open/gm/grass/gbcorner/north_west,
+/area/lv624/lazarus/yggdrasil)
 "aLd" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grassbeach/north,

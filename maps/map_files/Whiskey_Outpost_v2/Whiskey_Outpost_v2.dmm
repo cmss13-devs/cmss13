@@ -1178,7 +1178,8 @@
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/whiskey_outpost/outside/lane/four_south)
 "ep" = (
-/turf/open/gm/grass/gbcorner/north_west/area/whiskey_outpost/outside/lane/one_south)
+/turf/open/gm/grass/gbcorner/north_west,
+/area/whiskey_outpost/outside/lane/one_south)
 "eq" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
@@ -11434,7 +11435,8 @@
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
 "QJ" = (
-/turf/open/gm/grass/gbcorner/north_west/area/whiskey_outpost/outside/lane/one_north)
+/turf/open/gm/grass/gbcorner/north_west,
+/area/whiskey_outpost/outside/lane/one_north)
 "QL" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8
@@ -11964,7 +11966,8 @@
 /area/whiskey_outpost/outside/lane/one_south)
 "Ta" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/gm/grass/gbcorner/north_west/area/whiskey_outpost/outside/north/northwest)
+/turf/open/gm/grass/gbcorner/north_west,
+/area/whiskey_outpost/outside/north/northwest)
 "Tc" = (
 /obj/structure/platform{
 	dir = 4

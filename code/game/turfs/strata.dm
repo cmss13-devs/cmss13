@@ -7,7 +7,7 @@
 
 //just in case
 
-/turf/open/gm/grass/grass1/weedable/ //inherit from general turfs
+/turf/open/gm/grass/grass1/weedable //inherit from general turfs
 
 /turf/open/gm/grass/grass1/weedable/is_weedable()
 	return FULLY_WEEDABLE

@@ -171,7 +171,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(user) user.update_inv_wear_suit()
 
 
-/obj/item/clothing/suit/storage/marine/proc/post_creation_handling(mob/user)
+/obj/item/clothing/suit/storage/marine/proc/post_creation_handling(mob/user) //used for randomizing/selecting a variant for armors.
 	if(!armor_variation)
 		return
 

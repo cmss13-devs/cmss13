@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fix shuttle landing lights getting stuck on"
-  - imageadd: "Added a transparent gray sprite to act as a shadow when a shuttle or something is looming over that tile"

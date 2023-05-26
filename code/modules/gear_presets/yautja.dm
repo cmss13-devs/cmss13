@@ -54,13 +54,12 @@
 		cape_color = mob_client.prefs.predator_cape_color
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, caster_material), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, caster_material, clan_rank), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(new_human), WEAR_IN_BELT)
-
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/knife(new_human, boot_number, greave_material), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter(new_human, armor_number, armor_material), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter(new_human, mask_number, mask_material), WEAR_FACE)

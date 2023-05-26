@@ -560,13 +560,15 @@
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
 
-/turf/open/gm/coast/dir_1
+/turf/open/gm/coast/north
+
+/turf/open/gm/coast/south
 	dir = 1
 
-/turf/open/gm/coast/dir_4
+/turf/open/gm/coast/west
 	dir = 4
 
-/turf/open/gm/coast/dir_8
+/turf/open/gm/coast/east
 	dir = 8
 
 /turf/open/gm/coast/beachcorner

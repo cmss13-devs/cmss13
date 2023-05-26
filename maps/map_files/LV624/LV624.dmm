@@ -24,7 +24,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
 "aaj" = (
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/lv624/ground/caves/north_central_caves)
 "aam" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -55,7 +55,7 @@
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/caves/north_central_caves)
 "aau" = (
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/caves/north_central_caves)
 "aav" = (
 /turf/open/gm/coast/beachcorner/dir_4,
@@ -202,7 +202,7 @@
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/caves/north_central_caves)
 "abf" = (
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/caves/north_central_caves)
 "abg" = (
 /obj/effect/landmark/crap_item,
@@ -1521,7 +1521,7 @@
 /area/lv624/ground/caves/sand_temple)
 "ahe" = (
 /obj/effect/landmark/crap_item,
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/lv624/ground/barrens/west_barrens)
 "ahh" = (
 /obj/effect/decal/cleanable/blood,
@@ -1762,7 +1762,7 @@
 /area/lv624/ground/barrens/west_barrens)
 "aiv" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/barrens/east_barrens)
 "aiw" = (
 /obj/structure/machinery/constructable_frame,
@@ -1949,7 +1949,7 @@
 /area/lv624/ground/barrens/north_east_barrens)
 "ajg" = (
 /obj/structure/flora/bush/ausbushes,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/jungle/west_jungle)
 "ajh" = (
 /obj/structure/flora/jungle/planttop1,
@@ -2188,11 +2188,11 @@
 /area/lv624/ground/river/central_river)
 "akn" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/river/central_river)
 "ako" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/lv624/ground/river/central_river)
 "akp" = (
 /obj/structure/grille,
@@ -2363,13 +2363,13 @@
 /turf/open/gm/coast/beachcorner/dir_8,
 /area/lv624/ground/jungle/west_jungle)
 "ala" = (
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/east_river)
 "alb" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/central_river)
 "alc" = (
 /obj/structure/disposalpipe/segment{
@@ -2413,7 +2413,7 @@
 /area/lv624/ground/river/central_river)
 "als" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/lv624/ground/river/east_river)
 "alw" = (
 /obj/structure/flora/jungle/alienplant1,
@@ -2432,7 +2432,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river/east_river)
 "alC" = (
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/lv624/ground/river/west_river)
 "alD" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
@@ -2451,7 +2451,7 @@
 /area/lv624/ground/river/central_river)
 "alF" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/river/central_river)
 "alK" = (
 /obj/structure/disposalpipe/broken{
@@ -2516,7 +2516,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/river/central_river)
 "alU" = (
 /obj/structure/disposalpipe/trunk{
@@ -2526,7 +2526,7 @@
 /area/lv624/ground/river/central_river)
 "alW" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/central_river)
 "alX" = (
 /obj/structure/fence,
@@ -2692,7 +2692,7 @@
 "and" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/lv624/ground/river/east_river)
 "ane" = (
 /turf/closed/wall/rock/brown,
@@ -3380,12 +3380,12 @@
 /area/lv624/ground/jungle/west_jungle)
 "arQ" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/east_river)
 "arR" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/east_river)
 "arS" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -3446,7 +3446,7 @@
 "asl" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/east_river)
 "asm" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -3559,7 +3559,7 @@
 "asR" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/west_river)
 "asT" = (
 /turf/closed/wall/r_wall,
@@ -4055,7 +4055,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "auP" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/west_river)
 "auR" = (
 /obj/structure/barricade/wooden{
@@ -4240,7 +4240,7 @@
 "avy" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/west_river)
 "avB" = (
 /obj/structure/surface/table,
@@ -4310,7 +4310,7 @@
 /area/lv624/lazarus/research)
 "avK" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/river/west_river)
 "avL" = (
 /obj/structure/closet/lasertag/blue,
@@ -7894,7 +7894,7 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "aHO" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/jungle/west_jungle)
 "aHQ" = (
 /obj/structure/flora/bush/ausbushes/palebush,
@@ -7902,7 +7902,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "aHR" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/jungle/west_jungle)
 "aHT" = (
 /obj/structure/window_frame/wood,
@@ -9114,7 +9114,7 @@
 /area/lv624/lazarus/canteen)
 "aNn" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/jungle/west_jungle)
 "aNo" = (
 /turf/closed/wall/r_wall,
@@ -12165,7 +12165,7 @@
 /area/lv624/ground/river/west_river)
 "aYR" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/lv624/ground/river/west_river)
 "aYS" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -13039,7 +13039,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "cag" = (
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/caves/sand_temple)
 "caH" = (
 /obj/effect/landmark/objective_landmark/far,
@@ -13210,7 +13210,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "csu" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/central_river)
 "csM" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -13442,7 +13442,7 @@
 	},
 /area/lv624/ground/jungle/west_central_jungle)
 "cXk" = (
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/lv624/ground/barrens/west_barrens)
 "cYi" = (
 /obj/structure/surface/table,
@@ -13538,7 +13538,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "dmf" = (
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/jungle/west_jungle)
 "dmS" = (
 /obj/structure/flora/jungle/vines/light_3,
@@ -13946,7 +13946,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/west_tcomms_road)
 "efX" = (
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/river/east_river)
 "ehy" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -14706,7 +14706,7 @@
 /area/lv624/ground/colony/south_nexus_road)
 "fXD" = (
 /obj/structure/flora/jungle/alienplant1,
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/river/east_river)
 "fYl" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -15266,7 +15266,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
 "hwR" = (
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/river/central_river)
 "hxL" = (
 /obj/effect/landmark/hunter_primary,
@@ -16339,7 +16339,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "knd" = (
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/lv624/ground/jungle/west_jungle)
 "knp" = (
 /obj/structure/flora/jungle/plantbot1,
@@ -17805,7 +17805,7 @@
 /area/lv624/lazarus/medbay)
 "nHY" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/river/central_river)
 "nHZ" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
@@ -18194,7 +18194,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "owQ" = (
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/barrens/east_barrens)
 "oxY" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -18203,7 +18203,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "oym" = (
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/west_river)
 "oys" = (
 /obj/structure/stairs/perspective{
@@ -18280,7 +18280,7 @@
 	},
 /area/lv624/lazarus/canteen)
 "oEI" = (
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/lv624/ground/barrens/east_barrens)
 "oER" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
@@ -18482,7 +18482,7 @@
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_west_jungle)
 "oXS" = (
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/lv624/ground/river/central_river)
 "oYx" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -18490,7 +18490,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/corporate_dome)
 "oYM" = (
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/barrens/west_barrens)
 "pab" = (
 /obj/structure/flora/jungle/vines/light_2,
@@ -18533,7 +18533,7 @@
 	},
 /area/lv624/lazarus/security)
 "pcd" = (
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/barrens/east_barrens)
 "pci" = (
 /turf/open/gm/coast/beachcorner/dir_8,
@@ -19445,7 +19445,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
 "rit" = (
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/central_river)
 "rkq" = (
 /obj/effect/landmark/crap_item,
@@ -20087,7 +20087,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/quartstorage/outdoors)
 "sTB" = (
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/jungle/west_jungle)
 "sTX" = (
 /obj/structure/flora/jungle/alienplant1,
@@ -20817,7 +20817,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "uxT" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/river/east_river)
 "uya" = (
 /turf/open/gm/dirt,
@@ -21769,7 +21769,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "wSo" = (
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/barrens/west_barrens)
 "wSA" = (
 /obj/structure/stairs/perspective{

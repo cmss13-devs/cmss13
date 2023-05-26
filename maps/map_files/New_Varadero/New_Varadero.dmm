@@ -492,7 +492,7 @@
 /area/varadero/exterior/lz1_near)
 "awf" = (
 /obj/item/toy/beach_ball,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/varadero/exterior/pontoon_beach)
 "axX" = (
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure{
@@ -4690,7 +4690,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
 	},
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/varadero/interior/oob)
 "elO" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -6501,7 +6501,7 @@
 	},
 /area/varadero/interior/maintenance/research)
 "fOA" = (
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/varadero/exterior/eastbeach)
 "fOW" = (
 /obj/structure/platform/kutjevo/smooth,
@@ -8606,7 +8606,7 @@
 	},
 /area/varadero/interior/hall_N)
 "hKK" = (
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/varadero/exterior/pontoon_beach)
 "hLA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -8982,7 +8982,7 @@
 	icon_state = "hr_kutjevo";
 	name = "support struts"
 	},
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/varadero/interior/oob)
 "iaO" = (
 /turf/closed/wall/r_wall/elevator{
@@ -9210,7 +9210,7 @@
 /area/varadero/exterior/pontoon_beach)
 "ijR" = (
 /obj/structure/platform/kutjevo/smooth,
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/varadero/interior/oob)
 "iks" = (
 /obj/item/tool/shovel/spade,
@@ -10319,7 +10319,7 @@
 	},
 /area/varadero/interior/security)
 "jaF" = (
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/varadero/exterior/pontoon_beach)
 "jbh" = (
 /obj/structure/machinery/disposal,
@@ -12025,7 +12025,7 @@
 	},
 /area/varadero/interior/electrical)
 "kDy" = (
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/varadero/exterior/eastbeach)
 "kDF" = (
 /obj/structure/disposalpipe/segment{
@@ -14980,7 +14980,7 @@
 /area/varadero/interior/laundry)
 "nfD" = (
 /obj/structure/platform/kutjevo/smooth,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/varadero/exterior/eastbeach)
 "nfX" = (
 /obj/item/reagent_container/glass/bucket{
@@ -20844,7 +20844,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "scL" = (
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/varadero/exterior/pontoon_beach)
 "scO" = (
 /obj/item/paper{
@@ -21732,7 +21732,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
 	},
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/varadero/interior/oob)
 "sLU" = (
 /obj/structure/reagent_dispensers/water_cooler,
@@ -23593,7 +23593,7 @@
 	icon_state = "hr_kutjevo";
 	name = "support struts"
 	},
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/varadero/exterior/pontoon_beach)
 "uEz" = (
 /obj/structure/disposalpipe/segment{
@@ -24146,7 +24146,7 @@
 /obj/structure/platform_decoration/kutjevo{
 	dir = 1
 	},
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/varadero/exterior/eastbeach)
 "vaV" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -24670,7 +24670,7 @@
 	},
 /area/varadero/interior/hall_N)
 "vxA" = (
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/varadero/interior/oob)
 "vxM" = (
 /obj/structure/machinery/light{
@@ -24985,7 +24985,7 @@
 	pixel_x = -12;
 	pixel_y = -3
 	},
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/varadero/exterior/pontoon_beach)
 "vMU" = (
 /obj/structure/surface/rack,
@@ -27173,7 +27173,7 @@
 /area/varadero/interior/research)
 "xJn" = (
 /obj/structure/blocker/fog,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/varadero/interior/oob)
 "xJx" = (
 /obj/structure/machinery/photocopier,
@@ -27907,7 +27907,7 @@
 /area/varadero/interior/toilets)
 "ykD" = (
 /obj/structure/platform/kutjevo/smooth,
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/varadero/exterior/pontoon_beach)
 "ykE" = (
 /obj/structure/surface/table/reinforced/prison,

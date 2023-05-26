@@ -8,7 +8,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_west_barrens)
 "ad" = (
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/lv624/ground/river/west_river)
 "ae" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
@@ -171,7 +171,7 @@
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/river/west_river)
 "bt" = (
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/west_river)
 "bx" = (
 /obj/effect/alien/weeds/node,
@@ -208,7 +208,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
 "zW" = (
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/lv624/ground/jungle/west_jungle)
 "Dw" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -227,7 +227,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
 "Ms" = (
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/jungle/west_jungle)
 "Ok" = (
 /obj/structure/flora/jungle/alienplant1,

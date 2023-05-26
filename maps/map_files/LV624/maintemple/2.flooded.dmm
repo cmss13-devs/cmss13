@@ -186,7 +186,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "ez" = (
-/turf/open/gm/coast/dir_4,
+/turf/open/gm/coast/west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "eM" = (
 /obj/structure/stairs/perspective{
@@ -225,7 +225,7 @@
 /area/lv624/ground/caves/sand_temple)
 "fP" = (
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/caves/sand_temple)
 "gw" = (
 /turf/open/gm/dirtgrassborder{
@@ -377,7 +377,7 @@
 /turf/open/gm/coast/beachcorner/dir_4,
 /area/lv624/ground/caves/sand_temple)
 "lm" = (
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/caves/sand_temple)
 "lt" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -991,7 +991,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Ak" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Ao" = (
 /obj/structure/showcase{
@@ -1276,7 +1276,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "Gu" = (
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "GO" = (
 /obj/structure/stairs/perspective{
@@ -1526,7 +1526,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Lt" = (
 /obj/item/reagent_container/food/snacks/stew,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/caves/sand_temple)
 "LF" = (
 /obj/structure/stairs/perspective{
@@ -1592,7 +1592,7 @@
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "MB" = (
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/caves/sand_temple)
 "MD" = (
 /turf/open/gm/coast/beachcorner/dir_1,
@@ -1711,7 +1711,7 @@
 /area/lv624/ground/caves/sand_temple)
 "PR" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/caves/sand_temple)
 "QG" = (
 /obj/structure/barricade/handrail/strata{

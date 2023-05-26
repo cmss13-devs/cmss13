@@ -83,7 +83,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "pS" = (
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "qk" = (
 /turf/open/gm/dirtgrassborder{
@@ -142,7 +142,7 @@
 	},
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "CL" = (
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/river/east_river)
 "DA" = (
 /turf/open/gm/dirtgrassborder{
@@ -158,7 +158,7 @@
 /area/lv624/ground/river/east_river)
 "Fj" = (
 /obj/structure/flora/jungle/alienplant1,
-/turf/open/gm/coast/dir_8,
+/turf/open/gm/coast/east,
 /area/lv624/ground/river/east_river)
 "Fm" = (
 /turf/open/gm/coast/beachcorner/dir_1,
@@ -170,7 +170,7 @@
 /area/lv624/ground/river/east_river)
 "GI" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/east_river)
 "Hb" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -182,7 +182,7 @@
 /turf/open/gm/coast/beachcorner/dir_4,
 /area/lv624/ground/river/east_river)
 "Kd" = (
-/turf/open/gm/coast/dir_1,
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/east_river)
 "Kp" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,

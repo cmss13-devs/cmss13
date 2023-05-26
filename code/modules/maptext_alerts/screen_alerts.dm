@@ -11,7 +11,7 @@
 */
 
 /mob/proc/play_screen_text(text, alert_type = /atom/movable/screen/text/screen_text, override_color = "#FFFFFF")
-	if(!client)
+	if(QDELETED(client))
 		return
 	var/atom/movable/screen/text/screen_text/text_box = new alert_type()
 	text_box.text_to_play = text

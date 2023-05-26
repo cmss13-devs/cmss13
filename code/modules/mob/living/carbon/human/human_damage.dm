@@ -514,3 +514,11 @@ This function restores all limbs.
 		damage_to_deal *= 0.25 // Massively reduced effectiveness
 
 	stamina.apply_damage(damage_to_deal)
+
+/mob/living/carbon/human/knocked_out_start()
+	..()
+	sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
+
+/mob/living/carbon/human/knocked_out_callback()
+	. = ..()
+	sound_environment_override = SOUND_ENVIRONMENT_NONE

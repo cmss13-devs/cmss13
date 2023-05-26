@@ -302,24 +302,30 @@
 		return
 
 	if(xeno.is_zoomed)
-		xeno.zoom_out() // will also handle icon_state
-		xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."), \
-		SPAN_NOTICE("You stop looking off into the distance."), null, 5)
-		if(movement_slowdown)
-			xeno.recalculate_speed()
-	else
-		xeno.visible_message(SPAN_NOTICE("[xeno] starts looking off into the distance."), \
-			SPAN_NOTICE("You start focusing your sight to look off into the distance."), null, 5)
-		if (should_delay)
-			if(!do_after(xeno, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) return
-		if(xeno.is_zoomed) return
-		if(handles_movement)
-			RegisterSignal(xeno, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
-		if(movement_slowdown)
-			xeno.speed_modifier += movement_slowdown
-			xeno.recalculate_speed()
-		xeno.zoom_in()
-		button.icon_state = "template_active"
+		xeno.zoom_out() // will call on_zoom_out()
+		return
+	xeno.visible_message(SPAN_NOTICE("[xeno] starts looking off into the distance."), \
+		SPAN_NOTICE("You start focusing your sight to look off into the distance."), null, 5)
+	if (should_delay)
+		if(!do_after(xeno, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) return
+	if(xeno.is_zoomed)
+		return
+	if(handles_movement)
+		RegisterSignal(xeno, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
+	if(movement_slowdown)
+		xeno.speed_modifier += movement_slowdown
+		xeno.recalculate_speed()
+	xeno.zoom_in()
+	button.icon_state = "template_active"
+
+/datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_out()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."), \
+	SPAN_NOTICE("You stop looking off into the distance."), null, 5)
+	if(movement_slowdown)
+		xeno.speed_modifier -= movement_slowdown
+		xeno.recalculate_speed()
+	button.icon_state = "template"
 
 /datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/xeno, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
@@ -330,7 +336,6 @@
 		movement_buffer = initial(movement_buffer)
 		xeno.zoom_out() // will also handle icon_state
 		UnregisterSignal(xeno, COMSIG_MOB_MOVE_OR_LOOK)
-		xeno.recalculate_speed()
 
 // General use acid spray, can be subtyped to customize behavior.
 // ... or mutated at runtime by another action that retrieves and edits these values

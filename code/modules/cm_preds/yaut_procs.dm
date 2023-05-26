@@ -3,7 +3,7 @@
 	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
 		// Send message to the bracer; appear multiple times if we have more bracers
 		for(var/obj/item/clothing/gloves/yautja/hunter/G in Y.contents)
-			to_chat(Y, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beeps: [msg]"))
+			to_chat(Y, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beep: [msg]"))
 			if(G.notification_sound)
 				playsound(Y.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
@@ -14,7 +14,7 @@
 	var/mob/living/carbon/T = hunter_data.thrall
 
 	for(var/obj/item/clothing/gloves/yautja/hunter/G in T.contents)
-		to_chat(T, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beeps: [msg]"))
+		to_chat(T, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beep: [msg]"))
 		if(G.notification_sound)
 			playsound(T.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 

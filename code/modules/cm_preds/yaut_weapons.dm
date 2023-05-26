@@ -33,6 +33,7 @@
 	edge = 1
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharp = IS_SHARP_ITEM_BIG
+	flags_item = ITEM_PREDATOR
 
 /obj/item/weapon/harpoon/yautja/New()
 	. = ..()
@@ -136,6 +137,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
 	var/human_adapted = FALSE
+	flags_item = ITEM_PREDATOR
 
 /obj/item/weapon/yautja/chain
 	name = "chainwhip"
@@ -143,7 +145,6 @@
 	icon_state = "whip"
 	item_state = "whip"
 	flags_atom = FPRINT|CONDUCT
-	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	embeddable = FALSE
 	w_class = SIZE_MEDIUM
@@ -168,7 +169,6 @@
 	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
 	icon_state = "clansword"
 	flags_atom = FPRINT|CONDUCT
-	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
 	force = MELEE_FORCE_TIER_7
 	throwforce = MELEE_FORCE_TIER_5
@@ -193,7 +193,6 @@
 	icon_state = "predscythe"
 	item_state = "scythe_dual"
 	flags_atom = FPRINT|CONDUCT
-	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_TIER_6
 	throwforce = MELEE_FORCE_TIER_5
@@ -547,7 +546,7 @@
 	desc = "A spear of exquisite design, used by an ancient civilisation."
 	icon_state = "spearhunter"
 	item_state = "spearhunter"
-	flags_item = NOSHIELD|TWOHANDED
+	flags_item = NOSHIELD|TWOHANDED|ITEM_PREDATOR
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_7
 	sharp = IS_SHARP_ITEM_SIMPLE
@@ -705,6 +704,12 @@
 		. = list()
 		. += SPAN_NOTICE("Looks like some kind of...mechanical donut.")
 
+/obj/item/weapon/gun/launcher/spike/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/tool/yautja_cleaner))
+		if(handle_dissolve())
+			return
+	..()
+
 /obj/item/weapon/gun/launcher/spike/update_icon()
 	..()
 	var/new_icon_state = spikes <=1 ? null : icon_state + "[round(spikes/4, 1)]"
@@ -747,6 +752,12 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
+
+/obj/item/weapon/gun/energy/yautja/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/tool/yautja_cleaner))
+		if(handle_dissolve())
+			return
+	..()
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle
 	name = "plasma rifle"
@@ -852,6 +863,8 @@
 	muzzle_flash = null // TO DO, add a decent one.
 	w_class = SIZE_MEDIUM
 	var/charge_time = 40
+	var/shot_cost = 1
+	var/mode = "standard"
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|IGNITING_ITEM|TWOHANDED
 
@@ -864,20 +877,15 @@
 	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 
-
-
 /obj/item/weapon/gun/energy/yautja/plasmapistol/Destroy()
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
-
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/process()
 	if(charge_time < 40)
 		charge_time++
 		if(charge_time == 39)
 			if(ismob(loc)) to_chat(loc, SPAN_NOTICE("[src] hums as it achieves maximum charge."))
-
-
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/set_gun_config_values()
 	..()
@@ -892,9 +900,15 @@
 	if(isyautja(user))
 		. = ..()
 		. += SPAN_NOTICE("It currently has <b>[charge_time]/40</b> charge.")
+
+		if(mode == "incendiary")
+			. += SPAN_RED("It is set to fire incendiary plasma bolts.")
+		else
+			. += SPAN_ORANGE("It is set to fire plasma bolts.")
 	else
 		. = list()
 		. += SPAN_NOTICE("This thing looks like an alien rifle of some kind. Strange.")
+
 
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/able_to_fire(mob/user)
@@ -905,16 +919,16 @@
 		return ..()
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/load_into_chamber()
-	if(charge_time < 1)
-		return
+	if(charge_time < shot_cost)
+		return FALSE
 	var/obj/item/projectile/projectile = create_bullet(ammo, initial(name))
 	projectile.SetLuminosity(1)
 	in_chamber = projectile
-	charge_time--
+	charge_time = (charge_time - shot_cost)
 	return in_chamber
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/has_ammunition()
-	if(charge_time >= 1)
+	if(charge_time >= shot_cost)
 		return TRUE //Enough charge for a shot.
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/reload_into_chamber()
@@ -922,8 +936,26 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
-	if(refund) charge_time *= 2
+	if(refund)
+		charge_time *= 2
+		log_debug("Plasma Pistol refunded shot.")
 	return TRUE
+
+/obj/item/weapon/gun/energy/yautja/plasmapistol/use_unique_action()
+	switch(mode)
+		if("standard")
+			mode = "incendiary"
+			shot_cost = 5
+			fire_delay = FIRE_DELAY_TIER_5
+			to_chat(usr, SPAN_NOTICE("[src] will now fire incendiary plasma bolts."))
+			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/pistol/incendiary]
+
+		if("incendiary")
+			mode = "standard"
+			shot_cost = 1
+			fire_delay = FIRE_DELAY_TIER_7
+			to_chat(usr, SPAN_NOTICE("[src] will now fire plasma bolts."))
+			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/pistol]
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster
 	name = "plasma caster"

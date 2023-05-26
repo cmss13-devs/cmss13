@@ -8,6 +8,7 @@
 	skills = /datum/skills/yautja/warrior
 
 	var/default_cape_type = "None"
+	var/clan_rank
 
 /datum/equipment_preset/yautja/load_race(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.set_species(SPECIES_YAUTJA)
@@ -89,6 +90,7 @@
 /datum/equipment_preset/yautja/youngblood
 	name = "Yautja Young"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	clan_rank = CLAN_RANK_UNBLOODED_INT
 
 /datum/equipment_preset/yautja/youngblood/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()
@@ -100,12 +102,14 @@
 	name = "Yautja Blooded"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_QUARTER_CAPE
+	clan_rank = CLAN_RANK_BLOODED_INT
 
 // ELITE
 /datum/equipment_preset/yautja/elite
 	name = "Yautja Elite"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_HALF_CAPE
+	clan_rank = CLAN_RANK_ELITE_INT
 
 /datum/equipment_preset/yautja/elite/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()
@@ -117,6 +121,7 @@
 	name = "Yautja Elder"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_THIRD_CAPE
+	clan_rank = CLAN_RANK_ELDER_INT
 
 /datum/equipment_preset/yautja/elder/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()
@@ -132,6 +137,7 @@
 	name = "Yautja Leader"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_CAPE
+	clan_rank = CLAN_RANK_LEADER_INT
 
 /datum/equipment_preset/yautja/leader/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()
@@ -147,6 +153,7 @@
 	name = "Yautja Ancient"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_PONCHO
+	clan_rank = CLAN_RANK_ADMIN_INT
 
 /datum/equipment_preset/yautja/ancient/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()

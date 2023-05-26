@@ -267,6 +267,35 @@
 /obj/structure/machinery/door/airlock/strata/mining/autoname
 	autoname = TRUE
 
+//YAUTJA SHIP - CURRENTLY USES STRATA DOORS
+/obj/structure/machinery/door/airlock/yautja
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/strata/strata_doors.dmi'
+	openspeed = 5
+	req_access = null
+	req_one_access = null
+	tiles_with = list(
+		/obj/structure/window/framed/strata,
+		/obj/structure/machinery/door/airlock,
+	)
+	heavy = TRUE
+	masterkey_resist = TRUE
+	no_panel = TRUE
+	not_weldable = TRUE
+	unacidable = TRUE
+
+/obj/structure/machinery/door/airlock/yautja/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/yautja/secure
+	req_one_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+
+/obj/structure/machinery/door/airlock/yautja/elder
+	req_one_access = list(ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+
+/obj/structure/machinery/door/airlock/yautja/ancient
+	req_one_access = list(ACCESS_YAUTJA_ANCIENT)
+	unslashable = TRUE
 //FIORINA PENITENTIARY (PRISON_FOP) MAINTENANCE HATCHES
 
 /obj/structure/machinery/door/airlock/prison_hatch

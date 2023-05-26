@@ -102,7 +102,10 @@
 
 /obj/item/weapon/gun/energy/get_examine_text(mob/user)
 	. = ..()
-	if(has_charge_meter && cell)
+	if((flags_item & ITEM_PREDATOR))//Should stop all the pred weapons that have independant charge methods showing up with cells.
+		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+			. += SPAN_NOTICE("You have no idea how this is powered.")
+	else if(has_charge_meter && cell)
 		. += SPAN_NOTICE("It has [round((cell.charge / charge_cost), 1)] / [max_shots] shots left.")
 	else if(cell)
 		. += SPAN_NOTICE("It has [cell.percent()]% charge left.")

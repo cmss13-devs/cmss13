@@ -63,3 +63,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_WY_CORPORATE_DS 202
 #define ACCESS_PRESS 203
 //=================================================
+
+#define ACCESS_YAUTJA_SECURE 250
+#define ACCESS_YAUTJA_ELDER 251
+#define ACCESS_YAUTJA_ANCIENT 252

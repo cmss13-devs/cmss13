@@ -2211,7 +2211,9 @@
 	damage = 40
 	shell_speed = AMMO_SPEED_TIER_2
 
-/datum/ammo/energy/yautja/pistol/set_bullet_traits()
+/datum/ammo/energy/yautja/pistol/incendiary
+	damage = 10
+/datum/ammo/energy/yautja/pistol/incendiary/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
@@ -3021,6 +3023,18 @@
 /datum/ammo/bullet/shrapnel/jagged/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isxeno(M))
 		M.apply_effect(0.4, SLOW)
+
+/datum/ammo/bullet/shrapnel/plasma
+	name = "plasma wave"
+	shrapnel_chance = 0
+	penetration = ARMOR_PENETRATION_TIER_10
+	accuracy = HIT_ACCURACY_TIER_MAX
+	damage = 15
+	icon_state = "shrapnel_plasma"
+	damage_type = BURN
+
+/datum/ammo/bullet/shrapnel/plasma/on_hit_mob(mob/M, obj/item/projectile/P)
+	M.apply_effect(2, WEAKEN)
 
 /*
 //========

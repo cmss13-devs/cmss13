@@ -175,7 +175,9 @@
 		PROPERTY_FOCUSING = 6,
 		PROPERTY_CURING = 4,
 	)
-	flags = REAGENT_TYPE_MEDICAL
+	flags = REAGENT_TYPE_MEDICAL|REAGENT_SCANNABLE
+	overdose = HIGH_REAGENTS_OVERDOSE
+	overdose_critical = HIGH_REAGENTS_OVERDOSE
 
 /datum/reagent/medical/neuraline //injected by neurostimulator implant
 	name = "Neuraline"

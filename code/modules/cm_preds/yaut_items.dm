@@ -248,6 +248,12 @@
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
 
+/obj/item/clothing/shoes/yautja/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/tool/yautja_cleaner))
+		if(handle_dissolve())
+			return
+	..()
+
 /obj/item/clothing/shoes/yautja/hunter
 	name = "clan greaves"
 	desc = "A pair of armored, perfectly balanced boots. Perfect for running through the jungle."
@@ -327,6 +333,7 @@
 	unacidable = TRUE
 	ignore_z = TRUE
 	black_market_value = 100
+	flags_item = ITEM_PREDATOR
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
 	if(!isyautja(M)) //Nope.
@@ -338,8 +345,11 @@
 			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
 
-/obj/item/device/radio/headset/yautja/attackby()
-	return
+/obj/item/device/radio/headset/yautja/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/tool/yautja_cleaner))
+		if(handle_dissolve())
+			return
+	..()
 
 /obj/item/device/radio/headset/yautja/elder //primarily for use in another MR
 	name = "\improper Elder Communicator"
@@ -697,6 +707,7 @@
 	var/tether_range = 5
 	var/mob/trapped_mob
 	layer = LOWER_ITEM_LAYER
+	flags_item = ITEM_PREDATOR
 
 /obj/item/hunting_trap/Destroy()
 	cleanup_tether()
@@ -889,11 +900,43 @@
 	desc = "A complex cypher chip embedded within a set of clan bracers."
 	icon = 'icons/obj/items/radio.dmi'
 	icon_state = "upp_key"
+	access = list(ACCESS_YAUTJA_SECURE)
 	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_ID
 	flags_item = ITEM_PREDATOR|DELONDROP|NODROP
 	paygrade = null
 
+/obj/item/card/id/bracer_chip/set_user_data(mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+
+	registered_name = H.real_name
+	registered_ref = WEAKREF(H)
+	registered_gid = H.gid
+	blood_type = H.blood_type
+
+	var/list/new_access = list(ACCESS_YAUTJA_SECURE)
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = loc
+	if(istype(bracer) && bracer.owner_rank)
+		switch(bracer.owner_rank)
+			if(CLAN_RANK_ELDER_INT, CLAN_RANK_LEADER_INT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELDER)
+			if(CLAN_RANK_ADMIN_INT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+	access = new_access
+
+/obj/item/tool/yautja_cleaner
+	name = "cleanser gel vial"
+	desc = "Used for dissolving the gear of the fallen whilst in the field."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "blue_gel"
+	force = 0
+	throwforce = 1
+	w_class = SIZE_SMALL
+	flags_item = ITEM_PREDATOR
+	black_market_value = 150
+
+// ---- Medicomp ---- //
 /obj/item/storage/medicomp
 	name = "medicomp"
 	desc = "A complex kit of alien tools and medicines."

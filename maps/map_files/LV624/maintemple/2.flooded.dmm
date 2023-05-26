@@ -50,7 +50,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "aO" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "aT" = (
 /obj/structure/stairs/perspective{
@@ -124,7 +124,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dF" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dJ" = (
 /obj/structure/barricade/handrail/strata{
@@ -184,7 +184,7 @@
 /area/lv624/ground/caves/sand_temple)
 "eY" = (
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "fl" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
@@ -209,7 +209,7 @@
 /turf/open/gm/coast/east,
 /area/lv624/ground/caves/sand_temple)
 "gw" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "gA" = (
 /obj/structure/curtain/red,
@@ -256,7 +256,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "hi" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "hu" = (
 /obj/item/weapon/claymore/mercsword,
@@ -275,7 +275,7 @@
 	dir = 8
 	},
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "ic" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -311,7 +311,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "iM" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/caves/sand_temple)
 "iN" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
@@ -472,7 +472,7 @@
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
+/turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/caves/sand_temple)
 "od" = (
 /obj/structure/platform/mineral/sandstone/runed{
@@ -814,7 +814,7 @@
 /area/lv624/ground/caves/sand_temple)
 "wQ" = (
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
+/turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/caves/sand_temple)
 "wR" = (
 /obj/structure/platform/mineral/sandstone/runed{
@@ -965,7 +965,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Aw" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/caves/sand_temple)
 "AB" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
@@ -1060,14 +1060,14 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Dl" = (
 /obj/structure/platform/mineral/sandstone/runed,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "Ds" = (
 /obj/structure/flora/jungle/alienplant1{
 	layer = 4.13;
 	pixel_y = 18
 	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "Dw" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -1076,7 +1076,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "DH" = (
 /obj/structure/showcase{
@@ -1245,7 +1245,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/caves/sand_temple)
 "Hl" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1439,7 +1439,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "KL" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
+/turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Lg" = (
 /turf/open/gm/river,
@@ -1637,7 +1637,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
+/turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "QL" = (
 /obj/structure/stairs/perspective{
@@ -1655,7 +1655,7 @@
 	dir = 4
 	},
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/caves/sand_temple)
 "Rg" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -1723,7 +1723,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
+/turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/caves/sand_temple)
 "Ug" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
@@ -1768,7 +1768,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Wl" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
+/turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/caves/sand_temple)
 "Ws" = (
 /obj/structure/barricade/handrail/strata{

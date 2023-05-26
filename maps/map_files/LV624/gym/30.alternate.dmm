@@ -286,7 +286,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "wL" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/south_medbay_road)
 "xe" = (
 /obj/structure/closet/boxinggloves,
@@ -494,7 +494,7 @@
 /area/lv624/lazarus/fitness)
 "LB" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/south_medbay_road)
 "LG" = (
 /obj/structure/flora/bush/ausbushes/genericbush,

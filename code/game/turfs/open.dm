@@ -390,15 +390,15 @@
 	baseturfs = /turf/open/gm/dirtgrassborder
 	scorchable = "grass1"
 
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north
+/turf/open/gm/dirtgrassborder/north
 
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south
+/turf/open/gm/dirtgrassborder/south
 	dir = 1
 
-/turf/open/gm/dirtgrassborder/grassdirt_corner/west
+/turf/open/gm/dirtgrassborder/west
 	dir = 4
 
-/turf/open/gm/dirtgrassborder/grassdirt_corner/east
+/turf/open/gm/dirtgrassborder/east
 	dir = 8
 
 /turf/open/gm/dirtgrassborder/grassdirt_corner

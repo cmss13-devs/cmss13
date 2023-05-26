@@ -142,7 +142,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dF" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dJ" = (
 /obj/structure/barricade/handrail/strata{
@@ -333,7 +333,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "gw" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "gA" = (
 /obj/structure/curtain/red,
@@ -384,7 +384,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "hi" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "hu" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1176,7 +1176,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "DH" = (
 /obj/structure/showcase{
@@ -1663,7 +1663,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
+/turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "QL" = (
 /obj/structure/stairs/perspective{

@@ -299,7 +299,7 @@
 /area/lv624/lazarus/medbay)
 "bE" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/colony/south_medbay_road)
 "bF" = (
 /turf/open/gm/dirt,
@@ -410,7 +410,7 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "wz" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/south_medbay_road)
 "yd" = (
 /turf/open/floor{
@@ -473,7 +473,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "ES" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/south_medbay_road)
 "Gu" = (
 /obj/structure/closet/wardrobe,

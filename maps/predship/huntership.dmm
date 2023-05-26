@@ -1596,7 +1596,7 @@
 /turf/closed/wall/huntership,
 /area/yautja)
 "dw" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
+/turf/open/gm/dirtgrassborder/south,
 /area/yautja)
 "dI" = (
 /turf/open/space/basic,
@@ -2204,7 +2204,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
+/turf/open/gm/dirtgrassborder/west,
 /area/yautja)
 "uO" = (
 /obj/structure/bed/chair/hunter{
@@ -2359,7 +2359,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
+/turf/open/gm/dirtgrassborder/east,
 /area/yautja)
 "zA" = (
 /turf/open/floor{
@@ -3030,7 +3030,7 @@
 	},
 /area/yautja)
 "RS" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
+/turf/open/gm/dirtgrassborder/north,
 /area/yautja)
 "Sx" = (
 /turf/open/floor{

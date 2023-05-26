@@ -61,7 +61,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/river/west_river)
 "au" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/west_jungle)
 "av" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
@@ -126,7 +126,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "aK" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/jungle/west_jungle)
 "aU" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -173,7 +173,7 @@
 /area/lv624/ground/river/west_river)
 "bV" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/west_jungle)
 "gX" = (
 /turf/closed/wall/rock/brown,

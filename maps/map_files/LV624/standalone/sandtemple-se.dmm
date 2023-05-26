@@ -146,7 +146,7 @@
 /obj/structure/flora/jungle/vines/light_2{
 	pixel_y = -22
 	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/south_east_jungle)
 "Wr" = (
 /obj/structure/flora/jungle/vines/light_2,
@@ -159,7 +159,7 @@
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "WQ" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/jungle/south_east_jungle)
 "Xl" = (
 /turf/open/gm/dirt,
@@ -197,7 +197,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_east_jungle)
 "Ze" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_east_jungle)
 "Zi" = (
 /obj/structure/flora/jungle/vines/heavy{

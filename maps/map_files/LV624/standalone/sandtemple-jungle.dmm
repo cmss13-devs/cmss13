@@ -45,7 +45,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "jy" = (
 /obj/structure/flora/jungle/vines/light_2,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/jungle/south_west_jungle)
 "jV" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
@@ -113,7 +113,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "ux" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/jungle/south_west_jungle)
 "uV" = (
 /obj/structure/flora/jungle/plantbot1,
@@ -163,16 +163,16 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "Ge" = (
 /obj/structure/flora/jungle/vines/light_2,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_west_jungle)
 "Gi" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/south_west_jungle)
 "IP" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/jungle/south_west_jungle)
 "Kn" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
+/turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/jungle/south_west_jungle)
 "Lv" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
@@ -235,7 +235,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "RS" = (
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_west_jungle)
 "Sj" = (
 /obj/structure/flora/jungle/vines/light_2,

@@ -70,9 +70,7 @@
 /area/lv624/lazarus/research)
 "an" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/lv624/ground/colony/south_medbay_road)
 "ao" = (
 /obj/structure/window/framed/colony/reinforced,

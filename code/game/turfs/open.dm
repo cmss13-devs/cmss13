@@ -390,6 +390,45 @@
 	baseturfs = /turf/open/gm/dirtgrassborder
 	scorchable = "grass1"
 
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south
+	dir = 1
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west
+	dir = 4
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east
+	dir = 8
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner
+	icon_state = "grassdirt_corner"
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east
+	dir = 1
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east
+	dir = 4
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west
+	dir = 8
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner2
+	icon_state = "grassdirt_corner2"
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east
+	dir = 1
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east
+	dir = 4
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west
+	dir = 8
+
 /turf/open/gm/dirtgrassborder/Initialize(mapload, ...)
 	. = ..()
 

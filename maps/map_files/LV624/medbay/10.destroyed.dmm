@@ -162,7 +162,7 @@
 /area/lv624/lazarus/medbay)
 "nG" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/lv624/ground/colony/south_medbay_road)
 "og" = (
 /turf/open/gm/dirt,
@@ -239,9 +239,7 @@
 /area/lv624/lazarus/medbay)
 "xe" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/lv624/ground/colony/south_medbay_road)
 "xF" = (
 /obj/structure/surface/table/reinforced,
@@ -255,7 +253,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "xM" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/lv624/ground/colony/south_medbay_road)
 "ym" = (
 /obj/structure/flora/jungle/plantbot1,
@@ -310,9 +308,7 @@
 /area/lv624/lazarus/medbay)
 "Be" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/colony/south_medbay_road)
 "Bn" = (
 /turf/open/gm/grass/grass1,

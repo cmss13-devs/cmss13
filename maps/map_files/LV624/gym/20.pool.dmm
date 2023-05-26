@@ -63,10 +63,7 @@
 /turf/open/gm/river,
 /area/lv624/lazarus/fitness)
 "iJ" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/colony/north_nexus_road)
 "jS" = (
 /obj/structure/surface/rack,
@@ -282,10 +279,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "Gf" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/colony/south_medbay_road)
 "Iu" = (
 /obj/structure/machinery/atm{
@@ -402,9 +396,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "Vb" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/lv624/ground/colony/south_medbay_road)
 "Vo" = (
 /obj/structure/window/framed/colony,
@@ -423,10 +415,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
 "WV" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/colony/north_nexus_road)
 "Zo" = (
 /obj/effect/landmark/good_item,
@@ -434,9 +423,7 @@
 /area/lv624/lazarus/fitness)
 "ZM" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/lv624/ground/colony/south_medbay_road)
 
 (1,1,1) = {"

@@ -141,10 +141,7 @@
 /turf/open/gm/coast/east,
 /area/lv624/ground/river/central_river)
 "aT" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/jungle/north_jungle)
 "aV" = (
 /obj/structure/flora/jungle/plantbot1,
@@ -181,40 +178,24 @@
 /area/lv624/ground/jungle/north_jungle)
 "br" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/jungle/north_jungle)
 "bt" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/jungle/north_jungle)
 "bu" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/jungle/north_jungle)
 "bw" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/lv624/ground/jungle/north_jungle)
 "by" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/lv624/ground/jungle/north_jungle)
 "bz" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/jungle/north_jungle)
 "bD" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -240,10 +221,7 @@
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
 "gh" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/jungle/north_jungle)
 "mf" = (
 /turf/open/gm/coast/beachcorner2/north_west,
@@ -301,9 +279,7 @@
 /area/lv624/ground/river/central_river)
 "Hi" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/lv624/ground/jungle/north_jungle)
 "HT" = (
 /obj/structure/flora/jungle/planttop1,
@@ -323,9 +299,7 @@
 /area/lv624/ground/river/central_river)
 "Ow" = (
 /obj/structure/flora/jungle/planttop1,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/lv624/ground/jungle/north_jungle)
 "Rp" = (
 /obj/structure/flora/jungle/planttop1,

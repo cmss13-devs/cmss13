@@ -4,10 +4,7 @@
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/river/east_river)
 "ci" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "cG" = (
 /turf/open/gm/dirt,
@@ -28,9 +25,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
 "hc" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/lv624/ground/jungle/east_jungle)
 "jd" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -50,9 +45,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "lm" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/lv624/ground/river/east_river)
 "lD" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -86,9 +79,7 @@
 /turf/open/gm/coast/east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "qk" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "rP" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -127,27 +118,20 @@
 /area/lv624/ground/river/east_river)
 "zT" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "Cf" = (
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/east_river)
 "CA" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "CL" = (
 /turf/open/gm/coast/east,
 /area/lv624/ground/river/east_river)
 "DA" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/lv624/ground/jungle/east_jungle)
 "Ek" = (
 /turf/open/gm/river,
@@ -164,9 +148,7 @@
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/east_river)
 "FQ" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/lv624/ground/river/east_river)
 "GI" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -195,13 +177,10 @@
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/east_jungle)
 "NJ" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/jungle/east_jungle)
 "Ov" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "Pb" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -217,9 +196,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "PE" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/lv624/ground/jungle/east_jungle)
 "PV" = (
 /turf/open/gm/dirt,
@@ -234,10 +211,7 @@
 /turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/river/east_river)
 "Qp" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/jungle/east_jungle)
 "Qz" = (
 /turf/open/gm/dirt,
@@ -248,10 +222,7 @@
 /area/lv624/ground/river/east_river)
 "VF" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/jungle/east_jungle)
 "Wq" = (
 /turf/open/gm/dirt{
@@ -260,10 +231,7 @@
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "WK" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/jungle/east_jungle)
 "Xe" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
@@ -271,10 +239,7 @@
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "Xq" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "YK" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,

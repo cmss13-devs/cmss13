@@ -58,31 +58,20 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/west_jungle)
 "at" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/river/west_river)
 "au" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/lv624/ground/jungle/west_jungle)
 "av" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/jungle/west_jungle)
 "aw" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/jungle/west_jungle)
 "ax" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/jungle/west_jungle)
 "ay" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
@@ -96,10 +85,7 @@
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/west_jungle)
 "aB" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/jungle/west_jungle)
 "aC" = (
 /obj/structure/flora/jungle/vines/light_2,
@@ -140,9 +126,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "aK" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/lv624/ground/jungle/west_jungle)
 "aU" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -189,9 +173,7 @@
 /area/lv624/ground/river/west_river)
 "bV" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/lv624/ground/jungle/west_jungle)
 "gX" = (
 /turf/closed/wall/rock/brown,

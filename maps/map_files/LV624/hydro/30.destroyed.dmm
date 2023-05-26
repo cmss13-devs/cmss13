@@ -35,7 +35,7 @@
 /area/lv624/lazarus/hydroponics)
 "bM" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/lv624/ground/colony/north_nexus_road)
 "ck" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -57,15 +57,10 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "eU" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/colony/north_nexus_road)
 "fk" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/colony/south_medbay_road)
 "ft" = (
 /obj/item/clothing/gloves/marine/veteran/pmc{
@@ -222,7 +217,7 @@
 /area/lv624/lazarus/hydroponics)
 "se" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/lv624/ground/colony/south_medbay_road)
 "tK" = (
 /obj/structure/barricade/deployable{

@@ -181,10 +181,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "lq" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/colony/north_nexus_road)
 "nl" = (
 /obj/structure/machinery/colony_floodlight,
@@ -289,9 +286,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "wL" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/lv624/ground/colony/south_medbay_road)
 "xe" = (
 /obj/structure/closet/boxinggloves,
@@ -499,9 +494,7 @@
 /area/lv624/lazarus/fitness)
 "LB" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/lv624/ground/colony/south_medbay_road)
 "LG" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
@@ -539,10 +532,7 @@
 /turf/open/floor,
 /area/lv624/lazarus/fitness)
 "Ph" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/colony/north_nexus_road)
 "PC" = (
 /obj/item/tool/soap,
@@ -663,10 +653,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "Wh" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/colony/south_medbay_road)
 "Wx" = (
 /obj/structure/window_frame/colony,

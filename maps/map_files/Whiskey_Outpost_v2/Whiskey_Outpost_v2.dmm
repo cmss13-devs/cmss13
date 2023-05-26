@@ -219,9 +219,7 @@
 	},
 /area/whiskey_outpost/inside/living)
 "aK" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/lane/two_south)
 "aM" = (
 /obj/effect/decal/cleanable/blood/writing{
@@ -308,9 +306,7 @@
 /area/whiskey_outpost/inside/hospital)
 "bc" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/lane/three_north)
 "bd" = (
 /obj/effect/decal/medical_decals{
@@ -454,7 +450,7 @@
 /area/whiskey_outpost/inside/bunker)
 "bD" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/lane/three_south)
 "bF" = (
 /obj/structure/disposalpipe/segment,
@@ -595,9 +591,7 @@
 /obj/effect/decal/cleanable/blood/writing{
 	dir = 1
 	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "cl" = (
 /obj/structure/barricade/metal/wired{
@@ -699,9 +693,7 @@
 	dir = 4
 	},
 /obj/item/stool,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/lane/two_south)
 "cC" = (
 /obj/structure/sign/poster,
@@ -795,9 +787,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "cR" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/inside/caves/caverns/east)
 "cS" = (
 /obj/structure/curtain/black{
@@ -842,14 +832,11 @@
 	},
 /area/whiskey_outpost/inside/living)
 "dd" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/whiskey_outpost/outside/south/very_far)
 "de" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/lane/two_north)
 "df" = (
 /obj/structure/mirror{
@@ -871,10 +858,7 @@
 /area/whiskey_outpost/inside/living)
 "dj" = (
 /obj/structure/closet/crate/trashcart,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/whiskey_outpost/outside/lane/two_south)
 "dk" = (
 /obj/structure/curtain,
@@ -1162,10 +1146,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "ej" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/whiskey_outpost/outside/lane/four_south)
 "ek" = (
 /obj/structure/largecrate/supply/supplies/sandbags,
@@ -1251,10 +1232,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "eG" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/whiskey_outpost/outside/lane/two_north)
 "eH" = (
 /obj/structure/surface/rack,
@@ -1375,10 +1353,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "fb" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/whiskey_outpost/outside/lane/three_north)
 "fc" = (
 /obj/structure/disposalpipe/segment,
@@ -1646,9 +1621,7 @@
 /area/whiskey_outpost/outside/south/far)
 "fS" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/lane/two_north)
 "fT" = (
 /obj/structure/window/reinforced{
@@ -1757,10 +1730,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "gj" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/whiskey_outpost/outside/lane/two_north)
 "gl" = (
 /obj/structure/disposalpipe/segment,
@@ -1783,7 +1753,7 @@
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/cic)
 "gr" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/south)
 "gs" = (
 /obj/structure/machinery/door/poddoor{
@@ -1806,25 +1776,17 @@
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "gu" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/lane/two_north)
 "gv" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "gx" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/lane/three_north)
 "gy" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/whiskey_outpost/outside/lane/one_north)
 "gz" = (
 /obj/effect/decal/cleanable/blood/writing{
@@ -2012,10 +1974,7 @@
 /turf/open/floor/plating,
 /area/whiskey_outpost/inside/hospital)
 "hh" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "hi" = (
 /obj/structure/extinguisher_cabinet,
@@ -2136,9 +2095,7 @@
 /area/whiskey_outpost/inside/hospital)
 "hy" = (
 /obj/item/lightstick/red/planted,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/outside/south/far)
 "hz" = (
 /obj/effect/decal/medical_decals{
@@ -2234,12 +2191,10 @@
 /area/whiskey_outpost/outside/north/platform)
 "hK" = (
 /obj/effect/landmark/start/whiskey/marine,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/lane/one_north)
 "hL" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "hM" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -2347,9 +2302,7 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/lane/two_south)
 "if" = (
 /turf/open/gm/coast/beachcorner2/north_west,
@@ -3040,7 +2993,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/south)
 "ko" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/lane/one_north)
 "kp" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -3268,9 +3221,7 @@
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
 "lg" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/lane/three_south)
 "li" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -3587,9 +3538,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "mw" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/south/very_far)
 "mx" = (
 /obj/structure/flora/pottedplant/random,
@@ -3601,10 +3550,7 @@
 	},
 /area/whiskey_outpost/inside/cic)
 "my" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/whiskey_outpost/outside/lane/four_south)
 "mz" = (
 /obj/structure/extinguisher_cabinet,
@@ -4344,7 +4290,7 @@
 /area/whiskey_outpost/outside/mortar_pit)
 "pj" = (
 /obj/effect/landmark/start/whiskey/engineer,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/lane/two_south)
 "pm" = (
 /obj/effect/decal/cleanable/blood/writing,
@@ -4414,10 +4360,7 @@
 	},
 /area/whiskey_outpost/inside/living)
 "pD" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/whiskey_outpost/outside/lane/three_south)
 "pE" = (
 /obj/structure/disposalpipe/segment{
@@ -4580,10 +4523,7 @@
 	},
 /area/whiskey_outpost/inside/living)
 "qg" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/whiskey_outpost/outside/north)
 "qi" = (
 /obj/structure/disposalpipe/segment,
@@ -4985,10 +4925,7 @@
 	},
 /area/whiskey_outpost/inside/engineering)
 "rw" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/whiskey_outpost/outside/lane/two_north)
 "ry" = (
 /turf/open/gm/dirt,
@@ -5135,9 +5072,7 @@
 	},
 /area/whiskey_outpost/inside/supply)
 "rT" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/lane/three_south)
 "rV" = (
 /turf/open/floor/prison{
@@ -5166,10 +5101,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/whiskey_outpost/outside/north)
 "rZ" = (
 /obj/structure/surface/rack,
@@ -5317,10 +5249,7 @@
 	},
 /area/whiskey_outpost/inside/cic)
 "sA" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/whiskey_outpost/outside/lane/two_south)
 "sC" = (
 /obj/effect/landmark/start/whiskey/doctor,
@@ -5636,10 +5565,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/whiskey_outpost/outside/north)
 "tL" = (
 /obj/structure/largecrate/supply/supplies/metal,
@@ -5653,10 +5579,7 @@
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/supply)
 "tO" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/whiskey_outpost/outside/north)
 "tP" = (
 /obj/structure/machinery/vending/snack{
@@ -5806,10 +5729,7 @@
 	},
 /area/whiskey_outpost/inside/living)
 "um" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/whiskey_outpost/outside/north)
 "uo" = (
 /obj/structure/largecrate/supply/supplies/flares,
@@ -5880,9 +5800,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/mortar_pit)
 "uy" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/outside/lane/two_south)
 "uz" = (
 /obj/structure/extinguisher_cabinet,
@@ -5936,10 +5854,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/whiskey_outpost/outside/north)
 "uI" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -6065,10 +5980,7 @@
 /turf/closed/wall,
 /area/whiskey_outpost/outside/lane/one_north)
 "vg" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/whiskey_outpost/outside/north/beach)
 "vi" = (
 /obj/structure/curtain/black,
@@ -6482,9 +6394,7 @@
 	},
 /area/whiskey_outpost/inside/bunker)
 "wF" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/whiskey_outpost/outside/lane/four_south)
 "wG" = (
 /obj/structure/machinery/light{
@@ -6519,10 +6429,7 @@
 	},
 /area/whiskey_outpost/inside/hospital/triage)
 "wK" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/whiskey_outpost/outside/lane/two_south)
 "wM" = (
 /obj/structure/machinery/line_nexter{
@@ -6673,10 +6580,7 @@
 	},
 /area/whiskey_outpost/inside/bunker)
 "xp" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/whiskey_outpost/outside/lane/two_north)
 "xq" = (
 /obj/structure/platform{
@@ -6776,9 +6680,7 @@
 /area/whiskey_outpost/inside/bunker)
 "xK" = (
 /obj/item/lightstick/red/planted,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/south/very_far)
 "xL" = (
 /obj/effect/decal/cleanable/blood/writing{
@@ -6870,10 +6772,7 @@
 	},
 /area/whiskey_outpost/inside/living)
 "xZ" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/whiskey_outpost/outside/lane/two_south)
 "ya" = (
 /obj/effect/landmark/whiskey_outpost/supplydrops,
@@ -6932,10 +6831,7 @@
 	},
 /area/whiskey_outpost/outside/north/platform)
 "yl" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "yn" = (
 /obj/structure/platform_decoration,
@@ -7223,9 +7119,7 @@
 	},
 /area/whiskey_outpost/outside/north/platform)
 "zh" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/whiskey_outpost/outside/lane/two_north)
 "zi" = (
 /obj/structure/disposalpipe/sortjunction/flipped{
@@ -7240,10 +7134,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/whiskey_outpost/outside/north)
 "zl" = (
 /obj/structure/machinery/power/apc/almayer,
@@ -7422,9 +7313,7 @@
 	},
 /area/whiskey_outpost/outside/north/platform)
 "zU" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/south)
 "zV" = (
 /obj/structure/disposalpipe/segment{
@@ -7452,10 +7341,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/bunker)
 "Aa" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/whiskey_outpost/outside/lane/three_north)
 "Ab" = (
 /obj/structure/machinery/autodoc_console,
@@ -7582,9 +7468,7 @@
 	dir = 1
 	},
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "AE" = (
 /obj/structure/flora/jungle/planttop1,
@@ -7619,7 +7503,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "AK" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/north/beach)
 "AO" = (
 /obj/structure/barricade/metal/wired,
@@ -7718,9 +7602,7 @@
 /area/whiskey_outpost/outside/north/platform)
 "Bf" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/whiskey_outpost/outside/lane/three_north)
 "Bg" = (
 /obj/structure/platform_decoration{
@@ -7741,7 +7623,7 @@
 /area/whiskey_outpost/outside/river/west)
 "Bj" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "Bl" = (
 /obj/structure/disposalpipe/segment{
@@ -8171,7 +8053,7 @@
 "CJ" = (
 /obj/structure/bed/chair,
 /obj/effect/landmark/start/whiskey/marine,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/lane/two_south)
 "CK" = (
 /obj/structure/disposalpipe/segment,
@@ -8524,10 +8406,7 @@
 	},
 /area/whiskey_outpost/outside/north/platform)
 "Ea" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/whiskey_outpost/outside/south)
 "Eb" = (
 /obj/structure/machinery/medical_pod/autodoc/unskilled,
@@ -8841,10 +8720,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "Fn" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/whiskey_outpost/outside/south/very_far)
 "Fp" = (
 /obj/structure/platform{
@@ -8867,9 +8743,7 @@
 /turf/open/gm/coast/beachcorner/north_east,
 /area/whiskey_outpost/outside/river/west)
 "Fu" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/inside/caves/caverns/east)
 "Fv" = (
 /obj/structure/machinery/light/small{
@@ -9016,9 +8890,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/bunker)
 "FW" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/whiskey_outpost/inside/caves/caverns/east)
 "FX" = (
 /obj/structure/platform{
@@ -9043,15 +8915,10 @@
 /turf/open/gm/grass/grass1,
 /area/whiskey_outpost/outside/north/beach)
 "Ga" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/whiskey_outpost/outside/north/beach)
 "Gb" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/north/beach)
 "Gd" = (
 /obj/structure/barricade/sandbags/wired{
@@ -9087,10 +8954,7 @@
 /turf/open/gm/grass/grassbeach/east,
 /area/whiskey_outpost/outside/south)
 "Gl" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/whiskey_outpost/outside/north/beach)
 "Gm" = (
 /obj/structure/platform{
@@ -9212,7 +9076,7 @@
 /turf/open/jungle,
 /area/whiskey_outpost/outside/lane/two_north)
 "GK" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/lane/three_north)
 "GL" = (
 /obj/structure/barricade/sandbags/wired,
@@ -9266,19 +9130,14 @@
 /turf/open/floor/plating,
 /area/whiskey_outpost/outside/north/northeast)
 "GV" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/whiskey_outpost/outside/lane/one_north)
 "GW" = (
 /obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor/plating,
 /area/whiskey_outpost/outside/north/northeast)
 "GX" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/whiskey_outpost/outside/south)
 "GY" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -9325,10 +9184,7 @@
 	},
 /area/whiskey_outpost/outside/north)
 "Hj" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "Hk" = (
 /obj/structure/platform,
@@ -9367,7 +9223,7 @@
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "Hp" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/lane/one_north)
 "Hq" = (
 /obj/structure/pipes/standard/manifold/visible,
@@ -9376,9 +9232,7 @@
 	},
 /area/whiskey_outpost/inside/hospital/triage)
 "Hr" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/lane/one_north)
 "Hs" = (
 /obj/structure/platform_decoration{
@@ -9393,10 +9247,7 @@
 /area/whiskey_outpost/outside/north/northwest)
 "Hu" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "Hv" = (
 /obj/structure/platform_decoration{
@@ -9429,18 +9280,14 @@
 /turf/open/jungle,
 /area/whiskey_outpost/outside/lane/four_south)
 "HB" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/whiskey_outpost/outside/lane/three_south)
 "HH" = (
 /obj/effect/landmark/start/whiskey/leader,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "HI" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "HK" = (
 /obj/structure/barricade/sandbags/wired{
@@ -9498,10 +9345,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/whiskey_outpost/outside/north)
 "HU" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -9606,9 +9450,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/south)
 "Im" = (
 /obj/structure/cargo_container/watatsumi/rightmid,
@@ -9664,9 +9506,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_south)
 "Iw" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/lane/two_north)
 "Ix" = (
 /turf/open/floor{
@@ -9708,9 +9548,7 @@
 /area/whiskey_outpost/outside/north/platform)
 "IG" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/south/very_far)
 "IH" = (
 /obj/structure/surface/table,
@@ -9721,9 +9559,7 @@
 /area/whiskey_outpost/outside/south/far)
 "IK" = (
 /obj/item/lightstick/red/planted,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/outside/south)
 "IM" = (
 /turf/open/gm/coast/beachcorner2/south_west,
@@ -9777,9 +9613,7 @@
 /obj/item/tool/weldpack{
 	pixel_x = 7
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/outside/lane/two_south)
 "IW" = (
 /obj/structure/cargo_container/arious/leftmid,
@@ -9795,13 +9629,10 @@
 /area/whiskey_outpost/outside/north/northeast)
 "Jb" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/whiskey_outpost/outside/north/beach)
 "Jc" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/lane/three_south)
 "Jd" = (
 /obj/structure/machinery/light/small,
@@ -9822,9 +9653,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/north/northwest)
 "Jg" = (
 /obj/effect/spawner/gibspawner/human,
@@ -9848,10 +9677,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/whiskey_outpost/outside/north/northwest)
 "Jl" = (
 /obj/structure/barricade/sandbags/wired{
@@ -9958,10 +9784,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/whiskey_outpost/outside/north/beach)
 "JM" = (
 /obj/structure/machinery/light/small{
@@ -10017,14 +9840,10 @@
 /turf/open/gm/coast/south,
 /area/whiskey_outpost/outside/lane/four_south)
 "JX" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/lane/four_south)
 "JZ" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/whiskey_outpost/outside/north/beach)
 "Kb" = (
 /obj/structure/sign/poster{
@@ -10098,9 +9917,7 @@
 	},
 /area/whiskey_outpost/inside/hospital/triage)
 "Ky" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/inside/caves/caverns)
 "KB" = (
 /obj/structure/disposalpipe/segment,
@@ -10114,9 +9931,7 @@
 	},
 /area/whiskey_outpost/outside/north/northeast)
 "KG" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/whiskey_outpost/outside/lane/three_north)
 "KJ" = (
 /obj/item/stack/medical/bruise_pack,
@@ -10136,9 +9951,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_south)
 "KM" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/north/northwest)
 "KN" = (
 /obj/structure/largecrate/random/barrel/red,
@@ -10269,9 +10082,7 @@
 	},
 /area/whiskey_outpost/inside/hospital/triage)
 "Ly" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/lane/three_north)
 "Lz" = (
 /turf/open/floor{
@@ -10345,15 +10156,10 @@
 /turf/closed/wall,
 /area/whiskey_outpost/outside/south)
 "LN" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/whiskey_outpost/outside/lane/three_south)
 "LQ" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/outside/lane/three_south)
 "LR" = (
 /obj/item/lightstick/red/planted,
@@ -10384,9 +10190,7 @@
 	},
 /area/whiskey_outpost/outside/lane/one_north)
 "Mb" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/outside/south/very_far)
 "Mc" = (
 /obj/structure/barricade/sandbags/wired{
@@ -10522,9 +10326,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/north)
 "MB" = (
 /obj/structure/platform{
@@ -10600,9 +10402,7 @@
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/two_north)
 "MU" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/north/beach)
 "MW" = (
 /obj/structure/disposalpipe/segment,
@@ -10623,9 +10423,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/south/far)
 "MZ" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/lane/one_north)
 "Na" = (
 /turf/open/gm/coast/north,
@@ -10780,9 +10578,7 @@
 /area/whiskey_outpost/outside/lane/four_south)
 "NE" = (
 /obj/item/stool,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/lane/two_south)
 "NF" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
@@ -10795,10 +10591,7 @@
 /turf/open/gm/coast/east,
 /area/whiskey_outpost/outside/river/west)
 "NI" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/whiskey_outpost/inside/caves/caverns/east)
 "NJ" = (
 /obj/structure/machinery/colony_floodlight,
@@ -10808,10 +10601,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "NL" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/whiskey_outpost/outside/north/beach)
 "NM" = (
 /turf/open/gm/coast/beachcorner/north_east,
@@ -10849,14 +10639,10 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_north)
 "NX" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/north/northwest)
 "NY" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/whiskey_outpost/outside/lane/two_south)
 "NZ" = (
 /obj/structure/machinery/vending/cola,
@@ -10986,10 +10772,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_north)
 "OE" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/whiskey_outpost/outside/lane/three_north)
 "OF" = (
 /obj/item/lightstick/red/planted,
@@ -11017,15 +10800,10 @@
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/bunker/pillbox/three)
 "OO" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/whiskey_outpost/outside/north/northwest)
 "OP" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "OQ" = (
 /obj/effect/landmark/start/whiskey/marine,
@@ -11042,10 +10820,7 @@
 /area/whiskey_outpost/inside/cic)
 "OT" = (
 /obj/effect/landmark/start/whiskey/marine,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/whiskey_outpost/outside/north/northwest)
 "OU" = (
 /turf/open/gm/coast/beachcorner2/north_east,
@@ -11080,9 +10855,7 @@
 /area/whiskey_outpost/outside/lane/three_south)
 "Pc" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/whiskey_outpost/outside/lane/three_north)
 "Pd" = (
 /obj/effect/decal/warning_stripes/asteroid{
@@ -11210,21 +10983,13 @@
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/whiskey_outpost/outside/river)
 "PF" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/whiskey_outpost/outside/lane/four_south)
 "PG" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/whiskey_outpost/outside/lane/two_south)
 "PH" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/whiskey_outpost/outside/lane/three_north)
 "PL" = (
 /turf/open/gm/grass/grassbeach/north,
@@ -11315,9 +11080,7 @@
 	},
 /area/whiskey_outpost/outside/lane/four_north)
 "Qi" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/outside/south)
 "Ql" = (
 /obj/item/lightstick/red/planted,
@@ -11354,10 +11117,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
 "Qq" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/whiskey_outpost/outside/north/northwest)
 "Qs" = (
 /obj/structure/barricade/handrail{
@@ -11370,9 +11130,7 @@
 /area/whiskey_outpost/inside/bunker)
 "Qt" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/outside/south/far)
 "Qv" = (
 /obj/structure/largecrate/random,
@@ -11405,7 +11163,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/one_north)
 "QB" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/lane/two_north)
 "QD" = (
 /turf/open/gm/coast/beachcorner2/north_east,
@@ -11438,9 +11196,7 @@
 /turf/open/gm/grass/gbcorner/north_west,
 /area/whiskey_outpost/outside/lane/one_north)
 "QL" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/outside/lane/two_north)
 "QM" = (
 /turf/open/gm/dirt,
@@ -11463,10 +11219,7 @@
 	},
 /area/whiskey_outpost/inside/caves/caverns/west)
 "QS" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/whiskey_outpost/outside/north/northwest)
 "QU" = (
 /obj/structure/barricade/sandbags/wired,
@@ -11481,18 +11234,13 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_north)
 "QW" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "QX" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/whiskey_outpost/outside/north)
 "QY" = (
 /obj/structure/platform_decoration,
@@ -11568,9 +11316,7 @@
 /area/whiskey_outpost/outside/lane/three_south)
 "Rn" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "Ro" = (
 /turf/open/jungle,
@@ -11583,7 +11329,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/north)
 "Rx" = (
 /obj/structure/surface/rack,
@@ -11594,9 +11340,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/three)
 "Rz" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/whiskey_outpost/outside/lane/two_south)
 "RA" = (
 /obj/effect/landmark/start/whiskey/leader,
@@ -11629,10 +11373,7 @@
 /turf/open/gm/grass/gbcorner/north_east,
 /area/whiskey_outpost/outside/north/northwest)
 "RH" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/whiskey_outpost/outside/north/northwest)
 "RK" = (
 /obj/structure/machinery/colony_floodlight,
@@ -11666,9 +11407,7 @@
 /area/whiskey_outpost/inside/bunker/pillbox/three)
 "RS" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/lane/one_north)
 "RU" = (
 /obj/structure/machinery/cm_vending/clothing/medic,
@@ -11736,9 +11475,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/four)
 "Si" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/south)
 "Sj" = (
 /obj/effect/decal/warning_stripes/asteroid{
@@ -11805,10 +11542,7 @@
 /turf/open/gm/grass/grassbeach/east,
 /area/whiskey_outpost/outside/north/northwest)
 "Sy" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/whiskey_outpost/outside/lane/three_south)
 "Sz" = (
 /obj/structure/barricade/sandbags/wired{
@@ -11831,13 +11565,11 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "SE" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/inside/caves/caverns/east)
 "SF" = (
 /obj/effect/landmark/start/whiskey/marine,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/whiskey_outpost/outside/lane/two_south)
 "SG" = (
 /obj/structure/machinery/power/apc/almayer{
@@ -11858,9 +11590,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/four)
 "SI" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/whiskey_outpost/inside/caves/caverns/east)
 "SJ" = (
 /obj/structure/machinery/light/small{
@@ -11882,7 +11612,7 @@
 /obj/structure/platform_decoration{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/lane/two_south)
 "SN" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -12131,9 +11861,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/one)
 "TL" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/north)
 "TP" = (
 /obj/structure/surface/table/almayer,
@@ -12159,9 +11887,7 @@
 	pixel_x = 7;
 	pixel_y = 3
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/outside/lane/two_south)
 "TS" = (
 /turf/closed/shuttle/dropship{
@@ -12235,10 +11961,7 @@
 /turf/open/gm/grass/grassbeach/east,
 /area/whiskey_outpost/outside/lane/one_south)
 "Ug" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/whiskey_outpost/outside/lane/three_south)
 "Uh" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
@@ -12296,7 +12019,7 @@
 /area/whiskey_outpost/inside/bunker/pillbox/four)
 "Uq" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/lane/three_north)
 "Ur" = (
 /obj/effect/decal/cleanable/blood/writing{
@@ -12306,10 +12029,7 @@
 /area/whiskey_outpost/outside/lane/one_south)
 "Us" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/whiskey_outpost/outside/lane/three_north)
 "Ut" = (
 /obj/effect/landmark/start/whiskey/engineer,
@@ -12338,9 +12058,7 @@
 /area/whiskey_outpost/outside/lane/one_north)
 "Uz" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/lane/three_north)
 "UB" = (
 /obj/structure/disposalpipe/trunk{
@@ -12444,9 +12162,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/one)
 "UY" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/lane/two_south)
 "UZ" = (
 /obj/structure/machinery/cm_vending/clothing/marine/delta{
@@ -12466,23 +12182,16 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_south)
 "Vb" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/outside/lane/three_north)
 "Vd" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/lane/two_south)
 "Ve" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/lane/three_north)
 "Vg" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/whiskey_outpost/inside/caves/caverns/east)
 "Vh" = (
 /turf/open/jungle/impenetrable{
@@ -12503,10 +12212,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
 "Vk" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/whiskey_outpost/outside/north)
 "Vl" = (
 /obj/structure/bed/chair,
@@ -12542,7 +12248,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/north)
 "Vu" = (
 /obj/structure/disposalpipe/segment{
@@ -12555,20 +12261,14 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/whiskey_outpost/outside/north)
 "Vw" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/whiskey_outpost/outside/north)
 "Vx" = (
 /obj/structure/machinery/medical_pod/bodyscanner{
@@ -12587,9 +12287,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "Vz" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/outside/south/far)
 "VC" = (
 /turf/open/gm/grass/grassbeach/north,
@@ -12637,9 +12335,7 @@
 /area/whiskey_outpost/inside/bunker/pillbox/four)
 "VK" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/lane/three_south)
 "VL" = (
 /obj/structure/largecrate/supply/medicine/medkits,
@@ -12703,10 +12399,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/whiskey_outpost/outside/north)
 "VU" = (
 /turf/open/gm/dirt{
@@ -12714,10 +12407,7 @@
 	},
 /area/whiskey_outpost/inside/caves/caverns/west)
 "VV" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/whiskey_outpost/outside/lane/two_south)
 "VX" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -12725,9 +12415,7 @@
 /area/whiskey_outpost/outside/lane/one_south)
 "Wa" = (
 /obj/effect/landmark/start/whiskey/marine,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/outside/lane/two_south)
 "Wb" = (
 /obj/structure/barricade/sandbags/wired{
@@ -12836,10 +12524,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/two)
 "Wv" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/whiskey_outpost/outside/lane/three_north)
 "Wx" = (
 /obj/structure/barricade/plasteel/wired,
@@ -12887,19 +12572,17 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/north)
 "WM" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/whiskey_outpost/outside/south/very_far)
 "WN" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/inside/caves/caverns/east)
 "WO" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "WP" = (
 /obj/structure/disposalpipe/segment{
@@ -12957,10 +12640,7 @@
 /area/whiskey_outpost/outside/north)
 "Xd" = (
 /obj/effect/landmark/start/whiskey/marine,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/whiskey_outpost/outside/lane/two_south)
 "Xe" = (
 /obj/structure/barricade/plasteel/wired,
@@ -12985,10 +12665,7 @@
 /area/whiskey_outpost/inside/bunker/pillbox/one)
 "Xk" = (
 /obj/effect/landmark/start/whiskey/marine,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/whiskey_outpost/outside/lane/two_south)
 "Xl" = (
 /obj/effect/landmark/start/whiskey/engineer,
@@ -13020,7 +12697,7 @@
 /area/whiskey_outpost/inside/bunker/pillbox/one)
 "Xr" = (
 /obj/effect/landmark/start/whiskey/marine,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/lane/two_south)
 "Xx" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -13113,9 +12790,7 @@
 "XN" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/tool,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/outside/lane/two_south)
 "XP" = (
 /obj/structure/disposalpipe/segment{
@@ -13160,14 +12835,11 @@
 /turf/closed/shuttle/dropship,
 /area/whiskey_outpost/outside/lane/four_north)
 "XZ" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/whiskey_outpost/outside/lane/three_south)
 "Yc" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north,
 /area/whiskey_outpost/outside/north)
 "Yd" = (
 /obj/structure/barricade/sandbags/wired{
@@ -13321,9 +12993,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/two)
 "YH" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "YI" = (
 /obj/structure/surface/rack,
@@ -13350,9 +13020,7 @@
 /area/whiskey_outpost/outside/lane/four_north)
 "YM" = (
 /obj/effect/landmark/start/whiskey/marine,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/lane/three_south)
 "YN" = (
 /obj/structure/disposalpipe/segment,
@@ -13374,9 +13042,7 @@
 /area/whiskey_outpost/inside/bunker/pillbox/three)
 "YT" = (
 /obj/effect/landmark/start/whiskey/marine,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/east,
 /area/whiskey_outpost/outside/lane/three_south)
 "YV" = (
 /turf/open/gm/coast/beachcorner2/south_west,
@@ -13473,9 +13139,7 @@
 	pixel_y = 2
 	},
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south,
 /area/whiskey_outpost/outside/south)
 "Zm" = (
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry,
@@ -13525,9 +13189,7 @@
 "Zv" = (
 /obj/structure/bed/chair,
 /obj/effect/landmark/start/whiskey/marine,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/whiskey_outpost/outside/lane/two_south)
 "Zw" = (
 /turf/open/jungle,
@@ -13577,9 +13239,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/one)
 "ZF" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/south/far)
 "ZG" = (
 /obj/structure/sign/safety/medical{
@@ -13626,10 +13286,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/two)
 "ZP" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/whiskey_outpost/outside/lane/one_north)
 "ZQ" = (
 /obj/structure/machinery/light/small{
@@ -13645,9 +13302,7 @@
 /area/whiskey_outpost/inside/bunker/pillbox/two)
 "ZT" = (
 /obj/item/lightstick/red/planted,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/west,
 /area/whiskey_outpost/outside/south/far)
 "ZU" = (
 /turf/open/floor/prison{

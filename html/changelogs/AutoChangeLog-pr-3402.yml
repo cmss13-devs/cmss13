@@ -1,0 +1,4 @@
+author: "Katskan"
+delete-after: True
+changes:
+  - rscadd: "Synthetic gets a chance to dodge xeno acid blood spray"

@@ -20600,7 +20600,7 @@
 /turf/open/gm/coast/beachcorner/dir_1,
 /area/corsat/theta/biodome)
 "bdC" = (
-/turf/open/gm/coast/dir_6,
+/turf/open/gm/coast/beachcorner2,
 /area/corsat/theta/biodome)
 "bdD" = (
 /turf/open/gm/river,
@@ -20635,11 +20635,8 @@
 "bdM" = (
 /turf/open/gm/coast/beachcorner/dir_8,
 /area/corsat/theta/biodome)
-"bdN" = (
-/turf/open/gm/coast/dir_5,
-/area/corsat/theta/biodome)
 "bdO" = (
-/turf/open/gm/coast/dir_9,
+/turf/open/gm/coast/beachcorner2/dir_8,
 /area/corsat/theta/biodome)
 "bdP" = (
 /obj/structure/flora/jungle/vines/light_1,
@@ -88757,7 +88754,7 @@ bdD
 bdD
 bdD
 bdD
-bdN
+bcT
 vnc
 aKi
 aKi

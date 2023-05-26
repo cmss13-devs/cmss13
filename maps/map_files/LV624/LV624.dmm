@@ -26,9 +26,6 @@
 "aaj" = (
 /turf/open/gm/coast/dir_4,
 /area/lv624/ground/caves/north_central_caves)
-"aak" = (
-/turf/open/gm/coast/dir_6,
-/area/lv624/ground/caves/north_central_caves)
 "aam" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river,
@@ -55,7 +52,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
 "aat" = (
-/turf/open/gm/coast/dir_9,
+/turf/open/gm/coast/beachcorner2/dir_8,
 /area/lv624/ground/caves/north_central_caves)
 "aau" = (
 /turf/open/gm/coast/dir_1,
@@ -84,9 +81,6 @@
 /area/lv624/ground/caves/north_central_caves)
 "aaA" = (
 /turf/open/gm/coast/beachcorner/dir_8,
-/area/lv624/ground/caves/north_central_caves)
-"aaB" = (
-/turf/open/gm/coast/dir_5,
 /area/lv624/ground/caves/north_central_caves)
 "aaC" = (
 /turf/open/gm/coast/beachcorner2/dir_4,
@@ -2416,10 +2410,6 @@
 "alo" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/beachcorner2/dir_1,
-/area/lv624/ground/river/central_river)
-"alp" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_6,
 /area/lv624/ground/river/central_river)
 "als" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -13354,9 +13344,6 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
-"cLw" = (
-/turf/open/gm/coast/dir_5,
-/area/lv624/ground/river/central_river)
 "cLD" = (
 /turf/open/floor{
 	dir = 4;
@@ -15694,9 +15681,6 @@
 /obj/effect/landmark/corpsespawner/doctor,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
-"iyF" = (
-/turf/open/gm/coast/dir_9,
-/area/lv624/ground/river/central_river)
 "izh" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -15877,9 +15861,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"iXc" = (
-/turf/open/gm/coast/dir_5,
-/area/lv624/ground/barrens/east_barrens)
 "iXj" = (
 /turf/closed/wall,
 /area/lv624/ground/barrens/east_barrens)
@@ -17180,7 +17161,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
 "mnQ" = (
-/turf/open/gm/coast/dir_5,
+/turf/open/gm/coast/beachcorner2/dir_4,
 /area/lv624/ground/barrens/west_barrens)
 "moM" = (
 /obj/structure/flora/jungle/vines/light_3,
@@ -17580,7 +17561,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "nnL" = (
-/turf/open/gm/coast/dir_9,
+/turf/open/gm/coast/beachcorner2/dir_8,
 /area/lv624/ground/barrens/east_barrens)
 "npf" = (
 /turf/open/gm/coast/beachcorner/dir_1,
@@ -37690,7 +37671,7 @@ abb
 abb
 abb
 abb
-aaB
+aaC
 aaj
 aaA
 aaU
@@ -38368,7 +38349,7 @@ aah
 aah
 aaX
 aaj
-aak
+abe
 abb
 abb
 abb
@@ -40305,7 +40286,7 @@ wVk
 wVk
 wVk
 ajr
-iyF
+lju
 nHY
 oTt
 mVV
@@ -42255,7 +42236,7 @@ abh
 abb
 abb
 abb
-aaB
+aaC
 aaA
 aah
 aah
@@ -42484,7 +42465,7 @@ abb
 abb
 abb
 abb
-aaB
+aaC
 aaA
 aah
 aaH
@@ -43266,7 +43247,7 @@ wVk
 wVk
 ajq
 ako
-alp
+ajT
 sqj
 sqj
 rit
@@ -44633,7 +44614,7 @@ wVk
 wVk
 wVk
 ajq
-alp
+ajT
 sqj
 sqj
 sqj
@@ -45990,7 +45971,7 @@ muz
 twC
 nqv
 nqv
-iXc
+jLv
 obp
 wVk
 wVk
@@ -46676,7 +46657,7 @@ nnL
 owQ
 uSy
 nqv
-iXc
+jLv
 pci
 wVk
 wVk
@@ -46905,7 +46886,7 @@ uFB
 xVb
 spm
 nqv
-iXc
+jLv
 oEI
 pci
 wVk
@@ -47128,14 +47109,14 @@ lQC
 lQC
 lQC
 xVb
-iXc
+jLv
 pci
 fpn
 uSy
 nqv
 nqv
 nqv
-iXc
+jLv
 oEI
 oEI
 oEI
@@ -47357,7 +47338,7 @@ lQC
 lQC
 fpn
 uSy
-iXc
+jLv
 oEI
 twC
 syx
@@ -48056,7 +48037,7 @@ lQC
 lQC
 ajr
 sqj
-iyF
+lju
 hwR
 oTt
 hrG
@@ -48740,7 +48721,7 @@ sqj
 sqj
 sqj
 sTX
-cLw
+dGG
 nPd
 dVH
 dVH
@@ -48969,7 +48950,7 @@ ajG
 sqj
 sqj
 kft
-cLw
+dGG
 nPd
 bfe
 bQP
@@ -49651,7 +49632,7 @@ ajr
 sqj
 sqj
 sTX
-iyF
+lju
 hwR
 oTt
 dVH
@@ -50564,7 +50545,7 @@ sqj
 sqj
 akr
 sqj
-cLw
+dGG
 bnX
 amr
 oRH

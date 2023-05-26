@@ -69,17 +69,13 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/beachcorner2/dir_1,
 /area/lv624/ground/river/central_river)
-"ar" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/dir_6,
-/area/lv624/ground/river/central_river)
 "as" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "at" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/beachcorner2/dir_2,
+/turf/open/gm/coast/beachcorner2,
 /area/lv624/ground/river/central_river)
 "au" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -119,7 +115,7 @@
 /area/lv624/ground/river/central_river)
 "aG" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/coast/dir_9,
+/turf/open/gm/coast/beachcorner2/dir_8,
 /area/lv624/ground/river/central_river)
 "aH" = (
 /turf/open/gm/coast/beachcorner2/dir_4,
@@ -250,7 +246,7 @@
 	},
 /area/lv624/ground/jungle/north_jungle)
 "mf" = (
-/turf/open/gm/coast/beachcorner2/dir_2,
+/turf/open/gm/coast/beachcorner2,
 /area/lv624/ground/river/central_river)
 "oa" = (
 /turf/open/gm/dirt,
@@ -587,7 +583,7 @@ bK
 (15,1,1) = {"
 af
 ao
-ar
+at
 aK
 aK
 aK
@@ -682,7 +678,7 @@ bN
 "}
 (21,1,1) = {"
 af
-ar
+at
 aK
 aK
 aK

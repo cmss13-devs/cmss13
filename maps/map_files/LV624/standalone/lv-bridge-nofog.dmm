@@ -83,7 +83,7 @@
 /area/lv624/ground/river/central_river)
 "jT" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/beachcorner2/dir_2,
+/turf/open/gm/coast/beachcorner2,
 /area/lv624/ground/river/central_river)
 "km" = (
 /obj/effect/landmark/lv624/fog_blocker,

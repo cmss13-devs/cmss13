@@ -6470,7 +6470,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "fLY" = (
-/turf/open/gm/coast/dir_6,
+/turf/open/gm/coast/beachcorner2,
 /area/varadero/exterior/pontoon_beach)
 "fMq" = (
 /obj/item/device/cassette_tape/heavymetal{
@@ -9936,7 +9936,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/mess)
 "iLL" = (
-/turf/open/gm/coast/dir_6,
+/turf/open/gm/coast/beachcorner2,
 /area/varadero/exterior/eastbeach)
 "iLN" = (
 /obj/structure/platform/kutjevo/smooth,

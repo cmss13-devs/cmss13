@@ -62,6 +62,11 @@
 	layer = GAME_PLANE
 	plane = GAME_PLANE
 
+/atom/movable/screen/Destroy()
+	master = null
+	//QDEL_NULL(hud) // Not currently ever used; not sure if it would just need to be nulled or qdel
+	return ..()
+
 ///le awesome parent type
 /atom/movable/screen/proc/update_icon()
 	return

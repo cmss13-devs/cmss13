@@ -296,13 +296,17 @@ SUBSYSTEM_DEF(minimaps)
 	pixel_y = MINIMAP_PIXEL_FROM_WORLD(source.y) + SSminimaps.minimaps_by_z["[source_z]"].y_offset
 
 /**
- * Removes an atom and it's blip from the subsystem
+ * Removes an atom and it's blip from the subsystem.
+ * Force has no effect on this proc, but is here because we are a COMSIG_PARENT_QDELETING handler.
  */
-/datum/controller/subsystem/minimaps/proc/remove_marker(atom/source, minimap_flag)
+/datum/controller/subsystem/minimaps/proc/remove_marker(atom/source, force, minimap_flag)
 	SIGNAL_HANDLER
 	if(!removal_cbs[source]) //already removed
 		return
 	UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_Z_CHANGED))
+	images_by_source -= source
+	removal_cbs[source].Invoke()
+	removal_cbs -= source
 	var/turf/turf_gotten = get_turf(source)
 	if(!turf_gotten)
 		return
@@ -312,10 +316,6 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		for(var/flag in GLOB.all_minimap_flags)
 			minimaps_by_z["[z_level]"].images_assoc["[flag]"] -= source
-	images_by_source -= source
-	removal_cbs[source].Invoke()
-	removal_cbs -= source
-
 
 /**
  * Fetches a /atom/movable/screen/minimap instance or creates on if none exists

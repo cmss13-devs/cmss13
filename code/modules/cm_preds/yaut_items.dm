@@ -118,7 +118,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_HEAD|BODY_FLAG_LEGS
 	flags_item = ITEM_PREDATOR
 	armor_melee = CLOTHING_ARMOR_HIGH
-	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_laser = CLOTHING_ARMOR_HIGH
 	armor_energy = CLOTHING_ARMOR_HIGH
 	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
@@ -213,7 +213,7 @@
 	unacidable = TRUE
 	permeability_coefficient = 0.01
 	flags_inventory = NOSLIPPING
-	flags_armor_protection = BODY_FLAG_FEET|BODY_FLAG_LEGS|BODY_FLAG_GROIN
+	flags_armor_protection = BODY_FLAG_FEET|BODY_FLAG_LEGS
 	flags_item = ITEM_PREDATOR
 
 	siemens_coefficient = 0.2
@@ -252,7 +252,7 @@
 	name = "clan greaves"
 	desc = "A pair of armored, perfectly balanced boots. Perfect for running through the jungle."
 
-	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
@@ -275,6 +275,7 @@
 		WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
 
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS //Does not cover the head though.
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS
 	flags_item = ITEM_PREDATOR
@@ -283,8 +284,8 @@
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
-	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_MEDIUM
 	armor_energy = CLOTHING_ARMOR_MEDIUM
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
@@ -296,8 +297,8 @@
 	name = "body mesh"
 	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
 
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
@@ -505,7 +506,7 @@
 
 	var/variant = rand(1, 4) //Random sprite variant.
 	icon_state = "scalp_[variant]"
-	blood_color =  "#A10808" //So examine describes it as 'bloody'. Synths can't be scalped so it'll always be human blood.
+	blood_color =  BLOOD_COLOR_HUMAN //So examine describes it as 'bloody'. Synths can't be scalped so it'll always be human blood.
 	flags_atom = FPRINT|NOBLOODY //Don't want the ugly item blood overlay ending up on this. We'll use our own blood overlay.
 
 	var/image/blood_overlay = image('icons/obj/items/hunter/pred_gear.dmi', "scalp_[variant]_blood")
@@ -970,7 +971,7 @@
 	desc = "A bone from a human."
 	icon = 'icons/obj/items/skeleton.dmi'
 	accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi')
-	icon_state = "head"
+	icon_state = null
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
 /obj/item/clothing/accessory/limb/skeleton/l_arm

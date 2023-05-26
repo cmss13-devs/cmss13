@@ -136,6 +136,8 @@
 	///The iconstate for leadered xenos on the minimap, added as overlay
 	var/minimap_leadered_overlay = "xenoleader"
 
+	var/royal_caste = FALSE
+
 
 /datum/caste_datum/can_vv_modify()
 	return FALSE
@@ -263,10 +265,14 @@
 	)
 	/// Assoc list of free slots currently used by specific castes
 	var/list/used_free_slots
-	var/list/tier_2_xenos = list()//list of living tier2 xenos
-	var/list/tier_3_xenos = list()//list of living tier3 xenos
-	var/list/totalXenos = list()  //list of living xenos
-	var/list/totalDeadXenos = list()//list of previously living xenos
+	/// list of living tier2 xenos
+	var/list/tier_2_xenos = list()
+	/// list of living tier3 xenos
+	var/list/tier_3_xenos = list()
+	/// list of living xenos
+	var/list/totalXenos = list()
+	/// list of previously living xenos (hardrefs currently)
+	var/list/total_dead_xenos = list()
 	var/xeno_queen_timer
 	var/isSlotOpen = TRUE //Set true for starting alerts only after the hive has reached its full potential
 	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
@@ -287,8 +293,12 @@
 
 	var/allow_no_queen_actions = FALSE
 	var/evolution_without_ovipositor = TRUE //Temporary for the roundstart.
-	var/allow_queen_evolve = TRUE // Set to true if you want to prevent evolutions into Queens
-	var/hardcore = FALSE // Set to true if you want to prevent bursts and spawns of new xenos. Will also prevent healing if the queen no longer exists
+	/// Set to true if you want to prevent evolutions into Queens
+	var/allow_queen_evolve = TRUE
+	/// Set to true if you want to prevent bursts and spawns of new xenos. Will also prevent healing if the queen no longer exists
+	var/hardcore = FALSE
+	/// Set to false if you want to prevent getting burrowed larva from latejoin marines
+	var/latejoin_burrowed = TRUE
 
 	var/list/hive_inherant_traits
 
@@ -434,8 +444,10 @@
 	if(hard)
 		xeno.hivenumber = 0
 		xeno.hive = null
+#ifndef UNIT_TESTS // Since this is a hard ref, we shouldn't confuse create_and_destroy
 	else
-		totalDeadXenos += xeno
+		total_dead_xenos += xeno
+#endif
 
 	totalXenos -= xeno
 	if(xeno.tier == 2)
@@ -1025,6 +1037,7 @@
 	prefix = "Corrupted "
 	color = "#80ff80"
 	ui_color ="#4d994d"
+	latejoin_burrowed = FALSE
 
 	need_round_end_check = TRUE
 
@@ -1047,6 +1060,7 @@
 	prefix = "Alpha "
 	color = "#ff4040"
 	ui_color = "#992626"
+	latejoin_burrowed = FALSE
 
 	dynamic_evolution = FALSE
 
@@ -1056,6 +1070,7 @@
 	prefix = "Bravo "
 	color = "#ffff80"
 	ui_color = "#99994d"
+	latejoin_burrowed = FALSE
 
 	dynamic_evolution = FALSE
 
@@ -1065,6 +1080,7 @@
 	prefix = "Charlie "
 	color = "#bb40ff"
 	ui_color = "#702699"
+	latejoin_burrowed = FALSE
 
 	dynamic_evolution = FALSE
 
@@ -1074,6 +1090,7 @@
 	prefix = "Delta "
 	color = "#8080ff"
 	ui_color = "#4d4d99"
+	latejoin_burrowed = FALSE
 
 	dynamic_evolution = FALSE
 
@@ -1090,6 +1107,7 @@
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
+	latejoin_burrowed = FALSE
 
 /datum/hive_status/forsaken
 	name = "Forsaken Hive"
@@ -1102,6 +1120,7 @@
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
+	latejoin_burrowed = FALSE
 
 	need_round_end_check = TRUE
 
@@ -1117,6 +1136,7 @@
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
+	latejoin_burrowed = FALSE
 
 	need_round_end_check = TRUE
 
@@ -1131,6 +1151,7 @@
 	ui_color = "#6abd99"
 
 	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR)
+	latejoin_burrowed = FALSE
 
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"
@@ -1142,6 +1163,7 @@
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
+	latejoin_burrowed = FALSE
 
 	var/mob/living/carbon/human/leader
 	var/list/allied_factions

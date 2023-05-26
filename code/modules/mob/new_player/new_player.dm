@@ -266,7 +266,7 @@
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
 			if(hive.latejoin_burrowed == TRUE)
-				if(length(hive.totalXenos) && hive.hive_location)
+				if(length(hive.totalXenos) && (hive.hive_location || world.time < (SSticker.mode.round_time_lobby + XENO_ROUNDSTART_PROGRESS_TIME_2)))
 					hive.stored_larva++
 					hive.hive_ui.update_burrowed_larva()
 

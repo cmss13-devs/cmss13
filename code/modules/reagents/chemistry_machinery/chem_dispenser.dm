@@ -36,6 +36,11 @@
 	dispensable_reagents = sortList(dispensable_reagents)
 	start_processing()
 
+/obj/structure/machinery/chem_dispenser/Destroy()
+	if(!chem_storage)
+		chem_storage = chemical_data.disconnect_chem_storage(network)
+	return ..()
+
 /obj/structure/machinery/chem_dispenser/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)

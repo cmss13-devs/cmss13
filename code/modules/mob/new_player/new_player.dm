@@ -20,7 +20,6 @@
 	if(ready)
 		readied_players--
 	GLOB.new_player_list -= src
-	GLOB.dead_mob_list -= src
 	return ..()
 
 /mob/new_player/verb/new_player_panel()

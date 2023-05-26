@@ -25,11 +25,17 @@
 
 	set_hive_data(src, hivenumber)
 	update_icon()
-	INVOKE_ASYNC(src, PROC_REF(Grow))
+	addtimer(CALLBACK(src, PROC_REF(Grow)), rand(EGG_MIN_GROWTH_TIME, EGG_MAX_GROWTH_TIME))
 
 /obj/effect/alien/egg/Destroy()
 	. = ..()
-	QDEL_NULL_LIST(egg_triggers)
+	for(var/obj/effect/egg_trigger/trigger as anything in egg_triggers)
+		trigger.linked_egg = null
+		trigger.linked_eggmorph = null
+		qdel(trigger)
+	if(egg_triggers)
+		egg_triggers.Cut()
+	egg_triggers = null
 
 /obj/effect/alien/egg/ex_act(severity)
 	Burst(TRUE)//any explosion destroys the egg.
@@ -81,9 +87,6 @@
 	return ..()
 
 /obj/effect/alien/egg/proc/Grow()
-	set waitfor = 0
-	update_icon()
-	sleep(rand(EGG_MIN_GROWTH_TIME, EGG_MAX_GROWTH_TIME))
 	if(status == EGG_GROWING)
 		icon_state = "Egg"
 		status = EGG_GROWN

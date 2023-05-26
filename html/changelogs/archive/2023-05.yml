@@ -420,3 +420,11 @@
   - spellcheck: renamed the advanced burn kit and advanced trauma kit to burn kit
       and trauma kit. tweaked some first-aid kit descriptions.
   - spellcheck: renamed the "Advanced XRF scanner" to "XRF scanner"
+2023-05-24:
+  Morrow:
+  - rscdel: Aim mode removal
+  - balance: Yautja armor rebalance
+  c4xmaniac2:
+  - mapadd: added 4 new NM inserts to Science Annex
+  - maptweak: sentry in the park no longer terrorizes new players, and the stupid
+      fucking console doesn't block movement.

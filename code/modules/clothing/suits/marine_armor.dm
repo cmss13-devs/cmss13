@@ -175,7 +175,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(!armor_variation)
 		return
 
-	if(!user || !user.client)
+	if(!user?.client?.prefs)
 		icon_state = replacetext(icon_state,"1","[rand(1,armor_variation)]")
 		update_icon()
 		return

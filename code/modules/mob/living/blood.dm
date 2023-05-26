@@ -375,6 +375,7 @@
 	var/obj/effect/decal/cleanable/blood/xeno/XB = locate() in T.contents
 	if(!XB)
 		XB = new(T)
+		XB.color = get_blood_color()
 
 
 /mob/living/silicon/robot/add_splatter_floor(turf/T, small_drip, b_color)

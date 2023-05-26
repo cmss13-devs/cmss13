@@ -936,7 +936,7 @@
 		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
 		return
 
-	if (!linked_stretcher)
+	if(!linked_stretcher)
 		equipment_interact(user)
 		return
 

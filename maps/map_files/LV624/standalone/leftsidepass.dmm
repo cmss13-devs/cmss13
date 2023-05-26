@@ -45,7 +45,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
 "ao" = (
-/turf/open/gm/coast/beachcorner2/dir_4,
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/river/west_river)
 "aq" = (
 /turf/open/gm/coast/beachcorner/dir_8,
@@ -151,7 +151,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "aX" = (
-/turf/open/gm/coast/beachcorner2/dir_8,
+/turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/river/west_river)
 "bc" = (
 /turf/open/gm/river,
@@ -168,7 +168,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_west_barrens)
 "bm" = (
-/turf/open/gm/coast/beachcorner2,
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/river/west_river)
 "bt" = (
 /turf/open/gm/coast/dir_1,
@@ -197,7 +197,7 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/river/west_river)
 "kE" = (
-/turf/open/gm/coast/beachcorner2/dir_4,
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/jungle/west_jungle)
 "qG" = (
 /obj/structure/flora/bush/ausbushes/reedbush,

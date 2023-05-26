@@ -5175,7 +5175,7 @@
 	},
 /area/varadero/interior_protected/maintenance/south)
 "eGX" = (
-/turf/open/gm/coast/beachcorner2/dir_4,
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/pontoon_beach)
 "eHB" = (
 /obj/structure/flora/pottedplant{
@@ -5391,7 +5391,7 @@
 /area/varadero/interior/toilets)
 "eRc" = (
 /obj/structure/prop/rock/brown,
-/turf/open/gm/coast/beachcorner2/dir_1,
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/varadero/interior/oob)
 "eRD" = (
 /obj/structure/pipes/vents/pump,
@@ -6303,7 +6303,7 @@
 	},
 /area/varadero/interior/electrical)
 "fFD" = (
-/turf/open/gm/coast/beachcorner2/dir_1,
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/varadero/interior/oob)
 "fFI" = (
 /obj/structure/bed/chair/office/dark{
@@ -6470,7 +6470,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "fLY" = (
-/turf/open/gm/coast/beachcorner2,
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/varadero/exterior/pontoon_beach)
 "fMq" = (
 /obj/item/device/cassette_tape/heavymetal{
@@ -7821,7 +7821,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves)
 "gVO" = (
-/turf/open/gm/coast/beachcorner2/dir_8,
+/turf/open/gm/coast/beachcorner2/south_east,
 /area/varadero/exterior/pontoon_beach)
 "gWd" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -9086,7 +9086,7 @@
 	pixel_x = -11;
 	pixel_y = -4
 	},
-/turf/open/gm/coast/beachcorner2/dir_4,
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/pontoon_beach)
 "idI" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -9936,7 +9936,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/mess)
 "iLL" = (
-/turf/open/gm/coast/beachcorner2,
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/varadero/exterior/eastbeach)
 "iLN" = (
 /obj/structure/platform/kutjevo/smooth,
@@ -18438,7 +18438,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "qgm" = (
-/turf/open/gm/coast/beachcorner2/dir_1,
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/varadero/exterior/pontoon_beach)
 "qgy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -25933,7 +25933,7 @@
 /area/varadero/interior/laundry)
 "wAj" = (
 /obj/structure/platform/kutjevo/smooth,
-/turf/open/gm/coast/beachcorner2/dir_4,
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/pontoon_beach)
 "wAx" = (
 /obj/effect/landmark/corpsespawner/security,
@@ -26547,7 +26547,7 @@
 /turf/closed/wall/r_wall,
 /area/varadero/interior/administration)
 "xgH" = (
-/turf/open/gm/coast/beachcorner2/dir_4,
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/eastbeach)
 "xgU" = (
 /obj/structure/prop/structure_lattice{

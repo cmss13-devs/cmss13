@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "bw" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/beachcorner2/dir_1,
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/river/east_river)
 "ci" = (
 /turf/open/gm/dirtgrassborder{
@@ -60,7 +60,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river/east_river)
 "lJ" = (
-/turf/open/gm/coast/beachcorner2/dir_1,
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "mK" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -210,7 +210,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
 "Pk" = (
-/turf/open/gm/coast/beachcorner2/dir_8,
+/turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/river/east_river)
 "Pr" = (
 /turf/open/gm/grass/grass2,

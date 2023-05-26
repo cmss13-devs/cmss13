@@ -4,7 +4,7 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/sand_temple)
 "ap" = (
-/turf/open/gm/coast/beachcorner2/dir_1,
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "as" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -80,7 +80,7 @@
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "ci" = (
-/turf/open/gm/coast/beachcorner2/dir_8,
+/turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/caves/sand_temple)
 "de" = (
 /turf/open/gm/dirtgrassborder{
@@ -221,7 +221,7 @@
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 4
 	},
-/turf/open/gm/coast/beachcorner2,
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/caves/sand_temple)
 "fP" = (
 /obj/structure/flora/jungle/vines/light_3,
@@ -286,7 +286,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "hu" = (
 /obj/item/weapon/claymore/mercsword,
-/turf/open/gm/coast/beachcorner2,
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/caves/sand_temple)
 "hA" = (
 /turf/open/gm/coast/beachcorner/dir_8,
@@ -540,7 +540,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "po" = (
-/turf/open/gm/coast/beachcorner2,
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/caves/sand_temple)
 "pu" = (
 /obj/structure/stairs/perspective{
@@ -854,7 +854,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "wP" = (
-/turf/open/gm/coast/beachcorner2/dir_1,
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/caves/sand_temple)
 "wQ" = (
 /obj/structure/flora/jungle/vines/light_3,
@@ -1113,7 +1113,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "Dj" = (
-/turf/open/gm/coast/beachcorner2/dir_4,
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Dl" = (
 /obj/structure/platform/mineral/sandstone/runed,
@@ -1197,7 +1197,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "EJ" = (
-/turf/open/gm/coast/beachcorner2/dir_4,
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/caves/sand_temple)
 "EM" = (
 /obj/structure/showcase{
@@ -1901,7 +1901,7 @@
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 1
 	},
-/turf/open/gm/coast/beachcorner2,
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/caves/sand_temple)
 "Yu" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{

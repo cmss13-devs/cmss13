@@ -584,13 +584,15 @@
 /turf/open/gm/coast/beachcorner2
 	icon_state = "beachcorner2"
 
-/turf/open/gm/coast/beachcorner2/dir_1
+/turf/open/gm/coast/beachcorner2/north_west
+
+/turf/open/gm/coast/beachcorner2/north_east
 	dir = 1
 
-/turf/open/gm/coast/beachcorner2/dir_4
+/turf/open/gm/coast/beachcorner2/south_west
 	dir = 4
 
-/turf/open/gm/coast/beachcorner2/dir_8
+/turf/open/gm/coast/beachcorner2/south_east
 	dir = 8
 
 /turf/open/gm/riverdeep

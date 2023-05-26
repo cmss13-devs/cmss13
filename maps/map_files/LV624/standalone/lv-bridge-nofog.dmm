@@ -68,7 +68,7 @@
 	},
 /area/lv624/ground/river/central_river)
 "dC" = (
-/turf/open/gm/coast/beachcorner2/dir_8,
+/turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/river/central_river)
 "iW" = (
 /obj/effect/landmark/crap_item,
@@ -83,7 +83,7 @@
 /area/lv624/ground/river/central_river)
 "jT" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/beachcorner2,
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/river/central_river)
 "km" = (
 /obj/effect/landmark/lv624/fog_blocker,

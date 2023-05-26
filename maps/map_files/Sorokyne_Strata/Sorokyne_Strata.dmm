@@ -15471,13 +15471,13 @@
 	},
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aVK" = (
-/turf/open/gm/coast/beachcorner2/dir_8,
+/turf/open/gm/coast/beachcorner2/south_east,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aVL" = (
-/turf/open/gm/coast/beachcorner2/dir_4,
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aVM" = (
-/turf/open/gm/coast/beachcorner2/dir_1,
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aVN" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
@@ -16498,7 +16498,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "aZL" = (
-/turf/open/gm/coast/beachcorner2,
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aZO" = (
 /turf/open/gm/dirt,
@@ -29680,7 +29680,7 @@
 /turf/open/gm/coast/dir_1,
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "cxC" = (
-/turf/open/gm/coast/beachcorner2/dir_4,
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "cxJ" = (
 /turf/open/gm/dirt,
@@ -29804,7 +29804,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "cFp" = (
-/turf/open/gm/coast/beachcorner2/dir_4,
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "cFK" = (
 /obj/structure/flora/grass/tallgrass/ice/corner,
@@ -31732,7 +31732,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "gcj" = (
-/turf/open/gm/coast/beachcorner2/dir_8,
+/turf/open/gm/coast/beachcorner2/south_east,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "gdZ" = (
 /obj/structure/machinery/smartfridge,
@@ -32256,7 +32256,7 @@
 /turf/open/floor/plating,
 /area/strata/ag/exterior/marsh/center)
 "gSR" = (
-/turf/open/gm/coast/beachcorner2/dir_1,
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "gTa" = (
 /obj/structure/platform_decoration/strata/metal{
@@ -32675,7 +32675,7 @@
 	},
 /area/strata/ag/exterior/research_decks)
 "hFm" = (
-/turf/open/gm/coast/beachcorner2,
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "hGd" = (
 /obj/structure/platform/strata/metal{
@@ -32834,7 +32834,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ug/interior/outpost/jung/dorms/med1)
 "hWk" = (
-/turf/open/gm/coast/beachcorner2,
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "hYc" = (
 /turf/closed/wall/strata_outpost/reinforced,
@@ -34458,7 +34458,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_engi)
 "kJd" = (
-/turf/open/gm/coast/beachcorner2/dir_8,
+/turf/open/gm/coast/beachcorner2/south_east,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "kKI" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
@@ -34496,7 +34496,7 @@
 	},
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "kPC" = (
-/turf/open/gm/coast/beachcorner2/dir_1,
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "kPL" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -34588,7 +34588,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "kUs" = (
-/turf/open/gm/coast/beachcorner2/dir_8,
+/turf/open/gm/coast/beachcorner2/south_east,
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "kUN" = (
 /obj/effect/decal/strata_decals/grime/grime2{
@@ -36139,7 +36139,7 @@
 	},
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "nAf" = (
-/turf/open/gm/coast/beachcorner2/dir_4,
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "nAM" = (
 /obj/structure/platform/strata{
@@ -36250,7 +36250,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/bball)
 "nPb" = (
-/turf/open/gm/coast/beachcorner2/dir_1,
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "nPh" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
@@ -37855,7 +37855,7 @@
 /turf/open/floor/interior/tatami,
 /area/strata/ag/interior/restricted)
 "qxr" = (
-/turf/open/gm/coast/beachcorner2,
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "qxt" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
@@ -38452,7 +38452,7 @@
 /turf/open/gm/coast/beachcorner/dir_4,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "rvD" = (
-/turf/open/gm/coast/beachcorner2/dir_4,
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "rwD" = (
 /obj/effect/decal/cleanable/blood,
@@ -41207,7 +41207,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "vZT" = (
-/turf/open/gm/coast/beachcorner2/dir_8,
+/turf/open/gm/coast/beachcorner2/south_east,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "wab" = (
 /obj/structure/machinery/space_heater,
@@ -41319,7 +41319,7 @@
 /turf/closed/wall/strata_ice/dirty,
 /area/strata/ag/interior/outpost/engi)
 "wne" = (
-/turf/open/gm/coast/beachcorner2/dir_1,
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "wni" = (
 /turf/open/asphalt/cement{
@@ -41420,7 +41420,7 @@
 	},
 /area/strata/ag/interior/outpost/admin)
 "wuI" = (
-/turf/open/gm/coast/beachcorner2,
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "wvt" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -42439,7 +42439,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "ylE" = (
-/turf/open/gm/coast/beachcorner2,
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "ylF" = (
 /obj/structure/stairs/perspective{

@@ -8584,8 +8584,7 @@
 /area/lv624/lazarus/yggdrasil)
 "aKE" = (
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/grass/gbcorner,
-/area/lv624/lazarus/yggdrasil)
+/turf/open/gm/grass/gbcorner/north_west/area/lv624/lazarus/yggdrasil)
 "aKF" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grassbeach/north,
@@ -8597,7 +8596,7 @@
 "aKH" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/grass/gbcorner/dir_8,
+/turf/open/gm/grass/gbcorner/north_east,
 /area/lv624/lazarus/yggdrasil)
 "aKI" = (
 /obj/structure/flora/jungle/vines/light_2,
@@ -8657,8 +8656,7 @@
 "aLc" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/grass/gbcorner,
-/area/lv624/lazarus/yggdrasil)
+/turf/open/gm/grass/gbcorner/north_west/area/lv624/lazarus/yggdrasil)
 "aLd" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grassbeach/north,
@@ -8673,7 +8671,7 @@
 /area/lv624/lazarus/yggdrasil)
 "aLg" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/gbcorner/dir_8,
+/turf/open/gm/grass/gbcorner/north_east,
 /area/lv624/lazarus/yggdrasil)
 "aLh" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
@@ -9556,7 +9554,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "aPg" = (
 /obj/structure/flora/jungle/vines/light_2,
-/turf/open/gm/grass/gbcorner/dir_4,
+/turf/open/gm/grass/gbcorner/south_west,
 /area/lv624/lazarus/yggdrasil)
 "aPh" = (
 /turf/open/gm/grass/grassbeach/north,
@@ -9855,7 +9853,7 @@
 "aQp" = (
 /obj/structure/machinery/colony_floodlight,
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/gbcorner/dir_4,
+/turf/open/gm/grass/gbcorner/south_west,
 /area/lv624/lazarus/yggdrasil)
 "aQr" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,

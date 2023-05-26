@@ -353,13 +353,15 @@
 /turf/open/gm/grass/gbcorner
 	icon_state = "gbcorner"
 
-/turf/open/gm/grass/gbcorner/dir_1
+/turf/open/gm/grass/gbcorner/north_west
+
+/turf/open/gm/grass/gbcorner/south_east
 	dir = 1
 
-/turf/open/gm/grass/gbcorner/dir_4
+/turf/open/gm/grass/gbcorner/south_west
 	dir = 4
 
-/turf/open/gm/grass/gbcorner/dir_8
+/turf/open/gm/grass/gbcorner/north_east
 	dir = 8
 
 /turf/open/gm/grass/Initialize(mapload, ...)

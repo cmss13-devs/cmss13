@@ -1178,8 +1178,7 @@
 /turf/open/gm/coast/beachcorner2/dir_8,
 /area/whiskey_outpost/outside/lane/four_south)
 "ep" = (
-/turf/open/gm/grass/gbcorner,
-/area/whiskey_outpost/outside/lane/one_south)
+/turf/open/gm/grass/gbcorner/north_west/area/whiskey_outpost/outside/lane/one_south)
 "eq" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
@@ -2226,7 +2225,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "hI" = (
-/turf/open/gm/grass/gbcorner/dir_4,
+/turf/open/gm/grass/gbcorner/south_west,
 /area/whiskey_outpost/outside/lane/one_north)
 "hJ" = (
 /obj/structure/machinery/colony_floodlight,
@@ -3852,7 +3851,7 @@
 	},
 /area/whiskey_outpost)
 "nj" = (
-/turf/open/gm/grass/gbcorner/dir_4,
+/turf/open/gm/grass/gbcorner/south_west,
 /area/whiskey_outpost/outside/south)
 "nk" = (
 /obj/effect/decal/warning_stripes/asteroid{
@@ -5453,7 +5452,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/supply)
 "ti" = (
-/turf/open/gm/grass/gbcorner/dir_1,
+/turf/open/gm/grass/gbcorner/south_east,
 /area/whiskey_outpost/outside/south)
 "tj" = (
 /obj/structure/machinery/light/small,
@@ -6235,7 +6234,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/supply)
 "vQ" = (
-/turf/open/gm/grass/gbcorner/dir_8,
+/turf/open/gm/grass/gbcorner/north_east,
 /area/whiskey_outpost/outside/lane/one_south)
 "vR" = (
 /obj/structure/machinery/light/small{
@@ -10412,7 +10411,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_north)
 "Me" = (
-/turf/open/gm/grass/gbcorner/dir_4,
+/turf/open/gm/grass/gbcorner/south_west,
 /area/whiskey_outpost/outside/lane/one_south)
 "Mf" = (
 /turf/closed/shuttle/dropship{
@@ -11450,8 +11449,7 @@
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
 "QJ" = (
-/turf/open/gm/grass/gbcorner,
-/area/whiskey_outpost/outside/lane/one_north)
+/turf/open/gm/grass/gbcorner/north_west/area/whiskey_outpost/outside/lane/one_north)
 "QL" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8
@@ -11641,7 +11639,7 @@
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
 "RG" = (
-/turf/open/gm/grass/gbcorner/dir_8,
+/turf/open/gm/grass/gbcorner/north_east,
 /area/whiskey_outpost/outside/north/northwest)
 "RH" = (
 /turf/open/gm/dirtgrassborder{
@@ -11987,8 +11985,7 @@
 /area/whiskey_outpost/outside/lane/one_south)
 "Ta" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/gm/grass/gbcorner,
-/area/whiskey_outpost/outside/north/northwest)
+/turf/open/gm/grass/gbcorner/north_west/area/whiskey_outpost/outside/north/northwest)
 "Tc" = (
 /obj/structure/platform{
 	dir = 4

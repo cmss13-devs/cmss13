@@ -122,7 +122,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/underwear = "Boxers (Camo Conforming)" //underwear type
 	var/undershirt = "Undershirt (Tan)" //undershirt type
 	var/backbag = 2 //backpack type
-	var/preferred_armor = "Random"
+	var/preferred_armor = "Random" //preferred armor type (from their primary prep vendor)
 
 	var/h_style = "Crewcut" //Hair type
 	var/r_hair = 0 //Hair color

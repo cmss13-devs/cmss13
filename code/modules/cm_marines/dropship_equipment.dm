@@ -897,7 +897,7 @@
 		linked_stretcher = null
 		return
 
-	to_chat(user, SPAN_NOTICE("You move your dropship above the selected stretcher's beacon."))
+	to_chat(user, SPAN_NOTICE("You move your dropship above the selected stretcher's beacon. You can now manually activate the medevac system to hoist the patient up."))
 
 	if(linked_stretcher)
 		linked_stretcher.linked_medevac = null
@@ -906,8 +906,6 @@
 	linked_stretcher = selected_stretcher
 	linked_stretcher.linked_medevac = src
 	linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher] detects a dropship overhead."))
-
-	activate_winch(user)
 
 
 
@@ -927,7 +925,32 @@
 		to_chat(user, SPAN_WARNING(" You don't know how to use [src]."))
 		return
 
-	equipment_interact(user)
+	if(!linked_shuttle)
+		return
+
+	if(linked_shuttle.mode != SHUTTLE_CALL)
+		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
+		return
+
+	if(busy_winch)
+		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		return
+
+	if (!linked_stretcher)
+		equipment_interact(user)
+		return
+
+	if(!is_ground_level(linked_stretcher.z))
+		linked_stretcher.linked_medevac = null
+		linked_stretcher = null
+		to_chat(user, SPAN_WARNING(" There seems to be no medevac stretcher connected to [src]."))
+		return
+
+	if(world.time < medevac_cooldown)
+		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
+		return
+
+	activate_winch(user)
 
 /obj/structure/dropship_equipment/medevac_system/proc/activate_winch(mob/user)
 	set waitfor = 0

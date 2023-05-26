@@ -20,6 +20,7 @@
 
 	//blood.dm
 	blood_volume = BLOOD_VOLUME_NORMAL
+	var/special_blood = null
 
 	///list of active transfusions from blood bags or iv stands
 	var/list/active_transfusions = list()

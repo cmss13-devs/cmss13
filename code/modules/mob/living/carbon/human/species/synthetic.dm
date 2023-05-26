@@ -31,7 +31,7 @@
 	mob_flags = KNOWS_TECHNOLOGY
 	flags = IS_WHITELISTED|NO_BREATHE|NO_CLONE_LOSS|NO_BLOOD|NO_POISON|IS_SYNTHETIC|NO_CHEM_METABOLIZATION|NO_NEURO|HAS_UNDERWEAR
 
-	blood_color = "#EEEEEE"
+	blood_color = BLOOD_COLOR_SYNTHETIC
 
 	has_organ = list(
 		"heart" = /datum/internal_organ/heart/prosthetic,
@@ -145,4 +145,4 @@
 
 	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/human
 
-	blood_color = "#A10808"
+	blood_color = BLOOD_COLOR_HUMAN

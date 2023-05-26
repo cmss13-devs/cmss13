@@ -1,0 +1,5 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - bugfix: "Fixed helmets stopping all of your limbs from being delimbed"
+  - bugfix: "Fixed a runtime due to lack of cause data for head delimb"

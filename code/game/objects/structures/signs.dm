@@ -596,5 +596,5 @@
 /obj/structure/sign/dartboard
 	name = "dartboard"
 	desc = "A dartboard, secured with a nail and a string. It has bullet holes and knife stab marks over and around it."
-	icon = 'icons/obj/structures/props/dartboard.dmi'
-	icon_state = 'dart_board'
+	icon = 'icons/obj/structures/props/props.dmi'
+	icon_state = "dart_board"

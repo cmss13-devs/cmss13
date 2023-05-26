@@ -64,11 +64,7 @@
 	style_open = "<span class='langchat' style=font-size:16pt;text-align:center valign='top'>"
 	style_close = "</span>"
 
-/**
- * proc for actually playing this screen_text on a mob.
- * Arguments:
- * * player: client to play to
- */
+///proc for actually playing this screen_text on a mob.
 /atom/movable/screen/text/screen_text/proc/play_to_client()
 	player?.screen += src
 	if(fade_in_time)

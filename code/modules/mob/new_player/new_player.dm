@@ -266,7 +266,7 @@
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
 			if(hive.latejoin_burrowed == TRUE)
-				if(length(hive.totalXenos))
+				if(length(hive.totalXenos) && hive.hive_location)
 					hive.stored_larva++
 					hive.hive_ui.update_burrowed_larva()
 

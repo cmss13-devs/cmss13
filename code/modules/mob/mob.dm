@@ -3,6 +3,7 @@
 	GLOB.dead_mob_list -= src
 	GLOB.alive_mob_list -= src
 	GLOB.player_list -= src
+	GLOB.freed_mob_list -= src
 
 	ghostize(FALSE)
 
@@ -21,6 +22,7 @@
 	QDEL_NULL_LIST(viruses)
 	resistances?.Cut()
 	QDEL_LIST_ASSOC_VAL(implants)
+	qdel(hud_used) // The hud will null it
 
 	. = ..()
 

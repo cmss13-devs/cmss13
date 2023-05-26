@@ -818,12 +818,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/list/mobs_by_role = list() // the list the mobs are assigned to first, for sorting purposes
-	for(var/mob/living/L as anything in GLOB.freed_mob_list)
-		var/role_name = L.get_role_name()
+	for(var/datum/weakref/ref as anything in GLOB.freed_mob_list)
+		var/mob/living/resolved_mob = ref.resolve()
+		var/role_name = resolved_mob.get_role_name()
 		if(!role_name)
 			role_name = "No Role"
 		LAZYINITLIST(mobs_by_role[role_name])
-		mobs_by_role[role_name] += L
+		mobs_by_role[role_name] += resolved_mob
 
 	var/list/freed_mob_choices = list() // the list we'll be choosing from
 	for(var/role in mobs_by_role)
@@ -835,18 +836,18 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/mob/living/L = freed_mob_choices[choice]
-	if(!L || !(L in GLOB.freed_mob_list))
+	if(!L || !(WEAKREF(L) in GLOB.freed_mob_list))
 		return
 
 	if(!istype(L))
 		return
 
 	if(QDELETED(L) || L.client)
-		GLOB.freed_mob_list -= L
+		GLOB.freed_mob_list -= WEAKREF(L)
 		to_chat(src, SPAN_WARNING("Something went wrong."))
 		return
 
-	GLOB.freed_mob_list -= L
+	GLOB.freed_mob_list -= WEAKREF(L)
 	M.mind.transfer_to(L, TRUE)
 
 /mob/dead/verb/join_as_hellhound()

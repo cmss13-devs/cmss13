@@ -62,7 +62,8 @@
 	QDEL_NULL_LIST(embedded_items)
 	QDEL_LIST_ASSOC_VAL(internal_organs_by_name)
 	QDEL_NULL_LIST(limbs)
-	remove_from_all_mob_huds()
+	if(hud_used)
+		QDEL_NULL(hud_used)
 	. = ..()
 
 	overlays_standing = null

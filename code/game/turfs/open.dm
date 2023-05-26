@@ -339,13 +339,15 @@
 /turf/open/gm/grass/grassbeach
 	icon_state = "grassbeach"
 
-/turf/open/gm/grass/grassbeach/dir_1
+/turf/open/gm/grass/grassbeach/north
+
+/turf/open/gm/grass/grassbeach/south
 	dir = 1
 
-/turf/open/gm/grass/grassbeach/dir_4
+/turf/open/gm/grass/grassbeach/west
 	dir = 4
 
-/turf/open/gm/grass/grassbeach/dir_8
+/turf/open/gm/grass/grassbeach/east
 	dir = 8
 
 /turf/open/gm/grass/gbcorner

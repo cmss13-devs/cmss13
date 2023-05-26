@@ -368,6 +368,9 @@ SUBSYSTEM_DEF(radio)
 	for(var/datum/weakref/device_ref as anything in devices[filter])
 		var/obj/device = device_ref.resolve()
 
+		if(!device)
+			continue
+
 		if(device == source)
 			continue
 

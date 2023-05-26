@@ -421,6 +421,33 @@
 	remove_verb(src, admin_verbs_hideable)
 	add_verb(src, /client/proc/enable_admin_verbs)
 
+/client/proc/strip_all_in_view()
+	set name = "Strip All"
+	set category = "Admin.InView"
+	set hidden = TRUE
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	if(tgui_alert(src, "This will strip ALL mobs within your view range. Are you sure?", "Confirmation", list("Yes", "Cancel")) != "Yes")
+		return
+
+	var/strip_self = FALSE
+	if(tgui_alert(src, "Do you want to strip yourself as well?", "Confirmation", list("Yes", "No")) == "Yes")
+		strip_self = TRUE
+
+	for(var/mob/living/current_mob in view())
+		if(!strip_self && usr == current_mob)
+			continue
+		for (var/obj/item/current_item in current_mob)
+			//no more deletion of ID cards
+			if(istype(current_item, /obj/item/card/id))
+				continue
+			qdel(current_item)
+
+	message_admins(WRAP_STAFF_LOG(usr, "stripped everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
+
 /client/proc/rejuvenate_all_in_view()
 	set name = "Rejuvenate All"
 	set category = "Admin.InView"
@@ -574,6 +601,8 @@
 		<A href='?src=\ref[src];[HrefToken()];inviews=directnarrateall'>Direct Narrate In View</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];inviews=alertall'>Alert Message In View</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];inviews=subtlemessageall'>Subtle Message In View</A><BR>
+		<BR>
+		<A href='?src=\ref[src];[HrefToken()];inviews=stripall'>Strip All Mobs In View</A><BR>
 		<BR>
 		"}
 

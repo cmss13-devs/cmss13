@@ -19,7 +19,7 @@
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
 	pain_type = /datum/pain/yautja
 	stamina_type = /datum/stamina/none
-	blood_color = "#20d450"
+	blood_color = BLOOD_COLOR_YAUTJA
 	flesh_color = "#907E4A"
 	speech_sounds = list('sound/voice/pred_click1.ogg', 'sound/voice/pred_click2.ogg')
 	speech_chance = 100

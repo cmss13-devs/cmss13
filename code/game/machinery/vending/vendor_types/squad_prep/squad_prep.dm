@@ -325,7 +325,7 @@
 		/obj/item/clothing/suit/storage/marine/light/padless_lines,
 		/obj/item/clothing/suit/storage/marine/light/carrier,
 		/obj/item/clothing/suit/storage/marine/light/skull,
-		/obj/item/clothing/suit/storage/marine/light/smooth
+		/obj/item/clothing/suit/storage/marine/light/smooth,
 	)
 
 /obj/effect/essentials_set/random/uscm_heavy_armor
@@ -335,5 +335,5 @@
 		/obj/item/clothing/suit/storage/marine/heavy/padless_lines,
 		/obj/item/clothing/suit/storage/marine/heavy/carrier,
 		/obj/item/clothing/suit/storage/marine/heavy/skull,
-		/obj/item/clothing/suit/storage/marine/heavy/smooth
+		/obj/item/clothing/suit/storage/marine/heavy/smooth,
 	)

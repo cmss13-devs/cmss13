@@ -96,6 +96,8 @@
 			continue
 		maptext = "[style_open][copytext_char(text_to_play, 1, letter)][style_close]"
 		sleep(play_delay)
+	if(QDELETED(src) || QDELETED(client))
+		return
 	addtimer(CALLBACK(src, PROC_REF(after_play), player), fade_out_delay)
 
 ///handles post-play effects like fade out after the fade out delay

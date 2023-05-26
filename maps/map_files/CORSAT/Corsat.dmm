@@ -20399,7 +20399,7 @@
 /area/corsat/gamma/freezer)
 "bcR" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/coast/beachcorner,
+/turf/open/gm/coast/beachcorner/north_west,
 /area/corsat/theta/biodome)
 "bcS" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -20591,13 +20591,13 @@
 	},
 /area/corsat/theta/biodome)
 "bdz" = (
-/turf/open/gm/coast/beachcorner,
+/turf/open/gm/coast/beachcorner/north_west,
 /area/corsat/theta/biodome)
 "bdA" = (
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/corsat/theta/biodome)
 "bdB" = (
-/turf/open/gm/coast/beachcorner/dir_1,
+/turf/open/gm/coast/beachcorner/north_east,
 /area/corsat/theta/biodome)
 "bdC" = (
 /turf/open/gm/coast/beachcorner2/north_west,
@@ -20615,7 +20615,7 @@
 /turf/open/gm/coast/east,
 /area/corsat/theta/biodome)
 "bdI" = (
-/turf/open/gm/coast/beachcorner/dir_4,
+/turf/open/gm/coast/beachcorner/south_east,
 /area/corsat/theta/biodome)
 "bdJ" = (
 /turf/open/gm/dirtgrassborder{
@@ -20633,7 +20633,7 @@
 /turf/open/gm/coast/south,
 /area/corsat/theta/biodome)
 "bdM" = (
-/turf/open/gm/coast/beachcorner/dir_8,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/corsat/theta/biodome)
 "bdO" = (
 /turf/open/gm/coast/beachcorner2/south_east,
@@ -20831,7 +20831,7 @@
 /area/corsat/theta/biodome)
 "bex" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/corsat/theta/biodome)
 "bey" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -61995,7 +61995,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/coast/beachcorner/dir_8,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/corsat/theta/biodome)
 "vnF" = (
 /obj/structure/bed/chair/office/light{
@@ -62941,7 +62941,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/coast/beachcorner/dir_4,
+/turf/open/gm/coast/beachcorner/south_east,
 /area/corsat/theta/biodome)
 "wbK" = (
 /obj/structure/flora/pottedplant{

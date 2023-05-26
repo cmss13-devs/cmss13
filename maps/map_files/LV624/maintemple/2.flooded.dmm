@@ -21,7 +21,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "ax" = (
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/lv624/ground/caves/sand_temple)
 "aA" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed,
@@ -289,7 +289,7 @@
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/caves/sand_temple)
 "hA" = (
-/turf/open/gm/coast/beachcorner/dir_8,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/caves/sand_temple)
 "hD" = (
 /turf/open/gm/dirtgrassborder{
@@ -374,7 +374,7 @@
 /area/lv624/ground/caves/sand_temple)
 "ky" = (
 /obj/structure/platform/mineral/sandstone/runed,
-/turf/open/gm/coast/beachcorner/dir_4,
+/turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/caves/sand_temple)
 "lm" = (
 /turf/open/gm/coast/east,
@@ -594,7 +594,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "rd" = (
-/turf/open/gm/coast/beachcorner/dir_1,
+/turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/caves/sand_temple)
 "rA" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
@@ -793,7 +793,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "vY" = (
-/turf/open/gm/coast/beachcorner/dir_4,
+/turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/caves/sand_temple)
 "we" = (
 /obj/structure/stairs/perspective{
@@ -880,7 +880,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "wU" = (
-/turf/open/gm/coast/beachcorner,
+/turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/caves/sand_temple)
 "wZ" = (
 /turf/open/gm/dirtgrassborder{
@@ -888,7 +888,7 @@
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
 "xp" = (
-/turf/open/gm/coast/beachcorner/dir_8,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "xu" = (
 /obj/structure/flora/jungle/vines/light_3,
@@ -928,7 +928,7 @@
 /area/lv624/ground/caves/sand_temple)
 "yf" = (
 /obj/effect/landmark/yautja_teleport,
-/turf/open/gm/coast/beachcorner/dir_8,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "yh" = (
 /obj/structure/platform/mineral/sandstone/runed{
@@ -968,7 +968,7 @@
 	dir = 8;
 	layer = 3.01
 	},
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/lv624/ground/caves/sand_temple)
 "zA" = (
 /turf/open/gm/dirtgrassborder{
@@ -1166,7 +1166,7 @@
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8
 	},
-/turf/open/gm/coast/beachcorner/dir_1,
+/turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/east_river)
 "Eq" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1187,7 +1187,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Es" = (
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/coast/beachcorner/dir_1,
+/turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/caves/sand_temple)
 "EB" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -1595,7 +1595,7 @@
 /turf/open/gm/coast/south,
 /area/lv624/ground/caves/sand_temple)
 "MD" = (
-/turf/open/gm/coast/beachcorner/dir_1,
+/turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "MK" = (
 /turf/open/gm/dirtgrassborder{
@@ -1658,7 +1658,7 @@
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 1
 	},
-/turf/open/gm/coast/beachcorner,
+/turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/caves/sand_temple)
 "PA" = (
 /obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
@@ -1815,7 +1815,7 @@
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8
 	},
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/lv624/ground/caves/sand_temple)
 "Uk" = (
 /obj/structure/stairs/perspective{

@@ -110,7 +110,7 @@
 	},
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "tJ" = (
-/turf/open/gm/coast/beachcorner/dir_1,
+/turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "tN" = (
 /turf/open/gm/dirt{
@@ -132,7 +132,7 @@
 	},
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "Cf" = (
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/lv624/ground/river/east_river)
 "CA" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
@@ -161,7 +161,7 @@
 /turf/open/gm/coast/east,
 /area/lv624/ground/river/east_river)
 "Fm" = (
-/turf/open/gm/coast/beachcorner/dir_1,
+/turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/east_river)
 "FQ" = (
 /turf/open/gm/dirtgrassborder{
@@ -179,7 +179,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
 "JA" = (
-/turf/open/gm/coast/beachcorner/dir_4,
+/turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/river/east_river)
 "Kd" = (
 /turf/open/gm/coast/south,
@@ -231,7 +231,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "Qb" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/coast/beachcorner/dir_4,
+/turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/river/east_river)
 "Qp" = (
 /turf/open/gm/dirtgrassborder{

@@ -417,7 +417,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/varadero/exterior/pontoon_beach)
 "atb" = (
 /obj/structure/machinery/vending/snack,
@@ -1289,7 +1289,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
-/turf/open/gm/coast/beachcorner/dir_8,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/eastbeach)
 "bfg" = (
 /obj/structure/surface/table,
@@ -3740,7 +3740,7 @@
 /area/varadero/interior_protected/caves/digsite)
 "dki" = (
 /obj/structure/platform/kutjevo/smooth,
-/turf/open/gm/coast/beachcorner/dir_8,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/eastbeach)
 "dkl" = (
 /turf/open/floor/shiva{
@@ -3846,7 +3846,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
 	},
-/turf/open/gm/coast/beachcorner/dir_1,
+/turf/open/gm/coast/beachcorner/north_east,
 /area/varadero/interior/oob)
 "dpz" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -4080,7 +4080,7 @@
 /obj/structure/platform_decoration/kutjevo{
 	dir = 1
 	},
-/turf/open/gm/coast/beachcorner/dir_8,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/eastbeach)
 "dFd" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -5427,7 +5427,7 @@
 	},
 /area/varadero/interior_protected/vessel)
 "eSd" = (
-/turf/open/gm/coast/beachcorner,
+/turf/open/gm/coast/beachcorner/north_west,
 /area/varadero/exterior/eastbeach)
 "eSg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -6119,7 +6119,7 @@
 	},
 /area/varadero/interior/maintenance/security)
 "fvL" = (
-/turf/open/gm/coast/beachcorner/dir_1,
+/turf/open/gm/coast/beachcorner/north_east,
 /area/varadero/interior/oob)
 "fvR" = (
 /obj/structure/platform_decoration/kutjevo{
@@ -6505,7 +6505,7 @@
 /area/varadero/exterior/eastbeach)
 "fOW" = (
 /obj/structure/platform/kutjevo/smooth,
-/turf/open/gm/coast/beachcorner/dir_8,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/pontoon_beach)
 "fPn" = (
 /obj/structure/disposalpipe/segment{
@@ -8133,7 +8133,7 @@
 	},
 /area/varadero/interior/laundry)
 "hmu" = (
-/turf/open/gm/coast/beachcorner/dir_8,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/eastbeach)
 "hni" = (
 /obj/structure/sign/safety/fire_haz{
@@ -9787,7 +9787,7 @@
 	pixel_x = 3;
 	pixel_y = 5
 	},
-/turf/open/gm/coast/beachcorner/dir_8,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/pontoon_beach)
 "iHh" = (
 /obj/item/weapon/gun/shotgun/pump,
@@ -11200,7 +11200,7 @@
 	},
 /area/varadero/interior/comms1)
 "jSX" = (
-/turf/open/gm/coast/beachcorner,
+/turf/open/gm/coast/beachcorner/north_west,
 /area/varadero/exterior/pontoon_beach)
 "jTe" = (
 /obj/structure/disposalpipe/segment{
@@ -11259,7 +11259,7 @@
 	},
 /area/varadero/interior/hall_N)
 "jVw" = (
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/varadero/exterior/eastbeach)
 "jVK" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -12763,7 +12763,7 @@
 	},
 /area/varadero/interior/hall_N)
 "lnO" = (
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/varadero/exterior/pontoon_beach)
 "lod" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -21812,7 +21812,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves)
 "sRs" = (
-/turf/open/gm/coast/beachcorner/dir_8,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/pontoon_beach)
 "sRM" = (
 /obj/structure/machinery/disposal,
@@ -22337,7 +22337,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
-/turf/open/gm/coast/beachcorner,
+/turf/open/gm/coast/beachcorner/north_west,
 /area/varadero/exterior/eastbeach)
 "tyc" = (
 /obj/structure/platform_decoration/kutjevo,

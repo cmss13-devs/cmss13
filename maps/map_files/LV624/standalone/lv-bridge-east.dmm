@@ -27,16 +27,16 @@
 /area/lv624/ground/barrens/central_barrens)
 "af" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/beachcorner,
+/turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/river/central_river)
 "ag" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
 "ah" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
 "aj" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -45,7 +45,7 @@
 "ak" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/beachcorner,
+/turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/river/central_river)
 "al" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -88,7 +88,7 @@
 "av" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
 "ax" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -104,7 +104,7 @@
 /area/lv624/ground/river/central_river)
 "aB" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/beachcorner/dir_1,
+/turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/central_river)
 "aD" = (
 /turf/open/gm/coast/beachcorner2/south_east,
@@ -164,10 +164,10 @@
 	},
 /area/lv624/ground/river/central_river)
 "aZ" = (
-/turf/open/gm/coast/beachcorner/dir_4,
+/turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/river/central_river)
 "ba" = (
-/turf/open/gm/coast/beachcorner/dir_8,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/river/central_river)
 "be" = (
 /turf/open/gm/coast/south,
@@ -237,7 +237,7 @@
 /area/lv624/ground/jungle/north_jungle)
 "cp" = (
 /obj/structure/flora/jungle/alienplant1,
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
 "gh" = (
 /turf/open/gm/dirtgrassborder{
@@ -260,11 +260,11 @@
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "uc" = (
-/turf/open/gm/coast/beachcorner,
+/turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/river/central_river)
 "uC" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/coast/beachcorner/dir_1,
+/turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/central_river)
 "wp" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -332,7 +332,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/north_jungle)
 "RE" = (
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
 "XL" = (
 /turf/open/gm/coast/beachcorner2/north_east,

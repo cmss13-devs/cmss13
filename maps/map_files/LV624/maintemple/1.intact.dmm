@@ -1905,7 +1905,7 @@
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8
 	},
-/turf/open/gm/coast/beachcorner/dir_1,
+/turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/east_river)
 "Zt" = (
 /obj/structure/prop/brazier,

@@ -79,7 +79,7 @@
 /area/lv624/ground/river/central_river)
 "jr" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
 "jT" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -147,7 +147,7 @@
 	},
 /area/lv624/ground/jungle/north_jungle)
 "yj" = (
-/turf/open/gm/coast/beachcorner/dir_4,
+/turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/river/central_river)
 "yu" = (
 /turf/closed/wall/strata_ice/jungle,

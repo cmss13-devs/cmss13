@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ab" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/lv624/ground/river/west_river)
 "ac" = (
 /obj/effect/landmark/hunter_primary,
@@ -30,7 +30,7 @@
 /area/lv624/ground/river/west_river)
 "ai" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/coast/beachcorner,
+/turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/river/west_river)
 "aj" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
@@ -48,10 +48,10 @@
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/river/west_river)
 "aq" = (
-/turf/open/gm/coast/beachcorner/dir_8,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/river/west_river)
 "ar" = (
-/turf/open/gm/coast/beachcorner/dir_4,
+/turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/river/west_river)
 "as" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -76,7 +76,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "aw" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/coast/beachcorner/dir_8,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/jungle/west_jungle)
 "ax" = (
 /turf/open/gm/dirtgrassborder{
@@ -178,10 +178,10 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_west_barrens)
 "bz" = (
-/turf/open/gm/coast/beachcorner,
+/turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/river/west_river)
 "bL" = (
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/lv624/ground/river/west_river)
 "bN" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,

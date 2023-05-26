@@ -36,7 +36,7 @@
 #define GAMEMODE_IMMUNE (1<<0)
 
 // Ripples, effects that signal a shuttle's arrival
-#define SHUTTLE_RIPPLE_TIME 100
+#define SHUTTLE_RIPPLE_TIME 5 SECONDS
 
 #define TRANSIT_REQUEST 1
 #define TRANSIT_READY 2

@@ -13,6 +13,7 @@
 // BEGIN_INCLUDE
 #include "code\_byond_version_compat.dm"
 #include "code\_compile_options.dm"
+#include "code\_experiments.dm"
 #include "code\_macros.dm"
 #include "code\global.dm"
 #include "code\names.dm"
@@ -259,6 +260,7 @@
 #include "code\controllers\subsystem\predships.dm"
 #include "code\controllers\subsystem\projectiles.dm"
 #include "code\controllers\subsystem\quadtrees.dm"
+#include "code\controllers\subsystem\reagents.dm"
 #include "code\controllers\subsystem\redis.dm"
 #include "code\controllers\subsystem\round_recording.dm"
 #include "code\controllers\subsystem\shuttle.dm"

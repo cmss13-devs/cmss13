@@ -280,6 +280,7 @@
 	return TRUE
 
 /// Clear references in squad listing upon deletion. Zap also erases the kept records.
+/// NOTE: zap will be set true for a forced COMSIG_PARENT_QDELETING
 /datum/squad/proc/personnel_deleted(mob/M, zap = FALSE)
 	SIGNAL_HANDLER
 	if(M == overwatch_officer)

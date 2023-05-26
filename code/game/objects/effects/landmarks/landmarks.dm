@@ -8,10 +8,9 @@
 	var/invisibility_value = INVISIBILITY_MAXIMUM
 
 /obj/effect/landmark/New()
-	..()
 	tag = "landmark*[name]"
 	invisibility = invisibility_value
-	return 1
+	return ..()
 
 /obj/effect/landmark/Initialize(mapload, ...)
 	. = ..()

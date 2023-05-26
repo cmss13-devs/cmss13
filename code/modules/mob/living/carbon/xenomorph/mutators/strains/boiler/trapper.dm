@@ -12,6 +12,7 @@
 		/datum/action/xeno_action/activable/spray_acid/boiler,
 		/datum/action/xeno_action/onclick/dump_acid,
 		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
+		/datum/action/xeno_action/onclick/acid_shroud,
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/boiler_trap,
@@ -32,6 +33,7 @@
 	if(boiler.is_zoomed)
 		boiler.zoom_out()
 
+	boiler.tileoffset = 0
 	boiler.viewsize = TRAPPER_VIEWRANGE
 	boiler.mutation_type = BOILER_TRAPPER
 	boiler.plasma_types -= PLASMA_NEUROTOXIN

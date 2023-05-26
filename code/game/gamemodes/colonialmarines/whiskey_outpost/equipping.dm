@@ -152,6 +152,10 @@ Treat the wounded, guide triage, and survive for as long as possible."}
 /datum/job/civilian/doctor/whiskey
 	title = JOB_WO_DOCTOR
 	gear_preset = /datum/equipment_preset/wo/doctor
+	job_options = null //Does not inherit regular doctor's variants, uses unique preset instead.
+
+/datum/job/civilian/doctor/whiskey/handle_job_options()
+	return
 
 /datum/job/civilian/doctor/whiskey/generate_entry_message(mob/living/carbon/human/H)
 	. = {"You volunteered to assist ground-side with medical duties. That may have been a mistake.

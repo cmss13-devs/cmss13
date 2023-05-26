@@ -425,10 +425,6 @@
 "bc" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/surface/table{
-	dir = 4;
-	flipped = 1
-	},
-/obj/structure/surface/table{
 	flipped = 1
 	},
 /turf/open/floor{
@@ -710,10 +706,6 @@
 "bJ" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/surface/table{
-	flipped = 1
-	},
-/obj/structure/surface/table{
-	dir = 8;
 	flipped = 1
 	},
 /obj/item/ammo_casing,

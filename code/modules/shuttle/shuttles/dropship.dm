@@ -148,6 +148,14 @@
 	. = ..()
 	link_landing_lights()
 
+/obj/docking_port/stationary/marine_dropship/Destroy()
+	. = ..()
+	for(var/obj/structure/machinery/landinglight/light in landing_lights)
+		light.linked_port = null
+	if(landing_lights)
+		landing_lights.Cut()
+	landing_lights = null // We didn't make them, so lets leave them
+
 /obj/docking_port/stationary/marine_dropship/proc/link_landing_lights()
 	var/list/coords = return_coords()
 	var/scan_range = 5
@@ -159,8 +167,9 @@
 	for(var/xscan = x0; xscan < x1; xscan++)
 		for(var/yscan = y0; yscan < y1; yscan++)
 			var/turf/searchspot = locate(xscan, yscan, src.z)
-			for(var/obj/structure/machinery/landinglight/L in searchspot)
-				landing_lights += L
+			for(var/obj/structure/machinery/landinglight/light in searchspot)
+				landing_lights += light
+				light.linked_port = src
 
 /obj/docking_port/stationary/marine_dropship/proc/turn_on_landing_lights()
 	for(var/obj/structure/machinery/landinglight/light in landing_lights)

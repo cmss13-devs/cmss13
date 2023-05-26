@@ -69,6 +69,7 @@
 
 /obj/item/storage/firstaid/regular
 	icon_state = "firstaid"
+	desc = "It's an emergency medical kit containing basic medication and equipment. No training required to use."
 
 /obj/item/storage/firstaid/regular/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
@@ -99,7 +100,7 @@
 
 /obj/item/storage/firstaid/toxin
 	name = "toxin first-aid kit"
-	desc = "Used to treat when you have a high amount of toxins in your body."
+	desc = "It's an emergency medical kit containing lifesaving anti-toxic medication."
 	icon_state = "antitoxin"
 	item_state = "firstaid-toxin"
 	possible_icons_full = list("antitoxin","antitoxfirstaid","antitoxfirstaid2","antitoxfirstaid3")
@@ -134,7 +135,7 @@
 
 /obj/item/storage/firstaid/adv
 	name = "advanced first-aid kit"
-	desc = "Contains advanced medical treatments."
+	desc = "Contains more effective methods of medical treatment than a basic first-aid kit, such as burn and trauma kits."
 	icon_state = "advfirstaid"
 	item_state = "firstaid-advanced"
 

@@ -182,8 +182,6 @@
 	xeno_cooldown = 130
 	plasma_cost = 80
 
-	var/click_miss_cooldown = 15
-
 /datum/action/xeno_action/onclick/prae_dodge
 	name = "Dodge"
 	action_icon_state = "prae_dodge"
@@ -215,8 +213,6 @@
 	var/daze_duration_default = 1
 	var/stun_duration_buffed = 1
 	var/daze_duration_buffed = 2
-
-	var/click_miss_cooldown = 15
 
 ////////// BASE PRAE
 

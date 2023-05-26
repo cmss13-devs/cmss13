@@ -83,7 +83,7 @@
 		playsound(zombie.loc, rare_moan, 15, rare_variance)
 
 /datum/species/zombie/handle_death(mob/living/carbon/human/zombie, gibbed)
-	set waitfor = 0
+	set waitfor = FALSE
 
 	if(gibbed)
 		remove_from_revive(zombie)
@@ -95,8 +95,9 @@
 			if(zombie.client)
 				zombie.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You are dead...</u></span><br>You will rise again in one minute.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
 			to_chat(zombie, SPAN_XENOWARNING("You fall... but your body is slowly regenerating itself."))
-			to_revive[WEAKREF(zombie)] = addtimer(CALLBACK(src, PROC_REF(revive_from_death), zombie), 1 MINUTES, TIMER_STOPPABLE|TIMER_OVERRIDE|TIMER_UNIQUE)
-			revive_times[WEAKREF(zombie)] = world.time + 1 MINUTES
+			var/weak_ref = WEAKREF(zombie)
+			to_revive[weak_ref] = addtimer(CALLBACK(src, PROC_REF(revive_from_death), zombie, "[REF(zombie)]"), 1 MINUTES, TIMER_STOPPABLE|TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+			revive_times[weak_ref] = world.time + 1 MINUTES
 		else
 			if(zombie.client)
 				zombie.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You are dead...</u></span><br>You lost your head. No reviving for you.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
@@ -126,10 +127,11 @@
 		to_chat(ghost, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Your body has risen! (Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)")))
 
 /datum/species/zombie/proc/remove_from_revive(mob/living/carbon/human/zombie)
-	if(WEAKREF(zombie) in to_revive)
-		deltimer(to_revive[WEAKREF(zombie)])
-		to_revive -= WEAKREF(zombie)
-	revive_times -= WEAKREF(zombie)
+	var/weak_ref = WEAKREF(zombie)
+	if(weak_ref in to_revive)
+		deltimer(to_revive[weak_ref])
+		to_revive -= weak_ref
+	revive_times -= weak_ref
 
 /datum/species/zombie/get_status_tab_items(mob/living/carbon/human/zombie)
 	var/list/static_tab_items = list()

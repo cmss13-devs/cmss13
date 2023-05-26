@@ -201,7 +201,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 		recipient_castes[recipient_name] = xeno.caste_type
 		recipient_mobs[recipient_name] = xeno
 		possible_recipients += recipient_name
-	for(var/mob/living/carbon/xenomorph/xeno in hive.totalDeadXenos)
+	for(var/mob/living/carbon/xenomorph/xeno in hive.total_dead_xenos)
 		if (xeno.persistent_ckey == usr.persistent_ckey) // Don't award previous selves
 			continue
 		if (xeno.tier == 0) // Don't award larva or facehuggers

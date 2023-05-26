@@ -23,10 +23,8 @@
 	spark_system.attach(src)
 
 /obj/item/device/chameleon/Destroy()
-	if(spark_system)
-		qdel(spark_system)
-		spark_system = null
-	. = ..()
+	QDEL_NULL(spark_system)
+	return ..()
 
 /obj/item/device/chameleon/dropped(mob/user)
 	disrupt(user)

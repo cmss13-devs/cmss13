@@ -11,7 +11,6 @@
  * * override_color: the color of the text to use
  */
 /mob/proc/play_screen_text(text, alert_type = /atom/movable/screen/text/screen_text, override_color = "#FFFFFF")
-	debug_log("play_screen_text start for: [text]") // TODO: Remove this
 	var/atom/movable/screen/text/screen_text/text_box = new alert_type()
 	text_box.text_to_play = text
 	text_box.player = client
@@ -94,11 +93,6 @@
 		maptext = "[style_open][copytext_char(text_to_play, 1, letter)][style_close]"
 		sleep(play_delay)
 
-	if(QDELETED(src))
-		debug_log("play_to_client immediately going to end_play for [text_to_play]") // TODO: Remove this
-		end_play()
-		return
-
 	addtimer(CALLBACK(src, PROC_REF(after_play)), fade_out_delay)
 
 ///handles post-play effects like fade out after the fade out delay
@@ -107,29 +101,22 @@
 		end_play()
 		return
 
-	if(QDELETED(src))
-		debug_log("after_play - immediately going to end_play for [text_to_play]") // TODO: Remove this
-		end_play() // Abort!
-		return
-
 	animate(src, alpha = 0, time = fade_out_time)
 	addtimer(CALLBACK(src, PROC_REF(end_play)), fade_out_time)
 
 ///ends the play then deletes this screen object and plays the next one in queue if it exists
 /atom/movable/screen/text/screen_text/proc/end_play()
 	if(!player)
-		debug_log("end_play returned for [text_to_play]") // TODO: Remove this
-		if(!QDELETED(src))
-			qdel(src)
+		qdel(src)
 		return
 
 	player.screen -= src
 	LAZYREMOVE(player.screen_texts, src)
-
-	if(QDELETED(src))
-		return
-
 	qdel(src)
+
+	if(QDELETED(player))
+		QDEL_NULL_LIST(player.screen_texts)
+		return
 
 	if(LAZYLEN(player.screen_texts))
 		player.screen_texts[1].play_to_client() // Theres more?

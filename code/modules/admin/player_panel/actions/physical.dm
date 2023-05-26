@@ -180,15 +180,15 @@
 	permissions_required = R_SPAWN
 
 /datum/player_action/strip_equipment/act(client/user, mob/target, list/params)
-	for (var/obj/item/I in target)
-		if(istype(I, /obj/item/card/id))
+	for (var/obj/item/current_item in target)
+		if(istype(current_item, /obj/item/card/id))
 			continue
 
 		if(params["drop_items"])
-			target.drop_inv_item_to_loc(I, target.loc, FALSE, TRUE)
+			target.drop_inv_item_to_loc(current_item, target.loc, FALSE, TRUE)
 			continue
 
-		qdel(I)
+		qdel(current_item)
 
 	message_admins("[key_name_admin(user)] stripped [target] of their items.")
 	return TRUE

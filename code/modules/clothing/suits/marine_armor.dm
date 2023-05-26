@@ -134,7 +134,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	var/armor_variation = 0
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 
-/obj/item/clothing/suit/storage/marine/Initialize(mapload)
+/obj/item/clothing/suit/storage/marine/Initialize()
 	. = ..()
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
@@ -146,6 +146,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type)
 	armor_overlays = list("lamp") //Just one for now, can add more later.
+	if(armor_variation)
+		post_creation_handling()
 	update_icon()
 	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
 	pockets.bypass_w_limit = list(
@@ -154,8 +156,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/ammo_magazine/sniper,
 	)
 	pockets.max_storage_space = 8
-	if(mapload)
-		post_creation_handling()
 
 /obj/item/clothing/suit/storage/marine/update_icon(mob/user)
 	var/image/I
@@ -171,22 +171,20 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(user) user.update_inv_wear_suit()
 
 
-/obj/item/clothing/suit/storage/marine/proc/post_creation_handling(mob/user) //used for randomizing/selecting a variant for armors.
-	if(!armor_variation)
-		return
+/obj/item/clothing/suit/storage/marine/proc/post_creation_handling() //used for randomizing/selecting a variant for armors.
+	var/new_look //used for the icon_state text replacement.
 
-	if(!user?.client?.prefs)
-		icon_state = replacetext(icon_state,"1","[rand(1,armor_variation)]")
-		update_icon()
-		return
+	if(!usr?.client?.prefs)
+		new_look = rand(1,armor_variation)
 
-	if(user.client.prefs.preferred_armor)
-		var/new_look = armor_style_list.Find(user.client.prefs.preferred_armor)
-		if(new_look == 7)
-			new_look = rand(1,armor_variation)
-		icon_state = replacetext(icon_state,"1","[new_look]")
+	else if(usr.client.prefs.preferred_armor == "Random")
+		new_look = rand(1,armor_variation)
 
-	update_icon()
+	else
+		new_look = armor_style_list[usr.client.prefs.preferred_armor]
+
+	icon_state = replacetext(icon_state,"1","[new_look]")
+
 
 /obj/item/clothing/suit/storage/marine/pickup(mob/user)
 	if(flags_marine_armor & ARMOR_LAMP_ON)

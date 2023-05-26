@@ -181,7 +181,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		new_look = rand(1,armor_variation)
 
 	else
-		new_look = armor_style_list[usr.client.prefs.preferred_armor]
+		new_look = GLOB.armor_style_list[usr.client.prefs.preferred_armor]
 
 	icon_state = replacetext(icon_state,"1","[new_look]")
 

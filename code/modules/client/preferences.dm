@@ -1465,7 +1465,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						preferred_squad = new_pref_squad
 
 				if("prefarmor")
-					var/new_pref_armor = tgui_input_list(user, "Choose your character's default style of armor:", "Character Preferences", armor_style_list)
+					var/new_pref_armor = tgui_input_list(user, "Choose your character's default style of armor:", "Character Preferences", GLOB.armor_style_list)
 					if(new_pref_armor)
 						preferred_armor = new_pref_armor
 

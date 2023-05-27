@@ -417,7 +417,50 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon = 'icons/obj/structures/props/plants.dmi'
 	icon_state = "pottedplant_26"
 	density = FALSE
+	var/stashed_item
+	var/static/possible_starting_items = list(/obj/item/clothing/mask/cigarette/weed, /obj/item/clothing/mask/cigarette, /obj/item/clothing/mask/cigarette/bcigarette) //breaking bad reference
+	/// For things that might affect someone/everyone's round if hidden.
+	var/static/blocked_atoms = list(/obj/item/device/cotablet, /obj/item/card/id)
+	var/static/blacklist_typecache
 
+/obj/structure/flora/pottedplant/Initialize(mapload)
+	. = ..()
+
+	if(!blacklist_typecache)
+		blacklist_typecache = typecacheof(blocked_atoms)
+
+	if(prob(5))
+		var/prestashed_item = pick(possible_starting_items)
+		stashed_item = new prestashed_item(src)
+
+/obj/structure/flora/pottedplant/attackby(obj/item/stash, mob/user)
+	if(stashed_item)
+		to_chat(user, SPAN_WARNING("There's already something stashed here!"))
+		return
+
+	if(is_type_in_typecache(stash, blacklist_typecache))
+		to_chat(user, SPAN_WARNING("You probably shouldn't hide [stash] in [src]."))
+		return
+
+	if(stash.w_class == SIZE_TINY)
+		user.drop_inv_item_to_loc(stash, src)
+		stashed_item = stash
+		user.visible_message("[user] puts something in [src].", "You hide [stash] in [src].")
+		return
+
+	to_chat(user, SPAN_WARNING("[stash] is too big to fit into [src]!"))
+
+/obj/structure/flora/pottedplant/attack_hand(mob/user)
+	if(!stashed_item)
+		return
+	user.put_in_hands(contents[1])
+	user.visible_message( "[user] takes something out of [src].", "You take [stashed_item] from [src].")
+	stashed_item = null
+
+/obj/structure/flora/pottedplant/Destroy()
+	if(stashed_item)
+		QDEL_NULL(stashed_item)
+	return ..()
 /obj/structure/flora/pottedplant/random
 	icon_tag = "pottedplant"
 	variations = "30"

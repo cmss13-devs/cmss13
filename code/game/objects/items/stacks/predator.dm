@@ -45,15 +45,16 @@
 			return TRUE
 		user.visible_message(SPAN_NOTICE("[user] secures the rope."),
 			SPAN_NOTICE("You secure the rope."))
-		if(do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
-			user.visible_message(SPAN_WARNING("[user] begins hanging [victim] up by the rope..."),
-				SPAN_NOTICE("You start hanging [victim] up by the rope..."))
-			if(do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
-				user.visible_message(SPAN_WARNING("[user] hangs [victim] from the ceiling!"), SPAN_NOTICE("You finish hanging [victim]."))
-				user.stop_pulling()
-				victim.get_hung()
-				use(1)
-				return TRUE
+		if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
+			return
+		user.visible_message(SPAN_WARNING("[user] begins hanging [victim] up by the rope..."),
+			SPAN_NOTICE("You start hanging [victim] up by the rope..."))
+		if(!do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
+			return
+		user.visible_message(SPAN_WARNING("[user] hangs [victim] from the ceiling!"), SPAN_NOTICE("You finish hanging [victim]."))
+		user.stop_pulling()
+		victim.get_hung()
+		use(1)
 	return TRUE
 
 /mob/living/carbon/human/proc/get_hung()

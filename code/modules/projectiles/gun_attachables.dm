@@ -732,16 +732,15 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_NOTICE("Hold on there cowboy, that grip is bolted on. You are unable to modify it."))
 	return
 
-/obj/item/attachable/flashlight/laser_light_combo
-	name = "underbarrel laser-light combo"
-	desc = "Holy smokes RO man, they put a grip on a flashlight! \nReduces recoil and scatter by a tiny amount. Boosts accuracy by a tiny amount. Works as a light source."
+/obj/item/attachable/flashlight/laser_light_combo //Unique attachment for the VP78 based on the fact it has a Laser-Light Module in AVP2010
+	name = "VP78 Laser-Light Module"
+	desc = "A Laser-Light module for the VP78 Service Pistol which is currently undergoing limited field testing as part of the USCMs next generation pistol program. All VP78 pistols come equipped with the module."
 	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
-	icon_state = "laserlight"
-	attach_icon = "laserlight_a"
+	icon_state = "vplaserlight"
+	attach_icon = "vplaserlight_a"
 	slot = "under"
-	original_state = "laserlight"
-	original_attach = "laserlight_a"
-	attachment_action_type = /datum/action/item_action/toggle
+	original_state = "vplaserlight"
+	original_attach = "vplaserlight_a"
 
 /obj/item/attachable/flashlight/laser_light_combo/New()
 	..()

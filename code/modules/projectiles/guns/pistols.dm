@@ -595,7 +595,6 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/compensator,
-		/obj/item/attachable/lasersight,
 		/obj/item/attachable/flashlight/laser_light_combo,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,

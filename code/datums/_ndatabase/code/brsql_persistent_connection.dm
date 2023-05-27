@@ -66,6 +66,7 @@
 		"max_threads" = max_threads,
 	)
 	connection_result = rustg_sql_connect_pool(json_encode(options))
+	log_config(connection_result)
 	connection_handle = json_decode(connection_result)["handle"]
 	if(!connection_handle)
 		status = DB_CONNECTION_BROKEN
@@ -100,7 +101,7 @@
 		query_number++
 		return pq
 	return null
-	
+
 /datum/db/connection/brsql_connection/get_adapter()
 	var/datum/db/adapter/brsql_adapter/adapter = new()
 	adapter.connection = src

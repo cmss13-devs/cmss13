@@ -1,0 +1,5 @@
+author: "TenguHangover"
+delete-after: True
+changes:
+  - rscadd: "added sleen as a reagent, 1:1 lime souto and oxycodone. Slightly less painkilling than oxy, and slightly addictive."
+  - rscadd: "corrects oxycodone color to red dye instead of purple."

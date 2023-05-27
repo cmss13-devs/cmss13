@@ -89,33 +89,34 @@
 	return FALSE
 
 
-/obj/structure/machinery/door/airlock/sandstone/runed/open(forced=1)
+/obj/structure/machinery/door/airlock/sandstone/runed/open(forced = TRUE)
 	if(operating || welded || locked || !loc || !density)
 		return FALSE
 	if(!forced && !arePowerSystemsOn())
 		return FALSE
+
 	playsound(loc, 'sound/effects/runedsanddoor.ogg', 25, 0)
 	visible_message(SPAN_NOTICE("\The [src] makes a loud grating sound as hidden workings pull it open."))
-
-	if(!operating)
-		operating = TRUE
-	CHECK_TICK
+	operating = TRUE
 	do_animate("opening")
 	icon_state = "door0"
-	src.SetOpacity(FALSE)
-	sleep(openspeed)
-	src.layer = open_layer
-	src.density = FALSE
+	SetOpacity(FALSE)
+
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
+	return
+
+/obj/structure/machinery/door/airlock/sandstone/runed/finish_open()
+	layer = open_layer
+	density = FALSE
 	update_icon()
 	SetOpacity(0)
-	if (filler)
+	if(filler)
 		filler.SetOpacity(opacity)
 
 	if(operating)
 		operating = FALSE
-	return
 
-/obj/structure/machinery/door/airlock/sandstone/runed/close(forced=1)
+/obj/structure/machinery/door/airlock/sandstone/runed/close(forced = TRUE)
 	if(operating || welded || locked || !loc || density)
 		return
 	if(safe)
@@ -128,12 +129,15 @@
 	visible_message(SPAN_NOTICE("\The [src] makes a loud grating sound as hidden workings force it shut."))
 
 	operating = TRUE
-	CHECK_TICK
-	src.density = TRUE
-	src.SetOpacity(TRUE)
-	src.layer = closed_layer
+	density = TRUE
+	SetOpacity(TRUE)
+	layer = closed_layer
 	do_animate("closing")
-	sleep(openspeed)
+
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed)
+	return
+
+/obj/structure/machinery/door/airlock/sandstone/runed/finish_close()
 	update_icon()
 	operating = FALSE
 
@@ -150,7 +154,6 @@
 		var/obj/structure/window/killthis = (locate(/obj/structure/window) in turf)
 		if(killthis)
 			killthis.ex_act(EXPLOSION_THRESHOLD_LOW)
-	return
 
 /obj/structure/machinery/door/airlock/sandstone/runed/lock(forced=0)
 	if(operating || locked) return

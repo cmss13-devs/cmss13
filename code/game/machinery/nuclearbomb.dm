@@ -195,12 +195,12 @@ var/bomb_set = FALSE
 						explosion_time = world.time + timeleft
 						start_processing()
 						announce_to_players()
-						message_admins("[src] has been activated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=[usr]'>JMP</A>)")
+						message_admins("\The [src] has been activated by [key_name(ui.user, 1)] [ADMIN_JMP_USER(ui.user)]")
 					else
 						bomb_set = FALSE
 				else
 					disable()
-					message_admins("[src] has been deactivated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=[usr]'>JMP</A>)")
+					message_admins("\The [src] has been deactivated by [key_name(ui.user, 1)] [ADMIN_JMP_USER(ui.user)]")
 				playsound(src.loc, 'sound/effects/thud.ogg', 100, 1)
 			being_used = FALSE
 			. = TRUE
@@ -417,8 +417,8 @@ var/bomb_set = FALSE
 
 /obj/structure/machinery/nuclearbomb/Destroy()
 	if(timing != -1)
-		message_admins("[src] has been unexpectedly deleted at ([x],[y],[x]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
-		log_game("[src] has been unexpectedly deleted at ([x],[y],[x]).")
+		message_admins("\The [src] has been unexpectedly deleted at ([x],[y],[x]). [ADMIN_JMP(src)]")
+		log_game("\The [src] has been unexpectedly deleted at ([x],[y],[x]).")
 	bomb_set = FALSE
 	SSminimaps.remove_marker(src)
 	return ..()

@@ -1,0 +1,5 @@
+author: "NewyearnewmeUwu"
+delete-after: True
+changes:
+  - rscadd: "You can now hide small items in potted plants."
+  - rscadd: "Fire alarms now announce who activates/deactivates them."

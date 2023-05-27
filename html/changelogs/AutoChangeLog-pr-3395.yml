@@ -1,0 +1,4 @@
+author: "Diegoflores31"
+delete-after: True
+changes:
+  - balance: "Whiskey Outpost will start on Global Hardcore mode by default."

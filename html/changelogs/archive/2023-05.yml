@@ -428,3 +428,50 @@
   - mapadd: added 4 new NM inserts to Science Annex
   - maptweak: sentry in the park no longer terrorizes new players, and the stupid
       fucking console doesn't block movement.
+2023-05-26:
+  Drathek:
+  - bugfix: Fix shuttle landing lights getting stuck on
+  - imageadd: Added a transparent gray sprite to act as a shadow when a shuttle or
+      something is looming over that tile
+  - code_imp: Added unit_testing to annotate and fail for runtimes, added a unit_test
+      for 515, and improved debug information for reference lookups.
+  - code_imp: Moved chemistry list setup to a new reagents subsystem rather than potentially
+      before every reagents initialization.
+  - code_imp: Ported many updates to SSgarbage, SSatoms, and create_and_destroy fixing
+      inconsistent garbage handling, an edge case with atoms late loading, and improved
+      speed.
+  - bugfix: Fix nightmare inserts not occurring during unit testing (they will also
+      ignore probabilities for testing now).
+  - bugfix: Fix runtimes for bad deletes and various hard deletes.
+  - maptweak: Fix some nightmare inserts causing errors.
+  - server: Initialize log for errors/warnings for SSatoms is now in each round's
+      respective log folder.
+  harryob:
+  - bugfix: fixed some objects with icon states unassigned
+  - ui: the portable vendor for CLs is now tgui
+  spartanbobby:
+  - rscadd: Adds a new flavour of Kepler to the game "Kepler Flamehot"
+2023-05-27:
+  BeagleGaming1:
+  - balance: Unsplinted broken bones that are not hands or feet can now cause IB
+  - balance: bloodbag capacity raised to 300u
+  Diegoflores31:
+  - balance: Whiskey Outpost will start on Global Hardcore mode by default.
+  Katskan:
+  - rscadd: Synthetic gets a chance to dodge xeno acid blood spray
+  Morrow:
+  - bugfix: Fixed helmets stopping all of your limbs from being delimbed
+  - bugfix: Fixed a runtime due to lack of cause data for head delimb
+  Warfan1815:
+  - qol: 'Two improved strip systems: the one in the player panel now doesn''t strip
+      IDs, and there is a new one that strips all in view.'
+  - qol: Removed now obsolete "cryo clf" roles from the gear list
+  - qol: changed multiple single letter definitions to more apt definitions
+  - rscadd: Added a new selection to the create-humans panel where the spawning admin
+      gets to choose the level of equipment ("full equipment", "no weapons", "no equipment")
+  - admin: made IDs exempt from being removed by the strip verbs
+  realforest2001:
+  - rscadd: Added the ability for carbon mobs to have special blood.
+  - code_imp: Updated the get_blood_id proc for xenos to check a variable rather than
+      hard-code overrides for Queen and Praetorian.
+  - code_imp: Changed most references to blood color to use defines.

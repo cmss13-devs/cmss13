@@ -87,6 +87,7 @@
 	return 1
 
 /datum/game_mode/whiskey_outpost/pre_setup()
+	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
 	for(var/obj/effect/landmark/whiskey_outpost/xenospawn/X)
 		xeno_spawns += X.loc
 	for(var/obj/effect/landmark/whiskey_outpost/supplydrops/S)

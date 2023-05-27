@@ -858,6 +858,7 @@
 	new_human.set_species(SYNTH_COLONY_GEN_ONE)
 
 /datum/equipment_preset/clf/synth/load_gear(mob/living/carbon/human/new_human)
+	load_name(H)
 	var/obj/item/clothing/under/colonist/clf/CLF = new()
 	var/obj/item/clothing/accessory/storage/webbing/W = new()
 	CLF.attach_accessory(new_human, W)

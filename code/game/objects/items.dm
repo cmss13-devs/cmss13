@@ -1065,5 +1065,5 @@ cases. Override_icon_state should be a list.*/
 
 
 /// override for subtypes that require extra behaviour when spawned from a vendor
-/obj/item/proc/post_vendor_spawn_hook(mob/living/carbon/human/user)
+/obj/proc/post_vendor_spawn_hook(mob/living/carbon/human/user)
 	return

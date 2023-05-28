@@ -266,18 +266,22 @@
 	else
 		background.color = MINIMAP_ICON_BACKGROUND_CIVILIAN
 
-	if(islist(minimap_icon))
-		for(var/icons in minimap_icon)
+	var/minimap_icon_to_use = minimap_icon ? minimap_icon : "unknown"
+
+	if(user?.assigned_squad?.squad_leader == user)
+		minimap_icon_to_use == "leader"
+
+	if(islist(minimap_icon_to_use))
+		for(var/icons in minimap_icon_to_use)
 			var/iconstate = icons ? icons : "unknown"
 			var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)
 			icon.appearance_flags = RESET_COLOR
 
-			if(minimap_icon[icons])
-				icon.color = minimap_icon[icons]
+			if(minimap_icon_to_use[icons])
+				icon.color = minimap_icon_to_use[icons]
 			background.overlays += icon
 	else
-		var/iconstate = minimap_icon ? minimap_icon : "unknown"
-		var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)
+		var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = minimap_icon_to_use)
 		icon.appearance_flags = RESET_COLOR
 		background.overlays += icon
 

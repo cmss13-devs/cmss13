@@ -564,6 +564,7 @@
 				R.keys -= key
 				qdel(key)
 			R.recalculateChannels()
+			R.update_minimap_icon()
 		if(istype(old_lead.wear_id, /obj/item/card/id))
 			var/obj/item/card/id/ID = old_lead.wear_id
 			ID.access -= ACCESS_MARINE_LEADER

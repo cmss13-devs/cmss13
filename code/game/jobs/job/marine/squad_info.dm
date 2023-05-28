@@ -124,6 +124,11 @@
 	var/obj/item/card/id/ID = null
 	if(squad_leader)
 		ID = squad_leader.get_idcard()
+
+		var/obj/item/device/radio/headset/radio = squad_leader.get_type_in_ears(/obj/item/device/radio)
+		if(radio)
+			radio.update_minimap_icon()
+
 	squad_info_data["sl"]["name"] = squad_leader ? squad_leader.real_name : "None"
 	squad_info_data["sl"]["refer"] = squad_leader ? "\ref[squad_leader]" : null
 	squad_info_data["sl"]["paygrade"] = ID ? get_paygrades(ID.paygrade, 1) : ""

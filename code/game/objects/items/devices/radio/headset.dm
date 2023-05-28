@@ -354,7 +354,7 @@
 		set_undefibbable_on_minimap(z_level, marker_flags)
 		return
 
-	if(wearer.stat == DEAD)
+	if(wearer.stat == DEAD || wearer.chestburst == 2)
 		set_dead_on_minimap(z_level, marker_flags)
 		return
 

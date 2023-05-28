@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - balance: "Without a hive core Xenos no longer get stored larva from latejoin marines or bursts"

@@ -1,0 +1,5 @@
+author: "NewyearnewmeUwu"
+delete-after: True
+changes:
+  - rscadd: "Added armor preference as an option in the preferences menu"
+  - code_imp: "Changed the way armor variation is handled upon initializing. Also, surplus uniform vendors now use an essentials set to randomly pick an armor set regardless of your preferences."

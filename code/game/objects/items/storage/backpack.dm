@@ -418,7 +418,7 @@
 
 /obj/item/storage/backpack/marine/ammo_rack/pickup(mob/user, silent)
 	. = ..()
-	RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, /obj/item/storage/backpack/marine/ammo_rack/(handle_movedelay))
+	RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
 
 /obj/item/storage/backpack/marine/ammo_rack/proc/handle_movedelay(mob/user, list/movedata)
 	SIGNAL_HANDLER
@@ -427,7 +427,7 @@
 
 /obj/item/storage/backpack/marine/ammo_rack/dropped(mob/user, silent)
 	. = ..()
-	UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, /obj/item/storage/backpack/marine/ammo_rack/proc/handle_movedelay)
+	UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
 
 /obj/item/storage/backpack/marine/medic
 	name = "\improper USCM corpsman backpack"

@@ -550,7 +550,6 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/drinks/flask/weylandyutani/poison,
 		/obj/item/reagent_container/food/drinks/bottle/holywater/bong,
 		/obj/item/storage/pill_bottle/paracetamol,
-		/obj/item/storage/pill_bottle/zombie_powder,
 	)
 	dollar_cost = 25
 	containertype = /obj/structure/largecrate/black_market

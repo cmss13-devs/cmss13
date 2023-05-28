@@ -58,13 +58,10 @@
 	if(!toggleable)
 		to_chat(user, SPAN_WARNING("You cannot toggle \the [src.name] on or off."))
 		return FALSE
+
 	if(!isturf(user.loc))
-		if(on)
-			to_chat(user, SPAN_WARNING("You cannot turn the light off while in [user.loc].")) //To prevent some lighting anomalities.
-			return FALSE
-		else
-			to_chat(user, SPAN_WARNING("You cannot turn the light on while in [user.loc].")) //To prevent some lighting anomalities.
-			return FALSE
+		to_chat(user, SPAN_WARNING("You cannot turn the light on or off while in [user.loc].")) //To prevent some lighting anomalities.
+		return FALSE
 
 	on = !on
 	update_brightness(user)

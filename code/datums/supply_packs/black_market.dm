@@ -545,7 +545,6 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 	randomised_num_contained = 5
 	contains = list(
 		/obj/item/storage/pill_bottle/happy,
-		/obj/item/storage/pill_bottle/mystery,
 		/obj/item/storage/pill_bottle/russianRed/skillless,
 		/obj/item/reagent_container/food/drinks/flask/weylandyutani/poison,
 		/obj/item/reagent_container/food/drinks/bottle/holywater/bong,
@@ -1177,7 +1176,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 		if(61 to 65)
 			// backpacks
 			for(var/i in 1 to rand(3, 6))
-				var/pack_type = pick(subtypesof(/obj/item/storage/backpack))
+				var/pack_type = pick(subtypesof(/obj/item/storage/backpack/marine))
 				var/obj/item/storage/backpack/pack = new pack_type(loc)
 				if(pack.max_storage_space > 15)
 					pack.max_storage_space = 15

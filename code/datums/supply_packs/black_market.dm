@@ -1162,7 +1162,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
 			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
 			loot_message = SPAN_NOTICE("It's a bunch of random junk...")
-		if(51 to 65)
+		if(51 to 70)
 			new /obj/effect/spawner/random/bomb_supply(loc)
 			new /obj/effect/spawner/random/bomb_supply(loc)
 			new /obj/effect/spawner/random/toolbox(loc)
@@ -1174,7 +1174,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			else
 				new /obj/effect/spawner/random/attachment(loc)
 			loot_message = SPAN_NOTICE("Just some old equipment and parts.")
-		if(66 to 70)
+		if(71 to 75)
 		// CLF corpse!! Why is this here? Don't ask.
 			var/mob/living/carbon/human/corpse = new (loc)
 			corpse.create_hud() //Need to generate hud before we can equip anything apparently...
@@ -1183,12 +1183,6 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			arm_equipment(corpse, corpse_type, TRUE, FALSE) // I didn't choose the shitcode life, the shitcode life chose me
 
 			loot_message = SPAN_HIGHDANGER("IT'S A CORPSE!!")
-		if(71 to 75)
-		// Costumes.
-			new /obj/effect/landmark/costume/random(loc)
-			new /obj/effect/landmark/costume/random(loc)
-			new /obj/effect/landmark/costume/random(loc)
-			loot_message = SPAN_NOTICE("What the hell is this..?")
 		if(76 to 90)
 		// Random supply garbage.
 			new /obj/effect/spawner/random/tool(loc)

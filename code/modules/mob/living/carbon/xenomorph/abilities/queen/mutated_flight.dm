@@ -1,7 +1,8 @@
 /datum/action/xeno_action/activable/flight
 	name = "Flight"
 	action_icon_state = "flight"
-	plasma_cost = 500
+	plasma_cost = 200
+	xeno_cooldown = 1 MINUTES
 	var/max_distance = 5
 	var/speed = 5
 
@@ -26,6 +27,8 @@
 
 	use_plasma_owner()
 	playsound(owner, 'sound/effects/wingflap.ogg')
+	owner.visible_message(SPAN_DANGER("\The [src] spreads their wings and leaps into the air!"), \
+		SPAN_DANGER("You spread your wings and leap into the air!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 	var/turf/t_turf = get_turf(target)
 	var/obj/effect/warning/hover/warning = new(t_turf)

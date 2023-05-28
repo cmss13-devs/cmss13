@@ -31,6 +31,9 @@
 	var/notification_sound = TRUE // Whether the bracer pings when a message comes or not
 	var/charge = 1500
 	var/charge_max = 1500
+	var/charge_rate = 30
+	var/charge_cooldown = 3 MINUTES
+	var/last_charge
 	var/cloaked = 0
 	var/cloak_timer = 0
 	var/cloak_malfunction = 0
@@ -75,11 +78,27 @@
 	if(!ishuman(loc))
 		STOP_PROCESSING(SSobj, src)
 		return
-	var/mob/living/carbon/human/H = loc
+	var/mob/living/carbon/human/hooman = loc
 
-	charge = min(charge + 30, charge_max)
-	var/perc_charge = (charge / charge_max * 100)
-	H.update_power_display(perc_charge)
+	if(charge < charge_max)
+		var/charge_increase = charge_rate
+		if(is_ground_level(hooman.z))
+			charge_increase = charge_rate / 6
+		else if(is_mainship_level(hooman.z))
+			charge_increase = charge_rate / 3
+
+		charge = min(charge + charge_increase, charge_max)
+		var/perc_charge = (charge / charge_max * 100)
+		hooman.update_power_display(perc_charge)
+
+	//Non-Yautja have a chance to get stunned with each power drain
+	if(cloaked)
+		if(!HAS_TRAIT(hooman, TRAIT_YAUTJA_TECH) && !hooman.hunter_data.thralled)
+			if(prob(15))
+				decloak(hooman)
+				shock_user(hooman)
+		if(hooman.stat == DEAD)
+			decloak(hooman, TRUE)
 
 /// handles decloaking only on HUNTER gloves
 /obj/item/clothing/gloves/yautja/proc/decloak()

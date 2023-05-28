@@ -153,6 +153,11 @@
 		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
 
+/datum/game_mode/colonialmarines/proc/ares_conclude()
+	var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
+	var/input = "Bioscan complete.\n\nNo unknown lifeform signature detected.\n\nSaving operational report to archive.\nCommencing final systems scan in 2 minutes."
+	marine_announcement(input, name, 'sound/AI/bioscan.ogg')
+
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -288,6 +293,7 @@
 			else
 				SSticker.roundend_check_paused = TRUE
 				round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
+				ares_conclude()
 				addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
 		else if(!num_humans && !num_xenos)
 			round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.

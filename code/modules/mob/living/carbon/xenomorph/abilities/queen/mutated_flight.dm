@@ -1,6 +1,6 @@
 /datum/action/xeno_action/activable/flight
 	name = "Flight"
-	action_icon_state = "grow_ovipositor"
+	action_icon_state = "flight"
 	plasma_cost = 500
 	var/max_distance = 5
 	var/speed = 5

@@ -248,6 +248,12 @@
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
 
+/obj/item/clothing/shoes/yautja/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/tool/yautja_cleaner))
+		if(handle_dissolve())
+			return
+	..()
+
 /obj/item/clothing/shoes/yautja/hunter
 	name = "clan greaves"
 	desc = "A pair of armored, perfectly balanced boots. Perfect for running through the jungle."
@@ -327,6 +333,7 @@
 	unacidable = TRUE
 	ignore_z = TRUE
 	black_market_value = 100
+	flags_item = ITEM_PREDATOR
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
 	if(!isyautja(M)) //Nope.
@@ -338,8 +345,11 @@
 			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
 
-/obj/item/device/radio/headset/yautja/attackby()
-	return
+/obj/item/device/radio/headset/yautja/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/tool/yautja_cleaner))
+		if(handle_dissolve())
+			return
+	..()
 
 /obj/item/device/radio/headset/yautja/elder //primarily for use in another MR
 	name = "\improper Elder Communicator"
@@ -697,6 +707,7 @@
 	var/tether_range = 5
 	var/mob/trapped_mob
 	layer = LOWER_ITEM_LAYER
+	flags_item = ITEM_PREDATOR
 
 /obj/item/hunting_trap/Destroy()
 	cleanup_tether()

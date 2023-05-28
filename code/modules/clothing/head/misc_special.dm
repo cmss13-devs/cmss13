@@ -130,11 +130,10 @@
 	..()
 
 	if(!isturf(user.loc))
-		to_chat(user, SPAN_WARNING("You cannot turn the light on or off while in [user.loc].")) //To prevent some lighting anomalities.
+		to_chat(user, SPAN_WARNING("You cannot turn the light [on ? "off" : "on" ] while in [user.loc].")) //To prevent some lighting anomalities.
 		return FALSE
 
 	on = !on
-	icon_state = "hardhat[on]_pumpkin"
 
 	if(on)
 		user.SetLuminosity(brightness_on, FALSE, src)

@@ -83,6 +83,7 @@
 /obj/effect/attach_point/crew_weapon
 	name = "crew compartment attach point"
 	base_category = DROPSHIP_CREW_WEAPON
+	plane = FLOOR_PLANE
 
 /obj/effect/attach_point/crew_weapon/dropship1
 	ship_tag = DROPSHIP_ALAMO

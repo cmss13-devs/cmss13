@@ -330,7 +330,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PLAYTIME_TIER_2  (25 HOURS)
 #define JOB_PLAYTIME_TIER_3  (70 HOURS)
 #define JOB_PLAYTIME_TIER_4  (175 HOURS)
-#define JOB_PLAYTIME_TIER_5  (1000 HOURS)
+#define JOB_PLAYTIME_TIER_5  (1100 HOURS)
 
 #define XENO_NO_AGE  -1
 #define XENO_NORMAL 0

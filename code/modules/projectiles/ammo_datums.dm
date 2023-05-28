@@ -2210,8 +2210,9 @@
 
 	damage = 40
 	shell_speed = AMMO_SPEED_TIER_2
-
-/datum/ammo/energy/yautja/pistol/set_bullet_traits()
+/datum/ammo/energy/yautja/pistol/incendiary
+	damage = 10
+/datum/ammo/energy/yautja/pistol/incendiary/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)

@@ -937,6 +937,8 @@
 	muzzle_flash = null // TO DO, add a decent one.
 	w_class = SIZE_MEDIUM
 	var/charge_time = 40
+	var/shot_cost = 1
+	var/mode = "standard"
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|IGNITING_ITEM|TWOHANDED
 
@@ -977,9 +979,14 @@
 	if(isyautja(user))
 		. = ..()
 		. += SPAN_NOTICE("It currently has <b>[charge_time]/40</b> charge.")
+
+		if(mode == "incendiary")
+			. += SPAN_RED("It is set to fire incendiary plasma bolts.")
+		else
+			. += SPAN_ORANGE("It is set to fire plasma bolts.")
 	else
 		. = list()
-		. += SPAN_NOTICE("This thing looks like an alien rifle of some kind. Strange.")
+		. += SPAN_NOTICE("This thing looks like an alien gun of some kind. Strange.")
 
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/able_to_fire(mob/user)
@@ -1007,8 +1014,26 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
-	if(refund) charge_time *= 2
+	if(refund)
+		charge_time *= 2
+		log_debug("Plasma Pistol refunded shot.")
 	return TRUE
+
+/obj/item/weapon/gun/energy/yautja/plasmapistol/use_unique_action()
+	switch(mode)
+		if("standard")
+			mode = "incendiary"
+			shot_cost = 5
+			fire_delay = FIRE_DELAY_TIER_5
+			to_chat(usr, SPAN_NOTICE("[src] will now fire incendiary plasma bolts."))
+			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/pistol/incendiary]
+
+		if("incendiary")
+			mode = "standard"
+			shot_cost = 1
+			fire_delay = FIRE_DELAY_TIER_7
+			to_chat(usr, SPAN_NOTICE("[src] will now fire plasma bolts."))
+			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/pistol]
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster
 	name = "plasma caster"

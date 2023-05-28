@@ -905,6 +905,17 @@
 	flags_item = ITEM_PREDATOR|DELONDROP|NODROP
 	paygrade = null
 
+/obj/item/tool/yautja_cleaner
+	name = "cleanser gel vial"
+	desc = "Used for dissolving the gear of the fallen whilst in the field."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "blue_gel"
+	force = 0
+	throwforce = 1
+	w_class = SIZE_SMALL
+	flags_item = ITEM_PREDATOR
+	black_market_value = 150
+
 /obj/item/storage/medicomp
 	name = "medicomp"
 	desc = "A complex kit of alien tools and medicines."

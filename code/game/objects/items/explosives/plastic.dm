@@ -294,6 +294,9 @@
 	cell_explosion(target_turf, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 	qdel(src)
 
+/obj/item/explosive/plastic/proc/delayed_prime(turf/target_turf)
+	prime(TRUE)
+
 /obj/item/explosive/plastic/custom
 	name = "Custom plastic explosive"
 	desc = "A custom plastic explosive."

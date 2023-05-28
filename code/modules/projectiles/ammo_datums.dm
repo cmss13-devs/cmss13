@@ -2217,6 +2217,18 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
+/datum/ammo/bullet/shrapnel/plasma
+	name = "plasma wave"
+	shrapnel_chance = 0
+	penetration = ARMOR_PENETRATION_TIER_10
+	accuracy = HIT_ACCURACY_TIER_MAX
+	damage = 15
+	icon_state = "shrapnel_plasma"
+	damage_type = BURN
+
+/datum/ammo/bullet/shrapnel/plasma/on_hit_mob(mob/M, obj/item/projectile/P)
+	M.apply_effect(2, WEAKEN)
+
 /datum/ammo/energy/yautja/caster
 	name = "root caster bolt"
 	icon_state = "ion"

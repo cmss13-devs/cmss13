@@ -750,8 +750,8 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_9
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
 
-/obj/item/attachable/flashlight/laser_light_combo/attackby(obj/item/Combo_Light, mob/user)
-	if(HAS_TRAIT(Combo_Light, TRAIT_TOOL_SCREWDRIVER))
+/obj/item/attachable/flashlight/laser_light_combo/attackby(obj/item/combo_light, mob/user)
+	if(HAS_TRAIT(combo_light, TRAIT_TOOL_SCREWDRIVER))
 		to_chat(user, SPAN_NOTICE("You are unable to modify it."))
 	return
 

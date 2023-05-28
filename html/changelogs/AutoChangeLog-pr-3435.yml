@@ -1,0 +1,4 @@
+author: "Khadd"
+delete-after: True
+changes:
+  - bugfix: "fixed upp synths having 2 different names and clf synths now get a name when they're given the equipment preset"

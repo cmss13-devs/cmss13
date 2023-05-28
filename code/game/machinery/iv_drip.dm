@@ -5,7 +5,7 @@
 	density = FALSE
 	drag_delay = 1
 
-	var/mob/living/carbon/human/attached = null
+	var/mob/living/carbon/attached = null
 	var/mode = 1 // 1 is injecting, 0 is taking blood.
 	var/obj/item/reagent_container/beaker = null
 
@@ -46,6 +46,7 @@
 		if(attached)
 			H.visible_message("[H] detaches \the [src] from \the [attached].", \
 			"You detach \the [src] from \the [attached].")
+			attached.active_transfusions -= src
 			attached = null
 			update_icon()
 			stop_processing()
@@ -55,6 +56,7 @@
 			H.visible_message("[H] attaches \the [src] to \the [over_object].", \
 			"You attach \the [src] to \the [over_object].")
 			attached = over_object
+			attached.active_transfusions += src
 			update_icon()
 			start_processing()
 
@@ -93,6 +95,7 @@
 			attached.apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
 			if(attached.pain.feels_pain)
 				attached.emote("scream")
+			attached.active_transfusions -= src
 			attached = null
 			update_icon()
 			stop_processing()

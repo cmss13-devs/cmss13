@@ -18,11 +18,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/medseceng)
 "aaf" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_s_research)
 "aag" = (
@@ -633,11 +629,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/research_hab)
 "abZ" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_s_research)
 "aca" = (
@@ -1560,11 +1552,7 @@
 	},
 /area/shiva/interior/colony/central)
 "agy" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_s_research)
 "agz" = (
@@ -2033,11 +2021,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "aiW" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_lz2)
 "aiZ" = (
@@ -2182,11 +2166,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "ajT" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/colony/medseceng)
 "ajU" = (
@@ -2239,11 +2219,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "akf" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_s_research)
 "akh" = (
@@ -2707,11 +2683,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "amQ" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
 "amR" = (
@@ -3671,11 +3643,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "atv" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_lz2)
 "aty" = (
@@ -7347,11 +7315,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "bnD" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "bnS" = (
@@ -9839,11 +9803,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "ejX" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
 "ekH" = (
@@ -11273,11 +11233,7 @@
 	},
 /area/shiva/interior/bar)
 "fUZ" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
 "fVl" = (
@@ -12282,11 +12238,7 @@
 	},
 /area/shiva/interior/lz2_habs)
 "gYu" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
 "gZG" = (
@@ -12396,11 +12348,7 @@
 	},
 /area/shiva/exterior/lz2_fortress)
 "hkC" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
 "hkS" = (
@@ -12927,11 +12875,7 @@
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "hIz" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "hIC" = (
@@ -13801,11 +13745,7 @@
 	},
 /area/shiva/interior/colony/botany)
 "iCF" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_colony_grounds)
 "iCJ" = (
@@ -14292,11 +14232,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "jaF" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/valley)
 "jaU" = (
@@ -14615,11 +14551,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
 "jxh" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/valley)
 "jxJ" = (
@@ -15381,11 +15313,7 @@
 	},
 /area/shiva/interior/colony/s_admin)
 "kri" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "krm" = (
@@ -25749,11 +25677,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "vjy" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "vjH" = (

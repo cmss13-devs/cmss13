@@ -1,4 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - bugfix: "Chemical Investigation Goons should now properly be shown their actual objective."

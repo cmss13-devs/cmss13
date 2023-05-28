@@ -1628,10 +1628,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "fJ" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/one_south)
 "fL" = (
@@ -1677,11 +1674,7 @@
 	},
 /area/whiskey_outpost/inside/living)
 "fU" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/jungle{
 	bushes_spawn = 0;
 	icon_state = "grass_impenetrable"
@@ -2149,11 +2142,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "hy" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirtgrassborder{
 	dir = 8
 	},
@@ -2544,10 +2533,7 @@
 /turf/open/floor/plating,
 /area/whiskey_outpost/inside/hospital)
 "iD" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/four_south)
 "iF" = (
@@ -3020,11 +3006,7 @@
 	},
 /area/whiskey_outpost/inside/living)
 "ke" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/south/far)
 "kg" = (
@@ -3346,11 +3328,7 @@
 	},
 /area/whiskey_outpost)
 "lp" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/south/very_far)
 "lq" = (
@@ -5695,11 +5673,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "tK" = (
@@ -6261,11 +6235,7 @@
 	},
 /area/whiskey_outpost/inside/bunker)
 "vF" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "vG" = (
@@ -6376,10 +6346,7 @@
 	},
 /area/whiskey_outpost/inside/bunker)
 "wb" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/coast{
 	icon_state = "beachcorner2"
 	},
@@ -6859,11 +6826,7 @@
 	},
 /area/whiskey_outpost/inside/bunker)
 "xK" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
@@ -7256,6 +7219,15 @@
 	icon_state = "asteroidwarning"
 	},
 /area/whiskey_outpost/outside/north/platform)
+"yW" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/machinery/cm_vending/clothing/medic,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/whiskey_outpost/inside/bunker/bunker/front)
 "yX" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor{
@@ -7453,11 +7425,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
 "zK" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/inside/caves/caverns)
 "zM" = (
@@ -7891,6 +7859,15 @@
 	icon_state = "asteroidwarning"
 	},
 /area/whiskey_outpost/outside/north/platform)
+"Br" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/machinery/cm_vending/clothing/medic,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/whiskey_outpost/inside/bunker/bunker/front)
 "Bs" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -8259,11 +8236,12 @@
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/one_north)
 "CE" = (
-/turf/open/jungle{
-	bushes_spawn = 0;
-	icon_state = "grass_impenetrable"
+/obj/structure/machinery/cm_vending/clothing/medic,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
 	},
-/area/whiskey_outpost/outside/lane/two_north)
+/area/whiskey_outpost)
 "CG" = (
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_south)
@@ -8590,11 +8568,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "DU" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_south)
 "DV" = (
@@ -9085,10 +9059,7 @@
 /turf/open/gm/coast,
 /area/whiskey_outpost/outside/lane/four_north)
 "FH" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/west)
 "FI" = (
@@ -9245,12 +9216,6 @@
 	icon_state = "grassbeach"
 	},
 /area/whiskey_outpost/outside/south)
-"Gj" = (
-/turf/open/jungle{
-	bushes_spawn = 0;
-	icon_state = "grass_impenetrable"
-	},
-/area/whiskey_outpost/outside/lane/two_north)
 "Gl" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
@@ -9319,11 +9284,7 @@
 /area/whiskey_outpost/outside/north/beach)
 "GA" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "GB" = (
@@ -9696,11 +9657,7 @@
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/one_north)
 "HX" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/effect/decal/cleanable/blood/writing,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south/very_far)
@@ -9876,11 +9833,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_north)
 "IC" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/north/northwest)
 "IF" = (
@@ -9904,11 +9857,7 @@
 /turf/open/floor,
 /area/whiskey_outpost/outside/south/far)
 "IK" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirtgrassborder{
 	dir = 8
 	},
@@ -10442,11 +10391,7 @@
 	},
 /area/whiskey_outpost/inside/hospital/triage)
 "Lp" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/disposalpipe/segment,
 /turf/open/gm/grass,
 /area/whiskey_outpost/outside/north/northwest)
@@ -10574,11 +10519,7 @@
 	},
 /area/whiskey_outpost/outside/lane/three_south)
 "LR" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/disposalpipe/segment,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
@@ -10830,10 +10771,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "MR" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/two_north)
 "MU" = (
@@ -10868,11 +10806,7 @@
 /turf/open/gm/coast,
 /area/whiskey_outpost/outside/lane/four_north)
 "Nc" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/jungle{
 	bushes_spawn = 0;
 	icon_state = "grass_impenetrable"
@@ -10968,10 +10902,7 @@
 /turf/open/jungle/impenetrable,
 /area/whiskey_outpost/outside/south/very_far)
 "Nv" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/grass{
 	icon_state = "grassbeach"
 	},
@@ -11120,10 +11051,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "Ob" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/one_north)
 "Oc" = (
@@ -11244,10 +11172,7 @@
 	},
 /area/whiskey_outpost/outside/river/east)
 "OA" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/four_north)
 "OD" = (
@@ -11261,11 +11186,7 @@
 	},
 /area/whiskey_outpost/outside/lane/three_north)
 "OF" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
 "OG" = (
@@ -11428,10 +11349,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/northwest)
 "Pr" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river)
 "Ps" = (
@@ -11581,10 +11499,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_north)
 "Qa" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/east)
 "Qc" = (
@@ -11615,11 +11530,7 @@
 	},
 /area/whiskey_outpost/outside/south)
 "Ql" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -11781,11 +11692,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north)
 "QV" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_north)
 "QW" = (
@@ -11985,6 +11892,13 @@
 	dir = 1
 	},
 /area/whiskey_outpost/outside/lane/one_north)
+"RU" = (
+/obj/structure/machinery/cm_vending/clothing/medic,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area)
 "RV" = (
 /obj/item/storage/box/m94,
 /turf/open/shuttle/dropship{
@@ -12332,11 +12246,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "Th" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/barricade/plasteel/wired,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/one_north)
@@ -12761,19 +12671,11 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "UO" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/grass,
 /area/whiskey_outpost/outside/north/northwest)
 "UP" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/jungle{
 	bushes_spawn = 0;
 	icon_state = "grass_impenetrable"
@@ -14017,11 +13919,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/two)
 "ZT" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
@@ -22254,7 +22152,7 @@ Zf
 Zf
 Zf
 mT
-Gj
+CE
 GJ
 GJ
 mT
@@ -22457,8 +22355,8 @@ Zf
 Zf
 mT
 GJ
-Gj
-Gj
+CE
+CE
 mT
 Zf
 Zf
@@ -22661,7 +22559,7 @@ mT
 GJ
 GJ
 GJ
-Gj
+CE
 Zf
 Zf
 mT
@@ -22860,7 +22758,7 @@ Zf
 mT
 mT
 mT
-Gj
+CE
 GJ
 GJ
 GJ
@@ -23061,10 +22959,10 @@ Zf
 Zf
 mT
 mT
-Gj
-Gj
+CE
+CE
 GJ
-Gj
+CE
 GJ
 Oq
 Oq
@@ -23265,9 +23163,9 @@ mT
 mT
 GJ
 GJ
-Gj
-Gj
-Gj
+CE
+CE
+CE
 Oq
 Qw
 Qw
@@ -23459,20 +23357,20 @@ mT
 Db
 OD
 gu
-Gj
+CE
 mT
 mT
 mT
-Gj
-Gj
+CE
+CE
 cY
 GJ
-Gj
-Gj
+CE
+CE
 GJ
 GJ
-Gj
-Gj
+CE
+CE
 GJ
 GJ
 GJ
@@ -23667,15 +23565,15 @@ GJ
 GJ
 GJ
 GJ
-Gj
+CE
 GJ
 GJ
 GJ
-Gj
+CE
 GJ
 GJ
 GJ
-Gj
+CE
 GJ
 GJ
 QB
@@ -23796,8 +23694,8 @@ hb
 JT
 ix
 qz
-kh
-kh
+CE
+RU
 kA
 lB
 lO
@@ -23866,19 +23764,19 @@ gu
 GJ
 GJ
 GJ
-Gj
+CE
 GJ
 GJ
-Gj
-Gj
+CE
+CE
 GJ
 GJ
-Gj
-Gj
+CE
+CE
 GJ
 GJ
-Gj
-Gj
+CE
+CE
 GJ
 QB
 CG
@@ -24065,22 +23963,22 @@ QO
 Db
 OD
 gu
-Gj
-Gj
-Gj
-Gj
+CE
+CE
+CE
+CE
 GJ
-Gj
-Gj
-Gj
+CE
+CE
+CE
 GJ
-Gj
-Gj
-Gj
+CE
+CE
+CE
 GJ
-Gj
-Gj
-Gj
+CE
+CE
+CE
 GJ
 QB
 CG
@@ -24267,23 +24165,23 @@ QO
 Db
 OD
 gu
-Gj
-Gj
-Gj
+CE
+CE
+CE
 GJ
-Gj
-Gj
+CE
+CE
 GJ
 GJ
-Gj
-Gj
+CE
+CE
 AE
 In
-Gj
-Gj
+CE
+CE
 GJ
 GJ
-Gj
+CE
 QB
 VH
 CN
@@ -24469,23 +24367,23 @@ Pu
 Db
 OD
 gu
-Gj
-Gj
-Gj
-Gj
-Gj
-Gj
-Gj
-Gj
-Gj
-Gj
-Gj
-Gj
-Gj
-Gj
-Gj
-Gj
-Gj
+CE
+CE
+CE
+CE
+CE
+CE
+CE
+CE
+CE
+CE
+CE
+CE
+CE
+CE
+CE
+CE
+CE
 QB
 CG
 CN
@@ -25684,20 +25582,20 @@ Db
 eG
 QL
 rw
-Gj
-Gj
-Gj
+CE
+CE
+CE
 GJ
 QB
 Db
 Db
 Db
 gu
-Gj
-Gj
+CE
+CE
 GJ
-Gj
-Gj
+CE
+CE
 QB
 CG
 CN
@@ -25895,11 +25793,11 @@ IB
 IB
 sb
 gu
-Gj
+CE
 GJ
 GJ
 GJ
-Gj
+CE
 QB
 VH
 CN
@@ -26097,11 +25995,11 @@ Db
 Db
 ky
 gu
-Gj
-Gj
+CE
+CE
 GJ
 GJ
-Gj
+CE
 QB
 CG
 CN
@@ -26303,7 +26201,7 @@ GJ
 GJ
 GJ
 GJ
-Gj
+CE
 QB
 CG
 mT
@@ -27114,7 +27012,7 @@ UR
 Gw
 UR
 UR
-Gw
+yW
 Nf
 ks
 tV
@@ -28124,7 +28022,7 @@ UR
 ik
 FT
 UR
-ik
+Br
 Nf
 ks
 MF

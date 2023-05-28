@@ -206,8 +206,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	..()
 
 	if(!isturf(user.loc))
-		to_chat(user, SPAN_WARNING("You cannot turn the light on while in [user.loc].")) //To prevent some lighting anomalities.
+		to_chat(user, SPAN_WARNING("You cannot turn the light [is_light_on() ? "off" : "on"] while in [user.loc].")) //To prevent some lighting anomalies.
 		return
+
 	if(flashlight_cooldown > world.time)
 		return
 	if(!ishuman(user))

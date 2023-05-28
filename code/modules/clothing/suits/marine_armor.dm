@@ -147,7 +147,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		select_gamemode_skin(type)
 	armor_overlays = list("lamp") //Just one for now, can add more later.
 	if(armor_variation)
-		post_creation_handling()
+		post_vendor_spawn_hook()
 	update_icon()
 	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
 	pockets.bypass_w_limit = list(
@@ -171,7 +171,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(user) user.update_inv_wear_suit()
 
 
-/obj/item/clothing/suit/storage/marine/proc/post_creation_handling() //used for randomizing/selecting a variant for armors.
+/obj/item/clothing/suit/storage/marine/post_vendor_spawn_hook(mob/living/carbon/human/user) //used for randomizing/selecting a variant for armors.
 	var/new_look //used for the icon_state text replacement.
 
 	if(!usr?.client?.prefs)
@@ -184,7 +184,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		new_look = GLOB.armor_style_list[usr.client.prefs.preferred_armor]
 
 	icon_state = replacetext(icon_state,"1","[new_look]")
-
+	update_icon()
 
 /obj/item/clothing/suit/storage/marine/pickup(mob/user)
 	if(flags_marine_armor & ARMOR_LAMP_ON)

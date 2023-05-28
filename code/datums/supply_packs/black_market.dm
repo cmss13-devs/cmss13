@@ -1162,7 +1162,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
 			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
 			loot_message = SPAN_NOTICE("It's a bunch of random junk...")
-		if(51 to 60)
+		if(51 to 65)
 			new /obj/effect/spawner/random/bomb_supply(loc)
 			new /obj/effect/spawner/random/bomb_supply(loc)
 			new /obj/effect/spawner/random/toolbox(loc)
@@ -1174,14 +1174,6 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			else
 				new /obj/effect/spawner/random/attachment(loc)
 			loot_message = SPAN_NOTICE("Just some old equipment and parts.")
-		if(61 to 65)
-			// backpacks
-			for(var/i in 1 to rand(3, 6))
-				var/pack_type = pick(subtypesof(/obj/item/storage/backpack))
-				var/obj/item/storage/backpack/pack = new pack_type(loc)
-				if(pack.max_storage_space > 15)
-					pack.max_storage_space = 15
-			loot_message = SPAN_NOTICE("Some backpacks. They all look empty though...")
 		if(66 to 70)
 		// CLF corpse!! Why is this here? Don't ask.
 			var/mob/living/carbon/human/corpse = new (loc)

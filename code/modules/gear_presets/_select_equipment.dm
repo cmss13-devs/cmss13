@@ -269,7 +269,7 @@
 	var/minimap_icon_to_use = minimap_icon ? minimap_icon : "unknown"
 
 	if(user?.assigned_squad?.squad_leader == user)
-		minimap_icon_to_use == "leader"
+		minimap_icon_to_use = "leader"
 
 	if(islist(minimap_icon_to_use))
 		for(var/icons in minimap_icon_to_use)

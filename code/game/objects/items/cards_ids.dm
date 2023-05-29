@@ -99,13 +99,6 @@
 
 /obj/item/card/id/Destroy()
 	. = ..()
-	if(!dogtag_taken)
-		var/obj/item/information_tag/info_tag = new(get_turf(src))
-		info_tag.fallen_names = list(registered_name)
-		info_tag.fallen_assgns = list(assignment)
-		info_tag.fallen_blood_types = list(blood_type)
-		info_tag.icon_state = "[information_tag_type]_taken"
-
 	screen_loc = null
 
 /obj/item/card/id/attack_self(mob/user as mob)

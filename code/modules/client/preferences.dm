@@ -1730,7 +1730,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(auto_fit_viewport && owner)
 						owner.fit_viewport()
 
-				if("adapative_zoom")
+				if("adaptive_zoom")
 					adaptive_zoom += 1
 					if(adaptive_zoom == 3)
 						adaptive_zoom = 0

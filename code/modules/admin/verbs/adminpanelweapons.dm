@@ -17,7 +17,7 @@
 	if(!hit_eta)
 		return
 
-	var/intercept_chance = tgui_alert(src, "Chance Point Defence of the ship to intercept, or for the weapon to miss?", "standard PD chance is 0%.", 0, 100, 0, 20 SECONDS)
+	var/intercept_chance = tgui_input_number(src, "Chance Point Defence of the ship to intercept, or for the weapon to miss?", "standard PD chance is 0%.", 0, 100, 0, 20 SECONDS)
 
 	var/targets
 	var/quantity = 1

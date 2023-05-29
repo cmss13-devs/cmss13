@@ -15,10 +15,10 @@ export const NuclearBomb = (_props, context) => {
           <Stack height="100%" direction="column">
             <Stack.Item>
               <NoticeBox textAlign="center">
-                {data.decryption_time
-                  ? `Decryption time left :
-                  ${data.decryption_time}`
-                  : 'Decryption complete.'}
+                {data.decrypting_time
+                  ? 'Decryption complete.'
+                  : `Decryption time left :
+                  ${data.decryption_time} seconds`}
               </NoticeBox>
             </Stack.Item>
             <Stack.Item>

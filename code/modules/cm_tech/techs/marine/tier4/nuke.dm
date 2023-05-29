@@ -1,8 +1,8 @@
-#define NUKE_UNLOCK_TIME 90 MINUTES
+#define NUKE_UNLOCK_TIME (90 MINUTES)
 
 /datum/tech/nuke
 	name = "Nuclear Device"
-	desc = "Purchase a nuclear device. Only armable after 90 minutes into the operation. It's the only way to be sure."
+	//desc = "Purchase a nuclear device. Only able to purchase after X minutes into the operation. It's the only way to be sure." //See New()
 	icon_state = "nuke"
 	icon = 'icons/obj/structures/machinery/nuclearbomb.dmi' //temp, yell at me if you ever see this
 
@@ -14,6 +14,9 @@
 	announce_message = "A nuclear device has been purchased and will be delivered to requisitions via ASRS."
 
 	flags = TREE_FLAG_MARINE
+
+/datum/tech/nuke/New()
+	desc = "Purchase a nuclear device. Only able to purchase [NUKE_UNLOCK_TIME / (1 MINUTES)] minutes into the operation. It's the only way to be sure."
 
 /datum/tech/nuke/on_unlock()
 	. = ..()
@@ -32,8 +35,9 @@
 	if(!.)
 		return
 
-	if(world.time < SSticker.mode.round_time_lobby + NUKE_UNLOCK_TIME)
-		return
+	if(ROUND_TIME < NUKE_UNLOCK_TIME)
+		to_chat(unlocking_mob, SPAN_WARNING("You cannot purchase this node before [NUKE_UNLOCK_TIME / (1 MINUTES)] minutes into the operation."))
+		return FALSE
 
 	return TRUE
 

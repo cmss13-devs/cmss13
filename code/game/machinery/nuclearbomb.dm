@@ -57,7 +57,8 @@ var/bomb_set = FALSE
 	. = ..()
 	if(!timing)
 		update_minimap_icon()
-		return PROCESS_KILL
+		stop_processing()
+		return
 
 	bomb_set = TRUE //So long as there is one nuke timing, it means one nuke is armed.
 	timeleft = explosion_time - world.time
@@ -163,32 +164,32 @@ var/bomb_set = FALSE
 			if(timing == -1)
 				return
 
-			if(!ishuman(usr))
+			if(!ishuman(ui.user))
 				return
 
-			if(!allowed(usr))
-				to_chat(usr, SPAN_INFO("Access denied!"))
+			if(!allowed(ui.user))
+				to_chat(ui.user, SPAN_INFO("Access denied!"))
 				return
 
 			if(!anchored)
-				to_chat(usr, SPAN_INFO("Engage anchors first!"))
+				to_chat(ui.user, SPAN_INFO("Engage anchors first!"))
 				return
 
 			if(safety)
-				to_chat(usr, SPAN_INFO("The safety is still on."))
+				to_chat(ui.user, SPAN_INFO("The safety is still on."))
 				return
 
 			if(!A.can_build_special)
-				to_chat(usr, SPAN_INFO("You cannot deploy [src] here!"))
+				to_chat(ui.user, SPAN_INFO("You cannot deploy [src] here!"))
 				return
 
-			if(usr.action_busy)
+			if(ui.user.action_busy)
 				return
 
-			usr.visible_message(SPAN_WARNING("[usr] begins to [timing ? "disengage" : "engage"] [src]!"), SPAN_WARNING("You begin to [timing ? "disengage" : "engage"] [src]."))
+			ui.user.visible_message(SPAN_WARNING("[ui.user] begins to [timing ? "disengage" : "engage"] [src]!"), SPAN_WARNING("You begin to [timing ? "disengage" : "engage"] [src]."))
 			being_used = TRUE
-			ui = SStgui.try_update_ui(usr, src, ui)
-			if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			ui = SStgui.try_update_ui(ui.user, src, ui)
+			if(do_after(ui.user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				timing = !timing
 				if(timing)
 					if(!safety)
@@ -208,21 +209,21 @@ var/bomb_set = FALSE
 			. = TRUE
 
 		if("toggleSafety")
-			if(!allowed(usr))
-				to_chat(usr, SPAN_INFO("Access denied!"))
+			if(!allowed(ui.user))
+				to_chat(ui.user, SPAN_INFO("Access denied!"))
 				return
 			if(timing)
-				to_chat(usr, SPAN_INFO("Disengage first!"))
+				to_chat(ui.user, SPAN_INFO("Disengage first!"))
 				return
 			if(!A.can_build_special)
-				to_chat(usr, SPAN_INFO("You cannot deploy [src] here!"))
+				to_chat(ui.user, SPAN_INFO("You cannot deploy [src] here!"))
 				return
-			if(usr.action_busy)
+			if(ui.user.action_busy)
 				return
-			usr.visible_message(SPAN_WARNING("[usr] begins to [safety ? "disable" : "enable"] the safety on [src]!"), SPAN_WARNING("You begin to [safety ? "disable" : "enable"] the safety on [src]."))
+			ui.user.visible_message(SPAN_WARNING("[ui.user] begins to [safety ? "disable" : "enable"] the safety on [src]!"), SPAN_WARNING("You begin to [safety ? "disable" : "enable"] the safety on [src]."))
 			being_used = TRUE
-			ui = SStgui.try_update_ui(usr, src, ui)
-			if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			ui = SStgui.try_update_ui(ui.user, src, ui)
+			if(do_after(ui.user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				safety = !safety
 				playsound(src.loc, 'sound/items/poster_being_created.ogg', 100, 1)
 			being_used = FALSE
@@ -232,44 +233,44 @@ var/bomb_set = FALSE
 			. = TRUE
 
 		if("toggleCommandLockout")
-			if(!ishuman(usr))
+			if(!ishuman(ui.user))
 				return
-			if(!allowed(usr))
-				to_chat(usr, SPAN_INFO("Access denied!"))
+			if(!allowed(ui.user))
+				to_chat(ui.user, SPAN_INFO("Access denied!"))
 				return
 			if(command_lockout)
 				command_lockout = FALSE
 				req_one_access = list()
-				to_chat(usr, SPAN_INFO("Command lockout disengaged."))
+				to_chat(ui.user, SPAN_INFO("Command lockout disengaged."))
 			else
 				//Check if they have command access
 				var/list/acc = list()
-				var/mob/living/carbon/human/H = usr
+				var/mob/living/carbon/human/H = ui.user
 				if(H.wear_id)
 					acc += H.wear_id.GetAccess()
 				if(H.get_active_hand())
 					acc += H.get_active_hand().GetAccess()
 				if(!(ACCESS_MARINE_COMMAND in acc))
-					to_chat(usr, SPAN_INFO("Access denied!"))
+					to_chat(ui.user, SPAN_INFO("Access denied!"))
 					return
 
 				command_lockout = TRUE
 				req_one_access = list(ACCESS_MARINE_COMMAND)
-				to_chat(usr, SPAN_INFO("Command lockout engaged."))
+				to_chat(ui.user, SPAN_INFO("Command lockout engaged."))
 			. = TRUE
 
 		if("toggleAnchor")
 			if(timing)
-				to_chat(usr, SPAN_INFO("Disengage first!"))
+				to_chat(ui.user, SPAN_INFO("Disengage first!"))
 				return
 			if(!A.can_build_special)
-				to_chat(usr, SPAN_INFO("You cannot deploy [src] here!"))
+				to_chat(ui.user, SPAN_INFO("You cannot deploy [src] here!"))
 				return
-			if(usr.action_busy)
+			if(ui.user.action_busy)
 				return
 			being_used = TRUE
-			ui = SStgui.try_update_ui(usr, src, ui)
-			if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			ui = SStgui.try_update_ui(ui.user, src, ui)
+			if(do_after(ui.user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				if(!anchored)
 					visible_message(SPAN_INFO("With a steely snap, bolts slide out of [src] and anchor it to the flooring."))
 				else
@@ -280,7 +281,7 @@ var/bomb_set = FALSE
 			. = TRUE
 
 	update_icon()
-	add_fingerprint(usr)
+	add_fingerprint(ui.user)
 
 /obj/structure/machinery/nuclearbomb/verb/make_deployable()
 	set category = "Object"
@@ -407,27 +408,39 @@ var/bomb_set = FALSE
 	SSminimaps.remove_marker(src)
 	return ..()
 
-#define DECRYPTION_OVER -1
-
 /obj/structure/machinery/nuclearbomb/tech
 
-	var/decryption_time = 10 MINUTES
+	var/decryption_time = 1 MINUTES //return to 10 minutes before TM - Morrow
 	var/decryption_end_time = null
 	var/decrypting = FALSE
 
 	timeleft = 1 MINUTES
 	timer_announcements_flags = NUKE_DECRYPT_SHOW_TIMER_ALL
 
+	var/list/linked_decryption_towers
+
 /obj/structure/machinery/nuclearbomb/tech/Initialize(mapload)
 	. = ..()
 
-	//add signal handlers if possible, else dump decryption time
+	linked_decryption_towers = list()
+
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/machinery/nuclearbomb/tech/LateInitialize()
+	. = ..()
+
+	for(var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/possible_telecomm in GLOB.all_static_telecomms_towers)
+		if(is_ground_level(possible_telecomm.z))
+			linked_decryption_towers += possible_telecomm
+
+	for(var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/telecomm_unit in linked_decryption_towers)
+		RegisterSignal(telecomm_unit, COMSIG_COMM_RELAY_SHUT_DOWN, PROC_REF(connected_comm_shutdown))
 
 /obj/structure/machinery/nuclearbomb/tech/ui_data(mob/user)
 	var/list/data = ..()
 
 	data["decrypting"] = decrypting
-	data["decryption_time"] = decryption_time
+	data["decryption_time"] = decryption_time / (1 SECONDS)
 
 	return data
 
@@ -437,32 +450,35 @@ var/bomb_set = FALSE
 
 	switch(action)
 		if("toggleEncryption")
-			if(decrypting == DECRYPTION_OVER)
+			if(!ishuman(ui.user))
 				return
 
-			if(!ishuman(usr))
-				return
-
-			if(!allowed(usr))
-				to_chat(usr, SPAN_INFO("Access denied!"))
+			if(!allowed(ui.user))
+				to_chat(ui.user, SPAN_INFO("Access denied!"))
 				return
 
 			if(!anchored)
-				to_chat(usr, SPAN_INFO("Engage anchors first!"))
+				to_chat(ui.user, SPAN_INFO("Engage anchors first!"))
 				return
 
 			var/area/A = get_area(src)
 			if(!A.can_build_special)
-				to_chat(usr, SPAN_INFO("You cannot deploy [src] here!"))
+				to_chat(ui.user, SPAN_INFO("You cannot deploy [src] here!"))
 				return
 
-			if(usr.action_busy)
+			if(is_ground_level(z))
+				for(var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/telecomm_unit in linked_decryption_towers)
+					if(!telecomm_unit.on)
+						to_chat(ui.user, SPAN_INFO("The groundside telecommunication relays must be activated!"))
+						return
+
+			if(ui.user.action_busy)
 				return
 
-			usr.visible_message(SPAN_WARNING("[usr] begins to [decrypting ? "stop the decryption process." : "start decrypting."]!"), SPAN_WARNING("You begin to [decrypting ? "stop the decryption process." : "start decrypting."]."))
+			ui.user.visible_message(SPAN_WARNING("[ui.user] begins to [decrypting ? "stop the decryption process." : "start decrypting."]!"), SPAN_WARNING("You begin to [decrypting ? "stop the decryption process." : "start decrypting."]."))
 			being_used = TRUE
-			ui = SStgui.try_update_ui(usr, src, ui)
-			if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			ui = SStgui.try_update_ui(ui.user, src, ui)
+			if(do_after(ui.user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				decrypting = !decrypting
 				if(decrypting)
 					//add signal handlers
@@ -486,7 +502,11 @@ var/bomb_set = FALSE
 	decryption_time = decryption_end_time - world.time
 
 	if(world.time > decryption_end_time)
-		decrypting = DECRYPTION_OVER
+		decrypting = FALSE
+		decryption_time = 0
+		//add announcemnt for end of decryption
+		stop_processing()
+		return
 
 	else if(timer_announcements_flags)
 		if(timer_announcements_flags & NUKE_DECRYPT_SHOW_TIMER_HALF)
@@ -517,8 +537,8 @@ var/bomb_set = FALSE
 			humans_other -= M
 
 	if(timer_warning)
-		announcement_helper("WARNING.\n\nDECRYPTION IN [round(decryption_time/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
-		announcement_helper("WARNING.\n\nDECRYPTION IN [round(decryption_time/10)] SECONDS.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
+		announcement_helper("DECRYPTION IN [round(decryption_time/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
+		announcement_helper("DECRYPTION IN [round(decryption_time/10)] SECONDS.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
 
 		//preds part
 		var/time_left = duration2text_sec(round(rand(decryption_time - decryption_time / 10, decryption_time + decryption_time / 10)))
@@ -560,10 +580,15 @@ var/bomb_set = FALSE
 				continue
 			xeno_announcement(SPAN_XENOANNOUNCE("The hive killer's initial phase has been halted! Rejoice!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 
+/obj/structure/machinery/nuclearbomb/tech/proc/connected_comm_shutdown(obj/structure/machinery/telecomms/relay/preset/tower/telecomm_unit)
+	if(!decrypting)
+		return
+
+	decrypting = FALSE
+	announce_to_players()
+
 /obj/structure/machinery/nuclearbomb/tech/Destroy()
-	//remove signal handlers
+	for(var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/telecomm_unit in linked_decryption_towers)
+		UnregisterSignal(telecomm_unit, COMSIG_COMM_RELAY_SHUT_DOWN)
 
-
-
-
-#undef DECRYPTION_OVER
+	. = ..()

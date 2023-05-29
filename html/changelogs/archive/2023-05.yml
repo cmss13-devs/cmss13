@@ -505,3 +505,18 @@
   - rscadd: anyone with the skills of a doctor or a pilot can manage the medevac by
       interacting with the system itself.
   - qol: medical stretcher automatically activates when deployed.
+2023-05-29:
+  Huffie56:
+  - bugfix: Fix Inconsistencies with text when toggling lights while being inside
+      a closet for example.
+  Khadd:
+  - bugfix: fixed upp synths having 2 different names and clf synths now get a name
+      when they're given the equipment preset
+  Morrow:
+  - balance: Without a hive core Xenos no longer get stored larva from latejoin marines
+      or bursts
+  NewyearnewmeUwu:
+  - rscadd: Added armor preference as an option in the preferences menu
+  - code_imp: Changed the way armor variation is handled upon initializing. Also,
+      surplus uniform vendors now use an essentials set to randomly pick an armor
+      set regardless of your preferences.

@@ -415,10 +415,9 @@
 		switch(age)
 			if(XENO_NORMAL) name = "[name_prefix]Queen"  //Young
 			if(XENO_MATURE) name = "[name_prefix]Elder Queen"  //Mature
-			if(XENO_ELDER) name = "[name_prefix]Empress"  //Elite
-			if(XENO_ANCIENT) name = "[name_prefix]Elder Empress" //Ancient
-			if(XENO_PRIME) name = "[name_prefix]Ancient Empress" //Primordial
-			if(XENO_APEX) name = "[name_prefix]Prime Empress" //No life, not using Apex here because it never made sense that Elder Queen went to Elder Empress
+			if(XENO_ELDER) name = "[name_prefix]Elder Empress"  //Elite
+			if(XENO_ANCIENT) name = "[name_prefix]Ancient Empress" //Ancient
+			if(XENO_PRIME) name = "[name_prefix]Prime Empress" //Primordial
 	else
 		age = XENO_NORMAL
 		if(client)

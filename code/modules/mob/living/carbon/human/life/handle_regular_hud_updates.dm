@@ -222,3 +222,12 @@
 	else
 		hud_used.tethered_icon.name = ""
 		hud_used.tethered_icon.icon_state = "status_0"
+
+	if(active_transfusions.len)
+		hud_used.tethered_icon.name = "transfusion"
+		hud_used.tethered_icon.icon_state = "status_blood"
+		hud_used.tethered_icon.screen_loc = ui_datum.get_status_loc(status_effect_placement)
+		status_effect_placement++
+	else
+		hud_used.tethered_icon.name = ""
+		hud_used.tethered_icon.icon_state = "status_0"

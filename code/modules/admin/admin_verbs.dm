@@ -49,6 +49,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/vehicle_panel,
 	/client/proc/in_view_panel, /*allows application of aheal/sleep in an AOE*/
 	/client/proc/toggle_lz_resin,
+	/client/proc/strip_all_in_view,
 	/client/proc/rejuvenate_all_in_view,
 	/client/proc/rejuvenate_all_humans_in_view,
 	/client/proc/rejuvenate_all_revivable_humans_in_view,
@@ -130,7 +131,8 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/toggle_shipside_sd,
 	/client/proc/shakeshipverb,
 	/client/proc/adminpanelweapons,
-	/client/proc/adminpanelgq
+	/client/proc/adminpanelgq,
+	/client/proc/toggle_hardcore_perma
 )
 
 var/list/admin_verbs_major_event = list(

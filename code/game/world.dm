@@ -393,8 +393,11 @@ var/datum/BSQL_Connection/connection
 		CRASH("[lib] init error: [init]")
 
 /world/proc/HandleTestRun()
-	//trigger things to run the whole process
+	// Wait for the game ticker to initialize
 	Master.sleep_offline_after_initializations = FALSE
+	UNTIL(SSticker.initialized)
+
+	//trigger things to run the whole process
 	SSticker.request_start()
 	CONFIG_SET(number/round_end_countdown, 0)
 	var/datum/callback/cb

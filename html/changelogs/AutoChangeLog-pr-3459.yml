@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - rscadd: "Adds buyable blood bags to corpsmen vendors"

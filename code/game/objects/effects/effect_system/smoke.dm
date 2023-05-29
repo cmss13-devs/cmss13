@@ -257,6 +257,17 @@
 	smokeranking = SMOKE_RANK_MED
 
 /////////////////////////////////////////
+// Acid Runner Smoke, Harmless Visuals only
+/////////////////////////////////////////
+/obj/effect/particle_effect/smoke/acid_runner_harmless
+	color = "#86B028"
+	time_to_live = 2
+	opacity = FALSE
+	alpha = 200
+	smokeranking = SMOKE_RANK_HARMLESS
+	amount = 0
+
+/////////////////////////////////////////
 // BOILER SMOKES
 /////////////////////////////////////////
 

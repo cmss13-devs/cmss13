@@ -28,6 +28,8 @@
 #define COMSIG_HUMAN_OVERLAY_APPLIED "human_overlay_applied"
 /// From /mob/living/carbon/human/remove_overlay(): (cache_index, overlay_image)
 #define COMSIG_HUMAN_OVERLAY_REMOVED "human_overlay_removed"
+/// From /datum/flaying_datum
+#define COMSIG_HUMAN_FLAY_ATTEMPT "human_flay_attempt"
 
 #define COMSIG_HUMAN_BONEBREAK_PROBABILITY "human_bonebreak_probability"
 

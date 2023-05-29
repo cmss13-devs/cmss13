@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "XvX end and Admin ending round won't play nuclear detonation sequence music anymore."

@@ -174,14 +174,14 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /obj/item/clothing/suit/storage/marine/post_vendor_spawn_hook(mob/living/carbon/human/user) //used for randomizing/selecting a variant for armors.
 	var/new_look //used for the icon_state text replacement.
 
-	if(!usr?.client?.prefs)
+	if(!user?.client?.prefs)
 		new_look = rand(1,armor_variation)
 
-	else if(usr.client.prefs.preferred_armor == "Random")
+	else if(user.client.prefs.preferred_armor == "Random")
 		new_look = rand(1,armor_variation)
 
 	else
-		new_look = GLOB.armor_style_list[usr.client.prefs.preferred_armor]
+		new_look = GLOB.armor_style_list[user.client.prefs.preferred_armor]
 
 	icon_state = replacetext(icon_state,"1","[new_look]")
 	update_icon()

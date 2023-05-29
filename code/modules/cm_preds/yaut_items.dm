@@ -506,7 +506,7 @@
 
 	var/variant = rand(1, 4) //Random sprite variant.
 	icon_state = "scalp_[variant]"
-	blood_color =  "#A10808" //So examine describes it as 'bloody'. Synths can't be scalped so it'll always be human blood.
+	blood_color =  BLOOD_COLOR_HUMAN //So examine describes it as 'bloody'. Synths can't be scalped so it'll always be human blood.
 	flags_atom = FPRINT|NOBLOODY //Don't want the ugly item blood overlay ending up on this. We'll use our own blood overlay.
 
 	var/image/blood_overlay = image('icons/obj/items/hunter/pred_gear.dmi', "scalp_[variant]_blood")
@@ -971,7 +971,7 @@
 	desc = "A bone from a human."
 	icon = 'icons/obj/items/skeleton.dmi'
 	accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi')
-	icon_state = "head"
+	icon_state = null
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
 /obj/item/clothing/accessory/limb/skeleton/l_arm

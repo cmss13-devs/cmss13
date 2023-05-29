@@ -3,7 +3,7 @@
 	name = SPECIES_ZOMBIE
 	name_plural = "Zombies"
 	slowdown = 1
-	blood_color = "#333333"
+	blood_color = BLOOD_COLOR_ZOMBIE
 	icobase = 'icons/mob/humans/species/r_goo_zed.dmi'
 	deform = 'icons/mob/humans/species/r_goo_zed.dmi'
 	eyes = "blank_s"

@@ -20,7 +20,6 @@
 	if(ready)
 		readied_players--
 	GLOB.new_player_list -= src
-	GLOB.dead_mob_list -= src
 	return ..()
 
 /mob/new_player/verb/new_player_panel()
@@ -267,7 +266,7 @@
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
 			if(hive.latejoin_burrowed == TRUE)
-				if(length(hive.totalXenos))
+				if(length(hive.totalXenos) && (hive.hive_location || ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2))
 					hive.stored_larva++
 					hive.hive_ui.update_burrowed_larva()
 

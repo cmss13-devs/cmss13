@@ -19,7 +19,7 @@
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
 	pain_type = /datum/pain/yautja
 	stamina_type = /datum/stamina/none
-	blood_color = "#20d450"
+	blood_color = BLOOD_COLOR_YAUTJA
 	flesh_color = "#907E4A"
 	speech_sounds = list('sound/voice/pred_click1.ogg', 'sound/voice/pred_click2.ogg')
 	speech_chance = 100
@@ -186,7 +186,9 @@
 
 	H.blood_type = "Y*"
 	H.h_style = "Standard"
+	#ifndef UNIT_TESTS // Since this is a hard ref, we shouldn't confuse create_and_destroy
 	GLOB.yautja_mob_list += H
+	#endif
 	for(var/obj/limb/limb in H.limbs)
 		switch(limb.name)
 			if("groin","chest")

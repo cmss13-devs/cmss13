@@ -6,7 +6,7 @@
 	desc = "Contains blood used for transfusion."
 	icon = 'icons/obj/items/bloodpack.dmi'
 	icon_state = "empty"
-	volume = 160
+	volume = 300
 	matter = list("plastic" = 500)
 	flags_atom = CAN_BE_SYRINGED
 	transparent = TRUE

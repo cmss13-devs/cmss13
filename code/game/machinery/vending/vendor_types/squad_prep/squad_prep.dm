@@ -96,8 +96,8 @@
 		list("M3 Pattern Ridged Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless_lines, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Skull Marine Armor", 20, /obj/item/clothing/suit/storage/marine/skull, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Smooth Marine Armor", 20, /obj/item/clothing/suit/storage/marine/smooth, VENDOR_ITEM_REGULAR),
-		list("M3-EOD Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
-		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
+		list("M3-EOD Pattern Heavy Armor", 10, /obj/effect/essentials_set/random/uscm_heavy_armor, VENDOR_ITEM_REGULAR),
+		list("M3-L Pattern Light Armor", 10, /obj/effect/essentials_set/random/uscm_light_armor, VENDOR_ITEM_REGULAR),
 
 		list("MISCELLANEOUS", -1, null, null, null),
 		list("Gas Mask", 20, /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
@@ -316,3 +316,24 @@
 		list("M41A Solid Stock", round(scale * 1.5), /obj/item/attachable/stock/rifle, VENDOR_ITEM_REGULAR),
 		list("M44 Magnum Sharpshooter Stock", round(scale * 1.5), /obj/item/attachable/stock/revolver, VENDOR_ITEM_REGULAR)
 		)
+
+//------------ESSENTIAL SETS---------------
+/obj/effect/essentials_set/random/uscm_light_armor
+	spawned_gear_list = list(
+		/obj/item/clothing/suit/storage/marine/light/padded,
+		/obj/item/clothing/suit/storage/marine/light/padless,
+		/obj/item/clothing/suit/storage/marine/light/padless_lines,
+		/obj/item/clothing/suit/storage/marine/light/carrier,
+		/obj/item/clothing/suit/storage/marine/light/skull,
+		/obj/item/clothing/suit/storage/marine/light/smooth,
+	)
+
+/obj/effect/essentials_set/random/uscm_heavy_armor
+	spawned_gear_list = list(
+		/obj/item/clothing/suit/storage/marine/heavy/padded,
+		/obj/item/clothing/suit/storage/marine/heavy/padless,
+		/obj/item/clothing/suit/storage/marine/heavy/padless_lines,
+		/obj/item/clothing/suit/storage/marine/heavy/carrier,
+		/obj/item/clothing/suit/storage/marine/heavy/skull,
+		/obj/item/clothing/suit/storage/marine/heavy/smooth,
+	)

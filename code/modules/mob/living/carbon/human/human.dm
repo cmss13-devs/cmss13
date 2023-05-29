@@ -300,7 +300,7 @@
 	[legcuffed ? "<BR><A href='?src=\ref[src];item=[WEAR_LEGCUFFS]'>Legcuffed</A>" : ""]
 	[suit && LAZYLEN(suit.accessories) ? "<BR><A href='?src=\ref[src];tie=1'>Remove Accessory</A>" : ""]
 	[internal ? "<BR><A href='?src=\ref[src];internal=1'>Remove Internal</A>" : ""]
-	[istype(wear_id, /obj/item/card/id/dogtag) ? "<BR><A href='?src=\ref[src];item=id'>Retrieve Info Tag</A>" : ""]
+	[istype(wear_id, /obj/item/card/id) ? "<BR><A href='?src=\ref[src];item=id'>Retrieve Info Tag</A>" : ""]
 	<BR><A href='?src=\ref[src];splints=1'>Remove Splints</A>
 	<BR>
 	<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>
@@ -416,20 +416,21 @@
 				if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
 					to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
 					return
-				if(istype(wear_id, /obj/item/card/id/dogtag) && (undefibbable || !skillcheck(usr, SKILL_POLICE, SKILL_POLICE_SKILLED)))
-					var/obj/item/card/id/dogtag/DT = wear_id
-					if(!DT.dogtag_taken)
+				if(istype(wear_id, /obj/item/card/id) && (undefibbable || !skillcheck(usr, SKILL_POLICE, SKILL_POLICE_SKILLED)))
+					var/obj/item/card/id/dogtag/dogtag = wear_id
+					if(!dogtag.dogtag_taken)
 						if(stat == DEAD)
 							to_chat(usr, SPAN_NOTICE("You take [src]'s information tag, leaving the ID tag"))
-							DT.dogtag_taken = TRUE
-							DT.icon_state = "dogtag_taken"
-							var/obj/item/dogtag/D = new(loc)
-							D.fallen_names = list(DT.registered_name)
-							D.fallen_assgns = list(DT.assignment)
-							D.fallen_blood_types = list(DT.blood_type)
-							usr.put_in_hands(D)
+							dogtag.dogtag_taken = TRUE
+							dogtag.icon_state = "dogtag_taken"
+							var/obj/item/information_tag/info_tag = new(loc)
+							info_tag.fallen_names = list(dogtag.registered_name)
+							info_tag.fallen_assgns = list(dogtag.assignment)
+							info_tag.fallen_blood_types = list(dogtag.blood_type)
+							info_tag.icon_state = "[dogtag.information_tag_type]_taken"
+							usr.put_in_hands(info_tag)
 						else
-							to_chat(usr, SPAN_WARNING("You can't take a dogtag's information tag while its owner is alive."))
+							to_chat(usr, SPAN_WARNING("You can't take an ID's information tag while its owner is alive."))
 					else
 						to_chat(usr, SPAN_WARNING("Someone's already taken [src]'s information tag."))
 					return

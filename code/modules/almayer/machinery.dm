@@ -192,12 +192,12 @@
 
 
 /obj/structure/prop/almayer/ship_memorial/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/dogtag))
-		var/obj/item/dogtag/D = I
-		if(D.fallen_names)
-			to_chat(user, SPAN_NOTICE("You add [D] to [src]."))
-			fallen_list += D.fallen_names
-			qdel(D)
+	if(istype(I, /obj/item/information_tag))
+		var/obj/item/information_tag/tag = I
+		if(tag.fallen_names)
+			to_chat(user, SPAN_NOTICE("You add [tag] to [src]."))
+			fallen_list += tag.fallen_names
+			qdel(tag)
 		return TRUE
 	else
 		. = ..()

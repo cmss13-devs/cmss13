@@ -9,6 +9,12 @@
 		if(prob(100 - E.get_damage()))
 			// Override the current limb status
 			E.droplimb(0, 0, cause)
+	for(var/obj/item/card/id/id_tag in contents)
+		var/obj/item/information_tag/info_tag = new(get_turf(src))
+		info_tag.fallen_names = list(id_tag.registered_name)
+		info_tag.fallen_assgns = list(id_tag.assignment)
+		info_tag.fallen_blood_types = list(id_tag.blood_type)
+		info_tag.icon_state = "[id_tag.information_tag_type]_taken"
 
 	undefibbable = TRUE
 

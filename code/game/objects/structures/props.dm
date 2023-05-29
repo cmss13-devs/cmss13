@@ -1042,7 +1042,7 @@
 		helmet.forceMove(loc)
 		helmet = null
 	if(tagged)
-		var/obj/item/dogtag/new_info_tag = new(loc)
+		var/obj/item/information_tag/new_info_tag = new(loc)
 		new_info_tag.fallen_names = list(dogtag_name)
 		new_info_tag.fallen_assgns = list(dogtag_assign)
 		new_info_tag.fallen_blood_types = list(dogtag_blood)
@@ -1050,18 +1050,18 @@
 	return ..()
 
 /obj/structure/prop/wooden_cross/attackby(obj/item/W, mob/living/user)
-	if(istype(W, /obj/item/dogtag))
-		var/obj/item/dogtag/dog = W
+	if(istype(W, /obj/item/information_tag))
+		var/obj/item/information_tag/tag = W
 		if(!tagged)
 			tagged = TRUE
 			user.visible_message(SPAN_NOTICE("[user] drapes the [W] around the [src]."))
-			dogtag_name = popleft(dog.fallen_names)
-			dogtag_assign = popleft(dog.fallen_assgns)
-			dogtag_blood = popleft(dog.fallen_blood_types)
+			dogtag_name = popleft(tag.fallen_names)
+			dogtag_assign = popleft(tag.fallen_assgns)
+			dogtag_blood = popleft(tag.fallen_blood_types)
 			fallen_list_cross += dogtag_name
 			update_icon()
-			if(!length(dog.fallen_names))
-				qdel(dog)
+			if(!length(tag.fallen_names))
+				qdel(tag)
 			else
 				return
 		else

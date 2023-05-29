@@ -61,6 +61,10 @@
 	desc = "A slice of encoded compressed fiber glass. Used for identification and access control."
 	icon_state = "id"
 	item_state = "card-id"
+	/// Which type of information tag is it
+	var/information_tag_type = "id"
+	/// Has the information tag been taken
+	var/dogtag_taken = FALSE
 	var/access = list()
 	var/faction = FACTION_NEUTRAL
 	var/list/faction_group
@@ -95,6 +99,13 @@
 
 /obj/item/card/id/Destroy()
 	. = ..()
+	if(!dogtag_taken)
+		var/obj/item/information_tag/info_tag = new(get_turf(src))
+		info_tag.fallen_names = list(registered_name)
+		info_tag.fallen_assgns = list(assignment)
+		info_tag.fallen_blood_types = list(blood_type)
+		info_tag.icon_state = "[information_tag_type]_taken"
+
 	screen_loc = null
 
 /obj/item/card/id/attack_self(mob/user as mob)
@@ -139,18 +150,19 @@
 	name = "identification holo-lanyard"
 	desc = "A crude holo-lanyard. As cheap as they come."
 	icon_state = "lanyard"
-
 /obj/item/card/id/silver
 	name = "identification holo-badge"
 	desc = "A silver plated holo-badge which shows honour and dedication."
 	icon_state = "silver"
 	item_state = "silver_id"
+	information_tag_type = "cl"
 
 /obj/item/card/id/silver/clearance_badge
 	name = "corporate doctor badge"
 	desc = "A corporate holo-badge. It is fingerprint locked with clearance level 3 access. It is commonly held by corporate doctors."
 	icon_state = "clearance"
 	var/clearance_access = 3
+	information_tag_type = "clearance"
 
 /obj/item/card/id/silver/clearance_badge/scientist
 	name = "corporate scientist badge"
@@ -186,6 +198,7 @@
 	desc = "A gold plated holo-badge which shows power and might."
 	icon_state = "gold"
 	item_state = "gold_id"
+	information_tag_type = "gold"
 
 /obj/item/card/id/visa
 	name = "battered-up visa card"
@@ -196,11 +209,13 @@
 	name = "corporate holo-badge"
 	desc = "A corporate holo-badge. It's a unique Corporate orange and white."
 	icon_state = "cl"
+	information_tag_type = "cl"
 
 /obj/item/card/id/gold/council
 	name = "identification holo-badge"
 	desc = "A real bronze gold Colonel's holo-badge. Commands respect, authority, and it makes an excellent paperweight."
 	icon_state = "commodore"
+	information_tag_type = "commodore"
 
 /obj/item/card/id/pmc
 	name = "\improper PMC holo-badge"
@@ -208,6 +223,7 @@
 	icon_state = "pmc"
 	registered_name = "The Corporation"
 	assignment = "Corporate Mercenary"
+	information_tag_type = "cl"
 
 /obj/item/card/id/pmc/New()
 	access = get_all_centcom_access()
@@ -222,11 +238,13 @@
 	name = "\improper CMB marshal gold badge"
 	desc = "A coveted gold badge signifying that the wearer is one of the few CMB Marshals patroling the outer rim. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
 	icon_state = "cmbmar"
+	information_tag_type = "provost"
 
 /obj/item/card/id/deputy
 	name = "\improper CMB deputy silver badge"
 	desc = "The silver badge which represents that the wearer is a CMB Deputy. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
 	icon_state = "cmbdep"
+	information_tag_type = "provost"
 
 /obj/item/card/id/general
 	name = "general officer holo-badge"
@@ -234,6 +252,7 @@
 	icon_state = "general"
 	registered_name = "The USCM"
 	assignment = "General"
+	information_tag_type = "general"
 
 /obj/item/card/id/general/New()
 	access = get_all_centcom_access()
@@ -244,6 +263,7 @@
 	icon_state = "provost"
 	registered_name = "Provost Office"
 	assignment = "Provost"
+	information_tag_type = "provost"
 
 /obj/item/card/id/provost/New()
 	access = get_all_centcom_access()
@@ -366,9 +386,8 @@
 	desc = "A marine dog tag."
 	icon_state = "dogtag"
 	item_state = "dogtag"
+	information_tag_type = "dogtag"
 	pinned_on_uniform = FALSE
-	var/dogtag_taken = FALSE
-
 
 /obj/item/card/id/dogtag/get_examine_text(mob/user)
 	. = ..()
@@ -376,38 +395,40 @@
 		. += SPAN_NOTICE("It reads \"[registered_name] - [assignment] - [blood_type]\"")
 
 
-/obj/item/dogtag
-	name = "information dog tag"
-	desc = "A fallen marine's information dog tag."
+/obj/item/information_tag
+	name = "information tag"
+	desc = "A fallen marine's information tag."
 	icon_state = "dogtag_taken"
 	icon = 'icons/obj/items/card.dmi'
 	w_class = SIZE_TINY
+	indestructible = TRUE
+	unacidable = TRUE
 	var/list/fallen_names
 	var/list/fallen_blood_types
 	var/list/fallen_assgns
 
-/obj/item/dogtag/Initialize()
+/obj/item/information_tag/Initialize()
 	. = ..()
 
 	fallen_names = list()
 	fallen_blood_types = list()
 	fallen_assgns = list()
 
-/obj/item/dogtag/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/dogtag))
-		var/obj/item/dogtag/D = I
+/obj/item/information_tag/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/information_tag))
+		var/obj/item/information_tag/info_tag = I
 		to_chat(user, SPAN_NOTICE("You join the [fallen_names.len>1 ? "tags":"two tags"] together."))
-		name = "information dog tags"
-		if(D.fallen_names)
-			fallen_names += D.fallen_names
-			fallen_blood_types += D.fallen_blood_types
-			fallen_assgns += D.fallen_assgns
-		qdel(D)
+		name = "information tags"
+		if(info_tag.fallen_names)
+			fallen_names += info_tag.fallen_names
+			fallen_blood_types += info_tag.fallen_blood_types
+			fallen_assgns += info_tag.fallen_assgns
+		qdel(info_tag)
 		return TRUE
 	else
 		. = ..()
 
-/obj/item/dogtag/get_examine_text(mob/user)
+/obj/item/information_tag/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user) && fallen_names && fallen_names.len)
 		var/msg = "There [fallen_names.len>1 ? \

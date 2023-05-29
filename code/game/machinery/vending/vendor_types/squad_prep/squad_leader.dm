@@ -196,6 +196,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 	spawned_gear_list = list(
 		/obj/item/explosive/plastic,
 		/obj/item/device/binoculars/range/designator,
+		/obj/item/storage/box/m94/signal,
 		/obj/item/map/current_map,
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/storage/box/zipcuffs,

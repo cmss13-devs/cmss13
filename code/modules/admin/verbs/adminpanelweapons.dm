@@ -7,11 +7,16 @@
 		return
 	weapon_type = GLOB.space_weapons[weapon_type]
 
-	var/ammo_type = tgui_alert(src, "What weapon?", "Choose wisely!", weapon_type.possibly_ammunition + list("Random"), 20 SECONDS)
-	if(!ammo_type)
-		return
-	if(ammo_type == "Random")
+	var/list/ammo_type = list()
+	if(tgui_alert(src, "Supposed to use all ammo types?", "Ammo selector", list("Yes", "No")) == "Yes") 
 		ammo_type = weapon_type.possibly_ammunition
+	else
+		var/list/potential_ammo_list = weapon_type.possibly_ammunition
+		var/number_of_ammo = tgui_input_number(src, "How many?", "Ammo selector", 1, length(potential_ammo_list) - 1, 1, 20 SECONDS)
+		for(var/i = 1 to number_of_ammo)
+			var/additional_ammo = tgui_alert(src, "Choose ammo", "Ammo selector", potential_ammo_list, 20 SECONDS)
+			ammo_type += additional_ammo
+			potential_ammo_list -= additional_ammo
 
 	var/hit_eta = tgui_input_number(src, "Give an ETA for the weapon to hit.", "Don't make them wait too long!", 10, 120, 10, 20 SECONDS)
 	if(!hit_eta)

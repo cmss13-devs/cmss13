@@ -676,9 +676,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			var/turf/T = get_turf(src)
 			var/obj/structure/cable/N = T.get_cable_node()
 			if(prob(50) && electrocute_mob(usr, N, N))
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(5, 1, src)
-				s.start()
+				var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+				spark.set_up(5, 1, src)
+				spark.start()
 				return
 			if(C.use(10))
 				user.visible_message(SPAN_NOTICE("[user] wires [src]'s frame."),
@@ -700,9 +700,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				to_chat(user, SPAN_WARNING("\The [src] lacks a terminal to remove."))
 				return
 			if (prob(50) && electrocute_mob(user, terminal.powernet, terminal))
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(5, 1, src)
-				s.start()
+				var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+				spark.set_up(5, 1, src)
+				spark.start()
 				return
 			new /obj/item/stack/cable_coil(loc,10)
 			user.visible_message(SPAN_NOTICE("[user] removes [src]'s wiring and terminal."),
@@ -798,27 +798,27 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	//Human mob special interaction goes here.
 	if(ishuman(user))
-		var/mob/living/carbon/human/hooman = user
+		var/mob/living/carbon/human/grabber = user
 
-		if(hooman.a_intent == INTENT_GRAB)
+		if(grabber.a_intent == INTENT_GRAB)
 
 			//Synthpack recharge
-			if((hooman.species.flags & IS_SYNTHETIC) && istype(hooman.back, /obj/item/storage/backpack/marine/smartpack))
-				var/obj/item/storage/backpack/marine/smartpack/s_pack = hooman.back
-				if(hooman.action_busy)
+			if((grabber.species.flags & IS_SYNTHETIC) && istype(grabber.back, /obj/item/storage/backpack/marine/smartpack))
+				var/obj/item/storage/backpack/marine/smartpack/s_pack = grabber.back
+				if(grabber.action_busy)
 					return
 
-				if(!do_after(hooman, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+				if(!do_after(grabber, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 					return
 
 				playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
 
 				if(stat & BROKEN)
-					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-					s.set_up(3, 1, src)
-					s.start()
-					to_chat(hooman, SPAN_DANGER("The APC's power currents surge eratically, damaging your chassis!"))
-					hooman.apply_damage(10,0, BURN)
+					var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+					spark.set_up(3, 1, src)
+					spark.start()
+					to_chat(grabber, SPAN_DANGER("The APC's power currents surge eratically, damaging your chassis!"))
+					grabber.apply_damage(10,0, BURN)
 				else if(cell && cell.charge > 0)
 					if(!istype(s_pack))
 						return
@@ -837,24 +837,24 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				return
 
 			// Yautja Bracer Recharge
-			var/obj/item/clothing/gloves/yautja/bracer = hooman.gloves
+			var/obj/item/clothing/gloves/yautja/bracer = grabber.gloves
 			if(istype(bracer))
-				if(hooman.action_busy)
+				if(grabber.action_busy)
 					return FALSE
 				if(bracer.last_charge > world.time)
 					to_chat(user, SPAN_WARNING("It is too soon for [bracer.name] to siphon power again."))
 					return FALSE
 				to_chat(user, SPAN_NOTICE("You rest your bracer against the APC interface and begin to siphon off some of the stored energy."))
-				if(!do_after(hooman, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				if(!do_after(grabber, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 					return FALSE
 
 				if(stat & BROKEN)
-					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-					s.set_up(3, 1, src)
-					s.start()
-					to_chat(hooman, SPAN_DANGER("The APC's power currents surge eratically, super-heating your bracer!"))
+					var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+					spark.set_up(3, 1, src)
+					spark.start()
+					to_chat(grabber, SPAN_DANGER("The APC's power currents surge eratically, super-heating your bracer!"))
 					playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
-					hooman.apply_damage(10,0, BURN)
+					grabber.apply_damage(10,0, BURN)
 					return FALSE
 				else if(cell && cell.charge > 0)
 					if(bracer.charge < bracer.charge_max)
@@ -864,7 +864,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 						playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
 						bracer.charge += charge_to_use
 						bracer.last_charge = (world.time + bracer.charge_cooldown)
-						to_chat(hooman, SPAN_YAUTJABOLD("[icon2html(bracer)] \The <b>[bracer]</b> beep: Power siphon complete. Charge at [bracer.charge]/[bracer.charge_max]."))
+						to_chat(grabber, SPAN_YAUTJABOLD("[icon2html(bracer)] \The <b>[bracer]</b> beep: Power siphon complete. Charge at [bracer.charge]/[bracer.charge_max]."))
 						if(bracer.notification_sound)
 							playsound(bracer.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 						charging = APC_CHARGING
@@ -878,7 +878,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 					to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
 					return FALSE
 
-		else if(hooman.species.can_shred(hooman))
+		else if(grabber.species.can_shred(grabber))
 			var/allcut = TRUE
 			for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
 				if(!isWireCut(wire))
@@ -1057,9 +1057,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			smoke.set_up(1, 0, loc)
 			smoke.attach(src)
 			smoke.start()
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			s.set_up(1, 1, src)
-			s.start()
+			var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+			spark.set_up(1, 1, src)
+			spark.start()
 			visible_message(SPAN_WARNING("[src] suddenly lets out a blast of smoke and some sparks!"))
 
 /obj/structure/machinery/power/apc/surplus()

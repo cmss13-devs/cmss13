@@ -31,8 +31,11 @@
 	var/notification_sound = TRUE // Whether the bracer pings when a message comes or not
 	var/charge = 1500
 	var/charge_max = 1500
+	/// The amount charged per process
 	var/charge_rate = 30
+	/// Cooldown on draining power from APC
 	var/charge_cooldown = 3 MINUTES
+	/// Worldtime of last recharge
 	var/last_charge
 	var/cloaked = 0
 	var/cloak_timer = 0

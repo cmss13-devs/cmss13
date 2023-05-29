@@ -329,9 +329,9 @@
 		return FALSE
 
 	if(istype(target, /obj/structure/window))//no breaching charges on the briefing windows / brig / CIC e.e
-		var/obj/structure/window/W = target
-		if(W.not_damageable)
-			to_chat(user, SPAN_WARNING("[W] is much too tough for you to do anything to it with [src].")) //On purpose to mimic wall message
+		var/obj/structure/window/window = target
+		if(window.not_damageable)
+			to_chat(user, SPAN_WARNING("[window] is much too tough for you to do anything to it with [src].")) //On purpose to mimic wall message
 			return FALSE
 
 	return TRUE
@@ -361,22 +361,7 @@
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You don't quite understand how the device works..."))
 		return FALSE
-
-	if(!is_type_in_list(target, breachable))//only items on the list are allowed
-		to_chat(user, SPAN_WARNING("You cannot plant \the [name] on \the [target]!"))
-		return FALSE
-
-	if(SSinterior.in_interior(target))// vehicle checks again JUST IN CASE
-		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \the [src]."))
-		return FALSE
-
-	if(istype(target, /obj/structure/window))//no breaching charges on the briefing windows / brig / CIC e.e
-		var/obj/structure/window/W = target
-		if(W.not_damageable)
-			to_chat(user, SPAN_WARNING("[W] is much too tough for you to do anything to it with [src].")) //On purpose to mimic wall message
-			return FALSE
-
-	return TRUE
+	..()
 
 /obj/item/explosive/plastic/breaching_charge/plasma/handle_explosion(turf/target_turf, dir, cause_data)
 	var/explosion_target = get_step(target_turf, dir)

@@ -425,7 +425,8 @@
 	var/gear_on_almayer = 0
 	var/gear_low_orbit = 0
 	var/closest = 10000
-	var/obj/closest_item //The item itself, to be referenced so Yautja know what to look for.
+	/// The item itself, to be referenced so Yautja know what to look for.
+	var/obj/closest_item
 	var/direction = -1
 	var/atom/areaLoc = null
 	for(var/obj/item/tracked_item as anything in GLOB.loose_yautja_gear)

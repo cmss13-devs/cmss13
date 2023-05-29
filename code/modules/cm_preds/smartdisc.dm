@@ -59,8 +59,8 @@
 	var/list/L = hearers(src, dist)
 	return L
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/tool/yautja_cleaner))
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/attackby(obj/item/object, mob/user)
+	if(istype(object, /obj/item/tool/yautja_cleaner))
 		if(handle_dissolve())
 			return
 	..()

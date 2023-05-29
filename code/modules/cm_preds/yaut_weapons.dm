@@ -778,8 +778,8 @@
 		. = list()
 		. += SPAN_NOTICE("Looks like some kind of...mechanical donut.")
 
-/obj/item/weapon/gun/launcher/spike/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/tool/yautja_cleaner))
+/obj/item/weapon/gun/launcher/spike/attackby(obj/item/object, mob/user)
+	if(istype(object, /obj/item/tool/yautja_cleaner))
 		if(handle_dissolve())
 			return
 	..()
@@ -827,8 +827,8 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
 
-/obj/item/weapon/gun/energy/yautja/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/tool/yautja_cleaner))
+/obj/item/weapon/gun/energy/yautja/attackby(obj/item/object, mob/user)
+	if(istype(object, /obj/item/tool/yautja_cleaner))
 		if(handle_dissolve())
 			return
 	..()
@@ -936,8 +936,11 @@
 	ammo = /datum/ammo/energy/yautja/pistol
 	muzzle_flash = null // TO DO, add a decent one.
 	w_class = SIZE_MEDIUM
+	/// Max amount of shots
 	var/charge_time = 40
+	/// Amount of charge_time drained per shot
 	var/shot_cost = 1
+	/// standard (sc = 1) or incendiary (sc = 5)
 	var/mode = "standard"
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|IGNITING_ITEM|TWOHANDED

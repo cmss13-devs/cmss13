@@ -1088,8 +1088,8 @@ cases. Override_icon_state should be a list.*/
 		return FALSE
 
 	var/mob/living/location = loc
-	var/mob/living/loc_loc = loc.loc
-	if(istype(location) || istype(loc_loc))
+	var/mob/living/true_location = loc.loc
+	if(istype(location) || istype(true_location))
 		to_chat(usr, SPAN_WARNING("You cannot dissolve this while it is being held!"))
 		return FALSE
 

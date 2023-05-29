@@ -248,8 +248,8 @@
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
 
-/obj/item/clothing/shoes/yautja/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/tool/yautja_cleaner))
+/obj/item/clothing/shoes/yautja/attackby(obj/item/object, mob/user)
+	if(istype(object, /obj/item/tool/yautja_cleaner))
 		if(handle_dissolve())
 			return
 	..()
@@ -345,8 +345,8 @@
 			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
 
-/obj/item/device/radio/headset/yautja/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/tool/yautja_cleaner))
+/obj/item/device/radio/headset/yautja/attackby(obj/item/object, mob/user)
+	if(istype(object, /obj/item/tool/yautja_cleaner))
 		if(handle_dissolve())
 			return
 	..()

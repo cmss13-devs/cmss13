@@ -328,8 +328,28 @@
 	apply_clickcatcher()
 	mob.reload_fullscreens()
 
-	if(prefs.auto_fit_viewport)
+	if(prefs.adaptive_zoom)
+		INVOKE_ASYNC(src, PROC_REF(adaptive_zoom))
+	else if(prefs.auto_fit_viewport)
 		INVOKE_ASYNC(src, .verb/fit_viewport)
+
+/client/proc/get_adaptive_zoom_factor()
+	if(!prefs.adaptive_zoom)
+		return 0
+	var/zoom = prefs.adaptive_zoom
+	if(view <= 8)
+		return zoom * 2
+	else if(view <= 15)
+		return zoom * 1
+	else
+		return 0
+
+/// Attempts to scale client zoom automatically to fill 1080p multiples. Best used with auto fit viewport.
+/client/proc/adaptive_zoom()
+	var/icon_size = world.icon_size * get_adaptive_zoom_factor()
+	winset(src, "mapwindow.map", "icon-size=[icon_size]")
+	if(prefs.auto_fit_viewport)
+		fit_viewport()
 
 /client/proc/create_clickcatcher()
 	if(!void)

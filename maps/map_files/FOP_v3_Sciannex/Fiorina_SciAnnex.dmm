@@ -10661,6 +10661,17 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/station/medbay)
+"gBv" = (
+/obj/structure/monorail{
+	dir = 9;
+	name = "launch track"
+	},
+/obj/structure/machinery/landinglight/ds1/delayone,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/fiorina/lz/near_lzI)
 "gCb" = (
 /obj/structure/barricade/sandbags{
 	dir = 8;
@@ -21916,6 +21927,17 @@
 	icon_state = "sterile_white"
 	},
 /area/fiorina/station/medbay)
+"nwT" = (
+/obj/structure/monorail{
+	dir = 4;
+	name = "launch track"
+	},
+/obj/structure/machinery/landinglight/ds1/delayone,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/fiorina/lz/near_lzI)
 "nxl" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
@@ -27744,6 +27766,16 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/lowsec)
+"rgE" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 4
+	},
+/obj/structure/machinery/landinglight/ds1/delayone,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/fiorina/oob)
 "rhF" = (
 /obj/item/stack/sheet/metal/medium_stack,
 /obj/structure/surface/rack,
@@ -29633,16 +29665,6 @@
 /obj/item/tool/crowbar/red,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
-"ssi" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 4
-	},
-/obj/structure/machinery/landinglight/ds1/delayone,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkyellow2"
-	},
-/area/fiorina/lz/near_lzI)
 "sso" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/bag/plants,
@@ -31859,6 +31881,17 @@
 	icon_state = "whitegreenfull"
 	},
 /area/fiorina/station/medbay)
+"tPi" = (
+/obj/structure/monorail{
+	dir = 5;
+	name = "launch track"
+	},
+/obj/structure/machinery/landinglight/ds1/delayone,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/fiorina/lz/near_lzI)
 "tPz" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp/candelabra{
@@ -35975,6 +36008,13 @@
 /obj/structure/machinery/computer/cameras,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
+"wya" = (
+/obj/structure/machinery/landinglight/ds1/delayone,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/fiorina/oob)
 "wyl" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor/plating/prison,
@@ -72230,9 +72270,6 @@ aWR
 aWR
 aWR
 ttK
-wSm
-wSm
-wSm
 xgl
 wSm
 wSm
@@ -72243,7 +72280,10 @@ wSm
 wSm
 wSm
 wSm
-xgl
+wSm
+wSm
+wSm
+wSm
 wSm
 wSm
 wSm
@@ -73926,9 +73966,6 @@ hxy
 aWR
 aWR
 ttK
-wSm
-wSm
-wSm
 xgl
 wSm
 wSm
@@ -73939,7 +73976,10 @@ wSm
 wSm
 wSm
 wSm
-xgl
+wSm
+wSm
+wSm
+wSm
 wSm
 wSm
 wSm
@@ -87832,7 +87872,7 @@ bQM
 vzB
 gws
 vzB
-ssi
+sJI
 xeO
 xeO
 cCx
@@ -88044,10 +88084,7 @@ hbC
 ssD
 iSi
 ssD
-yls
-tHU
-xeO
-xeO
+tPi
 viV
 xeO
 xeO
@@ -88058,7 +88095,10 @@ xeO
 xeO
 xeO
 xeO
-viV
+xeO
+xeO
+xeO
+xeO
 xeO
 xeO
 xeO
@@ -88256,8 +88296,8 @@ bQM
 vzB
 gws
 vzB
-sJI
-rUr
+nwT
+xeO
 xeO
 xeO
 xeO
@@ -88468,8 +88508,8 @@ bQM
 vzB
 gws
 vzB
-sJI
-rUr
+nwT
+xeO
 xeO
 xeO
 xeO
@@ -88680,8 +88720,8 @@ bQM
 vzB
 gws
 vzB
-sJI
-rUr
+nwT
+xeO
 xeO
 xeO
 xeO
@@ -88892,8 +88932,8 @@ bQM
 vzB
 gws
 vzB
-sJI
-rUr
+nwT
+xeO
 xeO
 xeO
 xeO
@@ -89104,8 +89144,8 @@ bQM
 vzB
 gws
 vzB
-sJI
-rUr
+nwT
+xeO
 xeO
 xeO
 xeO
@@ -89303,8 +89343,8 @@ bQM
 bQM
 bQM
 bQM
-bQM
-bQM
+iSi
+cAW
 bQM
 bQM
 bQM
@@ -89316,8 +89356,8 @@ bQM
 vzB
 gws
 vzB
-sJI
-rUr
+nwT
+xeO
 xeO
 xeO
 xeO
@@ -89515,8 +89555,8 @@ bQM
 bQM
 bQM
 bQM
-bQM
-bQM
+wya
+cAW
 bQM
 bQM
 bQM
@@ -89528,8 +89568,8 @@ bQM
 vzB
 gws
 vzB
-ssi
-rUr
+nwT
+xeO
 xeO
 xeO
 xeO
@@ -89727,8 +89767,8 @@ bQM
 bQM
 bQM
 bQM
-bQM
-bQM
+wya
+cAW
 bQM
 bQM
 bQM
@@ -89740,10 +89780,7 @@ hbC
 ssD
 iSi
 ssD
-yls
-qDc
-xeO
-xeO
+gBv
 viV
 xeO
 xeO
@@ -89754,7 +89791,10 @@ xeO
 xeO
 xeO
 xeO
-viV
+xeO
+xeO
+xeO
+xeO
 xeO
 xeO
 xeO
@@ -89939,8 +89979,8 @@ bQM
 bQM
 bQM
 bQM
-bQM
-bQM
+wya
+cAW
 bQM
 bQM
 bQM
@@ -90151,8 +90191,8 @@ bQM
 bQM
 bQM
 bQM
-bQM
-bQM
+wya
+cAW
 bQM
 bQM
 bQM
@@ -90363,8 +90403,8 @@ bQM
 bQM
 bQM
 bQM
-bQM
-bQM
+wya
+cAW
 bQM
 bQM
 bQM
@@ -90575,8 +90615,8 @@ bQM
 bQM
 bQM
 bQM
-bQM
-bQM
+wya
+cAW
 bQM
 bQM
 bQM
@@ -90787,8 +90827,8 @@ bQM
 bQM
 bQM
 bQM
-bQM
-bQM
+rgE
+cAW
 bQM
 bQM
 bQM
@@ -90999,8 +91039,8 @@ bQM
 bQM
 bQM
 bQM
-bQM
-bQM
+iSi
+cAW
 bQM
 bQM
 bQM

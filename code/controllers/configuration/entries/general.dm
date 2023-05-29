@@ -21,6 +21,8 @@ Basics, the most important.
 
 /datum/config_entry/string/wikiurl
 
+/datum/config_entry/string/wikiassetsurl
+
 /datum/config_entry/string/forumurl
 
 /datum/config_entry/string/rulesurl

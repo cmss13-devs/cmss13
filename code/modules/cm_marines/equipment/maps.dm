@@ -20,7 +20,7 @@
 	return
 
 /obj/item/map/proc/initialize_map()
-	var/wikiurl = CONFIG_GET(string/wikiurl)
+	var/wikiurl = CONFIG_GET(string/wikiassetsurl)
 	if(wikiurl)
 		dat = {"
 				<!DOCTYPE html>

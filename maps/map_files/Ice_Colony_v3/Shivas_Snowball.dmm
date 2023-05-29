@@ -3961,7 +3961,7 @@
 /area/shiva/exterior/cp_lz2)
 "axa" = (
 /obj/structure/surface/table,
-/obj/item/dogtag,
+/obj/item/information_tag,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "axc" = (
@@ -5798,7 +5798,7 @@
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/valley)
 "aOo" = (
-/obj/item/dogtag,
+/obj/item/information_tag,
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/bar)

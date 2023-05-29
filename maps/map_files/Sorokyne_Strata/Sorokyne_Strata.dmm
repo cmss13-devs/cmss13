@@ -2036,7 +2036,7 @@
 /area/strata/ag/interior/outpost/gen/bball)
 "afO" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
-/obj/item/dogtag,
+/obj/item/information_tag,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -6723,7 +6723,7 @@
 "atV" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
 /obj/item/device/encryptionkey/dutch,
-/obj/item/dogtag,
+/obj/item/information_tag,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -7028,7 +7028,7 @@
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "auU" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
-/obj/item/dogtag,
+/obj/item/information_tag,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -8504,7 +8504,7 @@
 /turf/open/floor/interior/tatami,
 /area/strata/ag/interior/outpost/canteen)
 "azo" = (
-/obj/item/dogtag,
+/obj/item/information_tag,
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/open/floor/strata{
 	dir = 10;
@@ -9057,7 +9057,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/minehead/ruins)
 "aBa" = (
-/obj/item/dogtag,
+/obj/item/information_tag,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata,
 /area/strata/ug/interior/jungle/deep/minehead/ruins)
@@ -27612,7 +27612,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/wo_supplies/storage/belts/medical,
-/obj/item/dogtag,
+/obj/item/information_tag,
 /obj/item/clothing/suit/armor/riot,
 /obj/item/weapon/gun/rifle/type71/carbine,
 /obj/effect/landmark/objective_landmark/far,
@@ -28376,7 +28376,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "clG" = (
-/obj/item/dogtag,
+/obj/item/information_tag,
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/open/floor/strata{
 	icon_state = "floor3"

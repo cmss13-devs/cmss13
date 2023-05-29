@@ -12749,7 +12749,7 @@
 	},
 /area/fiorina/station/park)
 "hSf" = (
-/obj/item/dogtag,
+/obj/item/information_tag,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "blue"

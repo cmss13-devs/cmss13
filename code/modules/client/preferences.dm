@@ -382,7 +382,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			if(length(gear))
 				dat += "<br>"
 				for(var/i = 1; i <= gear.len; i++)
-					var/datum/gear/G = gear_datums[gear[i]]
+					var/datum/gear/G = gear_datums_by_name[gear[i]]
 					if(G)
 						total_cost += G.cost
 						dat += "[gear[i]] ([G.cost] points) <a href='byond://?src=\ref[user];preference=loadout;task=remove;gear=[i]'><b>Remove</b></a><br>"
@@ -860,36 +860,29 @@ var/const/MAX_SAVE_SLOTS = 10
 		if("loadout")
 			switch(href_list["task"])
 				if("input")
+					var/gear_category = tgui_input_list(user, "Select gear category: ", "Gear to add", gear_datums_by_category)
+					if(!gear_category)
+						return
+					var/choice = tgui_input_list(user, "Select gear to add: ", gear_category, gear_datums_by_category[gear_category])
+					if(!choice)
+						return
 
-					var/list/valid_gear_choices = list()
+					var/total_cost = 0
+					var/datum/gear/G
+					if(isnull(gear) || !islist(gear))
+						gear = list()
+					if(gear.len)
+						for(var/gear_name in gear)
+							G = gear_datums_by_name[gear_name]
+							total_cost += G?.cost
 
-					for(var/gear_name in gear_datums)
-						var/datum/gear/G = gear_datums[gear_name]
-						if(G.whitelisted && !is_alien_whitelisted(user, G.whitelisted))
-							continue
-						valid_gear_choices += gear_name
-
-					var/choice = tgui_input_list(user, "Select gear to add: ", "Gear to add", valid_gear_choices)
-
-					if(choice && gear_datums[choice])
-
-						var/total_cost = 0
-
-						if(isnull(gear) || !islist(gear)) gear = list()
-
-						if(gear && gear.len)
-							for(var/gear_name in gear)
-								if(gear_datums[gear_name])
-									var/datum/gear/G = gear_datums[gear_name]
-									total_cost += G.cost
-
-						var/datum/gear/C = gear_datums[choice]
-						total_cost += C.cost
-						if(C && total_cost <= MAX_GEAR_COST)
-							gear += choice
-							to_chat(user, SPAN_NOTICE("Added \the '[choice]' for [C.cost] points ([MAX_GEAR_COST - total_cost] points remaining)."))
-						else
-							to_chat(user, SPAN_WARNING("Adding \the '[choice]' will exceed the maximum loadout cost of [MAX_GEAR_COST] points."))
+					G = gear_datums_by_category[gear_category][choice]
+					total_cost += G.cost
+					if(total_cost <= MAX_GEAR_COST)
+						gear += G.display_name
+						to_chat(user, SPAN_NOTICE("Added \the '[G.display_name]' for [G.cost] points ([MAX_GEAR_COST - total_cost] points remaining)."))
+					else
+						to_chat(user, SPAN_WARNING("Adding \the '[choice]' will exceed the maximum loadout cost of [MAX_GEAR_COST] points."))
 
 				if("remove")
 					var/i_remove = text2num(href_list["gear"])

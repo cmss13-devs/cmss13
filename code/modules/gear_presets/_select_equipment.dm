@@ -173,9 +173,8 @@
 	if(!new_human.client || !new_human.client.prefs || !new_human.client.prefs.gear)
 		return//We want to equip them with custom stuff second, after they are equipped with everything else.
 	var/datum/gear/G
-	var/i
-	for(i in new_human.client.prefs.gear)
-		G = gear_datums[i]
+	for(var/gear_name in new_human.client.prefs.gear)
+		G = gear_datums_by_name[gear_name]
 		if(G)
 			if(G.allowed_roles && !(assignment in G.allowed_roles))
 				to_chat(new_human, SPAN_WARNING("Custom gear [G.display_name] cannot be equipped: Invalid Role"))
@@ -183,7 +182,7 @@
 			if(G.allowed_origins && !(new_human.origin in G.allowed_origins))
 				to_chat(new_human, SPAN_WARNING("Custom gear [G.display_name] cannot be equipped: Invalid Origin"))
 				return
-			if(!new_human.equip_to_slot_or_del(new G.path, G.slot))
+			if(!(G.slot && new_human.equip_to_slot_or_del(new G.path, G.slot)))
 				new_human.equip_to_slot_or_del(new G.path, WEAR_IN_BACK)
 
 	//Gives ranks to the ranked

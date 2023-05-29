@@ -1,6 +1,7 @@
 /datum/random_fact
 	var/message = null
 	var/statistic_name = null
+	var/statistic_verb = null
 
 	var/check_human = TRUE
 	var/check_xeno = TRUE
@@ -74,7 +75,7 @@
 		stat_gotten = living_stat_gotten
 		additional_message = "and survived! Great work!"
 
-	message = "<b>[name]</b> earned <b>[stat_gotten] [statistic_name]</b> [additional_message]"
+	message = "<b>[name]</b> [statistic_verb] <b>[stat_gotten] [statistic_name]</b> [additional_message]"
 
 /datum/random_fact/proc/life_grab_stat(mob/fact_mob)
 	return 0

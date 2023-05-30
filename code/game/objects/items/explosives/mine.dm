@@ -246,16 +246,14 @@
 /**
  * Proc that notifies a heavy trigger failing to detonate
  */
-
 /obj/item/explosive/mine/proc/heavy_trigger_notify(mob/living/unfortunate_soul)
 	unfortunate_soul.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] [name] clicks as [unfortunate_soul] moves in front of it."), \
 	SPAN_DANGER("[icon2html(src, unfortunate_soul)] [name] clicks as you move in front of it."), \
 	SPAN_DANGER("You hear a click."))
 
 /**
- * Proc that runs checks before priming occursc
+ * Proc that runs checks before priming occurs
  */
-
 /obj/item/explosive/mine/proc/try_to_prime(mob/living/unfortunate_soul)
 	if(!active || triggered || (customizable && !detonator))
 		return

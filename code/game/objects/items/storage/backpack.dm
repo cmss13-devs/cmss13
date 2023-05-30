@@ -905,7 +905,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		return
 	
 	if(reagents.total_volume < max_fuel)
-		localbackpack.reagents.trans_to(src, max_fuel)
+		target.reagents.trans_to(src, max_fuel)
 		to_chat(user, SPAN_NOTICE("You crack the cap off the top of the pack and fill it back up again from the tank."))
 		playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 		return

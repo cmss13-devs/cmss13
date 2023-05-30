@@ -314,6 +314,11 @@ Works together with spawning an observer, noted above.
 /mob/proc/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
 	if(isaghost(src) || !key)
 		return
+	//if zombie
+	if(iszombie(src))
+		to_chat(src, SPAN_WARNING("your a zombie and your trying to ghost..."))
+		src.free_for_ghosts()
+
 	if(aghosted)
 		src.aghosted = TRUE
 	var/mob/dead/observer/ghost = new(loc, src) //Transfer safety to observer spawning proc.

@@ -427,10 +427,10 @@
 					current_squad.send_squad_message("Attention. [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"] is no longer your Overwatch officer. Overwatch functions deactivated.", displayed_icon = src)
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Overwatch systems deactivated. Goodbye, [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"].")]")
 			operator = null
+			current_squad = null
 			if(cam && !ishighersilicon(usr))
 				usr.reset_view(null)
 				usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-			current_squad = null
 			cam = null
 			state = 0
 		if("pick_squad")

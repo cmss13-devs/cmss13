@@ -121,7 +121,7 @@
 // Called from xeno Life()
 // Makes sure that Xeno overwatch is reset when the overwatched Xeno dies.
 /mob/living/carbon/xenomorph/proc/handle_overwatch()
-	if (observed_xeno && (observed_xeno == DEAD || QDELETED(observed_xeno)))
+	if (observed_xeno && (observed_xeno.stat == DEAD || QDELETED(observed_xeno)))
 		overwatch(null, TRUE)
 
 /mob/living/carbon/xenomorph/proc/overwatch_handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, actually_moving, direction, specific_direction)

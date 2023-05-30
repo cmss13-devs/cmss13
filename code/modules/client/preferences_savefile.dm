@@ -445,6 +445,7 @@
 	S["traits"] >> traits
 
 	S["preferred_squad"] >> preferred_squad
+	S["preferred_armor"] >> preferred_armor
 	S["nanotrasen_relation"] >> nanotrasen_relation
 	//S["skin_style"] >> skin_style
 
@@ -494,6 +495,7 @@
 	underwear = sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear))
 	undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
 	backbag = sanitize_integer(backbag, 1, backbaglist.len, initial(backbag))
+	preferred_armor = sanitize_inlist(preferred_armor, GLOB.armor_style_list, "Random")
 	//b_type = sanitize_text(b_type, initial(b_type))
 
 	alternate_option = sanitize_integer(alternate_option, 0, 3, initial(alternate_option))
@@ -589,6 +591,7 @@
 
 	S["nanotrasen_relation"] << nanotrasen_relation
 	S["preferred_squad"] << preferred_squad
+	S["preferred_armor"] << preferred_armor
 	//S["skin_style"] << skin_style
 
 	S["uplinklocation"] << uplinklocation

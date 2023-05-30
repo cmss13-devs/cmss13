@@ -1,8 +1,0 @@
-author: "Warfan1815"
-delete-after: True
-changes:
-  - qol: "Two improved strip systems: the one in the player panel now doesn't strip IDs, and there is a new one that strips all in view."
-  - qol: "Removed now obsolete \"cryo clf\" roles from the gear list"
-  - qol: "changed multiple single letter definitions to more apt definitions"
-  - rscadd: "Added a new selection to the create-humans panel where the spawning admin gets to choose the level of equipment (\"full equipment\", \"no weapons\", \"no equipment\")"
-  - admin: "made IDs exempt from being removed by the strip verbs"

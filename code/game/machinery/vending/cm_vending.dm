@@ -1179,6 +1179,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		else
 			new_item = new prod_type(target_turf)
 
+		new_item.post_vendor_spawn_hook(user)
+
 		if(vend_flags & VEND_LIMITED_INVENTORY)
 			itemspec[2]--
 			if(vend_flags & VEND_LOAD_AMMO_BOXES)

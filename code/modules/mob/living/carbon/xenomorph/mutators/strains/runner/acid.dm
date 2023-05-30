@@ -147,6 +147,8 @@
 			damage *= XVX_ACID_DAMAGEMULT
 
 		target_living.apply_damage(damage, BURN)
+	for(var/turf/T in view(bound_xeno, acid_range))
+		new /obj/effect/particle_effect/smoke/acid_runner_harmless(T)
 	playsound(bound_xeno, 'sound/effects/blobattack.ogg', 75)
 	if(bound_xeno.client && bound_xeno.hive)
 		addtimer(CALLBACK(bound_xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), bound_xeno.client), 5 SECONDS)

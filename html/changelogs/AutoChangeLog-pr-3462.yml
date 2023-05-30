@@ -1,0 +1,5 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - bugfix: "trijent shuttle apc can now be properly fixed..."
+  - maptweak: "added a scenery around the fix to make it look more natural."

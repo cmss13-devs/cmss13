@@ -435,7 +435,7 @@
 	sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
 	cell_explosion(loc, explosive_power, 25, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF, dir, cause_data)
 	for(var/mob/living/carbon/M in oview(1, src))
-		M.AdjustStunned(4)
+		M.AdjustStun(4)
 		M.KnockDown(4)
 		to_chat(M, SPAN_HIGHDANGER("Molten copper rips through your lower body!"))
 		//M.apply_damage(50,BURN)
@@ -489,7 +489,9 @@
 	item_state = "grenade_micro"
 	det_time = 3 SECONDS
 	throw_range = 10
-	explosion_power = 60
+	var/explosive_power = 60
+	var/shrapnel_count = 0
+	explosive_power = 60
 
 /obj/item/explosive/grenade/HE/micro/cluster
 	name = "\improper M43 cluster munition"

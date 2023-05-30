@@ -14,9 +14,9 @@
 	if(..())
 		return 1
 
-	if(iszombie(observer))
+	if(iszombie(A))
 		to_chat(src, SPAN_WARNING("your a zombie and your trying to ghost..."))
-		free_for_ghosts(observer)
+		free_for_ghosts(A)
 		return TRUE
 
 	if (mods["shift"] && mods["middle"])

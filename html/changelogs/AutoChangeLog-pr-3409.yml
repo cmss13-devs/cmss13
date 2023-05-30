@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - admin: "USCM cryo spawns (Foxtrot) that normally inject into the manifest will now also get their money accounts set up automatically"

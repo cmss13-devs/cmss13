@@ -210,8 +210,8 @@
 		to_chat(user, SPAN_DANGER("The Bluespace portal resists your attempt to add another item.")) //light failure
 	else
 		to_chat(user, SPAN_DANGER("The Bluespace generator malfunctions!"))
-		for (var/obj/localbackpack in src.contents) //it broke, delete what was in it
-			qdel(localbackpack)
+		for (var/obj/thing in contents) //it broke, delete what was in it
+			qdel(thing)
 		crit_fail = 1
 		icon_state = "brokenpack"
 
@@ -853,16 +853,16 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 					return
 	. = ..()
 
-/obj/item/storage/backpack/marine/engineerpack/afterattack(obj/localbackpack as obj, mob/user as mob, proximity)
+/obj/item/storage/backpack/marine/engineerpack/afterattack(obj/target, mob/user, proximity)
 	if(!proximity) // this replaces and improves the get_dist(src,localbackpack) <= 1 checks used previously
 		return
 	//excluding the dispenser that contain gaz or custom to only leave fuel tank.
-	if (istype(localbackpack, /obj/structure/reagent_dispensers/fueltank/custom) || istype(localbackpack, /obj/structure/reagent_dispensers/fueltank/gas))
-		to_chat(user, SPAN_NOTICE("You can't fill this with anything but with a fuel tank."))
+	if (istype(target, /obj/structure/reagent_dispensers/fueltank/custom) || istype(target, /obj/structure/reagent_dispensers/fueltank/gas))
+		to_chat(user, SPAN_NOTICE("This must be filled with a fuel tank."))
 		return
-	if (istype(localbackpack, /obj/structure/reagent_dispensers/fueltank))
+	if (istype(target, /obj/structure/reagent_dispensers/fueltank))
 		if(reagents.total_volume < max_fuel)
-			localbackpack.reagents.trans_to(src, max_fuel)
+			target.reagents.trans_to(src, max_fuel)
 			to_chat(user, SPAN_NOTICE("You crack the cap off the top of the pack and fill it back up again from the tank."))
 			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 			return
@@ -894,18 +894,21 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	fuel_type = "utnapthal"
 	has_gamemode_skin = TRUE
 
-/obj/item/storage/backpack/marine/engineerpack/flamethrower/afterattack(obj/localbackpack as obj, mob/user, proximity)
+/obj/item/storage/backpack/marine/engineerpack/flamethrower/afterattack(obj/target, mob/user, proximity)
 	if(!proximity) // this replaces and improves the get_dist(src,localbackpack) <= 1 checks used previously
 		return
-	if (istype(localbackpack, /obj/structure/reagent_dispensers/fueltank))
-		if(reagents.total_volume < max_fuel)
-			localbackpack.reagents.trans_to(src, max_fuel)
-			to_chat(user, SPAN_NOTICE("You crack the cap off the top of the pack and fill it back up again from the tank."))
-			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
-			return
-		if (src.reagents.total_volume == max_fuel)
-			to_chat(user, SPAN_NOTICE("The pack is already full!"))
-			return
+	if (!(istype(target, /obj/structure/reagent_dispensers/fueltank)))
+		return
+	
+	if (reagents.total_volume >= max_fuel)
+		to_chat(user, SPAN_NOTICE("The pack is already full!"))
+		return
+	
+	if(reagents.total_volume < max_fuel)
+		localbackpack.reagents.trans_to(src, max_fuel)
+		to_chat(user, SPAN_NOTICE("You crack the cap off the top of the pack and fill it back up again from the tank."))
+		playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
+		return
 	return ..()
 
 /obj/item/storage/backpack/marine/engineerpack/flamethrower/attackby(obj/item/W, mob/living/user)

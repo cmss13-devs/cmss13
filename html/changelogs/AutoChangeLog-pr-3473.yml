@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - balance: "Made more areas in LV522 reactor OB-able"

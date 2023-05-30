@@ -14,6 +14,9 @@
 	if(..())
 		return 1
 
+	if(iszombie(owner))
+		to_chat(src, SPAN_WARNING("your a zombie and your trying to ghost..."))
+
 	if (mods["shift"] && mods["middle"])
 		point_to(A)
 		return TRUE

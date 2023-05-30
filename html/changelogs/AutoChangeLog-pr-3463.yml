@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "SG vendor no longer has Burstfire Adapter as SG cannot use it"

@@ -529,6 +529,12 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/round_results_webhook_url
 
+/datum/config_entry/string/round_results_influxdb_host
+/datum/config_entry/string/round_results_influxdb_org
+/datum/config_entry/string/round_results_influxdb_token
+/datum/config_entry/string/round_results_influxdb_bucket
+/datum/config_entry/string/round_results_influxdb_period
+
 /// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
 /datum/config_entry/flag/log_timers_on_bucket_reset
 

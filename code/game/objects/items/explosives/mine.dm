@@ -420,6 +420,95 @@
 	. = ..()
 	QDEL_NULL(sparks)
 
+/obj/item/explosive/mine/bury/antitank
+	name = "\improper M19 Anti-Tank Mine"
+	desc = "This older anti tank mine from the 21st century was rolled back into service simply due to the currently-used M307 EMP anti tank mines being too overkill for the minimally armored vehicles commonly used by CLF. Featuring a 250 pound minimum detonation threshold, it can be employed against all but the lightest of vehicles. Despite being outdated, it can still pack a punch against APCs and lighter vehicles, while its plastic construction prevents detection by simple methods."
+	icon_state = "antitank_mine"
+	w_class = SIZE_LARGE
+	layer = MOB_LAYER - 0.1 //You can't just randomly hide claymores under boxes. Booby-trapping bodies is fine though
+	explosive_power = 150
+	heavy_trigger = TRUE
+
+/obj/item/explosive/mine/bury/antitank/prime()
+	set waitfor = 0
+	create_shrapnel(loc, shrapnel_count, , ,/datum/ammo/bullet/shrapnel, cause_data)
+	sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
+	cell_explosion(loc, explosive_power, 25, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF, dir, cause_data)
+	for(var/mob/living/carbon/M in oview(1, src))
+		M.AdjustStunned(4)
+		M.KnockDown(4)
+		to_chat(M, SPAN_HIGHDANGER("Molten copper rips through your lower body!"))
+		//M.apply_damage(50,BURN)
+		if(ishuman(M))
+			sparks.start()
+			var/mob/living/carbon/human/H = M
+			var/obj/limb/L = H.get_limb("l_leg")
+			var/obj/limb/R = H.get_limb("r_leg")
+			R.droplimb()
+			L.droplimb()
+			playsound(M.loc, "bone_break", 45, TRUE)
+			playsound(M.loc, "bone_break", 45, TRUE)
+	for(var/mob/living/carbon/M in view())
+		if(M && M.client)
+			shake_camera(M, 10, 1)
+	qdel(src)
+	if(!QDELETED(src))
+		disarm()
+
+
+/obj/item/explosive/mine/bury/cluster
+	name = "\improper M307 \"Platoon Wiper\" Cluster Mine"
+	desc = "A rather cumbersome, but extremely deadly anti-personal mine. Upon triggering, it launches up to 6 mini grenades up in the air, which spread around before obliterating the area. It's large area of effect has been known to wipe out entire squads of enemy combatants, making it a weapon that is truly feared. Due to high demand, numbers of these are limited, especially for low priority units on the rim."
+	icon = 'icons/obj/items/weapons/grenade.dmi'
+	icon_state = "antitank_mine"
+	w_class = SIZE_LARGE
+	var/list/nade_amount[8]
+
+/obj/item/explosive/mine/bury/cluster/prime()  // dynamically balancing system
+	set waitfor = 0
+	var/list/dirlist[]
+	if(nade_amount.len <= 4)
+		dirlist = cardinal
+	else
+		dirlist = alldirs		// note that alldirs has cardinals first, then diagonials
+	sparks.start()
+	for(var/i=1, i < nade_amount.len, ++i)
+		nade_amount[i] = new /obj/item/explosive/grenade/HE/micro/cluster(src.loc)
+		var/throw_dir = get_ranged_target_turf(nade_amount[i],dirlist[i],2) // diff dir every time
+		step(nade_amount[i], throw_dir,5)
+	sleep(1)// wait for nades to catch up
+	cell_explosion(loc, explosive_power, 25, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF, dir, cause_data) //Spread em out a lil
+	qdel(src)
+	if(!QDELETED(src))
+		disarm()
+
+/obj/item/explosive/grenade/HE/micro
+	name = "\improper M43 HEDP grenade"
+	desc = "An almost cute, if not deadly half-sized version of the M40 HEDP grenade meant to be used in close quarters enviorments and in cluster mutions. Despite only being designated for these purposes, they still show up at the frontline every now and then due to being mistaken with it's bigger brother, the M40."
+	icon_state = "grenade_micro"
+	item_state = "grenade_micro"
+	det_time = 3 SECONDS
+	throw_range = 10
+	explosion_power = 60
+
+/obj/item/explosive/grenade/HE/micro/cluster
+	name = "\improper M43 cluster munition"
+	desc = "Aww what cute lil grenad- Oh shit it's angry!"
+	det_time = 1 SECONDS
+	shrapnel_count = 3
+
+/obj/item/explosive/grenade/HE/micro/cluster/New()
+	..()
+	if(!cause_data)
+		cause_data = create_cause_data("M43 Cluster Munition") // cause data bitching runtime moment
+	var/temploc = get_turf(src)
+	//scatter in all directions
+	if(pick(50))
+		walk_away(src,temploc,rand(1,2))
+	if(pick(50))
+		det_time += rand(1,5) // minor time variation
+	activate()
+
 /obj/item/explosive/mine/pmc
 	name = "\improper M20P Claymore anti-personnel mine"
 	desc = "The M20P Claymore is a directional proximity triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. It has been modified for use by the Wey-Yu PMC forces."

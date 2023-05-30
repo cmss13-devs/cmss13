@@ -161,6 +161,7 @@
 #define SS_INIT_OBJECTIVES -31
 #define SS_INIT_LOBBYART   -33
 #define SS_INIT_MINIMAP    -34
+#define SS_INIT_INFLUXSTATS -50
 #define SS_INIT_STATPANELS -98
 #define SS_INIT_CHAT    -100 //Should be last to ensure chat remains smooth during init.
 #define SS_INIT_EARLYRUNTIMES -500 // Post-init notifier
@@ -217,6 +218,7 @@
 #define SS_PRIORITY_TRACKING    19
 #define SS_PRIORITY_MINIMAPS 11
 #define SS_PRIORITY_PING    10
+#define SS_PRIORITY_INFLUXSTATS 8
 #define SS_PRIORITY_DATABASE    15
 #define SS_PRIORITY_PLAYTIME    5
 #define SS_PRIORITY_PERFLOGGING 4

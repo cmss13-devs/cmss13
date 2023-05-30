@@ -191,7 +191,7 @@
 	var/aspect_ratio = view_size[1] / view_size[2]
 
 	var/desired_width = 0
-	var/sizes = params2list(winget(src, "mainwindow.split;mapwindow", "size"))
+	var/sizes = params2list(winget(src, "mainwindow.split;mapwindow;mainwindow", "size"))
 	var/map_size = splittext(sizes["mapwindow.size"], "x")
 
 	if(prefs.adaptive_zoom)
@@ -205,12 +205,15 @@
 		var/height = text2num(map_size[2])
 		desired_width = round(height * aspect_ratio)
 
+	var/split_size = splittext(sizes["mainwindow.split.size"], "x")
+	var/split_width = text2num(split_size[1])
+	// Always leave at least 240px of verb panel for the poor sod to switch back if they made a mistake
+	if(split_width - desired_width < 240)
+		desired_width = split_width - 240
+
 	if (text2num(map_size[1]) == desired_width)
 		// Nothing to do
 		return
-
-	var/split_size = splittext(sizes["mainwindow.split.size"], "x")
-	var/split_width = text2num(split_size[1])
 
 	// Calculate and apply a best estimate
 	// +4 pixels are for the width of the splitter's handle

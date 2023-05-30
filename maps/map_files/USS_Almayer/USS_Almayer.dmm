@@ -19918,6 +19918,9 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -23275,6 +23278,9 @@
 /obj/structure/sign/safety/restrictedarea{
 	pixel_y = 32
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
 "bSk" = (
@@ -23684,6 +23690,10 @@
 	pixel_y = 30;
 	req_one_access_txt = "2;3;12;19";
 	throw_range = 15
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -25407,6 +25417,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -25552,6 +25563,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -31346,6 +31358,16 @@
 	icon_state = "red"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"dSr" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/almayer/squads/req)
 "dSs" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -31444,6 +31466,10 @@
 	},
 /area/almayer/medical/operating_room_two)
 "dVe" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue"
@@ -32877,6 +32903,14 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
+"exp" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/almayer/living/briefing)
 "exr" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -33634,6 +33668,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_s)
+"ePu" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/port_hallway)
 "ePA" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -33732,6 +33773,10 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/almayer/medical/containment)
+"eSr" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/squads/req)
 "eSJ" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/transmitter/rotary{
@@ -36117,6 +36162,15 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cichallway)
+"fYm" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/almayer/living/briefing)
 "fYn" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -36158,6 +36212,9 @@
 	},
 /obj/structure/sign/safety/restrictedarea{
 	pixel_y = 32
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -36465,6 +36522,9 @@
 	pixel_x = 7;
 	pixel_y = 32
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
 "ghX" = (
@@ -36625,7 +36685,7 @@
 /area/almayer/hull/lower_hull/l_f_s)
 "gkg" = (
 /obj/structure/disposalpipe/segment{
-	dir = 4;
+	dir = 2;
 	icon_state = "pipe-c"
 	},
 /turf/closed/wall/almayer,
@@ -38245,6 +38305,13 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/port_hallway)
+"hbk" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/port_hallway)
 "hbx" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -39745,6 +39812,12 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/port_hallway)
+"hMy" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/briefing)
 "hMI" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/binoculars,
@@ -42034,6 +42107,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
 "iRy" = (
@@ -42066,6 +42142,13 @@
 /obj/item/facepaint/black,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
+"iTd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer,
+/area/almayer/squads/req)
 "iTf" = (
 /obj/structure/closet/crate/trashcart,
 /obj/item/clothing/gloves/yellow,
@@ -47358,6 +47441,14 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/brig/main_office)
+"lub" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/briefing)
 "lue" = (
 /obj/structure/surface/table/almayer,
 /obj/item/folder/yellow,
@@ -50399,6 +50490,18 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/aft_hallway)
+"mRA" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Briefing Room"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/living/briefing)
 "mRW" = (
 /turf/open/floor/almayer/research/containment/corner1,
 /area/almayer/medical/containment/cell/cl)
@@ -50685,6 +50788,13 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"mYC" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer,
+/area/almayer/squads/req)
 "mYY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
@@ -52562,6 +52672,22 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/req)
+"nPW" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = 27
+	},
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor5"
+	},
+/area/almayer/squads/req)
 "nPX" = (
 /obj/structure/sign/safety/rewire{
 	pixel_x = 8;
@@ -53220,6 +53346,14 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/charlie)
+"okb" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/hallways/port_hallway)
 "okd" = (
 /obj/structure/platform_decoration,
 /turf/open/floor/almayer{
@@ -54382,6 +54516,9 @@
 /obj/structure/sign/safety/medical{
 	pixel_x = 8;
 	pixel_y = 32
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
@@ -55911,6 +56048,9 @@
 	},
 /area/almayer/hull/upper_hull/u_m_p)
 "pzV" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "bluecorner"
@@ -57909,6 +58049,19 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/living/port_emb)
+"qvF" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "southcheckpoint";
+	name = "\improper Checkpoint Shutters"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "redfull"
+	},
+/area/almayer/hallways/port_hallway)
 "qvI" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = -17
@@ -59361,6 +59514,10 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/upper_hull/u_m_s)
+"rfi" = (
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall/almayer,
+/area/almayer/engineering/engineering_workshop/hangar)
 "rfI" = (
 /obj/structure/sign/safety/airlock{
 	pixel_y = -32
@@ -62072,6 +62229,12 @@
 	icon_state = "redfull"
 	},
 /area/almayer/command/cic)
+"ssY" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall/almayer,
+/area/almayer/squads/req)
 "ssZ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
@@ -63620,6 +63783,17 @@
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
+"teO" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/squads/req)
 "teY" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -66333,11 +66507,8 @@
 	},
 /area/almayer/medical/hydroponics)
 "urx" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/closed/wall/almayer,
+/obj/structure/disposalpipe/segment,
+/turf/open/space/basic,
 /area/almayer/engineering/engineering_workshop/hangar)
 "urM" = (
 /obj/structure/machinery/light{
@@ -66777,6 +66948,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/ce_room)
+"uzN" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/almayer/squads/req)
 "uzP" = (
 /obj/item/bedsheet/blue{
 	layer = 3.2
@@ -68653,6 +68833,15 @@
 	icon_state = "red"
 	},
 /area/almayer/squads/alpha)
+"vmi" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/port_hallway)
 "vml" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /obj/structure/sign/safety/storage{
@@ -101406,7 +101595,7 @@ gfW
 bUe
 cbR
 ccr
-cmp
+rfi
 urx
 aqd
 bWM
@@ -101809,7 +101998,7 @@ bPk
 bsj
 byb
 bCd
-buH
+bIT
 iEb
 buH
 app
@@ -102012,7 +102201,7 @@ qjN
 tzP
 wYK
 bCd
-buH
+bIT
 iEb
 buH
 app
@@ -102418,7 +102607,7 @@ hDX
 qjN
 qjN
 jpp
-buH
+bIT
 iEb
 buH
 eDG
@@ -102621,7 +102810,7 @@ iaF
 bqL
 bqL
 ocf
-bFu
+hbk
 mKY
 hvp
 mWw
@@ -103027,7 +103216,7 @@ cle
 bCe
 sdO
 bCd
-bJz
+bHW
 rrV
 bJz
 yhQ
@@ -103230,7 +103419,7 @@ kan
 iXW
 iLs
 bCd
-buH
+bIT
 hop
 buH
 yhQ
@@ -103433,7 +103622,7 @@ kan
 kan
 kan
 kan
-bGe
+vmi
 bHL
 buH
 yhQ
@@ -103636,7 +103825,7 @@ kan
 psO
 gjK
 kan
-buH
+bIT
 bHL
 buH
 yhQ
@@ -103839,7 +104028,7 @@ wzZ
 tdI
 vbV
 kan
-buH
+bIT
 hop
 buH
 yhQ
@@ -104042,7 +104231,7 @@ biA
 biA
 biA
 biA
-bJz
+bHW
 bHT
 koc
 yhQ
@@ -104245,7 +104434,7 @@ bsQ
 bmj
 caS
 biA
-buH
+bIT
 bHL
 wWQ
 yhQ
@@ -104448,7 +104637,7 @@ bCl
 bsz
 caT
 biA
-buH
+bIT
 bHL
 buH
 yhQ
@@ -104651,7 +104840,7 @@ bCm
 bsP
 hgZ
 biA
-buH
+bIT
 bHL
 buH
 yhQ
@@ -104854,7 +105043,7 @@ bCn
 bsz
 hMN
 biA
-buH
+bIT
 bHL
 buH
 yhQ
@@ -105057,7 +105246,7 @@ bnT
 btX
 byc
 biA
-buH
+bIT
 bHL
 bIR
 yhQ
@@ -105463,7 +105652,7 @@ tAU
 xmT
 tAU
 kan
-buH
+bIT
 bHL
 buH
 azB
@@ -105666,7 +105855,7 @@ wJb
 wJb
 bPu
 kan
-buH
+bIT
 bHL
 buH
 azB
@@ -105869,7 +106058,7 @@ xIk
 cLA
 xIk
 kan
-bJz
+bHW
 bHT
 quI
 bJt
@@ -106072,7 +106261,7 @@ vMo
 vMo
 vMo
 vMo
-bGe
+vmi
 bHL
 smn
 bJt
@@ -106275,7 +106464,7 @@ wZE
 iGn
 byd
 vMo
-buH
+bIT
 bHL
 buH
 lhB
@@ -106478,7 +106667,7 @@ bof
 vit
 dxu
 vMo
-buH
+bIT
 bHL
 buH
 lhB
@@ -106681,7 +106870,7 @@ ggz
 dka
 bye
 vMo
-buH
+bIT
 bHL
 buH
 lhB
@@ -106884,7 +107073,7 @@ jZd
 vit
 bzo
 vMo
-buH
+bIT
 bHL
 buH
 lhB
@@ -107087,7 +107276,7 @@ boh
 qDP
 wbP
 vMo
-buH
+bIT
 bHL
 vMx
 bJt
@@ -107290,7 +107479,7 @@ vMo
 vMo
 vMo
 vMo
-bJz
+bHW
 bHT
 uFP
 bJt
@@ -107493,7 +107682,7 @@ vEH
 uFH
 tQd
 nyw
-buH
+bIT
 bHL
 buH
 yfS
@@ -107696,7 +107885,7 @@ beH
 beH
 beH
 nyw
-buH
+bIT
 bHL
 buH
 yfS
@@ -107899,7 +108088,7 @@ rCO
 rCO
 rCO
 eVv
-bFu
+hbk
 lAO
 buH
 ykj
@@ -108102,7 +108291,7 @@ bhq
 dcd
 eTd
 nyw
-buH
+bIT
 vdW
 qLp
 kKk
@@ -108508,7 +108697,7 @@ qby
 btY
 bAJ
 dGW
-buH
+bIT
 bHL
 buH
 yfS
@@ -108711,7 +108900,7 @@ snb
 xbd
 bAU
 bdg
-bCi
+okb
 bCo
 ivB
 bJt
@@ -108914,7 +109103,7 @@ vPw
 bvr
 bBQ
 bdg
-bCj
+qvF
 bDx
 bCj
 rde
@@ -109117,7 +109306,7 @@ bpv
 tMW
 bBY
 bCh
-bCi
+okb
 bCo
 bCi
 bJt
@@ -109320,7 +109509,7 @@ mng
 wTm
 wCI
 bCf
-buH
+bIT
 bHL
 buH
 ejw
@@ -109726,7 +109915,7 @@ bqZ
 bqZ
 bqZ
 bdg
-buH
+bIT
 hOR
 buH
 bJt
@@ -109929,7 +110118,7 @@ beH
 beH
 bqZ
 bdg
-buH
+bIT
 bHL
 buH
 nsY
@@ -110132,7 +110321,7 @@ gBo
 beH
 bqZ
 bdg
-buH
+bIT
 bHL
 buH
 nsY
@@ -110335,7 +110524,7 @@ bgO
 beH
 bqZ
 bCx
-buH
+bIT
 bHL
 buH
 nsY
@@ -110538,7 +110727,7 @@ tmB
 eBg
 vKe
 eVv
-bFu
+hbk
 pIX
 buH
 nsY
@@ -110741,7 +110930,7 @@ bgO
 beH
 bqZ
 bdg
-buH
+bIT
 hOR
 buH
 nsY
@@ -110944,7 +111133,7 @@ bgO
 beH
 bqZ
 bdg
-buH
+bIT
 hOR
 buH
 nsY
@@ -111147,7 +111336,7 @@ bgO
 bqZ
 bqZ
 bdg
-buH
+bIT
 hOR
 buH
 nsY
@@ -111350,7 +111539,7 @@ bgO
 cab
 bdd
 bdd
-bGe
+vmi
 bHL
 buH
 nsY
@@ -111553,7 +111742,7 @@ bgO
 bqZ
 bdd
 bJz
-bJz
+bHW
 bHT
 bJz
 nsY
@@ -111756,7 +111945,7 @@ fOk
 bqZ
 bdg
 buH
-buH
+bIT
 bHL
 buH
 nsY
@@ -111959,7 +112148,7 @@ beH
 bqZ
 bdg
 buH
-bHa
+bHY
 bHL
 buH
 nsY
@@ -112162,7 +112351,7 @@ beH
 bqZ
 bdg
 buH
-bHa
+bHY
 bHL
 buH
 buH
@@ -112365,7 +112554,7 @@ beH
 bqZ
 bdg
 buH
-bHa
+bHY
 mTk
 hbx
 hvp
@@ -112568,7 +112757,7 @@ kuw
 cab
 bdd
 bGe
-bHa
+bHY
 bHT
 bHa
 buH
@@ -112771,7 +112960,7 @@ mDW
 bqZ
 bdg
 buH
-bHa
+bHY
 bHT
 bHa
 buH
@@ -112974,7 +113163,7 @@ mDW
 bqZ
 bdg
 buH
-bHa
+bHY
 bHT
 bHa
 deH
@@ -113177,7 +113366,7 @@ nNH
 bqZ
 bdg
 buH
-bHa
+bHY
 bHT
 bHa
 bKc
@@ -113380,7 +113569,7 @@ beH
 bqZ
 bdg
 buH
-bHa
+bHY
 bHT
 bHa
 rKy
@@ -113583,7 +113772,7 @@ bVw
 cab
 bdd
 bGe
-bHa
+bHY
 bHT
 bHa
 bIR
@@ -113783,10 +113972,10 @@ vSK
 qnC
 nuK
 dVe
-bqZ
-bCx
-buH
-bHa
+hMy
+mRA
+buJ
+ePu
 rrV
 bHa
 buH
@@ -113985,7 +114174,7 @@ nMp
 qnC
 qnC
 qnC
-dVe
+fYm
 cac
 bCy
 bzK
@@ -114391,7 +114580,7 @@ bqZ
 kFs
 bqZ
 bqZ
-bqZ
+lub
 cae
 bdd
 bGg
@@ -114594,7 +114783,7 @@ bdd
 bdd
 beQ
 beQ
-beQ
+exp
 beQ
 bdd
 bRQ
@@ -114797,7 +114986,7 @@ bNA
 bGw
 bDV
 bGw
-bGw
+teO
 bGw
 bCz
 buH
@@ -114997,10 +115186,10 @@ bCA
 bdj
 bCA
 bCA
-bdj
-bCA
-bCA
-bdj
+mYC
+eSr
+eSr
+iTd
 bCA
 bCA
 buH
@@ -115200,7 +115389,7 @@ bdj
 bri
 bCB
 bCB
-bCB
+uzN
 bCB
 bCB
 bCB
@@ -115403,7 +115592,7 @@ bQQ
 fSl
 bdk
 bdk
-pUp
+nPW
 eqP
 myJ
 eKI
@@ -115606,7 +115795,7 @@ pCr
 bRR
 cpK
 cpK
-bdl
+ssY
 bdl
 bdl
 bdl
@@ -115809,7 +115998,7 @@ bYa
 bPD
 jOk
 bNB
-mCo
+dSr
 xGo
 bYu
 nmK
@@ -116012,7 +116201,7 @@ bQS
 bCA
 bKA
 bEc
-mCo
+dSr
 tjl
 rIH
 tUh

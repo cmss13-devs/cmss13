@@ -1,0 +1,4 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - spellcheck: "damage taken fun fact now correctly states that player \"took\" so many damage instead of \"did\"."

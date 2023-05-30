@@ -116,6 +116,9 @@
 		stage = 5
 		human.faction = FACTION_ZOMBIE
 		zombie_transforming = FALSE
+	//if zombie is SSD or souless
+	if(!human.client)
+		human.free_for_ghosts()
 
 
 /obj/item/weapon/zombie_claws

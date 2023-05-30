@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Fixed a bug in radio signaling cleanup that was notably preventing signallers from working as intended, and likely caused issues for other devices."

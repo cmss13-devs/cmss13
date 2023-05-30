@@ -520,3 +520,32 @@
   - code_imp: Changed the way armor variation is handled upon initializing. Also,
       surplus uniform vendors now use an essentials set to randomly pick an armor
       set regardless of your preferences.
+2023-05-30:
+  BeagleGaming1:
+  - admin: Deferring to mentorhelp gives a specific message instead of a generic resolution
+      message
+  Drathek:
+  - bugfix: Fixed non-queen xeno overwatch persisting on a dead xeno
+  LynxSolstice, Sionnach:
+  - rscadd: Adds a new IMP framed back item, the Ammo Rack.
+  - balance: Added the new Ammo Rack to the Req vendor. At a scaling of (round*1),
+      it should be pretty scarce. The ammo rack also is unthrowable and adds a flat
+      .5 second increase to movement delay.
+  - imageadd: Added icons for Ammo_Pack_ and onmobs for each state (0, 1, 2, and 3)
+  Morrow:
+  - rscadd: Adds buyable blood bags to corpsmen vendors
+  - rscadd: Adds a revive fun fact
+  SpartanBobby:
+  - rscadd: Adds Laser-Light Combo attachment unique to VP78
+  - rscadd: Adds new description to VP78
+  fira:
+  - bugfix: XvX end and Admin ending round won't play nuclear detonation sequence
+      music anymore.
+  - bugfix: Fixed a bug in radio signaling cleanup that was notably preventing signallers
+      from working as intended, and likely caused issues for other devices.
+  ghostsheet:
+  - rscadd: Added ARES conclusion announcement for marine major.
+  - rscadd: Added a harmless smoke cloud to Acid Runner's "For the Hive" ability.
+  - rscadd: Added a M89-S Signal Flare pack to SL essential kit.
+  harryob:
+  - bugfix: there's less random vendors on WO

@@ -1,6 +1,0 @@
-author: "LynxSolstice, Sionnach"
-delete-after: True
-changes:
-  - rscadd: "Adds a new IMP framed back item, the Ammo Rack."
-  - balance: "Added the new Ammo Rack to the Req vendor. At a scaling of (round*1), it should be pretty scarce. The ammo rack also is unthrowable and adds a flat .5 second increase to movement delay."
-  - imageadd: "Added icons for Ammo_Pack_ and onmobs for each state (0, 1, 2, and 3)"

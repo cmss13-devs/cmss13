@@ -399,6 +399,36 @@
 	xeno_icon_state = "marinepack"
 	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
 
+/obj/item/storage/backpack/marine/ammo_rack
+	name = "\improper IMP ammo rack"
+	desc = "A bare IMP frame with buckles designed to hold multiple ammo cans, but can fit any cumbersome box thanks to Marine ingenuity. Helps you lug around extra rounds or supplies."
+	has_gamemode_skin = FALSE
+	storage_slots = 3
+	icon_state = "ammo_pack_0"
+	can_hold = list(/obj/item/ammo_box)
+	max_w_class = SIZE_MASSIVE
+	throw_range = 0
+	xeno_types = null
+	var/base_icon_state = "ammo_pack"
+	var/move_delay_mult = 0.4
+
+/obj/item/storage/backpack/marine/ammo_rack/update_icon()
+	. = ..()
+	icon_state = "[base_icon_state]_[length(contents)]"
+
+/obj/item/storage/backpack/marine/ammo_rack/pickup(mob/user, silent)
+	. = ..()
+	RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
+
+/obj/item/storage/backpack/marine/ammo_rack/proc/handle_movedelay(mob/user, list/movedata)
+	SIGNAL_HANDLER
+	if(locate(/obj/item/storage/backpack/marine/ammo_rack) in user.contents)
+		movedata["move_delay"] += move_delay_mult
+
+/obj/item/storage/backpack/marine/ammo_rack/dropped(mob/user, silent)
+	. = ..()
+	UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
+
 /obj/item/storage/backpack/marine/medic
 	name = "\improper USCM corpsman backpack"
 	desc = "A standard-issue backpack worn by USCM medics."

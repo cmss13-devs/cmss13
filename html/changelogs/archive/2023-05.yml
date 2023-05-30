@@ -475,3 +475,77 @@
   - code_imp: Updated the get_blood_id proc for xenos to check a variable rather than
       hard-code overrides for Queen and Praetorian.
   - code_imp: Changed most references to blood color to use defines.
+2023-05-28:
+  Drathek:
+  - bugfix: Fixed the emergency locker sometimes hard deleting
+  Huffie56:
+  - refactor: Refactored predator flaying. Should be a lot less janky across the board.
+      Flaying can be paused and resumed.
+  - rscadd: Rope + flaying messages are now also shown to witnesses, instead of just
+      the predator. Flaying has been given RED TEXT to make it clear something bad
+      is going on.
+  - bugfix: Predators can no longer flay someone who has already been flayed, or queue
+      up multiple flayings at once.
+  - bugfix: Predators can no longer scalp someone who has no head.
+  - bugfix: Decapitated and flayed bodies no longer appear to have a head.
+  - bugfix: Using the ceremonial dagger or rope no longer hits people before applying.
+  Katskan:
+  - balance: synthetic pilot skill increased from 1 to 2
+  LunaMayn:
+  - rscadd: Added dartboards and darts to throw at your friends.
+  NewyearnewmeUwu:
+  - rscadd: You can now hide small items in potted plants.
+  - rscadd: Fire alarms now announce who activates/deactivates them.
+  TenguHangover:
+  - rscadd: added sleen as a reagent, 1:1 lime souto and oxycodone. Slightly less
+      painkilling than oxy, and slightly addictive.
+  - rscadd: corrects oxycodone color to red dye instead of purple.
+  ihatethisengine:
+  - balance: reduced the medevac cooldown from 60 seconds to 20 seconds.
+  - rscadd: anyone with the skills of a doctor or a pilot can manage the medevac by
+      interacting with the system itself.
+  - qol: medical stretcher automatically activates when deployed.
+2023-05-29:
+  Huffie56:
+  - bugfix: Fix Inconsistencies with text when toggling lights while being inside
+      a closet for example.
+  Khadd:
+  - bugfix: fixed upp synths having 2 different names and clf synths now get a name
+      when they're given the equipment preset
+  Morrow:
+  - balance: Without a hive core Xenos no longer get stored larva from latejoin marines
+      or bursts
+  NewyearnewmeUwu:
+  - rscadd: Added armor preference as an option in the preferences menu
+  - code_imp: Changed the way armor variation is handled upon initializing. Also,
+      surplus uniform vendors now use an essentials set to randomly pick an armor
+      set regardless of your preferences.
+2023-05-30:
+  BeagleGaming1:
+  - admin: Deferring to mentorhelp gives a specific message instead of a generic resolution
+      message
+  Drathek:
+  - bugfix: Fixed non-queen xeno overwatch persisting on a dead xeno
+  LynxSolstice, Sionnach:
+  - rscadd: Adds a new IMP framed back item, the Ammo Rack.
+  - balance: Added the new Ammo Rack to the Req vendor. At a scaling of (round*1),
+      it should be pretty scarce. The ammo rack also is unthrowable and adds a flat
+      .5 second increase to movement delay.
+  - imageadd: Added icons for Ammo_Pack_ and onmobs for each state (0, 1, 2, and 3)
+  Morrow:
+  - rscadd: Adds buyable blood bags to corpsmen vendors
+  - rscadd: Adds a revive fun fact
+  SpartanBobby:
+  - rscadd: Adds Laser-Light Combo attachment unique to VP78
+  - rscadd: Adds new description to VP78
+  fira:
+  - bugfix: XvX end and Admin ending round won't play nuclear detonation sequence
+      music anymore.
+  - bugfix: Fixed a bug in radio signaling cleanup that was notably preventing signallers
+      from working as intended, and likely caused issues for other devices.
+  ghostsheet:
+  - rscadd: Added ARES conclusion announcement for marine major.
+  - rscadd: Added a harmless smoke cloud to Acid Runner's "For the Hive" ability.
+  - rscadd: Added a M89-S Signal Flare pack to SL essential kit.
+  harryob:
+  - bugfix: there's less random vendors on WO

@@ -30234,6 +30234,11 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
+/obj/item/weapon/dart,
+/obj/item/weapon/dart,
+/obj/item/weapon/dart,
+/obj/item/weapon/dart/green,
+/obj/item/weapon/dart/green,
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "dqN" = (
@@ -57540,6 +57545,10 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/lower_hull)
+"qif" = (
+/obj/structure/sign/dartboard,
+/turf/closed/wall/almayer,
+/area/almayer/hallways/hangar)
 "qim" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -69514,6 +69523,10 @@
 "vDa" = (
 /turf/open/floor/almayer/research/containment/corner2,
 /area/almayer/medical/containment/cell)
+"vDh" = (
+/obj/item/weapon/dart/green,
+/turf/open/floor/plating,
+/area/almayer/hull/lower_hull/l_f_p)
 "vEf" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -92866,8 +92879,8 @@ baH
 fVz
 bHB
 bBN
-bcm
-kCT
+qif
+vDh
 kCT
 kCT
 kCT

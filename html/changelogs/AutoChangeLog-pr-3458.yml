@@ -1,0 +1,4 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - admin: "Allows auto rename VV to not be encoded"

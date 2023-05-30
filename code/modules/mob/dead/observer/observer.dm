@@ -369,7 +369,7 @@ Works together with spawning an observer, noted above.
 	//if zombie
 	if(iszombie(src))
 		to_chat(src, SPAN_WARNING("your a zombie and your trying to ghost..."))
-		//src.free_for_ghosts()
+		src.free_for_ghosts()
 
 	return ghost
 

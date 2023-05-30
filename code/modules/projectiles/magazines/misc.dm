@@ -31,6 +31,19 @@
 	reload_delay = 8
 	gun_type = /obj/item/weapon/gun/m60
 
+/obj/item/ammo_magazine/pkp
+	name = "PKP ammo box (7.62x54mmR)"
+	desc = "A blast from the past chambered in 7.62X51mm NATO."
+	caliber = "7.62x54mmR"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon_state = "m60" //PLACEHOLDER
+
+	matter = list("metal" = 10000)
+	default_ammo = /datum/ammo/bullet/m60
+	max_rounds = 250
+	reload_delay = 10
+	gun_type = /obj/item/weapon/gun/pkp
+
 //rocket launchers
 
 /obj/item/ammo_magazine/rifle/grenadespawner

@@ -334,6 +334,68 @@
 #undef PPSH_UNJAM_CHANCE
 
 //-------------------------------------------------------
+//pps43
+
+/obj/item/weapon/gun/smg/pps43
+	name = "\improper PPS-43 Submachinegun" //placeholder
+	desc = "Placeholder."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon_state = "ppsh17b"
+	item_state = "ppsh17b"
+
+	fire_sound = 'sound/weapons/smg_heavy.ogg'
+	current_mag = /obj/item/ammo_magazine/smg/ppsh
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
+	var/jammed = FALSE
+
+/obj/item/weapon/gun/smg/ppsh/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 17,"rail_x" = 15, "rail_y" = 19, "under_x" = 26, "under_y" = 15, "stock_x" = 26, "stock_y" = 15)
+
+/obj/item/weapon/gun/smg/ppsh/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_SMG
+	burst_delay = FIRE_DELAY_TIER_SMG
+	burst_amount = BURST_AMOUNT_TIER_3
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_4
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_4
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+
+//-------------------------------------------------------
+//pp bizon
+
+/obj/item/weapon/gun/smg/bizon
+	name = "\improper PP Bizon Submachinegun" //placeholder
+	desc = "Placeholder."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon_state = "ppsh17b"
+	item_state = "ppsh17b"
+
+	fire_sound = 'sound/weapons/smg_heavy.ogg'
+	current_mag = /obj/item/ammo_magazine/smg/bizon
+	flags_gun_features = GUN_CAN_POINTBLANK
+	var/jammed = FALSE
+
+/obj/item/weapon/gun/smg/bizon/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 17,"rail_x" = 15, "rail_y" = 19, "under_x" = 26, "under_y" = 15, "stock_x" = 26, "stock_y" = 15)
+
+/obj/item/weapon/gun/smg/bizon/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_SMG
+	burst_delay = FIRE_DELAY_TIER_SMG
+	burst_amount = BURST_AMOUNT_TIER_3
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_4
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_4
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+
+//-------------------------------------------------------
 //GENERIC UZI //Based on the uzi submachinegun, of course.
 
 /obj/item/weapon/gun/smg/mac15

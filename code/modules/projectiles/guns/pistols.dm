@@ -349,6 +349,57 @@
 //-------------------------------------------------------
 //
 
+/obj/item/weapon/gun/pistol/makarov
+	name = "\improper Makarov placeholder pistol"
+	desc = "Placeholder."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon_state = "pk9"
+	item_state = "pk9"
+	fire_sound = 'sound/weapons/gun_c99.ogg'
+	current_mag = /obj/item/ammo_magazine/pistol/c99
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/burstfire_assembly,
+	)
+
+/obj/item/weapon/gun/pistol/c99/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
+
+/obj/item/weapon/gun/pistol/c99/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
+
+/obj/item/weapon/gun/pistol/makarov/suppressed
+	name = "\improper PB placeholder pistol"
+	desc = "Placeholder."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon_state = "pk9"
+	item_state = "pk9"
+	inherent_traits = list(TRAIT_GUN_SILENCED)
+	fire_sound = 'sound/weapons/gun_c99.ogg'
+	current_mag = /obj/item/ammo_magazine/pistol/c99
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/burstfire_assembly,
+	)
+
+//-------------------------------------------------------
+//
+
 /obj/item/weapon/gun/pistol/c99
 	name = "\improper Korovin PK-9 pistol"
 	desc = "The Korovin PK-9 is a cheap, robust and reliable sidearm, its design is strongly inspired by the classic ancient Makarov pistol. Commonly used by many groups, mostly those worried about cost."

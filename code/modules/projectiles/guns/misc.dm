@@ -155,6 +155,101 @@
 			return FALSE
 
 
+/obj/item/weapon/gun/pkp
+	name = "\improper PKP General Purpose Machine Gun"
+	desc = "Placeholder. \n<b>Alt-click it to open the feed cover and allow for reloading.</b>"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon_state = "m60"
+	item_state = "m60"
+
+	fire_sound = 'sound/weapons/gun_m60.ogg'
+	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
+	current_mag = /obj/item/ammo_magazine/pkp
+	w_class = SIZE_LARGE
+	force = 25
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY|GUN_CAN_POINTBLANK
+	gun_category = GUN_CATEGORY_HEAVY
+	attachable_allowed = list(
+		/obj/item/attachable/pkpbarrel,
+		/obj/item/attachable/bipod/pkp,
+	)
+	starting_attachment_types = list(
+		/obj/item/attachable/pkpbarrel,
+		/obj/item/attachable/bipod/pkp,
+	)
+	var/cover_open = FALSE //if the gun's feed-cover is open or not.
+
+
+/obj/item/weapon/gun/pkp/Initialize(mapload, spawn_empty)
+	. = ..()
+	if(current_mag && current_mag.current_rounds > 0)
+		load_into_chamber()
+
+/obj/item/weapon/gun/pkp/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 16,"rail_x" = 0, "rail_y" = 0, "under_x" = 39, "under_y" = 7, "stock_x" = 0, "stock_y" = 0)
+
+
+/obj/item/weapon/gun/pkp/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_10
+	burst_amount = BURST_AMOUNT_TIER_5
+	burst_delay = FIRE_DELAY_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_10
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	scatter_unwielded = SCATTER_AMOUNT_TIER_10
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_5
+	empty_sound = 'sound/weapons/gun_empty.ogg'
+
+/obj/item/weapon/gun/pkp/clicked(mob/user, list/mods)
+	if(!mods["alt"] || !CAN_PICKUP(user, src))
+		return ..()
+	else
+		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
+			return TRUE
+		if(user.get_active_hand() && user.get_inactive_hand())
+			to_chat(user, SPAN_WARNING("You can't do that with your hands full!"))
+			return TRUE
+		if(!cover_open)
+			playsound(src.loc, 'sound/handling/smartgun_open.ogg', 50, TRUE, 3)
+			to_chat(user, SPAN_NOTICE("You open [src]'s feed cover, allowing the belt to be removed."))
+			cover_open = TRUE
+		else
+			playsound(src.loc, 'sound/handling/smartgun_close.ogg', 50, TRUE, 3)
+			to_chat(user, SPAN_NOTICE("You close [src]'s feed cover."))
+			cover_open = FALSE
+		update_icon()
+		return TRUE
+
+/obj/item/weapon/gun/pkp/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
+	if(!cover_open)
+		to_chat(user, SPAN_WARNING("[src]'s feed cover is closed! You can't put a new belt in! <b>(alt-click to open it)</b>"))
+		return
+	return ..()
+
+/obj/item/weapon/gun/pkp/unload(mob/user, reload_override, drop_override, loc_override)
+	if(!cover_open)
+		to_chat(user, SPAN_WARNING("[src]'s feed cover is closed! You can't take out the belt! <b>(alt-click to open it)</b>"))
+		return
+	return ..()
+
+/obj/item/weapon/gun/pkp/update_icon()
+	. = ..()
+	if(cover_open)
+		overlays += "+[base_gun_icon]_cover_open"
+	else
+		overlays += "+[base_gun_icon]_cover_closed"
+
+/obj/item/weapon/gun/pkp/able_to_fire(mob/living/user)
+	. = ..()
+	if(.)
+		if(cover_open)
+			to_chat(user, SPAN_WARNING("You can't fire [src] with the feed cover open! <b>(alt-click to close)</b>"))
+			return FALSE
+
+
 /obj/effect/syringe_gun_dummy
 	name = ""
 	desc = ""

@@ -1332,14 +1332,13 @@
 	user.put_in_active_hand(F)
 
 //-------------------------------------------------------
-//Type 57 RPG - UPP Rocket Launcher
+//UPP Rocket Launchers
 
 /obj/item/weapon/gun/launcher/rocket/upp
-	name = "\improper Type 57 Handheld Anti-tank Grenade Launcher"
-	desc = "Used to take out light-tanks and enemy structures, the QH-4 is a dangerous weapon specialised against vehicles. Requires direct hits to penetrate vehicle armour."
+	name = "\improper RPG-7 Handheld Anti-Tank Grenade Launcher" //placeholder for fitting name
+	desc = "Placeholder."
 	icon_state = "m83a2"
 	item_state = "m83a2"
-	skill_locked = FALSE
 
 	current_mag = /obj/item/ammo_magazine/rocket/anti_tank
 
@@ -1349,6 +1348,13 @@
 
 	flags_item = TWOHANDED
 
+
+/obj/item/weapon/gun/launcher/rocket/upp/skillless
+	name = "\improper RPG-2 Handheld Anti-Tank Grenade Launcher" //placeholder for fitting name
+	desc = "Placeholder."
+	icon_state = "m83a2"
+	item_state = "m83a2"
+	skill_locked = FALSE
 
 //-------------------------------------------------------
 //Flare gun. Close enough to a specialist gun?

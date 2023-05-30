@@ -366,9 +366,8 @@ Works together with spawning an observer, noted above.
 
 	ghost.set_huds_from_prefs()
 
-	//if zombie
+	//if zombie turn your body back to the free mob pool
 	if(iszombie(src))
-		to_chat(src, SPAN_WARNING("your a zombie and your trying to ghost..."))
 		src.free_for_ghosts()
 
 	return ghost

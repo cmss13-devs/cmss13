@@ -705,7 +705,7 @@
 /turf/closed/wall/resin/Initialize(mapload)
 	. = ..()
 
-	for(var/obj/effect/alien/weeds/node/weed_node in loc)
+	for(var/obj/effect/alien/weeds/node/weed_node in contents)
 		qdel(weed_node)
 
 /turf/closed/wall/resin/pillar

@@ -314,7 +314,6 @@ Works together with spawning an observer, noted above.
 /mob/proc/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
 	if(isaghost(src) || !key)
 		return
-
 	if(aghosted)
 		src.aghosted = TRUE
 	var/mob/dead/observer/ghost = new(loc, src) //Transfer safety to observer spawning proc.

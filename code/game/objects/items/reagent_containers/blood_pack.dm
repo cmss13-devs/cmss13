@@ -14,6 +14,7 @@
 	var/mode = BLOOD_BAG_INJECTING
 	var/mob/living/carbon/human/connected_to
 	var/blood_type = null
+	var/self_attachment_modifier = 1
 
 /obj/item/reagent_container/blood/Initialize()
 	. = ..()
@@ -36,8 +37,10 @@
 	. = ..()
 
 	if(attacked_mob == user)
-		to_chat(user, SPAN_WARNING("You cannot connect this to yourself!"))
-		return
+		to_chat(user, SPAN_WARNING("Attaching the bloodpack to yourself is awkward!"))
+		self_attachment_modifier = 2
+	else
+		self_attachment_modifier = 1
 
 	if(connected_to == attacked_mob)
 		STOP_PROCESSING(SSobj, src)
@@ -54,7 +57,7 @@
 	if(user.action_busy)
 		return
 
-	if(!do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_SURGERY), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, attacked_mob, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+	if(!do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_SURGERY) * self_attachment_modifier, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, attacked_mob, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 		to_chat(user, SPAN_WARNING("You were interrupted before you could finish!"))
 		return
 
@@ -89,7 +92,7 @@
 	//give blood
 	if(mode == BLOOD_BAG_INJECTING)
 		if(volume > 0)
-			var/transfer_amount = REAGENTS_METABOLISM * 30
+			var/transfer_amount = REAGENTS_METABOLISM * 50
 			connected_to.inject_blood(src, transfer_amount)
 			return
 

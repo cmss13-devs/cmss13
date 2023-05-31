@@ -497,6 +497,7 @@
 	name = "\improper M43 cluster munition"
 	desc = "Aww what cute lil grenad- Oh shit it's angry!"
 	det_time = 1 SECONDS
+	explosive_power = 60
 	shrapnel_count = 3
 
 /obj/item/explosive/grenade/HE/micro/cluster/New()
@@ -510,6 +511,7 @@
 	if(pick(50))
 		det_time += rand(1,5) // minor time variation
 	activate()
+
 /obj/item/explosive/mine/pmc
 	name = "\improper M20P Claymore anti-personnel mine"
 	desc = "The M20P Claymore is a directional proximity triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. It has been modified for use by the Wey-Yu PMC forces."

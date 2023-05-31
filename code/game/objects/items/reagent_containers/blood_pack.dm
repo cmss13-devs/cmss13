@@ -37,8 +37,8 @@
 	. = ..()
 
 	if(attacked_mob == user)
-		to_chat(user, SPAN_WARNING("Attaching the bloodpack to yourself is awkward!"))
-		self_attachment_modifier = 2
+		to_chat(user, SPAN_WARNING("Using the bloodpack on yourself is awkward!"))
+		self_attachment_modifier = 2 //Yeah yeah, lazy, I know. I suck at code
 	else
 		self_attachment_modifier = 1
 

@@ -365,8 +365,8 @@ Works together with spawning an observer, noted above.
 
 	ghost.set_huds_from_prefs()
 
-	//if zombie turn your body back to the free mob pool
-	if(iszombie(src))
+	//You have been warn if you ghost your body go back to the free mob pool unless your dead we will wait for you to get ressurect...
+	if(iszombie(src)&&stat == !DEAD)
 		free_for_ghosts()
 
 	return ghost
@@ -382,15 +382,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	do_ghost()
 
 /mob/living/proc/do_ghost()
-	if(stat == DEAD)
-		if(mind && mind.player_entity)
-			mind.player_entity.update_panel_data(round_statistics)
-		ghostize(TRUE)
-	else
+	//if a zombie want to ghost he will forfeit is right to play is zombie only alive zombie work and get the message for some reason...
+	if(iszombie(src))
 		var/list/options = list("Ghost", "Stay in body")
 		if(check_rights(R_MOD))
 			options = list("Aghost") + options
-		var/response = tgui_alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)", "Are you sure you want to ghost?", options)
+		var/response = tgui_alert(usr, "Are you -sure- you want to ghost?\n(You are a zombie. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)", "Are you sure you want to ghost?", options)
 		if(response == "Aghost")
 			client.admin_ghost()
 			return
@@ -403,6 +400,29 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/mob/dead/observer/ghost = ghostize(FALSE) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost && !is_admin_level(z))
 			ghost.timeofdeath = world.time
+
+	else
+		if(stat == DEAD)
+			if(mind && mind.player_entity)
+				mind.player_entity.update_panel_data(round_statistics)
+			ghostize(TRUE)
+		else
+			var/list/options = list("Ghost", "Stay in body")
+			if(check_rights(R_MOD))
+				options = list("Aghost") + options
+			var/response = tgui_alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)", "Are you sure you want to ghost?", options)
+			if(response == "Aghost")
+				client.admin_ghost()
+				return
+			if(response != "Ghost") return //didn't want to ghost after-all
+			AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
+			var/turf/location = get_turf(src)
+			if(location) //to avoid runtime when a mob ends up in nullspace
+				msg_admin_niche("[key_name_admin(usr)] has ghosted. [ADMIN_JMP(location)]")
+			log_game("[key_name_admin(usr)] has ghosted.")
+			var/mob/dead/observer/ghost = ghostize(FALSE) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
+			if(ghost && !is_admin_level(z))
+				ghost.timeofdeath = world.time
 
 /mob/dead/observer/Move(atom/newloc, direct)
 	following = null

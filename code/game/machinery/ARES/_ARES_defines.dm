@@ -68,6 +68,8 @@
 	src.title = "1:1 Log ([user])"
 
 /datum/ares_record/deleted_talk
+	record_name = ARES_RECORD_DELETED
 	var/conversation = list()
+
 /datum/ares_record/deleted_talk/New()
 	time = worldtime2text()

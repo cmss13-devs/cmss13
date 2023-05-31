@@ -44,6 +44,9 @@
 				continue
 			if((H.faction != faction_to_display && !add_PMCs) || (H.faction != faction_to_display && add_PMCs && !(H.faction in FACTION_LIST_WY)) && !(faction_to_display in H.faction_group)) //faction checks
 				targets.Remove(H)
+		var/datum/ares_link/link = GLOB.ares_link
+		if(link.interface && !(link.interface.inoperable()))
+			link.log_ares_announcement(title, message)
 
 	else if(faction_to_display == "Everyone (-Yautja)")
 		for(var/mob/M in targets)

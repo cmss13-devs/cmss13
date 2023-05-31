@@ -13,7 +13,6 @@
 // BEGIN_INCLUDE
 #include "code\_byond_version_compat.dm"
 #include "code\_compile_options.dm"
-#include "code\_experiments.dm"
 #include "code\_macros.dm"
 #include "code\global.dm"
 #include "code\names.dm"
@@ -260,7 +259,6 @@
 #include "code\controllers\subsystem\predships.dm"
 #include "code\controllers\subsystem\projectiles.dm"
 #include "code\controllers\subsystem\quadtrees.dm"
-#include "code\controllers\subsystem\reagents.dm"
 #include "code\controllers\subsystem\redis.dm"
 #include "code\controllers\subsystem\round_recording.dm"
 #include "code\controllers\subsystem\shuttle.dm"
@@ -572,7 +570,6 @@
 #include "code\datums\statistics\random_facts\damage_fact.dm"
 #include "code\datums\statistics\random_facts\kills_fact.dm"
 #include "code\datums\statistics\random_facts\random_fact.dm"
-#include "code\datums\statistics\random_facts\revives_fact.dm"
 #include "code\datums\supply_packs\_supply_packs.dm"
 #include "code\datums\supply_packs\ammo.dm"
 #include "code\datums\supply_packs\attachments.dm"

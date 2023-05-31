@@ -14,6 +14,10 @@ const PAGES = {
   'talking': () => ARESTalk,
   'deleted_talks': () => DeletedTalks,
   'read_deleted': () => ReadingTalks,
+  'security': () => Security,
+  'requisitions': () => Requisitions,
+  'antiair': () => AntiAir,
+  'emergency': () => Emergency,
 };
 
 export const AresInterface = (props, context) => {
@@ -52,7 +56,7 @@ const Login = (props, context) => {
 
       <Button
         content="Login"
-        icon="user-shield"
+        icon="id-card"
         width="30vw"
         textAlign="center"
         fontSize="1.5rem"
@@ -73,15 +77,24 @@ const MainMenu = (props, context) => {
     <>
       <Section>
         <Flex align="center">
-          <Button
-            icon="arrow-left"
-            px="2rem"
-            textAlign="center"
-            mr="1rem"
-            tooltip="Go back"
-            onClick={() => act('go_back')}
-            disabled={last_page === current_menu}
-          />
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+              disabled={current_menu === 'main'}
+            />
+          </Box>
 
           <h3>
             {logged_in}, {access_text}
@@ -104,6 +117,15 @@ const MainMenu = (props, context) => {
         <Flex align="center">
           <h3>Access Level 0</h3>
           <Button
+            content="Announcement Logs"
+            tooltip="Access the AI Announcement logs."
+            icon="bullhorn"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('page_announcements')}
+          />
+          <Button
             content="ARES Communication"
             tooltip="Direct communication 1:1 with ARES."
             icon="comments"
@@ -117,13 +139,13 @@ const MainMenu = (props, context) => {
           <Flex align="center">
             <h3>Access Level 1</h3>
             <Button
-              content="Announcement Logs"
-              tooltip="Access the AI Announcement logs."
-              icon="bullhorn"
+              content="Anti Air Targetting"
+              tooltip="Review changes to the Anti-Air targetting."
+              icon="crosshairs"
               ml="auto"
               px="2rem"
               bold
-              onClick={() => act('page_announcements')}
+              onClick={() => act('page_antiair')}
             />
             <Button
               content="Bioscan Logs"
@@ -149,6 +171,16 @@ const MainMenu = (props, context) => {
           <Flex align="center">
             <h3>Access Level 2</h3>
             <Button
+              content="Security Updates"
+              tooltip="Read the Security Updates."
+              icon="file-shield"
+              ml="auto"
+              px="2rem"
+              bold
+              onClick={() => act('page_security')}
+              disabled={access_text}
+            />
+            <Button
               content="View Apollo Log"
               tooltip="Read the Apollo Link logs."
               icon="clipboard"
@@ -163,24 +195,23 @@ const MainMenu = (props, context) => {
           <Flex align="center">
             <h3>Access Level 4</h3>
             <Button.Confirm
-              content="Initiate Evacuation"
-              tooltip="Begin evacuation procedures. Authorise Lifeboats."
-              icon="shuttle-space"
+              content="Access Emergency Protocols"
+              tooltip="Access emergency protocols."
+              icon="shield"
               color="red"
               ml="auto"
               px="2rem"
               bold
-              onClick={() => act('evacuation_start')}
+              onClick={() => act('page_emergency')}
             />
-            <Button.Confirm
-              content="Launch Distress Beacon"
-              tooltip="Launch a Distress Beacon."
-              icon="circle-exclamation"
-              color="red"
+            <Button
+              content="ASRS Audit Log"
+              tooltip="Review the ASRS Audit Log."
+              icon="cart-shopping"
               ml="auto"
               px="2rem"
               bold
-              onClick={() => act('distress')}
+              onClick={() => act('page_requisitions')}
             />
           </Flex>
         )}
@@ -212,7 +243,7 @@ const MainMenu = (props, context) => {
             />
             <Button
               content="View Deleted 1:1's"
-              tooltip="View the deletion log."
+              tooltip="View the deleted 1:1 conversations with ARES."
               icon="sd-card"
               ml="auto"
               px="2rem"
@@ -233,7 +264,7 @@ const AnnouncementLogs = (props, context) => {
     access_text,
     last_page,
     current_menu,
-    announcement_records,
+    records_announcement,
     access_level,
   } = data;
 
@@ -241,15 +272,23 @@ const AnnouncementLogs = (props, context) => {
     <>
       <Section>
         <Flex align="center">
-          <Button
-            icon="arrow-left"
-            px="2rem"
-            textAlign="center"
-            mr="1rem"
-            tooltip="Go back"
-            onClick={() => act('go_back')}
-            disabled={last_page === current_menu}
-          />
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
 
           <h3>
             {logged_in}, {access_text}
@@ -271,7 +310,7 @@ const AnnouncementLogs = (props, context) => {
       </Section>
 
       <Section>
-        {!!announcement_records.length && (
+        {!!records_announcement.length && (
           <Flex
             className="candystripe"
             p=".75rem"
@@ -288,7 +327,7 @@ const AnnouncementLogs = (props, context) => {
             </Flex.Item>
           </Flex>
         )}
-        {announcement_records.map((record, i) => {
+        {records_announcement.map((record, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
               <Flex.Item bold width="9rem" shrink="0" mr="1rem">
@@ -323,7 +362,7 @@ const BioscanLogs = (props, context) => {
     access_text,
     last_page,
     current_menu,
-    bioscan_records,
+    records_bioscan,
     access_level,
   } = data;
 
@@ -331,15 +370,23 @@ const BioscanLogs = (props, context) => {
     <>
       <Section>
         <Flex align="center">
-          <Button
-            icon="arrow-left"
-            px="2rem"
-            textAlign="center"
-            mr="1rem"
-            tooltip="Go back"
-            onClick={() => act('go_back')}
-            disabled={last_page === current_menu}
-          />
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
 
           <h3>
             {logged_in}, {access_text}
@@ -361,7 +408,7 @@ const BioscanLogs = (props, context) => {
       </Section>
 
       <Section>
-        {!!bioscan_records.length && (
+        {!!records_bioscan.length && (
           <Flex
             className="candystripe"
             p=".75rem"
@@ -378,7 +425,7 @@ const BioscanLogs = (props, context) => {
             </Flex.Item>
           </Flex>
         )}
-        {bioscan_records.map((record, i) => {
+        {records_bioscan.map((record, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
               <Flex.Item bold width="9rem" shrink="0" mr="1rem">
@@ -413,7 +460,7 @@ const BombardmentLogs = (props, context) => {
     access_text,
     last_page,
     current_menu,
-    bombardment_records,
+    records_bombardment,
     access_level,
   } = data;
 
@@ -421,15 +468,23 @@ const BombardmentLogs = (props, context) => {
     <>
       <Section>
         <Flex align="center">
-          <Button
-            icon="arrow-left"
-            px="2rem"
-            textAlign="center"
-            mr="1rem"
-            tooltip="Go back"
-            onClick={() => act('go_back')}
-            disabled={last_page === current_menu}
-          />
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
 
           <h3>
             {logged_in}, {access_text}
@@ -451,7 +506,7 @@ const BombardmentLogs = (props, context) => {
       </Section>
 
       <Section>
-        {!!bombardment_records.length && (
+        {!!records_bombardment.length && (
           <Flex
             className="candystripe"
             p=".75rem"
@@ -471,7 +526,7 @@ const BombardmentLogs = (props, context) => {
             </Flex.Item>
           </Flex>
         )}
-        {bombardment_records.map((record, i) => {
+        {records_bombardment.map((record, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
               <Flex.Item bold width="9rem" shrink="0" mr="1rem">
@@ -508,15 +563,23 @@ const ApolloLog = (props, context) => {
     <>
       <Section>
         <Flex align="center">
-          <Button
-            icon="arrow-left"
-            px="2rem"
-            textAlign="center"
-            mr="1rem"
-            tooltip="Go back"
-            onClick={() => act('go_back')}
-            disabled={last_page === current_menu}
-          />
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
 
           <h3>
             {logged_in}, {access_text}
@@ -557,15 +620,23 @@ const AccessLogs = (props, context) => {
     <>
       <Section>
         <Flex align="center">
-          <Button
-            icon="arrow-left"
-            px="2rem"
-            textAlign="center"
-            mr="1rem"
-            tooltip="Go back"
-            onClick={() => act('go_back')}
-            disabled={last_page === current_menu}
-          />
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
 
           <h3>
             {logged_in}, {access_text}
@@ -600,22 +671,30 @@ const AccessLogs = (props, context) => {
 
 const DeletionLogs = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, deletion_records } =
+  const { logged_in, access_text, last_page, current_menu, records_deletion } =
     data;
 
   return (
     <>
       <Section>
         <Flex align="center">
-          <Button
-            icon="arrow-left"
-            px="2rem"
-            textAlign="center"
-            mr="1rem"
-            tooltip="Go back"
-            onClick={() => act('go_back')}
-            disabled={last_page === current_menu}
-          />
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
 
           <h3>
             {logged_in}, {access_text}
@@ -637,7 +716,7 @@ const DeletionLogs = (props, context) => {
       </Section>
 
       <Section>
-        {!!deletion_records.length && (
+        {!!records_deletion.length && (
           <Flex
             className="candystripe"
             p=".75rem"
@@ -657,7 +736,7 @@ const DeletionLogs = (props, context) => {
             </Flex.Item>
           </Flex>
         )}
-        {deletion_records.map((record, i) => {
+        {records_deletion.map((record, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
               <Flex.Item bold width="9rem" shrink="0" mr="1rem">
@@ -693,15 +772,23 @@ const ARESTalk = (props, context) => {
     <>
       <Section>
         <Flex align="center">
-          <Button
-            icon="arrow-left"
-            px="2rem"
-            textAlign="center"
-            mr="1rem"
-            tooltip="Go back"
-            onClick={() => act('go_back')}
-            disabled={last_page === current_menu}
-          />
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
 
           <h3>
             {logged_in}, {access_text}
@@ -755,6 +842,7 @@ const ARESTalk = (props, context) => {
         <Button.Confirm
           content="Clear Conversation"
           icon="trash"
+          tooltip="Clears the conversation. Please note, your 1:1 conversation is only visible to you."
           width="30vw"
           textAlign="center"
           fontSize="1.5rem"
@@ -783,15 +871,23 @@ const DeletedTalks = (props, context) => {
     <>
       <Section>
         <Flex align="center">
-          <Button
-            icon="arrow-left"
-            px="2rem"
-            textAlign="center"
-            mr="1rem"
-            tooltip="Go back"
-            onClick={() => act('go_back')}
-            disabled={last_page === current_menu}
-          />
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
 
           <h3>
             {logged_in}, {access_text}
@@ -868,26 +964,28 @@ const ReadingTalks = (props, context) => {
     <>
       <Section>
         <Flex align="center">
-          <Button
-            icon="arrow-left"
-            px="2rem"
-            textAlign="center"
-            mr="1rem"
-            tooltip="Go back"
-            onClick={() => act('go_back')}
-            disabled={last_page === current_menu}
-          />
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
 
           <h3>
             {logged_in}, {access_text}
           </h3>
 
-          <Button
-            icon="house"
-            ml="auto"
-            tooltip="Navigation Menu"
-            onClick={() => act('home')}
-          />
           <Button.Confirm
             content="Logout"
             icon="circle-user"
@@ -911,6 +1009,315 @@ const ReadingTalks = (props, context) => {
           );
         })}
       </Section>
+    </>
+  );
+};
+
+const Requisitions = (props, context) => {
+  const { data, act } = useBackend(context);
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    records_requisition,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">ASRS Audit Log</h1>
+        {!!records_requisition.length && (
+          <Flex
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem">
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+              Time
+            </Flex.Item>
+            <Flex.Item grow bold>
+              User
+            </Flex.Item>
+            <Flex.Item bold width="9rem" shrink="0" mr="1rem">
+              Source
+            </Flex.Item>
+            <Flex.Item bold width="30rem" textAlign="center">
+              Order
+            </Flex.Item>
+          </Flex>
+        )}
+        {records_requisition.map((record, i) => {
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+                {record.time}
+              </Flex.Item>
+              <Flex.Item grow italic>
+                {record.user}
+              </Flex.Item>
+              <Flex.Item width="9rem" shrink="0" mr="1rem">
+                {record.title}
+              </Flex.Item>
+              <Flex.Item width="30rem" ml="1rem" shrink="0" textAlign="center">
+                {record.details}
+              </Flex.Item>
+            </Flex>
+          );
+        })}
+      </Section>
+    </>
+  );
+};
+
+const AntiAir = (props, context) => {
+  const { data, act } = useBackend(context);
+  const { logged_in, access_text, last_page, current_menu, aa_adjustments } =
+    data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">AntiAir Control Logs</h1>
+        {!!aa_adjustments.length && (
+          <Flex
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem">
+            <Flex.Item bold width="9rem" shrink="0" mr="1rem">
+              Time
+            </Flex.Item>
+            <Flex.Item grow bold>
+              User
+            </Flex.Item>
+            <Flex.Item bold width="30rem" textAlign="center">
+              Adjustment
+            </Flex.Item>
+          </Flex>
+        )}
+        {aa_adjustments.map((record, i) => {
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              <Flex.Item bold width="9rem" shrink="0" mr="1rem">
+                {record.time}
+              </Flex.Item>
+              <Flex.Item grow italic>
+                {record.user}
+              </Flex.Item>
+              <Flex.Item width="30rem" ml="1rem" shrink="0" textAlign="center">
+                {record.details}
+              </Flex.Item>
+            </Flex>
+          );
+        })}
+      </Section>
+    </>
+  );
+};
+
+const Security = (props, context) => {
+  const { data, act } = useBackend(context);
+  const { logged_in, access_text, last_page, current_menu } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Security Updates</h1>
+      </Section>
+    </>
+  );
+};
+
+const Emergency = (props, context) => {
+  const { data, act } = useBackend(context);
+  const { logged_in, access_text, last_page, current_menu } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <h1 align="center">Emergency Protocols</h1>
+      <Flex align="center" justify="center" height="50%" direction="column">
+        <Button.Confirm
+          content="Initiate Evacuation"
+          tooltip="Begin evacuation procedures. Authorise Lifeboats."
+          icon="shuttle-space"
+          color="red"
+          width="40vw"
+          textAlign="center"
+          fontSize="1.5rem"
+          p="1rem"
+          mt="5rem"
+          bold
+          onClick={() => act('evacuation_start')}
+        />
+        <Button.Confirm
+          content="Launch Distress Beacon"
+          tooltip="Launch a Distress Beacon."
+          icon="circle-exclamation"
+          color="red"
+          width="40vw"
+          textAlign="center"
+          fontSize="1.5rem"
+          p="1rem"
+          mt="5rem"
+          bold
+          onClick={() => act('distress')}
+        />
+        <Button.Confirm
+          content="Request Nuclear Device"
+          tooltip="Request a nuclear device to be authorized by USCM High Command."
+          icon="circle-radiation"
+          color="red"
+          width="40vw"
+          textAlign="center"
+          fontSize="1.5rem"
+          p="1rem"
+          mt="5rem"
+          bold
+          onClick={() => act('nuclearbomb')}
+          disabled={access_text}
+        />
+      </Flex>
     </>
   );
 };

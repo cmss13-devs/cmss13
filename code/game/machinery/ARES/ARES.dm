@@ -135,15 +135,20 @@
 	var/list/deleted_1to1 = list()
 
 	/// Holds all (/datum/ares_record/announcement)s
-	var/list/announcement_records = list()
+	var/list/records_announcement = list()
 	/// Holds all (/datum/ares_record/bioscan)s
-	var/list/bioscan_records = list()
+	var/list/records_bioscan = list()
 	/// Holds all (/datum/ares_record/bombardment)s
-	var/list/bombardment_records = list()
+	var/list/records_bombardment = list()
 	/// Holds all (/datum/ares_record/deletion)s
-	var/list/deletion_records = list()
+	var/list/records_deletion = list()
 	/// Holds all (/datum/ares_record/talk_log)s
-	var/list/talking_records = list()
+	var/list/records_talking = list()
+	/// Holds all (/datum/ares_record//datum/ares_record/requisition_log)s
+	var/list/records_asrs = list()
+	/// Holds all (/datum/ares_record/security)s and (/datum/ares_record/antiair)s
+	var/list/records_security = list()
+
 
 	COOLDOWN_DECLARE(ares_distress_cooldown)
 

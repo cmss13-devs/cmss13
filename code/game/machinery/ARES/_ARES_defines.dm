@@ -18,9 +18,12 @@
 #define ARES_ACCESS_DEBUG 10
 
 #define ARES_RECORD_ANNOUNCE "Announcement Record"
+#define ARES_RECORD_ANTIAIR "AntiAir Control Log"
+#define ARES_RECORD_ASRS "Requisition Record"
 #define ARES_RECORD_BIOSCAN "Bioscan Record"
 #define ARES_RECORD_BOMB "Orbital Bombardment Record"
 #define ARES_RECORD_DELETED "Deleted Record"
+#define ARES_RECORD_SECURITY "Security Update"
 
 /datum/ares_record
 	var/record_name = "ARES Data Core"
@@ -43,6 +46,26 @@
 
 /datum/ares_record/bioscan
 	record_name = ARES_RECORD_BIOSCAN
+
+
+/datum/ares_record/requisition_log
+	record_name = ARES_RECORD_ASRS
+/datum/ares_record/requisition_log/New(title, details, user)
+	time = worldtime2text()
+	src.title = title
+	src.details = details
+	src.user = user
+
+/datum/ares_record/security
+	record_name = ARES_RECORD_SECURITY
+
+/datum/ares_record/antiair
+	record_name = ARES_RECORD_ANTIAIR
+/datum/ares_record/antiair/New(details, user)
+	time = worldtime2text()
+	src.title = "AntiAir Adjustment"
+	src.details = details
+	src.user = user
 
 /datum/ares_record/bombardment
 	record_name = ARES_RECORD_BOMB

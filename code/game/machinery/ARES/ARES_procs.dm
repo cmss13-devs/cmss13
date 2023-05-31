@@ -83,13 +83,19 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 /datum/ares_link/proc/log_ares_bioscan(title, input)
 	if(!p_bioscan || p_bioscan.inoperable() || !interface)
 		return FALSE
-	interface.bioscan_records.Add(new /datum/ares_record/bioscan(title, input))
+	interface.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
 
 /datum/ares_link/proc/log_ares_bombardment(mob/living/user, ob_name, coordinates)
-	interface.bombardment_records.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user))
+	interface.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user))
 
 /datum/ares_link/proc/log_ares_announcement(title, message)
-	interface.announcement_records.Add(new /datum/ares_record/announcement(title, message))
+	interface.records_announcement.Add(new /datum/ares_record/announcement(title, message))
+
+/datum/ares_link/proc/log_ares_antiair(mob/living/user, details)
+	interface.records_security.Add(new /datum/ares_record/antiair(details, user))
+
+/datum/ares_link/proc/log_ares_requisition(source, details, mob/living/user)
+	interface.records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user))
 
 /obj/structure/machinery/computer/ares_console/proc/message_ares(text, mob/Sender, ref)
 	var/msg = "<b>[SPAN_NOTICE("<font color=orange>ARES:</font>")][key_name(Sender, 1)] [ARES_MARK(Sender)] [ADMIN_PP(Sender)] [ADMIN_VV(Sender)] [ADMIN_SM(Sender)] [ADMIN_JMP_USER(Sender)] [ARES_REPLY(Sender, ref)]:</b> [text]"
@@ -145,27 +151,27 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 	data["deleted_conversation"] += deleted_1to1
 
 	var/list/logged_announcements = list()
-	for(var/datum/ares_record/announcement/broadcast as anything in announcement_records)
+	for(var/datum/ares_record/announcement/broadcast as anything in records_announcement)
 		var/list/current_broadcast = list()
 		current_broadcast["time"] = broadcast.time
 		current_broadcast["title"] = broadcast.title
 		current_broadcast["details"] = broadcast.details
 		current_broadcast["ref"] = "\ref[broadcast]"
 		logged_announcements += list(current_broadcast)
-	data["announcement_records"] = logged_announcements
+	data["records_announcement"] = logged_announcements
 
 	var/list/logged_bioscans = list()
-	for(var/datum/ares_record/bioscan/scan as anything in bioscan_records)
+	for(var/datum/ares_record/bioscan/scan as anything in records_bioscan)
 		var/list/current_scan = list()
 		current_scan["time"] = scan.time
 		current_scan["title"] = scan.title
 		current_scan["details"] = scan.details
 		current_scan["ref"] = "\ref[scan]"
 		logged_bioscans += list(current_scan)
-	data["bioscan_records"] = logged_bioscans
+	data["records_bioscan"] = logged_bioscans
 
 	var/list/logged_bombs = list()
-	for(var/datum/ares_record/bombardment/bomb as anything in bombardment_records)
+	for(var/datum/ares_record/bombardment/bomb as anything in records_bombardment)
 		var/list/current_bomb = list()
 		current_bomb["time"] = bomb.time
 		current_bomb["title"] = bomb.title
@@ -173,10 +179,10 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 		current_bomb["user"] = bomb.user
 		current_bomb["ref"] = "\ref[bomb]"
 		logged_bombs += list(current_bomb)
-	data["bombardment_records"] = logged_bombs
+	data["records_bombardment"] = logged_bombs
 
 	var/list/logged_deletes = list()
-	for(var/datum/ares_record/deletion/deleted as anything in deletion_records)
+	for(var/datum/ares_record/deletion/deleted as anything in records_deletion)
 		if(!istype(deleted))
 			continue
 		var/list/current_delete = list()
@@ -186,10 +192,10 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 		current_delete["user"] = deleted.user
 		current_delete["ref"] = "\ref[deleted]"
 		logged_deletes += list(current_delete)
-	data["deletion_records"] = logged_deletes
+	data["records_deletion"] = logged_deletes
 
 	var/list/logged_discussions = list()
-	for(var/datum/ares_record/deleted_talk/deleted_convo as anything in deletion_records)
+	for(var/datum/ares_record/deleted_talk/deleted_convo as anything in records_deletion)
 		if(!istype(deleted_convo))
 			continue
 		var/list/deleted_disc = list()
@@ -199,10 +205,35 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 		logged_discussions += list(deleted_disc)
 	data["deleted_discussions"] = logged_discussions
 
+	var/list/logged_adjustments = list()
+	for(var/datum/ares_record/antiair/aa_adjustment as anything in records_security)
+		if(!istype(aa_adjustment))
+			continue
+		var/list/current_adjustment = list()
+		current_adjustment["time"] = aa_adjustment.time
+		current_adjustment["details"] = aa_adjustment.details
+		current_adjustment["user"] = aa_adjustment.user
+		current_adjustment["ref"] = "\ref[aa_adjustment]"
+		logged_adjustments += list(current_adjustment)
+	data["aa_adjustments"] = logged_adjustments
+
+	var/list/logged_orders = list()
+	for(var/datum/ares_record/requisition_log/req_order as anything in records_asrs)
+		if(!istype(req_order))
+			continue
+		var/list/current_order = list()
+		current_order["time"] = req_order.time
+		current_order["details"] = req_order.details
+		current_order["title"] = req_order.title
+		current_order["user"] = req_order.user
+		current_order["ref"] = "\ref[req_order]"
+		logged_orders += list(current_order)
+	data["records_requisition"] = logged_orders
+
 	var/list/logged_convos = list()
 	var/list/active_convo = list()
 	var/active_ref
-	for(var/datum/ares_record/talk_log/log as anything in talking_records)
+	for(var/datum/ares_record/talk_log/log as anything in records_talking)
 		if(!istype(log))
 			continue
 		if(log.user == last_login)
@@ -290,6 +321,18 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 		if("page_access")
 			last_menu = current_menu
 			current_menu = "access_log"
+		if("page_security")
+			last_menu = current_menu
+			current_menu = "security"
+		if("page_requisitions")
+			last_menu = current_menu
+			current_menu = "requisitions"
+		if("page_antiair")
+			last_menu = current_menu
+			current_menu = "antiair"
+		if("page_emergency")
+			last_menu = current_menu
+			current_menu = "emergency"
 		if("page_deleted")
 			last_menu = current_menu
 			current_menu = "delete_log"
@@ -309,27 +352,27 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 				if(ARES_RECORD_ANNOUNCE)
 					new_title = "[record.title] at [record.time]"
 					new_details = record.details
-					announcement_records -= record
+					records_announcement -= record
 				if(ARES_RECORD_BIOSCAN)
 					new_title = "[record.title] at [record.time]"
 					new_details = record.details
-					bioscan_records -= record
+					records_bioscan -= record
 				if(ARES_RECORD_BOMB)
 					new_title = "[record.title] at [record.time]"
 					new_details = "[record.details] Launched by [record.user]."
-					bombardment_records -= record
+					records_bombardment -= record
 
 			new_delete.details = new_details
 			new_delete.user = last_login
 			new_delete.title = new_title
 
-			deletion_records += new_delete
+			records_deletion += new_delete
 
 		// -- 1:1 Conversation -- //
 		if("new_conversation")
 			var/datum/ares_record/talk_log/convo = new(last_login)
 			convo.conversation += "[MAIN_AI_SYSTEM] at [worldtime2text()], 'New 1:1 link initiated. Greetings, [last_login].'"
-			talking_records += convo
+			records_talking += convo
 
 		if("clear_conversation")
 			var/datum/ares_record/talk_log/conversation = locate(params["active_convo"])
@@ -339,8 +382,8 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 			deleted.title = conversation.title
 			deleted.conversation = conversation.conversation
 			deleted.user = conversation.user
-			deletion_records += deleted
-			talking_records -= conversation
+			records_deletion += deleted
+			records_talking -= conversation
 
 		if("message_ares")
 			var/message = tgui_input_text(usr, "What do you wish to say to ARES?", "ARES Message", encode = FALSE)

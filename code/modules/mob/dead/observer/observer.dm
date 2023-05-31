@@ -367,7 +367,7 @@ Works together with spawning an observer, noted above.
 
 	//if zombie turn your body back to the free mob pool
 	if(iszombie(src))
-		src.free_for_ghosts()
+		free_for_ghosts()
 
 	return ghost
 

@@ -16,7 +16,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 	..()
 
 /obj/structure/machinery/computer/ares_console/proc/get_ares_access(obj/item/card/id/card)
-	if(777 in card.access)
+	if(ACCESS_ARES_DEBUG in card.access)
 		return ARES_ACCESS_DEBUG
 	switch(card.assignment)
 		if(JOB_WORKING_JOE)
@@ -133,7 +133,12 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 	data["last_page"] = last_menu
 
 	data["logged_in"] = last_login
-	data["access_text"] = "access level [authentication], [auth_to_text(authentication)]."
+	var/sudo_state = FALSE
+	if(sudo_holder)
+		sudo_state = TRUE
+	data["sudo"] = sudo_state
+
+	data["access_text"] = "[sudo_holder ? "(SUDO)," : ""] access level [authentication], [auth_to_text(authentication)]."
 	data["access_level"] = authentication
 
 	data["alert_level"] = security_level
@@ -296,10 +301,36 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 				access_list += "[last_login] at [worldtime2text()], Access Level [authentication] - [auth_to_text(authentication)]."
 			current_menu = "main"
 
+		if("sudo")
+			var/new_user = tgui_input_text(usr, "Enter Sudo Username", "Sudo User", encode = FALSE)
+			if(new_user)
+				if(new_user == sudo_holder)
+					last_login = sudo_holder
+					sudo_holder = null
+					return
+				if(new_user == last_login)
+					to_chat(usr, SPAN_WARNING("Already remote logged in as this user."))
+					playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+					access_list += "[last_login] at [worldtime2text()], Sudo Access."
+					return FALSE
+				sudo_holder = last_login
+				last_login = new_user
+				return
+		if("sudo_logout")
+			access_list += "[last_login] at [worldtime2text()], Sudo Logout."
+			last_login = sudo_holder
+			sudo_holder = null
+			return
 		// -- Page Changers -- //
 		if("logout")
 			last_menu = current_menu
 			current_menu = "login"
+			if(sudo_holder)
+				access_list += "[last_login] at [worldtime2text()], Sudo Logout."
+				last_login = sudo_holder
+				sudo_holder = null
+			access_list += "[last_login] logged out at [worldtime2text()]."
+
 		if("home")
 			last_menu = current_menu
 			current_menu = "main"

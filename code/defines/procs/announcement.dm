@@ -129,7 +129,7 @@
 	else
 		var/datum/ares_link/link = GLOB.ares_link
 		if(link.interface && !(link.interface.inoperable()))
-			link.log_ares_announcement("[title] Shipwide Update", message)
+			link.log_ares_announcement(title, message)
 
 	announcement_helper(message, title, targets, sound_to_play)
 

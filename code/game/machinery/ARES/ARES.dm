@@ -121,6 +121,8 @@
 
 	/// The last person to login.
 	var/last_login
+	/// The person pretending to be last_login
+	var/sudo_holder
 	/// A record of who logged in and when.
 	var/list/access_list = list()
 

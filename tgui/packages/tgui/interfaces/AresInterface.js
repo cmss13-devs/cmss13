@@ -51,7 +51,7 @@ const Login = (props, context) => {
       <Box mb="2rem" fontFamily="monospace">
         WY-DOS Executive
       </Box>
-      <Box fontFamily="monospace">Version 8.1.1</Box>
+      <Box fontFamily="monospace">Version 8.1.8</Box>
       <Box fontFamily="monospace">Copyright © 2182, Weyland Yutani Corp.</Box>
 
       <Button
@@ -70,8 +70,14 @@ const Login = (props, context) => {
 
 const MainMenu = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, access_level } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    access_level,
+    sudo,
+  } = data;
 
   return (
     <>
@@ -252,6 +258,31 @@ const MainMenu = (props, context) => {
             />
           </Flex>
         )}
+        {access_level >= 10 && (
+          <Flex align="center">
+            <h3>Access Level 10</h3>
+            <Button
+              content="Sudo Login"
+              tooltip="Remote Login."
+              icon="user-secret"
+              ml="auto"
+              px="2rem"
+              bold
+              onClick={() => act('sudo')}
+            />
+            {sudo >= 1 && (
+              <Button
+                content="Sudo Logout"
+                tooltip="Logout of Sudo mode."
+                icon="user-secret"
+                ml="auto"
+                px="2rem"
+                bold
+                onClick={() => act('sudo_logout')}
+              />
+            )}
+          </Flex>
+        )}
       </Section>
     </>
   );
@@ -316,10 +347,10 @@ const AnnouncementLogs = (props, context) => {
             p=".75rem"
             align="center"
             fontSize="1.25rem">
-            <Flex.Item bold width="9rem" shrink="0" mr="1rem">
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
-            <Flex.Item grow bold>
+            <Flex.Item width="10rem" grow bold>
               Title
             </Flex.Item>
             <Flex.Item width="40rem" textAlign="center">
@@ -330,10 +361,10 @@ const AnnouncementLogs = (props, context) => {
         {records_announcement.map((record, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
-              <Flex.Item bold width="9rem" shrink="0" mr="1rem">
+              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
                 {record.time}
               </Flex.Item>
-              <Flex.Item grow italic>
+              <Flex.Item width="10rem" grow italic>
                 {record.title}
               </Flex.Item>
               <Flex.Item width="40rem" ml="1rem" shrink="0" textAlign="center">
@@ -414,7 +445,7 @@ const BioscanLogs = (props, context) => {
             p=".75rem"
             align="center"
             fontSize="1.25rem">
-            <Flex.Item bold width="9rem" shrink="0" mr="1rem">
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
             <Flex.Item grow bold>
@@ -428,7 +459,7 @@ const BioscanLogs = (props, context) => {
         {records_bioscan.map((record, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
-              <Flex.Item bold width="9rem" shrink="0" mr="1rem">
+              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
                 {record.time}
               </Flex.Item>
               <Flex.Item grow italic>
@@ -512,7 +543,7 @@ const BombardmentLogs = (props, context) => {
             p=".75rem"
             align="center"
             fontSize="1.25rem">
-            <Flex.Item bold width="9rem" shrink="0" mr="1rem">
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
             <Flex.Item grow bold>
@@ -529,7 +560,7 @@ const BombardmentLogs = (props, context) => {
         {records_bombardment.map((record, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
-              <Flex.Item bold width="9rem" shrink="0" mr="1rem">
+              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
                 {record.time}
               </Flex.Item>
               <Flex.Item grow italic>
@@ -722,7 +753,7 @@ const DeletionLogs = (props, context) => {
             p=".75rem"
             align="center"
             fontSize="1.25rem">
-            <Flex.Item bold width="9rem" shrink="0" mr="1rem">
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Deletion Time
             </Flex.Item>
             <Flex.Item grow bold>
@@ -739,7 +770,7 @@ const DeletionLogs = (props, context) => {
         {records_deletion.map((record, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
-              <Flex.Item bold width="9rem" shrink="0" mr="1rem">
+              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
                 {record.time}
               </Flex.Item>
               <Flex.Item width="10rem">{record.user}</Flex.Item>
@@ -915,7 +946,7 @@ const DeletedTalks = (props, context) => {
             p=".75rem"
             align="center"
             fontSize="1.25rem">
-            <Flex.Item bold width="9rem" shrink="0" mr="1rem">
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Deletion Time
             </Flex.Item>
             <Flex.Item grow bold>
@@ -929,7 +960,7 @@ const DeletedTalks = (props, context) => {
         {deleted_discussions.map((record, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
-              <Flex.Item bold width="9rem" shrink="0" mr="1rem">
+              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
                 {record.time}
               </Flex.Item>
               <Flex.Item grow italic>
@@ -1155,7 +1186,7 @@ const AntiAir = (props, context) => {
             p=".75rem"
             align="center"
             fontSize="1.25rem">
-            <Flex.Item bold width="9rem" shrink="0" mr="1rem">
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
             <Flex.Item grow bold>
@@ -1169,7 +1200,7 @@ const AntiAir = (props, context) => {
         {aa_adjustments.map((record, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
-              <Flex.Item bold width="9rem" shrink="0" mr="1rem">
+              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
                 {record.time}
               </Flex.Item>
               <Flex.Item grow italic>

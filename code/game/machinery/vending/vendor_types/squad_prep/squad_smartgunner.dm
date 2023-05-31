@@ -8,7 +8,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_smartgun, list(
 		list("M56 Smartgun Drum", 15, /obj/item/ammo_magazine/smartgun, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("SMARTGUN EXTRA UTILITIES (CHOOSE 1)", 0, null, null, null),
-		list("Burst Fire Assembly", 0, /obj/item/attachable/burstfire_assembly, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 		list("High-Capacity Power Cell", 0, /obj/item/cell/high, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
 
 		list("GUN ATTACHMENTS (CHOOSE 1)", 0, null, null, null),

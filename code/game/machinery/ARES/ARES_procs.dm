@@ -15,19 +15,6 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 		interface.delink()
 	..()
 
-/proc/log_apollo(speaker, message)
-	if(!speaker)
-		speaker = "Unknown"
-	var/datum/ares_link/link = GLOB.ares_link
-	if(!link.p_apollo || link.p_apollo.inoperable())
-		return
-	if(!link.p_interface || link.p_interface.inoperable())
-		return
-	if(!link.interface || link.interface.inoperable())
-		return
-	else
-		link.interface.apollo_log.Add("[worldtime2text()]: [speaker], '[message]'")
-
 /obj/structure/machinery/computer/ares_console/proc/get_ares_access(obj/item/card/id/card)
 	if(777 in card.access)
 		return ARES_ACCESS_DEBUG
@@ -77,12 +64,27 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 		if(ARES_ACCESS_DEBUG)//10
 			return "AI Service Technician"
 
-/datum/ares_link/proc/log_bioscan(title, input)
+
+// ----- ARES Logging Procs ----- //
+/proc/log_ares_apollo(speaker, message)
+	if(!speaker)
+		speaker = "Unknown"
+	var/datum/ares_link/link = GLOB.ares_link
+	if(!link.p_apollo || link.p_apollo.inoperable())
+		return
+	if(!link.p_interface || link.p_interface.inoperable())
+		return
+	if(!link.interface || link.interface.inoperable())
+		return
+	else
+		link.interface.apollo_log.Add("[worldtime2text()]: [speaker], '[message]'")
+
+/datum/ares_link/proc/log_ares_bioscan(title, input)
 	if(!p_bioscan || p_bioscan.inoperable() || !interface)
 		return FALSE
 	interface.bioscan_records.Add(new /datum/ares_record/bioscan(title, input))
 
-/datum/ares_link/proc/log_bombardment(mob/living/user, ob_name, coordinates)
+/datum/ares_link/proc/log_ares_bombardment(mob/living/user, ob_name, coordinates)
 	interface.bombardment_records.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user))
 
 /datum/ares_link/proc/log_ares_announcement(title, message)
@@ -247,9 +249,6 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 			current_menu = last_menu
 			last_menu = temp_holder
 
-		if("set_menu")
-			current_menu = params["new_menu"]
-
 		if("login")
 			var/mob/living/carbon/human/operator = usr
 			var/obj/item/card/id/idcard = operator.get_active_hand()
@@ -265,46 +264,39 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 				access_list += "[last_login] at [worldtime2text()], Access Level [authentication] - [auth_to_text(authentication)]."
 			current_menu = "main"
 
+		// -- Page Changers -- //
 		if("logout")
 			last_menu = current_menu
 			current_menu = "login"
-
 		if("home")
 			last_menu = current_menu
 			current_menu = "main"
-
-		if("ares_talk")
+		if("page_1to1")
 			last_menu = current_menu
 			current_menu = "talking"
-
-		if("logs_announce")
+		if("page_announcements")
 			last_menu = current_menu
 			current_menu = "announcements"
-
-		if("logs_bio")
+		if("page_bioscans")
 			last_menu = current_menu
 			current_menu = "bioscans"
-
-		if("logs_bomb")
+		if("page_bombardments")
 			last_menu = current_menu
 			current_menu = "bombardments"
-
-		if("logs_apollo")
+		if("page_apollo")
 			last_menu = current_menu
 			current_menu = "apollo"
-
-		if("logs_access")
+		if("page_access")
 			last_menu = current_menu
 			current_menu = "access_log"
-
-		if("logs_delete")
+		if("page_deleted")
 			last_menu = current_menu
 			current_menu = "delete_log"
-
-		if("logs_talk")
+		if("page_deleted_1to1")
 			last_menu = current_menu
 			current_menu = "deleted_talks"
 
+		// -- Delete Button -- //
 		if("delete_record")
 			var/datum/ares_record/record = locate(params["record"])
 			if(record.record_name == ARES_RECORD_DELETED)
@@ -332,6 +324,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 
 			deletion_records += new_delete
 
+		// -- 1:1 Conversation -- //
 		if("new_conversation")
 			var/datum/ares_record/talk_log/convo = new(last_login)
 			convo.conversation += "[MAIN_AI_SYSTEM] at [worldtime2text()], 'New 1:1 link initiated. Greetings, [last_login].'"
@@ -359,6 +352,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 			last_menu = current_menu
 			current_menu = "read_deleted"
 
+		// -- Emergency Buttons -- //
 		if("evacuation_start")
 			if(security_level < SEC_LEVEL_RED)
 				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))

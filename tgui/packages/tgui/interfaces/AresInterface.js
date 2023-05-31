@@ -110,7 +110,7 @@ const MainMenu = (props, context) => {
             ml="auto"
             px="2rem"
             bold
-            onClick={() => act('ares_talk')}
+            onClick={() => act('page_1to1')}
           />
         </Flex>
         {access_level >= 1 && (
@@ -123,7 +123,7 @@ const MainMenu = (props, context) => {
               ml="auto"
               px="2rem"
               bold
-              onClick={() => act('logs_announce')}
+              onClick={() => act('page_announcements')}
             />
             <Button
               content="Bioscan Logs"
@@ -132,7 +132,7 @@ const MainMenu = (props, context) => {
               ml="auto"
               px="2rem"
               bold
-              onClick={() => act('logs_bio')}
+              onClick={() => act('page_bioscans')}
             />
             <Button
               content="Bombardment Logs"
@@ -141,7 +141,7 @@ const MainMenu = (props, context) => {
               ml="auto"
               px="2rem"
               bold
-              onClick={() => act('logs_bomb')}
+              onClick={() => act('page_bombardments')}
             />
           </Flex>
         )}
@@ -155,7 +155,7 @@ const MainMenu = (props, context) => {
               ml="auto"
               px="2rem"
               bold
-              onClick={() => act('logs_apollo')}
+              onClick={() => act('page_apollo')}
             />
           </Flex>
         )}
@@ -194,7 +194,7 @@ const MainMenu = (props, context) => {
               ml="auto"
               px="2rem"
               bold
-              onClick={() => act('logs_access')}
+              onClick={() => act('page_access')}
             />
           </Flex>
         )}
@@ -208,7 +208,7 @@ const MainMenu = (props, context) => {
               ml="auto"
               px="2rem"
               bold
-              onClick={() => act('logs_delete')}
+              onClick={() => act('page_deleted')}
             />
             <Button
               content="View Deleted 1:1's"
@@ -217,7 +217,7 @@ const MainMenu = (props, context) => {
               ml="auto"
               px="2rem"
               bold
-              onClick={() => act('logs_talk')}
+              onClick={() => act('page_deleted_1to1')}
             />
           </Flex>
         )}

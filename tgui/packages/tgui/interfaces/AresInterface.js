@@ -184,7 +184,6 @@ const MainMenu = (props, context) => {
               px="2rem"
               bold
               onClick={() => act('page_security')}
-              disabled={access_text}
             />
             <Button
               content="View Apollo Log"

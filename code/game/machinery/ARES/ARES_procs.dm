@@ -18,23 +18,24 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 /obj/structure/machinery/computer/ares_console/proc/get_ares_access(obj/item/card/id/card)
 	if(777 in card.access)
 		return ARES_ACCESS_DEBUG
-	if(card.assignment == JOB_WORKING_JOE)
-		return ARES_ACCESS_JOE
-	if(card.assignment == JOB_CHIEF_ENGINEER)
-		return ARES_ACCESS_CE
-	if(card.assignment == JOB_SYNTH)
-		return ARES_ACCESS_SYNTH
+	switch(card.assignment)
+		if(JOB_WORKING_JOE)
+			return ARES_ACCESS_JOE
+		if(JOB_CHIEF_ENGINEER)
+			return ARES_ACCESS_CE
+		if(JOB_SYNTH)
+			return ARES_ACCESS_SYNTH
 	if(card.paygrade in GLOB.wy_paygrades)
 		return ARES_ACCESS_WY_COMMAND
 	if(card.paygrade in GLOB.highcom_paygrades)
 		return ARES_ACCESS_HIGH
-	else if(card.paygrade in GLOB.co_paygrades)
+	if(card.paygrade in GLOB.co_paygrades)
 		return ARES_ACCESS_CO
-	else if(ACCESS_MARINE_SENIOR in card.access)
+	if(ACCESS_MARINE_SENIOR in card.access)
 		return ARES_ACCESS_SENIOR
-	else if(ACCESS_WY_CORPORATE in card.access)
+	if(ACCESS_WY_CORPORATE in card.access)
 		return ARES_ACCESS_CORPORATE
-	else if(ACCESS_MARINE_COMMAND in card.access)
+	if(ACCESS_MARINE_COMMAND in card.access)
 		return ARES_ACCESS_COMMAND
 	else
 		return ARES_ACCESS_BASIC

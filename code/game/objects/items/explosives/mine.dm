@@ -457,7 +457,7 @@
 
 
 /obj/item/explosive/mine/bury/cluster
-	name = "\improper M307 \"Platoon Wiper\" Cluster Mine"
+	name = "\improper M307 \"Squad Wiper\" Cluster Mine"
 	desc = "A rather cumbersome, but extremely deadly anti-personal mine. Upon triggering, it launches up to 6 mini grenades up in the air, which spread around before obliterating the area. It's large area of effect has been known to wipe out entire squads of enemy combatants, making it a weapon that is truly feared. Due to high demand, numbers of these are limited, especially for low priority units on the rim."
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "antitank_mine"
@@ -510,7 +510,6 @@
 	if(pick(50))
 		det_time += rand(1,5) // minor time variation
 	activate()
-	qdel(src)
 /obj/item/explosive/mine/pmc
 	name = "\improper M20P Claymore anti-personnel mine"
 	desc = "The M20P Claymore is a directional proximity triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. It has been modified for use by the Wey-Yu PMC forces."

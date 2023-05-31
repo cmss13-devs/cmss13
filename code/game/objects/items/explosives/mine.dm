@@ -8,7 +8,7 @@
 	icon_state = "m20"
 	force = 5
 	w_class = SIZE_SMALL
-	//layer = MOB_LAYER - 0.1 //You can't just randomly hide claymores under boxes. Booby-trapping bodies is fine though
+	layer = MOB_LAYER - 0.1 //You can't just randomly hide claymores under boxes. Booby-trapping bodies is fine though
 	throwforce = 5
 	health = 60
 	throw_range = 6
@@ -49,9 +49,9 @@
 /obj/item/explosive/mine/get_examine_text(mob/user)
 	. = ..()
 	if(buried)
-		. +=  "\n This is buried."
+		. +=  "This is buried."
 	if(heavy_trigger)
-		. +=  "\n It has a heavy trigger."
+		. +=  "It has a heavy trigger."
 
 /obj/item/explosive/mine/Initialize()
 	. = ..()
@@ -438,7 +438,7 @@
 		M.AdjustStun(4)
 		M.KnockDown(4)
 		to_chat(M, SPAN_HIGHDANGER("Molten copper rips through your lower body!"))
-		//M.apply_damage(50,BURN)
+		M.apply_damage(50,BURN)
 		if(ishuman(M))
 			sparks.start()
 			var/mob/living/carbon/human/H = M

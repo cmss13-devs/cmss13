@@ -121,7 +121,7 @@
 		// spawn crash location
 		var/turf/target = pick(get_area_turfs(target_area))
 		crash_site.Move(target)
-		marine_announcement("A hostile aircraft on course for the [target_ship_section] has been successfully deterred.", "IX-50 MGAD System")
+		marine_announcement("A hostile aircraft on course for the [target_ship_section] has been successfully deterred.", "IX-50 MGAD System", logging = ARES_LOG_SECURITY)
 		target_ship_section = new_target_ship_section
 		// TODO mobs not alerted
 		for(var/area/internal_area in shuttle.shuttle_areas)
@@ -147,7 +147,7 @@
 
 	shuttle.crashing = TRUE
 
-	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg')
+	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
 
 	announce_dchat("The dropship is about to impact [get_area_name(crash_site)]", crash_site)
 	final_announcement = TRUE

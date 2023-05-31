@@ -1882,7 +1882,7 @@
 
 	if(href_list["ccdeny"]) // CentComm-deny. The distress call is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["ccdeny"])
-		marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
+		marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
 		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
 
@@ -1927,7 +1927,7 @@
 
 	if(href_list["sddeny"]) // CentComm-deny. The self-destruct is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["sddeny"])
-		marine_announcement("The self-destruct request has not received a response, ARES is now recalculating statistics.", "Self-Destruct System")
+		marine_announcement("The self-destruct request has not received a response, ARES is now recalculating statistics.", "Self-Destruct System", logging = ARES_LOG_SECURITY)
 		log_game("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]", 1)
 

@@ -51,7 +51,7 @@ const Login = (props, context) => {
       <Box mb="2rem" fontFamily="monospace">
         WY-DOS Executive
       </Box>
-      <Box fontFamily="monospace">Version 8.1.8</Box>
+      <Box fontFamily="monospace">Version 8.2.2</Box>
       <Box fontFamily="monospace">Copyright © 2182, Weyland Yutani Corp.</Box>
 
       <Button
@@ -338,9 +338,7 @@ const AnnouncementLogs = (props, context) => {
 
       <Section>
         <h1 align="center">Announcement Logs</h1>
-      </Section>
 
-      <Section>
         {!!records_announcement.length && (
           <Flex
             className="candystripe"
@@ -436,9 +434,7 @@ const BioscanLogs = (props, context) => {
 
       <Section>
         <h1 align="center">Bioscan Logs</h1>
-      </Section>
 
-      <Section>
         {!!records_bioscan.length && (
           <Flex
             className="candystripe"
@@ -534,9 +530,7 @@ const BombardmentLogs = (props, context) => {
 
       <Section>
         <h1 align="center">Orbital Bombardment Logs</h1>
-      </Section>
 
-      <Section>
         {!!records_bombardment.length && (
           <Flex
             className="candystripe"
@@ -629,8 +623,7 @@ const ApolloLog = (props, context) => {
 
       <Section>
         <h1 align="center">Apollo Log</h1>
-      </Section>
-      <Section>
+
         {apollo_log.map((apollo_message, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
@@ -686,8 +679,7 @@ const AccessLogs = (props, context) => {
 
       <Section>
         <h1 align="center">Access Log</h1>
-      </Section>
-      <Section>
+
         {access_log.map((login, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
@@ -744,9 +736,7 @@ const DeletionLogs = (props, context) => {
 
       <Section>
         <h1 align="center">Deletion Log</h1>
-      </Section>
 
-      <Section>
         {!!records_deletion.length && (
           <Flex
             className="candystripe"
@@ -937,9 +927,6 @@ const DeletedTalks = (props, context) => {
 
       <Section>
         <h1 align="center">Deletion Log</h1>
-      </Section>
-
-      <Section>
         {!!deleted_discussions.length && (
           <Flex
             className="candystripe"
@@ -1030,8 +1017,6 @@ const ReadingTalks = (props, context) => {
 
       <Section>
         <h1 align="center">Deleted Conversation</h1>
-      </Section>
-      <Section>
         {deleted_conversation.map((message, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
@@ -1219,7 +1204,8 @@ const AntiAir = (props, context) => {
 
 const Security = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu } = data;
+  const { logged_in, access_text, last_page, current_menu, records_security } =
+    data;
 
   return (
     <>
@@ -1260,6 +1246,46 @@ const Security = (props, context) => {
 
       <Section>
         <h1 align="center">Security Updates</h1>
+        {!!records_security.length && (
+          <Flex
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem">
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+              Time
+            </Flex.Item>
+            <Flex.Item width="10rem" grow bold>
+              Title
+            </Flex.Item>
+            <Flex.Item width="40rem" textAlign="center">
+              Details
+            </Flex.Item>
+          </Flex>
+        )}
+        {records_security.map((record, i) => {
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+                {record.time}
+              </Flex.Item>
+              <Flex.Item width="10rem" grow italic>
+                {record.title}
+              </Flex.Item>
+              <Flex.Item width="40rem" ml="1rem" shrink="0" textAlign="center">
+                {record.details}
+              </Flex.Item>
+              <Flex.Item ml="1rem">
+                <Button.Confirm
+                  icon="trash"
+                  tooltip="Delete Record"
+                  disabled={access_level < 7}
+                  onClick={() => act('delete_record', { record: record.ref })}
+                />
+              </Flex.Item>
+            </Flex>
+          );
+        })}
       </Section>
     </>
   );

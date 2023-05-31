@@ -97,6 +97,9 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 /datum/ares_link/proc/log_ares_requisition(source, details, mob/living/user)
 	interface.records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user))
 
+/datum/ares_link/proc/log_ares_security(title, details)
+	interface.records_security.Add(new /datum/ares_record/security(title, details))
+
 /obj/structure/machinery/computer/ares_console/proc/message_ares(text, mob/Sender, ref)
 	var/msg = "<b>[SPAN_NOTICE("<font color=orange>ARES:</font>")][key_name(Sender, 1)] [ARES_MARK(Sender)] [ADMIN_PP(Sender)] [ADMIN_VV(Sender)] [ADMIN_SM(Sender)] [ADMIN_JMP_USER(Sender)] [ARES_REPLY(Sender, ref)]:</b> [text]"
 	var/datum/ares_record/talk_log/conversation = locate(ref)
@@ -164,6 +167,18 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 		current_broadcast["ref"] = "\ref[broadcast]"
 		logged_announcements += list(current_broadcast)
 	data["records_announcement"] = logged_announcements
+
+	var/list/logged_alerts = list()
+	for(var/datum/ares_record/security/security_alert as anything in records_announcement)
+		if(!istype(security_alert))
+			continue
+		var/list/current_alert = list()
+		current_alert["time"] = security_alert.time
+		current_alert["title"] = security_alert.title
+		current_alert["details"] = security_alert.details
+		current_alert["ref"] = "\ref[security_alert]"
+		logged_alerts += list(current_alert)
+	data["records_security"] = logged_alerts
 
 	var/list/logged_bioscans = list()
 	for(var/datum/ares_record/bioscan/scan as anything in records_bioscan)

@@ -30,7 +30,7 @@
 
 
 //general marine announcement
-/proc/marine_announcement(message, title = COMMAND_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_MARINE, add_PMCs = TRUE, signature)
+/proc/marine_announcement(message, title = COMMAND_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_MARINE, add_PMCs = TRUE, signature, logging = ARES_LOG_MAIN)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
 	if(faction_to_display == FACTION_MARINE)
 		for(var/mob/M in targets)
@@ -44,9 +44,14 @@
 				continue
 			if((H.faction != faction_to_display && !add_PMCs) || (H.faction != faction_to_display && add_PMCs && !(H.faction in FACTION_LIST_WY)) && !(faction_to_display in H.faction_group)) //faction checks
 				targets.Remove(H)
+
 		var/datum/ares_link/link = GLOB.ares_link
 		if(link.interface && !(link.interface.inoperable()))
-			link.log_ares_announcement(title, message)
+			switch(logging)
+				if(ARES_LOG_MAIN)
+					link.log_ares_announcement(title, message)
+				if(ARES_LOG_SECURITY)
+					link.log_ares_security(title, message)
 
 	else if(faction_to_display == "Everyone (-Yautja)")
 		for(var/mob/M in targets)
@@ -85,7 +90,7 @@
 	announcement_helper(message, title, targets, sound_to_play)
 
 //AI announcement that uses talking into comms
-/proc/ai_announcement(message, sound_to_play = sound('sound/misc/interference.ogg'))
+/proc/ai_announcement(message, sound_to_play = sound('sound/misc/interference.ogg'), logging = ARES_LOG_MAIN)
 	for(var/mob/M in (GLOB.human_mob_list + GLOB.dead_mob_list))
 		if(isobserver(M) || ishuman(M) && is_mainship_level(M.z))
 			playsound_client(M.client, sound_to_play, M, vol = 45)
@@ -95,7 +100,11 @@
 
 	var/datum/ares_link/link = GLOB.ares_link
 	if(link.interface && !(link.interface.inoperable()))
-		link.log_ares_announcement("[MAIN_AI_SYSTEM] Comms Update", message)
+		switch(logging)
+			if(ARES_LOG_MAIN)
+				link.log_ares_announcement("[MAIN_AI_SYSTEM] Comms Update", message)
+			if(ARES_LOG_SECURITY)
+				link.log_ares_security("[MAIN_AI_SYSTEM] Security Update", message)
 
 /proc/ai_silent_announcement(message, channel_prefix, bypass_cooldown = FALSE)
 	if(!message)

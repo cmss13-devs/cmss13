@@ -1137,7 +1137,7 @@
 		if(!check_rights(R_MOD))
 			return
 
-		var/x = text2num(href_list["X"])
+		var/x = text2num(href_list[""])
 		var/y = text2num(href_list["Y"])
 		var/z = text2num(href_list["Z"])
 
@@ -2005,6 +2005,29 @@
 		var/mob/checking = locate(href_list["viewnotes"])
 
 		player_notes_all(checking.key)
+
+	if(href_list["AresReply"])
+		var/mob/living/carbon/human/H = locate(href_list["AresReply"])
+
+		if(!istype(H))
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			return
+
+		if((!GLOB.ares_link.interface) || (GLOB.ares_link.interface.inoperable()))
+			to_chat(usr, "ARES Interface offline.")
+			return
+
+		var/input = input(src.owner, "Please enter a message from ARES to reply to [key_name(H)].","Outgoing message from ARES", "")
+		if(!input)
+			return
+
+		to_chat(src.owner, "You sent [input] to [H] via ARES Interface.")
+		log_admin("[src.owner] replied to [key_name(H)]'s ARES message with the message [input].")
+		for(var/client/X in GLOB.admins)
+			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
+				to_chat(X, "<b>ADMINS/MODS: [SPAN_RED("[src.owner] replied to [key_name(H)]'s ARES message")] with: [SPAN_BLUE(input)] </b>")
+		GLOB.ares_link.interface.response_from_ares(input, href_list["AresRef"])
+
 
 	return
 

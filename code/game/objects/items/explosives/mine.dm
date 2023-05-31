@@ -247,8 +247,8 @@
  * Proc that notifies a heavy trigger failing to detonate
  */
 /obj/item/explosive/mine/proc/heavy_trigger_notify(mob/living/unfortunate_soul)
-	unfortunate_soul.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] [name] clicks as [unfortunate_soul] moves in front of it."), \
-	SPAN_DANGER("[icon2html(src, unfortunate_soul)] [name] clicks as you move in front of it."), \
+	unfortunate_soul.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] [name] clicks as [unfortunate_soul] moves on top of it."), \
+	SPAN_DANGER("[icon2html(src, unfortunate_soul)] [name] clicks as you move on top of it."), \
 	SPAN_DANGER("You hear a click."))
 
 /**
@@ -267,7 +267,7 @@
 		playsound(loc, 'sound/weapons/flipblade.ogg', 35, 1)
 		if(isxeno(unfortunate_soul))
 			var/mob/living/carbon/xenomorph/xeno = unfortunate_soul
-			if(xeno.tier < 2)
+			if(xeno.mob_size < MOB_SIZE_BIG)
 				heavy_trigger_notify(unfortunate_soul)
 				return
 		if(prob(75) && ishuman(unfortunate_soul))
@@ -280,8 +280,8 @@
 				return
 
 
-	unfortunate_soul.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] [name] clicks as [unfortunate_soul] moves in front of it."), \
-	SPAN_DANGER("[icon2html(src, unfortunate_soul)] [name] clicks as you move in front of it."), \
+	unfortunate_soul.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] [name] clicks as [unfortunate_soul] moves on top of it."), \
+	SPAN_DANGER("[icon2html(src, unfortunate_soul)] [name] clicks as you move on top of it."), \
 	SPAN_DANGER("You hear a click."))
 
 	triggered = TRUE

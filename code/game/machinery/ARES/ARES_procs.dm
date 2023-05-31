@@ -461,6 +461,8 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 
 			log_game("[key_name(usr)] has called for an emergency evacuation via ARES.")
 			message_admins("[key_name_admin(usr)] has called for an emergency evacuation via ARES.")
+			var/datum/ares_link/link = GLOB.ares_link
+			link.log_ares_security("Initiate Evacuation", "[last_login] has called for an emergency evacuation via ARES.")
 			. = TRUE
 
 		if("distress")

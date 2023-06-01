@@ -14,12 +14,6 @@
 	/// Roof image displayed on the roof plane
 	var/image/roof_image
 
-	/// Items belonging to this tent, mostly for destruction etc
-	var/list/obj/children = list()
-
-	/// Type to fold back to TODO (or not)
-	var/folded_type
-
 /obj/structure/tent/Initialize(mapload, ...)
 	. = ..()
 	bound_width = x_dim * world.icon_size
@@ -52,28 +46,7 @@
 	var/atom/movable/screen/plane_master/tent_roof/roof_plane = subject.hud_used.plane_masters["[TENT_ROOF_PLANE]"]
 	roof_plane?.alpha = 255
 
-/// Requisitions tent - provides a restockable vendor and a permanent landing pad for Reqs
-/obj/structure/tent/reqs
-	icon_state = "req"
-	roof_state = "req_roof"
-/obj/structure/tent/reqs/Initialize()
-	. = ..()
-	if(x)
-		var/turf/ext_turf = locate(x + 2, y + 1, z)
-		var/obj/structure/tent/reqs_pad/extension_pad = new(ext_turf)
-		children += extension_pad
-		ext_turf = locate(x + 2, y + 2, z)
-		var/obj/structure/tent/reqs_ext/extension = new(ext_turf)
-		children += extension
-
-/// Tent extension for reqs tent
-/obj/structure/tent/reqs_ext
-	roof_state = "req_ext_roof"
-	x_dim = 2
-	y_dim = 3
-/obj/structure/tent/reqs_pad
-/// Landing pad for reqs tent
-	icon_state = "req_pad"
-	x_dim = 2
-	y_dim = 2
-	density = TRUE
+/// Command tent, providing basics for field command: a phone, and an overwatch console
+/obj/structure/tent/cmd
+	icon_state = "cmd_interior"
+	roof_state = "cmd_top"

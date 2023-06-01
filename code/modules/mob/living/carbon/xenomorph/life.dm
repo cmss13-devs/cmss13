@@ -397,7 +397,7 @@ Make sure their actual health updates immediately.*/
 		return
 
 	var/atom/tracking_atom
-	switch(QL.track_state)
+	switch(QL.track_state[1])
 		if(TRACKER_QUEEN)
 			if(!hive || !hive.living_xeno_queen)
 				QL.icon_state = "trackoff"
@@ -408,8 +408,13 @@ Make sure their actual health updates immediately.*/
 				QL.icon_state = "trackoff"
 				return
 			tracking_atom = hive.hive_location
-		else
-			var/leader_tracker = text2num(QL.track_state)
+		if(TRACKER_LEADER)
+			if(!QL.track_state[2])
+				QL.icon_state = "trackoff"
+				return
+
+			var/leader_tracker = QL.track_state[2]
+
 			if(!hive || !hive.xeno_leader_list)
 				QL.icon_state = "trackoff"
 				return
@@ -420,6 +425,23 @@ Make sure their actual health updates immediately.*/
 				QL.icon_state = "trackoff"
 				return
 			tracking_atom = hive.xeno_leader_list[leader_tracker]
+		if(TRACKER_TUNNEL)
+			if(!QL.track_state[2])
+				QL.icon_state = "trackoff"
+				return
+
+			var/tunnel_tracker = QL.track_state[2]
+
+			if(!hive || !hive.tunnels)
+				QL.icon_state = "trackoff"
+				return
+			if(tunnel_tracker > hive.tunnels.len)
+				QL.icon_state = "trackoff"
+				return
+			if(!hive.tunnels[tunnel_tracker])
+				QL.icon_state = "trackoff"
+				return
+			tracking_atom = hive.tunnels[tunnel_tracker]
 
 	if(!tracking_atom)
 		QL.icon_state = "trackoff"

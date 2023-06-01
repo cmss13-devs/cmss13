@@ -322,15 +322,15 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 				if(new_user == sudo_holder)
 					last_login = sudo_holder
 					sudo_holder = null
-					return
+					return FALSE
 				if(new_user == last_login)
 					to_chat(usr, SPAN_WARNING("Already remote logged in as this user."))
 					playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
-					access_list += "[last_login] at [worldtime2text()], Sudo Access."
 					return FALSE
 				sudo_holder = last_login
 				last_login = new_user
-				return
+				access_list += "[last_login] at [worldtime2text()], Sudo Access."
+				return TRUE
 		if("sudo_logout")
 			access_list += "[last_login] at [worldtime2text()], Sudo Logout."
 			last_login = sudo_holder

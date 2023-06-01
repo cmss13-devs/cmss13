@@ -85,9 +85,9 @@
 	if(locate(/obj/item/reagent_container/blood/) in user.contents)
 		movedata["move_delay"] += move_delay_mult
 
-///obj/item/storage/backpack/marine/ammo_rack/dropped(mob/user, silent)
-//	. = ..()
-//	UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
+/obj/item/reagent_container/blood/dropped(mob/user, silent)
+	. = ..()
+	UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
 
 /obj/item/reagent_container/blood/process()
 	//if we're not connected to anything stop doing stuff
@@ -102,11 +102,13 @@
 	//if we're not being held in a hand stop doing stuff
 	var/mob/living/carbon/human/current_human = loc
 	if(!(current_human.l_hand == src || current_human.r_hand == src))
+		UnregisterSignal(loc, COMSIG_HUMAN_POST_MOVE_DELAY)
 		bad_disconnect()
 		return PROCESS_KILL
 
 	//if we're further than 1 tile away or we're not on a turf stop doing stuff
 	if(!(get_dist(src, connected_to) <= 1 && isturf(connected_to.loc)))
+		UnregisterSignal(src, COMSIG_HUMAN_POST_MOVE_DELAY)
 		bad_disconnect()
 		return PROCESS_KILL
 

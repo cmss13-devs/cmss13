@@ -365,7 +365,6 @@ Works together with spawning an observer, noted above.
 
 	ghost.set_huds_from_prefs()
 
-	//You have been warn if you ghost your body go back to the free mob pool unless your dead we will wait for you to get ressurect...
 	if(iszombie(src)&&stat == !DEAD)
 		free_for_ghosts()
 
@@ -382,8 +381,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	do_ghost()
 
 /mob/living/proc/do_ghost()
-	//if a zombie want to ghost he will forfeit is right to play is zombie only alive zombie work and get the message for some reason...
-	if(iszombie(src))
+	//if your a zombie and alive you will give up your right to your body.
+	if(iszombie(src)&&stat == !DEAD)
 		var/list/options = list("Ghost", "Stay in body")
 		if(check_rights(R_MOD))
 			options = list("Aghost") + options

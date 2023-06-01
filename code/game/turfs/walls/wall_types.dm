@@ -702,6 +702,12 @@
 	var/datum/cause_data/construction_data
 	flags_turf = TURF_ORGANIC
 
+/turf/closed/wall/resin/Initialize(mapload)
+	. = ..()
+
+	for(var/obj/effect/alien/weeds/node/weed_node in contents)
+		qdel(weed_node)
+
 /turf/closed/wall/resin/pillar
 	name = "resin pillar segment"
 	hull = TRUE

@@ -434,6 +434,9 @@
 		if(istype(O, /obj/structure/fence))
 			has_obstacle = TRUE
 			break
+		if(istype(O, /obj/structure/tunnel))
+			has_obstacle = TRUE
+			break
 		if(istype(O, /obj/structure/bed))
 			if(istype(O, /obj/structure/bed/chair/dropship/passenger))
 				var/obj/structure/bed/chair/dropship/passenger/P = O

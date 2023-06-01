@@ -74,12 +74,6 @@
 			connected_to.apply_damage(1, BRUTE, pick("r_arm", "l_arm"))
 			RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
 
-
-
-//obj/item/reagent_container/blood/pickup(mob/user, silent)
-//	. = ..()
-//	RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
-
 /obj/item/reagent_container/blood/proc/handle_movedelay(mob/user, list/movedata)
 	SIGNAL_HANDLER
 	if(locate(/obj/item/reagent_container/blood/) in user.contents)

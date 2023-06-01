@@ -116,9 +116,6 @@
 		stage = 5
 		human.faction = FACTION_ZOMBIE
 		zombie_transforming = FALSE
-	//if zombie as no client when turning get him into the free mob list.in the work
-	//if(!human.client)
-		//human.free_for_ghosts()
 
 /obj/item/weapon/zombie_claws
 	gender = PLURAL

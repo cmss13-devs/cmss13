@@ -29,21 +29,7 @@
 			if (istype(LIA))
 				LIA.invisibility_off()
 
-/datum/action/xeno_action/activable/pounce/lurker/additional_effects(mob/living/L)
-	var/mob/living/carbon/xenomorph/X = owner
-	if (!istype(X))
-		return
 
-	if (X.mutation_type == LURKER_NORMAL)
-		RegisterSignal(X, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF, PROC_REF(remove_freeze), TRUE) // Suppresses runtime ever we pounce again before slashing
-
-/datum/action/xeno_action/activable/pounce/lurker/proc/remove_freeze(mob/living/carbon/xenomorph/X)
-	SIGNAL_HANDLER
-
-	var/datum/behavior_delegate/lurker_base/BD = X.behavior_delegate
-	if (istype(BD))
-		UnregisterSignal(X, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF)
-		end_pounce_freeze()
 
 /datum/action/xeno_action/onclick/lurker_invisibility
 	name = "Turn Invisible"
@@ -116,4 +102,4 @@
 	macro_path = /datum/action/xeno_action/verb/verb_headbite
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 0 SECONDS
+	xeno_cooldown = 10 SECONDS

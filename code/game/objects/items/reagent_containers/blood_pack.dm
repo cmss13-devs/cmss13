@@ -15,6 +15,7 @@
 	var/mob/living/carbon/human/connected_to
 	var/blood_type = null
 	var/self_attachment_modifier = 1
+	var/move_delay_mult = 2.4
 
 /obj/item/reagent_container/blood/Initialize()
 	. = ..()
@@ -46,6 +47,8 @@
 		STOP_PROCESSING(SSobj, src)
 		user.visible_message("[user] detaches [src] from [connected_to].", \
 			"You detach [src] from [connected_to].")
+		if (self_attachment_modifier == 2)
+			UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
 		connected_to.active_transfusions -= src
 		connected_to = null
 		return
@@ -67,6 +70,24 @@
 		START_PROCESSING(SSobj, src)
 		user.visible_message("[user] attaches \the [src] to [connected_to].", \
 			"You attach \the [src] to [connected_to].")
+		if (self_attachment_modifier == 2)
+			connected_to.apply_damage(1, BRUTE, pick("r_arm", "l_arm"))
+			RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
+
+
+
+//obj/item/reagent_container/blood/pickup(mob/user, silent)
+//	. = ..()
+//	RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
+
+/obj/item/reagent_container/blood/proc/handle_movedelay(mob/user, list/movedata)
+	SIGNAL_HANDLER
+	if(locate(/obj/item/reagent_container/blood/) in user.contents)
+		movedata["move_delay"] += move_delay_mult
+
+///obj/item/storage/backpack/marine/ammo_rack/dropped(mob/user, silent)
+//	. = ..()
+//	UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
 
 /obj/item/reagent_container/blood/process()
 	//if we're not connected to anything stop doing stuff

@@ -9,11 +9,10 @@
 		return COMPONENT_INCOMPATIBLE
 	var/obj/structure/machinery/machine = parent
 	var/obj/structure/tent/located_tent = locate(/obj/structure/tent) in machine.loc
-	if(!located_tent)
-		return COMPONENT_INCOMPATIBLE
-	linked_tent = located_tent
-	machine.needs_power = FALSE
-	RegisterSignal(linked_tent, COMSIG_PARENT_QDELETING, PROC_REF(enable_power_requirement))
+	if(located_tent)
+		linked_tent = located_tent
+		machine.needs_power = FALSE
+		RegisterSignal(linked_tent, COMSIG_PARENT_QDELETING, PROC_REF(enable_power_requirement))
 
 /datum/component/tent_powered_machine/proc/enable_power_requirement()
 	SIGNAL_HANDLER
@@ -31,10 +30,9 @@
 		return COMPONENT_INCOMPATIBLE
 	var/atom/movable/source = parent
 	var/obj/structure/tent/located_tent = locate(/obj/structure/tent) in source.loc
-	if(!located_tent)
-		return COMPONENT_INCOMPATIBLE
-	linked_tent = located_tent
-	RegisterSignal(linked_tent, COMSIG_PARENT_QDELETING, PROC_REF(tent_collapse))
+	if(located_tent)
+		linked_tent = located_tent
+		RegisterSignal(linked_tent, COMSIG_PARENT_QDELETING, PROC_REF(tent_collapse))
 
 /datum/component/tent_supported_object/proc/tent_collapse()
 	SIGNAL_HANDLER

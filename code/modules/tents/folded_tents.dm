@@ -117,7 +117,7 @@
 	template = /datum/map_template/tent/reqs
 
 /obj/item/folded_tent/big
-	name = "folded USCM Medical Tent"
+	name = "folded USCM Big Tent"
 	icon_state = "big"
 	desc = "A standard USCM Tent. This one is just a bigger, general purpose version."
 	dim_x = 3

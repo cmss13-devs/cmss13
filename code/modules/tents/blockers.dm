@@ -6,7 +6,7 @@
 	flags_atom = ON_BORDER
 	invisibility = INVISIBILITY_MAXIMUM
 	density = TRUE
-	opacity = TRUE
+	opacity = FALSE // Unfortunately this doesn't behave as we'd want with ON_BORDER so we can't make tent opaque
 	/// The tent this blocker relates to, will be destroyed along with it
 	var/obj/structure/tent/linked_tent
 
@@ -16,7 +16,7 @@
 	linked_tent = locate(/obj/structure/blocker/tent) in loc
 	if(!linked_tent)
 		return INITIALIZE_HINT_QDEL
-	RegisterSignal(linked_tent, COMSIG_TENT_COLLAPSING, PROC_REF(collapse))
+	RegisterSignal(linked_tent, COMSIG_PARENT_QDELETING, PROC_REF(collapse))
 
 /obj/structure/blocker/tent/Destroy(force)
 	. = ..()

@@ -1,32 +1,38 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /obj/structure/blocker/tent{
-	dir = 1
-	},
-/obj/structure/blocker/tent{
 	dir = 8
 	},
+/obj/structure/bed/chair,
 /turf/template_noop,
 /area/template_noop)
-"i" = (
+"d" = (
 /obj/structure/blocker/tent{
-	dir = 8
+	dir = 4
 	},
-/obj/structure/bed/chair{
+/obj/structure/bed/chair,
+/turf/template_noop,
+/area/template_noop)
+"o" = (
+/obj/structure/blocker/tent{
+	dir = 4
+	},
+/obj/structure/blocker/tent{
 	dir = 1
+	},
+/obj/structure/surface/table,
+/obj/structure/transmitter{
+	pixel_x = -5;
+	pixel_y = 8;
+	phone_category = "Command";
+	phone_id = "Ground Command"
 	},
 /turf/template_noop,
 /area/template_noop)
 "p" = (
-/obj/structure/blocker/tent{
-	dir = 4
-	},
 /turf/template_noop,
 /area/template_noop)
-"z" = (
-/obj/structure/blocker/tent{
-	dir = 1
-	},
+"v" = (
 /obj/structure/blocker/tent{
 	dir = 4
 	},
@@ -36,15 +42,11 @@
 /obj/structure/blocker/tent{
 	dir = 8
 	},
-/obj/structure/machinery/computer/groundside_operations,
 /obj/structure/surface/table,
-/obj/structure/transmitter{
-	dir = 4;
-	pixel_x = -10;
-	pixel_y = 8;
-	phone_category = "Command";
-	phone_id = "Ground Command"
+/obj/structure/blocker/tent{
+	dir = 1
 	},
+/obj/structure/machinery/computer/overwatch/tent,
 /turf/template_noop,
 /area/template_noop)
 "X" = (
@@ -56,14 +58,14 @@
 /area/template_noop)
 
 (1,1,1) = {"
-a
+p
 A
-i
+a
 X
 "}
 (2,1,1) = {"
-z
 p
-p
-p
+o
+d
+v
 "}

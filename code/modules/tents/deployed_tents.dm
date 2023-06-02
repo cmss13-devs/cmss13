@@ -3,6 +3,9 @@
 /obj/structure/tent
 	name = "tent"
 	icon = 'icons/obj/structures/tents_deployed.dmi'
+	opacity = FALSE // Seems only the initial turf blocks light, not all of the multitile. Therefore, useless.
+	layer = INTERIOR_ROOF_LAYER // This should be below FLY_LAYER but just thank chairs and other bs
+	health = 150
 
 	/// Turf dimensions along the X axis, beginning from left, at ground level
 	var/x_dim = 2
@@ -34,7 +37,7 @@
 	var/mob/subject_mob = subject
 	RegisterSignal(subject_mob, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(mob_moved), override = TRUE) // Must override because we can't know if mob was already inside tent without keeping an awful ref list
 	var/atom/movable/screen/plane_master/tent_roof/roof_plane = subject_mob.hud_used.plane_masters["[TENT_ROOF_PLANE]"]
-	roof_plane?.alpha = 100
+	roof_plane?.invisibility = INVISIBILITY_MAXIMUM
 
 /obj/structure/tent/proc/mob_moved(mob/subject, turf/target_turf)
 	SIGNAL_HANDLER
@@ -44,7 +47,16 @@
 /obj/structure/tent/proc/mob_exited_tent(mob/subject)
 	UnregisterSignal(subject, COMSIG_MOVABLE_TURF_ENTERED)
 	var/atom/movable/screen/plane_master/tent_roof/roof_plane = subject.hud_used.plane_masters["[TENT_ROOF_PLANE]"]
-	roof_plane?.alpha = 255
+	roof_plane?.invisibility = 0
+
+/obj/structure/tent/attack_alien(mob/living/carbon/xenomorph/M)
+	if(unslashable)
+		return
+	health -= 20
+	if(health <= 0)
+		visible_message(SPAN_BOLDWARNING("The [src] collapses!"))
+		qdel(src)
+
 
 /// Command tent, providing basics for field command: a phone, and an overwatch console
 /obj/structure/tent/cmd

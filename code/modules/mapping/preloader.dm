@@ -27,13 +27,7 @@ GLOBAL_DATUM_INIT(_preloader, /datum/map_preloader, new)
 	name = "Area Passthrough"
 	icon_state = "noop"
 
-/// Turf passthrough: skip a turf entirely, do not instanciate it nor its contents
-/// Note that this is different from the other two and is poorly named
+/// Turf passthrough: do not instanciate a new turf, reuse the current one
 /turf/template_noop
 	name = "Turf Passthrough"
-	icon_state = "noop"
-
-/// Turf reuse: do not instanciate a new turf, reuse the current one
-/turf/template_noop_reuse
-	name = "Turf Reuse"
 	icon_state = "noop"

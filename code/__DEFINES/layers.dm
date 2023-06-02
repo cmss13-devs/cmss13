@@ -130,6 +130,7 @@
 //#define FLY_LAYER 5
 
 #define RIPPLE_LAYER 5.1
+#define INTERIOR_ROOF_LAYER 5.5
 
 #define ABOVE_FLY_LAYER 6
 

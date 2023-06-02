@@ -20,9 +20,14 @@
 	for(var/turf/turf as anything in turf_block)
 		var/area/area = get_area(turf)
 		if(!area.can_build_special)
-			to_chat(message_receiver, SPAN_WARNING("You cannot deploy tents on restricted areas."))
+			if(message_receiver)
+				to_chat(message_receiver, SPAN_WARNING("You cannot deploy tents on restricted areas."))
 			if(display_error)
 				new /obj/effect/overlay/temp/tent_deployment_error(turf)
+			return FALSE
+		if(istype(turf, /turf/open/shuttle))
+			if(message_receiver)
+				to_chat(message_receiver, SPAN_BOLDWARNING("What are you doing?!! Don't build that on the shuttle please!"))
 			return FALSE
 		if(turf.density)
 			if(message_receiver)

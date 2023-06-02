@@ -309,6 +309,7 @@
 /area/lv624/ground/caves/central_caves)
 "aby" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "abz" = (
@@ -327,6 +328,7 @@
 /area/lv624/ground/caves/north_west_caves)
 "abE" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "abF" = (
@@ -379,6 +381,7 @@
 "abV" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -14802,6 +14805,7 @@
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "ePu" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "ePw" = (
@@ -15753,6 +15757,7 @@
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "hdA" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "asteroidwarning"

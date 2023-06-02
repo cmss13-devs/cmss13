@@ -34849,6 +34849,7 @@
 "qEB" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "qRy" = (
@@ -34876,6 +34877,7 @@
 /area/ice_colony/exterior/surface/valley/northwest)
 "rAm" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor{
 	icon_state = "dark2"
 	},
@@ -34958,6 +34960,7 @@
 /area/ice_colony/underground/hangar)
 "tEG" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /obj/effect/landmark/queen_spawn,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
@@ -35021,10 +35024,12 @@
 "uUv" = (
 /obj/effect/alien/weeds/node,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "vcU" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "vhS" = (
@@ -35093,6 +35098,7 @@
 /area/ice_colony/surface/tcomms)
 "xWm" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "ygw" = (

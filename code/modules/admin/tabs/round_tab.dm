@@ -46,6 +46,7 @@
 		predator_round.flags_round_type &= ~MODE_PREDATOR
 
 	message_admins("[key_name_admin(usr)] has [(predator_round.flags_round_type & MODE_PREDATOR) ? "allowed predators to spawn" : "prevented predators from spawning"].")
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_PREDATOR_ROUND_TOGGLED)
 
 /client/proc/free_slot()
 	set name = "Free Job Slots"

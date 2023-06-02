@@ -249,7 +249,7 @@
 	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
 
-#define GROUNDSIDE_XENO_MULTIPLIER 1.5
+#define GROUNDSIDE_XENO_MULTIPLIER 1.0
 
 ///Checks for humans groundside after hijack, spawns forsaken if requirements met
 /datum/game_mode/colonialmarines/proc/check_ground_humans()
@@ -260,7 +260,7 @@
 	var/groundside_xenos = 0
 
 	for(var/mob/current_mob in GLOB.player_list)
-		if(!is_ground_level(current_mob.z) || !current_mob.client)
+		if(!is_ground_level(current_mob.z) || !current_mob.client || curent_mob.stat == DEAD)
 			continue
 
 		if(ishuman_strict(current_mob))

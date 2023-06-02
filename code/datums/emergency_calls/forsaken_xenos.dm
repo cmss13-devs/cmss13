@@ -2,7 +2,7 @@
 /datum/emergency_call/forsaken_xenos
 	name = "Xenomorphs Groundside (Forsaken)"
 	mob_min = 1
-	mob_max = 3
+	mob_max = 4
 	hostility = TRUE
 	name_of_spawn = /obj/effect/landmark/ert_spawns/groundside_xeno
 

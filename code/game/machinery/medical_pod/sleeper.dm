@@ -153,8 +153,8 @@
 				occupantData["pulse"] = human_occupant.get_pulse(GETPULSE_TOOL)
 				occupantData["hasBlood"] = 1
 				occupantData["bloodLevel"] = round(occupant.blood_volume)
-				occupantData["bloodMax"] = occupant.max_blood
-				occupantData["bloodPercent"] = round(100*(occupant.blood_volume/occupant.max_blood), 0.01)
+				occupantData["bloodMax"] = occupant.normal_blood
+				occupantData["bloodPercent"] = round(100*(occupant.blood_volume/occupant.normal_blood), 0.01)
 
 	data["occupant"] = occupantData
 	data["maxchem"] = connected.max_chem

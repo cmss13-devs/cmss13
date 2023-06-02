@@ -111,7 +111,7 @@
 
 	handle_nutrition_loss(M, potency, delta_time)
 	M.blood_volume = min(M.blood_volume + potency, M.limit_blood)
-	if(potency > POTENCY_MAX_TIER_1 && M.blood_volume > (M.max_blood + 10) && !isyautja(M)) //Too many red blood cells thickens the blood and leads to clotting, doesn't impact Yautja
+	if(potency > POTENCY_MAX_TIER_1 && M.blood_volume > (M.normal_blood + 10) && !isyautja(M)) //Too many red blood cells thickens the blood and leads to clotting, doesn't impact Yautja
 		M.take_limb_damage(potency)
 		M.apply_damage(POTENCY_MULTIPLIER_MEDIUM*potency, OXY)
 		M.reagent_move_delay_modifier += potency

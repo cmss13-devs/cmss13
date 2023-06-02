@@ -80,7 +80,7 @@
 	///How much blood the mob has
 	var/blood_volume = 0
 	///How much blood the mob should ideally have
-	var/max_blood = BLOOD_VOLUME_NORMAL
+	var/normal_blood = BLOOD_VOLUME_NORMAL
 	///How much blood the mob can have
 	var/limit_blood = BLOOD_VOLUME_MAXIMUM
 

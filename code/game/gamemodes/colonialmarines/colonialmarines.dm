@@ -260,7 +260,7 @@
 	var/groundside_xenos = 0
 
 	for(var/mob/current_mob in GLOB.player_list)
-		if(!is_ground_level(current_mob.z) || !current_mob.client || curent_mob.stat == DEAD)
+		if(!is_ground_level(current_mob.z) || !current_mob.client || current_mob.stat == DEAD)
 			continue
 
 		if(ishuman_strict(current_mob))

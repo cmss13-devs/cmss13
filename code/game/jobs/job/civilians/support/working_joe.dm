@@ -1,5 +1,5 @@
-#define STANDARD_VARIANT "JOE"
-#define HAZMAT_VARIANT "HAZ"
+#define STANDARD_VARIANT "Working Joe"
+#define HAZMAT_VARIANT "Hazmat Joe"
 
 /datum/job/civilian/working_joe
 	title = JOB_WORKING_JOE
@@ -12,7 +12,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
 	flags_whitelist = WHITELIST_JOE
 
-	job_options = list(STANDARD_VARIANT, HAZMAT_VARIANT)
+	job_options = list(STANDARD_VARIANT = "JOE", HAZMAT_VARIANT = "HAZ")
 	var/standard = TRUE
 
 /datum/job/civilian/working_joe/handle_job_options(option)

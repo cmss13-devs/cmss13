@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(influxstats)
 
 	var/measurement = "round_results,round_id=[GLOB.round_id]"
 	var/timestamp = big_number_to_text(rustg_unix_timestamp())
-	var/data = "round_time=[(ROUND_TIME)/(1 SECONDS)]"
+	var/data = ""
 
 	var/list/job_stats_others = list(JOB_OBSERVER = 0)
 

@@ -3,14 +3,6 @@
 /obj/structure/blocker/tent{
 	dir = 8
 	},
-/obj/structure/bed/chair,
-/turf/template_noop,
-/area/template_noop)
-"d" = (
-/obj/structure/blocker/tent{
-	dir = 4
-	},
-/obj/structure/bed/chair,
 /turf/template_noop,
 /area/template_noop)
 "o" = (
@@ -20,13 +12,7 @@
 /obj/structure/blocker/tent{
 	dir = 1
 	},
-/obj/structure/surface/table,
-/obj/structure/transmitter/tent{
-	phone_category = "Command";
-	phone_id = "Ground Command";
-	pixel_x = -2;
-	pixel_y = 6
-	},
+/obj/structure/bed/roller,
 /turf/template_noop,
 /area/template_noop)
 "p" = (
@@ -42,18 +28,20 @@
 /obj/structure/blocker/tent{
 	dir = 8
 	},
-/obj/structure/surface/table,
 /obj/structure/blocker/tent{
 	dir = 1
 	},
-/obj/structure/machinery/computer/overwatch/tent,
+/obj/structure/bed/roller,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/tent{
+	pixel_y = 22
+	},
 /turf/template_noop,
 /area/template_noop)
 "X" = (
-/obj/structure/tent/cmd,
 /obj/structure/blocker/tent{
 	dir = 8
 	},
+/obj/structure/tent/med,
 /turf/template_noop,
 /area/template_noop)
 
@@ -66,6 +54,6 @@ X
 (2,1,1) = {"
 p
 o
-d
+v
 v
 "}

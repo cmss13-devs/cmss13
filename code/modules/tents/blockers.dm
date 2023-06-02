@@ -13,7 +13,7 @@
 /obj/structure/blocker/tent/Initialize(mapload, ...)
 	. = ..()
 	icon_state = null
-	linked_tent = locate(/obj/structure/blocker/tent) in loc
+	linked_tent = locate(/obj/structure/tent) in loc
 	if(!linked_tent)
 		return INITIALIZE_HINT_QDEL
 	RegisterSignal(linked_tent, COMSIG_PARENT_QDELETING, PROC_REF(collapse))

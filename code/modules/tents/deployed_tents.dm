@@ -4,13 +4,16 @@
 	name = "tent"
 	icon = 'icons/obj/structures/tents_deployed.dmi'
 	opacity = FALSE // Seems only the initial turf blocks light, not all of the multitile. Therefore, useless.
-	layer = INTERIOR_ROOF_LAYER // This should be below FLY_LAYER but just thank chairs and other bs
+	layer = INTERIOR_WALL_SOUTH_LAYER // This should be below FLY_LAYER but just thank chairs and other bs
 	health = 150
 
 	/// Turf dimensions along the X axis, beginning from left, at ground level
 	var/x_dim = 2
 	/// Turf dimensions along the Y axis, beginning from bottom, at ground level
-	var/y_dim = 4
+	var/y_dim = 3
+
+	/// How much cold protection to add to entering humans - Full body clothing means complete (1) protection
+	var/cold_protection_factor = 0.4
 
 	/// Roof display icon_state or null to disable
 	var/roof_state
@@ -38,6 +41,12 @@
 	RegisterSignal(subject_mob, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(mob_moved), override = TRUE) // Must override because we can't know if mob was already inside tent without keeping an awful ref list
 	var/atom/movable/screen/plane_master/tent_roof/roof_plane = subject_mob.hud_used.plane_masters["[TENT_ROOF_PLANE]"]
 	roof_plane?.invisibility = INVISIBILITY_MAXIMUM
+	if(ishuman(subject))
+		RegisterSignal(subject, COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS, PROC_REF(cold_protection), override = TRUE)
+
+/obj/structure/tent/proc/cold_protection(mob/source, list/protection_data)
+	SIGNAL_HANDLER
+	protection_data["protection"] += cold_protection_factor
 
 /obj/structure/tent/proc/mob_moved(mob/subject, turf/target_turf)
 	SIGNAL_HANDLER
@@ -46,6 +55,7 @@
 
 /obj/structure/tent/proc/mob_exited_tent(mob/subject)
 	UnregisterSignal(subject, COMSIG_MOVABLE_TURF_ENTERED)
+	UnregisterSignal(subject, COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS)
 	var/atom/movable/screen/plane_master/tent_roof/roof_plane = subject.hud_used.plane_masters["[TENT_ROOF_PLANE]"]
 	roof_plane?.invisibility = 0
 
@@ -62,3 +72,40 @@
 /obj/structure/tent/cmd
 	icon_state = "cmd_interior"
 	roof_state = "cmd_top"
+	desc = "A standard USCM Command Tent. This one comes equipped with a self-powered Overwatch Console and a Telephone. It is very frail, do not burn, expose to sharp objects, or explosives."
+
+/// Medical tent, procures a buff to surgery speed
+/obj/structure/tent/med
+	icon_state = "med_interior"
+	roof_state = "med_top"
+	desc = "A standard USCM Medical Tent. This one comes equipped with advanced field surgery facilities. It is very fragile however and won't withstand the rigors of war."
+	var/surgery_speed_mult = 0.9
+	var/surgery_pain_reduction = 5
+
+/obj/structure/tent/med/movable_entering_tent(turf/hooked, atom/movable/subject)
+	. = ..()
+	if(!ishuman(subject))
+		return
+	RegisterSignal(subject, COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS, PROC_REF(apply_surgery_modifiers), override = TRUE)
+
+/obj/structure/tent/med/mob_exited_tent(mob/subject)
+	. = ..()
+	UnregisterSignal(subject, COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS)
+
+/obj/structure/tent/med/proc/apply_surgery_modifiers(mob/living/carbon/human/source, list/surgery_data)
+	SIGNAL_HANDLER
+	surgery_data["surgery_speed"] *= surgery_speed_mult
+	surgery_data["pain_reduction"] += surgery_pain_reduction
+
+/// Big Tent. It's just Big. Use it for shelter or organization!
+/obj/structure/tent/big
+	icon_state = "big_interior"
+	roof_state = "big_top"
+	x_dim = 3
+	y_dim = 3
+
+/obj/structure/tent/reqs
+	icon_state = "reqs_interior"
+	roof_state = "reqs_top"
+	x_dim = 4
+	y_dim = 3

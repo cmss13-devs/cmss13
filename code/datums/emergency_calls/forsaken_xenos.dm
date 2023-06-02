@@ -33,7 +33,7 @@
 		picked = pick(/mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/runner)
 
 	new_xeno = new picked(spawn_loc)
-	new_xeno.lock_evolve = FALSE
+	new_xeno.lock_evolve = TRUE
 
 	M.transfer_to(new_xeno, TRUE)
 	new_xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)

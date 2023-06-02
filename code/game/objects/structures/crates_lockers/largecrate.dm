@@ -3,7 +3,6 @@
 	desc = "A hefty wooden crate."
 	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "densecrate"
-	health = 100
 	density = TRUE
 	anchored = FALSE
 	var/parts_type = /obj/item/stack/sheet/wood
@@ -78,7 +77,7 @@
 		unpack()
 
 /obj/structure/largecrate/bullet_act(obj/item/projectile/P)
-	take_damage(P.damage*0.5)
+	take_damage(P.calculate_damage(P.damage))
 	return TRUE
 
 /obj/structure/largecrate/mule

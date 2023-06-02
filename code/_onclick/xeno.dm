@@ -2,7 +2,7 @@
 	Xenomorph
 */
 
-/mob/living/carbon/xenomorph/UnarmedAttack(atom/target, proximity, click_parameters, tile_attack = FALSE)
+/mob/living/carbon/xenomorph/UnarmedAttack(atom/target, proximity, click_parameters, tile_attack = FALSE, ignores_resin = FALSE)
 	if(lying || burrow) //No attacks while laying down
 		return FALSE
 	var/mob/alt
@@ -28,6 +28,16 @@
 			break
 		if (target == T && alt)
 			target = alt
+		if (T && ignores_resin) // Will not target resin walls and doors if this is set to true. This is normally only set to true through a directional attack.
+			if(istype(T, /obj/structure/mineral_door/resin))
+				var/obj/structure/mineral_door/resin/attacked_door = T
+				if(hivenumber == attacked_door.hivenumber)
+					return FALSE
+			if(istype(T, /turf/closed/wall/resin))
+				var/turf/closed/wall/resin/attacked_wall = T
+				if(hivenumber == attacked_wall.hivenumber)
+					return FALSE
+
 	target = target.handle_barriers(src, , (PASS_MOB_THRU_XENO|PASS_TYPE_CRAWLER)) // Checks if target will be attacked by the current alien OR if the blocker will be attacked
 	switch(target.attack_alien(src))
 		if(XENO_ATTACK_ACTION)
@@ -75,7 +85,7 @@
 		return
 	if (client && client.prefs && client.prefs.toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK)
 		next_move += 0.25 SECONDS //Slight delay on missed directional attacks. If it finds a mob in the target tile, this will be overwritten by the attack delay.
-		return UnarmedAttack(get_step(src, Get_Compass_Dir(src, A)), tile_attack = TRUE)
+		return UnarmedAttack(get_step(src, Get_Compass_Dir(src, A)), tile_attack = TRUE, ignores_resin = TRUE)
 	return FALSE
 
 /**The parent proc, will default to UnarmedAttack behaviour unless overriden

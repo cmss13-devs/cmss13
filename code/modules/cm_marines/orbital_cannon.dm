@@ -48,6 +48,9 @@ var/list/ob_type_fuel_requirements
 
 /obj/structure/orbital_cannon/Destroy()
 	QDEL_NULL(tray)
+	if(almayer_orbital_cannon == src)
+		almayer_orbital_cannon = null
+		message_admins("Reference to almayer_orbital_cannon is lost!")
 	return ..()
 
 /obj/structure/orbital_cannon/ex_act()

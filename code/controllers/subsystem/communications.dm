@@ -368,6 +368,9 @@ SUBSYSTEM_DEF(radio)
 	for(var/datum/weakref/device_ref as anything in devices[filter])
 		var/obj/device = device_ref.resolve()
 
+		if(!device)
+			continue
+
 		if(device == source)
 			continue
 
@@ -400,12 +403,9 @@ SUBSYSTEM_DEF(radio)
 /datum/radio_frequency/proc/remove_listener(obj/device)
 	for (var/devices_filter in devices)
 		var/list/devices_line = devices[devices_filter]
-		devices_line -= WEAKREF(device)
-		while (null in devices_line)
-			devices_line -= null
-		if (devices_line.len==0)
+		devices_line -= device.weak_reference
+		if (!length(devices_line))
 			devices -= devices_filter
-			qdel(devices_line)
 
 /datum/signal
 	var/obj/source

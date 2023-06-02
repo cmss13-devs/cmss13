@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - admin: "Admin get log verbs now use FTP instead of run (offers save location rather than just opening)"

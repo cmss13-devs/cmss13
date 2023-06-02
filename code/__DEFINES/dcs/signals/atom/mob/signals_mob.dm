@@ -105,3 +105,5 @@
 #define COMSIG_MOB_STAT_SET_ALIVE "mob_stat_set_alive"
 //from /mob/living/set_stat()
 #define COMSIG_MOB_STAT_SET_DEAD "mob_stat_set_dead"
+
+#define COMSIG_GHOST_MOVED "ghost_moved"

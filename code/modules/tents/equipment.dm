@@ -52,6 +52,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/tent
 	unacidable = FALSE
 	layer = INTERIOR_WALLMOUNT_LAYER
+	needs_power = FALSE
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/tent/Initialize()
 	AddComponent(/datum/component/tent_supported_object)
 	return ..()

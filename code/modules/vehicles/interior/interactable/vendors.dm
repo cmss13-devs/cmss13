@@ -389,6 +389,7 @@
 	req_access = list(ACCESS_MARINE_CARGO)
 	density = TRUE
 	indestructible = TRUE // Deleted with the tent instead
+	needs_power = FALSE
 
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/tent/Initialize()
 	. = ..()

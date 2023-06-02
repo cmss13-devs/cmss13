@@ -5,7 +5,8 @@
 	icon = 'icons/obj/structures/tents_deployed.dmi'
 	opacity = FALSE // Seems only the initial turf blocks light, not all of the multitile. Therefore, useless.
 	layer = INTERIOR_WALL_SOUTH_LAYER // This should be below FLY_LAYER but just thank chairs and other bs
-	health = 150
+	health = 200
+	appearance_flags = TILE_BOUND
 
 	/// Turf dimensions along the X axis, beginning from left, at ground level
 	var/x_dim = 2
@@ -38,7 +39,7 @@
 	if(!ismob(subject))
 		return
 	var/mob/subject_mob = subject
-	RegisterSignal(subject_mob, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(mob_moved), override = TRUE) // Must override because we can't know if mob was already inside tent without keeping an awful ref list
+	RegisterSignal(subject_mob, list(COMSIG_MOVABLE_TURF_ENTERED, COMSIG_GHOST_MOVED), PROC_REF(mob_moved), override = TRUE) // Must override because we can't know if mob was already inside tent without keeping an awful ref list
 	var/atom/movable/screen/plane_master/tent_roof/roof_plane = subject_mob.hud_used.plane_masters["[TENT_ROOF_PLANE]"]
 	roof_plane?.invisibility = INVISIBILITY_MAXIMUM
 	if(ishuman(subject))
@@ -54,8 +55,7 @@
 		mob_exited_tent(subject)
 
 /obj/structure/tent/proc/mob_exited_tent(mob/subject)
-	UnregisterSignal(subject, COMSIG_MOVABLE_TURF_ENTERED)
-	UnregisterSignal(subject, COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS)
+	UnregisterSignal(subject, list(COMSIG_MOVABLE_TURF_ENTERED, COMSIG_GHOST_MOVED, COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS))
 	var/atom/movable/screen/plane_master/tent_roof/roof_plane = subject.hud_used.plane_masters["[TENT_ROOF_PLANE]"]
 	roof_plane?.invisibility = 0
 
@@ -84,9 +84,8 @@
 
 /obj/structure/tent/med/movable_entering_tent(turf/hooked, atom/movable/subject)
 	. = ..()
-	if(!ishuman(subject))
-		return
-	RegisterSignal(subject, COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS, PROC_REF(apply_surgery_modifiers), override = TRUE)
+	if(ishuman(subject))
+		RegisterSignal(subject, COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS, PROC_REF(apply_surgery_modifiers), override = TRUE)
 
 /obj/structure/tent/med/mob_exited_tent(mob/subject)
 	. = ..()

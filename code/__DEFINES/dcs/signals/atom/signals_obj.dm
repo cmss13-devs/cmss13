@@ -20,8 +20,8 @@
 #define COMSIG_SENTRY_EMPTY_AMMO_ALERT "signal_sentry_empty_ammo"
 #define COMSIG_SENTRY_DESTROYED_ALERT "signal_sentry_destroyed"
 
-/// from /obj/structure/transmitter/update_icon()
-#define COMSIG_TRANSMITTER_UPDATE_ICON "transmitter_update_icon"
-
 /// from /obj/structure/machinery/telecomms/proc/tcomms_shutdown(), called when the relay turns off
 #define COMSIG_COMM_RELAY_SHUT_DOWN "comm_relay_shut_down"
+
+/// from /obj/structure/transmitter/update_icon()
+#define COMSIG_TRANSMITTER_UPDATE_ICON "transmitter_update_icon"

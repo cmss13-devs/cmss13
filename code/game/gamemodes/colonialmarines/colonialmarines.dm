@@ -274,9 +274,6 @@
 	if(groundside_humans >= (groundside_xenos * GROUNDSIDE_XENO_MULTIPLIER))
 		SSticker.mode.get_specific_call("Xenomorphs Groundside (Forsaken)", FALSE, FALSE)
 
-		for(var/mob/groundside_mob in groundside_humans)
-			to_chat(groundside_mob, SPAN_INFO("You feel fear down your spine... you are not alone..."))
-
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_GROUND_CHECK, 1 MINUTES)
 
 #undef GROUNDSIDE_XENO_MULTIPLIER

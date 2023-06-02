@@ -1,13 +1,9 @@
-
 /datum/emergency_call/forsaken_xenos
 	name = "Xenomorphs Groundside (Forsaken)"
 	mob_min = 1
 	mob_max = 4
 	hostility = TRUE
 	name_of_spawn = /obj/effect/landmark/ert_spawns/groundside_xeno
-
-/datum/emergency_call/forsaken_xenos/New()
-	..()
 	objectives = "You have been left behind to safeguard the abandoned colony. Do not allow trespassers."
 
 /datum/emergency_call/forsaken_xenos/spawn_items()

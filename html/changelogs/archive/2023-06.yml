@@ -1,0 +1,7 @@
+2023-06-02:
+  Drathek:
+  - bugfix: Fix runtime with a timer to fade out on screen orders again?
+  Morrow:
+  - rscadd: Added tunnels to the xeno tracker
+  - bugfix: Fixed xeno trackers on some maps
+  - balance: Placed resin walls now destroy nodes underneath them.

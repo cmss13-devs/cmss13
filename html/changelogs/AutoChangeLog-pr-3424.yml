@@ -1,0 +1,7 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - balance: "Removes warrior cooldown reduction on slash"
+  - balance: "Warrior slightly lowered fling and punch cooldowns"
+  - balance: "Lowers fling stun to a micro stun and adds a slow"
+  - balance: "Decreases warrior lunge range to 4 tiles"

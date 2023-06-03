@@ -849,34 +849,34 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 					return FALSE
 
 				if(stat & BROKEN)
-					var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+					var/datum/effect_system/spark_spread/spark = new()
 					spark.set_up(3, 1, src)
 					spark.start()
 					to_chat(grabber, SPAN_DANGER("The APC's power currents surge eratically, super-heating your bracer!"))
 					playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
 					grabber.apply_damage(10,0, BURN)
 					return FALSE
-				else if(cell && cell.charge > 0)
-					if(bracer.charge < bracer.charge_max)
-						var/charge_to_use = min(cell.charge, bracer.charge_max - bracer.charge)
-						if(!(cell.use(charge_to_use)))
-							return FALSE
-						playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
-						bracer.charge += charge_to_use
-						bracer.last_charge = (world.time + bracer.charge_cooldown)
-						to_chat(grabber, SPAN_YAUTJABOLD("[icon2html(bracer)] \The <b>[bracer]</b> beep: Power siphon complete. Charge at [bracer.charge]/[bracer.charge_max]."))
-						if(bracer.notification_sound)
-							playsound(bracer.loc, 'sound/items/pred_bracer.ogg', 75, 1)
-						charging = APC_CHARGING
-						set_broken() // Breaks the APC
-
-						return TRUE
-					else
-						to_chat(user, SPAN_WARNING("[bracer.name] is already fully charged."))
-						return FALSE
-				else
+				if(!cell || !cell.charge <= 0)
 					to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
 					return FALSE
+
+				if(bracer.charge_max <= bracer.charge)
+					to_chat(user, SPAN_WARNING("[bracer.name] is already fully charged."))
+					return FALSE
+
+				var/charge_to_use = min(cell.charge, bracer.charge_max - bracer.charge)
+				if(!(cell.use(charge_to_use)))
+					return FALSE
+				playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
+				bracer.charge += charge_to_use
+				bracer.last_charge = (world.time + bracer.charge_cooldown)
+				to_chat(grabber, SPAN_YAUTJABOLD("[icon2html(bracer)] \The <b>[bracer]</b> beep: Power siphon complete. Charge at [bracer.charge]/[bracer.charge_max]."))
+				if(bracer.notification_sound)
+					playsound(bracer.loc, 'sound/items/pred_bracer.ogg', 75, 1)
+				charging = APC_CHARGING
+				set_broken() // Breaks the APC
+
+				return TRUE
 
 		else if(grabber.species.can_shred(grabber))
 			var/allcut = TRUE
@@ -1057,7 +1057,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			smoke.set_up(1, 0, loc)
 			smoke.attach(src)
 			smoke.start()
-			var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+			var/datum/effect_system/spark_spread/spark = new()
 			spark.set_up(1, 1, src)
 			spark.start()
 			visible_message(SPAN_WARNING("[src] suddenly lets out a blast of smoke and some sparks!"))

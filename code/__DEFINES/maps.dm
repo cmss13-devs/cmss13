@@ -26,7 +26,6 @@ require only minor tweaks.
 #define ZTRAIT_MARINE_MAIN_SHIP "Marine Main Ship"
 #define ZTRAIT_ADMIN "Admin"
 #define ZTRAIT_AWAY  "Away"
-#define ZTRAIT_LOWORBIT "LowOrbit"
 #define ZTRAIT_INTERIORS "Interiors"
 #define ZTRAIT_TECHTREE "TechTree"
 
@@ -67,7 +66,6 @@ require only minor tweaks.
 #define ZTRAITS_MAIN_SHIP list(ZTRAIT_MARINE_MAIN_SHIP = TRUE)
 #define ZTRAITS_GROUND list(ZTRAIT_GROUND = TRUE)
 #define ZTRAITS_ADMIN list(ZTRAIT_ADMIN = TRUE)
-#define ZTRAITS_LOWORBIT list(ZTRAIT_LOWORBIT = TRUE)
 #define ZTRAITS_SPACE list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_SPACE_RUINS = TRUE)
 #define ZTRAITS_INTERIORS list(ZTRAIT_INTERIORS = TRUE)
 
@@ -79,7 +77,6 @@ require only minor tweaks.
 
 #define DEFAULT_MAP_TRAITS list(\
 	DECLARE_LEVEL("CentCom", ZTRAITS_ADMIN),\
-	DECLARE_LEVEL("LowOrbit", ZTRAITS_LOWORBIT),\
 )
 
 // Camera lock flags

@@ -249,7 +249,7 @@
  */
 /obj/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null,\
 							list/forbidden_limbs = list(),
-							no_limb_loss, damage_source = "dismemberment",\
+							no_limb_loss, damage_source = create_cause_data("amputation"),\
 							mob/attack_source = null,\
 							brute_reduced_by = -1, burn_reduced_by = -1)
 	if((brute <= 0) && (burn <= 0))
@@ -280,7 +280,7 @@
 	if(!is_ff && take_damage_organ_damage(brute, sharp))
 		brute /= 2
 
-	if(CONFIG_GET(flag/bones_can_break) && !(status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
+	if(CONFIG_GET(flag/bones_can_break) && !(status & (LIMB_SYNTHSKIN)))
 		take_damage_bone_break(brute)
 
 	if(status & LIMB_BROKEN && prob(40) && brute > 10)
@@ -355,21 +355,16 @@
 		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier))
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
-				var/obj/item/clothing/head/helmet/owner_helmet = owner.head
-				if(istype(owner_helmet) && owner.allow_gun_usage)
-					if(!(owner_helmet.flags_inventory & FULL_DECAP_PROTECTION))
-						owner.visible_message("[owner]'s [owner_helmet] goes flying off from the impact!", SPAN_USERDANGER("Your [owner_helmet] goes flying off from the impact!"))
-						owner.drop_inv_item_on_ground(owner_helmet)
-						INVOKE_ASYNC(owner_helmet, TYPE_PROC_REF(/atom/movable, throw_atom), pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
-						playsound(owner, 'sound/effects/helmet_noise.ogg', 100)
-				else
-					droplimb(0, 0, damage_source)
-					return
+				limb_delimb(damage_source)
 
 	SEND_SIGNAL(src, COMSIG_LIMB_TAKEN_DAMAGE, is_ff, previous_brute, previous_burn)
 	owner.updatehealth()
 	update_icon()
 	start_processing()
+
+///Special delimbs for different limbs
+/obj/limb/proc/limb_delimb(damage_source)
+	droplimb(0, 0, damage_source)
 
 /obj/limb/proc/heal_damage(brute, burn, robo_repair = FALSE)
 	if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN) && !robo_repair)
@@ -1055,7 +1050,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			return FALSE
 
 /obj/limb/proc/fracture(bonebreak_probability)
-	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_ROBOT|LIMB_SYNTHSKIN))
+	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_UNCALIBRATED_PROSTHETIC|LIMB_SYNTHSKIN))
 		if (knitting_time != -1)
 			knitting_time = -1
 			to_chat(owner, SPAN_WARNING("You feel your [display_name] stop knitting together as it absorbs damage!"))
@@ -1067,8 +1062,13 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			SPAN_WARNING("Your [display_name] withstands the blow!"))
 		return
 
-	if((owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE) || owner.species.flags & SPECIAL_BONEBREAK) //stops division by zero
+	//stops division by zero
+	if(owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE)
 		bonebreak_probability = 0
+
+	//If you have this special flag you are exempt from the endurance bone break check
+	if(owner.species.flags & SPECIAL_BONEBREAK)
+		bonebreak_probability = 100
 
 	if(!owner.skills)
 		bonebreak_probability = null
@@ -1083,17 +1083,36 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 	if(prob(bonebreak_probability))
 		owner.recalculate_move_delay = TRUE
-		owner.visible_message(\
-			SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),
-			SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"),
-			SPAN_HIGHDANGER("You hear a sickening crack!"))
-		playsound(owner, "bone_break", 45, TRUE)
+		if(status & (LIMB_ROBOT))
+			owner.visible_message(\
+				SPAN_WARNING("You see sparks coming from [owner]'s [display_name]!"),
+				SPAN_HIGHDANGER("Something feels like it broke in your [display_name] as it spits out sparks!"),
+				SPAN_HIGHDANGER("You hear electrical sparking!"))
+			var/datum/effect_system/spark_spread/spark_system = new()
+			spark_system.set_up(5, 0, owner)
+			spark_system.attach(owner)
+			spark_system.start()
+			QDEL_IN(spark_system, 1 SECONDS)
+		else
+			owner.visible_message(\
+				SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),
+				SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"),
+				SPAN_HIGHDANGER("You hear a sickening crack!"))
+			playsound(owner, "bone_break", 45, TRUE)
 		start_processing()
-
-		status |= LIMB_BROKEN
-		owner.pain.apply_pain(PAIN_BONE_BREAK)
-		broken_description = pick("broken","fracture","hairline fracture")
-		perma_injury = min_broken_damage
+		if(status & LIMB_ROBOT)
+			status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC
+			if(parent)
+				if(parent.status & LIMB_ROBOT)
+					parent.status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC
+			for(var/obj/limb/l as anything in children)
+				if(l.status & LIMB_ROBOT)
+					l.status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC
+		else
+			status |= LIMB_BROKEN
+			owner.pain.apply_pain(PAIN_BONE_BREAK)
+			broken_description = pick("broken","fracture","hairline fracture")
+			perma_injury = min_broken_damage
 	else
 		owner.visible_message(\
 			SPAN_WARNING("[owner] seems to withstand the blow!"),
@@ -1196,7 +1215,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			user.visible_message(SPAN_WARNING("[user] fumbles with [S]"), SPAN_WARNING("You fumble with [S]..."))
 			time_to_take = 15 SECONDS
 
-		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			var/possessive = "[user == target ? "your" : "\the [target]'s"]"
 			var/possessive_their = "[user == target ? user.gender == MALE ? "his" : "her" : "\the [target]'s"]"
 			user.affected_message(target,
@@ -1437,3 +1456,18 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			return "an incomplete surgical operation"
 		if(2, 3)
 			return "several incomplete surgical operations"
+
+/obj/limb/head/limb_delimb(damage_source)
+	var/obj/item/clothing/head/helmet/owner_helmet = owner.head
+
+	if(!istype(owner_helmet) || !owner.allow_gun_usage)
+		droplimb(0, 0, damage_source)
+		return
+
+	if(owner_helmet.flags_inventory & FULL_DECAP_PROTECTION)
+		return
+
+	owner.visible_message("[owner]'s [owner_helmet] goes flying off from the impact!", SPAN_USERDANGER("Your [owner_helmet] goes flying off from the impact!"))
+	owner.drop_inv_item_on_ground(owner_helmet)
+	INVOKE_ASYNC(owner_helmet, TYPE_PROC_REF(/atom/movable, throw_atom), pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
+	playsound(owner, 'sound/effects/helmet_noise.ogg', 100)

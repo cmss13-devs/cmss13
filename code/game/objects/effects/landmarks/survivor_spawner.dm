@@ -32,7 +32,33 @@
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
-	story_text = "You are a soldier of Colonial Liberation Front. Your ship received a distress signal from a planet bordering the CLF controlled space under USCM control. Ready and willing to save poor colonists from parasitic tyrants, you and your team boarded small ship called Marie Curie. Unfortunately, right before you came close to a landing zone, a glob of acid hit the ship, damaging one of the engines. Despite all the efforts of the pilot, the ship went straight into nearby mountain. You were hurt pretty badly in the crash. Dumbfounded, you rose up and noticed that one of your limbs is at a weird angle, broken. You looked at other survivors, also limping and trying to fix their broken bones. \red You also notice that sentry turrets on the ramp of your ship beep angrily, it seems their logic circuits got damaged. They will identify you as a foe, but at least they will identify everything as a foe."
+	story_text = "You are a soldier of Colonial Liberation Front. Your ship received a distress signal from a planet bordering the CLF controlled space under USCM control. Ready and willing to save poor colonists from parasitic tyrants, you and your team boarded small ship called Marie Curie. Unfortunately, right before you came close to a landing zone, a glob of acid hit the ship, damaging one of the engines. Despite all the efforts of the pilot, the ship went straight into nearby mountain. You were hurt pretty badly in the crash. Dumbfounded, you rose up and noticed that one of your limbs is at a weird angle, broken. You looked at other survivors, also limping and trying to fix their broken bones."
+	roundstart_damage_min = 3
+	roundstart_damage_max = 10
+	roundstart_damage_times = 2
+
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf_engineer
+	equipment = /datum/equipment_preset/clf/engineer
+	synth_equipment = /datum/equipment_preset/clf/synth
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"You are NOT aware of the xenomorph threat.",\
+	"Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.")
+	story_text = "You are a soldier of Colonial Liberation Front. Your ship received a distress signal from a planet bordering the CLF controlled space under USCM control. Ready and willing to save poor colonists from parasitic tyrants, you and your team boarded small ship called Marie Curie. Unfortunately, right before you came close to a landing zone, a glob of acid hit the ship, damaging one of the engines. Despite all the efforts of the pilot, the ship went straight into nearby mountain. You were hurt pretty badly in the crash. Dumbfounded, you rose up and noticed that one of your limbs is at a weird angle, broken. You looked at other survivors, also limping and trying to fix their broken bones."
+	roundstart_damage_min = 3
+	roundstart_damage_max = 10
+	roundstart_damage_times = 2
+
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf_medic
+	equipment = /datum/equipment_preset/clf/medic
+	synth_equipment = /datum/equipment_preset/clf/synth
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"You are NOT aware of the xenomorph threat.",\
+	"Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.")
+	story_text = "You are a soldier of Colonial Liberation Front. Your ship received a distress signal from a planet bordering the CLF controlled space under USCM control. Ready and willing to save poor colonists from parasitic tyrants, you and your team boarded small ship called Marie Curie. Unfortunately, right before you came close to a landing zone, a glob of acid hit the ship, damaging one of the engines. Despite all the efforts of the pilot, the ship went straight into nearby mountain. You were hurt pretty badly in the crash. Dumbfounded, you rose up and noticed that one of your limbs is at a weird angle, broken. You looked at other survivors, also limping and trying to fix their broken bones."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
@@ -70,7 +96,7 @@
 
 /obj/effect/landmark/survivor_spawner/lv522_forecon_tech
 	equipment = /datum/equipment_preset/survivor/forecon/tech
-	spawn_priority = SPAWN_PRIORITY_MEDIUM
+	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/lv522_forecon_marksman
 	equipment = /datum/equipment_preset/survivor/forecon/marksman

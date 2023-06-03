@@ -22,7 +22,12 @@
 /obj/structure/closet/emcloset/Initialize()
 	. = ..()
 
+#ifndef UNIT_TESTS
 	switch (pickweight(list("small" = 55, "aid" = 25, "tank" = 10, "both" = 10, "nothing" = 0, "delete" = 0)))
+#else
+	var/test = "both"
+	switch (test) // We don't want randomness in tests
+#endif
 		if ("small")
 			new /obj/item/tank/emergency_oxygen(src)
 			new /obj/item/tank/emergency_oxygen(src)
@@ -51,12 +56,12 @@
 
 		// teehee - Ah, tg coders...
 		if ("delete")
-			qdel(src)
+			return INITIALIZE_HINT_QDEL
 
 		//If you want to re-add fire, just add "fire" = 15 to the pick list.
 		/*if ("fire")
 			new /obj/structure/closet/firecloset(src.loc)
-			qdel(src)*/
+			return INITIALIZE_HINT_QDEL*/
 
 /obj/structure/closet/emcloset/legacy/Initialize()
 	. = ..()

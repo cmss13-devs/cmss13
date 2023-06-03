@@ -197,6 +197,9 @@ GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/y
 
 	//Backpacks
 var/global/list/backbaglist = list("Backpack", "Satchel")
+	//Armor styles
+GLOBAL_LIST_INIT(armor_style_list, list("Padded" = 1, "Padless" = 2, "Ridged" = 3, "Carrier" = 4, "Skull" = 5, "Smooth" = 6, "Random"))
+
 // var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
 var/global/round_should_check_for_win = TRUE
 
@@ -500,3 +503,9 @@ var/global/list/available_specialist_kit_boxes = list(
 				.[E.key_third_person] = list(E)
 			else
 				.[E.key_third_person] |= E
+
+GLOBAL_LIST_EMPTY(topic_tokens)
+GLOBAL_PROTECT(topic_tokens)
+
+GLOBAL_LIST_EMPTY(topic_commands)
+GLOBAL_PROTECT(topic_commands)

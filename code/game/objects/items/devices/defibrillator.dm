@@ -228,6 +228,7 @@
 		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: Defibrillation successful."))
 		playsound(get_turf(src), 'sound/items/defib_success.ogg', 25, 0)
 		user.track_life_saved(user.job)
+		user.life_revives_total++
 		H.handle_revive()
 		to_chat(H, SPAN_NOTICE("You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane."))
 		if(H.client?.prefs.toggles_flashing & FLASH_CORPSEREVIVE)

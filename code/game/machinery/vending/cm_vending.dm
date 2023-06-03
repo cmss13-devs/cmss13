@@ -140,7 +140,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	hacked = !hacked
 	if(hacked)
-		to_chat(user, SPAN_WARNING("You have succesfully removed access restrictions in [src]."))
+		to_chat(user, SPAN_WARNING("You have successfully removed access restrictions in [src]."))
 		if(user && is_mainship_level(z))
 			SSclues.create_print(get_turf(user), user, "A small piece of cut wire is found on the fingerprint.")
 	else
@@ -1178,6 +1178,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			new_item.add_fingerprint(user)
 		else
 			new_item = new prod_type(target_turf)
+
+		new_item.post_vendor_spawn_hook(user)
 
 		if(vend_flags & VEND_LIMITED_INVENTORY)
 			itemspec[2]--

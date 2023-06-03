@@ -38,6 +38,21 @@ All ShuttleMove procs go here
 				M.gib()
 
 		else //non-living mobs shouldn't be affected by shuttles, which is why this is an else
+			if(thing.anchored)
+				// Ordered by most likely:
+				if(istype(thing, /obj/structure/machinery/landinglight))
+					continue
+				if(istype(thing, /obj/docking_port))
+					continue
+				if(istype(thing, /obj/structure/machinery/camera))
+					continue
+				if(istype(thing, /obj/structure/machinery/floodlight/landing/floor))
+					continue
+
+				// SSshuttle also removes these in remove_ripples, but its timing is weird
+				if(!istype(thing, /obj/effect))
+					log_debug("[shuttle] deleted an anchored [thing]")
+
 			qdel(thing)
 
 // Called on the old turf to move the turf data

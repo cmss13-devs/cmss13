@@ -18,9 +18,12 @@
 				nutrition -= 9
 				blood_volume += 0.3
 			else if(nutrition <= 250)//if low on nutrition you consume it slower
-				nutrition -= 3
-				blood_volume += 0.1 // regenerate blood VERY slowly
-
+				if(nutrition<= 50)
+					return
+				else
+					nutrition -= 3
+					blood_volume += 0.1 // regenerate blood VERY slowly
+					
 		else if(blood_volume > normal_blood)
 			blood_volume -= 0.1 // The reverse in case we've gotten too much blood in our body
 			if(blood_volume > limit_blood)

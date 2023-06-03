@@ -1,6 +1,7 @@
 /obj/item/folded_tent
 	name = "Folded Abstract Tent"
 	icon = 'icons/obj/structures/tents_folded.dmi'
+	w_class = SIZE_LARGE
 	/// Required cleared area along X axis
 	var/dim_x = 1
 	/// Required cleared area along Y axis

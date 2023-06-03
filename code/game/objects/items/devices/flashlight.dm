@@ -525,8 +525,9 @@
 		anchored = TRUE
 		if(activate_message)
 			visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
-		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([x], [y], [z]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP LOC</a>)")
-		log_game("Flare target [src] has been activated by [key_name(user, 1)] at ([x], [y], [z]).")
+		var/turf/target_turf = get_turf(src)
+		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[target_turf.x];Y=[target_turf.y];Z=[target_turf.z]'>JMP LOC</a>)")
+		log_game("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]).")
 		return TRUE
 
 /obj/item/device/flashlight/flare/signal/attack_hand(mob/user)

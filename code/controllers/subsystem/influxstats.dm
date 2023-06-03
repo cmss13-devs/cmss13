@@ -8,9 +8,9 @@ SUBSYSTEM_DEF(influxstats)
 	var/sent   = 0
 
 /datum/controller/subsystem/influxstats/Initialize()
-	var/period = CONFIG_GET(string/round_results_influxdb_period)
+	var/period = text2num(CONFIG_GET(string/round_results_influxdb_period))
 	if(isnum(period))
-		wait = max(period * (1 SECONDS), 5 SECONDS)
+		wait = max(period * (1 SECONDS), 10 SECONDS)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/influxstats/stat_entry(msg)
@@ -36,49 +36,36 @@ SUBSYSTEM_DEF(influxstats)
 
 	var/measurement = "round_results,round_id=[GLOB.round_id]"
 	var/timestamp = big_number_to_text(rustg_unix_timestamp())
-	var/data = ""
-
-	var/list/job_stats_others = list(JOB_OBSERVER = 0)
-
-	var/list/job_stats_humans = list()
-	for(var/job in (ROLES_MARINES|ROLES_USCM|ROLES_SPECIAL))
-		job_stats_humans[job] = 0
-
-	var/list/job_stats_xenos = list()
-	for(var/job in ALL_XENO_CASTES)
-		job_stats_xenos[job] = 0
+	var/list/job_stats = list("others" = list(), "xenos" = list(), "humans" = list())
 
 	for(var/client/client in GLOB.clients)
-		if(!client?.mob)
+		var/mob/mob = client.mob
+		if(!mob)
 			continue
-		else if(isobserver(client.mob))
-			job_stats_others[JOB_OBSERVER] += 1
-		else if(isxeno(client.mob))
-			job_stats_xenos[client.mob.job] += 1
-		else if(client?.mob && client.mob.stat != DEAD)
-			job_stats_humans[client.mob.job] += 1
+		var/job = mob.job
+		var/team
+		if(isobserver(mob))
+			job = JOB_OBSERVER
+			team = "others"
+		else if(!job || mob.stat == DEAD)
+			continue
+		var/short_job = replacetext(sanitize(job), " ", "")
+		if(isxeno(mob))
+			team = "xenos"
+		else if (ishuman(mob))
+			team = "humans"
+		else
+			team = "others"
+		if(!job_stats[team][short_job])
+			job_stats[team][short_job] = 0
+		job_stats[team][short_job] += 1
+
+	var/list/measurements = list()
+	for(var/iteam in job_stats)
+		for(var/ijob in job_stats[iteam])
+			measurements += "[measurement],team=[iteam],job=[ijob] count=[job_stats[iteam][ijob]] [timestamp]"
 
 	var/datum/http_request/req
-	var/list/measurements = list()
-
-	var/others_data = data
-	for(var/job in job_stats_others)
-		var/short_job = replacetext(sanitize(job), " ", "")
-		others_data += ",[short_job]=[job_stats_others[job]]"
-	measurements += "[measurement],team=others [others_data] [timestamp]"
-
-	var/humans_data = data
-	for(var/job in job_stats_humans)
-		var/short_job = replacetext(sanitize(job), " ", "")
-		humans_data += ",[short_job]=[job_stats_humans[job]]"
-	measurements += "[measurement],team=humans [humans_data] [timestamp]"
-
-	var/xenos_data = data
-	for(var/job in job_stats_xenos)
-		var/short_job = replacetext(sanitize(job), " ", "")
-		xenos_data += ",[short_job]=[job_stats_xenos[job]]"
-	measurements += "[measurement],team=xenos [xenos_data] [timestamp]"
-
 	req = new
 	var/payload = ""
 	for(var/line in measurements)

@@ -71,7 +71,7 @@
 		return
 
 	// Click handled elsewhere. (These clicks are not affected by the next_move cooldown)
-	if (click(A, mods) | A.clicked(src, mods, location, params))
+	if (click(A, mods) || A.clicked(src, mods, location, params))
 		return
 
 	// Default click functions from here on.

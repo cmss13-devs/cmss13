@@ -4,7 +4,7 @@
 	name = "Souto Man"
 	mob_max = 1
 	mob_min = 1
-	arrival_message = "Incoming Transmission: Give a round of applause for the marine who sent in ten-thousand Souto tabs to get me here! USS Almayer, Souto Man's here to party with YOU!"
+	arrival_message = "Give a round of applause for the marine who sent in ten-thousand Souto tabs to get me here! USS Almayer, Souto Man's here to party with YOU!"
 	objectives = "Party like it's 1999!"
 	probability = 0
 

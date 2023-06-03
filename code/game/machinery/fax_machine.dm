@@ -342,7 +342,7 @@ var/list/alldepartments = list()
 			GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 
-	msg_admin += "Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
+	msg_admin += SPAN_ADMIN_IC("Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>")
 
 	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>[target_department]: </font></b>")
 	msg_ghost += "Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"

@@ -166,10 +166,6 @@
 	pill_initial_reagents = list("cyanide" = 50)
 	pill_icon_class = "tox"
 
-/obj/item/reagent_container/pill/adminordrazine
-	pill_desc = "An Adminordrazine pill. It's magic. We don't have to explain it."
-	pill_initial_reagents = list("adminordrazine" = 50)
-
 /obj/item/reagent_container/pill/stox
 	pill_desc = "A sleeping pill commonly used to treat insomnia."
 	pill_initial_reagents = list("stoxin" = 15)

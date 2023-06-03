@@ -1,6 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - balance: "reduced the medevac cooldown from 60 seconds to 20 seconds."
-  - rscadd: "anyone with the skills of a doctor or a pilot can manage the medevac by interacting with the system itself."
-  - qol: "medical stretcher automatically activates when deployed."

@@ -158,9 +158,6 @@
 
 	var/datum/action/human_action/activable/selected_ability
 
-	/// misc human flags
-	var/flags_human_misc = 0
-
 	///list of weakrefs of recently dropped objects
 	var/list/remembered_dropped_objects = list()
 

@@ -176,3 +176,64 @@
 /obj/structure/machinery/computer/ares_console/Destroy()
 	delink()
 	return ..()
+
+/obj/effect/step_trigger/ares_alert
+	layer = 5
+	/// Alert message to report unless area based.
+	var/alert_message = "Unauthorized movement detected in ARES Core!"
+	/// Set to true if it should report area name and not specific alert.
+	var/area_based = FALSE
+	/// Cooldown duration and next time.
+	var/cooldown_duration = 45 SECONDS
+	var/cooldown = 0
+	// The job on a mob to enter
+	var/list/pass_jobs = list(JOB_WORKING_JOE, JOB_CHIEF_ENGINEER, JOB_CO)
+	/// The accesses on an ID card to enter
+	var/pass_accesses = list(ACCESS_ARES_DEBUG)
+
+/obj/effect/step_trigger/ares_alert/Crossed(mob/living/passer)
+	if(!passer)
+		return FALSE
+	if(!(ishuman(passer) || isxeno(passer)))
+		return FALSE
+	if(cooldown > world.time)//Don't want alerts spammed.
+		return FALSE
+	if(passer.alpha <= 100)//Can't be seen/detected to trigger alert.
+		return FALSE
+	if(pass_jobs)
+		if(passer.job in pass_jobs)
+			return FALSE
+		if(isxeno(passer) && (JOB_XENOMORPH in pass_jobs))
+			return FALSE
+	if(ishuman(passer))
+		var/mob/living/carbon/human/trespasser = passer
+		if(pass_accesses && (trespasser.wear_id))
+			for(var/tag in pass_accesses)
+				if(tag in trespasser.wear_id.access)
+					return FALSE
+	Trigger(passer)
+	return TRUE
+
+/obj/effect/step_trigger/ares_alert/Trigger(mob/living/passer)
+	var/broadcast_message = alert_message
+	if(area_based)
+		var/area_name = get_area_name(src, TRUE)
+		broadcast_message = "Unauthorized movement detected in [area_name]!"
+
+	var/datum/ares_link/link = GLOB.ares_link
+	if(link.p_apollo.inoperable())
+		return FALSE
+	else
+		to_chat(passer, SPAN_BOLDWARNING("You hear a soft beeping sound as you cross the threshold."))
+		var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
+		for(var/mob/living/silicon/decoy/ship_ai/ai in ai_mob_list)
+			apollo.broadcast(ai, broadcast_message)
+		for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
+			if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
+				playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+		cooldown = (world.time + cooldown_duration)
+	return TRUE
+
+/obj/effect/step_trigger/ares_alert/comms
+	area_based = TRUE
+	pass_accesses = list(ACCESS_MARINE_CE)

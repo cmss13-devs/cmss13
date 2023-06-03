@@ -186,7 +186,7 @@
 	/// Cooldown duration and next time.
 	var/cooldown_duration = 45 SECONDS
 	var/cooldown = 0
-	// The job on a mob to enter
+	/// The job on a mob to enter
 	var/list/pass_jobs = list(JOB_WORKING_JOE, JOB_CHIEF_ENGINEER, JOB_CO)
 	/// The accesses on an ID card to enter
 	var/pass_accesses = list(ACCESS_ARES_DEBUG)

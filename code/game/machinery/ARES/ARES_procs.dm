@@ -101,7 +101,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 	interface.records_security.Add(new /datum/ares_record/security(title, details))
 
 /obj/structure/machinery/computer/ares_console/proc/message_ares(text, mob/Sender, ref)
-	var/msg = "<b>[SPAN_NOTICE("<font color=orange>ARES:</font>")][key_name(Sender, 1)] [ARES_MARK(Sender)] [ADMIN_PP(Sender)] [ADMIN_VV(Sender)] [ADMIN_SM(Sender)] [ADMIN_JMP_USER(Sender)] [ARES_REPLY(Sender, ref)]:</b> [text]"
+	var/msg = "<b>[SPAN_STAFF_IC("<font color=orange>ARES:</font>")][key_name(Sender, 1)] [ARES_MARK(Sender)] [ADMIN_PP(Sender)] [ADMIN_VV(Sender)] [ADMIN_SM(Sender)] [ADMIN_JMP_USER(Sender)] [ARES_REPLY(Sender, ref)]:</b> [text]"
 	var/datum/ares_record/talk_log/conversation = locate(ref)
 	conversation.conversation += "[last_login] at [worldtime2text()], '[text]'"
 	for(var/client/admin in GLOB.admins)

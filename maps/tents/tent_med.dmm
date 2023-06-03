@@ -42,6 +42,7 @@
 	dir = 8
 	},
 /obj/structure/tent/med,
+/obj/structure/machinery/iv_drip,
 /turf/template_noop,
 /area/template_noop)
 

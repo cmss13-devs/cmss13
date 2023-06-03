@@ -69,7 +69,7 @@ export const MESSAGE_TYPES = [
     name: 'Info',
     description: 'Non-urgent messages from the game and items',
     selector:
-      '.notice:not(.pm), .adminnotice, .info, .role_body, .role_header, .event_announcement, .announce_header, .announce_header_blue, .announce_body, .sinister, .cult, .xenonotice, .xenoannounce, .yautjabold, .yautjaboldbig',
+      '.notice:not(.pm), .staff_ic, .adminnotice, .info, .role_body, .role_header, .event_announcement, .announce_header, .announce_header_blue, .announce_body, .sinister, .cult, .xenonotice, .xenoannounce, .yautjabold, .yautjaboldbig',
   },
   {
     type: MESSAGE_TYPE_WARNING,
@@ -140,6 +140,13 @@ export const MESSAGE_TYPES = [
     name: 'Mentor',
     description: 'Mentor Chat, Mhelps',
     selector: '.mentorsay, .mentorhelp, .mentorbody, .mentorstaff',
+    admin: true,
+  },
+  {
+    type: MESSAGE_TYPE_STAFF_IC,
+    name: 'Staff IC',
+    description: 'IC interaction with staff',
+    selector: '.staff_ic',
     admin: true,
   },
   {

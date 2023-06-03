@@ -285,6 +285,7 @@
 	var/larva_gestation_multiplier = 1
 	var/bonus_larva_spawn_chance = 1
 	var/hijack_burrowed_surge = FALSE //at hijack, start spawning lots of burrowed
+	var/hijack_burrowed_left = 0 //how many burrowed is going to spawn during larva surge
 
 	var/ignore_slots = FALSE
 	var/dynamic_evolution = TRUE
@@ -895,8 +896,11 @@
 					xeno.handle_stomach_contents()
 				qdel(xeno)
 			stored_larva++
+	var/shipside_humans = 0
 	for(var/i in GLOB.alive_mob_list)
 		var/mob/living/potential_host = i
+		if(is_mainship_level(potential_host))
+			shipside_humans++
 		if(!(potential_host.status_flags & XENO_HOST))
 			continue
 		if(!is_ground_level(potential_host.z) || get_area(potential_host) == hijacked_dropship)
@@ -908,8 +912,9 @@
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
 	hijack_burrowed_surge = TRUE
+	hijack_burrowed_left = max(n_ceil((shipside_humans - totalXenos.len) / 5), 0)
 	hivecore_cooldown = FALSE
-	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
+	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built! [shipside_humans] [totalXenos.len] [hijack_burrowed_left]"),3,hivenumber)
 
 /datum/hive_status/proc/free_respawn(client/C)
 	stored_larva++

@@ -148,12 +148,17 @@
 			if(players_with_xeno_pref && players_with_xeno_pref.len && can_spawn_larva())
 				spawn_burrowed_larva(pick(players_with_xeno_pref))
 
-		if(linked_hive.hijack_burrowed_surge && (last_surge_time + surge_cooldown) < world.time)
+
+		if(linked_hive.hijack_burrowed_surge && linked_hive.hijack_burrowed_left > 0 && (last_surge_time + surge_cooldown) < world.time)
+			xeno_message(SPAN_XENOBOLDNOTICE("[linked_hive.hijack_burrowed_left] reeeeeeeeee"),3, linked_hive.hivenumber)
 			last_surge_time = world.time
 			linked_hive.stored_larva++
-			announce_dchat("The hive has gained another burrowed larva! Use the Join As Xeno verb to take it.", src)
+			linked_hive.hijack_burrowed_left--
+			announce_dchat("The hive has gained another burrowed larva! Use the Join As Xeno verb to take it. [linked_hive.hijack_burrowed_left]", src)
 			if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
 				surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
+		else if ((last_surge_time + surge_cooldown) < world.time)
+			xeno_message(SPAN_XENOBOLDNOTICE("[linked_hive.hijack_burrowed_left] reeeeeeeeee"),3, linked_hive.hivenumber)
 
 	// Hive core can repair itself over time
 	if(health < maxhealth && last_healed <= world.time)

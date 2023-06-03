@@ -136,6 +136,9 @@
 
 
 /mob/living/carbon/xenomorph/proc/process_tunnel(turf/T)
+	if(!tunnel)
+		return
+
 	if(world.time > tunnel_timer)
 		tunnel = FALSE
 		do_tunnel(T)

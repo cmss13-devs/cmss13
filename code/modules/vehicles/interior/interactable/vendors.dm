@@ -421,12 +421,13 @@
 		list("M56D Drum Magazine", 0, /obj/item/ammo_magazine/m56d, VENDOR_ITEM_REGULAR),
 		list("M2C Box Magazine", 0, /obj/item/ammo_magazine/m2c, VENDOR_ITEM_REGULAR),
 
-		list("AMMUNITION BOXES", -1, null, null),
-		list("Shotgun Shell Box (Buckshot x 100)", 0, /obj/item/ammo_box/magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
-		list("Shotgun Shell Box (Flechette x 100)", 0, /obj/item/ammo_box/magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
-		list("Shotgun Shell Box (Slugs x 100)", 0, /obj/item/ammo_box/magazine/shotgun, VENDOR_ITEM_REGULAR),
-		list("Rifle Ammunition Box (10x24mm)", 0, /obj/item/ammo_box/rounds, VENDOR_ITEM_REGULAR),
-		list("SMG Ammunition Box (10x20mm HV)", 0, /obj/item/ammo_box/rounds/smg, VENDOR_ITEM_REGULAR),
+		list("ARMOR", -1, null, null),
+		list("M10 Pattern Marine Helmet", 0, /obj/item/clothing/head/helmet/marine, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Carrier Marine Armor", 0, /obj/item/clothing/suit/storage/marine/carrier, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Padded Marine Armor", 0, /obj/item/clothing/suit/storage/marine/padded, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Padless Marine Armor", 0, /obj/item/clothing/suit/storage/marine/padless, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Ridged Marine Armor", 0, /obj/item/clothing/suit/storage/marine/padless_lines, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Skull Marine Armor", 0, /obj/item/clothing/suit/storage/marine/skull, VENDOR_ITEM_REGULAR),
 
 		list("MISCELLANEOUS", -1, null, null),
 		list("Box Of MREs", 0, /obj/item/ammo_box/magazine/misc/mre, VENDOR_ITEM_REGULAR),
@@ -437,13 +438,18 @@
 		list("MB-6 Folding Barricades (x3)", 0, /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR),
 		list("Entrenching Tool", 0, /obj/item/tool/shovel/etool, VENDOR_ITEM_REGULAR),
 		list("Roller Bed", 0, /obj/item/roller, VENDOR_ITEM_REGULAR),
-
-		list("BUILD-YOUR-OWN-REQS KIT", -1, null, null),
 		list("Table", 3, /obj/item/frame/table, VENDOR_ITEM_REGULAR),
 		list("Rack", 3, /obj/item/frame/rack, VENDOR_ITEM_REGULAR),
 		list("Cliboard", 4, /obj/item/clipboard, VENDOR_ITEM_REGULAR),
 		list("Pen", 4, /obj/item/tool/pen, VENDOR_ITEM_REGULAR),
 		list("Chair", 2, /obj/item/weapon/twohanded/folded_metal_chair, VENDOR_ITEM_REGULAR),
+
+		list("AMMUNITION BOXES", -1, null, null),
+		list("Shotgun Shell Box (Buckshot x 100)", 0, /obj/item/ammo_box/magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Box (Flechette x 100)", 0, /obj/item/ammo_box/magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Box (Slugs x 100)", 0, /obj/item/ammo_box/magazine/shotgun, VENDOR_ITEM_REGULAR),
+		list("Rifle Ammunition Box (10x24mm)", 0, /obj/item/ammo_box/rounds, VENDOR_ITEM_REGULAR),
+		list("SMG Ammunition Box (10x20mm HV)", 0, /obj/item/ammo_box/rounds/smg, VENDOR_ITEM_REGULAR),
 	)
 
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/tent/proc/begin_unloading()

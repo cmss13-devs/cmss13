@@ -431,11 +431,13 @@
 	var/list/shuttles = list(DROPSHIP_ALAMO, DROPSHIP_NORMANDY)
 	var/tag = tgui_input_list(usr, "Which dropship should be force launched?", "Select a dropship:", shuttles)
 	if(!tag) return
-	var/crash = 0
-	switch(tgui_input_list(usr, "Would you like to force a crash?", "Force crash", list("Yes", "No")))
-		if("Yes") crash = 1
-		if("No") crash = 0
-		else return
+
+	var/crash = tgui_input_list(usr, "Would you like to force a crash?", "Force crash", list("Yes", "No"))
+	if(!crash) return
+
+	if(crash == "No")
+		to_chat(usr, SPAN_WARNING("Use the shuttle manipulator to move a shuttle normally"))
+		return
 
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(tag)
 
@@ -444,11 +446,8 @@
 		log_admin("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN")
 		return
 
-	if(crash)
-		var/obj/structure/machinery/computer/shuttle/dropship/flight/computer = dropship.getControlConsole()
-		computer.hijack(usr)
-	else
-		to_chat(usr, SPAN_WARNING("Use the shuttle manipulator to normally move a shuttle"))
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/computer = dropship.getControlConsole()
+	computer.hijack(usr, force=TRUE)
 
 /client/proc/cmd_admin_create_centcom_report()
 	set name = "Report: Faction"

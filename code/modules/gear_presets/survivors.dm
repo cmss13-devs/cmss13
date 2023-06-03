@@ -1023,10 +1023,11 @@
 	name = "Survivor - Kutjevo Colonial Marshal Deputy"
 	assignment = "CMB Deputy"
 
+/datum/equipment_preset/survivor/colonial_marshal/kutjevo/load_gear(mob/living/carbon/human/new_human)
 	add_random_kutjevo_survivor_uniform(new_human)
 	add_random_kutjevo_survivor_equipment(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
 
 	..()
 

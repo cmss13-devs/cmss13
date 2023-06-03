@@ -508,7 +508,7 @@
 	skills = /datum/skills/working_joe
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_APOLLO, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 
-/datum/equipment_preset/synth/working_joe/engi/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/synth/working_joe/engi/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,10)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/joe(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)

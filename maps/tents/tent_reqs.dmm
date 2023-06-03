@@ -53,7 +53,9 @@
 /obj/structure/bed/chair,
 /obj/structure/transmitter/tent{
 	pixel_y = 30;
-	pixel_x = 16
+	pixel_x = 16;
+	phone_category = "Command";
+	phone_id = "Ground Requisitions"
 	},
 /turf/template_noop,
 /area/template_noop)

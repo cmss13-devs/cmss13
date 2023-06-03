@@ -8,23 +8,26 @@
 	},
 /turf/template_noop,
 /area/template_noop)
-"g" = (
+"d" = (
 /obj/structure/blocker/tent,
+/obj/structure/blocker/tent{
+	dir = 4
+	},
+/obj/structure/filingcabinet,
 /turf/template_noop,
 /area/template_noop)
-"h" = (
+"k" = (
+/obj/structure/surface/rack,
+/turf/template_noop,
+/area/template_noop)
+"m" = (
+/obj/structure/tent/reqs,
 /obj/structure/blocker/tent{
 	dir = 8
 	},
 /turf/template_noop,
 /area/template_noop)
-"j" = (
-/obj/structure/machinery/door/window{
-	req_access_txt = "21"
-	},
-/turf/template_noop,
-/area/template_noop)
-"k" = (
+"n" = (
 /obj/structure/blocker/tent{
 	dir = 1
 	},
@@ -34,28 +37,9 @@
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/tent,
 /turf/template_noop,
 /area/template_noop)
-"m" = (
+"w" = (
 /obj/structure/blocker/tent{
 	dir = 1
-	},
-/obj/structure/machinery/door/window{
-	req_access_txt = "21"
-	},
-/obj/structure/surface/table,
-/turf/template_noop,
-/area/template_noop)
-"p" = (
-/obj/structure/blocker/tent,
-/obj/structure/blocker/tent{
-	dir = 4
-	},
-/obj/structure/surface/rack,
-/turf/template_noop,
-/area/template_noop)
-"z" = (
-/obj/structure/tent/reqs,
-/obj/structure/blocker/tent{
-	dir = 8
 	},
 /turf/template_noop,
 /area/template_noop)
@@ -66,45 +50,55 @@
 /obj/structure/blocker/tent{
 	dir = 8
 	},
+/obj/structure/bed/chair,
+/obj/structure/transmitter/tent{
+	pixel_y = 30;
+	pixel_x = 16
+	},
 /turf/template_noop,
 /area/template_noop)
-"K" = (
+"J" = (
 /obj/structure/blocker/tent{
 	dir = 1
 	},
-/obj/structure/bed/chair{
+/obj/structure/machinery/computer/ordercomp/tent{
+	pixel_y = 25
+	},
+/turf/template_noop,
+/area/template_noop)
+"S" = (
+/obj/structure/blocker/tent{
 	dir = 8
 	},
-/obj/structure/transmitter/tent{
-	pixel_y = 15;
-	pixel_x = -13;
-	phone_category = "Command";
-	phone_id = "Ground Reqs"
-	},
+/obj/structure/surface/table,
+/turf/template_noop,
+/area/template_noop)
+"U" = (
+/obj/structure/blocker/tent,
 /turf/template_noop,
 /area/template_noop)
 
 (1,1,1) = {"
 a
 B
-h
-z
+S
+m
 "}
 (2,1,1) = {"
 a
-m
-j
+J
+a
 c
 "}
 (3,1,1) = {"
 a
-K
-g
-a
+w
+U
+k
 "}
 (4,1,1) = {"
 a
+n
+d
 k
-p
-a
 "}

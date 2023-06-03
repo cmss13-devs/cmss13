@@ -418,6 +418,8 @@
 		list("M39 HV Magazine (10x20mm)", 0, /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
 		list("M44 Speed Loader (.44)", 0, /obj/item/ammo_magazine/revolver, VENDOR_ITEM_REGULAR),
 		list("M4A3 Magazine (9mm)", 0, /obj/item/ammo_magazine/pistol, VENDOR_ITEM_REGULAR),
+		list("M56D Drum Magazine", 0, /obj/item/ammo_magazine/m56d, VENDOR_ITEM_REGULAR),
+		list("M2C Box Magazine", 0, /obj/item/ammo_magazine/m2c, VENDOR_ITEM_REGULAR),
 
 		list("AMMUNITION BOXES", -1, null, null),
 		list("Shotgun Shell Box (Buckshot x 100)", 0, /obj/item/ammo_box/magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
@@ -431,6 +433,7 @@
 		list("Box Of M94 Marking Flare Packs", 0, /obj/item/ammo_box/magazine/misc/flares, VENDOR_ITEM_REGULAR),
 		list("M89-S Signal Flare Pack", 0, /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", 0, /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),
+		list("Flashlights", 1, /obj/item/device/flashlight, VENDOR_ITEM_REGULAR),
 		list("MB-6 Folding Barricades (x3)", 0, /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR),
 		list("Entrenching Tool", 0, /obj/item/tool/shovel/etool, VENDOR_ITEM_REGULAR),
 		list("Roller Bed", 0, /obj/item/roller, VENDOR_ITEM_REGULAR),

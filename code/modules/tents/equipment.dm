@@ -44,7 +44,21 @@
 	return ..()
 
 /// Telephone
+/obj/structure/transmitter/tent
+	layer = INTERIOR_WALLMOUNT_LAYER
 /obj/structure/transmitter/tent/Initialize(mapload, ...)
+	AddComponent(/datum/component/tent_supported_object)
+	return ..()
+
+/// ASRS request console
+/obj/structure/machinery/computer/ordercomp/tent
+	icon_state = "request_wall"
+	density = FALSE
+	deconstructible = FALSE
+	needs_power = FALSE
+	indestructible = TRUE // Goes with the tent instead
+	layer = INTERIOR_WALLMOUNT_LAYER
+/obj/structure/machinery/computer/ordercomp/tent/Initialize()
 	AddComponent(/datum/component/tent_supported_object)
 	return ..()
 

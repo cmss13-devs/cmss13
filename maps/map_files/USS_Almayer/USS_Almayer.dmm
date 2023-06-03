@@ -6064,6 +6064,7 @@
 	id = "tcomms_apc";
 	name = "\improper Telecommunications Power Storage"
 	},
+/obj/effect/step_trigger/ares_alert/comms,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -18898,6 +18899,7 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "tcomms"
 	},
+/obj/effect/step_trigger/ares_alert/comms,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -42503,6 +42505,15 @@
 	icon_state = "plating"
 	},
 /area/almayer/hull/lower_hull/l_a_s)
+"jbC" = (
+/obj/structure/machinery/computer/atmos_alert{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/almayer{
+	icon_state = "ai_floors"
+	},
+/area/almayer/command/airoom)
 "jbH" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -50299,6 +50310,9 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "areslockdownprocessors";
 	name = "\improper ARES Mainframe Shutters"
+	},
+/obj/effect/step_trigger/ares_alert{
+	alert_message = "Unauthorized movement detected in ARES Mainframe!"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -64791,6 +64805,7 @@
 	id = "areslockdowninterior";
 	name = "\improper ARES Core Shutters"
 	},
+/obj/effect/step_trigger/ares_alert,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -70389,6 +70404,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/aft_hallway)
+"wbb" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
+	dir = 1;
+	layer = 3.3
+	},
+/turf/open/floor/almayer{
+	icon_state = "ai_floors"
+	},
+/area/almayer/command/airoom)
 "wbh" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -113736,7 +113761,7 @@ xbN
 tFe
 asG
 xQV
-rNF
+wbb
 cck
 qjF
 oqv
@@ -114750,7 +114775,7 @@ kbH
 wCT
 pYi
 cnp
-asG
+jbC
 avL
 pYi
 aHq

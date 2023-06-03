@@ -123,7 +123,6 @@
 
 /mob/living/carbon/xenomorph/proc/overwatch_handle_deletion(mob/living/carbon/xenomorph/deleted, forced)
 	SIGNAL_HANDLER
-	UnregisterSignal(deleted, COMSIG_PARENT_QDELETING)
 	overwatch(deleted, TRUE)
 
 // Called from xeno Life()

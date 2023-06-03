@@ -34,11 +34,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 //Temporary, until we sort this out properly.
 /obj/effect/landmark/lv624
-	icon = 'icons/old_stuff/mark.dmi'
+	icon = 'icons/landmarks.dmi'
 
 /obj/effect/landmark/lv624/fog_blocker
 	name = "fog blocker"
-	icon_state = "spawn_event"
+	icon_state = "fog"
 
 	var/time_to_dispel = 25 MINUTES
 
@@ -59,7 +59,7 @@
 
 /obj/effect/landmark/lv624/xeno_tunnel
 	name = "xeno tunnel"
-	icon_state = "spawn_event"
+	icon_state = "xeno_tunnel"
 
 /obj/effect/landmark/lv624/xeno_tunnel/Initialize(mapload, ...)
 	. = ..()
@@ -152,6 +152,11 @@
 	if(SSmapping.configs[GROUND_MAP].announce_text)
 		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
+
+/datum/game_mode/colonialmarines/proc/ares_conclude()
+	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")
+	ai_silent_announcement("Saving operational report to archive.", ".V")
+	ai_silent_announcement("Commencing final systems scan in 3 minutes.", ".V")
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -288,6 +293,7 @@
 			else
 				SSticker.roundend_check_paused = TRUE
 				round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
+				ares_conclude()
 				addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
 		else if(!num_humans && !num_xenos)
 			round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
@@ -347,7 +353,7 @@
 				round_statistics.current_map.total_marine_victories++
 		if(MODE_INFESTATION_DRAW_DEATH)
 			end_icon = "draw"
-			musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
+			musical_track = 'sound/theme/neutral_hopeful2.ogg'
 			if(round_statistics && round_statistics.current_map)
 				round_statistics.current_map.total_draws++
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)

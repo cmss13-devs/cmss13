@@ -158,10 +158,6 @@
 /obj/structure/platform/kutjevo/smooth/stair_plate
 	icon_state = "kutjevo_stair_plate"
 
-/obj/structure/platform/kutjevo/smooth/stair_cut
-	icon_state = "kutjevo_stair_cm_stair"
-
-
 /obj/structure/platform_decoration/kutjevo/smooth
 	name = "raised metal corner"
 	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."

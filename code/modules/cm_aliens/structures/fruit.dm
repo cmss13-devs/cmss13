@@ -3,6 +3,7 @@
 /obj/effect/alien/resin/fruit
 	name = XENO_FRUIT_LESSER
 	desc = "A fruit that can be eaten to immediately recover health."
+	icon = 'icons/mob/xenos/fruits.dmi'
 	icon_state = "fruit_lesser_immature"
 	density = FALSE
 	opacity = FALSE

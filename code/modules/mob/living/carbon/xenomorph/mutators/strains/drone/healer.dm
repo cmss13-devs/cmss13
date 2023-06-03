@@ -88,7 +88,7 @@
 		return
 
 	if(target_xeno == src)
-		to_chat(src, SPAN_XENOWARNING("You can't heal yourself with your own resin!"))
+		to_chat(src, SPAN_XENOWARNING("You can't heal yourself with your own resin salve!"))
 		return
 
 	if(!check_state())
@@ -103,11 +103,11 @@
 		return
 
 	if(!isturf(loc))
-		to_chat(src, SPAN_XENOWARNING("You can't apply your regenerative resin from here!"))
+		to_chat(src, SPAN_XENOWARNING("You can't apply your resin salve from here!"))
 		return
 
 	if(get_dist(src, target_xeno) > max_range)
-		to_chat(src, SPAN_XENOWARNING("You need to be closer to [target_xeno] to apply your regenerative resin salve!"))
+		to_chat(src, SPAN_XENOWARNING("You need to be closer to [target_xeno] to apply your resin salve!"))
 		return
 
 	if(target_xeno.stat == DEAD)
@@ -134,8 +134,8 @@
 	new /datum/effects/heal_over_time(target_xeno, amount, 10, 1)
 	target_xeno.xeno_jitter(1 SECONDS)
 	target_xeno.flick_heal_overlay(10 SECONDS, "#00be6f")
-	to_chat(target_xeno, SPAN_XENOWARNING("[src] covers your wounds with regenerative resin. You feel reinvigorated!"))
-	to_chat(src, SPAN_XENOWARNING("You regurgitate your vital fluids and some plasma to create a regenerative resin and apply it to [target_xeno]'s wounds. You feel weakened..."))
+	to_chat(target_xeno, SPAN_XENOWARNING("[src] covers your wounds with a regenerative resin salve. You feel reinvigorated!"))
+	to_chat(src, SPAN_XENOWARNING("You regurgitate your vital fluids and some plasma to create a regenerative resin salve and apply it to [target_xeno]'s wounds. You feel weakened..."))
 	playsound(src, "alien_drool", 25)
 	var/datum/behavior_delegate/drone_healer/healer_delegate = src.behavior_delegate
 	healer_delegate.salve_applied_recently = TRUE

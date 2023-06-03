@@ -229,6 +229,8 @@
 	if(dropship_control_lost)
 		//keyboard
 		for(var/i = 0; i < 5; i++)
+			if(usr.action_busy)
+				return
 			playsound(loc, get_sfx("keyboard"), KEYBOARD_SOUND_VOLUME, 1)
 			if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				return
@@ -244,10 +246,14 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack(mob/user)
 
 	// select crash location
+	var/turf/source_turf = get_turf(src)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
-	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", almayer_ship_sections)
+	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", almayer_ship_sections , timeout = 10 SECONDS)
 	if(!result)
 		return
+	if(result)
+		if(!user.Adjacent(source_turf))
+			return
 	if(dropship.is_hijacked)
 		return
 	var/datum/dropship_hijack/almayer/hijack = new()

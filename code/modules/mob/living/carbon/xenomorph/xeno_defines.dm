@@ -919,7 +919,7 @@
 	hijack_burrowed_surge = TRUE
 	hijack_burrowed_left = max(n_ceil((shipside_humans - totalXenos.len) / 5), 0)
 	hivecore_cooldown = FALSE
-	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built! [shipside_humans] [totalXenos.len] [hijack_burrowed_left]"),3,hivenumber)
+	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 
 /datum/hive_status/proc/free_respawn(client/C)
 	stored_larva++

@@ -21,3 +21,12 @@
   - bugfix: ERTs now use their arrivals messages.
   ihatethisengine:
   - spellcheck: direction tip now uses the correct order.
+2023-06-04:
+  Huffie56:
+  - bugfix: remove items anchored and on the LZ's on fiorina map.
+  Morrow:
+  - rscdel: Removed field kits
+  - rscdel: removed recommend tag from etool/sandbags
+  - rscdel: Removed the change stone
+  fira:
+  - bugfix: Fixed incorrect coordinates in Admin Niche log for signal flares.

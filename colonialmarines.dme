@@ -344,7 +344,6 @@
 #include "code\datums\agents\tools\stimulants.dm"
 #include "code\datums\agents\tools\stunbaton.dm"
 #include "code\datums\agents\tools\toolbox.dm"
-#include "code\datums\agents\tools\tracker.dm"
 #include "code\datums\agents\tools\tranq_gun.dm"
 #include "code\datums\autocells\auto_cell.dm"
 #include "code\datums\autocells\explosion.dm"

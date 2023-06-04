@@ -171,11 +171,11 @@
 
 	premium = list(/obj/item/storage/fancy/cigar = 25)
 	prices = list(
-		/obj/item/storage/fancy/cigarettes/lucky_strikes = 15,
-		/obj/item/storage/fancy/cigar/tarbacktube = 15,
+		/obj/item/storage/fancy/cigarettes/lucky_strikes = 35,
+		/obj/item/storage/fancy/cigar/tarbacktube = 35,
 		/obj/item/storage/box/matches = 1,
-		/obj/item/tool/lighter/random = 8,
-		/obj/item/tool/lighter/zippo = 20,
+		/obj/item/tool/lighter/random = 10,
+		/obj/item/tool/lighter/zippo = 25,
 	)
 	product_type = VENDOR_PRODUCT_TYPE_NICOTINE
 

@@ -109,7 +109,7 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/cmd_admin_change_custom_event,
 	/datum/admins/proc/admin_force_distress,
 	/datum/admins/proc/admin_force_ERT_shuttle,
-	/client/proc/force_shuttle,
+	/client/proc/force_hijack,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
 	/client/proc/adjust_predator_round,
 	/client/proc/cmd_admin_world_narrate, /*sends text to all players with no padding*/

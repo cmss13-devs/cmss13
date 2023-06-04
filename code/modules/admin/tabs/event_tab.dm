@@ -423,32 +423,28 @@
 
 	message_admins("Admin [key_name(usr)] has turned everyone into a primitive")
 
-/client/proc/force_shuttle()
-	set name = "Force Dropship"
-	set desc = "Force a dropship to launch"
+/client/proc/force_hijack()
+	set name = "Force Hijack"
+	set desc = "Force a dropship to be hijacked"
 	set category = "Admin.Shuttles"
 
 	var/list/shuttles = list(DROPSHIP_ALAMO, DROPSHIP_NORMANDY)
-	var/tag = tgui_input_list(usr, "Which dropship should be force launched?", "Select a dropship:", shuttles)
+	var/tag = tgui_input_list(usr, "Which dropship should be force hijacked?", "Select a dropship:", shuttles)
 	if(!tag) return
-	var/crash = 0
-	switch(tgui_input_list(usr, "Would you like to force a crash?", "Force crash", list("Yes", "No")))
-		if("Yes") crash = 1
-		if("No") crash = 0
-		else return
 
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(tag)
 
 	if(!dropship)
-		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN"))
-		log_admin("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN")
+		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship hijack but the shuttle datum was null. Code: MSD_FSV_DIN"))
+		log_admin("Error: Attempted to force a dropship hijack but the shuttle datum was null. Code: MSD_FSV_DIN")
 		return
 
-	if(crash)
-		var/obj/structure/machinery/computer/shuttle/dropship/flight/computer = dropship.getControlConsole()
-		computer.hijack(usr)
-	else
-		to_chat(usr, SPAN_WARNING("Use the shuttle manipulator to normally move a shuttle"))
+	var/confirm = tgui_alert(usr, "Are you sure you want to hijack [dropship]?", "Force hijack", list("Yes", "No")) == "Yes"
+	if(!confirm) 
+		return
+
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/computer = dropship.getControlConsole()
+	computer.hijack(usr, force = TRUE)
 
 /client/proc/cmd_admin_create_centcom_report()
 	set name = "Report: Faction"

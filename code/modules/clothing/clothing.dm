@@ -127,16 +127,6 @@
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	black_market_value = 20
 
-/obj/item/clothing/ears/earmuffs/New()
-	. = ..()
-
-	LAZYADD(objects_of_interest, src)
-
-/obj/item/clothing/ears/earmuffs/Destroy()
-	. = ..()
-
-	LAZYREMOVE(objects_of_interest, src)
-
 
 ///////////////////////////////////////////////////////////////////////
 //Suit

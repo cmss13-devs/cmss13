@@ -134,8 +134,6 @@ var/global/list/all_areas = list()
 var/global/list/turfs = list()
 var/global/list/z1turfs = list()
 
-/var/global/list/objects_of_interest // This is used to track the stealing objective for Agents.
-
 // Areas exempt from explosive antigrief (not Z-levels)
 GLOBAL_LIST_INIT(explosive_antigrief_exempt_areas, list(
 	//non currently

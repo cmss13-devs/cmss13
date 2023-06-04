@@ -896,11 +896,8 @@
 					xeno.handle_stomach_contents()
 				qdel(xeno)
 			stored_larva++
-	var/shipside_humans = 0
 	for(var/i in GLOB.alive_mob_list)
 		var/mob/living/potential_host = i
-		if(is_mainship_level(potential_host))
-			shipside_humans++
 		if(!(potential_host.status_flags & XENO_HOST))
 			continue
 		if(!is_ground_level(potential_host.z) || get_area(potential_host) == hijacked_dropship)
@@ -911,6 +908,14 @@
 		for(var/obj/item/alien_embryo/embryo in potential_host)
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
+	var/shipside_humans = 0
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+		if(isspecieshuman(current_human))
+			var/atom/where = current_human
+			if (where.z == 0 && current_human.loc)
+				where = current_human.loc
+			if(is_mainship_level(where.z))
+				shipside_humans++
 	hijack_burrowed_surge = TRUE
 	hijack_burrowed_left = max(n_ceil((shipside_humans - totalXenos.len) / 5), 0)
 	hivecore_cooldown = FALSE

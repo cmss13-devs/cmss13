@@ -385,7 +385,7 @@
 
 /// Modified Restockable APC-based vendor for use by Req in the deployable tent
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/tent
-	desc =  "An automated restockable storage vendor for use in organizing FOB supplies."
+	desc = "An automated restockable storage vendor for use in organizing FOB supplies."
 	req_access = list(ACCESS_MARINE_CARGO)
 	density = TRUE
 	indestructible = TRUE // Deleted with the tent instead
@@ -393,7 +393,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/tent/Initialize()
 	. = ..()
-	var/obj/structure/tent/located_tent = locate(/obj/structure/tent) in src.loc
+	var/obj/structure/tent/located_tent = locate(/obj/structure/tent) in loc
 	if(!located_tent)
 		return INITIALIZE_HINT_QDEL
 	RegisterSignal(located_tent, COMSIG_PARENT_QDELETING, PROC_REF(begin_unloading))

@@ -46,9 +46,8 @@
 	return TRUE
 
 /obj/item/folded_tent/proc/unfold(turf/ref_turf)
-	var/turf/starting_turf = locate(ref_turf.x, ref_turf.y, ref_turf.z)
 	var/datum/map_template/template_instance = new template()
-	template_instance.load(starting_turf, FALSE, FALSE)
+	template_instance.load(ref_turf, FALSE, FALSE)
 
 /obj/item/folded_tent/proc/get_deployment_area(turf/ref_turf)
 	RETURN_TYPE(/list/turf)
@@ -62,10 +61,14 @@
 		return // In a locker or something. Get lost you already have a home.
 
 	switch(user.dir) // Fix up offset deploy location so tent is better centered + can be deployed under all angles
-		if(NORTH) deploy_turf = locate(deploy_turf.x + off_x, deploy_turf.y + 1, deploy_turf.z)
-		if(SOUTH) deploy_turf = locate(deploy_turf.x + off_x, deploy_turf.y - dim_y, deploy_turf.z)
-		if(EAST)  deploy_turf = locate(deploy_turf.x + 1, deploy_turf.y + off_y, deploy_turf.z)
-		if(WEST)  deploy_turf = locate(deploy_turf.x - dim_x, deploy_turf.y + off_y, deploy_turf.z)
+		if(NORTH)
+			deploy_turf = locate(deploy_turf.x + off_x, deploy_turf.y + 1, deploy_turf.z)
+		if(SOUTH)
+			deploy_turf = locate(deploy_turf.x + off_x, deploy_turf.y - dim_y, deploy_turf.z)
+		if(EAST)
+			deploy_turf = locate(deploy_turf.x + 1, deploy_turf.y + off_y, deploy_turf.z)
+		if(WEST)
+			deploy_turf = locate(deploy_turf.x - dim_x, deploy_turf.y + off_y, deploy_turf.z)
 
 	if(!istype(deploy_turf) || (deploy_turf.x + dim_x > world.maxx) || (deploy_turf.y + dim_y > world.maxy)) // Map border basically
 		return

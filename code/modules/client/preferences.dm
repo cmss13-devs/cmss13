@@ -99,12 +99,11 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_flavor_text = ""
 	//CO-specific preferences
 	var/commander_sidearm = "Mateba"
+	var/affiliation = "Unaligned"
 	//SEA specific preferences
 
 	///holds our preferred job options for jobs
 	var/pref_special_job_options = list()
-
-	var/preferred_survivor_variant = ANY_SURVIVOR
 
 	//WL Council preferences.
 	var/yautja_status = WHITELIST_NORMAL
@@ -124,6 +123,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/underwear = "Boxers (Camo Conforming)" //underwear type
 	var/undershirt = "Undershirt (Tan)" //undershirt type
 	var/backbag = 2 //backpack type
+	var/preferred_armor = "Random" //preferred armor type (from their primary prep vendor)
 
 	var/h_style = "Crewcut" //Hair type
 	var/r_hair = 0 //Hair color
@@ -371,6 +371,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 			dat += "<b>Backpack Type:</b> <a href ='?_src_=prefs;preference=bag;task=input'><b>[backbaglist[backbag]]</b></a><br>"
 
+			dat += "<b>Preferred Armor:</b> <a href ='?_src_=prefs;preference=prefarmor;task=input'><b>[preferred_armor]</b></a><br>"
+
 			dat += "<b>Show Job Gear:</b> <a href ='?_src_=prefs;preference=toggle_job_gear'><b>[show_job_gear ? "True" : "False"]</b></a><br>"
 			dat += "<b>Background:</b> <a href ='?_src_=prefs;preference=cycle_bg'><b>Cycle Background</b></a><br>"
 
@@ -476,6 +478,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				dat += "<h2><b><u>Commander Settings:</u></b></h2>"
 				dat += "<b>Commander Whitelist Status:</b> <a href='?_src_=prefs;preference=commander_status;task=input'><b>[commander_status]</b></a><br>"
 				dat += "<b>Commander Sidearm:</b> <a href='?_src_=prefs;preference=co_sidearm;task=input'><b>[commander_sidearm]</b></a><br>"
+				dat += "<b>Commander Affiliation:</b> <a href='?_src_=prefs;preference=co_affiliation;task=input'><b>[affiliation]</b></a><br>"
 				dat += "</div>"
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
@@ -622,11 +625,6 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Spawn as Miscellaneous:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_MISC]'><b>[toggles_ert & PLAY_MISC ? "Yes" : "No"]</b></a><br>"
 			dat += "</div>"
 
-			dat += "<div id='column2'>"
-			dat += "<h2><b><u>Survivor Settings:</u></b></h2>"
-			dat += "<b>Preferred Survivor Variant:</b> <a href='?_src_=prefs;preference=preferred_survivor_variant;task=input'><b>[preferred_survivor_variant]</b></a>"
-			dat += "</div>"
-
 	dat += "</div></body>"
 
 	winshow(user, "preferencewindow", TRUE)
@@ -684,10 +682,12 @@ var/const/MAX_SAVE_SLOTS = 10
 		HTML += "<b>[job.disp_title]</b></td><td width='10%' align='center'>"
 
 		if(job.job_options)
-			if(!pref_special_job_options || !pref_special_job_options[role_name])
+			if(pref_special_job_options)
+				pref_special_job_options[role_name] = sanitize_inlist(pref_special_job_options[role_name], job.job_options, job.job_options[1])
+			else
 				pref_special_job_options[role_name] = job.job_options[1]
 
-			var/txt = pref_special_job_options[role_name]
+			var/txt = job.job_options[pref_special_job_options[role_name]]
 			HTML += "<a href='?_src_=prefs;preference=special_job_select;task=input;text=[job.title]'><b>[txt]</b></a>"
 
 		HTML += "</td><td width='50%'>"
@@ -1203,6 +1203,13 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					commander_sidearm = new_co_sidearm
 
+				if("co_affiliation")
+					var/new_co_affiliation = tgui_input_list(user, "Choose your faction affiliation.", "Commanding Officer's Affiliation", FACTION_ALLEGIANCE_USCM_COMMANDER)
+					if(!new_co_affiliation)
+						return
+					affiliation = new_co_affiliation
+
+
 				if("yautja_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)
 
@@ -1466,6 +1473,11 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(new_pref_squad)
 						preferred_squad = new_pref_squad
 
+				if("prefarmor")
+					var/new_pref_armor = tgui_input_list(user, "Choose your character's default style of armor:", "Character Preferences", GLOB.armor_style_list)
+					if(new_pref_armor)
+						preferred_armor = new_pref_armor
+
 				if("limbs")
 					var/limb_name = tgui_input_list(user, "Which limb do you want to change?", list("Left Leg","Right Leg","Left Arm","Right Arm","Left Foot","Right Foot","Left Hand","Right Hand"))
 					if(!limb_name) return
@@ -1554,12 +1566,6 @@ var/const/MAX_SAVE_SLOTS = 10
 							religion = strip_html(raw_choice) // This only updates itself in the UI when another change is made, eg. save slot or changing other char settings.
 						return
 					religion = choice
-
-				if("preferred_survivor_variant")
-					var/new_preferred_survivor_variant = tgui_input_list(user, "Choose your preferred survivor variant:", "Preferred Survivor Variant", SURVIVOR_VARIANT_LIST)
-					if(!new_preferred_survivor_variant)
-						return
-					preferred_survivor_variant = new_preferred_survivor_variant
 
 				if("special_job_select")
 					var/datum/job/job = RoleAuthority.roles_by_name[href_list["text"]]

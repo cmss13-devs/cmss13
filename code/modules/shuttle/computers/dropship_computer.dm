@@ -229,6 +229,8 @@
 	if(dropship_control_lost)
 		//keyboard
 		for(var/i = 0; i < 5; i++)
+			if(usr.action_busy)
+				return
 			playsound(loc, get_sfx("keyboard"), KEYBOARD_SOUND_VOLUME, 1)
 			if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				return
@@ -241,15 +243,19 @@
 		hijack(xeno)
 		return
 
-/obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack(mob/user)
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack(mob/user, force = FALSE)
 
 	// select crash location
+	var/turf/source_turf = get_turf(src)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
-	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", almayer_ship_sections)
+	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", almayer_ship_sections , timeout = 10 SECONDS)
 	if(!result)
+		return
+	if(!user.Adjacent(source_turf) && !force)
 		return
 	if(dropship.is_hijacked)
 		return
+
 	var/datum/dropship_hijack/almayer/hijack = new()
 	dropship.hijack = hijack
 	hijack.shuttle = dropship
@@ -264,9 +270,12 @@
 	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg')
 
 	var/mob/living/carbon/xenomorph/xeno = user
-	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, xeno.hivenumber)
-	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, xeno.hivenumber)
-	xeno.hive.abandon_on_hijack()
+	var/hivenumber = XENO_HIVE_NORMAL
+	if(istype(xeno))
+		hivenumber = xeno.hivenumber
+	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, hivenumber)
+	GLOB.hive_datum[hivenumber].abandon_on_hijack()
 
 	// Notify the yautja too so they stop the hunt
 	message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")

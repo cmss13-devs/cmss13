@@ -20,7 +20,7 @@
 	if(mind || client)
 		ghostize(FALSE)
 
-	GLOB.freed_mob_list |= src
+	GLOB.freed_mob_list |= WEAKREF(src)
 
 /client/proc/free_all_mobs_in_view()
 	set name = "Free All Mobs"

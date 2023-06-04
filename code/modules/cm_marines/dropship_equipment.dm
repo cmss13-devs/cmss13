@@ -630,7 +630,7 @@
 			ammo_travelling_time = max(ammo_travelling_time - 20, 10)
 			break
 
-	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[target_turf.x];Y=[target_turf.y];Z=[target_turf.z]'>JMP LOC</a>)")
+	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
 	if(ammo_travelling_time)
 		var/total_seconds = max(round(ammo_travelling_time/10),1)
 		for(var/i = 0 to total_seconds)
@@ -909,7 +909,6 @@
 
 
 
-
 //on arrival we break any link
 /obj/structure/dropship_equipment/medevac_system/on_arrival()
 	if(linked_stretcher)
@@ -922,7 +921,7 @@
 		return
 	if(!ship_base) //not installed
 		return
-	if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
+	if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
 		to_chat(user, SPAN_WARNING(" You don't know how to use [src]."))
 		return
 
@@ -938,7 +937,7 @@
 		return
 
 	if(!linked_stretcher)
-		to_chat(user, SPAN_WARNING("There seems to be no medevac stretcher connected to [src]."))
+		equipment_interact(user)
 		return
 
 	if(!is_ground_level(linked_stretcher.z))
@@ -952,7 +951,6 @@
 		return
 
 	activate_winch(user)
-
 
 /obj/structure/dropship_equipment/medevac_system/proc/activate_winch(mob/user)
 	set waitfor = 0
@@ -1001,7 +999,7 @@
 	flick("winched_stretcher", linked_stretcher)
 	linked_stretcher.visible_message(SPAN_NOTICE("A winch hook falls from the sky and starts lifting [linked_stretcher] up."))
 
-	medevac_cooldown = world.time + 600
+	medevac_cooldown = world.time + DROPSHIP_MEDEVAC_COOLDOWN
 	linked_stretcher.linked_medevac = null
 	linked_stretcher = null
 

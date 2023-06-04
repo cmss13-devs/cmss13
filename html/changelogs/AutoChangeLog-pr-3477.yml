@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Clients should hopefully avoid disconnection when observing someone that is deleted."

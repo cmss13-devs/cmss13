@@ -157,6 +157,7 @@
 #define PROPERTY_NEOGENETIC "neogenetic"
 #define PROPERTY_REPAIRING "repairing"
 #define PROPERTY_HEMOGENIC "hemogenic"
+#define PROPERTY_YAUTJA_HEMOGENIC "yautja-hemogenic"
 #define PROPERTY_HEMOSTATIC "hemostatic"
 #define PROPERTY_NERVESTIMULATING "nerve-stimulating"
 #define PROPERTY_MUSCLESTIMULATING "muscle-stimulating"

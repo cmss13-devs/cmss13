@@ -40,7 +40,10 @@ SUBSYSTEM_DEF(influxstats)
 
 	for(var/client/client in GLOB.clients)
 		var/mob/mob = client.mob
-		if(!mob)
+		if(!mob || mob.statistic_exempt)
+			continue
+		var/area/area = get_ara(mob)
+		if(!area || area.statistic_exempt)
 			continue
 		var/job = mob.job
 		var/team

@@ -612,6 +612,9 @@
 		to_chat(X, SPAN_XENOWARNING("It's too tight in here to build."))
 		return FALSE
 
+	if(!X.check_alien_construction(T))
+		return FALSE
+
 	var/choice = XENO_STRUCTURE_CORE
 	if(X.hive.hivecore_cooldown)
 		to_chat(X, SPAN_WARNING("The weeds are still recovering from the death of the hive core, wait until the weeds have recovered!"))

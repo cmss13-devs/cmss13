@@ -24,7 +24,7 @@
 			if(message_receiver)
 				to_chat(message_receiver, SPAN_WARNING("You cannot deploy tents on restricted areas."))
 			if(display_error)
-				new /obj/effect/overlay/temp/tent_deployment_error(turf)
+				new /obj/effect/overlay/temp/tent_deployment_area/error(turf)
 			return FALSE
 		if(istype(turf, /turf/open/shuttle))
 			if(message_receiver)
@@ -34,14 +34,14 @@
 			if(message_receiver)
 				to_chat(message_receiver, SPAN_WARNING("You cannot deploy the [src] here, something ([turf]) is in the way."))
 			if(display_error)
-				new /obj/effect/overlay/temp/tent_deployment_error(turf)
+				new /obj/effect/overlay/temp/tent_deployment_area/error(turf)
 			return FALSE
 		for(var/atom/movable/atom as anything in turf)
 			if(isliving(atom) || (atom.density && atom.can_block_movement) || istype(atom, /obj/structure/tent))
 				if(message_receiver)
 					to_chat(message_receiver, SPAN_WARNING("You cannot deploy the [src] here, something ([atom.name]) is in the way."))
 				if(display_error)
-					new /obj/effect/overlay/temp/tent_deployment_error(turf)
+					new /obj/effect/overlay/temp/tent_deployment_area/error(turf)
 				return FALSE
 	return TRUE
 
@@ -52,9 +52,8 @@
 
 /obj/item/folded_tent/proc/get_deployment_area(turf/ref_turf)
 	RETURN_TYPE(/list/turf)
-	var/turf/starting_turf = locate(ref_turf.x, ref_turf.y, ref_turf.z)
-	var/turf/block_end_turf = locate(starting_turf.x + dim_x - 1, starting_turf.y + dim_y - 1, starting_turf.z)
-	return block(starting_turf, block_end_turf)
+	var/turf/block_end_turf = locate(ref_turf.x + dim_x - 1, ref_turf.y + dim_y - 1, ref_turf.z)
+	return block(ref_turf, block_end_turf)
 
 /obj/item/folded_tent/attack_self(mob/living/user)
 	. = ..()
@@ -77,13 +76,14 @@
 
 	var/list/obj/effect/overlay/temp/tent_deployment_area/turf_overlay = list()
 	var/list/turf/deployment_area = get_deployment_area(deploy_turf)
-	for(var/turf/turf in deployment_area)
-		turf_overlay += new /obj/effect/overlay/temp/tent_deployment_area(turf)
 
 	if(!check_area(deploy_turf, user, TRUE))
-		for(var/gfx as anything in turf_overlay)
-			QDEL_IN(gfx, 1.5 SECONDS)
+		for(var/turf/turf in deployment_area)
+			new /obj/effect/overlay/temp/tent_deployment_area(turf) // plus error in check_area
 		return
+
+	for(var/turf/turf in deployment_area)
+		turf_overlay += new /obj/effect/overlay/temp/tent_deployment_area/casting(turf)
 
 	user.visible_message(SPAN_INFO("[user] starts deploying the [src]..."), \
 		SPAN_WARNING("You start assembling the [src]... Stand still, it might take a bit to figure it out..."))
@@ -150,5 +150,13 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "placement_zone"
 	color = "#f39e00"
-	effect_duration = 10 SECONDS
+	effect_duration = 1.5 SECONDS
 	layer = FLY_LAYER
+
+/obj/effect/overlay/temp/tent_deployment_area/casting
+	effect_duration = 10 SECONDS
+	color = "#228822"
+
+/obj/effect/overlay/temp/tent_deployment_area/error
+	layer = ABOVE_FLY_LAYER
+	color = "#bb0000"

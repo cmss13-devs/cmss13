@@ -1506,11 +1506,10 @@
 /area/bigredv2/outside/office_complex)
 "uC" = (
 /obj/effect/spawner/gibspawner/human,
-/obj/item/weapon/gun/rifle/m41a/corporate{
-	current_mag = /obj/item/ammo_magazine/rifle/rubber;
-	name = "battered M41A pulse rifle MK2";
-	pixel_x = 4;
-	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. It seems to be pretty battered and broken up."
+/obj/item/weapon/gun/rifle/m41a/corporate/no_lock{
+	name = "battered M41A pulse rifle Mk2";
+	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. The IFF electronics appear to be non-functional.";
+	pixel_x = 4
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3"
@@ -1570,11 +1569,10 @@
 	},
 /area/bigredv2/outside/office_complex)
 "GG" = (
-/obj/item/weapon/gun/rifle/m41a/corporate{
-	current_mag = /obj/item/ammo_magazine/rifle/rubber;
-	name = "battered M41A pulse rifle MK2";
-	pixel_x = 4;
-	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. It seems to be pretty battered and broken up."
+/obj/item/weapon/gun/rifle/m41a/corporate/no_lock{
+	name = "battered M41A pulse rifle Mk2";
+	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. The IFF electronics appear to be non-functional.";
+	pixel_x = 4
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3"

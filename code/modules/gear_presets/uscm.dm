@@ -43,7 +43,7 @@
 	if(!auto_squad.active)
 		auto_squad.engage_squad(FALSE)
 
-	new_human.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
+	new_human.marine_buyable_categories[MARINE_CAN_BUY_EAR] = 0
 	new_human.sec_hud_set_ID()
 	new_human.hud_set_squad()
 

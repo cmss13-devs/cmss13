@@ -405,7 +405,7 @@
 /datum/reagent/medical/antized
 	name = "Anti-Zed"
 	id = "antiZed"
-	description = "Anti-Zed is an experimental drug that destroys the zombie virus in living humans and prevents regeneration for those who have already turned."
+	description = "An experimental drug that destroys the zombie virus in living humans and prevents regeneration for those who have already turned."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)

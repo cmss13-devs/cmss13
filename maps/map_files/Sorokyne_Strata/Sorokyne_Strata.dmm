@@ -11358,6 +11358,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -23145,6 +23146,7 @@
 /area/strata/ag/interior/restricted)
 "byl" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -31604,6 +31606,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating,
 /area/strata/ag/interior/tcomms)
 "fKt" = (
@@ -40639,6 +40642,7 @@
 /area/strata/ag/exterior/research_decks)
 "uSR" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /obj/effect/landmark/queen_spawn,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/tearlake)

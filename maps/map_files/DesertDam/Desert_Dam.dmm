@@ -14608,6 +14608,7 @@
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aRV" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/desert/dirt{
 	icon_state = "desert_transition_corner1"
 	},
@@ -60937,6 +60938,7 @@
 "fHX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -61603,6 +61605,7 @@
 /area/desert_dam/interior/caves/temple)
 "hRU" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -61784,6 +61787,7 @@
 /area/desert_dam/interior/dam_interior/garage)
 "isZ" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -64506,6 +64510,7 @@
 /area/desert_dam/exterior/valley/valley_hydro)
 "smJ" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/prison{
 	dir = 10;
@@ -64730,6 +64735,7 @@
 "tai" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
 	},

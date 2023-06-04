@@ -29878,6 +29878,7 @@
 /area/bigredv2/caves/mining)
 "hYI" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -30297,6 +30298,7 @@
 /area/bigredv2/caves/eta/research)
 "iRG" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -33033,6 +33035,7 @@
 /area/bigredv2/caves_virology)
 "ozQ" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -36824,6 +36827,7 @@
 /area/bigredv2/caves/eta/research)
 "wfC" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /obj/effect/landmark/queen_spawn,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"

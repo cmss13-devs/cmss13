@@ -171,6 +171,7 @@
 
 	if(is_in_endgame)
 		check_hijack_explosions()
+		check_ground_humans()
 
 	if(next_research_allocation < world.time)
 		chemical_data.update_credits(chemical_data.research_allocation_amount)
@@ -247,6 +248,35 @@
 
 	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
+
+#define GROUNDSIDE_XENO_MULTIPLIER 1.0
+
+///Checks for humans groundside after hijack, spawns forsaken if requirements met
+/datum/game_mode/colonialmarines/proc/check_ground_humans()
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_HIJACK_GROUND_CHECK))
+		return
+
+	var/groundside_humans = 0
+	var/groundside_xenos = 0
+
+	for(var/mob/current_mob in GLOB.player_list)
+		if(!is_ground_level(current_mob.z) || !current_mob.client || current_mob.stat == DEAD)
+			continue
+
+		if(ishuman_strict(current_mob))
+			groundside_humans++
+			continue
+
+		if(isxeno(current_mob))
+			groundside_xenos++
+			continue
+
+	if(groundside_humans > (groundside_xenos * GROUNDSIDE_XENO_MULTIPLIER))
+		SSticker.mode.get_specific_call("Xenomorphs Groundside (Forsaken)", FALSE, FALSE)
+
+	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_GROUND_CHECK, 1 MINUTES)
+
+#undef GROUNDSIDE_XENO_MULTIPLIER
 
 /**
  * Makes the mainship shake, along with playing a klaxon sound effect.

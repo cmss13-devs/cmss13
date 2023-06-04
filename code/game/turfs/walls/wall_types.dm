@@ -412,6 +412,8 @@
 	walltype = WALL_CULT
 	color = "#3c3434"
 
+/turf/closed/wall/cult/make_girder(destroyed_girder)
+	return
 
 /turf/closed/wall/vault
 	icon_state = "rockvault"

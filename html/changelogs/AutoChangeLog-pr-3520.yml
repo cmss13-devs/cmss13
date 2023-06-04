@@ -1,0 +1,7 @@
+author: "SpartanBobby"
+delete-after: True
+changes:
+  - maptweak: "LZ1 Bigred and west medical warehouse now has a glass ceiling"
+  - maptweak: "More sidewalks and pathways on big red"
+  - maptweak: "various minor turf edits to big red"
+  - maptweak: "places warning stripes tile under all doors on big red"

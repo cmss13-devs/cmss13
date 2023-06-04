@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - admin: "Fixed the force dropship verb (now known as Force Hijack) requiring the admin to be adjacent to the console and runtiming."

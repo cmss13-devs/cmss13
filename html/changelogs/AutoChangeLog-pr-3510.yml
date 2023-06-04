@@ -1,0 +1,4 @@
+author: "Khadd"
+delete-after: True
+changes:
+  - bugfix: "largecrates now take damage and break if hit enough times by a projectile"

@@ -440,7 +440,8 @@
 		return
 
 	var/confirm = tgui_alert(usr, "Are you sure you want to hijack [dropship]?", "Force hijack", list("Yes", "No")) == "Yes"
-	if(!confirm) return
+	if(!confirm) 
+		return
 
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/computer = dropship.getControlConsole()
 	computer.hijack(usr, force=TRUE)

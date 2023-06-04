@@ -1,0 +1,4 @@
+author: "Khadd"
+delete-after: True
+changes:
+  - bugfix: "construction nodes cant be placed inside of walls and such anymore"

@@ -1403,7 +1403,7 @@ const Emergency = (props, context) => {
   } else if (mission_failed) {
     nuke_reason =
       'You have already lost the objective, you cannot use a nuclear device aboard the ship!';
-  } else if (evac_reason !== 0) {
+  } else if (evac_status !== 0) {
     nuke_reason = 'You cannot use a nuclear device while abandoning the ship!';
   } else if (!minimumNukeTime) {
     nuke_reason = 'It is too soon to use a nuclear device. Keep fighting!';

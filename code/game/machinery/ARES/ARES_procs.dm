@@ -493,6 +493,30 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 				if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 					playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
 			message_admins("[key_name(usr)] has requested a Distress Beacon (via ARES)! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
-			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
+			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM High Command."))
 			COOLDOWN_START(src, ares_distress_cooldown, COOLDOWN_COMM_REQUEST)
+			return TRUE
+
+		if("nuclearbomb")
+			if(!SSticker.mode)
+				return FALSE //Not a game mode?
+			if(world.time < NUCLEAR_TIME_LOCK)
+				to_chat(usr, SPAN_WARNING("It is too soon to request Nuclear Ordnance!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(world.time < ares_nuclear_cooldown)
+				to_chat(usr, SPAN_WARNING("The ordnance request frequency is garbled, wait for reset!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(security_level == SEC_LEVEL_DELTA)
+				to_chat(usr, SPAN_WARNING("The mission has failed catastrophically, what do you want a nuke for!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+
+			for(var/client/admin in GLOB.admins)
+				if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
+					playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
+			message_admins("[key_name(usr)] has requested use of Nuclear Ordnance (via ARES)! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukeapprove=\ref[usr]'>APPROVE</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukedeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
+			to_chat(usr, SPAN_NOTICE("A nuclear ordnance request has been sent to USCM High Command."))
+			COOLDOWN_START(src, ares_nuclear_cooldown, COOLDOWN_COMM_DESTRUCT)
 			return TRUE

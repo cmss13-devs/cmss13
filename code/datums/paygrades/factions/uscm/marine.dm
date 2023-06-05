@@ -1,7 +1,7 @@
 /datum/paygrade/marine
 	name = "Marine Paygrade"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine
-	pay_multiplier = 1
+	pay_multiplier = 1.6
 
 // ENLISTED PAYGRADES
 
@@ -11,7 +11,7 @@
 	prefix = "PVT"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e1
 	ranking = 0
-	pay_multiplier = 0.8
+	pay_multiplier = 1.6
 
 /datum/paygrade/marine/e2
 	paygrade = "ME2"
@@ -19,7 +19,7 @@
 	prefix = "PFC"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e2
 	ranking = 1
-	pay_multiplier = 1 // the default.
+	pay_multiplier = 1.6 // the default.
 
 /datum/paygrade/marine/e3
 	paygrade = "ME3"
@@ -27,7 +27,7 @@
 	prefix = "LCpl"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e3
 	ranking = 2
-	pay_multiplier = 1.4
+	pay_multiplier = 1.6
 
 /datum/paygrade/marine/e4
 	paygrade = "ME4"

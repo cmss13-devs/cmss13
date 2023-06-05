@@ -13604,7 +13604,6 @@
 "aPz" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/strata{
@@ -14271,10 +14270,10 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "aRz" = (
+/obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood/oil,
 /turf/open/asphalt/cement{
 	icon_state = "cement4"
 	},
@@ -27835,9 +27834,7 @@
 /turf/closed/wall/wood,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "ciy" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	dwidth = 1
-	},
+/obj/docking_port/stationary/marine_dropship/lz1,
 /turf/open/floor/plating,
 /area/strata/ag/interior/landingzone_1)
 "ciA" = (
@@ -29158,11 +29155,11 @@
 	},
 /area/strata/ag/interior/administration)
 "crW" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 4
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 1
 	},
 /turf/open/asphalt/cement{
-	icon_state = "cement1"
+	icon_state = "cement4"
 	},
 /area/strata/ag/interior/landingzone_1)
 "crY" = (
@@ -30083,6 +30080,14 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/dorms/hive)
+"cZH" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 8
+	},
+/turf/open/asphalt/cement{
+	icon_state = "cement3"
+	},
+/area/strata/ag/interior/landingzone_1)
 "daq" = (
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_carp)
@@ -30224,6 +30229,14 @@
 	icon_state = "floor3"
 	},
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
+"dnS" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 1
+	},
+/turf/open/asphalt/cement{
+	icon_state = "cement4"
+	},
+/area/strata/ag/interior/landingzone_1)
 "doO" = (
 /obj/structure/machinery/weather_siren{
 	dir = 1;
@@ -31411,6 +31424,14 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/dorms/flight_control)
+"fuA" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 1
+	},
+/turf/open/asphalt/cement{
+	icon_state = "cement4"
+	},
+/area/strata/ag/interior/landingzone_1)
 "fuX" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/auto_turf/strata_grass/layer0,
@@ -33519,9 +33540,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "iUK" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	dwidth = 1
-	},
+/obj/docking_port/stationary/marine_dropship/lz2,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/landingzone_2)
 "iUN" = (
@@ -38473,6 +38492,14 @@
 	icon_state = "white_cyan1"
 	},
 /area/strata/ag/interior/dorms/maintenance)
+"rhk" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 4
+	},
+/turf/open/asphalt/cement{
+	icon_state = "cement1"
+	},
+/area/strata/ag/interior/landingzone_1)
 "rhJ" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -43497,27 +43524,27 @@ cqE
 cnv
 crb
 apc
-crW
-crW
 arR
 atp
 auj
-crW
+rhk
 arR
 atp
 auj
-crW
-crW
-atp
-auj
-crW
-arR
-auj
-auj
-crW
+rhk
 arR
 atp
+auj
+rhk
 atp
+atp
+auj
+rhk
+arR
+atp
+auj
+rhk
+arR
 atp
 apc
 cmA
@@ -43714,7 +43741,7 @@ crE
 arS
 crE
 crE
-aRx
+crW
 cmA
 cnv
 cqE
@@ -43909,7 +43936,7 @@ crE
 crE
 ciy
 crE
-aRx
+fuA
 cmA
 cnv
 cqE
@@ -44104,7 +44131,7 @@ crE
 crE
 crE
 crE
-aRx
+dnS
 cmA
 cnv
 cqE
@@ -44494,7 +44521,7 @@ crE
 crE
 crE
 crE
-aRx
+crW
 cmA
 cnv
 cqE
@@ -44689,7 +44716,7 @@ crE
 crE
 crE
 crE
-aRx
+fuA
 aSH
 coX
 aVX
@@ -44884,7 +44911,7 @@ crE
 crE
 crE
 crE
-aRx
+dnS
 cmA
 cnv
 acY
@@ -45274,7 +45301,7 @@ crE
 crE
 crE
 crE
-aRx
+crW
 cmA
 cnv
 cot
@@ -45469,7 +45496,7 @@ crE
 crE
 crE
 crE
-aRx
+fuA
 cmA
 cnv
 aoj
@@ -45664,7 +45691,7 @@ crE
 arS
 crE
 crE
-aRx
+dnS
 cmA
 cnv
 aoj
@@ -45847,10 +45874,6 @@ arT
 ayh
 auk
 cwQ
-cwQ
-ayh
-auk
-cwQ
 arT
 ayh
 auk
@@ -45858,7 +45881,11 @@ cwQ
 arT
 ayh
 auk
+cwQ
+arT
+cZH
 auk
+cwQ
 apc
 cmA
 cnv

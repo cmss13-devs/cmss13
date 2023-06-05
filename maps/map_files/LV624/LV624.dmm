@@ -2332,12 +2332,6 @@
 	icon_state = "warnplate"
 	},
 /area/lv624/ground/river/east_river)
-"akG" = (
-/obj/structure/machinery/floodlight/landing,
-/turf/open/floor/mech_bay_recharge_floor{
-	name = "Shuttle Landing Lights"
-	},
-/area/lv624/lazarus/landing_zones/lz1)
 "akJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6895,10 +6889,6 @@
 	icon_state = "warning"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
-"aDH" = (
-/obj/effect/decal/warning_stripes,
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
 "aDI" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
 /turf/open/floor/plating,
@@ -8665,20 +8655,6 @@
 "aJS" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/floor,
-/area/lv624/lazarus/landing_zones/lz1)
-"aJT" = (
-/obj/effect/decal/warning_stripes,
-/obj/structure/machinery/landinglight/ds1{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"aJU" = (
-/obj/effect/decal/warning_stripes,
-/obj/structure/machinery/landinglight/ds1{
-	dir = 8
-	},
-/turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aJZ" = (
 /obj/structure/closet,
@@ -21949,9 +21925,10 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz1)
 "uVx" = (
-/turf/open/floor{
-	dir = 6;
-	icon_state = "warning"
+/obj/structure/machinery/floodlight/landing,
+/obj/effect/decal/warning_stripes,
+/turf/open/floor/mech_bay_recharge_floor{
+	name = "Shuttle Landing Lights"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "uVU" = (
@@ -56625,7 +56602,7 @@ acb
 avS
 acb
 asN
-akG
+uVx
 aDG
 aDG
 aDG
@@ -56637,7 +56614,7 @@ aHu
 aGz
 aGz
 aGz
-akG
+uVx
 aGz
 aGz
 aGz
@@ -56649,7 +56626,7 @@ aDG
 aDG
 aDG
 aDG
-aMq
+uVx
 aky
 aky
 aky
@@ -56854,18 +56831,18 @@ btb
 uZq
 aDG
 aHu
-aDH
-aEj
-aEj
-aFK
-aGe
+ank
 aGB
 aEj
 aFK
 aGe
 aGB
 aEj
-aJT
+aFK
+aGe
+aGB
+aEj
+aFK
 aGe
 aGB
 aEj
@@ -56875,8 +56852,8 @@ aGB
 aEj
 aFK
 aGe
-akG
-aDH
+aGB
+ank
 aMq
 aky
 aky
@@ -57082,7 +57059,7 @@ lke
 aGz
 aGz
 aGz
-aDI
+aDJ
 ank
 ank
 ano
@@ -57310,7 +57287,7 @@ aDM
 aDM
 aDM
 hSa
-aDJ
+aDK
 ank
 ank
 ank
@@ -57538,7 +57515,7 @@ btF
 btF
 btF
 aDi
-aDK
+aDL
 ank
 ank
 ank
@@ -57766,7 +57743,7 @@ aky
 dbY
 btF
 aDi
-aDL
+aDI
 ank
 ank
 ank
@@ -57994,7 +57971,7 @@ aky
 aky
 btF
 aDi
-aDI
+aDJ
 ank
 ank
 ank
@@ -58222,7 +58199,7 @@ nSR
 aky
 btF
 aDi
-aDJ
+aDK
 ank
 ank
 ank
@@ -58450,7 +58427,7 @@ qBX
 nSR
 btF
 aDi
-aDK
+aDL
 ank
 ank
 ank
@@ -58678,7 +58655,7 @@ qBX
 tKI
 btF
 aDi
-aDL
+aDI
 ank
 ank
 ank
@@ -58906,7 +58883,7 @@ qBX
 tKI
 btF
 aDi
-aDI
+aDJ
 ank
 ank
 ank
@@ -59134,7 +59111,7 @@ shq
 rKQ
 btF
 aDi
-aDJ
+aDK
 ank
 ank
 ank
@@ -59362,7 +59339,7 @@ aky
 jtg
 btF
 aDi
-aDK
+aDL
 ank
 ank
 ano
@@ -59590,10 +59567,6 @@ aky
 aky
 btF
 aDi
-aDH
-aEl
-aEl
-aFM
 ank
 aGE
 aEl
@@ -59601,7 +59574,11 @@ aFM
 aGf
 aGE
 aEl
-aJU
+aFM
+aGf
+aGE
+aEl
+aFM
 aGf
 aGE
 aEl
@@ -59611,8 +59588,8 @@ aGE
 aEl
 aFM
 aGf
-akG
-aDH
+aGE
+ank
 aMq
 btF
 aky
@@ -59817,7 +59794,7 @@ phU
 eHr
 aky
 btF
-akG
+uVx
 aDM
 aDM
 aDM
@@ -59829,7 +59806,7 @@ aDM
 aDM
 aDM
 aDM
-akG
+uVx
 aDM
 aDM
 aDM

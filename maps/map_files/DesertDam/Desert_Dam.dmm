@@ -934,7 +934,7 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "adb" = (
 /obj/structure/machinery/floodlight/landing,
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8
 	},
 /turf/open/floor{
@@ -42429,7 +42429,7 @@
 /area/desert_dam/interior/dam_interior/CE_office)
 "cDV" = (
 /obj/structure/machinery/floodlight/landing,
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4
 	},
 /turf/open/floor{
@@ -42768,9 +42768,7 @@
 	},
 /area/desert_dam/exterior/landing_pad_two)
 "cFa" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	dwidth = 1
-	},
+/obj/docking_port/stationary/marine_dropship/lz2,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_two)
 "cFb" = (
@@ -54066,9 +54064,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "dGU" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	dwidth = 1
-	},
+/obj/docking_port/stationary/marine_dropship/lz1,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_one)
 "dGV" = (
@@ -57679,8 +57675,7 @@
 "dUe" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/poddoor/shutters{
-	dir = 2;
-	icon_state = "shutter1"
+	dir = 2
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
@@ -57690,8 +57685,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/poddoor/shutters{
-	dir = 2;
-	icon_state = "shutter1"
+	dir = 2
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
@@ -70045,12 +70039,12 @@ csD
 cMC
 cEZ
 cGG
-cGG
+cFc
 cFI
 cFS
 cGG
 cFc
-cGG
+cFI
 cFS
 cGG
 cFc

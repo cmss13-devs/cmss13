@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(influxstats)
 		var/mob/mob = client.mob
 		if(!mob || mob.statistic_exempt)
 			continue
-		var/area/area = get_ara(mob)
+		var/area/area = get_area(mob)
 		if(!area || area.statistic_exempt)
 			continue
 		var/job = mob.job

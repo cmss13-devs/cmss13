@@ -104,8 +104,8 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 		handle_queued_action(atom)
 		return TRUE
 
-	var/alt_pressed = mods["alt"] // Currently unnecessary to convert to a bool
-	var/shift_pressed = mods["shift"] // Currently unnecessary to convert to a bool
+	var/alt_pressed = mods["alt"] == "1"
+	var/shift_pressed = mods["shift"] == "1"
 	var/middle_pressed = mods["middle"] == "1"
 
 	if(alt_pressed && shift_pressed)
@@ -117,14 +117,14 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 				return TRUE
 
 	var/middle_pref = client.prefs && (client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK) != 0 // client is already tested to be non-null by caller
-	if(selected_ability && (shift_pressed || middle_pressed) && middle_pressed == middle_pref)
+	if(selected_ability && shift_pressed == !middle_pref && middle_pressed == middle_pref)
 		if(istype(atom, /atom/movable/screen))
 			// Click through the UI: Currently this won't attempt to sprite click any mob there, just the turf
 			var/turf/turf = params2turf(mods["screen-loc"], get_turf(client.eye), client)
-			if (turf)
+			if(turf)
 				atom = turf
-		selected_ability.use_ability_wrapper(atom, mods)
-		return TRUE
+		if(selected_ability.use_ability_wrapper(atom, mods))
+			return TRUE
 
 	if(next_move >= world.time)
 		return TRUE

@@ -83,6 +83,7 @@
 		. = ..()
 		if(.)
 			activated_once = TRUE
+			button.icon_state = "template_active"
 			addtimer(CALLBACK(src, PROC_REF(timeout)), time_until_timeout)
 	else
 		damage_nearby_targets()
@@ -104,6 +105,7 @@
 		return
 
 	activated_once = FALSE
+	button.icon_state = X.selected_ability == src ? "template_on" : "template"
 
 	var/list/target_mobs = list()
 	var/list/L = orange(1, X)

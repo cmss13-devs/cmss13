@@ -146,8 +146,6 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 
 	data["alert_level"] = security_level
 	data["evac_status"] = EvacuationAuthority.evac_status
-	data["distresstime"] = ares_distress_cooldown
-	data["distresstimelock"] = DISTRESS_TIME_LOCK
 	data["worldtime"] = world.time
 
 	data["access_log"] = list()
@@ -157,6 +155,12 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 
 	data["deleted_conversation"] = list()
 	data["deleted_conversation"] += deleted_1to1
+
+	data["distresstime"] = ares_distress_cooldown
+	data["distresstimelock"] = DISTRESS_TIME_LOCK
+	data["mission_failed"] = SSticker.mode.is_in_endgame
+	data["nuketimelock"] = NUCLEAR_TIME_LOCK
+	data["nuke_available"] = nuke_available
 
 	var/list/logged_announcements = list()
 	for(var/datum/ares_record/announcement/broadcast as anything in records_announcement)
@@ -468,7 +472,14 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 		if("distress")
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
-
+			if(world.time < DISTRESS_TIME_LOCK)
+				to_chat(usr, SPAN_WARNING("You have been here for less than six minutes... what could you possibly have done!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(world.time < ares_distress_cooldown)
+				to_chat(usr, SPAN_WARNING("The distress launcher is cooling down!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
 			if(security_level == SEC_LEVEL_DELTA)
 				to_chat(usr, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)

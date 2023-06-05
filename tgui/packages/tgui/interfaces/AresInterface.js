@@ -1350,7 +1350,67 @@ const Security = (props, context) => {
 
 const Emergency = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu } = data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    alert_level,
+    worldtime,
+    distresstimelock,
+    distresstime,
+    evac_status,
+    mission_failed,
+    nuketimelock,
+    nuke_available,
+  } = data;
+  const minimumEvacTime = worldtime > distresstimelock;
+  const distressCooldown = worldtime < distresstime;
+  const canDistress = alert_level === 2 && !distressCooldown && minimumEvacTime;
+  let distress_reason;
+  if (alert_level === 3) {
+    distress_reason = 'Self-destruct in progress. Beacon disabled.';
+  } else if (alert_level !== 2) {
+    distress_reason = 'Ship is not under an active emergency.';
+  } else if (distressCooldown) {
+    distress_reason = 'Beacon is currently on cooldown.';
+  } else if (!minimumEvacTime) {
+    distress_reason = "It's too early to launch a distress beacon.";
+  } else {
+    distress_reason = 'Launch a Distress Beacon.';
+  }
+
+  const canEvac = (evac_status === 0, alert_level >= 2);
+  let evac_reason;
+  if (alert_level !== 2) {
+    evac_reason = 'Ship is not under an active emergency.';
+  } else if (evac_status === 1) {
+    evac_reason = 'Evacuation initiating.';
+  } else if (evac_status === 2) {
+    evac_reason = 'Evacuation in progress.';
+  } else if (evac_status === 3) {
+    evac_reason = 'Evacuation complete.';
+  } else {
+    evac_reason = 'Begin evacuation procedures. Authorise Lifeboats.';
+  }
+
+  const minimumNukeTime = worldtime > nuketimelock;
+  const canNuke =
+    (nuke_available, !mission_failed, evac_reason === 0, minimumNukeTime);
+  let nuke_reason;
+  if (!nuke_available) {
+    nuke_reason = 'No nuclear ordnance is available during this operation.';
+  } else if (mission_failed) {
+    nuke_reason =
+      'You have already lost the objective, you cannot use a nuclear device aboard the ship!';
+  } else if (evac_reason !== 0) {
+    nuke_reason = 'You cannot use a nuclear device while abandoning the ship!';
+  } else if (!minimumNukeTime) {
+    nuke_reason = 'It is too soon to use a nuclear device. Keep fighting!';
+  } else {
+    nuke_reason =
+      'Request a nuclear device to be authorized by USCM High Command.';
+  }
 
   return (
     <>
@@ -1393,7 +1453,7 @@ const Emergency = (props, context) => {
       <Flex align="center" justify="center" height="50%" direction="column">
         <Button.Confirm
           content="Initiate Evacuation"
-          tooltip="Begin evacuation procedures. Authorise Lifeboats."
+          tooltip={evac_reason}
           icon="shuttle-space"
           color="red"
           width="40vw"
@@ -1403,10 +1463,11 @@ const Emergency = (props, context) => {
           mt="5rem"
           bold
           onClick={() => act('evacuation_start')}
+          disabled={!canEvac}
         />
         <Button.Confirm
           content="Launch Distress Beacon"
-          tooltip="Launch a Distress Beacon."
+          tooltip={distress_reason}
           icon="circle-exclamation"
           color="red"
           width="40vw"
@@ -1416,10 +1477,11 @@ const Emergency = (props, context) => {
           mt="5rem"
           bold
           onClick={() => act('distress')}
+          disabled={!canDistress}
         />
         <Button.Confirm
           content="Request Nuclear Device"
-          tooltip="Request a nuclear device to be authorized by USCM High Command."
+          tooltip={nuke_reason}
           icon="circle-radiation"
           color="red"
           width="40vw"
@@ -1429,7 +1491,7 @@ const Emergency = (props, context) => {
           mt="5rem"
           bold
           onClick={() => act('nuclearbomb')}
-          disabled={access_text}
+          disabled={!canNuke}
         />
       </Flex>
     </>

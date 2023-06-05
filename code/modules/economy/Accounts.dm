@@ -18,7 +18,7 @@
 	var/time = ""
 	var/source_terminal = ""
 
-/proc/create_account(new_owner_name = "Default user", starting_funds = 666, datum/paygrade/id_paygrade)
+/proc/create_account(new_owner_name = "Default user", starting_funds = 0, datum/paygrade/id_paygrade)
 
 	//create a new account
 	var/datum/money_account/M = new()

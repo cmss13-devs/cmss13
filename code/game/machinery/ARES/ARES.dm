@@ -150,6 +150,8 @@
 	var/list/records_asrs = list()
 	/// Holds all (/datum/ares_record/security)s and (/datum/ares_record/antiair)s
 	var/list/records_security = list()
+	/// Is nuke request usable or not?
+	var/nuke_available = FALSE
 
 
 	COOLDOWN_DECLARE(ares_distress_cooldown)

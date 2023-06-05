@@ -99,9 +99,9 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 /atom/proc/attack_alien(mob/user as mob)
 	return
 
-/mob/living/carbon/xenomorph/click(atom/atom, list/mods)
+/mob/living/carbon/xenomorph/click(atom/target, list/mods)
 	if(queued_action)
-		handle_queued_action(atom)
+		handle_queued_action(target)
 		return TRUE
 
 	var/alt_pressed = mods["alt"] == "1"
@@ -109,8 +109,8 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 	var/middle_pressed = mods["middle"] == "1"
 
 	if(alt_pressed && shift_pressed)
-		if(istype(atom, /mob/living/carbon/xenomorph))
-			var/mob/living/carbon/xenomorph/xeno = atom
+		if(istype(target, /mob/living/carbon/xenomorph))
+			var/mob/living/carbon/xenomorph/xeno = target
 			if(!QDELETED(xeno) && xeno.stat != DEAD && !is_admin_level(xeno.z) && xeno.check_state(TRUE) && xeno.hivenumber == hivenumber)
 				overwatch(xeno)
 				next_move = world.time + 3 // Some minimal delay so this isn't crazy spammy
@@ -118,12 +118,12 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 
 	var/middle_pref = client.prefs && (client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK) != 0 // client is already tested to be non-null by caller
 	if(selected_ability && shift_pressed == !middle_pref && middle_pressed == middle_pref)
-		if(istype(atom, /atom/movable/screen))
+		if(istype(target, /atom/movable/screen))
 			// Click through the UI: Currently this won't attempt to sprite click any mob there, just the turf
 			var/turf/turf = params2turf(mods["screen-loc"], get_turf(client.eye), client)
 			if(turf)
-				atom = turf
-		if(selected_ability.use_ability_wrapper(atom, mods))
+				target = turf
+		if(selected_ability.use_ability_wrapper(target, mods))
 			return TRUE
 
 	if(next_move >= world.time)

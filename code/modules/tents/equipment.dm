@@ -80,7 +80,6 @@
 	layer = INTERIOR_DOOR_INSIDE_LAYER
 	dir = SOUTH
 	density = FALSE
-	mouse_opacity = FALSE
 	alpha = 180
 
 /obj/structure/tent_curtain/Initialize(mapload, ...)

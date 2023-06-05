@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed xenos being able to use abilities on their UI; They will target the turf under it."

@@ -30,3 +30,34 @@
   - rscdel: Removed the change stone
   fira:
   - bugfix: Fixed incorrect coordinates in Admin Niche log for signal flares.
+2023-06-05:
+  Drathek:
+  - admin: Fixed the force dropship verb (now known as Force Hijack) requiring the
+      admin to be adjacent to the console and runtiming.
+  - bugfix: Fixed xenos being able to use abilities on their UI; They will target
+      the turf under it.
+  - bugfix: Clients should hopefully avoid disconnection when observing someone that
+      is deleted.
+  Khadd:
+  - bugfix: largecrates now take damage and break if hit enough times by a projectile
+  - bugfix: construction nodes cant be placed inside of walls and such anymore
+  - bugfix: sandbags cant be fully built up with just one bag anymore
+  LynxSolstice:
+  - maptweak: Replaced the IFF locked M41As in the PMC nightmare that spawn on the
+      ground with the new no_lock variant.
+  Morrow:
+  - bugfix: Increases amount of survivor spawns on shivas to required level
+  - rscadd: Added automatic forsaken spawns groundside during hijack
+  NewyearnewmeUwu:
+  - balance: Headbite has a 10 second cooldown.
+  SpartanBobby:
+  - maptweak: LZ1 Bigred and west medical warehouse now has a glass ceiling
+  - maptweak: More sidewalks and pathways on big red
+  - maptweak: various minor turf edits to big red
+  - maptweak: places warning stripes tile under all doors on big red
+  - maptweak: adds glass ceilings to multiple fringe buildings on the outskirts of
+      LV624
+  fira:
+  - bugfix: Fixed going down ASRS elevator spamming computer messages.
+  - bugfix: To the joy of conspiracy theorists everywhere, USCM dropships can now
+      be caught on tape again.

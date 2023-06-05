@@ -71,3 +71,44 @@
 	AddComponent(/datum/component/tent_supported_object)
 	return ..()
 
+/// Closeable curtains
+/obj/structure/tent_curtain
+	icon = 'icons/obj/structures/tents_equipment.dmi'
+	icon_state = "curtains-o"
+	desc = "USCM Curtains for USCM Tents used by USCM Personnel. Close this with right-click to ensure USCM Contents are contained."
+	flags_atom = ON_BORDER
+	layer = INTERIOR_DOOR_INSIDE_LAYER
+	dir = SOUTH
+	density = FALSE
+	mouse_opacity = FALSE
+	alpha = 180
+
+/obj/structure/tent_curtain/Initialize(mapload, ...)
+	. = ..()
+	AddComponent(/datum/component/tent_supported_object)
+	update_icon()
+
+/obj/structure/tent_curtain/get_projectile_hit_boolean(obj/item/projectile/P)
+	return FALSE
+
+/obj/structure/tent_curtain/update_icon()
+	. = ..()
+	var/camo = SSmapping.configs[GROUND_MAP].camouflage_type
+	if(density)
+		icon_state = "curtains-[camo]"
+	else
+		icon_state = "curtains-[camo]-o"
+
+/obj/structure/tent_curtain/attack_hand(mob/user)
+	. = ..()
+	if(!.)
+		playsound(loc, "rustle", 10, TRUE, 4)
+		density = !density
+		update_icon()
+		return TRUE
+
+/obj/structure/tent_curtain/attack_alien(mob/living/carbon/xenomorph/M)
+	if(unslashable)
+		return
+	visible_message(SPAN_BOLDWARNING("[src] gets torn to shreds!"))
+	qdel(src)

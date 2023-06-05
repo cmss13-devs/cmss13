@@ -2,7 +2,7 @@
 /// A notable code feature is that they use a separate roof image that phases out when you enter the tent.
 /obj/structure/tent
 	name = "tent"
-	icon = 'icons/obj/structures/tents_deployed.dmi'
+	icon = 'icons/obj/structures/tents_deployed_classic.dmi'
 	opacity = FALSE // Seems only the initial turf blocks light, not all of the multitile. Therefore, useless.
 	layer = INTERIOR_WALL_SOUTH_LAYER // This should be below FLY_LAYER but just thank chairs and other bs
 	health = 200
@@ -28,9 +28,19 @@
 	register_turf_signals()
 	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(register_turf_signals))
 
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/structures/tents_deployed_jungle.dmi'
+		if("desert")
+			icon = 'icons/obj/structures/tents_deployed_desert.dmi'
+		if("snow")
+			icon = 'icons/obj/structures/tents_deployed_snow.dmi'
+		if("urban")
+			icon = 'icons/obj/structures/tents_deployed_urban.dmi'
+
 	if(roof_state)
 		roof_image = image(icon, src, roof_state)
-		roof_image.plane = TENT_ROOF_PLANE
+		roof_image.plane = ROOF_PLANE
 		roof_image.appearance_flags = KEEP_APART
 		src.overlays += roof_image
 
@@ -45,7 +55,7 @@
 		return
 	var/mob/subject_mob = subject
 	RegisterSignal(subject_mob, list(COMSIG_MOVABLE_TURF_ENTERED, COMSIG_GHOST_MOVED), PROC_REF(mob_moved), override = TRUE) // Must override because we can't know if mob was already inside tent without keeping an awful ref list
-	var/atom/movable/screen/plane_master/tent_roof/roof_plane = subject_mob.hud_used.plane_masters["[TENT_ROOF_PLANE]"]
+	var/atom/movable/screen/plane_master/roof/roof_plane = subject_mob.hud_used.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = INVISIBILITY_MAXIMUM
 	if(ishuman(subject))
 		RegisterSignal(subject, COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS, PROC_REF(cold_protection), override = TRUE)
@@ -61,7 +71,7 @@
 
 /obj/structure/tent/proc/mob_exited_tent(mob/subject)
 	UnregisterSignal(subject, list(COMSIG_MOVABLE_TURF_ENTERED, COMSIG_GHOST_MOVED, COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS))
-	var/atom/movable/screen/plane_master/tent_roof/roof_plane = subject.hud_used.plane_masters["[TENT_ROOF_PLANE]"]
+	var/atom/movable/screen/plane_master/roof/roof_plane = subject.hud_used.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = 0
 
 /obj/structure/tent/attack_alien(mob/living/carbon/xenomorph/M)
@@ -71,7 +81,6 @@
 	if(health <= 0)
 		visible_message(SPAN_BOLDWARNING("The [src] collapses!"))
 		qdel(src)
-
 
 /// Command tent, providing basics for field command: a phone, and an overwatch console
 /obj/structure/tent/cmd

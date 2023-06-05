@@ -37,12 +37,20 @@
 	},
 /turf/template_noop,
 /area/template_noop)
+"H" = (
+/obj/structure/blocker/tent{
+	dir = 4
+	},
+/obj/structure/tent_curtain,
+/turf/template_noop,
+/area/template_noop)
 "X" = (
 /obj/structure/blocker/tent{
 	dir = 8
 	},
 /obj/structure/tent/med,
 /obj/structure/machinery/iv_drip,
+/obj/structure/tent_curtain,
 /turf/template_noop,
 /area/template_noop)
 
@@ -56,5 +64,5 @@ X
 p
 o
 v
-v
+H
 "}

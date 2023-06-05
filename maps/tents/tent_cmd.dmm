@@ -36,6 +36,7 @@
 /obj/structure/blocker/tent{
 	dir = 4
 	},
+/obj/structure/tent_curtain,
 /turf/template_noop,
 /area/template_noop)
 "A" = (
@@ -54,6 +55,7 @@
 /obj/structure/blocker/tent{
 	dir = 8
 	},
+/obj/structure/tent_curtain,
 /turf/template_noop,
 /area/template_noop)
 

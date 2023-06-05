@@ -128,6 +128,7 @@
 //#define FLY_LAYER 5
 
 #define RIPPLE_LAYER 5.1
+#define INTERIOR_DOOR_INSIDE_LAYER 5.19
 #define INTERIOR_WALL_SOUTH_LAYER 5.2
 #define INTERIOR_DOOR_LAYER 5.21
 #define INTERIOR_WALLMOUNT_LAYER 5.3
@@ -176,10 +177,12 @@
 /// NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
 #define LOWEST_EVER_PLANE -200
 
+/// Floor plane, self explanatory. Used for Ambient Occlusion filter
 #define FLOOR_PLANE -7
+/// Game Plane, where most of the game objects reside
 #define GAME_PLANE -6
-#define TENT_ROOF_PLANE -5
-#define ABOVE_GAME_PLANE -4
+/// Roof plane, disappearing when entering buildings
+#define ROOF_PLANE -4
 
 /// To keep from conflicts with SEE_BLACKNESS internals
 #define BLACKNESS_PLANE 0

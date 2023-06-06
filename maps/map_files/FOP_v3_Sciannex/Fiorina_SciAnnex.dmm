@@ -21576,15 +21576,6 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/civres_blue)
-"njs" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 4
-	},
-/obj/structure/machinery/landinglight/ds2{
-	dir = 4
-	},
-/turf/open/floor/prison,
-/area/fiorina/lz/near_lzII)
 "njx" = (
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
@@ -71941,7 +71932,7 @@ fpM
 hTm
 eZN
 sIT
-njs
+uVo
 hTm
 eZN
 hxy

@@ -63564,10 +63564,6 @@
 	icon_state = "cement_sunbleached4"
 	},
 /area/desert_dam/interior/caves/central_caves)
-"pgJ" = (
-/obj/structure/machinery/floodlight/landing/floor,
-/turf/open/floor/plating/prison,
-/area/desert_dam/exterior/valley/valley_cargo)
 "pif" = (
 /obj/docking_port/stationary/trijent_elevator/engineering,
 /turf/open/gm/empty,
@@ -74476,7 +74472,7 @@ cfd
 doE
 cSR
 doE
-pgJ
+doE
 doE
 cxU
 dTs

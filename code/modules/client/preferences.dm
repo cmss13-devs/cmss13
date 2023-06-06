@@ -104,6 +104,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	///holds our preferred job options for jobs
 	var/pref_special_job_options = list()
+	///Holds assignment of character slots to jobs.
+	var/pref_job_slots = list()
 
 	//WL Council preferences.
 	var/yautja_status = WHITELIST_NORMAL
@@ -744,6 +746,87 @@ var/const/MAX_SAVE_SLOTS = 10
 	onclose(user, "mob_occupation", user.client, list("_src_" = "prefs", "preference" = "job", "task" = "close"))
 	return
 
+//limit - The amount of jobs allowed per column. Defaults to 13 to make it look nice.
+//splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
+//width - Screen' width. Defaults to 550 to make it look nice.
+//height - Screen's height. Defaults to 500 to make it look nice.
+/datum/preferences/proc/set_job_slots(mob/user, limit = 19, list/splitJobs = list(JOB_CHIEF_REQUISITION), width = 950, height = 700)
+	if(!RoleAuthority)
+		return
+
+	var/HTML = "<body>"
+	HTML += "<tt><center>"
+	HTML += "<b>Assign character slots to jobs.</b><br>Unavailable occupations are crossed out.<br><br>"
+	HTML += "<center><a href='?_src_=prefs;preference=job_slot;task=close'>Done</a></center><br>" // Easier to press up here.
+	HTML += "<table width='100%' cellpadding='1' cellspacing='0' style='color: black;'><tr><td valign='top' width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
+	HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
+	var/index = -1
+
+	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
+
+	var/list/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
+	if(!active_role_names)
+		active_role_names = ROLES_DISTRESS_SIGNAL
+
+	for(var/role_name as anything in active_role_names)
+		var/datum/job/job = RoleAuthority.roles_by_name[role_name]
+		if(!job)
+			debug_log("Missing job for prefs: [role_name]")
+			continue
+		index++
+		if((index >= limit) || (job.title in splitJobs))
+			HTML += "</table></td><td valign='top' width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
+			index = 0
+
+		HTML += "<tr class='[job.selection_class]'><td width='50%' align='right'>"
+		if(jobban_isbanned(user, job.title))
+			HTML += "<b><del>[job.disp_title]</del></b></td><td><b>BANNED</b></td></tr>"
+			continue
+		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !(RoleAuthority.roles_whitelist[user.ckey] & job.flags_whitelist))
+			HTML += "<b><del>[job.disp_title]</del></b></td></td><td>WHITELISTED</td></tr>"
+			continue
+		else if(!job.can_play_role(user.client))
+			var/list/missing_requirements = job.get_role_requirements(user.client)
+			HTML += "<b><del>[job.disp_title]</del></b></td></td><td>TIMELOCKED</td></tr>"
+			for(var/r in missing_requirements)
+				var/datum/timelock/T = r
+				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='center'></td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
+			continue
+		HTML += "<b>[job.disp_title]</b></td>"
+
+		HTML += "<td width='50%'>"
+		var/slot_name = get_job_slot_name(job.title)
+		HTML += "<a href='?_src_=prefs;preference=job_slot;task=input;target_job=[job.title];'>[slot_name]</a>"
+		HTML += "</td></tr>"
+
+	HTML += "</td></tr></table>"
+	HTML += "</center></table>"
+
+	var/b_color
+	var/msg
+	if(toggle_prefs & TOGGLE_START_JOIN_CURRENT_SLOT)
+		b_color = "red"
+		msg = "This preference is ignored when joining at the start of the round."
+	else
+		b_color = "green"
+		msg = "This preference is used when joining at the start of the round."
+	HTML += "<center><br><a class='[b_color]' href='?_src_=prefs;preference=job_slot;task=start_join'>[msg]</a></center><br>"
+	if(toggle_prefs & TOGGLE_LATE_JOIN_CURRENT_SLOT)
+		b_color = "red"
+		msg = "This preference is ignored when joining a round in progress."
+	else
+		b_color = "green"
+		msg = "This preference is used when joining a round in progress."
+	HTML += "<center><br><a class='[b_color]' href='?_src_=prefs;preference=job_slot;task=late_join'>[msg]</a></center><br>"
+
+	HTML += "<center><a href='?_src_=prefs;preference=job_slot;task=reset'>Reset</a></center>"
+	HTML += "</tt></body>"
+
+	close_browser(user, "preferences")
+	show_browser(user, HTML, "Job Assignment", "job_slots_assignment", "size=[width]x[height]")
+	onclose(user, "job_slots_assignment", user.client, list("_src_" = "prefs", "preference" = "job_slot", "task" = "close"))
+	return
+
 /datum/preferences/proc/SetRecords(mob/user)
 	var/HTML = "<body onselectstart='return false;'>"
 	HTML += "<tt><center>"
@@ -834,6 +917,40 @@ var/const/MAX_SAVE_SLOTS = 10
 	job_preference_list[J.title] = priority
 	return TRUE
 
+/datum/preferences/proc/assign_job_slot(mob/user, target_job)
+	var/list/slot_options = list("Current character" = JOB_SLOT_CURRENT)
+	var/savefile/S = new /savefile(path)
+	var/slot_name
+	for(var/slot in 1 to MAX_SAVE_SLOTS)
+		S.cd = "/character[slot]"
+		S["real_name"] >> slot_name
+		slot_options[slot_name] = slot
+	slot_options["Randomised character"] = JOB_SLOT_RANDOMISED
+	var/chosen_slot = tgui_input_list(user, "Assign character for [target_job] job", "Slot assignment", slot_options)
+	if(chosen_slot)
+		pref_job_slots[target_job] = slot_options[chosen_slot]
+	set_job_slots(user)
+
+/datum/preferences/proc/get_job_slot_name(job_title)
+	. = "Current character"
+	if(!(job_title in pref_job_slots))
+		return
+	var/slot_number = pref_job_slots[job_title]
+	switch(slot_number)
+		if(JOB_SLOT_RANDOMISED)
+			return "Randomised character"
+		if(1 to MAX_SAVE_SLOTS)
+			var/savefile/S = new /savefile(path)
+			S.cd = "/character[slot_number]"
+			return S["real_name"]
+
+/datum/preferences/proc/reset_job_slots()
+	pref_job_slots = list()
+	var/datum/job/J
+	for(var/role in RoleAuthority.roles_by_path)
+		J = RoleAuthority.roles_by_path[role]
+		pref_job_slots[J.title] = 0
+
 /datum/preferences/proc/process_link(mob/user, list/href_list)
 	var/whitelist_flags = RoleAuthority.roles_whitelist[user.ckey]
 
@@ -859,7 +976,26 @@ var/const/MAX_SAVE_SLOTS = 10
 					SetJob(user, href_list["text"], priority)
 				else
 					SetChoices(user)
-			return 1
+			return TRUE
+		if("job_slot")
+			switch(href_list["task"])
+				if("close")
+					close_browser(user, "job_slots_assignment")
+					ShowChoices(user)
+				if("reset")
+					reset_job_slots()
+					set_job_slots(user)
+				if("start_join")
+					toggle_prefs ^= TOGGLE_START_JOIN_CURRENT_SLOT
+					set_job_slots(user)
+				if("late_join")
+					toggle_prefs ^= TOGGLE_LATE_JOIN_CURRENT_SLOT
+					set_job_slots(user)
+				if("assign")
+					assign_job_slot(user, href_list["target_job"])
+				else
+					set_job_slots(user)
+			return TRUE
 		if("loadout")
 			switch(href_list["task"])
 				if("input")

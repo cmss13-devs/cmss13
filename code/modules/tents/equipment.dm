@@ -74,7 +74,7 @@
 /// Closeable curtains
 /obj/structure/tent_curtain
 	icon = 'icons/obj/structures/tents_equipment.dmi'
-	icon_state = "curtains-o"
+	icon_state = "curtains-classic-o"
 	desc = "USCM Curtains for USCM Tents used by USCM Personnel. Close this with right-click to ensure USCM Contents are contained."
 	flags_atom = ON_BORDER
 	layer = INTERIOR_DOOR_INSIDE_LAYER

@@ -69,6 +69,7 @@
 /obj/structure/machinery/ares/processor/interface
 	name = "ARES Processor (Interface)"
 	desc = "An external processor for ARES; this one handles core processes for interfacing with the crew, including radio transmissions and broadcasts."
+	icon_state = "int_processor"
 
 /obj/structure/machinery/ares/processor/interface/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
 	..()

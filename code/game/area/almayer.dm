@@ -82,12 +82,12 @@
 /area/almayer/command/securestorage
 	name = "\improper Secure Storage"
 	icon_state = "corporatespace"
-	fake_zlevel = 1 // upperdeck
+	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/command/computerlab
 	name = "\improper Computer Lab"
 	icon_state = "ceroom"
-	fake_zlevel = 1 // upperdeck
+	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/command/telecomms
 	name = "\improper Telecommunications"
@@ -179,6 +179,11 @@
 /area/almayer/shipboard/navigation
 	name = "\improper Astronavigational Deck"
 	icon_state = "astronavigation"
+	fake_zlevel = 2 // lowerdeck
+
+/area/almayer/shipboard/panic
+	name = "\improper Hangar Panic Room"
+	icon_state = "brig"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/shipboard/starboard_missiles

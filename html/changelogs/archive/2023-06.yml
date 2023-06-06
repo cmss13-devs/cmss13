@@ -61,3 +61,11 @@
   - bugfix: Fixed going down ASRS elevator spamming computer messages.
   - bugfix: To the joy of conspiracy theorists everywhere, USCM dropships can now
       be caught on tape again.
+2023-06-06:
+  Huffie56:
+  - qol: increase minimum paygrade for every marines
+  Segrain:
+  - rscadd: Expanded the list of custom loadout items.
+  - qol: Custom loadout is now sorted into sections.
+  realforest2001:
+  - rscadd: Adds a staff to IC chat tab setting for faxes and prayers.

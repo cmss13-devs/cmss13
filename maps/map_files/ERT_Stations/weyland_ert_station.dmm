@@ -288,6 +288,7 @@
 	pixel_x = -10;
 	pixel_y = 1
 	},
+/obj/structure/morgue,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "green"
@@ -1139,12 +1140,6 @@
 	icon_state = "cargo"
 	},
 /area/adminlevel/ert_station/weyland_station)
-"nz" = (
-/obj/structure/closet/coffin,
-/turf/open/floor/corsat{
-	icon_state = "greencorner"
-	},
-/area/adminlevel/ert_station/weyland_station)
 "nG" = (
 /obj/structure/machinery/autolathe/full,
 /obj/structure/machinery/light/double{
@@ -1676,7 +1671,7 @@
 	},
 /area/adminlevel/ert_station/weyland_station)
 "uv" = (
-/obj/structure/surface/rack,
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "yellow"
@@ -2709,6 +2704,7 @@
 	},
 /area/adminlevel/ert_station/weyland_station)
 "Im" = (
+/obj/structure/closet/coffin,
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "green"
@@ -2991,10 +2987,10 @@
 	},
 /area/adminlevel/ert_station/weyland_station)
 "Le" = (
-/obj/structure/morgue,
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/recharger,
 /turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "greencorner"
+	icon_state = "squares"
 	},
 /area/adminlevel/ert_station/weyland_station)
 "Ls" = (
@@ -4875,7 +4871,7 @@ FE
 vN
 ED
 xh
-Le
+qF
 dT
 dx
 Ux
@@ -4959,7 +4955,7 @@ bk
 vN
 zS
 al
-nz
+dE
 Im
 dx
 Ux
@@ -5209,7 +5205,7 @@ Dr
 ZU
 ek
 Dk
-yb
+Le
 WW
 WU
 Oo

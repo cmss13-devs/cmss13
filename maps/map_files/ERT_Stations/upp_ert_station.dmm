@@ -194,6 +194,7 @@
 /area/adminlevel/ert_station/upp_station)
 "bY" = (
 /obj/structure/surface/table/reinforced,
+/obj/structure/machinery/recharger,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "multi_tiles"

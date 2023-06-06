@@ -1241,6 +1241,7 @@
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/device/radio/headset/distress/CLF,
 /obj/item/device/radio/headset/distress/CLF/command,
+/obj/structure/machinery/recharger,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "CE" = (

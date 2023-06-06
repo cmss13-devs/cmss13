@@ -254,7 +254,7 @@
 	X.recalculate_speed()
 
 	addtimer(CALLBACK(src, PROC_REF(apprehend_off)), buff_duration, TIMER_UNIQUE)
-	X.add_filter("apprehend_on", 1, list("type" = "outline", "color" = "#522020ff", "size" = 1)) // Dark red because the berserker is scary in this state
+	X.add_filter("apprehend_on", 1, list("type" = "outline", "color" = "#f7d302", "size" = 1)) // Dark red because the berserker is scary in this state
 
 	apply_cooldown()
 

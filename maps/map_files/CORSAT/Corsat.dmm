@@ -14993,10 +14993,7 @@
 	},
 /area/corsat/gamma/hangar/checkpoint)
 "aPJ" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -20804,10 +20801,7 @@
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "bem" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "ben" = (
@@ -20832,10 +20826,7 @@
 	},
 /area/corsat/sigma/biodome/gunrange)
 "ber" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "bes" = (
@@ -20889,10 +20880,7 @@
 /turf/open/gm/river,
 /area/corsat/theta/biodome)
 "beB" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/corsat/theta/biodome)
 "beD" = (
@@ -37834,6 +37822,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -38360,6 +38349,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -38947,6 +38937,7 @@
 /area/corsat/gamma/airlock/south/id)
 "elG" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -40496,6 +40487,7 @@
 /area/corsat/gamma/hallwaysouth)
 "fst" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -42194,10 +42186,7 @@
 	},
 /area/corsat/gamma/airlock/control)
 "gFh" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -44880,6 +44869,7 @@
 "iuD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -46411,6 +46401,7 @@
 /area/corsat/omega/hallways)
 "jJm" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -50754,6 +50745,7 @@
 "mTz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
@@ -53174,10 +53166,7 @@
 	},
 /area/corsat/sigma/biodome/gunrange)
 "oLe" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
@@ -55724,6 +55713,7 @@
 /area/corsat/omega/airlocknorth)
 "qIr" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -57129,6 +57119,7 @@
 /area/corsat/omega/maint)
 "rMq" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "rMD" = (
@@ -59823,9 +59814,6 @@
 	icon_state = "whitetan"
 	},
 /area/corsat/gamma/residential/west)
-"tJe" = (
-/turf/open/ice,
-/area/corsat/gamma/biodome)
 "tJf" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/dirtgrassborder{
@@ -60736,10 +60724,7 @@
 	},
 /area/corsat/sigma/checkpoint)
 "usK" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
-	luminosity = 2
-	},
+/obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/dirtgrassborder{
 	dir = 1
 	},
@@ -61248,6 +61233,7 @@
 /area/corsat/sigma/dorms)
 "uLV" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -67462,8 +67448,8 @@ tJe
 tJe
 tJe
 sFF
-tJe
-tJe
+bfc
+bfc
 sFF
 tJe
 bgc

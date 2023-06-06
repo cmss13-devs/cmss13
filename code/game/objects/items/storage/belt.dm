@@ -145,6 +145,7 @@
 		/obj/item/tool/surgery/synthgraft,
 		/obj/item/reagent_container/glass/minitank,
 		/obj/item/storage/surgical_case,
+		/obj/item/reagent_container/blood,
 	)
 
 /obj/item/storage/belt/medical/full/fill_preset_inventory()

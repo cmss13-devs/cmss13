@@ -451,3 +451,7 @@
 
 /obj/proc/set_origin_name_prefix(name_prefix)
 	return
+
+/// override for subtypes that require extra behaviour when spawned from a vendor
+/obj/proc/post_vendor_spawn_hook(mob/living/carbon/human/user)
+	return

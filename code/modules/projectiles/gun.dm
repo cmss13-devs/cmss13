@@ -472,10 +472,6 @@
 
 /obj/item/weapon/gun/equipped(mob/user, slot)
 	if(flags_item & NODROP) return
-	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND)
-		stop_aim()
-		if (user.client)
-			user.update_gun_icons()
 
 	unwield(user)
 	pull_time = world.time + wield_delay
@@ -918,8 +914,6 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 			to_chat(user, SPAN_HIGHDANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
 			click_empty(user)
 		return FALSE
-	else if(user.gun_mode && !(A in target))
-		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
 	else
 		Fire(A,user,params) //Otherwise, fire normally.
 	return TRUE
@@ -1239,7 +1233,7 @@ and you're good to go.
 		if(!able_to_fire(user))
 			return TRUE
 
-		var/ffl = " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) ([user.client ? "<a href='?priv_msg=[user.client.ckey]'>PM</a>" : "NO CLIENT"])"
+		var/ffl = " [ADMIN_JMP(user)] [ADMIN_PM(user)]"
 
 		var/obj/item/weapon/gun/revolver/current_revolver = src
 		if(istype(current_revolver) && current_revolver.russian_roulette)
@@ -1402,6 +1396,7 @@ and you're good to go.
 							SPAN_AVOIDHARM("[BP] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 				else
 					BP.ammo.on_hit_mob(attacked_mob, BP, user)
+					BP.def_zone = user.zone_selected
 					attacked_mob.bullet_act(BP)
 				qdel(BP)
 

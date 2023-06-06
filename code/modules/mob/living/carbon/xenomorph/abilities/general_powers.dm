@@ -391,6 +391,9 @@
 	if(X.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
 		X.layer = MOB_LAYER
 		X.update_wounds()
+		var/datum/action/hide_ability = get_xeno_action_by_type(X, /datum/action/xeno_action/onclick/xenohide)
+		if(hide_ability)
+			hide_ability.button.icon_state = "template"
 
 	if(isravager(X))
 		X.emote("roar")
@@ -607,6 +610,9 @@
 
 	if(SSinterior.in_interior(X))
 		to_chat(X, SPAN_XENOWARNING("It's too tight in here to build."))
+		return FALSE
+
+	if(!X.check_alien_construction(T))
 		return FALSE
 
 	var/choice = XENO_STRUCTURE_CORE
@@ -888,6 +894,10 @@
 
 /datum/action/xeno_action/activable/tail_stab/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
+
+	if(stabbing_xeno.burrow || stabbing_xeno.is_ventcrawling)
+		to_chat(stabbing_xeno, SPAN_XENOWARNING("You must be above ground to do this."))
+		return
 
 	if(!stabbing_xeno.check_state())
 		return FALSE

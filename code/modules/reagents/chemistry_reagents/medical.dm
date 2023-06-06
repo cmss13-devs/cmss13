@@ -54,7 +54,7 @@
 	id = "oxycodone"
 	description = "Oxycodone is an opioid agonist with addiction potential similar to that of morphine. It is approved for the treatment of patients with moderate to severe pain who are expected to need continuous opioids for an extended period of time. Overdosing on oxycodone can cause hallucinations, brain damage and be highly toxic."
 	reagent_state = LIQUID
-	color = "#C805DC"
+	color = "#E01D25"
 	custom_metabolism = AMOUNT_PER_TIME(15, 5 MINUTES) // Lasts 5 minutes for 15 units
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
@@ -166,7 +166,7 @@
 	properties = list(
 		PROPERTY_CROSSMETABOLIZING = 1,
 		PROPERTY_ANTITOXIC = 1,
-		PROPERTY_HEMOGENIC = 9,
+		PROPERTY_YAUTJA_HEMOGENIC = 9,
 		PROPERTY_OXYGENATING = 6,
 		PROPERTY_ANTICARCINOGENIC = 6,
 		PROPERTY_BONEMENDING = 6,

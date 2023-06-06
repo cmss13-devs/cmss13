@@ -1,5 +1,0 @@
-author: "usnpeepoo"
-delete-after: True
-changes:
-  - bugfix: "Predators are now able to be automatically regurgitated"
-  - bugfix: "Impending regurgitation message works again"

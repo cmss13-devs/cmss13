@@ -109,7 +109,6 @@
 	target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
 	playsound(get_turf(target), 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
 	shake_camera(target, 2, 1)
-	apply_cooldown(0.65)
 
 /datum/action/xeno_action/activable/flurry/use_ability(atom/targeted_atom) //flurry ability
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -309,4 +308,5 @@
 	xeno.flick_heal_overlay(3 SECONDS, "#00B800")
 	xeno.emote("roar")
 	log_attack("[key_name(xeno)] was executed by [key_name(target_carbon)] with a headbite!")
+	apply_cooldown()
 	return TRUE

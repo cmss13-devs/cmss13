@@ -1293,11 +1293,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/minehead)
 "adN" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ug/interior/jungle/deep/minehead)
 "adO" = (
@@ -1748,11 +1744,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "aff" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/closed/wall/strata_ice/dirty,
 /area/strata/ag/exterior)
 "afg" = (
@@ -4232,30 +4224,18 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/restricted/devroom)
 "aml" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/platform/strata/metal{
 	dir = 4
 	},
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/interior/restricted/devroom)
 "amm" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/cabin_area)
 "amn" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/cabin_area)
 "amo" = (
@@ -4888,11 +4868,7 @@
 	},
 /area/strata/ag/interior/research_decks/security)
 "aoA" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/restricted/devroom)
 "aoB" = (
@@ -5073,11 +5049,7 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ape" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/cabin_area)
 "apf" = (
@@ -5490,11 +5462,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/research_decks/security)
 "aqq" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/interior/restricted/devroom)
 "aqr" = (
@@ -5637,11 +5605,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "aqN" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/largecrate/random,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/interior/restricted/devroom)
@@ -7469,11 +7433,7 @@
 	},
 /area/strata/ag/interior/outpost/security)
 "awb" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "awc" = (
@@ -7653,11 +7613,7 @@
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/south_res)
 "awA" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/north_outpost)
 "awB" = (
@@ -8298,11 +8254,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "ayv" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/north_outpost)
 "ayw" = (
@@ -11228,11 +11180,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
 "aHy" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/platform/strata/metal{
 	dir = 1
 	},
@@ -11254,11 +11202,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "aHC" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/platform/strata/metal{
 	dir = 1
 	},
@@ -11414,6 +11358,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -11922,11 +11867,7 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/paths/adminext)
 "aKf" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/platform_decoration/strata/metal{
 	dir = 8
 	},
@@ -12194,11 +12135,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/bar)
 "aKV" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "aKW" = (
@@ -12415,11 +12352,7 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "aLL" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "aLM" = (
@@ -12731,11 +12664,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/dorms)
 "aMG" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/platform/strata/metal{
 	dir = 1
 	},
@@ -12831,11 +12760,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aMU" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/platform/strata/metal{
 	dir = 1
 	},
@@ -12927,11 +12852,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/admin)
 "aNj" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aNl" = (
@@ -13177,11 +13098,7 @@
 	},
 /area/strata/ag/exterior/research_decks)
 "aNU" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/platform/strata/metal,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/dorms_quad)
@@ -13420,11 +13337,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "aOz" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/platform/strata/metal,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/dorms_quad)
@@ -13444,11 +13357,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aOE" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/platform/strata/metal,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/dorms_quad)
@@ -13556,11 +13465,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aOZ" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/platform/strata/metal{
 	dir = 4
 	},
@@ -13666,11 +13571,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aPs" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/barricade/snow{
 	dir = 4
 	},
@@ -13879,11 +13780,7 @@
 "aPT" = (
 /obj/effect/decal/cleanable/generic,
 /obj/structure/platform_decoration/strata/metal,
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/dorms_quad)
 "aPW" = (
@@ -14734,11 +14631,7 @@
 	},
 /area/strata/ag/interior/landingzone_1)
 "aSJ" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
@@ -14858,11 +14751,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "aTh" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/flora/grass/ice/brown,
 /turf/open/auto_turf/snow/brown_base/layer2,
@@ -15668,11 +15557,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/interior/administration)
 "aWa" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/platform/strata/metal{
 	dir = 8
 	},
@@ -15695,19 +15580,11 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/adminext)
 "aWf" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/river)
 "aWg" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/marsh/river)
 "aWi" = (
@@ -16185,11 +16062,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "aYe" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "aYh" = (
@@ -16394,19 +16267,11 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "aYY" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/north_lz_caves)
 "aYZ" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "aZb" = (
@@ -16449,11 +16314,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/adminext)
 "aZj" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/barricade/snow{
 	dir = 1
 	},
@@ -16883,11 +16744,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/foyer)
 "bav" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "baw" = (
@@ -17343,11 +17200,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/nearlz1)
 "bcg" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/barricade/snow{
 	dir = 1
 	},
@@ -17372,11 +17225,7 @@
 	},
 /area/strata/ag/interior/nearlz1)
 "bcm" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "bco" = (
@@ -17726,11 +17575,7 @@
 /area/strata/ag/exterior/paths/adminext)
 "bdB" = (
 /obj/structure/platform/strata,
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/river)
 "bdC" = (
@@ -17801,11 +17646,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/adminext)
 "bdQ" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/adminext)
 "bdS" = (
@@ -18101,11 +17942,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "beQ" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "beS" = (
@@ -18713,11 +18550,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/crash)
 "bgT" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/marsh)
 "bgV" = (
@@ -18751,11 +18584,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "bhb" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "bhd" = (
@@ -19048,11 +18877,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/foyer)
 "bia" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "bib" = (
@@ -19062,11 +18887,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/foyer)
 "bic" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/crash)
 "bif" = (
@@ -19246,11 +19067,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh)
 "biQ" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/platform/strata{
 	dir = 1
 	},
@@ -19515,11 +19332,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/marsh)
 "bjL" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh)
 "bjM" = (
@@ -19641,11 +19454,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
 "bkp" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/platform/strata,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/vanyard)
@@ -19847,11 +19656,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "bla" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/marsh/crash)
 "blb" = (
@@ -20400,11 +20205,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/southresearch)
 "bnu" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/southresearch)
 "bnv" = (
@@ -20432,11 +20233,7 @@
 /area/strata/ag/interior/administration)
 "bnA" = (
 /obj/item/reagent_container/food/drinks/cans/souto/classic,
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "bnB" = (
@@ -20460,11 +20257,7 @@
 /area/strata/ag/interior/outpost/canteen)
 "bnF" = (
 /obj/structure/bed/roller,
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "bnG" = (
@@ -20572,11 +20365,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "bnX" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "bnY" = (
@@ -20696,11 +20485,7 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "boq" = (
 /obj/item/stack/medical/splint,
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "bos" = (
@@ -21222,11 +21007,7 @@
 	},
 /area/strata/ag/interior/administration)
 "bpT" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "bpU" = (
@@ -21520,11 +21301,7 @@
 /obj/structure/platform_decoration/strata{
 	dir = 1
 	},
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/southresearch)
 "brn" = (
@@ -21931,11 +21708,7 @@
 /area/strata/ag/interior/outpost/admin)
 "bsM" = (
 /obj/structure/platform/strata/metal,
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "bsN" = (
@@ -22112,11 +21885,7 @@
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/marsh/center)
 "btu" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "btv" = (
@@ -22310,11 +22079,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/crash)
 "buf" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/marsh/center)
 "bug" = (
@@ -22432,11 +22197,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh)
 "buF" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "buG" = (
@@ -22722,11 +22483,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "bvM" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/nearlz2)
 "bvN" = (
@@ -23061,11 +22818,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh)
 "bxd" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh)
@@ -23116,11 +22869,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/minehead)
 "bxo" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "bxr" = (
@@ -23397,6 +23146,7 @@
 /area/strata/ag/interior/restricted)
 "byl" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -23406,11 +23156,7 @@
 /obj/structure/barricade/snow{
 	dir = 4
 	},
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/interior/restricted)
 "byn" = (
@@ -23426,11 +23172,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "byr" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/nearlz2)
 "bys" = (
@@ -30107,11 +29849,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "cDL" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh)
 "cEu" = (
@@ -30175,11 +29913,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "cJf" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh/center)
 "cKc" = (
@@ -31872,6 +31606,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating,
 /area/strata/ag/interior/tcomms)
 "fKt" = (
@@ -33217,11 +32952,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "ibh" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/ice/layer2,
 /area/strata/ag/exterior/nearlz2)
 "ibE" = (
@@ -40911,6 +40642,7 @@
 /area/strata/ag/exterior/research_decks)
 "uSR" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /obj/effect/landmark/queen_spawn,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/tearlake)

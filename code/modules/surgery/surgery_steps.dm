@@ -73,7 +73,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
 		return FALSE
 	else
-		if(!T.supports_surgery)
+		if(!istype(T) || !T.supports_surgery)
 			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG))
 				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
 			return FALSE
@@ -81,7 +81,12 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 	if(!extra_checks(user, target, target_zone, tool, surgery, repeating, skipped))
 		return FALSE // you must put the failure to_chat inside the checks
 
-	surgery.step_in_progress = TRUE
+	var/obj/limb/surgery_limb = target.get_limb(target_zone)
+	if(surgery_limb)
+		var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
+		if(blocker)
+			to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
+			return
 
 	var/step_duration = time
 	var/self_surgery

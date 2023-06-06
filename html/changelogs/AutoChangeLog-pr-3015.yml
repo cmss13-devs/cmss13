@@ -1,7 +1,0 @@
-author: "Tsunamico"
-delete-after: True
-changes:
-  - admin: "Added a weapons panel in a ship section of the admin tab, where you can shoot weapons at the Almayer."
-  - admin: "Added a General Quarters button to the ship section of the admin tab, where you can call General Quarters if the ship's in combat."
-  - admin: "changed where shipshake is, to be under the ship section."
-  - soundadd: "Added general sounds related to the receiving end of a ship vs ship encounter, with two different General Quarters call, one containing the traditionally used Bosun \"All Hands\" call(Which is the one used in the General Quarters verb). For tradition."

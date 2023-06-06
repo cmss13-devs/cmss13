@@ -71,6 +71,15 @@
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		unpack()
 
+/obj/structure/largecrate/proc/take_damage(damage)
+	health -= damage
+	if(health <= 0)
+		unpack()
+
+/obj/structure/largecrate/bullet_act(obj/item/projectile/P)
+	take_damage(P.calculate_damage(P.damage))
+	return TRUE
+
 /obj/structure/largecrate/mule
 	icon_state = "mulecrate"
 

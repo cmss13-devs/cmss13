@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - admin: "Fix permissions for MOD to receive staff, staff chat, and game logs in STUI."

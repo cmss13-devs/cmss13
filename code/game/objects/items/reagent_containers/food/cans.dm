@@ -224,13 +224,13 @@
 	. = ..()
 	reagents.add_reagent("lemon_lime", 30)
 
-/obj/item/reagent_container/food/drinks/cans/lemon_lime
+/obj/item/reagent_container/food/drinks/cans/iced_tea
 	name = "iced tea can"
 	desc = "Just like the squad redneck's grandmother used to buy."
 	icon_state = "ice_tea_can"
 	center_of_mass = "x=16;y=10"
 
-/obj/item/reagent_container/food/drinks/cans/lemon_lime/Initialize()
+/obj/item/reagent_container/food/drinks/cans/iced_tea/Initialize()
 	. = ..()
 	reagents.add_reagent("icetea", 30)
 

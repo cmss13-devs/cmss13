@@ -644,7 +644,7 @@
 		return FALSE
 	var/list/turfs = ripple_area(S1)
 	for(var/t in turfs)
-		ripples += new /obj/effect/abstract/ripple(t, animate_time)
+		ripples += new /obj/effect/abstract/ripple/shadow(t, animate_time)
 	return TRUE
 
 /obj/docking_port/mobile/proc/remove_ripples()
@@ -727,7 +727,7 @@
 
 /obj/docking_port/mobile/proc/check_effects()
 	if(!ripples.len)
-		if((mode == SHUTTLE_CALL) || (mode == SHUTTLE_RECALL))
+		if((mode == SHUTTLE_PREARRIVAL))
 			var/tl = timeLeft(1)
 			if(tl <= SHUTTLE_RIPPLE_TIME)
 				create_ripples(destination, tl)

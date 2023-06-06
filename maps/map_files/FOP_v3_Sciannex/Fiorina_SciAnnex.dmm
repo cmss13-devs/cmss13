@@ -25999,12 +25999,6 @@
 /obj/effect/spawner/random/pills/highchance,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
-"qeR" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 8
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/lz/near_lzII)
 "qeU" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -72773,7 +72767,7 @@ wSm
 wSm
 wSm
 wSm
-qeR
+wSm
 wSm
 wSm
 wSm
@@ -72985,7 +72979,7 @@ wSm
 wSm
 wSm
 wSm
-qeR
+wSm
 wSm
 wSm
 wSm

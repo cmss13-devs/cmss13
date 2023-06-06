@@ -5065,8 +5065,8 @@
 	},
 /area/strata/ag/interior/landingzone_1)
 "api" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/landinglight/ds1/delaythree,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
@@ -5078,7 +5078,7 @@
 	},
 /area/strata/ag/interior/landingzone_1)
 "apk" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/ds1/delaythree,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
@@ -5141,7 +5141,7 @@
 	},
 /area/strata/ag/interior/research_decks/security)
 "apv" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 4
 	},
 /turf/open/asphalt/cement{
@@ -6543,10 +6543,10 @@
 	},
 /area/strata/ag/interior/landingzone_1)
 "atq" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/blood/oil,
 /turf/open/asphalt/cement{
 	icon_state = "cement3"
 	},
@@ -8174,12 +8174,12 @@
 /area/strata/ag/interior/landingzone_1)
 "ayh" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 8
+	dir = 1
 	},
 /turf/open/asphalt/cement{
-	icon_state = "cement3"
+	icon_state = "cement4"
 	},
-/area/strata/ag/interior/landingzone_1)
+/area/strata/ag/exterior/landingzone_2)
 "ayj" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -14708,10 +14708,10 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/dorms/south)
 "aSX" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/landinglight/ds2{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood/oil,
 /turf/open/asphalt/cement{
 	icon_state = "cement4"
 	},
@@ -30889,7 +30889,7 @@
 	},
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "eBo" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight/ds2/delaytwo,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
@@ -32712,7 +32712,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "hue" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/ds2{
 	dir = 8
 	},
 /turf/open/asphalt/cement{
@@ -34083,9 +34083,11 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "jPQ" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/ds2{
+	dir = 4
+	},
 /turf/open/asphalt/cement{
-	icon_state = "cement12"
+	icon_state = "cement1"
 	},
 /area/strata/ag/exterior/landingzone_2)
 "jPV" = (
@@ -35122,7 +35124,7 @@
 /turf/open/gm/river,
 /area/strata/ag/interior/tcomms)
 "lEo" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/ds2,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
@@ -36470,7 +36472,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "nTf" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 4
 	},
 /turf/open/asphalt/cement{
@@ -36578,6 +36580,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/tcomms)
+"odB" = (
+/obj/structure/machinery/landinglight/ds2/delayone,
+/turf/open/asphalt/cement{
+	icon_state = "cement12"
+	},
+/area/strata/ag/exterior/landingzone_2)
 "odJ" = (
 /turf/closed/wall/strata_ice/dirty,
 /area/strata/ag/interior/outpost/engi/drome)
@@ -37776,11 +37784,11 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "qbk" = (
-/obj/structure/machinery/landinglight/ds1{
-	dir = 8
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 1
 	},
 /turf/open/asphalt/cement{
-	icon_state = "cement3"
+	icon_state = "cement4"
 	},
 /area/strata/ag/exterior/landingzone_2)
 "qbA" = (
@@ -37792,6 +37800,14 @@
 "qbR" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ug/interior/outpost/jung/dorms/sec2)
+"qbU" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 8
+	},
+/turf/open/asphalt/cement{
+	icon_state = "cement3"
+	},
+/area/strata/ag/exterior/landingzone_2)
 "qcB" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -39052,10 +39068,10 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "skJ" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/landinglight/ds2{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/oil,
 /turf/open/asphalt/cement{
 	icon_state = "cement1"
 	},
@@ -39273,11 +39289,11 @@
 /turf/open/gm/dirt,
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "sFB" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 4
+/obj/structure/machinery/landinglight/ds2{
+	dir = 1
 	},
 /turf/open/asphalt/cement{
-	icon_state = "cement1"
+	icon_state = "cement4"
 	},
 /area/strata/ag/exterior/landingzone_2)
 "sGJ" = (
@@ -41026,7 +41042,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "vsp" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement{
@@ -42310,8 +42326,8 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/west_engi)
 "xGE" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/landinglight/ds2/delaythree,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
@@ -42629,7 +42645,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
 "yee" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 1
 	},
 /turf/open/asphalt/cement{
@@ -45871,15 +45887,15 @@ atq
 auk
 cwQ
 arT
-ayh
+cZH
 auk
 cwQ
 arT
-ayh
+cZH
 auk
 cwQ
 arT
-ayh
+cZH
 auk
 cwQ
 arT
@@ -50635,27 +50651,27 @@ bvD
 eFa
 bJI
 iwp
-iwp
+jPQ
 apv
 nTf
-sFB
+iwp
 skJ
 apv
 nTf
-sFB
 iwp
-iwp
-nTf
-sFB
-iwp
-apv
-sFB
-sFB
-iwp
+jPQ
 apv
 nTf
+iwp
+jPQ
+apv
 nTf
+iwp
+jPQ
+apv
 nTf
+iwp
+jPQ
 bJI
 wvF
 bvE
@@ -51023,7 +51039,7 @@ rNI
 xTU
 bvD
 eFa
-jPQ
+sBg
 jWs
 jWs
 jWs
@@ -51046,7 +51062,7 @@ jWs
 jWs
 iUK
 jWs
-yee
+qbk
 wvF
 bvE
 bwt
@@ -51241,7 +51257,7 @@ jWs
 jWs
 jWs
 jWs
-yee
+ayh
 wvF
 bvE
 bwt
@@ -51413,7 +51429,7 @@ rNI
 xTU
 bvD
 eFa
-sBg
+odB
 vqx
 jWs
 jWs
@@ -51826,7 +51842,7 @@ jWs
 jWs
 jWs
 jWs
-yee
+qbk
 wvF
 bvD
 bvD
@@ -52021,7 +52037,7 @@ jWs
 jWs
 jWs
 jWs
-yee
+ayh
 wvF
 bvE
 bvE
@@ -52193,7 +52209,7 @@ bvD
 bvD
 bvE
 eFa
-sBg
+odB
 jWs
 jWs
 jWs
@@ -52216,7 +52232,7 @@ jWs
 jWs
 jWs
 jWs
-yee
+sFB
 oFG
 bvE
 byr
@@ -52583,7 +52599,7 @@ bvD
 bvE
 bvD
 eFa
-jPQ
+sBg
 jWs
 jWs
 jWs
@@ -52606,7 +52622,7 @@ jWs
 jWs
 jWs
 jWs
-yee
+qbk
 wvF
 bvD
 bvE
@@ -52801,7 +52817,7 @@ jWs
 ewk
 jWs
 jWs
-yee
+ayh
 wvF
 bvD
 bvE
@@ -52975,26 +52991,26 @@ xTU
 eFa
 bJI
 vsp
-vsp
-qbk
-hzb
 hue
-vsp
-qbk
 hzb
+qbU
+vsp
 hue
-vsp
-vsp
 hzb
-hue
+qbU
 vsp
-qbk
-hzb
 hue
+hzb
+qbU
 vsp
-qbk
-hzb
 hue
+hzb
+qbU
+vsp
+hue
+hzb
+qbU
+vsp
 hue
 bJI
 wvF

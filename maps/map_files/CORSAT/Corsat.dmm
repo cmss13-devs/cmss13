@@ -20864,7 +20864,9 @@
 /turf/open/gm/river,
 /area/corsat/theta/biodome)
 "beB" = (
-)
+/obj/structure/flora/jungle/alienplant1,
+/turf/open/gm/river,
+/area/corsat/theta/biodome)
 "beD" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/flora/jungle/vines,

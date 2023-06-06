@@ -1687,6 +1687,7 @@
 /area/shiva/interior/colony/medseceng)
 "ahy" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -3973,6 +3974,7 @@
 /area/shiva/exterior/cp_lz2)
 "axd" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/shiva{
 	icon_state = "wredfull"
 	},
@@ -7522,6 +7524,7 @@
 /area/shiva/interior/colony/research_hab)
 "byr" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "byG" = (
@@ -10442,6 +10445,7 @@
 /area/shiva/interior/warehouse)
 "faM" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/medseceng_caves)
 "faR" = (
@@ -13081,6 +13085,7 @@
 /area/shiva/exterior/cp_lz2)
 "hUG" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "multi_tiles"

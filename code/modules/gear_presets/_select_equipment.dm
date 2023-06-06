@@ -172,9 +172,8 @@
 	if(!new_human.client || !new_human.client.prefs || !new_human.client.prefs.gear)
 		return//We want to equip them with custom stuff second, after they are equipped with everything else.
 	var/datum/gear/G
-	var/i
-	for(i in new_human.client.prefs.gear)
-		G = gear_datums[i]
+	for(var/gear_name in new_human.client.prefs.gear)
+		G = gear_datums_by_name[gear_name]
 		if(G)
 			if(G.allowed_roles && !(assignment in G.allowed_roles))
 				to_chat(new_human, SPAN_WARNING("Custom gear [G.display_name] cannot be equipped: Invalid Role"))
@@ -182,7 +181,7 @@
 			if(G.allowed_origins && !(new_human.origin in G.allowed_origins))
 				to_chat(new_human, SPAN_WARNING("Custom gear [G.display_name] cannot be equipped: Invalid Origin"))
 				return
-			if(!new_human.equip_to_slot_or_del(new G.path, G.slot))
+			if(!(G.slot && new_human.equip_to_slot_or_del(new G.path, G.slot)))
 				new_human.equip_to_slot_or_del(new G.path, WEAR_IN_BACK)
 
 	//Gives ranks to the ranked
@@ -815,7 +814,7 @@ var/list/rebel_rifles = list(
 
 
 /datum/equipment_preset/proc/add_pmc_survivor_weapon(mob/living/carbon/human/new_human) // Random Weapons a WY PMC may have during a deployment on a colony. They are not equiped with the elite weapons than their space station counterparts but they do bear some of the better weapons the outer rim has to offer.
-	var/random_weapon = rand(0,5)
+	var/random_weapon = rand(0,6)
 	switch(random_weapon)
 		if(0)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5(new_human), WEAR_L_HAND)
@@ -835,6 +834,9 @@ var/list/rebel_rifles = list(
 		if(5)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/merc(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/shotgun_ammo, WEAR_WAIST)
+		if(6)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/corporate/no_lock(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41a(new_human), WEAR_WAIST)
 
 /**
  * Randomizes the primary weapon a survivor might find at the start of the outbreak in a gun cabinet.

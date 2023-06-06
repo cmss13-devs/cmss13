@@ -2102,6 +2102,7 @@
 /area/kutjevo/interior/foremans_office)
 "cSJ" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "cTj" = (
@@ -14201,6 +14202,7 @@
 /area/kutjevo/exterior/lz_dunes)
 "tzQ" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "tAQ" = (
@@ -16708,6 +16710,7 @@
 /area/kutjevo/interior/construction)
 "wTr" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_N_East)
 "wTt" = (
@@ -17570,6 +17573,7 @@
 /area/kutjevo/interior/colony_South/power2)
 "ykY" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "ylf" = (

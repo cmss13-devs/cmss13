@@ -1,4 +1,0 @@
-author: "Khadd"
-delete-after: True
-changes:
-  - bugfix: "sandbags cant be fully built up with just one bag anymore"

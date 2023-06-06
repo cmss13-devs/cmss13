@@ -42247,6 +42247,7 @@
 	dir = 10
 	},
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cwm" = (
@@ -43520,6 +43521,7 @@
 /area/prison/storage/vip)
 "dqf" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "duu" = (
@@ -44094,6 +44096,7 @@
 /area/prison/cellblock/mediumsec/east)
 "fGf" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white"
@@ -48821,6 +48824,7 @@
 	icon_state = "wood_siding2"
 	},
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor{
 	icon_state = "asteroid"
 	},

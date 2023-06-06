@@ -8584,6 +8584,7 @@
 /area/lv522/atmos/west_reactor)
 "epb" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -31484,6 +31485,7 @@
 /area/lv522/indoors/a_block/dorm_north)
 "nTl" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},

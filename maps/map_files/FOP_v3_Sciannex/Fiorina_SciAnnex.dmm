@@ -26003,12 +26003,7 @@
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8
 	},
-/obj/structure/machinery/landinglight/ds2{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
 "qeU" = (
 /obj/structure/window/reinforced{
@@ -72778,7 +72773,7 @@ wSm
 wSm
 wSm
 wSm
-wSm
+qeR
 wSm
 wSm
 wSm
@@ -72990,7 +72985,7 @@ wSm
 wSm
 wSm
 wSm
-wSm
+qeR
 wSm
 wSm
 wSm
@@ -74460,11 +74455,11 @@ hxy
 hxy
 tZs
 hLK
-qeR
+yfC
 fHV
 tZs
 lLv
-qeR
+yfC
 fHV
 tZs
 hLK

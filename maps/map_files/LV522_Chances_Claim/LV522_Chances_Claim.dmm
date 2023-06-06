@@ -33500,10 +33500,6 @@
 	icon_state = "darkredfull2"
 	},
 /area/lv522/indoors/a_block/bridges/op_centre)
-"oZq" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
-/turf/open/floor/plating,
-/area/lv522/landing_zone_1)
 "oZC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -61241,7 +61237,7 @@ lBl
 ttT
 pkH
 eyy
-oZq
+nFj
 nFj
 nFj
 sYH

@@ -1,5 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - rscadd: "Expanded the list of custom loadout items."
-  - qol: "Custom loadout is now sorted into sections."

@@ -1,0 +1,4 @@
+author: "Khadd"
+delete-after: True
+changes:
+  - qol: "transfer direction & rate are now listed in the description of reagent tanks"

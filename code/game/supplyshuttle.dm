@@ -538,9 +538,9 @@ var/datum/controller/supply/supply_controller = new()
 			black_market_points += points_to_add
 
 		// Don't disintegrate humans! Maul their corpse instead. >:)
-		screams = TRUE
 		if(ishuman(movable_atom))
 			var/timer = 0.5 SECONDS
+			screams = TRUE
 			for(var/index in 1 to 10)
 				timer += 0.5 SECONDS
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(maul_human), movable_atom), timer)

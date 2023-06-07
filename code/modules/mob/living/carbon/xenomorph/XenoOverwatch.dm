@@ -71,10 +71,10 @@
 
 		SEND_SIGNAL(src, COMSIG_XENO_STOP_OVERWATCH, oldXeno)
 		UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
-		UnregisterSignal(oldXeno, COMSIG_PARENT_QDELETING)
 
 		if(oldXeno)
 			to_chat(src, SPAN_XENOWARNING("You stop watching [oldXeno]."))
+			UnregisterSignal(oldXeno, COMSIG_PARENT_QDELETING)
 			if(!QDELETED(oldXeno))
 				oldXeno.hud_set_queen_overwatch()
 	else

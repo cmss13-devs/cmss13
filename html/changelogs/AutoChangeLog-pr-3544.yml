@@ -1,0 +1,4 @@
+author: "wHO_TOOKthejam"
+delete-after: True
+changes:
+  - rscadd: "gives DCC and PO the same armor choices"

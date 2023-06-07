@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Fixed signallers hijacking radio headsets filters, bricking the frequency for radio usage. They now have their own radio filter."

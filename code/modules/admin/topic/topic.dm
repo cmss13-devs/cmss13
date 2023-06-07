@@ -1137,9 +1137,19 @@
 		if(!check_rights(R_MOD))
 			return
 
+		if(istext(href_list["X"]))
+			log_debug("adminplayerobservecoodjump: href_list X is a STRING")
+		else if(isnum(href_list["X"]))
+			log_debug("adminplayerobservecoodjump: href_list X is a NUM!!! For real?")
+		else
+			log_debug("adminplayerobservecoodjump: href_list X is UNKNOWN TYPE. What did you do?!")
+
+
 		var/x = text2num(href_list["X"])
 		var/y = text2num(href_list["Y"])
 		var/z = text2num(href_list["Z"])
+
+		log_debug("adminplayerobservecoodjump called - hrefs: X=[href_list["X"]], Y=[href_list["Y"]], Z=[href_list["Z"]] - coordinates: ([x],[y],[z])")
 
 		var/client/C = usr.client
 		if(!isobserver(usr))

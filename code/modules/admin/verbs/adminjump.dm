@@ -100,12 +100,18 @@
 
 		var/mob/A = src.mob
 		A.on_mob_jump()
-		A.forceMove(locate(tx,ty,tz))
+		var/turf/target_turf = locate(tx, ty, tz)
+		if(!target_turf)
+			log_debug("jumptocoord failed to locate target turf at ([tx],[ty],[tz]) - initiated by [key_name_admin(src)]")
+		else
+			log_debug("jumptocoord attempting jump to ([tx],[ty],[tz]) - initiated by [key_name_admin(src)]")
+		A.forceMove(target_turf)
 
 		var/turf/T = get_turf(A)
 		if(!T)
+			log_debug("jumptocoord landed in nullspace for [key_name_admin(src)]!")
 			return
-		message_admins(WRAP_STAFF_LOG(usr, "jumped to [get_area(usr)] ([T.x],[T.y],[T.z])."), T.x, T.y, T.z)
+		message_admins(WRAP_STAFF_LOG(usr, "jumped to [get_area(usr)] ([tx],[ty],[tz])."), tx, ty, tz)
 
 /client/proc/jumptooffsetcoord(tx as num, ty as num)
 	set name = "Jump to Offset Coordinate"

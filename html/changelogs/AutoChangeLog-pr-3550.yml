@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Adds an admin button for global blurb alerts. (Visual on game screen)"

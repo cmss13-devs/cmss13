@@ -857,7 +857,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	if(!proximity)
 		return
 	if(istype(target, /obj/structure/reagent_dispensers))
-		if(!istypestrict(target, /obj/structure/reagent_dispensers/fueltank))
+		if(!(istypestrict(target, /obj/structure/reagent_dispensers/fueltank)))
 			to_chat(user, SPAN_NOTICE("This must be filled with a fuel tank."))
 			return
 		if(reagents.total_volume < max_fuel)
@@ -911,6 +911,23 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 		return
 
+/obj/item/storage/backpack/marine/engineerpack/flamethrower/verb/remove_reagents()
+    set name = "Empty canister"
+    set category = "Object"
+
+    set src in usr
+
+    if(usr.get_active_hand() != src)
+        return
+
+    if(alert(usr, "Do you really want to empty out [src]?", "Empty canister", "Yes", "No") != "Yes")
+        return
+
+    reagents.clear_reagents()
+
+    playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
+    to_chat(usr, SPAN_NOTICE("You empty out [src]"))
+    update_icon()
 /obj/item/storage/backpack/marine/engineerpack/flamethrower/attackby(obj/item/W, mob/living/user)
 	if (istype(W, /obj/item/ammo_magazine/flamer_tank))
 		var/obj/item/ammo_magazine/flamer_tank/FTL = W

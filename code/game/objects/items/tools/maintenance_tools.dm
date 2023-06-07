@@ -655,7 +655,7 @@ Welding backpack
 	if(!proximity) // this replaces and improves the get_dist(src,target) <= 1 checks used previously
 		return
 	if(istype(target, /obj/structure/reagent_dispensers))
-		if(!istypestrict(target, /obj/structure/reagent_dispensers/fueltank))
+		if(!(istypestrict(target, /obj/structure/reagent_dispensers/fueltank)))
 			to_chat(user, SPAN_NOTICE("This must be filled with a fuel tank."))
 			return
 		if(reagents.total_volume < max_fuel)

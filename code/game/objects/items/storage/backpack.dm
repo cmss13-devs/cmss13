@@ -856,17 +856,16 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 /obj/item/storage/backpack/marine/engineerpack/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)
 		return
-	//excluding the dispenser that contain gaz or custom to only leave fuel tank.
-	if (istype(target, /obj/structure/reagent_dispensers/fueltank/custom) || istype(target, /obj/structure/reagent_dispensers/fueltank/gas))
-		to_chat(user, SPAN_NOTICE("This must be filled with a fuel tank."))
-		return
-	if (istype(target, /obj/structure/reagent_dispensers/fueltank))
+	if(istype(target, /obj/structure/reagent_dispensers))
+		if(!istypestrict(target, /obj/structure/reagent_dispensers/fueltank))
+			to_chat(user, SPAN_NOTICE("This must be filled with a fuel tank."))
+			return
 		if(reagents.total_volume < max_fuel)
 			target.reagents.trans_to(src, max_fuel)
 			to_chat(user, SPAN_NOTICE("You crack the cap off the top of the pack and fill it back up again from the tank."))
 			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 			return
-		if (reagents.total_volume == max_fuel)
+		if(reagents.total_volume == max_fuel)
 			to_chat(user, SPAN_NOTICE("The pack is already full!"))
 			return
 	..()

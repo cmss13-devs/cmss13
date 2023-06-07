@@ -256,7 +256,7 @@
 	else
 		return ..()
 
-/obj/item/tool/weldingtool/afterattack(obj/target as obj, mob/user as mob, proximity)
+/obj/item/tool/weldingtool/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)
 		return
 	if (istype(target, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,target) <= 1)
@@ -654,10 +654,10 @@ Welding backpack
 /obj/item/tool/weldpack/afterattack(obj/target as obj, mob/user as mob, proximity)
 	if(!proximity) // this replaces and improves the get_dist(src,target) <= 1 checks used previously
 		return
-	//excluding the dispenser that contain gaz or custom to only leave fuel tank.
-	if (istype(target, /obj/structure/reagent_dispensers/fueltank/custom) || istype(target, /obj/structure/reagent_dispensers/fueltank/gas))
-		return
-	if (istype(target, /obj/structure/reagent_dispensers/fueltank))
+	if(istype(target, /obj/structure/reagent_dispensers))
+		if(!istypestrict(target, /obj/structure/reagent_dispensers/fueltank))
+			to_chat(user, SPAN_NOTICE("This must be filled with a fuel tank."))
+			return
 		if(reagents.total_volume < max_fuel)
 			target.reagents.trans_to(src, max_fuel)
 			to_chat(user, SPAN_NOTICE("You crack the cap off the top of \the [src] and fill it back up again from the tank."))
@@ -666,7 +666,7 @@ Welding backpack
 		if (reagents.total_volume >= max_fuel)
 			to_chat(user, SPAN_NOTICE("[src] is already full!"))
 			return
-	return ..()
+	..()
 
 /obj/item/tool/weldpack/get_examine_text(mob/user)
 	. = ..()

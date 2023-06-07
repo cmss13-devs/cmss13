@@ -1,11 +1,6 @@
 #define BE_ALIEN_AFTER_DEATH (1<<0)
 #define BE_AGENT (1<<1)
 
-var/list/be_special_flags = list(
-	"Xenomorph after unrevivable death" = BE_ALIEN_AFTER_DEATH,
-	"Agent" = BE_AGENT,
-)
-
 #define TOGGLE_IGNORE_SELF (1<<0) // Determines whether you will not hurt yourself when clicking yourself
 #define TOGGLE_HELP_INTENT_SAFETY (1<<1) // Determines whether help intent will be completely harmless
 #define TOGGLE_MIDDLE_MOUSE_CLICK (1<<2) // This toggles whether selected ability for xeno uses middle mouse clicking or shift clicking

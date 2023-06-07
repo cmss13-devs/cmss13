@@ -103,9 +103,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	//SEA specific preferences
 
 	///holds our preferred job options for jobs
-	var/pref_special_job_options = list()
+	var/list/pref_special_job_options = list()
 	///Holds assignment of character slots to jobs.
-	var/pref_job_slots = list()
+	var/list/pref_job_slots = list()
 
 	//WL Council preferences.
 	var/yautja_status = WHITELIST_NORMAL

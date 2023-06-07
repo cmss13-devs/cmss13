@@ -332,6 +332,8 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<h2><b><u>Occupation Choices:</u></b></h2>"
 			dat += "<br>"
 			dat += "\t<a href='?_src_=prefs;preference=job;task=menu'><b>Set Role Preferences</b></a>"
+			dat += "<br>"
+			dat += "\t<a href='?_src_=prefs;preference=job_slot;task=menu'><b>Assign Character Slots to Roles</b></a>"
 			dat += "</div>"
 
 			dat += "<div id='column2'>"
@@ -470,10 +472,6 @@ var/const/MAX_SAVE_SLOTS = 10
 					dat += "<b>Be [role_name]:</b> <a href='?_src_=prefs;preference=be_special;num=[n]'><b>[be_special & (1<<n) ? "Yes" : "No"]</b></a><br>"
 
 				n++
-
-			dat += "<br>"
-			dat += "\t<a href='?_src_=prefs;preference=job;task=menu'><b>Set Role Preferences</b></a>"
-			dat += "</div>"
 		if(MENU_CO)
 			if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_COMMANDER)
 				dat += "<div id='column1'>"
@@ -796,11 +794,11 @@ var/const/MAX_SAVE_SLOTS = 10
 
 		HTML += "<td width='50%'>"
 		var/slot_name = get_job_slot_name(job.title)
-		HTML += "<a href='?_src_=prefs;preference=job_slot;task=input;target_job=[job.title];'>[slot_name]</a>"
+		HTML += "<a href='?_src_=prefs;preference=job_slot;task=assign;target_job=[job.title];'>[slot_name]</a>"
 		HTML += "</td></tr>"
 
 	HTML += "</td></tr></table>"
-	HTML += "</center></table>"
+	HTML += "</center></table><br>"
 
 	var/b_color
 	var/msg
@@ -810,14 +808,14 @@ var/const/MAX_SAVE_SLOTS = 10
 	else
 		b_color = "green"
 		msg = "This preference is used when joining at the start of the round."
-	HTML += "<center><br><a class='[b_color]' href='?_src_=prefs;preference=job_slot;task=start_join'>[msg]</a></center><br>"
+	HTML += "<center><a class='[b_color]' href='?_src_=prefs;preference=job_slot;task=start_join'>[msg]</a></center>"
 	if(toggle_prefs & TOGGLE_LATE_JOIN_CURRENT_SLOT)
 		b_color = "red"
 		msg = "This preference is ignored when joining a round in progress."
 	else
 		b_color = "green"
 		msg = "This preference is used when joining a round in progress."
-	HTML += "<center><br><a class='[b_color]' href='?_src_=prefs;preference=job_slot;task=late_join'>[msg]</a></center><br>"
+	HTML += "<center><a class='[b_color]' href='?_src_=prefs;preference=job_slot;task=late_join'>[msg]</a></center>"
 
 	HTML += "<center><a href='?_src_=prefs;preference=job_slot;task=reset'>Reset</a></center>"
 	HTML += "</tt></body>"
@@ -918,14 +916,14 @@ var/const/MAX_SAVE_SLOTS = 10
 	return TRUE
 
 /datum/preferences/proc/assign_job_slot(mob/user, target_job)
-	var/list/slot_options = list("Current character" = JOB_SLOT_CURRENT)
+	var/list/slot_options = list("Randomised character" = JOB_SLOT_RANDOMISED, "Current character" = JOB_SLOT_CURRENT)
 	var/savefile/S = new /savefile(path)
 	var/slot_name
 	for(var/slot in 1 to MAX_SAVE_SLOTS)
 		S.cd = "/character[slot]"
 		S["real_name"] >> slot_name
-		slot_options[slot_name] = slot
-	slot_options["Randomised character"] = JOB_SLOT_RANDOMISED
+		if(slot_name)
+			slot_options["[slot_name] (slot #[slot])"] = slot
 	var/chosen_slot = tgui_input_list(user, "Assign character for [target_job] job", "Slot assignment", slot_options)
 	if(chosen_slot)
 		pref_job_slots[target_job] = slot_options[chosen_slot]
@@ -942,14 +940,14 @@ var/const/MAX_SAVE_SLOTS = 10
 		if(1 to MAX_SAVE_SLOTS)
 			var/savefile/S = new /savefile(path)
 			S.cd = "/character[slot_number]"
-			return S["real_name"]
+			return "[S["real_name"]] (slot #[slot_number])"
 
 /datum/preferences/proc/reset_job_slots()
 	pref_job_slots = list()
 	var/datum/job/J
 	for(var/role in RoleAuthority.roles_by_path)
 		J = RoleAuthority.roles_by_path[role]
-		pref_job_slots[J.title] = 0
+		pref_job_slots[J.title] = JOB_SLOT_CURRENT
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)
 	var/whitelist_flags = RoleAuthority.roles_whitelist[user.ckey]
@@ -982,17 +980,17 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("close")
 					close_browser(user, "job_slots_assignment")
 					ShowChoices(user)
-				if("reset")
-					reset_job_slots()
-					set_job_slots(user)
+				if("assign")
+					assign_job_slot(user, href_list["target_job"])
 				if("start_join")
 					toggle_prefs ^= TOGGLE_START_JOIN_CURRENT_SLOT
 					set_job_slots(user)
 				if("late_join")
 					toggle_prefs ^= TOGGLE_LATE_JOIN_CURRENT_SLOT
 					set_job_slots(user)
-				if("assign")
-					assign_job_slot(user, href_list["target_job"])
+				if("reset")
+					reset_job_slots()
+					set_job_slots(user)
 				else
 					set_job_slots(user)
 			return TRUE
@@ -1936,10 +1934,25 @@ var/const/MAX_SAVE_SLOTS = 10
 	ShowChoices(user)
 	return 1
 
-// Transfers both physical characteristics and character information to character
-/datum/preferences/proc/copy_all_to(mob/living/carbon/human/character, safety = 0)
+
+/// Loads appropriate character slot for the given job as assigned in preferences.
+/datum/preferences/proc/find_assigned_slot(job_title, is_late_join = FALSE)
+	if(toggle_prefs & (is_late_join ? TOGGLE_LATE_JOIN_CURRENT_SLOT : TOGGLE_START_JOIN_CURRENT_SLOT))
+		return
+	var/slot_for_job = pref_job_slots[job_title]
+	switch(slot_for_job)
+		if(JOB_SLOT_RANDOMISED)
+			be_random_body = TRUE
+			be_random_name = TRUE
+		if(1 to MAX_SAVE_SLOTS)
+			load_character(slot_for_job)
+
+/// Transfers both physical characteristics and character information to character
+/datum/preferences/proc/copy_all_to(mob/living/carbon/human/character, job_title, is_late_join = FALSE)
 	if(!istype(character))
 		return
+
+	find_assigned_slot(job_title, is_late_join)
 
 	if(be_random_name)
 		real_name = random_name(gender)
@@ -1956,15 +1969,16 @@ var/const/MAX_SAVE_SLOTS = 10
 	character.voice = real_name
 	character.name = character.real_name
 
-	character.flavor_texts["general"] = flavor_texts["general"]
-	character.flavor_texts["head"] = flavor_texts["head"]
-	character.flavor_texts["face"] = flavor_texts["face"]
-	character.flavor_texts["eyes"] = flavor_texts["eyes"]
-	character.flavor_texts["torso"] = flavor_texts["torso"]
-	character.flavor_texts["arms"] = flavor_texts["arms"]
-	character.flavor_texts["hands"] = flavor_texts["hands"]
-	character.flavor_texts["legs"] = flavor_texts["legs"]
-	character.flavor_texts["feet"] = flavor_texts["feet"]
+	if(!be_random_body)
+		character.flavor_texts["general"] = flavor_texts["general"]
+		character.flavor_texts["head"] = flavor_texts["head"]
+		character.flavor_texts["face"] = flavor_texts["face"]
+		character.flavor_texts["eyes"] = flavor_texts["eyes"]
+		character.flavor_texts["torso"] = flavor_texts["torso"]
+		character.flavor_texts["arms"] = flavor_texts["arms"]
+		character.flavor_texts["hands"] = flavor_texts["hands"]
+		character.flavor_texts["legs"] = flavor_texts["legs"]
+		character.flavor_texts["feet"] = flavor_texts["feet"]
 
 	character.med_record = strip_html(med_record)
 	character.sec_record = strip_html(sec_record)
@@ -2117,47 +2131,6 @@ var/const/MAX_SAVE_SLOTS = 10
 		if(isliving(src)) //Ghosts get neuter by default
 			message_admins("[character] ([character.ckey]) has spawned with their gender as plural or neuter. Please notify coders.")
 			character.gender = MALE
-
-
-// Transfers the character's information (name, flavor text, records, roundstart clothes, etc.) to the mob
-/datum/preferences/proc/copy_information_to(mob/living/carbon/human/character, safety = 0)
-	if(!istype(character))
-		return
-
-	if(be_random_name)
-		real_name = random_name(gender)
-
-	if(CONFIG_GET(flag/humans_need_surnames))
-		var/firstspace = findtext(real_name, " ")
-		var/name_length = length(real_name)
-		if(!firstspace) //we need a surname
-			real_name += " [pick(last_names)]"
-		else if(firstspace == name_length)
-			real_name += "[pick(last_names)]"
-
-	character.real_name = real_name
-	character.voice = real_name
-	character.name = character.real_name
-
-	character.flavor_texts["general"] = flavor_texts["general"]
-	character.flavor_texts["head"] = flavor_texts["head"]
-	character.flavor_texts["face"] = flavor_texts["face"]
-	character.flavor_texts["eyes"] = flavor_texts["eyes"]
-	character.flavor_texts["torso"] = flavor_texts["torso"]
-	character.flavor_texts["arms"] = flavor_texts["arms"]
-	character.flavor_texts["hands"] = flavor_texts["hands"]
-	character.flavor_texts["legs"] = flavor_texts["legs"]
-	character.flavor_texts["feet"] = flavor_texts["feet"]
-
-	character.med_record = med_record
-	character.sec_record = sec_record
-	character.gen_record = gen_record
-	character.exploit_record = exploit_record
-
-	character.origin = origin
-	character.personal_faction = faction
-	character.religion = religion
-
 
 /datum/preferences/proc/open_load_dialog(mob/user)
 	var/dat = "<body onselectstart='return false;'>"

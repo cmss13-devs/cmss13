@@ -185,7 +185,7 @@
 	layer = 5
 	/// Link alerts to ARES Link
 	var/datum/ares_link/link
-	var/link_id
+	var/link_id = MAIN_SHIP_DEFAULT_NAME
 	/// Alert message to report unless area based.
 	var/alert_message = "ALERT: Unauthorized movement detected in ARES Core!"
 	/// Connect alerts to use same cooldowns

@@ -77,7 +77,7 @@
 	fake_zlevel = 1 // upperdeck
 	soundscape_playlist = SCAPE_PL_ARES
 	soundscape_interval = 120
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
 	can_build_special = FALSE
 	is_resin_allowed = FALSE
 	resin_construction_allowed = FALSE

@@ -2120,6 +2120,9 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/platform_decoration{
+	dir = 1
+	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "silver";
 	dir = 8
@@ -7075,11 +7078,8 @@
 	},
 /area/almayer/command/airoom)
 "avL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
-	name = "\improper Combat Information Center"
-	},
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/command/cic)
+/turf/closed/wall/almayer/white/hull,
+/area/space)
 "avM" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/command/airoom)
@@ -11331,6 +11331,14 @@
 /obj/structure/machinery/computer/station_alert{
 	dir = 8;
 	pixel_x = 18
+	},
+/obj/structure/sign/safety/terminal{
+	pixel_y = 24;
+	pixel_x = 14
+	},
+/obj/structure/sign/safety/fibre_optics{
+	pixel_x = 14;
+	pixel_y = 38
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -27095,6 +27103,23 @@
 	icon_state = "blue"
 	},
 /area/almayer/squads/delta)
+"ckY" = (
+/obj/effect/projector{
+	name = "Almayer_AresDown";
+	vector_x = 97;
+	vector_y = -65
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
+	},
+/turf/open/floor/almayer/no_build{
+	icon_state = "ai_floors"
+	},
+/area/almayer/command/airoom)
 "cla" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -28740,14 +28765,18 @@
 	},
 /area/almayer/squads/bravo)
 "cHn" = (
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresUp";
 	vector_x = -97;
 	vector_y = 65
+	},
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1
+	},
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 4
@@ -31106,6 +31135,20 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/processing)
+"dGK" = (
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_AresUp";
+	vector_x = -97;
+	vector_y = 65
+	},
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
+	},
+/turf/open/floor/almayer/no_build{
+	dir = 4
+	},
+/area/almayer/command/airoom)
 "dGW" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 2;
@@ -31596,14 +31639,13 @@
 	},
 /area/almayer/medical/medical_science)
 "dVJ" = (
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresDown";
 	vector_x = 97;
 	vector_y = -65
+	},
+/obj/structure/stairs{
+	dir = 1
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -31863,7 +31905,10 @@
 	pixel_y = 30
 	},
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	unacidable = 1;
+	unslashable = 1;
+	invisibility = 101
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -33081,6 +33126,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/platform_decoration,
 /turf/open/floor/almayer/no_build{
 	icon_state = "silver";
 	dir = 4
@@ -34017,7 +34063,10 @@
 	pixel_y = 30
 	},
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	unacidable = 1;
+	unslashable = 1;
+	invisibility = 101
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -35260,6 +35309,22 @@
 	},
 /turf/closed/wall/almayer,
 /area/almayer/engineering/lower_engineering)
+"fxw" = (
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_AresDown";
+	vector_x = 97;
+	vector_y = -65
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/stairs{
+	dir = 1
+	},
+/turf/open/floor/almayer/no_build{
+	icon_state = "ai_floors"
+	},
+/area/almayer/command/airoom)
 "fxz" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12
@@ -35806,6 +35871,24 @@
 	icon_state = "emeraldfull"
 	},
 /area/almayer/living/briefing)
+"fJa" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
+	},
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_AresUp";
+	vector_x = -97;
+	vector_y = 65
+	},
+/turf/open/floor/almayer/no_build{
+	icon_state = "silver";
+	dir = 4
+	},
+/area/almayer/command/airoom)
 "fJm" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -36233,18 +36316,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/engineering/laundry)
-"fTG" = (
-/obj/structure/machinery/status_display{
-	pixel_y = 30
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer/no_build{
-	icon_state = "ai_floors"
-	},
-/area/almayer/command/airoom)
 "fTR" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/almayer{
@@ -36849,7 +36920,10 @@
 /area/almayer/hull/lower_hull/l_f_s)
 "gjw" = (
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	unacidable = 1;
+	unslashable = 1;
+	invisibility = 101
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -39208,6 +39282,15 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/medical/medical_science)
+"hqm" = (
+/obj/effect/step_trigger/clone_cleaner,
+/obj/structure/platform_decoration{
+	dir = 8
+	},
+/turf/open/floor/almayer/no_build{
+	icon_state = "ai_floors"
+	},
+/area/almayer/command/airoom)
 "hqs" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -39360,14 +39443,17 @@
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "hvw" = (
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresUp";
 	vector_x = -97;
 	vector_y = 65
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "silver";
@@ -39953,7 +40039,10 @@
 /area/almayer/hull/upper_hull/u_a_p)
 "hHY" = (
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	unacidable = 1;
+	unslashable = 1;
+	invisibility = 101
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -40655,9 +40744,6 @@
 /area/almayer/medical/lower_medical_medbay)
 "hZR" = (
 /obj/structure/closet/firecloset,
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /turf/open/floor/almayer{
 	icon_state = "silverfull"
 	},
@@ -41677,8 +41763,8 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "iyA" = (
-/obj/structure/machinery/status_display{
-	pixel_y = 30
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "plating"
@@ -45393,6 +45479,7 @@
 	pixel_x = 24;
 	pixel_y = 8
 	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer/no_build{
 	icon_state = "silver";
 	dir = 4
@@ -46092,6 +46179,15 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/almayer/medical/morgue)
+"kEA" = (
+/obj/effect/step_trigger/clone_cleaner,
+/obj/structure/platform_decoration{
+	dir = 4
+	},
+/turf/open/floor/almayer/no_build{
+	icon_state = "ai_floors"
+	},
+/area/almayer/command/airoom)
 "kFe" = (
 /obj/structure/machinery/constructable_frame,
 /turf/open/floor/almayer{
@@ -47747,7 +47843,8 @@
 /area/almayer/hull/lower_hull/l_f_p)
 "lsh" = (
 /mob/living/silicon/decoy/ship_ai{
-	pixel_y = -16
+	pixel_y = -16;
+	layer = 2.98
 	},
 /obj/structure/blocker/invisible_wall,
 /obj/effect/decal/warning_stripes{
@@ -49143,16 +49240,15 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "lXv" = (
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresDown";
 	vector_x = 97;
 	vector_y = -65
 	},
 /obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/stairs{
 	dir = 1
 	},
 /turf/open/floor/almayer/no_build{
@@ -50853,7 +50949,10 @@
 "mOi" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/prop/server_equipment/yutani_server/broken{
-	pixel_y = 16
+	pixel_y = 16;
+	name = "server tower";
+	desc = "A powerful server tower housing various AI functions.";
+	density = 0
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -51363,16 +51462,8 @@
 /obj/structure/sign/safety/rewire{
 	pixel_y = 38
 	},
-/obj/structure/sign/safety/fibre_optics{
-	pixel_x = 14;
-	pixel_y = 38
-	},
 /obj/structure/sign/safety/laser{
 	pixel_y = 24
-	},
-/obj/structure/sign/safety/terminal{
-	pixel_y = 24;
-	pixel_x = 14
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -55060,14 +55151,17 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "oJR" = (
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresUp";
 	vector_x = -97;
 	vector_y = 65
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "silver";
@@ -55947,14 +56041,16 @@
 /turf/closed/wall/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "pgH" = (
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
 /obj/effect/projector{
 	name = "Almayer_AresUp";
 	vector_x = -97;
 	vector_y = 65
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/stairs{
+	dir = 1
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "silver";
@@ -56147,14 +56243,16 @@
 	},
 /area/almayer/squads/delta)
 "pmF" = (
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
 /obj/effect/projector{
 	name = "Almayer_AresUp";
 	vector_x = -97;
 	vector_y = 65
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/stairs{
+	dir = 1
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "silver";
@@ -56751,6 +56849,7 @@
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	dir = 4
 	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer/no_build{
 	icon_state = "silver";
 	dir = 8
@@ -60205,7 +60304,10 @@
 /area/almayer/living/grunt_rnr)
 "reV" = (
 /obj/structure/prop/server_equipment/yutani_server{
-	pixel_y = 16
+	pixel_y = 16;
+	name = "server tower";
+	desc = "A powerful server tower housing various AI functions.";
+	density = 0
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -62061,14 +62163,13 @@
 	},
 /area/almayer/shipboard/port_missiles)
 "rVX" = (
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
 /obj/effect/projector{
 	name = "Almayer_AresUp";
 	vector_x = -97;
 	vector_y = 65
+	},
+/obj/structure/stairs{
+	dir = 1
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 4
@@ -64594,10 +64695,13 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
 "teX" = (
-/obj/structure/prop/server_equipment/yutani_server{
-	pixel_y = 16
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/prop/server_equipment/yutani_server{
+	pixel_y = 16;
+	name = "server tower";
+	desc = "A powerful server tower housing various AI functions.";
+	density = 0
+	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
 	},
@@ -66210,9 +66314,6 @@
 /area/almayer/squads/req)
 "tPl" = (
 /obj/structure/closet/toolcloset,
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /turf/open/floor/almayer{
 	icon_state = "silverfull"
 	},
@@ -69816,6 +69917,20 @@
 "vra" = (
 /turf/closed/wall/almayer,
 /area/almayer/squads/charlie_delta_shared)
+"vrv" = (
+/obj/effect/projector{
+	name = "Almayer_AresDown";
+	vector_x = 97;
+	vector_y = -65
+	},
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
+	},
+/turf/open/floor/almayer/no_build{
+	icon_state = "ai_floors"
+	},
+/area/almayer/command/airoom)
 "vrx" = (
 /obj/structure/machinery/status_display{
 	pixel_x = -32;
@@ -70549,14 +70664,17 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "vJb" = (
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
 /obj/effect/projector{
 	name = "Almayer_AresDown";
 	vector_x = 97;
 	vector_y = -65
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -72853,6 +72971,22 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/port_missiles)
+"wGS" = (
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_AresDown";
+	vector_x = 97;
+	vector_y = -65
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/stairs{
+	dir = 1
+	},
+/turf/open/floor/almayer/no_build{
+	icon_state = "ai_floors"
+	},
+/area/almayer/command/airoom)
 "wGX" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -96983,7 +97117,7 @@ aDv
 aEC
 wVW
 wVW
-avL
+wVW
 wVW
 wVW
 aKn
@@ -114632,11 +114766,11 @@ aEX
 ajt
 ali
 cck
-dVJ
-dVJ
+wGS
+wGS
 vJb
 vJb
-xQV
+kEA
 asD
 xQV
 avK
@@ -114837,8 +114971,8 @@ abg
 cck
 lXv
 dVJ
-vJb
-vJb
+vrv
+vrv
 xQV
 xQV
 xQV
@@ -115038,11 +115172,11 @@ abg
 akU
 abg
 cck
-dVJ
-dVJ
-vJb
-vJb
-xQV
+fxw
+fxw
+ckY
+ckY
+hqm
 xQV
 vhe
 nEa
@@ -131734,10 +131868,10 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
 aab
 aaa
 aaa
@@ -131745,21 +131879,21 @@ aKQ
 aaa
 aaa
 aab
-aaa
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
+aab
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
 bdH
 aaa
 aaa
@@ -131935,34 +132069,34 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
 aab
 aab
 aab
-aab
-aab
-aaa
-aaa
-aKQ
-aaa
-aaa
-aab
-aab
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
 bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+aKQ
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+aak
 bdH
 aaa
 aaa
@@ -132131,27 +132265,28 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aab
+aab
+aab
+aab
+aab
 aab
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aKQ
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
 bdH
 bdH
 bdH
@@ -132165,7 +132300,6 @@ bdH
 bdH
 bdH
 aak
-bdH
 bdH
 aaa
 aaa
@@ -132334,26 +132468,27 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aab
-aab
-aab
 aab
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aKQ
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
 bdH
 bdH
 bdH
@@ -132368,7 +132503,6 @@ bdH
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -132537,41 +132671,41 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aab
-aab
-aab
-aab
 aab
 aaa
 aaa
 aaa
-aaa
-aaa
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+bdH
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -132740,41 +132874,41 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aab
 aab
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aKQ
-aaa
-aaa
-aaa
-bdH
-aaa
-aaa
-aaa
 bdH
 bdH
 bdH
 bdH
 bdH
 bdH
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
 bdH
-bdH
-bdH
-bdH
-aKQ
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -132944,18 +133078,8 @@ aaa
 aaa
 aaa
 aab
-aab
-aaa
-bdH
-bdH
-bdH
 aaa
 aaa
-aaa
-aKQ
-aKQ
-aKQ
-aKQ
 bdH
 bdH
 bdH
@@ -132963,21 +133087,31 @@ bdH
 bdH
 bdH
 bdH
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
 bdH
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-bdH
-aKQ
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -133150,37 +133284,37 @@ aab
 aaa
 aaa
 bdH
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+lmi
+lmi
+lmi
+lmi
+lmi
+lmi
+lmi
+lmi
+lmi
+lmi
+lmi
+lmi
+lmi
+avL
+avL
+avL
 bdH
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-bdH
-bdH
-bdH
-bdH
-bdH
-lmi
-lmi
-lmi
-lmi
-lmi
-lmi
-lmi
-lmi
-lmi
-lmi
-lmi
-lmi
-lmi
-bdH
-bdH
-aKQ
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -133353,17 +133487,17 @@ aab
 aaa
 aaa
 bdH
-aKQ
-aKQ
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
 lmi
 reV
 uWt
@@ -133377,13 +133511,13 @@ cZP
 gCv
 pYi
 lmi
+avL
+avL
+avL
 bdH
-bdH
-aKQ
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -133555,15 +133689,15 @@ aaa
 aab
 aaa
 aaa
-aKQ
-aKQ
 bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
 tJI
 tJI
 tJI
@@ -133580,13 +133714,13 @@ eyN
 aGB
 vPB
 lmi
+avL
+avL
+avL
 bdH
-bdH
-aKQ
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -133758,11 +133892,11 @@ aaa
 aab
 aaa
 bdH
-aKQ
-bdH
-bdH
-aaa
-bdH
+avL
+avL
+avL
+avL
+avL
 lmi
 lmi
 lmi
@@ -133783,13 +133917,13 @@ dJs
 iPC
 vPB
 lmi
+avL
+avL
+avL
 bdH
-bdH
-aKQ
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -133961,10 +134095,10 @@ aaa
 aab
 aaa
 bdH
-aKQ
-bdH
-bdH
-aaa
+avL
+avL
+avL
+avL
 lmi
 lmi
 naK
@@ -133986,13 +134120,13 @@ sIf
 isC
 qtN
 lmi
+avL
+avL
+avL
 bdH
-bdH
-aKQ
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -134164,9 +134298,9 @@ aaa
 aab
 aaa
 bdH
-aKQ
-bdH
-bdH
+avL
+avL
+avL
 lmi
 lmi
 ebK
@@ -134190,12 +134324,12 @@ lKm
 lmi
 lmi
 lmi
-bdH
-aKQ
+avL
+avL
+avL
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -134367,12 +134501,12 @@ aaa
 aab
 aaa
 bdH
-aKQ
-bdH
-bdH
+avL
+avL
+avL
 lmi
 lsh
-fTG
+feB
 sbW
 ylo
 hRC
@@ -134393,12 +134527,12 @@ pmF
 hvw
 hvw
 lmi
-bdH
-aKQ
+avL
+avL
+avL
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -134570,14 +134704,14 @@ aaa
 aab
 aaa
 bdH
-aKQ
-bdH
-bdH
+avL
+avL
+avL
 lmi
 qMN
-iyA
-bZf
 sXc
+bZf
+iyA
 sXc
 sXc
 sXc
@@ -134589,19 +134723,19 @@ gfE
 kpG
 mlb
 oaO
-mlb
+lqO
 lqO
 rVX
 rVX
-cHn
+dGK
 cHn
 lmi
-bdH
-aKQ
+avL
+avL
+avL
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -134773,9 +134907,9 @@ aaa
 aab
 aaa
 bdH
-aKQ
-bdH
-bdH
+avL
+avL
+avL
 lmi
 nbt
 vvX
@@ -134797,14 +134931,14 @@ ewX
 pgH
 pgH
 oJR
-oJR
+fJa
 lmi
-bdH
-aKQ
+avL
+avL
+avL
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -134976,9 +135110,9 @@ aaa
 aab
 aaa
 bdH
-aKQ
-bdH
-bdH
+avL
+avL
+avL
 lmi
 lmi
 eTN
@@ -135002,12 +135136,12 @@ lKm
 lmi
 lmi
 lmi
-bdH
-aKQ
+avL
+avL
+avL
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -135179,10 +135313,10 @@ aaa
 aab
 aaa
 bdH
-aKQ
-bdH
-bdH
-aaa
+avL
+avL
+avL
+avL
 lmi
 lmi
 aMn
@@ -135204,13 +135338,13 @@ sIf
 isC
 sIf
 lmi
+avL
+avL
+avL
 bdH
-bdH
-aKQ
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -135382,11 +135516,11 @@ aaa
 aab
 aaa
 bdH
-aKQ
-bdH
-bdH
-aaa
-bdH
+avL
+avL
+avL
+avL
+avL
 lmi
 lmi
 lmi
@@ -135407,13 +135541,13 @@ eyN
 aGB
 vPB
 lmi
+avL
+avL
+avL
 bdH
-bdH
-aKQ
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -135585,15 +135719,15 @@ aaa
 aab
 aaa
 bdH
-aKQ
-aKQ
-aaa
 bdH
-bdH
-bdH
-bdH
-bdH
-bdH
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
 tJI
 tJI
 tJI
@@ -135610,13 +135744,13 @@ dJs
 iPC
 vPB
 lmi
+avL
+avL
+avL
 bdH
-bdH
-aKQ
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -135789,17 +135923,17 @@ aab
 aaa
 aaa
 bdH
-aKQ
-aKQ
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
 lmi
 wJB
 uSR
@@ -135813,13 +135947,13 @@ sIf
 olT
 vPW
 lmi
+avL
+avL
+avL
 bdH
-bdH
-aKQ
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -135992,37 +136126,37 @@ aab
 aaa
 aaa
 bdH
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+lmi
+lmi
+lmi
+lmi
+lmi
+lmi
+lmi
+lmi
+lmi
+lmi
+lmi
+lmi
+lmi
+avL
+avL
+avL
 bdH
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-bdH
-bdH
-bdH
-bdH
-bdH
-lmi
-lmi
-lmi
-lmi
-lmi
-lmi
-lmi
-lmi
-lmi
-lmi
-lmi
-lmi
-lmi
-bdH
-bdH
-aKQ
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -136192,7 +136326,7 @@ aaa
 aaa
 aaa
 aab
-aab
+aaa
 aaa
 bdH
 bdH
@@ -136200,32 +136334,32 @@ bdH
 bdH
 bdH
 bdH
-aKQ
-aKQ
-aKQ
-aKQ
 bdH
 bdH
 bdH
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
 bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-aKQ
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -136394,22 +136528,10 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aab
 aab
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aKQ
-aaa
-aaa
-aaa
 bdH
 bdH
 bdH
@@ -136418,17 +136540,29 @@ bdH
 bdH
 bdH
 bdH
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
 bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-aKQ
 bdH
 bdH
 aak
-bdH
 bdH
 bdH
 bdH
@@ -136600,37 +136734,37 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-etS
-etS
-etS
-etS
-etS
-etS
-etS
-etS
-etS
-etS
-etS
-etS
-etS
-etS
-etS
-etS
-etS
-etS
-etS
-aab
-aab
-aab
+aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+avL
+bdH
+bdH
+bdH
 aab
 aab
 aab
@@ -136802,39 +136936,39 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aKQ
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
 aaa
 bdH
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+aKQ
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+aab
 aaa
 aaa
 aaa
@@ -137005,39 +137139,39 @@ aaa
 aaa
 aaa
 aaa
+aab
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aKQ
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
 bdH
 bdH
 bdH
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+aab
 aaa
 aaa
 aaa
@@ -137208,39 +137342,39 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aKQ
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aab
+aab
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+etS
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aak
+aab
 aaa
 aaa
 aaa
@@ -137440,7 +137574,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 aaa

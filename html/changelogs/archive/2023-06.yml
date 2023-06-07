@@ -69,3 +69,6 @@
   - qol: Custom loadout is now sorted into sections.
   realforest2001:
   - rscadd: Adds a staff to IC chat tab setting for faxes and prayers.
+2023-06-07:
+  Morrow:
+  - balance: HPR is now only found in requisitions.

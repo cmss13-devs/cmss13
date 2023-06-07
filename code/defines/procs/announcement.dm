@@ -135,10 +135,9 @@
 
 	if(!isnull(signature))
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
-	else
-		var/datum/ares_link/link = GLOB.ares_link
-		if(link.interface && !(link.interface.inoperable()))
-			link.log_ares_announcement(title, message)
+	var/datum/ares_link/link = GLOB.ares_link
+	if(link.interface && !(link.interface.inoperable()))
+		link.log_ares_announcement(title, message)
 
 	announcement_helper(message, title, targets, sound_to_play)
 

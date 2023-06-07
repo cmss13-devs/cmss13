@@ -63,9 +63,10 @@
 			ManualFollow(target)
 			return TRUE
 
-		following = null
-		abstract_move(get_turf(target))
-		return TRUE
+		if(!istype(target, /atom/movable/screen))
+			following = null
+			abstract_move(get_turf(target))
+			return TRUE
 
 	if(world.time <= next_move)
 		return TRUE

@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - maptweak: "Fixed landing strip lights on most maps"

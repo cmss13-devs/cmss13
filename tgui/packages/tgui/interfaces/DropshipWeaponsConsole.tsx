@@ -1,6 +1,7 @@
-import { useBackend } from '../backend';
+import { useBackend, useSharedState } from '../backend';
 import { Layout, Window } from '../layouts';
 import { Box, Button, Divider, Flex, Stack } from '../components';
+import { CasSim } from './CasSim';
 
 interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
@@ -26,6 +27,11 @@ const xLookup = (index: number) => [0, 40, 80, 120][index] + xOffset;
 const yLookup = (index: number) => [150, 20, 20, 150][index] + yOffset;
 const OutlineColor = '#00e94e';
 const OutlineWidth = '2';
+
+type PanelStates = 'equipment' | 'firemissions';
+
+const usePanelState = (context) =>
+  useSharedState<PanelStates>(context, 'panelstate', 'equipment');
 
 const DrawShipOutline = () => {
   const drawLine = (pos0, pos1) => (
@@ -198,34 +204,72 @@ const LcdPanel = (props, context) => {
   );
 };
 
+const FiremissionSimulationPanel = (props, context) => {
+  return (
+    <Box className="NavigationMenu">
+      <CasSim />
+    </Box>
+  );
+};
+
 const ControlPanel = (props, context) => {
+  const [panelState, setPanelState] = usePanelState(context);
+
+  const PanelButton = (props: { state: PanelStates; label: string }) => {
+    return (
+      <Button onClick={() => setPanelState(props.state)}>
+        {panelState === props.state && '> '}
+        {props.label}
+      </Button>
+    );
+  };
+
   return (
     <Box className="NavigationMenu">
       <Stack vertical>
         <Stack.Item>side panel with control buttons</Stack.Item>
-        <Button>Fire</Button>
         <Stack.Item>
-          <Button>Firemission Control</Button>
+          <PanelButton state="equipment" label="Equipment" />
+        </Stack.Item>
+        <Stack.Item>
+          <PanelButton state="firemissions" label="Firemissions" />
         </Stack.Item>
       </Stack>
     </Box>
   );
 };
 
+const EquipmentSubPanel = (props, context) => {
+  return <div />;
+};
+
 export const DropshipWeaponsConsole = (_, context) => {
+  const [panelState, setPanelState] = usePanelState(context);
   const { data } = useBackend<DropshipProps>(context);
   return (
     <Window height={500} width={900} theme="crtgreen">
       <Window.Content>
         <Stack>
           <Stack.Item>
-            <LcdPanel />
+            <Stack vertical>
+              {panelState === 'equipment' && (
+                <Stack.Item>
+                  <LcdPanel />
+                </Stack.Item>
+              )}
+              {panelState === 'firemissions' && (
+                <Stack.Item>
+                  <FiremissionSimulationPanel />
+                </Stack.Item>
+              )}
+            </Stack>
           </Stack.Item>
           <Stack.Item>
-            <Layout className="SidePanel" theme="crtyellow">
+            <Layout className="WeaponSidePanel" theme="crtyellow">
               <ControlPanel />
             </Layout>
           </Stack.Item>
+          <Stack.Item />
         </Stack>
       </Window.Content>
     </Window>

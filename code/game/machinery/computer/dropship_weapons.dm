@@ -101,20 +101,17 @@
 
 	data = ui_data(usr)
 	tgui_interact(usr)
-/*
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
-		ui = new(user, src, ui_key, "dropship_weapons_console.tmpl", "Weapons Control", 800, 600)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(1)
-*/
 /obj/structure/machinery/computer/dropship_weapons/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		ui = new(user, src, "DropshipWeaponsConsole", "Weapons Console")
 		ui.open()
+
+/obj/structure/machinery/computer/dropship_weapons/ui_close(mob/user)
+	. = ..()
+	if(simulation.looking_at_simulation)
+		simulation.stop_watching(user)
 
 /obj/structure/machinery/computer/dropship_weapons/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
@@ -178,6 +175,13 @@
 			firemission_edit_timeslices += ts
 		.["firemission_edit_timeslices"] = firemission_edit_timeslices
 
+	.["configuration"] = configuration
+	.["looking"] = simulation.looking_at_simulation
+	.["dummy_mode"] = simulation.dummy_mode
+	.["worldtime"] = world.time
+	.["nextdetonationtime"] = simulation.detonation_cooldown
+	.["detonation_cooldown"] = simulation.detonation_cooldown_time
+
 /obj/structure/machinery/computer/dropship_weapons/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
@@ -185,12 +189,43 @@
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_tag)
 	if(shuttle.is_hijacked)
 		return
-	var/mob/user = usr
+
+	var/mob/user = ui.user
 	switch(action)
 		if("select_equipment")
 			var/base_tag = params["equipment_id"]
 			ui_equip_interact(base_tag)
 			return TRUE
+
+		if("start_watching")
+			simulation.start_watching(user)
+			. = TRUE
+
+		if("stop_watching")
+			simulation.stop_watching(user)
+			. = TRUE
+
+		if("execute_simulated_firemission")
+			if(!configuration)
+				to_chat(user, SPAN_WARNING("No configured firemission"))
+				return
+			simulate_firemission(user)
+			. = TRUE
+
+		if("switch_firemission")
+			configuration = tgui_input_list(user, "Select firemission to simulate", "Select firemission", firemission_envelope.missions, 30 SECONDS)
+			if(!selected_firemission)
+				to_chat(user, SPAN_WARNING("No configured firemission"))
+				return
+			if(!configuration)
+				configuration = selected_firemission
+			. = TRUE
+
+		if("switchmode")
+			simulation.dummy_mode = tgui_input_list(user, "Select target type to simulate", "Target type", simulation.target_types, 30 SECONDS)
+			if(!simulation.dummy_mode)
+				simulation.dummy_mode = CLF_MODE
+			. = TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_screen_mode()
 	. = 0
@@ -856,80 +891,6 @@
 	. = ..()
 
 	QDEL_NULL(firemission_envelope)
-
-// CAS TGUI SHIT \\
-
-/obj/structure/machinery/computer/dropship_weapons/tgui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "CasSim", "[src.name]")
-		ui.open()
-
-/obj/structure/machinery/computer/dropship_weapons/ui_state(mob/user) // we gotta do custom shit here so that it always closes instead of suspending
-	return GLOB.not_incapacitated_and_adjacent_strict_state
-
-/obj/structure/machinery/computer/dropship_weapons/ui_status(mob/user, datum/ui_state/state)
-	. = ..()
-	if(inoperable())
-		return UI_CLOSE
-
-/obj/structure/machinery/computer/dropship_weapons/ui_data(mob/user)
-	var/list/data = list()
-
-	data["configuration"] = configuration
-	data["looking"] = simulation.looking_at_simulation
-	data["dummy_mode"] = simulation.dummy_mode
-
-	data["worldtime"] = world.time
-	data["nextdetonationtime"] = simulation.detonation_cooldown
-	data["detonation_cooldown"] = simulation.detonation_cooldown_time
-
-	return data
-
-/obj/structure/machinery/computer/dropship_weapons/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	if(.)
-		return
-
-	var/user = ui.user
-
-	switch(action)
-		if("start_watching")
-			simulation.start_watching(user)
-			. = TRUE
-
-		if("stop_watching")
-			simulation.stop_watching(user)
-			. = TRUE
-
-		if("execute_simulated_firemission")
-			if(!configuration)
-				to_chat(user, SPAN_WARNING("No configured firemission"))
-				return
-			simulate_firemission(user)
-			. = TRUE
-
-		if("switch_firemission")
-			configuration = tgui_input_list(user, "Select firemission to simulate", "Select firemission", firemission_envelope.missions, 30 SECONDS)
-			if(!selected_firemission)
-				to_chat(user, SPAN_WARNING("No configured firemission"))
-				return
-			if(!configuration)
-				configuration = selected_firemission
-			. = TRUE
-
-		if("switchmode")
-			simulation.dummy_mode = tgui_input_list(user, "Select target type to simulate", "Target type", simulation.target_types, 30 SECONDS)
-			if(!simulation.dummy_mode)
-				simulation.dummy_mode = CLF_MODE
-			. = TRUE
-
-/obj/structure/machinery/computer/dropship_weapons/ui_close(mob/user)
-	. = ..()
-	if(simulation.looking_at_simulation)
-		simulation.stop_watching(user)
-
-// CAS TGUI SHIT END \\
 
 /obj/structure/machinery/computer/dropship_weapons/proc/simulate_firemission(mob/living/user)
 

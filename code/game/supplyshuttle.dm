@@ -1032,9 +1032,11 @@ var/datum/controller/supply/supply_controller = new()
 					supply_order.approvedby = usr.name
 					msg_admin_niche("[usr] confirmed supply order of [supply_pack.name].")
 					var/pack_source = "Cargo Hold"
+					var/pack_name = supply_pack.name
 					if(supply_pack.dollar_cost)
 						pack_source = "Unknown"
-					link.log_ares_requisition(pack_source, supply_pack.name, usr)
+						pack_name = "Unknown"
+					link.log_ares_requisition(pack_source, pack_name, usr)
 				else
 					temp = "Not enough money left.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"

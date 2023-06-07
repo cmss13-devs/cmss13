@@ -272,7 +272,8 @@
 /turf/open/floor/almayer/uscm/directional
 	icon_state = "logo_directional"
 
-
+/turf/open/floor/almayer/no_build
+	allow_construction = FALSE
 
 // RESEARCH STUFF
 /turf/open/floor/almayer/research/containment/entrance

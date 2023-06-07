@@ -2,6 +2,9 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 
 /datum/ares_link
 	var/link_id = MAIN_SHIP_DEFAULT_NAME
+	/// All motion triggers for the link
+	var/list/linked_alerts = list()
+	/// All machinery for the link
 	var/list/linked_systems = list()
 	var/obj/structure/machinery/ares/processor/interface/p_interface
 	var/obj/structure/machinery/ares/processor/apollo/p_apollo
@@ -13,6 +16,8 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 		link.delink()
 	for(var/obj/structure/machinery/computer/ares_console/interface in linked_systems)
 		interface.delink()
+	for(var/obj/effect/step_trigger/ares_alert/alert in linked_alerts)
+		alert.delink()
 	..()
 
 /obj/structure/machinery/computer/ares_console/proc/get_ares_access(obj/item/card/id/card)

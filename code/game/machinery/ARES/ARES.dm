@@ -183,8 +183,13 @@
 
 /obj/effect/step_trigger/ares_alert
 	layer = 5
+	/// Link alerts to ARES Link
+	var/datum/ares_link/link
+	var/link_id
 	/// Alert message to report unless area based.
-	var/alert_message = "Unauthorized movement detected in ARES Core!"
+	var/alert_message = "ALERT: Unauthorized movement detected in ARES Core!"
+	/// Connect alerts to use same cooldowns
+	var/alert_id
 	/// Set to true if it should report area name and not specific alert.
 	var/area_based = FALSE
 	/// Cooldown duration and next time.
@@ -218,11 +223,31 @@
 	Trigger(passer)
 	return TRUE
 
+
+/obj/effect/step_trigger/ares_alert/Initialize(mapload, ...)
+	link_systems(override = FALSE)
+	. = ..()
+/obj/effect/step_trigger/ares_alert/Destroy()
+	delink()
+	return ..()
+/obj/effect/step_trigger/ares_alert/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
+	if(link && !override)
+		return FALSE
+	if(new_link.link_id == link_id)
+		link = new_link
+		new_link.linked_alerts += src
+		return TRUE
+/obj/effect/step_trigger/ares_alert/proc/delink()
+	if(link)
+		link.linked_alerts -= src
+		link = null
+
+
 /obj/effect/step_trigger/ares_alert/Trigger(mob/living/passer)
 	var/broadcast_message = alert_message
 	if(area_based)
 		var/area_name = get_area_name(src, TRUE)
-		broadcast_message = "Unauthorized movement detected in [area_name]!"
+		broadcast_message = "ALERT: Unauthorized movement detected in [area_name]!"
 
 	var/datum/ares_link/link = GLOB.ares_link
 	if(link.p_apollo.inoperable())
@@ -235,9 +260,24 @@
 		for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
 			if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
 				playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
-		cooldown = (world.time + cooldown_duration)
+		var/new_cooldown = (world.time + cooldown_duration)
+		if(alert_id && link)
+			for(var/obj/effect/step_trigger/ares_alert/alert in link.linked_alerts)
+				alert.cooldown = new_cooldown
+		cooldown = new_cooldown
 	return TRUE
+
+/obj/effect/step_trigger/ares_alert/core
+	alert_id = "AresCore"
+/obj/effect/step_trigger/ares_alert/mainframe
+	alert_id = "AresMainframe"
+	alert_message = "ALERT: Unauthorized movement detected in ARES Mainframe!"
+
+/obj/effect/step_trigger/ares_alert/terminals
+	alert_id = "AresTerminals"
+	alert_message = "ALERT: Unauthorized movement detected in ARES' Operations Center!"
 
 /obj/effect/step_trigger/ares_alert/comms
 	area_based = TRUE
+	alert_id = "TComms"
 	pass_accesses = list(ACCESS_MARINE_CE)

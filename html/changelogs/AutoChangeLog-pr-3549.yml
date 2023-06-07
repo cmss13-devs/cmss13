@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - bugfix: "Queen Eye no longer repeatedly throws runtime errors."

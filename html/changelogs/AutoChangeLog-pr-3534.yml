@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - balance: "HPR is now only found in requisitions."

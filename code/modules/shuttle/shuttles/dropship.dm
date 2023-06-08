@@ -84,7 +84,7 @@
 	for(var/area/checked_area in shuttle_areas)
 		for(var/turf/checked_turf in checked_area)
 			for(var/mob/living/carbon/xenomorph/checked_xeno in checked_turf)
-				if(checked_xeno.stat == LIVING)
+				if(checked_xeno.stat == CONSCIOUS)
 					var/name = "Unidentified Lifesigns"
 					var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
 					shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg')

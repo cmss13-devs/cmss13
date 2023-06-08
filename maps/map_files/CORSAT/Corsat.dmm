@@ -37825,6 +37825,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -38351,6 +38352,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -38938,6 +38940,7 @@
 /area/corsat/gamma/airlock/south/id)
 "elG" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -40487,6 +40490,7 @@
 /area/corsat/gamma/hallwaysouth)
 "fst" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -44868,6 +44872,7 @@
 "iuD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -46399,6 +46404,7 @@
 /area/corsat/omega/hallways)
 "jJm" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -50742,6 +50748,7 @@
 "mTz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
@@ -55709,6 +55716,7 @@
 /area/corsat/omega/airlocknorth)
 "qIr" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -57114,6 +57122,7 @@
 /area/corsat/omega/maint)
 "rMq" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "rMD" = (
@@ -61227,6 +61236,7 @@
 /area/corsat/sigma/dorms)
 "uLV" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},

@@ -296,7 +296,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "abv" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
@@ -309,6 +309,7 @@
 /area/lv624/ground/caves/central_caves)
 "aby" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "abz" = (
@@ -327,6 +328,7 @@
 /area/lv624/ground/caves/north_west_caves)
 "abE" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "abF" = (
@@ -379,6 +381,7 @@
 "abV" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -477,7 +480,7 @@
 	pixel_y = -22
 	},
 /turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "acs" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
@@ -770,7 +773,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adD" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond{
@@ -781,7 +784,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adE" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal{
@@ -797,7 +800,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adF" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel,
@@ -805,7 +808,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adH" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/stairs/perspective{
@@ -825,7 +828,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adJ" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
@@ -834,7 +837,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adN" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/iron{
@@ -848,7 +851,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adP" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
@@ -869,7 +872,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adS" = (
 /obj/structure/xenoautopsy/tank/hugger,
 /turf/open/shuttle{
@@ -885,7 +888,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adU" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/airless{
@@ -956,7 +959,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "aej" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/prop/brazier/torch,
@@ -1444,7 +1447,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "agv" = (
 /turf/open/floor/plating{
 	dir = 4;
@@ -1614,19 +1617,19 @@
 "ahx" = (
 /obj/structure/inflatable,
 /turf/open/gm/dirt,
-/area/lv624/ground/barrens/west_barrens)
+/area/lv624/ground/barrens/west_barrens/ceiling)
 "ahy" = (
 /obj/structure/inflatable,
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},
-/area/lv624/ground/barrens/west_barrens)
+/area/lv624/ground/barrens/west_barrens/ceiling)
 "ahz" = (
 /obj/structure/inflatable/door,
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},
-/area/lv624/ground/barrens/west_barrens)
+/area/lv624/ground/barrens/west_barrens/ceiling)
 "ahB" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/sandstone/runed,
@@ -1643,18 +1646,18 @@
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},
-/area/lv624/ground/barrens/west_barrens)
+/area/lv624/ground/barrens/west_barrens/ceiling)
 "ahK" = (
 /obj/item/device/analyzer,
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},
-/area/lv624/ground/barrens/west_barrens)
+/area/lv624/ground/barrens/west_barrens/ceiling)
 "ahL" = (
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},
-/area/lv624/ground/barrens/west_barrens)
+/area/lv624/ground/barrens/west_barrens/ceiling)
 "ahM" = (
 /obj/structure/machinery/floodlight,
 /turf/open/floor/plating{
@@ -1711,19 +1714,19 @@
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},
-/area/lv624/ground/barrens/west_barrens)
+/area/lv624/ground/barrens/west_barrens/ceiling)
 "aie" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},
-/area/lv624/ground/barrens/west_barrens)
+/area/lv624/ground/barrens/west_barrens/ceiling)
 "aif" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},
-/area/lv624/ground/barrens/west_barrens)
+/area/lv624/ground/barrens/west_barrens/ceiling)
 "aih" = (
 /obj/structure/largecrate/random,
 /obj/item/tool/crowbar/red,
@@ -1731,7 +1734,7 @@
 	dir = 9;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aij" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
@@ -1739,7 +1742,7 @@
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aik" = (
 /obj/structure/surface/table,
 /obj/item/ashtray/plastic,
@@ -1749,7 +1752,7 @@
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aim" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight/lamp,
@@ -1757,14 +1760,14 @@
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "ain" = (
 /obj/structure/machinery/computer3,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aio" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
@@ -1773,7 +1776,7 @@
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aip" = (
 /obj/structure/surface/table,
 /obj/item/stack/rods{
@@ -1784,7 +1787,7 @@
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiq" = (
 /obj/structure/surface/table,
 /obj/item/stack/cable_coil/random,
@@ -1793,13 +1796,13 @@
 	dir = 5;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiu" = (
 /obj/effect/landmark/corpsespawner/miner,
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},
-/area/lv624/ground/barrens/west_barrens)
+/area/lv624/ground/barrens/west_barrens/ceiling)
 "aiv" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/coast{
@@ -1813,21 +1816,21 @@
 	dir = 9;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aix" = (
 /obj/item/frame/apc,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiy" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiz" = (
 /obj/structure/disposalpipe/junction{
 	dir = 4
@@ -1835,7 +1838,7 @@
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiA" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
@@ -1844,14 +1847,14 @@
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiB" = (
 /obj/effect/spawner/random/tech_supply,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiD" = (
 /obj/structure/sink{
 	pixel_y = 30
@@ -1860,24 +1863,24 @@
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiF" = (
 /obj/item/weapon/butterfly/switchblade,
 /turf/open/floor/plating,
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiG" = (
 /obj/structure/bed/stool,
 /obj/item/storage/backpack,
 /turf/open/floor/plating,
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiH" = (
 /obj/effect/spawner/random/tech_supply,
 /turf/open/floor/plating,
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiI" = (
 /obj/structure/bed/stool,
 /turf/open/floor/plating,
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiJ" = (
 /obj/structure/surface/table,
 /obj/item/stack/medical/ointment,
@@ -1886,13 +1889,13 @@
 	dir = 4;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiK" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor{
 	icon_state = "platebot"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiL" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	name = "Water Filtration Plant";
@@ -1902,13 +1905,13 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiM" = (
 /turf/open/floor/plating{
 	dir = 10;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -1917,7 +1920,7 @@
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiP" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8;
@@ -1926,7 +1929,7 @@
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1934,7 +1937,7 @@
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiR" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1943,7 +1946,7 @@
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiS" = (
 /obj/item/tool/kitchen/knife/butcher,
 /turf/open/gm/dirt,
@@ -1956,19 +1959,19 @@
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiU" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber,
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aiV" = (
 /turf/open/floor/plating{
 	dir = 6;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aja" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/gm/dirtgrassborder{
@@ -1988,7 +1991,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "ajg" = (
 /obj/structure/flora/bush/ausbushes,
 /turf/open/gm/coast{
@@ -1998,7 +2001,7 @@
 "ajh" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/closed/wall,
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "aji" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -2329,12 +2332,6 @@
 	icon_state = "warnplate"
 	},
 /area/lv624/ground/river/east_river)
-"akG" = (
-/obj/structure/machinery/floodlight/landing,
-/turf/open/floor/mech_bay_recharge_floor{
-	name = "Shuttle Landing Lights"
-	},
-/area/lv624/lazarus/landing_zones/lz1)
 "akJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -4012,17 +4009,17 @@
 /turf/open/floor/wood{
 	icon_state = "wood-broken3"
 	},
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/ground/jungle/west_jungle/ceiling)
 "auf" = (
 /turf/open/floor/wood,
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/ground/jungle/west_jungle/ceiling)
 "aug" = (
 /obj/structure/barricade/wooden{
 	dir = 1;
 	pixel_y = 7
 	},
 /turf/open/floor/wood,
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/ground/jungle/west_jungle/ceiling)
 "auj" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/surgical_tray,
@@ -4216,7 +4213,7 @@
 /turf/open/floor{
 	icon_state = "cult"
 	},
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/ground/jungle/west_jungle/ceiling)
 "auP" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast{
@@ -4230,7 +4227,7 @@
 /turf/open/floor/wood{
 	icon_state = "wood-broken"
 	},
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/ground/jungle/west_jungle/ceiling)
 "auV" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor{
@@ -4340,7 +4337,7 @@
 "avo" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor/wood,
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/ground/jungle/west_jungle/ceiling)
 "avp" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/stairs/perspective{
@@ -4968,7 +4965,7 @@
 "axp" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/ground/jungle/west_jungle/ceiling)
 "axt" = (
 /turf/open/floor{
 	dir = 9;
@@ -5076,9 +5073,9 @@
 	dir = 8
 	},
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Lazarus Landing";
-	phone_id = "Research Dome"
+	phone_id = "Research Dome";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	dir = 5;
@@ -5117,7 +5114,7 @@
 	icon_state = "light_3"
 	},
 /turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "axS" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = 29
@@ -6892,10 +6889,6 @@
 	icon_state = "warning"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
-"aDH" = (
-/obj/effect/decal/warning_stripes,
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
 "aDI" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
 /turf/open/floor/plating,
@@ -7389,7 +7382,7 @@
 /area/lv624/lazarus/toilet)
 "aFm" = (
 /turf/closed/wall/wood,
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/ground/jungle/west_jungle/ceiling)
 "aFn" = (
 /turf/open/floor{
 	icon_state = "chapel"
@@ -7576,7 +7569,7 @@
 "aFQ" = (
 /obj/structure/window_frame/wood,
 /turf/open/floor/plating,
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/ground/jungle/west_jungle/ceiling)
 "aFR" = (
 /turf/open/floor{
 	dir = 4;
@@ -8315,7 +8308,7 @@
 /obj/item/weapon/gun/shotgun/double/with_stock,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/ground/jungle/west_jungle/ceiling)
 "aII" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/glasses/regular,
@@ -8662,20 +8655,6 @@
 "aJS" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/floor,
-/area/lv624/lazarus/landing_zones/lz1)
-"aJT" = (
-/obj/effect/decal/warning_stripes,
-/obj/structure/machinery/landinglight/ds1{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"aJU" = (
-/obj/effect/decal/warning_stripes,
-/obj/structure/machinery/landinglight/ds1{
-	dir = 8
-	},
-/turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aJZ" = (
 /obj/structure/closet,
@@ -9165,8 +9144,8 @@
 "aMd" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/flashlight/lamp{
-	pixel_y = 14;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 14
 	},
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Lazarus Landing";
@@ -11737,7 +11716,7 @@
 /area/lv624/lazarus/kitchen)
 "aVS" = (
 /turf/closed/wall/mineral/sandstone/runed,
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aVT" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -11869,7 +11848,7 @@
 	},
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aWl" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -11878,7 +11857,7 @@
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aWm" = (
 /obj/structure/flora/jungle/vines/heavy{
 	pixel_y = 26
@@ -11887,7 +11866,7 @@
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aWn" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -11897,7 +11876,7 @@
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aWo" = (
 /obj/structure/flora/jungle/vines/heavy{
 	pixel_y = 26
@@ -11910,7 +11889,7 @@
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aWp" = (
 /obj/structure/flora/jungle/vines/heavy{
 	pixel_y = 26
@@ -11922,7 +11901,7 @@
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aWs" = (
 /obj/structure/flora/jungle/vines/heavy{
 	pixel_x = -28
@@ -12068,11 +12047,11 @@
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aWP" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aWQ" = (
 /obj/structure/flora/jungle/vines/heavy{
 	pixel_x = -28
@@ -12243,10 +12222,10 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Lazarus Landing";
 	phone_color = "yellow";
-	phone_id = "Engineering"
+	phone_id = "Engineering";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -12279,14 +12258,14 @@
 "aXy" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/mineral/sandstone/runed,
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aXA" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aXB" = (
 /obj/structure/flora/jungle/vines/heavy{
 	pixel_x = -28
@@ -12308,7 +12287,7 @@
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/ground/jungle/west_jungle/ceiling)
 "aXD" = (
 /obj/structure/surface/rack,
 /obj/item/tank/phoron,
@@ -12378,20 +12357,20 @@
 "aXQ" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aXR" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aXS" = (
 /obj/structure/flora/jungle/vines/heavy{
 	pixel_y = 26
 	},
 /turf/closed/wall/mineral/sandstone/runed,
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aXU" = (
 /obj/effect/landmark/good_item,
 /turf/open/floor/greengrid,
@@ -12757,7 +12736,7 @@
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/ground/jungle/west_jungle/ceiling)
 "aZo" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/megaphone,
@@ -12773,7 +12752,7 @@
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
 	},
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/ground/jungle/west_jungle/ceiling)
 "aZs" = (
 /obj/structure/closet/secure_closet/bar,
 /turf/open/floor{
@@ -13295,6 +13274,11 @@
 "byY" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_tcomms_road)
+"bzs" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "bzD" = (
 /obj/structure/largecrate/random,
 /obj/item/storage/fancy/crayons{
@@ -13534,7 +13518,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "cac" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 3
@@ -14115,7 +14099,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "dsz" = (
 /obj/structure/closet/crate/hydroponics/prespawned,
 /obj/effect/landmark/objective_landmark/close,
@@ -14530,7 +14514,7 @@
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "ekB" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -14802,6 +14786,7 @@
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "ePu" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "ePw" = (
@@ -15484,7 +15469,7 @@
 "gve" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/mineral/sandstone/runed/decor,
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "gwP" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
@@ -15753,6 +15738,7 @@
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "hdA" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "asteroidwarning"
@@ -16020,7 +16006,7 @@
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "hMr" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
@@ -16115,9 +16101,9 @@
 /area/lv624/ground/river/central_river)
 "hXt" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 32;
 	phone_category = "Lazarus Landing";
-	phone_id = "Lakeside Bar"
+	phone_id = "Lakeside Bar";
+	pixel_y = 32
 	},
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
@@ -16140,7 +16126,7 @@
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},
-/area/lv624/ground/barrens/west_barrens)
+/area/lv624/ground/barrens/west_barrens/ceiling)
 "iab" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -16522,7 +16508,7 @@
 /area/lv624/ground/barrens/east_barrens)
 "iXj" = (
 /turf/closed/wall,
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "iXz" = (
 /turf/open/gm/coast{
 	dir = 8;
@@ -16763,7 +16749,7 @@
 "jGs" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/dirt,
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "jGW" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/central_jungle)
@@ -16994,7 +16980,7 @@
 /area/lv624/ground/river/west_river)
 "keS" = (
 /turf/open/floor/plating,
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "kff" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/dirt,
@@ -17522,7 +17508,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "lyz" = (
 /turf/closed/wall/mineral/sandstone/runed/decor,
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "lyL" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/structure/flora/jungle/vines{
@@ -18361,9 +18347,9 @@
 /area/lv624/ground/barrens/west_barrens)
 "nrP" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Lazarus Landing";
-	phone_id = "Cargo"
+	phone_id = "Cargo";
+	pixel_y = 24
 	},
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
@@ -18668,7 +18654,7 @@
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "nOX" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
@@ -18877,7 +18863,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "oeN" = (
 /turf/closed/wall,
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "oeS" = (
 /obj/effect/decal/remains/human,
 /turf/open/gm/dirt,
@@ -19268,7 +19254,7 @@
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "oWN" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass{
@@ -19735,10 +19721,10 @@
 	pixel_y = -5
 	},
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Lazarus Landing";
 	phone_color = "blue";
-	phone_id = "Corporate Office"
+	phone_id = "Corporate Office";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	dir = 5;
@@ -20024,6 +20010,9 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"qBW" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle/south_west_jungle/ceiling)
 "qBX" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass,
@@ -20250,7 +20239,7 @@
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},
-/area/lv624/ground/barrens/west_barrens)
+/area/lv624/ground/barrens/west_barrens/ceiling)
 "rdS" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/toolbox/mechanical{
@@ -20595,10 +20584,10 @@
 /area/lv624/ground/colony/north_tcomms_road)
 "rVH" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Lazarus Landing";
 	phone_color = "yellow";
-	phone_id = "Communications"
+	phone_id = "Communications";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	dir = 9;
@@ -21673,10 +21662,10 @@
 /area/lv624/ground/caves/sand_temple)
 "ulp" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Lazarus Landing";
 	phone_color = "red";
-	phone_id = "Secure Storage"
+	phone_id = "Secure Storage";
+	pixel_y = 24
 	},
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
@@ -21936,9 +21925,10 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz1)
 "uVx" = (
-/turf/open/floor{
-	dir = 6;
-	icon_state = "warning"
+/obj/structure/machinery/floodlight/landing,
+/obj/effect/decal/warning_stripes,
+/turf/open/floor/mech_bay_recharge_floor{
+	name = "Shuttle Landing Lights"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "uVU" = (
@@ -22639,7 +22629,7 @@
 "wFx" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/ground/jungle/west_jungle/ceiling)
 "wFR" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood/drip,
@@ -22831,7 +22821,7 @@
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/east_barrens/ceiling)
 "wWm" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4
@@ -24497,7 +24487,7 @@ tMh
 aKb
 aVS
 aVS
-uUl
+bzs
 aVS
 aXy
 aKf
@@ -24725,7 +24715,7 @@ kwG
 aKb
 aVS
 aWk
-xTT
+qBW
 axR
 aXy
 gve
@@ -24953,7 +24943,7 @@ aKb
 aKb
 lyz
 aWl
-xTT
+qBW
 aWO
 hMd
 aWl
@@ -25183,7 +25173,7 @@ aVS
 aWm
 aWO
 aWO
-xTT
+qBW
 aXQ
 aVS
 aLm
@@ -25411,7 +25401,7 @@ acr
 aWn
 aWO
 jGs
-xTT
+qBW
 aWO
 aVS
 aYm
@@ -25640,7 +25630,7 @@ aWo
 aWP
 aWO
 aWO
-xTT
+qBW
 axR
 xdO
 hUs
@@ -25868,7 +25858,7 @@ aWl
 aWO
 aWO
 aWO
-xTT
+qBW
 aVS
 aYo
 aVK
@@ -26094,7 +26084,7 @@ aKb
 aVS
 aWp
 aWO
-xTT
+qBW
 aXA
 aWl
 lyz
@@ -26321,7 +26311,7 @@ aXh
 aVw
 aVS
 axR
-xTT
+qBW
 aWO
 aWO
 aXR
@@ -56612,7 +56602,7 @@ acb
 avS
 acb
 asN
-akG
+uVx
 aDG
 aDG
 aDG
@@ -56624,7 +56614,7 @@ aHu
 aGz
 aGz
 aGz
-akG
+uVx
 aGz
 aGz
 aGz
@@ -56636,7 +56626,7 @@ aDG
 aDG
 aDG
 aDG
-aMq
+uVx
 aky
 aky
 aky
@@ -56841,18 +56831,18 @@ btb
 uZq
 aDG
 aHu
-aDH
-aEj
-aEj
-aFK
-aGe
+ank
 aGB
 aEj
 aFK
 aGe
 aGB
 aEj
-aJT
+aFK
+aGe
+aGB
+aEj
+aFK
 aGe
 aGB
 aEj
@@ -56862,8 +56852,8 @@ aGB
 aEj
 aFK
 aGe
-akG
-aDH
+aGB
+ank
 aMq
 aky
 aky
@@ -57069,7 +57059,7 @@ lke
 aGz
 aGz
 aGz
-aDI
+aDJ
 ank
 ank
 ano
@@ -57297,7 +57287,7 @@ aDM
 aDM
 aDM
 hSa
-aDJ
+aDK
 ank
 ank
 ank
@@ -57525,7 +57515,7 @@ btF
 btF
 btF
 aDi
-aDK
+aDL
 ank
 ank
 ank
@@ -57753,7 +57743,7 @@ aky
 dbY
 btF
 aDi
-aDL
+aDI
 ank
 ank
 ank
@@ -57981,7 +57971,7 @@ aky
 aky
 btF
 aDi
-aDI
+aDJ
 ank
 ank
 ank
@@ -58209,7 +58199,7 @@ nSR
 aky
 btF
 aDi
-aDJ
+aDK
 ank
 ank
 ank
@@ -58437,7 +58427,7 @@ qBX
 nSR
 btF
 aDi
-aDK
+aDL
 ank
 ank
 ank
@@ -58665,7 +58655,7 @@ qBX
 tKI
 btF
 aDi
-aDL
+aDI
 ank
 ank
 ank
@@ -58893,7 +58883,7 @@ qBX
 tKI
 btF
 aDi
-aDI
+aDJ
 ank
 ank
 ank
@@ -59121,7 +59111,7 @@ shq
 rKQ
 btF
 aDi
-aDJ
+aDK
 ank
 ank
 ank
@@ -59349,7 +59339,7 @@ aky
 jtg
 btF
 aDi
-aDK
+aDL
 ank
 ank
 ano
@@ -59577,10 +59567,6 @@ aky
 aky
 btF
 aDi
-aDH
-aEl
-aEl
-aFM
 ank
 aGE
 aEl
@@ -59588,7 +59574,11 @@ aFM
 aGf
 aGE
 aEl
-aJU
+aFM
+aGf
+aGE
+aEl
+aFM
 aGf
 aGE
 aEl
@@ -59598,8 +59588,8 @@ aGE
 aEl
 aFM
 aGf
-akG
-aDH
+aGE
+ank
 aMq
 btF
 aky
@@ -59804,7 +59794,7 @@ phU
 eHr
 aky
 btF
-akG
+uVx
 aDM
 aDM
 aDM
@@ -59816,7 +59806,7 @@ aDM
 aDM
 aDM
 aDM
-akG
+uVx
 aDM
 aDM
 aDM

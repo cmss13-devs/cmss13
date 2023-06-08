@@ -1,0 +1,5 @@
+author: "Al-1ce"
+delete-after: True
+changes:
+  - bugfix: "Bicaridine no-longer says it can fix IB."
+  - spellcheck: "RR, Bica, Rezadone and Anti-Zed are now more informative about their side effects."

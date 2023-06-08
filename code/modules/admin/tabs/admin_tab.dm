@@ -317,7 +317,7 @@
 		else
 			if(mob.get_type_in_ears(/obj/item/device/radio/headset))
 				to_chat(mob, message)
-	message_admins("[key_name(usr)] used Subtle Message All In View from [message_option], saying \"[input]\".")
+	message_admins(SPAN_STAFF_IC("[key_name(usr)] used Subtle Message All In View from [message_option], saying \"[input]\"."))
 
 #undef SUBTLE_MESSAGE_IN_HEAD
 #undef SUBTLE_MESSAGE_WEYLAND

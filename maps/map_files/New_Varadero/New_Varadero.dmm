@@ -5310,6 +5310,7 @@
 /area/varadero/interior/medical)
 "eMf" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "eMi" = (
@@ -14934,6 +14935,7 @@
 /area/varadero/interior/hall_SE)
 "ncd" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
 "ncg" = (
@@ -15716,6 +15718,7 @@
 /area/varadero/interior/hall_NW)
 "nOI" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/interior_protected/caves)
 "nOO" = (
@@ -16944,6 +16947,7 @@
 /area/varadero/interior/research)
 "oPb" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

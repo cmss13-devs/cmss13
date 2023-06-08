@@ -292,9 +292,7 @@
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/cells)
 "asT" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 8
-	},
+/obj/structure/machinery/landinglight/ds1/delaythree,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "atn" = (
@@ -567,6 +565,12 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
+"aKl" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
 "aKH" = (
 /obj/structure/machinery/light,
 /turf/open/floor/kutjevo/multi_tiles,
@@ -1466,7 +1470,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_north)
 "ccs" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -2102,6 +2106,7 @@
 /area/kutjevo/interior/foremans_office)
 "cSJ" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "cTj" = (
@@ -2377,7 +2382,7 @@
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/exterior/Northwest_Colony)
 "dhL" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/ds2{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -2458,6 +2463,12 @@
 	dir = 9
 	},
 /area/kutjevo/exterior/runoff_river)
+"dpt" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/Northwest_Colony)
 "dpH" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/kutjevo/tan,
@@ -2710,8 +2721,8 @@
 /turf/open/gm/river/desert/shallow,
 /area/kutjevo/exterior/Northwest_Colony)
 "dEI" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/landinglight/ds1/delayone,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "dFc" = (
@@ -3995,7 +4006,7 @@
 	},
 /area/kutjevo/interior/complex/med/auto_doc)
 "ffP" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -7159,7 +7170,7 @@
 	},
 /area/kutjevo/interior/complex/botany/east)
 "jUK" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/ds2{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -8497,6 +8508,12 @@
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/interior/complex/med/locks)
+"lNl" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/Northwest_Colony)
 "lNt" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
@@ -9251,6 +9268,10 @@
 	},
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/interior/complex/med/auto_doc)
+"mIT" = (
+/obj/structure/machinery/landinglight/ds2/delayone,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/Northwest_Colony)
 "mJq" = (
 /obj/structure/machinery/computer/cameras/telescreen/entertainment{
 	icon_state = "ai_bsod";
@@ -11610,7 +11631,7 @@
 	},
 /area/kutjevo/interior/power/comms)
 "pPz" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -12312,7 +12333,7 @@
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "qTI" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -12897,9 +12918,11 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power/comms)
 "rMV" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 8
+	},
 /turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/exterior/Northwest_Colony)
+/area/kutjevo/exterior/lz_dunes)
 "rMZ" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -13109,7 +13132,7 @@
 	},
 /area/kutjevo/interior/colony_central)
 "saK" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight/ds2/delaytwo,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/Northwest_Colony)
 "sbb" = (
@@ -13245,7 +13268,9 @@
 	},
 /area/kutjevo/interior/colony_South/power2)
 "slB" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 1
+	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "slF" = (
@@ -13631,8 +13656,8 @@
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/cells)
 "sLf" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/landinglight/ds2/delayone,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/Northwest_Colony)
 "sLx" = (
@@ -14201,6 +14226,7 @@
 /area/kutjevo/exterior/lz_dunes)
 "tzQ" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "tAQ" = (
@@ -14322,7 +14348,7 @@
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/exterior/Northwest_Colony)
 "tHI" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -14852,6 +14878,12 @@
 	icon_state = "8,8"
 	},
 /area/kutjevo/interior/colony_north)
+"usd" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
 "ush" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
@@ -16347,7 +16379,7 @@
 	},
 /area/kutjevo/exterior/complex_border/med_park)
 "wrk" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -16428,7 +16460,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_bridge)
 "wvX" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/ds2,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/Northwest_Colony)
 "wwc" = (
@@ -16708,6 +16740,7 @@
 /area/kutjevo/interior/construction)
 "wTr" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_N_East)
 "wTt" = (
@@ -16752,6 +16785,12 @@
 "wXd" = (
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/interior/colony_South)
+"wXf" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/Northwest_Colony)
 "wXy" = (
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/auto_turf/sand/layer2,
@@ -17570,6 +17609,7 @@
 /area/kutjevo/interior/colony_South/power2)
 "ykY" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "ylf" = (
@@ -19565,6 +19605,13 @@ wGH
 cWV
 swZ
 ffP
+tld
+ptH
+sKo
+ffP
+tld
+ptH
+sKo
 ffP
 tld
 ptH
@@ -19574,18 +19621,11 @@ tld
 ptH
 sKo
 ffP
-ffP
+tld
 ptH
 sKo
 ffP
 tld
-sKo
-sKo
-ffP
-tld
-ptH
-ptH
-ptH
 swZ
 cWV
 wGH
@@ -19730,7 +19770,7 @@ wGH
 wGH
 wGH
 cWV
-uhO
+exI
 nbV
 nbV
 umo
@@ -19897,7 +19937,7 @@ prJ
 wGH
 wGH
 cWV
-rPq
+asT
 nbV
 nbV
 nbV
@@ -19920,7 +19960,7 @@ nbV
 nbV
 jZJ
 nbV
-qVc
+usd
 cWV
 aRu
 vei
@@ -20064,7 +20104,7 @@ vei
 wGH
 wGH
 cWV
-exI
+uhO
 nbV
 nbV
 nbV
@@ -20087,7 +20127,7 @@ lAI
 nbV
 lAI
 nbV
-qVc
+slB
 cWV
 aRu
 wGH
@@ -20254,7 +20294,7 @@ lAI
 lAI
 lAI
 nbV
-qVc
+aKl
 cWV
 aRu
 qnU
@@ -20398,7 +20438,7 @@ wGH
 wGH
 maE
 cWV
-uhO
+exI
 nbV
 lAI
 lAI
@@ -20565,7 +20605,7 @@ vei
 wGH
 wGH
 cWV
-rPq
+asT
 nbV
 lAI
 lAI
@@ -20588,7 +20628,7 @@ lAI
 nbV
 nbV
 nbV
-qVc
+usd
 cWV
 aRu
 qnU
@@ -20637,26 +20677,26 @@ oJE
 xBm
 tGE
 hnq
-hnq
-wrk
 dhL
-ccs
-hnq
-wrk
-dhL
-ccs
-hnq
-hnq
-dhL
-ccs
-hnq
 wrk
 ccs
+hnq
+dhL
+wrk
 ccs
 hnq
+dhL
 wrk
+ccs
+hnq
 dhL
+wrk
+ccs
+hnq
 dhL
+wrk
+ccs
+hnq
 dhL
 tGE
 xBm
@@ -20732,7 +20772,7 @@ wGH
 wGH
 wGH
 cWV
-exI
+uhO
 nbV
 lAI
 lAI
@@ -20755,7 +20795,7 @@ lAI
 nbV
 nbV
 nbV
-qVc
+slB
 cWV
 aRu
 wGH
@@ -20825,7 +20865,7 @@ hzN
 wqk
 hzN
 hzN
-qTI
+dpt
 xBm
 huR
 huR
@@ -20899,7 +20939,7 @@ prJ
 wGH
 maE
 cWV
-slB
+rPq
 nbV
 lAI
 lAI
@@ -20922,7 +20962,7 @@ lAI
 lAI
 lAI
 nbV
-qVc
+aKl
 cWV
 aRu
 gZj
@@ -20969,7 +21009,7 @@ sVF
 hrz
 sVF
 xBm
-rMV
+sUt
 hzN
 hzN
 hzN
@@ -20992,7 +21032,7 @@ hzN
 hzN
 kvd
 hzN
-qTI
+lNl
 xBm
 huR
 huR
@@ -21066,7 +21106,7 @@ prJ
 wGH
 maE
 cWV
-uhO
+exI
 nbV
 nbV
 nbV
@@ -21233,7 +21273,7 @@ dxF
 vei
 maE
 cWV
-rPq
+asT
 nbV
 nbV
 nbV
@@ -21256,7 +21296,7 @@ nbV
 nbV
 lAI
 cBF
-qVc
+usd
 cWV
 aRu
 wGH
@@ -21326,7 +21366,7 @@ ppX
 ppX
 ppX
 hzN
-qTI
+wXf
 xBm
 huR
 huR
@@ -21400,7 +21440,7 @@ dxF
 dxF
 wGH
 cWV
-exI
+uhO
 bbc
 nbV
 umo
@@ -21423,7 +21463,7 @@ nbV
 umo
 nbV
 nbV
-qVc
+slB
 cWV
 wGH
 wGH
@@ -21493,7 +21533,7 @@ ppX
 hzN
 eBI
 hzN
-qTI
+dpt
 xBm
 huR
 huR
@@ -21569,27 +21609,27 @@ wGH
 cWV
 swZ
 yaE
-yaE
 qzr
-asT
-dIo
-yaE
-qzr
-asT
-dIo
-yaE
-yaE
-asT
+rMV
 dIo
 yaE
 qzr
-asT
+rMV
 dIo
 yaE
 qzr
-asT
+rMV
 dIo
+yaE
+qzr
+rMV
 dIo
+yaE
+qzr
+rMV
+dIo
+yaE
+qzr
 swZ
 cWV
 wGH
@@ -21637,7 +21677,7 @@ sVF
 hrz
 oJE
 xBm
-rMV
+sUt
 hzN
 ppX
 ppX
@@ -21660,7 +21700,7 @@ ppX
 hzN
 hzN
 hzN
-qTI
+lNl
 xBm
 huR
 huR
@@ -21971,7 +22011,7 @@ hrz
 hrz
 oJE
 xBm
-sUt
+mIT
 hzN
 ppX
 ppX
@@ -21994,7 +22034,7 @@ ppX
 ppX
 ppX
 hzN
-qTI
+wXf
 xBm
 huR
 huR
@@ -22161,7 +22201,7 @@ ppX
 hzN
 ppX
 eBI
-qTI
+dpt
 xBm
 huR
 huR
@@ -22305,7 +22345,7 @@ hrz
 hrz
 iin
 xBm
-rMV
+sUt
 hzN
 hzN
 hzN
@@ -22328,7 +22368,7 @@ hzN
 hzN
 ppX
 eBI
-qTI
+lNl
 xBm
 huR
 huR
@@ -22640,28 +22680,28 @@ sVF
 oJE
 xBm
 tGE
+pPz
 jUK
-jUK
+xDR
 tHI
-xDR
 pPz
 jUK
+xDR
 tHI
-xDR
 pPz
 jUK
-jUK
 xDR
-pPz
-jUK
 tHI
-xDR
 pPz
 jUK
-tHI
 xDR
+tHI
 pPz
+jUK
+xDR
+tHI
 pPz
+jUK
 tGE
 xBm
 huR

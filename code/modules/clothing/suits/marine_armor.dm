@@ -134,7 +134,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	var/armor_variation = 0
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 
-/obj/item/clothing/suit/storage/marine/Initialize()
+/obj/item/clothing/suit/storage/marine/Initialize(mapload)
 	. = ..()
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
@@ -146,7 +146,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type)
 	armor_overlays = list("lamp") //Just one for now, can add more later.
-	if(armor_variation)
+	if(armor_variation && mapload)
 		post_vendor_spawn_hook()
 	update_icon()
 	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
@@ -174,14 +174,14 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /obj/item/clothing/suit/storage/marine/post_vendor_spawn_hook(mob/living/carbon/human/user) //used for randomizing/selecting a variant for armors.
 	var/new_look //used for the icon_state text replacement.
 
-	if(!usr?.client?.prefs)
+	if(!user?.client?.prefs)
 		new_look = rand(1,armor_variation)
 
-	else if(usr.client.prefs.preferred_armor == "Random")
+	else if(user.client.prefs.preferred_armor == "Random")
 		new_look = rand(1,armor_variation)
 
 	else
-		new_look = GLOB.armor_style_list[usr.client.prefs.preferred_armor]
+		new_look = GLOB.armor_style_list[user.client.prefs.preferred_armor]
 
 	icon_state = replacetext(icon_state,"1","[new_look]")
 	update_icon()

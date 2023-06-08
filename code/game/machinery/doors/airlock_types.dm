@@ -827,7 +827,7 @@
 /obj/structure/machinery/door/airlock/dropship_hatch/ex_act(severity)
 	return
 
-/obj/structure/machinery/door/airlock/dropship_hatch/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/door/airlock/dropship_hatch/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = NONE

@@ -94,7 +94,7 @@
 	if(burrow)
 		addtimer(CALLBACK(src, PROC_REF(process_burrow)), 1 SECONDS)
 
-/mob/living/carbon/Xenomorph/proc/process_burrow_impaler(var/turf/T = get_turf(src))
+/mob/living/carbon/xenomorph/proc/process_burrow_impaler(turf/T = get_turf(src))
 	var/obj/effect/alien/weeds/weeds = locate() in T
 	if(!burrow)
 		return
@@ -103,7 +103,7 @@
 	if(burrow)
 		addtimer(CALLBACK(src, PROC_REF(process_burrow_impaler)), 0.5 SECONDS)
 
-/mob/living/carbon/Xenomorph/proc/burrow_off()
+/mob/living/carbon/xenomorph/proc/burrow_off()
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 	to_chat(src, SPAN_NOTICE("You resurface."))
@@ -277,7 +277,7 @@
 
 //Impaler Burrower Abilities
 /datum/action/xeno_action/activable/burrowed_spikes/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(!istype(X))
 		return
 
@@ -346,7 +346,7 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/burrowed_spikes/proc/handle_damage(var/mob/living/carbon/Xenomorph/X, target_turfs, telegraph_atom_list, damage)
+/datum/action/xeno_action/activable/burrowed_spikes/proc/handle_damage(mob/living/carbon/xenomorph/X, target_turfs, telegraph_atom_list, damage)
 	for (var/turf/target_turf in target_turfs)
 		telegraph_atom_list += new /obj/effect/xenomorph/ground_spike(target_turf, X)
 		for (var/mob/living/carbon/C in target_turf)
@@ -369,7 +369,7 @@
 
 
 /datum/action/xeno_action/activable/sunken_tail/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(!istype(X))
 		return
 
@@ -423,12 +423,12 @@
 	return
 
 /datum/action/xeno_action/activable/sunken_tail/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(!X) return
 	if(X.burrow) return FALSE
 	return ..()
 
-/datum/action/xeno_action/activable/sunken_tail/proc/handle_damage(var/mob/living/carbon/Xenomorph/X, target_turfs, damage, var/spike_circle = FALSE)
+/datum/action/xeno_action/activable/sunken_tail/proc/handle_damage(mob/living/carbon/xenomorph/X, target_turfs, damage, spike_circle = FALSE)
 	new /obj/effect/xenomorph/ground_spike(target_turfs, X)
 	for (var/mob/living/carbon/C in target_turfs)
 		if (C.stat == DEAD || HAS_TRAIT(C, TRAIT_NESTED))
@@ -465,14 +465,14 @@
 	for(var/dirn in alldirs)
 		recursive_spread(get_step(T, dirn), dist_left - 1, orig_depth, damage)
 
-/datum/action/xeno_action/activable/sunken_tail/proc/warning_circle(turf/T, mob/living/carbon/Xenomorph/X)
+/datum/action/xeno_action/activable/sunken_tail/proc/warning_circle(turf/T, mob/living/carbon/xenomorph/X)
 	if(!istype(T))
 		return
 
 	new /obj/effect/xenomorph/xeno_telegraph/red(T, (windup_delay/2))
 
 /datum/action/xeno_action/onclick/ensconce/use_ability()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!istype(xeno))
 		return
 
@@ -492,7 +492,7 @@
 		to_chat(xeno, SPAN_XENOWARNING("You need to do this on weeds!"))
 		return
 
-	var/mob/living/carbon/Xenomorph/Burrower/burrowerfortified = locate() in T
+	var/mob/living/carbon/xenomorph/burrower/burrowerfortified = locate() in T
 	if(burrowerfortified != xeno)
 		if(burrowerfortified.fortify)
 			to_chat(xeno, SPAN_XENOWARNING("There is already another sister burrowed here!"))
@@ -529,12 +529,12 @@
 	return
 
 /datum/action/xeno_action/onclick/ensconce/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(!X) return
 	if(X.burrow) return FALSE
 	return ..()
 
-/datum/action/xeno_action/onclick/ensconce/proc/fortify_switch(var/mob/living/carbon/Xenomorph/X, var/fortify_state)
+/datum/action/xeno_action/onclick/ensconce/proc/fortify_switch(mob/living/carbon/xenomorph/X, fortify_state)
 	if(X.fortify == fortify_state)
 		return
 
@@ -574,7 +574,7 @@
 	UnregisterSignal(owner, COMSIG_MOB_DEATH)
 	fortify_switch(owner, FALSE)
 
-/datum/action/xeno_action/onclick/ensconce/proc/process_ensconce(var/mob/living/carbon/Xenomorph/xeno)
+/datum/action/xeno_action/onclick/ensconce/proc/process_ensconce(mob/living/carbon/xenomorph/xeno)
 	var/turf/T = get_turf(xeno)
 	var/obj/effect/alien/weeds/weeds = locate() in T
 	if(!xeno.fortify)

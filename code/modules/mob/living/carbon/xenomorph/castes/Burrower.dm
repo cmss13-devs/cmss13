@@ -90,7 +90,7 @@
 		canmove = FALSE
 		return canmove
 
-/mob/living/carbon/Xenomorph/Burrower/ex_act(severity)
+/mob/living/carbon/xenomorph/burrower/ex_act(severity)
 	if(burrow && mutation_type != BURROWER_IMPALER)
 		return
 	else if(burrow)
@@ -103,22 +103,22 @@
 		return
 	..()
 
-/mob/living/carbon/Xenomorph/Burrower/attack_hand()
+/mob/living/carbon/xenomorph/burrower/attack_hand()
 	if(burrow && mutation_type != BURROWER_IMPALER)
 		return
 	..()
 
-/mob/living/carbon/Xenomorph/Burrower/attackby()
+/mob/living/carbon/xenomorph/burrower/attackby()
 	if(burrow && mutation_type != BURROWER_IMPALER)
 		return
 	..()
 
-/mob/living/carbon/Xenomorph/Burrower/bullet_act()
+/mob/living/carbon/xenomorph/burrower/bullet_act()
 	if(burrow && mutation_type != BURROWER_IMPALER)
 		return
 	. = ..()
 
-/mob/living/carbon/Xenomorph/Burrower/get_projectile_hit_chance(obj/item/projectile/P)
+/mob/living/carbon/xenomorph/burrower/get_projectile_hit_chance(obj/item/projectile/P)
 	. = ..()
 	if(burrow && mutation_type != BURROWER_IMPALER)
 		return 0

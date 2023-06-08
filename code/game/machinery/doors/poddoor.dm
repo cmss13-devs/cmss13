@@ -300,7 +300,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/machinery/door/poddoor/shutters/almayer/locked/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/door/poddoor/shutters/almayer/locked/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = NONE

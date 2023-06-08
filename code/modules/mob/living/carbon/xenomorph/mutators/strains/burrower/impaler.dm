@@ -13,13 +13,13 @@
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/onclick/plant_weeds,
-		/datum/action/xeno_action/onclick/place_trap
+		/datum/action/xeno_action/onclick/place_trap,
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/burrowed_spikes,
 		/datum/action/xeno_action/activable/sunken_tail,
 		/datum/action/xeno_action/onclick/burrow,
-		/datum/action/xeno_action/onclick/ensconce
+		/datum/action/xeno_action/onclick/ensconce,
 	)
 
 /datum/xeno_mutator/burrower_impaler/apply_mutator(datum/mutator_set/individual_mutators/MS)
@@ -27,7 +27,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Burrower/B = MS.xeno
+	var/mob/living/carbon/xenomorph/burrower/B = MS.xeno
 	B.mutation_type = BURROWER_IMPALER
 
 	mutator_update_actions(B)

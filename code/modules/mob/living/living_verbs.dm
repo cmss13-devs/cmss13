@@ -11,8 +11,8 @@
 		to_chat(src, SPAN_WARNING("You can't resist in your current state."))
 		return
 
-	if(isXeno(src))
-		var/mob/living/carbon/Xenomorph/Xeno = src
+	if(isxeno(src))
+		var/mob/living/carbon/xenomorph/Xeno = src
 		if(Xeno.burrow)
 			to_chat(src, SPAN_WARNING("You can't resist in your current state."))
 			return

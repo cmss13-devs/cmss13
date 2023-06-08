@@ -275,7 +275,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ex_act(severity)
 	return
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = NONE

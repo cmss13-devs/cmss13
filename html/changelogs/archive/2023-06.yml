@@ -72,3 +72,27 @@
 2023-06-07:
   Morrow:
   - balance: HPR is now only found in requisitions.
+2023-06-08:
+  BeagleGaming1:
+  - balance: Maintenance Jack can pry flooring and do wrench surgery
+  Khadd:
+  - qol: transfer direction & rate are now listed in the description of reagent tanks
+  - bugfix: fixes being able to make others pick up chairs
+  Morrow:
+  - balance: Hand and feet now cannot get IB
+  Segrain:
+  - bugfix: Queen Eye no longer repeatedly throws runtime errors.
+  Steelpoint:
+  - maptweak: Fixed landing strip lights on most maps
+  fira:
+  - bugfix: Lobby Music is a bit quieter and should now stop properly when you spawn
+      in.
+  - bugfix: Fixed signallers hijacking radio headsets filters, bricking the frequency
+      for radio usage. They now have their own radio filter.
+  nauticall:
+  - imageadd: 'Resprited the following items: large colony floodlights, the large
+      colony floodlight switch, newscasters, and ATMs.'
+  realforest2001:
+  - rscadd: Adds an admin button for global blurb alerts. (Visual on game screen)
+  wHO_TOOKthejam:
+  - rscadd: gives DCC and PO the same armor choices

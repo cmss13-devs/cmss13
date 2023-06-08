@@ -7747,19 +7747,6 @@
 	icon_state = "cement4"
 	},
 /area/lv522/outdoors/colony_streets/south_east_street)
-"ebM" = (
-/obj/structure/blocker/invisible_wall,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/lv522/atmos/cargo_intake)
 "ebP" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "2"
@@ -7864,12 +7851,6 @@
 	icon_state = "greenfull"
 	},
 /area/lv522/indoors/b_block/bridge)
-"eeX" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/asphalt/cement{
-	icon_state = "cement1"
-	},
-/area/lv522/outdoors/n_rockies)
 "eeY" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/auto_turf/shale/layer0,
@@ -9662,7 +9643,6 @@
 	},
 /area/lv522/atmos/west_reactor)
 "eUf" = (
-/obj/structure/blocker/invisible_wall,
 /obj/item/ammo_magazine/m2c{
 	current_rounds = 0;
 	layer = 4.2;
@@ -10127,7 +10107,6 @@
 /turf/open/floor/prison,
 /area/lv522/landing_zone_2)
 "fgf" = (
-/obj/structure/blocker/invisible_wall,
 /obj/item/ammo_magazine/m2c{
 	current_rounds = 0;
 	layer = 4.2;
@@ -11438,6 +11417,13 @@
 	},
 /area/lv522/atmos/east_reactor/west)
 "fLz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /obj/structure/machinery{
 	density = 1;
 	dir = 4;
@@ -11447,15 +11433,9 @@
 	name = "\improper M577 armored personnel carrier";
 	pixel_y = -21;
 	unacidable = 1;
-	unslashable = 1
-	},
-/obj/structure/blocker/invisible_wall,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
+	unslashable = 1;
+	bound_width = 128;
+	bound_height = 64
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
@@ -11603,10 +11583,6 @@
 	icon_state = "darkbrownfull2"
 	},
 /area/lv522/indoors/c_block/casino)
-"fOl" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/shale/layer0,
-/area/lv522/outdoors/n_rockies)
 "fOy" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/decal/cleanable/cobweb,
@@ -68155,7 +68131,7 @@ bIJ
 bIJ
 yim
 abV
-ebM
+abV
 eUf
 fLz
 abV
@@ -68382,9 +68358,9 @@ yim
 yim
 yim
 cpy
-eeX
-eeX
-eeX
+inU
+inU
+inU
 gGx
 inU
 inU
@@ -68611,7 +68587,7 @@ cpy
 cpy
 cpy
 fgf
-fOl
+yim
 yim
 hzA
 ihy
@@ -68838,7 +68814,7 @@ yim
 cpy
 cpy
 cpy
-fOl
+yim
 cpy
 hIp
 ijv

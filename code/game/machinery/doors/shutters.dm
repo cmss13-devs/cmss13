@@ -131,6 +131,11 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/pressure/ex_act(severity)
 	return
 
+/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_all = NONE
+
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors
 	name = "\improper Uniform Vendor Shutters"
 	id = "bot_uniforms"

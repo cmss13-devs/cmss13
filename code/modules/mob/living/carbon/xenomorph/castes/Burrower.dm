@@ -85,29 +85,44 @@
 
 /mob/living/carbon/xenomorph/burrower/update_canmove()
 	. = ..()
-	if(burrow)
+	if(burrow && mutation_type != BURROWER_IMPALER)
 		density = FALSE
 		canmove = FALSE
 		return canmove
 
-/mob/living/carbon/xenomorph/burrower/ex_act(severity)
-	if(burrow)
+/mob/living/carbon/Xenomorph/Burrower/ex_act(severity)
+	if(burrow && mutation_type != BURROWER_IMPALER)
+		return
+	else if(burrow)
+		var/powerfactor_value = round(severity * 0.05 ,1)
+		powerfactor_value = min(powerfactor_value,20)
+		if(powerfactor_value > 0)
+			KnockOut(powerfactor_value/5)
+			Slow(powerfactor_value)
+			Superslow(powerfactor_value/2)
 		return
 	..()
 
-/mob/living/carbon/xenomorph/burrower/attack_hand()
-	if(burrow)
+/mob/living/carbon/Xenomorph/Burrower/attack_hand()
+	if(burrow && mutation_type != BURROWER_IMPALER)
 		return
 	..()
 
-/mob/living/carbon/xenomorph/burrower/attackby()
-	if(burrow)
+/mob/living/carbon/Xenomorph/Burrower/attackby()
+	if(burrow && mutation_type != BURROWER_IMPALER)
 		return
 	..()
 
-/mob/living/carbon/xenomorph/burrower/get_projectile_hit_chance()
+/mob/living/carbon/Xenomorph/Burrower/bullet_act()
+	if(burrow && mutation_type != BURROWER_IMPALER)
+		return
 	. = ..()
-	if(burrow)
+
+/mob/living/carbon/Xenomorph/Burrower/get_projectile_hit_chance(obj/item/projectile/P)
+	. = ..()
+	if(burrow && mutation_type != BURROWER_IMPALER)
+		return 0
+	else if(burrow && P.original != src)
 		return 0
 
 /datum/behavior_delegate/burrower_base

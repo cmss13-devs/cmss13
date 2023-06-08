@@ -56,7 +56,7 @@
 /obj/structure/machinery/door/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = NONE
+		PF.flags_can_pass_all = PASS_BURROWED
 
 /obj/structure/machinery/door/proc/handle_multidoor()
 	if(width > 1)

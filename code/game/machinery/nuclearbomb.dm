@@ -64,24 +64,27 @@ var/bomb_set = FALSE
 	timeleft = explosion_time - world.time
 	if(world.time >= explosion_time)
 		explode()
+		return
 	//3 warnings: 1. Halfway through, 2. 1 minute left, 3. 10 seconds left.
 	//this structure allows varedits to var/timeleft without losing or spamming warnings.
-	else if(timer_announcements_flags)
-		if(timer_announcements_flags & NUKE_SHOW_TIMER_HALF)
-			if(timeleft <= initial(timeleft) / 2 && timeleft >= initial(timeleft) / 2 - 30)
-				announce_to_players(NUKE_SHOW_TIMER_HALF)
-				timer_announcements_flags &= ~NUKE_SHOW_TIMER_HALF
-				return
-		if(timer_announcements_flags & NUKE_SHOW_TIMER_MINUTE)
-			if(timeleft <= 600 && timeleft >= 570)
-				announce_to_players(NUKE_SHOW_TIMER_MINUTE)
-				timer_announcements_flags = NUKE_SHOW_TIMER_TEN_SEC
-				return
-		if(timer_announcements_flags & NUKE_SHOW_TIMER_TEN_SEC)
-			if(timeleft <= 100 && timeleft >= 70)
-				announce_to_players(NUKE_SHOW_TIMER_TEN_SEC)
-				timer_announcements_flags = 0
-				return
+	if(!timer_announcements_flags)
+		return
+
+	if(timer_announcements_flags & NUKE_SHOW_TIMER_HALF)
+		if(timeleft <= initial(timeleft) / 2 && timeleft >= initial(timeleft) / 2 - 30)
+			announce_to_players(NUKE_SHOW_TIMER_HALF)
+			timer_announcements_flags &= ~NUKE_SHOW_TIMER_HALF
+			return
+	if(timer_announcements_flags & NUKE_SHOW_TIMER_MINUTE)
+		if(timeleft <= 600 && timeleft >= 570)
+			announce_to_players(NUKE_SHOW_TIMER_MINUTE)
+			timer_announcements_flags = NUKE_SHOW_TIMER_TEN_SEC
+			return
+	if(timer_announcements_flags & NUKE_SHOW_TIMER_TEN_SEC)
+		if(timeleft <= 100 && timeleft >= 70)
+			announce_to_players(NUKE_SHOW_TIMER_TEN_SEC)
+			timer_announcements_flags = 0
+			return
 
 /obj/structure/machinery/nuclearbomb/attack_alien(mob/living/carbon/xenomorph/M)
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, attack_hand), M)
@@ -319,11 +322,9 @@ var/bomb_set = FALSE
 	var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
 	var/list/humans_USCM = list()
 	for(var/mob/M in humans_other)
-		var/mob/living/carbon/human/H = M
-		if(istype(H)) //if it's unconsious human or yautja, we remove them
-			if(H.stat != CONSCIOUS || isyautja(H))
-				humans_other.Remove(M)
-				continue
+		if(M.stat != CONSCIOUS || isyautja(M))
+			humans_other.Remove(M)
+			continue
 		if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR) //separating marines from other factions. Survs go here too
 			humans_USCM += M
 			humans_other -= M
@@ -409,8 +410,7 @@ var/bomb_set = FALSE
 	return ..()
 
 /obj/structure/machinery/nuclearbomb/tech
-
-	var/decryption_time = 10 MINUTES
+	var/decryption_time = 1 MINUTES // SET BACK TO 10 MINUTES BEFORE TM - MORROW
 	var/decryption_end_time = null
 	var/decrypting = FALSE
 
@@ -433,16 +433,13 @@ var/bomb_set = FALSE
 		if(is_ground_level(possible_telecomm.z))
 			linked_decryption_towers += possible_telecomm
 
-	for(var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/telecomm_unit in linked_decryption_towers)
-		RegisterSignal(telecomm_unit, COMSIG_COMM_RELAY_SHUT_DOWN, PROC_REF(connected_comm_shutdown))
+	RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_TELECOMM_TURNED_OFF, PROC_REF(connected_comm_shutdown))
 
 /obj/structure/machinery/nuclearbomb/tech/ui_data(mob/user)
-	var/list/data = ..()
+	. = ..()
 
-	data["decrypting"] = decrypting
-	data["decryption_time"] = decryption_time / (1 SECONDS)
-
-	return data
+	.["decrypting"] = decrypting
+	.["decryption_time"] = decryption_time / (1 SECONDS)
 
 /obj/structure/machinery/nuclearbomb/tech/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
@@ -461,8 +458,8 @@ var/bomb_set = FALSE
 				to_chat(ui.user, SPAN_INFO("Engage anchors first!"))
 				return
 
-			var/area/A = get_area(src)
-			if(!A.can_build_special)
+			var/area/current_area = get_area(src)
+			if(!current_area.can_build_special)
 				to_chat(ui.user, SPAN_INFO("You cannot deploy [src] here!"))
 				return
 
@@ -473,6 +470,9 @@ var/bomb_set = FALSE
 						return
 
 			if(ui.user.action_busy)
+				return
+
+			if(being_used)
 				return
 
 			ui.user.visible_message(SPAN_WARNING("[ui.user] begins to [decrypting ? "stop the decryption process." : "start decrypting."]!"), SPAN_WARNING("You begin to [decrypting ? "stop the decryption process." : "start decrypting."]."))
@@ -508,17 +508,19 @@ var/bomb_set = FALSE
 		stop_processing()
 		return
 
-	else if(timer_announcements_flags)
-		if(timer_announcements_flags & NUKE_DECRYPT_SHOW_TIMER_HALF)
-			if(decryption_time <= initial(decryption_time) / 2 && decryption_time >= initial(decryption_time) / 2 - 30)
-				announce_to_players(NUKE_DECRYPT_SHOW_TIMER_HALF)
-				timer_announcements_flags &= ~NUKE_DECRYPT_SHOW_TIMER_HALF
-				return
-		if(timer_announcements_flags & NUKE_DECRYPT_SHOW_TIMER_MINUTE)
-			if(decryption_time <= 600 && decryption_time >= 570)
-				announce_to_players(NUKE_DECRYPT_SHOW_TIMER_MINUTE)
-				timer_announcements_flags &= ~NUKE_DECRYPT_SHOW_TIMER_MINUTE
-				return
+	if(!timer_announcements_flags)
+		return
+
+	if(timer_announcements_flags & NUKE_DECRYPT_SHOW_TIMER_HALF)
+		if(decryption_time <= initial(decryption_time) / 2 && decryption_time >= initial(decryption_time) / 2 - 30)
+			announce_to_players(NUKE_DECRYPT_SHOW_TIMER_HALF)
+			timer_announcements_flags &= ~NUKE_DECRYPT_SHOW_TIMER_HALF
+			return
+	if(timer_announcements_flags & NUKE_DECRYPT_SHOW_TIMER_MINUTE)
+		if(decryption_time <= 600 && decryption_time >= 570)
+			announce_to_players(NUKE_DECRYPT_SHOW_TIMER_MINUTE)
+			timer_announcements_flags &= ~NUKE_DECRYPT_SHOW_TIMER_MINUTE
+			return
 
 /obj/structure/machinery/nuclearbomb/tech/announce_to_players(timer_warning)
 	if(!decryption_time)
@@ -545,11 +547,9 @@ var/bomb_set = FALSE
 		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nYou have approximately [time_left] seconds to abandon the hunting grounds before human Purification Device is able to be activated."))
 
 		//xenos part
-		var/warning
+		var/warning = "Hive killer is almost prepared to be activated!"
 		if(timer_warning & NUKE_DECRYPT_SHOW_TIMER_HALF)
 			warning = "Hive killer is halfway through its initial phase!"
-		else
-			warning = "Hive killer is almost prepared to be activated!"
 
 		var/datum/hive_status/hive
 		for(var/hivenumber in GLOB.hive_datum)
@@ -570,17 +570,20 @@ var/bomb_set = FALSE
 			if(!hive.totalXenos.len)
 				continue
 			xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have started the initial phase of a hive killer at [get_area_name(loc)]! Destroy their communications relays!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
-	else
-		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE DECRYPTION HALTED.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
-		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE DECRYPTION HALTED.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human Purification Device's signature has disappeared."))
-		for(var/hivenumber in GLOB.hive_datum)
-			hive = GLOB.hive_datum[hivenumber]
-			if(!hive.totalXenos.len)
-				continue
-			xeno_announcement(SPAN_XENOANNOUNCE("The hive killer's initial phase has been halted! Rejoice!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+		return
+
+	announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE DECRYPTION HALTED.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
+	announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE DECRYPTION HALTED.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
+	yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human Purification Device's signature has disappeared."))
+	for(var/hivenumber in GLOB.hive_datum)
+		hive = GLOB.hive_datum[hivenumber]
+		if(!length(hive.totalXenos))
+			continue
+		xeno_announcement(SPAN_XENOANNOUNCE("The hive killer's initial phase has been halted! Rejoice!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 
 /obj/structure/machinery/nuclearbomb/tech/proc/connected_comm_shutdown(obj/structure/machinery/telecomms/relay/preset/tower/telecomm_unit)
+	SIGNAL_HANDLER
+
 	if(!decrypting)
 		return
 
@@ -588,7 +591,6 @@ var/bomb_set = FALSE
 	announce_to_players()
 
 /obj/structure/machinery/nuclearbomb/tech/Destroy()
-	for(var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/telecomm_unit in linked_decryption_towers)
-		UnregisterSignal(telecomm_unit, COMSIG_COMM_RELAY_SHUT_DOWN)
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_TELECOMM_TURNED_OFF)
 
 	. = ..()

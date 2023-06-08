@@ -21,13 +21,13 @@
 /datum/tech/nuke/on_unlock()
 	. = ..()
 
-	var/datum/supply_order/O = new /datum/supply_order()
-	O.ordernum = supply_controller.ordernum
+	var/datum/supply_order/new_order = new /datum/supply_order()
+	new_order.ordernum = supply_controller.ordernum
 	supply_controller.ordernum++
-	O.object = supply_controller.supply_packs["Intel Operational Nuke"]
-	O.orderedby = MAIN_AI_SYSTEM
+	new_order.object = supply_controller.supply_packs["Intel Operational Nuke"]
+	new_order.orderedby = MAIN_AI_SYSTEM
 
-	supply_controller.shoppinglist += O
+	supply_controller.shoppinglist += new_order
 
 /datum/tech/nuke/can_unlock(mob/unlocking_mob)
 	. = ..()

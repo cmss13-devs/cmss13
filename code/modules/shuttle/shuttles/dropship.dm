@@ -81,6 +81,14 @@
 	. = ..()
 	control_doors("force-lock-launch", "all", force=TRUE, asynchronous = FALSE)
 
+	for(var/area/checked_area in shuttle_areas)
+		if(locate(/mob/living/carbon/xenomorph) in checked_area)
+			var/name = "Unidentified Lifesigns"
+			var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
+			shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg')
+			set_security_level(SEC_LEVEL_RED)
+			return
+
 /obj/docking_port/mobile/marine_dropship/alamo
 	name = "Alamo"
 	id = DROPSHIP_ALAMO

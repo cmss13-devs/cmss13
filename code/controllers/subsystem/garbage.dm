@@ -278,7 +278,7 @@ SUBSYSTEM_DEF(garbage)
 #endif
 
 	var/static/uid = 0
-	uid = WRAP(uid+1, 1, (2**24)-1)
+	uid = WRAP(uid+1, 1, SHORT_REAL_LIMIT - 1)
 	if (D.gc_destroyed <= 0)
 		D.gc_destroyed = uid
 

@@ -30,7 +30,7 @@
 	xeno.tremor()
 	return ..()
 
-///Spiker abilities
+// Spiker abilities
 /datum/action/xeno_action/onclick/burrow
 	name = "Burrow"
 	action_icon_state = "agility_on"

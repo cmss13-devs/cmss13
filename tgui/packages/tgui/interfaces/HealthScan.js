@@ -353,7 +353,7 @@ const ScannerLimbs = (props, context) => {
                       [Bleeding]
                     </Box>
                   ) : null}
-                  {limb.internal_bleeding && bodyscanner ? (
+                  {limb.internal_bleeding ? (
                     <Box inline color={'red'} bold={1}>
                       [Internal Bleeding]
                     </Box>

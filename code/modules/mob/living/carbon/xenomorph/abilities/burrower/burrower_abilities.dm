@@ -30,7 +30,7 @@
 	xeno.tremor()
 	return ..()
 
-//Spiker abilities
+///Spiker abilities
 /datum/action/xeno_action/onclick/burrow
 	name = "Burrow"
 	action_icon_state = "agility_on"
@@ -56,7 +56,7 @@
 	xeno_cooldown = 8 SECONDS
 	plasma_cost = 50
 
-	// Ability stats config
+	/// Ability stats config
 	var/base_damage = 35
 	var/chain_separation_delay = 0.2 SECONDS //Delay between each tile hit
 	var/max_distance = 4
@@ -73,7 +73,7 @@
 	xeno_cooldown = 13 SECONDS
 	plasma_cost = 100
 
-	// Ability stats config
+	/// Ability stats config
 	var/base_damage = 60
 	var/windup_delay = 0.8 SECONDS
 	var/max_distance = 7
@@ -91,6 +91,6 @@
 	xeno_cooldown = 3 SECONDS
 	plasma_cost = 0
 
-	// Ability stats config
+	/// Ability stats config
 	var/windup_delay = 1 SECONDS
 	var/reinforced_vision_range = 10

@@ -1,0 +1,7 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fix xenos being unable to point and marines unable to open bags with MMB"
+  - bugfix: "Fix ghosts interacting with ghost join abilities and teleporting to UI icons."
+  - bugfix: "Disabled xenos transferring plasma to self (it just wasted plasma)"
+  - ui: "Vanguard dash now uses a different icon state while waiting for second use (or timeout)"

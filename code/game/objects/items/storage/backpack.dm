@@ -894,22 +894,22 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	has_gamemode_skin = TRUE
 
 /obj/item/storage/backpack/marine/engineerpack/flamethrower/verb/remove_reagents()
-	set name = "Empty canister"
-	set category = "Object"
+    set name = "Empty canister"
+    set category = "Object"
 
-	set src in usr
+    set src in usr
 
-	if(usr.get_active_hand() != src)
-		return
+    if(usr.get_active_hand() != src)
+        return
 
-	if(alert(usr, "Do you really want to empty out [src]?", "Empty canister", "Yes", "No") != "Yes")
-		return
+    if(alert(usr, "Do you really want to empty out [src]?", "Empty canister", "Yes", "No") != "Yes")
+        return
 
-	reagents.clear_reagents()
+    reagents.clear_reagents()
 
-	playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-	to_chat(usr, SPAN_NOTICE("You empty out [src]"))
-	update_icon()
+    playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
+    to_chat(usr, SPAN_NOTICE("You empty out [src]"))
+    update_icon()
 
 //this is to revert change for the backpack that are for flametrower usage.
 // so that they can use custom mix to refill those backpack

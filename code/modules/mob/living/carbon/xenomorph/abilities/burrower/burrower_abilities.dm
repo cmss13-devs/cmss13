@@ -9,12 +9,12 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
-/datum/action/xeno_action/activable/burrow/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X.burrow && X.mutation_type != BURROWER_IMPALER)
-		X.tunnel(get_turf(A))
+/datum/action/xeno_action/activable/burrow/use_ability(atom/atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno.burrow && xeno.mutation_type != BURROWER_IMPALER)
+		xeno.tunnel(get_turf(atom))
 	else
-		X.burrow()
+		xeno.burrow()
 	return ..()
 
 /datum/action/xeno_action/onclick/tremor
@@ -26,8 +26,8 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/tremor/use_ability()
-	var/mob/living/carbon/xenomorph/X = owner
-	X.tremor()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.tremor()
 	return ..()
 
 //Spiker abilities
@@ -39,12 +39,12 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
-/datum/action/xeno_action/onclick/burrow/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X.burrow && X.mutation_type != BURROWER_IMPALER)
-		X.tunnel(get_turf(A))
+/datum/action/xeno_action/onclick/burrow/use_ability(atom/atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno.burrow && xeno.mutation_type != BURROWER_IMPALER)
+		xeno.tunnel(get_turf(atom))
 	else
-		X.burrow()
+		xeno.burrow()
 
 /datum/action/xeno_action/activable/burrowed_spikes
 	name = "Burrowed Spikes"
@@ -56,7 +56,7 @@
 	xeno_cooldown = 8 SECONDS
 	plasma_cost = 50
 
-	// Config
+	// Ability stats config
 	var/base_damage = 35
 	var/chain_separation_delay = 0.2 SECONDS //Delay between each tile hit
 	var/max_distance = 4
@@ -73,7 +73,7 @@
 	xeno_cooldown = 13 SECONDS
 	plasma_cost = 100
 
-	// Config
+	// Ability stats config
 	var/base_damage = 60
 	var/windup_delay = 0.8 SECONDS
 	var/max_distance = 7
@@ -91,6 +91,6 @@
 	xeno_cooldown = 3 SECONDS
 	plasma_cost = 0
 
-	// Config
+	// Ability stats config
 	var/windup_delay = 1 SECONDS
 	var/reinforced_vision_range = 10

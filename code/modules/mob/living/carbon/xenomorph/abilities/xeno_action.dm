@@ -373,31 +373,31 @@
 
 // Helper proc to check if there is anything blocking the way from mob M to the atom A
 // Max distance can be supplied to check some of the way instead of the whole way.
-/proc/check_clear_path_to_target(mob/M, atom/A, smash_windows = TRUE, max_distance = 1000)
-	if(A.z != M.z)
+/proc/check_clear_path_to_target(mob/mob, atom/atom, smash_windows = TRUE, max_distance = 1000)
+	if(atom.z != mob.z)
 		return FALSE
 
-	var/list/turf/path = getline2(M, A, include_from_atom = FALSE)
+	var/list/turf/path = getline2(mob, atom, include_from_atom = FALSE)
 	var/distance = 0
-	for(var/turf/T in path)
+	for(var/turf/turf in path)
 		if(distance >= max_distance)
 			return FALSE
 		distance++
 
-		if(T.density || T.opacity)
+		if(turf.density || turf.opacity)
 			return FALSE
 
 		// H'yup, it's the snowflake check for dropships
-		if(istype(T, /turf/closed/shuttle/))
+		if(istype(turf, /turf/closed/shuttle/))
 			return FALSE
 
-		for(var/obj/structure/S in T)
-			if(istype(S, /obj/structure/window/framed) && smash_windows)
-				var/obj/structure/window/framed/W = S
-				if(!W.unslashable)
-					W.shatter_window(TRUE)
-					playsound(T, "windowshatter", 50, TRUE)
-			if(S.opacity)
+		for(var/obj/structure/strut in turf)
+			if(istype(strut, /obj/structure/window/framed) && smash_windows)
+				var/obj/structure/window/framed/windo = strut
+				if(!windo.unslashable)
+					windo.shatter_window(TRUE)
+					playsound(turf, "windowshatter", 50, TRUE)
+			if(strut.opacity)
 				return FALSE
 
 	return TRUE

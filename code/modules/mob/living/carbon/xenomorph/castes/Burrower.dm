@@ -118,11 +118,11 @@
 		return
 	. = ..()
 
-/mob/living/carbon/xenomorph/burrower/get_projectile_hit_chance(obj/item/projectile/P)
+/mob/living/carbon/xenomorph/burrower/get_projectile_hit_chance(obj/item/projectile/proj)
 	. = ..()
 	if(burrow && mutation_type != BURROWER_IMPALER)
 		return 0
-	else if(burrow && P.original != src)
+	else if(burrow && proj.original != src)
 		return 0
 
 /datum/behavior_delegate/burrower_base

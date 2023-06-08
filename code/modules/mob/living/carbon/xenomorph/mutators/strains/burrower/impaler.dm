@@ -27,15 +27,15 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/xenomorph/burrower/B = MS.xeno
-	B.mutation_type = BURROWER_IMPALER
+	var/mob/living/carbon/xenomorph/burrower/burrower = MS.xeno
+	burrower.mutation_type = BURROWER_IMPALER
 
-	mutator_update_actions(B)
+	mutator_update_actions(burrower)
 	MS.recalculate_actions(description, flavor_description)
 
-	apply_behavior_holder(B)
-	B.recalculate_everything()
-	B.acid_level = 0
+	apply_behavior_holder(burrower)
+	burrower.recalculate_everything()
+	burrower.acid_level = 0
 
 
 /datum/behavior_delegate/burrower_impaler

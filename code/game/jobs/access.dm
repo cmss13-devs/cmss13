@@ -82,11 +82,10 @@
 		return
 	return 1
 
-/proc/get_centcom_access(job)
-	return get_all_centcom_access()
-
-/proc/get_all_accesses()
-	return get_all_marine_access() + get_all_civilian_accesses()
+/proc/get_global_access()//Grants access to EVERYWHERE
+	return get_all_marine_accesses() + get_all_main_accesses()
+/proc/get_all_main_accesses()//Grants standard access for all factions, does not include high restrictions like COs office.
+	return get_antagonist_access() + get_all_civilian_accesses() + get_all_weyland_access()
 
 /proc/get_all_civilian_accesses()
 	return list(
@@ -99,7 +98,10 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
-/proc/get_all_marine_access()
+/proc/get_all_marine_accesses()//Includes restricted accesses
+	return list(ACCESS_MARINE_CAPTAIN) + get_main_marine_accesses()
+
+/proc/get_main_marine_accesses()//All Almayer accesses other than the highly restricted ones, such as CO's office.
 	return list(
 		ACCESS_MARINE_CAPTAIN,
 		ACCESS_MARINE_SENIOR,
@@ -138,25 +140,27 @@
 		ACCESS_PRESS,
 	)
 
-/proc/get_all_centcom_access()
+/proc/get_weyland_access(job)//Fairly sure this isn't really needed anymore
+	return get_all_weyland_access()
+/proc/get_all_weyland_access()//Renamed from centcom for fairly obvious reasons.
 	return list(ACCESS_WY_PMC_GREEN, ACCESS_WY_PMC_ORANGE, ACCESS_WY_PMC_RED, ACCESS_WY_PMC_BLACK, ACCESS_WY_PMC_WHITE, ACCESS_WY_CORPORATE)
 
-/proc/get_all_syndicate_access()
-	return list(ACCESS_ILLEGAL_PIRATE)
+/proc/get_antagonist_access()//CLF & UPP, UPP Commandos have global.
+	return get_main_marine_accesses() + list(ACCESS_ILLEGAL_PIRATE)
 
-/proc/get_antagonist_access()
-	return get_all_accesses() + get_all_syndicate_access()
+/proc/get_weyland_pmc_access()//Used by PMCs and elite mercs.
+	return get_all_main_accesses()
 
-/proc/get_antagonist_pmc_access()
-	return get_antagonist_access()
+/proc/get_friendly_ert_access()//This is only used by USCM ERTs at present
+	return get_main_marine_accesses() + get_all_civilian_accesses()
 
-/proc/get_freelancer_access()
+/proc/get_civil_ert_access()//Pizza and Souto
 	return list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_CARGO, ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 
 /proc/get_region_accesses(code)
 	switch(code)
 		if(0)
-			return get_all_accesses()
+			return get_all_main_accesses()
 		if(1)
 			return list(ACCESS_MARINE_CMP, ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY) // Security
 		if(2)
@@ -248,7 +252,7 @@
 		if(ACCESS_MARINE_KITCHEN) return "Kitchen"
 		if(ACCESS_MARINE_SYNTH) return "Synthetic Storage"
 
-/proc/get_centcom_access_desc(A)
+/proc/get_weyland_access_desc(A)
 	switch(A)
 		if(ACCESS_WY_PMC_GREEN) return "Wey-Yu PMC Green"
 		if(ACCESS_WY_PMC_ORANGE) return "Wey-Yu PMC Orange"

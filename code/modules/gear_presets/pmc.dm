@@ -12,7 +12,7 @@
 
 /datum/equipment_preset/pmc/New()
 	. = ..()
-	access = get_all_accesses() + get_all_centcom_access() + get_antagonist_access()
+	access = get_weyland_pmc_access()
 
 
 /datum/equipment_preset/pmc/load_name(mob/living/carbon/human/new_human, randomise)

@@ -790,7 +790,7 @@
 
 /datum/equipment_preset/uscm/marsoc/New()
 	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
+	access = get_global_access()
 
 /datum/equipment_preset/uscm/marsoc/load_gear(mob/living/carbon/human/new_human)
 	//back

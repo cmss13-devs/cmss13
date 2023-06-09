@@ -7,7 +7,7 @@
 
 /datum/equipment_preset/cmb/New()
 	. = ..()
-	access = get_all_accesses() + get_all_civilian_accesses()
+	access = get_main_marine_accesses() + get_all_civilian_accesses()
 
 /datum/equipment_preset/cmb/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(80;MALE,20;FEMALE)
@@ -53,7 +53,7 @@
 
 /datum/equipment_preset/cmb/New()
 	. = ..()
-	access = get_all_accesses() + get_all_civilian_accesses()
+	access = get_friendly_ert_access()
 
 
 /datum/equipment_preset/cmb/load_name(mob/living/carbon/human/new_human)
@@ -448,7 +448,7 @@
 
 /datum/equipment_preset/uscm/cmb/New()
 	. = ..()
-	access = get_all_accesses() + list(ACCESS_MARINE_PREP)
+	access = get_friendly_ert_access()
 
 	assignment = "Anchorpoint Station Marine Rifleman"
 	rank = JOB_SQUAD_MARINE
@@ -504,7 +504,6 @@
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 /datum/equipment_preset/uscm/cmb/leader/New()
 	. = ..()
-	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 
 	assignment = "Anchorpoint Station Marine Team Leader"
 	rank = JOB_SQUAD_LEADER
@@ -550,7 +549,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 /datum/equipment_preset/uscm/cmb/rto/New()
 	. = ..()
-	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_TL_PREP)
+	access = get_friendly_ert_access()
 
 	assignment = "Anchorpoint Station Marine Technical Specialist"
 	rank = JOB_SQUAD_TEAM_LEADER
@@ -598,7 +597,6 @@
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 /datum/equipment_preset/uscm/cmb/medic/New()
 	. = ..()
-	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 
 	assignment = "Anchorpoint Station Hospital Corpsman"
 	rank = JOB_SQUAD_MEDIC
@@ -660,7 +658,6 @@
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 /datum/equipment_preset/uscm/cmb/smartgunner/New()
 	. = ..()
-	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 
 	assignment = "Anchorpoint Station Marine Smartgunner"
 	rank = JOB_SQUAD_SMARTGUN

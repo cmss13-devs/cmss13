@@ -41,7 +41,7 @@
 
 /datum/equipment_preset/wo/commander/New()
 	. = ..()
-	access = get_all_marine_access()
+	access = get_all_marine_accesses()
 
 /datum/equipment_preset/wo/commander/load_gear(mob/living/carbon/human/new_human)
 	var/sidearm = "Mateba"
@@ -109,7 +109,7 @@
 
 /datum/equipment_preset/wo/xo/New()
 	. = ..()
-	access = get_all_marine_access()
+	access = get_main_marine_accesses()
 
 /datum/equipment_preset/wo/xo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel

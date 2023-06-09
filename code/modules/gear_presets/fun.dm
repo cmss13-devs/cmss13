@@ -246,7 +246,7 @@
 
 /datum/equipment_preset/fun/santa/New()
 	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
+	access = get_global_access()
 
 /datum/equipment_preset/fun/santa/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
@@ -342,7 +342,7 @@
 
 /datum/equipment_preset/fun/van_bandolier/New()
 	. = ..()
-	access = get_all_accesses()
+	access = get_global_access()
 
 /datum/equipment_preset/fun/van_bandolier/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE

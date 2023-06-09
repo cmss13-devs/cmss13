@@ -9,7 +9,7 @@
 
 /datum/equipment_preset/synth/New()
 	. = ..()
-	access = get_all_accesses()
+	access = get_global_access()
 
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/new_human)
 	if(new_human.client?.prefs?.synthetic_type)
@@ -465,7 +465,7 @@
 
 /datum/equipment_preset/synth/working_joe/New()
 	. = ..()
-	access = get_all_accesses()
+	access = get_global_access()
 
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_WORKING_JOE)
@@ -589,7 +589,7 @@
 
 /datum/equipment_preset/synth/infiltrator/New()
 	. = ..()
-	access = get_all_accesses()
+	access = get_global_access()
 
 /datum/equipment_preset/synth/infiltrator/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE,FEMALE)

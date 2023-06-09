@@ -367,6 +367,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			qdel(G)
 
 	icon_state = "body_scanner_open"
+	SetLuminosity(0)
 
 	if(occupant.key)
 		occupant.ghostize(0)
@@ -507,6 +508,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	M.forceMove(src)
 	occupant = M
 	icon_state = "body_scanner_closed"
+	SetLuminosity(2)
 	time_entered = world.time
 	start_processing()
 
@@ -527,6 +529,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	occupant = null
 	stop_processing()
 	icon_state = "body_scanner_open"
+	SetLuminosity(0)
 	playsound(src, 'sound/machines/pod_open.ogg', 30)
 
 #ifdef OBJECTS_PROXY_SPEECH

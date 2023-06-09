@@ -258,12 +258,13 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 		var/list/alive_mobs = list() //Everyone who will be destroyed on the zlevel(s).
 		var/list/dead_mobs = list() //Everyone who only needs to see the cinematic.
-		for(var/mob/current_mob in GLOB.mob_list) //This only does something cool for the people about to die, but should prove pretty interesting.
+		for(var/mob/current_mob as anything in GLOB.mob_list) //This only does something cool for the people about to die, but should prove pretty interesting.
 			if(!current_mob || !current_mob.loc)
 				continue //In case something changes when we sleep().
 			if(current_mob.stat == DEAD)
 				dead_mobs |= current_mob
-			else if((current_mob.z in z_levels) || (current_mob.loc.z in z_levels))
+				continue
+			if((current_mob.z in z_levels) || (current_mob.loc.z in z_levels))
 				alive_mobs |= current_mob
 				shake_camera(current_mob, 110, 4)
 
@@ -274,7 +275,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		var/atom/movable/screen/cinematic/explosion/C = new
 
 		if(play_anim)
-			for(var/mob/current_mob in alive_mobs + dead_mobs)
+			for(var/mob/current_mob as anything in alive_mobs + dead_mobs)
 				if(current_mob && current_mob.loc && current_mob.client)
 					current_mob.client.screen |= C //They may have disconnected in the mean time.
 

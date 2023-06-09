@@ -77,6 +77,11 @@
 /obj/docking_port/mobile/marine_dropship/proc/is_door_locked(direction)
 	return door_control.is_door_locked(direction)
 
+/obj/docking_port/mobile/marine_dropship/enterTransit()
+	. = ..()
+	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED)) //Launching on first drop.
+		SSticker.mode.ds_first_drop(src)
+
 /obj/docking_port/mobile/marine_dropship/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
 	control_doors("force-lock-launch", "all", force=TRUE, asynchronous = FALSE)
@@ -196,10 +201,11 @@
 		console?.update_equipment()
 	if(is_ground_level(z) && !SSobjectives.first_drop_complete)
 		SSticker.mode.ds_first_landed(src)
+		SSticker.mode.flags_round_type |= MODE_DS_LANDED
+
 	if(xeno_announce)
 		xeno_announcement(SPAN_XENOANNOUNCE("The dropship has landed."), "everything")
 		xeno_announce = FALSE
-
 
 /obj/docking_port/stationary/marine_dropship/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
 	. = ..()

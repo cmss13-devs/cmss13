@@ -334,7 +334,7 @@
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown(turf, 0.25 SECONDS)
 
 	// Extract our 'optimal' turf, if it exists
-	if (len(target_turfs) >= 2)
+	if (target_turfs.len >= 2)
 		xeno.animation_attack_on(target_turfs[target_turfs.len], 15)
 
 	playsound(xeno.loc, 'sound/effects/burrower_attack.ogg', 40)

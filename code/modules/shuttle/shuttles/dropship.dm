@@ -81,6 +81,9 @@
 	. = ..()
 	control_doors("force-lock-launch", "all", force=TRUE, asynchronous = FALSE)
 
+	if(is_hijack)
+		return
+
 	for(var/area/checked_area in shuttle_areas)
 		for(var/mob/living/carbon/xenomorph/checked_xeno in checked_area)
 			if(checked_xeno.stat == DEAD)

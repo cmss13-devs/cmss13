@@ -33,7 +33,7 @@
 			used_burrow = FALSE
 			return
 		var/obj/effect/alien/weeds/weeds = locate() in T
-		if(!weeds || !src.ally_of_hivenumber(weeds.hivenumber))
+		if(!weeds || !ally_of_hivenumber(weeds.hivenumber))
 			to_chat(src, SPAN_XENOWARNING("You need to burrow on weeds!"))
 			used_burrow = FALSE
 			return
@@ -53,7 +53,7 @@
 		), PROC_REF(flamer_crossed_immune))
 		ADD_TRAIT(src, TRAIT_ABILITY_BURROWED, TRAIT_SOURCE_ABILITY("Burrow"))
 		mob_size = MOB_SIZE_BIG
-		playsound(src.loc, 'sound/effects/burrowing_s.ogg', 25)
+		playsound(loc, 'sound/effects/burrowing_s.ogg', 25)
 		update_icons()
 		addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 		process_burrow_impaler()
@@ -98,7 +98,7 @@
 	var/obj/effect/alien/weeds/weeds = locate() in turf
 	if(!burrow)
 		return
-	if((!weeds || !src.ally_of_hivenumber(weeds.hivenumber)) || (src.stat == UNCONSCIOUS && src.health < 0) || (src.stat == DEAD))
+	if((!weeds || !ally_of_hivenumber(weeds.hivenumber)) || (stat == UNCONSCIOUS && health < 0) || (stat == DEAD))
 		burrow_off()
 	if(burrow)
 		addtimer(CALLBACK(src, PROC_REF(process_burrow_impaler)), 0.5 SECONDS)
@@ -123,7 +123,7 @@
 	invisibility = FALSE
 	anchored = FALSE
 	density = TRUE
-	playsound(src.loc, 'sound/effects/burrowoff.ogg', 25)
+	playsound(loc, 'sound/effects/burrowoff.ogg', 25)
 	for(var/mob/living/carbon/mob in loc)
 		if(!can_not_harm(mob))
 			mob.apply_effect(2, WEAKEN)
@@ -334,7 +334,7 @@
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown(turf, 0.25 SECONDS)
 
 	// Extract our 'optimal' turf, if it exists
-	if (target_turfs.len >= 2)
+	if (length(target_turfs) >= 2)
 		xeno.animation_attack_on(target_turfs[target_turfs.len], 15)
 
 	playsound(xeno.loc, 'sound/effects/burrower_attack.ogg', 40)
@@ -344,22 +344,21 @@
 	INVOKE_ASYNC(src, PROC_REF(handle_damage), xeno, target_turfs, telegraph_atom_list, damage)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/burrowed_spikes/proc/handle_damage(mob/living/carbon/xenomorph/xeno, target_turfs, telegraph_atom_list, damage)
 	for (var/turf/target_turf in target_turfs)
 		telegraph_atom_list += new /obj/effect/xenomorph/ground_spike(target_turf, xeno)
-		for (var/mob/living/carbon/carb in target_turf)
-			if (carb.stat == DEAD || HAS_TRAIT(carb, TRAIT_NESTED))
+		for (var/mob/living/carbon/targeted_carbon in target_turf)
+			if (targeted_carbon.stat == DEAD || HAS_TRAIT(targeted_carbon, TRAIT_NESTED))
 				continue
 
-			if(xeno.can_not_harm(carb))
+			if(xeno.can_not_harm(targeted_carbon))
 				continue
-			xeno.flick_attack_overlay(carb, "slash")
-			carb.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
-			to_chat(carb, SPAN_WARNING("You are stabbed with a spike from below!"))
-			playsound(get_turf(carb), "alien_bite", 50, TRUE)
+			xeno.flick_attack_overlay(targeted_carbon, "slash")
+			targeted_carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
+			to_chat(targeted_carbon, SPAN_WARNING("You are stabbed with a spike from below!"))
+			playsound(get_turf(targeted_carbon), "alien_bite", 50, TRUE)
 		for(var/obj/structure/strut in target_turf)
 			if(istype(strut, /obj/structure/window/framed))
 				var/obj/structure/window/framed/W = strut
@@ -420,30 +419,31 @@
 		recursive_spread(target, reinforced_spread_range, reinforced_spread_range, damage, target)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/sunken_tail/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!xeno) return
-	if(xeno.burrow) return FALSE
+	if(!xeno) 
+		return
+	if(xeno.burrow) 
+		return FALSE
 	return ..()
 
 /datum/action/xeno_action/activable/sunken_tail/proc/handle_damage(mob/living/carbon/xenomorph/xeno, target_turfs, damage, spike_circle = FALSE)
 	new /obj/effect/xenomorph/ground_spike(target_turfs, xeno)
-	for (var/mob/living/carbon/carb in target_turfs)
-		if (carb.stat == DEAD || HAS_TRAIT(carb, TRAIT_NESTED))
+	for (var/mob/living/carbon/targeted_carbon in target_turfs)
+		if (targeted_carbon.stat == DEAD || HAS_TRAIT(targeted_carbon, TRAIT_NESTED))
 			continue
 
-		if(xeno.can_not_harm(carb))
+		if(xeno.can_not_harm(targeted_carbon))
 			continue
-		xeno.flick_attack_overlay(carb, "slash")
-		carb.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
+		xeno.flick_attack_overlay(targeted_carbon, "slash")
+		targeted_carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
 		if(spike_circle)
-			to_chat(carb, SPAN_WARNING("You are stabbed with a spike from below!"))
+			to_chat(targeted_carbon, SPAN_WARNING("You are stabbed with a spike from below!"))
 		else
-			to_chat(carb, SPAN_WARNING("You are stabbed with a tail from below!"))
-		playsound(get_turf(carb), "alien_bite", 50, TRUE)
+			to_chat(targeted_carbon, SPAN_WARNING("You are stabbed with a tail from below!"))
+		playsound(get_turf(targeted_carbon), "alien_bite", 50, TRUE)
 	for(var/obj/structure/strut in target_turfs)
 		if(istype(strut, /obj/structure/window/framed))
 			var/obj/structure/window/framed/windo = strut
@@ -454,9 +454,9 @@
 /datum/action/xeno_action/activable/sunken_tail/proc/recursive_spread(turf/turf, dist_left, orig_depth, damage, turf/original_turf)
 	if(!istype(turf))
 		return
-	else if(!dist_left)
+	if(!dist_left)
 		return
-	else if(istype(turf, /turf/closed) || istype(turf, /turf/open/space))
+	if(istype(turf, /turf/closed) || istype(turf, /turf/open/space))
 		return
 
 	if(turf != original_turf)
@@ -526,13 +526,14 @@
 		if(xeno.selected_ability != src)
 			button.icon_state = "template"
 
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/ensconce/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!xeno) return
-	if(xeno.burrow) return FALSE
+	if(!xeno) 
+		return
+	if(xeno.burrow) 
+		return FALSE
 	return ..()
 
 /datum/action/xeno_action/onclick/ensconce/proc/fortify_switch(mob/living/carbon/xenomorph/xeno, fortify_state)

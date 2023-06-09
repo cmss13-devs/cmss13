@@ -141,39 +141,29 @@
 	pixel_x = -32
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aay" = (
 /obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaz" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 32
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaA" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
 	},
 /obj/structure/machinery/recharge_station,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaC" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaD" = (
 /obj/structure/prop/tower,
@@ -219,16 +209,12 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "aaL" = (
 /obj/structure/closet/firecloset,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaM" = (
 /obj/structure/machinery/vending/snack,
@@ -242,28 +228,20 @@
 "aaN" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaO" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaP" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaQ" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaR" = (
 /obj/structure/machinery/computer/telecomms/traffic,
@@ -298,9 +276,7 @@
 "aaV" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "aaW" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -323,9 +299,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaZ" = (
 /obj/effect/landmark/hunter_primary,
@@ -353,23 +327,17 @@
 	pixel_x = -32;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "abf" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "abg" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "abh" = (
 /obj/structure/surface/table,
@@ -380,9 +348,7 @@
 	pixel_x = 32
 	},
 /obj/item/tool/pen,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "abi" = (
 /obj/effect/landmark/crap_item,
@@ -418,24 +384,18 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "abo" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "abp" = (
 /obj/structure/machinery/blackbox_recorder,
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "abq" = (
 /turf/open/mars_cave{
@@ -488,24 +448,18 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/landing/console)
 "abA" = (
 /obj/structure/bed/chair/office/dark,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "abB" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tech_supply,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "abC" = (
 /obj/structure/machinery/light,
@@ -831,36 +785,26 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "acC" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "acD" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "acE" = (
 /obj/structure/window/reinforced,
 /obj/structure/machinery/botany,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "acF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "acG" = (
 /obj/structure/window/reinforced,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "acH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -903,24 +847,18 @@
 /area/bigredv2/outside/space_port)
 "acL" = (
 /obj/structure/machinery/camera/autoname,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "acM" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "acO" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "acP" = (
 /turf/open/mars,
@@ -952,37 +890,27 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "acU" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "acV" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "acX" = (
 /obj/structure/machinery/washing_machine,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "acY" = (
 /obj/structure/surface/table,
 /obj/item/folder/black,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "acZ" = (
 /turf/open/floor/greengrid,
@@ -1008,9 +936,7 @@
 "adb" = (
 /obj/structure/surface/table,
 /obj/item/tool/hand_labeler,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "adc" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -1021,21 +947,15 @@
 /area/bigredv2/outside/marshal_office)
 "add" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "ade" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "adf" = (
 /obj/structure/surface/table,
 /obj/item/folder/black_random,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "adg" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
@@ -1078,27 +998,21 @@
 /area/bigredv2/outside/space_port)
 "adm" = (
 /obj/structure/machinery/computer/arcade,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "adn" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
 /obj/effect/landmark/corpsespawner/prisoner,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "ado" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "adp" = (
 /obj/structure/machinery/light{
@@ -1113,30 +1027,22 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "ads" = (
 /obj/structure/surface/table,
 /obj/item/folder/yellow,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "adt" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "adu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "adv" = (
 /obj/structure/surface/table,
@@ -1144,9 +1050,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "adw" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
@@ -1184,9 +1088,7 @@
 "adC" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "adD" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1226,16 +1128,12 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/spawner/random/tool,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "adI" = (
 /obj/structure/surface/table,
 /obj/item/tool/extinguisher,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "adJ" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
@@ -1256,15 +1154,11 @@
 "adM" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "adN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "adO" = (
 /turf/open/floor{
@@ -1345,15 +1239,11 @@
 	phone_id = "Communications";
 	pixel_x = -18
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "aeb" = (
 /obj/item/device/radio/headset,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "aec" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -1367,9 +1257,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W-corner"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "aee" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1377,16 +1265,12 @@
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "aef" = (
 /obj/structure/surface/table,
 /obj/item/device/radio/headset,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "aeg" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1538,26 +1422,20 @@
 /obj/structure/machinery/computer/telecomms/server{
 	req_one_access_txt = "19;200"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "aeC" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "aeD" = (
 /obj/structure/machinery/alarm{
 	dir = 4;
 	pixel_x = -30
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "aeE" = (
 /obj/structure/surface/table/reinforced,
@@ -1597,15 +1475,11 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "aeL" = (
 /obj/structure/bed,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "aeM" = (
 /obj/structure/machinery/light{
@@ -1704,15 +1578,11 @@
 /obj/structure/machinery/computer/telecomms/traffic{
 	req_one_access_txt = "19;200"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "afc" = (
 /obj/item/folder/yellow,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "afd" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -1745,9 +1615,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "afk" = (
 /obj/structure/toilet{
@@ -1856,17 +1724,13 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "afx" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "afy" = (
 /obj/structure/surface/table/reinforced,
@@ -1935,15 +1799,11 @@
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "afJ" = (
 /obj/structure/bed/chair/office/dark,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "afK" = (
 /obj/structure/machinery/power/apc{
@@ -2001,15 +1861,11 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "afS" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "afT" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "afU" = (
 /obj/structure/closet/bombclosetsecurity,
@@ -2061,14 +1917,10 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "agc" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "agd" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/breakroom)
 "age" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
@@ -2105,22 +1957,16 @@
 "agh" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "agi" = (
 /obj/structure/bed,
 /obj/item/bedsheet/purple,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "agj" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "agk" = (
 /obj/structure/toilet{
@@ -2128,14 +1974,10 @@
 	},
 /obj/structure/machinery/door/window,
 /obj/structure/window/reinforced,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/caves/lambda/xenobiology)
 "agl" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/caves/lambda/xenobiology)
 "agm" = (
 /turf/closed/wall/solaris/rock,
@@ -2247,40 +2089,30 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "agE" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "agF" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "agG" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "agH" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "agI" = (
 /obj/structure/surface/table/reinforced,
@@ -2332,9 +2164,7 @@
 	icon_state = "small"
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "agO" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -2345,9 +2175,7 @@
 "agP" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "agQ" = (
 /turf/open/floor{
@@ -2389,9 +2217,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "agW" = (
 /obj/structure/foamed_metal,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "agX" = (
 /obj/structure/foamed_metal,
@@ -2412,24 +2238,18 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "aha" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "ahb" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/caves/lambda/xenobiology)
 "ahc" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2515,9 +2335,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "ahq" = (
 /obj/structure/surface/table,
@@ -2525,15 +2343,11 @@
 	dir = 8
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "ahr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "ahs" = (
 /obj/structure/reagent_dispensers/water_cooler,
@@ -2868,36 +2682,26 @@
 /obj/structure/surface/table,
 /obj/structure/pipes/vents/pump,
 /obj/item/device/flashlight/lamp,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aiq" = (
 /obj/structure/largecrate/random,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "air" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "ais" = (
 /obj/structure/urinal{
 	pixel_y = 32
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/caves/lambda/xenobiology)
 "ait" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/caves/lambda/xenobiology)
 "aiu" = (
 /obj/structure/sink{
@@ -2907,9 +2711,7 @@
 /obj/structure/mirror{
 	pixel_x = 30
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/caves/lambda/xenobiology)
 "aiv" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2966,9 +2768,7 @@
 /area/bigredv2/outside/marshal_office)
 "aiE" = (
 /obj/structure/closet/secure_closet/marshal,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "aiF" = (
 /obj/structure/surface/table,
@@ -2977,9 +2777,7 @@
 	dir = 1;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "aiG" = (
 /obj/structure/surface/table,
@@ -2989,41 +2787,31 @@
 	phone_color = "red";
 	phone_id = "Marshal Office"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "aiH" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/camera/autoname,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "aiI" = (
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/clothing/head/beret/sec/warden,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "aiJ" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "aiK" = (
 /obj/structure/machinery/computer/secure_data,
 /obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "aiL" = (
 /obj/structure/surface/table,
@@ -3072,9 +2860,7 @@
 "aiS" = (
 /obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "aiT" = (
 /obj/structure/pipes/vents/scrubber/on,
@@ -3093,9 +2879,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "aiV" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/caves/lambda/xenobiology)
 "aiW" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3249,27 +3033,19 @@
 "ajs" = (
 /obj/structure/machinery/light,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "ajt" = (
 /obj/structure/bed/stool,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "aju" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "ajv" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "ajw" = (
 /obj/structure/sink{
@@ -3282,9 +3058,7 @@
 	},
 /obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/caves/lambda/xenobiology)
 "ajx" = (
 /turf/open/floor{
@@ -3355,32 +3129,24 @@
 "ajG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "ajH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "ajI" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "ajJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "ajK" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -3550,9 +3316,7 @@
 /obj/structure/surface/table,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "akj" = (
 /obj/structure/window/framed/solaris,
@@ -3567,9 +3331,7 @@
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/suit/armor/riot,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "akl" = (
 /obj/structure/sign/safety/hazard,
@@ -3578,16 +3340,12 @@
 "akm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "akn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/computer/prisoner,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "ako" = (
 /turf/closed/wall/solaris,
@@ -3745,9 +3503,7 @@
 /area/bigredv2/outside/general_offices)
 "akM" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "akN" = (
 /turf/open/floor{
@@ -3997,16 +3753,12 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "alA" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "alB" = (
 /turf/open/floor{
@@ -4319,9 +4071,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "amx" = (
 /obj/structure/surface/table,
@@ -4329,9 +4079,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "amy" = (
 /obj/structure/surface/table/woodentable,
@@ -4990,32 +4738,24 @@
 /area/bigredv2/outside/general_offices)
 "aov" = (
 /obj/structure/machinery/suit_storage_unit/carbon_unit,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "aow" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/machinery/suit_storage_unit/carbon_unit,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "aox" = (
 /obj/structure/machinery/suit_storage_unit/carbon_unit,
 /obj/structure/machinery/camera/autoname,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "aoy" = (
 /obj/structure/machinery/suit_storage_unit/carbon_unit,
 /obj/effect/decal/cleanable/cobweb2,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "aoz" = (
 /obj/structure/window/framed/solaris,
@@ -5032,14 +4772,10 @@
 /obj/item/stack/sheet/mineral/plastic,
 /obj/item/stack/sheet/mineral/plastic,
 /obj/effect/decal/cleanable/cobweb,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "aoB" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "aoD" = (
 /turf/closed/wall/solaris/reinforced,
@@ -5144,9 +4880,7 @@
 /area/bigredv2/outside/nw)
 "aoT" = (
 /obj/structure/bed,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "aoU" = (
 /obj/structure/machinery/light{
@@ -5259,17 +4993,13 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "apl" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "apm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -5286,9 +5016,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "apo" = (
 /turf/open/floor{
@@ -5505,53 +5233,39 @@
 	dir = 4;
 	pixel_x = -30
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "apU" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "apV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "apW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "apX" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 25
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "apY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "apZ" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/uranium{
 	amount = 50
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "aqa" = (
 /turf/open/floor{
@@ -5720,14 +5434,10 @@
 /area/bigredv2/outside/medical)
 "aqv" = (
 /obj/structure/bed,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aqw" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aqx" = (
 /obj/structure/window/framed/solaris,
@@ -5747,9 +5457,7 @@
 	name = "Storm Shutters";
 	pixel_y = 32
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aqz" = (
 /obj/structure/window/framed/solaris,
@@ -5773,23 +5481,17 @@
 	},
 /area/bigredv2/outside/medical)
 "aqD" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/medical)
 "aqE" = (
 /obj/structure/morgue{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/medical)
 "aqF" = (
 /obj/structure/morgue,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/medical)
 "aqG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -5896,9 +5598,7 @@
 /area/bigredv2/outside/general_offices)
 "aqW" = (
 /obj/structure/dispenser/oxygen,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "aqX" = (
 /obj/structure/closet/crate/freezer/rations,
@@ -5989,22 +5689,16 @@
 /area/bigredv2/outside/medical)
 "ari" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "arj" = (
 /obj/item/trash/chips,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "ark" = (
 /obj/structure/bed/roller,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "arl" = (
 /turf/open/floor{
@@ -6013,9 +5707,7 @@
 /area/bigredv2/outside/medical)
 "arm" = (
 /obj/structure/bed/chair/office/light,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "arn" = (
 /obj/structure/machinery/computer/med_data,
@@ -6026,9 +5718,7 @@
 "aro" = (
 /obj/structure/machinery/optable,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/medical)
 "arp" = (
 /turf/open/mars{
@@ -6080,9 +5770,7 @@
 "arx" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "ary" = (
 /obj/structure/surface/table,
@@ -6091,9 +5779,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "arz" = (
 /obj/structure/toilet{
@@ -6110,16 +5796,12 @@
 /obj/item/stack/sheet/mineral/uranium{
 	amount = 50
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "arB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/stack/sheet/plasteel,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "arC" = (
 /obj/structure/machinery/light{
@@ -6133,9 +5815,7 @@
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 25
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "arD" = (
 /turf/open/mars,
@@ -6230,17 +5910,13 @@
 /area/bigredv2/outside/medical)
 "arR" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "arS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "arT" = (
 /obj/structure/window/framed/solaris,
@@ -6248,18 +5924,14 @@
 /area/bigredv2/outside/virology)
 "arU" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "arV" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
 /obj/structure/bed/roller,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "arW" = (
 /obj/structure/surface/table,
@@ -6284,9 +5956,7 @@
 /area/bigredv2/outside/medical)
 "arY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/medical)
 "arZ" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/down,
@@ -6507,25 +6177,19 @@
 "asC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/gloves/latex,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "asD" = (
 /obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "asE" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "asF" = (
 /obj/structure/bed/chair{
@@ -6542,9 +6206,7 @@
 /obj/item/bodybag,
 /obj/item/bodybag,
 /obj/item/bodybag,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/medical)
 "asH" = (
 /obj/structure/window/framed/solaris,
@@ -6624,9 +6286,7 @@
 /obj/structure/sign/safety/airlock{
 	pixel_y = 32
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "asW" = (
 /obj/structure/closet/l3closet,
@@ -6643,25 +6303,19 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "asY" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "asZ" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond,
 /obj/item/clothing/under/redcoat,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "ata" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6727,9 +6381,7 @@
 /area/bigredv2/caves/lambda/breakroom)
 "ath" = (
 /obj/effect/decal/cleanable/vomit,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/breakroom)
 "ati" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -6788,21 +6440,15 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "atq" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "atr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "ats" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -6812,31 +6458,23 @@
 /obj/item/bodybag,
 /obj/item/bodybag,
 /obj/item/bodybag,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/medical)
 "att" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/medical)
 "atu" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/medical)
 "atv" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/medical)
 "atw" = (
 /obj/structure/window/framed/solaris,
@@ -7097,32 +6735,24 @@
 /area/bigredv2/outside/general_offices)
 "aue" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "auf" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "aug" = (
 /obj/item/stack/sheet/plasteel,
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "auh" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "aui" = (
 /obj/structure/surface/table/woodentable,
@@ -7169,9 +6799,7 @@
 /obj/structure/sign/safety/maint{
 	pixel_y = 32
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/breakroom)
 "aup" = (
 /obj/structure/machinery/light{
@@ -7179,23 +6807,17 @@
 	},
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/breakroom)
 "auq" = (
 /obj/structure/sign/poster{
 	pixel_y = 32
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/breakroom)
 "aur" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/breakroom)
 "aus" = (
 /turf/open/floor{
@@ -7439,40 +7061,30 @@
 	dir = 1;
 	pixel_y = -30
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/breakroom)
 "ava" = (
 /obj/structure/pipes/vents/scrubber/on{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/breakroom)
 "avb" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/breakroom)
 "avc" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/breakroom)
 "avd" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/breakroom)
 "ave" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -7609,9 +7221,7 @@
 "avv" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "avw" = (
 /turf/open/floor{
@@ -7621,9 +7231,7 @@
 /area/bigredv2/outside/medical)
 "avx" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "avy" = (
 /turf/open/floor{
@@ -7842,9 +7450,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "awd" = (
 /turf/closed/wall/solaris/reinforced,
@@ -7866,9 +7472,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "awh" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -7876,17 +7480,13 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "awi" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "awj" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -7898,15 +7498,11 @@
 /area/bigredv2/outside/medical)
 "awk" = (
 /obj/structure/machinery/medical_pod/sleeper,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "awl" = (
 /obj/structure/machinery/sleep_console,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "awm" = (
 /obj/structure/machinery/sleep_console,
@@ -8061,9 +7657,7 @@
 /obj/structure/pipes/vents/scrubber/on{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/breakroom)
 "awK" = (
 /obj/structure/machinery/vending/sovietsoda{
@@ -8105,9 +7699,7 @@
 "awQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "awR" = (
 /obj/structure/machinery/iv_drip,
@@ -8134,16 +7726,12 @@
 "awU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "awV" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "awW" = (
 /turf/open/floor{
@@ -8352,9 +7940,7 @@
 "axA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "axB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -8552,9 +8138,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "ayf" = (
 /turf/closed/wall/solaris/reinforced,
@@ -8563,9 +8147,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "ayh" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
@@ -8587,22 +8169,16 @@
 /obj/structure/pipes/unary/freezer{
 	icon_state = "freezer_1"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "ayk" = (
 /obj/structure/machinery/cryo_cell,
 /obj/structure/pipes/standard/cap,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "ayl" = (
 /obj/structure/pipes/standard/tank/oxygen,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aym" = (
 /obj/structure/sign/safety/autodoc{
@@ -8762,9 +8338,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "ayJ" = (
 /turf/open/floor{
@@ -8776,9 +8350,7 @@
 /obj/structure/pipes/standard/simple/visible{
 	dir = 5
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "ayL" = (
 /obj/structure/pipes/standard/manifold/visible,
@@ -8804,16 +8376,12 @@
 "ayO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "ayP" = (
 /obj/item/weapon/broken_bottle,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "ayQ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -9027,9 +8595,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "azu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -9037,17 +8603,13 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "azv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "azw" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -9094,9 +8656,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "azB" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -9113,9 +8673,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "azE" = (
 /obj/item/shard,
@@ -9371,9 +8929,7 @@
 /area/bigredv2/outside/medical)
 "aAt" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aAu" = (
 /obj/structure/machinery/body_scanconsole,
@@ -9384,28 +8940,20 @@
 /area/bigredv2/outside/medical)
 "aAv" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aAw" = (
 /obj/item/clothing/gloves/latex,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aAx" = (
 /obj/effect/decal/cleanable/vomit,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aAy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aAz" = (
 /obj/effect/decal/cleanable/dirt,
@@ -9574,9 +9122,7 @@
 	dir = 4;
 	id = "anomalybelt"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
 "aAW" = (
 /obj/structure/machinery/conveyor{
@@ -9584,9 +9130,7 @@
 	id = "anomalybelt"
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
 "aAX" = (
 /obj/structure/machinery/light/small/built{
@@ -9829,9 +9373,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "U-S"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
 "aBH" = (
 /obj/structure/machinery/conveyor{
@@ -9840,9 +9382,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
 "aBI" = (
 /obj/structure/bed/chair,
@@ -9869,9 +9409,7 @@
 "aBM" = (
 /obj/structure/closet/secure_closet/medical1,
 /obj/item/storage/fancy/vials/random,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aBN" = (
 /obj/structure/surface/table,
@@ -9884,9 +9422,7 @@
 	phone_id = "Clinic";
 	pixel_y = 24
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aBO" = (
 /obj/structure/surface/table,
@@ -10130,9 +9666,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "U-N"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
 "aCA" = (
 /obj/structure/machinery/conveyor{
@@ -10142,9 +9676,7 @@
 	dir = 8
 	},
 /obj/structure/plasticflaps,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
 "aCB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -10190,9 +9722,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aCG" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -10208,9 +9738,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "aCI" = (
 /obj/structure/bed/chair,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aCJ" = (
 /obj/structure/bed/chair,
@@ -10221,9 +9749,7 @@
 "aCK" = (
 /obj/structure/bed/chair,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aCL" = (
 /turf/closed/wall/solaris,
@@ -10606,9 +10132,7 @@
 /area/bigredv2/outside/medical)
 "aDL" = (
 /obj/structure/curtain/open/medical,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aDM" = (
 /obj/structure/curtain/medical,
@@ -10857,17 +10381,13 @@
 /area/bigredv2/outside/medical)
 "aEx" = (
 /obj/item/alien_embryo,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aEz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aEA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -10883,15 +10403,11 @@
 /obj/structure/surface/table,
 /obj/structure/pipes/vents/pump,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/medical)
 "aEC" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aED" = (
 /obj/structure/bed,
@@ -10925,9 +10441,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/corpsespawner/doctor,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aEI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -11158,9 +10672,7 @@
 "aFn" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
 "aFo" = (
 /turf/open/floor{
@@ -11220,9 +10732,7 @@
 /obj/structure/machinery/optable,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/organ/heart/prosthetic,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aFz" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -11257,15 +10767,11 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aFE" = (
 /obj/item/reagent_container/pill/happy,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aFF" = (
 /obj/structure/sink{
@@ -11302,9 +10808,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/device/healthanalyzer,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aFK" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -11313,9 +10817,7 @@
 	name = "Medbay Reception";
 	req_one_access_txt = "2;8;19"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aFL" = (
 /obj/effect/landmark/crap_item,
@@ -11600,15 +11102,11 @@
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aGu" = (
 /obj/item/clothing/mask/breath/medical,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aGv" = (
 /obj/effect/decal/cleanable/vomit,
@@ -11629,9 +11127,7 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aGy" = (
 /obj/structure/pipes/vents/pump{
@@ -11681,9 +11177,7 @@
 "aGD" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aGE" = (
 /obj/structure/bed/chair/office/light{
@@ -11752,9 +11246,7 @@
 "aGP" = (
 /obj/structure/filingcabinet/medical,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aGQ" = (
 /obj/structure/machinery/light{
@@ -11800,9 +11292,7 @@
 /obj/structure/surface/table,
 /obj/item/tool/weedkiller/D24,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aGY" = (
 /obj/structure/machinery/light{
@@ -11831,9 +11321,7 @@
 /obj/structure/surface/table,
 /obj/item/storage/pill_bottle/spaceacillin,
 /obj/structure/machinery/computer/objective,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aHc" = (
 /obj/structure/surface/table/reinforced,
@@ -11960,17 +11448,13 @@
 /obj/structure/surface/table,
 /obj/item/storage/firstaid/toxin,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aHw" = (
 /obj/structure/surface/table,
 /obj/item/storage/firstaid/regular,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aHy" = (
 /obj/structure/surface/table,
@@ -11998,9 +11482,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "aHC" = (
 /turf/open/floor{
@@ -12212,9 +11694,7 @@
 "aIc" = (
 /obj/structure/closet/wardrobe/virology_white,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aIg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -12446,9 +11926,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
 "aIP" = (
 /obj/structure/machinery/light{
@@ -12738,9 +12216,7 @@
 /area/bigredv2/outside/hydroponics)
 "aJy" = (
 /obj/structure/surface/table/woodentable,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/chapel)
 "aJz" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -12813,9 +12289,7 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tech_supply,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "aJJ" = (
 /obj/structure/machinery/light/built,
@@ -12919,9 +12393,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/caves/lambda/virology)
 "aJW" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -13032,9 +12504,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aKi" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "aKk" = (
 /obj/effect/decal/cleanable/dirt,
@@ -13061,17 +12531,13 @@
 /area/bigredv2/outside/office_complex)
 "aKo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aKp" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aKq" = (
 /obj/structure/sign/safety/medical{
@@ -13368,9 +12834,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "aLg" = (
 /obj/structure/surface/table,
@@ -13720,9 +13184,7 @@
 	},
 /area/bigredv2/outside/c)
 "aMf" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aMg" = (
 /turf/open/floor{
@@ -14038,27 +13500,19 @@
 "aMZ" = (
 /obj/structure/closet/firecloset/full,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aNa" = (
 /obj/structure/closet/l3closet/general,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aNb" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aNc" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aNd" = (
 /obj/structure/machinery/shower{
@@ -14072,22 +13526,16 @@
 /area/bigredv2/outside/virology)
 "aNe" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aNf" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aNg" = (
 /obj/structure/surface/table,
 /obj/item/tool/surgery/surgicaldrill,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aNh" = (
 /obj/effect/decal/cleanable/dirt,
@@ -14195,17 +13643,13 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "aNy" = (
 /obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aNz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -14214,9 +13658,7 @@
 	dir = 1;
 	health = 25000
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aNA" = (
 /obj/structure/barricade/wooden{
@@ -14224,24 +13666,18 @@
 	dir = 1;
 	health = 25000
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aNB" = (
 /obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aNC" = (
 /obj/structure/machinery/computer/station_alert,
 /obj/structure/machinery/camera/autoname,
 /obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aND" = (
 /obj/structure/surface/table,
@@ -14249,9 +13685,7 @@
 	density = 0;
 	req_one_access_txt = "200"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aNE" = (
 /obj/structure/surface/table,
@@ -14273,9 +13707,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aNH" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
@@ -14551,9 +13983,7 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aOs" = (
 /obj/structure/machinery/shower{
@@ -14649,17 +14079,13 @@
 	dir = 4
 	},
 /obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aOG" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aOH" = (
 /obj/structure/surface/table,
@@ -14675,9 +14101,7 @@
 /area/bigredv2/outside/admin_building)
 "aOI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aOJ" = (
 /obj/structure/surface/table,
@@ -14698,9 +14122,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aOM" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aON" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -14717,9 +14139,7 @@
 /area/bigredv2/outside/admin_building)
 "aOP" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "aOQ" = (
 /obj/structure/surface/table,
@@ -15114,29 +14534,21 @@
 	dir = 4
 	},
 /obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aPL" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aPM" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aPN" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aPO" = (
 /obj/structure/surface/table,
@@ -15167,9 +14579,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aPT" = (
 /obj/structure/surface/table,
@@ -15183,9 +14593,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aPW" = (
 /obj/structure/coatrack,
@@ -15404,24 +14812,18 @@
 "aQA" = (
 /obj/item/frame/table,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aQB" = (
 /obj/item/frame/table,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aQC" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Virology APC"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aQD" = (
 /obj/structure/surface/table,
@@ -15434,9 +14836,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aQF" = (
 /turf/open/mars{
@@ -15567,55 +14967,41 @@
 "aQV" = (
 /obj/structure/surface/table,
 /obj/item/paper,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aQW" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aQX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aQY" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aQZ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aRa" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aRb" = (
 /obj/structure/machinery/light,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aRc" = (
 /obj/item/device/radio/intercom{
@@ -15627,9 +15013,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aRd" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -15643,9 +15027,7 @@
 	dir = 1;
 	name = "\improper Operations"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aRf" = (
 /obj/structure/surface/table,
@@ -15844,41 +15226,31 @@
 /area/bigredv2/outside/virology)
 "aRF" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aRG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aRH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aRI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aRJ" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aRK" = (
 /obj/structure/surface/table,
@@ -15958,29 +15330,21 @@
 /area/bigredv2/outside/general_store)
 "aRT" = (
 /obj/structure/machinery/photocopier,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aRU" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aRV" = (
 /obj/structure/sign/safety/terminal{
 	pixel_y = -32
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aRX" = (
 /obj/structure/machinery/lapvend,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aRY" = (
 /obj/structure/machinery/light{
@@ -16128,9 +15492,7 @@
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	health = 25000
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aSv" = (
 /obj/structure/barricade/wooden{
@@ -16143,21 +15505,15 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aSx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aSy" = (
 /obj/structure/machinery/iv_drip,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aSA" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
@@ -16641,15 +15997,11 @@
 	dir = 8;
 	health = 25000
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aTL" = (
 /obj/item/tool/extinguisher,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aTM" = (
 /obj/structure/surface/table,
@@ -16732,9 +16084,7 @@
 /area/bigredv2/outside/admin_building)
 "aTX" = (
 /obj/structure/machinery/computer3/server,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aTY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -17014,24 +16364,18 @@
 /area/bigredv2/caves/lambda/virology)
 "aUM" = (
 /obj/structure/machinery/computer/operating,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aUO" = (
 /obj/structure/surface/table,
 /obj/item/tank/anesthetic,
 /obj/item/storage/pill_bottle/spaceacillin,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aUP" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aUQ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -17187,9 +16531,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aVk" = (
 /obj/structure/surface/rack,
@@ -17314,22 +16656,16 @@
 	name = "Virology Lockdown";
 	pixel_x = -25
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aVD" = (
 /obj/structure/bed/stool,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aVE" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/reagentgrinder,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aVF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -17512,32 +16848,24 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aWe" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aWf" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aWg" = (
 /obj/structure/machinery/computer/pandemic,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aWh" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -17722,9 +17050,7 @@
 /obj/structure/reagent_dispensers/virusfood{
 	pixel_x = -32
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aWP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -17746,9 +17072,7 @@
 	dir = 8;
 	health = 25000
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aWR" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -17846,9 +17170,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aXk" = (
 /obj/structure/machinery/light{
@@ -17863,9 +17185,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aXm" = (
 /obj/structure/surface/table,
@@ -17916,9 +17236,7 @@
 /area/bigredv2/outside/e)
 "aXu" = (
 /obj/structure/machinery/computer/med_data,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aXw" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -18132,15 +17450,11 @@
 /area/bigredv2/outside/admin_building)
 "aYi" = (
 /obj/effect/spawner/random/toolbox,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aYk" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aYl" = (
 /obj/item/cell/hyper/empty,
@@ -18247,9 +17561,7 @@
 /area/bigredv2/outside/e)
 "aYA" = (
 /obj/structure/closet/l3closet/virology,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aYB" = (
 /obj/structure/closet/l3closet/virology,
@@ -18363,20 +17675,14 @@
 /area/bigredv2/outside/admin_building)
 "aYX" = (
 /obj/structure/machinery/robotic_fabricator,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "aYY" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "aYZ" = (
 /obj/structure/machinery/mech_bay_recharge_port,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "aZa" = (
 /obj/effect/decal/mecha_wreckage/ripley/firefighter,
@@ -18384,9 +17690,7 @@
 /area/bigredv2/outside/office_complex)
 "aZb" = (
 /obj/structure/machinery/mecha_part_fabricator,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "aZc" = (
 /obj/structure/surface/table,
@@ -18425,9 +17729,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aZk" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -18574,17 +17876,13 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/chapel)
 "aZK" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/chapel)
 "aZL" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -18683,9 +17981,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "baa" = (
 /obj/effect/decal/cleanable/blood,
@@ -18696,45 +17992,33 @@
 /area/bigredv2/outside/c)
 "bac" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bad" = (
 /obj/item/device/analyzer,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bae" = (
 /obj/structure/machinery/camera/autoname,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "baf" = (
 /obj/structure/surface/table,
 /obj/item/cell/hyper,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bag" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/glass/beaker/sulphuric,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bah" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bai" = (
 /obj/effect/decal/cleanable/dirt,
@@ -18895,23 +18179,17 @@
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tech_supply,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "baL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/hotdog,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "baM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/folder/black,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "baN" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -19104,26 +18382,20 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bbt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bbu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bbv" = (
 /obj/effect/decal/cleanable/blood,
@@ -19132,9 +18404,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bbw" = (
 /obj/effect/decal/cleanable/dirt,
@@ -19142,9 +18412,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bbx" = (
 /obj/effect/decal/cleanable/dirt,
@@ -19152,26 +18420,20 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bby" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bbz" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bbA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -19215,32 +18477,24 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/chapel)
 "bbG" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/chapel)
 "bbH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/chapel)
 "bbI" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/chapel)
 "bbJ" = (
 /turf/open/mars{
@@ -19355,16 +18609,12 @@
 "bce" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bcf" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bch" = (
 /obj/structure/surface/table,
@@ -19416,9 +18666,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "bcp" = (
 /turf/open/mars{
@@ -19770,9 +19018,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "bdp" = (
 /obj/item/device/radio/intercom{
@@ -19809,23 +19055,17 @@
 /area/bigredv2/outside/admin_building)
 "bdu" = (
 /obj/structure/machinery/photocopier,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bdv" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bdx" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bdy" = (
 /obj/structure/bed/chair/comfy/lime{
@@ -19878,24 +19118,18 @@
 /area/bigredv2/outside/chapel)
 "bdF" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/chapel)
 "bdG" = (
 /obj/structure/machinery/power/apc,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/chapel)
 "bdI" = (
 /obj/structure/machinery/alarm{
 	dir = 1;
 	pixel_y = -30
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/chapel)
 "bdK" = (
 /obj/structure/largecrate,
@@ -20024,15 +19258,11 @@
 /area/bigredv2/outside/admin_building)
 "bel" = (
 /obj/structure/machinery/autolathe,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "bem" = (
 /obj/item/device/taperecorder,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "ben" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -20288,41 +19518,31 @@
 	dir = 4
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bfe" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bff" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bfg" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bfh" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bfi" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -20519,34 +19739,26 @@
 /area/bigredv2/outside/c)
 "bfJ" = (
 /obj/item/trash/raisins,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bfK" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bfL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bfM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bfO" = (
 /obj/structure/machinery/light{
@@ -20651,22 +19863,16 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bgc" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bgd" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bge" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bgf" = (
 /obj/effect/decal/cleanable/dirt,
@@ -20770,18 +19976,14 @@
 /area/bigredv2/outside/cargo)
 "bgs" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bgt" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/syndi_cakes,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bgu" = (
 /turf/open/floor{
@@ -20877,31 +20079,23 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bgJ" = (
 /obj/structure/surface/table/reinforced,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "bgK" = (
 /obj/structure/surface/table,
 /obj/item/device/multitool,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bgL" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bgM" = (
 /obj/item/device/radio/intercom{
@@ -21383,9 +20577,7 @@
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "biD" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -22014,9 +21206,7 @@
 	pixel_x = 30
 	},
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/caves/lambda/xenobiology)
 "blb" = (
 /obj/structure/machinery/blackbox_recorder,
@@ -24193,9 +23383,7 @@
 	phone_color = "green";
 	phone_id = "Virology Lab"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "bww" = (
 /turf/open/floor/plating,
@@ -24274,9 +23462,7 @@
 /area/bigredv2/caves/eta/storage)
 "bwP" = (
 /obj/structure/filingcabinet,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bwQ" = (
 /obj/structure/surface/table,
@@ -24286,28 +23472,20 @@
 	phone_color = "yellow";
 	phone_id = "Robotics"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bwR" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bwS" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bwT" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bwU" = (
 /obj/structure/machinery/shower{
@@ -24398,9 +23576,7 @@
 "bxj" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bxk" = (
 /obj/structure/surface/table,
@@ -24413,9 +23589,7 @@
 	pixel_x = -4;
 	pixel_y = 7
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bxl" = (
 /obj/effect/decal/cleanable/blood,
@@ -24426,15 +23600,11 @@
 /area/bigredv2/caves/eta/research)
 "bxn" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bxo" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bxp" = (
 /turf/open/floor{
@@ -24465,9 +23635,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bxt" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -24491,9 +23659,7 @@
 /area/bigredv2/caves/eta/storage)
 "bxw" = (
 /obj/structure/machinery/recharge_station,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bxx" = (
 /obj/structure/closet/l3closet/scientist,
@@ -24514,16 +23680,12 @@
 "bxz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bxA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bxB" = (
 /obj/structure/largecrate/guns,
@@ -24546,9 +23708,7 @@
 "bxE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bxF" = (
 /turf/open/floor{
@@ -24569,9 +23729,7 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/structure/pipes/vents/pump,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bxI" = (
 /obj/structure/sink{
@@ -24599,17 +23757,13 @@
 /area/bigredv2/caves/eta/storage)
 "bxL" = (
 /obj/structure/powerloader_wreckage/ft,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bxM" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bxO" = (
 /obj/structure/machinery/r_n_d/protolathe,
@@ -24622,9 +23776,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bxQ" = (
 /obj/structure/machinery/light{
@@ -24667,9 +23819,7 @@
 "bxW" = (
 /obj/effect/spawner/random/toolbox,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bxX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -24692,9 +23842,7 @@
 "byb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "byc" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -24726,9 +23874,7 @@
 	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "byj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -24742,16 +23888,12 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "byl" = (
 /obj/structure/machinery/photocopier,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "byn" = (
 /obj/structure/machinery/r_n_d/bioprinter,
@@ -24911,70 +24053,54 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "byK" = (
 /obj/structure/closet/l3closet/scientist,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "byL" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "byM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "byN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "byO" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "byP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "byQ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "byR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -25043,9 +24169,7 @@
 	dir = 1;
 	name = "\improper Eta Lab Robotics"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bza" = (
 /obj/structure/machinery/light{
@@ -25059,9 +24183,7 @@
 "bzb" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bzc" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -25110,9 +24232,7 @@
 /area/bigredv2/caves/eta/research)
 "bzh" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bzi" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -25139,18 +24259,14 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bzl" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bzm" = (
 /obj/structure/pipes/vents/pump{
@@ -25235,18 +24351,14 @@
 /area/bigredv2/caves/eta/storage)
 "bzy" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bzz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bzA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -25277,9 +24389,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bzE" = (
 /obj/structure/bed/chair/office/dark{
@@ -25336,9 +24446,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bzL" = (
 /obj/structure/machinery/light{
@@ -25410,9 +24518,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bzW" = (
 /obj/structure/bed/chair/office/light{
@@ -25431,9 +24537,7 @@
 	dir = 10
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bzY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -25498,26 +24602,20 @@
 /area/bigredv2/caves/eta/storage)
 "bAi" = (
 /obj/structure/machinery/computer/cameras,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bAj" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bAn" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bAo" = (
 /obj/structure/surface/table,
@@ -25602,17 +24700,13 @@
 	dir = 8
 	},
 /obj/structure/closet/secure_closet/security,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bAA" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bAB" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -25625,9 +24719,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bAD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -25714,9 +24806,7 @@
 /area/bigredv2/caves/eta/storage)
 "bAQ" = (
 /obj/structure/closet/secure_closet/security/science,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bAR" = (
 /obj/structure/machinery/light,
@@ -25782,9 +24872,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/gibs/down,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bBa" = (
 /obj/structure/machinery/light{
@@ -25899,15 +24987,11 @@
 /area/bigredv2/caves/eta/xenobiology)
 "bBr" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "bBs" = (
 /obj/effect/landmark/xeno_spawn,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "bBt" = (
 /turf/open/floor{
@@ -25931,16 +25015,12 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bBB" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bBC" = (
 /obj/effect/landmark/monkey_spawn,
@@ -26031,24 +25111,18 @@
 "bBU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
 "bBV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bBW" = (
 /obj/item/tool/pen,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bBX" = (
 /obj/structure/machinery/light{
@@ -26071,9 +25145,7 @@
 "bBZ" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bCa" = (
 /obj/structure/xenoautopsy/tank,
@@ -26185,9 +25257,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "bCp" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "bCq" = (
 /turf/open/floor{
@@ -26206,9 +25276,7 @@
 "bCs" = (
 /obj/effect/landmark/good_item,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bCt" = (
 /obj/structure/surface/table,
@@ -26222,9 +25290,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bCv" = (
 /obj/structure/surface/table,
@@ -26253,9 +25319,7 @@
 	dir = 6
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "bCz" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -26273,9 +25337,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "bCC" = (
 /obj/structure/surface/table,
@@ -26300,9 +25362,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "bCI" = (
 /obj/structure/surface/table,
@@ -26393,9 +25453,7 @@
 /area/bigredv2/caves/eta/research)
 "bCV" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "bCW" = (
 /obj/structure/machinery/light{
@@ -26415,9 +25473,7 @@
 "bCY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
 "bCZ" = (
 /turf/open/floor{
@@ -26481,20 +25537,14 @@
 	dir = 8
 	},
 /obj/structure/machinery/teleport/station,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bDi" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bDj" = (
 /obj/structure/machinery/computer/WYresearch,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "bDk" = (
 /obj/structure/machinery/light{
@@ -26526,9 +25576,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
 "bDo" = (
 /obj/structure/bookcase/manuals/research_and_development,
@@ -26585,9 +25633,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/good_item,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
 "bDu" = (
 /obj/structure/surface/table,
@@ -26666,9 +25712,7 @@
 "bDG" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
 "bDH" = (
 /obj/effect/landmark/crap_item,
@@ -26810,9 +25854,7 @@
 	dir = 10
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
 "bEe" = (
 /obj/structure/sink{
@@ -27042,9 +26084,7 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
 "bEK" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -27115,12 +26155,6 @@
 	icon_state = "delivery"
 	},
 /area/bigredv2/outside/office_complex)
-"bFh" = (
-/obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/caves/eta/living)
 "bFw" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm/warehouse)
@@ -27196,9 +26230,7 @@
 /area/bigredv2/outside/dorms)
 "bNE" = (
 /obj/structure/closet/secure_closet/brig,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "bPy" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
@@ -27442,9 +26474,7 @@
 /area/bigredv2/caves_se)
 "cqj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "cqZ" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -27478,9 +26508,7 @@
 "csC" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "csE" = (
 /turf/open/mars_cave{
@@ -27505,9 +26533,7 @@
 /obj/structure/tunnel{
 	id = "hole2"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "cwk" = (
 /obj/effect/landmark/objective_landmark/close,
@@ -27653,9 +26679,7 @@
 "cLZ" = (
 /obj/structure/closet/secure_closet/brig,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "cNH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -28526,9 +27550,7 @@
 "eEm" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/queen_spawn,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "eEy" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -28579,9 +27601,7 @@
 /area/bigredv2/outside/engineering)
 "eHA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "eJE" = (
 /turf/open/floor{
@@ -28612,9 +27632,7 @@
 "eLp" = (
 /obj/structure/closet/secure_closet/brig,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "eLq" = (
 /obj/structure/surface/rack,
@@ -28960,9 +27978,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
 "fxn" = (
 /obj/item/stack/cable_coil/cut,
@@ -29064,9 +28080,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
 "fLR" = (
 /obj/item/tool/pickaxe,
@@ -29104,9 +28118,7 @@
 	phone_id = "Surgery";
 	pixel_y = 24
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "fOc" = (
 /turf/open/mars_cave{
@@ -29794,9 +28806,7 @@
 "hwy" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
 "hyv" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -29935,9 +28945,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "hOx" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary,
@@ -30000,9 +29008,7 @@
 	},
 /area/bigredv2/caves/mining)
 "hWa" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
 "hWM" = (
 /obj/structure/machinery/filtration/console{
@@ -30015,9 +29021,7 @@
 "hYI" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "hZc" = (
 /obj/structure/platform/shiva{
@@ -30195,9 +29199,7 @@
 	},
 /area/bigredv2/caves/mining)
 "ioS" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
 "ipf" = (
 /obj/item/device/flashlight/lantern{
@@ -30241,9 +29243,7 @@
 "itL" = (
 /obj/structure/closet/l3closet/virology,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "iuu" = (
 /turf/open/mars_cave{
@@ -30567,9 +29567,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "jgW" = (
 /turf/open/mars_cave{
@@ -31168,9 +30166,7 @@
 "kfY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "kgn" = (
 /obj/item/paper/bigred/crazy,
@@ -31382,9 +30378,7 @@
 	phone_id = "Observation";
 	pixel_x = -18
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "kBn" = (
 /turf/closed/wall/solaris,
@@ -32006,9 +31000,7 @@
 "lVr" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/breakroom)
 "lWA" = (
 /turf/open/mars_cave{
@@ -32175,9 +31167,7 @@
 	pixel_x = -6;
 	pixel_y = 10
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "mrS" = (
 /obj/structure/prop/almayer/cannon_cable_connector{
@@ -32308,9 +31298,7 @@
 /area/bigredv2/outside/lz1_north_cas)
 "mGS" = (
 /obj/effect/landmark/static_comms/net_one,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "mHp" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -32769,9 +31757,7 @@
 	},
 /area/bigredv2/caves/mining)
 "nRT" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/chapel)
 "nSP" = (
 /turf/open/mars_cave{
@@ -32796,9 +31782,7 @@
 "nUK" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "nUV" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -32844,9 +31828,7 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "nXC" = (
 /turf/open/mars_cave{
@@ -32915,9 +31897,7 @@
 "oea" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/breakroom)
 "ofn" = (
 /obj/effect/decal/cleanable/dirt,
@@ -32938,9 +31918,7 @@
 	phone_color = "red";
 	phone_id = "Security"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "ofX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -33106,9 +32084,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "orZ" = (
 /obj/structure/closet/secure_closet/atmos_personal,
@@ -33624,9 +32600,7 @@
 "pvg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "pvk" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -33714,9 +32688,7 @@
 /area/bigredv2/caves_sw)
 "pIh" = (
 /obj/structure/machinery/power/geothermal,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "pIN" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -34123,9 +33095,7 @@
 /area/bigredv2/caves/mining)
 "qwx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
 "qwy" = (
 /obj/effect/decal/cleanable/dirt,
@@ -34264,9 +33234,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
 "qNP" = (
 /obj/structure/bed/chair{
@@ -34313,9 +33281,7 @@
 /area/bigredv2/caves)
 "qTC" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "qUS" = (
 /turf/open/mars_cave{
@@ -34359,9 +33325,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "qZU" = (
 /obj/structure/machinery/light/small{
@@ -34833,9 +33797,7 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "rTq" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "rTN" = (
 /obj/structure/fence,
@@ -34967,9 +33929,7 @@
 /area/bigredv2/caves/mining)
 "sbQ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
 "sdP" = (
 /obj/structure/largecrate/random/barrel/white,
@@ -35469,9 +34429,7 @@
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "tcb" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -36433,9 +35391,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "uSC" = (
 /turf/open/mars{
@@ -36455,9 +35411,7 @@
 "uWo" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
 "uXW" = (
 /turf/open/mars_cave{
@@ -36780,9 +35734,7 @@
 	phone_category = "Solaris Ridge";
 	phone_id = "Clinic Reception"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "vCd" = (
 /obj/structure/surface/rack,
@@ -36821,9 +35773,7 @@
 "vFS" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
 "vHw" = (
 /turf/closed/wall/wood,
@@ -36876,9 +35826,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "vQZ" = (
 /obj/effect/decal/cleanable/blood{
@@ -37144,9 +36092,7 @@
 	phone_color = "blue";
 	phone_id = "Space Port"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "wrz" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -37315,9 +36261,7 @@
 "wKf" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "wKx" = (
 /turf/open/mars_cave{
@@ -37379,9 +36323,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "wQa" = (
 /obj/structure/surface/table,
@@ -37636,9 +36578,7 @@
 	},
 /area/bigredv2/outside/lz2_south_cas)
 "xpl" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/research)
 "xpG" = (
 /obj/structure/sign/safety/hazard,
@@ -37778,9 +36718,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
 "xAh" = (
 /obj/effect/landmark/xeno_spawn,
@@ -37930,9 +36868,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
 "xPg" = (
 /obj/structure/barricade/handrail/wire,
@@ -37967,9 +36903,7 @@
 "xUo" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
 "xUS" = (
 /obj/effect/landmark/crap_item,
@@ -38063,9 +36997,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "xZm" = (
 /obj/structure/barricade/wooden{
@@ -38099,9 +37031,7 @@
 "ycP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "yda" = (
 /obj/effect/decal/warning_stripes{
@@ -62303,14 +61233,14 @@ aDX
 kqS
 bDu
 bDA
-bFh
+aRf
 aDX
 bDU
 elM
 aDX
 bDo
 aQy
-bFh
+aRf
 aRf
 aDX
 bEK

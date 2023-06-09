@@ -70,9 +70,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "aq" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "ar" = (
 /turf/open/floor{
@@ -110,21 +108,15 @@
 /area/lv624/lazarus/medbay)
 "aw" = (
 /obj/item/reagent_container/hypospray,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "az" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "aA" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "aB" = (
 /obj/item/reagent_container/spray/cleaner{
@@ -190,9 +182,7 @@
 /area/lv624/lazarus/medbay)
 "aY" = (
 /obj/item/clothing/under/colonist,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "bb" = (
 /obj/structure/machinery/vending/coffee,
@@ -206,9 +196,7 @@
 	dir = 2;
 	name = "\improper Medical Bay"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "bg" = (
 /turf/open/floor{
@@ -231,9 +219,7 @@
 /area/lv624/lazarus/medbay)
 "bo" = (
 /obj/structure/window_frame/colony,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "bp" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
@@ -252,9 +238,7 @@
 /area/lv624/lazarus/medbay)
 "bs" = (
 /obj/item/tool/kitchen/utensil/fork,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "bu" = (
 /obj/item/tool/crowbar,
@@ -269,16 +253,12 @@
 /area/lv624/ground/colony/south_medbay_road)
 "bx" = (
 /obj/item/trash/plate,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "by" = (
 /obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "bA" = (
 /obj/structure/surface/table,
@@ -286,9 +266,7 @@
 	pixel_y = 4
 	},
 /obj/item/tool/pen,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "bB" = (
 /obj/effect/landmark/crap_item,
@@ -331,17 +309,13 @@
 /area/lv624/lazarus/medbay)
 "mA" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "pc" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "qr" = (
 /obj/structure/surface/table,
@@ -393,9 +367,7 @@
 /area/lv624/lazarus/medbay)
 "uD" = (
 /obj/item/storage/firstaid,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "vC" = (
 /obj/item/frame/table,
@@ -433,16 +405,12 @@
 /area/lv624/ground/colony/south_medbay_road)
 "AO" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "CZ" = (
 /obj/item/bedsheet/medical,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "DR" = (
 /obj/structure/surface/table,
@@ -524,9 +492,7 @@
 	phone_category = "Lazarus Landing";
 	phone_id = "Medbay"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "Qu" = (
 /obj/structure/machinery/body_scanconsole,
@@ -538,9 +504,7 @@
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
 	pixel_x = 2
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "QQ" = (
 /obj/structure/surface/table,
@@ -552,9 +516,7 @@
 /area/lv624/lazarus/medbay)
 "TK" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "Vq" = (
 /obj/structure/surface/table,

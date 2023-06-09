@@ -149,9 +149,7 @@
 /obj/item/toy/beach_ball/holoball,
 /obj/effect/decal/warning_stripes,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/fitness)
 "iN" = (
 /obj/structure/barricade/handrail,
@@ -227,9 +225,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
 "tD" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/fitness)
 "tY" = (
 /turf/open/gm/dirt,
@@ -628,9 +624,7 @@
 "Ur" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/fitness)
 "Vk" = (
 /obj/structure/closet/lasertag/red,

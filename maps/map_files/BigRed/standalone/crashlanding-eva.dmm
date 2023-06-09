@@ -159,21 +159,15 @@
 /obj/item/stack/sheet/mineral/plastic,
 /obj/item/stack/sheet/mineral/plastic,
 /obj/item/stack/sheet/mineral/plastic,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "bb" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "bc" = (
 /obj/structure/surface/rack,
 /obj/item/device/mass_spectrometer/adv,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "bd" = (
 /turf/open/floor{
@@ -230,9 +224,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Dormitories EVA"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "bo" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -301,18 +293,14 @@
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 25
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "by" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/uranium{
 	amount = 50
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "bz" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -356,9 +344,7 @@
 /area/bigredv2/outside/general_offices)
 "bI" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "bK" = (
 /obj/structure/machinery/washing_machine,
@@ -402,15 +388,11 @@
 /obj/item/stack/sheet/mineral/uranium{
 	amount = 50
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "bR" = (
 /obj/item/stack/sheet/plasteel,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "bS" = (
 /obj/structure/machinery/light{
@@ -424,9 +406,7 @@
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 25
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "bT" = (
 /obj/structure/girder,
@@ -526,17 +506,13 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "cj" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond,
 /obj/item/clothing/under/redcoat,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "cl" = (
 /obj/structure/surface/rack,
@@ -600,23 +576,17 @@
 "cw" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "cx" = (
 /obj/structure/machinery/camera/autoname,
 /obj/item/stack/sheet/plasteel,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "cy" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "cA" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -1185,9 +1155,7 @@
 /area/bigredv2/outside/general_offices)
 "oB" = (
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "xT" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,

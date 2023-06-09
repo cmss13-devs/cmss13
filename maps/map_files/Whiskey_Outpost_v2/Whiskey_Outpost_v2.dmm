@@ -430,9 +430,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
 "bB" = (
 /obj/structure/disposalpipe/segment{
@@ -477,9 +475,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
 "bP" = (
 /obj/structure/disposalpipe/segment{
@@ -1274,9 +1270,7 @@
 "eO" = (
 /obj/structure/bed/stool,
 /obj/effect/landmark/start/whiskey/researcher,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
 "eP" = (
 /obj/structure/bed/chair{
@@ -1681,9 +1675,7 @@
 /area/whiskey_outpost/inside/hospital)
 "fZ" = (
 /obj/effect/landmark/start/whiskey/medic,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital/triage)
 "ga" = (
 /obj/structure/disposalpipe/junction{
@@ -1734,9 +1726,7 @@
 /area/whiskey_outpost/outside/lane/two_north)
 "gl" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital/triage)
 "gn" = (
 /obj/item/stack/cable_coil/cut,
@@ -1950,9 +1940,7 @@
 /area/whiskey_outpost/inside/hospital)
 "hb" = (
 /obj/effect/landmark/start/whiskey/researcher,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
 "hd" = (
 /obj/structure/machinery/defenses/sentry/premade,
@@ -2248,9 +2236,7 @@
 	pixel_x = -6;
 	pixel_y = 32
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital/triage)
 "hV" = (
 /obj/structure/bed/chair/comfy/beige{
@@ -2774,18 +2760,14 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalleft"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
 "jB" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "jD" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
 "jE" = (
 /obj/effect/landmark/start/whiskey/marine,
@@ -3027,18 +3009,14 @@
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "kv" = (
 /obj/structure/bed/roller,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
 "kw" = (
 /obj/effect/decal/medical_decals{
 	dir = 4;
 	icon_state = "triagedecaldir"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
 "kx" = (
 /turf/open/floor/almayer{
@@ -3140,9 +3118,7 @@
 /area/whiskey_outpost/inside/hospital)
 "kO" = (
 /obj/structure/machinery/iv_drip,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
 "kP" = (
 /obj/structure/machinery/sleep_console{
@@ -3281,9 +3257,7 @@
 "lt" = (
 /obj/structure/bed/roller,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
 "lu" = (
 /obj/structure/surface/table,
@@ -4648,9 +4622,7 @@
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/hospital)
 "qB" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
 "qC" = (
 /obj/structure/machinery/power/apc/almayer{
@@ -4878,9 +4850,7 @@
 "rk" = (
 /obj/structure/machinery/cryo_cell,
 /obj/structure/pipes/standard/cap/hidden,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital/triage)
 "rl" = (
 /turf/open/floor/plating{
@@ -6424,9 +6394,7 @@
 /obj/structure/pipes/standard/simple/visible{
 	dir = 5
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital/triage)
 "wK" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
@@ -6739,9 +6707,7 @@
 /area/whiskey_outpost/outside/north/beach)
 "xT" = (
 /obj/effect/landmark/start/whiskey/doctor,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
 "xV" = (
 /obj/effect/landmark/start/whiskey/spec,
@@ -7092,9 +7058,7 @@
 /area/whiskey_outpost/inside/bunker)
 "zd" = (
 /obj/structure/machinery/autolathe/medilathe/full,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
 "zf" = (
 /obj/structure/barricade/sandbags/wired,
@@ -7913,9 +7877,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital/triage)
 "Cg" = (
 /obj/structure/machinery/m56d_hmg/mg_turret{
@@ -9227,9 +9189,7 @@
 /area/whiskey_outpost/outside/lane/one_north)
 "Hq" = (
 /obj/structure/pipes/standard/manifold/visible,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital/triage)
 "Hr" = (
 /turf/open/gm/dirtgrassborder/south,
@@ -9311,9 +9271,7 @@
 /turf/open/jungle,
 /area/whiskey_outpost/outside/lane/one_south)
 "HN" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital/triage)
 "HP" = (
 /obj/structure/machinery/light/small{
@@ -10017,9 +9975,7 @@
 /obj/item/weapon/gun/pill{
 	pixel_y = 6
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital/triage)
 "Lg" = (
 /turf/open/jungle,
@@ -10039,9 +9995,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital/triage)
 "Lp" = (
 /obj/item/lightstick/red/planted,
@@ -10077,9 +10031,7 @@
 /obj/structure/closet/secure_closet/surgical{
 	pixel_x = 30
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital/triage)
 "Ly" = (
 /turf/open/gm/dirtgrassborder/west,
@@ -10381,9 +10333,7 @@
 /obj/structure/pipes/standard/simple/visible{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital/triage)
 "MP" = (
 /turf/open/gm/dirt,
@@ -10784,9 +10734,7 @@
 	pixel_x = 20;
 	pixel_y = 32
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital/triage)
 "OK" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -12277,9 +12225,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital/triage)
 "Vy" = (
 /obj/structure/machinery/cm_vending/clothing/synth,
@@ -12556,9 +12502,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital/triage)
 "WJ" = (
 /obj/structure/disposalpipe/segment,
@@ -13149,9 +13093,7 @@
 /area/whiskey_outpost/outside/south)
 "Zm" = (
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
 "Zn" = (
 /obj/structure/flora/bush/ausbushes/reedbush,

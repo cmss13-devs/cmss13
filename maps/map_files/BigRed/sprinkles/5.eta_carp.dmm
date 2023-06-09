@@ -2,9 +2,7 @@
 "a" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "b" = (
 /turf/closed/wall/solaris/reinforced,
@@ -20,9 +18,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "e" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "f" = (
 /obj/structure/machinery/light{
@@ -55,9 +51,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "k" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "l" = (
 /obj/effect/decal/cleanable/dirt,
@@ -91,20 +85,14 @@
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
 	name = "\improper Eta Lab Cell"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "r" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "s" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "t" = (
 /mob/living/simple_animal/hostile/carp{

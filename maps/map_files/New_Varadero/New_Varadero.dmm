@@ -951,9 +951,7 @@
 	dir = 8;
 	pixel_x = -11
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "aPe" = (
 /obj/effect/decal/cleanable/blood,
@@ -1939,9 +1937,7 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "bHo" = (
 /obj/structure/platform/kutjevo/smooth{
@@ -2679,9 +2675,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "cpA" = (
 /obj/structure/morgue,
@@ -2766,9 +2760,7 @@
 	},
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "crY" = (
 /turf/open/auto_turf/sand_white/layer0,
@@ -2982,9 +2974,7 @@
 /area/varadero/exterior/lz1_near)
 "cDY" = (
 /obj/effect/landmark/objective_landmark/far,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "cEu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -3807,17 +3797,13 @@
 /area/varadero/interior/laundry)
 "dnU" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "dnV" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/security)
 "doa" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -5386,9 +5372,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "eRc" = (
 /obj/structure/prop/rock/brown,
@@ -7178,9 +7162,7 @@
 /area/varadero/interior/medical)
 "gnZ" = (
 /obj/effect/landmark/yautja_teleport,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/security)
 "god" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -7213,9 +7195,7 @@
 /area/varadero/interior/chapel)
 "gqN" = (
 /obj/item/tool/soap,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/security)
 "gqX" = (
 /obj/effect/decal/warning_stripes/asteroid{
@@ -7530,9 +7510,7 @@
 	pixel_y = -24
 	},
 /obj/effect/landmark/objective_landmark/far,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "gFx" = (
 /turf/open/floor/wood,
@@ -8222,9 +8200,7 @@
 	dir = 4
 	},
 /obj/item/tool/wet_sign,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "hsF" = (
 /obj/effect/landmark/yautja_teleport,
@@ -9656,9 +9632,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "iAp" = (
 /obj/effect/decal/strata_decals/grime/grime3{
@@ -9800,9 +9774,7 @@
 	start_charge = 0
 	},
 /obj/effect/landmark/objective_landmark/far,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "iIr" = (
 /obj/structure/barricade/handrail/wire{
@@ -10917,9 +10889,7 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "jGT" = (
 /obj/structure/prop/invuln/minecart_tracks,
@@ -11244,9 +11214,7 @@
 /obj/structure/urinal{
 	pixel_y = 32
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/security)
 "jUY" = (
 /obj/structure/bed/chair/hunter,
@@ -12258,9 +12226,7 @@
 	pixel_x = -10;
 	pixel_y = 11
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/laundry)
 "kNN" = (
 /obj/structure/machinery/light/small{
@@ -12368,9 +12334,7 @@
 /area/varadero/interior/hall_N)
 "kTI" = (
 /obj/structure/machinery/light/small,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/security)
 "kTX" = (
 /obj/structure/prop/rock/brown,
@@ -12803,9 +12767,7 @@
 	},
 /area/varadero/interior/research)
 "lpv" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/laundry)
 "lqa" = (
 /obj/item/tool/warning_cone{
@@ -15206,9 +15168,7 @@
 	},
 /area/varadero/interior/technical_storage)
 "nrd" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/security)
 "nrR" = (
 /obj/effect/overlay/palmtree_r{
@@ -15359,9 +15319,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/security)
 "nzr" = (
 /turf/open/floor/shiva{
@@ -15462,9 +15420,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "nFg" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -16534,9 +16490,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/light/small,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "oAS" = (
 /obj/structure/prop/structure_lattice{
@@ -17056,9 +17010,7 @@
 /area/varadero/interior/oob)
 "oWO" = (
 /obj/structure/toilet,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/security)
 "oWU" = (
 /obj/effect/landmark/yautja_teleport,
@@ -17947,9 +17899,7 @@
 	pixel_x = 5;
 	pixel_y = 15
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/laundry)
 "pIC" = (
 /obj/structure/closet/secure_closet/security_empty,
@@ -19474,9 +19424,7 @@
 /obj/structure/mirror{
 	pixel_y = -28
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "qXO" = (
 /obj/structure/window_frame/colony/reinforced,
@@ -19507,9 +19455,7 @@
 /area/varadero/interior/library)
 "qZr" = (
 /obj/effect/landmark/yautja_teleport,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "qZH" = (
 /obj/structure/machinery/conveyor_switch,
@@ -20520,9 +20466,7 @@
 	pixel_x = 7;
 	pixel_y = 15
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/laundry)
 "rPe" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -20700,9 +20644,7 @@
 /obj/structure/mirror{
 	pixel_y = -28
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "rWB" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
@@ -21565,9 +21507,7 @@
 	},
 /area/varadero/interior/morgue)
 "sGo" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "sGY" = (
 /turf/open/floor/shiva{
@@ -21757,9 +21697,7 @@
 /area/varadero/interior_protected/maintenance/south)
 "sNa" = (
 /obj/structure/window/reinforced/tinted,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/laundry)
 "sNl" = (
 /obj/structure/pipes/vents/pump{
@@ -21980,9 +21918,7 @@
 	dir = 4
 	},
 /obj/structure/pipes/vents/pump,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "tdq" = (
 /obj/structure/largecrate/random/mini/chest,
@@ -22129,9 +22065,7 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "tlT" = (
 /turf/open/floor/shiva{
@@ -22545,9 +22479,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "tKx" = (
 /obj/structure/machinery/photocopier,
@@ -23367,9 +23299,7 @@
 	pixel_y = -24;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/laundry)
 "uuN" = (
 /turf/open/floor/shiva{
@@ -23826,9 +23756,7 @@
 	pixel_x = -6;
 	pixel_y = 15
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/laundry)
 "uNq" = (
 /turf/open/floor/shiva{
@@ -24749,9 +24677,7 @@
 /obj/structure/mirror{
 	pixel_y = 28
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "vAg" = (
 /obj/structure/machinery/light,
@@ -25310,9 +25236,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "vZz" = (
 /obj/effect/landmark/objective_landmark/far,
@@ -25607,9 +25531,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/vomit,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "wlx" = (
 /obj/structure/machinery/light/small{
@@ -25931,9 +25853,7 @@
 /area/varadero/interior_protected/maintenance/south)
 "wxu" = (
 /obj/structure/bed/chair,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/laundry)
 "wAj" = (
 /obj/structure/platform/kutjevo/smooth,
@@ -26765,9 +26685,7 @@
 	dir = 8;
 	pixel_x = -11
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/security)
 "xqP" = (
 /obj/structure/disposalpipe/segment{
@@ -27117,9 +27035,7 @@
 	dir = 8;
 	pixel_y = 18
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/laundry)
 "xFE" = (
 /turf/open/floor/wood,
@@ -27350,9 +27266,7 @@
 /obj/structure/mirror{
 	pixel_y = 28
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/varadero/interior/toilets)
 "xOI" = (
 /obj/item/tool/wrench,

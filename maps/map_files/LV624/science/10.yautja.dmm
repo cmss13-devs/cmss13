@@ -25,9 +25,7 @@
 	locked = 1;
 	name = "\improper Research Dome"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "ae" = (
 /turf/open/gm/dirt,
@@ -58,9 +56,7 @@
 	},
 /area/lv624/lazarus/research)
 "ak" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "al" = (
 /turf/open/floor{
@@ -234,9 +230,7 @@
 	locked = 1;
 	name = "\improper Research Dome"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aJ" = (
 /obj/structure/machinery/light{
@@ -251,9 +245,7 @@
 /obj/item/paper/research_notes,
 /obj/item/prop/alien/hugger,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aK" = (
 /obj/structure/machinery/door_control{
@@ -261,9 +253,7 @@
 	name = "Science Wing Lockdown";
 	pixel_x = 25
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aL" = (
 /obj/structure/machinery/power/apc{
@@ -303,33 +293,25 @@
 	locked = 1;
 	name = "\improper Research Dome"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aO" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aP" = (
 /obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aQ" = (
 /obj/item/clothing/glasses/regular,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aS" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -348,9 +330,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aW" = (
 /obj/structure/surface/table,
@@ -471,9 +451,7 @@
 /area/lv624/lazarus/research)
 "gd" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "gM" = (
 /obj/structure/surface/table,
@@ -500,9 +478,7 @@
 /area/lv624/lazarus/research)
 "zm" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "CC" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -521,9 +497,7 @@
 "Lo" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/remains/human,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "LE" = (
 /obj/structure/surface/table,
@@ -537,9 +511,7 @@
 "Np" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/scientist,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "WJ" = (
 /obj/effect/landmark/crap_item,
@@ -549,9 +521,7 @@
 	pixel_x = -25;
 	pixel_y = 5
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/research)
 "Zw" = (
 /obj/structure/surface/table,

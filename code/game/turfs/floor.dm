@@ -190,6 +190,66 @@
 				overlays -= wet_overlay
 				wet_overlay = null
 
+//all the subtype of the base floor tile.	icon_state = "floor"
+
+//those default tile with decal stuck on top.
+/turf/open/floor/default
+
+//unsure if direction on it matter
+/turf/open/floor/default/bot
+	icon_state = "bot"
+
+
+/turf/open/floor/default/loadingarea
+	icon_state = "loadingarea"
+
+//south is the default.
+/turf/open/floor/default/loadingarea/south
+
+/turf/open/floor/default/loadingarea/north
+	dir = 1;
+
+/turf/open/floor/default/loadingarea/east
+	dir = 4;
+
+/turf/open/floor/default/loadingarea/west
+	dir = 8;
+
+
+//all the floors related to the dark tiles...
+/turf/open/floor/dark
+	icon_state = "dark"
+
+
+//all the floor related to the white tiles.
+/turf/open/floor/white
+	icon_state = "white"
+
+
+/turf/open/floor/white/blue
+
+/turf/open/floor/white/blue/whitebluefull
+	icon_state = "whitebluefull"
+
+/turf/open/floor/white/green
+
+/turf/open/floor/white/green/whitegreenfull
+	icon_state = "whitegreenfull"
+
+/turf/open/floor/white/yellow
+
+/turf/open/floor/white/yellow/whiteyellowfull
+	icon_state = "whiteyellowfull"
+
+/turf/open/floor/white/purple
+
+/turf/open/floor/white/purple/whitepurplefull
+	icon_state = "whitepurplefull"
+
+
+
+/turf/open/floor/freezerfloor
+	icon_state = "freezerfloor"
 
 /turf/open/floor/sandstone
 	name = "sandstone floor"

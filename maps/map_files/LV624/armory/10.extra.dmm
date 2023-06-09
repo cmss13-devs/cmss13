@@ -1,14 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "b" = (
 /obj/item/stack/sheet/wood,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "c" = (
 /turf/open/floor{
@@ -39,9 +35,7 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "f" = (
 /turf/open/floor{
@@ -58,9 +52,7 @@
 "h" = (
 /obj/structure/machinery/light/small,
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "i" = (
 /turf/closed/wall/r_wall,

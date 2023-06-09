@@ -23233,15 +23233,11 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "bsl" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/hallway)
 "bsm" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/hallway)
 "bsn" = (
 /turf/open/floor{
@@ -23262,9 +23258,7 @@
 /obj/structure/pipes/standard/manifold/visible{
 	layer = 2.3
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "bsq" = (
 /obj/structure/pipes/standard/manifold/visible{
@@ -23529,9 +23523,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/hallway)
 "btb" = (
 /obj/structure/disposalpipe/segment{
@@ -23541,9 +23533,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/hallway)
 "btc" = (
 /obj/structure/surface/table,
@@ -23555,23 +23545,17 @@
 	},
 /area/ice_colony/underground/medical/treatment)
 "btd" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "bte" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "btf" = (
 /obj/structure/pipes/standard/simple/visible{
 	dir = 5
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "btg" = (
 /obj/structure/pipes/unary/freezer{
@@ -23592,9 +23576,7 @@
 	},
 /area/ice_colony/underground/medical/or)
 "bti" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/or)
 "btl" = (
 /obj/structure/machinery/power/apc{
@@ -23791,9 +23773,7 @@
 "btJ" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/hallway)
 "btK" = (
 /obj/structure/machinery/light{
@@ -23813,15 +23793,11 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "btM" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "btN" = (
 /obj/structure/machinery/light{
@@ -23843,15 +23819,11 @@
 /area/ice_colony/underground/medical/or)
 "btP" = (
 /obj/structure/machinery/optable,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/or)
 "btQ" = (
 /obj/structure/machinery/computer/operating,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/or)
 "btR" = (
 /obj/structure/machinery/light{
@@ -24071,9 +24043,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/hallway)
 "buz" = (
 /obj/structure/disposalpipe/segment{
@@ -24085,9 +24055,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Underground Medical Laboratory Treatment"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "buA" = (
 /obj/structure/disposalpipe/junction{
@@ -24097,9 +24065,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "buB" = (
 /obj/structure/disposalpipe/segment{
@@ -24109,25 +24075,19 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "buD" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "buE" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "buF" = (
 /obj/structure/surface/table/reinforced,
@@ -24149,25 +24109,19 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/or)
 "buI" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/or)
 "buJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/or)
 "buK" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -24321,17 +24275,13 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "bvg" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/lobby)
 "bvh" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/lobby)
 "bvi" = (
 /turf/open/floor{
@@ -24341,9 +24291,7 @@
 /area/ice_colony/underground/medical/lobby)
 "bvj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/hallway)
 "bvk" = (
 /obj/structure/machinery/light{
@@ -24368,9 +24316,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "bvo" = (
 /obj/structure/disposalpipe/segment{
@@ -24378,9 +24324,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "bvp" = (
 /obj/structure/machinery/chem_master,
@@ -24406,9 +24350,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/or)
 "bvt" = (
 /obj/structure/machinery/holosign_switch{
@@ -24556,9 +24498,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/lobby)
 "bvP" = (
 /obj/structure/machinery/photocopier,
@@ -24576,16 +24516,12 @@
 /area/ice_colony/underground/medical/treatment)
 "bvR" = (
 /obj/structure/machinery/sleep_console,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "bvT" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "bvU" = (
 /obj/structure/surface/table/reinforced,
@@ -24609,9 +24545,7 @@
 	dir = 1;
 	name = "Underground Medical Laboratory Operating Theatre"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/or)
 "bvW" = (
 /obj/effect/decal/warning_stripes{
@@ -24731,17 +24665,13 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/lobby)
 "bwm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/lobby)
 "bwn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -24750,25 +24680,19 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Underground Medical Laboratory Lobby"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/lobby)
 "bwo" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/hallway)
 "bwp" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/hallway)
 "bwq" = (
 /obj/structure/machinery/light{
@@ -24785,9 +24709,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "bws" = (
 /obj/structure/disposalpipe/segment{
@@ -24813,9 +24735,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "bwv" = (
 /turf/open/floor{
@@ -24901,9 +24821,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "bwQ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -24915,17 +24833,13 @@
 /area/ice_colony/underground/medical/treatment)
 "bwR" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "bwS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "bwT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -25102,15 +25016,11 @@
 /area/ice_colony/underground/medical/treatment)
 "bxs" = (
 /obj/structure/curtain/medical,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "bxt" = (
 /obj/structure/curtain/open/medical,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/treatment)
 "bxu" = (
 /obj/structure/curtain/medical,
@@ -25311,9 +25221,7 @@
 /area/ice_colony/underground/medical/hallway)
 "byf" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/hallway)
 "byg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -25370,9 +25278,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/hallway)
 "byo" = (
 /obj/structure/machinery/light/small{
@@ -25497,9 +25403,7 @@
 	dir = 1;
 	name = "\improper Underground Medical Laboratory Storage"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/storage)
 "byR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -25632,9 +25536,7 @@
 /area/ice_colony/underground/medical/storage)
 "bzj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/storage)
 "bzk" = (
 /obj/structure/surface/table,
@@ -25729,39 +25631,29 @@
 	},
 /area/ice_colony/underground/medical/storage)
 "bzx" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/storage)
 "bzy" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/storage)
 "bzz" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/storage)
 "bzA" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/storage)
 "bzB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/medical/storage)
 "bzC" = (
 /obj/structure/machinery/light{
@@ -29818,9 +29710,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/ice_colony/underground/security/hallway)
 "bLd" = (
 /obj/structure/disposalpipe/segment,
@@ -31378,22 +31268,16 @@
 /area/ice_colony/underground/security/brig)
 "bPE" = (
 /obj/structure/toilet,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/security/brig)
 "bPF" = (
 /obj/structure/urinal{
 	pixel_y = 32
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/security/brig)
 "bPG" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/security/brig)
 "bPH" = (
 /obj/structure/machinery/shower{
@@ -31401,9 +31285,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/machinery/door/window/westleft,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/security/brig)
 "bPI" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
@@ -31591,23 +31473,17 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/security/brig)
 "bQi" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/security/brig)
 "bQj" = (
 /obj/item/tool/soap,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/security/brig)
 "bQk" = (
 /obj/structure/tunnel{
@@ -31832,24 +31708,18 @@
 	dir = 8;
 	pixel_x = -11
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/security/brig)
 "bQQ" = (
 /obj/structure/machinery/light/small,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/security/brig)
 "bQR" = (
 /obj/structure/machinery/shower{
 	dir = 8
 	},
 /obj/structure/machinery/door/window/westleft,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/security/brig)
 "bQS" = (
 /turf/open/floor/plating,
@@ -32972,9 +32842,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bTW" = (
 /obj/structure/toilet,
@@ -32983,9 +32851,7 @@
 	},
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bTX" = (
 /obj/structure/sink{
@@ -32994,9 +32860,7 @@
 /obj/structure/mirror{
 	pixel_y = 28
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bTY" = (
 /turf/open/floor,
@@ -33013,14 +32877,10 @@
 	dir = 1;
 	name = "\improper Toilet Unit"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bUe" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bUf" = (
 /obj/structure/flora/pottedplant,
@@ -33087,9 +32947,7 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bUo" = (
 /obj/structure/machinery/power/apc{
@@ -33097,9 +32955,7 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bUq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -33124,35 +32980,27 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Underground Men's Restroom"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bUu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/item/tool/wet_sign,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bUv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/vomit,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bUx" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bUy" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -33161,17 +33009,13 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bUz" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bUA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -33274,9 +33118,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bUR" = (
 /obj/structure/sink{
@@ -33286,17 +33128,13 @@
 /obj/structure/mirror{
 	pixel_y = -28
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bUS" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bUT" = (
 /obj/structure/machinery/light{
@@ -33309,9 +33147,7 @@
 /obj/structure/mirror{
 	pixel_y = -28
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bUU" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -33393,14 +33229,10 @@
 /obj/structure/mirror{
 	pixel_y = 28
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_women)
 "bVk" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_women)
 "bVl" = (
 /obj/structure/sink{
@@ -33409,18 +33241,14 @@
 /obj/structure/mirror{
 	pixel_y = 28
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_women)
 "bVm" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/structure/pipes/vents/pump,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_women)
 "bVn" = (
 /obj/structure/machinery/computer/cameras,
@@ -33476,17 +33304,13 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Underground Women's Restroom"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_women)
 "bVw" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_women)
 "bVx" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -33496,15 +33320,11 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_women)
 "bVy" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_women)
 "bVz" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -33592,36 +33412,28 @@
 	dir = 8;
 	pixel_x = -11
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_women)
 "bVK" = (
 /obj/structure/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_women)
 "bVL" = (
 /obj/structure/machinery/power/apc{
 	pixel_y = -24;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_women)
 "bVM" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Toilet Unit"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_women)
 "bVN" = (
 /obj/structure/mineral_door/resin,
@@ -33665,9 +33477,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/light/small,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_women)
 "bVV" = (
 /obj/structure/sink{
@@ -33677,9 +33487,7 @@
 /obj/structure/mirror{
 	pixel_y = -28
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_women)
 "bVW" = (
 /turf/closed/shuttle{

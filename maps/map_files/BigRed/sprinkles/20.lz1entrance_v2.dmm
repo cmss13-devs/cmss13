@@ -130,40 +130,30 @@
 	},
 /area/bigredv2/outside/space_port)
 "aw" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "ax" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "ay" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "az" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aA" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aB" = (
 /obj/structure/filingcabinet,
@@ -226,23 +216,17 @@
 	dir = 1;
 	name = "\improper Spaceport"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aK" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aL" = (
 /obj/structure/surface/table,
@@ -292,18 +276,14 @@
 /area/bigredv2/outside/space_port)
 "aR" = (
 /obj/structure/bed/chair/office/dark,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aS" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4;
 	layer = 3.25
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aT" = (
 /obj/structure/surface/table,
@@ -671,9 +651,7 @@
 "cc" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/engineer,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "Dc" = (
 /obj/effect/decal/cleanable/dirt,

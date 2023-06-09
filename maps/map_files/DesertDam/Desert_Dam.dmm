@@ -516,9 +516,7 @@
 /obj/structure/surface/table,
 /obj/item/tool/shovel/spade,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "abJ" = (
 /obj/effect/blocker/toxic_water,
@@ -6172,9 +6170,7 @@
 /obj/structure/machinery/door/window/southleft{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "asD" = (
 /obj/structure/disposalpipe/segment,
@@ -6329,9 +6325,7 @@
 /obj/structure/machinery/door/window/southleft{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "atb" = (
 /obj/structure/flora/bush/desert/cactus/multiple{
@@ -6900,18 +6894,14 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "auD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "auE" = (
 /turf/open/floor{
@@ -7003,9 +6993,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "auT" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "auV" = (
 /obj/structure/flora/pottedplant,
@@ -7217,9 +7205,7 @@
 /obj/structure/disposalpipe/junction{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "avA" = (
 /obj/structure/surface/table,
@@ -7686,9 +7672,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "awQ" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "awR" = (
 /turf/open/desert/desert_shore/desert_shore1{
@@ -7872,18 +7856,14 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "axv" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Lobby"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "axw" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -11366,9 +11346,7 @@
 	},
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aIf" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aIg" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
@@ -11714,9 +11692,7 @@
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aJr" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aJs" = (
 /turf/open/floor{
@@ -11727,9 +11703,7 @@
 "aJt" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aJu" = (
 /turf/closed/wall,
@@ -12011,9 +11985,7 @@
 	dir = 2;
 	name = "\improper Xenoflora"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aKq" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -17983,9 +17955,7 @@
 /area/desert_dam/building/medical/chemistry)
 "bdi" = (
 /obj/structure/machinery/vending/snack,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/administration/meetingrooom)
 "bdj" = (
 /turf/open/floor/wood,
@@ -18098,9 +18068,7 @@
 /area/desert_dam/building/administration/overseer_office)
 "bdG" = (
 /obj/structure/machinery/vending/coffee,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/administration/meetingrooom)
 "bdH" = (
 /obj/structure/pipes/vents/pump,
@@ -18237,9 +18205,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "bed" = (
 /obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/administration/meetingrooom)
 "bee" = (
 /obj/structure/disposalpipe/segment,
@@ -18340,9 +18306,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/administration/meetingrooom)
 "beu" = (
 /obj/structure/disposalpipe/segment,
@@ -18433,9 +18397,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/administration/meetingrooom)
 "beK" = (
 /obj/structure/disposalpipe/segment{
@@ -18544,9 +18506,7 @@
 /area/desert_dam/building/administration/overseer_office)
 "bfb" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/administration/meetingrooom)
 "bfc" = (
 /turf/open/floor/carpet/edge{
@@ -20355,9 +20315,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/security/observation)
 "ble" = (
 /obj/structure/cargo_container/hd/left,
@@ -20727,15 +20685,11 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/security/observation)
 "bml" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/security/observation)
 "bmm" = (
 /obj/structure/dispenser,
@@ -20953,9 +20907,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/security/interrogation)
 "bmW" = (
 /obj/structure/machinery/power/apc{
@@ -21421,9 +21373,7 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/security/interrogation)
 "boy" = (
 /turf/closed/shuttle{
@@ -23910,29 +23860,21 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/courtroom)
 "bwH" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/security/observation)
 "bwI" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/security/observation)
 "bwK" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight/lamp,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/security/interrogation)
 "bwL" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/security/interrogation)
 "bwM" = (
 /obj/structure/machinery/power/apc{
@@ -24917,9 +24859,7 @@
 "bzX" = (
 /obj/structure/surface/table,
 /obj/item/device/taperecorder,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/security/interrogation)
 "bzY" = (
 /turf/open/asphalt/cement_sunbleached,
@@ -25610,9 +25550,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/security/interrogation)
 "bCN" = (
 /obj/structure/surface/table/reinforced,
@@ -26892,9 +26830,7 @@
 	dir = 1;
 	name = "\improper Observation"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/security/observation)
 "bGL" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -27048,9 +26984,7 @@
 	dir = 2
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/lobby)
 "bHi" = (
 /obj/structure/machinery/power/apc{
@@ -27531,9 +27465,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/security/interrogation)
 "bIZ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -27649,9 +27581,7 @@
 	},
 /area/desert_dam/interior/dam_interior/lobby)
 "bJr" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/lobby)
 "bJs" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -27841,9 +27771,7 @@
 	dir = 1;
 	name = "\improper Evidence"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/security/evidence)
 "bKf" = (
 /obj/structure/bed/chair,
@@ -28061,9 +27989,7 @@
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/security/warden)
 "bKP" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -29571,16 +29497,12 @@
 "bPT" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
 "bPU" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
 "bPV" = (
 /obj/structure/desertdam/decals/road_edge,
@@ -29604,9 +29526,7 @@
 "bPX" = (
 /obj/structure/surface/table,
 /obj/item/device/radio,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
 "bPY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -29966,23 +29886,17 @@
 	pixel_x = -30;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
 "bRb" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
 "bRc" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
 "bRd" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
@@ -30237,17 +30151,13 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
 "bRV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
 "bRW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -30255,14 +30165,10 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
 "bRX" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
 "bRY" = (
 /obj/structure/surface/table,
@@ -30270,9 +30176,7 @@
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
 "bRZ" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -30487,9 +30391,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bSH" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bSI" = (
 /obj/structure/holohoop{
@@ -30591,9 +30493,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
 "bSX" = (
 /turf/open/floor{
@@ -32402,9 +32302,7 @@
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bYH" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/break_room)
 "bYI" = (
 /obj/structure/platform{
@@ -32614,9 +32512,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/break_room)
 "bZk" = (
 /obj/structure/disposalpipe/segment{
@@ -33954,9 +33850,7 @@
 "cdi" = (
 /obj/structure/machinery/computer/station_alert,
 /obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
 "cdj" = (
 /obj/effect/decal/warning_stripes{
@@ -34631,9 +34525,7 @@
 "cfm" = (
 /obj/structure/machinery/computer/atmos_alert,
 /obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
 "cfn" = (
 /obj/effect/blocker/toxic_water/Group_1,
@@ -35887,9 +35779,7 @@
 "cjY" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/lobby)
 "cjZ" = (
 /obj/structure/machinery/light{
@@ -36102,9 +35992,7 @@
 	pixel_x = -30;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/chemistry)
 "ckF" = (
 /obj/structure/disposalpipe/segment,
@@ -36119,17 +36007,13 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/chemistry)
 "ckH" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/chemistry)
 "ckI" = (
 /obj/structure/pipes/vents/pump{
@@ -36138,9 +36022,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/chemistry)
 "ckJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -36149,9 +36031,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/chemistry)
 "ckL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -36247,9 +36127,7 @@
 /area/desert_dam/interior/dam_interior/lobby)
 "ckX" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/lobby)
 "ckY" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -36466,9 +36344,7 @@
 	},
 /area/desert_dam/building/medical/chemistry)
 "clI" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/chemistry)
 "clJ" = (
 /obj/structure/surface/table/reinforced,
@@ -36478,27 +36354,21 @@
 	pixel_y = 3
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/chemistry)
 "clK" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/chemistry)
 "clL" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 2;
 	name = "\improper Medical Chemistry"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/chemistry)
 "clM" = (
 /turf/open/floor/prison{
@@ -36552,9 +36422,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/lobby)
 "clT" = (
 /obj/structure/surface/table/reinforced,
@@ -36715,16 +36583,12 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/storage/box/pillbottles,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/chemistry)
 "cmw" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/storage/fancy/vials/random,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/chemistry)
 "cmx" = (
 /turf/open/floor/prison{
@@ -37396,9 +37260,7 @@
 /obj/structure/machinery/door/window/brigdoor/northleft{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/chemistry)
 "coT" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -37855,9 +37717,7 @@
 /obj/structure/machinery/door/window/brigdoor/northleft{
 	dir = 2
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/chemistry)
 "cqt" = (
 /obj/structure/machinery/light{
@@ -41990,9 +41850,7 @@
 	},
 /area/desert_dam/building/medical/garage)
 "cDh" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "cDi" = (
 /obj/structure/pipes/portables_connector{
@@ -42314,9 +42172,7 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottom"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "cEj" = (
 /obj/structure/pipes/portables_connector{
@@ -42628,9 +42484,7 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "docdecal1"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "cFh" = (
 /obj/effect/decal/medical_decals{
@@ -42641,9 +42495,7 @@
 	pixel_x = 28;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "cFi" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -42931,14 +42783,10 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "docdecal2"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "cFV" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/emergency_room)
 "cFY" = (
 /obj/structure/disposalpipe/segment{
@@ -43308,26 +43156,20 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "docdecal3"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "cGV" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "docstriping"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "cGW" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
 	name = "\improper Emergency Room"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/emergency_room)
 "cGX" = (
 /turf/open/floor/prison{
@@ -43497,9 +43339,7 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "docdecal4"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "cHz" = (
 /obj/structure/surface/table/reinforced,
@@ -43806,9 +43646,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "cID" = (
 /obj/structure/surface/table/reinforced,
@@ -43991,9 +43829,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/church)
 "cJg" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/church)
 "cJh" = (
 /obj/structure/disposalpipe/segment,
@@ -44012,9 +43848,7 @@
 /obj/structure/bed/chair/wood/normal{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/church)
 "cJl" = (
 /obj/structure/flora/grass/desert/lightgrass_12,
@@ -45398,17 +45232,13 @@
 /area/desert_dam/building/church)
 "cNZ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/church)
 "cOa" = (
 /obj/structure/stairs{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/church)
 "cOb" = (
 /turf/open/floor{
@@ -45423,9 +45253,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/church)
 "cOe" = (
 /obj/structure/machinery/power/apc{
@@ -45433,9 +45261,7 @@
 	pixel_x = -30;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/church)
 "cOf" = (
 /obj/structure/pipes/vents/pump{
@@ -45710,9 +45536,7 @@
 	dir = 2;
 	name = "\improper Chapel"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/church)
 "cPd" = (
 /turf/open/floor{
@@ -45749,9 +45573,7 @@
 /area/desert_dam/building/church)
 "cPi" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/church)
 "cPj" = (
 /obj/structure/machinery/light,
@@ -50614,9 +50436,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/cafeteria/loading)
 "dkk" = (
 /obj/structure/disposalpipe/segment{
@@ -50983,9 +50803,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/break_room)
 "dnB" = (
 /obj/structure/desertdam/decals/road_stop{
@@ -52251,9 +52069,7 @@
 "dya" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/water_treatment_one/garage)
 "dyb" = (
 /turf/closed/wall/hangar{
@@ -52632,9 +52448,7 @@
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river_mouth/southern)
 "dAq" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dAr" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -52885,9 +52699,7 @@
 "dBF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/break_room)
 "dBJ" = (
 /obj/structure/machinery/computer/pod/old{
@@ -52944,24 +52756,18 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dBU" = (
 /obj/structure/surface/table,
 /obj/item/clothing/head/soft/ferret,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dBV" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dBW" = (
 /turf/open/floor{
@@ -54739,9 +54545,7 @@
 /area/desert_dam/interior/dam_interior/break_room)
 "dKt" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/break_room)
 "dKv" = (
 /obj/structure/window/reinforced{
@@ -54922,9 +54726,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/break_room)
 "dKZ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -54935,9 +54737,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/break_room)
 "dLa" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -55599,9 +55399,7 @@
 /area/desert_dam/building/medical/break_room)
 "dOt" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/medical/chemistry)
 "dOu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -58240,9 +58038,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dWy" = (
 /obj/structure/surface/rack,
@@ -58281,15 +58077,11 @@
 /area/desert_dam/building/cafeteria/cafeteria)
 "dWC" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dWE" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dWF" = (
 /obj/structure/bed/chair/office/dark{
@@ -58337,9 +58129,7 @@
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dWO" = (
 /obj/structure/machinery/light,
@@ -59633,9 +59423,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ecE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -59654,18 +59442,14 @@
 "ecI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ecK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ecL" = (
 /obj/structure/pipes/vents/pump{
@@ -59891,9 +59675,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Showers"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "eeC" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -60605,9 +60387,7 @@
 "fqI" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "fsK" = (
 /obj/effect/decal/sand_overlay/sand1,
@@ -61380,9 +61160,7 @@
 /area/desert_dam/building/mining/workshop)
 "hTg" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/church)
 "hTr" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -61472,9 +61250,7 @@
 "ifB" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/building/security/observation)
 "igf" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -62947,9 +62723,7 @@
 "nFW" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/administration/meetingrooom)
 "nIz" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -63441,9 +63215,7 @@
 /area/desert_dam/exterior/valley/valley_crashsite)
 "pzd" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/garage)
 "pzv" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -63895,9 +63667,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/garage)
 "rfm" = (
 /obj/effect/decal/cleanable/dirt,
@@ -64222,9 +63992,7 @@
 	},
 /area/desert_dam/interior/dam_interior/garage)
 "sfK" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/garage)
 "shm" = (
 /turf/open/asphalt/cement_sunbleached{
@@ -64514,9 +64282,7 @@
 "tdf" = (
 /obj/structure/surface/table,
 /obj/item/folder/yellow,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
 "teR" = (
 /obj/structure/bed/chair/comfy/beige{
@@ -65116,9 +64882,7 @@
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "vqt" = (
 /obj/effect/decal/cleanable/dirt,
@@ -65427,9 +65191,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/garage)
 "wud" = (
 /obj/structure/disposalpipe/segment,
@@ -65854,9 +65616,7 @@
 /area/desert_dam/exterior/valley/valley_crashsite)
 "xEP" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "xFk" = (
 /turf/open/desert/dirt{

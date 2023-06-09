@@ -26,15 +26,11 @@
 /area/bigredv2/outside/admin_building)
 "ag" = (
 /obj/effect/spawner/random/toolbox,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "ai" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aj" = (
 /obj/structure/window_frame/solaris,
@@ -139,14 +135,10 @@
 /area/bigredv2/outside/admin_building)
 "aw" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "ay" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aA" = (
 /obj/effect/landmark/corpsespawner/wygoon,
@@ -281,9 +273,7 @@
 /area/bigredv2/outside/admin_building)
 "aT" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aU" = (
 /obj/structure/machinery/light{
@@ -400,9 +390,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "bg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -464,9 +452,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "bo" = (
 /obj/item/device/radio/intercom{

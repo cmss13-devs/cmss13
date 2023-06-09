@@ -761,7 +761,7 @@
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
 
-	var/obj/item/projectile/Proj = new (current_turf, create_cause_data(initial(xeno.caste_type), xeno))
+	var/obj/item/projectile/Proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))
 	Proj.generate_bullet(xeno.ammo)
 	Proj.permutated += xeno
 	Proj.def_zone = xeno.get_limbzone_target()

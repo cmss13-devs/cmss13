@@ -2740,7 +2740,7 @@
 			return
 	var/datum/effects/neurotoxin/neuro_effect = locate() in moob.effects_list
 	if(!neuro_effect)
-		neuro_effect = new /datum/effects/neurotoxin(moob)
+		neuro_effect = new /datum/effects/neurotoxin(moob, proj.firer)
 	neuro_effect.duration += 5
 	moob.apply_effect(3, DAZE)
 	to_chat(moob, SPAN_HIGHDANGER("Neurotoxic liquid spreads all over you and immediately soaks into your pores and orifices! Oh fuck!")) // Fucked up but have a chance to escape rather than being game-ended

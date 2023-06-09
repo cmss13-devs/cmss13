@@ -75,10 +75,9 @@
 		door_handler.control_doors("force-unlock")
 		return
 
+	destination = null
 	if(prob(CRASH_LAND_PROBABILITY))
 		create_crash_point()
-	else
-		destination = null
 
 	set_mode(SHUTTLE_IGNITING)
 	on_ignition()
@@ -158,8 +157,9 @@
 
 	movement_force = list("KNOCKDOWN" = 0, "THROW" = 5)
 
-	for(var/mob/evac_mob in shuttle_areas[1])
-		shake_camera(evac_mob, 20, 2)
+	for(var/area/shuttle_area in shuttle_areas)
+		for(var/mob/evac_mob in shuttle_area)
+			shake_camera(evac_mob, 20, 2)
 
 	door_handler.control_doors("force-unlock")
 

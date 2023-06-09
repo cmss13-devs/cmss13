@@ -93,12 +93,13 @@ obj/item/storage/synthetic_maintenance_case
 	matter = list("plastic" = 1000)
 	can_hold = list(
 		/obj/item/tool/surgery/shrapnel_remover,
-		/obj/item/stack/weak_nanopaste,
+		/obj/item/stack/nanopaste/weak,
+		/obj/item/stack/nanopaste,
 	)
 
 /obj/item/storage/synthetic_maintenance_case/regular
 
 /obj/item/storage/synthetic_maintenance_case/regular/fill_preset_inventory()
 	new /obj/item/tool/surgery/shrapnel_remover(src)
-	new /obj/item/stack/weak_nanopaste(src)
-	new /obj/item/stack/weak_nanopaste(src)
+	new /obj/item/stack/nanopaste/weak(src)
+	new /obj/item/stack/nanopaste/weak(src)

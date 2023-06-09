@@ -47,7 +47,7 @@
 			else
 				to_chat(user, SPAN_NOTICE("Nothing to fix here."))
 
-/obj/item/stack/weak_nanopaste
+/obj/item/stack/nanopaste/weak
 	name = "low power nanopaste"
 	singular_name = "low power nanite swarm"
 	desc = "A cheap alternative to nanopaste. Fairly effective in repairing robotic machinery."
@@ -61,10 +61,10 @@
 	stack_id = "nanopaste"
 	black_market_value = 10
 
-/obj/item/stack/weak_nanopaste/attack(mob/living/M as mob, mob/user as mob)
+/obj/item/stack/nanopaste/weak/attack(mob/living/M as mob, mob/user as mob)
 	if (!istype(M) || !istype(user))
 		return 0
-	if (isrobot(M))
+	if (isrobot(M)) //Repairing cyborgs
 		var/mob/living/silicon/robot/R = M
 		if (R.getBruteLoss() || R.getFireLoss() )
 			R.apply_damage(-6, BRUTE)
@@ -78,6 +78,9 @@
 
 	if (istype(M,/mob/living/carbon/human)) //Repairing robolimbs
 		var/mob/living/carbon/human/H = M
+		if(isspeciessynth(H) && M == user && !H.allow_gun_usage)
+			to_chat(H, SPAN_WARNING("Your programming forbids you from self-repairing with \the [src]."))
+			return
 		var/obj/limb/S = H.get_limb(user.zone_selected)
 
 		if (S && (S.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))

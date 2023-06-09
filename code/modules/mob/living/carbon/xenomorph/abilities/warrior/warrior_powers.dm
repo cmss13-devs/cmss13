@@ -59,8 +59,7 @@
 	X.update_icons()
 
 	apply_cooldown()
-	..()
-
+	return ..()
 
 /datum/action/xeno_action/activable/fling/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/woyer = owner
@@ -121,8 +120,7 @@
 	carbone.throw_atom(throw_turf, fling_distance, SPEED_VERY_FAST, woyer, TRUE)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/warrior_punch/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/woyer = owner
@@ -166,7 +164,7 @@
 	playsound(carbone,S, 50, 1)
 	do_base_warrior_punch(carbone, target_limb)
 	apply_cooldown()
-	..()
+	return ..()
 
 /datum/action/xeno_action/activable/warrior_punch/proc/do_base_warrior_punch(mob/living/carbon/carbone, obj/limb/target_limb)
 	var/mob/living/carbon/xenomorph/woyer = owner

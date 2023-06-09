@@ -1,4 +1,0 @@
-author: "LynxSolstice"
-delete-after: True
-changes:
-  - maptweak: "Replaced the IFF locked M41As in the PMC nightmare that spawn on the ground with the new no_lock variant."

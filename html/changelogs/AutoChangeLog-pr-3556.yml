@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - qol: "Reduced USCM SG max scattering on Full Auto fire so you don't have to periodically let go of the fire button to keep it from firing way wide."

@@ -143,6 +143,13 @@
 	if(!crash_land)
 		return
 
+	for(var/area/shuttle_area in shuttle_areas)
+		shuttle_area.flags_alarm_state |= ALARM_WARNING_FIRE
+		shuttle_area.updateicon()
+		for(var/mob/evac_mob in shuttle_area)
+			if(evac_mob.client)
+				playsound_client(evac_mob.client, 'sound/effects/bomb_fall.ogg', vol = 50)
+
 	for(var/turf/found_turf as anything in destination.return_turfs())
 		if(istype(found_turf, /turf/closed))
 			found_turf.ChangeTurf(/turf/open/floor)
@@ -160,6 +167,8 @@
 	for(var/area/shuttle_area in shuttle_areas)
 		for(var/mob/evac_mob in shuttle_area)
 			shake_camera(evac_mob, 20, 2)
+			if(evac_mob.client)
+				playsound_client(evac_mob.client, get_sfx("bigboom"), vol = 50)
 
 	door_handler.control_doors("force-unlock")
 
@@ -238,6 +247,9 @@
 	for(var/area/shuttle_area in arriving_shuttle.shuttle_areas)
 		shuttle_area.SetDynamicLighting()
 		shuttle_area.SetLightLevel(0)
+
+		shuttle_area.flags_alarm_state &= ~ALARM_WARNING_FIRE
+		shuttle_area.updateicon()
 
 /datum/map_template/shuttle/escape_pod_w
 	name = "Escape Pod W"

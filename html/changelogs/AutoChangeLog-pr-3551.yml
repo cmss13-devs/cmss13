@@ -1,4 +1,0 @@
-author: "Khadd"
-delete-after: True
-changes:
-  - bugfix: "fixes being able to make others pick up chairs"

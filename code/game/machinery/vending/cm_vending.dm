@@ -1240,6 +1240,31 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		vending_human.marine_buyable_categories[buying_category] -= 1
 	return TRUE
 
+// Unload ALL the items throwing them around randomly, optionally destroying the vendor
+/obj/structure/machinery/cm_vending/proc/catastrophic_failure(throw_objects = TRUE, destroy = FALSE)
+	stat |= IN_USE
+	var/list/products = get_listed_products()
+	var/i = 1
+	while(i <= length(products))
+		sleep(0.5)
+		var/list/itemspec = products[i]
+		if(!itemspec[2] || itemspec[2] <= 0)
+			i++
+			continue
+		itemspec[2] -= 1
+		var/list/spawned = list()
+		if(islist(itemspec[3]))
+			for(var/path in itemspec[3])
+				spawned += new path(loc)
+		else if(itemspec[3])
+			var/path = itemspec[3]
+			spawned += new path(loc)
+		if(throw_objects)
+			for(var/atom/movable/spawned_atom in spawned)
+				INVOKE_ASYNC(spawned_atom, TYPE_PROC_REF(/atom/movable, throw_atom), pick(orange(src, 4)), 4, SPEED_FAST)
+	stat &= ~IN_USE
+	if(destroy)
+		qdel(src)
 
 //------------HACKING---------------
 

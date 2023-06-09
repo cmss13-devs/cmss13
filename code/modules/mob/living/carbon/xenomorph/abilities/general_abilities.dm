@@ -317,6 +317,7 @@
 		xeno.recalculate_speed()
 	xeno.zoom_in()
 	button.icon_state = "template_active"
+	return ..()
 
 /datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_out()
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -372,10 +373,10 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
-/datum/action/xeno_action/activable/transfer_plasma/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	X.xeno_transfer_plasma(A, plasma_transfer_amount, transfer_delay, max_range)
-	..()
+/datum/action/xeno_action/activable/transfer_plasma/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.xeno_transfer_plasma(target, plasma_transfer_amount, transfer_delay, max_range)
+	return ..()
 
 /datum/action/xeno_action/onclick/xenohide
 	name = "Hide"

@@ -160,16 +160,11 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "bg" = (
-/turf/open/floor{
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/south_east,
 /area/lv624/lazarus/medbay)
 "bi" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/north_west,
 /area/lv624/lazarus/medbay)
 "bk" = (
 /obj/structure/machinery/vending/snack,
@@ -182,9 +177,7 @@
 "bp" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/whiteblue,
 /area/lv624/lazarus/medbay)
 "bq" = (
 /obj/structure/bed,
@@ -223,10 +216,7 @@
 /area/lv624/lazarus/medbay)
 "bB" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/south_west,
 /area/lv624/lazarus/medbay)
 "bE" = (
 /obj/structure/fence,
@@ -273,12 +263,6 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/white/whiteblue/west,
 /area/lv624/lazarus/medbay)
-"qC" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "qK" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass/grass1,
@@ -305,9 +289,7 @@
 /obj/structure/filingcabinet,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/whiteblue,
 /area/lv624/lazarus/medbay)
 "uD" = (
 /obj/item/storage/firstaid,
@@ -337,9 +319,7 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "zF" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/whiteblue,
 /area/lv624/lazarus/medbay)
 "zL" = (
 /obj/structure/flora/jungle/planttop1,
@@ -448,9 +428,7 @@
 "Vq" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/whiteblue,
 /area/lv624/lazarus/medbay)
 "VI" = (
 /obj/structure/flora/pottedplant{
@@ -459,10 +437,7 @@
 /turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
 "YV" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/south_west,
 /area/lv624/lazarus/medbay)
 
 (1,1,1) = {"
@@ -659,7 +634,7 @@ bI
 ac
 ae
 Qu
-qC
+bg
 az
 aq
 TK

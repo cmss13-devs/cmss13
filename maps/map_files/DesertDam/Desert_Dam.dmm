@@ -654,10 +654,7 @@
 /area/desert_dam/exterior/river/riverside_east)
 "acf" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/west,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "acg" = (
 /obj/structure/barricade/wooden{
@@ -6900,12 +6897,6 @@
 	},
 /turf/open/floor/white,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
-"auE" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitebluecorner"
-	},
-/area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "auF" = (
 /turf/open/floor/white/whiteblue/north,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
@@ -6975,10 +6966,7 @@
 /turf/open/floor/white/whiteblue/north,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "auS" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/north_west,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "auT" = (
 /turf/open/floor/white,
@@ -7655,10 +7643,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/south_east,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "awU" = (
 /obj/effect/blocker/toxic_water,
@@ -7702,29 +7687,20 @@
 /turf/open/floor/freezerfloor,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "axa" = (
-/turf/open/floor{
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/south_east,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "axb" = (
 /obj/structure/flora/pottedplant,
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/whiteblue,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "axc" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/whiteblue,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "axe" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/south_west,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "axf" = (
 /obj/structure/machinery/light,
@@ -10997,33 +10973,22 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/north,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aHm" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/north,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aHn" = (
 /obj/structure/machinery/vending/hydroseeds,
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/north,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aHo" = (
 /obj/structure/machinery/centrifuge,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/white/whitegreenfull,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aHp" = (
 /obj/structure/machinery/biogenerator,
@@ -11041,19 +11006,14 @@
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aHr" = (
 /obj/structure/machinery/botany/extractor,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/white/whitegreenfull,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aHs" = (
 /obj/structure/machinery/vending/hydronutrients,
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/north,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aHt" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
@@ -11298,10 +11258,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/west,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aIf" = (
 /turf/open/floor/white,
@@ -11311,10 +11268,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/east,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aIh" = (
 /obj/structure/platform{
@@ -11493,9 +11447,7 @@
 	},
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aIN" = (
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/south,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aIO" = (
 /turf/open/floor{
@@ -11653,10 +11605,7 @@
 /turf/open/floor/white,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aJs" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/east,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aJt" = (
 /obj/structure/surface/table,
@@ -11673,10 +11622,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "aJw" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/west,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aJx" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -12145,9 +12091,7 @@
 /area/desert_dam/exterior/valley/valley_cargo)
 "aKV" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/south,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aKW" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -12189,16 +12133,10 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/north,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aLc" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/north,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aLd" = (
 /obj/effect/blocker/toxic_water/Group_2,
@@ -12489,15 +12427,11 @@
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aLM" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/south,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aLN" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/south,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aLO" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
@@ -12582,14 +12516,10 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Xenoflora"
 	},
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/white/whitegreenfull,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aMb" = (
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/white/whitegreenfull,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aMc" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -61696,10 +61626,7 @@
 "kRX" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/west,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "kTX" = (
 /turf/open/desert/dirt{
@@ -64605,10 +64532,7 @@
 "vhA" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/west,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "vir" = (
 /obj/effect/decal/warning_stripes{
@@ -112915,7 +112839,7 @@ amz
 amz
 anv
 aJe
-auE
+axa
 avh
 aww
 aww

@@ -2755,9 +2755,7 @@
 /turf/open/floor/white/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "aou" = (
-/turf/open/floor{
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/south_east,
 /area/lv624/lazarus/medbay)
 "aov" = (
 /turf/open/floor/white/whiteblue/north,
@@ -2860,10 +2858,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aoU" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/north_west,
 /area/lv624/lazarus/medbay)
 "aoX" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -3087,16 +3082,11 @@
 "arf" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/whiteblue,
 /area/lv624/lazarus/medbay)
 "arg" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/south_west,
 /area/lv624/lazarus/medbay)
 "ari" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -5928,9 +5918,7 @@
 	},
 /area/lv624/lazarus/sleep_male)
 "aCa" = (
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/south,
 /area/lv624/lazarus/main_hall)
 "aCb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -7373,10 +7361,7 @@
 /area/lv624/lazarus/main_hall)
 "aHh" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/north,
 /area/lv624/lazarus/main_hall)
 "aHi" = (
 /obj/structure/machinery/vending/snack,
@@ -8440,9 +8425,7 @@
 /area/lv624/lazarus/main_hall)
 "aMh" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/south,
 /area/lv624/lazarus/main_hall)
 "aMi" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -12983,9 +12966,7 @@
 /area/lv624/ground/jungle/north_jungle)
 "dId" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/whiteblue,
 /area/lv624/lazarus/medbay)
 "dIO" = (
 /turf/open/gm/dirt{
@@ -13134,9 +13115,7 @@
 /obj/structure/filingcabinet,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/whiteblue,
 /area/lv624/lazarus/medbay)
 "dZY" = (
 /obj/structure/flora/jungle/vines/light_3,
@@ -13258,12 +13237,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
-"eoM" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "epG" = (
 /obj/structure/showcase,
 /obj/structure/window/reinforced{
@@ -15040,9 +15013,7 @@
 	pixel_y = 8
 	},
 /obj/item/tool/pen/clicky,
-/turf/open/floor{
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/south_east,
 /area/lv624/lazarus/corporate_dome)
 "jrC" = (
 /obj/structure/curtain/red,
@@ -15950,10 +15921,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "lNe" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/north_west,
 /area/lv624/lazarus/corporate_dome)
 "lPJ" = (
 /turf/open/gm/dirtgrassborder{
@@ -16113,10 +16081,7 @@
 /area/lv624/ground/river/east_river)
 "mjB" = (
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/south_west,
 /area/lv624/lazarus/corporate_dome)
 "mjY" = (
 /obj/structure/barricade/handrail/strata{
@@ -16545,10 +16510,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "nrb" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/north_west,
 /area/lv624/lazarus/corporate_dome)
 "nrm" = (
 /turf/open/gm/dirt{
@@ -16970,10 +16932,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
 "nYZ" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/south_west,
 /area/lv624/lazarus/medbay)
 "nZz" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
@@ -18101,9 +18060,7 @@
 "qJg" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/whiteblue,
 /area/lv624/lazarus/medbay)
 "qJq" = (
 /obj/structure/machinery/body_scanconsole,
@@ -18813,10 +18770,7 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/barrens/south_west_barrens)
 "sIi" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/south_east,
 /area/lv624/lazarus/corporate_dome)
 "sIr" = (
 /obj/effect/landmark/crap_item,
@@ -19287,9 +19241,7 @@
 "tLS" = (
 /obj/structure/bed/chair/office/light,
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/whiteblue,
 /area/lv624/lazarus/corporate_dome)
 "tLU" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -19637,10 +19589,7 @@
 /area/lv624/ground/barrens/east_barrens)
 "uGM" = (
 /obj/item/storage/fancy/cigarettes/emeraldgreen,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/whitebluecorner/south_east,
 /area/lv624/lazarus/corporate_dome)
 "uHI" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
@@ -19718,9 +19667,7 @@
 "uUi" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/folder/black_random,
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/whiteblue,
 /area/lv624/lazarus/corporate_dome)
 "uUl" = (
 /turf/open/gm/dirtgrassborder/west,
@@ -20428,9 +20375,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/whiteblue,
 /area/lv624/lazarus/corporate_dome)
 "wPN" = (
 /turf/open/gm/coast/beachcorner2/south_east,
@@ -39625,7 +39570,7 @@ dvf
 tyG
 anS
 qJq
-eoM
+aou
 aoI
 pwq
 gXu

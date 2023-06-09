@@ -196,12 +196,16 @@
 /turf/open/floor/freezerfloor
 	icon_state = "freezerfloor"
 
+//some weird case on a nightmare with it having a direction...
 /turf/open/floor/dark
 	icon_state = "dark"
 
+//all the /turf/open/floor/white tile related blue,green,red,purple,yellow
+//some weird case of this tile having direction on corsat mainly
 /turf/open/floor/white
 	icon_state = "white"
 
+//inner corner are using this as a base sprite for some reason.
 /turf/open/floor/white/whiteblue
 	icon_state = "whiteblue"
 
@@ -216,8 +220,49 @@
 /turf/open/floor/white/whiteblue/east
 	dir = 4;
 
+//issue with inner corner not having icon state...
+/turf/open/floor/white/whiteblue_pic
+
+/turf/open/floor/white/whitebluecorner
+	icon_state = "whitebluecorner"
+
+/turf/open/floor/white/whitebluecorner/south_east
+
+/turf/open/floor/white/whitebluecorner/south_west
+	dir = 8;
+
+/turf/open/floor/white/whitebluecorner/north_west
+	dir = 1;
+
+/turf/open/floor/white/whitebluecorner/south_east
+	dir = 4;
+//end of white blue.
+
+//full tile blue but connected to /turf/open/floor/white
+//same as above weird case of full tile having a direction...
 /turf/open/floor/whitebluefull
-		icon_state = "whitebluefull"
+	icon_state = "whitebluefull"
+
+//start of all the white/green case
+
+/turf/open/floor/white/whitegreen
+	icon_state = "whitegreen"
+
+/turf/open/floor/white/whitegreen/south
+
+/turf/open/floor/white/whitegreen/north
+	dir = 1;
+
+/turf/open/floor/white/whitegreen/east
+	dir = 4;
+
+/turf/open/floor/white/whitegreen/west
+	dir = 8;
+
+/turf/open/floor/white/whitegreenfull
+	icon_state = "whitegreenfull"
+
+//end of all tiles that are connected to /turf/open/floor/white
 
 /turf/open/floor/sandstone
 	name = "sandstone floor"

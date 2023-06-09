@@ -1023,9 +1023,7 @@
 /area/bigredv2/outside/hydroponics)
 "eo" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/white/whitegreenfull,
 /area/bigredv2/outside/hydroponics)
 "ep" = (
 /obj/structure/window/framed/solaris,

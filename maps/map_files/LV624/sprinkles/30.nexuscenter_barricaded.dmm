@@ -763,9 +763,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/whitegreen/south,
 /area/lv624/lazarus/main_hall)
 "bW" = (
 /obj/effect/decal/cleanable/blood/splatter,

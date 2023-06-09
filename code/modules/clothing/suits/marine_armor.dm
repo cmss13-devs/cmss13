@@ -134,7 +134,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	var/armor_variation = 0
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 
-/obj/item/clothing/suit/storage/marine/Initialize()
+/obj/item/clothing/suit/storage/marine/Initialize(mapload)
 	. = ..()
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
@@ -146,7 +146,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type)
 	armor_overlays = list("lamp") //Just one for now, can add more later.
-	if(armor_variation)
+	if(armor_variation && mapload)
 		post_vendor_spawn_hook()
 	update_icon()
 	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.

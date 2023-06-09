@@ -23,8 +23,9 @@
 	var/traits = null
 	var/space_empty_levels = 1
 	var/list/environment_traits = list()
-	var/armor_style = "default"
 	var/list/gamemodes = list()
+
+	var/camouflage_type = "classic"
 
 	var/allow_custom_shuttles = TRUE
 	var/shuttles = list()
@@ -303,8 +304,8 @@
 
 	allow_custom_shuttles = json["allow_custom_shuttles"] != FALSE
 
-	if(json["armor"])
-		armor_style = json["armor"]
+	if(json["camouflage"])
+		camouflage_type = json["camouflage"]
 
 	if(json["survivor_message"])
 		survivor_message = json["survivor_message"]

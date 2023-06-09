@@ -92,7 +92,7 @@
 		SPAN_WARNING("You start assembling the [src]... Stand still, it might take a bit to figure it out..."))
 	if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
-		for(var/gfx as anything in turf_overlay)
+		for(var/gfx in turf_overlay)
 			qdel(gfx)
 		return
 

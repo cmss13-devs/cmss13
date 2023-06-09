@@ -196,6 +196,14 @@
 /turf/open/floor/freezerfloor
 	icon_state = "freezerfloor"
 
+/turf/open/floor/delivery
+	icon_state = "delivery"
+
+//some weird case with direction 5... two on LV624 unsure why there is a dircetion for the default one.
+/turf/open/floor/asteroidfloor
+	icon_state = "asteroidfloor"
+	dir = 1;
+
 //some weird case on a nightmare with it having a direction...
 /turf/open/floor/dark
 	icon_state = "dark"

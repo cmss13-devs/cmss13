@@ -8,9 +8,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
 "ab" = (
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/bigredv2/outside/cargo)
 "ad" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -52,9 +50,7 @@
 	dir = 8;
 	health = 25000
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/bigredv2/outside/cargo)
 "am" = (
 /obj/structure/largecrate/cow,

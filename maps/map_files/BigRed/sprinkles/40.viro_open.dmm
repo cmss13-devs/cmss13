@@ -37,10 +37,7 @@
 	id = "viro";
 	name = "Virology Lockdown"
 	},
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/virology)
 "ag" = (
 /turf/open/mars_cave{
@@ -117,10 +114,7 @@
 	},
 /area/bigredv2/outside/virology)
 "av" = (
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/virology)
 "aw" = (
 /obj/structure/machinery/light{
@@ -159,10 +153,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/virology)
 "aE" = (
 /obj/structure/inflatable,
@@ -219,10 +210,7 @@
 	dir = 4
 	},
 /obj/structure/inflatable/popped/door,
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/virology)
 "aN" = (
 /obj/effect/decal/cleanable/ash,
@@ -232,10 +220,7 @@
 /area/bigredv2/outside/virology)
 "aO" = (
 /obj/effect/landmark/hunter_secondary,
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/virology)
 "aR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -246,10 +231,7 @@
 	id = "viro";
 	name = "Virology Lockdown"
 	},
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/virology)
 "aU" = (
 /turf/open/mars,
@@ -263,10 +245,7 @@
 	dir = 4
 	},
 /obj/structure/inflatable/door,
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/nw)
 "aX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -324,10 +303,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/nw)
 "bg" = (
 /obj/structure/inflatable,
@@ -450,26 +426,17 @@
 /area/bigredv2/outside/virology)
 "bz" = (
 /obj/structure/inflatable,
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/virology)
 "bA" = (
 /obj/structure/inflatable/door,
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/virology)
 "bE" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/virology)
 "bF" = (
 /obj/structure/surface/table/almayer,
@@ -575,10 +542,7 @@
 /area/bigredv2/outside/virology)
 "Vr" = (
 /obj/structure/inflatable/popped,
-/turf/open/floor{
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/virology)
 
 (1,1,1) = {"

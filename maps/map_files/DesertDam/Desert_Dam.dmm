@@ -4882,10 +4882,7 @@
 /area/desert_dam/exterior/valley/valley_northwest)
 "aoH" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "aoI" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -9036,10 +9033,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1
 	},
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "aBq" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -12248,10 +12242,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9
 	},
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aLr" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -25063,14 +25054,10 @@
 	},
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "bBp" = (
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "bBq" = (
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bBr" = (
 /obj/structure/platform_decoration{
@@ -25501,9 +25488,7 @@
 	},
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bCY" = (
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bCZ" = (
 /obj/structure/platform_decoration{
@@ -28453,9 +28438,7 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "bML" = (
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "bMM" = (
 /obj/structure/machinery/disposal,
@@ -31258,17 +31241,13 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "bVV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "bVW" = (
 /obj/structure/platform_decoration{
@@ -31574,9 +31553,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "bWV" = (
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "bWW" = (
 /obj/structure/platform_decoration,
@@ -34534,9 +34511,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "cfR" = (
 /obj/structure/disposalpipe/segment{
@@ -34713,9 +34688,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "cgB" = (
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "cgC" = (
 /obj/effect/blocker/toxic_water/Group_2,
@@ -39685,9 +39658,7 @@
 	dir = 1;
 	icon_state = "pipe-j2"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "cxf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -40337,10 +40308,7 @@
 /area/desert_dam/exterior/river/riverside_central_south)
 "czk" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "czn" = (
 /obj/structure/surface/rack,
@@ -49922,10 +49890,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "dil" = (
 /obj/structure/window/framed/hangar/reinforced,
@@ -53261,10 +53226,7 @@
 /area/desert_dam/exterior/valley/valley_hydro)
 "dGs" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/desert_dam/exterior/valley/valley_civilian)
 "dGt" = (
 /obj/structure/filtration/collector_pipes{
@@ -53391,10 +53353,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/desert_dam/exterior/valley/valley_civilian)
 "dGU" = (
 /obj/docking_port/stationary/marine_dropship/lz1,
@@ -53554,10 +53513,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/desert_dam/exterior/valley/valley_civilian)
 "dHw" = (
 /turf/open/floor/coagulation{
@@ -53730,10 +53686,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/desert_dam/exterior/valley/valley_civilian)
 "dIk" = (
 /turf/closed/wall,
@@ -61320,9 +61273,7 @@
 	pixel_x = -24;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/desert_dam/exterior/telecomm/lz1_south)
 "jAr" = (
 /obj/structure/closet/crate/hydroponics/prespawned,
@@ -64414,9 +64365,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "uMk" = (
 /obj/effect/decal/cleanable/dirt,

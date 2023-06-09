@@ -46,24 +46,15 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
 "ak" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/space_port)
 "al" = (
 /obj/item/shard,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/space_port)
 "am" = (
 /obj/structure/largecrate/random/barrel,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/space_port)
 "an" = (
 /obj/structure/surface/rack,
@@ -166,38 +157,26 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/space_port)
 "aD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/space_port)
 "aE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/space_port)
 "aF" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/space_port)
 "aG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -243,10 +222,7 @@
 /area/bigredv2/outside/space_port)
 "aM" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/space_port)
 "aN" = (
 /obj/effect/decal/cleanable/dirt,
@@ -303,10 +279,7 @@
 /area/bigredv2/outside/space_port)
 "aV" = (
 /obj/structure/largecrate,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/space_port)
 "aW" = (
 /obj/effect/decal/cleanable/dirt,
@@ -318,10 +291,7 @@
 "aX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/space_port)
 "aY" = (
 /obj/structure/surface/table,
@@ -457,10 +427,7 @@
 "bw" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/nw)
 "bx" = (
 /obj/effect/decal/cleanable/dirt,
@@ -475,10 +442,7 @@
 /area/bigredv2/outside/nw)
 "bz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/nw)
 "bA" = (
 /turf/open/mars{
@@ -519,31 +483,19 @@
 	},
 /area/bigredv2/outside/nw)
 "bG" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/nw)
 "bH" = (
 /obj/structure/cargo_container/wy/left,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/nw)
 "bI" = (
 /obj/structure/cargo_container/wy/mid,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/nw)
 "bJ" = (
 /obj/structure/cargo_container/wy/right,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/nw)
 "bK" = (
 /obj/effect/landmark/crap_item,
@@ -557,28 +509,19 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/nw)
 "bM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/nw)
 "bN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/nw)
 "bP" = (
 /obj/structure/cargo_container/kelland/left,
@@ -594,10 +537,7 @@
 /area/bigredv2/outside/nw)
 "bS" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/nw)
 "bT" = (
 /obj/structure/fence,

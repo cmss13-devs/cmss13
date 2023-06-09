@@ -14,23 +14,14 @@
 "d" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/telecomm)
 "e" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/telecomm)
 "f" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/telecomm)
 "g" = (
 /obj/effect/decal/cleanable/dirt,
@@ -43,17 +34,11 @@
 "h" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/tracks,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/telecomm)
 "j" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/telecomm)
 "k" = (
 /obj/effect/decal/cleanable/blood/tracks,

@@ -152,10 +152,7 @@
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "aii" = (
 /mob/living/simple_animal/hostile/retaliate/clown{
@@ -620,10 +617,7 @@
 /area/varadero/interior_protected/maintenance/south)
 "aCM" = (
 /obj/structure/closet/toolcloset,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "aDu" = (
 /obj/structure/machinery/power/apc{
@@ -802,10 +796,7 @@
 /area/varadero/interior/research)
 "aHy" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "aHM" = (
 /obj/structure/machinery/firealarm{
@@ -1013,10 +1004,7 @@
 	pixel_x = 9;
 	pixel_y = 6
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "aTc" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -1725,10 +1713,7 @@
 /obj/structure/machinery/landinglight/ds2{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "bxc" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1794,10 +1779,7 @@
 	},
 /area/varadero/interior/medical)
 "bAT" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/interior/comms3)
 "bBt" = (
 /obj/structure/cable/heavyduty{
@@ -2107,10 +2089,7 @@
 	dir = 4
 	},
 /obj/item/prop/almayer/comp_open,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "bOZ" = (
 /obj/structure/platform/kutjevo/smooth,
@@ -2302,10 +2281,7 @@
 /area/varadero/interior/records)
 "bZA" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/interior/maintenance/north)
 "bZD" = (
 /obj/structure/bed/chair{
@@ -2392,10 +2368,7 @@
 /area/varadero/interior/court)
 "cbU" = (
 /obj/effect/landmark/static_comms/net_two,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/interior/comms3)
 "ccf" = (
 /obj/structure/platform/kutjevo/smooth,
@@ -2481,10 +2454,7 @@
 /obj/structure/machinery/floodlight/landing/floor{
 	pixel_x = -1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "cgB" = (
 /turf/open/floor/shiva{
@@ -2634,20 +2604,14 @@
 /obj/item/reagent_container/food/drinks/cans/souto/lime,
 /obj/item/reagent_container/food/drinks/cans/souto/peach,
 /obj/item/reagent_container/food/drinks/bottle/sake,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "cmU" = (
 /obj/item/reagent_container/food/snacks/fishfingers{
 	pixel_y = 7
 	},
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "cnW" = (
 /obj/structure/surface/table,
@@ -3101,10 +3065,7 @@
 /area/varadero/interior_protected/vessel)
 "cHY" = (
 /obj/effect/landmark/hunter_primary,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "cIB" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
@@ -3519,10 +3480,7 @@
 	dir = 4
 	},
 /obj/item/stack/cable_coil/cut,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "cYB" = (
 /obj/structure/window_frame/colony/reinforced,
@@ -3539,10 +3497,7 @@
 /area/varadero/interior/court)
 "cYZ" = (
 /obj/structure/machinery/landinglight/ds2,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "cZN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -4342,10 +4297,7 @@
 /area/varadero/interior/security)
 "dQK" = (
 /obj/effect/landmark/static_comms/net_one,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/interior/comms1)
 "dQT" = (
 /obj/structure/bed/chair/comfy/teal,
@@ -4610,10 +4562,7 @@
 /obj/structure/machinery/landinglight/ds2{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "egj" = (
 /obj/effect/landmark/hunter_secondary,
@@ -4873,10 +4822,7 @@
 /obj/structure/surface/rack,
 /obj/item/tool/crowbar/red,
 /obj/item/tank/emergency_oxygen,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "euM" = (
 /obj/structure/machinery/light,
@@ -4900,10 +4846,7 @@
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "ewn" = (
 /obj/structure/barricade/handrail/wire{
@@ -5732,10 +5675,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "ffx" = (
 /obj/structure/disposalpipe/segment{
@@ -6571,10 +6511,7 @@
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "fUJ" = (
 /obj/structure/machinery/vending/cigarette,
@@ -6679,10 +6616,7 @@
 /area/varadero/interior/hall_SE)
 "fXH" = (
 /obj/structure/machinery/landinglight/ds2/delaythree,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "fXR" = (
 /obj/structure/platform/kutjevo/rock{
@@ -7757,10 +7691,7 @@
 	pixel_x = -6;
 	pixel_y = -3
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "gTe" = (
 /turf/open/floor/plating,
@@ -7914,10 +7845,7 @@
 	pixel_x = -24;
 	start_charge = 0
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "hcT" = (
 /obj/structure/machinery/light/small{
@@ -8174,10 +8102,7 @@
 	},
 /area/varadero/interior/hall_SE)
 "hsl" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/interior/maintenance/north)
 "hst" = (
 /obj/structure/sign/safety/high_voltage,
@@ -8227,10 +8152,7 @@
 /area/varadero/interior/research)
 "huy" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "huz" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -8289,10 +8211,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/interior/comms1)
 "hwN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -8877,10 +8796,7 @@
 /area/varadero/interior/security)
 "hXN" = (
 /obj/structure/largecrate/random/mini,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/interior/comms3)
 "hYf" = (
 /obj/structure/closet/hydrant{
@@ -9146,10 +9062,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/interior/comms1)
 "ihG" = (
 /obj/structure/largecrate/random/case,
@@ -9235,10 +9148,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "ioc" = (
 /obj/structure/surface/table/woodentable,
@@ -9350,10 +9260,7 @@
 /area/varadero/interior/security)
 "irk" = (
 /obj/structure/machinery/landinglight/ds2/delayone,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "irw" = (
 /obj/structure/closet/fireaxecabinet{
@@ -9913,10 +9820,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/interior/comms1)
 "iMi" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -10034,10 +9938,7 @@
 	pixel_y = 5
 	},
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "iQN" = (
 /obj/structure/filingcabinet{
@@ -10731,10 +10632,7 @@
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "jyw" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -10922,10 +10820,7 @@
 /area/varadero/interior/administration)
 "jJT" = (
 /obj/structure/bed/chair,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "jKg" = (
 /obj/structure/machinery/light/small{
@@ -11053,10 +10948,7 @@
 /obj/item/tool/pickaxe/drill{
 	pixel_y = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/interior/comms1)
 "jPC" = (
 /obj/structure/disposalpipe/segment{
@@ -11153,10 +11045,7 @@
 "jSP" = (
 /obj/structure/surface/rack,
 /obj/item/tool/pickaxe/jackhammer,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/interior/comms1)
 "jSX" = (
 /turf/open/gm/coast/beachcorner/north_west,
@@ -11770,10 +11659,7 @@
 /obj/structure/machinery/floodlight/landing/floor{
 	pixel_x = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "kvS" = (
 /obj/structure/largecrate/random,
@@ -12180,10 +12066,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "kMN" = (
 /obj/structure/machinery/flasher{
@@ -12273,10 +12156,7 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "kSJ" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
@@ -12740,10 +12620,7 @@
 /area/varadero/interior_protected/maintenance/south)
 "loQ" = (
 /obj/structure/closet/emcloset,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "loW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -13231,10 +13108,7 @@
 	},
 /area/varadero/interior/hall_SE)
 "lMB" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/interior/comms1)
 "lMP" = (
 /obj/structure/filingcabinet,
@@ -13345,10 +13219,7 @@
 /area/varadero/interior/research)
 "lSd" = (
 /obj/structure/lz_sign/new_varadero,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "lSD" = (
 /obj/structure/machinery/landinglight/ds2/spoke{
@@ -13659,10 +13530,7 @@
 /area/varadero/exterior/eastbeach)
 "mcr" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "mcX" = (
 /turf/open/gm/dirt{
@@ -13754,10 +13622,7 @@
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "miP" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -13776,10 +13641,7 @@
 /area/varadero/exterior/lz1_near)
 "miT" = (
 /obj/item/stool,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "miU" = (
 /obj/item/stack/tile/plasteel{
@@ -14882,10 +14744,7 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "neC" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -15871,10 +15730,7 @@
 /obj/structure/machinery/landinglight/ds2{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "nXY" = (
 /obj/structure/prop/ice_colony/dense/planter_box{
@@ -16226,10 +16082,7 @@
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "ooe" = (
 /obj/structure/surface/rack,
@@ -16709,10 +16562,7 @@
 "oJY" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /obj/structure/machinery/light,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "oKo" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -16754,10 +16604,7 @@
 /area/varadero/interior_protected/vessel)
 "oLa" = (
 /obj/item/trash/barcardine,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "oLM" = (
 /obj/structure/sign/safety/airlock{
@@ -17383,10 +17230,7 @@
 /area/varadero/interior/research)
 "plg" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/interior/comms1)
 "plN" = (
 /obj/structure/pipes/vents/pump{
@@ -19064,10 +18908,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/interior/comms1)
 "qMr" = (
 /obj/item/tool/minihoe,
@@ -20515,10 +20356,7 @@
 /area/varadero/interior/cargo)
 "rSA" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "rSI" = (
 /obj/structure/machinery/power/apc{
@@ -21176,10 +21014,7 @@
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "stv" = (
 /obj/structure/closet/secure_closet/medical1{
@@ -21513,10 +21348,7 @@
 /area/varadero/interior/maintenance)
 "sHV" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "sIf" = (
 /obj/structure/bed/chair{
@@ -21768,10 +21600,7 @@
 	pixel_y = 5
 	},
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "sSZ" = (
 /obj/structure/pipes/vents/pump{
@@ -21904,10 +21733,7 @@
 /area/varadero/interior/toilets)
 "tdq" = (
 /obj/structure/largecrate/random/mini/chest,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/interior/comms3)
 "tdy" = (
 /obj/item/storage/box/donkpockets{
@@ -22313,10 +22139,7 @@
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "tBC" = (
 /obj/structure/platform/kutjevo/smooth,
@@ -22807,10 +22630,7 @@
 	pixel_y = 6
 	},
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "tZE" = (
 /obj/structure/machinery/chem_master,
@@ -22830,10 +22650,7 @@
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "ubn" = (
 /obj/structure/platform/kutjevo/smooth{
@@ -22951,10 +22768,7 @@
 	pixel_y = 5
 	},
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "ufH" = (
 /obj/structure/bed/chair{
@@ -23003,10 +22817,7 @@
 /area/varadero/interior/hall_SE)
 "uhJ" = (
 /obj/item/trash/boonie,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "uhW" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -23541,10 +23352,7 @@
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "uFI" = (
 /obj/structure/sign/safety/high_voltage,
@@ -23754,10 +23562,7 @@
 "uND" = (
 /obj/structure/closet/firecloset,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "uNJ" = (
 /obj/structure/disposalpipe/segment{
@@ -24251,10 +24056,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "vio" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -25125,10 +24927,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "vUZ" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -25868,10 +25667,7 @@
 /area/varadero/interior/comms1)
 "wCc" = (
 /obj/structure/machinery/floodlight/landing/floor,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "wCE" = (
 /obj/structure/pipes/vents/pump{
@@ -26050,10 +25846,7 @@
 	},
 /area/varadero/interior/maintenance/security)
 "wMw" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "wMx" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -26711,10 +26504,7 @@
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "xtD" = (
 /obj/effect/landmark/xeno_spawn,
@@ -26947,10 +26737,7 @@
 /area/varadero/interior/hall_SE)
 "xBS" = (
 /obj/structure/largecrate/random/case/small,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "xCn" = (
 /turf/open/auto_turf/sand_white/layer1,
@@ -27367,10 +27154,7 @@
 /area/varadero/interior/medical)
 "xVK" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/interior/maintenance/north)
 "xWj" = (
 /obj/structure/machinery/firealarm{
@@ -27709,19 +27493,13 @@
 	pixel_y = 4
 	},
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "ygZ" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/varadero/exterior/lz1_near)
 "yhy" = (
 /obj/structure/filingcabinet{

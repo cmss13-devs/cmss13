@@ -57,9 +57,7 @@
 	name = "\improper Checkpoint Office"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/bigred/ground/security)
 "ie" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -152,9 +150,7 @@
 	id = "filtration";
 	name = "Filtration Lockdown"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/bigredv2/outside/filtration_cave_cas)
 "uk" = (
 /obj/effect/decal/cleanable/dirt,
@@ -170,9 +166,7 @@
 	dir = 1;
 	name = "\improper Checkpoint Office"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/bigred/ground/security)
 "vH" = (
 /obj/effect/decal/cleanable/blood,
@@ -217,10 +211,7 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "Aq" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/filtration_cave_cas)
 "AY" = (
 /turf/open/floor,
@@ -268,10 +259,7 @@
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "Ih" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/filtration_cave_cas)
 "IS" = (
 /obj/structure/filingcabinet,
@@ -332,9 +320,7 @@
 	id = "filtration";
 	name = "Filtration Lockdown"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/bigredv2/outside/filtration_cave_cas)
 "Qo" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,

@@ -199,19 +199,13 @@
 	dir = 4;
 	layer = 2.4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/s)
 "aO" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/s)
 "aP" = (
 /turf/open/mars{

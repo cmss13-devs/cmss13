@@ -20697,9 +20697,7 @@
 	dir = 1;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/shiva/interior/telecomm/lz1_biceps)
 "pPt" = (
 /obj/structure/surface/table,

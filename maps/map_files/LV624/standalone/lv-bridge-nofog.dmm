@@ -62,20 +62,14 @@
 /area/lv624/ground/jungle/north_jungle)
 "al" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/lv624/ground/river/central_river)
 "dC" = (
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/river/central_river)
 "iW" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/lv624/ground/river/central_river)
 "jr" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -129,10 +123,7 @@
 "qL" = (
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/lv624/ground/river/central_river)
 "xB" = (
 /obj/effect/landmark/crap_item,
@@ -146,16 +137,10 @@
 /area/lv624/ground/jungle/north_jungle)
 "BW" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/lv624/ground/river/central_river)
 "DX" = (
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/lv624/ground/river/central_river)
 "EG" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -167,10 +152,7 @@
 "Uh" = (
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/lv624/ground/river/central_river)
 "VN" = (
 /turf/open/gm/grass/grass1,

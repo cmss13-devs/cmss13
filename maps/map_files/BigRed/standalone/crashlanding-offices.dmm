@@ -17,10 +17,7 @@
 /area/bigredv2/outside/c)
 "ae" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/c)
 "ag" = (
 /turf/open/mars_cave{
@@ -154,10 +151,7 @@
 /area/bigredv2/outside/e)
 "aB" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/c)
 "aC" = (
 /turf/closed/shuttle/ert{
@@ -180,10 +174,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "aG" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/e)
 "aH" = (
 /turf/open/floor{
@@ -417,10 +408,7 @@
 /area/bigredv2/outside/office_complex)
 "bx" = (
 /obj/item/shard,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/e)
 "by" = (
 /obj/structure/girder,
@@ -882,26 +870,17 @@
 	},
 /area/bigredv2/outside/office_complex)
 "cX" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/c)
 "cY" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/c)
 "cZ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/c)
 "da" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1229,10 +1208,7 @@
 /area/bigredv2/outside/se)
 "dX" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/e)
 "dY" = (
 /obj/item/stack/sheet/metal,
@@ -1509,10 +1485,7 @@
 /area/bigredv2/outside/office_complex)
 "Ha" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/se)
 "Lk" = (
 /obj/structure/bed/chair/dropship/passenger{
@@ -1533,10 +1506,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "PR" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/se)
 "Qc" = (
 /obj/structure/bed/chair/dropship/passenger{

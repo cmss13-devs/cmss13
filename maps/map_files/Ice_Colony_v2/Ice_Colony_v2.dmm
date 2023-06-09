@@ -18020,9 +18020,7 @@
 	pixel_x = -24;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/ice_colony/surface/tcomms)
 "bbW" = (
 /obj/structure/ice/thin/corner{

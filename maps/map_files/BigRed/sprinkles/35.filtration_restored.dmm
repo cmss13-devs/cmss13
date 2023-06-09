@@ -45,10 +45,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "am" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/se)
 "an" = (
 /obj/effect/decal/cleanable/dirt,
@@ -507,10 +504,7 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "bZ" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/filtration_plant)
 "cb" = (
 /obj/structure/machinery/door_control{
@@ -526,19 +520,14 @@
 /area/bigredv2/outside/filtration_plant)
 "ce" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/filtration_plant)
 "cf" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "FiltrationShutters";
 	name = "\improper Airlock Shutters"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/delivery,
 /area/bigredv2/outside/filtration_plant)
 "cg" = (
 /obj/structure/machinery/door_control{
@@ -573,10 +562,7 @@
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "cl" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor,
 /area/bigredv2/outside/s)
 "cm" = (
 /turf/closed/wall/solaris,

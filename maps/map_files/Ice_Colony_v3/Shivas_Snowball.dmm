@@ -871,9 +871,7 @@
 	},
 /area/shiva/exterior/cp_colony_grounds)
 "adf" = (
-/turf/open/floor{
-	icon_state = "dark2"
-	},
+/turf/open/floor/dark2,
 /area/shiva/interior/colony/central)
 "adi" = (
 /turf/open/floor/shiva{
@@ -2296,9 +2294,7 @@
 	name = "\improper Underground Sports Center";
 	req_access_txt = "100"
 	},
-/turf/open/floor{
-	icon_state = "dark2"
-	},
+/turf/open/floor/dark2,
 /area/shiva/interior/colony/central)
 "akF" = (
 /obj/vehicle/train/cargo/trolley,
@@ -3933,9 +3929,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Colony Disposals"
 	},
-/turf/open/floor{
-	icon_state = "dark2"
-	},
+/turf/open/floor/dark2,
 /area/shiva/interior/valley_huts/disposals)
 "awr" = (
 /obj/structure/largecrate/random/case/small,
@@ -8417,9 +8411,7 @@
 /area/shiva/interior/colony/central)
 "czI" = (
 /obj/structure/girder,
-/turf/open/floor{
-	icon_state = "dark2"
-	},
+/turf/open/floor/dark2,
 /area/shiva/interior/caves/research_caves)
 "cAH" = (
 /obj/structure/flora/tree/dead/tree_5,
@@ -11791,9 +11783,7 @@
 	},
 /area/shiva/interior/aerodrome)
 "gxN" = (
-/turf/open/floor{
-	icon_state = "dark2"
-	},
+/turf/open/floor/dark2,
 /area/shiva/interior/valley_huts/disposals)
 "gxW" = (
 /obj/structure/closet/cabinet,
@@ -24349,9 +24339,7 @@
 	dir = 1;
 	name = "\improper Colony Storeroom"
 	},
-/turf/open/floor{
-	icon_state = "dark2"
-	},
+/turf/open/floor/dark2,
 /area/shiva/interior/telecomm/lz1_biceps)
 "tQK" = (
 /obj/item/stack/rods,

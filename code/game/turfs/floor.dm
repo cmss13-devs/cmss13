@@ -222,6 +222,9 @@
 /turf/open/floor/dark
 	icon_state = "dark"
 
+/turf/open/floor/dark2
+	icon_state = "dark2"
+
 //dark green blue purple red yellow
 
 
@@ -252,7 +255,8 @@
 
 /turf/open/floor/white/red
 
-
+/turf/open/floor/white/red/whiteredfull
+	icon_state = "whiteredfull"
 
 
 

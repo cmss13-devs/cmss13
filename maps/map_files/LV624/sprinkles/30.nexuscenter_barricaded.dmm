@@ -390,10 +390,7 @@
 /obj/structure/surface/table{
 	flipped = 1
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv624/lazarus/main_hall)
 "bd" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -432,10 +429,7 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv624/lazarus/main_hall)
 "bi" = (
 /obj/effect/decal/cleanable/blood/gibs,
@@ -487,10 +481,7 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv624/lazarus/main_hall)
 "bq" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -509,10 +500,7 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv624/lazarus/main_hall)
 "bs" = (
 /obj/item/ammo_casing,
@@ -527,10 +515,7 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv624/lazarus/main_hall)
 "bu" = (
 /obj/item/stack/barbed_wire,
@@ -584,10 +569,7 @@
 	flipped = 1
 	},
 /obj/item/ammo_casing,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv624/lazarus/main_hall)
 "bB" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -628,10 +610,7 @@
 	flipped = 1
 	},
 /obj/item/ammo_casing,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv624/lazarus/main_hall)
 "bF" = (
 /obj/item/ammo_casing,
@@ -673,10 +652,7 @@
 	},
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv624/lazarus/main_hall)
 "bK" = (
 /turf/open/floor{
@@ -816,10 +792,7 @@
 	icon_state = "door_open";
 	name = "\improper Nexus Cargo Storage"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv624/lazarus/quart)
 "Fz" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -894,10 +867,7 @@
 /area/lv624/lazarus/main_hall)
 "Jf" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv624/lazarus/main_hall)
 "JH" = (
 /turf/open/floor{

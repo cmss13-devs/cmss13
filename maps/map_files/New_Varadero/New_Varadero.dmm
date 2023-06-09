@@ -1472,9 +1472,7 @@
 	name = "Underground Morgue";
 	req_access_txt = "100"
 	},
-/turf/open/floor{
-	icon_state = "dark2"
-	},
+/turf/open/floor/dark2,
 /area/varadero/interior/morgue)
 "bkG" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -8452,9 +8450,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor{
-	icon_state = "dark2"
-	},
+/turf/open/floor/dark2,
 /area/varadero/interior/hall_N)
 "hGm" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -23303,9 +23299,7 @@
 	name = "Underground Morgue";
 	req_access_txt = "100"
 	},
-/turf/open/floor{
-	icon_state = "dark2"
-	},
+/turf/open/floor/dark2,
 /area/varadero/interior/morgue)
 "uvB" = (
 /obj/structure/machinery/shower{

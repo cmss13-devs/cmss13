@@ -1427,10 +1427,7 @@
 "aVD" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "aVF" = (
 /obj/structure/surface/table/almayer,
@@ -9122,10 +9119,7 @@
 /area/lv522/atmos/east_reactor/east)
 "eHn" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "eHu" = (
 /obj/structure/closet/secure_closet/miner,
@@ -9310,10 +9304,7 @@
 /area/lv522/outdoors/colony_streets/central_streets)
 "eLN" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "eLV" = (
 /obj/structure/barricade/handrail{
@@ -12349,10 +12340,7 @@
 "gfU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/sofa/vert/white/top,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "gge" = (
 /obj/item/storage/belt/medical/lifesaver,
@@ -15834,10 +15822,7 @@
 "hGg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/sofa/vert/white,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "hGU" = (
 /obj/effect/landmark/monkey_spawn,
@@ -17942,10 +17927,7 @@
 "izn" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "izp" = (
 /obj/structure/machinery/power/smes/buildable{
@@ -18427,10 +18409,7 @@
 /area/lv522/indoors/a_block/dorms)
 "iJW" = (
 /obj/structure/bed/sofa/vert/white/top,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "iJZ" = (
 /obj/effect/decal/cleanable/blood,
@@ -20347,10 +20326,7 @@
 "jyw" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo)
 "jyx" = (
 /obj/effect/decal/cleanable/dirt,
@@ -20638,10 +20614,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_street)
 "jEa" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/oob)
 "jEk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -22967,10 +22940,7 @@
 	name = "Cargo Shutter Control";
 	pixel_y = 29
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/oob)
 "kze" = (
 /obj/structure/pipes/vents/pump,
@@ -23398,10 +23368,7 @@
 /area/lv522/outdoors/colony_streets/north_street)
 "kHd" = (
 /obj/effect/landmark/corpsespawner/wy/manager,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/oob)
 "kHy" = (
 /obj/structure/surface/table/almayer,
@@ -26653,10 +26620,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "mcE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -29928,10 +29892,7 @@
 /area/lv522/indoors/a_block/dorms)
 "nzt" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo)
 "nzK" = (
 /obj/item/storage/backpack/marine/satchel/rto,
@@ -30831,10 +30792,7 @@
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/a_block/bridges/dorms_fitness)
 "nTx" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "nTD" = (
 /obj/structure/platform,
@@ -32919,10 +32877,7 @@
 "oLu" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "oLz" = (
 /obj/structure/prop/invuln/ice_prefab/trim{
@@ -39149,10 +39104,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "rie" = (
 /obj/effect/decal/cleanable/dirt,
@@ -40073,10 +40025,7 @@
 	},
 /area/lv522/indoors/a_block/bridges)
 "rAX" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo)
 "rBd" = (
 /obj/structure/platform{
@@ -43609,10 +43558,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "taO" = (
 /obj/effect/spider/spiderling/nogrow,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "taP" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -44271,10 +44217,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "tog" = (
 /obj/structure/pipes/vents/pump,
@@ -44323,10 +44266,7 @@
 	desc = "Some sort of fancy...toy? You're not sure..";
 	pixel_x = -12
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo)
 "tpa" = (
 /obj/structure/window/framed/strata/reinforced,
@@ -45053,17 +44993,11 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "tEQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "tEW" = (
 /obj/structure/machinery/vending/cigarette/colony,
@@ -45093,10 +45027,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo)
 "tFk" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -45107,10 +45038,7 @@
 	pixel_y = 4
 	},
 /obj/item/folder/red,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo)
 "tFu" = (
 /obj/structure/surface/rack,
@@ -45225,10 +45153,7 @@
 "tGY" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/bed/chair/comfy/beige,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo)
 "tHo" = (
 /obj/structure/machinery/portable_atmospherics/canister/phoron,
@@ -46314,10 +46239,7 @@
 /area/lv522/indoors/a_block/corpo/glass)
 "ueT" = (
 /obj/structure/bed/sofa/vert/white,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "ueW" = (
 /obj/structure/machinery/space_heater/radiator/red{
@@ -46515,10 +46437,7 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/weapon/pole/fancy_cane,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo)
 "uhP" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -46582,10 +46501,7 @@
 "uii" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo)
 "uiu" = (
 /obj/structure/surface/table/almayer,
@@ -46607,10 +46523,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/folder/black_random,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo)
 "uiQ" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -47595,10 +47508,7 @@
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "uFe" = (
 /obj/structure/bed/sofa/vert/white/bot,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "uFo" = (
 /obj/effect/decal/cleanable/dirt,
@@ -48198,10 +48108,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "uQi" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -48244,10 +48151,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo)
 "uQI" = (
 /obj/effect/decal/warning_stripes{
@@ -48268,10 +48172,7 @@
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "uRx" = (
 /obj/item/reagent_container/glass/rag,
@@ -50049,10 +49950,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "vBK" = (
 /obj/structure/platform_decoration{
@@ -50661,10 +50559,7 @@
 "vNy" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/bed/roller,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "vNO" = (
 /obj/structure/barricade/wooden{
@@ -50706,10 +50601,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "vOt" = (
 /obj/structure/barricade/wooden{
@@ -50836,10 +50728,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "vQO" = (
 /obj/structure/machinery/light{
@@ -51464,10 +51353,7 @@
 /obj/item/storage/firstaid/toxin/empty,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo/glass)
 "wcX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -54171,10 +54057,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo)
 "xni" = (
 /obj/structure/bed/chair{
@@ -54190,10 +54073,7 @@
 	dir = 9
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv522/indoors/a_block/corpo)
 "xno" = (
 /obj/item/weapon/gun/smartgun{

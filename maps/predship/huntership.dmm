@@ -2362,9 +2362,7 @@
 /turf/open/gm/dirtgrassborder/east,
 /area/yautja)
 "zA" = (
-/turf/open/floor{
-	icon_state = "dark2"
-	},
+/turf/open/floor/dark2,
 /area/yautja)
 "zZ" = (
 /obj/structure/surface/table/reinforced/prison{

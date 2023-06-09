@@ -672,16 +672,10 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Office Complex Janitor Room"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/bigredv2/outside/office_complex)
 "cp" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/bigredv2/outside/office_complex)
 "cq" = (
 /turf/open/floor/dark,
@@ -740,10 +734,7 @@
 /area/bigredv2/outside/office_complex)
 "cA" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/bigredv2/outside/office_complex)
 "cB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -832,10 +823,7 @@
 "cP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/bigredv2/outside/office_complex)
 "cQ" = (
 /obj/item/stack/rods,
@@ -876,10 +864,7 @@
 "cW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/paper,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/bigredv2/outside/office_complex)
 "cX" = (
 /turf/open/floor{
@@ -932,10 +917,7 @@
 	pixel_y = -27
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/bigredv2/outside/office_complex)
 "df" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1305,10 +1287,7 @@
 "ei" = (
 /obj/structure/janitorialcart,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/bigredv2/outside/office_complex)
 "ej" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1325,10 +1304,7 @@
 "el" = (
 /obj/item/clothing/shoes/galoshes,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/bigredv2/outside/office_complex)
 "em" = (
 /obj/effect/decal/cleanable/dirt,

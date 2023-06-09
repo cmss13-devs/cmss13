@@ -214,10 +214,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv624/ground/caves/sand_temple)
 "ez" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -412,10 +409,7 @@
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv624/ground/caves/sand_temple)
 "hD" = (
 /obj/item/weapon/yautja/knife,
@@ -522,10 +516,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv624/ground/caves/sand_temple)
 "kO" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -707,10 +698,7 @@
 	color = "#b29082";
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv624/ground/caves/sand_temple)
 "pu" = (
 /obj/structure/stairs/perspective{
@@ -1253,10 +1241,7 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv624/ground/caves/sand_temple)
 "FS" = (
 /obj/structure/xenoautopsy/tank/alien,

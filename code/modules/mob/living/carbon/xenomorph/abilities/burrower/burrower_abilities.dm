@@ -15,6 +15,7 @@
 		X.tunnel(get_turf(A))
 	else
 		X.burrow()
+	return ..()
 
 /datum/action/xeno_action/onclick/tremor
 	name = "Tremor (100)"
@@ -27,4 +28,4 @@
 /datum/action/xeno_action/onclick/tremor/use_ability()
 	var/mob/living/carbon/xenomorph/X = owner
 	X.tremor()
-	..()
+	return ..()

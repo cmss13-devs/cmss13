@@ -70,7 +70,7 @@
 /datum/action/xeno_action/activable/apply_salve/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.xeno_apply_salve(target_atom, health_transfer_amount, max_range, damage_taken_mod)
-	..()
+	return ..()
 
 /datum/action/xeno_action/verb/verb_apply_salve()
 	set category = "Alien"

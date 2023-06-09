@@ -96,3 +96,18 @@
   - rscadd: Adds an admin button for global blurb alerts. (Visual on game screen)
   wHO_TOOKthejam:
   - rscadd: gives DCC and PO the same armor choices
+2023-06-09:
+  Al-1ce:
+  - bugfix: Bicaridine no-longer says it can fix IB.
+  - spellcheck: RR, Bica, Rezadone and Anti-Zed are now more informative about their
+      side effects.
+  Drathek:
+  - bugfix: Fix xenos being unable to point and marines unable to open bags with MMB
+  - bugfix: Fix ghosts interacting with ghost join abilities and teleporting to UI
+      icons.
+  - bugfix: Disabled xenos transferring plasma to self (it just wasted plasma)
+  - ui: Vanguard dash now uses a different icon state while waiting for second use
+      (or timeout)
+  fira:
+  - qol: Reduced USCM SG max scattering on Full Auto fire so you don't have to periodically
+      let go of the fire button to keep it from firing way wide.

@@ -317,8 +317,8 @@
 			break
 
 		var/blocked = FALSE
-		for(var/obj/structure/strut in temp)
-			if(strut.opacity || (istype(strut, /obj/structure/barricade) && strut.density))
+		for(var/obj/structure/target_structure in temp)
+			if(target_structure.opacity || (istype(target_structure, /obj/structure/barricade) && target_structure.density))
 				blocked = TRUE
 				break
 		if(blocked)
@@ -359,11 +359,9 @@
 			targeted_carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
 			to_chat(targeted_carbon, SPAN_WARNING("You are stabbed with a spike from below!"))
 			playsound(get_turf(targeted_carbon), "alien_bite", 50, TRUE)
-		for(var/obj/structure/strut in target_turf)
-			if(istype(strut, /obj/structure/window/framed))
-				var/obj/structure/window/framed/W = strut
-				if(!W.unslashable)
-					W.shatter_window(TRUE)
+		for(var/obj/structure/window/framed/target_window in target_turf)
+				if(!target_window.unslashable)
+					target_window.shatter_window(TRUE)
 					playsound(target_turf, "windowshatter", 50, TRUE)
 		sleep(chain_separation_delay)
 
@@ -423,9 +421,9 @@
 
 /datum/action/xeno_action/activable/sunken_tail/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!xeno) 
+	if(!xeno)
 		return
-	if(xeno.burrow) 
+	if(xeno.burrow)
 		return FALSE
 	return ..()
 
@@ -444,11 +442,9 @@
 		else
 			to_chat(targeted_carbon, SPAN_WARNING("You are stabbed with a tail from below!"))
 		playsound(get_turf(targeted_carbon), "alien_bite", 50, TRUE)
-	for(var/obj/structure/strut in target_turfs)
-		if(istype(strut, /obj/structure/window/framed))
-			var/obj/structure/window/framed/windo = strut
-			if(!windo.unslashable)
-				windo.shatter_window(TRUE)
+	for(var/obj/structure/window/framed/target_window in target_turfs)
+			if(!target_window.unslashable)
+				target_window.shatter_window(TRUE)
 				playsound(target_turfs, "windowshatter", 50, TRUE)
 
 /datum/action/xeno_action/activable/sunken_tail/proc/recursive_spread(turf/turf, dist_left, orig_depth, damage, turf/original_turf)
@@ -530,9 +526,9 @@
 
 /datum/action/xeno_action/onclick/ensconce/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!xeno) 
+	if(!xeno)
 		return
-	if(xeno.burrow) 
+	if(xeno.burrow)
 		return FALSE
 	return ..()
 

@@ -58,7 +58,7 @@
 
 	/// Ability stats config
 	var/base_damage = 35
-	var/chain_separation_delay = 0.2 SECONDS //Delay between each tile hit
+	var/chain_separation_delay = 0.2 SECONDS ///Delay between each tile hit
 	var/max_distance = 4
 	var/reinforced_range_bonus = 2
 	var/reinforced_damage_bonus = 30

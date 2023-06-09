@@ -80,7 +80,8 @@
 		return
 
 	face_atom(A)
-
+	if(mods["middle"]) 
+		return
 	// Special type of click.
 	if (is_mob_restrained())
 		RestrainedClickOn(A)

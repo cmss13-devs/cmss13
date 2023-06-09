@@ -2103,7 +2103,7 @@
 	idtype = /obj/item/card/id/data
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_TSL, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 
-/datum/equipment_preset/upp/New()
+/datum/equipment_preset/upp/commando/New()
 	. = ..()
 	access = get_global_access()
 

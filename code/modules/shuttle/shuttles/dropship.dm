@@ -81,7 +81,7 @@
 	. = ..()
 	control_doors("force-lock-launch", "all", force=TRUE, asynchronous = FALSE)
 
-	if(is_hijack)
+	if(is_hijacked)
 		return
 
 	for(var/area/checked_area in shuttle_areas)

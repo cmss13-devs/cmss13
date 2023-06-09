@@ -1758,7 +1758,7 @@
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_7
 	accurate_range = 34
 	accuracy = HIT_ACCURACY_TIER_3
-	damage = 55
+	damage = 45
 	penetration = 35
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing

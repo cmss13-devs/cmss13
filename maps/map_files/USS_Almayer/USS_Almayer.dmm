@@ -6088,6 +6088,7 @@
 	id = "tcomms_apc";
 	name = "\improper Telecommunications Power Storage"
 	},
+/obj/effect/step_trigger/ares_alert/comms,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -18951,6 +18952,7 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "tcomms"
 	},
+/obj/effect/step_trigger/ares_alert/comms,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -52719,8 +52721,6 @@
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
-/obj/effect/landmark/wo_supplies/guns/common/m39,
-/obj/effect/landmark/wo_supplies/guns/common/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/structure/sign/safety/ammunition{
@@ -52730,6 +52730,8 @@
 /obj/structure/sign/safety/hazard{
 	pixel_y = 32
 	},
+/obj/item/weapon/gun/smg/m39,
+/obj/item/weapon/gun/smg/m39,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
@@ -54658,6 +54660,22 @@
 	icon_state = "silvercorner"
 	},
 /area/almayer/command/cichallway)
+"ouX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/machinery/camera/autoname/almayer/containment/ares{
+	dir = 4
+	},
+/turf/open/floor/almayer/no_build{
+	icon_state = "tcomms"
+	},
+/area/space)
 "ovi" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -64480,8 +64498,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/effect/landmark/wo_supplies/guns/common/m39,
-/obj/effect/landmark/wo_supplies/guns/common/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
@@ -64489,6 +64505,8 @@
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
+/obj/item/weapon/gun/smg/m39,
+/obj/item/weapon/gun/smg/m39,
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
 "sYC" = (
@@ -73705,11 +73723,11 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/effect/landmark/wo_supplies/guns/common/m39,
-/obj/effect/landmark/wo_supplies/guns/common/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
+/obj/item/weapon/gun/smg/m39,
+/obj/item/weapon/gun/smg/m39,
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
 "wVy" = (
@@ -133600,7 +133618,7 @@ nAs
 tCj
 tlX
 cZP
-gCv
+ouX
 pYi
 lmi
 avL
@@ -136427,8 +136445,8 @@ bdH
 bdH
 bdH
 bdH
-bdH
-bdH
+avL
+avL
 avL
 avL
 avL
@@ -136630,8 +136648,8 @@ bdH
 bdH
 bdH
 bdH
-bdH
-bdH
+avL
+avL
 avL
 avL
 avL
@@ -136833,8 +136851,8 @@ bdH
 bdH
 bdH
 bdH
-bdH
-bdH
+avL
+avL
 avL
 avL
 avL

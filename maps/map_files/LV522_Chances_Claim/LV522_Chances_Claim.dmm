@@ -2261,9 +2261,7 @@
 /area/lv522/indoors/c_block/mining)
 "bxz" = (
 /obj/structure/machinery/disposal,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "bxU" = (
 /obj/item/clothing/head/hardhat,
@@ -2615,9 +2613,7 @@
 /obj/item/trash/plate{
 	pixel_x = 6
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "bIJ" = (
 /turf/closed/wall/shiva/prefabricated/reinforced,
@@ -2781,9 +2777,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "bNA" = (
 /obj/structure/machinery/light,
@@ -3315,9 +3309,7 @@
 /area/lv522/indoors/a_block/kitchen/damage)
 "cbp" = (
 /obj/structure/machinery/squeezer,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "cbB" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
@@ -8072,9 +8064,7 @@
 "ehr" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "ehy" = (
 /obj/effect/acid_hole,
@@ -12404,9 +12394,7 @@
 /area/lv522/atmos/east_reactor/east)
 "ghu" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "ghw" = (
 /obj/structure/surface/table/almayer,
@@ -14536,9 +14524,7 @@
 	pixel_x = 3;
 	pixel_y = 5
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "hdG" = (
 /obj/effect/decal/warning_stripes{
@@ -17553,9 +17539,7 @@
 	pixel_y = 17
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "irR" = (
 /obj/structure/platform_decoration{
@@ -22382,9 +22366,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "kmP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -23002,9 +22984,7 @@
 /obj/structure/machinery/power/apc/weak{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "kAG" = (
 /turf/open/floor/corsat{
@@ -25504,9 +25484,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "lBE" = (
 /obj/structure/prop/invuln/ice_prefab{
@@ -26471,9 +26449,7 @@
 /area/lv522/indoors/a_block/fitness)
 "lZY" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "mad" = (
 /obj/effect/decal/cleanable/blood,
@@ -26574,9 +26550,7 @@
 /area/lv522/indoors/a_block/security)
 "mbG" = (
 /obj/item/prop/alien/hugger,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "mbH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -28015,9 +27989,7 @@
 /area/lv522/indoors/a_block/dorms)
 "mMI" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "mMQ" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -28597,9 +28569,7 @@
 	pixel_x = 6;
 	pixel_y = 7
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "mXA" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -29099,9 +29069,7 @@
 	},
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "niu" = (
 /obj/structure/platform_decoration{
@@ -33241,9 +33209,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "oUC" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
@@ -35984,9 +35950,7 @@
 	pixel_x = 8;
 	pixel_y = 3
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "qal" = (
 /obj/structure/surface/table/almayer,
@@ -37849,9 +37813,7 @@
 "qNG" = (
 /obj/structure/bed/stool,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "qNI" = (
 /obj/structure/cargo_container/grant/right,
@@ -37919,9 +37881,7 @@
 	name = "blue slippers"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "qOa" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
@@ -39240,9 +39200,7 @@
 "rlI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "rlV" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -40744,9 +40702,7 @@
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "rRc" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -42189,9 +42145,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "syt" = (
 /obj/structure/surface/table/almayer,
@@ -43143,9 +43097,7 @@
 	pixel_x = 12;
 	pixel_y = 17
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "sQu" = (
 /turf/open/asphalt/cement{
@@ -47555,9 +47507,7 @@
 /area/lv522/atmos/command_centre)
 "uFL" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "uFO" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -48923,9 +48873,7 @@
 	pixel_y = -12
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "vgw" = (
 /obj/structure/platform,
@@ -51826,9 +51774,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "wng" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -52156,9 +52102,7 @@
 	},
 /area/lv522/landing_zone_1)
 "wuQ" = (
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "wuX" = (
 /obj/structure/bed/chair/wood/normal{
@@ -52526,9 +52470,7 @@
 /area/lv522/outdoors/colony_streets/north_street)
 "wCJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "wCM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -52591,9 +52533,7 @@
 /area/lv522/indoors/a_block/admin)
 "wDy" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "wDO" = (
 /obj/structure/machinery/door/airlock/almayer/generic,

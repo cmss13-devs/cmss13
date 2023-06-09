@@ -1145,9 +1145,7 @@
 "aeA" = (
 /obj/structure/closet/wardrobe/chaplain_black,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "aeC" = (
 /obj/structure/closet/firecloset,
@@ -9142,11 +9140,6 @@
 /obj/item/storage/box/lightstick/red,
 /turf/open/floor/carpet,
 /area/shiva/interior/colony/research_hab)
-"doc" = (
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/shiva/interior/colony/central)
 "doJ" = (
 /obj/structure/window/framed/shiva,
 /turf/open/floor/plating,
@@ -13666,9 +13659,7 @@
 	dir = 1;
 	name = "\improper Underground Chapel"
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "ivy" = (
 /obj/structure/bed/chair/office/dark{
@@ -22019,9 +22010,7 @@
 /area/shiva/exterior/junkyard)
 "rnz" = (
 /obj/structure/flora/pottedplant,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "rnB" = (
 /obj/structure/platform_decoration/shiva/catwalk{
@@ -23363,9 +23352,7 @@
 "sQt" = (
 /obj/structure/closet/wardrobe/chaplain_black,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "sQU" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -25437,9 +25424,7 @@
 	dir = 8;
 	pixel_y = -5
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "uPv" = (
 /obj/structure/prop/invuln/ice_prefab{
@@ -46394,7 +46379,7 @@ aaY
 jFy
 jFy
 axz
-doc
+tfd
 ivr
 axz
 jFy
@@ -46554,12 +46539,12 @@ wlj
 axz
 axz
 rnz
-doc
+tfd
 uPo
-doc
-doc
+tfd
+tfd
 uPo
-doc
+tfd
 rnz
 jFy
 qrz
@@ -46715,14 +46700,14 @@ qCn
 tKg
 axz
 axz
-doc
+tfd
 wCz
 lWW
 wCz
 lWW
 wCz
 lWW
-doc
+tfd
 jFy
 gNF
 jqY
@@ -46877,14 +46862,14 @@ qCn
 ssf
 axz
 axz
-doc
+tfd
 nCo
 kRK
 nCo
 kRK
 nCo
 kRK
-doc
+tfd
 aaY
 ilo
 jqY
@@ -47039,14 +47024,14 @@ rCO
 ssf
 axz
 axz
-doc
+tfd
 wCz
 lWW
 wCz
 lWW
 wCz
 lWW
-doc
+tfd
 jFy
 gNF
 gNF
@@ -47201,14 +47186,14 @@ qCn
 jVx
 aaY
 aaY
-doc
+tfd
 nCo
 kRK
 nCo
 kRK
 nCo
 kRK
-doc
+tfd
 jFy
 jqY
 jqY
@@ -47363,14 +47348,14 @@ qCn
 gPg
 xha
 axz
-doc
+tfd
 wCz
 lWW
 wCz
 lWW
 wCz
 lWW
-doc
+tfd
 jFy
 gNF
 jqY
@@ -47525,14 +47510,14 @@ xha
 aaX
 xha
 axz
-doc
+tfd
 jMZ
 gvz
 jMZ
 gvz
 jMZ
 gvz
-doc
+tfd
 axz
 kFJ
 jqY
@@ -47687,13 +47672,13 @@ aaY
 xha
 xha
 vWt
-doc
-doc
+tfd
+tfd
 cRP
 dqW
 bMn
 cRP
-doc
+tfd
 sQt
 aaY
 axz
@@ -47849,13 +47834,13 @@ axz
 xha
 xha
 axz
-doc
-doc
+tfd
+tfd
 jUa
 jvT
 djn
 djn
-doc
+tfd
 aeA
 axz
 pMs

@@ -260,6 +260,13 @@
 
 
 
+/turf/open/floor/wood
+	icon_state = "wood"
+
+/turf/open/floor/grimy
+	icon_state = "grimy"
+
+
 /turf/open/floor/freezerfloor
 	icon_state = "freezerfloor"
 

@@ -4656,9 +4656,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/varadero/interior/library)
 "ejN" = (
 /obj/structure/platform/kutjevo/smooth{
@@ -4835,9 +4833,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/varadero/interior/library)
 "etv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -5954,9 +5950,7 @@
 	pixel_x = 24;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/varadero/interior/library)
 "fpf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -8952,9 +8946,7 @@
 /area/varadero/interior/hall_N)
 "ibo" = (
 /obj/structure/prop/broken_arcade,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/varadero/interior/library)
 "iby" = (
 /obj/structure/machinery/light{
@@ -9085,9 +9077,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/varadero/interior/library)
 "ieu" = (
 /obj/structure/machinery/computer/arcade,
@@ -11404,9 +11394,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/varadero/interior/library)
 "keN" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -13812,9 +13800,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/varadero/interior/library)
 "mkc" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -14974,9 +14960,7 @@
 	icon_state = "book-5";
 	name = "book case"
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/varadero/interior/library)
 "nio" = (
 /turf/closed/wall/r_wall/elevator/gears,
@@ -16420,9 +16404,7 @@
 	icon_state = "book-3";
 	name = "book case"
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/varadero/interior/library)
 "oyi" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -17231,9 +17213,7 @@
 /area/varadero/interior/medical)
 "peE" = (
 /obj/structure/bookcase,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/varadero/interior/library)
 "pfr" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -22301,9 +22281,7 @@
 	},
 /area/varadero/interior/hall_NW)
 "tzw" = (
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/varadero/interior/library)
 "tzP" = (
 /obj/structure/barricade/handrail/wire{

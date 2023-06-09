@@ -694,9 +694,7 @@
 "acl" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "acm" = (
 /obj/item/tool/pickaxe,
@@ -747,9 +745,7 @@
 "acv" = (
 /obj/structure/filingcabinet/security,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "acw" = (
 /obj/effect/decal/cleanable/dirt,
@@ -939,9 +935,7 @@
 "adc" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/clothing/head/det_hat,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "add" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1195,25 +1189,19 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "adW" = (
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "adX" = (
 /obj/structure/bookcase/manuals/engineering,
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "adY" = (
 /obj/structure/closet/secure_closet/detective,
 /obj/item/weapon/gun/smg/fp9000,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "adZ" = (
 /turf/closed/wall/solaris/reinforced,
@@ -1358,22 +1346,16 @@
 "aes" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/cameras/wooden_tv,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "aet" = (
 /obj/structure/bed/chair/comfy,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "aeu" = (
 /obj/item/clothing/accessory/storage/holster/armpit,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "aev" = (
 /turf/open/floor/plating,
@@ -1485,16 +1467,12 @@
 "aeO" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/recharger,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "aeP" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/reagent_container/food/drinks/flask/detflask,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "aeQ" = (
 /obj/structure/surface/table/reinforced,
@@ -1668,9 +1646,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "aft" = (
 /obj/structure/surface/table/reinforced,
@@ -1861,9 +1837,7 @@
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "afY" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -1988,9 +1962,7 @@
 /area/bigredv2/outside/n)
 "agt" = (
 /obj/structure/surface/table/woodentable/fancy,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/marshal_office)
 "agu" = (
 /turf/closed/wall/solaris/rock,
@@ -2132,9 +2104,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "agO" = (
 /obj/structure/surface/table/woodentable/fancy,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "agP" = (
 /obj/structure/surface/rack,
@@ -2933,9 +2903,7 @@
 /area/bigredv2/outside/medical)
 "ajl" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "ajm" = (
 /obj/structure/filingcabinet,
@@ -3373,9 +3341,7 @@
 "akA" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/ashtray/bronze,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "akB" = (
 /obj/structure/surface/table/reinforced,
@@ -3495,15 +3461,11 @@
 /area/bigredv2/outside/marshal_office)
 "akS" = (
 /obj/structure/bed/chair,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "akT" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "akU" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -3707,15 +3669,11 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "alB" = (
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/marshal_office)
 "alC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/marshal_office)
 "alD" = (
 /obj/structure/window/framed/solaris,
@@ -3809,9 +3767,7 @@
 "alT" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "alU" = (
 /turf/open/floor{
@@ -4036,24 +3992,18 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "amB" = (
 /obj/effect/landmark/survivor_spawner,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/marshal_office)
 "amC" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/marshal_office)
 "amD" = (
 /obj/effect/landmark/crap_item,
@@ -4271,9 +4221,7 @@
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "anj" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -4420,9 +4368,7 @@
 /area/bigredv2/outside/marshal_office)
 "anH" = (
 /obj/structure/bed/chair,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/marshal_office)
 "anI" = (
 /turf/closed/wall/solaris/reinforced,
@@ -4604,17 +4550,13 @@
 "aom" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/clothing/suit/storage/lawyer/bluejacket,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "aon" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/marshal_office)
 "aoo" = (
 /obj/structure/pipes/vents/pump{
@@ -4705,9 +4647,7 @@
 "aoF" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "aoG" = (
 /obj/effect/landmark/monkey_spawn,
@@ -4822,38 +4762,28 @@
 "aoX" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/camera,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "aoY" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "aoZ" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "apa" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "apb" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/camera_film,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "apc" = (
 /turf/open/floor,
@@ -6358,9 +6288,7 @@
 /obj/structure/bed{
 	pixel_y = 13
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "atz" = (
 /obj/structure/surface/table,
@@ -6368,9 +6296,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "atA" = (
 /obj/structure/window/framed/solaris,
@@ -6378,9 +6304,7 @@
 /area/bigredv2/outside/cargo)
 "atB" = (
 /obj/structure/closet/crate,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "atC" = (
 /obj/structure/surface/table,
@@ -6554,14 +6478,10 @@
 	layer = 3;
 	pixel_x = 24
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "atY" = (
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "atZ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -6620,9 +6540,7 @@
 /area/bigredv2/outside/general_offices)
 "aui" = (
 /obj/structure/surface/table/woodentable,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "auj" = (
 /obj/item/device/radio/intercom{
@@ -7388,17 +7306,13 @@
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/filtration_plant)
 "awq" = (
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "awr" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "aws" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -7643,22 +7557,16 @@
 "axe" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/good_item,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "axf" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/blood/gibs/limb,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "axg" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "axh" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -7881,23 +7789,17 @@
 /area/bigredv2/outside/cargo)
 "axM" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "axN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "axO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "axP" = (
 /obj/structure/bed/chair{
@@ -8094,9 +7996,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "ayt" = (
 /obj/effect/decal/cleanable/dirt,
@@ -8104,18 +8004,14 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "ayu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "ayv" = (
 /obj/item/device/radio/intercom{
@@ -8127,15 +8023,11 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "ayw" = (
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/general_offices)
 "ayx" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/general_offices)
 "ayy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -8314,9 +8206,7 @@
 /area/bigredv2/outside/engineering)
 "aza" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "azb" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -8330,15 +8220,11 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/general_offices)
 "azd" = (
 /obj/structure/bed,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/general_offices)
 "aze" = (
 /obj/structure/machinery/light{
@@ -8563,15 +8449,11 @@
 /area/bigredv2/outside/n)
 "azM" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "azN" = (
 /obj/item/stack/sheet/metal,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "azO" = (
 /turf/closed/wall/solaris/reinforced/hull,
@@ -8828,9 +8710,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "aAC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -9131,9 +9011,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/toy/beach_ball,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "aBt" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -9325,15 +9203,11 @@
 /area/bigredv2/outside/dorms)
 "aBZ" = (
 /obj/structure/bed/stool,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "aCa" = (
 /obj/structure/machinery/computer/arcade,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "aCb" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -9377,9 +9251,7 @@
 /obj/item/paper/courtroom{
 	name = "A Crash Course in Legal SOP"
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "aCl" = (
 /obj/structure/surface/table,
@@ -9582,9 +9454,7 @@
 "aCP" = (
 /obj/structure/closet/secure_closet/bar,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aCQ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -9603,15 +9473,11 @@
 "aCS" = (
 /obj/structure/closet/boxinggloves,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "aCT" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "aCU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -9666,25 +9532,19 @@
 /obj/structure/bookcase{
 	density = 0
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aDd" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aDe" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aDf" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -9701,9 +9561,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aDh" = (
 /obj/structure/machinery/light{
@@ -9715,9 +9573,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aDi" = (
 /obj/structure/machinery/light/small,
@@ -9984,25 +9840,19 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "aDV" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aDW" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aDX" = (
 /turf/closed/wall/solaris,
@@ -10026,24 +9876,18 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aEb" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Bar APC"
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aEc" = (
 /obj/structure/reagent_dispensers/beerkeg,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aEd" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -10070,9 +9914,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aEi" = (
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aEj" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -10084,17 +9926,13 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aEl" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aEm" = (
 /obj/structure/machinery/power/apc{
@@ -10263,28 +10101,20 @@
 	},
 /area/bigredv2/outside/dorms)
 "aEO" = (
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aEP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aEQ" = (
 /obj/structure/bed/chair/wood/normal,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aER" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aES" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -10635,9 +10465,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/device/radio,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "aFU" = (
 /obj/structure/machinery/door_control{
@@ -10648,9 +10476,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "aFV" = (
 /obj/structure/machinery/light/small/built{
@@ -10663,26 +10489,20 @@
 /area/bigredv2/caves/lambda/virology)
 "aFW" = (
 /obj/structure/surface/table/woodentable,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aFX" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aFY" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aFZ" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
@@ -10729,9 +10549,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aGf" = (
 /obj/structure/machinery/door_control{
@@ -10739,9 +10557,7 @@
 	name = "Storm Shutters";
 	pixel_x = 32
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aGg" = (
 /obj/structure/machinery/light/built{
@@ -10946,29 +10762,21 @@
 "aGG" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/binoculars,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "aGH" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aGI" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aGJ" = (
 /obj/structure/machinery/squeezer,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aGK" = (
 /obj/structure/machinery/light,
@@ -11000,9 +10808,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aGT" = (
 /obj/structure/surface/table,
@@ -11261,9 +11067,7 @@
 "aHJ" = (
 /obj/structure/machinery/reagentgrinder,
 /obj/structure/surface/table/woodentable,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aHK" = (
 /obj/structure/surface/table,
@@ -11295,9 +11099,7 @@
 /area/bigredv2/outside/library)
 "aHO" = (
 /obj/structure/bed/chair/wood/normal,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aHP" = (
 /obj/structure/prop/almayer/computers/mapping_computer{
@@ -11517,21 +11319,15 @@
 "aIt" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aIu" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aIv" = (
 /obj/structure/bed,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aIw" = (
 /obj/structure/surface/table,
@@ -11594,9 +11390,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/paper,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aIJ" = (
 /turf/open/floor{
@@ -11873,9 +11667,7 @@
 	name = "General Listening Channel";
 	pixel_x = 30
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aJr" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -11950,17 +11742,13 @@
 	dir = 4;
 	pixel_x = -30
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aJD" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/toy/dice/d20,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aJE" = (
 /turf/open/floor{
@@ -12076,9 +11864,7 @@
 "aJT" = (
 /obj/structure/filingcabinet/medical,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "aJU" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -12261,34 +12047,24 @@
 "aKv" = (
 /obj/structure/bed/chair/wood/normal,
 /obj/item/weapon/gun/shotgun/double/with_stock,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aKw" = (
 /obj/item/clothing/head/welding,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aKx" = (
 /obj/structure/bed/stool,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aKy" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ashtray/glass,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aKz" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aKA" = (
 /turf/open/mars{
@@ -12357,9 +12133,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aKM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -12383,9 +12157,7 @@
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aKP" = (
 /turf/open/mars,
@@ -12526,9 +12298,7 @@
 "aLg" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/office_complex)
 "aLh" = (
 /obj/effect/landmark/nightmare{
@@ -12570,35 +12340,27 @@
 /obj/structure/bed/chair/wood/normal{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aLq" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/pipes/vents/pump,
 /obj/item/trash/cheesie,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aLr" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aLs" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 4
 	},
 /obj/item/tool/extinguisher,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aLt" = (
 /obj/structure/surface/table/woodentable{
@@ -12606,25 +12368,19 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aLu" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aLv" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aLw" = (
 /obj/structure/surface/table/reinforced,
@@ -12881,22 +12637,16 @@
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aMi" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/spawner/random/tool,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aMj" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aMk" = (
 /turf/open/floor{
@@ -13065,16 +12815,12 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aMI" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/trash/sosjerky,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aMJ" = (
 /obj/structure/machinery/chem_dispenser/soda{
@@ -13089,9 +12835,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aMK" = (
 /obj/structure/machinery/alarm{
@@ -13223,9 +12967,7 @@
 /area/bigredv2/outside/virology)
 "aNh" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/research)
 "aNi" = (
 /turf/open/floor/freezerfloor,
@@ -13434,88 +13176,66 @@
 /area/bigredv2/outside/admin_building)
 "aNO" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "aNP" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "aNQ" = (
 /obj/structure/bed,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "aNR" = (
 /obj/structure/bed/chair/wood/normal,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aNS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aNT" = (
 /obj/structure/bed/chair/wood/normal,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aNU" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aNV" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aNW" = (
 /obj/structure/bed/stool,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aNX" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aNY" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/trash/raisins,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aNZ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -13790,9 +13510,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aOO" = (
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "aOP" = (
 /obj/structure/surface/table,
@@ -13822,9 +13540,7 @@
 /obj/item/trash/cheesie,
 /obj/item/trash/pistachios,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aOU" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -14218,24 +13934,18 @@
 /area/bigredv2/outside/admin_building)
 "aPW" = (
 /obj/structure/coatrack,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "aPX" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/tool/lighter/zippo,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "aPY" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aPZ" = (
 /obj/structure/surface/table,
@@ -14381,21 +14091,15 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aQs" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aQt" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aQu" = (
 /turf/open/mars_cave{
@@ -14420,9 +14124,7 @@
 /obj/structure/surface/table,
 /obj/item/tool/pen,
 /obj/item/paper_bundle,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "aQz" = (
 /obj/structure/machinery/light{
@@ -14449,9 +14151,7 @@
 "aQD" = (
 /obj/structure/surface/table,
 /obj/item/stock_parts/smes_coil,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "aQE" = (
 /obj/structure/machinery/camera/autoname{
@@ -14637,9 +14337,7 @@
 /area/bigredv2/outside/admin_building)
 "aRf" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "aRh" = (
 /obj/structure/machinery/door_control{
@@ -14659,41 +14357,31 @@
 /area/bigredv2/outside/admin_building)
 "aRj" = (
 /obj/structure/barricade/wooden,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aRk" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aRl" = (
 /obj/structure/barricade/wooden,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aRm" = (
 /obj/structure/barricade/wooden,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aRn" = (
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aRo" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -15321,9 +15009,7 @@
 "aTb" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "aTc" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
@@ -15698,9 +15384,7 @@
 "aUg" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/camera,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "aUh" = (
 /obj/effect/decal/cleanable/blood{
@@ -16516,9 +16200,7 @@
 "aWH" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/pinpointer,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "aWI" = (
 /turf/open/floor{
@@ -16706,9 +16388,7 @@
 "aXn" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/spray/cleaner,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "aXo" = (
 /obj/effect/decal/cleanable/blood{
@@ -17817,9 +17497,7 @@
 /obj/structure/safe,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "bbo" = (
 /obj/structure/bed/chair,
@@ -18024,9 +17702,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "bbW" = (
 /obj/structure/bed/chair{
@@ -18042,9 +17718,7 @@
 /area/bigredv2/outside/admin_building)
 "bbY" = (
 /obj/structure/bed/chair/office/dark,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "bbZ" = (
 /obj/structure/surface/table,
@@ -18052,9 +17726,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "bca" = (
 /obj/structure/machinery/camera/autoname{
@@ -18064,14 +17736,10 @@
 /area/bigredv2/outside/admin_building)
 "bcb" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/admin_building)
 "bcc" = (
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/admin_building)
 "bcd" = (
 /obj/effect/landmark/survivor_spawner,
@@ -18171,10 +17839,7 @@
 	dir = 8;
 	health = 25000
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "loadingarea"
-	},
+/turf/open/floor/default/loadingarea/east,
 /area/bigredv2/outside/cargo)
 "bcu" = (
 /obj/structure/barricade/wooden{
@@ -18318,9 +17983,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "bcM" = (
 /turf/open/floor{
@@ -18337,9 +18000,7 @@
 "bcO" = (
 /obj/structure/surface/table,
 /obj/item/clothing/mask/cigarette/cigar,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "bcP" = (
 /obj/structure/surface/table,
@@ -18347,9 +18008,7 @@
 	density = 0;
 	req_one_access_txt = "200"
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "bcQ" = (
 /obj/structure/machinery/vending/cola,
@@ -18359,26 +18018,20 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/admin_building)
 "bcS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/admin_building)
 "bcT" = (
 /obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/admin_building)
 "bcU" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -18506,9 +18159,7 @@
 "bdq" = (
 /obj/structure/surface/table,
 /obj/item/trash/snack_bowl,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "bdr" = (
 /obj/structure/machinery/vending/snack,
@@ -18516,9 +18167,7 @@
 /area/bigredv2/outside/admin_building)
 "bds" = (
 /obj/effect/spawner/random/toolbox,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/admin_building)
 "bdt" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -18626,9 +18275,7 @@
 /area/bigredv2/outside/admin_building)
 "bdP" = (
 /obj/structure/machinery/photocopier,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "bdU" = (
 /obj/structure/machinery/door_control{
@@ -18932,9 +18579,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "beU" = (
-/turf/open/floor{
-	icon_state = "loadingarea"
-	},
+/turf/open/floor/default/loadingarea/south,
 /area/bigredv2/outside/cargo)
 "beV" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -19317,29 +18962,21 @@
 /area/bigredv2/outside/office_complex)
 "bgf" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/office_complex)
 "bgg" = (
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/office_complex)
 "bgh" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/office_complex)
 "bgi" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer3/laptop/secure_data,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/office_complex)
 "bgj" = (
 /obj/structure/surface/table,
@@ -19347,9 +18984,7 @@
 	icon_state = "pottedplant_15";
 	pixel_y = 10
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/office_complex)
 "bgk" = (
 /obj/structure/machinery/alarm{
@@ -19412,24 +19047,18 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "bgu" = (
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/office_complex)
 "bgv" = (
 /obj/structure/surface/table,
 /obj/item/tool/pen/blue,
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/office_complex)
 "bgw" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/office_complex)
 "bgx" = (
 /turf/open/floor{
@@ -19523,16 +19152,12 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/office_complex)
 "bgO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/office_complex)
 "bgP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -19545,9 +19170,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "grimy"
-	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/office_complex)
 "bgR" = (
 /obj/structure/machinery/door_control{
@@ -19838,15 +19461,11 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/office_complex)
 "bhY" = (
 /obj/structure/flora/pottedplant,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/office_complex)
 "bhZ" = (
 /obj/structure/surface/table,
@@ -22809,19 +22428,13 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "loadingarea"
-	},
+/turf/open/floor/default/loadingarea/north,
 /area/bigredv2/caves/eta/storage)
 "bwM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "loadingarea"
-	},
+/turf/open/floor/default/loadingarea/north,
 /area/bigredv2/caves/eta/storage)
 "bwN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -23151,21 +22764,15 @@
 /area/bigredv2/caves/eta/research)
 "bxR" = (
 /obj/structure/bed,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/research)
 "bxS" = (
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/research)
 "bxT" = (
 /obj/structure/bed,
 /obj/structure/pipes/vents/pump,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/research)
 "bxU" = (
 /obj/structure/largecrate/cow,
@@ -23206,9 +22813,7 @@
 "byc" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/research)
 "bye" = (
 /turf/open/mars_cave{
@@ -23302,26 +22907,20 @@
 "byt" = (
 /obj/structure/bed,
 /obj/effect/landmark/corpsespawner/pmc,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/research)
 "byu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/research)
 "byv" = (
 /obj/structure/machinery/light,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/research)
 "byw" = (
 /obj/structure/largecrate/mule,
@@ -24935,9 +24534,7 @@
 /area/bigredv2/caves/eta/living)
 "bDo" = (
 /obj/structure/bookcase/manuals/research_and_development,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bDp" = (
 /obj/structure/machinery/light{
@@ -24947,9 +24544,7 @@
 /obj/item/disk/nuclear,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/structure/pipes/vents/pump/on,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bDq" = (
 /obj/structure/machinery/light{
@@ -24958,9 +24553,7 @@
 /obj/structure/closet/cabinet,
 /obj/item/clothing/accessory/armband,
 /obj/structure/pipes/vents/pump/on,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bDr" = (
 /obj/structure/machinery/light{
@@ -24993,15 +24586,11 @@
 "bDu" = (
 /obj/structure/surface/table,
 /obj/item/book/manual/nuclear,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bDv" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bDx" = (
 /obj/structure/machinery/light{
@@ -25026,33 +24615,25 @@
 /obj/structure/machinery/computer/pod/old{
 	name = "Personal Computer"
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bDB" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bDC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bDD" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bDE" = (
 /obj/item/trash/kepler,
@@ -25096,9 +24677,7 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bDM" = (
 /obj/structure/surface/table,
@@ -25278,9 +24857,7 @@
 /area/bigredv2/caves/eta/living)
 "bEn" = (
 /obj/structure/bookcase/manuals/medical,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bEo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -25310,9 +24887,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "bEt" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bEv" = (
 /obj/structure/machinery/light{
@@ -25340,9 +24915,7 @@
 /area/bigredv2/caves/eta/living)
 "bEy" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bEz" = (
 /obj/structure/bed/chair/comfy/orange,
@@ -25369,24 +24942,18 @@
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bED" = (
 /obj/structure/bed,
 /obj/effect/landmark/corpsespawner/scientist,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bEE" = (
 /obj/structure/surface/table,
 /obj/item/spacecash/c1000,
 /obj/item/spacecash/c1000,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "bEF" = (
 /obj/structure/surface/table,
@@ -25804,9 +25371,7 @@
 /area/bigredv2/caves)
 "coT" = (
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "cpc" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -25982,9 +25547,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "cIq" = (
 /obj/structure/machinery/light{
@@ -27187,9 +26750,7 @@
 /obj/structure/machinery/computer/objective{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "fjF" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
@@ -27290,10 +26851,7 @@
 	dir = 4;
 	health = 25000
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "loadingarea"
-	},
+/turf/open/floor/default/loadingarea/west,
 /area/bigredv2/outside/cargo)
 "fwO" = (
 /obj/structure/prop/almayer/cannon_cables{
@@ -27338,9 +26896,7 @@
 /area/bigredv2/caves/eta/storage)
 "fyz" = (
 /obj/structure/bed,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "fyO" = (
 /obj/structure/transmitter/colony_net{
@@ -27539,9 +27095,7 @@
 /area/bigredv2/outside/space_port)
 "fST" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "fSY" = (
 /turf/open/mars_cave{
@@ -29008,9 +28562,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "jrA" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -29077,9 +28629,7 @@
 "jAm" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/effect/landmark/objective_landmark/far,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "jAo" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
@@ -29162,9 +28712,7 @@
 	pixel_x = 26;
 	range = 500
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "jGQ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -29299,9 +28847,7 @@
 "jUM" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "jUW" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -29628,9 +29174,7 @@
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves_lambda)
 "kqS" = (
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "kqV" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -30114,9 +29658,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "lzI" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -30165,9 +29707,7 @@
 "lDa" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "lDp" = (
 /obj/structure/closet/secure_closet,
@@ -30411,9 +29951,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "mhG" = (
 /obj/structure/sign/safety/bulkhead_door{
@@ -31219,9 +30757,7 @@
 /obj/structure/bookcase/manuals/research_and_development,
 /obj/item/storage/fancy/vials/random,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "odw" = (
 /obj/structure/bed,
@@ -31912,9 +31448,7 @@
 /area/bigredv2/caves)
 "psE" = (
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "ptL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -33901,9 +33435,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "tnd" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -34000,10 +33532,7 @@
 	dir = 4;
 	health = 25000
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "loadingarea"
-	},
+/turf/open/floor/default/loadingarea/west,
 /area/bigredv2/outside/cargo)
 "tuN" = (
 /obj/structure/machinery/light/small,
@@ -34024,9 +33553,7 @@
 "tAe" = (
 /obj/structure/bed,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "tAW" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
@@ -34928,9 +34455,7 @@
 /area/bigredv2/caves/mining)
 "voz" = (
 /obj/structure/machinery/camera/autoname,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "vpu" = (
 /obj/item/weapon/twohanded/folded_metal_chair,
@@ -34960,9 +34485,7 @@
 "vti" = (
 /obj/structure/closet/crate,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "vty" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
@@ -35548,9 +35071,7 @@
 "wFP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/caves/eta/living)
 "wGr" = (
 /obj/structure/closet/firecloset/full,
@@ -35729,9 +35250,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/ashtray/glass,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "wZC" = (
 /turf/open/mars{

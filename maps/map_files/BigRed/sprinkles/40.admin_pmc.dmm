@@ -408,9 +408,7 @@
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	name = "\improper Operations Office"
 	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "bi" = (
 /obj/item/ammo_box/magazine/ext{

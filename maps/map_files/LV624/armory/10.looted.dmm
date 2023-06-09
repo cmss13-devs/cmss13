@@ -28,9 +28,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv624/lazarus/main_hall)
 "e" = (
 /obj/structure/barricade/wooden{

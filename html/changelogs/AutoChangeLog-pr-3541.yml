@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Lobby Music is a bit quieter and should now stop properly when you spawn in."

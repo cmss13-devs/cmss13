@@ -82,7 +82,7 @@
 	new /obj/item/tool/wirecutters(src)
 	new /obj/item/device/multitool(src)
 
-obj/item/storage/synthetic_maintenance_case
+/obj/item/storage/synthetic_maintenance_case
 	name = "synthetic maintenance case"
 	desc = "It's a case containing numerous items to provide maintenance to a synthetic unit."
 	icon_state = "synthetic_maintenance_case"

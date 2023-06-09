@@ -51,10 +51,7 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "m" = (
 /obj/structure/largecrate,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/lv624/lazarus/landing_zones/lz1)
 "o" = (
 /obj/item/device/radio/intercom{
@@ -75,17 +72,11 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "t" = (
 /obj/structure/largecrate/random/barrel/white,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/lv624/lazarus/landing_zones/lz1)
 "C" = (
 /obj/structure/largecrate/random/barrel/red,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/lv624/lazarus/landing_zones/lz1)
 "F" = (
 /obj/vehicle/train/cargo/trolley,
@@ -93,16 +84,10 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "K" = (
 /obj/structure/largecrate/random/barrel/green,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/lv624/lazarus/landing_zones/lz1)
 "L" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/lv624/lazarus/landing_zones/lz1)
 "O" = (
 /turf/open/floor{
@@ -123,17 +108,11 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "T" = (
 /obj/structure/largecrate/random/barrel/blue,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/lv624/lazarus/landing_zones/lz1)
 "U" = (
 /obj/vehicle/train/cargo/trolley,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/lv624/lazarus/landing_zones/lz1)
 "X" = (
 /obj/structure/machinery/bot/mulebot{
@@ -143,10 +122,7 @@
 	on = 0
 	},
 /obj/effect/landmark/objective_landmark/far,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/lv624/lazarus/landing_zones/lz1)
 
 (1,1,1) = {"

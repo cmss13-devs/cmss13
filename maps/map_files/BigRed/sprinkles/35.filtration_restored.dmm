@@ -187,17 +187,11 @@
 /area/bigredv2/outside/se)
 "aL" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/filtration_plant)
 "aM" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/filtration_plant)
 "aN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -222,17 +216,11 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "aS" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/filtration_plant)
 "aT" = (
 /obj/structure/dispenser/oxygen,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/filtration_plant)
 "aV" = (
 /obj/effect/decal/warning_stripes{
@@ -392,10 +380,7 @@
 "bz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/filtration_plant)
 "bA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -489,10 +474,7 @@
 /area/bigredv2/outside/filtration_plant)
 "bW" = (
 /obj/structure/largecrate/random,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/filtration_plant)
 "bX" = (
 /obj/structure/sign/safety/distribution_pipes{
@@ -659,10 +641,7 @@
 /area/bigredv2/outside/filtration_plant)
 "VW" = (
 /obj/structure/cargo_container/grant/left,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/filtration_plant)
 "WD" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -672,17 +651,11 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "XC" = (
 /obj/structure/cargo_container/grant/right,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/filtration_plant)
 "Yg" = (
 /obj/structure/cargo_container/grant/rightmid,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/filtration_plant)
 
 (1,1,1) = {"

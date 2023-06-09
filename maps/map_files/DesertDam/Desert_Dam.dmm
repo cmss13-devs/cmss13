@@ -51940,10 +51940,7 @@
 /area/desert_dam/building/cafeteria/cafeteria)
 "dxW" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/desert_dam/building/water_treatment_one/garage)
 "dxX" = (
 /obj/structure/machinery/disposal,

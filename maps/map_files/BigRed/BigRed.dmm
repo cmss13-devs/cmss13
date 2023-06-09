@@ -17626,10 +17626,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "baF" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/cargo)
 "baG" = (
 /obj/structure/bed/chair/office/dark{
@@ -19133,10 +19130,7 @@
 /area/bigredv2/outside/se)
 "bfy" = (
 /obj/structure/largecrate/random,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/cargo)
 "bfz" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -19149,10 +19143,7 @@
 	dir = 4
 	},
 /obj/structure/closet/emcloset/legacy,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/cargo)
 "bfB" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -19165,20 +19156,14 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/cargo)
 "bfD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/cargo)
 "bfE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -19188,10 +19173,7 @@
 /area/bigredv2/outside/cargo)
 "bfF" = (
 /obj/structure/largecrate,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/cargo)
 "bfG" = (
 /obj/structure/bed/chair/office/dark{
@@ -19284,34 +19266,22 @@
 "bfV" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/cargo)
 "bfW" = (
 /obj/structure/largecrate,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/cargo)
 "bfX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/trashcart,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/cargo)
 "bfY" = (
 /obj/structure/largecrate/cow,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/cargo)
 "bfZ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -19441,10 +19411,7 @@
 /area/bigredv2/outside/office_complex)
 "bgq" = (
 /obj/structure/closet/emcloset,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/cargo)
 "bgr" = (
 /obj/structure/closet/secure_closet/security,
@@ -19534,10 +19501,7 @@
 /area/bigredv2/outside/cargo)
 "bgE" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/cargo)
 "bgF" = (
 /obj/structure/barricade/wooden{
@@ -19709,10 +19673,7 @@
 /area/bigredv2/outside/cargo)
 "bhe" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/outside/cargo)
 "bhf" = (
 /obj/structure/machinery/power/apc{
@@ -23151,15 +23112,11 @@
 "bxB" = (
 /obj/structure/largecrate/guns,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/caves/eta/storage)
 "bxC" = (
 /obj/structure/largecrate/guns,
-/turf/open/floor{
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/caves/eta/storage)
 "bxD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -23273,9 +23230,7 @@
 /area/bigredv2/caves/eta/storage)
 "bxV" = (
 /obj/structure/largecrate/cow,
-/turf/open/floor{
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/caves/eta/storage)
 "bxW" = (
 /obj/effect/spawner/random/toolbox,
@@ -23427,9 +23382,7 @@
 /area/bigredv2/caves/eta/research)
 "byw" = (
 /obj/structure/largecrate/mule,
-/turf/open/floor{
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/caves/eta/storage)
 "byx" = (
 /obj/structure/largecrate/mule,
@@ -23439,9 +23392,7 @@
 "byy" = (
 /obj/structure/largecrate/lisa,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "bot"
-	},
+/turf/open/floor/default/bot,
 /area/bigredv2/caves/eta/storage)
 "byz" = (
 /turf/open/floor{

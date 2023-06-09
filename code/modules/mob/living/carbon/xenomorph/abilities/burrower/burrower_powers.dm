@@ -334,8 +334,8 @@
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown(turf, 0.25 SECONDS)
 
 	// Extract our 'optimal' turf, if it exists
-	if (length(target_turfs) >= 2)
-		xeno.animation_attack_on(target_turfs[target_turfs.length], 15)
+	if (len(target_turfs) >= 2)
+		xeno.animation_attack_on(target_turfs[target_turfs.len], 15)
 
 	playsound(xeno.loc, 'sound/effects/burrower_attack.ogg', 40)
 	xeno.visible_message(SPAN_XENODANGER("[xeno] shoots spikes though the ground in front of it!"), SPAN_XENODANGER("You shoot your spikes though the ground in front of you!"))

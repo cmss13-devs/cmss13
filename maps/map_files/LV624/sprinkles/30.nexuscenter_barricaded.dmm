@@ -550,10 +550,7 @@
 /area/lv624/lazarus/main_hall)
 "by" = (
 /obj/item/ammo_casing,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellow"
-	},
+/turf/open/floor/white/yellow/whiteyellow/east,
 /area/lv624/lazarus/main_hall)
 "bz" = (
 /obj/item/ammo_casing,
@@ -739,9 +736,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/blue/whiteblue/south,
 /area/lv624/lazarus/main_hall)
 "bW" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -870,10 +865,7 @@
 /turf/open/floor/white/yellow/whiteyellowfull,
 /area/lv624/lazarus/main_hall)
 "JH" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whiteyellow"
-	},
+/turf/open/floor/white/yellow/whiteyellow/west,
 /area/lv624/lazarus/main_hall)
 "JK" = (
 /turf/open/floor{

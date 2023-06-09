@@ -7,10 +7,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "c" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellow"
-	},
+/turf/open/floor/white/yellow/whiteyellow/east,
 /area/lv624/lazarus/main_hall)
 "d" = (
 /obj/item/phone{
@@ -42,10 +39,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "g" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteyellow"
-	},
+/turf/open/floor/white/yellow/whiteyellow/north,
 /area/lv624/lazarus/main_hall)
 "h" = (
 /obj/structure/machinery/light/small,

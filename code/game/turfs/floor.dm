@@ -235,15 +235,63 @@
 
 /turf/open/floor/white/blue
 
+//whiteblue
+/turf/open/floor/white/blue/whiteblue
+	icon_state = "whiteblue"
+
+/turf/open/floor/white/blue/whiteblue/south
+
+/turf/open/floor/white/blue/whiteblue/north
+	dir = 1;
+
+/turf/open/floor/white/blue/whiteblue/west
+	dir = 8;
+
+/turf/open/floor/white/blue/whiteblue/east
+	dir = 4;
+
 /turf/open/floor/white/blue/whitebluefull
 	icon_state = "whitebluefull"
 
+//white green
 /turf/open/floor/white/green
+
+/turf/open/floor/white/green/whitegreen
+	icon_state = "whitegreen"
+
+/turf/open/floor/white/green/whitegreen/south
+
+/turf/open/floor/white/green/whitegreen/north
+	dir = 1;
+
+/turf/open/floor/white/green/whitegreen/west
+	dir = 8;
+
+/turf/open/floor/white/green/whitegreen/east
+	dir = 4;
+
 
 /turf/open/floor/white/green/whitegreenfull
 	icon_state = "whitegreenfull"
 
+//white yellow
 /turf/open/floor/white/yellow
+
+/turf/open/floor/white/yellow/whiteyellow
+	icon_state = "whiteyellow"
+
+/turf/open/floor/white/yellow/whiteyellow/south
+
+/turf/open/floor/white/yellow/whiteyellow/north
+	dir = 1;
+
+/turf/open/floor/white/yellow/whiteyellow/west
+	dir = 8;
+
+/turf/open/floor/white/yellow/whiteyellow/east
+	dir = 4;
+
+
 
 /turf/open/floor/white/yellow/whiteyellowfull
 	icon_state = "whiteyellowfull"

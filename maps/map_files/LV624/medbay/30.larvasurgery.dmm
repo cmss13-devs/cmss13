@@ -46,10 +46,7 @@
 	},
 /obj/item/storage/belt/medical/full,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "ap" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
@@ -65,10 +62,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "ar" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "as" = (
 /obj/structure/machinery/light{
@@ -91,10 +85,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "av" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/west,
 /area/lv624/lazarus/medbay)
 "aw" = (
 /obj/item/reagent_container/hypospray,
@@ -113,10 +104,7 @@
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/east,
 /area/lv624/lazarus/medbay)
 "aC" = (
 /obj/structure/machinery/optable,
@@ -145,19 +133,13 @@
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "aU" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "aX" = (
 /turf/open/floor,
@@ -168,10 +150,7 @@
 /area/lv624/lazarus/medbay)
 "bb" = (
 /obj/structure/machinery/vending/coffee,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "bc" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
@@ -194,10 +173,7 @@
 /area/lv624/lazarus/medbay)
 "bk" = (
 /obj/structure/machinery/vending/snack,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "bo" = (
 /obj/structure/window_frame/colony,
@@ -206,9 +182,7 @@
 "bp" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/south,
 /area/lv624/lazarus/medbay)
 "bq" = (
 /obj/structure/bed,
@@ -222,10 +196,7 @@
 /area/lv624/lazarus/medbay)
 "bu" = (
 /obj/item/tool/crowbar,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "bw" = (
 /obj/structure/fence,
@@ -282,10 +253,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "mA" = (
 /obj/structure/window/framed/colony,
@@ -301,10 +269,7 @@
 /obj/structure/surface/table,
 /obj/item/reagent_container/spray,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/west,
 /area/lv624/lazarus/medbay)
 "qC" = (
 /turf/open/floor{
@@ -325,10 +290,7 @@
 	},
 /obj/effect/landmark/corpsespawner/colonist/random/burst,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "tr" = (
 /obj/item/storage/firstaid/toxin,
@@ -341,9 +303,7 @@
 /obj/structure/filingcabinet,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/south,
 /area/lv624/lazarus/medbay)
 "uD" = (
 /obj/item/storage/firstaid,
@@ -373,9 +333,7 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "zF" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/south,
 /area/lv624/lazarus/medbay)
 "zL" = (
 /obj/structure/flora/jungle/planttop1,
@@ -396,10 +354,7 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/east,
 /area/lv624/lazarus/medbay)
 "En" = (
 /obj/structure/surface/table,
@@ -425,10 +380,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/west,
 /area/lv624/lazarus/medbay)
 "JK" = (
 /obj/structure/surface/table,
@@ -481,10 +433,7 @@
 "QQ" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/west,
 /area/lv624/lazarus/medbay)
 "TK" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
@@ -493,9 +442,7 @@
 "Vq" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/south,
 /area/lv624/lazarus/medbay)
 "VI" = (
 /obj/structure/flora/pottedplant{

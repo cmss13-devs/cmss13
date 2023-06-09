@@ -33,10 +33,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/green/whitegreen/east,
 /area/bigredv2/outside/marshal_office)
 "ah" = (
 /turf/closed/wall/solaris/reinforced,
@@ -54,10 +51,7 @@
 /area/bigredv2/outside/marshal_office)
 "al" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/green/whitegreen/east,
 /area/bigredv2/outside/marshal_office)
 "am" = (
 /obj/structure/sink{

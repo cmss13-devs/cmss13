@@ -148,10 +148,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_medbay_road)
 "ok" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "ot" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -265,10 +262,7 @@
 /obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/pistol/holdout,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteblue"
-	},
+/turf/open/floor/white/blue/whiteblue/east,
 /area/lv624/lazarus/medbay)
 "zS" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,

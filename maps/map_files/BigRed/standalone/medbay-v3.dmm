@@ -554,10 +554,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/green/whitegreen/north,
 /area/bigredv2/outside/medical)
 "bM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -567,10 +564,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/green/whitegreen/north,
 /area/bigredv2/outside/medical)
 "bN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -633,9 +627,7 @@
 /area/bigredv2/outside/medical)
 "bX" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/blue/whiteblue/south,
 /area/bigredv2/outside/medical)
 "bY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -710,10 +702,7 @@
 /area/bigredv2/outside/medical)
 "cj" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/green/whitegreen/east,
 /area/bigredv2/outside/medical)
 "ck" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -814,20 +803,14 @@
 /area/bigredv2/outside/medical)
 "cy" = (
 /obj/item/stack/sheet/metal,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/green/whitegreen/east,
 /area/bigredv2/outside/medical)
 "cz" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /obj/item/shard,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/green/whitegreen/north,
 /area/bigredv2/outside/medical)
 "cA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -893,10 +876,7 @@
 /area/bigredv2/outside/medical)
 "cF" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/green/whitegreen/north,
 /area/bigredv2/outside/medical)
 "cH" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -1590,10 +1570,7 @@
 /area/bigredv2/outside/medical)
 "ez" = (
 /obj/item/device/healthanalyzer,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/green/whitegreen/east,
 /area/bigredv2/outside/medical)
 "eA" = (
 /obj/structure/sign/safety/medical{
@@ -1764,10 +1741,7 @@
 "eY" = (
 /obj/structure/bed,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
+/turf/open/floor/white/green/whitegreen/east,
 /area/bigredv2/outside/medical)
 "eZ" = (
 /obj/structure/pipes/standard/simple/hidden/green{

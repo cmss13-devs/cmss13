@@ -51,34 +51,27 @@
 	name = "low power nanopaste"
 	singular_name = "low power nanite swarm"
 	desc = "A cheap alternative to nanopaste. Fairly effective in repairing robotic machinery."
-	icon = 'icons/obj/items/items.dmi'
-	icon_state = "tube"
 
-	attack_speed = 3
-	amount = 10
-	max_amount = 10
-	w_class = SIZE_SMALL
-	stack_id = "nanopaste"
 	black_market_value = 10
 
-/obj/item/stack/nanopaste/weak/attack(mob/living/M as mob, mob/user as mob)
-	if (!istype(M) || !istype(user))
+/obj/item/stack/nanopaste/weak/attack(mob/living/Mob as mob, mob/user as mob)
+	if (!istype(Mob) || !istype(user))
 		return 0
-	if (isrobot(M)) //Repairing cyborgs
-		var/mob/living/silicon/robot/R = M
-		if (R.getBruteLoss() || R.getFireLoss() )
-			R.apply_damage(-6, BRUTE)
-			R.apply_damage(-6, BURN)
-			R.updatehealth()
+	if (isrobot(Mob)) //Repairing cyborgs
+		var/mob/living/silicon/robot/synth = Mob
+		if (synth.getBruteLoss() || synth.getFireLoss() )
+			synth.apply_damage(-6, BRUTE)
+			synth.apply_damage(-6, BURN)
+			synth.updatehealth()
 			use(1)
-			user.visible_message(SPAN_NOTICE("\The [user] applied some [src] at [R]'s damaged areas."),\
-				SPAN_NOTICE("You apply some [src] at [R]'s damaged areas."))
+			user.visible_message(SPAN_NOTICE("\The [user] applied some [src] at [synth]'s damaged areas."),\
+				SPAN_NOTICE("You apply some [src] at [synth]'s damaged areas."))
 		else
-			to_chat(user, SPAN_NOTICE("All [R]'s systems are nominal."))
+			to_chat(user, SPAN_NOTICE("All [synth]'s systems are nominal."))
 
-	if (istype(M,/mob/living/carbon/human)) //Repairing robolimbs
-		var/mob/living/carbon/human/H = M
-		if(isspeciessynth(H) && M == user && !H.allow_gun_usage)
+	if (istype(Mob,/mob/living/carbon/human)) //Repairing robolimbs
+		var/mob/living/carbon/human/H = Mob
+		if(isspeciessynth(H) && Mob == user && !H.allow_gun_usage)
 			to_chat(H, SPAN_WARNING("Your programming forbids you from self-repairing with \the [src]."))
 			return
 		var/obj/limb/S = H.get_limb(user.zone_selected)
@@ -89,8 +82,8 @@
 				H.pain.recalculate_pain()
 				H.updatehealth()
 				use(1)
-				var/others_msg = "\The [user] applies some nanite paste at[user != M ? " \the [M]'s" : " \the"] [S.display_name] with \the [src]." // Needs to create vars for these messages because macro doesn't work otherwise
-				var/user_msg = "You apply some nanite paste at [user == M ? "your" : "[M]'s"] [S.display_name]."
+				var/others_msg = "\The [user] applies some nanite paste at[user != Mob ? " \the [Mob]'s" : " \the"] [S.display_name] with \the [src]."
+				var/user_msg = "You apply some nanite paste at [user == Mob ? "your" : "[Mob]'s"] [S.display_name]."
 				user.visible_message(SPAN_NOTICE("[others_msg]"),\
 					SPAN_NOTICE("[user_msg]"))
 			else

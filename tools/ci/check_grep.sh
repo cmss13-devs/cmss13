@@ -166,7 +166,7 @@ part "map json sanity"
 for json in maps/*.json
 do
 	map_path=$(jq -r '.map_path' $json)
-	override_map = $(jq -r '.override_map' $json)
+	override_map=$(jq -r '.override_map' $json)
 	while read map_file; do
 		filename="maps/$map_path/$map_file"
 		if [ ! -f $filename ] && [ ! -z "$override_map" ]

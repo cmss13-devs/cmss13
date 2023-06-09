@@ -1266,18 +1266,12 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "dD" = (
 /obj/structure/surface/table,
 /obj/item/device/autopsy_scanner,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "dE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1361,10 +1355,7 @@
 "dS" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/sliceable/pizza/margherita,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "dT" = (
 /obj/structure/bed/chair,
@@ -1452,10 +1443,7 @@
 	pixel_y = 2
 	},
 /obj/item/tool/surgery/scalpel/manager,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "eg" = (
 /obj/item/device/healthanalyzer,
@@ -1553,10 +1541,7 @@
 	},
 /area/bigredv2/outside/medical)
 "es" = (
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "et" = (
 /obj/item/reagent_container/spray/cleaner{
@@ -1584,10 +1569,7 @@
 /area/bigredv2/outside/medical)
 "ew" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "ex" = (
 /obj/structure/surface/table,
@@ -1647,10 +1629,7 @@
 /area/bigredv2/outside/medical)
 "eE" = (
 /obj/structure/closet/secure_closet/medical2,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "eF" = (
 /obj/structure/closet/secure_closet/medical1,
@@ -1663,10 +1642,7 @@
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "eH" = (
 /obj/structure/machinery/optable,
@@ -1906,10 +1882,7 @@
 "fo" = (
 /obj/structure/machinery/light,
 /obj/item/tool/surgery/cautery,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "fp" = (
 /obj/structure/machinery/medical_pod/bodyscanner,

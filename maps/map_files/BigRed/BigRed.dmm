@@ -5369,10 +5369,7 @@
 /area/bigredv2/outside/medical)
 "aqC" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "aqD" = (
 /turf/open/floor/dark,
@@ -5814,10 +5811,7 @@
 	},
 /obj/structure/pipes/vents/pump,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "arX" = (
 /obj/structure/closet/secure_closet/medical1,
@@ -8224,19 +8218,13 @@
 /area/bigredv2/outside/medical)
 "ayL" = (
 /obj/structure/pipes/standard/manifold/visible,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "ayM" = (
 /obj/structure/pipes/standard/simple/visible{
 	dir = 9
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "ayN" = (
 /turf/open/floor{
@@ -8494,20 +8482,14 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "azy" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "azz" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -9889,36 +9871,24 @@
 /obj/structure/surface/table,
 /obj/item/tool/surgery/bonesetter,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "aDD" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/masks,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "aDE" = (
 /obj/structure/surface/table,
 /obj/item/tool/surgery/FixOVein,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "aDF" = (
 /obj/structure/surface/table,
 /obj/item/tool/surgery/cautery,
 /obj/item/reagent_container/spray/cleaner,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "aDG" = (
 /obj/structure/sign/safety/medical{
@@ -10188,10 +10158,7 @@
 "aEw" = (
 /obj/structure/surface/table,
 /obj/item/tool/surgery/scalpel/manager,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "aEx" = (
 /obj/item/alien_embryo,
@@ -10529,10 +10496,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aFx" = (
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "aFy" = (
 /obj/structure/machinery/optable,
@@ -10544,10 +10508,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "aFA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -10904,10 +10865,7 @@
 /area/bigredv2/outside/medical)
 "aGv" = (
 /obj/effect/decal/cleanable/vomit,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "aGw" = (
 /obj/effect/decal/cleanable/dirt,
@@ -11048,10 +11006,7 @@
 /area/bigredv2/outside/library)
 "aGT" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aGU" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -11182,26 +11137,17 @@
 /area/bigredv2/outside/nw)
 "aHo" = (
 /obj/structure/closet/secure_closet/medical2,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "aHp" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "aHq" = (
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "aHr" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
@@ -11322,10 +11268,7 @@
 "aHK" = (
 /obj/structure/surface/table,
 /obj/item/toy/sword,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aHL" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -13300,32 +13243,20 @@
 	dir = 1;
 	health = 25000
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aNl" = (
 /obj/item/stack/sheet/wood{
 	amount = 2
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aNm" = (
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aNn" = (
 /obj/structure/machinery/camera/autoname,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aNo" = (
 /turf/open/floor,
@@ -13747,10 +13678,7 @@
 	dir = 8;
 	health = 25000
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aOw" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -14131,10 +14059,7 @@
 /area/bigredv2/outside/virology)
 "aPv" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aPw" = (
 /obj/structure/surface/table,
@@ -14143,58 +14068,40 @@
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aPx" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/chips,
 /obj/item/reagent_container/food/snacks/cookie,
 /obj/item/reagent_container/food/snacks/donut,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aPy" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/candy,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aPz" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
 /obj/item/reagent_container/food/drinks/cans/cola,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aPA" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
 /obj/item/reagent_container/food/drinks/cans/cola,
 /obj/item/reagent_container/food/drinks/cans/beer,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aPB" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/flask,
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
 /obj/item/reagent_container/food/drinks/cans/beer,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aPC" = (
 /obj/effect/landmark/hunter_primary,
@@ -14203,28 +14110,19 @@
 "aPD" = (
 /obj/structure/surface/table,
 /obj/item/storage/briefcase,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aPE" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aPF" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/snappops,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aPG" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -14579,10 +14477,7 @@
 /obj/item/reagent_container/food/snacks/chips,
 /obj/item/reagent_container/food/snacks/cookie,
 /obj/item/reagent_container/food/snacks/donkpocket,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aQI" = (
 /obj/structure/surface/table,
@@ -14592,10 +14487,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aQJ" = (
 /obj/structure/surface/table,
@@ -14604,20 +14496,14 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aQL" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aQM" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -14628,10 +14514,7 @@
 	dir = 4;
 	icon_state = "gib6"
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aQO" = (
 /obj/structure/surface/table,
@@ -14983,10 +14866,7 @@
 /obj/item/reagent_container/food/snacks/cheesewedge,
 /obj/item/reagent_container/food/snacks/chips,
 /obj/item/reagent_container/food/snacks/cookie,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aRL" = (
 /obj/structure/surface/table,
@@ -14996,10 +14876,7 @@
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/donkpocket,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aRM" = (
 /obj/effect/landmark/crap_item,
@@ -15010,18 +14887,12 @@
 /obj/item/reagent_container/food/drinks/cans/thirteenloko,
 /obj/item/reagent_container/food/drinks/cans/cola,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aRO" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/flask,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aRP" = (
 /obj/effect/decal/cleanable/dirt,
@@ -15260,10 +15131,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aSD" = (
 /obj/structure/surface/table,
@@ -15271,10 +15139,7 @@
 /obj/item/reagent_container/food/snacks/chips,
 /obj/item/reagent_container/food/snacks/donkpocket,
 /obj/item/reagent_container/food/snacks/donut,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aSE" = (
 /obj/structure/surface/table,
@@ -15282,10 +15147,7 @@
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/chips,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aSF" = (
 /obj/structure/surface/table,
@@ -15293,19 +15155,13 @@
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
 /obj/item/reagent_container/food/drinks/cans/aspen,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aSG" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/flask/vacuumflask,
 /obj/item/reagent_container/food/drinks/flask,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aSH" = (
 /obj/structure/surface/table,
@@ -15313,10 +15169,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aSI" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -15328,10 +15181,7 @@
 	dir = 4
 	},
 /obj/structure/bed/roller,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aSK" = (
 /obj/structure/surface/table,
@@ -15735,10 +15585,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aTN" = (
 /obj/structure/surface/table,
@@ -15748,28 +15595,19 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aTO" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
 /obj/item/reagent_container/food/drinks/cans/aspen,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aTP" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/flask/vacuumflask,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aTQ" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -15781,10 +15619,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aTS" = (
 /obj/structure/surface/table,
@@ -15792,10 +15627,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aTU" = (
 /obj/structure/machinery/message_server,
@@ -16116,10 +15948,7 @@
 /obj/item/reagent_container/food/snacks/bun,
 /obj/item/reagent_container/food/snacks/cheesewedge,
 /obj/item/reagent_container/food/snacks/donut,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aUT" = (
 /obj/structure/surface/table,
@@ -16127,19 +15956,13 @@
 /obj/item/reagent_container/food/snacks/bun,
 /obj/item/reagent_container/food/snacks/cheesewedge,
 /obj/structure/machinery/camera/autoname,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aUU" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/bun,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aUV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -16155,45 +15978,30 @@
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/coffee,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aUY" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/coffee,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aUZ" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/flask/vacuumflask,
 /obj/item/reagent_container/food/drinks/cans/aspen,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aVa" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aVb" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/snappops,
 /obj/item/storage/box/snappops,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aVc" = (
 /obj/structure/platform/kutjevo/rock{
@@ -16616,57 +16424,39 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aWt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aWu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aWv" = (
 /obj/structure/machinery/alarm{
 	dir = 1;
 	pixel_y = -30
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aWw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aWx" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aWy" = (
 /turf/open/floor{
@@ -16686,10 +16476,7 @@
 	name = "General Listening Channel";
 	pixel_x = 30
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aWC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -16847,10 +16634,7 @@
 /obj/structure/surface/table,
 /obj/item/toy/prize/ripley,
 /obj/item/toy/prize/odysseus,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aWY" = (
 /obj/effect/decal/cleanable/dirt,
@@ -16996,28 +16780,19 @@
 /obj/structure/surface/table,
 /obj/item/toy/prize/mauler,
 /obj/item/toy/prize/odysseus,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aXC" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/light,
 /obj/item/toy/prize/ripley,
 /obj/item/toy/prize/odysseus,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aXD" = (
 /obj/structure/surface/table,
 /obj/item/toy/prize/mauler,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aXE" = (
 /obj/structure/surface/table,
@@ -17026,19 +16801,13 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aXG" = (
 /obj/structure/surface/table,
 /obj/item/toy/sword,
 /obj/item/toy/gun,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "aXH" = (
 /turf/open/floor/plating,
@@ -27543,10 +27312,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "fmn" = (
 /turf/open/mars_cave{
@@ -28635,10 +28401,7 @@
 "hOS" = (
 /obj/structure/surface/table,
 /obj/item/clothing/head/collectable/tophat/super,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/general_store)
 "hPS" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
@@ -35807,10 +35570,7 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/bigredv2/outside/medical)
 "wuC" = (
 /obj/effect/decal/cleanable/dirt,

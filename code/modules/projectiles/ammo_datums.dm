@@ -1749,6 +1749,17 @@
 	accuracy = HIT_ACCURACY_TIER_3
 	damage = 40
 	penetration = 0
+	
+/datum/ammo/bullet/smartgun/heap
+	name = "high-explosive armor-piercing smartgun bullet"
+	debilitate = list(0,0,0,0,1,0,0,2)
+	
+	headshot_state = HEADSHOT_OVERLAY_HEAVY
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_7
+	accurate_range = 34
+	accuracy = HIT_ACCURACY_TIER_3
+	damage = 55
+	penetration = 35
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing
 	debilitate = list(0,0,0,3,0,0,0,1)

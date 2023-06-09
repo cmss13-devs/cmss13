@@ -677,8 +677,8 @@
 	desc = "The actual firearm in the 4-piece M56T Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
 	current_mag = /obj/item/ammo_magazine/smartgun/heap
 	ammo = /obj/item/ammo_magazine/smartgun/heap
-	ammo_primary = /datum/ammo/bullet/smartgun/heap
-	ammo_secondary = /datum/ammo/bullet/smartgun/dirty
+	ammo_primary = /datum/ammo/bullet/smartgun/dirty
+	ammo_secondary = /datum/ammo/bullet/smartgun/heap
 
 /obj/item/weapon/gun/smartgun/dirty/elite/Initialize(mapload, ...)
 	. = ..()

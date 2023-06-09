@@ -48,7 +48,7 @@
 /obj/item/weapon/shield/riot/yautja/attackby(obj/item/object, mob/user)
 	if(cooldown < world.time - 25)
 		if(istype(object, /obj/item/weapon) && (object.flags_item & ITEM_PREDATOR))
-			user.visible_message(SPAN_WARNING("[user] bashes \the [src] with \the [object]!"))
+			user.visible_message(SPAN_WARNING("[user] bashes [src] with [object]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 			cooldown = world.time
 	else

@@ -195,7 +195,7 @@
 //those default tile with decal stuck on top.
 /turf/open/floor/default
 
-//unsure if direction on it matter
+//unsure if direction on it matter // doing that as a seperate comit!
 /turf/open/floor/default/bot
 	icon_state = "bot"
 
@@ -215,10 +215,14 @@
 /turf/open/floor/default/loadingarea/west
 	dir = 8;
 
+//all the colored tiles with the default one red purple green
+
 
 //all the floors related to the dark tiles...
 /turf/open/floor/dark
 	icon_state = "dark"
+
+//dark green blue purple red yellow
 
 
 //all the floor related to the white tiles.
@@ -245,6 +249,10 @@
 
 /turf/open/floor/white/purple/whitepurplefull
 	icon_state = "whitepurplefull"
+
+/turf/open/floor/white/red
+
+
 
 
 

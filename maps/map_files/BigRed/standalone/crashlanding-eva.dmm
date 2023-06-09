@@ -75,15 +75,11 @@
 "aL" = (
 /obj/structure/machinery/washing_machine,
 /obj/item/clothing/under/darkred,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "aM" = (
 /obj/structure/machinery/washing_machine,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "aN" = (
 /obj/structure/machinery/washing_machine,
@@ -170,15 +166,11 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "bd" = (
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "be" = (
 /obj/item/clothing/under/darkred,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "bf" = (
 /turf/open/floor/plating,
@@ -230,9 +222,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Dormitories Lavatory"
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "bp" = (
 /obj/structure/surface/table,
@@ -349,16 +339,12 @@
 "bK" = (
 /obj/structure/machinery/washing_machine,
 /obj/item/clothing/under/lightbrown,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "bL" = (
 /obj/structure/machinery/washing_machine,
 /obj/item/clothing/under/brown,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "bM" = (
 /turf/closed/shuttle/ert{
@@ -1037,9 +1023,7 @@
 /area/bigredv2/outside/hydroponics)
 "eo" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/white/green/whitegreenfull,
 /area/bigredv2/outside/hydroponics)
 "ep" = (
 /obj/structure/window/framed/solaris,

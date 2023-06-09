@@ -14,18 +14,14 @@
 /area/lv624/ground/jungle/north_jungle)
 "ai" = (
 /obj/structure/machinery/medical_pod/sleeper,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "aj" = (
 /obj/structure/machinery/sleep_console,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "al" = (
 /obj/structure/flora/jungle/planttop1,
@@ -36,9 +32,7 @@
 /obj/item/clothing/glasses/hud/health,
 /obj/effect/landmark/crap_item,
 /obj/item/reagent_container/spray/cleaner,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "ao" = (
 /obj/structure/surface/table,
@@ -65,9 +59,7 @@
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "aq" = (
 /turf/open/floor/white,
@@ -92,9 +84,7 @@
 "at" = (
 /obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "au" = (
 /obj/structure/flora/jungle/plantbot1,
@@ -133,28 +123,20 @@
 /obj/item/tank/anesthetic,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/scientist,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "aI" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "aJ" = (
 /obj/structure/machinery/bioprinter,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "aO" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "aP" = (
 /obj/item/device/radio/intercom{
@@ -232,9 +214,7 @@
 /obj/structure/bed,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/engineer,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "bs" = (
 /obj/item/tool/kitchen/utensil/fork,
@@ -372,9 +352,7 @@
 "vC" = (
 /obj/item/frame/table,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "we" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
@@ -432,9 +410,7 @@
 	pixel_x = 5;
 	pixel_y = 4
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "Es" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
@@ -461,9 +437,7 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "Le" = (
 /obj/structure/machinery/iv_drip,
@@ -496,9 +470,7 @@
 /area/lv624/lazarus/medbay)
 "Qu" = (
 /obj/structure/machinery/body_scanconsole,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "QG" = (
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
@@ -529,9 +501,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "YV" = (
 /turf/open/floor{

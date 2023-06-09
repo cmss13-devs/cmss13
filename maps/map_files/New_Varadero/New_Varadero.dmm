@@ -185,9 +185,7 @@
 	pixel_y = 24
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
 "akf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -554,9 +552,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
 "aBB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -960,9 +956,7 @@
 /area/varadero/interior/hall_SE)
 "aPw" = (
 /obj/structure/closet/crate/freezer,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
 "aPU" = (
 /obj/structure/bed/chair{
@@ -2194,9 +2188,7 @@
 /area/varadero/interior/disposals)
 "bRo" = (
 /obj/structure/reagent_dispensers/beerkeg/alt_dark,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
 "bRp" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -3878,9 +3870,7 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
 "drK" = (
 /obj/structure/bed/chair{
@@ -5090,9 +5080,7 @@
 	},
 /area/varadero/interior/cargo)
 "eBL" = (
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
 "eBS" = (
 /obj/item/tool/surgery/hemostat/predatorhemostat,
@@ -14300,9 +14288,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
 "mAm" = (
 /obj/structure/filingcabinet,
@@ -17273,9 +17259,7 @@
 /area/varadero/interior_protected/vessel)
 "pfR" = (
 /obj/structure/reagent_dispensers/beerkeg/alt,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
 "phd" = (
 /obj/structure/filingcabinet,
@@ -21207,9 +21191,7 @@
 /area/varadero/interior/maintenance)
 "stC" = (
 /obj/structure/bigDelivery,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
 "stV" = (
 /obj/structure/reagent_dispensers/water_cooler{
@@ -24317,18 +24299,14 @@
 /area/varadero/exterior/lz1_near)
 "vjv" = (
 /obj/structure/closet/crate/freezer/rations,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
 "vjA" = (
 /obj/structure/reagent_dispensers/beerkeg/alt,
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
 "vku" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -25825,9 +25803,7 @@
 "wvK" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
 "wwd" = (
 /obj/structure/machinery/disposal,

@@ -257,9 +257,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "aP" = (
 /obj/structure/machinery/light{
@@ -291,9 +289,7 @@
 	icon_state = "sink";
 	pixel_x = 11
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "aS" = (
 /obj/structure/machinery/power/apc{
@@ -348,9 +344,7 @@
 "bm" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "bn" = (
 /obj/structure/surface/table,
@@ -410,9 +404,7 @@
 /area/lv624/lazarus/research)
 "ky" = (
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "oe" = (
 /obj/structure/transmitter/colony_net{
@@ -434,9 +426,7 @@
 	},
 /area/lv624/lazarus/research)
 "wY" = (
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "DC" = (
 /obj/structure/machinery/light,

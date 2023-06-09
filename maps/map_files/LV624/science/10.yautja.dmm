@@ -335,14 +335,10 @@
 "aW" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "aX" = (
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "aY" = (
 /obj/structure/machinery/shower{
@@ -351,9 +347,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "aZ" = (
 /obj/structure/machinery/cm_vending/sorted/tech/science,
@@ -394,9 +388,7 @@
 	pixel_x = 11
 	},
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "bf" = (
 /obj/item/storage/box/beakers,
@@ -472,9 +464,7 @@
 /area/lv624/lazarus/research)
 "vn" = (
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "zm" = (
 /obj/effect/landmark/monkey_spawn,
@@ -490,9 +480,7 @@
 /area/lv624/lazarus/research)
 "FO" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "Lo" = (
 /obj/effect/decal/cleanable/blood/splatter,

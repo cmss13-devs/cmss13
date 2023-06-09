@@ -2722,18 +2722,14 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "aoa" = (
 /obj/structure/machinery/medical_pod/sleeper,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "aob" = (
 /obj/structure/machinery/sleep_console,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "aol" = (
 /obj/structure/machinery/smartfridge,
@@ -2756,9 +2752,7 @@
 /obj/effect/landmark/crap_item,
 /obj/item/reagent_container/spray/cleaner,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "aos" = (
 /obj/structure/surface/table,
@@ -2805,9 +2799,7 @@
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "aoz" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -2865,9 +2857,7 @@
 "aoL" = (
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "aoO" = (
 /obj/item/reagent_container/glass/bucket,
@@ -2944,9 +2934,7 @@
 "apw" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "apx" = (
 /obj/item/device/radio/intercom{
@@ -3739,9 +3727,7 @@
 	name = "Surgery Cleaner"
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "aul" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -4676,9 +4662,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "axF" = (
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "axG" = (
 /obj/structure/machinery/shower{
@@ -4688,9 +4672,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "axH" = (
 /obj/structure/machinery/cm_vending/sorted/tech/science,
@@ -4851,15 +4833,11 @@
 /area/lv624/lazarus/robotics)
 "ayp" = (
 /obj/item/bananapeel,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "ayq" = (
 /obj/effect/decal/remains/human,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "ayr" = (
 /obj/structure/machinery/door/airlock/almayer/research/colony{
@@ -4962,9 +4940,7 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/prop/alien/hugger,
 /obj/effect/landmark/corpsespawner/scientist,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "ayJ" = (
 /obj/item/storage/box/beakers,
@@ -5818,9 +5794,7 @@
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "aBx" = (
 /obj/effect/landmark/hunter_secondary,
@@ -6638,9 +6612,7 @@
 	pixel_y = 30;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aEB" = (
 /obj/structure/window/reinforced/tinted,
@@ -6648,9 +6620,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aEC" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -6666,9 +6636,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aEE" = (
 /obj/structure/machinery/shower{
@@ -6681,9 +6649,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aEF" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan,
@@ -6905,9 +6871,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aFj" = (
 /obj/structure/window/reinforced/tinted,
@@ -6917,26 +6881,20 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aFk" = (
 /obj/structure/machinery/shower{
 	dir = 4
 	},
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aFl" = (
 /obj/structure/machinery/shower{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aFm" = (
 /turf/closed/wall/wood,
@@ -7111,18 +7069,14 @@
 /obj/structure/machinery/shower{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aFP" = (
 /obj/structure/machinery/shower{
 	dir = 8
 	},
 /obj/effect/glowshroom,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aFQ" = (
 /obj/structure/window_frame/wood,
@@ -7231,15 +7185,11 @@
 /area/lv624/ground/jungle/west_central_jungle)
 "aGm" = (
 /obj/effect/glowshroom,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aGn" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aGo" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -7247,9 +7197,7 @@
 	name = "\improper Nexus Dome Bathroom";
 	req_access_txt = "100"
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aGp" = (
 /obj/structure/machinery/light{
@@ -7332,23 +7280,17 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aGH" = (
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aGI" = (
 /obj/structure/sink{
 	pixel_y = 30
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aGJ" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aGK" = (
 /obj/structure/surface/table,
@@ -7432,9 +7374,7 @@
 /area/lv624/lazarus/sleep_male)
 "aHa" = (
 /obj/structure/machinery/washing_machine,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aHb" = (
 /obj/structure/surface/table,
@@ -7443,9 +7383,7 @@
 	},
 /obj/item/explosive/grenade/custom/cleaner,
 /obj/item/reagent_container/spray/cleaner,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aHc" = (
 /obj/structure/machinery/light/small{
@@ -9258,9 +9196,7 @@
 	pixel_y = 30
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aPt" = (
 /turf/closed/wall/r_wall,
@@ -9555,9 +9491,7 @@
 /obj/structure/mirror{
 	pixel_y = -30
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aQG" = (
 /obj/structure/bookcase,
@@ -9873,9 +9807,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aRU" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -9884,9 +9816,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aRV" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -10039,30 +9969,22 @@
 "aSC" = (
 /obj/structure/surface/table,
 /obj/item/clothing/suit/chef/classic,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aSD" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aSE" = (
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aSF" = (
 /obj/structure/machinery/requests_console{
 	pixel_x = 30
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aSG" = (
 /obj/item/device/radio/intercom{
@@ -10153,24 +10075,18 @@
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/grilledcheese,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aSX" = (
 /turf/closed/wall,
 /area/lv624/lazarus/engineering)
 "aSY" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aSZ" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aTb" = (
 /turf/open/floor/plating,
@@ -10433,9 +10349,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aUc" = (
 /obj/structure/surface/rack,
@@ -10443,9 +10357,7 @@
 	dir = 1;
 	name = "Kitchen APC"
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aUd" = (
 /obj/item/tool/kitchen/knife/butcher,
@@ -10453,9 +10365,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aUe" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -10625,26 +10535,20 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aUM" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aUN" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aUO" = (
 /obj/item/shard,
@@ -10776,22 +10680,16 @@
 /area/lv624/lazarus/hop)
 "aVr" = (
 /mob/living/simple_animal/mouse,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aVs" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aVt" = (
 /obj/structure/machinery/gibber,
 /obj/effect/landmark/good_item,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aVu" = (
 /turf/closed/wall/r_wall,
@@ -10893,9 +10791,7 @@
 	pixel_x = -8
 	},
 /obj/structure/surface/rack,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aVS" = (
 /turf/closed/wall/mineral/sandstone/runed,
@@ -11838,9 +11734,7 @@
 /area/lv624/ground/jungle/west_jungle/ceiling)
 "aZs" = (
 /obj/structure/closet/secure_closet/bar,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aZt" = (
 /obj/structure/surface/rack,
@@ -11919,9 +11813,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aZE" = (
 /obj/structure/filingcabinet,
@@ -12901,9 +12793,7 @@
 "cYi" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/pie,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "cZs" = (
 /obj/structure/barricade/wooden,
@@ -13470,9 +13360,7 @@
 /area/lv624/ground/river/central_river)
 "eqP" = (
 /obj/structure/machinery/bioprinter,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "erx" = (
 /turf/open/gm/coast/beachcorner/south_east,
@@ -13610,9 +13498,7 @@
 /obj/structure/bed,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/engineer,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "eHq" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -13927,9 +13813,7 @@
 /area/lv624/ground/caves/sand_temple)
 "fAz" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "fAD" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
@@ -16379,9 +16263,7 @@
 	pixel_x = -4;
 	pixel_y = 9
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "mqw" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -17032,9 +16914,7 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "nMu" = (
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "nMJ" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -17559,9 +17439,7 @@
 	pixel_x = 5;
 	pixel_y = 4
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "oTt" = (
 /turf/open/gm/coast/beachcorner/south_east,
@@ -18323,9 +18201,7 @@
 /area/lv624/lazarus/medbay)
 "qJq" = (
 /obj/structure/machinery/body_scanconsole,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "qJx" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
@@ -20634,9 +20510,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/white/blue/whitebluefull,
 /area/lv624/lazarus/medbay)
 "wLz" = (
 /turf/open/floor/plating{

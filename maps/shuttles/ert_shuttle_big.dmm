@@ -953,9 +953,7 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/shuttle/ert)
 "XW" = (
 /obj/structure/sink{
@@ -964,9 +962,7 @@
 /obj/structure/mirror{
 	pixel_y = 30
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/shuttle/ert)
 "Yo" = (
 /obj/effect/decal/warning_stripes{

@@ -63,9 +63,7 @@
 /obj/structure/sink{
 	pixel_y = 32
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/marshal_office)
 "an" = (
 /obj/structure/mirror{
@@ -73,9 +71,7 @@
 	pixel_x = 30
 	},
 /obj/item/tool/soap/deluxe,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/marshal_office)
 "ao" = (
 /obj/effect/decal/cleanable/blood,
@@ -87,17 +83,13 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "aq" = (
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/marshal_office)
 "ar" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/marshal_office)
 "as" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -128,9 +120,7 @@
 	dir = 1;
 	name = "\improper Marshal Office Prison Toilet"
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/marshal_office)
 "aw" = (
 /obj/structure/bed,
@@ -147,9 +137,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/marshal_office)
 "az" = (
 /obj/structure/surface/table,
@@ -163,9 +151,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/monkey_spawn,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/bigredv2/outside/marshal_office)
 "aB" = (
 /obj/structure/machinery/flasher/portable,

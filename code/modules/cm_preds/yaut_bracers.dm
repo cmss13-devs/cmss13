@@ -34,7 +34,7 @@
 	/// The amount charged per process
 	var/charge_rate = 30
 	/// Cooldown on draining power from APC
-	var/charge_cooldown = 3 MINUTES
+	var/charge_cooldown = COOLDOWN_BRACER_CHARGE
 	/// Worldtime of last recharge
 	var/last_charge
 	var/cloaked = 0

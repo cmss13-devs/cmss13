@@ -483,3 +483,10 @@ t. optimisticdude
 				new /obj/item/XenoBio/Resin(T.loc)
 				new /obj/effect/decal/remains/xeno(T.loc)
 				qdel(T)
+
+/obj/item/tool/surgery/shrapnel_remover
+	name = "shrapnel remover"
+	desc = "A device which is able to locate and safely remove shrapnel from a body."
+	icon_state = "shrapnel_remover"
+	flags_item = CAN_DIG_SHRAPNEL
+	w_class = SIZE_SMALL

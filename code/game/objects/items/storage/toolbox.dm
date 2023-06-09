@@ -81,3 +81,24 @@
 	new /obj/item/stack/cable_coil(src,30,color)
 	new /obj/item/tool/wirecutters(src)
 	new /obj/item/device/multitool(src)
+
+obj/item/storage/synthetic_maintenance_case
+	name = "synthetic maintenance case"
+	desc = "It's a case containing numerous items to provide maintenance to a synthetic unit."
+	icon_state = "synthetic_maintenance_case"
+	throw_speed = SPEED_FAST
+	throw_range = 8
+	storage_slots = 3
+	w_class = SIZE_SMALL
+	matter = list("plastic" = 1000)
+	can_hold = list(
+		/obj/item/tool/surgery/shrapnel_remover,
+		/obj/item/stack/weak_nanopaste,
+	)
+
+/obj/item/storage/synthetic_maintenance_case/regular
+
+/obj/item/storage/synthetic_maintenance_case/regular/fill_preset_inventory()
+	new /obj/item/tool/surgery/shrapnel_remover(src)
+	new /obj/item/stack/weak_nanopaste(src)
+	new /obj/item/stack/weak_nanopaste(src)

@@ -490,6 +490,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/bag/trash(new_human), WEAR_L_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/device/lightreplacer(new_human.back), WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/maintenance_jack(new_human), WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/synthetic_maintenance_case/regular(H), WEAR_IN_BACK)
 
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
 	. = ..()

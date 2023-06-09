@@ -97,7 +97,7 @@
 		return
 
 	if(!check_area(deploy_turf, user, TRUE))
-		for(var/gfx as anything in turf_overlay)
+		for(var/gfx in turf_overlay)
 			QDEL_IN(gfx, 1.5 SECONDS)
 		return
 

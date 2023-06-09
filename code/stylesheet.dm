@@ -30,6 +30,7 @@ em {font-style: normal; font-weight: bold;}
 .mentorhelp {color: #009900; font-weight: bold;}
 .mentorstaff {color: #b5850d; font-weight: bold;}
 .staffsay {color: #b5850d; font-weight: bold;}
+.staff_ic {color: #000099;}
 
 .name { font-weight: bold;}
 

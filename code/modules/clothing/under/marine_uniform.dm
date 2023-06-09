@@ -161,12 +161,7 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_NAME_OVERRIDE
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
-	suit_restricted = list(
-		/obj/item/clothing/suit/armor/vest/pilot,
-		/obj/item/clothing/suit/storage/marine/light/vest/dcc,
-		/obj/item/clothing/suit/storage/jacket/marine/pilot,
-		/obj/item/clothing/suit/storage/marine/light/vest
-	)
+	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot, /obj/item/clothing/suit/storage/marine/light/vest/dcc, /obj/item/clothing/suit/storage/jacket/marine/pilot, /obj/item/clothing/suit/storage/marine/light/vest)
 
 /obj/item/clothing/under/marine/officer/pilot/flight
 	name = "tactical pilot officer flightsuit"

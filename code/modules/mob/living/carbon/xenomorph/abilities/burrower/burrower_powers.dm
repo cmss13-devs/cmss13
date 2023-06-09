@@ -37,7 +37,7 @@
 			to_chat(src, SPAN_XENOWARNING("You can't do this in this stance!"))
 			used_burrow = FALSE
 			return
-		var/obj/effect/alien/weeds/weeds = locate() in T
+		var/obj/effect/alien/weeds/weeds = locate() in current_turf
 		if(!weeds || !ally_of_hivenumber(weeds.hivenumber))
 			to_chat(src, SPAN_XENOWARNING("You need to burrow on weeds!"))
 			used_burrow = FALSE

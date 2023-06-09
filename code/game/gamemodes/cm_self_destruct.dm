@@ -264,7 +264,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			if(current_mob.stat == DEAD)
 				dead_mobs |= current_mob
 				continue
-			if((current_mob.z in z_levels) || (current_mob.loc.z in z_levels))
+			var/turf/current_turf = get_turf(current_mob)
+			if(current_turf.z in z_levels)
 				alive_mobs |= current_mob
 				shake_camera(current_mob, 110, 4)
 

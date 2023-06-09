@@ -148,7 +148,7 @@
 		if(istype(found_turf, /turf/closed))
 			found_turf.ChangeTurf(/turf/open/floor)
 
-	cell_explosion(destination.return_center_turf(), 200, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("evac pod crash"))
+	cell_explosion(destination.return_center_turf(), 300, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("evac pod crash"))
 
 /obj/docking_port/mobile/escape_shuttle/on_prearrival()
 	. = ..()

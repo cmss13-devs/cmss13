@@ -103,7 +103,7 @@
 
 	unfold(deploy_turf)
 	user.visible_message(SPAN_INFO("[user] finishes deploying the [src]!"), SPAN_INFO("You finish deploying the [src]!"))
-	for(var/gfx as anything in turf_overlay)
+	for(var/gfx in turf_overlay)
 		qdel(gfx)
 	qdel(src) // Success!
 

@@ -360,9 +360,9 @@
 			to_chat(targeted_carbon, SPAN_WARNING("You are stabbed with a spike from below!"))
 			playsound(get_turf(targeted_carbon), "alien_bite", 50, TRUE)
 		for(var/obj/structure/window/framed/target_window in target_turf)
-				if(!target_window.unslashable)
-					target_window.shatter_window(TRUE)
-					playsound(target_turf, "windowshatter", 50, TRUE)
+			if(!target_window.unslashable)
+				target_window.shatter_window(TRUE)
+				playsound(target_turf, "windowshatter", 50, TRUE)
 		sleep(chain_separation_delay)
 
 
@@ -443,9 +443,9 @@
 			to_chat(targeted_carbon, SPAN_WARNING("You are stabbed with a tail from below!"))
 		playsound(get_turf(targeted_carbon), "alien_bite", 50, TRUE)
 	for(var/obj/structure/window/framed/target_window in target_turfs)
-			if(!target_window.unslashable)
-				target_window.shatter_window(TRUE)
-				playsound(target_turfs, "windowshatter", 50, TRUE)
+		if(!target_window.unslashable)
+			target_window.shatter_window(TRUE)
+			playsound(target_turfs, "windowshatter", 50, TRUE)
 
 /datum/action/xeno_action/activable/sunken_tail/proc/recursive_spread(turf/turf, dist_left, orig_depth, damage, turf/original_turf)
 	if(!istype(turf))

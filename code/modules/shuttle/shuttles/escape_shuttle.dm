@@ -86,39 +86,57 @@
 	launched = TRUE
 
 /obj/docking_port/mobile/escape_shuttle/proc/create_crash_point()
+	for(var/i = 1 to 10)
+		var/list/all_ground_levels = SSmapping.levels_by_trait(ZTRAIT_GROUND)
+		var/ground_z_level = all_ground_levels[1]
 
-	var/ground_z_level
+		var/list/area/potential_areas = SSmapping.areas_in_z["[ground_z_level]"]
 
-	var/z_level_index = 1
-	for(var/datum/space_level/level in SSmapping.z_list)
-		if(ZTRAIT_GROUND in level.traits)
-			ground_z_level = z_level_index
-			break
-		z_level_index++
+		var/area/area_picked = pick(potential_areas)
 
-	var/list/potential_areas = SSmapping.areas_in_z[SSmapping.areas_in_z[ground_z_level]]
+		var/list/potential_turfs = list()
 
-	var/area/area_picked = potential_areas[rand(1, potential_areas.len)]
+		for(var/turf/turf_in_area in area_picked)
+			potential_turfs += turf_in_area
 
-	var/list/potential_turfs = list()
+		if(!length(potential_turfs))
+			continue
 
-	for(var/turf/turf_in_area in area_picked.contents)
-		potential_turfs += turf_in_area
+		var/turf/turf_picked = pick(potential_turfs)
 
-	if(!potential_turfs.len)
-		destination = null
-		return
+		var/obj/docking_port/stationary/escape_pod/crash_land/temp_escape_pod_port = new(turf_picked)
+		temp_escape_pod_port.width = width
+		temp_escape_pod_port.height = height
+		temp_escape_pod_port.id = id
 
-	var/turf/turf_picked = potential_turfs[rand(1, potential_turfs.len)]
+		if(!check_crash_point(temp_escape_pod_port))
+			qdel(temp_escape_pod_port)
+			continue
 
-	var/obj/docking_port/stationary/escape_pod/crash_land/temp_escape_pod_port = new(turf_picked)
-	temp_escape_pod_port.width = width
-	temp_escape_pod_port.height = height
-	temp_escape_pod_port.id = id
+		destination = temp_escape_pod_port
+		break
 
-	destination = temp_escape_pod_port
+	if(destination)
+		crash_land = TRUE
 
-	crash_land = TRUE
+/obj/docking_port/mobile/escape_shuttle/proc/check_crash_point(obj/docking_port/stationary/escape_pod/crash_land/checked_escape_pod_port)
+	for(var/turf/found_turf as anything in checked_escape_pod_port.return_turfs())
+		var/area/found_area = get_area(found_turf)
+		if(found_area.flags_area & AREA_NOTUNNEL)
+			return FALSE
+
+		if(!found_area.can_build_special)
+			return FALSE
+
+		if(istype(found_turf, /turf/closed/wall))
+			var/turf/closed/wall/found_closed_turf = found_turf
+			if(found_closed_turf.hull)
+				return FALSE
+
+		if(istype(found_turf, /turf/closed/shuttle))
+			return FALSE
+
+	return TRUE
 
 /obj/docking_port/mobile/escape_shuttle/enterTransit()
 	. = ..()
@@ -126,13 +144,11 @@
 	if(!crash_land)
 		return
 
-	for(var/x_offset = 0 to destination.width)
-		for(var/y_offset = 0 to destination.height)
-			var/turf/closed/wall/found_turf = locate(destination.x + x_offset, destination.y + y_offset, destination.z)
-			if(istype(found_turf) && found_turf.hull)
-				qdel(found_turf)
+	for(var/turf/found_turf as anything in destination.return_turfs())
+		if(istype(found_turf, /turf/closed))
+			found_turf.ChangeTurf(/turf/open/floor)
 
-	cell_explosion(destination.return_center_turf(), 250, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("evac pod crash"))
+	cell_explosion(destination.return_center_turf(), 200, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("evac pod crash"))
 
 /obj/docking_port/mobile/escape_shuttle/on_prearrival()
 	. = ..()
@@ -218,6 +234,10 @@
 	if(istype(arriving_shuttle, /obj/docking_port/mobile/escape_shuttle))
 		var/obj/docking_port/mobile/escape_shuttle/escape_shuttle = arriving_shuttle
 		escape_shuttle.door_handler.control_doors("force-unlock")
+
+	for(var/area/shuttle_area in arriving_shuttle.shuttle_areas)
+		shuttle_area.SetDynamicLighting()
+		shuttle_area.InitializeLighting()
 
 /datum/map_template/shuttle/escape_pod_w
 	name = "Escape Pod W"

@@ -10204,9 +10204,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/toilet/research)
 "aBZ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -10215,29 +10213,21 @@
 	name = "Toilet";
 	opacity = 0
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/toilet/research)
 "aCa" = (
 /obj/structure/pipes/vents/pump/on,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/toilet/research)
 "aCb" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 28
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/toilet/research)
 "aCc" = (
 /obj/structure/pipes/vents/scrubber,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/toilet/research)
 "aCd" = (
 /obj/structure/machinery/shower{
@@ -10246,9 +10236,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/toilet/research)
 "aCe" = (
 /obj/structure/bed,
@@ -10626,14 +10614,10 @@
 	pixel_x = -26
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/toilet/research)
 "aDq" = (
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/toilet/research)
 "aDr" = (
 /obj/structure/sink{
@@ -10644,9 +10628,7 @@
 	pixel_x = 26
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/toilet/research)
 "aDs" = (
 /obj/structure/machinery/light/small{
@@ -11073,26 +11055,20 @@
 	pixel_y = -24;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/toilet/research)
 "aEB" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/toilet/research)
 "aEC" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/toilet/research)
 "aED" = (
 /turf/closed/wall/prison,
@@ -11646,9 +11622,7 @@
 	name = "Research Restrooms";
 	req_one_access = null
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/toilet/research)
 "aGj" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -12692,9 +12666,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/quarters/research)
 "aJh" = (
 /obj/structure/closet,
@@ -12892,9 +12864,7 @@
 	pixel_x = -26
 	},
 /obj/item/paper/crumpled/bloody,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/quarters/research)
 "aJM" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -12903,9 +12873,7 @@
 	name = "Toilet";
 	opacity = 0
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/quarters/research)
 "aJN" = (
 /turf/open/floor/carpet,
@@ -13102,9 +13070,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/window/northright,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/quarters/research)
 "aKE" = (
 /obj/structure/bookcase,
@@ -17435,9 +17401,7 @@
 	name = "Toilet";
 	opacity = 0
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/command/quarters)
 "aXx" = (
 /obj/structure/machinery/light/small{
@@ -38302,9 +38266,7 @@
 	name = "Toilet";
 	opacity = 0
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/security/head)
 "cjp" = (
 /obj/structure/sink{
@@ -38651,27 +38613,21 @@
 /obj/structure/mirror{
 	pixel_x = -28
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/security/head)
 "cky" = (
 /obj/structure/toilet{
 	pixel_y = 4
 	},
 /obj/structure/machinery/light/small,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/security/head)
 "ckz" = (
 /obj/structure/machinery/shower{
 	dir = 8
 	},
 /obj/structure/machinery/door/window/westright,
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/security/head)
 "ckA" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -41559,9 +41515,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/pirate)
 "cuh" = (
 /obj/structure/sink{
@@ -41570,17 +41524,13 @@
 /obj/structure/mirror{
 	pixel_y = 28
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/pirate)
 "cui" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "Toilet"
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
+/turf/open/floor/freezerfloor,
 /area/prison/pirate)
 "cuj" = (
 /obj/item/stack/sheet/metal{

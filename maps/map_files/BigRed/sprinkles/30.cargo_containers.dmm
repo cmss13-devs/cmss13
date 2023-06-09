@@ -725,15 +725,11 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Engineering Complex"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "cx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 
 (1,1,1) = {"

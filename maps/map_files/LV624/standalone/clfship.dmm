@@ -410,9 +410,7 @@
 /area/lv624/lazarus/crashed_ship)
 "kY" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/crashed_ship)
 "lf" = (
 /obj/structure/barricade/sandbags/wired{
@@ -956,9 +954,7 @@
 	pixel_x = 2;
 	pixel_y = -4
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/crashed_ship)
 "Aa" = (
 /obj/effect/vehicle_spawner/van/fixed{
@@ -1499,9 +1495,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/turf/open/floor{
-	icon_state = "whitebluefull"
-	},
+/turf/open/floor/whitebluefull,
 /area/lv624/lazarus/crashed_ship)
 "NC" = (
 /obj/structure/machinery/light/small{

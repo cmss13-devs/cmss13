@@ -190,6 +190,34 @@
 				overlays -= wet_overlay
 				wet_overlay = null
 
+/turf/open/floor/cult
+	icon_state = "cult"
+
+/turf/open/floor/freezerfloor
+	icon_state = "freezerfloor"
+
+/turf/open/floor/dark
+	icon_state = "dark"
+
+/turf/open/floor/white
+	icon_state = "white"
+
+/turf/open/floor/white/whiteblue
+	icon_state = "whiteblue"
+
+/turf/open/floor/white/whiteblue/south
+
+/turf/open/floor/white/whiteblue/north
+	dir = 1;
+
+/turf/open/floor/white/whiteblue/west
+	dir = 8;
+
+/turf/open/floor/white/whiteblue/east
+	dir = 4;
+
+/turf/open/floor/whitebluefull
+		icon_state = "whitebluefull"
 
 /turf/open/floor/sandstone
 	name = "sandstone floor"

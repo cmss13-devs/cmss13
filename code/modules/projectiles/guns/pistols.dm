@@ -588,7 +588,7 @@
 
 /obj/item/weapon/gun/pistol/es4
 	name = "\improper ES-4 electrostatic pistol"
-	desc = "Weyland Corp-manufactured less-lethal pistol. Originally manufactured in the 2080s, the ES-4 electrostatic pistol fires electrically-charged bullets with high accuracy, though its cost and constant need for cleaning makes it a rare sight out on the fringe."
+	desc = "A Weyland Corp manufactured less-than-lethal pistol. Originally manufactured in the 2080s, the ES-4 electrostatic pistol fires electrically-charged bullets with high accuracy, though its cost and constant need for cleaning makes it a rare sight."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/wy.dmi'
 	icon_state = "es4"
 	item_state = "es4"

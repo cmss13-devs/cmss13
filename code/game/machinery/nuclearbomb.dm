@@ -410,7 +410,7 @@ var/bomb_set = FALSE
 	return ..()
 
 /obj/structure/machinery/nuclearbomb/tech
-	var/decryption_time = 1 MINUTES // SET BACK TO 10 MINUTES BEFORE TM - MORROW
+	var/decryption_time = 10 MINUTES
 	var/decryption_end_time = null
 	var/decrypting = FALSE
 

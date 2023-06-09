@@ -89,7 +89,7 @@
 	throw_speed = SPEED_FAST
 	throw_range = 8
 	storage_slots = 3
-	w_class = SIZE_SMALL
+	w_class = SIZE_LARGE
 	matter = list("plastic" = 1000)
 	can_hold = list(
 		/obj/item/tool/surgery/shrapnel_remover,

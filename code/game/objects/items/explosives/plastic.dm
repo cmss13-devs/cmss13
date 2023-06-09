@@ -321,11 +321,11 @@
 
 /obj/item/explosive/plastic/breaching_charge/can_place(mob/user, atom/target)
 	if(!is_type_in_list(target, breachable))//only items on the list are allowed
-		to_chat(user, SPAN_WARNING("You cannot plant \the [name] on \the [target]!"))
+		to_chat(user, SPAN_WARNING("You cannot plant [name] on [target]!"))
 		return FALSE
 
 	if(SSinterior.in_interior(target))// vehicle checks again JUST IN CASE
-		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \the [src]."))
+		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy [src]."))
 		return FALSE
 
 	if(istype(target, /obj/structure/window))//no breaching charges on the briefing windows / brig / CIC e.e

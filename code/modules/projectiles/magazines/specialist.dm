@@ -102,10 +102,17 @@
 
 /obj/item/ammo_magazine/smartgun/dirty
 	name = "irradiated smartgun drum"
-	desc = "What at first glance appears to be a standard 500 round M56 Smartgun drum, is actually a drum loaded with irradiated rounds, providing an extra 'oomph' to to its bullets. The magazine itself is slightly modified to only fit in M56D or M56T smartguns, and is marked with a red X."
+	desc = "What at first glance appears to be a standard 500 round M56 Smartgun drum, is actually a drum loaded with irradiated rounds, providing an extra 'oomph' to its bullets. The magazine itself is slightly modified to only fit in M56D or M56T smartguns, and is marked with a red X."
 	icon_state = "m56_drum_dirty"
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
 	gun_type = /obj/item/weapon/gun/smartgun/dirty
+	
+/obj/item/ammo_magazine/smartgun/heap
+	name = "high-explosive armor-piercing smartgun drum"
+	desc = "An M56 smartgun drum magazine, loaded with high-explosive armor-piercing rounds -- or HEAP for short, -- providing a massive 'oomph' to its bullets. Can fit in any model of the M56 smartgun. Has unique yellow markings to distinguish it from regular munitions."
+	icon_state = "m56_drum_dirty"
+	default_ammo = /datum/ammo/bullet/smartgun/heap
+	gun_type = /obj/item/weapon/gun/smartgun
 
 //-------------------------------------------------------
 //Flare gun. Close enough?

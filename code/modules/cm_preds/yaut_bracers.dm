@@ -81,27 +81,27 @@
 	if(!ishuman(loc))
 		STOP_PROCESSING(SSobj, src)
 		return
-	var/mob/living/carbon/human/hooman = loc
+	var/mob/living/carbon/human/human_holder = loc
 
 	if(charge < charge_max)
 		var/charge_increase = charge_rate
-		if(is_ground_level(hooman.z))
+		if(is_ground_level(human_holder.z))
 			charge_increase = charge_rate / 6
-		else if(is_mainship_level(hooman.z))
+		else if(is_mainship_level(human_holder.z))
 			charge_increase = charge_rate / 3
 
 		charge = min(charge + charge_increase, charge_max)
 		var/perc_charge = (charge / charge_max * 100)
-		hooman.update_power_display(perc_charge)
+		human_holder.update_power_display(perc_charge)
 
 	//Non-Yautja have a chance to get stunned with each power drain
 	if(cloaked)
-		if(!HAS_TRAIT(hooman, TRAIT_YAUTJA_TECH) && !hooman.hunter_data.thralled)
+		if(!HAS_TRAIT(human_holder, TRAIT_YAUTJA_TECH) && !human_holder.hunter_data.thralled)
 			if(prob(15))
-				decloak(hooman)
-				shock_user(hooman)
-		if(hooman.stat == DEAD)
-			decloak(hooman, TRUE)
+				decloak(human_holder)
+				shock_user(human_holder)
+		if(human_holder.stat == DEAD)
+			decloak(human_holder, TRUE)
 
 /// handles decloaking only on HUNTER gloves
 /obj/item/clothing/gloves/yautja/proc/decloak()

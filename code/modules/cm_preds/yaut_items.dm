@@ -250,7 +250,7 @@
 
 /obj/item/clothing/shoes/yautja/attackby(obj/item/object, mob/user)
 	if(istype(object, /obj/item/tool/yautja_cleaner))
-		if(handle_dissolve())
+		if(handle_dissolve(user))
 			return
 	..()
 
@@ -347,7 +347,7 @@
 
 /obj/item/device/radio/headset/yautja/attackby(obj/item/object, mob/user)
 	if(istype(object, /obj/item/tool/yautja_cleaner))
-		if(handle_dissolve())
+		if(handle_dissolve(user))
 			return
 	..()
 

@@ -10,6 +10,8 @@
 	bound_width = 96
 	custom_slashed_sound = "alien_claw_metal"
 	var/obj/item/device/radio/headset/almayer/mcom/ai/ai_headset //The thing it speaks into.
+	maxHealth = 1000
+	health = 1000
 
 /mob/living/silicon/decoy/ship_ai //For the moment, pending better pathing.
 	var/silent_announcement_cooldown = 0

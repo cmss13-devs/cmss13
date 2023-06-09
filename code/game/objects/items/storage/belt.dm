@@ -1556,9 +1556,9 @@
 /obj/item/storage/belt/gun/smartgunner/whiteout/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/pmc())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
-	new /obj/item/ammo_magazine/smartgun/dirty(src)
-	new /obj/item/ammo_magazine/smartgun/dirty(src)
-	new /obj/item/ammo_magazine/smartgun/dirty(src)
+	new /obj/item/ammo_magazine/smartgun/heap(src)
+	new /obj/item/ammo_magazine/smartgun/heap(src)
+	new /obj/item/ammo_magazine/smartgun/heap(src)
 
 /obj/item/storage/belt/gun/smartgunner/clf
 	name = "\improper M802 pattern 'Freedom' smartgunner sidearm rig"

@@ -237,7 +237,7 @@
 
 	for(var/area/shuttle_area in arriving_shuttle.shuttle_areas)
 		shuttle_area.SetDynamicLighting()
-		shuttle_area.InitializeLighting()
+		shuttle_area.SetLightLevel(0)
 
 /datum/map_template/shuttle/escape_pod_w
 	name = "Escape Pod W"

@@ -110,7 +110,7 @@
 /obj/item/ammo_magazine/smartgun/heap
 	name = "high-explosive armor-piercing smartgun drum"
 	desc = "An M56 smartgun drum magazine, loaded with high-explosive armor-piercing rounds -- or HEAP for short, -- providing a massive 'oomph' to its bullets. Can fit in any model of the M56 smartgun. Has unique yellow markings to distinguish it from regular munitions."
-	icon_state = "m56_drum_dirty"
+	icon_state = "m56_drum_heap"
 	default_ammo = /datum/ammo/bullet/smartgun/heap
 	gun_type = /obj/item/weapon/gun/smartgun
 

@@ -169,7 +169,7 @@ do
 	override_map=$(jq -r '.override_map' $json)
 	while read map_file; do
 		filename="maps/$map_path/$map_file"
-		if [ ! -f $filename ] && [ ! -z "$override_map" ]
+		if [ ! -f $filename ] && [ -z "$override_map" ]
 		then
 			echo
 			echo -e "${RED}ERROR: found invalid file reference to $filename in _maps/$json.${NC}"

@@ -1337,7 +1337,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "afA" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/tree_1,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
 "afC" = (
@@ -3707,9 +3707,7 @@
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/cp_camp)
 "atJ" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_3"
-	},
+/obj/structure/flora/tree/dead/tree_3,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/research_alley)
 "atK" = (
@@ -4383,9 +4381,7 @@
 	},
 /area/shiva/interior/garage)
 "azx" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_6"
-	},
+/obj/structure/flora/tree/dead/tree_6,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "azy" = (
@@ -4912,9 +4908,7 @@
 /turf/closed/wall/shiva/prefabricated/white,
 /area/shiva/interior/lz2_habs)
 "aEq" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_6"
-	},
+/obj/structure/flora/tree/dead/tree_6,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "aEr" = (
@@ -4927,7 +4921,7 @@
 /area/shiva/exterior/cp_lz2)
 "aEu" = (
 /obj/structure/prop/ice_colony/ground_wire,
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/tree_1,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "aEB" = (
@@ -4964,9 +4958,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "aEV" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_2"
-	},
+/obj/structure/flora/tree/dead/tree_2,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "aEW" = (
@@ -5052,9 +5044,7 @@
 	},
 /area/shiva/interior/colony/botany)
 "aFz" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_4"
-	},
+/obj/structure/flora/tree/dead/tree_4,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "aFA" = (
@@ -5077,7 +5067,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/bar)
 "aFJ" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/tree_1,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/colony/medseceng)
 "aFK" = (
@@ -5163,9 +5153,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_s_research)
 "aGI" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_2"
-	},
+/obj/structure/flora/tree/dead/tree_2,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_lz2)
 "aHb" = (
@@ -5193,7 +5181,7 @@
 	},
 /area/shiva/interior/bar)
 "aHz" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/tree_1,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/research_alley)
 "aHB" = (
@@ -5269,9 +5257,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "aJy" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_5"
-	},
+/obj/structure/flora/tree/dead/tree_5,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "aJB" = (
@@ -5295,9 +5281,7 @@
 	},
 /area/shiva/interior/bar)
 "aJG" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_4"
-	},
+/obj/structure/flora/tree/dead/tree_4,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/colony/medseceng)
 "aJM" = (
@@ -7519,9 +7503,7 @@
 	},
 /area/shiva/interior/lz2_habs)
 "bwP" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_6"
-	},
+/obj/structure/flora/tree/dead/tree_6,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
 "bxb" = (
@@ -7907,9 +7889,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/n_admin)
 "bRU" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_5"
-	},
+/obj/structure/flora/tree/dead/tree_5,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_s_research)
 "bSB" = (
@@ -8442,9 +8422,7 @@
 	},
 /area/shiva/interior/caves/research_caves)
 "cAH" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_5"
-	},
+/obj/structure/flora/tree/dead/tree_5,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
 "cAW" = (
@@ -8688,9 +8666,7 @@
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
 "cMr" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_6"
-	},
+/obj/structure/flora/tree/dead/tree_6,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "cMs" = (
@@ -8716,9 +8692,7 @@
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/interior/oob)
 "cOU" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_2"
-	},
+/obj/structure/flora/tree/dead/tree_2,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
 "cOX" = (
@@ -9007,9 +8981,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "dcu" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_4"
-	},
+/obj/structure/flora/tree/dead/tree_4,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "dcG" = (
@@ -9707,9 +9679,7 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "eab" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_3"
-	},
+/obj/structure/flora/tree/dead/tree_3,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/colony/medseceng)
 "eal" = (
@@ -10137,9 +10107,7 @@
 	},
 /area/shiva/interior/bar)
 "eCr" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_3"
-	},
+/obj/structure/flora/tree/dead/tree_3,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "eET" = (
@@ -11073,9 +11041,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
 "fGG" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_6"
-	},
+/obj/structure/flora/tree/dead/tree_6,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/colony/medseceng)
 "fGT" = (
@@ -11874,9 +11840,7 @@
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/interior/telecomm/lz1_biceps)
 "gBp" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_3"
-	},
+/obj/structure/flora/tree/dead/tree_3,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "gBr" = (
@@ -12666,9 +12630,7 @@
 /turf/closed/wall/shiva/prefabricated/blue,
 /area/shiva/interior/warehouse)
 "huF" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_3"
-	},
+/obj/structure/flora/tree/dead/tree_3,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_s_research)
 "hvZ" = (
@@ -12714,9 +12676,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
 "hxY" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_2"
-	},
+/obj/structure/flora/tree/dead/tree_2,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_s_research)
 "hyu" = (
@@ -12979,9 +12939,7 @@
 	},
 /area/shiva/interior/garage)
 "hIM" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_4"
-	},
+/obj/structure/flora/tree/dead/tree_4,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
 "hJd" = (
@@ -13323,9 +13281,7 @@
 	},
 /area/shiva/interior/colony/deck)
 "idG" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_4"
-	},
+/obj/structure/flora/tree/dead/tree_4,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "idR" = (
@@ -13881,9 +13837,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "iDa" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_4"
-	},
+/obj/structure/flora/tree/dead/tree_4,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard/cp_bar)
 "iDn" = (
@@ -15083,9 +15037,7 @@
 	},
 /area/shiva/interior/lz2_habs)
 "jXD" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_4"
-	},
+/obj/structure/flora/tree/dead/tree_4,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "jYO" = (
@@ -15307,9 +15259,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard/cp_bar)
 "kgP" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_5"
-	},
+/obj/structure/flora/tree/dead/tree_5,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "khw" = (
@@ -15499,9 +15449,7 @@
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "krZ" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_5"
-	},
+/obj/structure/flora/tree/dead/tree_5,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/colony/medseceng)
 "ksu" = (
@@ -15550,7 +15498,7 @@
 	},
 /area/shiva/interior/colony/deck)
 "kuS" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/tree_1,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_s_research)
 "kuY" = (
@@ -15819,9 +15767,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "kGW" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_2"
-	},
+/obj/structure/flora/tree/dead/tree_2,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "kHB" = (
@@ -16098,9 +16044,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "kSh" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_6"
-	},
+/obj/structure/flora/tree/dead/tree_6,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
 "kSO" = (
@@ -17516,9 +17460,7 @@
 	},
 /area/shiva/interior/colony/botany)
 "msh" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_6"
-	},
+/obj/structure/flora/tree/dead/tree_6,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_s_research)
 "msu" = (
@@ -18010,9 +17952,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "mRv" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_3"
-	},
+/obj/structure/flora/tree/dead/tree_3,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
 "mRU" = (
@@ -19214,7 +19154,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "oiH" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/tree_1,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "oiX" = (
@@ -19288,9 +19228,7 @@
 /turf/open/floor/interior/plastic,
 /area/shiva/interior/warehouse)
 "opa" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_5"
-	},
+/obj/structure/flora/tree/dead/tree_5,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/colony/central)
 "opM" = (
@@ -19300,9 +19238,7 @@
 	},
 /area/shiva/interior/colony/s_admin)
 "oqf" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_3"
-	},
+/obj/structure/flora/tree/dead/tree_3,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "oqt" = (
@@ -19477,9 +19413,7 @@
 /turf/open/floor/plating,
 /area/shiva/exterior/telecomm/lz2_northeast)
 "oxP" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_6"
-	},
+/obj/structure/flora/tree/dead/tree_6,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "oyc" = (
@@ -19904,9 +19838,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/medseceng)
 "pcT" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_2"
-	},
+/obj/structure/flora/tree/dead/tree_2,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard/cp_bar)
 "pcY" = (
@@ -20722,9 +20654,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "pNs" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_2"
-	},
+/obj/structure/flora/tree/dead/tree_2,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "pNx" = (
@@ -20844,7 +20774,7 @@
 	},
 /area/shiva/interior/colony/central)
 "pUp" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/tree_1,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "pUx" = (
@@ -21617,9 +21547,7 @@
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_lz2)
 "qNj" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_5"
-	},
+/obj/structure/flora/tree/dead/tree_5,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
 "qNn" = (
@@ -22096,7 +22024,7 @@
 	},
 /area/shiva/exterior/junkyard/fortbiceps)
 "rli" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/tree_1,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "rnz" = (
@@ -22346,9 +22274,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "rEQ" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_4"
-	},
+/obj/structure/flora/tree/dead/tree_4,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
 "rEV" = (
@@ -22777,9 +22703,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "sev" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_3"
-	},
+/obj/structure/flora/tree/dead/tree_3,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "seW" = (
@@ -22943,7 +22867,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "snN" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/tree_1,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "snX" = (
@@ -23310,9 +23234,7 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "sJo" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_2"
-	},
+/obj/structure/flora/tree/dead/tree_2,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "sJs" = (
@@ -23978,9 +23900,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/warehouse/caves)
 "tuT" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_2"
-	},
+/obj/structure/flora/tree/dead/tree_2,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/cp_bar)
 "tvo" = (
@@ -25225,9 +25145,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
 "uCs" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_6"
-	},
+/obj/structure/flora/tree/dead/tree_6,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "uCO" = (
@@ -25614,9 +25532,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
 "uTu" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_4"
-	},
+/obj/structure/flora/tree/dead/tree_4,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
 "uTB" = (
@@ -25675,7 +25591,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/caves/cp_camp)
 "uWj" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/tree_1,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
 "uWA" = (
@@ -25908,9 +25824,7 @@
 	},
 /area/shiva/interior/colony/botany)
 "vhM" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_4"
-	},
+/obj/structure/flora/tree/dead/tree_4,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_s_research)
 "vhQ" = (
@@ -26475,9 +26389,7 @@
 /turf/open/gm/river,
 /area/shiva/exterior/cp_lz2)
 "vSL" = (
-/obj/structure/flora/tree/dead{
-	icon_state = "tree_3"
-	},
+/obj/structure/flora/tree/dead/tree_3,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
 "vTc" = (
@@ -27764,7 +27676,7 @@
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/oob)
 "xAP" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/tree_1,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "xAS" = (

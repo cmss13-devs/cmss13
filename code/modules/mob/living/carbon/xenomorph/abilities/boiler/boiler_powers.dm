@@ -167,9 +167,9 @@
 	if(!actually_moving)
 		return
 
-	var/obj/effect/particle_effect/smoke/S = new /obj/effect/particle_effect/smoke/xeno_burn(get_turf(mover), 1, create_cause_data("dumped acid gas", mover))
-	S.time_to_live = 3
-	S.spread_speed = 1000000
+	var/obj/effect/particle_effect/smoke/smoke_effect = new /obj/effect/particle_effect/smoke/xeno_burn(get_turf(mover), 1, create_cause_data("dumped acid gas", mover))
+	smoke_effect.time_to_live = 3
+	smoke_effect.spread_speed = 1000000
 
 /datum/action/xeno_action/onclick/dump_acid/remove_from()
 	remove_speed_buff()
@@ -298,13 +298,11 @@
 	xeno.visible_message(SPAN_XENOWARNING("The [xeno] fires a blast of acid at [target]!"), SPAN_XENOWARNING("You fire a blast of acid at [target]!"))
 
 	var/turf/target_turf = locate(target.x, target.y, target.z)
-	var/obj/item/projectile/P = new /obj/item/projectile(xeno.loc, create_cause_data("acid shotgun", xeno))
-
+	var/obj/item/projectile/proj = new /obj/item/projectile(xeno.loc, create_cause_data("acid shotgun", xeno))
 	var/datum/ammo/ammoDatum = new ammo_type()
 
-	P.generate_bullet(ammoDatum)
-
-	P.fire_at(target_turf, xeno, xeno, ammoDatum.max_range, ammoDatum.shell_speed)
+	proj.generate_bullet(ammoDatum)
+	proj.fire_at(target_turf, xeno, xeno, ammoDatum.max_range, ammoDatum.shell_speed)
 
 	apply_cooldown()
 	return ..()

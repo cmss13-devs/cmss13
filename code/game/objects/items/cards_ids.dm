@@ -331,7 +331,7 @@
 	assignment = "Captain"
 
 /obj/item/card/id/captains_spare/New()
-	access = get_all_marine_accesses()
+	access = get_all_marine_access()
 	..()
 
 /obj/item/card/id/centcom

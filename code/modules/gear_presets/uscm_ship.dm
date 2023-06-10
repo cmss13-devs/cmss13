@@ -420,7 +420,7 @@
 
 /datum/equipment_preset/uscm_ship/commander/New()
 	. = ..()
-	access = get_all_marine_accesses()
+	access = get_all_marine_access()
 
 /datum/equipment_preset/uscm_ship/commander/load_race(mob/living/carbon/human/new_human, client/mob_client)
 	..()
@@ -510,7 +510,7 @@
 
 /datum/equipment_preset/uscm_ship/xo/New()
 	. = ..()
-	access = get_main_marine_accesses()
+	access = get_main_marine_access()
 
 /datum/equipment_preset/uscm_ship/xo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -581,7 +581,7 @@
 
 /datum/equipment_preset/uscm_ship/sea/New()
 	. = ..()
-	access = get_main_marine_accesses()
+	access = get_main_marine_access()
 
 /datum/equipment_preset/uscm_ship/sea/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -733,7 +733,7 @@
 
 /datum/equipment_preset/uscm_ship/officer/New()
 	. = ..()
-	access = get_all_marine_accesses()
+	access = get_all_marine_access()
 
 /datum/equipment_preset/uscm_ship/officer/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels

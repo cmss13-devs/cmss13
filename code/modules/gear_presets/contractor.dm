@@ -8,7 +8,7 @@
 
 /datum/equipment_preset/contractor/New()
 	. = ..()
-	access = get_all_main_accesses()
+	access = get_all_main_access()
 
 /datum/equipment_preset/contractor/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(80;MALE,20;FEMALE)
@@ -57,7 +57,7 @@
 
 /datum/equipment_preset/contractor/New()
 	. = ..()
-	access = get_all_main_accesses()
+	access = get_all_main_access()
 
 
 /datum/equipment_preset/dust_raider/load_name(mob/living/carbon/human/new_human)

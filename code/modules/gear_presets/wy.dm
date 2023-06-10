@@ -21,7 +21,7 @@
 
 /datum/equipment_preset/wy/New()
 	. = ..()
-	access += get_all_civilian_accesses() + get_all_weyland_access()
+	access += get_all_civilian_access() + get_all_weyland_access()
 
 /datum/equipment_preset/wy/load_id(mob/living/carbon/human/new_human)
 	. = ..()

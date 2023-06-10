@@ -891,9 +891,7 @@
 /area/lv624/lazarus/canteen)
 "Lq" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/canteen)
 "Me" = (
 /obj/structure/machinery/vending/cola,
@@ -926,9 +924,7 @@
 /area/lv624/lazarus/security)
 "NU" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/kitchen)
 "OK" = (
 /turf/template_noop,

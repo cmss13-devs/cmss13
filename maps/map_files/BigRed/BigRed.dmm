@@ -3933,9 +3933,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/bigredv2/outside/marshal_office)
 "amz" = (
 /turf/open/floor{
@@ -4149,9 +4147,7 @@
 "ang" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/paper/Court,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/bigredv2/outside/marshal_office)
 "anh" = (
 /obj/structure/bed/chair/comfy/black{
@@ -4160,9 +4156,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/bigredv2/outside/marshal_office)
 "ani" = (
 /obj/structure/bed/chair{
@@ -4303,17 +4297,13 @@
 "anE" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/bigredv2/outside/marshal_office)
 "anF" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/bigredv2/outside/marshal_office)
 "anH" = (
 /obj/structure/bed/chair,
@@ -4481,9 +4471,7 @@
 "aok" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/bigredv2/outside/marshal_office)
 "aol" = (
 /turf/open/floor{
@@ -16771,9 +16759,7 @@
 /area/bigredv2/outside/office_complex)
 "aZH" = (
 /obj/structure/closet/wardrobe/chaplain_black,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/bigredv2/outside/chapel)
 "aZI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -16934,9 +16920,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "bal" = (
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/bigredv2/outside/chapel)
 "bam" = (
 /turf/open/floor{
@@ -16947,9 +16931,7 @@
 "ban" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/radio/headset,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/bigredv2/outside/chapel)
 "bao" = (
 /turf/open/floor{
@@ -17110,9 +17092,7 @@
 /area/bigredv2/outside/office_complex)
 "baR" = (
 /obj/structure/surface/table/woodentable,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/bigredv2/outside/chapel)
 "baS" = (
 /turf/open/floor{
@@ -17356,9 +17336,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/bigredv2/outside/chapel)
 "bbE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -17367,9 +17345,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/bible,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/bigredv2/outside/chapel)
 "bbF" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -17981,9 +17957,7 @@
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/bigredv2/outside/chapel)
 "bdF" = (
 /obj/structure/machinery/light,

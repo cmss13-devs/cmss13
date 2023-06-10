@@ -329,11 +329,18 @@
 /turf/open/floor/barber
 	icon_state = "barber"
 
+// look like a white tile to me with a default on is base look non intented and could probably replace in another PR.
+/turf/open/floor/bar
+	icon_state = "bar"
+
 /turf/open/floor/wood
 	icon_state = "wood"
 
 /turf/open/floor/grimy
 	icon_state = "grimy"
+
+/turf/open/floor/cult
+	icon_state = "cult"
 
 //look link to default floor.
 /turf/open/floor/freezerfloor

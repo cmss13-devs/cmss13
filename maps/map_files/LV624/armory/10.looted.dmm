@@ -78,9 +78,7 @@
 "n" = (
 /obj/structure/machinery/deployable/barrier,
 /obj/effect/decal/cleanable/cobweb,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "o" = (
 /obj/item/stack/tile/plasteel,
@@ -89,9 +87,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "p" = (
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "q" = (
 /turf/open/floor{
@@ -109,9 +105,7 @@
 /area/lv624/lazarus/security)
 "s" = (
 /obj/structure/machinery/deployable/barrier,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "t" = (
 /turf/open/floor{
@@ -126,15 +120,11 @@
 	pixel_x = -28;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "w" = (
 /obj/item/stack/sheet/metal,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "y" = (
 /obj/structure/window/reinforced{
@@ -158,18 +148,14 @@
 	dir = 1
 	},
 /obj/item/stack/sheet/metal,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "B" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	locked = 1;
 	name = "\improper Nexus Dome Armory"
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "K" = (
 /obj/item/stack/sheet/metal,
@@ -179,9 +165,7 @@
 	pixel_x = 25;
 	pixel_y = 5
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "T" = (
 /obj/structure/machinery/door_control{
@@ -190,9 +174,7 @@
 	pixel_x = -26;
 	range = 200
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "Y" = (
 /obj/effect/landmark/objective_landmark/medium,

@@ -28363,9 +28363,7 @@
 "bMZ" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/desert_dam/building/security/courtroom)
 "bNa" = (
 /obj/structure/machinery/light{
@@ -28592,9 +28590,7 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/desert_dam/building/security/courtroom)
 "bNL" = (
 /obj/structure/machinery/light{
@@ -28614,15 +28610,11 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bNN" = (
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/desert_dam/building/security/courtroom)
 "bNO" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/desert_dam/building/security/courtroom)
 "bNP" = (
 /obj/effect/decal/cleanable/blood,
@@ -28807,9 +28799,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/desert_dam/building/security/courtroom)
 "bOB" = (
 /obj/structure/bed/chair/wood/normal{
@@ -44822,9 +44812,7 @@
 /turf/open/floor/dark,
 /area/desert_dam/building/church)
 "cOb" = (
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/desert_dam/building/church)
 "cOc" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -44927,24 +44915,18 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/fancy/candle_box,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/desert_dam/building/church)
 "cOv" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/desert_dam/building/church)
 "cOw" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/trash/candle,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/desert_dam/building/church)
 "cOx" = (
 /obj/structure/surface/table/woodentable,
@@ -44952,9 +44934,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/desert_dam/building/church)
 "cOy" = (
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -45087,9 +45067,7 @@
 "cOU" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/desert_dam/building/church)
 "cOV" = (
 /obj/vehicle/train/cargo/trolley,
@@ -45102,15 +45080,11 @@
 /area/desert_dam/building/warehouse/loading)
 "cOX" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/desert_dam/building/church)
 "cOY" = (
 /obj/effect/landmark/good_item,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/desert_dam/building/church)
 "cOZ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -45148,9 +45122,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Backroom"
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/desert_dam/building/church)
 "cPi" = (
 /obj/structure/machinery/light,
@@ -45158,9 +45130,7 @@
 /area/desert_dam/building/church)
 "cPj" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/desert_dam/building/church)
 "cPk" = (
 /obj/structure/bed/chair/wood/normal{

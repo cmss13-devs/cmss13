@@ -119,15 +119,11 @@
 /turf/closed/wall/cult,
 /area/lv624/ground/caves/east_caves)
 "aaR" = (
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/ground/caves/east_caves)
 "aaS" = (
 /obj/effect/decal/remains/xeno,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/ground/caves/east_caves)
 "aaT" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
@@ -153,9 +149,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "aba" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/ground/caves/east_caves)
 "abb" = (
 /turf/open/gm/river,
@@ -277,9 +271,7 @@
 	unacidable = 1
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/ground/caves/west_caves)
 "abH" = (
 /obj/effect/landmark/good_item,
@@ -380,18 +372,14 @@
 /area/lv624/lazarus/chapel)
 "acm" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "acn" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Nexus Dome Canteen";
 	req_access_txt = "100"
 	},
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aco" = (
 /obj/effect/landmark/crap_item,
@@ -418,20 +406,14 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "act" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/kitchen)
 "acu" = (
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/ground/caves/west_caves)
 "acv" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -439,9 +421,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/kitchen)
 "acw" = (
 /obj/structure/foamed_metal,
@@ -451,9 +431,7 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "acy" = (
 /obj/effect/decal/remains/xeno,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/ground/caves/west_caves)
 "acB" = (
 /obj/structure/machinery/constructable_frame{
@@ -610,9 +588,7 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "ade" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/ground/caves/west_caves)
 "adf" = (
 /obj/effect/landmark/corpsespawner/wygoon,
@@ -3809,9 +3785,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/ground/jungle/west_jungle/ceiling)
 "auP" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -8101,9 +8075,7 @@
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump,
 /obj/item/ammo_magazine/shotgun/slugs,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "aLT" = (
 /obj/effect/decal/cleanable/cobweb2,
@@ -8113,9 +8085,7 @@
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
 /obj/item/clothing/suit/armor/vest/security,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "aLW" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -8216,28 +8186,20 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aMk" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aMl" = (
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aMm" = (
 /obj/structure/surface/table/gamblingtable,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aMn" = (
 /obj/structure/machinery/vending/cola,
@@ -8327,9 +8289,7 @@
 "aMX" = (
 /obj/structure/machinery/deployable/barrier,
 /obj/effect/decal/cleanable/cobweb,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "aMY" = (
 /obj/structure/machinery/light/small{
@@ -8341,14 +8301,10 @@
 /obj/item/ammo_magazine/pistol/highpower,
 /obj/item/ammo_magazine/pistol/highpower,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "aMZ" = (
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "aNb" = (
 /obj/structure/machinery/light/small{
@@ -8405,9 +8361,7 @@
 /area/lv624/lazarus/kitchen)
 "aNl" = (
 /obj/structure/bed/stool,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aNn" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -8475,18 +8429,14 @@
 /area/lv624/lazarus/yggdrasil)
 "aNL" = (
 /obj/structure/machinery/deployable/barrier,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "aNM" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
 /obj/item/clothing/suit/armor/vest/security,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "aNN" = (
 /turf/open/floor{
@@ -8583,15 +8533,11 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aOd" = (
 /obj/structure/barricade/wooden,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aOe" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -8640,9 +8586,7 @@
 	pixel_x = -28;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "aOA" = (
 /obj/item/storage/toolbox/syndicate,
@@ -8656,9 +8600,7 @@
 	pixel_x = 25;
 	pixel_y = 5
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "aOB" = (
 /turf/open/floor/plating{
@@ -8740,33 +8682,25 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aOP" = (
 /obj/structure/surface/table,
 /obj/item/trash/plate,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aOQ" = (
 /obj/structure/surface/table,
 /obj/item/trash/candy,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aOR" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aOS" = (
 /obj/structure/flora/jungle/planttop1,
@@ -8823,9 +8757,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "aPo" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "aPp" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
@@ -8833,9 +8765,7 @@
 	name = "\improper Nexus Dome Armory";
 	req_one_access_txt = "19;106"
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "aPq" = (
 /turf/open/floor{
@@ -8899,32 +8829,24 @@
 "aPB" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aPC" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/grown/banana,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aPD" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aPE" = (
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aPH" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -9037,18 +8959,14 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aQg" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aQn" = (
 /turf/open/floor{
@@ -9194,9 +9112,7 @@
 	pixel_x = -28;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aQX" = (
 /obj/effect/landmark/hunter_primary,
@@ -9336,9 +9252,7 @@
 	name = "\improper Nexus Dome Marshal's Quarters";
 	req_access_txt = "100"
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/captain)
 "aRD" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -9429,9 +9343,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aRX" = (
 /obj/structure/machinery/light/small{
@@ -9440,9 +9352,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aRZ" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
@@ -9584,18 +9494,14 @@
 	pixel_y = 30
 	},
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aSH" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
 /obj/structure/bed/chair,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aSI" = (
 /obj/structure/machinery/computer/telecomms/server,
@@ -9681,15 +9587,11 @@
 /obj/structure/surface/table,
 /obj/item/trash/chips,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aTd" = (
 /obj/item/frame/table,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aTe" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -9799,9 +9701,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aTF" = (
 /obj/structure/surface/table,
@@ -9811,9 +9711,7 @@
 	pixel_y = 4
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aTG" = (
 /obj/structure/extinguisher_cabinet{
@@ -9911,9 +9809,7 @@
 	name = "\improper Nexus Dome Director's Quarters";
 	req_access_txt = "100"
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/hop)
 "aTZ" = (
 /obj/structure/machinery/vending,
@@ -11310,9 +11206,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aZD" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
@@ -12134,9 +12028,7 @@
 /area/lv624/lazarus/corporate_dome)
 "cCe" = (
 /obj/effect/decal/remains/xeno,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/ground/caves/south_west_caves)
 "cCr" = (
 /turf/open/gm/dirtgrassborder/south,
@@ -12849,9 +12741,7 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/ground/caves/south_west_caves)
 "euW" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -13046,9 +12936,7 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "eVH" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/ground/caves/south_west_caves)
 "eYh" = (
 /obj/structure/surface/rack,
@@ -15109,9 +14997,7 @@
 /obj/structure/surface/table,
 /obj/item/trash/plate,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "kQY" = (
 /turf/open/gm/coast/beachcorner/north_west,
@@ -15639,9 +15525,7 @@
 /area/lv624/ground/colony/south_nexus_road)
 "mkr" = (
 /obj/effect/landmark/hunter_primary,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/ground/caves/south_west_caves)
 "mku" = (
 /obj/effect/landmark/monkey_spawn,
@@ -16172,9 +16056,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
 "nBh" = (
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/ground/caves/south_west_caves)
 "nBK" = (
 /turf/open/gm/dirt{
@@ -16296,9 +16178,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "nJF" = (
 /obj/structure/fence,
@@ -16695,9 +16575,7 @@
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/grown/banana,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "oEI" = (
 /turf/open/gm/coast/west,
@@ -18116,9 +17994,7 @@
 /area/lv624/ground/colony/west_tcomms_road)
 "snI" = (
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "spm" = (
 /obj/structure/flora/jungle/alienplant1,
@@ -20199,9 +20075,7 @@
 /area/lv624/ground/jungle/west_central_jungle)
 "xFf" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "bar"
-	},
+/turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "xGd" = (
 /obj/structure/flora/jungle/vines/heavy,

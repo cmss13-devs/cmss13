@@ -60,9 +60,7 @@
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/flechette,
 /obj/item/ammo_magazine/shotgun/incendiary,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "l" = (
 /obj/effect/decal/cleanable/cobweb2,
@@ -77,9 +75,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "m" = (
 /obj/structure/target/syndicate,
@@ -91,9 +87,7 @@
 "n" = (
 /obj/structure/machinery/deployable/barrier,
 /obj/effect/decal/cleanable/cobweb,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "o" = (
 /obj/structure/machinery/light/small{
@@ -110,14 +104,10 @@
 /obj/item/explosive/grenade/flashbang,
 /obj/item/ammo_magazine/shotgun/beanbag,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "p" = (
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "q" = (
 /obj/structure/surface/rack{
@@ -127,9 +117,7 @@
 /obj/effect/landmark/crap_item,
 /obj/item/ammo_magazine/smg/m39/extended,
 /obj/item/weapon/gun/smg/m39,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "r" = (
 /obj/structure/machinery/light/small{
@@ -142,9 +130,7 @@
 /area/lv624/lazarus/security)
 "s" = (
 /obj/structure/machinery/deployable/barrier,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "t" = (
 /turf/open/floor{
@@ -159,9 +145,7 @@
 	pixel_x = -28;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "w" = (
 /obj/item/storage/toolbox/syndicate,
@@ -178,9 +162,7 @@
 	pixel_x = 25;
 	pixel_y = 5
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "y" = (
 /obj/structure/window/reinforced{
@@ -201,18 +183,14 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "A" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "B" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	locked = 1;
 	name = "\improper Nexus Dome Armory"
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "C" = (
 /obj/structure/surface/rack,
@@ -228,15 +206,11 @@
 	pixel_x = -26;
 	range = 200
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "H" = (
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 
 (1,1,1) = {"

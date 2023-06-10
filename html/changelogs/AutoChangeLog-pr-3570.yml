@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - rscadd: "Forsaken ERT is now weighted by type"

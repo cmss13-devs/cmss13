@@ -20,7 +20,7 @@
 
 	var/mob/current_mob = new_member.current
 
-	var/picked = pick(2;/mob/living/carbon/xenomorph/warrior, 2;/mob/living/carbon/xenomorph/lurker, 2;/mob/living/carbon/xenomorph/spitter, 5;/mob/living/carbon/xenomorph/drone, 5;/mob/living/carbon/xenomorph/runner)
+	var/picked = pick_weight(list(/mob/living/carbon/xenomorph/warrior = 2, /mob/living/carbon/xenomorph/lurker = 2, /mob/living/carbon/xenomorph/spitter = 2, /mob/living/carbon/xenomorph/drone = 5, /mob/living/carbon/xenomorph/runner = 5))
 
 	var/mob/living/carbon/xenomorph/new_xeno = new picked(spawn_loc)
 

@@ -1503,10 +1503,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "aeZ" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowcorner"
-	},
+/turf/open/floor/white/yellow/whiteyellowcorner/north_east,
 /area/bigredv2/caves/lambda/xenobiology)
 "afa" = (
 /obj/structure/closet/secure_closet/chemical,
@@ -3507,10 +3504,7 @@
 /turf/open/floor/white/green/whitegreenfull,
 /area/bigredv2/caves/lambda/xenobiology)
 "alj" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/north_east,
 /area/bigredv2/caves/lambda/xenobiology)
 "alk" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
@@ -4214,9 +4208,7 @@
 "ans" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/gloves,
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "ant" = (
 /obj/structure/window/framed/solaris,
@@ -4862,9 +4854,7 @@
 /turf/open/floor/white/green/whitegreenfull,
 /area/bigredv2/caves/lambda/xenobiology)
 "apA" = (
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/caves/lambda/xenobiology)
 "apB" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
@@ -5667,9 +5657,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "arY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -5804,9 +5792,7 @@
 /area/bigredv2/caves/lambda/breakroom)
 "asq" = (
 /obj/structure/closet/secure_closet/medical1,
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "asr" = (
 /obj/structure/bed/chair{
@@ -7098,10 +7084,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/north_west,
 /area/bigredv2/outside/medical)
 "awc" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -7328,9 +7311,7 @@
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/filtration_plant)
 "awN" = (
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "awO" = (
 /turf/open/floor/white/blue/whiteblue/south,
@@ -7357,10 +7338,7 @@
 /turf/open/floor/white/blue/whiteblue/south,
 /area/bigredv2/outside/medical)
 "awT" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_west,
 /area/bigredv2/outside/medical)
 "awU" = (
 /obj/effect/decal/cleanable/dirt,
@@ -7540,9 +7518,7 @@
 "axw" = (
 /obj/structure/surface/table,
 /obj/item/storage/firstaid/adv,
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "axx" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
@@ -7968,10 +7944,7 @@
 /area/bigredv2/outside/medical)
 "ayQ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/north_east,
 /area/bigredv2/outside/medical)
 "ayR" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
@@ -8733,9 +8706,7 @@
 /area/bigredv2/outside/medical)
 "aBf" = (
 /obj/item/device/healthanalyzer,
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "aBg" = (
 /obj/effect/decal/cleanable/dirt,
@@ -8923,9 +8894,7 @@
 /area/bigredv2/outside/medical)
 "aBK" = (
 /obj/structure/closet/wardrobe/medic_white,
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "aBM" = (
 /obj/structure/closet/secure_closet/medical1,
@@ -8948,16 +8917,12 @@
 "aBO" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/recharger,
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "aBP" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "aBQ" = (
 /obj/structure/window/framed/solaris,
@@ -9203,9 +9168,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "aCE" = (
 /obj/item/clothing/glasses/meson,
@@ -9213,9 +9176,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "aCF" = (
 /obj/item/reagent_container/pill/happy,
@@ -9571,22 +9532,16 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "aDI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/extinguisher,
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "aDJ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "aDK" = (
 /obj/structure/curtain/medical,
@@ -10166,9 +10121,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "aFG" = (
 /obj/structure/bed,
@@ -10400,19 +10353,13 @@
 	icon_state = "S"
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/north_west,
 /area/bigredv2/caves/lambda/virology)
 "aGm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/north_east,
 /area/bigredv2/caves/lambda/virology)
 "aGn" = (
 /obj/effect/decal/warning_stripes{
@@ -10494,16 +10441,12 @@
 	dir = 8
 	},
 /obj/item/storage/firstaid/adv,
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "aGA" = (
 /obj/structure/surface/table,
 /obj/item/storage/firstaid/o2,
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "aGB" = (
 /obj/structure/bed,
@@ -10661,10 +10604,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-in"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/north_east,
 /area/bigredv2/caves/lambda/virology)
 "aHe" = (
 /obj/effect/decal/warning_stripes{
@@ -10757,9 +10697,7 @@
 /obj/item/storage/firstaid/fire,
 /obj/item/storage/firstaid/fire,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "aHv" = (
 /obj/structure/surface/table,
@@ -10776,9 +10714,7 @@
 "aHy" = (
 /obj/structure/surface/table,
 /obj/item/storage/firstaid/rad,
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "aHz" = (
 /obj/structure/bed,
@@ -10917,10 +10853,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-in"
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/north_west,
 /area/bigredv2/caves/lambda/virology)
 "aHU" = (
 /obj/structure/window/reinforced/toughened{
@@ -11955,10 +11888,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-in"
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_west,
 /area/bigredv2/caves/lambda/virology)
 "aKW" = (
 /obj/structure/window/reinforced/toughened{
@@ -12004,9 +11934,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-in"
 	},
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/caves/lambda/virology)
 "aLb" = (
 /obj/effect/decal/warning_stripes{

@@ -442,9 +442,7 @@
 /area/lv624/lazarus/main_hall)
 "bj" = (
 /obj/structure/barricade/wooden,
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/lv624/lazarus/main_hall)
 "bk" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -454,10 +452,7 @@
 /area/lv624/lazarus/main_hall)
 "bl" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_west,
 /area/lv624/lazarus/main_hall)
 "bm" = (
 /turf/open/floor{
@@ -627,10 +622,7 @@
 /obj/structure/barricade/wooden,
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowcorner"
-	},
+/turf/open/floor/white/yellow/whiteyellowcorner/north_east,
 /area/lv624/lazarus/main_hall)
 "bI" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -679,10 +671,7 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteyellowcorner"
-	},
+/turf/open/floor/white/yellow/whiteyellowcorner/north_west,
 /area/lv624/lazarus/main_hall)
 "bO" = (
 /obj/effect/landmark/good_item,
@@ -764,15 +753,10 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "Cw" = (
-/turf/open/floor{
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_east,
 /area/lv624/lazarus/main_hall)
 "Cy" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitegreencorner"
-	},
+/turf/open/floor/white/green/whitegreencorner/south_west,
 /area/lv624/lazarus/main_hall)
 "DY" = (
 /turf/closed/wall,
@@ -855,10 +839,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "IY" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whiteyellowcorner"
-	},
+/turf/open/floor/white/yellow/whiteyellowcorner/south_west,
 /area/lv624/lazarus/main_hall)
 "Jf" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -868,10 +849,7 @@
 /turf/open/floor/white/yellow/whiteyellow/west,
 /area/lv624/lazarus/main_hall)
 "JK" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteyellowcorner"
-	},
+/turf/open/floor/white/yellow/whiteyellowcorner/north_west,
 /area/lv624/lazarus/main_hall)
 "KQ" = (
 /obj/structure/window/framed/colony/reinforced,

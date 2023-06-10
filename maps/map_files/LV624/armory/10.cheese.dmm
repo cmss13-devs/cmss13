@@ -33,10 +33,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "f" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowcorner"
-	},
+/turf/open/floor/white/yellow/whiteyellowcorner/north_east,
 /area/lv624/lazarus/main_hall)
 "g" = (
 /turf/open/floor/white/yellow/whiteyellow/north,

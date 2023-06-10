@@ -305,6 +305,20 @@
 /turf/open/floor/white/green/whitegreen/east
 	dir = 4;
 
+//dot corner
+/turf/open/floor/white/green/whitegreencorner
+	icon_state = "whitegreencorner"
+
+/turf/open/floor/white/green/whitegreencorner/south_east
+
+/turf/open/floor/white/green/whitegreencorner/north_west
+	dir = 1;
+
+/turf/open/floor/white/green/whitegreencorner/south_west
+	dir = 8;
+
+/turf/open/floor/white/green/whitegreencorner/north_east
+	dir = 4;
 
 /turf/open/floor/white/green/whitegreenfull
 	icon_state = "whitegreenfull"
@@ -326,6 +340,20 @@
 /turf/open/floor/white/yellow/whiteyellow/east
 	dir = 4;
 
+//dot corner
+/turf/open/floor/white/yellow/whiteyellowcorner
+	icon_state = "whiteyellowcorner"
+
+/turf/open/floor/white/yellow/whiteyellowcorner/south_east
+
+/turf/open/floor/white/yellow/whiteyellowcorner/north_west
+	dir = 1;
+
+/turf/open/floor/white/yellow/whiteyellowcorner/south_west
+	dir = 8;
+
+/turf/open/floor/white/yellow/whiteyellowcorner/north_east
+	dir = 4;
 
 
 /turf/open/floor/white/yellow/whiteyellowfull

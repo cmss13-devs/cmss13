@@ -438,6 +438,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/device/walkman,
 	)
 
+	var/registered_mob
+
 /obj/item/clothing/suit/storage/marine/smartgunner/Initialize()
 	. = ..()
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD] && name == "M56 combat harness")
@@ -446,6 +448,43 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		name = "M56 combat harness"
 	//select_gamemode_skin(type)
 
+/obj/item/clothing/suit/storage/marine/smartgunner/mob_can_equip(mob/equipping_mob, slot, disable_warning = FALSE)
+	. = ..()
+
+	if(equipping_mob.back)
+		to_chat(equipping_mob, SPAN_WARNING("You can't equip [src] while wearing a backpack."))
+		return FALSE
+
+/obj/item/clothing/suit/storage/marine/smartgunner/equipped(mob/user, slot, silent)
+	. = ..()
+
+	if(slot == WEAR_JACKET)
+		registered_mob = user
+		RegisterSignal(registered_mob, COMSIG_HUMAN_ATTEMPTING_EQUIP, PROC_REF(check_equipping))
+
+/obj/item/clothing/suit/storage/marine/smartgunner/proc/check_equipping(mob/living/carbon/human/equipping_human, obj/item/equipping_item, slot)
+	SIGNAL_HANDLER
+
+	if(slot != WEAR_BACK)
+		return
+
+	. = COMPONENT_HUMAN_CANCEL_ATTEMPT_EQUIP
+
+	if(equipping_item.flags_equip_slot == SLOT_BACK)
+		to_chat(equipping_human, SPAN_WARNING("You can't equip [equipping_item] on your back while wearing [src]."))
+		return
+
+/obj/item/clothing/suit/storage/marine/smartgunner/unequipped(mob/user, slot)
+	. = ..()
+
+	if(registered_mob)
+		UnregisterSignal(registered_mob, COMSIG_HUMAN_ATTEMPTING_EQUIP)
+
+/obj/item/clothing/suit/storage/marine/smartgunner/Destroy()
+	. = ..()
+
+	if(registered_mob)
+		UnregisterSignal(registered_mob, COMSIG_HUMAN_ATTEMPTING_EQUIP)
 
 /obj/item/clothing/suit/storage/marine/leader
 	name = "\improper B12 pattern marine armor"

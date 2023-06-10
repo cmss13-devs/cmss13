@@ -239,7 +239,7 @@
 		list("M41A MK2 Extended Magazine (10x24mm)", round(scale * 8.1), /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
 
 		list("SPECIAL AMMUNITION", -1, null, null),
-		list("M56 Powerpack", 2, /obj/item/smartgun_powerpack, VENDOR_ITEM_REGULAR),
+		list("M56 Battery", 4, /obj/item/smartgun_battery, VENDOR_ITEM_REGULAR),
 		list("M56 Smartgun Drum", 4, /obj/item/ammo_magazine/smartgun, VENDOR_ITEM_REGULAR),
 		list("M44 Heavy Speed Loader (.44)", round(scale * 10.5), /obj/item/ammo_magazine/revolver/heavy, VENDOR_ITEM_REGULAR),
 		list("M44 Marksman Speed Loader (.44)", round(scale * 5.7), /obj/item/ammo_magazine/revolver/marksman, VENDOR_ITEM_REGULAR),

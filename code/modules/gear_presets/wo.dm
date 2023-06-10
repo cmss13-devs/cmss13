@@ -156,8 +156,6 @@
 	//jacket
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(new_human), WEAR_J_STORE)
-	//back
-	new_human.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(new_human), WEAR_BACK)
 	//head
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/mp_honor/com(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/chiefofficer(new_human), WEAR_HEAD)
@@ -702,10 +700,8 @@
 	skills = /datum/skills/smartgunner
 
 /datum/equipment_preset/wo/marine/sg/load_gear(mob/living/carbon/human/new_human)
-
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)

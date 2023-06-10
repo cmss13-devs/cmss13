@@ -64,7 +64,6 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_MESS_SERGEANT "Mess Technician"
 #define JOB_SYNTH "Synthetic"
 #define JOB_WORKING_JOE "Working Joe"
-#define JOB_HAZMAT_JOE "Hazmat Joe"
 
 #define JOB_CO "Commanding Officer"
 #define JOB_XO "Executive Officer"

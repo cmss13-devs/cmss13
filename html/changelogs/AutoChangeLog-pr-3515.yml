@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Fixed going down ASRS elevator spamming computer messages."

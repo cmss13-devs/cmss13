@@ -507,8 +507,28 @@
 	prefs.auto_fit_viewport = !prefs.auto_fit_viewport
 	if(prefs.auto_fit_viewport)
 		to_chat(src, SPAN_NOTICE("Now auto fitting viewport."))
+		fit_viewport()
 	else
 		to_chat(src, SPAN_NOTICE("No longer auto fitting viewport."))
+	prefs.save_preferences()
+
+/client/verb/toggle_adaptive_zooming()
+	set name = "Toggle Adaptive Zooming"
+	set category = "Preferences.UI"
+
+	switch(prefs.adaptive_zoom)
+		if(0)
+			prefs.adaptive_zoom = 1
+			to_chat(src, SPAN_BOLDNOTICE("Adaptive Zooming is now enabled, switching between x1 and x2 zoom. This is recommended for 1080p monitors."))
+			adaptive_zoom()
+		if(1)
+			prefs.adaptive_zoom = 2
+			to_chat(src, SPAN_BOLDNOTICE("Adaptive Zooming is now enabled, switching between x2 and x4 zoom."))
+			adaptive_zoom()
+		if(2)
+			prefs.adaptive_zoom = 0
+			to_chat(src, SPAN_BOLDNOTICE("Adaptive Zooming is now disabled."))
+			adaptive_zoom()
 	prefs.save_preferences()
 
 //------------ GHOST PREFERENCES ---------------------------------

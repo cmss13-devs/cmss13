@@ -1241,7 +1241,7 @@
 		log_admin("[src.owner] replied to [key_name(H)]'s USCM message with the message [input].")
 		for(var/client/X in GLOB.admins)
 			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
-				to_chat(X, "<b>ADMINS/MODS: \red [src.owner] replied to [key_name(H)]'s USCM message with: \blue \")[input]\"</b>")
+				to_chat(X, SPAN_STAFF_IC("<b>ADMINS/MODS: \red [src.owner] replied to [key_name(H)]'s USCM message with: \blue \")[input]\"</b>"))
 		to_chat(H, SPAN_DANGER("You hear something crackle in your headset before a voice speaks, please stand by for a message from USCM:\" \blue <b>\"[input]\"</b>"))
 
 	else if(href_list["SyndicateReply"])
@@ -1306,7 +1306,7 @@
 				fax_message = new(generate_templated_fax(0, organization_type, subject, addressed_to, message_body, sent_by, "Editor in Chief", organization_type))
 		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Template", list("Send", "Cancel"))
-		if(send_choice != "Send") 
+		if(send_choice != "Send")
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
@@ -1345,7 +1345,7 @@
 						P.stamps += "<HR><i>This paper has been stamped by the Free Press Quantum Relay.</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 	else if(href_list["USCMFaxReply"])
@@ -1388,7 +1388,7 @@
 				fax_message = new(generate_templated_fax(0, "USCM CENTRAL COMMAND", subject,addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps"))
 		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Template", list("Send", "Cancel"))
-		if(send_choice != "Send") 
+		if(send_choice != "Send")
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
@@ -1427,7 +1427,7 @@
 						P.stamps += "<HR><i>This paper has been stamped by the USCM High Command Quantum Relay.</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
@@ -1509,7 +1509,7 @@
 						P.stamps += "<HR><i>This paper has been stamped and encrypted by the Weyland-Yutani Quantum Relay (tm).</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
@@ -1591,7 +1591,7 @@
 						P.stamps += "<HR><i>This paper has been stamped by The Office of Colonial Marshals.</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 

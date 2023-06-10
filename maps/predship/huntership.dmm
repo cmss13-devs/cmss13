@@ -876,9 +876,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/yautja)
 "cd" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1598,9 +1596,7 @@
 /turf/closed/wall/huntership,
 /area/yautja)
 "dw" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/yautja)
 "dI" = (
 /turf/open/space/basic,
@@ -1616,10 +1612,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/yautja)
 "er" = (
 /obj/structure/stairs/perspective{
@@ -2211,9 +2204,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/yautja)
 "uO" = (
 /obj/structure/bed/chair/hunter{
@@ -2300,10 +2291,7 @@
 	dir = 8
 	},
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/yautja)
 "xn" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -2371,9 +2359,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/yautja)
 "zA" = (
 /turf/open/floor{
@@ -3044,7 +3030,7 @@
 	},
 /area/yautja)
 "RS" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/yautja)
 "Sx" = (
 /turf/open/floor{
@@ -3215,10 +3201,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/yautja)
 "XP" = (
 /obj/structure/machinery/cryopod,

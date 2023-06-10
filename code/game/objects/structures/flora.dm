@@ -80,10 +80,29 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	icon = 'icons/obj/structures/props/pinetrees.dmi'
 	icon_state = "pine_c"
 
+//dead
 /obj/structure/flora/tree/dead
 	icon = 'icons/obj/structures/props/deadtrees.dmi'
+
+/obj/structure/flora/tree/dead/tree_1
 	icon_state = "tree_1"
 
+/obj/structure/flora/tree/dead/tree_2
+	icon_state = "tree_2"
+
+/obj/structure/flora/tree/dead/tree_3
+	icon_state = "tree_3"
+
+/obj/structure/flora/tree/dead/tree_4
+	icon_state = "tree_4"
+
+/obj/structure/flora/tree/dead/tree_5
+	icon_state = "tree_5"
+
+/obj/structure/flora/tree/dead/tree_6
+	icon_state = "tree_6"
+
+//joshua
 /obj/structure/flora/tree/joshua
 	name = "joshua tree"
 	desc = "A tall tree covered in spiky-like needles, covering its trunk."
@@ -128,14 +147,25 @@ ICE GRASS
 	icon_state = ""
 	variations = 3
 
+//brown
 /obj/structure/flora/grass/ice/brown
-	icon_state = "snowgrassbb_1"
 	icon_tag = "snowgrassbb"
 
-/obj/structure/flora/grass/ice/green
-	icon_state = "snowgrassgb_1"
-	icon_tag = "snowgrassgb"
+/obj/structure/flora/grass/ice/brown/snowgrassbb_1
+	icon_state = "snowgrassbb_1"
 
+/obj/structure/flora/grass/ice/brown/snowgrassbb_2
+	icon_state = "snowgrassbb_2"
+
+/obj/structure/flora/grass/ice/brown/snowgrassbb_3
+	icon_state = "snowgrassbb_3"
+
+//green
+/obj/structure/flora/grass/ice/green
+	icon_tag = "snowgrassgb"
+	icon_state = "snowgrassgb_1"
+
+//both
 /obj/structure/flora/grass/ice/both
 	icon_state = "snowgrassall_1"
 	icon_tag = "snowgrassall"
@@ -168,12 +198,79 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 
 */
 
+//Light desert grass
+
 /obj/structure/flora/grass/desert
 	icon = 'icons/obj/structures/props/dam.dmi'
+
+// to replace with
+/obj/structure/flora/grass/desert/lightgrass_1
 	icon_state = "lightgrass_1"
 
-/obj/structure/flora/grass/desert/heavy
+/obj/structure/flora/grass/desert/lightgrass_2
+	icon_state = "lightgrass_2"
+
+/obj/structure/flora/grass/desert/lightgrass_3
+	icon_state = "lightgrass_3"
+
+/obj/structure/flora/grass/desert/lightgrass_4
+	icon_state = "lightgrass_4"
+
+/obj/structure/flora/grass/desert/lightgrass_5
+	icon_state = "lightgrass_5"
+
+/obj/structure/flora/grass/desert/lightgrass_6
+	icon_state = "lightgrass_6"
+
+/obj/structure/flora/grass/desert/lightgrass_7
+	icon_state = "lightgrass_7"
+
+/obj/structure/flora/grass/desert/lightgrass_8
+	icon_state = "lightgrass_8"
+
+/obj/structure/flora/grass/desert/lightgrass_9
+	icon_state = "lightgrass_9"
+
+/obj/structure/flora/grass/desert/lightgrass_10
+	icon_state = "lightgrass_10"
+
+/obj/structure/flora/grass/desert/lightgrass_11
+	icon_state = "lightgrass_11"
+
+/obj/structure/flora/grass/desert/lightgrass_12
+	icon_state = "lightgrass_12"
+
+//heavy desert grass
+
+/obj/structure/flora/grass/desert/heavygrass_1
 	icon_state = "heavygrass_1"
+
+/obj/structure/flora/grass/desert/heavygrass_2
+	icon_state = "heavygrass_2"
+
+/obj/structure/flora/grass/desert/heavygrass_3
+	icon_state = "heavygrass_3"
+
+/obj/structure/flora/grass/desert/heavygrass_4
+	icon_state = "heavygrass_4"
+
+/obj/structure/flora/grass/desert/heavygrass_5
+	icon_state = "heavygrass_5"
+
+/obj/structure/flora/grass/desert/heavygrass_6
+	icon_state = "heavygrass_6"
+
+/obj/structure/flora/grass/desert/heavygrass_7
+	icon_state = "heavygrass_7"
+
+/obj/structure/flora/grass/desert/heavygrass_8
+	icon_state = "heavygrass_8"
+
+/obj/structure/flora/grass/desert/heavygrass_9
+	icon_state = "heavygrass_9"
+
+/obj/structure/flora/grass/desert/heavygrass_10
+	icon_state = "heavygrass_10"
 
 /*
 
@@ -516,16 +613,29 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_state = "" //will this break it?? - Nope
 	density = TRUE
 
+//light vines
 /obj/structure/flora/jungle/vines
 	name = "vines"
 	desc = "A mass of twisted vines."
 	icon = 'icons/effects/spacevines.dmi'
-	icon_state = "light_1"
 	icon_tag = "light"
 	variations = 3
 	cut_level = PLANT_CUT_MACHETE
 	fire_flag = FLORA_BURN_NO_SPREAD
 
+/obj/structure/flora/jungle/vines/light_1
+	icon_state = "light_1"
+	icon_tag = "light_1"
+
+/obj/structure/flora/jungle/vines/light_2
+	icon_state = "light_2"
+	icon_tag = "light_2"
+
+/obj/structure/flora/jungle/vines/light_3
+	icon_state = "light_3"
+	icon_tag = "light_3"
+
+//heavy hide you
 /obj/structure/flora/jungle/vines/heavy
 	desc = "A thick, coiled mass of twisted vines."
 	opacity = TRUE

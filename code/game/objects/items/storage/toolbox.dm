@@ -88,12 +88,11 @@
 	icon_state = "synthetic_maintenance_case"
 	throw_speed = SPEED_FAST
 	throw_range = 8
-	storage_slots = 3
+	storage_slots = 2
 	w_class = SIZE_LARGE
 	matter = list("plastic" = 1000)
 	can_hold = list(
 		/obj/item/tool/surgery/shrapnel_remover,
-		/obj/item/stack/nanopaste/weak,
 		/obj/item/stack/nanopaste,
 	)
 
@@ -101,5 +100,4 @@
 
 /obj/item/storage/synthetic_maintenance_case/regular/fill_preset_inventory()
 	new /obj/item/tool/surgery/shrapnel_remover(src)
-	new /obj/item/stack/nanopaste/weak(src)
-	new /obj/item/stack/nanopaste/weak(src)
+	new /obj/item/stack/nanopaste(src)

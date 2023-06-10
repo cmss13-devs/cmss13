@@ -1692,9 +1692,11 @@
 "afD" = (
 /obj/item/device/mass_spectrometer/adv,
 /obj/structure/foamed_metal,
-/turf/open/floor/white/yellow/whiteyellow/south/area/bigredv2/caves/lambda/xenobiology)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/bigredv2/caves/lambda/xenobiology)
 "afE" = (
-/turf/open/floor/white/yellow/whiteyellow/south/area/bigredv2/caves/lambda/xenobiology)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/bigredv2/caves/lambda/xenobiology)
 "afF" = (
 /obj/structure/machinery/light,
 /obj/item/storage/fancy/vials/random,

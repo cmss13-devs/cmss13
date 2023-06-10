@@ -27917,7 +27917,8 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/turf/open/floor/white/yellow/whiteyellow/south/area/desert_dam/interior/dam_interior/lobby)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/desert_dam/interior/dam_interior/lobby)
 "bLu" = (
 /obj/structure/closet/secure_closet/medical_doctor,
 /obj/effect/landmark/objective_landmark/science,
@@ -27928,7 +27929,8 @@
 /area/desert_dam/building/medical/chemistry)
 "bLv" = (
 /obj/structure/surface/table,
-/turf/open/floor/white/yellow/whiteyellow/south/area/desert_dam/interior/dam_interior/lobby)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/desert_dam/interior/dam_interior/lobby)
 "bLw" = (
 /obj/structure/flora/pottedplant,
 /turf/open/floor/prison{
@@ -33378,15 +33380,18 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor/white/yellow/whiteyellow/south/area/desert_dam/interior/dam_interior/break_room)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/desert_dam/interior/dam_interior/break_room)
 "ccE" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/white/yellow/whiteyellow/south/area/desert_dam/interior/dam_interior/break_room)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/desert_dam/interior/dam_interior/break_room)
 "ccF" = (
 /obj/structure/surface/table,
 /obj/item/tool/lighter/random,
-/turf/open/floor/white/yellow/whiteyellow/south/area/desert_dam/interior/dam_interior/break_room)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/desert_dam/interior/dam_interior/break_room)
 "ccG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -33395,7 +33400,8 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "ccH" = (
-/turf/open/floor/white/yellow/whiteyellow/south/area/desert_dam/interior/dam_interior/break_room)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/desert_dam/interior/dam_interior/break_room)
 "ccI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -36452,7 +36458,8 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/light,
 /obj/effect/spawner/random/toolbox,
-/turf/open/floor/white/yellow/whiteyellow/south/area/desert_dam/interior/dam_interior/lobby)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/desert_dam/interior/dam_interior/lobby)
 "cnx" = (
 /obj/structure/prop/dam/boulder/boulder2,
 /turf/open/desert/dirt{
@@ -52418,7 +52425,8 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor/white/yellow/whiteyellow/south/area/desert_dam/building/water_treatment_one/breakroom)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/desert_dam/building/water_treatment_one/breakroom)
 "dCI" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/light{
@@ -52433,7 +52441,8 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor/white/yellow/whiteyellow/south/area/desert_dam/building/water_treatment_one/breakroom)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/desert_dam/building/water_treatment_one/breakroom)
 "dCK" = (
 /turf/open/floor{
 	dir = 6;
@@ -54718,7 +54727,8 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/white/yellow/whiteyellow/south/area/desert_dam/interior/dam_interior/break_room)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/desert_dam/interior/dam_interior/break_room)
 "dNI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached{
@@ -57611,7 +57621,8 @@
 "dWP" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
-/turf/open/floor/white/yellow/whiteyellow/south/area/desert_dam/building/water_treatment_one/breakroom)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/desert_dam/building/water_treatment_one/breakroom)
 "dWQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Mess Hall"
@@ -61418,7 +61429,8 @@
 "lkZ" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/white/yellow/whiteyellow/south/area/desert_dam/interior/dam_interior/break_room)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/desert_dam/interior/dam_interior/break_room)
 "lmq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/vomit,
@@ -63166,7 +63178,8 @@
 "rEH" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/white/yellow/whiteyellow/south/area/desert_dam/building/water_treatment_one/breakroom)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/desert_dam/building/water_treatment_one/breakroom)
 "rFi" = (
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/lz2)

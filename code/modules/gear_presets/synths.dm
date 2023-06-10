@@ -490,7 +490,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/bag/trash(new_human), WEAR_L_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/device/lightreplacer(new_human.back), WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/maintenance_jack(new_human), WEAR_J_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/shrapnel_remover/regular(new_human), WEAR_IN_SHOES)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/shrapnel_remover(new_human), WEAR_IN_SHOES)
 
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
 	. = ..()

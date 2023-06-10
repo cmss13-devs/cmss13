@@ -1136,6 +1136,7 @@
 #include "code\game\objects\items\toys\crayons.dm"
 #include "code\game\objects\items\toys\toy_weapons.dm"
 #include "code\game\objects\items\toys\toys.dm"
+#include "code\game\objects\items\toys\trading_cards.dm"
 #include "code\game\objects\items\weapons\blades.dm"
 #include "code\game\objects\items\weapons\energy.dm"
 #include "code\game\objects\items\weapons\misc.dm"

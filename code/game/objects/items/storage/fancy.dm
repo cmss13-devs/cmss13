@@ -223,6 +223,20 @@
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 	storage_slots = 4
 
+/obj/item/storage/fancy/cigarettes/trading_card
+	name = "\improper Weyland-Yutani Trading Card Gold packet"
+	desc = "Gotta collect them all, and smoke them all! This fancy trading card collector version of Weyland Yutani Gold has one card that is apart of the 3 available 5-card sets."
+	icon_state = "collectpacket"
+	item_state = "collectpacket"
+	var/has_card = 1
+
+/obj/item/storage/fancy/cigarettes/trading_card/attackby(obj/item/W, mob/user)
+	if(!(W == attack_hand(user)))
+		return
+
+	if(has_card)
+		new /obj/item/toy/trading_card
+
 /////////////
 //CIGAR BOX//
 /////////////

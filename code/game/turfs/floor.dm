@@ -217,6 +217,25 @@
 
 //all the colored tiles with the default one red purple green
 
+/turf/open/floor/default/red
+
+//defaultred
+/turf/open/floor/default/red/red
+	icon_state = "red"
+
+/turf/open/floor/default/red/red/south
+
+/turf/open/floor/default/red/red/north
+	dir = 1;
+
+/turf/open/floor/default/red/red/west
+	dir = 8;
+
+/turf/open/floor/default/red/red/east
+	dir = 4;
+
+/turf/open/floor/default/red/redfull
+	icon_state = "redfull"
 
 //all the floors related to the dark tiles...
 /turf/open/floor/dark
@@ -306,7 +325,9 @@
 /turf/open/floor/white/red/whiteredfull
 	icon_state = "whiteredfull"
 
-
+//look like a fullwhiteblue tile to me. should investigate and maybe remove on another PR.
+/turf/open/floor/barber
+	icon_state = "barber"
 
 /turf/open/floor/wood
 	icon_state = "wood"
@@ -314,7 +335,7 @@
 /turf/open/floor/grimy
 	icon_state = "grimy"
 
-
+//look link to default floor.
 /turf/open/floor/freezerfloor
 	icon_state = "freezerfloor"
 
@@ -325,3 +346,20 @@
 /turf/open/floor/sandstone/runed
 	name = "sandstone temple floor"
 	icon_state = "runedsandstone"
+
+//warning floors tiles
+
+//look link to default floor.
+/turf/open/floor/warning
+	icon_state = "warning"
+
+/turf/open/floor/warning/south
+
+/turf/open/floor/warning/north
+	dir = 1;
+
+/turf/open/floor/warning/west
+	dir = 8;
+
+/turf/open/floor/warning/east
+	dir = 4;

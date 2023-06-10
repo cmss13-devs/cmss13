@@ -942,10 +942,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Nexus Dome Canteen"
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/kitchen)
 
 (1,1,1) = {"

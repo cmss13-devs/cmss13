@@ -48,10 +48,7 @@
 /area/lv624/ground/barrens/containers)
 "p" = (
 /obj/structure/fence,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/lv624/ground/barrens/containers)
 "w" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,

@@ -905,10 +905,7 @@
 /area/lv624/ground/barrens/containers)
 "aem" = (
 /obj/structure/fence,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/lv624/ground/barrens/containers)
 "aen" = (
 /obj/structure/fence,
@@ -937,10 +934,7 @@
 /area/lv624/ground/caves/west_caves)
 "aet" = (
 /obj/structure/fence,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/west,
 /area/lv624/ground/barrens/containers)
 "aev" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
@@ -1026,10 +1020,7 @@
 /area/lv624/ground/barrens/containers)
 "afd" = (
 /obj/structure/fence,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/east,
 /area/lv624/ground/barrens/containers)
 "aff" = (
 /obj/structure/cargo_container/wy/left,
@@ -1083,10 +1074,7 @@
 "afr" = (
 /obj/structure/ore_box,
 /obj/structure/fence,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/east,
 /area/lv624/ground/barrens/containers)
 "afu" = (
 /obj/structure/machinery/floodlight,
@@ -3193,10 +3181,7 @@
 "arL" = (
 /obj/structure/barricade/wooden,
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/lv624/lazarus/landing_zones/lz1)
 "arO" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -3440,10 +3425,7 @@
 /area/lv624/lazarus/quartstorage)
 "atk" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/east,
 /area/lv624/lazarus/landing_zones/lz1)
 "atn" = (
 /obj/structure/window_frame/colony/reinforced,
@@ -3783,19 +3765,13 @@
 /turf/open/gm/river,
 /area/lv624/lazarus/fitness)
 "auF" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/fitness)
 "auG" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/fitness)
 "auH" = (
 /obj/structure/closet/crate/secure/hydrosec,
@@ -4001,10 +3977,7 @@
 /area/lv624/lazarus/fitness)
 "avv" = (
 /obj/item/toy/beach_ball,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/fitness)
 "avw" = (
 /obj/effect/landmark/good_item,
@@ -6250,10 +6223,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/quartstorage)
 "aDi" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDj" = (
 /obj/structure/flora/jungle/planttop1,
@@ -6372,10 +6342,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "aDG" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/west,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDI" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
@@ -6394,10 +6361,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDM" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/east,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDN" = (
 /obj/structure/flora/jungle/plantbot1,
@@ -6493,10 +6457,7 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "aEn" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/fitness)
 "aEs" = (
 /obj/structure/fence,
@@ -7004,10 +6965,7 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "aGb" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/lv624/lazarus/landing_zones/lz1)
 "aGc" = (
 /turf/open/floor{
@@ -7310,10 +7268,7 @@
 	name = "General Listening Channel";
 	pixel_x = -30
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/west,
 /area/lv624/lazarus/landing_zones/lz1)
 "aHs" = (
 /obj/item/tool/crowbar/red,
@@ -7398,10 +7353,7 @@
 /area/lv624/lazarus/main_hall)
 "aIb" = (
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/west,
 /area/lv624/lazarus/landing_zones/lz2)
 "aIc" = (
 /obj/structure/machinery/light/small{
@@ -7825,10 +7777,7 @@
 /obj/effect/decal/cleanable/blood/tracks/footprints{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/west,
 /area/lv624/lazarus/landing_zones/lz1)
 "aJS" = (
 /obj/effect/landmark/hunter_primary,
@@ -8210,9 +8159,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/turf/open/floor{
-	icon_state = "red"
-	},
+/turf/open/floor/default/red/red/south,
 /area/lv624/lazarus/security)
 "aMc" = (
 /obj/structure/closet,
@@ -8316,9 +8263,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "aMq" = (
-/turf/open/floor{
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/south,
 /area/lv624/lazarus/landing_zones/lz1)
 "aMr" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
@@ -8429,10 +8374,7 @@
 	},
 /area/lv624/lazarus/sleep_female)
 "aNe" = (
-/turf/open/floor{
-	dir = 9;
-	icon_state = "redfull"
-	},
+/turf/open/floor/default/red/redfull,
 /area/lv624/lazarus/security)
 "aNf" = (
 /obj/structure/flora/jungle/planttop1,
@@ -8442,10 +8384,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "redfull"
-	},
+/turf/open/floor/default/red/redfull,
 /area/lv624/lazarus/security)
 "aNi" = (
 /obj/effect/decal/cleanable/blood,
@@ -8557,17 +8496,11 @@
 /area/lv624/lazarus/security)
 "aNO" = (
 /obj/structure/machinery/vending/security,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "red"
-	},
+/turf/open/floor/default/red/red/east,
 /area/lv624/lazarus/security)
 "aNP" = (
 /obj/item/folder/red,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "redfull"
-	},
+/turf/open/floor/default/red/redfull,
 /area/lv624/lazarus/security)
 "aNQ" = (
 /turf/open/floor{
@@ -8580,9 +8513,7 @@
 	dir = 1;
 	name = "Security Office APC"
 	},
-/turf/open/floor{
-	icon_state = "red"
-	},
+/turf/open/floor/default/red/red/south,
 /area/lv624/lazarus/security)
 "aNS" = (
 /turf/open/floor{
@@ -8604,10 +8535,7 @@
 	pixel_y = 22
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/kitchen)
 "aNW" = (
 /obj/structure/sink/kitchen{
@@ -8623,19 +8551,13 @@
 	pixel_y = -4
 	},
 /obj/item/reagent_container/food/snacks/donkpocket,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/kitchen)
 "aNX" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/grown/tomato,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/kitchen)
 "aNY" = (
 /obj/structure/surface/table,
@@ -8643,24 +8565,15 @@
 	pixel_y = 9
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/kitchen)
 "aNZ" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/kitchen)
 "aOa" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/kitchen)
 "aOb" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -8798,23 +8711,14 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/binoculars,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "redfull"
-	},
+/turf/open/floor/default/red/redfull,
 /area/lv624/lazarus/security)
 "aOJ" = (
 /obj/structure/bed/chair/office/light,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "redfull"
-	},
+/turf/open/floor/default/red/redfull,
 /area/lv624/lazarus/security)
 "aOK" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "red"
-	},
+/turf/open/floor/default/red/red/west,
 /area/lv624/lazarus/security)
 "aOL" = (
 /obj/structure/fence,
@@ -8941,10 +8845,7 @@
 /area/lv624/lazarus/security)
 "aPr" = (
 /obj/structure/machinery/light/small,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/default/red/red/north,
 /area/lv624/lazarus/security)
 "aPs" = (
 /obj/structure/surface/table,
@@ -8967,20 +8868,14 @@
 "aPu" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/default/red/red/north,
 /area/lv624/lazarus/security)
 "aPv" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/handcuffs,
 /obj/item/storage/firstaid/adv,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/default/red/red/north,
 /area/lv624/lazarus/security)
 "aPx" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -8989,26 +8884,17 @@
 /area/lv624/lazarus/main_hall)
 "aPy" = (
 /obj/structure/machinery/vending/dinnerware,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/kitchen)
 "aPz" = (
 /obj/structure/machinery/chem_master/condimaster,
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/kitchen)
 "aPA" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/microwave,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/kitchen)
 "aPB" = (
 /obj/structure/surface/table,
@@ -9134,27 +9020,18 @@
 "aQc" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/processor,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/kitchen)
 "aQd" = (
 /obj/structure/machinery/smartfridge,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/kitchen)
 "aQe" = (
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
 /obj/structure/machinery/vending/coffee,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/kitchen)
 "aQf" = (
 /obj/structure/machinery/light/small{
@@ -9304,17 +9181,11 @@
 /area/lv624/lazarus/main_hall)
 "aQO" = (
 /obj/item/reagent_container/food/snacks/grown/banana,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/kitchen)
 "aQP" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/kitchen)
 "aQQ" = (
 /obj/structure/machinery/power/apc{
@@ -9772,9 +9643,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/under/CM_uniform,
 /obj/item/clothing/suit/armor/vest/security,
-/turf/open/floor{
-	icon_state = "red"
-	},
+/turf/open/floor/default/red/red/south,
 /area/lv624/lazarus/security)
 "aSU" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
@@ -10146,10 +10015,7 @@
 /obj/item/device/flashlight,
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "red"
-	},
+/turf/open/floor/default/red/red/east,
 /area/lv624/lazarus/security)
 "aUx" = (
 /obj/structure/machinery/power/monitor{
@@ -11030,10 +10896,7 @@
 "aXL" = (
 /obj/structure/closet/secure_closet/security,
 /obj/item/clothing/suit/armor/vest/security,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "red"
-	},
+/turf/open/floor/default/red/red/east,
 /area/lv624/lazarus/security)
 "aXN" = (
 /obj/effect/spawner/random/powercell,
@@ -11208,10 +11071,7 @@
 "aYH" = (
 /obj/structure/closet/lawcloset,
 /obj/item/clothing/suit/armor/vest/security,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/default/red/red/north,
 /area/lv624/lazarus/security)
 "aYJ" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -11396,10 +11256,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ashtray/bronze,
 /obj/item/storage/donut_box,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "red"
-	},
+/turf/open/floor/default/red/red/west,
 /area/lv624/lazarus/security)
 "aZx" = (
 /obj/structure/closet/toolcloset,
@@ -12197,10 +12054,7 @@
 "cqE" = (
 /obj/structure/barricade/wooden,
 /obj/structure/flora/jungle/vines/light_2,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/lv624/lazarus/landing_zones/lz1)
 "crF" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -13355,10 +13209,7 @@
 "fsa" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/open/floor/barber,
 /area/lv624/lazarus/kitchen)
 "fsu" = (
 /obj/structure/machinery/light{
@@ -13639,10 +13490,7 @@
 	amount = 2
 	},
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/lv624/lazarus/landing_zones/lz2)
 "gfc" = (
 /obj/structure/surface/table/reinforced{
@@ -14512,10 +14360,7 @@
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/west,
 /area/lv624/lazarus/landing_zones/lz1)
 "iGn" = (
 /obj/effect/landmark/hunter_primary,
@@ -15252,10 +15097,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "kPL" = (
 /obj/structure/fence,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/east,
 /area/lv624/ground/barrens/east_barrens)
 "kPU" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
@@ -15408,10 +15250,7 @@
 	},
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/flora/jungle/vines/light_2,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/lv624/lazarus/landing_zones/lz1)
 "lnK" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
@@ -15644,10 +15483,7 @@
 /obj/item/stack/sheet/wood{
 	amount = 2
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/lv624/lazarus/landing_zones/lz1)
 "lRy" = (
 /obj/effect/landmark/crap_item,
@@ -16030,10 +15866,7 @@
 	amount = 2
 	},
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/lv624/lazarus/landing_zones/lz2)
 "mRm" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -16952,9 +16785,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "oOf" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/floor{
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/south,
 /area/lv624/lazarus/landing_zones/lz2)
 "oOB" = (
 /obj/structure/machinery/landinglight/ds2/delayone,
@@ -16963,9 +16794,7 @@
 "oOV" = (
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/floor{
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/south,
 /area/lv624/lazarus/landing_zones/lz2)
 "oPT" = (
 /turf/open/floor/default/loadingarea/north,
@@ -17090,10 +16919,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "nexuscenter"
 	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "redfull"
-	},
+/turf/open/floor/default/red/redfull,
 /area/lv624/lazarus/security)
 "pcd" = (
 /turf/open/gm/coast/south,
@@ -17198,9 +17024,7 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "prd" = (
 /obj/structure/flora/jungle/vines/light_2,
-/turf/open/floor{
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/south,
 /area/lv624/lazarus/landing_zones/lz1)
 "prQ" = (
 /obj/structure/flora/jungle/vines/light_2,
@@ -17691,10 +17515,7 @@
 "qDg" = (
 /obj/structure/barricade/wooden,
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/lv624/lazarus/landing_zones/lz2)
 "qDx" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
@@ -18398,9 +18219,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "sCJ" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/floor{
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/south,
 /area/lv624/lazarus/landing_zones/lz1)
 "sCX" = (
 /obj/structure/flora/jungle/vines/light_1,
@@ -18631,9 +18450,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "lz-containers"
 	},
-/turf/open/floor{
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/south,
 /area/lv624/lazarus/landing_zones/lz1)
 "tgL" = (
 /mob/living/simple_animal/bat,
@@ -18852,9 +18669,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "tEn" = (
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/floor{
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/south,
 /area/lv624/lazarus/landing_zones/lz2)
 "tES" = (
 /obj/effect/decal/cleanable/blood,
@@ -20544,10 +20359,7 @@
 	dir = 8
 	},
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/east,
 /area/lv624/lazarus/landing_zones/lz2)
 "yhR" = (
 /obj/structure/closet,

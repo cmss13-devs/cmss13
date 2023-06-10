@@ -4488,16 +4488,10 @@
 	id = "dam_checkpoint_northeast";
 	name = "\improper Checkpoint Lock"
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "any" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "anz" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -4509,10 +4503,7 @@
 	name = "\improper Checkpoint Lock"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "anA" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -5146,10 +5137,7 @@
 	name = "\improper Checkpoint Lock";
 	unacidable = 0
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "apy" = (
 /turf/open/floor/plating{
@@ -5525,10 +5513,7 @@
 /turf/closed/wall/r_wall/chigusa,
 /area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "aqK" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "aqL" = (
 /obj/structure/surface/table/reinforced,
@@ -5541,10 +5526,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "aqN" = (
 /obj/structure/disposalpipe/segment,
@@ -5642,9 +5624,7 @@
 	id = "dam_checkpoint_northeast";
 	name = "\improper Checkpoint Lock"
 	},
-/turf/open/floor{
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/south,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "ara" = (
 /obj/effect/decal/warning_stripes{
@@ -5794,9 +5774,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "arq" = (
-/turf/open/floor{
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/south,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "arr" = (
 /obj/structure/machinery/power/apc{
@@ -5867,9 +5845,7 @@
 	name = "\improper Checkpoint Lock"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor{
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/south,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "arA" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -6138,14 +6114,10 @@
 	name = "\improper Checkpoint Lock";
 	unacidable = 0
 	},
-/turf/open/floor{
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/south,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "asA" = (
-/turf/open/floor{
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/south,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "asB" = (
 /obj/structure/window/framed/bunker/reinforced,
@@ -23553,10 +23525,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "bwu" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/desert_dam/interior/dam_interior/engine_room)
 "bwv" = (
 /turf/open/floor{
@@ -23900,10 +23869,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "bxD" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/west,
 /area/desert_dam/interior/dam_interior/engine_room)
 "bxE" = (
 /obj/structure/machinery/power/geothermal,
@@ -23918,10 +23884,7 @@
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/engine_room)
 "bxJ" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/east,
 /area/desert_dam/interior/dam_interior/engine_room)
 "bxK" = (
 /obj/structure/surface/table,
@@ -25990,9 +25953,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/south,
 /area/desert_dam/interior/dam_interior/engine_room)
 "bER" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -33275,10 +33236,7 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "ccl" = (
 /obj/effect/blocker/toxic_water/Group_1,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/desert_dam/interior/dam_interior/engine_room)
 "ccm" = (
 /turf/open/asphalt/cement_sunbleached{
@@ -33287,10 +33245,7 @@
 /area/desert_dam/exterior/valley/valley_telecoms)
 "ccn" = (
 /obj/effect/blocker/toxic_water/Group_2,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/desert_dam/interior/dam_interior/engine_room)
 "cco" = (
 /turf/open/desert/rock/deep/transition{
@@ -63223,9 +63178,7 @@
 	unacidable = 0
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor{
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/south,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "rOa" = (
 /obj/structure/toilet,
@@ -64834,10 +64787,7 @@
 	unacidable = 0
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "xmH" = (
 /obj/effect/decal/cleanable/dirt,

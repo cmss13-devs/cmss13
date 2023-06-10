@@ -44,10 +44,7 @@
 /area/lv624/ground/barrens/containers)
 "r" = (
 /obj/structure/fence,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/lv624/ground/barrens/containers)
 "w" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,

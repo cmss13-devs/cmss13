@@ -798,10 +798,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "red"
-	},
+/turf/open/floor/default/red/red/west,
 /area/bigredv2/outside/marshal_office)
 "cA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -868,10 +865,7 @@
 	dir = 1;
 	name = "\improper Marshal Office"
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "red"
-	},
+/turf/open/floor/default/red/red/west,
 /area/bigredv2/outside/marshal_office)
 "cO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -947,10 +941,7 @@
 	dir = 1;
 	name = "\improper Marshal Office Checkpoint"
 	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "redfull"
-	},
+/turf/open/floor/default/red/redfull,
 /area/bigredv2/outside/marshal_office)
 "cX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -977,17 +968,11 @@
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "redfull"
-	},
+/turf/open/floor/default/red/redfull,
 /area/bigredv2/outside/marshal_office)
 "dc" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "redfull"
-	},
+/turf/open/floor/default/red/redfull,
 /area/bigredv2/outside/marshal_office)
 "dd" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1006,19 +991,13 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "redfull"
-	},
+/turf/open/floor/default/red/redfull,
 /area/bigredv2/outside/marshal_office)
 "dh" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "redfull"
-	},
+/turf/open/floor/default/red/redfull,
 /area/bigredv2/outside/marshal_office)
 "di" = (
 /obj/effect/decal/cleanable/dirt,

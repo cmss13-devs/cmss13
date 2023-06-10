@@ -8,7 +8,7 @@
 // Defines for barricade upgrades
 #define BARRICADE_UPGRADE_BURN "Biohazard Upgrade (+Burn)"
 #define BARRICADE_UPGRADE_BRUTE "Reinforced Upgrade (+Brute)"
-#define BARRICADE_UPGRADE_EXPLOSIVE "Explosive Upgrade (+Explosive)"
+#define BARRICADE_UPGRADE_EXPLOSIVE_AND_PROJECTILES "Composite Upgrade (++Explosive, ++Projectile)"
 
 // Defines for defense stats
 #define DEFENSE_FUNCTIONAL 0

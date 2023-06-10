@@ -30,6 +30,7 @@
 	var/brute_multiplier = 1
 	var/burn_multiplier = 1
 	var/explosive_multiplier = 1
+	var/brute_projectile_multiplier = 1
 	var/repair_materials = list()
 	var/metallic = TRUE
 
@@ -95,7 +96,7 @@
 				overlays += image('icons/obj/structures/barricades.dmi', icon_state = "+burn_upgrade_[damage_state]")
 			if(BARRICADE_UPGRADE_BRUTE)
 				overlays += image('icons/obj/structures/barricades.dmi', icon_state = "+brute_upgrade_[damage_state]")
-			if(BARRICADE_UPGRADE_EXPLOSIVE)
+			if(BARRICADE_UPGRADE_EXPLOSIVE_AND_PROJECTILES)
 				overlays += image('icons/obj/structures/barricades.dmi', icon_state = "+explosive_upgrade_[damage_state]")
 
 	if(is_wired)
@@ -252,7 +253,7 @@
 	if(P.ammo.damage_type == BURN)
 		P.damage = P.damage * burn_multiplier
 	else
-		P.damage = P.damage * brute_multiplier
+		P.damage = P.damage * brute_projectile_multiplier
 
 	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
 		take_damage(round(50 * burn_multiplier))

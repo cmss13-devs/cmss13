@@ -96,7 +96,7 @@
 				overlays += image('icons/obj/structures/barricades.dmi', icon_state = "+burn_upgrade_[damage_state]")
 			if(BARRICADE_UPGRADE_BRUTE)
 				overlays += image('icons/obj/structures/barricades.dmi', icon_state = "+brute_upgrade_[damage_state]")
-			if(BARRICADE_UPGRADE_EXPLOSIVE_AND_PROJECTILES)
+			if(BARRICADE_UPGRADE_EXPLOSIVE_AND_PROJECTILE)
 				overlays += image('icons/obj/structures/barricades.dmi', icon_state = "+explosive_upgrade_[damage_state]")
 
 	if(is_wired)

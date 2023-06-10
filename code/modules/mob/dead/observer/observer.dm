@@ -433,6 +433,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	for(var/obj/effect/step_trigger/S in new_turf) //<-- this is dumb
 		S.Crossed(src)
 
+	// CRUTCH because ghost don't respect normal movement rules
+	SEND_SIGNAL(new_turf, COMSIG_TURF_ENTERED, src)
+	SEND_SIGNAL(src, COMSIG_GHOST_MOVED, new_turf)
+
 /mob/dead/observer/get_examine_text(mob/user)
 	return list(desc)
 

@@ -1,0 +1,140 @@
+2023-06-02:
+  Drathek:
+  - bugfix: Fix runtime with a timer to fade out on screen orders again?
+  Morrow:
+  - rscadd: Added tunnels to the xeno tracker
+  - bugfix: Fixed xeno trackers on some maps
+  - balance: Placed resin walls now destroy nodes underneath them.
+2023-06-03:
+  Drathek:
+  - admin: Admin get log verbs now use FTP instead of run (offers save location rather
+      than just opening)
+  Khadd:
+  - bugfix: fix xenos being able to build over tunnels
+  Morrow:
+  - balance: Removes warrior cooldown reduction on slash
+  - balance: Warrior slightly lowered fling and punch cooldowns
+  - balance: Lowers fling stun to a micro stun and adds a slow
+  - balance: Decreases warrior lunge range to 4 tiles
+  NewyearnewmeUwu:
+  - bugfix: fixed armor prefs not giving the right thing
+  - bugfix: ERTs now use their arrivals messages.
+  ihatethisengine:
+  - spellcheck: direction tip now uses the correct order.
+2023-06-04:
+  Huffie56:
+  - bugfix: remove items anchored and on the LZ's on fiorina map.
+  Morrow:
+  - rscdel: Removed field kits
+  - rscdel: removed recommend tag from etool/sandbags
+  - rscdel: Removed the change stone
+  fira:
+  - bugfix: Fixed incorrect coordinates in Admin Niche log for signal flares.
+2023-06-05:
+  Drathek:
+  - admin: Fixed the force dropship verb (now known as Force Hijack) requiring the
+      admin to be adjacent to the console and runtiming.
+  - bugfix: Fixed xenos being able to use abilities on their UI; They will target
+      the turf under it.
+  - bugfix: Clients should hopefully avoid disconnection when observing someone that
+      is deleted.
+  Khadd:
+  - bugfix: largecrates now take damage and break if hit enough times by a projectile
+  - bugfix: construction nodes cant be placed inside of walls and such anymore
+  - bugfix: sandbags cant be fully built up with just one bag anymore
+  LynxSolstice:
+  - maptweak: Replaced the IFF locked M41As in the PMC nightmare that spawn on the
+      ground with the new no_lock variant.
+  Morrow:
+  - bugfix: Increases amount of survivor spawns on shivas to required level
+  - rscadd: Added automatic forsaken spawns groundside during hijack
+  NewyearnewmeUwu:
+  - balance: Headbite has a 10 second cooldown.
+  SpartanBobby:
+  - maptweak: LZ1 Bigred and west medical warehouse now has a glass ceiling
+  - maptweak: More sidewalks and pathways on big red
+  - maptweak: various minor turf edits to big red
+  - maptweak: places warning stripes tile under all doors on big red
+  - maptweak: adds glass ceilings to multiple fringe buildings on the outskirts of
+      LV624
+  fira:
+  - bugfix: Fixed going down ASRS elevator spamming computer messages.
+  - bugfix: To the joy of conspiracy theorists everywhere, USCM dropships can now
+      be caught on tape again.
+2023-06-06:
+  Huffie56:
+  - qol: increase minimum paygrade for every marines
+  Segrain:
+  - rscadd: Expanded the list of custom loadout items.
+  - qol: Custom loadout is now sorted into sections.
+  realforest2001:
+  - rscadd: Adds a staff to IC chat tab setting for faxes and prayers.
+2023-06-07:
+  Morrow:
+  - balance: HPR is now only found in requisitions.
+2023-06-08:
+  BeagleGaming1:
+  - balance: Maintenance Jack can pry flooring and do wrench surgery
+  Khadd:
+  - qol: transfer direction & rate are now listed in the description of reagent tanks
+  - bugfix: fixes being able to make others pick up chairs
+  Morrow:
+  - balance: Hand and feet now cannot get IB
+  Segrain:
+  - bugfix: Queen Eye no longer repeatedly throws runtime errors.
+  Steelpoint:
+  - maptweak: Fixed landing strip lights on most maps
+  fira:
+  - bugfix: Lobby Music is a bit quieter and should now stop properly when you spawn
+      in.
+  - bugfix: Fixed signallers hijacking radio headsets filters, bricking the frequency
+      for radio usage. They now have their own radio filter.
+  nauticall:
+  - imageadd: 'Resprited the following items: large colony floodlights, the large
+      colony floodlight switch, newscasters, and ATMs.'
+  realforest2001:
+  - rscadd: Adds an admin button for global blurb alerts. (Visual on game screen)
+  wHO_TOOKthejam:
+  - rscadd: gives DCC and PO the same armor choices
+2023-06-09:
+  Al-1ce:
+  - bugfix: Bicaridine no-longer says it can fix IB.
+  - spellcheck: RR, Bica, Rezadone and Anti-Zed are now more informative about their
+      side effects.
+  Drathek:
+  - bugfix: Fix xenos being unable to point and marines unable to open bags with MMB
+  - bugfix: Fix ghosts interacting with ghost join abilities and teleporting to UI
+      icons.
+  - bugfix: Disabled xenos transferring plasma to self (it just wasted plasma)
+  - ui: Vanguard dash now uses a different icon state while waiting for second use
+      (or timeout)
+  fira:
+  - qol: Reduced USCM SG max scattering on Full Auto fire so you don't have to periodically
+      let go of the fire button to keep it from firing way wide.
+2023-06-10:
+  Firartix , Thwomper and Sammy:
+  - rscadd: Added four types of tents to liven up FOB. They provide cold protection
+      and benefits depending on their type. The tents spawn in Requisitions roundstart
+      near the mortar. They're vulnerable to explosives and xenomorphs, and NON REPLACEABLE.
+      Mind where you put them!
+  - rscadd: The Command tent comes equipped with an overwatch console and a phone.
+  - rscadd: The Medical tent provides a small boost to surgery speed/pain carried
+      out inside it.
+  - rscadd: The Requisitions tent provides a restockable vendor, desk, and furniture
+      for organization.
+  - rscadd: The Big tent is just a big tent, and provides you a slate to organize
+      the way you want.
+  Huffie56:
+  - refactor: create many sub-type for item to clean the code.
+  Morrow:
+  - rscadd: Brought back the USCM blurb on first drop
+  - rscadd: Drop pouch is now buyable by riflemen
+  - rscadd: Reintroduced auto red alert when xenos are aboard a dropship
+  - rscdel: Removes fourth awkward LZ2 Soro communication relay
+  - balance: Burrowers are now unable to burrow while inside a non-burrow area
+  - rscadd: You can now find internal bleeding via Health Scanner
+  fira:
+  - rscadd: Added optional adaptive client zooming to match in-game zoom. This allows
+      display to be pixel perfect on most monitors if enabled, it removes blurring
+      of game introduced by Stretch to Fit mode, at the cost of slightly reduced vertical
+      size. It is best used with Auto Fit viewport feature enabled.

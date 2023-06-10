@@ -356,6 +356,9 @@
 		SEND_SIGNAL(client, COMSIG_CLIENT_RESET_VIEW, A)
 	return
 
+/mob/proc/reset_observer_view_on_deletion(atom/deleted, force)
+	SIGNAL_HANDLER
+	reset_view(null)
 
 /mob/proc/show_inv(mob/user)
 	user.set_interaction(src)

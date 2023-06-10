@@ -6,10 +6,7 @@
 	name = "treadmill"
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "aG" = (
 /obj/structure/window_frame/colony,
@@ -23,10 +20,7 @@
 	pixel_y = 2
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "ds" = (
 /obj/structure/machinery/conveyor_switch{
@@ -41,18 +35,12 @@
 	pixel_x = -8;
 	pixel_y = -4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "ej" = (
 /obj/structure/closet/crate/secure/hydrosec,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "ek" = (
 /obj/structure/surface/table/almayer,
@@ -60,10 +48,7 @@
 	pixel_x = -5
 	},
 /obj/effect/spawner/random/toy,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "ez" = (
 /obj/structure/surface/rack,
@@ -74,19 +59,13 @@
 	name = "running shoes"
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "eD" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "fr" = (
 /turf/open/floor{
@@ -101,10 +80,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/fitness)
 "hd" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "hm" = (
 /obj/structure/machinery/conveyor{
@@ -116,17 +92,11 @@
 	pixel_x = 8;
 	pixel_y = 7
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "hn" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "il" = (
 /obj/item/clothing/under/shorts/red,
@@ -140,10 +110,7 @@
 	pixel_y = -8
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "iM" = (
 /obj/item/toy/beach_ball/holoball,
@@ -166,17 +133,11 @@
 "kk" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "kv" = (
 /obj/effect/decal/remains/human,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "lq" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
@@ -190,17 +151,11 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "pV" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "rw" = (
 /turf/open/floor{
@@ -246,10 +201,7 @@
 "uV" = (
 /obj/structure/bed/chair,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "uY" = (
 /obj/structure/barricade/handrail{
@@ -265,10 +217,7 @@
 	id = "lv_gym_2";
 	name = "treadmill"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "vZ" = (
 /obj/structure/flora/grass/tallgrass/jungle,
@@ -276,10 +225,7 @@
 /area/lv624/ground/jungle/central_jungle)
 "wA" = (
 /obj/structure/bed/chair,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "wL" = (
 /turf/open/gm/dirtgrassborder/south,
@@ -288,10 +234,7 @@
 /obj/structure/closet/boxinggloves,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "xT" = (
 /obj/structure/surface/rack,
@@ -301,18 +244,12 @@
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "Ah" = (
 /obj/structure/closet/athletic_mixed,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "Aq" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -331,10 +268,7 @@
 /area/lv624/ground/jungle/central_jungle)
 "Bm" = (
 /obj/structure/machinery/vending/cola,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "BE" = (
 /obj/structure/window_frame/colony,
@@ -350,10 +284,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/corpsespawner/colonist/random/burst,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "CO" = (
 /obj/structure/machinery/colony_floodlight,
@@ -370,10 +301,7 @@
 /obj/structure/closet/lasertag/blue,
 /obj/item/tool/crowbar,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "DM" = (
 /turf/open/gm/grass/grass1,
@@ -402,10 +330,7 @@
 /area/lv624/lazarus/fitness)
 "Hn" = (
 /obj/item/clothing/suit/redtag,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "Hz" = (
 /obj/structure/fence,
@@ -414,17 +339,11 @@
 "HF" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/o2,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "Ia" = (
 /obj/structure/machinery/vending/snack,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "In" = (
 /turf/open/floor,
@@ -459,10 +378,7 @@
 "Js" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "JF" = (
 /obj/structure/surface/rack,
@@ -471,10 +387,7 @@
 	pixel_x = -6;
 	pixel_y = 2
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "JN" = (
 /obj/structure/filingcabinet/medical,
@@ -483,10 +396,7 @@
 /area/lv624/lazarus/fitness)
 "Kc" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "LB" = (
 /obj/structure/fence,
@@ -517,10 +427,7 @@
 "Op" = (
 /obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "Pb" = (
 /obj/structure/barricade/handrail,
@@ -532,10 +439,7 @@
 /area/lv624/ground/colony/north_nexus_road)
 "PC" = (
 /obj/item/tool/soap,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "Qf" = (
 /obj/structure/machinery/atm{
@@ -543,10 +447,7 @@
 	pixel_x = -30
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "Qh" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -562,20 +463,14 @@
 	pixel_y = 30
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "Qw" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_nexus_road)
 "Sj" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "Ss" = (
 /obj/effect/spawner/gibspawner/robot,
@@ -600,26 +495,17 @@
 "Tq" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "Tv" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "TS" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "Ur" = (
 /obj/effect/landmark/crap_item,
@@ -629,10 +515,7 @@
 "Vk" = (
 /obj/structure/closet/lasertag/red,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "Vs" = (
 /obj/structure/machinery/conveyor{
@@ -641,10 +524,7 @@
 	name = "treadmill"
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "Wh" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
@@ -661,17 +541,11 @@
 	pixel_y = 30;
 	start_charge = 0
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "Xu" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 
 (1,1,1) = {"

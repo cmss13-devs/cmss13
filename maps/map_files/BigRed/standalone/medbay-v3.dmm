@@ -36,10 +36,7 @@
 /area/bigredv2/outside/medical)
 "ag" = (
 /obj/structure/closet/secure_closet/chemical,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_west,
 /area/bigredv2/outside/medical)
 "ah" = (
 /obj/item/stack/sheet/metal,
@@ -169,10 +166,7 @@
 	},
 /obj/item/storage/box/beakers,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_west,
 /area/bigredv2/outside/medical)
 "aF" = (
 /obj/structure/machinery/computer/med_data,
@@ -1563,10 +1557,7 @@
 "ey" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/frame/table,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_west,
 /area/bigredv2/outside/medical)
 "ez" = (
 /obj/item/device/healthanalyzer,

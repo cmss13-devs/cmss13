@@ -35098,28 +35098,19 @@
 /area/desert_dam/exterior/river/riverside_south)
 "cjn" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/desert_dam/building/medical/chemistry)
 "cjo" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/tool/stamp,
 /obj/item/paper_bin,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/desert_dam/building/medical/chemistry)
 "cjp" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/packageWrap,
 /obj/item/tool/hand_labeler,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/desert_dam/building/medical/chemistry)
 "cjq" = (
 /turf/open/floor{
@@ -36751,29 +36742,21 @@
 /area/desert_dam/building/medical/chemistry)
 "coO" = (
 /obj/structure/machinery/chem_master,
-/turf/open/floor{
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/south_east,
 /area/desert_dam/building/medical/chemistry)
 "coP" = (
-/turf/open/floor{
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/south_east,
 /area/desert_dam/building/medical/chemistry)
 "coQ" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/south_east,
 /area/desert_dam/building/medical/chemistry)
 "coR" = (
 /obj/structure/bed/stool,
-/turf/open/floor{
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/south_east,
 /area/desert_dam/building/medical/chemistry)
 "coS" = (
 /obj/structure/surface/table/reinforced,
@@ -36969,29 +36952,21 @@
 /area/desert_dam/building/medical/office2)
 "cpA" = (
 /obj/structure/machinery/chem_dispenser,
-/turf/open/floor{
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/south_east,
 /area/desert_dam/building/medical/chemistry)
 "cpB" = (
 /obj/structure/bed/chair/office/light,
-/turf/open/floor{
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/south_east,
 /area/desert_dam/building/medical/chemistry)
 "cpC" = (
 /obj/structure/machinery/reagentgrinder,
 /obj/structure/surface/table/reinforced,
-/turf/open/floor{
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/south_east,
 /area/desert_dam/building/medical/chemistry)
 "cpD" = (
 /obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/south_east,
 /area/desert_dam/building/medical/chemistry)
 "cpE" = (
 /obj/structure/machinery/power/port_gen/pacman,
@@ -54918,9 +54893,7 @@
 /area/desert_dam/building/medical/morgue)
 "dPd" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/south_east,
 /area/desert_dam/building/medical/chemistry)
 "dPe" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,

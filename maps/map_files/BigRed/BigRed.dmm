@@ -2559,10 +2559,7 @@
 	pixel_x = -27
 	},
 /obj/item/storage/box/beakers,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_west,
 /area/bigredv2/outside/medical)
 "ain" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
@@ -2871,10 +2868,7 @@
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_west,
 /area/bigredv2/outside/medical)
 "ajl" = (
 /obj/structure/surface/table,
@@ -3464,10 +3458,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "alb" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_west,
 /area/bigredv2/caves/lambda/xenobiology)
 "alc" = (
 /turf/open/floor/white/purple/whitepurplefull,
@@ -4828,10 +4819,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "apw" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/south_west,
 /area/bigredv2/caves/lambda/xenobiology)
 "apx" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/core,
@@ -5137,16 +5125,10 @@
 /area/bigredv2/outside/nw)
 "aqq" = (
 /obj/structure/closet/secure_closet/chemical,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_west,
 /area/bigredv2/outside/medical)
 "aqr" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_west,
 /area/bigredv2/outside/medical)
 "aqs" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5155,17 +5137,11 @@
 "aqt" = (
 /obj/structure/machinery/chem_master,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/bigredv2/outside/medical)
 "aqu" = (
 /obj/structure/machinery/chem_dispenser,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/bigredv2/outside/medical)
 "aqv" = (
 /obj/structure/bed,
@@ -5389,27 +5365,18 @@
 "are" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_west,
 /area/bigredv2/outside/medical)
 "arf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/bigredv2/outside/medical)
 "arg" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/bigredv2/outside/medical)
 "ari" = (
 /obj/effect/decal/cleanable/blood,
@@ -5605,18 +5572,12 @@
 "arP" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/bigredv2/outside/medical)
 "arQ" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/reagentgrinder,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/bigredv2/outside/medical)
 "arR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5850,17 +5811,11 @@
 	dir = 8
 	},
 /obj/item/tool/surgery/circular_saw,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_west,
 /area/bigredv2/outside/medical)
 "asz" = (
 /obj/item/device/reagent_scanner,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_west,
 /area/bigredv2/outside/medical)
 "asA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5870,10 +5825,7 @@
 "asB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/bigredv2/outside/medical)
 "asC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6129,10 +6081,7 @@
 /obj/structure/machinery/chem_master,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/bigredv2/outside/medical)
 "atp" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
@@ -6328,17 +6277,11 @@
 /area/bigredv2/outside/nw)
 "atR" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_west,
 /area/bigredv2/outside/medical)
 "atS" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/bigredv2/outside/medical)
 "atT" = (
 /obj/structure/surface/table,
@@ -6348,10 +6291,7 @@
 	},
 /obj/item/tool/hand_labeler,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/bigredv2/outside/medical)
 "atU" = (
 /obj/structure/window_frame/solaris,
@@ -6618,26 +6558,17 @@
 /area/bigredv2/outside/nw)
 "auG" = (
 /obj/effect/spawner/random/bomb_supply,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_west,
 /area/bigredv2/outside/medical)
 "auH" = (
 /obj/structure/bed/chair,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/bigredv2/outside/medical)
 "auI" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/bodybags,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/bigredv2/outside/medical)
 "auJ" = (
 /turf/open/floor{
@@ -8405,10 +8336,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aAl" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/bigredv2/caves/lambda/research)
 "aAm" = (
 /obj/structure/closet/hydrant{
@@ -9359,9 +9287,7 @@
 "aDk" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/south_east,
 /area/bigredv2/caves/lambda/research)
 "aDl" = (
 /obj/structure/ore_box,
@@ -9709,9 +9635,7 @@
 /turf/open/floor/white/purple/whitepurplefull,
 /area/bigredv2/caves/lambda/research)
 "aEo" = (
-/turf/open/floor{
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/south_east,
 /area/bigredv2/caves/lambda/research)
 "aEp" = (
 /turf/open/floor{
@@ -26529,10 +26453,7 @@
 	phone_id = "Clinic Labs";
 	pixel_y = 24
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_west,
 /area/bigredv2/outside/medical)
 "fBc" = (
 /obj/structure/pipes/standard/tank/phoron,

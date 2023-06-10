@@ -3563,10 +3563,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "atX" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "atY" = (
 /obj/structure/window_frame/colony,
@@ -3693,17 +3690,11 @@
 "auz" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "auA" = (
 /obj/structure/machinery/vending/snack,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "auB" = (
 /obj/structure/surface/table,
@@ -3721,10 +3712,7 @@
 "auD" = (
 /obj/item/clothing/under/shorts/red,
 /obj/structure/surface/rack,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "auE" = (
 /turf/open/gm/river,
@@ -3741,10 +3729,7 @@
 "auH" = (
 /obj/structure/closet/crate/secure/hydrosec,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "auI" = (
 /obj/structure/cargo_container/wy/left,
@@ -3933,10 +3918,7 @@
 "avu" = (
 /obj/structure/closet/lasertag/red,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "avv" = (
 /obj/item/toy/beach_ball,
@@ -4026,24 +4008,15 @@
 "avL" = (
 /obj/structure/closet/lasertag/blue,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "avM" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "avN" = (
 /obj/item/tool/soap,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "avP" = (
 /obj/structure/fence,
@@ -4224,17 +4197,11 @@
 	pixel_y = 30;
 	start_charge = 0
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "awx" = (
 /obj/effect/decal/remains/human,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "awy" = (
 /obj/item/device/radio/intercom{
@@ -4243,10 +4210,7 @@
 	name = "General Listening Channel";
 	pixel_y = 30
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "awz" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
@@ -4349,24 +4313,15 @@
 /area/lv624/ground/jungle/south_central_jungle)
 "awR" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "awS" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "awT" = (
 /obj/item/clothing/under/shorts/blue,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "awU" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -4503,10 +4458,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "axA" = (
 /obj/item/stool,
@@ -4593,10 +4545,7 @@
 /obj/item/storage/firstaid/regular,
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "axQ" = (
 /obj/effect/landmark/crap_item,
@@ -4614,10 +4563,7 @@
 	pixel_x = 29
 	},
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "axV" = (
 /turf/open/gm/dirtgrassborder/north,
@@ -4757,19 +4703,13 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "ayz" = (
 /obj/item/tool/mop,
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "ayA" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -4835,10 +4775,7 @@
 /obj/item/clothing/suit/redtag,
 /obj/structure/closet/athletic_mixed,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "ayM" = (
 /obj/structure/surface/table,
@@ -4859,10 +4796,7 @@
 	},
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "ayP" = (
 /turf/closed/wall/r_wall,
@@ -4995,10 +4929,7 @@
 	pixel_y = 3
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "azj" = (
 /turf/open/floor{
@@ -5024,26 +4955,17 @@
 "azm" = (
 /obj/structure/closet/boxinggloves,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "azn" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "azo" = (
 /obj/structure/machinery/vending/cola,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "azp" = (
 /turf/closed/wall/r_wall,
@@ -5140,18 +5062,12 @@
 "azL" = (
 /obj/structure/closet/cabinet,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "azM" = (
 /obj/structure/closet/secure_closet/hydroponics,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "azN" = (
 /obj/structure/bed,
@@ -11498,10 +11414,7 @@
 	name = "Weyland-Yutani Automatic Teller Machine";
 	pixel_x = -30
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "buw" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -19896,10 +19809,7 @@
 "xqV" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
+/turf/open/floor/white/purple/whitepurplecorner/north_east,
 /area/lv624/lazarus/fitness)
 "xrI" = (
 /obj/structure/flora/jungle/vines/light_3,

@@ -361,6 +361,22 @@
 
 /turf/open/floor/white/purple
 
+//dot corner
+/turf/open/floor/white/purple/whitepurplecorner
+	icon_state = "whitepurplecorner"
+
+/turf/open/floor/white/purple/whitepurplecorner/south_east
+
+/turf/open/floor/white/purple/whitepurplecorner/north_west
+	dir = 1;
+
+/turf/open/floor/white/purple/whitepurplecorner/south_west
+	dir = 8;
+
+/turf/open/floor/white/purple/whitepurplecorner/north_east
+	dir = 4;
+
+
 /turf/open/floor/white/purple/whitepurplefull
 	icon_state = "whitepurplefull"
 

@@ -123,12 +123,14 @@
 	minimap = new
 	minimap.give_to(src)
 
-	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
-
 	for(var/path in subtypesof(/datum/action/observer_action))
 		var/datum/action/observer_action/new_action = new path()
 		new_action.give_to(src)
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_PREDATOR_ROUND_TOGGLED, PROC_REF(toggle_predator_action))
+
+	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
 
 	verbs -= /mob/verb/pickup_item
 	verbs -= /mob/verb/pull_item
@@ -200,6 +202,9 @@
 
 /mob/dead/observer/Login()
 	..()
+
+	toggle_predator_action()
+
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
 
 /mob/dead/observer/Destroy()
@@ -389,7 +394,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
 		var/turf/location = get_turf(src)
 		if(location) //to avoid runtime when a mob ends up in nullspace
-			msg_admin_niche("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
+			msg_admin_niche("[key_name_admin(usr)] has ghosted. [ADMIN_JMP(location)]")
 		log_game("[key_name_admin(usr)] has ghosted.")
 		var/mob/dead/observer/ghost = ghostize(FALSE) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost && !is_admin_level(z))
@@ -427,6 +432,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	for(var/obj/effect/step_trigger/S in new_turf) //<-- this is dumb
 		S.Crossed(src)
+
+	// CRUTCH because ghost don't respect normal movement rules
+	SEND_SIGNAL(new_turf, COMSIG_TURF_ENTERED, src)
+	SEND_SIGNAL(src, COMSIG_GHOST_MOVED, new_turf)
 
 /mob/dead/observer/get_examine_text(mob/user)
 	return list(desc)
@@ -813,12 +822,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/list/mobs_by_role = list() // the list the mobs are assigned to first, for sorting purposes
-	for(var/mob/living/L as anything in GLOB.freed_mob_list)
-		var/role_name = L.get_role_name()
+	for(var/datum/weakref/ref as anything in GLOB.freed_mob_list)
+		var/mob/living/resolved_mob = ref.resolve()
+		var/role_name = resolved_mob.get_role_name()
 		if(!role_name)
 			role_name = "No Role"
 		LAZYINITLIST(mobs_by_role[role_name])
-		mobs_by_role[role_name] += L
+		mobs_by_role[role_name] += resolved_mob
 
 	var/list/freed_mob_choices = list() // the list we'll be choosing from
 	for(var/role in mobs_by_role)
@@ -830,18 +840,18 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/mob/living/L = freed_mob_choices[choice]
-	if(!L || !(L in GLOB.freed_mob_list))
+	if(!L || !(WEAKREF(L) in GLOB.freed_mob_list))
 		return
 
 	if(!istype(L))
 		return
 
 	if(QDELETED(L) || L.client)
-		GLOB.freed_mob_list -= L
+		GLOB.freed_mob_list -= WEAKREF(L)
 		to_chat(src, SPAN_WARNING("Something went wrong."))
 		return
 
-	GLOB.freed_mob_list -= L
+	GLOB.freed_mob_list -= WEAKREF(L)
 	M.mind.transfer_to(L, TRUE)
 
 /mob/dead/verb/join_as_hellhound()
@@ -1042,3 +1052,27 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			&& src.z == nearby_observer.z && get_dist(src, nearby_observer) <= observer_client.view)
 			to_chat(observer_client, SPAN_DEADSAY("<b>[src]</b> points to [A] [nearby_observer.format_jump(A)]"))
 	return TRUE
+
+/// This proc is called when a predator round is toggled by the admin verb, as well as when a ghost logs in
+/mob/dead/observer/proc/toggle_predator_action()
+	SIGNAL_HANDLER
+
+	var/key_to_use = ckey || persistent_ckey
+
+	if(!key_to_use)
+		return
+
+	if(!(RoleAuthority.roles_whitelist[key_to_use] & WHITELIST_PREDATOR))
+		return
+
+	if(SSticker.mode.flags_round_type & MODE_PREDATOR)
+		if(locate(/datum/action/join_predator) in actions)
+			return
+
+		var/datum/action/join_predator/new_action = new()
+		new_action.give_to(src)
+		return
+
+	var/datum/action/join_predator/old_action = locate() in actions
+	if(old_action)
+		qdel(old_action)

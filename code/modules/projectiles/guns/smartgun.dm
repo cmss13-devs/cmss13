@@ -88,7 +88,7 @@
 	burst_delay = FIRE_DELAY_TIER_9
 	fa_delay = FIRE_DELAY_TIER_SG
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_8
-	fa_max_scatter = SCATTER_AMOUNT_TIER_3
+	fa_max_scatter = SCATTER_AMOUNT_TIER_9
 	if(accuracy_improvement)
 		accuracy_mult += HIT_ACCURACY_MULT_TIER_3
 	else

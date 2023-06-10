@@ -73,7 +73,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
 		return FALSE
 	else
-		if(!T.supports_surgery)
+		if(!istype(T) || !T.supports_surgery)
 			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG))
 				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
 			return FALSE
@@ -114,6 +114,10 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 		step_duration *= surface_modifier
 
+	var/list/human_modifiers = list("surgery_speed" = 1.0, "pain_reduction" = 0)
+	SEND_SIGNAL(user, COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS, human_modifiers)
+	step_duration *= human_modifiers["surgery_speed"]
+
 	var/try_to_fail
 	if(user.a_intent != INTENT_HELP)
 		try_to_fail = TRUE
@@ -145,7 +149,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 			to_chat(user, SPAN_WARNING("[capitalize(english_list(message, final_comma_text = ","))]."))
 
 	var/advance //Whether to continue to the next step afterwards.
-	var/pain_failure_chance = max(0, target.pain?.feels_pain ? surgery.pain_reduction_required - target.pain.reduction_pain : 0) * 2 //Each extra pain unit increases the chance by 2
+	var/pain_failure_chance = max(0, (target.pain?.feels_pain ? surgery.pain_reduction_required - target.pain.reduction_pain : 0) * 2 - human_modifiers["pain_reduction"]) //Each extra pain unit increases the chance by 2
 
 	play_preop_sound(user, target, target_zone, tool, surgery)
 

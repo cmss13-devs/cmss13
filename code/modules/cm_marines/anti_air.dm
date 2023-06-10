@@ -23,6 +23,12 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	if(!almayer_aa_cannon)
 		almayer_aa_cannon = src
 
+/obj/structure/anti_air_cannon/Destroy()
+	. = ..()
+	if(almayer_aa_cannon == src)
+		almayer_aa_cannon = null
+		message_admins("Reference to almayer_aa_cannon is lost!")
+
 /obj/structure/anti_air_cannon/ex_act()
 	return
 

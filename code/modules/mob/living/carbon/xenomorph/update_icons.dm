@@ -162,17 +162,6 @@
 		overlays_standing[X_RESOURCE_LAYER] = image("icon" = icon, "icon_state" = "[caste_type]_resources", "layer" =-X_RESOURCE_LAYER)
 		apply_overlay(X_RESOURCE_LAYER)
 
-//Call when target overlay should be added/removed
-/mob/living/carbon/xenomorph/update_targeted()
-	remove_overlay(X_TARGETED_LAYER)
-	if(targeted_by && target_locked)
-		overlays_standing[X_TARGETED_LAYER] = image("icon" = target_locked, "layer" =-X_TARGETED_LAYER)
-	else if(!targeted_by && target_locked)
-		QDEL_NULL(target_locked)
-	if(!targeted_by || src.stat == DEAD)
-		overlays_standing[X_TARGETED_LAYER] = null
-	apply_overlay(X_TARGETED_LAYER)
-
 /mob/living/carbon/xenomorph/update_inv_legcuffed()
 	remove_overlay(X_LEGCUFF_LAYER)
 	if(legcuffed)

@@ -71,7 +71,7 @@
 		return
 
 	// Click handled elsewhere. (These clicks are not affected by the next_move cooldown)
-	if (click(A, mods) | A.clicked(src, mods, location, params))
+	if (click(A, mods) || A.clicked(src, mods, location, params))
 		return
 
 	// Default click functions from here on.
@@ -88,12 +88,16 @@
 
 	// Throwing stuff, can't throw on inventory items nor screen objects nor items inside storages.
 	if (throw_mode && A.loc != src && !isstorage(A.loc) && !istype(A, /atom/movable/screen))
-		throw_item(A)
+		//if we're past the throw delay just throw, add the new delay time, and reset the buffer
+		if(COOLDOWN_FINISHED(src, throw_delay))
+			throw_item(A)
+			COOLDOWN_START(src, throw_delay, THROW_DELAY)
+			throw_buffer = 0
+		//if we're still in the throw delay we check if the buffer is already used, if not then we throw the item and set the buffer as used
+		else if(!throw_buffer)
+			throw_item(A)
+			throw_buffer++
 		return
-
-	// Last thing clicked is tracked for something somewhere.
-	if(!isgun(A) && !isturf(A) && !istype(A,/atom/movable/screen))
-		last_target_click = world.time
 
 	var/obj/item/W = get_active_hand()
 
@@ -324,8 +328,28 @@
 	apply_clickcatcher()
 	mob.reload_fullscreens()
 
-	if(prefs.auto_fit_viewport)
+	if(prefs.adaptive_zoom)
+		INVOKE_ASYNC(src, PROC_REF(adaptive_zoom))
+	else if(prefs.auto_fit_viewport)
 		INVOKE_ASYNC(src, .verb/fit_viewport)
+
+/client/proc/get_adaptive_zoom_factor()
+	if(!prefs.adaptive_zoom)
+		return 0
+	var/zoom = prefs.adaptive_zoom
+	if(view <= 8)
+		return zoom * 2
+	else if(view <= 15)
+		return zoom * 1
+	else
+		return 0
+
+/// Attempts to scale client zoom automatically to fill 1080p multiples. Best used with auto fit viewport.
+/client/proc/adaptive_zoom()
+	var/icon_size = world.icon_size * get_adaptive_zoom_factor()
+	winset(src, "mapwindow.map", "icon-size=[icon_size]")
+	if(prefs.auto_fit_viewport)
+		fit_viewport()
 
 /client/proc/create_clickcatcher()
 	if(!void)

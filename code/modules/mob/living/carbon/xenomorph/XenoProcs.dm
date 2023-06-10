@@ -147,7 +147,7 @@
 	. += ""
 
 //A simple handler for checking your state. Used in pretty much all the procs.
-/mob/living/carbon/xenomorph/proc/check_state(permissive = 0)
+/mob/living/carbon/xenomorph/proc/check_state(permissive = FALSE)
 	if(!permissive)
 		if(is_mob_incapacitated() || lying || buckled || evolving || !isturf(loc))
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
@@ -434,6 +434,9 @@
 		if(istype(O, /obj/structure/fence))
 			has_obstacle = TRUE
 			break
+		if(istype(O, /obj/structure/tunnel))
+			has_obstacle = TRUE
+			break
 		if(istype(O, /obj/structure/bed))
 			if(istype(O, /obj/structure/bed/chair/dropship/passenger))
 				var/obj/structure/bed/chair/dropship/passenger/P = O
@@ -629,7 +632,7 @@
 		TC.tackle_reset_id = null
 
 	. = TC.attempt_tackle(tackle_bonus)
-	if (!.)
+	if (!. || (M.status_flags & XENO_HOST))
 		TC.tackle_reset_id = addtimer(CALLBACK(src, PROC_REF(reset_tackle), M), 4 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 	else
 		reset_tackle(M)
@@ -691,13 +694,15 @@
 /mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, silent = FALSE) //tracked_marker shouldnt be nulled outside this PROC!! >:C
 	var/atom/movable/screen/mark_locator/ML = hud_used.locate_marker
 	ML.overlays.Cut()
-	if(!silent)
-		if(destroyed)
-			to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
-		else
-			to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
+
 	if(tracked_marker)
+		if(!silent)
+			if(destroyed)
+				to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
+			else
+				to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
 		tracked_marker.xenos_tracking -= src
+
 	tracked_marker = null
 
 /mob/living/carbon/xenomorph/proc/do_nesting_host(mob/current_mob, nest_structural_base)

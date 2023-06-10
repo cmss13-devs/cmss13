@@ -1,8 +1,0 @@
-author: "Firartix , Thwomper and Sammy"
-delete-after: True
-changes:
-  - rscadd: "Added four types of tents to liven up FOB. They provide cold protection and benefits depending on their type. The tents spawn in Requisitions roundstart near the mortar. They're vulnerable to explosives and xenomorphs, and NON REPLACEABLE. Mind where you put them!"
-  - rscadd: "The Command tent comes equipped with an overwatch console and a phone."
-  - rscadd: "The Medical tent provides a small boost to surgery speed/pain carried out inside it."
-  - rscadd: "The Requisitions tent provides a restockable vendor, desk, and furniture for organization."
-  - rscadd: "The Big tent is just a big tent, and provides you a slate to organize the way you want."

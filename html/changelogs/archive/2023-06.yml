@@ -111,3 +111,30 @@
   fira:
   - qol: Reduced USCM SG max scattering on Full Auto fire so you don't have to periodically
       let go of the fire button to keep it from firing way wide.
+2023-06-10:
+  Firartix , Thwomper and Sammy:
+  - rscadd: Added four types of tents to liven up FOB. They provide cold protection
+      and benefits depending on their type. The tents spawn in Requisitions roundstart
+      near the mortar. They're vulnerable to explosives and xenomorphs, and NON REPLACEABLE.
+      Mind where you put them!
+  - rscadd: The Command tent comes equipped with an overwatch console and a phone.
+  - rscadd: The Medical tent provides a small boost to surgery speed/pain carried
+      out inside it.
+  - rscadd: The Requisitions tent provides a restockable vendor, desk, and furniture
+      for organization.
+  - rscadd: The Big tent is just a big tent, and provides you a slate to organize
+      the way you want.
+  Huffie56:
+  - refactor: create many sub-type for item to clean the code.
+  Morrow:
+  - rscadd: Brought back the USCM blurb on first drop
+  - rscadd: Drop pouch is now buyable by riflemen
+  - rscadd: Reintroduced auto red alert when xenos are aboard a dropship
+  - rscdel: Removes fourth awkward LZ2 Soro communication relay
+  - balance: Burrowers are now unable to burrow while inside a non-burrow area
+  - rscadd: You can now find internal bleeding via Health Scanner
+  fira:
+  - rscadd: Added optional adaptive client zooming to match in-game zoom. This allows
+      display to be pixel perfect on most monitors if enabled, it removes blurring
+      of game introduced by Stretch to Fit mode, at the cost of slightly reduced vertical
+      size. It is best used with Auto Fit viewport feature enabled.

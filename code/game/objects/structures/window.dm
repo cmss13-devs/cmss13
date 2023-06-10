@@ -445,7 +445,7 @@
 	unacidable = TRUE
 
 /obj/structure/window/reinforced/ultra/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
+	. = ..()
 	if (PF)
 		PF.flags_can_pass_all = NONE
 		PF.flags_can_pass_front = NONE

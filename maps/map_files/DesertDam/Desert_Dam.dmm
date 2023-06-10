@@ -11351,7 +11351,7 @@
 /turf/open/floor/white/green/whitegreencorner/south_east,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aIN" = (
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aIO" = (
 /turf/open/floor/white/green/whitegreencorner/south_west,
@@ -11992,7 +11992,7 @@
 /area/desert_dam/exterior/valley/valley_cargo)
 "aKV" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aKW" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -12325,11 +12325,11 @@
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aLM" = (
 /obj/structure/machinery/light,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aLN" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aLO" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,

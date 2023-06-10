@@ -621,7 +621,7 @@
 /area/bigredv2/outside/medical)
 "bX" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/outside/medical)
 "bY" = (
 /obj/structure/pipes/standard/simple/hidden/green,

@@ -5758,7 +5758,7 @@
 	},
 /area/lv624/lazarus/sleep_male)
 "aCa" = (
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/lv624/lazarus/main_hall)
 "aCb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -8053,7 +8053,7 @@
 /area/lv624/lazarus/main_hall)
 "aMh" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/lv624/lazarus/main_hall)
 "aMi" = (
 /obj/structure/reagent_dispensers/watertank,

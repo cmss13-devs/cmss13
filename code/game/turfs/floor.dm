@@ -430,3 +430,6 @@
 
 /turf/open/floor/warning/east
 	dir = 4;
+
+//use the same base as default tile but isnt's any base color i saw.
+

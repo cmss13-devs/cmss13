@@ -142,7 +142,7 @@
 "av" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/machinery/light/small,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/whiskey_outpost/inside/hospital/triage)
 "ax" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -187,7 +187,7 @@
 /area/whiskey_outpost/inside/living)
 "aI" = (
 /obj/structure/machinery/cm_vending/sorted/medical,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/whiskey_outpost/inside/hospital/triage)
 "aJ" = (
 /obj/structure/window/reinforced{
@@ -736,7 +736,7 @@
 /area/whiskey_outpost/inside/cic)
 "cO" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/whiskey_outpost/inside/hospital/triage)
 "cP" = (
 /obj/structure/bed/chair{
@@ -1767,7 +1767,7 @@
 	icon_state = "triagedecaldir"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/whiskey_outpost/inside/hospital)
 "gL" = (
 /obj/structure/disposalpipe/segment,
@@ -1847,7 +1847,7 @@
 "gZ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/glass/beaker/bluespace,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/whiskey_outpost/inside/hospital)
 "hb" = (
 /obj/effect/landmark/start/whiskey/researcher,
@@ -2148,7 +2148,7 @@
 /obj/structure/machinery/sleep_console{
 	dir = 1
 	},
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/whiskey_outpost/inside/hospital/triage)
 "hY" = (
 /obj/structure/window/reinforced{
@@ -2185,7 +2185,7 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaldir"
 	},
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/whiskey_outpost/inside/hospital)
 "ih" = (
 /obj/structure/machinery/light{
@@ -2381,7 +2381,7 @@
 /area/whiskey_outpost/outside/mortar_pit)
 "iN" = (
 /obj/structure/machinery/cm_vending/sorted/medical,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/whiskey_outpost/inside/hospital)
 "iO" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
@@ -2765,7 +2765,7 @@
 /area/whiskey_outpost/inside/cic)
 "jZ" = (
 /obj/structure/machinery/sleep_console,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/whiskey_outpost/inside/hospital/triage)
 "ka" = (
 /obj/structure/sign/poster{
@@ -3532,7 +3532,7 @@
 	pixel_x = 20
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/whiskey_outpost/inside/hospital)
 "nb" = (
 /obj/structure/machinery/autodoc_console,
@@ -3574,7 +3574,7 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottomleft"
 	},
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/whiskey_outpost/inside/hospital)
 "ng" = (
 /turf/open/gm/coast/beachcorner/north_east,
@@ -4369,7 +4369,7 @@
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "qp" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/whiskey_outpost/inside/hospital)
 "qq" = (
 /obj/structure/disposalpipe/segment{
@@ -4383,7 +4383,7 @@
 /area/whiskey_outpost)
 "qs" = (
 /obj/structure/machinery/light/small,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/whiskey_outpost/inside/hospital/triage)
 "qt" = (
 /turf/open/gm/coast/west,
@@ -11532,7 +11532,7 @@
 /obj/item/reagent_container/hypospray,
 /obj/item/reagent_container/hypospray,
 /obj/structure/machinery/power/apc/almayer,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/whiskey_outpost/inside/hospital/triage)
 "TC" = (
 /obj/structure/machinery/recharge_station,
@@ -12425,7 +12425,7 @@
 	},
 /obj/structure/machinery/light/small,
 /obj/structure/machinery/disposal,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/whiskey_outpost/inside/hospital/triage)
 "XB" = (
 /turf/closed/shuttle/dropship{

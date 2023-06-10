@@ -5098,15 +5098,15 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "aql" = (
 /obj/structure/machinery/seed_extractor,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/caves/lambda/xenobiology)
 "aqm" = (
 /obj/structure/machinery/biogenerator,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/caves/lambda/xenobiology)
 "aqn" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/caves/lambda/xenobiology)
 "aqo" = (
 /obj/structure/machinery/vending/hydronutrients,
@@ -7245,11 +7245,11 @@
 /turf/open/floor/white/green/whitegreencorner/south_east,
 /area/bigredv2/outside/medical)
 "awO" = (
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/outside/medical)
 "awP" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/outside/medical)
 "awQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -7258,7 +7258,7 @@
 /area/bigredv2/outside/medical)
 "awR" = (
 /obj/structure/machinery/iv_drip,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/outside/medical)
 "awS" = (
 /obj/structure/machinery/door_control{
@@ -7266,7 +7266,7 @@
 	name = "Storm Shutters";
 	pixel_y = -32
 	},
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/outside/medical)
 "awT" = (
 /turf/open/floor/white/green/whitegreencorner/south_west,
@@ -8046,11 +8046,11 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/outside/medical)
 "azr" = (
 /obj/structure/bed/roller,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/outside/medical)
 "azs" = (
 /obj/structure/bed/roller,
@@ -8644,7 +8644,7 @@
 	pixel_y = -32
 	},
 /obj/structure/machinery/iv_drip,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/outside/medical)
 "aBh" = (
 /obj/structure/sign/safety/galley{
@@ -10522,7 +10522,7 @@
 /area/bigredv2/outside/virology)
 "aHc" = (
 /obj/structure/surface/table/reinforced,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/caves/lambda/virology)
 "aHd" = (
 /obj/effect/decal/warning_stripes{
@@ -10607,7 +10607,7 @@
 "aHs" = (
 /obj/structure/machinery/body_scanconsole,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/outside/medical)
 "aHt" = (
 /obj/structure/machinery/light,
@@ -11780,7 +11780,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aKS" = (
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/caves/lambda/virology)
 "aKT" = (
 /obj/structure/machinery/light/small/built{
@@ -12346,7 +12346,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/caves/lambda/virology)
 "aMx" = (
 /obj/effect/decal/warning_stripes{
@@ -12354,7 +12354,7 @@
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/caves/lambda/virology)
 "aMy" = (
 /obj/effect/decal/warning_stripes{
@@ -15638,7 +15638,7 @@
 	pixel_x = 6;
 	pixel_y = 8
 	},
-/turf/open/floor/white/blue/whiteblue/south,
+/turf/open/floor/white/green/whitegreen/south,
 /area/bigredv2/caves/lambda/virology)
 "aWc" = (
 /obj/structure/surface/table/reinforced,

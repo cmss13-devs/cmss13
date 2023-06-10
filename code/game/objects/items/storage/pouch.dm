@@ -536,7 +536,7 @@
 		new /obj/item/ammo_magazine/smartgun/dirty(src)
 		
 /obj/item/storage/pouch/magazine/large/whiteout/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/smartgun/heap(src)
 
 /obj/item/storage/pouch/magazine/large/m16/fill_preset_inventory()

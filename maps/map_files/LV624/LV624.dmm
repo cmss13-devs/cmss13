@@ -7644,7 +7644,8 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aJh" = (
-/turf/open/floor/white/yellow/whiteyellow/south/area/lv624/lazarus/main_hall)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/lv624/lazarus/main_hall)
 "aJi" = (
 /obj/structure/flora/jungle/vines/light_2,
 /obj/structure/flora/jungle/vines/heavy,
@@ -19638,7 +19639,8 @@
 /obj/item/ammo_casing/bullet{
 	icon_state = "cartridge_9_1"
 	},
-/turf/open/floor/white/yellow/whiteyellow/south/area/lv624/lazarus/corporate_dome)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/lv624/lazarus/corporate_dome)
 "vJs" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /obj/item/bananapeel,
@@ -20326,7 +20328,8 @@
 	pixel_y = 4
 	},
 /obj/item/handcuffs/cable/white,
-/turf/open/floor/white/yellow/whiteyellow/south/area/lv624/lazarus/corporate_dome)
+/turf/open/floor/white/yellow/whiteyellow/south,
+/area/lv624/lazarus/corporate_dome)
 "xxz" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/crowbar,

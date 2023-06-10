@@ -241,6 +241,7 @@
 /turf/open/floor/dark
 	icon_state = "dark"
 
+//dark2 is the same as dark maybe i could remove it into another PR?
 /turf/open/floor/dark2
 	icon_state = "dark2"
 
@@ -267,6 +268,21 @@
 	dir = 8;
 
 /turf/open/floor/white/blue/whiteblue/east
+	dir = 4;
+
+//dot corner
+/turf/open/floor/white/blue/whitebluecorner
+	icon_state = "whitebluecorner"
+
+/turf/open/floor/white/blue/whitebluecorner/south_east
+
+/turf/open/floor/white/blue/whitebluecorner/north_west
+	dir = 1;
+
+/turf/open/floor/white/blue/whitebluecorner/south_west
+	dir = 8;
+
+/turf/open/floor/white/blue/whitebluecorner/north_east
 	dir = 4;
 
 /turf/open/floor/white/blue/whitebluefull
@@ -356,7 +372,7 @@
 
 //warning floors tiles
 
-//look link to default floor.
+//use the same base as default tile but isnt's any base color i saw.
 /turf/open/floor/warning
 	icon_state = "warning"
 

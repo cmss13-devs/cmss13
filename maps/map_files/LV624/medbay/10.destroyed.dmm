@@ -135,10 +135,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "nz" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/north_east,
 /area/lv624/lazarus/medbay)
 "nG" = (
 /obj/structure/fence,

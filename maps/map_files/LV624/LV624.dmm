@@ -2703,9 +2703,7 @@
 /turf/open/floor/white/blue/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "aou" = (
-/turf/open/floor{
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/south_east,
 /area/lv624/lazarus/medbay)
 "aov" = (
 /turf/open/floor/white/blue/whiteblue/north,
@@ -2808,10 +2806,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aoU" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/north_west,
 /area/lv624/lazarus/medbay)
 "aoX" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -3039,10 +3034,7 @@
 /area/lv624/lazarus/medbay)
 "arg" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/south_west,
 /area/lv624/lazarus/medbay)
 "ari" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -12699,10 +12691,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "eoM" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/north_east,
 /area/lv624/lazarus/medbay)
 "epG" = (
 /obj/structure/showcase,
@@ -14453,9 +14442,7 @@
 	pixel_y = 8
 	},
 /obj/item/tool/pen/clicky,
-/turf/open/floor{
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/south_east,
 /area/lv624/lazarus/corporate_dome)
 "jrC" = (
 /obj/structure/curtain/red,
@@ -15352,10 +15339,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "lNe" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/north_west,
 /area/lv624/lazarus/corporate_dome)
 "lPJ" = (
 /turf/open/gm/dirtgrassborder{
@@ -15506,10 +15490,7 @@
 /area/lv624/ground/river/east_river)
 "mjB" = (
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/south_west,
 /area/lv624/lazarus/corporate_dome)
 "mjY" = (
 /obj/structure/barricade/handrail/strata{
@@ -15935,10 +15916,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "nrb" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/north_west,
 /area/lv624/lazarus/corporate_dome)
 "nrm" = (
 /turf/open/gm/dirt{
@@ -16343,10 +16321,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
 "nYZ" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/south_west,
 /area/lv624/lazarus/medbay)
 "nZz" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
@@ -18135,10 +18110,7 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/barrens/south_west_barrens)
 "sIi" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/north_east,
 /area/lv624/lazarus/corporate_dome)
 "sIr" = (
 /obj/effect/landmark/crap_item,
@@ -18947,10 +18919,7 @@
 /area/lv624/ground/barrens/east_barrens)
 "uGM" = (
 /obj/item/storage/fancy/cigarettes/emeraldgreen,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/north_east,
 /area/lv624/lazarus/corporate_dome)
 "uHI" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,

@@ -6856,10 +6856,7 @@
 /turf/open/floor/white,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "auE" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/north_east,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "auF" = (
 /turf/open/floor/white/blue/whiteblue/north,
@@ -6928,10 +6925,7 @@
 /turf/open/floor/white/blue/whiteblue/north,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "auS" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/north_west,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "auT" = (
 /turf/open/floor/white,
@@ -7593,10 +7587,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/north_east,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "awU" = (
 /obj/effect/blocker/toxic_water,
@@ -7640,9 +7631,7 @@
 /turf/open/floor/freezerfloor,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "axa" = (
-/turf/open/floor{
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/south_east,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "axb" = (
 /obj/structure/flora/pottedplant,
@@ -7655,10 +7644,7 @@
 /turf/open/floor/white/blue/whiteblue/south,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "axe" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "whitebluecorner"
-	},
+/turf/open/floor/white/blue/whitebluecorner/south_west,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "axf" = (
 /obj/structure/machinery/light,

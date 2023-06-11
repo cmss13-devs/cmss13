@@ -9106,9 +9106,7 @@
 /area/fiorina/oob)
 "fEY" = (
 /obj/structure/machinery/power/apc,
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/default/delivery,
 /area/fiorina/station/power_ring)
 "fFf" = (
 /obj/item/stool,

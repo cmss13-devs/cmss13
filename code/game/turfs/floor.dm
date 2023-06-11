@@ -195,10 +195,12 @@
 //those default tile with decal stuck on top.
 /turf/open/floor/default
 
-//unsure if direction on it matter // doing that as a seperate comit!
+//unsure if direction on it matter
 /turf/open/floor/default/bot
 	icon_state = "bot"
 
+/turf/open/floor/default/delivery
+	icon_state = "delivery"
 
 /turf/open/floor/default/loadingarea
 	icon_state = "loadingarea"

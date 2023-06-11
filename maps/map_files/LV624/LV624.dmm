@@ -9541,9 +9541,7 @@
 	pixel_y = 30;
 	start_charge = 15
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/default/delivery,
 /area/lv624/lazarus/comms)
 "aTK" = (
 /turf/open/gm/dirt,

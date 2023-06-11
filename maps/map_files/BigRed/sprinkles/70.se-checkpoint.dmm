@@ -57,9 +57,7 @@
 	name = "\improper Checkpoint Office"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/default/delivery,
 /area/bigred/ground/security)
 "ie" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -152,9 +150,7 @@
 	id = "filtration";
 	name = "Filtration Lockdown"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/default/delivery,
 /area/bigredv2/outside/filtration_cave_cas)
 "uk" = (
 /obj/effect/decal/cleanable/dirt,
@@ -170,9 +166,7 @@
 	dir = 1;
 	name = "\improper Checkpoint Office"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/default/delivery,
 /area/bigred/ground/security)
 "vH" = (
 /obj/effect/decal/cleanable/blood,
@@ -332,9 +326,7 @@
 	id = "filtration";
 	name = "Filtration Lockdown"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/default/delivery,
 /area/bigredv2/outside/filtration_cave_cas)
 "Qo" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,

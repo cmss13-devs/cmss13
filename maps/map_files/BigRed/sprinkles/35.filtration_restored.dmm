@@ -518,9 +518,7 @@
 	id = "FiltrationShutters";
 	name = "\improper Airlock Shutters"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/default/delivery,
 /area/bigredv2/outside/filtration_plant)
 "cg" = (
 /obj/structure/machinery/door_control{

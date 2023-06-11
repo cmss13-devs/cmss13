@@ -29615,9 +29615,7 @@
 /area/prison/maintenance/hangar_barracks)
 "bIb" = (
 /obj/structure/machinery/door/airlock/glass,
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/default/delivery,
 /area/prison/monorail/east)
 "bIc" = (
 /obj/structure/toilet,
@@ -36517,14 +36515,10 @@
 	id = "execution"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/default/delivery,
 /area/prison/execution)
 "cdS" = (
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/default/delivery,
 /area/prison/execution)
 "cdT" = (
 /turf/open/floor/prison{
@@ -37931,9 +37925,7 @@
 	id = "pirate_cargo";
 	name = "Rocinante Cargo Bay Door"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/default/delivery,
 /area/prison/pirate)
 "ciq" = (
 /obj/item/ammo_casing,
@@ -37943,9 +37935,7 @@
 	id = "pirate_cargo";
 	name = "Rocinante Cargo Bay Door"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/default/delivery,
 /area/prison/pirate)
 "cir" = (
 /obj/effect/landmark/corpsespawner/prison_security,
@@ -37956,9 +37946,7 @@
 	id = "pirate_cargo";
 	name = "Rocinante Cargo Bay Door"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/default/delivery,
 /area/prison/pirate)
 "cis" = (
 /obj/item/ammo_casing,
@@ -37967,9 +37955,7 @@
 	id = "pirate_cargo";
 	name = "Rocinante Cargo Bay Door"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/default/delivery,
 /area/prison/pirate)
 "ciu" = (
 /obj/structure/shuttle/diagonal{
@@ -47999,9 +47985,7 @@
 	pixel_x = -24;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "delivery"
-	},
+/turf/open/floor/default/delivery,
 /area/prison/telecomms)
 "sdq" = (
 /obj/structure/machinery/light{

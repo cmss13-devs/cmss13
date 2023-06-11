@@ -108,6 +108,7 @@
 			range_bounds = RECT(x, y - 4, 7, 7)
 
 /obj/structure/machinery/defenses/sentry/proc/unset_range()
+	SIGNAL_HANDLER
 	if(range_bounds)
 		QDEL_NULL(range_bounds)
 

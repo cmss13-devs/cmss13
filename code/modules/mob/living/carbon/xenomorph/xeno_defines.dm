@@ -913,7 +913,8 @@
 	var/xenos_count = 0
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
 		if(isspecieshuman(current_human) || isspeciessynth(current_human))
-			if(is_mainship_level(current_human.z))
+			var/turf/turf = get_turf(current_human)
+			if(is_mainship_level(turf?.z))
 				shipside_humans_count++
 	for(var/mob/living/carbon/xenomorph/xenomorph as anything in totalXenos)
 		if(isfacehugger(xenomorph))

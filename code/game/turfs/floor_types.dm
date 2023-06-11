@@ -274,6 +274,7 @@
 
 /turf/open/floor/almayer/no_build
 	allow_construction = FALSE
+	hull_floor = TRUE
 
 // RESEARCH STUFF
 /turf/open/floor/almayer/research/containment/entrance

@@ -567,8 +567,8 @@
 		for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
 			if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
 				playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
-		message_admins("[key_name_admin(src)] has created an AI Apollo report")
-		log_admin("AI Apollo report: [input]")
+		message_admins("[key_name_admin(src)] has created an AI APOLLO report")
+		log_admin("AI APOLLO report: [input]")
 
 /client/proc/cmd_admin_create_AI_shipwide_report()
 	set name = "Report: ARES Shipwide"

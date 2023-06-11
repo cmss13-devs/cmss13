@@ -1367,7 +1367,7 @@ const Emergency = (props, context) => {
   const minimumEvacTime = worldtime > distresstimelock;
   const distressCooldown = worldtime < distresstime;
   const canDistress = alert_level === 2 && !distressCooldown && minimumEvacTime;
-  let distress_reason;
+  let distress_reason = 'Launch a Distress Beacon.';
   if (alert_level === 3) {
     distress_reason = 'Self-destruct in progress. Beacon disabled.';
   } else if (alert_level !== 2) {
@@ -1376,12 +1376,10 @@ const Emergency = (props, context) => {
     distress_reason = 'Beacon is currently on cooldown.';
   } else if (!minimumEvacTime) {
     distress_reason = "It's too early to launch a distress beacon.";
-  } else {
-    distress_reason = 'Launch a Distress Beacon.';
   }
 
   const canEvac = (evac_status === 0, alert_level >= 2);
-  let evac_reason;
+  let evac_reason = 'Begin evacuation procedures. Authorise Lifeboats.';
   if (alert_level !== 2) {
     evac_reason = 'Ship is not under an active emergency.';
   } else if (evac_status === 1) {
@@ -1390,14 +1388,13 @@ const Emergency = (props, context) => {
     evac_reason = 'Evacuation in progress.';
   } else if (evac_status === 3) {
     evac_reason = 'Evacuation complete.';
-  } else {
-    evac_reason = 'Begin evacuation procedures. Authorise Lifeboats.';
   }
 
   const minimumNukeTime = worldtime > nuketimelock;
   const canNuke =
     (nuke_available, !mission_failed, evac_reason === 0, minimumNukeTime);
-  let nuke_reason;
+  let nuke_reason =
+    'Request a nuclear device to be authorized by USCM High Command.';
   if (!nuke_available) {
     nuke_reason = 'No nuclear ordnance is available during this operation.';
   } else if (mission_failed) {
@@ -1407,9 +1404,6 @@ const Emergency = (props, context) => {
     nuke_reason = 'You cannot use a nuclear device while abandoning the ship!';
   } else if (!minimumNukeTime) {
     nuke_reason = 'It is too soon to use a nuclear device. Keep fighting!';
-  } else {
-    nuke_reason =
-      'Request a nuclear device to be authorized by USCM High Command.';
   }
 
   return (

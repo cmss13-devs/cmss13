@@ -21,7 +21,7 @@
 
 /datum/equipment_preset/wy/New()
 	. = ..()
-	access += get_all_civilian_accesses() + get_all_centcom_access()
+	access += get_all_civilian_access() + get_all_weyland_access()
 
 /datum/equipment_preset/wy/load_id(mob/living/carbon/human/new_human)
 	. = ..()
@@ -86,7 +86,7 @@
 
 /datum/equipment_preset/wy/manager/New()
 	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
+	access = get_global_access()
 
 /datum/equipment_preset/wy/manager/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(new_human), WEAR_BODY)

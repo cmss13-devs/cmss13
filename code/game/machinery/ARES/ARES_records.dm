@@ -69,3 +69,30 @@
 
 /datum/ares_record/deleted_talk/New()
 	time = worldtime2text()
+
+
+/datum/ares_ticket
+	var/ticket_type = "Root Tickete"
+	var/ticket_status = TICKET_PENDING
+	/// Name of who is handling the ticket. Derived from last login.
+	var/ticket_assignee
+	/// World time in text format.
+	var/ticket_time
+	/// Who submitted the ticket. Derived from last login.
+	var/ticket_submitter
+	/// The name of the ticket.
+	var/ticket_name
+	/// The content of the ticket, usually an explanation of what it is for.
+	var/ticket_details
+
+/datum/ares_ticket/New(user, name, details)
+	ticket_time = worldtime2text()
+	ticket_submitter = user
+	ticket_details = details
+	ticket_name = name
+
+/datum/ares_ticket/maintenance
+	ticket_type = ARES_RECORD_MAINTENANCE
+
+/datum/ares_ticket/access_ticket
+	ticket_type = ARES_RECORD_ACCESS

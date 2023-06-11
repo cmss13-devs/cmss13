@@ -109,7 +109,7 @@
 
 /datum/equipment_preset/wo/xo/New()
 	. = ..()
-	access = get_all_marine_access()
+	access = get_main_marine_access()
 
 /datum/equipment_preset/wo/xo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel

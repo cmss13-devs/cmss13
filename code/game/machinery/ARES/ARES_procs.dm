@@ -10,6 +10,14 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 	var/obj/structure/machinery/ares/processor/apollo/p_apollo
 	var/obj/structure/machinery/ares/processor/bioscan/p_bioscan
 	var/obj/structure/machinery/computer/ares_console/interface
+	var/list/obj/structure/machinery/computer/working_joe/ticket_computers = list()
+
+	/// The chat log of the apollo link. Timestamped.
+	var/list/apollo_log = list()
+
+	/// Working Joe stuff
+	var/list/tickets_maintenance = list()
+	var/list/tickets_access = list()
 
 /datum/ares_link/Destroy()
 	for(var/obj/structure/machinery/ares/link in linked_systems)
@@ -20,7 +28,41 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 		alert.delink()
 	..()
 
-/obj/structure/machinery/computer/ares_console/proc/get_ares_access(obj/item/card/id/card)
+
+// ------ ARES Logging Procs ------ //
+/proc/log_ares_apollo(speaker, message)
+	if(!speaker)
+		speaker = "Unknown"
+	var/datum/ares_link/link = GLOB.ares_link
+	if(!link.p_apollo || link.p_apollo.inoperable())
+		return
+	if(!link.p_interface || link.p_interface.inoperable())
+		return
+	link.apollo_log.Add("[worldtime2text()]: [speaker], '[message]'")
+
+/datum/ares_link/proc/log_ares_bioscan(title, input)
+	if(!p_bioscan || p_bioscan.inoperable() || !interface)
+		return FALSE
+	interface.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
+
+/datum/ares_link/proc/log_ares_bombardment(mob/living/user, ob_name, coordinates)
+	interface.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user))
+
+/datum/ares_link/proc/log_ares_announcement(title, message)
+	interface.records_announcement.Add(new /datum/ares_record/announcement(title, message))
+
+/datum/ares_link/proc/log_ares_antiair(mob/living/user, details)
+	interface.records_security.Add(new /datum/ares_record/antiair(details, user))
+
+/datum/ares_link/proc/log_ares_requisition(source, details, mob/living/user)
+	interface.records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user))
+
+/datum/ares_link/proc/log_ares_security(title, details)
+	interface.records_security.Add(new /datum/ares_record/security(title, details))
+// ------ End ARES Logging Procs ------ //
+
+// ------ ARES Interface Procs ------ //
+/obj/structure/machinery/computer/proc/get_ares_access(obj/item/card/id/card)
 	if(ACCESS_ARES_DEBUG in card.access)
 		return ARES_ACCESS_DEBUG
 	switch(card.assignment)
@@ -45,7 +87,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 	else
 		return ARES_ACCESS_BASIC
 
-/obj/structure/machinery/computer/ares_console/proc/auth_to_text(access_level)
+/obj/structure/machinery/computer/proc/ares_auth_to_text(access_level)
 	switch(access_level)
 		if(ARES_ACCESS_BASIC)//0
 			return "Authorized"
@@ -71,40 +113,6 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 			return "AI Service Technician"
 
 
-// ----- ARES Logging Procs ----- //
-/proc/log_ares_apollo(speaker, message)
-	if(!speaker)
-		speaker = "Unknown"
-	var/datum/ares_link/link = GLOB.ares_link
-	if(!link.p_apollo || link.p_apollo.inoperable())
-		return
-	if(!link.p_interface || link.p_interface.inoperable())
-		return
-	if(!link.interface || link.interface.inoperable())
-		return
-	else
-		link.interface.apollo_log.Add("[worldtime2text()]: [speaker], '[message]'")
-
-/datum/ares_link/proc/log_ares_bioscan(title, input)
-	if(!p_bioscan || p_bioscan.inoperable() || !interface)
-		return FALSE
-	interface.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
-
-/datum/ares_link/proc/log_ares_bombardment(mob/living/user, ob_name, coordinates)
-	interface.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user))
-
-/datum/ares_link/proc/log_ares_announcement(title, message)
-	interface.records_announcement.Add(new /datum/ares_record/announcement(title, message))
-
-/datum/ares_link/proc/log_ares_antiair(mob/living/user, details)
-	interface.records_security.Add(new /datum/ares_record/antiair(details, user))
-
-/datum/ares_link/proc/log_ares_requisition(source, details, mob/living/user)
-	interface.records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user))
-
-/datum/ares_link/proc/log_ares_security(title, details)
-	interface.records_security.Add(new /datum/ares_record/security(title, details))
-
 /obj/structure/machinery/computer/ares_console/proc/message_ares(text, mob/Sender, ref)
 	var/msg = SPAN_STAFF_IC("<b><font color=orange>ARES:</font> [key_name(Sender, 1)] [ARES_MARK(Sender)] [ADMIN_PP(Sender)] [ADMIN_VV(Sender)] [ADMIN_SM(Sender)] [ADMIN_JMP_USER(Sender)] [ARES_REPLY(Sender, ref)]:</b> [text]")
 	var/datum/ares_record/talk_log/conversation = locate(ref)
@@ -114,10 +122,12 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 			to_chat(admin, msg)
 			if(admin.prefs.toggles_sound & SOUND_ARES_MESSAGE)
 				playsound_client(admin, 'sound/machines/chime.ogg', vol = 25)
+	log_say("[key_name(Sender)] sent '[text]' to ARES 1:1.")
 
 /obj/structure/machinery/computer/ares_console/proc/response_from_ares(text, ref)
 	var/datum/ares_record/talk_log/conversation = locate(ref)
 	conversation.conversation += "[MAIN_AI_SYSTEM] at [worldtime2text()], '[text]'"
+// ------ End ARES Interface Procs ------ //
 
 // ------ ARES Interface UI ------ //
 
@@ -146,7 +156,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 		sudo_state = TRUE
 	data["sudo"] = sudo_state
 
-	data["access_text"] = "[sudo_holder ? "(SUDO)," : ""] access level [authentication], [auth_to_text(authentication)]."
+	data["access_text"] = "[sudo_holder ? "(SUDO)," : ""] access level [authentication], [ares_auth_to_text(authentication)]."
 	data["access_level"] = authentication
 
 	data["alert_level"] = security_level
@@ -156,7 +166,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 	data["access_log"] = list()
 	data["access_log"] += access_list
 	data["apollo_log"] = list()
-	data["apollo_log"] += apollo_log
+	data["apollo_log"] += link.apollo_log
 
 	data["deleted_conversation"] = list()
 	data["deleted_conversation"] += deleted_1to1
@@ -316,13 +326,17 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 			if(istype(idcard))
 				authentication = get_ares_access(idcard)
 				last_login = idcard.registered_name
-			else
+			else if(operator.wear_id)
 				idcard = operator.wear_id
 				if(istype(idcard))
 					authentication = get_ares_access(idcard)
 					last_login = idcard.registered_name
+			else
+				to_chat(usr, SPAN_WARNING("You require an ID card to access this terminal!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
 			if(authentication)
-				access_list += "[last_login] at [worldtime2text()], Access Level [authentication] - [auth_to_text(authentication)]."
+				access_list += "[last_login] at [worldtime2text()], Access Level [authentication] - [ares_auth_to_text(authentication)]."
 			current_menu = "main"
 
 		if("sudo")
@@ -513,7 +527,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 				to_chat(usr, SPAN_WARNING("The ordnance request frequency is garbled, wait for reset!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			if(security_level == SEC_LEVEL_DELTA)
+			if(security_level == SEC_LEVEL_DELTA || SSticker.mode.is_in_endgame)
 				to_chat(usr, SPAN_WARNING("The mission has failed catastrophically, what do you want a nuke for!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
@@ -525,3 +539,278 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 			to_chat(usr, SPAN_NOTICE("A nuclear ordnance request has been sent to USCM High Command."))
 			COOLDOWN_START(src, ares_nuclear_cooldown, COOLDOWN_COMM_DESTRUCT)
 			return TRUE
+// ------ End ARES Interface UI ------ //
+
+
+/obj/structure/machinery/computer/working_joe/get_ares_access(obj/item/card/id/card)
+	if(ACCESS_ARES_DEBUG in card.access)
+		return APOLLO_ACCESS_DEBUG
+	switch(card.assignment)
+		if(JOB_WORKING_JOE)
+			return APOLLO_ACCESS_JOE
+		if(JOB_CHIEF_ENGINEER, JOB_SYNTH, JOB_CO)
+			return APOLLO_ACCESS_AUTHED
+	if(ACCESS_MARINE_AI in card.access)
+		return APOLLO_ACCESS_AUTHED
+	if(ACCESS_MARINE_AI_TEMP in card.access)
+		return APOLLO_ACCESS_TEMP
+	if((ACCESS_MARINE_COMMAND in card.access ) || (ACCESS_MARINE_ENGINEERING in card.access) || (ACCESS_WY_CORPORATE in card.access))
+		return APOLLO_ACCESS_REPORTER
+	else
+		return APOLLO_ACCESS_REQUEST
+
+/obj/structure/machinery/computer/working_joe/ares_auth_to_text(access_level)
+	switch(access_level)
+		if(APOLLO_ACCESS_REQUEST)//0
+			return "Unauthorized Personnel"
+		if(APOLLO_ACCESS_REPORTER)//1
+			return "Validated Incident Reporter"
+		if(APOLLO_ACCESS_TEMP)//2
+			return "Authorized Visitor"
+		if(APOLLO_ACCESS_AUTHED)//3
+			return "Certified Personnel"
+		if(APOLLO_ACCESS_JOE)//4
+			return "Working Joe"
+		if(APOLLO_ACCESS_DEBUG)//5
+			return "AI Service Technician"
+
+// ------ Maintenance Controller UI ------ //
+/obj/structure/machinery/computer/working_joe/verb/eject_id()
+	set category = "Object"
+	set name = "Eject ID Card"
+	set src in oview(1)
+
+	if(!usr || usr.stat || usr.lying) return
+
+	if(authenticator_id)
+		authenticator_id.loc = get_turf(src)
+		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
+			usr.put_in_hands(authenticator_id)
+		if(operable()) // Powered. Console can response.
+			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
+		else
+			to_chat(usr, "You remove \the [authenticator_id] from \the [src].")
+		ticket_authenticated = FALSE // No card - no access
+		authenticator_id = null
+
+	else if(target_id)
+		target_id.loc = get_turf(src)
+		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
+			usr.put_in_hands(target_id)
+		else
+			to_chat(usr, "You remove \the [target_id] from \the [src].")
+		target_id = null
+
+	else
+		to_chat(usr, "There is nothing to remove from the console.")
+	return
+
+/obj/structure/machinery/computer/working_joe/attackby(obj/O, mob/user)
+	if(istype(O, /obj/item/card/id))
+		if(!operable())
+			to_chat(user, SPAN_NOTICE("You tried to inject \the [O] but \the [src] remains silent."))
+			return
+		var/obj/item/card/id/idcard = O
+		if((ACCESS_MARINE_AI in idcard.access) || (ACCESS_ARES_DEBUG in idcard.access))
+			if(!authenticator_id)
+				if(user.drop_held_item())
+					O.forceMove(src)
+					authenticator_id = O
+				authenticate(authenticator_id)
+			else if(!target_id)
+				if(user.drop_held_item())
+					O.forceMove(src)
+					target_id = O
+			else
+				to_chat(user, "Both slots are full already. Remove a card first.")
+		else
+			if(!target_id)
+				if(user.drop_held_item())
+					O.forceMove(src)
+					target_id = O
+			else
+				to_chat(user, "Both slots are full already. Remove a card first.")
+	else
+		..()
+
+/obj/structure/machinery/computer/working_joe/proc/authenticate(obj/item/card/id/id_card)
+	if(!id_card)
+		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Authenticator card is missing!\"")
+		return FALSE
+
+	if((ACCESS_MARINE_AI in id_card.access) || (ACCESS_ARES_DEBUG in id_card.access))
+		ticket_authenticated = TRUE
+		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGIN: Welcome, [id_card.registered_name]. Access granted.\"")
+		return TRUE
+
+	visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Access denied.\"")
+	return FALSE
+
+
+
+
+/obj/structure/machinery/computer/working_joe/attack_hand(mob/user as mob)
+	if(..() || !allowed(usr) || inoperable())
+		return FALSE
+
+	tgui_interact(user)
+	return TRUE
+
+/obj/structure/machinery/computer/working_joe/tgui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "WorkingJoe", name)
+		ui.open()
+
+/obj/structure/machinery/computer/working_joe/ui_data(mob/user)
+	var/list/data = list()
+
+	data["ticket_console"] = ticket_console
+	data["current_menu"] = current_menu
+	data["last_page"] = last_menu
+
+	data["logged_in"] = last_login
+
+	data["access_text"] = "access level [authentication], [ares_auth_to_text(authentication)]."
+	data["access_level"] = authentication
+
+	data["alert_level"] = security_level
+	data["worldtime"] = world.time
+
+	data["access_log"] = list()
+	data["access_log"] += login_list
+
+	data["apollo_log"] = list()
+	data["apollo_log"] += link.apollo_log
+
+	data["authenticated"] = ticket_authenticated
+
+
+	var/list/logged_maintenance = list()
+	for(var/datum/ares_ticket/maintenance/maint_ticket as anything in link.tickets_maintenance)
+		if(!istype(maint_ticket))
+			continue
+		var/list/current_maint = list()
+		current_maint["time"] = maint_ticket.ticket_time
+		current_maint["title"] = maint_ticket.ticket_name
+		current_maint["details"] = maint_ticket.ticket_details
+		current_maint["status"] = maint_ticket.ticket_status
+		current_maint["submitter"] = maint_ticket.ticket_submitter
+		current_maint["assignee"] = maint_ticket.ticket_assignee
+		current_maint["ref"] = "\ref[maint_ticket]"
+		logged_maintenance += list(current_maint)
+	data["maintenance_tickets"] = logged_maintenance
+
+	var/list/logged_access = list()
+	for(var/datum/ares_ticket/access_ticket/access_ticket as anything in link.tickets_access)
+		var/list/current_ticket = list()
+		current_ticket["time"] = access_ticket.ticket_time
+		current_ticket["title"] = access_ticket.ticket_name
+		current_ticket["details"] = access_ticket.ticket_details
+		current_ticket["status"] = access_ticket.ticket_status
+		current_ticket["submitter"] = access_ticket.ticket_submitter
+		current_ticket["assignee"] = access_ticket.ticket_assignee
+		current_ticket["ref"] = "\ref[access_ticket]"
+		logged_access += list(current_ticket)
+	data["access_tickets"] = logged_access
+
+
+	return data
+
+/obj/structure/machinery/computer/working_joe/ui_static_data(mob/user)
+	var/list/data = list()
+
+	data["link_id"] = link_id
+
+	return data
+
+/obj/structure/machinery/computer/working_joe/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(!allowed(user))
+		return UI_UPDATE
+	if(inoperable())
+		return UI_DISABLED
+
+/obj/structure/machinery/computer/working_joe/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/playsound = TRUE
+	var/mob/living/carbon/human/operator = usr
+
+	switch (action)
+		if("go_back")
+			if(!last_menu)
+				return to_chat(usr, SPAN_WARNING("Error, no previous page detected."))
+			var/temp_holder = current_menu
+			current_menu = last_menu
+			last_menu = temp_holder
+
+		if("login")
+
+			var/obj/item/card/id/idcard = operator.get_active_hand()
+			if(istype(idcard))
+				authentication = get_ares_access(idcard)
+				last_login = idcard.registered_name
+			else if(operator.wear_id)
+				idcard = operator.wear_id
+				if(istype(idcard))
+					authentication = get_ares_access(idcard)
+					last_login = idcard.registered_name
+			else
+				to_chat(usr, SPAN_WARNING("You require an ID card to access this terminal!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(authentication)
+				login_list += "[last_login] at [worldtime2text()], Access Level [authentication] - [ares_auth_to_text(authentication)]."
+			current_menu = "main"
+
+		if("logout")
+			last_menu = current_menu
+			current_menu = "login"
+			login_list += "[last_login] logged out at [worldtime2text()]."
+
+		if("home")
+			last_menu = current_menu
+			current_menu = "main"
+		if("page_logins")
+			last_menu = current_menu
+			current_menu = "login_records"
+		if("page_apollo")
+			last_menu = current_menu
+			current_menu = "apollo"
+		if("page_request")
+			last_menu = current_menu
+			current_menu = "access_requests"
+		if("page_returns")
+			last_menu = current_menu
+			current_menu = "access_returns"
+		if("page_report")
+			last_menu = current_menu
+			current_menu = "maint_reports"
+		if("page_tickets")
+			last_menu = current_menu
+			current_menu = "access_tickets"
+		if("page_maintenance")
+			last_menu = current_menu
+			current_menu = "maint_claim"
+
+		if("new_report")
+			var/name = tgui_input_text(usr, "What is the type of maintenance item you wish to report?\n\nExample:\n 'Broken light in Aft Hallway.'", "Ticket Name", encode = FALSE)
+			if(!name)
+				return FALSE
+			var/details = tgui_input_text(usr, "What are the details for this report?", "Ticket Details", encode = FALSE)
+			if(!details)
+				return FALSE
+			var/confirm = tgui_alert(usr, "Please confirm the submission of your maintenance report. \n\n [name] \n\n [details] \n\n Is this correct?", "Confirmation", list("Yes", "No"))
+			if(confirm == "Yes")
+				if(link)
+					var/datum/ares_ticket/maintenance/maint_ticket = new(last_login, name, details)
+					link.tickets_maintenance += maint_ticket
+					log_game("ARES: Maintenance Ticket created by [key_name(operator)] as [last_login] with Header '[name]' and Details of '[details]'.")
+					return TRUE
+			return FALSE
+
+	if(playsound)
+		playsound(src, "keyboard_alt", 15, 1)

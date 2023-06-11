@@ -184,7 +184,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		new_look = GLOB.armor_style_list[user.client.prefs.preferred_armor]
 
 	icon_state = replacetext(icon_state,"1","[new_look]")
-	update_icon()
+	update_icon(user)
 
 /obj/item/clothing/suit/storage/marine/pickup(mob/user)
 	if(flags_marine_armor & ARMOR_LAMP_ON)

@@ -20,15 +20,9 @@
 
 	var/mob/current_mob = new_member.current
 
-	var/picked
-	var/mob/living/carbon/xenomorph/new_xeno
-	if(!leader)
-		picked = pick(/mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/lurker, /mob/living/carbon/xenomorph/spitter)
-		leader = new_xeno
-	else
-		picked = pick(/mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/runner)
+	var/picked = pick_weight(list(/mob/living/carbon/xenomorph/warrior = 2, /mob/living/carbon/xenomorph/lurker = 2, /mob/living/carbon/xenomorph/spitter = 2, /mob/living/carbon/xenomorph/drone = 5, /mob/living/carbon/xenomorph/runner = 5))
 
-	new_xeno = new picked(spawn_loc)
+	var/mob/living/carbon/xenomorph/new_xeno = new picked(spawn_loc)
 
 	new_member.transfer_to(new_xeno, TRUE)
 

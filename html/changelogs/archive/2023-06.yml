@@ -139,8 +139,12 @@
       of game introduced by Stretch to Fit mode, at the cost of slightly reduced vertical
       size. It is best used with Auto Fit viewport feature enabled.
 2023-06-11:
+  Al-1ce:
+  - spellcheck: Polykevlon no-longer uses an underscore in its name.
   Morrow:
   - rscadd: Forsaken ERT is now weighted by type
   - bugfix: Fixed medical holocards
+  - rscadd: Escape pods now have a 50% chance to crash land to the surface
+  - bugfix: Escape pods will no longer relaunch when evacuation is complete
   NewyearnewmeUwu:
   - bugfix: fixed a bug with armor prefs

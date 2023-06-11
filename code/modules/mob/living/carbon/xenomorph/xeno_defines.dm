@@ -915,7 +915,7 @@
 		if(isspecieshuman(current_human) || isspeciessynth(current_human))
 			if(is_mainship_level(current_human.z))
 				shipside_humans_count++
-	for(var/mob/living/carbon/xenomorph as anything in totalXenos)
+	for(var/mob/living/carbon/xenomorph/xenomorph as anything in totalXenos)
 		if(isfacehugger(xenomorph))
 			continue
 		xenos_count++

@@ -776,25 +776,21 @@ var/const/MAX_SAVE_SLOTS = 10
 			HTML += "</table></td><td valign='top' width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
 			index = 0
 
-		HTML += "<tr class='[job.selection_class]'><td width='50%' align='right'>"
+		HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>"
 		if(jobban_isbanned(user, job.title))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td><b>BANNED</b></td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='60%'><b>BANNED</b></td></tr>"
 			continue
 		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !(RoleAuthority.roles_whitelist[user.ckey] & job.flags_whitelist))
-			HTML += "<b><del>[job.disp_title]</del></b></td></td><td>WHITELISTED</td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='60%'>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
-			var/list/missing_requirements = job.get_role_requirements(user.client)
-			HTML += "<b><del>[job.disp_title]</del></b></td></td><td>TIMELOCKED</td></tr>"
-			for(var/r in missing_requirements)
-				var/datum/timelock/T = r
-				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='center'></td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='60%'>TIMELOCKED</td></tr>"
 			continue
+
 		HTML += "<b>[job.disp_title]</b></td>"
 
-		HTML += "<td width='50%'>"
 		var/slot_name = get_job_slot_name(job.title)
-		HTML += "<a href='?_src_=prefs;preference=job_slot;task=assign;target_job=[job.title];'>[slot_name]</a>"
+		HTML += "<td width='60%'><a href='?_src_=prefs;preference=job_slot;task=assign;target_job=[job.title];'>[slot_name]</a>"
 		HTML += "</td></tr>"
 
 	HTML += "</td></tr></table>"
@@ -916,7 +912,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	return TRUE
 
 /datum/preferences/proc/assign_job_slot(mob/user, target_job)
-	var/list/slot_options = list("Randomised character" = JOB_SLOT_RANDOMISED, "Current character" = JOB_SLOT_CURRENT)
+	var/list/slot_options = list(JOB_SLOT_RANDOMISED_TEXT = JOB_SLOT_RANDOMISED_SLOT, JOB_SLOT_CURRENT_TEXT = JOB_SLOT_CURRENT_SLOT)
 	var/savefile/S = new /savefile(path)
 	var/slot_name
 	for(var/slot in 1 to MAX_SAVE_SLOTS)
@@ -930,13 +926,13 @@ var/const/MAX_SAVE_SLOTS = 10
 	set_job_slots(user)
 
 /datum/preferences/proc/get_job_slot_name(job_title)
-	. = "Current character"
+	. = JOB_SLOT_CURRENT_TEXT
 	if(!(job_title in pref_job_slots))
 		return
 	var/slot_number = pref_job_slots[job_title]
 	switch(slot_number)
-		if(JOB_SLOT_RANDOMISED)
-			return "Randomised character"
+		if(JOB_SLOT_RANDOMISED_SLOT)
+			return JOB_SLOT_RANDOMISED_TEXT
 		if(1 to MAX_SAVE_SLOTS)
 			var/savefile/S = new /savefile(path)
 			S.cd = "/character[slot_number]"
@@ -947,7 +943,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/datum/job/J
 	for(var/role in RoleAuthority.roles_by_path)
 		J = RoleAuthority.roles_by_path[role]
-		pref_job_slots[J.title] = JOB_SLOT_CURRENT
+		pref_job_slots[J.title] = JOB_SLOT_CURRENT_SLOT
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)
 	var/whitelist_flags = RoleAuthority.roles_whitelist[user.ckey]
@@ -1941,7 +1937,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		return
 	var/slot_for_job = pref_job_slots[job_title]
 	switch(slot_for_job)
-		if(JOB_SLOT_RANDOMISED)
+		if(JOB_SLOT_RANDOMISED_SLOT)
 			be_random_body = TRUE
 			be_random_name = TRUE
 		if(1 to MAX_SAVE_SLOTS)

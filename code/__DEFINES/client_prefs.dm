@@ -23,11 +23,11 @@
 #define TOGGLE_START_JOIN_CURRENT_SLOT (1<<16) // Whether joining at roundstart ignores assigned character slot for the job and uses currently selected slot.
 #define TOGGLE_LATE_JOIN_CURRENT_SLOT (1<<17) //Whether joining during the round ignores assigned character slot for the job and uses currently selected slot.
 
-#define JOB_SLOT_RANDOMISED -1
-#define JOB_SLOT_CURRENT 0
+#define JOB_SLOT_RANDOMISED_SLOT -1
+#define JOB_SLOT_CURRENT_SLOT 0
+#define JOB_SLOT_RANDOMISED_TEXT "Randomise name and appearance"
+#define JOB_SLOT_CURRENT_TEXT "Current character"
 
 #define AGE_MIN 19 //youngest a character can be
 #define AGE_MAX 90 //oldest a character can be //no. you are not allowed to be 160.
-//Number of marine players against which the Marine's gear scales
-#define MARINE_GEAR_SCALING_NORMAL 30
 #define MAX_GEAR_COST 7 //Used in chargen for loadout limit.

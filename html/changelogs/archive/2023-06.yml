@@ -138,3 +138,9 @@
       display to be pixel perfect on most monitors if enabled, it removes blurring
       of game introduced by Stretch to Fit mode, at the cost of slightly reduced vertical
       size. It is best used with Auto Fit viewport feature enabled.
+2023-06-11:
+  Morrow:
+  - rscadd: Forsaken ERT is now weighted by type
+  - bugfix: Fixed medical holocards
+  NewyearnewmeUwu:
+  - bugfix: fixed a bug with armor prefs

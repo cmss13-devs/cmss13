@@ -83,6 +83,7 @@
 		apply_buff_to_player(H)
 
 /obj/structure/machinery/defenses/planted_flag/proc/turf_changed()
+	SIGNAL_HANDLER
 	if(range_bounds)
 		QDEL_NULL(range_bounds)
 

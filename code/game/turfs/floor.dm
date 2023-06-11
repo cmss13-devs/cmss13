@@ -217,9 +217,13 @@
 
 //all the colored tiles with the default one red purple green
 
+
+
+
+//default/red
 /turf/open/floor/default/red
 
-//defaultred
+//half filled tiles
 /turf/open/floor/default/red/red
 	icon_state = "red"
 
@@ -236,6 +240,25 @@
 
 /turf/open/floor/default/red/redfull
 	icon_state = "redfull"
+
+//default/blue
+/turf/open/floor/default/blue
+
+/turf/open/floor/default/blue/bluecorner
+	icon_state = "bluecorner"
+
+/turf/open/floor/default/blue/bluecorner/south_east
+
+/turf/open/floor/default/blue/bluecorner/north_west
+	dir = 1;
+
+/turf/open/floor/default/blue/bluecorner/south_west
+	dir = 8;
+
+/turf/open/floor/default/blue/bluecorner/north_east
+	dir = 4;
+
+
 
 //all the floors related to the dark tiles...
 /turf/open/floor/dark

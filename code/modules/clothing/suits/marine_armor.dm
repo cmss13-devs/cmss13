@@ -1812,10 +1812,17 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		hood_toggle_on = TRUE
 		return
 
+	if(!istype(user.wear_suit, /obj/item/clothing/suit/storage/marine/M3CR))
+		if(istype(user.wear_mask, /obj/item/clothing/mask/gas/cbrn))
+			qdel(user.wear_mask)
+		if(istype(user.head, /obj/item/clothing/head/helmet/marine/cbrnhood))
+			qdel(user.head)
+			playsound(usr.loc, pick('sound/handling/armorequip_1.ogg', 'sound/handling/armorequip_2.ogg'), 25, 1)
+			to_chat(H, SPAN_NOTICE("The hood and mask rip from your head. Ouch."))
+		return
 
-
-
-
-
-
-
+	if(istype(user.wear_suit, /obj/item/clothing/suit/storage/marine/M3CR) && istype(user.wear_mask, /obj/item/clothing/mask/gas/cbrn) && istype(user.head, /obj/item/clothing/head/helmet/marine/cbrnhood))
+		to_chat(H, SPAN_NOTICE("You seal yourself inside the suit. While the heat will still burn you, you will no longer catch fire.")
+		RegisterSignal(user, COMPONENT_NO_IGNITE)
+	UnregisterSignal(user, COMPONENT_NO_IGNITE)
+	return

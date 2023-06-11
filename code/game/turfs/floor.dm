@@ -219,9 +219,6 @@
 
 //all the colored tiles with the default one red purple green
 
-
-
-
 //default/red
 /turf/open/floor/default/red
 
@@ -262,8 +259,6 @@
 	icon_state = "redfull"
 
 
-
-
 //default/blue
 /turf/open/floor/default/blue
 
@@ -280,8 +275,7 @@
 
 /turf/open/floor/default/blue/bluecorner/north_east
 	dir = 4;
-
-
+//end of all the default subtypes
 
 //all the floors related to the dark tiles...
 /turf/open/floor/dark
@@ -291,13 +285,12 @@
 /turf/open/floor/dark2
 	icon_state = "dark2"
 
-//dark green blue purple red yellow
-
-
-//all the floor related to the white tiles.
+//all the floor related to the white tiles are bellow
 /turf/open/floor/white
 	icon_state = "white"
-
+// look like a white tile to me with a default on is base look non intented and could probably replace in another PR.
+/turf/open/floor/bar
+	icon_state = "bar"
 
 /turf/open/floor/white/blue
 
@@ -333,6 +326,9 @@
 
 /turf/open/floor/white/blue/whitebluefull
 	icon_state = "whitebluefull"
+//look like a fullwhiteblue tile to me. should investigate and maybe remove on another PR.
+/turf/open/floor/barber
+	icon_state = "barber"
 
 //white green
 /turf/open/floor/white/green
@@ -430,28 +426,7 @@
 
 /turf/open/floor/white/red/whiteredfull
 	icon_state = "whiteredfull"
-
-//look like a fullwhiteblue tile to me. should investigate and maybe remove on another PR.
-/turf/open/floor/barber
-	icon_state = "barber"
-
-// look like a white tile to me with a default on is base look non intented and could probably replace in another PR.
-/turf/open/floor/bar
-	icon_state = "bar"
-
-/turf/open/floor/wood
-	icon_state = "wood"
-
-/turf/open/floor/grimy
-	icon_state = "grimy"
-
-/turf/open/floor/cult
-	icon_state = "cult"
-
-//look link to default floor.
-/turf/open/floor/freezerfloor
-	icon_state = "freezerfloor"
-
+//end of colored white tiles subtype
 /turf/open/floor/sandstone
 	name = "sandstone floor"
 	icon_state = "whiteyellowfull"
@@ -460,9 +435,11 @@
 	name = "sandstone temple floor"
 	icon_state = "runedsandstone"
 
-//warning floors tiles
+//use the same base as default tile but isnt's any base color of default dark or white.
+//look link to default floor.
+/turf/open/floor/freezerfloor
+	icon_state = "freezerfloor"
 
-//use the same base as default tile but isnt's any base color i saw.
 /turf/open/floor/warning
 	icon_state = "warning"
 
@@ -477,5 +454,12 @@
 /turf/open/floor/warning/east
 	dir = 4;
 
-//use the same base as default tile but isnt's any base color i saw.
+//all of the tiles bellow aren't connected to the default one. icon_state = "floor"
+/turf/open/floor/wood
+	icon_state = "wood"
 
+/turf/open/floor/grimy
+	icon_state = "grimy"
+
+/turf/open/floor/cult
+	icon_state = "cult"

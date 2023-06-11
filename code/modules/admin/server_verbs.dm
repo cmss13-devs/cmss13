@@ -70,7 +70,7 @@
 
 	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] is overriding the next '[map_type]' map with a custom one."))
 	fcopy(map, "data/[OVERRIDE_MAPS_TO_FILENAME[map_type]]")
-	if(tgui_alert(usr, "Do you want to upload a custom map config or use defaults? Config controls things like survivors and monkey types, camouflages, lore messages, map items, nightmare, special environemental features...", "Map Config Flavor", list("Default", "Override")) == "Override")
+	if(tgui_alert(usr, "Do you want to upload a custom map config or use defaults? Config controls things like survivors and monkey types, camouflages, lore messages, map items, nightmare, special environmental features...", "Map Config Flavor", list("Default", "Override")) == "Override")
 		tgui_alert(usr, "Choose the custom map configuration for next round. Make sure it's VALID. It MUST have \"override_map\":true !", "Warning", list("OK!"))
 		var/map_config = input(usr, "Choose custom map configuration to upload", "Upload Map Config") as null|file
 		if(map_config)

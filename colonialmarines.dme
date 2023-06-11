@@ -41,6 +41,7 @@
 #include "code\__DEFINES\chat.dm"
 #include "code\__DEFINES\chemistry.dm"
 #include "code\__DEFINES\clans.dm"
+#include "code\__DEFINES\client_prefs.dm"
 #include "code\__DEFINES\colours.dm"
 #include "code\__DEFINES\combat.dm"
 #include "code\__DEFINES\configuration.dm"

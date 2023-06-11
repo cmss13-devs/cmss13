@@ -6,12 +6,6 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/groundside_xeno
 	objectives = "You have been left behind to safeguard the abandoned colony. Do not allow trespassers."
 
-/datum/emergency_call/forsaken_xenos/spawn_items()
-	var/turf/drop_spawn = get_spawn_point(TRUE)
-	if(istype(drop_spawn))
-		//drop some weeds for xeno plasma regen.
-		new /obj/effect/alien/weeds/node/forsaken(drop_spawn)
-
 /datum/emergency_call/forsaken_xenos/create_member(datum/mind/new_member, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 

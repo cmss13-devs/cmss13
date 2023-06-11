@@ -327,6 +327,8 @@
 /turf/open/floor/white/blue/whitebluefull
 	icon_state = "whitebluefull"
 //look like a fullwhiteblue tile to me. should investigate and maybe remove on another PR.
+
+/turf/open/floor/white/blue/whitebluefull/barber
 /turf/open/floor/barber
 	icon_state = "barber"
 

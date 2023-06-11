@@ -402,10 +402,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(location) //to avoid runtime when a mob ends up in nullspace
 			msg_admin_niche("[key_name_admin(usr)] has ghosted. [ADMIN_JMP(location)]")
 		log_game("[key_name_admin(usr)] has ghosted.")
-		var/mob/dead/observer/ghost = ghostize(is_nested) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
+		var/mob/dead/observer/ghost = ghostize((is_nested && nest && !QDELETED(nest))) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost && !is_admin_level(z))
 			ghost.timeofdeath = world.time
-		if(is_nested && nest)
+		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE
 
 /mob/dead/observer/Move(atom/newloc, direct)

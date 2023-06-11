@@ -1,7 +1,8 @@
 import { useBackend, useSharedState } from '../backend';
-import { Layout, Window } from '../layouts';
+import { Window } from '../layouts';
 import { Box, Button, Divider, Flex, Stack } from '../components';
 import { CasSim } from './CasSim';
+import { CrtPanel } from './CrtPanel';
 
 interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
@@ -227,7 +228,6 @@ const ControlPanel = (props, context) => {
   return (
     <Box className="NavigationMenu">
       <Stack vertical>
-        <Stack.Item>side panel with control buttons</Stack.Item>
         <Stack.Item>
           <PanelButton state="equipment" label="Equipment" />
         </Stack.Item>
@@ -239,37 +239,162 @@ const ControlPanel = (props, context) => {
   );
 };
 
-const EquipmentSubPanel = (props, context) => {
-  return <div />;
+const TopPanel = (props, context) => {
+  return (
+    <Flex justify="center" align="space-evenly">
+      <Flex.Item>
+        <Button>L</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button>LC</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button>C</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button>RC</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button>R</Button>
+      </Flex.Item>
+    </Flex>
+  );
 };
 
-export const DropshipWeaponsConsole = (_, context) => {
+const BottomPanel = (props, context) => {
   const [panelState, setPanelState] = usePanelState(context);
-  const { data } = useBackend<DropshipProps>(context);
   return (
-    <Window height={500} width={900} theme="crtgreen">
-      <Window.Content>
+    <Flex justify="center" align="space-evenly">
+      <Flex.Item>
+        <Button onClick={() => setPanelState('equipment')}>WEAP</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button onClick={() => setPanelState('firemissions')}>FIREM</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button>EQUIP</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button>4</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button>5</Button>
+      </Flex.Item>
+    </Flex>
+  );
+};
+
+const LeftPanel = (props, context) => {
+  return (
+    <Flex direction="column" justify="center" align="space-evenly">
+      <Flex.Item>
+        <Button>DESEL</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button>GUN</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button>GUN</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button>MSL</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button>MSL</Button>
+      </Flex.Item>
+    </Flex>
+  );
+};
+
+const RightPanel = (props, context) => {
+  return (
+    <Flex direction="column" justify="center" align="space-evenly">
+      <Flex.Item>
+        <Button>D-23</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button>C-15</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button>C-12</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button>NO LAZE</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button>SELECT</Button>
+      </Flex.Item>
+    </Flex>
+  );
+};
+
+const PrimaryPanel = (props, context) => {
+  const [panelState] = usePanelState(context);
+  return (
+    <Stack vertical>
+      <Stack.Item>
+        <TopPanel />
+      </Stack.Item>
+      <Stack.Item>
         <Stack>
           <Stack.Item>
+            <Box>
+              <LeftPanel />
+            </Box>
+          </Stack.Item>
+          <Stack.Item>
             <Stack vertical>
-              {panelState === 'equipment' && (
-                <Stack.Item>
-                  <LcdPanel />
-                </Stack.Item>
-              )}
-              {panelState === 'firemissions' && (
-                <Stack.Item>
-                  <FiremissionSimulationPanel />
-                </Stack.Item>
-              )}
+              <Stack.Item>
+                <CrtPanel color="green">
+                  {panelState === 'equipment' && <LcdPanel />}
+                  {panelState === 'firemissions' && (
+                    <FiremissionSimulationPanel />
+                  )}
+                </CrtPanel>
+              </Stack.Item>
             </Stack>
           </Stack.Item>
           <Stack.Item>
-            <Layout className="WeaponSidePanel" theme="crtyellow">
-              <ControlPanel />
-            </Layout>
+            <RightPanel />
           </Stack.Item>
           <Stack.Item />
+        </Stack>
+      </Stack.Item>
+      <Stack.Item>
+        <BottomPanel />
+      </Stack.Item>
+    </Stack>
+  );
+};
+
+const SecondaryPanel = (props, context) => {
+  return (
+    <Stack>
+      <Stack.Item>
+        <Button>Fire</Button>
+      </Stack.Item>
+      <Stack.Item>
+        <Button>Day/night</Button>
+      </Stack.Item>
+      <Stack.Item>
+        <Button>Master/Safe</Button>
+      </Stack.Item>
+    </Stack>
+  );
+};
+
+export const DropshipWeaponsConsole = (_, context) => {
+  const { data } = useBackend<DropshipProps>(context);
+  return (
+    <Window height={500} width={900}>
+      <Window.Content>
+        <Stack vertical>
+          <Stack.Item>
+            <PrimaryPanel />
+          </Stack.Item>
+          <Stack>
+            <SecondaryPanel />
+          </Stack>
         </Stack>
       </Window.Content>
     </Window>

@@ -568,10 +568,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bY" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/office_complex)
 "bZ" = (
 /obj/structure/surface/table,
@@ -623,14 +620,10 @@
 /area/bigredv2/outside/office_complex)
 "cg" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "ch" = (
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "ci" = (
 /obj/item/stack/sheet/metal,
@@ -856,10 +849,7 @@
 /area/bigredv2/outside/office_complex)
 "cV" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/office_complex)
 "cW" = (
 /obj/effect/decal/cleanable/dirt,
@@ -988,10 +978,7 @@
 "dr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/office_complex)
 "ds" = (
 /obj/effect/decal/cleanable/dirt,

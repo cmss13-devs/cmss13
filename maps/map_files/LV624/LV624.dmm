@@ -7932,9 +7932,7 @@
 	name = "General Listening Channel";
 	pixel_y = 30
 	},
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/lv624/lazarus/security)
 "aMb" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -7958,10 +7956,7 @@
 	phone_color = "red";
 	phone_id = "Marshal Office"
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/lv624/lazarus/security)
 "aMe" = (
 /obj/structure/machinery/vending/cola,
@@ -8273,10 +8268,7 @@
 /turf/open/floor/default/red/red/south,
 /area/lv624/lazarus/security)
 "aNS" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/lv624/lazarus/security)
 "aNT" = (
 /obj/structure/machinery/door/airlock/almayer/security/colony{
@@ -8575,10 +8567,7 @@
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "aPq" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/lv624/lazarus/security)
 "aPr" = (
 /obj/structure/machinery/light/small,
@@ -10981,10 +10970,7 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_west,
 /area/lv624/lazarus/security)
 "aZA" = (
 /obj/structure/filingcabinet,

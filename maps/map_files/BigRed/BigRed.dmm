@@ -1972,31 +1972,19 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshal_office)
 "agz" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "agA" = (
 /obj/effect/landmark/hunter_secondary,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "agB" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "agC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "agD" = (
 /obj/structure/surface/rack,
@@ -2202,9 +2190,7 @@
 /area/bigredv2/outside/nw)
 "ahj" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "ahk" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2472,42 +2458,30 @@
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "aib" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "aic" = (
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "aid" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "aie" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/good_item,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "aif" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "aig" = (
 /turf/open/mars_cave{
@@ -2817,16 +2791,11 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "ajb" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/marshal_office)
 "ajc" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "ajd" = (
 /obj/structure/surface/table/holotable/wood,
@@ -3004,10 +2973,7 @@
 /area/bigredv2/outside/telecomm/n_cave)
 "ajE" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/marshal_office)
 "ajF" = (
 /obj/structure/surface/table/reinforced,
@@ -3551,17 +3517,11 @@
 /obj/structure/closet/hydrant{
 	pixel_y = 32
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "alt" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "alu" = (
 /turf/closed/wall/solaris,
@@ -3570,10 +3530,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "alw" = (
 /obj/item/device/radio/intercom{
@@ -3782,20 +3739,14 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "amg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "amh" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -4091,26 +4042,20 @@
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "anc" = (
 /obj/structure/machinery/alarm{
 	dir = 1;
 	pixel_y = -30
 	},
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "and" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/frame/table,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "ane" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
@@ -14536,18 +14481,12 @@
 /area/bigredv2/outside/admin_building)
 "aSR" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/admin_building)
 "aSS" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/smg/mp27,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/admin_building)
 "aST" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -14923,10 +14862,7 @@
 /area/bigredv2/outside/admin_building)
 "aTY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/admin_building)
 "aTZ" = (
 /obj/structure/surface/rack,
@@ -14934,10 +14870,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/admin_building)
 "aUa" = (
 /turf/open/floor{
@@ -15345,10 +15278,7 @@
 "aVk" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/pistol/mod88,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/admin_building)
 "aVl" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -16595,19 +16525,14 @@
 /area/bigredv2/outside/office_complex)
 "aZF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/office_complex)
 "aZG" = (
 /obj/structure/sign/safety/galley{
 	pixel_x = 32
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "aZH" = (
 /obj/structure/closet/wardrobe/chaplain_black,
@@ -16763,9 +16688,7 @@
 /area/bigredv2/outside/office_complex)
 "bai" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "baj" = (
 /obj/structure/bed/chair/office/light,
@@ -17168,15 +17091,10 @@
 "bbA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/office_complex)
 "bbB" = (
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "bbC" = (
 /obj/structure/bed/chair/office/light{
@@ -17349,9 +17267,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "bck" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -17859,10 +17775,7 @@
 	pixel_x = -32
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/office_complex)
 "bdW" = (
 /obj/structure/bed/chair{
@@ -18073,31 +17986,19 @@
 /area/bigredv2/outside/c)
 "beH" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/office_complex)
 "beI" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/office_complex)
 "beJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/office_complex)
 "beK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/office_complex)
 "beL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -18116,10 +18017,7 @@
 /obj/structure/sign/prop3{
 	pixel_y = 32
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/office_complex)
 "beP" = (
 /obj/effect/decal/cleanable/dirt,
@@ -18251,10 +18149,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/office_complex)
 "bfk" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -18264,9 +18159,7 @@
 /area/bigredv2/outside/office_complex)
 "bfl" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "bfn" = (
 /obj/structure/machinery/light,
@@ -18274,25 +18167,19 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "bfo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "bfp" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "bfq" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -18313,25 +18200,19 @@
 	dir = 4
 	},
 /obj/item/trash/cheesie,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "bft" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "bfu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "bfv" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -18441,17 +18322,12 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/office_complex)
 "bfP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "bfQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -18566,10 +18442,7 @@
 	dir = 4;
 	pixel_x = -30
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/office_complex)
 "bgl" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -18579,9 +18452,7 @@
 	name = "General Listening Channel";
 	pixel_x = 30
 	},
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "bgm" = (
 /obj/structure/janitorialcart,
@@ -18636,10 +18507,7 @@
 /turf/open/floor/grimy,
 /area/bigredv2/outside/office_complex)
 "bgx" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/office_complex)
 "bgy" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -18719,9 +18587,7 @@
 	name = "General Listening Channel";
 	pixel_x = 30
 	},
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "bgN" = (
 /obj/structure/machinery/camera/autoname{
@@ -18753,10 +18619,7 @@
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/office_complex)
 "bgS" = (
 /obj/structure/machinery/light{
@@ -18842,18 +18705,13 @@
 /area/bigredv2/outside/c)
 "bhk" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/office_complex)
 "bhl" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "bhm" = (
 /obj/structure/surface/table,
@@ -19304,9 +19162,7 @@
 /area/bigredv2/outside/telecomm/warehouse)
 "bjk" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/office_complex)
 "bjl" = (
 /turf/open/mars{
@@ -19435,28 +19291,19 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/office_complex)
 "bjK" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/office_complex)
 "bjL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/office_complex)
 "bjM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -19559,10 +19406,7 @@
 /area/bigredv2/outside/c)
 "bkg" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/office_complex)
 "bkh" = (
 /turf/open/mars{
@@ -31215,10 +31059,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/camera/autoname,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "pXn" = (
 /obj/structure/closet/fireaxecabinet{

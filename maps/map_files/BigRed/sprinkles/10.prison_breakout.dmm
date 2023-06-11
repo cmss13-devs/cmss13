@@ -255,30 +255,18 @@
 /area/bigredv2/outside/marshal_office)
 "aO" = (
 /obj/effect/landmark/hunter_secondary,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "aP" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "aQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "aR" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "aS" = (
 /obj/structure/surface/rack,
@@ -365,50 +353,36 @@
 /area/bigredv2/outside/marshal_office)
 "bh" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "bi" = (
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "bj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "bk" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "bl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/good_item,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "bm" = (
 /obj/effect/landmark/corpsespawner/prisoner,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "bn" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "bp" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -493,16 +467,11 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "bE" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/marshal_office)
 "bF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "bG" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -559,10 +528,7 @@
 /area/bigredv2/outside/marshal_office)
 "bP" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/marshal_office)
 "bQ" = (
 /obj/structure/surface/table/reinforced,
@@ -703,18 +669,13 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing/shell,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/marshal_office)
 "cm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/shell,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "cn" = (
 /obj/structure/surface/table/reinforced,
@@ -745,10 +706,7 @@
 	dir = 8
 	},
 /obj/item/ammo_casing/shell,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_west,
 /area/bigredv2/outside/marshal_office)
 "cs" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -758,41 +716,26 @@
 /obj/structure/closet/hydrant{
 	pixel_y = 32
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "cu" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "cw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/shard,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "cx" = (
 /obj/item/shard,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "cy" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "cz" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -804,30 +747,21 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "cB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/structure/machinery/camera/autoname,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "cC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/north_east,
 /area/bigredv2/outside/marshal_office)
 "cE" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
@@ -873,50 +807,38 @@
 	dir = 4;
 	icon_state = "gib6"
 	},
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "cP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner/prisoner,
 /obj/effect/decal/cleanable/blood,
 /obj/item/tool/kitchen/knife,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "cQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/shard,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "cR" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "cS" = (
 /obj/structure/machinery/alarm{
 	dir = 1;
 	pixel_y = -30
 	},
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "cT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/frame/table,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/default/red/redcorner/south_east,
 /area/bigredv2/outside/marshal_office)
 "cU" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{

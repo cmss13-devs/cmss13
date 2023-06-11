@@ -238,8 +238,29 @@
 /turf/open/floor/default/red/red/east
 	dir = 4;
 
+
+//1/4 colored tiles
+
+/turf/open/floor/default/red/redcorner
+	icon_state = "redcorner"
+
+/turf/open/floor/default/red/redcorner/south_east
+
+/turf/open/floor/default/red/redcorner/north_west
+	dir = 1;
+
+/turf/open/floor/default/red/redcorner/south_west
+	dir = 8;
+
+/turf/open/floor/default/red/redcorner/north_east
+	dir = 4;
+
+//fully colored tile
 /turf/open/floor/default/red/redfull
 	icon_state = "redfull"
+
+
+
 
 //default/blue
 /turf/open/floor/default/blue

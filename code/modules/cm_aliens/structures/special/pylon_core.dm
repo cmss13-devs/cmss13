@@ -152,7 +152,7 @@
 			last_surge_time = world.time
 			linked_hive.stored_larva++
 			linked_hive.hijack_burrowed_left--
-			announce_dchat("The hive has gained another burrowed larva! Use the Join As Xeno verb to take it. [linked_hive.hijack_burrowed_left]", src)
+			announce_dchat("The hive has gained another burrowed larva! Use the Join As Xeno verb to take it.", src)
 			if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
 				surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
 		if(linked_hive.hijack_burrowed_surge && linked_hive.hijack_burrowed_left == 0)

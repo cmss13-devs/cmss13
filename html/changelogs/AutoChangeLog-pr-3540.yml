@@ -1,0 +1,5 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - rscadd: "Escape pods now have a 50% chance to crash land to the surface"
+  - bugfix: "Escape pods will no longer relaunch when evacuation is complete"

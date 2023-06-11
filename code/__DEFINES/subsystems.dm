@@ -113,7 +113,8 @@
 #define SS_INIT_INPUT   85
 #define SS_INIT_FAIL_TO_TOPIC 84
 #define SS_INIT_TOPIC 83
-#define SS_INIT_RUST    26
+#define SS_INIT_RUST    30
+#define SS_INIT_INFLUXDRIVER 28
 #define SS_INIT_SUPPLY_SHUTTLE  25
 #define SS_INIT_GARBAGE 24
 #define SS_INIT_EVENTS 23.5
@@ -133,6 +134,7 @@
 #define SS_INIT_MORE_INIT   16
 #define SS_INIT_AIR 15
 #define SS_INIT_TELEPORTER  13
+#define SS_INIT_INFLUXSTATS 11
 #define SS_INIT_LIGHTING 12
 #define SS_INIT_DEFCON 9
 #define SS_INIT_LAW 6
@@ -161,7 +163,6 @@
 #define SS_INIT_OBJECTIVES -31
 #define SS_INIT_LOBBYART   -33
 #define SS_INIT_MINIMAP    -34
-#define SS_INIT_INFLUXSTATS -50
 #define SS_INIT_STATPANELS -98
 #define SS_INIT_CHAT    -100 //Should be last to ensure chat remains smooth during init.
 #define SS_INIT_EARLYRUNTIMES -500 // Post-init notifier
@@ -213,6 +214,7 @@
 #define SS_PRIORITY_UNSPECIFIED 30
 #define SS_PRIORITY_PROCESS 25
 #define SS_PRIORITY_SOUNDSCAPE    24
+#define SS_PRIORITY_INFLUXDRIVER  23
 #define SS_PRIORITY_PAGER_STATUS   22
 #define SS_PRIORITY_LIGHTING    20
 #define SS_PRIORITY_TRACKING    19

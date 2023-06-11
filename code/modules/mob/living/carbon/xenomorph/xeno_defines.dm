@@ -239,6 +239,9 @@
 	// Used for the faction of the xenomorph. Not recommended to modify.
 	var/internal_faction
 
+	/// Short Hive ID as string used in stats reporting
+	var/reporting_id = "normal"
+
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/mob/living/carbon/xenomorph/queen/living_xeno_queen
 	var/egg_planting_range = 15
@@ -1033,6 +1036,7 @@
 
 /datum/hive_status/corrupted
 	name = "Corrupted Hive"
+	reporting_id = "corrupted"
 	hivenumber = XENO_HIVE_CORRUPTED
 	prefix = "Corrupted "
 	color = "#80ff80"
@@ -1056,6 +1060,7 @@
 
 /datum/hive_status/alpha
 	name = "Alpha Hive"
+	reporting_id = "alpha"
 	hivenumber = XENO_HIVE_ALPHA
 	prefix = "Alpha "
 	color = "#ff4040"
@@ -1066,6 +1071,7 @@
 
 /datum/hive_status/bravo
 	name = "Bravo Hive"
+	reporting_id = "bravo"
 	hivenumber = XENO_HIVE_BRAVO
 	prefix = "Bravo "
 	color = "#ffff80"
@@ -1076,6 +1082,7 @@
 
 /datum/hive_status/charlie
 	name = "Charlie Hive"
+	reporting_id = "charlie"
 	hivenumber = XENO_HIVE_CHARLIE
 	prefix = "Charlie "
 	color = "#bb40ff"
@@ -1086,6 +1093,7 @@
 
 /datum/hive_status/delta
 	name = "Delta Hive"
+	reporting_id = "delta"
 	hivenumber = XENO_HIVE_DELTA
 	prefix = "Delta "
 	color = "#8080ff"
@@ -1096,6 +1104,7 @@
 
 /datum/hive_status/feral
 	name = "Feral Hive"
+	reporting_id = "feral"
 	hivenumber = XENO_HIVE_FERAL
 	prefix = "Feral "
 	color = "#828296"
@@ -1111,6 +1120,7 @@
 
 /datum/hive_status/forsaken
 	name = "Forsaken Hive"
+	reporting_id = "forsaken"
 	hivenumber = XENO_HIVE_FORSAKEN
 	prefix = "Forsaken "
 	color = "#cc8ec4"
@@ -1129,6 +1139,7 @@
 
 /datum/hive_status/yautja
 	name = "Hellhound Pack"
+	reporting_id = "hellhounds"
 	hivenumber = XENO_HIVE_YAUTJA
 	internal_faction = FACTION_YAUTJA
 
@@ -1145,6 +1156,7 @@
 
 /datum/hive_status/mutated
 	name = "Mutated Hive"
+	reporting_id = "mutated"
 	hivenumber = XENO_HIVE_MUTATED
 	prefix = "Mutated "
 	color = "#6abd99"
@@ -1155,6 +1167,7 @@
 
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"
+	reporting_id = "tamed"
 	hivenumber = XENO_HIVE_TAMED
 	prefix = "Tamed "
 	color = "#80ff80"

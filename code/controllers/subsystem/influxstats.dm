@@ -1,44 +1,90 @@
+/// Sends generic round running statistics to the InfluxDB backend
 SUBSYSTEM_DEF(influxstats)
-	name       = "InfluxDB Statistics"
+	name       = "InfluxDB Game Stats"
 	wait       = 60 SECONDS
 	priority   = SS_PRIORITY_INFLUXSTATS
 	init_order = SS_INIT_INFLUXSTATS
-	runlevels  = RUNLEVEL_GAME
+	runlevels  = RUNLEVEL_LOBBY|RUNLEVELS_DEFAULT
 	flags      = SS_KEEP_TIMING
-	var/sent   = 0
+
+	var/checkpoint = 0
+	var/step = 1
 
 /datum/controller/subsystem/influxstats/Initialize()
-	var/period = text2num(CONFIG_GET(string/round_results_influxdb_period))
+	var/period = text2num(CONFIG_GET(number/influxdb_stats_period))
 	if(isnum(period))
 		wait = max(period * (1 SECONDS), 10 SECONDS)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/influxstats/stat_entry(msg)
-	msg += "sent=[sent]"
+	msg += "period=[wait] checkpoint=[checkpoint] step=[step]"
 	return ..()
 
 /datum/controller/subsystem/influxstats/fire(resumed)
-	var/host = CONFIG_GET(string/round_results_influxdb_host)
-	var/token = CONFIG_GET(string/round_results_influxdb_token)
-	var/bucket = CONFIG_GET(string/round_results_influxdb_bucket)
-	var/org = CONFIG_GET(string/round_results_influxdb_org)
-	if(!host || !token || !bucket || !org)
-		can_fire = FALSE
+	if(!SSinfluxdriver.can_fire)
 		return
-	if(!SSticker.mode)
-		return // That shouldn't happen with runlevels
 
-	var/url = "[host]/api/v2/write?org=[org]&bucket=[bucket]&precision=s"
-	var/list/headers = list()
-	headers["Authorization"] = "Token [token]"
-	headers["Content-Type"] = "text/plain; charset=utf-8"
-	headers["Accept"] = "application/json"
+	checkpoint++
+	while(step < 4) // Yes, you could make one SS per stats category, and have proper scheduling and variable periods,  but...
+		switch(step++)
+			if(1) // Connected players statistics
+				run_player_statistics()
+			if(2) // Job occupations
+				if(SSticker.current_state == GAME_STATE_PLAYING)
+					run_job_statistics()
+			if(3) // Round-wide gameplay statistics held in entity
+				if(SSticker.current_state == GAME_STATE_PLAYING)
+					run_round_statistics()
+		if(MC_TICK_CHECK)
+			return
 
-	var/measurement = "round_results,round_id=[GLOB.round_id]"
-	var/timestamp = big_number_to_text(rustg_unix_timestamp())
-	var/list/job_stats = list("others" = list(), "xenos" = list(), "humans" = list())
+	step = 1
+
+/datum/controller/subsystem/influxstats/proc/flatten_entity_list(list/data)
+	var/list/result = list()
+	for(var/key in data)
+		var/datum/entity/statistic/entry = data[key]
+		result[key] = entry.value
+	return result
+
+/datum/controller/subsystem/influxstats/proc/run_round_statistics()
+	var/datum/entity/statistic/round/stats = SSticker?.mode?.round_stats
+	if(!stats)
+		return // Sadge
+	SSinfluxdriver.enqueue_stats_crude("chestbursts", stats.total_larva_burst)
+	SSinfluxdriver.enqueue_stats_crude("huggued", stats.total_huggers_applied)
+	SSinfluxdriver.enqueue_stats_crude("friendlyfire", stats.total_friendly_fire_instances)
+	SSinfluxdriver.enqueue_stats_crude("friendlykills", stats.total_friendly_fire_kills)
+
+	var/list/participants = flatten_entity_list(stats.participants)
+	if(length(participants))
+		SSinfluxdriver.enqueue_stats("participants", list(), participants)
+
+	var/list/total_deaths = flatten_entity_list(stats.total_deaths)
+	if(length(total_deaths))
+		SSinfluxdriver.enqueue_stats("deaths", list(), total_deaths)
+
+	SSinfluxdriver.enqueue_stats("shots", list(),
+		list("fired" = stats.total_projectiles_fired, "hits" = stats.total_projectiles_hit,
+		"hits_human" = stats.total_projectiles_hit_human, "hits_xeno" = stats.total_projectiles_hit_xeno)
+	)
+
+/datum/controller/subsystem/influxstats/proc/run_player_statistics()
+	var/staff_count = 0
+	var/mentor_count = 0
+	for(var/client/client in GLOB.clients)
+		if(CLIENT_IS_STAFF(client))
+			staff_count++
+		else if(CLIENT_HAS_RIGHTS(client, R_MENTOR))
+			mentor_count++
+	SSinfluxdriver.enqueue_stats("online", list(), list("count" = length(GLOB.clients)))
+	SSinfluxdriver.enqueue_stats("online_staff", list(), list("staff" = staff_count, "mentors" = mentor_count))
+
+/datum/controller/subsystem/influxstats/proc/run_job_statistics()
+	var/list/team_job_stats = list()
 
 	for(var/client/client in GLOB.clients)
+		var/team
 		var/mob/mob = client.mob
 		if(!mob || mob.statistic_exempt)
 			continue
@@ -46,33 +92,29 @@ SUBSYSTEM_DEF(influxstats)
 		if(!area || area.statistic_exempt)
 			continue
 		var/job = mob.job
-		var/team
-		if(isobserver(mob))
+		if(isobserver(mob) || mob.stat == DEAD)
 			job = JOB_OBSERVER
-			team = "others"
-		else if(!job || mob.stat == DEAD)
+			team = "observers"
+		else if(!job)
 			continue
-		var/short_job = replacetext(sanitize(job), " ", "")
-		if(isxeno(mob))
-			team = "xenos"
-		else if (ishuman(mob))
+		else if(mob.faction == FACTION_MARINE || mob.faction == FACTION_SURVIVOR)
 			team = "humans"
+		else if(ishuman(mob))
+			team = "humans_others"
+		else if(isxeno(mob))
+			var/mob/living/xeno_enabled_mob = mob
+			var/datum/hive_status/hive = GLOB.hive_datum[xeno_enabled_mob.hivenumber]
+			if(!hive)
+				team = "xenos_others"
+			else
+				team = "xenos_[hive.reporting_id]"
 		else
 			team = "others"
-		if(!job_stats[team][short_job])
-			job_stats[team][short_job] = 0
-		job_stats[team][short_job] += 1
+		LAZYINITLIST(team_job_stats[team])
+		if(!team_job_stats[team][job])
+			team_job_stats[team][job] = 0
+		team_job_stats[team][job] += 1
 
-	var/list/measurements = list()
-	for(var/iteam in job_stats)
-		for(var/ijob in job_stats[iteam])
-			measurements += "[measurement],team=[iteam],job=[ijob] count=[job_stats[iteam][ijob]] [timestamp]"
-
-	var/datum/http_request/req
-	req = new
-	var/payload = ""
-	for(var/line in measurements)
-		payload += "[line]\n"
-	req.prepare(RUSTG_HTTP_METHOD_POST, url, payload, headers)
-	req.begin_async()
-	sent++
+	for(var/team in team_job_stats)
+		for(var/job in team_job_stats[team])
+			SSinfluxdriver.enqueue_stats("job_stats", list("team" = team, "job" = job), list("count" = team_job_stats[team][job]))

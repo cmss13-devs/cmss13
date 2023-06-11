@@ -529,11 +529,21 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/round_results_webhook_url
 
-/datum/config_entry/string/round_results_influxdb_host
-/datum/config_entry/string/round_results_influxdb_org
-/datum/config_entry/string/round_results_influxdb_token
-/datum/config_entry/string/round_results_influxdb_bucket
-/datum/config_entry/string/round_results_influxdb_period
+/// InfluxDB v2 Host to connect to for sending statistics (over HTTP API)
+/datum/config_entry/string/influxdb_host
+/// InfluxDB v2 Bucket to send staistics to
+/datum/config_entry/string/influxdb_bucket
+/// InfluxDB v2 Organization to access buckets of
+/datum/config_entry/string/influxdb_org
+/// InfluxDB v2 API Token to access the organization and bucket
+/datum/config_entry/string/influxdb_token
+
+/// How often to snapshot general game statistics to influxdb driver
+/datum/config_entry/number/influxdb_stats_period
+	default = 30
+/// How often to send queued influxdb statistics
+/datum/config_entry/number/influxdb_send_period
+	default = 60
 
 /// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
 /datum/config_entry/flag/log_timers_on_bucket_reset

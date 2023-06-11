@@ -887,20 +887,20 @@
 //=ROYAL MARINES=\\
 
 /obj/item/clothing/under/marine/veteran/royal_marine
-	name = "Royal Marine Uniform"
+	name = "RMC uniform"
 	desc = "Royal Marine Uniform"
 	icon_state = "rmc_uniform"
 	worn_state = "rmc_uniform"
-	flags_atom = null
+	flags_atom = NO_NAME_OVERRIDE
 
 /obj/item/clothing/under/marine/veteran/royal_marine/tl
-	name = "Royal Marine Uniform"
+	name = "RMC team leader uniform"
 	desc = "Royal Marine Uniform"
 	icon_state = "rmc_uniform_teaml"
 	worn_state = "rmc_uniform_teaml"
 
 /obj/item/clothing/under/marine/veteran/royal_marine/lt
-	name = "Royal Marine Uniform"
+	name = "RMC officer Uniform"
 	desc = "Royal Marine Uniform"
 	icon_state = "rmc_uniform_lt"
 	worn_state = "rmc_uniform_lt"

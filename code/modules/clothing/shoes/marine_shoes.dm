@@ -200,8 +200,8 @@
 //=ROYAL MARINES=\\
 
 /obj/item/clothing/shoes/veteran/royal_marine
-	name = "royal marine combat boots"
-	desc = "boots"
+	name = "RMC combat boots"
+	desc = "Standard issue combat boots for combat scenarios or combat situations. Used by the three world empires royal marines commando units."
 	icon_state = "rmc_boots"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -218,7 +218,7 @@
 	flags_inventory = FPRINT|NOSLIPPING
 	siemens_coefficient = 0.6
 	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol)
-	flags_atom = null
+	flags_atom = NO_NAME_OVERRIDE
 
 /obj/item/clothing/shoes/veteran/royal_marine/snow
 	icon_state = "s_rmc_boots"

@@ -771,29 +771,52 @@ D
 /obj/item/clothing/head/beanie/royal_marine
 	name = "beanie"
 	icon_state = "rmc_beanie_tan"
+	item_state = "rmc_beanie_tan"
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
 
 /obj/item/clothing/head/beanie/royal_marine/black
-	name = "beanie"
+	name = "RMC beanie"
 	icon_state = "rmc_beanie_black"
+	item_state = "rmc_beanie_black"
+	flags_atom = NO_NAME_OVERRIDE
 
 /obj/item/clothing/head/beanie/royal_marine/turban
-	name = "turban"
+	name = "RMC turban"
 	desc = "Turban."
 	icon_state = "rmc_turban_tan"
+	item_state = "rmc_turban_tan"
 
 /obj/item/clothing/head/beanie/royal_marine/turban/green
 	icon_state = "rmc_turban_green"
+	item_state = "rmc_turban_green"
 
 /obj/item/clothing/head/beanie/royal_marine/turban/black
 	icon_state = "rmc_turban_black"
+	item_state = "rmc_turban_black"
 
 /obj/item/clothing/head/beanie/royal_marine/turban/white
 	icon_state = "rmc_turban_white"
+	item_state = "rmc_turban_white"
 
 /obj/item/clothing/head/beret/royal_marine
-	desc = "Royal Marine."
+	desc = "RMC beret."
 	icon_state = "rmc_beret"
+	item_state = "rmc_beret"
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	flags_atom = NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+
+/obj/item/clothing/head/beret/royal_marine/green
+	desc = "RMC beret"
+	icon_state = "rmc_beret_green"
+	item_state = "rmc_beret_green"
 
 /obj/item/clothing/head/beret/royal_marine/team_leader
-	desc = "Royal Marine"
+	desc = "RMC team leader beret"
 	icon_state = "rmc_beret_tl"
+	item_state = "rmc_beret_tl"

@@ -963,7 +963,7 @@
 	desc = "..."
 	frequency = RMC_FREQ
 	icon_state = "vai_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/royal_marine)
+	initial_keys = list(/obj/item/device/encryptionkey/royal_marine, /obj/item/device/encryptionkey/public,)
 	has_hud = TRUE
 
 //CMB Headsets

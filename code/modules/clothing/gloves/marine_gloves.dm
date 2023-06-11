@@ -182,10 +182,10 @@
 //=ROYAL MARINES=\\
 
 /obj/item/clothing/gloves/marine/veteran/royal_marine
-	name = "\improper Royal Marine Gloves"
-	desc = "Royal Marine Gloves"
+	name = "\improper RMC combat gloves"
+	desc = "Standard issue tactical gloves."
 	icon_state = "rmc_gloves"
-	flags_atom = null
+	flags_atom = NO_NAME_OVERRIDE
 
 /obj/item/clothing/gloves/marine/veteran/royal_marine/snow
 	icon_state = "s_rmc_gloves"

@@ -1247,7 +1247,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 //=ROYAL MARINES=\\
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine
-	name = "L5A2 'justice' helmet"
+	name = "L5A2 RMC helmet"
 	desc = "A High-cut ballistic helmet."
 	icon_state = "rmc_helm1"
 	item_state = "rmc_helm1"
@@ -1259,10 +1259,4 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = NO_FLAGS
 	flags_marine_helmet = NO_FLAGS
-	flags_atom = null
-
-/obj/item/clothing/head/helmet/marine/veteran/royal_marine/alt
-	name = "L4 'glory'' helmet"
-	desc = "A helmet designed to make it clear that the wearer is safety aware and not looking for a fight."
-	icon_state = "rmc_helm2"
-	item_state = "rmc_helm2"
+	flags_atom = NO_NAME_OVERRIDE

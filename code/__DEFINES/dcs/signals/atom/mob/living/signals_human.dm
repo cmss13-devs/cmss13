@@ -54,3 +54,8 @@
 
 //from /mob/living/carbon/human/Life()
 #define COMSIG_HUMAN_SET_UNDEFIBBABLE "human_set_undefibbable"
+
+/// from /datum/surgery_step/proc/attempt_step()
+#define COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS "human_surgery_apply_modifiers"
+/// From /mob/living/carbon/human/proc/get_flags_cold_protection()
+#define COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS "human_cold_protection_apply_modifiers"

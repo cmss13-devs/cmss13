@@ -2,6 +2,8 @@
 #define COMSIG_ITEM_ATTEMPT_ATTACK "item_attempt_attack" //Triggered on the target mob.
 	#define COMPONENT_CANCEL_ATTACK (1<<0)
 
+#define COMSIG_ITEM_ATTACK_AIRLOCK "item_attack_airlocK"
+	#define COMPONENT_CANCEL_AIRLOCK_ATTACK (1<<0)
 
 /// from /obj/item/attackby() : (obj/item, mob/user)
 #define COMSIG_ITEM_ATTACKED "item_attacked"

@@ -1,6 +1,0 @@
-author: "LynxSolstice"
-delete-after: True
-changes:
-  - rscadd: "Field kit for all roles. (spawner with a map). Sandbags and E-Tool buyable in the rifleman vendor."
-  - code_imp: "Moved the map from a _KIT bitflag to a new bitflag, added the fieldkit to all squad roles."
-  - balance: "Added half stacks of sandbags to the rifleman vendor, buyable for one stack each for 5 points."

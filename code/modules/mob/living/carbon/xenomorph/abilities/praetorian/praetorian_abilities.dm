@@ -104,6 +104,7 @@
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
+	return ..()
 
 ////////// Oppressor powers
 
@@ -343,6 +344,7 @@
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
+	return ..()
 
 /datum/action/xeno_action/activable/prae_retrieve
 	name = "Retrieve"

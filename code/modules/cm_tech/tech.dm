@@ -65,6 +65,7 @@
 
 	unlocked = TRUE
 	to_chat(user, SPAN_HELPFUL("You have purchased the '[name]' tech node."))
+	log_admin("[key_name_admin(user)] has bought '[name]' via tech points.")
 	holder.spend_points(required_points)
 	update_icon(node)
 	return TRUE

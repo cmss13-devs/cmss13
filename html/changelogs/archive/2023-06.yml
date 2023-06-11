@@ -141,10 +141,16 @@
 2023-06-11:
   Al-1ce:
   - spellcheck: Polykevlon no-longer uses an underscore in its name.
+  BeagleGaming1:
+  - bugfix: Acid pillars can now target crit burning friendly xenos
   Morrow:
   - rscadd: Forsaken ERT is now weighted by type
   - bugfix: Fixed medical holocards
   - rscadd: Escape pods now have a 50% chance to crash land to the surface
   - bugfix: Escape pods will no longer relaunch when evacuation is complete
+  - rscadd: Cryopods now give a slight glow when occupied
+  - rscdel: Removed ability to high toss over ultra reinforced windows
+  - balance: Clamping bleeding in surgery is now less effective in bad conditions
+  - bugfix: Removed some broken forsaken ERT code
   NewyearnewmeUwu:
   - bugfix: fixed a bug with armor prefs

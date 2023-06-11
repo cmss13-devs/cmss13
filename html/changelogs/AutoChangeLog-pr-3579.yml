@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - balance: "Clamping bleeding in surgery is now less effective in bad conditions"

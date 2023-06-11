@@ -80,6 +80,13 @@ SUBSYSTEM_DEF(influxstats)
 	SSinfluxdriver.enqueue_stats("online", list(), list("count" = length(GLOB.clients)))
 	SSinfluxdriver.enqueue_stats("online_staff", list(), list("staff" = staff_count, "mentors" = mentor_count))
 
+	// Grab ahelp stats
+	SSinfluxdriver.enqueue_stats("tickets", list(), list(
+		"open" = length(GLOB.ahelp_tickets.active_tickets),
+		"closed" = length(GLOB.ahelp_tickets.closed_tickets),
+		"resolved" = length(GLOB.ahelp_tickets.resolved_tickets),
+	))
+
 /datum/controller/subsystem/influxstats/proc/run_job_statistics()
 	var/list/team_job_stats = list()
 

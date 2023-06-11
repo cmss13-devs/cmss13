@@ -674,6 +674,39 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M35 pyrotechnician"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
+/obj/item/clothing/head/helmet/marine/cbrnhood
+	name = "\improper M3CR Hood"
+	icon_state = "cbrn_hood"
+	flags_item = NODROP|DELONDROP
+	flags_inventory = BLOCKSHARPOBJ|CANTSTRIP
+	desc = "A hood woven from nomex and kevlar that comes with a built in gasmask. Typically worn by CBRN marines."
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROT
+	flags_cold_protection = BODY_FLAG_HEAD
+	flags_heat_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_HIGHPLUS
+	specialty = "M3CR Hood"
+
+/obj/item/clothing/head/helmet/marine/cbrnhood/jungle
+	icon_state = "cbrn_j_hood"
+	desc = "A hood woven from nomex and kevlar that comes with a built in gasmask. Typically worn by CBRN marines. This one comes in jungle cammo."
+	specialty = "M3CR Hood Jungle"
+/obj/item/clothing/head/helmet/marine/cbrnhood/snow
+	icon_state = "cbrn_s_hood"
+	desc = "A hood woven from nomex and kevlar that comes with a built in gasmask. Typically worn by CBRN marines. This one comes in snow cammo."
+	specialty = "M3CR Hood Snow"
+/obj/item/clothing/head/helmet/marine/cbrnhood/desert
+	icon_state = "cbrn_d_hood"
+	desc = "A hood woven from nomex and kevlar that comes with a built in gasmask. Typically worn by CBRN marines. This one comes in desert cammo."
+	specialty = "M3CR Hood Desert"
+/obj/item/clothing/head/helmet/marine/cbrnhood/ert
+	icon_state = "cbrn_e_hood"
+	desc = "A hood woven from nomex and kevlar that comes with a built in gasmask. Typically worn by CBRN marines. This one comes in a vibrant yellow."
+	specialty = "M3CR Hood Emergency Response"
 /obj/item/clothing/head/helmet/marine/M3T
 	name = "\improper M3-T bombardier helmet"
 	icon_state = "sadar_helmet"

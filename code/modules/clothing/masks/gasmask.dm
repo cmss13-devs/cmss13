@@ -145,3 +145,22 @@
 	unacidable = TRUE
 // flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP|COVEREYES|COVERMOUTH|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|ALLOWCPR|BLOCKSHARPOBJ
+
+/obj/item/clothing/mask/gas/cbrn
+	name = "\improper M3CR Gasmask"
+	desc = "A gasmask typically used by CBRN marines, this one is sewn into a hood."
+	icon_state = "cbrn_mask_on"
+	vision_impair = VISION_IMPAIR_NONE
+	flags_item = NODROP|DELONDROP
+	flags_inventory = CANTSTRIP|COVEREYES|COVERMOUTH|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|ALLOWCPR|BLOCKSHARPOBJ
+	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
+	flags_equip_slot = SLOT_FACE
+	flags_cold_protection = BODY_FLAG_HEAD
+	flags_heat_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROT
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_HIGHPLUS

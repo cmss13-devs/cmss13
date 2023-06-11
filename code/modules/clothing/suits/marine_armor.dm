@@ -1727,3 +1727,95 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	icon_state = "wc_armor"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	contained_sprite = TRUE
+
+//==================CBRN ARMOR==================\\
+
+/obj/item/clothing/suit/storage/marine/M3CR
+	name = "M3CR light armor"
+	desc = "A chemically resistant boilersuit typically used by CBRN marines, it has a built in gasmask."
+	icon_state = "cbrn"
+	slowdown = SLOWDOWN_ARMOR_HEAVY
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_HIGHPLUS
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	fire_intensity_resistance = BURN_LEVEL_TIER_1
+	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROT
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_inventory = BLOCKSHARPOBJ
+	var/hood_toggle_on = TRUE
+	var/hood_type = "cbrn"
+
+/obj/item/clothing/suit/storage/marine/M3CR/jungle
+	name = "M3CR Jungle"
+	icon_state = "jungle_cbrn"
+	specialty = "M3CR Jungle"
+	hood_type = "jungle"
+/obj/item/clothing/suit/storage/marine/M3CR/snow
+	name = "M3CR Snow"
+	icon_state = "snow_cbrn"
+	specialty = "M3CR Snow"
+	hood_type = "snow"
+
+/obj/item/clothing/suit/storage/marine/M3CR/desert
+	name = "M3CR Desert"
+	icon_state = "desert_cbrn"
+	specialty = "M3CR Desert"
+	hood_type = "desert"
+
+/obj/item/clothing/suit/storage/marine/M3CR/ert
+	name = "M3CR Emergency Response"
+	icon_state = "ert_cbrn"
+	specialty = "M3CR Emergency Response"
+	hood_type = "ert"
+
+//==================CBRN ARMOR HOODS==================\\
+
+
+/obj/item/clothing/suit/storage/marine/M3CR/verb/hood_toggle()
+	set name = "Pull Up Your Hood"
+	set desc = "Pull your hood and gasmask up over your face and head."
+	set category = "CBRN"
+	set src in usr
+	if(!usr || usr.is_mob_incapacitated(TRUE))
+		return
+	if(!ishuman(usr))
+		return
+	var/mob/living/carbon/human/H = usr
+
+	if(H.wear_suit != src)
+		to_chat(H, SPAN_WARNING("You must be wearing the M3CR armour to put on the hood and gasmask attached to it!"))
+		return
+
+	if(hood_toggle_on)
+		usr.equip_to_slot_if_possible(new /obj/item/clothing/head/helmet/marine/cbrnhood, WEAR_HEAD, 0, 1)
+		usr.equip_to_slot_if_possible(new /obj/item/clothing/mask/gas/cbrn, WEAR_FACE, 0, 1)
+		playsound(usr.loc, pick('sound/handling/armorequip_1.ogg', 'sound/handling/armorequip_2.ogg'), 25, 1)
+		to_chat(H, SPAN_NOTICE("You pull the M3CR hood and gasmask on."))
+		hood_toggle_on = FALSE
+		return
+
+
+	var/mob/living/carbon/human/user = usr
+
+	if(!hood_toggle_on)
+		playsound(usr.loc, pick('sound/handling/armorequip_1.ogg', 'sound/handling/armorequip_2.ogg'), 25, 1)
+		if(istype(user.wear_mask, /obj/item/clothing/mask/gas/cbrn))
+			qdel(user.wear_mask)
+		if(istype(user.head, /obj/item/clothing/head/helmet/marine/cbrnhood))
+			qdel(user.head)
+		to_chat(H, SPAN_NOTICE("You pull the M3CR hood and gasmask off."))
+		hood_toggle_on = TRUE
+		return
+
+
+
+
+
+
+
+

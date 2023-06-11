@@ -285,7 +285,8 @@
 	var/larva_gestation_multiplier = 1
 	var/bonus_larva_spawn_chance = 1
 	var/hijack_burrowed_surge = FALSE //at hijack, start spawning lots of burrowed
-	var/hijack_burrowed_left = 0 //how many burrowed is going to spawn during larva surge
+    /// how many burrowed is going to spawn during larva surge
+	var/hijack_burrowed_left = 0 
 
 	var/ignore_slots = FALSE
 	var/dynamic_evolution = TRUE

@@ -740,7 +740,7 @@
 	icon_state = "small_wire"
 
 /obj/structure/prop/ice_colony/poly_kevlon_roll
-	name = "poly_kevlon roll"
+	name = "plastic roll"
 	desc = "A big roll of poly-kevlon plastic used in temporary shelter construction."
 	icon_state = "kevlon_roll"
 	anchored = FALSE

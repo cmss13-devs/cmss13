@@ -326,9 +326,8 @@
 
 /turf/open/floor/white/blue/whitebluefull
 	icon_state = "whitebluefull"
-//look like a fullwhiteblue tile to me. should investigate and maybe remove on another PR.
 
-/turf/open/floor/white/blue/whitebluefull/barber
+//tried to change it but since it's not the same sprite it's consider a map change.
 /turf/open/floor/barber
 	icon_state = "barber"
 

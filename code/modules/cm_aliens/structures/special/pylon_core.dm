@@ -148,14 +148,14 @@
 			if(players_with_xeno_pref && players_with_xeno_pref.len && can_spawn_larva())
 				spawn_burrowed_larva(pick(players_with_xeno_pref))
 
-		if(linked_hive.hijack_burrowed_surge && linked_hive.hijack_burrowed_left > 0 && (last_surge_time + surge_cooldown) < world.time)
+		if(linked_hive.hijack_burrowed_surge && (last_surge_time + surge_cooldown) < world.time)
 			last_surge_time = world.time
 			linked_hive.stored_larva++
 			linked_hive.hijack_burrowed_left--
 			announce_dchat("The hive has gained another burrowed larva! Use the Join As Xeno verb to take it.", src)
 			if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
 				surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
-		if(linked_hive.hijack_burrowed_surge && linked_hive.hijack_burrowed_left == 0)
+		if(linked_hive.hijack_burrowed_surge && linked_hive.hijack_burrowed_left < 1)
 			linked_hive.hijack_burrowed_surge = FALSE
 			xeno_message(SPAN_XENOANNOUNCE("Hive surge is fading away. You will no longer gain burrowed larva over time."), 3, linked_hive.hivenumber)
 

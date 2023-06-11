@@ -3718,13 +3718,13 @@
 /turf/open/gm/river,
 /area/lv624/lazarus/fitness)
 "auF" = (
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/fitness)
 "auG" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/fitness)
 "auH" = (
 /obj/structure/closet/crate/secure/hydrosec,
@@ -3922,7 +3922,7 @@
 /area/lv624/lazarus/fitness)
 "avv" = (
 /obj/item/toy/beach_ball,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/fitness)
 "avw" = (
 /obj/effect/landmark/good_item,
@@ -6265,7 +6265,7 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "aEn" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/fitness)
 "aEs" = (
 /obj/structure/fence,
@@ -8284,7 +8284,7 @@
 	pixel_y = 22
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/kitchen)
 "aNW" = (
 /obj/structure/sink/kitchen{
@@ -8300,13 +8300,13 @@
 	pixel_y = -4
 	},
 /obj/item/reagent_container/food/snacks/donkpocket,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/kitchen)
 "aNX" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/grown/tomato,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/kitchen)
 "aNY" = (
 /obj/structure/surface/table,
@@ -8314,15 +8314,15 @@
 	pixel_y = 9
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/kitchen)
 "aNZ" = (
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/kitchen)
 "aOa" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/kitchen)
 "aOb" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -8610,17 +8610,17 @@
 /area/lv624/lazarus/main_hall)
 "aPy" = (
 /obj/structure/machinery/vending/dinnerware,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/kitchen)
 "aPz" = (
 /obj/structure/machinery/chem_master/condimaster,
 /obj/structure/surface/table,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/kitchen)
 "aPA" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/microwave,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/kitchen)
 "aPB" = (
 /obj/structure/surface/table,
@@ -8738,18 +8738,18 @@
 "aQc" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/processor,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/kitchen)
 "aQd" = (
 /obj/structure/machinery/smartfridge,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/kitchen)
 "aQe" = (
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
 /obj/structure/machinery/vending/coffee,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/kitchen)
 "aQf" = (
 /obj/structure/machinery/light/small{
@@ -8895,11 +8895,11 @@
 /area/lv624/lazarus/main_hall)
 "aQO" = (
 /obj/item/reagent_container/food/snacks/grown/banana,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/kitchen)
 "aQP" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/kitchen)
 "aQQ" = (
 /obj/structure/machinery/power/apc{
@@ -12874,7 +12874,7 @@
 "fsa" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/kitchen)
 "fsu" = (
 /obj/structure/machinery/light{

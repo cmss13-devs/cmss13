@@ -4,7 +4,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "bQ" = (
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/fitness)
 "dw" = (
 /obj/item/clothing/under/shorts/red,
@@ -88,7 +88,7 @@
 /area/lv624/lazarus/fitness)
 "ls" = (
 /obj/item/tool/soap,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/fitness)
 "lB" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -175,7 +175,7 @@
 /area/lv624/lazarus/fitness)
 "zq" = (
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/fitness)
 "Be" = (
 /obj/structure/machinery/power/apc{
@@ -195,7 +195,7 @@
 /area/lv624/lazarus/fitness)
 "Er" = (
 /obj/effect/landmark/good_item,
-/turf/open/floor/barber,
+/tu/turf/open/floor/white/blue/whitebluefull/barber,
 /area/lv624/lazarus/fitness)
 "Ez" = (
 /turf/open/floor,

@@ -908,21 +908,21 @@
 		for(var/obj/item/alien_embryo/embryo in potential_host)
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
-	var/shipside_humans = 0
+	var/shipside_humans_count = 0
 	var/xenos_count = 0
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
-		if(isspecieshuman(current_human))
+		if(isspecieshuman(current_human) || isspeciessynth(current_human))
 			var/atom/where = current_human
 			if (where.z == 0 && current_human.loc)
 				where = current_human.loc
 			if(is_mainship_level(where.z))
-				shipside_humans++
+				shipside_humans_count++
 	for(var/mob/living/carbon/xenomorph as anything in totalXenos)
 		if(isfacehugger(xenomorph))
 			continue
 		xenos_count++
 	hijack_burrowed_surge = TRUE
-	hijack_burrowed_left = max(n_ceil((shipside_humans - xenos_count) / 5), 0)
+	hijack_burrowed_left = max(n_ceil((shipside_humans_count - xenos_count) / 5), 1)
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 

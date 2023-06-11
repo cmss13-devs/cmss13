@@ -29089,6 +29089,9 @@
 	icon_state = "mars_cave_17"
 	},
 /area/bigredv2/outside/lz1_north_cas)
+"mGQ" = (
+/turf/open/floor/white/blue/whiteblue/south,
+/area/bigredv2/outside/medical)
 "mGS" = (
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/dark,
@@ -52958,7 +52961,7 @@ aqE
 aqD
 alu
 auQ
-awO
+mGQ
 awk
 awW
 axC
@@ -53175,7 +53178,7 @@ aqF
 aqD
 alu
 auR
-awO
+mGQ
 awl
 awW
 axD
@@ -53392,10 +53395,10 @@ aqD
 aqD
 alu
 auS
-awO
+mGQ
 aqw
 awW
-awO
+mGQ
 alu
 alu
 azH
@@ -53609,7 +53612,7 @@ aqD
 aqD
 alu
 auQ
-awO
+mGQ
 awk
 awW
 axC

@@ -1,6 +1,4 @@
 
-#define XENO_TO_TOTAL_SPAWN_RATIO 1/4
-
 /datum/job/antag/xenos
 	title = JOB_XENOMORPH
 	role_ban_alternative = "Alien"

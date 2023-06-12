@@ -253,22 +253,14 @@
 
 	GLOB.data_core.manifest_inject(character)
 	SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc. //TODO!!!!! ~Carn
-	SSticker.mode.latejoin_tally += RoleAuthority.calculate_role_weight(RoleAuthority.roles_for_mode[rank])
+	SSticker.mode.update_larva_tally(RoleAuthority.calculate_role_weight(RoleAuthority.roles_for_mode[rank]))
 
 	for(var/datum/squad/sq in RoleAuthority.squads)
 		if(sq)
 			sq.max_engineers = engi_slot_formula(GLOB.clients.len)
 			sq.max_medics = medic_slot_formula(GLOB.clients.len)
 
-	if(SSticker.mode.latejoin_larva_drop && SSticker.mode.latejoin_tally >= SSticker.mode.latejoin_larva_drop)
-		SSticker.mode.latejoin_tally -= SSticker.mode.latejoin_larva_drop
-		var/datum/hive_status/hive
-		for(var/hivenumber in GLOB.hive_datum)
-			hive = GLOB.hive_datum[hivenumber]
-			if(hive.latejoin_burrowed == TRUE)
-				if(length(hive.totalXenos) && (hive.hive_location || ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2))
-					hive.stored_larva++
-					hive.hive_ui.update_burrowed_larva()
+	SSticker.mode.update_larva_tally(RoleAuthority.calculate_role_weight(RoleAuthority.roles_for_mode[rank]))
 
 	if(character.mind && character.mind.player_entity)
 		var/datum/entity/player_entity/player = character.mind.player_entity

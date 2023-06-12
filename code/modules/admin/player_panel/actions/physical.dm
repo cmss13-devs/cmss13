@@ -97,7 +97,8 @@
 
 		var/datum/job/job = RoleAuthority.roles_for_mode[target.job]
 		var/role_weight = RoleAuthority.calculate_role_weight(job)
-		SSticker.mode.latejoin_tally -= role_weight //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
+
+		SSticker.mode.update_larva_tally(-role_weight) //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
 		RoleAuthority.free_role(job, TRUE)
 
 	//Delete them from datacore.

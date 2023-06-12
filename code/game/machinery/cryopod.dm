@@ -347,7 +347,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 						available_specialist_sets += set_name
 
 		var/role_weight = RoleAuthority.calculate_role_weight(J)
-		SSticker.mode.latejoin_tally -= role_weight //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
+		SSticker.mode.update_larva_tally(-role_weight) //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
 
 	//Handle job slot/tater cleanup.
 	RoleAuthority.free_role(GET_MAPPED_ROLE(occupant.job), TRUE)

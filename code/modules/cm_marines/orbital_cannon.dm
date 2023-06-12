@@ -360,26 +360,33 @@ var/list/ob_type_fuel_requirements
 	if(!target)
 		return
 
-	for(var/mob/M in range(30, target))
+	var/frequency
+	var/radius_size = 25
+
+	switch(warhead_kind)
+		if("incendiary")
+			frequency = 1
+		if("explosive")
+			frequency = 3
+		if("cluster")
+			frequency = 2
+
+	for(var/mob/M in urange(radius_size, target))
 
 		var/distance = get_accurate_dist(get_turf(M), target)
 
-		var/distance_percent = ((30 - distance) / 30)
+		var/distance_percent = ((radius_size - distance) / radius_size)
 
 		var/total_shake_factor = abs(max_shake_factor * distance_percent)
 
-		switch(warhead_kind)
-			if("incendiary")
-				shake_camera(M, total_shake_factor, 1)
-			if("explosive")
-				shake_camera(M, total_shake_factor, 3)
-			if("cluster")
-				shake_camera(M, 0.5, total_shake_factor, 2)
+		// it's of type cluster.
+		if(!max_knockdown_time)
+			shake_camera(M, 0.5, total_shake_factor, frequency)
+			continue
+
+		shake_camera(M, total_shake_factor, frequency)
 
 		var/total_stun_time = max_knockdown_time * distance_percent
-
-		if(warhead_kind == "cluster")
-			continue
 
 		M.KnockDown(rand(total_stun_time, (total_stun_time + 1)))
 		to_chat(M, SPAN_WARNING("You are thrown off balance and fall to the ground!"))
@@ -455,6 +462,7 @@ var/list/ob_type_fuel_requirements
 	// Explosion if turf is not blocked.
 	if(!is_blocked_turf(target))
 		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+		handle_ob_shake(target)
 		sleep(double_explosion_delay)
 		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		return

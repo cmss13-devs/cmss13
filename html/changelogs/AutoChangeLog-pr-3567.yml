@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - rscadd: "Added a map override for Admins allowing them to load in maps directly as ground or ship during the next round."

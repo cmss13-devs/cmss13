@@ -66,7 +66,7 @@
 		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/facehugger/Life(delta_time)
-	if(stat != DEAD && !lying)
+	if(stat != DEAD && !lying && !locate(/obj/effect/alien/weeds) in get_turf(src))
 		adjustBruteLoss(1)
 	return ..()
 

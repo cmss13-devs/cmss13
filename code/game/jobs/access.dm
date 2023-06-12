@@ -143,7 +143,6 @@
 		ACCESS_PRESS,
 	)
 
-///Renamed from centcom for fairly obvious reasons.
 /proc/get_all_weyland_access()
 	return list(ACCESS_WY_PMC_GREEN, ACCESS_WY_PMC_ORANGE, ACCESS_WY_PMC_RED, ACCESS_WY_PMC_BLACK, ACCESS_WY_PMC_WHITE, ACCESS_WY_CORPORATE)
 

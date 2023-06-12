@@ -95,10 +95,10 @@
 			S.forget_marine_in_squad(H)
 		message_admins("[key_name_admin(user)] sent [key_name_admin(target)] ([H.job]) to cryogenics.")
 
-	SSticker.mode.latejoin_tally-- //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
-
-	//Handle job slot/tater cleanup.
-	RoleAuthority.free_role(RoleAuthority.roles_for_mode[target.job], TRUE)
+		var/datum/job/job = RoleAuthority.roles_for_mode[target.job]
+		var/role_weight = RoleAuthority.calculate_role_weight(job)
+		SSticker.mode.latejoin_tally -= role_weight //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
+		RoleAuthority.free_role(job, TRUE)
 
 	//Delete them from datacore.
 	var/target_ref = WEAKREF(target)

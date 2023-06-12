@@ -502,7 +502,7 @@
 	name = "Synthetic - Hazmat Joe"
 
 /datum/equipment_preset/synth/working_joe/engi/load_gear(mob/living/carbon/human/new_human)
-	var/choice = rand(1,10)
+	var/choice = rand(1,2)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/joe(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(new_human), WEAR_L_EAR)
@@ -516,7 +516,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/maintenance_jack(new_human), WEAR_J_STORE)
 
 	switch(choice)
-		if(1 to 5)
+		if(1)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe/engi(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(new_human), WEAR_L_STORE)
@@ -524,7 +524,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/device/lightreplacer(new_human.back), WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack(new_human.back), WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/glass/large_stack(new_human.back), WEAR_IN_R_STORE)
-		if(6 to 10)
+		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe/engi/overalls(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(new_human), WEAR_L_STORE)

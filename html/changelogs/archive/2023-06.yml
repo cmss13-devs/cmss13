@@ -154,3 +154,7 @@
   - bugfix: Removed some broken forsaken ERT code
   NewyearnewmeUwu:
   - bugfix: fixed a bug with armor prefs
+2023-06-12:
+  Segrain:
+  - rscadd: Jobs can now be assigned specific character slots, which will be automatically
+      loaded when joining as that role.

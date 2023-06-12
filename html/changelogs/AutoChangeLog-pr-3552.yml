@@ -1,4 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - rscadd: "Jobs can now be assigned specific character slots, which will be automatically loaded when joining as that role."

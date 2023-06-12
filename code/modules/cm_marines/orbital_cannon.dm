@@ -389,6 +389,9 @@ var/list/ob_type_fuel_requirements
 		var/total_stun_time = max_knockdown_time * distance_percent
 
 		M.KnockDown(rand(total_stun_time, (total_stun_time + 1)))
+
+		if(!M.KnockDown)
+			continue
 		to_chat(M, SPAN_WARNING("You are thrown off balance and fall to the ground!"))
 
 /obj/structure/ob_ammo/warhead/proc/warhead_impact(turf/target)

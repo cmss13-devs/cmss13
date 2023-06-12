@@ -31,6 +31,7 @@
 	var/burn_multiplier = 1
 	var/explosive_multiplier = 1
 	var/brute_projectile_multiplier = 1
+	var/burn_flame_multiplier = 1
 	var/repair_materials = list()
 	var/metallic = TRUE
 
@@ -96,7 +97,7 @@
 				overlays += image('icons/obj/structures/barricades.dmi', icon_state = "+burn_upgrade_[damage_state]")
 			if(BARRICADE_UPGRADE_BRUTE)
 				overlays += image('icons/obj/structures/barricades.dmi', icon_state = "+brute_upgrade_[damage_state]")
-			if(BARRICADE_UPGRADE_EXPLOSIVE_AND_PROJECTILE)
+			if(BARRICADE_UPGRADE_ANTIFF)
 				overlays += image('icons/obj/structures/barricades.dmi', icon_state = "+explosive_upgrade_[damage_state]")
 
 	if(is_wired)
@@ -322,7 +323,7 @@
 	new /datum/effects/acid(src, null, null)
 
 /obj/structure/barricade/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
-	take_damage(dam * burn_multiplier)
+	take_damage(dam * burn_flame_multiplier)
 
 /obj/structure/barricade/proc/hit_barricade(obj/item/I)
 	take_damage(I.force * 0.5 * brute_multiplier)

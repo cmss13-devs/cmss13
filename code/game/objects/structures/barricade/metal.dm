@@ -39,7 +39,7 @@
 			. += SPAN_NOTICE("The cade is protected by a biohazardous upgrade.")
 		if(BARRICADE_UPGRADE_BRUTE)
 			. += SPAN_NOTICE("The cade is protected by a reinforced upgrade.")
-		if(BARRICADE_UPGRADE_EXPLOSIVE_AND_PROJECTILE)
+		if(BARRICADE_UPGRADE_ANTIFF)
 			. += SPAN_NOTICE("The cade is protected by a composite upgrade.")
 
 /obj/structure/barricade/metal/attackby(obj/item/W, mob/user)
@@ -97,7 +97,7 @@
 					return
 				var/obj/item/stack/sheet/metal/M = W
 				if(user.client?.prefs?.no_radials_preference)
-					var/choice = tgui_input_list(user, "Choose an upgrade to apply to the barricade", "Apply Upgrade", list(BARRICADE_UPGRADE_BURN, BARRICADE_UPGRADE_BRUTE, BARRICADE_UPGRADE_EXPLOSIVE_AND_PROJECTILE))
+					var/choice = tgui_input_list(user, "Choose an upgrade to apply to the barricade", "Apply Upgrade", list(BARRICADE_UPGRADE_BURN, BARRICADE_UPGRADE_BRUTE, BARRICADE_UPGRADE_ANTIFF))
 					if(!choice)
 						return
 					if(!user.Adjacent(src))
@@ -116,6 +116,7 @@
 					switch(choice)
 						if(BARRICADE_UPGRADE_BURN)
 							burn_multiplier = 0.75
+							burn_flame_multiplier = 0.75
 							upgraded = BARRICADE_UPGRADE_BURN
 							to_chat(user, SPAN_NOTICE("You applied a biohazardous upgrade."))
 						if(BARRICADE_UPGRADE_BRUTE)
@@ -123,10 +124,11 @@
 							brute_projectile_multiplier = 0.75
 							upgraded = BARRICADE_UPGRADE_BRUTE
 							to_chat(user, SPAN_NOTICE("You applied a reinforced upgrade."))
-						if(BARRICADE_UPGRADE_EXPLOSIVE_AND_PROJECTILE)
+						if(BARRICADE_UPGRADE_ANTIFF)
 							explosive_multiplier = 0.5
 							brute_projectile_multiplier = 0.5
-							upgraded = BARRICADE_UPGRADE_EXPLOSIVE_AND_PROJECTILE
+							burn_flame_multiplier = 0.5
+							upgraded = BARRICADE_UPGRADE_ANTIFF
 							to_chat(user, SPAN_NOTICE("You applied a composite upgrade."))
 
 					M.use(2)
@@ -134,7 +136,7 @@
 					update_icon()
 					return
 				else
-					var/static/list/cade_types = list(BARRICADE_UPGRADE_EXPLOSIVE_AND_PROJECTILE = image(icon = 'icons/obj/structures/barricades.dmi', icon_state = "explosive_obj"), BARRICADE_UPGRADE_BRUTE = image(icon = 'icons/obj/structures/barricades.dmi', icon_state = "brute_obj"), BARRICADE_UPGRADE_BURN = image(icon = 'icons/obj/structures/barricades.dmi', icon_state = "burn_obj"))
+					var/static/list/cade_types = list(BARRICADE_UPGRADE_ANTIFF = image(icon = 'icons/obj/structures/barricades.dmi', icon_state = "explosive_obj"), BARRICADE_UPGRADE_BRUTE = image(icon = 'icons/obj/structures/barricades.dmi', icon_state = "brute_obj"), BARRICADE_UPGRADE_BURN = image(icon = 'icons/obj/structures/barricades.dmi', icon_state = "burn_obj"))
 					var/choice = show_radial_menu(user, src, cade_types, require_near = TRUE)
 					if(!choice)
 						return
@@ -154,6 +156,7 @@
 					switch(choice)
 						if(BARRICADE_UPGRADE_BURN)
 							burn_multiplier = 0.75
+							burn_flame_multiplier = 0.75
 							upgraded = BARRICADE_UPGRADE_BURN
 							to_chat(user, SPAN_NOTICE("You applied a biohazardous upgrade."))
 						if(BARRICADE_UPGRADE_BRUTE)
@@ -161,10 +164,11 @@
 							brute_projectile_multiplier = 0.75
 							upgraded = BARRICADE_UPGRADE_BRUTE
 							to_chat(user, SPAN_NOTICE("You applied a reinforced upgrade."))
-						if(BARRICADE_UPGRADE_EXPLOSIVE_AND_PROJECTILE)
+						if(BARRICADE_UPGRADE_ANTIFF)
 							explosive_multiplier = 0.5
 							brute_projectile_multiplier = 0.5
-							upgraded = BARRICADE_UPGRADE_EXPLOSIVE_AND_PROJECTILE
+							burn_flame_multiplier = 0.5
+							upgraded = BARRICADE_UPGRADE_ANTIFF
 							to_chat(user, SPAN_NOTICE("You applied a composite upgrade."))
 
 					M.use(2)
@@ -187,6 +191,7 @@
 				brute_projectile_multiplier = initial(brute_projectile_multiplier)
 				brute_multiplier = initial(brute_multiplier)
 				burn_multiplier = initial(burn_multiplier)
+				burn_flame_multiplier = initial(burn_flame_multiplier)
 				new stack_type (loc, 1)
 				update_icon()
 				return

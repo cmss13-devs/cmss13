@@ -175,7 +175,8 @@
 
 /obj/item/reagent_container/food/drinks/cans/thirteenloko
 	name = "\improper Thirteen Loko"
-	desc = "The CMO has advised crew members that consumption of Thirteen Loko may result in seizures, blindness, drunkenness, or even death. Please Drink Responsibly."
+	desc = "Consumption of Thirteen Loko may result in seizures, blindness, drunkenness, or even death. Please Drink Responsibly."
+	desc_lore = "A rarity among modern markets, Thirteen Loko is an all-Earth original. Coined by the fact that only the mildly insane are willing to inhibit it, this energy drink has garnered a sizable reputation and a cult following to back it. After proceedings by Weyland Yutani, cobra venom was removed from the recipe, much to the behest of the consumer base."
 	icon_state = "thirteen_loko"
 	center_of_mass = "x=16;y=8"
 
@@ -269,6 +270,7 @@
 /obj/item/reagent_container/food/drinks/cans/boda
 	name = "\improper Boda"
 	desc = "State regulated soda beverage. Enjoy comrades."
+	desc_lore = "Designed back in 2159, the campaign for BODA started out as an attempt by the UPP to win the hearts and minds of colonists and settlers across the galaxy. The ubiquitous cyan vendors quickly began to crop up in UA warehouses with seemingly no clear origin. Despite concerns, BODA enjoyed relative popularity before falling into obscurity in the coming decades." 
 	icon_state = "boda"
 	center_of_mass = "x=16;y=10"
 

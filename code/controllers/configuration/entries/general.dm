@@ -540,10 +540,13 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /// How often to snapshot general game statistics to influxdb driver
 /datum/config_entry/number/influxdb_stats_period
-	default = 30
+	config_entry_value = 30
+/// How often to snapshot MC statistics
+/datum/config_entry/number/influxdb_mcstats_period
+	config_entry_value = 60
 /// How often to send queued influxdb statistics
 /datum/config_entry/number/influxdb_send_period
-	default = 60
+	config_entry_value= 120
 
 /// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
 /datum/config_entry/flag/log_timers_on_bucket_reset

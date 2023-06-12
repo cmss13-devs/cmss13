@@ -240,6 +240,7 @@
 #include "code\controllers\subsystem\human.dm"
 #include "code\controllers\subsystem\inactivity.dm"
 #include "code\controllers\subsystem\influxdriver.dm"
+#include "code\controllers\subsystem\influxmcstats.dm"
 #include "code\controllers\subsystem\influxstats.dm"
 #include "code\controllers\subsystem\input.dm"
 #include "code\controllers\subsystem\interior.dm"

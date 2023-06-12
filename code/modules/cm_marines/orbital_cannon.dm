@@ -352,7 +352,37 @@ var/list/ob_type_fuel_requirements
 
 /obj/structure/ob_ammo/warhead
 	name = "theoretical orbital ammo"
+	var/max_shake_factor
+	var/max_knockdown_time
 	var/warhead_kind
+
+/obj/structure/ob_ammo/warhead/proc/handle_ob_shake(turf/target)
+	if(!target)
+		return
+
+	for(var/mob/M in range(30, target))
+
+		var/distance = get_accurate_dist(get_turf(M), target)
+
+		var/distance_percent = ((30 - distance) / 30)
+
+		var/total_shake_factor = abs(max_shake_factor * distance_percent)
+
+		switch(warhead_kind)
+			if("incendiary")
+				shake_camera(M, total_shake_factor, 1)
+			if("explosive")
+				shake_camera(M, total_shake_factor, 3)
+			if("cluster")
+				shake_camera(M, 0.5, total_shake_factor, 2)
+
+		var/total_stun_time = max_knockdown_time * distance_percent
+
+		if(warhead_kind == "cluster")
+			continue
+
+		M.KnockDown(rand(total_stun_time, (total_stun_time + 1)))
+		to_chat(M, SPAN_WARNING("You are thrown off balance and fall to the ground!"))
 
 /obj/structure/ob_ammo/warhead/proc/warhead_impact(turf/target)
 	// make damn sure everyone hears it
@@ -406,6 +436,8 @@ var/list/ob_type_fuel_requirements
 	var/clear_falloff = 400
 	var/standard_power = 600
 	var/standard_falloff = 30
+	max_shake_factor = 15 // the max strength of the camera shake on impact.
+	max_knockdown_time = 6 // the max time a mob can be stunned after ob.
 	var/clear_delay = 3
 	var/double_explosion_delay = 6
 
@@ -419,18 +451,22 @@ var/list/ob_type_fuel_requirements
 	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
 	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //break shit around
 	sleep(clear_delay)
-	//ACTUALLY BLOW SHIT UP
-	if(!target.density)
+
+	// Explosion if turf is not blocked.
+	if(!is_blocked_turf(target))
 		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		sleep(double_explosion_delay)
 		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		return
 
+	// Checks turf around the target to see if it's unblocked.
 	for(var/turf/T in range(2, target))
-		if(!T.density)
+		if(!is_blocked_turf(T))
 			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+			handle_ob_shake(target)
 			sleep(double_explosion_delay)
 			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+
 			return
 
 /obj/structure/ob_ammo/warhead/incendiary
@@ -442,6 +478,8 @@ var/list/ob_type_fuel_requirements
 	var/clear_delay = 3
 	var/distance = 18
 	var/fire_level = 70
+	max_shake_factor = 8 // the max strength of the camera shake on impact.
+	max_knockdown_time = 3 // the max time a mob can be stunned after ob.
 	var/burn_level = 80
 	var/fire_color = null
 	var/fire_type = "white"
@@ -457,6 +495,7 @@ var/list/ob_type_fuel_requirements
 	sleep(10)
 	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
 	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //break shit around
+	handle_ob_shake(target)
 	sleep(clear_delay)
 	fire_spread(target, cause_data, distance, fire_level, burn_level, fire_color, fire_type, TURF_PROTECTION_OB)
 
@@ -466,6 +505,7 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_warhead_3"
 	var/total_amount = 75 // how many times will the shell fire?
 	var/instant_amount = 3 // how many explosions per time it fires?
+	max_shake_factor = 1 // the max strength of the camera shake on impact.
 	var/explosion_power = 350
 	var/explosion_falloff = 150
 	var/delay_between_clusters = 0.4 SECONDS // how long between each firing?
@@ -498,6 +538,7 @@ var/list/ob_type_fuel_requirements
 /obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(turf/loc)
 	new /obj/effect/overlay/temp/blinking_laser (loc)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 1 SECONDS)
+	handle_ob_shake(loc)
 
 /obj/structure/ob_ammo/ob_fuel
 	name = "solid fuel"

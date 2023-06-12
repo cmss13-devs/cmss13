@@ -202,6 +202,7 @@
 /obj/item/reagent_container/food/condiment/hotsauce/franks
 	name = "\improper Frank's Red Hot bottle"
 	desc = "A bottle of Weyland-Yutani brand Frank's Red Hot hot sauce."
+	desc_lore = "Designed as a middleground between ketchup and cayenne, this bottle of spicy goodness met critical acclaim across UA colonies and vessels alike. The sudden and widespread adoption was suspiciously timed with the shelving of the original Frank's ULTRA Hot sauce." 
 	icon_state = "hotsauce_franks"
 	item_state = "hotsauce_franks"
 

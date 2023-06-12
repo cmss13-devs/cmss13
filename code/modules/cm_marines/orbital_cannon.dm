@@ -360,7 +360,7 @@ var/list/ob_type_fuel_requirements
 	if(!target)
 		return
 
-	var/frequency
+	var/frequency = 1
 	var/radius_size = 25
 
 	switch(warhead_kind)

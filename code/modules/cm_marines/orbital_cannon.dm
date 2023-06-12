@@ -390,7 +390,7 @@ var/list/ob_type_fuel_requirements
 
 		M.KnockDown(rand(total_stun_time, (total_stun_time + 1)))
 
-		if(!M.KnockDown)
+		if(!M.knocked_down)
 			continue
 		to_chat(M, SPAN_WARNING("You are thrown off balance and fall to the ground!"))
 

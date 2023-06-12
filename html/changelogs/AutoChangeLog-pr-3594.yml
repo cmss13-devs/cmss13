@@ -1,0 +1,4 @@
+author: "TheGamerdk"
+delete-after: True
+changes:
+  - bugfix: "Xenos are no longer notified each time a sister destroys a large crate."

@@ -63,6 +63,7 @@
 		start_processing()
 		set_range()
 	update_icon()
+	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(unset_range))
 
 /obj/structure/machinery/defenses/sentry/Destroy() //Clear these for safety's sake.
 	targets = null
@@ -107,7 +108,9 @@
 			range_bounds = RECT(x, y - 4, 7, 7)
 
 /obj/structure/machinery/defenses/sentry/proc/unset_range()
-	qdel(range_bounds)
+	SIGNAL_HANDLER
+	if(range_bounds)
+		QDEL_NULL(range_bounds)
 
 /obj/structure/machinery/defenses/sentry/update_icon()
 	..()

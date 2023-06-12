@@ -6688,12 +6688,6 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
-"dEu" = (
-/obj/structure/window/framed/strata/reinforced,
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/lv522/indoors/a_block/dorm_north)
 "dEy" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/microwave{
@@ -18002,7 +17996,7 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "iAZ" = (
-/obj/structure/pipes/standard/manifold/fourway/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorm_north)
 "iBd" = (
@@ -45654,17 +45648,6 @@
 	icon_state = "floor_plate"
 	},
 /area/lv522/indoors/lone_buildings/outdoor_bot)
-"tQC" = (
-/obj/structure/window_frame/strata,
-/obj/item/stack/rods,
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "LV522CIC_1";
-	name = "\improper Storm Shutters"
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/lv522/indoors/a_block/admin)
 "tQE" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
@@ -55101,10 +55084,6 @@
 	icon_state = "darkpurplefull2"
 	},
 /area/lv522/indoors/a_block/dorms)
-"xKO" = (
-/obj/structure/window/framed/strata/reinforced,
-/turf/open/floor/plating,
-/area/lv522/indoors/a_block/fitness)
 "xLg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair/comfy{
@@ -67284,7 +67263,7 @@ xqd
 pVx
 pVx
 pVx
-xyL
+xtb
 xWf
 imJ
 xWf
@@ -67292,7 +67271,7 @@ xWf
 xWf
 qAy
 xWf
-pMd
+nLm
 kcS
 gou
 ulL
@@ -67309,14 +67288,14 @@ pDh
 kcS
 wfb
 qjt
-pMd
+nLm
 klp
 oot
 pJW
 tUM
 gWh
 aTS
-pMd
+nLm
 lAj
 ulL
 ulL
@@ -67332,7 +67311,7 @@ ulL
 lAj
 wRd
 wLN
-pMd
+nLm
 qQM
 vXc
 wth
@@ -67965,7 +67944,7 @@ uEC
 uEC
 uEC
 pVx
-xyL
+xtb
 odZ
 imJ
 xWf
@@ -67973,7 +67952,7 @@ xWf
 xWf
 xWf
 odZ
-pMd
+nLm
 kcS
 vId
 oTg
@@ -67990,14 +67969,14 @@ fps
 npp
 cHC
 vJT
-pMd
+nLm
 oeL
 rAg
 dNm
 tUM
 gWh
 aAW
-pMd
+nLm
 kxW
 kxW
 lek
@@ -68013,7 +67992,7 @@ oTg
 pJW
 iUo
 vdV
-pMd
+nLm
 qQM
 vXc
 puY
@@ -72583,7 +72562,7 @@ tSL
 pJZ
 drz
 bFU
-yfH
+tSL
 tne
 kGm
 lML
@@ -73264,7 +73243,7 @@ tne
 yfR
 tne
 yfR
-yfH
+tSL
 hES
 tne
 tne
@@ -74090,10 +74069,10 @@ xtb
 xtb
 xtb
 xtb
-xKO
+xtb
 rMb
 skQ
-xKO
+xtb
 xtb
 tvO
 ugV
@@ -75452,10 +75431,10 @@ emH
 emH
 yjp
 beB
-dhQ
+beB
 uPk
 vnB
-dhQ
+beB
 wrC
 wrC
 xXR
@@ -81129,10 +81108,10 @@ umR
 onj
 wKg
 wKg
-lVD
+wKg
 vQT
 fmg
-lVD
+wKg
 wKg
 wKg
 lVD
@@ -86878,7 +86857,7 @@ lGW
 xgA
 acE
 kEQ
-xvB
+xvl
 otS
 fWG
 fWG
@@ -87053,7 +87032,7 @@ qBb
 iXZ
 nxj
 rMg
-hDZ
+tDS
 uNJ
 orS
 muV
@@ -87332,7 +87311,7 @@ ntS
 xgA
 bsG
 kEQ
-xvB
+xvl
 otS
 fWG
 cpy
@@ -87734,7 +87713,7 @@ lRF
 ojt
 muV
 vrg
-tQC
+tDS
 iNb
 wWV
 tvi
@@ -87966,14 +87945,14 @@ nxO
 ilR
 nGq
 way
-raj
+gdO
 puJ
 iuy
 uuH
 pfN
 pqU
 lSl
-jab
+tTK
 jmi
 cMt
 kiG
@@ -89296,10 +89275,10 @@ dRL
 dRL
 dRL
 dRL
-dEu
+dRL
 qhA
 qiG
-dEu
+dRL
 dRL
 xFp
 nQa
@@ -90211,7 +90190,7 @@ xCT
 rsq
 xCT
 yfP
-dEu
+dRL
 fKf
 qSH
 qSH
@@ -90434,9 +90413,9 @@ oBx
 nTg
 nTg
 iAZ
-qUq
-qUq
-qUq
+xCT
+xCT
+xCT
 yfP
 rJf
 fKf
@@ -90665,7 +90644,7 @@ reo
 xCT
 xCT
 yfP
-dEu
+dRL
 fKf
 qSH
 qSH
@@ -91566,10 +91545,10 @@ dRL
 dRL
 dRL
 dRL
-dEu
+dRL
 qhA
 qiG
-dEu
+dRL
 dRL
 pGY
 jKB

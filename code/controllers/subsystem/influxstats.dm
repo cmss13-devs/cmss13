@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(influxstats)
 		return
 
 	checkpoint++
-	while(step < 4) // Yes, you could make one SS per stats category, and have proper scheduling and variable periods,  but...
+	while(step < 5) // Yes, you could make one SS per stats category, and have proper scheduling and variable periods,  but...
 		switch(step++)
 			if(1) // Connected players statistics
 				run_player_statistics()
@@ -35,6 +35,9 @@ SUBSYSTEM_DEF(influxstats)
 			if(3) // Round-wide gameplay statistics held in entity
 				if(SSticker.current_state == GAME_STATE_PLAYING)
 					run_round_statistics()
+			if(4) // Handpicked Round-wide gameplay statistics
+				if(SSticker.current_state == GAME_STATE_PLAYING)
+					run_special_round_statistics()
 		if(MC_TICK_CHECK)
 			return
 
@@ -46,6 +49,12 @@ SUBSYSTEM_DEF(influxstats)
 		var/datum/entity/statistic/entry = data[key]
 		result[key] = entry.value
 	return result
+
+/datum/controller/subsystem/influxstats/proc/run_special_round_statistics()
+	for(var/hive_tag in GLOB.hive_datum)
+		var/datum/hive_status/hive = GLOB.hive_datum[hive_tag]
+		if(hive.stored_larva > 0)
+			SSinfluxdriver.enqueue_stats("pooled_larva", list("hive" = hive.reporting_id), list("count" = hive.stored_larva))
 
 /datum/controller/subsystem/influxstats/proc/run_round_statistics()
 	var/datum/entity/statistic/round/stats = SSticker?.mode?.round_stats

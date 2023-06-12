@@ -19,9 +19,9 @@
 	wield_delay = WIELD_DELAY_FAST
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	var/obj/item/smartgun_battery/battery = null
-	/// Whether the smartgun drains the powerpack battery (Ignored if requires_battery is false)
+	/// Whether the smartgun drains the battery (Ignored if requires_battery is false)
 	var/requires_power = TRUE
-	/// Whether the smartgun requires a powerpack to be worn
+	/// Whether the smartgun requires a battery
 	var/requires_battery = TRUE
 	/// Whether the smartgun requires a harness to use
 	var/requires_harness = TRUE
@@ -153,8 +153,9 @@
 		battery = new_cell
 		user.drop_inv_item_to_loc(new_cell, src)
 		playsound(src, 'sound/machines/click.ogg', 25, 1)
-	else
-		..()
+		return
+
+	return ..()
 
 /obj/item/weapon/gun/smartgun/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
 	if(!cover_open)
@@ -386,6 +387,7 @@
 		else
 			battery.power_cell.charge = 0
 			to_chat(usr, SPAN_WARNING("[src] emits a low power warning and immediately shuts down!"))
+			return FALSE
 		return TRUE
 	if(!battery || battery.power_cell.charge == 0)
 		to_chat(usr, SPAN_WARNING("[src] emits a low power warning and immediately shuts down!"))
@@ -715,7 +717,7 @@
 
 /obj/item/smartgun_battery
 	name = "smartgun DV9 battery"
-	desc = "A standard DV9 lithium battery" //yell at lore team for a more soulful description - Morrow
+	desc = "A standard-issue 9-volt lithium dry-cell battery, most commonly used within the USCMC to power smartguns. Per the manual, one battery is good for up to 50000 rounds and plugs directly into the smartgun's power receptacle, which is only compatible with this type of battery. Various auxiliary modes usually bring the round count far lower. While this cell is incompatible with most standard electrical system, it can be charged by common rechargers in a pinch. USCMC smartgunners often guard them jealously."
 
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "smartguncell"

@@ -481,10 +481,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		UnregisterSignal(registered_mob, COMSIG_HUMAN_ATTEMPTING_EQUIP)
 
 /obj/item/clothing/suit/storage/marine/smartgunner/Destroy()
-	. = ..()
+	registered_mob = null
 
-	if(registered_mob)
-		UnregisterSignal(registered_mob, COMSIG_HUMAN_ATTEMPTING_EQUIP)
+	. = ..()
 
 /obj/item/clothing/suit/storage/marine/leader
 	name = "\improper B12 pattern marine armor"

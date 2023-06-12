@@ -1,0 +1,4 @@
+author: "TheGamerdk"
+delete-after: True
+changes:
+  - bugfix: "Sentries now work correctly on dropships."

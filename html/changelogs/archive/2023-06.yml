@@ -154,3 +154,20 @@
   - bugfix: Removed some broken forsaken ERT code
   NewyearnewmeUwu:
   - bugfix: fixed a bug with armor prefs
+2023-06-12:
+  Segrain:
+  - rscadd: Jobs can now be assigned specific character slots, which will be automatically
+      loaded when joining as that role.
+  TheGamerdk:
+  - bugfix: Your fluff security record from preferences is now visible to MPs.
+  - bugfix: You can now plant hardy weeds on colony turfs on Chances Claim
+  - bugfix: Data detector no longer triggers on empty vial boxes
+  - bugfix: Sentries now work correctly on dropships.
+  - bugfix: Xenos are no longer notified each time a sister destroys a large crate.
+  fira:
+  - bugfix: Handling C4 and Breaching Charges should not zealously trigger antigrief
+      protection anymore
+  - rscadd: Added a map override for Admins allowing them to load in maps directly
+      as ground or ship during the next round.
+  ihatethisengine:
+  - bugfix: MMB cannot be used to attack again

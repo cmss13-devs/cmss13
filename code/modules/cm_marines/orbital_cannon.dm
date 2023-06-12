@@ -361,7 +361,7 @@ var/list/ob_type_fuel_requirements
 		return
 
 	var/frequency = 1
-	var/radius_size = 25
+	var/radius_size = 30
 
 	switch(warhead_kind)
 		if("incendiary")

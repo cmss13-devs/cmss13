@@ -1,4 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - bugfix: "MMB cannot be used to attack again"

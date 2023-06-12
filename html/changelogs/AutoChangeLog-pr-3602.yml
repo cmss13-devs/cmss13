@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Handling C4 and Breaching Charges should not zealously trigger antigrief protection anymore"

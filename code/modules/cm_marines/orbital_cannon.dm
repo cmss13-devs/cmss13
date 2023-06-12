@@ -371,7 +371,7 @@ var/list/ob_type_fuel_requirements
 		if("cluster")
 			frequency = 2
 
-	for(var/mob/M in urange(radius_size, target))
+	for(var/mob/living/M in urange(radius_size, target))
 
 		var/distance = get_accurate_dist(get_turf(M), target)
 

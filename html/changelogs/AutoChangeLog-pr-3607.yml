@@ -1,4 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - bugfix: "restore some object back to original to keep them compatible with older map."

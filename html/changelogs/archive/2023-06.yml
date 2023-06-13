@@ -176,8 +176,12 @@
   - rscadd: Backstories have been added to various interesting drinks.
   Hopek:
   - balance: Huggers no longer lose health over time on weeds.
+  Huffie56:
+  - bugfix: restore some object back to original to keep them compatible with older
+      map.
   Morrow:
   - bugfix: Added missing Fiorina Sciannex groundside xeno landmarks
+  - bugfix: Made nukes get those pesky closet/tunnel hiders
   TheGamerdk:
   - bugfix: You'll now be allowed to reenter your nested body when freed, even if
       you used the ghost verb.

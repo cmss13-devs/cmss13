@@ -18,6 +18,9 @@ SUBSYSTEM_DEF(influxmcstats)
 	return ..()
 
 /datum/controller/subsystem/influxmcstats/fire(resumed)
+	if(!SSinfluxdriver.can_fire)
+		can_fire = FALSE
+		return
 	var/static/regex/get_last_path_element=regex(@{"/([^/]+)$"})
 	checkpoint++
 	for(var/datum/controller/subsystem/SS in Master.subsystems)

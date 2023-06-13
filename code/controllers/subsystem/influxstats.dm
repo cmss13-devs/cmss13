@@ -22,6 +22,7 @@ SUBSYSTEM_DEF(influxstats)
 
 /datum/controller/subsystem/influxstats/fire(resumed)
 	if(!SSinfluxdriver.can_fire)
+		can_fire = FALSE
 		return
 
 	checkpoint++

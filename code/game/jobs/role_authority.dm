@@ -334,6 +334,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 */
 /datum/authority/branch/role/proc/assign_roles(list/roles_for_mode, list/unassigned_players, list/roles_left)
 	var/assigned = 0
+	var/list/rest_roles_for_mode
 	for(var/priority in HIGH_PRIORITY to LOW_PRIORITY)
 		// Assigning xenos first.
 		assigned += assign_initial_roles(priority, roles_for_mode & ROLES_XENO, unassigned_players)
@@ -342,11 +343,11 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		// Assigning command third.
 		assigned += assign_initial_roles(priority, roles_for_mode & ROLES_COMMAND, unassigned_players)
 		// Assigning the rest
-		var/rest_roles_for_mode = roles_for_mode - (roles_for_mode & ROLES_XENO) - (roles_for_mode & ROLES_COMMAND) - (roles_for_mode & (ROLES_WHITELISTED|ROLES_SPECIAL))
+		rest_roles_for_mode = roles_for_mode - (roles_for_mode & ROLES_XENO) - (roles_for_mode & ROLES_COMMAND) - (roles_for_mode & (ROLES_WHITELISTED|ROLES_SPECIAL))
 		assigned += assign_initial_roles(priority, rest_roles_for_mode, unassigned_players)
-		if(roles_left) // Assoc merge
-			for(var/key in rest_roles_for_mode)
-				roles_left[key] = rest_roles_for_mode[key]
+	if(roles_left) // Assoc merge
+		for(var/key in rest_roles_for_mode)
+			roles_left[key] = rest_roles_for_mode[key]
 	return assigned
 
 /datum/authority/branch/role/proc/assign_initial_roles(priority, list/roles_to_iterate, list/unassigned_players)

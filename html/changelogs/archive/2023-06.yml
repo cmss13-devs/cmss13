@@ -171,3 +171,8 @@
       as ground or ship during the next round.
   ihatethisengine:
   - bugfix: MMB cannot be used to attack again
+2023-06-13:
+  Al-1ce:
+  - rscadd: Backstories have been added to various interesting drinks.
+  Hopek:
+  - balance: Huggers no longer lose health over time on weeds.

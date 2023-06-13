@@ -62524,7 +62524,6 @@
 /obj/item/clothing/glasses/sunglasses/big,
 /obj/item/clothing/accessory/blue,
 /obj/item/clothing/accessory/red,
-/obj/item/clothing/shoes/dress,
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},

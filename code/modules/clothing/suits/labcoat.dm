@@ -297,3 +297,7 @@
 		/obj/item/device/walkman,
 	)
 
+/obj/item/clothing/suit/storage/snow_suit/liaison
+	name = "liaison's winter coat"
+	desc = "A Weyland-Yutani winter coat. Only the best comfort for the liaison in a cold environment."
+	icon_state = "snowsuit_liaison"

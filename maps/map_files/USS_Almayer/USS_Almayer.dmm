@@ -62515,6 +62515,10 @@
 	name = "liaison's navy suit"
 	},
 /obj/item/clothing/under/suit_jacket/trainee,
+/obj/item/clothing/under/liaison_suit/charcoal,
+/obj/item/clothing/under/liaison_suit/outing/red,
+/obj/item/clothing/under/liaison_suit/blazer,
+/obj/item/clothing/suit/storage/snow_suit/liaison,
 /obj/item/clothing/gloves/black,
 /obj/item/clothing/gloves/marine/dress,
 /obj/item/clothing/glasses/sunglasses/big,

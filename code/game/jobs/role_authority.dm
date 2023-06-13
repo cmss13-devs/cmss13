@@ -217,7 +217,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return
 
 	unassigned_players = shuffle(unassigned_players, 1) //Shuffle the players.
-
+	var/initially_ready_players = length(unassigned_players)
 
 	// How many positions do we open based on total pop
 	for(var/i in roles_by_name)
@@ -249,12 +249,14 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = list()
 	var/actually_assigned = assign_roles(temp_roles_for_mode, unassigned_players, roles_left)
+	var/secondpass_assigned_count = actually_assigned
 
 	// Third pass calculation of spawn positions so that random jobs below can fill all open slots
 	set_all_spawn_positions(actually_assigned, temp_roles_for_mode)
 
 	var/datum/job/antag/xenos/xeno_job = temp_roles_for_mode[JOB_XENOMORPH]
 
+	var/returning_to_lobby = 0
 	for(var/mob/new_player/M in unassigned_players)
 		switch(M.client.prefs.alternate_option)
 			if(GET_RANDOM_JOB)
@@ -272,8 +274,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 					actually_assigned += calculate_role_weight(xeno_job)
 				else
 					M.ready = 0
+					returning_to_lobby++
 			if(RETURN_TO_LOBBY)
 				M.ready = 0
+				returning_to_lobby++
 		unassigned_players -= M
 
 	if(length(unassigned_players))
@@ -282,20 +286,21 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	unassigned_players = null
 
-	// Do a last pass slots calculations now that everyone is assigned
+	// Do a last pass slots calculations now that everyone is assigned to update xeno counts for below
 	set_all_spawn_positions(actually_assigned, temp_roles_for_mode)
 
-	if(!xeno_job)
-		return
+	var/delta_positions = 0
+	if(xeno_job)
+		// Now we take spare unfilled xeno slots and make them larva
+		var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+		delta_positions = xeno_job.total_positions - xeno_job.current_positions
+		if(delta_positions > 0)
+			hive.stored_larva += delta_positions
+		else if(delta_positions < 0)
+			// Apply penalty to latejoin tally instead
+			SSticker.mode.update_larva_tally(delta_positions / XENO_TO_TOTAL_SPAWN_RATIO)
 
-	// Now we take spare unfilled xeno slots and make them larva
-	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	var/delta_positions = xeno_job.total_positions - xeno_job.current_positions
-	if(delta_positions > 0)
-		hive.stored_larva += delta_positions
-	else if(delta_positions < 0)
-		// Apply penalty to latejoin tally instead
-		SSticker.mode.update_larva_tally(- delta_positions / XENO_TO_TOTAL_SPAWN_RATIO)
+	log_debug("Roles assignement complete! Ready players: [initially_ready_players], Pre-assignement weight: [players_preassigned], Assignment weight: [secondpass_assigned_count], Weight after alternate assignemnts: [actually_assigned], Returned to lobby: [returning_to_lobby], Unfilled Xeno slots: [delta_positions]")
 
 	/*===============================================================*/
 

@@ -462,17 +462,17 @@ var/list/ob_type_fuel_requirements
 	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //break shit around
 	sleep(clear_delay)
 
-	// Explosion if turf is not blocked.
-	if(!is_blocked_turf(target))
+	// Explosion if turf is not a wall.
+	if(!target.density)
 		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		handle_ob_shake(target)
 		sleep(double_explosion_delay)
 		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		return
 
-	// Checks turf around the target to see if it's unblocked.
+	// Checks turf around the target
 	for(var/turf/T in range(2, target))
-		if(!is_blocked_turf(T))
+		if(!target.density)
 			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 			handle_ob_shake(target)
 			sleep(double_explosion_delay)

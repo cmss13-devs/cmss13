@@ -227,7 +227,7 @@
 					log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted [access_type] IFF. </font>")
 				return TRUE
 			access_type = text2num(params["access_target"])
-			if(access_type in (is_centcom ? get_all_weyland_access() : get_all_main_access()))
+			if(access_type in (is_centcom ? get_all_weyland_access() : get_main_marine_access()))
 				if(access_type in target_id_card.access)
 					target_id_card.access -= access_type
 					log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked access '[access_type]'. </font>")
@@ -239,7 +239,7 @@
 			if(!authenticated || !target_id_card)
 				return
 
-			target_id_card.access |= (is_centcom ? get_all_weyland_access() : get_all_main_access())
+			target_id_card.access |= (is_centcom ? get_all_weyland_access() : get_main_marine_access())
 			target_id_card.faction_group |= factions
 			log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted the ID all access and USCM IFF. </font>")
 			return TRUE

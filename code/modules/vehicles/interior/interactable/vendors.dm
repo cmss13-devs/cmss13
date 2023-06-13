@@ -252,7 +252,7 @@
 		list("M44 Heavy Speed Loader (.44)", 0, /obj/item/ammo_magazine/revolver/heavy, VENDOR_ITEM_REGULAR),
 		list("M44 Marksman Speed Loader (.44)", 0, /obj/item/ammo_magazine/revolver/marksman, VENDOR_ITEM_REGULAR),
 		list("M4A3 HP Magazine (9mm)", 0, /obj/item/ammo_magazine/pistol/hp, VENDOR_ITEM_REGULAR),
-		list("M56 Powerpack", 0, /obj/item/smartgun_powerpack, VENDOR_ITEM_REGULAR),
+		list("M56 Battery", 0, /obj/item/smartgun_battery, VENDOR_ITEM_REGULAR),
 		list("M56 Smartgun Drum", 0, /obj/item/ammo_magazine/smartgun, VENDOR_ITEM_REGULAR),
 		list("M56D Drum Magazine",0, /obj/item/ammo_magazine/m56d, VENDOR_ITEM_REGULAR),
 		list("SU-6 Smartpistol Magazine (.45)", round(scale * 2), /obj/item/ammo_magazine/pistol/smart, VENDOR_ITEM_REGULAR),

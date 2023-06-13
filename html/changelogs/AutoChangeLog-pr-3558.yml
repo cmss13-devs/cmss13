@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - rscadd: "Reintroduced auto red alert when xenos are aboard a dropship"

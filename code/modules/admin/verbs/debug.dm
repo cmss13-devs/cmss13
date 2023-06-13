@@ -153,7 +153,7 @@
 		else
 			var/obj/item/card/id/id = new/obj/item/card/id(M);
 			id.icon_state = "gold"
-			id:access = get_all_main_access()+list(ACCESS_ILLEGAL_PIRATE)
+			id:access = get_all_main_access()
 			id.registered_name = H.real_name
 			id.registered_ref = WEAKREF(H)
 			id.assignment = "Captain"

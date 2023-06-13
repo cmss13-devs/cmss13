@@ -111,3 +111,84 @@
   fira:
   - qol: Reduced USCM SG max scattering on Full Auto fire so you don't have to periodically
       let go of the fire button to keep it from firing way wide.
+2023-06-10:
+  Firartix , Thwomper and Sammy:
+  - rscadd: Added four types of tents to liven up FOB. They provide cold protection
+      and benefits depending on their type. The tents spawn in Requisitions roundstart
+      near the mortar. They're vulnerable to explosives and xenomorphs, and NON REPLACEABLE.
+      Mind where you put them!
+  - rscadd: The Command tent comes equipped with an overwatch console and a phone.
+  - rscadd: The Medical tent provides a small boost to surgery speed/pain carried
+      out inside it.
+  - rscadd: The Requisitions tent provides a restockable vendor, desk, and furniture
+      for organization.
+  - rscadd: The Big tent is just a big tent, and provides you a slate to organize
+      the way you want.
+  Huffie56:
+  - refactor: create many sub-type for item to clean the code.
+  Morrow:
+  - rscadd: Brought back the USCM blurb on first drop
+  - rscadd: Drop pouch is now buyable by riflemen
+  - rscadd: Reintroduced auto red alert when xenos are aboard a dropship
+  - rscdel: Removes fourth awkward LZ2 Soro communication relay
+  - balance: Burrowers are now unable to burrow while inside a non-burrow area
+  - rscadd: You can now find internal bleeding via Health Scanner
+  fira:
+  - rscadd: Added optional adaptive client zooming to match in-game zoom. This allows
+      display to be pixel perfect on most monitors if enabled, it removes blurring
+      of game introduced by Stretch to Fit mode, at the cost of slightly reduced vertical
+      size. It is best used with Auto Fit viewport feature enabled.
+2023-06-11:
+  Al-1ce:
+  - spellcheck: Polykevlon no-longer uses an underscore in its name.
+  BeagleGaming1:
+  - bugfix: Acid pillars can now target crit burning friendly xenos
+  Morrow:
+  - rscadd: Forsaken ERT is now weighted by type
+  - bugfix: Fixed medical holocards
+  - rscadd: Escape pods now have a 50% chance to crash land to the surface
+  - bugfix: Escape pods will no longer relaunch when evacuation is complete
+  - rscadd: Cryopods now give a slight glow when occupied
+  - rscdel: Removed ability to high toss over ultra reinforced windows
+  - balance: Clamping bleeding in surgery is now less effective in bad conditions
+  - bugfix: Removed some broken forsaken ERT code
+  NewyearnewmeUwu:
+  - bugfix: fixed a bug with armor prefs
+2023-06-12:
+  Segrain:
+  - rscadd: Jobs can now be assigned specific character slots, which will be automatically
+      loaded when joining as that role.
+  TheGamerdk:
+  - bugfix: Your fluff security record from preferences is now visible to MPs.
+  - bugfix: You can now plant hardy weeds on colony turfs on Chances Claim
+  - bugfix: Data detector no longer triggers on empty vial boxes
+  - bugfix: Sentries now work correctly on dropships.
+  - bugfix: Xenos are no longer notified each time a sister destroys a large crate.
+  fira:
+  - bugfix: Handling C4 and Breaching Charges should not zealously trigger antigrief
+      protection anymore
+  - rscadd: Added a map override for Admins allowing them to load in maps directly
+      as ground or ship during the next round.
+  ihatethisengine:
+  - bugfix: MMB cannot be used to attack again
+2023-06-13:
+  Al-1ce:
+  - rscadd: Backstories have been added to various interesting drinks.
+  Hopek:
+  - balance: Huggers no longer lose health over time on weeds.
+  Huffie56:
+  - bugfix: restore some object back to original to keep them compatible with older
+      map.
+  Morrow:
+  - bugfix: Added missing Fiorina Sciannex groundside xeno landmarks
+  - bugfix: Made nukes get those pesky closet/tunnel hiders
+  - balance: Crippling Strike is now forced harm intent
+  Morrow, Triiodine:
+  - rscadd: Added a smartgun specific battery that you use with the smartgun itself.
+  - rscdel: Removed the smartgun powerpack. You no longer need it for the smartgun.
+  TheGamerdk:
+  - bugfix: You'll now be allowed to reenter your nested body when freed, even if
+      you used the ghost verb.
+  realforest2001:
+  - code_imp: Updated all the Get_Access() procs, and removed some procs where they
+      completely overlapped with others in presets.

@@ -444,6 +444,15 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
+/obj/structure/window/reinforced/ultra/initialize_pass_flags(datum/pass_flags_container/PF)
+	. = ..()
+	if (PF)
+		PF.flags_can_pass_all = NONE
+		PF.flags_can_pass_front = NONE
+		PF.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY)
+	flags_can_pass_front_temp = NONE
+	flags_can_pass_behind_temp = NONE
+
 /obj/structure/window/reinforced/ultra/Initialize()
 	. = ..()
 	GLOB.hijack_bustable_windows += src

@@ -311,11 +311,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(istype(CO_surv_job))
 		CO_surv_job.set_spawn_positions(weighting)
 
-	if(SSnightmare?.get_scenario_value("predator_round"))
-		SSticker.mode.flags_round_type |= MODE_PREDATOR
-		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
-		if(istype(PJ))
-			PJ.set_spawn_positions(weighting)
+	// Limit the number of SQUAD MARINE roles players can roll initially
+	var/datum/job/SMJ = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
+	if(istype(SMJ))
+		SMJ.set_spawn_positions(weighting)
 
 /// Set or Update intended spawn positions for special roles based on weight of roles in play
 /datum/authority/branch/role/proc/set_special_spawn_positions(weighting = 0, list/temp_roles_for_mode)
@@ -325,10 +324,11 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(istype(XJ))
 		XJ.set_spawn_positions(weighting)
 
-	// Limit the number of SQUAD MARINE roles players can roll initially
-	var/datum/job/SMJ = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
-	if(istype(SMJ))
-		SMJ.set_spawn_positions(weighting)
+	if(SSnightmare?.get_scenario_value("predator_round"))
+		SSticker.mode.flags_round_type |= MODE_PREDATOR
+		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
+		if(istype(PJ))
+			PJ.set_spawn_positions(weighting)
 
 /**
 * Assign roles to the players. Return roles that are still avialable.

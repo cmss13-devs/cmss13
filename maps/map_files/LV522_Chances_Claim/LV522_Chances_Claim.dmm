@@ -16992,9 +16992,10 @@
 	dir = 6
 	},
 /obj/structure/prop/vehicles/crawler{
+	density = 0;
 	dir = 8;
-	layer = 2.9;
-	pixel_y = -14
+	layer = 2.0;
+	pixel_y = -13
 	},
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/nw_rockies)
@@ -94219,7 +94220,7 @@ qSH
 qSH
 qSH
 qSH
-qSH
+oQC
 qnb
 krH
 krH

@@ -352,8 +352,6 @@ var/list/ob_type_fuel_requirements
 
 /obj/structure/ob_ammo/warhead
 	name = "theoretical orbital ammo"
-	var/max_shake_factor // the max strength of the camera shake on impact.
-	var/max_knockdown_time // the max time a mob can be stunned after ob.
 	var/warhead_kind
 
 /obj/structure/ob_ammo/warhead/proc/handle_ob_shake(turf/target)
@@ -361,15 +359,22 @@ var/list/ob_type_fuel_requirements
 		return
 
 	var/frequency = 1
+	var/max_shake_factor // the max strength of the camera shake on impact.
+	var/max_knockdown_time // the max time a mob can be stunned after ob.
 	var/radius_size = 30
 
 	switch(warhead_kind)
 		if("incendiary")
 			frequency = 1
+			max_shake_factor = 8
+			max_knockdown_time = 3
 		if("explosive")
 			frequency = 3
+			max_shake_factor = 15
+			max_knockdown_time = 6
 		if("cluster")
 			frequency = 2
+			max_shake_factor = 1
 
 	for(var/mob/living/M in urange(radius_size, target))
 
@@ -446,8 +451,6 @@ var/list/ob_type_fuel_requirements
 	var/clear_falloff = 400
 	var/standard_power = 600
 	var/standard_falloff = 30
-	max_shake_factor = 15
-	max_knockdown_time = 6
 	var/clear_delay = 3
 	var/double_explosion_delay = 6
 
@@ -489,8 +492,6 @@ var/list/ob_type_fuel_requirements
 	var/clear_delay = 3
 	var/distance = 18
 	var/fire_level = 70
-	max_shake_factor = 8
-	max_knockdown_time = 3
 	var/burn_level = 80
 	var/fire_color = null
 	var/fire_type = "white"
@@ -516,7 +517,6 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_warhead_3"
 	var/total_amount = 75 // how many times will the shell fire?
 	var/instant_amount = 3 // how many explosions per time it fires?
-	max_shake_factor = 1
 	var/explosion_power = 350
 	var/explosion_falloff = 150
 	var/delay_between_clusters = 0.4 SECONDS // how long between each firing?

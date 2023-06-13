@@ -2055,10 +2055,20 @@
 	},
 /area/lv522/indoors/c_block/garage)
 "bnz" = (
-/obj/item/stack/sandbags_empty/half,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/lv522/indoors/b_block/bridge)
+/obj/structure/surface/table/almayer,
+/obj/structure/flora/pottedplant{
+	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
+	icon_state = "pottedplant_21";
+	layer = 3.1;
+	name = "synthethic potted plant";
+	pixel_y = 14
+	},
+/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/spider/spiderling/nogrow,
+/turf/open/floor/prison{
+	icon_state = "darkredfull2"
+	},
+/area/lv522/indoors/a_block/security)
 "bnH" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -4651,12 +4661,12 @@
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/west)
 "cKF" = (
-/obj/item/explosive/plastic/breaching_charge,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
+/obj/structure/cargo_container/kelland/left,
+/obj/item/explosive/plastic/breaching_charge{
+	layer = 5
 	},
-/area/lv522/indoors/a_block/security)
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/colony_streets/east_central_street)
 "cKG" = (
 /turf/closed/wall/strata_ice/dirty,
 /area/lv522/outdoors/nw_rockies)
@@ -7741,19 +7751,6 @@
 	icon_state = "cement4"
 	},
 /area/lv522/outdoors/colony_streets/south_east_street)
-"ebM" = (
-/obj/structure/blocker/invisible_wall,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/lv522/atmos/cargo_intake)
 "ebP" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "2"
@@ -7858,12 +7855,6 @@
 	icon_state = "greenfull"
 	},
 /area/lv522/indoors/b_block/bridge)
-"eeX" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/asphalt/cement{
-	icon_state = "cement1"
-	},
-/area/lv522/outdoors/n_rockies)
 "eeY" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/auto_turf/shale/layer0,
@@ -9656,7 +9647,6 @@
 	},
 /area/lv522/atmos/west_reactor)
 "eUf" = (
-/obj/structure/blocker/invisible_wall,
 /obj/item/ammo_magazine/m2c{
 	current_rounds = 0;
 	layer = 4.2;
@@ -9670,10 +9660,8 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/lv522/atmos/cargo_intake)
+/turf/closed/wall/strata_ice/dirty,
+/area/lv522/oob)
 "eUh" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/security)
@@ -10121,14 +10109,13 @@
 /turf/open/floor/prison,
 /area/lv522/landing_zone_2)
 "fgf" = (
-/obj/structure/blocker/invisible_wall,
 /obj/item/ammo_magazine/m2c{
 	current_rounds = 0;
 	layer = 4.2;
 	pixel_x = 17
 	},
-/turf/open/auto_turf/shale/layer0,
-/area/lv522/outdoors/n_rockies)
+/turf/closed/wall/strata_ice/dirty,
+/area/lv522/oob)
 "fgk" = (
 /obj/structure/platform_decoration{
 	dir = 1
@@ -11443,7 +11430,6 @@
 	unacidable = 1;
 	unslashable = 1
 	},
-/obj/structure/blocker/invisible_wall,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
@@ -11451,10 +11437,8 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/lv522/atmos/cargo_intake)
+/turf/closed/wall/strata_ice/dirty,
+/area/lv522/oob)
 "fLF" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
@@ -11597,10 +11581,6 @@
 	icon_state = "darkbrownfull2"
 	},
 /area/lv522/indoors/c_block/casino)
-"fOl" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/shale/layer0,
-/area/lv522/outdoors/n_rockies)
 "fOy" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/decal/cleanable/cobweb,
@@ -13029,7 +13009,7 @@
 	},
 /area/lv522/atmos/command_centre)
 "gxe" = (
-/obj/item/stack/sandbags_empty/half,
+/obj/item/stack/sandbags_empty/small_stack,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/b_block/bridge)
 "gxl" = (
@@ -17159,15 +17139,6 @@
 	icon_state = "floor_plate"
 	},
 /area/lv522/outdoors/colony_streets/north_west_street)
-"iiz" = (
-/obj/structure/window/framed/strata/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Sec-Corpo-Bridge-Lockdown"
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/lv522/indoors/a_block/security)
 "iiC" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/wy{
@@ -33535,15 +33506,6 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/landing_zone_1)
-"pbb" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/girder/displaced,
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
-/area/lv522/outdoors/colony_streets/south_street)
 "pbp" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms/glass)
@@ -34159,21 +34121,6 @@
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
-	},
-/area/lv522/indoors/a_block/security)
-"poN" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/flora/pottedplant{
-	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
-	icon_state = "pottedplant_21";
-	layer = 3.1;
-	name = "synthethic potted plant";
-	pixel_y = 14
-	},
-/obj/effect/decal/cleanable/cobweb2,
-/obj/effect/spider/spiderling/nogrow,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
 	},
 /area/lv522/indoors/a_block/security)
 "poQ" = (
@@ -38053,9 +38000,7 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "qPS" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1
-	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -39956,7 +39901,6 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "ryv" = (
-/obj/structure/window/framed/strata/reinforced,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -68134,7 +68078,7 @@ bIJ
 bIJ
 yim
 abV
-ebM
+abV
 eUf
 fLz
 abV
@@ -68361,9 +68305,9 @@ yim
 yim
 yim
 cpy
-eeX
-eeX
-eeX
+inU
+cpy
+cpy
 gGx
 inU
 inU
@@ -68590,7 +68534,7 @@ cpy
 cpy
 cpy
 fgf
-fOl
+cpy
 yim
 hzA
 ihy
@@ -68817,7 +68761,7 @@ yim
 cpy
 cpy
 cpy
-fOl
+cpy
 cpy
 hIp
 ijv
@@ -69300,7 +69244,7 @@ roT
 xTs
 sKL
 tkM
-xtb
+xyL
 uad
 xTs
 uIo
@@ -69527,7 +69471,7 @@ vsG
 xTs
 xTs
 tkM
-xtb
+xyL
 ubd
 xTs
 jLF
@@ -69981,7 +69925,7 @@ rLq
 siT
 uEC
 xqd
-xyL
+xtb
 xqd
 uEC
 pAW
@@ -70662,7 +70606,7 @@ rLy
 siT
 uEC
 xqd
-xyL
+xtb
 ubv
 xXX
 xtb
@@ -72597,7 +72541,7 @@ hyf
 wIr
 hWs
 pXq
-bnz
+pOs
 uNu
 pKl
 oLa
@@ -72824,7 +72768,7 @@ dgY
 gwg
 cHb
 oqp
-gxe
+oLa
 pKl
 pKl
 tkf
@@ -75757,7 +75701,7 @@ xgH
 tkf
 pfD
 rQg
-pbb
+vdp
 nax
 nax
 uXp
@@ -79530,7 +79474,7 @@ nTx
 nTx
 nTx
 mvR
-ryv
+sjy
 uVj
 kOS
 uDb
@@ -79758,7 +79702,7 @@ nTx
 nTx
 mvR
 qPS
-uVj
+oGp
 xxs
 eUh
 eUh
@@ -79985,7 +79929,7 @@ mcC
 nTx
 jNv
 ryv
-jft
+lhT
 xxs
 uDb
 uDb
@@ -80212,8 +80156,8 @@ nTx
 eHn
 uWh
 sjy
-poN
-uVj
+jft
+xxs
 uDb
 kBB
 nrP
@@ -80439,7 +80383,7 @@ nTx
 eHn
 pgl
 sjy
-sjy
+bnz
 xQi
 uDb
 uDb
@@ -81347,8 +81291,8 @@ xlI
 mev
 mev
 tdD
-iiz
-cKF
+sjy
+uVj
 qDr
 xxs
 nrP
@@ -82028,7 +81972,7 @@ xlI
 xlI
 yjy
 xlI
-iiz
+sjy
 uVj
 eqM
 cvi
@@ -94551,7 +94495,7 @@ tTD
 tTD
 tSm
 rnB
-oXZ
+cKF
 uKR
 rnB
 rnB

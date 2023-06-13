@@ -1066,7 +1066,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(!SSticker.mode)
-		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(toggle_predator_action))
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(toggle_predator_action)))
 		return
 
 	if(SSticker.mode.flags_round_type & MODE_PREDATOR)

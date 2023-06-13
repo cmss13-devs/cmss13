@@ -300,7 +300,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			// Apply penalty to latejoin tally instead
 			SSticker.mode.update_larva_tally(delta_positions / XENO_TO_TOTAL_SPAWN_RATIO)
 
-	log_debug("Roles assignement complete! Ready players: [initially_ready_players], Pre-assignement weight: [players_preassigned], Assignment weight: [secondpass_assigned_count], Weight after alternate assignemnts: [actually_assigned], Returned to lobby: [returning_to_lobby], Unfilled Xeno slots: [delta_positions]")
+	log_debug("Roles assignement complete! Ready players: [initially_ready_players], Returned to lobby: [returning_to_lobby], Unfilled Xeno slots: [delta_positions], Weights: \[[players_preassigned],[secondpass_assigned_count],[actually_assigned]\]")
 
 	/*===============================================================*/
 

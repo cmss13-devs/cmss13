@@ -1,0 +1,4 @@
+author: "Hopek"
+delete-after: True
+changes:
+  - balance: "Huggers no longer lose health over time on weeds."

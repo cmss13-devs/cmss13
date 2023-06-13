@@ -182,6 +182,10 @@
   Morrow:
   - bugfix: Added missing Fiorina Sciannex groundside xeno landmarks
   - bugfix: Made nukes get those pesky closet/tunnel hiders
+  - balance: Crippling Strike is now forced harm intent
+  Morrow, Triiodine:
+  - rscadd: Added a smartgun specific battery that you use with the smartgun itself.
+  - rscdel: Removed the smartgun powerpack. You no longer need it for the smartgun.
   TheGamerdk:
   - bugfix: You'll now be allowed to reenter your nested body when freed, even if
       you used the ghost verb.

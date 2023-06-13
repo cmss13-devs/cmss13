@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - code_imp: "Updated all the Get_Access() procs, and removed some procs where they completely overlapped with others in presets."

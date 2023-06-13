@@ -176,3 +176,11 @@
   - rscadd: Backstories have been added to various interesting drinks.
   Hopek:
   - balance: Huggers no longer lose health over time on weeds.
+  Morrow:
+  - bugfix: Added missing Fiorina Sciannex groundside xeno landmarks
+  TheGamerdk:
+  - bugfix: You'll now be allowed to reenter your nested body when freed, even if
+      you used the ghost verb.
+  realforest2001:
+  - code_imp: Updated all the Get_Access() procs, and removed some procs where they
+      completely overlapped with others in presets.

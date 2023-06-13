@@ -247,7 +247,7 @@ as having entered the turf.
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
 
 // Spawns a cellular automaton of an explosion
-/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data)
+/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data, warhead_kind)
 	if(!istype(epicenter))
 		epicenter = get_turf(epicenter)
 
@@ -292,6 +292,52 @@ as having entered the turf.
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
 		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver1, explosion_cause_data)
 		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver2, explosion_cause_data)
+
+	// everything below this line is strictly for handling ob camera shakes
+	// it can be modified in the future to handle other explosion types by interacting with power and falloff instead.
+	if(!warhead_kind)
+		return
+
+	var/frequency = 1
+	var/max_shake_factor // the max strength of the camera shake on impact.
+	var/max_knockdown_time // the max time a mob can be stunned after ob.
+	var/radius_size = 30
+
+	switch(warhead_kind)
+		if("incendiary")
+			frequency = 1
+			max_shake_factor = 8
+			max_knockdown_time = 3
+		if("explosive")
+			frequency = 3
+			max_shake_factor = 15
+			max_knockdown_time = 6
+		if("cluster")
+			frequency = 2
+			max_shake_factor = 1
+
+	for(var/mob/living/M in urange(radius_size, epicenter))
+
+		var/distance = get_accurate_dist(get_turf(M), epicenter)
+
+		var/distance_percent = ((radius_size - distance) / radius_size)
+
+		var/total_shake_factor = abs(max_shake_factor * distance_percent)
+
+		// it's of type cluster.
+		if(!max_knockdown_time)
+			shake_camera(M, 0.5, total_shake_factor, frequency)
+			continue
+
+		shake_camera(M, total_shake_factor, frequency)
+
+		var/total_stun_time = max_knockdown_time * distance_percent
+
+		M.KnockDown(rand(total_stun_time, (total_stun_time + 1)))
+
+		if(!M.knocked_down)
+			continue
+		to_chat(M, SPAN_WARNING("You are thrown off balance and fall to the ground!"))
 
 /proc/log_explosion(atom/A, datum/automata_cell/explosion/E)
 	if(isliving(A))

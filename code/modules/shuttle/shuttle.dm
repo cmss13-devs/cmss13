@@ -180,18 +180,20 @@
 	if(P)
 		return P.id
 
-/obj/docking_port/proc/is_in_shuttle_bounds(atom/A)
-	var/turf/T = get_turf(A)
-	if(T.z != z)
+/obj/docking_port/proc/is_in_shuttle_bounds(atom/target)
+	if(!target)
+		return FALSE
+	var/turf/target_turf = get_turf(target)
+	if(!target_turf || target_turf.z != z)
 		return FALSE
 	var/list/bounds = return_coords()
 	var/x0 = bounds[1]
 	var/y0 = bounds[2]
 	var/x1 = bounds[3]
 	var/y1 = bounds[4]
-	if(!ISINRANGE(T.x, min(x0, x1), max(x0, x1)))
+	if(!ISINRANGE(target_turf.x, min(x0, x1), max(x0, x1)))
 		return FALSE
-	if(!ISINRANGE(T.y, min(y0, y1), max(y0, y1)))
+	if(!ISINRANGE(target_turf.y, min(y0, y1), max(y0, y1)))
 		return FALSE
 	return TRUE
 

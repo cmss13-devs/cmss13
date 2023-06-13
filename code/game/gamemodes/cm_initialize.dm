@@ -207,10 +207,12 @@ Additional game mode variables.
 
 #undef calculate_pred_max
 
-/datum/game_mode/proc/update_larva_tally(delta)
+/datum/game_mode/proc/update_larva_tally(delta, whole_larvas = FALSE)
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	if(!hive.latejoin_burrowed || (!hive.hive_location && ROUND_TIME >= XENO_ROUNDSTART_PROGRESS_TIME_2))
 		return
+	if(whole_larvas)
+		delta *= latejoin_larva_drop
 	if(delta)
 		latejoin_tally += delta
 	if(latejoin_larva_drop && latejoin_tally >= latejoin_larva_drop)

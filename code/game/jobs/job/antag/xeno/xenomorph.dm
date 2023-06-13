@@ -10,8 +10,10 @@
 	spawn_positions = -1
 	total_positions = -1
 
-/datum/job/antag/xenos/proc/calculate_extra_spawn_positions(count)
-	return max((round(count * XENO_TO_TOTAL_SPAWN_RATIO)), 0)
+/// Calculates fractional open xenos slots for a given role weight - this can be negative
+/datum/job/antag/xenos/proc/calculate_remaining_positions(count)
+	var/target = count * (XENO_TO_TOTAL_SPAWN_RATIO)
+	return target - current_positions
 
 /datum/job/antag/xenos/set_spawn_positions(count)
 	spawn_positions = max((round(count * XENO_TO_TOTAL_SPAWN_RATIO)), 1)

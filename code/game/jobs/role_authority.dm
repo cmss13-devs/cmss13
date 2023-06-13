@@ -244,8 +244,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		J.current_positions = 0
 
 	// Update spawn position counts based on projected player placement and their roles weight
-	set_initial_spawn_positions(players_preassigned, temp_roles_for_mode)
 	set_special_spawn_positions(players_preassigned, temp_roles_for_mode)
+	set_antag_spawn_positions(players_preassigned, temp_roles_for_mode)
 
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = list()
@@ -253,7 +253,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	var/actually_assigned_2pass = actually_assigned
 
 	// Update antag job slots based on actually assigned players
-	set_special_spawn_positions(actually_assigned, temp_roles_for_mode)
+	set_antag_spawn_positions(actually_assigned, temp_roles_for_mode)
 
 	var/datum/job/antag/xenos/xeno_job = temp_roles_for_mode[JOB_XENOMORPH]
 	var/returning_to_lobby = 0
@@ -280,20 +280,15 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	unassigned_players = null
 
-	// Do a last pass calculation of antag slots now that everyone is placed
-	set_special_spawn_positions(actually_assigned, temp_roles_for_mode)
+	// Do a last pass calculation of antag slots now that everyone is placed to get an accurate xeno count below
+	set_antag_spawn_positions(actually_assigned, temp_roles_for_mode)
 
 	var/xeno_slots_text = ""
 	if(xeno_job)
 		// Now we take spare unfilled xeno slots and make them larva
-		var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-		var/delta_positions = xeno_job.total_positions - xeno_job.current_positions
-		xeno_slots_text = ", Xenos: [xeno_job.current_positions]/[xeno_job.total_positions]"
-		if(delta_positions > 0)
-			hive.stored_larva += delta_positions
-		else if(delta_positions < 0)
-			// Apply penalty to latejoin tally instead
-			SSticker.mode.update_larva_tally(delta_positions / XENO_TO_TOTAL_SPAWN_RATIO)
+		var/missing_xeno_count = xeno_job.calculate_remaining_positions(actually_assigned)
+		xeno_slots_text = ", Xenos: [xeno_job.current_positions]/[xeno_job.total_positions+missing_xeno_count]"
+		SSticker.mode.update_larva_tally(missing_xeno_count, whole_larvas = TRUE)
 
 	log_debug("Roles assignement complete! Ready players: [initially_ready_players], Returned to lobby: [returning_to_lobby][xeno_slots_text], Role Weights: \[[players_preassigned],[actually_assigned_2pass],[actually_assigned]\]")
 
@@ -301,7 +296,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 /// Set intended spawn positions for starter roles based on weight of roles in play
 /// This does NOT handle most marine jobs and such, only special roles at start time
-/datum/authority/branch/role/proc/set_initial_spawn_positions(weighting = 0, list/temp_roles_for_mode)
+/datum/authority/branch/role/proc/set_special_spawn_positions(weighting = 0, list/temp_roles_for_mode)
 	// Set survivor starting amount based on marines assigned
 	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]
 	if(istype(SJ))
@@ -316,10 +311,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(istype(SMJ))
 		SMJ.set_spawn_positions(weighting)
 
-/// Set or Update intended spawn positions for special roles based on weight of roles in play
-/datum/authority/branch/role/proc/set_special_spawn_positions(weighting = 0, list/temp_roles_for_mode)
-	// Set up limits for other roles based on our balancing weight number.
-	// Set the xeno starting amount based on marines assigned
+/// Set or Update intended spawn positions for antag roles based on weight of roles in play
+/datum/authority/branch/role/proc/set_antag_spawn_positions(weighting = 0, list/temp_roles_for_mode)
 	var/datum/job/antag/xenos/XJ = temp_roles_for_mode[JOB_XENOMORPH]
 	if(istype(XJ))
 		XJ.set_spawn_positions(weighting)

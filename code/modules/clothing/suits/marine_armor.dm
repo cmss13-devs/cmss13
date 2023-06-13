@@ -416,7 +416,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 
 /obj/item/clothing/suit/storage/marine/smartgunner
-	name = "M56 combat harness"
+	name = "\improper M56 combat harness"
 	desc = "A heavy protective vest designed to be worn with the M56 Smartgun System. \nIt has specially designed straps and reinforcement to carry the Smartgun and accessories."
 	icon_state = "8"
 	item_state = "armor"
@@ -438,8 +438,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/device/walkman,
 	)
 
-	var/registered_mob
-
 /obj/item/clothing/suit/storage/marine/smartgunner/Initialize()
 	. = ..()
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD] && name == "M56 combat harness")
@@ -459,8 +457,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	. = ..()
 
 	if(slot == WEAR_JACKET)
-		registered_mob = user
-		RegisterSignal(registered_mob, COMSIG_HUMAN_ATTEMPTING_EQUIP, PROC_REF(check_equipping))
+		RegisterSignal(user, COMSIG_HUMAN_ATTEMPTING_EQUIP, PROC_REF(check_equipping))
 
 /obj/item/clothing/suit/storage/marine/smartgunner/proc/check_equipping(mob/living/carbon/human/equipping_human, obj/item/equipping_item, slot)
 	SIGNAL_HANDLER
@@ -477,14 +474,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /obj/item/clothing/suit/storage/marine/smartgunner/unequipped(mob/user, slot)
 	. = ..()
 
-	if(registered_mob)
-		UnregisterSignal(registered_mob, COMSIG_HUMAN_ATTEMPTING_EQUIP)
-		registered_mob = null
-
-/obj/item/clothing/suit/storage/marine/smartgunner/Destroy()
-	registered_mob = null
-
-	. = ..()
+	UnregisterSignal(user, COMSIG_HUMAN_ATTEMPTING_EQUIP)
 
 /obj/item/clothing/suit/storage/marine/leader
 	name = "\improper B12 pattern marine armor"

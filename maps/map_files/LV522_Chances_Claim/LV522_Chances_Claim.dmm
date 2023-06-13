@@ -5559,6 +5559,7 @@
 /obj/structure/surface/rack,
 /obj/item/device/analyzer,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/stack/sandbags_empty/small_stack,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2"
 	},
@@ -15182,6 +15183,11 @@
 /obj/structure/bed/chair/wheelchair,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"hra" = (
+/obj/structure/largecrate/random,
+/obj/item/stack/sandbags_empty/small_stack,
+/turf/open/floor/plating,
+/area/lv522/indoors/c_block/mining)
 "hre" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/organic/grass,
@@ -84128,7 +84134,7 @@ jas
 jas
 jas
 jas
-tms
+hra
 nQu
 aEF
 jas

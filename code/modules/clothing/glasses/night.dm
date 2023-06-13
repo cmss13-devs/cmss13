@@ -127,6 +127,7 @@
 	return ..()
 
 /obj/item/clothing/glasses/night/m56_goggles/dropped(mob/living/carbon/human/user)
+	linked_smartgun = null
 	disable_far_sight(user)
 	return ..()
 

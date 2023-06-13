@@ -479,6 +479,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 	if(registered_mob)
 		UnregisterSignal(registered_mob, COMSIG_HUMAN_ATTEMPTING_EQUIP)
+		registered_mob = null
 
 /obj/item/clothing/suit/storage/marine/smartgunner/Destroy()
 	registered_mob = null

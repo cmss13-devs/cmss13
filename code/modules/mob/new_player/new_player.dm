@@ -260,8 +260,6 @@
 			sq.max_engineers = engi_slot_formula(GLOB.clients.len)
 			sq.max_medics = medic_slot_formula(GLOB.clients.len)
 
-	SSticker.mode.update_larva_tally(RoleAuthority.calculate_role_weight(RoleAuthority.roles_for_mode[rank]))
-
 	if(character.mind && character.mind.player_entity)
 		var/datum/entity/player_entity/player = character.mind.player_entity
 		if(player.get_playtime(STATISTIC_HUMAN) == 0 && player.get_playtime(STATISTIC_XENO) == 0)

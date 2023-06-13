@@ -176,7 +176,7 @@
 /obj/item/reagent_container/food/drinks/cans/thirteenloko
 	name = "\improper Thirteen Loko"
 	desc = "Consumption of Thirteen Loko may result in seizures, blindness, drunkenness, or even death. Please Drink Responsibly."
-	desc_lore = "A rarity among modern markets, Thirteen Loko is an all-Earth original. Coined by the fact that only the mildly insane are willing to inhibit it, this energy drink has garnered a sizable reputation and a cult following to back it. After proceedings by Weyland Yutani, cobra venom was removed from the recipe, much to the behest of the consumer base."
+	desc_lore = "A rarity among modern markets, Thirteen Loko is an all-Earth original. Coined by the fact that only the mildly insane are willing to inhibit it, this energy drink has garnered a sizable reputation and a cult following to back it. After proceedings by Weyland Yutani, cobra venom was removed from the recipe, much to the chagrin of the consumer base."
 	icon_state = "thirteen_loko"
 	center_of_mass = "x=16;y=8"
 

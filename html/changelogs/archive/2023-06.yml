@@ -171,3 +171,24 @@
       as ground or ship during the next round.
   ihatethisengine:
   - bugfix: MMB cannot be used to attack again
+2023-06-13:
+  Al-1ce:
+  - rscadd: Backstories have been added to various interesting drinks.
+  Hopek:
+  - balance: Huggers no longer lose health over time on weeds.
+  Huffie56:
+  - bugfix: restore some object back to original to keep them compatible with older
+      map.
+  Morrow:
+  - bugfix: Added missing Fiorina Sciannex groundside xeno landmarks
+  - bugfix: Made nukes get those pesky closet/tunnel hiders
+  - balance: Crippling Strike is now forced harm intent
+  Morrow, Triiodine:
+  - rscadd: Added a smartgun specific battery that you use with the smartgun itself.
+  - rscdel: Removed the smartgun powerpack. You no longer need it for the smartgun.
+  TheGamerdk:
+  - bugfix: You'll now be allowed to reenter your nested body when freed, even if
+      you used the ghost verb.
+  realforest2001:
+  - code_imp: Updated all the Get_Access() procs, and removed some procs where they
+      completely overlapped with others in presets.

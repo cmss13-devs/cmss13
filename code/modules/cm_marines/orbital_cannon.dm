@@ -544,13 +544,15 @@ var/list/ob_type_fuel_requirements
 		for(var/k = 1 to instant_amount)
 			var/turf/U = pick(turf_list)
 			fire_in_a_hole(U)
+			// sleep tweak for camera shake, feels more fluid.
+			sleep(0.5)
+			handle_ob_shake(U)
+
 		sleep(delay_between_clusters)
 
 /obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(turf/loc)
 	new /obj/effect/overlay/temp/blinking_laser (loc)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 1 SECONDS)
-	sleep(0.5)
-	handle_ob_shake(loc)
 
 /obj/structure/ob_ammo/ob_fuel
 	name = "solid fuel"

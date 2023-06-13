@@ -1,49 +1,5 @@
 /datum/equipment_preset/cmb
 	name = "Colonial Marshal"
-
-	assignment = "CMB Deputy"
-	rank = JOB_CMB
-	faction = FACTION_USCM
-
-/datum/equipment_preset/cmb/New()
-	. = ..()
-	access = get_all_accesses() + get_all_civilian_accesses()
-
-/datum/equipment_preset/cmb/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(80;MALE,20;FEMALE)
-	var/datum/preferences/A = new()
-	A.randomize_appearance(new_human)
-	var/random_name
-	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
-	var/static/list/hair_colors = colors.Copy() + list("BLONDE" = list(197, 164, 30), "CARROT" = list(174, 69, 42))
-	var/hair_color = pick(hair_colors)
-	new_human.r_hair = hair_colors[hair_color][1]
-	new_human.g_hair = hair_colors[hair_color][2]
-	new_human.b_hair = hair_colors[hair_color][3]
-	new_human.r_facial = hair_colors[hair_color][1]
-	new_human.g_facial = hair_colors[hair_color][2]
-	new_human.b_facial = hair_colors[hair_color][3]
-	var/eye_color = pick(colors)
-	new_human.r_eyes = colors[eye_color][1]
-	new_human.g_eyes = colors[eye_color][2]
-	new_human.b_eyes = colors[eye_color][3]
-	if(new_human.gender == MALE)
-		random_name = "[pick(first_names_male)] [pick(last_names)]"
-		new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut", "Pvt. Joker", "Marine Fade", "Low Fade", "Medium Fade", "High Fade", "No Fade", "Coffee House Cut", "Flat Top",)
-		new_human.f_style = pick("5 O'clock Shadow", "Shaved", "Full Beard", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache", "7 O'clock Shadow", "7 O'clock Moustache",)
-	else
-		random_name = "[pick(first_names_female)] [pick(last_names)]"
-		new_human.h_style = pick("Ponytail 1", "Ponytail 2", "Ponytail 3", "Ponytail 4", "Pvt. Redding", "Pvt. Clarison", "Cpl. Dietrich", "Pvt. Vasquez", "Marine Bun", "Marine Bun 2", "Marine Flat Top",)
-	new_human.change_real_name(new_human, random_name)
-	new_human.age = rand(20,45)
-	new_human.r_hair = rand(15,35)
-	new_human.g_hair = rand(15,35)
-	new_human.b_hair = rand(25,45)
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/cmb
-	name = "Colonial Marshal"
 	faction = FACTION_USCM
 	rank = JOB_CMB
 	idtype = /obj/item/card/id/deputy
@@ -53,8 +9,7 @@
 
 /datum/equipment_preset/cmb/New()
 	. = ..()
-	access = get_all_accesses() + get_all_civilian_accesses()
-
+	access = get_friendly_ert_access()
 
 /datum/equipment_preset/cmb/load_name(mob/living/carbon/human/new_human)
 	new_human.gender = pick(80;MALE,20;FEMALE)
@@ -448,7 +403,7 @@
 
 /datum/equipment_preset/uscm/cmb/New()
 	. = ..()
-	access = get_all_accesses() + list(ACCESS_MARINE_PREP)
+	access = get_friendly_ert_access()
 
 	assignment = "Anchorpoint Station Marine Rifleman"
 	rank = JOB_SQUAD_MARINE
@@ -504,7 +459,6 @@
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 /datum/equipment_preset/uscm/cmb/leader/New()
 	. = ..()
-	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 
 	assignment = "Anchorpoint Station Marine Team Leader"
 	rank = JOB_SQUAD_LEADER
@@ -550,7 +504,6 @@
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 /datum/equipment_preset/uscm/cmb/rto/New()
 	. = ..()
-	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_TL_PREP)
 
 	assignment = "Anchorpoint Station Marine Technical Specialist"
 	rank = JOB_SQUAD_TEAM_LEADER
@@ -598,7 +551,6 @@
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 /datum/equipment_preset/uscm/cmb/medic/New()
 	. = ..()
-	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 
 	assignment = "Anchorpoint Station Hospital Corpsman"
 	rank = JOB_SQUAD_MEDIC
@@ -660,7 +612,6 @@
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 /datum/equipment_preset/uscm/cmb/smartgunner/New()
 	. = ..()
-	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 
 	assignment = "Anchorpoint Station Marine Smartgunner"
 	rank = JOB_SQUAD_SMARTGUN

@@ -56156,7 +56156,6 @@
 	},
 /area/almayer/shipboard/brig/lobby)
 "pFg" = (
-/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 8;
 	id = "Perma 1";
@@ -56167,6 +56166,7 @@
 	id = "courtyard_cells";
 	name = "\improper Courtyard Lockdown Shutter"
 	},
+/obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/perma)
 "pFA" = (
@@ -75203,7 +75203,6 @@
 	},
 /area/almayer/living/cryo_cells)
 "ydU" = (
-/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 8;
 	id = "Perma 2";
@@ -75214,6 +75213,7 @@
 	id = "courtyard_cells";
 	name = "\improper Courtyard Lockdown Shutter"
 	},
+/obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/perma)
 "yeo" = (

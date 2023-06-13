@@ -30,6 +30,7 @@
 
 /datum/job/command/commander/announce_entry_message(mob/living/carbon/human/H)
 	addtimer(CALLBACK(src, PROC_REF(do_announce_entry_message), H), 1.5 SECONDS)
+	RegisterSignal(H, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(commander_switched_z_level))
 	return ..()
 
 /datum/job/command/commander/generate_entry_conditions(mob/living/M, whitelist_status)
@@ -40,6 +41,13 @@
 /datum/job/command/commander/proc/cleanup_leader_candidate(mob/M)
 	SIGNAL_HANDLER
 	GLOB.marine_leaders -= JOB_CO
+
+/datum/job/command/commander/proc/commander_switched_z_level(mob/living/CO)
+	SIGNAL_HANDLER
+	if(is_ground_level(CO.z))
+		CO.langchat_styles = "langchat_bolded"
+	else
+		CO.langchat_styles = initial(CO.langchat_styles)
 
 /datum/job/command/commander/proc/do_announce_entry_message(mob/living/carbon/human/H)
 		all_hands_on_deck("Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!")

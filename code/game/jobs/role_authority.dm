@@ -243,41 +243,35 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/datum/job/J = temp_roles_for_mode[title]
 		J.current_positions = 0
 
-	// Calculate 2nd pass of available job slots based on what we precomputed for now
-	set_all_spawn_positions(players_preassigned, temp_roles_for_mode)
+	// Update spawn position counts based on projected player placement and their roles weight
+	set_initial_spawn_positions(players_preassigned, temp_roles_for_mode)
+	set_special_spawn_positions(players_preassigned, temp_roles_for_mode)
 
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = list()
 	var/actually_assigned = assign_roles(temp_roles_for_mode, unassigned_players, roles_left)
-	var/secondpass_assigned_count = actually_assigned
+	var/actually_assigned_2pass = actually_assigned
 
-	// Third pass calculation of spawn positions so that random jobs below can fill all open slots
-	set_all_spawn_positions(actually_assigned, temp_roles_for_mode)
+	// Update antag job slots based on actually assigned players
+	set_special_spawn_positions(actually_assigned, temp_roles_for_mode)
 
 	var/datum/job/antag/xenos/xeno_job = temp_roles_for_mode[JOB_XENOMORPH]
-
 	var/returning_to_lobby = 0
 	for(var/mob/new_player/M in unassigned_players)
 		switch(M.client.prefs.alternate_option)
 			if(GET_RANDOM_JOB)
 				assign_random_role(M, roles_left) //We want to keep the list between assignments.
-				var/datum/job/effective_job = GET_MAPPED_ROLE(M.job)
-				if(effective_job)
-					actually_assigned += calculate_role_weight(effective_job)
 			if(BE_MARINE)
 				var/datum/job/marine_job = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
 				assign_role(M, marine_job) //Should always be available, in all game modes, as a candidate. Even if it may not be a marine.
-				actually_assigned += calculate_role_weight(marine_job)
 			if(BE_XENOMORPH)
 				if(xeno_job)
 					assign_role(M, xeno_job)
-					actually_assigned += calculate_role_weight(xeno_job)
-				else
-					M.ready = 0
-					returning_to_lobby++
-			if(RETURN_TO_LOBBY)
-				M.ready = 0
-				returning_to_lobby++
+		if(M.job)
+			actually_assigned += calculate_role_weight(GET_MAPPED_ROLE(M.job))
+		else
+			M.ready = FALSE
+			returning_to_lobby++
 		unassigned_players -= M
 
 	if(length(unassigned_players))
@@ -286,8 +280,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	unassigned_players = null
 
-	// Do a last pass slots calculations now that everyone is assigned to update xeno counts for below
-	set_all_spawn_positions(actually_assigned, temp_roles_for_mode)
+	// Do a last pass calculation of antag slots now that everyone is placed
+	set_special_spawn_positions(actually_assigned, temp_roles_for_mode)
 
 	var/xeno_slots_text = ""
 	if(xeno_job)
@@ -301,12 +295,30 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			// Apply penalty to latejoin tally instead
 			SSticker.mode.update_larva_tally(delta_positions / XENO_TO_TOTAL_SPAWN_RATIO)
 
-	log_debug("Roles assignement complete! Ready players: [initially_ready_players], Returned to lobby: [returning_to_lobby][xeno_slots_text], Weights: \[[players_preassigned],[secondpass_assigned_count],[actually_assigned]\]")
+	log_debug("Roles assignement complete! Ready players: [initially_ready_players], Returned to lobby: [returning_to_lobby][xeno_slots_text], Role Weights: \[[players_preassigned],[actually_assigned_2pass],[actually_assigned]\]")
 
 	/*===============================================================*/
 
-/// Set intended spawn positions for all roles based on a given role weight sum
-/datum/authority/branch/role/proc/set_all_spawn_positions(weighting = 0, list/temp_roles_for_mode)
+/// Set intended spawn positions for starter roles based on weight of roles in play
+/// This does NOT handle most marine jobs and such, only special roles at start time
+/datum/authority/branch/role/proc/set_initial_spawn_positions(weighting = 0, list/temp_roles_for_mode)
+	// Set survivor starting amount based on marines assigned
+	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]
+	if(istype(SJ))
+		SJ.set_spawn_positions(weighting)
+
+	var/datum/job/CO_surv_job = temp_roles_for_mode[JOB_CO_SURVIVOR]
+	if(istype(CO_surv_job))
+		CO_surv_job.set_spawn_positions(weighting)
+
+	if(SSnightmare?.get_scenario_value("predator_round"))
+		SSticker.mode.flags_round_type |= MODE_PREDATOR
+		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
+		if(istype(PJ))
+			PJ.set_spawn_positions(weighting)
+
+/// Set or Update intended spawn positions for special roles based on weight of roles in play
+/datum/authority/branch/role/proc/set_special_spawn_positions(weighting = 0, list/temp_roles_for_mode)
 	// Set up limits for other roles based on our balancing weight number.
 	// Set the xeno starting amount based on marines assigned
 	var/datum/job/antag/xenos/XJ = temp_roles_for_mode[JOB_XENOMORPH]
@@ -317,22 +329,6 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	var/datum/job/SMJ = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
 	if(istype(SMJ))
 		SMJ.set_spawn_positions(weighting)
-
-	// Set survivor starting amount based on marines assigned
-	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]
-	if(istype(SJ))
-		SJ.set_spawn_positions(weighting)
-
-	var/datum/job/CO_surv_job = temp_roles_for_mode[JOB_CO_SURVIVOR]
-	if(istype(CO_surv_job))
-		CO_surv_job.set_spawn_positions(weighting)
-
-	if(SSnightmare.get_scenario_value("predator_round"))
-		SSticker.mode.flags_round_type |= MODE_PREDATOR
-		// Set predators starting amount based on marines assigned
-		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
-		if(istype(PJ))
-			PJ.set_spawn_positions(weighting)
 
 /**
 * Assign roles to the players. Return roles that are still avialable.

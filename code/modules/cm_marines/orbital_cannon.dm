@@ -492,11 +492,7 @@ var/list/ob_type_fuel_requirements
 	for(var/i = 1 to total_amount)
 		for(var/k = 1 to instant_amount)
 			var/turf/U = pick(turf_list)
-			if(!turf_list.len)
-				return //No turfs left to fire upon, hive core / OB protection granted to all turfs
 			if(protected_by_pylon(TURF_PROTECTION_OB, U)) //If the turf somehow gained OB protection while the cluster was firing
-				k-- //Give them another chance to hit something else
-				turf_list -= U
 				continue
 			fire_in_a_hole(U)
 		sleep(delay_between_clusters)

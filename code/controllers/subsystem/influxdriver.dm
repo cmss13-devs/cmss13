@@ -8,19 +8,41 @@ SUBSYSTEM_DEF(influxdriver)
 
 	var/list/send_queue = list()
 
+	/// Maximum amount of metric lines to send at most in one request
+	/// This is neccessary because sending a lot of metrics can get expensive
+	var/max_batch = 100
+
+	/// Last timestamp in microseconds
+	var/timestamp_cache_realtime
+	/// Last tick time the timestamp was taken at
+	var/timestamp_cache_worldtime
+
 /datum/controller/subsystem/influxdriver/Initialize()
 	var/period = text2num(CONFIG_GET(number/influxdb_send_period))
 	if(isnum(period))
-		wait = max(period * (1 SECONDS), 10 SECONDS)
+		wait = max(period * (1 SECONDS), 2 SECONDS)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/influxdriver/stat_entry(msg)
 	msg += "period=[wait] queue=[length(send_queue)]"
 	return ..()
 
+/datum/controller/subsystem/influxdriver/proc/unix_timestamp_string() // pending change to rust-g
+	return RUSTG_CALL(RUST_G, "unix_timestamp")()
+
+/datum/controller/subsystem/influxdriver/proc/update_timestamp()
+	PRIVATE_PROC(TRUE)
+	// We make only one request to rustg per game tick, so we cache the result per world.time
+	timestamp_cache_worldtime = world.time
+	var/whole_timestamp = unix_timestamp_string()
+	var/list/tsparts = splittext(whole_timestamp, ".")
+	var/fractional = copytext(pad_trailing(tsparts[2], "0", 6), 1, 7) // in microseconds
+	timestamp_cache_realtime = "[tsparts[1]][fractional]"
+
 /datum/controller/subsystem/influxdriver/fire(resumed)
-	var/list/queue = send_queue
-	send_queue = list()
+	var/maxlen = min(length(send_queue)+1, max_batch)
+	var/list/queue = send_queue.Copy(1, maxlen)
+	send_queue.Cut(1, maxlen)
 	flush_queue(queue)
 
 /// Flushes measurements batch to InfluxDB backend
@@ -39,7 +61,7 @@ SUBSYSTEM_DEF(influxdriver)
 		can_fire = FALSE
 		return
 
-	var/url = "[host]/api/v2/write?org=[org]&bucket=[bucket]&precision=s"
+	var/url = "[host]/api/v2/write?org=[org]&bucket=[bucket]&precision=us" // microseconds
 	var/list/headers = list()
 	headers["Authorization"] = "Token [token]"
 	headers["Content-Type"] = "text/plain; charset=utf-8"
@@ -73,8 +95,9 @@ SUBSYSTEM_DEF(influxdriver)
 			comma = ","
 	if(!valid)
 		CRASH("Attempted to serialize to InfluxDB backend an invalid measurement (likely has no fields)")
-	var/timestamp = big_number_to_text(rustg_unix_timestamp())
-	serialized += " [timestamp]"
+	if(timestamp_cache_worldtime != world.time)
+		update_timestamp()
+	serialized += " [timestamp_cache_realtime]"
 	send_queue += serialized
 	return TRUE
 
@@ -84,8 +107,9 @@ SUBSYSTEM_DEF(influxdriver)
 	var/serialized_field = serialize_field(field_name, value)
 	if(!length(serialized_field))
 		return
-	var/timestamp = big_number_to_text(rustg_unix_timestamp())
-	var/serialized = "[measurement],round_id=[GLOB.round_id] [serialized_field] [timestamp]"
+	if(timestamp_cache_worldtime != world.time)
+		update_timestamp()
+	var/serialized = "[measurement],round_id=[GLOB.round_id] [serialized_field] [timestamp_cache_realtime]"
 	send_queue += serialized
 	return TRUE
 

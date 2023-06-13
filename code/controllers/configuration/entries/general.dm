@@ -546,7 +546,7 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 	config_entry_value = 60
 /// How often to send queued influxdb statistics
 /datum/config_entry/number/influxdb_send_period
-	config_entry_value= 120
+	config_entry_value = 10
 
 /// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
 /datum/config_entry/flag/log_timers_on_bucket_reset

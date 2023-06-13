@@ -194,7 +194,7 @@
 /obj/effect/landmark/wo_supplies/ammo/powerpack
 	icon = 'icons/obj/items/clothing/backpacks.dmi'
 	icon_state = "powerpack"
-	stuff = list(/obj/item/smartgun_powerpack)
+	stuff = list(/obj/item/smartgun_battery)
 
 /obj/effect/landmark/wo_supplies/ammo/box
 	icon = 'icons/obj/items/weapons/guns/ammo_boxes/boxes_and_lids.dmi'

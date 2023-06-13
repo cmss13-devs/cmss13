@@ -89,8 +89,8 @@
 	savefile_version = SAVEFILE_VERSION_MAX
 
 /proc/sanitize_keybindings(value)
-	var/list/base_bindings = sanitize_islist(value, null)
-	if(!base_bindings)
+	var/list/base_bindings = sanitize_islist(value, list())
+	if(!length(base_bindings))
 		base_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key)
 	for(var/key in base_bindings)
 		base_bindings[key] = base_bindings[key] & GLOB.keybindings_by_name
@@ -149,6 +149,8 @@
 	S["xeno_vision_level_pref"] >> xeno_vision_level_pref
 	S["view_controller"] >> View_MC
 	S["observer_huds"] >> observer_huds
+	S["pref_special_job_options"] >> pref_special_job_options
+	S["pref_job_slots"] >> pref_job_slots
 
 	S["synth_name"] >> synthetic_name
 	S["synth_type"] >> synthetic_type
@@ -171,13 +173,12 @@
 
 	S["commander_status"] >> commander_status
 	S["co_sidearm"] >> commander_sidearm
+	S["co_affiliation"] >> affiliation
 	S["yautja_status"] >> yautja_status
 	S["synth_status"] >> synth_status
 	S["key_bindings"] >> key_bindings
+	check_keybindings()
 
-	S["preferred_survivor_variant"]	>> preferred_survivor_variant
-
-	S["grade_path"] >> sea_path
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
 
@@ -189,7 +190,9 @@
 	S["no_radial_labels_preference"] >> no_radial_labels_preference
 	S["hotkeys"] >> hotkeys
 
+	S["custom_cursors"] >> custom_cursors
 	S["autofit_viewport"] >> auto_fit_viewport
+	S["adaptive_zoom"] >> adaptive_zoom
 
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -221,6 +224,7 @@
 	no_radials_preference = sanitize_integer(no_radials_preference, FALSE, TRUE, FALSE)
 	no_radial_labels_preference = sanitize_integer(no_radial_labels_preference, FALSE, TRUE, FALSE)
 	auto_fit_viewport = sanitize_integer(auto_fit_viewport, FALSE, TRUE, TRUE)
+	adaptive_zoom = sanitize_integer(adaptive_zoom, 0, 2, 0)
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
@@ -242,13 +246,15 @@
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
 	commander_status = sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Colonel's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
-	sea_path = sanitize_inlist(sea_path, list("Command", "Technical"), initial(sea_path))
-	preferred_survivor_variant = sanitize_inlist(preferred_survivor_variant, SURVIVOR_VARIANT_LIST, ANY_SURVIVOR)
+	affiliation = sanitize_inlist(affiliation, FACTION_ALLEGIANCE_USCM_COMMANDER, initial(affiliation))
 	yautja_status = sanitize_inlist(yautja_status, whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status = sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))
 	key_bindings = sanitize_keybindings(key_bindings)
 	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 	hotkeys = sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
+	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
+	pref_special_job_options = sanitize_islist(pref_special_job_options, list())
+	pref_job_slots = sanitize_islist(pref_job_slots, list())
 	vars["fps"] = fps
 
 	if(remembered_key_bindings)
@@ -323,6 +329,8 @@
 
 	S["view_controller"] << View_MC
 	S["observer_huds"] << observer_huds
+	S["pref_special_job_options"] << pref_special_job_options
+	S["pref_job_slots"] << pref_job_slots
 
 	S["synth_name"] << synthetic_name
 	S["synth_type"] << synthetic_type
@@ -343,13 +351,11 @@
 	S["pred_skin_color"] << predator_skin_color
 	S["pred_flavor_text"] << predator_flavor_text
 
-	S["preferred_survivor_variant"] << preferred_survivor_variant
-
 	S["commander_status"] << commander_status
 	S["co_sidearm"] << commander_sidearm
+	S["co_affiliation"] << affiliation
 	S["yautja_status"] << yautja_status
 	S["synth_status"] << synth_status
-	S["grade_path"] << sea_path
 
 	S["lang_chat_disabled"] << lang_chat_disabled
 	S["show_permission_errors"] << show_permission_errors
@@ -357,12 +363,14 @@
 	S["hotkeys"] << hotkeys
 
 	S["autofit_viewport"] << auto_fit_viewport
+	S["adaptive_zoom"] << adaptive_zoom
 
 	S["hear_vox"] << hear_vox
 
 	S["hide_statusbar"] << hide_statusbar
 	S["no_radials_preference"] << no_radials_preference
 	S["no_radial_labels_preference"] << no_radial_labels_preference
+	S["custom_cursors"] << custom_cursors
 
 	return TRUE
 
@@ -443,6 +451,7 @@
 	S["traits"] >> traits
 
 	S["preferred_squad"] >> preferred_squad
+	S["preferred_armor"] >> preferred_armor
 	S["nanotrasen_relation"] >> nanotrasen_relation
 	//S["skin_style"] >> skin_style
 
@@ -492,6 +501,7 @@
 	underwear = sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear))
 	undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
 	backbag = sanitize_integer(backbag, 1, backbaglist.len, initial(backbag))
+	preferred_armor = sanitize_inlist(preferred_armor, GLOB.armor_style_list, "Random")
 	//b_type = sanitize_text(b_type, initial(b_type))
 
 	alternate_option = sanitize_integer(alternate_option, 0, 3, initial(alternate_option))
@@ -507,8 +517,9 @@
 	gear = sanitize_list(gear)
 
 	traits = sanitize_list(traits)
-
-	//if(!skin_style) skin_style = "Default"
+	read_traits = FALSE
+	trait_points = initial(trait_points)
+	close_browser(owner, "character_traits")
 
 	if(!origin) origin = ORIGIN_USCM
 	if(!faction)  faction =  "None"
@@ -586,6 +597,7 @@
 
 	S["nanotrasen_relation"] << nanotrasen_relation
 	S["preferred_squad"] << preferred_squad
+	S["preferred_armor"] << preferred_armor
 	//S["skin_style"] << skin_style
 
 	S["uplinklocation"] << uplinklocation
@@ -593,6 +605,50 @@
 
 	return 1
 
+/// checks through keybindings for outdated unbound keys and updates them
+/datum/preferences/proc/check_keybindings()
+	if(!owner)
+		return
+	var/list/user_binds = list()
+	for(var/key in key_bindings)
+		for(var/kb_name in key_bindings[key])
+			user_binds[kb_name] += list(key)
+	var/list/notadded = list()
+	for(var/name in GLOB.keybindings_by_name)
+		var/datum/keybinding/kb = GLOB.keybindings_by_name[name]
+		if(length(user_binds[kb.name]))
+			continue // key is unbound and or bound to something
+		var/addedbind = FALSE
+		if(hotkeys)
+			for(var/hotkeytobind in kb.hotkey_keys)
+				if(!length(key_bindings[hotkeytobind]) || hotkeytobind == "Unbound") //Only bind to the key if nothing else is bound expect for Unbound
+					LAZYADD(key_bindings[hotkeytobind], kb.name)
+					addedbind = TRUE
+		else
+			for(var/classickeytobind in kb.classic_keys)
+				if(!length(key_bindings[classickeytobind]) || classickeytobind == "Unbound") //Only bind to the key if nothing else is bound expect for Unbound
+					LAZYADD(key_bindings[classickeytobind], kb.name)
+					addedbind = TRUE
+		if(!addedbind)
+			notadded += kb
+	save_preferences()
+	if(length(notadded))
+		addtimer(CALLBACK(src, PROC_REF(announce_conflict), notadded), 5 SECONDS)
+
+/datum/preferences/proc/announce_conflict(list/notadded)
+	to_chat(owner, SPAN_ALERTWARNING("<u>Keybinding Conflict</u>"))
+	to_chat(owner, SPAN_ALERTWARNING("There are new <a href='?_src_=prefs;preference=viewmacros'>keybindings</a> that default to keys you've already bound. The new ones will be unbound."))
+	for(var/datum/keybinding/conflicted as anything in notadded)
+		to_chat(owner, SPAN_DANGER("[conflicted.category]: [conflicted.full_name] needs updating"))
+
+		if(hotkeys)
+			for(var/entry in conflicted.hotkey_keys)
+				LAZYREMOVE(key_bindings[entry], conflicted.name)
+		else
+			for(var/entry in conflicted.classic_keys)
+				LAZYREMOVE(key_bindings[entry], conflicted.name)
+
+		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN

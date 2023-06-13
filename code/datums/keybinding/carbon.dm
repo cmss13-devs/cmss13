@@ -34,7 +34,7 @@
 	throw_mode = THROW_MODE_HIGH
 
 /datum/keybinding/carbon/cycle_intent
-	hotkey_keys = list()
+	hotkey_keys = list("Unbound")
 	classic_keys = list("Insert")
 	name = "cycle_intent"
 	full_name = "Cycle Intent"
@@ -118,7 +118,7 @@
 
 /datum/keybinding/carbon/give
 	hotkey_keys = list("G")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "Give_Item"
 	full_name = "Give item"
 	description = "Give the item you're currently holding"

@@ -71,7 +71,7 @@ var/const/MIN_FREE_FREQ = 1201 // ----------------------------------------------
 //Misc channels
 var/const/YAUT_FREQ = 1205
 var/const/DUT_FREQ = 1210
-
+var/const/CMB_FREQ = 1220
 var/const/VAI_FREQ = 1215
 
 //WY Channels (1230-1249)
@@ -137,6 +137,7 @@ var/const/MAX_FREE_FREQ = 1599 // ----------------------------------------------
 var/list/radiochannels = list(
 	RADIO_CHANNEL_YAUTJA = YAUT_FREQ,
 	RADIO_CHANNEL_VAI = VAI_FREQ,
+	RADIO_CHANNEL_CMB = CMB_FREQ,
 	RADIO_CHANNEL_DUTCH_DOZEN = DUT_FREQ,
 
 	RADIO_CHANNEL_HIGHCOM = HC_FREQ,
@@ -187,7 +188,7 @@ var/list/radiochannels = list(
 )
 
 // Response Teams
-#define ERT_FREQS list(VAI_FREQ, DUT_FREQ, YAUT_FREQ)
+#define ERT_FREQS list(VAI_FREQ, DUT_FREQ, YAUT_FREQ, CMB_FREQ)
 
 // UPP Frequencies
 #define UPP_FREQS list(UPP_FREQ, UPP_CMD_FREQ, UPP_ENGI_FREQ, UPP_MED_FREQ, UPP_CCT_FREQ, UPP_KDO_FREQ)
@@ -215,6 +216,7 @@ var/const/RADIO_DEFAULT = "radio_default"
 var/const/RADIO_TO_AIRALARM = "radio_airalarm" //air alarms
 var/const/RADIO_FROM_AIRALARM = "radio_airalarm_rcvr" //devices interested in receiving signals from air alarms
 var/const/RADIO_CHAT = "radio_telecoms"
+var/const/RADIO_SIGNALS = "radio_signals"
 var/const/RADIO_ATMOSIA = "radio_atmos"
 var/const/RADIO_NAVBEACONS = "radio_navbeacon"
 var/const/RADIO_AIRLOCK = "radio_airlock"
@@ -247,6 +249,7 @@ SUBSYSTEM_DEF(radio)
 		"[INTEL_FREQ]" = "intelradio",
 		"[WY_FREQ]" = "wyradio",
 		"[VAI_FREQ]" = "vairadio",
+		"[CMB_FREQ]" = "cmbradio",
 		"[CLF_FREQ]" = "clfradio",
 		"[ALPHA_FREQ]" = "alpharadio",
 		"[BRAVO_FREQ]" = "bravoradio",
@@ -278,7 +281,7 @@ SUBSYSTEM_DEF(radio)
 	if(frequency)
 		frequency.remove_listener(device)
 
-		if(frequency.devices.len == 0)
+		if(!length(frequency.devices))
 			qdel(frequency)
 			frequencies -= f_text
 
@@ -308,7 +311,7 @@ SUBSYSTEM_DEF(radio)
 	for(var/obj/structure/machinery/telecomms/T as anything in tcomm_machines_almayer)
 		if(!length(T.freq_listening) || (frequency in T.freq_listening))
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
-			target_zs += SSmapping.levels_by_trait(ZTRAIT_LOWORBIT)
+			target_zs += SSmapping.levels_by_trait(ZTRAIT_RESERVED)
 			break
 	SEND_SIGNAL(src, COMSIG_SSRADIO_GET_AVAILABLE_TCOMMS_ZS, target_zs)
 	return target_zs
@@ -341,7 +344,7 @@ SUBSYSTEM_DEF(radio)
 
 /datum/radio_frequency
 	var/frequency as num
-	var/list/list/obj/devices = list()
+	var/list/list/datum/weakref/devices = list()
 
 /datum/radio_frequency/proc/post_signal(obj/source as obj|null, datum/signal/signal, filter = null as text|null, range = null as num|null)
 	var/turf/start_point
@@ -363,7 +366,12 @@ SUBSYSTEM_DEF(radio)
 	if (range && !start_point)
 		return
 
-	for(var/obj/device in devices[filter])
+	for(var/datum/weakref/device_ref as anything in devices[filter])
+		var/obj/device = device_ref.resolve()
+
+		if(!device)
+			continue
+
 		if(device == source)
 			continue
 
@@ -382,26 +390,23 @@ SUBSYSTEM_DEF(radio)
 /datum/radio_frequency/proc/add_listener(obj/device as obj, filter as text|null)
 	if (!filter)
 		filter = RADIO_DEFAULT
-	//log_admin("add_listener(device=[device],filter=[filter]) frequency=[frequency]")
-	var/list/obj/devices_line = devices[filter]
+
+	var/datum/weakref/new_listener = WEAKREF(device)
+	if(isnull(new_listener))
+		return stack_trace("null, non-datum or qdeleted device")
+
+	var/list/devices_line = devices[filter]
 	if (!devices_line)
 		devices_line = new
 		devices[filter] = devices_line
-	devices_line+=device
-// var/list/obj/devices_line___ = devices[filter_str]
-// var/l = devices_line___.len
-	//log_admin("DEBUG: devices_line.len=[devices_line.len]")
-	//log_admin("DEBUG: devices(filter_str).len=[l]")
+	devices_line += new_listener
 
 /datum/radio_frequency/proc/remove_listener(obj/device)
 	for (var/devices_filter in devices)
 		var/list/devices_line = devices[devices_filter]
-		devices_line-=device
-		while (null in devices_line)
-			devices_line -= null
-		if (devices_line.len==0)
+		devices_line -= device.weak_reference
+		if (!length(devices_line))
 			devices -= devices_filter
-			qdel(devices_line)
 
 /datum/signal
 	var/obj/source

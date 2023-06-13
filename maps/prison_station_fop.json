@@ -10,7 +10,9 @@
         "/datum/equipment_preset/survivor/prisoner",
         "/datum/equipment_preset/survivor/prisoner",
         "/datum/equipment_preset/survivor/gangleader",
-        "/datum/equipment_preset/survivor/engineer/florina"
+        "/datum/equipment_preset/survivor/engineer/florina",
+        "/datum/equipment_preset/survivor/clf",
+        "/datum/equipment_preset/survivor/civilian"
     ],
     "defcon_triggers": [
         3750,
@@ -30,6 +32,7 @@
         "xeno_hive_bravo": 0,
         "xeno_hive_charlie": 0
     },
+    "camouflage": "classic",
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

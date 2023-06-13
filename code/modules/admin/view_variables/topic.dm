@@ -53,7 +53,7 @@
 			vv_update_display(A, "dir", dir2text(A.dir))
 
 		else if(href_list["adjustDamage"] && href_list["mobToDamage"])
-			if(!check_rights(NONE))
+			if(!check_rights(R_EVENT))
 				return
 
 			var/mob/living/L = locate(href_list["mobToDamage"]) in GLOB.mob_list
@@ -62,7 +62,7 @@
 
 			var/Text = href_list["adjustDamage"]
 
-			var/amount = tgui_input_number("Deal how much damage to mob? (Negative values here heal)","Adjust [Text]loss",0)
+			var/amount = tgui_input_number(usr, "Deal how much damage to mob? (Negative values here heal)", "Adjust [Text]loss", 0, 10000, -10000)
 
 			if (isnull(amount))
 				return

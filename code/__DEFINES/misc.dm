@@ -128,7 +128,7 @@
 
 /// Helmets
 #define SIZE_TINY 1
-/// Armour, pouch slots/pockets
+/// Armor, pouch slots/pockets
 #define SIZE_SMALL 2
 /// Backpacks, belts. Size of pistols, general magazines
 #define SIZE_MEDIUM 3
@@ -222,6 +222,9 @@
 #define GUN_CATEGORY_RIFLE 3
 #define GUN_CATEGORY_SHOTGUN 4
 #define GUN_CATEGORY_HEAVY 5
+
+// These guns can be used at maximum efficacy by untrained civilians.
+#define UNTRAINED_USABLE_CATEGORIES list(GUN_CATEGORY_HANDGUN, GUN_CATEGORY_SMG)
 
 /**
  * Get the ultimate area of `A`, similarly to [get_turf].

@@ -7,8 +7,7 @@
 /area/bigredv2/outside/dorms)
 "ac" = (
 /obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (NORTH)"
+	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
@@ -17,9 +16,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "ae" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "af" = (
@@ -31,8 +28,7 @@
 /area/bigredv2/outside/dorms)
 "ag" = (
 /obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (NORTH)"
+	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -136,8 +132,7 @@
 /area/bigredv2/outside/dorms)
 "aA" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "xgib4";
-	tag = "icon-xgib4"
+	icon_state = "xgib4"
 	},
 /obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor{
@@ -376,7 +371,7 @@
 	pixel_y = -32
 	},
 /obj/structure/machinery/camera/autoname{
-	network = list("interrogation")
+	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -392,8 +387,7 @@
 	},
 /obj/structure/machinery/alarm{
 	dir = 1;
-	pixel_y = -30;
-	tag = "icon-alarm0 (NORTH)"
+	pixel_y = -30
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -428,11 +422,9 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "iE" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
 /obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "lN" = (
@@ -443,8 +435,7 @@
 /area/bigredv2/outside/dorms)
 "zO" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,

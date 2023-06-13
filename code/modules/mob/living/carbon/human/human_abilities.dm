@@ -221,7 +221,7 @@ CULT
 				return
 
 			if(!(assigned_droppod.droppod_flags & (DROPPOD_DROPPING|DROPPOD_RETURNING)))
-				message_staff("[key_name_admin(H)] recalled a tech droppod at [get_area(assigned_droppod)].")
+				message_admins("[key_name_admin(H)] recalled a tech droppod at [get_area(assigned_droppod)].")
 				assigned_droppod.recall()
 			else
 				to_chat(H, SPAN_WARNING("It's too late to recall the droppod now!"))
@@ -248,7 +248,7 @@ CULT
 	var/list/to_send_to = H.assigned_squad?.marines_list
 	if(!to_send_to)
 		to_send_to = list(H)
-	message_staff("[key_name_admin(H)] called a tech droppod down at [get_area(assigned_droppod)].", T.x, T.y, T.z)
+	message_admins("[key_name_admin(H)] called a tech droppod down at [get_area(assigned_droppod)].", T.x, T.y, T.z)
 	for(var/M in to_send_to)
 		to_chat(M, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [Floor(land_time*0.1)] seconds."))
 	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, PROC_REF(handle_droppod_deleted))
@@ -273,7 +273,7 @@ CULT
 
 	var/mob/living/carbon/human/H = user
 
-	if(H.job != JOB_SQUAD_RTO)
+	if(H.job != JOB_SQUAD_TEAM_LEADER)
 		return FALSE
 
 	return ..()
@@ -510,7 +510,7 @@ CULT
 	converted += chosen
 	to_chat(chosen, SPAN_WARNING("You'll become a mutineer when the mutiny begins. Prepare yourself and do not cause any harm until you've been made into a mutineer."))
 
-	message_staff("[key_name_admin(chosen)] has been converted into a mutineer by [key_name_admin(H)].")
+	message_admins("[key_name_admin(chosen)] has been converted into a mutineer by [key_name_admin(H)].")
 
 /datum/action/human_action/activable/mutineer/mutineer_begin
 	name = "Begin Mutiny"
@@ -534,7 +534,7 @@ CULT
 			XC.load_status(chosen)
 		converted.remove_from(H)
 
-	message_staff("[key_name_admin(H)] has begun the mutiny.")
+	message_admins("[key_name_admin(H)] has begun the mutiny.")
 	remove_from(H)
 
 

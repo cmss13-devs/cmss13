@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 /obj/structure/machinery/door/airlock
 	name = "airlock"
-	icon = 'icons/obj/structures/doors/Doorint.dmi'
+	icon = 'icons/obj/structures/doors/Door1.dmi'
 	icon_state = "door_closed"
 	power_channel = POWER_CHANNEL_ENVIRON
 
@@ -76,6 +76,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 /obj/structure/machinery/door/airlock/Destroy()
 	QDEL_NULL_LIST(attached_signallers)
+	QDEL_NULL(closeOther)
+	QDEL_NULL(electronics)
 	return ..()
 
 /obj/structure/machinery/door/airlock/bumpopen(mob/living/user as mob) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
@@ -549,6 +551,9 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	update_icon()
 
 /obj/structure/machinery/door/airlock/attackby(obj/item/C, mob/user)
+	if(SEND_SIGNAL(C, COMSIG_ITEM_ATTACK_AIRLOCK, src, user) & COMPONENT_CANCEL_AIRLOCK_ATTACK)
+		return
+
 	if(istype(C, /obj/item/clothing/mask/cigarette))
 		if(isElectrified())
 			var/obj/item/clothing/mask/cigarette/L = C
@@ -735,7 +740,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		closeOther.close()
 	return ..(forced)
 
-/obj/structure/machinery/door/airlock/close(forced=0)
+/obj/structure/machinery/door/airlock/close(forced = FALSE)
 	if(operating || welded || locked || !loc)
 		return
 	if(!forced)
@@ -781,11 +786,12 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	..()
 	return
 
-/obj/structure/machinery/door/airlock/proc/lock(forced=0)
-	if(operating || locked) return
+/obj/structure/machinery/door/airlock/proc/lock(forced = FALSE)
+	if((operating && !forced) || locked)
+		return
 
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 25)
-	locked = 1
+	locked = TRUE
 	visible_message(SPAN_NOTICE("\The [src] airlock emits a loud thunk, then a click."))
 	update_icon()
 
@@ -793,7 +799,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(operating || !locked) return
 
 	if(forced || (arePowerSystemsOn())) //only can raise bolts if power's on
-		locked = 0
+		locked = FALSE
 
 		playsound(loc, 'sound/machines/hydraulics_2.ogg', 25)
 		visible_message(SPAN_NOTICE("\The [src] airlock emits a click, then hums slightly."))

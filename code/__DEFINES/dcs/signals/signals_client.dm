@@ -12,3 +12,12 @@
 
 #define COMSIG_CLIENT_MOB_MOVE "client_mob_move"
 	#define COMPONENT_OVERRIDE_MOVE (1<<0)
+
+/// Called after one or more verbs are added: (list of verbs added)
+#define COMSIG_CLIENT_VERB_ADDED "client_verb_added"
+
+/// Called after one or more verbs are added: (list of verbs added)
+#define COMSIG_CLIENT_VERB_REMOVED "client_verb_removed"
+
+/// Called after a client logs into a mob: (mob)
+#define COMSIG_CLIENT_MOB_LOGIN "client_mob_changed"

@@ -444,6 +444,15 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
+/obj/structure/window/reinforced/ultra/initialize_pass_flags(datum/pass_flags_container/PF)
+	. = ..()
+	if (PF)
+		PF.flags_can_pass_all = NONE
+		PF.flags_can_pass_front = NONE
+		PF.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY)
+	flags_can_pass_front_temp = NONE
+	flags_can_pass_behind_temp = NONE
+
 /obj/structure/window/reinforced/ultra/Initialize()
 	. = ..()
 	GLOB.hijack_bustable_windows += src
@@ -499,8 +508,13 @@
 	relativewall_neighbours()
 
 /obj/structure/window/framed/Destroy()
-	for(var/obj/effect/alien/weeds/weedwall/window/WW in loc)
-		qdel(WW)
+	for(var/obj/effect/alien/weeds/weedwall/window/found_weedwall in get_turf(src))
+		qdel(found_weedwall)
+	var/list/turf/cardinal_neighbors = list(get_step(src, NORTH), get_step(src, SOUTH), get_step(src, EAST), get_step(src, WEST))
+	for(var/turf/cardinal_turf as anything in cardinal_neighbors)
+		for(var/obj/structure/bed/nest/found_nest in cardinal_turf)
+			if(found_nest.dir == get_dir(found_nest, src))
+				qdel(found_nest) //nests are built on walls, no walls, no nest
 	. = ..()
 
 /obj/structure/window/framed/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -828,7 +842,7 @@
 	desc = "A glass window with a special rod matrix inside a wall frame. This one has an automatic shutter system to prevent any atmospheric breach."
 	health = 200
 	//icon_state = "rwindow0_debug" //Uncomment to check hull in the map editor
-	var/triggered = 0 //indicates if the shutters have already been triggered
+	var/triggered = FALSE //indicates if the shutters have already been triggered
 
 /obj/structure/window/framed/prison/reinforced/hull/Destroy()
 	spawn_shutters()
@@ -837,8 +851,8 @@
 /obj/structure/window/framed/prison/reinforced/hull/proc/spawn_shutters(from_dir = 0)
 	if(triggered)
 		return
-	else
-		triggered = 1
+
+	triggered = TRUE
 	for(var/direction in cardinal)
 		if(direction == from_dir) continue //doesn't check backwards
 		for(var/obj/structure/window/framed/prison/reinforced/hull/W in get_step(src,direction) )
@@ -849,8 +863,7 @@
 			P.setDir(SOUTH)
 		else
 			P.setDir(EAST)
-	spawn(0)
-		P.close()
+	P.close()
 
 /obj/structure/window/framed/prison/cell
 	name = "cell window"

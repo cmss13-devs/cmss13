@@ -2,6 +2,7 @@
     "map_name": "Shivas Snowball",
     "map_path": "map_files/Ice_Colony_v3",
     "map_file": "Shivas_Snowball.dmm",
+    "webmap_url": "Shivas",
     "environment_traits": {
         "COLD": true
     },
@@ -11,7 +12,9 @@
         "/datum/equipment_preset/survivor/scientist/shiva",
         "/datum/equipment_preset/survivor/engineer/shiva",
         "/datum/equipment_preset/survivor/colonial_marshal/shiva",
-        "/datum/equipment_preset/survivor/security/shiva"
+        "/datum/equipment_preset/survivor/security/shiva",
+        "/datum/equipment_preset/survivor/clf/cold",
+        "/datum/equipment_preset/survivor/civilian"
     ],
     "defcon_triggers": [
         3300,
@@ -34,6 +37,7 @@
         "xeno_hive_charlie": 0,
         "xeno_hive_delta": 0
     },
+    "camouflage": "snow",
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

@@ -1,4 +1,4 @@
-#define SURVIVOR_TO_TOTAL_SPAWN_RATIO 1/11
+#define SURVIVOR_TO_TOTAL_SPAWN_RATIO 1/9
 
 /datum/job/civilian/survivor
 	title = JOB_SURVIVOR
@@ -7,6 +7,7 @@
 	total_positions = 8
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
 	late_joinable = FALSE
+	job_options = SURVIVOR_VARIANT_LIST
 	var/intro_text
 	var/story_text
 
@@ -106,8 +107,16 @@
 	if(picked_spawner.equipment)
 		arm_equipment(equipping_human, picked_spawner.equipment, FALSE, TRUE)
 	else
-		var/list/survivor_types = equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant] : SSmapping.configs[GROUND_MAP].survivor_types
+		var/preferred_variant = ANY_SURVIVOR
+		if(equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR)
+			preferred_variant = equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR]
+			if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && SSticker.mode.survivors_by_type_amounts[preferred_variant] && SSticker.mode.survivors_by_type_amounts[preferred_variant] >= MAX_SURVIVOR_PER_TYPE[preferred_variant])
+				preferred_variant = ANY_SURVIVOR
+
+		var/list/survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].survivor_types
 		arm_equipment(equipping_human, pick(survivor_types), FALSE, TRUE)
+
+		SSticker.mode.survivors_by_type_amounts[preferred_variant] += 1
 
 AddTimelock(/datum/job/civilian/survivor, list(
 	JOB_SQUAD_ROLES = 5 HOURS,
@@ -122,6 +131,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	flags_whitelist = WHITELIST_SYNTHETIC
 	total_positions = 1
 	spawn_positions = 1
+	job_options = null
 
 /datum/job/civilian/survivor/synth/set_spawn_positions(count)
 	return spawn_positions
@@ -130,8 +140,16 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	if(picked_spawner.synth_equipment)
 		arm_equipment(equipping_human, picked_spawner.synth_equipment, FALSE, TRUE)
 	else
-		var/list/synth_survivor_types = equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
+		var/preferred_variant = ANY_SURVIVOR
+		if(equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR)
+			preferred_variant = equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR]
+			if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && SSticker.mode.survivors_by_type_amounts[preferred_variant] && SSticker.mode.survivors_by_type_amounts[preferred_variant] >= MAX_SURVIVOR_PER_TYPE[preferred_variant])
+				preferred_variant = ANY_SURVIVOR
+
+		var/list/synth_survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
 		arm_equipment(equipping_human, pick(synth_survivor_types), FALSE, TRUE)
+
+		SSticker.mode.survivors_by_type_amounts[preferred_variant] += 1
 
 /datum/job/civilian/survivor/commanding_officer
 	title = JOB_CO_SURVIVOR
@@ -140,6 +158,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	flags_whitelist = WHITELIST_COMMANDER
 	total_positions = 0
 	spawn_positions = 0
+	job_options = null
 
 /datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types

@@ -76,6 +76,8 @@
 #define GUN_SUPPORT_PLATFORM (1<<19)
 #define GUN_BURST_ONLY (1<<20)
 #define GUN_FULL_AUTO_ONLY (1<<21)
+/// No gun description, only base desc
+#define GUN_NO_DESCRIPTION (1<<22)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 #define USES_STREAKS (1<<0)
@@ -138,6 +140,9 @@
 #define WIELD_DELAY_VERY_SLOW 10
 #define WIELD_DELAY_HORRIBLE 12
 
+///This is how long you must wait after throwing something to throw again
+#define THROW_DELAY (0.4 SECONDS)
+
 //Explosion level thresholds. Upper bounds
 #define EXPLOSION_THRESHOLD_VLOW 50
 #define EXPLOSION_THRESHOLD_LOW 100
@@ -166,9 +171,11 @@
 
 //Projectile block probabilities for different types of cover
 #define PROJECTILE_COVERAGE_NONE 0
+#define PROJECTILE_COVERAGE_MINIMAL 10
 #define PROJECTILE_COVERAGE_LOW 35
 #define PROJECTILE_COVERAGE_MEDIUM 60
 #define PROJECTILE_COVERAGE_HIGH 85
+#define PROJECTILE_COVERAGE_MAX 100
 //=================================================
 
 /// 1 % per 1 tile per 1 normalcy
@@ -261,7 +268,7 @@
 #define THROW_MODE_NORMAL   1
 #define THROW_MODE_HIGH  2
 
-#define XENO_ACID_BARRICADE_DAMAGE 8
+#define XENO_ACID_GAS_BARRICADE_DAMAGE 8.5
 #define XENO_ACID_HMG_DAMAGE 10
 
 #define MOLOTOV_POTENCY_MAX 20

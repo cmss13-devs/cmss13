@@ -56,6 +56,13 @@
 	blend_mode = BLEND_OVERLAY
 	render_relay_plane = RENDER_PLANE_NON_GAME
 
+/// Plane master handling display of building roofs. They're meant to become invisible when inside a building.
+/atom/movable/screen/plane_master/roof
+	name = "roof plane master"
+	plane = ROOF_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_OVERLAY
+
 /**
  * Plane master handling byond internal blackness
  * vars are set as to replicate behavior when rendering to other planes
@@ -112,3 +119,9 @@
 	name = "cinematic plane"
 	plane = CINEMATIC_PLANE
 	render_relay_plane = RENDER_PLANE_NON_GAME
+
+/atom/movable/screen/plane_master/escape_menu
+	name = "Escape Menu"
+	plane = ESCAPE_MENU_PLANE
+	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
+	render_relay_plane = RENDER_PLANE_MASTER

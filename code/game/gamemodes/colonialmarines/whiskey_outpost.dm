@@ -2,13 +2,13 @@
 
 //Global proc for checking if the game is whiskey outpost so I dont need to type if(gamemode == whiskey outpost) 50000 times
 /proc/Check_WO()
-	if(SSticker.mode == "Whiskey Outpost" || master_mode == "Whiskey Outpost")
+	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || master_mode == GAMEMODE_WHISKEY_OUTPOST)
 		return 1
 	return 0
 
 /datum/game_mode/whiskey_outpost
-	name = "Whiskey Outpost"
-	config_tag = "Whiskey Outpost"
+	name = GAMEMODE_WHISKEY_OUTPOST
+	config_tag = GAMEMODE_WHISKEY_OUTPOST
 	required_players = 0
 	xeno_bypass_timer = 1
 	flags_round_type = MODE_NEW_SPAWN
@@ -87,6 +87,7 @@
 	return 1
 
 /datum/game_mode/whiskey_outpost/pre_setup()
+	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
 	for(var/obj/effect/landmark/whiskey_outpost/xenospawn/X)
 		xeno_spawns += X.loc
 	for(var/obj/effect/landmark/whiskey_outpost/supplydrops/S)
@@ -223,8 +224,8 @@
 			J.total_positions = J.current_positions
 		J.current_positions = J.get_total_positions(TRUE)
 	to_world("<B>New players may no longer join the game.</B>")
-	message_staff("Wave one has begun. Disabled new player game joining.")
-	message_staff("Wave one has begun. Disabled new player game joining except for replacement of cryoed marines.")
+	message_admins("Wave one has begun. Disabled new player game joining.")
+	message_admins("Wave one has begun. Disabled new player game joining except for replacement of cryoed marines.")
 	world.update_status()
 
 /datum/game_mode/whiskey_outpost/count_xenos()//Counts braindead too
@@ -302,6 +303,7 @@
 		round_finished = 1
 
 	calculate_end_statistics()
+
 
 	return 1
 
@@ -686,10 +688,10 @@
 							/obj/item/ammo_magazine/flamer_tank/large,
 							fuel)
 		if(6) // Scout
-			spawnitems = list(/obj/item/ammo_magazine/rifle/m4ra,
-							/obj/item/ammo_magazine/rifle/m4ra,
-							/obj/item/ammo_magazine/rifle/m4ra/incendiary,
-							/obj/item/ammo_magazine/rifle/m4ra/impact)
+			spawnitems = list(/obj/item/ammo_magazine/rifle/m4ra/custom,
+							/obj/item/ammo_magazine/rifle/m4ra/custom,
+							/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
+							/obj/item/ammo_magazine/rifle/m4ra/custom/impact)
 	crate.storage_capacity = 60
 	for(var/path in spawnitems)
 		new path(crate)
@@ -727,5 +729,8 @@
 			new /obj/item/paper/crumpled(T)
 		qdel(src)
 
-/datum/game_mode/whiskey_outpost/announce_bioscans(delta = 2)
+/datum/game_mode/whiskey_outpost/announce_bioscans(variance = 2)
 	return // No bioscans needed in WO
+
+/datum/game_mode/whiskey_outpost/get_escape_menu()
+	return "Making a last stand on..."

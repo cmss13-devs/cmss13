@@ -61,7 +61,7 @@
 		if(src.mob.client.midi_silenced) return
 		if(midi_playing)
 			total_silenced++
-			message_staff("A player has silenced the currently playing midi. Total: [total_silenced] player(s).", 1)
+			message_admins("A player has silenced the currently playing midi. Total: [total_silenced] player(s).", 1)
 			src.mob.client.midi_silenced = 1
 			spawn(30 SECONDS) // Prevents message_admins() spam. Should match with the midi_playing_timer spawn() in playsound.dm
 				src.mob.client.midi_silenced = 0
@@ -183,9 +183,9 @@
 	prefs.toggles_flashing ^= FLASH_POOLSPAWN
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_POOLSPAWN)
-		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get spawned as a pooled larva."))
+		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get spawned as a burrowed larva."))
 	else
-		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get spawned as a pooled larva."))
+		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get spawned as a burrowed larva."))
 
 
 /client/verb/toggle_adminpm_flash()
@@ -201,13 +201,19 @@
 		to_chat(src, SPAN_BOLDNOTICE("The icon on your taskbar will no longer flash when an admin messages you. Warning, use at own risk."))
 
 //be special
-/client/verb/toggle_be_special(role in be_special_flags)
+/client/verb/toggle_be_special()
 	set name = "Toggle SpecialRole Candidacy"
 	set category = "Preferences"
 	set desc = "Toggles which special roles you would like to be a candidate for, during events."
+	
+	var/list/be_special_flags = list(
+		"Xenomorph after unrevivable death" = BE_ALIEN_AFTER_DEATH,
+		"Agent" = BE_AGENT,
+	)
+	var/role = tgui_input_list(usr, "Toggle which candidacy?", "Select role", be_special_flags)
+	if(!role)
+		return
 	var/role_flag = be_special_flags[role]
-
-	if(!role_flag) return
 	prefs.be_special ^= role_flag
 	prefs.save_preferences()
 	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible)."))
@@ -482,6 +488,24 @@
 	tgui_say?.load()
 	prefs.save_preferences()
 
+/client/verb/toggle_custom_cursors()
+	set name = "Toggle Custom Cursors"
+	set category = "Preferences.UI"
+	set desc = "Toggle Custom Cursors"
+
+	do_toggle_custom_cursors()
+
+/client/proc/do_toggle_custom_cursors(mob/user)
+	var/result = tgui_alert(user, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No"))
+	if(!result)
+		return
+	if(result == "Yes")
+		prefs.custom_cursors = TRUE
+		to_chat(src, SPAN_NOTICE("You're now using custom cursors."))
+	else
+		prefs.custom_cursors = FALSE
+		to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
+
 /client/verb/toggle_auto_viewport_fit()
 	set name = "Toggle Auto Viewport Fit"
 	set category = "Preferences.UI"
@@ -489,8 +513,28 @@
 	prefs.auto_fit_viewport = !prefs.auto_fit_viewport
 	if(prefs.auto_fit_viewport)
 		to_chat(src, SPAN_NOTICE("Now auto fitting viewport."))
+		fit_viewport()
 	else
 		to_chat(src, SPAN_NOTICE("No longer auto fitting viewport."))
+	prefs.save_preferences()
+
+/client/verb/toggle_adaptive_zooming()
+	set name = "Toggle Adaptive Zooming"
+	set category = "Preferences.UI"
+
+	switch(prefs.adaptive_zoom)
+		if(0)
+			prefs.adaptive_zoom = 1
+			to_chat(src, SPAN_BOLDNOTICE("Adaptive Zooming is now enabled, switching between x1 and x2 zoom. This is recommended for 1080p monitors."))
+			adaptive_zoom()
+		if(1)
+			prefs.adaptive_zoom = 2
+			to_chat(src, SPAN_BOLDNOTICE("Adaptive Zooming is now enabled, switching between x2 and x4 zoom."))
+			adaptive_zoom()
+		if(2)
+			prefs.adaptive_zoom = 0
+			to_chat(src, SPAN_BOLDNOTICE("Adaptive Zooming is now disabled."))
+			adaptive_zoom()
 	prefs.save_preferences()
 
 //------------ GHOST PREFERENCES ---------------------------------

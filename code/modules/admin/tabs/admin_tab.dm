@@ -8,7 +8,7 @@
 	if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") != "Yes")
 		return
 
-	message_staff("[src] de-admined themselves.")
+	message_admins("[src] de-admined themselves.")
 	add_verb(src, /client/proc/readmin_self)
 	deadmin()
 	to_chat(src, "<br><br><span class='centerbold'><big>You are now a normal player. You can ascend back to adminhood at any time using the 'Re-admin Self' verb in your Admin panel.</big></span><br>")
@@ -20,7 +20,7 @@
 	remove_verb(src, /client/proc/readmin_self)
 	readmin()
 	to_chat(src, "<br><br><span class='centerbold'><big>You have ascended back to adminhood. All your verbs should be back where you left them.</big></span><br>")
-	message_staff("[src] re-admined themselves.")
+	message_admins("[src] re-admined themselves.")
 
 /client/proc/becomelarva()
 	set name = "Lose Larva Protection"
@@ -200,7 +200,7 @@
 		M.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
 		M.AddSleepingIcon()
 
-	message_staff("[key_name(usr)] used Toggle Sleep In View.")
+	message_admins("[key_name(usr)] used Toggle Sleep In View.")
 
 /datum/admins/proc/wakeall()
 	set name = "Wake All"
@@ -216,7 +216,7 @@
 		M.sleeping = 0 //set their sleep to zero and remove their icon
 		M.RemoveSleepingIcon()
 
-	message_staff("[key_name(usr)] used Toggle Wake In View.")
+	message_admins("[key_name(usr)] used Toggle Wake In View.")
 
 /client/proc/cmd_admin_say(msg as text)
 	set name = "Asay" //Gave this shit a shorter name so you only have to time out "asay" rather than "admin say" to use it --NeoFite
@@ -231,13 +231,14 @@
 		return
 
 	log_adminpm("ADMIN : [key_name(src)] : [msg]")
+	REDIS_PUBLISH("byond.asay", "author" = src.key, "message" = strip_html(msg), "host" = ishost(src), "rank" = admin_holder.rank)
 
 	var/color = "adminsay"
 	if(ishost(usr))
 		color = "headminsay"
 
 	if(check_rights(R_ADMIN,0))
-		msg = "<span class='[color]'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> (<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[mob]'>JMP</a>): <span class='message'>[msg]</span></span>"
+		msg = "<span class='[color]'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>"
 		for(var/client/C in GLOB.admins)
 			if(R_ADMIN & C.admin_holder.rights)
 				to_chat(C, msg)
@@ -258,7 +259,7 @@
 	for(var/mob/living/mob in view(usr.client))
 		show_blurb(mob, 15, message, null, "center", "center", color, null, null, 1)
 	log_admin("[key_name(src)] sent an In View admin alert with custom message [message].")
-	message_staff("[key_name(src)] sent an In View admin alert with custom message [message].")
+	message_admins("[key_name(src)] sent an In View admin alert with custom message [message].")
 
 /datum/admins/proc/directnarrateall()
 	set name = "Direct Narrate All"
@@ -275,7 +276,7 @@
 	for(var/mob/living/mob in view(usr.client))
 		to_chat(mob, SPAN_ANNOUNCEMENT_HEADER_BLUE(message))
 	log_admin("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
-	message_staff("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
+	message_admins("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
 
 #define SUBTLE_MESSAGE_IN_HEAD "Voice in Head"
 #define SUBTLE_MESSAGE_WEYLAND "Weyland-Yutani"
@@ -316,7 +317,7 @@
 		else
 			if(mob.get_type_in_ears(/obj/item/device/radio/headset))
 				to_chat(mob, message)
-	message_staff("[key_name(usr)] used Subtle Message All In View from [message_option], saying \"[input]\".")
+	message_admins(SPAN_STAFF_IC("[key_name(usr)] used Subtle Message All In View from [message_option], saying \"[input]\"."))
 
 #undef SUBTLE_MESSAGE_IN_HEAD
 #undef SUBTLE_MESSAGE_WEYLAND
@@ -339,6 +340,8 @@
 
 	if (!msg)
 		return
+
+	REDIS_PUBLISH("byond.msay", "author" = src.key, "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.rank)
 
 	if(findtext(msg, "@") || findtext(msg, "#"))
 		var/list/link_results = check_asay_links(msg)
@@ -363,7 +366,7 @@
 	channel = "[admin_holder.rank]:"
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> (<A HREF='?src=\ref[C.admin_holder];[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>")
+			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>")
 
 /client/proc/get_mod_say()
 	var/msg = input(src, null, "msay \"text\"") as text|null
@@ -388,7 +391,7 @@
 	var/channel = "Mentor:"
 	channel = "[admin_holder.rank]:"
 	if(check_rights(R_MOD|R_ADMIN,0))
-		color = "staffsay"
+		color = "mentorstaff"
 
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD|R_MENTOR) & C.admin_holder.rights)
@@ -418,6 +421,33 @@
 	remove_verb(src, admin_verbs_hideable)
 	add_verb(src, /client/proc/enable_admin_verbs)
 
+/client/proc/strip_all_in_view()
+	set name = "Strip All"
+	set category = "Admin.InView"
+	set hidden = TRUE
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	if(tgui_alert(src, "This will strip ALL mobs within your view range. Are you sure?", "Confirmation", list("Yes", "Cancel")) != "Yes")
+		return
+
+	var/strip_self = FALSE
+	if(tgui_alert(src, "Do you want to strip yourself as well?", "Confirmation", list("Yes", "No")) == "Yes")
+		strip_self = TRUE
+
+	for(var/mob/living/current_mob in view())
+		if(!strip_self && usr == current_mob)
+			continue
+		for (var/obj/item/current_item in current_mob)
+			//no more deletion of ID cards
+			if(istype(current_item, /obj/item/card/id))
+				continue
+			qdel(current_item)
+
+	message_admins(WRAP_STAFF_LOG(usr, "stripped everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
+
 /client/proc/rejuvenate_all_in_view()
 	set name = "Rejuvenate All"
 	set category = "Admin.InView"
@@ -433,7 +463,7 @@
 	for(var/mob/living/M in view())
 		M.rejuvenate(FALSE)
 
-	message_staff(WRAP_STAFF_LOG(usr, "ahealed everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "ahealed everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
 
 
 /client/proc/rejuvenate_all_humans_in_view()
@@ -451,7 +481,7 @@
 	for(var/mob/living/carbon/human/M in view())
 		M.rejuvenate(FALSE)
 
-	message_staff(WRAP_STAFF_LOG(usr, "ahealed all humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "ahealed all humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
 
 /client/proc/rejuvenate_all_revivable_humans_in_view()
 	set name = "Rejuvenate Revivable Human"
@@ -477,7 +507,7 @@
 			M.rejuvenate(FALSE)
 			continue
 
-	message_staff(WRAP_STAFF_LOG(usr, "ahealed all revivable humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "ahealed all revivable humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
 
 /client/proc/rejuvenate_all_xenos_in_view()
 	set name = "Rejuvenate Xenos"
@@ -494,7 +524,7 @@
 	for(var/mob/living/carbon/xenomorph/X in view())
 		X.rejuvenate(FALSE)
 
-	message_staff(WRAP_STAFF_LOG(usr, "ahealed all xenos in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "ahealed all xenos in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
 
 // ----------------------------
 // PANELS
@@ -572,10 +602,61 @@
 		<A href='?src=\ref[src];[HrefToken()];inviews=alertall'>Alert Message In View</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];inviews=subtlemessageall'>Subtle Message In View</A><BR>
 		<BR>
+		<A href='?src=\ref[src];[HrefToken()];inviews=stripall'>Strip All Mobs In View</A><BR>
+		<BR>
 		"}
 
 	show_browser(usr, dat, "In View Panel", "inviews")
 	return
+
+/datum/admins/proc/imaginary_friend()
+	set category = "OOC.Mentor"
+	set name = "Imaginary Friend"
+
+	var/mob/user = usr
+
+	if(!check_rights(R_MOD|R_MENTOR))
+		return
+
+	if(istype(user, /mob/camera/imaginary_friend))
+		var/mob/camera/imaginary_friend/friend = user
+		friend.deactivate()
+		return
+
+	if(!isobserver(user))
+		to_chat(user, SPAN_WARNING("Can only become an imaginary friend while observing or aghosted."))
+		return
+
+	var/mob/living/befriended_mob
+	switch(tgui_input_list(user, "Select by:", "Imaginary Friend", list("Key", "Mob")))
+		if("Key")
+			var/client/selected_client = tgui_input_list(user, "Select a key", "Imaginary Friend", GLOB.clients)
+			if(!selected_client)
+				return
+			befriended_mob = selected_client.mob
+		if("Mob")
+			var/list/cliented_mobs = GLOB.living_mob_list.Copy()
+			for(var/mob/checking_mob as anything in cliented_mobs)
+				if(checking_mob.client)
+					continue
+				cliented_mobs -= checking_mob
+			var/mob/selected_mob = tgui_input_list(user, "Select a mob", "Imaginary Friend", cliented_mobs)
+			if(!selected_mob)
+				return
+			befriended_mob = selected_mob
+
+	if(!isobserver(user))
+		return
+
+	if(!istype(befriended_mob))
+		return
+
+	var/mob/camera/imaginary_friend/friend = new(get_turf(befriended_mob), befriended_mob)
+	friend.aghosted_original_mob = user.mind?.original
+	user.mind.transfer_to(friend)
+
+	log_admin("[key_name(friend)] started being imaginary friend of [key_name(befriended_mob)].")
+	message_admins("[key_name_admin(friend)] started being imaginary friend of [key_name_admin(befriended_mob)].")
 
 /client/proc/in_view_panel()
 	set name = "In View Panel"
@@ -594,7 +675,7 @@
 		return
 
 	set_lz_resin_allowed(!GLOB.resin_lz_allowed)
-	message_staff("[src] has [GLOB.resin_lz_allowed ? "allowed xenos to weed" : "disallowed from weeding"] near the LZ.")
+	message_admins("[src] has [GLOB.resin_lz_allowed ? "allowed xenos to weed" : "disallowed from weeding"] near the LZ.")
 
 /proc/set_lz_resin_allowed(allowed = TRUE)
 	if(allowed)
@@ -615,7 +696,7 @@
 		return
 
 	GLOB.spawn_ob = !GLOB.spawn_ob
-	message_staff("[src] has [GLOB.spawn_ob ? "allowed OBs to spawn" : "prevented OBs from spawning"] at roundstart.")
+	message_admins("[src] has [GLOB.spawn_ob ? "allowed OBs to spawn" : "prevented OBs from spawning"] at roundstart.")
 
 /client/proc/toggle_sniper_upgrade()
 	set name = "Toggle Engi Sniper Upgrade"
@@ -629,7 +710,7 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_NO_SNIPER_SENTRY
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY) ? "disallowed engineers from picking" : "allowed engineers to pick"] long-range sentry upgrades.")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY) ? "disallowed engineers from picking" : "allowed engineers to pick"] long-range sentry upgrades.")
 
 /client/proc/toggle_attack_dead()
 	set name = "Toggle Attack Dead"
@@ -643,7 +724,7 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_NO_ATTACK_DEAD
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) ? "prevented dead mobs from being" : "allowed dead mobs to be"] attacked.")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) ? "prevented dead mobs from being" : "allowed dead mobs to be"] attacked.")
 
 /client/proc/toggle_strip_drag()
 	set name = "Toggle Strip/Drag Dead"
@@ -657,7 +738,7 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_NO_STRIPDRAG_ENEMY
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) ? "prevented dead humans from being" : "allowed dead humans to be"] stripped and dragged around by non-matching IFF players.")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) ? "prevented dead humans from being" : "allowed dead humans to be"] stripped and dragged around by non-matching IFF players.")
 
 /client/proc/toggle_uniform_strip()
 	set name = "Toggle Uniform Strip Dead"
@@ -671,9 +752,9 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_STRIP_NONUNIFORM_ENEMY
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_STRIP_NONUNIFORM_ENEMY) ? "allowed dead humans to be stripped of everything but their uniform, boots, armor, helmet, and ID" : "prevented dead humans from being stripped of anything"].")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_STRIP_NONUNIFORM_ENEMY) ? "allowed dead humans to be stripped of everything but their uniform, boots, armor, helmet, and ID" : "prevented dead humans from being stripped of anything"].")
 	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY))
-		message_staff("WARNING: Dead enemy players can still be stripped of everything, as the Strip/Drag toggle flag isn't active.")
+		message_admins("WARNING: Dead enemy players can still be stripped of everything, as the Strip/Drag toggle flag isn't active.")
 
 /client/proc/toggle_strong_defibs()
 	set name = "Toggle Strong Defibs"
@@ -687,7 +768,7 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_STRONG_DEFIBS
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) ? "allowed defibs to ignore armor" : "made defibs operate normally"].")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) ? "allowed defibs to ignore armor" : "made defibs operate normally"].")
 
 /client/proc/toggle_blood_optimization()
 	set name = "Toggle Blood Optimization"
@@ -701,7 +782,7 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_BLOOD_OPTIMIZATION
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_BLOOD_OPTIMIZATION) ? "toggled blood optimization on" : "toggled blood optimization off"].")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_BLOOD_OPTIMIZATION) ? "toggled blood optimization on" : "toggled blood optimization off"].")
 
 /client/proc/toggle_combat_cas()
 	set name = "Toggle Combat CAS Equipment"
@@ -715,7 +796,7 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_NO_COMBAT_CAS
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) ? "toggled combat CAS off" : "toggled combat CAS on"].")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) ? "toggled combat CAS off" : "toggled combat CAS on"].")
 
 /client/proc/toggle_lz_protection()
 	set name = "Toggle LZ Mortar Protection"
@@ -729,7 +810,7 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_LZ_PROTECTION
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) ? "toggled LZ protection on, mortars can no longer fire there" : "toggled LZ protection off, mortars can now fire there"].")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) ? "toggled LZ protection on, mortars can no longer fire there" : "toggled LZ protection off, mortars can now fire there"].")
 
 /client/proc/toggle_shipside_sd()
 	set name = "Toggle Shipside SD Protection"
@@ -743,4 +824,22 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_SHIPSIDE_SD
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD) ? "toggled SD protection off, Yautja can now big self destruct anywhere" : "toggled SD protection on, Yautja can now only big self destruct on the hunting grounds"].")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD) ? "toggled SD protection off, Yautja can now big self destruct anywhere" : "toggled SD protection on, Yautja can now only big self destruct on the hunting grounds"].")
+
+/client/proc/toggle_hardcore_perma()
+	set name = "Toggle Hardcore"
+	set category = "Admin.Flags"
+
+	if(!admin_holder || !check_rights(R_MOD, FALSE))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) && tgui_alert(usr, "Are you sure you want to toggle Hardcore mode on? This will cause all humans to instantly go perma on death.", "Confirmation", list("Yes", "Cancel")) != "Yes")
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
+	message_admins("[src] has toggled Hardcore [MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) ? "on, causing all humans to instantly go perma on death" : "off, causing all humans to die like normal"].")
+

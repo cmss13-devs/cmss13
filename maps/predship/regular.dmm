@@ -7,8 +7,7 @@
 	name = "Storage Chamber"
 	},
 /turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
+	icon_state = "floor4"
 	},
 /area/yautja)
 "af" = (
@@ -16,16 +15,14 @@
 	layer = 2.69
 	},
 /turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
+	icon_state = "floor4"
 	},
 /area/yautja)
 "ah" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/twohanded/spear,
+/obj/item/weapon/twohanded/spear,
 /turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
+	icon_state = "floor4"
 	},
 /area/yautja)
 "ai" = (
@@ -68,7 +65,7 @@
 /obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
-/obj/item/weapon/melee/yautja/knife,
+/obj/item/weapon/yautja/knife,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -179,8 +176,7 @@
 /obj/structure/machinery/door/window/southleft{
 	dir = 1;
 	icon_state = "left";
-	layer = 2.8;
-	tag = "icon-left (NORTH)"
+	layer = 2.8
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -439,7 +435,7 @@
 /area/yautja)
 "bM" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/weapon/melee/twohanded/dualsaber,
+/obj/item/weapon/twohanded/dualsaber,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -455,7 +451,7 @@
 /area/yautja)
 "bN" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/weapon/melee/katana,
+/obj/item/weapon/katana,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -613,8 +609,7 @@
 /obj/item/reagent_container/food/snacks/meat,
 /obj/structure/machinery/light/small{
 	dir = 4;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (EAST)"
+	icon_state = "bulb1"
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -641,7 +636,7 @@
 /area/yautja)
 "ce" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/yautja/knife,
+/obj/item/weapon/yautja/knife,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
 /turf/open/floor/holofloor{
@@ -683,8 +678,7 @@
 /obj/structure/xenoautopsy/tank,
 /obj/structure/machinery/light/small{
 	dir = 4;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (EAST)"
+	icon_state = "bulb1"
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -693,19 +687,19 @@
 /area/yautja)
 "ck" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	pixel_y = -2
 	},
-/obj/item/weapon/melee/harpoon/yautja,
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja,
+/obj/item/weapon/harpoon/yautja{
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	pixel_x = -4;
 	pixel_y = -3
 	},
@@ -716,17 +710,17 @@
 /area/yautja)
 "cl" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	pixel_x = -4;
 	pixel_y = -3
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/obj/item/weapon/melee/harpoon/yautja,
-/obj/item/weapon/melee/harpoon/yautja,
-/obj/item/weapon/melee/harpoon/yautja,
+/obj/item/weapon/harpoon/yautja,
+/obj/item/weapon/harpoon/yautja,
+/obj/item/weapon/harpoon/yautja,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -787,8 +781,7 @@
 "cu" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 4;
-	icon_state = "wooden_chair_wings";
-	tag = "icon-wooden_chair_wings (EAST)"
+	icon_state = "wooden_chair_wings"
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -805,8 +798,7 @@
 "cw" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 8;
-	icon_state = "wooden_chair_wings";
-	tag = "icon-wooden_chair_wings (WEST)"
+	icon_state = "wooden_chair_wings"
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -827,8 +819,7 @@
 /obj/structure/machinery/door/window/southleft{
 	dir = 8;
 	icon_state = "left";
-	layer = 2.8;
-	tag = "icon-left (WEST)"
+	layer = 2.8
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -856,8 +847,7 @@
 "cA" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 1;
-	icon_state = "wooden_chair_wings";
-	tag = "icon-wooden_chair_wings (NORTH)"
+	icon_state = "wooden_chair_wings"
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -874,8 +864,7 @@
 /obj/structure/machinery/door/window/southleft{
 	dir = 1;
 	icon_state = "left";
-	layer = 2.8;
-	tag = "icon-left (NORTH)"
+	layer = 2.8
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -891,8 +880,7 @@
 /obj/structure/machinery/door/window/southleft{
 	dir = 1;
 	icon_state = "left";
-	layer = 2.8;
-	tag = "icon-left (NORTH)"
+	layer = 2.8
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -939,8 +927,8 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/device/assembly/voice,
 /obj/item/device/assembly/voice,
-/obj/item/weapon/melee/baton/cattleprod,
-/obj/item/weapon/melee/baton/cattleprod,
+/obj/item/weapon/baton/cattleprod,
+/obj/item/weapon/baton/cattleprod,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -1065,12 +1053,12 @@
 /area/yautja)
 "cZ" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/weapon/melee/claymore/mercsword,
-/obj/item/weapon/melee/claymore/mercsword,
-/obj/item/weapon/melee/claymore/mercsword,
-/obj/item/weapon/melee/claymore/mercsword,
-/obj/item/weapon/melee/claymore/mercsword,
-/obj/item/weapon/melee/claymore/mercsword,
+/obj/item/weapon/claymore/mercsword,
+/obj/item/weapon/claymore/mercsword,
+/obj/item/weapon/claymore/mercsword,
+/obj/item/weapon/claymore/mercsword,
+/obj/item/weapon/claymore/mercsword,
+/obj/item/weapon/claymore/mercsword,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -1228,8 +1216,7 @@
 /obj/structure/machinery/door/window/southleft{
 	dir = 1;
 	icon_state = "left";
-	layer = 2.8;
-	tag = "icon-left (NORTH)"
+	layer = 2.8
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -1305,32 +1292,27 @@
 "hd" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 1;
-	icon_state = "heater";
-	tag = "icon-heater (NORTH)"
+	icon_state = "heater"
 	},
 /obj/structure/machinery/light/small{
 	dir = 1;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (NORTH)"
+	icon_state = "bulb1"
 	},
 /turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
+	icon_state = "floor4"
 	},
 /area/yautja)
 "hW" = (
 /obj/structure/ore_box,
 /turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
+	icon_state = "floor4"
 	},
 /area/yautja)
 "hX" = (
 /obj/structure/surface/rack,
 /obj/item/device/flashlight/lantern,
 /turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
+	icon_state = "floor4"
 	},
 /area/yautja)
 "ji" = (
@@ -1390,12 +1372,10 @@
 "ET" = (
 /obj/structure/machinery/power/terminal{
 	dir = 1;
-	icon_state = "term";
-	tag = "icon-term (NORTH)"
+	icon_state = "term"
 	},
 /turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
+	icon_state = "floor4"
 	},
 /area/yautja)
 "HY" = (
@@ -1406,8 +1386,7 @@
 	name = "plasma power generator"
 	},
 /turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
+	icon_state = "floor4"
 	},
 /area/yautja)
 "Jy" = (
@@ -1439,8 +1418,7 @@
 "VC" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 1;
-	icon_state = "propulsion";
-	tag = "icon-propulsion (NORTH)"
+	icon_state = "propulsion"
 	},
 /turf/open/space,
 /area/space)
@@ -1452,8 +1430,7 @@
 /area/space)
 "Zr" = (
 /turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
+	icon_state = "floor4"
 	},
 /area/yautja)
 "Zv" = (
@@ -1475,12 +1452,10 @@
 "ZU" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 1;
-	icon_state = "heater";
-	tag = "icon-heater (NORTH)"
+	icon_state = "heater"
 	},
 /turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
+	icon_state = "floor4"
 	},
 /area/yautja)
 

@@ -11,29 +11,29 @@
 	build_path = M.type
 
 //TODO: Move these into computer/camera.dm
-/obj/item/circuitboard/computer/security
-	name = "Circuit board (Security Camera Monitor)"
-	build_path = /obj/structure/machinery/computer/security
+/obj/item/circuitboard/computer/cameras
+	name = "Circuit board (security camera monitor)"
+	build_path = /obj/structure/machinery/computer/cameras
 	var/network = list(CAMERA_NET_MILITARY)
 	req_access = list(ACCESS_MARINE_BRIG)
 	var/locked = 1
 
-/obj/item/circuitboard/computer/security/construct(obj/structure/machinery/computer/security/C)
+/obj/item/circuitboard/computer/cameras/construct(obj/structure/machinery/computer/cameras/C)
 	if (..(C))
 		C.network = network
 
-/obj/item/circuitboard/computer/security/disassemble(obj/structure/machinery/computer/security/C)
+/obj/item/circuitboard/computer/cameras/disassemble(obj/structure/machinery/computer/cameras/C)
 	if (..(C))
 		network = C.network
 
-/obj/item/circuitboard/computer/security/engineering
+/obj/item/circuitboard/computer/cameras/engineering
 	name = "Circuit board (Engineering Camera Monitor)"
-	build_path = /obj/structure/machinery/computer/security/engineering
+	build_path = /obj/structure/machinery/computer/cameras/engineering
 	network = list("Engineering","Power Alarms","Atmosphere Alarms","Fire Alarms")
 	req_access = list()
-/obj/item/circuitboard/computer/security/mining
+/obj/item/circuitboard/computer/cameras/mining
 	name = "Circuit board (Mining Camera Monitor)"
-	build_path = /obj/structure/machinery/computer/security/mining
+	build_path = /obj/structure/machinery/computer/cameras/mining
 	network = list("MINE")
 	req_access = list()
 
@@ -231,7 +231,7 @@
 	build_path = /obj/structure/machinery/computer/research/main_terminal
 
 
-/obj/item/circuitboard/computer/security/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/circuitboard/computer/cameras/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I,/obj/item/card/id))
 		if(check_access(I))
 			locked = !locked

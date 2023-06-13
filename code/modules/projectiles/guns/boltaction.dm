@@ -5,6 +5,7 @@
 /obj/item/weapon/gun/boltaction
 	name = "\improper Basira-Armstrong bolt-action hunting rifle"
 	desc = "Named after its eccentric designers, the Basira-Armstrong is a cheap but reliable civilian bolt-action rifle frequently found in the outer colonies. Despite its legally-mandated limited magazine capacity, its light weight and legendary accuracy makes it popular among hunters and competitive shooters."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	cocked_sound = 'sound/weapons/gun_cocked2.ogg'
 	fire_sound = 'sound/weapons/gun_boltaction.ogg'
 	var/open_bolt_sound ='sound/weapons/handling/gun_boltaction_open.ogg'
@@ -21,7 +22,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/boltaction
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
-		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
@@ -31,6 +32,7 @@
 	starting_attachment_types = list(/obj/item/attachable/stock/hunting, /obj/item/attachable/scope/mini/hunting)
 	aim_slowdown = SLOWDOWN_ADS_RIFLE
 	wield_delay = WIELD_DELAY_NORMAL
+	civilian_usable_override = TRUE
 	var/bolted = TRUE // FALSE IS OPEN, TRUE IS CLOSE
 	var/bolt_delay
 	var/recent_cycle //world.time to see when they last bolted it.

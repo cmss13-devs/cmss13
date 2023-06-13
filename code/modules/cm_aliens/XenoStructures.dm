@@ -150,7 +150,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 
 /obj/effect/alien/resin/sticky/Initialize(mapload, hive)
-	..()
+	. = ..()
 	if (hive)
 		hivenumber = hive
 	set_hive_data(src, hivenumber)
@@ -278,18 +278,19 @@
 /obj/effect/alien/resin/marker/Destroy()
 	var/datum/hive_status/builder_hive = GLOB.hive_datum[hivenumber]
 
-	builder_hive.resin_marks -= src
+	if(builder_hive)
+		builder_hive.resin_marks -= src
 
-	for(var/mob/living/carbon/xenomorph/XX in builder_hive.totalXenos)
-		XX.built_structures -= src
-		if(!XX.client)
-			continue
-		XX.client.images -= seenMeaning  //this should be a hud thing, but that code is too confusing so I am doing it here
-		XX.hive.mark_ui.update_all_data()
+		for(var/mob/living/carbon/xenomorph/XX in builder_hive.totalXenos)
+			XX.built_structures -= src
+			if(!XX.client)
+				continue
+			XX.client.images -= seenMeaning  //this should be a hud thing, but that code is too confusing so I am doing it here
+			XX.hive.mark_ui.update_all_data()
 
-	for(var/mob/living/carbon/xenomorph/X in xenos_tracking) //no floating references :0)
-		X.stop_tracking_resin_mark(TRUE)
-	. = ..()
+		for(var/mob/living/carbon/xenomorph/X in xenos_tracking) //no floating references :0)
+			X.stop_tracking_resin_mark(TRUE)
+	return ..()
 
 /obj/effect/alien/resin/marker/proc/check_for_weeds()
 	var/turf/T = get_turf(src)
@@ -323,6 +324,7 @@
 /obj/structure/mineral_door/resin
 	name = "resin door"
 	icon = 'icons/mob/xenos/effects.dmi'
+	icon_state = "resin"
 	mineralType = "resin"
 	hardness = 1.5
 	health = HEALTH_DOOR_XENO
@@ -479,6 +481,7 @@
 
 /obj/structure/mineral_door/resin/thick
 	name = "thick resin door"
+	icon_state = "thick resin"
 	health = HEALTH_DOOR_XENO_THICK
 	hardness = 2
 	mineralType = "thick resin"
@@ -509,27 +512,33 @@
 	START_PROCESSING(SSprocessing, src)
 
 
-/obj/effect/alien/resin/acid_pillar/proc/can_target(mob/living/carbon/C, position_to_get = 0)
-	if(get_dist(src, C) > range)
+/obj/effect/alien/resin/acid_pillar/proc/can_target(mob/living/carbon/current_mob, position_to_get = 0)
+	/// Is it a friendly xenomorph that is on fire
+	var/burning_friendly = FALSE
+
+	if(get_dist(src, current_mob) > range)
 		return FALSE
 
-	var/check_dead = FALSE
-	if(C.ally_of_hivenumber(hivenumber))
-		if(!C.on_fire || !isxeno(C))
+	if(current_mob.ally_of_hivenumber(hivenumber))
+		if(!isxeno(current_mob))
 			return FALSE
-	else if(C.lying || C.is_mob_incapacitated(TRUE))
+		if(!current_mob.on_fire)
+			return FALSE
+		burning_friendly = TRUE
+
+	else if(current_mob.lying || current_mob.is_mob_incapacitated(TRUE))
 		return FALSE
 
-	if(!check_dead && C.health < 0)
+	if(!burning_friendly && current_mob.health < 0)
 		return FALSE
-	if(check_dead && C.stat == DEAD)
+	if(current_mob.stat == DEAD)
 		return FALSE
 
 	var/turf/current_turf
 	var/turf/last_turf = loc
 	var/atom/temp_atom = new acid_type()
 	var/current_pos = 1
-	for(var/i in getline(src, C))
+	for(var/i in getline(src, current_mob))
 		current_turf = i
 		if(LinkBlocked(temp_atom, last_turf, current_turf))
 			qdel(temp_atom)

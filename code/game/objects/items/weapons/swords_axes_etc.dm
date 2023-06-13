@@ -8,7 +8,7 @@
 /*
  * Banhammer
  */
-/obj/item/weapon/melee/banhammer/attack(mob/M as mob, mob/user as mob)
+/obj/item/weapon/banhammer/attack(mob/M as mob, mob/user as mob)
 	to_chat(M, "<font color='red'><b> You have been banned FOR NO REISIN by [user]<b></font>")
 	to_chat(user, "<font color='red'> You have <b>BANNED</b> [M]</font>")
 
@@ -16,7 +16,7 @@
 /*
  * Classic Baton
  */
-/obj/item/weapon/melee/classic_baton
+/obj/item/weapon/classic_baton
 	name = "police baton"
 	desc = "A wooden truncheon for beating criminal scum."
 	icon = 'icons/obj/items/weapons/weapons.dmi'
@@ -25,7 +25,7 @@
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_WEAK
 
-/obj/item/weapon/melee/classic_baton/attack(mob/M as mob, mob/living/user as mob)
+/obj/item/weapon/classic_baton/attack(mob/M as mob, mob/living/user as mob)
 	if(!..())
 		return
 
@@ -35,7 +35,7 @@
 	user.visible_message(SPAN_DANGER("<B>[M] has been beaten with \the [src] by [user]!</B>"), SPAN_DANGER("You hear someone fall"))
 
 //Telescopic baton
-/obj/item/weapon/melee/telebaton
+/obj/item/weapon/telebaton
 	name = "telescopic baton"
 	desc = "A compact yet rebalanced personal defense weapon. Can be concealed when folded. It will knock down humans when not on harm intent."
 	icon = 'icons/obj/items/weapons/weapons.dmi'
@@ -47,7 +47,7 @@
 	var/on = 0
 	var/stunforce = 60
 
-/obj/item/weapon/melee/telebaton/attack(mob/living/carbon/human/target, mob/living/user)
+/obj/item/weapon/telebaton/attack(mob/living/carbon/human/target, mob/living/user)
 	if(!istype(target) || !on)
 		return ..()
 	if(user.a_intent == INTENT_HARM || isspeciesyautja(target) || user == target)
@@ -55,7 +55,7 @@
 	else
 		stun(target, user)
 
-/obj/item/weapon/melee/telebaton/attack_self(mob/user as mob)
+/obj/item/weapon/telebaton/attack_self(mob/user as mob)
 	..()
 
 	on = !on
@@ -91,7 +91,7 @@
 		add_blood(blood_color)
 	return
 
-/obj/item/weapon/melee/telebaton/proc/stun(mob/living/carbon/human/target, mob/living/user)
+/obj/item/weapon/telebaton/proc/stun(mob/living/carbon/human/target, mob/living/user)
 	if(target.check_shields(src, 0, "[user]'s [name]"))
 		return FALSE
 	// Visuals and sound

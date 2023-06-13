@@ -77,6 +77,9 @@
 	addtimer(CALLBACK(src, PROC_REF(check_turf)), 0.2 SECONDS)
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
 		go_idle()
+	if(attached)
+		attached = FALSE
+		die()
 
 /obj/item/clothing/mask/facehugger/proc/check_turf()
 	var/count = 0
@@ -172,8 +175,7 @@
 
 /obj/item/clothing/mask/facehugger/equipped(mob/M)
 	SHOULD_CALL_PARENT(FALSE) // ugh equip sounds
-	// So getting hugged or picking up a hugger does not
-	// prematurely kill the hugger
+	// So picking up a hugger does not prematurely kill it
 	go_idle()
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)
@@ -245,7 +247,6 @@
 
 	// This is always going to be valid because of the can_hug check above
 	var/mob/living/carbon/human/H = M
-	attached = TRUE
 	if(!silent)
 		H.visible_message(SPAN_DANGER("[src] leaps at [H]'s face!"))
 
@@ -259,6 +260,8 @@
 	if(!H.handle_hugger_attachment(src))
 		return FALSE
 
+	attached = TRUE
+
 	forceMove(H)
 	icon_state = initial(icon_state)
 	H.equip_to_slot(src, WEAR_FACE)
@@ -267,6 +270,8 @@
 	H.disable_special_items()
 	if(ishuman_strict(H))
 		playsound(loc, H.gender == "male" ? 'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg' , 25, 0)
+	else if(isyautja(H))
+		playsound(loc, 'sound/voice/pred_facehugged.ogg', 65, FALSE)
 	if(!sterile)
 		if(!H.species || !(H.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
 			H.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
@@ -373,6 +378,9 @@
 	if(stat == DEAD)
 		return
 
+	if(attached && !impregnated)
+		return
+
 	if(jump_timer)
 		deltimer(jump_timer)
 	jump_timer = null
@@ -388,7 +396,7 @@
 		var/mob/M = loc
 		M.drop_inv_item_on_ground(src)
 
-	layer = BELOW_MOB_LAYER //so dead hugger appears below live hugger if stacked on same tile.
+	layer = TURF_LAYER //so dead hugger appears below live hugger if stacked on same tile. (and below nested hosts)
 
 	addtimer(CALLBACK(src, PROC_REF(decay)), 3 MINUTES)
 

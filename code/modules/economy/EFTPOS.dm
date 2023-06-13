@@ -218,7 +218,7 @@
 				var/obj/item/I = usr.get_active_hand()
 				if (istype(I, /obj/item/card))
 					var/obj/item/card/id/C = I
-					if(ACCESS_MARINE_LOGISTICS in C.access)
+					if(ACCESS_MARINE_DATABASE in C.access)
 						access_code = 0
 						to_chat(usr, "[icon2html(src, usr)]<span class='info'>Access code reset to 0.</span>")
 

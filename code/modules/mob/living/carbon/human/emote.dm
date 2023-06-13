@@ -116,6 +116,7 @@
 	key = "golfclap"
 	key_third_person = "golfclaps"
 	message = "claps, clearly unimpressed."
+	alt_message = "claps"
 	sound = 'sound/misc/golfclap.ogg'
 	cooldown = 5 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
@@ -148,25 +149,29 @@
 
 /datum/emote/living/carbon/human/medic
 	key = "medic"
-	message = "calls for a medic!"
+	message = "calls for a Corpsman!"
+	alt_message = "shouts something"
 	cooldown = 10 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/medic/get_sound(mob/living/user)
 	if(user.gender == MALE)
-		return pick('sound/voice/human_male_medic.ogg', 5;'sound/voice/human_male_medic_rare_1.ogg', 5;'sound/voice/human_male_medic_rare_2.ogg')
+		return pick('sound/voice/corpsman.ogg', 'sound/voice/corpsman_up.ogg', 'sound/voice/corpsman_over_here.ogg', 'sound/voice/i_need_a_corpsman_1.ogg', 'sound/voice/i_need_a_corpsman_2.ogg', 'sound/voice/im_hit_get_doc_up_here.ogg', 'sound/voice/get_doc_up_here_im_hit.ogg', 20;'sound/voice/i_cant_feel_my_legs_corpsman.ogg', 0.5;'sound/voice/human_male_medic_rare_1.ogg', 0.5;'sound/voice/human_male_medic.ogg', 1;'sound/voice/human_male_medic_rare_2.ogg')
 	else
 		return 'sound/voice/human_female_medic.ogg'
 
 /datum/emote/living/carbon/human/medic/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
+	if(!.)
+		return FALSE
+
 	user.show_speech_bubble("medic")
 
 /datum/emote/living/carbon/human/medic/run_langchat(mob/user, group)
 	if(!ishuman_strict(user))
 		return
 
-	var/medic_message = pick("Medic!", "Doc!", "Help!")
+	var/medic_message = pick("Corpsman!", "Doc!", "Help!")
 	user.langchat_speech(medic_message, group, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_bolded"))
 
 /datum/emote/living/carbon/human/moan
@@ -187,6 +192,7 @@
 /datum/emote/living/carbon/human/pain
 	key = "pain"
 	message = "cries out in pain!"
+	alt_message = "cries out"
 	species_type_blacklist_typecache = list(/datum/species/synthetic)
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
@@ -202,6 +208,8 @@
 
 /datum/emote/living/carbon/human/pain/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
+	if(!.)
+		return FALSE
 
 	user.show_speech_bubble("pain")
 
@@ -239,6 +247,9 @@
 
 /datum/emote/living/carbon/human/scream/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
+	if(!.)
+		return FALSE
+
 	user.show_speech_bubble("scream")
 
 /datum/emote/living/carbon/human/scream/run_langchat(mob/user, group)
@@ -304,6 +315,21 @@
 	params = num2text(clamp(params, 2, 10))
 	return ..()
 
+/datum/emote/living/carbon/human/stop
+	key = "stop"
+	message = "holds out an open palm, gesturing to stop."
+	hands_use_check = TRUE
+
+/datum/emote/living/carbon/human/thumbsup
+	key = "thumbsup"
+	message = "gives a thumbs up."
+	hands_use_check = TRUE
+
+/datum/emote/living/carbon/human/thumbsdown
+	key = "thumbsdown"
+	message = "gives a thumbs down."
+	hands_use_check = TRUE
+
 /datum/emote/living/carbon/human/twitch
 	key = "twitch"
 	key_third_person = "twitches"
@@ -322,19 +348,28 @@
 /datum/emote/living/carbon/human/warcry
 	key = "warcry"
 	message = "shouts an inspiring cry!"
+	alt_message = "shouts something"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/warcry/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
+	if(!.)
+		return FALSE
 
 	user.show_speech_bubble("warcry")
 
 /datum/emote/living/carbon/human/warcry/get_sound(mob/living/user)
 	if(ishumansynth_strict(user))
 		if(user.gender == MALE)
-			return get_sfx("male_warcry")
+			if(user.faction == FACTION_UPP)
+				return get_sfx("male_upp_warcry")
+			else
+				return get_sfx("male_warcry")
 		else
-			return get_sfx("female_warcry")
+			if(user.faction == FACTION_UPP)
+				return get_sfx("female_upp_warcry")
+			else
+				return get_sfx("female_warcry")
 
 /datum/emote/living/carbon/human/whimper
 	key = "whimper"

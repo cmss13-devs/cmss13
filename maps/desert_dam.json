@@ -2,6 +2,7 @@
     "map_name": "Trijent Dam",
     "map_path": "map_files/DesertDam",
     "map_file": "Desert_Dam.dmm",
+    "webmap_url": "Trijent",
     "survivor_types": [
         "/datum/equipment_preset/survivor/doctor/trijent",
         "/datum/equipment_preset/survivor/roughneck",
@@ -11,7 +12,9 @@
         "/datum/equipment_preset/survivor/engineer/trijent",
         "/datum/equipment_preset/survivor/engineer/trijent/hydro",
         "/datum/equipment_preset/survivor/trucker/trijent",
-        "/datum/equipment_preset/survivor/security/trijent"
+        "/datum/equipment_preset/survivor/security/trijent",
+        "/datum/equipment_preset/survivor/clf",
+        "/datum/equipment_preset/survivor/civilian"
     ],
     "defcon_triggers": [
         3300,
@@ -33,6 +36,7 @@
         "xeno_hive_charlie": 0,
         "xeno_hive_delta": 100
     },
+    "camouflage": "desert",
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

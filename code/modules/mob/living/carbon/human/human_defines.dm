@@ -1,24 +1,24 @@
 /mob/living/carbon/human
-	//Hair colour and style
+	//Hair color and style
 	var/r_hair = 0
 	var/g_hair = 0
 	var/b_hair = 0
 	var/h_style = "Crewcut"
 
-	//Hair gradient colour and style
+	//Hair gradient color and style
 	var/r_gradient = 0
 	var/g_gradient = 0
 	var/b_gradient = 0
 	///Style used for the hair gradient.
 	var/grad_style = "None"
 
-	//Facial hair colour and style
+	//Facial hair color and style
 	var/r_facial = 0
 	var/g_facial = 0
 	var/b_facial = 0
 	var/f_style = "Shaved"
 
-	//Eye colour
+	//Eye color
 	var/r_eyes = 0
 	var/g_eyes = 0
 	var/b_eyes = 0
@@ -26,7 +26,7 @@
 	var/ethnicity = "Western" // Ethnicity
 	var/body_type = "Mesomorphic (Average)" // Body Type
 
-	//Skin colour
+	//Skin color
 	var/r_skin = 0
 	var/g_skin = 0
 	var/b_skin = 0
@@ -37,7 +37,7 @@
 	var/b_type = "A+" //Player's bloodtype
 
 	var/underwear = "Boxers (Camo Conforming)" //Which underwear the player wants
-	var/undershirt = "Undershirt" //Which undershirt the player wants.
+	var/undershirt = "Undershirt (Tan)" //Which undershirt the player wants.
 	var/backbag = 2 //Which backpack type the player has chosen. Satchel or Backpack.
 
 	var/datum/species/species //Contains icon generation and language information, set during New().
@@ -61,8 +61,6 @@
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
 	var/obj/item/s_store = null
-
-	var/icon/stand_icon = null
 
 	var/voice
 
@@ -123,7 +121,7 @@
 	//moved from IDs to prevent some exploits and to make points more flexible
 	var/marine_points = MARINE_TOTAL_BUY_POINTS
 	var/marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
-	var/marine_buy_flags = MARINE_CAN_BUY_ALL
+	var/marine_buyable_categories = MARINE_CAN_BUY_ALL
 
 	var/spawned_corpse = FALSE // For the corpse spawner
 	//taken from blood.dm
@@ -159,9 +157,6 @@
 	throw_range = 4 // Humans can't be thrown that far
 
 	var/datum/action/human_action/activable/selected_ability
-
-	/// misc human flags
-	var/flags_human_misc = 0
 
 	///list of weakrefs of recently dropped objects
 	var/list/remembered_dropped_objects = list()

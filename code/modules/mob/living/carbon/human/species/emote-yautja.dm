@@ -89,15 +89,18 @@
 	cooldown = 120 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/yautja/loadroar/get_sound(mob/living/user)
+/datum/emote/living/carbon/human/yautja/loudroar/get_sound(mob/living/user)
 	return pick('sound/voice/pred_roar4.ogg', 'sound/voice/pred_roar5.ogg')
 
 /datum/emote/living/carbon/human/yautja/loudroar/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
+	if(!.)
+		return
 
 	for(var/mob/current_mob as anything in get_mobs_in_z_level_range(get_turf(user), 18) - user)
 		var/relative_dir = get_dir(current_mob, user)
-		to_chat(current_mob, SPAN_HIGHDANGER("You hear a loud roar coming from the [dir2text(relative_dir)]!"))
+		var/final_dir = dir2text(relative_dir)
+		to_chat(current_mob, SPAN_HIGHDANGER("You hear a loud roar coming from [final_dir ? "the [final_dir]" : "nearby"]!"))
 
 /datum/emote/living/carbon/human/yautja/turnaround
 	key = "turnaround"
@@ -134,4 +137,9 @@
 /datum/emote/living/carbon/human/yautja/overthere
 	key = "overthere"
 	sound = 'sound/voice/pred_over_there.ogg'
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/carbon/human/yautja/uglyfreak
+	key = "uglyfreak"
+	sound = 'sound/voice/pred_ugly_freak.ogg'
 	emote_type = EMOTE_AUDIBLE

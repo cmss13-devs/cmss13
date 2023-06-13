@@ -38,6 +38,7 @@
 
 /obj/structure/machinery/optable/Destroy()
 	QDEL_NULL(anes_tank)
+	QDEL_NULL(computer)
 	. = ..()
 
 /obj/structure/machinery/optable/initialize_pass_flags(datum/pass_flags_container/PF)

@@ -664,10 +664,19 @@
 /datum/recipe/waffles
 	reagents = list("sugar" = 10)
 	items = list(
-		/obj/item/reagent_container/food/snacks/dough,
-		/obj/item/reagent_container/food/snacks/dough,
+		/obj/item/reagent_container/food/snacks/doughslice,
+		/obj/item/reagent_container/food/snacks/doughslice,
 	)
 	result = /obj/item/reagent_container/food/snacks/waffles
+
+/datum/recipe/pancakes
+	reagents = list("milk" = 5)
+	items = list(
+		/obj/item/reagent_container/food/snacks/doughslice,
+		/obj/item/reagent_container/food/snacks/doughslice,
+		/obj/item/reagent_container/food/snacks/doughslice,
+	)
+	result = /obj/item/reagent_container/food/snacks/pancakes
 
 /datum/recipe/donkpocket
 	items = list(
@@ -704,7 +713,7 @@
 /datum/recipe/muffin
 	reagents = list("milk" = 5, "sugar" = 5)
 	items = list(
-		/obj/item/reagent_container/food/snacks/dough,
+		/obj/item/reagent_container/food/snacks/doughslice,
 	)
 	result = /obj/item/reagent_container/food/snacks/muffin
 
@@ -802,7 +811,7 @@
 /datum/recipe/cookie
 	reagents = list("milk" = 5, "sugar" = 5)
 	items = list(
-		/obj/item/reagent_container/food/snacks/dough,
+		/obj/item/reagent_container/food/snacks/doughslice,
 		/obj/item/reagent_container/food/snacks/chocolatebar,
 	)
 	result = /obj/item/reagent_container/food/snacks/cookie
@@ -923,7 +932,7 @@
 /datum/recipe/rofflewaffles
 	reagents = list("psilocybin" = 5, "sugar" = 10)
 	items = list(
-		/obj/item/reagent_container/food/snacks/dough,
+		/obj/item/reagent_container/food/snacks/doughslice,
 	)
 	result = /obj/item/reagent_container/food/snacks/rofflewaffles
 

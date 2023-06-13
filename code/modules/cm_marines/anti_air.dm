@@ -23,6 +23,12 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	if(!almayer_aa_cannon)
 		almayer_aa_cannon = src
 
+/obj/structure/anti_air_cannon/Destroy()
+	. = ..()
+	if(almayer_aa_cannon == src)
+		almayer_aa_cannon = null
+		message_admins("Reference to almayer_aa_cannon is lost!")
+
 /obj/structure/anti_air_cannon/ex_act()
 	return
 
@@ -36,7 +42,9 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	dir = WEST
 	flags_atom = ON_BORDER|CONDUCT|FPRINT
 
-	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_BRIDGE)
+	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_COMMAND)
+	unacidable = TRUE
+	unslashable = TRUE
 
 /obj/structure/machinery/computer/aa_console/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -100,11 +108,11 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 			if(!(almayer_aa_cannon.protecting_section in almayer_ship_sections))
 				almayer_aa_cannon.protecting_section = ""
 				return
-			message_staff("[key_name(usr)] has set the AA to [html_encode(almayer_aa_cannon.protecting_section)].")
+			message_admins("[key_name(usr)] has set the AA to [html_encode(almayer_aa_cannon.protecting_section)].")
 			. = TRUE
 		if("deactivate")
 			almayer_aa_cannon.protecting_section = ""
-			message_staff("[key_name(usr)] has deactivated the AA cannon.")
+			message_admins("[key_name(usr)] has deactivated the AA cannon.")
 			. = TRUE
 
 	add_fingerprint(usr)

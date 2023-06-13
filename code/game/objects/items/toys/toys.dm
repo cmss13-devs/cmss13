@@ -131,7 +131,7 @@
 	w_class = SIZE_TINY
 	attack_verb = list("attacked", "coloured")
 	black_market_value = 5
-	var/colour = "#FF0000" //RGB
+	var/crayon_color = "#FF0000" //RGB
 	var/shadeColour = "#220000" //RGB
 	var/uses = 30 //0 for unlimited uses
 	var/instant = 0
@@ -321,48 +321,48 @@
 
 /obj/item/toy/therapy_red
 	name = "red therapy doll"
-	desc = "A toy for therapeutic and recreational purposes. This one is red."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles. This one is red."
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "therapyred"
 	item_state = "egg4" // It's the red egg in items_left/righthand
 	w_class = SIZE_TINY
 
 /obj/item/toy/therapy_purple
 	name = "purple therapy doll"
-	desc = "A toy for therapeutic and recreational purposes. This one is purple."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles. This one is purple."
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "therapypurple"
 	item_state = "egg1" // It's the magenta egg in items_left/righthand
 	w_class = SIZE_TINY
 
 /obj/item/toy/therapy_blue
 	name = "blue therapy doll"
-	desc = "A toy for therapeutic and recreational purposes. This one is blue."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles. This one is blue."
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "therapyblue"
 	item_state = "egg2" // It's the blue egg in items_left/righthand
 	w_class = SIZE_TINY
 
 /obj/item/toy/therapy_yellow
 	name = "yellow therapy doll"
-	desc = "A toy for therapeutic and recreational purposes. This one is yellow."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles. This one is yellow."
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "therapyyellow"
 	item_state = "egg5" // It's the yellow egg in items_left/righthand
 	w_class = SIZE_TINY
 
 /obj/item/toy/therapy_orange
 	name = "orange therapy doll"
-	desc = "A toy for therapeutic and recreational purposes. This one is orange."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles. This one is orange."
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "therapyorange"
 	item_state = "egg4" // It's the red one again, lacking an orange item_state and making a new one is pointless
 	w_class = SIZE_TINY
 
 /obj/item/toy/therapy_green
 	name = "green therapy doll"
-	desc = "A toy for therapeutic and recreational purposes. This one is green."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles. This one is green."
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "therapygreen"
 	item_state = "egg3" // It's the green egg in items_left/righthand
 	w_class = SIZE_TINY
@@ -397,7 +397,7 @@
 
 /obj/item/toy/dice
 	name = "d6"
-	desc = "A dice with six sides."
+	desc = "A die with six sides."
 	icon = 'icons/obj/items/dice.dmi'
 	icon_state = "d66"
 	w_class = SIZE_TINY
@@ -406,11 +406,11 @@
 
 /obj/item/toy/dice/Initialize()
 	. = ..()
-	icon_state = "[name][rand(sides)]"
+	icon_state = "[name][rand(1, sides)]"
 
 /obj/item/toy/dice/d20
 	name = "d20"
-	desc = "A dice with twenty sides."
+	desc = "A die with twenty sides."
 	icon_state = "d2020"
 	sides = 20
 
@@ -463,21 +463,38 @@
 	w_class = SIZE_TINY
 	icon_state = "farwaplush"
 	black_market_value = 25
-	var/last_hug_time
+	COOLDOWN_DECLARE(last_hug_time)
 
 /obj/item/toy/farwadoll/attack_self(mob/user)
 	..()
 
-	if(world.time > last_hug_time)
+	if(COOLDOWN_FINISHED(src, last_hug_time))
 		user.visible_message(SPAN_NOTICE("[user] hugs [src]! How cute! "), \
 							SPAN_NOTICE("You hug [src]. Dawwww... "))
-		last_hug_time = world.time + 50 //5 second cooldown
+		COOLDOWN_START(src, last_hug_time, 5 SECONDS)
 
 /obj/item/toy/farwadoll/pred
 	name = "strange plush doll"
 	desc = "A plush doll depicting some sort of tall humanoid biped..?"
 	w_class = SIZE_TINY
 	icon_state = "predplush"
+
+/obj/item/toy/plushie_cade
+	name = "plushie barricade"
+	desc = "Great for squeezing whenever you're scared. Or lightly hurt. Or in any other situation."
+	icon_state = "plushie_cade"
+	item_state = "plushie_cade"
+	w_class = SIZE_SMALL
+	COOLDOWN_DECLARE(last_hug_time)
+
+/obj/item/toy/plushie_cade/attack_self(mob/user)
+	..()
+
+	if(COOLDOWN_FINISHED(src, last_hug_time))
+		user.visible_message(SPAN_NOTICE("[user] hugs [src] tightly!"), SPAN_NOTICE("You hug [src]. You feel safe."))
+		playsound(user, "plush", 25, TRUE)
+		COOLDOWN_START(src, last_hug_time, 2.5 SECONDS)
+
 
 /obj/item/computer3_part
 	name = "computer part"
@@ -509,7 +526,8 @@
 							/obj/item/toy/prize/odysseus = 1,
 							/obj/item/toy/prize/phazon = 1,
 							/obj/item/clothing/shoes/slippers = 1,
-							/obj/item/clothing/shoes/slippers_worn = 1
+							/obj/item/clothing/shoes/slippers_worn = 1,
+							/obj/item/clothing/head/collectable/tophat/super = 1,
 							)
 
 /obj/item/toy/festivizer

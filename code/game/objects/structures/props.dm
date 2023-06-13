@@ -152,8 +152,8 @@
 		var/obj/item/tool/match/M = W
 		if(M.heat_source)
 			L = 1
-	else if(istype(W, /obj/item/weapon/melee/energy/sword))
-		var/obj/item/weapon/melee/energy/sword/S = W
+	else if(istype(W, /obj/item/weapon/energy/sword))
+		var/obj/item/weapon/energy/sword/S = W
 		if(S.active)
 			L = 1
 	else if(istype(W, /obj/item/device/assembly/igniter))
@@ -265,7 +265,6 @@
 
 /obj/structure/prop/mech/mech_parts
 	name = "mecha part"
-	icon_state = "blank"
 	flags_atom = FPRINT|CONDUCT
 
 /obj/structure/prop/mech/mech_parts/chassis
@@ -303,7 +302,7 @@
 
 /obj/structure/prop/mech/mech_parts/chassis/gygax
 	name = "Gygax Chassis"
-	icon_state = "gygas_chassis"
+	icon_state = "gygax_chassis"
 
 /obj/structure/prop/mech/mech_parts/part/gygax_torso
 	name="Gygax Torso"
@@ -333,13 +332,13 @@
 	name="Gygax Right Leg"
 	icon_state = "gygax_r_leg"
 
-/obj/structure/prop/mech/mech_parts/part/gygax_armour
-	name="Gygax Armour Plates"
-	icon_state = "gygax_armour"
+/obj/structure/prop/mech/mech_parts/part/gygax_armor
+	name="Gygax Armor Plates"
+	icon_state = "gygax_armor"
 
 /obj/structure/prop/mech/mech_parts/chassis/durand
 	name = "Durand Chassis"
-	icon_state = "gygas_chassis"
+	icon_state = "durand_chassis"
 
 /obj/structure/prop/mech/mech_parts/part/durand_torso
 	name="Durand Torso"
@@ -365,9 +364,9 @@
 	name="Durand Right Leg"
 	icon_state = "durand_r_leg"
 
-/obj/structure/prop/mech/mech_parts/part/durand_armour
-	name="Durand Armour Plates"
-	icon_state = "durand_armour"
+/obj/structure/prop/mech/mech_parts/part/durand_armor
+	name="Durand Armor Plates"
+	icon_state = "durand_armor"
 
 /obj/structure/prop/mech/mech_parts/chassis/firefighter
 	name = "Firefighter Chassis"
@@ -375,6 +374,7 @@
 
 /obj/structure/prop/mech/mech_parts/chassis/phazon
 	name = "Phazon Chassis"
+	icon_state = "phazon_chassis"
 
 /obj/structure/prop/mech/mech_parts/part/phazon_torso
 	name="Phazon Torso"
@@ -400,9 +400,13 @@
 	name="Phazon Right Leg"
 	icon_state = "phazon_r_leg"
 
+/obj/structure/prop/mech/mech_parts/part/phazon_armor_plates
+	name="Phazon Armor Plates"
+	icon_state = "phazon_armor"
+
 /obj/structure/prop/mech/mech_parts/chassis/odysseus
 	name = "Odysseus Chassis"
-	icon_state = "gygas_chassis"
+	icon_state = "odysseus_chassis"
 
 /obj/structure/prop/mech/mech_parts/part/odysseus_head
 	name="Odysseus Head"
@@ -432,6 +436,10 @@
 	name="Odysseus Right Leg"
 	desc="A Odysseus right leg. Contains somewhat complex servodrives and balance maintaining systems."
 	icon_state = "odysseus_r_leg"
+
+/obj/structure/prop/mech/mech_parts/part/odysseus_armor_plates
+	name="Odysseus Armor Plates"
+	icon_state = "odysseus_armor"
 
 //Use these to replace non-functional machinery 'props' around maps from bay12
 
@@ -566,7 +574,7 @@
 	icon_state = "cash_register_broken_open"
 
 /obj/structure/prop/cash_register/off
-	icon_state = "cash_registern_off"
+	icon_state = "cash_register_off"
 
 /obj/structure/prop/cash_register/off/open
 	icon_state = "cash_register_off_open"
@@ -611,9 +619,11 @@
 	name = "non-functional hatch"
 	desc = "You'll need more than a prybar for this one."
 	icon = 'icons/obj/structures/machinery/bolt_target.dmi'
+	icon_state = "closed"
 
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal
 	icon = 'icons/obj/structures/machinery/bolt_terminal.dmi'
+	icon_state = "closed"
 
 /obj/structure/prop/invuln/dropship_parts //for TG shuttle system
 	density = TRUE
@@ -626,8 +636,8 @@
 
 /obj/structure/prop/invuln/dropship_parts/lifeboat
 	name = "Lifeboat"
+	icon_state = ""
 	icon = 'icons/turf/lifeboat.dmi'
-
 
 /obj/structure/prop/brazier
 	name = "brazier"
@@ -635,16 +645,75 @@
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "brazier"
 	density = TRUE
+	health = 150
+	luminosity = 6
+
+/obj/structure/prop/brazier/Destroy()
+	SetLuminosity(0)
+	return ..()
 
 /obj/structure/prop/brazier/Initialize()
 	. = ..()
-	SetLuminosity(6)
+	if(luminosity)
+		SetLuminosity(luminosity)
+
+/obj/structure/prop/brazier/frame
+	name = "empty brazier"
+	desc = "An empty brazier."
+	icon_state = "brazier_frame"
+	luminosity = 0
+
+/obj/structure/prop/brazier/frame/attackby(obj/item/hit_item, mob/user)
+	if(!istype(hit_item, /obj/item/stack/sheet/wood))
+		return ..()
+	var/obj/item/stack/wooden_boards = hit_item
+	if(wooden_boards.amount < 5)
+		to_chat(user, SPAN_WARNING("Not enough wood!"))
+		return
+	wooden_boards.use(5)
+	user.visible_message(SPAN_NOTICE("[user] fills the brazier with wood."))
+	new /obj/structure/prop/brazier/frame_woodened(loc)
+	qdel(src)
+
+/obj/structure/prop/brazier/frame_woodened
+	name = "empty full brazier"
+	desc = "An empty brazier. Yet it's also full. What???  Use something hot to ignite it, like a welding tool."
+	icon_state = "brazier_frame_filled"
+	luminosity = 0
+
+/obj/structure/prop/brazier/frame_woodened/attackby(obj/item/hit_item, mob/user)
+	if(!hit_item.heat_source)
+		return ..()
+	user.visible_message(SPAN_NOTICE("[user] ignites the brazier with [hit_item]."))
+	new /obj/structure/prop/brazier(loc)
+	qdel(src)
 
 /obj/structure/prop/brazier/torch
 	name = "torch"
 	desc = "It's a torch."
 	icon_state = "torch"
 	density = FALSE
+	luminosity = 5
+
+/obj/structure/prop/brazier/torch/frame
+	name = "unlit torch"
+	desc = "It's a torch, but it's not lit.  Use something hot to ignite it, like a welding tool."
+	icon_state = "torch_frame"
+	luminosity = 0
+
+/obj/structure/prop/brazier/torch/frame/attackby(obj/item/hit_item, mob/user)
+	if(!hit_item.heat_source)
+		return ..()
+	user.visible_message(SPAN_NOTICE("[user] ignites the torch with [hit_item]."))
+	new /obj/structure/prop/brazier/torch(loc)
+	qdel(src)
+
+/obj/item/prop/torch_frame
+	name = "unlit torch"
+	icon = 'icons/obj/structures/structures.dmi'
+	desc = "It's a torch, but it's not lit or placed down. Click on a wall to place it."
+	icon_state = "torch_frame"
+	luminosity = 0
 
 //ICE COLONY PROPS
 //Thematically look to Blackmesa's Xen levels. Generic science-y props n' stuff.
@@ -671,7 +740,7 @@
 	icon_state = "small_wire"
 
 /obj/structure/prop/ice_colony/poly_kevlon_roll
-	name = "poly_kevlon roll"
+	name = "plastic roll"
 	desc = "A big roll of poly-kevlon plastic used in temporary shelter construction."
 	icon_state = "kevlon_roll"
 	anchored = FALSE
@@ -808,6 +877,19 @@
 	desc = "It contains non-potable water. A label on the side instructs you to boil before consumption. It smells vaguely like the showers on the Almayer."
 	icon_state = "watertank_old"
 
+/obj/structure/prop/broken_arcade
+	desc = "You can't see anything behind the screen, it looks half human and half machine."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "arcadeb"
+	name = "Spirit Phone, The Game, The Movie: II"
+
+/obj/structure/prop/maintenance_hatch
+	name = "\improper Maintenance Hatch"
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "hatchclosed"
+	desc = "Looks like it's rusted shut. Creepy."
+	layer = HATCH_LAYER
+
 //INVULNERABLE PROPS
 
 /obj/structure/prop/invuln
@@ -882,6 +964,61 @@
 	icon_state = "orange_trim"//instance icons
 	layer = ABOVE_MOB_LAYER
 	density = FALSE
+
+/obj/structure/prop/invuln/remote_console_pod
+	name = "Remote Console Pod"
+	desc = "A drop pod used to launch remote piloting equipment to USCM areas of operation"
+	icon = 'icons/obj/structures/droppod_32x64.dmi'
+	icon_state = "techpod_open"
+	layer = DOOR_CLOSED_LAYER
+
+/obj/structure/prop/invuln/overhead_pipe
+	name = "overhead pipe segment"
+	desc = ""
+	icon = 'icons/obj/pipes/pipes.dmi'
+	icon_state = "intact-scrubbers"
+	projectile_coverage = 0
+	density = FALSE
+	layer = RIPPLE_LAYER
+
+/obj/structure/prop/invuln/overhead_pipe/Initialize(mapload)
+	. = ..()
+	desc = "This is a section of the pipe network that carries water (and less pleasant fluids) throughout the [is_mainship_level(z) ? copytext(MAIN_SHIP_NAME, 5) : "colony"]."
+
+///Decorative fire.
+/obj/structure/prop/invuln/fire
+	name = "fire"
+	desc = "That isn't going out any time soon."
+	color = "#FF7700"
+	icon = 'icons/effects/fire.dmi'
+	icon_state = "dynamic_2"
+	layer = MOB_LAYER
+	luminosity = 3
+
+/obj/structure/prop/invuln/fusion_reactor
+	name = "\improper S-52 fusion reactor"
+	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power.  Also produces a large amount of heat."
+	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
+	icon_state = "off-0"
+
+/obj/structure/prop/invuln/pipe_water
+	name = "pipe water"
+	desc = ""
+	icon = 'icons/obj/structures/props/watercloset.dmi'
+	icon_state = "water"
+	density = 0
+
+/obj/structure/prop/invuln/pipe_water/Initialize(mapload)
+	. = ..()
+	desc = "The [is_mainship_level(z) ? copytext(MAIN_SHIP_NAME, 5) : "colony"] has sprung a leak!"
+
+/obj/structure/prop/invuln/lattice_prop
+	desc = "A lightweight support lattice."
+	name = "lattice"
+	icon = 'icons/obj/structures/props/smoothlattice.dmi'
+	icon_state = "lattice0"
+	density = FALSE
+	layer = RIPPLE_LAYER
 
 /obj/structure/prop/wooden_cross
 	name = "wooden cross"

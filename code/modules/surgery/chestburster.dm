@@ -36,6 +36,9 @@
 		/obj/item/shard = SURGERY_TOOL_MULT_AWFUL,
 	)
 	time = 5 SECONDS
+	preop_sound = 'sound/surgery/scalpel1.ogg'
+	success_sound = 'sound/surgery/scalpel2.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/cut_larval_pseudoroots/proc/larva_blood_spray(mob/living/carbon/human/user, mob/living/carbon/human/patient) //Mostly check_blood_splash().
 	var/i = 0 //Tally up our victims.
@@ -54,7 +57,7 @@
 			if(prob(60) && !victim.stat && victim.pain.feels_pain)
 				INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream") //Topkek
 			victim.take_limb_damage(0, 12) //Sizzledam! This automagically burns a random existing body part.
-			victim.add_blood("#dffc00", BLOOD_BODY)
+			victim.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
 			playsound(victim, "acid_sizzle", 25, TRUE)
 			animation_flash_color(victim, "#FF0000") //pain hit flicker
 
@@ -116,6 +119,9 @@
 		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_SUBSTITUTE
 		)
 	time = 6 SECONDS
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/organ2.ogg'
+	failure_sound = 'sound/effects/acid_sizzle2.ogg'
 
 /datum/surgery_step/remove_larva/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool)

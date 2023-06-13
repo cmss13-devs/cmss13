@@ -4,7 +4,7 @@
 	icon_state = "sand_1"//editor icon
 	is_groundmap_turf = TRUE
 	var/icon_prefix = "sand"
-	var/layer_name = new/list("layer 1", "layer2", "layer 3", "layer 4", "layer 5")
+	var/layer_name = list("layer 1", "layer2", "layer 3", "layer 4", "layer 5")
 	var/variant = 0
 	var/variant_prefix_name = ""
 
@@ -315,6 +315,9 @@
 	layer_name = list("wind blown dirt", "volcanic plate rock", "volcanic plate and rock", "this layer does not exist")
 	icon = 'icons/turf/floors/auto_shale.dmi'
 	icon_prefix = "shale"
+
+/turf/open/auto_turf/shale/is_weedable()
+	return SEMI_WEEDABLE
 
 /turf/open/auto_turf/shale/get_dirt_type()
 	return DIRT_TYPE_SHALE

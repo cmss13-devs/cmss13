@@ -33,6 +33,11 @@
 	connect_to_network() //Should start with a cable piece underneath, if it doesn't, something's messed up in mapping
 	start_processing()
 
+/obj/structure/machinery/power/fusion_engine/Destroy()
+	QDEL_NULL(fusion_cell)
+	. = ..()
+
+
 /obj/structure/machinery/power/fusion_engine/power_change()
 	return
 

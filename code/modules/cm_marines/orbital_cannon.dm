@@ -46,6 +46,13 @@ var/list/ob_type_fuel_requirements
 	tray = O
 	tray.linked_ob = src
 
+/obj/structure/orbital_cannon/Destroy()
+	QDEL_NULL(tray)
+	if(almayer_orbital_cannon == src)
+		almayer_orbital_cannon = null
+		message_admins("Reference to almayer_orbital_cannon is lost!")
+	return ..()
+
 /obj/structure/orbital_cannon/ex_act()
 	return
 
@@ -187,6 +194,8 @@ var/list/ob_type_fuel_requirements
 	flick("OBC_firing", src)
 
 	ob_cannon_busy = TRUE
+
+	fire_cooldown_time = (100 + 400 * GLOB.ship_alt) SECONDS
 
 	COOLDOWN_START(src, ob_firing_cooldown, fire_cooldown_time)
 	COOLDOWN_START(src, ob_chambering_cooldown, chamber_cooldown_time)
@@ -351,7 +360,7 @@ var/list/ob_type_fuel_requirements
 
 	var/cancellation_token = rand(0,32000)
 	orbital_cannon_cancellation["[cancellation_token]"] = src
-	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
+	message_admins(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
 
 	var/relative_dir
 	for(var/mob/M in range(30, target))
@@ -506,6 +515,9 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_console"
 	dir = WEST
 	flags_atom = ON_BORDER|CONDUCT|FPRINT
+
+	unacidable = TRUE
+	unslashable = TRUE
 
 /obj/structure/machinery/computer/orbital_cannon_console/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

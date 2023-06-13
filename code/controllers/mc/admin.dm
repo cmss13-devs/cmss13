@@ -100,4 +100,4 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 		to_chat(usr, "RoleAuthority not found!")
 		return
 	debug_variables(RoleAuthority)
-	message_staff("Admin [key_name_admin(usr)] is debugging the Role Authority.")
+	message_admins("Admin [key_name_admin(usr)] is debugging the Role Authority.")

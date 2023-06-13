@@ -61,7 +61,7 @@
 			return
 
 		cell_explosion(A, 150, 100, , create_cause_data("divine intervention"))
-		message_staff("[key_name(src, TRUE)] has exploded [A]!")
+		message_admins("[key_name(src, TRUE)] has exploded [A]!")
 	if(href_list[VV_HK_EMPULSE])
 		if(!check_rights(R_DEBUG))
 			return

@@ -7,6 +7,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action
 	name = "lever-action rifle"
 	desc = "Welcome to the Wild West!\nThis gun is levered via Unique-Action, but it has a bonus feature: Hitting a target directly will grant you a fire rate and damage buff for your next shot during a short interval. Combo precision hits for massive damage."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "r4t-placeholder" //placeholder for a 'base' leveraction
 	item_state = "r4t-placeholder"
 	w_class = SIZE_LARGE
@@ -79,7 +80,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(one_hand_lever && !(flags_gun_lever_action & DANGEROUS_TO_ONEHAND_LEVER))
 		return
 	else if(one_hand_lever) //base marines should never be able to easily pass the skillcheck, only specialists and etc.
-		if(prob(cur_onehand_chance) || skillcheck(human_user, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
+		if(prob(cur_onehand_chance) || skillcheck(human_user, SKILL_FIREARMS, SKILL_FIREARMS_EXPERT))
 			cur_onehand_chance = cur_onehand_chance - 20 //gets steadily worse if you spam it
 			return
 		else
@@ -335,6 +336,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	map_specific_decoration = TRUE
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_AMMO_COUNTER
 	flags_gun_lever_action = MOVES_WHEN_LEVERING|DANGEROUS_TO_ONEHAND_LEVER
+	civilian_usable_override = TRUE
 
 /obj/item/weapon/gun/lever_action/r4t/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 21, "under_x" = 24, "under_y" = 16, "stock_x" = 15, "stock_y" = 14)
@@ -349,8 +351,9 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/xm88
 	name = "\improper XM88 heavy rifle"
-	desc = "An experimental man-portable anti-material rifle chambered in .458 SOCOM. It must be manually chambered for every shot.\nIt has a special property - when you obtain multiple direct hits in a row, its armour penetration and damage will increase."
+	desc = "An experimental man-portable anti-material rifle chambered in .458 SOCOM. It must be manually chambered for every shot.\nIt has a special property - when you obtain multiple direct hits in a row, its armor penetration and damage will increase."
 	desc_lore = "Originally developed by ARMAT Battlefield Systems for the government of the state of Greater Brazil for use in the Favela Wars (2161 - Ongoing) against mechanized infantry. The platform features an onboard computerized targeting system, sensor array, and an electronic autoloader; these features work in tandem to reduce and render inert armor on the users target with successive hits. The Almayer was issued a small amount of XM88s while preparing for Operation Swamp Hopper with the USS Nan-Shan."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi' // overriden with camos anyways
 	icon_state = "boomslang"
 	item_state = "boomslang"
 	fire_sound = 'sound/weapons/gun_boomslang_fire.ogg'
@@ -403,23 +406,39 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/xm88/wield(mob/user)
 	. = ..()
 
-	user.client?.mouse_pointer_icon = get_mouse_pointer(floating_penetration)
-	RegisterSignal(user, COMSIG_MOB_FIRED_GUN, PROC_REF(update_fired_mouse_pointer))
+	RegisterSignal(src, COMSIG_ITEM_ZOOM, PROC_REF(scope_on))
+	RegisterSignal(src, COMSIG_ITEM_UNZOOM, PROC_REF(scope_off))
+
+/obj/item/weapon/gun/lever_action/xm88/proc/scope_on(atom/source, mob/current_user)
+	SIGNAL_HANDLER
+
+	RegisterSignal(current_user, COMSIG_MOB_FIRED_GUN, PROC_REF(update_fired_mouse_pointer))
+	update_mouse_pointer(current_user)
+
+/obj/item/weapon/gun/lever_action/xm88/proc/scope_off(atom/source, mob/current_user)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(current_user, COMSIG_MOB_FIRED_GUN)
+	current_user.client?.mouse_pointer_icon = null
 
 /obj/item/weapon/gun/lever_action/xm88/unwield(mob/user)
 	. = ..()
 
 	user.client?.mouse_pointer_icon = null
-	UnregisterSignal(user, COMSIG_MOB_FIRED_GUN)
+	UnregisterSignal(src, list(COMSIG_ITEM_ZOOM, COMSIG_ITEM_UNZOOM))
 
 /obj/item/weapon/gun/lever_action/xm88/proc/update_fired_mouse_pointer(mob/user)
 	SIGNAL_HANDLER
+
+	if(!user.client?.prefs.custom_cursors)
+		return
 
 	user.client?.mouse_pointer_icon = get_fired_mouse_pointer(floating_penetration)
 	addtimer(CALLBACK(src, PROC_REF(update_mouse_pointer), user), 0.4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_CLIENT_TIME)
 
 /obj/item/weapon/gun/lever_action/xm88/proc/update_mouse_pointer(mob/user)
-	user.client?.mouse_pointer_icon = get_mouse_pointer(floating_penetration)
+	if(user.client?.prefs.custom_cursors)
+		user.client?.mouse_pointer_icon = get_mouse_pointer(floating_penetration)
 
 /obj/item/weapon/gun/lever_action/xm88/proc/get_mouse_pointer(level)
 	switch(level)

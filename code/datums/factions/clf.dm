@@ -88,7 +88,7 @@
 
 		list("UTILITIES", 0, null, null, null),
 		list("Type 80 Bayonet", 3, /obj/item/attachable/bayonet/upp, null, VENDOR_ITEM_REGULAR),
-		list("Lunge Mine", 120, /obj/item/weapon/melee/twohanded/lungemine, null, VENDOR_ITEM_REGULAR),
+		list("Lunge Mine", 120, /obj/item/weapon/twohanded/lungemine, null, VENDOR_ITEM_REGULAR),
 		list("Melee Weapon (Random)", 7, /obj/effect/essentials_set/random/clf_melee, null, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", 3, /obj/item/storage/box/m94, null, VENDOR_ITEM_RECOMMENDED),
 		list("Smoke Grenade", 7, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR)
@@ -143,11 +143,11 @@
 		list("Tiny Pistol Magazine (.22)", 40, /obj/item/ammo_magazine/pistol/holdout, VENDOR_ITEM_REGULAR),
 
 		list("MELEE WEAPONS", -1, null, null),
-		list("Baseball Bat", 10, /obj/item/weapon/melee/baseballbat, VENDOR_ITEM_REGULAR),
-		list("Baseball Bat (Metal)", 5, /obj/item/weapon/melee/baseballbat/metal, VENDOR_ITEM_REGULAR),
-		list("Fireaxe", 5, /obj/item/weapon/melee/twohanded/fireaxe, VENDOR_ITEM_REGULAR),
+		list("Baseball Bat", 10, /obj/item/weapon/baseballbat, VENDOR_ITEM_REGULAR),
+		list("Baseball Bat (Metal)", 5, /obj/item/weapon/baseballbat/metal, VENDOR_ITEM_REGULAR),
+		list("Fireaxe", 5, /obj/item/weapon/twohanded/fireaxe, VENDOR_ITEM_REGULAR),
 		list("Hatchet", 15, /obj/item/tool/hatchet, VENDOR_ITEM_REGULAR),
-		list("Spear", 10, /obj/item/weapon/melee/twohanded/spear, VENDOR_ITEM_REGULAR),
+		list("Spear", 10, /obj/item/weapon/twohanded/spear, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", -1, null, null),
 		list("M94 Marking Flare Pack", 20, /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),

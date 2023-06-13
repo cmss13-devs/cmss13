@@ -2,6 +2,7 @@
     "map_name": "New Varadero",
     "map_path": "map_files/New_Varadero",
     "map_file": "New_Varadero.dmm",
+    "webmap_url": "NewVaradero",
 
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/lv",
@@ -33,6 +34,7 @@
         "xeno_hive_charlie": 0,
         "xeno_hive_delta": 0
     },
+    "camouflage": "jungle",
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

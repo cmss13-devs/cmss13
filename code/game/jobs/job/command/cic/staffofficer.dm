@@ -33,4 +33,5 @@ AddTimelock(/datum/job/command/bridge, list(
 
 /obj/effect/landmark/start/bridge
 	name = JOB_SO
+	icon_state = "so_spawn"
 	job = /datum/job/command/bridge

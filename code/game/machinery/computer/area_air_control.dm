@@ -1,7 +1,7 @@
 /obj/structure/machinery/computer/area_atmos
 	name = "Area Air Control"
 	desc = "A computer used to control the stationary scrubbers and pumps in the area."
-	icon_state = "area_atmos"
+	icon_state = "atmos"
 	circuit = /obj/item/circuitboard/computer/area_atmos
 
 	var/list/connectedscrubbers = new()

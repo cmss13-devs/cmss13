@@ -17,6 +17,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/cmd_admin_subtle_message,
 	/client/proc/cmd_admin_object_narrate,
 	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
+	/client/proc/cmd_admin_create_bioscan,
 	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
 	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
 	/client/proc/cmd_admin_create_AI_apollo_report,  //Allows creation of IC reports to the Apollo subprocessor, transmitting to Working Joes and Maintenance Drones.
@@ -48,6 +49,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/vehicle_panel,
 	/client/proc/in_view_panel, /*allows application of aheal/sleep in an AOE*/
 	/client/proc/toggle_lz_resin,
+	/client/proc/strip_all_in_view,
 	/client/proc/rejuvenate_all_in_view,
 	/client/proc/rejuvenate_all_humans_in_view,
 	/client/proc/rejuvenate_all_revivable_humans_in_view,
@@ -63,16 +65,17 @@ var/list/admin_verbs_default = list(
 	/client/proc/clear_mutineers,
 	/datum/admins/proc/directnarrateall,
 	/datum/admins/proc/subtlemessageall,
-	/datum/admins/proc/alertall
+	/datum/admins/proc/alertall,
+	/datum/admins/proc/imaginary_friend,
 	)
 
 var/list/admin_verbs_admin = list(
 	/datum/admins/proc/togglejoin, /*toggles whether people can join the current game*/
 	/datum/admins/proc/announce, /*priority announce something to all clients.*/
-	/datum/admins/proc/view_txt_log, /*shows the server log (diary) for today*/
+	/datum/admins/proc/view_game_log, /*shows the server game log (diary) for this round*/
+	/datum/admins/proc/view_attack_log, /*shows the server attack log for this round*/
+	/client/proc/giveruntimelog, /*allows us to give access to all runtime logs to somebody*/
 	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
-	/client/proc/giveruntimelog, /*allows us to give access to runtime logs to somebody*/
-	/client/proc/getserverlog, /*allows us to fetch server logs (diary) for other days*/
 	/client/proc/toggleprayers, /*toggles prayers on/off*/
 	/client/proc/toggle_hear_radio, /*toggles whether we hear the radio*/
 	/client/proc/event_panel,
@@ -84,15 +87,16 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_repair_multitile,
 	/datum/admins/proc/admin_force_selfdestruct,
 	/client/proc/check_round_statistics,
-	/client/proc/force_ground_shuttle,
 	/client/proc/force_teleporter,
 	/client/proc/matrix_editor,
 	/datum/admins/proc/open_shuttlepanel
 )
+
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel
 	// /client/proc/jobbans // Disabled temporarily due to 15-30 second lag spikes. Don't forget the comma in the line above when uncommenting this!
 )
+
 var/list/admin_verbs_sounds = list(
 	/client/proc/play_web_sound,
 	/client/proc/play_sound,
@@ -100,11 +104,12 @@ var/list/admin_verbs_sounds = list(
 	/client/proc/stop_sound,
 	/client/proc/cmd_admin_vox_panel
 )
+
 var/list/admin_verbs_minor_event = list(
 	/client/proc/cmd_admin_change_custom_event,
 	/datum/admins/proc/admin_force_distress,
 	/datum/admins/proc/admin_force_ERT_shuttle,
-	/client/proc/force_shuttle,
+	/client/proc/force_hijack,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
 	/client/proc/adjust_predator_round,
 	/client/proc/cmd_admin_world_narrate, /*sends text to all players with no padding*/
@@ -123,8 +128,13 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
 	/client/proc/force_event,
 	/client/proc/toggle_events,
-	/client/proc/toggle_shipside_sd
+	/client/proc/toggle_shipside_sd,
+	/client/proc/shakeshipverb,
+	/client/proc/adminpanelweapons,
+	/client/proc/adminpanelgq,
+	/client/proc/toggle_hardcore_perma
 )
+
 var/list/admin_verbs_major_event = list(
 	/client/proc/enable_event_mob_verbs,
 	/client/proc/cmd_admin_dress_all,
@@ -142,14 +152,17 @@ var/list/admin_verbs_major_event = list(
 	/client/proc/map_template_upload,
 	/client/proc/enable_podlauncher,
 	/client/proc/change_taskbar_icon,
-	/client/proc/change_weather
+	/client/proc/change_weather,
+	/client/proc/admin_blurb
 )
+
 var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_atom,
 	/client/proc/game_panel,
 	/client/proc/create_humans,
 	/client/proc/create_xenos
 )
+
 var/list/admin_verbs_server = list(
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
@@ -159,13 +172,13 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/change_ground_map,
 	/datum/admins/proc/change_ship_map,
 	/datum/admins/proc/vote_ground_map,
+	/datum/admins/proc/override_ground_map,
 	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
 	/client/proc/cmd_debug_del_all,
 	/datum/admins/proc/togglejoin,
-	/datum/admins/proc/view_txt_log
 )
+
 var/list/admin_verbs_debug = list(
-	/client/proc/getruntimelog,  /*allows us to access runtime logs to somebody*/
 	/client/proc/debug_role_authority,
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/cmd_debug_list_processing_items,
@@ -186,10 +199,16 @@ var/list/admin_verbs_debug = list(
 	/client/proc/generate_sound_queues,
 	/client/proc/sound_debug_query,
 	/client/proc/debug_game_history,
-	/client/proc/construct_env_dmm,
 	/client/proc/enter_tree,
 	/client/proc/set_tree_points,
 	/client/proc/purge_data_tab,
+	/client/proc/getserverlog, /*allows us to fetch any server logs (diary) for other days*/
+	/client/proc/getruntimelog,  /*allows us to access any runtime logs (can be granted by giveruntimelog)*/
+	/datum/admins/proc/view_game_log, /*shows the server game log (diary) for this round*/
+	/datum/admins/proc/view_runtime_log, /*shows the server runtime log for this round*/
+	/datum/admins/proc/view_href_log, /*shows the server HREF log for this round*/
+	/datum/admins/proc/view_tgui_log, /*shows the server TGUI log for this round*/
+	/client/proc/admin_blurb,
 )
 
 var/list/admin_verbs_debug_advanced = list(
@@ -217,9 +236,11 @@ var/list/admin_verbs_possess = list(
 	/client/proc/possess,
 	/client/proc/release
 )
+
 var/list/admin_verbs_permissions = list(
 	/client/proc/ToRban
 )
+
 var/list/admin_verbs_color = list(
 	/client/proc/set_ooc_color_self
 )
@@ -296,6 +317,7 @@ var/list/roundstart_mod_verbs = list(
 		add_verb(src, admin_verbs_major_event)
 	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
 		add_verb(src, /client/proc/cmd_mentor_say)
+		add_verb(src, /datum/admins/proc/imaginary_friend)
 	if(CLIENT_HAS_RIGHTS(src, R_BUILDMODE))
 		add_verb(src, /client/proc/togglebuildmodeself)
 	if(CLIENT_HAS_RIGHTS(src, R_SERVER))
@@ -363,7 +385,7 @@ var/list/roundstart_mod_verbs = list(
 	set category = "OOC.OOC"
 	set name = "OOC Text Color - Self"
 	if(!admin_holder && !donator) return
-	var/new_ooccolor = input(src, "Please select your OOC colour.", "OOC colour") as color|null
+	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color") as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = new_ooccolor
 		prefs.save_preferences()
@@ -390,18 +412,18 @@ var/list/roundstart_mod_verbs = list(
 	if(++P.warning_count >= MAX_WARNS) //uh ohhhh...you'reee iiiiin trouuuubble O:)
 		ban_unban_log_save("[ckey] warned [warned_ckey], resulting in a [AUTOBANTIME] minute autoban.")
 		if(P.owning_client)
-			message_staff("[key_name_admin(src)] has warned [ckey] resulting in a [AUTOBANTIME] minute ban.")
+			message_admins("[key_name_admin(src)] has warned [ckey] resulting in a [AUTOBANTIME] minute ban.")
 			to_chat_forced(P.owning_client, "<font color='red'><BIG><B>You have been autobanned due to a warning by [key_name_admin(P.owning_client)].</B></BIG><br>This is a temporary ban, it will be removed in [AUTOBANTIME] minutes.")
 		else
-			message_staff("[key_name_admin(src)] has warned [warned_ckey] resulting in a [AUTOBANTIME] minute ban.")
+			message_admins("[key_name_admin(src)] has warned [warned_ckey] resulting in a [AUTOBANTIME] minute ban.")
 
 		P.add_timed_ban("Autobanning due to too many formal warnings", AUTOBANTIME)
 	else
 		if(P.owning_client)
 			to_chat(P.owning_client, "<font color='red'><BIG><B>You have been formally warned by an administrator.</B></BIG><br>Further warnings will result in an autoban.</font>")
-			message_staff("[key_name_admin(src)] has warned [key_name_admin(P.owning_client)]. They have [MAX_WARNS-P.warning_count] strikes remaining.")
+			message_admins("[key_name_admin(src)] has warned [key_name_admin(P.owning_client)]. They have [MAX_WARNS-P.warning_count] strikes remaining.")
 		else
-			message_staff("[key_name_admin(src)] has warned [warned_ckey] (DC). They have [MAX_WARNS-P.warning_count] strikes remaining.")
+			message_admins("[key_name_admin(src)] has warned [warned_ckey] (DC). They have [MAX_WARNS-P.warning_count] strikes remaining.")
 
 /client/proc/give_disease(mob/T as mob in GLOB.mob_list) // -- Giacom
 	set category = "Admin.Fun"
@@ -415,7 +437,7 @@ var/list/roundstart_mod_verbs = list(
 	var/path = text2path("/datum/disease/[D]")
 	T.contract_disease(new path, 1)
 
-	message_staff("[key_name_admin(usr)] gave [key_name(T)] the disease [D].")
+	message_admins("[key_name_admin(usr)] gave [key_name(T)] the disease [D].")
 
 
 /client/proc/object_talk(msg as text) // -- TLE
@@ -551,7 +573,7 @@ var/list/roundstart_mod_verbs = list(
 	set desc = "Tells everyone about a random statistic in the round."
 	set category = "OOC"
 
-	message_staff("[key_name(usr)] announced a random fact.")
+	message_admins("[key_name(usr)] announced a random fact.")
 	SSticker.mode?.declare_fun_facts()
 
 

@@ -40,7 +40,7 @@
 	infos += P
 	info << infos
 
-	message_staff("[key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]")
+	message_admins("[key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]")
 	qdel(info)
 
 	//Updating list of keys with notes on them
@@ -63,7 +63,7 @@
 	infos.Remove(item)
 	info << infos
 
-	message_staff("[key_name_admin(usr)] deleted one of [key]'s notes.")
+	message_admins("[key_name_admin(usr)] deleted one of [key]'s notes.")
 
 	qdel(info)
 

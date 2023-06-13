@@ -4,7 +4,7 @@
 /obj/item/weapon/gun
 	name = "gun"
 	desc = "It's a gun. It's pretty terrible, though."
-	icon = 'icons/obj/items/weapons/guns/gun.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = ""
 	item_state = "gun"
 	pickup_sound = "gunequip"
@@ -221,6 +221,9 @@
 	var/list/fire_delay_group
 	var/additional_fire_group_delay = 0 // adds onto the fire delay of the above
 
+	// Set to TRUE or FALSE, it overrides the is_civilian_usable check with its value. Does nothing if null.
+	var/civilian_usable_override = null
+
 /**
  * An assoc list where the keys are fire delay group string defines
  * and the keys are when the guns of the group can be fired again
@@ -266,6 +269,28 @@
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()
 	attachable_offset = null
 
+/obj/item/weapon/gun/Destroy()
+	in_chamber = null
+	ammo = null
+	current_mag = null
+	target = null
+	last_moved_mob = null
+	if(flags_gun_features & GUN_FLASHLIGHT_ON)//Handle flashlight.
+		flags_gun_features &= ~GUN_FLASHLIGHT_ON
+		if(ismob(loc))
+			for(var/slot in attachments)
+				var/obj/item/attachable/potential_attachment = attachments[slot]
+				if(!potential_attachment)
+					continue
+				loc.SetLuminosity(0, FALSE, src)
+		else
+			SetLuminosity(0)
+	attachments = null
+	attachable_overlays = null
+	QDEL_NULL(active_attachable)
+	fa_target = null
+	GLOB.gun_list -= src
+	. = ..()
 
 /*
 * Called by the gun's New(), set the gun variables' values.
@@ -440,25 +465,6 @@
 			update_attachable(A.slot)
 
 
-/obj/item/weapon/gun/Destroy()
-	in_chamber = null
-	ammo = null
-	current_mag = null
-	target = null
-	last_moved_mob = null
-	if(flags_gun_features & GUN_FLASHLIGHT_ON)//Handle flashlight.
-		flags_gun_features &= ~GUN_FLASHLIGHT_ON
-		if(ismob(loc))
-			for(var/slot in attachments)
-				var/obj/item/attachable/R = attachments[slot]
-				if(!R) continue
-				loc.SetLuminosity(0, FALSE, src)
-		else
-			SetLuminosity(0)
-	attachments = null
-	attachable_overlays = null
-	GLOB.gun_list -= src
-	. = ..()
 
 /obj/item/weapon/gun/emp_act(severity)
 	for(var/obj/O in contents)
@@ -466,10 +472,6 @@
 
 /obj/item/weapon/gun/equipped(mob/user, slot)
 	if(flags_item & NODROP) return
-	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND)
-		stop_aim()
-		if (user.client)
-			user.update_gun_icons()
 
 	unwield(user)
 	pull_time = world.time + wield_delay
@@ -502,6 +504,8 @@
 
 /obj/item/weapon/gun/get_examine_text(mob/user)
 	. = ..()
+	if(flags_gun_features & GUN_NO_DESCRIPTION)
+		return .
 	var/dat = ""
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
 		dat += "The safety's on!<br>"
@@ -613,7 +617,10 @@
 
 	// weapon info
 
-	data["icon"] = SSassets.transport.get_asset_url("[base_gun_icon].png")
+	data["icon"] = SSassets.transport.get_asset_url("no_name.png")
+
+	if(SSassets.cache["[base_gun_icon].png"])
+		data["icon"] = SSassets.transport.get_asset_url("[base_gun_icon].png")
 
 	data["name"] = name
 	data["desc"] = desc
@@ -711,7 +718,7 @@
 	guaranteed_delay_time = world.time + WEAPON_GUARANTEED_DELAY
 	//slower or faster wield delay depending on skill.
 	if(user.skills)
-		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
+		if(user.skills.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_CIVILIAN && !is_civilian_usable(user))
 			wield_time += 3
 		else
 			wield_time -= 2*user.skills.get_skill_level(SKILL_FIREARMS)
@@ -907,8 +914,6 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 			to_chat(user, SPAN_HIGHDANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
 			click_empty(user)
 		return FALSE
-	else if(user.gun_mode && !(A in target))
-		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
 	else
 		Fire(A,user,params) //Otherwise, fire normally.
 	return TRUE
@@ -1228,7 +1233,7 @@ and you're good to go.
 		if(!able_to_fire(user))
 			return TRUE
 
-		var/ffl = " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) ([user.client ? "<a href='?priv_msg=[user.client.ckey]'>PM</a>" : "NO CLIENT"])"
+		var/ffl = " [ADMIN_JMP(user)] [ADMIN_PM(user)]"
 
 		var/obj/item/weapon/gun/revolver/current_revolver = src
 		if(istype(current_revolver) && current_revolver.russian_roulette)
@@ -1301,6 +1306,8 @@ and you're good to go.
 		return TRUE
 
 	if(EXECUTION_CHECK) //Execution
+		if(!able_to_fire(user)) //Can they actually use guns in the first place?
+			return ..()
 		user.visible_message(SPAN_DANGER("[user] puts [src] up to [attacked_mob], steadying their aim."), SPAN_WARNING("You put [src] up to [attacked_mob], steadying your aim."),null, null, CHAT_TYPE_COMBAT_ACTION)
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_HOSTILE))
 			return TRUE
@@ -1389,6 +1396,7 @@ and you're good to go.
 							SPAN_AVOIDHARM("[BP] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 				else
 					BP.ammo.on_hit_mob(attacked_mob, BP, user)
+					BP.def_zone = user.zone_selected
 					attacked_mob.bullet_act(BP)
 				qdel(BP)
 
@@ -1501,9 +1509,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 		var/next_shot
 
-		if(user && user.skills && user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
-			next_shot += FIRE_DELAY_TIER_8 //untrained humans fire more slowly.
-
 		if(active_attachable) //Underbarrel attached weapon?
 			next_shot += active_attachable.last_fired + active_attachable.attachment_firing_delay
 		else //Normal fire.
@@ -1564,7 +1569,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	// Apply any skill-based bonuses to accuracy
 	if(user && user.mind && user.skills)
 		var/skill_accuracy = 0
-		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
+		if(user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_CIVILIAN && !is_civilian_usable(user))
 			skill_accuracy = -1
 		else
 			skill_accuracy = user.skills.get_skill_level(SKILL_FIREARMS)
@@ -1638,8 +1643,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			total_scatter_angle += max(0, 2 * bullet_amt_scat * burst_scatter_mult)
 
 	if(user && user.mind && user.skills)
-		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
-			total_scatter_angle += SCATTER_AMOUNT_TIER_8
+		if(user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_CIVILIAN && !is_civilian_usable(user))
+			total_scatter_angle += SCATTER_AMOUNT_TIER_7
 		else
 			total_scatter_angle -= user.skills.get_skill_level(SKILL_FIREARMS)*SCATTER_AMOUNT_TIER_8
 
@@ -1677,7 +1682,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			total_recoil++
 
 	if(user && user.mind && user.skills)
-		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
+		if(user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_CIVILIAN && !is_civilian_usable(user))
 			total_recoil += RECOIL_AMOUNT_TIER_5
 		else
 			total_recoil -= user.skills.get_skill_level(SKILL_FIREARMS)*RECOIL_AMOUNT_TIER_5

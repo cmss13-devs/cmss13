@@ -2,6 +2,7 @@
     "map_name": "Sorokyne Strata",
     "map_path": "map_files/Sorokyne_Strata",
     "map_file": "Sorokyne_Strata.dmm",
+    "webmap_url": "Sorokyne",
     "environment_traits": {
         "COLD": true
     },
@@ -32,6 +33,7 @@
         "xeno_hive_bravo": 0,
         "xeno_hive_charlie": 70
     },
+    "camouflage": "snow",
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

@@ -52,6 +52,7 @@
 	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
+	SSround_recording.recorder.stop_tracking(src)
 	remove_from_all_mob_huds()
 	assigned_equipment_preset = null
 	GLOB.human_mob_list -= src
@@ -61,13 +62,11 @@
 	QDEL_NULL_LIST(embedded_items)
 	QDEL_LIST_ASSOC_VAL(internal_organs_by_name)
 	QDEL_NULL_LIST(limbs)
-	remove_from_all_mob_huds()
-
+	if(hud_used)
+		QDEL_NULL(hud_used)
 	. = ..()
 
 	overlays_standing = null
-	selected_ability = null
-	assigned_squad = null
 
 	//Equipment slots
 	wear_suit = null
@@ -83,6 +82,14 @@
 	r_store = null
 	l_store = null
 	s_store = null
+
+	species = null
+	limbs_to_process = null
+	brute_mod_override = null
+	burn_mod_override = null
+	assigned_squad = null
+	selected_ability = null
+	remembered_dropped_objects = null
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()
@@ -1077,6 +1084,11 @@
 		msg += "[self ? "Your" : "Their"] skin is slightly green\n"
 	if(is_bleeding())
 		msg += "[self ? "You" : "They"] have bleeding wounds on [self ? "your" : "their"] body\n"
+
+	if(!self && skillcheck(usr, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
+		for(var/datum/effects/bleeding/internal/internal_bleed in effects_list)
+			msg += "They have bloating and discoloration on their [internal_bleed.limb.display_name]\n"
+
 	if(knocked_out && stat != DEAD)
 		msg += "They seem to be unconscious\n"
 	if(stat == DEAD)
@@ -1187,7 +1199,7 @@
 	species.create_organs(src)
 
 	if(species.base_color && default_colour)
-		//Apply colour.
+		//Apply color.
 		r_skin = hex2num(copytext(species.base_color,2,4))
 		g_skin = hex2num(copytext(species.base_color,4,6))
 		b_skin = hex2num(copytext(species.base_color,6,8))
@@ -1296,7 +1308,8 @@
 		TRACKER_BSL = /datum/squad/marine/bravo,
 		TRACKER_CSL = /datum/squad/marine/charlie,
 		TRACKER_DSL = /datum/squad/marine/delta,
-		TRACKER_ESL = /datum/squad/marine/echo
+		TRACKER_ESL = /datum/squad/marine/echo,
+		TRACKER_FSL = /datum/squad/marine/cryo
 	)
 	switch(tracker_setting)
 		if(TRACKER_SL)

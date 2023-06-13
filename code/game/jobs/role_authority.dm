@@ -243,14 +243,14 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/datum/job/J = temp_roles_for_mode[title]
 		J.current_positions = 0
 
-	// Calculate available job slots based on what we precomputed for now
+	// Calculate 2nd pass of available job slots based on what we precomputed for now
 	set_all_spawn_positions(players_preassigned, temp_roles_for_mode)
 
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = list()
 	var/actually_assigned = assign_roles(temp_roles_for_mode, unassigned_players, roles_left)
 
-	// Second pass calculation of spawn positions so that random jobs below can fill all open slots
+	// Third pass calculation of spawn positions so that random jobs below can fill all open slots
 	set_all_spawn_positions(actually_assigned, temp_roles_for_mode)
 
 	var/datum/job/antag/xenos/xeno_job = temp_roles_for_mode[JOB_XENOMORPH]
@@ -258,7 +258,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	for(var/mob/new_player/M in unassigned_players)
 		switch(M.client.prefs.alternate_option)
 			if(GET_RANDOM_JOB)
-				roles_left = assign_random_role(M, roles_left) //We want to keep the list between assignments.
+				assign_random_role(M, roles_left) //We want to keep the list between assignments.
 				var/datum/job/effective_job = GET_MAPPED_ROLE(M.job)
 				if(effective_job)
 					actually_assigned += calculate_role_weight(effective_job)

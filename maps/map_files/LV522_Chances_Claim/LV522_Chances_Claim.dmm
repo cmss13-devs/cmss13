@@ -19092,7 +19092,7 @@
 	dir = 4;
 	icon_state = "white_cyan1"
 	},
-/area/lv522/oob)
+/area/lv522/oob/w_y_vault)
 "jab" = (
 /obj/structure/window/framed/strata/reinforced,
 /turf/open/floor/corsat{
@@ -19197,7 +19197,7 @@
 	dir = 4;
 	icon_state = "white_cyan1"
 	},
-/area/lv522/oob)
+/area/lv522/oob/w_y_vault)
 "jbs" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -20441,7 +20441,7 @@
 	dir = 4;
 	icon_state = "white_cyan1"
 	},
-/area/lv522/oob)
+/area/lv522/oob/w_y_vault)
 "jBs" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -20608,7 +20608,7 @@
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
-/area/lv522/oob)
+/area/lv522/oob/w_y_vault)
 "jEk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
@@ -22937,7 +22937,7 @@
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
-/area/lv522/oob)
+/area/lv522/oob/w_y_vault)
 "kze" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/prison{
@@ -23368,7 +23368,7 @@
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
-/area/lv522/oob)
+/area/lv522/oob/w_y_vault)
 "kHy" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/box/flashbangs{
@@ -23467,7 +23467,7 @@
 	dir = 4;
 	icon_state = "white_cyan1"
 	},
-/area/lv522/oob)
+/area/lv522/oob/w_y_vault)
 "kIZ" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
@@ -23574,7 +23574,7 @@
 	dir = 4;
 	icon_state = "white_cyan1"
 	},
-/area/lv522/oob)
+/area/lv522/oob/w_y_vault)
 "kLs" = (
 /obj/item/clothing/mask/facehugger{
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
@@ -24283,7 +24283,7 @@
 	dir = 4;
 	icon_state = "white_cyan1"
 	},
-/area/lv522/oob)
+/area/lv522/oob/w_y_vault)
 "kYm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -24439,7 +24439,7 @@
 	dir = 4;
 	icon_state = "white_cyan1"
 	},
-/area/lv522/oob)
+/area/lv522/oob/w_y_vault)
 "lbA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -24825,7 +24825,7 @@
 	dir = 4;
 	icon_state = "white_cyan1"
 	},
-/area/lv522/oob)
+/area/lv522/oob/w_y_vault)
 "llM" = (
 /obj/item/tool/kitchen/knife/butcher,
 /obj/effect/decal/cleanable/dirt,
@@ -25351,7 +25351,7 @@
 	dir = 4;
 	icon_state = "white_cyan1"
 	},
-/area/lv522/oob)
+/area/lv522/oob/w_y_vault)
 "lze" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/warning_stripes{
@@ -25831,7 +25831,7 @@
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
-/area/lv522/oob)
+/area/lv522/oob/w_y_vault)
 "lIR" = (
 /obj/structure/prop/invuln/ice_prefab/trim{
 	dir = 8
@@ -27432,7 +27432,7 @@
 "mwv" = (
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/closed/wall/strata_outpost/reinforced,
-/area/lv522/oob)
+/area/lv522/oob/w_y_vault)
 "mwT" = (
 /obj/structure/prop/dam/truck,
 /obj/structure/prop/holidays/wreath{
@@ -28357,7 +28357,7 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/closed/wall/strata_outpost/reinforced,
-/area/lv522/oob)
+/area/lv522/oob/w_y_vault)
 "mSe" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/garden_bridge)
@@ -47815,7 +47815,7 @@
 /area/lv522/indoors/a_block/bridges/op_centre)
 "uKD" = (
 /turf/closed/wall/strata_outpost/reinforced,
-/area/lv522/oob)
+/area/lv522/oob/w_y_vault)
 "uKE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -49098,6 +49098,9 @@
 	icon_state = "rasputin15"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
+"vju" = (
+/turf/closed/wall/strata_outpost,
+/area/lv522/oob/w_y_vault)
 "vjv" = (
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "69"
@@ -76038,12 +76041,12 @@ saC
 xED
 uKD
 uKD
-abo
-abo
-abo
-abo
-abo
-abo
+vju
+vju
+vju
+vju
+vju
+vju
 uKD
 mwv
 tvO
@@ -76264,14 +76267,14 @@ saC
 saC
 xED
 uKD
-abo
-abo
+vju
+vju
 jbn
 jbn
 jbn
 kIY
-abo
-abo
+vju
+vju
 mwv
 tvO
 ugV
@@ -76491,14 +76494,14 @@ saC
 saC
 xED
 uKD
-abo
+vju
 iZS
 jBr
 jEa
 jEa
 kLk
 lbo
-abo
+vju
 mwv
 tvO
 ugV
@@ -76718,7 +76721,7 @@ saC
 saC
 xED
 uKD
-abo
+vju
 iZS
 jEa
 kHd
@@ -76945,8 +76948,8 @@ saC
 saC
 xED
 uKD
-abo
-abo
+vju
+vju
 kzd
 jEa
 jEa
@@ -77172,7 +77175,7 @@ saC
 saC
 xED
 uKD
-abo
+vju
 iZS
 jEa
 jEa
@@ -77399,14 +77402,14 @@ saC
 saC
 xED
 uKD
-abo
+vju
 iZS
 jBr
 jEa
 jEa
 kXY
 lzb
-abo
+vju
 mwv
 tvO
 ugV
@@ -77626,14 +77629,14 @@ saC
 saC
 xED
 uKD
-abo
-abo
+vju
+vju
 jbn
 jbn
 jbn
 kIY
-abo
-abo
+vju
+vju
 mwv
 tvO
 ugV
@@ -77854,12 +77857,12 @@ saC
 xED
 uKD
 uKD
-abo
-abo
-abo
-abo
-abo
-abo
+vju
+vju
+vju
+vju
+vju
+vju
 uKD
 mSc
 tvO

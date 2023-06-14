@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Fixed an internal error when scanning turfs with Black Market scanner."

@@ -55007,12 +55007,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/lone_buildings/engineering)
 "xKc" = (
-/obj/structure/closet/coffin/woodencrate,
-/obj/item/clothing/accessory/health/ceramic_plate,
-/obj/item/clothing/accessory/health/ceramic_plate,
-/obj/item/clothing/accessory/health/ceramic_plate,
-/obj/item/clothing/accessory/health/ceramic_plate,
-/obj/item/clothing/accessory/health/ceramic_plate,
+/obj/structure/largecrate/supply/supplies/mre,
 /obj/structure/barricade/handrail{
 	dir = 4
 	},

@@ -101,7 +101,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		"hugged" = (locate(/obj/item/alien_embryo) in target_mob),
 	)
 
-	var/internal_bleeding = FALSE
+	var/internal_bleeding = FALSE //do they have internal bleeding anywhere
 
 	if(!isnull(data_detail_level))
 		detail_level = data_detail_level
@@ -158,11 +158,10 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		var/core_fracture_detected = FALSE
 		var/unknown_implants = 0
 		for(var/obj/limb/limb in human_target_mob.limbs)
-			var/internal_bleeding_check = FALSE
+			var/internal_bleeding_check = FALSE //do they have internal bleeding in this limb
 			for(var/datum/effects/bleeding/internal/ib in limb.bleeding_effects_list)
 				internal_bleeding = TRUE
-				if(detail_level >= DETAIL_LEVEL_BODYSCAN)
-					internal_bleeding_check = TRUE
+				internal_bleeding_check = TRUE
 				break
 			if(limb.hidden)
 				unknown_implants++

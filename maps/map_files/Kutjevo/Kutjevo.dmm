@@ -27,9 +27,7 @@
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/botany)
 "abG" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_11"
-	},
+/obj/structure/flora/grass/desert/lightgrass_11,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_dunes)
 "abS" = (
@@ -88,7 +86,7 @@
 /obj/structure/flora/bush/ausbushes/ppflowers{
 	icon_state = "brflowers_1"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "ahD" = (
 /obj/structure/bed/chair{
@@ -535,7 +533,7 @@
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
 /area/kutjevo/interior/power)
 "aIu" = (
-/obj/structure/flora/grass/desert,
+/obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "aIw" = (
@@ -1186,7 +1184,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "bGX" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -1676,7 +1674,7 @@
 /obj/structure/flora/bush/ausbushes/ppflowers{
 	icon_state = "fullgrass_1"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "csE" = (
 /obj/structure/girder,
@@ -1776,9 +1774,7 @@
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_3"
 	},
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_3"
-	},
+/obj/structure/flora/grass/desert/lightgrass_3,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
 "cyc" = (
@@ -1792,9 +1788,7 @@
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/botany)
 "cAK" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_6"
-	},
+/obj/structure/flora/grass/desert/lightgrass_6,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_dunes)
 "cBd" = (
@@ -2307,9 +2301,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/power)
 "ddq" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_11"
-	},
+/obj/structure/flora/grass/desert/lightgrass_11,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_river)
 "ddx" = (
@@ -2497,7 +2489,7 @@
 	},
 /area/kutjevo/interior/colony_South/power2)
 "dqK" = (
-/obj/structure/flora/grass/desert,
+/obj/structure/flora/grass/desert/lightgrass_1,
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/oob/dev_room)
@@ -2810,9 +2802,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_bridge)
 "dKr" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_4"
-	},
+/obj/structure/flora/grass/desert/lightgrass_4,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
 "dKs" = (
@@ -2966,9 +2956,7 @@
 	},
 /area/kutjevo/interior/colony_South/power2)
 "dUE" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_10"
-	},
+/obj/structure/flora/grass/desert/lightgrass_10,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
 "dUP" = (
@@ -3339,9 +3327,7 @@
 	},
 /area/kutjevo/interior/oob)
 "eqJ" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_2"
-	},
+/obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
 "eqQ" = (
@@ -4499,9 +4485,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
 "fRu" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_2"
-	},
+/obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_dunes)
 "fRI" = (
@@ -4512,7 +4496,7 @@
 /obj/structure/flora/bush/ausbushes/ppflowers{
 	icon_state = "brflowers_3"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "fRZ" = (
 /obj/structure/platform/kutjevo/smooth{
@@ -4973,9 +4957,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "gBV" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_2"
-	},
+/obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "gCb" = (
@@ -5058,9 +5040,7 @@
 	},
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "gHh" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_9"
-	},
+/obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "gHm" = (
@@ -5187,9 +5167,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/med/cells)
 "gSr" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_8"
-	},
+/obj/structure/flora/grass/desert/lightgrass_8,
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/oob/dev_room)
@@ -5310,14 +5288,12 @@
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/botany)
 "gZj" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_4"
-	},
+/obj/structure/flora/grass/desert/lightgrass_4,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "gZq" = (
 /obj/structure/bed/chair,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "han" = (
 /obj/structure/platform_decoration/kutjevo/rock{
@@ -5906,7 +5882,7 @@
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "hVQ" = (
 /obj/structure/machinery/light{
@@ -6258,9 +6234,7 @@
 	},
 /area/kutjevo/interior/power)
 "iCQ" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_9"
-	},
+/obj/structure/flora/grass/desert/lightgrass_9,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/Northwest_Colony)
@@ -6296,9 +6270,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med/triage)
 "iIn" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_6"
-	},
+/obj/structure/flora/grass/desert/lightgrass_6,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/runoff_dunes)
 "iIz" = (
@@ -7046,9 +7018,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/colony_central)
 "jIN" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_11"
-	},
+/obj/structure/flora/grass/desert/lightgrass_11,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "jIR" = (
@@ -7180,7 +7150,7 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "jWM" = (
 /obj/structure/platform/kutjevo{
@@ -7409,7 +7379,7 @@
 	},
 /area/kutjevo/interior/construction)
 "kne" = (
-/obj/structure/flora/grass/desert,
+/obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/runoff_dunes)
 "kni" = (
@@ -7933,9 +7903,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/exterior/Northwest_Colony)
 "kVH" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_11"
-	},
+/obj/structure/flora/grass/desert/lightgrass_11,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "kVJ" = (
@@ -8760,9 +8728,7 @@
 /turf/open/floor/kutjevo/colors/cyan/tile,
 /area/kutjevo/interior/complex/med/auto_doc)
 "mfd" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_2"
-	},
+/obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
 "mfk" = (
@@ -9362,9 +9328,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/complex/med/triage)
 "mPL" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_10"
-	},
+/obj/structure/flora/grass/desert/lightgrass_10,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "mPP" = (
@@ -9920,9 +9884,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/foremans_office)
 "nFO" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_2"
-	},
+/obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/runoff_dunes)
 "nFY" = (
@@ -10249,9 +10211,7 @@
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/cells)
 "nZl" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_8"
-	},
+/obj/structure/flora/grass/desert/lightgrass_8,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "nZv" = (
@@ -10324,9 +10284,7 @@
 	},
 /area/kutjevo/exterior/scrubland)
 "ofn" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_6"
-	},
+/obj/structure/flora/grass/desert/lightgrass_6,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "ofs" = (
@@ -10465,7 +10423,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "oor" = (
 /obj/structure/surface/rack,
@@ -11401,9 +11359,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/exterior/scrubland)
 "pDi" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_3"
-	},
+/obj/structure/flora/grass/desert/lightgrass_3,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_dunes)
 "pDk" = (
@@ -11608,9 +11564,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/complex/med/locks)
 "pNW" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_2"
-	},
+/obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/stonyfields)
 "pOi" = (
@@ -11749,7 +11703,7 @@
 	dir = 4;
 	pixel_y = 13
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "pZx" = (
 /obj/structure/platform_decoration/kutjevo,
@@ -12415,9 +12369,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "qZO" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_3"
-	},
+/obj/structure/flora/grass/desert/lightgrass_3,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "raA" = (
@@ -12546,9 +12498,7 @@
 	},
 /area/kutjevo/interior/oob)
 "rkt" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_9"
-	},
+/obj/structure/flora/grass/desert/lightgrass_9,
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/oob/dev_room)
@@ -12898,9 +12848,7 @@
 /turf/open/floor/kutjevo/tiles,
 /area/kutjevo/exterior/Northwest_Colony)
 "rLy" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_9"
-	},
+/obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/lz_dunes)
 "rLD" = (
@@ -14031,9 +13979,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "tka" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_6"
-	},
+/obj/structure/flora/grass/desert/lightgrass_6,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/oob/dev_room)
 "tld" = (
@@ -14378,9 +14324,7 @@
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/complex/botany/east)
 "tIF" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_4"
-	},
+/obj/structure/flora/grass/desert/lightgrass_4,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_dunes)
 "tIY" = (
@@ -14714,7 +14658,7 @@
 /area/kutjevo/interior/complex/med)
 "ujo" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "ujG" = (
 /obj/structure/platform_decoration/kutjevo/rock{
@@ -14843,7 +14787,7 @@
 /obj/structure/flora/bush/ausbushes/ppflowers{
 	icon_state = "fullgrass_3"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "urm" = (
 /obj/structure/stairs/perspective/kutjevo{
@@ -15085,9 +15029,7 @@
 	},
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "uHo" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_3"
-	},
+/obj/structure/flora/grass/desert/lightgrass_3,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/construction)
 "uHJ" = (
@@ -15279,9 +15221,7 @@
 /turf/open/gm/river/desert/shallow,
 /area/kutjevo/exterior/runoff_dunes)
 "uQJ" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_2"
-	},
+/obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "uRm" = (
@@ -15506,9 +15446,7 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/lz_dunes)
 "ven" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_3"
-	},
+/obj/structure/flora/grass/desert/lightgrass_3,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
 "veI" = (
@@ -15896,9 +15834,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power)
 "vGf" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_3"
-	},
+/obj/structure/flora/grass/desert/lightgrass_3,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
 "vGx" = (
@@ -16623,9 +16559,7 @@
 	},
 /area/kutjevo/interior/complex/med)
 "wFQ" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_9"
-	},
+/obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/runoff_dunes)
 "wGD" = (
@@ -16644,9 +16578,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "wJZ" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_4"
-	},
+/obj/structure/flora/grass/desert/lightgrass_4,
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/oob/dev_room)
@@ -16815,7 +16747,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med)
 "wYp" = (
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "wYE" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -17075,9 +17007,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "xrT" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_8"
-	},
+/obj/structure/flora/grass/desert/lightgrass_8,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/Northwest_Colony)
 "xti" = (

@@ -1,0 +1,4 @@
+author: "SpartanBobby"
+delete-after: True
+changes:
+  - maptweak: "fixes bigred tileset inconsistencies in the expanded filt nightmare"

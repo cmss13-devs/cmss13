@@ -96,7 +96,8 @@
 
 	var/fuel_amt_to_remove = Clamp(to_add.volume, 0, max_rounds - reagents.get_reagent_amount(to_add.id))
 	if(!fuel_amt_to_remove)
-		to_chat(user, SPAN_WARNING("[O] is empty!"))
+		if(!max_rounds)
+			to_chat(user, SPAN_WARNING("[O] is empty!"))
 		return
 
 	O.reagents.remove_reagent(to_add.id, fuel_amt_to_remove)

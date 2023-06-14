@@ -20,9 +20,9 @@
 /datum/ares_record/bioscan
 	record_name = ARES_RECORD_BIOSCAN
 
-
 /datum/ares_record/requisition_log
 	record_name = ARES_RECORD_ASRS
+
 /datum/ares_record/requisition_log/New(title, details, user)
 	time = worldtime2text()
 	src.title = title
@@ -34,6 +34,7 @@
 
 /datum/ares_record/antiair
 	record_name = ARES_RECORD_ANTIAIR
+
 /datum/ares_record/antiair/New(details, user)
 	time = worldtime2text()
 	src.title = "AntiAir Adjustment"

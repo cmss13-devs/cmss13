@@ -53112,8 +53112,6 @@
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
-/obj/effect/landmark/wo_supplies/guns/common/m39,
-/obj/effect/landmark/wo_supplies/guns/common/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/structure/sign/safety/ammunition{
@@ -53123,6 +53121,8 @@
 /obj/structure/sign/safety/hazard{
 	pixel_y = 32
 	},
+/obj/item/weapon/gun/smg/m39,
+/obj/item/weapon/gun/smg/m39,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
@@ -64608,6 +64608,12 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"sTV" = (
+/obj/structure/machinery/power/apc/almayer/hardened{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/almayer/command/airoom)
 "sUg" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
@@ -64831,8 +64837,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/effect/landmark/wo_supplies/guns/common/m39,
-/obj/effect/landmark/wo_supplies/guns/common/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
@@ -64840,6 +64844,8 @@
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
+/obj/item/weapon/gun/smg/m39,
+/obj/item/weapon/gun/smg/m39,
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
 "sYC" = (
@@ -72676,7 +72682,7 @@
 	},
 /area/almayer/powered/agent)
 "wpw" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/bed/chair/comfy/ares{
 	dir = 1
 	},
 /turf/open/floor/almayer/no_build{
@@ -74026,11 +74032,11 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/effect/landmark/wo_supplies/guns/common/m39,
-/obj/effect/landmark/wo_supplies/guns/common/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
+/obj/item/weapon/gun/smg/m39,
+/obj/item/weapon/gun/smg/m39,
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
 "wVy" = (
@@ -134743,7 +134749,7 @@ roH
 ebN
 ebN
 ebN
-ebN
+daz
 wnh
 wnh
 daz
@@ -135555,7 +135561,7 @@ gXs
 ebN
 ebN
 ebN
-ebN
+daz
 wnh
 wnh
 daz
@@ -135749,7 +135755,7 @@ nJH
 rnH
 daz
 daz
-kfU
+sTV
 daz
 rna
 rna

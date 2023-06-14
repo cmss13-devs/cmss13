@@ -102,7 +102,11 @@
 
 ///Includes restricted accesses
 /proc/get_all_marine_access()
-	return list(ACCESS_MARINE_CO) + get_main_marine_access()
+	return list(
+		ACCESS_MARINE_CO,
+		ACCESS_MARINE_AI,
+		ACCESS_MARINE_AI_TEMP,
+		) + get_main_marine_access()
 
 ///All Almayer accesses other than the highly restricted ones, such as CO's office.
 /proc/get_main_marine_access()

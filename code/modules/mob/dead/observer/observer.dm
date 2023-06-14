@@ -1073,6 +1073,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!(RoleAuthority.roles_whitelist[key_to_use] & WHITELIST_PREDATOR))
 		return
 
+	if(!SSticker.mode)
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(toggle_predator_action)))
+		return
+
 	if(SSticker.mode.flags_round_type & MODE_PREDATOR)
 		if(locate(/datum/action/join_predator) in actions)
 			return

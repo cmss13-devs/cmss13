@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed a runtime in shuttles when a mob is non-existent or has no turf location."

@@ -50,3 +50,6 @@
 
 /// From /datum/admins/proc/force_predator_round()
 #define COMSIG_GLOB_PREDATOR_ROUND_TOGGLED "!predator_round_toglged"
+
+// Used to convert all groundside weeds, etc to Forsaken hive.
+#define COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING "!groundside_forsaken_handling"

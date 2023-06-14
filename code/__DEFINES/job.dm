@@ -12,15 +12,15 @@
 #define SQUAD_SOF "SOF"
 
 // Job name defines
-#define JOB_SQUAD_MARINE "Squad Rifleman"
+#define JOB_SQUAD_MARINE "Rifleman"
 #define JOB_SQUAD_LEADER "Squad Leader"
-#define JOB_SQUAD_ENGI "Squad Combat Technician"
-#define JOB_SQUAD_MEDIC "Squad Hospital Corpsman"
-#define JOB_SQUAD_SPECIALIST "Squad Weapons Specialist"
-#define JOB_SQUAD_RTO "Squad Radio Telephone Operator"
-#define JOB_SQUAD_SMARTGUN "Squad Smartgunner"
+#define JOB_SQUAD_ENGI "Combat Technician"
+#define JOB_SQUAD_MEDIC "Hospital Corpsman"
+#define JOB_SQUAD_SPECIALIST "Weapons Specialist"
+#define JOB_SQUAD_TEAM_LEADER "Fireteam Leader"
+#define JOB_SQUAD_SMARTGUN "Smartgunner"
 #define JOB_SQUAD_ROLES /datum/timelock/squad
-#define JOB_SQUAD_ROLES_LIST list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADER, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_RTO)
+#define JOB_SQUAD_ROLES_LIST list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADER, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_TEAM_LEADER)
 
 var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 
@@ -38,7 +38,7 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define ENGINEERING_SURVIVOR "Engineering Survivor"
 #define CORPORATE_SURVIVOR "Corporate Survivor"
 #define HOSTILE_SURVIVOR "Hostile Survivor" //AKA Marine Killers assuming they survive. Will do cultist survivor at some point.
-#define SURVIVOR_VARIANT_LIST list(ANY_SURVIVOR, CIVILIAN_SURVIVOR, SECURITY_SURVIVOR, SCIENTIST_SURVIVOR, MEDICAL_SURVIVOR, ENGINEERING_SURVIVOR, CORPORATE_SURVIVOR, HOSTILE_SURVIVOR)
+#define SURVIVOR_VARIANT_LIST list(ANY_SURVIVOR = "Any", CIVILIAN_SURVIVOR = "Civ", SECURITY_SURVIVOR = "Sec", SCIENTIST_SURVIVOR = "Sci", MEDICAL_SURVIVOR = "Med", ENGINEERING_SURVIVOR = "Eng", CORPORATE_SURVIVOR = "W-Y", HOSTILE_SURVIVOR = "CLF")
 
 //-1 is infinite amount, these are soft caps and can be bypassed by randomization
 #define MAX_SURVIVOR_PER_TYPE list(ANY_SURVIVOR = -1, CIVILIAN_SURVIVOR = -1, SECURITY_SURVIVOR = 2, SCIENTIST_SURVIVOR = 2, MEDICAL_SURVIVOR = 3, ENGINEERING_SURVIVOR = 4, CORPORATE_SURVIVOR = 2, HOSTILE_SURVIVOR = 1)
@@ -52,10 +52,12 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 
 #define JOB_CMO "Chief Medical Officer"
 #define JOB_DOCTOR "Doctor"
+#define JOB_SURGEON "Surgeon"
+
 #define JOB_NURSE "Nurse"
 #define JOB_RESEARCHER "Researcher"
 #define JOB_MEDIC_ROLES  /datum/timelock/medic
-#define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_NURSE, JOB_RESEARCHER)
+#define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_NURSE, JOB_RESEARCHER, JOB_SURGEON)
 
 #define JOB_CORPORATE_LIAISON "Corporate Liaison"
 #define JOB_COMBAT_REPORTER "Combat Correspondent"
@@ -196,6 +198,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 //-------- WY Goons --------//
 #define JOB_WY_GOON "WY Corporate Security"
 #define JOB_WY_GOON_LEAD "WY Corporate Security Lead"
+#define JOB_WY_GOON_RESEARCHER "WY Research Consultant"
 
 #define JOB_WY_GOON_LIST list(JOB_WY_GOON, JOB_WY_GOON_LEAD)
 
@@ -322,7 +325,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_XENOMORPH    "Xenomorph"
 #define JOB_XENOMORPH_QUEEN  "Queen"
 
-// For colouring the ranks in the statistics menu
+// For coloring the ranks in the statistics menu
 #define JOB_PLAYTIME_TIER_1  (10 HOURS)
 #define JOB_PLAYTIME_TIER_2  (25 HOURS)
 #define JOB_PLAYTIME_TIER_3  (70 HOURS)

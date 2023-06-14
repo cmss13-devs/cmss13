@@ -136,7 +136,7 @@
 	icon = 'icons/obj/items/lighting.dmi'
 	var/base_state = "tube" // base description and icon_state
 	icon_state = "tube1"
-	desc = "A bright fluorescent tube light. Looking at it for too long makes your eyes go watery."
+	desc = "A lighting fixture that is fitted with a bright fluorescent light tube. Looking at it for too long makes your eyes go watery."
 	anchored = TRUE
 	layer = FLY_LAYER
 	use_power = USE_POWER_IDLE
@@ -166,6 +166,10 @@
 /obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
 
+/obj/structure/machinery/light/blue
+	icon_state = "btube1"
+	base_state = "btube"
+	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery."
 
 // the smaller bulb light fixture
 
@@ -174,27 +178,45 @@
 	base_state = "bulb"
 	fitting = "bulb"
 	brightness = 4
-	desc = "A small lighting fixture."
+	desc = "A small lighting fixture that is fitted with a bright fluorescent light bulb. Looking at it for too long makes your eyes go watery."
 	light_type = /obj/item/light_bulb/bulb
 
+/obj/structure/machinery/light/small/blue
+	icon_state = "bbulb1"
+	base_state = "bbulb"
+	fitting = "bulb"
+	brightness = 4
+	desc = "A small lighting fixture that is fitted with a bright blue fluorescent light bulb. Looking at it for too long makes your eyes go watery."
+	light_type = /obj/item/light_bulb/bulb
 
 /obj/structure/machinery/light/double
 	icon_state = "ptube1"
 	base_state = "ptube"
-	brightness = 6
+	desc = "A lighting fixture that can be fitted with two bright blue fluorescent light tubes for that extra eye-watering goodness."
+
 /obj/structure/machinery/light/double/blue
 	icon_state = "bptube1"
 	base_state = "bptube"
-/obj/structure/machinery/light/alt
-	icon_state = "ltube1"
-	base_state = "ltube"
-
+	desc = "A lighting fixture that can be fitted with two bright fluorescent light tubes for that extra eye-watering goodness."
 
 /obj/structure/machinery/light/spot
 	name = "spotlight"
+	icon_state = "slight1"
+	base_state = "slight"
+	desc = "A wide light fixture fitted with a large, very bright fluorescent light tube. You want to sneeze just looking at it."
 	fitting = "large tube"
 	light_type = /obj/item/light_bulb/tube/large
 	brightness = 12
+
+/obj/structure/machinery/light/spot/blue
+	name = "spotlight"
+	icon_state = "bslight1"
+	base_state = "bslight"
+	desc = "A wide light fixture fitted with a large, blue, very bright fluorescent light tube. You want to sneeze just looking at it."
+	fitting = "large tube"
+	light_type = /obj/item/light_bulb/tube/large/
+	brightness = 12
+
 
 /obj/structure/machinery/light/built/Initialize()
 	. = ..()
@@ -643,7 +665,10 @@
 /obj/item/light_bulb/tube/large
 	w_class = SIZE_SMALL
 	name = "large light tube"
+	icon_state = "largetube"
+	base_state = "largetube"
 	brightness = 15
+	matter = list("glass" = 100)
 
 /obj/item/light_bulb/bulb
 	name = "light bulb"
@@ -733,6 +758,7 @@
 	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
 	unslashable = TRUE
 	unacidable = TRUE
+	var/obj/docking_port/stationary/marine_dropship/linked_port = null
 
 //Don't allow blowing those up, so Marine nades don't fuck them
 /obj/structure/machinery/landinglight/ex_act(severity)
@@ -741,6 +767,12 @@
 /obj/structure/machinery/landinglight/Initialize(mapload, ...)
 	. = ..()
 	turn_off()
+
+/obj/structure/machinery/landinglight/Destroy()
+	. = ..()
+	if(linked_port)
+		linked_port.landing_lights -= src
+		linked_port = null
 
 /obj/structure/machinery/landinglight/proc/turn_off()
 	icon_state = initial(icon_state)

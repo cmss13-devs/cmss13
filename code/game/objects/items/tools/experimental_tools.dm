@@ -76,7 +76,7 @@
 							SPAN_NOTICE("You start fitting \the [src] onto [M]'s chest."),
 							SPAN_WARNING("[user] starts fitting \the [src] onto your chest!"),
 							SPAN_NOTICE("[user] starts fitting \the [src] onto [M]'s chest."))
-		if(!(do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)))
+		if(!(do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)))
 			return
 		if(!mob_can_equip(M, WEAR_JACKET))
 			return
@@ -108,12 +108,13 @@
 	if(pdcell && pdcell.charge)
 		overlays.Cut()
 	switch(round(pdcell.charge * 100 / pdcell.maxcharge))
+		if(1 to 32)
+			overlays += "cpr_batt_lo"
+		if(33 to 65)
+			overlays += "cpr_batt_mid"
 		if(66 to INFINITY)
 			overlays += "cpr_batt_hi"
-		if(65 to 33)
-			overlays += "cpr_batt_mid"
-		if(32 to 1)
-			overlays += "cpr_batt_lo"
+
 
 /obj/item/clothing/suit/auto_cpr/get_examine_text(mob/user)
 	. = ..()

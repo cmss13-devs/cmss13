@@ -16,7 +16,7 @@
 #define TURF_LAYER 2
 
 #define ABOVE_TURF_LAYER 2.01
-#define INTERIOR_WALL_NORTH_LAYER 2.02
+#define WALL_LAYER 2.02
 
 #define LATTICE_LAYER 2.15
 
@@ -124,12 +124,15 @@
 #define FACEHUGGER_LAYER 4.13
 /// For WEATHER
 #define WEATHER_LAYER 4.14
-#define INTERIOR_WALL_SOUTH_LAYER 5.2
-#define INTERIOR_DOOR_LAYER 5.21
 
 //#define FLY_LAYER 5
 
 #define RIPPLE_LAYER 5.1
+#define INTERIOR_DOOR_INSIDE_LAYER 5.19
+#define INTERIOR_WALL_SOUTH_LAYER 5.2
+#define INTERIOR_DOOR_LAYER 5.21
+#define INTERIOR_WALLMOUNT_LAYER 5.3
+#define INTERIOR_ROOF_LAYER 5.5
 
 #define ABOVE_FLY_LAYER 6
 
@@ -174,9 +177,12 @@
 /// NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
 #define LOWEST_EVER_PLANE -200
 
+/// Floor plane, self explanatory. Used for Ambient Occlusion filter
 #define FLOOR_PLANE -7
+/// Game Plane, where most of the game objects reside
 #define GAME_PLANE -6
-#define ABOVE_GAME_PLANE -5
+/// Roof plane, disappearing when entering buildings
+#define ROOF_PLANE -4
 
 /// To keep from conflicts with SEE_BLACKNESS internals
 #define BLACKNESS_PLANE 0

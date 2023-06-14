@@ -36,7 +36,7 @@
 #define GAMEMODE_IMMUNE (1<<0)
 
 // Ripples, effects that signal a shuttle's arrival
-#define SHUTTLE_RIPPLE_TIME 100
+#define SHUTTLE_RIPPLE_TIME 5 SECONDS
 
 #define TRANSIT_REQUEST 1
 #define TRANSIT_READY 2
@@ -97,6 +97,12 @@
 #define MOBILE_SHUTTLE_ID_ERT3 "ert_upp_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT_SMALL "ert_rescue_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT_BIG "ert_boarding_shuttle"
+
+#define MOBILE_TRIJENT_ELEVATOR "trijentshuttle2"
+#define STAT_TRIJENT_LZ1 "trigent_lz1"
+#define STAT_TRIJENT_LZ2 "trigent_lz2"
+#define STAT_TRIJENT_ENGI "trigent_engineering"
+#define STAT_TRIJENT_OMEGA "trigent_omega"
 
 #define MOBILE_SHUTTLE_LIFEBOAT_PORT "lifeboat-port"
 #define MOBILE_SHUTTLE_LIFEBOAT_STARBOARD "lifeboat-starboard"

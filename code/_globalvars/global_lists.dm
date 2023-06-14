@@ -53,7 +53,6 @@ GLOBAL_LIST_INIT(resin_build_order_drone, list(
 	/datum/resin_construction/resin_turf/wall,
 	/datum/resin_construction/resin_turf/membrane,
 	/datum/resin_construction/resin_obj/door,
-	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
 	/datum/resin_construction/resin_obj/resin_spike
@@ -64,11 +63,20 @@ GLOBAL_LIST_INIT(resin_build_order_hivelord, list(
 	/datum/resin_construction/resin_turf/wall/reflective,
 	/datum/resin_construction/resin_turf/membrane/thick,
 	/datum/resin_construction/resin_obj/door/thick,
-	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/acid_pillar,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
 	/datum/resin_construction/resin_obj/resin_spike
+))
+
+GLOBAL_LIST_INIT(resin_build_order_hivelord_whisperer, list(
+	/datum/resin_construction/resin_turf/wall,
+	/datum/resin_construction/resin_turf/membrane,
+	/datum/resin_construction/resin_obj/door,
+	/datum/resin_construction/resin_obj/sticky_resin,
+	/datum/resin_construction/resin_obj/fast_resin,
+	/datum/resin_construction/resin_obj/resin_spike,
+	/datum/resin_construction/resin_obj/resin_node
 ))
 
 GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(
@@ -76,7 +84,6 @@ GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(
 	/datum/resin_construction/resin_turf/wall/reflective,
 	/datum/resin_construction/resin_turf/membrane/queen,
 	/datum/resin_construction/resin_obj/door/queen,
-	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/acid_pillar,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
@@ -190,6 +197,9 @@ GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/y
 
 	//Backpacks
 var/global/list/backbaglist = list("Backpack", "Satchel")
+	//Armor styles
+GLOBAL_LIST_INIT(armor_style_list, list("Padded" = 1, "Padless" = 2, "Ridged" = 3, "Carrier" = 4, "Skull" = 5, "Smooth" = 6, "Random"))
+
 // var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
 var/global/round_should_check_for_win = TRUE
 
@@ -493,3 +503,9 @@ var/global/list/available_specialist_kit_boxes = list(
 				.[E.key_third_person] = list(E)
 			else
 				.[E.key_third_person] |= E
+
+GLOBAL_LIST_EMPTY(topic_tokens)
+GLOBAL_PROTECT(topic_tokens)
+
+GLOBAL_LIST_EMPTY(topic_commands)
+GLOBAL_PROTECT(topic_commands)

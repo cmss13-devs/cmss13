@@ -2,7 +2,7 @@
 
 /obj/item/stack/flag
 	name = "flags"
-	desc = "Some colourful flags."
+	desc = "Some colorful flags."
 	singular_name = "flag"
 	amount = 10
 	max_amount = 10

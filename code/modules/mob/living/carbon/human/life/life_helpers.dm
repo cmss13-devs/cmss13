@@ -200,7 +200,9 @@
 		if(thermal_protection_flags & BODY_FLAG_HAND_RIGHT)
 			thermal_protection += THERMAL_PROTECTION_HAND_RIGHT
 
-	return min(1, thermal_protection)
+	var/list/protection_data = list("protection" = thermal_protection)
+	SEND_SIGNAL(src, COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS, protection_data)
+	return min(1, protection_data["protection"])
 
 
 /mob/living/carbon/human/proc/process_glasses(obj/item/clothing/glasses/G)

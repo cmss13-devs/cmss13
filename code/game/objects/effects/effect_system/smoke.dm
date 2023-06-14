@@ -174,6 +174,7 @@
 
 /obj/effect/particle_effect/smoke/mustard
 	name = "mustard gas"
+	icon = 'icons/effects/effects.dmi'
 	icon_state = "mustard"
 	smokeranking = SMOKE_RANK_HIGH
 
@@ -238,6 +239,7 @@
 
 	M.burn_skin(burn_damage)
 	M.adjust_fire_stacks(applied_fire_stacks)
+	M.fire_reagent = new /datum/reagent/napalm/ut()
 	M.IgniteMob()
 	M.updatehealth()
 
@@ -253,6 +255,17 @@
 	icon_state = "sparks"
 	icon = 'icons/effects/effects.dmi'
 	smokeranking = SMOKE_RANK_MED
+
+/////////////////////////////////////////
+// Acid Runner Smoke, Harmless Visuals only
+/////////////////////////////////////////
+/obj/effect/particle_effect/smoke/acid_runner_harmless
+	color = "#86B028"
+	time_to_live = 2
+	opacity = FALSE
+	alpha = 200
+	smokeranking = SMOKE_RANK_HARMLESS
+	amount = 0
 
 /////////////////////////////////////////
 // BOILER SMOKES

@@ -143,7 +143,7 @@
 
 /datum/surgery_step/cauterize/eyes
 	name = "Cauterize Eye Incisions"
-	name = "cauterize the incisions"
+	desc = "cauterize the incisions"
 	time = 3 SECONDS
 
 /datum/surgery_step/cauterize/eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

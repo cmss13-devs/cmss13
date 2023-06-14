@@ -19,6 +19,7 @@
 	var/time_of_death
 	var/total_time_alive
 	var/total_damage_taken
+	var/total_revives_done = 0
 
 	var/total_brute = 0
 	var/total_burn = 0
@@ -51,6 +52,7 @@
 		"time_of_death" = DB_FIELDTYPE_BIGINT,
 		"total_time_alive" = DB_FIELDTYPE_BIGINT,
 		"total_damage_taken" = DB_FIELDTYPE_INT,
+		"total_revives_done" = DB_FIELDTYPE_INT,
 
 		"total_brute" = DB_FIELDTYPE_INT,
 		"total_burn" = DB_FIELDTYPE_INT,
@@ -117,6 +119,7 @@
 	new_death.total_kills = life_kills_total
 	new_death.total_time_alive = life_time_total
 	new_death.total_damage_taken = life_damage_taken_total
+	new_death.total_revives_done = life_revives_total
 
 	handle_observer_message(cause_data, cause_mob, death_loc, A)
 
@@ -160,7 +163,7 @@
 	if(src)
 		to_chat(src, SPAN_DEADSAY(observer_message))
 	for(var/mob/dead/observer/g in GLOB.observer_list)
-		to_chat(g, SPAN_DEADSAY(observer_message + " (<a href='?src=\ref[g];jumptocoord=1;X=[death_loc.x];Y=[death_loc.y];Z=[death_loc.z]'>JMP</a>)"))
+		to_chat(g, SPAN_DEADSAY("[observer_message] [OBSERVER_JMP(g, death_loc)]"))
 
 /mob/living/carbon/xenomorph/handle_observer_message(datum/cause_data/cause_data, mob/cause_mob, turf/death_loc, area/death_area)
 	if(hardcore)

@@ -349,7 +349,7 @@
 
 		if("CMB")
 			var/body = "<body>"
-			
+
 			for(var/text in GLOB.CMBFaxes)
 				body += text
 				body += "<br><br>"
@@ -386,7 +386,7 @@
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(hive.totalXenos.len > 0 || hive.totalDeadXenos.len > 0)
+		if(hive.totalXenos.len > 0 || hive.total_dead_xenos.len > 0)
 			hives += list("[hive.name]" = hive.hivenumber)
 			last_hive_checked = hive
 
@@ -423,32 +423,28 @@
 
 	message_admins("Admin [key_name(usr)] has turned everyone into a primitive")
 
-/client/proc/force_shuttle()
-	set name = "Force Dropship"
-	set desc = "Force a dropship to launch"
+/client/proc/force_hijack()
+	set name = "Force Hijack"
+	set desc = "Force a dropship to be hijacked"
 	set category = "Admin.Shuttles"
 
 	var/list/shuttles = list(DROPSHIP_ALAMO, DROPSHIP_NORMANDY)
-	var/tag = tgui_input_list(usr, "Which dropship should be force launched?", "Select a dropship:", shuttles)
+	var/tag = tgui_input_list(usr, "Which dropship should be force hijacked?", "Select a dropship:", shuttles)
 	if(!tag) return
-	var/crash = 0
-	switch(tgui_input_list(usr, "Would you like to force a crash?", "Force crash", list("Yes", "No")))
-		if("Yes") crash = 1
-		if("No") crash = 0
-		else return
 
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(tag)
 
 	if(!dropship)
-		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN"))
-		log_admin("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN")
+		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship hijack but the shuttle datum was null. Code: MSD_FSV_DIN"))
+		log_admin("Error: Attempted to force a dropship hijack but the shuttle datum was null. Code: MSD_FSV_DIN")
 		return
 
-	if(crash)
-		var/obj/structure/machinery/computer/shuttle/dropship/flight/computer = dropship.getControlConsole()
-		computer.hijack(usr)
-	else
-		to_chat(usr, SPAN_WARNING("Use the shuttle manipulator to normally move a shuttle"))
+	var/confirm = tgui_alert(usr, "Are you sure you want to hijack [dropship]?", "Force hijack", list("Yes", "No")) == "Yes"
+	if(!confirm) 
+		return
+
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/computer = dropship.getControlConsole()
+	computer.hijack(usr, force = TRUE)
 
 /client/proc/cmd_admin_create_centcom_report()
 	set name = "Report: Faction"
@@ -979,3 +975,20 @@
 				GLOB.bioscan_data.ares_bioscan(FALSE, variance)
 			if("Yautja")
 				GLOB.bioscan_data.yautja_bioscan()
+
+/client/proc/admin_blurb()
+	set name = "Global Blurb Message"
+	set category = "Admin.Events"
+
+	if(!check_rights(R_ADMIN|R_DEBUG))
+		return FALSE
+	var/duration = 5 SECONDS
+	var/message = "ADMIN TEST"
+	var/text_input = tgui_input_text(usr, "Announcement message", "Message Contents", message, timeout = 5 MINUTES)
+	message = text_input
+	duration = tgui_input_number(usr, "Set the duration of the alert in deci-seconds.", "Duration", 5 SECONDS, 5 MINUTES, 5 SECONDS, 20 SECONDS)
+	var/confirm = tgui_alert(usr, "Are you sure you wish to send '[message]' to all players for [(duration / 10)] seconds?", "Confirm", list("Yes", "No"), 20 SECONDS)
+	if(confirm != "Yes")
+		return FALSE
+	show_blurb(GLOB.player_list, duration, message, TRUE, "center", "center", "#bd2020", "ADMIN")
+	message_admins("[key_name(usr)] sent an admin blurb alert to all players. Alert reads: '[message]' and lasts [(duration / 10)] seconds.")

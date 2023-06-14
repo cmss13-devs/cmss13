@@ -7,11 +7,16 @@
 	if(used_burrow || tunnel || is_ventcrawling || action_busy)
 		return
 
-	var/turf/T = get_turf(src)
-	if(!T)
+	var/turf/current_turf = get_turf(src)
+	if(!current_turf)
 		return
 
-	if(istype(T, /turf/open/floor/almayer/research/containment) || istype(T, /turf/closed/wall/almayer/research/containment))
+	var/area/current_area = get_area(current_turf)
+	if(current_area.flags_area & AREA_NOTUNNEL)
+		to_chat(src, SPAN_XENOWARNING("There's no way to burrow here."))
+		return
+
+	if(istype(current_turf, /turf/open/floor/almayer/research/containment) || istype(current_turf, /turf/closed/wall/almayer/research/containment))
 		to_chat(src, SPAN_XENOWARNING("You can't escape this cell!"))
 		return
 

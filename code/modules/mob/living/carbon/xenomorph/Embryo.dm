@@ -170,8 +170,8 @@
 
 	if(hive)
 		hive.add_xeno(new_xeno)
-		if(!affected_mob.first_xeno)
-			hive.stored_larva++
+		if(!affected_mob.first_xeno && hive.hive_location)
+			hive.increase_larva_after_burst()
 			hive.hive_ui.update_burrowed_larva()
 
 	new_xeno.update_icons()

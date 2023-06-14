@@ -232,6 +232,7 @@
 		buckled_mob.update_canmove()
 
 		var/M = buckled_mob
+		REMOVE_TRAITS_IN(buckled_mob, TRAIT_SOURCE_BUCKLE)
 		buckled_mob = null
 
 		afterbuckle(M)
@@ -449,4 +450,8 @@
 	return 1 SECONDS
 
 /obj/proc/set_origin_name_prefix(name_prefix)
+	return
+
+/// override for subtypes that require extra behaviour when spawned from a vendor
+/obj/proc/post_vendor_spawn_hook(mob/living/carbon/human/user)
 	return

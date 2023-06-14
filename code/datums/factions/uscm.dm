@@ -16,7 +16,7 @@
 		switch(GET_DEFAULT_ROLE(_role))
 			if(JOB_SQUAD_ENGI) marine_rk = "engi"
 			if(JOB_SQUAD_SPECIALIST) marine_rk = "spec"
-			if(JOB_SQUAD_RTO) marine_rk = "rto"
+			if(JOB_SQUAD_TEAM_LEADER) marine_rk = "tl"
 			if(JOB_SQUAD_MEDIC) marine_rk = "med"
 			if(JOB_SQUAD_SMARTGUN) marine_rk = "gun"
 			if(JOB_XO) marine_rk = "xo"
@@ -67,7 +67,7 @@
 			_role = H.job
 		else if(ID)
 			_role = ID.rank
-		switch(GET_DEFAULT_ROLE(_role))
+		switch(_role)
 			if(JOB_XO)
 				marine_rk = "xo"
 				border_rk = "command"

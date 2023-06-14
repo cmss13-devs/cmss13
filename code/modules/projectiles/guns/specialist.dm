@@ -93,7 +93,6 @@
 	if(!check_can_use(target))
 		return
 
-	sniper_rifle.aimed_shot_cooldown = world.time + sniper_rifle.aimed_shot_cooldown_delay
 	human.face_atom(target)
 
 	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
@@ -190,9 +189,10 @@
 		to_chat(H, SPAN_WARNING("Something is in the way, or you're out of range!"))
 		if(cover_lose_focus)
 			to_chat(H, SPAN_WARNING("You lose focus."))
-			sniper_rifle.aimed_shot_cooldown = world.time + sniper_rifle.aimed_shot_cooldown_delay * 0.5
+			COOLDOWN_START(sniper_rifle, aimed_shot_cooldown, sniper_rifle.aimed_shot_cooldown_delay * 0.5)
 		return FALSE
 
+	COOLDOWN_START(sniper_rifle, aimed_shot_cooldown, sniper_rifle.aimed_shot_cooldown_delay)
 	return TRUE
 
 /datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(mob/firer, mob/target, obj/item/projectile/P)
@@ -521,7 +521,7 @@
 
 /obj/item/weapon/gun/rifle/m4ra_custom
 	name = "\improper M4RA custom battle rifle"
-	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armourers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titantium-alloy frame, better responsive to the heavy kick of the tailor-made A19 rounds."
+	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armorers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titantium-alloy frame, better responsive to the heavy kick of the tailor-made A19 rounds."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m4ra_custom"
 	item_state = "m4ra_custom"
@@ -550,7 +550,7 @@
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
@@ -800,7 +800,7 @@
 		var/obj/item/explosive/grenade/G = cylinder.contents[1]
 		if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(G, user))
 			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
-			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 			return FALSE
 
 
@@ -1082,7 +1082,7 @@
 			return 0
 		if(user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
 			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
-			msg_admin_niche("[key_name(user)] attempted to fire \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			msg_admin_niche("[key_name(user)] attempted to fire \a [name] in [get_area(src)] [ADMIN_JMP(loc)]")
 			return FALSE
 		if(current_mag && current_mag.current_rounds > 0)
 			make_rocket(user, 0, 1)
@@ -1239,7 +1239,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank //reloadable
 	name = "\improper QH-4 Shoulder-Mounted Anti-Tank RPG"
-	desc = "Used to take out light-tanks and enemy structures, the QH-4 is a dangerous weapon specialised against vehicles. Requires direct hits to penetrate vehicle armour."
+	desc = "Used to take out light-tanks and enemy structures, the QH-4 is a dangerous weapon specialised against vehicles. Requires direct hits to penetrate vehicle armor."
 	icon_state = "m83a2"
 	item_state = "m83a2"
 	unacidable = FALSE
@@ -1262,7 +1262,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable //single shot and disposable
 	name = "\improper M83A2 SADAR"
-	desc = "The M83A2 SADAR is a lightweight one-shot anti-armour weapon capable of engaging enemy vehicles at ranges up to 1,000m. Fully disposable, the rocket's launcher is discarded after firing. When stowed (unique-action), the SADAR system consists of a watertight carbon-fiber composite blast tube, inside of which is an aluminum launch tube containing the missile. The weapon is fired by pushing a charge button on the trigger grip.  It is sighted and fired from the shoulder."
+	desc = "The M83A2 SADAR is a lightweight one-shot anti-armor weapon capable of engaging enemy vehicles at ranges up to 1,000m. Fully disposable, the rocket's launcher is discarded after firing. When stowed (unique-action), the SADAR system consists of a watertight carbon-fiber composite blast tube, inside of which is an aluminum launch tube containing the missile. The weapon is fired by pushing a charge button on the trigger grip.  It is sighted and fired from the shoulder."
 	var/fired = FALSE
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/get_examine_text(mob/user)

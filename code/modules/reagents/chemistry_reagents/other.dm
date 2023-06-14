@@ -42,14 +42,14 @@
 	name = "Green Blood"
 	id = "greenblood"
 	description = "A thick green blood, definitely not human."
-	color = "#20d450"
+	color = BLOOD_COLOR_YAUTJA
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_HIGH_VALUE
 
 /datum/reagent/blood/synth_blood
 	name = "Synthetic Blood"
 	id = "whiteblood"
-	color = "#EEEEEE"
+	color = BLOOD_COLOR_SYNTHETIC
 	description = "A synthetic blood-like liquid used by all Synthetics. Very effective as a medium for liquid cooling of electronics."
 	chemclass = CHEM_CLASS_NONE
 
@@ -63,7 +63,7 @@
 /datum/reagent/blood/xeno_blood
 	name = "Acidic Blood"
 	id = "xenoblood"
-	color = "#dffc00"
+	color = BLOOD_COLOR_XENO
 	description = "A corrosive blood like substance. Makeup appears to be made out of acids and blood plasma."
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_HIGH_VALUE
@@ -72,7 +72,7 @@
 /datum/reagent/blood/xeno_blood/royal
 	name = "Dark Acidic Blood"
 	id = "xenobloodroyal"
-	color = "#bbb900"
+	color = BLOOD_COLOR_XENO_ROYAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_CORROSIVE = 6)
@@ -158,6 +158,17 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_HALLUCINOGENIC = 2)
+
+/datum/reagent/sleen
+	name = "Sleen"
+	id = "sleen"
+	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for it's distinct red hue. Overdosing can cause hallucinations, loss of coordination, seizures, brain damage, respiratory failure, and death."
+	reagent_state = LIQUID
+	color = "#C21D24" // rgb: 194, 29, 36
+	overdose = MED_REAGENTS_OVERDOSE
+	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_PAINKILLING = 6)
 
 /datum/reagent/serotrotium
 	name = "Serotrotium"

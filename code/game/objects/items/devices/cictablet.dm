@@ -158,7 +158,7 @@
 			for(var/client/C in GLOB.admins)
 				if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 					playsound_client(C,'sound/effects/sos-morse-code.ogg',10)
-			message_admins("[key_name(usr)] has requested a Distress Beacon! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
+			message_admins("[key_name(usr)] has requested a Distress Beacon! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
 			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 			COOLDOWN_START(src, distress_cooldown, COOLDOWN_COMM_REQUEST)
 			return TRUE

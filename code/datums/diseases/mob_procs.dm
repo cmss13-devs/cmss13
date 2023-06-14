@@ -7,6 +7,10 @@
 
 // This proc has some procs that should be extracted from it. I believe we can develop some helper procs from it - Rockdtben
 /mob/proc/contract_disease(datum/disease/virus, skip_this = 0, force_species_check=1, spread_type = -5)
+	if(istype(virus, /datum/disease/black_goo) && (SSticker.mode && !MODE_HAS_TOGGLEABLE_FLAG(MODE_ALLOW_ZOMBIES)))
+		message_admins(SPAN_HIGHDANGER("Something attempted to infect [key_name(src)] [ADMIN_JMP(src)] with black-goo!"))
+		return FALSE
+
 	if(stat == DEAD)
 		return
 	if(istype(virus, /datum/disease/advance))

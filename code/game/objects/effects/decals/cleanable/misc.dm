@@ -170,6 +170,9 @@
 	if(!istype(H)) return
 	if(H.species.name == "Human")
 		if(!H.shoes || prob(25))
+			if(SSticker.mode && !MODE_HAS_TOGGLEABLE_FLAG(MODE_ALLOW_ZOMBIES))
+				message_admins(SPAN_HIGHDANGER("[src] at [ADMIN_JMP(src)] tried to pass black-goo infection to [key_name(H)]!"))
+				return FALSE
 			H.contract_disease(new /datum/disease/black_goo)
 
 

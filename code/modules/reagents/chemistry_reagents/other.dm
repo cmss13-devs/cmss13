@@ -680,6 +680,9 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == "Human")
+			if(SSticker.mode && !MODE_HAS_TOGGLEABLE_FLAG(MODE_ALLOW_ZOMBIES))
+				message_admins(SPAN_HIGHDANGER("Black goo reaction-mob tried to infect [key_name(H)] [ADMIN_JMP(H)] with black-goo!"))
+				return FALSE
 			H.contract_disease(new /datum/disease/black_goo)
 
 /datum/reagent/blackgoo/reaction_turf(turf/T, volume)

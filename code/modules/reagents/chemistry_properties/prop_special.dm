@@ -215,6 +215,9 @@
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
+	if(SSticker.mode && !MODE_HAS_TOGGLEABLE_FLAG(MODE_ALLOW_ZOMBIES))
+		message_admins(SPAN_HIGHDANGER("[holder] tried to pass black-goo infection to [key_name(H)] [ADMIN_JMP(H)]!"))
+		return FALSE
 	H.contract_disease(new /datum/disease/black_goo, 1)
 
 /datum/chem_property/special/curing

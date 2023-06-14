@@ -843,3 +843,16 @@
 	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
 	message_admins("[src] has toggled Hardcore [MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) ? "on, causing all humans to instantly go perma on death" : "off, causing all humans to die like normal"].")
 
+/client/proc/toggle_zombies()
+	set name = "Toggle Zombie Spread"
+	set category = "Admin.Flags"
+
+	if(!admin_holder || !check_rights(R_DEBUG|R_EVENT))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_ALLOW_ZOMBIES
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_ALLOW_ZOMBIES) ? "allowed" : "forbidden"] zombiism to spread.")

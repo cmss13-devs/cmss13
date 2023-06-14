@@ -153,7 +153,8 @@ var/list/admin_verbs_major_event = list(
 	/client/proc/enable_podlauncher,
 	/client/proc/change_taskbar_icon,
 	/client/proc/change_weather,
-	/client/proc/admin_blurb
+	/client/proc/admin_blurb,
+	/client/proc/toggle_zombies
 )
 
 var/list/admin_verbs_spawn = list(
@@ -209,6 +210,7 @@ var/list/admin_verbs_debug = list(
 	/datum/admins/proc/view_href_log, /*shows the server HREF log for this round*/
 	/datum/admins/proc/view_tgui_log, /*shows the server TGUI log for this round*/
 	/client/proc/admin_blurb,
+	/client/proc/toggle_zombies,
 )
 
 var/list/admin_verbs_debug_advanced = list(

@@ -635,7 +635,7 @@
 	SIGNAL_HANDLER
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 	if(is_ground_level(z))
-		Destroy()
+		qdel(src)
 
 /obj/effect/alien/resin/acid_pillar/strong
 	name = "acid pillar"

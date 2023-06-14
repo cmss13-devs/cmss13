@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - spellcheck: "Weapon Stats examine UI now shows 'accurate range' rather than 'accuracy'"

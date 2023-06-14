@@ -62,7 +62,38 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 /obj/structure/flora/flamer_fire_act()
 	fire_act()
 
+/obj/structure/flora/fire_act()
+	if(QDELETED(src) || (fire_flag & FLORA_NO_BURN) || burning)
+		return
+	burning = TRUE
+	var/spread_time = rand(75, 150)
+	if(!(fire_flag & FLORA_BURN_NO_SPREAD))
+		addtimer(CALLBACK(src, PROC_REF(spread_fire)), spread_time)
+	addtimer(CALLBACK(src, PROC_REF(burn_up)), spread_time + 5 SECONDS)
 
+/obj/structure/flora/proc/spread_fire()
+	for(var/D in cardinal) //Spread fire
+		var/turf/T = get_step(src.loc, D)
+		if(T)
+			for(var/obj/structure/flora/F in T)
+				if(fire_flag & FLORA_BURN_SPREAD_ONCE)
+					F.fire_flag |= FLORA_BURN_NO_SPREAD
+				if(!(locate(/obj/flamer_fire) in T))
+					new /obj/flamer_fire(T, create_cause_data("wildfire"))
+
+/obj/structure/flora/proc/burn_up()
+	new /obj/effect/decal/cleanable/dirt(loc)
+	if(center)
+		new /obj/effect/decal/cleanable/dirt(loc) //Produces more ash at the center
+	qdel(src)
+
+/obj/structure/flora/ex_act(power)
+	if(power >= EXPLOSION_THRESHOLD_VLOW)
+		deconstruct(FALSE)
+
+/obj/structure/flora/get_projectile_hit_boolean(obj/item/projectile/P)
+	. = ..()
+	return FALSE
 
 //trees
 /obj/structure/flora/tree
@@ -299,35 +330,6 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	..()
 	overlays.Cut()
 	overlays += image("icon"=src.icon,"icon_state"=overlay_type,"layer"=ABOVE_XENO_LAYER,"dir"=dir)
-
-/obj/structure/flora/fire_act()
-	if(QDELETED(src) || (fire_flag & FLORA_NO_BURN) || burning)
-		return
-	burning = TRUE
-	var/spread_time = rand(75, 150)
-	if(!(fire_flag & FLORA_BURN_NO_SPREAD))
-		addtimer(CALLBACK(src, PROC_REF(spread_fire)), spread_time)
-	addtimer(CALLBACK(src, PROC_REF(burn_up)), spread_time + 5 SECONDS)
-
-/obj/structure/flora/proc/spread_fire()
-	for(var/D in cardinal) //Spread fire
-		var/turf/T = get_step(src.loc, D)
-		if(T)
-			for(var/obj/structure/flora/F in T)
-				if(fire_flag & FLORA_BURN_SPREAD_ONCE)
-					F.fire_flag |= FLORA_BURN_NO_SPREAD
-				if(!(locate(/obj/flamer_fire) in T))
-					new /obj/flamer_fire(T, create_cause_data("wildfire"))
-
-/obj/structure/flora/proc/burn_up()
-	new /obj/effect/decal/cleanable/dirt(loc)
-	if(center)
-		new /obj/effect/decal/cleanable/dirt(loc) //Produces more ash at the center
-	qdel(src)
-
-/obj/structure/flora/ex_act(power)
-	if(power >= EXPLOSION_THRESHOLD_VLOW)
-		deconstruct(FALSE)
 
 // MAP VARIANTS //
 // PARENT FOR COLOR, CORNERS AND CENTERS, BASED ON DIRECTIONS //

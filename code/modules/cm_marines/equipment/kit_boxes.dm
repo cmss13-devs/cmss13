@@ -367,7 +367,7 @@
 	new /obj/item/ammo_magazine/rifle/m4ra/ap(src)
 
 /obj/item/storage/box/kit/m41a_kit
-	name = "\improper M4RA Marksman Kit"
+	name = "\improper M41A Rifle Kit"
 	pro_case_overlay = "sniper"
 
 /obj/item/storage/box/kit/m41a_kit/fill_preset_inventory()

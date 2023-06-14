@@ -54,8 +54,7 @@ SUBSYSTEM_DEF(influxstats)
 /datum/controller/subsystem/influxstats/proc/run_special_round_statistics()
 	for(var/hive_tag in GLOB.hive_datum)
 		var/datum/hive_status/hive = GLOB.hive_datum[hive_tag]
-		if(hive.stored_larva > 0)
-			SSinfluxdriver.enqueue_stats("pooled_larva", list("hive" = hive.reporting_id), list("count" = hive.stored_larva))
+		SSinfluxdriver.enqueue_stats("pooled_larva", list("hive" = hive.reporting_id), list("count" = hive.stored_larva))
 
 /datum/controller/subsystem/influxstats/proc/run_round_statistics()
 	var/datum/entity/statistic/round/stats = SSticker?.mode?.round_stats
@@ -64,7 +63,6 @@ SUBSYSTEM_DEF(influxstats)
 	SSinfluxdriver.enqueue_stats_crude("chestbursts", stats.total_larva_burst)
 	SSinfluxdriver.enqueue_stats_crude("huggued", stats.total_huggers_applied)
 	SSinfluxdriver.enqueue_stats_crude("friendlyfire", stats.total_friendly_fire_instances)
-	SSinfluxdriver.enqueue_stats_crude("friendlykills", stats.total_friendly_fire_kills)
 
 	var/list/participants = flatten_entity_list(stats.participants)
 	if(length(participants))

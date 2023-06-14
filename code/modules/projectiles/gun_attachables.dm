@@ -1639,6 +1639,17 @@ Defined in conflicts.dm of the #defines folder.
 		if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
 
+/obj/item/attachable/upp_rpg_breech
+	name = "HJRA-12 Breech"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon_state = "hjra_placeholder"
+	attach_icon = "hjra_placeholder"
+	slot = "special"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 0
+	size_mod = 0
+
 /obj/item/attachable/stock/smg
 	name = "submachinegun stock"
 	desc = "A rare ARMAT stock distributed in small numbers to USCM forces. Compatible with the M39, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl"

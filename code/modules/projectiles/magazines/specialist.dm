@@ -337,10 +337,10 @@
 //UPP Rockets
 
 /obj/item/ammo_magazine/rocket/upp
-	name = "\improper Type 57 High-Explosive Rocket"
-	desc = "An anti-armour rocket specifically modified for penetration of armoured vehicle hulls."
+	name = "\improper HJRA-12 High-Explosive Rocket"
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard High-Explosive rocket for anti-personal or light-vehicle use."
 	caliber = "88mm"
-	icon_state = "rocket"
+	icon_state = "hjra_explosive"
 
 	max_rounds = 1
 	default_ammo = /datum/ammo/rocket
@@ -348,34 +348,23 @@
 	reload_delay = 85
 
 /obj/item/ammo_magazine/rocket/upp/at
-	name = "\improper Type 57 Anti-Tank Rocket"
-	desc = "An anti-armour rocket specifically modified for penetration of armoured vehicle hulls."
+	name = "\improper HJRA-12 Anti-Tank Rocket"
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard Anti-Tank rocket designed to disable or destroy hostile vehicles."
 	caliber = "88mm"
-	icon_state = "at_rocket"
+	icon_state = "hjra_tank"
 
 	max_rounds = 1
 	default_ammo = /datum/ammo/rocket/anti_tank
 	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
 	reload_delay = 85
 
-/obj/item/ammo_magazine/rocket/upp/ap
-	name = "\improper Type 57 Armor-Piercing Rocket"
-	desc = "An anti-armour rocket specifically modified for penetration of armoured vehicle hulls."
+/obj/item/ammo_magazine/rocket/incen
+	name = "\improper HJRA-12 Extreme-Intensity Incendiary Rocket"
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is an extreme-intensity incendiary rocket, using an experimental chemical designated R-189 by the UPP, it is designed to melt through fortified positions and bunkers but is most commonly used in an anti-personnal role due to over-issuing and the tempatures after use in its intended role leaving the tempature of the air incompatible with human life."
 	caliber = "88mm"
-	icon_state = "ap_rocket"
+	icon_state = "hjra_incen"
 
 	max_rounds = 1
-	default_ammo = /datum/ammo/rocket/ap
-	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
-	reload_delay = 85
-
-/obj/item/ammo_magazine/rocket/wp
-	name = "\improper Type 57 White-Phosphourous Rocket"
-	desc = "An anti-armour rocket specifically modified for penetration of armoured vehicle hulls."
-	caliber = "88mm"
-	icon_state = "wp_rocket"
-
-	max_rounds = 1
-	default_ammo = /datum/ammo/rocket/wp
+	default_ammo = /datum/ammo/rocket/wp/upp
 	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
 	reload_delay = 85

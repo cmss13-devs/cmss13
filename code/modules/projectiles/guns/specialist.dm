@@ -446,58 +446,48 @@
 			step(PMC_sniper,turn(PMC_sniper.dir,180))
 			PMC_sniper.apply_effect(5, WEAKEN)
 
-//SVD //Based on the actual Dragunov DMR rifle.
+//Type 88 //Based on the actual Dragunov DMR rifle.
 
 /obj/item/weapon/gun/rifle/sniper/svd
-	name = "\improper SVD Dragunov-033 designated marksman rifle"
-	desc = "A wannabe replica of an SVD, constructed from a MAR-40 by someone probably illiterate that thought the original SVD was built from an AK pattern. Fires 7.62x54mmR rounds."
+	name = "\improper Type 88 designated marksman rifle"
+	desc = "The standard issue DMR of the UPP, the Type 88 is a quite accurate rifle and sought after by competitive shooters and terrorists alike. Typically loaded with a armor-piercing 7.62x54mmR rounds in a 12 round magazine."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
-	icon_state = "svd003"
-	item_state = "svd003" //NEEDS A ONE HANDED STATE
+	icon_state = "type88"
+	item_state = "type88"
 
-	fire_sound = 'sound/weapons/gun_kt42.ogg'
+	fire_sound = 'sound/weapons/gun_ak47.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/svd
 	attachable_allowed = list(
 		//Muzzle,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp_replica,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
-		//Barrel,
-		/obj/item/attachable/slavicbarrel,
-		//Rail,
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight,
-		/obj/item/attachable/magnetic_harness,
-		/obj/item/attachable/scope,
-		/obj/item/attachable/scope/variable_zoom,
-		/obj/item/attachable/scope/variable_zoom/slavic,
-		/obj/item/attachable/scope/mini,
-		/obj/item/attachable/scope/slavic,
+		/obj/item/attachable/suppressor,
 		//Under,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/bipod,
-		//Stock,
-		/obj/item/attachable/stock/slavic,
+		//Integrated,
+		/obj/item/attachable/scope/variable_zoom
+		/obj/item/attachable/type88_stock
 	)
 	has_aimed_shot = FALSE
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY
-	starting_attachment_types = list(/obj/item/attachable/scope/variable_zoom/slavic)
+	starting_attachment_types = list(/obj/item/attachable/scope/variable_zoom)
 	sniper_beam_type = null
 	skill_locked = FALSE
 
 /obj/item/weapon/gun/rifle/sniper/svd/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/attachie = new /obj/item/attachable/slavicbarrel(src)
+	var/obj/item/attachable/attachie = new /obj/item/attachable/type88_stock(src)
 	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
 	attachie.Attach(src)
 	update_attachable(attachie.slot)
 
-	attachie = new /obj/item/attachable/stock/slavic(src)
+	attachie = new /obj/item/attachable/scope/variable_zoom(src)
+	S.hidden = TRUE
 	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
 	attachie.Attach(src)
 	update_attachable(attachie.slot)
@@ -507,10 +497,10 @@
 
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
+	fire_delay = FIRE_DELAY_TIER_5
 	burst_amount = BURST_AMOUNT_TIER_2
 	burst_delay = FIRE_DELAY_TIER_9
-	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult = BASE_ACCURACY_MULT * 3
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -1335,26 +1325,26 @@
 //UPP Rocket Launchers
 
 /obj/item/weapon/gun/launcher/rocket/upp
-	name = "\improper RPG-7 Handheld Anti-Tank Grenade Launcher" //placeholder for fitting name
-	desc = "Placeholder."
-	icon_state = "m83a2"
-	item_state = "m83a2"
+	name = "\improper HJRA-12 Handheld Anti-Tank Grenade Launcher"
+	desc = "The HJRA-12 Handheld Anti-Tank Grenade Launcher is the standard Anti-Armor weapon of the UPP. It is designed to be easy to use and to take out or disable armored vehicles."
+	icon_state = "hjra12"
+	item_state = "hjra12"
+	skill_locked = FALSE
 
-	current_mag = /obj/item/ammo_magazine/rocket/anti_tank
+	current_mag = /obj/item/ammo_magazine/rocket/upp/at
 
-	attachable_allowed = list()
+	attachable_allowed = list(/obj/item/attachable/upp_rpg_breech)
 
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY
 
 	flags_item = TWOHANDED
 
-
-/obj/item/weapon/gun/launcher/rocket/upp/skillless
-	name = "\improper RPG-2 Handheld Anti-Tank Grenade Launcher" //placeholder for fitting name
-	desc = "Placeholder."
-	icon_state = "m83a2"
-	item_state = "m83a2"
-	skill_locked = FALSE
+/obj/item/weapon/gun/launcher/rocket/upp/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/upp_rpg_breech/S = new(src)
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachables()
 
 //-------------------------------------------------------
 //Flare gun. Close enough to a specialist gun?

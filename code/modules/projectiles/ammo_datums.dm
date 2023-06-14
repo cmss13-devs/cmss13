@@ -2073,6 +2073,42 @@
 /datum/ammo/rocket/wp/do_at_max_range(obj/item/projectile/P)
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
+datum/ammo/rocket/wp/upp
+	name = "extreme-intensity incendiary rocket"
+	flags_ammo_behavior = AMMO_ROCKET|AMMO_EXPLOSIVE|AMMO_STRIKES_SURFACE
+	damage_type = BURN
+
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	accurate_range = 8
+	damage = 150
+	max_range = 10
+
+/datum/ammo/rocket/wp/upp/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
+	))
+
+/datum/ammo/rocket/wp/upp/drop_flame(turf/T, datum/cause_data/cause_data)
+	playsound(T, 'sound/weapons/gun_flamethrower3.ogg', 75, 1, 7)
+	if(!istype(T)) return
+	smoke.set_up(1, T)
+	smoke.start()
+	var/datum/reagent/napalm/upp/R = new()
+	new /obj/flamer_fire(T, cause_data, R, 3)
+
+/datum/ammo/rocket/wp/upp/on_hit_mob(mob/M, obj/item/projectile/P)
+	drop_flame(get_turf(M), P.weapon_cause_data)
+
+/datum/ammo/rocket/wp/upp/on_hit_obj(obj/O, obj/item/projectile/P)
+	drop_flame(get_turf(O), P.weapon_cause_data)
+
+/datum/ammo/rocket/wp/upp/on_hit_turf(turf/T, obj/item/projectile/P)
+	drop_flame(T, P.weapon_cause_data)
+
+/datum/ammo/rocket/wp/upp/do_at_max_range(obj/item/projectile/P)
+	drop_flame(get_turf(P), P.weapon_cause_data)
+
 /datum/ammo/rocket/wp/quad
 	name = "thermobaric rocket"
 	flags_ammo_behavior = AMMO_ROCKET|AMMO_STRIKES_SURFACE

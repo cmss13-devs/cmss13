@@ -407,6 +407,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			ghost.timeofdeath = world.time
 		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE
+			nest.ghost_of_buckled_mob = ghost
 
 /mob/dead/observer/Move(atom/newloc, direct)
 	following = null

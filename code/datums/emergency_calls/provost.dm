@@ -7,7 +7,7 @@
 	probability = 0
 
 /datum/emergency_call/provost_enforcer/New()
-	objectives = "Deploy to the "+MAIN_SHIP_NAME+" and enforce Marine Law."
+	objectives = "Deploy to the [MAIN_SHIP_NAME] and enforce Marine Law."
 	return ..()
 
 /datum/emergency_call/provost_enforcer/create_member(datum/mind/M, turf/override_spawn_loc)

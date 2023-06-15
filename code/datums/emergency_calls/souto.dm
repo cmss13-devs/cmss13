@@ -8,7 +8,7 @@
 	probability = 0
 
 /datum/emergency_call/souto/New()
-	arrival_message = "Give a round of applause for the marine who sent in ten-thousand Souto tabs to get me here! "+MAIN_SHIP_NAME+", Souto Man's here to party with YOU!"
+	arrival_message = "Give a round of applause for the marine who sent in ten-thousand Souto tabs to get me here! [MAIN_SHIP_NAME], Souto Man's here to party with YOU!"
 	return ..()
 
 /datum/emergency_call/souto/create_member(datum/mind/M, turf/override_spawn_loc)

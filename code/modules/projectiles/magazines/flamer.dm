@@ -78,7 +78,7 @@
 		return ..()
 
 	if(!target.reagents || target.reagents.reagent_list.len < 1)
-		to_chat(user, SPAN_WARNING("\The [target] is empty!"))
+		to_chat(user, SPAN_WARNING("[target] is empty!"))
 		return
 
 	if(!reagents)
@@ -97,7 +97,7 @@
 	var/fuel_amt_to_remove = Clamp(to_add.volume, 0, max_rounds - reagents.get_reagent_amount(to_add.id))
 	if(!fuel_amt_to_remove)
 		if(!max_rounds)
-			to_chat(user, SPAN_WARNING("\The [target] is empty!"))
+			to_chat(user, SPAN_WARNING("[target] is empty!"))
 		return
 
 	target.reagents.remove_reagent(to_add.id, fuel_amt_to_remove)
@@ -106,7 +106,7 @@
 	caliber = to_add.name
 	flamer_chem = to_add.id
 
-	to_chat(user, SPAN_NOTICE("You refill \the [src] with [caliber]."))
+	to_chat(user, SPAN_NOTICE("You refill [src] with [caliber]."))
 	update_icon()
 
 /obj/item/ammo_magazine/flamer_tank/update_icon()

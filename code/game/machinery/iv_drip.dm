@@ -41,11 +41,11 @@
 	delete_beam()
 	if(mode)
 		if(beaker)
-			beam_icon = (beaker.reagents.total_volume == 0) ? "iv_tube" : "iv_tube_bloodtest"
+			beam_icon = (beaker.reagents.total_volume == 0) ? "iv_tube" : "iv_tube_blood"
 		current_beam = attached.beam(src, beam_icon)
 	else
 		if(beaker)
-			beam_icon = (attached.blood_volume == 0) ? "iv_tube" : "iv_tube_bloodtest"
+			beam_icon = (attached.blood_volume == 0) ? "iv_tube" : "iv_tube_blood"
 		current_beam = src.beam(attached, beam_icon)
 
 /obj/structure/machinery/iv_drip/proc/delete_beam()

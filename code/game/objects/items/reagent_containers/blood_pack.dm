@@ -38,10 +38,10 @@
 	var/beam_icon = "iv_tube"
 	delete_beam()
 	if(mode)
-		beam_icon = (reagents.total_volume == 0) ? "iv_tube" : "iv_tube_bloodtest"
+		beam_icon = (reagents.total_volume == 0) ? "iv_tube" : "iv_tube_blood"
 		current_beam = connected_to.beam(connected_from, beam_icon)
 	else
-		beam_icon = (connected_to.blood_volume == 0) ? "iv_tube" : "iv_tube_bloodtest"
+		beam_icon = (connected_to.blood_volume == 0) ? "iv_tube" : "iv_tube_blood"
 		current_beam = connected_from.beam(connected_to, beam_icon)
 
 /obj/item/reagent_container/blood/proc/delete_beam()

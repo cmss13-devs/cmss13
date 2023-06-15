@@ -210,7 +210,7 @@
 
 	// Apparently this is metagaming? Lol.
 	if(iszombie(target))
-		to_chat(user, SPAN_WARNING("[target] skin falls off as you attempt to plant the c4"))
+		to_chat(user, SPAN_WARNING("[target]'s skin falls off as you attempt to plant the C4!"))
 		return FALSE
 
 	if(customizable && assembly_stage < ASSEMBLY_LOCKED)

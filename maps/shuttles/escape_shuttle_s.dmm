@@ -6,7 +6,7 @@
 /area/shuttle/escape_pod)
 "f" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor12"
+	icon_state = "floor4"
 	},
 /area/shuttle/escape_pod)
 "g" = (
@@ -46,11 +46,6 @@
 "K" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall4"
-	},
-/area/shuttle/escape_pod)
-"P" = (
-/turf/open/shuttle/escapepod{
-	icon_state = "floor11"
 	},
 /area/shuttle/escape_pod)
 "Q" = (
@@ -105,7 +100,7 @@ v
 (3,1,1) = {"
 a
 V
-P
+f
 T
 "}
 (4,1,1) = {"

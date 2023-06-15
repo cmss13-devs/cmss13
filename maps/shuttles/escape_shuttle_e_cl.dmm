@@ -69,7 +69,7 @@
 /area/shuttle/escape_pod)
 "K" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor10"
+	icon_state = "floor4"
 	},
 /area/shuttle/escape_pod)
 "O" = (

@@ -45,11 +45,6 @@
 	icon_state = "wall4"
 	},
 /area/shuttle/escape_pod)
-"H" = (
-/turf/open/shuttle/escapepod{
-	icon_state = "floor5"
-	},
-/area/shuttle/escape_pod)
 "I" = (
 /obj/structure/machinery/cryopod/evacuation,
 /obj/structure/sign/safety/cryo{
@@ -84,7 +79,7 @@
 /area/shuttle/escape_pod)
 "W" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor12"
+	icon_state = "floor4"
 	},
 /area/shuttle/escape_pod)
 
@@ -98,7 +93,7 @@ a
 (2,1,1) = {"
 F
 V
-H
+W
 W
 b
 "}

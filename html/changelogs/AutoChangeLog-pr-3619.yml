@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - balance: "Shipside roles now weight even less for xeno counts."

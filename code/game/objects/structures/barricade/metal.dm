@@ -188,8 +188,8 @@
 					SPAN_NOTICE("You strip off [src]'s upgrade, making it a normal cade."))
 				upgraded = null
 				explosive_multiplier = initial(explosive_multiplier)
-				brute_projectile_multiplier = initial(brute_projectile_multiplier)
 				brute_multiplier = initial(brute_multiplier)
+				brute_projectile_multiplier = initial(brute_projectile_multiplier)
 				burn_multiplier = initial(burn_multiplier)
 				burn_flame_multiplier = initial(burn_flame_multiplier)
 				new stack_type (loc, 1)

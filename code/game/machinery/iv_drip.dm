@@ -8,6 +8,7 @@
 	var/mob/living/carbon/attached = null
 	var/mode = 1 // 1 is injecting, 0 is taking blood.
 	var/obj/item/reagent_container/beaker = null
+	var/datum/beam/current_beam = null
 
 /obj/structure/machinery/iv_drip/update_icon()
 	if(src.attached)
@@ -35,6 +36,23 @@
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			overlays += filling
 
+/obj/structure/machinery/iv_drip/proc/update_beam()
+	var/beam_icon = "iv_tube"
+	delete_beam()
+	if(mode)
+		if(beaker)
+			beam_icon = (beaker.reagents.total_volume == 0) ? "iv_tube" : "iv_tube_bloodtest"
+		current_beam = attached.beam(src, beam_icon)
+	else
+		if(beaker)
+			beam_icon = (attached.blood_volume == 0) ? "iv_tube" : "iv_tube_bloodtest"
+		current_beam = src.beam(attached, beam_icon)
+
+/obj/structure/machinery/iv_drip/proc/delete_beam()
+	if(current_beam)
+		qdel(current_beam)
+		current_beam = null
+
 /obj/structure/machinery/iv_drip/MouseDrop(over_object, src_location, over_location)
 	..()
 
@@ -48,6 +66,7 @@
 			"You detach \the [src] from \the [attached].")
 			attached.active_transfusions -= src
 			attached = null
+			delete_beam()
 			update_icon()
 			stop_processing()
 			return
@@ -57,6 +76,7 @@
 			"You attach \the [src] to \the [over_object].")
 			attached = over_object
 			attached.active_transfusions += src
+			update_beam()
 			update_icon()
 			start_processing()
 
@@ -81,6 +101,7 @@
 			log_admin("[key_name(user)] put a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]).")
 
 			to_chat(user, "You attach \the [W] to \the [src].")
+			update_beam()
 			update_icon()
 		return
 	else
@@ -97,6 +118,7 @@
 				attached.emote("scream")
 			attached.active_transfusions -= src
 			attached = null
+			delete_beam()
 			update_icon()
 			stop_processing()
 			return
@@ -110,6 +132,7 @@
 					// speed up transfer on blood packs
 					transfer_amount = 4
 				attached.inject_blood(beaker, transfer_amount)
+				update_beam()
 				update_icon()
 
 		// Take blood
@@ -135,12 +158,14 @@
 				visible_message("\The [src] beeps loudly.")
 
 			T.take_blood(beaker,amount)
+			update_beam()
 			update_icon()
 
 /obj/structure/machinery/iv_drip/attack_hand(mob/user as mob)
 	if(src.beaker)
 		src.beaker.forceMove(get_turf(src))
 		src.beaker = null
+		update_beam()
 		update_icon()
 	else
 		return ..()
@@ -159,6 +184,7 @@
 
 	mode = !mode
 	to_chat(usr, "The IV drip is now [mode ? "injecting" : "taking blood"].")
+	update_beam()
 
 /obj/structure/machinery/iv_drip/get_examine_text(mob/user)
 	. = ..()

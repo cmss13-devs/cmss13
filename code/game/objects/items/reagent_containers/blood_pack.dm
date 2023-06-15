@@ -13,9 +13,9 @@
 
 	var/mode = BLOOD_BAG_INJECTING
 	var/mob/living/carbon/human/connected_to
+	var/mob/living/carbon/human/connected_from
 	var/blood_type = null
 	var/datum/beam/current_beam = null
-	var/beam_icon
 
 /obj/item/reagent_container/blood/Initialize()
 	. = ..()
@@ -34,6 +34,21 @@
 		if(10 to 50) icon_state = "half"
 		if(51 to INFINITY) icon_state = "full"
 
+/obj/item/reagent_container/blood/proc/update_beam()
+	var/beam_icon = "iv_tube"
+	delete_beam()
+	if(mode)
+		beam_icon = (reagents.total_volume == 0) ? "iv_tube" : "iv_tube_bloodtest"
+		current_beam = connected_to.beam(connected_from, beam_icon)
+	else
+		beam_icon = (connected_to.blood_volume == 0) ? "iv_tube" : "iv_tube_bloodtest"
+		current_beam = connected_from.beam(connected_to, beam_icon)
+
+/obj/item/reagent_container/blood/proc/delete_beam()
+	if(current_beam)
+		qdel(current_beam)
+		current_beam = null
+
 /obj/item/reagent_container/blood/attack(mob/attacked_mob, mob/user)
 	. = ..()
 
@@ -47,9 +62,8 @@
 			"You detach [src] from [connected_to].")
 		connected_to.active_transfusions -= src
 		connected_to = null
-		if(current_beam)
-			qdel(current_beam)
-			current_beam = null
+		connected_from = null
+		delete_beam()
 		return
 
 	if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
@@ -65,18 +79,12 @@
 
 	if(istype(attacked_mob, /mob/living/carbon/human))
 		connected_to = attacked_mob
+		connected_from = user
 		connected_to.active_transfusions += src
 		START_PROCESSING(SSobj, src)
 		user.visible_message("[user] attaches \the [src] to [connected_to].", \
 			"You attach \the [src] to [connected_to].")
-		if(mode == BLOOD_BAG_INJECTING)
-			current_beam = connected_to.beam(user, icon_state = "iv_tube_bloodtest", maxdistance = 2)
-		else
-			current_beam = user.beam(connected_to, icon_state = "iv_tube_bloodtest", maxdistance = 2)
-		//if(length(reagents.reagent_list))
-		//	beam_icon = "iv_tube_bloodtest"
-		//else
-		//	beam_icon = "iv_tube"
+		update_beam()
 
 /obj/item/reagent_container/blood/process()
 	//if we're not connected to anything stop doing stuff
@@ -101,13 +109,10 @@
 
 	//give blood
 	if(mode == BLOOD_BAG_INJECTING)
-		if(current_beam.icon_state == "iv_tube_bloodtest" && reagents.total_volume == 0)
-			qdel(current_beam)
-			current_beam = null
-			current_beam = connected_to.beam(current_human, icon_state = "iv_tube", maxdistance = 2)
 		if(volume > 0)
 			var/transfer_amount = REAGENTS_METABOLISM * 30
 			connected_to.inject_blood(src, transfer_amount)
+			update_beam()
 			return
 
 	// Take blood
@@ -122,10 +127,7 @@
 		return
 
 	connected_to.take_blood(src, amount)
-	if(current_beam.icon_state == "iv_tube_bloodtest" && connected_to.blood_volume == 0)
-		qdel(current_beam)
-		current_beam = null
-		current_beam = current_human.beam(connected_to, icon_state = "iv_tube", maxdistance = 2)
+	update_beam()
 
 /obj/item/reagent_container/blood/dropped()
 	..()
@@ -142,9 +144,8 @@
 		connected_to.emote("scream")
 	connected_to.active_transfusions -= src
 	connected_to = null
-	if(current_beam)
-		qdel(current_beam)
-		current_beam = null
+	connected_from = null
+	delete_beam()
 
 /obj/item/reagent_container/blood/verb/toggle_mode()
 	set category = "Object"
@@ -159,16 +160,7 @@
 
 	mode = !mode
 	to_chat(usr, "The blood bag is now [mode ? "giving blood" : "taking blood"].")
-	if(mode)
-		if(current_beam && current_beam.icon_state == "iv_tube_bloodtest")
-			qdel(current_beam)
-			current_beam = null
-			current_beam = connected_to.beam(usr, icon_state = "iv_tube_bloodtest", maxdistance = 2)
-	else
-		if(current_beam && current_beam.icon_state == "iv_tube_bloodtest")
-			qdel(current_beam)
-			current_beam = null
-			current_beam = usr.beam(connected_to, icon_state = "iv_tube_bloodtest", maxdistance = 2)
+	update_beam()
 
 
 /obj/item/reagent_container/blood/APlus

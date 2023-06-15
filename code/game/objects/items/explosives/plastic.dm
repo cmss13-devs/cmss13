@@ -208,7 +208,7 @@
 			to_chat(user, SPAN_WARNING("ARE YOU OUT OF YOUR MIND?!"))
 			return FALSE
 
-	// Apparently this is metagamming? Lol.
+	// Apparently this is metagaming? Lol.
 	if(iszombie(target))
 		to_chat(user, SPAN_WARNING("[target] skin falls off as you attempt to plant the c4"))
 		return FALSE

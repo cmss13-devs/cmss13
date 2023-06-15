@@ -57,3 +57,7 @@ var/atom/cmp_dist_origin=null
 
 /proc/cmp_typepaths_asc(A, B)
 	return sorttext("[B]","[A]")
+
+/// Compares mobs based on their timeofdeath value in ascending order
+/proc/cmp_mob_deathtime_asc(mob/A, mob/B)
+	return A.timeofdeath - B.timeofdeath

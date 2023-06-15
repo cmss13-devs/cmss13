@@ -157,7 +157,7 @@
 		var/list/candidates = get_alien_candidates()
 
 		if(candidates && candidates.len)
-			picked = pick(candidates)
+			picked = candidates[1]
 
 	// Spawn the larva
 	var/mob/living/carbon/xenomorph/larva/new_xeno

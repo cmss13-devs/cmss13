@@ -146,7 +146,7 @@
 			last_larva_time = world.time
 			var/list/players_with_xeno_pref = get_alien_candidates()
 			if(players_with_xeno_pref && players_with_xeno_pref.len && can_spawn_larva())
-				spawn_burrowed_larva(pick(players_with_xeno_pref))
+				spawn_burrowed_larva(players_with_xeno_pref[1])
 
 		if(linked_hive.hijack_burrowed_surge && (last_surge_time + surge_cooldown) < world.time)
 			last_surge_time = world.time

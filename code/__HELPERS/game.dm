@@ -241,32 +241,44 @@
 		else
 			return get_step(start, EAST)
 
-// Same as above but for alien candidates.
-/proc/get_alien_candidates()
+/// Get a list of observers that can be alien candidates, optionally sorted by timeofdeath
+/proc/get_alien_candidates(sorted = TRUE)
 	var/list/candidates = list()
 
 	for(var/i in GLOB.observer_list)
-		var/mob/dead/observer/O = i
+		var/mob/dead/observer/cur_obs = i
+		// Preference check
+		if(!cur_obs.client || !cur_obs.client.prefs || !(cur_obs.client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
+			continue
+
 		// Jobban check
-		if(!O.client || !O.client.prefs || !(O.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) || jobban_isbanned(O, JOB_XENOMORPH))
+		if(jobban_isbanned(cur_obs, JOB_XENOMORPH))
 			continue
 
 		//players that can still be revived are skipped
-		if(O.mind && O.mind.original && ishuman(O.mind.original))
-			var/mob/living/carbon/human/H = O.mind.original
-			if (H.check_tod() && H.is_revivable())
+		if(cur_obs.mind && cur_obs.mind.original && ishuman(cur_obs.mind.original))
+			var/mob/living/carbon/human/cur_human = cur_obs.mind.original
+			if(cur_human.check_tod() && cur_human.is_revivable())
 				continue
 
 		// copied from join as xeno
-		var/deathtime = world.time - O.timeofdeath
-		if(deathtime < 3000 && ( !O.client.admin_holder || !(O.client.admin_holder.rights & R_ADMIN)) )
+		var/deathtime = world.time - cur_obs.timeofdeath
+		if(deathtime < 3000 && ( !cur_obs.client.admin_holder || !(cur_obs.client.admin_holder.rights & R_ADMIN)) )
 			continue
 
-		// Admins and AFK players cannot be drafted
-		if(O.client.inactivity / 600 > ALIEN_SELECT_AFK_BUFFER + 5 || (O.client.admin_holder && (O.client.admin_holder.rights & R_MOD)) && O.adminlarva == 0)
+		// AFK players cannot be drafted
+		if(cur_obs.client.inactivity / 600 > ALIEN_SELECT_AFK_BUFFER + 5)
 			continue
 
-		candidates += O
+		// Mods with larva protection cannot be drafted
+		if((cur_obs.client.admin_holder && (cur_obs.client.admin_holder.rights & R_MOD)) && cur_obs.adminlarva == 0)
+			continue
+
+		candidates += cur_obs
+
+	// Optionally sort by timeofdeath
+	if(sorted && candidates.len)
+		candidates = sort_list(candidates, GLOBAL_PROC_REF(cmp_mob_deathtime_asc))
 
 	return candidates
 

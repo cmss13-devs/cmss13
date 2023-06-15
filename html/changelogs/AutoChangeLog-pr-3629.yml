@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "Adds a M41A Mk2 kit to the Squad Leaders vendor."

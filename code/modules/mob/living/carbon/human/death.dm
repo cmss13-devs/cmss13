@@ -50,6 +50,7 @@
 		disable_lights()
 		disable_special_items()
 		disable_headsets() //Disable radios for dead people to reduce load
+		AddComponent(/datum/component/weed_food)
 	if(pulledby && isxeno(pulledby)) // Xenos lose grab on dead humans
 		pulledby.stop_pulling()
 	//Handle species-specific deaths.

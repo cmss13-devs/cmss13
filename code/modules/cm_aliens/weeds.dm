@@ -77,6 +77,9 @@
 	if(T)
 		T.weeds = src
 		weeded_turf = T
+		for(var/mob/living/carbon/human/body in T)
+			if(body.stat & DEAD && !body.is_xeno_grabbable) // TODO: Are there any non-bursted bodies this applies to?
+				body.AddComponent(/datum/component/weed_food)
 
 	RegisterSignal(src, list(
 		COMSIG_ATOM_TURF_CHANGE,

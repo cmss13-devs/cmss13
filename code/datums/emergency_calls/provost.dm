@@ -4,7 +4,7 @@
 	name = "USCM Provost Enforcers"
 	mob_max = 5
 	mob_min = 5
-	objectives = "Deploy to the USS Almayer and enforce Marine Law."
+	objectives = "Deploy to the "+MAIN_SHIP_DEFAULT_NAME+" and enforce Marine Law."
 	probability = 0
 
 

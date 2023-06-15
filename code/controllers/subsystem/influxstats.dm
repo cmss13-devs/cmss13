@@ -7,8 +7,8 @@ SUBSYSTEM_DEF(influxstats)
 	runlevels  = RUNLEVEL_LOBBY|RUNLEVELS_DEFAULT
 	flags      = SS_KEEP_TIMING
 
-	var/checkpoint = 0
-	var/step = 1
+	var/checkpoint = 0 //! Counter of data snapshots sent
+	var/step = 1 //! Current task in progress, for pausing/resuming
 
 /datum/controller/subsystem/influxstats/Initialize()
 	var/period = text2num(CONFIG_GET(number/influxdb_stats_period))
@@ -55,13 +55,16 @@ SUBSYSTEM_DEF(influxstats)
 	for(var/hive_tag in GLOB.hive_datum)
 		var/datum/hive_status/hive = GLOB.hive_datum[hive_tag]
 		SSinfluxdriver.enqueue_stats("pooled_larva", list("hive" = hive.reporting_id), list("count" = hive.stored_larva))
+		var/burst_larvas = GLOB.larva_burst_by_hive[hive] || 0
+		SSinfluxdriver.enqueue_stats("burst_larva", list("hive" = hive.reporting_id), list("count" = burst_larvas))
 
 /datum/controller/subsystem/influxstats/proc/run_round_statistics()
 	var/datum/entity/statistic/round/stats = SSticker?.mode?.round_stats
 	if(!stats)
 		return // Sadge
+
 	SSinfluxdriver.enqueue_stats_crude("chestbursts", stats.total_larva_burst)
-	SSinfluxdriver.enqueue_stats_crude("huggued", stats.total_huggers_applied)
+	SSinfluxdriver.enqueue_stats_crude("hugged", stats.total_huggers_applied)
 	SSinfluxdriver.enqueue_stats_crude("friendlyfire", stats.total_friendly_fire_instances)
 
 	var/list/participants = flatten_entity_list(stats.participants)
@@ -97,6 +100,7 @@ SUBSYSTEM_DEF(influxstats)
 
 /datum/controller/subsystem/influxstats/proc/run_job_statistics()
 	var/list/team_job_stats = list()
+	var/list/squad_job_stats = ROLES_SQUAD_ALL.Copy()
 
 	for(var/client/client in GLOB.clients)
 		var/team
@@ -114,6 +118,13 @@ SUBSYSTEM_DEF(influxstats)
 			continue
 		else if(mob.faction == FACTION_MARINE || mob.faction == FACTION_SURVIVOR)
 			team = "humans"
+			var/mob/living/carbon/human/employed_human = mob
+			if(istype(employed_human))
+				var/squad = employed_human.assigned_squad?.name
+				if(squad in squad_job_stats)
+					squad_job_stats[squad][job] = (squad_job_stats[squad][job] || 0) + 1
+					continue // Defer to squad stats instead
+			// else: So you're in the USCM and have a job but aren't an human? Tell me more Dr Jones...
 		else if(ishuman(mob))
 			team = "humans_others"
 		else if(isxeno(mob))
@@ -133,3 +144,7 @@ SUBSYSTEM_DEF(influxstats)
 	for(var/team in team_job_stats)
 		for(var/job in team_job_stats[team])
 			SSinfluxdriver.enqueue_stats("job_stats", list("team" = team, "job" = job), list("count" = team_job_stats[team][job]))
+
+	for(var/squad in squad_job_stats)
+		for(var/job in squad_job_stats[squad])
+			SSinfluxdriver.enqueue_stats("job_stats", list("team" = "humans", "job" = job, "squad" = squad), list("count" = squad_job_stats[squad][job]))

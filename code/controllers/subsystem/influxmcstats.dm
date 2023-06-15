@@ -6,6 +6,7 @@ SUBSYSTEM_DEF(influxmcstats)
 	runlevels  = RUNLEVEL_LOBBY|RUNLEVELS_DEFAULT
 	flags      = SS_KEEP_TIMING
 	var/checkpoint = 0
+	var/list/subsystem_name_cache = list()
 
 /datum/controller/subsystem/influxmcstats/Initialize()
 	var/period = text2num(CONFIG_GET(number/influxdb_mcstats_period))
@@ -21,13 +22,16 @@ SUBSYSTEM_DEF(influxmcstats)
 	if(!SSinfluxdriver.can_fire)
 		can_fire = FALSE
 		return
-	var/static/regex/get_last_path_element=regex(@{"/([^/]+)$"})
+	var/static/regex/get_last_path_element = regex(@{"/([^/]+)$"})
 	checkpoint++
 	for(var/datum/controller/subsystem/SS in Master.subsystems)
 		if(!SS.can_fire)
 			continue
-		if(!get_last_path_element.Find("[SS.type]"))
+		if(!subsystem_name_cache[SS.type])
+			get_last_path_element.Find("[SS.type]")
+			subsystem_name_cache[SS.type] = "SS[get_last_path_element.group[1]]"
+		var/SSname = subsystem_name_cache[SS.type]
+		if(!SSname)
 			stack_trace("Influx MC Stats couldnt name a subsystem, type=[SS.type]")
 			continue
-		var/SSname = "SS[get_last_path_element.group[1]]"
 		SSinfluxdriver.enqueue_stats("sstimings", list("ss" = SSname), list("cost" = SS.cost, "tick_overrun" = SS.tick_overrun, "tick_usage" = SS.tick_usage, "times_fired" = SS.times_fired))

@@ -10,7 +10,8 @@ SUBSYSTEM_DEF(influxdriver)
 
 	/// Maximum amount of metric lines to send at most in one request
 	/// This is neccessary because sending a lot of metrics can get expensive
-	var/max_batch = 100
+	/// and drive the subsystem into overtime, but we can't split the work as it'd be even less efficient
+	var/max_batch = 150
 
 	/// Last timestamp in microseconds
 	var/timestamp_cache_realtime
@@ -33,10 +34,10 @@ SUBSYSTEM_DEF(influxdriver)
 /datum/controller/subsystem/influxdriver/proc/update_timestamp()
 	PRIVATE_PROC(TRUE)
 	// We make only one request to rustg per game tick, so we cache the result per world.time
-	timestamp_cache_worldtime = world.time
-	var/whole_timestamp = unix_timestamp_string()
+	var/whole_timestamp = unix_timestamp_string() // Format "7129739474.4758981" - timestamp with up to 7-8 decimals
 	var/list/tsparts = splittext(whole_timestamp, ".")
 	var/fractional = copytext(pad_trailing(tsparts[2], "0", 6), 1, 7) // in microseconds
+	timestamp_cache_worldtime = world.time
 	timestamp_cache_realtime = "[tsparts[1]][fractional]"
 
 /datum/controller/subsystem/influxdriver/fire(resumed)

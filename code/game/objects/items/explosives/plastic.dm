@@ -211,7 +211,7 @@
 	// Apparently this is metagamming? Lol.
 	if(iszombie(target))
 		SPAN_WARNING("[target] skin falls off as you attempt to plant the c4")
-			return FALSE
+		return FALSE
 
 	if(customizable && assembly_stage < ASSEMBLY_LOCKED)
 		return FALSE

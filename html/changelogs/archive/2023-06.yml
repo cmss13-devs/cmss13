@@ -171,3 +171,52 @@
       as ground or ship during the next round.
   ihatethisengine:
   - bugfix: MMB cannot be used to attack again
+2023-06-13:
+  Al-1ce:
+  - rscadd: Backstories have been added to various interesting drinks.
+  Hopek:
+  - balance: Huggers no longer lose health over time on weeds.
+  Huffie56:
+  - bugfix: restore some object back to original to keep them compatible with older
+      map.
+  Morrow:
+  - bugfix: Added missing Fiorina Sciannex groundside xeno landmarks
+  - bugfix: Made nukes get those pesky closet/tunnel hiders
+  - balance: Crippling Strike is now forced harm intent
+  Morrow, Triiodine:
+  - rscadd: Added a smartgun specific battery that you use with the smartgun itself.
+  - rscdel: Removed the smartgun powerpack. You no longer need it for the smartgun.
+  TheGamerdk:
+  - bugfix: You'll now be allowed to reenter your nested body when freed, even if
+      you used the ghost verb.
+  realforest2001:
+  - code_imp: Updated all the Get_Access() procs, and removed some procs where they
+      completely overlapped with others in presets.
+2023-06-15:
+  Drathek:
+  - bugfix: Fixed a runtime in shuttles when a mob is non-existent or has no turf
+      location.
+  Huffie56:
+  - rscadd: Added a Empty canister verb to the Pyrotechnician fuel tanks
+  - bugfix: prevent fuel backpacks to be filled via reagent tank with improper chemical(welding
+      fuel).
+  Jackie_Estegado:
+  - bugfix: The Burrower's burrow ability will no longer be not cancelled just because
+      you clicked on a tile that you wouldn't have been able to burrow to.
+  - bugfix: Burrowing will no longer complete even though you cancelled it.
+  Morrow:
+  - balance: Grass (and other flora) will no longer eat your bullets.
+  - bugfix: Fixed a runtime when observing before roundstart
+  SpartanBobby:
+  - bugfix: fixes invisible walls on LV522
+  - bugfix: fixes unweedable tiles on LV522
+  - bugfix: 'fixes invisible windows on LV522 (if you spot any invisible windows send
+      a picture of them to the SS13: CM discord #mapperchannel @spartanbobby'
+  - bugfix: fixes LV522 OOB area in the W-Y vault
+  - maptweak: moves sandbags and a breaching charge on LV522
+  - maptweak: fixes bigred tileset inconsistencies in the expanded filt nightmare
+  - maptweak: Replaces LV522 ceramic plates with MRE crate
+  fira:
+  - bugfix: Fixed an internal error when scanning turfs with Black Market scanner.
+  realforest2001:
+  - spellcheck: Weapon Stats examine UI now shows 'accurate range' rather than 'accuracy'

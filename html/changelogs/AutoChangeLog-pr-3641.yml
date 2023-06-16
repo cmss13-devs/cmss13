@@ -1,0 +1,4 @@
+author: "TheGamerdk, ihatethisengine"
+delete-after: True
+changes:
+  - bugfix: "player can no longer come back in their bodies after ghosting"

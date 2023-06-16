@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - bugfix: "Larva who spawn in containment in Trijent will now have weeds to grow on."

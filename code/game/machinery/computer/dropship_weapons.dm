@@ -321,7 +321,7 @@
 							is_outside = TRUE
 						if(CEILING_GLASS)
 							is_outside = TRUE
-				if(!is_outside && !cavebreaker) //cavebreaker doesn't care
+				if(!is_outside && !(selected_equipment.ammo_ignore_caves)) //cavebreaker doesn't care
 					to_chat(usr, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
 					return
 				if (protected_by_pylon(TURF_PROTECTION_CAS, TU))

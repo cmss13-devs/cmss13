@@ -323,9 +323,9 @@
 		cell_explosion(impact, 450, 100, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, create_cause_data(initial(name), source_mob)) //Insane fall off combined with insane damage makes the Keeper useful for single targets, but very bad against multiple.
 		qdel(src)
 
-/obj/structure/ship_ammo/rocket/bunkerbuster
+/obj/structure/ship_ammo/rocket/bunker_buster
 	name = "\improper GBU-67-EP 'Paveway XXI'"
-	desc = "The GBU-67-EP 'Paveway IX' takes the GBU-67 LGB and mates it with an enhanced penetrator that allows it to strike targets dozens of meters underground."
+	desc = "The GBU-67-EP 'Paveway XXI' takes the GBU-67 LGB and mates it with an enhanced penetrator warhead that allows it to strike targets dozens of meters underground."
 	icon_state = "bunkerbuster"
 	travelling_time = 20 //A fast payload due to its very tight blast zone
 	ammo_id = "p"

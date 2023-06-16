@@ -38,6 +38,8 @@
 	/// Mob that fired this ammunition (the pilot pressing the trigger)
 	var/mob/source_mob
 	var/combat_equipment = TRUE
+	var/ammo_ignore_caves = FALSE
+	/// Ignores Caves when lining up FMs
 
 /obj/structure/ship_ammo/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
 	if(unslashable) 
@@ -328,6 +330,7 @@
 	travelling_time = 20 //A fast payload due to its very tight blast zone
 	ammo_id = "p"
 	point_cost = 600
+	ammo_ignore_caves = TRUE
 	fire_mission_delay = 0 //no FMs, direct only
 
 /obj/structure/ship_ammo/rocket/bunkerbuster/detonate_on(turf/impact)

@@ -220,3 +220,11 @@
   - bugfix: Fixed an internal error when scanning turfs with Black Market scanner.
   realforest2001:
   - spellcheck: Weapon Stats examine UI now shows 'accurate range' rather than 'accuracy'
+2023-06-16:
+  Morrow:
+  - balance: Shipside roles now weight even less for xeno counts.
+  Nanu, Spartanbobby, Julian56:
+  - mapadd: Added W-Y Station, UPP Station, CLF Station and...
+  - admin: Admins can now use the custom ERT stations for events or even base of operations.
+  Steelpoint:
+  - rscadd: Adds a M41A Mk2 kit to the Squad Leaders vendor.

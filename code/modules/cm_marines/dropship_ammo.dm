@@ -328,7 +328,7 @@
 	travelling_time = 20 //A fast payload due to its very tight blast zone
 	ammo_id = "p"
 	point_cost = 600
-	fire_mission_delay = 4 //We don't care because our ammo has just 1 rocket
+	fire_mission_delay = 0 //no FMs, direct only
 
 /obj/structure/ship_ammo/rocket/bunkerbuster/detonate_on(turf/impact)
 	impact.ceiling_debris_check(5)

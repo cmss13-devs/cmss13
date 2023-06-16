@@ -358,6 +358,9 @@
 		var/image/tail_image = image('icons/effects/status_effects.dmi', "hooked")
 		H.overlays += tail_image
 
+		if(H.leaning_on)
+			H.leaning_on.stop_wall_lean()
+
 		H.throw_atom(throw_target_turf, get_dist(throw_target_turf, H)-1, SPEED_VERY_FAST)
 
 		qdel(tail_beam) // hook beam catches target, throws them back, is deleted (throw_atom has sleeps), then hook beam catches another target, repeat
@@ -695,7 +698,7 @@
 					to_chat(dancer_user, SPAN_WARNING("You can't attack through [atom_in_turf]!"))
 					return
 
-	
+
 
 	// Hmm today I will kill a marine while looking away from them
 	dancer_user.face_atom(target_carbon)
@@ -704,11 +707,11 @@
 	var/buffed = FALSE
 
 	var/datum/effects/dancer_tag/dancer_tag_effect = locate() in target_carbon.effects_list
-	
+
 	if (dancer_tag_effect)
 		buffed = TRUE
 		qdel(dancer_tag_effect)
-		
+
 	if (!buffed)
 		new /datum/effects/xeno_slow(target_carbon, dancer_user, null, null, get_xeno_stun_duration(target_carbon, slow_duration))
 

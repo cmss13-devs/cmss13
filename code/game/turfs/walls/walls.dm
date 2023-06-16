@@ -44,7 +44,7 @@
 	var/list/blend_objects = list(/obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed) // Objects which to blend with
 	var/list/noblend_objects = list(/obj/structure/machinery/door/window) //Objects to avoid blending with (such as children of listed blend objects.
 	///Is someone currently leaning on it, and who
-	var/mob/living/leaned_on_by
+	var/mob/living/carbon/human/leaned_on_by
 
 /turf/closed/wall/Initialize(mapload, ...)
 	. = ..()
@@ -66,6 +66,7 @@
 /turf/closed/wall/Destroy(force)
 	if(leaned_on_by)
 		stop_wall_lean()
+		leaned_on_by = null
 	. = ..()
 
 
@@ -628,17 +629,16 @@
 			for(var/obj/limb/current_mobs_limb in current_human.limbs)
 				current_mobs_limb.layer = WALL_LAYER - 0.02
 
-	to_chat(current_human, SPAN_BOLDWARNING(lean_dir)) //someone remind me to remove this if i forget
 	current_human.leaning_on = src
 	current_human.setDir(lean_dir)
 	leaned_on_by = current_human
 
-/turf/closed/wall/proc/stop_wall_lean(mob/living/carbon/human/current_human = leaned_on_by)
-	if(current_human && current_human.leaning_on)
-		current_human.leaning_on = null
+/turf/closed/wall/proc/stop_wall_lean()
+	if(leaned_on_by && leaned_on_by.leaning_on)
+		leaned_on_by.leaning_on = null
+		animate(leaned_on_by, 0.25 SECONDS, easing = QUAD_EASING, pixel_x = initial(leaned_on_by.pixel_x), pixel_y = initial(leaned_on_by.pixel_y))
+		if(leaned_on_by.dir == NORTH)
+			leaned_on_by.layer = initial(leaned_on_by.layer)
+			for(var/obj/limb/current_mobs_limb in leaned_on_by.limbs)
+				leaned_on_by.layer = initial(leaned_on_by.layer)
 		leaned_on_by = null
-		animate(current_human, 0.25 SECONDS, easing = QUAD_EASING, pixel_x = initial(current_human.pixel_x), pixel_y = initial(current_human.pixel_y))
-		if(current_human.dir == NORTH)
-			current_human.layer = initial(current_human.layer)
-			for(var/obj/limb/current_mobs_limb in current_human.limbs)
-				current_mobs_limb.layer = initial(current_mobs_limb.layer)

@@ -687,7 +687,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 		return
 	if(client.moving)
 		return
-	if(stat==2)
+	if(stat == DEAD)
 		return
 	if(anchored)
 		return

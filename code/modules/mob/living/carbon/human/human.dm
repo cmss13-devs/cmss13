@@ -91,6 +91,11 @@
 	selected_ability = null
 	remembered_dropped_objects = null
 
+	if(leaning_on)
+		if(leaning_on.leaned_on_by == src)
+			leaning_on.stop_wall_lean()
+		leaning_on = null
+
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()
 

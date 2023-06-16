@@ -114,6 +114,9 @@
 			break
 		throw_turf = temp
 
+	if(carbone.leaning_on)
+		carbone.leaning_on.stop_wall_lean()
+
 	// Hmm today I will kill a marine while looking away from them
 	woyer.face_atom(carbone)
 	woyer.animation_attack_on(carbone)

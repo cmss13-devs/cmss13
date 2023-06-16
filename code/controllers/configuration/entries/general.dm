@@ -263,7 +263,7 @@ Voting
 
 // Gamemode to auto-switch to at the start of the round
 /datum/config_entry/string/gamemode_default
-	config_entry_value = "Extended"
+	config_entry_value = "extended"
 
 // Rounds needed for gamemode vote
 /datum/config_entry/number/gamemode_rounds_needed

@@ -6,7 +6,7 @@
 	var/list/possibly_ammunition = list()
 	//add some useful things here and make it object... later... skill issue.
 
-/datum/space_weapon/proc/on_shot(location, list/potential_ammo, intercept_chance)
+/datum/space_weapon/proc/on_shot(location, list/potential_ammo, intercept_chance, delay = 0)
 	var/intercepted = 0
 	var/missed = 0
 	var/hits = 0
@@ -22,6 +22,7 @@
 		else
 			ammo.hit_target(picked_atom)
 			hits++
+		sleep(delay)
 	shipwide_ai_announcement("WARNING, [hits] HIT SHIP HULL, [missed] MISSED AND [intercepted] INTERCEPTED!", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')
 
 /datum/space_weapon/proc/shot_message(quantity, hit_eta)

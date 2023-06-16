@@ -2,23 +2,30 @@
 	set name = "Weapons"
 	set category = "Admin.Ship"
 
-	var/datum/space_weapon/weapon_type = tgui_alert(src, "What weapon?", "Choose wisely!", GLOB.space_weapons, 20 SECONDS)
+	var/list/datum/space_weapon/potential_weapons = list()
+	for(var/weapon_to_get in GLOB.space_weapons)
+		var/datum/space_weapon/weapon_to_set = GLOB.space_weapons[weapon_to_get]
+		LAZYSET(potential_weapons, weapon_to_set.name, weapon_to_set)
+
+	var/weapon_type = tgui_input_list(src, "What weapon?", "Choose wisely!", potential_weapons)
 	if(!weapon_type)
 		return
-	weapon_type = GLOB.space_weapons[weapon_type]
 
 	var/list/ammo_type = list()
-	if(tgui_alert(src, "Supposed to use all ammo types?", "Ammo selector", list("Yes", "No")) == "Yes") 
-		ammo_type = weapon_type.possibly_ammunition
+	if(tgui_alert(src, "Use all ammo types?", "Ammo selector", list("Yes", "No")) == "Yes")
+		ammo_type = potential_weapons[weapon_type].possibly_ammunition
 	else
-		var/list/potential_ammo_list = weapon_type.possibly_ammunition
-		var/number_of_ammo = tgui_input_number(src, "How many?", "Ammo selector", 1, length(potential_ammo_list) - 1, 1, 20 SECONDS)
-		for(var/i = 1 to number_of_ammo)
-			var/additional_ammo = tgui_alert(src, "Choose ammo", "Ammo selector", potential_ammo_list, 20 SECONDS)
+		var/list/datum/space_weapon_ammo/potential_ammo = list()
+		for(var/ammo_to_get in potential_weapons[weapon_type].possibly_ammunition)
+			var/datum/space_weapon_ammo/ammo_to_set = GLOB.space_weapons_ammo[ammo_to_get]
+			LAZYSET(potential_ammo, ammo_to_set.name, ammo_to_set)
+
+		while(length(potential_ammo))
+			var/additional_ammo = tgui_input_list(src, "Choose ammo", "Ammo selector", potential_ammo, 20 SECONDS)
 			if(!additional_ammo)
 				break
-			ammo_type += additional_ammo
-			potential_ammo_list -= additional_ammo
+			ammo_type += potential_ammo[additional_ammo]
+			potential_ammo -= additional_ammo
 
 	if(!length(ammo_type))
 		return
@@ -37,11 +44,11 @@
 		quantity = tgui_input_number(src, "How many?", "Don't go overboard. Please.", 1, 16, 1, 20 SECONDS)
 		targets = shipside_random_turf_picker(quantity)
 
-	if(tgui_alert(src, "Are you sure you want to open fire at the [MAIN_SHIP_NAME] with those parameters?", "Choose wisely!", list("Yes", "No"), 20 SECONDS) != "Yes")
+	if(tgui_alert(src, "Are you sure you want to open fire at the [MAIN_SHIP_NAME] with those parameters?", "Choose wisely!", list("Yes", "No")) != "Yes")
 		return
 
-	weapon_type.shot_message(length(targets), hit_eta)
-	addtimer(CALLBACK(weapon_type, TYPE_PROC_REF(/datum/space_weapon, on_shot), targets, ammo_type, intercept_chance), hit_eta SECONDS)
+	potential_weapons[weapon_type].shot_message(length(targets), hit_eta)
+	addtimer(CALLBACK(potential_weapons[weapon_type], TYPE_PROC_REF(/datum/space_weapon, on_shot), targets, ammo_type, intercept_chance), hit_eta SECONDS)
 	message_admins("[key_name_admin(src)] Fired [quantity] of [ammo_type] form [weapon_type] at the Almayer, with point defense as [intercept_chance]%")
 	if(intercept_chance)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING TARGET[quantity > 1 ? "S" : ""], SPOOLING UP POINT DEFENSE. ATTEMPTING TO INTERCEPT." , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), (hit_eta - 4) SECONDS)

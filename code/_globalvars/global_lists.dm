@@ -106,7 +106,7 @@ var/global/list/list/chemical_gen_classes_list = list("C" = list(),"C1" = list()
 //properties generated in chemicals, helps to make sure the same property doesn't show up 10 times
 GLOBAL_LIST_INIT_TYPED(generated_properties, /list, list("positive" = list(), "negative" = list(), "neutral" = list()))
 
-GLOBAL_LIST_INIT_TYPED(space_weapons, /datum/space_weapon, name)
+GLOBAL_LIST_INIT_TYPED(space_weapons, /datum/space_weapon, setup_ship_weapon())
 GLOBAL_LIST_INIT_TYPED(space_weapons_ammo, /datum/space_weapon_ammo, setup_ship_ammo())
 
 GLOBAL_LIST_INIT_TYPED(ammo_list, /datum/ammo, setup_ammo()) //List of all ammo types. Used by guns to tell the projectile how to act.
@@ -291,6 +291,14 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 		all_species[S.name] = S
 	return all_species
 
+
+/proc/setup_ship_weapon()
+	var/list/blacklist = list()
+	var/list/ammo_list = list()
+	for(var/T in subtypesof(/datum/space_weapon) - blacklist)
+		var/datum/space_weapon/A = new T
+		ammo_list[A.type] = A
+	return ammo_list
 
 /proc/setup_ship_ammo()
 	var/list/blacklist = list()

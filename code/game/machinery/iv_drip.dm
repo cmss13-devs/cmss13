@@ -36,17 +36,20 @@
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			overlays += filling
 
-/obj/structure/machinery/iv_drip/proc/update_beam()
+/obj/structure/machinery/iv_drip/proc/update_beam(ignore = FALSE)
 	var/beam_icon = "iv_tube"
-	delete_beam()
 	if(mode)
 		if(beaker)
 			beam_icon = (beaker.reagents.total_volume == 0) ? "iv_tube" : "iv_tube_blood"
-		current_beam = attached.beam(src, beam_icon)
+		if(current_beam && current_beam.icon_state != beam_icon || ignore)
+			delete_beam()
+			current_beam = attached.beam(src, beam_icon)
 	else
 		if(beaker)
 			beam_icon = (attached.blood_volume == 0) ? "iv_tube" : "iv_tube_blood"
-		current_beam = src.beam(attached, beam_icon)
+		if(current_beam && current_beam.icon_state != beam_icon || ignore)
+			delete_beam()
+			current_beam = src.beam(attached, beam_icon)
 
 /obj/structure/machinery/iv_drip/proc/delete_beam()
 	if(current_beam)
@@ -76,7 +79,7 @@
 			"You attach \the [src] to \the [over_object].")
 			attached = over_object
 			attached.active_transfusions += src
-			update_beam()
+			update_beam(ignore = TRUE)
 			update_icon()
 			start_processing()
 
@@ -184,7 +187,7 @@
 
 	mode = !mode
 	to_chat(usr, "The IV drip is now [mode ? "injecting" : "taking blood"].")
-	update_beam()
+	update_beam(ignore = TRUE)
 
 /obj/structure/machinery/iv_drip/get_examine_text(mob/user)
 	. = ..()

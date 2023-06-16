@@ -34,15 +34,18 @@
 		if(10 to 50) icon_state = "half"
 		if(51 to INFINITY) icon_state = "full"
 
-/obj/item/reagent_container/blood/proc/update_beam()
+/obj/item/reagent_container/blood/proc/update_beam(ignore = FALSE)
 	var/beam_icon = "iv_tube"
-	delete_beam()
 	if(mode)
 		beam_icon = (reagents.total_volume == 0) ? "iv_tube" : "iv_tube_blood"
-		current_beam = connected_to.beam(connected_from, beam_icon)
+		if(current_beam && current_beam.icon_state != beam_icon || ignore)
+			delete_beam()
+			current_beam = connected_to.beam(connected_from, beam_icon)
 	else
 		beam_icon = (connected_to.blood_volume == 0) ? "iv_tube" : "iv_tube_blood"
-		current_beam = connected_from.beam(connected_to, beam_icon)
+		if(current_beam && current_beam.icon_state != beam_icon || ignore)
+			delete_beam()
+			current_beam = connected_from.beam(connected_to, beam_icon)
 
 /obj/item/reagent_container/blood/proc/delete_beam()
 	if(current_beam)
@@ -84,7 +87,7 @@
 		START_PROCESSING(SSobj, src)
 		user.visible_message("[user] attaches \the [src] to [connected_to].", \
 			"You attach \the [src] to [connected_to].")
-		update_beam()
+		update_beam(ignore = TRUE)
 
 /obj/item/reagent_container/blood/process()
 	//if we're not connected to anything stop doing stuff
@@ -160,7 +163,7 @@
 
 	mode = !mode
 	to_chat(usr, "The blood bag is now [mode ? "giving blood" : "taking blood"].")
-	update_beam()
+	update_beam(ignore = TRUE)
 
 
 /obj/item/reagent_container/blood/APlus

@@ -43,10 +43,10 @@
 			var/area/A = owner_turf.loc
 			S.environment = A.sound_environment
 
+			S.echo[ECHO_DIRECT] = abs(T.z - owner_turf.z) * ZSOUND_DRYLOSS_PER_Z
+
 		S.y += T.y_s_offset
 		S.x += T.x_s_offset
-
-		S.echo[ECHO_DIRECT] = abs(T.z - owner_turf.z) * ZSOUND_DRYLOSS_PER_Z
 
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE

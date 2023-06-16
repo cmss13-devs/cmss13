@@ -553,6 +553,9 @@
 		if(!no_msg)
 			visible_message(SPAN_WARNING("[src] has grabbed [M] passively!"), null, null, 5)
 
+		if(M.leaning_on)
+			M.leaning_on.stop_wall_lean(M)
+
 		if(M.mob_size > MOB_SIZE_HUMAN || !(M.status_flags & CANPUSH))
 			G.icon_state = "!reinforce"
 
@@ -680,13 +683,21 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 // facing verbs
 /mob/proc/canface()
-	if(!canmove) return 0
-	if(client.moving) return 0
-	if(stat==2) return 0
-	if(anchored) return 0
-	if(monkeyizing) return 0
-	if(is_mob_restrained()) return 0
-	return 1
+	if(!canmove)
+		return
+	if(client.moving)
+		return
+	if(stat==2)
+		return
+	if(anchored)
+		return
+	if(leaning_on)
+		return
+	if(monkeyizing)
+		return
+	if(is_mob_restrained())
+		return
+	return TRUE
 
 //Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
 /mob/proc/update_canmove()

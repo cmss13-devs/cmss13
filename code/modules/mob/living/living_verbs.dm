@@ -47,6 +47,9 @@
 	if(buckled && (last_special <= world.time) )
 		resist_buckle()
 
+	if(leaning_on && (last_special <= world.time))
+		resist_lean()
+
 	//escaping a bodybag or a thermal tarp
 	if(loc && (istype(loc, /obj/structure/closet/bodybag)))
 		var/obj/structure/closet/bodybag/BB = loc
@@ -178,6 +181,9 @@
 
 /mob/living/proc/resist_buckle()
 	buckled.manual_unbuckle(src)
+
+/mob/living/proc/resist_lean()
+	leaning_on.stop_wall_lean(src)
 
 /mob/living/proc/resist_fire()
 	return

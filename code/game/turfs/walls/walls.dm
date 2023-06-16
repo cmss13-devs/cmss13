@@ -43,6 +43,8 @@
 	var/list/noblend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/almayer/research/containment) //Turfs to avoid blending with
 	var/list/blend_objects = list(/obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed) // Objects which to blend with
 	var/list/noblend_objects = list(/obj/structure/machinery/door/window) //Objects to avoid blending with (such as children of listed blend objects.
+	///Is someone currently leaning on it, and who
+	var/mob/living/leaned_on_by
 
 /turf/closed/wall/Initialize(mapload, ...)
 	. = ..()
@@ -578,3 +580,61 @@
 
 /turf/closed/wall/can_be_dissolved()
 	return !hull
+
+/turf/closed/wall/verb/wall_lean()
+	set name = "Lean Against Wall"
+	set category = "Object"
+	set src in oview(1)
+
+	if(leaned_on_by)
+		return
+
+	if(!istype(usr, /mob/living/carbon/human))
+		to_chat(usr, SPAN_NOTICE("You don't know how to lean against the wall."))
+		return
+	var/mob/living/carbon/human/current_human = usr
+
+	if(current_human.buckled || current_human.leaning_on)
+		return
+
+	var/diff_x = x - current_human.x
+	var/diff_y = y - current_human.y
+
+	if(diff_x == diff_y || diff_x == -(diff_y))
+		return
+
+	var/lean_dir
+	if(diff_x)
+		if(diff_x > 0)
+			lean_dir = WEST
+			animate(current_human, 0.5 SECONDS, easing = QUAD_EASING, pixel_x = 12)
+		else
+			lean_dir = EAST
+			animate(current_human, 0.5 SECONDS, easing = QUAD_EASING, pixel_x = -12)
+	else
+		if(diff_y > 0)
+			lean_dir = SOUTH
+			animate(current_human, 0.5 SECONDS, easing = QUAD_EASING, pixel_y = 24)
+		else
+			lean_dir = NORTH
+			animate(current_human, 0.5 SECONDS, easing = QUAD_EASING, pixel_y = -18)
+			current_human.layer = WALL_LAYER - 0.01
+			for(var/obj/limb/current_mobs_limb in current_human.limbs)
+				current_mobs_limb.layer = WALL_LAYER - 0.02
+
+	to_chat(current_human, SPAN_BOLDWARNING(lean_dir)) //someone remind me to remove this if i forget
+	current_human.leaning_on = src
+	current_human.setDir(lean_dir)
+	leaned_on_by = current_human
+
+/turf/closed/wall/proc/stop_wall_lean(mob/living/carbon/human/current_human)
+	if(current_human && current_human.leaning_on)
+		current_human.leaning_on = null
+		leaned_on_by = null
+		current_human.anchored = initial(current_human.anchored)
+		current_human.pixel_x = initial(current_human.pixel_x)
+		current_human.pixel_y = initial(current_human.pixel_y)
+		if(current_human.dir == NORTH)
+			current_human.layer = initial(current_human.layer)
+			for(var/obj/limb/current_mobs_limb in current_human.limbs)
+				current_mobs_limb.layer = initial(current_mobs_limb.layer)

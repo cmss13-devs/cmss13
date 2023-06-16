@@ -554,7 +554,7 @@
 			visible_message(SPAN_WARNING("[src] has grabbed [M] passively!"), null, null, 5)
 
 		if(M.leaning_on)
-			M.leaning_on.stop_wall_lean(M)
+			M.leaning_on.stop_wall_lean()
 
 		if(M.mob_size > MOB_SIZE_HUMAN || !(M.status_flags & CANPUSH))
 			G.icon_state = "!reinforce"
@@ -714,6 +714,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 			flags_atom &= ~DIRLOCK
 		else
 			lying = FALSE
+	if(leaning_on)
+		lying = FALSE
 
 	canmove = !(stunned || frozen)
 	if(!can_crawl && lying)

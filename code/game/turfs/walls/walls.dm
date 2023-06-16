@@ -63,6 +63,11 @@
 	update_connections(FALSE)
 	update_icon()
 
+/turf/closed/wall/Destroy(force)
+	if(leaned_on_by)
+		stop_wall_lean()
+	. = ..()
+
 
 /turf/closed/wall/setDir(newDir)
 	..()
@@ -587,10 +592,11 @@
 	set src in oview(1)
 
 	if(leaned_on_by)
+		to_chat(usr, SPAN_NOTICE("Someone is already leaning against [src]."))
 		return
 
 	if(!istype(usr, /mob/living/carbon/human))
-		to_chat(usr, SPAN_NOTICE("You don't know how to lean against the wall."))
+		to_chat(usr, SPAN_NOTICE("You can't lean against [src]."))
 		return
 	var/mob/living/carbon/human/current_human = usr
 
@@ -627,13 +633,11 @@
 	current_human.setDir(lean_dir)
 	leaned_on_by = current_human
 
-/turf/closed/wall/proc/stop_wall_lean(mob/living/carbon/human/current_human)
+/turf/closed/wall/proc/stop_wall_lean(mob/living/carbon/human/current_human = leaned_on_by)
 	if(current_human && current_human.leaning_on)
 		current_human.leaning_on = null
 		leaned_on_by = null
-		current_human.anchored = initial(current_human.anchored)
-		current_human.pixel_x = initial(current_human.pixel_x)
-		current_human.pixel_y = initial(current_human.pixel_y)
+		animate(current_human, 0.25 SECONDS, easing = QUAD_EASING, pixel_x = initial(current_human.pixel_x), pixel_y = initial(current_human.pixel_y))
 		if(current_human.dir == NORTH)
 			current_human.layer = initial(current_human.layer)
 			for(var/obj/limb/current_mobs_limb in current_human.limbs)

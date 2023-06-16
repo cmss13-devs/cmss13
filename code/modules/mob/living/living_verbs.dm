@@ -183,7 +183,7 @@
 	buckled.manual_unbuckle(src)
 
 /mob/living/proc/resist_lean()
-	leaning_on.stop_wall_lean(src)
+	leaning_on.stop_wall_lean()
 
 /mob/living/proc/resist_fire()
 	return

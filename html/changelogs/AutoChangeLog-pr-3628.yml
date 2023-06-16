@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - spellcheck: "Added Commander Code of Conduct link to XO entry description and fixed CO capitalization."
+  - code_imp: "Replaced sting usage for USS Almayer to MAIN_SHIP_DEFAULT_NAME for Souto ERT, CMB ERT, Provost ERT reporters, XO, and CO."

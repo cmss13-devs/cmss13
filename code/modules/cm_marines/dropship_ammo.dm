@@ -38,8 +38,9 @@
 	/// Mob that fired this ammunition (the pilot pressing the trigger)
 	var/mob/source_mob
 	var/combat_equipment = TRUE
-	var/ammo_ignore_caves = FALSE
 	/// Ignores Caves when lining up FMs
+	var/ammo_ignore_caves = FALSE
+
 
 /obj/structure/ship_ammo/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
 	if(unslashable) 

@@ -321,6 +321,21 @@
 		cell_explosion(impact, 450, 100, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, create_cause_data(initial(name), source_mob)) //Insane fall off combined with insane damage makes the Keeper useful for single targets, but very bad against multiple.
 		qdel(src)
 
+/obj/structure/ship_ammo/rocket/bunkerbuster
+	name = "\improper GBU-67-EP 'Paveway XXI'"
+	desc = "The GBU-67-EP 'Paveway IX' takes the GBU-67 LGB and mates it with an enhanced penetrator that allows it to strike targets dozens of meters underground."
+	icon_state = "bunkerbuster"
+	travelling_time = 20 //A fast payload due to its very tight blast zone
+	ammo_id = "p"
+	point_cost = 600
+	fire_mission_delay = 4 //We don't care because our ammo has just 1 rocket
+
+/obj/structure/ship_ammo/rocket/bunkerbuster/detonate_on(turf/impact)
+	impact.ceiling_debris_check(5)
+	spawn(5)
+		cell_explosion(impact, 450, 100, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, create_cause_data(initial(name), source_mob)) //See Keeper comments: However this is able to penetrate cave ceilings.
+		qdel(src)
+
 /obj/structure/ship_ammo/rocket/harpoon
 	name = "\improper AGM-84 'Harpoon'"
 	desc = "The AGM-84 Harpoon is an Anti-Ship Missile, designed and used to effectively take down enemy ships with a huge blast wave with low explosive power. This one is modified to use ground signals."

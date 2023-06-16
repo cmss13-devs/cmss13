@@ -37,6 +37,8 @@
 	if(!picked_up_item)
 		return
 	var/mob/living/carbon/human/H = over
+	if(usr != H)
+		return
 	if(!CAN_PICKUP(H, src))
 		return
 	if(buckled_mob)

@@ -43,6 +43,9 @@
 #define COMSIG_MOB_DRAGGED "mob_dragged"
 /// From /obj/item/proc/unequipped()
 #define COMSIG_MOB_ITEM_UNEQUIPPED "mob_item_unequipped"
+/// From /mob/proc/equip_to_slot_if_possible()
+#define COMSIG_MOB_ATTEMPTING_EQUIP "mob_attempting_equip"
+	#define COMPONENT_MOB_CANCEL_ATTEMPT_EQUIP (1<<0)
 
 /// For when a mob is devoured by a Xeno
 #define COMSIG_MOB_DEVOURED "mob_devoured"
@@ -105,3 +108,5 @@
 #define COMSIG_MOB_STAT_SET_ALIVE "mob_stat_set_alive"
 //from /mob/living/set_stat()
 #define COMSIG_MOB_STAT_SET_DEAD "mob_stat_set_dead"
+
+#define COMSIG_GHOST_MOVED "ghost_moved"

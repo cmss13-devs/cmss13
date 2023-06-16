@@ -1,9 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - refactor: "Refactored predator flaying. Should be a lot less janky across the board. Flaying can be paused and resumed."
-  - rscadd: "Rope + flaying messages are now also shown to witnesses, instead of just the predator. Flaying has been given RED TEXT to make it clear something bad is going on."
-  - bugfix: "Predators can no longer flay someone who has already been flayed, or queue up multiple flayings at once."
-  - bugfix: "Predators can no longer scalp someone who has no head."
-  - bugfix: "Decapitated and flayed bodies no longer appear to have a head."
-  - bugfix: "Using the ceremonial dagger or rope no longer hits people before applying."

@@ -64,12 +64,21 @@
 	M.animation_attack_on(src)
 	unpack()
 	M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"), \
-					  SPAN_DANGER("You smash [src] apart!"), 5, CHAT_TYPE_XENO_COMBAT)
+					  SPAN_DANGER("You smash [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/largecrate/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		unpack()
+
+/obj/structure/largecrate/proc/take_damage(damage)
+	health -= damage
+	if(health <= 0)
+		unpack()
+
+/obj/structure/largecrate/bullet_act(obj/item/projectile/P)
+	take_damage(P.calculate_damage(P.damage))
+	return TRUE
 
 /obj/structure/largecrate/mule
 	icon_state = "mulecrate"

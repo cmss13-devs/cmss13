@@ -217,7 +217,7 @@
 /datum/equipment_preset/corpse/clown/New()
 	. = ..()
 	//As a joke, clown has all access so they can clown everywhere...
-	access = get_all_accesses()
+	access = get_all_main_access()
 
 /datum/equipment_preset/corpse/clown/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..() //To load gender, randomise appearance, etc.

@@ -51,7 +51,7 @@
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
-	src << run(file(path))
+	src << ftp(file(path))
 
 //This proc allows download of past server logs saved within the data/logs/ folder.
 //It works similarly to show-server-log.
@@ -73,7 +73,7 @@
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
-	src << run(file(path))
+	src << ftp(file(path))
 
 //Other log stuff put here for the sake of organisation
 
@@ -96,7 +96,7 @@
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
-	src << run(file(path))
+	src << ftp(file(path))
 
 /**Shows this round's attack log*/
 /datum/admins/proc/view_attack_log()
@@ -117,7 +117,7 @@
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
-	src << run(file(path))
+	src << ftp(file(path))
 
 /**Shows this round's runtime log*/
 /datum/admins/proc/view_runtime_log()
@@ -138,7 +138,7 @@
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
-	src << run(file(path))
+	src << ftp(file(path))
 
 /**Shows this round's href log*/
 /datum/admins/proc/view_href_log()
@@ -159,7 +159,7 @@
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
-	src << run(file(path))
+	src << ftp(file(path))
 
 /**Shows this round's tgui log*/
 /datum/admins/proc/view_tgui_log()
@@ -180,4 +180,4 @@
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
-	src << run(file(path))
+	src << ftp(file(path))

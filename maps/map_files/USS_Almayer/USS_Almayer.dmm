@@ -37401,6 +37401,18 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/vehiclehangar)
+"gCu" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/folded_tent/cmd,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "gCw" = (
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_x = 10
@@ -39380,6 +39392,18 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
+"hBP" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/folded_tent/med,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "hBU" = (
 /obj/structure/largecrate/random/secure,
 /obj/effect/decal/warning_stripes{
@@ -55683,6 +55707,18 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/aft_hallway)
+"pvF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/folded_tent/reqs,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "pvJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -69934,6 +69970,18 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/grunt_rnr)
+"vSr" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/folded_tent/big,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "vSE" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/almayer{
@@ -117438,7 +117486,7 @@ bEi
 bZr
 bmD
 ngw
-pjG
+gCu
 boz
 bpR
 bpR
@@ -117641,7 +117689,7 @@ brp
 bZr
 bmD
 xId
-pjG
+hBP
 boz
 bpR
 bpR
@@ -118047,7 +118095,7 @@ buz
 bZr
 bmD
 dmE
-pjG
+pvF
 boz
 bpR
 bpR
@@ -118250,7 +118298,7 @@ bEm
 bZr
 bmD
 hAc
-pjG
+vSr
 boz
 bpR
 bpR

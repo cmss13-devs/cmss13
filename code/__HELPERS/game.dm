@@ -277,7 +277,7 @@
 		candidates += cur_obs
 
 	// Optionally sort by timeofdeath
-	if(sorted && candidates.len)
+	if(sorted && length(candidates))
 		candidates = sort_list(candidates, GLOBAL_PROC_REF(cmp_mob_deathtime_asc))
 
 	return candidates

@@ -42,7 +42,7 @@
 				if(players_with_xeno_pref && istype(GLOB.hive_datum[hivenumber].hive_location, /obj/effect/alien/resin/special/pylon/core))
 					var/turf/larva_spawn = get_turf(GLOB.hive_datum[hivenumber].hive_location)
 					var/count = 1
-					while(GLOB.hive_datum[hivenumber].stored_larva > 0 && count <= players_with_xeno_pref.len) // stil some left
+					while(GLOB.hive_datum[hivenumber].stored_larva > 0 && count <= length(players_with_xeno_pref)) // still some left
 						var/mob/xeno_candidate = players_with_xeno_pref[count++]
 						var/mob/living/carbon/xenomorph/larva/new_xeno = new /mob/living/carbon/xenomorph/larva(larva_spawn)
 						new_xeno.set_hive_and_update(hivenumber)

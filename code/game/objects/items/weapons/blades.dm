@@ -96,7 +96,7 @@
 
 // rick grimes style decap for living zombies, 1/10 chance to decap for claymore type weapons and 2/10 for the katana.
 // seemed better to split the code this way then add unnecessary type checks in a single weapon/attack proc.
-/obj/item/weapon/katana/decap_zombie(mob/target, mob/user)
+/obj/item/weapon/katana/attack(mob/target, mob/user)
 	. = ..()
 	if(!iszombie(target) || !isliving(target) || target.stat == DEAD || user.zone_selected != "head")
 		return

@@ -1,0 +1,4 @@
+author: "thwompa"
+delete-after: True
+changes:
+  - imageadd: "new diamond sprite"

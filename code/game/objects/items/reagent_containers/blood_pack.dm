@@ -49,8 +49,7 @@
 
 /obj/item/reagent_container/blood/proc/delete_beam()
 	if(current_beam)
-		qdel(current_beam)
-		current_beam = null
+		QDEL_NULL(current_beam)
 
 /obj/item/reagent_container/blood/attack(mob/attacked_mob, mob/user)
 	. = ..()

@@ -49,12 +49,11 @@
 			beam_icon = (attached.blood_volume == 0) ? "iv_tube" : "iv_tube_blood"
 		if(current_beam && current_beam.icon_state != beam_icon || ignore)
 			delete_beam()
-			current_beam = src.beam(attached, beam_icon)
+			current_beam = beam(attached, beam_icon)
 
 /obj/structure/machinery/iv_drip/proc/delete_beam()
 	if(current_beam)
-		qdel(current_beam)
-		current_beam = null
+		QDEL_NULL(current_beam)
 
 /obj/structure/machinery/iv_drip/MouseDrop(over_object, src_location, over_location)
 	..()

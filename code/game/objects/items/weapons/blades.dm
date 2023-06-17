@@ -94,6 +94,41 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 9
 
+// rick grimes style decap for living zombies, 1/10 chance to decap for claymore type weapons and 2/10 for the katana.
+// seemed better to split the code this way then add unnecessary type checks in a single weapon/attack proc.
+/obj/item/weapon/katana/decap_zombie(mob/target, mob/user)
+	. = ..()
+	if(!iszombie(target) || !isliving(target) || target.stat == DEAD || user.zone_selected != "head")
+		return
+
+	var/rand_selection = rand(1, 10)
+	if(rand_selection > 2)
+		return
+
+	decap_zombie(target, user)
+
+
+/obj/item/weapon/claymore/attack(mob/target, mob/user)
+	. = ..()
+	if(!iszombie(target) || !isliving(target) || target.stat == DEAD || istype(src,/obj/item/weapon/claymore/hefa) || user.zone_selected != "head")
+		return
+
+	var/rand_selection = rand(1, 10)
+	if(rand_selection != 1)
+		return
+
+	decap_zombie(target, user)
+
+/obj/item/weapon/proc/decap_zombie(mob/target, mob/user)
+	var/mob/living/carbon/human/zombie = target
+	var/obj/limb/zombie_head = zombie.get_limb("head")
+	user.visible_message(SPAN_WARNING("[target] lets out a feral cry!"))
+	playsound(get_turf(target), 'sound/weapons/katana_slice.ogg', 25)
+	playsound(get_turf(target), 'sound/hallucinations/wail.ogg', 25)
+	shake_camera(user, .2, 1)
+	zombie_head.droplimb(0, 0, "dismemberment")
+
+
 //To do: replace the toys.
 /obj/item/weapon/katana/replica
 	name = "replica katana"

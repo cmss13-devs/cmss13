@@ -190,3 +190,25 @@
 
 /obj/vehicle/train/proc/update_car(train_length, active_engines)
 	return
+
+/obj/vehicle/train/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
+	. = ..()
+
+	if(attacking_xeno.a_intent == INTENT_HELP)
+		return XENO_NO_DELAY_ACTION
+
+	if(attacking_xeno.mob_size < MOB_SIZE_XENO)
+		to_chat(attacking_xeno, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
+		return XENO_NO_DELAY_ACTION
+
+	attacking_xeno.animation_attack_on(src)
+
+	attacking_xeno.visible_message(SPAN_DANGER("\The [attacking_xeno] slashes \the [src]!"), SPAN_DANGER("You slash \the [src]!"))
+	playsound(attacking_xeno.loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
+
+	var/damage = (attacking_xeno.melee_vehicle_damage + rand(-5,5)) * XENO_UNIVERSAL_VEHICLE_DAMAGEMULT
+
+	health -= damage
+
+	if(health <= 0)
+		explode()

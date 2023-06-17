@@ -856,7 +856,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 					playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
 					grabber.apply_damage(10,0, BURN)
 					return FALSE
-				if(!cell || !cell.charge <= 0)
+				if(!cell || cell.charge <= 0)
 					to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
 					return FALSE
 

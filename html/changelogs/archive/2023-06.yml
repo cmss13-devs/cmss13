@@ -228,3 +228,15 @@
   - admin: Admins can now use the custom ERT stations for events or even base of operations.
   Steelpoint:
   - rscadd: Adds a M41A Mk2 kit to the Squad Leaders vendor.
+2023-06-17:
+  Drathek:
+  - bugfix: Fix grab delay after a tackle for xenos
+  - spellcheck: Added Commander Code of Conduct link to XO entry description and fixed
+      CO capitalization.
+  - code_imp: Replaced sting usage for USS Almayer to MAIN_SHIP_DEFAULT_NAME for Souto
+      ERT, CMB ERT, Provost ERT reporters, XO, and CO.
+  Steelpoint:
+  - bugfix: Larva who spawn in containment in Trijent will now have weeds to grow
+      on.
+  TheGamerdk, ihatethisengine:
+  - bugfix: player can no longer come back in their bodies after ghosting

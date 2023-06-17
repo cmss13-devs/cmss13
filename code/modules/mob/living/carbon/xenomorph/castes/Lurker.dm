@@ -88,6 +88,15 @@
 
 	return original_damage
 
+/datum/behavior_delegate/lurker_base/override_intent(mob/living/carbon/target_carbon)
+	. = ..()
+
+	if(!isxeno_human(target_carbon))
+		return
+
+	if(next_slash_buffed)
+		return INTENT_HARM
+
 /datum/behavior_delegate/lurker_base/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
 	if (!isxeno_human(target_carbon))
 		return

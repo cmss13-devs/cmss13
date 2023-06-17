@@ -62,7 +62,38 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 /obj/structure/flora/flamer_fire_act()
 	fire_act()
 
+/obj/structure/flora/fire_act()
+	if(QDELETED(src) || (fire_flag & FLORA_NO_BURN) || burning)
+		return
+	burning = TRUE
+	var/spread_time = rand(75, 150)
+	if(!(fire_flag & FLORA_BURN_NO_SPREAD))
+		addtimer(CALLBACK(src, PROC_REF(spread_fire)), spread_time)
+	addtimer(CALLBACK(src, PROC_REF(burn_up)), spread_time + 5 SECONDS)
 
+/obj/structure/flora/proc/spread_fire()
+	for(var/D in cardinal) //Spread fire
+		var/turf/T = get_step(src.loc, D)
+		if(T)
+			for(var/obj/structure/flora/F in T)
+				if(fire_flag & FLORA_BURN_SPREAD_ONCE)
+					F.fire_flag |= FLORA_BURN_NO_SPREAD
+				if(!(locate(/obj/flamer_fire) in T))
+					new /obj/flamer_fire(T, create_cause_data("wildfire"))
+
+/obj/structure/flora/proc/burn_up()
+	new /obj/effect/decal/cleanable/dirt(loc)
+	if(center)
+		new /obj/effect/decal/cleanable/dirt(loc) //Produces more ash at the center
+	qdel(src)
+
+/obj/structure/flora/ex_act(power)
+	if(power >= EXPLOSION_THRESHOLD_VLOW)
+		deconstruct(FALSE)
+
+/obj/structure/flora/get_projectile_hit_boolean(obj/item/projectile/P)
+	. = ..()
+	return FALSE
 
 //trees
 /obj/structure/flora/tree
@@ -83,6 +114,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 //dead
 /obj/structure/flora/tree/dead
 	icon = 'icons/obj/structures/props/deadtrees.dmi'
+	icon_state = "tree_1"
 
 /obj/structure/flora/tree/dead/tree_1
 	icon_state = "tree_1"
@@ -149,6 +181,7 @@ ICE GRASS
 
 //brown
 /obj/structure/flora/grass/ice/brown
+	icon_state = "snowgrassbb_1"
 	icon_tag = "snowgrassbb"
 
 /obj/structure/flora/grass/ice/brown/snowgrassbb_1
@@ -162,8 +195,8 @@ ICE GRASS
 
 //green
 /obj/structure/flora/grass/ice/green
-	icon_tag = "snowgrassgb"
 	icon_state = "snowgrassgb_1"
+	icon_tag = "snowgrassgb"
 
 //both
 /obj/structure/flora/grass/ice/both
@@ -202,6 +235,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 
 /obj/structure/flora/grass/desert
 	icon = 'icons/obj/structures/props/dam.dmi'
+	icon_state = "lightgrass_1"
 
 // to replace with
 /obj/structure/flora/grass/desert/lightgrass_1
@@ -241,6 +275,8 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_state = "lightgrass_12"
 
 //heavy desert grass
+/obj/structure/flora/grass/desert/heavy
+	icon_state = "heavygrass_1"
 
 /obj/structure/flora/grass/desert/heavygrass_1
 	icon_state = "heavygrass_1"
@@ -294,35 +330,6 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	..()
 	overlays.Cut()
 	overlays += image("icon"=src.icon,"icon_state"=overlay_type,"layer"=ABOVE_XENO_LAYER,"dir"=dir)
-
-/obj/structure/flora/fire_act()
-	if(QDELETED(src) || (fire_flag & FLORA_NO_BURN) || burning)
-		return
-	burning = TRUE
-	var/spread_time = rand(75, 150)
-	if(!(fire_flag & FLORA_BURN_NO_SPREAD))
-		addtimer(CALLBACK(src, PROC_REF(spread_fire)), spread_time)
-	addtimer(CALLBACK(src, PROC_REF(burn_up)), spread_time + 5 SECONDS)
-
-/obj/structure/flora/proc/spread_fire()
-	for(var/D in cardinal) //Spread fire
-		var/turf/T = get_step(src.loc, D)
-		if(T)
-			for(var/obj/structure/flora/F in T)
-				if(fire_flag & FLORA_BURN_SPREAD_ONCE)
-					F.fire_flag |= FLORA_BURN_NO_SPREAD
-				if(!(locate(/obj/flamer_fire) in T))
-					new /obj/flamer_fire(T, create_cause_data("wildfire"))
-
-/obj/structure/flora/proc/burn_up()
-	new /obj/effect/decal/cleanable/dirt(loc)
-	if(center)
-		new /obj/effect/decal/cleanable/dirt(loc) //Produces more ash at the center
-	qdel(src)
-
-/obj/structure/flora/ex_act(power)
-	if(power >= EXPLOSION_THRESHOLD_VLOW)
-		deconstruct(FALSE)
 
 // MAP VARIANTS //
 // PARENT FOR COLOR, CORNERS AND CENTERS, BASED ON DIRECTIONS //
@@ -618,6 +625,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	name = "vines"
 	desc = "A mass of twisted vines."
 	icon = 'icons/effects/spacevines.dmi'
+	icon_state = "light_1"
 	icon_tag = "light"
 	variations = 3
 	cut_level = PLANT_CUT_MACHETE

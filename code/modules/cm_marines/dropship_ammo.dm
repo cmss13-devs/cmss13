@@ -328,14 +328,14 @@
 	name = "\improper GBU-67-EP 'Paveway XXI'"
 	desc = "The GBU-67-EP 'Paveway XXI' takes the GBU-67 LGB and mates it with an enhanced penetrator warhead that allows it to strike targets dozens of meters underground."
 	icon_state = "bunkerbuster"
-	travelling_time = 20 //A fast payload due to its very tight blast zone
+	travelling_time = 2.0 SECONDS //A fast payload due to its very tight blast zone
 	ammo_id = "p"
 	point_cost = 600
 	ammo_ignore_caves = TRUE
 	fire_mission_delay = 0 //no FMs, direct only
 
 /obj/structure/ship_ammo/rocket/bunkerbuster/detonate_on(turf/impact)
-	impact.ceiling_debris_check(5)
+	impact.ceiling_debris_check(3)
 	spawn(5)
 		cell_explosion(impact, 450, 100, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, create_cause_data(initial(name), source_mob)) //See Keeper comments: However this is able to penetrate cave ceilings.
 		qdel(src)

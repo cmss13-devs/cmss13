@@ -1,4 +1,3 @@
-
 /obj/effect/step_trigger/ares_alert
 	name = "ARES Apollo Sensor"
 	layer = 5
@@ -46,9 +45,11 @@
 /obj/effect/step_trigger/ares_alert/Initialize(mapload, ...)
 	link_systems(override = FALSE)
 	. = ..()
+
 /obj/effect/step_trigger/ares_alert/Destroy()
 	delink()
 	return ..()
+
 /obj/effect/step_trigger/ares_alert/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
 	if(link && !override)
 		return FALSE
@@ -76,7 +77,7 @@
 		var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
 		for(var/mob/living/silicon/decoy/ship_ai/ai in ai_mob_list)
 			apollo.broadcast(ai, broadcast_message)
-		for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
+		for(var/mob/listener as anything in (GLOB.human_mob_list + GLOB.dead_mob_list))
 			if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
 				playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
 		var/new_cooldown = (world.time + cooldown_duration)

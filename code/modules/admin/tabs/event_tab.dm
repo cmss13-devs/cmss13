@@ -539,10 +539,10 @@
 	if(link.p_interface.inoperable())
 		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
 		return
-	else
-		ai_announcement(input)
-		message_admins("[key_name_admin(src)] has created an AI comms report")
-		log_admin("AI comms report: [input]")
+
+	ai_announcement(input)
+	message_admins("[key_name_admin(src)] has created an AI comms report")
+	log_admin("AI comms report: [input]")
 
 
 /client/proc/cmd_admin_create_AI_apollo_report()
@@ -564,7 +564,7 @@
 		var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
 		for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
 			apollo.broadcast(AI, input)
-		for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
+		for(var/mob/listener as anything in (GLOB.human_mob_list + GLOB.dead_mob_list))
 			if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
 				playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
 		message_admins("[key_name_admin(src)] has created an AI APOLLO report")
@@ -584,10 +584,10 @@
 		if(processor.inoperable())
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
 			return
-		else
-			shipwide_ai_announcement(input)
-			message_admins("[key_name_admin(src)] has created an AI shipwide report")
-			log_admin("[key_name_admin(src)] AI shipwide report: [input]")
+
+		shipwide_ai_announcement(input)
+		message_admins("[key_name_admin(src)] has created an AI shipwide report")
+		log_admin("[key_name_admin(src)] AI shipwide report: [input]")
 
 /client/proc/cmd_admin_create_predator_report()
 	set name = "Report: Yautja AI"

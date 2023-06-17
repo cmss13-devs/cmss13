@@ -185,6 +185,7 @@
 	icon_state = "map_4way-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE
+
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply/no_boom
 	name = "reinforced 4-way air supply pipe manifold"
 	explodey = FALSE

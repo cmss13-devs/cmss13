@@ -73,7 +73,7 @@
 
 
 /datum/ares_ticket
-	var/ticket_type = "Root Tickete"
+	var/ticket_type = "Root Ticket"
 	var/ticket_status = TICKET_PENDING
 	/// Name of who is handling the ticket. Derived from last login.
 	var/ticket_assignee

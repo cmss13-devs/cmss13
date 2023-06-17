@@ -439,7 +439,12 @@ var/bomb_set = FALSE
 	. = ..()
 
 	.["decrypting"] = decrypting
-	.["decryption_time"] = decryption_time / (1 SECONDS)
+	.["decryption_time"] = duration2text_sec(decryption_time)
+
+	if(decryption_time)
+		.["decryption_complete"] = FALSE
+	else
+		.["decryption_complete"] = TRUE
 
 /obj/structure/machinery/nuclearbomb/tech/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
@@ -504,7 +509,8 @@ var/bomb_set = FALSE
 	if(world.time > decryption_end_time)
 		decrypting = FALSE
 		decryption_time = 0
-		//add announcemnt for end of decryption
+		announce_to_players(NUKE_DECRYPT_SHOW_TIMER_COMPLETE)
+		timer_announcements_flags &= ~NUKE_DECRYPT_SHOW_TIMER_COMPLETE
 		stop_processing()
 		return
 
@@ -523,22 +529,36 @@ var/bomb_set = FALSE
 			return
 
 /obj/structure/machinery/nuclearbomb/tech/announce_to_players(timer_warning)
-	if(!decryption_time)
+	if(!decryption_time && (timer_warning != NUKE_DECRYPT_SHOW_TIMER_COMPLETE))
 		return ..()
 
 	var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
 	var/list/humans_USCM = list()
-	for(var/mob/M in humans_other)
-		var/mob/living/carbon/human/H = M
-		if(istype(H)) //if it's unconsious human or yautja, we remove them
-			if(H.stat != CONSCIOUS || isyautja(H))
-				humans_other.Remove(M)
+	for(var/mob/current_mob as anything in humans_other)
+		var/mob/living/carbon/human/current_human = current_mob
+		if(istype(current_human)) //if it's unconsious human or yautja, we remove them
+			if(current_human.stat != CONSCIOUS || isyautja(current_human))
+				humans_other -= current_mob
 				continue
-		if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR) //separating marines from other factions. Survs go here too
-			humans_USCM += M
-			humans_other -= M
+		if(current_mob.faction == FACTION_MARINE || current_mob.faction == FACTION_SURVIVOR)
+			humans_USCM += current_mob
+			humans_other -= current_mob
 
 	if(timer_warning)
+		if(timer_warning == NUKE_DECRYPT_SHOW_TIMER_COMPLETE)
+			announcement_helper("DECRYPTION COMPLETE", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
+			announcement_helper("DECRYPTION COMPLETE", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
+
+			yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nThe human Purification Device is able to be activated."))
+
+			var/datum/hive_status/hive
+			for(var/hivenumber in GLOB.hive_datum)
+				hive = GLOB.hive_datum[hivenumber]
+				if(!hive.totalXenos.len)
+					return
+				xeno_announcement(SPAN_XENOANNOUNCE("The hive killer is ready to be activated! Assault at once!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+			return
+
 		announcement_helper("DECRYPTION IN [round(decryption_time/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
 		announcement_helper("DECRYPTION IN [round(decryption_time/10)] SECONDS.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
 

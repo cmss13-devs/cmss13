@@ -4,7 +4,6 @@
 	name = "Nuclear Device"
 	//desc = "Purchase a nuclear device. Only able to purchase after X minutes into the operation. It's the only way to be sure." //See New()
 	icon_state = "nuke"
-	icon = 'icons/obj/structures/machinery/nuclearbomb.dmi' //temp, yell at me if you ever see this
 
 	required_points = 20
 

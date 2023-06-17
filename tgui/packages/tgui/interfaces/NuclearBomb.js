@@ -5,8 +5,8 @@ import { Window } from '../layouts';
 export const NuclearBomb = (_props, context) => {
   const { act, data } = useBackend(context);
 
-  const cantNuke = (!data.anchor, !!data.safety, !!data.decryption_time);
-  const cantDecrypt = (!data.anchor, !data.decryption_time);
+  const cantNuke = (!data.anchor, !!data.safety, !data.decryption_complete);
+  const cantDecrypt = (!data.anchor, data.decryption_complete);
 
   return (
     <Window theme="retro" width={350} height={250}>
@@ -15,7 +15,7 @@ export const NuclearBomb = (_props, context) => {
           <Stack height="100%" direction="column">
             <Stack.Item>
               <NoticeBox textAlign="center">
-                {data.decrypting_time
+                {data.decryption_complete
                   ? 'Decryption complete.'
                   : `Decryption time left :
                   ${data.decryption_time} seconds`}

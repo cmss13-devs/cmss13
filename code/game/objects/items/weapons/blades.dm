@@ -125,7 +125,7 @@
 	user.visible_message(SPAN_WARNING("[target] lets out a feral cry!"))
 	playsound(get_turf(target), 'sound/weapons/katana_slice.ogg', 25)
 	playsound(get_turf(target), 'sound/hallucinations/wail.ogg', 25)
-	shake_camera(user, .2, 1)
+	shake_camera(user, 0.2, 1)
 	zombie_head.droplimb(0, 0, "dismemberment")
 
 

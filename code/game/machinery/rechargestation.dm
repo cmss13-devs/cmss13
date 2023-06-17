@@ -184,15 +184,9 @@
 								humanoid_occupant.embedded_items -= current_implant
 								qdel(current_implant)
 								to_chat(occupant, "Foreign object removed.")
-<<<<<<< HEAD
 				for(var/datum/internal_organ/current_organ in humanoid_occupant.internal_organs)
 					if(current_organ.robotic == ORGAN_ASSISTED||current_organ.robotic == ORGAN_ROBOT) //this time the machine can *only* fix robotic organs
 						if(current_organ.damage > 0)
-=======
-				for(var/datum/internal_organ/I in humanoid_occupant.internal_organs)
-					if(I.robotic == ORGAN_ASSISTED || I.robotic == ORGAN_ROBOT) //this time the machine can *only* fix robotic organs
-						if(I.damage > 0)
->>>>>>> 6db18b4fe43dead350f1dd10accdbed8a3a892c7
 							to_chat(occupant, "Damaged internal component detected. Beginning repair process.")
 							doing_stuff = TRUE
 							sleep(FIX_ORGAN_MAX_DURATION)

@@ -1,0 +1,7 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added WY, PMC and UPP faction specific listings for crew monitors."
+  - rscadd: "Changed the assignment/job define for Standard PMCs, Detainers and Crewmen to use their manual assignments."
+  - bugfix: "Fixes name error for Division Manager."
+  - bugfix: "FIxes incorrect faction assignment for CLF corpses."

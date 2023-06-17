@@ -67,7 +67,7 @@
 	if(leaned_on_by)
 		stop_wall_lean()
 		leaned_on_by = null
-	. = ..()
+	return ..()
 
 
 /turf/closed/wall/setDir(newDir)

@@ -173,24 +173,24 @@
 				to_chat(occupant, "Fluid volume low. Refreshing liquids...")
 				doing_stuff = TRUE
 			if(!doing_stuff)
-				for(var/obj/limb/L in humanoid_occupant.limbs)
-					if(L.implants.len)
+				for(var/obj/limb/current_limb in humanoid_occupant.limbs)
+					if(current_limb.implants.len)
 						doing_stuff = TRUE
 						to_chat(occupant, "Foreign material detected. Beginning removal process...")
-						for(var/obj/item/I in L.implants)
-							if(!is_type_in_list(I,known_implants))
+						for(var/obj/item/current_implant in current_limb.implants)
+							if(!is_type_in_list(current_implant,known_implants))
 								sleep(REMOVE_OBJECT_MAX_DURATION)
-								L.implants -= I
-								humanoid_occupant.embedded_items -= I
-								qdel(I)
+								current_limb.implants -= current_implant
+								humanoid_occupant.embedded_items -= current_implant
+								qdel(current_implant)
 								to_chat(occupant, "Foreign object removed.")
-				for(var/datum/internal_organ/I in humanoid_occupant.internal_organs)
-					if(I.robotic == ORGAN_ASSISTED||I.robotic == ORGAN_ROBOT) //this time the machine can *only* fix robotic organs
-						if(I.damage > 0)
+				for(var/datum/internal_organ/current_organ in humanoid_occupant.internal_organs)
+					if(current_organ.robotic == ORGAN_ASSISTED||current_organ.robotic == ORGAN_ROBOT) //this time the machine can *only* fix robotic organs
+						if(current_organ.damage > 0)
 							to_chat(occupant, "Damaged internal component detected. Beginning repair process.")
 							doing_stuff = TRUE
 							sleep(FIX_ORGAN_MAX_DURATION)
-							I.rejuvenate()
+							current_organ.rejuvenate()
 							to_chat(occupant, "Internal component repaired.")
 
 		if(!doing_stuff)

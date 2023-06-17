@@ -11,15 +11,15 @@
 	/// Set to true if it should report area name and not specific alert.
 	var/area_based = FALSE
 	/// Cooldown duration and next time.
-	var/cooldown_duration = 60 SECONDS
-	var/cooldown = 0
+	var/cooldown_duration = COOLDOWN_ARES_SENSOR
+	COOLDOWN_DECLARE(sensor_cooldown)
 	/// The job on a mob to enter
 	var/list/pass_jobs = list(JOB_WORKING_JOE, JOB_CHIEF_ENGINEER, JOB_CO)
 	/// The accesses on an ID card to enter
 	var/pass_accesses = list(ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)
 
 /obj/effect/step_trigger/ares_alert/Crossed(mob/living/passer)
-	if(cooldown > world.time)//Don't want alerts spammed.
+	if(!COOLDOWN_FINISHED(src, sensor_cooldown))//Don't want alerts spammed.
 		return FALSE
 	if(!passer)
 		return FALSE
@@ -72,19 +72,19 @@
 	var/datum/ares_link/link = GLOB.ares_link
 	if(link.p_apollo.inoperable())
 		return FALSE
-	else
-		to_chat(passer, SPAN_BOLDWARNING("You hear a soft beeping sound as you cross the threshold."))
-		var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
-		for(var/mob/living/silicon/decoy/ship_ai/ai in ai_mob_list)
-			apollo.broadcast(ai, broadcast_message)
-		for(var/mob/listener as anything in (GLOB.human_mob_list + GLOB.dead_mob_list))
-			if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
-				playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
-		var/new_cooldown = (world.time + cooldown_duration)
-		cooldown = new_cooldown
-		if(alert_id && link)
-			for(var/obj/effect/step_trigger/ares_alert/alert in link.linked_alerts)
-				alert.cooldown = new_cooldown
+
+	to_chat(passer, SPAN_BOLDWARNING("You hear a soft beeping sound as you cross the threshold."))
+	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
+	for(var/mob/living/silicon/decoy/ship_ai/ai in ai_mob_list)
+		apollo.broadcast(ai, broadcast_message)
+	for(var/mob/listener as anything in (GLOB.human_mob_list + GLOB.dead_mob_list))
+		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
+			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+	COOLDOWN_START(src, sensor_cooldown, cooldown_duration)
+	if(alert_id && link)
+		for(var/obj/effect/step_trigger/ares_alert/sensor in link.linked_alerts)
+			if(sensor.alert_id == src.alert_id)
+				COOLDOWN_START(sensor, sensor_cooldown, cooldown_duration)
 	return TRUE
 
 /obj/effect/step_trigger/ares_alert/public
@@ -107,18 +107,18 @@
 	pass_accesses = list(ACCESS_MARINE_CE)
 
 
-
+/// Trigger will remove ACCESS_MARINE_AI_TEMP unless ACCESS_MARINE_AI is also present.
 /obj/effect/step_trigger/ares_alert/access_control
 	name = "ARES Access Control Sensor"
 	alert_message = "HARDCODED"
 	alert_id = "ARES Access"
-	cooldown_duration = 20 SECONDS
-	// Will remove temp access away unless permanent access is also present.
+	cooldown_duration = COOLDOWN_ARES_ACCESS_CONTROL
+
 
 /obj/effect/step_trigger/ares_alert/access_control/Crossed(atom/passer as mob|obj)
 	if(isobserver(passer) || isxeno(passer))
 		return FALSE
-	if(cooldown > world.time)//Don't want alerts spammed.
+	if(!COOLDOWN_FINISHED(src, sensor_cooldown))//Don't want alerts spammed.
 		return FALSE
 	if(!passer)
 		return FALSE
@@ -171,19 +171,19 @@
 	var/datum/ares_link/link = GLOB.ares_link
 	if(link.p_apollo.inoperable())
 		return FALSE
-	else
-		to_chat(passer, SPAN_BOLDWARNING("You hear a harsh buzzing sound as you cross the threshold!"))
-		var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
-		for(var/mob/living/silicon/decoy/ship_ai/ai in ai_mob_list)
-			apollo.broadcast(ai, broadcast_message)
-		for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
-			if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
-				playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
-		if(idcard)
-			idcard.access -= ACCESS_MARINE_AI_TEMP
-		var/new_cooldown = (world.time + cooldown_duration)
-		cooldown = new_cooldown
-		if(alert_id && link)
-			for(var/obj/effect/step_trigger/ares_alert/alert in link.linked_alerts)
-				alert.cooldown = new_cooldown
+
+	to_chat(passer, SPAN_BOLDWARNING("You hear a harsh buzzing sound as you cross the threshold!"))
+	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
+	for(var/mob/living/silicon/decoy/ship_ai/ai in ai_mob_list)
+		apollo.broadcast(ai, broadcast_message)
+	for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
+		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
+			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+	if(idcard)
+		idcard.access -= ACCESS_MARINE_AI_TEMP
+	COOLDOWN_START(src, sensor_cooldown, COOLDOWN_ARES_ACCESS_CONTROL)
+	if(alert_id && link)
+		for(var/obj/effect/step_trigger/ares_alert/sensor in link.linked_alerts)
+			if(sensor.alert_id == src.alert_id)
+				COOLDOWN_START(sensor, sensor_cooldown, COOLDOWN_ARES_ACCESS_CONTROL)
 	return TRUE

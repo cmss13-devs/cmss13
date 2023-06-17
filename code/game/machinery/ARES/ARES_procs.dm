@@ -495,7 +495,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 				to_chat(usr, SPAN_WARNING("You have been here for less than six minutes... what could you possibly have done!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			if(world.time < ares_distress_cooldown)
+			if(!COOLDOWN_FINISHED(src, ares_distress_cooldown))
 				to_chat(usr, SPAN_WARNING("The distress launcher is cooling down!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
@@ -523,7 +523,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 				to_chat(usr, SPAN_WARNING("It is too soon to request Nuclear Ordnance!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			if(world.time < ares_nuclear_cooldown)
+			if(!COOLDOWN_FINISHED(src, ares_nuclear_cooldown))
 				to_chat(usr, SPAN_WARNING("The ordnance request frequency is garbled, wait for reset!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE

@@ -440,7 +440,7 @@
 		return
 
 	var/confirm = tgui_alert(usr, "Are you sure you want to hijack [dropship]?", "Force hijack", list("Yes", "No")) == "Yes"
-	if(!confirm) 
+	if(!confirm)
 		return
 
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/computer = dropship.getControlConsole()
@@ -559,16 +559,16 @@
 	var/datum/ares_link/link = GLOB.ares_link
 	if(link.p_apollo.inoperable())
 		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
-		return
-	else
-		var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
-		for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
-			apollo.broadcast(AI, input)
-		for(var/mob/listener as anything in (GLOB.human_mob_list + GLOB.dead_mob_list))
-			if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
-				playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
-		message_admins("[key_name_admin(src)] has created an AI APOLLO report")
-		log_admin("AI APOLLO report: [input]")
+		return FALSE
+
+	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
+	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
+		apollo.broadcast(AI, input)
+	for(var/mob/listener as anything in (GLOB.human_mob_list + GLOB.dead_mob_list))
+		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
+			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+	message_admins("[key_name_admin(src)] has created an AI APOLLO report")
+	log_admin("AI APOLLO report: [input]")
 
 /client/proc/cmd_admin_create_AI_shipwide_report()
 	set name = "Report: ARES Shipwide"

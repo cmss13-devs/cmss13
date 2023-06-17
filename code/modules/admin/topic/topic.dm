@@ -2007,9 +2007,9 @@
 		player_notes_all(checking.key)
 
 	if(href_list["AresReply"])
-		var/mob/living/carbon/human/H = locate(href_list["AresReply"])
+		var/mob/living/carbon/human/speaker = locate(href_list["AresReply"])
 
-		if(!istype(H))
+		if(!istype(speaker))
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return FALSE
 
@@ -2017,21 +2017,21 @@
 			to_chat(usr, "ARES Interface offline.")
 			return FALSE
 
-		var/input = input(src.owner, "Please enter a message from ARES to reply to [key_name(H)].","Outgoing message from ARES", "")
+		var/input = input(src.owner, "Please enter a message from ARES to reply to [key_name(speaker)].","Outgoing message from ARES", "")
 		if(!input)
 			return FALSE
 
-		to_chat(src.owner, "You sent [input] to [H] via ARES Interface.")
-		log_admin("[src.owner] replied to [key_name(H)]'s ARES message with the message [input].")
-		for(var/client/X in GLOB.admins)
-			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
-				to_chat(X, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] replied to [key_name(H)]'s ARES message")] with: [SPAN_BLUE(input)] </b>"))
+		to_chat(src.owner, "You sent [input] to [speaker] via ARES Interface.")
+		log_admin("[src.owner] replied to [key_name(speaker)]'s ARES message with the message [input].")
+		for(var/client/staff in GLOB.admins)
+			if((R_ADMIN|R_MOD) & staff.admin_holder.rights)
+				to_chat(staff, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] replied to [key_name(speaker)]'s ARES message")] with: [SPAN_BLUE(input)] </b>"))
 		GLOB.ares_link.interface.response_from_ares(input, href_list["AresRef"])
 
 	if(href_list["AresMark"])
-		var/mob/living/carbon/human/H = locate(href_list["AresMark"])
+		var/mob/living/carbon/human/speaker = locate(href_list["AresMark"])
 
-		if(!istype(H))
+		if(!istype(speaker))
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return FALSE
 
@@ -2039,11 +2039,11 @@
 			to_chat(usr, "ARES Interface offline.")
 			return FALSE
 
-		to_chat(src.owner, "You marked [H]'s ARES message for response.")
-		log_admin("[src.owner] marked [key_name(H)]'s ARES message. [src.owner] will be responding.")
-		for(var/client/X in GLOB.admins)
-			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
-				to_chat(X, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] marked [key_name(H)]'s ARES message for response.")]</b>"))
+		to_chat(src.owner, "You marked [speaker]'s ARES message for response.")
+		log_admin("[src.owner] marked [key_name(speaker)]'s ARES message. [src.owner] will be responding.")
+		for(var/client/staff in GLOB.admins)
+			if((R_ADMIN|R_MOD) & staff.admin_holder.rights)
+				to_chat(staff, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] marked [key_name(speaker)]'s ARES message for response.")]</b>"))
 
 	return
 

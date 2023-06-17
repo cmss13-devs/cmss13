@@ -48,3 +48,7 @@
 #define TICKET_REJECTED "rejected"
 #define TICKET_CANCELLED "cancelled"
 #define TICKET_COMPLETED "complete"
+
+/// Cooldowns
+#define COOLDOWN_ARES_SENSOR 60 SECONDS
+#define COOLDOWN_ARES_ACCESS_CONTROL 20 SECONDS

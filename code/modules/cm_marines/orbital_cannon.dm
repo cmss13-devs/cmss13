@@ -435,7 +435,7 @@ var/list/ob_type_fuel_requirements
 
 		shake_camera(user, total_shake_factor, frequency)
 
-		user.KnockDown(rand(max_knockdown_time * distance_percent, (total_stun_time + 1)))
+		user.KnockDown(rand(max_knockdown_time * distance_percent, (max_knockdown_time * distance_percent + 1)))
 
 		if(!user.knocked_down)
 			continue

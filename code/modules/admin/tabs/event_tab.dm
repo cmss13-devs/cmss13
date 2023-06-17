@@ -896,7 +896,7 @@
 		warhead.warhead_impact(target)
 
 		if(warhead.warhead_kind == "cluster")
-		// so the user's camera can shake for the duration of the cluster
+		// so the user's screen can shake for the duration of the cluster, otherwise we get a runtime.
 			QDEL_IN(warhead, OB_CLUSTER_DURATION)
 		else
 			QDEL_IN(warhead, OB_CRASHING_DOWN)

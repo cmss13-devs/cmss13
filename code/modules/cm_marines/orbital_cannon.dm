@@ -420,9 +420,9 @@ var/list/ob_type_fuel_requirements
 			frequency = 2
 			max_shake_factor = 1
 
-	for(var/mob/living/M in urange(radius_size, epicenter))
+	for(var/mob/living/user in urange(radius_size, epicenter))
 
-		var/distance = get_accurate_dist(get_turf(M), epicenter)
+		var/distance = get_accurate_dist(get_turf(user), epicenter)
 
 		var/distance_percent = ((radius_size - distance) / radius_size)
 
@@ -430,18 +430,16 @@ var/list/ob_type_fuel_requirements
 
 		// it's of type cluster.
 		if(!max_knockdown_time)
-			shake_camera(M, 0.5, total_shake_factor, frequency)
+			shake_camera(user, 0.5, total_shake_factor, frequency)
 			continue
 
-		shake_camera(M, total_shake_factor, frequency)
+		shake_camera(user, total_shake_factor, frequency)
 
-		var/total_stun_time = max_knockdown_time * distance_percent
+		user.KnockDown(rand(max_knockdown_time * distance_percent, (total_stun_time + 1)))
 
-		M.KnockDown(rand(total_stun_time, (total_stun_time + 1)))
-
-		if(!M.knocked_down)
+		if(!user.knocked_down)
 			continue
-		to_chat(M, SPAN_WARNING("You are thrown off balance and fall to the ground!"))
+		to_chat(user, SPAN_WARNING("You are thrown off balance and fall to the ground!"))
 
 /obj/structure/ob_ammo/warhead/explosive
 	name = "\improper HE orbital warhead"

@@ -895,7 +895,7 @@
 		message_admins("[key_name(usr)] has fired \an [warhead.name] at ([target.x],[target.y],[target.z]).")
 		warhead.warhead_impact(target)
 
-		if(warhead.warhead_kind == "cluster")
+		if(istype(warhead, obj/structure/ob_ammo/warhead/cluster))
 		// so the user's screen can shake for the duration of the cluster, otherwise we get a runtime.
 			QDEL_IN(warhead, OB_CLUSTER_DURATION)
 		else

@@ -30,7 +30,9 @@
 /obj/structure/sign/safety/cryo{
 	pixel_x = -18
 	},
-/turf/open/shuttle/escapepod,
+/turf/open/shuttle/escapepod{
+	icon_state = "floor4"
+	},
 /area/shuttle/escape_pod)
 "s" = (
 /turf/closed/shuttle/escapepod{
@@ -39,7 +41,9 @@
 /area/shuttle/escape_pod)
 "u" = (
 /obj/structure/machinery/cryopod/evacuation,
-/turf/open/shuttle/escapepod,
+/turf/open/shuttle/escapepod{
+	icon_state = "floor4"
+	},
 /area/shuttle/escape_pod)
 "v" = (
 /obj/structure/machinery/computer/shuttle/escape_pod_panel{
@@ -69,7 +73,8 @@
 /area/shuttle/escape_pod)
 "K" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor4"
+	icon_state = "floor0";
+	dir = 8
 	},
 /area/shuttle/escape_pod)
 "O" = (

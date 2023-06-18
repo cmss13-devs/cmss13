@@ -55,7 +55,9 @@
 /area/shuttle/escape_pod)
 "z" = (
 /obj/structure/machinery/cryopod/evacuation,
-/turf/open/shuttle/escapepod,
+/turf/open/shuttle/escapepod{
+	icon_state = "floor4"
+	},
 /area/shuttle/escape_pod)
 "E" = (
 /turf/closed/shuttle/escapepod{
@@ -72,11 +74,14 @@
 /obj/structure/sign/safety/cryo{
 	pixel_x = -18
 	},
-/turf/open/shuttle/escapepod,
+/turf/open/shuttle/escapepod{
+	icon_state = "floor4"
+	},
 /area/shuttle/escape_pod)
 "N" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor4"
+	icon_state = "floor0";
+	dir = 8
 	},
 /area/shuttle/escape_pod)
 "Q" = (

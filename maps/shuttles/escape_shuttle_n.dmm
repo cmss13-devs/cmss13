@@ -15,7 +15,7 @@
 	pixel_y = 30
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor4"
+	icon_state = "floor2"
 	},
 /area/shuttle/escape_pod)
 "g" = (
@@ -47,7 +47,9 @@
 /area/shuttle/escape_pod)
 "H" = (
 /obj/structure/machinery/cryopod/evacuation,
-/turf/open/shuttle/escapepod,
+/turf/open/shuttle/escapepod{
+	icon_state = "floor4"
+	},
 /area/shuttle/escape_pod)
 "L" = (
 /turf/closed/shuttle/escapepod{
@@ -65,16 +67,23 @@
 	pixel_x = 8;
 	pixel_y = -35
 	},
-/turf/open/shuttle/escapepod,
+/turf/open/shuttle/escapepod{
+	icon_state = "floor4"
+	},
 /area/shuttle/escape_pod)
 "W" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor4"
+	dir = 4
 	},
 /area/shuttle/escape_pod)
 "Y" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall4"
+	},
+/area/shuttle/escape_pod)
+"Z" = (
+/turf/open/shuttle/escapepod{
+	icon_state = "floor0"
 	},
 /area/shuttle/escape_pod)
 
@@ -98,7 +107,7 @@ L
 "}
 (4,1,1) = {"
 l
-W
+Z
 H
 L
 "}

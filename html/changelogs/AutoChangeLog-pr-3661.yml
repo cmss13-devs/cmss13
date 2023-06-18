@@ -1,0 +1,4 @@
+author: "TheGamerdk"
+delete-after: True
+changes:
+  - rscdel: "Chem goons only give 1 announcement instead of 3"

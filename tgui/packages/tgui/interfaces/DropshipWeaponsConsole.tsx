@@ -4,10 +4,12 @@ import { Box, Button, Divider, Flex, Stack } from '../components';
 import { CasSim } from './CasSim';
 import { CrtPanel } from './CrtPanel';
 import { Table, TableCell, TableRow } from '../components/Table';
+import { ByondUi } from '../components';
 
 interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
   selected_eqp: number;
+  tactical_map_ref?: string;
 }
 
 type DropshipEquipment = {
@@ -30,7 +32,7 @@ const yLookup = (index: number) => [150, 20, 20, 150][index] + yOffset;
 const OutlineColor = '#00e94e';
 const OutlineWidth = '2';
 
-type PanelStates = 'equipment' | 'firemissions';
+type PanelStates = 'equipment' | 'firemissions' | 'map' | 'camera';
 
 const usePanelState = (context) =>
   useSharedState<PanelStates>(context, 'panelstate', 'equipment');
@@ -214,6 +216,21 @@ const FiremissionSimulationPanel = (props, context) => {
   );
 };
 
+const MapPanel = (props, context) => {
+  const { data } = useBackend<DropshipProps>(context);
+  return (
+    <Box className="NavigationMenu">
+      <ByondUi
+        params={{
+          id: data.tactical_map_ref,
+          type: 'map',
+        }}
+        class="MapPanel"
+      />
+    </Box>
+  );
+};
+
 const ControlPanel = (props, context) => {
   const [panelState, setPanelState] = usePanelState(context);
 
@@ -247,53 +264,64 @@ const TopPanel = (props, context) => {
       align="space-evenly"
       className="HorizontalButtonPanel">
       <Flex.Item>
-        <Button className="mfd_button">L</Button>
+        <MfdButton>L</MfdButton>
       </Flex.Item>
       <Flex.Item>
-        <Button className="mfd_button">LC</Button>
+        <MfdButton>LC</MfdButton>
       </Flex.Item>
       <Flex.Item>
-        <Button className="mfd_button">C</Button>
+        <MfdButton>C</MfdButton>
       </Flex.Item>
       <Flex.Item>
-        <Button className="mfd_button">RC</Button>
+        <MfdButton>RC</MfdButton>
       </Flex.Item>
       <Flex.Item>
-        <Button className="mfd_button">R</Button>
+        <MfdButton>R</MfdButton>
       </Flex.Item>
     </Flex>
   );
 };
 
+const MfdButton = (props: { onClick?: () => void; children: any }, context) => {
+  const { act, data } = useBackend<DropshipProps>(context);
+  return (
+    <Button
+      onClick={() => {
+        act('button_push');
+        if (props.onClick) {
+          props.onClick();
+        }
+      }}
+      className="mfd_button">
+      {props.children}
+    </Button>
+  );
+};
+
 const BottomPanel = (props, context) => {
   const [panelState, setPanelState] = usePanelState(context);
+
   return (
     <Flex
       justify="center"
       align="space-evenly"
       className="HorizontalButtonPanel">
       <Flex.Item>
-        <Button
-          onClick={() => setPanelState('equipment')}
-          className="mfd_button">
-          WEAP
-        </Button>
+        <MfdButton onClick={() => setPanelState('equipment')}>WEAP</MfdButton>
       </Flex.Item>
       <Flex.Item>
-        <Button
-          onClick={() => setPanelState('firemissions')}
-          className="mfd_button">
+        <MfdButton onClick={() => setPanelState('firemissions')}>
           FIREM
-        </Button>
+        </MfdButton>
       </Flex.Item>
       <Flex.Item>
         <Button className="mfd_button">EQUIP</Button>
       </Flex.Item>
       <Flex.Item>
-        <Button className="mfd_button">4</Button>
+        <MfdButton onClick={() => setPanelState('map')}>MAP</MfdButton>
       </Flex.Item>
       <Flex.Item>
-        <Button className="mfd_button">5</Button>
+        <MfdButton onClick={() => setPanelState('camera')}>CAMERA</MfdButton>
       </Flex.Item>
     </Flex>
   );
@@ -307,19 +335,19 @@ const LeftPanel = (props, context) => {
       align="space-evenly"
       className="VerticalButtonPanel">
       <Flex.Item>
-        <Button className="mfd_button">DESEL</Button>
+        <MfdButton>DESEL</MfdButton>
       </Flex.Item>
       <Flex.Item>
-        <Button className="mfd_button">GUN</Button>
+        <MfdButton>GUN</MfdButton>
       </Flex.Item>
       <Flex.Item>
-        <Button className="mfd_button">GUN</Button>
+        <MfdButton>GUN</MfdButton>
       </Flex.Item>
       <Flex.Item>
-        <Button className="mfd_button">MSL</Button>
+        <MfdButton>GUN</MfdButton>
       </Flex.Item>
       <Flex.Item>
-        <Button className="mfd_button">MSL</Button>
+        <MfdButton>GUN</MfdButton>
       </Flex.Item>
     </Flex>
   );
@@ -333,26 +361,39 @@ const RightPanel = (props, context) => {
       align="space-evenly"
       className="VerticalButtonPanel">
       <Flex.Item>
-        <Button className="mfd_button">D-23</Button>
+        <MfdButton>D-21</MfdButton>
       </Flex.Item>
       <Flex.Item>
-        <Button className="mfd_button">C-15</Button>
+        <MfdButton>D-21</MfdButton>
       </Flex.Item>
       <Flex.Item>
-        <Button className="mfd_button">C-12</Button>
+        <MfdButton>D-21</MfdButton>
       </Flex.Item>
       <Flex.Item>
-        <Button className="mfd_button">NO LAZE</Button>
+        <MfdButton>NO LAZE</MfdButton>
       </Flex.Item>
       <Flex.Item>
-        <Button className="mfd_button">SELECT</Button>
+        <MfdButton>SELECT</MfdButton>
       </Flex.Item>
     </Flex>
   );
 };
 
-const PrimaryPanel = (props, context) => {
+const RenderScreen = (props, context) => {
   const [panelState] = usePanelState(context);
+  switch (panelState) {
+    case 'equipment':
+      return <LcdPanel />;
+    case 'firemissions':
+      return <FiremissionSimulationPanel />;
+    case 'map':
+      return <MapPanel />;
+    default:
+      return <Box className="NavigationMenu" />;
+  }
+};
+
+const PrimaryPanel = (props, context) => {
   return (
     <Table className="primarypanel">
       <TableRow>
@@ -368,8 +409,7 @@ const PrimaryPanel = (props, context) => {
         </TableCell>
         <TableCell>
           <CrtPanel color="green" className="displaypanel">
-            {panelState === 'equipment' && <LcdPanel />}
-            {panelState === 'firemissions' && <FiremissionSimulationPanel />}
+            <RenderScreen />
           </CrtPanel>
         </TableCell>
         <TableCell>

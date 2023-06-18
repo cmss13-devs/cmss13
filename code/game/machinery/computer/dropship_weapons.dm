@@ -25,9 +25,14 @@
 	var/datum/simulator/simulation
 	var/datum/cas_fire_mission/configuration
 
+	// groundside maps
+	var/datum/tacmap/tacmap
+	var/minimap_type = MINIMAP_FLAG_USCM
+
 /obj/structure/machinery/computer/dropship_weapons/Initialize()
 	. = ..()
 	simulation = new()
+	tacmap = new(src, minimap_type)
 
 /obj/structure/machinery/computer/dropship_weapons/New()
 	..()
@@ -76,7 +81,6 @@
 	if(firemission_envelope)
 		if(!istype(editing_firemission))
 			editing_firemission = null
-			//the fuck
 
 		if(editing_firemission)
 			var/error_code = editing_firemission.check(src)
@@ -100,6 +104,9 @@
 			update_location(null)
 
 	data = ui_data(usr)
+	if(!tacmap.map_holder)
+		tacmap.refresh_map()
+	user.client.register_map_obj(tacmap.map_holder.map)
 	tgui_interact(usr)
 
 /obj/structure/machinery/computer/dropship_weapons/tgui_interact(mob/user, datum/tgui/ui)
@@ -126,6 +133,10 @@
 
 /obj/structure/machinery/computer/dropship_weapons/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+/obj/structure/machinery/computer/dropship_weapons/ui_static_data(mob/user)
+	. = list()
+	.["tactical_map_ref"] = tacmap.map_holder.map_ref
 
 /obj/structure/machinery/computer/dropship_weapons/ui_data(mob/user)
 	. = list()
@@ -192,6 +203,9 @@
 
 	var/mob/user = ui.user
 	switch(action)
+		if("button_push")
+			playsound(src, get_sfx("terminal_button"), 25, FALSE)
+			return TRUE
 		if("select_equipment")
 			var/base_tag = params["equipment_id"]
 			ui_equip_interact(base_tag)
@@ -891,6 +905,7 @@
 	. = ..()
 
 	QDEL_NULL(firemission_envelope)
+	QDEL_NULL(tacmap)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/simulate_firemission(mob/living/user)
 

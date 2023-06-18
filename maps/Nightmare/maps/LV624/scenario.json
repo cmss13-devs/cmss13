@@ -4,7 +4,8 @@
 	"choices": [
 		{ "type": "def", "values": { "mainpath": "left"   } },
 		{ "type": "def", "values": { "mainpath": "bridge" } },
-		{ "type": "def", "values": { "mainpath": "right"  } }
+		{ "type": "def", "values": { "mainpath": "right"  } },
+        { "type": "def", "values": { "mainpath": "alt"  } }
 	]
 },
 {

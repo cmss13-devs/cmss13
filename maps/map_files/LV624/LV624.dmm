@@ -12654,6 +12654,12 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
+"bGK" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "alt_colony"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/south_west_jungle)
 "bGV" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor{
@@ -27126,7 +27132,7 @@ mWe
 xTT
 xdO
 aKb
-aKb
+bGK
 aac
 aaa
 aaa

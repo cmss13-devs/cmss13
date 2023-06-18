@@ -158,6 +158,8 @@
 
 		if(candidates && candidates.len)
 			picked = candidates[1]
+			for(var/i in 2 to candidates.len)
+				to_chat(candidates[i], SPAN_XENONOTICE("You are now [i-1]\th in the larva queue."))
 
 	// Spawn the larva
 	var/mob/living/carbon/xenomorph/larva/new_xeno

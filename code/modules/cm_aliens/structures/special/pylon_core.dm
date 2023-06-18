@@ -147,6 +147,8 @@
 			var/list/players_with_xeno_pref = get_alien_candidates()
 			if(players_with_xeno_pref && players_with_xeno_pref.len && can_spawn_larva())
 				spawn_burrowed_larva(players_with_xeno_pref[1])
+				for(var/i in 2 to players_with_xeno_pref.len)
+					to_chat(players_with_xeno_pref[i], SPAN_XENONOTICE("You are now [i-1]\th in the larva queue."))
 
 		if(linked_hive.hijack_burrowed_surge && (last_surge_time + surge_cooldown) < world.time)
 			last_surge_time = world.time

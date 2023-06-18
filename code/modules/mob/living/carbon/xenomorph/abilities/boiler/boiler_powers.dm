@@ -167,7 +167,7 @@
 	if(!actually_moving)
 		return
 
-	var/obj/effect/particle_effect/smoke/smoke_effect = new /obj/effect/particle_effect/smoke/xeno_burn(get_turf(mover), 1, create_cause_data("dumped acid gas", mover))
+	var/obj/effect/particle_effect/smoke/xeno_burn/smoke_effect = new(get_turf(mover), 1, create_cause_data("dumped acid gas", mover))
 	smoke_effect.time_to_live = 3
 	smoke_effect.spread_speed = 1000000
 
@@ -298,7 +298,7 @@
 	xeno.visible_message(SPAN_XENOWARNING("The [xeno] fires a blast of acid at [target]!"), SPAN_XENOWARNING("You fire a blast of acid at [target]!"))
 
 	var/turf/target_turf = locate(target.x, target.y, target.z)
-	var/obj/item/projectile/proj = new /obj/item/projectile(xeno.loc, create_cause_data("acid shotgun", xeno))
+	var/obj/item/projectile/proj = new(xeno.loc, create_cause_data("acid shotgun", xeno))
 	var/datum/ammo/ammoDatum = new ammo_type()
 
 	proj.generate_bullet(ammoDatum)
@@ -346,7 +346,7 @@
 		else if(stabbing_xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
 			var/datum/effects/neurotoxin/neuro_effect = locate() in carbon_target.effects_list
 			if(!neuro_effect)
-				neuro_effect = new /datum/effects/neurotoxin(carbon_target, owner)
+				neuro_effect = new(carbon_target, owner)
 			neuro_effect.duration += 16
 			to_chat(carbon_target,SPAN_HIGHDANGER("You are injected with something from [stabbing_xeno]'s tailstab!"))
 		else

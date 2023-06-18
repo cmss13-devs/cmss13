@@ -3,6 +3,7 @@ import { Window } from '../layouts';
 import { Box, Button, Divider, Flex, Stack } from '../components';
 import { CasSim } from './CasSim';
 import { CrtPanel } from './CrtPanel';
+import { Table, TableCell, TableRow } from '../components/Table';
 
 interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
@@ -241,21 +242,24 @@ const ControlPanel = (props, context) => {
 
 const TopPanel = (props, context) => {
   return (
-    <Flex justify="center" align="space-evenly">
+    <Flex
+      justify="center"
+      align="space-evenly"
+      className="HorizontalButtonPanel">
       <Flex.Item>
-        <Button>L</Button>
+        <Button className="mfd_button">L</Button>
       </Flex.Item>
       <Flex.Item>
-        <Button>LC</Button>
+        <Button className="mfd_button">LC</Button>
       </Flex.Item>
       <Flex.Item>
-        <Button>C</Button>
+        <Button className="mfd_button">C</Button>
       </Flex.Item>
       <Flex.Item>
-        <Button>RC</Button>
+        <Button className="mfd_button">RC</Button>
       </Flex.Item>
       <Flex.Item>
-        <Button>R</Button>
+        <Button className="mfd_button">R</Button>
       </Flex.Item>
     </Flex>
   );
@@ -264,21 +268,32 @@ const TopPanel = (props, context) => {
 const BottomPanel = (props, context) => {
   const [panelState, setPanelState] = usePanelState(context);
   return (
-    <Flex justify="center" align="space-evenly">
+    <Flex
+      justify="center"
+      align="space-evenly"
+      className="HorizontalButtonPanel">
       <Flex.Item>
-        <Button onClick={() => setPanelState('equipment')}>WEAP</Button>
+        <Button
+          onClick={() => setPanelState('equipment')}
+          className="mfd_button">
+          WEAP
+        </Button>
       </Flex.Item>
       <Flex.Item>
-        <Button onClick={() => setPanelState('firemissions')}>FIREM</Button>
+        <Button
+          onClick={() => setPanelState('firemissions')}
+          className="mfd_button">
+          FIREM
+        </Button>
       </Flex.Item>
       <Flex.Item>
-        <Button>EQUIP</Button>
+        <Button className="mfd_button">EQUIP</Button>
       </Flex.Item>
       <Flex.Item>
-        <Button>4</Button>
+        <Button className="mfd_button">4</Button>
       </Flex.Item>
       <Flex.Item>
-        <Button>5</Button>
+        <Button className="mfd_button">5</Button>
       </Flex.Item>
     </Flex>
   );
@@ -286,21 +301,25 @@ const BottomPanel = (props, context) => {
 
 const LeftPanel = (props, context) => {
   return (
-    <Flex direction="column" justify="center" align="space-evenly">
+    <Flex
+      direction="column"
+      justify="center"
+      align="space-evenly"
+      className="VerticalButtonPanel">
       <Flex.Item>
-        <Button>DESEL</Button>
+        <Button className="mfd_button">DESEL</Button>
       </Flex.Item>
       <Flex.Item>
-        <Button>GUN</Button>
+        <Button className="mfd_button">GUN</Button>
       </Flex.Item>
       <Flex.Item>
-        <Button>GUN</Button>
+        <Button className="mfd_button">GUN</Button>
       </Flex.Item>
       <Flex.Item>
-        <Button>MSL</Button>
+        <Button className="mfd_button">MSL</Button>
       </Flex.Item>
       <Flex.Item>
-        <Button>MSL</Button>
+        <Button className="mfd_button">MSL</Button>
       </Flex.Item>
     </Flex>
   );
@@ -308,21 +327,25 @@ const LeftPanel = (props, context) => {
 
 const RightPanel = (props, context) => {
   return (
-    <Flex direction="column" justify="center" align="space-evenly">
+    <Flex
+      direction="column"
+      justify="center"
+      align="space-evenly"
+      className="VerticalButtonPanel">
       <Flex.Item>
-        <Button>D-23</Button>
+        <Button className="mfd_button">D-23</Button>
       </Flex.Item>
       <Flex.Item>
-        <Button>C-15</Button>
+        <Button className="mfd_button">C-15</Button>
       </Flex.Item>
       <Flex.Item>
-        <Button>C-12</Button>
+        <Button className="mfd_button">C-12</Button>
       </Flex.Item>
       <Flex.Item>
-        <Button>NO LAZE</Button>
+        <Button className="mfd_button">NO LAZE</Button>
       </Flex.Item>
       <Flex.Item>
-        <Button>SELECT</Button>
+        <Button className="mfd_button">SELECT</Button>
       </Flex.Item>
     </Flex>
   );
@@ -331,39 +354,36 @@ const RightPanel = (props, context) => {
 const PrimaryPanel = (props, context) => {
   const [panelState] = usePanelState(context);
   return (
-    <Stack vertical>
-      <Stack.Item>
-        <TopPanel />
-      </Stack.Item>
-      <Stack.Item>
-        <Stack>
-          <Stack.Item>
-            <Box>
-              <LeftPanel />
-            </Box>
-          </Stack.Item>
-          <Stack.Item>
-            <Stack vertical>
-              <Stack.Item>
-                <CrtPanel color="green">
-                  {panelState === 'equipment' && <LcdPanel />}
-                  {panelState === 'firemissions' && (
-                    <FiremissionSimulationPanel />
-                  )}
-                </CrtPanel>
-              </Stack.Item>
-            </Stack>
-          </Stack.Item>
-          <Stack.Item>
-            <RightPanel />
-          </Stack.Item>
-          <Stack.Item />
-        </Stack>
-      </Stack.Item>
-      <Stack.Item>
-        <BottomPanel />
-      </Stack.Item>
-    </Stack>
+    <Table className="primarypanel">
+      <TableRow>
+        <TableCell />
+        <TableCell>
+          <TopPanel />
+        </TableCell>
+        <TableCell />
+      </TableRow>
+      <TableRow>
+        <TableCell>
+          <LeftPanel />
+        </TableCell>
+        <TableCell>
+          <CrtPanel color="green" className="displaypanel">
+            {panelState === 'equipment' && <LcdPanel />}
+            {panelState === 'firemissions' && <FiremissionSimulationPanel />}
+          </CrtPanel>
+        </TableCell>
+        <TableCell>
+          <RightPanel />
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell />
+        <TableCell>
+          <BottomPanel />
+        </TableCell>
+        <TableCell />
+      </TableRow>
+    </Table>
   );
 };
 
@@ -386,9 +406,9 @@ const SecondaryPanel = (props, context) => {
 export const DropshipWeaponsConsole = (_, context) => {
   const { data } = useBackend<DropshipProps>(context);
   return (
-    <Window height={500} width={900}>
+    <Window height={1024} width={1024}>
       <Window.Content>
-        <Stack vertical>
+        <Stack vertical className="WeaponsConsole">
           <Stack.Item>
             <PrimaryPanel />
           </Stack.Item>

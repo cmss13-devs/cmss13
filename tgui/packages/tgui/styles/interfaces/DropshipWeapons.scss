@@ -1,36 +1,103 @@
 @import 'SidePanel';
 
-.WeaponPanel {
-  border: 2px solid #00e94e;
-  border-radius: 5px;
+.WeaponsConsole {
+  .NavigationMenu {
+    height: 512px;
+    width: 512px;
+  }
+  .WeaponPanel {
+    border: 2px solid #00e94e;
+    border-radius: 5px;
+    height: 512px;
+    width: 512px;
+    display: inline-block;
 
-  .PanelTextBox {
-    margin: 2px;
+    .PanelTextBox {
+      margin: 2px;
+    }
+
+    .BaseSidePanel {
+      height: 100%;
+      width: 150px;
+    }
+
+    .WeaponPanelLeft {
+      @extend .BaseSidePanel;
+      border-right: 2px solid #00e94e;
+    }
+
+    .WeaponPanelRight {
+      @extend .BaseSidePanel;
+      border-left: 2px solid #00e94e;
+    }
   }
 
-  .BaseSidePanel {
+  .mfd_button {
+    background-color: black;
+    width: 50px;
+    height: 50px;
+    font-size: smaller;
+    line-height: 50px;
+    border-style: outset;
+    border-color: #00e94e;
+  }
+
+  .ButtonPanel {
+    padding: 0px;
+    margin: 0px;
+
+    .Flex__item {
+      padding: 0px;
+      margin: 0px;
+      align-content: center;
+      text-align: center;
+    }
+  }
+
+  .VerticalButtonPanel {
+    @extend .ButtonPanel;
     height: 100%;
-    width: 150px;
+
+    .Flex__item {
+      height: 100px;
+      line-height: 100px;
+    }
   }
 
-  .WeaponPanelLeft {
-    @extend .BaseSidePanel;
-    border-right: 2px solid #00e94e;
+  .HorizontalButtonPanel {
+    @extend .ButtonPanel;
+    width: 100%;
+
+    .Flex__item {
+      width: 100px;
+    }
   }
 
-  .WeaponPanelRight {
-    @extend .BaseSidePanel;
-    border-left: 2px solid #00e94e;
+  .WeaponSidePanel {
+    @extend .SidePanel;
+    width: 250px;
+    .Button {
+      width: 100%;
+    }
   }
 
-  .WeaponSelectionPanel {
+  .primarypanel {
+    width: fit-content;
+    height: 512px;
+    width: 512px;
+  }
+
+  .Table {
+    background-color: black;
+  }
+
+  .Table__cell {
+    vertical-align: middle;
+    padding: 2px;
+    margin: 0px;
   }
 }
 
-.WeaponSidePanel {
-  @extend .SidePanel;
-  width: 250px;
-  .Button {
-    width: 100%;
-  }
+.Test {
+  border: 1px solid red;
 }

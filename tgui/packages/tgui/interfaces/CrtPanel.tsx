@@ -7,7 +7,12 @@ interface CrtPanelProps extends BoxProps {
 export const CrtPanel = (props: CrtPanelProps) => {
   return (
     <div className="panel-container">
-      <Box className={classes([`panel-crt-${props.color}`, props.className])}>
+      <Box
+        className={classes([
+          props.className,
+          `panel-crt-${props.color}`,
+          props.className,
+        ])}>
         {props.children}
       </Box>
     </div>

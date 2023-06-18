@@ -240,3 +240,14 @@
       on.
   TheGamerdk, ihatethisengine:
   - bugfix: player can no longer come back in their bodies after ghosting
+2023-06-18:
+  BeagleGaming1:
+  - bugfix: fixes a runtime with paygrades and round start prosthetics
+  realforest2001:
+  - rscadd: Added WY, PMC and UPP faction specific listings for crew monitors.
+  - rscadd: Changed the assignment/job define for Standard PMCs, Detainers and Crewmen
+      to use their manual assignments.
+  - bugfix: Fixes name error for Division Manager.
+  - bugfix: FIxes incorrect faction assignment for CLF corpses.
+  thwompa:
+  - imageadd: new diamond sprite

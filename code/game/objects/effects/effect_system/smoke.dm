@@ -387,7 +387,7 @@
 	if(!issynth(moob))
 		var/datum/effects/neurotoxin/neuro_effect = locate() in moob.effects_list
 		if(!neuro_effect)
-			neuro_effect = new /datum/effects/neurotoxin(moob)
+			neuro_effect = new(moob, cause_data.resolve_mob())
 			neuro_effect.strength = effect_amt
 		neuro_effect.duration += neuro_dose
 		if(moob.coughedtime != 1 && !moob.stat) //Coughing/gasping

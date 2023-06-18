@@ -8,7 +8,7 @@
 	var/mob/living/carbon/attached = null
 	var/mode = 1 // 1 is injecting, 0 is taking blood.
 	var/obj/item/reagent_container/beaker = null
-	var/datum/beam/current_beam = null
+	var/datum/beam/current_beam
 
 /obj/structure/machinery/iv_drip/update_icon()
 	if(src.attached)

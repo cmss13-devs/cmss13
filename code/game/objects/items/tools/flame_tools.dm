@@ -136,7 +136,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/tool/match/process(delta_time)
 	smoketime -= delta_time SECONDS
 	if(smoketime < 1)
-		burn_out()
+		var/user
+		if(istype(loc, /mob))
+			user = loc
+		burn_out(user)
 		return
 
 /obj/item/tool/match/Destroy()
@@ -170,7 +173,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	damtype = "brute"
 	icon_state = "[initial(icon_state)]_burnt"
 	item_state = "cigoff"
-	if(user && loc != user)
+	if(user)
 		user.SetLuminosity(0, FALSE, src)
 	SetLuminosity(0)
 	name = burnt_name

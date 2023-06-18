@@ -304,7 +304,7 @@
 	item_state = "npz92"
 	inherent_traits = list(TRAIT_GUN_SILENCED)
 	fire_sound = 'sound/weapons/gun_c99.ogg'
-	current_mag = /obj/item/ammo_magazine/pistol/np92
+	current_mag = /obj/item/ammo_magazine/pistol/np92/suppressed
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	starting_attachment_types = list(/obj/item/attachable/lasersight)
 	attachable_allowed = list(
@@ -803,7 +803,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 /obj/item/weapon/gun/pistol/skorpion
 	name = "\improper CZ-81 machine pistol"
 	desc = "A robust, 20th century firearm that's a combination of pistol and submachinegun. Fires .32ACP caliber rounds from a 20-round magazine."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "skorpion"
 	item_state = "skorpion"
 
@@ -829,36 +829,8 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	..()
 	fa_delay = FIRE_DELAY_TIER_9
 	fa_scatter_peak = 15 //shots
-	fa_max_scatter = SCATTER_AMOUNT_TIER_4
-
-	accuracy_mult = BASE_ACCURACY_MULT
-	scatter = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT
-
-/obj/item/weapon/gun/pistol/skorpion/upp
-	desc = "A robust, 20th century firearm modernized for the 23rd century. Fires .32ACP caliber rounds from a 20-round magazine."
-	icon_state = "skorpion_u"
-	item_state = "skorpion_u"
-
-/obj/item/weapon/gun/pistol/skorpion/upp/medic
-	random_spawn_chance = 100
-	random_rail_chance = 70
-	random_spawn_rail = list(
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight,
-	)
-	random_muzzle_chance = 50
-	random_spawn_muzzle = list(
-		/obj/item/attachable/suppressor,
-	)
-	random_under_chance = 60
-	random_spawn_under = list(
-		/obj/item/attachable/lasersight,
-	)
-
-/obj/item/weapon/gun/pistol/skorpion/set_gun_config_values()
-	..()
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
 
+	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_7
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2

@@ -617,19 +617,19 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
 
-/datum/ammo/bullet/revolver/nagant
-	name = "nagant revolver bullet"
+/datum/ammo/bullet/revolver/upp
+	name = "ZHNK-72 revolver bullet"
 	headshot_state = HEADSHOT_OVERLAY_LIGHT //Smaller bullet.
 	damage = 40
 
 
-/datum/ammo/bullet/revolver/nagant/shrapnel
+/datum/ammo/bullet/revolver/upp/shrapnel
 	name = "shrapnel shot"
 	headshot_state = HEADSHOT_OVERLAY_HEAVY //Gol-dang shotgun blow your fething head off.
 	debilitate = list(0,0,0,0,0,0,0,0)
 	icon_state = "shrapnelshot"
 	handful_state = "shrapnel"
-	bonus_projectiles_type = /datum/ammo/bullet/revolver/nagant/shrapnel_bits
+	bonus_projectiles_type = /datum/ammo/bullet/revolver/upp/shrapnel_bits
 
 	max_range = 6
 	damage = 25 // + TIER_4 * 3
@@ -637,13 +637,13 @@
 	penetration = ARMOR_PENETRATION_TIER_6
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	shrapnel_chance = 100
-	shrapnel_type = /obj/item/shard/shrapnel/nagant
+	shrapnel_type = /obj/item/shard/shrapnel/upp
 	//roughly 35 or so damage
 
-/datum/ammo/bullet/revolver/nagant/shrapnel/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/revolver/upp/shrapnel/on_hit_mob(mob/M, obj/item/projectile/P)
 	pushback(M, P, 1)
 
-/datum/ammo/bullet/revolver/nagant/shrapnel_bits
+/datum/ammo/bullet/revolver/upp/shrapnel_bits
 	name = "small shrapnel"
 	icon_state = "shrapnelshot_bit"
 
@@ -652,7 +652,7 @@
 	penetration = ARMOR_PENETRATION_TIER_1
 	scatter = SCATTER_AMOUNT_TIER_1
 	bonus_projectiles_amount = 0
-	shrapnel_type = /obj/item/shard/shrapnel/nagant/bits
+	shrapnel_type = /obj/item/shard/shrapnel/upp/bits
 
 /datum/ammo/bullet/revolver/small
 	name = "small revolver bullet"
@@ -861,6 +861,15 @@
 	penetration = ARMOR_PENETRATION_TIER_2
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_5
+
+/datum/ammo/bullet/smg/pps43
+	name = "simple submachinegun bullet"
+	damage = 35
+	accurate_range = 7
+	effective_range_max = 10
+	penetration = ARMOR_PENETRATION_TIER_4
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_6
 
 /*
 //======

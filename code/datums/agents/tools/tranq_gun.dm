@@ -2,8 +2,8 @@
 	name = "Tranquilizer gun"
 	desc = "Contains horse tranquilizer darts. Useful at knocking people out."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
-	icon_state = "pk9r"
-	item_state = "pk9r"
+	icon_state = "npz92"
+	item_state = "npz92"
 	current_mag = /obj/item/ammo_magazine/pistol/tranq
 
 	burst_amount = 1

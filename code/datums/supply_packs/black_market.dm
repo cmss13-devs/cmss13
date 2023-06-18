@@ -343,15 +343,15 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 5
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/seized/ppsh
-	name = "PPSh-17b submachinegun crate (x5 magazines included)"
+/datum/supply_packs/contraband/seized/pps43
+	name = "Type-19 submachinegun crate (x5 magazines included)"
 	contains = list(
-		/obj/item/weapon/gun/smg/ppsh,
-		/obj/item/ammo_magazine/smg/ppsh/extended,
-		/obj/item/ammo_magazine/smg/ppsh/extended,
-		/obj/item/ammo_magazine/smg/ppsh,
-		/obj/item/ammo_magazine/smg/ppsh,
-		/obj/item/ammo_magazine/smg/ppsh,
+		/obj/item/weapon/gun/smg/pps43,
+		/obj/item/ammo_magazine/smg/pps43/extended,
+		/obj/item/ammo_magazine/smg/pps43/extended,
+		/obj/item/ammo_magazine/smg/pps43,
+		/obj/item/ammo_magazine/smg/pps43,
+		/obj/item/ammo_magazine/smg/pps43,
 	)
 	dollar_cost = 15
 	containertype = /obj/structure/largecrate/black_market
@@ -426,14 +426,14 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 5
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/seized/skorpion
-	name = "CZ-81 machine pistol (x4 magazines included)"
+/datum/supply_packs/contraband/seized/bizon
+	name = "Type 64 Submachinegun (x4 magazines included)"
 	contains = list(
-		/obj/item/weapon/gun/pistol/skorpion,
-		/obj/item/ammo_magazine/pistol/skorpion,
-		/obj/item/ammo_magazine/pistol/skorpion,
-		/obj/item/ammo_magazine/pistol/skorpion,
-		/obj/item/ammo_magazine/pistol/skorpion,
+		/obj/item/weapon/gun/smg/bizon,
+		/obj/item/ammo_magazine/smg/bizon,
+		/obj/item/ammo_magazine/smg/bizon,
+		/obj/item/ammo_magazine/smg/bizon,
+		/obj/item/ammo_magazine/smg/bizon,
 	)
 	dollar_cost = 15
 	containertype = /obj/structure/largecrate/black_market
@@ -467,10 +467,10 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 15
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/seized/nagant
-	name = "N-Y 7.62mm revolver (x6 magazines included)"
+/datum/supply_packs/contraband/seized/upprevolver
+	name = "ZHNK-72 revolver (x6 magazines included)"
 	contains = list(
-		/obj/item/weapon/gun/revolver/nagant,
+		/obj/item/weapon/gun/revolver/upp,
 		/obj/item/ammo_magazine/revolver/upp,
 		/obj/item/ammo_magazine/revolver/upp,
 		/obj/item/ammo_magazine/revolver/upp,
@@ -1079,11 +1079,11 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 				new picked_type(loc)
 			loot_message = SPAN_NOTICE("It's some strange elite gear...?")
 		if(11 to 15)
-			//Skorpion
-			new /obj/item/weapon/gun/pistol/skorpion(loc)
-			new /obj/item/ammo_magazine/pistol/skorpion(loc)
-			new /obj/item/ammo_magazine/pistol/skorpion(loc)
-			new /obj/item/ammo_magazine/pistol/skorpion(loc)
+			//Type 64
+			new /obj/item/weapon/gun/smg/bizon(loc)
+			new /obj/item/ammo_magazine/smg/bizon(loc)
+			new /obj/item/ammo_magazine/smg/bizon(loc)
+			new /obj/item/ammo_magazine/smg/bizon(loc)
 			// Somehow they found a Webley.
 			new /obj/item/weapon/gun/revolver/m44/custom/webley(loc)
 			new /obj/item/ammo_magazine/revolver/webley(loc)
@@ -1091,11 +1091,11 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/item/ammo_magazine/revolver/webley(loc)
 			loot_message = SPAN_NOTICE("It's some CLF pistol armaments!")
 		if(16 to 20)
-			// PPSH
-			new /obj/item/weapon/gun/smg/ppsh/with_drum_mag(loc)
-			new /obj/item/ammo_magazine/smg/ppsh/extended(loc)
-			new /obj/item/ammo_magazine/smg/ppsh/extended(loc)
-			new /obj/item/ammo_magazine/smg/ppsh/extended(loc)
+			// Type 19
+			new /obj/item/weapon/gun/smg/pps43/with_drum_mag(loc)
+			new /obj/item/ammo_magazine/smg/pps43/extended(loc)
+			new /obj/item/ammo_magazine/smg/pps43/extended(loc)
+			new /obj/item/ammo_magazine/smg/pps43/extended(loc)
 			// MAC-15
 			new /obj/item/weapon/gun/smg/mac15/extended(loc)
 			new /obj/item/ammo_magazine/smg/mac15/extended(loc)

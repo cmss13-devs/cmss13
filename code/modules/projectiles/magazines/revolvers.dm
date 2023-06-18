@@ -56,16 +56,16 @@
 
 /obj/item/ammo_magazine/revolver/upp
 	name = "\improper N-Y speed loader (7.62x38mmR)"
-	default_ammo = /datum/ammo/bullet/revolver/nagant
+	default_ammo = /datum/ammo/bullet/revolver/upp
 	caliber = "7.62x38mmR"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "ny762"
-	gun_type = /obj/item/weapon/gun/revolver/nagant
+	gun_type = /obj/item/weapon/gun/revolver/upp
 
 /obj/item/ammo_magazine/revolver/upp/shrapnel
 	name = "\improper N-Y shrapnel-shot speed loader (7.62x38mmR)"
 	desc = "This speedloader contains seven 'shrapnel-shot' bullets, cheap recycled casings picked up off the ground and refilled with gunpowder and random scrap metal. Acts similarly to flechette."
-	default_ammo = /datum/ammo/bullet/revolver/nagant/shrapnel
+	default_ammo = /datum/ammo/bullet/revolver/upp/shrapnel
 	icon_state = "ny762_shrapnel"
 
 /obj/item/ammo_magazine/revolver/small
@@ -167,13 +167,13 @@
 //RUSSIAN REVOLVER //Based on the 7.62mm Russian revolvers.
 
 /obj/item/ammo_magazine/internal/revolver/upp
-	default_ammo = /datum/ammo/bullet/revolver/nagant
+	default_ammo = /datum/ammo/bullet/revolver/upp
 	caliber = "7.62x38mmR"
 	max_rounds = 7
-	gun_type = /obj/item/weapon/gun/revolver/nagant
+	gun_type = /obj/item/weapon/gun/revolver/upp
 
 /obj/item/ammo_magazine/internal/revolver/upp/shrapnel
-	default_ammo = /datum/ammo/bullet/revolver/nagant/shrapnel
+	default_ammo = /datum/ammo/bullet/revolver/upp/shrapnel
 
 
 //-------------------------------------------------------

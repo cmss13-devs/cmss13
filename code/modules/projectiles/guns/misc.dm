@@ -263,6 +263,12 @@
 		if(cover_open)
 			to_chat(user, SPAN_WARNING("You can't fire [src] with the feed cover open! <b>(alt-click to close)</b>"))
 			return FALSE
+	if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		return 0
+	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_UPP)
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		return 0
 
 
 /obj/effect/syringe_gun_dummy

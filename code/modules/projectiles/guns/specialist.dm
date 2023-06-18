@@ -450,7 +450,7 @@
 
 /obj/item/weapon/gun/rifle/sniper/svd
 	name = "\improper Type 88 designated marksman rifle"
-	desc = "The standard issue DMR of the UPP, the Type 88 is a quite accurate rifle and sought after by competitive shooters and terrorists alike. Typically loaded with a armor-piercing 7.62x54mmR rounds in a 12 round magazine."
+	desc = "The standard issue DMR of the UPP, the Type 88 is a quite accurate rifle and sought after by competitive shooters and terrorists alike. Typically loaded with armor-piercing 7.62x54mmR rounds in a 12 round magazine."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	icon_state = "type88"
 	item_state = "type88"

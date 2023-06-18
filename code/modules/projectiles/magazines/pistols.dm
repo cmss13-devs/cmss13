@@ -182,20 +182,29 @@
 //Type 31 pistol. //A makarov
 
 /obj/item/ammo_magazine/pistol/np92
-	name = "\improper Type 31 magazine (9x18mm Makarov)"
+	name = "\improper NP92 magazine (9x18mm Makarov)"
 	default_ammo = /datum/ammo/bullet/pistol
 	caliber = "9x18mm Makarov"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
-	icon_state = "np92"
+	icon_state = "np92mag"
 	max_rounds = 12
 	gun_type = /obj/item/weapon/gun/pistol/np92
 
-/obj/item/ammo_magazine/pistol/np92/tranq
+/obj/item/ammo_magazine/pistol/np92/suppressed
+	name = "\improper NPZ92 magazine (9x18mm Makarov)"
+	default_ammo = /datum/ammo/bullet/pistol
+	caliber = "9x18mm Makarov"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon_state = "npz92mag"
+	max_rounds = 12
+	gun_type = /obj/item/weapon/gun/pistol/npz92
+
+/obj/item/ammo_magazine/pistol/npz92/tranq
 	name = "\improper NPZ92 tranq magazine (9x18mm Makarov)"
 	default_ammo = /datum/ammo/bullet/pistol/tranq
 	caliber = "9x18mm Makarov"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
-	icon_state = "np92"
+	icon_state = "npz92tranqmag"
 	max_rounds = 12
 	gun_type = /obj/item/weapon/gun/pistol/npz92
 
@@ -330,7 +339,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	name = "\improper CZ-81 20-round magazine (.32ACP)"
 	desc = "A .32ACP caliber magazine for the CZ-81."
 	caliber = ".32ACP"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "skorpion" //PLACEHOLDER
 	gun_type = /obj/item/weapon/gun/pistol/skorpion
 	max_rounds = 20

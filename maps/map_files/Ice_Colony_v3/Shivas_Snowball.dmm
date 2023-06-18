@@ -22493,7 +22493,7 @@
 	},
 /area/shiva/interior/bar)
 "rUD" = (
-/obj/item/weapon/gun/shotgun/double/sawn{
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	desc = "Shhhh, he's sleeping.";
 	pixel_x = 3;
 	pixel_y = -10
@@ -23741,7 +23741,7 @@
 /area/shiva/interior/bar)
 "tnz" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/shotgun/double/with_stock,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},

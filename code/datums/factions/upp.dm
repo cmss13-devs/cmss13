@@ -59,11 +59,11 @@
 		list("SIDEARMS", 0, null, null, null),
 		list("Highpower Automag", 15, /obj/item/weapon/gun/pistol/highpower, null, VENDOR_ITEM_REGULAR),
 		list("Korovin PK-9 Pistol", 15, /obj/item/weapon/gun/pistol/c99/upp, null, VENDOR_ITEM_REGULAR),
-		list("N-Y 7.62mm Revolver", 15, /obj/item/weapon/gun/revolver/upp, null, VENDOR_ITEM_REGULAR),
+		list("ZHNK-72 7.62mm Revolver", 15, /obj/item/weapon/gun/revolver/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
 		list("Highpower Magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/highpower, null, VENDOR_ITEM_REGULAR),
-		list("N-Y Speed Loader (7.62x38mmR)", 5, /obj/item/ammo_magazine/revolver/upp, null, VENDOR_ITEM_REGULAR),
+		list("ZHNK-72 Speed Loader (7.62x38mmR)", 5, /obj/item/ammo_magazine/revolver/upp, null, VENDOR_ITEM_REGULAR),
 		list("PK-9 Magazine (.22 Hollowpoint)", 5, /obj/item/ammo_magazine/pistol/c99, null, VENDOR_ITEM_REGULAR),
 
 		list("ATTACHMENTS", 0, null, null, null),
@@ -98,11 +98,11 @@
 		list("SIDEARMS", -1, null, null),
 		list("Highpower Automag", 20, /obj/item/weapon/gun/pistol/highpower, VENDOR_ITEM_REGULAR),
 		list("Korovin PK-9 Pistol", 20, /obj/item/weapon/gun/pistol/c99/upp, VENDOR_ITEM_REGULAR),
-		list("N-Y 7.62mm Revolver", 20, /obj/item/weapon/gun/revolver/upp, VENDOR_ITEM_REGULAR),
+		list("ZHNK-72 7.62mm Revolver", 20, /obj/item/weapon/gun/revolver/upp, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", -1, null, null),
 		list("Highpower Magazine (9mm)", 40, /obj/item/ammo_magazine/pistol/highpower, VENDOR_ITEM_REGULAR),
-		list("N-Y Speed Loader (7.62x38mmR)", 40, /obj/item/ammo_magazine/revolver/upp, VENDOR_ITEM_REGULAR),
+		list("ZHNK-72 Speed Loader (7.62x38mmR)", 40, /obj/item/ammo_magazine/revolver/upp, VENDOR_ITEM_REGULAR),
 		list("PK-9 Magazine (.22 Hollowpoint)", 40, /obj/item/ammo_magazine/pistol/c99, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", -1, null, null),

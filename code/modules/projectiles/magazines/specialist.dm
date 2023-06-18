@@ -354,7 +354,7 @@
 	icon_state = "hjra_tank"
 
 	max_rounds = 1
-	default_ammo = /datum/ammo/rocket/anti_tank
+	default_ammo = /datum/ammo/rocket/ap/anti_tank
 	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
 	reload_delay = 85
 

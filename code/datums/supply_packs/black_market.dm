@@ -1092,7 +1092,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			loot_message = SPAN_NOTICE("It's some CLF pistol armaments!")
 		if(16 to 20)
 			// Type 19
-			new /obj/item/weapon/gun/smg/pps43/with_drum_mag(loc)
+			new /obj/item/weapon/gun/smg/pps43/extended_mag(loc)
 			new /obj/item/ammo_magazine/smg/pps43/extended(loc)
 			new /obj/item/ammo_magazine/smg/pps43/extended(loc)
 			new /obj/item/ammo_magazine/smg/pps43/extended(loc)

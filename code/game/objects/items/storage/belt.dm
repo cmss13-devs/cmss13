@@ -1343,7 +1343,7 @@
 
 /obj/item/storage/belt/gun/type47
 	name = "\improper Type 47 pistol holster rig"
-	desc = "This UPP-designed sidearm rig can very snugly and securely fit a Type-73, NP92, or a ZHNK72, and their magazines or speedloaders. However, it lacks versatility in stored weaponry."
+	desc = "This UPP-designed sidearm rig can very snugly and securely fit a Type-73, NP92, or a ZHNK-72, and their magazines or speedloaders. However, it lacks versatility in stored weaponry."
 	icon_state = "korovin_holster"
 	item_state = "upp_belt"
 	storage_slots = 7

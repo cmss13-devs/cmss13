@@ -363,6 +363,8 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
+/obj/item/weapon/gun/smg/pps43/extended_mag
+	current_mag = /obj/item/ammo_magazine/smg/pps43/extended
 //-------------------------------------------------------
 //Type 64
 

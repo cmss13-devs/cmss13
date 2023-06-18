@@ -197,7 +197,7 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "npz92mag"
 	max_rounds = 12
-	gun_type = /obj/item/weapon/gun/pistol/npz92
+	gun_type = /obj/item/weapon/gun/pistol/np92/suppressed
 
 /obj/item/ammo_magazine/pistol/npz92/tranq
 	name = "\improper NPZ92 tranq magazine (9x18mm Makarov)"
@@ -206,7 +206,7 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "npz92tranqmag"
 	max_rounds = 12
-	gun_type = /obj/item/weapon/gun/pistol/npz92
+	gun_type = /obj/item/weapon/gun/pistol/np92/suppressed
 
 //-------------------------------------------------------
 //Type 73 pistol. //A TT
@@ -219,7 +219,7 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "ttmag"
 	max_rounds = 9
-	gun_type = /obj/item/weapon/gun/pistol/t16
+	gun_type = /obj/item/weapon/gun/pistol/73
 
 /obj/item/ammo_magazine/pistol/t73_impact
 	name = "\improper High Impact Type 74 magazine (7.62x25mm Tokarev)"
@@ -229,7 +229,7 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "ttmag_impact"
 	max_rounds = 9
-	gun_type = /obj/item/weapon/gun/pistol/t16/leader
+	gun_type = /obj/item/weapon/gun/pistol/t73/leader
 
 -------------------------------------------------------
 //KT-42 //Inspired by the .44 Auto Mag pistol

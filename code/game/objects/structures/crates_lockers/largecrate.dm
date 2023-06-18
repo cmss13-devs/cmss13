@@ -327,7 +327,7 @@
 	num_mags = 3
 	name = "\improper Hyperdyne firearm crate"
 	stuff = list( /obj/item/weapon/gun/revolver/upp = /obj/item/ammo_magazine/revolver/upp,
-					/obj/item/weapon/gun/pistol/c99 = /obj/item/ammo_magazine/pistol/c99,
+					/obj/item/weapon/gun/pistol/np92 = /obj/item/ammo_magazine/pistol/np92,
 					/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
 					/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
 					/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40/extended,

@@ -470,8 +470,8 @@
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/bipod,
 		//Integrated,
-		/obj/item/attachable/scope/variable_zoom
-		/obj/item/attachable/type88_stock
+		/obj/item/attachable/scope/variable_zoom,
+		/obj/item/attachable/type88_stock,
 	)
 	has_aimed_shot = FALSE
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY
@@ -486,7 +486,7 @@
 	attachie.Attach(src)
 	update_attachable(attachie.slot)
 
-	attachie = new /obj/item/attachable/scope/variable_zoom(src)
+	var/obj/item/attachable/scope/variable_zoom/S = new(src)
 	S.hidden = TRUE
 	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
 	attachie.Attach(src)

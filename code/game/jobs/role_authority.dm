@@ -23,7 +23,7 @@ var/global/datum/authority/branch/role/RoleAuthority
 #define MED_PRIORITY 2
 #define LOW_PRIORITY 3
 
-#define SHIPSIDE_ROLE_WEIGHT 0.5
+#define SHIPSIDE_ROLE_WEIGHT 0.25
 
 var/global/players_preassigned = 0
 

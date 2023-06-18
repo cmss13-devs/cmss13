@@ -12,8 +12,13 @@
 	if(M.fortify || M.burrow)
 		return XENO_NO_DELAY_ACTION
 
+	var/intent = M.a_intent
+
+	if(M.behavior_delegate)
+		intent = M.behavior_delegate.override_intent(src)
+
 	//Reviewing the four primary intents
-	switch(M.a_intent)
+	switch(intent)
 
 		if(INTENT_HELP)
 			if(on_fire)

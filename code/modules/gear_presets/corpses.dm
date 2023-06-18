@@ -217,7 +217,7 @@
 /datum/equipment_preset/corpse/clown/New()
 	. = ..()
 	//As a joke, clown has all access so they can clown everywhere...
-	access = get_all_accesses()
+	access = get_all_main_access()
 
 /datum/equipment_preset/corpse/clown/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..() //To load gender, randomise appearance, etc.
@@ -711,7 +711,7 @@
 	assignment = "Colonial Liberation Front Soldier"
 	idtype = /obj/item/card/id/silver
 	xenovictim = FALSE
-	faction = FACTION_UPP
+	faction = FACTION_CLF
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -753,6 +753,7 @@
 	assignment = "Union of Progressive Peoples Soldier"
 	idtype = /obj/item/card/id/silver
 	xenovictim = FALSE
+	faction = FACTION_UPP
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -792,10 +793,10 @@
 /datum/equipment_preset/corpse/pmc
 	name = "Corpse - Weyland-Yutani PMC (Standard)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	assignment = "Weyland-Yutani PMC (Standard)"
+	assignment = JOB_PMC_STANDARD
 	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
-	rank = JOB_PMC
+	rank = JOB_PMC_STANDARD
 	paygrade = "PMC-OP"
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc

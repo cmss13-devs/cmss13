@@ -386,7 +386,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/list/options = list("Ghost", "Stay in body")
 		if(check_rights(R_MOD))
 			options = list("Aghost") + options
-		var/response = tgui_alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)", "Are you sure you want to ghost?", options)
+		var/text_prompt = "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)"
+		var/is_nested = (buckled && istype(buckled, /obj/structure/bed/nest)) ? TRUE : FALSE
+		var/obj/structure/bed/nest/nest = FALSE
+		if(is_nested)
+			text_prompt += "\nSince you're nested, you will be given a chance to reenter your body upon being freed."
+			nest = buckled
+		var/response = tgui_alert(src, text_prompt, "Are you sure you want to ghost?", options)
 		if(response == "Aghost")
 			client.admin_ghost()
 			return
@@ -396,9 +402,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(location) //to avoid runtime when a mob ends up in nullspace
 			msg_admin_niche("[key_name_admin(usr)] has ghosted. [ADMIN_JMP(location)]")
 		log_game("[key_name_admin(usr)] has ghosted.")
-		var/mob/dead/observer/ghost = ghostize(FALSE) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
+		var/mob/dead/observer/ghost = ghostize((is_nested && nest && !QDELETED(nest))) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost && !is_admin_level(z))
 			ghost.timeofdeath = world.time
+		if(is_nested && nest && !QDELETED(nest))
+			ghost.can_reenter_corpse = FALSE
+			nest.ghost_of_buckled_mob = ghost
 
 /mob/dead/observer/Move(atom/newloc, direct)
 	following = null
@@ -1063,6 +1072,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(!(RoleAuthority.roles_whitelist[key_to_use] & WHITELIST_PREDATOR))
+		return
+
+	if(!SSticker.mode)
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(toggle_predator_action)))
 		return
 
 	if(SSticker.mode.flags_round_type & MODE_PREDATOR)

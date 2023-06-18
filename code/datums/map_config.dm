@@ -64,6 +64,9 @@
 
 	var/nightmare_path
 
+	/// If truthy this is config for a round overriden map: search for override maps in data/, instead of using a path in maps/
+	var/override_map
+
 /datum/map_config/New()
 	survivor_types = list(
 		/datum/equipment_preset/survivor/scientist,
@@ -148,24 +151,35 @@
 
 	config_filename = filename
 
+	override_map = json["override_map"]
+
 	CHECK_EXISTS("map_name")
 	map_name = json["map_name"]
-	CHECK_EXISTS("map_path")
-	map_path = json["map_path"]
 
 	webmap_url = json["webmap_url"]
 	short_name = json["short_name"]
 
 	map_file = json["map_file"]
+
+	var/dirpath = "maps/"
+	if(override_map)
+		dirpath = "data/"
+		map_path = "/"
+		map_file = OVERRIDE_MAPS_TO_FILENAME[maptype]
+	else
+		CHECK_EXISTS("map_path")
+		map_path = json["map_path"]
+		dirpath = "[dirpath]/[map_path]"
+
 	// "map_file": "BoxStation.dmm"
 	if (istext(map_file))
-		if (!fexists("maps/[map_path]/[map_file]"))
+		if (!fexists("[dirpath]/[map_file]"))
 			log_world("Map file ([map_file]) does not exist!")
 			return
 	// "map_file": ["Lower.dmm", "Upper.dmm"]
 	else if (islist(map_file))
 		for (var/file in map_file)
-			if (!fexists("maps/[map_path]/[file]"))
+			if (!fexists("[dirpath]/[file]"))
 				log_world("Map file ([file]) does not exist!")
 				return
 	else
@@ -373,11 +387,14 @@
 #undef CHECK_EXISTS
 
 /datum/map_config/proc/GetFullMapPaths()
+	var/dirpath = "maps/[map_path]"
+	if(override_map)
+		dirpath = "data/[map_path]"
 	if (istext(map_file))
-		return list("maps/[map_path]/[map_file]")
+		return list("[dirpath]/[map_file]")
 	. = list()
 	for (var/file in map_file)
-		. += "maps/[map_path]/[file]"
+		. += "[dirpath]/[file]"
 
 
 /datum/map_config/proc/MakeNextMap(maptype = GROUND_MAP)

@@ -5,6 +5,7 @@ import { CasSim } from './CasSim';
 import { CrtPanel } from './CrtPanel';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { ByondUi } from '../components';
+import { range } from 'common/collections';
 
 interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
@@ -242,15 +243,6 @@ const CameraPanel = (props, context) => {
   const { act, data } = useBackend<DropshipProps>(context);
   return (
     <Box className="NavigationMenu">
-      hellop
-      {data.targets_data.map((x) => (
-        <Button
-          key={x.target_tag}
-          onClick={() => act('set-camera', { 'equipment_id': x.target_tag })}>
-          {x.target_name}
-        </Button>
-      ))}
-      <Button onClick={() => act('clear-camera')}>X</Button>
       <ByondUi
         className="CameraPanel"
         params={{
@@ -359,6 +351,11 @@ const BottomPanel = (props, context) => {
 };
 
 const LeftPanel = (props, context) => {
+  const { act, data } = useBackend<DropshipProps>(context);
+  const get_gun = (mount_point) =>
+    data.equipment_data.find((x) => x.mount_point === mount_point);
+
+  const guns = range(1, 5).map((x) => get_gun(x));
   return (
     <Flex
       direction="column"
@@ -366,25 +363,25 @@ const LeftPanel = (props, context) => {
       align="space-evenly"
       className="VerticalButtonPanel">
       <Flex.Item>
-        <MfdButton>DESEL</MfdButton>
+        <MfdButton>WEAPON</MfdButton>
       </Flex.Item>
-      <Flex.Item>
-        <MfdButton>GUN</MfdButton>
-      </Flex.Item>
-      <Flex.Item>
-        <MfdButton>GUN</MfdButton>
-      </Flex.Item>
-      <Flex.Item>
-        <MfdButton>GUN</MfdButton>
-      </Flex.Item>
-      <Flex.Item>
-        <MfdButton>GUN</MfdButton>
-      </Flex.Item>
+      {guns.map((x) => (
+        <Flex.Item key={x?.mount_point}>
+          <MfdButton
+            onClick={() => act('fire-weapon', { 'eqp_tag': x?.eqp_tag })}>
+            {x?.shorthand ?? 'EMPTY'}
+          </MfdButton>
+        </Flex.Item>
+      ))}
     </Flex>
   );
 };
 
 const RightPanel = (props, context) => {
+  const { act, data } = useBackend<DropshipProps>(context);
+  const lazes = range(0, 3).map((x) =>
+    x > data.targets_data.length ? undefined : data.targets_data[x]
+  );
   return (
     <Flex
       direction="column"
@@ -392,19 +389,20 @@ const RightPanel = (props, context) => {
       align="space-evenly"
       className="VerticalButtonPanel">
       <Flex.Item>
-        <MfdButton>D-21</MfdButton>
+        <MfdButton>SIGNALS</MfdButton>
       </Flex.Item>
+      {lazes.map((x) => (
+        <Flex.Item key={x?.target_tag}>
+          <MfdButton
+            onClick={() =>
+              act('set-camera', { 'equipment_id': x?.target_tag })
+            }>
+            {x?.target_name.split(' ')[0] ?? 'NONE'}
+          </MfdButton>
+        </Flex.Item>
+      ))}
       <Flex.Item>
-        <MfdButton>D-21</MfdButton>
-      </Flex.Item>
-      <Flex.Item>
-        <MfdButton>D-21</MfdButton>
-      </Flex.Item>
-      <Flex.Item>
-        <MfdButton>NO LAZE</MfdButton>
-      </Flex.Item>
-      <Flex.Item>
-        <MfdButton>SELECT</MfdButton>
+        <MfdButton onClick={() => act('clear-camera')}>CLEAR</MfdButton>
       </Flex.Item>
     </Flex>
   );

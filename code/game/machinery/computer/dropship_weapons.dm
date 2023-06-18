@@ -137,6 +137,8 @@
 	// Cameras
 	var/datum/camera_manager/cam_manager
 	var/camera_target_id
+	var/camera_width = 11
+	var/camera_height = 11
 
 /obj/structure/machinery/computer/dropship_weapons/Initialize()
 	. = ..()
@@ -258,6 +260,10 @@
 	if (!istype(dropship))
 		return
 
+	var/datum/cas_signal/sig = get_cas_signal(camera_target_id)
+	if(camera_target_id && !sig)
+		set_camera_target(null)
+
 	.["screen_mode"] = get_screen_mode()
 
 	// dropship info
@@ -367,25 +373,47 @@
 			set_camera_target(null)
 			return TRUE
 
+		if("fire-weapon")
+			var/weapon_tag = params["eqp_tag"]
+			var/obj/structure/dropship_equipment/weapon/DEW = get_weapon(weapon_tag)
+			if(!DEW)
+				return FALSE
 
-/obj/structure/machinery/computer/dropship_weapons/proc/set_camera_target(var/target_ref)
+			var/datum/cas_signal/sig = get_cas_signal(camera_target_id)
+
+			if(!sig)
+				return FALSE
+
+			DEW.open_fire(sig.signal_loc)
+			return TRUE
+
+/obj/structure/machinery/computer/dropship_weapons/proc/get_weapon(eqp_tag)
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+	for(var/obj/structure/dropship_equipment/equipment in dropship.equipments)
+		if(istype(equipment, /obj/structure/dropship_equipment/weapon))
+			//is weapon
+			selected_equipment = equipment
+			return equipment
+
+/obj/structure/machinery/computer/dropship_weapons/proc/get_cas_signal(target_ref)
 	if(!target_ref)
-		cam_manager.show_camera_static()
 		return
 
-	var/datum/cas_signal/target
 	var/datum/cas_iff_group/cas_group = cas_groups[faction]
 	for(var/datum/cas_signal/sig in cas_group.cas_signals)
 		if(sig.target_id == target_ref)
-			target = sig
-			break
+			return sig
+
+
+/obj/structure/machinery/computer/dropship_weapons/proc/set_camera_target(var/target_ref)
+	var/datum/cas_signal/target = get_cas_signal(target_ref)
 
 	if(!target)
 		to_chat("Failed to reference [target_ref]")
 		cam_manager.show_camera_static()
 		return
 
-	cam_manager.set_camera_obj(target.linked_cam, 10, 10)
+	cam_manager.set_camera_obj(target.linked_cam, camera_width, camera_height)
 	camera_target_id = target_ref
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_screen_mode()
@@ -582,6 +610,20 @@
 	var/obj/structure/dropship_equipment/E = shuttle.equipments[base_tag]
 	E.linked_console = src
 	E.equipment_interact(usr)
+
+/obj/structure/machinery/computer/dropship_weapons/proc/can_fire_weapon()
+	var/mob/weapon_operator = usr
+	if(ishuman(weapon_operator))
+		var/mob/living/carbon/human/human_operator = weapon_operator
+		if(!human_operator.allow_gun_usage)
+			to_chat(human_operator, SPAN_WARNING("Your programming prevents you from operating dropship weaponry!"))
+			return FALSE
+	var/obj/structure/dropship_equipment/weapon/DEW = selected_equipment
+	if(!skillcheck(weapon_operator, SKILL_PILOT, DEW.skill_required)) //only pilots can fire dropship weapons.
+		to_chat(weapon_operator, SPAN_WARNING("You don't have the training to fire this weapon!"))
+		return FALSE
+
+	return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/ui_open_fire(obj/docking_port/mobile/marine_dropship/dropship, targ_id)
 	var/mob/weapon_operator = usr

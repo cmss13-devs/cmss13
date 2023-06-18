@@ -79,12 +79,12 @@
 	else
 		return chosen_call
 
-/datum/game_mode/proc/get_specific_call(call_name, announce = TRUE, is_emergency = TRUE, info = "")
+/datum/game_mode/proc/get_specific_call(call_name, announce = TRUE, is_emergency = TRUE, info = "", announce_dispatch_message = TRUE)
 	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
 		if(E.name == call_name)
 			var/datum/emergency_call/em_call = new E.type()
 			em_call.objective_info = info
-			em_call.activate(announce, is_emergency)
+			em_call.activate(announce, is_emergency, announce_dispatch_message)
 			return
 	error("get_specific_call could not find emergency call '[call_name]'")
 	return
@@ -180,7 +180,7 @@
 	else
 		to_chat(src, SPAN_WARNING("You did not get enlisted in the response team. Better luck next time!"))
 
-/datum/emergency_call/proc/activate(announce = TRUE, turf/override_spawn_loc)
+/datum/emergency_call/proc/activate(announce = TRUE, turf/override_spawn_loc, announce_dispatch_message = TRUE)
 	set waitfor = 0
 	if(!SSticker.mode) //Something horribly wrong with the gamemode ticker
 		return
@@ -193,9 +193,9 @@
 	if(announce)
 		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg')
 
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), announce, override_spawn_loc), 30 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), announce, override_spawn_loc, announce_dispatch_message), 30 SECONDS)
 
-/datum/emergency_call/proc/spawn_candidates(announce = TRUE, override_spawn_loc)
+/datum/emergency_call/proc/spawn_candidates(announce = TRUE, override_spawn_loc, announce_dispatch_message = TRUE)
 	if(SSticker.mode)
 		SSticker.mode.picked_calls -= src
 
@@ -236,7 +236,7 @@
 				if(I.current)
 					to_chat(I.current, SPAN_WARNING("You didn't get selected to join the distress team. Better luck next time!"))
 
-	if(announce)
+	if(announce_dispatch_message)
 		marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg') //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
 
 	message_admins("Distress beacon: [src.name] finalized, setting up candidates.")

@@ -1642,8 +1642,41 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/upp_rpg_breech
 	name = "HJRA-12 Breech"
 	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
-	icon_state = "hjra_placeholder"
-	attach_icon = "hjra_placeholder"
+	icon_state = "hjra_breech"
+	attach_icon = "hjra_breech"
+	slot = "special"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 0
+	size_mod = 0
+
+/obj/item/attachable/pkpbarrel
+	name = "QYJ-72 Barrel"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon_state = "type88barrel"
+	attach_icon = "type88barrel"
+	slot = "special"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 0
+	size_mod = 0
+
+/obj/item/attachable/pkpstock
+	name = "QYJ-72 Stock"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon_state = "type88barrel"
+	attach_icon = "type88barrel"
+	slot = "special"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 0
+	size_mod = 0
+
+	/obj/item/attachable/type88_barrel
+	name = "Type-88 Barrel"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon_state = "type88barrel"
+	attach_icon = "type88barrel"
 	slot = "special"
 	wield_delay_mod = WIELD_DELAY_NONE
 	flags_attach_features = NO_FLAGS

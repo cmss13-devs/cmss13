@@ -48,16 +48,16 @@
 	max_rounds = 6
 
 
-//SVD //Based on the actual Dragunov designated marksman rifle.
+//Type 88 //Based on the actual Dragunov designated marksman rifle.
 
 /obj/item/ammo_magazine/sniper/svd
-	name = "\improper SVD magazine (7.62x54mmR)"
-	desc = "A large caliber magazine for the SVD designated marksman rifle."
+	name = "\improper Type-88 Magazine (7.62x54mmR)"
+	desc = "A large caliber magazine for the Type-88 designated marksman rifle."
 	caliber = "7.62x54mmR"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
-	icon_state = "svd"
-	default_ammo = /datum/ammo/bullet/sniper/crude
-	max_rounds = 10
+	icon_state = "type88"
+	default_ammo = /datum/ammo/bullet/sniper/upp
+	max_rounds = 12
 	gun_type = /obj/item/weapon/gun/rifle/sniper/svd
 
 //M4RA magazines

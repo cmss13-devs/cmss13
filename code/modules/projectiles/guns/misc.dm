@@ -4,7 +4,7 @@
 /obj/item/weapon/gun/minigun
 	name = "\improper Ol' Painless"
 	desc = "An enormous multi-barreled rotating gatling gun. This thing will no doubt pack a punch."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "painless"
 	item_state = "painless"
 
@@ -156,29 +156,44 @@
 
 
 /obj/item/weapon/gun/pkp
-	name = "\improper PKP General Purpose Machine Gun"
-	desc = "Placeholder. \n<b>Alt-click it to open the feed cover and allow for reloading.</b>"
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
-	icon_state = "m60"
-	item_state = "m60"
+	name = "\improper QYJ-72 General Purpose Machine Gun"
+	desc = "The QYJ-72 is the standard GPMG of the Union of Progressive Peoples, chambered in 7.62x54mmR, it fires a hard-hitting cartridge with a large rate of fire. With an extremely large box at 250 rounds, the QJY-72 is designed with suppressing fire and accuracy by volume of fire at its forefront. \n<b>Alt-click it to open the feed cover and allow for reloading.</b>"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon_state = "qjy72"
+	item_state = "qjy72"
 
-	fire_sound = 'sound/weapons/gun_m60.ogg'
+	fire_sound = 'sound/weapons/gun_ak47.ogg'
 	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/pkp
 	w_class = SIZE_LARGE
-	force = 25
-	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY|GUN_CAN_POINTBLANK
+	force = 30
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY|GUN_CAN_POINTBLANK|GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_AMMO_COUNTER
 	gun_category = GUN_CATEGORY_HEAVY
 	attachable_allowed = list(
 		/obj/item/attachable/pkpbarrel,
-		/obj/item/attachable/bipod/pkp,
-	)
-	starting_attachment_types = list(
-		/obj/item/attachable/pkpbarrel,
-		/obj/item/attachable/bipod/pkp,
+		/obj/item/attachable/pkpstock,
 	)
 	var/cover_open = FALSE //if the gun's feed-cover is open or not.
 
+
+/obj/item/weapon/gun/pkp/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/attachie = new /obj/item/attachable/pkpbarrel(src)
+	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
+	attachie.Attach(src)
+	update_attachable(attachie.slot)
+
+	var/obj/item/attachable/attachie = new /obj/item/attachable/pkpstock(src)
+	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
+	attachie.Attach(src)
+	update_attachable(attachie.slot)
+
+	//invisible mag harness
+	var/obj/item/attachable/magnetic_harness/Integrated = new(src)
+	Integrated.hidden = TRUE
+	Integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	Integrated.Attach(src)
+	update_attachable(Integrated.slot)
 
 /obj/item/weapon/gun/pkp/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -194,7 +209,7 @@
 	fire_delay = FIRE_DELAY_TIER_10
 	burst_amount = BURST_AMOUNT_TIER_5
 	burst_delay = FIRE_DELAY_TIER_10
-	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_10
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8

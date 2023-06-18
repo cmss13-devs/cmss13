@@ -181,55 +181,48 @@
 //-------------------------------------------------------
 //Type 31 pistol. //A makarov
 
-/obj/item/ammo_magazine/pistol/t31
+/obj/item/ammo_magazine/pistol/np92
 	name = "\improper Type 31 magazine (9x18mm Makarov)"
 	default_ammo = /datum/ammo/bullet/pistol
 	caliber = "9x18mm Makarov"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
-	icon_state = "pk-9"
+	icon_state = "np92"
 	max_rounds = 12
-	gun_type = /obj/item/weapon/gun/pistol/t31
+	gun_type = /obj/item/weapon/gun/pistol/np92
 
+/obj/item/ammo_magazine/pistol/np92/tranq
+	name = "\improper NPZ92 tranq magazine (9x18mm Makarov)"
+	default_ammo = /datum/ammo/bullet/pistol/tranq
+	caliber = "9x18mm Makarov"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon_state = "np92"
+	max_rounds = 12
+	gun_type = /obj/item/weapon/gun/pistol/npz92
 
 //-------------------------------------------------------
-//Type 16 pistol. //A TT
+//Type 73 pistol. //A TT
 
-/obj/item/ammo_magazine/pistol/t16
-	name = "\improper Type 16 magazine (7.62x25mm Tokarev)"
+/obj/item/ammo_magazine/pistol/t73
+	name = "\improper Type 73 magazine (7.62x25mm Tokarev)"
+	desc = ""
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = "7.62x25mm Tokarev"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
-	icon_state = "pk-9"
+	icon_state = "ttmag"
 	max_rounds = 9
 	gun_type = /obj/item/weapon/gun/pistol/t16
 
-/obj/item/ammo_magazine/pistol/t16/impact
-	name = "\improper High Impact Type 16 magazine (7.62x25mm Tokarev)"
-	default_ammo = /datum/ammo/bullet/pistol/heavy
+/obj/item/ammo_magazine/pistol/t73_impact
+	name = "\improper High Impact Type 74 magazine (7.62x25mm Tokarev)"
+	desc = ""
+	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact/upp
 	caliber = "7.62x25mm Tokarev"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
-	icon_state = "pk-9"
+	icon_state = "ttmag_impact"
 	max_rounds = 9
 	gun_type = /obj/item/weapon/gun/pistol/t16/leader
 
-//-------------------------------------------------------
-//MAUSER MERC PISTOL //Inspired by the Makarov.
-
-/obj/item/ammo_magazine/pistol/c99
-	name = "\improper PK-9 magazine (.380)"
-	default_ammo = /datum/ammo/bullet/pistol
-	caliber = ".380"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
-	icon_state = "pk-9"
-	max_rounds = 8
-	gun_type = /obj/item/weapon/gun/pistol/c99
-
-/obj/item/ammo_magazine/pistol/c99/tranq
-	name = "\improper PK-9 tranquilizer magazine (.380)"
-	default_ammo = /datum/ammo/bullet/pistol/tranq
-	icon_state = "pk-9_tranq"
-
-//-------------------------------------------------------
+-------------------------------------------------------
 //KT-42 //Inspired by the .44 Auto Mag pistol
 
 /obj/item/ammo_magazine/pistol/kt42

@@ -260,30 +260,33 @@
 	base_gun_icon = "g_deagle"
 
 //-------------------------------------------------------
-//Type 31 pistol
+//NP92 pistol
 //Its a makarov
 
-/obj/item/weapon/gun/pistol/t31
-	name = "\improper Type 31 pistol"
-	desc = "The standard issue sidearm of the UPP, the Type 31 fires ."
+/obj/item/weapon/gun/pistol/np92
+	name = "\improper NP92 pistol"
+	desc = "The standard issue sidearm of the UPP. The NP92 is a small but powerful sidearm, well-liked by most it is issued to, although some prefer the weapon it was meant to replace, the Type 73. Takes 12 round magazines."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
-	icon_state = "pk9"
-	item_state = "pk9"
-	fire_sound = 'sound/weapons/gun_c99.ogg'
-	current_mag = /obj/item/ammo_magazine/pistol/t31
+	icon_state = "np92"
+	item_state = "np92"
+	fire_sound = 'sound/weapons/gun_m4a3.ogg'
+	current_mag = /obj/item/ammo_magazine/pistol/np92
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight,
-		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
 	)
 
-/obj/item/weapon/gun/pistol/t31/set_gun_attachment_offsets()
+/obj/item/weapon/gun/pistol/np92/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
 
-/obj/item/weapon/gun/pistol/t31/set_gun_config_values()
+/obj/item/weapon/gun/pistol/np92/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_8
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
@@ -293,19 +296,36 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
 
+/obj/item/weapon/gun/pistol/np92/suppressed
+	name = "\improper NPZ92 pistol"
+	desc = "The NPZ92 is a version of the NP92 that includes an integrated suppressor, issued sparingly to Kommando units."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon_state = "npz92"
+	item_state = "npz92"
+	inherent_traits = list(TRAIT_GUN_SILENCED)
+	fire_sound = 'sound/weapons/gun_c99.ogg'
+	current_mag = /obj/item/ammo_magazine/pistol/np92
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
+	starting_attachment_types = list(/obj/item/attachable/lasersight)
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+	)
 
 //-------------------------------------------------------
-//Type 16 pistol
+//Type 73 pistol
 //Its a TT
 
-/obj/item/weapon/gun/pistol/t16
-	name = "\improper Type 16 pistol"
-	desc = "The once-standard issue sidearm of the UPP, now outdated, it is prefered by many veteran soldiers of the UPP due to its powerful cartridge and personal familiarity."
+/obj/item/weapon/gun/pistol/t73
+	name = "\improper Type 73 pistol"
+	desc = "The Type 73 is the once-standard issue sidearm of the UPP. Replaced by the NP92 in UPP use, it remains popular with veteran UPP troops due to familiarity and extra power. Due to an extremely large amount being produced, they tend to end up in the hands of forces attempting to arm themselves on a budget. Users include the Union of Progressive Peoples, Colonial Liberation Front, and just about any mercenary or pirate group out there."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
-	icon_state = "pk9"
-	item_state = "pk9"
-	fire_sound = 'sound/weapons/gun_c99.ogg'
-	current_mag = /obj/item/ammo_magazine/pistol/t16
+	icon_state = "tt73"
+	item_state = "tt73"
+	fire_sound = 'sound/weapons/gun_m4a3.ogg'
+	current_mag = /obj/item/ammo_magazine/pistol/t73
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
@@ -315,10 +335,10 @@
 		/obj/item/attachable/burstfire_assembly,
 	)
 
-/obj/item/weapon/gun/pistol/t16/set_gun_attachment_offsets()
+/obj/item/weapon/gun/pistol/t73/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
 
-/obj/item/weapon/gun/pistol/t16/set_gun_config_values()
+/obj/item/weapon/gun/pistol/t73/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_6
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
@@ -329,133 +349,45 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
 
 
-/obj/item/weapon/gun/pistol/t16/leader
-	name = "\improper Gold Plated Type 16 pistol"
-	desc = "The once-standard issue sidearm of the UPP, now outdated, it is prefered by many veteran soldiers of the UPP due to its powerful cartridge and personal familiarity. This one has fancy gold plating, and has a specially designed mag-well to fit High-Impact rounds, looks like it belongs to a high-ranking officer."
+/obj/item/weapon/gun/pistol/t73/leader
+	name = "\improper Type 74 pistol"
+	desc = "The Type 74 is the designation for a specially modified Type 73 with an integrated laser sight system, multiple lightning cuts to reduce weight in order to allow a higher pressure round to be used with the same recoil sping, and a more comfortable grip. Due to the adoption of the NP92, the Type 74 was produced in limited numbers, because of this it is typically only issued on request to high-ranking officers."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
-	icon_state = "pk9"
-	item_state = "pk9"
-	fire_sound = 'sound/weapons/gun_c99.ogg'
-	current_mag = /obj/item/ammo_magazine/pistol/t16/impact
+	icon_state = "tt73b"
+	item_state = "tt73b"
+	fire_sound = 'sound/weapons/gun_vp78_v2.ogg'
+	current_mag = /obj/item/ammo_magazine/pistol/t73_impact
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
+	accepted_ammo = list(
+		/obj/item/ammo_magazine/pistol/t73,
+		/obj/item/ammo_magazine/pistol/t73_impact,
+	)
+
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
-		/obj/item/attachable/lasersight,
-		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/heavy_barrel,
 	)
 
-//-------------------------------------------------------
-//
-
-/obj/item/weapon/gun/pistol/makarov
-	name = "\improper Makarov placeholder pistol"
-	desc = "Placeholder."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
-	icon_state = "pk9"
-	item_state = "pk9"
-	fire_sound = 'sound/weapons/gun_c99.ogg'
-	current_mag = /obj/item/ammo_magazine/pistol/c99
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
-	attachable_allowed = list(
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight,
-		/obj/item/attachable/lasersight,
-		/obj/item/attachable/burstfire_assembly,
-	)
-
-/obj/item/weapon/gun/pistol/c99/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
-
-/obj/item/weapon/gun/pistol/c99/set_gun_config_values()
+/obj/item/weapon/gun/pistol/t73/leader/handle_starting_attachment()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
-	scatter = SCATTER_AMOUNT_TIER_6
+	var/obj/item/attachable/lasersight/TT = new(src)
+	TT.flags_attach_features &= ~ATTACH_REMOVABLE
+	TT.hidden = TRUE
+	TT.Attach(src)
+	update_attachable(TT.slot)
+
+/obj/item/weapon/gun/pistol/t73/leader/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_6
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_7
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
-	scatter_unwielded = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
-
-/obj/item/weapon/gun/pistol/makarov/suppressed
-	name = "\improper PB placeholder pistol"
-	desc = "Placeholder."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
-	icon_state = "pk9"
-	item_state = "pk9"
-	inherent_traits = list(TRAIT_GUN_SILENCED)
-	fire_sound = 'sound/weapons/gun_c99.ogg'
-	current_mag = /obj/item/ammo_magazine/pistol/c99
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
-	attachable_allowed = list(
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight,
-		/obj/item/attachable/lasersight,
-		/obj/item/attachable/burstfire_assembly,
-	)
-
-//-------------------------------------------------------
-//
-
-/obj/item/weapon/gun/pistol/c99
-	name = "\improper Korovin PK-9 pistol"
-	desc = "The Korovin PK-9 is a cheap, robust and reliable sidearm, its design is strongly inspired by the classic ancient Makarov pistol. Commonly used by many groups, mostly those worried about cost."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
-	icon_state = "pk9"
-	item_state = "pk9"
-	inherent_traits = list(TRAIT_GUN_SILENCED)
-	fire_sound = 'sound/weapons/gun_c99.ogg'
-	current_mag = /obj/item/ammo_magazine/pistol/c99
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
-	attachable_allowed = list(
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight,
-		/obj/item/attachable/lasersight,
-		/obj/item/attachable/burstfire_assembly,
-	)
-
-/obj/item/weapon/gun/pistol/c99/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
-
-/obj/item/weapon/gun/pistol/c99/set_gun_config_values()
-	..()
-	fire_delay = FIRE_DELAY_TIER_10
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
-	scatter = SCATTER_AMOUNT_TIER_6
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
-	scatter_unwielded = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
-
-/obj/item/weapon/gun/pistol/c99/upp
-	desc = "The Korovin PK-9 is a cheap, robust and reliable sidearm, its design is strongly inspired by the classic ancient Makarov pistol. This version has been refitted for military usage by the UPP."
-	icon_state = "pk9u"
-	item_state = "pk9u"
-
-/obj/item/weapon/gun/pistol/c99/upp/tranq
-	desc = "The Korovin PK-9 is a cheap, robust and reliable sidearm, its design strongly inspired by the classic ancient Makarov pistol. This version contains a customized exterior, an integrated laser and reflex sight, and is noticeably easy to handle."
-	icon_state = "pk9r"
-	item_state = "pk9r"
-	current_mag = /obj/item/ammo_magazine/pistol/c99/tranq
-	aim_slowdown = 0
-	wield_delay = WIELD_DELAY_MIN
-
-
-/obj/item/weapon/gun/pistol/c99/upp/tranq/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/lasersight/LS = new(src)
-	LS.flags_attach_features &= ~ATTACH_REMOVABLE
-	LS.Attach(src)
-	update_attachable(LS.slot)
-
-	var/obj/item/attachable/reflex/RX = new(src)
-	RX.flags_attach_features &= ~ATTACH_REMOVABLE
-	RX.Attach(src)
-	update_attachable(RX.slot)
+	scatter_unwielded = SCATTER_AMOUNT_TIER_7
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
 
 //-------------------------------------------------------
 //KT-42 //Inspired by the .44 Auto Mag pistol

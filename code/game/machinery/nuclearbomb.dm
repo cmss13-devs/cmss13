@@ -57,8 +57,7 @@ var/bomb_set = FALSE
 	. = ..()
 	if(!timing)
 		update_minimap_icon()
-		stop_processing()
-		return
+		return PROCESS_KILL
 
 	bomb_set = TRUE //So long as there is one nuke timing, it means one nuke is armed.
 	timeleft = explosion_time - world.time
@@ -95,7 +94,7 @@ var/bomb_set = FALSE
 		user.visible_message(SPAN_INFO("[user] begins to defuse \the [src]."), SPAN_INFO("You begin to defuse \the [src]. This will take some time..."))
 		if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			disable()
-			playsound(src.loc, 'sound/items/Wirecutter.ogg', 100, 1)
+			playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)
 		return
 	..()
 
@@ -207,7 +206,7 @@ var/bomb_set = FALSE
 				else
 					disable()
 					message_admins("\The [src] has been deactivated by [key_name(ui.user, 1)] [ADMIN_JMP_USER(ui.user)]")
-				playsound(src.loc, 'sound/effects/thud.ogg', 100, 1)
+				playsound(loc, 'sound/effects/thud.ogg', 100, 1)
 			being_used = FALSE
 			. = TRUE
 
@@ -228,7 +227,7 @@ var/bomb_set = FALSE
 			ui = SStgui.try_update_ui(ui.user, src, ui)
 			if(do_after(ui.user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				safety = !safety
-				playsound(src.loc, 'sound/items/poster_being_created.ogg', 100, 1)
+				playsound(loc, 'sound/items/poster_being_created.ogg', 100, 1)
 			being_used = FALSE
 			if(safety)
 				timing = FALSE
@@ -278,7 +277,7 @@ var/bomb_set = FALSE
 					visible_message(SPAN_INFO("With a steely snap, bolts slide out of [src] and anchor it to the flooring."))
 				else
 					visible_message(SPAN_INFO("The anchoring bolts slide back into the depths of [src]."))
-				playsound(src.loc, 'sound/items/Deconstruct.ogg', 100, 1)
+				playsound(loc, 'sound/items/Deconstruct.ogg', 100, 1)
 				anchored = !anchored
 			being_used = FALSE
 			. = TRUE
@@ -312,7 +311,7 @@ var/bomb_set = FALSE
 		else
 			deployable = TRUE
 			anchored = TRUE
-		playsound(src.loc, 'sound/items/Deconstruct.ogg', 100, 1)
+		playsound(loc, 'sound/items/Deconstruct.ogg', 100, 1)
 	being_used = FALSE
 	update_icon()
 
@@ -320,17 +319,17 @@ var/bomb_set = FALSE
 /obj/structure/machinery/nuclearbomb/proc/announce_to_players(timer_warning)
 
 	var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
-	var/list/humans_USCM = list()
-	for(var/mob/M in humans_other)
-		if(M.stat != CONSCIOUS || isyautja(M))
-			humans_other.Remove(M)
+	var/list/humans_uscm = list()
+	for(var/mob/current_mob as anything in humans_other)
+		if(current_mob.stat != CONSCIOUS || isyautja(current_mob))
+			humans_other -= current_mob
 			continue
-		if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR) //separating marines from other factions. Survs go here too
-			humans_USCM += M
-			humans_other -= M
+		if(current_mob.faction == FACTION_MARINE || current_mob.faction == FACTION_SURVIVOR) //separating marines from other factions. Survs go here too
+			humans_uscm += current_mob
+			humans_other -= current_mob
 
 	if(timer_warning) //we check for timer warnings first
-		announcement_helper("WARNING.\n\nDETONATION IN [round(timeleft/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
+		announcement_helper("WARNING.\n\nDETONATION IN [round(timeleft/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 		announcement_helper("WARNING.\n\nDETONATION IN [round(timeleft/10)] SECONDS.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
 		//preds part
 		var/t_left = duration2text_sec(round(rand(timeleft - timeleft / 10, timeleft + timeleft / 10)))
@@ -353,7 +352,7 @@ var/bomb_set = FALSE
 
 	var/datum/hive_status/hive
 	if(timing)
-		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE ACTIVATED.\n\nDETONATION IN [round(timeleft/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
+		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE ACTIVATED.\n\nDETONATION IN [round(timeleft/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE ACTIVATED.\n\nDETONATION IN [round(timeleft/10)] SECONDS.", "HQ Nuclear Tracker", humans_other, 'sound/misc/notice1.ogg')
 		var/t_left = duration2text_sec(round(rand(timeleft - timeleft / 10, timeleft + timeleft / 10)))
 		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>A human Purification Device has been detected. You have approximately [t_left] to abandon the hunting grounds before it activates."))
@@ -363,7 +362,7 @@ var/bomb_set = FALSE
 				continue
 			xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have deployed a hive killer at [get_area_name(loc)]! Stop it at all costs!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 	else
-		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE DEACTIVATED.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
+		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE DEACTIVATED.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE DEACTIVATED.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
 		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human Purification Device's signature has disappeared."))
 		for(var/hivenumber in GLOB.hive_datum)
@@ -490,15 +489,15 @@ var/bomb_set = FALSE
 					decryption_end_time = world.time + decryption_time
 					start_processing()
 					announce_to_players()
-					message_admins("\The [src]'s encryption process has been started by [key_name(ui.user, 1)] [ADMIN_JMP_USER(ui.user)]")
+					message_admins("[src]'s encryption process has been started by [key_name(ui.user, 1)] [ADMIN_JMP_USER(ui.user)]")
 				else
 					//remove signal handlers
 					decryption_end_time = null
 					announce_to_players()
-					message_admins("\The [src]'s encryption process has been deactivated by [key_name(ui.user, 1)] [ADMIN_JMP_USER(ui.user)]")
-				playsound(src.loc, 'sound/effects/thud.ogg', 100, 1)
+					message_admins("[src]'s encryption process has been deactivated by [key_name(ui.user, 1)] [ADMIN_JMP_USER(ui.user)]")
+				playsound(loc, 'sound/effects/thud.ogg', 100, 1)
 			being_used = FALSE
-			. = TRUE
+			return TRUE
 
 /obj/structure/machinery/nuclearbomb/tech/process()
 	if(!decrypting)
@@ -511,8 +510,7 @@ var/bomb_set = FALSE
 		decryption_time = 0
 		announce_to_players(NUKE_DECRYPT_SHOW_TIMER_COMPLETE)
 		timer_announcements_flags &= ~NUKE_DECRYPT_SHOW_TIMER_COMPLETE
-		stop_processing()
-		return
+		return PROCESS_KILL
 
 	if(!timer_announcements_flags)
 		return
@@ -533,7 +531,7 @@ var/bomb_set = FALSE
 		return ..()
 
 	var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
-	var/list/humans_USCM = list()
+	var/list/humans_uscm = list()
 	for(var/mob/current_mob as anything in humans_other)
 		var/mob/living/carbon/human/current_human = current_mob
 		if(istype(current_human)) //if it's unconsious human or yautja, we remove them
@@ -541,12 +539,12 @@ var/bomb_set = FALSE
 				humans_other -= current_mob
 				continue
 		if(current_mob.faction == FACTION_MARINE || current_mob.faction == FACTION_SURVIVOR)
-			humans_USCM += current_mob
+			humans_uscm += current_mob
 			humans_other -= current_mob
 
 	if(timer_warning)
 		if(timer_warning == NUKE_DECRYPT_SHOW_TIMER_COMPLETE)
-			announcement_helper("DECRYPTION COMPLETE", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
+			announcement_helper("DECRYPTION COMPLETE", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 			announcement_helper("DECRYPTION COMPLETE", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
 
 			yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nThe human Purification Device is able to be activated."))
@@ -554,12 +552,12 @@ var/bomb_set = FALSE
 			var/datum/hive_status/hive
 			for(var/hivenumber in GLOB.hive_datum)
 				hive = GLOB.hive_datum[hivenumber]
-				if(!hive.totalXenos.len)
+				if(!length(hive.totalXenos))
 					return
 				xeno_announcement(SPAN_XENOANNOUNCE("The hive killer is ready to be activated! Assault at once!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 			return
 
-		announcement_helper("DECRYPTION IN [round(decryption_time/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
+		announcement_helper("DECRYPTION IN [round(decryption_time/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 		announcement_helper("DECRYPTION IN [round(decryption_time/10)] SECONDS.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
 
 		//preds part
@@ -581,18 +579,18 @@ var/bomb_set = FALSE
 
 	var/datum/hive_status/hive
 	if(decrypting)
-		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE DECRYPTION STARTED.\n\nDECRYPTION IN [round(decryption_time/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
+		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE DECRYPTION STARTED.\n\nDECRYPTION IN [round(decryption_time/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE DECRYPTION STARTED.\n\nDECRYPTION IN [round(decryption_time/10)] SECONDS.", "HQ Nuclear Tracker", humans_other, 'sound/misc/notice1.ogg')
 		var/time_left = duration2text_sec(round(rand(decryption_time - decryption_time / 10, decryption_time + decryption_time / 10)))
 		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>A human Purification Device has been detected. You have approximately [time_left] before it finishes its initial phase."))
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
-			if(!hive.totalXenos.len)
+			if(!length(hive.totalXenos))
 				continue
 			xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have started the initial phase of a hive killer at [get_area_name(loc)]! Destroy their communications relays!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 		return
 
-	announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE DECRYPTION HALTED.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
+	announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE DECRYPTION HALTED.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 	announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE DECRYPTION HALTED.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
 	yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human Purification Device's signature has disappeared."))
 	for(var/hivenumber in GLOB.hive_datum)

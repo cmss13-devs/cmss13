@@ -1,4 +1,4 @@
-#define NUKE_UNLOCK_TIME (90 MINUTES)
+#define NUKE_UNLOCK_TIME (120 MINUTES)
 
 /datum/tech/nuke
 	name = "Nuclear Device"

@@ -10,7 +10,14 @@ interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
   selected_eqp: number;
   tactical_map_ref?: string;
+  camera_map_ref?: string;
+  targets_data: Array<LazeTarget>;
 }
+
+type LazeTarget = {
+  target_name: string;
+  target_tag: number;
+};
 
 type DropshipEquipment = {
   name: string;
@@ -231,6 +238,30 @@ const MapPanel = (props, context) => {
   );
 };
 
+const CameraPanel = (props, context) => {
+  const { act, data } = useBackend<DropshipProps>(context);
+  return (
+    <Box className="NavigationMenu">
+      hellop
+      {data.targets_data.map((x) => (
+        <Button
+          key={x.target_tag}
+          onClick={() => act('set-camera', { 'equipment_id': x.target_tag })}>
+          {x.target_name}
+        </Button>
+      ))}
+      <Button onClick={() => act('clear-camera')}>X</Button>
+      <ByondUi
+        className="CameraPanel"
+        params={{
+          id: data.camera_map_ref,
+          type: 'map',
+        }}
+      />
+    </Box>
+  );
+};
+
 const ControlPanel = (props, context) => {
   const [panelState, setPanelState] = usePanelState(context);
 
@@ -388,6 +419,8 @@ const RenderScreen = (props, context) => {
       return <FiremissionSimulationPanel />;
     case 'map':
       return <MapPanel />;
+    case 'camera':
+      return <CameraPanel />;
     default:
       return <Box className="NavigationMenu" />;
   }

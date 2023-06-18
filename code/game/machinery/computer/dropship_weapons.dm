@@ -1,3 +1,108 @@
+
+/datum/camera_manager
+	var/map_name
+	var/datum/shape/rectangle/current_area
+	var/atom/movable/screen/map_view/cam_screen
+	var/atom/movable/screen/background/cam_background
+	var/list/range_turfs = list()
+	/// The turf where the camera was last updated.
+	var/turf/last_camera_turf
+	var/target_x
+	var/target_y
+	var/target_z
+
+/datum/camera_manager/New(map_ref)
+	map_name = map_ref
+	cam_screen = new
+	cam_screen.name = "screen"
+	cam_screen.assigned_map = map_name
+	cam_screen.del_on_map_removal = FALSE
+	cam_screen.screen_loc = "[map_name]:1,1"
+	cam_background = new
+	cam_background.assigned_map = map_name
+	cam_background.del_on_map_removal = FALSE
+
+/datum/camera_manager/Destroy(force, ...)
+	. = ..()
+	range_turfs = null
+	QDEL_NULL(cam_background)
+	QDEL_NULL(cam_screen)
+
+/datum/camera_manager/proc/register(mob/user)
+	user.client.register_map_obj(cam_background)
+	user.client.register_map_obj(cam_screen)
+
+/datum/camera_manager/proc/clear_camera()
+	current_area = null
+	target_x = null
+	target_y = null
+	target_z = null
+	update_active_camera()
+
+/datum/camera_manager/proc/set_camera_obj(var/obj/target, w, h)
+	set_camera_rect(target.x, target.y, target.z, w, h)
+
+/datum/camera_manager/proc/set_camera_turf(var/turf/target, w, h)
+	set_camera_rect(target.x, target.y, target.z, w, h)
+
+/datum/camera_manager/proc/set_camera_rect(x, y, z, w, h)
+	current_area = new(x, y, w, h)
+	target_x = x
+	target_y = y
+	target_z = z
+	update_active_camera()
+
+/**
+ * Set the displayed camera to the static not-connected.
+ */
+/datum/camera_manager/proc/show_camera_static()
+	cam_screen.vis_contents.Cut()
+	last_camera_turf = null
+	cam_background.icon_state = "scanline2"
+	cam_background.fill_rect(1, 1, 15, 15)
+
+/datum/camera_manager/proc/update_active_camera()
+	// Show static if can't use the camera
+	if(!current_area || !target_z)
+		world.log << "static"
+		show_camera_static()
+		return
+
+	// If we're not forcing an update for some reason and the cameras are in the same location,
+	// we don't need to update anything.
+	// Most security cameras will end here as they're not moving.
+	var/turf/new_location = get_turf(locate(target_x, target_y, target_z))
+	if(last_camera_turf == new_location)
+		world.log << "same loc"
+		return
+
+	// Cameras that get here are moving, and are likely attached to some moving atom such as cyborgs.
+	last_camera_turf = new_location
+
+	var/x_size = current_area.width
+	var/y_size = current_area.height
+	var/target = locate(current_area.center_x, current_area.center_y, target_z)
+	var/list/guncamera_zone = range("[x_size]x[y_size]", target)
+
+	var/list/visible_turfs = list()
+	range_turfs.Cut()
+
+	for(var/turf/visible_turf in guncamera_zone)
+		range_turfs += visible_turf
+		var/area/visible_area = visible_turf.loc
+		if(!visible_area.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
+			visible_turfs += visible_turf
+
+	var/list/bbox = get_bbox_of_atoms(visible_turfs)
+	var/size_x = bbox[3] - bbox[1] + 1
+	var/size_y = bbox[4] - bbox[2] + 1
+	cam_screen.icon = null
+	cam_screen.icon_state = "clear"
+	cam_screen.vis_contents = visible_turfs
+	cam_background.icon_state = "clear"
+	cam_background.fill_rect(1, 1, size_x, size_y)
+
+
 /obj/structure/machinery/computer/dropship_weapons
 	name = "abstract dropship weapons controls"
 	desc = "A computer to manage equipment, weapons and simulations installed on the dropship."
@@ -29,10 +134,17 @@
 	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
 
+	// Cameras
+	var/datum/camera_manager/cam_manager
+	var/camera_target_id
+
 /obj/structure/machinery/computer/dropship_weapons/Initialize()
 	. = ..()
 	simulation = new()
 	tacmap = new(src, minimap_type)
+
+	// camera setup
+	cam_manager = new("dropship_camera_[REF(src)]_map")
 
 /obj/structure/machinery/computer/dropship_weapons/New()
 	..()
@@ -112,6 +224,7 @@
 /obj/structure/machinery/computer/dropship_weapons/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
+		cam_manager.register(user)
 		ui = new(user, src, "DropshipWeaponsConsole", "Weapons Console")
 		ui.open()
 
@@ -137,6 +250,7 @@
 /obj/structure/machinery/computer/dropship_weapons/ui_static_data(mob/user)
 	. = list()
 	.["tactical_map_ref"] = tacmap.map_holder.map_ref
+	.["camera_map_ref"] = cam_manager.map_name
 
 /obj/structure/machinery/computer/dropship_weapons/ui_data(mob/user)
 	. = list()
@@ -153,6 +267,8 @@
 	// equipment info
 	.["equipment_data"] = get_sanitised_equipment(dropship)
 	.["targets_data"] = get_targets()
+	.["camera_target"] = camera_target_id
+
 	if(selected_equipment)
 		.["selected_eqp"] = selected_equipment.ship_base.attach_id
 		if(selected_equipment.ammo_equipped)
@@ -206,6 +322,7 @@
 		if("button_push")
 			playsound(src, get_sfx("terminal_button"), 25, FALSE)
 			return TRUE
+
 		if("select_equipment")
 			var/base_tag = params["equipment_id"]
 			ui_equip_interact(base_tag)
@@ -240,6 +357,36 @@
 			if(!simulation.dummy_mode)
 				simulation.dummy_mode = CLF_MODE
 			. = TRUE
+
+		if("set-camera")
+			var/target_camera = params["equipment_id"]
+			set_camera_target(target_camera)
+			return TRUE
+
+		if("clear-camera")
+			set_camera_target(null)
+			return TRUE
+
+
+/obj/structure/machinery/computer/dropship_weapons/proc/set_camera_target(var/target_ref)
+	if(!target_ref)
+		cam_manager.show_camera_static()
+		return
+
+	var/datum/cas_signal/target
+	var/datum/cas_iff_group/cas_group = cas_groups[faction]
+	for(var/datum/cas_signal/sig in cas_group.cas_signals)
+		if(sig.target_id == target_ref)
+			target = sig
+			break
+
+	if(!target)
+		to_chat("Failed to reference [target_ref]")
+		cam_manager.show_camera_static()
+		return
+
+	cam_manager.set_camera_obj(target.linked_cam, 10, 10)
+	camera_target_id = target_ref
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_screen_mode()
 	. = 0
@@ -903,7 +1050,7 @@
 
 /obj/structure/machinery/computer/dropship_weapons/Destroy()
 	. = ..()
-
+	QDEL_NULL(cam_manager)
 	QDEL_NULL(firemission_envelope)
 	QDEL_NULL(tacmap)
 

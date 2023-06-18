@@ -921,7 +921,7 @@
 			continue
 		xenos_count++
 	hijack_burrowed_surge = TRUE
-	hijack_burrowed_left = max(n_ceil(shipside_humans_count * 0.4) - xenos_count, 5)
+	hijack_burrowed_left = max(n_ceil(shipside_humans_count * 0.5) - xenos_count, 5)
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 

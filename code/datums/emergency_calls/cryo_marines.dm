@@ -12,11 +12,13 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
 	var/leaders = 0
+	var/deployed_marines = 0
 
-/datum/emergency_call/cryo_squad/spawn_candidates(announce, override_spawn_loc)
+/datum/emergency_call/cryo_squad/spawn_candidates(announce, override_spawn_loc, announce_dispatch_message)
 	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
 	leaders = cryo_squad.num_leaders
-	return ..()
+	. = ..()
+	shipwide_ai_announcement("Successfully deployed [deployed_marines] Foxtrot marines.")
 
 /datum/emergency_call/cryo_squad/create_member(datum/mind/M, turf/override_spawn_loc)
 	set waitfor = 0
@@ -61,6 +63,8 @@
 		to_chat(H, SPAN_ROLE_HEADER("You are a Rifleman in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 		to_chat(H, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
+
+	deployed_marines++
 
 	sleep(10)
 	to_chat(H, SPAN_BOLD("Objectives: [objectives]"))

@@ -13874,7 +13874,7 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
 /turf/open/gm/dirt,
-/area/lv624/landing/console2)
+/area/lv624/lazarus/landing_zones/lz2)
 "eDy" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,

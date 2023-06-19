@@ -7345,9 +7345,7 @@
 	},
 /obj/item/coin/diamond,
 /obj/item/m_gift,
-/obj/item/clothing/head/helmet/marine/veteran/pmc{
-	desc = sss
-	},
+/obj/item/clothing/head/helmet/marine/veteran/pmc,
 /obj/item/clothing/under/marine/veteran/pmc,
 /obj/item/storage/fancy/cigar,
 /obj/effect/landmark/objective_landmark/close,

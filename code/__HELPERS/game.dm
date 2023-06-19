@@ -291,18 +291,11 @@
  */
 /proc/message_alien_candidates(list/candidates, dequeued)
 	var/new_players = 0
-	if(dequeued)
-		for(var/i in (1 + dequeued) to candidates.len)
-			to_chat(candidates[i], SPAN_XENONOTICE("You are now [i-dequeued]\th in the larva queue. There are [new_players] ahead of you that have yet to play this round."))
-			var/mob/dead/observer/cur_obs = candidates[i]
-			if (!cur_obs.timeofdeath)
-				new_players++
-	else
-		for(var/i in 1 to candidates.len)
-			to_chat(candidates[i], SPAN_XENONOTICE("You are currently [i]\th in the larva queue. There are [new_players] ahead of you that have yet to play this round."))
-			var/mob/dead/observer/cur_obs = candidates[i]
-			if (!cur_obs.timeofdeath)
-				new_players++
+	for(var/i in (1 + dequeued) to candidates.len)
+		to_chat(candidates[i], SPAN_XENONOTICE("You are [dequeued ? "now" : "currently"] [i-dequeued]\th in the larva queue. There are [new_players] ahead of you that have yet to play this round."))
+		var/mob/dead/observer/cur_obs = candidates[i]
+		if(!cur_obs.timeofdeath)
+			new_players++
 
 /proc/convert_k2c(temp)
 	return ((temp - T0C))

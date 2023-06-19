@@ -48,6 +48,9 @@ var/list/ob_type_fuel_requirements
 
 /obj/structure/orbital_cannon/Destroy()
 	QDEL_NULL(tray)
+	if(almayer_orbital_cannon == src)
+		almayer_orbital_cannon = null
+		message_admins("Reference to almayer_orbital_cannon is lost!")
 	return ..()
 
 /obj/structure/orbital_cannon/ex_act()
@@ -512,6 +515,9 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_console"
 	dir = WEST
 	flags_atom = ON_BORDER|CONDUCT|FPRINT
+
+	unacidable = TRUE
+	unslashable = TRUE
 
 /obj/structure/machinery/computer/orbital_cannon_console/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

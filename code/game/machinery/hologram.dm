@@ -217,4 +217,4 @@ Holographic project of everything else.
 	name = "hologram projector"
 	desc = "It makes a hologram appear...with magnets or something..."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
-	icon_state = "hologram0"
+	icon_state = "holopad0"

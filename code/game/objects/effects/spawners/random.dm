@@ -175,6 +175,13 @@
 
 /obj/effect/spawner/random/supply_kit/item_to_spawn()
 	return pick(prob(3);/obj/item/storage/box/kit/pursuit,\
+				prob(3);/obj/item/storage/box/kit/self_defense,\
+				prob(3);/obj/item/storage/box/kit/mini_medic,\
+				prob(2);/obj/item/storage/box/kit/mou53_sapper,\
+				prob(1);/obj/item/storage/box/kit/heavy_support)
+
+/obj/effect/spawner/random/supply_kit/market/item_to_spawn()
+	return pick(prob(3);/obj/item/storage/box/kit/pursuit,\
 				prob(3);/obj/item/storage/box/kit/mini_intel,\
 				prob(3);/obj/item/storage/box/kit/mini_jtac,\
 				prob(2);/obj/item/storage/box/kit/mou53_sapper,\
@@ -460,7 +467,6 @@
 		/obj/item/weapon/gun/lever_action/r4t = /obj/item/ammo_magazine/lever_action,
 		/obj/item/weapon/gun/shotgun/merc = null,
 		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717 = null,
-		/obj/item/weapon/gun/shotgun/double = null
 	) //no ammotypes needed as it spawns random 12g boxes. Apart from the r4t. why is the r4t in the shotgun pool? fuck you, that's why.
 
 /obj/effect/spawner/random/gun/shotgun/lowchance
@@ -514,7 +520,6 @@
 	icon_state = "loot_special"
 	guns = list(
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
-		/obj/item/weapon/gun/m60 = /obj/item/ammo_magazine/m60,
 		/obj/item/weapon/gun/shotgun/merc = null,
 		/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable = /obj/item/prop/folded_anti_tank_sadar,
 		/obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle,

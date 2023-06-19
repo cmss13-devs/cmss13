@@ -163,10 +163,6 @@
 /obj/vehicle/multitile/Initialize()
 	. = ..()
 
-	if(interior_map)
-		interior = new(src)
-		INVOKE_ASYNC(src, PROC_REF(do_create_interior))
-
 	var/angle_to_turn = turning_angle(SOUTH, dir)
 	rotate_entrances(angle_to_turn)
 	rotate_bounds(angle_to_turn)
@@ -175,6 +171,15 @@
 	update_icon()
 
 	GLOB.all_multi_vehicles += src
+
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/vehicle/multitile/LateInitialize()
+	. = ..()
+
+	if(interior_map)
+		interior = new(src)
+		INVOKE_ASYNC(src, PROC_REF(do_create_interior))
 
 /obj/vehicle/multitile/proc/do_create_interior()
 	interior.create_interior(interior_map)
@@ -192,7 +197,7 @@
 
 	GLOB.all_multi_vehicles -= src
 
-	. = ..()
+	return ..()
 
 /obj/vehicle/multitile/proc/initialize_cameras()
 	return

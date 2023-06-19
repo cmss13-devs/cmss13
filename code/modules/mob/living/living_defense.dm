@@ -76,7 +76,10 @@
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with a [O], thrown by [key_name(M)]</font>")
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
 			if(!istype(src,/mob/living/simple_animal/mouse))
-				msg_admin_attack("[key_name(src)] was hit by a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+				if(src.loc)
+					msg_admin_attack("[key_name(src)] was hit by a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+				else
+					msg_admin_attack("[key_name(src)] was hit by a [O], thrown by [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]).", M.loc.x, M.loc.y, M.loc.z)
 	if(last_damage_source)
 		last_damage_data = create_cause_data(last_damage_source, M)
 

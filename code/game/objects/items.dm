@@ -307,8 +307,7 @@ cases. Override_icon_state should be a list.*/
 // Due to storage type consolidation this should get used more now.
 // I have cleaned it up a little, but it could probably use more.  -Sayu
 /obj/item/attackby(obj/item/W, mob/user)
-	. = ..()
-	if(.)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACKED, W, user) & COMPONENT_CANCEL_ITEM_ATTACK)
 		return
 
 	if(istype(W,/obj/item/storage))
@@ -782,7 +781,9 @@ cases. Override_icon_state should be a list.*/
 
 
 /obj/item/proc/showoff(mob/user)
-	for (var/mob/M in view(user))
+	var/list/viewers = get_mobs_in_view(world_view_size, user)
+	user.langchat_speech("holds up [src].", viewers, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+	for (var/mob/M in viewers)
 		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>", SHOW_MESSAGE_VISIBLE)
 
 /mob/living/carbon/verb/showoff()

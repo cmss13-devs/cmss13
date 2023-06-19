@@ -37,6 +37,9 @@
 /datum/game_mode/xenovs/announce()
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
 
+/datum/game_mode/xenovs/get_roles_list()
+	return ROLES_XENO
+
 /* Pre-setup */
 /datum/game_mode/xenovs/pre_setup()
 	monkey_types = SSmapping.configs[GROUND_MAP].monkey_types
@@ -258,7 +261,7 @@
 /datum/game_mode/xenovs/declare_completion()
 	announce_ending()
 	var/musical_track
-	musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
+	musical_track = pick('sound/theme/neutral_melancholy1.ogg', 'sound/theme/neutral_melancholy2.ogg')
 
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
@@ -273,6 +276,7 @@
 	declare_completion_announce_xenomorphs()
 	calculate_end_statistics()
 	declare_fun_facts()
+
 
 	return TRUE
 

@@ -56,6 +56,7 @@
 
 		X.visible_message(SPAN_XENODANGER("[X] fires a massive blast of acid at [A]!"), SPAN_XENODANGER("You fire a massive blast of acid at [A]!"))
 		remove_stack_effects("You feel your speed return to normal!")
+		return TRUE
 
 /datum/action/xeno_action/activable/acid_lance/proc/stack()
 	var/mob/living/carbon/xenomorph/X = owner
@@ -103,7 +104,7 @@
 	return (activated_once || ..())
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/use_ability(atom/A)
-	..()
+	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check()) // activate c/d only if we already spit
 		for (var/action_type in action_types_to_cd)
@@ -121,7 +122,6 @@
 
 	if (!action_cooldown_check())
 		return
-
 
 	if (!xeno.check_state())
 		return
@@ -150,7 +150,7 @@
 		xeno_action.apply_cooldown_override(cooldown_duration)
 
 	apply_cooldown()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/dump_acid/proc/remove_speed_buff()
 	if (movespeed_buff_applied && isxeno(owner))
@@ -211,7 +211,6 @@
 	target_turfs += get_step(left_turf, turn(dir_between, -90))
 	target_turfs += get_step(right_turf, turn(dir_between, 90))
 
-
 	for (var/turf/T in target_turfs)
 		if (!istype(T) || T.density)
 			continue
@@ -242,9 +241,7 @@
 			to_chat(X, SPAN_XENODANGER("You tap in your reserves to prepare a stronger [mine.name]!"))
 
 	apply_cooldown()
-	..()
-	return
-
+	return ..()
 
 /datum/action/xeno_action/activable/acid_mine/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
@@ -284,8 +281,7 @@
 		button.overlays -= "+empowered"
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/acid_shotgun/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
@@ -310,9 +306,7 @@
 	P.fire_at(target, X, X, ammoDatum.max_range, ammoDatum.shell_speed)
 
 	apply_cooldown()
-	..()
-	return
-
+	return ..()
 
 /datum/ammo/xeno/acid_shotgun
 	name = "acid ball"
@@ -358,3 +352,4 @@
 			to_chat(carbon_target,SPAN_HIGHDANGER("You are injected with something from [stabbing_xeno]'s tailstab!"))
 		else
 			CRASH("Globber has unknown ammo [stabbing_xeno.ammo]! Oh no!")
+		return TRUE

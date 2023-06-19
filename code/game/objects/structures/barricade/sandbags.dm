@@ -90,7 +90,7 @@
 		user.visible_message(SPAN_NOTICE("[user] starts adding more [SB] to [src]."), \
 			SPAN_NOTICE("You start adding sandbags to [src]."))
 		for(var/i = build_stage to BARRICADE_SANDBAG_5)
-			if(build_stage >= BARRICADE_SANDBAG_5 || !do_after(user, 5, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src) || build_stage >= BARRICADE_SANDBAG_5)
+			if(build_stage >= BARRICADE_SANDBAG_5 || !do_after(user, 5, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src) || build_stage >= BARRICADE_SANDBAG_5 || SB.amount == 0)
 				break
 			SB.use(1)
 			increment_build_stage()

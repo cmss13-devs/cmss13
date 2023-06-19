@@ -15,7 +15,7 @@
 
 GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 
-//Turf colours
+//Turf colors
 #define MINIMAP_SOLID "#ebe5e5ee"
 #define MINIMAP_DOOR "#451e5eb8"
 #define MINIMAP_FENCE "#8d2294ad"
@@ -26,7 +26,7 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 #define MINIMAP_ICE "#93cae0b0"
 #define MINIMAP_WATER "#94b0d59c"
 
-//Area colours
+//Area colors
 #define MINIMAP_AREA_ENGI "#c19504e7"
 #define MINIMAP_AREA_ENGI_CAVE "#5a4501e7"
 #define MINIMAP_AREA_MEDBAY "#3dbf75ee"

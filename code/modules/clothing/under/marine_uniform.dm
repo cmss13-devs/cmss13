@@ -102,9 +102,8 @@
 	icon_state = "MP_jumpsuit"
 	worn_state = "MP_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "military police"
-	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/warden
 	name = "military warden jumpsuit"
@@ -112,7 +111,7 @@
 	icon_state = "warden_jumpsuit"
 	worn_state = "warden_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/warden)
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "military warden"
 	flags_atom = NO_SNOW_TYPE
 
@@ -162,7 +161,7 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_NAME_OVERRIDE
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
-	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot, /obj/item/clothing/suit/storage/marine/light/vest/dcc, /obj/item/clothing/suit/storage/jacket/marine/pilot)
+	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot, /obj/item/clothing/suit/storage/marine/light/vest/dcc, /obj/item/clothing/suit/storage/jacket/marine/pilot, /obj/item/clothing/suit/storage/marine/light/vest)
 
 /obj/item/clothing/under/marine/officer/pilot/flight
 	name = "tactical pilot officer flightsuit"
@@ -203,7 +202,7 @@
 
 /obj/item/clothing/under/marine/officer/exec
 	name = "executive officer uniform"
-	desc = "A uniform typically worn by a commander Executive Officer in the USCM. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	desc = "A uniform typically worn by an Executive Officer in the USCM. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
 	specialty = "executive officer"
@@ -266,7 +265,7 @@
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/formal/servicedress
-	name = "captain's dress shirt"
+	name = "commanding officer's dress shirt"
 	desc = "The shirt and tie of a two-piece Navy service dress uniform for high-ranking officers. Wear with style and substance."
 	specialty = "captain's service dress"
 	icon_state = "CO_service"
@@ -274,7 +273,7 @@
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/formal/white
-	name = "captain's white formal uniform"
+	name = "Commanding Officer's white formal uniform"
 	desc = "A well-ironed USCM officer uniform in brilliant white with gold accents, intended for parades or hot weather. Wear this with pride."
 	icon_state = "CO_formal_white"
 	worn_state = "CO_formal_white"
@@ -282,7 +281,7 @@
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/formal/black
-	name = "captain's gray formal uniform"
+	name = "Commanding Officer's gray formal uniform"
 	desc = "A well-ironed USCM officer uniform in subdued gray with gold accents, intended for more formal or somber events. Wear this with pride."
 	icon_state = "CO_formal_black"
 	worn_state = "CO_formal_black"
@@ -619,6 +618,19 @@
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
 	has_sensor = UNIFORM_NO_SENSORS
 
+//=========================//OWLF\\================================\\
+
+/obj/item/clothing/under/marine/veteran/owlf
+	name = "\improper OWLF thermal field uniform"
+	desc = "A high-tech uniform with built-in thermal cloaking technology. It looks like it's worth more than your life."
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS //This is all a copy and paste of the Dutch's stuff for now.
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	icon_state = "owlf_uniform"
+	worn_state = "owlf_uniform"
+	has_sensor = UNIFORM_NO_SENSORS
+	hood_state = /obj/item/clothing/head/owlf_hood
+
 //===========================//HELGHAST - MERCENARY\\================================\\
 //=====================================================================\\
 
@@ -830,12 +842,44 @@
 	worn_state = "synth_councillor"
 	displays_id = FALSE
 
+/obj/item/clothing/under/rank/synthetic/flight
+	name = "tactical flightsuit"
+	desc = "A flightsuit with plenty of leather straps, pouches, and other essential gear."
+	icon_state = "pilot_flightsuit_alt"
+	item_state = "pilot_flightsuit_alt"
+	worn_state = "pilot_flightsuit_alt"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
+
 /obj/item/clothing/under/rank/synthetic/old
 	icon_state = "rdalt_s"
 	worn_state = "rdalt_s"
 
 /obj/item/clothing/under/rank/synthetic/joe
 	name = "\improper Working Joe Uniform"
-	desc = "A cheap uniform made for Synthetic labor."
+	desc = "A cheap uniform made for Synthetic labor. Tomorrow, Together."
 	icon_state = "working_joe"
 	worn_state = "working_joe"
+
+/obj/item/clothing/under/rank/synthetic/joe/engi
+	name = "\improper Working Joe Hazardous Uniform"
+	desc = "A reinforced uniform used for Synthetic labor in hazardous areas. Tomorrow, Together."
+	icon_state = "working_joe_engi"
+	worn_state = "working_joe_engi"
+	flags_inventory = CANTSTRIP
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_HIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
+/obj/item/clothing/under/rank/synthetic/joe/engi/overalls
+	name = "\improper Working Joe Hazardous Uniform"
+	desc = "A reinforced uniform used for Synthetic labor in hazardous areas. Comes with an additional layer for liquid hazards. Tomorrow, Together."
+	icon_state = "working_joe_overalls"
+	worn_state = "working_joe_overalls"
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	unacidable = TRUE

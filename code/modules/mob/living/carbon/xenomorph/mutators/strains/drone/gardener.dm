@@ -121,8 +121,7 @@
 		xeno.update_icons()
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/change_fruit
 	name = "Change Fruit"
@@ -331,7 +330,7 @@
 	apply_cooldown()
 
 	xeno_cooldown = initial(xeno_cooldown)
-	..()
+	return ..()
 
 /datum/action/xeno_action/verb/verb_resin_surge()
 	set category = "Alien"

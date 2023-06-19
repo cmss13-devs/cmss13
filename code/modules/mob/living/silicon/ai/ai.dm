@@ -149,6 +149,11 @@ var/list/ai_verbs_default = list(
 
 /mob/living/silicon/ai/Destroy()
 	ai_list -= src
+	QDEL_NULL(aiMulti)
+	if(aiRadio)
+		aiRadio.myAi = null
+	QDEL_NULL(aiRadio)
+	QDEL_NULL(aiCamera)
 	. = ..()
 
 /mob/living/silicon/ai/proc/SetName(pickedName as text)

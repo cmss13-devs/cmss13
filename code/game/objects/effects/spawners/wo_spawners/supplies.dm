@@ -64,6 +64,7 @@
 
 /obj/effect/landmark/wo_supplies/guns
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon_state = ""
 
 /obj/effect/landmark/wo_supplies/guns/common
 	amount = list(5,10)
@@ -81,7 +82,7 @@
 	stuff = list(/obj/item/weapon/gun/smg/m39)
 
 /obj/effect/landmark/wo_supplies/guns/common/m44
-	icon_state = "m44"
+	icon_state = "m44r"
 	stuff = list(/obj/item/weapon/gun/revolver/m44)
 
 /obj/effect/landmark/wo_supplies/guns/common/m4a3
@@ -187,38 +188,41 @@
 
 /obj/effect/landmark/wo_supplies/ammo
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon_state = ""
 	amount = list(1,5)
 
 /obj/effect/landmark/wo_supplies/ammo/powerpack
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/clothing/backpacks.dmi'
 	icon_state = "powerpack"
-	stuff = list(/obj/item/smartgun_powerpack)
+	stuff = list(/obj/item/smartgun_battery)
 
 /obj/effect/landmark/wo_supplies/ammo/box
+	icon = 'icons/obj/items/weapons/guns/ammo_boxes/boxes_and_lids.dmi'
+	icon_state = ""
 	amount = list(1,2)
 
 /obj/effect/landmark/wo_supplies/ammo/box/m41a
-	icon_state = "big_ammo_box"
+	icon_state = "base_m41"
 	stuff = list(/obj/item/ammo_box/rounds)
 
 /obj/effect/landmark/wo_supplies/ammo/box/smg
-	icon_state = "big_ammo_box_m39"
+	icon_state = "base_m39"
 	stuff = list(/obj/item/ammo_box/rounds/smg)
 
 /obj/effect/landmark/wo_supplies/ammo/box/m41amag
-	icon_state = "mag_box_m41"
+	icon_state = "base_m41"
 	stuff = list(/obj/item/ammo_box/magazine)
 
 /obj/effect/landmark/wo_supplies/ammo/box/slug
-	icon_state = "shell_box"
+	icon_state = "base_slug"
 	stuff = list(/obj/item/ammo_box/magazine/shotgun)
 
 /obj/effect/landmark/wo_supplies/ammo/box/buck
-	icon_state = "shell_box_buck"
+	icon_state = "base_buck"
 	stuff = list(/obj/item/ammo_box/magazine/shotgun/buckshot)
 
 /obj/effect/landmark/wo_supplies/ammo/box/smgmag
-	icon_state = "mag_box_m39"
+	icon_state = "base_m39"
 	stuff = list(/obj/item/ammo_box/magazine/m39)
 
 
@@ -227,25 +231,25 @@
 	amount = list(0,1)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aap
-	icon_state = "big_ammo_box_ap"
+	icon_state = "base_m41"
 	stuff = list(/obj/item/ammo_box/rounds/ap)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aapmag
-	icon_state = "mag_box_m41_ap"
+	icon_state = "base_m41"
 	stuff = list(/obj/item/ammo_box/magazine/ap)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aincend
-	icon_state = "mag_box_m41_incen"
+	icon_state = "base_inc"
 	stuff = list(/obj/item/ammo_box/magazine/incen)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aextend
-	icon_state = "mag_box_m41_ext"
+	icon_state = "base_m41"
 	stuff = list(/obj/item/ammo_box/magazine/ext)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/smgap
-	icon_state = "mag_box_m39_ap"
+	icon_state = "base_m39"
 	stuff = list(/obj/item/ammo_box/magazine/m39/ap)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/smgextend
-	icon_state = "mag_box_m39_ext"
+	icon_state = "base_m39"
 	stuff = list(/obj/item/ammo_box/magazine/m39/ext)

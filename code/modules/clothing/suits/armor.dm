@@ -134,7 +134,7 @@
 
 /obj/item/clothing/suit/armor/vest/warden
 	name = "Warden's jacket"
-	desc = "An armoured jacket with silver rank pips and livery."
+	desc = "An armored jacket with silver rank pips and livery."
 	icon_state = "warden_jacket"
 	item_state = "armor"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
@@ -238,6 +238,9 @@
 	time_to_unequip = 20
 	time_to_equip = 20
 
+/obj/item/clothing/suit/armor/riot/marine/vintage_riot
+	desc = "Barring the slightly off-color plates, it's preserved quite well."
+	icon_state = "old_riot"
 
 /obj/item/clothing/suit/armor/swat
 	name = "swat suit"

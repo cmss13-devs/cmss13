@@ -45,6 +45,27 @@
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"
 
+/area/shuttle/trijent_shuttle
+	name = "Trijent Elevator"
+	icon = 'icons/turf/area_almayer.dmi'
+	icon_state = "lifeboat"
+
+/area/shuttle/trijent_shuttle/elevator
+	requires_power = TRUE
+	lighting_use_dynamic = FALSE
+	powernet_name = "ground"
+
+/area/shuttle/trijent_shuttle/lz1
+	name = "Trijent LZ1"
+
+/area/shuttle/trijent_shuttle/lz2
+	name = "Trijent LZ2"
+
+/area/shuttle/trijent_shuttle/engi
+	name = "Trijent Engineering"
+
+/area/shuttle/trijent_shuttle/omega
+	name = "Trijent Omega"
 /area/shuttle/escape_pod
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"

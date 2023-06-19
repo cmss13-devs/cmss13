@@ -1,7 +1,7 @@
 /datum/xeno_mutator/praetorian_dancer
 	// My name is Cuban Pete, I'm the King of the Rumba Beat
 	name = "STRAIN: Praetorian - Dancer"
-	description = "You lose all of your acid-based abilities and a small amount of your armor in exchange for increased movement speed, evasion, and unparalleled agility that gives you an ability to move even more quickly, dodge bullets, and phase through tallhosts. By slashing tallhosts, you temporarily increase your evasion and you also you apply a tag that changes how your two new tail abilities function. By tagging hosts, you will make Impale hit twice and instead of once and make Tail Trip knock hosts down instead of stunning them."
+	description = "You lose all of your acid-based abilities and a small amount of your armor in exchange for increased movement speed, evasion, and unparalleled agility that gives you an ability to move even more quickly, dodge bullets, and phase through tallhosts. By slashing tallhosts, you temporarily increase your movement speed and you also you apply a tag that changes how your two new tail abilities function. By tagging hosts, you will make Impale hit twice instead of once and make Tail Trip knock hosts down instead of stunning them."
 	flavor_description = "Demonstrate to the talls what 'there is beauty in death' truly symbolizes, then dance upon their graves!"
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
@@ -26,7 +26,7 @@
 		return
 
 	var/mob/living/carbon/xenomorph/praetorian/praetorian = mutator_set.xeno
-	praetorian.armor_modifier -= XENO_ARMOR_MOD_VERYSMALL
+	praetorian.armor_modifier -= XENO_ARMOR_MOD_VERY_SMALL
 	praetorian.speed_modifier += XENO_SPEED_FASTMOD_TIER_5
 	praetorian.plasma_types = list(PLASMA_CATECHOLAMINE)
 	praetorian.claw_type = CLAW_TYPE_SHARP

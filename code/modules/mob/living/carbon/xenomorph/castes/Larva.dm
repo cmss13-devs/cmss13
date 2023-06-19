@@ -36,7 +36,7 @@
 	age = XENO_NO_AGE
 	crit_health = -25
 	gib_chance = 25
-	mob_size = 0
+	mob_size = MOB_SIZE_SMALL
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
@@ -146,7 +146,7 @@
 /mob/living/carbon/xenomorph/larva/pull_response(mob/puller)
 	return TRUE
 
-/mob/living/carbon/xenomorph/larva/UnarmedAttack(atom/A, proximity, click_parameters, tile_attack)
+/mob/living/carbon/xenomorph/larva/UnarmedAttack(atom/A, proximity, click_parameters, tile_attack, ignores_resin = FALSE)
 	a_intent = INTENT_HELP //Forces help intent for all interactions.
 	if(!caste)
 		return FALSE

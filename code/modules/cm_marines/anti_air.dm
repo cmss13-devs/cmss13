@@ -23,6 +23,12 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	if(!almayer_aa_cannon)
 		almayer_aa_cannon = src
 
+/obj/structure/anti_air_cannon/Destroy()
+	. = ..()
+	if(almayer_aa_cannon == src)
+		almayer_aa_cannon = null
+		message_admins("Reference to almayer_aa_cannon is lost!")
+
 /obj/structure/anti_air_cannon/ex_act()
 	return
 
@@ -37,6 +43,8 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	flags_atom = ON_BORDER|CONDUCT|FPRINT
 
 	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_COMMAND)
+	unacidable = TRUE
+	unslashable = TRUE
 
 /obj/structure/machinery/computer/aa_console/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

@@ -48,6 +48,8 @@
 
 	minimap_icon = "xenoqueen"
 
+	royal_caste = TRUE
+
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
 		var/datum/hive_status/hive
@@ -506,8 +508,8 @@
 						egg_amount--
 						new /obj/item/xeno_egg(loc, hivenumber)
 
-/mob/living/carbon/xenomorph/queen/Stat()
-	..()
+/mob/living/carbon/xenomorph/queen/get_status_tab_items()
+	. = ..()
 	var/stored_larvae = GLOB.hive_datum[hivenumber].stored_larva
 	var/xeno_leader_num = hive?.queen_leader_limit - hive?.open_xeno_leader_positions.len
 

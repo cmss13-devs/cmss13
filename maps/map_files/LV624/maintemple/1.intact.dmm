@@ -49,10 +49,7 @@
 	dir = 8
 	},
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "aO" = (
 /obj/structure/bed/chair/comfy/black{
@@ -145,7 +142,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dF" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dJ" = (
 /obj/structure/barricade/handrail/strata{
@@ -281,10 +278,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "fl" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/caves/sand_temple)
 "fD" = (
 /obj/structure/barricade/handrail/strata{
@@ -293,9 +287,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "fE" = (
 /obj/structure/bed/alien{
@@ -341,9 +333,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "gw" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "gA" = (
 /obj/structure/curtain/red,
@@ -356,7 +346,7 @@
 	desc = "The oranges aren't done yet... this sucks.";
 	name = "orange tree"
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/sand_temple)
 "gL" = (
 /turf/open/floor/strata{
@@ -394,9 +384,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "hi" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "hu" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1188,9 +1176,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "DH" = (
 /obj/structure/showcase{
@@ -1379,10 +1365,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Jc" = (
 /turf/open/shuttle{
@@ -1680,9 +1663,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "QL" = (
 /obj/structure/stairs/perspective{
@@ -1809,7 +1790,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "Vu" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/sand_temple)
 "Wl" = (
 /obj/structure/bed/chair/comfy/black{
@@ -1850,10 +1831,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Xz" = (
 /obj/structure/platform/mineral/sandstone/runed{
@@ -1905,10 +1883,7 @@
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8
 	},
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/east_river)
 "Zt" = (
 /obj/structure/prop/brazier,

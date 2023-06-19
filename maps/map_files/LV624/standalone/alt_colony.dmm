@@ -2903,7 +2903,6 @@
 /area/lv624/ground/jungle/south_central_jungle)
 "kX" = (
 /obj/structure/surface/table,
-/obj/structure/surface/table,
 /obj/item/trash/candy,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor{
@@ -4364,11 +4363,6 @@
 	icon_state = "bright_clean2"
 	},
 /area/lv624/lazarus/main_hall)
-"qq" = (
-/obj/structure/girder,
-/obj/structure/girder,
-/turf/open/floor/plating,
-/area/lv624/ground/jungle/north_west_jungle)
 "qr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-in"
@@ -4826,10 +4820,6 @@
 	icon_state = "whitepurplefull"
 	},
 /area/lv624/lazarus/research)
-"rU" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/closed/wall/r_wall,
-/area/lv624/lazarus/landing_zones/lz2)
 "rV" = (
 /obj/item/ammo_casing/bullet{
 	icon_state = "casing_1_1"
@@ -14542,7 +14532,7 @@ dG
 Mi
 Mi
 fg
-rU
+Uw
 Mi
 Gd
 yR
@@ -18317,7 +18307,7 @@ qx
 se
 se
 As
-qq
+As
 aG
 Xn
 As

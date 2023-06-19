@@ -387,8 +387,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(check_rights(R_MOD))
 			options = list("Aghost") + options
 		var/text_prompt = "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)"
-		var/is_nested = (buckled && istype(buckled, /obj/structure/bed/nest))
-		var/obj/structure/bed/nest/nest
+		var/is_nested = (buckled && istype(buckled, /obj/structure/bed/nest)) ? TRUE : FALSE
+		var/obj/structure/bed/nest/nest = FALSE
 		if(is_nested)
 			text_prompt += "\nSince you're nested, you will be given a chance to reenter your body upon being freed."
 			nest = buckled
@@ -407,6 +407,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			ghost.timeofdeath = world.time
 		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE
+			nest.ghost_of_buckled_mob = ghost
 
 /mob/dead/observer/Move(atom/newloc, direct)
 	following = null

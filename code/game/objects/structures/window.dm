@@ -439,8 +439,8 @@
 	desc = "An ultra-reinforced window designed to keep the briefing podium a secure area."
 	icon_state = "fwindow"
 	basestate = "fwindow"
-	not_damageable = 1
-	not_deconstructable = 1
+	not_damageable = TRUE
+	not_deconstructable = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -575,8 +575,8 @@
 	name = "hull window"
 	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
 	//icon_state = "rwindow0_debug" //Uncomment to check hull in the map editor
-	not_damageable = 1
-	not_deconstructable = 1
+	not_damageable = TRUE
+	not_deconstructable = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000 //Failsafe, shouldn't matter
@@ -598,8 +598,8 @@
 /obj/structure/window/framed/almayer/white/hull
 	name = "hull window"
 	desc = "An ultra-reinforced window designed to keep research a secure area. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
-	not_damageable = 1
-	not_deconstructable = 1
+	not_damageable = TRUE
+	not_deconstructable = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000 //Failsafe, shouldn't matter
@@ -628,8 +628,8 @@
 	name = "hull window"
 	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
 	//icon_state = "rwindow0_debug" //Uncomment to check hull in the map editor
-	not_damageable = 1
-	not_deconstructable = 1
+	not_damageable = TRUE
+	not_deconstructable = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000 //Failsafe, shouldn't matter
@@ -720,6 +720,16 @@
 	reinf = 1
 	window_frame = /obj/structure/window_frame/strata/reinforced
 
+/obj/structure/window/framed/strata/hull
+	icon_state = "strata_window0"
+	basestate = "strata_window"
+	desc = "A glass window. Something tells you this one is somehow indestructible."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
+
 //Kutjevo Windows
 
 /obj/structure/window/framed/kutjevo
@@ -743,8 +753,8 @@
 /obj/structure/window/framed/kutjevo/reinforced/hull
 	icon_state = "kutjevo_window_hull"
 	desc = "A glass window. Something tells you this one is somehow indestructible."
-	not_damageable = 1
-	not_deconstructable = 1
+	not_damageable = TRUE
+	not_deconstructable = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000
@@ -780,8 +790,8 @@
 
 /obj/structure/window/framed/solaris/reinforced/hull
 	desc = "A glass window. Something tells you this one is somehow indestructible."
-	not_damageable = 1
-	not_deconstructable = 1
+	not_damageable = TRUE
+	not_deconstructable = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000
@@ -812,8 +822,8 @@
 
 /obj/structure/window/framed/dev/reinforced/hull
 	desc = "A glass window. Something tells you this one is somehow indestructible."
-	not_damageable = 1
-	not_deconstructable = 1
+	not_damageable = TRUE
+	not_deconstructable = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000
@@ -902,8 +912,8 @@
 	icon_state = "padded_cellwindow0"
 	basestate = "padded_cellwindow"
 	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
-	not_damageable = 1
-	not_deconstructable = 1
+	not_damageable = TRUE
+	not_deconstructable = TRUE
 	unacidable = TRUE
 	health = 1000000 //Failsafe, shouldn't matter
 
@@ -922,9 +932,15 @@
 	var/triggered = FALSE //indicates if the shutters have already been triggered
 
 /obj/structure/window/framed/corsat/hull/research
+	icon_state = "paddedresearch_rwindow0"
+	basestate = "paddedresearch_rwindow"
+	window_frame = /obj/structure/window_frame/corsat/research
 	health = 300
 
 /obj/structure/window/framed/corsat/hull/security
+	icon_state = "paddedsec_rwindow0"
+	basestate = "paddedsec_rwindow"
+	window_frame = /obj/structure/window_frame/corsat/security
 	health = 400
 
 /obj/structure/window/framed/corsat/hull/Destroy()
@@ -951,3 +967,22 @@
 			P.setDir(EAST)
 
 	INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+
+/obj/structure/window/framed/corsat/indestructible/
+	name = "hull window"
+	desc = "A glass window with a special rod matrix inside a wall frame. This one has been reinforced to take almost anything the universe can throw at it."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
+
+/obj/structure/window/framed/corsat/indestructible/research
+	icon_state = "paddedresearch_rwindow0"
+	basestate = "paddedresearch_rwindow"
+	window_frame = /obj/structure/window_frame/corsat/research
+
+/obj/structure/window/framed/corsat/indestructible/security
+	icon_state = "paddedsec_rwindow0"
+	basestate = "paddedsec_rwindow"
+	window_frame = /obj/structure/window_frame/corsat/security

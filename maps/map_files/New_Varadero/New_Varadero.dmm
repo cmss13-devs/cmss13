@@ -299,7 +299,8 @@
 	dir = 8
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "alG" = (
@@ -348,7 +349,8 @@
 	},
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "ani" = (
@@ -549,7 +551,8 @@
 	dir = 8
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior/caves/north_research)
 "auE" = (
@@ -638,7 +641,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior_protected/caves)
 "ayo" = (
@@ -1032,7 +1036,8 @@
 "aJL" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "aJP" = (
@@ -1096,7 +1101,8 @@
 /area/varadero/exterior/lz2_near)
 "aLP" = (
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "aMp" = (
@@ -1155,7 +1161,8 @@
 "aOF" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/lz2_near)
 "aOZ" = (
@@ -1188,7 +1195,8 @@
 /obj/structure/platform/kutjevo/smooth,
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "aPD" = (
@@ -1556,6 +1564,12 @@
 	icon_state = "purplefull"
 	},
 /area/varadero/interior/research)
+"bde" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/north)
 "ben" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -1785,7 +1799,8 @@
 "bjb" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "bjf" = (
@@ -1821,7 +1836,8 @@
 "bjH" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "bjP" = (
@@ -2113,7 +2129,8 @@
 	name = "lattice"
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior_protected/vessel)
 "bvE" = (
@@ -2144,7 +2161,8 @@
 	dir = 8
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "bvS" = (
@@ -2354,7 +2372,8 @@
 	name = "support struts"
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "bDv" = (
@@ -2506,7 +2525,8 @@
 	layer = 3.1
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -2707,7 +2727,8 @@
 /obj/structure/prop/rock/brown,
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "bPc" = (
@@ -2957,7 +2978,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "bZI" = (
@@ -3181,7 +3203,8 @@
 	time_to_dispel = 25000
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/eastocean)
 "chr" = (
@@ -3490,7 +3513,8 @@
 "ctQ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/eastocean)
 "cud" = (
@@ -3669,7 +3693,8 @@
 	name = "support struts"
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "cAw" = (
@@ -3700,7 +3725,8 @@
 /area/varadero/interior/records)
 "cBu" = (
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/interior/oob)
 "cBW" = (
@@ -3715,7 +3741,8 @@
 	dir = 8
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior/caves/north_research)
 "cDc" = (
@@ -4216,7 +4243,8 @@
 	dir = 8
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior_protected/caves)
 "cRn" = (
@@ -4342,7 +4370,8 @@
 	dir = 4
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "cUZ" = (
@@ -4360,6 +4389,11 @@
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/wood,
 /area/varadero/interior/court)
+"cVC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/holostool,
+/turf/open/floor/wood,
+/area/varadero/exterior/pontoon_beach)
 "cVG" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -4387,7 +4421,8 @@
 	dir = 4
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior/caves/north_research)
 "cXQ" = (
@@ -4452,7 +4487,8 @@
 	dir = 1
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "daA" = (
@@ -5026,6 +5062,10 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/exterior/monsoon)
+"dzp" = (
+/obj/structure/cargo_container/kelland/right,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz2_near)
 "dzN" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/toolbox/electrical{
@@ -5123,7 +5163,8 @@
 	name = "support struts"
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "dFd" = (
@@ -5315,7 +5356,8 @@
 	dir = 4
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "dNt" = (
@@ -5766,7 +5808,8 @@
 	icon_state = "medium"
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -5995,7 +6038,8 @@
 /obj/item/hardpoint/locomotion/apc_wheels,
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "elO" = (
@@ -6121,12 +6165,13 @@
 	},
 /area/varadero/interior/technical_storage)
 "epB" = (
-/obj/structure/machinery/door/airlock/multi_tile/elevator/research,
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "greenfull"
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s"
 	},
-/area/varadero/interior/hall_N)
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "epF" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/grass1/weedable,
@@ -6182,7 +6227,8 @@
 	dir = 4
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/comms4)
 "erE" = (
@@ -6236,6 +6282,12 @@
 	icon_state = "wood"
 	},
 /area/varadero/interior/library)
+"esP" = (
+/obj/effect/spawner/random/tool,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/exterior/lz2_near)
 "esY" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/dirt,
@@ -6571,16 +6623,9 @@
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/digsite)
 "eEj" = (
-/obj/structure/machinery/floodlight/landing{
-	desc = "A powerful light stationed near construction zones to provide better visibility.";
-	name = "Construction Light"
-	},
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/exterior/eastbeach{
-	lighting_use_dynamic = 1
-	})
+/obj/item/tool/wirecutters,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "eEz" = (
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/varadero/exterior/monsoon)
@@ -6652,7 +6697,8 @@
 	time_to_dispel = 25000
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/eastocean)
 "eHB" = (
@@ -6848,7 +6894,8 @@
 	dir = 8
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior/caves/north_research)
 "eNd" = (
@@ -7002,13 +7049,15 @@
 	},
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior_protected/caves)
 "eUe" = (
 /obj/structure/blocker/fog,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "eUh" = (
@@ -7041,7 +7090,8 @@
 	layer = 3.1
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -7089,7 +7139,8 @@
 	dir = 4
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "eWC" = (
@@ -7232,7 +7283,8 @@
 	dir = 4
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -7341,13 +7393,13 @@
 /area/varadero/interior/laundry)
 "ffi" = (
 /obj/effect/decal/warning_stripes/asteroid{
-	dir = 4;
-	icon_state = "warning_c"
+	dir = 1;
+	icon_state = "warning_s"
 	},
 /turf/open/floor/shiva{
-	icon_state = "floor3"
+	icon_state = "multi_tiles"
 	},
-/area/varadero/interior/hall_N)
+/area/varadero/interior/hall_SE)
 "ffk" = (
 /obj/structure/bed/chair,
 /obj/structure/machinery/light{
@@ -7378,7 +7430,8 @@
 "fgl" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/monsoon)
 "fgz" = (
@@ -7436,7 +7489,8 @@
 "fie" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/comms4)
 "fiA" = (
@@ -7465,6 +7519,14 @@
 	icon_state = "redfull"
 	},
 /area/varadero/interior/medical)
+"fjr" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s"
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/north)
 "fjx" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -7789,7 +7851,8 @@
 	dir = 1
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "fwl" = (
@@ -8178,7 +8241,8 @@
 "fJe" = (
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/comms4)
 "fJI" = (
@@ -8228,7 +8292,8 @@
 	dir = 4
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/farocean)
 "fLu" = (
@@ -8383,7 +8448,8 @@
 /area/varadero/exterior/lz2_near)
 "fQU" = (
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/comms4)
 "fQW" = (
@@ -8574,13 +8640,15 @@
 	pixel_y = -3
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior/maintenance/research)
 "fYb" = (
 /obj/structure/window/framed/wood,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "fYA" = (
@@ -8850,6 +8918,23 @@
 	icon_state = "red"
 	},
 /area/varadero/interior/security)
+"ghq" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/prop/rock/brown{
+	indestructible = 1;
+	unacidable = 1;
+	name = "sturdy rock(s)";
+	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable."
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -15;
+	pixel_y = 5;
+	indestructible = 1;
+	unacidable = 1
+	},
+/turf/open/gm/coast/south,
+/area/varadero/exterior/pontoon_beach)
 "ghr" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva{
@@ -9435,7 +9520,8 @@
 	dir = 8
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/comms4)
 "gCH" = (
@@ -9635,7 +9721,8 @@
 	name = "support struts"
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "gKR" = (
@@ -9643,7 +9730,8 @@
 	dir = 1
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior/caves/north_research)
 "gKT" = (
@@ -9734,7 +9822,8 @@
 "gMZ" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/lz2_near)
 "gNb" = (
@@ -9766,7 +9855,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior/caves/north_research)
 "gOe" = (
@@ -10016,7 +10106,8 @@
 	name = "support struts"
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "gZq" = (
@@ -10248,7 +10339,8 @@
 "hht" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "hhM" = (
@@ -10659,10 +10751,17 @@
 /area/varadero/exterior/eastbeach{
 	lighting_use_dynamic = 1
 	})
+"hwf" = (
+/obj/structure/cable,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/exterior/lz2_near)
 "hwy" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/lz2_near)
 "hwz" = (
@@ -10692,7 +10791,8 @@
 "hwS" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "hwZ" = (
@@ -10802,7 +10902,8 @@
 	time_to_dispel = 25000
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/eastocean)
 "hBB" = (
@@ -11067,6 +11168,9 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/varadero/exterior/pontoon_beach)
+"hMV" = (
+/turf/closed/wall/r_wall,
+/area/varadero/exterior/lz2_near)
 "hNb" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -11753,7 +11857,8 @@
 /area/varadero/interior_protected/vessel)
 "ijy" = (
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "ijR" = (
@@ -11783,7 +11888,8 @@
 	name = "lattice"
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior_protected/vessel)
 "ils" = (
@@ -12356,7 +12462,8 @@
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/farocean)
 "iCy" = (
@@ -12378,7 +12485,8 @@
 	dir = 4
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "iDk" = (
@@ -12740,7 +12848,8 @@
 	pixel_y = -2
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "iOQ" = (
@@ -12966,7 +13075,8 @@
 	dir = 4
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "iUx" = (
@@ -12988,7 +13098,8 @@
 "iUA" = (
 /obj/item/toy/beach_ball,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -13201,6 +13312,11 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/security)
+"jeC" = (
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/hall_N)
 "jeD" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning"
@@ -13234,13 +13350,31 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
+"jfq" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = 16;
+	pixel_y = -8
+	},
+/obj/structure/machinery/floodlight/landing{
+	desc = "A powerful light stationed near construction zones to provide better visibility.";
+	name = "Construction Light"
+	},
+/obj/effect/decal/warning_stripes,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/exterior/eastbeach{
+	lighting_use_dynamic = 1
+	})
 "jfu" = (
 /obj/structure/platform/kutjevo/smooth,
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "jfD" = (
@@ -13412,7 +13546,8 @@
 "jld" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/eastocean)
 "jlt" = (
@@ -13625,7 +13760,8 @@
 	dir = 8
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "juD" = (
@@ -13755,7 +13891,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior_protected/caves)
 "jBl" = (
@@ -14457,6 +14594,7 @@
 /area/varadero/interior/electrical)
 "kcc" = (
 /obj/structure/machinery/floodlight/landing,
+/obj/effect/decal/warning_stripes,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -14465,7 +14603,8 @@
 "kcj" = (
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "kcC" = (
@@ -14685,7 +14824,8 @@
 	dir = 4
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "kjR" = (
@@ -14795,7 +14935,8 @@
 /area/varadero/interior/maintenance)
 "kmy" = (
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/eastocean)
 "knW" = (
@@ -14910,7 +15051,8 @@
 	time_to_dispel = 25000
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/eastocean)
 "ktE" = (
@@ -14919,7 +15061,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior_protected/caves)
 "ktL" = (
@@ -15015,7 +15158,8 @@
 	dir = 8
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "kvS" = (
@@ -15036,7 +15180,8 @@
 	dir = 4
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "kwB" = (
@@ -15139,7 +15284,8 @@
 "kzr" = (
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/farocean)
 "kzy" = (
@@ -15150,7 +15296,8 @@
 	name = "support struts"
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "kzJ" = (
@@ -15731,7 +15878,8 @@
 "kTX" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/eastocean)
 "kVp" = (
@@ -15947,7 +16095,7 @@
 	},
 /area/varadero/interior/hall_SE)
 "lbT" = (
-/obj/structure/cargo_container/kelland/right,
+/obj/structure/girder/displaced,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
 "lbX" = (
@@ -16003,7 +16151,8 @@
 	name = "support struts"
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "ldJ" = (
@@ -16165,7 +16314,8 @@
 "liD" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "liE" = (
@@ -16393,7 +16543,8 @@
 	dir = 4
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "ltA" = (
@@ -16531,7 +16682,8 @@
 "lzU" = (
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "lAk" = (
@@ -16549,7 +16701,8 @@
 	pixel_y = -6
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -16741,7 +16894,8 @@
 "lEP" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/eastocean)
 "lEY" = (
@@ -16778,7 +16932,8 @@
 	pixel_y = -19
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "lFS" = (
@@ -16906,7 +17061,8 @@
 /obj/structure/prop/rock/brown,
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "lKS" = (
@@ -16995,7 +17151,6 @@
 "lNs" = (
 /obj/structure/closet/crate/construction,
 /obj/item/grown/log,
-/obj/effect/spawner/random/tool,
 /turf/open/gm/dirt{
 	icon_state = "desert2"
 	},
@@ -17142,7 +17297,8 @@
 	icon_state = "medium"
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -17665,7 +17821,8 @@
 	dir = 4
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "mhX" = (
@@ -17815,7 +17972,8 @@
 "mkQ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "mln" = (
@@ -17971,7 +18129,8 @@
 	name = "support struts"
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "mqU" = (
@@ -18031,7 +18190,8 @@
 	dir = 4
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "mtg" = (
@@ -18255,7 +18415,8 @@
 	layer = 3.1
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "mzt" = (
@@ -18540,7 +18701,8 @@
 	layer = 3.1
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/comms4)
 "mKD" = (
@@ -18655,7 +18817,8 @@
 	pixel_y = 9
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -18800,7 +18963,8 @@
 	dir = 4
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior/caves/north_research)
 "mXc" = (
@@ -18854,7 +19018,8 @@
 	dir = 8
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior/caves/north_research)
 "mYa" = (
@@ -19219,6 +19384,10 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/interior/caves/east)
 "nkP" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	dir = 1;
+	icon_state = "warning_s"
+	},
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "greencorners"
@@ -19399,7 +19568,8 @@
 "nsa" = (
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "nsc" = (
@@ -19474,7 +19644,8 @@
 	dir = 4
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "nwN" = (
@@ -19508,7 +19679,8 @@
 	},
 /obj/structure/prop/invuln/lattice_prop,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -19917,13 +20089,15 @@
 "nNb" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "nNw" = (
 /obj/item/storage/belt/marine/quackers,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -20143,10 +20317,6 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/obj/effect/decal/warning_stripes/asteroid{
-	dir = 8;
-	icon_state = "warning_c"
-	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -20222,6 +20392,10 @@
 /obj/structure/machinery/storm_siren,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
+"nUJ" = (
+/obj/effect/spawner/random/tool,
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
 "nVe" = (
 /obj/structure/girder,
 /turf/open/gm/dirt{
@@ -20292,8 +20466,13 @@
 	},
 /area/varadero/interior/maintenance/research)
 "nXc" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /obj/structure/largecrate/random,
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/varadero/interior/maintenance/north)
 "nXB" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -20798,7 +20977,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "omy" = (
@@ -20913,8 +21093,16 @@
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
 	},
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 10;
+	pixel_y = 22;
+	indestructible = 1;
+	unacidable = 1;
+	layer = 4.1
+	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "orT" = (
@@ -21275,7 +21463,8 @@
 	dir = 8
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "oDN" = (
@@ -21317,11 +21506,22 @@
 	name = "support struts"
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
 	})
+"oEv" = (
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	pixel_y = 24;
+	start_charge = 0
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/exterior/lz2_near)
 "oEx" = (
 /obj/structure/prop/ice_colony/dense/planter_box/plated{
 	dir = 9;
@@ -21466,7 +21666,8 @@
 	dir = 4
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "oKy" = (
@@ -21630,7 +21831,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior_protected/caves)
 "oSm" = (
@@ -21767,7 +21969,8 @@
 	dir = 8
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/comms4)
 "oWO" = (
@@ -21896,7 +22099,8 @@
 	time_to_dispel = 25000
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/monsoon)
 "oZY" = (
@@ -22901,7 +23105,8 @@
 "pHX" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "pIq" = (
@@ -23192,7 +23397,8 @@
 "pTY" = (
 /obj/structure/prop/fishing/line/long/part2,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "pTZ" = (
@@ -23432,7 +23638,8 @@
 "qbH" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "qcu" = (
@@ -23828,7 +24035,8 @@
 /obj/structure/platform_decoration/kutjevo,
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "qtQ" = (
@@ -23882,6 +24090,12 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/mess)
+"qwd" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/exterior/lz2_near)
 "qws" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
@@ -23893,7 +24107,8 @@
 	name = "support struts"
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/comms4)
 "qwB" = (
@@ -24231,7 +24446,8 @@
 /area/varadero/interior_protected/maintenance/south)
 "qEU" = (
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/monsoon)
 "qFc" = (
@@ -24677,7 +24893,8 @@
 	dir = 4
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "qTz" = (
@@ -24764,6 +24981,12 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior_protected/maintenance/south)
+"qWx" = (
+/obj/structure/machinery/door/airlock/multi_tile/elevator/access/dormatory,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/hall_N)
 "qWB" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/shiva{
@@ -24961,7 +25184,8 @@
 /area/varadero/interior/research)
 "rey" = (
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -25291,7 +25515,8 @@
 "rqd" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "rqe" = (
@@ -25545,7 +25770,8 @@
 	dir = 4
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "rwh" = (
@@ -25637,7 +25863,8 @@
 	name = "support struts"
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "ryh" = (
@@ -25851,7 +26078,8 @@
 "rFd" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/comms4)
 "rFr" = (
@@ -25887,7 +26115,8 @@
 "rGe" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/comms4)
 "rGA" = (
@@ -26038,6 +26267,31 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/electrical)
+"rKM" = (
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	health = 300
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "vent4";
+	pixel_y = 25
+	},
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 10;
+	pixel_y = 22;
+	indestructible = 1;
+	unacidable = 1;
+	layer = 4.1
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/exterior/comms4)
 "rLb" = (
 /turf/open/gm/dirt{
 	icon_state = "desert2"
@@ -26102,7 +26356,8 @@
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "rMM" = (
@@ -26297,7 +26552,8 @@
 	layer = 3.1
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "rSI" = (
@@ -26433,7 +26689,8 @@
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "rWJ" = (
@@ -26535,7 +26792,8 @@
 	dir = 1
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "saq" = (
@@ -26713,7 +26971,8 @@
 	dir = 4
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "sfM" = (
@@ -26857,7 +27116,8 @@
 	dir = 1
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "skn" = (
@@ -27026,7 +27286,8 @@
 	dir = 8
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/comms4)
 "srr" = (
@@ -27244,7 +27505,8 @@
 "swH" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "sxa" = (
@@ -27469,7 +27731,8 @@
 /area/varadero/interior/technical_storage)
 "sDr" = (
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/monsoon)
 "sDM" = (
@@ -27543,7 +27806,8 @@
 "sIc" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/eastocean)
 "sIf" = (
@@ -27775,7 +28039,8 @@
 	dir = 8
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "sOj" = (
@@ -27943,7 +28208,8 @@
 "sYS" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior_protected/caves)
 "sZe" = (
@@ -28237,7 +28503,8 @@
 	dir = 4
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "tlC" = (
@@ -28306,6 +28573,10 @@
 	icon_state = "blue"
 	},
 /area/varadero/interior/technical_storage)
+"tnF" = (
+/obj/structure/girder,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "tnP" = (
 /obj/structure/machinery/floodlight{
 	name = "Floodlight";
@@ -28376,7 +28647,8 @@
 	dir = 4
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "tqr" = (
@@ -28437,7 +28709,8 @@
 	pixel_y = 12
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior/caves/north_research)
 "tsU" = (
@@ -28515,7 +28788,8 @@
 /area/varadero/exterior/lz2_near)
 "tyc" = (
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "tyd" = (
@@ -28528,6 +28802,10 @@
 	},
 /area/varadero/exterior/comms4)
 "tym" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	dir = 1;
+	icon_state = "warning_s"
+	},
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "greencorners"
@@ -28654,7 +28932,8 @@
 "tEH" = (
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "tEJ" = (
@@ -29048,7 +29327,8 @@
 "tUa" = (
 /obj/structure/prop/invuln/lattice_prop,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -29161,7 +29441,8 @@
 "tXu" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -29221,7 +29502,8 @@
 	name = "support struts"
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "tZr" = (
@@ -29268,7 +29550,8 @@
 	name = "support struts"
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "ubB" = (
@@ -29326,7 +29609,8 @@
 /area/varadero/interior/research)
 "ucx" = (
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/eastocean)
 "udg" = (
@@ -29460,7 +29744,8 @@
 	dir = 8
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/comms4)
 "uhW" = (
@@ -29469,7 +29754,8 @@
 	dir = 8
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/comms4)
 "uiq" = (
@@ -29512,7 +29798,8 @@
 	dir = 8
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "ujp" = (
@@ -29617,7 +29904,8 @@
 	pixel_y = -19
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "unh" = (
@@ -29911,7 +30199,8 @@
 	dir = 1
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior/caves/north_research)
 "uxO" = (
@@ -29939,7 +30228,8 @@
 "uyn" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/monsoon)
 "uyK" = (
@@ -30149,7 +30439,8 @@
 	icon_state = "medium"
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -30266,7 +30557,8 @@
 	time_to_dispel = 25000
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/eastocean)
 "uIN" = (
@@ -30293,7 +30585,8 @@
 	dir = 1
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "uJk" = (
@@ -30318,7 +30611,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/comms4)
 "uKr" = (
@@ -30792,7 +31086,8 @@
 	dir = 8
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "uZp" = (
@@ -30802,7 +31097,8 @@
 /area/varadero/interior/maintenance/north)
 "vao" = (
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/lz2_near)
 "vap" = (
@@ -31042,12 +31338,14 @@
 "vhT" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "vil" = (
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/lz2_near)
 "vio" = (
@@ -31213,7 +31511,8 @@
 "vpF" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "vpV" = (
@@ -31359,7 +31658,8 @@
 /area/varadero/interior/security)
 "vui" = (
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/farocean)
 "vuj" = (
@@ -31407,6 +31707,13 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
+"vvP" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/lattice,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "vvS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -31421,7 +31728,8 @@
 "vwa" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "vwl" = (
@@ -31446,7 +31754,8 @@
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "vxA" = (
@@ -31481,7 +31790,8 @@
 	dir = 1
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "vyX" = (
@@ -31496,7 +31806,8 @@
 "vzy" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -31527,7 +31838,8 @@
 	},
 /obj/item/clothing/under/shorts/grey,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -31731,7 +32043,8 @@
 "vGb" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/farocean)
 "vGj" = (
@@ -31754,7 +32067,8 @@
 	name = "ladder"
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -31767,7 +32081,8 @@
 	dir = 8
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior/caves/north_research)
 "vGD" = (
@@ -31790,7 +32105,8 @@
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/prop/rock/brown,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "vHC" = (
@@ -31820,7 +32136,8 @@
 	},
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "vKa" = (
@@ -31833,7 +32150,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior_protected/caves)
 "vKy" = (
@@ -32061,7 +32379,8 @@
 	},
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "vRI" = (
@@ -32822,7 +33141,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
 "woY" = (
@@ -33011,7 +33331,8 @@
 	dir = 4
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior_protected/caves)
 "wuA" = (
@@ -33038,7 +33359,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior_protected/caves)
 "wvK" = (
@@ -33111,7 +33433,8 @@
 	pixel_y = -19
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "wAx" = (
@@ -33299,7 +33622,8 @@
 "wHW" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/farocean)
 "wIk" = (
@@ -33796,7 +34120,8 @@
 	layer = 3.1
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "xdz" = (
@@ -33833,7 +34158,8 @@
 	dir = 1
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/interior_protected/caves)
 "xey" = (
@@ -34267,7 +34593,8 @@
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "xtZ" = (
@@ -34494,7 +34821,8 @@
 "xBb" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "xBO" = (
@@ -34884,7 +35212,8 @@
 	dir = 8
 	},
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
 "xOo" = (
@@ -34956,7 +35285,8 @@
 	pixel_y = -6
 	},
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool{
 	lighting_use_dynamic = 1
@@ -35482,12 +35812,14 @@
 "yhz" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river{
-	name = "shallow ocean"
+	name = "shallow ocean";
+	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/monsoon)
 "yhP" = (
 /turf/open/gm/river/ocean{
-	name = "deep ocean"
+	name = "deep ocean";
+	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
 "yil" = (
@@ -40747,7 +41079,7 @@ pYd
 fvL
 ijR
 ifB
-lCK
+rKM
 ifB
 rsR
 sid
@@ -40756,7 +41088,7 @@ dpl
 ejN
 sLu
 ifB
-lCK
+rKM
 ifB
 uZn
 vyU
@@ -44219,7 +44551,7 @@ ykc
 jpm
 uXZ
 ykc
-aXm
+nXc
 jCy
 hyr
 vnm
@@ -44757,7 +45089,7 @@ ohM
 hyr
 hyr
 leU
-leU
+hyr
 kcC
 xrQ
 cZZ
@@ -48771,7 +49103,7 @@ hyr
 htP
 hyr
 hyr
-hyr
+leU
 pGJ
 iaO
 uRU
@@ -49135,9 +49467,9 @@ cZZ
 hyr
 hyr
 htP
-hyr
-fZe
-epB
+fjr
+qWx
+xyO
 eDQ
 eDQ
 eDQ
@@ -49317,9 +49649,9 @@ hID
 hID
 aqw
 hyr
-hyr
-lzu
-lzu
+fjr
+jeC
+eDQ
 svD
 oNy
 teT
@@ -49497,11 +49829,11 @@ iPR
 uQC
 seZ
 hGm
-nXc
+fIT
 hyr
-hyr
-lzu
-lzu
+fjr
+jeC
+eDQ
 eDQ
 oNy
 eDQ
@@ -49681,9 +50013,9 @@ qQM
 hGm
 leU
 hyr
-fIT
-lzu
-lzu
+bde
+jeC
+eDQ
 mlN
 eDQ
 mxv
@@ -49871,7 +50203,7 @@ fyo
 lYF
 srW
 pGJ
-ffi
+oMs
 oMs
 xWY
 hvO
@@ -51496,7 +51828,7 @@ aLP
 swH
 ijy
 ijy
-qgP
+ghq
 gMf
 hsl
 fIT
@@ -54013,7 +54345,7 @@ omu
 siH
 dDy
 psp
-oAC
+cVC
 nfV
 xiJ
 lcU
@@ -56662,7 +56994,7 @@ lhb
 wVf
 xJZ
 viK
-xJZ
+epB
 exp
 fpY
 kWB
@@ -56844,7 +57176,7 @@ iqW
 wVf
 xJZ
 viK
-xJZ
+epB
 skn
 kWB
 kWB
@@ -56852,7 +57184,7 @@ pvv
 kWB
 kWB
 ltA
-tEJ
+ffi
 tEJ
 mQC
 aBB
@@ -57026,7 +57358,7 @@ nHA
 wVf
 xJZ
 iyg
-xJZ
+epB
 skn
 kWB
 kWB
@@ -57034,7 +57366,7 @@ sHa
 kWB
 kWB
 ltA
-tEJ
+ffi
 tEJ
 uXw
 tEJ
@@ -57208,7 +57540,7 @@ gEO
 wVf
 rDD
 viK
-xJZ
+epB
 skn
 kWB
 kWB
@@ -59477,7 +59809,7 @@ oTB
 jYB
 jYB
 jYB
-vFr
+jYB
 jYB
 blT
 jYB
@@ -60768,8 +61100,8 @@ jYB
 wEJ
 tYc
 jYB
-eGS
-iot
+jfq
+jRC
 fLS
 fLS
 jRC
@@ -62407,7 +62739,7 @@ fmi
 jYB
 jYB
 fLS
-eEj
+iot
 lDg
 jRC
 fLS
@@ -63661,7 +63993,7 @@ jYB
 wEJ
 sMR
 jYB
-jYB
+vFr
 jYB
 jYB
 jYB
@@ -63842,9 +64174,9 @@ jYB
 jYB
 jYB
 jYB
-txC
 jYB
-jYB
+tnF
+esP
 wEJ
 mYC
 jYB
@@ -64024,11 +64356,11 @@ jYB
 wEJ
 wEJ
 jYB
-lbT
-jYB
-jYB
+txC
+hMV
+oEv
 uEd
-wEJ
+hwf
 jYB
 jYB
 jYB
@@ -64206,12 +64538,12 @@ jYB
 mAz
 jYB
 wEJ
-wEJ
+dzp
+vvP
+qwd
+lbT
 jYB
-jYB
-jYB
-jYB
-jYB
+eEj
 jYB
 lJX
 fsW
@@ -64391,7 +64723,7 @@ peD
 fsW
 jYB
 jYB
-jYB
+aOi
 jYB
 sEG
 jYB
@@ -65030,7 +65362,7 @@ xSM
 uGR
 xgH
 xSM
-uGR
+nUJ
 xSM
 xDG
 uGR

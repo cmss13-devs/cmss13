@@ -50,7 +50,7 @@
 
 /area/varadero/interior_protected
 	name = "New Varadero - Interior"
-	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	icon_state = "NV_no_CAS"
 
 /area/varadero/interior/comms1

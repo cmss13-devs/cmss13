@@ -1846,7 +1846,7 @@
 "gS" = (
 /obj/structure/machinery/power/apc{
 	dir = 8;
-	name = "Secure Vault APC";
+	name = "Secure Armoury APC";
 	pixel_x = -28;
 	start_charge = 0
 	},
@@ -5641,7 +5641,7 @@
 	name = "Medbay APC";
 	start_charge = 0;
 	dir = 8;
-	pixel_x = -24
+	pixel_x = -25
 	},
 /turf/open/floor{
 	dir = 8;
@@ -12474,7 +12474,7 @@
 	dir = 8;
 	name = "Secure Vault APC";
 	start_charge = 200;
-	pixel_x = -24
+	pixel_x = -25
 	},
 /turf/open/floor/corsat{
 	icon_state = "red";

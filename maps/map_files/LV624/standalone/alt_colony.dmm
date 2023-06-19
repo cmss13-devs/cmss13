@@ -1797,12 +1797,6 @@
 	dir = 4;
 	icon_state = "gib6"
 	},
-/obj/item/clothing/head/cmcap{
-	icon_state = "pmc_hat";
-	desc = "A protective cap made from flexible kevlar. Standard issue for most security forms in the place of a helmet.";
-	name = "\improper PMC tactical cap";
-	orbiters = s
-	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whitegreen"

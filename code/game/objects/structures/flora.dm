@@ -606,7 +606,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	luminosity = 2
 
 /obj/structure/flora/jungle/alienplant1/Destroy()
-	SetLuminosity(0)
+	set_light(0)
 	return ..()
 
 /obj/structure/flora/jungle/planttop1

@@ -38,7 +38,7 @@
 	luminosity = 1
 
 /obj/effect/decal/cleanable/dirt/greenglow/Destroy()
-	SetLuminosity(0)
+	set_light(0)
 	return ..()
 
 /obj/effect/decal/cleanable/flour

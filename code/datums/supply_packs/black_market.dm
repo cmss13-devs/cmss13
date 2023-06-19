@@ -374,18 +374,32 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 45
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/seized/c99
-	name = "Korovin PK-9 pistol crate (x6 magazines included)"
+/datum/supply_packs/contraband/seized/np92
+	name = "NP92 pistol crate (x6 magazines included)"
 	contains = list(
-		/obj/item/weapon/gun/pistol/c99,
-		/obj/item/ammo_magazine/pistol/c99,
-		/obj/item/ammo_magazine/pistol/c99,
-		/obj/item/ammo_magazine/pistol/c99,
-		/obj/item/ammo_magazine/pistol/c99,
-		/obj/item/ammo_magazine/pistol/c99,
-		/obj/item/ammo_magazine/pistol/c99,
+		/obj/item/weapon/gun/pistol/np92,
+		/obj/item/ammo_magazine/pistol/np92,
+		/obj/item/ammo_magazine/pistol/np92,
+		/obj/item/ammo_magazine/pistol/np92,
+		/obj/item/ammo_magazine/pistol/np92,
+		/obj/item/ammo_magazine/pistol/np92,
+		/obj/item/ammo_magazine/pistol/np92,
 	)
 	dollar_cost = 5
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/seized/t73
+	name = "Type 73 pistol crate (x6 magazines included)"
+	contains = list(
+		/obj/item/weapon/gun/pistol/t73,
+		/obj/item/ammo_magazine/pistol/t73,
+		/obj/item/ammo_magazine/pistol/t73,
+		/obj/item/ammo_magazine/pistol/t73,
+		/obj/item/ammo_magazine/pistol/t73,
+		/obj/item/ammo_magazine/pistol/t73,
+		/obj/item/ammo_magazine/pistol/t73,
+	)
+	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/kt42

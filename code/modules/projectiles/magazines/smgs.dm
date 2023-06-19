@@ -161,7 +161,7 @@
 	icon_state = "insasu_stickmag"
 	bonus_overlay = "insasu_stickmag_overlay"
 	max_rounds = 35
-	gun_type = /obj/item/weapon/gun/smg/ppsh
+	gun_type = /obj/item/weapon/gun/smg/pps43
 	default_ammo = /datum/ammo/bullet/smg/pps43
 	var/bonus_mag_aim_slowdown = 0
 	var/bonus_mag_wield_delay = 0
@@ -183,7 +183,7 @@
 	name = "\improper Type 64 Helical Magazine (7.62x19mm)"
 	desc = "A 64 round magazine for the Type 64 submachinegun, the standard SMG of the UPP armed forces."
 	caliber = "7.62x19mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "type64mag"
 	max_rounds = 64
 	gun_type = /obj/item/weapon/gun/smg/bizon

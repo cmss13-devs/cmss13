@@ -455,45 +455,40 @@
 	icon_state = "type88"
 	item_state = "type88"
 
-	fire_sound = 'sound/weapons/gun_ak47.ogg'
+	fire_sound = 'sound/weapons/gun_mg.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/svd
 	attachable_allowed = list(
 		//Muzzle,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp_replica,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/heavy_barrel,
-		/obj/item/attachable/suppressor,
 		//Under,
 		/obj/item/attachable/verticalgrip,
-		/obj/item/attachable/angledgrip,
-		/obj/item/attachable/lasersight,
 		/obj/item/attachable/bipod,
 		//Integrated,
-		/obj/item/attachable/scope/variable_zoom,
-		/obj/item/attachable/type88_stock,
+		/obj/item/attachable/type88_barrel,
 	)
 	has_aimed_shot = FALSE
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY
-	starting_attachment_types = list(/obj/item/attachable/scope/variable_zoom)
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK
+	starting_attachment_types = list()
 	sniper_beam_type = null
 	skill_locked = FALSE
 
 /obj/item/weapon/gun/rifle/sniper/svd/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/attachie = new /obj/item/attachable/type88_stock(src)
+	var/obj/item/attachable/attachie = new /obj/item/attachable/type88_barrel(src)
 	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
 	attachie.Attach(src)
 	update_attachable(attachie.slot)
 
-	var/obj/item/attachable/scope/variable_zoom/S = new(src)
-	S.hidden = TRUE
-	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
-	attachie.Attach(src)
-	update_attachable(attachie.slot)
+	var/obj/item/attachable/scope/variable_zoom/integrated/type88sight = new(src)
+	type88sight.flags_attach_features &= ~ATTACH_REMOVABLE
+	type88sight.hidden = TRUE
+	type88sight.Attach(src)
+	update_attachable(type88sight.slot)
 
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 26, "under_y" = 14, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)
 
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_config_values()
 	..()
@@ -1327,9 +1322,11 @@
 /obj/item/weapon/gun/launcher/rocket/upp
 	name = "\improper HJRA-12 Handheld Anti-Tank Grenade Launcher"
 	desc = "The HJRA-12 Handheld Anti-Tank Grenade Launcher is the standard Anti-Armor weapon of the UPP. It is designed to be easy to use and to take out or disable armored vehicles."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	icon_state = "hjra12"
 	item_state = "hjra12"
 	skill_locked = FALSE
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 6, "rail_y" = 19, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14, "special_x" = 37, "special_y" = 16)
 
 	current_mag = /obj/item/ammo_magazine/rocket/upp/at
 
@@ -1345,6 +1342,22 @@
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachables()
+
+/obj/item/weapon/gun/launcher/rocket/upp/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
+	. = ..()
+	if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && ishuman(user))
+		return
+
+	var/backblast_loc = get_turf(get_step(user.loc, turn(user.dir, 180)))
+	smoke.set_up(1, 0, backblast_loc, turn(user.dir, 180))
+	smoke.start()
+	playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 100, TRUE, 10)
+	for(var/mob/living/carbon/C in backblast_loc)
+		if(!C.lying && !HAS_TRAIT(C, TRAIT_EAR_PROTECTION)) //Have to be standing up to get the fun stuff
+			C.apply_damage(15, BRUTE) //The shockwave hurts, quite a bit. It can knock unarmored targets unconscious in real life
+			C.apply_effect(4, STUN) //For good measure
+			C.apply_effect(6, STUTTER)
+			C.emote("pain")
 
 //-------------------------------------------------------
 //Flare gun. Close enough to a specialist gun?

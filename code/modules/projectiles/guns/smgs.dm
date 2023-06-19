@@ -402,8 +402,8 @@
 	name = "\improper Type 64 Submachinegun"
 	desc = "The standard submachinegun of the UPP, sporting an unusual 64 round helical magazine, it has a high fire-rate, but is unusually accurate. This one has a black polymer grip, denoting it as in-use by the UPP military."
 	desc_lore = "The Type 64 finds its way into the hands of more than just UPP soldiers, it has an active life with rebel groups, corporate security forces, mercenaries, less well-armed militaries, and just about everything or everyone in between."
-	icon_state = "type64"
-	item_state = "type64_u"
+	icon_state = "type64_u"
+	item_state = "type64"
 
 //-------------------------------------------------------
 //GENERIC UZI //Based on the uzi submachinegun, of course.

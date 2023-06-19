@@ -341,6 +341,7 @@
 	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard High-Explosive rocket for anti-personal or light-vehicle use."
 	caliber = "88mm"
 	icon_state = "hjra_explosive"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 
 	max_rounds = 1
 	default_ammo = /datum/ammo/rocket

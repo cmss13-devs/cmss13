@@ -1369,12 +1369,12 @@
 /obj/item/storage/belt/gun/type47/np92/suppressed/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/np92/suppressed())
 	for(var/i = 1 to storage_slots - 1)
-		new /obj/item/ammo_magazine/pistol/np92(src)
+		new /obj/item/ammo_magazine/pistol/np92/suppressed(src)
 
 /obj/item/storage/belt/gun/type47/t73/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/np92())
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/t73())
 	for(var/i = 1 to storage_slots - 1)
-		new /obj/item/ammo_magazine/pistol/np92(src)
+		new /obj/item/ammo_magazine/pistol/t73(src)
 
 /obj/item/storage/belt/gun/type47/t73/leader/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/t73/leader())

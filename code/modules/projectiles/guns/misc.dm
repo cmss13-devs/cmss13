@@ -162,7 +162,7 @@
 	icon_state = "qjy72"
 	item_state = "qjy72"
 
-	fire_sound = 'sound/weapons/gun_ak47.ogg'
+	fire_sound = 'sound/weapons/gun_mg.ogg'
 	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/pkp
 	w_class = SIZE_LARGE
@@ -183,10 +183,10 @@
 	attachie.Attach(src)
 	update_attachable(attachie.slot)
 
-	var/obj/item/attachable/attachie = new /obj/item/attachable/pkpstock(src)
-	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
-	attachie.Attach(src)
-	update_attachable(attachie.slot)
+	var/obj/item/attachable/pkpstock = new /obj/item/attachable/pkpstock(src)
+	pkpstock.flags_attach_features &= ~ATTACH_REMOVABLE
+	pkpstock.Attach(src)
+	update_attachable(pkpstock.slot)
 
 	//invisible mag harness
 	var/obj/item/attachable/magnetic_harness/Integrated = new(src)

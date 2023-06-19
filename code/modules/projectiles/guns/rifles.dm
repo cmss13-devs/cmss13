@@ -1266,6 +1266,8 @@
 	item_state = "type71"
 
 	fire_sound = 'sound/weapons/gun_type71.ogg'
+	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
+	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/type71
 	wield_delay = WIELD_DELAY_FAST
 	attachable_allowed = list(
@@ -1281,10 +1283,8 @@
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/verticalgrip, // Underbarrel
-		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/lasersight,
-		/obj/item/attachable/bipod,
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/flamer/advanced,
@@ -1295,7 +1295,7 @@
 	flags_equip_slot = SLOT_BACK
 
 /obj/item/weapon/gun/rifle/type71/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 18, "rail_y" = 23, "under_x" = 20, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 17,"rail_x" = 10, "rail_y" = 23, "under_x" = 20, "under_y" = 13, "stock_x" = 11, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/type71/set_gun_config_values()
 	..()
@@ -1309,6 +1309,13 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+
+/obj/item/weapon/gun/rifle/type71/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/stock/type71/STOCK = new(src)
+	STOCK.flags_attach_features &= ~ATTACH_REMOVABLE
+	STOCK.Attach(src)
+	update_attachable(STOCK.slot)
 
 /obj/item/weapon/gun/rifle/type71/rifleman
 	//add GL
@@ -1326,7 +1333,6 @@
 	random_spawn_under = list(
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/verticalgrip,
-		/obj/item/attachable/angledgrip,
 	)
 
 /obj/item/weapon/gun/rifle/type71/dual
@@ -1344,7 +1350,6 @@
 	random_spawn_under = list(
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/verticalgrip,
-		/obj/item/attachable/angledgrip,
 	)
 
 /obj/item/weapon/gun/rifle/type71/sapper
@@ -1406,11 +1411,34 @@
 	aim_slowdown = SLOWDOWN_ADS_QUICK //Carbine is more lightweight
 	wield_delay = WIELD_DELAY_VERY_FAST
 	bonus_overlay_x = 2
+	attachable_allowed = list(
+		/obj/item/attachable/flashlight, // Rail
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/suppressor, // Muzzle
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/verticalgrip, // Underbarrel
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/burstfire_assembly,
+		)
 
 	random_spawn_muzzle = list() //no default bayonet
 
 /obj/item/weapon/gun/rifle/type71/carbine/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 18,"rail_x" = 19, "rail_y" = 22, "under_x" = 21, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 23, "under_x" = 25, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
+
+/obj/item/weapon/gun/rifle/type71/carbine/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/stock/type71/stock = new(src)
+	stock.flags_attach_features &= ~ATTACH_REMOVABLE
+	stock.Attach(src)
+	update_attachable(stock.slot)
 
 /obj/item/weapon/gun/rifle/type71/carbine/set_gun_config_values()
 	..()
@@ -1434,7 +1462,6 @@
 	random_spawn_under = list(
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/verticalgrip,
-		/obj/item/attachable/angledgrip,
 	)
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando
@@ -1443,11 +1470,11 @@
 	icon_state = "type73"
 	item_state = "type73"
 	wield_delay = 0 //Ends up being .5 seconds due to scope
+	inherent_traits = list(TRAIT_GUN_SILENCED)
 	current_mag = /obj/item/ammo_magazine/rifle/type71/heap
 	attachable_allowed = list(
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/verticalgrip,
-		/obj/item/attachable/angledgrip,
 	)
 	random_spawn_chance = 0
 	random_spawn_rail = list()
@@ -1455,24 +1482,23 @@
 	bonus_overlay_x = 1
 	bonus_overlay_y = 0
 
-/obj/item/weapon/gun/rifle/type71/carbine/commando/handle_starting_attachment()//Making the gun have an invisible silencer since it's supposed to have one.
+/obj/item/weapon/gun/rifle/type71/carbine/commando/handle_starting_attachment()
 	..()
 	//suppressor
-	var/obj/item/attachable/suppressor/S = new(src)
-	S.hidden = TRUE
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
+	var/obj/item/attachable/type73suppressor/SUPPRESSOR = new(src)
+	SUPPRESSOR.flags_attach_features &= ~ATTACH_REMOVABLE
+	SUPPRESSOR.Attach(src)
+	update_attachable(SUPPRESSOR.slot)
 	//scope
-	var/obj/item/attachable/scope/mini/F = new(src)
-	F.hidden = TRUE
-	F.flags_attach_features &= ~ATTACH_REMOVABLE
-	F.Attach(src)
-	update_attachable(F.slot)
+	var/obj/item/attachable/scope/mini/SCOPE = new(src)
+	SCOPE.hidden = TRUE
+	SCOPE.flags_attach_features &= ~ATTACH_REMOVABLE
+	SCOPE.Attach(src)
+	update_attachable(SCOPE.slot)
 
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 22, "under_y" = 11, "stock_x" = 21, "stock_y" = 18)
 
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_config_values()

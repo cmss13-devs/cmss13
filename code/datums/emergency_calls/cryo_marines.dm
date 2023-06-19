@@ -17,6 +17,7 @@
 /datum/emergency_call/cryo_squad/spawn_candidates(announce, override_spawn_loc, announce_dispatch_message)
 	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
 	leaders = cryo_squad.num_leaders
+	deployed_marines = 0
 	. = ..()
 	shipwide_ai_announcement("Successfully deployed [deployed_marines] Foxtrot marines.")
 

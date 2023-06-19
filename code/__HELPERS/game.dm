@@ -282,6 +282,28 @@
 
 	return candidates
 
+/**
+ * Messages observers that are currently candidates an update on the queue.
+ *
+ * Arguments:
+ * * candidates - The list of observers from get_alien_candidates() with atleast one
+ * * dequeued - How many candidates to skip messaging because they were dequeued
+ */
+/proc/message_alien_candidates(list/candidates, dequeued)
+	var/new_players = 0
+	if(dequeued)
+		for(var/i in (1 + dequeued) to candidates.len)
+			to_chat(candidates[i], SPAN_XENONOTICE("You are now [i-dequeued]\th in the larva queue. There are [new_players] ahead of you that have yet to play this round."))
+			var/mob/dead/observer/cur_obs = candidates[i]
+			if (!cur_obs.timeofdeath)
+				new_players++
+	else
+		for(var/i in 1 to candidates.len)
+			to_chat(candidates[i], SPAN_XENONOTICE("You are currently [i]\th in the larva queue. There are [new_players] ahead of you that have yet to play this round."))
+			var/mob/dead/observer/cur_obs = candidates[i]
+			if (!cur_obs.timeofdeath)
+				new_players++
+
 /proc/convert_k2c(temp)
 	return ((temp - T0C))
 

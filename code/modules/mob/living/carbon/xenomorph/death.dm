@@ -41,9 +41,9 @@
 				var/list/players_with_xeno_pref = get_alien_candidates()
 				if(players_with_xeno_pref && istype(GLOB.hive_datum[hivenumber].hive_location, /obj/effect/alien/resin/special/pylon/core))
 					var/turf/larva_spawn = get_turf(GLOB.hive_datum[hivenumber].hive_location)
-					var/count = 1
-					while(GLOB.hive_datum[hivenumber].stored_larva > 0 && count <= length(players_with_xeno_pref)) // still some left
-						var/mob/xeno_candidate = players_with_xeno_pref[count++]
+					var/count = 0
+					while(GLOB.hive_datum[hivenumber].stored_larva > 0 && count < length(players_with_xeno_pref)) // still some left
+						var/mob/xeno_candidate = players_with_xeno_pref[++count]
 						var/mob/living/carbon/xenomorph/larva/new_xeno = new /mob/living/carbon/xenomorph/larva(larva_spawn)
 						new_xeno.set_hive_and_update(hivenumber)
 
@@ -57,6 +57,8 @@
 
 						GLOB.hive_datum[hivenumber].stored_larva--
 						GLOB.hive_datum[hivenumber].hive_ui.update_burrowed_larva()
+					if(count)
+						message_alien_candidates(players_with_xeno_pref, count)
 
 			if(hive && hive.living_xeno_queen == src)
 				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"),3, hivenumber)

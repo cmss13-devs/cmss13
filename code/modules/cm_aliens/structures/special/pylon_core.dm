@@ -108,6 +108,7 @@
 	var/last_healed = 0
 	var/last_attempt = 0 // logs time of last attempt to prevent spam. if you want to destroy it, you must commit.
 	var/last_larva_time = 0
+	var/last_larva_queue_time = 0
 	var/last_surge_time = 0
 	var/spawn_cooldown = 30 SECONDS
 	var/surge_cooldown = 90 SECONDS
@@ -142,13 +143,17 @@
 				linked_hive.hive_ui.update_burrowed_larva()
 				qdel(L)
 
-		if((last_larva_time + spawn_cooldown) < world.time && can_spawn_larva()) // every minute
+		var/spawning_larva = can_spawn_larva() && (last_larva_time + spawn_cooldown) < world.time
+		if(spawning_larva)
 			last_larva_time = world.time
+		if(spawning_larva || (last_larva_queue_time + spawn_cooldown * 4) < world.time)
+			last_larva_queue_time = world.time
 			var/list/players_with_xeno_pref = get_alien_candidates()
-			if(players_with_xeno_pref && players_with_xeno_pref.len && can_spawn_larva())
-				spawn_burrowed_larva(players_with_xeno_pref[1])
-				for(var/i in 2 to players_with_xeno_pref.len)
-					to_chat(players_with_xeno_pref[i], SPAN_XENONOTICE("You are now [i-1]\th in the larva queue."))
+			if(players_with_xeno_pref && players_with_xeno_pref.len)
+				if(spawning_larva && spawn_burrowed_larva(players_with_xeno_pref[1]))
+					message_alien_candidates(players_with_xeno_pref, 1)
+				else
+					message_alien_candidates(players_with_xeno_pref, 0)
 
 		if(linked_hive.hijack_burrowed_surge && (last_surge_time + surge_cooldown) < world.time)
 			last_surge_time = world.time

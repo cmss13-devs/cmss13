@@ -336,7 +336,7 @@
 
 /obj/structure/ship_ammo/rocket/bunkerbuster/detonate_on(turf/impact)
 	impact.ceiling_debris_check(3)
-	spawn(5)
+	sleep(5)
 		cell_explosion(impact, 450, 100, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, create_cause_data(initial(name), source_mob)) //See Keeper comments: However this is able to penetrate cave ceilings.
 		qdel(src)
 

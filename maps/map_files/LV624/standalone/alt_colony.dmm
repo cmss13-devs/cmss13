@@ -5648,7 +5648,7 @@
 	name = "Medbay APC";
 	start_charge = 0;
 	dir = 8;
-	pixel_x = -30
+	pixel_x = -24
 	},
 /turf/open/floor{
 	dir = 8;
@@ -12483,7 +12483,7 @@
 	dir = 8;
 	name = "Secure Vault APC";
 	start_charge = 200;
-	pixel_x = -30
+	pixel_x = -24
 	},
 /turf/open/floor/corsat{
 	icon_state = "red";

@@ -1,6 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - bugfix: "folding barricade now takes 15% less acid damage instead of 15% extra acid damage, as the description hints."
-  - bugfix: "folding barricade now blocks pounces from behind."
-  - qol: "collapsing folding barricade by hand is no longer interrupted by taking an item."

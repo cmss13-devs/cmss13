@@ -31,6 +31,16 @@
 	icon_state = "dirt"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+/obj/effect/decal/cleanable/dirt/greenglow
+	name = "glowing goo"
+	acid_damage = 1
+	icon_state = "greenglow"
+	luminosity = 1
+
+/obj/effect/decal/cleanable/dirt/greenglow/Destroy()
+	SetLuminosity(0)
+	return ..()
+
 /obj/effect/decal/cleanable/flour
 	name = "flour"
 	desc = "It's still good. Four second rule!"

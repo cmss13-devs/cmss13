@@ -1,66 +1,12 @@
-#define HUMAN_MODE "Unarmoured Humans"
-#define UPP_MODE "UPP Conscripts"
-#define CLF_MODE "CLF Guerillas"
-#define RUNNER_MODE "Xenomorph Runners"
-#define SPITTER_MODE "Xenomorph Spitters"
-#define DEFENDER_MODE "Xenomorph Defenders"
-#define RAVAGER_MODE "Xenomorph Ravagers"
-#define CRUSHER_MODE "Xenomorph Crushers"
-
 /obj/structure/machinery/computer/demo_sim
 	name = "demolitions simulator"
 	desc = "A powerful simulator that can simulate explosions. Its processors need a cooldown of approximately 1 minute after each simulation."
 	icon_state = "demo_sim"
 	exproof = TRUE
 	unacidable = TRUE
+	var/datum/simulator/simulation
+	var/turf/sim_location
 	var/obj/item/configuration
-	var/obj/structure/machinery/camera/simulation/simulation
-	// is the ui user actually looking at the simulation?
-	var/looking_at_simulation = FALSE
-
-	COOLDOWN_DECLARE(detonation_cooldown)
-	var/detonation_cooldown_time = 1 MINUTES
-
-	var/dummy_mode = HUMAN_MODE
-
-	var/list/target_types = list(
-		HUMAN_MODE = /mob/living/carbon/human,
-		UPP_MODE = /mob/living/carbon/human,
-		CLF_MODE = /mob/living/carbon/human,
-		RUNNER_MODE = /mob/living/carbon/xenomorph/runner,
-		SPITTER_MODE = /mob/living/carbon/xenomorph/spitter,
-		DEFENDER_MODE = /mob/living/carbon/xenomorph/defender,
-		RAVAGER_MODE = /mob/living/carbon/xenomorph/ravager,
-		CRUSHER_MODE = /mob/living/carbon/xenomorph/crusher,
-	)
-
-/obj/effect/landmark/sim_target
-	name = "simulator_target"
-
-/obj/effect/landmark/sim_target/Initialize(mapload, ...)
-	. = ..()
-	GLOB.simulator_targets += src
-
-/obj/effect/landmark/sim_target/Destroy()
-	GLOB.simulator_targets -= src
-	return ..()
-
-/obj/effect/landmark/sim_camera
-	name = "simulator_camera"
-	color = "#FFFF00";
-
-/obj/effect/landmark/sim_camera/Initialize(mapload, ...)
-	. = ..()
-	GLOB.simulator_cameras += src
-
-/obj/effect/landmark/sim_camera/Destroy()
-	GLOB.simulator_cameras -= src
-	return ..()
-
-/obj/structure/machinery/computer/demo_sim/get_examine_text(mob/user)
-	. = ..()
-	if(!COOLDOWN_FINISHED(src, detonation_cooldown))
-		. += SPAN_WARNING("The processors are currently cooling, [COOLDOWN_TIMELEFT(src, detonation_cooldown)/10] seconds remaining")
 
 /obj/structure/machinery/computer/demo_sim/attackby(obj/item/B, mob/living/user)
 	if(inoperable())
@@ -82,9 +28,14 @@
 /obj/structure/machinery/computer/demo_sim/attack_hand(mob/user as mob)
 	if(..())
 		return
+
 	tgui_interact(user)
 
-// TGUI SHIT \\
+/obj/structure/machinery/computer/demo_sim/Initialize()
+	. = ..()
+	simulation = new()
+
+// DEMOLITIONS TGUI SHIT \\
 
 /obj/structure/machinery/computer/demo_sim/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -104,12 +55,12 @@
 	var/list/data = list()
 
 	data["configuration"] = configuration
-	data["looking"] = looking_at_simulation
-	data["dummy_mode"] = dummy_mode
+	data["looking"] = simulation.looking_at_simulation
+	data["dummy_mode"] = simulation.dummy_mode
 
 	data["worldtime"] = world.time
-	data["nextdetonationtime"] = detonation_cooldown
-	data["detonation_cooldown"] = detonation_cooldown_time
+	data["nextdetonationtime"] = simulation.detonation_cooldown
+	data["detonation_cooldown"] = simulation.detonation_cooldown_time
 
 	return data
 
@@ -118,13 +69,15 @@
 	if(.)
 		return
 
+	var/user = ui.user
+
 	switch(action)
 		if("start_watching")
-			start_watching(usr)
+			simulation.start_watching(user)
 			. = TRUE
 
 		if("stop_watching")
-			stop_watching(usr)
+			simulation.stop_watching(user)
 			. = TRUE
 
 		if("eject")
@@ -132,70 +85,33 @@
 				configuration.forceMove(loc)
 				configuration = null
 			else
-				to_chat(usr, SPAN_NOTICE("Nothing to eject."))
+				to_chat(user, SPAN_NOTICE("Nothing to eject."))
 			. = TRUE
 
 		if("detonate")
 			if(!configuration)
-				to_chat(usr, SPAN_NOTICE("No configuration set."))
+				to_chat(user, SPAN_NOTICE("No configuration set."))
 				return
-			simulate_detonation(usr)
+			simulate_detonation(user)
 			. = TRUE
 
 		if("switchmode")
-			dummy_mode = tgui_input_list(usr, "Select target type to simulate", "Target type", target_types, 30 SECONDS)
-			if(!dummy_mode)
-				dummy_mode = HUMAN_MODE
+			simulation.dummy_mode = tgui_input_list(user, "Select target type to simulate", "Target type", simulation.target_types, 30 SECONDS)
+			if(!simulation.dummy_mode)
+				simulation.dummy_mode = /mob/living/carbon/human
 			. = TRUE
 
 /obj/structure/machinery/computer/demo_sim/ui_close(mob/user)
+
 	. = ..()
-	if(looking_at_simulation)
-		stop_watching(user)
+	if(simulation.looking_at_simulation)
+		simulation.stop_watching(user)
 
-// TGUI SHIT END \\
+// DEMOLITIONS TGUI SHIT END \\
 
-/obj/structure/machinery/computer/demo_sim/proc/start_watching(mob/living/user)
-	if(!simulation)
-		simulation = SAFEPICK(GLOB.simulator_cameras)
-	if(!simulation)
-		to_chat(user, SPAN_WARNING("GPU damaged! Unable to start simulation."))
-		return
-	if(user.client.view != world_view_size)
-		to_chat(user, SPAN_WARNING("You're too busy looking at something else."))
-		return
-	user.reset_view(simulation)
-	looking_at_simulation = TRUE
-
-/obj/structure/machinery/computer/demo_sim/proc/stop_watching(mob/living/user)
-	user.unset_interaction()
-	user.reset_view(null)
-	user.cameraFollow = null
-	looking_at_simulation = FALSE
 
 /obj/structure/machinery/computer/demo_sim/proc/simulate_detonation(mob/living/user)
-	COOLDOWN_START(src, detonation_cooldown, detonation_cooldown_time)
-
-	var/spawn_path = target_types[dummy_mode]
-	var/spawning_humans = FALSE
-	if(dummy_mode == HUMAN_MODE || dummy_mode == CLF_MODE || dummy_mode == UPP_MODE)
-		spawning_humans = TRUE
-
-	for(var/spawn_loc in GLOB.simulator_targets)
-		if(spawning_humans)
-			var/mob/living/carbon/human/dummy = new /mob/living/carbon/human(get_turf(spawn_loc))
-			switch(dummy_mode)
-				if(CLF_MODE)
-					user.client.cmd_admin_dress_human(dummy, "CLF Soldier", no_logs = TRUE)
-				if(UPP_MODE)
-					user.client.cmd_admin_dress_human(dummy, "UPP Conscript", no_logs = TRUE)
-			dummy.name = "simulated human"
-			QDEL_IN(dummy, detonation_cooldown_time - 10 SECONDS)
-		else
-			var/mob/living/carbon/xenomorph/xeno_dummy = new spawn_path(get_turf(spawn_loc))
-			xeno_dummy.hardcore = TRUE
-			QDEL_IN(xeno_dummy, detonation_cooldown_time - 10 SECONDS)
-
+	simulation.spawn_mobs(user)
 	//Simply an explosive
 	if(istype(configuration,/obj/item/explosive))
 		make_and_prime_explosive(configuration)
@@ -206,8 +122,8 @@
 			if(O.warhead)
 				make_and_prime_explosive(O.warhead)
 		else
-			var/obj/item/mortar_shell/O = new configuration.type(simulation.loc)
-			O.detonate(simulation.loc)
+			var/obj/item/mortar_shell/O = new configuration.type(get_turf(simulation.sim_camera))
+			O.detonate(get_turf(simulation.sim_camera))
 	//Rockets (custom only because projectiles are spaghetti)
 	else if(istype(configuration,/obj/item/ammo_magazine/rocket/custom))
 		var/obj/item/ammo_magazine/rocket/custom/O = configuration
@@ -215,9 +131,9 @@
 			make_and_prime_explosive(O.warhead)
 
 /obj/structure/machinery/computer/demo_sim/proc/make_and_prime_explosive(obj/item/explosive/O)
-	var/obj/item/explosive/E = new O.type(simulation.loc)
+	var/obj/item/explosive/E = new O.type(get_turf(simulation.sim_camera))
 	E.make_copy_of(O)
 	E.prime(TRUE)
-	var/turf/sourceturf = get_turf(simulation)
-	sourceturf.chemexploded = FALSE //Make sure that this actually resets
+	sim_location = get_turf(simulation.sim_camera)
+	sim_location.chemexploded = FALSE //Make sure that this actually resets
 	QDEL_IN(E,1 MINUTES)

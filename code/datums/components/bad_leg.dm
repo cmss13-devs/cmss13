@@ -52,8 +52,9 @@
 
 /datum/component/bad_leg/UnregisterFromParent()
 	..()
-	UnregisterSignal(parent_human, COMSIG_MOVABLE_MOVED, PROC_REF(stumble))
-	bound_action?.unique_remove_action(parent_human, /datum/action/human_action/rest_legs, src)
+	if(parent_human)
+		UnregisterSignal(parent_human, COMSIG_MOVABLE_MOVED, PROC_REF(stumble))
+		bound_action?.unique_remove_action(parent_human, /datum/action/human_action/rest_legs, src)
 
 
 /datum/component/bad_leg/proc/stumble(mob/living/carbon/human/parent_human)

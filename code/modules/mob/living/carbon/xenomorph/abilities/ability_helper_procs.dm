@@ -224,11 +224,10 @@
 	client.pixel_x = 0
 	client.pixel_y = 0
 	is_zoomed = 0
-	// Since theres several ways we can get here, we need to update the ability button state
-	for (var/datum/action/xeno_action/action in actions)
-		if (istype(action, /datum/action/xeno_action/onclick/toggle_long_range))
-			action.button.icon_state = "template"
-			break;
+	// Since theres several ways we can get here, we need to update the ability button state and handle action's specific effects
+	for (var/datum/action/xeno_action/onclick/toggle_long_range/action in actions)
+		action.on_zoom_out()
+		return
 
 /mob/living/carbon/xenomorph/proc/do_acid_spray_cone(turf/T, spray_type = /obj/effect/xenomorph/spray, range = 3)
 	set waitfor = FALSE
@@ -375,6 +374,10 @@
 
 	if(target.plasma_max == XENO_NO_PLASMA)
 		to_chat(src, SPAN_WARNING("\The [target] doesn't use plasma."))
+		return FALSE
+
+	if(target == src)
+		to_chat(src, SPAN_WARNING("You can't transfer plasma to yourself!"))
 		return FALSE
 
 	return TRUE

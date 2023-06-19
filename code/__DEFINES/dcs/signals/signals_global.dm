@@ -47,3 +47,6 @@
 
 // Used for smothering fires upon weather event start/stop
 #define COMSIG_GLOB_WEATHER_CHANGE "!weather_event_changed"
+
+/// From /datum/admins/proc/force_predator_round()
+#define COMSIG_GLOB_PREDATOR_ROUND_TOGGLED "!predator_round_toglged"

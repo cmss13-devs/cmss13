@@ -102,11 +102,11 @@
 
 /*Changing/updating a mob's client color matrices. These render over the map window and affect most things the player sees, except things like inventory,
 text popups, HUD, and some fullscreens. Code based on atom filter code, since these have similar issues with application order - for ex. if you have
-a desaturation and a recolour matrix, you'll get very different results if you desaturate before recolouring, or recolour before desaturating.
+a desaturation and a recolor matrix, you'll get very different results if you desaturate before recoloring, or recolor before desaturating.
 
 See matrices.dm for the matrix procs.
 
-If you want to recolour a specific atom, you should probably do it as a color matrix filter instead since that code already exists.
+If you want to recolor a specific atom, you should probably do it as a color matrix filter instead since that code already exists.
 
 Apparently color matrices are not the same sort of matrix used by matrix datums and can't be worked with using normal matrix procs.*/
 

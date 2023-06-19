@@ -459,7 +459,7 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define ACCESSORY_SLOT_MEDAL "Medal"
 #define ACCESSORY_SLOT_PONCHO "Ponchos"
 
-/// Used for uniform armour inserts.
+/// Used for uniform armor inserts.
 #define ACCESSORY_SLOT_ARMOR_C "Chest armor"
 
 #define ACCESSORY_SLOT_ARMOR_A "Arm armor"
@@ -545,7 +545,6 @@ var/global/list/uniform_categories = list(
 //=================================================
 
 //=================================================
-#define PHONE_RTO "RTO"
 #define PHONE_MARINE "Marine"
 #define PHONE_UPP_SOLDIER "Soldier"
 #define PHONE_IO "IO"

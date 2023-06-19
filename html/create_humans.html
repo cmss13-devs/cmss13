@@ -18,7 +18,14 @@
 		<input type="radio" class="radioButton" name="spawn_as" value="freed"> Freed mob<br>
 		<input type="radio" class="radioButton" name="spawn_as" value="ert"> ERT
 		<br><br>
-		Search for equipment: <br>
+
+		Spawn mobs with: <br>
+		<input type="radio" class="radioButton" name="equip_with" value="full_equipment" checked="checked"> Full Equipment<br>
+		<input type="radio" class="radioButton" name="equip_with" value="no_weapons"> No Weapons<br>
+		<input type="radio" class="radioButton" name="equip_with" value="no_equipment"> No Equipment
+		<br><br>
+
+		Search for equipment and skills: <br>
 		<input type="text" name="filter" value="" onkeypress="submitFirst(event)" style="width:280px"> <input
 			type="button" class="button" value="Search" onclick="populateList()" />
 		<br>

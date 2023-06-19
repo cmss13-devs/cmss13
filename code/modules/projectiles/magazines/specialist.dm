@@ -323,7 +323,7 @@
 
 /obj/item/ammo_magazine/rocket/anti_tank
 	name = "\improper 84mm Anti-Tank Rocket"
-	desc = "An anti-armour rocket specifically modified for penetration of armoured vehicle hulls."
+	desc = "An anti-armor rocket specifically modified for penetration of armored vehicle hulls."
 	caliber = "rocket"
 	icon_state = "at_rocket"
 

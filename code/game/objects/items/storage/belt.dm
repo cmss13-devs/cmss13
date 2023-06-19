@@ -145,6 +145,7 @@
 		/obj/item/tool/surgery/synthgraft,
 		/obj/item/reagent_container/glass/minitank,
 		/obj/item/storage/surgical_case,
+		/obj/item/reagent_container/blood,
 	)
 
 /obj/item/storage/belt/medical/full/fill_preset_inventory()
@@ -627,7 +628,7 @@
 
 /obj/item/storage/belt/shotgun/van_bandolier
 	name = "two bore bandolier"
-	desc = "A leather bandolier designed to hold extremely heavy shells. Can be attached to armour, worn over the back, or attached to belt loops."
+	desc = "A leather bandolier designed to hold extremely heavy shells. Can be attached to armor, worn over the back, or attached to belt loops."
 	icon_state = "van_bandolier_5"
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
 	storage_slots = null

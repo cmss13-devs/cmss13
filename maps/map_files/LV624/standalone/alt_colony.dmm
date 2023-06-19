@@ -4325,6 +4325,12 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/corporate_dome)
+"qj" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass/grass2,
+/area/lv624/ground/jungle/north_west_jungle)
 "qk" = (
 /obj/structure/largecrate/random,
 /turf/open/floor{
@@ -9337,6 +9343,13 @@
 	icon_state = "platebotc"
 	},
 /area/lv624/lazarus/quartstorage/outdoors)
+"Ji" = (
+/obj/effect/landmark/ert_spawns/groundside_xeno,
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/lv624/lazarus/landing_zones/lz2)
 "Jj" = (
 /obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/grass/grass1,
@@ -10250,6 +10263,10 @@
 	icon_state = "darkyellowcorners2"
 	},
 /area/lv624/lazarus/comms)
+"Mx" = (
+/obj/effect/landmark/ert_spawns/groundside_xeno,
+/turf/open/floor/grass,
+/area/lv624/lazarus/main_hall)
 "My" = (
 /turf/open/gm/dirt2,
 /area/lv624/lazarus/main_hall)
@@ -12854,6 +12871,10 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
+"Wy" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/gm/grass/grass2,
+/area/lv624/ground/jungle/north_west_jungle)
 "Wz" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass2,
@@ -15998,7 +16019,7 @@ WG
 yv
 yv
 yv
-WG
+Ji
 yv
 yv
 WG
@@ -17545,14 +17566,14 @@ NA
 qx
 qx
 se
-Iq
+se
 MT
 qY
 lB
-lB
-lB
-lB
-lB
+Aw
+HB
+HB
+VN
 Lk
 lB
 lB
@@ -17636,10 +17657,10 @@ Iq
 qY
 cm
 GG
-lB
-Bw
-Bw
-lB
+HB
+Wy
+Wy
+DM
 lB
 lB
 lB
@@ -17723,12 +17744,12 @@ Iq
 Iq
 qY
 NA
-lB
-lB
-Bw
+HB
+HB
+qj
 ml
 lB
-lB
+Gr
 lB
 XQ
 nF
@@ -17810,8 +17831,8 @@ qx
 qx
 qY
 Vy
-lB
-hk
+Fe
+DM
 lB
 lB
 lB
@@ -17898,12 +17919,12 @@ qx
 qx
 lB
 lB
+hk
+mP
 lB
 lB
 lB
-lB
-lB
-lB
+kD
 XQ
 gb
 gb
@@ -20704,7 +20725,7 @@ rB
 HW
 HW
 HW
-HW
+Mx
 HW
 HW
 HW

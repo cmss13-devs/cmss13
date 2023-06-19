@@ -429,6 +429,14 @@
 /obj/item/stack/sheet/wood,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
+"bE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "bot"
+	},
+/area/lv624/lazarus/quart)
 "bF" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass/grass1,
@@ -946,6 +954,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "dN" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -1739,6 +1748,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv624/lazarus/main_hall)
+"gC" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
 "gD" = (
 /obj/structure/flora/jungle/vines/light_2,
 /obj/structure/flora/jungle/vines/light_2,
@@ -2989,6 +3004,12 @@
 "lm" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/research)
+"ln" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
 "lo" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/gm/grass/grass1,
@@ -3661,6 +3682,16 @@
 	},
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
+"nP" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7"
+	},
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/landing_zones/lz2)
 "nR" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
 /turf/open/floor{
@@ -3873,6 +3904,16 @@
 	icon_state = "bar"
 	},
 /area/lv624/lazarus/research)
+"oF" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal9"
+	},
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/landing_zones/lz2)
 "oG" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -4349,6 +4390,12 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
+"qu" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
 "qv" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/floor/grass,
@@ -5024,6 +5071,13 @@
 	icon_state = "dark"
 	},
 /area/lv624/lazarus/corporate_dome)
+"sP" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "bot"
+	},
+/area/lv624/lazarus/landing_zones/lz1)
 "sQ" = (
 /obj/structure/machinery/door_control{
 	id = "north_ent_lock";
@@ -5376,6 +5430,12 @@
 	icon_state = "redfull"
 	},
 /area/lv624/lazarus/security)
+"uc" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
 "ud" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal6"
@@ -6406,6 +6466,13 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+"yh" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "bot"
+	},
+/area/lv624/lazarus/landing_zones/lz1)
 "yi" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/west_central_jungle)
@@ -6535,6 +6602,16 @@
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/yggdrasil)
+"yF" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/landing_zones/lz2)
 "yG" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor{
@@ -8237,6 +8314,13 @@
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
+"Fj" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "bot"
+	},
+/area/lv624/lazarus/landing_zones/lz1)
 "Fk" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/jungle/vines/heavy,
@@ -10577,6 +10661,13 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/medbay)
+"Oi" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/landing_zones/lz2)
 "Oj" = (
 /obj/item/tool/candle,
 /turf/open/floor{
@@ -11436,6 +11527,13 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/corporate_dome)
+"Rx" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "bot"
+	},
+/area/lv624/lazarus/landing_zones/lz1)
 "Ry" = (
 /obj/effect/decal/remains/human,
 /turf/open/gm/dirtgrassborder/north,
@@ -11747,6 +11845,14 @@
 /obj/item/ammo_casing,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/jungle/east_jungle)
+"SJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/landing_zones/lz2)
 "SK" = (
 /obj/structure/prop/static_tank,
 /turf/open/floor/plating,
@@ -11960,6 +12066,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
 "TE" = (
+/obj/structure/largecrate/random/barrel/white,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -13586,6 +13693,10 @@
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/east_central_jungle)
+"ZM" = (
+/obj/effect/landmark/railgun_camera_pos,
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
 "ZN" = (
 /obj/structure/flora/jungle/treeblocker,
 /obj/structure/machinery/colony_floodlight,
@@ -14600,7 +14711,7 @@ wt
 bp
 wt
 rS
-HF
+oF
 IE
 Wb
 Wb
@@ -14688,7 +14799,7 @@ zg
 VC
 rS
 SH
-Gd
+Oi
 Gd
 Gd
 ry
@@ -14698,7 +14809,7 @@ VQ
 MM
 VQ
 VQ
-SH
+yF
 rS
 IN
 zR
@@ -14785,7 +14896,7 @@ bY
 dO
 IE
 IE
-zq
+nP
 rS
 gm
 pz
@@ -15040,7 +15151,7 @@ wn
 wn
 wn
 CQ
-VQ
+SJ
 Gd
 VQ
 HF
@@ -23568,7 +23679,7 @@ Zi
 lf
 SS
 GC
-dN
+bE
 TE
 nA
 Si
@@ -24342,7 +24453,7 @@ wB
 AC
 HH
 HH
-Vl
+ZM
 Vl
 HH
 yx
@@ -24532,7 +24643,7 @@ HH
 Vl
 fD
 Mb
-Mb
+Fj
 kH
 kH
 "}
@@ -24614,7 +24725,7 @@ Lp
 cp
 Lp
 wB
-Mb
+sP
 Vl
 Vl
 Mb
@@ -24704,7 +24815,7 @@ wB
 hX
 HH
 HH
-Mb
+Rx
 IX
 Mb
 kH
@@ -25529,7 +25640,7 @@ wA
 yt
 Wc
 BG
-Te
+ln
 Te
 Te
 Te
@@ -25574,7 +25685,7 @@ lZ
 gr
 Vl
 IX
-Mb
+yh
 Vl
 Vl
 yj
@@ -25710,7 +25821,7 @@ Te
 Jh
 Te
 Te
-Te
+qu
 Te
 Te
 rr
@@ -25880,7 +25991,7 @@ lj
 Te
 Te
 SN
-Te
+uc
 Jh
 Jh
 Jh
@@ -26054,7 +26165,7 @@ lj
 Te
 Te
 mY
-Te
+gC
 Jh
 Jh
 Jh

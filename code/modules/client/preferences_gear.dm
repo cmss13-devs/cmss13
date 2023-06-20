@@ -492,8 +492,7 @@ var/global/list/gear_datums_by_name = list()
 
 /datum/gear/toy/crayon
 	display_name = "Crayon"
-	path = /obj/item/
-	/obj/item/toy/crayon/rainbow
+	path = /obj/item/toy/crayon/rainbow
 
 /datum/gear/weapon
 	category = "Weapons"

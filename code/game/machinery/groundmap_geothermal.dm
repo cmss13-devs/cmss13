@@ -198,6 +198,9 @@
 	else
 		return ..() //Deal with everything else, like hitting with stuff
 
+/obj/structure/machinery/power/geothermal/ex_act(severity, direction)
+	return FALSE //gameplay-wise these should really never go away
+
 //Putting these here since it's power-related
 /obj/structure/machinery/colony_floodlight_switch
 	name = "Colony Floodlight Switch"

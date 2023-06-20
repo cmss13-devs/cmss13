@@ -288,3 +288,9 @@
   - bugfix: folding barricade now blocks pounces from behind.
   - qol: collapsing folding barricade by hand is no longer interrupted by taking an
       item.
+2023-06-20:
+  Morrow:
+  - balance: Xenos can slash trolleys now
+  - balance: Generators can no longer be blown up
+  - balance: Bonus evolution slowly deteriorates over time when all castes are unlocked
+  - balance: Portable Generators can now be turned off/unanchored by xeno slashes

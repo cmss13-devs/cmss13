@@ -518,7 +518,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		return
 	SIGNAL_HANDLER
 	if(streak > 0)
-		to_chat(user, SPAN_WARNING("\The [src] beeps as it loses its targeting data, and returns to normal firing procedures."))
+		to_chat(user, SPAN_WARNING("[src] beeps as it loses its targeting data, and returns to normal firing procedures."))
 	streak = 0
 	lever_sound = initial(lever_sound)
 	lever_message = initial(lever_message)

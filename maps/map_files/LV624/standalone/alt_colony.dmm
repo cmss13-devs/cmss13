@@ -174,6 +174,9 @@
 	},
 /area/lv624/lazarus/quartstorage)
 "aF" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
 /turf/open/floor{
 	icon_state = "greencorner"
 	},
@@ -1194,6 +1197,13 @@
 	icon_state = "asteroidfloor"
 	},
 /area/lv624/ground/colony/telecomm/sw_lz2)
+"eF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor,
+/area/lv624/lazarus/hydroponics)
 "eG" = (
 /obj/item/stack/folding_barricade,
 /turf/open/asphalt{
@@ -1272,6 +1282,9 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/structure/foamed_metal,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor{
 	icon_state = "darkbrown2";
 	dir = 4
@@ -2744,6 +2757,9 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/item/device/analyzer/plant_analyzer,
 /obj/structure/machinery/light,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 8
+	},
 /turf/open/floor{
 	icon_state = "green";
 	dir = 6
@@ -3133,6 +3149,9 @@
 "lQ" = (
 /obj/item/tool/crowbar,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 1
+	},
 /turf/open/floor,
 /area/lv624/lazarus/hydroponics)
 "lR" = (
@@ -3902,6 +3921,9 @@
 	icon_state = "road_edge_decal9"
 	},
 /obj/structure/largecrate/random/barrel/red,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor{
 	dir = 5;
 	icon_state = "vault"
@@ -3930,6 +3952,16 @@
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "asteroidwarning"
+	},
+/area/lv624/lazarus/landing_zones/lz2)
+"oL" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7"
+	},
+/obj/structure/machinery/light,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
 "oN" = (
@@ -4569,6 +4601,16 @@
 	},
 /turf/open/floor{
 	icon_state = "red"
+	},
+/area/lv624/lazarus/landing_zones/lz2)
+"rc" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8"
+	},
+/obj/structure/machinery/light,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
 "rd" = (
@@ -5594,6 +5636,11 @@
 	icon_state = "asteroidwarning"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
+"uP" = (
+/obj/structure/flora/jungle/vines/light_3,
+/obj/structure/pipes/standard/simple/visible/cyan,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/west_central_jungle)
 "uR" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
@@ -7781,6 +7828,10 @@
 	icon_state = "asphalt"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
+"Dq" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/corporate_dome)
 "Dr" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -7858,6 +7909,7 @@
 /area/lv624/ground/jungle/west_central_jungle)
 "DI" = (
 /obj/structure/flora/jungle/vines/heavy,
+/obj/structure/pipes/standard/simple/visible/cyan,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/west_central_jungle)
 "DK" = (
@@ -8183,6 +8235,10 @@
 	icon_state = "dark"
 	},
 /area/lv624/lazarus/quartstorage)
+"EP" = (
+/obj/structure/pipes/standard/simple/visible/cyan,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/yggdrasil)
 "EQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light,
@@ -8950,8 +9006,8 @@
 /area/lv624/ground/jungle/east_jungle)
 "HP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 6
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -9376,6 +9432,9 @@
 	},
 /area/lv624/lazarus/landing_zones/lz2)
 "Jx" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor{
 	icon_state = "darkbrowncorners2";
 	dir = 1
@@ -9742,13 +9801,20 @@
 /obj/item/tool/pen/red/clicky{
 	pixel_y = 6
 	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 5
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
 	},
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/lv624/lazarus/corporate_dome)
+"KM" = (
+/obj/structure/foamed_metal,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/engineering)
 "KN" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass/grass1,
@@ -10042,6 +10108,12 @@
 	dir = 6
 	},
 /area/lv624/lazarus/comms)
+"LP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/prison,
+/area/lv624/lazarus/main_hall)
 "LS" = (
 /obj/structure/cargo_container/wy/mid,
 /turf/open/floor/plating{
@@ -10064,6 +10136,12 @@
 	icon_state = "vault"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
+"LV" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/closed/wall,
+/area/lv624/lazarus/hydroponics)
 "LW" = (
 /obj/structure/bed,
 /obj/structure/bed{
@@ -10195,6 +10273,9 @@
 /obj/structure/machinery/power/port_gen/pacman/super,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "darkbrown2";
@@ -11182,6 +11263,12 @@
 "Ql" = (
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/east_central_jungle)
+"Qm" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 1
+	},
+/turf/closed/wall,
+/area/lv624/lazarus/hydroponics)
 "Qn" = (
 /turf/open/floor/prison{
 	icon_state = "yellow"
@@ -11687,6 +11774,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/lv624/lazarus/hydroponics)
+"Sh" = (
+/obj/structure/pipes/standard/simple/visible/cyan{
+	dir = 5
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/west_central_jungle)
 "Si" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
@@ -11699,6 +11792,18 @@
 /obj/item/ammo_casing,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
+"Sk" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal10"
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/landing_zones/lz2)
 "Sl" = (
 /turf/open/floor/prison{
 	icon_state = "darkbrowncorners2";
@@ -12024,6 +12129,9 @@
 /area/lv624/lazarus/research)
 "Tx" = (
 /obj/structure/foamed_metal,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor{
 	icon_state = "darkbrown2";
 	dir = 9
@@ -13003,8 +13111,8 @@
 	},
 /area/lv624/lazarus/secure_storage)
 "Xc" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
 	},
 /turf/open/floor,
 /area/lv624/lazarus/hydroponics)
@@ -14716,7 +14824,7 @@ VQ
 Kp
 LU
 tT
-pO
+rc
 rS
 zR
 zR
@@ -15140,7 +15248,7 @@ vV
 vV
 vV
 rS
-lM
+Sk
 wn
 wn
 wn
@@ -15151,7 +15259,7 @@ VQ
 HF
 Wb
 HJ
-zq
+oL
 rS
 UT
 pz
@@ -17661,10 +17769,10 @@ yO
 Dm
 UV
 KL
-SL
+Dq
 DI
-yT
-eA
+uP
+Sh
 eA
 gL
 Wl
@@ -17751,7 +17859,7 @@ Nw
 SL
 Ac
 eA
-eA
+kS
 Ro
 ru
 xG
@@ -17838,7 +17946,7 @@ SL
 SL
 tb
 JE
-Ro
+fx
 Ro
 QZ
 Vq
@@ -17925,7 +18033,7 @@ Yl
 PQ
 eA
 Yn
-Yn
+KM
 Ro
 lU
 Vq
@@ -18360,7 +18468,7 @@ oU
 Vq
 Vq
 zJ
-zJ
+Ky
 zJ
 zJ
 SC
@@ -20946,7 +21054,7 @@ TY
 mp
 fT
 Xc
-eY
+eF
 lQ
 aF
 Zs
@@ -21122,13 +21230,13 @@ hG
 tG
 hG
 hG
-sh
-sh
-Gj
-Gj
-JL
-nC
-iz
+LV
+Qm
+EP
+EP
+CS
+Sf
+LP
 JL
 JL
 rB

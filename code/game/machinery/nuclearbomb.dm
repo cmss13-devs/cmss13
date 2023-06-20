@@ -440,10 +440,7 @@ var/bomb_set = FALSE
 	.["decrypting"] = decrypting
 	.["decryption_time"] = duration2text_sec(decryption_time)
 
-	if(decryption_time)
-		.["decryption_complete"] = FALSE
-	else
-		.["decryption_complete"] = TRUE
+	.["decryption_complete"] = decryption_time ? FALSE : TRUE
 
 /obj/structure/machinery/nuclearbomb/tech/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
@@ -607,8 +604,3 @@ var/bomb_set = FALSE
 
 	decrypting = FALSE
 	announce_to_players()
-
-/obj/structure/machinery/nuclearbomb/tech/Destroy()
-	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_TELECOMM_TURNED_OFF)
-
-	. = ..()

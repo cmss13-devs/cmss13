@@ -101,7 +101,7 @@
 /obj/item/explosive/mine/attack_self(mob/living/user)
 	if(!..())
 		return
-	if(needs_digging && user.loc && is_mainship_level(user.z))
+	if(needs_digging && is_mainship_level(user.z))
 		to_chat(user, SPAN_WARNING("This mine needs to be buried in suitable terrain!"))
 		return
 	if(check_for_obstacles(user))

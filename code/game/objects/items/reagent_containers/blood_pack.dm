@@ -15,7 +15,7 @@
 	var/mob/living/carbon/human/connected_to
 	var/mob/living/carbon/human/connected_from
 	var/blood_type = null
-	var/datum/beam/current_beam = null
+	var/datum/beam/current_beam
 
 /obj/item/reagent_container/blood/Initialize()
 	. = ..()

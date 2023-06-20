@@ -418,7 +418,7 @@ var/global/list/gear_datums_by_name = list()
 /datum/gear/toy/mags
 	cost = 1
 
-/datum/gear/toy/mags/magazinedirty
+/datum/gear/toy/mags/magazine_dirty
 	display_name = "Magazine"
 	path = /obj/item/prop/magazine/dirty
 

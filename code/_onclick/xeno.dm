@@ -127,7 +127,7 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 			return TRUE
 
 	if(next_move >= world.time)
-		return TRUE
+		return FALSE
 
 	return ..()
 

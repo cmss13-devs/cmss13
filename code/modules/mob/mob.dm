@@ -258,6 +258,9 @@
 	if(!istype(W))
 		return FALSE
 
+	if(SEND_SIGNAL(src, COMSIG_MOB_ATTEMPTING_EQUIP, W, slot) & COMPONENT_MOB_CANCEL_ATTEMPT_EQUIP)
+		return FALSE
+
 	if(!W.mob_can_equip(src, slot, disable_warning))
 		if(del_on_fail)
 			qdel(W)

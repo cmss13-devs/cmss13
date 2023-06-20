@@ -327,6 +327,7 @@
 
 /turf/open/gm/grass
 	name = "grass"
+	icon_state = "grass1"
 	baseturfs = /turf/open/gm/grass
 	scorchable = "grass1"
 

@@ -2103,6 +2103,10 @@
 	idtype = /obj/item/card/id/data
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_TSL, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 
+/datum/equipment_preset/upp/commando/New()
+	. = ..()
+	access = get_global_access()
+
 /datum/equipment_preset/upp/commando/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/kdo, WEAR_L_EAR)

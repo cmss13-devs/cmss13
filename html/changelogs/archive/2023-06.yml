@@ -158,3 +158,139 @@
   Segrain:
   - rscadd: Jobs can now be assigned specific character slots, which will be automatically
       loaded when joining as that role.
+  TheGamerdk:
+  - bugfix: Your fluff security record from preferences is now visible to MPs.
+  - bugfix: You can now plant hardy weeds on colony turfs on Chances Claim
+  - bugfix: Data detector no longer triggers on empty vial boxes
+  - bugfix: Sentries now work correctly on dropships.
+  - bugfix: Xenos are no longer notified each time a sister destroys a large crate.
+  fira:
+  - bugfix: Handling C4 and Breaching Charges should not zealously trigger antigrief
+      protection anymore
+  - rscadd: Added a map override for Admins allowing them to load in maps directly
+      as ground or ship during the next round.
+  ihatethisengine:
+  - bugfix: MMB cannot be used to attack again
+2023-06-13:
+  Al-1ce:
+  - rscadd: Backstories have been added to various interesting drinks.
+  Hopek:
+  - balance: Huggers no longer lose health over time on weeds.
+  Huffie56:
+  - bugfix: restore some object back to original to keep them compatible with older
+      map.
+  Morrow:
+  - bugfix: Added missing Fiorina Sciannex groundside xeno landmarks
+  - bugfix: Made nukes get those pesky closet/tunnel hiders
+  - balance: Crippling Strike is now forced harm intent
+  Morrow, Triiodine:
+  - rscadd: Added a smartgun specific battery that you use with the smartgun itself.
+  - rscdel: Removed the smartgun powerpack. You no longer need it for the smartgun.
+  TheGamerdk:
+  - bugfix: You'll now be allowed to reenter your nested body when freed, even if
+      you used the ghost verb.
+  realforest2001:
+  - code_imp: Updated all the Get_Access() procs, and removed some procs where they
+      completely overlapped with others in presets.
+2023-06-15:
+  Drathek:
+  - bugfix: Fixed a runtime in shuttles when a mob is non-existent or has no turf
+      location.
+  Huffie56:
+  - rscadd: Added a Empty canister verb to the Pyrotechnician fuel tanks
+  - bugfix: prevent fuel backpacks to be filled via reagent tank with improper chemical(welding
+      fuel).
+  Jackie_Estegado:
+  - bugfix: The Burrower's burrow ability will no longer be not cancelled just because
+      you clicked on a tile that you wouldn't have been able to burrow to.
+  - bugfix: Burrowing will no longer complete even though you cancelled it.
+  Morrow:
+  - balance: Grass (and other flora) will no longer eat your bullets.
+  - bugfix: Fixed a runtime when observing before roundstart
+  SpartanBobby:
+  - bugfix: fixes invisible walls on LV522
+  - bugfix: fixes unweedable tiles on LV522
+  - bugfix: 'fixes invisible windows on LV522 (if you spot any invisible windows send
+      a picture of them to the SS13: CM discord #mapperchannel @spartanbobby'
+  - bugfix: fixes LV522 OOB area in the W-Y vault
+  - maptweak: moves sandbags and a breaching charge on LV522
+  - maptweak: fixes bigred tileset inconsistencies in the expanded filt nightmare
+  - maptweak: Replaces LV522 ceramic plates with MRE crate
+  fira:
+  - bugfix: Fixed an internal error when scanning turfs with Black Market scanner.
+  realforest2001:
+  - spellcheck: Weapon Stats examine UI now shows 'accurate range' rather than 'accuracy'
+2023-06-16:
+  Morrow:
+  - balance: Shipside roles now weight even less for xeno counts.
+  Nanu, Spartanbobby, Julian56:
+  - mapadd: Added W-Y Station, UPP Station, CLF Station and...
+  - admin: Admins can now use the custom ERT stations for events or even base of operations.
+  Steelpoint:
+  - rscadd: Adds a M41A Mk2 kit to the Squad Leaders vendor.
+2023-06-17:
+  Drathek:
+  - bugfix: Fix grab delay after a tackle for xenos
+  - spellcheck: Added Commander Code of Conduct link to XO entry description and fixed
+      CO capitalization.
+  - code_imp: Replaced sting usage for USS Almayer to MAIN_SHIP_DEFAULT_NAME for Souto
+      ERT, CMB ERT, Provost ERT reporters, XO, and CO.
+  Steelpoint:
+  - bugfix: Larva who spawn in containment in Trijent will now have weeds to grow
+      on.
+  TheGamerdk, ihatethisengine:
+  - bugfix: player can no longer come back in their bodies after ghosting
+2023-06-18:
+  BeagleGaming1:
+  - bugfix: fixes a runtime with paygrades and round start prosthetics
+  realforest2001:
+  - rscadd: Added WY, PMC and UPP faction specific listings for crew monitors.
+  - rscadd: Changed the assignment/job define for Standard PMCs, Detainers and Crewmen
+      to use their manual assignments.
+  - bugfix: Fixes name error for Division Manager.
+  - bugfix: FIxes incorrect faction assignment for CLF corpses.
+  thwompa:
+  - imageadd: new diamond sprite
+2023-06-19:
+  Morrow:
+  - balance: Double barrel shotgun acquisition removal
+  QuickLoad,Frans_Feiffer,nauticall:
+  - rscadd: Adds The Hazmat Joe with two minor variations. This is a Working Joe equipped
+      to handle hazardous situations, dangerous repairs and firefighting! They are
+      complete with their own gear, tasks, job and purpose. Forget the trashbag, get
+      that wall fixed before we get spaced!
+  - imageadd: Adds a new Working Joe model made by Frans Feiffer!
+  - imageadd: Adds two variations of the Working Joe, aka the Hazmat Joe. Complete
+      with accessories! Beautiful sprites by Frans Feiffer!
+  - rscadd: Android Maintenance Stations / Synthetic Repair Stations will remove shrapnel
+      & fix organ damage. Working Joes no longer have knives, and should report to
+      the stations for repair. Gigantic thanks to nauticall for her work on this!!
+  - imagedel: Removes(replaces) the old Working Joe model.
+  - rscadd: Working Joes receive some basic equipment, and are slightly resilient
+      to disarms.
+  - rscadd: Working Joes will start at 3, with a maximum of 6 depending on population.
+  - rscadd: Joes can access a Synthetic vendor to replace their uniform if it is damaged.
+  - bugfix: Minor changes to PO Uniform.
+  SpypigDev:
+  - bugfix: Completed the teleporting pipeline delivery system between OT workshop
+      and Requisitions
+  TheGamerdk:
+  - rscdel: Chem goons only give 1 announcement instead of 3
+  Ultimate-Fluff:
+  - bugfix: Corrected outdated information about one of Dancer's abilities in its
+      strain description.
+  - bugfix: Fixed the erroneously-named copper coin from gold coin.
+  - bugfix: Paper flags with writing on them will not say they are blank in the examine
+      text.
+  ihatethisengine:
+  - bugfix: folding barricade now takes 15% less acid damage instead of 15% extra
+      acid damage, as the description hints.
+  - bugfix: folding barricade now blocks pounces from behind.
+  - qol: collapsing folding barricade by hand is no longer interrupted by taking an
+      item.
+2023-06-20:
+  Morrow:
+  - balance: Xenos can slash trolleys now
+  - balance: Generators can no longer be blown up
+  - balance: Bonus evolution slowly deteriorates over time when all castes are unlocked
+  - balance: Portable Generators can now be turned off/unanchored by xeno slashes

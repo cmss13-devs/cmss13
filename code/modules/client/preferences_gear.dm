@@ -422,23 +422,23 @@ var/global/list/gear_datums_by_name = list()
 	display_name = "Magazine"
 	path = /obj/item/prop/magazine/dirty
 
-/datum/gear/toy/mags/bootsmag
+/datum/gear/toy/mags/boots_magazine_one
 	display_name = "Boots Issue No.117"
 	path = /obj/item/prop/magazine/boots/n117
 
-/datum/gear/toy/mags/bootsmagtwo
+/datum/gear/toy/mags/boots_magazine_two
 	display_name = "Boots Issue No.150"
 	path = /obj/item/prop/magazine/boots/n150
 
-/datum/gear/toy/mags/bootsmagthree
+/datum/gear/toy/mags/boot_magazine_three
 	display_name = "Boots Issue No.160"
 	path = /obj/item/prop/magazine/boots/n160
 
-/datum/gear/toy/mags/bootsmagazinefour
+/datum/gear/toy/mags/boots_magazine_four
 	display_name = "Boots Issue No.54"
 	path = /obj/item/prop/magazine/boots/n054
 
-/datum/gear/toy/mags/bootsmagazinefive
+/datum/gear/toy/mags/boots_magazine_five
 	display_name = "Boots Issue No.55"
 	path = /obj/item/prop/magazine/boots/n055
 

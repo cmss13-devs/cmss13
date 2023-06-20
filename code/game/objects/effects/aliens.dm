@@ -362,7 +362,6 @@
 	if(istype(acid_t, /obj/item/device/flashlight/flare))
 		var/obj/item/device/flashlight/flare/flare = acid_t
 		if(flare.fuel > 0) //Flares that have fuel in them lose fuel instead of melting
-			visible_message(SPAN_BOLDWARNING("[flare.fuel]. [flare_damage]."))
 			flare.fuel -= flare_damage
 			sleep(rand(150,250) * (acid_strength))
 			return .()

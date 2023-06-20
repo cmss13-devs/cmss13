@@ -415,6 +415,30 @@ var/global/list/gear_datums_by_name = list()
 	display_name = "Camera"
 	path = /obj/item/device/camera
 
+/datum/gear/toy/magazinedirty
+	display_name = "Magazine"
+	path = /obj/item/prop/magazine/dirty
+
+/datum/gear/toy/bootsmag
+	display_name = "Boots!: Issue No.117"
+	path = /obj/item/prop/magazine/boots/n117
+
+/datum/gear/toy/bootsmagtwo
+	display_name = "Boots!: Issue No.150"
+	path = /obj/item/prop/magazine/boots/n150
+
+/datum/gear/toy/bootsmagthree
+	display_name = "Boots!: Issue No.160"
+	path = /obj/item/prop/magazine/boots/n160
+
+/datum/gear/toy/bootsmagazinefour
+	display_name = "Boots!: Issue No.54"
+	path = /obj/item/prop/magazine/boots/n054
+
+/datum/gear/toy/bootsmagazinefive
+	display_name = "Boots!: Issue No.55"
+	path = /obj/item/prop/magazine/boots/n055
+
 /datum/gear/toy/film
 	display_name = "Camera film"
 	path = /obj/item/device/camera_film
@@ -462,6 +486,11 @@ var/global/list/gear_datums_by_name = list()
 /datum/gear/toy/walkman
 	display_name = "Walkman"
 	path = /obj/item/device/walkman
+
+/datum/gear/toy/crayon
+	display_name = "Crayon"
+	path = /obj/item/
+	/obj/item/toy/crayon/rainbow
 
 /datum/gear/weapon
 	category = "Weapons"

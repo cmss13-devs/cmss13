@@ -12209,6 +12209,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/structure/prop/dam/truck/damaged,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -12451,13 +12452,6 @@
 	icon_state = "bar"
 	},
 /area/lv624/lazarus/research)
-"UJ" = (
-/obj/effect/vehicle_spawner/van/decrepit,
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/lv624/lazarus/corporate_dome)
 "UK" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor{
@@ -16638,7 +16632,7 @@ SL
 dt
 eB
 eB
-UJ
+yA
 TO
 SL
 jb

@@ -12721,7 +12721,9 @@
 	},
 /area/lv624/lazarus/research)
 "VL" = (
-/obj/structure/prop/dam/van/damaged,
+/obj/structure/prop/dam/truck/damaged{
+	icon_state = "van_damaged"
+	},
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/north_jungle)
 "VN" = (

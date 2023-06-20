@@ -911,8 +911,6 @@
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
-
 /datum/hive_status/proc/free_respawn(client/C)
 	stored_larva++
 	if(!hive_location || !hive_location.spawn_burrowed_larva(C.mob))

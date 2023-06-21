@@ -14,6 +14,7 @@
 
 /datum/action/xeno_action/onclick/palatine_change_roar
 	name = "Change Roar"
+	icon_file = 'icons/mob/hud/actions_palatine.dmi'
 	action_icon_state = "screech_shift"
 	ability_name = "change roar"
 	action_type = XENO_ACTION_CLICK
@@ -44,4 +45,4 @@
 		to_chat(X, SPAN_XENOWARNING("You will now empower your allies with rage!"))
 
 	PR.button.overlays.Cut()
-	PR.button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
+	PR.button.overlays += image('icons/mob/hud/actions_palatine.dmi', button, action_icon_result)

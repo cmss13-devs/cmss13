@@ -220,3 +220,88 @@
   - bugfix: Fixed an internal error when scanning turfs with Black Market scanner.
   realforest2001:
   - spellcheck: Weapon Stats examine UI now shows 'accurate range' rather than 'accuracy'
+2023-06-16:
+  Morrow:
+  - balance: Shipside roles now weight even less for xeno counts.
+  Nanu, Spartanbobby, Julian56:
+  - mapadd: Added W-Y Station, UPP Station, CLF Station and...
+  - admin: Admins can now use the custom ERT stations for events or even base of operations.
+  Steelpoint:
+  - rscadd: Adds a M41A Mk2 kit to the Squad Leaders vendor.
+2023-06-17:
+  Drathek:
+  - bugfix: Fix grab delay after a tackle for xenos
+  - spellcheck: Added Commander Code of Conduct link to XO entry description and fixed
+      CO capitalization.
+  - code_imp: Replaced sting usage for USS Almayer to MAIN_SHIP_DEFAULT_NAME for Souto
+      ERT, CMB ERT, Provost ERT reporters, XO, and CO.
+  Steelpoint:
+  - bugfix: Larva who spawn in containment in Trijent will now have weeds to grow
+      on.
+  TheGamerdk, ihatethisengine:
+  - bugfix: player can no longer come back in their bodies after ghosting
+2023-06-18:
+  BeagleGaming1:
+  - bugfix: fixes a runtime with paygrades and round start prosthetics
+  realforest2001:
+  - rscadd: Added WY, PMC and UPP faction specific listings for crew monitors.
+  - rscadd: Changed the assignment/job define for Standard PMCs, Detainers and Crewmen
+      to use their manual assignments.
+  - bugfix: Fixes name error for Division Manager.
+  - bugfix: FIxes incorrect faction assignment for CLF corpses.
+  thwompa:
+  - imageadd: new diamond sprite
+2023-06-19:
+  Morrow:
+  - balance: Double barrel shotgun acquisition removal
+  QuickLoad,Frans_Feiffer,nauticall:
+  - rscadd: Adds The Hazmat Joe with two minor variations. This is a Working Joe equipped
+      to handle hazardous situations, dangerous repairs and firefighting! They are
+      complete with their own gear, tasks, job and purpose. Forget the trashbag, get
+      that wall fixed before we get spaced!
+  - imageadd: Adds a new Working Joe model made by Frans Feiffer!
+  - imageadd: Adds two variations of the Working Joe, aka the Hazmat Joe. Complete
+      with accessories! Beautiful sprites by Frans Feiffer!
+  - rscadd: Android Maintenance Stations / Synthetic Repair Stations will remove shrapnel
+      & fix organ damage. Working Joes no longer have knives, and should report to
+      the stations for repair. Gigantic thanks to nauticall for her work on this!!
+  - imagedel: Removes(replaces) the old Working Joe model.
+  - rscadd: Working Joes receive some basic equipment, and are slightly resilient
+      to disarms.
+  - rscadd: Working Joes will start at 3, with a maximum of 6 depending on population.
+  - rscadd: Joes can access a Synthetic vendor to replace their uniform if it is damaged.
+  - bugfix: Minor changes to PO Uniform.
+  SpypigDev:
+  - bugfix: Completed the teleporting pipeline delivery system between OT workshop
+      and Requisitions
+  TheGamerdk:
+  - rscdel: Chem goons only give 1 announcement instead of 3
+  Ultimate-Fluff:
+  - bugfix: Corrected outdated information about one of Dancer's abilities in its
+      strain description.
+  - bugfix: Fixed the erroneously-named copper coin from gold coin.
+  - bugfix: Paper flags with writing on them will not say they are blank in the examine
+      text.
+  ihatethisengine:
+  - bugfix: folding barricade now takes 15% less acid damage instead of 15% extra
+      acid damage, as the description hints.
+  - bugfix: folding barricade now blocks pounces from behind.
+  - qol: collapsing folding barricade by hand is no longer interrupted by taking an
+      item.
+2023-06-20:
+  Morrow:
+  - balance: Xenos can slash trolleys now
+  - balance: Generators can no longer be blown up
+  - balance: Bonus evolution slowly deteriorates over time when all castes are unlocked
+  - balance: Portable Generators can now be turned off/unanchored by xeno slashes
+2023-06-21:
+  BeagleGaming1:
+  - rscadd: Melting flares makes the flares burn out faster, instead of melting like
+      normal
+  - balance: Flares last ~10 mins, and flares in the air last ~5 mins
+  Morrow:
+  - rscadd: Re-added the nuke that you can buy via intel at tier 4. Only purchasable
+      past 120 minutes. Requires holding both groundside comms towers for authorization
+      decryption before being able to be armed.
+  TheGamerdk:
+  - bugfix: Forsaken no longer announce themselves as a distress signal

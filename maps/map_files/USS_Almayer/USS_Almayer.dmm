@@ -4860,10 +4860,6 @@
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "apQ" = (
-/obj/structure/disposalpipe/up/almayer{
-	dir = 8;
-	id = "almayerlink_ot_med"
-	},
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/door/window/southleft{
 	desc = "A window, that is also a door. A windoor if you will. This one is stronger.";
@@ -19917,6 +19913,10 @@
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
+	},
+/obj/structure/disposalpipe/up/almayer{
+	dir = 4;
+	id = "almayerlink_OT1_req"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -36629,9 +36629,10 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "gkg" = (
-/obj/structure/disposalpipe/segment{
+/obj/structure/disposalpipe/sortjunction{
 	dir = 4;
-	icon_state = "pipe-c"
+	negdir = 4;
+	posdir = 1
 	},
 /turf/closed/wall/almayer,
 /area/almayer/squads/req)
@@ -38415,6 +38416,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
+"hdV" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "hee" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -41738,6 +41745,13 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/cichallway)
+"iJH" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 4;
+	id = "almayerlink_OT_req"
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "iJS" = (
 /obj/structure/machinery/cm_vending/gear/tl{
 	density = 0;
@@ -42050,6 +42064,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_m_s)
+"iRh" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 8;
+	id = "almayerlink_OT1_req"
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "iRr" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -59406,6 +59427,10 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/upper_hull/u_m_s)
+"rfi" = (
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall/almayer,
+/area/almayer/engineering/engineering_workshop/hangar)
 "rfI" = (
 /obj/structure/sign/safety/airlock{
 	pixel_y = -32
@@ -65789,6 +65814,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south2)
+"uda" = (
+/obj/structure/disposalpipe/up/almayer{
+	id = "almayerlink_OT_req"
+	},
+/turf/closed/wall/almayer,
+/area/almayer/engineering/engineering_workshop/hangar)
 "udi" = (
 /turf/open/floor/almayer{
 	icon_state = "red"
@@ -66377,13 +66408,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/hydroponics)
-"urx" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/closed/wall/almayer,
-/area/almayer/engineering/engineering_workshop/hangar)
 "urM" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -101467,8 +101491,8 @@ gfW
 bUe
 cbR
 ccr
-cmp
-urx
+uda
+rfi
 aqd
 bWM
 bWM
@@ -105035,7 +105059,7 @@ yfv
 bit
 baw
 baw
-baw
+iJH
 kwo
 trb
 aag
@@ -105238,7 +105262,7 @@ abg
 ajC
 baw
 vbB
-baw
+hdV
 kwo
 trb
 aag
@@ -105441,7 +105465,7 @@ avn
 aim
 baw
 dBp
-baw
+iRh
 tQV
 tQV
 aah

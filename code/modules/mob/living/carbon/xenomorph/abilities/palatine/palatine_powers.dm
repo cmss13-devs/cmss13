@@ -10,7 +10,6 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	playsound(xeno.loc, screech_sound_effect, 75, 0, status = 0)
 	if(roar_type == "piercing")
 		var/datum/behavior_delegate/palatine_base/behavior = xeno.behavior_delegate
 		if(!istype(behavior))
@@ -47,6 +46,7 @@
 						YG.decloak(human)
 
 					YG.cloak_timer = xeno_cooldown * 0.1
+	playsound(xeno.loc, screech_sound_effect, 75, 0, status = 0)
 	apply_cooldown()
 
 	. = ..()

@@ -44,6 +44,7 @@
 	tier = 3
 	mutation_type = "Normal"
 	counts_for_slots = FALSE
+	claw_type = CLAW_TYPE_VERY_SHARP
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

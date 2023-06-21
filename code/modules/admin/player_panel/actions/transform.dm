@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	list(
 	  name = XENO_CASTE_PALATINE,
 	  key = /mob/living/carbon/xenomorph/palatine,
-	  color = "lilac"
+	  color = "purple"
 	),
 	list(
 	  name = XENO_CASTE_PREDALIEN,

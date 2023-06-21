@@ -195,7 +195,7 @@
 		if (MAP_NEW_VARADERO)
 			name = "\improper New Varadero map"
 			desc = "The blueprint and readout of the UA outpost New Varadero"
-			html_link = "images/0/0d/Kutjevo_a1.jpg"//replace later
+			html_link = "images/9/94/New_Varadero.png"//replace later
 			color = "red"
 
 		else

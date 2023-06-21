@@ -2587,11 +2587,12 @@
 /turf/closed/wall,
 /area/varadero/interior/technical_storage)
 "bIz" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
+/obj/effect/landmark/xeno_spawn,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
 	},
-/area/varadero/interior_protected/maintenance/south)
+/area/varadero/interior_protected/vessel)
 "bIQ" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
@@ -5212,6 +5213,10 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/security)
+"dGa" = (
+/obj/effect/landmark/xeno_spawn,
+/turf/open/auto_turf/sand_white/layer0,
+/area/varadero/interior/oob)
 "dGr" = (
 /turf/closed/shuttle{
 	dir = 1;
@@ -14462,6 +14467,12 @@
 	dir = 1
 	},
 /area/varadero/interior/hall_N)
+"jVn" = (
+/obj/effect/landmark/xeno_spawn,
+/turf/open/shuttle{
+	icon_state = "floor6"
+	},
+/area/varadero/interior_protected/vessel)
 "jVo" = (
 /obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/medium,
@@ -15178,7 +15189,7 @@
 /area/varadero/interior/hall_NW)
 "kvj" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/prop/resin_prop,
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -16228,6 +16239,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -24168,6 +24180,7 @@
 	dir = 4;
 	icon_state = "chair_alt"
 	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -26722,6 +26735,10 @@
 /area/varadero/exterior/eastbeach{
 	lighting_use_dynamic = 1
 	})
+"rTt" = (
+/obj/structure/prop/resin_prop,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
 "rTu" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/handcuffs,
@@ -27239,6 +27256,15 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/exterior/comms4)
+"skI" = (
+/obj/effect/decal/remains/xeno{
+	pixel_y = 25
+	},
+/obj/effect/landmark/xeno_spawn,
+/turf/open/shuttle{
+	icon_state = "floor6"
+	},
+/area/varadero/interior_protected/vessel)
 "slA" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8;
@@ -28094,6 +28120,7 @@
 /area/varadero/exterior/lz2_near)
 "sMT" = (
 /obj/item/device/mass_spectrometer,
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -29035,6 +29062,16 @@
 	icon_state = "asteroidwarning"
 	},
 /area/varadero/interior/comms1)
+"tEy" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/effect/landmark/xeno_spawn,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/varadero/interior_protected/vessel)
 "tEH" = (
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/gm/river{
@@ -34707,7 +34744,7 @@
 "xtD" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior_protected/maintenance/south)
+/area/varadero/interior_protected/vessel)
 "xtM" = (
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -37327,7 +37364,7 @@ pGs
 pGs
 pGs
 pGs
-rak
+esJ
 rak
 azH
 azH
@@ -38050,7 +38087,7 @@ rak
 rak
 rak
 rak
-rak
+esJ
 azH
 azH
 rak
@@ -38231,13 +38268,13 @@ rak
 rak
 rak
 rak
-rak
+esJ
 aii
-azH
+vxC
 azH
 azH
 aBE
-esJ
+rak
 qnU
 rak
 azH
@@ -38418,9 +38455,9 @@ rak
 azH
 rak
 rak
-vxC
 azH
-esJ
+azH
+rak
 rak
 rak
 azH
@@ -38601,7 +38638,7 @@ rak
 rak
 rak
 aBE
-esJ
+rak
 qnU
 rak
 rak
@@ -38959,7 +38996,7 @@ rak
 rak
 rak
 pGs
-rak
+esJ
 rak
 rak
 rak
@@ -39147,7 +39184,7 @@ rak
 rak
 rak
 aBE
-vxC
+azH
 qnU
 rak
 rak
@@ -39328,9 +39365,9 @@ rak
 rak
 rak
 rak
-esJ
+rak
 hBF
-vxC
+azH
 rak
 rak
 azH
@@ -39505,13 +39542,13 @@ rak
 rak
 pGs
 pGs
-rak
+esJ
 rak
 azH
 rak
 rak
 qnU
-esJ
+rak
 aBE
 rak
 rak
@@ -39868,7 +39905,7 @@ rak
 rak
 rak
 pGs
-dNJ
+dGa
 rak
 rak
 rak
@@ -40051,7 +40088,7 @@ pGs
 pGs
 pGs
 pGs
-rak
+esJ
 rak
 rak
 rak
@@ -40414,12 +40451,12 @@ pGs
 pGs
 pGs
 pGs
-rak
+esJ
 rak
 rak
 qnU
 rak
-rak
+esJ
 azH
 rak
 rak
@@ -40602,7 +40639,7 @@ rak
 rak
 rak
 aii
-azH
+vxC
 rak
 qnU
 rak
@@ -40778,7 +40815,7 @@ pGs
 pGs
 pGs
 pGs
-rak
+esJ
 rak
 rak
 rak
@@ -43119,7 +43156,7 @@ vYW
 vYW
 hto
 ebr
-crY
+hWG
 vYW
 vYW
 vYW
@@ -43301,7 +43338,7 @@ vYW
 vYW
 ebr
 ebr
-qMH
+hWG
 vYW
 vYW
 uQa
@@ -43475,7 +43512,7 @@ uQa
 vYW
 hto
 ebr
-vYW
+sQN
 vYW
 crY
 crY
@@ -43658,10 +43695,10 @@ hto
 ebr
 ebr
 ebr
-vYW
+sQN
 crY
 pJF
-hWG
+crY
 gHJ
 vYW
 vYW
@@ -43840,11 +43877,11 @@ ebr
 ebr
 ebr
 ebr
-vYW
-vYW
-hWG
-crY
 sQN
+vYW
+crY
+crY
+vYW
 vYW
 vYW
 vYW
@@ -44025,7 +44062,7 @@ crY
 vYW
 vYW
 pJF
-hWG
+crY
 uPk
 vYW
 vYW
@@ -44203,7 +44240,7 @@ vYW
 ebr
 ebr
 ebr
-crY
+hWG
 vYW
 crY
 crY
@@ -44571,7 +44608,7 @@ vYW
 vYW
 crY
 pJF
-hWG
+crY
 pJF
 vYW
 vYW
@@ -44752,9 +44789,9 @@ vYW
 vYW
 crY
 vYW
-hWG
+crY
 cYC
-hWG
+crY
 vYW
 vYW
 qMH
@@ -44935,7 +44972,7 @@ vYW
 crY
 vYW
 pJF
-hWG
+crY
 pJF
 vYW
 vYW
@@ -45479,7 +45516,7 @@ crY
 vYW
 vYW
 ebr
-hto
+sQN
 vYW
 vYW
 vYW
@@ -45662,7 +45699,7 @@ vYW
 hto
 ebr
 ebr
-vYW
+sQN
 vYW
 crY
 vYW
@@ -50781,7 +50818,7 @@ aOg
 aOg
 ksX
 ksX
-cto
+qYd
 fLu
 cto
 ksX
@@ -51149,7 +51186,7 @@ sMT
 cto
 cto
 drK
-bIz
+cto
 ksX
 mCF
 mCF
@@ -51508,10 +51545,10 @@ iDn
 wTE
 cto
 cto
-qYd
-qYd
-xtD
-qYd
+cto
+cto
+xxk
+cto
 xxk
 xxk
 xEG
@@ -51683,7 +51720,7 @@ mCF
 mCF
 mCF
 cty
-mCF
+rTt
 mCF
 mCF
 iDn
@@ -51872,12 +51909,12 @@ xEG
 xxk
 cto
 cto
-qYd
-qYd
+cto
+cto
 wgv
-qYd
+cto
 fLu
-bIz
+cto
 ksX
 aBK
 aOg
@@ -52034,8 +52071,8 @@ cty
 cty
 aOg
 aOg
-aOg
-mCF
+uoP
+dOH
 mCF
 nyO
 xxk
@@ -52059,7 +52096,7 @@ xxk
 cto
 cto
 esw
-bIz
+cto
 ksX
 aOg
 mCF
@@ -52216,8 +52253,8 @@ aOg
 aOg
 aOg
 xGV
-aOg
-mCF
+uoP
+dOH
 mCF
 nyO
 cto
@@ -52237,11 +52274,11 @@ hoC
 cty
 ksX
 kgC
-bIz
+qYd
 cto
 cto
 cto
-bIz
+cto
 ksX
 aOg
 mCF
@@ -52419,7 +52456,7 @@ aOg
 cty
 ksX
 kgC
-bIz
+qYd
 cto
 xxk
 cto
@@ -52601,7 +52638,7 @@ aOg
 cty
 ksX
 ksX
-cto
+qYd
 cto
 fLu
 ksX
@@ -69890,7 +69927,7 @@ kTu
 bsf
 avD
 brT
-mvv
+skI
 snS
 snS
 izi
@@ -70074,7 +70111,7 @@ avD
 brT
 brT
 brT
-snS
+uTA
 jbR
 kjI
 snS
@@ -71163,12 +71200,12 @@ ulv
 gNE
 gNE
 avD
-bTN
+tEy
 asf
 kjI
 izi
-uTA
-uTA
+snS
+snS
 izi
 kjI
 jUY
@@ -71531,13 +71568,13 @@ uvd
 uvd
 kjI
 izi
-uTA
-uTA
+snS
+snS
 izi
 kjI
 kEK
 avD
-ulv
+xtD
 bsf
 bsf
 bsf
@@ -71710,12 +71747,12 @@ bsf
 bsf
 nEY
 avD
-uvd
+bIz
 kjI
 qEn
 avD
 avD
-kjI
+jVn
 eiK
 uvd
 ulv
@@ -72439,7 +72476,7 @@ qCT
 bsf
 bsf
 hte
-ulv
+xtD
 kZl
 ulv
 hoU
@@ -72804,7 +72841,7 @@ oUh
 yfV
 bsf
 hte
-ulv
+xtD
 ojK
 jFJ
 ulv

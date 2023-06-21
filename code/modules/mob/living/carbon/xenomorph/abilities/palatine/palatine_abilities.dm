@@ -1,6 +1,6 @@
 /datum/action/xeno_action/onclick/palatine_roar
 	name = "Roar"
-	action_icon_state = "screech"
+	action_icon_state = "screech_empower"
 	ability_name = "roar"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1

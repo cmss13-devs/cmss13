@@ -60,6 +60,7 @@
 		/datum/action/xeno_action/onclick/predalien_roar,
 		/datum/action/xeno_action/onclick/smash,
 		/datum/action/xeno_action/activable/devastate,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	mutation_type = "Normal"
 

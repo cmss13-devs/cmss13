@@ -48,6 +48,8 @@
 
 	minimap_icon = "xenoqueen"
 
+	royal_caste = TRUE
+
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
 		var/datum/hive_status/hive
@@ -79,6 +81,9 @@
 
 
 /mob/hologram/queen/Initialize(mapload, mob/living/carbon/xenomorph/queen/Q)
+	if(!Q)
+		return INITIALIZE_HINT_QDEL
+
 	if(!istype(Q))
 		stack_trace("Tried to initialize a /mob/hologram/queen on type ([Q.type])")
 		return INITIALIZE_HINT_QDEL
@@ -503,8 +508,8 @@
 						egg_amount--
 						new /obj/item/xeno_egg(loc, hivenumber)
 
-/mob/living/carbon/xenomorph/queen/Stat()
-	..()
+/mob/living/carbon/xenomorph/queen/get_status_tab_items()
+	. = ..()
 	var/stored_larvae = GLOB.hive_datum[hivenumber].stored_larva
 	var/xeno_leader_num = hive?.queen_leader_limit - hive?.open_xeno_leader_positions.len
 
@@ -559,6 +564,9 @@
 	set category = "Alien"
 	set name = "Word of the Queen (50)"
 	set desc = "Send a message to all aliens in the hive that is big and visible"
+	if(client.prefs.muted & MUTE_IC)
+		to_chat(src, SPAN_DANGER("You cannot send Announcements (muted)."))
+		return
 	if(health <= 0)
 		to_chat(src, SPAN_WARNING("You can't do that while unconcious."))
 		return FALSE

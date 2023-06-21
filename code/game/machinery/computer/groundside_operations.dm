@@ -201,6 +201,10 @@
 			return
 
 		if("announce")
+			if(usr.client.prefs.muted & MUTE_IC)
+				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
+				return
+
 			if(!is_announcement_active)
 				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
 				return FALSE
@@ -269,13 +273,17 @@
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Searching for helmet cam. No helmet cam found for this marine! Tell your squad to put their helmets on!")]")
 				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping helmet cam view of [cam_target].")]")
+					usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					cam = null
 					usr.reset_view(null)
 				else if(usr.client.view != world_view_size)
 					to_chat(usr, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
+					if(cam)
+						usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					cam = new_cam
 					usr.reset_view(cam)
+					usr.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 
 		if("activate_echo")
 			var/reason = input(usr, "What is the purpose of Echo Squad?", "Activation Reason")
@@ -302,6 +310,8 @@
 	..()
 
 	if(!isRemoteControlling(user))
+		if(cam)
+			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 		cam = null
 		user.reset_view(null)
 

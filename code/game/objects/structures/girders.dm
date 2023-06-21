@@ -81,8 +81,8 @@
 	if(user.action_busy)
 		return TRUE //no afterattack
 
-	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
-		var/obj/item/weapon/melee/twohanded/breacher/current_hammer = W
+	if(istype(W, /obj/item/weapon/twohanded/breacher))
+		var/obj/item/weapon/twohanded/breacher/current_hammer = W
 		if(user.action_busy)
 			return
 		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
@@ -235,7 +235,7 @@
 		to_chat(user, SPAN_NOTICE("You are attaching the metal to the internal structure."))
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 			return TRUE
-		to_chat(user, SPAN_NOTICE("You are attached the metal to the internal structure!"))
+		to_chat(user, SPAN_NOTICE("You have attached the metal to the internal structure!"))
 		step_state = STATE_SCREWDRIVER
 		return TRUE
 
@@ -285,7 +285,7 @@
 		to_chat(user, SPAN_NOTICE("You are attaching the plasteel to the internal structure."))
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 			return TRUE
-		to_chat(user, SPAN_NOTICE("You are attached the plasteel to the internal structure!"))
+		to_chat(user, SPAN_NOTICE("You have attached the plasteel to the internal structure!"))
 		step_state = STATE_SCREWDRIVER
 		return TRUE
 

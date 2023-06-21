@@ -5,7 +5,7 @@
 
 	icon_state = "apc_base_com"
 
-	interior_map = "apc_command"
+	interior_map = /datum/map_template/interior/apc_command
 
 	passengers_slots = 8
 

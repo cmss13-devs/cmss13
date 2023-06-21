@@ -48,14 +48,24 @@
 			if(!got_evolution_message)
 				evolve_message()
 				got_evolution_message = TRUE
+
 			if(ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)
 				evolution_stored += progress_amount
+				return
+
+			if(evolution_stored > evolution_threshold + progress_amount)
+				evolution_stored -= progress_amount
+				return
+
 		else
 			evolution_stored += progress_amount
 
 /mob/living/carbon/xenomorph/proc/evolve_message()
 	to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
+
+	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
+	evolve_action.give_to(src)
 
 // Always deal 80% of damage and deal the other 20% depending on how many fire stacks mob has
 #define PASSIVE_BURN_DAM_CALC(intensity, duration, fire_stacks) intensity*(fire_stacks/duration*0.2 + 0.8)
@@ -73,8 +83,10 @@
 		G.die()
 		drop_inv_item_on_ground(G)
 	if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
-		var/dmg = armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks))
-		apply_damage(dmg, BURN)
+		if(caste.fire_immunity & FIRE_VULNERABILITY && caste.fire_vulnerability_mult >= 1)
+			apply_damage(PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks) * caste.fire_vulnerability_mult, BURN)
+		else
+			apply_damage(armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks)), BURN)
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), pick("roar", "needhelp"))
 
 #undef PASSIVE_BURN_DAM_CALC
@@ -210,9 +222,9 @@
 	//Deal with dissolving/damaging stuff in stomach.
 	if(stomach_contents.len)
 		for(var/atom/movable/M in stomach_contents)
-			if(ishuman_strict(M))
-				if(world.time == (devour_timer - 30))
-					to_chat(usr, SPAN_WARNING("You're about to regurgitate [M]..."))
+			if(ishuman(M))
+				if(world.time > devour_timer - 50 && world.time < devour_timer - 30)
+					to_chat(src, SPAN_WARNING("You're about to regurgitate [M]..."))
 					playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
 				var/mob/living/carbon/human/H = M
 				if(world.time > devour_timer || (H.stat == DEAD && !H.chestburst))
@@ -392,7 +404,7 @@ Make sure their actual health updates immediately.*/
 		return
 
 	var/atom/tracking_atom
-	switch(QL.track_state)
+	switch(QL.track_state[1])
 		if(TRACKER_QUEEN)
 			if(!hive || !hive.living_xeno_queen)
 				QL.icon_state = "trackoff"
@@ -403,8 +415,13 @@ Make sure their actual health updates immediately.*/
 				QL.icon_state = "trackoff"
 				return
 			tracking_atom = hive.hive_location
-		else
-			var/leader_tracker = text2num(QL.track_state)
+		if(TRACKER_LEADER)
+			if(!QL.track_state[2])
+				QL.icon_state = "trackoff"
+				return
+
+			var/leader_tracker = QL.track_state[2]
+
 			if(!hive || !hive.xeno_leader_list)
 				QL.icon_state = "trackoff"
 				return
@@ -415,6 +432,23 @@ Make sure their actual health updates immediately.*/
 				QL.icon_state = "trackoff"
 				return
 			tracking_atom = hive.xeno_leader_list[leader_tracker]
+		if(TRACKER_TUNNEL)
+			if(!QL.track_state[2])
+				QL.icon_state = "trackoff"
+				return
+
+			var/tunnel_tracker = QL.track_state[2]
+
+			if(!hive || !hive.tunnels)
+				QL.icon_state = "trackoff"
+				return
+			if(tunnel_tracker > hive.tunnels.len)
+				QL.icon_state = "trackoff"
+				return
+			if(!hive.tunnels[tunnel_tracker])
+				QL.icon_state = "trackoff"
+				return
+			tracking_atom = hive.tunnels[tunnel_tracker]
 
 	if(!tracking_atom)
 		QL.icon_state = "trackoff"

@@ -170,6 +170,9 @@
 	if(flags_item & ITEM_PREDATOR)
 		AddElement(/datum/element/yautja_tracked_item)
 
+	if(flags_item & MOB_LOCK_ON_EQUIP)
+		AddComponent(/datum/component/id_lock)
+
 /obj/item/Destroy()
 	flags_item &= ~DELONDROP //to avoid infinite loop of unequip, delete, unequip, delete.
 	flags_item &= ~NODROP //so the item is properly unequipped if on a mob.
@@ -304,6 +307,9 @@ cases. Override_icon_state should be a list.*/
 // Due to storage type consolidation this should get used more now.
 // I have cleaned it up a little, but it could probably use more.  -Sayu
 /obj/item/attackby(obj/item/W, mob/user)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACKED, W, user) & COMPONENT_CANCEL_ITEM_ATTACK)
+		return
+
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W
 		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
@@ -409,8 +415,6 @@ cases. Override_icon_state should be a list.*/
 	SHOULD_CALL_PARENT(TRUE)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
-	if((flags_item & MOB_LOCK_ON_EQUIP) && !locked_to_mob)
-		locked_to_mob = user
 
 	if(item_action_slot_check(user, slot))
 		add_verb(user, verbs)
@@ -462,14 +466,8 @@ cases. Override_icon_state should be a list.*/
 	if(!M)
 		return FALSE
 
-	if(flags_item & MOB_LOCK_ON_EQUIP && locked_to_mob)
-		if(locked_to_mob.undefibbable && locked_to_mob.stat == DEAD || QDELETED(locked_to_mob))
-			locked_to_mob = null
-
-		if(locked_to_mob != M)
-			if(!disable_warning)
-				to_chat(M, SPAN_WARNING("This item has been ID-locked to [locked_to_mob]."))
-			return FALSE
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTEMPTING_EQUIP, M) & COMPONENT_CANCEL_EQUIP)
+		return FALSE
 
 	if(ishuman(M))
 		//START HUMAN
@@ -783,7 +781,9 @@ cases. Override_icon_state should be a list.*/
 
 
 /obj/item/proc/showoff(mob/user)
-	for (var/mob/M in view(user))
+	var/list/viewers = get_mobs_in_view(world_view_size, user)
+	user.langchat_speech("holds up [src].", viewers, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+	for (var/mob/M in viewers)
 		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>", SHOW_MESSAGE_VISIBLE)
 
 /mob/living/carbon/verb/showoff()

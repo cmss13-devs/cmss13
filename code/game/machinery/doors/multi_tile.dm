@@ -281,6 +281,19 @@
 		return // in orbit
 	..()
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.hive_pos != XENO_QUEEN)
+		return ..()
+
+	if(!locked)
+		return ..()
+
+	to_chat(xeno, SPAN_NOTICE("You try and force the doors open"))
+	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		unlock(TRUE)
+		open(1)
+		lock(TRUE)
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1
 	name = "\improper Alamo cargo door"
 	icon = 'icons/obj/structures/doors/dropship1_cargo.dmi'
@@ -523,15 +536,14 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared
 	name = "\improper Squads Preparations"
 	icon = 'icons/obj/structures/doors/prepdoor.dmi'
-	req_access = list(ACCESS_MARINE_PREP)
-	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
+	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo
 	name = "\improper Alpha-Bravo Squads Preparations"
 	icon = 'icons/obj/structures/doors/2x1prepdoor_alpha.dmi'
-	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO)
+	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo/yellow
 	icon = 'icons/obj/structures/doors/2x1prepdoor_bravo.dmi'
@@ -539,7 +551,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/charlie_delta
 	name = "\improper Charlie-Delta Squads Preparations"
 	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi'
-	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
+	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/charlie_delta/blue
 	icon = 'icons/obj/structures/doors/2x1prepdoor_delta.dmi'

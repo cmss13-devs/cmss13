@@ -39,13 +39,13 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/minimap_added = list()
 
 /datum/controller/subsystem/minimaps/Initialize(start_timeofday)
-	for(var/level=1 to length(SSmapping.z_list))
+	for(var/level in 1 to length(SSmapping.z_list))
 		minimaps_by_z["[level]"] = new /datum/hud_displays
-		if(!is_ground_level(level))
+		if(!is_ground_level(level) && !is_mainship_level(level))
 			continue
 		var/icon/icon_gen = new('icons/ui_icons/minimap.dmi') //480x480 blank icon template for drawing on the map
-		for(var/xval = 1 to world.maxx)
-			for(var/yval = 1 to world.maxy) //Scan all the turfs and draw as needed
+		for(var/xval in 1 to world.maxx)
+			for(var/yval in 1 to world.maxy) //Scan all the turfs and draw as needed
 				var/turf/location = locate(xval,yval,level)
 				if(istype(location, /turf/open/space))
 					continue
@@ -93,13 +93,23 @@ SUBSYSTEM_DEF(minimaps)
 
 		minimaps_by_z["[level]"].hud_image = icon_gen //done making the image!
 
+	RegisterSignal(SSdcs, COMSIG_GLOB_NEW_Z, PROC_REF(handle_new_z))
+
 	initialized = TRUE
 
-	for(var/i=1 to length(earlyadds)) //lateload icons
+	for(var/i in 1 to length(earlyadds)) //lateload icons
 		earlyadds[i].Invoke()
 	earlyadds = null //then clear them
 
 	return SS_INIT_SUCCESS
+
+/datum/controller/subsystem/minimaps/proc/handle_new_z(dcs, datum/space_level/z_level)
+	SIGNAL_HANDLER
+
+	if(minimaps_by_z["[z_level.z_value]"])
+		return
+
+	minimaps_by_z["[z_level.z_value]"] = new /datum/hud_displays
 
 /datum/controller/subsystem/minimaps/stat_entry(msg)
 	msg = "Upd:[length(update_targets_unsorted)] Mark: [length(removal_cbs)]"
@@ -125,7 +135,10 @@ SUBSYSTEM_DEF(minimaps)
 			depthcount++
 			continue
 		for(var/datum/minimap_updator/updator as anything in update_targets[flag])
-			updator.minimap.overlays += minimaps_by_z["[updator.ztarget]"].images_raw[flag]
+			if(length(updator.minimap.overlays))
+				updator.minimap.overlays += minimaps_by_z["[updator.ztarget]"].images_raw[flag]
+			else
+				updator.minimap.overlays = minimaps_by_z["[updator.ztarget]"].images_raw[flag]
 		depthcount++
 		iteration++
 		if(MC_TICK_CHECK)
@@ -239,8 +252,8 @@ SUBSYSTEM_DEF(minimaps)
 		minimaps_by_z["[zlevel]"].images_raw["[flag]"] += blip
 	if(ismovableatom(target))
 		RegisterSignal(target, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_z_change))
-		RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
-	removal_cbs[target] = CALLBACK(src, PROC_REF(removeimage), blip, target, zlevel)
+		blip.RegisterSignal(target, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/image, minimap_on_move))
+	removal_cbs[target] = CALLBACK(src, PROC_REF(removeimage), blip, target)
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_marker))
 
 
@@ -248,9 +261,10 @@ SUBSYSTEM_DEF(minimaps)
 /**
  * removes an image from raw tracked lists, invoked by callback
  */
-/datum/controller/subsystem/minimaps/proc/removeimage(image/blip, atom/target, zlevel)
+/datum/controller/subsystem/minimaps/proc/removeimage(image/blip, atom/target)
 	for(var/flag in GLOB.all_minimap_flags)
-		minimaps_by_z["[zlevel]"].images_raw["[flag]"] -= blip
+		minimaps_by_z["[target.z]"].images_raw["[flag]"] -= blip
+	blip.UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 	removal_cbs -= target
 
 /**
@@ -269,29 +283,30 @@ SUBSYSTEM_DEF(minimaps)
 		minimaps_by_z["[oldz]"].images_assoc["[flag]"] -= source
 		minimaps_by_z["[oldz]"].images_raw["[flag]"] -= ref_old
 
-		removal_cbs -= source
-		removal_cbs[source] = CALLBACK(src, PROC_REF(removeimage), ref_old, source, newz)
-
 /**
  * Simple proc, updates overlay position on the map when a atom moves
  */
-/datum/controller/subsystem/minimaps/proc/on_move(atom/movable/source, oldloc)
+/image/proc/minimap_on_move(atom/movable/source, oldloc)
 	SIGNAL_HANDLER
 
 	var/source_z = source.z
 	if(!source_z)
 		return
-	images_by_source[source].pixel_x = MINIMAP_PIXEL_FROM_WORLD(source.x) + minimaps_by_z["[source_z]"].x_offset
-	images_by_source[source].pixel_y = MINIMAP_PIXEL_FROM_WORLD(source.y) + minimaps_by_z["[source_z]"].y_offset
+	pixel_x = MINIMAP_PIXEL_FROM_WORLD(source.x) + SSminimaps.minimaps_by_z["[source_z]"].x_offset
+	pixel_y = MINIMAP_PIXEL_FROM_WORLD(source.y) + SSminimaps.minimaps_by_z["[source_z]"].y_offset
 
 /**
- * Removes an atom and it's blip from the subsystem
+ * Removes an atom and it's blip from the subsystem.
+ * Force has no effect on this proc, but is here because we are a COMSIG_PARENT_QDELETING handler.
  */
-/datum/controller/subsystem/minimaps/proc/remove_marker(atom/source, minimap_flag)
+/datum/controller/subsystem/minimaps/proc/remove_marker(atom/source, force, minimap_flag)
 	SIGNAL_HANDLER
 	if(!removal_cbs[source]) //already removed
 		return
-	UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED, COMSIG_MOVABLE_Z_CHANGED))
+	UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_Z_CHANGED))
+	images_by_source -= source
+	removal_cbs[source].Invoke()
+	removal_cbs -= source
 	var/turf/turf_gotten = get_turf(source)
 	if(!turf_gotten)
 		return
@@ -301,10 +316,6 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		for(var/flag in GLOB.all_minimap_flags)
 			minimaps_by_z["[z_level]"].images_assoc["[flag]"] -= source
-	images_by_source -= source
-	removal_cbs[source].Invoke()
-	removal_cbs -= source
-
 
 /**
  * Fetches a /atom/movable/screen/minimap instance or creates on if none exists
@@ -427,8 +438,8 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap
 	var/allowed_flags = MINIMAP_FLAG_USCM
-	///by default Zlevel 3, groundside is targeted
-	var/targeted_zlevel = 3
+	/// by default the ground map - this picks the first level matching the trait. if it exists
+	var/targeted_ztrait = ZTRAIT_GROUND
 	var/atom/owner
 
 	var/datum/tacmap_holder/map_holder
@@ -444,7 +455,10 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap/tgui_interact(mob/user, datum/tgui/ui)
 	if(!map_holder)
-		map_holder = SSminimaps.fetch_tacmap_datum(targeted_zlevel, allowed_flags)
+		var/level = SSmapping.levels_by_trait(targeted_ztrait)
+		if(!level[1])
+			return
+		map_holder = SSminimaps.fetch_tacmap_datum(level[1], allowed_flags)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

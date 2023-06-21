@@ -34,6 +34,10 @@
 	var/cloaked = 0
 	var/cloak_timer = 0
 	var/cloak_malfunction = 0
+	/// Determines the alpha level of the cloaking device.
+	var/cloak_alpha = 50
+	/// If TRUE will change the mob invisibility level, providing 100% invisibility. Exclusively for events.
+	var/true_cloak = FALSE
 
 	var/mob/living/carbon/human/owner //Pred spawned on, or thrall given to.
 	var/obj/item/clothing/gloves/yautja/linked_bracer //Bracer linked to this one (thrall or mentor).
@@ -187,8 +191,8 @@
 	name = "clan bracers"
 	desc = "An extremely complex, yet simple-to-operate set of armored bracers worn by the Yautja. It has many functions, activate them to use some."
 
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
@@ -198,6 +202,8 @@
 
 	charge = 3000
 	charge_max = 3000
+
+	cloak_alpha = 10
 
 	var/exploding = 0
 	var/inject_timer = 0
@@ -317,7 +323,7 @@
 		if(5)
 			. = injectors_internal(caller, TRUE)
 		if(6)
-			. = call_disk_internal(caller, TRUE)
+			. = call_disc_internal(caller, TRUE)
 		if(7)
 			. = translate_internal(caller, TRUE)
 		if(8)
@@ -491,6 +497,7 @@
 		return
 
 	var/mob/living/carbon/human/M = caller
+	var/new_alpha = cloak_alpha
 
 	if(!istype(M) || M.is_mob_incapacitated())
 		return FALSE
@@ -522,11 +529,15 @@
 		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, PROC_REF(bullet_hit))
 
 		cloak_timer = world.time + 1.5 SECONDS
+		if(true_cloak)
+			M.invisibility = INVISIBILITY_LEVEL_ONE
+			M.see_invisible = SEE_INVISIBLE_LEVEL_ONE
+			new_alpha = 75
 
 		log_game("[key_name_admin(usr)] has enabled their cloaking device.")
 		M.visible_message(SPAN_WARNING("[M] vanishes into thin air!"), SPAN_NOTICE("You are now invisible to normal detection."))
 		playsound(M.loc,'sound/effects/pred_cloakon.ogg', 15, 1)
-		animate(M, alpha = 10, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
+		animate(M, alpha = new_alpha, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
 
 		var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
 		SA.remove_from_hud(M)
@@ -563,6 +574,9 @@
 	user.visible_message(SPAN_WARNING("[user] shimmers into existence!"), SPAN_WARNING("Your cloaking device deactivates."))
 	playsound(user.loc, 'sound/effects/pred_cloakoff.ogg', 15, 1)
 	user.alpha = initial(user.alpha)
+	if(true_cloak)
+		user.invisibility = initial(user.invisibility)
+		user.see_invisible = initial(user.see_invisible)
 	cloak_timer = world.time + 5 SECONDS
 
 	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
@@ -696,7 +710,7 @@
 						var/area/A = get_area(M)
 						var/turf/T = get_turf(M)
 						if(A)
-							message_admins(FONT_SIZE_HUGE("ALERT: [M] ([M.key]) triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)</font>"))
+							message_admins(FONT_SIZE_HUGE("ALERT: [M] ([M.key]) triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name] [ADMIN_JMP(T)]</font>"))
 							log_attack("[key_name(M)] triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name]")
 						if (!bracer.exploding)
 							bracer.explode(victim)
@@ -740,7 +754,7 @@
 		to_chat(M, SPAN_DANGER("You set the timer. May your journey to the great hunting grounds be swift."))
 		var/area/A = get_area(M)
 		var/turf/T = get_turf(M)
-		message_admins(FONT_SIZE_HUGE("ALERT: [M] ([M.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
+		message_admins(FONT_SIZE_HUGE("ALERT: [M] ([M.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] [ADMIN_JMP(T)]"))
 		log_attack("[key_name(M)] triggered their predator self-destruct sequence in [A ? "in [A.name]":""]")
 		message_all_yautja("[M.real_name] has triggered their bracer's self-destruction sequence.")
 		explode(M)
@@ -830,15 +844,15 @@
 		to_chat(loc, SPAN_NOTICE("Your bracers beep faintly and inform you that a new healing capsule is ready to be created."))
 	healing_capsule_timer = FALSE
 
-/obj/item/clothing/gloves/yautja/hunter/verb/call_disk()
+/obj/item/clothing/gloves/yautja/hunter/verb/call_disc()
 	set name = "Call Smart-Disc"
 	set category = "Yautja.Weapons"
 	set desc = "Call back your smart-disc, if it's in range. If not you'll have to go retrieve it."
 	set src in usr
-	. = call_disk_internal(usr, FALSE)
+	. = call_disc_internal(usr, FALSE)
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/call_disk_internal(mob/caller, forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/call_disc_internal(mob/caller, forced = FALSE)
 	if(caller.is_mob_incapacitated())
 		return FALSE
 
@@ -935,7 +949,9 @@
 	if(.)
 		return
 
-	for(var/obj/item/weapon/melee/yautja/combistick/C in range(7))
+	for(var/obj/item/weapon/yautja/combistick/C in range(7))
+		if(C in caller.contents) //Can't yank if they are wearing it
+			return FALSE
 		if(caller.put_in_active_hand(C))//Try putting it in our active hand, or, if it's full...
 			if(!drain_power(caller, 70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.
 				return TRUE
@@ -960,6 +976,10 @@
 
 	. = check_random_function(caller, forced)
 	if(.)
+		return
+
+	if(caller.client.prefs.muted & MUTE_IC)
+		to_chat(caller, SPAN_DANGER("You cannot translate (muted)."))
 		return
 
 	caller.create_typing_indicator()

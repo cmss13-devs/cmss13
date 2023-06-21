@@ -13,6 +13,7 @@
 	var/tray_path = /obj/structure/morgue_tray
 	var/morgue_open = 0
 	var/exit_stun = 2
+	var/update_name = TRUE
 	anchored = TRUE
 	throwpass = 1
 
@@ -57,19 +58,20 @@
 			if(!A.anchored)
 				A.forceMove(src)
 		connected.forceMove(src)
-		name = "morgue"
-		var/mob/living/L = locate(/mob/living) in contents
-		if(L)
-			name = "morgue ([L])"
-		else
-			var/obj/structure/closet/bodybag/B = locate(/obj/structure/closet/bodybag) in contents
-			if(B)
-				L = locate(/mob/living) in B.contents
-				if(L)
-					name = "morgue ([L])"
+		if(update_name)
+			name = initial(name)
+			var/mob/living/L = locate(/mob/living) in contents
+			if(L)
+				name = "[name] ([L])"
+			else
+				var/obj/structure/closet/bodybag/B = locate(/obj/structure/closet/bodybag) in contents
+				if(B)
+					L = locate(/mob/living) in B.contents
+					if(L)
+						name = "[name] ([L])"
 
 	else
-		name = "morgue"
+		name = initial(name)
 		connected.forceMove(loc)
 		if(step(connected, dir))
 			connected.setDir(dir)
@@ -282,10 +284,11 @@
 
 /obj/structure/morgue/sarcophagus
 	name = "sarcophagus"
-	desc = "Used to store predators."
+	desc = "Used to store fallen warriors."
 	icon_state = "sarcophagus1"
 	morgue_type = "sarcophagus"
 	tray_path = /obj/structure/morgue_tray/sarcophagus
+	update_name = FALSE
 
 
 /*

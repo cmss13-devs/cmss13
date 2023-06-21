@@ -38,6 +38,11 @@
 		. += SPAN_NOTICE(" Nothing.")
 	if(reagents)
 		. += SPAN_NOTICE("Total volume: [reagents.total_volume] / [reagents.maximum_volume].")
+	if(dispensing)
+		. += SPAN_NOTICE("\nTransfer mode: Dispensing")
+	else
+		. += SPAN_NOTICE("\nTransfer mode: Filling")
+	. += SPAN_NOTICE("Transfer rate: [amount_per_transfer_from_this] units")
 
 /obj/structure/reagent_dispensers/Destroy()
 	playsound(src.loc, 'sound/effects/slosh.ogg', 50, 1, 3)
@@ -66,7 +71,7 @@
 /obj/structure/reagent_dispensers/bullet_act(obj/item/projectile/Proj)
 	health -= Proj.damage
 	if(Proj.firer)
-		msg_admin_niche("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+		msg_admin_niche("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) [ADMIN_JMP(loc)].")
 		log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	healthcheck()
@@ -221,7 +226,7 @@
 			"You wrench [src]'s faucet [modded ? "closed" : "open"]")
 		modded = modded ? 0 : 1
 		if (modded)
-			message_admins("[key_name_admin(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)")
+			message_admins("[key_name_admin(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel. [ADMIN_JMP(loc)]")
 			log_game("[key_name(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel.")
 			leak_fuel(amount_per_transfer_from_this)*/
 	if(istype(W,/obj/item/device/assembly_holder))
@@ -243,7 +248,7 @@
 
 		var/obj/item/device/assembly_holder/H = W
 		if (istype(H.a_left,/obj/item/device/assembly/igniter) || istype(H.a_right,/obj/item/device/assembly/igniter))
-			msg_admin_niche("[key_name_admin(user)] rigged [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) for explosion. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)")
+			msg_admin_niche("[key_name_admin(user)] rigged [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) for explosion. [ADMIN_JMP(loc)]")
 			log_game("[key_name(user)] rigged [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) for explosion.")
 
 		rig = W
@@ -298,7 +303,7 @@
 
 	if(Proj.damage > 10 && prob(60) && !reinforced)
 		if(Proj.firer)
-			message_admins("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+			message_admins("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) [ADMIN_JMP(loc)].")
 			log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
 		exploding = TRUE
 		explode()

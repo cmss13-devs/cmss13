@@ -143,10 +143,6 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/dropped(mob/user)
 	. = ..()
 
-	stop_aim()
-	if (user && user.client)
-		user.update_gun_icons()
-
 	turn_off_light(user)
 
 	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
@@ -261,9 +257,6 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/attack_self(mob/user)
 	..()
-	if (target)
-		lower_aim()
-		return
 
 	//There are only two ways to interact here.
 	if(flags_item & TWOHANDED)
@@ -821,10 +814,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 
 	flags_gun_features ^= GUN_TRIGGER_SAFETY
-	gun_safety_message(usr)
+	gun_safety_handle(usr)
 
 
-/obj/item/weapon/gun/proc/gun_safety_message(mob/user)
+/obj/item/weapon/gun/proc/gun_safety_handle(mob/user)
 	to_chat(user, SPAN_NOTICE("You toggle the safety [SPAN_BOLD(flags_gun_features & GUN_TRIGGER_SAFETY ? "on" : "off")]."))
 	playsound(user, 'sound/weapons/handling/safety_toggle.ogg', 25, 1)
 
@@ -938,3 +931,19 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND)
 		return FALSE
 	return TRUE
+
+/**
+ * Returns one of the two override values if either are null, preferring the argument value.
+ * Otherwise, returns TRUE if it is in a civilian usable category (Handguns or SMGs), FALSE if it is not.
+ */
+/obj/item/weapon/gun/proc/is_civilian_usable(mob/user, arg_override)
+	if(!isnull(arg_override))
+		return arg_override
+
+	if(!isnull(civilian_usable_override))
+		return civilian_usable_override
+
+	if(gun_category in UNTRAINED_USABLE_CATEGORIES)
+		return TRUE
+
+	return FALSE

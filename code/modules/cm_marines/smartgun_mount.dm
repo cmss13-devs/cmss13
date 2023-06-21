@@ -16,7 +16,7 @@
 /obj/item/coin/marine/engineer
 	name = "marine engineer support token"
 	desc = "Insert this into an engineer vendor in order to access a support weapon."
-	icon_state = "coin_adamantine"
+	icon_state = "coin_platinum"
 
 // First thing we need is the ammo drum for this thing.
 /obj/item/ammo_magazine/m56d
@@ -107,7 +107,7 @@
 		return
 	if(!has_mount)
 		return
-	if(user.z == GLOB.interior_manager.interior_z)
+	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
 	var/turf/T = get_turf(usr)
@@ -191,7 +191,7 @@
 
 	if(!ishuman(usr))
 		return
-	if(user.z == GLOB.interior_manager.interior_z)
+	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
 	var/turf/T = get_turf(user)
@@ -552,7 +552,7 @@
 
 	if(istype(O, /obj/item/ammo_magazine/m56d)) // RELOADING DOCTOR FREEMAN.
 		var/obj/item/ammo_magazine/m56d/M = O
-		if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_DEFAULT))
+		if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
 			if(rounds)
 				to_chat(user, SPAN_WARNING("You only know how to swap the ammo drum when it's empty."))
 				return
@@ -1058,7 +1058,7 @@
 	if(broken_gun)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src], it's completely broken!"))
 		return FALSE
-	if(user.z == GLOB.interior_manager.interior_z)
+	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return FALSE
 	if(OT.density || !isturf(OT))

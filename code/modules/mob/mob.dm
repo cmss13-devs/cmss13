@@ -3,6 +3,7 @@
 	GLOB.dead_mob_list -= src
 	GLOB.alive_mob_list -= src
 	GLOB.player_list -= src
+	GLOB.freed_mob_list -= src
 
 	ghostize(FALSE)
 
@@ -21,6 +22,7 @@
 	QDEL_NULL_LIST(viruses)
 	resistances?.Cut()
 	QDEL_LIST_ASSOC_VAL(implants)
+	qdel(hud_used) // The hud will null it
 
 	. = ..()
 
@@ -46,8 +48,7 @@
 	attack_log = null
 	item_verbs = null
 	luminosity_sources = null
-
-
+	focus = null
 
 /mob/Initialize()
 	if(!faction_group)
@@ -190,11 +191,12 @@
 // Show a message to all mobs in earshot of this atom
 // Use for objects performing only audible actions
 // message is output to anyone who can see, e.g. "The [src] does something!"
-/atom/proc/audible_message(message, max_distance, message_flags = CHAT_TYPE_OTHER)
+// deaf_message (optional) is what deaf people will see e.g. "[X] shouts something silently."
+/atom/proc/audible_message(message, deaf_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/hear_dist = 7
 	if(max_distance) hear_dist = max_distance
 	for(var/mob/M as anything in hearers(hear_dist, src.loc))
-		M.show_message(message, 2, message_flags = message_flags)
+		M.show_message(message, SHOW_MESSAGE_AUDIBLE, deaf_message, SHOW_MESSAGE_VISIBLE, message_flags = message_flags)
 
 /atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7
@@ -254,6 +256,9 @@
 //unset redraw_mob to prevent the mob from being redrawn at the end.
 /mob/proc/equip_to_slot_if_possible(obj/item/W, slot, ignore_delay = 1, del_on_fail = 0, disable_warning = 0, redraw_mob = 1, permanent = 0)
 	if(!istype(W))
+		return FALSE
+
+	if(SEND_SIGNAL(src, COMSIG_MOB_ATTEMPTING_EQUIP, W, slot) & COMPONENT_MOB_CANCEL_ATTEMPT_EQUIP)
 		return FALSE
 
 	if(!W.mob_can_equip(src, slot, disable_warning))
@@ -354,6 +359,9 @@
 		SEND_SIGNAL(client, COMSIG_CLIENT_RESET_VIEW, A)
 	return
 
+/mob/proc/reset_observer_view_on_deletion(atom/deleted, force)
+	SIGNAL_HANDLER
+	reset_view(null)
 
 /mob/proc/show_inv(mob/user)
 	user.set_interaction(src)
@@ -631,24 +639,19 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 // Typo from the oriignal coder here, below lies the jitteriness process. So make of his code what you will, the previous comment here was just a copypaste of the above.
 /mob/proc/jittery_process()
-	//var/old_x = pixel_x
-	//var/old_y = pixel_y
+	var/jittering_old_x = pixel_x
+	var/jittering_old_y = pixel_y
 	is_jittery = 1
 	while(jitteriness > 100)
-// var/amplitude = jitteriness*(sin(jitteriness * 0.044 * world.time) + 1) / 70
-// pixel_x = amplitude * sin(0.008 * jitteriness * world.time)
-// pixel_y = amplitude * cos(0.008 * jitteriness * world.time)
-
 		var/amplitude = min(4, jitteriness / 100)
-		pixel_x = old_x + rand(-amplitude, amplitude)
-		pixel_y = old_y + rand(-amplitude/3, amplitude/3)
+		pixel_x = jittering_old_x + rand(-amplitude, amplitude)
+		pixel_y = jittering_old_y + rand(-amplitude/3, amplitude/3)
 
 		sleep(1)
 	//endwhile - reset the pixel offsets to zero
 	is_jittery = 0
-	pixel_x = old_x
-	pixel_y = old_y
-
+	pixel_x = jittering_old_x
+	pixel_y = jittering_old_y
 
 //handles up-down floaty effect in space
 /mob/proc/make_floating(n)
@@ -845,7 +848,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			return FALSE
 		to_chat(usr, SPAN_WARNING("You attempt to get a good grip on [selection] in [src]'s body."))
 
-	if(!do_after(usr, 80 * usr.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	if(!do_after(usr, 80 * usr.get_skill_duration_multiplier(SKILL_SURGERY), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 	if(!selection || !src || !usr || !istype(selection))
 		return

@@ -75,7 +75,7 @@
 		if(2)
 			action_name = "Corrosive Acid (100)"
 		if(3)
-			action_name = "Corrosive Acid (200)"
+			action_name = "Corrosive Acid (125)"
 
 	handle_xeno_macro(src, action_name)
 

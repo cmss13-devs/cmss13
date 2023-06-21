@@ -11,7 +11,7 @@
 	containername = "B12 pattern marine armor crate"
 	group = "Restricted Equipment"
 
-/datum/supply_packs/armor_rto
+/datum/supply_packs/armor_tl
 	name = "M4 pattern marine armor crate (x1 helmet, x1 armor)"
 	contains = list(
 		/obj/item/clothing/head/helmet/marine/rto,

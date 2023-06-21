@@ -37,20 +37,20 @@
 	var/mob_icon_state_path = null //The icon_state path for mobs
 	var/datum/cause_data/cause_data = null //Cause data for statistics
 
-/datum/effects/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest")
-	if(!validate_atom(A) || QDELETED(A))
+/datum/effects/New(atom/thing, mob/from = null, last_dmg_source = null, zone = "chest")
+	if(!validate_atom(thing) || QDELETED(thing))
 		qdel(src)
 		return
 	START_PROCESSING(SSeffects, src)
 
-	affected_atom = A
+	affected_atom = thing
 	LAZYADD(affected_atom.effects_list, src)
 	on_apply_effect()
 	def_zone = zone
 	cause_data = create_cause_data(last_dmg_source, from)
 
-/datum/effects/proc/validate_atom(atom/A)
-	if(iscarbon(A) || isobj(A))
+/datum/effects/proc/validate_atom(atom/thing)
+	if(iscarbon(thing) || isobj(thing))
 		return TRUE
 
 	return FALSE

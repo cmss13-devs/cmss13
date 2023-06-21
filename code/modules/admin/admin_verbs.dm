@@ -17,6 +17,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/cmd_admin_subtle_message,
 	/client/proc/cmd_admin_object_narrate,
 	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
+	/client/proc/cmd_admin_create_bioscan,
 	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
 	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
 	/client/proc/cmd_admin_create_AI_apollo_report,  //Allows creation of IC reports to the Apollo subprocessor, transmitting to Working Joes and Maintenance Drones.
@@ -48,6 +49,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/vehicle_panel,
 	/client/proc/in_view_panel, /*allows application of aheal/sleep in an AOE*/
 	/client/proc/toggle_lz_resin,
+	/client/proc/strip_all_in_view,
 	/client/proc/rejuvenate_all_in_view,
 	/client/proc/rejuvenate_all_humans_in_view,
 	/client/proc/rejuvenate_all_revivable_humans_in_view,
@@ -70,10 +72,10 @@ var/list/admin_verbs_default = list(
 var/list/admin_verbs_admin = list(
 	/datum/admins/proc/togglejoin, /*toggles whether people can join the current game*/
 	/datum/admins/proc/announce, /*priority announce something to all clients.*/
-	/datum/admins/proc/view_txt_log, /*shows the server log (diary) for today*/
+	/datum/admins/proc/view_game_log, /*shows the server game log (diary) for this round*/
+	/datum/admins/proc/view_attack_log, /*shows the server attack log for this round*/
+	/client/proc/giveruntimelog, /*allows us to give access to all runtime logs to somebody*/
 	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
-	/client/proc/giveruntimelog, /*allows us to give access to runtime logs to somebody*/
-	/client/proc/getserverlog, /*allows us to fetch server logs (diary) for other days*/
 	/client/proc/toggleprayers, /*toggles prayers on/off*/
 	/client/proc/toggle_hear_radio, /*toggles whether we hear the radio*/
 	/client/proc/event_panel,
@@ -89,10 +91,12 @@ var/list/admin_verbs_admin = list(
 	/client/proc/matrix_editor,
 	/datum/admins/proc/open_shuttlepanel
 )
+
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel
 	// /client/proc/jobbans // Disabled temporarily due to 15-30 second lag spikes. Don't forget the comma in the line above when uncommenting this!
 )
+
 var/list/admin_verbs_sounds = list(
 	/client/proc/play_web_sound,
 	/client/proc/play_sound,
@@ -100,11 +104,12 @@ var/list/admin_verbs_sounds = list(
 	/client/proc/stop_sound,
 	/client/proc/cmd_admin_vox_panel
 )
+
 var/list/admin_verbs_minor_event = list(
 	/client/proc/cmd_admin_change_custom_event,
 	/datum/admins/proc/admin_force_distress,
 	/datum/admins/proc/admin_force_ERT_shuttle,
-	/client/proc/force_shuttle,
+	/client/proc/force_hijack,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
 	/client/proc/adjust_predator_round,
 	/client/proc/cmd_admin_world_narrate, /*sends text to all players with no padding*/
@@ -123,8 +128,13 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
 	/client/proc/force_event,
 	/client/proc/toggle_events,
-	/client/proc/toggle_shipside_sd
+	/client/proc/toggle_shipside_sd,
+	/client/proc/shakeshipverb,
+	/client/proc/adminpanelweapons,
+	/client/proc/adminpanelgq,
+	/client/proc/toggle_hardcore_perma
 )
+
 var/list/admin_verbs_major_event = list(
 	/client/proc/enable_event_mob_verbs,
 	/client/proc/cmd_admin_dress_all,
@@ -142,14 +152,17 @@ var/list/admin_verbs_major_event = list(
 	/client/proc/map_template_upload,
 	/client/proc/enable_podlauncher,
 	/client/proc/change_taskbar_icon,
-	/client/proc/change_weather
+	/client/proc/change_weather,
+	/client/proc/admin_blurb
 )
+
 var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_atom,
 	/client/proc/game_panel,
 	/client/proc/create_humans,
 	/client/proc/create_xenos
 )
+
 var/list/admin_verbs_server = list(
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
@@ -159,13 +172,13 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/change_ground_map,
 	/datum/admins/proc/change_ship_map,
 	/datum/admins/proc/vote_ground_map,
+	/datum/admins/proc/override_ground_map,
 	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
 	/client/proc/cmd_debug_del_all,
 	/datum/admins/proc/togglejoin,
-	/datum/admins/proc/view_txt_log
 )
+
 var/list/admin_verbs_debug = list(
-	/client/proc/getruntimelog,  /*allows us to access runtime logs to somebody*/
 	/client/proc/debug_role_authority,
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/cmd_debug_list_processing_items,
@@ -186,10 +199,16 @@ var/list/admin_verbs_debug = list(
 	/client/proc/generate_sound_queues,
 	/client/proc/sound_debug_query,
 	/client/proc/debug_game_history,
-	/client/proc/construct_env_dmm,
 	/client/proc/enter_tree,
 	/client/proc/set_tree_points,
 	/client/proc/purge_data_tab,
+	/client/proc/getserverlog, /*allows us to fetch any server logs (diary) for other days*/
+	/client/proc/getruntimelog,  /*allows us to access any runtime logs (can be granted by giveruntimelog)*/
+	/datum/admins/proc/view_game_log, /*shows the server game log (diary) for this round*/
+	/datum/admins/proc/view_runtime_log, /*shows the server runtime log for this round*/
+	/datum/admins/proc/view_href_log, /*shows the server HREF log for this round*/
+	/datum/admins/proc/view_tgui_log, /*shows the server TGUI log for this round*/
+	/client/proc/admin_blurb,
 )
 
 var/list/admin_verbs_debug_advanced = list(
@@ -217,9 +236,11 @@ var/list/admin_verbs_possess = list(
 	/client/proc/possess,
 	/client/proc/release
 )
+
 var/list/admin_verbs_permissions = list(
 	/client/proc/ToRban
 )
+
 var/list/admin_verbs_color = list(
 	/client/proc/set_ooc_color_self
 )

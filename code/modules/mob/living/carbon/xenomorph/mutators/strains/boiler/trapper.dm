@@ -7,10 +7,12 @@
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_BOILER) //Only boiler.
 	mutator_actions_to_remove = list(
-		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
-		/datum/action/xeno_action/activable/bombard,
-		/datum/action/xeno_action/activable/acid_lance,
+		/datum/action/xeno_action/activable/xeno_spit/bombard,
+		/datum/action/xeno_action/onclick/shift_spits/boiler,
+		/datum/action/xeno_action/activable/spray_acid/boiler,
 		/datum/action/xeno_action/onclick/dump_acid,
+		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
+		/datum/action/xeno_action/onclick/acid_shroud,
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/boiler_trap,
@@ -31,11 +33,14 @@
 	if(boiler.is_zoomed)
 		boiler.zoom_out()
 
+	boiler.tileoffset = 0
 	boiler.viewsize = TRAPPER_VIEWRANGE
 	boiler.mutation_type = BOILER_TRAPPER
 	boiler.plasma_types -= PLASMA_NEUROTOXIN
+	boiler.armor_modifier -= XENO_ARMOR_MOD_LARGE // no armor
+	boiler.health_modifier -= XENO_HEALTH_MOD_MED
 
-	boiler.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
+	boiler.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5 // compensating for base buffs
 	boiler.recalculate_everything()
 
 	apply_behavior_holder(boiler)

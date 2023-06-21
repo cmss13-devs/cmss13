@@ -7,8 +7,8 @@
 	var/base_name = " "
 	desc = " "
 	icon = 'icons/obj/items/chemistry.dmi'
-	icon_state = "null"
-	item_state = "null"
+	icon_state = null
+	item_state = null
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60)
 	volume = 60
@@ -677,9 +677,3 @@
 		if(do_after(user,30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			user.visible_message("[user] finishes wiping off the [AM]!")
 			AM.clean_blood()
-
-
-/obj/item/reagent_container/glass/rag/get_examine_text(mob/user)
-	. = ..()
-	. += "That's \a [src]."
-	. += desc

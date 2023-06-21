@@ -79,9 +79,10 @@ GLOBAL_LIST_EMPTY(hologram_list)
 	return NO_BLOCKED_MOVEMENT
 
 /mob/hologram/Destroy()
-	UnregisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW)
-	linked_mob.reset_view()
-	linked_mob = null
+	if(linked_mob)
+		UnregisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW)
+		linked_mob.reset_view()
+		linked_mob = null
 
 	if(!QDESTROYING(leave_button))
 		QDEL_NULL(leave_button)
@@ -102,7 +103,8 @@ GLOBAL_LIST_EMPTY(hologram_list)
 	qdel(src)
 
 /datum/action/leave_hologram/Destroy()
-	QDEL_NULL(linked_hologram)
+	if(!QDESTROYING(linked_hologram))
+		QDEL_NULL(linked_hologram)
 	return ..()
 
 /mob/hologram/techtree/Initialize(mapload, mob/M)

@@ -56,7 +56,7 @@
 /obj/item/weapon/gun/flamer/unique_action(mob/user)
 	toggle_gun_safety()
 
-/obj/item/weapon/gun/flamer/gun_safety_message(mob/user)
+/obj/item/weapon/gun/flamer/gun_safety_handle(mob/user)
 	to_chat(user, SPAN_NOTICE("You [SPAN_BOLD(flags_gun_features & GUN_TRIGGER_SAFETY ? "extinguish" : "ignite")] the pilot light."))
 	playsound(user,'sound/weapons/handling/flamer_ignition.ogg', 25, 1)
 	update_icon()
@@ -478,7 +478,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		if(!FS)
 			CRASH("Invalid flameshape passed to /obj/flamer_fire. (Expected /datum/flameshape, got [FS] (id: [flameshape]))")
 
-		FS.handle_fire_spread(src, fire_spread_amount, burn_dam, fuel_pressure)
+		INVOKE_ASYNC(FS, TYPE_PROC_REF(/datum/flameshape, handle_fire_spread), src, fire_spread_amount, burn_dam, fuel_pressure)
 	//Apply fire effects onto everyone in the fire
 
 	// Melt a single layer of snow
@@ -517,7 +517,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
 						if(weapon_cause_data.cause_name)
 							H.track_friendly_fire(weapon_cause_data.cause_name)
-						var/ff_msg = "[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) ([user.client ? "<a href='?priv_msg=[user.client.ckey]'>PM</a>" : "NO CLIENT"])"
+						var/ff_msg = "[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] [ADMIN_JMP(user)] [ADMIN_PM(user)]"
 						var/ff_living = TRUE
 						if(H.stat == DEAD)
 							ff_living = FALSE

@@ -22,6 +22,7 @@
 	evolves_to = list(XENO_CASTE_PREDALIEN)
 
 	minimap_icon = "predalien_larva"
+	minimum_evolve_time = 0
 
 /mob/living/carbon/xenomorph/larva
 	name = XENO_CASTE_LARVA
@@ -35,7 +36,7 @@
 	age = XENO_NO_AGE
 	crit_health = -25
 	gib_chance = 25
-	mob_size = 0
+	mob_size = MOB_SIZE_SMALL
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
@@ -46,7 +47,7 @@
 	)
 	mutation_type = "Normal"
 
-	var/poolable = TRUE //Can it be safely pooled if it has no player?
+	var/burrowable = TRUE //Can it be safely burrowed if it has no player?
 	var/state_override
 
 	icon_xeno = 'icons/mob/xenos/larva.dmi'
@@ -80,7 +81,7 @@
 	icon_xeno = 'icons/mob/xenos/predalien_larva.dmi'
 	icon_state = "Predalien Larva"
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
-	poolable = FALSE //Not interchangeable with regular larvas in the pool.
+	burrowable = FALSE //Not interchangeable with regular larvas in the hive core.
 	state_override = "Predalien "
 
 /mob/living/carbon/xenomorph/larva/predalien/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
@@ -93,6 +94,9 @@
 /mob/living/carbon/xenomorph/larva/evolve_message()
 	to_chat(src, SPAN_XENODANGER("Strength ripples through your small form. You are ready to be shaped to the Queen's will. <a href='?src=\ref[src];evolve=1;'>Evolve</a>"))
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
+
+	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
+	evolve_action.give_to(src)
 
 //Larva code is just a mess, so let's get it over with
 /mob/living/carbon/xenomorph/larva/update_icons()
@@ -142,7 +146,7 @@
 /mob/living/carbon/xenomorph/larva/pull_response(mob/puller)
 	return TRUE
 
-/mob/living/carbon/xenomorph/larva/UnarmedAttack(atom/A, proximity, click_parameters, tile_attack)
+/mob/living/carbon/xenomorph/larva/UnarmedAttack(atom/A, proximity, click_parameters, tile_attack, ignores_resin = FALSE)
 	a_intent = INTENT_HELP //Forces help intent for all interactions.
 	if(!caste)
 		return FALSE

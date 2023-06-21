@@ -231,14 +231,19 @@
 	var/datum/action/xeno_action/activable/selected_ability // Our currently selected ability
 	var/datum/action/xeno_action/activable/queued_action // Action to perform on the next click.
 	var/is_zoomed = FALSE
-	var/tileoffset = 0 // Zooming-out related vars
-	var/viewsize = 0
+	var/list/spit_types
+	/// Caste-based spit windup
+	var/spit_windup = FALSE
+	/// Caste-based spit windup duration (if applicable)
+	var/spit_delay = 0
+	var/tileoffset = 0 	// How much your view will be offset in the direction that you zoom?
+	var/viewsize = 0	//What size your view will be changed to when you zoom?
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
 	var/lock_evolve = FALSE //Prevents evolve/devolve (used when banished)
 	var/list/tackle_counter
 	var/evolving = FALSE // Whether the xeno is in the process of evolving
 	/// The damage dealt by a xeno whenever they take damage near someone
-	var/acid_blood_damage = 12
+	var/acid_blood_damage = 20
 	var/nocrit = FALSE
 	var/deselect_timer = 0 // Much like Carbon.last_special is a short tick record to prevent accidental deselects of abilities
 	var/got_evolution_message = FALSE
@@ -1069,9 +1074,14 @@
 	announce_dchat("[src] ([mutation_type] [caste_type])</b> has ghosted and their body is up for grabs!", src)
 
 /mob/living/carbon/xenomorph/larva/handle_ghost_message()
-	if(locate(/obj/effect/alien/resin/special/pool) in range(2, get_turf(src)))
+	if(locate(/obj/effect/alien/resin/special/pylon/core) in range(2, get_turf(src)))
 		return
 	return ..()
 
 /mob/living/carbon/xenomorph/handle_blood_splatter(splatter_dir, duration)
-	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration)
+	var/color_override
+	if(special_blood)
+		var/datum/reagent/D = chemical_reagents_list[special_blood]
+		if(D)
+			color_override = D.color
+	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration, color_override)

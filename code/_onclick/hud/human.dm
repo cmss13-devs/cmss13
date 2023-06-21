@@ -332,31 +332,6 @@
 	unique_action.screen_loc = ui_datum.ui_gun_unique
 	static_inventory += unique_action
 
-	//Handle the gun settings buttons
-	gun_setting_icon = new /atom/movable/screen/gun/mode()
-	gun_setting_icon.alpha = ui_alpha
-	gun_setting_icon.screen_loc = ui_datum.ui_gun_select
-	gun_setting_icon.update_icon(mymob)
-	static_inventory += gun_setting_icon
-
-	gun_item_use_icon = new /atom/movable/screen/gun/item()
-	gun_item_use_icon.alpha = ui_alpha
-	gun_item_use_icon.screen_loc = ui_datum.ui_gun1
-	gun_item_use_icon.update_icon(mymob)
-	static_inventory += gun_item_use_icon
-
-	gun_move_icon = new /atom/movable/screen/gun/move()
-	gun_move_icon.alpha = ui_alpha
-	gun_move_icon.screen_loc = ui_datum.ui_gun2
-	gun_move_icon.update_icon(mymob)
-	static_inventory += gun_move_icon
-
-	gun_run_icon = new /atom/movable/screen/gun/run()
-	gun_run_icon.alpha = ui_alpha
-	gun_run_icon.screen_loc = ui_datum.ui_gun3
-	gun_run_icon.update_icon(mymob)
-	static_inventory += gun_run_icon
-
 /datum/hud/human/proc/draw_status_effects(datum/custom_hud/ui_datum)
 	slowed_icon = new /atom/movable/screen()
 	slowed_icon.icon = ui_datum.ui_style_icon
@@ -383,6 +358,10 @@
 	tethered_icon.icon_state = "status_0"
 	infodisplay += tethered_icon
 
+	transfusion_icon = new /atom/movable/screen()
+	transfusion_icon.icon = ui_datum.ui_style_icon
+	transfusion_icon.icon_state = "status_0"
+	infodisplay += transfusion_icon
 
 /mob/living/carbon/human/create_hud()
 	if(client && client.prefs && !hud_used)

@@ -87,6 +87,7 @@
 	return 1
 
 /datum/game_mode/whiskey_outpost/pre_setup()
+	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
 	for(var/obj/effect/landmark/whiskey_outpost/xenospawn/X)
 		xeno_spawns += X.loc
 	for(var/obj/effect/landmark/whiskey_outpost/supplydrops/S)
@@ -302,6 +303,7 @@
 		round_finished = 1
 
 	calculate_end_statistics()
+
 
 	return 1
 
@@ -727,7 +729,7 @@
 			new /obj/item/paper/crumpled(T)
 		qdel(src)
 
-/datum/game_mode/whiskey_outpost/announce_bioscans(delta = 2)
+/datum/game_mode/whiskey_outpost/announce_bioscans(variance = 2)
 	return // No bioscans needed in WO
 
 /datum/game_mode/whiskey_outpost/get_escape_menu()

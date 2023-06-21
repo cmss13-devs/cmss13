@@ -77,7 +77,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 
 /obj/structure/largecrate/black_market/confiscated_equipment/Initialize()
 	. = ..()
-	switch(rand(1,7))
+	switch(rand(1,6))
 		if(1) //pmc
 			new /obj/item/clothing/under/marine/veteran/pmc(src)
 			new /obj/item/clothing/head/helmet/marine/veteran/pmc(src)
@@ -85,33 +85,28 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/clothing/gloves/marine/veteran/pmc(src)
 			new /obj/item/clothing/mask/gas/pmc(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
-		if(2) //dutch's
-			new /obj/item/clothing/head/helmet/marine/veteran/dutch(src)
-			new /obj/item/clothing/under/marine/veteran/dutch(src)
-			new /obj/item/clothing/suit/storage/marine/veteran/dutch(src)
-			new /obj/item/clothing/gloves/marine/veteran(src)
-		if(3) //pizza
+		if(2) //pizza
 			new /obj/item/clothing/under/pizza(src)
 			new /obj/item/clothing/head/soft/red(src)
-		if(4) //clf
+		if(3) //clf
 			new /obj/item/clothing/under/colonist/clf(src)
 			new /obj/item/clothing/suit/storage/militia(src)
 			new /obj/item/clothing/head/militia(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
-		if(5) //upp
+		if(4) //upp
 			new /obj/item/clothing/head/helmet/marine/veteran/UPP(src)
 			new /obj/item/clothing/under/marine/veteran/UPP(src)
 			new /obj/item/clothing/suit/storage/marine/faction/UPP(src)
 			new /obj/item/clothing/shoes/marine/upp(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
-		if(6) //freelancer
+		if(5) //freelancer
 			new /obj/item/clothing/under/marine/veteran/freelancer(src)
 			new /obj/item/clothing/suit/storage/marine/faction/freelancer(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
-		if(7) //VAIPO
+		if(6) //VAIPO
 			new /obj/item/clothing/glasses/sunglasses/big(src)
 			new /obj/item/clothing/suit/storage/marine/light/vest(src)
 			new /obj/item/clothing/under/tshirt/gray_blu(src)
@@ -128,7 +123,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 	spawn_guns() //the crate gives 2 guns
 
 /obj/structure/largecrate/black_market/confiscated_weaponry/proc/spawn_guns()
-	switch(rand(1,7))
+	switch(rand(1,6))
 		if(1) //pmc
 			if(prob(50))
 				new /obj/item/weapon/gun/rifle/nsg23/no_lock(src)
@@ -142,19 +137,13 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 				new /obj/item/ammo_magazine/smg/fp9000(src)
 				new /obj/item/ammo_magazine/smg/fp9000(src)
 				new /obj/item/ammo_magazine/smg/fp9000(src)
-		if(2) //dutch's
-			new /obj/item/weapon/gun/rifle/m16/dutch(src)
-			new /obj/item/ammo_magazine/rifle/m16/ap(src)
-			new /obj/item/ammo_magazine/rifle/m16/ap(src)
-			new /obj/item/ammo_magazine/rifle/m16/ap(src)
-			new /obj/item/ammo_magazine/rifle/m16/ap(src)
-		if(3) //pizza
+		if(2) //pizza
 			new /obj/item/weapon/gun/pistol/holdout(src)
 			new /obj/item/ammo_magazine/pistol/holdout(src)
-		if(4) //clf
-			switch(rand(1, 4))
+		if(3) //clf
+			switch(rand(1, 3))
 				if(1)
-					new /obj/item/weapon/melee/twohanded/lungemine/damaged(src)
+					new /obj/item/weapon/twohanded/lungemine/damaged(src)
 				if(2)
 					new /obj/item/weapon/gun/smg/uzi(src)
 					new /obj/item/ammo_magazine/smg/uzi/extended(src)
@@ -165,12 +154,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 					new /obj/item/ammo_magazine/smg/mac15/extended(src)
 					new /obj/item/ammo_magazine/smg/mac15(src)
 					new /obj/item/ammo_magazine/smg/mac15(src)
-				if(4)
-					new /obj/item/weapon/gun/m60(src)
-					new /obj/item/ammo_magazine/m60(src)
-					new /obj/item/ammo_magazine/m60(src)
-					new /obj/item/ammo_magazine/m60(src)
-		if(5) //upp
+		if(4) //upp
 			if(prob(50))
 				new /obj/item/weapon/gun/rifle/type71(src)
 				new /obj/item/ammo_magazine/rifle/type71/ap(src)
@@ -184,7 +168,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 				new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
 				new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
 				new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src) //NO buckshot!
-		if(6) //freelancer
+		if(5) //freelancer
 			if(prob(80))
 				new /obj/item/weapon/gun/rifle/mar40(src)
 				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
@@ -193,7 +177,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			else
 				new /obj/item/weapon/gun/rifle/mar40/lmg(src)
 				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
-		if(7) //VAIPO
+		if(6) //VAIPO
 			if(prob(50))
 				new /obj/item/weapon/gun/rifle/mar40/tactical(src)
 				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
@@ -273,16 +257,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 // Shotguns
-
-/datum/supply_packs/contraband/seized/sawny
-	name = "Sawn-off Spearhead Rival 78 crate (x1 ammo box included)"
-	contains = list(
-		/obj/item/weapon/gun/shotgun/double/damaged, //its not actually sawed off........... get fuked
-		/obj/item/ammo_magazine/shotgun/buckshot,
-	)
-	dollar_cost = 45
-	containertype = /obj/structure/largecrate/black_market
-
 /datum/supply_packs/contraband/seized/custom
 	name = "custom-built shotgun crate (x1 ammo box included)"
 	contains = list(
@@ -566,7 +540,6 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/drinks/flask/weylandyutani/poison,
 		/obj/item/reagent_container/food/drinks/bottle/holywater/bong,
 		/obj/item/storage/pill_bottle/paracetamol,
-		/obj/item/storage/pill_bottle/zombie_powder,
 	)
 	dollar_cost = 25
 	containertype = /obj/structure/largecrate/black_market
@@ -646,11 +619,11 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/storage/belt/champion,
 		/obj/item/clothing/mask/luchador,
 		/obj/item/tool/soap/deluxe,
-		/obj/item/tool/crowbar/maintenance_jack,
+		/obj/item/maintenance_jack,
 		/obj/item/explosive/grenade/smokebomb,
 		/obj/item/corncob,
 		/obj/item/poster,
-		/obj/item/weapon/melee/banhammer,
+		/obj/item/weapon/banhammer,
 		/obj/item/toy/prize/ripley,
 		/obj/item/toy/prize/fireripley,
 		/obj/item/toy/prize/deathripley,
@@ -713,9 +686,9 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	name = "surplus riot control equipment"
 	randomised_num_contained = 3
 	contains = list(
-		/obj/item/weapon/melee/baton/damaged,
+		/obj/item/weapon/baton/damaged,
 		/obj/item/reagent_container/spray/pepper,
-		/obj/item/weapon/melee/baton/cattleprod,
+		/obj/item/weapon/baton/cattleprod,
 		/obj/item/ammo_magazine/shotgun/beanbag,
 		/obj/item/storage/box/packet/m15/rubber,
 		/obj/item/storage/box/guncase/m79,
@@ -981,7 +954,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/cartridge_bayonet
 	name = "M8 Cartridge Bayonet Kit"
-	contains = list(/obj/item/storage/box/c02_knife)
+	contains = list(/obj/item/storage/box/co2_knife)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -1025,8 +998,8 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 
 /obj/structure/largecrate/black_market/secured_wildlife/unpack()
 	//We need to pick a 'secured wildlife' mob that actually makes sense.
-	var/unfit_simplemobs = list(/mob/living/simple_animal/drone)
-	var/fit_hostiles = list(/mob/living/simple_animal/hostile/giant_spider, /mob/living/simple_animal/hostile/bear, /mob/living/simple_animal/hostile/retaliate/malf_drone, /mob/living/simple_animal/hostile/retaliate/goat)
+	var/unfit_simplemobs = list(/mob/living/simple_animal/drone, /mob/living/simple_animal/hostile/retaliate/malf_drone)
+	var/fit_hostiles = list(/mob/living/simple_animal/hostile/giant_spider, /mob/living/simple_animal/hostile/bear,, /mob/living/simple_animal/hostile/retaliate/goat)
 	var/monkey_mobs = list(/mob/living/carbon/human/monkey, /mob/living/carbon/human/farwa, /mob/living/carbon/human/stok, /mob/living/carbon/human/yiren, /mob/living/carbon/human/neaera)
 	var/mob/contained_mob_type = pick( ( subtypesof(/mob/living/simple_animal) - typesof(/mob/living/simple_animal/hostile) ) + fit_hostiles + monkey_mobs - unfit_simplemobs)
 	new contained_mob_type(loc)
@@ -1056,6 +1029,8 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 	icon_state = "chest"
 	/// If you want to use this in mapping, you can force-set the contents via this.
 	var/forced_rng
+
+#define UNLUCKY_GRENADE_AMOUNT 3
 
 /obj/structure/largecrate/black_market/clf_supplies/unpack()
 	var/loot_luck = rand(1, 100)
@@ -1118,25 +1093,19 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			loot_message = SPAN_NOTICE("It's some CLF SMG armaments.")
 		if(21 to 25)
 			// Discovered Yautja ruins.. (None of these will trigger any alarms. They are far too old, degraded, and useless for any Yautja to care.)
-			new /obj/item/clothing/mask/gas/yautja/damaged(loc)
+			new /obj/item/clothing/mask/yautja_flavor(loc)
 			new /obj/item/clothing/suit/armor/yautja_flavor(loc)
 			new /obj/item/clothing/shoes/yautja_flavor(loc)
-			new /obj/item/weapon/melee/twohanded/yautja/glaive/damaged(loc)
+			new /obj/item/weapon/twohanded/yautja/glaive/damaged(loc)
 			new /obj/item/stack/yautja_rope(loc)
 			loot_message = SPAN_NOTICE("It's some strange ancient gear...?")
 		if(26 to 30)
-			// Dutch gear.
-			new /obj/item/storage/pouch/medical/socmed/dutch/unmarked(loc)
-			new /obj/item/storage/large_holster/machete/arnold/full(loc)
-			new /obj/item/clothing/head/helmet/marine/veteran/dutch/cap(loc)
-			loot_message = SPAN_NOTICE("It's some dusty, old equipment. Smells like the jungle.")
-		if(31 to 35)
 		// Damaged lunge mines, don't let the marines near these. Not even *close* to effective against even a runner.
-			new /obj/item/weapon/melee/twohanded/lungemine/damaged(loc)
-			new /obj/item/weapon/melee/twohanded/lungemine/damaged(loc)
-			new /obj/item/weapon/melee/twohanded/lungemine/damaged(loc)
+			new /obj/item/weapon/twohanded/lungemine/damaged(loc)
+			new /obj/item/weapon/twohanded/lungemine/damaged(loc)
+			new /obj/item/weapon/twohanded/lungemine/damaged(loc)
 			loot_message = SPAN_NOTICE("It's a bunch of lunge mines..?")
-		if(36 to 40)
+		if(31 to 35)
 		// CLF nades!
 			loot_message = SPAN_NOTICE("It's a package of assorted CLF grenades!")
 			var/list/nades_to_pick = list(
@@ -1155,7 +1124,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 				if(new_nade.hand_throwable && prob(7))
 					loot_message = SPAN_HIGHDANGER("It was booby trapped! RUN!")
 					new_nade.prime()
-		if(41 to 45)
+		if(36 to 40)
 		// Molotovs and supplies to make more...
 			new /obj/item/explosive/grenade/incendiary/molotov(loc)
 			new /obj/item/explosive/grenade/incendiary/molotov(loc)
@@ -1164,7 +1133,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/item/reagent_container/food/drinks/bottle/kahlua(loc)
 			new /obj/item/reagent_container/food/drinks/bottle/rum(loc)
 			loot_message = SPAN_NOTICE("It's a bunch of finished and unfinished molotovs.")
-		if(46 to 50)
+		if(41 to 45)
 		// Spare CLF gear!
 			new /obj/effect/essentials_set/random/clf_shoes(loc)
 			new /obj/item/clothing/under/colonist/clf(loc)
@@ -1174,7 +1143,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/effect/essentials_set/random/clf_belt(loc)
 			loot_message = SPAN_NOTICE("It's a spare set of CLF equipment. You probably shouldn't wear this...")
 		// That was the good 50%. Now it's time for the bad.
-		if(51 to 60)
+		if(46 to 50)
 		// Random junk
 			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
 			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
@@ -1182,7 +1151,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
 			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
 			loot_message = SPAN_NOTICE("It's a bunch of random junk...")
-		if(61 to 70)
+		if(51 to 70)
 			new /obj/effect/spawner/random/bomb_supply(loc)
 			new /obj/effect/spawner/random/bomb_supply(loc)
 			new /obj/effect/spawner/random/toolbox(loc)
@@ -1190,19 +1159,11 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/effect/spawner/random/tool(loc)
 			new /obj/effect/spawner/random/attachment(loc)
 			if(prob(33))
-				new /obj/effect/spawner/random/supply_kit(loc)
+				new /obj/effect/spawner/random/supply_kit/market(loc)
 			else
 				new /obj/effect/spawner/random/attachment(loc)
 			loot_message = SPAN_NOTICE("Just some old equipment and parts.")
 		if(71 to 75)
-			// backpacks
-			for(var/i in 1 to rand(3, 6))
-				var/pack_type = pick(subtypesof(/obj/item/storage/backpack))
-				var/obj/item/storage/backpack/pack = new pack_type(loc)
-				if(pack.max_storage_space > 15)
-					pack.max_storage_space = 15
-			loot_message = SPAN_NOTICE("Some backpacks. They all look empty though...")
-		if(76 to 80)
 		// CLF corpse!! Why is this here? Don't ask.
 			var/mob/living/carbon/human/corpse = new (loc)
 			corpse.create_hud() //Need to generate hud before we can equip anything apparently...
@@ -1211,13 +1172,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			arm_equipment(corpse, corpse_type, TRUE, FALSE) // I didn't choose the shitcode life, the shitcode life chose me
 
 			loot_message = SPAN_HIGHDANGER("IT'S A CORPSE!!")
-		if(81 to 85)
-		// Costumes.
-			new /obj/effect/landmark/costume/random(loc)
-			new /obj/effect/landmark/costume/random(loc)
-			new /obj/effect/landmark/costume/random(loc)
-			loot_message = SPAN_NOTICE("What the hell is this..?")
-		if(86 to 90)
+		if(76 to 90)
 		// Random supply garbage.
 			new /obj/effect/spawner/random/tool(loc)
 			new /obj/effect/spawner/random/tool(loc)
@@ -1230,7 +1185,8 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			loot_message = SPAN_NOTICE("It's just a bunch of junk!")
 		if(91 to 95)
 		// We don't really have any other kind of booby trap so this will do
-			new /obj/item/explosive/grenade/spawnergrenade/claymore_launcher(loc)
+			var/obj/item/explosive/grenade/spawnergrenade/claymore_launcher/spawner = new(loc)
+			spawner.prime()
 			loot_message = SPAN_HIGHDANGER("It was booby trapped! RUN!")
 		if(96 to 99)
 		// Oh boy. Big booby trap!
@@ -1243,10 +1199,12 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			loot_message = SPAN_HIGHDANGER("RUN!!!")
 		if(100)
 		// You got real fuckin' unlucky kid :joker:
-			new /obj/item/explosive/grenade/spawnergrenade/claymore_launcher(loc)
-			new /obj/item/explosive/grenade/spawnergrenade/claymore_launcher(loc)
-			new /obj/item/explosive/grenade/spawnergrenade/claymore_launcher(loc)
+			for(var/i = 1 to UNLUCKY_GRENADE_AMOUNT)
+				var/obj/item/explosive/grenade/spawnergrenade/claymore_launcher/spawner = new(loc)
+				spawner.prime()
 			loot_message = SPAN_HIGHDANGER("It was SUPER booby trapped! RUN!")
 
 	visible_message(loot_message, max_distance = 4)
 	return ..()
+
+#undef UNLUCKY_GRENADE_AMOUNT

@@ -2,6 +2,13 @@
 #define COMSIG_ITEM_ATTEMPT_ATTACK "item_attempt_attack" //Triggered on the target mob.
 	#define COMPONENT_CANCEL_ATTACK (1<<0)
 
+#define COMSIG_ITEM_ATTACK_AIRLOCK "item_attack_airlocK"
+	#define COMPONENT_CANCEL_AIRLOCK_ATTACK (1<<0)
+
+/// from /obj/item/attackby() : (obj/item, mob/user)
+#define COMSIG_ITEM_ATTACKED "item_attacked"
+	#define COMPONENT_CANCEL_ITEM_ATTACK (1<<0)
+
 // Return a nonzero value to cancel these actions
 #define COMSIG_BINOCULAR_ATTACK_SELF "binocular_attack_self"
 #define COMSIG_BINOCULAR_HANDLE_CLICK "binocular_handle_click"
@@ -21,6 +28,11 @@
 #define COMSIG_SNACK_EATEN "snack_eaten"
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
+
+/// from /obj/item/proc/mob_can_equip
+#define COMSIG_ITEM_ATTEMPTING_EQUIP "item_attempting_equip"
+///Return this in response if you don't want items equipped
+	#define COMPONENT_CANCEL_EQUIP (1<<0)
 
 /// from /obj/item/proc/do_zoom() : (mob/user)
 #define COMSIG_ITEM_ZOOM "item_zoom"

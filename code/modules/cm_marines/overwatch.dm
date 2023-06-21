@@ -33,6 +33,7 @@
 	tacmap = new(src, minimap_type)
 
 /obj/structure/machinery/computer/overwatch/Destroy()
+	QDEL_NULL(tacmap)
 	return ..()
 
 /obj/structure/machinery/computer/overwatch/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
@@ -47,6 +48,9 @@
 
 /obj/structure/machinery/computer/overwatch/attack_hand(mob/user)
 	if(..())  //Checks for power outages
+		return
+
+	if(istype(src, /obj/structure/machinery/computer/overwatch/almayer/broken))
 		return
 
 	if(!ishighersilicon(usr) && !skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
@@ -149,8 +153,8 @@
 	else
 		var/leader_text = ""
 		var/leader_count = 0
-		var/rto_text = ""
-		var/rto_count = 0
+		var/tl_text = ""
+		var/tl_count = 0
 		var/spec_text = ""
 		var/spec_count = 0
 		var/medic_text = ""
@@ -278,9 +282,9 @@
 				if(JOB_SQUAD_LEADER)
 					leader_text += marine_infos
 					leader_count++
-				if(JOB_SQUAD_RTO)
-					rto_text += marine_infos
-					rto_count++
+				if(JOB_SQUAD_TEAM_LEADER)
+					tl_text += marine_infos
+					tl_count++
 				if(JOB_SQUAD_SPECIALIST)
 					spec_text += marine_infos
 					spec_count++
@@ -300,7 +304,7 @@
 					misc_text += marine_infos
 
 		dat += "<b>[leader_count ? "Squad Leader Deployed" : SET_CLASS("No Squad Leader Deployed!", INTERFACE_RED)]</b><BR>"
-		dat += "<b>Squad Radio Telephone Operators: [rto_count ? "[rto_count]" : SET_CLASS("No Squad Radio Telephone Operators Deployed!", INTERFACE_RED)]</b><BR>"
+		dat += "<b>Fireteam Leaders: [tl_count ? "[tl_count]" : SET_CLASS("No Fireteam Leaders Deployed!", INTERFACE_RED)]</b><BR>"
 		dat += "<b>[spec_count ? "Squad Specialist Deployed" : SET_CLASS("No Specialist Deployed!", INTERFACE_RED)]</b><BR>"
 		dat += "<b>[smart_count ? "Squad Smartgunner Deployed" : SET_CLASS("No Smartgunner Deployed!", INTERFACE_RED)]</b><BR>"
 		dat += "<b>Squad Hospital Corpsmen: [medic_count] Deployed | Squad Combat Technicians: [engi_count] Deployed</b><BR>"
@@ -311,7 +315,7 @@
 		dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"
 		dat += "<th>Name</th><th>Role</th><th>State</th><th>Location</th><th>SL Distance</th><th>Filter</th></tr>"
 		if(!living_marines_sorting)
-			dat += leader_text + rto_text + spec_text + medic_text + engi_text + smart_text + marine_text + misc_text
+			dat += leader_text + tl_text + spec_text + medic_text + engi_text + smart_text + marine_text + misc_text
 		else
 			dat += conscious_text + unconscious_text + dead_text
 		dat += "</table>"
@@ -426,6 +430,7 @@
 			current_squad = null
 			if(cam && !ishighersilicon(usr))
 				usr.reset_view(null)
+				usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 			cam = null
 			state = 0
 		if("pick_squad")
@@ -589,13 +594,17 @@
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Searching for helmet cam. No helmet cam found for this marine! Tell your squad to put their helmets on!")]")
 				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping helmet cam view of [cam_target].")]")
+					usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					cam = null
 					usr.reset_view(null)
 				else if(usr.client.view != world_view_size)
 					to_chat(usr, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
+					if(cam)
+						usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					cam = new_cam
 					usr.reset_view(cam)
+					usr.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 	attack_hand(usr) //The above doesn't ever seem to work.
 
 /obj/structure/machinery/computer/overwatch/check_eye(mob/user)
@@ -607,6 +616,8 @@
 /obj/structure/machinery/computer/overwatch/on_unset_interaction(mob/user)
 	..()
 	if(!isRemoteControlling(user))
+		if(cam)
+			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 		cam = null
 		user.reset_view(null)
 
@@ -852,7 +863,7 @@
 
 	var/ob_name = lowertext(almayer_orbital_cannon.tray.warhead.name)
 	announce_dchat("\A [ob_name] targeting [A.name] has been fired!", T)
-	message_admins(FONT_SIZE_HUGE("ALERT: [key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
+	message_admins(FONT_SIZE_HUGE("ALERT: [key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]' [ADMIN_JMP(T)]"))
 	log_attack("[key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]'")
 
 	busy = FALSE
@@ -919,6 +930,9 @@
 	density = FALSE
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "overwatch"
+
+/obj/structure/machinery/computer/overwatch/almayer/broken
+	name = "Broken Overwatch Console"
 
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF

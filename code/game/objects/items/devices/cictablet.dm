@@ -31,6 +31,10 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(disable_pmc))
 	return ..()
 
+/obj/item/device/cotablet/Destroy()
+	QDEL_NULL(tacmap)
+	return ..()
+
 /obj/item/device/cotablet/proc/disable_pmc()
 	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		add_pmcs = FALSE
@@ -87,6 +91,10 @@
 
 	switch(action)
 		if("announce")
+			if(usr.client.prefs.muted & MUTE_IC)
+				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
+				return
+
 			if(!COOLDOWN_FINISHED(src, announcement_cooldown))
 				to_chat(usr, SPAN_WARNING("Please wait [COOLDOWN_TIMELEFT(src, announcement_cooldown)/10] second\s before making your next announcement."))
 				return FALSE
@@ -150,7 +158,7 @@
 			for(var/client/C in GLOB.admins)
 				if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 					playsound_client(C,'sound/effects/sos-morse-code.ogg',10)
-			message_admins("[key_name(usr)] has requested a Distress Beacon! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
+			message_admins("[key_name(usr)] has requested a Distress Beacon! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
 			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 			COOLDOWN_START(src, distress_cooldown, COOLDOWN_COMM_REQUEST)
 			return TRUE

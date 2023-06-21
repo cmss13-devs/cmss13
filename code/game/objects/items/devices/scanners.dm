@@ -446,6 +446,8 @@ FORENSIC SCANNER
 /obj/item/device/black_market_scanner/afterattack(atom/hit_atom, mob/user, proximity)
 	if(!proximity)
 		return
+	if(!ismovable(hit_atom))
+		return ..()
 	var/market_value = get_black_market_value(hit_atom)
 	if(isnull(market_value))
 		return ..()

@@ -1,6 +1,6 @@
 /obj/structure/machinery/hydro_floodlight_switch
 	name = "Biodome Floodlight Switch"
-	icon = 'icons/turf/ground_map.dmi'
+	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "panelnopower"
 	desc = "This switch controls the floodlights surrounding the archaeology complex. It only functions when there is power."
 	density = FALSE
@@ -21,8 +21,8 @@
 
 /obj/structure/machinery/hydro_floodlight_switch/Destroy()
 	for(var/obj/structure/machinery/hydro_floodlight/floodlight as anything in floodlist)
-		QDEL_NULL(floodlight.fswitch)
-	QDEL_NULL_LIST(floodlist)
+		floodlight.fswitch = null
+	floodlist = null
 	return ..()
 
 
@@ -98,8 +98,9 @@
 	var/lum_value = 7
 
 /obj/structure/machinery/hydro_floodlight/Destroy()
-	fswitch.floodlist -= src
-	QDEL_NULL(fswitch)
+	if(fswitch?.floodlist)
+		fswitch.floodlist -= src
+	fswitch = null
 	SetLuminosity(0)
 	return ..()
 

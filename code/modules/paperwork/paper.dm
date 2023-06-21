@@ -31,17 +31,21 @@
 	var/rigged = 0
 	var/spam_flag = 0
 
+	// any photos that might be attached to the paper
+	var/list/photo_list
+
 	var/deffont = "Verdana"
 	var/signfont = "Times New Roman"
 	var/crayonfont = "Comic Sans MS"
 
 //lipstick wiping is in code/game/obj/items/weapons/cosmetics.dm!
 
-/obj/item/paper/Initialize()
+/obj/item/paper/Initialize(mapload, photo_list)
 	. = ..()
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
 	stamps = ""
+	src.photo_list = photo_list
 
 	if(info != initial(info))
 		info = html_encode(info)
@@ -52,7 +56,7 @@
 	updateinfolinks()
 
 /obj/item/paper/update_icon()
-	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm" || icon_state == "fortune")
+	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm" || icon_state == "fortune" || icon_state == "paper_flag")
 		return
 	if(info)
 		if(icon_state == "paper_wy")
@@ -60,6 +64,10 @@
 			return
 		if(icon_state == "paper_uscm")
 			icon_state = "paper_uscm_words"
+			return
+		if(icon_state == "paper_flag")
+			icon_state = "paper_flag_words"
+			item_state = "paper_flag"
 			return
 		icon_state = "paper_words"
 		return
@@ -70,6 +78,9 @@
 	if(in_range(user, src) || istype(user, /mob/dead/observer))
 		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || isRemoteControlling(user)))
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
+			if(photo_list)
+				for(var/photo in photo_list)
+					user << browse_rsc(photo_list[photo], photo)
 			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
 			onclose(user, name)
 		else
@@ -80,7 +91,9 @@
 /obj/item/paper/proc/read_paper(mob/user)
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/paper)
 	asset_datum.send(user)
-
+	if(photo_list)
+		for(var/photo in photo_list)
+			user << browse_rsc(photo_list[photo], photo)
 	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name)
 	onclose(user, name)
 
@@ -327,6 +340,10 @@
 	if(!usr || (usr.stat || usr.is_mob_restrained()))
 		return
 
+	if(usr.client.prefs.muted & MUTE_IC)
+		to_chat(usr, SPAN_DANGER("You cannot write on paper (muted)."))
+		return
+
 	if(href_list["write"])
 		var/id = href_list["write"]
 		var/t =  stripped_multiline_input(usr, "Enter what you want to write:", "Write", "", MAX_MESSAGE_LEN)
@@ -491,8 +508,11 @@
 	info = "<B>Hello USCM Orbital Cannon System Owner!</B><BR><BR>We regret to inform you that a communications mishap has resulted in your orbital bombardment warheads being recycled for spare metal! Worry not, the metal has been put to good use in High Command's chest freezer."
 
 /obj/item/paper/flag
-	icon_state = "flag_neutral"
-	item_state = "paper"
+	name = "paper flag"
+	desc = "Somebody crudely glued a piece of paper to a stick. You feel like waving it around like an idiot."
+	icon_state = "paper_flag"
+	item_state = "paper_flag"
+
 	anchored = TRUE
 
 /obj/item/paper/jobs
@@ -545,8 +565,8 @@
 	info = "<p>Mary had a little lamb,<BR>\nits fleece was white as snow;<BR>\nAnd everywhere that Mary went,<BR>\nthe lamb was sure to go.</p><p>It followed her to school one day,<BR>\nwhich was against the rule;<BR>\nIt made the children laugh and play,<BR>\nto see a lamb at school.</p><p>And so the teacher turned it out,<BR>\nbut still it lingered near,<BR>\nAnd waited patiently about,<BR>\ntill Mary did appear.</p><p>\"Why does the lamb love Mary so?\"<BR>\nthe eager children cry;<BR>\n\"Why, Mary loves the lamb, you know\",<BR>\nthe teacher did reply."
 
 /obj/item/paper/lv_624/cheese
-	name = "paper= 'Note on the contents of the armoury'"
-	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armoury for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshal Johnson"
+	name = "paper= 'Note on the contents of the armory'"
+	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armory for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshal Johnson"
 
 /obj/item/paper/bigred/walls
 	name = "crumpled note"
@@ -745,7 +765,7 @@
 	chemical_reagents_list[C.id] = C
 	C.generate_assoc_recipe()
 	data = C
-	msg_admin_niche("New reagent with id [C.id], name [C.name], level [C.gen_tier], generated and printed at [loc] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+	msg_admin_niche("New reagent with id [C.id], name [C.name], level [C.gen_tier], generated and printed at [loc] [ADMIN_JMP(loc)].")
 	. = ..()
 
 /obj/item/paper/research_notes/grant

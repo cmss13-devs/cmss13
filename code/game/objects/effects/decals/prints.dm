@@ -17,6 +17,9 @@
 /obj/effect/decal/prints/New(turf/location, mob/living/carbon/human/criminal_mob, incident = "")
 	. = ..()
 
+	if(!criminal_mob)
+		return
+
 	forceMove(location)
 	criminal_name = criminal_mob.name
 

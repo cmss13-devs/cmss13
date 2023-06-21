@@ -82,7 +82,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	return
 
 ///Triggered when the dropship first lands.
-/datum/game_mode/proc/ds_first_landed(obj/docking_port/mobile/marine_dropship)
+/datum/game_mode/proc/ds_first_landed(obj/docking_port/stationary/marine_dropship)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DS_FIRST_LANDED)
 	return
@@ -158,6 +158,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 		log_game("Round end - humans: [surviving_humans]")
 	if(surviving_total > 0)
 		log_game("Round end - total: [surviving_total]")
+
 
 	return 0
 
@@ -247,6 +248,15 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 			var/mob/living/carbon/human/M = new /mob/living/carbon/human(spawnpoint)
 			M.create_hud() //Need to generate hud before we can equip anything apparently...
 			arm_equipment(M, spawner.equip_path, TRUE, FALSE)
+			for(var/obj/structure/bed/nest/found_nest in spawnpoint)
+				for(var/turf/the_turf in list(get_step(found_nest, NORTH),get_step(found_nest, EAST),get_step(found_nest, WEST)))
+					if(the_turf.density)
+						found_nest.dir = get_dir(found_nest, the_turf)
+						found_nest.pixel_x = found_nest.buckling_x["[found_nest.dir]"]
+						found_nest.pixel_y = found_nest.buckling_y["[found_nest.dir]"]
+						M.dir = get_dir(the_turf,found_nest)
+				if(!found_nest.buckled_mob)
+					found_nest.do_buckle(M,M)
 		gamemode_spawn_corpse.Remove(spawner)
 
 /datum/game_mode/proc/spawn_static_comms()

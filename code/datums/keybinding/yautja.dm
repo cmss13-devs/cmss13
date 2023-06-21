@@ -344,14 +344,14 @@
 		held.healing_capsule()
 		return TRUE
 
-/datum/keybinding/yautja/bracer_hunter/call_disk
+/datum/keybinding/yautja/bracer_hunter/call_disc
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
-	name = "call_disk"
+	name = "call_disc"
 	full_name = "Call smart-disc"
-	keybind_signal = COMSIG_KB_YAUTJA_CALL_DISK
+	keybind_signal = COMSIG_KB_YAUTJA_CALL_DISC
 
-/datum/keybinding/yautja/bracer_hunter/call_disk/down(client/user)
+/datum/keybinding/yautja/bracer_hunter/call_disc/down(client/user)
 	. = ..()
 	if(.)
 		return
@@ -359,12 +359,12 @@
 
 	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
 	if(istype(gloves))
-		gloves.call_disk()
+		gloves.call_disc()
 		return TRUE
 
 	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
 	if(istype(held))
-		held.call_disk()
+		held.call_disc()
 		return TRUE
 
 /datum/keybinding/yautja/bracer_hunter/remove_tracked_item

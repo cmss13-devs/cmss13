@@ -12,20 +12,25 @@
 
 	playsound(xeno.loc, screech_sound_effect, 75, 0, status = 0)
 	if(roar_type == "piercing")
-		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a piercing roar!"))
+		var/datum/behavior_delegate/palatine_base/behavior = xeno.behavior_delegate
+		if(!istype(behavior))
+			to_chat(xeno, SPAN_ALERTWARNING("Something went wrong with your behavior delegate! Inform forest2001 or a coder!"))
+			return FALSE
+		if(behavior.thirst < 3)
+			to_chat(xeno, SPAN_WARNING("You have not slain enough in the name of the Queen Mother to unleash this power!"))
+			return FALSE
+		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a piercing screech!"))
 		xeno.create_shriekwave(color = "#9600d1")
 
 		for(var/mob/living/carbon/carbon in view(7, xeno))
 			if(isxeno(carbon) && xeno.can_not_harm(carbon))
-				var/datum/behavior_delegate/palatine_base/behavior = xeno.behavior_delegate
-				if(!istype(behavior))
-					continue
-				new /datum/effects/xeno_buff(carbon, xeno, ttl = (0.25 SECONDS * behavior.thirst + 3 SECONDS), bonus_damage = bonus_damage_scale * behavior.thirst, bonus_speed = (bonus_speed_scale * behavior.thirst))
-
+				new /datum/effects/xeno_buff(carbon, xeno, ttl = (0.5 SECONDS * behavior.thirst + 3 SECONDS), bonus_damage = bonus_damage_scale * behavior.thirst, bonus_speed = (bonus_speed_scale * behavior.thirst))
 
 			for(var/mob/M in view(xeno))
 				if(M && M.client)
 					shake_camera(M, 10, 1)
+		behavior.thirst = max(0, behavior.thirst - 3)
+		to_chat(xeno, SPAN_XENOMINORWARNING("Your bloodlust cools as you unleash your rage."))
 
 	else
 		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a thundering roar!"))

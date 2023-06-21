@@ -1,6 +1,6 @@
 /datum/caste_datum/palatine
 	caste_type = XENO_CASTE_PALATINE
-	tier = 0
+	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_7
 	melee_damage_upper = XENO_DAMAGE_TIER_8
@@ -27,6 +27,8 @@
 	tackle_chance = 45
 
 	behavior_delegate_type = /datum/behavior_delegate/palatine_base
+	minimum_evolve_time = 0
+	royal_caste = TRUE
 
 /mob/living/carbon/xenomorph/palatine
 	caste_type = XENO_CASTE_PALATINE
@@ -39,8 +41,9 @@
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
-	tier = 0
+	tier = 3
 	mutation_type = "Normal"
+	counts_for_slots = FALSE
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -78,9 +81,12 @@
 
 	thirst = min(thirst + 1, max_thirst)
 
-/datum/behavior_delegate/palatine_base/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
-	if(!iscarbonsizehuman(A))
+/datum/behavior_delegate/palatine_base/melee_attack_modify_damage(original_damage, mob/living/carbon/target)
+	if(!iscarbonsizehuman(target))
 		return
-//	var/mob/living/carbon/human/H = A
 
-	return original_damage + thirst * 2.5
+	var/size = target.mob_size
+	var/multiplier = thirst - size
+
+
+	return original_damage + (2.5 * multiplier)

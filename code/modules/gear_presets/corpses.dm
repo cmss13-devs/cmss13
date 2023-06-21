@@ -16,6 +16,7 @@
 
 /datum/equipment_preset/corpse/load_status(mob/living/carbon/human/new_human)
 	. = ..(new_human)
+	new_human.undefibbable = TRUE
 	new_human.death(create_cause_data("existing"), TRUE) //Kills the new mob
 	new_human.apply_damage(100, BRUTE)
 	new_human.apply_damage(100, BRUTE)
@@ -37,7 +38,6 @@
 			new_human.update_canmove()
 			N.buckled_mob = new_human
 			N.afterbuckle(new_human)
-	new_human.undefibbable = TRUE
 	new_human.spawned_corpse = TRUE
 	new_human.updatehealth()
 	new_human.pulse = PULSE_NONE

@@ -1,6 +1,6 @@
 /obj/structure/machinery/storm_siren
-	name = "Storm Siren"
-	desc = "A siren used to play storm warnings for the colony."
+	name = "storm siren"
+	desc = "A siren used to announce storm warnings for the colony."
 	icon = 'icons/obj/structures/machinery/loudspeaker.dmi'
 	icon_state = "loudspeaker"
 	density = FALSE
@@ -23,4 +23,4 @@
 
 /obj/structure/machinery/storm_siren/proc/weather_warning()
 	playsound(loc, 'sound/effects/weather_warning_varadero.ogg', 75, 0)
-	visible_message(SPAN_DANGER("The [src] blares. ATTENTION. INCOMING TROPICAL STORM DETECTED. SEEK SHELTER IMMEDIATELY."))
+	visible_message(SPAN_DANGER("The [src] blares: ATTENTION. ATTENTION. INCOMING TROPICAL STORM DETECTED. SEEK SHELTER IMMEDIATELY."))

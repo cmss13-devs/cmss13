@@ -153,8 +153,6 @@
 
 	addtimer(CALLBACK(src, PROC_REF(do_dropship_incoming_sound)), 13 SECONDS)
 
-	addtimer(CALLBACK(src, PROC_REF(disable_latejoin)), 3 MINUTES) // latejoin cryorines have 3 minutes to get the hell out
-
 /datum/dropship_hijack/almayer/proc/do_dropship_incoming_sound()
 	for(var/area/internal_area in shuttle.shuttle_areas)
 		playsound_area(internal_area, 'sound/effects/dropship_incoming.ogg', vol = 75)
@@ -165,11 +163,8 @@
 /datum/dropship_hijack/almayer/proc/do_dropship_collision_sound()
 	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/dropship_crash.ogg', volume = 75)
 
-/datum/dropship_hijack/almayer/proc/disable_latejoin()
-	enter_allowed = FALSE
-
-/datum/dropship_hijack/almayer/proc/get_crashsite_turf(ship_section)
-	var/list/turfs = list()
+/datum/dropship_hijack/almayer/proc/get_crashsite_area(ship_section)
+	var/list/areas = list()
 	switch(ship_section)
 		if("Upper deck Foreship")
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/armory)

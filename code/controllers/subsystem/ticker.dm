@@ -486,3 +486,4 @@ SUBSYSTEM_DEF(ticker)
 	if(mode)
 		mode.is_in_endgame = TRUE
 		mode.force_end_at = (world.time + 25 MINUTES)
+		enter_allowed = FALSE

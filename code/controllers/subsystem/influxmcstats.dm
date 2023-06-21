@@ -22,6 +22,16 @@ SUBSYSTEM_DEF(influxmcstats)
 	if(!SSinfluxdriver.can_fire)
 		can_fire = FALSE
 		return
+
+	var/list/data = list()
+	data["time_dilation_current"] = SStime_track.time_dilation_current
+	data["time_dilation_avg"] = SStime_track.time_dilation_avg
+	data["time_dilation_avg_slow"] = SStime_track.time_dilation_avg_slow
+	data["time_dilation_avg_fast"] = SStime_track.time_dilation_avg_fast
+	SSinfluxdriver.enqueue_stats("tidi", null, data)
+
+	SSinfluxdriver.enqueue_stats("cpu", null, list("cpu" = world.cpu, "map_cpu" = world.map_cpu))
+
 	var/static/regex/get_last_path_element = regex(@{"/([^/]+)$"})
 	checkpoint++
 	for(var/datum/controller/subsystem/SS in Master.subsystems)
@@ -34,4 +44,4 @@ SUBSYSTEM_DEF(influxmcstats)
 		if(!SSname)
 			stack_trace("Influx MC Stats couldnt name a subsystem, type=[SS.type]")
 			continue
-		SSinfluxdriver.enqueue_stats("sstimings", list("ss" = SSname), list("cost" = SS.cost, "tick_overrun" = SS.tick_overrun, "tick_usage" = SS.tick_usage, "times_fired" = SS.times_fired))
+		SSinfluxdriver.enqueue_stats("sstimings", list("ss" = SSname), list("cost" = SS.cost, "tick_overrun" = SS.tick_overrun, "tick_usage" = SS.tick_usage, "wait" = SS.wait))

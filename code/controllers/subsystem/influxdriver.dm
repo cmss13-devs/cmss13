@@ -50,9 +50,6 @@ SUBSYSTEM_DEF(influxdriver)
 /datum/controller/subsystem/influxdriver/proc/flush_queue(list/queue)
 	PRIVATE_PROC(TRUE)
 
-	if(!length(queue))
-		return // Nothing to do
-
 	var/host   = CONFIG_GET(string/influxdb_host)
 	var/token  = CONFIG_GET(string/influxdb_token)
 	var/bucket = CONFIG_GET(string/influxdb_bucket)
@@ -61,6 +58,9 @@ SUBSYSTEM_DEF(influxdriver)
 	if(!host || !token || !bucket || !org)
 		can_fire = FALSE
 		return
+
+	if(!length(queue))
+		return // Nothing to do
 
 	var/url = "[host]/api/v2/write?org=[org]&bucket=[bucket]&precision=us" // microseconds
 	var/list/headers = list()

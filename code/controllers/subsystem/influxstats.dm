@@ -83,16 +83,20 @@ SUBSYSTEM_DEF(influxstats)
 /datum/controller/subsystem/influxstats/proc/run_player_statistics()
 	var/staff_count = 0
 	var/mentor_count = 0
-	for(var/client/client in GLOB.clients)
+	for(var/client/client in GLOB.admins)
 		if(CLIENT_IS_STAFF(client))
 			staff_count++
 		else if(CLIENT_HAS_RIGHTS(client, R_MENTOR))
 			mentor_count++
-	SSinfluxdriver.enqueue_stats("online", list(), list("count" = length(GLOB.clients)))
-	SSinfluxdriver.enqueue_stats("online_staff", list(), list("staff" = staff_count, "mentors" = mentor_count))
+	SSinfluxdriver.enqueue_stats("online", null, list("count" = length(GLOB.clients)))
+
+	var/list/adm = get_admin_counts()
+	var/present_admins = length(adm["present"])
+	var/afk_admins = length(adm["afk"])
+	SSinfluxdriver.enqueue_stats("online_staff", null, list("total" = staff_count, "mentors" = mentor_count, "present" = present_admins, "afk" = afk_admins))
 
 	// Grab ahelp stats
-	SSinfluxdriver.enqueue_stats("tickets", list(), list(
+	SSinfluxdriver.enqueue_stats("tickets", null, list(
 		"open" = length(GLOB.ahelp_tickets.active_tickets),
 		"closed" = length(GLOB.ahelp_tickets.closed_tickets),
 		"resolved" = length(GLOB.ahelp_tickets.resolved_tickets),

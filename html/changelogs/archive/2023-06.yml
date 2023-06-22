@@ -305,3 +305,13 @@
       decryption before being able to be armed.
   TheGamerdk:
   - bugfix: Forsaken no longer announce themselves as a distress signal
+2023-06-22:
+  Al-1ce:
+  - rscadd: Adds various magazines and a crayon to loadout selection.
+  Drathek Firartix:
+  - bugfix: Fixed a crash with hijack code possibly picking a non-existent brig area,
+      and weighting smaller areas heavier.
+  Morrow:
+  - bugfix: Flashlight gun attachments turn off when they should
+  sg2002:
+  - bugfix: XM88 now correctly notifies the user on the hit streak end.

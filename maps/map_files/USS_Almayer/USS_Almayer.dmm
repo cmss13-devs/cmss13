@@ -36185,6 +36185,34 @@
 	dir = 4
 	},
 /area/almayer/command/airoom)
+"fMt" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "ARES Interior";
+	name = "\improper ARES Inner Chamber Shutters";
+	plane = -7
+	},
+/obj/effect/step_trigger/ares_alert/core,
+/obj/structure/machinery/door/poddoor/almayer/blended/white/open{
+	open_layer = 1.9;
+	id = "ARES Emergency";
+	needs_power = 0;
+	name = "ARES Emergency Lockdown";
+	layer = 3.2;
+	closed_layer = 3.2;
+	plane = -7
+	},
+/obj/structure/sign/safety/laser{
+	pixel_x = 32;
+	pixel_y = -8
+	},
+/obj/structure/sign/safety/rewire{
+	pixel_y = 6;
+	pixel_x = 32
+	},
+/turf/open/floor/almayer/no_build{
+	icon_state = "test_floor4"
+	},
+/area/almayer/command/airoom)
 "fMA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
@@ -51565,6 +51593,34 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/aft_hallway)
+"mRn" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "ARES Interior";
+	name = "\improper ARES Inner Chamber Shutters";
+	plane = -7
+	},
+/obj/effect/step_trigger/ares_alert/core,
+/obj/structure/machinery/door/poddoor/almayer/blended/white/open{
+	open_layer = 1.9;
+	id = "ARES Emergency";
+	needs_power = 0;
+	name = "ARES Emergency Lockdown";
+	layer = 3.2;
+	closed_layer = 3.2;
+	plane = -7
+	},
+/obj/structure/sign/safety/terminal{
+	pixel_y = -8;
+	pixel_x = -18
+	},
+/obj/structure/sign/safety/fibre_optics{
+	pixel_x = -18;
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/no_build{
+	icon_state = "test_floor4"
+	},
+/area/almayer/command/airoom)
 "mRW" = (
 /turf/open/floor/almayer/research/containment/corner1,
 /area/almayer/medical/containment/cell/cl)
@@ -134967,7 +135023,7 @@ wyQ
 fmv
 ubA
 gMN
-jqP
+mRn
 itf
 mHE
 vAU
@@ -135373,7 +135429,7 @@ jaH
 awu
 ydI
 aKs
-jqP
+fMt
 gOs
 kXj
 pYi

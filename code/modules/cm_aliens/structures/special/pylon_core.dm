@@ -151,8 +151,10 @@
 			var/list/players_with_xeno_pref = get_alien_candidates()
 			if(players_with_xeno_pref && players_with_xeno_pref.len)
 				if(spawning_larva && spawn_burrowed_larva(players_with_xeno_pref[1]))
+					// We were in spawning_larva mode and successfully spawned someone
 					message_alien_candidates(players_with_xeno_pref, dequeued = 1)
 				else
+					// Just time to update everyone their queue status (or the spawn failed)
 					message_alien_candidates(players_with_xeno_pref, dequeued = 0)
 
 		if(linked_hive.hijack_burrowed_surge && (last_surge_time + surge_cooldown) < world.time)

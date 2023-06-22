@@ -285,7 +285,7 @@
  * Messages observers that are currently candidates an update on the queue.
  *
  * Arguments:
- * * candidates - The list of observers from get_alien_candidates() with atleast one
+ * * candidates - The list of observers from get_alien_candidates()
  * * dequeued - How many candidates to skip messaging because they were dequeued
  * * cache_only - Whether to not actually send a to_chat message and instead only update larva_queue_cached_message
  */

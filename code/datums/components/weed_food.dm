@@ -49,15 +49,12 @@
 
 /datum/component/weed_food/InheritComponent(datum/component/C, i_am_original)
 	. = ..()
-
-	message_admins("Handling duplicate Init on [parent_mob]...") // TODO: Remove this
 	start()
 
 /datum/component/weed_food/Destroy(force, silent)
 	. = ..()
 
 	unmerge_with_weeds()
-	message_admins("Destroying on [parent_mob]...") // TODO: Remove this
 	QDEL_NULL(weed_appearance)
 	parent_mob = null
 	parent_turf = null
@@ -74,8 +71,6 @@
 
 /datum/component/weed_food/UnregisterFromParent()
 	. = ..()
-
-	message_admins("UnregisterFromParent on [parent_mob]...") // TODO: Remove this
 
 	if(parent_mob)
 		UnregisterSignal(parent_mob, COMSIG_MOVABLE_MOVED)
@@ -115,8 +110,6 @@
 /// SIGNAL_HANDLER for COMSIG_LIVING_REJUVENATED and COMSIG_HUMAN_REVIVED
 /datum/component/weed_food/proc/on_rejuv()
 	SIGNAL_HANDLER
-
-	message_admins("on_rejuv [parent_mob]") // TODO: Remove this
 	qdel(src)
 
 /// Try to start the process to turn into weeds
@@ -131,11 +124,9 @@
 	if(QDELETED(parent_mob))
 		return FALSE
 	if(parent_mob.is_xeno_grabbable())
-		message_admins("cant start [parent_mob] because we are grabable") // TODO: Remove this
 		return FALSE
 	if(!(parent_mob.status_flags & PERMANENTLY_DEAD))
 		var/mob/living/carbon/human/parent_human = parent_mob
-			message_admins("cant start [parent_mob] because we are defibbable revive status: [parent_human.is_revivable()]") // TODO: Remove this
 		if(istype(parent_human) && !parent_human.undefibbable)
 			return FALSE
 
@@ -147,13 +138,11 @@
 		absorbing_weeds = parent_turf.weeds
 		RegisterSignal(parent_turf.weeds, COMSIG_PARENT_QDELETING, PROC_REF(stop))
 	else if(!force)
-		message_admins("cant start [parent_mob] because we aren't on weeds") // TODO: Remove this
 		return FALSE
 
 	active = TRUE
 	timer_id = addtimer(CALLBACK(src, PROC_REF(merge_with_weeds), force), WEED_FOOD_DELAY, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_DELETE_ME|TIMER_OVERRIDE)
 
-	message_admins("started [parent_mob]") // TODO: Remove this
 	return TRUE
 
 /// Try to stop the process turning into weeds
@@ -168,7 +157,6 @@
 	deltimer(timer_id)
 	timer_id = null
 
-	message_admins("stopped [parent_mob]") // TODO: Remove this
 	return TRUE
 
 /// Finish becomming one with the weeds
@@ -205,7 +193,6 @@
 	// For non-humans change the icon_state or something here
 	parent_mob.vis_contents += weed_appearance
 
-	message_admins("merged [parent_mob] on [parent_mob.layer]") // TODO: Remove this
 	return TRUE
 
 /// Undo the weedening
@@ -224,7 +211,5 @@
 	parent_mob.plane = GAME_PLANE
 	parent_mob.add_to_all_mob_huds()
 	parent_mob.vis_contents -= weed_appearance
-
-	message_admins("unmerged [parent_mob]") // TODO: Remove this
 
 #undef WEED_FOOD_DELAY

@@ -49,7 +49,7 @@
 						new_xeno.generate_name()
 						if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 							qdel(new_xeno)
-							return
+							break
 						new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of the ground!"),
 						SPAN_XENODANGER("You burrow out of the ground after feeling an immense tremor through the hive, which quickly fades into complete silence..."))
 
@@ -101,6 +101,11 @@
 		GLOB.hive_datum[hivenumber].stored_larva++
 		GLOB.hive_datum[hivenumber].hive_ui.update_burrowed_larva()
 
+	if(hardcore)
+		QDEL_IN(src, 3 SECONDS)
+	//else if(!gibbed)  // At the moment we only support humans
+		//AddComponent(/datum/component/weed_food)
+
 	if(hive)
 		hive.remove_xeno(src)
 		// Finding the last xeno for anti-delay.
@@ -118,9 +123,6 @@
 				if(X.client)
 					to_chat(X, SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"))
 				announce_dchat("There is only one Xenomorph left: [X.name].", X)
-
-	if(hardcore)
-		QDEL_IN(src, 3 SECONDS)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
 

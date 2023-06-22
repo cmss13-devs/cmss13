@@ -491,6 +491,21 @@
 
 	..()
 
+/datum/equipment_preset/survivor/security/nv
+	name = "Survivor - New Varadero Security Guard"
+	assignment = "United Americas Peacekeeper"
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
+
+/datum/equipment_preset/survivor/security/nv/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/ua_riot(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+
+	..()
+
 /datum/equipment_preset/survivor/security/shiva
 	name = "Survivor - Shivas Snowball Security Guard"
 	assignment = "United Americas Peacekeeper"

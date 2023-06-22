@@ -288,3 +288,30 @@
   - bugfix: folding barricade now blocks pounces from behind.
   - qol: collapsing folding barricade by hand is no longer interrupted by taking an
       item.
+2023-06-20:
+  Morrow:
+  - balance: Xenos can slash trolleys now
+  - balance: Generators can no longer be blown up
+  - balance: Bonus evolution slowly deteriorates over time when all castes are unlocked
+  - balance: Portable Generators can now be turned off/unanchored by xeno slashes
+2023-06-21:
+  BeagleGaming1:
+  - rscadd: Melting flares makes the flares burn out faster, instead of melting like
+      normal
+  - balance: Flares last ~10 mins, and flares in the air last ~5 mins
+  Morrow:
+  - rscadd: Re-added the nuke that you can buy via intel at tier 4. Only purchasable
+      past 120 minutes. Requires holding both groundside comms towers for authorization
+      decryption before being able to be armed.
+  TheGamerdk:
+  - bugfix: Forsaken no longer announce themselves as a distress signal
+2023-06-22:
+  Al-1ce:
+  - rscadd: Adds various magazines and a crayon to loadout selection.
+  Drathek Firartix:
+  - bugfix: Fixed a crash with hijack code possibly picking a non-existent brig area,
+      and weighting smaller areas heavier.
+  Morrow:
+  - bugfix: Flashlight gun attachments turn off when they should
+  sg2002:
+  - bugfix: XM88 now correctly notifies the user on the hit streak end.

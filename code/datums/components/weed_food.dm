@@ -1,4 +1,4 @@
-#define WEED_FOOD_DELAY 10 SECONDS
+#define WEED_FOOD_DELAY 5 MINUTES
 
 /atom/movable/vis_obj/weed_food
 	icon = 'icons/mob/xenos/weeds.dmi'
@@ -21,6 +21,8 @@
 	var/active = FALSE
 	/// Whether we are completely merged with weeds
 	var/merged = FALSE
+	/// The time we were unmerged (just to handle weeds upgrading)
+	var/unmerged_time
 	/// Any active timer for a pending merge
 	var/timer_id = null
 	/// The weeds that we are merging/merged with
@@ -56,6 +58,7 @@
 
 	unmerge_with_weeds()
 	message_admins("Destroying on [parent_mob]...") // TODO: Remove this
+	QDEL_NULL(weed_appearance)
 	parent_mob = null
 	parent_turf = null
 
@@ -132,11 +135,15 @@
 		return FALSE
 	if(!(parent_mob.status_flags & PERMANENTLY_DEAD))
 		var/mob/living/carbon/human/parent_human = parent_mob
-		if(istype(parent_human) && !parent_human.undefibbable && !parent_human.is_revivable())
-			message_admins("cant start [parent_mob] because we are defibbable") // TODO: Remove this
+			message_admins("cant start [parent_mob] because we are defibbable revive status: [parent_human.is_revivable()]") // TODO: Remove this
+		if(istype(parent_human) && !parent_human.undefibbable)
 			return FALSE
 
 	if(parent_turf?.weeds)
+		if(unmerged_time == world.time)
+			// Weeds upgraded, re-merge now
+			return merge_with_weeds()
+		QDEL_NULL(weed_appearance) // if we're here, we know we aren't re-using the apperance
 		absorbing_weeds = parent_turf.weeds
 		RegisterSignal(parent_turf.weeds, COMSIG_PARENT_QDELETING, PROC_REF(stop))
 	else if(!force)
@@ -144,7 +151,7 @@
 		return FALSE
 
 	active = TRUE
-	timer_id = addtimer(CALLBACK(src, PROC_REF(merge_with_weeds)), WEED_FOOD_DELAY, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_DELETE_ME|TIMER_OVERRIDE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(merge_with_weeds), force), WEED_FOOD_DELAY, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_DELETE_ME|TIMER_OVERRIDE)
 
 	message_admins("started [parent_mob]") // TODO: Remove this
 	return TRUE
@@ -177,6 +184,10 @@
 	if(!force && !parent_turf?.weeds)
 		return FALSE
 
+	absorbing_weeds = parent_turf?.weeds
+	if(absorbing_weeds)
+		RegisterSignal(absorbing_weeds, COMSIG_PARENT_QDELETING, PROC_REF(unmerge_with_weeds))
+
 	active = FALSE
 	merged = TRUE
 
@@ -184,20 +195,11 @@
 	parent_mob.anchored = TRUE
 	parent_mob.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	parent_mob.plane = FLOOR_PLANE
-
-	for(var/datum/mob_hud/hud in huds)
-		if(istype(hud, /datum/mob_hud/xeno))
-			continue
-		if(!hud.hudmobs.Find(parent_mob))
-			message_admins("[parent_mob] NOT PRESENT IN [hud]")
-		hud.remove_from_hud(parent_mob)
-
-	absorbing_weeds = parent_turf?.weeds
-	if(absorbing_weeds)
-		RegisterSignal(absorbing_weeds, COMSIG_PARENT_QDELETING, PROC_REF(unmerge_with_weeds))
+	parent_mob.remove_from_all_mob_huds()
 
 	// Update the sprite
-	weed_appearance = new()
+	if(!weed_appearance)
+		weed_appearance = new()
 	if(absorbing_weeds)
 		weed_appearance.color = absorbing_weeds.color
 	// For non-humans change the icon_state or something here
@@ -212,20 +214,16 @@
 	SIGNAL_HANDLER
 
 	merged = FALSE
+	unmerged_time = world.time
+	if(absorbing_weeds) // Just to supress errors if this proc is manually called
+		UnregisterSignal(absorbing_weeds, COMSIG_PARENT_QDELETING)
 	absorbing_weeds = null
 
 	parent_mob.anchored = FALSE
 	parent_mob.mouse_opacity = MOUSE_OPACITY_ICON
 	parent_mob.plane = GAME_PLANE
-
-	for(var/datum/mob_hud/hud in huds)
-		if(istype(hud, /datum/mob_hud/xeno))
-			continue
-		hud.add_to_hud(parent_mob)
-
-	// Undo the sprite changes
+	parent_mob.add_to_all_mob_huds()
 	parent_mob.vis_contents -= weed_appearance
-	QDEL_NULL(weed_appearance)
 
 	message_admins("unmerged [parent_mob]") // TODO: Remove this
 

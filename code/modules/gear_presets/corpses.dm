@@ -16,7 +16,12 @@
 
 /datum/equipment_preset/corpse/load_status(mob/living/carbon/human/new_human)
 	. = ..(new_human)
+
+	// These two values matter because they are checked on death for weed_food
 	new_human.undefibbable = TRUE
+	if(xenovictim)
+		new_human.chestburst = 2
+
 	new_human.death(create_cause_data("existing"), TRUE) //Kills the new mob
 	new_human.apply_damage(100, BRUTE)
 	new_human.apply_damage(100, BRUTE)
@@ -28,7 +33,6 @@
 			O = new_human.internal_organs_by_name[i]
 			new_human.internal_organs_by_name -= i
 			new_human.internal_organs -= O
-		new_human.chestburst = 2
 		new_human.update_burst()
 		//buckle to nest
 		var/obj/structure/bed/nest/N = locate() in get_turf(src)

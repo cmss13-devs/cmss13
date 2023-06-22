@@ -286,7 +286,7 @@
 					usr.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 
 		if("activate_echo")
-			var/reason = input(usr, "What is the purpose of Echo Squad?", "Activation Reason")
+			var/reason = strip_html(input(usr, "What is the purpose of Echo Squad?", "Activation Reason"))
 			if(!reason)
 				return
 			if(alert(usr, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") != "Yes") return

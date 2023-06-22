@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - server: "server's can now support using a cdn for web assets"

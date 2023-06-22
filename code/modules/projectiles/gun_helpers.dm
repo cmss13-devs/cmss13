@@ -168,7 +168,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if (!attachment || !attachment.light_mod)
 			continue
 
-		attachment.activate_attachment(src, bearer)
+		bearer.SetLuminosity(0, FALSE, src)
+		attachment.activate_attachment(src, bearer, TRUE)
 
 		return TRUE
 	return FALSE

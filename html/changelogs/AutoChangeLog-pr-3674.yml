@@ -1,0 +1,4 @@
+author: "Drathek Firartix"
+delete-after: True
+changes:
+  - bugfix: "Fixed a crash with hijack code possibly picking a non-existent brig area, and weighting smaller areas heavier."

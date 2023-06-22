@@ -159,8 +159,8 @@
 	name = "\improper QYJ-72 General Purpose Machine Gun"
 	desc = "The QYJ-72 is the standard GPMG of the Union of Progressive Peoples, chambered in 7.62x54mmR, it fires a hard-hitting cartridge with a large rate of fire. With an extremely large box at 250 rounds, the QJY-72 is designed with suppressing fire and accuracy by volume of fire at its forefront. \n<b>Alt-click it to open the feed cover and allow for reloading.</b>"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
-	icon_state = "qjy72"
-	item_state = "qjy72"
+	icon_state = "qjy-72"
+	item_state = "qjy-72"
 
 	fire_sound = 'sound/weapons/gun_mg.ogg'
 	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
@@ -171,7 +171,7 @@
 	gun_category = GUN_CATEGORY_HEAVY
 	attachable_allowed = list(
 		/obj/item/attachable/pkpbarrel,
-		/obj/item/attachable/pkpstock,
+		/obj/item/attachable/stock/pkpstock,
 	)
 	var/cover_open = FALSE //if the gun's feed-cover is open or not.
 
@@ -183,7 +183,7 @@
 	attachie.Attach(src)
 	update_attachable(attachie.slot)
 
-	var/obj/item/attachable/pkpstock = new /obj/item/attachable/pkpstock(src)
+	var/obj/item/attachable/pkpstock = new /obj/item/attachable/stock/pkpstock(src)
 	pkpstock.flags_attach_features &= ~ATTACH_REMOVABLE
 	pkpstock.Attach(src)
 	update_attachable(pkpstock.slot)
@@ -201,7 +201,7 @@
 		load_into_chamber()
 
 /obj/item/weapon/gun/pkp/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 16,"rail_x" = 0, "rail_y" = 0, "under_x" = 39, "under_y" = 7, "stock_x" = 0, "stock_y" = 0)
+	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 16,"rail_x" = 5, "rail_y" = 5, "under_x" = 39, "under_y" = 7, "stock_x" = -5, "stock_y" = 14)
 
 
 /obj/item/weapon/gun/pkp/set_gun_config_values()

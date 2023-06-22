@@ -1662,7 +1662,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
 	icon_state = "hjra_breech"
 	attach_icon = "hjra_breech"
-	slot = "special"
+	slot = "stock"
 	wield_delay_mod = WIELD_DELAY_NONE
 	flags_attach_features = NO_FLAGS
 	melee_mod = 0
@@ -1674,13 +1674,13 @@ Defined in conflicts.dm of the #defines folder.
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "uppmg_barrel"
 	attach_icon = "uppmg_barrel"
-	slot = "barrel"
+	slot = "muzzle"
 	wield_delay_mod = WIELD_DELAY_NONE
 	flags_attach_features = NO_FLAGS
 	melee_mod = 0
 	size_mod = 0
 
-/obj/item/attachable/pkpstock
+/obj/item/attachable/stock/pkpstock
 	name = "QYJ-72 Stock"
 	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
@@ -1689,7 +1689,7 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "stock"
 	wield_delay_mod = WIELD_DELAY_NONE
 	flags_attach_features = NO_FLAGS
-	melee_mod = 0
+	melee_mod = 20 //the thought of a upp spec beating people to death with a pk makes me laugh
 	size_mod = 0
 
 /obj/item/attachable/type88_barrel

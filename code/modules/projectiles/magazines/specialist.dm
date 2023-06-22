@@ -348,6 +348,12 @@
 	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
 	reload_delay = 85
 
+/obj/item/ammo_magazine/rocket/upp/update_icon()
+	if(current_rounds <= 0)
+		qdel(src)
+	else
+		icon_state = initial(icon_state)
+
 /obj/item/ammo_magazine/rocket/upp/at
 	name = "\improper HJRA-12 Anti-Tank Rocket"
 	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard Anti-Tank rocket designed to disable or destroy hostile vehicles."
@@ -359,7 +365,7 @@
 	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
 	reload_delay = 85
 
-/obj/item/ammo_magazine/rocket/incen
+/obj/item/ammo_magazine/rocket/upp/incen
 	name = "\improper HJRA-12 Extreme-Intensity Incendiary Rocket"
 	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is an extreme-intensity incendiary rocket, using an experimental chemical designated R-189 by the UPP, it is designed to melt through fortified positions and bunkers but is most commonly used in an anti-personnal role due to over-issuing and the tempatures after use in its intended role leaving the tempature of the air incompatible with human life."
 	caliber = "88mm"

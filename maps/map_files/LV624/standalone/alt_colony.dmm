@@ -272,6 +272,10 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/lazarus/landing_zones/lz2)
+"aW" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/east_jungle)
 "aX" = (
 /obj/item/device/flashlight{
 	on = 1
@@ -28777,7 +28781,7 @@ VE
 HU
 QQ
 HU
-HU
+aW
 TL
 TL
 TL

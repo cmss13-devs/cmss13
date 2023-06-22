@@ -241,12 +241,11 @@
 		else
 			return get_step(start, EAST)
 
-/// Get a list of observers that can be alien candidates, optionally sorted by timeofdeath
+/// Get a list of observers that can be alien candidates, optionally sorted by larva_queue_time
 /proc/get_alien_candidates(sorted = TRUE)
 	var/list/candidates = list()
 
-	for(var/i in GLOB.observer_list)
-		var/mob/dead/observer/cur_obs = i
+	for(var/mob/dead/observer/cur_obs as anything in GLOB.observer_list)
 		// Preference check
 		if(!cur_obs.client || !cur_obs.client.prefs || !(cur_obs.client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
 			continue
@@ -263,22 +262,22 @@
 
 		// copied from join as xeno
 		var/deathtime = world.time - cur_obs.timeofdeath
-		if(deathtime < 3000 && ( !cur_obs.client.admin_holder || !(cur_obs.client.admin_holder.rights & R_ADMIN)) )
+		if(deathtime < (5 MINUTES) && ( !cur_obs.client.admin_holder || !(cur_obs.client.admin_holder.rights & R_ADMIN)) )
 			continue
 
 		// AFK players cannot be drafted
-		if(cur_obs.client.inactivity / 600 > ALIEN_SELECT_AFK_BUFFER + 5)
+		if(cur_obs.client.inactivity / (1 MINUTES) > ALIEN_SELECT_AFK_BUFFER + 5)
 			continue
 
 		// Mods with larva protection cannot be drafted
-		if((cur_obs.client.admin_holder && (cur_obs.client.admin_holder.rights & R_MOD)) && cur_obs.adminlarva == 0)
+		if((cur_obs.client.admin_holder && (cur_obs.client.admin_holder.rights & R_MOD)) && !cur_obs.adminlarva)
 			continue
 
 		candidates += cur_obs
 
-	// Optionally sort by timeofdeath
+	// Optionally sort by larva_queue_time
 	if(sorted && length(candidates))
-		candidates = sort_list(candidates, GLOBAL_PROC_REF(cmp_mob_deathtime_asc))
+		candidates = sort_list(candidates, GLOBAL_PROC_REF(cmp_obs_larvaqueuetime_asc))
 
 	return candidates
 
@@ -288,13 +287,22 @@
  * Arguments:
  * * candidates - The list of observers from get_alien_candidates() with atleast one
  * * dequeued - How many candidates to skip messaging because they were dequeued
+ * * cache_only - Whether to not actually send a to_chat message and instead only update larva_queue_cached_message
  */
-/proc/message_alien_candidates(list/candidates, dequeued)
+/proc/message_alien_candidates(list/candidates, dequeued, cache_only = FALSE)
 	var/new_players = 0
 	for(var/i in (1 + dequeued) to candidates.len)
-		to_chat(candidates[i], SPAN_XENONOTICE("You are [dequeued ? "now" : "currently"] [i-dequeued]\th in the larva queue. There are [new_players] ahead of you that have yet to play this round."))
 		var/mob/dead/observer/cur_obs = candidates[i]
-		if(!cur_obs.timeofdeath)
+
+		// Generate the messages
+		var/cached_message = SPAN_XENONOTICE("You are currently [i-dequeued]\th in the larva queue. There are [new_players] ahead of you that have yet to play this round.")
+		cur_obs.larva_queue_cached_message = cached_message
+		if(!cache_only)
+			var/chat_message = dequeued ? replacetext(cached_message, "currently", "now") : cached_message
+			to_chat(candidates[i], chat_message)
+
+		// Count how many are prioritized
+		if(cur_obs.client.larva_queue_time < 2) // 0 and 1 because facehuggers/t-domers are slightly deprioritized
 			new_players++
 
 /proc/convert_k2c(temp)

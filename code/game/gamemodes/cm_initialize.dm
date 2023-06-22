@@ -354,7 +354,7 @@ Additional game mode variables.
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(!hive.hardcore && hive.stored_larva && (hive.hive_location || (world.time < 30 MINUTES + SSticker.round_start_time)))
+		if(!hive.hardcore && hive.stored_larva && (hive.hive_location || (world.time < XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time)))
 			if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
 				available_xenos |= "any buried larva"
 				LAZYADD(available_xenos["any buried larva"], hive)
@@ -397,11 +397,11 @@ Additional game mode variables.
 				if(!xeno_bypass_timer)
 					var/deathtime = world.time - xeno_candidate.timeofdeath
 					if(isnewplayer(xeno_candidate))
-						deathtime = 2.5 MINUTES //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
-					if(deathtime < 2.5 MINUTES && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
+						deathtime = XENO_JOIN_DEAD_LARVA_TIME //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
+					if(deathtime < XENO_JOIN_DEAD_LARVA_TIME && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
 						var/message = SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)].")
 						to_chat(xeno_candidate, message)
-						to_chat(xeno_candidate, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game as a buried larva!"))
+						to_chat(xeno_candidate, SPAN_WARNING("You must wait 2 minutes and 30 seconds before rejoining the game as a buried larva!"))
 						return FALSE
 
 				for(var/mob_name in picked_hive.banished_ckeys)
@@ -413,7 +413,7 @@ Additional game mode variables.
 					noob.close_spawn_windows()
 				if(picked_hive.hive_location)
 					picked_hive.hive_location.spawn_burrowed_larva(xeno_candidate)
-				else if((world.time < 30 MINUTES + SSticker.round_start_time))
+				else if((world.time < XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time))
 					picked_hive.do_buried_larva_spawn(xeno_candidate)
 				else
 					to_chat(xeno_candidate, SPAN_WARNING("Seems like something went wrong. Try again?"))
@@ -437,8 +437,8 @@ Additional game mode variables.
 		if(!xeno_bypass_timer)
 			var/deathtime = world.time - xeno_candidate.timeofdeath
 			if(istype(xeno_candidate, /mob/new_player))
-				deathtime = 5 MINUTES //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
-			if(deathtime < 5 MINUTES && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
+				deathtime = XENO_JOIN_DEAD_TIME //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
+			if(deathtime < XENO_JOIN_DEAD_TIME && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
 				var/message = "You have been dead for [DisplayTimeText(deathtime)]."
 				message = SPAN_WARNING("[message]")
 				to_chat(xeno_candidate, message)

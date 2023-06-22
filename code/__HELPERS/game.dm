@@ -262,11 +262,11 @@
 
 		// copied from join as xeno
 		var/deathtime = world.time - cur_obs.timeofdeath
-		if(deathtime < (5 MINUTES) && ( !cur_obs.client.admin_holder || !(cur_obs.client.admin_holder.rights & R_ADMIN)) )
+		if(deathtime < XENO_JOIN_DEAD_TIME && ( !cur_obs.client.admin_holder || !(cur_obs.client.admin_holder.rights & R_ADMIN)) )
 			continue
 
 		// AFK players cannot be drafted
-		if(cur_obs.client.inactivity / (1 MINUTES) > ALIEN_SELECT_AFK_BUFFER + 5)
+		if(cur_obs.client.inactivity > XENO_JOIN_AFK_TIME_LIMIT)
 			continue
 
 		// Mods with larva protection cannot be drafted

@@ -71,6 +71,9 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 // When effectively shut down
 /obj/structure/machinery/telecomms/proc/tcomms_shutdown()
 	on = FALSE
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_GROUNDSIDE_TELECOMM_TURNED_OFF)
+
 	if(tcomms_machine)
 		SSradio.remove_tcomm_machine(src)
 

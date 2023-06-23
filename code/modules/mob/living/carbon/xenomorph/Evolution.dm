@@ -140,6 +140,7 @@
 		if(3)
 			hive.tier_3_xenos |= new_xeno
 
+	log_game("EVOLVE: [key_name(src)] evolved into [new_xeno].")
 	if(mind)
 		mind.transfer_to(new_xeno)
 	else
@@ -327,6 +328,7 @@
 			qdel(new_xeno)
 		return
 
+	log_game("EVOLVE: [key_name(src)] de-evolved into [new_xeno].")
 	if(mind)
 		mind.transfer_to(new_xeno)
 	else

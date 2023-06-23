@@ -147,7 +147,7 @@
 	title = "New Prototype Design"
 	entry_text = {"<html>
 					Thanks for sending the report in, we've been mulling over the data you sent over.
-					We've updated design for the prototype which solves most of the problems everyone has encountered.
+					We've updated the design for the prototype which solves most of the problems everyone has encountered.
 					This one looks more promising than the last one.
 					And as much as everyone wants this done and shippped, I don't think this is going to be issued en masse for a good while.
 				</html>
@@ -158,9 +158,11 @@
 	title = "Beat Up"
 	entry_text = {"<html>
 				Man last mission was an absolute shit show.
+				<br>
 				The USS Heyst got their shit kicked in with a missile and we got our cargo hold set on fire. And most of our good ammo is gone too!
-				Now we're left with the FMJs and the older AP munitions. Shit, most of 1st platoon is pretty much out of action.
-				Lotta folks are in the sickbay and the rest of us are heading off to cryosleep, well what's left of us.
+				Now we're left with the FMJs and the older AP munitions. What's worse is that most of 1st platoon is pretty much out of action.
+				Lotta folks are in the sickbay and the rest of us are heading off to cryosleep, well what's left of us. There's not many of the old guard left I'm afraid.
+				Until we get reinforced with more bodies, command has given the go ahead to merge 2nd platoon into 1st for the time being.
 				</html>
 				"}
 
@@ -186,7 +188,7 @@
 				Has anyone seen Mendoza around? He owes me half of his paycheck from last month's poker game.
 				Everyone's payday was a week ago and we're all set to head back to Chinook station.
 				Could have sworn I saw him near the cargo elevator yesterday.
-				I'll catch him back at base once we've docked because I need that money to pay off my tab from the bar.
+				I'll catch him back at base once we've docked because I need that money to pay off my tab at the bar.
 				</html>
 				"}
 

@@ -315,3 +315,6 @@
   - bugfix: Flashlight gun attachments turn off when they should
   sg2002:
   - bugfix: XM88 now correctly notifies the user on the hit streak end.
+2023-06-23:
+  harryob:
+  - server: server's can now support using a cdn for web assets

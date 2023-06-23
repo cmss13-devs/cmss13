@@ -17,7 +17,7 @@
 	name = "New Varadero - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_varadero.dmi'
-	lighting_use_dynamic = TRUE
+	lighting_use_dynamic = FALSE
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
 
@@ -26,7 +26,7 @@
 	name = "New Varadero - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	icon = 'icons/turf/area_varadero.dmi'
-	lighting_use_dynamic = TRUE
+	lighting_use_dynamic = FALSE
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
 
@@ -119,6 +119,7 @@
 	name = "New Varadero - East Beach"
 	is_resin_allowed = FALSE
 	icon_state = "varadero1"
+	lighting_use_dynamic = TRUE
 	minimap_color = MINIMAP_AREA_JUNGLE
 
 /area/varadero/exterior/monsoon
@@ -129,6 +130,7 @@
 /area/varadero/exterior/pool
 	name = "New Varadero - Interior Pool"
 	icon_state = "varadero1"
+	lighting_use_dynamic = TRUE
 	minimap_color = MINIMAP_AREA_COMMAND_CAVE
 
 /area/varadero/exterior/eastocean

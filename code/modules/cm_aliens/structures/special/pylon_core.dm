@@ -137,7 +137,7 @@
 	// Handle spawning larva if core is connected to a hive
 	if(linked_hive)
 		for(var/mob/living/carbon/xenomorph/larva/L in range(2, src))
-			if(!L.ckey && L.burrowable && !QDELETED(L))
+			if((!L.ckey || L.stat == DEAD) && L.burrowable && (L.hivenumber == linked_hive.hivenumber) && !QDELETED(L))
 				visible_message(SPAN_XENODANGER("[L] quickly burrows into \the [src]."))
 				linked_hive.stored_larva++
 				linked_hive.hive_ui.update_burrowed_larva()

@@ -135,7 +135,7 @@
 		SPAN_NOTICE("You finish deploying [src]."))
 		if(user)
 			user.drop_inv_item_on_ground(src)
-			setDir(user ? user.dir : dir)
+			setDir(user ? user.dir : dir) //The direction it is planted in is the direction the user faces at that time
 	deploy_mine(user)
 
 /obj/item/explosive/mine/proc/deploy_mine(mob/user)
@@ -143,7 +143,7 @@
 		iff_signal = user.faction
 	cause_data = create_cause_data(initial(name), user)
 	anchored = TRUE
-	playsound(loc, 'sound/weapons/mine_armed.ogg', 25, 1) //The direction it is planted in is the direction the user faces at that time
+	playsound(loc, 'sound/weapons/mine_armed.ogg', 25, 1)
 	activate_sensors()
 	update_icon()
 
@@ -275,7 +275,7 @@
 			if(!human.wear_suit)
 				heavy_trigger_notify(unfortunate_soul)
 				return
-			if(human.wear_suit.slowdown > SLOWDOWN_ARMOR_MEDIUM) // "Nice hustle, 'tons-a-fun'! Next time, eat a salad!"
+			if(human.wear_suit.slowdown > SLOWDOWN_ARMOR_HEAVY) // "Nice hustle, 'tons-a-fun'! Next time, eat a salad!"
 				heavy_trigger_notify(unfortunate_soul)
 				return
 

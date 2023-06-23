@@ -141,7 +141,7 @@
 				X.visible_message(SPAN_WARNING("[X] devours [pulled]!"), \
 					SPAN_WARNING("You devour [pulled]!"), null, 5)
 
-				if(istype(pulled, /mob/living/carbon/human))
+				if(ishuman(pulled))
 					var/mob/living/carbon/human/pulled_human = pulled
 					pulled_human.disable_lights()
 

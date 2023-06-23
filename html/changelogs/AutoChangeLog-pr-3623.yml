@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed erroneous is empty messages when inserting tanks into a flamer pack."
+  - soundadd: "Added the refill sfx when using the empty canister verb on flamer tanks."

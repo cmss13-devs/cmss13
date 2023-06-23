@@ -101,7 +101,7 @@
 /obj/item/explosive/mine/attack_self(mob/living/user)
 	if(!..())
 		return
-	if(needs_digging && user.loc && is_mainship_level(user.z))
+	if(needs_digging && is_mainship_level(user.z))
 		to_chat(user, SPAN_WARNING("This mine needs to be buried in suitable terrain!"))
 		return
 	if(check_for_obstacles(user))
@@ -447,9 +447,9 @@
 			L.droplimb()
 			playsound(M.loc, "bone_break", 45, TRUE)
 			playsound(M.loc, "bone_break", 45, TRUE)
-	for(var/mob/living/carbon/M in view())
-		if(M && M.client)
-			shake_camera(M, 10, 1)
+	for(var/mob/living/living_mob in viewers(7, src))
+		if(living_mob.client)
+			shake_camera(living_mob, 10, 1)
 	qdel(src)
 	if(!QDELETED(src))
 		disarm()

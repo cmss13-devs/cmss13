@@ -177,7 +177,7 @@
 			if(!authenticated || !target_id_card)
 				return
 
-			var/new_name = params["name"] // reject_bad_name() can be added here
+			var/new_name = strip_html(params["name"])
 			if(!new_name)
 				visible_message(SPAN_NOTICE("[src] buzzes rudely."))
 				return
@@ -186,7 +186,7 @@
 		if("PRG_assign")
 			if(!authenticated || !target_id_card)
 				return
-			var/target = strip_html(params["assign_target"])
+			var/target = params["assign_target"]
 			if(!target)
 				return
 

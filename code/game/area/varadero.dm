@@ -301,7 +301,7 @@
 /area/varadero/interior_protected/caves/central
 	name = "New Varadero - Grass Caves"
 	icon_state = "deepcaves2"
-		minimap_color = MINIMAP_AREA_CAVES
+	minimap_color = MINIMAP_AREA_CAVES
 
 /area/varadero/interior_protected/caves/digsite
 	name = "New Varadero - Dig Site"
@@ -314,7 +314,7 @@
 /area/varadero/interior_protected/maintenance/south
 	name = "New Varadero - Southern Maintenance"
 	icon_state = "deepcaves4"
-		minimap_color = MINIMAP_AREA_CAVES
+	minimap_color = MINIMAP_AREA_CAVES
 
 /area/varadero/interior_protected/vessel
 	name = "New Varadero - Unknown Vessel"

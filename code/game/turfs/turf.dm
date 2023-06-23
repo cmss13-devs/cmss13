@@ -500,7 +500,7 @@
 	var/area/A = get_area(src)
 	switch(A.ceiling)
 		if(CEILING_GLASS)
-			return "The ceiling above is glass. That's not going stop anything."
+			return "The ceiling above is glass. That's not going to stop anything."
 		if(CEILING_METAL)
 			return "The ceiling above is metal. You can't see through it with a camera from above, but that's not going to stop anything."
 		if(CEILING_UNDERGROUND_ALLOW_CAS)

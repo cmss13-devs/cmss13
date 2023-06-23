@@ -9561,7 +9561,7 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDq" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/weapon/gun/shotgun/double/with_stock,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDr" = (
@@ -39330,7 +39330,7 @@
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "cxg" = (
-/obj/item/weapon/gun/shotgun/double/with_stock,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "cxh" = (
@@ -64692,6 +64692,13 @@
 	icon_state = "desert_transition_edge1"
 	},
 /area/desert_dam/exterior/telecomm/lz1_valley)
+"xyu" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/jungle{
+	bushes_spawn = 0;
+	icon_state = "grass_impenetrable"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "xzc" = (
 /obj/structure/surface/table,
 /turf/open/floor/wood,
@@ -103808,7 +103815,7 @@ agL
 amn
 afI
 akW
-akW
+xyu
 agL
 afG
 aqG

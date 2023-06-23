@@ -111,7 +111,7 @@
 
 /datum/equipment_preset/uscm_event/dress/officer/capt/New()
 	. = ..()
-	access = get_all_marine_access() - ACCESS_MARINE_CAPTAIN
+	access = get_main_marine_access()
 
 /datum/equipment_preset/uscm_event/dress/officer/co
 	name = "Dress Blues - (O-4) Major"

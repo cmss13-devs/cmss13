@@ -4860,10 +4860,6 @@
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "apQ" = (
-/obj/structure/disposalpipe/up/almayer{
-	dir = 8;
-	id = "almayerlink_ot_med"
-	},
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/door/window/southleft{
 	desc = "A window, that is also a door. A windoor if you will. This one is stronger.";
@@ -19918,6 +19914,10 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
 	},
+/obj/structure/disposalpipe/up/almayer{
+	dir = 4;
+	id = "almayerlink_OT1_req"
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -27463,6 +27463,18 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
+"cmt" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/folded_tent/big,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "cmC" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	dir = 2;
@@ -35375,6 +35387,13 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/alpha_bravo_shared)
+"fFG" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 4;
+	id = "almayerlink_OT_req"
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "fFL" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8;
@@ -36629,9 +36648,10 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "gkg" = (
-/obj/structure/disposalpipe/segment{
+/obj/structure/disposalpipe/sortjunction{
 	dir = 4;
-	icon_state = "pipe-c"
+	negdir = 4;
+	posdir = 1
 	},
 /turf/closed/wall/almayer,
 /area/almayer/squads/req)
@@ -41504,6 +41524,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+"iEi" = (
+/obj/structure/disposalpipe/up/almayer{
+	id = "almayerlink_OT_req"
+	},
+/turf/closed/wall/almayer,
+/area/almayer/engineering/engineering_workshop/hangar)
 "iEr" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -43643,6 +43669,18 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
+"jHl" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/folded_tent/reqs,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "jHs" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -44558,6 +44596,18 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/lower_medical_lobby)
+"kea" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/folded_tent/med,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "kex" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/sign/safety/ref_bio_storage{
@@ -49677,6 +49727,12 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
+"mAz" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "mAT" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 8;
@@ -59736,6 +59792,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/port_point_defense)
+"roM" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 8;
+	id = "almayerlink_OT1_req"
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "roU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -66342,10 +66405,7 @@
 	},
 /area/almayer/medical/hydroponics)
 "urx" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
+/obj/structure/disposalpipe/segment,
 /turf/closed/wall/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
 "urM" = (
@@ -70688,6 +70748,18 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/port_emb)
+"whf" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/folded_tent/cmd,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "whA" = (
 /turf/open/floor/almayer/uscm/directional,
 /area/almayer/living/briefing)
@@ -101419,7 +101491,7 @@ gfW
 bUe
 cbR
 ccr
-cmp
+iEi
 urx
 aqd
 bWM
@@ -104987,7 +105059,7 @@ yfv
 bit
 baw
 baw
-baw
+fFG
 kwo
 trb
 aag
@@ -105190,7 +105262,7 @@ abg
 ajC
 baw
 vbB
-baw
+mAz
 kwo
 trb
 aag
@@ -105393,7 +105465,7 @@ avn
 aim
 baw
 dBp
-baw
+roM
 tQV
 tQV
 aah
@@ -117438,7 +117510,7 @@ bEi
 bZr
 bmD
 ngw
-pjG
+whf
 boz
 bpR
 bpR
@@ -117641,7 +117713,7 @@ brp
 bZr
 bmD
 xId
-pjG
+kea
 boz
 bpR
 bpR
@@ -118047,7 +118119,7 @@ buz
 bZr
 bmD
 dmE
-pjG
+jHl
 boz
 bpR
 bpR
@@ -118250,7 +118322,7 @@ bEm
 bZr
 bmD
 hAc
-pjG
+cmt
 boz
 bpR
 bpR

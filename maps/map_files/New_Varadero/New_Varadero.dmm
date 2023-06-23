@@ -18854,7 +18854,7 @@
 	},
 /area/varadero/interior/maintenance/research)
 "qDk" = (
-/obj/item/weapon/gun/shotgun/double/sawn,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},

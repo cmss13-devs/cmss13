@@ -8693,6 +8693,7 @@
 	icon_state = "hive_spawn";
 	name = "xeno_hive_spawn"
 	},
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "fqZ" = (
@@ -19623,6 +19624,7 @@
 	icon_state = "hive_spawn";
 	name = "xeno_hive_spawn"
 	},
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -27417,6 +27419,7 @@
 	icon_state = "hive_spawn";
 	name = "xeno_hive_spawn"
 	},
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkbrown2"
@@ -32874,6 +32877,7 @@
 	icon_state = "hive_spawn";
 	name = "xeno_hive_spawn"
 	},
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitegreencorner"
@@ -38571,6 +38575,7 @@
 	icon_state = "hive_spawn";
 	name = "xeno_hive_spawn"
 	},
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "ybg" = (

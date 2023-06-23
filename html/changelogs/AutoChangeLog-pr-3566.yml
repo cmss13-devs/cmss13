@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - rscdel: "Removes fourth awkward LZ2 Soro communication relay"

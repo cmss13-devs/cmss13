@@ -1004,7 +1004,7 @@
 /obj/item/device/healthanalyzer,
 /obj/item/device/healthanalyzer,
 /obj/item/device/healthanalyzer,
-/obj/item/weapon/gun/shotgun/double/sawn,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/white/green/whitegreen/north,
 /area/whiskey_outpost/inside/hospital)
 "dU" = (
@@ -7989,7 +7989,7 @@
 /area/whiskey_outpost/outside/north/platform)
 "Dw" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/weapon/gun/shotgun/double/sawn,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/wood,
 /area/whiskey_outpost/inside/caves/caverns)
 "Dy" = (

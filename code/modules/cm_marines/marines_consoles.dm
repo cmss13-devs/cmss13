@@ -186,12 +186,12 @@
 		if("PRG_assign")
 			if(!authenticated || !target_id_card)
 				return
-			var/target = params["assign_target"]
+			var/target = strip_html(params["assign_target"])
 			if(!target)
 				return
 
 			if(target == "Custom")
-				var/custom_name = params["custom_name"]
+				var/custom_name = strip_html(params["custom_name"])
 				if(custom_name)
 					target_id_card.assignment = custom_name
 			else

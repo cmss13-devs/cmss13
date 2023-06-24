@@ -1,3 +1,5 @@
+#define HIJACK_CRASH_SITE_OFFSET_X -5
+#define HIJACK_CRASH_SITE_OFFSET_Y -11
 
 /datum/dropship_hijack
 	var/obj/docking_port/mobile/shuttle
@@ -90,8 +92,8 @@
 
 	var/obj/docking_port/stationary/marine_dropship/crash_site/target_site = new()
 	crash_site = target_site
-	crash_site.x = target.x - 5
-	crash_site.y = target.y - 11
+	crash_site.x = target.x + HIJACK_CRASH_SITE_OFFSET_X
+	crash_site.y = target.y + HIJACK_CRASH_SITE_OFFSET_Y
 	crash_site.z = target.z
 
 	target_site.name = "[shuttle] crash site"
@@ -116,8 +118,10 @@
 		remaining_crash_sites -= target_ship_section
 		var/new_target_ship_section = pick(remaining_crash_sites)
 		var/turf/target = get_crashsite_turf(new_target_ship_section)
-		crash_site.Move(target)
 		marine_announcement("A hostile aircraft on course for the [target_ship_section] has been successfully deterred.", "IX-50 MGAD System")
+		crash_site.x = target.x + HIJACK_CRASH_SITE_OFFSET_X
+		crash_site.y = target.y + HIJACK_CRASH_SITE_OFFSET_Y
+		crash_site.z = target.z
 		target_ship_section = new_target_ship_section
 		// TODO mobs not alerted
 		for(var/area/internal_area in shuttle.shuttle_areas)
@@ -218,3 +222,6 @@
 		else
 			CRASH("Crash site [ship_section] unknown.")
 	return pick(turfs)
+
+#undef HIJACK_CRASH_SITE_OFFSET_X
+#undef HIJACK_CRASH_SITE_OFFSET_Y

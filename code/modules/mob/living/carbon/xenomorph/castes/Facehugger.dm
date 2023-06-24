@@ -143,9 +143,9 @@
 
 /mob/living/carbon/xenomorph/facehugger/proc/handle_hug(mob/living/carbon/human/human)
 	var/obj/item/clothing/mask/facehugger/hugger = new /obj/item/clothing/mask/facehugger(loc, hivenumber)
-	var/did_hug = hugger.attach(human, TRUE, 0.5)
+	var/did_hug = hugger.attach(human, TRUE, 0.5, client?.ckey)
 	if(client)
-		client?.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
+		client.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
 	var/area/hug_area = get_area(src)
 	if(hug_area)
 		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)

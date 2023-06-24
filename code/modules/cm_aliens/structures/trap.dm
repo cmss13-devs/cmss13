@@ -217,6 +217,20 @@
 			to_chat(X, SPAN_XENONOTICE("[src] is occupied by a child."))
 			return XENO_NO_DELAY_ACTION
 
+	if(X.a_intent == INTENT_HARM)
+		to_chat(X, SPAN_XENONOTICE("You start tearing away at the hole."))
+		xeno_attack_delay(X)
+		if(!do_after(X, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
+			return XENO_NO_DELAY_ACTION
+		var/area/A = get_area(src)
+		if (X.hivenumber == hivenumber)
+			Destroy()
+		to_chat(X, SPAN_XENONOTICE("You destroy the trap."))
+		for(var/mob/living/carbon/xenomorph/Xeno in GLOB.living_xeno_list)
+			if(Xeno.hivenumber == hivenumber)
+				to_chat(Xeno, SPAN_XENOMINORWARNING("One of your Hive's traps at [A.name] has been torn apart by [X]!"))
+		return XENO_NO_DELAY_ACTION
+
 	if((!X.acid_level || trap_type == RESIN_TRAP_GAS) && trap_type != RESIN_TRAP_EMPTY)
 		to_chat(X, SPAN_XENONOTICE("Better not risk setting this off."))
 		return XENO_NO_DELAY_ACTION

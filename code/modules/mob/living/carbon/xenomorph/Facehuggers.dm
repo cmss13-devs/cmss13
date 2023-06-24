@@ -296,6 +296,7 @@
 			var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(target)
 			embryo.hivenumber = hivenumber
 			embryo.hugger_ckey = hugger_ckey
+			GLOB.player_embryo_list += embryo
 
 			embryo.flags_embryo = flags_embryo
 			flags_embryo = NO_FLAGS

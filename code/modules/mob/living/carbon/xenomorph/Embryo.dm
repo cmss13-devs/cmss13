@@ -35,6 +35,7 @@
 			C.med_hud_set_status()
 		STOP_PROCESSING(SSobj, src)
 		affected_mob = null
+	GLOB.player_embryo_list -= src
 	. = ..()
 
 /obj/item/alien_embryo/process()
@@ -164,6 +165,11 @@
 						picked = cur_obs
 						candidates -= cur_obs
 						message_alien_candidates(candidates, dequeued = 0)
+						for(var/obj/item/alien_embryo/embryo as anything in GLOB.player_embryo_list)
+							if(embryo.hugger_ckey == cur_obs.ckey && embryo != src)
+								// Skipping src just in case an admin wants to quickly check before this thing fully deletes
+								// If this nulls out any embryo, wow
+								embryo.hugger_ckey = null
 						break
 
 			if(!picked)

@@ -315,3 +315,28 @@
   - bugfix: Flashlight gun attachments turn off when they should
   sg2002:
   - bugfix: XM88 now correctly notifies the user on the hit streak end.
+2023-06-23:
+  harryob:
+  - server: server's can now support using a cdn for web assets
+2023-06-24:
+  Drathek:
+  - rscadd: The selection to become a xeno larva is now based on timeofdeath rather
+      than random and also sends a message to all candidates when the queue moves.
+      Playing as a facehugger or on admin z-levels (thunderdome) will not affect your
+      relative place in queue. The join xeno action will also display the last queue
+      message for you when you allow xeno candidacy.
+  - bugfix: Fixed gibbed humans not properly setting their timeofdeath when on an
+      admin z-level.
+  - bugfix: Fixed a bad del on shuttle doors when a shuttle deletes (such as intoTheSunset).
+  - bugfix: Fixed erroneous is empty messages when inserting tanks into a flamer pack.
+  - soundadd: Added the refill sfx when using the empty canister verb on flamer tanks.
+  Morrow:
+  - bugfix: Prevented some light bugs with devouring marines
+  - bugfix: Fixed two gun light attachment issues
+  Steelpoint:
+  - rscadd: Synthetics may now vend Ponchos.
+  realforest2001:
+  - admin: Improves logging for admin deadchat.
+  - admin: Adds logging for xeno evolution.
+  theselfish:
+  - qol: Added the Corpsman Helmet to Req's surplus vendor.

@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - bugfix: "Hive core now always correctly absorbs hive's dead larvas."

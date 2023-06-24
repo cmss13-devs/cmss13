@@ -521,7 +521,7 @@
 
 	if(X)
 		add_hiddenprint(X)
-		weed_strength = X.weed_level
+		weed_strength = max(weed_strength, X.weed_level)
 		if (weed_strength < WEED_LEVEL_STANDARD)
 			weed_strength = WEED_LEVEL_STANDARD
 

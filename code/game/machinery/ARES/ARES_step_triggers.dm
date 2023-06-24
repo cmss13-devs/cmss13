@@ -159,14 +159,7 @@
 	return TRUE
 
 /obj/effect/step_trigger/ares_alert/access_control/Trigger(atom/passer, obj/item/card/id/idcard, failure = FALSE)
-	var/broadcast_message = "Warning: Access Control Error."
-	if(idcard)
-		broadcast_message = "ALERT: ID Card assigned to [idcard.registered_name] left the AI Chamber with a temporary access ticket. Removing access."
-	if(ishuman(passer))
-		var/mob/living/carbon/human/human_passer = passer
-		broadcast_message = "ALERT: [human_passer.name] left the AI Chamber with a temporary access ticket. Removing access."
-		if(failure)
-			broadcast_message = "CAUTION: [human_passer.name] left the AI Chamber without a locatable ID card."
+	var/broadcast_message = get_broadcast(passer, idcard, failure)
 
 	var/datum/ares_link/link = GLOB.ares_link
 	if(link.p_apollo.inoperable())
@@ -187,3 +180,18 @@
 			if(sensor.alert_id == src.alert_id)
 				COOLDOWN_START(sensor, sensor_cooldown, COOLDOWN_ARES_ACCESS_CONTROL)
 	return TRUE
+
+/obj/effect/step_trigger/ares_alert/access_control/proc/get_broadcast(atom/passer, obj/item/card/id/idcard, failure = FALSE)
+	if(isxeno(passer))
+		return "Unidentified lifeform detected departing AI Chamber."
+	if(ishuman(passer))
+		var/mob/living/carbon/human/human_passer = passer
+		if(failure)
+			return "CAUTION: [human_passer.name] left the AI Chamber without a locatable ID card."
+		return "ALERT: [human_passer.name] left the AI Chamber with a temporary access ticket. Removing access."
+
+	if(idcard)
+		return "ALERT: ID Card assigned to [idcard.registered_name] left the AI Chamber with a temporary access ticket. Removing access."
+
+	log_debug("ARES ERROR 337: Passer: '[passer]', ID: '[idcard]', F Status: '[failure]'")
+	return "Warning: Error 337 - Access Control Anomaly."

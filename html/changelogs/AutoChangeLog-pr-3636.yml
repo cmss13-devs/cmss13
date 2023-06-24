@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "The selection to become a xeno larva is now based on timeofdeath rather than random and also sends a message to all candidates when the queue moves. Playing as a facehugger or on admin z-levels (thunderdome) will not affect your relative place in queue. The join xeno action will also display the last queue message for you when you allow xeno candidacy."
-  - bugfix: "Fixed gibbed humans not properly setting their timeofdeath when on an admin z-level."
-  - bugfix: "Fixed a bad del on shuttle doors when a shuttle deletes (such as intoTheSunset)."

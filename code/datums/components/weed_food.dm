@@ -1,5 +1,5 @@
-#define WEED_FOOD_DELAY 10 SECONDS
-#define WEED_FOOD_STATE_DELAY 10 SECONDS // TODO: 1 MINUTES
+#define WEED_FOOD_DELAY 5 MINUTES
+#define WEED_FOOD_STATE_DELAY 1 MINUTES
 
 /atom/movable/vis_obj/weed_food
 	name = "weeds"
@@ -130,7 +130,6 @@
 /datum/component/weed_food/proc/on_rejuv()
 	SIGNAL_HANDLER
 
-	message_admins("on_rejuv [parent_mob]") // TODO: Remove this
 	qdel(src)
 
 /// SIGNAL_HANDLER for COSMIG_OBJ_AFTER_BUCKLE
@@ -160,7 +159,6 @@
 		if(parent_mob.buckled == parent_buckle)
 			return FALSE // Still buckled to the same thing
 		if(!istype(parent_mob.buckled, /obj/structure/bed/nest))
-			message_admins("cant start [parent_mob] because we are buckled. Listening...") // TODO: Remove this
 			if(parent_buckle) // Still have a lingering reference somehow?
 				UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
 			parent_buckle = parent_mob.buckled
@@ -171,15 +169,12 @@
 		parent_buckle = null
 
 	if(parent_mob.is_xeno_grabbable())
-		message_admins("cant start [parent_mob] because we are grabable") // TODO: Remove this
 		return FALSE
 	if(!(parent_mob.status_flags & PERMANENTLY_DEAD))
 		var/mob/living/carbon/human/parent_human = parent_mob
 		if(istype(parent_human) && !parent_human.undefibbable)
-			message_admins("cant start [parent_mob] because we are defibbable revive status: [parent_human.is_revivable()]") // TODO: Remove this
 			return FALSE
 	if(!parent_turf?.weeds)
-		message_admins("cant start [parent_mob] because we aren't on weeds") // TODO: Remove this
 		return FALSE
 
 	if(unmerged_time == world.time)
@@ -191,7 +186,6 @@
 	active = TRUE
 	timer_id = addtimer(CALLBACK(src, PROC_REF(merge_with_weeds)), WEED_FOOD_DELAY, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_DELETE_ME|TIMER_OVERRIDE)
 
-	message_admins("started [parent_mob]") // TODO: Remove this
 	return TRUE
 
 /**
@@ -209,7 +203,6 @@
 	deltimer(timer_id)
 	timer_id = null
 
-	message_admins("stopped [parent_mob]") // TODO: Remove this
 	return TRUE
 
 /**
@@ -231,7 +224,6 @@
 		if(!istype(parent_mob.buckled, /obj/structure/bed/nest))
 			if(parent_buckle) // Still have a lingering reference somehow?
 				UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
-			message_admins("cant merge [parent_mob] because we are buckled. Listening...") // TODO: Remove this
 			parent_buckle = parent_mob.buckled
 			RegisterSignal(parent_mob.buckled, COSMIG_OBJ_AFTER_BUCKLE, PROC_REF(on_after_buckle))
 			return FALSE
@@ -241,7 +233,6 @@
 
 	absorbing_weeds = parent_turf?.weeds
 	if(!absorbing_weeds)
-		message_admins("cant merge [parent_mob] because we aren't on weeds") // TODO: Remove this
 		return FALSE
 	RegisterSignal(absorbing_weeds, COMSIG_PARENT_QDELETING, PROC_REF(unmerge_with_weeds))
 
@@ -260,7 +251,6 @@
 	// TODO: For non-humans change the icon_state or something here
 	parent_mob.vis_contents += weed_appearance
 
-	message_admins("merged [parent_mob] on [parent_mob.layer]") // TODO: Remove this
 	return TRUE
 
 /**
@@ -284,7 +274,6 @@
 	parent_mob.add_to_all_mob_huds()
 	parent_mob.vis_contents -= weed_appearance
 
-	message_admins("unmerged [parent_mob]") // TODO: Remove this
 	return TRUE
 
 #undef WEED_FOOD_DELAY

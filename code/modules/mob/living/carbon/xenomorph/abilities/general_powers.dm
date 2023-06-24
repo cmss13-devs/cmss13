@@ -27,8 +27,16 @@
 		return
 
 	var/obj/effect/alien/weeds/node/N = locate() in T
-	if(N && N.weed_strength >= X.weed_level)
-		to_chat(X, SPAN_WARNING("There's a pod here already!"))
+	if(N)
+		if(N.weed_strength > X.weed_level)
+			to_chat(X, SPAN_WARNING("There's a pod here already!"))
+		else
+			to_chat(X, SPAN_WARNING("You start removing the resin node."))
+			if(!do_after(X, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				return
+			playsound(X.loc, "alien_resin_break", 25)
+			N.Destroy()
+			to_chat(X, SPAN_WARNING("You removed the resin node."))
 		return
 
 	var/obj/effect/alien/resin/trap/resin_trap = locate() in T

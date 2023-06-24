@@ -336,9 +336,8 @@
 
 /obj/structure/ship_ammo/rocket/bunkerbuster/detonate_on(turf/impact)
 	impact.ceiling_debris_check(3)
-	sleep(5)
-	cell_explosion(impact, 450, 100, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, create_cause_data(initial(name), source_mob)) //See Keeper comments: However this is able to penetrate cave ceilings.
-	qdel(src)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 450, 100, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, create_cause_data(initial(name)), source_mob), 0.5 SECONDS) //See Keeper comments: However this is able to penetrate cave ceilings.
+	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/harpoon
 	name = "\improper AGM-84 'Harpoon'"

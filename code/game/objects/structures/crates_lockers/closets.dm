@@ -142,6 +142,8 @@
 			continue
 		if(M.buckled)
 			continue
+		if(M.anchored)
+			continue
 
 		M.forceMove(src)
 		stored_units += mob_size

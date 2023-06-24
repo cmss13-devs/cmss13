@@ -26,3 +26,6 @@
 #define COMSIG_TRANSMITTER_UPDATE_ICON "transmitter_update_icon"
 
 #define COMSIG_TENT_COLLAPSING "tent_collapsing"
+
+/// from /obj/proc/afterbuckle()
+#define COSMIG_OBJ_AFTER_BUCKLE "signal_obj_after_buckle"

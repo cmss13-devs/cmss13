@@ -228,17 +228,17 @@
 		GLOB.yautja_teleport_descs[T.loc.name + T.loc_to_string()] = src
 
 /obj/effect/landmark/yautja_teleport/Destroy()
-    var/turf/turf = get_turf(src)
+ var/turf/turf = get_turf(src)
     var/index = turf.loc.name + turf.loc_to_string()
     if(is_mainship_level(z))
         GLOB.mainship_yautja_teleports -= src
         if(GLOB.mainship_yautja_desc.Find(index))
-        GLOB.mainship_yautja_desc[index] = null
+            GLOB.mainship_yautja_desc[index] = null
         GLOB.mainship_yautja_desc -= index
     else
         GLOB.yautja_teleports -= src
         if(GLOB.yautja_teleport_descs.Find(index))
-        GLOB.yautja_teleport_descs[index] = null
+            GLOB.yautja_teleport_descs[index] = null
         GLOB.yautja_teleport_descs -= index
     return ..()
 

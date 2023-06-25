@@ -233,16 +233,14 @@
     if(is_mainship_level(z))
         GLOB.mainship_yautja_teleports -= src
         if(GLOB.mainship_yautja_desc.Find(index))
-            GLOB.mainship_yautja_desc[index] = null
+        GLOB.mainship_yautja_desc[index] = null
         GLOB.mainship_yautja_desc -= index
     else
         GLOB.yautja_teleports -= src
         if(GLOB.yautja_teleport_descs.Find(index))
-            GLOB.yautja_teleport_descs[index] = null
+        GLOB.yautja_teleport_descs[index] = null
         GLOB.yautja_teleport_descs -= index
     return ..()
-
-
 
 /obj/effect/landmark/start
 	name = "start"

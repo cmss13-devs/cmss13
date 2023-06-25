@@ -484,9 +484,6 @@ var/list/ob_type_fuel_requirements
 	var/list/turf_list = list()
 
 	for(var/turf/T in range(range_num, target))
-		if(protected_by_pylon(TURF_PROTECTION_OB, T))
-			continue
-
 		turf_list += T
 
 	for(var/i = 1 to total_amount)

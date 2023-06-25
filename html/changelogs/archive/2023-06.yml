@@ -340,3 +340,10 @@
   - admin: Adds logging for xeno evolution.
   theselfish:
   - qol: Added the Corpsman Helmet to Req's surplus vendor.
+2023-06-25:
+  Sargeantmuffinman:
+  - rscadd: Added two new emails to the Almayer's personal computers and rewrote 3
+      other emails.
+  Segrain:
+  - bugfix: Hive core now always correctly absorbs hive's dead larvas.
+  - bugfix: Preview dummy in character setup once again can be rotated.

@@ -1,4 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - bugfix: "Preview dummy in character setup once again can be rotated."

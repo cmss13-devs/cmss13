@@ -589,7 +589,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 		if(operable()) // Powered. Console can response.
 			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
 		else
-			to_chat(usr, "You remove \the [authenticator_id] from \the [src].")
+			to_chat(usr, "You remove [authenticator_id] from [src].")
 		ticket_authenticated = FALSE // No card - no access
 		authenticator_id = null
 
@@ -598,38 +598,40 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(target_id)
 		else
-			to_chat(usr, "You remove \the [target_id] from \the [src].")
+			to_chat(usr, "You remove [target_id] from [src].")
 		target_id = null
 
 	else
 		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
-/obj/structure/machinery/computer/working_joe/attackby(obj/O, mob/user)
-	if(istype(O, /obj/item/card/id))
+/obj/structure/machinery/computer/working_joe/attackby(obj/object, mob/user)
+	if(istype(object, /obj/item/card/id))
 		if(!operable())
-			to_chat(user, SPAN_NOTICE("You tried to inject \the [O] but \the [src] remains silent."))
+			to_chat(user, SPAN_NOTICE("You try to insert [object] but [src] remains silent."))
 			return
-		var/obj/item/card/id/idcard = O
+		var/obj/item/card/id/idcard = object
 		if((ACCESS_MARINE_AI in idcard.access) || (ACCESS_ARES_DEBUG in idcard.access))
 			if(!authenticator_id)
 				if(user.drop_held_item())
-					O.forceMove(src)
-					authenticator_id = O
+					object.forceMove(src)
+					authenticator_id = object
 				authenticate(authenticator_id)
 			else if(!target_id)
 				if(user.drop_held_item())
-					O.forceMove(src)
-					target_id = O
+					object.forceMove(src)
+					target_id = object
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
+				return
 		else
 			if(!target_id)
 				if(user.drop_held_item())
-					O.forceMove(src)
-					target_id = O
+					object.forceMove(src)
+					target_id = object
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
+				return
 	else
 		..()
 

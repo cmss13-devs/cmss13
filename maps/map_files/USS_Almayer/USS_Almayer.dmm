@@ -42189,7 +42189,7 @@
 	unacidable = 1;
 	unslashable = 1;
 	indestructible = 1;
-	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs. This one has a metail rail running above it, preventing something large passing over. Like you."
+	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs. This one has a metal rail running above it, preventing something large passing over. Like you."
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"

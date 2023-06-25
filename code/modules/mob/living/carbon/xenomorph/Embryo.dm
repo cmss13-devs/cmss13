@@ -12,6 +12,8 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/faction = FACTION_XENOMORPH
 	var/flags_embryo = FALSE // Used in /ciphering/predator property
+	/// The ckey of any player hugger that made this embryo
+	var/hugger_ckey
 
 /obj/item/alien_embryo/Initialize(mapload, ...)
 	. = ..()
@@ -33,6 +35,7 @@
 			C.med_hud_set_status()
 		STOP_PROCESSING(SSobj, src)
 		affected_mob = null
+	GLOB.player_embryo_list -= src
 	. = ..()
 
 /obj/item/alien_embryo/process()
@@ -145,20 +148,33 @@
 
 	var/mob/picked
 	// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva.
-	if((!isyautja(affected_mob) || (isyautja(affected_mob) && prob(20))) && istype(affected_mob.buckled,  /obj/structure/bed/nest))
+	if((!isyautja(affected_mob) || (isyautja(affected_mob) && prob(20))) && istype(affected_mob.buckled, /obj/structure/bed/nest))
 		if(affected_mob.first_xeno || (affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, JOB_XENOMORPH)))
 			picked = affected_mob
 		else if(affected_mob.mind && affected_mob.mind.ghost_mob && affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, JOB_XENOMORPH))
 			picked = affected_mob.mind.ghost_mob
 
-
 	if(!picked)
 		// Get a candidate from observers
 		var/list/candidates = get_alien_candidates()
-
 		if(candidates && candidates.len)
-			picked = candidates[1]
-			message_alien_candidates(candidates, dequeued = 1)
+			// If they were facehugged by a player thats still in queue, they get second dibs on the new larva.
+			if(hugger_ckey)
+				for(var/mob/dead/observer/cur_obs as anything in candidates)
+					if(cur_obs.ckey == hugger_ckey)
+						picked = cur_obs
+						candidates -= cur_obs
+						message_alien_candidates(candidates, dequeued = 0)
+						for(var/obj/item/alien_embryo/embryo as anything in GLOB.player_embryo_list)
+							if(embryo.hugger_ckey == cur_obs.ckey && embryo != src)
+								// Skipping src just in case an admin wants to quickly check before this thing fully deletes
+								// If this nulls out any embryo, wow
+								embryo.hugger_ckey = null
+						break
+
+			if(!picked)
+				picked = candidates[1]
+				message_alien_candidates(candidates, dequeued = 1)
 
 	// Spawn the larva
 	var/mob/living/carbon/xenomorph/larva/new_xeno

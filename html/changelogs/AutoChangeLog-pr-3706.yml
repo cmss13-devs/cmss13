@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscadd: "Player facehugging gets 2nd dibs on the burst (the original marine gets first dibs still)"

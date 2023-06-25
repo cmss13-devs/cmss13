@@ -228,7 +228,7 @@
 		GLOB.yautja_teleport_descs[T.loc.name + T.loc_to_string()] = src
 
 /obj/effect/landmark/yautja_teleport/Destroy()
-var/turf/turf = get_turf(src)
+	var/turf/turf = get_turf(src)
     var/index = turf.loc.name + turf.loc_to_string()
     if(is_mainship_level(z))
         GLOB.mainship_yautja_teleports -= src

@@ -21,8 +21,9 @@
 	if (X.mutation_type == LURKER_NORMAL)
 		var/found = FALSE
 		for (var/mob/living/carbon/human/H in get_turf(X))
-			found = TRUE
-			break
+			if(H.stat != DEAD)
+				found = TRUE
+				break
 
 		if (found)
 			var/datum/action/xeno_action/onclick/lurker_invisibility/LIA = get_xeno_action_by_type(X, /datum/action/xeno_action/onclick/lurker_invisibility)

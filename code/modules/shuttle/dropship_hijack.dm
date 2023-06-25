@@ -92,9 +92,10 @@
 
 	var/obj/docking_port/stationary/marine_dropship/crash_site/target_site = new()
 	crash_site = target_site
-	crash_site.x = target.x + HIJACK_CRASH_SITE_OFFSET_X
-	crash_site.y = target.y + HIJACK_CRASH_SITE_OFFSET_Y
-	crash_site.z = target.z
+	var/turf/offset_target = locate(target.x + HIJACK_CRASH_SITE_OFFSET_X, target.y + HIJACK_CRASH_SITE_OFFSET_Y, target.z)
+	if(!offset_target)
+		offset_target = target // Welp the offsetting failed so...
+	target_site.forceMove(offset_target)
 
 	target_site.name = "[shuttle] crash site"
 	target_site.id = "crash_site_[shuttle.id]"
@@ -118,10 +119,11 @@
 		remaining_crash_sites -= target_ship_section
 		var/new_target_ship_section = pick(remaining_crash_sites)
 		var/turf/target = get_crashsite_turf(new_target_ship_section)
+		var/turf/offset_target = locate(target.x + HIJACK_CRASH_SITE_OFFSET_X, target.y + HIJACK_CRASH_SITE_OFFSET_Y, target.z)
+		if(!offset_target)
+			offset_target = target // Welp the offsetting failed so...
+		crash_site.forceMove(offset_target)
 		marine_announcement("A hostile aircraft on course for the [target_ship_section] has been successfully deterred.", "IX-50 MGAD System")
-		crash_site.x = target.x + HIJACK_CRASH_SITE_OFFSET_X
-		crash_site.y = target.y + HIJACK_CRASH_SITE_OFFSET_Y
-		crash_site.z = target.z
 		target_ship_section = new_target_ship_section
 		// TODO mobs not alerted
 		for(var/area/internal_area in shuttle.shuttle_areas)

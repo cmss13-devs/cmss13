@@ -216,6 +216,7 @@
 
 /obj/effect/landmark/yautja_teleport
 	name = "yautja_teleport"
+	/// The index we registered as in mainship_yautja_desc or yautja_teleport_descs
 	var/desc_index
 
 /obj/effect/landmark/yautja_teleport/Initialize(mapload, ...)
@@ -230,9 +231,8 @@
 		GLOB.yautja_teleport_descs[desc_index] = src
 
 /obj/effect/landmark/yautja_teleport/Destroy()
-	LOB.mainship_yautja_teleports -= src
+	GLOB.mainship_yautja_teleports -= src
 	GLOB.yautja_teleports -= src
-
 	GLOB.mainship_yautja_desc -= desc_index
 	GLOB.yautja_teleport_descs -= desc_index
 	return ..()

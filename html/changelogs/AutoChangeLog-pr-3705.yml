@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed the yank object verb not testing who is actually performing the action has a free hand"

@@ -211,6 +211,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	bound_width = 64
 	freq_listening = list(COLONY_FREQ)
 	var/toggle_cooldown = 0
+	on = FALSE
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/attack_hand(mob/user)
 	if(user.action_busy)

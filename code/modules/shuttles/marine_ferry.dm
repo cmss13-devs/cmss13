@@ -505,7 +505,7 @@
 			shake_camera(affected_mob, 10, 1)
 			affected_mob.apply_effect(3, WEAKEN)
 
-	addtimer(CALLBACK(src, PROC_REF(disable_latejoin)), 3 MINUTES) // latejoin cryorines have 3 minutes to get the hell out
+	enter_allowed = FALSE
 
 	var/list/turfs_trg = get_shuttle_turfs(T_trg, info_datums) //Final destination turfs <insert bad jokey reference here>
 
@@ -554,9 +554,6 @@
 		if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
 			var/datum/game_mode/colonialmarines/colonial_marines = SSticker.mode
 			colonial_marines.add_current_round_status_to_end_results("Hijack")
-
-/datum/shuttle/ferry/marine/proc/disable_latejoin()
-	enter_allowed = FALSE
 
 
 /datum/shuttle/ferry/marine/short_jump()

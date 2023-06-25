@@ -13631,7 +13631,9 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "sNp" = (
-/obj/structure/machinery/power/smes/buildable/charged,
+/obj/structure/machinery/power/smes/buildable/charged{
+	cur_coils = 2
+	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "sNZ" = (

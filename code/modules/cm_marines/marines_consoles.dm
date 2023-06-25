@@ -20,7 +20,7 @@
 	var/list/factions = list(FACTION_MARINE)
 	var/printing
 
-	var/is_centcom = FALSE
+	var/is_wey_yu = FALSE
 	var/authenticated = FALSE
 
 /obj/structure/machinery/computer/card/proc/authenticate(mob/user, obj/item/card/id/id_card)
@@ -196,7 +196,7 @@
 					target_id_card.assignment = custom_name
 			else
 				var/list/new_access = list()
-				if(is_centcom)
+				if(is_wey_yu)
 					new_access = get_all_weyland_access()
 				else
 					var/datum/job/job = RoleAuthority.roles_for_mode[target]
@@ -227,7 +227,7 @@
 					log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted [access_type] IFF. </font>")
 				return TRUE
 			access_type = text2num(params["access_target"])
-			if(access_type in (is_centcom ? get_all_weyland_access() : get_main_marine_access()))
+			if(access_type in (is_wey_yu ? get_all_weyland_access() : get_main_marine_access()))
 				if(access_type in target_id_card.access)
 					target_id_card.access -= access_type
 					log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked access '[access_type]'. </font>")
@@ -239,7 +239,7 @@
 			if(!authenticated || !target_id_card)
 				return
 
-			target_id_card.access |= (is_centcom ? get_all_weyland_access() : get_main_marine_access())
+			target_id_card.access |= (is_wey_yu ? get_all_weyland_access() : get_main_marine_access())
 			target_id_card.faction_group |= factions
 			log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted the ID all access and USCM IFF. </font>")
 			return TRUE
@@ -294,18 +294,22 @@
 /obj/structure/machinery/computer/card/ui_static_data(mob/user)
 	var/list/data = list()
 	data["station_name"] = station_name
-	data["centcom_access"] = is_centcom
+	data["wey_yu_access"] = is_wey_yu
 	data["manifest"] = GLOB.data_core.get_manifest(FALSE, FALSE, TRUE)
 
 	var/list/departments
-	if(is_centcom)
-		departments = list("CentCom" = get_all_centcom_jobs())
+	if(is_wey_yu)
+		departments = list(
+			"Weyland Yutani" = list(JOB_CORPORATE_LIAISON, JOB_TRAINEE, JOB_JUNIOR_EXECUTIVE, JOB_EXECUTIVE),
+			"Corporate Security" = JOB_WY_GOON_LIST,
+			"PMCs" = JOB_PMC_GRUNT_LIST
+			)
 	else if(Check_WO())
 		// I am not sure about WOs departments so it may need adjustment
 		departments = list(
 			CARDCON_DEPARTMENT_COMMAND = ROLES_CIC & ROLES_WO,
 			CARDCON_DEPARTMENT_AUXCOM = ROLES_AUXIL_SUPPORT & ROLES_WO,
-			CARDCON_DEPARTMENT_MISC = ROLES_MISC & ROLES_WO,
+			CARDCON_DEPARTMENT_MISC = ROLES_MISC & ROLES_WO - JOB_CORPORATE_LIAISON,
 			CARDCON_DEPARTMENT_SECURITY = ROLES_POLICE & ROLES_WO,
 			CARDCON_DEPARTMENT_ENGINEERING = ROLES_ENGINEERING & ROLES_WO,
 			CARDCON_DEPARTMENT_SUPPLY = ROLES_REQUISITION & ROLES_WO,
@@ -316,7 +320,7 @@
 		departments = list(
 			CARDCON_DEPARTMENT_COMMAND = ROLES_CIC - ROLES_WO,
 			CARDCON_DEPARTMENT_AUXCOM = ROLES_AUXIL_SUPPORT - ROLES_WO,
-			CARDCON_DEPARTMENT_MISC = ROLES_MISC - ROLES_WO,
+			CARDCON_DEPARTMENT_MISC = ROLES_MISC - ROLES_WO - JOB_CORPORATE_LIAISON,
 			CARDCON_DEPARTMENT_SECURITY = ROLES_POLICE - ROLES_WO,
 			CARDCON_DEPARTMENT_ENGINEERING = ROLES_ENGINEERING - ROLES_WO,
 			CARDCON_DEPARTMENT_SUPPLY = ROLES_REQUISITION - ROLES_WO,

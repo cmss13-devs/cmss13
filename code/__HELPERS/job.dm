@@ -15,7 +15,7 @@
 	return all_jobs
 
 
-/proc/get_all_centcom_jobs() return list()
+/proc/get_all_wy_jobs() return JOB_WY_GOON_LIST + JOB_PMC_GRUNT_LIST + list(JOB_CORPORATE_LIAISON)
 
 //gets the actual job rank (ignoring alt titles)
 //this is used solely for sechuds
@@ -39,7 +39,7 @@
 	var/obj/item/card/id/I = src
 	if(istype(I))
 		var/job_icons = get_all_job_icons()
-		var/centcom = get_all_centcom_jobs()
+		var/centcom = get_all_wy_jobs()
 
 		if(I.assignment in job_icons) return I.assignment//Check if the job has a hud icon
 		if(I.rank in job_icons) return I.rank

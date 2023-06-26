@@ -12459,6 +12459,13 @@
 /obj/effect/landmark/hunter_secondary,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"bpB" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/vehicle_spawner/van/decrepit,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv624/lazarus/corporate_dome)
 "bqf" = (
 /obj/structure/surface/rack,
 /obj/item/explosive/grenade/smokebomb{
@@ -32572,7 +32579,7 @@ mgs
 xgE
 rNq
 kWH
-mqw
+bpB
 rNq
 xgE
 xgE

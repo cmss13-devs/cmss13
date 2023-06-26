@@ -11313,6 +11313,13 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
+"Lc" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/vehicle_spawner/van/decrepit,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv624/lazarus/corporate_dome)
 "Ld" = (
 /obj/item/tool/candle,
 /turf/open/floor{
@@ -18561,7 +18568,7 @@ SL
 dt
 eB
 eB
-yA
+Lc
 TO
 SL
 jb

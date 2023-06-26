@@ -281,7 +281,7 @@
 	icon_state = "fountain_pen"
 	item_state = "fountain_pen"
 	matter = list("metal" = 20, "gold" = 10)
-	var/list/colour_list = list("red", "blue", "green", "yellow", "purple", "pink", "brown", "black", "orange") // Can add more colors as required
+	var/static/list/colour_list = list("red", "blue", "green", "yellow", "purple", "pink", "brown", "black", "orange") // Can add more colors as required
 	var/current_colour_index = 1
 
 /obj/item/tool/pen/fountain/attack_self(mob/living/carbon/human/user)

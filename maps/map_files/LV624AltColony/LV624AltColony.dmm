@@ -55,12 +55,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/main_hall)
-"ace" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfship"
-	},
-/turf/closed/wall/rock/brown,
-/area/lv624/ground/caves/south_west_caves)
 "acl" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -4742,12 +4736,6 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
-"eTT" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "crashed-ship"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "eUq" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/grass/grass1,
@@ -5658,12 +5646,6 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/medbay)
-"fPO" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "storage-crashed-ship"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
 "fQl" = (
 /obj/structure/girder/displaced,
 /turf/open/gm/dirt,
@@ -8501,12 +8483,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/jungle/east_jungle)
-"iPN" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lv-skylight"
-	},
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/caves/north_central_caves)
 "iPU" = (
 /obj/item/tool/surgery/scalpel,
 /obj/item/ammo_casing,
@@ -11019,12 +10995,6 @@
 	},
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
-"lBO" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lv-centralcaves"
-	},
-/turf/closed/wall/rock/brown,
-/area/lv624/ground/caves/south_central_caves)
 "lBR" = (
 /obj/structure/flora/jungle/thickbush/jungle_plant,
 /turf/open/gm/grass/grass1,
@@ -14626,12 +14596,6 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
-"pvy" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "sandtemple-jungle"
-	},
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/south_west_jungle)
 "pvI" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/grille,
@@ -16529,12 +16493,6 @@
 	icon_state = "bright_clean2"
 	},
 /area/lv624/lazarus/main_hall)
-"rqM" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "maintemple"
-	},
-/turf/open/gm/river,
-/area/lv624/ground/river/central_river)
 "rrg" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/effect/landmark/lv624/fog_blocker,
@@ -22556,12 +22514,6 @@
 "xrY" = (
 /turf/closed/wall/r_wall,
 /area/lv624/ground/colony/north_nexus_road)
-"xsz" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lv-leftsidepass"
-	},
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/west_jungle)
 "xsB" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river,
@@ -23773,7 +23725,7 @@ xCO
 xCO
 igE
 tLF
-xsz
+tLF
 tLF
 tLF
 tLF
@@ -24055,7 +24007,7 @@ aqp
 aqp
 aqp
 aqp
-pvy
+aqp
 aqp
 aqp
 elP
@@ -24899,7 +24851,7 @@ pYz
 pYz
 pYz
 pYz
-ace
+pYz
 pYz
 hDl
 hDl
@@ -37756,7 +37708,7 @@ lry
 lry
 lry
 kRj
-iPN
+kRj
 ivQ
 ivQ
 udQ
@@ -40121,7 +40073,7 @@ iYl
 iYl
 iYl
 iYl
-lBO
+iYl
 sPo
 ran
 ran
@@ -47872,7 +47824,7 @@ ihS
 ihS
 ihS
 ihS
-fPO
+ihS
 sbq
 kfA
 aaq
@@ -50379,7 +50331,7 @@ ihS
 ihS
 ihS
 ihS
-eTT
+ihS
 tTS
 sKX
 gJp
@@ -52465,7 +52417,7 @@ kmo
 ksg
 dWy
 dWy
-rqM
+dWy
 dWy
 hIG
 whc

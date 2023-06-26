@@ -61,5 +61,8 @@ map new_varadero
 	disabled
 endmap
 
+map lv624AltColony
+endmap
+
 map whiskey_outpost_v2
 endmap

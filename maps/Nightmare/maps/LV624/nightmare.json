@@ -35,13 +35,6 @@
 		"path": "standalone/rightsidepass.dmm",
 		"when": { "mainpath": "right" }
 	},
-    {
-		"type": "map_insert",
-		"landmark": "alt_colony",
-		"chance": 1.0,
-		"path": "standalone/alt_colony.dmm",
-		"when": { "mainpath": "alt" }
-	},
 	{
 		"type": "include", "name": "Standalone variations",
 		"file": "mapgen_variations.json"

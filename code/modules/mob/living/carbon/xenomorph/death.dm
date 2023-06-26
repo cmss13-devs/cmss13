@@ -138,10 +138,10 @@
 
 	switch(caste.caste_type) //This will need to be changed later, when we have proper xeno pathing. Might do it on caste or something.
 		if(XENO_CASTE_BOILER)
-			var/mob/living/carbon/xenomorph/boiler/B = src
+			var/mob/living/carbon/xenomorph/boiler/src_boiler = src
 			visible_message(SPAN_DANGER("[src] begins to bulge grotesquely, and explodes in a cloud of corrosive gas!"))
-			B.smoke.set_up(2, 0, get_turf(src))
-			B.smoke.start()
+			src_boiler.smoke.set_up(2, 0, get_turf(src), new_cause_data = src_boiler.smoke.cause_data)
+			src_boiler.smoke.start()
 			remains.icon_state = "gibbed-a-corpse"
 		if(XENO_CASTE_RUNNER)
 			remains.icon_state = "gibbed-a-corpse-runner"

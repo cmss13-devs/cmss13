@@ -65,7 +65,7 @@
 		update_icon()
 
 /obj/structure/machinery/iv_drip/Destroy()
-	attached.active_transfusions -= src
+	attached?.active_transfusions -= src
 	delete_beam()
 	. = ..()
 

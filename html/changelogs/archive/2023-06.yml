@@ -347,3 +347,12 @@
   Segrain:
   - bugfix: Hive core now always correctly absorbs hive's dead larvas.
   - bugfix: Preview dummy in character setup once again can be rotated.
+2023-06-26:
+  Drathek:
+  - bugfix: Fixed the yank object verb not testing who is actually performing the
+      action has a free hand
+  - rscadd: Player facehugging gets 2nd dibs on the burst (the original marine gets
+      first dibs still)
+  - bugfix: Fix a possibility of banished larva refunding double the larva
+  blackdragonTOW:
+  - spellcheck: multiple typos and grammar changes in the round start tooltips.

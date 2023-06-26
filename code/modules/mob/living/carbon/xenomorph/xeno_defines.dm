@@ -904,7 +904,8 @@
 				qdel(xeno)
 			stored_larva++
 			continue
-		xenos_count++
+		if(!isfacehugger(xeno))
+			xenos_count++
 	for(var/i in GLOB.alive_mob_list)
 		var/mob/living/potential_host = i
 		if(!(potential_host.status_flags & XENO_HOST))

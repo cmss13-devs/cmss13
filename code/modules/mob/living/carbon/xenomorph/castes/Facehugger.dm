@@ -262,7 +262,7 @@
 
 	var/mob/living/carbon/xenomorph/facehugger/facehugger = mutator_set.xeno
 
-	facehugger.client.change_view(9, src)
+	facehugger.client.change_view(10, src)
 	facehugger.color = "#FFAD33" // This is here to make them look distinct until a coder decides to replace my coder solution with a unique sprite.
 
 	facehugger.mutation_type = FACEHUGGER_WATCHER

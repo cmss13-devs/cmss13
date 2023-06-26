@@ -249,7 +249,7 @@
 						/obj/item/prop/helmetgarb/lucky_feather/blue = "lucky_feather_blue",
 						/obj/item/prop/helmetgarb/lucky_feather/purple = "lucky_feather_purple",
 						/obj/item/prop/helmetgarb/lucky_feather/yellow = "lucky_feather_yellow",
-						/obj/item/tool/pen/fountain = "fountainpen"
+						/obj/item/tool/pen/fountain = "fountainpen",
 						)
 	var/storage_slots = 1
 	var/storage_slots_reserved_for_garb = 1

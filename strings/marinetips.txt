@@ -28,7 +28,7 @@ Examine your gun and click [See combat statistics] to view information such as d
 Xenomorphs who resist while on fire are stunned for some time and emit light. Use that time to catch up and finish them off!
 When you have shrapnel embedded, take out your boot knife and use it in your hand to rip them out of your body.
 If your weapon has a bayonet, you can manually pry open unpowered doors by clicking on them with the gun. Click on the door again to close it. UPP bayonets can pry them open quicker.
-Items on the floor can be shot. Shoot a misthrown HEDP away to save your buddies!
+Items on the floor can be shot. Shoot a poorly thrown HEDP away to save your buddies!
 You can hold a bayonet or throwing knife on your mask slot. Always be prepared.
 Xenomorphs can't apply huggers to marines if they're on fire.
 Dragging a Nanomed onto yourself instantly gives a Health Analyzer report. Always know what's wrong with you.
@@ -46,18 +46,18 @@ By right clicking your medical belt and selecting "toggle belt mode", you can ta
 You can put screwdrivers, cigarettes, and some other things in your second ear slot!
 Pilots : there is one of each engine upgrade in the hangar at the start of the round, saving you the point cost of having to print out a pair of each.
 You can use a hand labeler (as found in squad prep rooms) to name your equipment and make it less likely to be stolen.
-You can use a health analyser in hand (Z key) to check the last scan readout from it.
+You can use a health analyzer in hand (Z key) to check the last scan readout from it.
 Holocards are a useful triage tool for doctors and medics. Ensure you assign them (examine the marine with shift-click and select an appropriate holocard) to marines who have taken damage that cannot be healed without surgery. (Hint : major organ damage or larval infection = red card!)
 Escape pods are designed for only three occupants - more than that, or if a larger xenomorph is in the pod, and it will malfunction and blow up on launch.
 A misloaded OB can deviate severely from the intended target area - ensure you load them correctly!
-The XO and CO are trained in powerloader use and engineering, and can load the OB.
+The XO and CO are trained in Power Loader use and engineering, and can load the OB.
 You can change what your SL tracker beacon is tracking by right clicking on your headset and clicking "Switch Tracker Target".
 Boilers emit light - not every glow from around the corner is friendly!
 You can carry a variety of items inside your helmet - from gauze and cigarettes to flares and screwdrivers.
 CIC staff can track every USCM-aligned person via the suit sensors console and overwatch console - useful for finding escaped prisoners or dead marines.
 When the M7 RPG is fired, it creates a substantial shockwave behind it that can stun and harm marines standing too close. Watch your backblast!
 Remember that you need to put a defibrillator's paddles away in order to store it.
-W-Y PMCs do not have marine IFF. Don't fire smartguns through them!
+W-Y PMCs do not have marine IFF. Don't fire Smartguns through them!
 To talk on multiple radio channels at once, put a COMMA [,] before your message and add up to four prefixes. E.g, ,abcd talks on all squad channels at once.
 Put .w or :w before your message to whisper. Another way to whisper is to use the verb "whisper" in the IC tab or command bar.
 For Vehicle Crewmen : it is often safer to repair the parts of your APC or tank inside the vehicle than outside it.
@@ -75,13 +75,13 @@ Intel Officers can be put in a squad by going to CIC and requesting it.
 Any marine can perform CPR. On dead marines, this will increase the time they have until they become unrevivable.
 If you've been pounced on and your squad is unloading into the target, you can hit the 'rest' button to stay down so you don't get filled with lead after getting up.
 You can check the landing zone as a marine in the status panel.
-Functioning night vision goggles can be recharged with batteries. Broken night vision goggles can be repaired by an Engineer with a screwdriver. Not the loadout ones though, those are unfixable and unchargeable.
-You can put a pistol belt on your suit slot. (Just grab a rifle instead..)
+Functioning night vision goggles can be recharged with batteries. Broken night vision goggles can be repaired by an Engineer with a screwdriver. Not the loadout ones though, those cannot be fixed.
+You can put a pistol belt on your suit slot. (Just grab a rifle instead.)
 Alt-clicking the Squad Leader tracker lets you track your fireteam leader instead.
-Armor has a randomized reduction in effectiveness, and does not protect the digits. Take the wiki damage values as a best case scenario.
+Armor has a randomized reduction in effectiveness, and does not protect the digits. Take the wiki damage values as a best-case scenario.
 You can click on your Security Access Tuner (multitool) in your hand to locate the area's APC if there is one.
 Clicking on your sprite with help intent will let you check your body, seeing where your fractures and other wounds are.
 Armor has insulative properties - taking it off will help you cool off and take less damage faster if you've been set on fire.
-Both foldable cades & plasteel cades if loosened and folded down can be transported in crates! In this way, you can use the crate as a portable breach-repair kit, or dragged (or carried via Powerloader) to an unsecure area for quick defensive set up.
+Both foldable cades & plasteel cades if loosened and folded down can be transported in crates! In this way, you can use the crate as a portable breach-repair kit, or dragged (or carried via Power Loader) to an unsecure area for quick defensive set up.
 The fuel tank pouch doesn't just carry fuel for an incinerator- they can also carry full-size extinguishers. Toolbelts & tool pouches also may hold miniature extinguishers.
-The M2C heavy machinegunner belt rig can also carry C4, breaching charges, and most tools.
+The M2C heavy machine gunner belt rig can also carry C4, breaching charges, and most tools.

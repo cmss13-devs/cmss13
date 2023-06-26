@@ -294,3 +294,65 @@
   - balance: Generators can no longer be blown up
   - balance: Bonus evolution slowly deteriorates over time when all castes are unlocked
   - balance: Portable Generators can now be turned off/unanchored by xeno slashes
+2023-06-21:
+  BeagleGaming1:
+  - rscadd: Melting flares makes the flares burn out faster, instead of melting like
+      normal
+  - balance: Flares last ~10 mins, and flares in the air last ~5 mins
+  Morrow:
+  - rscadd: Re-added the nuke that you can buy via intel at tier 4. Only purchasable
+      past 120 minutes. Requires holding both groundside comms towers for authorization
+      decryption before being able to be armed.
+  TheGamerdk:
+  - bugfix: Forsaken no longer announce themselves as a distress signal
+2023-06-22:
+  Al-1ce:
+  - rscadd: Adds various magazines and a crayon to loadout selection.
+  Drathek Firartix:
+  - bugfix: Fixed a crash with hijack code possibly picking a non-existent brig area,
+      and weighting smaller areas heavier.
+  Morrow:
+  - bugfix: Flashlight gun attachments turn off when they should
+  sg2002:
+  - bugfix: XM88 now correctly notifies the user on the hit streak end.
+2023-06-23:
+  harryob:
+  - server: server's can now support using a cdn for web assets
+2023-06-24:
+  Drathek:
+  - rscadd: The selection to become a xeno larva is now based on timeofdeath rather
+      than random and also sends a message to all candidates when the queue moves.
+      Playing as a facehugger or on admin z-levels (thunderdome) will not affect your
+      relative place in queue. The join xeno action will also display the last queue
+      message for you when you allow xeno candidacy.
+  - bugfix: Fixed gibbed humans not properly setting their timeofdeath when on an
+      admin z-level.
+  - bugfix: Fixed a bad del on shuttle doors when a shuttle deletes (such as intoTheSunset).
+  - bugfix: Fixed erroneous is empty messages when inserting tanks into a flamer pack.
+  - soundadd: Added the refill sfx when using the empty canister verb on flamer tanks.
+  Morrow:
+  - bugfix: Prevented some light bugs with devouring marines
+  - bugfix: Fixed two gun light attachment issues
+  Steelpoint:
+  - rscadd: Synthetics may now vend Ponchos.
+  realforest2001:
+  - admin: Improves logging for admin deadchat.
+  - admin: Adds logging for xeno evolution.
+  theselfish:
+  - qol: Added the Corpsman Helmet to Req's surplus vendor.
+2023-06-25:
+  Sargeantmuffinman:
+  - rscadd: Added two new emails to the Almayer's personal computers and rewrote 3
+      other emails.
+  Segrain:
+  - bugfix: Hive core now always correctly absorbs hive's dead larvas.
+  - bugfix: Preview dummy in character setup once again can be rotated.
+2023-06-26:
+  Drathek:
+  - bugfix: Fixed the yank object verb not testing who is actually performing the
+      action has a free hand
+  - rscadd: Player facehugging gets 2nd dibs on the burst (the original marine gets
+      first dibs still)
+  - bugfix: Fix a possibility of banished larva refunding double the larva
+  blackdragonTOW:
+  - spellcheck: multiple typos and grammar changes in the round start tooltips.

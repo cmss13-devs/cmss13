@@ -760,12 +760,12 @@
 	SPAN_XENOWARNING("You spit a [xeno.ammo.name] at [atom]!") )
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
+	var/obj/item/projectile/proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))
+	proj.generate_bullet(xeno.ammo)
+	proj.permutated += xeno
+	proj.def_zone = xeno.get_limbzone_target()
+	proj.fire_at(spit_target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
 
-	var/obj/item/projectile/Proj = new (current_turf, create_cause_data(initial(xeno.caste_type), xeno))
-	Proj.generate_bullet(xeno.ammo)
-	Proj.permutated += xeno
-	Proj.def_zone = xeno.get_limbzone_target()
-	Proj.fire_at(spit_target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
 	spitting = FALSE
 
 	SEND_SIGNAL(xeno, COMSIG_XENO_POST_SPIT)

@@ -185,7 +185,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/taperecorder(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 
-	/obj/item/tool/pen/fountain
 
 //*****************************************************************************************************/
 

@@ -148,7 +148,7 @@
 				idcard = locate(/obj/item/card/id) in holder.contents
 				if(idcard)
 					break
-	if(!istype(idcard))
+	if(!istype(idcard) && ismob(passer))
 		Trigger(passer, failure = TRUE)
 		return FALSE
 	if(!(ACCESS_MARINE_AI_TEMP in idcard.access))//No temp access, don't care

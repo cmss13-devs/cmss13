@@ -197,13 +197,13 @@
 			return
 
 	if(istype(item, /obj/item/stack/barbed_wire))
-		var/obj/item/stack/barbed_wire/B = item
+		var/obj/item/stack/barbed_wire/barbed_wire = item
 		if(can_wire)
 			user.visible_message(SPAN_NOTICE("[user] starts setting up [item.name] on [src]."),
 			SPAN_NOTICE("You start setting up [item.name] on [src]."))
 			if(do_after(user, 20, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) && can_wire)
 				// Make sure there's still enough wire in the stack
-				if(!barricade.use(1))
+				if(!barbed_wire.use(1))
 					return
 
 				playsound(src.loc, 'sound/effects/barbed_wire_movement.ogg', 25, 1)
@@ -259,7 +259,7 @@
 	if(istype(bullet.ammo, /datum/ammo/xeno/boiler_gas))
 		take_damage(round(50 * burn_multiplier))
 
-	else if(bullet.ammo.flags_ammo_behavior & atom_movableMO_ANTISTRUCT)
+	else if(bullet.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
 		take_damage(bullet.damage * ANTISTRUCT_DMG_MULT_BARRICADES)
 
 	take_damage(bullet.damage)

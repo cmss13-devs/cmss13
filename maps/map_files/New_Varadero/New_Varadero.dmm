@@ -11112,15 +11112,6 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/research)
-"hDV" = (
-/obj/effect/decal/cleanable/cobweb{
-	dir = 8;
-	pixel_x = 11
-	},
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/maintenance)
 "hDX" = (
 /obj/structure/machinery/cryo_cell,
 /obj/structure/pipes/standard/cap,
@@ -13544,6 +13535,10 @@
 	icon_state = "wood-broken3"
 	},
 /area/varadero/interior/court)
+"jfx" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/varadero/interior/medical)
 "jfA" = (
 /obj/item/device/motiondetector/hacked,
 /turf/open/floor/carpet,
@@ -22175,14 +22170,6 @@
 "oQD" = (
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/oob)
-"oQT" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/exterior/comms4)
 "oRx" = (
 /obj/structure/closet/crate/secure,
 /obj/item/trash/eat,
@@ -33173,7 +33160,10 @@
 	dir = 4;
 	climb_delay = 3
 	},
-/turf/open/space/basic,
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
 /area/varadero/interior_protected/vessel)
 "vPi" = (
 /obj/structure/closet/secure_closet/personal,
@@ -42195,7 +42185,7 @@ leY
 rPm
 leY
 leY
-oQT
+ifB
 huf
 ifB
 leY
@@ -47509,10 +47499,10 @@ kMU
 tjF
 woI
 qUQ
-qcN
-qcN
-qcN
-lGp
+shb
+jfx
+shb
+shb
 qqA
 aQc
 qqA
@@ -47691,7 +47681,7 @@ yaf
 wVD
 myj
 qUQ
-qcN
+jfx
 cbe
 stv
 hwa
@@ -47873,7 +47863,7 @@ lWh
 vSh
 aMp
 igU
-nxW
+jfx
 vMU
 qqA
 qqA
@@ -48054,8 +48044,8 @@ qcN
 qcN
 qcN
 qcN
-nxW
-lGp
+jfx
+shb
 vMU
 qqA
 qqA
@@ -48424,7 +48414,7 @@ qqA
 qqA
 qqA
 iat
-hDV
+qqA
 clX
 vtP
 fqs

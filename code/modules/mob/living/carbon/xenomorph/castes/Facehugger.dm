@@ -240,3 +240,31 @@
 		. += "Lifetime Hugs: [total_facehugs] / [next_facehug_goal]"
 	else
 		. += "Lifetime Hugs: [total_facehugs]"
+
+
+/datum/xeno_mutator/watcher
+	name = "STRAIN: Facehugger - Watcher"
+	description = "You lose your ability to hide in exchange to see further!"
+	flavor_description = "No need to hide when you can see the danger."
+	individual_only = TRUE
+	caste_whitelist = list(XENO_CASTE_FACEHUGGER)
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/onclick/xenohide,
+	)
+	cost = 1
+
+	keystone = TRUE
+
+/datum/xeno_mutator/watcher/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
+	. = ..()
+	if(!.)
+		return
+
+	var/mob/living/carbon/xenomorph/facehugger/facehugger = mutator_set.xeno
+
+	facehugger.client.change_view(9, src)
+	facehugger.color = "#FFAD33" // This is here to make them look distinct until a coder decides to replace my coder solution with a unique sprite.
+
+	facehugger.mutation_type = FACEHUGGER_WATCHER
+	mutator_update_actions(facehugger)
+	mutator_set.recalculate_actions(description, flavor_description)

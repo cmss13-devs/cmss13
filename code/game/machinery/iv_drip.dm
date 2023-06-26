@@ -64,6 +64,10 @@
 		delete_beam()
 		update_icon()
 
+/obj/structure/machinery/iv_drip/Destroy()
+	. = ..()
+	delete_beam()
+
 /obj/structure/machinery/iv_drip/MouseDrop(over_object, src_location, over_location)
 	..()
 	if(src.inoperable())

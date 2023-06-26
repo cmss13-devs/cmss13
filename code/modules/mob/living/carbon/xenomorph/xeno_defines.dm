@@ -879,6 +879,8 @@
 
 /datum/hive_status/proc/abandon_on_hijack()
 	var/area/hijacked_dropship = get_area(living_xeno_queen)
+	var/shipside_humans_weighted_count = 0
+	var/xenos_count = 0
 	for(var/name_ref in hive_structures)
 		for(var/obj/effect/alien/resin/special/S in hive_structures[name_ref])
 			if(get_area(S) == hijacked_dropship)
@@ -887,6 +889,10 @@
 			qdel(S)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
+			if(isfacehugger(xeno))
+				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
+				qdel(xeno)
+				continue
 			if(xeno.hunter_data.hunted && !isqueen(xeno))
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, seperating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
@@ -897,6 +903,8 @@
 					xeno.handle_stomach_contents()
 				qdel(xeno)
 			stored_larva++
+			continue
+		xenos_count++
 	for(var/i in GLOB.alive_mob_list)
 		var/mob/living/potential_host = i
 		if(!(potential_host.status_flags & XENO_HOST))
@@ -909,19 +917,13 @@
 		for(var/obj/item/alien_embryo/embryo in potential_host)
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
-	var/shipside_humans_count = 0
-	var/xenos_count = 0
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
-		if(isspecieshuman(current_human) || isspeciessynth(current_human))
+		if((isspecieshuman(current_human) || isspeciessynth(current_human)) && current_human.job)
 			var/turf/turf = get_turf(current_human)
 			if(is_mainship_level(turf?.z))
-				shipside_humans_count++
-	for(var/mob/living/carbon/xenomorph/xenomorph as anything in totalXenos)
-		if(isfacehugger(xenomorph))
-			continue
-		xenos_count++
+				shipside_humans_weighted_count += RoleAuthority.calculate_role_weight(current_human.job)
 	hijack_burrowed_surge = TRUE
-	hijack_burrowed_left = max(n_ceil(shipside_humans_count * 0.5) - xenos_count, 5)
+	hijack_burrowed_left = max(n_ceil(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 

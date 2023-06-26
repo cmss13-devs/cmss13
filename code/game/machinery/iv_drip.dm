@@ -65,9 +65,9 @@
 		update_icon()
 
 /obj/structure/machinery/iv_drip/Destroy()
-	. = ..()
 	attached.active_transfusions -= src
 	delete_beam()
+	. = ..()
 
 /obj/structure/machinery/iv_drip/MouseDrop(over_object, src_location, over_location)
 	..()

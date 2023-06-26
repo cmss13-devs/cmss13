@@ -55,8 +55,20 @@
 	if(current_beam)
 		QDEL_NULL(current_beam)
 
+/obj/structure/machinery/iv_drip/power_change()
+	. = ..()
+	if(stat & NOPOWER && attached)
+		visible_message("\The [src] retracts its IV tube and shuts down.")
+		attached.active_transfusions -= src
+		attached = null
+		delete_beam()
+		update_icon()
+
 /obj/structure/machinery/iv_drip/MouseDrop(over_object, src_location, over_location)
 	..()
+	if(src.inoperable())
+		visible_message("\The [src] is not powered.")
+		return
 
 	if(ishuman(usr))
 		var/mob/living/carbon/human/H = usr

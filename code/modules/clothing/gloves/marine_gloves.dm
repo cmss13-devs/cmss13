@@ -178,3 +178,14 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	unacidable = TRUE
 	adopts_squad_color = FALSE
+
+//=ROYAL MARINES=\\
+
+/obj/item/clothing/gloves/marine/veteran/royal_marine
+	name = "\improper Royal Marine Gloves"
+	desc = "Royal Marine Gloves"
+	icon_state = "rmc_gloves"
+	flags_atom = null
+
+/obj/item/clothing/gloves/marine/veteran/royal_marine/snow
+	icon_state = "s_rmc_gloves"

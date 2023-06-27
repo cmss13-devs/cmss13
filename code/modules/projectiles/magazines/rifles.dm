@@ -445,3 +445,28 @@
 	max_rounds = 10
 	gun_type = /obj/item/weapon/gun/boltaction
 	w_class = SIZE_SMALL
+
+//=ROYAL MARINES=\\
+
+/obj/item/ammo_magazine/rifle/rmc_f90
+	name = "\improper RMC F90 HV magazine (10x24mm)"
+	desc = "A 10mm high velocity assault rifle magazine used by the royal marines."
+	caliber = "10x24mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/twe_ammo.dmi'
+	icon_state = "aug"
+	item_state = "aug"
+	w_class = SIZE_MEDIUM
+	default_ammo = /datum/ammo/bullet/rifle/hv
+	max_rounds = 30
+	gun_type = /obj/item/weapon/gun/rifle/rmc_f90
+	ammo_band_icon = "+m41a_band"
+	ammo_band_icon_empty = "+m41a_band_e"
+
+/obj/item/ammo_magazine/rifle/rmc_f90/marksman
+	name = "\improper RMC F90 HVAP magazine (10x24mm)"
+	desc = "A 10mm high velocity armor-piercing assault rifle magazine used by the royal marines."
+	icon_state = "aug_dmr"
+	item_state = "aug_dmr"
+	default_ammo = /datum/ammo/bullet/rifle/hvap
+	gun_type = /obj/item/weapon/gun/rifle/rmc_f90/scope
+	max_rounds = 15

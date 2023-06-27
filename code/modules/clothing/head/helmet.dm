@@ -1243,3 +1243,26 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 #undef HELMET_GARB_RELAY_ICON_STATE
+
+//=ROYAL MARINES=\\
+
+/obj/item/clothing/head/helmet/marine/veteran/royal_marine
+	name = "L5A2 'justice' helmet"
+	desc = "A High-cut ballistic helmet."
+	icon_state = "rmc_helm1"
+	item_state = "rmc_helm1"
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NO_FLAGS
+	flags_marine_helmet = NO_FLAGS
+	flags_atom = null
+
+/obj/item/clothing/head/helmet/marine/veteran/royal_marine/alt
+	name = "L4 'glory'' helmet"
+	desc = "A helmet designed to make it clear that the wearer is safety aware and not looking for a fight."
+	icon_state = "rmc_helm2"
+	item_state = "rmc_helm2"

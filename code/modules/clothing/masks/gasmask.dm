@@ -145,3 +145,16 @@
 	unacidable = TRUE
 // flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP|COVEREYES|COVERMOUTH|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|ALLOWCPR|BLOCKSHARPOBJ
+
+//=ROYAL MARINES=\\
+
+/obj/item/clothing/mask/gas/pmc/royal_marine
+	name = "royal marine gasmask"
+	desc = ""
+	icon_state = "rmc_mask"
+	flags_atom = null
+
+/obj/item/clothing/mask/gas/pmc/royal_marine/snow
+	name = "royal marine facemask"
+	desc = ""
+	icon_state = "s_rmc_mask"

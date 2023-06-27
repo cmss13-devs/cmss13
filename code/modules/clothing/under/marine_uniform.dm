@@ -883,3 +883,24 @@
 	worn_state = "working_joe_overalls"
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	unacidable = TRUE
+
+//=ROYAL MARINES=\\
+
+/obj/item/clothing/under/marine/veteran/royal_marine
+	name = "Royal Marine Uniform"
+	desc = "Royal Marine Uniform"
+	icon_state = "rmc_uniform"
+	worn_state = "rmc_uniform"
+	flags_atom = null
+
+/obj/item/clothing/under/marine/veteran/royal_marine/tl
+	name = "Royal Marine Uniform"
+	desc = "Royal Marine Uniform"
+	icon_state = "rmc_uniform_teaml"
+	worn_state = "rmc_uniform_teaml"
+
+/obj/item/clothing/under/marine/veteran/royal_marine/lt
+	name = "Royal Marine Uniform"
+	desc = "Royal Marine Uniform"
+	icon_state = "rmc_uniform_lt"
+	worn_state = "rmc_uniform_lt"

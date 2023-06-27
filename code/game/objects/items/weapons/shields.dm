@@ -108,3 +108,11 @@
 
 	attack_verb = list("shoved", "bashed")
 	var/active = 0
+
+/obj/item/weapon/shield/riot/metal
+	icon_state = "riot_metal"
+	item_state = "riot_metal"
+
+/obj/item/weapon/shield/riot/ballistic
+	icon_state = "ballistic_shield"
+	item_state = "ballistic_shield"

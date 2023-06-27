@@ -764,3 +764,36 @@ D
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 	item_state = "owlf_hood"
+
+
+//=ROYAL MARINES=\\
+
+/obj/item/clothing/head/beanie/royal_marine
+	name = "beanie"
+	icon_state = "rmc_beanie_tan"
+
+/obj/item/clothing/head/beanie/royal_marine/black
+	name = "beanie"
+	icon_state = "rmc_beanie_black"
+
+/obj/item/clothing/head/beanie/royal_marine/turban
+	name = "turban"
+	desc = "Turban."
+	icon_state = "rmc_turban_tan"
+
+/obj/item/clothing/head/beanie/royal_marine/turban/green
+	icon_state = "rmc_turban_green"
+
+/obj/item/clothing/head/beanie/royal_marine/turban/black
+	icon_state = "rmc_turban_black"
+
+/obj/item/clothing/head/beanie/royal_marine/turban/white
+	icon_state = "rmc_turban_white"
+
+/obj/item/clothing/head/beret/royal_marine
+	desc = "Royal Marine."
+	icon_state = "rmc_beret"
+
+/obj/item/clothing/head/beret/royal_marine/team_leader
+	desc = "Royal Marine"
+	icon_state = "rmc_beret_tl"

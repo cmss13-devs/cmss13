@@ -274,12 +274,13 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 //-------- TWE --------//
 #define JOB_TWE_REPRESENTATIVE "TWE Representative"
 
-#define JOB_TWE_YONTO "RMC Yonto"
-#define JOB_TWE_SANTO "RMC Santo"
-#define JOB_TWE_NITO "RMC Nito"
-#define JOB_TWE_ITTO "RMC Itto"
+//RMC
+#define JOB_TWE_RMC_RIFLEMAN "RMC Rifleman"
+#define JOB_TWE_RMC_SPECIALIST "RMC Specialist"
+#define JOB_TWE_RMC_TEAMLEADER "RMC Teamleader"
+#define JOB_TWE_RMC_LIEUTENANT "RMC Lieutenat"
 
-#define TWE_COMMANDO_JOB_LIST list(JOB_TWE_YONTO, JOB_TWE_SANTO, JOB_TWE_NITO, JOB_TWE_ITTO)
+#define TWE_COMMANDO_JOB_LIST list(JOB_TWE_RMC_RIFLEMAN, JOB_TWE_RMC_SPECIALIST, JOB_TWE_RMC_TEAMLEADER, JOB_TWE_RMC_LIEUTENANT)
 
 #define JOB_TWE_SEAMAN "TWE Seaman"
 #define JOB_TWE_LSEAMAN "TWE Leading Seaman"
@@ -312,7 +313,6 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_TIS_SA "UAAC-TIS Special Agent"
 
 #define TIS_JOB_LIST list(JOB_TIS_SA, JOB_TIS_IO)
-
 //-------- DUTCH'S DOZEN --------//
 #define JOB_DUTCH_ARNOLD "Dutch's Dozen - Dutch"
 #define JOB_DUTCH_RIFLEMAN "Dutch's Dozen - Rifleman"

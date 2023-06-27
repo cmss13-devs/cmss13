@@ -256,12 +256,12 @@
 	else
 		return ..()
 
-/obj/item/tool/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
+/obj/item/tool/weldingtool/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)
 		return
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
+	if (istype(target, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,target) <= 1)
 		if(!welding)
-			O.reagents.trans_to(src, max_fuel)
+			target.reagents.trans_to(src, max_fuel)
 			weld_tick = 0
 			user.visible_message(SPAN_NOTICE("[user] refills [src]."), \
 			SPAN_NOTICE("You refill [src]."))
@@ -270,14 +270,14 @@
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a blowtorch.")
 			log_game("[key_name(user)] triggered a fueltank explosion with a blowtorch.")
 			to_chat(user, SPAN_DANGER("You begin welding on the fueltank, and in a last moment of lucidity realize this might not have been the smartest thing you've ever done."))
-			var/obj/structure/reagent_dispensers/fueltank/tank = O
+			var/obj/structure/reagent_dispensers/fueltank/tank = target
 			tank.explode()
 		return
 	if (welding)
 		remove_fuel(1)
 
-		if(isliving(O))
-			var/mob/living/L = O
+		if(isliving(target))
+			var/mob/living/L = target
 			L.IgniteMob()
 
 
@@ -709,17 +709,22 @@ Welding backpack
 	to_chat(user, SPAN_NOTICE("You cannot figure out how to use \the [W] with [src]."))
 	return
 
-/obj/item/tool/weldpack/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
+/obj/item/tool/weldpack/afterattack(obj/target as obj, mob/user as mob, proximity)
+	if(!proximity) // this replaces and improves the get_dist(src,target) <= 1 checks used previously
 		return
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
-		O.reagents.trans_to(src, max_fuel)
-		to_chat(user, SPAN_NOTICE(" You crack the cap off the top of \the [src] and fill it back up again from the tank."))
-		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
-		return
-	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
-		to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
-		return
+	if(istype(target, /obj/structure/reagent_dispensers))
+		if(!(istypestrict(target, /obj/structure/reagent_dispensers/fueltank)))
+			to_chat(user, SPAN_NOTICE("This must be filled with a fuel tank."))
+			return
+		if(reagents.total_volume < max_fuel)
+			target.reagents.trans_to(src, max_fuel)
+			to_chat(user, SPAN_NOTICE("You crack the cap off the top of \the [src] and fill it back up again from the tank."))
+			playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
+			return
+		if (reagents.total_volume >= max_fuel)
+			to_chat(user, SPAN_NOTICE("[src] is already full!"))
+			return
+	..()
 
 /obj/item/tool/weldpack/get_examine_text(mob/user)
 	. = ..()

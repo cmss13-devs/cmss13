@@ -158,7 +158,6 @@
 	skills = /datum/skills/military/survivor/forecon_smartgunner
 
 /datum/equipment_preset/survivor/forecon/smartgunner/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(new_human), WEAR_R_HAND)
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911(new_human), WEAR_IN_BELT)

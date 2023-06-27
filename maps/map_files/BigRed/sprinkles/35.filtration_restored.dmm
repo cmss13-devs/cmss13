@@ -94,14 +94,13 @@
 "av" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor{
-	dir = 9;
+	dir = 1;
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/se)
 "aw" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
+/turf/open/mars{
+	icon_state = "mars_dirt_6"
 	},
 /area/bigredv2/outside/se)
 "ax" = (
@@ -124,14 +123,18 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Atmospherics Condenser Storage"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aB" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Atmospherics Condenser"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -146,7 +149,9 @@
 	name = "\improper Atmospherics Condenser"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -158,8 +163,9 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "aG" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_13"
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/se)
 "aH" = (
@@ -169,12 +175,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
-"aI" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/se)
 "aJ" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning"
@@ -182,7 +182,7 @@
 /area/bigredv2/outside/se)
 "aK" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_10"
+	icon_state = "mars_dirt_3"
 	},
 /area/bigredv2/outside/se)
 "aL" = (
@@ -319,7 +319,9 @@
 	dir = 1;
 	name = "\improper Filtration Facility"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bm" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -327,7 +329,9 @@
 	name = "\improper Filtration Facility"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bn" = (
 /obj/structure/closet/firecloset/full,
@@ -361,7 +365,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bt" = (
 /obj/effect/decal/cleanable/dirt,
@@ -500,12 +506,6 @@
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/filtration_plant)
-"bY" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/filtration_plant)
 "bZ" = (
 /turf/open/floor{
 	dir = 1;
@@ -520,9 +520,6 @@
 	},
 /obj/structure/machinery/light,
 /turf/open/floor,
-/area/bigredv2/outside/filtration_plant)
-"cc" = (
-/turf/closed/wall/solaris/rock,
 /area/bigredv2/outside/filtration_plant)
 "ce" = (
 /obj/structure/machinery/light,
@@ -574,18 +571,14 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "cl" = (
 /turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+	dir = 8;
+	icon_state = "asteroidwarning"
 	},
-/area/bigredv2/outside/s)
-"cm" = (
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/s)
+/area/bigredv2/outside/filtration_plant)
 "cn" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
+	icon_state = "delivery"
 	},
 /area/bigredv2/outside/filtration_plant)
 "jh" = (
@@ -653,8 +646,7 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "US" = (
 /turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
+	icon_state = "delivery"
 	},
 /area/bigredv2/outside/filtration_plant)
 "VW" = (
@@ -700,8 +692,6 @@ ah
 bI
 bw
 bw
-bw
-bw
 bZ
 cl
 cl
@@ -710,7 +700,9 @@ cl
 cl
 cl
 cl
-cm
+cl
+cl
+aa
 "}
 (2,1,1) = {"
 ak
@@ -726,8 +718,8 @@ az
 az
 bJ
 bw
-cc
-cc
+bw
+bw
 bw
 bZ
 bZ
@@ -756,14 +748,14 @@ bw
 bw
 bw
 bw
-bY
-bY
-bY
-bY
+US
+US
+US
+US
 cn
-bY
-bY
-bY
+US
+US
+US
 aY
 "}
 (4,1,1) = {"
@@ -1118,11 +1110,11 @@ bO
 bO
 "}
 (17,1,1) = {"
-bK
-bK
-bK
-bK
-bK
+am
+am
+am
+am
+am
 aY
 bf
 bj
@@ -1146,18 +1138,18 @@ bO
 "}
 (18,1,1) = {"
 av
-aw
-aw
-aw
-aw
-az
+am
+am
+am
+am
+US
 az
 az
 az
 az
 bu
 ad
-ad
+cn
 WD
 bO
 bO
@@ -1177,14 +1169,14 @@ am
 am
 am
 am
-az
+US
 az
 az
 aP
 aO
 by
 az
-az
+US
 WD
 bO
 bO
@@ -1202,16 +1194,16 @@ bO
 ax
 am
 am
-aI
-aI
-az
+am
+am
+US
 az
 az
 ad
 bo
 az
 bT
-az
+US
 WD
 bO
 bO
@@ -1228,9 +1220,9 @@ bO
 (21,1,1) = {"
 ax
 am
-aJ
+am
 aG
-bK
+aG
 aY
 bf
 ka
@@ -1256,8 +1248,8 @@ bO
 am
 am
 aJ
-bK
-bK
+aw
+aK
 aY
 aY
 aY

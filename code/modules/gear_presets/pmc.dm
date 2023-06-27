@@ -12,7 +12,7 @@
 
 /datum/equipment_preset/pmc/New()
 	. = ..()
-	access = get_all_accesses() + get_all_centcom_access() + get_antagonist_access()
+	access = get_weyland_pmc_access()
 
 
 /datum/equipment_preset/pmc/load_name(mob/living/carbon/human/new_human, randomise)
@@ -59,8 +59,8 @@
 	name = "Weyland-Yutani PMC (Standard)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "Weyland-Yutani PMC (Standard)"
-	rank = JOB_PMC
+	assignment = JOB_PMC_STANDARD
+	rank = JOB_PMC_STANDARD
 	paygrade = "PMC-OP"
 	skills = /datum/skills/pmc
 
@@ -201,8 +201,8 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	name = "Weyland-Yutani PMC (Detainer)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "Weyland-Yutani PMC (Detainer)"
-	rank = JOB_PMC
+	assignment = JOB_PMC_DETAINER
+	rank = JOB_PMC_DETAINER
 	paygrade = "PMC-EN"
 	skills = /datum/skills/pmc
 
@@ -995,8 +995,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/splint, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini, WEAR_IN_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/cell/hyper, WEAR_IN_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/smartgun_powerpack/pmc, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/smartgun_battery, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/dirty, WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/large/vp78, WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
@@ -1203,7 +1202,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	name = "Weyland-Yutani PMC (Crewman)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "Weyland-Yutani PMC (Crewman)"
+	assignment = JOB_PMC_CREWMAN
 	rank = JOB_PMC_CREWMAN
 	paygrade = "PMC-VS"
 	skills = /datum/skills/pmc/tank_crew

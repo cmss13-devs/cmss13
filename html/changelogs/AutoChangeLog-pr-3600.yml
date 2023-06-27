@@ -1,0 +1,4 @@
+author: "TheGamerdk"
+delete-after: True
+changes:
+  - balance: "Cluster OBs will now no longer hit turfs that have gotten OB protection after the initial OB was fired."

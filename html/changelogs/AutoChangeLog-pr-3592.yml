@@ -1,0 +1,5 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - balance: "larva surge is limited by marines/xenos ratio"
+  - bugfix: "xenos no longer get free larva from abandoned facehuggers during hijack"

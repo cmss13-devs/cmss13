@@ -1,5 +1,0 @@
-author: "Morrow, Triiodine"
-delete-after: True
-changes:
-  - rscadd: "Added a smartgun specific battery that you use with the smartgun itself."
-  - rscdel: "Removed the smartgun powerpack. You no longer need it for the smartgun."

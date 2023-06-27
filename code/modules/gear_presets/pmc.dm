@@ -59,8 +59,8 @@
 	name = "Weyland-Yutani PMC (Standard)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "Weyland-Yutani PMC (Standard)"
-	rank = JOB_PMC
+	assignment = JOB_PMC_STANDARD
+	rank = JOB_PMC_STANDARD
 	paygrade = "PMC-OP"
 	skills = /datum/skills/pmc
 
@@ -201,8 +201,8 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	name = "Weyland-Yutani PMC (Detainer)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "Weyland-Yutani PMC (Detainer)"
-	rank = JOB_PMC
+	assignment = JOB_PMC_DETAINER
+	rank = JOB_PMC_DETAINER
 	paygrade = "PMC-EN"
 	skills = /datum/skills/pmc
 
@@ -1202,7 +1202,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	name = "Weyland-Yutani PMC (Crewman)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "Weyland-Yutani PMC (Crewman)"
+	assignment = JOB_PMC_CREWMAN
 	rank = JOB_PMC_CREWMAN
 	paygrade = "PMC-VS"
 	skills = /datum/skills/pmc/tank_crew

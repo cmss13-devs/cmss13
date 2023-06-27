@@ -272,7 +272,7 @@
 			continue
 
 	if(groundside_humans > (groundside_xenos * GROUNDSIDE_XENO_MULTIPLIER))
-		SSticker.mode.get_specific_call("Xenomorphs Groundside (Forsaken)", FALSE, FALSE)
+		SSticker.mode.get_specific_call("Xenomorphs Groundside (Forsaken)", FALSE, FALSE, announce_dispatch_message = FALSE)
 
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_GROUND_CHECK, 1 MINUTES)
 

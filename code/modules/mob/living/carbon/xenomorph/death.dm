@@ -37,12 +37,13 @@
 
 			if(GLOB.hive_datum[hivenumber].stored_larva)
 				GLOB.hive_datum[hivenumber].stored_larva = round(GLOB.hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead queen
-				var/turf/larva_spawn
+
 				var/list/players_with_xeno_pref = get_alien_candidates()
-				while(GLOB.hive_datum[hivenumber].stored_larva > 0 && istype(GLOB.hive_datum[hivenumber].hive_location, /obj/effect/alien/resin/special/pylon/core)) // stil some left
-					larva_spawn = get_turf(GLOB.hive_datum[hivenumber].hive_location)
-					if(players_with_xeno_pref && players_with_xeno_pref.len)
-						var/mob/xeno_candidate = pick(players_with_xeno_pref)
+				if(players_with_xeno_pref && istype(GLOB.hive_datum[hivenumber].hive_location, /obj/effect/alien/resin/special/pylon/core))
+					var/turf/larva_spawn = get_turf(GLOB.hive_datum[hivenumber].hive_location)
+					var/count = 0
+					while(GLOB.hive_datum[hivenumber].stored_larva > 0 && count < length(players_with_xeno_pref)) // still some left
+						var/mob/xeno_candidate = players_with_xeno_pref[++count]
 						var/mob/living/carbon/xenomorph/larva/new_xeno = new /mob/living/carbon/xenomorph/larva(larva_spawn)
 						new_xeno.set_hive_and_update(hivenumber)
 
@@ -50,11 +51,14 @@
 						if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 							qdel(new_xeno)
 							return
+
 						new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of the ground!"),
 						SPAN_XENODANGER("You burrow out of the ground after feeling an immense tremor through the hive, which quickly fades into complete silence..."))
 
-					GLOB.hive_datum[hivenumber].stored_larva--
-					GLOB.hive_datum[hivenumber].hive_ui.update_burrowed_larva()
+						GLOB.hive_datum[hivenumber].stored_larva--
+						GLOB.hive_datum[hivenumber].hive_ui.update_burrowed_larva()
+					if(count)
+						message_alien_candidates(players_with_xeno_pref, dequeued = count)
 
 			if(hive && hive.living_xeno_queen == src)
 				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"),3, hivenumber)
@@ -134,10 +138,10 @@
 
 	switch(caste.caste_type) //This will need to be changed later, when we have proper xeno pathing. Might do it on caste or something.
 		if(XENO_CASTE_BOILER)
-			var/mob/living/carbon/xenomorph/boiler/B = src
+			var/mob/living/carbon/xenomorph/boiler/src_boiler = src
 			visible_message(SPAN_DANGER("[src] begins to bulge grotesquely, and explodes in a cloud of corrosive gas!"))
-			B.smoke.set_up(2, 0, get_turf(src))
-			B.smoke.start()
+			src_boiler.smoke.set_up(2, 0, get_turf(src), new_cause_data = src_boiler.smoke.cause_data)
+			src_boiler.smoke.start()
 			remains.icon_state = "gibbed-a-corpse"
 		if(XENO_CASTE_RUNNER)
 			remains.icon_state = "gibbed-a-corpse-runner"

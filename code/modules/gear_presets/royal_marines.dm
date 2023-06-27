@@ -6,10 +6,6 @@
 	idtype = /obj/item/card/id/dogtag
 	faction = FACTION_TWE
 
-/datum/equipment_preset/royal_marine/New()
-	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
-
 /datum/equipment_preset/royal_marine/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(80;MALE,20;FEMALE)
 	var/datum/preferences/A = new()
@@ -54,11 +50,6 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/royal_marine
-
-/datum/equipment_preset/royal_marine/New()
-	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
-
 
 /datum/equipment_preset/royal_marine/load_name(mob/living/carbon/human/new_human)
 	new_human.gender = pick(60;MALE,40;FEMALE)

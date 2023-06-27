@@ -356,3 +356,13 @@
   - bugfix: Fix a possibility of banished larva refunding double the larva
   blackdragonTOW:
   - spellcheck: multiple typos and grammar changes in the round start tooltips.
+2023-06-27:
+  TeDGamer Drathek:
+  - bugfix: Boilers from other hives generate proper colored IFFed gas
+  - bugfix: Fixes some death causes with boiler acid gas (for bombard, shroud, and
+      gibbing), neurotoxin gas/stabs, acid shotgun, and xeno spits
+  - balance: Neurotoxin stops processing only in dead mobs
+  TheGamerdk:
+  - bugfix: The game will no longer falsely claim there is no CO
+  realforest2001:
+  - rscadd: Changed min and max Predator ages from 20 - 10000 to 175 - 3000

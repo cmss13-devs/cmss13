@@ -326,12 +326,16 @@
 /// Checks whether a table is a straight line along a given axis
 /obj/structure/surface/table/proc/straight_table_check(direction)
 	var/obj/structure/surface/table/table = src
-	while(table)
-		// Check whether there are connected tables perpendicular to the axis
-		for(var/angle in list(-90, 90))
-			table = locate() in get_step(loc, turn(direction, angle))
-			if(table && !table.flipped)
-				return FALSE
+
+	// Check whether there are connected tables perpendicular to the axis
+	for(var/angle in list(-90, 90))
+		table = locate() in get_step(loc, turn(direction, angle))
+		if(table && !table.flipped)
+			return FALSE
+
+	table = src
+	var/max_tables = 8 // Lazy extra safety against infinite loops. If table big, can't flip, i guess.
+	while(table && max_tables--)
 		table = locate() in get_step(table, direction)
 		if(!table || table.flipped)
 			return TRUE

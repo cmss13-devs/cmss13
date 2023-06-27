@@ -482,7 +482,7 @@
 
 /datum/action/xeno_action/onclick/tacmap
 	name = "View Tactical Map"
-	action_icon_state = "tacmap"
+	action_icon_state = "toggle_queen_zoom"
 	ability_name = "view tacmap"
 
 	var/mob/living/carbon/xenomorph/queen/tracked_queen
@@ -499,7 +499,7 @@
 	if(!xeno.hive.living_xeno_queen.ovipositor)
 		hide_from(xeno)
 
-	handle_new_queen(new_queen = xeno)
+	handle_new_queen(new_queen = xeno.hive.living_xeno_queen)
 
 /datum/action/xeno_action/onclick/tacmap/proc/handle_new_queen(datum/hive_status/hive, mob/living/carbon/xenomorph/queen/new_queen)
 	SIGNAL_HANDLER

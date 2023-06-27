@@ -17,7 +17,7 @@
 	name = "New Varadero - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_varadero.dmi'
-	lighting_use_dynamic = FALSE
+	lighting_use_dynamic = TRUE
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
 
@@ -26,7 +26,7 @@
 	name = "New Varadero - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	icon = 'icons/turf/area_varadero.dmi'
-	lighting_use_dynamic = FALSE
+	lighting_use_dynamic = TRUE
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
 
@@ -35,7 +35,7 @@
 /area/varadero/exterior
 	name = "New Varadero - Exterior"
 	ceiling = CEILING_NONE
-	lighting_use_dynamic = FALSE
+	lighting_use_dynamic = TRUE
 	ambience_exterior = AMBIENCE_NV
 	//soundscape_playlist
 

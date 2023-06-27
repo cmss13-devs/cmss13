@@ -22,5 +22,5 @@
 	return
 
 /obj/structure/machinery/storm_siren/proc/weather_warning()
-	playsound(loc, 'sound/effects/weather_warning_varadero.ogg', 80, 0)
+	playsound(loc, 'sound/effects/weather_warning_varadero.ogg', 60, 0)
 	visible_message(SPAN_DANGER("The storm siren blares: ATTENTION. ATTENTION. INCOMING TROPICAL STORM DETECTED. SEEK SHELTER IMMEDIATELY."))

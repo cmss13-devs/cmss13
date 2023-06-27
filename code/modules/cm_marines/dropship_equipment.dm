@@ -274,7 +274,6 @@
 	deployed_turret.stop_processing()
 	deployed_turret.unset_range()
 	icon_state = "sentry_system_installed"
-
 	QDEL_NULL(deployed_turret.linked_cam)
 
 /obj/structure/dropship_equipment/sentry_holder/Destroy()

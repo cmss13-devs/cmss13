@@ -398,27 +398,12 @@ var/list/ob_type_fuel_requirements
 		return TRUE
 	return FALSE
 
+// proc designed for handling ob camera shakes, takes the target location as input and calculates camera shake based off user location.
 /obj/structure/ob_ammo/warhead/proc/handle_ob_shake(turf/epicenter)
 	if(!warhead_kind)
 		return
 
-	var/frequency = 1
-	var/max_shake_factor // the max strength of the camera shake on impact.
-	var/max_knockdown_time // the max time a mob can be stunned after ob.
 	var/radius_size = 30
-
-	switch(warhead_kind)
-		if("incendiary")
-			frequency = 1
-			max_shake_factor = 8
-			max_knockdown_time = 3
-		if("explosive")
-			frequency = 3
-			max_shake_factor = 15
-			max_knockdown_time = 6
-		if("cluster")
-			frequency = 2
-			max_shake_factor = 1
 
 	for(var/mob/living/user in urange(radius_size, epicenter))
 
@@ -446,6 +431,9 @@ var/list/ob_type_fuel_requirements
 	warhead_kind = "explosive"
 	icon_state = "ob_warhead_1"
 	var/clear_power = 1200
+	var/frequency = 3
+	var/max_shake_factor = 15
+	var/max_knockdown_time = 6
 	var/clear_falloff = 400
 	var/standard_power = 600
 	var/standard_falloff = 30
@@ -490,6 +478,9 @@ var/list/ob_type_fuel_requirements
 	var/clear_delay = 3
 	var/distance = 18
 	var/fire_level = 70
+	var/frequency = 1
+	var/max_shake_factor = 8
+	var/max_knockdown_time = 3
 	var/burn_level = 80
 	var/fire_color = null
 	var/fire_type = "white"
@@ -516,6 +507,9 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_warhead_3"
 	var/total_amount = 75 // how many times will the shell fire?
 	var/instant_amount = 3 // how many explosions per time it fires?
+	var/frequency = 2
+	var/max_shake_factor = 1
+	var/max_knockdown_time // null, shouldn't knock you down.
 	var/explosion_power = 350
 	var/explosion_falloff = 150
 	var/delay_between_clusters = 0.4 SECONDS // how long between each firing?

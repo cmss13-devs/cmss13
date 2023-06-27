@@ -334,8 +334,8 @@
 			return FALSE
 
 	table = src
-	var/max_tables = 8 // Lazy extra safety against infinite loops. If table big, can't flip, i guess.
-	while(table && max_tables--)
+	var/tables_count = 8 // Lazy extra safety against infinite loops. If table big, can't flip, i guess.
+	while(table && tables_count--)
 		table = locate() in get_step(table, direction)
 		if(!table || table.flipped)
 			return TRUE
@@ -343,7 +343,7 @@
 			var/obj/structure/surface/table/reinforced/reinforced_table = table
 			if(reinforced_table.status == RTABLE_NORMAL)
 				return FALSE
-	if(!max_tables)
+	if(!tables_count)
 		return FALSE
 	return TRUE
 

@@ -301,7 +301,7 @@
 /obj/structure/ship_ammo/rocket/banshee/detonate_on(turf/impact)
 	impact.ceiling_debris_check(3)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 175, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name)), source_mob), 0.5 SECONDS) //Small explosive power with a small fall off for a big explosion range
-	fire_spread(impact, create_cause_data(initial(name), source_mob), 4, 15, 50, "#00b8ff") //Very intense but the fire doesn't last very long
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 4, 15, 50, "#00b8ff"), 0.5 SECONDS) //Very intense but the fire doesn't last very long
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/keeper
@@ -344,7 +344,7 @@
 /obj/structure/ship_ammo/rocket/napalm/detonate_on(turf/impact)
 	impact.ceiling_debris_check(3)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 200, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name)), source_mob), 0.5 SECONDS)
-	fire_spread(impact, create_cause_data(initial(name), source_mob), 6, 60, 30, "#EE6515") //Color changed into napalm's color to better convey how intense the fire actually is.
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 6, 60, 30, "#EE6515"), 0.5 SECONDS) //Color changed into napalm's color to better convey how intense the fire actually is.
 	QDEL_IN(src, 0.5 SECONDS)
 
 

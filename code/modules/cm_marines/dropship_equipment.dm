@@ -256,7 +256,7 @@
 	deployed_turret.start_processing()
 	deployed_turret.set_range()
 
-	deployed_turret.linked_cam = new(deployed_turret.loc, "[attach_point.name] [name]")
+	deployed_turret.linked_cam = new(deployed_turret.loc, "[ship_base.name] [name]")
 	if (linked_shuttle.id == DROPSHIP_ALAMO)
 		deployed_turret.linked_cam.network = list(CAMERA_NET_ALAMO)
 	else if (linked_shuttle.id == DROPSHIP_NORMANDY)

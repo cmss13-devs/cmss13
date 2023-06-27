@@ -1443,7 +1443,7 @@
 //unused and not working. need to refactor MD code. Unobtainable.
 //intended mechanic is to have xenos hit with it show up very frequently on any MDs around
 /datum/ammo/bullet/lever_action/tracker
-	name = ".458 tracker round"
+	name = "tracker round"
 	icon_state = "redbullet"
 	damage = 70
 	penetration = ARMOR_PENETRATION_TIER_3

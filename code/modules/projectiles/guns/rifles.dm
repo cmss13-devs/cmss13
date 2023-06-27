@@ -1299,7 +1299,7 @@
 
 /obj/item/weapon/gun/rifle/type71/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
+	fire_delay = FIRE_DELAY_TIER_8 //1.67 less shots per second than m41
 	burst_amount = BURST_AMOUNT_TIER_4
 	burst_delay = FIRE_DELAY_TIER_8
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
@@ -1307,7 +1307,7 @@
 	scatter = SCATTER_AMOUNT_TIER_6
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
-	damage_mult = BASE_BULLET_DAMAGE_MULT
+	damage_mult = BASE_BULLET_DAMAGE_MULT //10~ more damage than m41, as well as higher ap from bullet, a bit lower dps if my calculations are correct due to the fire-delay
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
 /obj/item/weapon/gun/rifle/type71/handle_starting_attachment()
@@ -1331,7 +1331,6 @@
 	)
 	random_under_chance = 40
 	random_spawn_under = list(
-		/obj/item/attachable/lasersight,
 		/obj/item/attachable/verticalgrip,
 	)
 
@@ -1368,7 +1367,6 @@
 	)
 	random_under_chance = 90
 	random_spawn_under = list(
-		/obj/item/attachable/lasersight,
 		/obj/item/attachable/attached_gun/extinguisher,
 	)
 
@@ -1376,10 +1374,17 @@
 	name = "\improper Type 71-F pulse rifle"
 	desc = " This appears to be a less common variant of the Type 71 with an integrated flamethrower that seems especially powerful."
 	attachable_allowed = list(
-		/obj/item/attachable/suppressor,
+		/obj/item/attachable/flashlight, // Rail
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/suppressor, // Muzzle
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
 	)
 
 /obj/item/weapon/gun/rifle/type71/flamer/handle_starting_attachment()
@@ -1424,26 +1429,21 @@
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/verticalgrip, // Underbarrel
-		/obj/item/attachable/lasersight,
 		/obj/item/attachable/burstfire_assembly,
 		)
 
 	random_spawn_muzzle = list() //no default bayonet
 
 /obj/item/weapon/gun/rifle/type71/carbine/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 23, "under_x" = 25, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 17,"rail_x" = 14, "rail_y" = 23, "under_x" = 25, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/type71/carbine/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/stock/type71/stock = new(src)
-	stock.flags_attach_features &= ~ATTACH_REMOVABLE
-	stock.Attach(src)
-	update_attachable(stock.slot)
+	return //integrated attachment code makes me want to blow my brains out
 
 /obj/item/weapon/gun/rifle/type71/carbine/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
-	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
+	fire_delay = FIRE_DELAY_TIER_9 //same fire rate as m41
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_4 //3~ less damage than m41, with higher ap from bullet type
 	scatter_unwielded = SCATTER_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 
@@ -1460,7 +1460,6 @@
 	)
 	random_under_chance = 40
 	random_spawn_under = list(
-		/obj/item/attachable/lasersight,
 		/obj/item/attachable/verticalgrip,
 	)
 
@@ -1469,11 +1468,12 @@
 	desc = "A much rarer variant of the Type 71, this version contains an integrated suppressor, integrated scope, and extensive fine-tuning. Many parts have been replaced, filed down, and improved upon. As a result, this variant is rarely seen outside of commando units."
 	icon_state = "type73"
 	item_state = "type73"
+
+	fire_sound = "gun_silenced"
 	wield_delay = 0 //Ends up being .5 seconds due to scope
 	inherent_traits = list(TRAIT_GUN_SILENCED)
-	current_mag = /obj/item/ammo_magazine/rifle/type71/heap
+	current_mag = /obj/item/ammo_magazine/rifle/type71/ap
 	attachable_allowed = list(
-		/obj/item/attachable/lasersight,
 		/obj/item/attachable/verticalgrip,
 	)
 	random_spawn_chance = 0
@@ -1498,7 +1498,7 @@
 
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 22, "under_y" = 11, "stock_x" = 21, "stock_y" = 18)
+	attachable_offset = list("muzzle_x" = 35, "muzzle_y" = 17,"rail_x" = 10, "rail_y" = 22, "under_x" = 23, "under_y" = 14, "stock_x" = 21, "stock_y" = 18)
 
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_config_values()

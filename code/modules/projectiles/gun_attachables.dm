@@ -1710,7 +1710,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "type73_suppressor"
 	attach_icon = "type73_suppressor"
-	slot = "special"
+	slot = "muzzle"
 	wield_delay_mod = WIELD_DELAY_NONE
 	flags_attach_features = NO_FLAGS
 	melee_mod = 0

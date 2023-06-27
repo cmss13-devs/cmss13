@@ -1067,21 +1067,21 @@
 /datum/ammo/bullet/rifle/type71
 	name = "heavy rifle bullet"
 
-	damage = 35
-	penetration = ARMOR_PENETRATION_TIER_2
+	damage = 55
+	penetration = ARMOR_PENETRATION_TIER_4
 
 /datum/ammo/bullet/rifle/type71/ap
 	name = "heavy armor-piercing rifle bullet"
 
-	damage = 20
+	damage = 40
 	penetration = ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/bullet/rifle/type71/heap
 	name = "heavy high-explosive armor-piercing rifle bullet"
 
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
-	damage = 50
-	penetration = ARMOR_PENETRATION_TIER_8
+	damage = 65
+	penetration = ARMOR_PENETRATION_TIER_10
 
 /*
 //======

@@ -79,9 +79,9 @@
 /datum/component/weed_food/RegisterWithParent()
 	RegisterSignal(parent_mob, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
 	RegisterSignal(parent_mob, list(COMSIG_LIVING_REJUVENATED, COMSIG_HUMAN_REVIVED), PROC_REF(on_rejuv))
-	RegisterSignal(parent_mob, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(start))
+	RegisterSignal(parent_mob, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(on_update))
 	if(parent_turf)
-		RegisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH, PROC_REF(start))
+		RegisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH, PROC_REF(on_update))
 
 /datum/component/weed_food/UnregisterFromParent()
 	if(parent_mob)
@@ -112,7 +112,7 @@
 	if(parent_turf != parent_mob.loc)
 		parent_turf = null // if our location is actually a container, we want to be safe from weeds
 	else
-		RegisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH, PROC_REF(start))
+		RegisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH, PROC_REF(on_update))
 
 	// We moved, restart or start the proccess
 	if(stop() || !merged)
@@ -122,7 +122,7 @@
 	// If we somehow moved when we were merged, handle that
 	absorbing_weeds = parent_turf?.weeds
 	if(absorbing_weeds)
-		RegisterSignal(absorbing_weeds, COMSIG_PARENT_QDELETING, PROC_REF(unmerge_with_weeds))
+		RegisterSignal(absorbing_weeds, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_deletion))
 		return
 	unmerge_with_weeds()
 
@@ -140,14 +140,28 @@
 		return
 	start() // We unbuckled, so lets try to start again
 
+/// SIGNAL_HANDLER for COMSIG_HUMAN_SET_UNDEFIBBABLE & COMSIG_WEEDNODE_GROWTH
+/datum/component/weed_food/proc/on_update()
+	SIGNAL_HANDLER
+
+	start()
+
+/// SIGNAL_HANDLER for COMSIG_PARENT_QDELETING of weeds
+/datum/component/weed_food/proc/on_weed_deletion()
+	SIGNAL_HANDLER
+
+	if(active)
+		stop()
+		return
+	if(merged)
+		unmerge_with_weeds()
+		return
+
 /**
  * Try to start the process to turn into weeds
- * SIGNAL_HANDLER for COMSIG_HUMAN_SET_UNDEFIBBABLE & COMSIG_WEEDNODE_GROWTH
  * Returns TRUE if started successfully
  */
 /datum/component/weed_food/proc/start()
-	SIGNAL_HANDLER
-
 	if(active)
 		return FALSE
 	if(merged)
@@ -181,7 +195,7 @@
 		return merge_with_weeds() // Weeds upgraded, re-merge now re-using the apperance
 	QDEL_NULL(weed_appearance)
 	absorbing_weeds = parent_turf.weeds
-	RegisterSignal(parent_turf.weeds, COMSIG_PARENT_QDELETING, PROC_REF(stop))
+	RegisterSignal(parent_turf.weeds, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_deletion))
 
 	active = TRUE
 	timer_id = addtimer(CALLBACK(src, PROC_REF(merge_with_weeds)), WEED_FOOD_DELAY, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_DELETE_ME|TIMER_OVERRIDE)
@@ -190,12 +204,9 @@
 
 /**
  * Try to stop the process turning into weeds
- * Signal handler for COMSIG_PARENT_QDELETING of weeds
  * Returns TRUE if stopped successfully (was active when called)
  */
 /datum/component/weed_food/proc/stop()
-	SIGNAL_HANDLER
-
 	if(!active)
 		return FALSE
 
@@ -234,7 +245,8 @@
 	absorbing_weeds = parent_turf?.weeds
 	if(!absorbing_weeds)
 		return FALSE
-	RegisterSignal(absorbing_weeds, COMSIG_PARENT_QDELETING, PROC_REF(unmerge_with_weeds))
+	RegisterSignal(absorbing_weeds, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_deletion))
+	// Technically we could have just left the signal alone, but both because of the posibility of other conditions preventing a merge or weeds somehow changing and on_move didn't catch it, this is less fragile
 
 	active = FALSE
 	merged = TRUE
@@ -255,12 +267,9 @@
 
 /**
  * Undo the weedening
- * SIGNAL_HANDLER for COMSIG_PARENT_QDELETING of weeds
  * Returns TRUE if unmerged successfully (always)
  */
 /datum/component/weed_food/proc/unmerge_with_weeds()
-	SIGNAL_HANDLER
-
 	merged = FALSE
 	unmerged_time = world.time
 

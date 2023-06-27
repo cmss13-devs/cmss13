@@ -277,7 +277,8 @@
 	QDEL_NULL(deployed_turret.linked_cam)
 
 /obj/structure/dropship_equipment/sentry_holder/Destroy()
-	QDEL_NULL(deployed_turret.linked_cam)
+	if(deployed_turret)
+		QDEL_NULL(deployed_turret.linked_cam)
 	. = ..()
 
 

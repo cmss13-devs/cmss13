@@ -353,6 +353,9 @@ var/list/ob_type_fuel_requirements
 /obj/structure/ob_ammo/warhead
 	name = "theoretical orbital ammo"
 	var/warhead_kind
+	var/frequency
+	var/max_shake_factor
+	var/max_knockdown_time
 
 /obj/structure/ob_ammo/warhead/proc/warhead_impact(turf/target)
 	// make damn sure everyone hears it
@@ -400,8 +403,6 @@ var/list/ob_type_fuel_requirements
 
 // proc designed for handling ob camera shakes, takes the target location as input and calculates camera shake based off user location.
 /obj/structure/ob_ammo/warhead/proc/handle_ob_shake(turf/epicenter)
-	if(!warhead_kind)
-		return
 
 	var/radius_size = 30
 
@@ -430,10 +431,11 @@ var/list/ob_type_fuel_requirements
 	name = "\improper HE orbital warhead"
 	warhead_kind = "explosive"
 	icon_state = "ob_warhead_1"
+	frequency = 3
+	max_shake_factor = 15
+	max_knockdown_time = 6
+
 	var/clear_power = 1200
-	var/frequency = 3
-	var/max_shake_factor = 15
-	var/max_knockdown_time = 6
 	var/clear_falloff = 400
 	var/standard_power = 600
 	var/standard_falloff = 30
@@ -473,14 +475,14 @@ var/list/ob_type_fuel_requirements
 	name = "\improper Incendiary orbital warhead"
 	warhead_kind = "incendiary"
 	icon_state = "ob_warhead_2"
+	frequency = 1
+	max_shake_factor = 8
+	max_knockdown_time = 3
 	var/clear_power = 1200
 	var/clear_falloff = 400
 	var/clear_delay = 3
 	var/distance = 18
 	var/fire_level = 70
-	var/frequency = 1
-	var/max_shake_factor = 8
-	var/max_knockdown_time = 3
 	var/burn_level = 80
 	var/fire_color = null
 	var/fire_type = "white"
@@ -505,11 +507,11 @@ var/list/ob_type_fuel_requirements
 	name = "\improper Cluster orbital warhead"
 	warhead_kind = "cluster"
 	icon_state = "ob_warhead_3"
+	frequency = 2
+	max_shake_factor = 1
+
 	var/total_amount = 75 // how many times will the shell fire?
 	var/instant_amount = 3 // how many explosions per time it fires?
-	var/frequency = 2
-	var/max_shake_factor = 1
-	var/max_knockdown_time // null, shouldn't knock you down.
 	var/explosion_power = 350
 	var/explosion_falloff = 150
 	var/delay_between_clusters = 0.4 SECONDS // how long between each firing?

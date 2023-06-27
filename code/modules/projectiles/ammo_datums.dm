@@ -1443,15 +1443,25 @@
 //unused and not working. need to refactor MD code. Unobtainable.
 //intended mechanic is to have xenos hit with it show up very frequently on any MDs around
 /datum/ammo/bullet/lever_action/tracker
-	name = "tracking lever-action bullet"
+	name = ".458 tracker round"
 	icon_state = "redbullet"
 	damage = 70
 	penetration = ARMOR_PENETRATION_TIER_3
 	accuracy = HIT_ACCURACY_TIER_1
 	handful_state = "tracking_lever_action_bullet"
 
+/datum/ammo/bullet/lever_action/tracker/proc/tracker_remove(mob/M, icon)
+	REMOVE_TRAIT(M, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(2000))
+	M.overlays -= icon
+
+
 /datum/ammo/bullet/lever_action/tracker/on_hit_mob(mob/M, obj/item/projectile/P, mob/user)
-	//SEND_SIGNAL(user, COMSIG_BULLET_TRACKING, user, M)
+	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "spotter_lockon")
+	I.pixel_x = -M.pixel_x + M.base_pixel_x
+	I.pixel_y = (M.icon_size - world.icon_size) * 0.5 - M.pixel_y + M.base_pixel_y
+	M.overlays += I
+	ADD_TRAIT(M, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(2000))
+	addtimer(CALLBACK(src, PROC_REF(tracker_remove), M, I), 20 SECONDS)
 	M.visible_message(SPAN_DANGER("You hear a faint beep under [M]'s [M.mob_size > MOB_SIZE_HUMAN ? "chitin" : "skin"]."))
 
 /datum/ammo/bullet/lever_action/training

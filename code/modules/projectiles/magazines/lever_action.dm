@@ -74,6 +74,28 @@ Similar to shotguns.dm but not exactly.
 	max_rounds = 9
 	chamber_closed = 0
 
+// This is the internal magazine of the spotter XM rifle
+/obj/item/ammo_magazine/internal/lever_action/xm88/spotter
+	name = "XM88 spotter rifle internal magazine"
+	desc = "If you see this something went wrong and the world is ending!!"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon_state = "458-box"
+	item_state = "458-box"
+	default_ammo = /datum/ammo/bullet/lever_action/tracker
+	caliber = ".458 tracker"
+	gun_type = /obj/item/weapon/gun/lever_action/xm88/spotter
+	max_rounds = 1
+
+/obj/item/ammo_magazine/internal/lever_action/xm88/spotter/Initialize(mapload, spawn_empty)
+	. = ..()
+	src.color = "#FFCC00" // Yes recoloring things is the new coder sprites what about it
+
+// This si the box that comes in the spotter kit
+/obj/item/ammo_magazine/internal/lever_action/xm88/spotter/box
+	name = "box of .458 tracker rounds"
+	desc = "A box filled with handfuls of .458 tracker rounds, designed for use with the XM88 spotter rifle."
+	max_rounds = 40
+
 //-------------------------------------------------------
 
 /*

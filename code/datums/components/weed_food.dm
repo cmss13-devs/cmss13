@@ -271,8 +271,10 @@
 	parent_mob.anchored = FALSE
 	parent_mob.mouse_opacity = MOUSE_OPACITY_ICON
 	parent_mob.plane = GAME_PLANE
-	parent_mob.add_to_all_mob_huds()
 	parent_mob.vis_contents -= weed_appearance
+
+	if(!QDELETED(parent_mob))
+		parent_mob.add_to_all_mob_huds()
 
 	return TRUE
 

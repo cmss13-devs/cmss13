@@ -556,7 +556,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 	// scope
 	attachable_allowed = list(
-		/obj/item/attachable/scope/mini_iff/spotter
+		/obj/item/attachable/scope/mini_iff/spotter,
 	)
 
 	attachable_offset = list("scope_x" = 11, "scope_y" = 21)

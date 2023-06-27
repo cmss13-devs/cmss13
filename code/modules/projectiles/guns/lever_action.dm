@@ -551,10 +551,10 @@ their unique feature is that a direct hit will buff your damage and firerate
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10 // High accuracy due to being a sniper rifle
 	recoil = RECOIL_AMOUNT_TIER_1 // Low recoil due to having a recoil control system
 
-	// Assuming you have defined the tracking round's magazine under /obj/item/ammo_magazine/internal/lever_action/xm88/scout
+	// internal magazine
 	current_mag = /obj/item/ammo_magazine/internal/lever_action/xm88/spotter
 
-	// Assuming you have defined the IFF sniper scope under /obj/item/attachable/scope/xm88/scout
+	// scope
 	attachable_allowed = list(
 		/obj/item/attachable/scope/mini_iff/spotter
 	)

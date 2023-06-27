@@ -343,6 +343,8 @@
 			var/obj/structure/surface/table/reinforced/reinforced_table = table
 			if(reinforced_table.status == RTABLE_NORMAL)
 				return FALSE
+	if(!max_tables)
+		return FALSE
 	return TRUE
 
 /obj/structure/surface/table/verb/do_flip()

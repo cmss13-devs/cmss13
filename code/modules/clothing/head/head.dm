@@ -770,36 +770,18 @@ D
 
 /obj/item/clothing/head/beanie/royal_marine
 	name = "beanie"
-	icon_state = "rmc_beanie_tan"
-	item_state = "rmc_beanie_tan"
+	icon_state = "rmc_beanie"
+	item_state = "rmc_beanie"
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-/obj/item/clothing/head/beanie/royal_marine/black
-	name = "RMC beanie"
-	icon_state = "rmc_beanie_black"
-	item_state = "rmc_beanie_black"
-	flags_atom = NO_NAME_OVERRIDE
-
 /obj/item/clothing/head/beanie/royal_marine/turban
 	name = "RMC turban"
 	desc = "Turban."
-	icon_state = "rmc_turban_tan"
-	item_state = "rmc_turban_tan"
-
-/obj/item/clothing/head/beanie/royal_marine/turban/green
-	icon_state = "rmc_turban_green"
-	item_state = "rmc_turban_green"
-
-/obj/item/clothing/head/beanie/royal_marine/turban/black
-	icon_state = "rmc_turban_black"
-	item_state = "rmc_turban_black"
-
-/obj/item/clothing/head/beanie/royal_marine/turban/white
-	icon_state = "rmc_turban_white"
-	item_state = "rmc_turban_white"
+	icon_state = "rmc_turban"
+	item_state = "rmc_turban"
 
 /obj/item/clothing/head/beret/royal_marine
 	desc = "RMC beret."
@@ -810,11 +792,6 @@ D
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
-
-/obj/item/clothing/head/beret/royal_marine/green
-	desc = "RMC beret"
-	icon_state = "rmc_beret_green"
-	item_state = "rmc_beret_green"
 
 /obj/item/clothing/head/beret/royal_marine/team_leader
 	desc = "RMC team leader beret"

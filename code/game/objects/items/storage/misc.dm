@@ -125,15 +125,15 @@
 	new /obj/item/ammo_magazine/pistol/clfpistol(src)
 
 /obj/item/storage/box/upp //war trophy luger
-	name = "Type 73 storing box"
-	desc = "A small box containing the once-standard sidearm of the UPP, the Type 73, and two additional magazines. The contained sidearm is probably looted off a dead officer or from a captured stockpile, either way this thing is worth a pretty penny."
+	name = "Type 73 storing case"
+	desc = "A small case containing the once-standard sidearm of the UPP, the Type 73, and two additional magazines. The contained sidearm is probably looted off a dead officer or from a captured stockpile, either way this thing is worth a pretty penny."
 	icon = 'icons/obj/items/storage.dmi'
-	icon_state = "m43case"
-	w_class = SIZE_SMALL
-	max_w_class = SIZE_SMALL
+	icon_state = "matebacase"
+	w_class = SIZE_MEDIUM
+	max_w_class = SIZE_MEDIUM
 	storage_slots = 3
 
-/obj/item/storage/box/clf/fill_preset_inventory()
+/obj/item/storage/box/upp/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/t73(src)
 	new /obj/item/ammo_magazine/pistol/t73(src)
 	new /obj/item/ammo_magazine/pistol/t73(src)

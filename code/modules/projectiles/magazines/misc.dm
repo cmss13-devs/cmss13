@@ -35,7 +35,7 @@
 	name = "QYJ-72 ammo box (7.62x54mmR)"
 	desc = "A 250 round box for the UPP's standard GPMG, the QYJ-72. Chambered in 7.62x54mmR."
 	caliber = "7.62x54mmR"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "qjy72"
 
 	matter = list("metal" = 10000)

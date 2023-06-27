@@ -347,6 +347,7 @@
 	new /obj/item/weapon/baton(src)
 	new /obj/item/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
+	new /obj/item/ammo_magazine/revolver/upp/shrapnel(src)
 
 /obj/item/storage/belt/security/MP/CMB
 	name = "\improper CMB duty belt"

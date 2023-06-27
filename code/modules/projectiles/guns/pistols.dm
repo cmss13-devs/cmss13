@@ -269,7 +269,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	icon_state = "np92"
 	item_state = "np92"
-	fire_sound = "m4a3"
+	fire_sound = "88m4"
 	current_mag = /obj/item/ammo_magazine/pistol/np92
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
@@ -277,14 +277,10 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
-		/obj/item/attachable/compensator,
-		/obj/item/attachable/lasersight,
-		/obj/item/attachable/extended_barrel,
-		/obj/item/attachable/heavy_barrel,
 	)
 
 /obj/item/weapon/gun/pistol/np92/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
+	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 20,"rail_x" = 13, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
 
 /obj/item/weapon/gun/pistol/np92/set_gun_config_values()
 	..()
@@ -306,12 +302,10 @@
 	fire_sound = 'sound/weapons/gun_c99.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/np92/suppressed
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
-	starting_attachment_types = list(/obj/item/attachable/lasersight)
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
-		/obj/item/attachable/lasersight,
 	)
 
 /obj/item/weapon/gun/pistol/np92/suppressed/tranq
@@ -327,7 +321,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	icon_state = "tt"
 	item_state = "tt"
-	fire_sound = "m4a3"
+	fire_sound = 'sound/weapons/gun_tt.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/t73
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
@@ -335,11 +329,11 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/lasersight,
-		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/suppressor,
 	)
 
 /obj/item/weapon/gun/pistol/t73/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
+	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 13, "rail_y" = 22, "under_x" = 22, "under_y" = 15, "stock_x" = 21, "stock_y" = 18)
 
 /obj/item/weapon/gun/pistol/t73/set_gun_config_values()
 	..()

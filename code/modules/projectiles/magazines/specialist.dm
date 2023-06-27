@@ -55,7 +55,7 @@
 	desc = "A large caliber magazine for the Type-88 designated marksman rifle."
 	caliber = "7.62x54mmR"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
-	icon_state = "type88"
+	icon_state = "type88mag"
 	default_ammo = /datum/ammo/bullet/sniper/upp
 	max_rounds = 12
 	gun_type = /obj/item/weapon/gun/rifle/sniper/svd

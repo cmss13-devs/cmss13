@@ -442,7 +442,7 @@
 
 /obj/item/weapon/gun/revolver/upp
 	name = "\improper ZHNK-72 revolver"
-	desc = "The ZHNK-72 is a UPP designed revolver, used in limited numbers by the UPP armed forces, but otherwise mostly used by security forces, colonists, or anyone who can get their hands on it."
+	desc = "The ZHNK-72 is a UPP designed revolver. The ZHNK-72 is used by the UPP armed forces in a policing role as well as limited numbers in the hands of SNCOs."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	icon_state = "zhnk72"
 	item_state = "zhnk72"
@@ -466,12 +466,11 @@
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/extended_barrel,
-		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight, // Underbarrel
 		)
 
 /obj/item/weapon/gun/revolver/upp/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 24, "under_y" = 19, "stock_x" = 24, "stock_y" = 19)
+	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 19, "under_y" = 17, "stock_x" = 24, "stock_y" = 19)
 
 /obj/item/weapon/gun/revolver/upp/set_gun_config_values()
 	..()

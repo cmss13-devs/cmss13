@@ -1,0 +1,5 @@
+author: "Diegoflores31"
+delete-after: True
+changes:
+  - balance: "reduced Larva Burst time from 10 minutes to 7.5 minutes"
+  - refactor: "changed 1 letter vars."

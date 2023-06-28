@@ -440,7 +440,7 @@
 		return
 
 	var/confirm = tgui_alert(usr, "Are you sure you want to hijack [dropship]?", "Force hijack", list("Yes", "No")) == "Yes"
-	if(!confirm) 
+	if(!confirm)
 		return
 
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/computer = dropship.getControlConsole()
@@ -967,6 +967,7 @@
 	else
 		var/faction = tgui_input_list(usr, "What faction do you wish to provide a bioscan for?", "Bioscan Faction", list("Xeno","Marine","Yautja"), 20 SECONDS)
 		var/variance = tgui_input_number(usr, "How variable do you want the scan to be? (+ or - an amount from truth)", "Variance", 2, 10, 0, 20 SECONDS)
+		message_admins("BIOSCAN: [key_name(usr)] admin-triggered a bioscan for [faction].")
 		GLOB.bioscan_data.get_scan_data()
 		switch(faction)
 			if("Xeno")

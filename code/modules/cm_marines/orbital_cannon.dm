@@ -409,9 +409,7 @@ var/list/ob_type_fuel_requirements
 	for(var/mob/living/user in urange(radius_size, epicenter))
 
 		var/distance = get_accurate_dist(get_turf(user), epicenter)
-
 		var/distance_percent = ((radius_size - distance) / radius_size)
-
 		var/total_shake_factor = abs(max_shake_factor * distance_percent)
 
 		// it's of type cluster.
@@ -419,8 +417,7 @@ var/list/ob_type_fuel_requirements
 			shake_camera(user, 0.5, total_shake_factor, frequency)
 			continue
 
-		shake_camera(user, total_shake_factor, frequency)
-
+		shake_camera(user, 3, total_shake_factor, frequency)
 		user.KnockDown(rand(max_knockdown_time * distance_percent, (max_knockdown_time * distance_percent + 1)))
 
 		if(!user.knocked_down)

@@ -8,10 +8,13 @@
 	vis_flags = VIS_INHERIT_DIR|VIS_INHERIT_PLANE|VIS_INHERIT_LAYER
 	icon = 'icons/mob/xenos/weeds.dmi'
 	var/static/list/icon_states = list("human_1","human_2","human_3","human_4","human_5")
+	var/static/list/icon_states_flipped = list("human_1_f","human_2_f","human_3_f","human_4_f","human_5_f")
 	var/icon_state_idx = 0
 	var/timer_id = null
+	var/flipped = FALSE
 
-/atom/movable/vis_obj/weed_food/Initialize(mapload, ...)
+/atom/movable/vis_obj/weed_food/Initialize(mapload, is_flipped, ...)
+	flipped = is_flipped
 	timer_id = addtimer(CALLBACK(src, PROC_REF(on_animation_timer)), WEED_FOOD_STATE_DELAY, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_LOOP|TIMER_DELETE_ME)
 	on_animation_timer()
 	return ..()
@@ -23,7 +26,7 @@
 		deltimer(timer_id)
 		timer_id = null
 		return
-	icon_state = icon_states[icon_state_idx]
+	icon_state = flipped ? icon_states_flipped[icon_state_idx] : icon_states[icon_state_idx]
 
 /**
  * A component that can be attached to a mob/living to be merged with weeds after a delay.
@@ -258,7 +261,10 @@
 	parent_mob.remove_from_all_mob_huds()
 
 	if(!weed_appearance) // Make a new sprite if we aren't re-merging
-		weed_appearance = new()
+		var/is_flipped = parent_mob.transform.b == -1 // Technically we should check if d is 1 too, but corpses can only be rotated 90 or 270 (1/-1 or -1/1)
+		if(parent_mob.dir & WEST)
+			is_flipped = !is_flipped // The direction reversed the effect of the flip!
+		weed_appearance = new(null, is_flipped)
 	weed_appearance.color = absorbing_weeds.color
 	// TODO: For non-humans change the icon_state or something here
 	parent_mob.vis_contents += weed_appearance

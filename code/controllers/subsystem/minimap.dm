@@ -262,8 +262,12 @@ SUBSYSTEM_DEF(minimaps)
  * removes an image from raw tracked lists, invoked by callback
  */
 /datum/controller/subsystem/minimaps/proc/removeimage(image/blip, atom/target)
+	var/turf/turf_gotten = get_turf(target)
+	if(!turf_gotten)
+		return
+	var/z_level = turf_gotten.z
 	for(var/flag in GLOB.all_minimap_flags)
-		minimaps_by_z["[target.z]"].images_raw["[flag]"] -= blip
+		minimaps_by_z["[z_level]"].images_raw["[flag]"] -= blip
 	blip.UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 	removal_cbs -= target
 

@@ -737,6 +737,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	specialty = "M10 pattern military police"
 
+/obj/item/clothing/head/helmet/marine/MP/B
+	name = "\improper Provost issue M10 pattern MP helmet"
+	desc = "A modified M10 Pattern Helmet in the crimson-black color scheme of the USCMC Provost Office. Typically only seen in use on board USCMC Provost Office ships."
+	desc_lore = "Unlike the other provost issued headgear, the helmet is typically not issued or used outside of Provost Office ships and facilities and is just a regular Marine helmet but in Office colors. It is unclear why a small set of helmets is available on the Almayer, but whoever is responsible seems to be replenishing the very limited supply during longer resupply stops and is working within USCMC logistics to get them delivered and seems to make sure there is always just enough for a full MP department to have one if needed. Whoever this benefactor is, their identity is redacted by the Provost Office itself and any inquiries about the deliveries are left without comment."
+	icon_state = "mp_helmet_b"
+	item_state = "mp_helmet_b"
+	specialty = "Provost issue M10 pattern military police"
+	flags_atom = NO_SNOW_TYPE
+
 /obj/item/clothing/head/helmet/marine/MP/WO
 	name = "\improper M3 pattern chief MP helmet"
 	desc = "A well-crafted variant of the M10 Helmet typically distributed to Chief MPs. Useful for letting your men know who is in charge."

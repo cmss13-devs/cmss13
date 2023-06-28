@@ -2,7 +2,8 @@
 
 /obj/structure/machinery/computer/sentencing
 	name = "\improper Jurisdictional Automated System"
-	desc = "A powerful machine produced by Weyland-Yutani to streamline all punishment of prisoners. The best grade policing gear seen on this side of the galaxy."
+	desc = "A powerful machine develiped jointly with Weyland-Yutani to make sure every convict gets exactly the brig timer they deserver accroding to regulations. A living symbol of the somewhat strainder realationship of the Provost Office and the rest of the USCMC."
+	desc_lore = "The Jurisdictional Automated System and procedures surrounding it were conceived as a result of a through statistical analysis of USCMC arrest records and Marine Law violations that concluded that three out of four convictions end up with a misapplied timer. The fact that the Provost Office was unusually cooperative should probably have been a hint that something was off, and as the JAS entered service accuracy of brig timers increased to around 98% in cases where charges where applied correctly. Unfortunately it also became very clear that this increased, not decreased the average time a Marine spends in the brig by almost 50 percent. It was later revealed that the Office itself suspected that was the case from their own numbers but opted not to share that information, themselves not being exactly pleased with the leniency in brig timers and decided to use this initiative to their own ends. This caused a major rift between USCMC leadership and key figures in the Provost Office that ultimately got settled by the UAAC who established the split training program which despite its overall failure to majorly temper the specific behaviors of MPs on USCMC assignments did shift overall perspective to at least consider negotiation and deescalation an equally valid approach to direct confrontation."
 	icon_state = "jas"
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_COMMAND)
 	var/datum/crime_incident/incident

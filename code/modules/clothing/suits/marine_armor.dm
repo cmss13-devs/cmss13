@@ -313,7 +313,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"
-	desc = "A standard Colonial Marines M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	desc = "A standard Colonial Marines M2 Pattern Chestplate with modifications made to pad the armor a bit and make it more usefull in a face to face confrontation. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	desc_lore = "Military Police Officers trained in USCMC facilities are taught to prioritize negotiation and deescalation over physical confrontation. While they are essentially trained the same techniques as their Provost counterparts, the curriculum and the nature of the training itself highly empathizes being part of the Corps. Originally, MP issue armor was an expression of that philosophy, essentially just differently colored Marine chestplates. Over time however, this basic setup grew into an entire kit, marked by years of experience in realities of law enforcement on USCMC vessels, becoming completely on par with the Provost issued kit in both terms of gear and resistance. "
 	icon_state = "mp_armor"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -348,24 +349,57 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	item_state_slots = list(WEAR_JACKET = "mp_armor")
 	black_market_value = 20
 
+/obj/item/clothing/suit/storage/marine/MP/B
+	name = "\improper Provost issue M2 pattern MP armor"
+	desc = "A modified M2 pattern chestplate with USCMC Provost Office black and crimson colors. May look bulkier and more intimidating than its USCM counterpart but offers no actual additional protection. It has a small leather pouch strapped to it for limited storage."
+	desc_lore = "Military Police Officers trained in Provost facilities are introduced to the harsh, worse-case-scenario style thinking that defines the Provost on the day they join the force and continue to see the greater Marine force as a mass to keep tabs off more than anything else. The somewhat imposing, bulky armor that tends to be preferred by officers embracing this way of thinking started as a simple modified chestplate with additions being tested, adopted, and propagated by Provost aligned vessels that over time resulted in this efficient and stylish kit. Neither side would not openly admit it, but this kit is completely on par with its USCMC issued equivalent."
+	icon_state = "mp_armor_b"
+	item_state = "mp_armor_b"
+	specialty = "Provost issue M2 pattern MP"
+	item_state_slots = list(WEAR_JACKET = "mp_armor_b")
+	flags_atom = NO_SNOW_TYPE
+
 /obj/item/clothing/suit/storage/marine/MP/warden
 	icon_state = "warden"
 	name = "\improper M3 pattern warden MP armor"
-	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Wardens. Useful for letting your men know who is in charge."
+	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Wardens. Usefull for sitting down and having a chat with a troubled soul."
+	desc_lore = "USCMC trained Wardens are trained to rely on their skill in negotiation, deescalation and reading the situation and practically are not expected to be in a physical confrontation. This assumption was very brutally confronted with the hard reality of USCMC crewed ships, especially in remote regions like the Veil. Wardens quickly started using regular MP armor until the Provost Office formally started requiring that all MPs on duty wear armor at all times. The rather hasty adoption of this requirement lead to the Warden armor effectively copying a lot of the solutions and tricks incorporated into the armors worn by Provost Enforcer Wardens and being identical to them in terms of protection and available space. "
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	uniform_restricted = list(/obj/item/clothing/under/marine/warden)
 	specialty = "M3 pattern warden MP"
 	item_state_slots = list(WEAR_JACKET = "warden")
 
+/obj/item/clothing/suit/storage/marine/MP/warden/B
+
+	name = "\improper Provost issue M3 pattern warden MP armor"
+	desc = "A well-crafted suit of M3 Pattern Armor with USCMC Provost Office black and crimson colors. Like the Wardens themselves, may look bulkier and more intimidating than its USCMC counterpart but offers no actual additional protection."
+	desc_lore = "Provost trained Wardens are trained to rely on physical intimidation and direct force when encountering issues in the brig and everything about their kit reflects that. The armor that is provided to personnel who either opt for service on USCMC ships or drops out of the Provost Enforcer Warden training program is effectively identical to the one used on board of Provost vessels and installations, incorporating decades of experience and improvements. Provost trained Wardens shared this experience and solutions with their USCMC trained equivalent rather freely as any differences in training was brutally verified by the reality of law enforcement and today the kit is identical to its counterpart in therms of protection and functionality. "
+	icon_state = "warden_b"
+	item_state = "warden_b"
+	specialty = "Provost issue M3 pattern warden MP"
+	item_state_slots = list(WEAR_JACKET = "warden_b")
+	flags_atom = NO_SNOW_TYPE
+
 /obj/item/clothing/suit/storage/marine/MP/WO
 	icon_state = "warrant_officer"
 	name = "\improper M3 pattern chief MP armor"
-	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Chief MPs. Useful for letting your men know who is in charge."
+	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Chief MPs. Has the aura of carefully considered, but firm and deliberate force."
+	desc_lore = "USCMC issued CMP armor was intended to both look familiar to standard Marine armor colors and stand out enough so CMPs can be easy to spot in a crowd. Using the standard officer chestplate as a base, the armor has gotten a fair amount of bulk added to it over time, somewhat indiscreetly covered by a jacket. The older veterans that initially joined the CMP ranks from the USCMC officer cadre as part of the split training program found quickly that being the most visible MP on board a ship is only viable if your armor can take a hit or two. Bringing up the USCMC issued kit up to par with the Provost issue CMP gear is considered one of the key factors that contributed to CMP officers becoming particularly indistinguishable from each other in terms of manners and approach despite their point of entry into the Marines."
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/warrant)
 	specialty = "M3 pattern chief MP"
 	item_state_slots = list(WEAR_JACKET = "warrant_officer")
 	black_market_value = 30
+
+/obj/item/clothing/suit/storage/marine/MP/WO/B
+	name = "\improper Provost issue M3 pattern chief MP armor"
+	desc = "A well-crafted suit of M3 Pattern Armor with USCMC Provost Office crimson and black colors. The crimson colored heavy padding on the chest, arms and legs seems to particularly stand out."
+	desc_lore = "Provost issued CMP armor is meant to make the CMP draw attention and then once the attention is centered on them protect them from incoming blows. The Provost Office encourages its CMPs to be active and involved in all levels of law enforcement and as such their armor is aimed to enable them to do just that. The armor reflects the Provosts Offices experience and approach to law enforcement but remains in use even by the many Provost trained CMPs that opt to continue their career outside of the Office structures. A measurable increase in such officers - Provost trained CMPs that over time decide to abandon their Provost related ambitions - is the one definite success of the split training program despite its overall failure to change the habits and approach of CMPs."
+	icon_state = "warrant_officer_b"
+	item_state = "warrant_officer_b"
+	specialty = "Provost Issue M3 pattern chief MP"
+	item_state_slots = list(WEAR_JACKET = "warrant_officer_b")
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/suit/storage/marine/MP/general
 	name = "\improper M3 pattern general officer armor"

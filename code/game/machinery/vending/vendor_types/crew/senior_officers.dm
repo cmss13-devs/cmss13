@@ -31,8 +31,8 @@
 GLOBAL_LIST_INIT(cm_vending_clothing_military_police_chief, list(
 
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
+		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-		list("CMP Uniform", 0, /obj/item/clothing/under/marine/officer/warrant, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/cmpcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Satchel", 0, /obj/item/storage/backpack/satchel/sec, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("Gear Belt", 0, /obj/item/storage/belt/security/MP/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
@@ -42,12 +42,17 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_chief, list(
 		list("Mod 88 Pistol", 0, /obj/item/storage/belt/gun/m4a3/mod88, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
 		list("M44 Revolver", 0, /obj/item/storage/belt/gun/m44/mp, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 
-		list("ARMOR (TAKE ALL)", 0, null, null, null),
+		list("ARMOR (CHOOSE 1)", 0, null, null, null),
 		list("Military Police Chief M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/WO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Provost Issue Chief M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/WO/B, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
 
-		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
+		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
+		list("CMP Uniform", 0, /obj/item/clothing/under/marine/officer/warrant, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+		list("Provost Issue CMP Uniform", 0, /obj/item/clothing/under/marine/officer/warrant/B, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+
+		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Chief MP M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/WO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
-		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+		list("Provost Issue M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/B, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 
 		list("EYEWEAR (TAKE ALL)", 0, null, null, null),
 		list("Security HUD Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),

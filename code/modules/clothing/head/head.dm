@@ -416,27 +416,42 @@
 /obj/item/clothing/head/beret/marine/mp
 	name = "\improper USCM MP beret"
 	icon_state = "beretred"
-	desc = "A beret with the USCM Military Police insignia emblazoned on it."
+	desc = "A beret with the USCM Military Police insignia emblazoned on it. Similar to regular Marine berets, but in a matted red."
+	desc_lore = "The USCMC brass had hoped that the Provost crimson Berets would be naturally replaced by either helmets or hats, both way more common headgear options in the Marines. Instead, the newly graduating personnel immediately replicated both an overwhelming preference for berets as well as their own version of the ritual Provost Office trained MPs go through. This is considered the first clear sign that the idea of splitting training may not be as effective as USCMC HC had hoped. USCMC MP 'graduation' rituals are less physical than their Provost counterpart and include more team based challenges, they are in essence the same thing however - a nighttime marathon through unfamiliar territory with multiple obstacles and challenges on the way, at the end of which the highest ranking training officer officially grants the MP their first beret."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 	black_market_value = 25
 
+/obj/item/clothing/head/beret/marine/mp/B
+	name = "\improper Provost issue USCM MP beret"
+	icon_state = "beretred_b"
+	desc = "A crimson beret with the USCMC Provost Office insignia emblazoned on it. It feels somewhat stiffer to the touch than a typical USCM beret."
+	desc_lore = "The origin of the overwhelming preference of all Provost Office Marines to use berets is typically connected to the significantly higher than normal percentage of Three World Empire emigrants or green card holders to be part of the force in its early days. This initial imbalance permanently ingrained the crimson beret as part of any Provost trained MP's service and identity. Everyone receives a crimson 'training' beret on their first day of training and uses it until their 'trial' around graduating, whenever that may be. Provost office trials vary greatly depending on where they are held, but typically includes a combination of hand to hand and riot control drills, exposure to the effects of all MP tools and a one on one talk with the officer in charge of training. Said officer then takes the training helmet and replaces it with the graduating MP's specialization specific headgear."
+
 /obj/item/clothing/head/beret/marine/mp/warden
 	name = "\improper USCM MP warden peaked cap"
 	icon_state = "warden"
-	desc = "A peaked cap with the USCM Military Police Lieutenant insignia emblazoned on it. It is typically used by Wardens on USCM ships."
+	desc = "A peaked cap with the USCM Military Police insignia emblazoned on it. Flimsy and not really meant to be used in action, but at least its easy to fix or replace anything that breaks."
+	desc_lore = "According to the regulations set for all MPs by the Provost Office, the position of Warden needs a unique, clearly identifying piece of headgear as part of its standard kit. The USCMC, not committed to any specific solution decided to let the first few cohorts of Wardens trained under their care make the choice. Much to their surprise and horror the USCMC trained Military Wardens almost unanimously picked the peaked cap in same color as their Provost counterpart. Like their Provost counterparts, the Wardens would answer that the headgear simply seemed to fit them and for whatever reason that seems to be a direct statistical correlation. "
+
+/obj/item/clothing/head/beret/marine/mp/warden/B
+	name = "\improper Provost issue USCM MP warden peaked cap"
+	icon_state = "warden_b"
+	desc = "A peaked cap with the USCMC Provost Office insignia emblazoned on it. The extra glossiness is a nice touch, but smudges are a constant issue."
+	desc_lore = "It is unclear why Provost trained Wardens chose the peaked cap in particular. While Provost regulations do require Wardens to have clearly identifiable and unique pieces of headgear as part of their standard kit, this preference seems to have developed naturally across the years and only later was codified. There were several initiatives stemming from the Provost Office itself to as they put it 'modernize' the look, but every time the result was the peaked cap being the overwhelming favorite. Provost trained Wardens claim that the headgear just seems a natural fit for them, an opinion they share with their USCMC trained counterparts."
 
 /obj/item/clothing/head/beret/marine/mp/cmp
 	name = "\improper USCM chief MP beret"
-	desc = "A beret with the USCM Military Police First Lieutenant insignia emblazoned on it. It shines with the glow of corrupt authority and a smudge of doughnut."
+	desc = "A high quality black beret with the USCMC CMP insignia attached to it. The insignia itself is the USCMC and Provost Office symbols merged with each other."
+	desc_lore = "Since all Marines that hold a position of CMP on any USCMC ship need to be certified by both the Provost Office and the USCMC they graduate their training jointly and jointly go through a similar ritual of 'earning' their beret as their lower ranking comrades, except one veiled in even more secrecy. Attended by any available current or past CMPs of any training origin on a given ship or training facility, prospective CMPs spend the night before their formal certification getting drunk and integrating into the broader CMP structures, while hearing tales and advice from any available veteran of the service. As a result most CMPs remember the time they receive their berets very fondly and tend to value them highly even if they do not actively use them. "
 	icon_state = "beretwo"
 	black_market_value = 30
 
 /obj/item/clothing/head/beret/marine/mp/mppeaked
 	name = "\improper USCM MP peaked cap"
-	desc = "A peaked cap worn by the USCM's Military Police. Something about it reminds you of an event you once read about in a history book."
+	desc = "A peaked cap worn by the USCM's Military Police."
 	icon_state = "mppeaked"
 
 /obj/item/clothing/head/beret/marine/mp/mpcap

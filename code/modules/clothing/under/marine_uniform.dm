@@ -97,22 +97,44 @@
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/mp
-	name = "military police jumpsuit"
-	desc = "Standard-issue Military Police uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	name = "military police uniform"
+	desc = "Standard-issue Military Police uniform. Looks and feels just like a regular Marine uniform."
+	desc_lore = "Military Police Officers that enter the service through standard USCMC recruitment and are trained in USCMC bootcamps are assigned this uniform upon starting their MP training. The uniforms themselves - made to resemble regular USCMC uniforms as much as possible are a good representation of how the Corps sees and trains MPs within its own structures - Officers are recruited, trained and assigned together with the soldiers they serve with and are expected to be more a negotiating force first. Regardless of their training any MP needs to follow the strict instructions and criteria laid out by the Provost Office, so the effectiveness of the USCMC initiative has been limited as the Provost relentlessly culls both its own numbers and any MP who is found guilty of breaking the very regulations they are sworn to upkeep."
 	icon_state = "MP_jumpsuit"
 	worn_state = "MP_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "military police"
 
+/obj/item/clothing/under/marine/mp/B
+	name = "\improper Provost issue military police uniform"
+	desc = "Standard-issue Military Police uniform used by MPs who entered service through the Provost Office. Most likely the most infamous uniform design in all of the USCM, for better or worse."
+	desc_lore = "Military Police Officers that enter the service through Provost office recruitment and trained in Provost facilities and ships are assigned this uniform and keep it even if they decide for a tour of duty in the general USCMC fleet following their training. The Provost Office is fairly infamous for keeping a highly disciplined, heavily trained and highly insular cadre of Enforcers as part of its fleet and most officers that enter the service this way aspire to that position. Provost trained MPs tend to be seen as harsher and more confrontational than their USCMC counterparts and are often criticized for being too far removed from 'real' Marines to truly understand them, but are vastly more educated in theoretical fields surrounding law enforcement. In the end no matter their origin, they are all subject to the harsh criteria set forth by the Provost."
+	icon_state = "MP_jumpsuit_b"
+	worn_state = "MP_jumpsuit_b"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	specialty = "Provost issue military police"
+	flags_atom = NO_SNOW_TYPE
+
 /obj/item/clothing/under/marine/warden
-	name = "military warden jumpsuit"
-	desc = "Standard-issue Military Warden uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	name = "military warden uniform"
+	desc = "Standard-issue Military Warden uniform. Looks just like a regular Marine uniform, the only thing setting it apart is the black armbands."
+	desc_lore = "Wardens trained by the USCMC are essentially expected to be the most skilled MP on duty. Like their Provost counterparts, they are meant to be the CMP's second in command, however USCMC Wardens spend significantly less time studying the theory of rehabilitation and prisoner management and more time learning basic management and deescalation procedures. A USCMC trained Warden will typically be primed to see their Brig as a place where wayward Marines get put for making dumb choices and will put effort towards making sure they do not make the same mistake again using conversational techniques they are trained. In the end, mostly due to the fact that the Provost Office remains in control of the criteria for all MPs serving on USCMC ships, this approach saw very limited change in actual behavior of Wardens, leading some to theorize that the issue is not training, but rather the institution of the Brig itself."
 	icon_state = "warden_jumpsuit"
 	worn_state = "warden_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/warden)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "military warden"
+	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/under/marine/warden/B
+	name = "\improper Provost issue military warden uniform"
+	desc = "Standard-issue Military Warden uniform used by Marines who entered service through the Provost Office. Seems to match Provost commissioned officer patterns."
+	desc_lore = "Military Wardens trained by the Provost office are typically educated more like managers than anything else. Provost Enforcer Wardens are commissioned officers and receive a multi year curriculum during their training and the lighter training received MP Wardens who serve on regular USCMC ships reflects that approach. Educated in prisoner psychology, rehabilitation theory and a very rigorous physical regimen, a Provost trained Military Warden sees a convict as a project, where the end goal is rehabilitation and generally are told that as long as they are complying with procedure, the ends justify the means - a rehabilitated prisoner today means them not being arrested tomorrow. Despite concern that contact with USCMC trained Wardens would blunt their edge, Provost trained Wardens welcomed and even adopted some methods of their Marine counterparts, leading some to question the point of the whole split."
+	icon_state = "warden_jumpsuit_b"
+	worn_state = "warden_jumpsuit_b"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	specialty = "Provost issue military warden"
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer
@@ -136,13 +158,24 @@
 
 /obj/item/clothing/under/marine/officer/warrant
 	name = "\improper chief MP uniform"
-	desc = "A uniform typically worn by a Chief MP of the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions. This uniform includes a small EMF distributor to help nullify energy-based weapon fire, along with a hazmat chemical filter woven throughout the material to ward off biological and radiation hazards."
+	desc = "A uniform typically worn by a Chief MP of the USCM who transferred into law enforcement from the USCMC proper. This uniform seems to have been made to draw extra attention, which seems like a bad idea out in the field."
+	desc_lore = "Initially almost the whole cadre of USCMC trained CMPs were relatively older commissioned veterans looking to either branch out or take what was universally seen as more challenging but less deadly assignment within the USCMC to stay in until the end of their commission. To this day USCMC trained CMPs are overwhelmingly USCMC commissioned officers with different specialties who chose to transfer to law enforcement for a variety of reasons. Regardless of their origins, prospective CMPs need to pass certification from both the Provost Office and the USCMC meaning that by the end of the process, they are likely to have identical training. USCMC brass assumed that just the different perspective that officers previously embedded among Marines would be enough to somewhat relax the extremely strict standard both demanded by the Provost Office and aspired to by Provost trained CMPs. "
 	icon_state = "WO_jumpsuit"
 	item_state = "WO_jumpsuit"
 	worn_state = "WO_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/cmp)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	specialty = "chief MP"
+	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/under/marine/officer/warrant/B
+	name = "\improper Provost issue chief MP uniform"
+	desc = "A uniform typically worn by a Chief MP of the USCM who entered service through the Provost Office. Seems to be of higher quality than general USCMC issued uniform, but the extra shiny buttons and accents are easy to smudge hard to keep clean."
+	desc_lore = "CMPs trained by the Provost Office receive their commission on a Provost ship or facility and typically are trained for their role from their induction into the Marines. These officers are shaped from the ground up to be a representation of the Provost office and while typically the ultimate goal of such training is to join the ranks of the Office itself, most prospective Provost officers typically find themselves doing at least one tour of duty on a USCMC ship. Regardless of their career intentions, Provost trained officers need to pass certification by both the Office and the USCMC and are on equal footing in terms of training. Provost trained CMPs gain some much needed perspective during their tours and typically naturally lose some of the zeal the Office inspires in its cadre just by the virtue of exposure to their USCMC trained comrades and the realities of MP work itself."
+	icon_state = "WO_jumpsuit_b"
+	item_state = "WO_jumpsuit_b"
+	worn_state = "WO_jumpsuit_b"
+	specialty = "Provost issue chief MP"
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/technical

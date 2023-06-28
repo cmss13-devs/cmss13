@@ -2,12 +2,6 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
-"b" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/c)
 "c" = (
 /obj/structure/sign/safety/medical{
 	pixel_x = 0;
@@ -41,12 +35,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
-	},
-/area/bigredv2/outside/c)
-"g" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/c)
 "h" = (
@@ -99,9 +87,9 @@
 (1,1,1) = {"
 a
 a
-b
-b
-b
+l
+l
+l
 R
 "}
 (2,1,1) = {"
@@ -139,8 +127,8 @@ R
 (6,1,1) = {"
 a
 a
-g
-g
-g
+l
+l
+l
 R
 "}

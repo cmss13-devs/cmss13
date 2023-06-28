@@ -161,7 +161,7 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_NAME_OVERRIDE
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
-	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot, /obj/item/clothing/suit/storage/marine/light/vest/dcc, /obj/item/clothing/suit/storage/jacket/marine/pilot)
+	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot, /obj/item/clothing/suit/storage/marine/light/vest/dcc, /obj/item/clothing/suit/storage/jacket/marine/pilot, /obj/item/clothing/suit/storage/marine/light/vest)
 
 /obj/item/clothing/under/marine/officer/pilot/flight
 	name = "tactical pilot officer flightsuit"
@@ -777,11 +777,21 @@
 	icon_state = "liaison_regular"
 	worn_state = "liaison_regular"
 
+/obj/item/clothing/under/liaison_suit/charcoal
+	name = "liaison's charcoal suit"
+	desc = "A stiff, stylish charcoal suit commonly worn by businessmen from the Weyland-Yutani corporation. Expertly crafted to make you look like a prick."
+	icon_state = "liaison_charcoal"
+	worn_state = "liaison_charcoal"
+
 /obj/item/clothing/under/liaison_suit/outing
 	name = "liaison's outfit"
 	desc = "A casual outfit consisting of a collared shirt and a vest. Looks like something you might wear on the weekends, or on a visit to a derelict colony."
 	icon_state = "liaison_outing"
 	worn_state = "liaison_outing"
+
+/obj/item/clothing/under/liaison_suit/outing/red
+	icon_state = "liaison_outing_red"
+	worn_state = "liaison_outing_red"
 
 /obj/item/clothing/under/liaison_suit/formal
 	name = "liaison's white suit"
@@ -794,6 +804,12 @@
 	desc = "A collared shirt, complimented by a pair of suspenders. Worn by Weyland-Yutani employees who ask the tough questions. Smells faintly of cigars and bad acting."
 	icon_state = "liaison_suspenders"
 	worn_state = "liaison_suspenders"
+
+/obj/item/clothing/under/liaison_suit/blazer
+	name = "liaison's blue blazer"
+	desc = "A stiff but casual blue blazer. Similar can be found in any Weyland-Yutani office. Only the finest wear for the galaxy's most cunning."
+	icon_state = "liaison_blue_blazer"
+	worn_state = "liaison_blue_blazer"
 
 /obj/item/clothing/under/marine/reporter
 	name = "combat correspondent uniform"
@@ -842,12 +858,44 @@
 	worn_state = "synth_councillor"
 	displays_id = FALSE
 
+/obj/item/clothing/under/rank/synthetic/flight
+	name = "tactical flightsuit"
+	desc = "A flightsuit with plenty of leather straps, pouches, and other essential gear."
+	icon_state = "pilot_flightsuit_alt"
+	item_state = "pilot_flightsuit_alt"
+	worn_state = "pilot_flightsuit_alt"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
+
 /obj/item/clothing/under/rank/synthetic/old
 	icon_state = "rdalt_s"
 	worn_state = "rdalt_s"
 
 /obj/item/clothing/under/rank/synthetic/joe
 	name = "\improper Working Joe Uniform"
-	desc = "A cheap uniform made for Synthetic labor."
+	desc = "A cheap uniform made for Synthetic labor. Tomorrow, Together."
 	icon_state = "working_joe"
 	worn_state = "working_joe"
+
+/obj/item/clothing/under/rank/synthetic/joe/engi
+	name = "\improper Working Joe Hazardous Uniform"
+	desc = "A reinforced uniform used for Synthetic labor in hazardous areas. Tomorrow, Together."
+	icon_state = "working_joe_engi"
+	worn_state = "working_joe_engi"
+	flags_inventory = CANTSTRIP
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_HIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
+/obj/item/clothing/under/rank/synthetic/joe/engi/overalls
+	name = "\improper Working Joe Hazardous Uniform"
+	desc = "A reinforced uniform used for Synthetic labor in hazardous areas. Comes with an additional layer for liquid hazards. Tomorrow, Together."
+	icon_state = "working_joe_overalls"
+	worn_state = "working_joe_overalls"
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	unacidable = TRUE

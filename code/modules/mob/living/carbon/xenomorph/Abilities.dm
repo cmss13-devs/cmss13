@@ -55,6 +55,9 @@
 	var/area/AR = get_area(T)
 
 	if(isnull(AR) || !(AR.is_resin_allowed))
+		if(AR.flags_area & AREA_UNWEEDABLE)
+			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
+			return
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return
 
@@ -89,6 +92,8 @@
 	X.use_plasma(plasma_cost)
 	to_chat(X, SPAN_NOTICE("You will be ready to dig a new tunnel in 4 minutes."))
 	playsound(X.loc, 'sound/weapons/pierce.ogg', 25, 1)
+
+	return ..()
 
 /datum/action/xeno_action/onclick/build_tunnel/proc/cooldown_end()
 	var/mob/living/carbon/xenomorph/X = owner
@@ -155,7 +160,7 @@
 
 	apply_cooldown()
 
-	..()
+	return ..()
 
 /datum/action/xeno_action/activable/gut
 	name = "Gut (200)"
@@ -173,7 +178,7 @@
 		return
 	if(xeno.queen_gut(target))
 		apply_cooldown()
-	..()
+	return ..()
 
 /datum/action/xeno_action/onclick/psychic_whisper
 	name = "Psychic Whisper"
@@ -206,6 +211,7 @@
 		else
 			to_chat(M, SPAN_XENO("You hear the voice of [X] resonate in your head. \"[msg]\""))
 		to_chat(X, SPAN_XENONOTICE("You said: \"[msg]\" to [M]"))
+	return ..()
 
 /datum/action/xeno_action/onclick/psychic_radiance
 	name = "Psychic Radiance"
@@ -236,6 +242,7 @@
 	var/targetstring = english_list(target_list)
 	to_chat(X, SPAN_XENONOTICE("You said: \"[msg]\" to [targetstring]"))
 	log_say("PsychicRadiance: [key_name(X)]->[targetstring] : [msg]")
+	return ..()
 
 /datum/action/xeno_action/activable/queen_give_plasma
 	name = "Give Plasma (400)"
@@ -283,6 +290,7 @@
 	target.flick_heal_overlay(3 SECONDS, COLOR_CYAN)
 	apply_cooldown()
 	to_chat(X, SPAN_XENONOTICE("You transfer some plasma to [target]."))
+	return ..()
 
 /datum/action/xeno_action/onclick/queen_order
 	name = "Give Order (100)"
@@ -311,6 +319,8 @@
 
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the Xenomorph you want to give orders to."))
+		return
+	return ..()
 
 /datum/action/xeno_action/onclick/queen_award
 	name = "Give Royal Jelly (500)"
@@ -325,6 +335,7 @@
 		return
 	if(give_jelly_award(xeno.hive))
 		xeno.use_plasma(plasma_cost)
+		return ..()
 
 /datum/action/xeno_action/onclick/queen_word
 	name = "Word of the Queen (50)"
@@ -336,6 +347,7 @@
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
 	// We don't test or apply the cooldown here because the proc does it since verbs can activate it too
 	xeno.hive_message()
+	return ..()
 
 /datum/action/xeno_action/onclick/queen_tacmap
 	name = "View Xeno Tacmap"
@@ -345,6 +357,7 @@
 /datum/action/xeno_action/onclick/queen_tacmap/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
 	xeno.xeno_tacmap()
+	return ..()
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 

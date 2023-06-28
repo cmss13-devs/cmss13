@@ -62,10 +62,6 @@
 
 /obj/item/explosive/plastic/afterattack(atom/target, mob/user, flag)
 	setDir(get_dir(user, target))
-	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
-		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from planting it!"))
-		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
-		return
 
 	if(user.action_busy || !flag)
 		return
@@ -73,6 +69,11 @@
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	if(!can_place(user, target))
+		return
+
+	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
+		to_chat(user, SPAN_WARNING("[name]'s safe-area accident inhibitor prevents you from planting it!"))
+		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 		return
 
 	user.visible_message(SPAN_WARNING("[user] is trying to plant [name] on [target]!"),

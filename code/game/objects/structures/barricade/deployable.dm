@@ -4,7 +4,7 @@
 	icon_state = "folding_0"
 	health = 350
 	maxhealth = 350
-	burn_multiplier = 1.15
+	burn_multiplier = 0.85
 	brute_multiplier = 1
 	crusher_resistant = TRUE
 	force_level_absorption = 15
@@ -88,7 +88,7 @@
 		usr.visible_message(SPAN_NOTICE("[usr] starts collapsing [src]."),
 			SPAN_NOTICE("You begin collapsing [src]."))
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-		if(do_after(usr, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+		if(do_after(usr, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
 			collapse(usr)
 		else
 			to_chat(usr, SPAN_WARNING("You stop collapsing [src]."))
@@ -107,6 +107,7 @@
 	..()
 	if(PF)
 		PF.flags_can_pass_front &= ~PASS_OVER_THROW_MOB
+		PF.flags_can_pass_behind &= ~PASS_OVER_THROW_MOB
 
 
 // Cade in hands

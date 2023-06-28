@@ -176,8 +176,24 @@
 			SPAN_NOTICE("[user] clamps bleeders in your [parse_zone(target_zone)]."),
 			SPAN_NOTICE("[user] clamps bleeders in [target]'s [parse_zone(target_zone)]."))
 
-	surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
 	log_interact(user, target, "[key_name(user)] clamped bleeders in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
+
+	var/surface_modifier = target.buckled?.surgery_duration_multiplier
+	if(!surface_modifier)
+		surface_modifier = SURGERY_SURFACE_MULT_AWFUL
+		for(var/obj/surface in get_turf(target))
+			if(surface_modifier > surface.surgery_duration_multiplier)
+				surface_modifier = surface.surgery_duration_multiplier
+
+	if(surface_modifier == SURGERY_SURFACE_MULT_IDEAL)
+		surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
+		return
+
+	var/bleeding_multiplier_bad_surface = surface_modifier - 1
+	for(var/datum/effects/bleeding/external/external_bleed in surgery.affected_limb.bleeding_effects_list)
+		external_bleed.blood_loss *= bleeding_multiplier_bad_surface
+		to_chat(user, SPAN_WARNING("Stopping blood loss is less effective in these conditions."))
+
 
 /datum/surgery_step/clamp_bleeders_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

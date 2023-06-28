@@ -287,7 +287,7 @@
 	SPAN_DANGER("You nudge your head against [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
 
 /mob/living/proc/is_xeno_grabbable()
-	if(stat == DEAD && !istype(src, /mob/living/carbon/xenomorph/larva))
+	if(stat == DEAD)
 		return FALSE
 
 	return TRUE

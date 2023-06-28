@@ -149,6 +149,14 @@
 
 //interior areas
 
+
+/area/varadero/interior/beach_bar
+	name = "New Varadero - Beach Bar"
+	icon_state = "varadero4"
+	is_resin_allowed = FALSE
+	minimap_color = MINIMAP_AREA_JUNGLE
+	sound_environment = SOUND_ENVIRONMENT_GENERIC
+
 /area/varadero/interior/cargo
 	name = "New Varadero - Cargo"
 	icon_state = "req0"

@@ -53,7 +53,7 @@
 	pixel_y = -6
 	},
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "abE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -365,7 +365,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/box/drinkingglasses,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "aoi" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/plating/icefloor{
@@ -1341,7 +1341,7 @@
 "aSt" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "aTc" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
@@ -4798,7 +4798,7 @@
 	pixel_y = 6
 	},
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "diQ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper,
@@ -4883,7 +4883,7 @@
 	},
 /obj/item/frame/table/wood/poor,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "dlr" = (
 /obj/structure/machinery/storm_siren{
 	dir = 4;
@@ -5724,7 +5724,7 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "dYd" = (
 /obj/structure/machinery/storm_siren{
 	dir = 4;
@@ -7022,7 +7022,7 @@
 "eQm" = (
 /obj/structure/window/framed/wood,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "eQz" = (
 /obj/structure/filingcabinet/filingcabinet,
 /obj/item/paper/research_notes,
@@ -7542,7 +7542,7 @@
 	icon_state = "medium"
 	},
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "fhh" = (
 /obj/item/tool/mop{
 	pixel_x = -10;
@@ -8518,7 +8518,7 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "fQr" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/shiva{
@@ -9591,7 +9591,7 @@
 "gyE" = (
 /obj/structure/bed/chair/wood/normal,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "gyX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/wood,
@@ -9932,7 +9932,7 @@
 /area/varadero/interior_protected/maintenance/south)
 "gLw" = (
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "gLV" = (
 /obj/structure/closet/crate,
 /obj/item/tool/lighter,
@@ -10231,7 +10231,7 @@
 /area/varadero/interior/maintenance)
 "gYh" = (
 /turf/closed/wall/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "gZq" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
@@ -10720,7 +10720,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "hst" = (
 /obj/structure/sign/safety/high_voltage,
 /turf/closed/wall/r_wall,
@@ -11111,7 +11111,7 @@
 "hFM" = (
 /obj/structure/window_frame/wood,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "hGl" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/sand_white/layer1,
@@ -11406,7 +11406,7 @@
 	},
 /obj/structure/window_frame/wood,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "hPD" = (
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -11850,7 +11850,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "idw" = (
 /turf/open/floor/wood,
 /area/varadero/interior/security)
@@ -12014,7 +12014,7 @@
 /turf/open/floor/wood{
 	icon_state = "wood-broken3"
 	},
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "ijZ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/auto_turf/sand_white/layer1,
@@ -12158,7 +12158,7 @@
 	desc = "Come drown your troubles away! Mind the sway."
 	},
 /turf/closed/wall/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "ipl" = (
 /obj/structure/prop/ice_colony/dense/planter_box/plated{
 	dir = 9;
@@ -12628,7 +12628,7 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "iEx" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating/icefloor{
@@ -14189,7 +14189,7 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "jFL" = (
 /turf/open/gm/river/ocean{
 	name = "deep ocean";
@@ -16292,10 +16292,6 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/security)
-"lal" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/space/basic,
-/area/varadero/interior/caves/east)
 "lat" = (
 /obj/item/device/camera,
 /turf/open/floor/plating/icefloor{
@@ -17767,7 +17763,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/holostool,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "lYi" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cup{
@@ -18074,7 +18070,7 @@
 "mhf" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "mio" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
@@ -19528,7 +19524,7 @@
 /obj/item/trash/cheesie,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "ncv" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -19927,7 +19923,7 @@
 /obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "npO" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -21358,7 +21354,7 @@
 /turf/open/floor/wood{
 	icon_state = "wood-broken3"
 	},
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "opP" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
@@ -21932,7 +21928,7 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "oKo" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -22024,7 +22020,7 @@
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "oMl" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -23058,7 +23054,7 @@
 /turf/open/floor/wood{
 	icon_state = "wood-broken"
 	},
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "pth" = (
 /obj/structure/surface/rack,
 /obj/item/tool/pickaxe/plasmacutter,
@@ -23589,7 +23585,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/structure/barricade/wooden,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "pNI" = (
 /obj/item/stack/cable_coil/cut{
 	pixel_x = 6;
@@ -24736,7 +24732,7 @@
 /turf/open/floor/wood{
 	icon_state = "wood-broken3"
 	},
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "qza" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -24890,7 +24886,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "qCI" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -25948,7 +25944,7 @@
 	pixel_y = -4
 	},
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "rjZ" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -26700,7 +26696,7 @@
 	climb_delay = 0
 	},
 /turf/closed/wall/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "rHQ" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -27349,7 +27345,7 @@
 	pixel_y = -6
 	},
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "sbX" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -28303,7 +28299,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/barcardine,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "sFJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
@@ -28514,7 +28510,7 @@
 "sKF" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "sKL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -29339,7 +29335,7 @@
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
 	},
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "tnN" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 1;
@@ -29456,7 +29452,7 @@
 	amount = 40
 	},
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "trC" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -30063,7 +30059,7 @@
 /obj/structure/window/framed/wood,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "tSQ" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -30788,7 +30784,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "uqW" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/dirt,
@@ -31622,7 +31618,7 @@
 /turf/open/floor/wood{
 	icon_state = "wood-broken"
 	},
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "uVV" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -35377,7 +35373,7 @@
 /obj/item/reagent_container/food/snacks/wrapped/barcardine,
 /obj/structure/bed/chair/wood/normal,
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "xuN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -36068,7 +36064,7 @@
 	pixel_x = -7
 	},
 /turf/open/floor/wood,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/beach_bar)
 "xRt" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -62689,7 +62685,7 @@ ouy
 ouy
 ouy
 ouy
-lal
+lFE
 ouy
 ouy
 kbQ

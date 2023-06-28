@@ -71,7 +71,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/dropped(mob/user)
 	. = ..()
-	reset_hit_buff()
+	reset_hit_buff(user)
 	addtimer(VARSET_CALLBACK(src, cur_onehand_chance, reset_onehand_chance), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /obj/item/weapon/gun/lever_action/proc/direct_hit_buff(mob/user, mob/target, one_hand_lever = FALSE)
@@ -110,7 +110,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
 	apply_hit_buff(user, target, one_hand_lever) //this is a separate proc so it's configgable
-	addtimer(CALLBACK(src, PROC_REF(reset_hit_buff), one_hand_lever), hit_buff_reset_cooldown, TIMER_OVERRIDE|TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(reset_hit_buff), user, one_hand_lever), hit_buff_reset_cooldown, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /obj/item/weapon/gun/lever_action/proc/apply_hit_buff(mob/user, mob/target, one_hand_lever = FALSE)
 	lever_sound = lever_super_sound
@@ -126,7 +126,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 			fire_delay += AM.delay_mod
 	wield_delay = 0 //for one-handed levering
 
-/obj/item/weapon/gun/lever_action/proc/reset_hit_buff(one_hand_lever) //why does this need a user arg when it doesn't use user at all?
+/obj/item/weapon/gun/lever_action/proc/reset_hit_buff(mob/user, one_hand_lever)
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
 	SIGNAL_HANDLER
@@ -513,10 +513,12 @@ their unique feature is that a direct hit will buff your damage and firerate
 		levered = FALSE
 	return empty_chamber(user)
 
-/obj/item/weapon/gun/lever_action/xm88/reset_hit_buff(one_hand_lever) //why does this need a user arg when it doesn't use user at all?
+/obj/item/weapon/gun/lever_action/xm88/reset_hit_buff(mob/user, one_hand_lever)
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
 	SIGNAL_HANDLER
+	if(streak > 0)
+		to_chat(user, SPAN_WARNING("[src] beeps as it loses its targeting data, and returns to normal firing procedures."))
 	streak = 0
 	lever_sound = initial(lever_sound)
 	lever_message = initial(lever_message)
@@ -531,7 +533,6 @@ their unique feature is that a direct hit will buff your damage and firerate
 	lever_delay = FIRE_DELAY_TIER_3
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recalculate_attachment_bonuses() //stock wield delay
-	visible_message(SPAN_WARNING("\The [src] beeps as it loses its targeting data, and returns to normal firing procedures."), max_distance = 1) // tell them they've lost stacks
 	if(one_hand_lever)
 		addtimer(VARSET_CALLBACK(src, cur_onehand_chance, reset_onehand_chance), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 

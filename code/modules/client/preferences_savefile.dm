@@ -150,6 +150,7 @@
 	S["view_controller"] >> View_MC
 	S["observer_huds"] >> observer_huds
 	S["pref_special_job_options"] >> pref_special_job_options
+	S["pref_job_slots"] >> pref_job_slots
 
 	S["synth_name"] >> synthetic_name
 	S["synth_type"] >> synthetic_type
@@ -191,6 +192,7 @@
 
 	S["custom_cursors"] >> custom_cursors
 	S["autofit_viewport"] >> auto_fit_viewport
+	S["adaptive_zoom"] >> adaptive_zoom
 
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -222,6 +224,7 @@
 	no_radials_preference = sanitize_integer(no_radials_preference, FALSE, TRUE, FALSE)
 	no_radial_labels_preference = sanitize_integer(no_radial_labels_preference, FALSE, TRUE, FALSE)
 	auto_fit_viewport = sanitize_integer(auto_fit_viewport, FALSE, TRUE, TRUE)
+	adaptive_zoom = sanitize_integer(adaptive_zoom, 0, 2, 0)
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
@@ -251,6 +254,7 @@
 	hotkeys = sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
 	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
 	pref_special_job_options = sanitize_islist(pref_special_job_options, list())
+	pref_job_slots = sanitize_islist(pref_job_slots, list())
 	vars["fps"] = fps
 
 	if(remembered_key_bindings)
@@ -326,6 +330,7 @@
 	S["view_controller"] << View_MC
 	S["observer_huds"] << observer_huds
 	S["pref_special_job_options"] << pref_special_job_options
+	S["pref_job_slots"] << pref_job_slots
 
 	S["synth_name"] << synthetic_name
 	S["synth_type"] << synthetic_type
@@ -358,6 +363,7 @@
 	S["hotkeys"] << hotkeys
 
 	S["autofit_viewport"] << auto_fit_viewport
+	S["adaptive_zoom"] << adaptive_zoom
 
 	S["hear_vox"] << hear_vox
 
@@ -445,6 +451,7 @@
 	S["traits"] >> traits
 
 	S["preferred_squad"] >> preferred_squad
+	S["preferred_armor"] >> preferred_armor
 	S["nanotrasen_relation"] >> nanotrasen_relation
 	//S["skin_style"] >> skin_style
 
@@ -494,6 +501,7 @@
 	underwear = sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear))
 	undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
 	backbag = sanitize_integer(backbag, 1, backbaglist.len, initial(backbag))
+	preferred_armor = sanitize_inlist(preferred_armor, GLOB.armor_style_list, "Random")
 	//b_type = sanitize_text(b_type, initial(b_type))
 
 	alternate_option = sanitize_integer(alternate_option, 0, 3, initial(alternate_option))
@@ -589,6 +597,7 @@
 
 	S["nanotrasen_relation"] << nanotrasen_relation
 	S["preferred_squad"] << preferred_squad
+	S["preferred_armor"] << preferred_armor
 	//S["skin_style"] << skin_style
 
 	S["uplinklocation"] << uplinklocation

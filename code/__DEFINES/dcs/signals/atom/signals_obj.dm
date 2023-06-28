@@ -22,3 +22,5 @@
 
 /// from /obj/structure/transmitter/update_icon()
 #define COMSIG_TRANSMITTER_UPDATE_ICON "transmitter_update_icon"
+
+#define COMSIG_TENT_COLLAPSING "tent_collapsing"

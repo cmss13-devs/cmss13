@@ -732,6 +732,29 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_NOTICE("Hold on there cowboy, that grip is bolted on. You are unable to modify it."))
 	return
 
+/obj/item/attachable/flashlight/laser_light_combo //Unique attachment for the VP78 based on the fact it has a Laser-Light Module in AVP2010
+	name = "VP78 Laser-Light Module"
+	desc = "A Laser-Light module for the VP78 Service Pistol which is currently undergoing limited field testing as part of the USCMs next generation pistol program. All VP78 pistols come equipped with the module."
+	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
+	icon_state = "vplaserlight"
+	attach_icon = "vplaserlight_a"
+	slot = "under"
+	original_state = "vplaserlight"
+	original_attach = "vplaserlight_a"
+
+/obj/item/attachable/flashlight/laser_light_combo/New()
+	..()
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	scatter_mod = -SCATTER_AMOUNT_TIER_10
+	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_9
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
+
+/obj/item/attachable/flashlight/laser_light_combo/attackby(obj/item/combo_light, mob/user)
+	if(HAS_TRAIT(combo_light, TRAIT_TOOL_SCREWDRIVER))
+		to_chat(user, SPAN_NOTICE("You are unable to modify it."))
+	return
+
 /obj/item/attachable/magnetic_harness
 	name = "magnetic harness"
 	desc = "A magnetically attached harness kit that attaches to the rail mount of a weapon. When dropped, the weapon will sling to any set of USCM armor."

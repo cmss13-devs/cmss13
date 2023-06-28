@@ -104,8 +104,10 @@ require only minor tweaks.
 #define GROUND_MAP "ground_map"
 #define SHIP_MAP "ship_map"
 #define ALL_MAPTYPES list(GROUND_MAP, SHIP_MAP)
+#define OVERRIDE_MAPS_TO_FILENAME list(GROUND_MAP = "next_map_override.dmm", SHIP_MAP = "next_ship_override.dmm")
 #define MAP_TO_FILENAME list(GROUND_MAP = "data/next_map.json", SHIP_MAP = "data/next_ship.json")
 #define HUNTERSHIPS_TEMPLATE_PATH "maps/predship/huntership.dmm"
+#define OVERRIDE_DEFAULT_MAP_CONFIG list(GROUND_MAP = "maps/override_ground.json", SHIP_MAP = "maps/override_ship.json")
 
 // traity things
 #define MAP_COLD "COLD"

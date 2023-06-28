@@ -4,7 +4,7 @@
 	name = "Pizza Delivery"
 	mob_max = 1
 	mob_min = 1
-	arrival_message = "Incoming Transmission: 'That'll be... sixteen orders of cheesy fries, eight large double topping pizzas, nine bottles of Four Loko... hello? Is anyone on this ship? Your pizzas are getting cold.'"
+	arrival_message = "'That'll be... sixteen orders of cheesy fries, eight large double topping pizzas, nine bottles of Four Loko... hello? Is anyone on this ship? Your pizzas are getting cold.'"
 	objectives = "Make sure you get a tip!"
 	shuttle_id = "Distress_Small"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pizza

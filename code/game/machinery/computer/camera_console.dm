@@ -318,6 +318,10 @@
 	name = "Containment Cameras"
 	network = list(CAMERA_NET_CONTAINMENT)
 
+/obj/structure/machinery/computer/cameras/almayer/ares
+	name = "ARES Core Cameras"
+	network = list(CAMERA_NET_ARES)
+
 /obj/structure/machinery/computer/cameras/almayer/vehicle
 	name = "Ship Security Cameras"
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_VEHICLE)

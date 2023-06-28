@@ -1299,8 +1299,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP, /obj/item/clothing/under/marine/veteran/UPP/medic, /obj/item/clothing/under/marine/veteran/UPP/engi)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/support
-	name = "\improper UM6 personal armor"
-	desc = "Standard body armor of the UPP military, the UM6 (Union Medium MK6) is a light body armor, slightly weaker than the M3 pattern body armor in service with the USCM, specialized towards ballistics protection. This set of personal armor lacks the iconic neck piece and some of the armor in favor of user mobility."
+	name = "\improper UL6 personal armor"
+	desc = "Standard body armor of the UPP military, the UL6 (Union Light MK6) is a light body armor, slightly weaker than the M3 pattern body armor in service with the USCM, specialized towards ballistics protection. This set of personal armor lacks the iconic neck piece and some of the armor in favor of user mobility."
 	storage_slots = 3
 	icon_state = "upp_armor_support"
 	slowdown = SLOWDOWN_ARMOR_LIGHT
@@ -1342,7 +1342,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/officer
-	name = "\improper UL6 officer jacket"
+	name = "\improper UL4 officer jacket"
 	desc = "A lightweight jacket, issued to officers of the UPP's military. Slightly protective from incoming damage, best off with proper armor however."
 	icon_state = "upp_coat_officer"
 	slowdown = SLOWDOWN_ARMOR_NONE
@@ -1358,7 +1358,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP/officer)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/kapitan
-	name = "\improper UL6 senior officer jacket"
+	name = "\improper UL4 senior officer jacket"
 	desc = "A lightweight jacket, issued to senior officers of the UPP's military. Made of high-quality materials, even going as far as having the ranks and insignia of the Kapitan and their Company emblazoned on the shoulders and front of the jacket. Slightly protective from incoming damage, best off with proper armor however."
 	icon_state = "upp_coat_kapitan"
 	slowdown = SLOWDOWN_ARMOR_NONE
@@ -1374,7 +1374,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP/officer)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/mp
-	name = "\improper UL6 camouflaged jacket"
+	name = "\improper UL4 camouflaged jacket"
 	desc = "A lightweight jacket, issued to troops when they're not expected to engage in combat. Still studded to the brim with kevlar shards, though the synthread construction reduces its effectiveness."
 	icon_state = "upp_coat_mp"
 	slowdown = SLOWDOWN_ARMOR_NONE
@@ -1392,8 +1392,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/jacket/ivan
-	name = "\improper UH6 Camo Jacket"
-	desc = "An experimental heavily armored variant of the UL6 given to only the most elite units... usually."
+	name = "\improper UH4 Camo Jacket"
+	desc = "An experimental heavily armored variant of the UL4 given to only the most elite units... usually."
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_HANDS|BODY_FLAG_FEET
 	armor_melee = CLOTHING_ARMOR_HIGH

@@ -509,7 +509,7 @@
 
 /obj/item/paper/flag
 	name = "paper flag"
-	desc = "Somebody attached a blank piece of paper to a stick. You feel like waving it around like an idiot."
+	desc = "Somebody crudely glued a piece of paper to a stick. You feel like waving it around like an idiot."
 	icon_state = "paper_flag"
 	item_state = "paper_flag"
 

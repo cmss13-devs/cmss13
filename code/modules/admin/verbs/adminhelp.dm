@@ -366,13 +366,16 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/FullMonty(ref_src)
 	if(!ref_src)
 		ref_src = "[REF(src)]"
-	. = ADMIN_FULLMONTY_NONAME(initiator.mob)
+	. = "<br><b>Ticket Actions: </b>"
 	if(state == AHELP_ACTIVE)
 		if(initial_message)
 			. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=defer'>DEFER</A>)"
 		if (CONFIG_GET(flag/popup_admin_pm))
 			. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminpopup=[REF(initiator)]'>POPUP</A>)"
 		. += ClosureLinks(ref_src)
+	. += "<br><b>Player Actions: </b>"
+	. += ADMIN_FULLMONTY_NONAME(initiator.mob)
+	. += "</b>"
 
 //private
 /datum/admin_help/proc/ClosureLinks(ref_src)
@@ -402,7 +405,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	msg = sanitize(copytext_char(msg, 1, MAX_MESSAGE_LEN))
 	var/ref_src = "[REF(src)]"
 	//Message to be sent to all admins
-	var/admin_msg = SPAN_ADMINSAY(SPAN_ADMINHELP("Ticket [TicketHref("#[id]", ref_src)]</span><b>: [LinkedReplyName(ref_src)] [FullMonty(ref_src)]:</b> <span class='linkify'>[msg]"))
+	var/admin_msg = SPAN_ADMINSAY(SPAN_ADMINHELP("Ticket [TicketHref("#[id]", ref_src)]</span><b>: [LinkedReplyName(ref_src)] [FullMonty(ref_src)]</b><br> <span class='linkify'>[msg]"))
 
 	AddInteraction("<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>", player_message = "<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>")
 	log_admin_private("Ticket #[id]: [key_name(initiator)]: [msg]")
@@ -516,7 +519,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	AddInteraction("Deferred to Mentors by [key_name_admin(usr)].", player_message = "Deferred to Mentors.")
 	to_chat(initiator, SPAN_ADMINHELP("Your ticket has been deferred to Mentors."))
-	Resolve()
+	log_ahelp(id, "Defer", "Deferred to mentors by [usr.key]", null,  usr.ckey)
+	Close(silent = TRUE)
 
 /datum/admin_help/proc/mark_ticket()
 	if(marked_admin)
@@ -609,9 +613,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	dat += "<br><br>Opened at: [gameTimestamp(wtime = opened_at)] (Approx [DisplayTimeText(world.time - opened_at)] ago)"
 	if(closed_at)
 		dat += "<br>Closed at: [gameTimestamp(wtime = closed_at)] (Approx [DisplayTimeText(world.time - closed_at)] ago)"
-	dat += "<br><br>"
+	dat += "<br>"
 	if(initiator)
-		dat += "<b>Actions:</b> [FullMonty(ref_src)]<br>"
+		dat += "[FullMonty(ref_src)]<br>" //All the action buttons for tickets/ahelps
 	else
 		dat += "<b>DISCONNECTED</b>[FOURSPACES][ClosureLinks(ref_src)]<br>"
 	dat += "<br><b>Log:</b><br><br>"

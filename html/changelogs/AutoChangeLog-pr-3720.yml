@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - admin: "Mentors can now eavesdrop on mentor messages, and the responder to a mhelp doesn't get double logging from eavesdropping."

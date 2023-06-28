@@ -6,7 +6,7 @@
 	desc = "Contains blood used for transfusion."
 	icon = 'icons/obj/items/bloodpack.dmi'
 	icon_state = "empty"
-	volume = 160
+	volume = 300
 	matter = list("plastic" = 500)
 	flags_atom = CAN_BE_SYRINGED
 	transparent = TRUE
@@ -40,10 +40,11 @@
 		return
 
 	if(connected_to == attacked_mob)
-		connected_to = null
 		STOP_PROCESSING(SSobj, src)
 		user.visible_message("[user] detaches [src] from [connected_to].", \
 			"You detach [src] from [connected_to].")
+		connected_to.active_transfusions -= src
+		connected_to = null
 		return
 
 	if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
@@ -59,6 +60,7 @@
 
 	if(istype(attacked_mob, /mob/living/carbon/human))
 		connected_to = attacked_mob
+		connected_to.active_transfusions += src
 		START_PROCESSING(SSobj, src)
 		user.visible_message("[user] attaches \the [src] to [connected_to].", \
 			"You attach \the [src] to [connected_to].")
@@ -108,10 +110,12 @@
 /obj/item/reagent_container/blood/proc/bad_disconnect()
 	if(!connected_to)
 		return
-	
+
 	connected_to.visible_message("[src] breaks free of [connected_to]!", "[src] is pulled out of you!")
 	connected_to.apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
-	connected_to.emote("scream")
+	if(connected_to.pain.feels_pain)
+		connected_to.emote("scream")
+	connected_to.active_transfusions -= src
 	connected_to = null
 
 /obj/item/reagent_container/blood/verb/toggle_mode()

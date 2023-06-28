@@ -541,7 +541,7 @@
 
 /obj/item/clothing/glasses/sunglasses
 	desc = "Generic off-brand eyewear, used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
-	name = "cheap sunglasses"
+	name = "sunglasses"
 	icon_state = "sun"
 	item_state = "sunglasses"
 	darkness_view = -1

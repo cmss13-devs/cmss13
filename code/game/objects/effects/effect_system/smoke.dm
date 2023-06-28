@@ -257,6 +257,17 @@
 	smokeranking = SMOKE_RANK_MED
 
 /////////////////////////////////////////
+// Acid Runner Smoke, Harmless Visuals only
+/////////////////////////////////////////
+/obj/effect/particle_effect/smoke/acid_runner_harmless
+	color = "#86B028"
+	time_to_live = 2
+	opacity = FALSE
+	alpha = 200
+	smokeranking = SMOKE_RANK_HARMLESS
+	amount = 0
+
+/////////////////////////////////////////
 // BOILER SMOKES
 /////////////////////////////////////////
 
@@ -272,14 +283,14 @@
 	var/gas_damage = 20
 
 /obj/effect/particle_effect/smoke/xeno_burn/Initialize(mapload, amount, datum/cause_data/cause_data)
-	var/mob/living/carbon/xenomorph/xeno = cause_data?.resolve_mob()
-	if (istype(xeno) && xeno.hivenumber)
-		hivenumber = xeno.hivenumber
+	if(istype(cause_data))
+		var/datum/ui_state/hive_state/cause_data_hive_state = GLOB.hive_state[cause_data.faction]
+		var/new_hive_number = cause_data_hive_state?.hivenumber
+		if(new_hive_number)
+			hivenumber = new_hive_number
+			set_hive_data(src, new_hive_number)
 
-		set_hive_data(src, hivenumber)
-
-	. = ..()
-
+	return ..()
 
 /obj/effect/particle_effect/smoke/xeno_burn/apply_smoke_effect(turf/T)
 	..()
@@ -376,7 +387,7 @@
 	if(!issynth(moob))
 		var/datum/effects/neurotoxin/neuro_effect = locate() in moob.effects_list
 		if(!neuro_effect)
-			neuro_effect = new /datum/effects/neurotoxin(moob)
+			neuro_effect = new(moob, cause_data.resolve_mob())
 			neuro_effect.strength = effect_amt
 		neuro_effect.duration += neuro_dose
 		if(moob.coughedtime != 1 && !moob.stat) //Coughing/gasping

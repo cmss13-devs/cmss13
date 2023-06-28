@@ -417,7 +417,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/varadero/exterior/pontoon_beach)
 "atb" = (
 /obj/structure/machinery/vending/snack,
@@ -492,9 +492,7 @@
 /area/varadero/exterior/lz1_near)
 "awf" = (
 /obj/item/toy/beach_ball,
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/south,
 /area/varadero/exterior/pontoon_beach)
 "axX" = (
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure{
@@ -576,7 +574,7 @@
 /obj/structure/flora/bush/ausbushes/var3/brflowers{
 	icon_state = "brflowers_3"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "aCl" = (
 /obj/structure/machinery/door/airlock/strata/autoname{
@@ -940,7 +938,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/cargo)
 "aOg" = (
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "aOi" = (
 /turf/open/floor/shiva{
@@ -1291,10 +1289,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/eastbeach)
 "bfg" = (
 /obj/structure/surface/table,
@@ -3420,7 +3415,7 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers{
 	icon_state = "ywflowers_3"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "cSb" = (
 /obj/structure/surface/rack,
@@ -3745,10 +3740,7 @@
 /area/varadero/interior_protected/caves/digsite)
 "dki" = (
 /obj/structure/platform/kutjevo/smooth,
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/eastbeach)
 "dkl" = (
 /turf/open/floor/shiva{
@@ -3854,10 +3846,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
 	},
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/north_east,
 /area/varadero/interior/oob)
 "dpz" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -4091,10 +4080,7 @@
 /obj/structure/platform_decoration/kutjevo{
 	dir = 1
 	},
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/eastbeach)
 "dFd" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -4704,9 +4690,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
 	},
-/turf/open/gm/coast{
-	dir = 8
-	},
+/turf/open/gm/coast/east,
 /area/varadero/interior/oob)
 "elO" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -5191,10 +5175,7 @@
 	},
 /area/varadero/interior_protected/maintenance/south)
 "eGX" = (
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/pontoon_beach)
 "eHB" = (
 /obj/structure/flora/pottedplant{
@@ -5310,6 +5291,7 @@
 /area/varadero/interior/medical)
 "eMf" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "eMi" = (
@@ -5410,10 +5392,7 @@
 /area/varadero/interior/toilets)
 "eRc" = (
 /obj/structure/prop/rock/brown,
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/varadero/interior/oob)
 "eRD" = (
 /obj/structure/pipes/vents/pump,
@@ -5449,9 +5428,7 @@
 	},
 /area/varadero/interior_protected/vessel)
 "eSd" = (
-/turf/open/gm/coast{
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/north_west,
 /area/varadero/exterior/eastbeach)
 "eSg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -6143,10 +6120,7 @@
 	},
 /area/varadero/interior/maintenance/security)
 "fvL" = (
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/north_east,
 /area/varadero/interior/oob)
 "fvR" = (
 /obj/structure/platform_decoration/kutjevo{
@@ -6330,10 +6304,7 @@
 	},
 /area/varadero/interior/electrical)
 "fFD" = (
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/varadero/interior/oob)
 "fFI" = (
 /obj/structure/bed/chair/office/dark{
@@ -6500,9 +6471,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "fLY" = (
-/turf/open/gm/coast{
-	dir = 6
-	},
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/varadero/exterior/pontoon_beach)
 "fMq" = (
 /obj/item/device/cassette_tape/heavymetal{
@@ -6533,16 +6502,11 @@
 	},
 /area/varadero/interior/maintenance/research)
 "fOA" = (
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/south,
 /area/varadero/exterior/eastbeach)
 "fOW" = (
 /obj/structure/platform/kutjevo/smooth,
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/pontoon_beach)
 "fPn" = (
 /obj/structure/disposalpipe/segment{
@@ -6567,7 +6531,7 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers{
 	icon_state = "ywflowers_2"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "fPv" = (
 /obj/structure/machinery/power/apc{
@@ -7276,7 +7240,7 @@
 /area/varadero/interior/maintenance/north)
 "gsm" = (
 /obj/structure/prop/rock/brown,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "gsq" = (
 /obj/structure/machinery/vending/coffee,
@@ -7858,10 +7822,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves)
 "gVO" = (
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/south_east,
 /area/varadero/exterior/pontoon_beach)
 "gWd" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -8084,7 +8045,7 @@
 /area/varadero/interior/mess)
 "hiE" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "hjj" = (
 /obj/item/ammo_magazine/handful/shotgun/buckshot{
@@ -8173,10 +8134,7 @@
 	},
 /area/varadero/interior/laundry)
 "hmu" = (
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/eastbeach)
 "hni" = (
 /obj/structure/sign/safety/fire_haz{
@@ -8444,7 +8402,7 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers{
 	icon_state = "ywflowers_4"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "hza" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -8649,9 +8607,7 @@
 	},
 /area/varadero/interior/hall_N)
 "hKK" = (
-/turf/open/gm/coast{
-	dir = 4
-	},
+/turf/open/gm/coast/west,
 /area/varadero/exterior/pontoon_beach)
 "hLA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -9027,9 +8983,7 @@
 	icon_state = "hr_kutjevo";
 	name = "support struts"
 	},
-/turf/open/gm/coast{
-	dir = 8
-	},
+/turf/open/gm/coast/east,
 /area/varadero/interior/oob)
 "iaO" = (
 /turf/closed/wall/r_wall/elevator{
@@ -9133,10 +9087,7 @@
 	pixel_x = -11;
 	pixel_y = -4
 	},
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/pontoon_beach)
 "idI" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -9260,9 +9211,7 @@
 /area/varadero/exterior/pontoon_beach)
 "ijR" = (
 /obj/structure/platform/kutjevo/smooth,
-/turf/open/gm/coast{
-	dir = 8
-	},
+/turf/open/gm/coast/east,
 /area/varadero/interior/oob)
 "iks" = (
 /obj/item/tool/shovel/spade,
@@ -9839,10 +9788,7 @@
 	pixel_x = 3;
 	pixel_y = 5
 	},
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/pontoon_beach)
 "iHh" = (
 /obj/item/weapon/gun/shotgun/pump,
@@ -9991,9 +9937,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/mess)
 "iLL" = (
-/turf/open/gm/coast{
-	dir = 6
-	},
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/varadero/exterior/eastbeach)
 "iLN" = (
 /obj/structure/platform/kutjevo/smooth,
@@ -10376,9 +10320,7 @@
 	},
 /area/varadero/interior/security)
 "jaF" = (
-/turf/open/gm/coast{
-	dir = 8
-	},
+/turf/open/gm/coast/east,
 /area/varadero/exterior/pontoon_beach)
 "jbh" = (
 /obj/structure/machinery/disposal,
@@ -11259,9 +11201,7 @@
 	},
 /area/varadero/interior/comms1)
 "jSX" = (
-/turf/open/gm/coast{
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/north_west,
 /area/varadero/exterior/pontoon_beach)
 "jTe" = (
 /obj/structure/disposalpipe/segment{
@@ -11320,7 +11260,7 @@
 	},
 /area/varadero/interior/hall_N)
 "jVw" = (
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/varadero/exterior/eastbeach)
 "jVK" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -12086,9 +12026,7 @@
 	},
 /area/varadero/interior/electrical)
 "kDy" = (
-/turf/open/gm/coast{
-	dir = 4
-	},
+/turf/open/gm/coast/west,
 /area/varadero/exterior/eastbeach)
 "kDF" = (
 /obj/structure/disposalpipe/segment{
@@ -12826,7 +12764,7 @@
 	},
 /area/varadero/interior/hall_N)
 "lnO" = (
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/varadero/exterior/pontoon_beach)
 "lod" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -13552,7 +13490,7 @@
 /area/varadero/interior/hall_NW)
 "lVQ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "lVW" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -14934,6 +14872,7 @@
 /area/varadero/interior/hall_SE)
 "ncd" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
 "ncg" = (
@@ -15043,9 +14982,7 @@
 /area/varadero/interior/laundry)
 "nfD" = (
 /obj/structure/platform/kutjevo/smooth,
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/south,
 /area/varadero/exterior/eastbeach)
 "nfX" = (
 /obj/item/reagent_container/glass/bucket{
@@ -15716,6 +15653,7 @@
 /area/varadero/interior/hall_NW)
 "nOI" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/interior_protected/caves)
 "nOO" = (
@@ -16150,11 +16088,6 @@
 	icon_state = "yellow"
 	},
 /area/varadero/interior/cargo)
-"oei" = (
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/varadero/interior_protected/vessel)
 "oeF" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -16944,6 +16877,7 @@
 /area/varadero/interior/research)
 "oPb" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -17403,7 +17337,7 @@
 /obj/structure/flora/bush/ausbushes/var3/brflowers{
 	icon_state = "brflowers_2"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "pie" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -18508,10 +18442,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "qgm" = (
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/varadero/exterior/pontoon_beach)
 "qgy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -19013,7 +18944,7 @@
 	},
 /area/varadero/interior/maintenance/research)
 "qDk" = (
-/obj/item/weapon/gun/shotgun/double/sawn,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -20785,7 +20716,7 @@
 /area/varadero/interior/research)
 "rWN" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "rWX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -20917,9 +20848,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "scL" = (
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/south,
 /area/varadero/exterior/pontoon_beach)
 "scO" = (
 /obj/item/paper{
@@ -21807,9 +21736,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
 	},
-/turf/open/gm/coast{
-	dir = 8
-	},
+/turf/open/gm/coast/east,
 /area/varadero/interior/oob)
 "sLU" = (
 /obj/structure/reagent_dispensers/water_cooler,
@@ -21889,10 +21816,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves)
 "sRs" = (
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/pontoon_beach)
 "sRM" = (
 /obj/structure/machinery/disposal,
@@ -22417,9 +22341,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
-/turf/open/gm/coast{
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/north_west,
 /area/varadero/exterior/eastbeach)
 "tyc" = (
 /obj/structure/platform_decoration/kutjevo,
@@ -23675,9 +23597,7 @@
 	icon_state = "hr_kutjevo";
 	name = "support struts"
 	},
-/turf/open/gm/coast{
-	dir = 4
-	},
+/turf/open/gm/coast/west,
 /area/varadero/exterior/pontoon_beach)
 "uEz" = (
 /obj/structure/disposalpipe/segment{
@@ -24230,9 +24150,7 @@
 /obj/structure/platform_decoration/kutjevo{
 	dir = 1
 	},
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/south,
 /area/varadero/exterior/eastbeach)
 "vaV" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -24756,9 +24674,7 @@
 	},
 /area/varadero/interior/hall_N)
 "vxA" = (
-/turf/open/gm/coast{
-	dir = 8
-	},
+/turf/open/gm/coast/east,
 /area/varadero/interior/oob)
 "vxM" = (
 /obj/structure/machinery/light{
@@ -25073,9 +24989,7 @@
 	pixel_x = -12;
 	pixel_y = -3
 	},
-/turf/open/gm/coast{
-	dir = 4
-	},
+/turf/open/gm/coast/west,
 /area/varadero/exterior/pontoon_beach)
 "vMU" = (
 /obj/structure/surface/rack,
@@ -25611,9 +25525,6 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/laundry)
-"wjA" = (
-/turf/open/auto_turf/sand_white/layer0,
-/area/varadero/interior_protected/caves)
 "wjB" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning"
@@ -25639,11 +25550,6 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/records)
-"wku" = (
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior_protected/maintenance/south)
 "wkC" = (
 /obj/item/stack/cable_coil/cut{
 	pixel_x = 6;
@@ -26031,10 +25937,7 @@
 /area/varadero/interior/laundry)
 "wAj" = (
 /obj/structure/platform/kutjevo/smooth,
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/pontoon_beach)
 "wAx" = (
 /obj/effect/landmark/corpsespawner/security,
@@ -26648,10 +26551,7 @@
 /turf/closed/wall/r_wall,
 /area/varadero/interior/administration)
 "xgH" = (
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/eastbeach)
 "xgU" = (
 /obj/structure/prop/structure_lattice{
@@ -27253,7 +27153,7 @@
 /area/varadero/interior/records)
 "xGV" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "xHt" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -27277,9 +27177,7 @@
 /area/varadero/interior/research)
 "xJn" = (
 /obj/structure/blocker/fog,
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/south,
 /area/varadero/interior/oob)
 "xJx" = (
 /obj/structure/machinery/photocopier,
@@ -28013,9 +27911,7 @@
 /area/varadero/interior/toilets)
 "ykD" = (
 /obj/structure/platform/kutjevo/smooth,
-/turf/open/gm/coast{
-	dir = 4
-	},
+/turf/open/gm/coast/west,
 /area/varadero/exterior/pontoon_beach)
 "ykE" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -30005,7 +29901,7 @@ mEA
 sBk
 ksn
 fay
-wjA
+crY
 vYW
 vYW
 vYW
@@ -30187,8 +30083,8 @@ aJc
 lqV
 xrA
 fay
-wjA
-wjA
+crY
+crY
 vYW
 vYW
 vYW
@@ -30370,8 +30266,8 @@ hDA
 tMx
 fay
 qMH
-wjA
-wjA
+crY
+crY
 vYW
 vYW
 vYW
@@ -32022,9 +31918,9 @@ vYW
 hto
 pGs
 pGs
-wjA
-wjA
-wjA
+crY
+crY
+crY
 pGs
 pGs
 pGs
@@ -32193,8 +32089,8 @@ fay
 ebr
 ebr
 vYW
-wjA
-wjA
+crY
+crY
 ebr
 alL
 alL
@@ -32202,12 +32098,12 @@ uQa
 uQa
 vYW
 vYW
-wjA
-wjA
+crY
+crY
 vYW
 vYW
-wjA
-wjA
+crY
+crY
 pGs
 pGs
 pGs
@@ -32376,7 +32272,7 @@ ebr
 ebr
 vYW
 vYW
-wjA
+crY
 vYW
 uQa
 uQa
@@ -32389,8 +32285,8 @@ vYW
 vYW
 vYW
 vYW
-wjA
-wjA
+crY
+crY
 pGs
 pGs
 pGs
@@ -32565,15 +32461,15 @@ uQa
 uQa
 uQa
 vYW
-wjA
+crY
 vYW
 vYW
-wjA
+crY
 vYW
 vYW
 vYW
-wjA
-wjA
+crY
+crY
 pGs
 pGs
 pGs
@@ -32755,7 +32651,7 @@ vYW
 vYW
 vYW
 vYW
-wjA
+crY
 pGs
 pGs
 pGs
@@ -32933,12 +32829,12 @@ ebr
 ebr
 ebr
 ebr
-wjA
+crY
 vYW
 vYW
 vYW
-wjA
-wjA
+crY
+crY
 pGs
 pGs
 pGs
@@ -33115,12 +33011,12 @@ ebr
 ebr
 ebr
 ebr
-wjA
+crY
 vYW
 vYW
 vYW
-wjA
-wjA
+crY
+crY
 pGs
 pGs
 pGs
@@ -33302,8 +33198,8 @@ vYW
 vYW
 vYW
 vYW
-wjA
-wjA
+crY
+crY
 pGs
 pGs
 pGs
@@ -33480,12 +33376,12 @@ ebr
 ebr
 ebr
 ebr
-wjA
+crY
 vYW
 vYW
 vYW
-wjA
-wjA
+crY
+crY
 pGs
 pGs
 pGs
@@ -33666,8 +33562,8 @@ ebr
 vYW
 vYW
 vYW
-wjA
-wjA
+crY
+crY
 pGs
 pGs
 pGs
@@ -33845,11 +33741,11 @@ ebr
 ebr
 ebr
 ebr
-wjA
+crY
 vYW
 vYW
-wjA
-wjA
+crY
+crY
 pGs
 pGs
 pGs
@@ -34028,10 +33924,10 @@ ebr
 ebr
 vYW
 ckM
-wjA
+crY
 vYW
 vYW
-wjA
+crY
 pGs
 pGs
 pGs
@@ -34397,8 +34293,8 @@ vYW
 vYW
 vYW
 vYW
-wjA
-wjA
+crY
+crY
 hto
 pGs
 pGs
@@ -35301,7 +35197,7 @@ vYW
 vYW
 hto
 vYW
-wjA
+crY
 vYW
 vYW
 vYW
@@ -35316,7 +35212,7 @@ vYW
 vYW
 vYW
 vYW
-wjA
+crY
 pGs
 pGs
 pGs
@@ -35483,12 +35379,12 @@ hto
 ebr
 hto
 vYW
-wjA
-wjA
-wjA
+crY
+crY
+crY
 vYW
 vYW
-wjA
+crY
 vYW
 vYW
 vYW
@@ -35665,7 +35561,7 @@ ebr
 ebr
 ebr
 vYW
-wjA
+crY
 pJF
 hWG
 gHJ
@@ -35856,8 +35752,8 @@ vYW
 vYW
 vYW
 vYW
-wjA
-wjA
+crY
+crY
 vYW
 vYW
 vYW
@@ -36027,7 +35923,7 @@ vYW
 ebr
 ebr
 ebr
-wjA
+crY
 vYW
 vYW
 pJF
@@ -36038,7 +35934,7 @@ vYW
 vYW
 vYW
 vYW
-wjA
+crY
 qMH
 hto
 vYW
@@ -36209,17 +36105,17 @@ vYW
 ebr
 ebr
 ebr
-wjA
+crY
 vYW
-wjA
-wjA
+crY
+crY
 nOI
 vYW
 vYW
 vYW
 vYW
 vYW
-wjA
+crY
 ebr
 ebr
 hto
@@ -36393,7 +36289,7 @@ qMH
 qMH
 vYW
 vYW
-wjA
+crY
 vYW
 fGP
 vYW
@@ -36564,18 +36460,18 @@ sdz
 ebr
 ebr
 qMH
-wjA
+crY
 vYW
 vYW
 vYW
 vYW
 vYW
 vYW
-wjA
+crY
 qMH
 vYW
 vYW
-wjA
+crY
 pJF
 hWG
 pJF
@@ -36746,8 +36642,8 @@ nTG
 ebr
 ebr
 qMH
-wjA
-wjA
+crY
+crY
 vYW
 vYW
 vYW
@@ -36756,7 +36652,7 @@ vYW
 vYW
 vYW
 vYW
-wjA
+crY
 vYW
 hWG
 cYC
@@ -36929,7 +36825,7 @@ jpD
 ebr
 ebr
 qMH
-wjA
+crY
 vYW
 vYW
 vYW
@@ -36938,7 +36834,7 @@ vYW
 vYW
 vYW
 vYW
-wjA
+crY
 vYW
 pJF
 hWG
@@ -37111,14 +37007,14 @@ jpD
 ebr
 ebr
 ebr
-wjA
-wjA
-wjA
+crY
+crY
+crY
 vYW
 vYW
 vYW
 vYW
-wjA
+crY
 vYW
 vYW
 vYW
@@ -37293,14 +37189,14 @@ gUP
 cQK
 ktE
 ebr
-wjA
-wjA
-wjA
+crY
+crY
+crY
 vYW
 vYW
 vYW
 vYW
-wjA
+crY
 vYW
 vYW
 vYW
@@ -37476,12 +37372,12 @@ xes
 oSb
 ebr
 qMH
-wjA
+crY
 vYW
 vYW
 vYW
 vYW
-wjA
+crY
 vYW
 vYW
 ebr
@@ -37658,11 +37554,11 @@ xes
 sYS
 ebr
 ebr
-wjA
+crY
 ckM
-wjA
-wjA
-wjA
+crY
+crY
+crY
 vYW
 vYW
 hto
@@ -37670,11 +37566,11 @@ ebr
 ebr
 vYW
 vYW
-wjA
+crY
 vYW
 vYW
-wjA
-wjA
+crY
+crY
 ebr
 ebr
 hto
@@ -37840,8 +37736,8 @@ wug
 axZ
 ebr
 ebr
-wjA
-wjA
+crY
+crY
 vYW
 vYW
 vYW
@@ -37854,13 +37750,13 @@ vYW
 vYW
 vYW
 vYW
-wjA
-wjA
-wjA
+crY
+crY
+crY
 ebr
 ebr
 ebr
-wjA
+crY
 vYW
 vYW
 uQa
@@ -38024,25 +37920,25 @@ kyG
 kyG
 kyG
 kyG
-wjA
-wjA
+crY
+crY
 vYW
-wjA
-wjA
-wjA
+crY
+crY
+crY
 vYW
 vYW
 vYW
 vYW
 vYW
 qMH
-wjA
-wjA
+crY
+crY
 ebr
 ebr
 ebr
 ebr
-wjA
+crY
 vYW
 vYW
 vYW
@@ -38206,17 +38102,17 @@ sTA
 ukw
 rTT
 kyG
-wjA
-wjA
-wjA
-wjA
-wjA
-wjA
-wjA
-wjA
-wjA
-wjA
-wjA
+crY
+crY
+crY
+crY
+crY
+crY
+crY
+crY
+crY
+crY
+crY
 qMH
 ebr
 ebr
@@ -38225,13 +38121,13 @@ ebr
 ebr
 ebr
 ebr
-wjA
+crY
 vYW
 vYW
 vYW
 vYW
-wjA
-wjA
+crY
+crY
 pGs
 pGs
 pGs
@@ -38389,15 +38285,15 @@ wOL
 hvj
 kyG
 ebr
-wjA
-wjA
-wjA
-wjA
-wjA
-wjA
-wjA
-wjA
-wjA
+crY
+crY
+crY
+crY
+crY
+crY
+crY
+crY
+crY
 ebr
 ebr
 ebr
@@ -38410,10 +38306,10 @@ ebr
 qMH
 hto
 vYW
-wjA
-wjA
-wjA
-wjA
+crY
+crY
+crY
+crY
 pGs
 pGs
 pGs
@@ -38572,12 +38468,12 @@ dqy
 kyG
 ebr
 ebr
-wjA
-wjA
-wjA
-wjA
-wjA
-wjA
+crY
+crY
+crY
+crY
+crY
+crY
 qMH
 ebr
 ebr
@@ -38592,10 +38488,10 @@ ebr
 ebr
 ebr
 hto
-wjA
-wjA
-wjA
-wjA
+crY
+crY
+crY
+crY
 qMH
 pGs
 pGs
@@ -38758,7 +38654,7 @@ qMH
 qMH
 ebr
 ebr
-wjA
+crY
 ebr
 ebr
 ebr
@@ -38774,10 +38670,10 @@ ebr
 ebr
 ebr
 ebr
-wjA
-wjA
-wjA
-wjA
+crY
+crY
+crY
+crY
 qMH
 pGs
 pGs
@@ -38956,11 +38852,11 @@ ebr
 ebr
 ebr
 ebr
-wjA
-wjA
-wjA
-wjA
-wjA
+crY
+crY
+crY
+crY
+crY
 hto
 pGs
 pGs
@@ -43699,7 +43595,7 @@ cto
 kDJ
 ncd
 ckG
-wku
+cto
 cto
 cto
 iDn
@@ -63354,7 +63250,7 @@ avD
 kEK
 kjI
 kjI
-oei
+kjI
 lDz
 oPb
 ijo

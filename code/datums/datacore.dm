@@ -305,7 +305,13 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	S.fields["criminal"] = "None"
 	S.fields["incident"] = ""
 	S.fields["ref"] = WEAKREF(H)
+
+	if(H.sec_record && !jobban_isbanned(H, "Records"))
+		var/new_comment = list("entry" = H.sec_record, "created_by" = list("name" = "\[REDACTED\]", "rank" = "Military Police"), "deleted_by" = null, "deleted_at" = null, "created_at" = "Pre-Deployment")
+		S.fields["comments"] = list("1" = new_comment)
+		S.fields["notes"] = H.sec_record
 	security += S
+
 
 	//Locked Record
 	var/datum/data/record/L = new()

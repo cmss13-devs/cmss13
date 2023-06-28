@@ -2341,6 +2341,9 @@
 	dir = 2;
 	name = "\improper Atmospherics Wing"
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -2361,6 +2364,7 @@
 /area/almayer/hallways/aft_hallway)
 "ahJ" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/almayer/engineering/starboard_atmos)
 "ahM" = (
@@ -4855,20 +4859,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
-"apQ" = (
-/obj/structure/disposalpipe/up/almayer{
-	dir = 8;
-	id = "almayerlink_ot_med"
-	},
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/door/window/southleft{
-	desc = "A window, that is also a door. A windoor if you will. This one is stronger.";
-	health = 500;
-	name = "Reinforced Glass door";
-	req_one_access_txt = "2;35"
-	},
-/turf/open/floor/almayer,
-/area/almayer/engineering/engineering_workshop/hangar)
 "apR" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/beakers{
@@ -5044,6 +5034,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/almayer/engineering/upper_engineering)
 "aqk" = (
@@ -5693,6 +5686,9 @@
 /area/almayer/stair_clone/upper)
 "asn" = (
 /obj/structure/window/framed/almayer/white,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/almayer/medical/upper_medical)
 "aso" = (
@@ -8815,7 +8811,6 @@
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering)
 "aBm" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -8856,9 +8851,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering)
 "aBq" = (
-/obj/structure/window/framed/almayer,
-/turf/open/floor/plating,
-/area/almayer/engineering/upper_engineering)
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/hallways/aft_hallway)
 "aBr" = (
 /obj/structure/ladder{
 	height = 2;
@@ -10325,6 +10321,9 @@
 	name = "\improper Engineering Lounge"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -13463,19 +13462,16 @@
 /obj/structure/toilet{
 	pixel_y = 13
 	},
-/obj/structure/sign/poster{
-	desc = "Wawaweewa.";
-	icon_state = "poster17";
-	name = "magazine";
-	pixel_x = -6;
-	pixel_y = -7
-	},
 /obj/item/paper_bin/uscm{
 	pixel_x = 9;
 	pixel_y = -3
 	},
 /obj/structure/machinery/light/small{
 	dir = 4
+	},
+/obj/item/prop/magazine/dirty{
+	pixel_x = -6;
+	pixel_y = -10
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -17547,6 +17543,9 @@
 /area/almayer/medical/operating_room_one)
 "bsw" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/almayer/living/chapel)
 "bsy" = (
@@ -19272,6 +19271,39 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/starboard_hallway)
+"bBi" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/liaison_suit/formal,
+/obj/item/clothing/under/liaison_suit,
+/obj/item/clothing/under/liaison_suit/outing,
+/obj/item/clothing/under/liaison_suit/suspenders,
+/obj/item/clothing/under/blackskirt{
+	desc = "A stylish skirt, in a business-black and red colour scheme.";
+	name = "liaison's skirt"
+	},
+/obj/item/clothing/under/suit_jacket/charcoal{
+	desc = "A professional black suit and blue tie. A combination popular among government agents and corporate Yes-Men alike.";
+	name = "liaison's black suit"
+	},
+/obj/item/clothing/under/suit_jacket/navy{
+	desc = "A navy suit and red tie, intended for the Almayer's finest. And accountants.";
+	name = "liaison's navy suit"
+	},
+/obj/item/clothing/under/suit_jacket/trainee,
+/obj/item/clothing/under/liaison_suit/charcoal,
+/obj/item/clothing/under/liaison_suit/outing/red,
+/obj/item/clothing/under/liaison_suit/blazer,
+/obj/item/clothing/suit/storage/snow_suit/liaison,
+/obj/item/clothing/gloves/black,
+/obj/item/clothing/gloves/marine/dress,
+/obj/item/clothing/glasses/sunglasses/big,
+/obj/item/clothing/accessory/blue,
+/obj/item/clothing/accessory/red,
+/obj/structure/machinery/status_display{
+	pixel_x = -32
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliason)
 "bBl" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -19897,18 +19929,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/lower_engineering)
-"bEk" = (
-/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
-	dir = 1;
-	name = "\improper Requisitions Storage"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/squads/req)
 "bEl" = (
 /obj/structure/machinery/computer/supply_drop_console/limited,
 /turf/closed/wall/almayer,
@@ -25883,13 +25903,9 @@
 	pixel_x = -10;
 	pixel_y = 6
 	},
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "The only official USCM magazine, the headline reads 'Corporate Liaison 'emotionally exhausted' from screwing so many people over.'";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster15";
-	name = "Boots!: Issue No.160";
-	pixel_x = -5;
-	pixel_y = -7
+/obj/item/prop/magazine/boots/n160{
+	pixel_x = -6;
+	pixel_y = -5
 	},
 /obj/structure/transmitter/rotary{
 	name = "Flight Deck Telephone";
@@ -29477,12 +29493,9 @@
 	pixel_x = 1;
 	pixel_y = 25
 	},
-/obj/item/book{
-	desc = "An autobiography penned by Derik A.W. Tomahawk it recounts his service in the USCM. The book was harshly criticised for its bland and uncreative writing and wasn't well received by the general public or members of the UA military. However, artificial soldiers typically value the information contained within.";
-	icon_state = "bookSpaceLaw";
-	name = "\improper Born to Kill";
+/obj/item/prop/magazine/book/borntokill{
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 7
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -30081,6 +30094,9 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
 	name = "\improper Upper Engineering"
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -30213,6 +30229,11 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
+/obj/item/weapon/dart,
+/obj/item/weapon/dart,
+/obj/item/weapon/dart,
+/obj/item/weapon/dart/green,
+/obj/item/weapon/dart/green,
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "dqN" = (
@@ -32110,9 +32131,7 @@
 /area/almayer/engineering/upper_engineering/port)
 "eiq" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/sign/poster{
-	serial_number = 15
-	},
+/obj/item/prop/magazine/dirty,
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
 "eiw" = (
@@ -32427,12 +32446,7 @@
 /area/almayer/hull/lower_hull/l_m_s)
 "eni" = (
 /obj/structure/surface/table/almayer,
-/obj/item/book{
-	desc = "An autobiography focusing on the events of 'Fury 161' in August 2179 following the arrival of 'Ellen Ripley' and an unknown alien creature known as 'The Dragon' the books writing is extremely crude and was book banned shorty after publication.";
-	icon_state = "bookSpaceLaw";
-	name = "\improper Space Beast, by Robert Morse";
-	pixel_y = 3
-	},
+/obj/item/prop/magazine/book/spacebeast,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red"
@@ -35532,12 +35546,8 @@
 /area/almayer/squads/req)
 "fIZ" = (
 /obj/structure/surface/table/almayer,
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "The only official USCM magazine, the headline reads 'STOP CANNING' the short paragraph further explains the dangers of marines throwing CN-20 Nerve gas into bathrooms as a prank.";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster15";
-	name = "Boots!: Issue No.117";
-	pixel_x = -5;
+/obj/item/prop/magazine/boots/n117{
+	pixel_x = -4;
 	pixel_y = 6
 	},
 /turf/open/floor/almayer{
@@ -36625,13 +36635,6 @@
 	icon_state = "redfull"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"gkg" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/req)
 "gks" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating,
@@ -37398,6 +37401,18 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/vehiclehangar)
+"gCu" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/folded_tent/cmd,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "gCw" = (
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_x = 10
@@ -38043,6 +38058,13 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/north2)
+"gVA" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 8;
+	id = "almayerlink_OT1_req"
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "gVF" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -38336,6 +38358,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/cryo_cells)
+"hcC" = (
+/obj/structure/disposalpipe/up/almayer{
+	id = "almayerlink_OT_req"
+	},
+/turf/closed/wall/almayer,
+/area/almayer/engineering/engineering_workshop/hangar)
 "hcI" = (
 /obj/structure/machinery/cryopod{
 	pixel_y = 6
@@ -39009,11 +39037,7 @@
 /area/almayer/living/briefing)
 "htL" = (
 /obj/structure/surface/table/almayer,
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "The only official USCM magazine, the headline reads 'UPP Rations, The truth.' the short paragraph further explains UPP field rations aren't standardized and are produced at a local level. Because of this, captured and confiscated UPP rations have included some odd choices such as duck liver pâté, century eggs, lutefisk, pickled pig snout, canned tripe, and dehydrated candied radish snacks.";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster15";
-	name = "Boots!: Issue No.150";
+/obj/item/prop/magazine/boots/n150{
 	pixel_x = -5;
 	pixel_y = 6
 	},
@@ -39381,6 +39405,18 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
+"hBP" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/folded_tent/med,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "hBU" = (
 /obj/structure/largecrate/random/secure,
 /obj/effect/decal/warning_stripes{
@@ -43100,7 +43136,6 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "jnw" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -44153,6 +44188,16 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/bridgebunks)
+"jUn" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/door/window/southleft{
+	desc = "A window, that is also a door. A windoor if you will. This one is stronger.";
+	health = 500;
+	name = "Reinforced Glass door";
+	req_one_access_txt = "2;35"
+	},
+/turf/open/floor/almayer,
+/area/almayer/engineering/engineering_workshop/hangar)
 "jUs" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -46198,21 +46243,10 @@
 /area/almayer/hull/lower_hull/l_m_p)
 "kRP" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster17";
-	name = "\improper torn magazine page";
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster3";
-	name = "\improper torn magazine page";
-	pixel_x = 5;
-	pixel_y = 14
+/obj/item/prop/magazine/dirty/torn,
+/obj/item/prop/magazine/dirty/torn/alt{
+	pixel_x = 7;
+	pixel_y = 11
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
@@ -46606,6 +46640,9 @@
 	id = "CIC Lockdown";
 	name = "\improper Combat Information Center Blast Door"
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/almayer/command/cic)
 "lbb" = (
@@ -46756,6 +46793,12 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/navigation)
+"ley" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "leY" = (
 /obj/structure/bed/sofa/south/white/left,
 /turf/open/floor/almayer{
@@ -47937,6 +47980,10 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
+"lEW" = (
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall/almayer,
+/area/almayer/engineering/engineering_workshop/hangar)
 "lFb" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -49955,12 +50002,9 @@
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = -17
 	},
-/obj/item/book{
-	desc = "In the dark undercity of Luna 2119, blade runner Richard Ford is called out of retirement to terminate a cult of replicants who have escaped Earth seeking the meaning of their existence.";
-	icon_state = "bookSpaceLaw";
-	name = "\improper Bladerunner: A True Detectives Story";
-	pixel_x = -6;
-	pixel_y = 6
+/obj/item/prop/magazine/book/bladerunner{
+	pixel_x = -1;
+	pixel_y = 9
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -50680,6 +50724,14 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_p)
+"mYv" = (
+/obj/structure/disposalpipe/sortjunction{
+	dir = 4;
+	negdir = 4;
+	posdir = 1
+	},
+/turf/closed/wall/almayer,
+/area/almayer/squads/req)
 "mYw" = (
 /obj/structure/sign/safety/escapepod{
 	pixel_x = -17;
@@ -51408,10 +51460,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
 "nph" = (
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
 	},
-/area/almayer/engineering/upper_engineering)
+/turf/open/floor/plating,
+/area/almayer/engineering/starboard_atmos)
 "npt" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -52804,6 +52858,22 @@
 "nXP" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_f_s)
+"nXU" = (
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	dir = 1;
+	name = "\improper Requisitions Storage"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
+/obj/structure/disposalpipe/up/almayer{
+	dir = 4;
+	id = "almayerlink_OT1_req"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/squads/req)
 "nYc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -54927,17 +54997,13 @@
 "oZp" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/light,
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "The only official USCM magazine, the headline reads 'TEN tips to keep your UD4 cockpit both safer and more relaxing.'";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster15";
-	name = "Boots!: Issue No.55";
-	pixel_x = -5;
-	pixel_y = 5
-	},
 /obj/item/reagent_container/food/snacks/grilledcheese{
 	pixel_x = 6;
 	pixel_y = 8
+	},
+/obj/item/prop/magazine/boots/n055{
+	pixel_x = -9;
+	pixel_y = 5
 	},
 /turf/open/floor/almayer{
 	dir = 10;
@@ -55698,6 +55764,18 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/aft_hallway)
+"pvF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/folded_tent/reqs,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "pvJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -56611,6 +56689,7 @@
 	id = "containmentlockdown_E";
 	name = "\improper Containment Lockdown"
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -56639,7 +56718,6 @@
 	},
 /area/almayer/medical/containment/cell/cl)
 "pRL" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -57420,6 +57498,10 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/lower_hull)
+"qif" = (
+/obj/structure/sign/dartboard,
+/turf/closed/wall/almayer,
+/area/almayer/hallways/hangar)
 "qim" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -59066,6 +59148,13 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/port_hallway)
+"qYC" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 4;
+	id = "almayerlink_OT_req"
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "qYG" = (
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -59370,6 +59459,17 @@
 	icon_state = "containment_window_h"
 	},
 /area/almayer/medical/containment/cell/cl)
+"rfg" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/hull/upper_hull/u_m_s)
 "rfI" = (
 /obj/structure/sign/safety/airlock{
 	pixel_y = -32
@@ -62460,36 +62560,6 @@
 	icon_state = "silvercorner"
 	},
 /area/almayer/hallways/aft_hallway)
-"sDL" = (
-/obj/structure/closet/cabinet,
-/obj/item/clothing/under/liaison_suit/formal,
-/obj/item/clothing/under/liaison_suit,
-/obj/item/clothing/under/liaison_suit/outing,
-/obj/item/clothing/under/liaison_suit/suspenders,
-/obj/item/clothing/under/blackskirt{
-	desc = "A stylish skirt, in a business-black and red colour scheme.";
-	name = "liaison's skirt"
-	},
-/obj/item/clothing/under/suit_jacket/charcoal{
-	desc = "A professional black suit and blue tie. A combination popular among government agents and corporate Yes-Men alike.";
-	name = "liaison's black suit"
-	},
-/obj/item/clothing/under/suit_jacket/navy{
-	desc = "A navy suit and red tie, intended for the Almayer's finest. And accountants.";
-	name = "liaison's navy suit"
-	},
-/obj/item/clothing/under/suit_jacket/trainee,
-/obj/item/clothing/gloves/black,
-/obj/item/clothing/gloves/marine/dress,
-/obj/item/clothing/glasses/sunglasses/big,
-/obj/item/clothing/accessory/blue,
-/obj/item/clothing/accessory/red,
-/obj/item/clothing/shoes/dress,
-/obj/structure/machinery/status_display{
-	pixel_x = -32
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliason)
 "sDM" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -63423,27 +63493,17 @@
 	pixel_x = 7;
 	pixel_y = 9
 	},
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster17";
-	name = "\improper torn magazine page";
-	pixel_x = -5;
-	pixel_y = 5
-	},
 /obj/item/trash/semki{
 	layer = 2;
 	pixel_x = -13;
 	pixel_y = 14
 	},
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "The only official USCM magazine, the headline reads 'ARMAT strikes back against litigants in M41A-MK2 self cleaning case'";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster15";
-	layer = 3.6;
-	name = "Boots!: Issue No.54";
-	pixel_x = 27;
-	pixel_y = 4
+/obj/item/prop/magazine/boots/n054{
+	pixel_x = 29
+	},
+/obj/item/prop/magazine/dirty/torn{
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/item/clothing/glasses/disco_fever{
 	pixel_x = 5;
@@ -66351,13 +66411,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/hydroponics)
-"urx" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/closed/wall/almayer,
-/area/almayer/engineering/engineering_workshop/hangar)
 "urM" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -69344,6 +69397,10 @@
 "vDa" = (
 /turf/open/floor/almayer/research/containment/corner2,
 /area/almayer/medical/containment/cell)
+"vDh" = (
+/obj/item/weapon/dart/green,
+/turf/open/floor/plating,
+/area/almayer/hull/lower_hull/l_f_p)
 "vEf" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -69940,6 +69997,18 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/grunt_rnr)
+"vSr" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/folded_tent/big,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "vSE" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/almayer{
@@ -70159,14 +70228,11 @@
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/sign/poster{
-	desc = "Wawaweewa.";
-	icon_state = "poster17";
-	name = "magazine";
-	pixel_x = 3;
-	pixel_y = 4
+/obj/item/tool/pen{
+	pixel_x = 9;
+	pixel_y = -5
 	},
-/obj/item/tool/pen,
+/obj/item/prop/magazine/book/theartofwar,
 /turf/open/floor/almayer,
 /area/almayer/living/bridgebunks)
 "vWB" = (
@@ -72006,16 +72072,9 @@
 "wNl" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/USCMtray{
-	pixel_x = 5
-	},
-/obj/item/trash/USCMtray{
 	layer = 3.2;
 	pixel_x = 4;
 	pixel_y = 17
-	},
-/obj/item/reagent_container/food/snacks/bearmeat{
-	pixel_x = 4;
-	pixel_y = -1
 	},
 /obj/item/reagent_container/food/drinks/cans/souto{
 	pixel_x = -10;
@@ -72025,6 +72084,10 @@
 	layer = 3.3;
 	pixel_x = 1;
 	pixel_y = 13
+	},
+/obj/item/prop/magazine/book/starshiptroopers{
+	pixel_x = 8;
+	pixel_y = -3
 	},
 /turf/open/floor/almayer{
 	dir = 10;
@@ -73256,6 +73319,9 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
 	name = "\improper Engineering Storage"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -92699,8 +92765,8 @@ baH
 fVz
 bHB
 bBN
-bcm
-kCT
+qif
+vDh
 kCT
 kCT
 kCT
@@ -98471,7 +98537,7 @@ kOB
 awZ
 aiX
 jnw
-atL
+aBq
 pRL
 awF
 aEM
@@ -101428,8 +101494,8 @@ gfW
 bUe
 cbR
 ccr
-cmp
-urx
+hcC
+lEW
 aqd
 bWM
 bWM
@@ -101632,7 +101698,7 @@ iRx
 iEb
 bHa
 apm
-apQ
+jUn
 avT
 bWM
 bWM
@@ -104996,7 +105062,7 @@ yfv
 bit
 baw
 baw
-baw
+qYC
 kwo
 trb
 aag
@@ -105199,7 +105265,7 @@ abg
 ajC
 baw
 vbB
-baw
+ley
 kwo
 trb
 aag
@@ -105402,7 +105468,7 @@ avn
 aim
 baw
 dBp
-baw
+gVA
 tQV
 tQV
 aah
@@ -109251,7 +109317,7 @@ fAo
 awE
 bhM
 wQv
-sDL
+bBi
 awE
 ieH
 qVM
@@ -110640,7 +110706,7 @@ acD
 aao
 aap
 aap
-aiv
+rfg
 bYe
 amO
 bYe
@@ -115305,11 +115371,11 @@ ahg
 aap
 aap
 aap
-aiv
+rfg
 aiw
 ahh
 aiw
-ahJ
+nph
 aiC
 ajF
 aiC
@@ -115512,7 +115578,7 @@ aar
 afP
 ahh
 aiw
-ahJ
+nph
 aiC
 anG
 aiC
@@ -115715,7 +115781,7 @@ aar
 afQ
 aiw
 aiw
-ahJ
+nph
 aiC
 anG
 aiC
@@ -116237,7 +116303,7 @@ bNQ
 bNQ
 bNQ
 bNQ
-bEk
+nXU
 bKA
 jac
 bCA
@@ -116440,7 +116506,7 @@ bNP
 bmD
 bNP
 bmD
-gkg
+mYv
 doP
 jac
 isS
@@ -117447,7 +117513,7 @@ bEi
 bZr
 bmD
 ngw
-pjG
+gCu
 boz
 bpR
 bpR
@@ -117650,7 +117716,7 @@ brp
 bZr
 bmD
 xId
-pjG
+hBP
 boz
 bpR
 bpR
@@ -118056,7 +118122,7 @@ buz
 bZr
 bmD
 dmE
-pjG
+pvF
 boz
 bpR
 bpR
@@ -118259,7 +118325,7 @@ bEm
 bZr
 bmD
 hAc
-pjG
+vSr
 boz
 bpR
 bpR
@@ -119576,7 +119642,7 @@ psm
 ndJ
 anJ
 aoS
-aBq
+inw
 amA
 amx
 amx
@@ -119590,7 +119656,7 @@ amx
 atq
 amx
 aoT
-aBq
+inw
 aiB
 anJ
 mnG
@@ -119793,7 +119859,7 @@ ayd
 atq
 atq
 wwJ
-aBq
+inw
 alG
 aYj
 apd
@@ -119982,7 +120048,7 @@ psm
 ylJ
 aDZ
 aoD
-aBq
+inw
 qHM
 emn
 rdI
@@ -119996,7 +120062,7 @@ aye
 amx
 amx
 aBs
-aBq
+inw
 alG
 aYj
 apd
@@ -121003,9 +121069,9 @@ atq
 aoT
 alO
 alO
-azn
+alR
 aBm
-azn
+alR
 alO
 xBe
 xBe
@@ -122631,7 +122697,7 @@ amA
 amx
 aDr
 aFw
-aBq
+inw
 aJh
 arq
 ufx
@@ -122834,7 +122900,7 @@ amA
 amx
 aDr
 aFy
-aBq
+inw
 aJi
 azs
 atq
@@ -123240,7 +123306,7 @@ amA
 atq
 aDr
 aFz
-aBq
+inw
 amA
 ayl
 amx
@@ -123443,7 +123509,7 @@ azq
 auy
 aDB
 aFA
-aBq
+inw
 aJl
 amx
 atq
@@ -123849,7 +123915,7 @@ azt
 auA
 aDD
 aFD
-aBq
+inw
 xEO
 xEO
 lnP
@@ -124255,7 +124321,7 @@ arm
 atc
 atc
 atc
-aBq
+inw
 xEO
 xEO
 aOV
@@ -124452,7 +124518,7 @@ alR
 arK
 atc
 civ
-nph
+kwd
 atq
 atq
 amA
@@ -124859,11 +124925,11 @@ aPa
 eky
 eky
 alO
-aBq
-aBq
+aqY
+aqY
 alO
-aBq
-aBq
+aqY
+aqY
 alO
 eky
 eky

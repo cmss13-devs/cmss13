@@ -48,6 +48,9 @@ var/list/ob_type_fuel_requirements
 
 /obj/structure/orbital_cannon/Destroy()
 	QDEL_NULL(tray)
+	if(almayer_orbital_cannon == src)
+		almayer_orbital_cannon = null
+		message_admins("Reference to almayer_orbital_cannon is lost!")
 	return ..()
 
 /obj/structure/orbital_cannon/ex_act()
@@ -481,14 +484,13 @@ var/list/ob_type_fuel_requirements
 	var/list/turf_list = list()
 
 	for(var/turf/T in range(range_num, target))
-		if(protected_by_pylon(TURF_PROTECTION_OB, T))
-			continue
-
 		turf_list += T
 
 	for(var/i = 1 to total_amount)
 		for(var/k = 1 to instant_amount)
 			var/turf/U = pick(turf_list)
+			if(protected_by_pylon(TURF_PROTECTION_OB, U)) //If the turf somehow gained OB protection while the cluster was firing
+				continue
 			fire_in_a_hole(U)
 		sleep(delay_between_clusters)
 

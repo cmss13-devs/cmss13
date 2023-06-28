@@ -512,27 +512,33 @@
 	START_PROCESSING(SSprocessing, src)
 
 
-/obj/effect/alien/resin/acid_pillar/proc/can_target(mob/living/carbon/C, position_to_get = 0)
-	if(get_dist(src, C) > range)
+/obj/effect/alien/resin/acid_pillar/proc/can_target(mob/living/carbon/current_mob, position_to_get = 0)
+	/// Is it a friendly xenomorph that is on fire
+	var/burning_friendly = FALSE
+
+	if(get_dist(src, current_mob) > range)
 		return FALSE
 
-	var/check_dead = FALSE
-	if(C.ally_of_hivenumber(hivenumber))
-		if(!C.on_fire || !isxeno(C))
+	if(current_mob.ally_of_hivenumber(hivenumber))
+		if(!isxeno(current_mob))
 			return FALSE
-	else if(C.lying || C.is_mob_incapacitated(TRUE))
+		if(!current_mob.on_fire)
+			return FALSE
+		burning_friendly = TRUE
+
+	else if(current_mob.lying || current_mob.is_mob_incapacitated(TRUE))
 		return FALSE
 
-	if(!check_dead && C.health < 0)
+	if(!burning_friendly && current_mob.health < 0)
 		return FALSE
-	if(check_dead && C.stat == DEAD)
+	if(current_mob.stat == DEAD)
 		return FALSE
 
 	var/turf/current_turf
 	var/turf/last_turf = loc
 	var/atom/temp_atom = new acid_type()
 	var/current_pos = 1
-	for(var/i in getline(src, C))
+	for(var/i in getline(src, current_mob))
 		current_turf = i
 		if(LinkBlocked(temp_atom, last_turf, current_turf))
 			qdel(temp_atom)

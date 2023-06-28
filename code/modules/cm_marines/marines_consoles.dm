@@ -177,7 +177,7 @@
 			if(!authenticated || !target_id_card)
 				return
 
-			var/new_name = params["name"] // reject_bad_name() can be added here
+			var/new_name = strip_html(params["name"])
 			if(!new_name)
 				visible_message(SPAN_NOTICE("[src] buzzes rudely."))
 				return
@@ -191,7 +191,7 @@
 				return
 
 			if(target == "Custom")
-				var/custom_name = params["custom_name"]
+				var/custom_name = strip_html(params["custom_name"])
 				if(custom_name)
 					target_id_card.assignment = custom_name
 			else

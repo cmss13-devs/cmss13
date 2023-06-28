@@ -8762,8 +8762,6 @@
 "cSn" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/item/weapon/gun/rifle/m41aMK1,
-/obj/item/ammo_magazine/rifle/m41aMK1/toxin,
-/obj/item/ammo_magazine/rifle/m41aMK1/toxin,
 /obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/item/ammo_magazine/rifle/m41aMK1,
@@ -19747,7 +19745,6 @@
 	pixel_x = -10;
 	pixel_y = 13
 	},
-/obj/item/ammo_magazine/rifle/toxin,
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "oYw" = (
@@ -21979,7 +21976,6 @@
 /area/shiva/interior/colony/research_hab)
 "ril" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/item/ammo_magazine/rifle/m41aMK1/toxin,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -24859,7 +24855,6 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "ukJ" = (
-/obj/item/ammo_magazine/rifle/m41aMK1/toxin,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "ukU" = (

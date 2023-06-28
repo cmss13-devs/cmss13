@@ -517,6 +517,9 @@ SUBSYSTEM_DEF(minimaps)
 			. = TRUE
 
 		if ("selectAnnouncement")
+			toolbar_selection = "export"
+			to_chat(usr, SPAN_WARNING("params1 -> [params["image"]]"))
+
 			// params["image"] <- "should" be of type png returned from tgui
 			. = TRUE
 

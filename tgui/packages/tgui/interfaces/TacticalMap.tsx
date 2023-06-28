@@ -15,9 +15,15 @@ export const TacticalMap = (props, context) => {
   const { data, act } = useBackend<TacMapProps>(context);
 
   // maybe this is the right way of doing this, maybe not, idk.
-  const handleTacMapExport = (image: any) => {
-    data.exportedTacMapImage = image;
+  const handleTacMapExport = (image: string) => {
+    if (image === null || image === undefined){
+      data.exportedTacMapImage = "not found";
+    }
+    else {
+      data.exportedTacMapImage = image;
+    }
   };
+
 
   return (
     <Window title={'Tactical Map'} theme="usmc" width={650} height={750}>
@@ -32,7 +38,7 @@ export const TacticalMap = (props, context) => {
         <Section title="Canvas Options">
           <Stack>
             <Stack.Item grow>
-              <Button // we should add some icon here maybe, someone redo the ui plz; it's shit.
+              <Button
                 fontSize="9px"
                 fluid={1}
                 color="grey"

@@ -149,8 +149,8 @@ const MainMenu = (props, context) => {
           )}
           <Stack.Item>
             <Button
-              content="Submit a Maintenance Ticket"
-              tooltip="Report a Maintenance problem to ARES."
+              content="Maintenance Tickets"
+              tooltip="View or Report any maintenance problems."
               icon="comments"
               ml="auto"
               px="2rem"
@@ -394,7 +394,7 @@ const MaintReports = (props, context) => {
       </Section>
 
       <Section>
-        <h1 align="center">Report Maintenance</h1>
+        <h1 align="center">Maintenance Reports</h1>
         <Flex
           direction="column"
           justify="center"

@@ -74,12 +74,7 @@
 		return FALSE
 
 	to_chat(passer, SPAN_BOLDWARNING("You hear a soft beeping sound as you cross the threshold."))
-	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
-	for(var/mob/living/silicon/decoy/ship_ai/ai in ai_mob_list)
-		apollo.broadcast(ai, broadcast_message)
-	for(var/mob/listener as anything in (GLOB.human_mob_list + GLOB.dead_mob_list))
-		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
-			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+	ares_apollo_talk(broadcast_message)
 	COOLDOWN_START(src, sensor_cooldown, cooldown_duration)
 	if(alert_id && link)
 		for(var/obj/effect/step_trigger/ares_alert/sensor in link.linked_alerts)
@@ -166,12 +161,7 @@
 		return FALSE
 
 	to_chat(passer, SPAN_BOLDWARNING("You hear a harsh buzzing sound as you cross the threshold!"))
-	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
-	for(var/mob/living/silicon/decoy/ship_ai/ai in ai_mob_list)
-		apollo.broadcast(ai, broadcast_message)
-	for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
-		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
-			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+	ares_apollo_talk(broadcast_message)
 	if(idcard)
 		idcard.access -= ACCESS_MARINE_AI_TEMP
 	COOLDOWN_START(src, sensor_cooldown, COOLDOWN_ARES_ACCESS_CONTROL)

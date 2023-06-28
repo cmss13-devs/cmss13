@@ -61,6 +61,14 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 	interface.records_security.Add(new /datum/ares_record/security(title, details))
 // ------ End ARES Logging Procs ------ //
 
+/proc/ares_apollo_talk(broadcast_message)
+	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
+	for(var/mob/living/silicon/decoy/ship_ai/ai in ai_mob_list)
+		apollo.broadcast(ai, broadcast_message)
+	for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
+		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
+			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+
 // ------ ARES Interface Procs ------ //
 /obj/structure/machinery/computer/proc/get_ares_access(obj/item/card/id/card)
 	if(ACCESS_ARES_DEBUG in card.access)
@@ -577,7 +585,8 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 	set name = "Eject ID Card"
 	set src in oview(1)
 
-	if(!usr || usr.stat || usr.lying) return
+	if(!usr || usr.stat || usr.lying)
+		return FALSE
 
 	if(authenticator_id)
 		authenticator_id.loc = get_turf(src)
@@ -604,9 +613,12 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 
 /obj/structure/machinery/computer/working_joe/attackby(obj/object, mob/user)
 	if(istype(object, /obj/item/card/id))
+		if(!ticket_console)
+			to_chat(user, SPAN_WARNING("This console doesn't have an ID port!"))
+			return FALSE
 		if(!operable())
 			to_chat(user, SPAN_NOTICE("You try to insert [object] but [src] remains silent."))
-			return
+			return FALSE
 		var/obj/item/card/id/idcard = object
 		if((ACCESS_MARINE_AI in idcard.access) || (ACCESS_ARES_DEBUG in idcard.access))
 			if(!authenticator_id)
@@ -620,7 +632,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 					target_id = object
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
-				return
+				return FALSE
 		else
 			if(!target_id)
 				if(user.drop_held_item())
@@ -628,7 +640,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 					target_id = object
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
-				return
+				return FALSE
 	else
 		..()
 
@@ -758,7 +770,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 					authentication = get_ares_access(idcard)
 					last_login = idcard.registered_name
 			else
-				to_chat(usr, SPAN_WARNING("You require an ID card to access this terminal!"))
+				to_chat(operator, SPAN_WARNING("You require an ID card to access this terminal!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(authentication)
@@ -796,17 +808,25 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 			current_menu = "maint_claim"
 
 		if("new_report")
-			var/name = tgui_input_text(usr, "What is the type of maintenance item you wish to report?\n\nExample:\n 'Broken light in Aft Hallway.'", "Ticket Name", encode = FALSE)
+			var/name = tgui_input_text(operator, "What is the type of maintenance item you wish to report?\n\nExample:\n 'Broken light in Aft Hallway.'", "Ticket Name", encode = FALSE)
 			if(!name)
 				return FALSE
-			var/details = tgui_input_text(usr, "What are the details for this report?", "Ticket Details", encode = FALSE)
+			var/details = tgui_input_text(operator, "What are the details for this report?", "Ticket Details", encode = FALSE)
 			if(!details)
 				return FALSE
-			var/confirm = tgui_alert(usr, "Please confirm the submission of your maintenance report. \n\n [name] \n\n [details] \n\n Is this correct?", "Confirmation", list("Yes", "No"))
+			var/priority = FALSE
+			if(authentication >= APOLLO_ACCESS_REPORTER)
+				var/is_priority = tgui_alert(operator, "Is this a priority report?", "Priority designation", list("Yes", "No"))
+				if(is_priority == "Yes")
+					priority = TRUE
+
+			var/confirm = tgui_alert(operator, "Please confirm the submission of your maintenance report. \n\n '[name]' \n\n '[details]' \n\n Is this correct?", "Confirmation", list("Yes", "No"))
 			if(confirm == "Yes")
 				if(link)
 					var/datum/ares_ticket/maintenance/maint_ticket = new(last_login, name, details)
 					link.tickets_maintenance += maint_ticket
+					if(priority)
+						ares_apollo_talk("Priority Maintenance Report: '[name]', '[details]'.")
 					log_game("ARES: Maintenance Ticket created by [key_name(operator)] as [last_login] with Header '[name]' and Details of '[details]'.")
 					return TRUE
 			return FALSE

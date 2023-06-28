@@ -151,10 +151,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 	data["last_page"] = last_menu
 
 	data["logged_in"] = last_login
-	var/sudo_state = FALSE
-	if(sudo_holder)
-		sudo_state = TRUE
-	data["sudo"] = sudo_state
+	data["sudo"] = sudo_holder ? TRUE : FALSE
 
 	data["access_text"] = "[sudo_holder ? "(SUDO)," : ""] access level [authentication], [ares_auth_to_text(authentication)]."
 	data["access_level"] = authentication

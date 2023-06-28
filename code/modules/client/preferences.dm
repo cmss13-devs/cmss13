@@ -1228,8 +1228,9 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("pred_gender")
 					predator_gender = predator_gender == MALE ? FEMALE : MALE
 				if("pred_age")
-					var/new_predator_age = tgui_input_number(user, "Choose your Predator's age(20 to 10000):", "Character Preference", 1234, 10000, 20)
-					if(new_predator_age) predator_age = max(min( round(text2num(new_predator_age)), 10000),20)
+					var/new_predator_age = tgui_input_number(user, "Choose your Predator's age(175 to 3000):", "Character Preference", 1234, 3000, 175)
+					if(new_predator_age) 
+						predator_age = max(min( round(text2num(new_predator_age)), 3000),175)
 				if("pred_trans_type")
 					var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", PRED_TRANSLATORS)
 					if(!new_translator_type)

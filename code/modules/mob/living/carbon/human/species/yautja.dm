@@ -2,7 +2,7 @@
 	group = SPECIES_YAUTJA
 	name = "Yautja"
 	name_plural = "Yautja"
-	brute_mod = 0.33 //Beefy!
+	brute_mod = 0.28 //Beefy!
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
 	mob_flags = KNOWS_TECHNOLOGY
@@ -19,14 +19,14 @@
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
 	pain_type = /datum/pain/yautja
 	stamina_type = /datum/stamina/none
-	blood_color = "#20d450"
+	blood_color = BLOOD_COLOR_YAUTJA
 	flesh_color = "#907E4A"
 	speech_sounds = list('sound/voice/pred_click1.ogg', 'sound/voice/pred_click2.ogg')
 	speech_chance = 100
 	death_message = "clicks in agony and falls still, motionless and completely lifeless..."
 	darksight = 5
 	slowdown = -0.5
-	total_health = 150 //more health than regular humans, makes up for hardcrit reintroduction
+	total_health = 175 //more health than regular humans
 	timed_hug = FALSE
 
 	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter
@@ -186,7 +186,9 @@
 
 	H.blood_type = "Y*"
 	H.h_style = "Standard"
+	#ifndef UNIT_TESTS // Since this is a hard ref, we shouldn't confuse create_and_destroy
 	GLOB.yautja_mob_list += H
+	#endif
 	for(var/obj/limb/limb in H.limbs)
 		switch(limb.name)
 			if("groin","chest")

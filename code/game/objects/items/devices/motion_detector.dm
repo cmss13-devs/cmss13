@@ -309,6 +309,11 @@
 	name = "hacked motion detector"
 	desc = "A device that usually picks up non-USCM signals, but this one's been hacked to detect all non-freelancer movement instead. Fight fire with fire!"
 	iff_signal = FACTION_MERCENARY
+	
+/obj/item/device/motiondetector/hacked/pmc
+	name = "corporate motion detector"
+	desc = "A device that usually picks up non-USCM signals, but this one's been reprogrammed to detect all non-PMC movement instead. Very corporate."
+	iff_signal = FACTION_PMC
 
 /obj/item/device/motiondetector/hacked/dutch
 	name = "hacked motion detector"

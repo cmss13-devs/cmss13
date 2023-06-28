@@ -125,6 +125,7 @@
 	var/life_steps_total = 0
 	var/life_kills_total = 0
 	var/life_damage_taken_total = 0
+	var/life_revives_total = 0
 	var/festivizer_hits_total = 0
 
 	var/life_value = 1 // when killed, the killee gets this much added to its life_kills_total
@@ -224,6 +225,12 @@
 	var/next_delay_update = 0 // when next update of move delay should happen
 	var/next_delay_delay = 10 // how much time we wait for next calc of move delay
 	var/move_delay
+
+	///Holds the time when a mob can throw an item next, only applies after two throws, reference /mob/proc/do_click()
+	COOLDOWN_DECLARE(throw_delay)
+
+	///holds the buffer to allow for throwing two things before the cooldown effects throwing, reference /mob/proc/do_click()
+	var/throw_buffer = 0
 
 	var/list/datum/action/actions = list()
 

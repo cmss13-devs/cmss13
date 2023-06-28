@@ -106,6 +106,7 @@ block( \
 #define SOUND_REBOOT (1<<5)
 #define SOUND_ADMIN_MEME (1<<6)
 #define SOUND_ADMIN_ATMOSPHERIC (1<<7)
+#define SOUND_ARES_MESSAGE (1<<8)
 
 //toggles_chat
 #define CHAT_OOC (1<<0)
@@ -390,6 +391,7 @@ block( \
 #define FIRE_MISSION_WEAPON_REMOVED 8
 #define FIRE_MISSION_WEAPON_UNUSABLE 16
 #define FIRE_MISSION_WEAPON_OUT_OF_AMMO 32
+#define FIRE_MISSION_NOT_EXECUTABLE -1
 
 //Defines for firemission state
 #define FIRE_MISSION_STATE_IDLE 0

@@ -209,27 +209,21 @@ There are several things that need to be remembered:
 			overlays_standing[HAIR_LAYER] = hair_s
 			apply_overlay(HAIR_LAYER)
 
-
 //Call when target overlay should be added/removed
 /mob/living/carbon/human/update_targeted()
 	remove_overlay(TARGETED_LAYER)
-	var/image/I
-	if(targeted_by && target_locked)
-		I = image("icon" = target_locked)
-	else if(!targeted_by && target_locked)
-		QDEL_NULL(target_locked)
+
+	var/image/holo_card_image
+
 	if(holo_card_color)
-		if(I)
-			I.overlays += image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "holo_card_[holo_card_color]")
-		else
-			I = image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "holo_card_[holo_card_color]")
-	if(!I)
+		holo_card_image = image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "holo_card_[holo_card_color]")
+
+	if(!holo_card_image)
 		return
-	I.layer = -TARGETED_LAYER
-	overlays_standing[TARGETED_LAYER] = I
+
+	holo_card_image.layer = -TARGETED_LAYER
+	overlays_standing[TARGETED_LAYER] = holo_card_image
 	apply_overlay(TARGETED_LAYER)
-
-
 
 //Call when someone is gauzed or splinted, or when one of those items are removed
 /mob/living/carbon/human/update_med_icon()

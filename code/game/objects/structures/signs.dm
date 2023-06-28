@@ -70,7 +70,7 @@
 
 /obj/structure/sign/kiddieplaque
 	name = "AI developers plaque"
-	desc = "Next to the extremely long list of names and job titles, there is a drawing of a little child. The child appears to be retarded. Beneath the image, someone has scratched the word \"PACKETS\""
+	desc = "Next to the extremely long list of names and job titles, there is a drawing of a little child. Beneath the image, someone has scratched the word \"PACKETS\""
 	icon_state = "kiddieplaque"
 
 /obj/structure/sign/arcturianstopsign
@@ -592,3 +592,9 @@
 	desc = "An unbelievably creepy cat clock that surveys the room with every tick and every tock."
 	icon = 'icons/obj/structures/props/catclock.dmi'
 	icon_state = "cat_clock_motion"
+
+/obj/structure/sign/dartboard
+	name = "dartboard"
+	desc = "A dartboard, secured with a nail and a string. It has bullet holes and knife stab marks over and around it."
+	icon = 'icons/obj/structures/props/props.dmi'
+	icon_state = "dart_board"

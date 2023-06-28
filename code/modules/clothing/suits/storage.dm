@@ -36,8 +36,8 @@
 	pockets.emp_act(severity)
 	..()
 
-/obj/item/clothing/suit/storage/hear_talk(mob/M, msg)
-	pockets.hear_talk(M, msg)
+/obj/item/clothing/suit/storage/hear_talk(mob/living/M, msg, verb, datum/language/speaking, italics)
+	pockets.hear_talk(M, msg, verb, speaking, italics)
 	..()
 
 /obj/item/clothing/suit/storage/verb/toggle_draw_mode()

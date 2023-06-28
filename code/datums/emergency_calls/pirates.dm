@@ -4,7 +4,7 @@
 	name = "Fun - Pirates"
 	mob_max = 35
 	mob_min = 10
-	arrival_message = "Intercepted Transmission: 'What shall we do with a drunken sailor? What shall we do with a drunken sailor? What shall we do with a drunken sailor early in the morning?'"
+	arrival_message = "'What shall we do with a drunken sailor? What shall we do with a drunken sailor? What shall we do with a drunken sailor early in the morning?'"
 	objectives = "Pirate! Loot! Ransom!"
 	probability = 0
 	hostility = TRUE

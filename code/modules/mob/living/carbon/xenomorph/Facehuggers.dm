@@ -77,6 +77,9 @@
 	addtimer(CALLBACK(src, PROC_REF(check_turf)), 0.2 SECONDS)
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
 		go_idle()
+	if(attached)
+		attached = FALSE
+		die()
 
 /obj/item/clothing/mask/facehugger/proc/check_turf()
 	var/count = 0
@@ -172,8 +175,7 @@
 
 /obj/item/clothing/mask/facehugger/equipped(mob/M)
 	SHOULD_CALL_PARENT(FALSE) // ugh equip sounds
-	// So getting hugged or picking up a hugger does not
-	// prematurely kill the hugger
+	// So picking up a hugger does not prematurely kill it
 	go_idle()
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)
@@ -207,6 +209,11 @@
 	if(stat == UNCONSCIOUS)
 		return
 
+	// Force reset throw now because [/atom/movable/proc/launch_impact] only does that later on
+	// If we DON'T, step()'s move below can collide, rebound, trigger this proc again, into infinite recursion
+	throwing = FALSE
+	rebounding = FALSE
+
 	if(leaping && can_hug(L, hivenumber))
 		attach(L)
 	else if(L.density)
@@ -239,45 +246,46 @@
 	throw_atom(target, 3, SPEED_FAST)
 	return TRUE
 
-/obj/item/clothing/mask/facehugger/proc/attach(mob/living/M, silent = FALSE, knockout_mod = 1)
-	if(attached || !can_hug(M, hivenumber))
+/obj/item/clothing/mask/facehugger/proc/attach(mob/living/living_mob, silent = FALSE, knockout_mod = 1, hugger_ckey = null)
+	if(attached || !can_hug(living_mob, hivenumber))
 		return FALSE
 
 	// This is always going to be valid because of the can_hug check above
-	var/mob/living/carbon/human/H = M
-	attached = TRUE
+	var/mob/living/carbon/human/human = living_mob
 	if(!silent)
-		H.visible_message(SPAN_DANGER("[src] leaps at [H]'s face!"))
+		human.visible_message(SPAN_DANGER("[src] leaps at [human]'s face!"))
 
 	if(isxeno(loc)) //Being carried? Drop it
 		var/mob/living/carbon/xenomorph/X = loc
 		X.drop_inv_item_on_ground(src)
 
-	if(isturf(H.loc))
-		forceMove(H.loc)//Just checkin
+	if(isturf(human.loc))
+		forceMove(human.loc)//Just checkin
 
-	if(!H.handle_hugger_attachment(src))
+	if(!human.handle_hugger_attachment(src))
 		return FALSE
 
-	forceMove(H)
+	attached = TRUE
+
+	forceMove(human)
 	icon_state = initial(icon_state)
-	H.equip_to_slot(src, WEAR_FACE)
-	H.update_inv_wear_mask()
-	H.disable_lights()
-	H.disable_special_items()
-	if(ishuman_strict(H))
-		playsound(loc, H.gender == "male" ? 'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg' , 25, 0)
-	else if(isyautja(H))
+	human.equip_to_slot(src, WEAR_FACE)
+	human.update_inv_wear_mask()
+	human.disable_lights()
+	human.disable_special_items()
+	if(ishuman_strict(human))
+		playsound(loc, human.gender == "male" ? 'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg' , 25, 0)
+	else if(isyautja(human))
 		playsound(loc, 'sound/voice/pred_facehugged.ogg', 65, FALSE)
 	if(!sterile)
-		if(!H.species || !(H.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
-			H.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
+		if(!human.species || !(human.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
+			human.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
 
-	addtimer(CALLBACK(src, PROC_REF(impregnate), H), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
+	addtimer(CALLBACK(src, PROC_REF(impregnate), human, hugger_ckey), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
 
 	return TRUE
 
-/obj/item/clothing/mask/facehugger/proc/impregnate(mob/living/carbon/human/target)
+/obj/item/clothing/mask/facehugger/proc/impregnate(mob/living/carbon/human/target, hugger_ckey = null)
 	if(!target || target.wear_mask != src) //Was taken off or something
 		return
 	if(SEND_SIGNAL(target, COMSIG_HUMAN_IMPREGNATE, src) & COMPONENT_NO_IMPREGNATE)
@@ -292,6 +300,8 @@
 		if(!embryos)
 			var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(target)
 			embryo.hivenumber = hivenumber
+			embryo.hugger_ckey = hugger_ckey
+			GLOB.player_embryo_list += embryo
 
 			embryo.flags_embryo = flags_embryo
 			flags_embryo = NO_FLAGS
@@ -373,6 +383,9 @@
 
 /obj/item/clothing/mask/facehugger/proc/die()
 	if(stat == DEAD)
+		return
+
+	if(attached && !impregnated)
 		return
 
 	if(jump_timer)

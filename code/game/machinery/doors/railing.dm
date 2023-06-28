@@ -19,7 +19,8 @@
 	. = ..()
 	if(dir == SOUTH)
 		closed_layer = ABOVE_MOB_LAYER
-	layer = closed_layer
+	if(density)//Allows preset-open to work
+		layer = closed_layer
 
 	SetOpacity(initial(opacity))
 
@@ -35,29 +36,34 @@
 		PF.flags_can_pass_all = (PASS_OVER^PASS_OVER_FIRE)|PASS_CRUSHER_CHARGE
 
 /obj/structure/machinery/door/poddoor/railing/open()
-	if (operating == 1) //doors can still open when emag-disabled
-		return 0
-	if(!operating) //in case of emag
-		operating = 1
+	if(operating) //doors can still open when emag-disabled
+		return FALSE
+
+	operating = TRUE
 	flick("railingc0", src)
 	icon_state = "railing0"
 	layer = open_layer
 
-	sleep(12)
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), 1.2 SECONDS)
+	return TRUE
 
+/obj/structure/machinery/door/poddoor/railing/finish_open()
 	density = FALSE
-	if(operating == 1) //emag again
-		operating = 0
-	return 1
+	if(operating) //emag again
+		operating = FALSE
 
 /obj/structure/machinery/door/poddoor/railing/close()
-	if (operating)
-		return 0
+	if(operating)
+		return FALSE
+
 	density = TRUE
-	operating = 1
+	operating = TRUE
 	layer = closed_layer
 	flick("railingc1", src)
 	icon_state = "railing1"
 
 	addtimer(VARSET_CALLBACK(src, operating, FALSE), 1.2 SECONDS)
-	return 1
+	return TRUE
+
+/obj/structure/machinery/door/poddoor/railing/open
+	density = FALSE

@@ -73,8 +73,7 @@
 				BD.regen_shield()
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/pounce/prae_dash/use_ability(atom/A)
 	if(!activated_once && !action_cooldown_check() || owner.throwing)
@@ -84,9 +83,11 @@
 		. = ..()
 		if(.)
 			activated_once = TRUE
+			button.icon_state = "template_active"
 			addtimer(CALLBACK(src, PROC_REF(timeout)), time_until_timeout)
 	else
 		damage_nearby_targets()
+		return TRUE
 
 /datum/action/xeno_action/activable/pounce/prae_dash/proc/timeout()
 	if (activated_once)
@@ -104,6 +105,7 @@
 		return
 
 	activated_once = FALSE
+	button.icon_state = X.selected_ability == src ? "template_on" : "template"
 
 	var/list/target_mobs = list()
 	var/list/L = orange(1, X)
@@ -192,8 +194,7 @@
 		xeno_throw_human(target_carbon, vanguard_user, get_dir(vanguard_user, target_atom), fling_distance)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/cleave/proc/remove_buff()
 	buffed = FALSE
@@ -229,8 +230,7 @@
 
 	apply_cooldown()
 	xeno_attack_delay(stabbing_xeno)
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/prae_abduct/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
@@ -364,8 +364,7 @@
 		addtimer(CALLBACK(src, /datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay, H, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay(mob/living/carbon/human/overlayed_human, image/tail_image)
 	overlayed_human.overlays -= tail_image
@@ -434,8 +433,7 @@
 	shake_camera(target_carbon, 2, 1)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/tail_lash/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
@@ -522,8 +520,7 @@
 			H.apply_effect(get_xeno_stun_duration(H, 0.5), WEAKEN)
 			new /datum/effects/xeno_slow(H, X, ttl = get_xeno_stun_duration(H, 25))
 
-	..()
-	return
+	return ..()
 
 
 /////////// Dancer powers
@@ -538,19 +535,16 @@
 
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
 		to_chat(dancer_user, SPAN_XENODANGER("You must target a hostile!"))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	if (!dancer_user.Adjacent(target_atom))
 		to_chat(dancer_user, SPAN_XENODANGER("You must be adjacent to [target_atom]!"))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
 	if (target_carbon.stat == DEAD)
 		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would you want to attack it?"))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	if (!check_and_use_plasma_owner())
@@ -598,8 +592,7 @@
 	target_carbon.last_damage_data = create_cause_data(initial(dancer_user.caste_type), dancer_user)
 	target_carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
 	playsound(target_carbon, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/prae_dodge/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -630,8 +623,7 @@
 	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/prae_dodge/proc/remove_effects()
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -665,29 +657,17 @@
 
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
 		to_chat(dancer_user, SPAN_XENODANGER("You must target a hostile!"))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
 	if (target_carbon.stat == DEAD)
 		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would you want to attack it?"))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
-	var/buffed = FALSE
-
-	if (dancer_user.mutation_type == PRAETORIAN_DANCER)
-		var/found = FALSE
-		for (var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
-			found = TRUE
-			qdel(dancer_tag_effect)
-			break
-
-		buffed = found
 
 	if(ishuman(target_carbon))
 		var/mob/living/carbon/human/target_human = target_carbon
@@ -710,9 +690,19 @@
 					to_chat(dancer_user, SPAN_WARNING("You can't attack through [atom_in_turf]!"))
 					return
 
+
+
 	// Hmm today I will kill a marine while looking away from them
 	dancer_user.face_atom(target_carbon)
 	dancer_user.flick_attack_overlay(target_carbon, "disarm")
+
+	var/buffed = FALSE
+
+	var/datum/effects/dancer_tag/dancer_tag_effect = locate() in target_carbon.effects_list
+
+	if (dancer_tag_effect)
+		buffed = TRUE
+		qdel(dancer_tag_effect)
 
 	if (!buffed)
 		new /datum/effects/xeno_slow(target_carbon, dancer_user, null, null, get_xeno_stun_duration(target_carbon, slow_duration))
@@ -746,8 +736,7 @@
 		target_carbon.apply_effect(daze_duration, DAZE)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
@@ -779,8 +768,7 @@
 	grenade.throw_atom(A, 5, SPEED_SLOW, X, TRUE)
 	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
 
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/warden_heal/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
@@ -917,8 +905,7 @@
 		use_plasma_owner()
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/prae_retrieve/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
@@ -1065,4 +1052,4 @@
 		to_chat(X, SPAN_XENOBOLDNOTICE("You fling [targetXeno] towards you with your resin hook, and they in front of you!"))
 	targetXeno.throw_atom(throw_target_turf, throw_dist, SPEED_VERY_FAST, pass_flags = PASS_MOB_THRU)
 	apply_cooldown()
-	return
+	return ..()

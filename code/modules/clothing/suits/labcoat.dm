@@ -221,7 +221,6 @@
 		/obj/item/explosive/grenade,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
-		/obj/item/storage/backpack/general_belt,
 		/obj/item/storage/large_holster/machete,
 		/obj/item/weapon/baseballbat,
 		/obj/item/weapon/baseballbat/metal,
@@ -289,7 +288,6 @@
 		/obj/item/explosive/grenade,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
-		/obj/item/storage/backpack/general_belt,
 		/obj/item/storage/large_holster/machete,
 		/obj/item/weapon/baseballbat,
 		/obj/item/weapon/baseballbat/metal,
@@ -297,3 +295,7 @@
 		/obj/item/device/walkman,
 	)
 
+/obj/item/clothing/suit/storage/snow_suit/liaison
+	name = "liaison's winter coat"
+	desc = "A Weyland-Yutani winter coat. Only the best comfort for the liaison in a cold environment."
+	icon_state = "snowsuit_liaison"

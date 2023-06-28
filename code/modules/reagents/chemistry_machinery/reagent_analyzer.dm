@@ -1,5 +1,5 @@
 /obj/structure/machinery/reagent_analyzer
-	name = "Advanced XRF Scanner"
+	name = "\improper XRF scanner"
 	desc = "A spectrometer that bombards a sample in high energy radiation to detect emitted fluorescent x-ray patterns. By using the emission spectrum of the sample it can identify its chemical composition."
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "reagent_analyzer"

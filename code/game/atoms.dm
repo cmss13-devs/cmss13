@@ -660,7 +660,7 @@ Parameters are passed from New.
 		SEND_SIGNAL(src, COMSIG_ATOM_VV_MODIFY_TRANSFORM)
 
 	if(href_list[VV_HK_AUTO_RENAME] && check_rights(R_VAREDIT))
-		var/newname = tgui_input_text(usr, "What do you want to rename this to?", "Automatic Rename", name)
+		var/newname = tgui_input_text(usr, "What do you want to rename this to?", "Automatic Rename", name, encode = FALSE)
 		if(newname)
 			name = newname
 

@@ -1,0 +1,5 @@
+{
+    "override_map": true,
+    "map_name": "Ship",
+    "traits": [{"Marine Main Ship": true}]
+}

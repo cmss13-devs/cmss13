@@ -1241,7 +1241,7 @@
 		log_admin("[src.owner] replied to [key_name(H)]'s USCM message with the message [input].")
 		for(var/client/X in GLOB.admins)
 			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
-				to_chat(X, "<b>ADMINS/MODS: \red [src.owner] replied to [key_name(H)]'s USCM message with: \blue \")[input]\"</b>")
+				to_chat(X, SPAN_STAFF_IC("<b>ADMINS/MODS: \red [src.owner] replied to [key_name(H)]'s USCM message with: \blue \")[input]\"</b>"))
 		to_chat(H, SPAN_DANGER("You hear something crackle in your headset before a voice speaks, please stand by for a message from USCM:\" \blue <b>\"[input]\"</b>"))
 
 	else if(href_list["SyndicateReply"])
@@ -1270,14 +1270,15 @@
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use which template or roll your own?", "Fax Templates", list("Template", "Custom"))
-		var/fax_message = ""
+		if(!template_choice) return
+		var/datum/fax/fax_message
 		var/organization_type = ""
 		switch(template_choice)
 			if("Custom")
 				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Press", "") as message|null
 				if(!input)
 					return
-				fax_message = "[input]"
+				fax_message = new(input)
 			if("Template")
 				var/subject = input(src.owner, "Enter subject line", "Outgoing message from Press", "") as message|null
 				if(!subject)
@@ -1302,10 +1303,10 @@
 				if(!organization_type)
 					return
 
-				fax_message = generate_templated_fax(0, organization_type, subject, addressed_to, message_body, sent_by, "Editor in Chief", organization_type)
-		show_browser(usr, "<body class='paper'>[fax_message]</body>", "pressfaxpreview", "size=500x400")
+				fax_message = new(generate_templated_fax(0, organization_type, subject, addressed_to, message_body, sent_by, "Editor in Chief", organization_type))
+		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Template", list("Send", "Cancel"))
-		if(send_choice == "Cancel")
+		if(send_choice != "Send")
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
@@ -1329,7 +1330,7 @@
 					spawn(20)
 						var/obj/item/paper/P = new /obj/item/paper( F.loc )
 						P.name = "[organization_type] - [customname]"
-						P.info = fax_message
+						P.info = fax_message.data
 						P.update_icon()
 
 						playsound(F.loc, "sound/machines/fax.ogg", 15)
@@ -1344,7 +1345,7 @@
 						P.stamps += "<HR><i>This paper has been stamped by the Free Press Quantum Relay.</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 	else if(href_list["USCMFaxReply"])
@@ -1352,13 +1353,14 @@
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use which template or roll your own?", "Fax Templates", list("USCM High Command", "USCM Provost General", "Custom"))
-		var/fax_message = ""
+		if(!template_choice) return
+		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
 				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from USCM", "") as message|null
 				if(!input)
 					return
-				fax_message = "[input]"
+				fax_message = new(input)
 			if("USCM High Command", "USCM Provost General")
 				var/subject = input(src.owner, "Enter subject line", "Outgoing message from USCM", "") as message|null
 				if(!subject)
@@ -1383,10 +1385,10 @@
 				if(template_choice == "USCM High Command")
 					sent_title = "USCM High Command"
 
-				fax_message = generate_templated_fax(0, "USCM CENTRAL COMMAND", subject,addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps")
-		show_browser(usr, "<body class='paper'>[fax_message]</body>", "uscmfaxpreview", "size=500x400")
+				fax_message = new(generate_templated_fax(0, "USCM CENTRAL COMMAND", subject,addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps"))
+		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Template", list("Send", "Cancel"))
-		if(send_choice == "Cancel")
+		if(send_choice != "Send")
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
@@ -1410,7 +1412,7 @@
 					spawn(20)
 						var/obj/item/paper/P = new /obj/item/paper( F.loc )
 						P.name = "USCM High Command - [customname]"
-						P.info = fax_message
+						P.info = fax_message.data
 						P.update_icon()
 
 						playsound(F.loc, "sound/machines/fax.ogg", 15)
@@ -1425,7 +1427,7 @@
 						P.stamps += "<HR><i>This paper has been stamped by the USCM High Command Quantum Relay.</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
@@ -1434,13 +1436,14 @@
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
-		var/fax_message = ""
+		if(!template_choice) return
+		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
 				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Weyland-Yutani", "") as message|null
 				if(!input)
 					return
-				fax_message = "[input]"
+				fax_message = new(input)
 			if("Template")
 				var/subject = input(src.owner, "Enter subject line", "Outgoing message from Weyland-Yutani", "") as message|null
 				if(!subject)
@@ -1461,10 +1464,10 @@
 				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from Weyland-Yutani", "") as message|null
 				if(!sent_by)
 					return
-				fax_message = generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - [MAIN_SHIP_NAME]", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani")
-		show_browser(usr, "<body class='paper'>[fax_message]</body>", "clfaxpreview", "size=500x400")
+				fax_message = new(generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - [MAIN_SHIP_NAME]", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani"))
+		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "clfaxpreview", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
-		if(send_choice == "Cancel")
+		if(send_choice != "Send")
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
@@ -1491,7 +1494,7 @@
 					spawn(20)
 						var/obj/item/paper/P = new /obj/item/paper( F.loc )
 						P.name = "Weyland-Yutani - [customname]"
-						P.info = fax_message
+						P.info = fax_message.data
 						P.update_icon()
 
 						playsound(F.loc, "sound/machines/fax.ogg", 15)
@@ -1506,7 +1509,7 @@
 						P.stamps += "<HR><i>This paper has been stamped and encrypted by the Weyland-Yutani Quantum Relay (tm).</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
@@ -1515,13 +1518,14 @@
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Anchorpoint", "Custom"))
-		var/fax_message = ""
+		if(!template_choice) return
+		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
 				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
 				if(!input)
 					return
-				fax_message = "[input]"
+				fax_message = new(input)
 			if("Anchorpoint")
 				var/subject = input(src.owner, "Enter subject line", "Outgoing message from The Colonial Marshal Bureau, Anchorpoint Station", "") as message|null
 				if(!subject)
@@ -1542,10 +1546,10 @@
 				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
 				if(!sent_by)
 					return
-				fax_message = generate_templated_fax(0, "COLONIAL MARSHAL BUREAU INCIDENT COMMAND CENTER - ANCHORPOINT STATION", subject, addressed_to, message_body, sent_by, "Supervisory Deputy Marshal", "Colonial Marshal Bureau")
-		show_browser(usr, "<body class='paper'>[fax_message]</body>", "PREVIEW OF CMB FAX", "size=500x400")
+				fax_message = new(generate_templated_fax(0, "COLONIAL MARSHAL BUREAU INCIDENT COMMAND CENTER - ANCHORPOINT STATION", subject, addressed_to, message_body, sent_by, "Supervisory Deputy Marshal", "Colonial Marshal Bureau"))
+		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CMB FAX", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
-		if(send_choice == "Cancel")
+		if(send_choice != "Send")
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
@@ -1572,7 +1576,7 @@
 					spawn(20)
 						var/obj/item/paper/P = new /obj/item/paper( F.loc )
 						P.name = "Colonial Marshal Bureau - [customname]"
-						P.info = fax_message
+						P.info = fax_message.data
 						P.update_icon()
 
 						playsound(F.loc, "sound/machines/fax.ogg", 15)
@@ -1587,7 +1591,7 @@
 						P.stamps += "<HR><i>This paper has been stamped by The Office of Colonial Marshals.</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
@@ -1878,7 +1882,7 @@
 
 	if(href_list["ccdeny"]) // CentComm-deny. The distress call is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["ccdeny"])
-		marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
+		marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
 		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
 
@@ -1923,7 +1927,7 @@
 
 	if(href_list["sddeny"]) // CentComm-deny. The self-destruct is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["sddeny"])
-		marine_announcement("The self-destruct request has not received a response, ARES is now recalculating statistics.", "Self-Destruct System")
+		marine_announcement("The self-destruct request has not received a response, ARES is now recalculating statistics.", "Self-Destruct System", logging = ARES_LOG_SECURITY)
 		log_game("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]", 1)
 
@@ -2001,6 +2005,45 @@
 		var/mob/checking = locate(href_list["viewnotes"])
 
 		player_notes_all(checking.key)
+
+	if(href_list["AresReply"])
+		var/mob/living/carbon/human/speaker = locate(href_list["AresReply"])
+
+		if(!istype(speaker))
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			return FALSE
+
+		if((!GLOB.ares_link.interface) || (GLOB.ares_link.interface.inoperable()))
+			to_chat(usr, "ARES Interface offline.")
+			return FALSE
+
+		var/input = input(src.owner, "Please enter a message from ARES to reply to [key_name(speaker)].","Outgoing message from ARES", "")
+		if(!input)
+			return FALSE
+
+		to_chat(src.owner, "You sent [input] to [speaker] via ARES Interface.")
+		log_admin("[src.owner] replied to [key_name(speaker)]'s ARES message with the message [input].")
+		for(var/client/staff in GLOB.admins)
+			if((R_ADMIN|R_MOD) & staff.admin_holder.rights)
+				to_chat(staff, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] replied to [key_name(speaker)]'s ARES message")] with: [SPAN_BLUE(input)] </b>"))
+		GLOB.ares_link.interface.response_from_ares(input, href_list["AresRef"])
+
+	if(href_list["AresMark"])
+		var/mob/living/carbon/human/speaker = locate(href_list["AresMark"])
+
+		if(!istype(speaker))
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			return FALSE
+
+		if((!GLOB.ares_link.interface) || (GLOB.ares_link.interface.inoperable()))
+			to_chat(usr, "ARES Interface offline.")
+			return FALSE
+
+		to_chat(src.owner, "You marked [speaker]'s ARES message for response.")
+		log_admin("[src.owner] marked [key_name(speaker)]'s ARES message. [src.owner] will be responding.")
+		for(var/client/staff in GLOB.admins)
+			if((R_ADMIN|R_MOD) & staff.admin_holder.rights)
+				to_chat(staff, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] marked [key_name(speaker)]'s ARES message for response.")]</b>"))
 
 	return
 

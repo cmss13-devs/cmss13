@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Changed min and max Predator ages from 20 - 10000 to 175 - 3000"

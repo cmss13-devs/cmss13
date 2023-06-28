@@ -42,12 +42,12 @@
 	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0)
 	starting_maxhealth = maxhealth
 
-/obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/PF)
+/obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
-	if (PF)
-		PF.flags_can_pass_all = PASS_BURROWED
-		PF.flags_can_pass_front = NONE
-		PF.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY|PASS_OVER_THROW_MOB)
+	if (pass_flags)
+		pass_flags.flags_can_pass_all = PASS_BURROWED
+		pass_flags.flags_can_pass_front = NONE
+		pass_flags.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY|PASS_OVER_THROW_MOB)
 	flags_can_pass_front_temp = PASS_OVER_THROW_MOB
 	flags_can_pass_behind_temp = PASS_OVER_THROW_MOB
 

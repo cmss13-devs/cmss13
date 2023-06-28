@@ -993,6 +993,9 @@
 /obj/structure/closet,
 /obj/item/clothing/suit/armor/riot/marine/vintage_riot,
 /obj/item/clothing/head/helmet/riot/vintage_riot,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -6496,6 +6499,9 @@
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = -32
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -28329,6 +28335,9 @@
 "cBd" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/wrapped/chunk,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
@@ -33616,6 +33625,9 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -38094,6 +38106,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
+"gXh" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/upper_hull/u_m_s)
 "gXl" = (
 /obj/structure/closet/secure_closet/personal/cabinet{
 	req_access_txt = "5"
@@ -68843,6 +68861,14 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/engineering/laundry)
+"vqO" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/upper_hull/u_a_p)
 "vqW" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -71971,6 +71997,9 @@
 /obj/item/coin/silver{
 	desc = "A small coin, bearing the falling falcons insignia.";
 	name = "falling falcons challenge coin"
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -109119,7 +109148,7 @@ awE
 vGk
 xCX
 vGk
-csz
+hoX
 qVM
 csz
 qVM
@@ -109931,7 +109960,7 @@ awE
 csz
 iid
 csz
-csz
+hoX
 qVM
 noV
 csz
@@ -115357,7 +115386,7 @@ aag
 lYA
 aao
 aap
-aap
+gXh
 aao
 aap
 aap
@@ -122923,7 +122952,7 @@ vuv
 vuv
 cxo
 cxo
-cxo
+vqO
 sXK
 tbD
 qMu

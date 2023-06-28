@@ -778,12 +778,6 @@
 		. = list()
 		. += SPAN_NOTICE("Looks like some kind of...mechanical donut.")
 
-/obj/item/weapon/gun/launcher/spike/attackby(obj/item/object, mob/user)
-	if(istype(object, /obj/item/tool/yautja_cleaner))
-		if(handle_dissolve(user))
-			return
-	..()
-
 /obj/item/weapon/gun/launcher/spike/update_icon()
 	..()
 	var/new_icon_state = spikes <=1 ? null : icon_state + "[round(spikes/4, 1)]"
@@ -826,12 +820,6 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
-
-/obj/item/weapon/gun/energy/yautja/attackby(obj/item/object, mob/user)
-	if(istype(object, /obj/item/tool/yautja_cleaner))
-		if(handle_dissolve(user))
-			return
-	..()
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle
 	name = "plasma rifle"

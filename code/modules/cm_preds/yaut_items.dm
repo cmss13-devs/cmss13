@@ -248,12 +248,6 @@
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
 
-/obj/item/clothing/shoes/yautja/attackby(obj/item/object, mob/user)
-	if(istype(object, /obj/item/tool/yautja_cleaner))
-		if(handle_dissolve(user))
-			return
-	..()
-
 /obj/item/clothing/shoes/yautja/hunter
 	name = "clan greaves"
 	desc = "A pair of armored, perfectly balanced boots. Perfect for running through the jungle."
@@ -343,12 +337,6 @@
 	for(var/mob/living/carbon/xenomorph/hellhound/hellhound as anything in GLOB.hellhound_list)
 		if(!hellhound.stat)
 			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
-	..()
-
-/obj/item/device/radio/headset/yautja/attackby(obj/item/object, mob/user)
-	if(istype(object, /obj/item/tool/yautja_cleaner))
-		if(handle_dissolve(user))
-			return
 	..()
 
 /obj/item/device/radio/headset/yautja/elder //primarily for use in another MR
@@ -904,17 +892,6 @@
 	flags_equip_slot = SLOT_ID
 	flags_item = ITEM_PREDATOR|DELONDROP|NODROP
 	paygrade = null
-
-/obj/item/tool/yautja_cleaner
-	name = "cleanser gel vial"
-	desc = "Used for dissolving the gear of the fallen whilst in the field."
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "blue_gel"
-	force = 0
-	throwforce = 1
-	w_class = SIZE_SMALL
-	flags_item = ITEM_PREDATOR
-	black_market_value = 150
 
 /obj/item/storage/medicomp
 	name = "medicomp"

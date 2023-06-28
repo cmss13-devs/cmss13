@@ -94,7 +94,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 	var/marine_planet_location_string = "[marine_planet_location ? ", including one in [marine_planet_location]." : "."]"
 	var/marine_ship_location_string = "[marine_ship_location ? ", including one in [marine_ship_location]." : "."]"
 
-	var/ghost_scan = SPAN_ALERT("[xenos_on_planet] xenos on planet, with [larva] larva. [xenos_on_ship] xenos on the ship. [marines_on_planet] humans on the planet. [marines_on_ship] humans on the ship.")
+	var/ghost_scan = SPAN_ALERT("[xenos_on_planet] xenos on planet, with [larva] larva.\n[xenos_on_ship] xenos on the ship.\n[marines_on_planet] humans on the planet.\n[marines_on_ship] humans on the ship.")
 	var/yautja_scan = SPAN_ALERT("[xenos_on_planet] serpents present in the hunting ground[xeno_planet_location_string], with [larva] larva.\n[xenos_on_ship] serpents present on the human ship[xeno_ship_location_string]\n[marines_on_planet] humans present in the hunting ground[marine_planet_location_string]\n[marines_on_ship] humans present on the human ship[marine_ship_location_string]")
 	log_game("BIOSCAN: A Yautja/Ghost bioscan has completed.")
 	log_game("BIOSCAN: [ghost_scan]")

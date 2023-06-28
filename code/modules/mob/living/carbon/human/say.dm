@@ -115,7 +115,7 @@
 	message = capitalize(trim(message))
 	message = process_chat_markup(message, list("~", "_"))
 
-	if(speech_problem_flag) //this will be called later if used for radio, we have to call it later due to shitcode in radio
+	if(speech_problem_flag)
 		var/list/handle_r = handle_speech_problems(message)
 		message = handle_r[1]
 		verb = handle_r[2]

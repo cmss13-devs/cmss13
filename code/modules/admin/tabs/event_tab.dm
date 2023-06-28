@@ -885,13 +885,18 @@
 			warhead = OBShell
 
 	if(custom)
-		if(alert(usr, statsmessage, "Confirm Stats", "Yes", "No") != "Yes") return
+		if(alert(usr, statsmessage, "Confirm Stats", "Yes", "No") != "Yes")
+			qdel(warhead)
+			return
 		message_admins(statsmessage)
 
 	var/turf/target = get_turf(usr.loc)
 
 	if(alert(usr, "Fire or Spawn Warhead?", "Mode", "Fire", "Spawn") == "Fire")
-		if(alert("Are you SURE you want to do this? It will create an OB explosion!",, "Yes", "No") != "Yes") return
+		if(alert("Are you SURE you want to do this? It will create an OB explosion!",, "Yes", "No") != "Yes")
+			qdel(warhead)
+			return
+
 		message_admins("[key_name(usr)] has fired \an [warhead.name] at ([target.x],[target.y],[target.z]).")
 		warhead.warhead_impact(target)
 

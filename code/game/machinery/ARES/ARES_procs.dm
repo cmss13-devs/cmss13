@@ -1,4 +1,15 @@
 GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
+GLOBAL_LIST_INIT(maintenance_categories, list(
+	"Broken Light",
+	"Shattered Glass",
+	"Minor Structural Damage",
+	"Major Structural Damage",
+	"Chemical Spill",
+	"Fire",
+	"Power Failure",
+	"Electrical Fault",
+	"Other"
+	))
 
 /datum/ares_link
 	var/link_id = MAIN_SHIP_DEFAULT_NAME
@@ -703,7 +714,8 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 			continue
 		var/list/current_maint = list()
 		current_maint["time"] = maint_ticket.ticket_time
-		current_maint["title"] = maint_ticket.ticket_name
+		current_maint["priority_status"] = maint_ticket.ticket_priority
+		current_maint["category"] = maint_ticket.ticket_name
 		current_maint["details"] = maint_ticket.ticket_details
 		current_maint["status"] = maint_ticket.ticket_status
 		current_maint["submitter"] = maint_ticket.ticket_submitter
@@ -716,6 +728,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 	for(var/datum/ares_ticket/access_ticket/access_ticket as anything in link.tickets_access)
 		var/list/current_ticket = list()
 		current_ticket["time"] = access_ticket.ticket_time
+		current_ticket["priority_status"] = access_ticket.ticket_priority
 		current_ticket["title"] = access_ticket.ticket_name
 		current_ticket["details"] = access_ticket.ticket_details
 		current_ticket["status"] = access_ticket.ticket_status
@@ -808,26 +821,33 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 			current_menu = "maint_claim"
 
 		if("new_report")
-			var/name = tgui_input_text(operator, "What is the type of maintenance item you wish to report?\n\nExample:\n 'Broken light in Aft Hallway.'", "Ticket Name", encode = FALSE)
-			if(!name)
+			var/priority_report = FALSE
+			var/maint_type = tgui_input_list(operator, "What is the type of maintenance item you wish to report?", "Report Category", GLOB.maintenance_categories, 30 SECONDS)
+			switch(maint_type)
+				if("Major Structural Damage")
+					priority_report = TRUE
+				if("Other")
+					maint_type = tgui_input_text(operator, "What is the type of maintenance item you wish to report?", "Other Category", encode = FALSE, timeout = 30 SECONDS)
+
+			if(!maint_type)
 				return FALSE
 			var/details = tgui_input_text(operator, "What are the details for this report?", "Ticket Details", encode = FALSE)
 			if(!details)
 				return FALSE
-			var/priority = FALSE
-			if(authentication >= APOLLO_ACCESS_REPORTER)
+
+			if((authentication >= APOLLO_ACCESS_REPORTER) && !priority_report)
 				var/is_priority = tgui_alert(operator, "Is this a priority report?", "Priority designation", list("Yes", "No"))
 				if(is_priority == "Yes")
-					priority = TRUE
+					priority_report = TRUE
 
-			var/confirm = tgui_alert(operator, "Please confirm the submission of your maintenance report. \n\n '[name]' \n\n '[details]' \n\n Is this correct?", "Confirmation", list("Yes", "No"))
+			var/confirm = alert(operator, "Please confirm the submission of your maintenance report. \n\n Priority: [priority_report ? "Yes" : "No"] \n Category: '[maint_type]' \n Details: '[details]' \n\n Is this correct?", "Confirmation", "Yes", "No")
 			if(confirm == "Yes")
 				if(link)
-					var/datum/ares_ticket/maintenance/maint_ticket = new(last_login, name, details)
+					var/datum/ares_ticket/maintenance/maint_ticket = new(last_login, maint_type, details, priority_report)
 					link.tickets_maintenance += maint_ticket
-					if(priority)
-						ares_apollo_talk("Priority Maintenance Report: '[name]', '[details]'.")
-					log_game("ARES: Maintenance Ticket created by [key_name(operator)] as [last_login] with Header '[name]' and Details of '[details]'.")
+					if(priority_report)
+						ares_apollo_talk("Priority Maintenance Report: '[maint_type]' - '[details]'")
+					log_game("ARES: Maintenance Ticket created by [key_name(operator)] as [last_login] with Category '[maint_type]' and Details of '[details]'.")
 					return TRUE
 			return FALSE
 

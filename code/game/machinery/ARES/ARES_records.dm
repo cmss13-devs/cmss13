@@ -85,12 +85,15 @@
 	var/ticket_name
 	/// The content of the ticket, usually an explanation of what it is for.
 	var/ticket_details
+	/// Whether or not the tickey is a priority.
+	var/ticket_priority
 
-/datum/ares_ticket/New(user, name, details)
+/datum/ares_ticket/New(user, name, details, priority)
 	ticket_time = worldtime2text()
 	ticket_submitter = user
 	ticket_details = details
 	ticket_name = name
+	ticket_priority = priority
 
 /datum/ares_ticket/maintenance
 	ticket_type = ARES_RECORD_MAINTENANCE

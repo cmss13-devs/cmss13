@@ -425,10 +425,10 @@ const MaintReports = (props, context) => {
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
-            <Flex.Item width="15rem" grow bold>
-              Title
+            <Flex.Item width="15rem" mr="1rem" bold>
+              Category
             </Flex.Item>
-            <Flex.Item width="35rem" textAlign="left">
+            <Flex.Item width="35rem" bold>
               Details
             </Flex.Item>
           </Flex>
@@ -436,13 +436,13 @@ const MaintReports = (props, context) => {
         {maintenance_tickets.map((ticket, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
-              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+              <Flex.Item italic width="6rem" shrink="0" mr="1rem">
                 {ticket.time}
               </Flex.Item>
-              <Flex.Item width="15rem" grow italic>
-                {ticket.title}
+              <Flex.Item width="15rem" mr="1rem">
+                {ticket.category}
               </Flex.Item>
-              <Flex.Item width="35rem" ml="1rem" shrink="0" textAlign="left">
+              <Flex.Item width="35rem" shrink="0" textAlign="left">
                 {ticket.details}
               </Flex.Item>
             </Flex>

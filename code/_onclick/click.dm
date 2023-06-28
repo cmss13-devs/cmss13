@@ -71,7 +71,9 @@
 		return
 
 	// Click handled elsewhere. (These clicks are not affected by the next_move cooldown)
-	if (click(A, mods) || A.clicked(src, mods, location, params))
+	if(click(A, mods))
+		return
+	if(A.clicked(src, mods, location, params))
 		return
 
 	// Default click functions from here on.
@@ -80,7 +82,8 @@
 		return
 
 	face_atom(A)
-
+	if(mods["middle"]) 
+		return
 	// Special type of click.
 	if (is_mob_restrained())
 		RestrainedClickOn(A)

@@ -154,6 +154,13 @@
 		to_chat(src, SPAN_NOTICE("You must be burrowed to do this."))
 		return
 
+	if(tunnel)
+		tunnel = FALSE
+		to_chat(src, SPAN_NOTICE("You stop tunneling."))
+		used_tunnel = TRUE
+		addtimer(CALLBACK(src, PROC_REF(do_tunnel_cooldown)), (caste ? caste.tunnel_cooldown : 5 SECONDS))
+		return
+
 	if(used_tunnel)
 		to_chat(src, SPAN_NOTICE("You must wait some time to do this."))
 		return
@@ -186,13 +193,6 @@
 			to_chat(src, SPAN_WARNING("There's something solid there to stop you emerging."))
 			return
 
-	if(tunnel)
-		tunnel = FALSE
-		to_chat(src, SPAN_NOTICE("You stop tunneling."))
-		used_tunnel = TRUE
-		addtimer(CALLBACK(src, PROC_REF(do_tunnel_cooldown)), (caste ? caste.tunnel_cooldown : 5 SECONDS))
-		return
-
 	if(!T || T.density)
 		to_chat(src, SPAN_NOTICE("You cannot tunnel to there!"))
 	tunnel = TRUE
@@ -202,6 +202,9 @@
 
 
 /mob/living/carbon/xenomorph/proc/process_tunnel(turf/T)
+	if(!tunnel)
+		return
+
 	if(world.time > tunnel_timer)
 		tunnel = FALSE
 		do_tunnel(T)

@@ -150,6 +150,7 @@
 	S["view_controller"] >> View_MC
 	S["observer_huds"] >> observer_huds
 	S["pref_special_job_options"] >> pref_special_job_options
+	S["pref_job_slots"] >> pref_job_slots
 
 	S["synth_name"] >> synthetic_name
 	S["synth_type"] >> synthetic_type
@@ -253,6 +254,7 @@
 	hotkeys = sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
 	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
 	pref_special_job_options = sanitize_islist(pref_special_job_options, list())
+	pref_job_slots = sanitize_islist(pref_job_slots, list())
 	vars["fps"] = fps
 
 	if(remembered_key_bindings)
@@ -328,6 +330,7 @@
 	S["view_controller"] << View_MC
 	S["observer_huds"] << observer_huds
 	S["pref_special_job_options"] << pref_special_job_options
+	S["pref_job_slots"] << pref_job_slots
 
 	S["synth_name"] << synthetic_name
 	S["synth_type"] << synthetic_type

@@ -993,6 +993,9 @@
 /obj/structure/closet,
 /obj/item/clothing/suit/armor/riot/marine/vintage_riot,
 /obj/item/clothing/head/helmet/riot/vintage_riot,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -4859,20 +4862,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
-"apQ" = (
-/obj/structure/disposalpipe/up/almayer{
-	dir = 8;
-	id = "almayerlink_ot_med"
-	},
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/door/window/southleft{
-	desc = "A window, that is also a door. A windoor if you will. This one is stronger.";
-	health = 500;
-	name = "Reinforced Glass door";
-	req_one_access_txt = "2;35"
-	},
-/turf/open/floor/almayer,
-/area/almayer/engineering/engineering_workshop/hangar)
 "apR" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/beakers{
@@ -6510,6 +6499,9 @@
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = -32
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -19285,6 +19277,39 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/starboard_hallway)
+"bBi" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/liaison_suit/formal,
+/obj/item/clothing/under/liaison_suit,
+/obj/item/clothing/under/liaison_suit/outing,
+/obj/item/clothing/under/liaison_suit/suspenders,
+/obj/item/clothing/under/blackskirt{
+	desc = "A stylish skirt, in a business-black and red colour scheme.";
+	name = "liaison's skirt"
+	},
+/obj/item/clothing/under/suit_jacket/charcoal{
+	desc = "A professional black suit and blue tie. A combination popular among government agents and corporate Yes-Men alike.";
+	name = "liaison's black suit"
+	},
+/obj/item/clothing/under/suit_jacket/navy{
+	desc = "A navy suit and red tie, intended for the Almayer's finest. And accountants.";
+	name = "liaison's navy suit"
+	},
+/obj/item/clothing/under/suit_jacket/trainee,
+/obj/item/clothing/under/liaison_suit/charcoal,
+/obj/item/clothing/under/liaison_suit/outing/red,
+/obj/item/clothing/under/liaison_suit/blazer,
+/obj/item/clothing/suit/storage/snow_suit/liaison,
+/obj/item/clothing/gloves/black,
+/obj/item/clothing/gloves/marine/dress,
+/obj/item/clothing/glasses/sunglasses/big,
+/obj/item/clothing/accessory/blue,
+/obj/item/clothing/accessory/red,
+/obj/structure/machinery/status_display{
+	pixel_x = -32
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliason)
 "bBl" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -19910,18 +19935,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/lower_engineering)
-"bEk" = (
-/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
-	dir = 1;
-	name = "\improper Requisitions Storage"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/squads/req)
 "bEl" = (
 /obj/structure/machinery/computer/supply_drop_console/limited,
 /turf/closed/wall/almayer,
@@ -28322,6 +28335,9 @@
 "cBd" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/wrapped/chunk,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
@@ -33609,6 +33625,9 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -36628,13 +36647,6 @@
 	icon_state = "redfull"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"gkg" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/closed/wall/almayer,
-/area/almayer/squads/req)
 "gks" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating,
@@ -37401,6 +37413,18 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/vehiclehangar)
+"gCu" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/folded_tent/cmd,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "gCw" = (
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_x = 10
@@ -38046,6 +38070,13 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/north2)
+"gVA" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 8;
+	id = "almayerlink_OT1_req"
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "gVF" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -38075,6 +38106,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
+"gXh" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/upper_hull/u_m_s)
 "gXl" = (
 /obj/structure/closet/secure_closet/personal/cabinet{
 	req_access_txt = "5"
@@ -38339,6 +38376,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/cryo_cells)
+"hcC" = (
+/obj/structure/disposalpipe/up/almayer{
+	id = "almayerlink_OT_req"
+	},
+/turf/closed/wall/almayer,
+/area/almayer/engineering/engineering_workshop/hangar)
 "hcI" = (
 /obj/structure/machinery/cryopod{
 	pixel_y = 6
@@ -39380,6 +39423,18 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
+"hBP" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/folded_tent/med,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "hBU" = (
 /obj/structure/largecrate/random/secure,
 /obj/effect/decal/warning_stripes{
@@ -44151,6 +44206,16 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/bridgebunks)
+"jUn" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/door/window/southleft{
+	desc = "A window, that is also a door. A windoor if you will. This one is stronger.";
+	health = 500;
+	name = "Reinforced Glass door";
+	req_one_access_txt = "2;35"
+	},
+/turf/open/floor/almayer,
+/area/almayer/engineering/engineering_workshop/hangar)
 "jUs" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -46746,6 +46811,12 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/navigation)
+"ley" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "leY" = (
 /obj/structure/bed/sofa/south/white/left,
 /turf/open/floor/almayer{
@@ -47927,6 +47998,10 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
+"lEW" = (
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall/almayer,
+/area/almayer/engineering/engineering_workshop/hangar)
 "lFb" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -50667,6 +50742,14 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_p)
+"mYv" = (
+/obj/structure/disposalpipe/sortjunction{
+	dir = 4;
+	negdir = 4;
+	posdir = 1
+	},
+/turf/closed/wall/almayer,
+/area/almayer/squads/req)
 "mYw" = (
 /obj/structure/sign/safety/escapepod{
 	pixel_x = -17;
@@ -52793,6 +52876,22 @@
 "nXP" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_f_s)
+"nXU" = (
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	dir = 1;
+	name = "\improper Requisitions Storage"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
+/obj/structure/disposalpipe/up/almayer{
+	dir = 4;
+	id = "almayerlink_OT1_req"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/squads/req)
 "nYc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -55683,6 +55782,18 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/aft_hallway)
+"pvF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/folded_tent/reqs,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "pvJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -59055,6 +59166,13 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/port_hallway)
+"qYC" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 4;
+	id = "almayerlink_OT_req"
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "qYG" = (
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -62460,36 +62578,6 @@
 	icon_state = "silvercorner"
 	},
 /area/almayer/hallways/aft_hallway)
-"sDL" = (
-/obj/structure/closet/cabinet,
-/obj/item/clothing/under/liaison_suit/formal,
-/obj/item/clothing/under/liaison_suit,
-/obj/item/clothing/under/liaison_suit/outing,
-/obj/item/clothing/under/liaison_suit/suspenders,
-/obj/item/clothing/under/blackskirt{
-	desc = "A stylish skirt, in a business-black and red colour scheme.";
-	name = "liaison's skirt"
-	},
-/obj/item/clothing/under/suit_jacket/charcoal{
-	desc = "A professional black suit and blue tie. A combination popular among government agents and corporate Yes-Men alike.";
-	name = "liaison's black suit"
-	},
-/obj/item/clothing/under/suit_jacket/navy{
-	desc = "A navy suit and red tie, intended for the Almayer's finest. And accountants.";
-	name = "liaison's navy suit"
-	},
-/obj/item/clothing/under/suit_jacket/trainee,
-/obj/item/clothing/gloves/black,
-/obj/item/clothing/gloves/marine/dress,
-/obj/item/clothing/glasses/sunglasses/big,
-/obj/item/clothing/accessory/blue,
-/obj/item/clothing/accessory/red,
-/obj/item/clothing/shoes/dress,
-/obj/structure/machinery/status_display{
-	pixel_x = -32
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliason)
 "sDM" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -66341,13 +66429,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/hydroponics)
-"urx" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/closed/wall/almayer,
-/area/almayer/engineering/engineering_workshop/hangar)
 "urM" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -68780,6 +68861,14 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/engineering/laundry)
+"vqO" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/upper_hull/u_a_p)
 "vqW" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -69934,6 +70023,18 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/grunt_rnr)
+"vSr" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/folded_tent/big,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "vSE" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/almayer{
@@ -71896,6 +71997,9 @@
 /obj/item/coin/silver{
 	desc = "A small coin, bearing the falling falcons insignia.";
 	name = "falling falcons challenge coin"
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -101419,8 +101523,8 @@ gfW
 bUe
 cbR
 ccr
-cmp
-urx
+hcC
+lEW
 aqd
 bWM
 bWM
@@ -101623,7 +101727,7 @@ iRx
 iEb
 bHa
 apm
-apQ
+jUn
 avT
 bWM
 bWM
@@ -104987,7 +105091,7 @@ yfv
 bit
 baw
 baw
-baw
+qYC
 kwo
 trb
 aag
@@ -105190,7 +105294,7 @@ abg
 ajC
 baw
 vbB
-baw
+ley
 kwo
 trb
 aag
@@ -105393,7 +105497,7 @@ avn
 aim
 baw
 dBp
-baw
+gVA
 tQV
 tQV
 aah
@@ -109044,7 +109148,7 @@ awE
 vGk
 xCX
 vGk
-csz
+hoX
 qVM
 csz
 qVM
@@ -109242,7 +109346,7 @@ fAo
 awE
 bhM
 wQv
-sDL
+bBi
 awE
 ieH
 qVM
@@ -109856,7 +109960,7 @@ awE
 csz
 iid
 csz
-csz
+hoX
 qVM
 noV
 csz
@@ -115282,7 +115386,7 @@ aag
 lYA
 aao
 aap
-aap
+gXh
 aao
 aap
 aap
@@ -116228,7 +116332,7 @@ bNQ
 bNQ
 bNQ
 bNQ
-bEk
+nXU
 bKA
 jac
 bCA
@@ -116431,7 +116535,7 @@ bNP
 bmD
 bNP
 bmD
-gkg
+mYv
 doP
 jac
 isS
@@ -117438,7 +117542,7 @@ bEi
 bZr
 bmD
 ngw
-pjG
+gCu
 boz
 bpR
 bpR
@@ -117641,7 +117745,7 @@ brp
 bZr
 bmD
 xId
-pjG
+hBP
 boz
 bpR
 bpR
@@ -118047,7 +118151,7 @@ buz
 bZr
 bmD
 dmE
-pjG
+pvF
 boz
 bpR
 bpR
@@ -118250,7 +118354,7 @@ bEm
 bZr
 bmD
 hAc
-pjG
+vSr
 boz
 bpR
 bpR
@@ -122848,7 +122952,7 @@ vuv
 vuv
 cxo
 cxo
-cxo
+vqO
 sXK
 tbD
 qMu

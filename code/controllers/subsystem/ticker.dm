@@ -424,7 +424,7 @@ SUBSYSTEM_DEF(ticker)
 
 	for(var/mob/living/carbon/human/player in GLOB.human_mob_list)
 		if(player.mind)
-			if(player.job == "Commanding Officers")
+			if(player.job == JOB_CO)
 				captainless = FALSE
 			if(player.job)
 				RoleAuthority.equip_role(player, RoleAuthority.roles_by_name[player.job], late_join = FALSE)

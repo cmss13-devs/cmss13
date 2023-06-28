@@ -117,7 +117,9 @@
 				// Tell the marines where the last one is.
 				var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
 				var/input = "Bioscan complete.\n\nSensors indicate one remaining unknown lifeform signature in [get_area(X)]."
-				marine_announcement(input, name, 'sound/AI/bioscan.ogg')
+				var/datum/ares_link/link = GLOB.ares_link
+				link.log_ares_bioscan(name, input)
+				marine_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
 				// Tell the xeno she is the last one.
 				if(X.client)
 					to_chat(X, SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"))
@@ -138,10 +140,10 @@
 
 	switch(caste.caste_type) //This will need to be changed later, when we have proper xeno pathing. Might do it on caste or something.
 		if(XENO_CASTE_BOILER)
-			var/mob/living/carbon/xenomorph/boiler/B = src
+			var/mob/living/carbon/xenomorph/boiler/src_boiler = src
 			visible_message(SPAN_DANGER("[src] begins to bulge grotesquely, and explodes in a cloud of corrosive gas!"))
-			B.smoke.set_up(2, 0, get_turf(src))
-			B.smoke.start()
+			src_boiler.smoke.set_up(2, 0, get_turf(src), new_cause_data = src_boiler.smoke.cause_data)
+			src_boiler.smoke.start()
 			remains.icon_state = "gibbed-a-corpse"
 		if(XENO_CASTE_RUNNER)
 			remains.icon_state = "gibbed-a-corpse-runner"

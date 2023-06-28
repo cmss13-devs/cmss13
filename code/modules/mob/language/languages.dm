@@ -147,7 +147,7 @@
 
 /datum/language/apollo
 	name = LANGUAGE_APOLLO
-	desc = "The Apollo Link is an AI subprocessor designed by SEEGSON, allowing for coordination of maintenance drones and Working Joes. WY denies claims the processor was stolen for ARES."
+	desc = "The APOLLO Link is an AI subprocessor designed by SEEGSON, allowing for coordination of maintenance drones and Working Joes. WY denies claims the processor was stolen for ARES."
 	color = "skrell"
 	speech_verb = "states"
 	ask_verb = "queries"
@@ -166,6 +166,8 @@
 	var/message_body = "<span class='message'>broadcasts, \"[message]\"</span></span></i>"
 	GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#FFFF00'>APOLLO: [key_name(speaker)] : [message]</font><br>")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
+	log_say("[speaker.name != "Unknown" ? speaker.name : "([speaker.real_name])"] \[APOLLO\]: [message] (CKEY: [speaker.key]) (JOB: [speaker.job])")
+	log_ares_apollo(speaker.real_name, message)
 	for (var/mob/dead in GLOB.dead_mob_list)
 		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
 			dead.show_message("<span class='[color]'>[message_start] [message_body]</span>", SHOW_MESSAGE_VISIBLE)

@@ -535,19 +535,15 @@
 	if(!input)
 		return FALSE
 
-	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
-		if(!(C.inoperable()))
-// var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
-// P.name = "'[MAIN_AI_SYSTEM] Update.'"
-// P.info = input
-// P.update_icon()
-			C.messagetitle.Add("[MAIN_AI_SYSTEM] Update")
-			C.messagetext.Add(input)
-			ai_announcement(input)
-			message_admins("[key_name_admin(src)] has created an AI comms report")
-			log_admin("AI comms report: [input]")
-		else
-			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+	var/datum/ares_link/link = GLOB.ares_link
+	if(link.p_interface.inoperable())
+		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+		return
+
+	ai_announcement(input)
+	message_admins("[key_name_admin(src)] has created an AI comms report")
+	log_admin("AI comms report: [input]")
+
 
 /client/proc/cmd_admin_create_AI_apollo_report()
 	set name = "Report: ARES Apollo"
@@ -560,19 +556,19 @@
 	if(!input)
 		return FALSE
 
-	for(var/obj/structure/machinery/computer/almayer_control/console in machines)
-		if(console.inoperable())
-			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
-			return
-		else
-			var/datum/language/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
-			for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
-				apollo.broadcast(AI, input)
-			for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
-				if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
-					playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
-			message_admins("[key_name_admin(src)] has created an AI Apollo report")
-			log_admin("AI Apollo report: [input]")
+	var/datum/ares_link/link = GLOB.ares_link
+	if(link.p_apollo.inoperable())
+		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+		return FALSE
+
+	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
+	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
+		apollo.broadcast(AI, input)
+	for(var/mob/listener as anything in (GLOB.human_mob_list + GLOB.dead_mob_list))
+		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
+			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+	message_admins("[key_name_admin(src)] has created an AI APOLLO report")
+	log_admin("AI APOLLO report: [input]")
 
 /client/proc/cmd_admin_create_AI_shipwide_report()
 	set name = "Report: ARES Shipwide"
@@ -584,19 +580,14 @@
 	var/input = input(usr, "This is an announcement type message from the ship's AI. This will be announced to every conscious human on Almayer z-level. Be aware, this will work even if ARES unpowered/destroyed. Check with online staff before you send this.", "What?", "") as message|null
 	if(!input)
 		return FALSE
+	for(var/obj/structure/machinery/ares/processor/interface/processor in machines)
+		if(processor.inoperable())
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+			return
 
-	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
-		if(!(C.inoperable()))
-// var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
-// P.name = "'[MAIN_AI_SYSTEM] Update.'"
-// P.info = input
-// P.update_icon()
-			C.messagetitle.Add("[MAIN_AI_SYSTEM] Shipwide Update")
-			C.messagetext.Add(input)
-
-	shipwide_ai_announcement(input)
-	message_admins("[key_name_admin(src)] has created an AI shipwide report")
-	log_admin("[key_name_admin(src)] AI shipwide report: [input]")
+		shipwide_ai_announcement(input)
+		message_admins("[key_name_admin(src)] has created an AI shipwide report")
+		log_admin("[key_name_admin(src)] AI shipwide report: [input]")
 
 /client/proc/cmd_admin_create_predator_report()
 	set name = "Report: Yautja AI"
@@ -973,7 +964,11 @@
 			if("Xeno")
 				GLOB.bioscan_data.qm_bioscan(variance)
 			if("Marine")
-				GLOB.bioscan_data.ares_bioscan(FALSE, variance)
+				var/force_check = tgui_alert(usr, "Do you wish to force ARES to display the bioscan?", "Display force", list("Yes", "No"), 20 SECONDS)
+				var/force_status = FALSE
+				if(force_check == "Yes")
+					force_status = TRUE
+				GLOB.bioscan_data.ares_bioscan(force_status, variance)
 			if("Yautja")
 				GLOB.bioscan_data.yautja_bioscan()
 

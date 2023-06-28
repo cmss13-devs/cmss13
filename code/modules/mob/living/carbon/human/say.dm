@@ -115,7 +115,7 @@
 	message = capitalize(trim(message))
 	message = process_chat_markup(message, list("~", "_"))
 
-	if(speech_problem_flag)
+	if(speech_problem_flag) //this will be called later if used for radio, we have to call it later due to shitcode in radio
 		var/list/handle_r = handle_speech_problems(message)
 		message = handle_r[1]
 		verb = handle_r[2]
@@ -173,9 +173,6 @@
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon/human, say_to_radios), used_radios, message, message_mode, verb, speaking)
 
 /mob/living/carbon/human/proc/say_to_radios(used_radios, message, message_mode, verb, speaking)
-	var/list/handle_r = handle_speech_problems(message)
-	message = handle_r[1]
-	verb = handle_r[2]
 	for(var/obj/item/device/radio/R in used_radios)
 		R.talk_into(src, message, message_mode, verb, speaking)
 
@@ -304,6 +301,7 @@ for it but just ignore it.
 			message = uppertext(message)
 			verb = pick("yells like an idiot","says rather loudly")
 	if(HAS_TRAIT(src, TRAIT_LISPING))
+		handled = 1
 		var/old_message = message
 		message = lisp_replace(message)
 		if(old_message != message)

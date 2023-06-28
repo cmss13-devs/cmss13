@@ -59,11 +59,13 @@
 		return
 
 	ADD_TRAIT(target, TRAIT_LISPING, TRAIT_SOURCE_QUIRK)
+	target.speech_problem_flag = 1
 
 	..()
 
 /datum/character_trait/biology/lisp/unapply_trait(mob/living/carbon/human/target)
 	REMOVE_TRAIT(target, TRAIT_LISPING, TRAIT_SOURCE_QUIRK)
+	target.speech_problem_flag = 0
 	..()
 
 /datum/character_trait/biology/bad_leg

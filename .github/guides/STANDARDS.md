@@ -126,7 +126,7 @@ While we normally encourage (and in some cases, even require) bringing out of da
 This is a simple one - as we will eventually move to 515, we will need to ditch this kind of callback. So please don't add any new ones. Make our lives easier.
 
 ### PROC_REF Macros
- When referencing procs in RegisterSignal, Callback and other procs you should use PROC_REF,TYPE_PROC_REF and GLOBAL_PROC_REF macros.
+ When referencing procs in RegisterSignal, Callback and other procs you should use PROC_REF, TYPE_PROC_REF and GLOBAL_PROC_REF macros.
  They ensure compilation fails if the reffered to procs change names or get removed.
  The macro to be used depends on how the proc you're in relates to the proc you want to use:
 
@@ -167,6 +167,8 @@ This is a simple one - as we will eventually move to 515, we will need to ditch 
  /mob/subtype/proc/do_something()
  	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(funny)), 100))
  ```
+
+ Note that the same rules go for verbs too! We have VERB_REF() and TYPE_VERB_REF() as you need it in these same cases. GLOBAL_VERB_REF() isn't a thing however, as verbs are not global.
 
 ### Signal Handlers
 

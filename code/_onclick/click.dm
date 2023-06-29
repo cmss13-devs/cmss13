@@ -82,7 +82,7 @@
 		return
 
 	face_atom(A)
-	if(mods["middle"]) 
+	if(mods["middle"])
 		return
 	// Special type of click.
 	if (is_mob_restrained())
@@ -334,7 +334,7 @@
 	if(prefs.adaptive_zoom)
 		INVOKE_ASYNC(src, PROC_REF(adaptive_zoom))
 	else if(prefs.auto_fit_viewport)
-		INVOKE_ASYNC(src, .verb/fit_viewport)
+		INVOKE_ASYNC(src, VERB_REF(fit_viewport))
 
 /client/proc/get_adaptive_zoom_factor()
 	if(!prefs.adaptive_zoom)

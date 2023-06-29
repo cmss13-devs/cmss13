@@ -41,7 +41,7 @@
 		return
 
 	var/obj/effect/alien/weeds/weed = node || locate() in turf
-	if (weed && weed.weed_strength >= WEED_LEVEL_HIVE)
+	if(weed && weed.weed_strength >= WEED_LEVEL_HIVE)
 		to_chat(xeno, SPAN_WARNING("These weeds are too strong to plant a node on!"))
 		return
 
@@ -65,11 +65,11 @@
 	var/obj/effect/alien/weeds/node/new_node = new node_type(xeno.loc, src, xeno)
 
 	if(to_convert)
-		for(var/weed in to_convert)
-			var/turf/target_turf = get_turf(weed)
+		for(var/cur_weed in to_convert)
+			var/turf/target_turf = get_turf(cur_weed)
 			if(target_turf && !target_turf.density)
 				new /obj/effect/alien/weeds(target_turf, new_node)
-			qdel(weed)
+			qdel(cur_weed)
 
 	playsound(xeno.loc, "alien_resin_build", 25)
 	apply_cooldown()

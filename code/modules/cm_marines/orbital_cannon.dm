@@ -353,7 +353,7 @@ var/list/ob_type_fuel_requirements
 /obj/structure/ob_ammo/warhead
 	name = "theoretical orbital ammo"
 	var/warhead_kind
-	var/frequency
+	var/shake_frequency
 	var/max_shake_factor
 	var/max_knockdown_time
 
@@ -401,7 +401,7 @@ var/list/ob_type_fuel_requirements
 		return TRUE
 	return FALSE
 
-// proc designed for handling ob camera shakes, takes the target location as input and calculates camera shake based off user location.
+/// proc designed for handling ob camera shakes, takes the target location as input and calculates camera shake based off user location.
 /obj/structure/ob_ammo/warhead/proc/handle_ob_shake(turf/epicenter)
 
 	var/radius_size = 30
@@ -414,10 +414,10 @@ var/list/ob_type_fuel_requirements
 
 		// it's of type cluster.
 		if(!max_knockdown_time)
-			shake_camera(user, 0.5, total_shake_factor, frequency)
+			shake_camera(user, 0.5, total_shake_factor, shake_frequency)
 			continue
 
-		shake_camera(user, 3, total_shake_factor, frequency)
+		shake_camera(user, 3, total_shake_factor, shake_frequency)
 		user.KnockDown(rand(max_knockdown_time * distance_percent, (max_knockdown_time * distance_percent + 1)))
 
 		if(!user.knocked_down)
@@ -428,7 +428,7 @@ var/list/ob_type_fuel_requirements
 	name = "\improper HE orbital warhead"
 	warhead_kind = "explosive"
 	icon_state = "ob_warhead_1"
-	frequency = 3
+	shake_frequency = 3
 	max_shake_factor = 15
 	max_knockdown_time = 6
 
@@ -466,13 +466,13 @@ var/list/ob_type_fuel_requirements
 			sleep(double_explosion_delay)
 			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
-			return
+	return
 
 /obj/structure/ob_ammo/warhead/incendiary
 	name = "\improper Incendiary orbital warhead"
 	warhead_kind = "incendiary"
 	icon_state = "ob_warhead_2"
-	frequency = 1
+	shake_frequency = 1
 	max_shake_factor = 8
 	max_knockdown_time = 3
 	var/clear_power = 1200
@@ -504,7 +504,7 @@ var/list/ob_type_fuel_requirements
 	name = "\improper Cluster orbital warhead"
 	warhead_kind = "cluster"
 	icon_state = "ob_warhead_3"
-	frequency = 2
+	shake_frequency = 2
 	max_shake_factor = 1
 
 	var/total_amount = 75 // how many times will the shell fire?

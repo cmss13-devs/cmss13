@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed the crashsite offset for a hijack shuttle that gets deterred by the MGAD System"

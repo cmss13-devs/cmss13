@@ -6,6 +6,7 @@
 #define CAMERA_NET_ALAMO "Alamo"
 #define CAMERA_NET_NORMANDY "Normandy"
 #define CAMERA_NET_COLONY "Colony"
+#define CAMERA_NET_ARES "ARES"
 
 #define CAMERA_NET_MILITARY "Military"
 #define CAMERA_NET_OVERWATCH "Overwatch"

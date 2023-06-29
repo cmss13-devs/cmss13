@@ -102,7 +102,11 @@
 
 ///Includes restricted accesses
 /proc/get_all_marine_access()
-	return list(ACCESS_MARINE_CO) + get_main_marine_access()
+	return list(
+		ACCESS_MARINE_CO,
+		ACCESS_MARINE_AI,
+		ACCESS_MARINE_AI_TEMP,
+		) + get_main_marine_access()
 
 ///All Almayer accesses other than the highly restricted ones, such as CO's office.
 /proc/get_main_marine_access()
@@ -256,6 +260,7 @@
 		if(ACCESS_MARINE_SEA) return "SEA's Office"
 		if(ACCESS_MARINE_KITCHEN) return "Kitchen"
 		if(ACCESS_MARINE_SYNTH) return "Synthetic Storage"
+		if(ACCESS_MARINE_AI) return "AI Core"
 
 /proc/get_weyland_access_desc(A)
 	switch(A)

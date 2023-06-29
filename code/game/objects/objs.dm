@@ -302,11 +302,9 @@
 		src.add_fingerprint(user)
 		afterbuckle(target)
 		if(buckle_lying) // Make sure buckling to beds/nests etc only turns, and doesn't give a random offset
-			var/matrix/M = matrix()
-			var/matrix/L = matrix() //Counterrotation for langchat text.
-			M.Turn(90)
-			L.Turn(270)
-			target.apply_transform(M)
+			var/matrix/new_matrix = matrix()
+			new_matrix.Turn(90)
+			target.apply_transform(new_matrix)
 		return TRUE
 
 /obj/proc/send_buckling_message(mob/M, mob/user)

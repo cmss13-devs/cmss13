@@ -23,7 +23,7 @@
 	stafftype = "[admin_holder.rank]"
 
 	msg = strip_html(msg)
-	log_admin("[key_name(src)] : [msg]")
+	log_admin("DEAD: [key_name(src)] : [msg]")
 
 	if (!msg)
 		return

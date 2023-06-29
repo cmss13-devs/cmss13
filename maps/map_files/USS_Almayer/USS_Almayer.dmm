@@ -56372,7 +56372,6 @@
 "pbh" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/closet/secure_closet/warden,
 /obj/structure/machinery/light{
 	dir = 4
 	},

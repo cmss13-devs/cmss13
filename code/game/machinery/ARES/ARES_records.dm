@@ -79,6 +79,8 @@
 	var/ticket_assignee
 	/// World time in text format.
 	var/ticket_time
+	/// Unique ID of ticket for easy reference
+	var/ticket_id
 	/// Who submitted the ticket. Derived from last login.
 	var/ticket_submitter
 	/// The name of the ticket.
@@ -86,11 +88,16 @@
 	/// The content of the ticket, usually an explanation of what it is for.
 	var/ticket_details
 
-/datum/ares_ticket/New(user, name, details)
+/datum/ares_ticket/New(user, id, name, details)
 	ticket_time = worldtime2text()
+	ticket_id = id
 	ticket_submitter = user
 	ticket_details = details
 	ticket_name = name
+	/// broadcast ticket
+	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
+	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
+		apollo.broadcast(AI, "[ticket_type] [ticket_id] '[ticket_name]' has been created. Consult APOLLO for further details.")
 
 /datum/ares_ticket/maintenance
 	ticket_type = ARES_RECORD_MAINTENANCE

@@ -690,6 +690,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 		if(!istype(maint_ticket))
 			continue
 		var/list/current_maint = list()
+		current_maint["id"] = maint_ticket.ticket_id
 		current_maint["time"] = maint_ticket.ticket_time
 		current_maint["title"] = maint_ticket.ticket_name
 		current_maint["details"] = maint_ticket.ticket_details
@@ -703,6 +704,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 	var/list/logged_access = list()
 	for(var/datum/ares_ticket/access_ticket/access_ticket as anything in link.tickets_access)
 		var/list/current_ticket = list()
+		current_ticket["id"] = access_ticket.ticket_id
 		current_ticket["time"] = access_ticket.ticket_time
 		current_ticket["title"] = access_ticket.ticket_name
 		current_ticket["details"] = access_ticket.ticket_details
@@ -805,9 +807,21 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 			var/confirm = tgui_alert(usr, "Please confirm the submission of your maintenance report. \n\n [name] \n\n [details] \n\n Is this correct?", "Confirmation", list("Yes", "No"))
 			if(confirm == "Yes")
 				if(link)
-					var/datum/ares_ticket/maintenance/maint_ticket = new(last_login, name, details)
+					//make a unique ID for the ticket
+					//will be 4 digit ticket with first digit being ARES access level
+					//loop that stays until unique ticket made
+					var/unique_id = ""
+					var/uniqueness = FALSE
+					while(!uniqueness)
+						unique_id = "#[authentication][rand(9)][rand(9)][rand(9)]"
+						uniqueness = TRUE
+						//verify that no ticket IDs are the same, if they are, we run this loop again
+						for(var/datum/ares_ticket/maintenance/ticket in link.tickets_maintenance)
+							if(ticket.ticket_id == unique_id)
+								uniqueness = FALSE
+					var/datum/ares_ticket/maintenance/maint_ticket = new(last_login, unique_id, name, details)
 					link.tickets_maintenance += maint_ticket
-					log_game("ARES: Maintenance Ticket created by [key_name(operator)] as [last_login] with Header '[name]' and Details of '[details]'.")
+					log_game("ARES: Maintenance Ticket [unique_id] created by [key_name(operator)] as [last_login] with Header '[name]' and Details of '[details]'.")
 					return TRUE
 			return FALSE
 

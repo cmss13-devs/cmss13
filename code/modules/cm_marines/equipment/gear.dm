@@ -53,6 +53,7 @@
 	anchored = FALSE
 	var/uncloak_time = 3 //in SECONDS, this is how long it takes for the tarp to become fully visible again once it's opened from an invisible state
 	var/cloak_time = 15 //ditto for cloaking
+	var/delay_time = 0 //in SECONDS, used to implement a delay before tarp can be entered again after opened (anti-exploit)
 	var/closed_alpha = 60 //how much ALPHA the tarp has once it's fully cloaked.
 	var/can_store_dead = FALSE
 	var/is_animating = FALSE
@@ -137,10 +138,14 @@
 			return
 
 /obj/structure/closet/bodybag/tarp/open()
+	delay_time = world.time + 3 SECONDS //3 seconds must past before tarp can be closed again
 	. = ..()
 	handle_cloaking()
 
 /obj/structure/closet/bodybag/tarp/close()
+	if(delay_time > world.time)
+		to_chat(usr, SPAN_WARNING("It is too soon to close the [src]!"))
+		return FALSE
 	. = ..()
 	handle_cloaking()
 

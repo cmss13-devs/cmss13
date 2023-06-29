@@ -4,6 +4,7 @@
 	anchored = FALSE
 	density = FALSE
 	drag_delay = 1
+	base_pixel_x = 5
 
 	var/mob/living/carbon/attached = null
 	var/mode = 1 // 1 is injecting, 0 is taking blood.

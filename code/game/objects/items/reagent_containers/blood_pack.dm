@@ -63,6 +63,7 @@
 		user.visible_message("[user] detaches [src] from [connected_to].", \
 			"You detach [src] from [connected_to].")
 		connected_to.active_transfusions -= src
+		connected_to.base_pixel_x = 0
 		connected_to = null
 		connected_from = null
 		delete_beam()
@@ -83,6 +84,7 @@
 		connected_to = attacked_mob
 		connected_from = user
 		connected_to.active_transfusions += src
+		connected_to.base_pixel_x = 5
 		START_PROCESSING(SSobj, src)
 		user.visible_message("[user] attaches \the [src] to [connected_to].", \
 			"You attach \the [src] to [connected_to].")
@@ -145,6 +147,7 @@
 	if(connected_to.pain.feels_pain)
 		connected_to.emote("scream")
 	connected_to.active_transfusions -= src
+	connected_to.base_pixel_x = 0
 	connected_to = null
 	connected_from = null
 	delete_beam()

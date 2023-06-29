@@ -53,12 +53,12 @@
 	anchored = FALSE
 	var/uncloak_time = 3 //in SECONDS, this is how long it takes for the tarp to become fully visible again once it's opened from an invisible state
 	var/cloak_time = 15 //ditto for cloaking
-	var/delay_time = 0 //in SECONDS, used to implement a delay before tarp can be entered again after opened (anti-exploit)
 	var/closed_alpha = 60 //how much ALPHA the tarp has once it's fully cloaked.
 	var/can_store_dead = FALSE
 	var/is_animating = FALSE
 	var/first_open = TRUE
 	exit_stun = 0
+	COOLDOWN_DECLARE(toggle_delay)//used to implement a delay before tarp can be entered again after opened (anti-exploit)
 
 /obj/structure/closet/bodybag/tarp/snow
 	icon_state = "snowtarp_closed"
@@ -92,9 +92,9 @@
 	exit_stun = 1
 	can_store_dead = TRUE
 
-/obj/structure/closet/bodybag/tarp/reactive/scout/close()
+/obj/structure/closet/bodybag/tarp/reactive/scout/close(mob/user)
 	if(!skillcheck(usr, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && usr.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
-		to_chat(usr, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	. = ..()
 
@@ -138,13 +138,13 @@
 			return
 
 /obj/structure/closet/bodybag/tarp/open()
-	delay_time = world.time + 3 SECONDS //3 seconds must past before tarp can be closed again
+	COOLDOWN_START(src,toggle_delay,3 SECONDS) //3 seconds must pass before tarp can be closed
 	. = ..()
 	handle_cloaking()
 
-/obj/structure/closet/bodybag/tarp/close()
-	if(delay_time > world.time)
-		to_chat(usr, SPAN_WARNING("It is too soon to close [src]!"))
+/obj/structure/closet/bodybag/tarp/close(mob/user)
+	if(!COOLDOWN_FINISHED(src, toggle_delay))
+		to_chat(user, SPAN_WARNING("It is too soon to close [src]!"))
 		return FALSE
 	. = ..()
 	handle_cloaking()

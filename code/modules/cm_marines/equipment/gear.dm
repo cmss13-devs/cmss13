@@ -144,7 +144,7 @@
 
 /obj/structure/closet/bodybag/tarp/close()
 	if(delay_time > world.time)
-		to_chat(usr, SPAN_WARNING("It is too soon to close the [src]!"))
+		to_chat(usr, SPAN_WARNING("It is too soon to close [src]!"))
 		return FALSE
 	. = ..()
 	handle_cloaking()

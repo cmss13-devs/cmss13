@@ -430,3 +430,15 @@
   - bugfix: door_control buttons now respect being indestructable when processing
       explosions.
   - maptweak: Fixed the M39s overflowing in brig armory due to use of landmarks.
+2023-06-30:
+  Drathek:
+  - bugfix: Fix runtimes with minimap subsystem not handling targets inside of objects
+      during removal
+  - code_imp: Ported VERB_REF and TYPE_VERB_REF from TG for 515 compatibility
+  - code_imp: Removed unnecessary calculations when updating a mob's transform.
+  Morrow:
+  - rscdel: Removed wrong warden locker
+  TheGamerdk:
+  - bugfix: You can now re-enter your body when unnested, marine mains, rejoice!
+  - bugfix: Lurkers no longer lose their pounce if they happen to end their pounce
+      on a tile with a dead human

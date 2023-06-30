@@ -211,6 +211,9 @@
 //ie. naming a regulation tape "example" will become regulation tape (example)
 #define TRAIT_ITEM_RENAME_SPECIAL "t_item_rename_special"
 
+// This item can't be implanted into someone, regardless of the size of the item.
+#define TRAIT_ITEM_NOT_IMPLANTABLE "t_item_not_implantable"
+
 //-- structure traits --
 // TABLE TRAITS
 /// If the table is being flipped, prevent any changes that will mess with adjacency handling

@@ -398,7 +398,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/is_nested = (buckled && istype(buckled, /obj/structure/bed/nest)) ? TRUE : FALSE
 		var/obj/structure/bed/nest/nest = FALSE
 		if(is_nested)
-			text_prompt += "\nSince you're nested, you will be given a chance to reenter your body upon being freed."
+			text_prompt += "\nSince you're nested, you will get a chance to reenter your body if freed."
 			nest = buckled
 		var/response = tgui_alert(src, text_prompt, "Are you sure you want to ghost?", options)
 		if(response == "Aghost")

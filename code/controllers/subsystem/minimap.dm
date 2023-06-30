@@ -498,6 +498,10 @@ SUBSYSTEM_DEF(minimaps)
 	data["updatedCanvas"] = updated_canvas
 	return data
 
+/datum/tacmap/ui_close(mob/user)
+	. = ..()
+	updated_canvas = FALSE
+
 /datum/tacmap/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state){
 	. = ..()
 	if(.)

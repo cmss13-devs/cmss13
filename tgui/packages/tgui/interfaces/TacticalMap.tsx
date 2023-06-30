@@ -104,7 +104,7 @@ export const TacticalMap = (props, context) => {
               />
             </Stack.Item>
           </Stack>
-          <Stack spacing={30}>
+          <Stack>
           <Stack.Item grow>
             {timeLeft > 0 && (
               <ProgressBar

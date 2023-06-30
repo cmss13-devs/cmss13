@@ -139,7 +139,7 @@
 			return
 
 /obj/structure/closet/bodybag/tarp/open()
-	COOLDOWN_START(src,toggle_delay,3 SECONDS) //3 seconds must pass before tarp can be closed
+	COOLDOWN_START(src, toggle_delay, 3 SECONDS) //3 seconds must pass before tarp can be closed
 	. = ..()
 	handle_cloaking()
 

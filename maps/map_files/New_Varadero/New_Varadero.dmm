@@ -1100,10 +1100,6 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
 	},
-/obj/item/clothing/mask/gas/yautja{
-	pixel_x = 1;
-	pixel_y = -12
-	},
 /turf/open/shuttle{
 	icon_state = "floor6"
 	},
@@ -6763,16 +6759,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior_protected/vessel)
-"eIt" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior_protected/maintenance/south)
 "eIT" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/bottle/sake{
@@ -48527,7 +48513,7 @@ ksX
 ksX
 ksX
 xxk
-eIt
+cto
 etv
 ksX
 mCF

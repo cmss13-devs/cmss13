@@ -58,7 +58,8 @@
 	var/is_animating = FALSE
 	var/first_open = TRUE
 	exit_stun = 0
-	COOLDOWN_DECLARE(toggle_delay)//used to implement a delay before tarp can be entered again after opened (anti-exploit)
+	/// used to implement a delay before tarp can be entered again after opened (anti-exploit)
+	COOLDOWN_DECLARE(toggle_delay)
 
 /obj/structure/closet/bodybag/tarp/snow
 	icon_state = "snowtarp_closed"

@@ -149,7 +149,7 @@
 
 /obj/structure/closet/proc/toggle(mob/living/user)
 	user.next_move = world.time + 5
-	if(!(src.opened ? src.close() : src.open()))
+	if(!(src.opened ? src.close(user) : src.open()))
 		to_chat(user, SPAN_NOTICE("It won't budge!"))
 	return
 

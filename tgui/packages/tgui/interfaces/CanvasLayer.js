@@ -31,7 +31,7 @@ export class CanvasLayer extends Component {
 
   componentDidMount() {
     this.ctx = this.canvasRef.current.getContext('2d');
-    this.ctx.lineWidth = 2;
+    this.ctx.lineWidth = 4;
     this.ctx.lineCap = 'round';
 
     this.img = new Image();
@@ -172,7 +172,7 @@ export class CanvasLayer extends Component {
 
     if (selection === 'export') {
 
-      this.props.onImageExport(String(this.canvasRef.current.toDataURL("image/jpeg", 0.4)));
+      this.props.onImageExport(String(this.canvasRef.current.toDataURL("image/jpeg", 0.5)));
 
       return;
     }

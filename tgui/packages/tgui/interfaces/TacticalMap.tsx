@@ -36,17 +36,34 @@ export const TacticalMap = (props, context) => {
     'green'
   ];
 
+  const colors: Record<string, string> = {
+    'black': '#000000',
+    'red': '#FC0000',
+    'orange': '#F59A07',
+    'blue': '#0561F5',
+    'purple': '#C002FA',
+    'green': '#02c245'
+  };
+
+  const handleColorSelection = () => {
+    if(colors[data.toolbarUpdatedSelection] != null && colors[data.toolbarUpdatedSelection] != undefined){
+      return colors[data.toolbarUpdatedSelection];
+    } else {
+      return data.toolbarUpdatedSelection;
+    }
+  }
+
   return (
     <Window title={'Tactical Map'} theme="usmc" width={650} height={750}>
       <Window.Content>
         <Section>
           <CanvasLayer
-            selection={data.toolbarUpdatedSelection}
+            selection={handleColorSelection()}
             imageSrc={data.imageSrc}
             onImageExport={handleTacMapExport}
           />
         </Section>
-        <Section title="Canvas Options">
+        <Section title="Canvas Options" className={"canvas-options"}>
           <Stack>
             <Stack.Item grow>
             {(!data.updatedCanvas && (
@@ -55,6 +72,8 @@ export const TacticalMap = (props, context) => {
                   fluid={1}
                   disabled={!canUpdate}
                   color="red"
+                  icon="download"
+                  className="text-center"
                   content="Update Canvas"
                   onClick={() => act('updateCanvas')}
                 />
@@ -63,7 +82,7 @@ export const TacticalMap = (props, context) => {
                   fontSize="10px"
                   fluid={1}
                   color="green"
-                  icon="checkmark"
+                  icon="bullhorn"
                   content="Announce"
                   className="text-center"
                   onClick={() =>
@@ -104,7 +123,7 @@ export const TacticalMap = (props, context) => {
               />
             </Stack.Item>
           </Stack>
-          <Stack>
+          <Stack className={"progress-stack"} >
           <Stack.Item grow>
             {timeLeft > 0 && (
               <ProgressBar

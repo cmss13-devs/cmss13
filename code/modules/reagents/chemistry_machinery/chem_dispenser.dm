@@ -1,5 +1,6 @@
 /obj/structure/machinery/chem_dispenser
-	name = "chem dispenser"
+	name = "chemical dispenser"
+	desc = "A complex machine for mixing elements into chemicals. A Wey-Yu product."
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
@@ -20,6 +21,12 @@
 	var/list/dispensable_reagents = list("hydrogen","lithium","carbon","nitrogen","oxygen","fluorine",
 	"sodium","aluminum","silicon","phosphorus","sulfur","chlorine","potassium","iron",
 	"copper","mercury","radium","water","ethanol","sugar","sulphuric acid")
+
+/obj/structure/machinery/chem_dispenser/get_examine_text(mob/user)
+	. = ..()
+	if(in_range(user, src) || istype(user, /mob/dead/observer))
+		var/charge = round((energy / max_energy) * 100)
+		. += SPAN_NOTICE("The charge meter reads [charge]%")
 
 /obj/structure/machinery/chem_dispenser/medbay
 	network = "Medbay"

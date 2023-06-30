@@ -286,7 +286,7 @@
 	var/bonus_larva_spawn_chance = 1
 	var/hijack_burrowed_surge = FALSE //at hijack, start spawning lots of burrowed
 	/// how many burrowed is going to spawn during larva surge
-	var/hijack_burrowed_left = 0 
+	var/hijack_burrowed_left = 0
 
 	var/ignore_slots = FALSE
 	var/dynamic_evolution = TRUE
@@ -1006,7 +1006,10 @@
 
 /datum/hive_status/proc/can_spawn_as_hugger(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
-		return
+		return FALSE
+	if(jobban_isbanned(user, JOB_XENOMORPH)) // User is jobbanned
+		to_chat(user, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
+		return FALSE
 	if(world.time < hugger_timelock)
 		to_chat(user, SPAN_WARNING("The hive cannot support facehuggers yet..."))
 		return FALSE

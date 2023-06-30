@@ -1,0 +1,4 @@
+author: "TheGamerdk"
+delete-after: True
+changes:
+  - rscadd: "ARES will announce how many Foxtrot marines that woke up."

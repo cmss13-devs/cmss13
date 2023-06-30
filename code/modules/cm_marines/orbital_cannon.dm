@@ -465,8 +465,7 @@ var/list/ob_type_fuel_requirements
 			handle_ob_shake(target)
 			sleep(double_explosion_delay)
 			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
-
-	return
+			return
 
 /obj/structure/ob_ammo/warhead/incendiary
 	name = "\improper Incendiary orbital warhead"

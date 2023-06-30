@@ -518,9 +518,10 @@ SUBSYSTEM_DEF(minimaps)
 
 		if ("selectAnnouncement")
 			toolbar_selection = "export"
-			to_chat(usr, SPAN_WARNING("params1 -> [params["image"]]"))
-
 			// params["image"] <- "should" be of type png returned from tgui
+
+			//hardcoded testing, PROGRESS!
+			marine_announcement("<img src=[params["image"]] height=600 width=100%>", "Marine Major")
 			. = TRUE
 
 }

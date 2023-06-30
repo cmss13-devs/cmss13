@@ -15,15 +15,9 @@ export const TacticalMap = (props, context) => {
   const { data, act } = useBackend<TacMapProps>(context);
 
   // maybe this is the right way of doing this, maybe not, idk.
-  const handleTacMapExport = (image: string) => {
-    if (image === null || image === undefined){
-      data.exportedTacMapImage = "not found";
-    }
-    else {
+  const handleTacMapExport = (image: any) => {
       data.exportedTacMapImage = image;
-    }
   };
-
 
   return (
     <Window title={'Tactical Map'} theme="usmc" width={650} height={750}>

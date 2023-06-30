@@ -516,13 +516,11 @@ SUBSYSTEM_DEF(minimaps)
 
 		if ("updateCanvas")
 			if(alert(user, "Are you sure you want to update the canvas changes?", "Confirm?", "Yes", "No") == "No")
-				toolbar_updated_selection = "clear"
 				return
 
 			toolbar_updated_selection = "export"
 			COOLDOWN_START(src, canvas_cooldown, canvas_cooldown_time)
 			updated_canvas = TRUE
-			// callback timer for when the user can update again
 			. = TRUE
 
 		if ("undoChange")
@@ -543,6 +541,8 @@ SUBSYSTEM_DEF(minimaps)
 					toolbar_color_selection = "blue"
 				if("green")
 					toolbar_color_selection = "green"
+				if("brown")
+					toolbar_color_selection = "brown"
 			toolbar_updated_selection = toolbar_color_selection
 			. = TRUE
 

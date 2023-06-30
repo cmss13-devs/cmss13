@@ -33,7 +33,8 @@ export const TacticalMap = (props, context) => {
     'orange',
     'blue',
     'purple',
-    'green'
+    'green',
+    'brown'
   ];
 
   const colors: Record<string, string> = {
@@ -42,7 +43,8 @@ export const TacticalMap = (props, context) => {
     'orange': '#F59A07',
     'blue': '#0561F5',
     'purple': '#C002FA',
-    'green': '#02c245'
+    'green': '#02c245',
+    'brown': '#5C351E'
   };
 
   const handleColorSelection = () => {
@@ -95,8 +97,8 @@ export const TacticalMap = (props, context) => {
               <Button
                 fontSize="10px"
                 fluid={1}
-                icon="trash"
                 color="grey"
+                icon="trash"
                 content="Clear Canvas"
                 className="text-center"
                 onClick={() => act('clearCanvas')}
@@ -106,8 +108,8 @@ export const TacticalMap = (props, context) => {
               <Button
                 fontSize="10px"
                 fluid={1}
-                icon="recycle"
                 color="grey"
+                icon="recycle"
                 content="Undo"
                 className="text-center"
                 onClick={() => act('undoChange')}

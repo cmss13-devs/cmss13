@@ -70,13 +70,17 @@
 		. += "FOR THE HIVE!: in [caboom_left] seconds"
 
 /datum/behavior_delegate/runner_acider/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
-	if (ishuman(target_mob))
+	if(ishuman(target_mob))
 		var/mob/living/carbon/human/target_human = target_mob
-		if (target_human.stat == DEAD)
+		if(target_human.buckled && istype(target_human.buckled, /obj/structure/bed/nest))
 			return
-	for(var/datum/effects/acid/AA in target_mob.effects_list)
-		qdel(AA)
+		if(target_human.stat == DEAD)
+			return
+
+	for(var/datum/effects/acid/acid_effect in target_mob.effects_list)
+		qdel(acid_effect)
 		break
+
 	if(isxeno_human(target_mob))
 		if(target_mob.lying)
 			modify_acid(acid_slash_regen_lying)

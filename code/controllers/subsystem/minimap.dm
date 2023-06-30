@@ -443,7 +443,18 @@ SUBSYSTEM_DEF(minimaps)
 	var/atom/owner
 
 	// used in cic tactical maps for drawing on the canvas, defaults to blue.
-	var/toolbar_selection = "blue"
+	var/toolbar_color_selection = "black"
+
+	// hacky ass solution for tgui color display, move functionality to js, fix later.
+	var/toolbar_updated_selection = "black"
+
+	var/canvas_cooldown_time = 2 MINUTES
+
+	// prevent multiple users from updating the canvas image until the cooldown expires.
+	var/static/canvas_cooldown = 0
+
+	var/updated_canvas = FALSE
+
 	var/datum/tacmap_holder/map_holder
 	var/img_ref
 
@@ -477,9 +488,14 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap/ui_data(mob/user)
 	var/list/data = list()
-	// data["mapRef"] = map_holder.map_ref
 	data["imageSrc"] = img_ref
-	data["toolbarSelection"] = toolbar_selection
+	data["toolbarColorSelection"] = toolbar_color_selection
+	data["toolbarUpdatedSelection"] = toolbar_updated_selection
+	data["worldtime"] = world.time
+
+	data["nextcanvastime"] = canvas_cooldown
+	data["canvas_cooldown"] = canvas_cooldown_time
+	data["updatedCanvas"] = updated_canvas
 	return data
 
 /datum/tacmap/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state){
@@ -487,41 +503,51 @@ SUBSYSTEM_DEF(minimaps)
 	if(.)
 		return
 
+	var/user = ui.user
+
 	switch (action)
 		if ("clearCanvas")  // boiler plate code.
-			toolbar_selection = "clear"
+			toolbar_updated_selection = "clear"
+			. = TRUE
+
+		if ("updateCanvas")
+			if(alert(user, "Are you sure you want to update the canvas changes?", "Confirm?", "Yes", "No") == "No")
+				toolbar_updated_selection = "clear"
+				return
+
+			toolbar_updated_selection = "export"
+			COOLDOWN_START(src, canvas_cooldown, canvas_cooldown_time)
+			updated_canvas = TRUE
+			// callback timer for when the user can update again
 			. = TRUE
 
 		if ("undoChange")
-			toolbar_selection = "undo"
+			toolbar_updated_selection = "undo"
 			. = TRUE
 
-		if ("selectRed")
-			toolbar_selection = "red"
-			. = TRUE
-
-		if ("selectOrange")
-			toolbar_selection = "orange"
-			. = TRUE
-
-		if ("selectBlue")
-			toolbar_selection = "blue"
-			. = TRUE
-
-		if ("selectPurple")
-			toolbar_selection = "purple"
-			. = TRUE
-
-		if ("selectGreen")
-			toolbar_selection = "green"
+		if ("selectColor")
+			switch(params["color"])
+				if("black")
+					toolbar_color_selection = "black"
+				if("red")
+					toolbar_color_selection = "red"
+				if("orange")
+					toolbar_color_selection = "orange"
+				if("purple")
+					toolbar_color_selection = "purple"
+				if("blue")
+					toolbar_color_selection = "blue"
+				if("green")
+					toolbar_color_selection = "green"
+			toolbar_updated_selection = toolbar_color_selection
 			. = TRUE
 
 		if ("selectAnnouncement")
-			toolbar_selection = "export"
-			// params["image"] <- "should" be of type png returned from tgui
+			toolbar_updated_selection = "export"
 
 			//hardcoded testing, PROGRESS!
 			marine_announcement("<img src=[params["image"]] height=600 width=100%>", "Marine Major")
+			updated_canvas = FALSE
 			. = TRUE
 
 }

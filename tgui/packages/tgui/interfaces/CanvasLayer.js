@@ -172,7 +172,7 @@ export class CanvasLayer extends Component {
 
     if (selection === 'export') {
 
-      this.props.onImageExport(String(this.canvasRef.current.toDataURL("image/jpeg", 0.2)));
+      this.props.onImageExport(String(this.canvasRef.current.toDataURL("image/jpeg", 0.4)));
 
       return;
     }

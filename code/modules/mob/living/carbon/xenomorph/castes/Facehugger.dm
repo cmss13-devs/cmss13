@@ -262,7 +262,7 @@
 
 	var/mob/living/carbon/xenomorph/facehugger/facehugger = mutator_set.xeno
 
-	facehugger.client.change_view(9, src)
+	facehugger.client.change_view(10, src)
 
 	facehugger.mutation_type = FACEHUGGER_WATCHER
 	mutator_update_actions(facehugger)

@@ -1,4 +1,0 @@
-author: "TheGamerdk"
-delete-after: True
-changes:
-  - bugfix: "Lurkers no longer lose their pounce if they happen to end their pounce on a tile with a dead human"

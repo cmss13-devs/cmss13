@@ -680,10 +680,14 @@
 /proc/set_lz_resin_allowed(allowed = TRUE)
 	if(allowed)
 		for(var/area/A in all_areas)
+			if(A.flags_area & AREA_UNWEEDABLE)
+				continue
 			A.is_resin_allowed = TRUE
 		msg_admin_niche("Areas close to landing zones are now weedable.")
 	else
 		for(var/area/A in all_areas)
+			if(A.flags_area & AREA_UNWEEDABLE)
+				continue
 			A.is_resin_allowed = initial(A.is_resin_allowed)
 		msg_admin_niche("Areas close to landing zones cannot be weeded now.")
 	GLOB.resin_lz_allowed = allowed

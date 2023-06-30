@@ -45,6 +45,11 @@
 		to_chat(xeno, SPAN_WARNING("These weeds are too strong to plant a node on!"))
 		return
 
+	var/obj/structure/window_frame/window = locate() in turf
+	if(window && window.density)
+		to_chat(xeno, SPAN_WARNING("You can't do that here."))
+		return
+
 	var/area/area = get_area(turf)
 	if(isnull(area) || !(area.is_resin_allowed))
 		if(area.flags_area & AREA_UNWEEDABLE)

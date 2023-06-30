@@ -22,12 +22,6 @@
 	"sodium","aluminum","silicon","phosphorus","sulfur","chlorine","potassium","iron",
 	"copper","mercury","radium","water","ethanol","sugar","sulphuric acid")
 
-/obj/structure/machinery/chem_dispenser/get_examine_text(mob/user)
-	. = ..()
-	if(in_range(user, src) || istype(user, /mob/dead/observer))
-		var/charge = round((energy / max_energy) * 100)
-		. += SPAN_NOTICE("The charge meter reads [charge]%")
-
 /obj/structure/machinery/chem_dispenser/medbay
 	network = "Medbay"
 

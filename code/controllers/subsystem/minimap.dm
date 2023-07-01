@@ -477,8 +477,7 @@ SUBSYSTEM_DEF(minimaps)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 
-		// this is not the right way to do this, this should also not go here. I was debugging.
-		var/icon/map_icon = icon(map_holder.map.icon) // change this to flatten, also make sure to get all the toplayered icons as well
+		var/icon/map_icon = getFlatIcon(map_holder.map)
 		img_ref = icon2html(map_icon, user, sourceonly = TRUE)
 
 		user.client.register_map_obj(map_holder.map)

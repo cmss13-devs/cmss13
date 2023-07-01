@@ -559,6 +559,8 @@ SUBSYSTEM_DEF(minimaps)
 			toolbar_updated_selection = "export"
 			var/datum/canvas_map/canvas_image = new(params["image"])
 
+			GLOB.canvas_drawings += canvas_image
+
 			var/input = stripped_multiline_input(user, "Optional message to announce to the [MAIN_SHIP_NAME]'s crew with the tactical map", "Tactical Map Announcement", "")
 			var/signed
 			if(ishuman(user))

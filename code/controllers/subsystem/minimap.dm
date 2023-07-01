@@ -458,10 +458,10 @@ SUBSYSTEM_DEF(minimaps)
 	// hacky ass solution for tgui color display, move functionality to js, fix later.
 	var/toolbar_updated_selection = "black"
 
-	var/canvas_cooldown_time = 2 MINUTES
+	var/canvas_cooldown_time = 4 MINUTES
 
 	// prevent multiple users from updating the canvas image until the cooldown expires.
-	var/static/canvas_cooldown = 0
+	COOLDOWN_DECLARE(canvas_cooldown)
 
 	var/updated_canvas = FALSE
 
@@ -557,10 +557,27 @@ SUBSYSTEM_DEF(minimaps)
 
 		if ("selectAnnouncement")
 			toolbar_updated_selection = "export"
+			var/datum/canvas_map/canvas_image = new(params["image"])
+
+			var/input = stripped_multiline_input(user, "Optional message to announce to the [MAIN_SHIP_NAME]'s crew with the tactical map", "Tactical Map Announcement", "")
+			var/signed
+			if(ishuman(user))
+				var/mob/living/carbon/human/H = user
+				var/obj/item/card/id/id = H.wear_id
+				if(istype(id))
+					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
+						signed = "[paygrade] [id.registered_name]"
+
+			var/href_map = "<a href='?MapView=\ref[canvas_image]'>View Tacitcal Map</a><br><br>"
+			var/outgoing_message = href_map + input
+
+			message_admins("[key_name(user)] has made a tacitcal map announcement.")
+			log_announcement("[key_name(user)] has announced the following: [outgoing_message]")
 
 			//hardcoded testing, PROGRESS!
-			marine_announcement("<img src=[params["image"]] height=600 width=100%>", "Marine Major")
+			marine_announcement(outgoing_message, "Tactical Map Announcement", signature = signed)
 			updated_canvas = FALSE
+			//qdel(canvas_image)
 			. = TRUE
 
 }
@@ -590,3 +607,10 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap_holder/Destroy()
 	map = null
 	return ..()
+
+/datum/canvas_map
+	var/data
+
+/datum/canvas_map/New(data)
+	. = ..()
+	src.data = data

@@ -148,6 +148,20 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		cmd_admin_pm(receiver_client, null)
 		return
 
+	else if(href_list["MapView"])
+
+		var/datum/canvas_map/image = locate(href_list["MapView"])
+
+		if(!istype(image))
+			to_chat(usr, SPAN_WARNING("not of type datum"))
+			return
+
+		to_chat(usr, SPAN_WARNING("passed"))
+
+		usr << browse_rsc(image.data)
+
+		show_browser(usr, "<img src=[image.data] height=1000 width=1000>","Map Image", "Map Image", "size=1000x1000")
+
 	else if(href_list["FaxView"])
 
 		var/datum/fax/info = locate(href_list["FaxView"])

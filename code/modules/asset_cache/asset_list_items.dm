@@ -139,7 +139,6 @@
 	)
 
 /datum/asset/simple/paper
-	keep_local_name = TRUE
 	assets = list(
 		"wylogo.png" = 'html/images/wylogo.png',
 		"uscmlogo.png" = 'html/images/uscmlogo.png',

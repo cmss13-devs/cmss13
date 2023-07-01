@@ -64,7 +64,7 @@
 
 	var/voice
 
-	var/speech_problem_flag = 0
+	var/speech_problem_flag = FALSE
 
 	var/special_voice = "" // For changing our voice. Used by a symptom.
 

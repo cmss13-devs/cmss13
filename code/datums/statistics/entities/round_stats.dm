@@ -20,7 +20,6 @@
 	var/total_projectiles_hit_human = 0
 	var/total_projectiles_hit_xeno = 0
 	var/total_friendly_fire_instances = 0
-	var/total_friendly_fire_kills = 0
 	var/total_slashes = 0
 
 	// untracked data
@@ -360,7 +359,6 @@
 
 	stats += "Total shots fired: [total_projectiles_fired]\n"
 	stats += "Total friendly fire instances: [total_friendly_fire_instances]\n"
-	stats += "Total friendly fire kills: [total_friendly_fire_kills]\n"
 
 	stats += "Marines remaining: [end_of_round_marines]\n"
 	stats += "Xenos remaining: [end_of_round_xenos]\n"

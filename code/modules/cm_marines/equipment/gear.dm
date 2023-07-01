@@ -58,6 +58,8 @@
 	var/is_animating = FALSE
 	var/first_open = TRUE
 	exit_stun = 0
+	/// used to implement a delay before tarp can be entered again after opened (anti-exploit)
+	COOLDOWN_DECLARE(toggle_delay)
 
 /obj/structure/closet/bodybag/tarp/snow
 	icon_state = "snowtarp_closed"
@@ -91,9 +93,9 @@
 	exit_stun = 1
 	can_store_dead = TRUE
 
-/obj/structure/closet/bodybag/tarp/reactive/scout/close()
+/obj/structure/closet/bodybag/tarp/reactive/scout/close(mob/user)
 	if(!skillcheck(usr, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && usr.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
-		to_chat(usr, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	. = ..()
 
@@ -137,10 +139,14 @@
 			return
 
 /obj/structure/closet/bodybag/tarp/open()
+	COOLDOWN_START(src, toggle_delay, 3 SECONDS) //3 seconds must pass before tarp can be closed
 	. = ..()
 	handle_cloaking()
 
-/obj/structure/closet/bodybag/tarp/close()
+/obj/structure/closet/bodybag/tarp/close(mob/user)
+	if(!COOLDOWN_FINISHED(src, toggle_delay))
+		to_chat(user, SPAN_WARNING("It is too soon to close [src]!"))
+		return FALSE
 	. = ..()
 	handle_cloaking()
 

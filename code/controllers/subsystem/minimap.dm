@@ -262,8 +262,12 @@ SUBSYSTEM_DEF(minimaps)
  * removes an image from raw tracked lists, invoked by callback
  */
 /datum/controller/subsystem/minimaps/proc/removeimage(image/blip, atom/target)
+	var/turf/turf_gotten = get_turf(target)
+	if(!turf_gotten)
+		return
+	var/z_level = turf_gotten.z
 	for(var/flag in GLOB.all_minimap_flags)
-		minimaps_by_z["[target.z]"].images_raw["[flag]"] -= blip
+		minimaps_by_z["[z_level]"].images_raw["[flag]"] -= blip
 	blip.UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 	removal_cbs -= target
 
@@ -391,18 +395,24 @@ SUBSYSTEM_DEF(minimaps)
 		owner.client.screen += map
 	minimap_displayed = !minimap_displayed
 
-/datum/action/minimap/give_to(mob/M)
+/datum/action/minimap/give_to(mob/target)
 	. = ..()
 
 	if(default_overwatch_level)
 		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags)
 	else
-		RegisterSignal(M, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
-	if(!SSminimaps.minimaps_by_z["[M.z]"] || !SSminimaps.minimaps_by_z["[M.z]"].hud_image)
-		return
-	map = SSminimaps.fetch_minimap_object(M.z, minimap_flags)
+		RegisterSignal(target, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
 
-/datum/action/minimap/remove_from(mob/M)
+	var/turf/turf_gotten = get_turf(target)
+	if(!turf_gotten)
+		return
+	var/z_level = turf_gotten.z
+
+	if(!SSminimaps.minimaps_by_z["[z_level]"] || !SSminimaps.minimaps_by_z["[z_level]"].hud_image)
+		return
+	map = SSminimaps.fetch_minimap_object(z_level, minimap_flags)
+
+/datum/action/minimap/remove_from(mob/target)
 	. = ..()
 	if(minimap_displayed)
 		owner?.client?.screen -= map

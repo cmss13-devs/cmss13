@@ -581,7 +581,7 @@ SUBSYSTEM_DEF(minimaps)
 			//hardcoded testing, PROGRESS!
 			marine_announcement(outgoing_message, "Tactical Map Announcement", signature = signed)
 			updated_canvas = FALSE
-			//qdel(canvas_image)
+			qdel(canvas_image)
 			. = TRUE
 
 }

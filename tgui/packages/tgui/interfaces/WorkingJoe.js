@@ -352,8 +352,6 @@ const MaintReports = (props, context) => {
     last_page,
     current_menu,
     maintenance_tickets,
-    temp_maint_name,
-    temp_maint_details,
   } = data;
 
   return (
@@ -422,13 +420,16 @@ const MaintReports = (props, context) => {
             p=".75rem"
             align="center"
             fontSize="1.25rem">
+            <Flex.Item bold width="5rem" shrink="0" mr="1rem">
+              ID
+            </Flex.Item>
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
-            <Flex.Item width="15rem" mr="1rem" bold>
+            <Flex.Item width="12rem" mr="1rem" bold>
               Category
             </Flex.Item>
-            <Flex.Item width="35rem" bold>
+            <Flex.Item width="30rem" bold>
               Details
             </Flex.Item>
           </Flex>
@@ -436,13 +437,23 @@ const MaintReports = (props, context) => {
         {maintenance_tickets.map((ticket, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
+              {!!ticket.priority_status && (
+                <Flex.Item width="5rem" shrink="0" mr="1rem" bold color="red">
+                  {ticket.id}
+                </Flex.Item>
+              )}
+              {!ticket.priority_status && (
+                <Flex.Item width="8rem" shrink="0" mr="1rem" bold>
+                  {ticket.id}
+                </Flex.Item>
+              )}
               <Flex.Item italic width="6rem" shrink="0" mr="1rem">
                 {ticket.time}
               </Flex.Item>
-              <Flex.Item width="15rem" mr="1rem">
+              <Flex.Item width="12rem" mr="1rem">
                 {ticket.category}
               </Flex.Item>
-              <Flex.Item width="35rem" shrink="0" textAlign="left">
+              <Flex.Item width="30rem" shrink="0" textAlign="left">
                 {ticket.details}
               </Flex.Item>
             </Flex>

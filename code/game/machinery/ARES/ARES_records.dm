@@ -77,6 +77,8 @@
 	var/ticket_status = TICKET_PENDING
 	/// Name of who is handling the ticket. Derived from last login.
 	var/ticket_assignee
+	/// Numerical designation of the ticket.
+	var/ticket_id = "1111"
 	/// World time in text format.
 	var/ticket_time
 	/// Who submitted the ticket. Derived from last login.
@@ -86,14 +88,19 @@
 	/// The content of the ticket, usually an explanation of what it is for.
 	var/ticket_details
 	/// Whether or not the tickey is a priority.
-	var/ticket_priority
+	var/ticket_priority = FALSE
 
 /datum/ares_ticket/New(user, name, details, priority)
+	var/ref_holder = "\ref[src]"
+	var/pos = length(ref_holder)
+	var/new_id = "\[#[copytext("\ref[src]", pos - 4, pos + 1)]"
+
 	ticket_time = worldtime2text()
 	ticket_submitter = user
 	ticket_details = details
 	ticket_name = name
 	ticket_priority = priority
+	ticket_id = new_id
 
 /datum/ares_ticket/maintenance
 	ticket_type = ARES_RECORD_MAINTENANCE

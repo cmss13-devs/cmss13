@@ -713,6 +713,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		if(!istype(maint_ticket))
 			continue
 		var/list/current_maint = list()
+		current_maint["id"] = maint_ticket.ticket_id
 		current_maint["time"] = maint_ticket.ticket_time
 		current_maint["priority_status"] = maint_ticket.ticket_priority
 		current_maint["category"] = maint_ticket.ticket_name
@@ -727,6 +728,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/list/logged_access = list()
 	for(var/datum/ares_ticket/access_ticket/access_ticket as anything in link.tickets_access)
 		var/list/current_ticket = list()
+		current_ticket["id"] = access_ticket.ticket_id
 		current_ticket["time"] = access_ticket.ticket_time
 		current_ticket["priority_status"] = access_ticket.ticket_priority
 		current_ticket["title"] = access_ticket.ticket_name
@@ -846,8 +848,8 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 					var/datum/ares_ticket/maintenance/maint_ticket = new(last_login, maint_type, details, priority_report)
 					link.tickets_maintenance += maint_ticket
 					if(priority_report)
-						ares_apollo_talk("Priority Maintenance Report: '[maint_type]' - '[details]'")
-					log_game("ARES: Maintenance Ticket created by [key_name(operator)] as [last_login] with Category '[maint_type]' and Details of '[details]'.")
+						ares_apollo_talk("Priority Maintenance Report: 'ID [maint_ticket.ticket_id] - [maint_type]'. Seek and resolve.")
+					log_game("ARES: Maintenance Ticket '\ref[maint_ticket]' created by [key_name(operator)] as [last_login] with Category '[maint_type]' and Details of '[details]'.")
 					return TRUE
 			return FALSE
 

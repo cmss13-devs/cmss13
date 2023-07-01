@@ -1,4 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - bugfix: "fixes exploit relating to cloaking tarps by adding a delay before tarp can be closed again."

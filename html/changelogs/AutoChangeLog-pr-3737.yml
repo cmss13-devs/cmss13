@@ -1,4 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - rscadd: "Added cameras to dropship deployable sentries."

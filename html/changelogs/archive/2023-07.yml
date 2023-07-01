@@ -1,0 +1,16 @@
+2023-07-01:
+  Ben10083:
+  - bugfix: lisps now occur over radio as well
+  - refactor: Relevant variables relating to speech problems now use true and false
+      instead of 1 and 0
+  - bugfix: fixes exploit relating to cloaking tarps by adding a delay before tarp
+      can be closed again.
+  Drathek:
+  - bugfix: Fixed missing xeno ban check for playing as a facehugger
+  - spellcheck: Tweaked message when ghosting while nested
+  TheGamerdk:
+  - rscadd: ARES will announce how many Foxtrot marines that woke up.
+  harryob:
+  - rscadd: you can no longer implant yourself with a motion detector
+  ihatethisengine:
+  - rscadd: Added cameras to dropship deployable sentries.

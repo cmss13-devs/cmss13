@@ -1,5 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - bugfix: "lisps now occur over radio as well"
-  - refactor: "Relevant variables relating to speech problems now use true and false instead of 1 and 0"

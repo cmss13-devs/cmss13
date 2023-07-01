@@ -510,6 +510,8 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/ui_close(mob/user)
 	. = ..()
 	updated_canvas = FALSE
+	toolbar_color_selection = "black"
+	toolbar_updated_selection = "black"
 
 /datum/tacmap/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state){
 	. = ..()

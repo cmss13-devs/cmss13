@@ -1,6 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - balance: "explosive barricade upgrade provides better protection against explosions (25% to 50%)"
-  - balance: "explosive barricade upgrade provides strong protection against brute-based projectiles (50%)"
-  - balance: "explosive barricade upgrade provides strong protection against fire (50%)"

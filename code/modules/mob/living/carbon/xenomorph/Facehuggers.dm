@@ -209,6 +209,11 @@
 	if(stat == UNCONSCIOUS)
 		return
 
+	// Force reset throw now because [/atom/movable/proc/launch_impact] only does that later on
+	// If we DON'T, step()'s move below can collide, rebound, trigger this proc again, into infinite recursion
+	throwing = FALSE
+	rebounding = FALSE
+
 	if(leaping && can_hug(L, hivenumber))
 		attach(L)
 	else if(L.density)

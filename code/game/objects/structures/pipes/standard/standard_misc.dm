@@ -107,6 +107,10 @@
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE
 
+/obj/structure/pipes/standard/cap/hidden/supply/no_boom
+	name = "reinforced supply pipe endcap"
+	explodey = FALSE
+
 
 /obj/structure/pipes/standard/tank
 	icon = 'icons/obj/pipes/tank.dmi'

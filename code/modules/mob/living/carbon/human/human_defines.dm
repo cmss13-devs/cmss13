@@ -93,11 +93,13 @@
 	var/chem_effect_flags = 0
 	var/chem_effect_reset_time = 8
 
-	var/command_aura_available = TRUE // Whether or not you can issue an order
+	//var/command_aura_available = TRUE // Whether or not you can issue an order
+	var/current_aura = null //The aura we're currently emitting
+	var/aura_strength = 0 //Strenght of the aura we're emitting
 
-	var/mobility_aura_count = 0 //Used to track how many auras are affecting the human
-	var/protection_aura_count = 0
-	var/marksman_aura_count = 0
+	var/mobility_aura_new = 0 //Used to track how many auras are affecting the human
+	var/protection_aura_new = 0
+	var/marksman_aura_new = 0
 	var/mobility_aura = 0
 	var/protection_aura = 0
 	var/marksman_aura = 0

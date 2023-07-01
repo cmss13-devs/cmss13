@@ -6,6 +6,8 @@
 	if(stat != DEAD)
 		//Chemicals in the body
 		handle_chemicals_in_body(delta_time)
+		//Orders
+		handle_orders()
 
 	//Apparently, the person who wrote this code designed it so that
 	//blinded get reset each cycle and then get activated later in the

@@ -71,6 +71,7 @@
 	var/num_specialists = 0
 	var/num_tl = 0
 	var/count = 0 //Current # in the squad
+	var/list/ftl_list = list() // list of marines with the actual FTL role
 	var/list/marines_list = list() // list of mobs (or name, not always a mob ref) in that squad.
 
 	var/mob/living/carbon/human/overwatch_officer = null //Who's overwatching this squad?
@@ -409,6 +410,7 @@
 			assignment = JOB_SQUAD_TEAM_LEADER
 			num_tl++
 			M.important_radio_channels += radio_freq
+			ftl_list += M
 		if(JOB_SQUAD_SMARTGUN)
 			assignment = JOB_SQUAD_SMARTGUN
 			num_smartgun++
@@ -523,6 +525,7 @@
 			num_smartgun--
 		if(JOB_SQUAD_TEAM_LEADER)
 			num_tl--
+			ftl_list -= M
 		if(JOB_SQUAD_LEADER)
 			num_leaders--
 

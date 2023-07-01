@@ -25,12 +25,6 @@
 	var/mob/living/carbon/human/H = owner
 	H.issue_order(order_type)
 
-/datum/action/human_action/issue_order/action_cooldown_check()
-	if(!ishuman(owner))
-		return FALSE
-	var/mob/living/carbon/human/H = owner
-	return !H.command_aura_available
-
 /datum/action/human_action/issue_order/move
 	name = "Issue Order - Move"
 	action_icon_state = "order_move"

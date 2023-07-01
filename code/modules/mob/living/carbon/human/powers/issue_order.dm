@@ -42,39 +42,19 @@
 
 	handle_orders(current_aura, aura_strength)
 
-	/*if((src.job == JOB_SQUAD_LEADER || HAS_TRAIT(src, TRAIT_SOURCE_SQUAD_LEADER)) && src.assigned_squad && src.assigned_squad.num_tl)
-		for(var/mob/living/carbon/human/marine in src.assigned_squad.ftl_list)
-			marine.handle_ftl_orders(marine)*/
-
-	/*var/turf/T = get_turf(src)
-	for(var/mob/living/carbon/human/H in range(COMMAND_ORDER_RANGE, T))
-		if(H.stat == DEAD)
-			continue
-		H.activate_order_buff(order, aura_strength)
-
-	if(loc != T) //if we were inside something, the range() missed us.
-		activate_order_buff(order, aura_strength)
-
-	for(var/datum/action/A in actions)
-		A.update_button_icon()*/
-
-
-
 /mob/living/carbon/human/proc/handle_ftl_orders()
 	if(!assigned_squad)
 		return
-	/*if(current_aura)
-		deactivate_order_buff(current_aura)*/
 
 	var/mob/living/carbon/human/squad_lead = assigned_squad.squad_leader
 	if(!squad_lead || !squad_lead.current_aura || squad_lead.loc.z != loc.z)
 		if(current_aura && !squad_lead.current_aura)
-			to_chat(src, SPAN_WARNING("Your radio goes quiet. The Squad Leader is no longer giving orders."))
+			to_chat(src, SPAN_BOLDNOTICE("Your radio goes quiet. The Squad Leader is no longer giving orders."))
 		aura_strength = 0
 		current_aura = null
 	else
 		if(current_aura != squad_lead.current_aura)
-			to_chat(src, SPAN_WARNING("Your orders have changed. The Squad Leader has other plans."))
+			to_chat(src, SPAN_BOLDNOTICE("Your orders have changed. The Squad Leader has other plans."))
 		aura_strength = squad_lead.aura_strength
 		current_aura = squad_lead.current_aura
 		handle_orders(current_aura, aura_strength)
@@ -87,45 +67,14 @@
 
 	issue_order()
 
-/*mob/living/carbon/human/proc/activate_order_buff(order, strength)
-	if(!order || !strength)
-		return
-
-	switch(order)
-		if(COMMAND_ORDER_MOVE)
-			//mobility_aura_count++
-			mobility_aura = Clamp(mobility_aura, strength, ORDER_MOVE_MAX_LEVEL)
-		if(COMMAND_ORDER_HOLD)
-			//protection_aura_count++
-			protection_aura = Clamp(protection_aura, strength, ORDER_HOLD_MAX_LEVEL)
-			pain.apply_pain_reduction(protection_aura * PAIN_REDUCTION_AURA)
-		if(COMMAND_ORDER_FOCUS)
-			//marksman_aura_count++
-			marksman_aura = Clamp(marksman_aura, strength, ORDER_FOCUS_MAX_LEVEL)
-
-	hud_set_order()*/
-
-
 /mob/living/carbon/human/proc/deactivate_order_buff(order)
 	switch(order)
 		if(COMMAND_ORDER_MOVE)
-			/*if(mobility_aura_count > 1)
-				mobility_aura_count--
-			else
-				mobility_aura_count = 0*/
 			mobility_aura_new = 0
 		if(COMMAND_ORDER_HOLD)
-			/*if(protection_aura_count > 1)
-				protection_aura_count--
-			else
-				pain.reset_pain_reduction()
-				protection_aura_count = 0*/
+			pain.reset_pain_reduction()
 			protection_aura_new = 0
 		if(COMMAND_ORDER_FOCUS)
-			/*if(marksman_aura_count > 1)
-				marksman_aura_count--
-			else
-				marksman_aura_count = 0*/
 			marksman_aura_new = 0
 
 	hud_set_order()

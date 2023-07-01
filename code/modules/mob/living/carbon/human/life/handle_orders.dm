@@ -4,7 +4,7 @@
 	if(current_aura)
 		aura_center = src
 
-	if((src.job == JOB_SQUAD_LEADER || HAS_TRAIT(src, TRAIT_SOURCE_SQUAD_LEADER)) && src.assigned_squad && src.assigned_squad.num_tl)
+	if((src.job == JOB_SQUAD_LEADER || HAS_TRAIT(src, TRAIT_SOURCE_SQUAD_LEADER)) && src.assigned_squad && src.assigned_squad.num_tl) //If the guy giving orders is leading a squad with FTLs we need them to act as beacons
 		for(var/mob/living/carbon/human/marine in src.assigned_squad.ftl_list)
 			marine.handle_ftl_orders(marine)
 

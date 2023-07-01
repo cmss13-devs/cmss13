@@ -30,22 +30,21 @@
 
 	if(order)
 		if(current_aura == order)
-			to_chat(src, SPAN_WARNING("You withdraw your order to [order]."))
+			visible_message(SPAN_BOLDNOTICE("[src] whitdraws their order to [order]!"), SPAN_BOLDNOTICE("You withdraw your order to [order]!"))
 			deactivate_order_buff(current_aura)
 			current_aura = null
 			order = null
 		else
 			deactivate_order_buff(current_aura)
-			visible_message(SPAN_WARNING("\The [src] begins giving orders."), \
-			SPAN_WARNING("You give an order to [order]."), null, 5)
+			visible_message(SPAN_BOLDNOTICE("[src] gives an order to [order]!"), SPAN_BOLDNOTICE("You give an order to [order]!"))
 			aura_strength = order_level
 			current_aura = order
 
 	handle_orders(current_aura, aura_strength)
 
-	if((src.job == JOB_SQUAD_LEADER || HAS_TRAIT(src, TRAIT_SOURCE_SQUAD_LEADER)) && src.assigned_squad && src.assigned_squad.num_tl)
+	/*if((src.job == JOB_SQUAD_LEADER || HAS_TRAIT(src, TRAIT_SOURCE_SQUAD_LEADER)) && src.assigned_squad && src.assigned_squad.num_tl)
 		for(var/mob/living/carbon/human/marine in src.assigned_squad.ftl_list)
-			marine.handle_ftl_orders(marine)
+			marine.handle_ftl_orders(marine)*/
 
 	/*var/turf/T = get_turf(src)
 	for(var/mob/living/carbon/human/H in range(COMMAND_ORDER_RANGE, T))
@@ -59,7 +58,7 @@
 	for(var/datum/action/A in actions)
 		A.update_button_icon()*/
 
-	visible_message(SPAN_BOLDNOTICE("[src] gives an order to [order]!"), SPAN_BOLDNOTICE("You give an order to [order]!"))
+
 
 /mob/living/carbon/human/proc/handle_ftl_orders()
 	if(!assigned_squad)
@@ -69,14 +68,16 @@
 
 	var/mob/living/carbon/human/squad_lead = assigned_squad.squad_leader
 	if(!squad_lead || !squad_lead.current_aura || squad_lead.loc.z != loc.z)
+		if(current_aura && !squad_lead.current_aura)
+			to_chat(src, SPAN_WARNING("Your radio goes quiet. The Squad Leader is no longer giving orders."))
 		aura_strength = 0
 		current_aura = null
-		to_chat(src, SPAN_WARNING("Your radio goes quiet. The Squad Leader is no longer giving orders."))
 	else
+		if(current_aura != squad_lead.current_aura)
+			to_chat(src, SPAN_WARNING("Your orders have changed. The Squad Leader has other plans."))
 		aura_strength = squad_lead.aura_strength
 		current_aura = squad_lead.current_aura
 		handle_orders(current_aura, aura_strength)
-		to_chat(src, SPAN_WARNING("Your orders have changed. The Squad Leader has other plans."))
 	hud_set_order()
 
 /mob/living/carbon/human/verb/issue_order_verb()
@@ -86,7 +87,7 @@
 
 	issue_order()
 
-mob/living/carbon/human/proc/activate_order_buff(order, strength)
+/*mob/living/carbon/human/proc/activate_order_buff(order, strength)
 	if(!order || !strength)
 		return
 
@@ -102,7 +103,7 @@ mob/living/carbon/human/proc/activate_order_buff(order, strength)
 			//marksman_aura_count++
 			marksman_aura = Clamp(marksman_aura, strength, ORDER_FOCUS_MAX_LEVEL)
 
-	hud_set_order()
+	hud_set_order()*/
 
 
 /mob/living/carbon/human/proc/deactivate_order_buff(order)
@@ -112,19 +113,19 @@ mob/living/carbon/human/proc/activate_order_buff(order, strength)
 				mobility_aura_count--
 			else
 				mobility_aura_count = 0*/
-			mobility_aura = 0
+			mobility_aura_new = 0
 		if(COMMAND_ORDER_HOLD)
 			/*if(protection_aura_count > 1)
 				protection_aura_count--
 			else
 				pain.reset_pain_reduction()
 				protection_aura_count = 0*/
-			protection_aura = 0
+			protection_aura_new = 0
 		if(COMMAND_ORDER_FOCUS)
 			/*if(marksman_aura_count > 1)
 				marksman_aura_count--
 			else
 				marksman_aura_count = 0*/
-			marksman_aura = 0
+			marksman_aura_new = 0
 
 	hud_set_order()

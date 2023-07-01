@@ -408,7 +408,7 @@ This function restores all limbs.
 	permanent_kill = FALSE, mob/firer = null, force = FALSE
 )
 	if(protection_aura && damage > 0)
-		damage = round(damage * ((ORDER_HOLD_CALC_LEVEL - protection_aura) / ORDER_HOLD_CALC_LEVEL))
+		damage = round(damage * ((ORDER_HOLD_CALC_LEVEL - protection_aura * 0.5) / ORDER_HOLD_CALC_LEVEL))
 
 	//Handle other types of damage
 	if(damage < 0 || (damagetype != BRUTE) && (damagetype != BURN))

@@ -23,6 +23,11 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
+	if(H.current_aura)
+		for(var/datum/action/human_action/issue_order/order_button in H.actions)
+			order_button.button.icon_state = "template"
+	if(H.current_aura != order_type)
+		button.icon_state = "template_on"
 	H.issue_order(order_type)
 
 /datum/action/human_action/issue_order/move

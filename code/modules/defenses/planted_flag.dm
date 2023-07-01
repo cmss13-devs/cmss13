@@ -88,8 +88,8 @@
 		QDEL_NULL(range_bounds)
 
 /obj/structure/machinery/defenses/planted_flag/proc/apply_buff_to_player(mob/living/carbon/human/H)
-	H.activate_order_buff(COMMAND_ORDER_HOLD, buff_intensity, 1.5 SECONDS)
-	H.activate_order_buff(COMMAND_ORDER_FOCUS, buff_intensity, 1.5 SECONDS)
+	H.affected_by_orders(COMMAND_ORDER_HOLD, buff_intensity)
+	H.affected_by_orders(COMMAND_ORDER_FOCUS, buff_intensity)
 
 /obj/structure/machinery/defenses/planted_flag/range
 	name = "extended JIMA planted flag"
@@ -111,9 +111,9 @@
 	defense_type = "Warbanner"
 
 /obj/structure/machinery/defenses/planted_flag/warbanner/apply_buff_to_player(mob/living/carbon/human/H)
-	H.activate_order_buff(COMMAND_ORDER_HOLD, buff_intensity, 5 SECONDS)
-	H.activate_order_buff(COMMAND_ORDER_FOCUS, buff_intensity, 5 SECONDS)
-	H.activate_order_buff(COMMAND_ORDER_MOVE, buff_intensity, 5 SECONDS)
+	H.affected_by_orders(COMMAND_ORDER_HOLD, buff_intensity)
+	H.affected_by_orders(COMMAND_ORDER_FOCUS, buff_intensity)
+	H.affected_by_orders(COMMAND_ORDER_MOVE, buff_intensity)
 
 /obj/item/storage/backpack/jima
 	name = "JIMA frame mount"
@@ -153,8 +153,8 @@
 		if(!(H.get_target_lock(M.faction_group)))
 			continue
 
-		H.activate_order_buff(COMMAND_ORDER_MOVE, buff_intensity, 3 SECONDS)
-		H.activate_order_buff(COMMAND_ORDER_FOCUS, buff_intensity, 3 SECONDS)
+		H.affected_by_orders(COMMAND_ORDER_MOVE, buff_intensity)
+		H.affected_by_orders(COMMAND_ORDER_FOCUS, buff_intensity)
 
 #undef PLANTED_FLAG_BUFF
 #undef PLANTED_FLAG_RANGE

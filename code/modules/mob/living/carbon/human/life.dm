@@ -44,6 +44,9 @@
 			handle_organs()
 			handle_blood()
 
+			//Orders
+			handle_orders()
+
 			//Random events (vomiting etc)
 			if(!stat && getToxLoss() >= 45 && nutrition > 20)
 				vomit()

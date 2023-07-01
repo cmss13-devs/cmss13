@@ -26,8 +26,6 @@
 	var/adminobs = null
 	var/area = null
 	var/time_died_as_mouse = null //when the client last died as a mouse
-	/// The descriminator for larva queue ordering: Generally set to timeofdeath except for facehuggers/admin z-level play
-	var/larva_queue_time
 
 	var/donator = 0
 	var/adminhelped = 0

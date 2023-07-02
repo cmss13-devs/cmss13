@@ -546,6 +546,9 @@
 /datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.change_real_name(new_human, "Working Joe #[rand(100)][rand(100)]")
 
+/datum/equipment_preset/synth/working_joe/engi/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.change_real_name(new_human, "Hazard Joe #[rand(100)][rand(100)]")
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/survivor/cultist_synth

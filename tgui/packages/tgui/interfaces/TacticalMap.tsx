@@ -47,8 +47,8 @@ export const TacticalMap = (props, context) => {
 
   const handleColorSelection = () => {
     if (
-      colors[data.toolbarUpdatedSelection] != null &&
-      colors[data.toolbarUpdatedSelection] != undefined
+      colors[data.toolbarUpdatedSelection] !== null &&
+      colors[data.toolbarUpdatedSelection] !== undefined
     ) {
       return colors[data.toolbarUpdatedSelection];
     } else {

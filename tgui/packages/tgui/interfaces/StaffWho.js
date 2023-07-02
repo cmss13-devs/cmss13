@@ -9,26 +9,28 @@ export const StaffWho = (props, context) => {
   return (
     <Window resizable width={600} height={600}>
       <Window.Content scrollable>
-        <Stack fill vertical>
-          <Stack.Item mt={0.2} grow>
-            {administrators.map((x, index) => (
-              <StaffWhoCollapsible
-                key={x.index}
-                title={x.category + ' - ' + x.category_administrators}
-                color={x.category_color}>
-                {x.admins.map((x, index) => (
-                  <GetAdminInfo
-                    key={x.index}
-                    admin={admin}
-                    content={x.content}
-                    color={x.color}
-                    text={x.text}
-                  />
-                ))}
-              </StaffWhoCollapsible>
-            ))}
-          </Stack.Item>
-        </Stack>
+        {administrators !== undefined && (
+          <Stack fill vertical>
+            <Stack.Item mt={0.2} grow>
+              {administrators.map((x, index) => (
+                <StaffWhoCollapsible
+                  key={x.index}
+                  title={x.category + ' - ' + x.category_administrators}
+                  color={x.category_color}>
+                  {x.admins.map((x, index) => (
+                    <GetAdminInfo
+                      key={x.index}
+                      admin={admin}
+                      content={x.content}
+                      color={x.color}
+                      text={x.text}
+                    />
+                  ))}
+                </StaffWhoCollapsible>
+              ))}
+            </Stack.Item>
+          </Stack>
+        )}
       </Window.Content>
     </Window>
   );

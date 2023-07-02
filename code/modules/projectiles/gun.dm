@@ -309,6 +309,7 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	damage_falloff_mult = DAMAGE_FALLOFF_TIER_10
 	damage_buildup_mult = DAMAGE_BUILDUP_TIER_1
+	velocity_add = BASE_VELOCITY_BONUS
 	recoil = RECOIL_OFF
 	recoil_unwielded = RECOIL_OFF
 	movement_onehanded_acc_penalty_mult = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_1

@@ -74,10 +74,10 @@ These are the few directives we have for project maintainers.
     - Try to get secondary maintainer approval before merging if you are able to.
   - PRs with empty commits intended to generate a changelog.
 - Do not merge PRs that contain content from the [banned content list](./CONTRIBUTING.md#banned-content).
-- Do not merge PRs that contain balance changes without GA approval. Exceptions include:
-  - Any PR that has been un-reviewed by a GA for 7 days.
+- Do not merge PRs that contain balance changes without Maintainer Manager approval. Exceptions include:
+  - Any PR that has been un-reviewed by a Maintainer Manager for 7 days.
 - Do not remove the DNM label that another Maintainer has applied. Exceptions include:
-  - GAs removing a DNM label placed by a Maintainer for Balance/Design reasons
+  - Maintainer Managers removing a DNM label placed by a Maintainer for Balance/Design reasons
 
 These are not steadfast rules as maintainers are expected to use their best judgement when operating.
 

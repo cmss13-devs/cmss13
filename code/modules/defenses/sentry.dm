@@ -539,11 +539,13 @@
 	choice_categories = list()
 	selected_categories = list()
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
+	var/obj/structure/machinery/camera/cas/linked_cam
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
 	if(deployment_system)
 		deployment_system.deployed_turret = null
 		deployment_system = null
+	QDEL_NULL(linked_cam)
 	. = ..()
 
 #define SENTRY_SNIPER_RANGE 10

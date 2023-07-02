@@ -18,7 +18,7 @@ export const Who = (props, context) => {
       <Window.Content scrollable>
         <Stack fill vertical>
           {total_players !== undefined && (
-            <Stack.Item mt={0.2}>
+            <Stack.Item mt={0.2} grow>
               <Section fill>
                 <WhoCollapsible title={'Players - ' + all_clients} color="good">
                   {total_players.map((x, index) => (

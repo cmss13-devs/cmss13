@@ -1,5 +1,0 @@
-author: "theselfish"
-delete-after: True
-changes:
-  - qol: "Made the MP beret to be clickable."
-  - imageadd: "Updated the MP beret obj sprite to be easier to click."

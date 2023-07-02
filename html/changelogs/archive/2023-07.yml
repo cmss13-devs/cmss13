@@ -14,3 +14,16 @@
   - rscadd: you can no longer implant yourself with a motion detector
   ihatethisengine:
   - rscadd: Added cameras to dropship deployable sentries.
+2023-07-02:
+  Clairion:
+  - bugfix: Vampire Lurker headbite will no longer trigger if the target is moved
+      away during windup.
+  Cthulhu80:
+  - rscadd: added camera shake and stun to OB.
+  fira:
+  - rscadd: Added InfluxDB backed metrics logging for some of the most used game statistics.
+      This will allow to graph them over time and give better insight as to what happens
+      in rounds.
+  theselfish:
+  - qol: Made the MP beret to be clickable.
+  - imageadd: Updated the MP beret obj sprite to be easier to click.

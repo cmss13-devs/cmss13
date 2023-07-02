@@ -167,8 +167,8 @@ SUBSYSTEM_DEF(who)
 		new_list_data["factions"] += list(list(
 			"content" = "[faction.name]: [length(mobs_by_faction[faction_to_get])]",
 			"color" = "#43397b",//https://cdn.discordapp.com/attachments/972351753691484260/1125177717751554068/video_2023-03-23_21-38-07.mov
-			"text" = "NO NUKES? https://cdn.discordapp.com/attachments/800784806383976508/1125146089759195146/trim.13BC96E2-6A10-40AA-B0B1-3D22024D1E8F.mp4",
-		))// WHY YOU CHECK THAT BROTHA? YOU NOT SUPPOSED TO SEE SECRET DANGEON OF DEVELOPING!!!
+			"text" = "",//NO ~~NUKES~~ DESCRIPTIONS? https://cdn.discordapp.com/attachments/800784806383976508/1125146089759195146/trim.13BC96E2-6A10-40AA-B0B1-3D22024D1E8F.mp4
+		))
 	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
 		var/datum/hive_status/faction = GLOB.hive_datum[faction_to_get]
 		if(!length(mobs_by_faction[faction_to_get]))
@@ -177,7 +177,7 @@ SUBSYSTEM_DEF(who)
 			"content" = "[faction.name]: [length(mobs_by_faction[faction_to_get])]",
 			"color" = faction.color,
 			"text" = "Queen: [faction.living_xeno_queen ? "Alive" : "Dead"]",
-		))// XENO BIOS
+		))
 
 /* in future...
 	for(var/faction_to_get in FACTION_LIST_HUMANOID - FACTION_YAUTJA - FACTION_MARINE)

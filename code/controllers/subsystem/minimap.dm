@@ -513,7 +513,7 @@ SUBSYSTEM_DEF(minimaps)
 	toolbar_color_selection = "black"
 	toolbar_updated_selection = "black"
 
-/datum/tacmap/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state){
+/datum/tacmap/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -583,8 +583,6 @@ SUBSYSTEM_DEF(minimaps)
 			updated_canvas = FALSE
 			qdel(canvas_image)
 			. = TRUE
-
-}
 
 /datum/tacmap/ui_status(mob/user)
 	if(!(isatom(owner)))

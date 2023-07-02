@@ -43,11 +43,20 @@
 #define APOLLO_ACCESS_DEBUG 5
 
 /// Ticket statuses, both for Access and Maintenance
+/// Pending assignment/rejection
 #define TICKET_PENDING "pending"
+/// Assigned to a WJ
 #define TICKET_ASSIGNED "assigned"
-#define TICKET_REJECTED "rejected"
+/// Cancelled by reporter
 #define TICKET_CANCELLED "cancelled"
-#define TICKET_COMPLETED "complete"
+/// Rejected by WJs
+#define TICKET_REJECTED "rejected"
+/// Completed by WJs
+#define TICKET_COMPLETED "completed"
+
+/// Checks for if buttons can be used, these may yet be removed and internalised to the UI programming
+#define TICKET_OPEN "OPEN"
+#define TICKET_CLOSED "CLOSED"
 
 /// Cooldowns
 #define COOLDOWN_ARES_SENSOR 60 SECONDS

@@ -7,6 +7,8 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	"Chemical Spill",
 	"Fire",
 	"Power Failure",
+	"Communications Failure",
+	"Power Generation Failure",
 	"Electrical Fault",
 	"Other"
 	))
@@ -631,7 +633,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			to_chat(user, SPAN_NOTICE("You try to insert [object] but [src] remains silent."))
 			return FALSE
 		var/obj/item/card/id/idcard = object
-		if((ACCESS_MARINE_AI in idcard.access) || (ACCESS_ARES_DEBUG in idcard.access))
+		if((idcard.assignment = JOB_WORKING_JOE) || (ACCESS_ARES_DEBUG in idcard.access))
 			if(!authenticator_id)
 				if(user.drop_held_item())
 					object.forceMove(src)
@@ -712,6 +714,11 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	for(var/datum/ares_ticket/maintenance/maint_ticket as anything in link.tickets_maintenance)
 		if(!istype(maint_ticket))
 			continue
+		var/lock_status = TICKET_OPEN
+		switch(maint_ticket.ticket_status)
+			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_COMPLETED)
+				lock_status = TICKET_CLOSED
+
 		var/list/current_maint = list()
 		current_maint["id"] = maint_ticket.ticket_id
 		current_maint["time"] = maint_ticket.ticket_time
@@ -721,12 +728,18 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		current_maint["status"] = maint_ticket.ticket_status
 		current_maint["submitter"] = maint_ticket.ticket_submitter
 		current_maint["assignee"] = maint_ticket.ticket_assignee
+		current_maint["lock_status"] = lock_status
 		current_maint["ref"] = "\ref[maint_ticket]"
 		logged_maintenance += list(current_maint)
 	data["maintenance_tickets"] = logged_maintenance
 
 	var/list/logged_access = list()
 	for(var/datum/ares_ticket/access_ticket/access_ticket as anything in link.tickets_access)
+		var/lock_status = TICKET_OPEN
+		switch(access_ticket.ticket_status)
+			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_COMPLETED)
+				lock_status = TICKET_CLOSED
+
 		var/list/current_ticket = list()
 		current_ticket["id"] = access_ticket.ticket_id
 		current_ticket["time"] = access_ticket.ticket_time
@@ -736,6 +749,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		current_ticket["status"] = access_ticket.ticket_status
 		current_ticket["submitter"] = access_ticket.ticket_submitter
 		current_ticket["assignee"] = access_ticket.ticket_assignee
+		current_ticket["lock_status"] = lock_status
 		current_ticket["ref"] = "\ref[access_ticket]"
 		logged_access += list(current_ticket)
 	data["access_tickets"] = logged_access
@@ -826,7 +840,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			var/priority_report = FALSE
 			var/maint_type = tgui_input_list(operator, "What is the type of maintenance item you wish to report?", "Report Category", GLOB.maintenance_categories, 30 SECONDS)
 			switch(maint_type)
-				if("Major Structural Damage")
+				if("Major Structural Damage", "Communications Failure",	"Power Generation Failure")
 					priority_report = TRUE
 				if("Other")
 					maint_type = tgui_input_text(operator, "What is the type of maintenance item you wish to report?", "Other Category", encode = FALSE, timeout = 30 SECONDS)
@@ -848,10 +862,61 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 					var/datum/ares_ticket/maintenance/maint_ticket = new(last_login, maint_type, details, priority_report)
 					link.tickets_maintenance += maint_ticket
 					if(priority_report)
-						ares_apollo_talk("Priority Maintenance Report: 'ID [maint_ticket.ticket_id] - [maint_type]'. Seek and resolve.")
+						ares_apollo_talk("Priority Maintenance Report: [maint_type] - ID [maint_ticket.ticket_id]. Seek and resolve.")
 					log_game("ARES: Maintenance Ticket '\ref[maint_ticket]' created by [key_name(operator)] as [last_login] with Category '[maint_type]' and Details of '[details]'.")
 					return TRUE
 			return FALSE
+
+		if("claim_ticket")
+			var/datum/ares_ticket/ticket = locate(params["ticket"])
+			if(!istype(ticket))
+				return FALSE
+			var/claim = TRUE
+			var/assigned = ticket.ticket_assignee
+			if(assigned)
+				if(assigned == last_login)
+					to_chat(usr, SPAN_WARNING("You cannot claim a ticket you are already assigned!"))
+					return FALSE
+				var/choice = tgui_alert(usr, "This ticket has already been claimed by [assigned]! Do you wish to override their claim?", "Claim Override", list("Yes", "No"))
+				if(choice != "Yes")
+					claim = FALSE
+			if(claim)
+				ticket.ticket_assignee = last_login
+				ticket.ticket_status = TICKET_ASSIGNED
+			return claim
+
+		if("cancel_ticket")
+			var/datum/ares_ticket/ticket = locate(params["ticket"])
+			if(!istype(ticket))
+				return FALSE
+			if(ticket.ticket_submitter != last_login)
+				to_chat(usr, SPAN_WARNING("You cannot cancel a ticket that does not belong to you!"))
+				return FALSE
+			to_chat(usr, SPAN_WARNING("[ticket.ticket_type] [ticket.ticket_id] has been cancelled."))
+			ticket.ticket_status = TICKET_CANCELLED
+			if(ticket.ticket_priority)
+				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been cancelled!")
+			return TRUE
+
+		if("mark_ticket")
+			var/datum/ares_ticket/ticket = locate(params["ticket"])
+			if(!istype(ticket))
+				return FALSE
+			if(ticket.ticket_assignee != last_login)
+				to_chat(usr, SPAN_WARNING("You cannot update a ticket that is not assigned to you!"))
+				return FALSE
+			var/choice = tgui_alert(usr, "What do you wish to mark the ticket as?", "Mark", list(TICKET_COMPLETED, TICKET_REJECTED), 20 SECONDS)
+			switch(choice)
+				if(TICKET_COMPLETED)
+					ticket.ticket_status = TICKET_COMPLETED
+				if(TICKET_REJECTED)
+					ticket.ticket_status = TICKET_REJECTED
+				else
+					return FALSE
+			if(ticket.ticket_priority)
+				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by [last_login].")
+			to_chat(usr, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]"))
+			return TRUE
 
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)

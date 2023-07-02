@@ -1,12 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Button,
-  Dropdown,
-  Section,
-  Stack,
-  ProgressBar,
-  Box,
-} from '../components';
+import { Button, Dropdown, Section, Stack, ProgressBar, Box } from '../components';
 import { Window } from '../layouts';
 import { CanvasLayer } from './CanvasLayer';
 
@@ -144,8 +137,7 @@ export const TacticalMap = (props, context) => {
                     good: [-Infinity, 0.33],
                     average: [0.33, 0.67],
                     bad: [0.67, Infinity],
-                  }}
-                >
+                  }}>
                   <Box textAlign="center" fontSize="15px">
                     {Math.ceil(timeLeft / 10)} seconds until the canvas changes
                     can be updated

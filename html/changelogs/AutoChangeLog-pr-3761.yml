@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - spellcheck: "Tweaked message when ghosting while nested"

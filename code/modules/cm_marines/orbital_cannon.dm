@@ -353,6 +353,9 @@ var/list/ob_type_fuel_requirements
 /obj/structure/ob_ammo/warhead
 	name = "theoretical orbital ammo"
 	var/warhead_kind
+	var/shake_frequency
+	var/max_shake_factor
+	var/max_knockdown_time
 
 /obj/structure/ob_ammo/warhead/proc/warhead_impact(turf/target)
 	// make damn sure everyone hears it
@@ -398,10 +401,37 @@ var/list/ob_type_fuel_requirements
 		return TRUE
 	return FALSE
 
+/// proc designed for handling ob camera shakes, takes the target location as input and calculates camera shake based off user location.
+/obj/structure/ob_ammo/warhead/proc/handle_ob_shake(turf/epicenter)
+
+	var/radius_size = 30
+
+	for(var/mob/living/user in urange(radius_size, epicenter))
+
+		var/distance = get_accurate_dist(get_turf(user), epicenter)
+		var/distance_percent = ((radius_size - distance) / radius_size)
+		var/total_shake_factor = abs(max_shake_factor * distance_percent)
+
+		// it's of type cluster.
+		if(!max_knockdown_time)
+			shake_camera(user, 0.5, total_shake_factor, shake_frequency)
+			continue
+
+		shake_camera(user, 3, total_shake_factor, shake_frequency)
+		user.KnockDown(rand(max_knockdown_time * distance_percent, (max_knockdown_time * distance_percent + 1)))
+
+		if(!user.knocked_down)
+			continue
+		to_chat(user, SPAN_WARNING("You are thrown off balance and fall to the ground!"))
+
 /obj/structure/ob_ammo/warhead/explosive
 	name = "\improper HE orbital warhead"
 	warhead_kind = "explosive"
 	icon_state = "ob_warhead_1"
+	shake_frequency = 3
+	max_shake_factor = 15
+	max_knockdown_time = 6
+
 	var/clear_power = 1200
 	var/clear_falloff = 400
 	var/standard_power = 600
@@ -419,16 +449,20 @@ var/list/ob_type_fuel_requirements
 	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
 	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //break shit around
 	sleep(clear_delay)
-	//ACTUALLY BLOW SHIT UP
+
+	// Explosion if turf is not a wall.
 	if(!target.density)
 		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+		handle_ob_shake(target)
 		sleep(double_explosion_delay)
 		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		return
 
+	// Checks turf around the target
 	for(var/turf/T in range(2, target))
 		if(!T.density)
 			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+			handle_ob_shake(target)
 			sleep(double_explosion_delay)
 			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 			return
@@ -437,6 +471,9 @@ var/list/ob_type_fuel_requirements
 	name = "\improper Incendiary orbital warhead"
 	warhead_kind = "incendiary"
 	icon_state = "ob_warhead_2"
+	shake_frequency = 1
+	max_shake_factor = 8
+	max_knockdown_time = 3
 	var/clear_power = 1200
 	var/clear_falloff = 400
 	var/clear_delay = 3
@@ -457,6 +494,8 @@ var/list/ob_type_fuel_requirements
 	sleep(10)
 	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
 	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //break shit around
+	handle_ob_shake(target)
+
 	sleep(clear_delay)
 	fire_spread(target, cause_data, distance, fire_level, burn_level, fire_color, fire_type, TURF_PROTECTION_OB)
 
@@ -464,6 +503,9 @@ var/list/ob_type_fuel_requirements
 	name = "\improper Cluster orbital warhead"
 	warhead_kind = "cluster"
 	icon_state = "ob_warhead_3"
+	shake_frequency = 2
+	max_shake_factor = 1
+
 	var/total_amount = 75 // how many times will the shell fire?
 	var/instant_amount = 3 // how many explosions per time it fires?
 	var/explosion_power = 350
@@ -492,11 +534,13 @@ var/list/ob_type_fuel_requirements
 			if(protected_by_pylon(TURF_PROTECTION_OB, U)) //If the turf somehow gained OB protection while the cluster was firing
 				continue
 			fire_in_a_hole(U)
+
 		sleep(delay_between_clusters)
 
 /obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(turf/loc)
 	new /obj/effect/overlay/temp/blinking_laser (loc)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(handle_ob_shake), loc), 1 SECONDS)
 
 /obj/structure/ob_ammo/ob_fuel
 	name = "solid fuel"
@@ -607,3 +651,4 @@ var/list/ob_type_fuel_requirements
 		return TRUE
 
 	tgui_interact(user)
+

@@ -1,5 +1,12 @@
 import { useBackend } from '../backend';
-import { Button, Dropdown, Section, Stack, ProgressBar, Box} from '../components';
+import {
+  Button,
+  Dropdown,
+  Section,
+  Stack,
+  ProgressBar,
+  Box,
+} from '../components';
 import { Window } from '../layouts';
 import { CanvasLayer } from './CanvasLayer';
 
@@ -18,9 +25,7 @@ export const TacticalMap = (props, context) => {
   const { data, act } = useBackend<TacMapProps>(context);
 
   const timeLeft = data.nextcanvastime - data.worldtime;
-
   const timeLeftPct = timeLeft / data.canvas_cooldown;
-
   const canUpdate = timeLeft < 0 && !data.updatedCanvas;
 
   const handleTacMapExport = (image: any) => {
@@ -34,7 +39,7 @@ export const TacticalMap = (props, context) => {
     'blue',
     'purple',
     'green',
-    'brown'
+    'brown',
   ];
 
   const colors: Record<string, string> = {
@@ -44,16 +49,19 @@ export const TacticalMap = (props, context) => {
     'blue': '#0561F5',
     'purple': '#C002FA',
     'green': '#02c245',
-    'brown': '#5C351E'
+    'brown': '#5C351E',
   };
 
   const handleColorSelection = () => {
-    if(colors[data.toolbarUpdatedSelection] != null && colors[data.toolbarUpdatedSelection] != undefined){
+    if (
+      colors[data.toolbarUpdatedSelection] != null &&
+      colors[data.toolbarUpdatedSelection] != undefined
+    ) {
       return colors[data.toolbarUpdatedSelection];
     } else {
       return data.toolbarUpdatedSelection;
     }
-  }
+  };
 
   return (
     <Window title={'Tactical Map'} theme="usmc" width={650} height={750}>
@@ -65,10 +73,10 @@ export const TacticalMap = (props, context) => {
             onImageExport={handleTacMapExport}
           />
         </Section>
-        <Section title="Canvas Options" className={"canvas-options"}>
+        <Section title="Canvas Options" className={'canvas-options'}>
           <Stack>
             <Stack.Item grow>
-            {(!data.updatedCanvas && (
+              {(!data.updatedCanvas && (
                 <Button
                   fontSize="10px"
                   fluid={1}
@@ -88,9 +96,11 @@ export const TacticalMap = (props, context) => {
                   content="Announce"
                   className="text-center"
                   onClick={() =>
-                  act('selectAnnouncement', { image: data.exportedTacMapImage })
-                }
-              />
+                    act('selectAnnouncement', {
+                      image: data.exportedTacMapImage,
+                    })
+                  }
+                />
               )}
             </Stack.Item>
             <Stack.Item grow>
@@ -125,26 +135,27 @@ export const TacticalMap = (props, context) => {
               />
             </Stack.Item>
           </Stack>
-          <Stack className={"progress-stack"} >
-          <Stack.Item grow>
-            {timeLeft > 0 && (
-              <ProgressBar
+          <Stack className={'progress-stack'}>
+            <Stack.Item grow>
+              {timeLeft > 0 && (
+                <ProgressBar
                   value={timeLeftPct}
                   ranges={{
                     good: [-Infinity, 0.33],
                     average: [0.33, 0.67],
                     bad: [0.67, Infinity],
-                    }}>
+                  }}
+                >
                   <Box textAlign="center" fontSize="15px">
-                    {Math.ceil(timeLeft / 10)} seconds until the canvas changes can be updated
+                    {Math.ceil(timeLeft / 10)} seconds until the canvas changes
+                    can be updated
                   </Box>
-            </ProgressBar>
-          )}
-          </Stack.Item>
+                </ProgressBar>
+              )}
+            </Stack.Item>
           </Stack>
         </Section>
       </Window.Content>
     </Window>
   );
 };
-

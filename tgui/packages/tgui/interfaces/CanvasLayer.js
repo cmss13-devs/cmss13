@@ -6,7 +6,6 @@ export class CanvasLayer extends Component {
     super(props);
     this.canvasRef = createRef();
 
-
     // color selection
     // using this.state prevents unpredictable behavior
     this.state = {
@@ -171,8 +170,9 @@ export class CanvasLayer extends Component {
     }
 
     if (selection === 'export') {
-
-      this.props.onImageExport(String(this.canvasRef.current.toDataURL("image/jpeg", 0.4)));
+      this.props.onImageExport(
+        String(this.canvasRef.current.toDataURL('image/jpeg', 0.4))
+      );
 
       return;
     }

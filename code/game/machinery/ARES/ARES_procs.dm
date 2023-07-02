@@ -572,7 +572,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		return APOLLO_ACCESS_AUTHED
 	if(ACCESS_MARINE_AI_TEMP in card.access)
 		return APOLLO_ACCESS_TEMP
-	if((ACCESS_MARINE_COMMAND in card.access ) || (ACCESS_MARINE_ENGINEERING in card.access) || (ACCESS_WY_CORPORATE in card.access))
+	if((ACCESS_MARINE_SENIOR in card.access ) || (ACCESS_MARINE_ENGINEERING in card.access) || (ACCESS_WY_CORPORATE in card.access))
 		return APOLLO_ACCESS_REPORTER
 	else
 		return APOLLO_ACCESS_REQUEST
@@ -633,7 +633,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			to_chat(user, SPAN_NOTICE("You try to insert [object] but [src] remains silent."))
 			return FALSE
 		var/obj/item/card/id/idcard = object
-		if((idcard.assignment = JOB_WORKING_JOE) || (ACCESS_ARES_DEBUG in idcard.access))
+		if((idcard.assignment == JOB_WORKING_JOE) || (ACCESS_ARES_DEBUG in idcard.access))
 			if(!authenticator_id)
 				if(user.drop_held_item())
 					object.forceMove(src)
@@ -842,8 +842,6 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			switch(maint_type)
 				if("Major Structural Damage", "Communications Failure",	"Power Generation Failure")
 					priority_report = TRUE
-				if("Other")
-					maint_type = tgui_input_text(operator, "What is the type of maintenance item you wish to report?", "Other Category", encode = FALSE, timeout = 30 SECONDS)
 
 			if(!maint_type)
 				return FALSE
@@ -895,7 +893,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			to_chat(usr, SPAN_WARNING("[ticket.ticket_type] [ticket.ticket_id] has been cancelled."))
 			ticket.ticket_status = TICKET_CANCELLED
 			if(ticket.ticket_priority)
-				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been cancelled!")
+				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been cancelled.")
 			return TRUE
 
 		if("mark_ticket")
@@ -915,7 +913,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 					return FALSE
 			if(ticket.ticket_priority)
 				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by [last_login].")
-			to_chat(usr, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]"))
+			to_chat(usr, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
 			return TRUE
 
 	if(playsound)

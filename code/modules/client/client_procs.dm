@@ -155,7 +155,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(!istype(image))
 			return
 
-		show_browser(usr, "<img src=[image.data] height=1000 width=1000>","Map Image", "Map Image", "size=1000x1000")
+		show_browser(usr, "<img src=[image.data] height=1000 width=1000>","Tactical Map", "Tactical Map", "size=1000x1000")
 
 	else if(href_list["FaxView"])
 

@@ -472,22 +472,6 @@
 	user_xeno.hive.banished_ckeys.Remove(banished_name)
 	return ..()
 
-/datum/action/xeno_action/activable/secrete_resin/remote/queen/use_ability(atom/A)
-	. = ..()
-	if(!.)
-		return
-
-	if(!boosted)
-		return
-	var/mob/living/carbon/xenomorph/X = owner
-	var/datum/hive_status/HS = X.hive
-	if(!HS || !HS.hive_location)
-		return
-	// 5 screen radius
-	if(get_dist(A, HS.hive_location) > 35)
-		// Apply the normal cooldown if not building near the hive
-		apply_cooldown_override(initial(xeno_cooldown))
-
 /datum/action/xeno_action/onclick/eye
 	name = "Enter Eye Form"
 	action_icon_state = "queen_eye"

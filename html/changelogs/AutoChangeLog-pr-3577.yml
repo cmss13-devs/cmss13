@@ -1,6 +1,0 @@
-author: "TeDGamer Drathek"
-delete-after: True
-changes:
-  - bugfix: "Boilers from other hives generate proper colored IFFed gas"
-  - bugfix: "Fixes some death causes with boiler acid gas (for bombard, shroud, and gibbing), neurotoxin gas/stabs, acid shotgun, and xeno spits"
-  - balance: "Neurotoxin stops processing only in dead mobs"

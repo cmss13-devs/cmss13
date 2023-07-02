@@ -570,7 +570,7 @@ SUBSYSTEM_DEF(minimaps)
 				var/obj/item/card/id/id = H.wear_id
 				if(istype(id))
 					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
-						signed = "[paygrade] [id.registered_name]"
+					signed = "[paygrade] [id.registered_name]"
 
 			var/href_map = "<a href='?MapView=\ref[canvas_image]'>View Tacitcal Map</a><br><br>"
 			var/outgoing_message = href_map + input

@@ -434,14 +434,19 @@ const MaintReports = (props, context) => {
         )}
         {maintenance_tickets.map((ticket, i) => {
           let view_status = 'Ticket is pending assignment.';
+          let view_icon = 'circle-question';
           if (ticket.status === 'assigned') {
             view_status = 'Ticket is assigned.';
+            view_icon = 'circle-plus';
           } else if (ticket.status === 'rejected') {
             view_status = 'Ticket has been rejected.';
+            view_icon = 'circle-xmark';
           } else if (ticket.status === 'cancelled') {
             view_status = 'Ticket was cancelled by reporter.';
+            view_icon = 'circle-stop';
           } else if (ticket.status === 'completed') {
             view_status = 'Ticket has been successfully resolved.';
+            view_icon = 'circle-check';
           }
           let can_cancel = 'Yes';
           if (ticket.submitter !== logged_in) {
@@ -472,7 +477,7 @@ const MaintReports = (props, context) => {
                 {ticket.details}
               </Flex.Item>
               <Flex.Item width="8rem" ml="1rem">
-                <Button icon="eye" tooltip={view_status} />
+                <Button icon={view_icon} tooltip={view_status} />
                 <Button.Confirm
                   icon="file-circle-xmark"
                   tooltip="Cancel Ticket"
@@ -566,14 +571,19 @@ const MaintManagement = (props, context) => {
         )}
         {maintenance_tickets.map((ticket, i) => {
           let view_status = 'Ticket is pending assignment.';
+          let view_icon = 'circle-question';
           if (ticket.status === 'assigned') {
             view_status = 'Ticket is assigned.';
+            view_icon = 'circle-plus';
           } else if (ticket.status === 'rejected') {
             view_status = 'Ticket has been rejected.';
+            view_icon = 'circle-xmark';
           } else if (ticket.status === 'cancelled') {
             view_status = 'Ticket was cancelled by reporter.';
+            view_icon = 'circle-stop';
           } else if (ticket.status === 'completed') {
             view_status = 'Ticket has been successfully resolved.';
+            view_icon = 'circle-check';
           }
           let can_claim = 'Yes';
           if (ticket.assignee === logged_in) {
@@ -614,7 +624,7 @@ const MaintManagement = (props, context) => {
                 {ticket.assignee}
               </Flex.Item>
               <Flex.Item width="8rem" ml="1rem" direction="column">
-                <Button icon="eye" tooltip={view_status} />
+                <Button icon={view_icon} tooltip={view_status} />
                 <Button.Confirm
                   icon="user-lock"
                   tooltip="Claim Ticket"

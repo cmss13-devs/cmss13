@@ -1,0 +1,29 @@
+2023-07-01:
+  Ben10083:
+  - bugfix: lisps now occur over radio as well
+  - refactor: Relevant variables relating to speech problems now use true and false
+      instead of 1 and 0
+  - bugfix: fixes exploit relating to cloaking tarps by adding a delay before tarp
+      can be closed again.
+  Drathek:
+  - bugfix: Fixed missing xeno ban check for playing as a facehugger
+  - spellcheck: Tweaked message when ghosting while nested
+  TheGamerdk:
+  - rscadd: ARES will announce how many Foxtrot marines that woke up.
+  harryob:
+  - rscadd: you can no longer implant yourself with a motion detector
+  ihatethisengine:
+  - rscadd: Added cameras to dropship deployable sentries.
+2023-07-02:
+  Clairion:
+  - bugfix: Vampire Lurker headbite will no longer trigger if the target is moved
+      away during windup.
+  Cthulhu80:
+  - rscadd: added camera shake and stun to OB.
+  fira:
+  - rscadd: Added InfluxDB backed metrics logging for some of the most used game statistics.
+      This will allow to graph them over time and give better insight as to what happens
+      in rounds.
+  theselfish:
+  - qol: Made the MP beret to be clickable.
+  - imageadd: Updated the MP beret obj sprite to be easier to click.

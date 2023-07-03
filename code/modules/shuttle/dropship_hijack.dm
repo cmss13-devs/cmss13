@@ -123,7 +123,7 @@
 		if(!offset_target)
 			offset_target = target // Welp the offsetting failed so...
 		crash_site.forceMove(offset_target)
-		marine_announcement("A hostile aircraft on course for the [target_ship_section] has been successfully deterred.", "IX-50 MGAD System")
+		marine_announcement("A hostile aircraft on course for the [target_ship_section] has been successfully deterred.", "IX-50 MGAD System", logging = ARES_LOG_SECURITY)
 		target_ship_section = new_target_ship_section
 		// TODO mobs not alerted
 		for(var/area/internal_area in shuttle.shuttle_areas)
@@ -149,7 +149,7 @@
 
 	shuttle.crashing = TRUE
 
-	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg')
+	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
 
 	announce_dchat("The dropship is about to impact [get_area_name(crash_site)]", crash_site)
 	final_announcement = TRUE
@@ -202,7 +202,6 @@
 			turfs += get_area_turfs(/area/almayer/medical/hydroponics)
 		if("Upper deck Aftship")
 			turfs += get_area_turfs(/area/almayer/engineering/upper_engineering)
-			turfs += get_area_turfs(/area/almayer/command/computerlab)
 			turfs += get_area_turfs(/area/almayer/engineering/laundry)
 		if("Lower deck Foreship")
 			turfs += get_area_turfs(/area/almayer/hallways/hangar)

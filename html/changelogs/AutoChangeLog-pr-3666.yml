@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - balance: "Xenos no longer can pull dead xenos"

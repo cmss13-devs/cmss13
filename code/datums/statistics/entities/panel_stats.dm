@@ -741,7 +741,6 @@
 		"total_projectiles_hit_xeno" = total_projectiles_hit_xeno,
 		"total_slashes" = total_slashes,
 		"total_friendly_fire_instances" = total_friendly_fire_instances,
-		"total_friendly_fire_kills" = total_friendly_fire_kills,
 		"total_huggers_applied" = total_huggers_applied,
 		"total_larva_burst" = total_larva_burst,
 		"participants" = participants_list,

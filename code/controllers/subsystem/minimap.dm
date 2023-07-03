@@ -572,10 +572,10 @@ SUBSYSTEM_DEF(minimaps)
 					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
 					signed = "[paygrade] [id.registered_name]"
 
-			var/href_map = "<a href='?MapView=\ref[canvas_image]'>View Tacitcal Map</a><br><br>"
+			var/href_map = "<a href='?MapView=\ref[canvas_image]'>View Tactical Map</a><br><br>"
 			var/outgoing_message = href_map + input
 
-			message_admins("[key_name(user)] has made a tacitcal map announcement.")
+			message_admins("[key_name(user)] has made a tactical map announcement.")
 			log_announcement("[key_name(user)] has announced the following: [outgoing_message]")
 
 			//hardcoded testing, PROGRESS!

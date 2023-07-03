@@ -968,6 +968,15 @@
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_USCM
 
+/obj/item/device/radio/headset/distress/CMB/limited
+	name = "\improper Damaged CMB Earpiece"
+	desc = "A sleek headset used by The Colonial Marshal Bureau, crafted in Sol. Low profile and comfortable. No one is above the law. This one is damaged, so the only channel is: ; - CMB."
+	frequency = CMB_FREQ
+	icon_state = "cmb_headset"
+	initial_keys = list()
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_USCM
+
 /obj/item/device/radio/headset/distress/CMB/ICC
 	name = "\improper ICC Liaison Headset"
 	desc = "An expensive headset used by The Interstellar Commerce Commission. This one in particular has a liaison chip with the CMB. Featured channels include: ; - CMB, :g - public, :v - marine command, :m - medbay, :t - intel, :y - Weyland-Yutani."

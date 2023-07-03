@@ -9,7 +9,7 @@
 	ignitionTime = 8 SECONDS
 	ignition_sound = 'sound/effects/escape_pod_warmup.ogg'
 	/// The % chance of the escape pod crashing into the groundmap
-	var/crash_land_chance = 50
+	var/crash_land_chance = 33
 
 	var/datum/door_controller/single/door_handler = new()
 	var/launched = FALSE

@@ -1,4 +1,0 @@
-author: "ghostsheet"
-delete-after: True
-changes:
-  - bugfix: "Fixed Extended Barrel bug of building up free bullet velocity."

@@ -27,3 +27,8 @@
   theselfish:
   - qol: Made the MP beret to be clickable.
   - imageadd: Updated the MP beret obj sprite to be easier to click.
+2023-07-03:
+  blackdragonTOW:
+  - refactor: refactored dropship_ammo so that missiles don't use Spawn()
+  ghostsheet:
+  - bugfix: Fixed Extended Barrel bug of building up free bullet velocity.

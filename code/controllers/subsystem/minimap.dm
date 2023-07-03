@@ -502,8 +502,8 @@ SUBSYSTEM_DEF(minimaps)
 	data["toolbarUpdatedSelection"] = toolbar_updated_selection
 	data["worldtime"] = world.time
 
-	data["nextcanvastime"] = canvas_cooldown
-	data["canvas_cooldown"] = canvas_cooldown_time
+	data["canvasCooldown"] = canvas_cooldown
+	data["nextCanvasTime"] = canvas_cooldown_time
 	data["updatedCanvas"] = updated_canvas
 	return data
 

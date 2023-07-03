@@ -9,16 +9,16 @@ interface TacMapProps {
   updatedCanvas: boolean;
   imageSrc: string;
   worldtime: any;
-  nextcanvastime: any;
-  canvas_cooldown: any;
+  nextCanvasTime: any;
+  canvasCooldown: any;
   exportedTacMapImage: any;
 }
 
 export const TacticalMap = (props, context) => {
   const { data, act } = useBackend<TacMapProps>(context);
 
-  const timeLeft = data.nextcanvastime - data.worldtime;
-  const timeLeftPct = timeLeft / data.canvas_cooldown;
+  const timeLeft = data.canvasCooldown - data.worldtime;
+  const timeLeftPct = timeLeft / data.nextCanvasTime;
   const canUpdate = timeLeft < 0 && !data.updatedCanvas;
 
   const handleTacMapExport = (image: any) => {

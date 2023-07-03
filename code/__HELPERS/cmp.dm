@@ -65,4 +65,4 @@ var/atom/cmp_dist_origin=null
 /// Compares observers based on their larva_queue_time value in ascending order
 /// Assumes the client on the observer is not null
 /proc/cmp_obs_larvaqueuetime_asc(mob/dead/observer/A, mob/dead/observer/B)
-	return A.client.larva_queue_time - B.client.larva_queue_time
+	return A.client.player_details.larva_queue_time - B.client.player_details.larva_queue_time

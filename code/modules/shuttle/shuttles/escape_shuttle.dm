@@ -1,4 +1,4 @@
-#define CRASH_LAND_PROBABILITY 50
+#define CRASH_LAND_PROBABILITY 33
 
 /obj/docking_port/mobile/escape_shuttle
 	name = "Escape Pod"

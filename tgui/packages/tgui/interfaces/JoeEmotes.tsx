@@ -54,7 +54,7 @@ const EmoteTab = (props, context) => {
           <Stack vertical mt={-2}>
             <Divider />
             {mapped_emote.map((item) => (
-              <Stack.Item key={item}>
+              <Stack.Item key={item.id}>
                 <Stack>
                   <span
                     style={{

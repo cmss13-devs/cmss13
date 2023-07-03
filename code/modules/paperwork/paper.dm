@@ -213,6 +213,8 @@
 
 
 /obj/item/paper/proc/parsepencode(t, obj/item/tool/pen/P, mob/user as mob, iscrayon = 0)
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+
 	t = replacetext(t, "\[center\]", "<center>")
 	t = replacetext(t, "\[/center\]", "</center>")
 	t = replacetext(t, "\[br\]", "<BR>")
@@ -251,9 +253,9 @@
 		t = replacetext(t, "\[/grid\]", "</td></tr></table>")
 		t = replacetext(t, "\[row\]", "</td><tr>")
 		t = replacetext(t, "\[cell\]", "<td>")
-		t = replacetext(t, "\[logo\]", "<img src = wylogo.png>")
-		t = replacetext(t, "\[wy\]", "<img src = wylogo.png>")
-		t = replacetext(t, "\[uscm\]", "<img src = uscmlogo.png>")
+		t = replacetext(t, "\[logo\]", "<img src = [asset.get_url_mappings()["wylogo.png"]]>")
+		t = replacetext(t, "\[wy\]", "<img src = [asset.get_url_mappings()["wylogo.png"]]>")
+		t = replacetext(t, "\[uscm\]", "<img src = [asset.get_url_mappings()["uscmlogo.png"]]>")
 
 		t = "<font face=\"[deffont]\" color=[P ? P.pen_colour : "black"]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
@@ -619,11 +621,21 @@
 
 /obj/item/paper/wy
 	icon_state = "paper_wy"
-	info = "<center><img src = wylogo.png></center><BR>\n<span class=\"paper_field\"></span>"
+
+/obj/item/paper/wy/Initialize(mapload, photo_list)
+	. = ..()
+
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	info = "<center><img src = [asset.get_url_mappings()["wylogo.png"]]></center><BR>\n<span class=\"paper_field\"></span>"
 
 /obj/item/paper/uscm
 	icon_state = "paper_uscm"
-	info = "<center><img src = uscmlogo.png></center><BR>\n<span class=\"paper_field\"></span>"
+
+/obj/item/paper/uscm/Initialize(mapload, photo_list)
+	. = ..()
+
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	info = "<center><img src = [asset.get_url_mappings()["uscmlogo.png"]]></center><BR>\n<span class=\"paper_field\"></span>"
 
 /obj/item/paper/research_notes
 	icon_state = "paper_wy_words"

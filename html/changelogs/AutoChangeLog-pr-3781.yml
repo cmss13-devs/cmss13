@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed a persistence problem for the time of death value used for the larva queue."
+  - bugfix: "Fixed brainmobs (human gibbing) not getting a time of death value."

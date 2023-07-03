@@ -302,7 +302,7 @@
 			to_chat(candidates[i], chat_message)
 
 		// Count how many are prioritized
-		if(cur_obs.client.larva_queue_time < 2) // 0 and 1 because facehuggers/t-domers are slightly deprioritized
+		if(cur_obs.client.player_details.larva_queue_time < 2) // 0 and 1 because facehuggers/t-domers are slightly deprioritized
 			new_players++
 
 /proc/convert_k2c(temp)

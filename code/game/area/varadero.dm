@@ -155,7 +155,7 @@
 	icon_state = "varadero4"
 	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_JUNGLE
-	sound_environment = SOUND_ENVIRONMENT_GENERIC
+	sound_environment = SOUND_ENVIRONMENT_ROOM
 
 /area/varadero/interior/cargo
 	name = "New Varadero - Cargo"

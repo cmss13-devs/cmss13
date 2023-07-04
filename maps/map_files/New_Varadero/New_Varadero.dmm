@@ -200,7 +200,8 @@
 "ahb" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/effect/overlay/palmtree_r,
 /turf/open/auto_turf/sand_white/layer1,
@@ -386,6 +387,10 @@
 "aoC" = (
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/comms2)
+"aoE" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/varadero/interior/maintenance/research)
 "apj" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -563,7 +568,8 @@
 "avX" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/coast/beachcorner/north_east,
 /area/varadero/exterior/comms4)
@@ -594,7 +600,8 @@
 /area/varadero/interior/comms2)
 "axv" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -640,7 +647,8 @@
 "azr" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -703,7 +711,8 @@
 	pixel_y = 20
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -766,7 +775,8 @@
 	layer = 3.1
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river/ocean{
 	name = "deep ocean";
@@ -1107,7 +1117,8 @@
 "aJD" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -1116,11 +1127,13 @@
 	name = "support struts"
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -1209,15 +1222,6 @@
 "aOg" = (
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
-"aOZ" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -11
-	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/varadero/interior/toilets)
 "aPe" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/scientist,
@@ -1471,11 +1475,13 @@
 /area/varadero/interior/records)
 "aYg" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -1545,6 +1551,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -1560,7 +1567,8 @@
 /area/varadero/interior/maintenance/research)
 "bah" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -1816,10 +1824,12 @@
 "biS" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
@@ -1976,6 +1986,10 @@
 	icon_state = "snow_mat"
 	},
 /area/varadero/interior/maintenance)
+"boY" = (
+/obj/structure/window/framed/colony/reinforced/tinted,
+/turf/open/floor/plating,
+/area/varadero/interior/maintenance/security)
 "bpH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -2070,7 +2084,8 @@
 /area/varadero/interior/mess)
 "btU" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/pontoon_beach)
@@ -2121,7 +2136,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -2205,6 +2221,9 @@
 /obj/item/folder/black,
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/digsite)
+"byz" = (
+/turf/closed/wall,
+/area/varadero/interior_protected/caves)
 "byC" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/ocean{
@@ -2243,7 +2262,8 @@
 "bzz" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
@@ -2308,6 +2328,14 @@
 	},
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/digsite)
+"bBV" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/item/lightstick/variant/planted,
+/turf/open/gm/river{
+	name = "shallow ocean";
+	default_name = "shallow ocean"
+	},
+/area/varadero/exterior/farocean)
 "bCi" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/plating/icefloor{
@@ -2326,7 +2354,8 @@
 /obj/structure/platform_decoration/kutjevo,
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -2368,7 +2397,8 @@
 /area/varadero/interior/comms3)
 "bEY" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/prop/rock/brown{
 	indestructible = 1;
@@ -2438,9 +2468,6 @@
 /area/varadero/interior/hall_SE)
 "bGC" = (
 /obj/structure/sign/safety/restrictedarea,
-/obj/structure/sign/safety/airlock{
-	pixel_x = 15
-	},
 /turf/closed/wall,
 /area/varadero/exterior/lz1_near)
 "bGU" = (
@@ -2463,7 +2490,8 @@
 "bJv" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/machinery/light{
 	dir = 4
@@ -2489,7 +2517,8 @@
 "bJV" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -2499,7 +2528,8 @@
 "bLl" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -2508,11 +2538,13 @@
 	name = "support struts"
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -2788,7 +2820,8 @@
 "bTg" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -2863,7 +2896,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
@@ -2897,7 +2931,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
@@ -2983,7 +3018,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -3119,14 +3155,16 @@
 "ceX" = (
 /obj/structure/plasticflaps/mining,
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/floor/plating/icefloor{
@@ -3345,11 +3383,13 @@
 "clG" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -3409,7 +3449,8 @@
 "cne" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/machinery/light{
 	dir = 1
@@ -3427,10 +3468,12 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -3518,7 +3561,8 @@
 "cql" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
@@ -3590,7 +3634,8 @@
 "ctE" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -3599,7 +3644,8 @@
 	name = "support struts"
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -3726,12 +3772,6 @@
 /obj/item/storage/bible/booze,
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
-"cxo" = (
-/obj/structure/machinery/light,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/maintenance/north)
 "cxT" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood,
@@ -3740,7 +3780,8 @@
 "cym" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -3806,6 +3847,10 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/records)
+"cBI" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/north_research)
 "cBW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
@@ -3863,7 +3908,8 @@
 "cEm" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -4123,7 +4169,8 @@
 "cLV" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/ocean{
@@ -4389,11 +4436,13 @@
 /obj/structure/plasticflaps/mining,
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/floor/plating/icefloor{
@@ -4459,11 +4508,13 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/floor/plating/icefloor{
@@ -4473,7 +4524,8 @@
 "cXa" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -4698,6 +4750,7 @@
 /obj/structure/machinery/computer/shuttle_control/ice_colony/elevator1{
 	pixel_y = 32
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -4813,6 +4866,9 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/machinery/alarm{
+	pixel_y = 24
+	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -4849,6 +4905,12 @@
 	icon_state = "snow_mat"
 	},
 /area/varadero/interior/maintenance)
+"dkr" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/research)
 "dkC" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -5074,7 +5136,8 @@
 /area/varadero/interior/comms2)
 "dsC" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -5180,7 +5243,8 @@
 "dyo" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -5285,7 +5349,8 @@
 "dFC" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/shard{
 	icon_state = "large";
@@ -5617,7 +5682,8 @@
 /area/varadero/exterior/eastocean)
 "dTS" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -5681,7 +5747,8 @@
 /area/varadero/interior/administration)
 "dWH" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -5713,9 +5780,6 @@
 /turf/closed/wall/rock/brown,
 /area/varadero/exterior/pontoon_beach)
 "dXr" = (
-/obj/structure/machinery/storm_siren{
-	pixel_y = 5
-	},
 /obj/structure/barricade/wooden{
 	dir = 1
 	},
@@ -5866,11 +5930,13 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/floor/plating/icefloor{
@@ -5910,11 +5976,13 @@
 "edD" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -5985,11 +6053,13 @@
 /area/varadero/interior/maintenance/north)
 "eha" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -6013,14 +6083,16 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
 "ehT" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/coast/east,
 /area/varadero/exterior/comms4)
@@ -6093,10 +6165,12 @@
 "ekE" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
@@ -6153,7 +6227,8 @@
 /area/varadero/exterior/farocean)
 "eoj" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/coast/north,
 /area/varadero/exterior/pontoon_beach)
@@ -6354,7 +6429,8 @@
 "euS" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/pontoon_beach)
@@ -6509,7 +6585,8 @@
 /area/varadero/interior/research)
 "ezU" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
@@ -6568,6 +6645,26 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance)
+"eBm" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1;
+	climb_delay = 1;
+	layer = 2.99
+	},
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/obj/structure/machinery/storm_siren{
+	pixel_y = 5
+	},
+/turf/open/gm/river{
+	name = "shallow ocean";
+	default_name = "shallow ocean"
+	},
+/area/varadero/exterior/pontoon_beach)
 "eBs" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 9
@@ -6605,20 +6702,6 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior_protected/maintenance/south)
-"eCe" = (
-/obj/structure/closet/secure_closet/engineering_personal,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/effect/landmark/objective_landmark/close,
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
-/turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "yellow"
-	},
-/area/varadero/interior/comms3)
 "eCg" = (
 /obj/item/tool/warning_cone,
 /turf/open/auto_turf/sand_white/layer1,
@@ -6637,7 +6720,8 @@
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 3;
@@ -6667,13 +6751,18 @@
 /area/varadero/interior_protected/caves/digsite)
 "eDY" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
 	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
+"eEd" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/r_wall,
+/area/varadero/interior_protected/maintenance/south)
 "eEY" = (
 /obj/structure/prop/ice_colony/dense/planter_box/plated{
 	dir = 4
@@ -6730,6 +6819,10 @@
 "eGX" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/pontoon_beach)
+"eHl" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/varadero/interior/toilets)
 "eHs" = (
 /obj/item/lightstick/variant/planted,
 /turf/open/gm/dirt,
@@ -6935,7 +7028,8 @@
 /area/varadero/exterior/eastbeach)
 "eOa" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/coast/west,
 /area/varadero/exterior/lz1_near)
@@ -7009,6 +7103,16 @@
 /obj/structure/window/framed/wood,
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
+"eQr" = (
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior_protected/maintenance/south)
 "eQz" = (
 /obj/structure/filingcabinet/filingcabinet,
 /obj/item/paper/research_notes,
@@ -7188,10 +7292,12 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -7200,11 +7306,13 @@
 "eXg" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -7493,7 +7601,8 @@
 /area/varadero/interior/hall_SE)
 "ffY" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -7728,6 +7837,13 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/comms2)
+"fnj" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior_protected/maintenance/south)
 "fnl" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -8213,7 +8329,8 @@
 "fFH" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
@@ -8350,6 +8467,10 @@
 	icon_state = "wred"
 	},
 /area/varadero/interior/medical)
+"fKt" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/varadero/exterior/lz1_near)
 "fKz" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -8424,7 +8545,8 @@
 "fNm" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
@@ -8433,7 +8555,8 @@
 	unacidable = 1
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
@@ -8653,7 +8776,8 @@
 "fWE" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -8668,7 +8792,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
@@ -8707,7 +8832,8 @@
 "fXA" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/dirt,
@@ -8911,7 +9037,8 @@
 /area/varadero/interior/cargo)
 "gdJ" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/prop/rock/brown{
 	indestructible = 1;
@@ -8955,7 +9082,8 @@
 "geK" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -8968,7 +9096,8 @@
 "gfc" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -8981,7 +9110,8 @@
 "gfe" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
@@ -9338,16 +9468,18 @@
 "gor" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/comms4)
 "gpJ" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
-/obj/structure/prop/rock/brown,
 /obj/structure/blocker/invisible_wall/water,
+/obj/item/lightstick/variant/planted,
 /turf/open/gm/river/ocean{
 	name = "deep ocean";
 	default_name = "deep ocean"
@@ -9382,6 +9514,11 @@
 	icon_state = "red"
 	},
 /area/varadero/interior/security)
+"grG" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/item/lightstick/variant/planted,
+/turf/open/gm/coast/west,
+/area/varadero/exterior/farocean)
 "grT" = (
 /obj/structure/sign/safety/water,
 /turf/closed/wall/r_wall,
@@ -9416,11 +9553,13 @@
 "gsQ" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -9440,11 +9579,11 @@
 	},
 /area/varadero/exterior/eastbeach)
 "gtz" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
 /obj/structure/barricade/wooden{
 	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -9602,7 +9741,8 @@
 /area/varadero/interior/technical_storage)
 "gzm" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/stack/sheet/metal,
 /obj/effect/decal/cleanable/blood/oil/streak,
@@ -9723,11 +9863,13 @@
 "gCZ" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
@@ -9985,7 +10127,8 @@
 "gMV" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -10150,7 +10293,8 @@
 /area/varadero/exterior/pontoon_beach)
 "gVP" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -10202,12 +10346,21 @@
 /turf/closed/wall/r_wall,
 /area/varadero/exterior/lz1_near)
 "gXN" = (
-/obj/structure/machinery/portable_atmospherics/canister/air,
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellowfull"
 	},
 /area/varadero/interior/electrical)
+"gXO" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "yellow"
+	},
+/area/varadero/interior/comms3)
 "gYg" = (
 /obj/item/toy/beach_ball/holoball,
 /obj/structure/surface/rack,
@@ -10322,7 +10475,8 @@
 "hbD" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -10535,7 +10689,8 @@
 /area/varadero/interior/maintenance/north)
 "hlF" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -10547,7 +10702,8 @@
 	layer = 3.1
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -10690,7 +10846,8 @@
 /area/varadero/interior/hall_SE)
 "hsa" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -10732,7 +10889,8 @@
 "hti" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
@@ -10812,10 +10970,6 @@
 "huF" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
-"huG" = (
-/obj/item/lightstick/variant/planted,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/exterior/monsoon)
 "hvh" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -10954,7 +11108,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
@@ -10993,7 +11148,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
@@ -11071,7 +11227,8 @@
 "hET" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
@@ -11342,7 +11499,8 @@
 "hNq" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -11388,7 +11546,8 @@
 /area/varadero/exterior/lz2_near)
 "hPw" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/window_frame/wood,
 /turf/open/floor/wood,
@@ -11616,17 +11775,6 @@
 "hXR" = (
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/pontoon_beach)
-"hYf" = (
-/obj/structure/closet/hydrant{
-	pixel_y = 32
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/shiva{
-	icon_state = "green"
-	},
-/area/varadero/interior/hall_N)
 "hZo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -11746,7 +11894,8 @@
 "icb" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/device/camera{
 	pixel_x = -2;
@@ -11890,7 +12039,8 @@
 "igB" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -11951,7 +12101,8 @@
 "ihX" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/machinery/storm_siren{
 	dir = 4;
@@ -12137,7 +12288,8 @@
 /area/varadero/interior/hall_SE)
 "ipi" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/sign/double/barsign{
 	name = "The Salty Cutlass";
@@ -12246,7 +12398,8 @@
 /area/varadero/interior/administration)
 "itL" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river/ocean{
 	name = "deep ocean";
@@ -12261,7 +12414,8 @@
 "itQ" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -12372,7 +12526,9 @@
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -12464,7 +12620,8 @@
 "izl" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -12546,7 +12703,8 @@
 /area/varadero/exterior/farocean)
 "iAP" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/exterior/pontoon_beach)
@@ -12641,10 +12799,12 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -12724,6 +12884,10 @@
 /obj/item/weapon/gun/shotgun/pump,
 /turf/open/floor/carpet,
 /area/varadero/interior/security)
+"iHE" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
 "iHN" = (
 /turf/open/gm/dirt{
 	icon_state = "desert1"
@@ -13136,7 +13300,8 @@
 "iVD" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -13237,7 +13402,8 @@
 /area/varadero/interior/research)
 "iYf" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/pontoon_beach)
@@ -13253,11 +13419,13 @@
 "iZj" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -13400,7 +13568,8 @@
 "jdu" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -13534,11 +13703,13 @@
 "jhu" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
@@ -13758,14 +13929,16 @@
 /area/varadero/interior/hall_SE)
 "jpZ" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -13860,7 +14033,8 @@
 	pixel_y = 11
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -14018,7 +14192,8 @@
 /area/varadero/exterior/lz2_near)
 "jzL" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/tool/warning_cone,
 /turf/open/floor/plating/icefloor{
@@ -14343,7 +14518,8 @@
 "jKW" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -14353,7 +14529,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
@@ -14432,7 +14609,6 @@
 	},
 /area/varadero/interior/hall_SE)
 "jOR" = (
-/obj/effect/spawner/random/supply_kit,
 /obj/structure/closet/secure_closet/security_empty,
 /turf/open/floor/shiva{
 	dir = 4;
@@ -14753,7 +14929,8 @@
 /area/varadero/interior/medical)
 "kap" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -14902,6 +15079,10 @@
 "kgp" = (
 /turf/closed/wall/rock/brown,
 /area/varadero/exterior/lz2_near)
+"kgw" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/varadero/interior/records)
 "kgA" = (
 /turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/eastbeach)
@@ -14926,7 +15107,8 @@
 /area/varadero/interior/court)
 "khB" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail/wire{
 	dir = 8;
@@ -14952,6 +15134,11 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/north)
+"kif" = (
+/obj/structure/prop/rock/brown,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt,
+/area/varadero/interior_protected/caves)
 "kin" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -14987,7 +15174,8 @@
 /area/varadero/exterior/eastbeach)
 "kjr" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/stack/sheet/metal,
 /turf/open/auto_turf/sand_white/layer1,
@@ -15008,7 +15196,8 @@
 "kkt" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
@@ -15036,11 +15225,13 @@
 "kli" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -15118,11 +15309,13 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform_decoration/kutjevo,
 /obj/structure/blocker/invisible_wall/water,
@@ -15130,6 +15323,12 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/oob)
+"knP" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/research)
 "kof" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/shiva{
@@ -15152,7 +15351,8 @@
 "koZ" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/pontoon_beach)
@@ -15262,11 +15462,13 @@
 "ksu" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
@@ -15308,7 +15510,8 @@
 /area/varadero/interior_protected/maintenance/south)
 "kuO" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/eastbeach)
@@ -15319,10 +15522,6 @@
 /area/varadero/interior/hall_NW)
 "kvx" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/emps{
-	pixel_x = -4;
-	pixel_y = 1
-	},
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -15732,10 +15931,12 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/closet/crate/miningcar{
 	layer = 3.1;
@@ -16010,11 +16211,13 @@
 /area/varadero/interior_protected/maintenance/south)
 "kQy" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/coast/east,
 /area/varadero/exterior/comms4)
@@ -16023,14 +16226,16 @@
 /area/varadero/exterior/lz1_near)
 "kRU" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 2;
@@ -16069,9 +16274,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
+/turf/open/floor/plating,
 /area/varadero/interior/comms3)
 "kTo" = (
 /obj/structure/disposalpipe/segment,
@@ -16126,7 +16329,8 @@
 /area/varadero/interior/cargo)
 "kVq" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/coast/east,
 /area/varadero/exterior/lz2_near)
@@ -16142,7 +16346,8 @@
 "kVL" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -16383,7 +16588,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 5
@@ -16507,7 +16713,8 @@
 "liz" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/sand_white/layer1,
@@ -16610,7 +16817,8 @@
 "lmS" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -16696,6 +16904,12 @@
 	icon_state = "white"
 	},
 /area/varadero/interior/laundry)
+"lpJ" = (
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "bcircuit"
+	},
+/area/varadero/interior/maintenance/north)
 "lqa" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -11
@@ -16707,7 +16921,8 @@
 /area/varadero/interior_protected/caves/digsite)
 "lqF" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -16835,11 +17050,13 @@
 	dir = 8
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/floor/plating/icefloor{
@@ -16866,7 +17083,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -16934,7 +17152,8 @@
 /area/varadero/interior/security)
 "lxR" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -17246,11 +17465,13 @@
 "lId" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -17368,7 +17589,8 @@
 "lMl" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -17430,7 +17652,8 @@
 "lNL" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
@@ -17477,10 +17700,12 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/floor/plating/icefloor{
@@ -17628,7 +17853,8 @@
 "lVa" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/floor{
 	icon_state = "asteroidwarning"
@@ -17978,7 +18204,8 @@
 "mdy" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -17988,7 +18215,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river/ocean{
 	name = "deep ocean";
@@ -18221,7 +18449,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
@@ -18268,7 +18497,8 @@
 /area/varadero/exterior/pontoon_beach)
 "mnU" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
@@ -18521,11 +18751,13 @@
 /area/varadero/interior/court)
 "mwm" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/reagent_container/food/snacks/carpmeat{
 	desc = "This leathery protofish was named the gullible toothfish for the combination of its near identical dentata to that of Homo sapiens sapiens and the fact that if released after being caught, it is not uncommon to catch the same one; it not having learned its lesson. Its meat is said to taste like bitter clove.";
@@ -18784,11 +19016,13 @@
 /area/varadero/exterior/eastbeach)
 "mEy" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -18863,10 +19097,12 @@
 /obj/structure/plasticflaps/mining,
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/floor/plating/icefloor{
@@ -18889,7 +19125,8 @@
 "mIQ" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/floor/shiva{
 	icon_state = "snow_mat"
@@ -18898,7 +19135,8 @@
 "mIU" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -18986,10 +19224,12 @@
 "mMX" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -19136,6 +19376,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/hall_SE)
+"mQF" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/caves/north_research)
 "mQG" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/gm/river{
@@ -19143,12 +19389,6 @@
 	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
-"mQY" = (
-/obj/structure/sign/safety/airlock{
-	pixel_x = 8
-	},
-/turf/closed/wall,
-/area/varadero/interior/maintenance/north)
 "mRk" = (
 /obj/structure/prop/rock/brown,
 /obj/effect/landmark/lv624/fog_blocker{
@@ -19197,6 +19437,10 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/electrical)
+"mSu" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/maintenance/south)
 "mSD" = (
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor/shiva{
@@ -19210,7 +19454,8 @@
 /obj/structure/plasticflaps/mining,
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/floor/plating/icefloor{
@@ -19272,7 +19517,8 @@
 "mVj" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
@@ -19288,7 +19534,8 @@
 "mVn" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/shard{
 	icon_state = "medium"
@@ -19327,7 +19574,8 @@
 "mVY" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/clothing/under/shorts/grey,
 /turf/open/gm/river{
@@ -19656,11 +19904,13 @@
 "nhI" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
@@ -19676,11 +19926,13 @@
 "nhX" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -19693,7 +19945,8 @@
 "nhY" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -19745,7 +19998,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)
@@ -20082,7 +20336,8 @@
 "nzS" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/machinery/light{
 	dir = 4
@@ -20177,7 +20432,8 @@
 /area/varadero/interior/court)
 "nDL" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -20215,10 +20471,12 @@
 "nFp" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -20253,7 +20511,8 @@
 "nFH" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river/ocean{
 	name = "deep ocean";
@@ -20290,7 +20549,8 @@
 "nHy" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/tool/warning_cone,
 /turf/open/gm/dirt,
@@ -20528,11 +20788,13 @@
 /area/varadero/interior_protected/caves)
 "nOM" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/coast/north,
 /area/varadero/exterior/pontoon_beach)
@@ -20630,7 +20892,8 @@
 "nQR" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river/ocean{
 	name = "deep ocean";
@@ -20779,7 +21042,8 @@
 /area/varadero/interior/disposals)
 "nVv" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -20839,9 +21103,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin{
 	pixel_y = 6
-	},
-/obj/structure/machinery/alarm{
-	pixel_y = 24
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -21054,7 +21315,8 @@
 /area/varadero/interior/maintenance/security)
 "oep" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/prop/rock/brown,
 /turf/open/auto_turf/sand_white/layer1,
@@ -21125,11 +21387,6 @@
 	},
 /turf/open/floor/carpet,
 /area/varadero/interior/hall_SE)
-"ogX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior_protected/caves/digsite)
 "ohi" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/handcuffs,
@@ -21150,7 +21407,8 @@
 "ohC" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/pontoon_beach)
@@ -21344,7 +21602,8 @@
 "opP" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/shard{
 	icon_state = "medium"
@@ -21505,6 +21764,10 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior_protected/maintenance/south)
+"owM" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/r_wall,
+/area/varadero/interior_protected/caves/central)
 "owY" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -21641,7 +21904,8 @@
 "ozD" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -21661,10 +21925,15 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/varadero/exterior/pontoon_beach)
+"oAE" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves)
 "oAJ" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
@@ -21976,7 +22245,8 @@
 "oLZ" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -22116,7 +22386,8 @@
 	layer = 3.1
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river{
@@ -22148,7 +22419,8 @@
 "oTX" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/floor{
 	dir = 1;
@@ -22176,10 +22448,12 @@
 "oUH" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt{
 	icon_state = "desert1"
@@ -22533,11 +22807,13 @@
 "per" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -22774,7 +23050,8 @@
 /area/varadero/exterior/eastocean)
 "plF" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/reagent_container/food/snacks/carpmeat{
 	desc = "Revolting beyond description.";
@@ -22799,7 +23076,6 @@
 "plT" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "pmh" = (
@@ -23031,7 +23307,8 @@
 "psd" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
@@ -23057,7 +23334,8 @@
 "ptp" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -23312,9 +23590,7 @@
 	req_access = null;
 	req_one_access = null
 	},
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
+/turf/open/floor/plating,
 /area/varadero/interior/maintenance/research)
 "pCV" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -23376,6 +23652,11 @@
 	icon_state = "asteroidfloor"
 	},
 /area/varadero/exterior/lz1_near)
+"pGc" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/plating,
+/area/varadero/interior/research)
 "pGi" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -23540,11 +23821,13 @@
 /obj/structure/plasticflaps/mining,
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1
@@ -23565,7 +23848,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/closed/wall/r_wall,
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
 /area/varadero/interior/hall_SE)
 "pNk" = (
 /obj/effect/decal/cleanable/blood,
@@ -23599,7 +23883,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/prop/structure_lattice{
 	density = 0;
@@ -23742,10 +24027,12 @@
 "pRR" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -23767,15 +24054,6 @@
 /obj/structure/inflatable/door,
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/digsite)
-"pSk" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/obj/structure/largecrate/random,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/maintenance/north)
 "pSD" = (
 /obj/structure/bed/chair,
 /obj/structure/machinery/light{
@@ -23829,11 +24107,13 @@
 	layer = 3.1
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river/ocean{
 	name = "deep ocean";
@@ -23843,7 +24123,8 @@
 "pUi" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -24237,7 +24518,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
@@ -24344,7 +24626,8 @@
 "qmF" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/machinery/storm_siren{
 	dir = 4;
@@ -24404,7 +24687,8 @@
 "qoj" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/effect/overlay/palmtree_r,
 /turf/open/gm/dirt,
@@ -24501,7 +24785,8 @@
 /area/varadero/exterior/pontoon_beach)
 "qsb" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/prop/rock/brown{
 	indestructible = 1;
@@ -24727,7 +25012,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
@@ -24793,11 +25079,13 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -24888,11 +25176,13 @@
 /area/varadero/interior_protected/caves/digsite)
 "qCY" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -24978,7 +25268,8 @@
 "qEt" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
@@ -25103,7 +25394,8 @@
 "qLf" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -25113,7 +25405,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -25269,11 +25562,13 @@
 /area/varadero/interior/records)
 "qOO" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river/ocean{
 	name = "deep ocean";
@@ -25427,10 +25722,12 @@
 "qTh" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
@@ -25444,11 +25741,13 @@
 /area/varadero/exterior/monsoon)
 "qTs" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/varadero/exterior/pontoon_beach)
@@ -25698,7 +25997,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform_decoration/kutjevo,
 /obj/structure/blocker/invisible_wall/water,
@@ -25754,7 +26054,8 @@
 /area/varadero/interior/library)
 "red" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/machinery/storm_siren{
 	dir = 8;
@@ -25822,7 +26123,8 @@
 /area/varadero/interior/hall_NW)
 "rgf" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
@@ -25865,10 +26167,12 @@
 "riM" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
@@ -25967,7 +26271,8 @@
 "rlI" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -26100,9 +26405,9 @@
 /area/varadero/interior/cargo)
 "roT" = (
 /obj/structure/platform/kutjevo/smooth{
-	density = 0;
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	density = 0;
@@ -26132,6 +26437,10 @@
 "rpu" = (
 /turf/closed/wall,
 /area/varadero/interior/oob)
+"rpw" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt,
+/area/varadero/interior_protected/caves)
 "rpH" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/lights,
@@ -26203,11 +26512,13 @@
 /area/varadero/interior/disposals)
 "rqG" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river/ocean{
 	name = "deep ocean";
@@ -26291,7 +26602,8 @@
 "rsO" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
@@ -26525,13 +26837,6 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/bunks)
-"rAF" = (
-/obj/structure/machinery/light/small,
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/maintenance/research)
 "rBa" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -26590,6 +26895,7 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "cartridge_3_1"
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -26679,7 +26985,8 @@
 /area/varadero/interior/hall_N)
 "rHE" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/closed/wall/wood,
 /area/varadero/interior/beach_bar)
@@ -26780,7 +27087,8 @@
 /area/varadero/exterior/pontoon_beach)
 "rKS" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
@@ -26810,7 +27118,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -26837,7 +27146,8 @@
 /area/varadero/exterior/pontoon_beach)
 "rMl" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/coast/south,
 /area/varadero/exterior/pontoon_beach)
@@ -26859,7 +27169,8 @@
 /area/varadero/interior/caves/east)
 "rNf" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -27126,14 +27437,17 @@
 "rUc" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)
@@ -27247,6 +27561,14 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
+"rYC" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/item/lightstick/variant/planted,
+/turf/open/gm/river/ocean{
+	name = "deep ocean";
+	default_name = "deep ocean"
+	},
+/area/varadero/exterior/farocean)
 "rYO" = (
 /obj/structure/prop/static_tank/water{
 	pixel_y = 8
@@ -27918,7 +28240,8 @@
 /area/varadero/exterior/lz2_near)
 "svt" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
@@ -27992,7 +28315,8 @@
 "sxL" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/prop/rock/brown,
 /turf/open/gm/dirt,
@@ -28170,6 +28494,10 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/security)
+"sBX" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/varadero/interior/laundry)
 "sCk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
@@ -28330,7 +28658,8 @@
 /area/varadero/interior/electrical)
 "sHJ" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river/ocean{
 	name = "deep ocean";
@@ -28755,11 +29084,13 @@
 "sUj" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform_decoration/kutjevo{
 	dir = 1
@@ -28850,7 +29181,8 @@
 "sZW" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -28920,7 +29252,8 @@
 /area/varadero/interior_protected/caves/swcaves)
 "tdt" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
@@ -28949,11 +29282,13 @@
 	layer = 3.1
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -28972,10 +29307,12 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/closet/crate/miningcar{
 	layer = 3.1;
@@ -29074,7 +29411,8 @@
 "tgC" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/machinery/storm_siren{
 	pixel_y = 5
@@ -29213,11 +29551,13 @@
 /area/varadero/interior/administration)
 "tkV" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -29227,7 +29567,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -29246,7 +29587,8 @@
 "tlE" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
@@ -29388,10 +29730,12 @@
 "tqa" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -29538,6 +29882,16 @@
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating,
 /area/varadero/interior/disposals)
+"tuZ" = (
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior_protected/maintenance/south)
 "tvv" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -29606,7 +29960,8 @@
 	pixel_y = -3
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/lz1_near)
@@ -29635,6 +29990,10 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/security)
+"tCA" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/varadero/interior/caves/east)
 "tCG" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
@@ -29665,6 +30024,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/medical)
+"tDo" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior_protected/caves)
 "tDF" = (
 /turf/open/floor/shiva{
 	dir = 1;
@@ -29683,6 +30048,7 @@
 	dir = 4;
 	pixel_x = -3
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
 "tEJ" = (
@@ -29741,7 +30107,8 @@
 /area/varadero/interior/medical)
 "tGw" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/varadero/exterior/pontoon_beach)
@@ -29825,6 +30192,10 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/records)
+"tLu" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/varadero/interior/maintenance/security)
 "tLS" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirt,
@@ -29872,7 +30243,8 @@
 /area/varadero/exterior/lz2_near)
 "tNy" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -29925,11 +30297,13 @@
 /area/varadero/interior/hall_NW)
 "tOx" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
@@ -30277,7 +30651,8 @@
 	pixel_y = 20
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -30536,7 +30911,8 @@
 "uji" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -30718,7 +31094,8 @@
 "uoU" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/shard{
 	icon_state = "medium"
@@ -30744,6 +31121,10 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
+"upL" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/varadero/interior_protected/maintenance/south)
 "upO" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/condiment/saltshaker,
@@ -30935,7 +31316,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -31127,7 +31509,8 @@
 /area/varadero/interior/security)
 "uFO" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
@@ -31210,6 +31593,10 @@
 	},
 /turf/closed/wall,
 /area/varadero/interior/chapel)
+"uJT" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/r_wall,
+/area/varadero/interior/research)
 "uKr" = (
 /obj/structure/machinery/photocopier{
 	pixel_y = 4
@@ -31221,7 +31608,8 @@
 "uKY" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -31378,11 +31766,13 @@
 /area/varadero/interior/maintenance/north)
 "uOk" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform_decoration/kutjevo{
 	dir = 4
@@ -31473,7 +31863,8 @@
 "uSF" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/stack/sheet/metal,
 /obj/effect/decal/cleanable/blood/oil/streak,
@@ -32069,7 +32460,8 @@
 "vjO" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/effect/landmark/lv624/fog_blocker{
@@ -32105,6 +32497,13 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
+"vlm" = (
+/obj/item/lightstick/variant/planted,
+/turf/open/gm/river/ocean{
+	name = "deep ocean";
+	default_name = "deep ocean"
+	},
+/area/varadero/exterior/farocean)
 "vlw" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor/plating/icefloor{
@@ -32368,7 +32767,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
@@ -32474,7 +32874,8 @@
 "vzB" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/tool/warning_cone,
 /obj/item/lightstick/red/spoke/planted{
@@ -32706,10 +33107,12 @@
 "vDP" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
@@ -32729,7 +33132,8 @@
 /area/varadero/interior/security)
 "vEe" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/prop/rock/brown{
 	indestructible = 1;
@@ -32833,11 +33237,13 @@
 "vJk" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1
@@ -33049,7 +33455,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -33096,7 +33503,8 @@
 "vQK" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
@@ -33258,10 +33666,15 @@
 "vVH" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/comms2)
+"vVJ" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/rock/brown,
+/area/varadero/interior_protected/caves/central)
 "vWn" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/coast/beachcorner/north_west,
 /area/varadero/exterior/pontoon_beach)
@@ -33297,6 +33710,12 @@
 	},
 /turf/open/floor/plating,
 /area/varadero/interior/security)
+"vYp" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/research)
 "vYy" = (
 /obj/item/tool/shovel,
 /obj/structure/prop/invuln/lattice_prop{
@@ -33350,7 +33769,8 @@
 "vZN" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -33542,10 +33962,12 @@
 "wft" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/prop/rock/brown{
 	indestructible = 1;
@@ -33615,10 +34037,12 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/plasticflaps/mining,
@@ -33681,14 +34105,20 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/security)
+"wjV" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/varadero/interior/maintenance/security)
 "wkp" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -34283,6 +34713,9 @@
 "wEn" = (
 /obj/structure/largecrate/random,
 /obj/structure/barricade/wooden,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -34338,15 +34771,22 @@
 	},
 /area/varadero/interior/cargo)
 "wGs" = (
-/obj/structure/machinery/firealarm{
+/obj/effect/landmark/hunter_primary,
+/obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/obj/effect/landmark/hunter_primary,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellowfull"
 	},
 /area/varadero/interior/comms3)
+"wGQ" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/maintenance/south)
 "wGV" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -34358,6 +34798,11 @@
 "wHk" = (
 /turf/closed/wall,
 /area/varadero/interior/maintenance/north)
+"wHt" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/item/lightstick/variant/planted,
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/varadero/exterior/farocean)
 "wHu" = (
 /obj/structure/prop/static_tank/fuel{
 	pixel_y = 8
@@ -34369,7 +34814,8 @@
 "wIg" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt{
 	icon_state = "desert1"
@@ -34403,7 +34849,8 @@
 "wJl" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail{
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -34413,7 +34860,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -34552,6 +35000,10 @@
 "wOO" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/electrical)
+"wOR" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
 "wOS" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/evidencebag,
@@ -34563,10 +35015,12 @@
 "wPl" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river{
 	name = "shallow ocean";
@@ -34585,10 +35039,12 @@
 "wPv" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -34649,14 +35105,16 @@
 /area/varadero/interior/hall_N)
 "wRR" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/floor/plating/icefloor{
@@ -34907,9 +35365,6 @@
 	},
 /area/varadero/interior/mess)
 "xbD" = (
-/obj/structure/machinery/shower{
-	dir = 1
-	},
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
@@ -35273,7 +35728,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -35684,7 +36140,8 @@
 	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
@@ -35708,10 +36165,16 @@
 	},
 /turf/open/floor/plating,
 /area/varadero/interior/court)
+"xDE" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/item/lightstick/variant/planted,
+/turf/open/gm/coast/south,
+/area/varadero/exterior/farocean)
 "xEl" = (
 /obj/structure/machinery/storm_siren{
 	pixel_y = 5
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -35915,7 +36378,8 @@
 /area/varadero/interior/security)
 "xLB" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/gm/river/ocean{
 	name = "deep ocean";
@@ -36011,7 +36475,8 @@
 /area/varadero/exterior/lz1_near)
 "xOX" = (
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -36079,7 +36544,8 @@
 "xSZ" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
@@ -36604,10 +37070,12 @@
 "yhZ" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /obj/structure/platform/kutjevo/smooth{
-	climb_delay = 0
+	climb_delay = 1;
+	layer = 2.99
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)
@@ -36682,10 +37150,6 @@
 /area/varadero/exterior/eastbeach)
 "ykE" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/emps{
-	pixel_x = 6;
-	pixel_y = 6
-	},
 /obj/item/storage/box/cdeathalarm_kit{
 	pixel_x = -8;
 	pixel_y = 1
@@ -37748,7 +38212,7 @@ xCn
 xCn
 oPQ
 xCn
-xCn
+cBI
 xCn
 emt
 ljt
@@ -37930,7 +38394,7 @@ xCn
 xCn
 oPQ
 xCn
-xCn
+cBI
 xCn
 oPQ
 oPQ
@@ -38112,7 +38576,7 @@ xCn
 xCn
 srg
 xCn
-xCn
+cBI
 xCn
 xCn
 oPQ
@@ -38294,7 +38758,7 @@ xCn
 xCn
 xCn
 xCn
-xCn
+cBI
 xCn
 oVt
 xCn
@@ -38454,14 +38918,14 @@ xCn
 hGl
 tMJ
 wpG
-yks
+vYp
 tMJ
 ncL
 yks
 yks
 ncL
 tMJ
-yks
+vYp
 tMJ
 yks
 yks
@@ -38476,7 +38940,7 @@ fay
 fay
 tqh
 tqh
-fay
+uJT
 xCn
 xCn
 xCn
@@ -38658,7 +39122,7 @@ fWA
 mEA
 sBk
 ksn
-tqh
+pGc
 xCn
 xCn
 xCn
@@ -38815,7 +39279,7 @@ xCn
 uHY
 xCn
 xCn
-hhM
+mQF
 efw
 kXQ
 efw
@@ -38840,7 +39304,7 @@ pjs
 aJc
 hDA
 xrA
-tqh
+pGc
 srg
 xCn
 xCn
@@ -39002,27 +39466,27 @@ qDh
 qlj
 qlj
 yks
+aoE
 yks
 yks
-yks
-yks
+aoE
 yks
 yks
 efw
 qMY
 efw
-fay
+dkr
 rUw
 hfX
 hFA
-fay
+dkr
 qMD
 hDA
 iAp
 gwC
 hDA
 tMx
-fay
+uJT
 dxK
 xCn
 xCn
@@ -39155,7 +39619,7 @@ mPk
 mPk
 mPk
 cJL
-mPk
+vlm
 imk
 mPk
 imk
@@ -39316,25 +39780,25 @@ pGs
 sNx
 wBp
 wBp
+rYC
+xVw
 wBp
+wBp
+wBp
+rYC
 xVw
 wBp
 wBp
 wBp
 wBp
 xVw
-wBp
-wBp
-wBp
-wBp
-xVw
-wBp
+rYC
 wBp
 wBp
 wBp
 xVw
 wBp
-wBp
+rYC
 wBp
 wBp
 wBp
@@ -39346,11 +39810,11 @@ klT
 klT
 klT
 klT
-yks
+vYp
 ncL
 tMJ
 yks
-yks
+vYp
 yks
 yks
 yks
@@ -39374,14 +39838,14 @@ rbU
 yks
 yks
 fdA
-yks
+vYp
 fay
 fay
 fKz
 fay
 fay
 fay
-fay
+dkr
 hDA
 tkw
 ftA
@@ -39729,7 +40193,7 @@ dTl
 vdq
 efw
 efw
-yks
+aoE
 vTl
 ovC
 ovC
@@ -40078,7 +40542,7 @@ yks
 yks
 yks
 yks
-yks
+aoE
 tMJ
 ncL
 yks
@@ -40275,7 +40739,7 @@ sDE
 wuA
 efw
 rme
-yks
+aoE
 qKq
 axY
 lNw
@@ -40480,7 +40944,7 @@ ltW
 lRU
 leI
 tqh
-neq
+rpw
 neq
 vYW
 vYW
@@ -40642,7 +41106,7 @@ efw
 yks
 yks
 yks
-yks
+aoE
 yks
 yks
 yks
@@ -40661,8 +41125,8 @@ rWJ
 ltW
 sKL
 xbD
-fay
-neq
+dkr
+rpw
 neq
 vYW
 vYW
@@ -41008,8 +41472,8 @@ jGA
 efw
 neJ
 qMY
-rAF
-yks
+byU
+aoE
 tGl
 xAK
 xAK
@@ -41190,7 +41654,7 @@ qOS
 efw
 efw
 qMY
-efw
+knP
 yks
 dMm
 bcg
@@ -41198,7 +41662,7 @@ bmt
 fay
 xxE
 fay
-fay
+dkr
 fay
 fay
 fay
@@ -41919,7 +42383,7 @@ yks
 qDh
 vvh
 qlj
-yks
+aoE
 ifx
 ruZ
 aJW
@@ -42106,8 +42570,8 @@ fay
 fay
 fay
 fay
-fay
-fay
+dkr
+dkr
 fay
 fay
 fay
@@ -42288,8 +42752,8 @@ bMx
 qul
 qul
 qul
-uHY
-uHY
+xCn
+xCn
 qul
 qul
 qul
@@ -42425,14 +42889,14 @@ tjS
 tjS
 iUx
 gXh
-ykc
+uXZ
 kVp
 aDF
 tjS
 tjS
 tjS
 aDF
-ykc
+uXZ
 qDh
 qlj
 vvh
@@ -42663,7 +43127,7 @@ iCy
 iCy
 dlv
 lxe
-uQa
+tDo
 vYW
 vYW
 uQa
@@ -42780,7 +43244,7 @@ eBL
 eBL
 mzT
 fcg
-ykc
+uXZ
 foF
 oJB
 wnw
@@ -42845,7 +43309,7 @@ pnn
 mpn
 dlv
 doW
-uQa
+tDo
 uQa
 vYW
 uQa
@@ -43027,7 +43491,7 @@ wAx
 iCy
 dlv
 rNm
-uQa
+tDo
 uQa
 xqy
 vYW
@@ -43139,7 +43603,7 @@ vMq
 plg
 ykc
 ykc
-ykc
+uXZ
 ykc
 oLM
 vDI
@@ -43160,7 +43624,7 @@ sGY
 sGY
 sGY
 sGY
-ykc
+uXZ
 efw
 efw
 qMY
@@ -43209,7 +43673,7 @@ jvF
 iCy
 dlv
 fHg
-vYW
+oAE
 vYW
 vYW
 vYW
@@ -43703,7 +44167,7 @@ ykc
 ykc
 ykc
 ykc
-ykc
+uXZ
 ykc
 ykc
 ykc
@@ -43894,7 +44358,7 @@ pGJ
 dRX
 wVI
 pGJ
-pGJ
+lsU
 pGJ
 pGJ
 pGJ
@@ -44124,9 +44588,9 @@ sdz
 sdz
 sdz
 ebr
-qyH
-jpD
-hto
+uQa
+uQa
+vYW
 vYW
 vYW
 vYW
@@ -44307,8 +44771,8 @@ kZg
 sdz
 clG
 iFh
-ebr
-ebr
+uQa
+uQa
 hto
 vYW
 vYW
@@ -44489,9 +44953,9 @@ uOL
 kGM
 hbD
 jtx
-ebr
-ebr
-hto
+uQa
+vYW
+uQa
 vYW
 uQa
 vYW
@@ -44671,9 +45135,9 @@ uOL
 kGM
 hbD
 uaC
-ebr
-ebr
-ebr
+qyH
+vYW
+uQa
 vYW
 vYW
 vYW
@@ -44854,7 +45318,7 @@ sdz
 wkp
 tqa
 ebr
-ebr
+vYW
 vYW
 vYW
 vYW
@@ -45147,8 +45611,8 @@ saC
 saC
 lDN
 saC
-iAx
 mAm
+iAx
 lMP
 ykc
 ubT
@@ -45160,7 +45624,7 @@ rxe
 saC
 uVe
 ykc
-ykc
+uXZ
 ykc
 qpK
 vnm
@@ -45200,7 +45664,7 @@ kEV
 pQp
 pQp
 pQp
-pQp
+ykw
 dtj
 pQp
 pQp
@@ -45330,7 +45794,7 @@ sGY
 lDN
 ykc
 ykc
-ykc
+uXZ
 ykc
 ykc
 ykc
@@ -45342,7 +45806,7 @@ ykc
 jpm
 uXZ
 ykc
-pSk
+leU
 qVO
 hyr
 vnm
@@ -45523,7 +45987,7 @@ hyr
 hyr
 hyr
 hyr
-hyr
+aXm
 hyr
 hyr
 hyr
@@ -45736,10 +46200,10 @@ nMe
 ejZ
 wVa
 wpr
-qcN
+nxW
 qir
 haC
-qcN
+nxW
 qqA
 aQc
 qqA
@@ -45918,14 +46382,14 @@ aRH
 qcN
 seY
 gjw
-qcN
+nxW
 ygT
 wRu
-qcN
+nxW
 qqA
 aQc
 qqA
-pQp
+ykw
 pqH
 sDo
 cXQ
@@ -46066,7 +46530,7 @@ thS
 wHk
 wHk
 wHk
-wHk
+thS
 wHk
 wHk
 hyr
@@ -46107,7 +46571,7 @@ qcN
 qqA
 aQc
 qqA
-pQp
+ykw
 udg
 haT
 hwN
@@ -46242,7 +46706,7 @@ ykc
 hyr
 hyr
 hyr
-wHk
+thS
 hyr
 aXm
 hyr
@@ -46250,7 +46714,7 @@ cNb
 xKo
 cTV
 okf
-wHk
+thS
 hyr
 hyr
 hyr
@@ -46289,7 +46753,7 @@ kTG
 bft
 aQc
 qqA
-pQp
+ykw
 tnA
 woj
 uyK
@@ -46306,8 +46770,8 @@ uEI
 jPC
 jjg
 cNu
-nTG
-jpD
+rMN
+byz
 hbD
 dTS
 ebr
@@ -46488,15 +46952,15 @@ iMM
 oIq
 tvv
 cNu
-nTG
-jpD
+rMN
+byz
 wkp
 cnf
 ebr
 ebr
-vYW
-vYW
-vYW
+oAE
+oAE
+oAE
 neq
 neq
 vYW
@@ -46678,7 +47142,7 @@ kyG
 kyG
 fuS
 kyG
-vYW
+oAE
 vYW
 vYW
 vYW
@@ -46788,7 +47252,7 @@ xfo
 aqw
 hyr
 hyr
-wHk
+thS
 xAs
 omj
 pJf
@@ -46827,11 +47291,11 @@ qUQ
 hMh
 nxW
 hyd
-naW
-qcN
+gjw
+nxW
 exH
 wRu
-qcN
+nxW
 hQo
 aQc
 qqA
@@ -46852,7 +47316,7 @@ pRX
 uXw
 sIU
 cNu
-kyG
+gTC
 tIT
 fUZ
 fhM
@@ -46860,7 +47324,7 @@ sTA
 ukw
 rTT
 fuS
-vYW
+oAE
 vYW
 vYW
 vYW
@@ -46974,7 +47438,7 @@ wHk
 qkF
 leU
 wEn
-cZZ
+hyr
 kie
 pJp
 npO
@@ -47034,15 +47498,15 @@ pRX
 uXw
 sIU
 cNu
-kyG
+gTC
 tIT
 rqx
 aae
 qHF
 wOL
 wTJ
-kyG
-ebr
+fuS
+oAE
 vYW
 vYW
 vYW
@@ -47156,9 +47620,9 @@ xfo
 amu
 qmH
 amu
+fKt
 amu
-amu
-bgE
+qAp
 qpK
 bgE
 bgE
@@ -47173,7 +47637,7 @@ dUh
 gZN
 cTg
 iSO
-epQ
+sKC
 xWY
 hvO
 bih
@@ -47200,16 +47664,16 @@ lUe
 aQc
 qqA
 pQp
-pQp
+ykw
 cHl
 pQp
 pQp
+ykw
 pQp
-pQp
-bIt
+ykw
 bIt
 nGs
-bIt
+ykw
 bIt
 bIt
 sjD
@@ -47225,7 +47689,7 @@ pRl
 tuV
 kyG
 ebr
-ebr
+vYW
 vYW
 vYW
 vYW
@@ -47339,11 +47803,11 @@ hcz
 wMw
 ojm
 huy
-amu
+fKt
 xYg
 cOj
 cfs
-bgE
+qAp
 hyr
 omj
 hyr
@@ -47408,8 +47872,8 @@ nVn
 kyG
 ebr
 ebr
-gEP
-gEP
+kif
+kif
 ebr
 ebr
 neq
@@ -47840,11 +48304,11 @@ mPk
 mPk
 mPk
 mPk
-mPk
+vlm
 fjv
 wBp
 gpJ
-nQA
+xfo
 bGC
 qzq
 ahg
@@ -47885,15 +48349,15 @@ wMw
 wMw
 wMw
 wMw
-amu
+fKt
 hyr
 eaQ
-cxo
-bgE
+hyr
+qAp
 hyr
 hyr
 hyr
-epQ
+sKC
 xMs
 qvv
 rXf
@@ -47913,9 +48377,9 @@ qcN
 nSP
 pvk
 qcN
-qcN
+nxW
 rcq
-qcN
+nxW
 qcN
 qcN
 qcN
@@ -47930,14 +48394,14 @@ oeF
 aQc
 qqA
 xgG
+qvo
 xgG
 xgG
 xgG
 xgG
 xgG
 xgG
-xgG
-xgG
+qvo
 xgG
 xgG
 rGl
@@ -47951,7 +48415,7 @@ bRi
 mBG
 ffY
 fYH
-kyG
+gTC
 fhh
 cto
 qMr
@@ -48070,7 +48534,7 @@ sTT
 amu
 jTL
 jTL
-jTL
+lpJ
 bgE
 ldr
 hyr
@@ -48126,14 +48590,14 @@ vUM
 sJZ
 tEJ
 cNu
-kyG
+gTC
 qPG
 mCx
 aLc
 mBG
 iSi
 tTN
-kyG
+gTC
 kQb
 mUP
 mUP
@@ -48383,7 +48847,7 @@ mPk
 mPk
 mPk
 mPk
-wBp
+rYC
 fjv
 uYJ
 qwQ
@@ -48433,13 +48897,13 @@ wMw
 wMw
 lSD
 amu
-amu
+fKt
 gXK
 amu
 hyr
 hyr
 hyr
-epQ
+sKC
 pMe
 cOK
 rmZ
@@ -48469,11 +48933,11 @@ qqA
 aQc
 xgG
 xgG
+qvo
 xgG
 xgG
 xgG
-xgG
-xgG
+qvo
 xgG
 xgG
 wbk
@@ -48512,9 +48976,9 @@ ksX
 ksX
 ksX
 ksX
-xxk
-cto
-etv
+mSu
+iaM
+hbi
 ksX
 mCF
 aOg
@@ -48827,7 +49291,7 @@ sWp
 alM
 rsM
 nZi
-qcN
+nxW
 ojG
 qqA
 aQc
@@ -49036,7 +49500,7 @@ gCi
 sJZ
 tEJ
 cNu
-wSx
+sBX
 uNq
 uNq
 uNq
@@ -49195,7 +49659,7 @@ qcN
 yil
 qqA
 aQc
-xgG
+qvo
 xUq
 jMr
 rQY
@@ -49218,14 +49682,14 @@ mVS
 iKa
 tvv
 pRP
-wSx
+sBX
 gmE
 bvS
 nfv
 aFh
 uNq
 pPf
-wSx
+sBX
 etv
 cto
 cto
@@ -49292,7 +49756,7 @@ mPk
 mPk
 mPk
 mPk
-wBp
+rYC
 qwQ
 pAX
 qwQ
@@ -49373,7 +49837,7 @@ nxW
 tex
 gJs
 niF
-qcN
+nxW
 yil
 qqA
 dYn
@@ -49421,7 +49885,7 @@ cty
 cty
 cty
 iFb
-iFb
+owM
 xxk
 cto
 etv
@@ -49603,7 +50067,7 @@ cty
 cty
 cty
 mCF
-mCF
+wOR
 cto
 cto
 etv
@@ -49785,7 +50249,7 @@ cty
 cty
 hoC
 mCF
-mCF
+wOR
 cto
 cto
 etv
@@ -49909,7 +50373,7 @@ hrG
 mos
 rHv
 nnw
-qcN
+nxW
 lYA
 gjw
 wdh
@@ -49923,7 +50387,7 @@ qcN
 yil
 qqA
 aQc
-xgG
+qvo
 smO
 rQY
 rzM
@@ -49967,7 +50431,7 @@ mCF
 mCF
 jdm
 mCF
-mCF
+wOR
 cto
 cto
 etv
@@ -50149,7 +50613,7 @@ mCF
 mCF
 mCF
 mCF
-mCF
+wOR
 noj
 cto
 etv
@@ -50275,7 +50739,7 @@ rHv
 shG
 qcN
 qcN
-qcN
+nxW
 nSP
 jGk
 nxW
@@ -50289,9 +50753,9 @@ qqA
 aQc
 xgG
 xgG
+qvo
 xgG
-xgG
-xgG
+qvo
 xgG
 xgG
 xgG
@@ -50331,7 +50795,7 @@ mCF
 mCF
 mCF
 mCF
-mCF
+wOR
 xxk
 mxB
 eJS
@@ -50513,7 +50977,7 @@ mCF
 mCF
 mCF
 mCF
-iFb
+owM
 cto
 cto
 etv
@@ -50566,7 +51030,7 @@ mPk
 mPk
 mPk
 mPk
-wBp
+rYC
 qwQ
 lTR
 pAX
@@ -50660,7 +51124,7 @@ kIK
 kIK
 fAQ
 qqA
-xgG
+qvo
 vOW
 rKB
 jHJ
@@ -50669,7 +51133,7 @@ xgG
 mqt
 qhN
 kXZ
-xgG
+qvo
 ueg
 sJZ
 tEJ
@@ -50695,7 +51159,7 @@ mCF
 mCF
 mCF
 hoC
-iFb
+owM
 qEG
 cto
 etv
@@ -50851,7 +51315,7 @@ oxi
 qnf
 ayo
 wbB
-xgG
+qvo
 ueg
 fPn
 aBB
@@ -50877,7 +51341,7 @@ mCF
 mCF
 mCF
 hoC
-iFb
+owM
 ghs
 cto
 etv
@@ -51059,7 +51523,7 @@ mCF
 mCF
 mCF
 cty
-iFb
+owM
 cto
 cto
 etv
@@ -51241,7 +51705,7 @@ mCF
 mCF
 cty
 cty
-iFb
+owM
 diu
 cto
 etv
@@ -51423,7 +51887,7 @@ mCF
 mCF
 cty
 cty
-iFb
+owM
 rXS
 cto
 toU
@@ -51579,7 +52043,7 @@ xgG
 pJZ
 qOn
 wbB
-xgG
+qvo
 fkE
 sJZ
 tEJ
@@ -51605,7 +52069,7 @@ jdm
 mCF
 hoC
 cty
-iFb
+owM
 xxk
 cto
 etv
@@ -51787,7 +52251,7 @@ mCF
 mCF
 mCF
 cty
-cty
+vVJ
 cto
 cto
 etv
@@ -51840,7 +52304,7 @@ mPk
 mPk
 mPk
 mPk
-wBp
+rYC
 qwQ
 qwQ
 lTR
@@ -51916,9 +52380,9 @@ fkR
 fkR
 fkR
 fkR
+pVN
 fkR
-fkR
-fkR
+pVN
 fkR
 fkR
 aQc
@@ -51934,7 +52398,7 @@ axv
 hLY
 boV
 nLI
-xgG
+qvo
 tgk
 bLp
 dWN
@@ -51969,7 +52433,7 @@ mCF
 mCF
 mCF
 mCF
-mCF
+wOR
 cto
 cto
 etv
@@ -52082,7 +52546,7 @@ sXb
 sXb
 sXb
 sXb
-sXb
+mRq
 qaY
 sXb
 sXb
@@ -52130,8 +52594,8 @@ vUM
 sJZ
 tEJ
 fMP
-bkM
-dtH
+pKs
+chs
 chs
 kGq
 wvI
@@ -52151,7 +52615,7 @@ mCF
 mCF
 mCF
 mCF
-iFb
+owM
 cto
 cto
 etv
@@ -52264,7 +52728,7 @@ sXb
 oyb
 iet
 oyb
-iet
+tzw
 nih
 iet
 oyb
@@ -52333,7 +52797,7 @@ aOg
 aOg
 mCF
 mCF
-iFb
+owM
 xxk
 xxk
 gAK
@@ -52515,7 +52979,7 @@ aOg
 aOg
 mCF
 mCF
-iFb
+owM
 mxB
 cto
 etv
@@ -52624,7 +53088,7 @@ vKv
 hsl
 giN
 hyr
-sXb
+mRq
 peE
 jzZ
 lZa
@@ -52697,7 +53161,7 @@ aOg
 gCh
 dda
 mCF
-iFb
+owM
 xxk
 cto
 etv
@@ -52750,7 +53214,7 @@ mPk
 mPk
 mPk
 mPk
-wBp
+rYC
 qwQ
 lTR
 qwQ
@@ -52830,7 +53294,7 @@ lZh
 nZk
 hPD
 uQH
-fkR
+pVN
 aQc
 bum
 azh
@@ -52862,7 +53326,7 @@ bkM
 bkM
 bkM
 bkM
-bkM
+pKs
 bkM
 bkM
 cNC
@@ -52879,7 +53343,7 @@ xGV
 gCh
 dda
 mCF
-iFb
+owM
 cto
 cto
 etv
@@ -53061,7 +53525,7 @@ aOg
 mCF
 mCF
 aOg
-mCF
+wOR
 cto
 cto
 toU
@@ -53243,7 +53707,7 @@ mCF
 mCF
 aOg
 xGV
-mCF
+wOR
 xxk
 cto
 etv
@@ -53362,7 +53826,7 @@ wZF
 jzZ
 dYX
 sXb
-hYf
+ePB
 hvO
 mrd
 ogq
@@ -53381,7 +53845,7 @@ aQc
 qqA
 qqA
 pbt
-pbt
+iLD
 pbt
 pbt
 cLY
@@ -53389,7 +53853,7 @@ pbt
 pbt
 pbt
 pbt
-pbt
+iLD
 xNR
 rSI
 vNu
@@ -53425,7 +53889,7 @@ mCF
 mCF
 aOg
 aOg
-aOg
+iHE
 xxk
 cto
 etv
@@ -53562,7 +54026,7 @@ fkR
 aQc
 qqA
 pZD
-pbt
+iLD
 lQO
 cvW
 pYV
@@ -53607,7 +54071,7 @@ mCF
 aOg
 hoC
 hoC
-iFb
+owM
 xxk
 cto
 etv
@@ -53716,7 +54180,7 @@ yeJ
 giN
 hyr
 iSW
-sXb
+mRq
 tzw
 aJP
 ogj
@@ -53789,7 +54253,7 @@ cty
 hoC
 cty
 cty
-iFb
+owM
 ksX
 cto
 etv
@@ -53922,7 +54386,7 @@ god
 nZk
 hPD
 uQH
-fkR
+pVN
 aQc
 qqA
 qqA
@@ -53971,12 +54435,12 @@ ksX
 ksX
 ksX
 ksX
-ksX
-ksX
-cto
-etv
-cto
-ksX
+eEd
+eEd
+iaM
+hbi
+iaM
+eEd
 mCF
 mCF
 mCF
@@ -54024,7 +54488,7 @@ mPk
 mPk
 mPk
 mPk
-wBp
+rYC
 qwQ
 qwQ
 qwQ
@@ -54090,7 +54554,7 @@ tzw
 tzw
 tzw
 sXb
-xWY
+ntw
 hvO
 bih
 rHv
@@ -54158,7 +54622,7 @@ mUP
 mUP
 pGP
 xxk
-ksX
+eEd
 hoC
 mCF
 mCF
@@ -54264,14 +54728,14 @@ dPR
 giN
 sXb
 sXb
-sXb
+mRq
 sXb
 vhw
 sXb
 sXb
 sXb
 sXb
-sXb
+xzj
 xWY
 hvO
 bih
@@ -54453,7 +54917,7 @@ hyr
 hyr
 rPT
 iwQ
-mQY
+qAp
 xWY
 xuW
 bih
@@ -54694,11 +55158,11 @@ ghs
 vTe
 bkM
 bkM
+pKs
 bkM
 bkM
 bkM
-bkM
-bkM
+pKs
 bkM
 aFt
 cto
@@ -54869,10 +55333,10 @@ pNI
 bkM
 bkM
 bkM
+pKs
 bkM
 bkM
-bkM
-bkM
+pKs
 bkM
 bkM
 gIB
@@ -55064,7 +55528,7 @@ tEJ
 tEJ
 tEJ
 gbG
-aFt
+upL
 cto
 etv
 xxk
@@ -55298,7 +55762,7 @@ mPk
 mPk
 mPk
 mPk
-wBp
+rYC
 qwQ
 qwQ
 qwQ
@@ -55428,7 +55892,7 @@ oGc
 ezW
 tEJ
 gbG
-aFt
+upL
 cto
 etv
 cto
@@ -55590,10 +56054,10 @@ gFx
 gFx
 gFx
 gFx
-gFx
+lFA
 wba
 nNz
-lFA
+gFx
 mXV
 lMv
 oDz
@@ -55728,17 +56192,17 @@ pGs
 pGs
 pGs
 juW
-juW
+szp
 ftF
 viP
+szp
 juW
-juW
 nTG
 nTG
 nTG
-nTG
+lNb
 vqd
-nTG
+lNb
 nTG
 nTG
 nTG
@@ -55751,7 +56215,7 @@ nTG
 wVf
 wVf
 wVf
-wVf
+kMf
 wVf
 wVf
 qUf
@@ -55764,25 +56228,25 @@ wVf
 wVf
 wVf
 wVf
-wqb
+boY
 abE
-wqb
+boY
 wqb
 wqb
 slG
 fUJ
 kAm
 wqb
+boY
 wqb
-wqb
-wqb
+wjV
 abE
 pYn
+kgw
 pYn
 pYn
 pYn
-pYn
-pYn
+kgw
 pYn
 pYn
 pYn
@@ -55952,7 +56416,7 @@ xJZ
 yeF
 wqb
 wqb
-wqb
+boY
 wqb
 wqb
 kqE
@@ -56096,7 +56560,7 @@ xzr
 eFJ
 trh
 qdk
-juW
+szp
 xJZ
 xJZ
 xJZ
@@ -56323,7 +56787,7 @@ xJZ
 cYB
 xJZ
 viK
-pYn
+kgw
 nXB
 jvh
 mPf
@@ -56343,7 +56807,7 @@ bkM
 bkM
 bkM
 bkM
-bkM
+pKs
 bkM
 cto
 etv
@@ -56390,7 +56854,7 @@ mPk
 mPk
 mPk
 mPk
-wBp
+rYC
 qwQ
 lTR
 qwQ
@@ -56413,7 +56877,7 @@ fgW
 npF
 trB
 gYh
-oLZ
+eBm
 eDY
 tNy
 oLZ
@@ -56460,7 +56924,7 @@ xzr
 eFJ
 trh
 qdk
-juW
+szp
 gtz
 sKu
 xJZ
@@ -56502,7 +56966,7 @@ okJ
 gjz
 lVc
 iFZ
-cYB
+xJZ
 xJZ
 viK
 pYn
@@ -56632,8 +57096,8 @@ oGv
 oGv
 oGv
 oDU
-juW
-eCe
+szp
+ekg
 noC
 ktN
 qSj
@@ -56689,7 +57153,7 @@ xJZ
 viK
 pYn
 pYn
-pYn
+kgw
 pYn
 pYn
 pYn
@@ -57076,7 +57540,7 @@ bkM
 rmr
 etv
 xxk
-iFb
+owM
 iFb
 iFb
 iFb
@@ -57180,7 +57644,7 @@ tXv
 oGv
 szp
 sYi
-aZX
+gXO
 aZX
 dCE
 juW
@@ -57258,7 +57722,7 @@ bkM
 xag
 etv
 cto
-cto
+iaM
 cto
 cto
 cto
@@ -57366,10 +57830,10 @@ wOO
 wOO
 wkt
 wOO
-wOO
+oSX
 iVt
 hHE
-wOO
+oSX
 wOO
 wOO
 wOO
@@ -57436,11 +57900,11 @@ aWP
 rBP
 rBP
 lZb
-bkM
+lNb
 cto
 etv
 vTe
-cto
+iaM
 mxB
 cto
 cto
@@ -57804,7 +58268,7 @@ bkM
 ksX
 bnB
 ksX
-ksX
+eEd
 ksX
 ksX
 ksX
@@ -57846,7 +58310,7 @@ mPk
 mPk
 mPk
 mPk
-wBp
+rYC
 qwQ
 lTR
 lTR
@@ -57986,7 +58450,7 @@ bkM
 wPt
 hbi
 iaM
-ksX
+eEd
 cty
 cty
 cty
@@ -58165,7 +58629,7 @@ tEJ
 tEJ
 twm
 bkM
-cto
+iaM
 gAK
 cto
 ksX
@@ -58346,8 +58810,8 @@ tEJ
 tEJ
 tEJ
 twm
-bkM
-cto
+lNb
+iaM
 etv
 cto
 ksX
@@ -58529,7 +58993,7 @@ aBB
 wXD
 pdr
 bkM
-cto
+iaM
 mNO
 qWw
 cto
@@ -58636,7 +59100,7 @@ cFw
 cFw
 nwq
 nwq
-cqC
+oSX
 mvO
 kCA
 tlT
@@ -58711,9 +59175,9 @@ ciR
 wVE
 fiA
 bkM
-kcE
-cto
-etv
+eQr
+iaM
+hbi
 gMm
 xxk
 iFb
@@ -58885,17 +59349,17 @@ vHs
 vHs
 vHs
 vHs
-uXS
+eHl
 ufB
 uXS
 uXS
 uXS
 uwN
-uXS
+eHl
 uXS
 uXS
 aFt
-etv
+hbi
 cto
 xxk
 vhI
@@ -59073,11 +59537,11 @@ xwY
 uXS
 xOz
 eQZ
-aOZ
+sGo
 kNa
 oAm
 aFt
-etv
+hbi
 cto
 mMu
 vhI
@@ -59120,7 +59584,7 @@ mPk
 mPk
 mPk
 mPk
-wBp
+rYC
 qwQ
 lTR
 lTR
@@ -59193,13 +59657,13 @@ cbq
 tlT
 kCA
 rsB
-wOO
+oSX
 fEu
 fEu
 fEu
 fEu
 pCO
-wqb
+tLu
 viK
 xJZ
 xJZ
@@ -59211,7 +59675,7 @@ kbQ
 kbQ
 kbQ
 lFk
-wqb
+boY
 xJZ
 viK
 xJZ
@@ -59259,7 +59723,7 @@ iAa
 uXS
 uXS
 aFt
-etv
+hbi
 cto
 cto
 vhI
@@ -59364,7 +59828,7 @@ cFw
 cFw
 cFw
 tlq
-wOO
+oSX
 oUO
 kCA
 tlT
@@ -59441,7 +59905,7 @@ sGo
 kNa
 oAm
 aFt
-etv
+hbi
 cto
 cto
 iFb
@@ -59623,7 +60087,7 @@ uiH
 uXS
 uXS
 aFt
-toU
+wGQ
 xxk
 cto
 iFb
@@ -59805,7 +60269,7 @@ sGo
 kNa
 oAm
 aFt
-etv
+hbi
 cto
 cto
 iFb
@@ -59987,7 +60451,7 @@ uXS
 uXS
 uXS
 aFt
-etv
+hbi
 cto
 cto
 iFb
@@ -60169,7 +60633,7 @@ kNa
 sGo
 rWx
 aFt
-etv
+hbi
 cto
 wXC
 iFb
@@ -60213,7 +60677,7 @@ mPk
 mPk
 mPk
 wBp
-wBp
+rYC
 wLB
 mPW
 wBp
@@ -60291,7 +60755,7 @@ dgF
 uZa
 mEB
 mEB
-wqb
+tLu
 xJZ
 xJZ
 xJZ
@@ -60351,7 +60815,7 @@ uXS
 sGo
 oAm
 aFt
-etv
+hbi
 cto
 mxB
 eHZ
@@ -60399,7 +60863,7 @@ mPk
 mPk
 mPk
 mPk
-wBp
+rYC
 fpq
 mwI
 cVq
@@ -60457,7 +60921,7 @@ cFw
 cFw
 kuO
 slE
-wOO
+cqC
 sPh
 qId
 qxa
@@ -60533,7 +60997,7 @@ dfi
 dfi
 aFt
 aFt
-etv
+hbi
 cto
 xxk
 eHZ
@@ -60714,7 +61178,7 @@ pfr
 vJp
 lVc
 mUP
-mUP
+fnj
 baa
 mMu
 xhA
@@ -60896,7 +61360,7 @@ xJZ
 xJZ
 xJZ
 cto
-swk
+tuZ
 sgl
 wNz
 xxk
@@ -61025,7 +61489,7 @@ bFD
 xJZ
 viK
 xJZ
-ouy
+lFE
 kbQ
 kbQ
 kbQ
@@ -61078,7 +61542,7 @@ ryD
 vXx
 xJZ
 fLu
-cto
+iaM
 pyz
 cto
 xxk
@@ -61217,7 +61681,7 @@ wqb
 rWY
 viK
 xJZ
-wqb
+bPk
 jqw
 kbQ
 kbQ
@@ -61258,9 +61722,9 @@ ouy
 ouy
 ouy
 iFb
-iFb
-iFb
-iFb
+owM
+owM
+owM
 hBA
 hBA
 cty
@@ -61309,7 +61773,7 @@ mPk
 mPk
 rUa
 cUN
-iWj
+xDE
 wlB
 wlB
 lTg
@@ -61571,7 +62035,7 @@ wqb
 xJZ
 viK
 gDh
-ouy
+lFE
 sgk
 kbQ
 jqw
@@ -61622,7 +62086,7 @@ kbQ
 kbQ
 kbQ
 mCF
-mCF
+wOR
 mCF
 aOg
 lVQ
@@ -61804,7 +62268,7 @@ kbQ
 kbQ
 kbQ
 mCF
-mCF
+wOR
 mCF
 aOg
 aOg
@@ -61936,9 +62400,9 @@ xJZ
 viK
 xJZ
 ouy
-ouy
+tCA
 kbQ
-ouy
+tCA
 wqb
 wqb
 xJZ
@@ -61986,7 +62450,7 @@ kbQ
 kbQ
 kbQ
 mCF
-mCF
+wOR
 mCF
 jdm
 mCF
@@ -62168,7 +62632,7 @@ kbQ
 jqw
 kbQ
 mCF
-mCF
+wOR
 mCF
 mCF
 cty
@@ -62219,7 +62683,7 @@ mPk
 mPk
 pRa
 cJL
-wBp
+rYC
 nsN
 wlB
 wlB
@@ -62350,7 +62814,7 @@ pGs
 pGs
 jqw
 mCF
-aOg
+iHE
 aOg
 hoC
 cty
@@ -62506,14 +62970,14 @@ gey
 tWA
 wqb
 wqb
-wqb
+bPk
 wqb
 bPk
 wqb
 wqb
 wqb
-wqb
-wqb
+bPk
+bPk
 wqb
 iwT
 wVp
@@ -62532,7 +62996,7 @@ pGs
 pGs
 pGs
 bUZ
-aOg
+iHE
 aOg
 mCF
 mCF
@@ -62714,7 +63178,7 @@ pGs
 pGs
 pGs
 pGs
-mCF
+wOR
 aOg
 lVQ
 aOg
@@ -63060,7 +63524,7 @@ kbQ
 kbQ
 eyt
 jqw
-eyt
+kbQ
 kbQ
 kbQ
 nMJ
@@ -63129,7 +63593,7 @@ mPk
 mPk
 cJL
 pRa
-iWj
+xDE
 wlB
 lTg
 wlB
@@ -63645,10 +64109,10 @@ lVQ
 lDF
 lDF
 rkC
-ogX
+rkC
 rPB
 plT
-ogX
+rkC
 pGs
 pGs
 pGs
@@ -63998,12 +64462,12 @@ lDF
 lDF
 lDF
 lDF
-ogX
+rkC
 plT
-ogX
-ogX
+rkC
+rkC
 plT
-ogX
+rkC
 lDF
 lDF
 lDF
@@ -64169,11 +64633,11 @@ pGs
 pGs
 pGs
 pGs
-ogX
+rkC
 plT
-ogX
-ogX
-ogX
+rkC
+rkC
+rkC
 lDF
 lDF
 lDF
@@ -64221,7 +64685,7 @@ mPk
 mPk
 mPk
 cJL
-ovT
+wHt
 mtT
 wlB
 wlB
@@ -65313,7 +65777,7 @@ mPk
 mPk
 mPk
 mPk
-wBp
+rYC
 nsN
 iFc
 qAy
@@ -66045,13 +66509,13 @@ lze
 wBp
 xVw
 mPW
-mPW
+bBV
 mPW
 xVw
 wBp
 wBp
 wBp
-mPW
+bBV
 mPW
 mPW
 wLB
@@ -66059,50 +66523,50 @@ wBp
 mPW
 wBp
 xVw
-wBp
+rYC
 xVw
 wBp
 mPW
 wBp
-mPW
+bBV
 rJv
 tWT
 uxM
-tWT
+grG
 tWT
 uxM
 loO
 ifO
 wBp
 xVw
-wBp
+rYC
 xVw
 wBp
 wBp
 xVw
 wBp
 wBp
-wBp
+rYC
 xVw
 wBp
 wBp
 wBp
 wBp
-wBp
+rYC
 xVw
 wBp
 wBp
 wBp
 wBp
 xVw
-wBp
+rYC
 wBp
 mPW
 wLB
 wBp
 mPW
 wLB
-mPW
+bBV
 wLB
 mPW
 wBp
@@ -66340,7 +66804,7 @@ bGU
 bGU
 rvD
 rvD
-huG
+rvD
 bGU
 fBV
 bsf
@@ -66833,7 +67297,7 @@ mPk
 mPk
 mPk
 mPk
-wBp
+rYC
 xFb
 xFb
 xFb
@@ -67384,25 +67848,25 @@ wBp
 wLB
 mPW
 wLB
-mPW
+bBV
 xVw
 wBp
 wBp
 wBp
 xVw
 wBp
-wBp
-wBp
-xVw
-wBp
-wBp
-wBp
+rYC
 wBp
 xVw
 wBp
 wBp
 wBp
+rYC
+xVw
 wBp
+wBp
+wBp
+rYC
 wBp
 xBH
 xFb
@@ -67768,7 +68232,7 @@ mPk
 mPk
 mPk
 mPk
-wBp
+rYC
 xFb
 xFb
 xFb
@@ -68678,7 +69142,7 @@ mPk
 mPk
 mPk
 mPk
-wBp
+rYC
 xFb
 xFb
 xFb
@@ -69226,28 +69690,28 @@ mPk
 mPk
 wBp
 xVw
-wBp
+rYC
 xVw
 wBp
 wBp
 wBp
 xVw
 wBp
-wBp
-wBp
-wBp
-xVw
-wBp
-wBp
+rYC
 wBp
 wBp
 xVw
 wBp
 wBp
-xVw
+rYC
 wBp
 xVw
 wBp
+rYC
+xVw
+wBp
+xVw
+rYC
 enZ
 iAE
 sNx

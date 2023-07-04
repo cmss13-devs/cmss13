@@ -531,7 +531,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/user = ui.user
 
 	switch (action)
-		if ("clearCanvas")  // boiler plate code.
+		if ("clearCanvas")
 			toolbar_updated_selection = "clear"
 			. = TRUE
 

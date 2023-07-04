@@ -96,8 +96,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 
 	var/ghost_scan = SPAN_ALERT("[xenos_on_planet] xenos on planet, with [larva] larva.\n[xenos_on_ship] xenos on the ship.\n[marines_on_planet] humans on the planet.\n[marines_on_ship] humans on the ship.")
 	var/yautja_scan = SPAN_ALERT("[xenos_on_planet] serpents present in the hunting ground[xeno_planet_location_string], with [larva] larva.\n[xenos_on_ship] serpents present on the human ship[xeno_ship_location_string]\n[marines_on_planet] humans present in the hunting ground[marine_planet_location_string]\n[marines_on_ship] humans present on the human ship[marine_ship_location_string]")
-	log_game("BIOSCAN: A Yautja/Ghost bioscan has completed.")
-	log_game("BIOSCAN: [ghost_scan]")
+	log_game("BIOSCAN: A Yautja/Ghost bioscan has completed. [ghost_scan]")
 
 	//Announce the numbers to Yautja, they have good scanners
 	for(var/mob/living/carbon/human/yautja as anything in GLOB.yautja_mob_list)
@@ -129,8 +128,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 	var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
 	var/input = "Bioscan complete.\n\nSensors indicate [xenos_on_ship_uncontained ? "[xenos_on_ship_uncontained]" : "no"] unknown lifeform signature[!xenos_on_ship_uncontained || xenos_on_ship_uncontained > 1 ? "s":""] present on the ship[xenos_on_ship_uncontained && xenos_ship_location ? ", including one in [xenos_ship_location]," : ""] and [fake_xenos_on_planet ? "approximately [fake_xenos_on_planet]" : "no"] signature[!fake_xenos_on_planet || fake_xenos_on_planet > 1 ? "s":""] located elsewhere[fake_xenos_on_planet && xenos_planet_location ? ", including one in [xenos_planet_location]":""]."
 
-	log_game("BIOSCAN: ARES bioscan completed.")
-	log_game("BIOSCAN: [input]")
+	log_game("BIOSCAN: ARES bioscan completed. [input]")
 
 	var/datum/ares_link/link = GLOB.ares_link
 	link.log_ares_bioscan(name, input)

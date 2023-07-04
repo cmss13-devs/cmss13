@@ -1450,19 +1450,19 @@
 	accuracy = HIT_ACCURACY_TIER_1
 	handful_state = "tracking_lever_action_bullet"
 
-/datum/ammo/bullet/lever_action/tracker/proc/tracker_remove(mob/M, icon)
-	REMOVE_TRAIT(M, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(2000))
-	M.overlays -= icon
+/datum/ammo/bullet/lever_action/tracker/proc/tracker_remove(mob/target, icon)
+	REMOVE_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(2000))
+	target.overlays -= icon
 
 
-/datum/ammo/bullet/lever_action/tracker/on_hit_mob(mob/M, obj/item/projectile/P, mob/user)
-	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "spotter_lockon")
-	I.pixel_x = -M.pixel_x + M.base_pixel_x
-	I.pixel_y = (M.icon_size - world.icon_size) * 0.5 - M.pixel_y + M.base_pixel_y
-	M.overlays += I
-	ADD_TRAIT(M, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(2000))
-	addtimer(CALLBACK(src, PROC_REF(tracker_remove), M, I), 20 SECONDS)
-	M.visible_message(SPAN_DANGER("You hear a faint beep under [M]'s [M.mob_size > MOB_SIZE_HUMAN ? "chitin" : "skin"]."))
+/datum/ammo/bullet/lever_action/tracker/on_hit_mob(mob/target, obj/item/projectile/projectile, mob/user)
+	var/image/image = image(icon = 'icons/effects/Targeted.dmi', icon_state = "spotter_lockon")
+	image.pixel_x = -target.pixel_x + target.base_pixel_x
+	image.pixel_y = (target.icon_size - world.icon_size) * 0.5 - target.pixel_y + target.base_pixel_y
+	target.overlays += image
+	ADD_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(2000))
+	addtimer(CALLBACK(src, PROC_REF(tracker_remove), target, image), 20 SECONDS)
+	target.visible_message(SPAN_DANGER("You hear a faint beep under [target]'s [target.mob_size > MOB_SIZE_HUMAN ? "chitin" : "skin"]."))
 
 /datum/ammo/bullet/lever_action/training
 	name = "lever-action blank"

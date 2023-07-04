@@ -86,7 +86,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/temperatures
 	key = "temperatures"
 	sound = 'sound/voice/joe/temperatures.ogg'
-	say_message = "I am built to whitstand temperatures of up to 1210 degrees."
+	say_message = "I am built to withstand temperatures of up to 1210 degrees."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/weapon_permit

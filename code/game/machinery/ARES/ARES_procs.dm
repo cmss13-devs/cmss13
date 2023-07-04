@@ -12,7 +12,6 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	"Electrical Fault",
 	"Other"
 	))
-
 /datum/ares_link
 	var/link_id = MAIN_SHIP_DEFAULT_NAME
 	/// All motion triggers for the link
@@ -22,7 +21,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/obj/structure/machinery/ares/processor/interface/p_interface
 	var/obj/structure/machinery/ares/processor/apollo/p_apollo
 	var/obj/structure/machinery/ares/processor/bioscan/p_bioscan
+
 	var/obj/structure/machinery/computer/ares_console/interface
+	var/datum/ares_console_admin/admin_interface
+
 	var/list/obj/structure/machinery/computer/working_joe/ticket_computers = list()
 
 	/// The chat log of the apollo link. Timestamped.
@@ -32,7 +34,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/list/tickets_maintenance = list()
 	var/list/tickets_access = list()
 
+/datum/ares_link/New()
+	admin_interface = new
 /datum/ares_link/Destroy()
+	qdel(admin_interface)
 	for(var/obj/structure/machinery/ares/link in linked_systems)
 		link.delink()
 	for(var/obj/structure/machinery/computer/ares_console/interface in linked_systems)
@@ -41,6 +46,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		alert.delink()
 	..()
 
+/* BELOW ARE IN AdminAres.dm
+/datum/ares_link/tgui_interact(mob/user, datum/tgui/ui)
+/datum/ares_link/ui_data(mob/user)
+*/
 
 // ------ ARES Logging Procs ------ //
 /proc/log_ares_apollo(speaker, message)

@@ -22,11 +22,18 @@ const PAGES = {
 
 export const AresInterface = (props, context) => {
   const { data } = useBackend(context);
-  const { current_menu } = data;
+  const { current_menu, sudo } = data;
   const PageComponent = PAGES[current_menu]();
 
+  let themecolor = 'crtblue';
+  if (sudo >= 1) {
+    themecolor = 'crtred';
+  } else if (current_menu === 'emergency') {
+    themecolor = 'crtred';
+  }
+
   return (
-    <Window theme="crtblue" width={780} height={725}>
+    <Window theme={themecolor} width={780} height={725}>
       <Window.Content scrollable>
         <PageComponent />
       </Window.Content>

@@ -460,6 +460,16 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/canvas_cooldown_time = 4 MINUTES
 
+	var/allowed_colors = [
+		"black",
+		"red",
+		"orange",
+		"purple",
+		"blue",
+		"green",
+		"brown"
+	]
+
 	// prevent multiple users from updating the canvas image until the cooldown expires.
 	COOLDOWN_DECLARE(canvas_cooldown)
 
@@ -539,21 +549,9 @@ SUBSYSTEM_DEF(minimaps)
 			. = TRUE
 
 		if ("selectColor")
-			switch(params["color"])
-				if("black")
-					toolbar_color_selection = "black"
-				if("red")
-					toolbar_color_selection = "red"
-				if("orange")
-					toolbar_color_selection = "orange"
-				if("purple")
-					toolbar_color_selection = "purple"
-				if("blue")
-					toolbar_color_selection = "blue"
-				if("green")
-					toolbar_color_selection = "green"
-				if("brown")
-					toolbar_color_selection = "brown"
+
+			if(params['color'] in allowed_colors)
+				return params['color']
 			toolbar_updated_selection = toolbar_color_selection
 			. = TRUE
 

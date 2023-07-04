@@ -460,7 +460,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/canvas_cooldown_time = 4 MINUTES
 
-	var/allowed_colors = (
+	var/allowed_colors = list(
 		"black",
 		"red",
 		"orange",

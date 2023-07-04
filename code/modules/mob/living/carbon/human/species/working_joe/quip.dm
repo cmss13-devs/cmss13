@@ -68,7 +68,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/seegson_behind
 	key = "seegsonbehind"
 	sound = 'sound/voice/joe/seegson_behind.ogg'
-	say_message = "With Seegson, there is someone behind you, helping you every step of the way."
+	say_message = "With Seegson, there is someone behind you, helping you every single step of the way."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/take_a_seat

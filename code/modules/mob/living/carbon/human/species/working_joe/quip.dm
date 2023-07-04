@@ -8,12 +8,13 @@
 	say_message = "You always know a Working Joe."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow_damaged //maybe add a damaged category
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow_damaged
 	key = "alwaysknowdamaged"
 	key_third_person = "workingjoedamaged"
 	sound = 'sound/voice/joe/alwaysknow_damaged.ogg'
 	say_message = "You always know a Working Joe."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	override_say = "You always know a Working Joe. (Damaged)"
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/awful_mess
 	key = "awful"
@@ -52,12 +53,6 @@
 	say_message = "If my services do not meet Seegson standards, please log a complaint."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/quip/with_you_shortly
-	key = "withyoushortly"
-	sound = 'sound/voice/joe/with_you_shortly.ogg'
-	say_message = "I will be with you shortly."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/inexpensive
 	key = "inexpensive"
 	sound = 'sound/voice/joe/inexpensive.ogg'
@@ -69,12 +64,6 @@
 	key = "seegsonbehind"
 	sound = 'sound/voice/joe/seegson_behind.ogg'
 	say_message = "With Seegson, there is someone behind you, helping you every single step of the way."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
-/datum/emote/living/carbon/human/synthetic/working_joe/quip/take_a_seat
-	key = "takeaseat"
-	sound = 'sound/voice/joe/take_a_seat.ogg'
-	say_message = "Please take a seat, someone will be with you shortly."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/talk_to_seegson
@@ -93,10 +82,4 @@
 	key = "weaponpermit"
 	sound = 'sound/voice/joe/weapon_permit.ogg'
 	say_message = "I assume you have a permit for that weapon."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
-/datum/emote/living/carbon/human/synthetic/working_joe/quip/follow_me // iunno where to put this
-	key = "followme"
-	sound = 'sound/voice/joe/follow_me.ogg'
-	say_message = "Follow me."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

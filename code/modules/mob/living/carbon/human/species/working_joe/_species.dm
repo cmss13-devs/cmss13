@@ -26,7 +26,8 @@
 
 
 /datum/action/joe_emote_panel/can_use_action()
-	if(!..())
+	. = ..()
+	if(!.)
 		return FALSE
 
 	if(!isworkingjoe(owner))
@@ -97,7 +98,7 @@
 	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in wj_emotes)
 		data["emotes"] += list(list(
 			"id" = initial(emote.key),
-			"text" = initial(emote.say_message),
+			"text" = (inital(emote.override_say) || initial(emote.say_message)),
 			"category" = initial(emote.category),
 			"path" = "[emote]",
 		))

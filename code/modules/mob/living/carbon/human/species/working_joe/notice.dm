@@ -48,3 +48,21 @@
 	sound = 'sound/voice/joe/firearm.ogg'
 	say_message = "Firearms can cause serious injury. Let me assist you."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/follow_me
+	key = "followme"
+	sound = 'sound/voice/joe/follow_me.ogg'
+	say_message = "Follow me."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/take_a_seat
+	key = "takeaseat"
+	sound = 'sound/voice/joe/take_a_seat.ogg'
+	say_message = "Please take a seat, someone will be with you shortly."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/with_you_shortly
+	key = "withyoushortly"
+	sound = 'sound/voice/joe/with_you_shortly.ogg'
+	say_message = "I will be with you shortly."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

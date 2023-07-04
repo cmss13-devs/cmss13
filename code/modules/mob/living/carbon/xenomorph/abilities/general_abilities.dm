@@ -487,6 +487,10 @@
 
 	var/mob/living/carbon/xenomorph/queen/tracked_queen
 
+/datum/action/xeno_action/onclick/tacmap/Destroy()
+	tracked_queen = null
+	return ..()
+
 /datum/action/xeno_action/onclick/tacmap/give_to(mob/living/carbon/xenomorph/xeno)
 	. = ..()
 
@@ -501,6 +505,7 @@
 
 	handle_new_queen(new_queen = xeno.hive.living_xeno_queen)
 
+/// handles the addition of a new queen, hiding if appropriate
 /datum/action/xeno_action/onclick/tacmap/proc/handle_new_queen(datum/hive_status/hive, mob/living/carbon/xenomorph/queen/new_queen)
 	SIGNAL_HANDLER
 
@@ -516,16 +521,19 @@
 	RegisterSignal(tracked_queen, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(handle_dismount_ovipositor))
 	RegisterSignal(tracked_queen, COMSIG_PARENT_QDELETING, PROC_REF(handle_queen_qdel))
 
+/// deals with the queen mounting the ovipositor, unhiding the action from the user
 /datum/action/xeno_action/onclick/tacmap/proc/handle_mount_ovipositor()
 	SIGNAL_HANDLER
 
 	unhide_from(owner)
 
+/// deals with the queen dismounting the ovipositor, hiding the action from the user
 /datum/action/xeno_action/onclick/tacmap/proc/handle_dismount_ovipositor()
 	SIGNAL_HANDLER
 
 	hide_from(owner)
 
+/// cleans up references to the queen when the queen is being qdel'd, hides the action from the user
 /datum/action/xeno_action/onclick/tacmap/proc/handle_queen_qdel()
 	SIGNAL_HANDLER
 

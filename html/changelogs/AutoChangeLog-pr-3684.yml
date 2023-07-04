@@ -1,4 +1,0 @@
-author: "zzzmike"
-delete-after: True
-changes:
-  - balance: "pods crash land 33% of the time rather than 50%"

@@ -32,3 +32,12 @@
   - refactor: refactored dropship_ammo so that missiles don't use Spawn()
   ghostsheet:
   - bugfix: Fixed Extended Barrel bug of building up free bullet velocity.
+2023-07-04:
+  Drathek:
+  - bugfix: Fixed a persistence problem for the time of death value used for the larva
+      queue.
+  - bugfix: Fixed brainmobs (human gibbing) not getting a time of death value.
+  harryob:
+  - bugfix: paper images should appear once again
+  zzzmike:
+  - balance: pods crash land 33% of the time rather than 50%

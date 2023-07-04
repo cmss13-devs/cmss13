@@ -34,22 +34,11 @@
 		if(10 to 50) icon_state = "half"
 		if(51 to INFINITY) icon_state = "full"
 
-/obj/item/reagent_container/blood/proc/update_beam(ignore = FALSE)
-	var/beam_icon = "iv_tube"
-	if(mode)
-		beam_icon = (reagents.total_volume == 0) ? "iv_tube" : "iv_tube_blood"
-		if(current_beam && current_beam.icon_state != beam_icon || ignore)
-			delete_beam()
-			current_beam = connected_to.beam(connected_from, beam_icon)
-	else
-		beam_icon = (connected_to.blood_volume == 0) ? "iv_tube" : "iv_tube_blood"
-		if(current_beam && current_beam.icon_state != beam_icon || ignore)
-			delete_beam()
-			current_beam = connected_from.beam(connected_to, beam_icon)
-
-/obj/item/reagent_container/blood/proc/delete_beam()
+/obj/item/reagent_container/blood/proc/update_beam()
 	if(current_beam)
 		QDEL_NULL(current_beam)
+	else if(connected_from && connected_to)
+		current_beam = connected_from.beam(connected_to, "iv_tube")
 
 /obj/item/reagent_container/blood/attack(mob/attacked_mob, mob/user)
 	. = ..()
@@ -66,7 +55,7 @@
 		connected_to.base_pixel_x = 0
 		connected_to = null
 		connected_from = null
-		delete_beam()
+		update_beam()
 		return
 
 	if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
@@ -88,7 +77,7 @@
 		START_PROCESSING(SSobj, src)
 		user.visible_message("[user] attaches \the [src] to [connected_to].", \
 			"You attach \the [src] to [connected_to].")
-		update_beam(ignore = TRUE)
+		update_beam()
 
 /obj/item/reagent_container/blood/process()
 	//if we're not connected to anything stop doing stuff
@@ -116,7 +105,6 @@
 		if(volume > 0)
 			var/transfer_amount = REAGENTS_METABOLISM * 30
 			connected_to.inject_blood(src, transfer_amount)
-			update_beam()
 			return
 
 	// Take blood
@@ -131,7 +119,6 @@
 		return
 
 	connected_to.take_blood(src, amount)
-	update_beam()
 
 /obj/item/reagent_container/blood/dropped()
 	..()
@@ -150,7 +137,7 @@
 	connected_to.base_pixel_x = 0
 	connected_to = null
 	connected_from = null
-	delete_beam()
+	update_beam()
 
 /obj/item/reagent_container/blood/verb/toggle_mode()
 	set category = "Object"
@@ -165,7 +152,6 @@
 
 	mode = !mode
 	to_chat(usr, "The blood bag is now [mode ? "giving blood" : "taking blood"].")
-	update_beam(ignore = TRUE)
 
 
 /obj/item/reagent_container/blood/APlus

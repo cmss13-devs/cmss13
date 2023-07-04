@@ -76,7 +76,7 @@ Similar to shotguns.dm but not exactly.
 
 // This is the internal magazine of the spotter XM rifle
 /obj/item/ammo_magazine/internal/lever_action/xm88/spotter
-	name = "XM88 spotter rifle internal magazine"
+	name = "\improper XM88 spotter rifle internal magazine"
 	desc = "If you see this something went wrong and the world is ending!!"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "458-box"

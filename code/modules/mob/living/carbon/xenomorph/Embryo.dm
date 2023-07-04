@@ -163,8 +163,6 @@
 				for(var/mob/dead/observer/cur_obs as anything in candidates)
 					if(cur_obs.ckey == hugger_ckey)
 						picked = cur_obs
-						candidates -= cur_obs
-						message_alien_candidates(candidates, dequeued = 0)
 						for(var/obj/item/alien_embryo/embryo as anything in GLOB.player_embryo_list)
 							if(embryo.hugger_ckey == cur_obs.ckey && embryo != src)
 								// Skipping src just in case an admin wants to quickly check before this thing fully deletes
@@ -174,7 +172,6 @@
 
 			if(!picked)
 				picked = candidates[1]
-				message_alien_candidates(candidates, dequeued = 1)
 
 	// Spawn the larva
 	var/mob/living/carbon/xenomorph/larva/new_xeno

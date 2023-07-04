@@ -57,8 +57,6 @@
 
 						GLOB.hive_datum[hivenumber].stored_larva--
 						GLOB.hive_datum[hivenumber].hive_ui.update_burrowed_larva()
-					if(count)
-						message_alien_candidates(players_with_xeno_pref, dequeued = count)
 
 			if(hive && hive.living_xeno_queen == src)
 				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"),3, hivenumber)

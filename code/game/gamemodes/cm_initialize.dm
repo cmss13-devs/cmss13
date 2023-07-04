@@ -368,23 +368,6 @@ Additional game mode variables.
 			to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy."))
 			return FALSE
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae."))
-
-		// Give the player a cached message of their queue status if they are an observer
-		var/mob/dead/observer/candidate_observer = xeno_candidate
-		if(istype(candidate_observer))
-			if(candidate_observer.larva_queue_cached_message)
-				to_chat(xeno_candidate, candidate_observer.larva_queue_cached_message)
-				return FALSE
-
-			// No cache, lets check now then
-			message_alien_candidates(get_alien_candidates(), dequeued = 0, cache_only = TRUE)
-			if(candidate_observer.larva_queue_cached_message)
-				to_chat(xeno_candidate, candidate_observer.larva_queue_cached_message)
-				return FALSE
-
-			// We aren't in queue yet, lets teach them about the queue then
-			candidate_observer.larva_queue_cached_message = SPAN_XENONOTICE("You are currently still awaiting assignment in the larva queue. Priority is given to players who have yet to play in the round, but otherwise the ordering is based on your time of death. When you have been dead long enough and are not inactive, you will periodically receive messages where you are in the queue relative to other currently valid xeno candidates. Note: Playing as a facehugger or in the thunderdome will not alter your time of death. This means you won't lose your relative place in queue if you step away, disconnect, play as a facehugger, or play in the thunderdome.")
-			to_chat(xeno_candidate, candidate_observer.larva_queue_cached_message)
 		return FALSE
 
 	var/mob/living/carbon/xenomorph/new_xeno

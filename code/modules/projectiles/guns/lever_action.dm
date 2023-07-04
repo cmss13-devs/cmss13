@@ -564,11 +564,11 @@ their unique feature is that a direct hit will buff your damage and firerate
 // Initializes the gun with the scope attached
 /obj/item/weapon/gun/lever_action/xm88/spotter/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/scope/mini_iff/spotter/SCOPE = new(src)
-	SCOPE.flags_attach_features &= ~ATTACH_REMOVABLE
-	SCOPE.hidden = FALSE
-	SCOPE.Attach(src)
-	update_attachable(SCOPE.slot)
+	var/obj/item/attachable/scope/mini_iff/spotter/scope = new(src)
+	scope.flags_attach_features &= ~ATTACH_REMOVABLE
+	scope.hidden = FALSE
+	scope.Attach(src)
+	update_attachable(scope.slot)
 
 /obj/item/weapon/gun/lever_action/xm88/spotter/Initialize(mapload, spawn_empty)
 	. = ..()

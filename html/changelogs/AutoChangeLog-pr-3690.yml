@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - rscadd: "all xenos can now access the tacmap, while the queen is on ovi"

@@ -9,7 +9,7 @@
 	if(!GLOB.ares_link || !GLOB.ares_link.admin_interface || !GLOB.ares_link.interface)
 		to_chat(usr, SPAN_BOLDWARNING("ERROR: ARES Link or Interface not found!"))
 		return FALSE
-	GLOB.ares_link.admin_interface.tgui_interact(usr)
+	GLOB.ares_link.tgui_interact(mob)
 
 /datum/ares_console_admin
 	var/current_menu = "login"
@@ -28,9 +28,13 @@
 	if(!interface || !admin_interface)
 		to_chat(user, SPAN_WARNING("ARES ADMIN DATA LINK FAILED"))
 		return FALSE
-	ui = SStgui.try_update_ui(user, src, ui)
+	ui = SStgui.try_update_ui(user, GLOB.ares_link, ui)
 	if(!ui)
-		ui = new(user, src, "AresInterfaceAdmin", "ARES Admin Menu")
+		to_chat(user, SPAN_WARNING("NO UI FOUND"))
+		ui = new(user, GLOB.ares_link, "AresInterface", "ARES Admin Menu")
+		if(!ui)
+			to_chat(user, SPAN_WARNING("STILL NO UI FOUND"))
+			to_chat(user, SPAN_WARNING("[user.type]"))
 		ui.open()
 
 /datum/ares_link/ui_data(mob/user)

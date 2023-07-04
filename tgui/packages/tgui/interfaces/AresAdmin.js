@@ -5,12 +5,22 @@ import { Window } from '../layouts';
 const PAGES = {
   'login': () => Login,
   'main': () => MainMenu,
+  'announcements': () => AnnouncementLogs,
+  'bioscans': () => BioscanLogs,
+  'bombardments': () => BombardmentLogs,
+  'apollo': () => ApolloLog,
+  'access_log': () => AccessLogs,
+  'delete_log': () => DeletionLogs,
   'talking': () => ARESTalk,
   'deleted_talks': () => DeletedTalks,
   'read_deleted': () => ReadingTalks,
+  'security': () => Security,
+  'requisitions': () => Requisitions,
+  'antiair': () => AntiAir,
+  'emergency': () => Emergency,
 };
 
-export const AresInterfaceAdmin = (props, context) => {
+export const AresAdmin = (props, context) => {
   const { data } = useBackend(context);
   const { current_menu } = data;
   const PageComponent = PAGES[current_menu]();
@@ -60,7 +70,14 @@ const Login = (props, context) => {
 
 const MainMenu = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu } = data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    access_level,
+    sudo,
+  } = data;
 
   return (
     <>
@@ -132,170 +149,197 @@ const MainMenu = (props, context) => {
             />
           </Stack.Item>
         </Stack>
-        <Stack>
-          <Stack.Item grow>
-            <h3>Access Level 1</h3>
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              content="Anti Air Targetting"
-              tooltip="Review changes to the Anti-Air targetting."
-              icon="crosshairs"
-              ml="auto"
-              px="2rem"
-              width="25vw"
-              bold
-              onClick={() => act('page_antiair')}
-            />
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              content="Bioscan Logs"
-              tooltip="Access the Bioscan records."
-              icon="eye"
-              ml="auto"
-              px="2rem"
-              width="25vw"
-              bold
-              onClick={() => act('page_bioscans')}
-            />
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              content="Bombardment Logs"
-              tooltip="Access Orbital Bombardment logs."
-              icon="meteor"
-              ml="auto"
-              px="2rem"
-              width="25vw"
-              bold
-              onClick={() => act('page_bombardments')}
-            />
-          </Stack.Item>
-        </Stack>
-        <Stack>
-          <Stack.Item grow>
-            <h3>Access Level 2</h3>
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              content="Security Updates"
-              tooltip="Read the Security Updates."
-              icon="file-shield"
-              ml="auto"
-              px="2rem"
-              width="25vw"
-              bold
-              onClick={() => act('page_security')}
-            />
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              content="View Apollo Log"
-              tooltip="Read the Apollo Link logs."
-              icon="clipboard"
-              ml="auto"
-              px="2rem"
-              width="25vw"
-              bold
-              onClick={() => act('page_apollo')}
-            />
-          </Stack.Item>
-        </Stack>
-        <Stack>
-          <Stack.Item grow>
-            <h3>Access Level 4</h3>
-          </Stack.Item>
-          <Stack.Item>
-            <Button.Confirm
-              content="Emergency Protocols"
-              tooltip="Access emergency protocols."
-              icon="shield"
-              color="red"
-              ml="auto"
-              px="2rem"
-              width="25vw"
-              bold
-              onClick={() => act('page_emergency')}
-            />
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              content="ASRS Audit Log"
-              tooltip="Review the ASRS Audit Log."
-              icon="cart-shopping"
-              ml="auto"
-              px="2rem"
-              width="25vw"
-              bold
-              onClick={() => act('page_requisitions')}
-            />
-          </Stack.Item>
-        </Stack>
-        <Stack>
-          <Stack.Item grow>
-            <h3>Access Level 5</h3>
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              content="View Access Log"
-              tooltip="View the recent logins."
-              icon="users"
-              ml="auto"
-              px="2rem"
-              width="25vw"
-              bold
-              onClick={() => act('page_access')}
-            />
-          </Stack.Item>
-        </Stack>
-        <Stack>
-          <Stack.Item grow>
-            <h3>Access Level 8</h3>
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              content="View Deletion Log"
-              tooltip="View the deletion log."
-              icon="sd-card"
-              ml="auto"
-              px="2rem"
-              width="25vw"
-              bold
-              onClick={() => act('page_deleted')}
-            />
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              content="View Deleted 1:1's"
-              tooltip="View the deleted 1:1 conversations with ARES."
-              icon="sd-card"
-              ml="auto"
-              px="2rem"
-              width="25vw"
-              bold
-              onClick={() => act('page_deleted_1to1')}
-            />
-          </Stack.Item>
-        </Stack>
-        <Stack>
-          <Stack.Item grow>
-            <h3>Access Level 10</h3>
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              content="Sudo Login"
-              tooltip="Remote Login. UNAVAILABLE IN ADMIN MENU"
-              icon="user-secret"
-              ml="auto"
-              px="2rem"
-              width="25vw"
-              bold
-              onClick={() => act('sudo')}
-              disabled={current_menu}
-            />
-          </Stack.Item>
-        </Stack>
+        {access_level >= 1 && (
+          <Stack>
+            <Stack.Item grow>
+              <h3>Access Level 1</h3>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                content="Anti Air Targetting"
+                tooltip="Review changes to the Anti-Air targetting."
+                icon="crosshairs"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_antiair')}
+              />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                content="Bioscan Logs"
+                tooltip="Access the Bioscan records."
+                icon="eye"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_bioscans')}
+              />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                content="Bombardment Logs"
+                tooltip="Access Orbital Bombardment logs."
+                icon="meteor"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_bombardments')}
+              />
+            </Stack.Item>
+          </Stack>
+        )}
+        {access_level >= 2 && (
+          <Stack>
+            <Stack.Item grow>
+              <h3>Access Level 2</h3>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                content="Security Updates"
+                tooltip="Read the Security Updates."
+                icon="file-shield"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_security')}
+              />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                content="View Apollo Log"
+                tooltip="Read the Apollo Link logs."
+                icon="clipboard"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_apollo')}
+              />
+            </Stack.Item>
+          </Stack>
+        )}
+        {access_level >= 4 && (
+          <Stack>
+            <Stack.Item grow>
+              <h3>Access Level 4</h3>
+            </Stack.Item>
+            <Stack.Item>
+              <Button.Confirm
+                content="Emergency Protocols"
+                tooltip="Access emergency protocols."
+                icon="shield"
+                color="red"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_emergency')}
+              />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                content="ASRS Audit Log"
+                tooltip="Review the ASRS Audit Log."
+                icon="cart-shopping"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_requisitions')}
+              />
+            </Stack.Item>
+          </Stack>
+        )}
+        {access_level >= 5 && (
+          <Stack>
+            <Stack.Item grow>
+              <h3>Access Level 5</h3>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                content="View Access Log"
+                tooltip="View the recent logins."
+                icon="users"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_access')}
+              />
+            </Stack.Item>
+          </Stack>
+        )}
+        {access_level >= 8 && (
+          <Stack>
+            <Stack.Item grow>
+              <h3>Access Level 8</h3>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                content="View Deletion Log"
+                tooltip="View the deletion log."
+                icon="sd-card"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_deleted')}
+              />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                content="View Deleted 1:1's"
+                tooltip="View the deleted 1:1 conversations with ARES."
+                icon="sd-card"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_deleted_1to1')}
+              />
+            </Stack.Item>
+          </Stack>
+        )}
+        {access_level >= 10 && (
+          <Stack>
+            <Stack.Item grow>
+              <h3>Access Level 10</h3>
+            </Stack.Item>
+            {sudo === 0 && (
+              <Stack.Item>
+                <Button
+                  content="Sudo Login"
+                  tooltip="Remote Login."
+                  icon="user-secret"
+                  ml="auto"
+                  px="2rem"
+                  width="25vw"
+                  bold
+                  onClick={() => act('sudo')}
+                />
+              </Stack.Item>
+            )}
+            {sudo >= 1 && (
+              <Stack.Item>
+                <Button
+                  content="Sudo Logout"
+                  tooltip="Logout of Sudo mode."
+                  icon="user-secret"
+                  ml="auto"
+                  px="2rem"
+                  width="25vw"
+                  bold
+                  onClick={() => act('sudo_logout')}
+                />
+              </Stack.Item>
+            )}
+          </Stack>
+        )}
       </Section>
     </>
   );

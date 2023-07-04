@@ -1084,7 +1084,7 @@ Defined in conflicts.dm of the #defines folder.
 
 
 /obj/item/attachable/scope/mini_iff/spotter
-	name = "S6 Solo x4 Scope"
+	name = "\improper S6 Solo x4 Scope"
 	desc = "This scope is meant to be unobtainium, only existing on the XM88 Spotter rifle. If you obtained this without spawning it in please let a coder know how so they can fix it."
 	zoom_offset = 11
 	zoom_viewsize = 12

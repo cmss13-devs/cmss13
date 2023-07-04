@@ -363,6 +363,11 @@ var/global/list/gear_datums_by_name = list()
 	display_name = "Pen, red"
 	path = /obj/item/tool/pen/red
 
+/datum/gear/paperwork/pen_fountain
+	display_name = "Pen, fountain"
+	path = /obj/item/tool/pen/fountain
+	cost = 3
+
 /datum/gear/paperwork/paper
 	display_name = "Sheet of paper"
 	path = /obj/item/paper

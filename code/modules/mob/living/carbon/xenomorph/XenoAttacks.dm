@@ -93,6 +93,9 @@
 	if (M.fortify || M.burrow)
 		return XENO_NO_DELAY_ACTION
 
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		return XENO_NO_DELAY_ACTION
+
 	if(islarva(M)) //Larvas can't eat people
 		M.visible_message(SPAN_DANGER("[M] nudges its head against \the [src]."), \
 		SPAN_DANGER("You nudge your head against \the [src]."), null, null, CHAT_TYPE_XENO_FLUFF)

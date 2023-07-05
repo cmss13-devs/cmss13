@@ -352,8 +352,8 @@
 
 /obj/effect/alien/weeds/node/gardener
 	spread_on_semiweedable = TRUE
-	block_structures = BLOCK_SPECIAL_STRUCTURES
 	fruit_growth_multiplier = 0.8
+	weed_strength = WEED_LEVEL_HARDY
 
 /datum/action/xeno_action/verb/verb_plant_gardening_weeds()
 	set category = "Alien"

@@ -120,7 +120,7 @@
 // Special death noise for Working Joe
 /datum/species/synthetic/colonial/working_joe/handle_death(mob/M, gibbed)
 	if(!gibbed) //A gibbed Joe won't have a death rattle
-		playsound(M.loc, get_sfx("joe_death"), 50, FALSE)
+		playsound(M.loc, pick_weight(list('sound/voice/joe/death_normal.ogg' = 85, 'sound/voice/joe/death_silence.ogg' = 5, 'sound/voice/joe/death_tomorrow.ogg' = 5,'sound/voice/joe/death_dream.ogg' = 5)), 50, FALSE)
 
 // Synth used for W-Y Deathsquads
 /datum/species/synthetic/colonial/combat

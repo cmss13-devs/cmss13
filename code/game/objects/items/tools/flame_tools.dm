@@ -136,10 +136,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/tool/match/process(delta_time)
 	smoketime -= delta_time SECONDS
 	if(smoketime < 1)
-		var/user
-		if(istype(loc, /mob))
-			user = loc
-		burn_out(user)
+		burn_out()
 		return
 
 /obj/item/tool/match/Destroy()
@@ -173,12 +170,19 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	damtype = "brute"
 	icon_state = "[initial(icon_state)]_burnt"
 	item_state = "cigoff"
-	if(user)
-		user.SetLuminosity(0, FALSE, src)
 	SetLuminosity(0)
 	name = burnt_name
 	desc = "A match. This one has seen better days."
 	STOP_PROCESSING(SSobj, src)
+
+	if(user)
+		user.SetLuminosity(0, FALSE, src)
+		return
+
+	if(ismob(loc))
+		user = loc
+		user.SetLuminosity(0, FALSE, src)
+		return
 
 /obj/item/tool/match/paper
 	name = "paper match"

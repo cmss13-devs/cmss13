@@ -284,6 +284,21 @@
 	matter = list("metal" = 20, "gold" = 10)
 	var/static/list/colour_list = list("red", "blue", "green", "yellow", "purple", "pink", "brown", "black", "orange") // Can add more colors as required
 	var/current_colour_index = 1
+	var/owner = "hard to read text"
+
+/obj/item/tool/pen/fountain/Initialize(mapload, mob/living/carbon/human/user)
+	. = ..()
+	var/turf/T = get_turf(src)
+	if(locate(/mob/living/carbon/human) in T)
+		var/mob/new_owner = (locate(/mob/living/carbon/human) in T)
+		owner = new_owner.real_name
+	if(locate(/obj/structure/machinery/cryopod) in T)
+		var/obj/structure/machinery/cryopod/new_owners_pod = (locate(/obj/structure/machinery/cryopod) in T)
+		owner = new_owners_pod.occupant.real_name
+
+/obj/item/tool/pen/fountain/get_examine_text(mob/user)
+	. = ..()
+	. += "There's a laser engraving of [owner] on it."
 
 /obj/item/tool/pen/fountain/attack_self(mob/living/carbon/human/user)
 	if(on)

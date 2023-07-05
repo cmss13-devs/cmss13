@@ -148,8 +148,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 	var/title = SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away.")
 	var/content = SPAN_XENOANNOUNCE("To my children and their Queen. I sense [metalhive_hosts] host[plural] in the metal hive [metalhive_location] and [planet_hosts] scattered elsewhere[planet_location].")
 
-	log_game("BIOSCAN: Queen Mother bioscan completed.")
-	log_game("BIOSCAN: [content]")
+	log_game("BIOSCAN: Queen Mother bioscan completed. [content]")
 	/// Shout it at everyone
 	for(var/mob/current_mob as anything in GLOB.living_xeno_list)
 		current_mob << sound(get_sfx("queen"), wait = 0, volume = 50)

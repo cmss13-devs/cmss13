@@ -41,3 +41,15 @@
   - bugfix: paper images should appear once again
   zzzmike:
   - balance: pods crash land 33% of the time rather than 50%
+2023-07-05:
+  BeagleGaming1:
+  - rscadd: Queen makes noise when moved even while resting
+  Hopek, Gul Dreggrod:
+  - rscadd: Adds a Luxurious fountain pen to the game. Currently spawns on the right
+      ear of high ranking command staff. Sprited by Gul Dreggrod.
+  QuickLode:
+  - rscadd: CMB/ICC Survivors now get a limited radio that they can use to communicate
+      with CMB reinforcements.
+  - rscadd: CMB/Anchorpoint Marines get bandages to stop bleeding.
+  harryob:
+  - rscadd: all xenos can now access the tacmap, while the queen is on ovi

@@ -109,7 +109,7 @@
 /datum/species/synthetic/colonial/working_joe
 	name = SYNTH_WORKING_JOE
 	name_plural = "Working Joes"
-	death_message = "violently gargles synthetic fluid and siezes up, the lights in their eyes dimming..."
+	death_message = "violently gargles fluid and seizes up, the glow in their eyes dimming..."
 	uses_ethnicity = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT)
 

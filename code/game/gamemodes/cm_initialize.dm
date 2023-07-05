@@ -383,7 +383,7 @@ Additional game mode variables.
 				return FALSE
 
 			// We aren't in queue yet, lets teach them about the queue then
-			candidate_observer.larva_queue_cached_message = SPAN_XENONOTICE("You are currently still awaiting assignment in the larva queue. Priority is given to players who have yet to play in the round, but otherwise the ordering is based on your time of death. When you have been dead long enough and are not inactive, you will periodically receive messages where you are in the queue relative to other currently valid xeno candidates. Note: Playing as a facehugger or in the thunderdome will not alter your time of death. This means you won't lose your relative place in queue if you step away, disconnect, play as a facehugger, or play in the thunderdome.")
+			candidate_observer.larva_queue_cached_message = SPAN_XENONOTICE("You are currently awaiting assignment in the larva queue. The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, you will periodically receive messages where you are in the queue relative to other currently valid xeno candidates. Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. Note: Playing as a facehugger or in the thunderdome will not alter your time of death. This means you won't lose your relative place in queue if you step away, disconnect, play as a facehugger, or play in the thunderdome.")
 			to_chat(xeno_candidate, candidate_observer.larva_queue_cached_message)
 		return FALSE
 

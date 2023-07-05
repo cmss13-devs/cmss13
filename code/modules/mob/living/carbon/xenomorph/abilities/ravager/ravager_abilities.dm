@@ -30,10 +30,10 @@
 
 	// Config values (mutable)
 	var/empower_range = 3
-	var/max_targets = 5
+	var/max_targets = 6
 	var/main_empower_base_shield = 0
-	var/initial_activation_shield = 75
-	var/shield_per_human = 60
+	var/initial_activation_shield = 50
+	var/shield_per_human = 50
 	var/time_until_timeout = 6 SECONDS
 
 	// State

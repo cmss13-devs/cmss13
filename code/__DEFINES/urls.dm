@@ -50,6 +50,7 @@
 #define URL_WIKI_MST_GUIDE "https://cm-ss13.com/wiki/Mess_Technician"
 #define URL_WIKI_CL_GUIDE "https://cm-ss13.com/wiki/Corporate_Liaison" // Misc //
 #define URL_WIKI_SURV_GUIDE "https://cm-ss13.com/wiki/Survivor"
+#define URL_WIKI_WJ_GUIDE "https://cm-ss13.com/wiki/Seegson_Working_Joe_Manual"
 
 // ------ FORUM LINKS ------ //
 #define URL_FORUM "https://forum.cm-ss13.com/"

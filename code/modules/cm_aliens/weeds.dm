@@ -492,20 +492,20 @@
 	overlay_node = TRUE
 	overlays += staticnode
 
-/obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/X, datum/hive_status/hive)
+/obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/xeno, datum/hive_status/hive)
 	if (istype(hive))
 		linked_hive = hive
-	else if (istype(X) && X.hive)
-		linked_hive = X.hive
+	else if (istype(xeno) && xeno.hive)
+		linked_hive = xeno.hive
 	else
 		linked_hive = GLOB.hive_datum[hivenumber]
 
-	for(var/obj/effect/alien/weeds/W in loc)
-		if(W != src)
-			if(W.weed_strength > WEED_LEVEL_HIVE)
+	for(var/obj/effect/alien/weeds/weed in loc)
+		if(weed != src)
+			if(weed.weed_strength > WEED_LEVEL_HIVE)
 				qdel(src)
 				return
-			qdel(W) //replaces the previous weed
+			qdel(weed) //replaces the previous weed
 			break
 
 	. = ..(mapload, src)
@@ -513,15 +513,15 @@
 	if(!staticnode)
 		staticnode = image('icons/mob/xenos/weeds.dmi', "weednode", ABOVE_OBJ_LAYER)
 
-	var/obj/effect/alien/resin/trap/TR = locate() in loc
-	if(TR)
-		RegisterSignal(TR, COMSIG_PARENT_PREQDELETED, PROC_REF(trap_destroyed))
+	var/obj/effect/alien/resin/trap/trap = locate() in loc
+	if(trap)
+		RegisterSignal(trap, COMSIG_PARENT_PREQDELETED, PROC_REF(trap_destroyed))
 		overlay_node = FALSE
 		overlays -= staticnode
 
-	if(X)
-		add_hiddenprint(X)
-		weed_strength = X.weed_level
+	if(xeno)
+		add_hiddenprint(xeno)
+		weed_strength = max(weed_strength, xeno.weed_level)
 		if (weed_strength < WEED_LEVEL_STANDARD)
 			weed_strength = WEED_LEVEL_STANDARD
 

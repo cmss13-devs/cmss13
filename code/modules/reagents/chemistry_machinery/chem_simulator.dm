@@ -576,8 +576,9 @@
 	sleep(10)
 	var/obj/item/paper/research_report/report = new /obj/item/paper/research_report/(loc)
 	var/datum/reagent/D = chemical_reagents_list[id]
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	report.name = "Simulation result for [D.name]"
-	report.info += "<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [D.name]</H2></center>"
+	report.info += "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [D.name]</H2></center>"
 	report.generate(D)
 	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the Synthesis Simulator.<BR>The [MAIN_SHIP_NAME], [time2text(world.timeofday, "MM/DD")]/[game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
 	playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)

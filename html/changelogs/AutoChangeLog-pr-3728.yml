@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - imageadd: "Synth utility vest is now slimmer in appearance"

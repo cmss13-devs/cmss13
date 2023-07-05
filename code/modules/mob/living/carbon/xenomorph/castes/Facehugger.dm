@@ -50,6 +50,7 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/xenohide,
 		/datum/action/xeno_action/activable/pounce/facehugger,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -143,9 +144,9 @@
 
 /mob/living/carbon/xenomorph/facehugger/proc/handle_hug(mob/living/carbon/human/human)
 	var/obj/item/clothing/mask/facehugger/hugger = new /obj/item/clothing/mask/facehugger(loc, hivenumber)
-	var/did_hug = hugger.attach(human, TRUE, 0.5)
+	var/did_hug = hugger.attach(human, TRUE, 0.5, client?.ckey)
 	if(client)
-		client?.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
+		client.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
 	var/area/hug_area = get_area(src)
 	if(hug_area)
 		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
@@ -155,6 +156,7 @@
 		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
 			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b>" + " [OBSERVER_JMP(observer, human)]"))
 		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b>"))
+	timeofdeath = 1 // Ever so slightly deprioritized for larva queue
 	qdel(src)
 	if(hug_area)
 		xeno_message(SPAN_XENOMINORWARNING("You sense that [src] has facehugged a host at \the [hug_area]!"), 1, src.hivenumber)

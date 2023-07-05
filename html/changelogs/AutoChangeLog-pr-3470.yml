@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - rscadd: "Re-added the nuke that you can buy via intel at tier 4. Only purchasable past 120 minutes. Requires holding both groundside comms towers for authorization decryption before being able to be armed."

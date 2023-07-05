@@ -59,6 +59,7 @@
 		/datum/action/xeno_action/activable/pounce/crusher_charge,
 		/datum/action/xeno_action/onclick/crusher_stomp,
 		/datum/action/xeno_action/onclick/crusher_shield,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	claw_type = CLAW_TYPE_VERY_SHARP

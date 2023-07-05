@@ -106,6 +106,7 @@ block( \
 #define SOUND_REBOOT (1<<5)
 #define SOUND_ADMIN_MEME (1<<6)
 #define SOUND_ADMIN_ATMOSPHERIC (1<<7)
+#define SOUND_ARES_MESSAGE (1<<8)
 
 //toggles_chat
 #define CHAT_OOC (1<<0)

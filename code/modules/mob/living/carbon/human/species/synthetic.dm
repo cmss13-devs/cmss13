@@ -109,12 +109,18 @@
 /datum/species/synthetic/colonial/working_joe
 	name = SYNTH_WORKING_JOE
 	name_plural = "Working Joes"
+	death_message = "PLACEHOLDER: PLEASE BULLY THE MAINTS IF THIS SOMEHOW GETS THROUGH!!!!"
 	uses_ethnicity = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT)
 
 	hair_color = "#000000"
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'
+
+// Special death noise for Working Joe
+/datum/species/synthetic/colonial/working_joe/handle_death(mob/M, gibbed)
+	if(!gibbed) //A gibbed Joe won't have a death rattle
+		playsound(M.loc,'sound/voice/predalien_death.ogg', 25, TRUE)
 
 // Synth used for W-Y Deathsquads
 /datum/species/synthetic/colonial/combat

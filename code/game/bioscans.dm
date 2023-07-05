@@ -141,7 +141,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 	var/fake_marines_on_ship = max(0, marines_on_ship + rand(-variance, variance))
 	var/metalhive_hosts = "[fake_marines_on_ship ? "approximately [fake_marines_on_ship]":"no"]"
 	var/plural = "[!fake_marines_on_ship || fake_marines_on_ship > 1 ? "s":""]"
-	var/metalhive_location = "[fake_marines_on_ship&&marine_ship_location?", including one in [marine_ship_location],":""]"
+	var/metalhive_location = "[fake_marines_on_ship && marine_ship_location?", including one in [marine_ship_location]," : ""]"
 	var/planet_hosts = "[marines_on_planet ? "[marines_on_planet]" : "none"]"
 	var/planet_location = "[marines_on_planet && marine_planet_location ? ", including one in [marine_planet_location]" : ""]"
 

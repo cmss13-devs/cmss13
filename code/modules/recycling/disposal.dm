@@ -138,7 +138,7 @@
 	if(istype(grab_effect)) //Handle grabbed mob
 		if(ismob(grab_effect.grabbed_thing))
 			var/mob/grabbed_mob = grab_effect.grabbed_thing
-			if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_DISPOSABLE_MOBS) || narrow_tube || grabbed_mob.mob_size >= MOB_SIZE_BIG)
+			if((!MODE_HAS_TOGGLEABLE_FLAG(MODE_DISPOSABLE_MOBS) && !HAS_TRAIT(grabbed_mob, TRAIT_CRAWLER)) || narrow_tube || grabbed_mob.mob_size >= MOB_SIZE_BIG)
 				to_chat(user, SPAN_WARNING("You can't fit that in there!"))
 				return FALSE
 			var/max_grab_size = user.mob_size
@@ -161,7 +161,7 @@
 					user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has placed [key_name(grabbed_mob)] in disposals.</font>")
 					grabbed_mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in disposals by [user] ([user.ckey])</font>")
 					msg_admin_attack("[user] ([user.ckey]) placed [key_name(grabbed_mob)] in a disposals unit in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-					flush()
+					flush(TRUE)//Forcibly flushing someone if forced in by another player.
 			else
 				to_chat(user, SPAN_WARNING("You need a better grip to force [grabbed_mob] in there!"))
 		return
@@ -180,17 +180,17 @@
 
 ///Mouse drop another mob or self
 /obj/structure/machinery/disposal/MouseDrop_T(mob/target, mob/user)
-	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_DISPOSABLE_MOBS) || narrow_tube)
+	if((!MODE_HAS_TOGGLEABLE_FLAG(MODE_DISPOSABLE_MOBS) && !HAS_TRAIT(user, TRAIT_CRAWLER)) || narrow_tube)
 		to_chat(user, SPAN_WARNING("Looks a little bit too tight in there!"))
-		return FALSE
-
-	if(!istype(target) || target.anchored || target.buckled || get_dist(user, src) > 1 || get_dist(user, target) > 1 || user.is_mob_incapacitated(TRUE) || isRemoteControlling(user) || target.mob_size >= MOB_SIZE_BIG)
-		to_chat(user, SPAN_WARNING("You cannot get into the [src]!"))
 		return FALSE
 
 	if(target != user)
 		to_chat(user, SPAN_WARNING("You need a better grip on [target] to force them into the [src]!"))
 		return FALSE //Need a firm grip to put someone else in there.
+
+	if(!istype(target) || target.anchored || target.buckled || get_dist(user, src) > 1 || user.is_mob_incapacitated(TRUE) || isRemoteControlling(user) || target.mob_size >= MOB_SIZE_BIG)
+		to_chat(user, SPAN_WARNING("You cannot get into the [src]!"))
+		return FALSE
 	add_fingerprint(user)
 	var/target_loc = target.loc
 
@@ -211,7 +211,7 @@
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>[key_name(user)] climbed into a disposals bin!</font>")
 
 	target.forceMove(src)
-	flush()
+	flush()//Not forcing flush if climbing in by self.
 	update()
 
 ///Attempt to move while inside
@@ -382,7 +382,9 @@
 	return
 
 ///Perform a flush
-/obj/structure/machinery/disposal/proc/flush()
+/obj/structure/machinery/disposal/proc/flush(forced = FALSE)
+	if((disposal_pressure < SEND_PRESSURE) && !forced)
+		return FALSE
 
 	flushing = TRUE
 	flick("[icon_state]-flush", src)

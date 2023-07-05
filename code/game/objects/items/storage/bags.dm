@@ -30,24 +30,22 @@
 	item_state = "trashbag"
 
 	w_class = SIZE_LARGE
-	max_w_class = SIZE_SMALL
+	max_w_class = SIZE_MEDIUM
 	storage_slots = 21
 	can_hold = list() // any
 	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/throwing_knife)
 
 	storage_flags = STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_QUICK_GATHER|STORAGE_CLICK_GATHER
+	flags_equip_slot = NONE
 
 /obj/item/storage/bag/trash/update_icon()
-	if(contents.len == 0)
+	if(length(contents) == 0)
 		icon_state = "trashbag0"
-	else if(contents.len < 12)
+	else if(length(contents) < 12)
 		icon_state = "trashbag1"
-	else if(contents.len < 21)
+	else if(length(contents) < 21)
 		icon_state = "trashbag2"
 	else icon_state = "trashbag3"
-
-/obj/item/storage/bag/trash/open(mob/user)
-	return
 
 // -----------------------------
 // Plastic Bag
@@ -183,7 +181,7 @@
 //Turned numbered display on. Appears to work as intended, despite above comment -- Vanagandr.
 
 /obj/item/storage/bag/sheetsnatcher/orient2hud()
-	var/adjusted_contents = contents.len
+	var/adjusted_contents = length(contents)
 
 	//Numbered contents display
 	var/list/datum/numbered_display/numbered_contents

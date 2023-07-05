@@ -5003,7 +5003,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/obj/structure/machinery/disposal{
+/obj/structure/machinery/disposal/delivery{
 	density = 0;
 	desc = "A pneumatic delivery unit. Sends items to the requisitions.";
 	icon_state = "delivery_engi";
@@ -60954,7 +60954,7 @@
 	},
 /area/almayer/living/briefing)
 "rhO" = (
-/obj/structure/machinery/disposal{
+/obj/structure/machinery/disposal/delivery{
 	density = 0;
 	desc = "A pneumatic delivery unit. Sends items to the requisitions.";
 	icon_state = "delivery_med";
@@ -69158,7 +69158,7 @@
 /obj/item/reagent_container/glass/beaker{
 	pixel_x = 5
 	},
-/obj/structure/machinery/disposal{
+/obj/structure/machinery/disposal/delivery{
 	density = 0;
 	desc = "A pneumatic delivery unit. Sends items to the requisitions.";
 	icon_state = "delivery_med";

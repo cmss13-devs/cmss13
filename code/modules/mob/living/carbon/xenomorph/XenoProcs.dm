@@ -712,6 +712,10 @@
 		to_chat(src, SPAN_XENONOTICE("This is not a host."))
 		return
 
+	if(current_mob.stat == DEAD)
+		to_chat(src, SPAN_XENONOTICE("This host is dead."))
+		return
+
 	var/mob/living/carbon/human/host_to_nest = current_mob
 
 	var/found_grab = FALSE

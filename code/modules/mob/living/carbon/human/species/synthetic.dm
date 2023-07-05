@@ -118,9 +118,14 @@
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'
 
 // Special death noise for Working Joe
-/datum/species/synthetic/colonial/working_joe/handle_death(mob/M, gibbed)
+/datum/species/synthetic/colonial/working_joe/handle_death(mob/living/carbon/human/H, gibbed)
 	if(!gibbed) //A gibbed Joe won't have a death rattle
-		playsound(M.loc, pick_weight(list('sound/voice/joe/death_normal.ogg' = 85, 'sound/voice/joe/death_silence.ogg' = 5, 'sound/voice/joe/death_tomorrow.ogg' = 5,'sound/voice/joe/death_dream.ogg' = 5)), 50, FALSE)
+		//their eyes need to be 'offline'
+		H.r_eyes = 0
+		H.g_eyes = 0
+		H.b_eyes = 0
+		H.update_body()
+		playsound(H.loc, pick_weight(list('sound/voice/joe/death_normal.ogg' = 85, 'sound/voice/joe/death_silence.ogg' = 5, 'sound/voice/joe/death_tomorrow.ogg' = 5,'sound/voice/joe/death_dream.ogg' = 5)), 50, FALSE)
 
 // Synth used for W-Y Deathsquads
 /datum/species/synthetic/colonial/combat

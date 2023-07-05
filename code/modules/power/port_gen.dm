@@ -264,7 +264,7 @@ display round(lastgen) and phorontank amount
 				to_chat(user, SPAN_NOTICE(" You open the access panel."))
 			else
 				to_chat(user, SPAN_NOTICE(" You close the access panel."))
-		else if(istype(O, /obj/item/tool/crowbar) && open)
+		else if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR) && open)
 			var/obj/structure/machinery/constructable_frame/new_frame = new /obj/structure/machinery/constructable_frame(src.loc)
 			for(var/obj/item/I in component_parts)
 				if(I.reliability < 100)

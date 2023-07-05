@@ -284,7 +284,7 @@
 			return
 
 		//Dismantle the frame.
-		if(istype(O, /obj/item/tool/crowbar))
+		if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR))
 			dismantle()
 			return
 

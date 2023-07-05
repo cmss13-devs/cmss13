@@ -167,7 +167,7 @@
 		return
 
 	//If it's emagged, crowbar can pry electronics out.
-	if (src.operating == -1 && istype(I, /obj/item/tool/crowbar))
+	if (src.operating == -1 && HAS_TRAIT(I, TRAIT_TOOL_CROWBAR))
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 		user.visible_message("[user] removes the electronics from the windoor.", "You start to remove electronics from the windoor.")
 		if (do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_BUILD))

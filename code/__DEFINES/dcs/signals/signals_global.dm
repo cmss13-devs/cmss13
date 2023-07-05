@@ -53,3 +53,6 @@
 
 /// From /datum/admins/proc/force_predator_round()
 #define COMSIG_GLOB_PREDATOR_ROUND_TOGGLED "!predator_round_toglged"
+
+/// From /datum/game_mode/colonialmarines/proc/check_ground_humans()
+#define COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING "!groundside_forsaken_handling"

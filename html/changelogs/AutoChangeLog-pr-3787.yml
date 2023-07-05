@@ -1,5 +1,0 @@
-author: "QuickLode"
-delete-after: True
-changes:
-  - rscadd: "CMB/ICC Survivors now get a limited radio that they can use to communicate with CMB reinforcements."
-  - rscadd: "CMB/Anchorpoint Marines get bandages to stop bleeding."

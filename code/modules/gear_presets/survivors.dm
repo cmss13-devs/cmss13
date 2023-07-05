@@ -1371,12 +1371,12 @@
 	human.equip_to_slot_or_del(new shoespath, WEAR_FEET)
 
 /datum/equipment_preset/survivor/new_varadero/commander
-	name = "Survivor - UAASF Commander"
-	assignment = "UAASF Commander"
+	name = "Survivor - USASF Commander"
+	assignment = "USASF Commander"
 	skills = /datum/skills/commander
 	paygrade = "NO5"
 	idtype = /obj/item/card/id/gold
-	role_comm_title = "UAASF CDR"
+	role_comm_title = "USASF CDR"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,

@@ -376,6 +376,8 @@
 				S = pick('sound/voice/pred_pain1.ogg','sound/voice/pred_pain2.ogg','sound/voice/pred_pain3.ogg','sound/voice/pred_pain4.ogg','sound/voice/pred_pain5.ogg',5;'sound/voice/pred_pain_rare1.ogg')
 			if("clownstep")
 				S = pick('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')
+			if("joe_death")
+				S = pick('sound/voice/joe/death_normal.ogg',5;'sound/voice/joe/death_silence.ogg',5;'sound/voice/joe/death_tomorrow.ogg',5;'sound/voice/joe/death_dream.ogg')
 	return S
 
 /client/proc/generate_sound_queues()

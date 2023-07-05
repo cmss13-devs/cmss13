@@ -412,7 +412,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/mob/dead/observer/ghost = ghostize((is_nested && nest && !QDELETED(nest))) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost && !is_admin_level(z))
 			ghost.timeofdeath = world.time
-			ghost.client?.player_details.larva_queue_time = world.time
+
+			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers
+			var/new_tod = isfacehugger(src) ? 1 : world.time
+			ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
 		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE
 			nest.ghost_of_buckled_mob = ghost

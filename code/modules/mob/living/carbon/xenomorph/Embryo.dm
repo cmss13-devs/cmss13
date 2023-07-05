@@ -152,7 +152,13 @@
 		if(affected_mob.first_xeno || (affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, JOB_XENOMORPH)))
 			picked = affected_mob
 		else if(affected_mob.mind && affected_mob.mind.ghost_mob && affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, JOB_XENOMORPH))
-			picked = affected_mob.mind.ghost_mob
+			picked = affected_mob.mind.ghost_mob // This currently doesn't look possible
+		else if(affected_mob.persistent_ckey)
+			for(var/mob/dead/observer/cur_obs as anything in GLOB.observer_list)
+				if(cur_obs.ckey == affected_mob.persistent_ckey)
+					if(cur_obs.client && cur_obs.client.prefs && (cur_obs.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(cur_obs, JOB_XENOMORPH))
+						picked = cur_obs
+					break
 
 	if(!picked)
 		// Get a candidate from observers

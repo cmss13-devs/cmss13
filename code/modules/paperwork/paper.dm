@@ -673,7 +673,8 @@
 		if(!random_chem)
 			random_chem = pick(chemical_gen_classes_list["T1"])
 		C = chemical_reagents_list["[random_chem]"]
-	var/txt = "<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	var/txt = "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
 	switch(note_type)
 		if("synthesis")
 			var/datum/chemical_reaction/G = chemical_reactions_list[C.id]

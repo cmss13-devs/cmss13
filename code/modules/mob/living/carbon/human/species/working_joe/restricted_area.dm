@@ -7,6 +7,12 @@
 	say_message = "Come out of the vent system, please."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/trespassing
+	key = "trespassing"
+	sound = 'sound/voice/joe/trespassing.ogg'
+	say_message = "You are trespassing."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/not_allowed_there
 	key = "notallowedthere"
 	sound = 'sound/voice/joe/not_allowed_there.ogg'
@@ -23,10 +29,4 @@
 	key = "shouldntbehere"
 	sound = 'sound/voice/joe/shouldnt_be_here.ogg'
 	say_message = "You shouldn't be here."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
-/datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/trespassing
-	key = "trespassing"
-	sound = 'sound/voice/joe/trespassing.ogg'
-	say_message = "You are trespassing."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

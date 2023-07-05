@@ -82,6 +82,8 @@
 		COMSIG_ATOM_TURF_CHANGE,
 		COMSIG_MOVABLE_TURF_ENTERED
 	), PROC_REF(set_turf_weeded))
+	if(hivenumber == XENO_HIVE_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/weeds/proc/set_turf_weeded(datum/source, turf/T)
 	SIGNAL_HANDLER
@@ -89,6 +91,15 @@
 		weeded_turf.weeds = null
 
 	T.weeds = src
+
+/obj/effect/alien/weeds/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		hivenumber = XENO_HIVE_FORSAKEN
+		set_hive_data(src, XENO_HIVE_FORSAKEN)
+		linked_hive = GLOB.hive_datum[XENO_HIVE_FORSAKEN]
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /obj/effect/alien/weeds/initialize_pass_flags(datum/pass_flags_container/PF)
 	. = ..()

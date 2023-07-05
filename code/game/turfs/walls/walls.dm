@@ -98,11 +98,15 @@
 					qdel(found_nest) //nests are built on walls, no walls, no nest
 
 /turf/closed/wall/MouseDrop_T(mob/current_mob, mob/user)
+	if(!ismob(current_mob))
+		return
+
 	if(acided_hole)
 		if(current_mob == user && isxeno(user))
 			acided_hole.use_wall_hole(user)
 			return
-	if(isxeno(user))
+
+	if(isxeno(user) && istype(user.get_active_hand(), /obj/item/grab))
 		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
 		user_as_xenomorph.do_nesting_host(current_mob, src)
 	..()

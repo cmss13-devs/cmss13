@@ -1124,7 +1124,7 @@
 
 /obj/item/storage/belt/gun/m39
 	name = "\improper M276 pattern M39 armor rig"
-	desc = "Special issue varient of the M276 designed to holster a M39 submachinegun and two spare magazines. Uncommonly issued to USCM support and specialist personnal, can only be clipped to a set of armor."
+	desc = "Special issue variant of the M276 designed to holster a M39 submachine gun and two spare magazines. Uncommonly issued to USCM support and specialist personnel, can only be clipped to a set of armor."
 	icon_state = "m39_armor"
 	item_state = "s_marinebelt"
 	flags_equip_slot = SLOT_SUIT_STORE
@@ -1136,8 +1136,8 @@
 	)
 	holster_slots = list(
 		"1" = list(
-			"icon_x" = 7,
-			"icon_y" = 0))
+			"icon_x" = 8,
+			"icon_y" = -5))
 
 /obj/item/storage/belt/gun/m44
 	name = "\improper M276 pattern M44 holster rig"

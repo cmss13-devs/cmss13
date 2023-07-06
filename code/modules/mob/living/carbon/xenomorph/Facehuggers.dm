@@ -240,8 +240,8 @@
 	if(!target)
 		return FALSE
 
-	target.visible_message(SPAN_WARNING("\The scuttling [src] leaps at [target]!"), \
-	SPAN_WARNING("The scuttling [src] leaps at [target]!"))
+	target.visible_message(SPAN_WARNING("[src] leaps at [target]!"), \
+	SPAN_WARNING("[src] leaps at [target]!"))
 	leaping = TRUE
 	throw_atom(target, 3, SPEED_FAST)
 	return TRUE

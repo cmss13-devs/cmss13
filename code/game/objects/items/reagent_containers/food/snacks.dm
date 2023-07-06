@@ -66,8 +66,8 @@
 		if(issynth(C))
 			fullness = 200 //Synths never get full
 
-		if(isworkingjoe(M)) //Do not feed the Working Joes
-			to_chat(user, SPAN_DANGER("[M] does not appear to have anywhere to put food into."))
+		if(HAS_TRAIT(M, TRAIT_CANNOT_EAT)) //Do not feed the Working Joes
+			to_chat(user, SPAN_DANGER("[M] is unable to eat!"))
 			return
 
 		if(fullness > 540)

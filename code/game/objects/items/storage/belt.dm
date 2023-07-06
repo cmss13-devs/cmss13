@@ -1122,6 +1122,23 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/highpower/black(src)
 
+/obj/item/storage/belt/gun/m39
+	name = "\improper M276 pattern M39 armor rig"
+	desc = "Special issue varient of the M276 designed to holster a M39 submachinegun and two spare magazines. Uncommonly issued to USCM support and specialist personnal, can only be clipped to a set of armor."
+	icon_state = "m39_armor"
+	item_state = "s_marinebelt"
+	flags_equip_slot = SLOT_SUIT_STORE
+	storage_slots = 3
+	max_w_class = 5
+	can_hold = list(
+		/obj/item/weapon/gun/smg/m39,
+		/obj/item/ammo_magazine/smg,
+	)
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = 7,
+			"icon_y" = 0))
+
 /obj/item/storage/belt/gun/m44
 	name = "\improper M276 pattern M44 holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the M44 magnum revolver, along with six small pouches for speedloaders. It smells faintly of hay."

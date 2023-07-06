@@ -125,6 +125,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 		list("M276 Toolbelt Rig (Full)", 0, /obj/item/storage/belt/utility/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
 		list("M276 M40 Grenade Rig", 0, /obj/item/storage/belt/grenade, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 
+		list("ARMOR SLOT (CHOOSE 1)", 0, null, null, null),
+		list("M276 SMG Armor Rig", 0, /obj/item/storage/belt/gun/m39, MARINE_CAN_BUY_ARMOR_SLOT, VENDOR_ITEM_REGULAR),
+
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Construction Pouch", 0, /obj/item/storage/pouch/construction, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),

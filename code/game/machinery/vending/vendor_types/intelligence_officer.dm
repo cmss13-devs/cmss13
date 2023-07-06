@@ -78,6 +78,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_intelligence_officer, list(
 		list("M276 Shotgun Shell Loading Rig", 0, /obj/item/storage/belt/shotgun, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 Toolbelt Rig (Full)", 0, /obj/item/storage/belt/utility/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 
+		list("ARMOR SLOT (CHOOSE 1)", 0, null, null, null),
+		list("M276 SMG Armor Rig", 0, /obj/item/storage/belt/gun/m39, MARINE_CAN_BUY_ARMOR_SLOT, VENDOR_ITEM_REGULAR),
+
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Document Pouch", 0, /obj/item/storage/pouch/document, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),

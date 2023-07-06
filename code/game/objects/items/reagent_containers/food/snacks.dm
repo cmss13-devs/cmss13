@@ -66,6 +66,10 @@
 		if(issynth(C))
 			fullness = 200 //Synths never get full
 
+		if(isworkingjoe(M)) //Do not feed the Working Joes
+			to_chat(user, SPAN_DANGER("[M] does not appear to have anywhere to put food into."))
+			return
+
 		if(fullness > 540)
 			C.overeat_cooldown = world.time + OVEREAT_TIME
 

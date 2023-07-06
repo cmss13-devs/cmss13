@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Weed nodes can no longer be placed in walls or window frames (or any turf or structure with density)"
-  - refactor: "Refactored the plant weeds ability code"

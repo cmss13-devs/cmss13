@@ -1,5 +1,0 @@
-author: "BeagleGaming1"
-delete-after: True
-changes:
-  - code_imp: "evacuation pod crash chance changed to a var"
-  - code_imp: "proc added to force evacuation pods to crash"

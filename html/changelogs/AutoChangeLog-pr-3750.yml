@@ -1,0 +1,4 @@
+author: "Diegoflores31"
+delete-after: True
+changes:
+  - rscadd: "Defender Tail Slam has a 1% chance to do a BONK sound instead."

@@ -398,6 +398,8 @@ var/list/roundstart_mod_verbs = list(
 	set name = "Claim Donor Gear"
 	if(!donator)
 		to_chat(usr, SPAN_WARNING("You are not a donator. How did you get this?"))
+		log_debug("[key_name(mob)] attempted to claim donor gear without being on the donor list.")
+		remove_verb(src, /client/proc/claim_donor)//Little bit of self-policing.
 		return FALSE
 	if(!ishuman(mob))
 		to_chat(usr, SPAN_WARNING("You need to be a living human to do this."))

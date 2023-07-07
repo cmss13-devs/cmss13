@@ -853,6 +853,13 @@
 	worn_state = "rdalt"
 	flags_jumpsuit = FALSE
 
+/obj/item/clothing/under/rank/synthetic/frontier
+	name = "\improper frontier jumpsuit"
+	desc = "A cargo jumpsuit dressed down for full range of motion and state-of-the-art frontier temperature control. It's the best thing an engineer can wear in the Outer Veil."
+	icon_state = "synth_cargo_light"
+	worn_state = "synth_cargo_light"
+	displays_id = FALSE
+
 /obj/item/clothing/under/rank/synthetic/utility
 	name = "\improper UA utility uniform"
 	desc = "A green-on-green utility uniform, popularly issued to UA contract workers on the frontier."

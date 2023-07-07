@@ -138,6 +138,9 @@
 	else
 		icon_state = "[state_override || state]Larva"
 
+/mob/living/carbon/xenomorph/larva/alter_ghost(mob/dead/observer/ghost)
+	ghost.icon_state = "[caste.caste_type]"
+
 /mob/living/carbon/xenomorph/larva/handle_name()
 	return
 

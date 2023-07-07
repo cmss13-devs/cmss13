@@ -13,6 +13,9 @@
         "/datum/equipment_preset/survivor/security/lv",
         "/datum/equipment_preset/survivor/colonial_marshal/lv"
     ],
+	"CO_survivor_types": [
+        "/datum/equipment_preset/survivor/new_varadero/commander"
+    ],
 
     "defcon_triggers": [
         3300,

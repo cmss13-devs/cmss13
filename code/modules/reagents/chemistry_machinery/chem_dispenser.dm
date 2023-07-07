@@ -45,7 +45,7 @@
 		"sulphuric acid",
 		)
 	/// Has it been hacked
-	var/hackedcheck = DISPENSER_UNHACKABLE
+	var/hacked_check = DISPENSER_UNHACKABLE
 	/// Additional reagents gotten when it is hacked
 	var/hacked_reagents = list()
 
@@ -218,17 +218,17 @@
 		return
 
 	if(HAS_TRAIT(attacking_object, TRAIT_TOOL_MULTITOOL))
-		switch(hackedcheck)
+		switch(hacked_check)
 			if(DISPENSER_UNHACKABLE)
 				to_chat(user, SPAN_NOTICE("[src] cannot be hacked."))
 				return
 			if(DISPENSER_NOT_HACKED)
 				dispensable_reagents += hacked_reagents
-				hackedcheck = DISPENSER_HACKED
+				hacked_check = DISPENSER_HACKED
 				return
 			if(DISPENSER_HACKED)
 				dispensable_reagents -= hacked_reagents
-				hackedcheck = DISPENSER_NOT_HACKED
+				hacked_check = DISPENSER_NOT_HACKED
 
 	if(HAS_TRAIT(attacking_object, TRAIT_TOOL_WRENCH))
 		if(!wrenchable)
@@ -270,7 +270,7 @@
 	accept_beaker_only = FALSE
 	wrenchable = TRUE
 	network = "Misc"
-	hackedcheck = DISPENSER_NOT_HACKED
+	hacked_check = DISPENSER_NOT_HACKED
 	dispensable_reagents = list(
 		"water",
 		"ice",

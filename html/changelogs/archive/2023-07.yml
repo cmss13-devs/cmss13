@@ -74,3 +74,20 @@
   - admin: Adds logs for bioscans successfully completing.
   thatoneyeeter:
   - balance: metal foam now becomes solid faster
+2023-07-07:
+  Diegoflores31:
+  - rscadd: Defender Tail Slam has a 1% chance to do a BONK sound instead.
+  Drathek:
+  - bugfix: Fixed ghost icons for larva and ovi queen
+  Morrow:
+  - rscdel: Removes fountain pens from gear sets
+  - rscdel: Removed nesting the dead
+  - rscadd: Added a visiting USASF Commander (CO survivor) to New Varadero
+  - bugfix: Burnt matches no longer permanently give you a light source if they naturally
+      burn out
+  QuickLoad:
+  - balance: Colony Synthetics are faster but are less resistant. This allows for
+      the option of avoiding engagements.
+  - balance: Colony Synthetics have slightly better CQC and can carry people better.
+  realforest2001:
+  - bugfix: Fixes Queen making footstep sounds while dead and being dragged.

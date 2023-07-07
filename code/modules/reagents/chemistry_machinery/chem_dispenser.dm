@@ -324,7 +324,7 @@
 		"ale",
 		"mead",
 		"thirteenloko",
-		"tequila"
+		"tequila",
 	)
 	hacked_reagents = list(
 		"goldschlager",

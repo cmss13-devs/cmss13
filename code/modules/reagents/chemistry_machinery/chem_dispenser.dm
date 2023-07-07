@@ -221,12 +221,12 @@
 		switch(hacked_check)
 			if(DISPENSER_UNHACKABLE)
 				to_chat(user, SPAN_NOTICE("[src] cannot be hacked."))
-				return
 			if(DISPENSER_NOT_HACKED)
+				user.visible_message("[user] modifies [src] with [attacking_object], turning a light on.", "You enable a light in [src].")
 				dispensable_reagents += hacked_reagents
 				hacked_check = DISPENSER_HACKED
-				return
 			if(DISPENSER_HACKED)
+				user.visible_message("[user] modifies [src] with [attacking_object], turning a light off.", "You disable a light in [src].")
 				dispensable_reagents -= hacked_reagents
 				hacked_check = DISPENSER_NOT_HACKED
 

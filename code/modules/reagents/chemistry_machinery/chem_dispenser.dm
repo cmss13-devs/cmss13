@@ -213,7 +213,7 @@
 				to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [attacking_object]."))
 				user.put_in_hands(old_beaker)
 			else
-				to_chat(user, SPAN_NOTICE("You set \the [attacking_object] on the machine."))
+				to_chat(user, SPAN_NOTICE("You set [attacking_object] on the machine."))
 			SStgui.update_uis(src)
 		update_icon()
 		return

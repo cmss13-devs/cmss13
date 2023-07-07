@@ -1136,7 +1136,7 @@
 	)
 	holster_slots = list(
 		"1" = list(
-			"icon_x" = 8,
+			"icon_x" = -11,
 			"icon_y" = -5))
 
 /obj/item/storage/belt/gun/m44

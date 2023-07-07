@@ -240,7 +240,7 @@
 		if(!src)
 			return
 
-		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		switch(anchored)
 			if(FALSE)
 				anchored = TRUE

@@ -348,8 +348,8 @@
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/thermobaric
-	name = "\improper BLU-200 'Dragonbreath'"
-	desc = "The BLU-200 Dragonbreath a thermobaric fuel-air bomb. The aerosolized fuel mixture creates a vacuum when ignited causing serious damage to those in its way."
+	name = "\improper BLU-200 'Dragons Breath'"
+	desc = "The BLU-200 Dragons Breath a thermobaric fuel-air bomb. The aerosolized fuel mixture creates a vacuum when ignited causing serious damage to those in its way."
 	icon_state = "fatty"
 	ammo_id = "f"
 	travelling_time = 50

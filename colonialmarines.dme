@@ -370,6 +370,7 @@
 #include "code\datums\components\speed_modifier.dm"
 #include "code\datums\components\toxin_buildup.dm"
 #include "code\datums\components\weed_damage_reduction.dm"
+#include "code\datums\components\weed_food.dm"
 #include "code\datums\components\xeno\shield_slash.dm"
 #include "code\datums\construction\construction_template.dm"
 #include "code\datums\construction\xenomorph\construction_template_xenomorph.dm"

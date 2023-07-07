@@ -1,0 +1,5 @@
+author: "QuickLoad"
+delete-after: True
+changes:
+  - balance: "Colony Synthetics are faster but are less resistant. This allows for the option of avoiding engagements."
+  - balance: "Colony Synthetics have slightly better CQC and can carry people better."

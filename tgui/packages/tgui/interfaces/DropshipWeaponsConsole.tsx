@@ -6,6 +6,7 @@ import { CrtPanel } from './CrtPanel';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { ByondUi } from '../components';
 import { range } from 'common/collections';
+import { ButtonProps, HorizontalPanel, MfdButton, VerticalPanel } from './MultifunctionDisplay';
 
 interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
@@ -282,42 +283,13 @@ const ControlPanel = (props, context) => {
 
 const TopPanel = (props, context) => {
   return (
-    <Flex
-      justify="center"
-      align="space-evenly"
-      className="HorizontalButtonPanel">
-      <Flex.Item>
-        <MfdButton>L</MfdButton>
-      </Flex.Item>
-      <Flex.Item>
-        <MfdButton>LC</MfdButton>
-      </Flex.Item>
-      <Flex.Item>
-        <MfdButton>C</MfdButton>
-      </Flex.Item>
-      <Flex.Item>
-        <MfdButton>RC</MfdButton>
-      </Flex.Item>
-      <Flex.Item>
-        <MfdButton>R</MfdButton>
-      </Flex.Item>
-    </Flex>
-  );
-};
-
-const MfdButton = (props: { onClick?: () => void; children: any }, context) => {
-  const { act, data } = useBackend<DropshipProps>(context);
-  return (
-    <Button
-      onClick={() => {
-        act('button_push');
-        if (props.onClick) {
-          props.onClick();
-        }
-      }}
-      className="mfd_button">
-      {props.children}
-    </Button>
+    <HorizontalPanel
+      button1={{ children: 'L' }}
+      button2={{ children: 'LC' }}
+      button3={{ children: 'C' }}
+      button4={{ children: 'RC' }}
+      button5={{ children: 'R' }}
+    />
   );
 };
 
@@ -325,28 +297,19 @@ const BottomPanel = (props, context) => {
   const [panelState, setPanelState] = usePanelState(context);
 
   return (
-    <Flex
-      justify="center"
-      align="space-evenly"
-      className="HorizontalButtonPanel">
-      <Flex.Item>
-        <MfdButton onClick={() => setPanelState('equipment')}>WEAP</MfdButton>
-      </Flex.Item>
-      <Flex.Item>
-        <MfdButton onClick={() => setPanelState('firemissions')}>
-          FIREM
-        </MfdButton>
-      </Flex.Item>
-      <Flex.Item>
-        <Button className="mfd_button">EQUIP</Button>
-      </Flex.Item>
-      <Flex.Item>
-        <MfdButton onClick={() => setPanelState('map')}>MAP</MfdButton>
-      </Flex.Item>
-      <Flex.Item>
-        <MfdButton onClick={() => setPanelState('camera')}>CAMERA</MfdButton>
-      </Flex.Item>
-    </Flex>
+    <HorizontalPanel
+      button1={{
+        children: 'WEAP',
+        onClick: () => setPanelState('equipment'),
+      }}
+      button2={{
+        children: 'FIREM',
+        onClick: () => setPanelState('firemissions'),
+      }}
+      button3={{ children: 'EQUIP' }}
+      button4={{ children: 'MAP', onClick: () => setPanelState('map') }}
+      button5={{ children: 'CAMERA', onClick: () => setPanelState('camera') }}
+    />
   );
 };
 
@@ -356,24 +319,23 @@ const LeftPanel = (props, context) => {
     data.equipment_data.find((x) => x.mount_point === mount_point);
 
   const guns = range(1, 5).map((x) => get_gun(x));
+  const get_gun_index = (index: number) => {
+    const value: ButtonProps = {
+      children: guns[index]?.shorthand ?? 'EMPTY',
+      onClick: () => {
+        act('fire-weapon', { 'eqp_tag': guns[0]?.eqp_tag });
+      },
+    };
+    return value;
+  };
   return (
-    <Flex
-      direction="column"
-      justify="center"
-      align="space-evenly"
-      className="VerticalButtonPanel">
-      <Flex.Item>
-        <MfdButton>WEAPON</MfdButton>
-      </Flex.Item>
-      {guns.map((x) => (
-        <Flex.Item key={x?.mount_point}>
-          <MfdButton
-            onClick={() => act('fire-weapon', { 'eqp_tag': x?.eqp_tag })}>
-            {x?.shorthand ?? 'EMPTY'}
-          </MfdButton>
-        </Flex.Item>
-      ))}
-    </Flex>
+    <VerticalPanel
+      button1={{ children: 'WEAPON' }}
+      button2={get_gun_index(0)}
+      button3={get_gun_index(1)}
+      button4={get_gun_index(2)}
+      button5={get_gun_index(3)}
+    />
   );
 };
 

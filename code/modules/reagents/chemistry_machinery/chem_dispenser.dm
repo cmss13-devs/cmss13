@@ -241,14 +241,12 @@
 			return
 
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		switch(anchored)
-			if(FALSE)
-				anchored = TRUE
+		anchored = !anchored
+		if(anchored)
 				user.visible_message("[user] tightens the bolts securing [src] to the surface.", "You tighten the bolts securing [src] to the surface.")
-			if(TRUE)
-				user.visible_message("[user] unfastens the bolts securing [src] to the surface.", "You unfasten the bolts securing [src] to the surface.")
-				anchored = FALSE
-
+				return
+		
+		user.visible_message("[user] unfastens the bolts securing [src] to the surface.", "You unfasten the bolts securing [src] to the surface.")
 /obj/structure/machinery/chem_dispenser/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 

@@ -76,7 +76,7 @@
 	name_plural = "Colonial Synthetics"
 	uses_ethnicity = TRUE
 	burn_mod = 0.8
-	mob_inherent_traits = list(TRAIT_SUPER_STRONG)
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_IMPROVISER, TRAIT_FASTLEARNER)
 
 	pain_type = /datum/pain/synthetic/colonial
 	rarity_value = 1.5

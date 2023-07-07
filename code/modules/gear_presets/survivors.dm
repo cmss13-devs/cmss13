@@ -198,6 +198,10 @@
 
 	..()
 
+/datum/equipment_preset/survivor/doctor/load_race(mob/living/carbon/human/new_human,client/mob_client)
+	..()
+	ADD_TRAIT(new_human, TRAIT_IMPROVISER, TRAIT_SOURCE_JOB)
+
 /datum/equipment_preset/survivor/doctor/trijent
 	name = "Survivor - Trijent Doctor"
 	assignment = "Trijent Dam Doctor"

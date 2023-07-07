@@ -1,0 +1,7 @@
+author: "Drathek Kugamo"
+delete-after: True
+changes:
+  - rscadd: "Added the ability for weeds to merge with unrevivable corpses"
+  - imageadd: "Added human shaped weeds by Kugamo"
+  - code_imp: "Added a signal for weeds sent to the turf to indicate it is now weeded, and added a signal for afterbuckle."
+  - bugfix: "Closets (including coffins) can no longer move anchored mobs."

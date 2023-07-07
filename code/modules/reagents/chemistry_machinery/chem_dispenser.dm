@@ -22,28 +22,28 @@
 	var/ui_check = 0
 	var/static/list/possible_transfer_amounts = list(5,10,20,30,40)
 	var/list/dispensable_reagents = list(
-		"hydrogen",
-		"lithium",
-		"carbon",
-		"nitrogen",
-		"oxygen",
-		"fluorine",
-		"sodium",
-		"aluminum",
-		"silicon",
-		"phosphorus",
-		"sulfur",
-		"chlorine",
-		"potassium",
-		"iron",
-		"copper",
-		"mercury",
-		"radium",
-		"water",
-		"ethanol",
-		"sugar",
-		"sulphuric acid",
-		)
+	"hydrogen",
+	"lithium",
+	"carbon",
+	"nitrogen",
+	"oxygen",
+	"fluorine",
+	"sodium",
+	"aluminum",
+	"silicon",
+	"phosphorus",
+	"sulfur",
+	"chlorine",
+	"potassium",
+	"iron",
+	"copper",
+	"mercury",
+	"radium",
+	"water",
+	"ethanol",
+	"sugar",
+	"sulphuric acid",
+	)
 	/// Has it been hacked
 	var/hacked_check = DISPENSER_UNHACKABLE
 	/// Additional reagents gotten when it is hacked
@@ -272,32 +272,32 @@
 	network = "Misc"
 	hacked_check = DISPENSER_NOT_HACKED
 	dispensable_reagents = list(
-		"water",
-		"ice",
-		"coffee",
-		"cream",
-		"tea",
-		"cola",
-		"spacemountainwind",
-		"dr_gibb",
-		"space_up",
-		"tonic",
-		"sodawater",
-		"lemon_lime",
-		"sugar",
-		"orangejuice",
-		"limejuice",
-		"watermelonjuice",
-		"tomatojuice",
-		"carrotjuice",
-		"berryjuice",
-		"grapejuice",
-		"lemonjuice",
-		"banana",
+	"water",
+	"ice",
+	"coffee",
+	"cream",
+	"tea",
+	"cola",
+	"spacemountainwind",
+	"dr_gibb",
+	"space_up",
+	"tonic",
+	"sodawater",
+	"lemon_lime",
+	"sugar",
+	"orangejuice",
+	"limejuice",
+	"watermelonjuice",
+	"tomatojuice",
+	"carrotjuice",
+	"berryjuice",
+	"grapejuice",
+	"lemonjuice",
+	"banana",
 	)
 	hacked_reagents = list(
-		"milk",
-		"soymilk",
+	"milk",
+	"soymilk",
 	)
 
 /obj/structure/machinery/chem_dispenser/soda/beer
@@ -327,9 +327,9 @@
 	"tequila"
 	)
 	hacked_reagents = list(
-		"goldschlager",
-		"patron",
-		"absinthe",
+	"goldschlager",
+	"patron",
+	"absinthe",
 	)
 
 #undef DISPENSER_UNHACKABLE

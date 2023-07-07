@@ -15,7 +15,7 @@ GLOBAL_LIST_FILE_LOAD(custom_items, "config/custom_items.txt")
 		for(var/i = 1 to Entry.len)
 			Entry[i] = trim(Entry[i])
 
-		if(Entry.len < 3)
+		if(Entry.len < 2)
 			continue;
 
 		if(Entry[1] == M.ckey)

@@ -404,6 +404,8 @@ var/list/roundstart_mod_verbs = list(
 	if(!ishuman(mob))
 		to_chat(usr, SPAN_WARNING("You need to be a living human to do this."))
 		return FALSE
+	log_game("[key_name(mob)] claimed their donor gear at [get_area_name(mob)].")//No gaming it in the field for free stuff.
+	mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(mob)] claimed their donor gear at [get_area_name(mob)].</font>")
 	EquipCustomItems(mob)
 	return TRUE
 

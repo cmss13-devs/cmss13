@@ -67,7 +67,7 @@
 			fullness = 200 //Synths never get full
 
 		if(HAS_TRAIT(M, TRAIT_CANNOT_EAT)) //Do not feed the Working Joes
-			to_chat(user, SPAN_DANGER("[M] is unable to eat!"))
+			to_chat(user, SPAN_DANGER("[user == M ? "You are" : "[M] is"] unable to eat!"))
 			return
 
 		if(fullness > 540)

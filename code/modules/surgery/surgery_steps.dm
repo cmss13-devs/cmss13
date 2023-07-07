@@ -102,8 +102,8 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 	if(ispath(tool_type)) //Tool speed modifier. This means hand & any item are 100% efficient as surgical tools.
 		tool_modifier = tools[tool_type]
-	if(!(HAS_TRAIT(user, TRAIT_IMPROVISER)))
-		step_duration *= tool_modifier
+		if(!(HAS_TRAIT(user, TRAIT_IMPROVISER)))
+			step_duration *= tool_modifier
 
 	if(surgery.lying_required) //Surgery surface modifier.
 		surface_modifier = target.buckled?.surgery_duration_multiplier //If they're buckled, use the surface modifier of the thing they're buckled to.
@@ -112,8 +112,8 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 			for(var/obj/surface in get_turf(target)) //Otherwise, get the lowest surface modifier of objects on their turf.
 				if(surface_modifier > surface.surgery_duration_multiplier)
 					surface_modifier = surface.surgery_duration_multiplier
-	if(!(HAS_TRAIT(user, TRAIT_FASTLEARNER)))
-		step_duration *= surface_modifier
+			if(!(HAS_TRAIT(user, TRAIT_FASTLEARNER)))
+				step_duration *= surface_modifier
 
 	var/list/human_modifiers = list("surgery_speed" = 1.0, "pain_reduction" = 0)
 	SEND_SIGNAL(user, COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS, human_modifiers)

@@ -18,9 +18,8 @@ GLOBAL_LIST_FILE_LOAD(custom_items, "config/custom_items.txt")
 		if(Entry.len < 3)
 			continue;
 
-		if(Entry[1] == M.ckey && Entry[2] == M.real_name)
-
-			var/list/Paths = splittext(Entry[3], ",")
+		if(Entry[1] == M.ckey)
+			var/list/Paths = splittext(Entry[2], ",")
 			for(var/P in Paths)
 				var/ok = 0  // 1 if the item was placed successfully
 				P = trim(P)

@@ -17,7 +17,7 @@
 	var/obj/structure/machinery/chem_storage/chem_storage
 	var/network = "Ground"
 	var/amount = 30
-	var/accept_beaker_only = 0 //At 0 ONLY accepts glass containers. Kinda misleading varname.
+	var/accept_beaker_only = TRUE
 	var/obj/item/reagent_container/beaker = null
 	var/ui_check = 0
 	var/static/list/possible_transfer_amounts = list(5,10,20,30,40)
@@ -203,7 +203,7 @@
 		return
 
 	if(istype(attacking_object, /obj/item/reagent_container/glass) || istype(attacking_object, /obj/item/reagent_container/food))
-		if(!accept_beaker_only && istype(attacking_object,/obj/item/reagent_container/food))
+		if(accept_beaker_only && istype(attacking_object,/obj/item/reagent_container/food))
 			to_chat(user, SPAN_NOTICE("This machine only accepts beakers"))
 		if(user.drop_inv_item_to_loc(attacking_object, src))
 			var/obj/item/old_beaker = beaker
@@ -267,7 +267,7 @@
 	ui_title = "Soda Dispens-o-matic"
 	req_skill = null
 	req_skill_level = null
-	accept_beaker_only = TRUE
+	accept_beaker_only = FALSE
 	wrenchable = TRUE
 	network = "Misc"
 	hackedcheck = DISPENSER_NOT_HACKED

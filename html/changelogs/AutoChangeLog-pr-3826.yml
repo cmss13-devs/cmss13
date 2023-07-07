@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed facehuggers incorrectly displaying thrown state when it has landed"

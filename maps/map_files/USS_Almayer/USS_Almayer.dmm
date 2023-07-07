@@ -37520,7 +37520,7 @@
 	name = "Medical Telephone";
 	phone_category = "Almayer";
 	phone_id = "Medical Lower";
-	pixel_x = 19
+	pixel_x = 16
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"

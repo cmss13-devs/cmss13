@@ -210,7 +210,7 @@
 			var/obj/item/old_beaker = beaker
 			beaker = attacking_object
 			if(old_beaker)
-				to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [attacking_object]."))
+				to_chat(user, SPAN_NOTICE("You swap out [old_beaker] for [attacking_object]."))
 				user.put_in_hands(old_beaker)
 			else
 				to_chat(user, SPAN_NOTICE("You set [attacking_object] on the machine."))

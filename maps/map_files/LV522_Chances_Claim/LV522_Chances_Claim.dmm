@@ -11114,9 +11114,9 @@
 	icon_state = "gib6"
 	},
 /turf/open/asphalt/cement{
-	icon_state = "cement12"
+	icon_state = "cement4"
 	},
-/area/lv522/outdoors/colony_streets/south_west_street)
+/area/lv522/outdoors/colony_streets/central_streets)
 "fCW" = (
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2"
@@ -12224,6 +12224,12 @@
 	},
 /turf/open/floor/carpet,
 /area/lv522/indoors/a_block/executive)
+"gcX" = (
+/obj/structure/window_frame/strata/reinforced,
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/lv522/indoors/lone_buildings/engineering)
 "gcY" = (
 /obj/structure/cargo_container/ferret/left,
 /turf/open/auto_turf/shale/layer0,
@@ -14296,9 +14302,6 @@
 /area/lv522/atmos/command_centre)
 "gZg" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
-/obj/item/shard{
-	icon_state = "medium"
-	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2"
@@ -19755,6 +19758,9 @@
 /area/lv522/indoors/c_block/cargo)
 "jkL" = (
 /obj/structure/machinery/recharge_station,
+/obj/item/shard{
+	icon_state = "medium"
+	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2"
@@ -32002,7 +32008,7 @@
 "ooh" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Generator Room";
-	not_weldable = 1
+	welded = 1
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -38908,9 +38914,6 @@
 "rbc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/shard{
-	icon_state = "medium"
-	},
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/engineering)
 "rbj" = (
@@ -53865,10 +53868,11 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "xdD" = (
-/obj/structure/window_frame/strata/reinforced,
-/turf/open/floor/corsat{
-	icon_state = "marked"
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/shard{
+	icon_state = "medium"
 	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/lone_buildings/engineering)
 "xdF" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -62956,8 +62960,8 @@ ruU
 ruU
 ruU
 ruU
-fXx
-xvQ
+fCU
+kvq
 izp
 qWf
 icy
@@ -62970,8 +62974,8 @@ qOa
 vIy
 eXU
 lKu
-kvq
-fCU
+xvQ
+hpq
 ofi
 max
 max
@@ -63187,7 +63191,7 @@ fXx
 xvQ
 sXM
 ukp
-oPc
+xdD
 oPc
 nEY
 sQD
@@ -63641,14 +63645,14 @@ fXx
 gbB
 nJv
 xvQ
-xvQ
-xvQ
+gcX
+kvq
 ivK
 wng
 hpO
 ivK
-kvq
-xdD
+xvQ
+xvQ
 xvQ
 nJv
 kmq

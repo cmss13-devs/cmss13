@@ -123,7 +123,7 @@
 #define TRAIT_SUPER_STRONG "t_super_strong"
 /// Foreign biology. Basic medHUDs won't show the mob. (Yautja, Zombies)
 #define TRAIT_FOREIGN_BIO "t_foreign_bio"
-/// Eye color changes on intent. (G1 Synths)
+/// Eye color changes on intent. (G1 Synths and WJs)
 #define TRAIT_INTENT_EYES "t_intent_eyes"
 /// Masked synthetic biology. Basic medHUDs will percieve the mob as human. (Infiltrator Synths)
 #define TRAIT_INFILTRATOR_SYNTH "t_infiltrator_synth"
@@ -157,6 +157,8 @@
 #define TRAIT_LEADERSHIP "t_leadership"
 /// If the mob can see the reagents contents of stuff
 #define TRAIT_REAGENT_SCANNER "reagent_scanner"
+/// If the mob cannot eat/be fed
+#define TRAIT_CANNOT_EAT "t_cannot_eat"
 /// If the mob is being lazed by a sniper spotter
 #define TRAIT_SPOTTER_LAZED "t_spotter_lazed"
 /// If the mob has ear protection. Protects from external ear damage effects. Includes explosions, firing the RPG, screeching DEAFNESS only, and flashbangs.
@@ -261,6 +263,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_BIMEX" = TRAIT_BIMEX,
 		"TRAIT_EMOTE_CD_EXEMPT" = TRAIT_EMOTE_CD_EXEMPT,
 		"TRAIT_LISPING" = TRAIT_LISPING,
+		"TRAIT_CANNOT_EAT" = TRAIT_CANNOT_EAT,
 	),
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,

@@ -4,6 +4,8 @@
 
 /// From /obj/effect/alien/weeds/Initialize()
 #define COMSIG_WEEDNODE_GROWTH_COMPLETE "weednode_growth_complete"
+/// From /obj/effect/alien/weeds/Initialize()
+#define COMSIG_WEEDNODE_GROWTH "weednode_growth"
 /// From /obj/effect/alien/weeds/proc/on_weed_expand()
 #define COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER "weednode_cannot_expand_further"
 
@@ -24,3 +26,6 @@
 #define COMSIG_TRANSMITTER_UPDATE_ICON "transmitter_update_icon"
 
 #define COMSIG_TENT_COLLAPSING "tent_collapsing"
+
+/// from /obj/proc/afterbuckle()
+#define COSMIG_OBJ_AFTER_BUCKLE "signal_obj_after_buckle"

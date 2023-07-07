@@ -1,9 +1,6 @@
 #define DISPENSER_UNHACKABLE -1
 #define DISPENSER_NOT_HACKED 0
 #define DISPENSER_HACKED 1
-
-
-
 /obj/structure/machinery/chem_dispenser
 	name = "chem dispenser"
 	density = TRUE
@@ -334,3 +331,7 @@
 		"patron",
 		"absinthe",
 	)
+
+#undef DISPENSER_UNHACKABLE
+#undef DISPENSER_NOT_HACKED
+#undef DISPENSER_HACKED

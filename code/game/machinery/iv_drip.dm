@@ -4,7 +4,8 @@
 	anchored = FALSE
 	density = FALSE
 	drag_delay = 1
-	base_pixel_x = 5
+	base_pixel_x = 15
+	base_pixel_y = -2
 
 	var/mob/living/carbon/attached = null
 	var/mode = 1 // 1 is injecting, 0 is taking blood.
@@ -12,7 +13,7 @@
 	var/datum/beam/current_beam
 
 /obj/structure/machinery/iv_drip/update_icon()
-	if(src.attached)
+	if(attached)
 		icon_state = "hooked"
 	else
 		icon_state = ""
@@ -40,7 +41,7 @@
 /obj/structure/machinery/iv_drip/proc/update_beam()
 	if(current_beam)
 		QDEL_NULL(current_beam)
-	else if(src && attached)
+	else if(!QDELETED(src) && attached)
 		current_beam = beam(attached, "iv_tube")
 
 /obj/structure/machinery/iv_drip/power_change()
@@ -59,7 +60,7 @@
 
 /obj/structure/machinery/iv_drip/MouseDrop(over_object, src_location, over_location)
 	..()
-	if(src.inoperable())
+	if(inoperable())
 		visible_message("\The [src] is not powered.")
 		return
 

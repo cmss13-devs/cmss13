@@ -436,6 +436,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(src.ckey == line)
 			src.donator = 1
 			add_verb(src, /client/proc/set_ooc_color_self)
+			add_verb(src, /client/proc/claim_donor)
+			to_chat(src, SPAN_WARNING("If you have special donor gear, you may claim it from the OOC tab."))
 
 	//if(prefs.window_skin & TOGGLE_WINDOW_SKIN)
 	// set_night_skin()

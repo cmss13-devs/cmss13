@@ -245,7 +245,6 @@
 
 	var/mob/living/carbon/human/character = create_character(TRUE) //creates the human and transfers vars and mind
 	RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], late_join = TRUE)
-	EquipCustomItems(character)
 
 	if(security_level > SEC_LEVEL_BLUE || EvacuationAuthority.evac_status)
 		to_chat(character, SPAN_HIGHDANGER("As you stagger out of hypersleep, the sleep bay blares: '[EvacuationAuthority.evac_status ? "VESSEL UNDERGOING EVACUATION PROCEDURES, SELF DEFENSE KIT PROVIDED" : "VESSEL IN HEIGHTENED ALERT STATUS, SELF DEFENSE KIT PROVIDED"]'."))

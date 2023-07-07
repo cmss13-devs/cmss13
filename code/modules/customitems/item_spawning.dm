@@ -8,13 +8,6 @@ GLOBAL_LIST_FILE_LOAD(custom_items, "config/custom_items.txt")
 
 /proc/EquipCustomItems(mob/living/carbon/human/M)
 	var/client/donor = M.client
-	if(!donor.donator)
-		return FALSE
-	var/wanted = alert(M, "Do you want to use your donor gear this round?\nYou will still receive this prompt if you are a donator without special gear.\n\nNote: You may claim your donor gear at a later point.", "Use Donor Gear?", "Yes", "No")
-	if(wanted != "Yes")
-		to_chat(M, SPAN_WARNING("You have chosen not to use your donor gear this round. It may be claimed later in the OOC tab."))
-		add_verb(donor, /client/proc/claim_donor)
-		return FALSE
 	remove_verb(donor, /client/proc/claim_donor)
 	for(var/line in GLOB.custom_items)
 		// split & clean up

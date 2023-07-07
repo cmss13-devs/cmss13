@@ -1,3 +1,9 @@
+#define DISPENSER_UNHACKABLE -1
+#define DISPENSER_NOT_HACKED 0
+#define DISPENSER_HACKED 1
+
+
+
 /obj/structure/machinery/chem_dispenser
 	name = "chem dispenser"
 	density = TRUE
@@ -5,6 +11,7 @@
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "dispenser"
 	use_power = USE_POWER_NONE
+	wrenchable = FALSE
 	idle_power_usage = 40
 	layer = BELOW_OBJ_LAYER //So beakers reliably appear above it
 	var/req_skill = SKILL_MEDICAL
@@ -13,13 +20,37 @@
 	var/obj/structure/machinery/chem_storage/chem_storage
 	var/network = "Ground"
 	var/amount = 30
-	var/accept_glass = 0 //At 0 ONLY accepts glass containers. Kinda misleading varname.
+	var/accept_beaker_only = 0 //At 0 ONLY accepts glass containers. Kinda misleading varname.
 	var/obj/item/reagent_container/beaker = null
 	var/ui_check = 0
 	var/static/list/possible_transfer_amounts = list(5,10,20,30,40)
-	var/list/dispensable_reagents = list("hydrogen","lithium","carbon","nitrogen","oxygen","fluorine",
-	"sodium","aluminum","silicon","phosphorus","sulfur","chlorine","potassium","iron",
-	"copper","mercury","radium","water","ethanol","sugar","sulphuric acid")
+	var/list/dispensable_reagents = list(
+		"hydrogen",
+		"lithium",
+		"carbon",
+		"nitrogen",
+		"oxygen",
+		"fluorine",
+		"sodium",
+		"aluminum",
+		"silicon",
+		"phosphorus",
+		"sulfur",
+		"chlorine",
+		"potassium",
+		"iron",
+		"copper",
+		"mercury",
+		"radium",
+		"water",
+		"ethanol",
+		"sugar",
+		"sulphuric acid",
+		)
+	/// Has it been hacked
+	var/hackedcheck = DISPENSER_UNHACKABLE
+	/// Additional reagents gotten when it is hacked
+	var/hacked_reagents = list()
 
 /obj/structure/machinery/chem_dispenser/medbay
 	network = "Medbay"
@@ -111,9 +142,9 @@
 	var/list/beakerContents = list()
 	var/beakerCurrentVolume = 0
 	if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
-		for(var/datum/reagent/R in beaker.reagents.reagent_list)
-			beakerContents += list(list("name" = R.name, "volume" = R.volume))  // list in a list because Byond merges the first list...
-			beakerCurrentVolume += R.volume
+		for(var/datum/reagent/current_reagent in beaker.reagents.reagent_list)
+			beakerContents += list(list("name" = current_reagent.name, "volume" = current_reagent.volume))  // list in a list because Byond merges the first list...
+			beakerCurrentVolume += current_reagent.volume
 	.["beakerContents"] = beakerContents
 
 	if (beaker)
@@ -149,11 +180,11 @@
 				return
 			var/reagent_name = params["reagent"]
 			if(beaker && dispensable_reagents.Find(reagent_name))
-				var/obj/item/reagent_container/B = beaker
-				var/datum/reagents/R = B.reagents
-				var/space = R.maximum_volume - R.total_volume
+				var/obj/item/reagent_container/current_beaker = beaker
+				var/datum/reagents/current_reagent = current_beaker.reagents
+				var/space = current_reagent.maximum_volume - current_reagent.total_volume
 
-				R.add_reagent(reagent_name, min(amount, chem_storage.energy * 10, space))
+				current_reagent.add_reagent(reagent_name, min(amount, chem_storage.energy * 10, space))
 				chem_storage.energy = max(chem_storage.energy - min(amount, chem_storage.energy * 10, space) / 10, 0)
 
 			. = TRUE
@@ -170,32 +201,65 @@
 			replace_beaker(usr)
 			. = TRUE
 
-/obj/structure/machinery/chem_dispenser/attackby(obj/item/reagent_container/B, mob/user)
+/obj/structure/machinery/chem_dispenser/attackby(obj/item/reagent_container/attacking_object, mob/user)
 	if(isrobot(user))
 		return
-	if(istype(B, /obj/item/reagent_container/glass) || istype(B, /obj/item/reagent_container/food))
-		if(!accept_glass && istype(B,/obj/item/reagent_container/food))
+
+	if(istype(attacking_object, /obj/item/reagent_container/glass) || istype(attacking_object, /obj/item/reagent_container/food))
+		if(!accept_beaker_only && istype(attacking_object,/obj/item/reagent_container/food))
 			to_chat(user, SPAN_NOTICE("This machine only accepts beakers"))
-		if(user.drop_inv_item_to_loc(B, src))
+		if(user.drop_inv_item_to_loc(attacking_object, src))
 			var/obj/item/old_beaker = beaker
-			beaker = B
+			beaker = attacking_object
 			if(old_beaker)
-				to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [B]."))
+				to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [attacking_object]."))
 				user.put_in_hands(old_beaker)
 			else
-				to_chat(user, SPAN_NOTICE("You set \the [B] on the machine."))
+				to_chat(user, SPAN_NOTICE("You set \the [attacking_object] on the machine."))
 			SStgui.update_uis(src)
 		update_icon()
 		return
+
+	if(HAS_TRAIT(attacking_object, TRAIT_TOOL_MULTITOOL))
+		switch(hackedcheck)
+			if(DISPENSER_UNHACKABLE)
+				to_chat(user, SPAN_NOTICE("[src] cannot be hacked."))
+				return
+			if(DISPENSER_NOT_HACKED)
+				dispensable_reagents += hacked_reagents
+				hackedcheck = DISPENSER_HACKED
+				return
+			if(DISPENSER_HACKED)
+				dispensable_reagents -= hacked_reagents
+				hackedcheck = DISPENSER_NOT_HACKED
+
+	if(HAS_TRAIT(attacking_object, TRAIT_TOOL_WRENCH))
+		if(!wrenchable)
+			to_chat(user, "[src] cannot be unwrenched.")
+
+		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			return
+		if(!src)
+			return
+
+		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+		switch(anchored)
+			if(FALSE)
+				anchored = TRUE
+				user.visible_message("[user] tightens the bolts securing [src] to the surface.", "You tighten the bolts securing [src] to the surface.")
+			if(TRUE)
+				user.visible_message("[user] unfastens the bolts securing [src] to the surface.", "You unfasten the bolts securing [src] to the surface.")
+				anchored = FALSE
 
 /obj/structure/machinery/chem_dispenser/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/chem_dispenser/attack_hand(mob/user as mob)
 	if(stat & BROKEN)
+		to_chat(user, SPAN_WARNING("[src] is inoperative."))
 		return
 	if(req_skill && !skillcheck(user, req_skill, req_skill_level))
-		to_chat(user, SPAN_WARNING("You don't have the training to use this."))
+		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
 		return
 	tgui_interact(user)
 
@@ -206,9 +270,10 @@
 	ui_title = "Soda Dispens-o-matic"
 	req_skill = null
 	req_skill_level = null
-	accept_glass = 1
+	accept_beaker_only = TRUE
 	wrenchable = TRUE
 	network = "Misc"
+	hackedcheck = DISPENSER_NOT_HACKED
 	dispensable_reagents = list(
 		"water",
 		"ice",
@@ -233,76 +298,39 @@
 		"lemonjuice",
 		"banana",
 	)
-	var/hackedcheck = 0
+	hacked_reagents = list(
+		"milk",
+		"soymilk",
+	)
 
-/obj/structure/machinery/chem_dispenser/soda/attackby(obj/item/B as obj, mob/user as mob)
-	..()
-	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))
-		if(hackedcheck == 0)
-			to_chat(user, "You change the mode from 'Soda Magic' to 'Milking Time'.")
-			dispensable_reagents += list("milk","soymilk")
-			hackedcheck = 1
-			return
-
-		else
-			to_chat(user, "You change the mode from 'Milking Time' to 'Soda Magic'.")
-			dispensable_reagents -= list("milk","soymilk")
-			hackedcheck = 0
-			return
-	else if(HAS_TRAIT(B, TRAIT_TOOL_WRENCH))
-		if(!wrenchable) return
-
-		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			if(!src) return
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			switch (anchored)
-				if (FALSE)
-					anchored = TRUE
-					user.visible_message("[user] tightens the bolts securing \the [src] to the surface.", "You tighten the bolts securing \the [src] to the surface.")
-				if (TRUE)
-					user.visible_message("[user] unfastens the bolts securing \the [src] to the surface.", "You unfasten the bolts securing \the [src] to the surface.")
-					anchored = FALSE
-		return
-
-/obj/structure/machinery/chem_dispenser/beer
+/obj/structure/machinery/chem_dispenser/soda/beer
 	icon_state = "booze_dispenser"
 	name = "booze dispenser"
 	ui_title = "Booze Portal 9001"
-	req_skill = null
-	req_skill_level = null
-	accept_glass = 1
-	wrenchable = TRUE
-	network = "Misc"
 	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
-	dispensable_reagents = list("water","ice","sodawater","sugar","tonic","beer","kahlua","whiskey","sake","wine","vodka","gin","rum","vermouth","cognac","ale","mead","thirteenloko","tequila")
-	var/hackedcheck = 0
-
-/obj/structure/machinery/chem_dispenser/beer/attackby(obj/item/B as obj, mob/user as mob)
-	..()
-
-	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))
-		if(hackedcheck == 0)
-			to_chat(user, "You disable the 'Weyland-Yutani-are-cheap-bastards' lock, enabling hidden and very expensive boozes.")
-			dispensable_reagents += list("goldschlager","patron","absinthe")
-			hackedcheck = 1
-			return
-
-		else
-			to_chat(user, "You re-enable the 'Weyland-Yutani-are-cheap-bastards' lock, disabling hidden and very expensive boozes.")
-			dispensable_reagents -= list("goldschlager","patron","absinthe")
-			hackedcheck = 0
-			return
-	else if(HAS_TRAIT(B, TRAIT_TOOL_WRENCH))
-		if(!wrenchable) return
-
-		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			if(!src) return
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			switch (anchored)
-				if (FALSE)
-					anchored = TRUE
-					user.visible_message("[user] tightens the bolts securing \the [src] to the surface.", "You tighten the bolts securing \the [src] to the surface.")
-				if (TRUE)
-					user.visible_message("[user] unfastens the bolts securing \the [src] to the surface.", "You unfasten the bolts securing \the [src] to the surface.")
-					anchored = FALSE
-		return
+	dispensable_reagents = list(
+	"water",
+	"ice",
+	"sodawater",
+	"sugar",
+	"tonic",
+	"beer",
+	"kahlua",
+	"whiskey",
+	"sake",
+	"wine",
+	"vodka",
+	"gin",
+	"rum",
+	"vermouth",
+	"cognac",
+	"ale",
+	"mead",
+	"thirteenloko",
+	"tequila"
+	)
+	hacked_reagents = list(
+		"goldschlager",
+		"patron",
+		"absinthe",
+	)

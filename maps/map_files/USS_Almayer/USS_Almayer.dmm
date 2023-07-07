@@ -12716,7 +12716,7 @@
 /area/almayer/hallways/starboard_hallway)
 "aSt" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/chem_dispenser/beer,
+/obj/structure/machinery/chem_dispenser/soda/beer,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},

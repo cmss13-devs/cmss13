@@ -430,7 +430,11 @@
 
 /obj/effect/alien/weeds/weedwall/MouseDrop_T(mob/current_mob, mob/user)
 	. = ..()
-	if(isxeno(user))
+
+	if(!ismob(current_mob))
+		return
+
+	if(isxeno(user) && istype(user.get_active_hand(), /obj/item/grab))
 		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
 		user_as_xenomorph.do_nesting_host(current_mob, src)
 

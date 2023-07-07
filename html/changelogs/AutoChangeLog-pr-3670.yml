@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - bugfix: "Burnt matches no longer permanently give you a light source if they naturally burn out"

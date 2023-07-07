@@ -7,6 +7,15 @@
 GLOBAL_LIST_FILE_LOAD(custom_items, "config/custom_items.txt")
 
 /proc/EquipCustomItems(mob/living/carbon/human/M)
+	var/client/donor = M.client
+	if(!donor.donator)
+		return FALSE
+	var/wanted = alert(M, "Do you want to use your donor gear this round?\n\nNote: You may claim your donor gear at a later point.", "Use Donor Gear?", "Yes", "No")
+	if(wanted != "Yes")
+		to_chat(M, SPAN_WARNING("You have chosen not to use your donor gear this round. It may be claimed later in the OOC tab."))
+		add_verb(donor, /client/proc/claim_donor)
+		return FALSE
+	remove_verb(donor, /client/proc/claim_donor)
 	for(var/line in GLOB.custom_items)
 		// split & clean up
 		var/list/Entry = splittext(line, ":")
@@ -17,6 +26,7 @@ GLOBAL_LIST_FILE_LOAD(custom_items, "config/custom_items.txt")
 			continue;
 
 		if(Entry[1] == M.ckey && Entry[2] == M.real_name)
+
 			var/list/Paths = splittext(Entry[3], ",")
 			for(var/P in Paths)
 				var/ok = 0  // 1 if the item was placed successfully

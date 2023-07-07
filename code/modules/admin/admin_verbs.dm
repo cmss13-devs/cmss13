@@ -393,6 +393,17 @@ var/list/roundstart_mod_verbs = list(
 		prefs.save_preferences()
 	return
 
+/client/proc/claim_donor()
+	set category = "OOC.Donor"
+	set name = "Claim Donor Gear"
+	if(!donator)
+		to_chat(usr, SPAN_WARNING("You are not a donator. How did you get this?"))
+		return FALSE
+	if(!ishuman(mob))
+		to_chat(usr, SPAN_WARNING("You need to be a living human to do this."))
+		return FALSE
+	EquipCustomItems(mob)
+	return TRUE
 
 #define MAX_WARNS 3
 #define AUTOBANTIME 10

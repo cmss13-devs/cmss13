@@ -6,7 +6,7 @@ import { CrtPanel } from './CrtPanel';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { ByondUi } from '../components';
 import { range } from 'common/collections';
-import { ButtonProps, HorizontalPanel, MfdButton, VerticalPanel } from './MultifunctionDisplay';
+import { ButtonProps, HorizontalPanel, VerticalPanel } from './MultifunctionDisplay';
 
 interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
@@ -284,11 +284,13 @@ const ControlPanel = (props, context) => {
 const TopPanel = (props, context) => {
   return (
     <HorizontalPanel
-      button1={{ children: 'L' }}
-      button2={{ children: 'LC' }}
-      button3={{ children: 'C' }}
-      button4={{ children: 'RC' }}
-      button5={{ children: 'R' }}
+      buttons={[
+        { children: 'L' },
+        { children: 'LC' },
+        { children: 'C' },
+        { children: 'RC' },
+        { children: 'R' },
+      ]}
     />
   );
 };
@@ -298,17 +300,19 @@ const BottomPanel = (props, context) => {
 
   return (
     <HorizontalPanel
-      button1={{
-        children: 'WEAP',
-        onClick: () => setPanelState('equipment'),
-      }}
-      button2={{
-        children: 'FIREM',
-        onClick: () => setPanelState('firemissions'),
-      }}
-      button3={{ children: 'EQUIP' }}
-      button4={{ children: 'MAP', onClick: () => setPanelState('map') }}
-      button5={{ children: 'CAMERA', onClick: () => setPanelState('camera') }}
+      buttons={[
+        {
+          children: 'WEAP',
+          onClick: () => setPanelState('equipment'),
+        },
+        {
+          children: 'FIREM',
+          onClick: () => setPanelState('firemissions'),
+        },
+        { children: 'EQUIP' },
+        { children: 'MAP', onClick: () => setPanelState('map') },
+        { children: 'CAMERA', onClick: () => setPanelState('camera') },
+      ]}
     />
   );
 };
@@ -330,11 +334,13 @@ const LeftPanel = (props, context) => {
   };
   return (
     <VerticalPanel
-      button1={{ children: 'WEAPON' }}
-      button2={get_gun_index(0)}
-      button3={get_gun_index(1)}
-      button4={get_gun_index(2)}
-      button5={get_gun_index(3)}
+      buttons={[
+        { children: 'WEAPON' },
+        get_gun_index(0),
+        get_gun_index(1),
+        get_gun_index(2),
+        get_gun_index(3),
+      ]}
     />
   );
 };
@@ -344,29 +350,29 @@ const RightPanel = (props, context) => {
   const lazes = range(0, 3).map((x) =>
     x > data.targets_data.length ? undefined : data.targets_data[x]
   );
+  const get_laze = (index: number) => {
+    const laze = lazes.find((_, i) => i === index);
+    if (laze === undefined) {
+      return { children: 'NONE' };
+    } else {
+      return {
+        children: laze?.target_name.split(' ')[0] ?? 'NONE',
+        onClick: laze
+          ? () => act('set-camera', { 'equipment_id': laze.target_tag })
+          : undefined,
+      };
+    }
+  };
   return (
-    <Flex
-      direction="column"
-      justify="center"
-      align="space-evenly"
-      className="VerticalButtonPanel">
-      <Flex.Item>
-        <MfdButton>SIGNALS</MfdButton>
-      </Flex.Item>
-      {lazes.map((x) => (
-        <Flex.Item key={x?.target_tag}>
-          <MfdButton
-            onClick={() =>
-              act('set-camera', { 'equipment_id': x?.target_tag })
-            }>
-            {x?.target_name.split(' ')[0] ?? 'NONE'}
-          </MfdButton>
-        </Flex.Item>
-      ))}
-      <Flex.Item>
-        <MfdButton onClick={() => act('clear-camera')}>CLEAR</MfdButton>
-      </Flex.Item>
-    </Flex>
+    <VerticalPanel
+      buttons={[
+        { children: 'SIGNALS' },
+        get_laze(0),
+        get_laze(1),
+        get_laze(2),
+        get_laze(3),
+      ]}
+    />
   );
 };
 

@@ -9,19 +9,11 @@ export type ButtonProps = {
   onClick?: () => void;
 };
 
-interface ButtonPanelProps {
-  button1?: ButtonProps;
-  button2?: ButtonProps;
-  button3?: ButtonProps;
-  button4?: ButtonProps;
-  button5?: ButtonProps;
-}
-
 interface MfdProps {
-  topPanel?: ButtonPanelProps;
-  bottomPanel?: ButtonPanelProps;
-  leftPanel?: ButtonPanelProps;
-  rightPanel?: ButtonPanelProps;
+  topPanel?: Array<ButtonProps>;
+  bottomPanel?: Array<ButtonProps>;
+  leftPanel?: Array<ButtonProps>;
+  rightPanel?: Array<ButtonProps>;
   children?: Node;
 }
 
@@ -45,20 +37,16 @@ const EmptyMfdButton = () => {
   return <MfdButton />;
 };
 
-export const HorizontalPanel = (props?: ButtonPanelProps, context) => {
-  const arr = [
-    props?.button1,
-    props?.button2,
-    props?.button3,
-    props?.button4,
-    props?.button5,
-  ];
+export const HorizontalPanel = (
+  props: { buttons: Array<ButtonProps> },
+  context
+) => {
   return (
     <Flex
       justify="center"
       align="space-evenly"
       className="HorizontalButtonPanel">
-      {arr.map((x, i) => (
+      {props.buttons.map((x, i) => (
         <Flex.Item key={i}>
           {x ? <MfdButton {...x} /> : <EmptyMfdButton />}
         </Flex.Item>
@@ -67,21 +55,17 @@ export const HorizontalPanel = (props?: ButtonPanelProps, context) => {
   );
 };
 
-export const VerticalPanel = (props?: ButtonPanelProps, context) => {
-  const arr = [
-    props?.button1,
-    props?.button2,
-    props?.button3,
-    props?.button4,
-    props?.button5,
-  ];
+export const VerticalPanel = (
+  props: { buttons?: Array<ButtonProps> },
+  context
+) => {
   return (
     <Flex
       direction="column"
       justify="center"
       align="space-evenly"
       className="VerticalButtonPanel">
-      {arr.map((x, i) => (
+      {props.buttons?.map((x, i) => (
         <Flex.Item key={i}>
           {x ? <MfdButton {...x} /> : <EmptyMfdButton />}
         </Flex.Item>
@@ -96,13 +80,13 @@ export const MfdPanel = (props: MfdProps, context) => {
       <TableRow>
         <TableCell />
         <TableCell>
-          <HorizontalPanel {...props.topPanel} />
+          <HorizontalPanel buttons={props.topPanel ?? []} />
         </TableCell>
         <TableCell />
       </TableRow>
       <TableRow>
         <TableCell>
-          <VerticalPanel {...props.leftPanel} />
+          <VerticalPanel buttons={props.leftPanel ?? []} />
         </TableCell>
         <TableCell>
           <CrtPanel color="green" className="displaypanel">
@@ -110,13 +94,13 @@ export const MfdPanel = (props: MfdProps, context) => {
           </CrtPanel>
         </TableCell>
         <TableCell>
-          <VerticalPanel {...props.rightPanel} />
+          <VerticalPanel buttons={props.rightPanel ?? []} />
         </TableCell>
       </TableRow>
       <TableRow>
         <TableCell />
         <TableCell>
-          <HorizontalPanel {...props.bottomPanel} />
+          <HorizontalPanel buttons={props.bottomPanel ?? []} />
         </TableCell>
         <TableCell />
       </TableRow>

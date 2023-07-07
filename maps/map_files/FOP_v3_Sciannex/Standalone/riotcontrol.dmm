@@ -1,0 +1,2443 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ax" = (
+/obj/structure/window/framed/prison,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/security)
+"aI" = (
+/obj/structure/prop/almayer/computers/sensor_computer1{
+	name = "computer"
+	},
+/turf/open/floor/prison{
+	icon_state = "darkredfull2"
+	},
+/area/fiorina/station/security)
+"aR" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"aU" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/eastright,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 7;
+	pixel_y = 14
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/station/security)
+"bt" = (
+/obj/structure/stairs/perspective{
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"bu" = (
+/obj/item/stack/folding_barricade,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"bY" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null
+	},
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/clothing/under/marine/ua_riot,
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/obj/item/prop/helmetgarb/riot_shield,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"cR" = (
+/obj/structure/window/framed/prison/reinforced,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"dh" = (
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"dj" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/clothing/under/marine/ua_riot,
+/obj/item/storage/pill_bottle/alkysine,
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"dF" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ashtray/plastic,
+/obj/item/clothing/mask/cigarette,
+/obj/item/trash/cigbutt/ucigbutt{
+	pixel_y = 8
+	},
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 30
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"dH" = (
+/obj/item/ammo_casing/bullet,
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"dT" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/cameras{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"eg" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 10
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"eL" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/phone{
+	pixel_x = 6;
+	pixel_y = -15
+	},
+/obj/item/phone{
+	pixel_y = 7
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"fl" = (
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "cell_stripe"
+	},
+/area/fiorina/lz/near_lzII)
+"fu" = (
+/obj/structure/bed/sofa/south/grey/right,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"gc" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"gG" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"gT" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null
+	},
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/reagent_container/glass/bottle/robot/antitoxin,
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/obj/item/prop/helmetgarb/riot_shield,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"hc" = (
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/obj/structure/barricade/deployable,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "cell_stripe"
+	},
+/area/fiorina/lz/near_lzII)
+"he" = (
+/obj/structure/closet/secure_closet/security_empty,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/ammo_magazine/shotgun/beanbag,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"hz" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"hN" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"id" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"ie" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/donut_box{
+	pixel_y = 6
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"iu" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/cameras{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/phone{
+	pixel_x = -3;
+	pixel_y = 13
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/station/security)
+"iH" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/station/security)
+"iL" = (
+/obj/item/stack/sheet/metal,
+/obj/item/frame/table/almayer,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"jw" = (
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"jP" = (
+/obj/structure/bed/sofa/south/grey/left,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"kg" = (
+/obj/structure/stairs/perspective{
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"ks" = (
+/obj/item/trash/barcardine,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"kw" = (
+/obj/structure/bed/sofa/south/grey/right,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"kG" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/spray/pepper,
+/obj/item/clothing/glasses/sunglasses/sechud,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"kR" = (
+/obj/structure/machinery/door/airlock/prison_hatch/autoname,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"la" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/phone{
+	pixel_y = 7
+	},
+/turf/open/floor/prison{
+	icon_state = "darkredfull2"
+	},
+/area/fiorina/station/security)
+"lm" = (
+/obj/structure/machinery/deployable/barrier,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"lE" = (
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
+"lI" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/landmark/survivor_spawner/fiorina_ua_peacekeeper,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"lM" = (
+/obj/structure/extinguisher_cabinet,
+/turf/closed/wall/prison,
+/area/fiorina/station/security)
+"lY" = (
+/obj/structure/closet/secure_closet/security_empty,
+/obj/item/clothing/accessory/storage/holster,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"mA" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"mR" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/flora/pottedplant{
+	pixel_y = 9
+	},
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"nu" = (
+/turf/open/floor/plating/prison,
+/area/fiorina/station/security)
+"nJ" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"oj" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/cameras{
+	dir = 8
+	},
+/obj/item/device/flashlight/lamp{
+	pixel_x = -6;
+	pixel_y = 16
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"ou" = (
+/obj/structure/machinery/deployable/barrier,
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"oz" = (
+/obj/effect/landmark/survivor_spawner/fiorina_ua_peacekeeper,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"oN" = (
+/obj/structure/bed/sofa/south/grey/left,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"pK" = (
+/obj/structure/largecrate/supply/supplies/water,
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = -4;
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = 1;
+	pixel_y = 12
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"qF" = (
+/obj/structure/bed/chair/comfy,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"re" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"rw" = (
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"ry" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"rO" = (
+/turf/template_noop,
+/area/template_noop)
+"sx" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/fiorina/station/security)
+"sL" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"tE" = (
+/obj/structure/machinery/computer/cameras{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"tM" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"tN" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/fiorina/station/security)
+"tO" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"us" = (
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 8
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -7;
+	pixel_y = 11
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"ux" = (
+/obj/structure/window/framed/prison/reinforced,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"uE" = (
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"uP" = (
+/obj/structure/closet/secure_closet/security_empty,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/weapon/classic_baton,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"vb" = (
+/obj/effect/landmark/survivor_spawner/fiorina_cmb_deputy,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"vn" = (
+/turf/open/floor/prison{
+	icon_state = "platingdmg1"
+	},
+/area/fiorina/station/security)
+"vv" = (
+/obj/structure/machinery/vending/security,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"vF" = (
+/obj/structure/platform,
+/obj/structure/barricade/deployable,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "cell_stripe"
+	},
+/area/fiorina/station/security)
+"we" = (
+/obj/structure/machinery/photocopier{
+	pixel_y = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "darkredfull2"
+	},
+/area/fiorina/station/security)
+"wo" = (
+/obj/item/tool/crowbar/red,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"wX" = (
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "cell_stripe"
+	},
+/area/fiorina/station/security)
+"xy" = (
+/obj/effect/landmark/survivor_spawner/fiorina_ua_peacekeeper,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"xD" = (
+/obj/item/stack/folding_barricade,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/fiorina/station/security)
+"xS" = (
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "redcorner"
+	},
+/area/fiorina/station/security)
+"xT" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/handcuffs{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/item/storage/box/handcuffs{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/obj/item/storage/box/handcuffs{
+	pixel_x = -2;
+	pixel_y = 11
+	},
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"xW" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	req_one_access = null
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/station/security)
+"xY" = (
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/fiorina/station/security)
+"ya" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_ew_full_cap"
+	},
+/obj/structure/platform/stair_cut/alt,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/security)
+"zu" = (
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"zv" = (
+/obj/structure/window/reinforced,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"AX" = (
+/obj/structure/machinery/computer/prisoner,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Bw" = (
+/obj/structure/barricade/deployable,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/fiorina/station/security)
+"Bx" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/obj/item/tool/crowbar/red,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"BH" = (
+/obj/item/stack/folding_barricade,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/security)
+"BW" = (
+/turf/open/floor/prison{
+	icon_state = "redcorner"
+	},
+/area/fiorina/station/security)
+"Cf" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Cm" = (
+/turf/closed/wall/r_wall/prison,
+/area/fiorina/station/security)
+"Dr" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"DE" = (
+/obj/effect/landmark/survivor_spawner/fiorina_ua_peacekeeper,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"DO" = (
+/obj/structure/window/framed/prison/reinforced/hull,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/security)
+"DX" = (
+/obj/item/implanter/compressed,
+/obj/structure/safe,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Ef" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/storage/belt/shotgun,
+/obj/item/clothing/under/marine/ua_riot,
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/obj/item/prop/helmetgarb/riot_shield,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Ep" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/card/id/guest,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Er" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null
+	},
+/obj/item/weapon/gun/launcher/grenade/m81,
+/obj/item/storage/pill_bottle/kelotane,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Ev" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"EA" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	icon = 'icons/obj/structures/doors/2x1prepdoor.dmi'
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/station/security)
+"EI" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null
+	},
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/storage/belt/marine,
+/obj/item/clothing/under/marine/ua_riot,
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/obj/item/prop/helmetgarb/riot_shield,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Fw" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flash,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"FO" = (
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_y = 30
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Gm" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/recharger{
+	pixel_y = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"Gx" = (
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/fiorina/station/security)
+"GL" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_magazine/rifle/m16{
+	current_rounds = 0
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"GP" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"GQ" = (
+/obj/structure/platform,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "cell_stripe"
+	},
+/area/fiorina/station/security)
+"GV" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/station/security)
+"Hy" = (
+/obj/structure/platform,
+/obj/structure/barricade/deployable,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"HR" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/stack/cable_coil,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"HS" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/security)
+"Ik" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"Ip" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"It" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null
+	},
+/obj/item/clothing/under/marine/ua_riot,
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/obj/item/prop/helmetgarb/riot_shield,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Jo" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"Jr" = (
+/obj/structure/coatrack,
+/obj/item/clothing/suit/storage/CMB,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"JI" = (
+/obj/structure/prop/almayer/computers/sensor_computer3,
+/turf/open/floor/prison{
+	icon_state = "darkredfull2"
+	},
+/area/fiorina/station/security)
+"JJ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/cameras{
+	dir = 8
+	},
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"JR" = (
+/obj/structure/closet/secure_closet/security_empty,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/storage/box/flashbangs,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Kh" = (
+/obj/structure/prop/almayer/computers/sensor_computer2,
+/turf/open/floor/prison{
+	icon_state = "darkredfull2"
+	},
+/area/fiorina/station/security)
+"Ko" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/tool/pen,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Kw" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null
+	},
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/storage/belt/marine,
+/obj/item/clothing/under/marine/ua_riot,
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/obj/item/prop/helmetgarb/riot_shield,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"KC" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"KI" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/phone{
+	pixel_x = 7;
+	pixel_y = -16
+	},
+/obj/item/phone{
+	pixel_x = -3;
+	pixel_y = 16
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"KW" = (
+/obj/item/paper/crumpled,
+/obj/effect/landmark/survivor_spawner/fiorina_ua_peacekeeper,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Lh" = (
+/obj/structure/platform,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"LD" = (
+/obj/item/frame/table/almayer,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"LE" = (
+/turf/open/floor/greengrid,
+/area/fiorina/station/security)
+"LU" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"Mc" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Md" = (
+/obj/item/stack/sheet/metal,
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Mz" = (
+/obj/structure/extinguisher_cabinet,
+/turf/closed/wall/r_wall/prison,
+/area/fiorina/station/security)
+"MS" = (
+/obj/structure/machinery/vending/security,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Nr" = (
+/turf/open/space,
+/area/fiorina/oob)
+"Nt" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"Nu" = (
+/obj/item/frame/rack,
+/obj/item/prop/helmetgarb/riot_shield,
+/obj/item/clothing/head/helmet/marine/veteran/ua_riot,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"NY" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Oa" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"Of" = (
+/obj/structure/machinery/power/apc{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"Oh" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/cameras{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "darkredfull2"
+	},
+/area/fiorina/station/security)
+"Ot" = (
+/obj/item/frame/rack,
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"OC" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null
+	},
+/obj/item/storage/box/pillbottles,
+/obj/item/clothing/under/marine/ua_riot,
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Pf" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"Po" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/fiorina/station/security)
+"Pu" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"PA" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/phone{
+	pixel_x = -3;
+	pixel_y = 10
+	},
+/obj/item/phone{
+	pixel_x = 9;
+	pixel_y = -10
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"PD" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"PK" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/fancy/cigarettes/emeraldgreen,
+/obj/item/tool/lighter,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"PU" = (
+/turf/open/floor/prison{
+	icon_state = "darkredfull2"
+	},
+/area/fiorina/station/security)
+"PW" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"Qi" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"Qj" = (
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"QO" = (
+/obj/effect/landmark/survivor_spawner/fiorina_cmb_marshal,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"QR" = (
+/obj/structure/filingcabinet/chestdrawer,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"QT" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null
+	},
+/obj/item/clothing/under/marine/ua_riot,
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/obj/item/weapon/gun/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/storage/belt/marine,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Sd" = (
+/obj/structure/machinery/photocopier{
+	pixel_y = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Tj" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/gun/energy/taser,
+/obj/item/weapon/gun/energy/taser,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Tv" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"TE" = (
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"TP" = (
+/turf/closed/wall/prison,
+/area/fiorina/station/security)
+"TQ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/spawner/random/goggles/lowchance,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"TW" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/radio{
+	pixel_x = -6;
+	pixel_y = 16
+	},
+/obj/item/device/radio{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"TZ" = (
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"Us" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/book/manual/security_space_law{
+	pixel_x = 8;
+	pixel_y = 1
+	},
+/obj/item/book/manual/security_space_law{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/book/manual/security_space_law{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"US" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/eastright{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"Va" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/flora/pottedplant{
+	pixel_y = 9
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"Vj" = (
+/obj/structure/machinery/door/airlock/prison_hatch/autoname,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/security)
+"Vp" = (
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"VD" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/folder/black_random,
+/obj/item/folder/red{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"VX" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/secure_data{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"Wa" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/recharger{
+	pixel_y = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "darkredfull2"
+	},
+/area/fiorina/station/security)
+"Xe" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"Xh" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Xr" = (
+/obj/structure/barricade/deployable,
+/obj/structure/barricade/deployable,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/fiorina/station/security)
+"XC" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"XI" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/item/weapon/gun/energy/taser,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"Yd" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Yk" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/phone{
+	pixel_y = -4
+	},
+/obj/item/phone{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/item/tool/pen,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
+"Yu" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"YA" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"YC" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/book/manual/security_space_law{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/turf/open/floor/prison{
+	icon_state = "darkredfull2"
+	},
+/area/fiorina/station/security)
+"YH" = (
+/obj/structure/window/framed/prison/reinforced,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/security)
+"Zm" = (
+/obj/structure/filingcabinet,
+/obj/structure/filingcabinet{
+	pixel_x = 16
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"Zr" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/recharger{
+	pixel_y = 4
+	},
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+"Zs" = (
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "cell_stripe"
+	},
+/area/fiorina/station/security)
+"ZB" = (
+/obj/item/frame/rack,
+/obj/item/clothing/under/marine/ua_riot,
+/turf/open/floor/prison{
+	icon_state = "redfull"
+	},
+/area/fiorina/station/security)
+
+(1,1,1) = {"
+DO
+Qj
+Qj
+Qj
+uE
+LE
+LE
+vn
+Qj
+LE
+LE
+uE
+Qj
+Qj
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(2,1,1) = {"
+Cm
+Qj
+Qj
+Qj
+uE
+LE
+LE
+zu
+Qj
+LE
+LE
+uE
+Qj
+rw
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(3,1,1) = {"
+GV
+GP
+jP
+ks
+uE
+LE
+LE
+zu
+zu
+LE
+LE
+uE
+jP
+BW
+Gx
+Gx
+Gx
+Gx
+xD
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(4,1,1) = {"
+Cm
+Qj
+fu
+Qj
+uE
+LE
+LE
+zu
+zu
+LE
+LE
+uE
+fu
+xS
+xY
+xY
+xY
+Po
+Bw
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(5,1,1) = {"
+Cm
+Qj
+Qj
+Qj
+uE
+uE
+uE
+uE
+uE
+uE
+uE
+uE
+Qj
+ou
+iH
+DO
+DO
+DO
+iH
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(6,1,1) = {"
+EA
+TE
+Qj
+Qj
+Qj
+KC
+Qj
+Qj
+Qj
+Qj
+Qj
+Qj
+Qj
+lm
+DO
+Nr
+lE
+Nr
+DO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(7,1,1) = {"
+nu
+TE
+Qj
+Qj
+Qj
+pK
+Qj
+Qj
+Qj
+Qj
+Qj
+Qj
+Qj
+Qj
+DO
+Nr
+lE
+Nr
+DO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(8,1,1) = {"
+TP
+Bx
+GP
+Qj
+Qj
+Qj
+Qj
+Qj
+Qj
+Qj
+Qj
+Qj
+Qj
+rw
+iH
+DO
+DO
+DO
+iH
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(9,1,1) = {"
+EA
+dH
+XC
+XC
+XC
+bt
+Pu
+Pu
+Pu
+Pu
+Pu
+kg
+Qj
+BW
+Gx
+Gx
+Gx
+Gx
+Xr
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(10,1,1) = {"
+nu
+PD
+ry
+re
+ry
+PW
+uE
+uE
+uE
+uE
+uE
+Pf
+Qj
+xS
+xY
+xY
+xY
+xY
+Bw
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(11,1,1) = {"
+Cm
+Qj
+XC
+Qj
+XC
+Qi
+uE
+zu
+zu
+zu
+uE
+YA
+Of
+mR
+Cm
+Cm
+Mz
+Cm
+Cm
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(12,1,1) = {"
+Cm
+KC
+GP
+LU
+KC
+Cm
+cR
+xW
+xW
+xW
+cR
+Cm
+Cm
+Cm
+Cm
+Er
+It
+QT
+Cm
+Cm
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(13,1,1) = {"
+GV
+jw
+TZ
+KC
+TZ
+Cm
+Ep
+Ip
+Ip
+bu
+Jr
+Cm
+zu
+zu
+zu
+zu
+zu
+zu
+Nu
+Cm
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(14,1,1) = {"
+Cm
+Va
+dh
+Vp
+Va
+Cm
+AX
+Qj
+Qj
+Qj
+zu
+GV
+Qj
+Qj
+dj
+OC
+Yd
+Qj
+Ot
+Cm
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(15,1,1) = {"
+Cm
+Cm
+Cm
+Cm
+Cm
+Cm
+VD
+Qj
+Qj
+Qj
+zu
+GV
+Qj
+Qj
+gc
+Nt
+gT
+Qj
+ZB
+Cm
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(16,1,1) = {"
+rO
+rO
+YH
+Md
+LD
+Mc
+uE
+zu
+zu
+zu
+uE
+Cm
+ux
+ux
+iH
+zv
+Ef
+Qj
+Cm
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+TP
+"}
+(17,1,1) = {"
+rO
+rO
+YH
+Tv
+Yk
+mA
+uE
+zu
+id
+zu
+sL
+XI
+hN
+zu
+GV
+Qj
+Qj
+Qj
+GV
+zu
+wo
+DX
+TP
+dF
+uE
+uE
+YH
+vv
+Xe
+hz
+TP
+"}
+(18,1,1) = {"
+rO
+rO
+YH
+Tv
+KI
+HR
+tE
+oz
+aR
+sx
+Gx
+US
+Oa
+zu
+iH
+bY
+Kw
+EI
+Cm
+lY
+Qj
+uP
+TP
+oN
+Qj
+zu
+GV
+uE
+tO
+uE
+GV
+"}
+(19,1,1) = {"
+rO
+Cm
+Cm
+sL
+LD
+qF
+KW
+zu
+lI
+iH
+iH
+iH
+iH
+iH
+iH
+Cm
+iH
+iH
+Cm
+JR
+zu
+he
+TP
+kw
+Qj
+uE
+YH
+oj
+VX
+Gm
+TP
+"}
+(20,1,1) = {"
+rO
+YH
+Md
+LD
+Mc
+vb
+uE
+Qj
+Qj
+HS
+zu
+zu
+zu
+zu
+Lh
+Cm
+MS
+MS
+TP
+TP
+Vj
+TP
+TP
+PK
+Qj
+uE
+TP
+YH
+YH
+YH
+TP
+"}
+(21,1,1) = {"
+rO
+YH
+Dr
+eL
+mA
+QO
+uE
+Qj
+xy
+HS
+zu
+Qj
+Qj
+Qj
+Lh
+TP
+FO
+uE
+uE
+uE
+zu
+us
+TP
+eg
+Qj
+uE
+iH
+rO
+rO
+rO
+rO
+"}
+(22,1,1) = {"
+rO
+YH
+Tv
+PA
+Ik
+vb
+uE
+xy
+xy
+BH
+zu
+zu
+zu
+zu
+Lh
+lM
+uE
+Qj
+Qj
+Qj
+Qj
+uE
+lM
+uE
+Qj
+uE
+TP
+TP
+rO
+rO
+rO
+"}
+(23,1,1) = {"
+Cm
+Cm
+sL
+LD
+Cf
+uE
+DE
+zu
+Ko
+TP
+Zs
+Zs
+iH
+Zs
+GQ
+TP
+xT
+Qj
+uE
+uE
+Qj
+zu
+GV
+zu
+Qj
+uE
+TP
+rO
+rO
+rO
+rO
+"}
+(24,1,1) = {"
+YH
+nJ
+LD
+uE
+uE
+uE
+uE
+Jo
+TP
+TP
+wX
+wX
+iH
+wX
+vF
+YH
+uE
+Qj
+Us
+TW
+Qj
+zu
+GV
+zu
+Qj
+uE
+TP
+rO
+rO
+rO
+rO
+"}
+(25,1,1) = {"
+YH
+nJ
+LD
+uE
+uE
+uE
+uE
+Zm
+lM
+zu
+zu
+zu
+zu
+zu
+Hy
+YH
+uE
+Qj
+Fw
+ie
+Qj
+uE
+TP
+uE
+uE
+Yu
+TP
+TP
+rO
+rO
+rO
+"}
+(26,1,1) = {"
+YH
+nJ
+iL
+uE
+GL
+NY
+uE
+QR
+TP
+zu
+zu
+zu
+zu
+zu
+Hy
+YH
+Tj
+Qj
+kG
+uE
+Qj
+uE
+TP
+Cm
+TP
+TP
+iH
+rO
+rO
+rO
+rO
+"}
+(27,1,1) = {"
+Cm
+Cm
+iH
+DO
+DO
+DO
+iH
+iH
+iH
+Vj
+Cm
+Cm
+ya
+tM
+Ev
+TP
+Zr
+Qj
+Qj
+Qj
+Qj
+uE
+gG
+Cm
+TP
+rO
+TP
+rO
+rO
+rO
+rO
+"}
+(28,1,1) = {"
+rO
+rO
+rO
+rO
+rO
+rO
+DO
+Kh
+PU
+PU
+we
+YH
+fl
+fl
+hc
+ax
+TQ
+uE
+uE
+zu
+uE
+Mc
+dT
+Cm
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(29,1,1) = {"
+rO
+rO
+rO
+rO
+rO
+rO
+DO
+aI
+PU
+tN
+Wa
+YH
+rO
+rO
+rO
+ax
+Sd
+Xh
+TP
+kR
+TP
+JJ
+eg
+Cm
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(30,1,1) = {"
+rO
+rO
+rO
+rO
+rO
+rO
+DO
+JI
+la
+Oh
+YC
+YH
+rO
+rO
+rO
+TP
+iu
+aU
+TP
+rO
+rO
+ax
+ax
+Cm
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}
+(31,1,1) = {"
+rO
+rO
+rO
+rO
+rO
+rO
+iH
+YH
+YH
+Cm
+YH
+Cm
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+rO
+"}

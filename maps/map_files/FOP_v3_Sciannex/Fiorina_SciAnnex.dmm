@@ -12166,6 +12166,14 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
+"hwb" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = uapeacekeepers
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/security)
 "hwn" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
@@ -65550,7 +65558,7 @@ nqN
 nqN
 nqN
 ksk
-sRV
+hwb
 cvq
 nqN
 nqN

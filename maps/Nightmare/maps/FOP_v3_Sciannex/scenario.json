@@ -1,1 +1,9 @@
-[]
+[
+    {
+		"type": "map_insert",
+		"landmark": "uapeacekeepers",
+		"chance": 1.0,
+		"path": "standalone/riotcontrol.dmm",
+		"when": { "lvevent": "peacekeepers" }
+	}
+]

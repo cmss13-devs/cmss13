@@ -113,3 +113,30 @@
 /obj/effect/landmark/survivor_spawner/lv522_forecon_squad_leader
 	equipment = /datum/equipment_preset/survivor/forecon/squad_leader
 	spawn_priority = SPAWN_PRIORITY_HIGH
+
+/obj/effect/landmark/survivor_spawner/fiorina_ua_peacekeeper
+	equipment = /datum/equipment_preset/survivor/ua_peacekeeper
+	intro_text = list("<h2>You are a United Americas peacekeeper!</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to hold your position and survive, the CMB Marshal is your superior officer! - adminhelp.</span>")
+	story_text = "You are a peacekeeper for the United Americas."
+
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+/obj/effect/landmark/survivor_spawner/fiorina_cmb_deputy
+	equipment = /datum/equipment_preset/survivor/cmb_deputy
+	intro_text = list("<h2>You are deputy!</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to hold your position and survive, the CMB Marshal is your superior officer! - adminhelp.</span>")
+	story_text = "You are a peacekeeper for the United Americas."
+
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
+/obj/effect/landmark/survivor_spawner/fiorina_cmb_marshal
+	equipment = /datum/equipment_preset/survivor/cmb_marshal
+	intro_text = list("<h2>You are marshal!</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to hold your position and survive, the CMB Marshal is your superior officer! - adminhelp.</span>")
+	story_text = "You are a peacekeeper for the United Americas."
+
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH

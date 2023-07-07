@@ -37520,7 +37520,7 @@
 	name = "Medical Telephone";
 	phone_category = "Almayer";
 	phone_id = "Medical Lower";
-	pixel_x = 23
+	pixel_x = 19
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -39833,13 +39833,27 @@
 /area/almayer/hallways/port_hallway)
 "hvv" = (
 /obj/structure/disposalpipe/segment,
-/obj/item/clipboard,
-/obj/item/paper,
-/obj/item/tool/pen/blue,
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
 	},
+/obj/item/clipboard{
+	base_pixel_x = 20;
+	pixel_x = 5
+	},
+/obj/item/paper{
+	pixel_x = 5
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = 5
+	},
 /obj/structure/surface/table/reinforced/black,
+/obj/structure/transmitter/rotary{
+	name = "CIC Reception Telephone";
+	phone_category = "Command";
+	phone_id = "CIC Reception";
+	pixel_x = -7;
+	pixel_y = 4
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "hvw" = (

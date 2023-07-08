@@ -119,8 +119,7 @@
 	intro_text = list("<h2>You are a United Americas peacekeeper!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to hold your position and survive, the CMB were sent to assist but you answer to yourselves - adminhelp.</span>")
-	story_text = "You are a peacekeeper for the United Americas. You and your allies were stationed on this station to act as riot control personnel. During a mass riot and biological quarantine breech you and your comrades held the line against the overwhelming hoard of rioting prisoners. After the death of your Captain, you resorted to lethal force to clear the area. You stopped the riot, at the cost of a small part of your soul. Your distress signal was answered by a nearby CMB ship, which crash landed. You can only pray a more equipped rescue force is en route, becasue the real nightmare is about to begin."
-
+    story_text = "You are a peacekeeper for the United Americas. You and your allies were stationed on this station to act as riot control personnel for its large prison population. During a mass riot and biological quarantine breach, you and your comrades held the line against the overwhelming hoard of rioting prisoners. After the death of your Captain, you resorted to lethal force to clear the area. You stopped the riot, but perhaps at the cost of a small part of your soul. Your team's distress signal was answered by a nearby CMB ship, which crash landed, their survivors rallied to your location and now you huddle together. You can only pray a more well equipped rescue force is en route, because the real nightmare is about to begin."
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
 /obj/effect/landmark/survivor_spawner/fiorina_cmb_deputy
@@ -129,8 +128,7 @@
 	intro_text = list("<h2>You are a CMB deputy!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to hold your position and survive, the CMB Marshal is your superior officer! - adminhelp.</span>")
-	story_text = "You are a CMB Deputy. Your team recieved a distress call from this space station, under the belief that a riot was in progress, you were dispatched with all due haste. Upon arrival a ring of orbital debris knocked your ships engines offline and forced an emergency landing. Only some of you survived. Upon locating a small group of United American peacekeepers, and being informed of the sitation, you are resolved to hold your ground until rescue arrives. You can only pray they come soon."
-
+    story_text = "You are a CMB Deputy. Several days ago you and your team received a distress signal from this space station. Under the belief that a mass riot was in progress, you were dispatched as part of a rapid response team to relieve the station's security forces. Upon your arrival, a ring of unexpected orbital debris knocked your shuttle's engines offline, forcing an emergency landing. Only some of you survived. You locate a small group of United American peacekeepers, and after being informed of the dire situation, are resolved to hold your ground until rescue arrives. You can only pray they come soon.
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/fiorina_cmb_marshal
@@ -139,6 +137,5 @@
 	intro_text = list("<h2>You are the CMB marshal!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to hold your position and survive, you are the ranking officer commanding the deputies! - adminhelp.</span>")
-	story_text = "You are a CMB Marshal. Your team recieved a distress call from this space station, under the belief that a riot was in progress, you were dispatched with all due haste. Upon arrival a ring of orbital debris knocked your ships engines offline and forced an emergency landing. Only some of you survived. Upon locating a small group of United American peacekeepers, and being informed of the sitation, you are resolved to hold your ground until rescue arrives. You can only pray they come soon"
-
+    story_text = "You are a CMB Deputy. Several days ago you and your team received a distress signal from this space station. Under the belief that a mass riot was in progress, you were dispatched as part of a rapid response team to relieve the station's security forces. Upon your arrival, a ring of unexpected orbital debris knocked your shuttle's engines offline, forcing an emergency landing. Only some of you survived. You locate a small group of United American peacekeepers, and after being informed of the dire situation, are resolved to hold your ground until rescue arrives. You can only pray they come soon.
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH

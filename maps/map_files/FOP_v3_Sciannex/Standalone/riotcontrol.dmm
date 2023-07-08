@@ -43,12 +43,6 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/security)
-"bY" = (
-/obj/item/weapon/baton,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/fiorina/station/security)
 "cR" = (
 /obj/structure/window/framed/prison/reinforced,
 /turf/open/floor/prison{
@@ -2070,7 +2064,7 @@ Cm
 VD
 xy
 xy
-xy
+Rj
 zu
 GV
 xy
@@ -2102,7 +2096,7 @@ DE
 Mc
 gT
 zu
-bY
+zu
 zu
 uE
 Cm

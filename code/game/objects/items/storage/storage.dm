@@ -801,8 +801,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 /obj/item/storage/proc/dump_objectives()
 	for(var/obj/item/cur_item in src)
 		if(cur_item.is_objective)
-			cur_item.forceMove(loc)
-			cur_item.mouse_opacity = initial(cur_item.mouse_opacity)
+			remove_from_storage(cur_item, loc)
 
 
 /obj/item/storage/Destroy()

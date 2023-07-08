@@ -1,4 +1,5 @@
 [
+	{ "type": "map_sprinkle", "path": "sprinkles/" },
     {
 		"type": "map_insert",
 		"landmark": "uapeacekeepers",

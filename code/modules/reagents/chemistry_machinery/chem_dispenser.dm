@@ -1,5 +1,6 @@
 /obj/structure/machinery/chem_dispenser
-	name = "chem dispenser"
+	name = "chemical dispenser"
+	desc = "A complex machine for mixing elements into chemicals. A Wey-Yu product."
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'

@@ -191,9 +191,9 @@
 	return FALSE
 
 /obj/item/clothing/mask/facehugger/launch_towards(datum/launch_metadata/LM)
-	..()
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]_thrown"
+	..()
 
 /obj/item/clothing/mask/facehugger/launch_impact(atom/hit_atom)
 	. = ..()
@@ -208,6 +208,11 @@
 
 	if(stat == UNCONSCIOUS)
 		return
+
+	// Force reset throw now because [/atom/movable/proc/launch_impact] only does that later on
+	// If we DON'T, step()'s move below can collide, rebound, trigger this proc again, into infinite recursion
+	throwing = FALSE
+	rebounding = FALSE
 
 	if(leaping && can_hug(L, hivenumber))
 		attach(L)
@@ -235,8 +240,8 @@
 	if(!target)
 		return FALSE
 
-	target.visible_message(SPAN_WARNING("\The scuttling [src] leaps at [target]!"), \
-	SPAN_WARNING("The scuttling [src] leaps at [target]!"))
+	target.visible_message(SPAN_WARNING("[src] leaps at [target]!"), \
+	SPAN_WARNING("[src] leaps at [target]!"))
 	leaping = TRUE
 	throw_atom(target, 3, SPEED_FAST)
 	return TRUE

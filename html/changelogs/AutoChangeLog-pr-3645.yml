@@ -1,0 +1,5 @@
+author: "Khadd"
+delete-after: True
+changes:
+  - rscadd: "added a iv tube between the user and the bloodpack / iv drip"
+  - imageadd: "sprites for the iv tube"

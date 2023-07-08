@@ -67,6 +67,7 @@ var/list/admin_verbs_default = list(
 	/datum/admins/proc/subtlemessageall,
 	/datum/admins/proc/alertall,
 	/datum/admins/proc/imaginary_friend,
+	/client/proc/toggle_ares_ping,
 	)
 
 var/list/admin_verbs_admin = list(
@@ -576,6 +577,16 @@ var/list/roundstart_mod_verbs = list(
 
 	message_admins("[key_name(usr)] announced a random fact.")
 	SSticker.mode?.declare_fun_facts()
+
+/client/proc/toggle_ares_ping()
+	set name = "Toggle ARES notification sound"
+	set category = "Preferences.Logs"
+
+	prefs.toggles_sound ^= SOUND_ARES_MESSAGE
+	if (prefs.toggles_sound & SOUND_ARES_MESSAGE)
+		to_chat(usr, SPAN_BOLDNOTICE("You will now hear a ping for ARES messages."))
+	else
+		to_chat(usr, SPAN_BOLDNOTICE("You will no longer hear a ping for ARES messages."))
 
 
 #undef MAX_WARNS

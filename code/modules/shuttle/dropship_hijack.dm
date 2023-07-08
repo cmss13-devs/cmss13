@@ -1,3 +1,5 @@
+#define HIJACK_CRASH_SITE_OFFSET_X -5
+#define HIJACK_CRASH_SITE_OFFSET_Y -11
 
 /datum/dropship_hijack
 	var/obj/docking_port/mobile/shuttle
@@ -90,9 +92,10 @@
 
 	var/obj/docking_port/stationary/marine_dropship/crash_site/target_site = new()
 	crash_site = target_site
-	crash_site.x = target.x - 5
-	crash_site.y = target.y - 11
-	crash_site.z = target.z
+	var/turf/offset_target = locate(target.x + HIJACK_CRASH_SITE_OFFSET_X, target.y + HIJACK_CRASH_SITE_OFFSET_Y, target.z)
+	if(!offset_target)
+		offset_target = target // Welp the offsetting failed so...
+	target_site.forceMove(offset_target)
 
 	target_site.name = "[shuttle] crash site"
 	target_site.id = "crash_site_[shuttle.id]"
@@ -116,8 +119,11 @@
 		remaining_crash_sites -= target_ship_section
 		var/new_target_ship_section = pick(remaining_crash_sites)
 		var/turf/target = get_crashsite_turf(new_target_ship_section)
-		crash_site.Move(target)
-		marine_announcement("A hostile aircraft on course for the [target_ship_section] has been successfully deterred.", "IX-50 MGAD System")
+		var/turf/offset_target = locate(target.x + HIJACK_CRASH_SITE_OFFSET_X, target.y + HIJACK_CRASH_SITE_OFFSET_Y, target.z)
+		if(!offset_target)
+			offset_target = target // Welp the offsetting failed so...
+		crash_site.forceMove(offset_target)
+		marine_announcement("A hostile aircraft on course for the [target_ship_section] has been successfully deterred.", "IX-50 MGAD System", logging = ARES_LOG_SECURITY)
 		target_ship_section = new_target_ship_section
 		// TODO mobs not alerted
 		for(var/area/internal_area in shuttle.shuttle_areas)
@@ -143,7 +149,7 @@
 
 	shuttle.crashing = TRUE
 
-	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg')
+	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
 
 	announce_dchat("The dropship is about to impact [get_area_name(crash_site)]", crash_site)
 	final_announcement = TRUE
@@ -196,7 +202,6 @@
 			turfs += get_area_turfs(/area/almayer/medical/hydroponics)
 		if("Upper deck Aftship")
 			turfs += get_area_turfs(/area/almayer/engineering/upper_engineering)
-			turfs += get_area_turfs(/area/almayer/command/computerlab)
 			turfs += get_area_turfs(/area/almayer/engineering/laundry)
 		if("Lower deck Foreship")
 			turfs += get_area_turfs(/area/almayer/hallways/hangar)
@@ -218,3 +223,6 @@
 		else
 			CRASH("Crash site [ship_section] unknown.")
 	return pick(turfs)
+
+#undef HIJACK_CRASH_SITE_OFFSET_X
+#undef HIJACK_CRASH_SITE_OFFSET_Y

@@ -1,5 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - rscdel: "Working Joes can no longer be fed."
-  - code_imp: "New trait: Cannot eat. Self-explanatory."

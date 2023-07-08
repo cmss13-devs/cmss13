@@ -75,12 +75,12 @@
 	name = SYNTH_COLONY
 	name_plural = "Colonial Synthetics"
 	uses_ethnicity = TRUE
-	burn_mod = 0.65 // made for hazardous environments, withstanding temperatures up to 1210 degrees
+	burn_mod = 0.8
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG)
 
 	pain_type = /datum/pain/synthetic/colonial
 	rarity_value = 1.5
-	slowdown = 0.45
+	slowdown = 0.2
 	total_health = 200 //But more durable
 
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
@@ -111,8 +111,10 @@
 	name_plural = "Working Joes"
 	death_message = "violently gargles fluid and seizes up, the glow in their eyes dimming..."
 	uses_ethnicity = FALSE
-	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT)
+	burn_mod = 0.65 // made for hazardous environments, withstanding temperatures up to 1210 degrees
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT, TRAIT_CANNOT_EAT)
 
+	slowdown = 0.45
 	hair_color = "#000000"
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'

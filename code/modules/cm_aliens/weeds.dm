@@ -73,10 +73,11 @@
 		else if(!hibernate && do_spread)
 			addtimer(CALLBACK(src, PROC_REF(weed_expand)), WEED_BASE_GROW_SPEED / max(weed_strength, 1))
 
-	var/turf/T = get_turf(src)
-	if(T)
-		T.weeds = src
-		weeded_turf = T
+	var/turf/turf = get_turf(src)
+	if(turf)
+		turf.weeds = src
+		weeded_turf = turf
+		SEND_SIGNAL(turf, COMSIG_WEEDNODE_GROWTH) // Currently for weed_food wakeup
 
 	RegisterSignal(src, list(
 		COMSIG_ATOM_TURF_CHANGE,
@@ -429,7 +430,11 @@
 
 /obj/effect/alien/weeds/weedwall/MouseDrop_T(mob/current_mob, mob/user)
 	. = ..()
-	if(isxeno(user))
+
+	if(!ismob(current_mob))
+		return
+
+	if(isxeno(user) && istype(user.get_active_hand(), /obj/item/grab))
 		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
 		user_as_xenomorph.do_nesting_host(current_mob, src)
 

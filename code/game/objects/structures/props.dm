@@ -24,7 +24,7 @@
 	. = ..()
 	if(isxeno(user))
 		return
-	else if (ishuman(user) && istype(W, /obj/item/tool/wrench))
+	else if (ishuman(user) && HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		on = !on
 		visible_message("You wrench the controls of \the [src]. The drill jumps to life." , "[user] wrenches the controls of \the [src]. The drill jumps to life.")
 
@@ -501,7 +501,7 @@
 	. = ..()
 	if(isxeno(user))
 		return
-	else if (ishuman(user) && istype(W, /obj/item/tool/crowbar))
+	else if (ishuman(user) && HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		on = !on
 		visible_message("You pry at the control valve on [src]. The machine shudders." , "[user] pries at the control valve on [src]. The entire machine shudders.")
 

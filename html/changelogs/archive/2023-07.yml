@@ -53,3 +53,66 @@
   - rscadd: CMB/Anchorpoint Marines get bandages to stop bleeding.
   harryob:
   - rscadd: all xenos can now access the tacmap, while the queen is on ovi
+2023-07-06:
+  BeagleGaming1:
+  - code_imp: evacuation pod crash chance changed to a var
+  - code_imp: proc added to force evacuation pods to crash
+  Drathek:
+  - bugfix: Fixed more broken logos (primarily WY research papers)
+  - balance: Weed nodes can no longer be placed in walls or window frames (or any
+      turf or structure with density)
+  - refactor: Refactored the plant weeds ability code
+  - balance: Gardener's hardy weeds now upgrade normal weeds (just like hive weeds
+      upgrade weeds).
+  - balance: Gardener's hardy weeds now don't prevent special structures (core and
+      pylons) but they are still only allowed if the turf allows them.
+  Newyearnewme, Morrow:
+  - rscadd: Xeno structures/weeds now become forsaken after hijack
+  Steelpoint:
+  - imageadd: Synth utility vest is now slimmer in appearance
+  realforest2001:
+  - admin: Adds logs for bioscans successfully completing.
+  thatoneyeeter:
+  - balance: metal foam now becomes solid faster
+2023-07-07:
+  Diegoflores31:
+  - rscadd: Defender Tail Slam has a 1% chance to do a BONK sound instead.
+  Drathek:
+  - bugfix: Fixed ghost icons for larva and ovi queen
+  Morrow:
+  - rscdel: Removes fountain pens from gear sets
+  - rscdel: Removed nesting the dead
+  - rscadd: Added a visiting USASF Commander (CO survivor) to New Varadero
+  - bugfix: Burnt matches no longer permanently give you a light source if they naturally
+      burn out
+  QuickLoad:
+  - balance: Colony Synthetics are faster but are less resistant. This allows for
+      the option of avoiding engagements.
+  - balance: Colony Synthetics have slightly better CQC and can carry people better.
+  realforest2001:
+  - bugfix: Fixes Queen making footstep sounds while dead and being dragged.
+2023-07-08:
+  Ben10083:
+  - bugfix: Working Joes can no longer have a gradient on their rare hair spawn.
+  - rscdel: Working Joes can no longer be fed.
+  - code_imp: 'New trait: Cannot eat. Self-explanatory.'
+  Cursor:
+  - spellcheck: Changed Chem Dispenser to Chemical Dispenser, added descriptions to
+      the cryo cell, rail computer and chemical dispenser. Updated the descriptions
+      for the Blood Dispenser and Dropship computer.
+  Drathek:
+  - bugfix: Fixed facehuggers incorrectly displaying thrown state when it has landed
+  Drathek Kugamo:
+  - rscadd: Added the ability for weeds to merge with unrevivable corpses
+  - imageadd: Added human shaped weeds by Kugamo
+  - code_imp: Added a signal for weeds sent to the turf to indicate it is now weeded,
+      and added a signal for afterbuckle.
+  - bugfix: Closets (including coffins) can no longer move anchored mobs.
+  Morrow:
+  - qol: Create humans tab length increase
+  - qol: Create humans tab now defaults to 0 range to spawn
+  - bugfix: Fixed extraneous messages in regards to wall nests
+  SpartanBobby:
+  - balance: changes M4A3 magazine size from 9 to 12
+  Zonespace27:
+  - bugfix: The maintenance jack should work a little better at crowbarring things.

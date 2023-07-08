@@ -272,7 +272,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood
 	name = "\improper MM Blood Dispenser"
-	desc = "Marine Med brand Blood Pack Dispensary"
+	desc = "The Marine Med Brand Blood Pack Dispensary is the premier, top-of-the-line blood dispenser of 2105! Get yours today!" //Don't update this year, the joke is it's old.
 	icon_state = "blood"
 	wrenchable = TRUE
 	hackable = TRUE

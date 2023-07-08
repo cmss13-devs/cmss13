@@ -981,12 +981,12 @@
 
 /obj/item/device/radio/headset/distress/CMB/hvh
 	desc = "A sleek headset used by The Colonial Marshal Bureau, crafted in Sol. Low profile and comfortable. No one is above the law. Channels are as follows: :o - colony."
-	initial_keys = list(/obj/item/device/encryptionkey/colony)
+	initial_keys = list(/obj/item/device/encryptionkey/colony,  /obj/item/device/encryptionkey/cmb)
 	misc_tracking = FALSE
 
 /obj/item/device/radio/headset/distress/CMB/hvh/ua
-	desc = "A special issue headset used by the Colonial Marshal Bureau that has been issued to United American Peacekeepers who liase with the CMB during field operations. Channels are as follows: :o - colony."
-	initial_keys = list(/obj/item/device/encryptionkey/colony)
+	desc = "A special issue headset used by UA Peacekeepers, has been modified to tap into CMB channels. Channels are as follows: :o - colony."
+	initial_keys = list(/obj/item/device/encryptionkey/colony,  /obj/item/device/encryptionkey/cmb)
 	misc_tracking = FALSE
 
 /obj/item/device/radio/headset/almayer/highcom

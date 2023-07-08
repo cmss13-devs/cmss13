@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Ported VERB_REF and TYPE_VERB_REF from TG for 515 compatibility"

@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fix runtimes with minimap subsystem not handling targets inside of objects during removal"

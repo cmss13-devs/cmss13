@@ -288,6 +288,11 @@
 	if(!do_after(xeno, 0.8 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 2)) // would be 0.75 but that doesn't really work with numticks
 		return
 
+	// To make sure that the headbite does nothing if the target is moved away.
+	if(!xeno.Adjacent(target_carbon))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You missed! Your target was moved away before you could finish headbiting them!"))
+		return
+
 	if(target_carbon.stat == DEAD)
 		to_chat(xeno, SPAN_XENODANGER("They died before you could finish headbiting them! Be more careful next time!"))
 		return

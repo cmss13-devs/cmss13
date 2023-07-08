@@ -262,20 +262,20 @@ for it but just ignore it.
 /mob/living/carbon/human/proc/handle_speech_problems(message)
 	var/list/returns[3]
 	var/verb = "says"
-	var/handled = 0
+	var/handled = FALSE
 	if(silent)
 		message = ""
-		handled = 1
+		handled = TRUE
 	if(sdisabilities & DISABILITY_MUTE)
 		message = ""
-		handled = 1
+		handled = TRUE
 	if(wear_mask)
 		if(istype(wear_mask, /obj/item/clothing/mask/horsehead))
 			var/obj/item/clothing/mask/horsehead/hoers = wear_mask
 			if(hoers.voicechange)
 				message = pick("NEEIIGGGHHHH!", "NEEEIIIIGHH!", "NEIIIGGHH!", "HAAWWWWW!", "HAAAWWW!")
 				verb = pick("whinnies","neighs", "says")
-				handled = 1
+				handled = TRUE
 
 	var/braindam = getBrainLoss()
 	if(slurring || stuttering || dazed || braindam >= 60)
@@ -283,17 +283,17 @@ for it but just ignore it.
 	if(slurring)
 		message = slur(message)
 		verb = pick("stammers","stutters")
-		handled = 1
+		handled = TRUE
 	if(stuttering)
 		message = NewStutter(message)
 		verb = pick("stammers", "stutters")
-		handled = 1
+		handled = TRUE
 	if(dazed)
 		message = DazedText(message)
 		verb = pick("mumbles", "babbles")
-		handled = 1
+		handled = TRUE
 	if(braindam >= 60)
-		handled = 1
+		handled = TRUE
 		if(prob(braindam/4))
 			message = stutter(message, stuttering)
 			verb = pick("stammers", "stutters")
@@ -301,6 +301,7 @@ for it but just ignore it.
 			message = uppertext(message)
 			verb = pick("yells like an idiot","says rather loudly")
 	if(HAS_TRAIT(src, TRAIT_LISPING))
+		handled = TRUE
 		var/old_message = message
 		message = lisp_replace(message)
 		if(old_message != message)

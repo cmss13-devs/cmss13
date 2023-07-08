@@ -1,0 +1,4 @@
+author: "theselfish"
+delete-after: True
+changes:
+  - qol: "Foxtrot's radio channel is now on if you have multi-squad in your headset."

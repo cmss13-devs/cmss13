@@ -12168,7 +12168,7 @@
 /area/fiorina/station/security)
 "hwb" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = uapeacekeepers
+	insert_tag = "uapeacekeepers"
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate"

@@ -976,6 +976,16 @@
 	initial_keys = list(/obj/item/device/encryptionkey/WY, /obj/item/device/encryptionkey/cmb)
 	has_hud = TRUE
 
+/obj/item/device/radio/headset/distress/CMB/hvh
+	desc = "A sleek headset used by The Colonial Marshal Bureau, crafted in Sol. Low profile and comfortable. No one is above the law. Channels are as follows: :o - colony."
+	initial_keys = list(/obj/item/device/encryptionkey/colony)
+	misc_tracking = FALSE
+
+/obj/item/device/radio/headset/distress/CMB/hvh/ua
+	desc = "A special issue headset used by the Colonial Marshal Bureau that has been issued to United American Peacekeepers who liase with the CMB during field operations. Channels are as follows: :o - colony."
+	initial_keys = list(/obj/item/device/encryptionkey/colony)
+	misc_tracking = FALSE
+
 /obj/item/device/radio/headset/almayer/highcom
 	name = "USCM High Command headset"
 	desc = "Issued to members of USCM High Command and their immediate subordinates. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel,  :z - HighCom"

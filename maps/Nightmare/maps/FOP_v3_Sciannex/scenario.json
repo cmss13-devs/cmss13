@@ -1,9 +1,10 @@
 [
+	{ "type": "map_sprinkle", "path": "sprinkles/" },
     {
-		"type": "map_insert",
-		"landmark": "uapeacekeepers",
-		"chance": 1.0,
-		"path": "standalone/riotcontrol.dmm",
-		"when": { "lvevent": "peacekeepers" }
-	}
+        "type": "pick", "name": "Peacekeepers",
+        "choices": [
+            { "weight": 1, "type": "def", "values": { "lvevent": "none"       } },
+            { "weight": 10, "type": "def", "values": { "lvevent": "peacekeepers" } }
+        ]
+    }
 ]

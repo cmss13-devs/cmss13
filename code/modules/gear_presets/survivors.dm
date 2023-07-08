@@ -1351,88 +1351,121 @@
 	human.equip_to_slot_or_del(new shoespath, WEAR_FEET)
 
 /datum/equipment_preset/survivor/ua_peacekeeper
-	name = "CLF Survivor"
+	name = "United Americas Peacekeeper"
+	assignment = "United Americas Peacekeeper"
 	flags = EQUIPMENT_PRESET_EXTRA
-	skills = /datum/skills/civilian/survivor/clf
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	faction = FACTION_CLF
-	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
-	access = list(ACCESS_CIVILIAN_PUBLIC)
-	survivor_variant = HOSTILE_SURVIVOR
+	skills = /datum/skills/civilian/survivor/marshal
+	languages = list(LANGUAGE_ENGLISH)
+	faction = FACTION_USCM
+	faction_group = list(FACTION_USCM, FACTION_SURVIVOR)
+	idtype = /obj/item/card/id/syndicate
+	role_comm_title = "UA PCK"
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+	)
 
 /datum/equipment_preset/survivor/ua_peacekeeper/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/hvh/ua, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/ua_riot, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/ua_riot, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/swat, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/balaclava(new_human), WEAR_FACE)
 
-	spawn_rebel_uniform(new_human)
-	spawn_rebel_suit(new_human)
-	spawn_rebel_helmet(new_human)
-	spawn_rebel_shoes(new_human)
-	spawn_rebel_gloves(new_human)
-	spawn_rebel_belt(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3(new_human), WEAR_IN_BELT)
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
-	add_survivor_weapon_security(new_human)
-	add_survivor_weapon_pistol(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 
 	..()
 
 /datum/equipment_preset/survivor/cmb_deputy
-	name = "CLF Survivor"
+	name = "CMB Deputy"
+	assignment = "CMB Deputy"
 	flags = EQUIPMENT_PRESET_EXTRA
-	skills = /datum/skills/civilian/survivor/clf
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	faction = FACTION_CLF
-	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
-	access = list(ACCESS_CIVILIAN_PUBLIC)
-	survivor_variant = HOSTILE_SURVIVOR
+	skills = /datum/skills/civilian/survivor/marshal
+	languages = list(LANGUAGE_ENGLISH)
+	faction = FACTION_USCM
+	faction_group = list(FACTION_USCM, FACTION_SURVIVOR)
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+	)
+	role_comm_title = "CMB Deputy"
 
 /datum/equipment_preset/survivor/cmb_deputy/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/hvh, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(new_human), WEAR_BODY)
 
-	spawn_rebel_uniform(new_human)
-	spawn_rebel_suit(new_human)
-	spawn_rebel_helmet(new_human)
-	spawn_rebel_shoes(new_human)
-	spawn_rebel_gloves(new_human)
-	spawn_rebel_belt(new_human)
-
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/CMB(new_human), WEAR_HEAD)
+	if(new_human.disabilities & NEARSIGHTED)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(new_human), WEAR_EYES)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large(new_human), WEAR_R_STORE)
 	add_survivor_weapon_security(new_human)
-	add_survivor_weapon_pistol(new_human)
 
 	..()
 
 /datum/equipment_preset/survivor/cmb_marshal
-	name = "CLF Survivor"
+	name = "CMB Marshal"
+	assignment = "CMB Marshal"
 	flags = EQUIPMENT_PRESET_EXTRA
-	skills = /datum/skills/civilian/survivor/clf
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	faction = FACTION_CLF
-	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
-	access = list(ACCESS_CIVILIAN_PUBLIC)
-	survivor_variant = HOSTILE_SURVIVOR
+	skills = /datum/skills/civilian/survivor/marshal
+	languages = list(LANGUAGE_ENGLISH)
+	faction = FACTION_USCM
+	faction_group = list(FACTION_USCM, FACTION_SURVIVOR)
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+	)
+	role_comm_title = "CMB Marshal"
 
 /datum/equipment_preset/survivor/cmb_marshal/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/hvh, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(new_human), WEAR_BODY)
 
-	spawn_rebel_uniform(new_human)
-	spawn_rebel_suit(new_human)
-	spawn_rebel_helmet(new_human)
-	spawn_rebel_shoes(new_human)
-	spawn_rebel_gloves(new_human)
-	spawn_rebel_belt(new_human)
-
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/CMB(new_human), WEAR_HEAD)
+	if(new_human.disabilities & NEARSIGHTED)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(new_human), WEAR_EYES)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large(new_human), WEAR_R_STORE)
 	add_survivor_weapon_security(new_human)
-	add_survivor_weapon_pistol(new_human)
 
 	..()

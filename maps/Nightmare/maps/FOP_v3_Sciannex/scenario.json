@@ -3,8 +3,8 @@
     {
         "type": "pick", "name": "Peacekeepers",
         "choices": [
-            { "weight": 1, "type": "def", "values": { "lvevent": "none"       } },
-            { "weight": 10, "type": "def", "values": { "lvevent": "peacekeepers" } }
+            { "weight": 4, "type": "def", "values": { "lvevent": "none"       } },
+            { "weight": 2, "type": "def", "values": { "lvevent": "peacekeepers" } }
         ]
     }
 ]

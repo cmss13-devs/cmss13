@@ -4,13 +4,16 @@
 	anchored = FALSE
 	density = FALSE
 	drag_delay = 1
+	base_pixel_x = 15
+	base_pixel_y = -2
 
 	var/mob/living/carbon/attached = null
 	var/mode = 1 // 1 is injecting, 0 is taking blood.
 	var/obj/item/reagent_container/beaker = null
+	var/datum/beam/current_beam
 
 /obj/structure/machinery/iv_drip/update_icon()
-	if(src.attached)
+	if(attached)
 		icon_state = "hooked"
 	else
 		icon_state = ""
@@ -35,8 +38,31 @@
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			overlays += filling
 
+/obj/structure/machinery/iv_drip/proc/update_beam()
+	if(current_beam)
+		QDEL_NULL(current_beam)
+	else if(!QDELETED(src) && attached)
+		current_beam = beam(attached, "iv_tube")
+
+/obj/structure/machinery/iv_drip/power_change()
+	. = ..()
+	if(stat & NOPOWER && attached)
+		visible_message("\The [src] retracts its IV tube and shuts down.")
+		attached.active_transfusions -= src
+		attached = null
+		update_beam()
+		update_icon()
+
+/obj/structure/machinery/iv_drip/Destroy()
+	attached?.active_transfusions -= src
+	update_beam()
+	. = ..()
+
 /obj/structure/machinery/iv_drip/MouseDrop(over_object, src_location, over_location)
 	..()
+	if(inoperable())
+		visible_message("\The [src] is not powered.")
+		return
 
 	if(ishuman(usr))
 		var/mob/living/carbon/human/H = usr
@@ -48,6 +74,7 @@
 			"You detach \the [src] from \the [attached].")
 			attached.active_transfusions -= src
 			attached = null
+			update_beam()
 			update_icon()
 			stop_processing()
 			return
@@ -57,6 +84,7 @@
 			"You attach \the [src] to \the [over_object].")
 			attached = over_object
 			attached.active_transfusions += src
+			update_beam()
 			update_icon()
 			start_processing()
 
@@ -81,6 +109,7 @@
 			log_admin("[key_name(user)] put a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]).")
 
 			to_chat(user, "You attach \the [W] to \the [src].")
+			update_beam()
 			update_icon()
 		return
 	else
@@ -97,6 +126,7 @@
 				attached.emote("scream")
 			attached.active_transfusions -= src
 			attached = null
+			update_beam()
 			update_icon()
 			stop_processing()
 			return

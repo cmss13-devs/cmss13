@@ -1380,7 +1380,7 @@
 	faction_group = list(FACTION_USCM, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/syndicate
 	role_comm_title = "UA PCK"
- /datum/equipment_preset/survivor/ua_peacekeeper/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/ua_peacekeeper/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/hvh/ua, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/ua_riot, WEAR_JACKET)
@@ -1479,7 +1479,7 @@
 	add_survivor_weapon_security(new_human)
 
 	..()
- 
+
 /datum/equipment_preset/survivor/new_varadero/commander
 	name = "Survivor - USASF Commander"
 	assignment = "USASF Commander"

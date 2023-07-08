@@ -1,16 +1,3 @@
-/datum/species/synthetic/colonial/working_joe
-	name = SYNTH_WORKING_JOE
-	name_plural = "Working Joes"
-	uses_ethnicity = FALSE
-	burn_mod = 0.65 // made for hazardous environments, withstanding temperatures up to 1210 degrees
-	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT, TRAIT_CANNOT_EAT)
-
-	slowdown = 0.45
-	hair_color = "#000000"
-	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
-	deform = 'icons/mob/humans/species/r_synthetic.dmi'
-
-
 /datum/species/synthetic/colonial/working_joe/handle_post_spawn(mob/living/carbon/human/joe)
 	. = ..()
 	give_action(joe, /datum/action/joe_emote_panel)

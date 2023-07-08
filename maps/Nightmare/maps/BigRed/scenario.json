@@ -1,1 +1,9 @@
-[]
+[
+    {
+    "type": "pick", "name": "uppcrash",
+    "choices": [
+        { "weight": 0, "type": "def", "values": { "lvevent": "none"       } },
+        { "weight": 10, "type": "def", "values": { "lvevent": "uppcrash" } }
+    ]
+    }
+]

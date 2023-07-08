@@ -1,0 +1,3310 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"af" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"ah" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp27"
+	},
+/area/bigredv2/outside/dorms)
+"ao" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"az" = (
+/obj/structure/pipes/vents/pump,
+/obj/item/trash/cheesie,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"aL" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -4;
+	pixel_y = 24
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = 11;
+	pixel_y = 24
+	},
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/dorms)
+"aP" = (
+/turf/template_noop,
+/area/template_noop)
+"aQ" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/c)
+"bi" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/mars{
+	icon_state = "mars_dirt_6"
+	},
+/area/bigredv2/outside/c)
+"bn" = (
+/obj/item/stack/sandbags/small_stack,
+/turf/open/mars{
+	icon_state = "mars_dirt_6"
+	},
+/area/bigredv2/outside/c)
+"br" = (
+/obj/structure/closet/crate,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"bI" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet13-5"
+	},
+/area/bigredv2/outside/bar)
+"bM" = (
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/dorms)
+"bZ" = (
+/obj/structure/barricade/sandbags/wired,
+/obj/item/ammo_casing/bullet,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"ca" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/dorms)
+"cB" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_12"
+	},
+/area/bigredv2/outside/c)
+"cG" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp1"
+	},
+/area/bigredv2/outside/dorms)
+"cO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/bigredv2/outside/dorms)
+"cS" = (
+/turf/open/mars,
+/area/bigredv2/outside/c)
+"db" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1";
+	opacity = 0
+	},
+/area/bigredv2/outside/dorms)
+"dk" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"dt" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"dv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/bigredv2/outside/dorms)
+"dE" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"dJ" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"dL" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"dU" = (
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"dW" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"eh" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/dorms)
+"en" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/mars{
+	icon_state = "mars_dirt_12"
+	},
+/area/bigredv2/outside/c)
+"et" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = 30
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"eB" = (
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/dorms)
+"eK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"eV" = (
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/bar)
+"fw" = (
+/obj/item/storage/belt/utility,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/dorms)
+"fI" = (
+/obj/item/trash/semki,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/dorms)
+"gm" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet13-5"
+	},
+/area/bigredv2/outside/bar)
+"gp" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp20"
+	},
+/area/bigredv2/outside/dorms)
+"gq" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/dorms)
+"gu" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/item/reagent_container/food/drinks/flask/canteen{
+	desc = "You take a sip from your trusty UPP canteen..."
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"gM" = (
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/dorms)
+"gQ" = (
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"gU" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"gW" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet9-4"
+	},
+/area/bigredv2/outside/bar)
+"hb" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating,
+/area/bigredv2/outside/bar)
+"he" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"hj" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"hO" = (
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/c)
+"hR" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	dir = 1;
+	name = "\improper Recreation"
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/dorms)
+"hZ" = (
+/obj/structure/window/framed/solaris,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Dormitories";
+	name = "\improper Dormitories Shutters"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"ib" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"id" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner/upp/soldier,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/dorms)
+"ip" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"is" = (
+/obj/structure/machinery/door_control{
+	id = "Dormitories";
+	name = "Storm Shutters";
+	pixel_y = -32
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"iE" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/dorms)
+"iH" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"iO" = (
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"iX" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	name = "\improper Bar Maintenance"
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/dorms)
+"jc" = (
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"jr" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"jL" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg2"
+	},
+/area/bigredv2/outside/bar)
+"kf" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"kn" = (
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
+/obj/effect/landmark/survivor_spawner/upp_medic,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/dorms)
+"kq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/dorms)
+"kt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/plate,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"kz" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Dormitories Storage"
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/dorms)
+"kJ" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"ln" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/crap_item,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"lw" = (
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/c)
+"md" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper Dormitories"
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/dorms)
+"mF" = (
+/obj/structure/window/framed/solaris,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Dormitories";
+	name = "\improper Dormitories Shutters"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"mI" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"mN" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp_leftengine"
+	},
+/area/bigredv2/outside/dorms)
+"mQ" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"ng" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp4"
+	},
+/area/bigredv2/outside/dorms)
+"ni" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"nk" = (
+/turf/open/floor/plating,
+/area/bigredv2/outside/bar)
+"nD" = (
+/obj/item/prop/almayer/comp_open{
+	pixel_x = 11;
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/dorms)
+"nK" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/spawner/gibspawner/human,
+/obj/item/prop/almayer/comp_closed,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/dorms)
+"nT" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor{
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"nU" = (
+/obj/structure/machinery/light,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/dorms)
+"oj" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"ow" = (
+/obj/item/tool/wrench,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/dorms)
+"oG" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"oL" = (
+/obj/structure/girder,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -4;
+	pixel_y = 24
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"oR" = (
+/obj/item/ammo_box/rounds/type71/heap/empty{
+	bullet_amount = 0
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin4"
+	},
+/area/bigredv2/outside/dorms)
+"oW" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/bar)
+"oX" = (
+/obj/item/trash/used_stasis_bag,
+/obj/effect/landmark/survivor_spawner/upp_specialist,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin5"
+	},
+/area/bigredv2/outside/dorms)
+"pr" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/mars,
+/area/bigredv2/outside/c)
+"pt" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"pA" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"pJ" = (
+/obj/item/prop/colony/usedbandage{
+	dir = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/vodka,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin7"
+	},
+/area/bigredv2/outside/dorms)
+"pY" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"qg" = (
+/obj/structure/bed/bedroll{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/upp/soldier,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin5"
+	},
+/area/bigredv2/outside/dorms)
+"qh" = (
+/obj/structure/barricade/sandbags/wired,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"qs" = (
+/obj/effect/landmark/good_item,
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"qy" = (
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"qA" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet15-15"
+	},
+/area/bigredv2/outside/bar)
+"qB" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/obj/structure/bed/bedroll{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/upp_sapper,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/dorms)
+"qK" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/mars{
+	icon_state = "mars_dirt_13"
+	},
+/area/bigredv2/outside/c)
+"qL" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"qT" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"qV" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp_rightengine"
+	},
+/area/bigredv2/outside/dorms)
+"qX" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"ra" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"rq" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/dorms)
+"rs" = (
+/obj/structure/closet/crate,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"rt" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Dormitories Bedroom"
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/dorms)
+"rA" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"rE" = (
+/obj/structure/window/framed/solaris,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Dormitories";
+	name = "\improper Dormitories Shutters"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -4;
+	pixel_y = 24
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"rP" = (
+/obj/structure/window_frame/solaris,
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"rW" = (
+/obj/structure/bed/stool,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"sp" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 4;
+	pixel_y = 21
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"sM" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"sZ" = (
+/obj/item/bedsheet/brown,
+/obj/item/bedsheet/brown{
+	pixel_y = 13
+	},
+/obj/structure/bed,
+/obj/structure/bed{
+	pixel_y = 13
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"ta" = (
+/obj/item/device/radio,
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"td" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"tl" = (
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_6"
+	},
+/area/bigredv2/outside/c)
+"tC" = (
+/obj/structure/girder,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/dorms)
+"tL" = (
+/obj/structure/surface/table/almayer{
+	desc = "A square metal surfad
+	},
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/dorms)
+"tO" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/mars,
+/area/bigredv2/outside/c)
+"tR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"ua" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"ue" = (
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"ug" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"uC" = (
+/obj/item/trash/cheesie,
+/obj/item/trash/pistachios,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"uN" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"vf" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"vm" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"vr" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"vt" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"vz" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"vB" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Dormitories Storage"
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/dorms)
+"vI" = (
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"wc" = (
+/obj/item/reagent_container/food/drinks/bottle/vodka,
+/turf/open/mars{
+	icon_state = "mars_dirt_6"
+	},
+/area/bigredv2/outside/c)
+"we" = (
+/obj/structure/machinery/computer/cameras{
+	desc = "The flight controls for a UD6 Dropship. these controls look pretty banged up, and there's some blood covering the screen..";
+	name = "\improper 'Tornado' flight controls";
+	network = null;
+	pixel_y = 21
+	},
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/dorms)
+"wh" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"wl" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"wm" = (
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"wp" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/obj/item/stack/sheet/wood,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"wv" = (
+/obj/structure/surface/table,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"ww" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/bar)
+"wz" = (
+/obj/structure/window_frame/solaris,
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"wQ" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"wT" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"xd" = (
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
+/obj/item/reagent_container/food/drinks/flask/canteen{
+	desc = "You take a sip from your trusty UPP canteen..."
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_6"
+	},
+/area/bigredv2/outside/c)
+"xj" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"xq" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"xK" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"xQ" = (
+/obj/structure/sign/poster/clf{
+	pixel_y = 28
+	},
+/obj/structure/bed/roller,
+/obj/effect/decal/cleanable/blood,
+/obj/item/prop/colony/usedbandage{
+	dir = 5
+	},
+/obj/effect/spawner/gibspawner/human,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin6"
+	},
+/area/bigredv2/outside/dorms)
+"xZ" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"yj" = (
+/obj/item/reagent_container/food/drinks/bottle/vodka,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/dorms)
+"yn" = (
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"yp" = (
+/obj/structure/bed/stool,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"yt" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_8"
+	},
+/area/bigredv2/outside/c)
+"yI" = (
+/obj/item/trash/semki,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"yY" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = 30
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"zu" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"zv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"zN" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/dorms)
+"Af" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/bigredv2/outside/dorms)
+"Ar" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"At" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/mars{
+	icon_state = "mars_dirt_6"
+	},
+/area/bigredv2/outside/c)
+"AD" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	dir = 1;
+	name = "\improper Bar Maintenance"
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/bar)
+"AI" = (
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"AP" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_1";
+	opacity = 0
+	},
+/area/bigredv2/outside/dorms)
+"AR" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"Bf" = (
+/obj/item/stack/sheet/metal,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/bar)
+"Bp" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	pixel_x = -14
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"Bs" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"Bw" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"BR" = (
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"Cb" = (
+/obj/structure/bed/bedroll{
+	dir = 4
+	},
+/obj/item/reagent_container/food/drinks/bottle/vodka,
+/turf/open/mars{
+	icon_state = "mars_dirt_6"
+	},
+/area/bigredv2/outside/c)
+"Cf" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"Cn" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"Cp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/girder,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/dorms)
+"CA" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet15-15"
+	},
+/area/bigredv2/outside/bar)
+"CB" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/dorms)
+"CM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/pistachios,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"CO" = (
+/obj/structure/machinery/light,
+/obj/item/stack/sheet/wood,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"CQ" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/mars,
+/area/bigredv2/outside/c)
+"CT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"Dk" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/dorms)
+"Dp" = (
+/obj/structure/girder,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"Du" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
+	},
+/obj/item/tool/extinguisher,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"Dx" = (
+/obj/item/ammo_box/rounds/type71/heap/empty{
+	bullet_amount = 0
+	},
+/obj/effect/landmark/survivor_spawner/upp_sapper,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/dorms)
+"Dz" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/structure/machinery/iv_drip,
+/obj/effect/landmark/survivor_spawner/upp_medic,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/dorms)
+"DJ" = (
+/obj/structure/bed/chair,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"DO" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"Eg" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet15-15"
+	},
+/area/bigredv2/outside/bar)
+"Ep" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"Eu" = (
+/obj/item/ammo_box/rounds/type71/heap/empty{
+	bullet_amount = 0
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/dorms)
+"Ez" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/bar)
+"EF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door_control{
+	id = "Dormitories";
+	name = "Storm Shutters";
+	pixel_x = -32
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"EL" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"EN" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -4;
+	pixel_y = 24
+	},
+/obj/structure/prop/invuln/pipe_water{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"ES" = (
+/obj/item/prop/colony/used_flare,
+/obj/effect/landmark/survivor_spawner/upp/soldier,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin5"
+	},
+/area/bigredv2/outside/dorms)
+"EX" = (
+/obj/item/prop/colony/usedbandage{
+	dir = 5
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"Fe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"Fj" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp16"
+	},
+/area/bigredv2/outside/dorms)
+"Fk" = (
+/obj/item/stack/rods,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating,
+/area/bigredv2/outside/bar)
+"Fm" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"FL" = (
+/obj/item/device/m56d_gun{
+	desc = "The top half of a Type 101 heavy machine gun post. However it ain't much use without the trispod.";
+	name = "\improper Type 101 heavy machine gun"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/dorms)
+"FP" = (
+/obj/item/stack/barbed_wire/small_stack,
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/c)
+"Gc" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"Ge" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	dir = 1;
+	name = "\improper Recreation"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -4;
+	pixel_y = 24
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/dorms)
+"GF" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"Hk" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"Hn" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"HC" = (
+/obj/structure/pipes/vents/pump,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/bigredv2/outside/dorms)
+"HE" = (
+/obj/item/reagent_container/food/drinks/flask/canteen{
+	desc = "You take a sip from your trusty UPP canteen..."
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"HR" = (
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin8"
+	},
+/area/bigredv2/outside/dorms)
+"HU" = (
+/obj/item/trash/semki,
+/obj/effect/landmark/survivor_spawner/upp/soldier,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/dorms)
+"Ig" = (
+/obj/item/prop/colony/usedbandage{
+	dir = 5
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"Ih" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Bar"
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/bar)
+"Iq" = (
+/obj/item/prop/almayer/flight_recorder{
+	pixel_x = 15;
+	pixel_y = 11
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/dorms)
+"II" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice10";
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"IZ" = (
+/obj/structure/barricade/wooden,
+/turf/open/mars,
+/area/bigredv2/outside/c)
+"Je" = (
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/turf/open/mars,
+/area/bigredv2/outside/c)
+"Jg" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"Ju" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -4;
+	pixel_y = 24
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"JD" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/dorms)
+"JH" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"JJ" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"JO" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -4;
+	pixel_y = 24
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/dorms)
+"JQ" = (
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"JW" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"JX" = (
+/obj/item/stack/sandbags/small_stack,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"Kd" = (
+/obj/item/stack/rods,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -4;
+	pixel_y = 24
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/dorms)
+"Ki" = (
+/obj/item/stack/sheet/metal,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/dorms)
+"Ks" = (
+/obj/item/ammo_box/rounds/type71/heap/empty{
+	bullet_amount = 0
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/dorms)
+"Kw" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp25"
+	},
+/area/bigredv2/outside/dorms)
+"Ky" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"KG" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"KN" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"Lj" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/dorms)
+"Lx" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"LA" = (
+/obj/structure/machinery/computer/arcade,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"LD" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/dorms)
+"LE" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/bar)
+"LX" = (
+/obj/structure/bed/chair/wood/normal,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"LY" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/prop/colony/used_flare,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"LZ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp3"
+	},
+/area/bigredv2/outside/dorms)
+"Mf" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"Mj" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"Mp" = (
+/turf/open/floor{
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"Mv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"MP" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_2";
+	opacity = 0
+	},
+/area/bigredv2/outside/dorms)
+"MQ" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/mars{
+	icon_state = "mars_dirt_11"
+	},
+/area/bigredv2/outside/c)
+"MV" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/mars{
+	icon_state = "mars_dirt_6"
+	},
+/area/bigredv2/outside/c)
+"Nc" = (
+/obj/structure/surface/table/almayer{
+	desc = "A square metal surfad
+	},
+/obj/item/map/big_red_map,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/dorms)
+"Nd" = (
+/obj/structure/bed/stool,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"Ne" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet15-15"
+	},
+/area/bigredv2/outside/bar)
+"Ng" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/bar)
+"Nu" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"Nw" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"Nx" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"NA" = (
+/obj/item/clothing/head/welding,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"NF" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet13-5"
+	},
+/area/bigredv2/outside/bar)
+"NN" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/mars,
+/area/bigredv2/outside/c)
+"NR" = (
+/obj/structure/bed/stool,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"Oc" = (
+/obj/item/ashtray/glass,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"On" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"Or" = (
+/obj/structure/surface/table,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"Ov" = (
+/obj/item/storage/belt/medical/lifesaver/upp,
+/obj/effect/landmark/survivor_spawner/squad_leader,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin5"
+	},
+/area/bigredv2/outside/dorms)
+"OH" = (
+/obj/structure/girder,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"OM" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"OT" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/bar)
+"OU" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet11-12"
+	},
+/area/bigredv2/outside/bar)
+"OY" = (
+/obj/item/stack/flag/green{
+	desc = "Battle standard of the UPP, flying proudly.";
+	name = "upp flags";
+	singular_name = "upp flag"
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"Pa" = (
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
+/turf/open/floor{
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"Pd" = (
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"PB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/good_item,
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"PJ" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/dorms)
+"PO" = (
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/bigredv2/outside/dorms)
+"PX" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/c)
+"Qd" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/stack/rods,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"QM" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"QU" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet15-15"
+	},
+/area/bigredv2/outside/bar)
+"QX" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"QZ" = (
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/turf/open/floor{
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"Rd" = (
+/obj/structure/surface/table/almayer{
+	desc = "A square metal surfad
+	},
+/obj/item/attachable/bayonet/upp,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/dorms)
+"Rf" = (
+/obj/structure/window/framed/solaris,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Bar Complex";
+	name = "\improper Bar Complex Shutters"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/bar)
+"RF" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"RR" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp21"
+	},
+/area/bigredv2/outside/dorms)
+"Sw" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"Sz" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -4;
+	pixel_y = 24
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/dorms)
+"Tb" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"Tc" = (
+/obj/structure/barricade/wooden,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"Tf" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/mars,
+/area/bigredv2/outside/c)
+"Tu" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/mars{
+	icon_state = "mars_dirt_6"
+	},
+/area/bigredv2/outside/c)
+"Ud" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
+"Us" = (
+/obj/item/trash/semki,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/dorms)
+"Uw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"UO" = (
+/obj/structure/closet/crate,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"UR" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/c)
+"Vc" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"Vl" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"Vo" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp2"
+	},
+/area/bigredv2/outside/dorms)
+"Vq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/crap_item,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"Vy" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"VB" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"VH" = (
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"VI" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/bigredv2/outside/dorms)
+"VL" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"VN" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/bigredv2/outside/dorms)
+"VV" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"Wb" = (
+/obj/structure/window/framed/solaris,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Bar Complex";
+	name = "\improper Bar Complex Shutters"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/bar)
+"Wg" = (
+/obj/structure/barricade/wooden,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
+"Wk" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"Wv" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/dorms)
+"WP" = (
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"WR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/outside/dorms)
+"Xh" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"Xx" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Dormitories Bedroom"
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/dorms)
+"XA" = (
+/obj/structure/surface/table/almayer{
+	desc = "A square metal surfad
+	},
+/obj/item/ammo_box/rounds/type71{
+	bullet_amount = 129
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/dorms)
+"XB" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/blood{
+	layer = 3;
+	pixel_x = 24
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"XH" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_2";
+	opacity = 0
+	},
+/area/bigredv2/outside/dorms)
+"XR" = (
+/obj/item/stack/barbed_wire/small_stack,
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/c)
+"Yk" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_6"
+	},
+/area/bigredv2/outside/c)
+"Ys" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp5"
+	},
+/area/bigredv2/outside/dorms)
+"Yz" = (
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg2"
+	},
+/area/bigredv2/outside/dorms)
+"YD" = (
+/obj/structure/girder,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -4;
+	pixel_y = 24
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/dorms)
+"YP" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/dorms)
+"Zm" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Dormitories"
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"Zv" = (
+/obj/item/bedsheet/brown{
+	pixel_y = 13
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
+"ZI" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet13-5"
+	},
+/area/bigredv2/outside/bar)
+"ZR" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+
+(1,1,1) = {"
+eB
+hZ
+hZ
+eB
+hZ
+hZ
+eB
+hZ
+hZ
+eB
+wz
+rP
+eB
+eB
+eB
+eB
+eB
+eB
+eB
+Mp
+cS
+cS
+cS
+CQ
+ug
+aP
+aP
+aP
+aP
+aP
+aP
+"}
+(2,1,1) = {"
+eB
+br
+JQ
+JQ
+JQ
+JQ
+JQ
+JQ
+JQ
+JQ
+Gc
+JQ
+eB
+Wk
+Wk
+Wk
+Wk
+Wk
+eB
+QZ
+Je
+cS
+cS
+cS
+ug
+aP
+aP
+aP
+aP
+aP
+aP
+"}
+(3,1,1) = {"
+eB
+sZ
+JQ
+Ep
+sZ
+XB
+vz
+sZ
+Or
+JQ
+sZ
+JQ
+eB
+Vl
+Vl
+Vl
+DO
+ib
+eB
+nT
+cS
+CQ
+cS
+pr
+ug
+aP
+aP
+aP
+aP
+aP
+aP
+"}
+(4,1,1) = {"
+eB
+JQ
+JQ
+wl
+sZ
+rs
+UO
+sZ
+br
+QM
+ra
+JQ
+eB
+Vl
+Vl
+Vl
+Vl
+qL
+eB
+Mp
+cS
+cS
+tO
+cS
+ug
+aP
+aP
+aP
+aP
+aP
+aP
+"}
+(5,1,1) = {"
+eB
+Xx
+eB
+eB
+eB
+eB
+eB
+eB
+eB
+eB
+eB
+Xx
+eB
+kz
+eB
+eB
+eB
+vB
+eB
+OM
+cS
+cS
+cS
+cS
+xZ
+aP
+aP
+aP
+aP
+aP
+aP
+"}
+(6,1,1) = {"
+Zm
+Hk
+Hk
+Hk
+Hk
+Hk
+Hk
+Vy
+dW
+uN
+eK
+ue
+ZR
+tR
+pt
+EF
+Bp
+II
+rE
+Mp
+yt
+CQ
+NN
+cS
+ug
+aP
+aP
+aP
+aP
+aP
+aP
+"}
+(7,1,1) = {"
+ue
+ue
+Vl
+Vl
+kt
+Vl
+ue
+Fe
+CM
+Uw
+hj
+ue
+ZR
+pt
+pt
+ue
+Vq
+qL
+rE
+ua
+PX
+yt
+cS
+qK
+Nx
+aP
+aP
+aP
+aP
+aP
+aP
+"}
+(8,1,1) = {"
+eB
+eB
+eB
+eB
+vf
+Vq
+ue
+ue
+gQ
+qs
+gp
+cG
+Lj
+Mv
+Yz
+Ky
+af
+oG
+JO
+Pa
+aQ
+PX
+MQ
+aQ
+ni
+aP
+aP
+aP
+aP
+aP
+aP
+"}
+(9,1,1) = {"
+mF
+sZ
+JQ
+eB
+ue
+ue
+ue
+WR
+KN
+gp
+LZ
+LZ
+CT
+Dk
+JJ
+Bw
+kq
+Sw
+Kd
+Xh
+lw
+hO
+FP
+aQ
+ug
+aP
+aP
+aP
+aP
+aP
+aP
+"}
+(10,1,1) = {"
+mF
+rs
+JQ
+rt
+ue
+ue
+jc
+jc
+gp
+LZ
+mN
+XH
+db
+Dk
+ca
+zu
+Dk
+jc
+oL
+bn
+Yk
+en
+cB
+cB
+ug
+aP
+aP
+aP
+aP
+aP
+aP
+"}
+(11,1,1) = {"
+eB
+wm
+JQ
+eB
+ue
+Dk
+xj
+gp
+LZ
+LZ
+qV
+MP
+AP
+Bw
+Dk
+Dk
+gp
+ng
+cG
+xd
+Tu
+Yk
+Yk
+cS
+JH
+aP
+aP
+aP
+aP
+aP
+aP
+"}
+(12,1,1) = {"
+eB
+sZ
+jc
+tC
+jc
+Nw
+gp
+ng
+ng
+ng
+ng
+ng
+ng
+ng
+ng
+ng
+cG
+Ys
+LZ
+gu
+HE
+Yk
+Yk
+EX
+OY
+vI
+qh
+GF
+iH
+GF
+GF
+"}
+(13,1,1) = {"
+eB
+RF
+gp
+ng
+Fj
+ng
+RR
+xQ
+Dz
+kn
+HU
+oR
+Wv
+LD
+Wv
+Wv
+Vo
+yn
+pA
+HE
+yI
+tl
+Ar
+Ar
+Ar
+On
+Tf
+cS
+CQ
+cS
+Ar
+"}
+(14,1,1) = {"
+mF
+CB
+ah
+we
+RR
+we
+RR
+Ov
+Ki
+XA
+gq
+ES
+yj
+iE
+Ks
+bM
+PJ
+fI
+JW
+Yk
+Ar
+Ar
+Ar
+Yk
+bi
+bZ
+Ar
+Ar
+Ar
+Yk
+Yk
+"}
+(15,1,1) = {"
+mF
+Mf
+ah
+Iq
+nD
+nK
+PJ
+oX
+Rd
+Nc
+tL
+qg
+fw
+Us
+iE
+ow
+PJ
+FL
+Ig
+Ar
+Xh
+Ar
+Ar
+Ar
+On
+MV
+Ar
+At
+Yk
+Yk
+jr
+"}
+(16,1,1) = {"
+eB
+eh
+Kw
+Ys
+Ys
+Ys
+RR
+pJ
+qB
+Dx
+id
+HR
+Wv
+rq
+Wv
+Wv
+Vo
+Eu
+JD
+JX
+Yk
+Ar
+Ar
+Ar
+dU
+MV
+Ar
+wh
+Ar
+At
+Ar
+"}
+(17,1,1) = {"
+mF
+JQ
+JQ
+CB
+eh
+Dp
+Kw
+Ys
+Ys
+Ys
+Ys
+Ys
+Ys
+Ys
+Ys
+Ys
+LZ
+ng
+cG
+Cb
+wc
+Ar
+bi
+Tu
+EL
+EL
+VV
+he
+Yk
+cS
+IZ
+"}
+(18,1,1) = {"
+mF
+rs
+Zv
+gM
+qX
+jc
+ca
+Kw
+cG
+cG
+mN
+XH
+db
+Dk
+OH
+ca
+Kw
+Ys
+LZ
+XR
+AI
+Lx
+AR
+Ar
+Fm
+Qd
+UR
+BR
+qT
+dk
+Nu
+"}
+(19,1,1) = {"
+eB
+rs
+JQ
+eB
+ue
+PO
+PB
+zv
+Kw
+cG
+qV
+MP
+AP
+zu
+zu
+Dk
+ca
+jc
+YD
+jL
+OT
+Bf
+Fk
+Ng
+Ng
+LE
+Rf
+eV
+Rf
+eV
+eV
+"}
+(20,1,1) = {"
+eB
+sZ
+JQ
+eB
+gU
+PO
+PO
+Nw
+xj
+Kw
+cG
+cG
+Dk
+af
+iO
+iO
+iO
+ta
+EN
+CA
+QU
+gm
+Cn
+VH
+kJ
+Vc
+VH
+VB
+VH
+VH
+eV
+"}
+(21,1,1) = {"
+eB
+KG
+JQ
+eB
+ue
+PO
+HC
+cO
+CB
+Cp
+Kw
+LZ
+af
+zN
+Ud
+sM
+Dk
+jc
+Sz
+QU
+QU
+ZI
+VH
+az
+pY
+pY
+wp
+Oc
+VH
+VH
+Wb
+"}
+(22,1,1) = {"
+mF
+br
+JQ
+rt
+ue
+PO
+VN
+cO
+dv
+cO
+nU
+eB
+QX
+Dk
+JQ
+qy
+dE
+is
+Ju
+Ne
+QU
+NF
+VH
+Cn
+VH
+vm
+dL
+VH
+LY
+VH
+eV
+"}
+(23,1,1) = {"
+mF
+sZ
+JQ
+eB
+sp
+VI
+Af
+cO
+cO
+PO
+qL
+hR
+vr
+rW
+yp
+yp
+yp
+yp
+Ge
+QU
+qA
+bI
+VH
+VH
+VH
+dJ
+dL
+VH
+VH
+ip
+Wb
+"}
+(24,1,1) = {"
+eB
+eB
+eB
+eB
+ue
+qL
+ue
+ue
+yY
+ue
+qL
+eB
+xK
+LA
+LA
+LA
+LA
+LA
+aL
+Eg
+CA
+gm
+VH
+Du
+VH
+oj
+dL
+VH
+VH
+VH
+eV
+"}
+(25,1,1) = {"
+DJ
+Bs
+vt
+eB
+eB
+YP
+md
+eB
+eB
+eB
+iX
+eB
+eB
+eB
+eB
+eB
+eB
+eB
+eB
+OU
+OU
+gW
+Pd
+Jg
+VH
+VH
+dL
+uC
+VH
+CO
+eV
+"}
+(26,1,1) = {"
+DJ
+wv
+vt
+eB
+ue
+VL
+WP
+wQ
+wv
+eB
+dt
+iO
+iO
+nk
+eV
+td
+VH
+VH
+VH
+VH
+VH
+VH
+NA
+VH
+oj
+Vc
+dL
+VH
+kf
+ip
+Ih
+"}
+(27,1,1) = {"
+ue
+ue
+ue
+ue
+ue
+qL
+ue
+ue
+vt
+eB
+Mj
+wT
+xq
+hb
+AD
+Cf
+ln
+pY
+pY
+pY
+Hn
+pY
+pY
+pY
+pY
+pY
+Tb
+VH
+VH
+Tc
+Ez
+"}
+(28,1,1) = {"
+ue
+ue
+ue
+ao
+ue
+qL
+ue
+ue
+vt
+eB
+oW
+ww
+nk
+nk
+eV
+dL
+VH
+VH
+vm
+VH
+VH
+VH
+VH
+VH
+vm
+VH
+mQ
+ln
+Cf
+Wg
+eV
+"}
+(29,1,1) = {"
+eB
+eB
+eB
+eB
+gU
+qL
+ue
+rA
+wv
+eB
+nk
+ww
+nk
+nk
+eV
+dL
+LX
+mI
+oj
+LX
+mI
+et
+Nd
+Nd
+Nd
+Nd
+NR
+VH
+dL
+VH
+eV
+"}

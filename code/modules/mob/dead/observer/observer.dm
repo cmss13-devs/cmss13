@@ -33,8 +33,8 @@
 	plane = GHOST_PLANE
 	layer = ABOVE_FLY_LAYER
 	stat = DEAD
-	var/adminlarva = 0
-	var/ghostvision = 1
+	var/adminlarva = FALSE
+	var/ghostvision = TRUE
 	var/can_reenter_corpse
 	var/started_as_observer //This variable is set to 1 when you enter the game as an observer.
 							//If you died in the game and are a ghost - this will remain as null.
@@ -45,7 +45,7 @@
 							"Squad HUD" = FALSE,
 							"Xeno Status HUD" = FALSE
 							)
-	universal_speak = 1
+	universal_speak = TRUE
 	var/updatedir = TRUE //Do we have to update our dir as the ghost moves around?
 	var/atom/movable/following = null
 	var/datum/orbit_menu/orbit_menu
@@ -55,6 +55,8 @@
 	var/own_orbit_size = 0
 	var/observer_actions = list(/datum/action/observer_action/join_xeno)
 	var/datum/action/minimap/observer/minimap
+	var/larva_queue_cached_message
+
 	alpha = 127
 
 /mob/dead/observer/verb/toggle_ghostsee()
@@ -84,7 +86,6 @@
 		body.alter_ghost(src)
 		apply_transform(matrix())
 
-
 		own_orbit_size = body.get_orbit_size()
 
 		desc = initial(desc)
@@ -93,6 +94,7 @@
 		invisibility = INVISIBILITY_OBSERVER
 		plane = GHOST_PLANE
 		layer = ABOVE_FLY_LAYER
+		mouse_opacity = MOUSE_OPACITY_ICON // In case we were weed_food
 
 		sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
 		see_invisible = INVISIBILITY_OBSERVER
@@ -327,8 +329,8 @@ Works together with spawning an observer, noted above.
 	ghost.langchat_make_image()
 
 	SStgui.on_transfer(src, ghost)
-	if(is_admin_level(z))
-		ghost.timeofdeath = 0 // Bypass respawn limit if you die on the admin zlevel
+	if(is_admin_level((get_turf(src))?.z)) // Gibbed humans ghostize the brain in their head which itself is z 0
+		ghost.timeofdeath = 1 // Bypass respawn limit if you die on the admin zlevel
 
 	ghost.key = key
 	ghost.mind = mind
@@ -363,6 +365,12 @@ Works together with spawning an observer, noted above.
 		if(ghost.client.player_data)
 			ghost.client.player_data.load_timestat_data()
 
+		// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers
+		// We don't change facehugger timeofdeath because they are still on cooldown if they died as a hugger
+		// Facehuggers are atleast 1 because they did get some action compared to those at 0 timeofdeath
+		var/new_tod = isfacehugger(src) ? 1 : ghost.timeofdeath
+		ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+
 	ghost.set_huds_from_prefs()
 
 	return ghost
@@ -390,7 +398,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/is_nested = (buckled && istype(buckled, /obj/structure/bed/nest)) ? TRUE : FALSE
 		var/obj/structure/bed/nest/nest = FALSE
 		if(is_nested)
-			text_prompt += "\nSince you're nested, you will be given a chance to reenter your body upon being freed."
+			text_prompt += "\nSince you're nested, you will get a chance to reenter your body if freed."
 			nest = buckled
 		var/response = tgui_alert(src, text_prompt, "Are you sure you want to ghost?", options)
 		if(response == "Aghost")
@@ -405,6 +413,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/mob/dead/observer/ghost = ghostize((is_nested && nest && !QDELETED(nest))) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost && !is_admin_level(z))
 			ghost.timeofdeath = world.time
+			ghost.client?.player_details.larva_queue_time = world.time
 		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE
 			nest.ghost_of_buckled_mob = ghost

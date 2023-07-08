@@ -628,15 +628,15 @@
 
 /obj/docking_port/mobile/proc/intoTheSunset()
 	// Loop over mobs
-	for(var/t in return_turfs())
-		var/turf/T = t
-		for(var/mob/living/L in T.GetAllContents())
+	for(var/turf/turf as anything in return_turfs())
+		for(var/mob/living/mob in turf.GetAllContents())
 			// Ghostize them and put them in nullspace stasis (for stat & possession checks)
-			//L.notransform = TRUE
-			var/mob/dead/observer/O = L.ghostize(FALSE)
-			if(O)
-				O.timeofdeath = world.time
-			L.moveToNullspace()
+			//mob.notransform = TRUE
+			var/mob/dead/observer/obs = mob.ghostize(FALSE)
+			if(obs)
+				obs.timeofdeath = world.time
+				obs.client?.player_details.larva_queue_time = world.time
+			mob.moveToNullspace()
 
 	// Now that mobs are stowed, delete the shuttle
 	jumpToNullSpace()

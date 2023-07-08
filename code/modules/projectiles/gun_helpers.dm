@@ -143,7 +143,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/dropped(mob/user)
 	. = ..()
 
-	turn_off_light(user)
+	disconnect_light_from_mob(user)
 
 	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
 	if(fire_delay_group && delay_left > 0)
@@ -160,7 +160,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		for(var/group in fire_delay_group)
 			LAZYSET(user.fire_delay_next_fire, group, world.time + delay_left)
 
-/obj/item/weapon/gun/proc/turn_off_light(mob/bearer)
+/// This function disconnects the luminosity from the mob and back to the gun
+/obj/item/weapon/gun/proc/disconnect_light_from_mob(mob/bearer)
 	if (!(flags_gun_features & GUN_FLASHLIGHT_ON))
 		return FALSE
 	for (var/slot in attachments)
@@ -169,6 +170,18 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			continue
 		bearer.SetLuminosity(0, FALSE, src)
 		SetLuminosity(attachment.light_mod)
+		return TRUE
+	return FALSE
+
+/// This function actually turns the lights on the gun off
+/obj/item/weapon/gun/proc/turn_off_light(mob/bearer)
+	if (!(flags_gun_features & GUN_FLASHLIGHT_ON))
+		return FALSE
+	for (var/slot in attachments)
+		var/obj/item/attachable/attachment = attachments[slot]
+		if (!attachment || !attachment.light_mod)
+			continue
+		attachment.activate_attachment(src, bearer)
 		return TRUE
 	return FALSE
 

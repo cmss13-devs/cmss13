@@ -132,6 +132,7 @@
 // Weed defines
 #define WEED_LEVEL_WEAK 0
 #define WEED_LEVEL_STANDARD  1.5
+#define WEED_LEVEL_HARDY 1.6
 #define WEED_LEVEL_HIVE   4
 
 #define WEED_RANGE_STANDARD  3
@@ -153,6 +154,22 @@
 
 #define WEED_BASE_GROW_SPEED (5 SECONDS)
 #define WEED_BASE_DECAY_SPEED (10 SECONDS)
+
+/// The time you must be dead to join as a xeno larva
+#define XENO_JOIN_DEAD_LARVA_TIME (2.5 MINUTES)
+/// The time you must be dead to join as xeno (not larva)
+#define XENO_JOIN_DEAD_TIME (5 MINUTES)
+/// The time of inactivity you cannot exceed to join as a xeno
+#define XENO_JOIN_AFK_TIME_LIMIT (5 MINUTES)
+/// The amount of time after round start before buried larva spawns are disallowed
+#define XENO_BURIED_LARVA_TIME_LIMIT (30 MINUTES)
+
+/// The time against away_timer when an AFK xeno larva can be replaced
+#define XENO_LEAVE_TIMER_LARVA 80 //80 seconds
+/// The time against away_timer when an AFK xeno (not larva) can be replaced
+#define XENO_LEAVE_TIMER 300 //300 seconds
+/// The time against away_timer when an AFK xeno gets listed in the available list so ghosts can get ready
+#define XENO_AVAILABLE_TIMER 60 //60 seconds
 
 /// Between 2% to 10% of explosion severity
 #define WEED_EXPLOSION_DAMAGEMULT rand(2, 10)*0.01

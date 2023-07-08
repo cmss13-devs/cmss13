@@ -440,7 +440,7 @@
 		return
 
 	var/confirm = tgui_alert(usr, "Are you sure you want to hijack [dropship]?", "Force hijack", list("Yes", "No")) == "Yes"
-	if(!confirm) 
+	if(!confirm)
 		return
 
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/computer = dropship.getControlConsole()
@@ -535,19 +535,15 @@
 	if(!input)
 		return FALSE
 
-	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
-		if(!(C.inoperable()))
-// var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
-// P.name = "'[MAIN_AI_SYSTEM] Update.'"
-// P.info = input
-// P.update_icon()
-			C.messagetitle.Add("[MAIN_AI_SYSTEM] Update")
-			C.messagetext.Add(input)
-			ai_announcement(input)
-			message_admins("[key_name_admin(src)] has created an AI comms report")
-			log_admin("AI comms report: [input]")
-		else
-			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+	var/datum/ares_link/link = GLOB.ares_link
+	if(link.p_interface.inoperable())
+		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+		return
+
+	ai_announcement(input)
+	message_admins("[key_name_admin(src)] has created an AI comms report")
+	log_admin("AI comms report: [input]")
+
 
 /client/proc/cmd_admin_create_AI_apollo_report()
 	set name = "Report: ARES Apollo"
@@ -560,19 +556,19 @@
 	if(!input)
 		return FALSE
 
-	for(var/obj/structure/machinery/computer/almayer_control/console in machines)
-		if(console.inoperable())
-			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
-			return
-		else
-			var/datum/language/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
-			for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
-				apollo.broadcast(AI, input)
-			for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
-				if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
-					playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
-			message_admins("[key_name_admin(src)] has created an AI Apollo report")
-			log_admin("AI Apollo report: [input]")
+	var/datum/ares_link/link = GLOB.ares_link
+	if(link.p_apollo.inoperable())
+		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+		return FALSE
+
+	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
+	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
+		apollo.broadcast(AI, input)
+	for(var/mob/listener as anything in (GLOB.human_mob_list + GLOB.dead_mob_list))
+		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
+			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+	message_admins("[key_name_admin(src)] has created an AI APOLLO report")
+	log_admin("AI APOLLO report: [input]")
 
 /client/proc/cmd_admin_create_AI_shipwide_report()
 	set name = "Report: ARES Shipwide"
@@ -584,19 +580,14 @@
 	var/input = input(usr, "This is an announcement type message from the ship's AI. This will be announced to every conscious human on Almayer z-level. Be aware, this will work even if ARES unpowered/destroyed. Check with online staff before you send this.", "What?", "") as message|null
 	if(!input)
 		return FALSE
+	for(var/obj/structure/machinery/ares/processor/interface/processor in machines)
+		if(processor.inoperable())
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+			return
 
-	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
-		if(!(C.inoperable()))
-// var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
-// P.name = "'[MAIN_AI_SYSTEM] Update.'"
-// P.info = input
-// P.update_icon()
-			C.messagetitle.Add("[MAIN_AI_SYSTEM] Shipwide Update")
-			C.messagetext.Add(input)
-
-	shipwide_ai_announcement(input)
-	message_admins("[key_name_admin(src)] has created an AI shipwide report")
-	log_admin("[key_name_admin(src)] AI shipwide report: [input]")
+		shipwide_ai_announcement(input)
+		message_admins("[key_name_admin(src)] has created an AI shipwide report")
+		log_admin("[key_name_admin(src)] AI shipwide report: [input]")
 
 /client/proc/cmd_admin_create_predator_report()
 	set name = "Report: Yautja AI"
@@ -753,7 +744,7 @@
 		create_humans_html = replacetext(create_humans_html, "null /* object types */", "\"[equipment_presets]\"")
 		create_humans_html = replacetext(create_humans_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
 
-	show_browser(user, replacetext(create_humans_html, "/* ref src */", "\ref[src]"), "Create Humans", "create_humans", "size=450x630")
+	show_browser(user, replacetext(create_humans_html, "/* ref src */", "\ref[src]"), "Create Humans", "create_humans", "size=450x720")
 
 /client/proc/create_humans()
 	set name = "Create Humans"
@@ -839,7 +830,6 @@
 			if(isnull(OBShell.double_explosion_delay)) return
 			statsmessage = "Custom HE OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Blast Power: [OBShell.standard_power], Blast Falloff: [OBShell.standard_falloff], Blast Delay: [OBShell.double_explosion_delay]."
 			warhead = OBShell
-			qdel(OBShell)
 		if("Custom Cluster")
 			var/obj/structure/ob_ammo/warhead/cluster/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "Cluster orbital warhead")
@@ -856,7 +846,6 @@
 			if(isnull(OBShell.explosion_falloff)) return
 			statsmessage = "Custom Cluster OB ([OBShell.name]) Stats from [key_name(usr)]: Salvos: [OBShell.total_amount], Shot per Salvo: [OBShell.instant_amount], Explosion Power: [OBShell.explosion_power], Explosion Falloff: [OBShell.explosion_falloff]."
 			warhead = OBShell
-			qdel(OBShell)
 		if("Custom Incendiary")
 			var/obj/structure/ob_ammo/warhead/incendiary/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "Incendiary orbital warhead")
@@ -885,19 +874,28 @@
 				if(isnull(OBShell.fire_color)) return
 			statsmessage = "Custom Incendiary OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Fire Distance: [OBShell.distance], Fire Duration: [OBShell.fire_level], Fire Strength: [OBShell.burn_level]."
 			warhead = OBShell
-			qdel(OBShell)
 
 	if(custom)
-		if(alert(usr, statsmessage, "Confirm Stats", "Yes", "No") != "Yes") return
+		if(alert(usr, statsmessage, "Confirm Stats", "Yes", "No") != "Yes")
+			qdel(warhead)
+			return
 		message_admins(statsmessage)
 
 	var/turf/target = get_turf(usr.loc)
 
 	if(alert(usr, "Fire or Spawn Warhead?", "Mode", "Fire", "Spawn") == "Fire")
-		if(alert("Are you SURE you want to do this? It will create an OB explosion!",, "Yes", "No") != "Yes") return
+		if(alert("Are you SURE you want to do this? It will create an OB explosion!",, "Yes", "No") != "Yes")
+			qdel(warhead)
+			return
+
 		message_admins("[key_name(usr)] has fired \an [warhead.name] at ([target.x],[target.y],[target.z]).")
 		warhead.warhead_impact(target)
-		QDEL_IN(warhead, OB_CRASHING_DOWN)
+
+		if(istype(warhead, /obj/structure/ob_ammo/warhead/cluster))
+		// so the user's screen can shake for the duration of the cluster, otherwise we get a runtime.
+			QDEL_IN(warhead, OB_CLUSTER_DURATION)
+		else
+			QDEL_IN(warhead, OB_CRASHING_DOWN)
 	else
 		warhead.loc = target
 
@@ -967,12 +965,17 @@
 	else
 		var/faction = tgui_input_list(usr, "What faction do you wish to provide a bioscan for?", "Bioscan Faction", list("Xeno","Marine","Yautja"), 20 SECONDS)
 		var/variance = tgui_input_number(usr, "How variable do you want the scan to be? (+ or - an amount from truth)", "Variance", 2, 10, 0, 20 SECONDS)
+		message_admins("BIOSCAN: [key_name(usr)] admin-triggered a bioscan for [faction].")
 		GLOB.bioscan_data.get_scan_data()
 		switch(faction)
 			if("Xeno")
 				GLOB.bioscan_data.qm_bioscan(variance)
 			if("Marine")
-				GLOB.bioscan_data.ares_bioscan(FALSE, variance)
+				var/force_check = tgui_alert(usr, "Do you wish to force ARES to display the bioscan?", "Display force", list("Yes", "No"), 20 SECONDS)
+				var/force_status = FALSE
+				if(force_check == "Yes")
+					force_status = TRUE
+				GLOB.bioscan_data.ares_bioscan(force_status, variance)
 			if("Yautja")
 				GLOB.bioscan_data.yautja_bioscan()
 

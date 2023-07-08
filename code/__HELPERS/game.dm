@@ -241,34 +241,69 @@
 		else
 			return get_step(start, EAST)
 
-// Same as above but for alien candidates.
-/proc/get_alien_candidates()
+/// Get a list of observers that can be alien candidates, optionally sorted by larva_queue_time
+/proc/get_alien_candidates(sorted = TRUE)
 	var/list/candidates = list()
 
-	for(var/i in GLOB.observer_list)
-		var/mob/dead/observer/O = i
+	for(var/mob/dead/observer/cur_obs as anything in GLOB.observer_list)
+		// Preference check
+		if(!cur_obs.client || !cur_obs.client.prefs || !(cur_obs.client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
+			continue
+
 		// Jobban check
-		if(!O.client || !O.client.prefs || !(O.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) || jobban_isbanned(O, JOB_XENOMORPH))
+		if(jobban_isbanned(cur_obs, JOB_XENOMORPH))
 			continue
 
 		//players that can still be revived are skipped
-		if(O.mind && O.mind.original && ishuman(O.mind.original))
-			var/mob/living/carbon/human/H = O.mind.original
-			if (H.check_tod() && H.is_revivable())
+		if(cur_obs.mind && cur_obs.mind.original && ishuman(cur_obs.mind.original))
+			var/mob/living/carbon/human/cur_human = cur_obs.mind.original
+			if(cur_human.check_tod() && cur_human.is_revivable())
 				continue
 
 		// copied from join as xeno
-		var/deathtime = world.time - O.timeofdeath
-		if(deathtime < 3000 && ( !O.client.admin_holder || !(O.client.admin_holder.rights & R_ADMIN)) )
+		var/deathtime = world.time - cur_obs.timeofdeath
+		if(deathtime < XENO_JOIN_DEAD_TIME && ( !cur_obs.client.admin_holder || !(cur_obs.client.admin_holder.rights & R_ADMIN)) )
 			continue
 
-		// Admins and AFK players cannot be drafted
-		if(O.client.inactivity / 600 > ALIEN_SELECT_AFK_BUFFER + 5 || (O.client.admin_holder && (O.client.admin_holder.rights & R_MOD)) && O.adminlarva == 0)
+		// AFK players cannot be drafted
+		if(cur_obs.client.inactivity > XENO_JOIN_AFK_TIME_LIMIT)
 			continue
 
-		candidates += O
+		// Mods with larva protection cannot be drafted
+		if((cur_obs.client.admin_holder && (cur_obs.client.admin_holder.rights & R_MOD)) && !cur_obs.adminlarva)
+			continue
+
+		candidates += cur_obs
+
+	// Optionally sort by larva_queue_time
+	if(sorted && length(candidates))
+		candidates = sort_list(candidates, GLOBAL_PROC_REF(cmp_obs_larvaqueuetime_asc))
 
 	return candidates
+
+/**
+ * Messages observers that are currently candidates an update on the queue.
+ *
+ * Arguments:
+ * * candidates - The list of observers from get_alien_candidates()
+ * * dequeued - How many candidates to skip messaging because they were dequeued
+ * * cache_only - Whether to not actually send a to_chat message and instead only update larva_queue_cached_message
+ */
+/proc/message_alien_candidates(list/candidates, dequeued, cache_only = FALSE)
+	var/new_players = 0
+	for(var/i in (1 + dequeued) to candidates.len)
+		var/mob/dead/observer/cur_obs = candidates[i]
+
+		// Generate the messages
+		var/cached_message = SPAN_XENONOTICE("You are currently [i-dequeued]\th in the larva queue. There are [new_players] ahead of you that have yet to play this round.")
+		cur_obs.larva_queue_cached_message = cached_message
+		if(!cache_only)
+			var/chat_message = dequeued ? replacetext(cached_message, "currently", "now") : cached_message
+			to_chat(candidates[i], chat_message)
+
+		// Count how many are prioritized
+		if(cur_obs.client.player_details.larva_queue_time < 2) // 0 and 1 because facehuggers/t-domers are slightly deprioritized
+			new_players++
 
 /proc/convert_k2c(temp)
 	return ((temp - T0C))

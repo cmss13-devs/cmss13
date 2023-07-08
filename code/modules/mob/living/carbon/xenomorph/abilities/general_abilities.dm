@@ -481,3 +481,68 @@
 	// Perform check_state(TRUE) silently:
 	if(xeno && !xeno.is_mob_incapacitated() || !xeno.buckled || !xeno.evolving && xeno.plasma_stored >= plasma_cost)
 		return TRUE
+
+/datum/action/xeno_action/onclick/tacmap
+	name = "View Tactical Map"
+	action_icon_state = "toggle_queen_zoom"
+	ability_name = "view tacmap"
+
+	var/mob/living/carbon/xenomorph/queen/tracked_queen
+
+/datum/action/xeno_action/onclick/tacmap/Destroy()
+	tracked_queen = null
+	return ..()
+
+/datum/action/xeno_action/onclick/tacmap/give_to(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+
+	RegisterSignal(xeno.hive, COMSIG_HIVE_NEW_QUEEN, PROC_REF(handle_new_queen))
+
+	if(!xeno.hive.living_xeno_queen)
+		hide_from(xeno)
+		return
+
+	if(!xeno.hive.living_xeno_queen.ovipositor)
+		hide_from(xeno)
+
+	handle_new_queen(new_queen = xeno.hive.living_xeno_queen)
+
+/// handles the addition of a new queen, hiding if appropriate
+/datum/action/xeno_action/onclick/tacmap/proc/handle_new_queen(datum/hive_status/hive, mob/living/carbon/xenomorph/queen/new_queen)
+	SIGNAL_HANDLER
+
+	if(tracked_queen)
+		UnregisterSignal(tracked_queen, list(COMSIG_QUEEN_MOUNT_OVIPOSITOR, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, COMSIG_PARENT_QDELETING))
+
+	tracked_queen = new_queen
+
+	if(!tracked_queen.ovipositor)
+		hide_from(owner)
+
+	RegisterSignal(tracked_queen, COMSIG_QUEEN_MOUNT_OVIPOSITOR, PROC_REF(handle_mount_ovipositor))
+	RegisterSignal(tracked_queen, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(handle_dismount_ovipositor))
+	RegisterSignal(tracked_queen, COMSIG_PARENT_QDELETING, PROC_REF(handle_queen_qdel))
+
+/// deals with the queen mounting the ovipositor, unhiding the action from the user
+/datum/action/xeno_action/onclick/tacmap/proc/handle_mount_ovipositor()
+	SIGNAL_HANDLER
+
+	unhide_from(owner)
+
+/// deals with the queen dismounting the ovipositor, hiding the action from the user
+/datum/action/xeno_action/onclick/tacmap/proc/handle_dismount_ovipositor()
+	SIGNAL_HANDLER
+
+	hide_from(owner)
+
+/// cleans up references to the queen when the queen is being qdel'd, hides the action from the user
+/datum/action/xeno_action/onclick/tacmap/proc/handle_queen_qdel()
+	SIGNAL_HANDLER
+
+	tracked_queen = null
+	hide_from(owner)
+
+/datum/action/xeno_action/onclick/tacmap/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.xeno_tacmap()
+	return ..()

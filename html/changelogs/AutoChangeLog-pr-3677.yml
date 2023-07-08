@@ -1,5 +1,0 @@
-author: "BeagleGaming1"
-delete-after: True
-changes:
-  - rscadd: "Melting flares makes the flares burn out faster, instead of melting like normal"
-  - balance: "Flares last ~10 mins, and flares in the air last ~5 mins"

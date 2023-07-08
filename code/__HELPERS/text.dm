@@ -164,6 +164,11 @@
 		t = "0[t]"
 	return t
 
+/proc/pad_trailing(text, padding, size)
+	while (length(text) < size)
+		text = "[text][padding]"
+	return text
+
 //Adds 'u' number of spaces ahead of the text 't'
 /proc/add_lspace(t, u)
 	while(length(t) < u)

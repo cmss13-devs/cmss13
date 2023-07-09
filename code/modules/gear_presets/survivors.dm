@@ -1425,7 +1425,7 @@
 	idtype = /obj/item/card/id/dogtag
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
-		ACCESS_CIVILIAN_PUBLIC
+		ACCESS_CIVILIAN_PUBLIC,
 	)
 
 /datum/equipment_preset/survivor/upp/load_gear(mob/living/carbon/human/new_human)

@@ -2709,10 +2709,10 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "WL" = (
-/obj/effect/landmark/survivor_spawner/upp_specialist,
 /obj/item/prop/colony/usedbandage{
 	dir = 1
 	},
+/obj/effect/landmark/survivor_spawner/upp_specialist,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin5"
 	},

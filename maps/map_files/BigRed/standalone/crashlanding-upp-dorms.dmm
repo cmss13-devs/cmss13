@@ -513,11 +513,9 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "kd" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "dorms"
-	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sandbags/large_stack,
 /turf/open/floor/plating{
-	dir = 8;
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/outside/dorms)
@@ -1352,12 +1350,6 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/c)
-"zq" = (
-/obj/item/stack/barbed_wire/small_stack,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
-/area/bigredv2/outside/dorms)
 "zr" = (
 /turf/open/floor{
 	dir = 8;
@@ -1973,7 +1965,7 @@
 	},
 /area/bigredv2/outside/c)
 "Kd" = (
-/obj/item/stack/sandbags/large_stack,
+/obj/item/stack/barbed_wire/small_stack,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -2062,6 +2054,7 @@
 	},
 /area/bigredv2/outside/dorms)
 "KV" = (
+/obj/structure/closet/crate/supply,
 /obj/item/ammo_box/magazine/misc/flares,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -3084,7 +3077,7 @@ bJ
 gG
 BS
 fl
-kd
+aI
 Tm
 rP
 ep
@@ -3388,8 +3381,8 @@ fy
 sI
 mW
 XL
-zq
-AH
+ql
+kd
 TF
 VX
 fe

@@ -1648,7 +1648,16 @@
 /area/bigredv2/outside/dorms)
 "DY" = (
 /obj/structure/surface/table/almayer,
-/obj/item/map/big_red_map,
+/obj/item/clothing/accessory/patch/upp{
+	pixel_y = -6;
+	pixel_x = -7
+	},
+/obj/item/paper{
+	pixel_y = 5;
+	pixel_x = 5;
+	info = "[center][UPP][small][b]Union Of Progressive People's Fourth Fleet[/b][/small][b][large]Orders For 173rd Airborne Recon: 2nd Platoon[large][/b][small]Form U-1053[/small][/center][hr][b]Squad: Bravo[/b][b]Personnel: Sixteen Plus Synthetic[/b][b]Vessel: Fulcrum[/b][hr]The following is an order to bravo squad. New orders. Airborne reconnisance of hostile colony, Solaris Ridge, Routerra I (UA Code LV-1413). Pop 120. Suspected biological warfare experiments being conducted onsight. Unacceptable risk of UA/USCM acquisition. Mission Priority: Aibrone reconnisance, if detection of biological forms noted, authorization for rapid assault and recovery. If assault performed, leave no witnesses. [hr][center][b]Authorizing Commander[/b]Name: [redacted] GanbaatarRank: Kolonel[hr][small][i]FOR COMMAND SANCTIONED USE ONLY[/i][/small]";
+	name = "briefing"
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
@@ -2260,8 +2269,8 @@
 /obj/structure/prop/wooden_cross{
 	pixel_y = 13
 	},
-/obj/item/toy/deck/uno{
-	pixel_y = -5
+/obj/item/clothing/accessory/patch/upp{
+	pixel_y = -6
 	},
 /turf/open/mars{
 	icon_state = "mars_dirt_8"

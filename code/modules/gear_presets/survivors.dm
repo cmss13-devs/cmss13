@@ -1429,7 +1429,10 @@
 	)
 
 /datum/equipment_preset/survivor/upp/load_gear(mob/living/carbon/human/new_human)
+
+
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/survivor (new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp (new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flare(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)

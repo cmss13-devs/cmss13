@@ -2426,13 +2426,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
-"Rq" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = s;
-	name = "Fulcrum"
-	},
-/area/bigredv2/outside/dorms)
 "RA" = (
 /obj/structure/girder,
 /obj/structure/prop/invuln/lattice_prop{
@@ -3282,7 +3275,7 @@ eD
 KO
 Wm
 Fb
-Rq
+Op
 hQ
 rJ
 UD

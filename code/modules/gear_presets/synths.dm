@@ -451,6 +451,25 @@
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
+/datum/equipment_preset/synth/survivor/upp_synth
+	name = "Survivor - Synthetic - UPP Synth"
+	faction = FACTION_UPP
+	idtype = /obj/item/card/id/dogtag
+	role_comm_title = "UPP Syn"
+	equipment_to_spawn = list(
+		WEAR_HEAD = /obj/item/clothing/head/uppcap/beret,
+		WEAR_EYES = /obj/item/clothing/glasses/hud/health,
+		WEAR_BODY = /obj/item/clothing/under/marine/veteran/UPP/medic/survivor,
+		WEAR_BACK = /obj/item/storage/backpack/lightpack/upp,
+		WEAR_IN_BACK = /obj/item/storage/firstaid/adv,
+		WEAR_IN_BACK = /obj/item/roller,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/webbing,
+		WEAR_WAIST = /obj/item/storage/belt/medical/lifesaver/upp/partial,
+		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran,
+		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
+		WEAR_FEET = /obj/item/clothing/shoes/marine/upp,
+	)
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/working_joe

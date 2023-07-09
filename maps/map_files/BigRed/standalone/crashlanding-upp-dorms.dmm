@@ -343,6 +343,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -810,8 +811,8 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood"
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
 	},
 /area/bigredv2/outside/dorms)
 "yi" = (
@@ -1398,6 +1399,7 @@
 /obj/item/ammo_box/rounds/type71/heap/empty{
 	bullet_amount = 0
 	},
+/obj/item/map/big_red_map,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin4"
 	},
@@ -1605,8 +1607,8 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "wood"
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
 	},
 /area/bigredv2/outside/bar)
 "Vw" = (

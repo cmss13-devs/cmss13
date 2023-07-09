@@ -76,6 +76,8 @@
 
 /obj/item/alien_embryo/proc/process_growth()
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	//The total time the person is hugged divided by stages until burst
+	var/per_stage_hugged_time = CONFIG_GET(number/burst_timer)/5
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.
 		if(affected_mob.in_stasis || affected_mob.bodytemperature < 170)
@@ -89,7 +91,7 @@
 			if(stage < 5)
 				counter += 1 * hive.larva_gestation_multiplier
 
-		if(stage < 5 && counter >= 90)
+		if(stage < 5 && counter >= per_stage_hugged_time)
 			counter = 0
 			stage++
 			if(iscarbon(affected_mob))

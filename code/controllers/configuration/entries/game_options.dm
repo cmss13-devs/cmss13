@@ -122,3 +122,8 @@
 /datum/config_entry/number/extra_larva_per_burst
 	config_entry_value = 1
 	integer = FALSE
+
+/datum/config_entry/number/burst_timer
+	min_val = 1
+	config_entry_value = 7.5 MINUTES
+	integer = TRUE

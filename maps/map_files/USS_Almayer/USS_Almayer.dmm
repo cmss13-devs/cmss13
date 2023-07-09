@@ -12009,12 +12009,6 @@
 	layer = 4.1;
 	pixel_y = -29
 	},
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -12029,12 +12023,6 @@
 /obj/structure/machinery/cm_vending/clothing/marine/bravo{
 	density = 0;
 	pixel_y = 16
-	},
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/obj/structure/barricade/handrail{
-	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -12902,12 +12890,7 @@
 	},
 /area/almayer/squads/bravo)
 "aTx" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/machinery/power/apc/almayer{
-	dir = 4
-	},
+/obj/structure/machinery/power/apc/almayer,
 /obj/structure/surface/table/almayer,
 /obj/item/tool/hand_labeler,
 /turf/open/floor/almayer{
@@ -15327,13 +15310,13 @@
 	},
 /area/almayer/squads/alpha)
 "bfw" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	name = "General Listening Channel";
 	pixel_y = 28
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -15673,33 +15656,11 @@
 	icon_state = "red"
 	},
 /area/almayer/squads/alpha)
-"bgV" = (
-/obj/structure/machinery/cm_vending/clothing/marine/charlie{
-	density = 0;
-	layer = 4.1;
-	pixel_y = -29
-	},
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/squads/charlie)
 "bgW" = (
 /obj/structure/machinery/cm_vending/clothing/marine/charlie{
 	density = 0;
 	layer = 4.1;
 	pixel_y = -29
-	},
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/obj/structure/barricade/handrail{
-	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -15992,12 +15953,6 @@
 "bjs" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -26863,21 +26818,6 @@
 	icon_state = "emerald"
 	},
 /area/almayer/squads/charlie)
-"cje" = (
-/obj/structure/machinery/cm_vending/clothing/marine/delta{
-	density = 0;
-	pixel_y = 16
-	},
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/squads/delta)
 "cjf" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -26959,12 +26899,6 @@
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 1
-	},
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/obj/structure/barricade/handrail{
-	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -27107,12 +27041,6 @@
 "ckr" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -27173,12 +27101,6 @@
 /obj/structure/machinery/cm_vending/clothing/marine/delta{
 	density = 0;
 	pixel_y = 16
-	},
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/obj/structure/barricade/handrail{
-	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -27966,9 +27888,7 @@
 	},
 /area/almayer/squads/charlie)
 "coj" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 4
-	},
+/obj/structure/machinery/power/apc/almayer,
 /obj/structure/surface/table/almayer,
 /obj/item/tool/hand_labeler,
 /turf/open/floor/almayer{
@@ -41440,12 +41360,6 @@
 /obj/structure/sign/safety/cryo{
 	pixel_x = 32
 	},
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -45227,12 +45141,6 @@
 /obj/structure/sign/safety/cryo{
 	pixel_x = 32
 	},
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -45813,9 +45721,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/firealarm{
-	pixel_y = -29
-	},
+/obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "orange"
 	},
@@ -47545,12 +47451,6 @@
 /obj/structure/sign/safety/cryo{
 	pixel_x = 32
 	},
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -48261,12 +48161,6 @@
 	},
 /obj/structure/sign/safety/cryo{
 	pixel_x = 32
-	},
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/obj/structure/barricade/handrail{
-	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -71323,6 +71217,9 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/machinery/firealarm{
+	pixel_y = -29
 	},
 /turf/open/floor/almayer{
 	icon_state = "orange"
@@ -118130,7 +118027,7 @@ aLT
 aLT
 aLT
 aLT
-bfw
+bfx
 rGj
 aQT
 aLT
@@ -118379,9 +118276,9 @@ cgr
 bJC
 raK
 mzg
-bgV
+bgW
 bJC
-cje
+ckR
 ckX
 iyS
 bSJ
@@ -118536,7 +118433,7 @@ bco
 bdr
 bdA
 aLT
-bfx
+bfw
 rGj
 aQT
 aLT
@@ -119597,7 +119494,7 @@ cgt
 bJC
 chS
 bQA
-bgV
+bgW
 bJC
 ckR
 ckX
@@ -120206,7 +120103,7 @@ cgt
 bJC
 chV
 cjf
-bgV
+bgW
 bJC
 ckR
 bTC

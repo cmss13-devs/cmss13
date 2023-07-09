@@ -1484,7 +1484,7 @@
 	var/i = rand(1,3)
 	switch(i)
 		if (1 , 2)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/PK9(new_human), WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/NY(new_human), WEAR_WAIST)
 		if (3)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/upp(new_human), WEAR_WAIST)
 /datum/equipment_preset/survivor/upp/soldier

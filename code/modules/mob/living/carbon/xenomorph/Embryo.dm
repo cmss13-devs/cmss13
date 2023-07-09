@@ -89,7 +89,7 @@
 			if(stage < 5)
 				counter += 1 * hive.larva_gestation_multiplier
 
-		if(stage < 5 && counter >= 90)
+		if(stage < 5 && counter >= 84)
 			counter = 0
 			stage++
 			if(iscarbon(affected_mob))
@@ -98,6 +98,14 @@
 
 	switch(stage)
 		if(2)
+			if(prob(1))
+				if(affected_mob.knocked_out < 1)
+					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
+					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"), \
+												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
+					affected_mob.apply_effect(3, PARALYZE)
+					affected_mob.make_jittery(105)
+					affected_mob.take_limb_damage(1)
 			if(prob(2))
 				var/message = SPAN_WARNING("[pick("Your chest hurts a little bit", "Your stomach hurts")].")
 				to_chat(affected_mob, message)
@@ -111,15 +119,15 @@
 					affected_mob.take_limb_damage(1)
 			else if(prob(2))
 				affected_mob.emote("[pick("sneeze", "cough")]")
-		if(4)
-			if(prob(1))
+			if(prob(3))
 				if(affected_mob.knocked_out < 1)
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"), \
-												SPAN_DANGER("You start shaking uncontrollably!"))
-					affected_mob.apply_effect(10, PARALYZE)
+												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
+					affected_mob.apply_effect(4, PARALYZE)
 					affected_mob.make_jittery(105)
 					affected_mob.take_limb_damage(1)
+		if(4)
 			if(prob(2))
 				affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 				var/message = pick("Your chest hurts badly", "It becomes difficult to breathe", "Your heart starts beating rapidly, and each beat is painful")
@@ -127,6 +135,14 @@
 				to_chat(affected_mob, message)
 				if(prob(50))
 					affected_mob.emote("scream")
+			if(prob(4))
+				if(affected_mob.knocked_out < 1)
+					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
+					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"), \
+												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
+					affected_mob.apply_effect(5, PARALYZE)
+					affected_mob.make_jittery(105)
+					affected_mob.take_limb_damage(1)
 		if(5)
 			become_larva()
 		if(6)

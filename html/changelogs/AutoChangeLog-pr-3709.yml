@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Gardener's hardy weeds now upgrade normal weeds (just like hive weeds upgrade weeds)."
-  - balance: "Gardener's hardy weeds now don't prevent special structures (core and pylons) but they are still only allowed if the turf allows them."

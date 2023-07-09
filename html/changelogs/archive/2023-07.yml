@@ -116,3 +116,12 @@
   - balance: changes M4A3 magazine size from 9 to 12
   Zonespace27:
   - bugfix: The maintenance jack should work a little better at crowbarring things.
+2023-07-09:
+  Khadd:
+  - rscadd: added a iv tube between the user and the bloodpack / iv drip
+  - imageadd: sprites for the iv tube
+  Zonespace27:
+  - rscadd: Working Joes now have an emote panel to use voice lines, accessible as
+      an action button.
+  theselfish:
+  - qol: Foxtrot's radio channel is now on if you have multi-squad in your headset.

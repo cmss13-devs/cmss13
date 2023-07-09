@@ -156,7 +156,6 @@
 		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
 			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b>" + " [OBSERVER_JMP(observer, human)]"))
 		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b>"))
-	timeofdeath = 1 // Ever so slightly deprioritized for larva queue
 	qdel(src)
 	if(hug_area)
 		xeno_message(SPAN_XENOMINORWARNING("You sense that [src] has facehugged a host at \the [hug_area]!"), 1, src.hivenumber)

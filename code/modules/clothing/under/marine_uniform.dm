@@ -534,11 +534,11 @@
 
 /obj/item/clothing/under/marine/veteran/UPP/survivor/Initialize(mapload)
 	. = ..()
-	var/R = rand(1,4)
+	var/R = rand(1,2)
 	switch(R)
-		if(1 , 2)
+		if(1)
 			roll_suit_sleeves(TRUE)
-		if(3 , 4)
+		if(2)
 			roll_suit_jacket(TRUE)
 
 /obj/item/clothing/under/marine/veteran/UPP/medic
@@ -552,11 +552,11 @@
 
 /obj/item/clothing/under/marine/veteran/UPP/medic/survivor/Initialize(mapload)
 	. = ..()
-	var/R = rand(1,4)
+	var/R = rand(1,2)
 	switch(R)
-		if(1 , 2)
+		if(1)
 			roll_suit_sleeves(TRUE)
-		if(3 , 4)
+		if(2)
 			roll_suit_jacket(TRUE)
 
 /obj/item/clothing/under/marine/veteran/UPP/engi
@@ -570,11 +570,11 @@
 
 /obj/item/clothing/under/marine/veteran/UPP/engi/survivor/Initialize(mapload)
 	. = ..()
-	var/R = rand(1,4)
+	var/R = rand(1,2)
 	switch(R)
-		if(1 , 2)
+		if(1)
 			roll_suit_sleeves(TRUE)
-		if(3 , 4)
+		if(2)
 			roll_suit_jacket(TRUE)
 
 /obj/item/clothing/under/marine/veteran/UPP/mp

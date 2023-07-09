@@ -1,4 +1,0 @@
-author: "Clairion"
-delete-after: True
-changes:
-  - bugfix: "Vampire Lurker headbite will no longer trigger if the target is moved away during windup."

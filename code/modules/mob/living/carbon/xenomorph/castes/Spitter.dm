@@ -51,6 +51,7 @@
 		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/onclick/charge_spit,
 		/datum/action/xeno_action/activable/spray_acid/spitter,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,

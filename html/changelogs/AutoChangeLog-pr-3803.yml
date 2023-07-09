@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscdel: "Remove first life priority for larva queue"
+  - bugfix: "Fix ghosting as a facehugger counting as death for the larva queue"

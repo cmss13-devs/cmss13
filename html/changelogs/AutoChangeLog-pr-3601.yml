@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - rscadd: "Added InfluxDB backed metrics logging for some of the most used game statistics. This will allow to graph them over time and give better insight as to what happens in rounds."

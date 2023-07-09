@@ -557,8 +557,6 @@
 		if(attacked_door.locked) //Bolted
 			to_chat(user, SPAN_DANGER("You can't pry open [attacked_door] while it is bolted shut."))
 			return
-		if(!attacked_door.arePowerSystemsOn()) //Opens like normal if unpowered
-			return FALSE
 
 		if(requires_superstrength_pry)
 			if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
@@ -645,7 +643,7 @@
 				resin_door.Open()
 				return
 
-	if(istype(attacked_obj, /turf/open/floor))
+	else if(istype(attacked_obj, /turf/open/floor))
 		var/turf/open/floor/flooring = attacked_obj
 
 		if(crowbar_mode && user.a_intent == INTENT_HELP) //Only pry flooring on help intent

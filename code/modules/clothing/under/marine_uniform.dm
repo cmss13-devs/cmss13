@@ -530,6 +530,17 @@
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/gimmick/jason, /obj/item/clothing/suit/storage/snow_suit/soviet, /obj/item/clothing/suit/storage/snow_suit/survivor, /obj/item/clothing/suit/storage/webbing)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
+/obj/item/clothing/under/marine/veteran/UPP/survivor
+
+/obj/item/clothing/under/marine/veteran/UPP/survivor/Initialize(mapload)
+	. = ..()
+	var/R = rand(1,4)
+	switch(R)
+		if(1 , 2)
+			roll_suit_sleeves(TRUE)
+		if(3 , 4)
+			roll_suit_jacket(TRUE)
+
 /obj/item/clothing/under/marine/veteran/UPP/medic
 	name = "\improper UPP medic fatigues"
 	desc = "A set of medic UPP fatigues, mass produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
@@ -537,12 +548,34 @@
 	worn_state = "upp_uniform_medic"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
+/obj/item/clothing/under/marine/veteran/UPP/medic/survivor
+
+/obj/item/clothing/under/marine/veteran/UPP/medic/survivor/Initialize(mapload)
+	. = ..()
+	var/R = rand(1,4)
+	switch(R)
+		if(1 , 2)
+			roll_suit_sleeves(TRUE)
+		if(3 , 4)
+			roll_suit_jacket(TRUE)
+
 /obj/item/clothing/under/marine/veteran/UPP/engi
 	name = "\improper UPP engineer fatigues"
 	desc = "A set of Engineer UPP fatigues, mass produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
 	icon_state = "upp_uniform_engi"
 	worn_state = "upp_uniform_engi"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
+/obj/item/clothing/under/marine/veteran/UPP/engi/survivor
+
+/obj/item/clothing/under/marine/veteran/UPP/engi/survivor/Initialize(mapload)
+	. = ..()
+	var/R = rand(1,4)
+	switch(R)
+		if(1 , 2)
+			roll_suit_sleeves(TRUE)
+		if(3 , 4)
+			roll_suit_jacket(TRUE)
 
 /obj/item/clothing/under/marine/veteran/UPP/mp
 	name = "\improper UPP Military Police fatigues"

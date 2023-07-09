@@ -465,7 +465,7 @@
 		WEAR_IN_BACK = /obj/item/roller,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/webbing,
 		WEAR_WAIST = /obj/item/storage/belt/medical/lifesaver/upp/partial,
-		WEAR_ACCESSORY 	/obj/item/clothing/accessory/patch/upp,
+		WEAR_ACCESSORY = /obj/item/clothing/accessory/patch/upp,
 		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/upp,

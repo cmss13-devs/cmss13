@@ -1,8 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ae" = (
-/obj/item/ammo_magazine/rifle/type71/heap,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
 /turf/open/mars{
 	icon_state = "mars_dirt_5"
 	},
@@ -72,7 +74,9 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "cd" = (
-/obj/item/ammo_magazine/rifle/type71/heap,
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3"
 	},
@@ -421,9 +425,11 @@
 	},
 /area/bigredv2/outside/dorms)
 "hZ" = (
-/obj/item/ammo_magazine/rifle/type71/heap,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "ii" = (
@@ -1306,7 +1312,6 @@
 /area/bigredv2/outside/dorms)
 "yS" = (
 /obj/structure/surface/table/almayer,
-/obj/item/ammo_magazine/rifle/type71/heap,
 /obj/item/reagent_container/food/drinks/bottle/vodka,
 /obj/item/reagent_container/food/drinks/bottle/vodka{
 	pixel_x = -7;
@@ -1318,6 +1323,9 @@
 	},
 /obj/item/reagent_container/food/drinks/bottle/vodka{
 	pixel_x = 6
+	},
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -1555,7 +1563,9 @@
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
-/obj/item/ammo_magazine/rifle/type71/heap,
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "CX" = (
@@ -1655,8 +1665,10 @@
 	},
 /area/bigredv2/outside/dorms)
 "EF" = (
-/obj/item/ammo_magazine/rifle/type71/heap,
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
 /turf/open/floor{
 	icon_state = "asteroidwarning"
 	},
@@ -1951,9 +1963,11 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "Kb" = (
-/obj/item/ammo_magazine/rifle/type71/heap,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
 	},
@@ -1984,8 +1998,13 @@
 /area/bigredv2/outside/dorms)
 "Ky" = (
 /obj/structure/surface/table/almayer,
-/obj/item/weapon/gun/minigun/upp{
-	ammo = 0
+/obj/item/prop{
+	desc = "A gas-operated rotary machine gun used by UPP heavies. Its enormous volume of fire and ammunition capacity allows the suppression of large concentrations of enemy forces. Heavy weapons training is required control its recoil, is non-functional.";
+	icon_state = "painless";
+	item_state = "m41amk1";
+	name = "\improper GSh-7.62 rotary machine gun";
+	pixel_y = 7;
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -2022,7 +2041,9 @@
 	dir = 2;
 	name = "\improper Fulcrum Airlock"
 	},
-/turf/open/space/basic,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
 /area/bigredv2/outside/dorms)
 "KO" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -2137,8 +2158,10 @@
 	},
 /area/bigredv2/outside/dorms)
 "MJ" = (
-/obj/structure/girder,
-/turf/open/space/basic,
+/obj/item/storage/belt/utility,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
 /area/bigredv2/outside/dorms)
 "MK" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -2187,8 +2210,10 @@
 	},
 /area/bigredv2/outside/dorms)
 "Oz" = (
-/obj/item/ammo_magazine/rifle/type71/heap,
 /obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3"
 	},
@@ -2214,7 +2239,9 @@
 	},
 /area/bigredv2/outside/c)
 "OU" = (
-/obj/item/ammo_magazine/rifle/type71/heap,
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
 /turf/open/mars{
 	icon_state = "mars_dirt_5"
 	},
@@ -2297,11 +2324,13 @@
 	},
 /area/bigredv2/outside/dorms)
 "Qb" = (
-/obj/item/ammo_magazine/rifle/type71/heap,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
 /turf/open/mars{
 	icon_state = "mars_dirt_5"
 	},
@@ -2387,7 +2416,9 @@
 /area/bigredv2/outside/dorms)
 "RM" = (
 /obj/item/ammo_casing/bullet,
-/obj/item/ammo_magazine/rifle/type71/heap,
+/obj/item/ammo_magazine/rifle/type71/heap{
+	current_rounds = 0
+	},
 /turf/open/mars{
 	icon_state = "mars_dirt_5"
 	},
@@ -3320,7 +3351,7 @@ mj
 KV
 PC
 cd
-rp
+MJ
 rp
 Oz
 XL
@@ -3582,7 +3613,7 @@ zX
 SG
 lC
 zZ
-MJ
+pg
 GL
 aI
 Fm

@@ -240,5 +240,5 @@ GAMEMODE_ROUNDS_NEEDED 5
 ## Default gamemode to auto-switch back to after a round has concluded
 GAMEMODE_DEFAULT extended
 
-## How long the mob will take to burst in seconds
-# BURST_TIMER 450
+## How long the mob will take to chestburst in seconds
+#EMBRYO_BURST_TIMER 450

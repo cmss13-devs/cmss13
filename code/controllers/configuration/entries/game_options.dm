@@ -125,5 +125,5 @@
 
 /datum/config_entry/number/embryo_burst_timer
 	min_val = 1
-	config_entry_value = 7.5 MINUTES
+	config_entry_value = 450
 	integer = TRUE

@@ -192,7 +192,8 @@
 "eD" = (
 /turf/closed/shuttle/ert{
 	icon_state = "T8";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "eM" = (
@@ -296,7 +297,8 @@
 "fN" = (
 /turf/closed/shuttle/ert{
 	icon_state = "T11";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "gi" = (
@@ -424,7 +426,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/shuttle/ert{
 	icon_state = "T20";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "hZ" = (
@@ -587,7 +590,8 @@
 "lJ" = (
 /turf/closed/shuttle/ert{
 	icon_state = "upp27";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "lL" = (
@@ -790,7 +794,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/shuttle/ert{
 	icon_state = "T16";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "pg" = (
@@ -803,7 +808,8 @@
 	},
 /turf/closed/shuttle/ert{
 	icon_state = "T17";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "px" = (
@@ -823,7 +829,9 @@
 	dir = 4
 	},
 /turf/closed/shuttle/ert{
-	icon_state = "T19"
+	icon_state = "T19";
+	opacity = 0;
+	name = "Fulcrum"
 	},
 /area/bigredv2/outside/dorms)
 "pK" = (
@@ -914,7 +922,8 @@
 "ro" = (
 /turf/closed/shuttle/ert{
 	icon_state = "T4";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "rp" = (
@@ -1194,8 +1203,9 @@
 "wB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/shuttle/ert{
-	icon_state = "T11";
-	name = "Fulcrum"
+	icon_state = "T7";
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "wF" = (
@@ -1417,10 +1427,11 @@
 	},
 /area/bigredv2/outside/dorms)
 "AY" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
-	icon_state = "T7";
-	name = "Fulcrum"
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
 	},
 /area/bigredv2/outside/dorms)
 "AZ" = (
@@ -1600,7 +1611,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/shuttle/ert{
 	icon_state = "T2";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "Dv" = (
@@ -1622,7 +1634,8 @@
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/closed/shuttle/ert{
 	icon_state = "T15";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "DY" = (
@@ -1649,7 +1662,8 @@
 "En" = (
 /turf/closed/shuttle/ert{
 	icon_state = "T14";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "EF" = (
@@ -1716,7 +1730,8 @@
 "FI" = (
 /turf/closed/shuttle/ert{
 	icon_state = "T5";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "Gh" = (
@@ -1726,7 +1741,8 @@
 "Gi" = (
 /turf/closed/shuttle/ert{
 	icon_state = "T2";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "Gr" = (
@@ -2031,7 +2047,8 @@
 "KO" = (
 /turf/closed/shuttle/ert{
 	icon_state = "T7";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "KP" = (
@@ -2094,7 +2111,8 @@
 	},
 /turf/closed/shuttle/ert{
 	icon_state = "T10";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "Lv" = (
@@ -2157,7 +2175,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/shuttle/ert{
 	icon_state = "T8";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "MP" = (
@@ -2176,7 +2195,8 @@
 "Nn" = (
 /turf/closed/shuttle/ert{
 	icon_state = "T1";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "Nv" = (
@@ -2184,7 +2204,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/shuttle/ert{
 	icon_state = "T4";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "NM" = (
@@ -2397,6 +2418,13 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
+"Rq" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1";
+	opacity = s;
+	name = "Fulcrum"
+	},
+/area/bigredv2/outside/dorms)
 "RA" = (
 /obj/structure/girder,
 /obj/structure/prop/invuln/lattice_prop{
@@ -2410,7 +2438,7 @@
 	},
 /obj/structure/prop/invuln/pipe_water{
 	pixel_x = 4;
-	pixel_y = 6
+	pixel_y = 12
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
@@ -2462,7 +2490,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/shuttle/ert{
 	icon_state = "T6";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "SL" = (
@@ -2551,8 +2580,7 @@
 	pixel_y = 35
 	},
 /obj/structure/prop/invuln/pipe_water{
-	pixel_x = 4;
-	pixel_y = 6
+	pixel_y = 11
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
@@ -2636,7 +2664,8 @@
 "Vl" = (
 /turf/closed/shuttle/ert{
 	icon_state = "T16";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "Vr" = (
@@ -2685,7 +2714,8 @@
 	},
 /turf/closed/shuttle/ert{
 	icon_state = "T9";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "Ww" = (
@@ -2725,7 +2755,8 @@
 "WH" = (
 /turf/closed/shuttle/ert{
 	icon_state = "T3";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "WL" = (
@@ -2792,6 +2823,9 @@
 	},
 /area/bigredv2/outside/c)
 "XL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
@@ -2817,7 +2851,8 @@
 	},
 /turf/closed/shuttle/ert{
 	icon_state = "T7";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "XV" = (
@@ -2836,7 +2871,8 @@
 "Yf" = (
 /turf/closed/shuttle/ert{
 	icon_state = "T12";
-	name = "Fulcrum"
+	name = "Fulcrum";
+	opacity = 0
 	},
 /area/bigredv2/outside/dorms)
 "Yx" = (
@@ -3238,7 +3274,7 @@ eD
 KO
 Wm
 Fb
-Op
+Rq
 hQ
 rJ
 UD
@@ -3266,7 +3302,7 @@ CX
 KX
 CX
 wB
-eD
+KO
 KO
 KO
 Ls
@@ -3340,7 +3376,7 @@ mH
 mH
 mH
 bY
-rp
+AY
 KD
 rP
 VX
@@ -3439,7 +3475,7 @@ Gr
 Gr
 Gr
 Ve
-rp
+AY
 Kd
 rP
 YO
@@ -3498,8 +3534,8 @@ Bf
 GU
 pc
 hY
-AY
-AY
+wB
+wB
 pG
 Fb
 Op
@@ -3532,7 +3568,7 @@ HZ
 ql
 pc
 hY
-AY
+wB
 pn
 Ti
 IP

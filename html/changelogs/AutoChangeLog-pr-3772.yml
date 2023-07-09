@@ -1,0 +1,5 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - rscadd: "Acid runners don't get acid from slashing nested humans"
+  - rscadd: "Very late-stage marines do not give acid"

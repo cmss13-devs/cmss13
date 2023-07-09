@@ -341,6 +341,14 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
+"gI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/shuttle/ert{
+	icon_state = "T11";
+	name = "Fulcrum";
+	opacity = 0
+	},
+/area/bigredv2/outside/dorms)
 "hb" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/open/floor{
@@ -3301,8 +3309,8 @@ NW
 CX
 KX
 CX
-wB
-KO
+gI
+eD
 KO
 KO
 Ls

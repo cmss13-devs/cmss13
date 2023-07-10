@@ -223,25 +223,40 @@
 	set category = "Admin"
 	set hidden = TRUE
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN|R_MOD))
 		return
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
-	if(!msg)
+
+	if (!msg)
 		return
 
-	log_adminpm("ADMIN : [key_name(src)] : [msg]")
-	REDIS_PUBLISH("byond.asay", "author" = src.key, "message" = strip_html(msg), "host" = ishost(src), "rank" = admin_holder.rank)
+	REDIS_PUBLISH("byond.asay", "author" = src.key, "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.rank)
+
+	if(findtext(msg, "@") || findtext(msg, "#"))
+		var/list/link_results = check_asay_links(msg)
+		if(length(link_results))
+			msg = link_results[ASAY_LINK_NEW_MESSAGE_INDEX]
+			link_results[ASAY_LINK_NEW_MESSAGE_INDEX] = null
+			var/list/pinged_admin_clients = link_results[ASAY_LINK_PINGED_ADMINS_INDEX]
+			for(var/iter_ckey in pinged_admin_clients)
+				var/client/iter_admin_client = pinged_admin_clients[iter_ckey]
+				if(!iter_admin_client?.admin_holder)
+					continue
+				window_flash(iter_admin_client)
+				SEND_SOUND(iter_admin_client.mob, sound('sound/misc/asay_ping.ogg'))
+
+	log_adminpm("ADMIN: [key_name(src)] : [msg]")
 
 	var/color = "adminsay"
 	if(ishost(usr))
 		color = "headminsay"
 
-	if(check_rights(R_ADMIN,0))
-		msg = "<span class='[color]'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>"
-		for(var/client/C in GLOB.admins)
-			if(R_ADMIN & C.admin_holder.rights)
-				to_chat(C, msg)
+	var/channel = "ADMIN:"
+	channel = "[admin_holder.rank]:"
+	for(var/client/client as anything in GLOB.admins)
+		if((R_ADMIN|R_MOD) & client.admin_holder.rights)
+			to_chat(client, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>")
 
 /datum/admins/proc/alertall()
 	set name = "Alert All"

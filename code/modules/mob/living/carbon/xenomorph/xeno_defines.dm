@@ -285,7 +285,7 @@
 
 	var/datum/mutator_set/hive_mutators/mutators = new
 	var/tier_slot_multiplier = 1
-	var/larva_gestation_multiplier = 2
+	var/larva_gestation_multiplier = 1
 	var/bonus_larva_spawn_chance = 1
 	var/hijack_burrowed_surge = FALSE //at hijack, start spawning lots of burrowed
 	/// how many burrowed is going to spawn during larva surge

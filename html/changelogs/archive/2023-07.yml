@@ -125,3 +125,13 @@
       an action button.
   theselfish:
   - qol: Foxtrot's radio channel is now on if you have multi-squad in your headset.
+2023-07-10:
+  BeagleGaming1:
+  - rscadd: Acid runners don't get acid from slashing nested humans
+  - rscadd: Very late-stage marines do not give acid
+  - bugfix: Fixes one way of abusing resin fruit
+  Drathek:
+  - rscdel: Remove first life priority for larva queue
+  - bugfix: Fix ghosting as a facehugger counting as death for the larva queue
+  blackdragonTOW:
+  - spellcheck: Added "U1" designation to the UGL attachment.

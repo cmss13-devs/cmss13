@@ -328,50 +328,6 @@
 	var/msg = input(src, null, "asay \"text\"") as text|null
 	cmd_admin_say(msg)
 
-/client/proc/cmd_mod_say(msg as text)
-	set name = "Msay"
-	set category = "Admin"
-	set hidden = TRUE
-
-	if(!check_rights(R_ADMIN|R_MOD))
-		return
-
-	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
-
-	if (!msg)
-		return
-
-	REDIS_PUBLISH("byond.msay", "author" = src.key, "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.rank)
-
-	if(findtext(msg, "@") || findtext(msg, "#"))
-		var/list/link_results = check_asay_links(msg)
-		if(length(link_results))
-			msg = link_results[ASAY_LINK_NEW_MESSAGE_INDEX]
-			link_results[ASAY_LINK_NEW_MESSAGE_INDEX] = null
-			var/list/pinged_admin_clients = link_results[ASAY_LINK_PINGED_ADMINS_INDEX]
-			for(var/iter_ckey in pinged_admin_clients)
-				var/client/iter_admin_client = pinged_admin_clients[iter_ckey]
-				if(!iter_admin_client?.admin_holder)
-					continue
-				window_flash(iter_admin_client)
-				SEND_SOUND(iter_admin_client.mob, sound('sound/misc/asay_ping.ogg'))
-
-	log_adminpm("MOD: [key_name(src)] : [msg]")
-
-	var/color = "mod"
-	if (check_rights(R_ADMIN,0))
-		color = "adminmod"
-
-	var/channel = "MOD:"
-	channel = "[admin_holder.rank]:"
-	for(var/client/C in GLOB.admins)
-		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>")
-
-/client/proc/get_mod_say()
-	var/msg = input(src, null, "msay \"text\"") as text|null
-	cmd_mod_say(msg)
-
 /client/proc/cmd_mentor_say(msg as text)
 	set name = "MentorSay"
 	set category = "OOC"

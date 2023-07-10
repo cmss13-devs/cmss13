@@ -451,25 +451,40 @@
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
-/datum/equipment_preset/synth/survivor/upp_synth
+/datum/equipment_preset/synth/upp/upp_synth
 	name = "Survivor - Synthetic - UPP Synth"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_UPP_COMBAT_SYNTH
+	rank = JOB_SURVIVOR
 	faction = FACTION_UPP
+	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	skills = /datum/skills/colonial_synthetic
+	paygrade = "SYN"
 	idtype = /obj/item/card/id/dogtag
-	role_comm_title = "UPP Syn"
-	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/uppcap/beret,
-		WEAR_EYES = /obj/item/clothing/glasses/hud/health,
-		WEAR_BODY = /obj/item/clothing/under/marine/veteran/UPP/medic/survivor,
-		WEAR_BACK = /obj/item/storage/backpack/lightpack/upp,
-		WEAR_IN_BACK = /obj/item/storage/firstaid/adv,
-		WEAR_IN_BACK = /obj/item/roller,
-		WEAR_JACKET = /obj/item/clothing/suit/storage/webbing,
-		WEAR_WAIST = /obj/item/storage/belt/medical/lifesaver/upp/partial,
-		WEAR_ACCESSORY = /obj/item/clothing/accessory/patch/upp,
-		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran,
-		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/upp,
-	)
+	role_comm_title = "UPP 173Rd RECON Syn"
+
+/datum/equipment_preset/synth/upp/upp_synth/load_gear(mob/living/carbon/human/new_human)
+	new_human.allow_gun_usage = TRUE
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/screwdriver, WEAR_R_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/medic/survivor, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/multitool, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/cable_coil, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/small_stack, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/partial, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/uppsynth, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/c99/upp, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 
 //*****************************************************************************************************/
 

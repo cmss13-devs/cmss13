@@ -1565,6 +1565,7 @@
 	paygrade = "UE5"
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 	assignment = "UPP Squad Leader"
+	role_comm_title = "UPP 173Rd RECON SL"
 	skills = /datum/skills/upp/SL
 
 /datum/equipment_preset/survivor/upp/squad_leader/load_gear(mob/living/carbon/human/new_human)

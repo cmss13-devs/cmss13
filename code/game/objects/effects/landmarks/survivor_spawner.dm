@@ -115,26 +115,26 @@
 
 /obj/effect/landmark/survivor_spawner/upp/soldier
 	equipment = /datum/equipment_preset/survivor/upp/soldier
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp_synth
+	synth_equipment = /datum/equipment_preset/synth/upp/upp_synth
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
 /obj/effect/landmark/survivor_spawner/upp_sapper
 	equipment = /datum/equipment_preset/survivor/upp/sapper
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp_synth
+	synth_equipment = /datum/equipment_preset/synth/upp/upp_synth
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
 /obj/effect/landmark/survivor_spawner/upp_medic
 	equipment = /datum/equipment_preset/survivor/upp/medic
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp_synth
+	synth_equipment = /datum/equipment_preset/synth/upp/upp_synth
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/upp_specialist
 	equipment = /datum/equipment_preset/survivor/upp/specialist
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp_synth
+	synth_equipment = /datum/equipment_preset/synth/upp/upp_synth
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/squad_leader
 	equipment = /datum/equipment_preset/survivor/upp/squad_leader
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp_synth
+	synth_equipment = /datum/equipment_preset/synth/upp/upp_synth
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 

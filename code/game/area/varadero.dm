@@ -157,6 +157,13 @@
 	minimap_color = MINIMAP_AREA_JUNGLE
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 
+/area/varadero/interior/dock_control
+	name = "New Varadero - Dock Control"
+	icon_state = "varadero3"
+	is_resin_allowed = FALSE
+	minimap_color = MINIMAP_AREA_JUNGLE
+	sound_environment = SOUND_ENVIRONMENT_ROOM
+
 /area/varadero/interior/cargo
 	name = "New Varadero - Cargo"
 	icon_state = "req0"

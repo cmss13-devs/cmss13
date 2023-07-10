@@ -432,8 +432,8 @@
 /obj/item/clothing/suit/storage/marine/fluff/fairedan //CKEY=fairedan (UNIQUE)
 	name = "Freighter Crew Flight Jacket"
 	desc = "Standard Issue Jacket for crew that serve on Lockmart CM-88B Bison starfreighters.  It has the number 1809246 on the inside tag...  DONOR ITEM"
-	icon_state = "fairedan_vest"
-	item_state = "fairedan_vest"
+	icon_state = "Fairedan_vest"
+	item_state = "Fairedan_vest"
 
 /obj/item/clothing/suit/storage/marine/fluff/jackmcintyre //CKEY=jackmcintyre (UNIQUE)
 	name = "Exo-Suit Jackert"
@@ -1174,8 +1174,8 @@
 /obj/item/clothing/under/marine/fluff/fairedan //CKEY=fairedan (UNIQUE)
 	name = "Starfreighter Jumpsuit"
 	desc = "Standard Issue Jumpsuit for crew that serve on Lockmart CM-88B Bison starfreighters.  It has the number 1809246 on the inside tag....  DONOR ITEM"
-	icon_state = "fairedan_jumpsuit"
-	worn_state = "fairedan_jumpsuit"
+	icon_state = "Fairedan_jumpsuit"
+	worn_state = "Fairedan_jumpsuit"
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/commissar //used by both ckeys 'hycinth' and 'technokat' (UNIQUE)

@@ -10,6 +10,9 @@ GLOBAL_LIST_EMPTY(player_details) // ckey -> /datum/player_details
 	/// The descriminator for larva queue ordering: Generally set to timeofdeath except for facehuggers/admin z-level play
 	var/larva_queue_time
 
+/datum/player_details/New()
+	larva_queue_time = world.time
+	return ..()
 
 /proc/log_played_names(ckey, ...)
 	if(!ckey)

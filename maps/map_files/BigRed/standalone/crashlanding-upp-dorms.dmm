@@ -1652,6 +1652,10 @@
 	pixel_y = -6;
 	pixel_x = -7
 	},
+/obj/item/paper/bigred/upp{
+	pixel_y = 4;
+	pixel_x = 3
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},

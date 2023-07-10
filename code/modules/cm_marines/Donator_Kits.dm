@@ -70,7 +70,7 @@
 	donor_key = "biolock"
 	donor_gear = list(
 		/obj/item/clothing/head/helmet/marine/fluff/biolock,
-		/obj/item/clothing/suit/storage/marine/fluff/biolock
+		/obj/item/clothing/suit/storage/marine/fluff/biolock,
 	)
 
 /obj/item/storage/box/donator_kit/bunny232
@@ -429,7 +429,7 @@
 	donor_gear = list(
 		/obj/item/clothing/head/helmet/marine/fluff/sas_juggernaut_alt,
 		/obj/item/clothing/head/helmet/marine/fluff/sas_juggernaut,
-		/obj/item/clothing/suit/storage/marine/fluff/sas_juggernaut
+		/obj/item/clothing/suit/storage/marine/fluff/sas_juggernaut,
 	)
 
 /obj/item/storage/box/donator_kit/sasoperative_legion
@@ -438,7 +438,7 @@
 	donor_gear = list(
 		/obj/item/clothing/suit/storage/marine/fluff/sas_legion,
 		/obj/item/clothing/under/marine/fluff/sas_legion,
-		/obj/item/clothing/mask/fluff/sas_legion
+		/obj/item/clothing/mask/fluff/sas_legion,
 	)
 
 /obj/item/storage/box/donator_kit/seloc_aferah

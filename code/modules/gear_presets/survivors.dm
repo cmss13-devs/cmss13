@@ -1423,14 +1423,37 @@
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 	role_comm_title = "UPP 173RD RECON"
 	idtype = /obj/item/card/id/dogtag
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	flags = EQUIPMENT_PRESET_EXTRA
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 	)
 
+/datum/equipment_preset/survivor/upp/load_name(mob/living/carbon/human/new_human, randomise)
+	var/random_name
+	var/first_name
+	var/last_name
+	//gender checks
+	if(new_human.gender == MALE)
+		if(prob(40))
+			first_name = "[capitalize(randomly_generate_chinese_word(1))]"
+		else
+			first_name = "[pick(first_names_male_upp)]"
+	else
+		if(prob(40))
+			first_name = "[capitalize(randomly_generate_chinese_word(1))]"
+		else
+			first_name = "[pick(first_names_female_upp)]"
+	//surname
+	if(prob(35))
+		last_name = "[capitalize(randomly_generate_chinese_word(pick(20;1, 80;2)))]"
+	else
+		last_name = "[pick(last_names_upp)]"
+	//put them together
+	random_name = "[first_name] [last_name]"
+
+	new_human.change_real_name(new_human, random_name)
+
 /datum/equipment_preset/survivor/upp/load_gear(mob/living/carbon/human/new_human)
-
-
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/survivor (new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp (new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife(new_human), WEAR_FEET)
@@ -1490,6 +1513,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/NY(new_human), WEAR_WAIST)
 		if (3)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/upp(new_human), WEAR_WAIST)
+
 /datum/equipment_preset/survivor/upp/soldier
 	name = "Survivor - UPP Soldier"
 	paygrade = "UE2"
@@ -1504,6 +1528,7 @@
 	spawn_random_upp_belt(new_human)
 
 	..()
+
 /datum/equipment_preset/survivor/upp/sapper
 	name = "Survivor - UPP Sapper"
 	paygrade = "UE3S"
@@ -1521,6 +1546,7 @@
 	spawn_random_upp_armor(new_human)
 
 	..()
+
 /datum/equipment_preset/survivor/upp/medic
 	name = "Survivor - UPP Medic"
 	paygrade = "UE3M"
@@ -1541,6 +1567,7 @@
 	spawn_random_upp_armor(new_human)
 
 	..()
+
 /datum/equipment_preset/survivor/upp/specialist
 	name = "Survivor - UPP Specialist"
 	paygrade = "UE4"

@@ -463,7 +463,19 @@
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "UPP 173Rd RECON Syn"
 
+/datum/equipment_preset/synth/upp/upp_synth/load_name(mob/living/carbon/human/new_human, randomise)
+	var/random_name
+	if(prob(10))
+		random_name = "[capitalize(randomly_generate_chinese_word(2))]"
+	else if(new_human.gender == MALE)
+		random_name = "[pick(first_names_male_upp)]"
+	else
+		random_name = "[pick(first_names_female_upp)]"
+
+	new_human.change_real_name(new_human, random_name)
+
 /datum/equipment_preset/synth/upp/upp_synth/load_gear(mob/living/carbon/human/new_human)
+
 	new_human.allow_gun_usage = TRUE
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/screwdriver, WEAR_R_EAR)

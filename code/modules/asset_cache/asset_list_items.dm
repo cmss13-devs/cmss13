@@ -143,6 +143,7 @@
 	assets = list(
 		"wylogo.png" = 'html/images/wylogo.png',
 		"uscmlogo.png" = 'html/images/uscmlogo.png',
+		"upplogo.png" = 'html/images/upplogo.png',
 		"faxwylogo.png" = 'html/images/faxwylogo.png',
 		"faxbackground.jpg" = 'html/images/faxbackground.jpg',
 	)

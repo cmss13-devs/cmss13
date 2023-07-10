@@ -216,18 +216,18 @@
 
 /mob/living/carbon/human/handle_silent()
 	if(..())
-		speech_problem_flag = 1
+		speech_problem_flag = TRUE
 	return silent
 
 /mob/living/carbon/human/handle_slurring()
 	if(..())
-		speech_problem_flag = 1
+		speech_problem_flag = TRUE
 	return slurring
 
 /mob/living/carbon/human/handle_stunned()
 	if(stunned)
 		adjust_effect(-species.stun_reduction, STUN, EFFECT_FLAG_LIFE)
-		speech_problem_flag = 1
+		speech_problem_flag = TRUE
 	return stunned
 
 /mob/living/carbon/human/handle_dazed()
@@ -237,7 +237,7 @@
 		var/final_reduction = skill_resistance + 1
 		adjust_effect(-final_reduction, DAZE, EFFECT_FLAG_LIFE)
 	if(dazed)
-		speech_problem_flag = 1
+		speech_problem_flag = TRUE
 	return dazed
 
 /mob/living/carbon/human/handle_knocked_down()
@@ -262,7 +262,7 @@
 
 /mob/living/carbon/human/handle_stuttering()
 	if(..())
-		speech_problem_flag = 1
+		speech_problem_flag = TRUE
 	return stuttering
 
 #define HUMAN_TIMER_TO_EFFECT_CONVERSION (0.05) //(1/20) //once per 2 seconds, with effect equal to endurance, which is used later

@@ -13,7 +13,9 @@
 
 	var/mode = BLOOD_BAG_INJECTING
 	var/mob/living/carbon/human/connected_to
+	var/mob/living/carbon/human/connected_from
 	var/blood_type = null
+	var/datum/beam/current_beam
 
 /obj/item/reagent_container/blood/Initialize()
 	. = ..()
@@ -32,6 +34,12 @@
 		if(10 to 50) icon_state = "half"
 		if(51 to INFINITY) icon_state = "full"
 
+/obj/item/reagent_container/blood/proc/update_beam()
+	if(current_beam)
+		QDEL_NULL(current_beam)
+	else if(connected_from && connected_to)
+		current_beam = connected_from.beam(connected_to, "iv_tube")
+
 /obj/item/reagent_container/blood/attack(mob/attacked_mob, mob/user)
 	. = ..()
 
@@ -44,7 +52,10 @@
 		user.visible_message("[user] detaches [src] from [connected_to].", \
 			"You detach [src] from [connected_to].")
 		connected_to.active_transfusions -= src
+		connected_to.base_pixel_x = 0
 		connected_to = null
+		connected_from = null
+		update_beam()
 		return
 
 	if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
@@ -60,10 +71,13 @@
 
 	if(istype(attacked_mob, /mob/living/carbon/human))
 		connected_to = attacked_mob
+		connected_from = user
 		connected_to.active_transfusions += src
+		connected_to.base_pixel_x = 5
 		START_PROCESSING(SSobj, src)
 		user.visible_message("[user] attaches \the [src] to [connected_to].", \
 			"You attach \the [src] to [connected_to].")
+		update_beam()
 
 /obj/item/reagent_container/blood/process()
 	//if we're not connected to anything stop doing stuff
@@ -106,6 +120,10 @@
 
 	connected_to.take_blood(src, amount)
 
+/obj/item/reagent_container/blood/dropped()
+	..()
+	bad_disconnect()
+
 ///Used to standardize effects of a blood bag disconnecting improperly
 /obj/item/reagent_container/blood/proc/bad_disconnect()
 	if(!connected_to)
@@ -116,7 +134,10 @@
 	if(connected_to.pain.feels_pain)
 		connected_to.emote("scream")
 	connected_to.active_transfusions -= src
+	connected_to.base_pixel_x = 0
 	connected_to = null
+	connected_from = null
+	update_beam()
 
 /obj/item/reagent_container/blood/verb/toggle_mode()
 	set category = "Object"

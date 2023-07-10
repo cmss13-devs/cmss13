@@ -1,0 +1,137 @@
+2023-07-01:
+  Ben10083:
+  - bugfix: lisps now occur over radio as well
+  - refactor: Relevant variables relating to speech problems now use true and false
+      instead of 1 and 0
+  - bugfix: fixes exploit relating to cloaking tarps by adding a delay before tarp
+      can be closed again.
+  Drathek:
+  - bugfix: Fixed missing xeno ban check for playing as a facehugger
+  - spellcheck: Tweaked message when ghosting while nested
+  TheGamerdk:
+  - rscadd: ARES will announce how many Foxtrot marines that woke up.
+  harryob:
+  - rscadd: you can no longer implant yourself with a motion detector
+  ihatethisengine:
+  - rscadd: Added cameras to dropship deployable sentries.
+2023-07-02:
+  Clairion:
+  - bugfix: Vampire Lurker headbite will no longer trigger if the target is moved
+      away during windup.
+  Cthulhu80:
+  - rscadd: added camera shake and stun to OB.
+  fira:
+  - rscadd: Added InfluxDB backed metrics logging for some of the most used game statistics.
+      This will allow to graph them over time and give better insight as to what happens
+      in rounds.
+  theselfish:
+  - qol: Made the MP beret to be clickable.
+  - imageadd: Updated the MP beret obj sprite to be easier to click.
+2023-07-03:
+  blackdragonTOW:
+  - refactor: refactored dropship_ammo so that missiles don't use Spawn()
+  ghostsheet:
+  - bugfix: Fixed Extended Barrel bug of building up free bullet velocity.
+2023-07-04:
+  Drathek:
+  - bugfix: Fixed a persistence problem for the time of death value used for the larva
+      queue.
+  - bugfix: Fixed brainmobs (human gibbing) not getting a time of death value.
+  harryob:
+  - bugfix: paper images should appear once again
+  zzzmike:
+  - balance: pods crash land 33% of the time rather than 50%
+2023-07-05:
+  BeagleGaming1:
+  - rscadd: Queen makes noise when moved even while resting
+  Hopek, Gul Dreggrod:
+  - rscadd: Adds a Luxurious fountain pen to the game. Currently spawns on the right
+      ear of high ranking command staff. Sprited by Gul Dreggrod.
+  QuickLode:
+  - rscadd: CMB/ICC Survivors now get a limited radio that they can use to communicate
+      with CMB reinforcements.
+  - rscadd: CMB/Anchorpoint Marines get bandages to stop bleeding.
+  harryob:
+  - rscadd: all xenos can now access the tacmap, while the queen is on ovi
+2023-07-06:
+  BeagleGaming1:
+  - code_imp: evacuation pod crash chance changed to a var
+  - code_imp: proc added to force evacuation pods to crash
+  Drathek:
+  - bugfix: Fixed more broken logos (primarily WY research papers)
+  - balance: Weed nodes can no longer be placed in walls or window frames (or any
+      turf or structure with density)
+  - refactor: Refactored the plant weeds ability code
+  - balance: Gardener's hardy weeds now upgrade normal weeds (just like hive weeds
+      upgrade weeds).
+  - balance: Gardener's hardy weeds now don't prevent special structures (core and
+      pylons) but they are still only allowed if the turf allows them.
+  Newyearnewme, Morrow:
+  - rscadd: Xeno structures/weeds now become forsaken after hijack
+  Steelpoint:
+  - imageadd: Synth utility vest is now slimmer in appearance
+  realforest2001:
+  - admin: Adds logs for bioscans successfully completing.
+  thatoneyeeter:
+  - balance: metal foam now becomes solid faster
+2023-07-07:
+  Diegoflores31:
+  - rscadd: Defender Tail Slam has a 1% chance to do a BONK sound instead.
+  Drathek:
+  - bugfix: Fixed ghost icons for larva and ovi queen
+  Morrow:
+  - rscdel: Removes fountain pens from gear sets
+  - rscdel: Removed nesting the dead
+  - rscadd: Added a visiting USASF Commander (CO survivor) to New Varadero
+  - bugfix: Burnt matches no longer permanently give you a light source if they naturally
+      burn out
+  QuickLoad:
+  - balance: Colony Synthetics are faster but are less resistant. This allows for
+      the option of avoiding engagements.
+  - balance: Colony Synthetics have slightly better CQC and can carry people better.
+  realforest2001:
+  - bugfix: Fixes Queen making footstep sounds while dead and being dragged.
+2023-07-08:
+  Ben10083:
+  - bugfix: Working Joes can no longer have a gradient on their rare hair spawn.
+  - rscdel: Working Joes can no longer be fed.
+  - code_imp: 'New trait: Cannot eat. Self-explanatory.'
+  Cursor:
+  - spellcheck: Changed Chem Dispenser to Chemical Dispenser, added descriptions to
+      the cryo cell, rail computer and chemical dispenser. Updated the descriptions
+      for the Blood Dispenser and Dropship computer.
+  Drathek:
+  - bugfix: Fixed facehuggers incorrectly displaying thrown state when it has landed
+  Drathek Kugamo:
+  - rscadd: Added the ability for weeds to merge with unrevivable corpses
+  - imageadd: Added human shaped weeds by Kugamo
+  - code_imp: Added a signal for weeds sent to the turf to indicate it is now weeded,
+      and added a signal for afterbuckle.
+  - bugfix: Closets (including coffins) can no longer move anchored mobs.
+  Morrow:
+  - qol: Create humans tab length increase
+  - qol: Create humans tab now defaults to 0 range to spawn
+  - bugfix: Fixed extraneous messages in regards to wall nests
+  SpartanBobby:
+  - balance: changes M4A3 magazine size from 9 to 12
+  Zonespace27:
+  - bugfix: The maintenance jack should work a little better at crowbarring things.
+2023-07-09:
+  Khadd:
+  - rscadd: added a iv tube between the user and the bloodpack / iv drip
+  - imageadd: sprites for the iv tube
+  Zonespace27:
+  - rscadd: Working Joes now have an emote panel to use voice lines, accessible as
+      an action button.
+  theselfish:
+  - qol: Foxtrot's radio channel is now on if you have multi-squad in your headset.
+2023-07-10:
+  BeagleGaming1:
+  - rscadd: Acid runners don't get acid from slashing nested humans
+  - rscadd: Very late-stage marines do not give acid
+  - bugfix: Fixes one way of abusing resin fruit
+  Drathek:
+  - rscdel: Remove first life priority for larva queue
+  - bugfix: Fix ghosting as a facehugger counting as death for the larva queue
+  blackdragonTOW:
+  - spellcheck: Added "U1" designation to the UGL attachment.

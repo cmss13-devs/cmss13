@@ -121,7 +121,7 @@
 	cistern_overlay.icon_state = "cistern[cistern]"
 
 /obj/structure/toilet/attackby(obj/item/I, mob/living/user)
-	if(istype(I, /obj/item/tool/crowbar))
+	if(HAS_TRAIT(I, TRAIT_TOOL_CROWBAR))
 		to_chat(user, SPAN_NOTICE("You start to [cistern ? "replace the lid on the cistern" : "lift the lid off the cistern"]."))
 		playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
 		if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

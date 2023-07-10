@@ -56,6 +56,7 @@
 		/datum/action/xeno_action/activable/pounce/charge,
 		/datum/action/xeno_action/onclick/empower,
 		/datum/action/xeno_action/activable/scissor_cut,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	icon_xeno = 'icons/mob/xenos/ravager.dmi'

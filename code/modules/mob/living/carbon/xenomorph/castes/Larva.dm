@@ -41,6 +41,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/xenohide,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -136,6 +137,9 @@
 			icon_state = "[state_override || state]Larva Stunned"
 	else
 		icon_state = "[state_override || state]Larva"
+
+/mob/living/carbon/xenomorph/larva/alter_ghost(mob/dead/observer/ghost)
+	ghost.icon_state = "[caste.caste_type]"
 
 /mob/living/carbon/xenomorph/larva/handle_name()
 	return

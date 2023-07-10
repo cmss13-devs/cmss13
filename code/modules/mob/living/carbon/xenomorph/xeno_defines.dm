@@ -239,6 +239,9 @@
 	// Used for the faction of the xenomorph. Not recommended to modify.
 	var/internal_faction
 
+	/// Short Hive ID as string used in stats reporting
+	var/reporting_id = "normal"
+
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/mob/living/carbon/xenomorph/queen/living_xeno_queen
 	var/egg_planting_range = 15
@@ -286,7 +289,7 @@
 	var/bonus_larva_spawn_chance = 1
 	var/hijack_burrowed_surge = FALSE //at hijack, start spawning lots of burrowed
 	/// how many burrowed is going to spawn during larva surge
-	var/hijack_burrowed_left = 0 
+	var/hijack_burrowed_left = 0
 
 	var/ignore_slots = FALSE
 	var/dynamic_evolution = TRUE
@@ -471,6 +474,7 @@
 		SStracking.set_leader("hive_[hivenumber]", queen)
 		SShive_status.wait = 2 SECONDS
 
+	SEND_SIGNAL(src, COMSIG_HIVE_NEW_QUEEN, queen)
 	living_xeno_queen = queen
 
 	recalculate_hive()
@@ -1006,7 +1010,10 @@
 
 /datum/hive_status/proc/can_spawn_as_hugger(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
-		return
+		return FALSE
+	if(jobban_isbanned(user, JOB_XENOMORPH)) // User is jobbanned
+		to_chat(user, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
+		return FALSE
 	if(world.time < hugger_timelock)
 		to_chat(user, SPAN_WARNING("The hive cannot support facehuggers yet..."))
 		return FALSE
@@ -1050,6 +1057,7 @@
 
 /datum/hive_status/corrupted
 	name = "Corrupted Hive"
+	reporting_id = "corrupted"
 	hivenumber = XENO_HIVE_CORRUPTED
 	prefix = "Corrupted "
 	color = "#80ff80"
@@ -1073,6 +1081,7 @@
 
 /datum/hive_status/alpha
 	name = "Alpha Hive"
+	reporting_id = "alpha"
 	hivenumber = XENO_HIVE_ALPHA
 	prefix = "Alpha "
 	color = "#ff4040"
@@ -1083,6 +1092,7 @@
 
 /datum/hive_status/bravo
 	name = "Bravo Hive"
+	reporting_id = "bravo"
 	hivenumber = XENO_HIVE_BRAVO
 	prefix = "Bravo "
 	color = "#ffff80"
@@ -1093,6 +1103,7 @@
 
 /datum/hive_status/charlie
 	name = "Charlie Hive"
+	reporting_id = "charlie"
 	hivenumber = XENO_HIVE_CHARLIE
 	prefix = "Charlie "
 	color = "#bb40ff"
@@ -1103,6 +1114,7 @@
 
 /datum/hive_status/delta
 	name = "Delta Hive"
+	reporting_id = "delta"
 	hivenumber = XENO_HIVE_DELTA
 	prefix = "Delta "
 	color = "#8080ff"
@@ -1113,6 +1125,7 @@
 
 /datum/hive_status/feral
 	name = "Feral Hive"
+	reporting_id = "feral"
 	hivenumber = XENO_HIVE_FERAL
 	prefix = "Feral "
 	color = "#828296"
@@ -1128,6 +1141,7 @@
 
 /datum/hive_status/forsaken
 	name = "Forsaken Hive"
+	reporting_id = "forsaken"
 	hivenumber = XENO_HIVE_FORSAKEN
 	prefix = "Forsaken "
 	color = "#cc8ec4"
@@ -1146,6 +1160,7 @@
 
 /datum/hive_status/yautja
 	name = "Hellhound Pack"
+	reporting_id = "hellhounds"
 	hivenumber = XENO_HIVE_YAUTJA
 	internal_faction = FACTION_YAUTJA
 
@@ -1162,6 +1177,7 @@
 
 /datum/hive_status/mutated
 	name = "Mutated Hive"
+	reporting_id = "mutated"
 	hivenumber = XENO_HIVE_MUTATED
 	prefix = "Mutated "
 	color = "#6abd99"
@@ -1172,6 +1188,7 @@
 
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"
+	reporting_id = "tamed"
 	hivenumber = XENO_HIVE_TAMED
 	prefix = "Tamed "
 	color = "#80ff80"

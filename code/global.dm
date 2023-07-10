@@ -24,9 +24,10 @@
 #define R_NOLOCK (1<<17)
 #define R_EVENT (1<<18)
 
-/// The sum of all other rank permissions.
-#define R_EVERYTHING ((1<<19)-1)
-
+/// The sum of all other rank permissions, other than host or profiler.
+#define RL_EVERYTHING (R_BUILDMODE|R_ADMIN|R_BAN|R_SERVER|R_DEBUG|R_PERMISSIONS|R_POSSESS|R_STEALTH|R_REJUVINATE|R_COLOR|R_VAREDIT|R_EVENT|R_SOUNDS|R_NOLOCK|R_SPAWN|R_MOD|R_MENTOR)
+/// Truely everything
+#define RL_HOST (RL_EVERYTHING|R_HOST|R_PROFILER)
 // 512.1430 increases maximum bit flags from 16 to 24, so the following flags should be available for future changes:
 //=================================================
 

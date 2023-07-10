@@ -616,7 +616,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 */
 /client/proc/init_verbs()
 	if(IsAdminAdvancedProcCall())
-		return
+		alert_proccall("init_verbs")
+		return PROC_BLOCKED
 	var/list/verblist = list()
 	var/list/verbstoprocess = verbs.Copy()
 	if(mob)

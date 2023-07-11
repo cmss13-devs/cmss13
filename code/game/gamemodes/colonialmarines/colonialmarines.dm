@@ -384,8 +384,6 @@
 					musical_track = pick('sound/theme/LastManStanding_CLF.ogg')
 				else if ((headcount[1] / headcount[5]) > majority) // headcount[1] = Marines
 					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
-				else
-					musical_track = pick('sound/theme/neutral_melancholy1.ogg')
 			else
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
 			end_icon = "xeno_minor"

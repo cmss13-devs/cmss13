@@ -705,7 +705,7 @@
 	sensor_faction = FACTION_CLF
 
 /obj/item/clothing/under/colonist/ua_civvies
-	name = "UA gray utilities"
+	name = "\improper UA gray utility uniform"
 	desc = "A stylish gray jumpsuit - standard issue for UA civilian support personnel."
 	icon_state = "ua_civvies"
 	worn_state = "ua_civvies"

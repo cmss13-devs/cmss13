@@ -139,7 +139,8 @@
 		spicy_gas = new /datum/effect_system/smoke_spread/xeno_weaken
 	else
 		CRASH("Globber has unknown ammo [xeno.ammo]! Oh no!")
-	spicy_gas.set_up(1, 0, get_turf(xeno), null, 6)
+	var/datum/cause_data/cause_data = create_cause_data("acid shroud gas", owner)
+	spicy_gas.set_up(1, 0, get_turf(xeno), null, 6, new_cause_data = cause_data)
 	spicy_gas.start()
 	to_chat(xeno, SPAN_XENOHIGHDANGER("You dump your acid through your pores, creating a shroud of gas!"))
 	for (var/action_type in action_types_to_cd)
@@ -166,9 +167,9 @@
 	if(!actually_moving)
 		return
 
-	var/obj/effect/particle_effect/smoke/S = new /obj/effect/particle_effect/smoke/xeno_burn(get_turf(mover), 1, create_cause_data(initial(mover.caste_type), mover))
-	S.time_to_live = 3
-	S.spread_speed = 1000000
+	var/obj/effect/particle_effect/smoke/xeno_burn/smoke_effect = new(get_turf(mover), 1, create_cause_data("dumped acid gas", mover))
+	smoke_effect.time_to_live = 3
+	smoke_effect.spread_speed = 1000000
 
 /datum/action/xeno_action/onclick/dump_acid/remove_from()
 	remove_speed_buff()
@@ -283,27 +284,25 @@
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/acid_shotgun/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if (!istype(X))
+/datum/action/xeno_action/activable/acid_shotgun/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if (!istype(xeno))
 		return
 
 	if (!action_cooldown_check())
 		return
 
-	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc) || !X.check_state())
+	if(!target || target.layer >= FLY_LAYER || !isturf(xeno.loc) || !xeno.check_state())
 		return
 
-	X.visible_message(SPAN_XENOWARNING("The [X] fires a blast of acid at [A]!"), SPAN_XENOWARNING("You fire a blast of acid at [A]!"))
+	xeno.visible_message(SPAN_XENOWARNING("The [xeno] fires a blast of acid at [target]!"), SPAN_XENOWARNING("You fire a blast of acid at [target]!"))
 
-	var/turf/target = locate(A.x, A.y, A.z)
-	var/obj/item/projectile/P = new /obj/item/projectile(X.loc, create_cause_data(initial(X.caste_type), X))
-
+	var/turf/target_turf = locate(target.x, target.y, target.z)
+	var/obj/item/projectile/proj = new(xeno.loc, create_cause_data("acid shotgun", xeno))
 	var/datum/ammo/ammoDatum = new ammo_type()
 
-	P.generate_bullet(ammoDatum)
-
-	P.fire_at(target, X, X, ammoDatum.max_range, ammoDatum.shell_speed)
+	proj.generate_bullet(ammoDatum)
+	proj.fire_at(target_turf, xeno, xeno, ammoDatum.max_range, ammoDatum.shell_speed)
 
 	apply_cooldown()
 	return ..()
@@ -347,7 +346,7 @@
 		else if(stabbing_xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
 			var/datum/effects/neurotoxin/neuro_effect = locate() in carbon_target.effects_list
 			if(!neuro_effect)
-				neuro_effect = new /datum/effects/neurotoxin(carbon_target)
+				neuro_effect = new(carbon_target, owner)
 			neuro_effect.duration += 16
 			to_chat(carbon_target,SPAN_HIGHDANGER("You are injected with something from [stabbing_xeno]'s tailstab!"))
 		else

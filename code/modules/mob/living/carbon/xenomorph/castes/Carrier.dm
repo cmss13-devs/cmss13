@@ -69,6 +69,7 @@
 		/datum/action/xeno_action/activable/throw_hugger, //3rd macro
 		/datum/action/xeno_action/activable/retrieve_egg, //4th macro
 		/datum/action/xeno_action/onclick/set_hugger_reserve,
+		/datum/action/xeno_action/onclick/tacmap,
 		)
 
 	inherent_verbs = list(

@@ -363,6 +363,11 @@ var/global/list/gear_datums_by_name = list()
 	display_name = "Pen, red"
 	path = /obj/item/tool/pen/red
 
+/datum/gear/paperwork/pen_fountain
+	display_name = "Pen, fountain"
+	path = /obj/item/tool/pen/fountain
+	cost = 3
+
 /datum/gear/paperwork/paper
 	display_name = "Sheet of paper"
 	path = /obj/item/paper
@@ -415,6 +420,33 @@ var/global/list/gear_datums_by_name = list()
 	display_name = "Camera"
 	path = /obj/item/device/camera
 
+/datum/gear/toy/mags
+	cost = 1
+
+/datum/gear/toy/mags/magazine_dirty
+	display_name = "Magazine"
+	path = /obj/item/prop/magazine/dirty
+
+/datum/gear/toy/mags/boots_magazine_one
+	display_name = "Boots Issue No.117"
+	path = /obj/item/prop/magazine/boots/n117
+
+/datum/gear/toy/mags/boots_magazine_two
+	display_name = "Boots Issue No.150"
+	path = /obj/item/prop/magazine/boots/n150
+
+/datum/gear/toy/mags/boot_magazine_three
+	display_name = "Boots Issue No.160"
+	path = /obj/item/prop/magazine/boots/n160
+
+/datum/gear/toy/mags/boots_magazine_four
+	display_name = "Boots Issue No.54"
+	path = /obj/item/prop/magazine/boots/n054
+
+/datum/gear/toy/mags/boots_magazine_five
+	display_name = "Boots Issue No.55"
+	path = /obj/item/prop/magazine/boots/n055
+
 /datum/gear/toy/film
 	display_name = "Camera film"
 	path = /obj/item/device/camera_film
@@ -462,6 +494,10 @@ var/global/list/gear_datums_by_name = list()
 /datum/gear/toy/walkman
 	display_name = "Walkman"
 	path = /obj/item/device/walkman
+
+/datum/gear/toy/crayon
+	display_name = "Crayon"
+	path = /obj/item/toy/crayon/rainbow
 
 /datum/gear/weapon
 	category = "Weapons"

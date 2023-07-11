@@ -289,11 +289,12 @@
 	if(buckled_human.stat == DEAD )
 		buckled_mob_density = FALSE
 
-	. = ..()
-
 	var/mob/dead/observer/G = ghost_of_buckled_mob
 	var/datum/mind/M = G?.mind
 	ghost_of_buckled_mob = null
+
+	. = ..() //Very important that this comes after, since it deletes the nest and clears ghost_of_buckled_mob
+
 	if(!istype(buckled_human) || !istype(G) || !istype(M) || buckled_human.undefibbable || buckled_human.mind || M.original != buckled_human || buckled_human.chestburst)
 		return // Zealous checking as most is handled by ghost code
 	to_chat(G, FONT_SIZE_HUGE(SPAN_DANGER("You have been freed from your nest and may go back to your body! (Look for 'Re-enter Corpse' in Ghost verbs, or <a href='?src=\ref[G];reentercorpse=1'>click here</a>!)")))

@@ -256,6 +256,13 @@
 	deployed_turret.start_processing()
 	deployed_turret.set_range()
 
+	deployed_turret.linked_cam = new(deployed_turret.loc, "[capitalize_first_letters(ship_base.name)] [capitalize_first_letters(name)]")
+	if (linked_shuttle.id == DROPSHIP_ALAMO)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_ALAMO)
+	else if (linked_shuttle.id == DROPSHIP_NORMANDY)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_NORMANDY)
+
+
 /obj/structure/dropship_equipment/sentry_holder/proc/undeploy_sentry()
 	if(!deployed_turret)
 		return
@@ -267,8 +274,12 @@
 	deployed_turret.stop_processing()
 	deployed_turret.unset_range()
 	icon_state = "sentry_system_installed"
+	QDEL_NULL(deployed_turret.linked_cam)
 
-
+/obj/structure/dropship_equipment/sentry_holder/Destroy()
+	if(deployed_turret)
+		QDEL_NULL(deployed_turret.linked_cam)
+	. = ..()
 
 
 /// Holder for the dropship mannable machinegun system

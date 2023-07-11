@@ -713,7 +713,7 @@
 	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/colonist/wy_davisone
-	name = "UA brown utilities"
+	name = "\improper UA brown utility uniform"
 	desc = "A stylish brown jumpsuit - standard issue for UA civilian support personnel."
 	icon_state = "wy_davisone"
 	worn_state = "wy_davisone"

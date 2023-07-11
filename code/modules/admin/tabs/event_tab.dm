@@ -536,8 +536,10 @@
 		return FALSE
 
 	if(!ares_can_interface())
-		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. Interface processor may be offline or destroyed."))
-		return
+		var/prompt = tgui_alert(src, "ARES Interface is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		if(prompt == "No")
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's interface processor may be offline or destroyed."))
+			return
 
 	ai_announcement(input)
 	message_admins("[key_name_admin(src)] has created an AI comms report")
@@ -557,8 +559,10 @@
 
 	var/datum/ares_link/link = GLOB.ares_link
 	if(link.p_apollo.inoperable())
-		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
-		return FALSE
+		var/prompt = tgui_alert(src, "ARES APOLLO processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		if(prompt == "No")
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's APOLLO processor may be offline or destroyed."))
+			return FALSE
 
 	ares_apollo_talk(input)
 	message_admins("[key_name_admin(src)] has created an AI APOLLO report")
@@ -575,8 +579,10 @@
 	if(!input)
 		return FALSE
 	if(!ares_can_interface())
-		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. Interface processor may be offline or destroyed."))
-		return
+		var/prompt = tgui_alert(src, "ARES Interface is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		if(prompt == "No")
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's interface processor may be offline or destroyed."))
+			return
 
 	shipwide_ai_announcement(input)
 	message_admins("[key_name_admin(src)] has created an AI shipwide report")

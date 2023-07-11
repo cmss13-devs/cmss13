@@ -1444,6 +1444,7 @@
 	rank = JOB_UPP_MAY_OFFICER
 	role_comm_title = "May."
 	paygrade = "UO3"
+	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/major/load_gear(mob/living/carbon/human/new_human)
 	//back

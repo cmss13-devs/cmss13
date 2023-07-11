@@ -135,3 +135,6 @@
   - bugfix: Fix ghosting as a facehugger counting as death for the larva queue
   blackdragonTOW:
   - spellcheck: Added "U1" designation to the UGL attachment.
+2023-07-11:
+  BeagleGaming1:
+  - bugfix: Fixes the Working Joe species

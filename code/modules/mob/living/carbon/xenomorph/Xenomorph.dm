@@ -1085,3 +1085,8 @@
 		if(D)
 			color_override = D.color
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration, color_override)
+
+/mob/living/carbon/xenomorph/Collide(atom/movable/movable_atom)
+	. = ..()
+	if(behavior_delegate)
+		behavior_delegate.on_collide(movable_atom)

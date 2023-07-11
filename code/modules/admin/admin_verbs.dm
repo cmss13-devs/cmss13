@@ -80,6 +80,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/toggle_hear_radio, /*toggles whether we hear the radio*/
 	/client/proc/event_panel,
 	/client/proc/cmd_admin_say, /*admin-only ooc chat*/
+	/client/proc/cmd_mod_say, /* alternate way of typing asay, no different than cmd_admin_say  */
 	/client/proc/free_slot, /*frees slot for chosen job*/
 	/client/proc/modify_slot,
 	/client/proc/cmd_admin_rejuvenate,

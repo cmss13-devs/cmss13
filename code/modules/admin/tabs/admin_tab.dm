@@ -218,6 +218,13 @@
 
 	message_admins("[key_name(usr)] used Toggle Wake In View.")
 
+/client/proc/cmd_mod_say(msg as text)
+	set name = "Msay" // This exists for ease of admins who were used to using msay instead of asay
+	set category = "Admin"
+	set hidden = TRUE
+
+	cmd_admin_say(msg)
+
 /client/proc/cmd_admin_say(msg as text)
 	set name = "Asay" //Gave this shit a shorter name so you only have to time out "asay" rather than "admin say" to use it --NeoFite
 	set category = "Admin"

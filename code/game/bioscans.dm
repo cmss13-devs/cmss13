@@ -128,7 +128,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 
 	var/datum/ares_link/link = GLOB.ares_link
 	link.log_ares_bioscan(name, input)
-	if(forced || (link.p_interface && !link.p_interface.inoperable()))
+	if(forced || ares_can_log())
 		marine_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
 
 /// The announcement to all Xenos. Slightly off for the human ship, accurate otherwise.

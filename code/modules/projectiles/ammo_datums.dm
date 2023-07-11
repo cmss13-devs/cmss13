@@ -1880,7 +1880,7 @@
 	penetration= ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
-datum/ammo/bullet/pkp
+/datum/ammo/bullet/pkp
 	name = "machinegun bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
@@ -2106,7 +2106,7 @@ datum/ammo/bullet/pkp
 /datum/ammo/rocket/wp/do_at_max_range(obj/item/projectile/P)
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
-datum/ammo/rocket/wp/upp
+/datum/ammo/rocket/wp/upp
 	name = "extreme-intensity incendiary rocket"
 	flags_ammo_behavior = AMMO_ROCKET|AMMO_EXPLOSIVE|AMMO_STRIKES_SURFACE
 	damage_type = BURN

@@ -463,23 +463,18 @@
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "UPP 173Rd RECON Syn"
 
-/datum/equipment_preset/synth/survivor/upp/load_name(mob/living/carbon/human/new_human, randomise)
-	var/random_name
-	if(prob(10))
-		random_name = "[capitalize(randomly_generate_chinese_word(2))]"
-	else if(new_human.gender == MALE)
-		random_name = "[pick(first_names_male_upp)]"
-	else
-		random_name = "[pick(first_names_female_upp)]"
-
-	new_human.change_real_name(new_human, random_name)
-
 /datum/equipment_preset/synth/survivor/upp/load_gear(mob/living/carbon/human/new_human)
-
+	var/obj/item/clothing/under/marine/veteran/UPP/medic/uniform = new()
+	var/R = rand(1,2)
+	switch(R)
+		if(1)
+			uniform.roll_suit_jacket(new_human)
+		if(2)
+			uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/screwdriver, WEAR_R_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress, WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/medic/survivor, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/multitool, WEAR_IN_BACK)

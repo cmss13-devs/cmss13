@@ -1454,7 +1454,14 @@
 	new_human.change_real_name(new_human, random_name)
 
 /datum/equipment_preset/survivor/upp/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/survivor (new_human), WEAR_BODY)
+	var/obj/item/clothing/under/marine/veteran/UPP/uniform = new()
+	var/R = rand(1,2)
+	switch(R)
+		if(1)
+			uniform.roll_suit_jacket(new_human)
+		if(2)
+			uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp (new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flare(new_human), WEAR_R_STORE)
@@ -1471,6 +1478,14 @@
 	skills = /datum/skills/upp
 
 /datum/equipment_preset/survivor/upp/soldier/load_gear(mob/living/carbon/human/new_human)
+	var/obj/item/clothing/under/marine/veteran/UPP/uniform = new()
+	var/R = rand(1,2)
+	switch(R)
+		if(1)
+			uniform.roll_suit_jacket(new_human)
+		if(2)
+			uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
 	add_upp_weapon(new_human)
 	spawn_random_upp_headgear(new_human)
@@ -1486,14 +1501,22 @@
 	skills = /datum/skills/upp/combat_engineer
 
 /datum/equipment_preset/survivor/upp/sapper/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/engi/survivor (new_human), WEAR_BODY)
+
+	var/obj/item/clothing/under/marine/veteran/UPP/engi/uniform = new()
+	var/R = rand(1,2)
+	switch(R)
+		if(1)
+			uniform.roll_suit_jacket(new_human)
+		if(2)
+			uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	spawn_random_upp_armor(new_human)
 	add_upp_weapon(new_human)
 	spawn_random_upp_headgear(new_human)
-	spawn_random_upp_armor(new_human)
 
 	..()
 
@@ -1504,7 +1527,14 @@
 	skills = /datum/skills/upp/combat_medic
 
 /datum/equipment_preset/survivor/upp/medic/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/medic/survivor (new_human), WEAR_BODY)
+	var/obj/item/clothing/under/marine/veteran/UPP/medic/uniform = new()
+	var/R = rand(1,2)
+	switch(R)
+		if(1)
+			uniform.roll_suit_jacket(new_human)
+		if(2)
+			uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new/obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/partial(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/medic/upp(new_human), WEAR_BACK)
@@ -1512,9 +1542,11 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_IN_BACK)
+	spawn_random_upp_armor(new_human)
 	add_upp_weapon(new_human)
 	spawn_random_upp_headgear(new_human)
-	spawn_random_upp_armor(new_human)
+
+
 
 	..()
 

@@ -30,6 +30,6 @@
 	default_ammo = /datum/ammo/bullet/pistol/tranq
 	caliber = ".22"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi'
-	icon_state = "pk9r"
+	icon_state = "pk-9_tranq"
 	max_rounds = 5
 	gun_type = /obj/item/weapon/gun/pistol/tranquilizer

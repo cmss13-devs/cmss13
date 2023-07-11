@@ -88,6 +88,11 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		return TRUE
 	return FALSE //interface not found or is broken
 
+/proc/ares_can_log()
+	var/obj/structure/machinery/computer/ares_console/interface = GLOB.ares_link.interface
+	if(interface && !interface.inoperable())
+		return TRUE
+	return FALSE //ares interface not found or is broken
 
 // ------ ARES Interface Procs ------ //
 /obj/structure/machinery/computer/proc/get_ares_access(obj/item/card/id/card)

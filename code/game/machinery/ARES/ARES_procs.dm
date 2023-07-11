@@ -82,6 +82,13 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
 			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
 
+/proc/ares_can_interface()
+	var/obj/structure/machinery/ares/processor/interface/interface = GLOB.ares_link.p_interface
+	if(interface && !interface.inoperable())
+		return TRUE
+	return FALSE //interface not found or is broken
+
+
 // ------ ARES Interface Procs ------ //
 /obj/structure/machinery/computer/proc/get_ares_access(obj/item/card/id/card)
 	if(ACCESS_ARES_DEBUG in card.access)

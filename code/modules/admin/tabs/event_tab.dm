@@ -535,9 +535,8 @@
 	if(!input)
 		return FALSE
 
-	var/datum/ares_link/link = GLOB.ares_link
-	if(link.p_interface.inoperable())
-		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+	if(!ares_can_interface())
+		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. Interface processor may be offline or destroyed."))
 		return
 
 	ai_announcement(input)
@@ -575,14 +574,13 @@
 	var/input = input(usr, "This is an announcement type message from the ship's AI. This will be announced to every conscious human on Almayer z-level. Be aware, this will work even if ARES unpowered/destroyed. Check with online staff before you send this.", "What?", "") as message|null
 	if(!input)
 		return FALSE
-	for(var/obj/structure/machinery/ares/processor/interface/processor in machines)
-		if(processor.inoperable())
-			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
-			return
+	if(!ares_can_interface())
+		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. Interface processor may be offline or destroyed."))
+		return
 
-		shipwide_ai_announcement(input)
-		message_admins("[key_name_admin(src)] has created an AI shipwide report")
-		log_admin("[key_name_admin(src)] AI shipwide report: [input]")
+	shipwide_ai_announcement(input)
+	message_admins("[key_name_admin(src)] has created an AI shipwide report")
+	log_admin("[key_name_admin(src)] AI shipwide report: [input]")
 
 /client/proc/cmd_admin_create_predator_report()
 	set name = "Report: Yautja AI"

@@ -208,8 +208,8 @@
 			return
 	..()
 
-/obj/structure/bed/roller/Collided(atom/movable/AM)
-	if(!isxeno(AM))
+/obj/structure/bed/roller/Collided(atom/movable/moving_atom)
+	if(!isxeno(moving_atom))
 		return ..()
 
 	if(buckled_mob && buckled_mob.stat != DEAD)

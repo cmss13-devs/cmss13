@@ -536,7 +536,7 @@
 		return FALSE
 
 	if(!ares_can_interface())
-		var/prompt = tgui_alert(src, "ARES Interface is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		var/prompt = tgui_alert(src, "ARES interface processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
 		if(prompt == "No")
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's interface processor may be offline or destroyed."))
 			return
@@ -579,7 +579,7 @@
 	if(!input)
 		return FALSE
 	if(!ares_can_interface())
-		var/prompt = tgui_alert(src, "ARES Interface is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		var/prompt = tgui_alert(src, "ARES interface processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
 		if(prompt == "No")
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's interface processor may be offline or destroyed."))
 			return

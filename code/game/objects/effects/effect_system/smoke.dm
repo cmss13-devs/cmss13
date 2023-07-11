@@ -132,6 +132,8 @@
 
 /obj/effect/particle_effect/smoke/bad/affect(mob/living/carbon/M)
 	..()
+	if (isxeno(M) || isyautja(M) || issynth(M))
+		return
 	if (M.internal != null && M.wear_mask && (M.wear_mask.flags_inventory & ALLOWINTERNALS))
 		return
 	else
@@ -365,7 +367,7 @@
 
 /obj/effect/particle_effect/smoke/xeno_weak/affect(mob/living/carbon/moob) // This applies every tick someone is in the smoke
 	..()
-	if(isxeno(moob))
+	if(isxeno(moob) || issynth(moob))
 		return
 	if(isyautja(moob))
 		neuro_dose = neuro_dose*2 // Yautja get half effects

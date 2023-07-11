@@ -1,9 +1,9 @@
 /obj/item/weapon/gun/pistol/tranquilizer
 	name = "Tranquilizer gun"
 	desc = "Contains horse tranquilizer darts. Useful at knocking people out."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
-	icon_state = "npz92"
-	item_state = "npz92"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
+	icon_state = "pk9r"
+	item_state = "pk9r"
 	current_mag = /obj/item/ammo_magazine/pistol/tranq
 
 	burst_amount = 1
@@ -29,7 +29,7 @@
 	name = "\improper Tranquilizer magazine (Horse Tranquilizer)"
 	default_ammo = /datum/ammo/bullet/pistol/tranq
 	caliber = ".22"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
-	icon_state = "pk-9_tranq"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi'
+	icon_state = "pk9r"
 	max_rounds = 5
 	gun_type = /obj/item/weapon/gun/pistol/tranquilizer

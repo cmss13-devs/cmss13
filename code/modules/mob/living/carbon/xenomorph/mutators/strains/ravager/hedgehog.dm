@@ -126,3 +126,8 @@
 	if (!shards_locked)
 		shards = min(max_shards, shards + shards_per_projectile)
 	return
+
+/datum/behavior_delegate/ravager_hedgehog/melee_attack_additional_effects_self()
+	if (!shards_locked)
+		shards = min(max_shards, shards + shards_per_slash)
+	return

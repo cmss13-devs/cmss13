@@ -327,6 +327,8 @@
 /obj/item/weapon/twohanded/breacher/synth/pickup(mob/user)
 	if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))
 		to_chat(user, SPAN_WARNING("You barely manage to lift \the [src] above your knees. This thing will probably be useless to you."))
+		user.apply_effect(1.1, SLOW)
+		START_PROCESSING(SSobj, src)
 		return
 	..()
 
@@ -335,3 +337,11 @@
 		to_chat(user, SPAN_WARNING("\The [src] is too heavy for you to use as a weapon!"))
 		return
 	..()
+
+/obj/item/weapon/twohanded/breacher/synth/process()
+	var/mob/user = src.loc
+	if(istype(user) && !(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))
+		user.apply_effect(1.1, SLOW)
+		return
+
+	STOP_PROCESSING(SSobj, src)

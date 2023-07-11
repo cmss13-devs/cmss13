@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - balance: "Telebaton now scales in stunforce effectiveness based on policing skill"

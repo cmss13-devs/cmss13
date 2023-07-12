@@ -84,12 +84,16 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 /proc/ares_can_interface()
 	var/obj/structure/machinery/ares/processor/interface/interface = GLOB.ares_link.p_interface
+	if(!istype(GLOB.ares_link))
+		return FALSE
 	if(interface && !interface.inoperable())
 		return TRUE
 	return FALSE //interface not found or is broken
 
 /proc/ares_can_log()
 	var/obj/structure/machinery/computer/ares_console/interface = GLOB.ares_link.interface
+	if(!istype(GLOB.ares_link))
+		return FALSE
 	if(interface && !interface.inoperable())
 		return TRUE
 	return FALSE //ares interface not found or is broken

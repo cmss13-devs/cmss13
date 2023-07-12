@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - balance: "Marines called with foxtrot nerfed from 15 to 10."

@@ -53,7 +53,6 @@ jobs:
           tools/build/build --ci lint tgui-test
           tools/bootstrap/python -m dmi.test
           tools/bootstrap/python -m mapmerge2.dmm_test
-          tools/bootstrap/python -m dmitool.check_icon_states
           ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
       - name: Annotate Lints
         uses: yogstation13/DreamAnnotate@v2

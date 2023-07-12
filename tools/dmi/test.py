@@ -31,11 +31,14 @@ def _self_test():
                         failures_this_file += 1
                     existing_states = []
                     for state in dmi_states:
-                        if state.name in existing_states:
+                        state_name = state.name
+                        if state.movement:
+                            state_name += "_MOVEMENT_STATE_TRUE"
+                        if state_name in existing_states:
                             print("{0} {1} has a duplicate state '{2}'.".format(red("FAIL"), fullpath, state.name))
                             failures_this_file += 1
                             continue
-                        existing_states.append(state.name)
+                        existing_states.append(state_name)
                 except Exception:
                     print("{0} {1} threw an exception.".format(red("FAIL"), fullpath))
                     failures_this_file += 1

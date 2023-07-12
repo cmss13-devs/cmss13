@@ -158,7 +158,11 @@
 	if(!ishuman(movable_atom))
 		return
 
-	if(bound_xeno && bound_xeno.stealth)
-		var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invisibility_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
-		if(lurker_invisibility_action)
-			lurker_invisibility_action.invisibility_off()
+	if(!bound_xeno || !bound_xeno.stealth)
+		return
+
+	 var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invisibility_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
+	if(!lurker_invisibility_action)
+		return
+
+	lurker_invisibility_action.invisibility_off()

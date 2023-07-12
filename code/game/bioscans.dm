@@ -106,7 +106,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 
 
 /// This will do something after Project ARES.
-/datum/bioscan_data/proc/can_ares_bioscan()
+/datum/bioscan_data/proc/ares_can_bioscan()
 	var/datum/ares_link/link = GLOB.ares_link
 	if(!istype(link))
 		return FALSE
@@ -116,7 +116,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 
 /// The announcement to all Humans. Slightly off for the planet and elsewhere, accurate for the ship.
 /datum/bioscan_data/proc/ares_bioscan(forced = FALSE, variance = 2)
-	if(!forced && !can_ares_bioscan())
+	if(!forced && !ares_can_bioscan())
 		message_admins("An ARES Bioscan has failed.")
 		marine_announcement("Bioscan failure detected. Investigation into Bioscan subsystem recommended.", "[MAIN_AI_SYSTEM] Bioscan Failure", 'sound/AI/bioscan.ogg', logging = ARES_LOG_MAIN)
 		return

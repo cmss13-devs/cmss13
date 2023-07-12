@@ -121,7 +121,8 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 		message_admins("An ARES Bioscan has failed.")
 		var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
 		var/input = "Bioscan failed. \n\nInvestigation into Bioscan subsystem recommended."
-		marine_announcement(input, name, 'sound/misc/interference.ogg', logging = ARES_LOG_NONE)
+		if(ares_can_log())
+			marine_announcement(input, name, 'sound/misc/interference.ogg', logging = ARES_LOG_NONE)
 		link.log_ares_bioscan(name, input)
 		return
 

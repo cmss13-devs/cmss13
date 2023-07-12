@@ -45,6 +45,7 @@
 	var/max_shards = 300
 	var/shard_gain_onlife = 5
 	var/shards_per_projectile = 10
+	var/shards_per_slash = 15
 	var/armor_buff_per_fifty_shards = 2.50
 	var/shard_lock_duration = 150
 	var/shard_lock_speed_mod = 0.45

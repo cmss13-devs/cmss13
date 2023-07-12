@@ -119,8 +119,8 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 	var/datum/ares_link/link = GLOB.ares_link
 	if(!forced && !ares_can_bioscan())
 		message_admins("An ARES Bioscan has failed.")
-		var/name = "[MAIN_AI_SYSTEM] Bioscan Failure"
-		var/input = "Bioscan failure detected. Investigation into Bioscan subsystem recommended."
+		var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
+		var/input = "Bioscan failed. \n\nInvestigation into Bioscan subsystem recommended."
 		marine_announcement(input, name, 'sound/misc/interference.ogg', logging = ARES_LOG_NONE)
 		link.log_ares_bioscan(name, input)
 		return

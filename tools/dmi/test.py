@@ -21,25 +21,28 @@ def _self_test():
         for filename in filenames:
             if filename.endswith('.dmi'):
                 fullpath = os.path.join(dirpath, filename)
+                failures_this_file = 0
                 try:
                     dmi = Dmi.from_file(fullpath)
                     dmi_states = dmi.states
                     number_of_icon_states = len(dmi.states)
                     if number_of_icon_states > 512:
                         print("{0} {1} has too many icon states: {2}/512.".format(red("FAIL"), fullpath, number_of_icon_states))
-                        failed += 1
+                        failures_this_file += 1
                     existing_states = []
                     for state in dmi_states:
                         if state.name in existing_states:
                             print("{0} {1} has a duplicate state '{2}'.".format(red("FAIL"), fullpath, state.name))
-                            failed += 1
+                            failures_this_file += 1
                             continue
                         existing_states.append(state.name)
                 except Exception:
                     print("{0} {1} threw an exception.".format(red("FAIL"), fullpath))
-                    failed += 1
+                    failures_this_file += 1
                     raise
                 count += 1
+                if failures_this_file > 0:
+                    failed += 1
 
     print(f"{os.path.relpath(__file__)}: {green(f'successfully parsed {count-failed} .dmi files')}")
     if failed > 0:

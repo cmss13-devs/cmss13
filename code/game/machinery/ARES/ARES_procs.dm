@@ -54,8 +54,6 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	link.apollo_log.Add("[worldtime2text()]: [speaker], '[message]'")
 
 /datum/ares_link/proc/log_ares_bioscan(title, input)
-	if(!p_bioscan || p_bioscan.inoperable() || !interface)
-		return FALSE
 	interface.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
 
 /datum/ares_link/proc/log_ares_bombardment(mob/living/user, ob_name, coordinates)

@@ -241,7 +241,7 @@
 		/obj/item/clothing/head/helmet/marine/fluff/jackmcintyre,
 		/obj/item/clothing/suit/storage/marine/fluff/jackmcintyre,
 		/obj/item/clothing/under/marine/fluff/jackmcintyre,
-		/obj/item/clothing/under/marine/fluff/jackmcintyre,
+		/obj/item/clothing/under/marine/fluff/jackmcintyre_alt,
 	)
 
 /obj/item/storage/box/donator_kit/jdobbin49

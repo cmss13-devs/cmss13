@@ -139,6 +139,8 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 		link.log_ares_bioscan(name, input) //if interface is down, bioscan still logged, just have to go read it.
 	if(forced || ares_can_interface())
 		marine_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
+	else
+	message_admins("An ARES Bioscan has succeeded, but was not announced.")
 
 /// The announcement to all Xenos. Slightly off for the human ship, accurate otherwise.
 /datum/bioscan_data/proc/qm_bioscan(variance = 2)

@@ -133,6 +133,8 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 	var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
 	var/input = "Bioscan complete.\n\nSensors indicate [xenos_on_ship_uncontained ? "[xenos_on_ship_uncontained]" : "no"] unknown lifeform signature[!xenos_on_ship_uncontained || xenos_on_ship_uncontained > 1 ? "s":""] present on the ship[xenos_on_ship_uncontained && xenos_ship_location ? ", including one in [xenos_ship_location]," : ""] and [fake_xenos_on_planet ? "approximately [fake_xenos_on_planet]" : "no"] signature[!fake_xenos_on_planet || fake_xenos_on_planet > 1 ? "s":""] located elsewhere[fake_xenos_on_planet && xenos_planet_location ? ", including one in [xenos_planet_location]":""]."
 
+	log_game("BIOSCAN: ARES bioscan completed. [input]")
+
 	if(forced || ares_can_log())
 		link.log_ares_bioscan(name, input) //if interface is down, bioscan still logged, just have to go read it.
 	if(forced || ares_can_interface())

@@ -118,6 +118,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 /datum/bioscan_data/proc/ares_bioscan(forced = FALSE, variance = 2)
 	if(!forced && !can_ares_bioscan())
 		message_admins("An ARES Bioscan has failed.")
+		marine_announcement("Bioscan failure detected. Investigation into Bioscan subsystem recommended.", "[MAIN_AI_SYSTEM] Bioscan Failure", 'sound/AI/bioscan.ogg', logging = ARES_LOG_MAIN)
 		return
 
 	//Adjust the randomness there so everyone gets the same thing

@@ -132,6 +132,7 @@
 // Weed defines
 #define WEED_LEVEL_WEAK 0
 #define WEED_LEVEL_STANDARD  1.5
+#define WEED_LEVEL_HARDY 1.6
 #define WEED_LEVEL_HIVE   4
 
 #define WEED_RANGE_STANDARD  3

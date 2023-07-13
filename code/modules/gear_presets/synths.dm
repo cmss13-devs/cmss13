@@ -532,6 +532,7 @@
 	new_human.h_style = "Bald"
 	new_human.f_style = "Shaved"
 	if(prob(5))
+		new_human.grad_style = "None" //No gradients for Working Joes
 		new_human.h_style = "Shoulder-length Hair" //Added the chance of hair as per Monkeyfist lore accuracy
 	new_human.r_eyes = 0
 	new_human.g_eyes = 0

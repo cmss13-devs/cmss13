@@ -3,7 +3,7 @@
 //whiskey outpost extra marines
 /datum/emergency_call/cryo_squad
 	name = "Marine Cryo Reinforcements (Squad)"
-	mob_max = 15
+	mob_max = 10
 	mob_min = 1
 	probability = 0
 	objectives = "Assist the USCM forces"
@@ -13,10 +13,12 @@
 	shuttle_id = ""
 	var/leaders = 0
 
-/datum/emergency_call/cryo_squad/spawn_candidates(announce, override_spawn_loc)
+/datum/emergency_call/cryo_squad/spawn_candidates(announce, override_spawn_loc, announce_dispatch_message)
 	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
 	leaders = cryo_squad.num_leaders
-	return ..()
+	. = ..()
+	if(length(members))
+		shipwide_ai_announcement("Successfully deployed [length(members)] Foxtrot marines.")
 
 /datum/emergency_call/cryo_squad/create_member(datum/mind/M, turf/override_spawn_loc)
 	set waitfor = 0

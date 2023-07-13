@@ -1,5 +1,3 @@
-#define CRASH_LAND_PROBABILITY 50
-
 /obj/docking_port/mobile/escape_shuttle
 	name = "Escape Pod"
 	id = ESCAPE_SHUTTLE
@@ -10,6 +8,8 @@
 	rechargeTime = SHUTTLE_RECHARGE
 	ignitionTime = 8 SECONDS
 	ignition_sound = 'sound/effects/escape_pod_warmup.ogg'
+	/// The % chance of the escape pod crashing into the groundmap
+	var/crash_land_chance = 33
 
 	var/datum/door_controller/single/door_handler = new()
 	var/launched = FALSE
@@ -76,7 +76,7 @@
 		return
 
 	destination = null
-	if(prob(CRASH_LAND_PROBABILITY))
+	if(prob(crash_land_chance))
 		create_crash_point()
 
 	set_mode(SHUTTLE_IGNITING)
@@ -176,6 +176,12 @@
 	. = ..()
 	playsound(src,'sound/effects/escape_pod_launch.ogg', 50, 1)
 
+/obj/docking_port/mobile/escape_shuttle/proc/force_crash()
+	create_crash_point()
+	set_mode(SHUTTLE_IGNITING)
+	on_ignition()
+	setTimer(ignitionTime)
+
 /obj/docking_port/mobile/escape_shuttle/e
 	id = ESCAPE_SHUTTLE_EAST
 	width = 4
@@ -270,6 +276,3 @@
 /datum/map_template/shuttle/escape_pod_e_cl
 	name = "Escape Pod E CL"
 	shuttle_id = ESCAPE_SHUTTLE_EAST_CL
-
-
-#undef CRASH_LAND_PROBABILITY

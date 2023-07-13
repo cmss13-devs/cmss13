@@ -82,14 +82,20 @@
 
 	var/list/hugger_image_index = list()
 	var/mutable_appearance/hugger_overlays_icon
+	var/list/eggsac_image_index = list()
+	var/mutable_appearance/eggsac_overlays_icon
 
 /mob/living/carbon/xenomorph/carrier/update_icons()
 	. = ..()
-
-	update_hugger_overlays()
+	if (mutation_type == CARRIER_NORMAL)
+		update_hugger_overlays()
+	if (mutation_type == CARRIER_EGGSAC)
+		update_eggsac_overlays()
 
 /mob/living/carbon/xenomorph/carrier/proc/update_hugger_overlays()
 	if(!hugger_overlays_icon)
+		return
+	if(!mutation_type == CARRIER_NORMAL)
 		return
 
 	overlays -= hugger_overlays_icon
@@ -99,7 +105,7 @@
 		hugger_image_index.Cut()
 		return
 
-	update_icon_maths(round(( huggers_cur / huggers_max ) * 3.999) + 1)
+	update_clinger_maths(round(( huggers_cur / huggers_max ) * 3.999) + 1)
 
 	for(var/i in hugger_image_index)
 		if(stat == DEAD)
@@ -114,8 +120,8 @@
 
 	overlays += hugger_overlays_icon
 
-/mob/living/carbon/xenomorph/carrier/proc/update_icon_maths(number)
-	var/funny_list = list(1,2,3,4)
+/mob/living/carbon/xenomorph/carrier/proc/update_clinger_maths(number)
+	var/clinger_list = list(1,2,3,4)
 	if(length(hugger_image_index) != number)
 		if(length(hugger_image_index) > number)
 			while(length(hugger_image_index) != number)
@@ -123,13 +129,55 @@
 		else
 			while(length(hugger_image_index) != number)
 				for(var/i in hugger_image_index)
-					if(locate(i) in funny_list)
-						funny_list -= i
-				hugger_image_index += funny_list[rand(1,length(funny_list))]
+					if(locate(i) in clinger_list)
+						clinger_list -= i
+				hugger_image_index += clinger_list[rand(1,length(clinger_list))]
+
+/mob/living/carbon/xenomorph/carrier/proc/update_eggsac_overlays()
+	if(!eggsac_overlays_icon)
+		return
+	if(!mutation_type == CARRIER_EGGSAC)
+		return
+
+	overlays -= eggsac_overlays_icon
+	eggsac_overlays_icon.overlays.Cut()
+
+	if(!eggs_cur)
+		eggsac_image_index.Cut()
+		return
+
+	update_eggsac_maths(round(( eggs_cur / eggs_max ) * 2.999) + 1)
+
+	for(var/i in eggsac_image_index)
+		if(stat == DEAD)
+			eggsac_image_index.Cut()
+		else if(lying)
+			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+				eggsac_overlays_icon.overlays += icon(icon, "eggsac_[i] Sleeping")
+			else
+				eggsac_overlays_icon.overlays +=icon(icon, "eggsac_[i] Knocked Down")
+		else
+			eggsac_overlays_icon.overlays +=icon(icon, "eggsac_[i]")
+
+	overlays += eggsac_overlays_icon
+
+/mob/living/carbon/xenomorph/carrier/proc/update_eggsac_maths(number)
+	var/eggsac_list = list(1,2,3)
+	if(length(eggsac_image_index) != number)
+		if(length(eggsac_image_index) > number)
+			while(length(eggsac_image_index) != number)
+				eggsac_image_index -= eggsac_image_index[length(eggsac_image_index)]
+		else
+			while(length(eggsac_image_index) != number)
+				for(var/i in eggsac_image_index)
+					if(locate(i) in eggsac_list)
+						eggsac_list -= i
+				eggsac_image_index += clinger_list[rand(1,length(clinger_list))] //Random to step-by-step to-do.
 
 /mob/living/carbon/xenomorph/carrier/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
 	hugger_overlays_icon = mutable_appearance('icons/mob/xenos/overlay_effects64x64.dmi',"empty")
+	eggsac_overlays_icon = mutable_appearance('icons/mob/xenos/overlay_effects64x64.dmi',"empty")
 
 /mob/living/carbon/xenomorph/carrier/death(cause, gibbed)
 	. = ..(cause, gibbed)
@@ -149,6 +197,7 @@
 			if(prob(chance))
 				new /obj/item/xeno_egg(loc, hivenumber)
 				eggs_cur--
+				update_icons()
 
 /mob/living/carbon/xenomorph/carrier/get_status_tab_items()
 	. = ..()
@@ -272,6 +321,7 @@
 	if(eggs_cur < eggs_max)
 		if(stat == CONSCIOUS)
 			eggs_cur++
+			update_icons()
 			to_chat(src, SPAN_NOTICE("You store the egg and carry it for safekeeping. Now sheltering: [eggs_cur] / [eggs_max]."))
 			qdel(E)
 		else
@@ -306,6 +356,7 @@
 			return
 		E = new(src, hivenumber)
 		eggs_cur--
+		update_icons()
 		put_in_active_hand(E)
 		to_chat(src, SPAN_XENONOTICE("You grab one of the eggs in your storage. Now sheltering: [eggs_cur] / [eggs_max]."))
 		return

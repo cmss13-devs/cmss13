@@ -326,16 +326,14 @@
 /// Checks whether a table is a straight line along a given axis
 /obj/structure/surface/table/proc/straight_table_check(direction)
 	var/obj/structure/surface/table/table = src
-
-	// Check whether there are connected tables perpendicular to the axis
-	for(var/angle in list(-90, 90))
-		table = locate() in get_step(loc, turn(direction, angle))
-		if(table && !table.flipped)
-			return FALSE
-
-	table = src
-	var/tables_count = 8 // Lazy extra safety against infinite loops. If table big, can't flip, i guess.
-	while(table && tables_count--)
+	var/obj/structure/surface/table/side_table
+	var/tables_count = 7 // Lazy extra safety against infinite loops. If table big, can't flip, i guess.
+	while(--tables_count)
+		// Check whether there are connected tables perpendicular to the axis
+		for(var/angle in list(-90, 90))
+			side_table = locate() in get_step(table, turn(direction, angle))
+			if(side_table && !side_table.flipped)
+				return FALSE
 		table = locate() in get_step(table, direction)
 		if(!table || table.flipped)
 			return TRUE
@@ -427,7 +425,7 @@
 		to_chat(usr, SPAN_WARNING("You have moved a table too recently."))
 		return FALSE
 
-	if(!skip_straight_check && (!straight_table_check(turn(direction, 90)) || !straight_table_check(turn(direction, -90))))
+	if(!skip_straight_check && !(straight_table_check(turn(direction, 90)) && straight_table_check(turn(direction, -90))))
 		to_chat(usr, SPAN_WARNING("[src] is too wide to be flipped."))
 		return FALSE
 

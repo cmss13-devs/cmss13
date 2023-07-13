@@ -173,32 +173,32 @@
 	eggsac_overlays_icon = mutable_appearance('icons/mob/xenos/overlay_effects64x64.dmi',"empty")
 
 /mob/living/carbon/xenomorph/carrier/death(cause, gibbed)
-    . = ..(cause, gibbed)
-    if(.)
-        var/chance = 75
-        if(mutation_type == CARRIER_EGGSAC)
-            visible_message(SPAN_XENOWARNING("[src] throes as its eggsac bursts into a mess of acid!"))
-            playsound(src.loc, 'sound/effects/alien_egg_burst.ogg', 25, 1)
+	. = ..(cause, gibbed)
+	if(.)
+		var/chance = 75
+		if(mutation_type == CARRIER_EGGSAC)
+			visible_message(SPAN_XENOWARNING("[src] throes as its eggsac bursts into a mess of acid!"))
+			playsound(src.loc, 'sound/effects/alien_egg_burst.ogg', 25, 1)
 
-        if(huggers_cur)
-            //Hugger explosion, like an egg morpher
-            var/obj/item/clothing/mask/facehugger/hugger
-            visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
-            for(var/i in 1 to huggers_cur)
-                if(prob(chance))
-                    hugger = new(loc, hivenumber)
-                    step_away(hugger, src, 1)
+		if(huggers_cur)
+			//Hugger explosion, like an egg morpher
+			var/obj/item/clothing/mask/facehugger/hugger
+			visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
+			for(var/i in 1 to huggers_cur)
+				if(prob(chance))
+					hugger = new(loc, hivenumber)
+					step_away(hugger, src, 1)
 
-        var/eggs_dropped = FALSE
-        while (eggs_cur > 0)
-            if(prob(chance))
-                new /obj/item/xeno_egg(loc, hivenumber)
-                eggs_cur--
-                eggs_dropped = TRUE
-                update_icons()
+		var/eggs_dropped = FALSE
+		while (eggs_cur > 0)
+			if(prob(chance))
+				new /obj/item/xeno_egg(loc, hivenumber)
+				eggs_cur--
+				eggs_dropped = TRUE
+				update_icons()
 
-        if(eggs_dropped == TRUE)
-            xeno_message(SPAN_XENOANNOUNCE("[src] has dropped some precious eggs!"), 2, hive.hivenumber)
+		if(eggs_dropped == TRUE)
+			 xeno_message(SPAN_XENOANNOUNCE("[src] has dropped some precious eggs!"), 2, hive.hivenumber)
 
 /mob/living/carbon/xenomorph/carrier/get_status_tab_items()
 	. = ..()

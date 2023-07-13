@@ -66,7 +66,7 @@
 		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/facehugger/Life(delta_time)
-	if(stat != DEAD && !lying && !(locate(/obj/effect/alien/weeds) in get_turf(src)))
+	if(stat != DEAD && !lying && !(mutation_type == FACEHUGGER_WATCHER) && !(locate(/obj/effect/alien/weeds) in get_turf(src)))
 		adjustBruteLoss(1)
 	return ..()
 
@@ -244,7 +244,7 @@
 
 /datum/xeno_mutator/watcher
 	name = "STRAIN: Facehugger - Watcher"
-	description = "You lose your ability to hide in exchange to see further!"
+	description = "You lose your ability to hide in exchange to see further and the ability to no longer take damage outside of weeds. This enables you to stalk your host from a distance and wait for the perfect oppertunity to strike."
 	flavor_description = "No need to hide when you can see the danger."
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_FACEHUGGER)

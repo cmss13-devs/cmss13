@@ -267,6 +267,7 @@
 	var/mob/living/carbon/xenomorph/facehugger/facehugger = mutator_set.xeno
 
 	facehugger.viewsize = 10
+	facehugger.layer = 4 // Mob layer is 4 but we don't have a define for it? It's commented out in the layers.dm file
 
 	facehugger.mutation_type = FACEHUGGER_WATCHER
 	mutator_update_actions(facehugger)

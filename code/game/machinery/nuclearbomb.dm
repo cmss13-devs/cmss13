@@ -221,9 +221,6 @@ var/bomb_set = FALSE
 			if(!A.can_build_special)
 				to_chat(ui.user, SPAN_INFO("You cannot deploy [src] here!"))
 				return
-			if(!decryption_complete)
-				to_chat(ui.user, SPAN_INFO("Decyption of nuke must be complete before you can disengage safety!"))
-				return
 			if(ui.user.action_busy)
 				return
 			ui.user.visible_message(SPAN_WARNING("[ui.user] begins to [safety ? "disable" : "enable"] the safety on [src]!"), SPAN_WARNING("You begin to [safety ? "disable" : "enable"] the safety on [src]."))

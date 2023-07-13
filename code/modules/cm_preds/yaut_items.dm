@@ -889,10 +889,30 @@
 	desc = "A complex cypher chip embedded within a set of clan bracers."
 	icon = 'icons/obj/items/radio.dmi'
 	icon_state = "upp_key"
+	access = list(ACCESS_YAUTJA_SECURE)
 	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_ID
 	flags_item = ITEM_PREDATOR|DELONDROP|NODROP
 	paygrade = null
+
+/obj/item/card/id/bracer_chip/set_user_data(mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+
+	registered_name = H.real_name
+	registered_ref = WEAKREF(H)
+	registered_gid = H.gid
+	blood_type = H.blood_type
+
+	var/list/new_access = list(ACCESS_YAUTJA_SECURE)
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = loc
+	if(istype(bracer) && bracer.owner_rank)
+		switch(bracer.owner_rank)
+			if(CLAN_RANK_ELDER_INT, CLAN_RANK_LEADER_INT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELDER)
+			if(CLAN_RANK_ADMIN_INT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+	access = new_access
 
 /obj/item/storage/medicomp
 	name = "medicomp"

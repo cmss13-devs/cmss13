@@ -72,6 +72,7 @@
 	entrance_markers = null
 
 	QDEL_NULL(reservation)
+	SSinterior.interiors -= src
 
 	return ..()
 

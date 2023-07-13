@@ -1,0 +1,10 @@
+author: "Unknownity"
+delete-after: True
+changes:
+  - bugfix: "Fixed burrowed mobs being able to be targeted by sentries, mines and SG autofire."
+  - bugfix: "Fixed burrowed mobs being able to grab mobs on the surface."
+  - bugfix: "Fixed burrowed mobs being able to resist while burrowed."
+  - bugfix: "Fixed burrowers taking damage from direct flame and shrapnel from explosions."
+  - bugfix: "Fixed burrowers being able to get slashed from enemy Xenos on the surface."
+  - bugfix: "Fixed burrowers unburrow stun to now properly target and stun enemy Xenos."
+  - soundadd: "Added sounds for the Burrower when they are burrowing and unburrowing."

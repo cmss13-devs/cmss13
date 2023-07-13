@@ -1,3 +1,7 @@
+#define FLAY_STAGE_SCALP 1
+#define FLAY_STAGE_STRIP 2
+#define FLAY_STAGE_SKIN 3
+
 /*#########################################
 ########### Weapon Reused Procs ###########
 #########################################*/
@@ -417,7 +421,7 @@
 
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire humanoid apart. Also, that's kind of fucked up.")) //look at this dumbass
-		return
+		return TRUE
 
 	if(issamespecies(user, victim))
 		to_chat(user, SPAN_HIGHDANGER("ARE YOU OUT OF YOUR MIND!?"))
@@ -425,68 +429,137 @@
 
 	if(isspeciessynth(victim))
 		to_chat(user, SPAN_WARNING("You can't flay metal...")) //look at this dumbass
-		return
+		return TRUE
+
+	if(SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src) & COMPONENT_CANCEL_ATTACK)
+		return TRUE
+
+	if(victim.overlays_standing[FLAY_LAYER]) //Already fully flayed. Possibly the user wants to cut them down?
+		return ..()
 
 	if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
-		return
+		return TRUE
 
-	to_chat(user, SPAN_WARNING("You start flaying [victim]."))
+	user.visible_message(SPAN_DANGER("<B>[user] begins to flay [victim] with \a [src]...</B>"),
+		SPAN_DANGER("<B>You start flaying [victim] with your [src.name]...</B>"))
 	playsound(loc, 'sound/weapons/pierce.ogg', 25)
 	if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
-		to_chat(user, SPAN_WARNING("You prepare the skin, cutting the flesh off in vital places."))
+		if(SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src) & COMPONENT_CANCEL_ATTACK) //In case two preds try to flay the same person at once.
+			return TRUE
+		user.visible_message(SPAN_DANGER("<B>[user] makes a series of cuts in [victim]'s skin.</B>"),
+			SPAN_DANGER("<B>You prepare the skin, cutting the flesh off in vital places.</B>"))
 		playsound(loc, 'sound/weapons/slash.ogg', 25)
-		create_leftovers(victim, has_meat = TRUE, skin_amount = 0)
+
 		for(var/limb in victim.limbs)
 			victim.apply_damage(15, BRUTE, limb, sharp = FALSE)
 		victim.add_flay_overlay(stage = 1)
 
-		if(do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
+		var/datum/flaying_datum/flay_datum = new(victim)
+		flay_datum.create_leftovers(victim, TRUE, 0)
+		SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src, TRUE)
+	else
+		to_chat(user, SPAN_WARNING("You were interrupted before you could finish your work!"))
+	return TRUE
+
+///Records status of flaying attempts and handles progress.
+/datum/flaying_datum
+	var/mob/living/carbon/human/victim
+	var/current_flayer
+	var/flaying_stage = FLAY_STAGE_SCALP
+
+/datum/flaying_datum/New(mob/living/carbon/human/target)
+	. = ..()
+	victim = target
+	RegisterSignal(victim, COMSIG_HUMAN_FLAY_ATTEMPT, PROC_REF(begin_flaying))
+
+///Loops until interrupted or done.
+/datum/flaying_datum/proc/begin_flaying(mob/living/carbon/human/target, mob/living/carbon/human/user, obj/item/tool, ongoing_attempt)
+	SIGNAL_HANDLER
+	if(current_flayer)
+		if(current_flayer != user)
+			to_chat(user, SPAN_WARNING("You can't flay [target], [current_flayer] is already at work!"))
+	else
+		current_flayer = user
+		if(!ongoing_attempt)
+			playsound(user.loc, 'sound/weapons/pierce.ogg', 25)
+			user.visible_message(SPAN_DANGER("<B>[user] resumes the flaying of [victim] with \a [tool]...</B>"),
+				SPAN_DANGER("<B>You resume the flaying of [victim] with your [tool.name]...</B>"))
+		INVOKE_ASYNC(src, PROC_REF(flay), target, user, tool) //do_after sleeps.
+	return COMPONENT_CANCEL_ATTACK
+
+/datum/flaying_datum/proc/flay(mob/living/carbon/human/target, mob/living/carbon/human/user, obj/item/tool)
+	if(!do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
+		to_chat(user, SPAN_WARNING("You were interrupted before you could finish your work!"))
+		current_flayer = null
+		return
+
+	switch(flaying_stage)
+		if(FLAY_STAGE_SCALP)
+			playsound(user.loc, 'sound/weapons/slashmiss.ogg', 25)
+			flaying_stage = FLAY_STAGE_STRIP
 			var/obj/limb/head/v_head = victim.get_limb("head")
-			if(v_head) //they might be beheaded
-				create_leftovers(victim, has_meat = FALSE, skin_amount = 1)
-				victim.apply_damage(10, BRUTE, v_head, sharp = FALSE)
+			if(!v_head || (v_head.status & LIMB_DESTROYED)) //they might be beheaded
+				victim.apply_damage(10, BRUTE, "chest", sharp = TRUE)
+				user.visible_message(SPAN_DANGER("<B>[user] peels the skin around the stump of [victim]'s head loose with \the [tool].</B>"),
+					SPAN_DANGER("<B>[victim] is missing \his head. Pelts like this just aren't the same... You peel the skin around the stump loose with your [tool.name].</B>"))
+			else
+				victim.apply_damage(10, BRUTE, v_head, sharp = TRUE)
 				v_head.disfigured = TRUE
+				create_leftovers(victim, has_meat = FALSE, skin_amount = 1)
 				if(victim.h_style == "Bald") //you can't scalp someone with no hair.
-					to_chat(user, SPAN_WARNING("You make some rough cuts on [victim]'s head and face with \the [src]."))
+					user.visible_message(SPAN_DANGER("<B>[user] makes some rough cuts on [victim]'s head and face with \a [tool].</B>"),
+						SPAN_DANGER("<B>You make some rough cuts on [victim]'s head and face.</B>"))
 				else
-					to_chat(user, SPAN_WARNING("You use \the [src] to cut around [victim]'s hairline, then rip \his scalp from \his head."))
+					user.visible_message(SPAN_DANGER("<B>[user] cuts around [victim]'s hairline, then tears \his scalp from \his head!</B>"),
+						SPAN_DANGER("<B>You cut around [victim]'s hairline, then rip \his scalp from \his head.</B>"))
 					var/obj/item/scalp/cut_scalp = new(get_turf(user), victim, user) //Create a scalp of the victim at the user's feet.
 					user.put_in_inactive_hand(cut_scalp) //Put it in the user's offhand if possible.
 					victim.h_style = "Bald"
 					victim.update_hair() //tear the hair off with the scalp
-			playsound(loc, 'sound/weapons/slashmiss.ogg', 25)
 
-			if(do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
-				to_chat(user, SPAN_WARNING("You jab \the [src] into the flesh cuts, using them to tear off most of the skin, the remainder skin hanging off the flesh."))
-				playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
-				create_leftovers(victim, has_meat = FALSE, skin_amount = 3)
-				for(var/limb in victim.limbs)
-					victim.apply_damage(18, BRUTE, limb, sharp = FALSE)
-				victim.remove_overlay(UNDERWEAR_LAYER)
-				victim.f_style = "Shaved"
-				victim.update_hair() //then rip the beard off along the skin
-				victim.add_flay_overlay(stage = 2)
+		if(FLAY_STAGE_STRIP)
+			user.visible_message(SPAN_DANGER("<B>[user] jabs \his [tool.name] into [victim]'s cuts, prying, cutting, then tearing off large areas of skin. The remainder hangs loosely.</B>"),
+				SPAN_DANGER("<B>You jab your [tool.name] into [victim]'s cuts, prying, cutting, then tearing off large areas of skin. The remainder hangs loosely.</B>"))
+			playsound(user.loc, 'sound/weapons/bladeslice.ogg', 25)
+			create_leftovers(victim, has_meat = FALSE, skin_amount = 3)
+			flaying_stage = FLAY_STAGE_SKIN
+			for(var/limb in victim.limbs)
+				victim.apply_damage(18, BRUTE, limb, sharp = TRUE)
+			victim.remove_overlay(UNDERWEAR_LAYER)
+			victim.drop_inv_item_on_ground(victim.get_item_by_slot(WEAR_BODY)) //Drop uniform, belt etc as well.
+			victim.f_style = "Shaved"
+			victim.update_hair() //then rip the beard off along the skin
+			victim.add_flay_overlay(stage = 2)
 
-				if(do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
-					to_chat(user, SPAN_WARNING("You completely flay [victim], sloppily ripping most remaining flesh and skin off the body. Use rope to hang them from the ceiling."))
-					playsound(loc, 'sound/weapons/wristblades_hit.ogg', 25)
-					create_leftovers(victim, has_meat = TRUE, skin_amount = 2)
-					for(var/limb in victim.limbs)
-						victim.apply_damage(22, BRUTE, limb, sharp = FALSE)
-					for(var/obj/item/item in victim)
-						victim.drop_inv_item_to_loc(item, victim.loc, FALSE, TRUE)
+		if(FLAY_STAGE_SKIN)
+			user.visible_message(SPAN_DANGER("<B>[user] completely flays [victim], pulling the remaining skin off of \his body like a glove!</B>"),
+				SPAN_DANGER("<B>You completely flay [victim], pulling the remaining skin off of \his body like a glove.\nUse rope to hang \him from the ceiling.</B>"))
+			playsound(user.loc, 'sound/weapons/wristblades_hit.ogg', 25)
+			create_leftovers(victim, has_meat = TRUE, skin_amount = 2)
+			for(var/limb in victim.limbs)
+				victim.apply_damage(22, BRUTE, limb, sharp = TRUE)
+			for(var/obj/item/item in victim)
+				victim.drop_inv_item_to_loc(item, victim.loc, FALSE, TRUE)
+				victim.status_flags |= PERMANENTLY_DEAD
+			victim.add_flay_overlay(stage = 3)
 
-					victim.status_flags |= PERMANENTLY_DEAD
-					victim.add_flay_overlay(stage = 3)
+			//End the loop and remove all references to the datum.
+			current_flayer = null
+			UnregisterSignal(victim, COMSIG_HUMAN_FLAY_ATTEMPT)
+			victim = null
+			return
+
+	flay(target, user, tool)
 
 /mob/living/carbon/human/proc/add_flay_overlay(stage = 1)
 	remove_overlay(FLAY_LAYER)
 	var/image/flay_icon = new /image('icons/mob/humans/dam_human.dmi', "human_[stage]")
 	flay_icon.layer = -FLAY_LAYER
+	flay_icon.blend_mode = BLEND_INSET_OVERLAY
 	overlays_standing[FLAY_LAYER] = flay_icon
 	apply_overlay(FLAY_LAYER)
 
-/obj/item/weapon/yautja/knife/proc/create_leftovers(mob/living/victim, has_meat, skin_amount)
+/datum/flaying_datum/proc/create_leftovers(mob/living/victim, has_meat, skin_amount)
 	if(has_meat)
 		var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 		meat.name = "raw [victim.name] steak"
@@ -1128,3 +1201,7 @@
 		var/mob/living/carbon/human/user = usr //Hacky...
 		user.update_power_display(perc)
 	return TRUE
+
+#undef FLAY_STAGE_SCALP
+#undef FLAY_STAGE_STRIP
+#undef FLAY_STAGE_SKIN

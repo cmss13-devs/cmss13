@@ -245,6 +245,7 @@
 	if(!istype(A))
 		return
 
+	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, A)
 	SEND_SIGNAL(A, COMSIG_MOVABLE_TURF_ENTERED, src)
 
 	// Let explosions know that the atom entered
@@ -560,10 +561,10 @@
 	return NOT_WEEDABLE
 
 /turf/open/auto_turf/shale/layer1/is_weedable()
-	return FALSE
+	return SEMI_WEEDABLE
 
 /turf/open/auto_turf/shale/layer2/is_weedable()
-	return FALSE
+	return SEMI_WEEDABLE
 
 /turf/closed/wall/is_weedable()
 	return FULLY_WEEDABLE //so we can spawn weeds on the walls

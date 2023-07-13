@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "ab" = (
 /turf/closed/wall/r_wall,
@@ -70,9 +70,7 @@
 /area/lv624/lazarus/research)
 "an" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/south_medbay_road)
 "ao" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -135,7 +133,7 @@
 	},
 /area/lv624/lazarus/research)
 "av" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "aw" = (
 /obj/structure/machinery/optable,
@@ -431,7 +429,7 @@
 	},
 /area/lv624/lazarus/research)
 "bg" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "bh" = (
 /turf/closed/wall/strata_ice/jungle,

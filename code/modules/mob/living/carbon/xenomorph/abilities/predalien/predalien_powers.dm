@@ -40,9 +40,7 @@
 			shake_camera(M, 10, 1)
 
 	apply_cooldown()
-
-	. = ..()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/smash/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -95,9 +93,7 @@
 			shake_camera(M, 0.2 SECONDS, 1)
 
 	apply_cooldown()
-
-	. = ..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/devastate/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -163,5 +159,4 @@
 
 	xeno.visible_message(SPAN_XENODANGER("[xeno] rapidly slices into [carbon]!"))
 
-	. = ..()
-	return
+	return ..()

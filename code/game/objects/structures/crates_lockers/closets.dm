@@ -31,10 +31,7 @@
 /obj/structure/closet/Initialize()
 	. = ..()
 	if(!opened && fill_from_loc) // if closed, any item at the crate's loc is put in the contents
-		for(var/obj/item/I in src.loc)
-			if(I.density || I.anchored || I == src)
-				continue
-			I.forceMove(src)
+		store_items()
 	GLOB.closet_list += src
 	flags_atom |= USES_HEARING
 
@@ -138,21 +135,23 @@
 	return stored_units
 
 /obj/structure/closet/proc/store_mobs(stored_units)
-	for(var/mob/M in src.loc)
+	for(var/mob/cur_mob in src.loc)
 		if(stored_units + mob_size > storage_capacity)
 			break
-		if(istype (M, /mob/dead/observer))
+		if(istype (cur_mob, /mob/dead/observer))
 			continue
-		if(M.buckled)
+		if(cur_mob.buckled)
+			continue
+		if(cur_mob.anchored)
 			continue
 
-		M.forceMove(src)
+		cur_mob.forceMove(src)
 		stored_units += mob_size
 	return stored_units
 
 /obj/structure/closet/proc/toggle(mob/living/user)
 	user.next_move = world.time + 5
-	if(!(src.opened ? src.close() : src.open()))
+	if(!(src.opened ? src.close(user) : src.open()))
 		to_chat(user, SPAN_NOTICE("It won't budge!"))
 	return
 

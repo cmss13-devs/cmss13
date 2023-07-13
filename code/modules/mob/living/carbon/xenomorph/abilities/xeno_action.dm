@@ -131,6 +131,9 @@
 	// TODO: make hidden a part of can_use_action
 	if(!hidden && can_use_action() && use_ability(arglist(args)))
 		SEND_SIGNAL(src, COMSIG_XENO_ACTION_USED, owner)
+		return TRUE
+
+	return FALSE
 
 // For actions that do something on each life tick
 /datum/action/xeno_action/proc/life_tick()

@@ -100,3 +100,7 @@
 /// Handling the xeno icon state or overlays, return TRUE if icon state should not be changed
 /datum/behavior_delegate/proc/on_update_icons()
 	return
+
+/// Used to override an intent for some abilities that must force harm on next attack_alien()
+/datum/behavior_delegate/proc/override_intent(mob/living/carbon/target_carbon)
+	return bound_xeno.a_intent

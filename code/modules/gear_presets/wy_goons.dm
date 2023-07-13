@@ -9,7 +9,7 @@
 
 /datum/equipment_preset/goon/New()
 	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
+	access = get_all_main_access()
 
 /datum/equipment_preset/goon/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)

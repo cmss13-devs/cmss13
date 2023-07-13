@@ -45,6 +45,7 @@
 		/datum/action/xeno_action/activable/pounce/lurker,
 		/datum/action/xeno_action/onclick/lurker_invisibility,
 		/datum/action/xeno_action/onclick/lurker_assassinate,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -87,6 +88,15 @@
 			ability.button.icon_state = "template"
 
 	return original_damage
+
+/datum/behavior_delegate/lurker_base/override_intent(mob/living/carbon/target_carbon)
+	. = ..()
+
+	if(!isxeno_human(target_carbon))
+		return
+
+	if(next_slash_buffed)
+		return INTENT_HARM
 
 /datum/behavior_delegate/lurker_base/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
 	if (!isxeno_human(target_carbon))

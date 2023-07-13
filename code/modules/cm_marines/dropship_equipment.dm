@@ -256,6 +256,13 @@
 	deployed_turret.start_processing()
 	deployed_turret.set_range()
 
+	deployed_turret.linked_cam = new(deployed_turret.loc, "[capitalize_first_letters(ship_base.name)] [capitalize_first_letters(name)]")
+	if (linked_shuttle.id == DROPSHIP_ALAMO)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_ALAMO)
+	else if (linked_shuttle.id == DROPSHIP_NORMANDY)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_NORMANDY)
+
+
 /obj/structure/dropship_equipment/sentry_holder/proc/undeploy_sentry()
 	if(!deployed_turret)
 		return
@@ -267,8 +274,12 @@
 	deployed_turret.stop_processing()
 	deployed_turret.unset_range()
 	icon_state = "sentry_system_installed"
+	QDEL_NULL(deployed_turret.linked_cam)
 
-
+/obj/structure/dropship_equipment/sentry_holder/Destroy()
+	if(deployed_turret)
+		QDEL_NULL(deployed_turret.linked_cam)
+	. = ..()
 
 
 /// Holder for the dropship mannable machinegun system
@@ -909,7 +920,6 @@
 
 
 
-
 //on arrival we break any link
 /obj/structure/dropship_equipment/medevac_system/on_arrival()
 	if(linked_stretcher)
@@ -922,7 +932,7 @@
 		return
 	if(!ship_base) //not installed
 		return
-	if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
+	if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
 		to_chat(user, SPAN_WARNING(" You don't know how to use [src]."))
 		return
 
@@ -938,7 +948,7 @@
 		return
 
 	if(!linked_stretcher)
-		to_chat(user, SPAN_WARNING("There seems to be no medevac stretcher connected to [src]."))
+		equipment_interact(user)
 		return
 
 	if(!is_ground_level(linked_stretcher.z))
@@ -952,7 +962,6 @@
 		return
 
 	activate_winch(user)
-
 
 /obj/structure/dropship_equipment/medevac_system/proc/activate_winch(mob/user)
 	set waitfor = 0
@@ -1001,7 +1010,7 @@
 	flick("winched_stretcher", linked_stretcher)
 	linked_stretcher.visible_message(SPAN_NOTICE("A winch hook falls from the sky and starts lifting [linked_stretcher] up."))
 
-	medevac_cooldown = world.time + 600
+	medevac_cooldown = world.time + DROPSHIP_MEDEVAC_COOLDOWN
 	linked_stretcher.linked_medevac = null
 	linked_stretcher = null
 

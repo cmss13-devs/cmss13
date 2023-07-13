@@ -236,6 +236,12 @@
 	basestate = "strata_window"
 	reinforced = TRUE
 
+/obj/structure/window_frame/strata/hull
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	unslashable = TRUE
+	unacidable = TRUE
+
 //Kutjevo frames
 
 /obj/structure/window_frame/kutjevo

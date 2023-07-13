@@ -94,23 +94,19 @@ There are several things that need to be remembered:
 	if(lying == lying_prev && !force)
 		return
 	lying_prev = lying
-	var/matrix/M = matrix()
-	var/matrix/L = matrix() //Counter-rotation for langchat text.
+	var/matrix/new_matrix = matrix()
 	if(lying)
 		if(pulledby && pulledby.grab_level >= GRAB_CARRY)
-			M.Turn(90)
-			L.Turn(270)
+			new_matrix.Turn(90)
 		else
 			if(prob(50))
-				M.Turn(90)
-				L.Turn(270)
+				new_matrix.Turn(90)
 			else
-				M.Turn(270)
-				L.Turn(90)
-			M.Translate(rand(-10,10),rand(-10,10))
-		apply_transform(M)
+				new_matrix.Turn(270)
+			new_matrix.Translate(rand(-10,10), rand(-10,10))
+		apply_transform(new_matrix)
 	else
-		apply_transform(M)
+		apply_transform(new_matrix)
 
 /mob/living/carbon/human/UpdateDamageIcon()
 	for(var/obj/limb/O in limbs)
@@ -208,6 +204,22 @@ There are several things that need to be remembered:
 
 			overlays_standing[HAIR_LAYER] = hair_s
 			apply_overlay(HAIR_LAYER)
+
+//Call when target overlay should be added/removed
+/mob/living/carbon/human/update_targeted()
+	remove_overlay(TARGETED_LAYER)
+
+	var/image/holo_card_image
+
+	if(holo_card_color)
+		holo_card_image = image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "holo_card_[holo_card_color]")
+
+	if(!holo_card_image)
+		return
+
+	holo_card_image.layer = -TARGETED_LAYER
+	overlays_standing[TARGETED_LAYER] = holo_card_image
+	apply_overlay(TARGETED_LAYER)
 
 //Call when someone is gauzed or splinted, or when one of those items are removed
 /mob/living/carbon/human/update_med_icon()

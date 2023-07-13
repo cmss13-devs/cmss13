@@ -109,7 +109,7 @@
 								<u>Access:</u><br>
 								"}
 
-					var/known_access_rights = get_all_accesses()
+					var/known_access_rights = get_all_main_access()
 					for(var/A in target_id_card.access)
 						if(A in known_access_rights)
 							contents += "  [get_access_desc(A)]"
@@ -177,7 +177,7 @@
 			if(!authenticated || !target_id_card)
 				return
 
-			var/new_name = params["name"] // reject_bad_name() can be added here
+			var/new_name = strip_html(params["name"])
 			if(!new_name)
 				visible_message(SPAN_NOTICE("[src] buzzes rudely."))
 				return
@@ -191,13 +191,13 @@
 				return
 
 			if(target == "Custom")
-				var/custom_name = params["custom_name"]
+				var/custom_name = strip_html(params["custom_name"])
 				if(custom_name)
 					target_id_card.assignment = custom_name
 			else
 				var/list/new_access = list()
 				if(is_centcom)
-					new_access = get_centcom_access(target)
+					new_access = get_all_weyland_access()
 				else
 					var/datum/job/job = RoleAuthority.roles_for_mode[target]
 
@@ -205,7 +205,7 @@
 						visible_message("[SPAN_BOLD("[src]")] states, \"DATA ERROR: Can not find next entry in database: [target]\"")
 						return
 					new_access = job.get_access()
-				target_id_card.access -= get_all_centcom_access() + get_all_accesses()
+				target_id_card.access -= get_all_weyland_access() + get_all_main_access()
 				target_id_card.access |= new_access
 				target_id_card.assignment = target
 				target_id_card.rank = target
@@ -227,7 +227,7 @@
 					log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted [access_type] IFF. </font>")
 				return TRUE
 			access_type = text2num(params["access_target"])
-			if(access_type in (is_centcom ? get_all_centcom_access() : get_all_accesses()))
+			if(access_type in (is_centcom ? get_all_weyland_access() : get_main_marine_access()))
 				if(access_type in target_id_card.access)
 					target_id_card.access -= access_type
 					log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked access '[access_type]'. </font>")
@@ -239,7 +239,7 @@
 			if(!authenticated || !target_id_card)
 				return
 
-			target_id_card.access |= (is_centcom ? get_all_centcom_access() : get_all_accesses())
+			target_id_card.access |= (is_centcom ? get_all_weyland_access() : get_main_marine_access())
 			target_id_card.faction_group |= factions
 			log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted the ID all access and USCM IFF. </font>")
 			return TRUE
@@ -984,7 +984,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_PMC_MEDIC = 224,
 				JOB_PMC_INVESTIGATOR = 224,
 				JOB_PMC_ENGINEER = 225,
-				JOB_PMC = 226,
+				JOB_PMC_STANDARD = 226,
 				JOB_PMC_DOCTOR = 227,
 				JOB_WY_GOON_LEAD = 228,
 				JOB_WY_GOON = 229,
@@ -1014,6 +1014,91 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 					"[squad_name][JOB_SQUAD_MARINE]" = (squad_number + 6),
 				)
 				squad_number += 10
+		if(FACTION_WY, FACTION_PMC)
+			jobs = list(
+				// Note that jobs divisible by 10 are considered heads of staff, and bolded
+				// 00-09: High Command
+				JOB_DIRECTOR = 00,
+				JOB_CHIEF_EXECUTIVE = 01,
+				// 10-19: Command Level Staff
+				JOB_PMC_DIRECTOR = 10,
+				JOB_DIVISION_MANAGER = 10,
+				JOB_ASSISTANT_MANAGER = 11,
+				// 20-29: Corporate Staff
+				JOB_EXECUTIVE_SUPERVISOR = 20,
+				JOB_SENIOR_EXECUTIVE = 21,
+				JOB_EXECUTIVE_SPECIALIST = 22,
+				JOB_EXECUTIVE = 23,
+				JOB_JUNIOR_EXECUTIVE = 24,
+				// 30-39: Security
+				JOB_WY_GOON_LEAD = 30,
+				JOB_WY_GOON = 31,
+				// 40-49: MedSci
+				JOB_PMC_SYNTH = 40,
+				JOB_PMC_XENO_HANDLER = 41,
+				JOB_PMC_DOCTOR = 42,
+				JOB_WY_GOON_RESEARCHER = 43,
+				// 50-59: Engineering & Vehicle Crew
+				JOB_PMC_CREWMAN = 51,
+				JOB_PMC_ENGINEER = 52,
+				// 60-69: Investigation Team
+				JOB_PMC_LEAD_INVEST = 60,
+				JOB_PMC_INVESTIGATOR = 61,
+				JOB_PMC_DETAINER = 62,
+
+				// 70-79 PMCs Combat Team
+				JOB_PMC_LEADER = 70,
+				JOB_PMC_SNIPER = 71,
+				JOB_PMC_GUNNER = 72,
+				JOB_PMC_MEDIC = 73,
+				JOB_PMC_STANDARD = 75,
+
+				// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before stowaways
+				JOB_STOWAWAY = 999,
+
+				// 200-229: Visitors
+				JOB_UPP_REPRESENTATIVE = 201,
+				JOB_TWE_REPRESENTATIVE = 201,
+				JOB_COLONEL = 201,
+				JOB_TRAINEE = 202, //Trainees aren't really cared about
+			)
+		if(FACTION_UPP)
+			jobs = list(
+				// Note that jobs divisible by 10 are considered heads of staff, and bolded
+				// 00-09: High Command
+				JOB_UPP_KOL_OFFICER = 00,
+				// 10-19: Command Team
+				JOB_UPP_MAY_OFFICER = 10,
+				JOB_UPP_KPT_OFFICER = 11,
+				JOB_UPP_SRLT_OFFICER = 13,
+				JOB_UPP_LT_OFFICER = 14,
+				// 20-29: Commandos
+				JOB_UPP_COMMANDO_LEADER = 20,
+				JOB_UPP_COMMANDO_MEDIC = 21,
+				JOB_UPP_COMMANDO = 22,
+				// 30-39: Security
+				JOB_UPP_POLICE = 31,
+				// 40-49: MedSci
+				JOB_UPP_LT_DOKTOR = 41,
+				// 50-59: Engineering
+				JOB_UPP_COMBAT_SYNTH = 50,
+				JOB_UPP_CREWMAN = 51,
+				// 60-69: Soldiers
+				JOB_UPP_LEADER = 60,
+				JOB_UPP_SPECIALIST = 61,
+				JOB_UPP_MEDIC = 62,
+				JOB_UPP_ENGI = 63,
+				JOB_UPP = 64,
+				JOB_UPP_CONSCRIPT = 65,
+
+				// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before stowaways
+				JOB_STOWAWAY = 999,
+
+				// 200-229: Visitors
+				JOB_UPP_REPRESENTATIVE = 201,
+				JOB_TWE_REPRESENTATIVE = 201,
+				JOB_COLONEL = 201
+			)
 		else
 			jobs = list()
 

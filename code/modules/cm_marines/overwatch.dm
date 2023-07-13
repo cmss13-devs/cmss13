@@ -430,6 +430,7 @@
 			current_squad = null
 			if(cam && !ishighersilicon(usr))
 				usr.reset_view(null)
+				usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 			cam = null
 			state = 0
 		if("pick_squad")
@@ -593,13 +594,17 @@
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Searching for helmet cam. No helmet cam found for this marine! Tell your squad to put their helmets on!")]")
 				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping helmet cam view of [cam_target].")]")
+					usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					cam = null
 					usr.reset_view(null)
 				else if(usr.client.view != world_view_size)
 					to_chat(usr, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
+					if(cam)
+						usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					cam = new_cam
 					usr.reset_view(cam)
+					usr.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 	attack_hand(usr) //The above doesn't ever seem to work.
 
 /obj/structure/machinery/computer/overwatch/check_eye(mob/user)
@@ -611,6 +616,8 @@
 /obj/structure/machinery/computer/overwatch/on_unset_interaction(mob/user)
 	..()
 	if(!isRemoteControlling(user))
+		if(cam)
+			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 		cam = null
 		user.reset_view(null)
 
@@ -858,6 +865,9 @@
 	announce_dchat("\A [ob_name] targeting [A.name] has been fired!", T)
 	message_admins(FONT_SIZE_HUGE("ALERT: [key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]' [ADMIN_JMP(T)]"))
 	log_attack("[key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]'")
+
+	/// Project ARES interface log.
+	GLOB.ares_link.log_ares_bombardment(user, ob_name, "X[x_bomb], Y[y_bomb] in [A.name]")
 
 	busy = FALSE
 	var/turf/target = locate(T.x + rand(-3, 3), T.y + rand(-3, 3), T.z)

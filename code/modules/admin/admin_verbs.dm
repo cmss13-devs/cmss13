@@ -67,6 +67,7 @@ var/list/admin_verbs_default = list(
 	/datum/admins/proc/subtlemessageall,
 	/datum/admins/proc/alertall,
 	/datum/admins/proc/imaginary_friend,
+	/client/proc/toggle_ares_ping,
 	)
 
 var/list/admin_verbs_admin = list(
@@ -109,7 +110,7 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/cmd_admin_change_custom_event,
 	/datum/admins/proc/admin_force_distress,
 	/datum/admins/proc/admin_force_ERT_shuttle,
-	/client/proc/force_shuttle,
+	/client/proc/force_hijack,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
 	/client/proc/adjust_predator_round,
 	/client/proc/cmd_admin_world_narrate, /*sends text to all players with no padding*/
@@ -152,7 +153,8 @@ var/list/admin_verbs_major_event = list(
 	/client/proc/map_template_upload,
 	/client/proc/enable_podlauncher,
 	/client/proc/change_taskbar_icon,
-	/client/proc/change_weather
+	/client/proc/change_weather,
+	/client/proc/admin_blurb
 )
 
 var/list/admin_verbs_spawn = list(
@@ -171,9 +173,11 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/change_ground_map,
 	/datum/admins/proc/change_ship_map,
 	/datum/admins/proc/vote_ground_map,
+	/datum/admins/proc/override_ground_map,
 	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
 	/client/proc/cmd_debug_del_all,
 	/datum/admins/proc/togglejoin,
+	/client/proc/toggle_cdn,
 )
 
 var/list/admin_verbs_debug = list(
@@ -206,6 +210,7 @@ var/list/admin_verbs_debug = list(
 	/datum/admins/proc/view_runtime_log, /*shows the server runtime log for this round*/
 	/datum/admins/proc/view_href_log, /*shows the server HREF log for this round*/
 	/datum/admins/proc/view_tgui_log, /*shows the server TGUI log for this round*/
+	/client/proc/admin_blurb,
 )
 
 var/list/admin_verbs_debug_advanced = list(
@@ -572,6 +577,16 @@ var/list/roundstart_mod_verbs = list(
 
 	message_admins("[key_name(usr)] announced a random fact.")
 	SSticker.mode?.declare_fun_facts()
+
+/client/proc/toggle_ares_ping()
+	set name = "Toggle ARES notification sound"
+	set category = "Preferences.Logs"
+
+	prefs.toggles_sound ^= SOUND_ARES_MESSAGE
+	if (prefs.toggles_sound & SOUND_ARES_MESSAGE)
+		to_chat(usr, SPAN_BOLDNOTICE("You will now hear a ping for ARES messages."))
+	else
+		to_chat(usr, SPAN_BOLDNOTICE("You will no longer hear a ping for ARES messages."))
 
 
 #undef MAX_WARNS

@@ -25,4 +25,4 @@
 		if(current_airlock.density) //if its CLOSED YOU'RE SCUTTLING AND CANNOT POUNCE!!!
 			to_chat(owner, SPAN_WARNING("You cannot do that while squeezing and scuttling!"))
 			return FALSE
-	..()
+	return ..()

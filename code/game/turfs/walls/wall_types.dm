@@ -412,6 +412,8 @@
 	walltype = WALL_CULT
 	color = "#3c3434"
 
+/turf/closed/wall/cult/make_girder(destroyed_girder)
+	return
 
 /turf/closed/wall/vault
 	icon_state = "rockvault"
@@ -701,6 +703,23 @@
 	var/should_track_build = FALSE
 	var/datum/cause_data/construction_data
 	flags_turf = TURF_ORGANIC
+
+/turf/closed/wall/resin/Initialize(mapload)
+	. = ..()
+
+	for(var/obj/effect/alien/weeds/node/weed_node in contents)
+		qdel(weed_node)
+
+	if(hivenumber == XENO_HIVE_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
+/turf/closed/wall/resin/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		hivenumber = XENO_HIVE_FORSAKEN
+		set_hive_data(src, XENO_HIVE_FORSAKEN)
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /turf/closed/wall/resin/pillar
 	name = "resin pillar segment"

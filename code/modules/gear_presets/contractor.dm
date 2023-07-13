@@ -8,7 +8,7 @@
 
 /datum/equipment_preset/contractor/New()
 	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
+	access = get_all_main_access()
 
 /datum/equipment_preset/contractor/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(80;MALE,20;FEMALE)
@@ -57,7 +57,7 @@
 
 /datum/equipment_preset/contractor/New()
 	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
+	access = get_all_main_access()
 
 
 /datum/equipment_preset/dust_raider/load_name(mob/living/carbon/human/new_human)
@@ -598,7 +598,7 @@
 
 /datum/equipment_preset/contractor/covert/heavy/New()
 	. = ..()
-	access = get_antagonist_pmc_access()
+	access = get_weyland_pmc_access()
 
 /datum/equipment_preset/contractor/covert/heavy/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -651,7 +651,7 @@
 
 /datum/equipment_preset/contractor/covert/engi/New()
 	. = ..()
-	access = get_antagonist_pmc_access()
+	access = get_weyland_pmc_access()
 
 /datum/equipment_preset/contractor/covert/engi/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/wy_davisone, WEAR_BODY)
@@ -703,7 +703,7 @@
 
 /datum/equipment_preset/contractor/covert/medic/New()
 	. = ..()
-	access = get_antagonist_pmc_access()
+	access = get_weyland_pmc_access()
 
 /datum/equipment_preset/contractor/covert/medic/load_gear(mob/living/carbon/human/new_human)
 	//clothing

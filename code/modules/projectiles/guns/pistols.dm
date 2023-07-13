@@ -578,7 +578,7 @@
 
 /obj/item/weapon/gun/pistol/vp78
 	name = "\improper VP78 pistol"
-	desc = "A massive, formidable automatic handgun chambered in 9mm squash-head rounds. Commonly seen in the hands of wealthy Weyland-Yutani members."
+	desc = "A massive, formidable semi-automatic handgun chambered in 9mm squash-head rounds. A common sight throughout both UA and 3WE space, often held by both Weyland-Yutani PMC units and corporate executives. This weapon is also undergoing limited field testing as part of the USCM's next generation pistol program. The slide is engraved with the Weyland-Yutani logo reminding you who's really in charge."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "vp78"
 	item_state = "vp78"
@@ -595,14 +595,14 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/compensator,
-		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/laser_light_combo,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 	)
 
 /obj/item/weapon/gun/pistol/vp78/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/lasersight/VP = new(src)
+	var/obj/item/attachable/flashlight/laser_light_combo/VP = new(src)
 	VP.flags_attach_features &= ~ATTACH_REMOVABLE
 	VP.hidden = FALSE
 	VP.Attach(src)

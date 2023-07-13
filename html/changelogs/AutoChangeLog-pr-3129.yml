@@ -1,6 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added the ability for carbon mobs to have special blood."
-  - code_imp: "Updated the get_blood_id proc for xenos to check a variable rather than hard-code overrides for Queen and Praetorian."
-  - code_imp: "Changed most references to blood color to use defines."

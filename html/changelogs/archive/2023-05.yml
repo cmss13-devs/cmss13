@@ -451,3 +451,135 @@
   - ui: the portable vendor for CLs is now tgui
   spartanbobby:
   - rscadd: Adds a new flavour of Kepler to the game "Kepler Flamehot"
+2023-05-27:
+  BeagleGaming1:
+  - balance: Unsplinted broken bones that are not hands or feet can now cause IB
+  - balance: bloodbag capacity raised to 300u
+  Diegoflores31:
+  - balance: Whiskey Outpost will start on Global Hardcore mode by default.
+  Katskan:
+  - rscadd: Synthetic gets a chance to dodge xeno acid blood spray
+  Morrow:
+  - bugfix: Fixed helmets stopping all of your limbs from being delimbed
+  - bugfix: Fixed a runtime due to lack of cause data for head delimb
+  Warfan1815:
+  - qol: 'Two improved strip systems: the one in the player panel now doesn''t strip
+      IDs, and there is a new one that strips all in view.'
+  - qol: Removed now obsolete "cryo clf" roles from the gear list
+  - qol: changed multiple single letter definitions to more apt definitions
+  - rscadd: Added a new selection to the create-humans panel where the spawning admin
+      gets to choose the level of equipment ("full equipment", "no weapons", "no equipment")
+  - admin: made IDs exempt from being removed by the strip verbs
+  realforest2001:
+  - rscadd: Added the ability for carbon mobs to have special blood.
+  - code_imp: Updated the get_blood_id proc for xenos to check a variable rather than
+      hard-code overrides for Queen and Praetorian.
+  - code_imp: Changed most references to blood color to use defines.
+2023-05-28:
+  Drathek:
+  - bugfix: Fixed the emergency locker sometimes hard deleting
+  Huffie56:
+  - refactor: Refactored predator flaying. Should be a lot less janky across the board.
+      Flaying can be paused and resumed.
+  - rscadd: Rope + flaying messages are now also shown to witnesses, instead of just
+      the predator. Flaying has been given RED TEXT to make it clear something bad
+      is going on.
+  - bugfix: Predators can no longer flay someone who has already been flayed, or queue
+      up multiple flayings at once.
+  - bugfix: Predators can no longer scalp someone who has no head.
+  - bugfix: Decapitated and flayed bodies no longer appear to have a head.
+  - bugfix: Using the ceremonial dagger or rope no longer hits people before applying.
+  Katskan:
+  - balance: synthetic pilot skill increased from 1 to 2
+  LunaMayn:
+  - rscadd: Added dartboards and darts to throw at your friends.
+  NewyearnewmeUwu:
+  - rscadd: You can now hide small items in potted plants.
+  - rscadd: Fire alarms now announce who activates/deactivates them.
+  TenguHangover:
+  - rscadd: added sleen as a reagent, 1:1 lime souto and oxycodone. Slightly less
+      painkilling than oxy, and slightly addictive.
+  - rscadd: corrects oxycodone color to red dye instead of purple.
+  ihatethisengine:
+  - balance: reduced the medevac cooldown from 60 seconds to 20 seconds.
+  - rscadd: anyone with the skills of a doctor or a pilot can manage the medevac by
+      interacting with the system itself.
+  - qol: medical stretcher automatically activates when deployed.
+2023-05-29:
+  Huffie56:
+  - bugfix: Fix Inconsistencies with text when toggling lights while being inside
+      a closet for example.
+  Khadd:
+  - bugfix: fixed upp synths having 2 different names and clf synths now get a name
+      when they're given the equipment preset
+  Morrow:
+  - balance: Without a hive core Xenos no longer get stored larva from latejoin marines
+      or bursts
+  NewyearnewmeUwu:
+  - rscadd: Added armor preference as an option in the preferences menu
+  - code_imp: Changed the way armor variation is handled upon initializing. Also,
+      surplus uniform vendors now use an essentials set to randomly pick an armor
+      set regardless of your preferences.
+2023-05-30:
+  BeagleGaming1:
+  - admin: Deferring to mentorhelp gives a specific message instead of a generic resolution
+      message
+  Drathek:
+  - bugfix: Fixed non-queen xeno overwatch persisting on a dead xeno
+  LynxSolstice, Sionnach:
+  - rscadd: Adds a new IMP framed back item, the Ammo Rack.
+  - balance: Added the new Ammo Rack to the Req vendor. At a scaling of (round*1),
+      it should be pretty scarce. The ammo rack also is unthrowable and adds a flat
+      .5 second increase to movement delay.
+  - imageadd: Added icons for Ammo_Pack_ and onmobs for each state (0, 1, 2, and 3)
+  Morrow:
+  - rscadd: Adds buyable blood bags to corpsmen vendors
+  - rscadd: Adds a revive fun fact
+  SpartanBobby:
+  - rscadd: Adds Laser-Light Combo attachment unique to VP78
+  - rscadd: Adds new description to VP78
+  fira:
+  - bugfix: XvX end and Admin ending round won't play nuclear detonation sequence
+      music anymore.
+  - bugfix: Fixed a bug in radio signaling cleanup that was notably preventing signallers
+      from working as intended, and likely caused issues for other devices.
+  ghostsheet:
+  - rscadd: Added ARES conclusion announcement for marine major.
+  - rscadd: Added a harmless smoke cloud to Acid Runner's "For the Hive" ability.
+  - rscadd: Added a M89-S Signal Flare pack to SL essential kit.
+  harryob:
+  - bugfix: there's less random vendors on WO
+2023-05-31:
+  BeagleGaming1:
+  - admin: Allows auto rename VV to not be encoded
+  - rscdel: Removes certain parts of the black market
+  Drathek:
+  - balance: Acid Runner's For the Hive ability now clears its slowdown effect when
+      canceled
+  - admin: USCM cryo spawns (Foxtrot) that normally inject into the manifest will
+      now also get their money accounts set up automatically
+  Huffie56:
+  - bugfix: trijent shuttle apc can now be properly fixed...
+  - maptweak: added a scenery around the fix to make it look more natural.
+  LynxSolstice:
+  - rscadd: Field kit for all roles. (spawner with a map). Sandbags and E-Tool buyable
+      in the rifleman vendor.
+  - code_imp: Moved the map from a _KIT bitflag to a new bitflag, added the fieldkit
+      to all squad roles.
+  - balance: Added half stacks of sandbags to the rifleman vendor, buyable for one
+      stack each for 5 points.
+  Morrow:
+  - admin: Adds logging for buying tech
+  - balance: Made more areas in LV522 reactor OB-able
+  - balance: Removes addictive from sleen
+  NewyearnewmeUwu:
+  - bugfix: You can restock vendors with armors again.
+  Segrain:
+  - bugfix: Removed an exploit involving closets/crates.
+  TenguHangover:
+  - bugfix: Corrected the nurse's starting descriptor in line with IB changes.
+  ihatethisengine:
+  - spellcheck: damage taken fun fact now correctly states that player "took" so many
+      damage instead of "did".
+  realforest2001:
+  - bugfix: SG vendor no longer has Burstfire Adapter as SG cannot use it

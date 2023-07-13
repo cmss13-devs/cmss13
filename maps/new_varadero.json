@@ -13,6 +13,9 @@
         "/datum/equipment_preset/survivor/security/lv",
         "/datum/equipment_preset/survivor/colonial_marshal/lv"
     ],
+	"CO_survivor_types": [
+        "/datum/equipment_preset/survivor/new_varadero/commander"
+    ],
 
     "defcon_triggers": [
         3300,
@@ -34,6 +37,7 @@
         "xeno_hive_charlie": 0,
         "xeno_hive_delta": 0
     },
+    "camouflage": "jungle",
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

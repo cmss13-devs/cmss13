@@ -243,7 +243,7 @@
 	spawning = TRUE
 	close_spawn_windows()
 
-	var/mob/living/carbon/human/character = create_character() //creates the human and transfers vars and mind
+	var/mob/living/carbon/human/character = create_character(TRUE) //creates the human and transfers vars and mind
 	RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], late_join = TRUE)
 	EquipCustomItems(character)
 
@@ -266,7 +266,7 @@
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
 			if(hive.latejoin_burrowed == TRUE)
-				if(length(hive.totalXenos))
+				if(length(hive.totalXenos) && (hive.hive_location || ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2))
 					hive.stored_larva++
 					hive.hive_ui.update_burrowed_larva()
 
@@ -349,7 +349,7 @@
 	show_browser(src, dat, "Late Join", "latechoices", "size=420x700")
 
 
-/mob/new_player/proc/create_character()
+/mob/new_player/proc/create_character(is_late_join = FALSE)
 	spawning = TRUE
 	close_spawn_windows()
 
@@ -368,7 +368,7 @@
 
 	new_character.lastarea = get_area(loc)
 
-	client.prefs.copy_all_to(new_character)
+	client.prefs.copy_all_to(new_character, job, is_late_join)
 
 	if (client.prefs.be_random_body)
 		var/datum/preferences/TP = new()
@@ -444,7 +444,7 @@
 /mob/proc/close_spawn_windows() // Somehow spawn menu stays open for non-newplayers
 	close_browser(src, "latechoices") //closes late choices window
 	close_browser(src, "playersetup") //closes the player setup window
-	src << sound(null, repeat = 0, wait = 0, volume = 85, channel = 1) // Stops lobby music.
+	src << sound(null, repeat = 0, wait = 0, volume = 85, channel = SOUND_CHANNEL_LOBBY) // Stops lobby music.
 	if(src.open_uis)
 		for(var/datum/nanoui/ui in src.open_uis)
 			if(ui.allowed_user_stat == -1)

@@ -19,6 +19,7 @@
 	var/time_of_death
 	var/total_time_alive
 	var/total_damage_taken
+	var/total_revives_done = 0
 
 	var/total_brute = 0
 	var/total_burn = 0
@@ -51,6 +52,7 @@
 		"time_of_death" = DB_FIELDTYPE_BIGINT,
 		"total_time_alive" = DB_FIELDTYPE_BIGINT,
 		"total_damage_taken" = DB_FIELDTYPE_INT,
+		"total_revives_done" = DB_FIELDTYPE_INT,
 
 		"total_brute" = DB_FIELDTYPE_INT,
 		"total_burn" = DB_FIELDTYPE_INT,
@@ -117,6 +119,7 @@
 	new_death.total_kills = life_kills_total
 	new_death.total_time_alive = life_time_total
 	new_death.total_damage_taken = life_damage_taken_total
+	new_death.total_revives_done = life_revives_total
 
 	handle_observer_message(cause_data, cause_mob, death_loc, A)
 

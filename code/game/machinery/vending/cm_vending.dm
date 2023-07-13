@@ -118,7 +118,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 		if (!item_name || item_name == "" || !typepath)
 			continue
 
-		GLOB.vending_products[typepath] = 1
+		if(islist(typepath))
+			for(var/path in typepath)
+				GLOB.vending_products[path] = 1
+		else
+			GLOB.vending_products[typepath] = 1
 
 //get which turf the vendor will dispense its products on.
 /obj/structure/machinery/cm_vending/proc/get_appropriate_vend_turf()
@@ -1059,10 +1063,10 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 
 		var/p_name = myprod[1] //taking it's name
 		var/p_cost = cost_index == null ? 0 : myprod[cost_index]
-		var/item_ref = myprod[3]
+		var/obj/item/item_ref = myprod[3]
 		var/priority = myprod[priority_index]
-
-		var/obj/item/I = item_ref
+		if(islist(item_ref)) // multi-vending
+			item_ref = item_ref[1]
 
 		var/is_category = item_ref == null
 
@@ -1073,7 +1077,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			"prod_index" = i,
 			"prod_name" = p_name,
 			"prod_color" = priority,
-			"prod_desc" = initial(I.desc),
+			"prod_desc" = initial(item_ref.desc),
 			"prod_cost" = p_cost,
 			"image" = imgid
 		)
@@ -1123,24 +1127,23 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 
 	var/list/stock_values = list()
 
-	var/mob/living/carbon/human/H = user
-	var/buy_flags = H.marine_buy_flags
+	var/mob/living/carbon/human/marine = user
 	var/points = 0
 
 	if(vending_machine.instanced_vendor_points)
 		points = vending_machine.available_points_to_display
 	else
 		if(vending_machine.use_snowflake_points)
-			points = H.marine_snowflake_points
+			points = marine.marine_snowflake_points
 		else if(vending_machine.use_points)
-			points = H.marine_points
+			points = marine.marine_points
 
 	for (var/i in 1 to length(ui_listed_products))
 		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
 		var/prod_available = FALSE
 		var/p_cost = myprod[2]
-		var/avail_flag = myprod[4]
-		if(points >= p_cost && (!avail_flag || buy_flags & avail_flag))
+		var/category = myprod[4]
+		if(points >= p_cost && (!category || ((category in marine.marine_buyable_categories) && (marine.marine_buyable_categories[category]))))
 			prod_available = TRUE
 		stock_values += list(prod_available)
 
@@ -1153,7 +1156,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	vendor.stat |= IN_USE
 
 	var/vend_flags = vendor.vend_flags
-
 	var/turf/target_turf = vendor.get_appropriate_vend_turf(user)
 	if(LAZYLEN(itemspec)) //making sure it's not empty
 		if(vendor.vend_delay)
@@ -1164,54 +1166,17 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			sleep(vendor.vend_delay)
 
 		var/prod_type = itemspec[3]
-
-		var/obj/item/new_item
-		if(ispath(prod_type, /obj/item))
-			if(ispath(prod_type, /obj/item/weapon/gun))
-				new_item = new prod_type(target_turf, TRUE)
-			else
-				if(prod_type == /obj/item/device/radio/headset/almayer/marine)
-					prod_type = vendor.headset_type
-				else if(prod_type == /obj/item/clothing/gloves/marine)
-					prod_type = vendor.gloves_type
-				new_item = new prod_type(target_turf)
-			new_item.add_fingerprint(user)
+		if(islist(prod_type))
+			for(var/each_type in prod_type)
+				vendor_successful_vend_one(vendor, each_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM)
 		else
-			new_item = new prod_type(target_turf)
+			vendor_successful_vend_one(vendor, prod_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM)
 
 		if(vend_flags & VEND_LIMITED_INVENTORY)
 			itemspec[2]--
 			if(vend_flags & VEND_LOAD_AMMO_BOXES)
 				vendor.update_derived_ammo_and_boxes(itemspec)
 
-		if(vend_flags & VEND_UNIFORM_RANKS)
-			// apply ranks to clothing
-			var/bitf = itemspec[4]
-			if(bitf)
-				if(bitf == MARINE_CAN_BUY_UNIFORM)
-					var/obj/item/clothing/under/underclothes = new_item
-					//Gives ranks to the ranked
-					if(user.wear_id && user.wear_id.paygrade)
-						var/rankpath = get_rank_pins(user.wear_id.paygrade)
-						if(rankpath)
-							var/obj/item/clothing/accessory/ranks/rank_insignia = new rankpath()
-							underclothes.attach_accessory(user, rank_insignia)
-
-		if(vend_flags & VEND_UNIFORM_AUTOEQUIP)
-			// autoequip
-			if(istype(new_item, /obj/item) && new_item.flags_equip_slot != NO_FLAGS) //auto-equipping feature here
-				if(new_item.flags_equip_slot == SLOT_ACCESSORY)
-					if(user.w_uniform)
-						var/obj/item/clothing/clothing = user.w_uniform
-						if(clothing.can_attach_accessory(new_item))
-							clothing.attach_accessory(user, new_item)
-				else
-					user.equip_to_appropriate_slot(new_item)
-
-		if(vend_flags & VEND_TO_HAND)
-			if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
-				if(vendor.Adjacent(user))
-					user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
 	else
 		to_chat(user, SPAN_WARNING("ERROR: itemspec is missing. Please report this to admins."))
 		sleep(15)
@@ -1219,29 +1184,87 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	vendor.stat &= ~IN_USE
 	vendor.update_icon()
 
+/proc/vendor_successful_vend_one(obj/structure/machinery/cm_vending/vendor, prod_type, mob/living/carbon/human/user, turf/target_turf, insignas_override)
+	var/obj/item/new_item
+	var/vend_flags = vendor.vend_flags
+	if(ispath(prod_type, /obj/item))
+		if(ispath(prod_type, /obj/item/weapon/gun))
+			new_item = new prod_type(target_turf, TRUE)
+		else
+			if(prod_type == /obj/item/device/radio/headset/almayer/marine)
+				prod_type = vendor.headset_type
+			else if(prod_type == /obj/item/clothing/gloves/marine)
+				prod_type = vendor.gloves_type
+			new_item = new prod_type(target_turf)
+		new_item.add_fingerprint(user)
+	else
+		new_item = new prod_type(target_turf)
+
+	if(vend_flags & VEND_UNIFORM_RANKS)
+		if(insignas_override)
+			var/obj/item/clothing/under/underclothes = new_item
+			//Gives ranks to the ranked
+			if(istype(underclothes) && user.wear_id && user.wear_id.paygrade)
+				var/rankpath = get_rank_pins(user.wear_id.paygrade)
+				if(rankpath)
+					var/obj/item/clothing/accessory/ranks/rank_insignia = new rankpath()
+					underclothes.attach_accessory(user, rank_insignia)
+
+	if(vend_flags & VEND_UNIFORM_AUTOEQUIP)
+		// autoequip
+		if(istype(new_item, /obj/item) && new_item.flags_equip_slot != NO_FLAGS) //auto-equipping feature here
+			if(new_item.flags_equip_slot == SLOT_ACCESSORY)
+				if(user.w_uniform)
+					var/obj/item/clothing/clothing = user.w_uniform
+					if(clothing.can_attach_accessory(new_item))
+						clothing.attach_accessory(user, new_item)
+			else
+				user.equip_to_appropriate_slot(new_item)
+
+	if(vend_flags & VEND_TO_HAND)
+		if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
+			if(vendor.Adjacent(user))
+				user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
+
+	new_item.post_vendor_spawn_hook(user)
+
 /proc/handle_vend(obj/structure/machinery/cm_vending/vendor, list/listed_products, mob/living/carbon/human/vending_human)
 	if(vendor.vend_flags & VEND_USE_VENDOR_FLAGS)
 		return TRUE
-	var/can_buy_flags = listed_products[4]
-	if(!(vending_human.marine_buy_flags & can_buy_flags))
-		return FALSE
-
-	if(can_buy_flags == (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH))
-		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_R_POUCH)
-			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_R_POUCH
-		else
-			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_L_POUCH
-		return TRUE
-	if(can_buy_flags == (MARINE_CAN_BUY_COMBAT_R_POUCH|MARINE_CAN_BUY_COMBAT_L_POUCH))
-		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_COMBAT_R_POUCH)
-			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_R_POUCH
-		else
-			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_L_POUCH
-		return TRUE
-
-	vending_human.marine_buy_flags &= ~can_buy_flags
+	var/buying_category = listed_products[4]
+	if(buying_category)
+		if(!(buying_category in vending_human.marine_buyable_categories))
+			return FALSE
+		if(!vending_human.marine_buyable_categories[buying_category])
+			return FALSE
+		vending_human.marine_buyable_categories[buying_category] -= 1
 	return TRUE
 
+// Unload ALL the items throwing them around randomly, optionally destroying the vendor
+/obj/structure/machinery/cm_vending/proc/catastrophic_failure(throw_objects = TRUE, destroy = FALSE)
+	stat |= IN_USE
+	var/list/products = get_listed_products()
+	var/i = 1
+	while(i <= length(products))
+		sleep(0.5)
+		var/list/itemspec = products[i]
+		if(!itemspec[2] || itemspec[2] <= 0)
+			i++
+			continue
+		itemspec[2] -= 1
+		var/list/spawned = list()
+		if(islist(itemspec[3]))
+			for(var/path in itemspec[3])
+				spawned += new path(loc)
+		else if(itemspec[3])
+			var/path = itemspec[3]
+			spawned += new path(loc)
+		if(throw_objects)
+			for(var/atom/movable/spawned_atom in spawned)
+				INVOKE_ASYNC(spawned_atom, TYPE_PROC_REF(/atom/movable, throw_atom), pick(orange(src, 4)), 4, SPEED_FAST)
+	stat &= ~IN_USE
+	if(destroy)
+		qdel(src)
 
 //------------HACKING---------------
 

@@ -402,6 +402,29 @@
 
 	give_jelly_award(last_hive_checked, as_admin=TRUE)
 
+/client/proc/give_nuke()
+	if(!check_rights(R_ADMIN))
+		return
+	var/nuketype = "Encrypted Operational Nuke"
+	var/encrypt = tgui_alert(src, "Do you want the nuke to be already decrypted?", "Nuke Type.", list("Encrypted", "Decrypted"), 20 SECONDS)
+	if(encrypt == "Encrypted")
+		nuketype = "Decrypted Operational Nuke"
+	var/prompt = tgui_alert(src, "THIS CAN BE USED TO END THE ROUND. Are you sure you want to spawn a nuke? The nuke will be put onto the ASRS Lift.", "DEFCON 1", list("No", "Yes"), 30 SECONDS)
+	if(prompt == "No")
+		return
+
+	var/datum/supply_order/new_order = new /datum/supply_order()
+	new_order.ordernum = supply_controller.ordernum
+	supply_controller.ordernum++
+	new_order.object = supply_controller.supply_packs[nuketype]
+	new_order.orderedby = MAIN_AI_SYSTEM
+	new_order.approvedby = MAIN_AI_SYSTEM
+	supply_controller.shoppinglist += new_order
+
+	marine_announcement("A nuclear device has been supplied and will be delivered to requisitions via ASRS.", "NUCLEAR ARSENAL ACQUIRED", 'sound/misc/notice2.ogg')
+	message_admins("[key_name_admin(usr)] admin-spawned a [encrypt] nuke.")
+	log_game("[key_name_admin(usr)] admin-spawned a [encrypt] nuke.")
+
 /client/proc/turn_everyone_into_primitives()
 	var/random_names = FALSE
 	if (alert(src, "Do you want to give everyone random numbered names?", "Confirmation", "Yes", "No") == "Yes")
@@ -685,6 +708,7 @@
 		<B>Misc</B><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=medal'>Award a medal</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=jelly'>Award a royal jelly</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=nuke'>Spawn a nuke</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
 		<BR>

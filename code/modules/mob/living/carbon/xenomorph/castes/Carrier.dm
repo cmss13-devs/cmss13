@@ -172,7 +172,7 @@
 /mob/living/carbon/xenomorph/carrier/death(cause, gibbed)
 	. = ..(cause, gibbed)
 	if(.)
-		var/chance = .75
+		var/chance = 75 //75% to drop an egg or hugger.
 		if(mutation_type == CARRIER_EGGSAC)
 			visible_message(SPAN_XENOWARNING("[src] throes as its eggsac bursts into a mess of acid!"))
 			playsound(src.loc, 'sound/effects/alien_egg_burst.ogg', 25, 1)
@@ -187,14 +187,13 @@
 					step_away(hugger, src, 1)
 
 		var/eggs_dropped = FALSE
-		while (eggs_cur > 0)
+		for(var/i in 1 to eggs_cur)
 			if(prob(chance))
 				new /obj/item/xeno_egg(loc, hivenumber)
 				eggs_cur--
 				eggs_dropped = TRUE
-				update_icons()
 
-		if(eggs_dropped == TRUE)
+		if(eggs_dropped == TRUE) //Checks whether or not to announce egg drop.
 			xeno_message(SPAN_XENOANNOUNCE("[src] has dropped some precious eggs!"), 2, hive.hivenumber)
 
 /mob/living/carbon/xenomorph/carrier/get_status_tab_items()

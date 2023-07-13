@@ -1788,6 +1788,13 @@
 /obj/structure/closet/crate{
 	color = "#6b675e"
 	},
+/obj/item/explosive/plastic/breaching_charge/plasma,
+/obj/item/explosive/plastic/breaching_charge/plasma,
+/obj/item/explosive/plastic/breaching_charge/plasma,
+/obj/item/explosive/plastic/breaching_charge/plasma,
+/obj/item/explosive/plastic/breaching_charge/plasma,
+/obj/item/explosive/plastic/breaching_charge/plasma,
+/obj/item/explosive/plastic/breaching_charge/plasma,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -2303,6 +2310,20 @@
 	pixel_y = 30
 	},
 /turf/open/shuttle/predship,
+/area/yautja)
+"wB" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/explosive/plastic/breaching_charge/plasma,
+/obj/item/explosive/plastic/breaching_charge/plasma,
+/obj/item/explosive/plastic/breaching_charge/plasma,
+/obj/item/explosive/plastic/breaching_charge/plasma,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
 /area/yautja)
 "wH" = (
 /obj/structure/surface/rack{
@@ -6687,7 +6708,7 @@ cP
 cP
 Pm
 ov
-nh
+wB
 ZM
 zZ
 cP

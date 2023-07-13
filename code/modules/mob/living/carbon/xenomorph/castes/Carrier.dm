@@ -94,7 +94,7 @@
 /mob/living/carbon/xenomorph/carrier/proc/update_hugger_overlays()
 	if(!hugger_overlays_icon)
 		return
-	if(!mutation_type == CARRIER_NORMAL)
+	if(mutation_type != CARRIER_NORMAL)
 		return
 
 	overlays -= hugger_overlays_icon
@@ -135,7 +135,7 @@
 /mob/living/carbon/xenomorph/carrier/proc/update_eggsac_overlays()
 	if(!eggsac_overlays_icon)
 		return
-	if(!mutation_type == CARRIER_EGGSAC)
+	if(mutation_type != CARRIER_EGGSAC)
 		return
 
 	overlays -= eggsac_overlays_icon
@@ -172,7 +172,7 @@
 /mob/living/carbon/xenomorph/carrier/death(cause, gibbed)
 	. = ..(cause, gibbed)
 	if(.)
-		var/chance = 75
+		var/chance = .75
 		if(mutation_type == CARRIER_EGGSAC)
 			visible_message(SPAN_XENOWARNING("[src] throes as its eggsac bursts into a mess of acid!"))
 			playsound(src.loc, 'sound/effects/alien_egg_burst.ogg', 25, 1)

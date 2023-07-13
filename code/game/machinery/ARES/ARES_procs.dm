@@ -81,10 +81,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
 
 /proc/ares_can_interface()
-	var/obj/structure/machinery/ares/processor/interface/interface = GLOB.ares_link.p_interface
+	var/obj/structure/machinery/ares/processor/interface/processor = GLOB.ares_link.p_interface
 	if(!istype(GLOB.ares_link))
 		return FALSE
-	if(interface && !interface.inoperable())
+	if(processor && !processor.inoperable())
 		return TRUE
 	return FALSE //interface not found or is broken
 

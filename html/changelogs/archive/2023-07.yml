@@ -138,3 +138,19 @@
 2023-07-11:
   BeagleGaming1:
   - bugfix: Fixes the Working Joe species
+2023-07-12:
+  Morrow:
+  - bugfix: Stops xenos from bypassing dead moving via roller beds
+  - balance: Telebaton now scales in stunforce effectiveness based on policing skill
+  - balance: Marines called with foxtrot nerfed from 15 to 10.
+  SpartanBobby:
+  - maptweak: 'LV522: Flips the layout of engineering making the T-comms unit on the
+      far side of the LZ'
+  - balance: reduces the M1911 magazine size from 14 to 7
+  Steelpoint:
+  - balance: Synthetic Armour slowdown has been decreased
+2023-07-13:
+  QuickLoad, Thwomper:
+  - imageadd: Synthetic Uniforms & Vest with United Americas flair and classic jumpsuits
+      which remind you of life on the Frontier. Sprited by THE THWOMPA himself!
+  - qol: Synthetic Vendor is more organized. Removes scrub cap, adds shoe.

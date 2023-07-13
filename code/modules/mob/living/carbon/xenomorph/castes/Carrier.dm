@@ -82,7 +82,6 @@
 
 	var/list/hugger_image_index = list()
 	var/mutable_appearance/hugger_overlays_icon
-	var/list/eggsac_image_index = list()
 	var/mutable_appearance/eggsac_overlays_icon
 
 /mob/living/carbon/xenomorph/carrier/update_icons()
@@ -143,27 +142,25 @@
 	eggsac_overlays_icon.overlays.Cut()
 
 	if(!eggs_cur)
-		eggsac_image_index.Cut()
 		return
 
 	///Simplified image index change.
 	var/i = 0
-	if(eggs_cur > 9)
+	if(eggs_cur > 8)
 		i = 3
 	else if (eggs_cur > 4)
 		i = 2
 	else if (eggs_cur > 0)
 		i = 1
 
-	if(stat == DEAD)
-		eggsac_image_index.Cut()
-	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			eggsac_overlays_icon.overlays += icon(icon, "eggsac_[i] Sleeping")
+	if(stat != DEAD)
+		if(lying)
+			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+				eggsac_overlays_icon.overlays += icon(icon, "eggsac_[i] Sleeping")
+			else
+				eggsac_overlays_icon.overlays +=icon(icon, "eggsac_[i] Knocked Down")
 		else
-			eggsac_overlays_icon.overlays +=icon(icon, "eggsac_[i] Knocked Down")
-	else
-		eggsac_overlays_icon.overlays +=icon(icon, "eggsac_[i]")
+			eggsac_overlays_icon.overlays +=icon(icon, "eggsac_[i]")
 
 	overlays += eggsac_overlays_icon
 

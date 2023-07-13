@@ -421,15 +421,17 @@
 	var/gear_on_almayer = 0
 	var/gear_low_orbit = 0
 	var/closest = 10000
+	/// The item itself, to be referenced so Yautja know what to look for.
+	var/obj/closest_item
 	var/direction = -1
 	var/atom/areaLoc = null
-	for(var/obj/item/I as anything in GLOB.loose_yautja_gear)
-		var/atom/loc = get_true_location(I)
-		if(I.anchored)
+	for(var/obj/item/tracked_item as anything in GLOB.loose_yautja_gear)
+		var/atom/loc = get_true_location(tracked_item)
+		if(tracked_item.anchored)
 			continue
-		if(is_honorable_carrier(recursive_holder_check(I)))
+		if(is_honorable_carrier(recursive_holder_check(tracked_item)))
 			continue
-		if(istype(get_area(I), /area/yautja))
+		if(istype(get_area(tracked_item), /area/yautja))
 			continue
 		if(is_reserved_level(loc.z))
 			gear_low_orbit++
@@ -441,6 +443,7 @@
 			var/dist = get_dist(M,loc)
 			if(dist < closest)
 				closest = dist
+				closest_item = tracked_item
 				direction = get_dir(M,loc)
 				areaLoc = loc
 	for(var/mob/living/carbon/human/Y as anything in GLOB.yautja_mob_list)
@@ -472,9 +475,9 @@
 		output = TRUE
 		var/areaName = get_area_name(areaLoc)
 		if(closest == 0)
-			to_chat(M, SPAN_NOTICE("You are directly on top of the closest signature."))
+			to_chat(M, SPAN_NOTICE("You are directly on top of the[closest_item ? " <b>[closest_item.name]</b>'s" : ""] signature."))
 		else
-			to_chat(M, SPAN_NOTICE("The closest signature is [closest > 10 ? "approximately <b>[round(closest, 10)]</b>" : "<b>[closest]</b>"] paces <b>[dir2text(direction)]</b> in <b>[areaName]</b>."))
+			to_chat(M, SPAN_NOTICE("The closest signature[closest_item ? ", a <b>[closest_item.name]</b>" : ""], is [closest > 10 ? "approximately <b>[round(closest, 10)]</b>" : "<b>[closest]</b>"] paces <b>[dir2text(direction)]</b> in <b>[areaName]</b>."))
 	if(!output)
 		to_chat(M, SPAN_NOTICE("There are no signatures that require your attention."))
 	return TRUE

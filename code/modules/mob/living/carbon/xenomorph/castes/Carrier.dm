@@ -198,7 +198,7 @@
 				update_icons()
 
 		if(eggs_dropped == TRUE)
-			 xeno_message(SPAN_XENOANNOUNCE("[src] has dropped some precious eggs!"), 2, hive.hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("[src] has dropped some precious eggs!"), 2, hive.hivenumber)
 
 /mob/living/carbon/xenomorph/carrier/get_status_tab_items()
 	. = ..()

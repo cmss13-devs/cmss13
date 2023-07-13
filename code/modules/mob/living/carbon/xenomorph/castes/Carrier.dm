@@ -190,8 +190,8 @@
 		for(var/i in 1 to eggs_cur)
 			if(prob(chance))
 				new /obj/item/xeno_egg(loc, hivenumber)
-				eggs_cur--
 				eggs_dropped = TRUE
+		eggs_cur = 0
 
 		if(eggs_dropped == TRUE) //Checks whether or not to announce egg drop.
 			xeno_message(SPAN_XENOANNOUNCE("[src] has dropped some precious eggs!"), 2, hive.hivenumber)

@@ -744,7 +744,7 @@
 		create_humans_html = replacetext(create_humans_html, "null /* object types */", "\"[equipment_presets]\"")
 		create_humans_html = replacetext(create_humans_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
 
-	show_browser(user, replacetext(create_humans_html, "/* ref src */", "\ref[src]"), "Create Humans", "create_humans", "size=450x630")
+	show_browser(user, replacetext(create_humans_html, "/* ref src */", "\ref[src]"), "Create Humans", "create_humans", "size=450x720")
 
 /client/proc/create_humans()
 	set name = "Create Humans"
@@ -830,7 +830,6 @@
 			if(isnull(OBShell.double_explosion_delay)) return
 			statsmessage = "Custom HE OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Blast Power: [OBShell.standard_power], Blast Falloff: [OBShell.standard_falloff], Blast Delay: [OBShell.double_explosion_delay]."
 			warhead = OBShell
-			qdel(OBShell)
 		if("Custom Cluster")
 			var/obj/structure/ob_ammo/warhead/cluster/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "Cluster orbital warhead")
@@ -847,7 +846,6 @@
 			if(isnull(OBShell.explosion_falloff)) return
 			statsmessage = "Custom Cluster OB ([OBShell.name]) Stats from [key_name(usr)]: Salvos: [OBShell.total_amount], Shot per Salvo: [OBShell.instant_amount], Explosion Power: [OBShell.explosion_power], Explosion Falloff: [OBShell.explosion_falloff]."
 			warhead = OBShell
-			qdel(OBShell)
 		if("Custom Incendiary")
 			var/obj/structure/ob_ammo/warhead/incendiary/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "Incendiary orbital warhead")
@@ -876,19 +874,28 @@
 				if(isnull(OBShell.fire_color)) return
 			statsmessage = "Custom Incendiary OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Fire Distance: [OBShell.distance], Fire Duration: [OBShell.fire_level], Fire Strength: [OBShell.burn_level]."
 			warhead = OBShell
-			qdel(OBShell)
 
 	if(custom)
-		if(alert(usr, statsmessage, "Confirm Stats", "Yes", "No") != "Yes") return
+		if(alert(usr, statsmessage, "Confirm Stats", "Yes", "No") != "Yes")
+			qdel(warhead)
+			return
 		message_admins(statsmessage)
 
 	var/turf/target = get_turf(usr.loc)
 
 	if(alert(usr, "Fire or Spawn Warhead?", "Mode", "Fire", "Spawn") == "Fire")
-		if(alert("Are you SURE you want to do this? It will create an OB explosion!",, "Yes", "No") != "Yes") return
+		if(alert("Are you SURE you want to do this? It will create an OB explosion!",, "Yes", "No") != "Yes")
+			qdel(warhead)
+			return
+
 		message_admins("[key_name(usr)] has fired \an [warhead.name] at ([target.x],[target.y],[target.z]).")
 		warhead.warhead_impact(target)
-		QDEL_IN(warhead, OB_CRASHING_DOWN)
+
+		if(istype(warhead, /obj/structure/ob_ammo/warhead/cluster))
+		// so the user's screen can shake for the duration of the cluster, otherwise we get a runtime.
+			QDEL_IN(warhead, OB_CLUSTER_DURATION)
+		else
+			QDEL_IN(warhead, OB_CRASHING_DOWN)
 	else
 		warhead.loc = target
 
@@ -958,6 +965,7 @@
 	else
 		var/faction = tgui_input_list(usr, "What faction do you wish to provide a bioscan for?", "Bioscan Faction", list("Xeno","Marine","Yautja"), 20 SECONDS)
 		var/variance = tgui_input_number(usr, "How variable do you want the scan to be? (+ or - an amount from truth)", "Variance", 2, 10, 0, 20 SECONDS)
+		message_admins("BIOSCAN: [key_name(usr)] admin-triggered a bioscan for [faction].")
 		GLOB.bioscan_data.get_scan_data()
 		switch(faction)
 			if("Xeno")

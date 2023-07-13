@@ -251,6 +251,10 @@
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/onclick/xenohide,
 	)
+	mutator_actions_to_add = list(
+		/datum/action/xeno_action/onclick/toggle_long_range/runner,
+	)
+
 	cost = 1
 
 	keystone = TRUE
@@ -262,7 +266,7 @@
 
 	var/mob/living/carbon/xenomorph/facehugger/facehugger = mutator_set.xeno
 
-	facehugger.client.change_view(10, src)
+	facehugger.viewsize = 10
 
 	facehugger.mutation_type = FACEHUGGER_WATCHER
 	mutator_update_actions(facehugger)

@@ -264,8 +264,7 @@
 				splash_chance -= victim.species.acid_blood_dodge_chance
 
 			if(splash_chance > 0 && prob(splash_chance)) //Success!
-				var/acid_damage = max(0, acid_blood_damage + (tier * 5))
-				if(SEND_SIGNAL(src, COMSIG_XENO_DEAL_ACID_DAMAGE, victim, acid_damage) & COMPONENT_BLOCK_DAMAGE)
+				if(SEND_SIGNAL(src, COMSIG_XENO_DEAL_ACID_DAMAGE, victim, acid_blood_damage) & COMPONENT_BLOCK_DAMAGE)
 					continue
 				i++
 				victim.visible_message(SPAN_DANGER("\The [victim] is scalded with hissing green blood!"), \

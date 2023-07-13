@@ -146,33 +146,26 @@
 		eggsac_image_index.Cut()
 		return
 
-	update_eggsac_maths(round(( eggs_cur / eggs_max ) * 2.999) + 1)
+	///Simplified image index change.
+	var/i = 0
+	if(eggs_cur > 9)
+		i = 3
+	else if (eggs_cur > 4)
+		i = 2
+	else if (eggs_cur > 0)
+		i = 1
 
-	for(var/i in eggsac_image_index)
-		if(stat == DEAD)
-			eggsac_image_index.Cut()
-		else if(lying)
-			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-				eggsac_overlays_icon.overlays += icon(icon, "eggsac_[i] Sleeping")
-			else
-				eggsac_overlays_icon.overlays +=icon(icon, "eggsac_[i] Knocked Down")
+	if(stat == DEAD)
+		eggsac_image_index.Cut()
+	else if(lying)
+		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+			eggsac_overlays_icon.overlays += icon(icon, "eggsac_[i] Sleeping")
 		else
-			eggsac_overlays_icon.overlays +=icon(icon, "eggsac_[i]")
+			eggsac_overlays_icon.overlays +=icon(icon, "eggsac_[i] Knocked Down")
+	else
+		eggsac_overlays_icon.overlays +=icon(icon, "eggsac_[i]")
 
 	overlays += eggsac_overlays_icon
-
-/mob/living/carbon/xenomorph/carrier/proc/update_eggsac_maths(number)
-	var/eggsac_list = list(1,2,3)
-	if(length(eggsac_image_index) != number)
-		if(length(eggsac_image_index) > number)
-			while(length(eggsac_image_index) != number)
-				eggsac_image_index -= eggsac_image_index[length(eggsac_image_index)]
-		else
-			while(length(eggsac_image_index) != number)
-				for(var/i in eggsac_image_index)
-					if(locate(i) in eggsac_list)
-						eggsac_list -= i
-				eggsac_image_index += clinger_list[rand(1,length(clinger_list))] //Random to step-by-step to-do.
 
 /mob/living/carbon/xenomorph/carrier/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
@@ -180,24 +173,32 @@
 	eggsac_overlays_icon = mutable_appearance('icons/mob/xenos/overlay_effects64x64.dmi',"empty")
 
 /mob/living/carbon/xenomorph/carrier/death(cause, gibbed)
-	. = ..(cause, gibbed)
-	if(.)
-		var/chance = 75
+    . = ..(cause, gibbed)
+    if(.)
+        var/chance = 75
+        if(mutation_type == CARRIER_EGGSAC)
+            visible_message(SPAN_XENOWARNING("[src] throes as its eggsac bursts into a mess of acid!"))
+            playsound(src.loc, 'sound/effects/alien_egg_burst.ogg', 25, 1)
 
-		if (huggers_cur)
-			//Hugger explosion, like an egg morpher
-			var/obj/item/clothing/mask/facehugger/hugger
-			visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
-			for(var/i in 1 to huggers_cur)
-				if(prob(chance))
-					hugger = new(loc, hivenumber)
-					step_away(hugger, src, 1)
+        if(huggers_cur)
+            //Hugger explosion, like an egg morpher
+            var/obj/item/clothing/mask/facehugger/hugger
+            visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
+            for(var/i in 1 to huggers_cur)
+                if(prob(chance))
+                    hugger = new(loc, hivenumber)
+                    step_away(hugger, src, 1)
 
-		while (eggs_cur > 0)
-			if(prob(chance))
-				new /obj/item/xeno_egg(loc, hivenumber)
-				eggs_cur--
-				update_icons()
+        var/eggs_dropped = FALSE
+        while (eggs_cur > 0)
+            if(prob(chance))
+                new /obj/item/xeno_egg(loc, hivenumber)
+                eggs_cur--
+                eggs_dropped = TRUE
+                update_icons()
+
+        if(eggs_dropped == TRUE)
+            xeno_message(SPAN_XENOANNOUNCE("[src] has dropped some precious eggs!"), 2, hive.hivenumber)
 
 /mob/living/carbon/xenomorph/carrier/get_status_tab_items()
 	. = ..()

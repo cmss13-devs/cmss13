@@ -71,3 +71,11 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_WY_CORPORATE_DS 202
 #define ACCESS_PRESS 203
 //=================================================
+
+// Yautja Access Levels
+/// Requires a visible ID chip to open
+#define ACCESS_YAUTJA_SECURE 250
+/// Elders+ only
+#define ACCESS_YAUTJA_ELDER 251
+/// Ancients only
+#define ACCESS_YAUTJA_ANCIENT 252

@@ -86,7 +86,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		return FALSE
 	if(processor && !processor.inoperable())
 		return TRUE
-	return FALSE //interface not found or is broken
+	return FALSE //interface processor not found or is broken
 
 /proc/ares_can_log()
 	var/obj/structure/machinery/computer/ares_console/interface = GLOB.ares_link.interface

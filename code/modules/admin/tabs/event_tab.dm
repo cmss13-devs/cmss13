@@ -406,7 +406,7 @@
 	if(!check_rights(R_ADMIN))
 		return
 	var/nuketype = "Decrypted Operational Nuke"
-	var/encrypt = tgui_alert(src, "Do you want the nuke to be already decrypted?", "Nuke Type.", list("Encrypted", "Decrypted"), 20 SECONDS)
+	var/encrypt = tgui_alert(src, "Do you want the nuke to be already decrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 	if(encrypt == "Encrypted")
 		nuketype = "Encrypted Operational Nuke"
 	var/prompt = tgui_alert(src, "THIS CAN BE USED TO END THE ROUND. Are you sure you want to spawn a nuke? The nuke will be put onto the ASRS Lift.", "DEFCON 1", list("No", "Yes"), 30 SECONDS)

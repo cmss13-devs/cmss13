@@ -27,7 +27,6 @@ var/list/admin_verbs_default = list(
 	/client/proc/invismin,
 	/client/proc/set_explosive_antigrief,
 	/client/proc/check_explosive_antigrief,
-	/client/proc/cmd_mod_say,
 	/client/proc/dsay,
 	/client/proc/chem_panel, /*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
 	/client/proc/player_panel_new, /*shows an interface for all players, with links to various panels*/
@@ -68,6 +67,8 @@ var/list/admin_verbs_default = list(
 	/datum/admins/proc/alertall,
 	/datum/admins/proc/imaginary_friend,
 	/client/proc/toggle_ares_ping,
+	/client/proc/cmd_admin_say, /*staff-only ooc chat*/
+	/client/proc/cmd_mod_say, /* alternate way of typing asay, no different than cmd_admin_say  */
 	)
 
 var/list/admin_verbs_admin = list(
@@ -80,7 +81,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/toggleprayers, /*toggles prayers on/off*/
 	/client/proc/toggle_hear_radio, /*toggles whether we hear the radio*/
 	/client/proc/event_panel,
-	/client/proc/cmd_admin_say, /*admin-only ooc chat*/
 	/client/proc/free_slot, /*frees slot for chosen job*/
 	/client/proc/modify_slot,
 	/client/proc/cmd_admin_rejuvenate,

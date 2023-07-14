@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added a PMC Synth Survivor preset, and stopped PMC Synth Survivor using the ERT set."

@@ -151,3 +151,18 @@
 	. = list()
 	var/invis_message = (invis_start_time == -1) ? "N/A" : "[(invis_duration-(world.time - invis_start_time))/10] seconds."
 	. += "Invisibility Time Left: [invis_message]"
+
+/datum/behavior_delegate/lurker_base/on_collide(atom/movable/movable_atom)
+	. = ..()
+
+	if(!ishuman(movable_atom))
+		return
+
+	if(!bound_xeno || !bound_xeno.stealth)
+		return
+
+	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invisibility_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
+	if(!lurker_invisibility_action)
+		return
+
+	lurker_invisibility_action.invisibility_off()

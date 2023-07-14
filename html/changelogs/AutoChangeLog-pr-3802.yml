@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fix ghosting preventing first dibs on the larva in a hugged marine"

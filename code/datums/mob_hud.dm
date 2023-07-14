@@ -4,7 +4,7 @@
 var/list/datum/mob_hud/huds = list(
 	MOB_HUD_SECURITY_BASIC = new /datum/mob_hud/security/basic(),
 	MOB_HUD_SECURITY_ADVANCED = new /datum/mob_hud/security/advanced(),
-	MOB_HUD_MEDICAL_BASIC = new /datum/mob_hud/medical/basic(),
+	MOB_HUD_MEDICAL_BASIC = new /datum/mob_hud/medical/basic(), // I don't think this is really needed anymore and it's annoying me, consult with the ancients before merge - Morrow
 	MOB_HUD_MEDICAL_ADVANCED = new /datum/mob_hud/medical/advanced(),
 	MOB_HUD_MEDICAL_OBSERVER = new /datum/mob_hud/medical/observer(),
 	MOB_HUD_XENO_INFECTION = new /datum/mob_hud/xeno_infection(),
@@ -30,10 +30,18 @@ var/list/datum/mob_hud/huds = list(
 
 // Stop displaying a HUD to a specific person
 // (took off medical glasses)
-/datum/mob_hud/proc/remove_hud_from(mob/user)
+/datum/mob_hud/proc/remove_hud_from(mob/user, source)
+	if(length(hudusers[user]) && (source in hudusers[user]))
+		hudusers[user] -= source
+
+	if(length(hudusers[user]))
+		return FALSE
+
 	for(var/mob/target in hudmobs)
 		remove_from_single_hud(user, target)
+
 	hudusers -= user
+	return TRUE
 
 // Stop rendering a HUD on a target
 // "unenroll" them so to speak
@@ -53,8 +61,9 @@ var/list/datum/mob_hud/huds = list(
 			user.client.images -= target.clone.hud_list[i]
 
 // Allow user to view a HUD (putting on medical glasses)
-/datum/mob_hud/proc/add_hud_to(mob/user)
+/datum/mob_hud/proc/add_hud_to(mob/user, source)
 	hudusers |= user
+	LAZYADDASSOCLIST(hudusers, user, source)
 	for(var/mob/target in hudmobs)
 		add_to_single_hud(user, target)
 

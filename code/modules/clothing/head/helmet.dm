@@ -372,10 +372,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/storage_max_w_class = SIZE_TINY // can hold tiny items only, EXCEPT for glasses & metal flask.
 	var/storage_max_storage_space = 4
 
+	var/list/inserted_visors = list(/obj/item/device/helmet_visor, /obj/item/device/helmet_visor/medical)
+
+	var/active_visor = null
+
+	actions_types = list()
+
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 
-/obj/item/clothing/head/helmet/marine/New(loc,
-	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
+/obj/item/clothing/head/helmet/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -397,6 +402,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	camera = new /obj/structure/machinery/camera(src)
 	camera.network = list(CAMERA_NET_OVERWATCH)
+
+	if(inserted_visors)
+		actions_types += /datum/action/item_action/helmet/cycle_huds
 
 	..()
 
@@ -484,6 +492,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/equipped(mob/living/carbon/human/mob, slot)
 	if(camera)
 		camera.c_tag = mob.name
+	if(huds)
+		recalculate_huds(mob)
 	..()
 
 /obj/item/clothing/head/helmet/marine/unequipped(mob/user, slot)
@@ -492,6 +502,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		for(var/obj/item/attachable/flashlight/F in pockets)
 			if(F.activated)
 				F.activate_attachment(src, user, TRUE)
+	if(huds)
+		recalculate_huds(user)
 
 /obj/item/clothing/head/helmet/marine/dropped(mob/living/carbon/human/mob)
 	if(camera)
@@ -500,6 +512,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		for(var/obj/item/attachable/flashlight/F in pockets)
 			if(F.activated)
 				F.activate_attachment(src, mob, TRUE)
+	if(huds)
+		recalculate_huds(mob)
 	..()
 
 /obj/item/clothing/head/helmet/marine/has_garb_overlay()
@@ -517,6 +531,89 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return pockets
 	return ..()
 
+/obj/item/clothing/head/helmet/marine/proc/recalculate_huds(mob/user)
+	turn_off_visors(user)
+
+	if(!active_visor)
+		return
+
+	if(user != loc)
+		return
+
+	var/mob/living/carbon/human/human_user = user
+	if(!human_user || human_user.head != src)
+		return
+
+	turn_on_visor(human_user)
+
+/obj/item/clothing/head/helmet/marine/proc/turn_on_visor(mob/user)
+	var/obj/item/device/helmet_visor/current_helmet_visor = new active_visor()
+	var/mob_hud_type = current_helmet_visor.hud_type
+	var/datum/mob_hud/current_mob_hud = huds[mob_hud_type]
+	current_mob_hud.add_hud_to(user, HUD_SOURCE_HELMET)
+	playsound_client(user.client, current_helmet_visor.toggle_on_sound, null, 75)
+	to_chat(user, SPAN_NOTICE("You activate the [current_helmet_visor] on [src]."))
+
+/obj/item/clothing/head/helmet/marine/proc/turn_off_visor(mob/user, type, sound = FALSE)
+	var/obj/item/device/helmet_visor/current_helmet_visor = new type()
+	var/mob_hud_type = current_helmet_visor.hud_type
+	var/datum/mob_hud/current_mob_hud = huds[mob_hud_type]
+	current_mob_hud.remove_hud_from(user, HUD_SOURCE_HELMET)
+	if(sound)
+		playsound_client(user.client, current_helmet_visor.toggle_off_sound, null, 75)
+	to_chat(user, SPAN_NOTICE("You deactivate the [current_helmet_visor] on [src]."))
+
+/obj/item/clothing/head/helmet/marine/proc/turn_off_visors(mob/user)
+	for(var/helmet_visor_type in inserted_visors)
+		var/obj/item/device/helmet_visor/current_helmet_visor = new helmet_visor_type()
+		var/mob_hud_type = current_helmet_visor.hud_type
+		var/datum/mob_hud/current_mob_hud = huds[mob_hud_type]
+		current_mob_hud.remove_hud_from(user, HUD_SOURCE_HELMET)
+
+/obj/item/clothing/head/helmet/marine/proc/cycle_huds(mob/user)
+	if(!inserted_visors)
+		return
+
+	if(!length(inserted_visors))
+		return
+
+	if(active_visor)
+		var/iterator = 1
+		for(var/hud_type in inserted_visors)
+			if(hud_type == active_visor)
+				if(length(inserted_visors) > iterator)
+					turn_off_visor(user, active_visor, FALSE)
+					active_visor = inserted_visors[(iterator + 1)]
+					recalculate_huds(user)
+					return
+				else
+					turn_off_visor(user, active_visor, TRUE)
+					active_visor = null
+					recalculate_huds(user)
+					return
+			iterator++
+
+	if(inserted_visors[1])
+		active_visor = inserted_visors[1]
+		recalculate_huds(user)
+		return
+
+	active_visor = null
+	recalculate_huds(user)
+
+/datum/action/item_action/helmet/cycle_huds/New(Target, obj/item/holder)
+	. = ..()
+	name = "Cycle helmet HUD"
+	action_icon_state = "iff_toggle_on" //add the correct icon states
+	button.name = name
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/helmet/cycle_huds/action_activate()
+	. = ..()
+	var/obj/item/clothing/head/helmet/marine/holder_helmet = holder_item
+	holder_helmet.cycle_huds(usr)
+
 /obj/item/clothing/head/helmet/marine/tech
 	name = "\improper M10 technician helmet"
 	desc = "A modified M10 marine helmet for ComTechs. Features a toggleable welding screen for eye protection."
@@ -526,17 +623,18 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	///To remember the helmet's map variant-adjusted icon state
 	var/base_icon_state
 
-	actions_types = list(/datum/action/item_action/toggle)
 	vision_impair = VISION_IMPAIR_NONE
 
 /obj/item/clothing/head/helmet/marine/tech/Initialize()
 	. = ..()
+	actions_types += /datum/action/item_action/toggle
 	base_icon_state = icon_state
 
-/obj/item/clothing/head/helmet/marine/tech/attack_self(mob/user)
-	..()
-	toggle()
+///obj/item/clothing/head/helmet/marine/tech/attack_self(mob/user)
+//	..()
+//	toggle()
 
+/*	CONVERT TO VISOR - MORROW
 /obj/item/clothing/head/helmet/marine/tech/verb/toggle()
 	set category = "Object"
 	set name = "Toggle Tech Helmet"
@@ -570,7 +668,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.update_button_icon()
-
+*/
 /obj/item/clothing/head/helmet/marine/tech/tanker
 	name = "\improper M50 tanker helmet"
 	desc = "The lightweight M50 tanker helmet is designed for use by armored crewmen in the USCM. It offers low weight protection, and allows agile movement inside the confines of an armored vehicle. Features a toggleable welding screen for eye protection."

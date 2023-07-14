@@ -247,6 +247,7 @@
 			return
 
 		user.visible_message("[user] unfastens the bolts securing [src] to the surface.", "You unfasten the bolts securing [src] to the surface.")
+
 /obj/structure/machinery/chem_dispenser/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 

@@ -2,11 +2,9 @@ import { useBackend, useSharedState } from '../backend';
 import { Window } from '../layouts';
 import { Box, Button, Divider, Flex, Stack } from '../components';
 import { CasSim } from './CasSim';
-import { CrtPanel } from './CrtPanel';
-import { Table, TableCell, TableRow } from '../components/Table';
 import { ByondUi } from '../components';
 import { range } from 'common/collections';
-import { ButtonProps, HorizontalPanel, VerticalPanel } from './MultifunctionDisplay';
+import { ButtonProps, HorizontalPanel, MfdPanel, VerticalPanel } from './MultifunctionDisplay';
 
 interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
@@ -317,6 +315,30 @@ const BottomPanel = (props, context) => {
   );
 };
 
+const getLeftButtons = (context) => {
+  const { act, data } = useBackend<DropshipProps>(context);
+  const get_gun = (mount_point) =>
+    data.equipment_data.find((x) => x.mount_point === mount_point);
+
+  const guns = range(1, 5).map((x) => get_gun(x));
+  const get_gun_index = (index: number) => {
+    const value: ButtonProps = {
+      children: guns[index]?.shorthand ?? 'EMPTY',
+      onClick: () => {
+        act('fire-weapon', { 'eqp_tag': guns[0]?.eqp_tag });
+      },
+    };
+    return value;
+  };
+  return [
+    { children: 'WEAPON' },
+    get_gun_index(0),
+    get_gun_index(1),
+    get_gun_index(2),
+    get_gun_index(3),
+  ];
+};
+
 const LeftPanel = (props, context) => {
   const { act, data } = useBackend<DropshipProps>(context);
   const get_gun = (mount_point) =>
@@ -343,6 +365,33 @@ const LeftPanel = (props, context) => {
       ]}
     />
   );
+};
+
+const getRightButtons = (context) => {
+  const { act, data } = useBackend<DropshipProps>(context);
+  const lazes = range(0, 3).map((x) =>
+    x > data.targets_data.length ? undefined : data.targets_data[x]
+  );
+  const get_laze = (index: number) => {
+    const laze = lazes.find((_, i) => i === index);
+    if (laze === undefined) {
+      return { children: 'NONE' };
+    } else {
+      return {
+        children: laze?.target_name.split(' ')[0] ?? 'NONE',
+        onClick: laze
+          ? () => act('set-camera', { 'equipment_id': laze.target_tag })
+          : undefined,
+      };
+    }
+  };
+  return [
+    { children: 'SIGNALS' },
+    get_laze(0),
+    get_laze(1),
+    get_laze(2),
+    get_laze(3),
+  ];
 };
 
 const RightPanel = (props, context) => {
@@ -393,36 +442,33 @@ const RenderScreen = (props, context) => {
 };
 
 const PrimaryPanel = (props, context) => {
+  const [panelState, setPanelState] = usePanelState(context);
   return (
-    <Table className="primarypanel">
-      <TableRow>
-        <TableCell />
-        <TableCell>
-          <TopPanel />
-        </TableCell>
-        <TableCell />
-      </TableRow>
-      <TableRow>
-        <TableCell>
-          <LeftPanel />
-        </TableCell>
-        <TableCell>
-          <CrtPanel color="green" className="displaypanel">
-            <RenderScreen />
-          </CrtPanel>
-        </TableCell>
-        <TableCell>
-          <RightPanel />
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell />
-        <TableCell>
-          <BottomPanel />
-        </TableCell>
-        <TableCell />
-      </TableRow>
-    </Table>
+    <MfdPanel
+      topPanel={[
+        { children: 'L' },
+        { children: 'LC' },
+        { children: 'C' },
+        { children: 'RC' },
+        { children: 'R' },
+      ]}
+      bottomPanel={[
+        {
+          children: 'WEAP',
+          onClick: () => setPanelState('equipment'),
+        },
+        {
+          children: 'FIREM',
+          onClick: () => setPanelState('firemissions'),
+        },
+        { children: 'EQUIP' },
+        { children: 'MAP', onClick: () => setPanelState('map') },
+        { children: 'CAMERA', onClick: () => setPanelState('camera') },
+      ]}
+      leftPanel={getLeftButtons(context)}
+      rightPanel={getRightButtons(context)}>
+      <RenderScreen />
+    </MfdPanel>
   );
 };
 

@@ -4,17 +4,21 @@ import { CrtPanel } from './CrtPanel';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { InfernoNode } from 'inferno';
 
-export type ButtonProps = {
+export interface ButtonProps {
   children?: InfernoNode;
   onClick?: () => void;
-};
+}
+
+export interface FullButtonProps extends ButtonProps {
+  location: 'top' | 'bottom' | 'left' | 'right';
+}
 
 interface MfdProps {
   topPanel?: Array<ButtonProps>;
   bottomPanel?: Array<ButtonProps>;
   leftPanel?: Array<ButtonProps>;
   rightPanel?: Array<ButtonProps>;
-  children?: Node;
+  children?: InfernoNode;
 }
 
 export const MfdButton = (props: ButtonProps, context) => {

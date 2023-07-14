@@ -285,7 +285,7 @@
 	var/name = hugger ? "[hugger]" : "\a [src]"
 	if(hug_area)
 		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b> at \the <b>[hug_area]</b>" + " [OBSERVER_JMP(observer, human)]"))
+			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b> at \the <b>[hug_area]</b> [OBSERVER_JMP(observer, human)]"))
 		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b> at \the <b>[hug_area]</b>"))
 	else
 		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)

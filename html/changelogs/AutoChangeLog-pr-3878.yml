@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Fixes the toggle notification sound verb for Yautja bracers not working."

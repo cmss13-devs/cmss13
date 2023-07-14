@@ -77,14 +77,6 @@
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/swcaves)
-"abM" = (
-/obj/structure/machinery/storm_siren{
-	pixel_y = 5
-	},
-/turf/open/floor/shiva{
-	icon_state = "green"
-	},
-/area/varadero/interior/hall_SE)
 "acO" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/beakers,
@@ -887,6 +879,15 @@
 	icon_state = "asteroidfloor"
 	},
 /area/varadero/exterior/lz2_near)
+"aCY" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/power/apc{
+	dir = 1
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/north)
 "aDu" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -2078,10 +2079,6 @@
 	icon_state = "snow_mat"
 	},
 /area/varadero/interior/maintenance)
-"boY" = (
-/obj/structure/window/framed/colony/reinforced/tinted,
-/turf/open/floor/plating,
-/area/varadero/interior/maintenance/security)
 "bpH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -2288,6 +2285,21 @@
 /obj/item/device/encryptionkey/dutch{
 	pixel_x = 8;
 	pixel_y = 3
+	},
+/obj/item/book/manual/marine_law{
+	pixel_x = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/vodka{
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/obj/item/handcuffs{
+	pixel_x = 2;
+	pixel_y = 16
+	},
+/obj/structure/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
 	},
 /turf/open/floor/shiva{
 	icon_state = "redfull"
@@ -3226,6 +3238,9 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/security)
+"cdb" = (
+/turf/closed/wall,
+/area/varadero/interior/maintenance/security)
 "cdc" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata{
@@ -3686,6 +3701,16 @@
 /obj/item/stack/sheet/metal,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
+"crC" = (
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	pixel_y = 24;
+	start_charge = 0
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "csb" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/sofa/vert/grey/bot,
@@ -3969,10 +3994,6 @@
 	icon_state = "wred"
 	},
 /area/varadero/interior/medical)
-"cDy" = (
-/obj/structure/window/framed/colony,
-/turf/open/gm/dirt,
-/area/varadero/interior/maintenance/north)
 "cEm" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
@@ -4443,12 +4464,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
-"cRH" = (
-/obj/structure/window/framed/colony/reinforced/tinted,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/security)
 "cRZ" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -6550,6 +6565,14 @@
 	},
 /turf/closed/wall/rock/brown,
 /area/varadero/exterior/pontoon_beach)
+"eqn" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/varadero/interior/toilets)
 "eqB" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -8586,6 +8609,15 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/records)
+"fEA" = (
+/obj/structure/girder/displaced,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "fEI" = (
 /obj/structure/bedsheetbin{
 	icon_state = "linenbin-empty"
@@ -8980,7 +9012,7 @@
 /turf/open/floor/shiva{
 	icon_state = "green"
 	},
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/hall_N)
 "fQE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -9745,16 +9777,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/electrical)
-"gkX" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/storm_siren{
-	dir = 8;
-	pixel_x = 3
-	},
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/maintenance/security)
 "glp" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -9988,10 +10010,6 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/hall_SE)
-"guS" = (
-/obj/structure/machinery/landinglight/ds1/spoke,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/exterior/lz2_near)
 "gvo" = (
 /obj/item/ore/diamond,
 /turf/open/auto_turf/sand_white/layer1,
@@ -11257,12 +11275,6 @@
 	},
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/oob)
-"hnt" = (
-/obj/structure/girder/displaced,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/maintenance/security)
 "hnR" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 1
@@ -11824,10 +11836,6 @@
 /area/varadero/interior/security)
 "hJB" = (
 /obj/structure/blocker/fog,
-/obj/structure/prop/ice_colony/dense/planter_box/hydro{
-	desc = "A high-power hydroelectric generator.";
-	name = "hydroelectric generator"
-	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/exterior/farocean)
 "hJO" = (
@@ -12266,22 +12274,6 @@
 	},
 /area/varadero/interior/medical)
 "hZD" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/alarm{
-	dir = 8;
-	pixel_x = 24
-	},
-/obj/item/handcuffs{
-	pixel_x = 2;
-	pixel_y = 16
-	},
-/obj/item/book/manual/marine_law{
-	pixel_x = 8
-	},
-/obj/item/reagent_container/food/drinks/bottle/vodka{
-	pixel_x = -5;
-	pixel_y = 1
-	},
 /turf/open/floor/shiva{
 	icon_state = "redfull"
 	},
@@ -12303,6 +12295,14 @@
 	icon_state = "asteroidfloor"
 	},
 /area/varadero/interior/comms1)
+"ias" = (
+/obj/structure/machinery/camera/autoname/lz_camera,
+/obj/structure/machinery/landinglight/ds1/spoke{
+	pixel_y = -5;
+	pixel_x = 13
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz2_near)
 "iat" = (
 /obj/structure/barricade/wooden{
 	dir = 1
@@ -12834,7 +12834,10 @@
 /area/varadero/interior_protected/vessel)
 "iqW" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/paper{
+	name = "Incendiary Ammunition Order";
+	desc = "An order manifest for incendiary ammo that has yet to be filled out."
+	},
 /turf/open/floor/shiva{
 	icon_state = "red"
 	},
@@ -13507,12 +13510,6 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/hall_SE)
-"iMX" = (
-/obj/item/ammo_magazine/handful/shotgun/incendiary,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
-/area/varadero/interior/security)
 "iNh" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -13641,6 +13638,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/hall_NW)
+"iRZ" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance)
 "iSi" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 1
@@ -13815,13 +13818,6 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/administration)
-"iWT" = (
-/obj/structure/prop/ice_colony/dense/planter_box/hydro{
-	desc = "A high-power hydroelectric generator.";
-	name = "hydroelectric generator"
-	},
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/exterior/farocean)
 "iWX" = (
 /obj/structure/machinery/floodlight{
 	name = "Floodlight";
@@ -14007,10 +14003,6 @@
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/obj/item/ammo_magazine/shotgun/slugs{
-	pixel_x = -2;
-	pixel_y = -4
-	},
 /turf/open/floor/shiva{
 	icon_state = "red"
 	},
@@ -14109,6 +14101,20 @@
 	icon_state = "wood-broken3"
 	},
 /area/varadero/interior/court)
+"jfw" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/obj/structure/machinery/storm_siren{
+	dir = 8;
+	pixel_x = 3
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "jfA" = (
 /obj/item/device/motiondetector/hacked,
 /turf/open/floor/carpet,
@@ -14423,6 +14429,14 @@
 	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/comms4)
+"jqd" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/landinglight/ds1/spoke{
+	pixel_y = -5;
+	pixel_x = 13
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz2_near)
 "jqu" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva,
@@ -15224,11 +15238,8 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/clothing/head/xenos{
-	desc = "A hollowed out skull of a Lurker, this mass of chitin has been polished and cleaned to perfection";
-	name = "hollow lurker head"
-	},
 /obj/structure/window/reinforced,
+/obj/item/clothing/head/fedora,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -15935,6 +15946,10 @@
 	icon_state = "red"
 	},
 /area/varadero/interior/medical)
+"krz" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/closed/wall/r_wall,
+/area/varadero/interior/security)
 "krL" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -16388,8 +16403,14 @@
 	},
 /area/varadero/interior_protected/vessel)
 "kEV" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/plating,
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/varadero/interior/maintenance)
 "kFn" = (
 /obj/structure/machinery/floodlight/landing/floor,
@@ -16723,6 +16744,13 @@
 	},
 /turf/open/gm/coast/east,
 /area/varadero/exterior/comms4)
+"kRp" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior_protected/maintenance/south)
 "kRH" = (
 /turf/open/gm/coast/beachcorner/north_west,
 /area/varadero/exterior/lz1_near)
@@ -17822,13 +17850,6 @@
 	dir = 1
 	},
 /area/varadero/interior/research)
-"lBS" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "greenfull"
-	},
-/area/varadero/interior/hall_SE)
 "lCK" = (
 /obj/structure/prop/structure_lattice{
 	dir = 1;
@@ -18831,6 +18852,10 @@
 	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
+"mdN" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/maintenance/south)
 "mee" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door/window/brigdoor/westleft{
@@ -19293,7 +19318,7 @@
 	dir = 5;
 	icon_state = "green"
 	},
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/hall_N)
 "muE" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -19535,6 +19560,20 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/hall_SE)
+"mAP" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/turf/open/floor/shiva{
+	icon_state = "red"
+	},
+/area/varadero/interior/security)
 "mAX" = (
 /obj/structure/prop/dam/van{
 	desc = "An older Weyland Yutani space crawler. These things are most commonly seen along former trails on shake and bake colonies.";
@@ -20429,6 +20468,16 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/research)
+"neU" = (
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	pixel_y = 24;
+	start_charge = 0
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/varadero/interior/hall_N)
 "nfk" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/light/small{
@@ -21252,6 +21301,17 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/central)
+"nNv" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1;
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/shiva{
+	icon_state = "redfull"
+	},
+/area/varadero/interior/security)
 "nNz" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -21774,6 +21834,12 @@
 	icon_state = "warnplate"
 	},
 /area/varadero/exterior/lz1_near)
+"obS" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/shiva{
+	icon_state = "snow_mat"
+	},
+/area/varadero/interior/security)
 "ocr" = (
 /obj/structure/bed,
 /obj/item/bedsheet/orange,
@@ -22004,12 +22070,10 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
 	},
-/turf/open/floor/plating,
 /area/varadero/interior/maintenance)
 "oke" = (
 /turf/open/floor/shiva{
@@ -23318,16 +23382,6 @@
 	icon_state = "squareswood"
 	},
 /area/varadero/interior_protected/vessel)
-"pcJ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
-/turf/open/floor/shiva{
-	icon_state = "green"
-	},
-/area/varadero/interior/hall_N)
 "pcK" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/shiva{
@@ -24797,7 +24851,7 @@
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/hall_N)
 "pXG" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/shiva{
@@ -24814,6 +24868,13 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/hall_N)
+"pXT" = (
+/obj/structure/machinery/landinglight/ds1/spoke{
+	pixel_y = -5;
+	pixel_x = 13
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz2_near)
 "pYn" = (
 /turf/closed/wall,
 /area/varadero/interior/records)
@@ -25125,6 +25186,12 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
+"qhZ" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/varadero/interior/security)
 "qio" = (
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/maintenance)
@@ -25452,7 +25519,9 @@
 /area/varadero/interior/hall_SE)
 "quP" = (
 /obj/effect/landmark/static_comms/net_two,
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/varadero/interior/maintenance/security)
 "quR" = (
 /obj/item/stack/sheet/metal,
@@ -26234,7 +26303,7 @@
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
-/area/varadero/interior/hall_SE)
+/area/varadero/interior/hall_N)
 "qPG" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -26519,13 +26588,6 @@
 "qWC" = (
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
-"qWW" = (
-/obj/structure/prop/ice_colony/dense/planter_box/hydro{
-	desc = "A high-power hydroelectric generator.";
-	name = "hydroelectric generator"
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/exterior/lz2_near)
 "qXn" = (
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
@@ -26535,21 +26597,6 @@
 	icon_state = "green"
 	},
 /area/varadero/interior/mess)
-"qXM" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/sink{
-	dir = 1;
-	pixel_y = -10
-	},
-/obj/structure/mirror{
-	pixel_y = -28
-	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/varadero/interior/toilets)
 "qXO" = (
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/shiva{
@@ -28672,12 +28719,6 @@
 	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/eastocean)
-"spJ" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/maintenance/security)
 "spP" = (
 /obj/structure/bed/chair,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -28699,10 +28740,6 @@
 "srg" = (
 /turf/open/gm/dirt,
 /area/varadero/interior/caves/north_research)
-"srL" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/plating/icefloor,
-/area/varadero/interior/maintenance/north)
 "srU" = (
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = -12;
@@ -29548,6 +29585,10 @@
 	icon_state = "yellowfull"
 	},
 /area/varadero/interior/electrical)
+"sPs" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/wood,
+/area/varadero/interior/security)
 "sPD" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/toolbox/mechanical/green,
@@ -29840,9 +29881,6 @@
 	},
 /area/varadero/interior/maintenance)
 "tcS" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /obj/structure/pipes/vents/pump,
 /turf/open/floor{
 	icon_state = "white"
@@ -29967,7 +30005,7 @@
 "teH" = (
 /obj/structure/window/framed/colony,
 /obj/structure/sign/banners/happybirthdaysteve,
-/turf/open/floor/plating,
+/turf/open/floor/wood,
 /area/varadero/interior/maintenance/north)
 "teT" = (
 /obj/structure/largecrate/random/case/small,
@@ -31449,15 +31487,6 @@
 	icon_state = "asteroidfloor"
 	},
 /area/varadero/exterior/lz1_near)
-"ufH" = (
-/obj/structure/bed/chair{
-	buckling_y = 18;
-	dir = 8
-	},
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
-/area/varadero/interior/security)
 "ufV" = (
 /turf/open/floor/shiva{
 	dir = 4;
@@ -31487,10 +31516,16 @@
 	icon_state = "blue"
 	},
 /area/varadero/interior/administration)
-"uhg" = (
-/obj/structure/machinery/landinglight/ds1/spoke,
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
+"uhi" = (
+/obj/structure/prop/ice_colony/dense/planter_box/hydro{
+	desc = "A high-power hydroelectric generator.";
+	name = "hydroelectric generator"
+	},
+/turf/open/gm/river{
+	name = "shallow ocean";
+	default_name = "shallow ocean"
+	},
+/area/varadero/exterior/farocean)
 "uhD" = (
 /obj/structure/machinery/light,
 /turf/open/floor/shiva{
@@ -31868,6 +31903,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior_protected/vessel)
+"uvr" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "uvw" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -32158,6 +32199,13 @@
 	icon_state = "bcircuit"
 	},
 /area/varadero/interior/maintenance/north)
+"uHD" = (
+/obj/structure/machinery/landinglight/ds1/spoke{
+	pixel_y = -5;
+	pixel_x = -13
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz2_near)
 "uHY" = (
 /obj/structure/prop/rock/brown,
 /turf/open/auto_turf/sand_white/layer1,
@@ -32217,7 +32265,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
 /area/varadero/interior/security)
 "uIW" = (
 /turf/open/gm/coast/north,
@@ -33124,13 +33174,6 @@
 	icon_state = "purplefull"
 	},
 /area/varadero/interior/research)
-"vkF" = (
-/obj/structure/prop/ice_colony/dense/planter_box/hydro{
-	desc = "A high-power hydroelectric generator.";
-	name = "hydroelectric generator"
-	},
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/exterior/lz2_near)
 "vll" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/reagent_container/glass/bucket{
@@ -33349,6 +33392,18 @@
 /obj/structure/machinery/conveyor,
 /turf/open/floor/plating,
 /area/varadero/interior/cargo)
+"vrO" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/obj/structure/bed/chair{
+	buckling_y = 18;
+	dir = 8
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/varadero/interior/security)
 "vsa" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
@@ -34837,19 +34892,6 @@
 	icon_state = "asteroidwarning"
 	},
 /area/varadero/interior/comms1)
-"wjH" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/maintenance/security)
 "wjV" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -35707,6 +35749,10 @@
 	icon_state = "blue"
 	},
 /area/varadero/interior/technical_storage)
+"wMj" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior/hall_SE)
 "wMn" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating/icefloor{
@@ -35800,15 +35846,6 @@
 	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pontoon_beach)
-"wPt" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior_protected/maintenance/south)
 "wPv" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4;
@@ -35844,6 +35881,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/medical)
+"wQh" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/caves/east)
 "wQi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 1;
@@ -36119,6 +36162,7 @@
 /area/varadero/interior/library)
 "xag" = (
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -36476,6 +36520,14 @@
 	icon_state = "blue"
 	},
 /area/varadero/interior/technical_storage)
+"xpL" = (
+/obj/structure/machinery/camera/autoname/lz_camera,
+/obj/structure/machinery/landinglight/ds1/spoke{
+	pixel_y = -5;
+	pixel_x = -13
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz2_near)
 "xpP" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/comms1)
@@ -37630,14 +37682,6 @@
 	icon_state = "floor6"
 	},
 /area/varadero/interior_protected/vessel)
-"yaL" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/maintenance/north)
 "yba" = (
 /obj/structure/machinery/space_heater,
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -37984,6 +38028,15 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/varadero/interior/technical_storage)
+"ykx" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/caves/east)
 "ykA" = (
 /obj/structure/closet/crate/construction,
 /obj/item/storage/belt/utility/full,
@@ -46481,7 +46534,7 @@ uJO
 bLB
 bLB
 vnm
-pcJ
+xWY
 hvO
 bih
 rHv
@@ -48469,7 +48522,7 @@ bgE
 erK
 qAp
 bgE
-yaL
+hyr
 qtr
 weG
 gnm
@@ -49925,7 +49978,7 @@ rkA
 wMw
 mcr
 aMC
-omj
+aCY
 hyr
 weG
 hyr
@@ -51211,7 +51264,7 @@ uRU
 uRU
 reG
 pGJ
-mFY
+neU
 oMs
 xWY
 hrG
@@ -51741,7 +51794,7 @@ wMw
 wMw
 xVQ
 kyz
-srL
+kqA
 fOO
 aMC
 aMC
@@ -52103,7 +52156,7 @@ mrC
 asx
 asx
 asx
-thS
+kqA
 aSe
 rFv
 hQP
@@ -52285,7 +52338,7 @@ mrC
 asx
 fZB
 asx
-thS
+kqA
 kEB
 sSp
 hlw
@@ -52303,7 +52356,7 @@ eaN
 lYF
 srW
 pGJ
-oMs
+mFY
 oMs
 xWY
 hvO
@@ -52836,7 +52889,7 @@ hLt
 kUj
 ixw
 rmV
-cDy
+kqA
 giN
 hyr
 giN
@@ -53018,7 +53071,7 @@ hLt
 rmo
 qfC
 xbm
-cDy
+kqA
 giN
 hyr
 giN
@@ -53196,8 +53249,8 @@ lTR
 fHf
 wPl
 aMC
-thS
-thS
+kqA
+kqA
 bgE
 bgE
 bgE
@@ -53621,8 +53674,8 @@ vUM
 sJZ
 tEJ
 cNu
-bkM
-ngg
+pKs
+chs
 chs
 ibV
 ixr
@@ -53804,7 +53857,7 @@ lQA
 ptY
 uzg
 bkM
-ngg
+chs
 chs
 chs
 rCs
@@ -56144,7 +56197,7 @@ fkR
 fkR
 ojJ
 kEV
-jcT
+iRZ
 pbt
 iLD
 jCr
@@ -56308,10 +56361,10 @@ onj
 iSW
 uXR
 pGs
-nTG
-abM
-tEJ
-pEE
+pGJ
+gnx
+hvO
+bih
 mux
 pot
 kmb
@@ -56490,11 +56543,11 @@ gVq
 pGs
 pGs
 pGs
-nTG
-fkj
-tEJ
-pEE
-tEJ
+pGJ
+xWY
+hvO
+bih
+hvO
 tEJ
 rtV
 tEJ
@@ -56672,11 +56725,11 @@ pGs
 pGs
 pGs
 pGs
-nTG
+pGJ
 fQr
-tEJ
+hvO
 pXp
-oGc
+oZw
 oGc
 ngm
 oGc
@@ -56854,11 +56907,11 @@ pGs
 pGs
 pGs
 pGs
-nTG
-lBS
-rMN
+pGJ
+arg
+oMs
 qPs
-uLY
+lzu
 rBP
 afx
 rBP
@@ -57053,37 +57106,37 @@ nTG
 nTG
 pNf
 vqd
-nTG
+lNb
 nTG
 nTG
 nTG
 wVf
 wVf
 wVf
-kMf
+sPs
 wVf
 wVf
 qUf
 uIH
 jQg
 wVf
-xvF
+qhZ
 wVf
-xvF
+qhZ
 wVf
-xvF
+qhZ
 wVf
-boY
+wjV
 abE
-boY
-wqb
-wqb
+wjV
+cdb
+cdb
 slG
 fUJ
 kAm
-wqb
-boY
-wqb
+cdb
+wjV
+cdb
 wjV
 abE
 pYn
@@ -57232,10 +57285,10 @@ xJZ
 xJZ
 xJZ
 gDh
-xJZ
+uEc
 viK
 gAV
-uEc
+xJZ
 wqb
 kBZ
 hPj
@@ -57259,13 +57312,13 @@ pBS
 viK
 xJZ
 yeF
-wqb
-wqb
-boY
-wqb
-wqb
+cdb
+cdb
+wjV
+cdb
+cdb
 kqE
-wqb
+cdb
 rRq
 usB
 pYn
@@ -57426,17 +57479,17 @@ xLE
 ioc
 vqY
 oaR
-xvF
+sPs
 gwG
 pJn
 krP
-kMf
+qhZ
 gwG
 xOo
 xOo
 xOo
 nHA
-kMf
+qhZ
 uqw
 viK
 xJZ
@@ -57447,7 +57500,7 @@ sCA
 aKk
 xJZ
 xJZ
-wqb
+cdb
 wMn
 viK
 lhJ
@@ -57608,7 +57661,7 @@ idw
 jQB
 psb
 idw
-xvF
+sPs
 gwG
 pJn
 krP
@@ -57798,15 +57851,15 @@ wVf
 wVf
 xvF
 aiR
-xvF
+qhZ
 wVf
 wVf
 okI
 lab
 lVc
 lVc
-gkX
-gjz
+lVc
+jfw
 okJ
 gjz
 lVc
@@ -57953,10 +58006,10 @@ che
 qdk
 juW
 wqb
-wqb
-wqb
-wqb
-spJ
+crC
+xJZ
+ryD
+xJZ
 ryD
 joV
 wqb
@@ -57985,12 +58038,12 @@ eMD
 wVf
 wVf
 wVf
-kMf
+qhZ
 wVf
-wVf
+qhZ
 wVf
 vOr
-wVf
+xvF
 wVf
 viK
 xJZ
@@ -58136,14 +58189,14 @@ qdk
 juW
 kBZ
 kBZ
-tkF
+joV
 keY
+xJZ
 ryD
 ryD
 ryD
 ryD
-ryD
-wXs
+viK
 xJZ
 wXu
 wqb
@@ -58158,7 +58211,7 @@ wVf
 hXv
 pJn
 krP
-xvF
+qhZ
 gwG
 xOo
 cvX
@@ -58173,7 +58226,7 @@ liE
 jZw
 xMq
 vnU
-kMf
+qhZ
 viK
 xJZ
 mdj
@@ -58319,13 +58372,13 @@ juW
 kBZ
 kBZ
 kBZ
-ryD
+xJZ
 quP
 ryD
 fbr
 ryD
 ryD
-wXs
+viK
 sHO
 ryD
 wqb
@@ -58340,7 +58393,7 @@ wVf
 hJl
 pJn
 krP
-xvF
+qhZ
 gwG
 wOS
 wrv
@@ -58355,7 +58408,7 @@ mnc
 mnc
 xMq
 agJ
-kMf
+qhZ
 lab
 lVc
 lVc
@@ -58501,14 +58554,14 @@ juW
 kBZ
 kBZ
 kBZ
+xJZ
+xJZ
 ryD
 ryD
 ryD
 ryD
-ryD
-ryD
-wXs
-ryD
+viK
+xJZ
 ryD
 ryD
 kBZ
@@ -58522,7 +58575,7 @@ wVf
 jhe
 pJn
 krP
-xvF
+qhZ
 gwG
 xOo
 eqB
@@ -58533,16 +58586,16 @@ eOZ
 hzm
 uiy
 wVf
-wVf
+qhZ
 wVf
 bdJ
 wVf
 wVf
 gfj
+fEA
 xJZ
-sny
 xJZ
-hnt
+xJZ
 xJZ
 xJZ
 xJZ
@@ -58687,10 +58740,10 @@ kBZ
 kBZ
 ryD
 ryD
-tkF
+ryD
 ryD
 lDm
-ryD
+xJZ
 joV
 ryD
 kBZ
@@ -58700,7 +58753,7 @@ dtu
 rTu
 hkZ
 xRx
-xvF
+sPs
 xsi
 pJn
 krP
@@ -58713,16 +58766,16 @@ vEa
 wVf
 wVf
 wVf
-kMf
+qhZ
 wVf
 ezZ
 lyp
 pJn
 pBb
 wVf
+qhZ
 wVf
-kMf
-wVf
+qhZ
 wVf
 wVf
 wVf
@@ -58745,7 +58798,7 @@ aWP
 rBP
 rBP
 lZb
-lNb
+wMj
 cto
 etv
 vTe
@@ -58868,7 +58921,7 @@ wOO
 kBZ
 kBZ
 kBZ
-tkF
+ryD
 kBZ
 wqb
 smE
@@ -58888,9 +58941,9 @@ pJn
 krP
 wVf
 wVf
-xvF
+qhZ
 qto
-xvF
+qhZ
 wVf
 wVf
 xdJ
@@ -58928,7 +58981,7 @@ tEJ
 tEJ
 twm
 lNb
-gLo
+cto
 etv
 vTe
 dfP
@@ -59110,9 +59163,9 @@ tEJ
 tEJ
 lHH
 bkM
-ksX
+mdN
 bnB
-ksX
+mdN
 eEd
 ksX
 ksX
@@ -59235,18 +59288,18 @@ kBZ
 kBZ
 kBZ
 wqb
-wjH
+viK
 xJZ
 ryD
 ryD
 ryD
-xvF
+sPs
 cYa
 lVB
 lZU
 vqY
 tiw
-xvF
+sPs
 oXp
 jVK
 uUS
@@ -59265,7 +59318,7 @@ vvS
 rKy
 xOo
 hoG
-wVf
+qhZ
 vLU
 eye
 xOo
@@ -59292,7 +59345,7 @@ jjg
 tEJ
 rtu
 bkM
-wPt
+iaM
 hbi
 iaM
 eEd
@@ -59418,11 +59471,11 @@ kBZ
 ryD
 hcI
 wXs
+xJZ
 ryD
 ryD
 ryD
-ryD
-xvF
+sPs
 etE
 swi
 idw
@@ -59447,14 +59500,14 @@ mLt
 pJn
 xOo
 oCN
-wVf
+qhZ
 vLU
 nmQ
 ghb
 wVf
 gwG
-iMX
-nHA
+xOo
+mAP
 wVf
 xJZ
 tYw
@@ -59596,11 +59649,11 @@ cuc
 tlT
 mrT
 kBZ
-tkF
+ryD
 ryD
 ryD
 wXs
-ryD
+xJZ
 ryD
 ryD
 ryD
@@ -59611,9 +59664,9 @@ hty
 wVf
 wVf
 wVf
-cRH
+qhZ
 jsf
-cRH
+qhZ
 wVf
 eyt
 eyt
@@ -59782,7 +59835,7 @@ tkF
 ryD
 ryD
 wXs
-ryD
+xJZ
 ryD
 ryD
 eyt
@@ -59812,9 +59865,9 @@ aQR
 shP
 gBV
 wVf
+xvF
 wVf
-wVf
-wVf
+xvF
 wVf
 wVf
 wVf
@@ -59838,7 +59891,7 @@ aBB
 wXD
 pdr
 bkM
-iaM
+kRp
 mNO
 qWw
 cto
@@ -59964,7 +60017,7 @@ kBZ
 ryD
 ryD
 apj
-ryD
+xJZ
 ryD
 ryD
 kbQ
@@ -60175,7 +60228,7 @@ umA
 mve
 xOo
 hoG
-kMf
+qhZ
 xOo
 ppw
 xOo
@@ -60365,7 +60418,7 @@ wVf
 pRy
 vpV
 mIG
-wVf
+krz
 xJZ
 hfn
 ryD
@@ -60513,14 +60566,14 @@ viK
 xJZ
 xJZ
 wqb
-kbQ
+tVj
 kbQ
 kbQ
 kbQ
 kbQ
 kbQ
 lFk
-boY
+bPk
 xJZ
 viK
 xJZ
@@ -60534,20 +60587,20 @@ xJZ
 xJZ
 xJZ
 xJZ
-xvF
+qhZ
 rqn
 kGF
 pJn
 tUd
-kMf
+qhZ
 hyp
 iNr
 vZl
-wVf
+qhZ
 tdy
 vpV
 dNY
-wVf
+obS
 ryD
 viK
 xJZ
@@ -60695,14 +60748,14 @@ viK
 xJZ
 ryD
 ryD
-kbQ
+tVj
 kbQ
 jqw
 kbQ
 kbQ
 kbQ
 ofC
-tWA
+uvr
 xJZ
 viK
 xJZ
@@ -60716,7 +60769,7 @@ iXR
 xJZ
 xJZ
 gDh
-xvF
+qhZ
 beE
 orb
 pJn
@@ -60725,11 +60778,11 @@ dpz
 xOo
 kiG
 lxy
-wVf
+qhZ
 bUg
 vpV
 eKW
-wVf
+obS
 ryD
 wXs
 xJZ
@@ -60875,16 +60928,16 @@ ubK
 oSX
 mZk
 xJZ
-ryD
-sHO
-kbQ
-kbQ
-kbQ
-kbQ
-kbQ
-kbQ
-kbQ
-tWA
+xJZ
+imu
+tVj
+tVj
+tVj
+tVj
+tVj
+tVj
+tVj
+uvr
 xJZ
 viK
 xJZ
@@ -61059,14 +61112,14 @@ viK
 xJZ
 xJZ
 wqb
-kbQ
-kbQ
+tVj
+tVj
 qIF
 kbQ
 qIF
 tTU
 kbQ
-tWA
+uvr
 xJZ
 viK
 gDh
@@ -61082,8 +61135,8 @@ xOo
 xOo
 aRL
 xOo
-ufH
-nmQ
+xOo
+vrO
 vAg
 wVf
 gwG
@@ -61104,13 +61157,13 @@ kbQ
 uXS
 dGR
 kNa
-sGo
+eqn
 eQZ
 sGo
 uXS
 vzY
 eQZ
-sGo
+eqn
 kNa
 oAm
 uXS
@@ -61230,7 +61283,7 @@ yjK
 lsT
 kCA
 hUY
-wOO
+oSX
 lur
 rtR
 osr
@@ -61412,7 +61465,7 @@ pkX
 nsl
 kCA
 hUY
-wOO
+oSX
 eYM
 lur
 rpI
@@ -61445,8 +61498,8 @@ ldw
 xAx
 kjN
 wVf
-wVf
-wVf
+xvF
+nNv
 wVf
 wVf
 wVf
@@ -61627,9 +61680,9 @@ kbQ
 qIF
 kbQ
 qIF
-eyt
-eyt
-eyt
+kbQ
+tVj
+kbQ
 eyt
 wVf
 oWO
@@ -61652,7 +61705,7 @@ vZv
 vZO
 uXS
 jCN
-qXM
+rWx
 uXS
 tcS
 dnU
@@ -61810,8 +61863,8 @@ kbQ
 qIF
 sgk
 kbQ
+tVj
 kbQ
-eyt
 eyt
 wVf
 jUM
@@ -61834,9 +61887,9 @@ uXS
 uXS
 uXS
 jKK
+eHl
 uXS
-uXS
-uXS
+eHl
 jKK
 uXS
 uXS
@@ -61986,14 +62039,14 @@ eyt
 eyt
 eyt
 sgk
-kbQ
+tTU
 qIF
 kbQ
 kbQ
 kbQ
-mED
-kbQ
-jqw
+wQh
+tVj
+tVj
 eyt
 wVf
 gqN
@@ -62173,7 +62226,7 @@ kbQ
 kbQ
 ofC
 tTU
-kbQ
+tVj
 sgk
 jqw
 eyt
@@ -62355,7 +62408,7 @@ kbQ
 kbQ
 kbQ
 kbQ
-kbQ
+tVj
 kbQ
 kbQ
 kbQ
@@ -62537,7 +62590,7 @@ kbQ
 mED
 kbQ
 sgk
-kbQ
+tVj
 kbQ
 kbQ
 kbQ
@@ -62716,14 +62769,14 @@ kbQ
 kbQ
 kbQ
 kbQ
-kbQ
-kbQ
-vph
-kbQ
+tVj
+tVj
+ykx
+tVj
 kbQ
 kbQ
 sgk
-kbQ
+tTU
 nMJ
 mxG
 kbQ
@@ -62819,13 +62872,13 @@ wlB
 lTg
 lTg
 wlB
-guS
+lTg
 wlB
 lTg
 wlB
 wlB
 lTg
-uhg
+wlB
 wlB
 tfc
 tCV
@@ -62892,16 +62945,16 @@ viK
 xJZ
 tFQ
 iyv
-kbQ
+tTU
 jqw
 kbQ
 jqw
 kbQ
 kbQ
-kbQ
-kbQ
-kbQ
-kbQ
+tVj
+tVj
+tVj
+tVj
 eyt
 eyt
 kbQ
@@ -62994,7 +63047,7 @@ wlB
 wlB
 lTg
 lTg
-guS
+lTg
 tuT
 lTg
 lTg
@@ -63080,7 +63133,7 @@ wqb
 wqb
 tWA
 gey
-tWA
+uvr
 tWA
 wqb
 wqb
@@ -63176,22 +63229,22 @@ lTg
 lTg
 lTg
 lTg
+pXT
 lTg
 lTg
-lTg
-lTg
+pXT
 lTg
 tpa
 lTg
 lTg
-lTg
+pXT
 lTg
 xUp
 lTg
 lTg
-kLF
+jqd
 lTg
-guS
+lTg
 lTg
 kFn
 wlB
@@ -63262,7 +63315,7 @@ wXu
 xJZ
 ryD
 ryD
-ryD
+xJZ
 keY
 xJZ
 vlw
@@ -63356,7 +63409,7 @@ lTg
 lTg
 lTg
 lTg
-guS
+pXT
 lTg
 lTg
 wlB
@@ -63373,8 +63426,8 @@ wlB
 wlB
 wlB
 lTg
-lTg
-lTg
+pXT
+pXT
 rhu
 wlB
 lTg
@@ -63554,7 +63607,7 @@ wlB
 wlB
 wlB
 nFX
-emP
+ias
 lTg
 aAX
 lTg
@@ -63717,7 +63770,7 @@ wlB
 kqs
 lTg
 wlB
-lTg
+pXT
 lTg
 lTg
 lTg
@@ -63737,7 +63790,7 @@ wlB
 wlB
 wlB
 wlB
-lTg
+pXT
 wlB
 lTg
 rhu
@@ -64102,7 +64155,7 @@ wlB
 wlB
 wlB
 lTg
-lTg
+uHD
 rhu
 lTg
 fIk
@@ -64466,7 +64519,7 @@ wlB
 wlB
 nFX
 lTg
-lTg
+pXT
 lTg
 cxT
 bDs
@@ -64809,10 +64862,10 @@ lTg
 wlB
 wlB
 lTg
+uHD
 lTg
 lTg
 lTg
-lTg
 wlB
 wlB
 wlB
@@ -64829,7 +64882,7 @@ wlB
 wlB
 wlB
 wlB
-lTg
+uHD
 wlB
 lTg
 dOl
@@ -65010,7 +65063,7 @@ nFX
 wlB
 wlB
 wlB
-emP
+xpL
 lTg
 wlB
 lTg
@@ -65176,7 +65229,7 @@ lTg
 wlB
 lTg
 lTg
-guS
+uHD
 lTg
 lTg
 wlB
@@ -65193,8 +65246,8 @@ wlB
 wlB
 wlB
 lTg
-lTg
-lTg
+uHD
+uHD
 lTg
 lTg
 iQr
@@ -65360,22 +65413,22 @@ lTg
 lTg
 lTg
 lTg
+uHD
+lTg
+lTg
+uHD
 lTg
 lTg
 lTg
 lTg
+uHD
 lTg
 lTg
 lTg
 lTg
+uHD
 lTg
 lTg
-lTg
-lTg
-lTg
-lTg
-lTg
-guS
 lTg
 lTg
 iQr
@@ -65542,7 +65595,7 @@ wlB
 wlB
 wlB
 lTg
-guS
+lTg
 lTg
 lTg
 lTg
@@ -65728,16 +65781,16 @@ wlB
 lTg
 wlB
 wlB
-guS
+lTg
 wlB
 wlB
-uhg
+wlB
 wlB
 lTg
 wlB
 wlB
 lTg
-uhg
+wlB
 lTg
 wlB
 wlB
@@ -66471,7 +66524,7 @@ wlB
 wlB
 aQN
 aQN
-vkF
+tMZ
 pvQ
 lTg
 aQN
@@ -66653,7 +66706,7 @@ kAH
 wlB
 aQN
 tMZ
-qWW
+lTg
 tmZ
 tmZ
 tmZ
@@ -66835,7 +66888,7 @@ wlB
 wlB
 aQN
 aQN
-vkF
+tMZ
 pTI
 rnL
 pdK
@@ -67199,7 +67252,7 @@ wlB
 wlB
 wlB
 pvQ
-vkF
+tMZ
 pdK
 pdK
 pdK
@@ -67562,8 +67615,8 @@ pRa
 rUa
 pRa
 pRa
-rUa
-iWT
+uhi
+kkF
 mPk
 mPk
 mPk
@@ -67926,8 +67979,8 @@ mPk
 mPk
 mPk
 mPk
-mPk
-iWT
+pkl
+kkF
 mPk
 mPk
 mPk
@@ -68290,8 +68343,8 @@ mPk
 mPk
 mPk
 mPk
-mPk
-iWT
+pkl
+kkF
 mPk
 mPk
 mPk
@@ -68654,8 +68707,8 @@ mPk
 mPk
 mPk
 mPk
-mPk
-iWT
+pkl
+kkF
 mPk
 mPk
 mPk
@@ -69018,8 +69071,8 @@ mPk
 mPk
 mPk
 mPk
-mPk
-iWT
+pkl
+kkF
 mPk
 mPk
 mPk
@@ -69382,8 +69435,8 @@ mPk
 mPk
 mPk
 mPk
-mPk
-iWT
+pkl
+kkF
 mPk
 mPk
 mPk
@@ -69746,8 +69799,8 @@ mPk
 mPk
 mPk
 mPk
-mPk
-iWT
+pkl
+kkF
 mPk
 mPk
 mPk
@@ -70110,8 +70163,8 @@ mPk
 mPk
 mPk
 mPk
-mPk
-iWT
+pkl
+kkF
 mPk
 mPk
 mPk

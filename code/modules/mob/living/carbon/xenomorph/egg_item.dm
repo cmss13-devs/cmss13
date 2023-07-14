@@ -39,7 +39,7 @@
 	if(isxeno(user))
 		var/mob/living/carbon/xenomorph/xeno = user
 		var/turf/T = get_turf(target)
-		if(get_dist(xeno, T) <= egg_planting_range)
+		if(get_dist(xeno, T) <= xeno.egg_planting_range)
 			proximity = TRUE
 		plant_egg(xeno, T, proximity)
 	if(proximity && ishuman(user))

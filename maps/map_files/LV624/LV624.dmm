@@ -14106,10 +14106,9 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/west_nexus_road)
 "fja" = (
-/obj/item/attachable/bayonet{
+/obj/item/weapon/unathiknife{
 	desc = "A curved blade made of a strange material. It looks both old and very sharp.";
 	force = 30;
-	icon_state = "unathiknife";
 	name = "\improper alien blade";
 	throwforce = 26
 	},
@@ -17272,10 +17271,9 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "nED" = (
-/obj/item/attachable/bayonet{
+/obj/item/weapon/unathiknife{
 	desc = "A curved blade made of a strange material. It looks both old and very sharp.";
 	force = 30;
-	icon_state = "unathiknife";
 	name = "\improper alien blade";
 	throwforce = 26
 	},

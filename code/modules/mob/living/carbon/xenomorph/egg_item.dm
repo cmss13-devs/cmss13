@@ -85,12 +85,19 @@
 		return
 
 	var/obj/effect/alien/weeds/hive_weeds = null
-	for(var/obj/effect/alien/weeds/W in T)
-		if(W.weed_strength >= WEED_LEVEL_HIVE && W.linked_hive.hivenumber == hivenumber)
-			hive_weeds = W
+	var/obj/effect/alien/weeds/any_weeds = null
+	for(var/obj/effect/alien/weeds/Weed in T)
+		if(Weed.weed_strength >= WEED_LEVEL_HIVE && Weed.linked_hive.hivenumber == hivenumber)
+			hive_weeds = Weed
 			break
+		if(Weed.weed_strength >= WEED_LEVEL_WEAK && Weed.linked_hive.hivenumber == hivenumber) //check for ANY weeds
+			any_weeds = Weed
 
-	if(!hive_weeds && user.mutation_type != CARRIER_EGGSAC)
+	if(!any_weeds && !hive_weeds) //you need at least some weeds to plant on.
+		to_chat(user, SPAN_XENOWARNING("[src] must be planted on your weeds."))
+		return
+
+	if(!hive_weeds && user.mutation_type != CARRIER_EGGSAC) //must have SOME weeds for eggsac
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
 		return
@@ -109,8 +116,8 @@
 	if(!user.check_plasma(30))
 		return
 
-	for(var/obj/effect/alien/weeds/W in T)
-		if(W.weed_strength >= WEED_LEVEL_HIVE || user.mutation_type == CARRIER_EGGSAC)
+	for(var/obj/effect/alien/weeds/Weed in T)
+		if(Weed.weed_strength >= WEED_LEVEL_HIVE || user.mutation_type == CARRIER_EGGSAC)
 			user.use_plasma(30)
 			var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T, hivenumber)
 

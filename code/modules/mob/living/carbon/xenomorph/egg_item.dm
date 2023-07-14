@@ -87,7 +87,7 @@
 			hive_weeds = W
 			break
 
-	if(!hive_weeds)
+	if(!hive_weeds && user.mutation_type != CARRIER_EGGSAC)
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
 		return
@@ -107,7 +107,7 @@
 		return
 
 	for(var/obj/effect/alien/weeds/W in T)
-		if(W.weed_strength >= WEED_LEVEL_HIVE)
+		if(W.weed_strength >= WEED_LEVEL_HIVE || user.mutation_type == CARRIER_EGGSAC)
 			user.use_plasma(30)
 			var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T, hivenumber)
 

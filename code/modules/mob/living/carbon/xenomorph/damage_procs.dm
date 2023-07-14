@@ -264,14 +264,15 @@
 				splash_chance -= victim.species.acid_blood_dodge_chance
 
 			if(splash_chance > 0 && prob(splash_chance)) //Success!
-				if(SEND_SIGNAL(src, COMSIG_XENO_DEAL_ACID_DAMAGE, victim, acid_blood_damage) & COMPONENT_BLOCK_DAMAGE)
+				var/dmg = list("damage" = acid_blood_damage)
+				if(SEND_SIGNAL(src, COMSIG_XENO_DEAL_ACID_DAMAGE, victim, dmg) & COMPONENT_BLOCK_DAMAGE)
 					continue
 				i++
 				victim.visible_message(SPAN_DANGER("\The [victim] is scalded with hissing green blood!"), \
 				SPAN_DANGER("You are splattered with sizzling blood! IT BURNS!"))
 				if(prob(60) && !victim.stat && victim.pain.feels_pain)
 					INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream") //Topkek
-				victim.apply_armoured_damage(acid_damage, ARMOR_BIO, BURN) //Sizzledam! This automagically burns a random existing body part.
+				victim.apply_armoured_damage(dmg["damage"], ARMOR_BIO, BURN) //Sizzledam! This automagically burns a random existing body part.
 				victim.add_blood(get_blood_color(), BLOOD_BODY)
 				acid_splash_last = world.time
 				handle_blood_splatter(get_dir(src, victim), 1 SECONDS)

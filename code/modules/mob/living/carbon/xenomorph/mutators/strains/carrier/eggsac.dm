@@ -1,6 +1,6 @@
 /datum/xeno_mutator/eggsac
 	name = "STRAIN: Carrier - Eggsac"
-	description = "In exchange for your ability to store huggers and place traps, you gain larger plasma stores, strong pheromones, and the ability to lay eggs by using your plasma stores. In addition, you can now carry twelve eggs at once and can place eggs one pace further than normal even on regular weeds."
+	description = "In exchange for your ability to store huggers and place traps, you gain larger plasma stores, strong pheromones, and the ability to lay eggs by using your plasma stores. In addition, you can now carry twelve eggs at once, can plant eggs of non-hive weeds, and can place eggs one pace further than normal"
 	flavor_description = "An egg is always an adventure; the next one may be different."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE

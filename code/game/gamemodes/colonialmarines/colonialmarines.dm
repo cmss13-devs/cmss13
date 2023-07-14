@@ -354,6 +354,8 @@
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
+#define MAJORITY .5 // What percent do we consider a 'majority?'
+
 /datum/game_mode/colonialmarines/declare_completion()
 	announce_ending()
 	var/musical_track
@@ -376,14 +378,13 @@
 			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
 				var/headcount = count_per_faction()
 				var/living = headcount[5]
-				var/majority = 0.5 // What percent do we consider a 'majority?'
-				if ((headcount[2] / living) > majority) // headcount[2] = Weyland-Yutani
+				if ((headcount[2] / living) > MAJORITY) // headcount[2] = Weyland-Yutani
 					musical_track = pick('sound/theme/LastManStanding_WY.ogg')
-				else if ((headcount[3] / living) > majority) // headcount[3] = UPP
+				else if ((headcount[3] / living) > MAJORITY) // headcount[3] = UPP
 					musical_track = pick('sound/theme/LastManStanding_UPP.ogg')
-				else if ((headcount[4] / living) > majority) // headcount[4] = CLF
+				else if ((headcount[4] / living) > MAJORITY) // headcount[4] = CLF
 					musical_track = pick('sound/theme/LastManStanding_CLF.ogg')
-				else if ((headcount[1] / living) > majority) // headcount[1] = Marines
+				else if ((headcount[1] / living) > MAJORITY) // headcount[1] = Marines
 					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
 			else
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
@@ -595,3 +596,4 @@
 
 #undef HIJACK_EXPLOSION_COUNT
 #undef MARINE_MAJOR_ROUND_END_DELAY
+#undef MAJORITY

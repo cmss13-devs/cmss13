@@ -246,7 +246,7 @@
 	throw_atom(target, 3, SPEED_FAST)
 	return TRUE
 
-/obj/item/clothing/mask/facehugger/proc/attach(mob/living/living_mob, silent = FALSE, knockout_mod = 1, hugger_ckey = null, mob/living/carbon/xenomorph/facehugger/hugger)
+/obj/item/clothing/mask/facehugger/proc/attach(mob/living/living_mob, silent = FALSE, knockout_mod = 1, mob/living/carbon/xenomorph/facehugger/hugger)
 	if(attached || !can_hug(living_mob, hivenumber))
 		return FALSE
 

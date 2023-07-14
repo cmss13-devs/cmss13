@@ -19,8 +19,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_staff_officer, list(
 
 		list("JACKET (CHOOSE 1)", 0, null, null, null),
 		list("Service Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/service, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
-		list("Tanker Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/service/tanker, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
-		list("Dress Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/dress, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+
+		list("HAT (CHOOSE 1)", 0, null, null, null),
+		list("Beret, Green", 0, /obj/item/clothing/head/beret/cm, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
+		list("Beret, Tan", 0, /obj/item/clothing/head/beret/cm/tan, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
+		list("Patrol Cap", 0, /obj/item/clothing/head/cmcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
+
 
 		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
 		list("M44 Revolver", 0, /obj/item/storage/belt/gun/m44/mp, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),

@@ -37,8 +37,11 @@
 	if(istype(target, /obj/effect/alien/resin/special/eggmorph))
 		return //We tried storing the hugger from the egg, no need to try to plant it (we know the turf is occupied!)
 	if(isxeno(user))
+		var/mob/living/carbon/xenomorph/xeno = user
 		var/turf/T = get_turf(target)
-		plant_egg(user, T, proximity)
+		if(xeno.mutation_type == CARRIER_EGGSAC && get_dist(xeno, T) <= 2)
+			proximity = TRUE
+		plant_egg(xeno, T, proximity)
 	if(proximity && ishuman(user))
 		var/turf/T = get_turf(target)
 		plant_egg_human(user, T)

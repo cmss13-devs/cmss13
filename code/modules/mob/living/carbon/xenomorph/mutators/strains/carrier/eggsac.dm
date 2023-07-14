@@ -73,3 +73,4 @@
 			if(egg_generation_progress >= 15)
 				egg_generation_progress = 0
 				xeno.eggs_cur++
+				to_chat(xeno, SPAN_XENONOTICE("You generate a egg. Now sheltering: [xeno.eggs_cur] / [xeno.eggs_max]."))

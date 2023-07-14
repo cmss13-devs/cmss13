@@ -292,9 +292,9 @@
 			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b> [OBSERVER_JMP(observer, human)]"))
 		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b>"))
 	if(hug_area)
-		xeno_message(SPAN_XENOMINORWARNING("You sense that [name] has facehugged a host at \the [hug_area]!"), 1, src.hivenumber)
+		xeno_message(SPAN_XENOMINORWARNING("You sense that [name] has facehugged a host at \the [hug_area]!"), 1, hivenumber)
 	else
-		xeno_message(SPAN_XENOMINORWARNING("You sense that [name] has facehugged a host!"), 1, src.hivenumber)
+		xeno_message(SPAN_XENOMINORWARNING("You sense that [name] has facehugged a host!"), 1, hivenumber)
 
 	addtimer(CALLBACK(src, PROC_REF(impregnate), human, hugger?.client?.ckey), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
 

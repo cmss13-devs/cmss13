@@ -1,0 +1,4 @@
+author: "ondrej008"
+delete-after: True
+changes:
+  - bugfix: "The HE OB now deals the correct amount of damage to xenos, before it dealt half damage caused by xenos being forced to rest before it hit."

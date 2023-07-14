@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fix morpher ejected items and dumped objectives not restoring their mouse_opacity setting."

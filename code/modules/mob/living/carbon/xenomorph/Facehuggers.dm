@@ -289,7 +289,7 @@
 		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b> at \the <b>[hug_area]</b>"))
 	else
 		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b>" + " [OBSERVER_JMP(observer, human)]"))
+			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b> [OBSERVER_JMP(observer, human)]"))
 		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b>"))
 	if(hug_area)
 		xeno_message(SPAN_XENOMINORWARNING("You sense that [name] has facehugged a host at \the [hug_area]!"), 1, src.hivenumber)

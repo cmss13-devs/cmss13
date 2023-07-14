@@ -149,10 +149,17 @@
 	var/mob/picked
 	// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva.
 	if((!isyautja(affected_mob) || (isyautja(affected_mob) && prob(20))) && istype(affected_mob.buckled, /obj/structure/bed/nest))
-		if(affected_mob.first_xeno || (affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, JOB_XENOMORPH)))
+		if(affected_mob.first_xeno || (affected_mob.client?.prefs?.be_special & BE_ALIEN_AFTER_DEATH && !jobban_isbanned(affected_mob, JOB_XENOMORPH)))
 			picked = affected_mob
-		else if(affected_mob.mind && affected_mob.mind.ghost_mob && affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, JOB_XENOMORPH))
-			picked = affected_mob.mind.ghost_mob
+		else if(affected_mob.mind?.ghost_mob && affected_mob.client?.prefs?.be_special & BE_ALIEN_AFTER_DEATH && !jobban_isbanned(affected_mob, JOB_XENOMORPH))
+			picked = affected_mob.mind.ghost_mob // This currently doesn't look possible
+		else if(affected_mob.persistent_ckey)
+			for(var/mob/dead/observer/cur_obs as anything in GLOB.observer_list)
+				if(cur_obs.ckey != affected_mob.persistent_ckey)
+					continue
+				if(cur_obs?.client?.prefs?.be_special & BE_ALIEN_AFTER_DEATH && !jobban_isbanned(cur_obs, JOB_XENOMORPH))
+					picked = cur_obs
+				break
 
 	if(!picked)
 		// Get a candidate from observers

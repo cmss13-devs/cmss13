@@ -1,0 +1,5 @@
+author: "Ben10083"
+delete-after: True
+changes:
+  - mapadd: "Combat Information Center Reception now has a telephone"
+  - maptweak: "Medical Lower telephone shifted to the left"

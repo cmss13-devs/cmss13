@@ -354,7 +354,7 @@
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
-#define MAJORITY .5 // What percent do we consider a 'majority?'
+#define MAJORITY 0.5 // What percent do we consider a 'majority?'
 
 /datum/game_mode/colonialmarines/declare_completion()
 	announce_ending()

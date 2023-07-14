@@ -410,7 +410,7 @@
 	if(encrypt == "Encrypted")
 		nuketype = "Encrypted Operational Nuke"
 	var/prompt = tgui_alert(src, "THIS CAN BE USED TO END THE ROUND. Are you sure you want to spawn a nuke? The nuke will be put onto the ASRS Lift.", "DEFCON 1", list("No", "Yes"), 30 SECONDS)
-	if(prompt == "No")
+	if(prompt != "Yes")
 		return
 
 	var/datum/supply_order/new_order = new /datum/supply_order()

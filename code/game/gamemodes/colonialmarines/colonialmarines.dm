@@ -375,7 +375,7 @@
 			var/list/living_player_list = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
 			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
 				var/headcount = count_per_faction()
-				var/living= headcount[5]
+				var/living = headcount[5]
 				var/majority = 0.5 // What percent do we consider a 'majority?'
 				if ((headcount[2] / living) > majority) // headcount[2] = Weyland-Yutani
 					musical_track = pick('sound/theme/LastManStanding_WY.ogg')

@@ -296,7 +296,7 @@
 	else
 		xeno_message(SPAN_XENOMINORWARNING("You sense that [name] has facehugged a host!"), 1, src.hivenumber)
 
-	addtimer(CALLBACK(src, PROC_REF(impregnate), human, hugger_ckey), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
+	addtimer(CALLBACK(src, PROC_REF(impregnate), human, hugger?.client?.ckey), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
 
 	return TRUE
 

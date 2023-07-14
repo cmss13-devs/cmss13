@@ -98,7 +98,7 @@
 		to_chat(user, SPAN_XENOWARNING("[src] must be planted on [lowertext(hive.prefix)]weeds."))
 		return
 
-	if(!hive_weeds && user.mutation_type != CARRIER_EGGSAC) //must have SOME weeds for eggsac
+	if(!hive_weeds && user.mutation_type != CARRIER_EGGSAC)
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
 		return
 

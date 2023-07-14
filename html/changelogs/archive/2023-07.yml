@@ -149,3 +149,20 @@
   - balance: reduces the M1911 magazine size from 14 to 7
   Steelpoint:
   - balance: Synthetic Armour slowdown has been decreased
+2023-07-13:
+  QuickLoad, Thwomper:
+  - imageadd: Synthetic Uniforms & Vest with United Americas flair and classic jumpsuits
+      which remind you of life on the Frontier. Sprited by THE THWOMPA himself!
+  - qol: Synthetic Vendor is more organized. Removes scrub cap, adds shoe.
+2023-07-14:
+  Drathek:
+  - bugfix: Fix ghosting preventing first dibs on the larva in a hugged marine
+  Unknownity:
+  - bugfix: Fixed burrowed mobs being able to be targeted by sentries, mines and SG
+      autofire.
+  - bugfix: Fixed burrowed mobs being able to grab mobs on the surface.
+  - bugfix: Fixed burrowed mobs being able to resist while burrowed.
+  - bugfix: Fixed burrowers taking damage from direct flame and shrapnel from explosions.
+  - bugfix: Fixed burrowers being able to get slashed from enemy Xenos on the surface.
+  - bugfix: Fixed burrowers unburrow stun to now properly target and stun enemy Xenos.
+  - soundadd: Added sounds for the Burrower when they are burrowing and unburrowing.

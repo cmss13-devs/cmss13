@@ -2270,9 +2270,11 @@
 /obj/structure/sign/safety/terminal{
 	pixel_x = -17
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
+/obj/item/reagent_container/food/snacks/fishandchips{
+	pixel_y = 8;
+	pixel_x = -8
 	},
+/turf/open/floor/wood/ship,
 /area/almayer/hull/upper_hull/u_m_s)
 "aht" = (
 /obj/structure/disposalpipe/segment,
@@ -2285,16 +2287,19 @@
 	pixel_y = 10
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/trash/uscm_mre{
-	pixel_x = 7;
-	pixel_y = 4
-	},
 /obj/item/reagent_container/food/snacks/mre_pack/meal1{
 	pixel_x = -13;
 	pixel_y = 8
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
+/obj/item/storage/bible{
+	desc = "As the legendary US Army chaplain once said, 'There are no Athiests in fancy offices'.";
+	name = "Holy Bible"
+	},
+/obj/item/trash/candle{
+	pixel_x = 12
+	},
+/turf/open/floor/carpet/edge{
+	dir = 1
 	},
 /area/almayer/hull/upper_hull/u_m_s)
 "ahv" = (
@@ -2313,17 +2318,37 @@
 /area/almayer/living/commandbunks)
 "ahx" = (
 /obj/structure/closet,
-/obj/item/clothing/under/marine/engineer,
-/turf/open/floor/almayer{
-	icon_state = "plate"
+/obj/item/device/flashlight/lamp/candelabra{
+	layer = 3.2;
+	pixel_x = 1;
+	pixel_y = 13
 	},
+/obj/item/device/flashlight/lamp/candelabra{
+	layer = 3.2;
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/obj/item/device/flashlight/lamp/candelabra{
+	layer = 3.2;
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/holywater,
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/box/matches,
+/turf/open/floor/wood/ship,
 /area/almayer/hull/upper_hull/u_m_s)
 "ahy" = (
 /obj/structure/closet,
-/obj/item/clothing/under/marine,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/obj/item/clothing/suit/holidaypriest,
+/obj/item/clothing/suit/priest_robe,
+/obj/item/prop/helmetgarb/chaplain_patch,
+/obj/item/clothing/under/rank/chaplain,
+/obj/item/prop/helmetgarb/flair_peace,
+/turf/open/floor/wood/ship,
 /area/almayer/hull/upper_hull/u_m_s)
 "ahz" = (
 /obj/structure/machinery/light{
@@ -3456,19 +3481,20 @@
 	dir = 8
 	},
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/atmos_alert{
-	dir = 4;
-	pixel_y = 5
+/obj/item/paper{
+	desc = "Tackle is today. I am leaving this note so that the Chaplain who follows me may remember me. While the outlook is not good, I am sure that my faith will protect me as it will protect you. Signed <i>[the name has been blotted out by black ink]</i>";
+	name = "note from your predecessor"
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
+/obj/structure/machinery/computer/emails{
+	dir = 4
 	},
+/turf/open/floor/carpet,
 /area/almayer/hull/upper_hull/u_m_s)
 "alg" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/carpet,
 /area/almayer/hull/upper_hull/u_m_s)
 "ali" = (
 /turf/open/floor/almayer{
@@ -3522,9 +3548,7 @@
 	dir = 4
 	},
 /obj/structure/largecrate/random/barrel/green,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/carpet,
 /area/almayer/hull/upper_hull/u_m_s)
 "als" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -5412,12 +5436,7 @@
 	},
 /area/almayer/hallways/starboard_hallway)
 "arp" = (
-/obj/item/roller,
-/obj/item/roller,
-/obj/structure/surface/rack,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/carpet/edge,
 /area/almayer/hull/upper_hull/u_m_s)
 "arq" = (
 /obj/structure/bed/chair{
@@ -34736,6 +34755,10 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/lockerroom)
+"fej" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/wood/ship,
+/area/almayer/hull/upper_hull/u_m_s)
 "feq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -44104,6 +44127,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
+"jpa" = (
+/obj/structure/closet/coffin,
+/turf/open/floor/wood/ship,
+/area/almayer/hull/upper_hull/u_m_s)
 "jpp" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Medical Bay";
@@ -59996,6 +60023,9 @@
 	icon_state = "greencorner"
 	},
 /area/almayer/hallways/port_hallway)
+"qKQ" = (
+/turf/open/floor/carpet,
+/area/almayer/hull/upper_hull/u_m_s)
 "qLi" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -74506,6 +74536,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/grunt_rnr)
+"xaQ" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/wood/ship,
+/area/almayer/hull/upper_hull/u_m_s)
 "xaS" = (
 /turf/open/floor/almayer/uscm/directional{
 	dir = 5
@@ -77109,6 +77143,9 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
+"ygY" = (
+/turf/open/floor/wood/ship,
+/area/almayer/hull/upper_hull/u_m_s)
 "yhI" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -107573,7 +107610,7 @@ aaa
 lYA
 ahs
 alf
-arp
+jpa
 aar
 aap
 aao
@@ -107978,8 +108015,8 @@ aaa
 aaa
 lYA
 ahx
-aap
-ahN
+qKQ
+xaQ
 aar
 awJ
 aao
@@ -108181,8 +108218,8 @@ aaa
 aaa
 lYA
 ahy
-aap
-aao
+qKQ
+ygY
 aar
 pmn
 aao
@@ -108383,9 +108420,9 @@ aaa
 aaa
 aaa
 lYA
-fZF
+fej
 alr
-aao
+ygY
 sMs
 aao
 aao

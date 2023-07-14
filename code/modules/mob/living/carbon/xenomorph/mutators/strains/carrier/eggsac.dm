@@ -37,7 +37,7 @@
 	carrier.huggers_cur = 0
 	carrier.huggers_max = 0
 	carrier.eggs_max = 12
-	carrier.extra_build_dist = 1
+	carrier.egg_planting_range = 2
 	return TRUE
 
 /datum/action/xeno_action/active_toggle/generate_egg

@@ -20,7 +20,7 @@
 /datum/tech/nuke/on_unlock()
 	. = ..()
 
-	var/datum/supply_order/new_order = new /datum/supply_order()
+	var/datum/supply_order/new_order = new()
 	new_order.ordernum = supply_controller.ordernum
 	supply_controller.ordernum++
 	new_order.object = supply_controller.supply_packs["Encrypted Operational Nuke"]

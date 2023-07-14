@@ -3483,7 +3483,7 @@
 	},
 /obj/structure/surface/table/almayer,
 /obj/item/paper{
-	desc = "Tackle is today. I am leaving this note so that the Chaplain who follows me may remember me. While the outlook is not good, I am sure that my faith will protect me as it will protect you. Signed <i>[the name has been blotted out by black ink]</i>";
+	desc = "Tackle is today. I am leaving this note so that the Chaplain who follows me may remember me. While the outlook is not good, I am sure that my faith will protect me as it will protect you. Signed <i>a name blotted out by ink.</i>";
 	name = "note from your predecessor"
 	},
 /obj/structure/machinery/computer/emails{

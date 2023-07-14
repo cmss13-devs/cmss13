@@ -15946,10 +15946,6 @@
 	icon_state = "red"
 	},
 /area/varadero/interior/medical)
-"krz" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/closed/wall/r_wall,
-/area/varadero/interior/security)
 "krL" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -58043,7 +58039,7 @@ wVf
 qhZ
 wVf
 vOr
-xvF
+qhZ
 wVf
 viK
 xJZ
@@ -60418,7 +60414,7 @@ wVf
 pRy
 vpV
 mIG
-krz
+obS
 xJZ
 hfn
 ryD

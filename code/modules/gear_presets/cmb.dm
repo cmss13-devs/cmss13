@@ -1,6 +1,6 @@
 /datum/equipment_preset/cmb
 	name = "Colonial Marshal"
-	faction = FACTION_USCM
+	faction = FACTION_MARSHAL
 	rank = JOB_CMB
 	idtype = /obj/item/card/id/deputy
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -410,7 +410,7 @@
 	paygrade = "ME2"
 	role_comm_title = "A-RFN"
 	skills = /datum/skills/pfc/crafty
-	faction = FACTION_USCM
+	faction = FACTION_MARINE
 
 /datum/equipment_preset/uscm/cmb/load_status(mob/living/carbon/human/new_human)
 	. = ..()

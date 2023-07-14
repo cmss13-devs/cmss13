@@ -372,7 +372,7 @@
 				round_statistics.current_map.total_marine_victories++
 				round_statistics.current_map.total_marine_majors++
 		if(MODE_INFESTATION_X_MINOR)
-			var/living_player_list[] = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
+			var/list/living_player_list = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
 			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
 				var/headcount = count_per_faction()
 				var/living= headcount[5]

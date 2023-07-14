@@ -116,3 +116,53 @@
   - balance: changes M4A3 magazine size from 9 to 12
   Zonespace27:
   - bugfix: The maintenance jack should work a little better at crowbarring things.
+2023-07-09:
+  Khadd:
+  - rscadd: added a iv tube between the user and the bloodpack / iv drip
+  - imageadd: sprites for the iv tube
+  Zonespace27:
+  - rscadd: Working Joes now have an emote panel to use voice lines, accessible as
+      an action button.
+  theselfish:
+  - qol: Foxtrot's radio channel is now on if you have multi-squad in your headset.
+2023-07-10:
+  BeagleGaming1:
+  - rscadd: Acid runners don't get acid from slashing nested humans
+  - rscadd: Very late-stage marines do not give acid
+  - bugfix: Fixes one way of abusing resin fruit
+  Drathek:
+  - rscdel: Remove first life priority for larva queue
+  - bugfix: Fix ghosting as a facehugger counting as death for the larva queue
+  blackdragonTOW:
+  - spellcheck: Added "U1" designation to the UGL attachment.
+2023-07-11:
+  BeagleGaming1:
+  - bugfix: Fixes the Working Joe species
+2023-07-12:
+  Morrow:
+  - bugfix: Stops xenos from bypassing dead moving via roller beds
+  - balance: Telebaton now scales in stunforce effectiveness based on policing skill
+  - balance: Marines called with foxtrot nerfed from 15 to 10.
+  SpartanBobby:
+  - maptweak: 'LV522: Flips the layout of engineering making the T-comms unit on the
+      far side of the LZ'
+  - balance: reduces the M1911 magazine size from 14 to 7
+  Steelpoint:
+  - balance: Synthetic Armour slowdown has been decreased
+2023-07-13:
+  QuickLoad, Thwomper:
+  - imageadd: Synthetic Uniforms & Vest with United Americas flair and classic jumpsuits
+      which remind you of life on the Frontier. Sprited by THE THWOMPA himself!
+  - qol: Synthetic Vendor is more organized. Removes scrub cap, adds shoe.
+2023-07-14:
+  Drathek:
+  - bugfix: Fix ghosting preventing first dibs on the larva in a hugged marine
+  Unknownity:
+  - bugfix: Fixed burrowed mobs being able to be targeted by sentries, mines and SG
+      autofire.
+  - bugfix: Fixed burrowed mobs being able to grab mobs on the surface.
+  - bugfix: Fixed burrowed mobs being able to resist while burrowed.
+  - bugfix: Fixed burrowers taking damage from direct flame and shrapnel from explosions.
+  - bugfix: Fixed burrowers being able to get slashed from enemy Xenos on the surface.
+  - bugfix: Fixed burrowers unburrow stun to now properly target and stun enemy Xenos.
+  - soundadd: Added sounds for the Burrower when they are burrowing and unburrowing.

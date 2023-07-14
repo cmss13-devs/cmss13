@@ -340,7 +340,7 @@ Additional game mode variables.
 	var/list/available_xenos = list()
 	var/list/available_xenos_non_ssd = list()
 
-	for(var/mob/living/carbon/xenomorph/cur_xeno in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/cur_xeno as anything in GLOB.living_xeno_list)
 		if(cur_xeno.aghosted)
 			continue //aghosted xenos don't count
 		var/area/area = get_area(cur_xeno)

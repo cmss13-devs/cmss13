@@ -107,7 +107,7 @@
 	new /obj/item/device/t_scanner(src)
 
 /obj/item/storage/belt/utility/full/pred
-	name = "\improper Yautja toolbelt" //Carn: utility belt is nicer, but it bamboozles the text parsing.
+	name = "\improper Yautja toolbelt"
 	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "utilitybelt_pred"

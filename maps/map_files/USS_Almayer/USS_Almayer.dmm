@@ -2287,10 +2287,6 @@
 	pixel_y = 10
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/snacks/mre_pack/meal1{
-	pixel_x = -13;
-	pixel_y = 8
-	},
 /obj/item/storage/bible{
 	desc = "As the legendary US Army chaplain once said, 'There are no Athiests in fancy offices'.";
 	name = "Holy Bible"
@@ -2339,6 +2335,11 @@
 	},
 /obj/item/storage/fancy/candle_box,
 /obj/item/storage/box/matches,
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	volume = 0;
+	name = "empty Doublebeard Bearded Special Wine";
+	desc = "Seems someone's took that whole 'this is my blood drink of it' thing a bit to heart."
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/hull/upper_hull/u_m_s)
 "ahy" = (
@@ -28799,6 +28800,9 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/living/grunt_rnr)
+"cDN" = (
+/turf/open/floor/carpet,
+/area/almayer/hull/upper_hull/u_m_s)
 "cDW" = (
 /obj/structure/largecrate/supply/supplies/flares,
 /turf/open/floor/almayer{
@@ -34755,10 +34759,6 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/lockerroom)
-"fej" = (
-/obj/structure/largecrate/random/secure,
-/turf/open/floor/wood/ship,
-/area/almayer/hull/upper_hull/u_m_s)
 "feq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -44127,10 +44127,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
-"jpa" = (
-/obj/structure/closet/coffin,
-/turf/open/floor/wood/ship,
-/area/almayer/hull/upper_hull/u_m_s)
 "jpp" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Medical Bay";
@@ -51450,6 +51446,10 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
+"mMv" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/wood/ship,
+/area/almayer/hull/upper_hull/u_m_s)
 "mMP" = (
 /obj/effect/landmark/start/intel,
 /turf/open/floor/plating/plating_catwalk,
@@ -60023,9 +60023,6 @@
 	icon_state = "greencorner"
 	},
 /area/almayer/hallways/port_hallway)
-"qKQ" = (
-/turf/open/floor/carpet,
-/area/almayer/hull/upper_hull/u_m_s)
 "qLi" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -60487,6 +60484,9 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
+"qVY" = (
+/turf/open/floor/wood/ship,
+/area/almayer/hull/upper_hull/u_m_s)
 "qWt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -65592,6 +65592,10 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/command/airoom)
+"tmR" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/wood/ship,
+/area/almayer/hull/upper_hull/u_m_s)
 "tnb" = (
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor/almayer{
@@ -66776,6 +66780,10 @@
 /obj/structure/bed/chair/comfy/beige,
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
+"tMz" = (
+/obj/structure/closet/coffin,
+/turf/open/floor/wood/ship,
+/area/almayer/hull/upper_hull/u_m_s)
 "tMW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -74536,10 +74544,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/grunt_rnr)
-"xaQ" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/wood/ship,
-/area/almayer/hull/upper_hull/u_m_s)
 "xaS" = (
 /turf/open/floor/almayer/uscm/directional{
 	dir = 5
@@ -77143,9 +77147,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
-"ygY" = (
-/turf/open/floor/wood/ship,
-/area/almayer/hull/upper_hull/u_m_s)
 "yhI" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -107610,7 +107611,7 @@ aaa
 lYA
 ahs
 alf
-jpa
+tMz
 aar
 aap
 aao
@@ -108015,8 +108016,8 @@ aaa
 aaa
 lYA
 ahx
-qKQ
-xaQ
+cDN
+mMv
 aar
 awJ
 aao
@@ -108218,8 +108219,8 @@ aaa
 aaa
 lYA
 ahy
-qKQ
-ygY
+cDN
+qVY
 aar
 pmn
 aao
@@ -108420,9 +108421,9 @@ aaa
 aaa
 aaa
 lYA
-fej
+tmR
 alr
-ygY
+qVY
 sMs
 aao
 aao

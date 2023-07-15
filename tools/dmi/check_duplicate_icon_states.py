@@ -1,6 +1,4 @@
-import os
-import sys
-from dmi import *
+rom dmi import *
 
 
 def green(text):
@@ -23,6 +21,7 @@ def _self_test():
                 fullpath = os.path.join(dirpath, filename)
                 failures_this_file = 0
                 try:
+                    Dmi.from_file(fullpath)
                     dmi = Dmi.from_file(fullpath)
                     dmi_states = dmi.states
                     number_of_icon_states = len(dmi.states)
@@ -40,6 +39,7 @@ def _self_test():
                             continue
                         existing_states.append(state_name)
                 except Exception:
+                    print('Failed on:', fullpath)
                     print("{0} {1} threw an exception.".format(red("FAIL"), fullpath))
                     failures_this_file += 1
                     raise
@@ -47,6 +47,7 @@ def _self_test():
                 if failures_this_file > 0:
                     failed += 1
 
+    print(f"{os.path.relpath(__file__)}: successfully parsed {count} .dmi files")
     print(f"{os.path.relpath(__file__)}: {green(f'successfully parsed {count-failed} .dmi files')}")
     if failed > 0:
         print(f"{os.path.relpath(__file__)}: {red(f'failed to parse {failed} .dmi files')}")
@@ -54,17 +55,3 @@ def _self_test():
 
 
 def _usage():
-    print(f"Usage:")
-    print(f"    tools{os.sep}bootstrap{os.sep}python -m {__spec__.name}")
-    exit(1)
-
-
-def _main():
-    if len(sys.argv) == 1:
-        return _self_test()
-
-    return _usage()
-
-
-if __name__ == '__main__':
-    _main()

@@ -1,0 +1,4 @@
+author: "theselfish"
+delete-after: True
+changes:
+  - rscadd: "SOs may now get coats in their vendor."

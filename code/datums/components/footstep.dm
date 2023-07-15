@@ -13,8 +13,9 @@
 	var/falloff
 	///This can be a list OR a soundfile OR null. Determines whatever sound gets played.
 	var/footstep_sounds
+	var/drag_sounds
 
-/datum/component/footstep/Initialize(steps_ = 2, volume_ = 50, range_ = null, falloff_ = 1, footstep_sounds_ = "alien_footstep_large")
+/datum/component/footstep/Initialize(steps_ = 2, volume_ = 50, range_ = null, falloff_ = 1, footstep_sounds_ = "alien_footstep_large", drag_sounds_ = 'sound/effects/alien_dragsound_large.ogg')
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 	steps = steps_
@@ -22,6 +23,7 @@
 	range = range_
 	falloff = falloff_
 	footstep_sounds = footstep_sounds_
+	drag_sounds = drag_sounds_
 
 	RegisterSignal(parent, list(COMSIG_MOVABLE_MOVED), PROC_REF(play_simplestep))
 
@@ -44,5 +46,8 @@
 	var/turf/open/T = prepare_step()
 	if(!T)
 		return
-	if(isfile(footstep_sounds) || istext(footstep_sounds))
+	var/mob/living/parent_mob = parent
+	if(parent_mob.lying && (isfile(drag_sounds) || istext(drag_sounds)))
+		playsound(T, drag_sounds, volume, rand(20000, 25000), range, falloff = falloff)
+	else if(isfile(footstep_sounds) || istext(footstep_sounds))
 		playsound(T, footstep_sounds, volume, rand(20000, 25000), range, falloff = falloff)

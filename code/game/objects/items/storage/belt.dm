@@ -736,7 +736,6 @@
 	cant_hold = list()
 	flap = FALSE
 	var/draw_cooldown = 0
-	var/draw_cooldown_interval = 1 SECONDS
 
 /obj/item/storage/belt/knifepouch/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -753,7 +752,7 @@
 /obj/item/storage/belt/knifepouch/attack_hand(mob/user, mods)
 	if(draw_cooldown < world.time)
 		..()
-		draw_cooldown = world.time + draw_cooldown_interval
+		draw_cooldown = world.time + BAYONET_DRAW_DELAY
 		playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 	else
 		to_chat(user, SPAN_WARNING("You need to wait before drawing another knife!"))

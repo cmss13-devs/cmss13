@@ -129,7 +129,6 @@
 	storage_slots = 5
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
 	var/draw_cooldown = 0
-	var/draw_cooldown_interval = 1 SECONDS
 	var/default_knife_type = /obj/item/weapon/throwing_knife
 
 /obj/item/storage/pouch/bayonet/Initialize()
@@ -151,7 +150,7 @@
 /obj/item/storage/pouch/bayonet/attack_hand(mob/user, mods)
 	if(draw_cooldown < world.time)
 		..()
-		draw_cooldown = world.time + draw_cooldown_interval
+		draw_cooldown = world.time + BAYONET_DRAW_DELAY
 		playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 	else
 		to_chat(user, SPAN_WARNING("You need to wait before drawing another knife!"))

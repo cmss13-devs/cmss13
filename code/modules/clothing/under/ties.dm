@@ -593,6 +593,12 @@
 	icon_state = "vest_knives"
 	hold = /obj/item/storage/internal/accessory/knifeharness
 
+/obj/item/clothing/accessory/storage/knifeharness/attack_hand(mob/user, mods)
+	if(!mods || !mods["alt"] || !length(hold.contents))
+		return ..()
+
+	hold.contents[length(contents)].attack_hand(user, mods)
+
 /obj/item/storage/internal/accessory/knifeharness
 	storage_slots = 5
 	max_storage_space = 5
@@ -603,6 +609,31 @@
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
 	)
+	storage_flags = STORAGE_ALLOW_QUICKDRAW|STORAGE_FLAGS_POUCH
+	var/draw_cooldown = 0
+
+/obj/item/storage/internal/accessory/knifeharness/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/weapon/throwing_knife(src)
+
+/obj/item/storage/internal/accessory/knifeharness/attack_hand(mob/user, mods)
+	. = ..()
+
+	if(draw_cooldown >= world.time)
+		to_chat(user, SPAN_WARNING("You need to wait before drawing another knife!"))
+		return FALSE
+
+	if(length(contents))
+		contents[length(contents)].attack_hand(user, mods)
+		draw_cooldown = world.time + BAYONET_DRAW_DELAY
+
+/obj/item/storage/internal/accessory/knifeharness/_item_insertion(obj/item/inserted_item, prevent_warning = 0)
+	..()
+	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
+
+/obj/item/storage/internal/accessory/knifeharness/_item_removal(obj/item/removed_item, atom/new_location)
+	..()
+	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
 /obj/item/clothing/accessory/storage/knifeharness/duelling
 	name = "decorated harness"

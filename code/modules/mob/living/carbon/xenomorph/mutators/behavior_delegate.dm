@@ -65,6 +65,8 @@
 
 /datum/behavior_delegate/proc/melee_attack_additional_effects_self()
 	SEND_SIGNAL(bound_xeno, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF)
+	if(bound_xeno.layer = XENO_HIDING_LAYER)
+
 
 // Identical to the above 3 procs but for ranged attacks.
 /**

@@ -266,7 +266,7 @@
 	if(isyautja(creature) && prob(75))
 		return FALSE
 
-	if (creature.internal != null && creature.wear_mask && (creature.wear_mask.flags_inventory & ALLOWINTERNALS))
+	if (creature.wear_mask && (creature.wear_mask.flags_inventory & BLOCKGASEFFECT))
 		return FALSE
 
 	var/effect_amt = round(6 + amount*6)

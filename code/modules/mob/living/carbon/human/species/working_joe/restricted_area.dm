@@ -1,12 +1,6 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area
 	category = JOE_EMOTE_CATEGORY_RESTRICTED_AREA
 
-/datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/come_out_vent
-	key = "comeoutvent"
-	sound = 'sound/voice/joe/come_out_vent.ogg'
-	say_message = "Come out of the vent system, please."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/trespassing
 	key = "trespassing"
 	sound = 'sound/voice/joe/trespassing.ogg'
@@ -29,4 +23,10 @@
 	key = "shouldntbehere"
 	sound = 'sound/voice/joe/shouldnt_be_here.ogg'
 	say_message = "You shouldn't be here."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/come_out_vent
+	key = "comeoutvent"
+	sound = 'sound/voice/joe/come_out_vent.ogg'
+	say_message = "Come out of the vent system, please."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

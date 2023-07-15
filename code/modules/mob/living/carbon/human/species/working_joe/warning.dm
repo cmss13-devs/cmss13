@@ -31,12 +31,6 @@
 	say_message = "That was irresponsible."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/warning/health_risks
-	key = "healthrisks"
-	sound = 'sound/voice/joe/health_risks.ogg'
-	say_message = "These items carry notable health risks."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/safety_breach
 	key = "safetybreach"
 	sound = 'sound/voice/joe/safety_breach.ogg'
@@ -59,6 +53,12 @@
 	key = "hysterical"
 	sound = 'sound/voice/joe/hysterical.ogg'
 	say_message = "You are becoming hysterical."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/health_risks
+	key = "healthrisks"
+	sound = 'sound/voice/joe/health_risks.ogg'
+	say_message = "These items carry notable health risks."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/dangerous_items

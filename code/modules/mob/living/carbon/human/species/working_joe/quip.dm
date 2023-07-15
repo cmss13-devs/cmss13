@@ -1,22 +1,24 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/quip
 	category = JOE_EMOTE_CATEGORY_QUIP
 
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow
+	key = "alwaysknow"
+	key_third_person = "workingjoe"
+	sound = 'sound/voice/joe/alwaysknow.ogg'
+	say_message = "You always know a Working Joe."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/awful_mess
+	key = "awful"
+	key_third_person = "mess"
+	sound = 'sound/voice/joe/awful.ogg'
+	say_message = "Tut, tut. What an awful mess."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/inexpensive
 	key = "inexpensive"
 	sound = 'sound/voice/joe/inexpensive.ogg'
 	say_message = "I am inexpensive, I am reliable, you know my face - the Working Joe."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
-/datum/emote/living/carbon/human/synthetic/working_joe/quip/weapon_permit
-	key = "weaponpermit"
-	sound = 'sound/voice/joe/weapon_permit.ogg'
-	say_message = "I assume you have a permit for that weapon."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
-/datum/emote/living/carbon/human/synthetic/working_joe/quip/seegson_standards
-	key = "seegsonstandards"
-	sound = 'sound/voice/joe/seegson_standards.ogg'
-	say_message = "If my services do not meet Seegson standards, please log a complaint."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/not_liking
@@ -37,11 +39,16 @@
 	say_message = "Seegson - Relentless in the pursuit of affordable quality."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/quip/awful_mess
-	key = "awful"
-	key_third_person = "mess"
-	sound = 'sound/voice/joe/awful.ogg'
-	say_message = "Tut, tut. What an awful mess."
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/seegson_behind
+	key = "seegsonbehind"
+	sound = 'sound/voice/joe/seegson_behind.ogg'
+	say_message = "With Seegson, there is someone behind you, helping you every single step of the way."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/seegson_standards
+	key = "seegsonstandards"
+	sound = 'sound/voice/joe/seegson_standards.ogg'
+	say_message = "If my services do not meet Seegson standards, please log a complaint."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/little_details
@@ -56,17 +63,10 @@
 	say_message = "We hope you'll join us for the journey."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/quip/seegson_behind
-	key = "seegsonbehind"
-	sound = 'sound/voice/joe/seegson_behind.ogg'
-	say_message = "With Seegson, there is someone behind you, helping you every single step of the way."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
-/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow
-	key = "alwaysknow"
-	key_third_person = "workingjoe"
-	sound = 'sound/voice/joe/alwaysknow.ogg'
-	say_message = "You always know a Working Joe."
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/weapon_permit
+	key = "weaponpermit"
+	sound = 'sound/voice/joe/weapon_permit.ogg'
+	say_message = "I assume you have a permit for that weapon."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow_damaged

@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscadd: "Facehuggers now convert to their NPC version after 7 minutes of inactivity and no client."
+  - code_imp: "Cleanup join as xeno button code somewhat."

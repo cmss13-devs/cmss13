@@ -9,15 +9,14 @@ export interface ButtonProps {
   onClick?: () => void;
 }
 
+export type mfddir = 'top' | 'bottom' | 'left' | 'right';
+
 export interface FullButtonProps extends ButtonProps {
-  location: 'top' | 'bottom' | 'left' | 'right';
+  location: mfddir;
 }
 
 interface MfdProps {
-  topPanel?: Array<ButtonProps>;
-  bottomPanel?: Array<ButtonProps>;
-  leftPanel?: Array<ButtonProps>;
-  rightPanel?: Array<ButtonProps>;
+  buttons: Array<FullButtonProps>;
   children?: InfernoNode;
 }
 
@@ -79,18 +78,22 @@ export const VerticalPanel = (
 };
 
 export const MfdPanel = (props: MfdProps, context) => {
+  const topButtons = props.buttons.filter((x) => x.location === 'top');
+  const botButtons = props.buttons.filter((x) => x.location === 'bottom');
+  const leftButtons = props.buttons.filter((x) => x.location === 'left');
+  const rightButtons = props.buttons.filter((x) => x.location === 'right');
   return (
     <Table className="primarypanel">
       <TableRow>
         <TableCell />
         <TableCell>
-          <HorizontalPanel buttons={props.topPanel ?? []} />
+          <HorizontalPanel buttons={topButtons} />
         </TableCell>
         <TableCell />
       </TableRow>
       <TableRow>
         <TableCell>
-          <VerticalPanel buttons={props.leftPanel ?? []} />
+          <VerticalPanel buttons={leftButtons} />
         </TableCell>
         <TableCell>
           <CrtPanel color="green" className="displaypanel">
@@ -98,13 +101,13 @@ export const MfdPanel = (props: MfdProps, context) => {
           </CrtPanel>
         </TableCell>
         <TableCell>
-          <VerticalPanel buttons={props.rightPanel ?? []} />
+          <VerticalPanel buttons={rightButtons} />
         </TableCell>
       </TableRow>
       <TableRow>
         <TableCell />
         <TableCell>
-          <HorizontalPanel buttons={props.bottomPanel ?? []} />
+          <HorizontalPanel buttons={botButtons} />
         </TableCell>
         <TableCell />
       </TableRow>

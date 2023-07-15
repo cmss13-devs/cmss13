@@ -502,7 +502,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		// -- Emergency Buttons -- //
 		if("general_quarters")
 			if(security_level == SEC_LEVEL_RED || security_level == SEC_LEVEL_DELTA)
-				to_chat(usr, SPAN_WARNING("Security is already red or above, General Quarters cannot be called."))
+				to_chat(usr, SPAN_WARNING("Alert level is already red or above, General Quarters cannot be called."))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			set_security_level(2, no_sound=1, announce=0)

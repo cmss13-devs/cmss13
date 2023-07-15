@@ -382,6 +382,7 @@
 	name = "Hide"
 	action_icon_state = "xenohide"
 	plasma_cost = 0
+	xeno_cooldown = 1 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_hide
 	action_type = XENO_ACTION_CLICK
 	listen_signal = COMSIG_KB_XENO_HIDE

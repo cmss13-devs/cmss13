@@ -11757,10 +11757,6 @@
 /obj/item/robot_parts/leg/l_leg,
 /obj/item/robot_parts/arm/r_arm,
 /obj/item/robot_parts/arm/l_arm,
-/obj/item/device/binoculars/civ{
-	name = "old binoculars";
-	desc = ""A pair of binoculars that is not used by the United States Marine Corps anymore, not being producted since the 2170s . This one have a distinct marking which reads: "Property of the Synthetic Detachment of the USS Almayer"."},/obj/item/device/binoculars/civ{name = "old binoculars";desc = ""A pair of binoculars that is not used by the United States Marine Corps anymore, not being producted since the 2170s . This one have a distinct marking which reads: "Property of the Synthetic Detachment of the USS Almayer"."
-	},
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},

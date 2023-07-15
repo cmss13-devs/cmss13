@@ -393,10 +393,10 @@
 		return TRUE
 
 /// remove hide and apply cooldown
-/datum/action/xeno_action/onclick/xenohide/post_attack()
+/datum/action/xeno_action/onclick/xenohide/proc/post_attack()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.layer = initial(xeno.layer)
-	to_chat(xeno, SPAN_NOTICE("You have lost the element of surprise after your attack!"))
+	to_chat(xeno, SPAN_NOTICE("You have stopped hiding."))
 	button.icon_state = "template"
 	xeno.update_wounds()
 	apply_cooldown(4) //2 second cooldown after attacking

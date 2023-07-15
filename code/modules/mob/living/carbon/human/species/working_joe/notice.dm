@@ -19,6 +19,12 @@
 	say_message = "Follow me."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/species
+	key = "species"
+	sound = 'sound/voice/joe/species.ogg'
+	say_message = "Unidentified species."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/breach
 	key = "breach"
 	sound = 'sound/voice/joe/breach.ogg'
@@ -59,10 +65,4 @@
 	key = "couldrequireattention"
 	sound = 'sound/voice/joe/could_require_attention.ogg'
 	say_message = "This could require my attention."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
-/datum/emote/living/carbon/human/synthetic/working_joe/notice/species
-	key = "species"
-	sound = 'sound/voice/joe/species.ogg'
-	say_message = "Unidentified species."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

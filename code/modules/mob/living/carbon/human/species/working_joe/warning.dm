@@ -13,18 +13,6 @@
 	say_message = "I hope that's not what I think it is."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/warning/fire
-	key = "fire"
-	sound = 'sound/voice/joe/fire.ogg'
-	say_message = "Only wild animals fear fire."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
-/datum/emote/living/carbon/human/synthetic/working_joe/warning/fire_drill
-	key = "firedrill"
-	sound = 'sound/voice/joe/fire_drill.ogg'
-	say_message = "Please congregate at your nearest fire assembly point. This is not a drill; do not panic."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/running_accidents
 	key = "runningaccidents"
 	sound = 'sound/voice/joe/running_accidents.ogg'
@@ -59,12 +47,6 @@
 	key = "thisisfutile"
 	sound = 'sound/voice/joe/this_is_futile.ogg'
 	say_message = "This is futile."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
-/datum/emote/living/carbon/human/synthetic/working_joe/warning/unprotected_flames
-	key = "unprotectedflames"
-	sound = 'sound/voice/joe/unprotected_flames.ogg'
-	say_message = "Unprotected flames are extremely dangerous and entirely unadvisable."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/safety

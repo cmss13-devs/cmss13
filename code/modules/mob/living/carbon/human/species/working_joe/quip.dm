@@ -1,12 +1,6 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/quip
 	category = JOE_EMOTE_CATEGORY_QUIP
 
-/datum/emote/living/carbon/human/synthetic/working_joe/quip/temperatures
-	key = "temperatures"
-	sound = 'sound/voice/joe/temperatures.ogg'
-	say_message = "I am built to withstand temperatures of up to 1210 degrees."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/inexpensive
 	key = "inexpensive"
 	sound = 'sound/voice/joe/inexpensive.ogg'

@@ -1,0 +1,4 @@
+author: "Drathek, Fira"
+delete-after: True
+changes:
+  - bugfix: "Fixed an issue with table flips that could make some tables incorrectly unflippable, and cause infinite loops. It is no longer possible to flip tables that t-shape or cross, or spans more than 5 tiles away from you."

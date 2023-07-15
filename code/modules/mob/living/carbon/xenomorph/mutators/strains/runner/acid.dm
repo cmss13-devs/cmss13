@@ -70,19 +70,27 @@
 		. += "FOR THE HIVE!: in [caboom_left] seconds"
 
 /datum/behavior_delegate/runner_acider/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
-	if (ishuman(target_mob))
+	if(ishuman(target_mob)) //Will acid be applied to the mob
 		var/mob/living/carbon/human/target_human = target_mob
-		if (target_human.stat == DEAD)
+		if(target_human.buckled && istype(target_human.buckled, /obj/structure/bed/nest))
 			return
-	for(var/datum/effects/acid/AA in target_mob.effects_list)
-		qdel(AA)
+		if(target_human.stat == DEAD)
+			return
+
+	for(var/datum/effects/acid/acid_effect in target_mob.effects_list)
+		qdel(acid_effect)
 		break
-	if(isxeno_human(target_mob))
+
+	new /datum/effects/acid(target_mob, bound_xeno, initial(bound_xeno.caste_type))
+	if(isxeno_human(target_mob)) //Will the runner get acid stacks
+		var/obj/item/alien_embryo/embryo = locate(/obj/item/alien_embryo) in target_mob.contents
+		if(embryo?.stage >= 4) //very late stage hugged in case the runner unnests them
+			return
+
 		if(target_mob.lying)
 			modify_acid(acid_slash_regen_lying)
-		else
-			modify_acid(acid_slash_regen_standing)
-	new /datum/effects/acid(target_mob, bound_xeno, initial(bound_xeno.caste_type))
+			return
+		modify_acid(acid_slash_regen_standing)
 
 /datum/behavior_delegate/runner_acider/on_life()
 	modify_acid(acid_passive_regen)

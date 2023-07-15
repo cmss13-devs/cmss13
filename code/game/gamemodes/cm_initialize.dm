@@ -333,28 +333,33 @@ Additional game mode variables.
 /datum/game_mode/proc/check_xeno_late_join(mob/xeno_candidate)
 	if(jobban_isbanned(xeno_candidate, JOB_XENOMORPH)) // User is jobbanned
 		to_chat(xeno_candidate, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
-		return
-	return 1
+		return FALSE
+	return TRUE
 
-/datum/game_mode/proc/attempt_to_join_as_xeno(mob/xeno_candidate, instant_join = 0)
+/datum/game_mode/proc/attempt_to_join_as_xeno(mob/xeno_candidate, instant_join = FALSE)
 	var/list/available_xenos = list()
 	var/list/available_xenos_non_ssd = list()
 
-	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
-		var/area/A = get_area(X)
-		if(is_admin_level(X.z) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted)
-			continue //xenos on admin z level and aghosted ones don't count
-		if(istype(X) && ((!islarva(X) && (XENO_LEAVE_TIMER - X.away_timer < XENO_AVAILABLE_TIMER)) || (islarva(X) && (XENO_LEAVE_TIMER_LARVA - X.away_timer < XENO_AVAILABLE_TIMER))))
-			if(!X.client)
-				available_xenos += X
-			else
-				available_xenos_non_ssd += X
-
+	for(var/mob/living/carbon/xenomorph/cur_xeno as anything in GLOB.living_xeno_list)
+		if(cur_xeno.aghosted)
+			continue //aghosted xenos don't count
+		var/area/area = get_area(cur_xeno)
+		if(is_admin_level(cur_xeno.z) && (!area || !(area.flags_area & AREA_ALLOW_XENO_JOIN)))
+			continue //xenos on admin z level don't count
+		if(!istype(cur_xeno))
+			continue
+		var/required_time = islarva(cur_xeno) ? XENO_LEAVE_TIMER_LARVA - cur_xeno.away_timer : XENO_LEAVE_TIMER - cur_xeno.away_timer
+		if(required_time > XENO_AVAILABLE_TIMER)
+			continue
+		if(!cur_xeno.client)
+			available_xenos += cur_xeno
+		else
+			available_xenos_non_ssd += cur_xeno
 
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(!hive.hardcore && hive.stored_larva && (hive.hive_location || (world.time < 30 MINUTES + SSticker.round_start_time)))
+		if(!hive.hardcore && hive.stored_larva && (hive.hive_location || (world.time < XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time)))
 			if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
 				available_xenos |= "any buried larva"
 				LAZYADD(available_xenos["any buried larva"], hive)
@@ -364,7 +369,27 @@ Additional game mode variables.
 				available_xenos[larva_option] = list(hive)
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
-		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy."))
+		if(!xeno_candidate.client || !xeno_candidate.client.prefs || !(xeno_candidate.client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
+			to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy."))
+			return FALSE
+		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae."))
+
+		// Give the player a cached message of their queue status if they are an observer
+		var/mob/dead/observer/candidate_observer = xeno_candidate
+		if(istype(candidate_observer))
+			if(candidate_observer.larva_queue_cached_message)
+				to_chat(xeno_candidate, candidate_observer.larva_queue_cached_message)
+				return FALSE
+
+			// No cache, lets check now then
+			message_alien_candidates(get_alien_candidates(), dequeued = 0, cache_only = TRUE)
+			if(candidate_observer.larva_queue_cached_message)
+				to_chat(xeno_candidate, candidate_observer.larva_queue_cached_message)
+				return FALSE
+
+			// We aren't in queue yet, lets teach them about the queue then
+			candidate_observer.larva_queue_cached_message = SPAN_XENONOTICE("You are currently awaiting assignment in the larva queue. The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, you will periodically receive messages where you are in the queue relative to other currently valid xeno candidates. Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. Note: Playing as a facehugger or in the thunderdome will not alter your time of death. This means you won't lose your relative place in queue if you step away, disconnect, play as a facehugger, or play in the thunderdome.")
+			to_chat(xeno_candidate, candidate_observer.larva_queue_cached_message)
 		return FALSE
 
 	var/mob/living/carbon/xenomorph/new_xeno
@@ -377,11 +402,11 @@ Additional game mode variables.
 				if(!xeno_bypass_timer)
 					var/deathtime = world.time - xeno_candidate.timeofdeath
 					if(isnewplayer(xeno_candidate))
-						deathtime = 2.5 MINUTES //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
-					if(deathtime < 2.5 MINUTES && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
+						deathtime = XENO_JOIN_DEAD_LARVA_TIME //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
+					if(deathtime < XENO_JOIN_DEAD_LARVA_TIME && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
 						var/message = SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)].")
 						to_chat(xeno_candidate, message)
-						to_chat(xeno_candidate, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game as a buried larva!"))
+						to_chat(xeno_candidate, SPAN_WARNING("You must wait 2 minutes and 30 seconds before rejoining the game as a buried larva!"))
 						return FALSE
 
 				for(var/mob_name in picked_hive.banished_ckeys)
@@ -393,7 +418,7 @@ Additional game mode variables.
 					noob.close_spawn_windows()
 				if(picked_hive.hive_location)
 					picked_hive.hive_location.spawn_burrowed_larva(xeno_candidate)
-				else if((world.time < 30 MINUTES + SSticker.round_start_time))
+				else if((world.time < XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time))
 					picked_hive.do_buried_larva_spawn(xeno_candidate)
 				else
 					to_chat(xeno_candidate, SPAN_WARNING("Seems like something went wrong. Try again?"))
@@ -417,8 +442,8 @@ Additional game mode variables.
 		if(!xeno_bypass_timer)
 			var/deathtime = world.time - xeno_candidate.timeofdeath
 			if(istype(xeno_candidate, /mob/new_player))
-				deathtime = 5 MINUTES //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
-			if(deathtime < 5 MINUTES && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
+				deathtime = XENO_JOIN_DEAD_TIME //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
+			if(deathtime < XENO_JOIN_DEAD_TIME && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
 				var/message = "You have been dead for [DisplayTimeText(deathtime)]."
 				message = SPAN_WARNING("[message]")
 				to_chat(xeno_candidate, message)

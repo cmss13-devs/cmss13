@@ -6,6 +6,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 /obj/effect/landmark/railgun_computer
 	name = "Railgun computer landmark"
+	desc = "A computer with an orange interface, it's idly blinking, awaiting a password."
 
 /obj/effect/landmark/railgun_computer/Initialize(mapload, ...)
 	. = ..()

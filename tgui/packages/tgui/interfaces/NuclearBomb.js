@@ -5,13 +5,22 @@ import { Window } from '../layouts';
 export const NuclearBomb = (_props, context) => {
   const { act, data } = useBackend(context);
 
-  const cantNuke = (!data.anchor, !!data.safety);
+  const cantNuke = (!data.anchor, !!data.safety, !data.decryption_complete);
+  const cantDecrypt = (!data.anchor, data.decryption_complete);
 
   return (
-    <Window theme="retro" width={350} height={200}>
+    <Window theme="retro" width={350} height={250}>
       <Window.Content scrollable>
         <Section>
           <Stack height="100%" direction="column">
+            <Stack.Item>
+              <NoticeBox textAlign="center">
+                {data.decryption_complete
+                  ? 'Decryption complete.'
+                  : `Decryption time left :
+                  ${data.decryption_time} seconds`}
+              </NoticeBox>
+            </Stack.Item>
             <Stack.Item>
               <NoticeBox danger textAlign="center">
                 {data.timing
@@ -68,6 +77,25 @@ export const NuclearBomb = (_props, context) => {
                   icon="lock-open"
                   content="Deactivate anchor"
                   onClick={() => act('toggleAnchor')}
+                />
+              )}
+            </Stack.Item>
+            <Stack.Item>
+              {(!data.decrypting && (
+                <Button.Confirm
+                  fluid={1}
+                  icon="exclamation-triangle"
+                  color="green"
+                  content="Start decryption"
+                  disabled={cantDecrypt}
+                  onClick={() => act('toggleEncryption')}
+                />
+              )) || (
+                <Button.Confirm
+                  fluid={1}
+                  icon="power-off"
+                  content="Stop decryption"
+                  onClick={() => act('toggleEncryption')}
                 />
               )}
             </Stack.Item>

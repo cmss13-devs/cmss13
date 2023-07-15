@@ -203,6 +203,9 @@
 		message_admins(SPAN_DANGER("ERROR: Non-admin [key_name(usr)] attempted to execute a SDQL query!"))
 		log_admin("non-admin attempted to execute a SDQL query!")
 		return FALSE
+	var/prompt = tgui_alert(usr, "Run SDQL2 Query?", "SDQL2", list("Yes", "Cancel"))
+	if (prompt != "Yes")
+		return
 	var/list/results = world.SDQL2_query(query_text, key_name_admin(usr), "[key_name(usr)]")
 	if(length(results) == 3)
 		for(var/I in 1 to 3)

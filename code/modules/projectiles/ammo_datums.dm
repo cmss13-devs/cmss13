@@ -383,7 +383,7 @@
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	damage = 55
-	penetration= ARMOR_PENETRATION_TIER_3
+	penetration = ARMOR_PENETRATION_TIER_3
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /datum/ammo/bullet/pistol/heavy/super //Commander's variant
@@ -2740,7 +2740,7 @@
 			return
 	var/datum/effects/neurotoxin/neuro_effect = locate() in moob.effects_list
 	if(!neuro_effect)
-		neuro_effect = new /datum/effects/neurotoxin(moob)
+		neuro_effect = new /datum/effects/neurotoxin(moob, proj.firer)
 	neuro_effect.duration += 5
 	moob.apply_effect(3, DAZE)
 	to_chat(moob, SPAN_HIGHDANGER("Neurotoxic liquid spreads all over you and immediately soaks into your pores and orifices! Oh fuck!")) // Fucked up but have a chance to escape rather than being game-ended
@@ -2763,9 +2763,10 @@
 
 /datum/ammo/xeno/boiler_gas/proc/drop_nade(turf/turf, obj/item/projectile/proj)
 	var/lifetime_mult = 1.0
+	var/datum/cause_data
 	if(isboiler(proj.firer))
-		smoke_system.cause_data = proj.weapon_cause_data
-	smoke_system.set_up(smokerange, 0, turf)
+		cause_data = proj.weapon_cause_data
+	smoke_system.set_up(smokerange, 0, turf, new_cause_data = cause_data)
 	smoke_system.lifetime = 12 * lifetime_mult
 	smoke_system.start()
 	turf.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))

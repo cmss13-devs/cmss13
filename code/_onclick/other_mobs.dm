@@ -34,4 +34,4 @@
 	Have no reason to click on anything at all.
 */
 /mob/new_player/click()
-	return 1
+	return

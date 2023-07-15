@@ -1,6 +1,0 @@
-author: "Ultimate-Fluff"
-delete-after: True
-changes:
-  - bugfix: "Corrected outdated information about one of Dancer's abilities in its strain description."
-  - bugfix: "Fixed the erroneously-named copper coin from gold coin."
-  - bugfix: "Paper flags with writing on them will not say they are blank in the examine text."

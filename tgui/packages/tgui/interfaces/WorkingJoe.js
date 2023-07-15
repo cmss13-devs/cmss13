@@ -647,7 +647,8 @@ const MaintManagement = (props, context) => {
 };
 const AccessRequests = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu } = data;
+  const { logged_in, access_text, last_page, current_menu, access_tickets } =
+    data;
 
   return (
     <>
@@ -688,6 +689,103 @@ const AccessRequests = (props, context) => {
 
       <Section>
         <h1 align="center">Request Access</h1>
+        <Flex
+          direction="column"
+          justify="center"
+          align="center"
+          height="100%"
+          color="darkgrey"
+          fontSize="2rem"
+          mt="-3rem"
+          bold>
+          <Button
+            content="New Report"
+            icon="exclamation-circle"
+            width="30vw"
+            textAlign="center"
+            fontSize="1.5rem"
+            mt="5rem"
+            onClick={() => act('new_report')}
+          />
+        </Flex>
+
+        {!!access_tickets.length && (
+          <Flex
+            mt="2rem"
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem">
+            <Flex.Item bold width="5rem" shrink="0" mr="1.5rem">
+              ID
+            </Flex.Item>
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+              Time
+            </Flex.Item>
+            <Flex.Item width="12rem" bold>
+              Category
+            </Flex.Item>
+            <Flex.Item width="40rem" bold>
+              Details
+            </Flex.Item>
+          </Flex>
+        )}
+        {access_tickets.map((ticket, i) => {
+          let view_status = 'Ticket is pending assignment.';
+          let view_icon = 'circle-question';
+          if (ticket.status === 'assigned') {
+            view_status = 'Ticket is assigned.';
+            view_icon = 'circle-plus';
+          } else if (ticket.status === 'rejected') {
+            view_status = 'Ticket has been rejected.';
+            view_icon = 'circle-xmark';
+          } else if (ticket.status === 'cancelled') {
+            view_status = 'Ticket was cancelled by reporter.';
+            view_icon = 'circle-stop';
+          } else if (ticket.status === 'completed') {
+            view_status = 'Ticket has been successfully resolved.';
+            view_icon = 'circle-check';
+          }
+          let can_cancel = 'Yes';
+          if (ticket.submitter !== logged_in) {
+            can_cancel = 'No';
+          } else if (ticket.lock_status === 'CLOSED') {
+            can_cancel = 'No';
+          }
+
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              {!!ticket.priority_status && (
+                <Flex.Item width="5rem" shrink="0" mr="1.5rem" bold color="red">
+                  {ticket.id}
+                </Flex.Item>
+              )}
+              {!ticket.priority_status && (
+                <Flex.Item width="5rem" shrink="0" mr="1.5rem" bold>
+                  {ticket.id}
+                </Flex.Item>
+              )}
+              <Flex.Item italic width="6rem" shrink="0" mr="1rem">
+                {ticket.time}
+              </Flex.Item>
+              <Flex.Item width="12rem" mr="1rem">
+                {ticket.category}
+              </Flex.Item>
+              <Flex.Item width="40rem" shrink="0" textAlign="left">
+                {ticket.details}
+              </Flex.Item>
+              <Flex.Item width="8rem" ml="1rem">
+                <Button icon={view_icon} tooltip={view_status} />
+                <Button.Confirm
+                  icon="file-circle-xmark"
+                  tooltip="Cancel Ticket"
+                  disabled={can_cancel === 'No'}
+                  onClick={() => act('cancel_ticket', { ticket: ticket.ref })}
+                />
+              </Flex.Item>
+            </Flex>
+          );
+        })}
       </Section>
     </>
   );

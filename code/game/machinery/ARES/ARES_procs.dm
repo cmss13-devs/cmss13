@@ -48,9 +48,9 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		speaker = "Unknown"
 	var/datum/ares_link/link = GLOB.ares_link
 	if(!link.p_apollo || link.p_apollo.inoperable())
-		return
+		return FALSE
 	if(!link.p_interface || link.p_interface.inoperable())
-		return
+		return FALSE
 	link.apollo_log.Add("[worldtime2text()]: [speaker], '[message]'")
 
 /datum/ares_link/proc/log_ares_bioscan(title, input)
@@ -77,6 +77,8 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 /proc/ares_apollo_talk(broadcast_message)
 	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
 	for(var/mob/living/silicon/decoy/ship_ai/ai in ai_mob_list)
+		if(ai.stat == DEAD)
+			return FALSE
 		apollo.broadcast(ai, broadcast_message)
 	for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
 		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
@@ -734,7 +736,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	data["maintenance_tickets"] = logged_maintenance
 
 	var/list/logged_access = list()
-	for(var/datum/ares_ticket/access_ticket/access_ticket as anything in link.tickets_access)
+	for(var/datum/ares_ticket/access/access_ticket as anything in link.tickets_access)
 		var/lock_status = TICKET_OPEN
 		switch(access_ticket.ticket_status)
 			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_COMPLETED)
@@ -915,6 +917,31 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by [last_login].")
 			to_chat(usr, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
 			return TRUE
+
+		if("new_access")
+			var/priority_report = FALSE
+			var/ticket_holder = tgui_input_text(operator, "Who is the ticket for?", "Ticket Holder", encode = FALSE)
+			if(!ticket_holder)
+				return FALSE
+			var/details = tgui_input_text(operator, "What is the purpose of this access ticket?", "Ticket Details", encode = FALSE)
+			if(!details)
+				return FALSE
+
+			if(authentication >= APOLLO_ACCESS_AUTHED)
+				var/is_priority = tgui_alert(operator, "Is this a priority request?", "Priority designation", list("Yes", "No"))
+				if(is_priority == "Yes")
+					priority_report = TRUE
+
+			var/confirm = alert(operator, "Please confirm the submission of your access ticket request. \n\n Priority: [priority_report ? "Yes" : "No"] \n Holder: '[ticket_holder]' \n Details: '[details]' \n\n Is this correct?", "Confirmation", "Yes", "No")
+			if(confirm == "Yes")
+				if(link)
+					var/datum/ares_ticket/access/access_ticket = new(last_login, ticket_holder, details, priority_report)
+					link.tickets_access += access_ticket
+					if(priority_report)
+						ares_apollo_talk("Priority Access Request: [ticket_holder] - ID [access_ticket.ticket_id]. Seek and resolve.")
+					log_game("ARES: Access Ticket '\ref[access_ticket]' created by [key_name(operator)] as [last_login] with Holder '[ticket_holder]' and Details of '[details]'.")
+					return TRUE
+			return FALSE
 
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)

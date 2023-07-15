@@ -1457,7 +1457,7 @@ const Emergency = (props, context) => {
         <Button.Confirm
           content="Call General Quarters"
           tooltip={quarters_reason}
-          icon="shuttle-space"
+          icon="triangle-exclamation"
           color="red"
           width="40vw"
           textAlign="center"

@@ -1,7 +1,7 @@
 /datum/equipment_preset/synth
 	name = "Synth"
 	uses_special_name = TRUE
-	languages = ALL_SYNTH_LANGUAGES
+	languages = ALL_SYNTH_LANGUAGES_UPP
 	skills = /datum/skills/synthetic
 	paygrade = "SYN"
 

@@ -1371,6 +1371,8 @@ const Emergency = (props, context) => {
     nuketimelock,
     nuke_available,
   } = data;
+  const canQuarters = alert_level < 2;
+  let quarters_reason = 'Call for General Quarters.';
   const minimumEvacTime = worldtime > distresstimelock;
   const distressCooldown = worldtime < distresstime;
   const canDistress = alert_level === 2 && !distressCooldown && minimumEvacTime;
@@ -1452,6 +1454,20 @@ const Emergency = (props, context) => {
 
       <h1 align="center">Emergency Protocols</h1>
       <Flex align="center" justify="center" height="50%" direction="column">
+        <Button.Confirm
+          content="Call General Quarters"
+          tooltip={quarters_reason}
+          icon="shuttle-space"
+          color="red"
+          width="40vw"
+          textAlign="center"
+          fontSize="1.5rem"
+          p="1rem"
+          mt="5rem"
+          bold
+          onClick={() => act('general_quarters')}
+          disabled={!canQuarters}
+        />
         <Button.Confirm
           content="Initiate Evacuation"
           tooltip={evac_reason}

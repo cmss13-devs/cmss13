@@ -500,6 +500,19 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			current_menu = "read_deleted"
 
 		// -- Emergency Buttons -- //
+		if("general_quarters")
+			if(security_level == SEC_LEVEL_RED || security_level == SEC_LEVEL_DELTA)
+				to_chat(usr, SPAN_WARNING("Security is already red or above, General Quarters cannot be called."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			set_security_level(2, no_sound=1, announce=0)
+			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
+			log_game("[key_name(usr)] has called for general quarters via ARES.")
+			message_admins("[key_name_admin(usr)] has called for general quarters via ARES.")
+			var/datum/ares_link/link = GLOB.ares_link
+			link.log_ares_security("General Quarters", "[last_login] has called for general quarters via ARES.")
+			. = TRUE
+
 		if("evacuation_start")
 			if(security_level < SEC_LEVEL_RED)
 				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))

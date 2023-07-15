@@ -1,6 +1,12 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/notice
 	category = JOE_EMOTE_CATEGORY_NOTICE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/report
+	key = "report"
+	sound = 'sound/voice/joe/report.ogg'
+	say_message = "Logging report to APOLLO."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/detailed_report
 	key = "detailedreport"
 	sound = 'sound/voice/joe/detailed_report.ogg'
@@ -35,10 +41,4 @@
 	key = "apollobehalf"
 	sound = 'sound/voice/joe/apollo_behalf.ogg'
 	say_message = "I will inform APOLLO on your behalf."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
-/datum/emote/living/carbon/human/synthetic/working_joe/notice/report
-	key = "report"
-	sound = 'sound/voice/joe/report.ogg'
-	say_message = "Logging report to APOLLO."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

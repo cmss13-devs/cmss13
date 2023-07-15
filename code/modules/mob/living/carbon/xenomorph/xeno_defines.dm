@@ -474,6 +474,7 @@
 		SStracking.set_leader("hive_[hivenumber]", queen)
 		SShive_status.wait = 2 SECONDS
 
+	SEND_SIGNAL(src, COMSIG_HIVE_NEW_QUEEN, queen)
 	living_xeno_queen = queen
 
 	recalculate_hive()

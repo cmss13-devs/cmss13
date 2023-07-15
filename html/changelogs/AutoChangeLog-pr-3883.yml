@@ -1,0 +1,4 @@
+author: "Drathek, Steelpoint"
+delete-after: True
+changes:
+  - bugfix: "Fixed possible hardeletes for predator landmarks and vehicles. Predator teleporation descriptions now do not change if the area is altered at runtime so they can still be found correctly."

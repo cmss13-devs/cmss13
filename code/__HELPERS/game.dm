@@ -290,20 +290,15 @@
  * * cache_only - Whether to not actually send a to_chat message and instead only update larva_queue_cached_message
  */
 /proc/message_alien_candidates(list/candidates, dequeued, cache_only = FALSE)
-	var/new_players = 0
 	for(var/i in (1 + dequeued) to candidates.len)
 		var/mob/dead/observer/cur_obs = candidates[i]
 
 		// Generate the messages
-		var/cached_message = SPAN_XENONOTICE("You are currently [i-dequeued]\th in the larva queue. There are [new_players] ahead of you that have yet to play this round.")
+		var/cached_message = SPAN_XENONOTICE("You are currently [i-dequeued]\th in the larva queue.")
 		cur_obs.larva_queue_cached_message = cached_message
 		if(!cache_only)
 			var/chat_message = dequeued ? replacetext(cached_message, "currently", "now") : cached_message
 			to_chat(candidates[i], chat_message)
-
-		// Count how many are prioritized
-		if(cur_obs.client.larva_queue_time < 2) // 0 and 1 because facehuggers/t-domers are slightly deprioritized
-			new_players++
 
 /proc/convert_k2c(temp)
 	return ((temp - T0C))

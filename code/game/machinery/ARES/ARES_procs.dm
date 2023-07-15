@@ -54,8 +54,6 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	link.apollo_log.Add("[worldtime2text()]: [speaker], '[message]'")
 
 /datum/ares_link/proc/log_ares_bioscan(title, input)
-	if(!p_bioscan || p_bioscan.inoperable() || !interface)
-		return FALSE
 	interface.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
 
 /datum/ares_link/proc/log_ares_bombardment(mob/living/user, ob_name, coordinates)
@@ -83,6 +81,22 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
 		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
 			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+
+/proc/ares_can_interface()
+	var/obj/structure/machinery/ares/processor/interface/processor = GLOB.ares_link.p_interface
+	if(!istype(GLOB.ares_link))
+		return FALSE
+	if(processor && !processor.inoperable())
+		return TRUE
+	return FALSE //interface processor not found or is broken
+
+/proc/ares_can_log()
+	var/obj/structure/machinery/computer/ares_console/interface = GLOB.ares_link.interface
+	if(!istype(GLOB.ares_link))
+		return FALSE
+	if(interface && !interface.inoperable())
+		return TRUE
+	return FALSE //ares interface not found or is broken
 
 // ------ ARES Interface Procs ------ //
 /obj/structure/machinery/computer/proc/get_ares_access(obj/item/card/id/card)

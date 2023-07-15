@@ -19,7 +19,7 @@
 	say_message = "A synthetic's day is never done."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/fairwell/returning_to_tasks
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/returning_to_tasks
 	key = "returningtotasks"
 	sound = 'sound/voice/joe/returning_to_tasks.ogg'
 	say_message = "Returning to assigned tasks."

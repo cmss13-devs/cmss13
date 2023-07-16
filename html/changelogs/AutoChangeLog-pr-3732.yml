@@ -1,4 +1,0 @@
-author: "blackdragonTOW"
-delete-after: True
-changes:
-  - refactor: "refactored dropship_ammo so that missiles don't use Spawn()"

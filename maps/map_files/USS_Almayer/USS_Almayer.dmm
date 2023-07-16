@@ -13947,6 +13947,19 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
+"bbE" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "silvercorner"
+	},
+/area/almayer/shipboard/brig/cic_hallway)
 "bbI" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -32094,8 +32107,8 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/sign/safety/distribution_pipes{
-	pixel_x = -17
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -34266,9 +34279,6 @@
 	},
 /area/almayer/living/grunt_rnr)
 "fbv" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/structure/sign/safety/security{
 	pixel_x = -17;
 	pixel_y = 6
@@ -36530,6 +36540,15 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_a_p)
+"gak" = (
+/obj/structure/sign/poster{
+	pixel_y = 0;
+	pixel_x = 32
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/bridgebunks)
 "gaI" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/paper_bin/uscm{
@@ -36954,7 +36973,6 @@
 	pixel_x = 2;
 	pixel_y = -26
 	},
-/obj/item/weapon/gun/shotgun/double/cane,
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "giZ" = (
@@ -37790,9 +37808,6 @@
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "gzH" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
-	},
 /obj/structure/machinery/status_display{
 	pixel_y = -30
 	},
@@ -45311,12 +45326,6 @@
 	icon_state = "emerald"
 	},
 /area/almayer/squads/charlie_delta_shared)
-"jUb" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
-	},
-/turf/open/floor/almayer,
-/area/almayer/living/bridgebunks)
 "jUn" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/door/window/southleft{
@@ -51416,6 +51425,10 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10";
+	pixel_y = 8
+	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "silver"
@@ -55433,7 +55446,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "silvercorner"
+	icon_state = "silver"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
 "omP" = (
@@ -63119,6 +63132,9 @@
 "rEY" = (
 /obj/structure/surface/table/almayer,
 /obj/item/toy/deck,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver"
@@ -68058,6 +68074,9 @@
 	pixel_y = 11
 	},
 /obj/item/poster,
+/obj/structure/sign/safety/distribution_pipes{
+	pixel_x = -17
+	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "silver"
@@ -68276,6 +68295,15 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/engine_core)
+"tLI" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "bluefull"
+	},
+/area/almayer/living/bridgebunks)
 "tLM" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = -17
@@ -68585,7 +68613,7 @@
 	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
+	dir = 10
 	},
 /turf/open/floor/almayer{
 	icon_state = "bluefull"
@@ -78328,14 +78356,6 @@
 	icon_state = "orangefull"
 	},
 /area/almayer/living/briefing)
-"xRT" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/living/bridgebunks)
 "xRU" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = -17
@@ -93926,7 +93946,7 @@ awz
 awz
 jfK
 wIQ
-mPj
+bbE
 omy
 xpo
 mtl
@@ -99821,7 +99841,7 @@ pvX
 mKq
 bFC
 tVh
-psa
+tLI
 qzd
 aES
 aES
@@ -100023,9 +100043,9 @@ aKn
 jmY
 mKq
 oKx
-jUb
-aZy
-xRT
+aGr
+aGr
+ceK
 sxD
 bhJ
 bHG
@@ -100227,7 +100247,7 @@ jmY
 mKq
 ceK
 ceK
-ceK
+gak
 ceK
 aES
 cWy

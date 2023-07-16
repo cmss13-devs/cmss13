@@ -51,14 +51,10 @@
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	. = ..()
 	if(slot == WEAR_HANDS)
-		flags_item |= NODROP
 		START_PROCESSING(SSobj, src)
-		if(isyautja(user))
-			to_chat(user, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
-		else
-			to_chat(user, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
 		if(!owner)
 			owner = user
+		toggle_lock_internal(user, TRUE)
 
 /obj/item/clothing/gloves/yautja/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -753,12 +749,13 @@
 				return
 			exploding = FALSE
 			to_chat(M, SPAN_NOTICE("Your bracers stop beeping."))
-			message_admins("[M] ([M.key]) has deactivated their Self-Destruct.")
+			message_all_yautja("[M.real_name] has cancelled their bracer's self-destruction sequence.")
+			message_admins("[key_name(M)] has deactivated their Self-Destruct.")
 		return
 	if(istype(M.wear_mask,/obj/item/clothing/mask/facehugger) || (M.status_flags & XENO_HOST))
 		to_chat(M, SPAN_WARNING("Strange...something seems to be interfering with your bracer functions..."))
 		return
-	if(forced || alert("Detonate the bracers? Are you sure?","Explosive Bracers", "Yes", "No") == "Yes")
+	if(forced || alert("Detonate the bracers? Are you sure?\n\nNote: If you activate SD for any non-accidental reason during or after a fight, you commit to the SD. By initially activating the SD, you have accepted your impending death to preserve any lost honor.","Explosive Bracers", "Yes", "No") == "Yes")
 		if(M.gloves != src)
 			return
 		if(M.stat == DEAD)
@@ -1088,3 +1085,63 @@
 		M.u_equip(embedded_id, src, FALSE, TRUE)
 	else
 		embedded_id.forceMove(src)
+
+/// Handles all the locking and unlocking of bracers.
+/obj/item/clothing/gloves/yautja/hunter/verb/toggle_lock()
+	set name = "Toggle Bracer Lock"
+	set desc = "Toggle the lock on your bracers, allowing them to be removed."
+	set category = "Yautja.Misc"
+	set src in usr
+
+	if(usr.stat)
+		to_chat(usr, SPAN_WARNING("You can't do that right now..."))
+		return
+	if(!HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
+		to_chat(usr, SPAN_WARNING("You have no idea how to use this..."))
+		return FALSE
+
+	attempt_toggle_lock(usr, FALSE)
+
+/obj/item/clothing/gloves/yautja/proc/attempt_toggle_lock(mob/user, force_lock)
+	if(!user)
+		return FALSE
+
+	var/obj/item/grab/G = user.get_active_hand()
+	if(istype(G))
+		var/mob/living/carbon/human/victim = G.grabbed_thing
+		var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
+		if(isspeciesyautja(victim) && !(victim.stat == DEAD))
+			to_chat(user, SPAN_WARNING("You cannot unlock the bracer of a living hunter!"))
+			return FALSE
+
+		if(istype(bracer))
+			if(alert("Are you sure you want to unlock this [victim.species]'s bracer?", "Unlock Bracers", "Yes", "No") == "Yes")
+				if(user.get_active_hand() == G && victim && victim.gloves == bracer)
+					log_interact(user, victim, "[key_name(user)] unlocked the [bracer.name] of [key_name(victim)].")
+					user.visible_message(SPAN_WARNING("[user] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You unlock the bracer."))
+					bracer.toggle_lock_internal(victim)
+					return TRUE
+		else
+			to_chat(user, SPAN_WARNING("<b>This [victim.species] does not have a bracer attached.</b>"))
+			return FALSE
+	else
+		log_attack("[key_name_admin(usr)] has unlocked their own bracer.")
+		toggle_lock_internal(user)
+		return TRUE
+
+/obj/item/clothing/gloves/yautja/proc/toggle_lock_internal(mob/user, force_lock)
+	if(((flags_item & NODROP) || (flags_inventory & CANTSTRIP)) && !force_lock)
+		flags_item &= ~NODROP
+		flags_inventory &= ~CANTSTRIP
+		if(isyautja(user))
+			to_chat(user, SPAN_WARNING("The bracer beeps pleasantly, releasing it's grip on your forearm."))
+		else
+			to_chat(user, SPAN_WARNING("With an angry blare the bracer releases your forearm."))
+	else
+		flags_item |= NODROP
+		flags_inventory |= CANTSTRIP
+		if(isyautja(user))
+			to_chat(user, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
+		else
+			to_chat(user, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+	return TRUE

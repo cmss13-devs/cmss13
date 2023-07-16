@@ -6101,7 +6101,7 @@
 /area/varadero/interior/hall_SE)
 "fvw" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/chem_dispenser/beer{
+/obj/structure/machinery/chem_dispenser/soda/beer{
 	pixel_y = 8
 	},
 /turf/open/floor/shiva{

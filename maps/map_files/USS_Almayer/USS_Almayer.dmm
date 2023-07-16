@@ -8199,20 +8199,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/lower_engineering)
-"aAd" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "MP_LockdownCIC-F";
-	name = "\improper Military Police Lockdown"
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/cic)
 "aAe" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
@@ -9610,7 +9596,9 @@
 /area/almayer/living/synthcloset)
 "aFq" = (
 /obj/structure/machinery/cm_vending/clothing/synth,
-/turf/open/space/basic,
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
 /area/almayer/living/synthcloset)
 "aFr" = (
 /obj/structure/machinery/light,
@@ -12662,7 +12650,9 @@
 /area/almayer/living/captain_mess)
 "aUm" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/space/basic,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/almayer/living/captain_mess)
 "aUp" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -30748,9 +30738,9 @@
 /area/almayer/shipboard/sea_office)
 "dFM" = (
 /obj/structure/platform,
-/obj/structure/prop/almayer/computers/sensor_computer2{
-	layer = 2.5
-	},
+/obj/structure/surface/table/reinforced/black,
+/obj/item/map,
+/obj/item/map,
 /turf/open/floor/almayer{
 	icon_state = "silver"
 	},
@@ -31825,7 +31815,9 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/tool/kitchen/tray,
 /obj/item/reagent_container/food/snacks/boiledrice,
-/turf/open/space/basic,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/almayer/living/captain_mess)
 "eep" = (
 /obj/structure/sign/safety/airlock{
@@ -38923,6 +38915,18 @@
 /obj/item/device/megaphone{
 	layer = 3.525
 	},
+/obj/item/device/whistle{
+	layer = 3.525
+	},
+/obj/item/device/whistle{
+	layer = 3.525
+	},
+/obj/item/device/whistle{
+	layer = 3.525
+	},
+/obj/item/device/whistle{
+	layer = 3.525
+	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "silver"
@@ -43099,18 +43103,8 @@
 /area/almayer/hull/lower_hull/l_f_p)
 "iSW" = (
 /obj/structure/platform,
-/obj/structure/surface/rack,
-/obj/item/device/whistle{
-	layer = 3.525
-	},
-/obj/item/device/whistle{
-	layer = 3.525
-	},
-/obj/item/device/whistle{
-	layer = 3.525
-	},
-/obj/item/device/whistle{
-	layer = 3.525
+/obj/structure/prop/almayer/computers/sensor_computer2{
+	layer = 2.5
 	},
 /turf/open/floor/almayer{
 	dir = 10;
@@ -59643,10 +59637,7 @@
 /obj/structure/machinery/computer/emails{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "redcorner"
-	},
+/turf/open/floor/almayer,
 /area/almayer/shipboard/port_missiles)
 "qfh" = (
 /obj/structure/bed/chair{
@@ -64656,7 +64647,9 @@
 	name = "Privacy Shutters";
 	pixel_y = 0
 	},
-/turf/open/space/basic,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/almayer/living/captain_mess)
 "smr" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -68375,7 +68368,9 @@
 /area/almayer/hull/upper_hull/u_a_s)
 "tNV" = (
 /obj/structure/platform,
-/obj/structure/machinery/computer/tech_control,
+/obj/structure/machinery/computer/tech_control{
+	pixel_x = -1
+	},
 /turf/open/floor/almayer{
 	icon_state = "silver"
 	},
@@ -101450,7 +101445,7 @@ vdL
 rlU
 eIm
 ayK
-aAd
+hvv
 aAP
 hvv
 wVW

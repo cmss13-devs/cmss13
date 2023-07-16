@@ -39,10 +39,10 @@
 	target_z = null
 	update_active_camera()
 
-/datum/camera_manager/proc/set_camera_obj(var/obj/target, w, h)
+/datum/camera_manager/proc/set_camera_obj(obj/target, w, h)
 	set_camera_rect(target.x, target.y, target.z, w, h)
 
-/datum/camera_manager/proc/set_camera_turf(var/turf/target, w, h)
+/datum/camera_manager/proc/set_camera_turf(turf/target, w, h)
 	set_camera_rect(target.x, target.y, target.z, w, h)
 
 /datum/camera_manager/proc/set_camera_rect(x, y, z, w, h)
@@ -272,6 +272,38 @@
 
 	// equipment info
 	.["equipment_data"] = get_sanitised_equipment(dropship)
+
+	// medevac targets
+	var/list/stretchers = list()
+	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
+		if (istype(equipment, /obj/structure/dropship_equipment/medevac_system))
+			var/obj/structure/dropship_equipment/medevac_system/medevac = equipment
+			stretchers = medevac.get_targets()
+			to_chat(usr, "found medevacs")
+
+	.["medevac_targets"] = list()
+	for(var/stretcher_ref in stretchers)
+		var/obj/structure/bed/medevac_stretcher/stretcher = stretchers[stretcher_ref]
+		to_chat(usr, "found [stretcher]")
+
+		var/area/AR = get_area(stretcher)
+		to_chat(usr, "at [AR]")
+		var/list/target_data = list()
+		target_data["area"] = AR
+
+		var/mob/living/carbon/human/occupant = stretcher.buckled_mob
+		to_chat(usr, "occupant [occupant]")
+		if(occupant)
+			to_chat(usr, "stretcher found [occupant]")
+			target_data["occupant"] = occupant.name
+			if(ishuman(occupant))
+				target_data["triage_card"] = occupant.holo_card_color
+		else
+			to_chat(usr, "stretcher empty")
+
+		.["medevac_targets"] += list(target_data)
+		to_chat(usr, "stretcher found done")
+
 	.["targets_data"] = get_targets()
 	.["camera_target"] = camera_target_id
 
@@ -405,7 +437,7 @@
 			return sig
 
 
-/obj/structure/machinery/computer/dropship_weapons/proc/set_camera_target(var/target_ref)
+/obj/structure/machinery/computer/dropship_weapons/proc/set_camera_target(target_ref)
 	var/datum/cas_signal/target = get_cas_signal(target_ref)
 
 	if(!target)

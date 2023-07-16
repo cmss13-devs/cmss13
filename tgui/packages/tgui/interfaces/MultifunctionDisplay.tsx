@@ -36,7 +36,7 @@ export const MfdButton = (props: ButtonProps, context) => {
   );
 };
 
-const EmptyMfdButton = () => {
+export const EmptyMfdButton = () => {
   return <MfdButton />;
 };
 

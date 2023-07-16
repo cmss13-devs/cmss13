@@ -806,24 +806,8 @@
 			linked_stretcher = null
 		icon_state = "medevac_system"
 
-
-/obj/structure/dropship_equipment/medevac_system/equipment_interact(mob/user)
-	if(!linked_shuttle)
-		return
-
-	if(linked_shuttle.mode != SHUTTLE_CALL)
-		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
-		return
-
-	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
-		return
-
-	if(world.time < medevac_cooldown)
-		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
-		return
-
-	var/list/possible_stretchers = list()
+/obj/structure/dropship_equipment/medevac_system/proc/get_targets()
+	. = list()
 	for(var/obj/structure/bed/medevac_stretcher/MS in activated_medevac_stretchers)
 		var/area/AR = get_area(MS)
 		var/evaccee_name
@@ -850,7 +834,25 @@
 		if (evaccee_triagecard_color && evaccee_triagecard_color == "none")
 			evaccee_triagecard_color = null
 
-		possible_stretchers["[evaccee_name] [evaccee_triagecard_color ? "\[" + uppertext(evaccee_triagecard_color) + "\]" : ""] ([AR.name])"] = MS
+		.["[evaccee_name] [evaccee_triagecard_color ? "\[" + uppertext(evaccee_triagecard_color) + "\]" : ""] ([AR.name])"] = MS
+
+/obj/structure/dropship_equipment/medevac_system/equipment_interact(mob/user)
+	if(!linked_shuttle)
+		return
+
+	if(linked_shuttle.mode != SHUTTLE_CALL)
+		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
+		return
+
+	if(busy_winch)
+		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		return
+
+	if(world.time < medevac_cooldown)
+		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
+		return
+
+	var/list/possible_stretchers = get_targets()
 
 	if(!possible_stretchers.len)
 		to_chat(user, SPAN_WARNING("No active medevac stretcher detected."))

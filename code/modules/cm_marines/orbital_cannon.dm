@@ -430,7 +430,6 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_warhead_1"
 	shake_frequency = 3
 	max_shake_factor = 15
-	max_knockdown_time = 6
 
 	var/clear_power = 1200
 	var/clear_falloff = 400

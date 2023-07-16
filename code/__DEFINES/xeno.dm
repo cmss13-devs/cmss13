@@ -132,6 +132,7 @@
 // Weed defines
 #define WEED_LEVEL_WEAK 0
 #define WEED_LEVEL_STANDARD  1.5
+#define WEED_LEVEL_HARDY 1.6
 #define WEED_LEVEL_HIVE   4
 
 #define WEED_RANGE_STANDARD  3
@@ -167,6 +168,8 @@
 #define XENO_LEAVE_TIMER_LARVA 80 //80 seconds
 /// The time against away_timer when an AFK xeno (not larva) can be replaced
 #define XENO_LEAVE_TIMER 300 //300 seconds
+/// The time against away_timer when an AFK facehugger converts to a npc
+#define XENO_FACEHUGGER_LEAVE_TIMER 420 //420 seconds
 /// The time against away_timer when an AFK xeno gets listed in the available list so ghosts can get ready
 #define XENO_AVAILABLE_TIMER 60 //60 seconds
 

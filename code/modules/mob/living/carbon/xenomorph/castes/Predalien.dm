@@ -129,6 +129,9 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 			to_chat(xeno, SPAN_XENONOTICE("You are already performing an action!"))
 			return TRUE
 
+		if(issynth(victim)) //You cannot acquire the forbidden meat
+			return TRUE
+
 		playsound(xeno.loc, 'sound/weapons/slice.ogg', 25)
 		xeno_attack_delay(xeno)
 

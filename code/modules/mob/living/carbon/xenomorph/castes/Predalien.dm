@@ -129,9 +129,6 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 			to_chat(xeno, SPAN_XENONOTICE("You are already performing an action!"))
 			return TRUE
 
-		if(issynth(victim)) //You cannot acquire the forbidden meat
-			return TRUE
-
 		playsound(xeno.loc, 'sound/weapons/slice.ogg', 25)
 		xeno_attack_delay(xeno)
 
@@ -139,12 +136,16 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 			to_chat(xeno, SPAN_XENONOTICE("You decide not to butcher [victim]"))
 			return TRUE
 
-		if(ishuman(victim))
+		if(ishuman(victim) && !isworkingjoe(victim)) //No joe meat, can still gib it though
 			var/mob/living/carbon/human/human_victim = victim
 
 			for(var/i in 1 to 3)
-				var/obj/item/reagent_container/food/snacks/meat/h_meat = new(human_victim.loc)
-				h_meat.name = "[human_victim.name] meat"
+				if(issynth(human_victim)) //synth meat instead.
+					var/obj/item/reagent_container/food/snacks/meat/syntiflesh/s_meat = new(human_victim.loc)
+					s_meat.name = "[human_victim.name] synthetic meat"
+				else
+					var/obj/item/reagent_container/food/snacks/meat/h_meat = new(human_victim.loc)
+					h_meat.name = "[human_victim.name] meat"
 
 		else if (isxeno(victim))
 			var/mob/living/carbon/xenomorph/xeno_victim = victim

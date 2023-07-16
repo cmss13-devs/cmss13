@@ -274,6 +274,7 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_click'>Toggle Middle Mouse Ability Activation</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ability_deactivation'>Toggle Ability Deactivation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
@@ -287,7 +288,7 @@
 	for (var/pref_button in pref_buttons)
 		dat += "[pref_button]\n"
 
-	var/height = 50+22*length(pref_buttons)
+	var/height = 50+24*length(pref_buttons)
 
 	show_browser(src, dat, "Toggle Preferences", "togglepreferences", "size=475x[height]")
 
@@ -353,6 +354,14 @@
 		to_chat(src, SPAN_NOTICE("Your selected ability will now be activated with middle clicking."))
 	else
 		to_chat(src, SPAN_NOTICE("Your selected ability will now be activated with shift clicking."))
+	prefs.save_preferences()
+
+/client/proc/toggle_ability_deactivation() // Toggle whether abilities should use middle or shift clicking
+	prefs.toggle_prefs ^= TOGGLE_ABILITY_DEACTIVATION_OFF
+	if (prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
+		to_chat(src, SPAN_NOTICE("Your current ability can no longer be toggled off when re-selected."))
+	else
+		to_chat(src, SPAN_NOTICE("Your current ability can be toggled off when re-selected."))
 	prefs.save_preferences()
 
 /client/proc/toggle_clickdrag_override() //Toggle whether mousedown clicks immediately when on disarm or harm intent to prevent click-dragging from 'eating' attacks.

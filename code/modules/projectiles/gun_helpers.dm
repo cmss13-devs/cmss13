@@ -658,68 +658,6 @@ DEFINES in setup.dm, referenced here.
 	playsound(src, 'sound/handling/attachment_remove.ogg', 15, 1, 4)
 	update_icon()
 
-/*/obj/item/weapon/gun/proc/toggle_burst(mob/user)
-	//Burst of 1 doesn't mean anything. The weapon will only fire once regardless.
-	//Just a good safety to have all weapons that can equip a scope with 1 burst_amount.
-	if(burst_amount < 2 && !(flags_gun_features & GUN_HAS_FULL_AUTO))
-		to_chat(user, SPAN_WARNING("This weapon does not have a burst fire mode!"))
-		return
-
-	if(flags_gun_features & GUN_BURST_FIRING)//can't toggle mid burst
-		return
-
-	if(flags_gun_features & GUN_BURST_ONLY)
-		if(!(flags_gun_features & GUN_BURST_ON))
-			stack_trace("[src] has GUN_BURST_ONLY flag but not GUN_BURST_ON.")
-			flags_gun_features |= GUN_BURST_ON
-			return
-
-		to_chat(user, SPAN_NOTICE("\The [src] can only be fired in bursts!"))
-		return
-
-	if(flags_gun_features & GUN_FULL_AUTO_ONLY)
-		if(!(flags_gun_features & GUN_FULL_AUTO_ON))
-			stack_trace("[src] has GUN_FULL_AUTO_ONLY flag but not GUN_FULL_AUTO_ON.")
-			flags_gun_features |= GUN_FULL_AUTO_ON
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, PROC_REF(full_auto_start))
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, PROC_REF(full_auto_stop))
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, PROC_REF(full_auto_new_target))
-			return
-
-		to_chat(user, SPAN_NOTICE("\The [src] can only be fired in full auto mode!"))
-		return
-
-	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
-
-	if(flags_gun_features & GUN_HAS_FULL_AUTO)
-		if((flags_gun_features & GUN_BURST_ON) || (burst_amount < 2 && !(flags_gun_features & GUN_FULL_AUTO_ON)))
-			flags_gun_features &= ~GUN_BURST_ON
-			flags_gun_features |= GUN_FULL_AUTO_ON
-
-			// Register the full auto click listeners
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, PROC_REF(full_auto_start))
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, PROC_REF(full_auto_stop))
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, PROC_REF(full_auto_new_target))
-
-			to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You set [src] to full auto mode."))
-			return
-		else if(flags_gun_features & GUN_FULL_AUTO_ON)
-			flags_gun_features &= ~GUN_FULL_AUTO_ON
-			REMOVE_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
-			full_auto_stop() // If the LMBUP hasn't been called for any reason.
-			UnregisterSignal(user.client, list(
-				COMSIG_CLIENT_LMB_DOWN,
-				COMSIG_CLIENT_LMB_UP,
-				COMSIG_CLIENT_LMB_DRAG,
-			))
-
-			to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You set [src] to single fire mode."))
-			return
-
-
-	flags_gun_features ^= GUN_BURST_ON
-	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode."))*/
-
 /obj/item/weapon/gun/proc/do_toggle_firemode(datum/source, datum/keybinding, new_firemode)
 	SIGNAL_HANDLER
 	if(flags_gun_features & GUN_BURST_FIRING)//can't toggle mid burst
@@ -729,6 +667,7 @@ DEFINES in setup.dm, referenced here.
 		CRASH("[src] called do_toggle_firemode() with an empty gun_firemode_list")
 
 	if(length(gun_firemode_list) == 1)
+		to_chat(source, SPAN_NOTICE("[icon2html(src, source)] This gun only has one firemode."))
 		return
 
 	if(new_firemode)
@@ -744,39 +683,18 @@ DEFINES in setup.dm, referenced here.
 
 	if(ishuman(source))
 		to_chat(source, SPAN_NOTICE("[icon2html(src, source)] You switch to <b>[gun_firemode]</b>."))
-	//playsound(src, 'sound/weapons/guns/interact/selector.ogg', 15, 1)
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE_MODE_TOGGLE, gun_firemode)
 
 /obj/item/weapon/gun/proc/add_firemode(added_firemode, mob/user)
 	gun_firemode_list += added_firemode
 
-	switch(length(gun_firemode_list))
-		if(0)
-			CRASH("add_firemode called with a resulting gun_firemode_list length of [length(gun_firemode_list)].")
-		if(1) //No need to toggle anything if there's a single firemode.
-			return
-		if(2)
-			/*LAZYADD(actions_types, /datum/action/item_action/firemode)
-			var/datum/action/new_action = new /datum/action/item_action/firemode(src)
-			if(user)
-				var/mob/living/living_user = user
-				if((src == living_user.l_hand || src == living_user.r_hand) && !CHECK_BITFIELD(flags_item, IS_DEPLOYED))
-					new_action.give_action(living_user)*/
-		else //The action should already be there by now.
-			return
+	if(!length(gun_firemode_list))
+		CRASH("add_firemode called with a resulting gun_firemode_list length of [length(gun_firemode_list)].")
 
 /obj/item/weapon/gun/proc/remove_firemode(removed_firemode, mob/user)
 	switch(length(gun_firemode_list))
 		if(0, 1)
 			CRASH("remove_firemode called with gun_firemode_list length [length(gun_firemode_list)].")
-		/*if(2)
-			LAZYREMOVE(actions_types, /datum/action/item_action/firemode)
-			var/datum/action/old_action = locate(/datum/action/item_action/firemode) in actions
-			if(user)
-				var/mob/living/living_user = user
-				if((src == living_user.l_hand || src == living_user.r_hand) && !CHECK_BITFIELD(flags_item, IS_DEPLOYED))
-					old_action.remove_action(living_user)
-			qdel(old_action)*/
 
 	gun_firemode_list -= removed_firemode
 
@@ -793,11 +711,6 @@ DEFINES in setup.dm, referenced here.
 			CRASH("[src] called setup_firemodes() with an empty gun_firemode_list")
 		else
 			gun_firemode = gun_firemode_list[1]
-			/*var/datum/action/new_action = new /datum/action/item_action/firemode(src)
-			if(isliving(loc))
-				var/mob/living/living_user = loc
-				if(src == living_user.l_hand || src == living_user.r_hand)
-					new_action.give_action(living_user)*/
 
 /obj/item/weapon/gun/verb/use_toggle_burst()
 	set category = "Weapons"

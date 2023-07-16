@@ -3375,7 +3375,8 @@
 "alw" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	name = "\improper Pilot's Room"
+	name = "\improper Pilot's Room";
+	req_one_access_txt = "19;22"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -5983,6 +5984,7 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/weapon/gun/shotgun/combat,
 /obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
@@ -6557,15 +6559,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver"
-	},
-/area/almayer/command/cic)
-"auR" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/ammo_magazine/rifle/m41aMK1/ap,
-/obj/item/ammo_magazine/rifle/m41aMK1/ap,
-/obj/item/weapon/gun/rifle/m41aMK1/ap,
-/turf/open/floor/almayer{
-	icon_state = "redfull"
 	},
 /area/almayer/command/cic)
 "auS" = (
@@ -8418,9 +8411,14 @@
 /area/almayer/living/offices/flight)
 "aAP" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/door/window/brigdoor,
 /obj/structure/machinery/door/window/brigdoor{
-	dir = 8
+	req_access = null;
+	req_one_access_txt = "3;1"
+	},
+/obj/structure/machinery/door/window/brigdoor{
+	dir = 8;
+	req_access = null;
+	req_one_access_txt = "3;1"
 	},
 /obj/item/ashtray/bronze,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -10693,6 +10691,8 @@
 	pixel_x = 3;
 	pixel_y = 10
 	},
+/obj/item/clothing/head/that,
+/obj/item/weapon/gun/shotgun/double/cane,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -13039,6 +13039,7 @@
 	pixel_x = -5;
 	pixel_y = 10
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "aWT" = (
@@ -13130,7 +13131,9 @@
 "aXP" = (
 /obj/structure/machinery/door/window/brigdoor{
 	dir = 2;
-	plane = -4
+	plane = -4;
+	req_access = null;
+	req_one_access_txt = "3;19"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -28836,6 +28839,8 @@
 "cTJ" = (
 /obj/structure/closet/secure_closet/guncabinet/red,
 /obj/item/ammo_magazine/rifle/m41aMK1/ap,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/item/weapon/gun/rifle/m41aMK1/ap,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
@@ -31283,6 +31288,7 @@
 /obj/structure/closet/secure_closet/guncabinet/red,
 /obj/item/weapon/gun/shotgun/combat,
 /obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
@@ -33157,10 +33163,12 @@
 "eDB" = (
 /obj/structure/closet/secure_closet/guncabinet/red,
 /obj/item/ammo_magazine/rifle/m41aMK1/ap,
-/obj/item/weapon/gun/rifle/m41aMK1/ap,
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/weapon/gun/rifle/m41aMK1/ap,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
@@ -36946,6 +36954,7 @@
 	pixel_x = 2;
 	pixel_y = -26
 	},
+/obj/item/weapon/gun/shotgun/double/cane,
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "giZ" = (
@@ -39994,6 +40003,9 @@
 	name = "\improper Command Power Substation Shutters";
 	id = "C_Sub"
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -40228,7 +40240,9 @@
 /area/almayer/living/briefing)
 "hDH" = (
 /obj/structure/machinery/door/window/brigdoor{
-	dir = 2
+	dir = 2;
+	req_one_access_txt = "3;19";
+	req_access = null
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
@@ -42094,7 +42108,9 @@
 /area/almayer/shipboard/brig/cic_hallway)
 "iuP" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	name = "\improper Military Police Checkpoint"
+	name = "\improper Military Police Checkpoint";
+	req_access = null;
+	req_one_access_txt = "3;1"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -42258,6 +42274,13 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/shipboard/brig/main_office)
+"iyw" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	pixel_y = 0
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/pilotbunks)
 "iyH" = (
 /obj/structure/surface/table/reinforced/almayer_B{
 	climbable = 0;
@@ -43062,6 +43085,18 @@
 "iSW" = (
 /obj/structure/platform,
 /obj/structure/surface/rack,
+/obj/item/device/whistle{
+	layer = 3.525
+	},
+/obj/item/device/whistle{
+	layer = 3.525
+	},
+/obj/item/device/whistle{
+	layer = 3.525
+	},
+/obj/item/device/whistle{
+	layer = 3.525
+	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "silver"
@@ -48033,20 +48068,11 @@
 /obj/structure/platform/shiva{
 	dir = 1
 	},
-/obj/structure/surface/rack{
-	layer = 3.5
+/obj/structure/surface/table/reinforced/black{
+	layer = 3.1
 	},
-/obj/item/device/whistle{
-	layer = 3.525
-	},
-/obj/item/device/whistle{
-	layer = 3.525
-	},
-/obj/item/device/whistle{
-	layer = 3.525
-	},
-/obj/item/device/whistle{
-	layer = 3.525
+/obj/structure/machinery/computer/working_joe{
+	layer = 3.2
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -51718,6 +51744,7 @@
 /obj/item/weapon/gun/shotgun/combat,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/structure/machinery/light/small,
+/obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
@@ -52182,7 +52209,8 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	req_one_access = null;
-	req_one_access_txt = "19;30"
+	req_one_access_txt = "19;30";
+	name = "\improper Officer's Mess Hall"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -56117,10 +56145,12 @@
 "oBA" = (
 /obj/structure/closet/secure_closet/guncabinet/red,
 /obj/item/ammo_magazine/rifle/m41aMK1/ap,
-/obj/item/weapon/gun/rifle/m41aMK1/ap,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/weapon/gun/rifle/m41aMK1/ap,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
@@ -57622,12 +57652,10 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "pqc" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera";
-	pixel_y = 0;
-	dir = 8
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
-/turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
 "pqe" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -59124,6 +59152,7 @@
 /obj/structure/machinery/status_display{
 	pixel_y = -30
 	},
+/obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
@@ -59961,7 +59990,8 @@
 "qnl" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/emails{
-	dir = 8
+	dir = 8;
+	pixel_y = 6
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -59976,7 +60006,8 @@
 "qnD" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	name = "\improper Crew Chief's Room"
+	name = "\improper Crew Chief's Room";
+	req_one_access_txt = "19;22"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -63886,21 +63917,21 @@
 /obj/structure/machinery/door_control{
 	id = "MP_LockdownCIC-S";
 	name = "Military Police Sides Lockdown";
-	req_one_access_txt = "3;12;19";
+	req_one_access_txt = "3;1";
 	pixel_y = 4;
 	pixel_x = -17
 	},
 /obj/structure/machinery/door_control{
 	id = "MP_LockdownCIC-B";
 	name = "Military Police Back Lockdown";
-	req_one_access_txt = "3;12;19";
+	req_one_access_txt = "3;1";
 	pixel_y = -3;
 	pixel_x = -17
 	},
 /obj/structure/machinery/door_control{
 	id = "MP_LockdownCIC-F";
 	name = "Military Police Frontal Lockdown";
-	req_one_access_txt = "3;12;19";
+	req_one_access_txt = "3;1";
 	pixel_y = 11;
 	pixel_x = -17
 	},
@@ -63915,9 +63946,9 @@
 	id = "cic-exS";
 	name = "CIC South Door Control";
 	normaldoorcontrol = 1;
-	req_access_txt = "3;12;19";
 	pixel_y = -22;
-	pixel_x = 1
+	pixel_x = 1;
+	req_one_access_txt = "3;1"
 	},
 /turf/open/floor/almayer{
 	icon_state = "red"
@@ -65044,7 +65075,8 @@
 /area/almayer/command/cic)
 "swe" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
-	name = "\improper Flight Crew Quarters"
+	name = "\improper Flight Crew Quarters";
+	req_one_access_txt = "19;22"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -66187,7 +66219,7 @@
 	id = "C_Sub";
 	name = "Command Power Substation";
 	pixel_y = 32;
-	req_one_access_txt = "1;4";
+	req_one_access_txt = "19";
 	pixel_x = -6
 	},
 /turf/open/floor/almayer{
@@ -70715,10 +70747,12 @@
 /area/almayer/lifeboat_pumps/south2)
 "uOJ" = (
 /obj/structure/machinery/prop/almayer/computer{
-	dir = 8;
-	pixel_x = 16
+	dir = 8
 	},
-/turf/open/floor/almayer,
+/obj/structure/surface/table/reinforced/black,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/almayer/living/pilotbunks)
 "uPr" = (
 /turf/open/floor/almayer{
@@ -75933,9 +75967,9 @@
 	id = "cic-exN";
 	name = "CIC North Door Control";
 	normaldoorcontrol = 1;
-	req_access_txt = "3;12;19";
 	pixel_y = 24;
-	pixel_x = 1
+	pixel_x = 1;
+	req_one_access_txt = "3;1"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -97330,7 +97364,7 @@ hyQ
 aKa
 xwt
 haB
-auR
+cTJ
 miE
 dCK
 sOi
@@ -99174,7 +99208,7 @@ alX
 ays
 eRu
 aKq
-jmY
+kxd
 mKq
 bFC
 aWW
@@ -99377,7 +99411,7 @@ avY
 awk
 wVW
 rYR
-kxd
+jmY
 mKq
 pXd
 kSH
@@ -103215,7 +103249,7 @@ nwL
 amd
 nPx
 aiX
-amd
+iyw
 dXY
 fmB
 fmB

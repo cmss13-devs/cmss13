@@ -205,7 +205,7 @@
 	set name = "Toggle SpecialRole Candidacy"
 	set category = "Preferences"
 	set desc = "Toggles which special roles you would like to be a candidate for, during events."
-	
+
 	var/list/be_special_flags = list(
 		"Xenomorph after unrevivable death" = BE_ALIEN_AFTER_DEATH,
 		"Agent" = BE_AGENT,
@@ -356,7 +356,7 @@
 		to_chat(src, SPAN_NOTICE("Your selected ability will now be activated with shift clicking."))
 	prefs.save_preferences()
 
-/client/proc/toggle_ability_deactivation() // Toggle whether abilities should use middle or shift clicking
+/client/proc/toggle_ability_deactivation() // Toggle whether the current ability can be deactivated when re-selected
 	prefs.toggle_prefs ^= TOGGLE_ABILITY_DEACTIVATION_OFF
 	if (prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
 		to_chat(src, SPAN_NOTICE("Your current ability can no longer be toggled off when re-selected."))

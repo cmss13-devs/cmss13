@@ -161,6 +161,7 @@
 	icon_state = "b92fs"
 	item_state = "b92fs"
 	current_mag = /obj/item/ammo_magazine/pistol/b92fs
+	gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO, GUN_FIREMODE_BURSTFIRE)
 
 /obj/item/weapon/gun/pistol/b92fs/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -171,7 +172,7 @@
 		BFA.flags_attach_features &= ~ATTACH_REMOVABLE
 		BFA.Attach(src)
 		update_attachable(BFA.slot)
-		flags_gun_features |= GUN_BURST_ON
+		//flags_gun_features |= GUN_BURST_ON //Zonenote
 
 /obj/item/weapon/gun/pistol/b92fs/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
@@ -462,8 +463,8 @@
 	if(!manually_slided)
 		click_empty()
 		to_chat(user, SPAN_DANGER("\The [src] makes a clicking noise! You need to manually rack the slide after loading in a new magazine!"))
-		return
-	..()
+		return NONE
+	return ..()
 
 /obj/item/weapon/gun/pistol/highpower/unique_action(mob/user)
 	if(!manually_slided)
@@ -739,7 +740,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 	fire_sound = 'sound/weapons/gun_skorpion.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/skorpion
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	attachable_allowed = list(
 		/obj/item/attachable/reddot, //Rail
 		/obj/item/attachable/reflex,
@@ -750,7 +751,8 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/lasersight, //Underbarrel
 		/obj/item/attachable/burstfire_assembly,
-		)
+	)
+	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC)
 
 /obj/item/weapon/gun/pistol/skorpion/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 18,"rail_x" = 16, "rail_y" = 21, "under_x" = 23, "under_y" = 15, "stock_x" = 23, "stock_y" = 15)

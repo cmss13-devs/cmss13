@@ -59,10 +59,11 @@
 		/obj/item/attachable/flashlight,
 	)
 
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	gun_category = GUN_CATEGORY_HEAVY
 	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
 	auto_retrieval_slot = WEAR_J_STORE
+	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC)
 
 
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
@@ -86,8 +87,6 @@
 /obj/item/weapon/gun/smartgun/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_10
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_9
 	fa_delay = FIRE_DELAY_TIER_SG
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_8
 	fa_max_scatter = SCATTER_AMOUNT_TIER_9
@@ -101,7 +100,6 @@
 	else
 		scatter = SCATTER_AMOUNT_TIER_6
 		recoil = RECOIL_AMOUNT_TIER_3
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 /obj/item/weapon/gun/smartgun/set_bullet_traits()
@@ -364,15 +362,13 @@
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(!requires_battery)
-		..()
-		return
+		return ..()
 
 	if(battery)
 		if(!requires_power)
-			..()
-			return
+			return ..()
 		if(drain_battery())
-			..()
+			return ..()
 
 /obj/item/weapon/gun/smartgun/proc/drain_battery(override_drain)
 
@@ -530,7 +526,7 @@
 	else if(unconscious_targets.len)
 		. = pick(unconscious_targets)
 
-/obj/item/weapon/gun/smartgun/proc/process_shot(mob/living/user, warned)
+/obj/item/weapon/gun/smartgun/proc/process_shot(mob/living/user, warned) //ZONENOTE: WHUH
 	set waitfor = 0
 
 
@@ -672,7 +668,7 @@
 	ammo = /obj/item/ammo_magazine/smartgun/dirty
 	ammo_primary = /datum/ammo/bullet/smartgun/dirty//Toggled ammo type
 	ammo_secondary = /datum/ammo/bullet/smartgun/dirty/armor_piercing///Toggled ammo type
-	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
+	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/smartgun/dirty/Initialize(mapload, ...)
 	. = ..()

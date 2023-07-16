@@ -699,7 +699,7 @@
 
 /obj/item/weapon/gun/revolver/cmb/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	playsound('sound/weapons/gun_cmb_bass.ogg') // badass shooting bass
-	. = ..()
+	return ..()
 
 /obj/item/weapon/gun/revolver/cmb/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 22,"rail_x" = 11, "rail_y" = 25, "under_x" = 20, "under_y" = 18, "stock_x" = 20, "stock_y" = 18)

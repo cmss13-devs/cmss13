@@ -90,6 +90,7 @@
 			to_firer = "[round((cell.charge / charge_cost), 1)] / [max_shots] SHOTS REMAINING"
 		user.visible_message(SPAN_DANGER("[user] fires \the [src]!"),
 		SPAN_DANGER("[to_firer]"), message_flags = CHAT_TYPE_WEAPON_USE)
+		return AUTOFIRE_CONTINUE
 
 /obj/item/weapon/gun/energy/reload_into_chamber()
 	update_icon()

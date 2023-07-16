@@ -136,29 +136,6 @@ DEFINES in setup.dm, referenced here.
 	else
 		..()
 
-/*
-Note: pickup and dropped on weapons must have both the ..() to update zoom AND twohanded,
-As sniper rifles have both and weapon mods can change them as well. ..() deals with zoom only.
-*/
-/obj/item/weapon/gun/dropped(mob/user)
-	. = ..()
-
-	disconnect_light_from_mob(user)
-
-	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
-	if(fire_delay_group && delay_left > 0)
-		for(var/group in fire_delay_group)
-			LAZYSET(user.fire_delay_next_fire, group, world.time + delay_left)
-
-	unwield(user)
-
-/obj/item/weapon/gun/equipped(mob/user, slot)
-	. = ..()
-
-	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
-	if(fire_delay_group && delay_left > 0)
-		for(var/group in fire_delay_group)
-			LAZYSET(user.fire_delay_next_fire, group, world.time + delay_left)
 
 /// This function disconnects the luminosity from the mob and back to the gun
 /obj/item/weapon/gun/proc/disconnect_light_from_mob(mob/bearer)
@@ -681,7 +658,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	playsound(src, 'sound/handling/attachment_remove.ogg', 15, 1, 4)
 	update_icon()
 
-/obj/item/weapon/gun/proc/toggle_burst(mob/user)
+/*/obj/item/weapon/gun/proc/toggle_burst(mob/user)
 	//Burst of 1 doesn't mean anything. The weapon will only fire once regardless.
 	//Just a good safety to have all weapons that can equip a scope with 1 burst_amount.
 	if(burst_amount < 2 && !(flags_gun_features & GUN_HAS_FULL_AUTO))
@@ -741,12 +718,91 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 
 	flags_gun_features ^= GUN_BURST_ON
-	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode."))
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode."))*/
+
+/obj/item/weapon/gun/proc/do_toggle_firemode(datum/source, datum/keybinding, new_firemode)
+	SIGNAL_HANDLER
+	if(flags_gun_features & GUN_BURST_FIRING)//can't toggle mid burst
+		return
+
+	if(!length(gun_firemode_list))
+		CRASH("[src] called do_toggle_firemode() with an empty gun_firemode_list")
+
+	if(length(gun_firemode_list) == 1)
+		return
+
+	if(new_firemode)
+		if(!(new_firemode in gun_firemode_list))
+			CRASH("[src] called do_toggle_firemode() with [new_firemode] new_firemode, not on gun_firemode_list")
+		gun_firemode = new_firemode
+	else
+		var/mode_index = gun_firemode_list.Find(gun_firemode)
+		if(++mode_index <= length(gun_firemode_list))
+			gun_firemode = gun_firemode_list[mode_index]
+		else
+			gun_firemode = gun_firemode_list[1]
+
+	if(ishuman(source))
+		to_chat(source, SPAN_NOTICE("[icon2html(src, source)] You switch to <b>[gun_firemode]</b>."))
+	//playsound(src, 'sound/weapons/guns/interact/selector.ogg', 15, 1)
+	SEND_SIGNAL(src, COMSIG_GUN_FIRE_MODE_TOGGLE, gun_firemode)
+
+/obj/item/weapon/gun/proc/add_firemode(added_firemode, mob/user)
+	gun_firemode_list += added_firemode
+
+	switch(length(gun_firemode_list))
+		if(0)
+			CRASH("add_firemode called with a resulting gun_firemode_list length of [length(gun_firemode_list)].")
+		if(1) //No need to toggle anything if there's a single firemode.
+			return
+		if(2)
+			/*LAZYADD(actions_types, /datum/action/item_action/firemode)
+			var/datum/action/new_action = new /datum/action/item_action/firemode(src)
+			if(user)
+				var/mob/living/living_user = user
+				if((src == living_user.l_hand || src == living_user.r_hand) && !CHECK_BITFIELD(flags_item, IS_DEPLOYED))
+					new_action.give_action(living_user)*/
+		else //The action should already be there by now.
+			return
+
+/obj/item/weapon/gun/proc/remove_firemode(removed_firemode, mob/user)
+	switch(length(gun_firemode_list))
+		if(0, 1)
+			CRASH("remove_firemode called with gun_firemode_list length [length(gun_firemode_list)].")
+		/*if(2)
+			LAZYREMOVE(actions_types, /datum/action/item_action/firemode)
+			var/datum/action/old_action = locate(/datum/action/item_action/firemode) in actions
+			if(user)
+				var/mob/living/living_user = user
+				if((src == living_user.l_hand || src == living_user.r_hand) && !CHECK_BITFIELD(flags_item, IS_DEPLOYED))
+					old_action.remove_action(living_user)
+			qdel(old_action)*/
+
+	gun_firemode_list -= removed_firemode
+
+	if(gun_firemode == removed_firemode)
+		gun_firemode = gun_firemode_list[1]
+		do_toggle_firemode(user, gun_firemode)
+
+/obj/item/weapon/gun/proc/setup_firemodes()
+	if(burst_amount > 1 && !(GUN_FIREMODE_BURSTFIRE in gun_firemode_list))
+		gun_firemode_list += GUN_FIREMODE_BURSTFIRE
+
+	switch(length(gun_firemode_list))
+		if(0)
+			CRASH("[src] called setup_firemodes() with an empty gun_firemode_list")
+		else
+			gun_firemode = gun_firemode_list[1]
+			/*var/datum/action/new_action = new /datum/action/item_action/firemode(src)
+			if(isliving(loc))
+				var/mob/living/living_user = loc
+				if(src == living_user.l_hand || src == living_user.r_hand)
+					new_action.give_action(living_user)*/
 
 /obj/item/weapon/gun/verb/use_toggle_burst()
 	set category = "Weapons"
-	set name = "Toggle Burst Fire Mode"
-	set desc = "Toggle on or off your weapon burst mode, if it has one. Greatly reduces accuracy."
+	set name = "Toggle Firemode"
+	set desc = "Cycles through your gun's firemodes. Automatic modes greatly reduce accuracy."
 	set src = usr.contents
 
 	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr)
@@ -754,7 +810,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 	src = active_firearm
 
-	toggle_burst(usr)
+	do_toggle_firemode(usr)
 
 /obj/item/weapon/gun/verb/empty_mag()
 	set category = "Weapons"
@@ -960,3 +1016,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return TRUE
 
 	return FALSE
+
+///Helper proc that processes a clicked target, if the target is not black tiles, it will not change it. If they are it will return the turf of the black tiles. It will return null if the object is a screen object other than black tiles.
+/proc/get_turf_on_clickcatcher(atom/target, mob/user, params)
+	var/list/modifiers = params2list(params)
+	if(!istype(target, /atom/movable/screen))
+		return target
+	if(!istype(target, /atom/movable/screen/click_catcher))
+		return null
+	return params2turf(modifiers["screen-loc"], get_turf(user), user.client)

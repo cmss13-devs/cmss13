@@ -493,7 +493,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/xm88/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
 	if(!able_to_fire(user) || !target) //checks here since we don't want to fuck up applying the increase
-		return
+		return NONE
 	if(floating_penetration && in_chamber) //has to go before actual firing
 		var/obj/item/projectile/P = in_chamber
 		switch(floating_penetration)

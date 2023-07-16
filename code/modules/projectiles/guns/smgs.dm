@@ -283,15 +283,15 @@
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
 			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
 			balloon_alert(user, "*jammed*")
-		return
+		return NONE
 	else if(prob(ppsh_mag?.jam_chance))
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 50, FALSE)
 		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
 		balloon_alert(user, "*jammed*")
-		return
+		return NONE
 	else
-		. = ..()
+		return ..()
 
 /obj/item/weapon/gun/smg/ppsh/unique_action(mob/user)
 	if(jammed)
@@ -444,15 +444,15 @@
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
 			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
 			balloon_alert(user, "*jammed*")
-		return
+		return NONE
 	else if(prob(uzi_mag.jam_chance))
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 35, TRUE)
 		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
 		balloon_alert(user, "*jammed*")
-		return
+		return NONE
 	else
-		. = ..()
+		return ..()
 
 /obj/item/weapon/gun/smg/uzi/unique_action(mob/user)
 	if(jammed)

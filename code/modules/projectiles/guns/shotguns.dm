@@ -324,9 +324,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
 
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	fa_delay = FIRE_DELAY_TIER_6
 	auto_retrieval_slot = WEAR_J_STORE
+	gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO, GUN_FIREMODE_AUTOMATIC)
 
 /obj/item/weapon/gun/shotgun/combat/marsoc/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -935,9 +936,9 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/twobore/Fire(atom/target, mob/living/carbon/human/user, params, reflex = 0, dual_wield) //Using this instead of apply_bullet_effects() as RPG does so I get more granular angles than just user direction.
 	var/prefire_rounds = current_mag.current_rounds //How many rounds do we have before we fire?
-	..()
+	. = ..()
 	if(current_mag.current_rounds == prefire_rounds) //We didn't fire a shot.
-		return
+		return NONE
 	var/target_angle = Get_Compass_Dir(user, target) //More precise than get_dir().
 	fired_shots++
 	twobore_recoil(user, target_angle)
@@ -1220,7 +1221,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	playsound(src, 'sound/machines/switch.ogg', 15, TRUE)
 	return TRUE
 
-/obj/item/weapon/gun/shotgun/pump/dual_tube/toggle_burst()
+/obj/item/weapon/gun/shotgun/pump/dual_tube/set_bursting()
 	var/obj/item/weapon/gun/shotgun/pump/dual_tube/shotgun = get_active_firearm(usr)
 	if(shotgun == src)
 		swap_tube(usr)

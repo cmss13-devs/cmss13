@@ -267,7 +267,7 @@
 	if(toggling_action)
 		toggling_action.update_button_icon()
 
-/obj/item/weapon/gun/rifle/sniper/toggle_burst(mob/user)
+/obj/item/weapon/gun/rifle/sniper/set_bursting(mob/user)
 	if(has_aimed_shot)
 		toggle_laser(user)
 	else

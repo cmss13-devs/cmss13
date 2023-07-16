@@ -16,7 +16,7 @@
 
 
 /// Open the WJ's emote panel, which allows them to use voicelines
-/datum/species/synthetic/colonial/working_joe/proc/open_emote_panel()
+/datum/species/synthetic/colonial/working_joe/open_emote_panel()
 	var/datum/joe_emote_panel/ui = new(usr)
 	ui.ui_interact(usr)
 

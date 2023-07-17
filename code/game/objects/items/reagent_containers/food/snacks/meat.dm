@@ -30,7 +30,7 @@
 
 /obj/item/reagent_container/food/snacks/meat/syntiflesh/synthetic //meat made from synthetics. Slightly toxic
 	name = "synthetic flesh"
-	desc = "A synthetic slab of flesh. This doesn't look that edible..."
+	desc = "A synthetic slab of flesh. This doesn't look that tasty..."
 	icon_state = "synthmeat"
 	filling_color = "#ffffff"
 

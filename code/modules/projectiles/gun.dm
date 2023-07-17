@@ -923,40 +923,10 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 //----------------------------------------------------------
 			// \\
-			// AFTER ATTACK AND CHAMBERING  \\
+			// CHAMBERING  \\
 			// \\
 			// \\
 //----------------------------------------------------------
-
-/obj/item/weapon/gun/afterattack(atom/A, mob/living/user, flag, params)
-	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE)) //this is expected to do something in melee.
-		active_attachable.fire_attachment(A, src, user)
-		return TRUE
-	if(flag)
-		return FALSE //It's adjacent, is the user, or is on the user's person
-	if(!istype(A))
-		return FALSE
-	// If firing full-auto, the firing starts when the mouse is clicked, not when it's released
-	// so the gun should already be shooting
-	if(fa_firing)
-		fa_firing = FALSE
-		return TRUE
-	if(flags_gun_features & GUN_BURST_FIRING)
-		return FALSE
-	if(!user || !user.client || !user.client.prefs)
-		return FALSE
-	else if(user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (user.a_intent == INTENT_HELP))
-		if (world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
-			//Absolutely SCREAM this at people so they don't get killed by it
-			to_chat(user, SPAN_HIGHDANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
-			click_empty(user)
-		return FALSE
-	else if((gun_firemode == GUN_FIREMODE_BURSTFIRE) && burst_amount > 1)
-		SEND_SIGNAL(src, COMSIG_GUN_FIRE)
-		return TRUE
-	else
-		Fire(A,user,params) //Otherwise, fire normally.
-	return TRUE
 
 /**
 load_into_chamber(), reload_into_chamber(), and clear_jam() do all of the heavy lifting.
@@ -1154,10 +1124,12 @@ and you're good to go.
 					akimbo.Fire(target,user,params, 0, TRUE)
 
 	if(loc != user || (flags_gun_features & GUN_WIELDED_FIRING_ONLY && !(flags_item & WIELDED)))
-		break //If you drop it while bursting, for example.
+		finish_firing()
+		return NONE //If you drop it while bursting, for example.
 
 	if(!(flags_gun_features & GUN_BURST_FIRING)) // No longer burst firing somehow
-		break
+		finish_firing()
+		return NONE
 
 	//The gun should return the bullet that it already loaded from the end cycle of the last Fire().
 	var/obj/item/projectile/projectile_to_fire = load_into_chamber(user) //Load a bullet in or check for existing one.
@@ -1236,7 +1208,8 @@ and you're good to go.
 
 	else // This happens in very rare circumstances when you're moving a lot while burst firing, so I'm going to toss it up to guns jamming.
 		clear_jam(projectile_to_fire,user)
-		break
+		finish_firing()
+		return NONE
 
 	//>>POST PROCESSING AND CLEANUP BEGIN HERE.<<
 	var/angle = round(Get_Angle(user,target)) //Let's do a muzzle flash.
@@ -1245,15 +1218,19 @@ and you're good to go.
 	//This is where we load the next bullet in the chamber. We check for attachments too, since we don't want to load anything if an attachment is active.
 	if(!check_for_attachment_fire && !reload_into_chamber(user)) // It has to return a bullet, otherwise it's empty. Unless it's an undershotgun.
 		click_empty(user)
-		break //Nothing else to do here, time to cancel out.
+		finish_firing()
+		return NONE
 
 		//if(bullets_fired < bullets_to_fire) // We still have some bullets to fire.
 		//	extra_delay = fire_delay * 0.5
 		//	sleep(burst_delay)
-	if(!(flags_gun_features & GUN_BURST_FIRING))
-		display_ammo(user)
-	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done, mainly for when we break early mid-burstfire.
+	finish_firing()
 	return AUTOFIRE_CONTINUE
+
+/obj/item/weapon/gun/proc/finish_firing()
+	if(!(flags_gun_features & GUN_BURST_FIRING))
+		display_ammo(gun_user)
+	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done, mainly for when we break early mid-burstfire.
 
 #define EXECUTION_CHECK (attacked_mob.stat == UNCONSCIOUS || attacked_mob.is_mob_restrained()) && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))
 

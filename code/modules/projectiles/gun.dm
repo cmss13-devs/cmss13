@@ -763,9 +763,6 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		else
 			wield_time -= 2*user.skills.get_skill_level(SKILL_FIREARMS)
 
-	//if(flags_gun_features & GUN_FULL_AUTO_ON) //Zonenote: look into
-	//	ADD_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
-
 	return 1
 
 /obj/item/weapon/gun/unwield(mob/user)
@@ -1136,7 +1133,7 @@ and you're good to go.
 	If burst = 1, you must null it if you ever RETURN during the for() cycle. If for whatever reason burst is left on while
 	the gun is not firing, it will break a lot of stuff. BREAK is fine, as it will null it.
 	*/
-	else if((gun_firemode == GUN_FIREMODE_BURSTFIRE) && burst_amount > 1) //Zonenote: move to component?
+	else if((gun_firemode == GUN_FIREMODE_BURSTFIRE) && burst_amount > 1)
 		bullets_to_fire = burst_amount
 		flags_gun_features |= GUN_BURST_FIRING
 		if(PB_burst_bullets_fired) //Has a burst been carried over from a PB?
@@ -1512,7 +1509,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	*/
 
 	if(flags_gun_features & GUN_BURST_FIRING)
-		return TRUE //ZONENOTE
+		return TRUE
 	if(world.time < guaranteed_delay_time)
 		return
 	if((world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_NO_FIRE > 0))

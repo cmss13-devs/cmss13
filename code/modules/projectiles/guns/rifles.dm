@@ -632,7 +632,9 @@
 		fire_delay += FIRE_DELAY_TIER_10
 		burst_amount -=  BURST_AMOUNT_TIER_6
 
-		//flags_gun_features &= ~GUN_BURST_ON //Gun loses some combat ability in return for IFF, as well as burst fire mode //Zonenote
+		add_firemode(GUN_FIREMODE_BURSTFIRE) //Zonenote
+	else
+		remove_firemode(GUN_FIREMODE_BURSTFIRE)
 
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(mob/living/carbon/human/H)

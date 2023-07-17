@@ -28,8 +28,9 @@
 	name = "synthetic meat"
 	desc = "A synthetic slab of flesh."
 
-/obj/item/reagent_container/food/snacks/meat/syntiflesh/synthetic //meat made from synthetics
+/obj/item/reagent_container/food/snacks/meat/syntiflesh/synthetic //meat made from synthetics. Slightly toxic
 	name = "synthetic flesh"
+	desc = "A synthetic slab of flesh. This doesn't look that edible..."
 	filling_color = "#ffffff"
 
 /obj/item/reagent_container/food/snacks/meat/syntiflesh/synthetic/Initialize()

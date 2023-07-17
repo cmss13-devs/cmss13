@@ -47,6 +47,7 @@
 	QDEL_NULL(callback_fire)
 	QDEL_NULL(callback_reset_fire)
 	QDEL_NULL(callback_bursting)
+	QDEL_NULL(callback_display_ammo)
 	return ..()
 
 ///Setter for fire mode
@@ -73,8 +74,8 @@
 /datum/component/automatedfire/autofire/proc/initiate_shot()
 	SIGNAL_HANDLER
 	if(shooting)//if we are already shooting, it means the shooter is still on cooldown
-		if(bursting) //something went wrong due to lag
-			hard_reset()
+		//if(bursting) //something went wrong due to lag
+		//	hard_reset()
 		return
 	shooting = TRUE
 	process_shot()

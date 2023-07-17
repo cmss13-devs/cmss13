@@ -923,7 +923,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 //----------------------------------------------------------
 			// \\
-			// CHAMBERING  \\
+			// AFTER ATTACK AND CHAMBERING  \\
 			// \\
 			// \\
 //----------------------------------------------------------
@@ -1123,114 +1123,109 @@ and you're good to go.
 				else
 					akimbo.Fire(target,user,params, 0, TRUE)
 
-	if(loc != user || (flags_gun_features & GUN_WIELDED_FIRING_ONLY && !(flags_item & WIELDED)))
-		finish_firing()
-		return AUTOFIRE_CONTINUE //If you drop it while bursting, for example.
+	var/bullets_fired
+	for(bullets_fired = 1 to 1)
+		if(loc != user || (flags_gun_features & GUN_WIELDED_FIRING_ONLY && !(flags_item & WIELDED)))
+			break //If you drop it while bursting, for example.
 
-	if(!(flags_gun_features & GUN_BURST_FIRING)) // No longer burst firing somehow
-		finish_firing()
-		return AUTOFIRE_CONTINUE
+		if (bullets_fired > 1 && !(flags_gun_features & GUN_BURST_FIRING)) // No longer burst firing somehow
+			break
 
-	//The gun should return the bullet that it already loaded from the end cycle of the last Fire().
-	var/obj/item/projectile/projectile_to_fire = load_into_chamber(user) //Load a bullet in or check for existing one.
-	if(!projectile_to_fire) //If there is nothing to fire, click.
-		click_empty(user)
-		flags_gun_features &= ~GUN_BURST_FIRING
-		return NONE
+		//The gun should return the bullet that it already loaded from the end cycle of the last Fire().
+		var/obj/item/projectile/projectile_to_fire = load_into_chamber(user) //Load a bullet in or check for existing one.
+		if(!projectile_to_fire) //If there is nothing to fire, click.
+			click_empty(user)
+			flags_gun_features &= ~GUN_BURST_FIRING
+			return NONE
 
-	apply_bullet_effects(projectile_to_fire, user, reflex, dual_wield) //User can be passed as null.
-	SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
+		apply_bullet_effects(projectile_to_fire, user, bullets_fired, reflex, dual_wield) //User can be passed as null.
+		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 
-	curloc = get_turf(user)
-	if(QDELETED(original_target)) //If the target's destroyed, shoot at where it was last.
-		target = targloc
-	else
-		target = original_target
-		targloc = get_turf(target)
+		curloc = get_turf(user)
+		if(QDELETED(original_target)) //If the target's destroyed, shoot at where it was last.
+			target = targloc
+		else
+			target = original_target
+			targloc = get_turf(target)
 
-	projectile_to_fire.original = target
+		projectile_to_fire.original = target
 
-	// turf-targeted projectiles are fired without scatter, because proc would raytrace them further away
-	var/ammo_flags = projectile_to_fire.ammo.flags_ammo_behavior | projectile_to_fire.projectile_override_flags
-	if(!(ammo_flags & AMMO_HITS_TARGET_TURF))
-		target = simulate_scatter(projectile_to_fire, target, curloc, targloc, user)
+		// turf-targeted projectiles are fired without scatter, because proc would raytrace them further away
+		var/ammo_flags = projectile_to_fire.ammo.flags_ammo_behavior | projectile_to_fire.projectile_override_flags
+		if(!(ammo_flags & AMMO_HITS_TARGET_TURF))
+			target = simulate_scatter(projectile_to_fire, target, curloc, targloc, user, bullets_fired)
 
-	var/bullet_velocity = projectile_to_fire?.ammo?.shell_speed + velocity_add
+		var/bullet_velocity = projectile_to_fire?.ammo?.shell_speed + velocity_add
 
-	if(params) // Apply relative clicked position from the mouse info to offset projectile
-		if(!params["click_catcher"])
-			if(params["vis-x"])
-				projectile_to_fire.p_x = text2num(params["vis-x"])
-			else if(params["icon-x"])
-				projectile_to_fire.p_x = text2num(params["icon-x"])
-			if(params["vis-y"])
-				projectile_to_fire.p_y = text2num(params["vis-y"])
-			else if(params["icon-y"])
-				projectile_to_fire.p_y = text2num(params["icon-y"])
-			var/atom/movable/clicked_target = original_target
-			if(istype(clicked_target))
-				projectile_to_fire.p_x -= clicked_target.bound_width / 2
-				projectile_to_fire.p_y -= clicked_target.bound_height / 2
+		if(params) // Apply relative clicked position from the mouse info to offset projectile
+			if(!params["click_catcher"])
+				if(params["vis-x"])
+					projectile_to_fire.p_x = text2num(params["vis-x"])
+				else if(params["icon-x"])
+					projectile_to_fire.p_x = text2num(params["icon-x"])
+				if(params["vis-y"])
+					projectile_to_fire.p_y = text2num(params["vis-y"])
+				else if(params["icon-y"])
+					projectile_to_fire.p_y = text2num(params["icon-y"])
+				var/atom/movable/clicked_target = original_target
+				if(istype(clicked_target))
+					projectile_to_fire.p_x -= clicked_target.bound_width / 2
+					projectile_to_fire.p_y -= clicked_target.bound_height / 2
+				else
+					projectile_to_fire.p_x -= world.icon_size / 2
+					projectile_to_fire.p_y -= world.icon_size / 2
 			else
 				projectile_to_fire.p_x -= world.icon_size / 2
 				projectile_to_fire.p_y -= world.icon_size / 2
-		else
-			projectile_to_fire.p_x -= world.icon_size / 2
-			projectile_to_fire.p_y -= world.icon_size / 2
 
-	//Finally, make with the pew pew!
-	if(QDELETED(projectile_to_fire) || !isobj(projectile_to_fire))
-		to_chat(user, "ERROR CODE I1: Gun malfunctioned due to invalid chambered projectile, clearing it. AHELP if this persists.")
-		log_debug("ERROR CODE I1: projectile malfunctioned while firing. User: <b>[user]</b> Weapon: <b>[src]</b> Magazine: <b>[current_mag]</b>")
-		flags_gun_features &= ~GUN_BURST_FIRING
-		in_chamber = null
-		click_empty(user)
-		return NONE
+		//Finally, make with the pew pew!
+		if(QDELETED(projectile_to_fire) || !isobj(projectile_to_fire))
+			to_chat(user, "ERROR CODE I1: Gun malfunctioned due to invalid chambered projectile, clearing it. AHELP if this persists.")
+			log_debug("ERROR CODE I1: projectile malfunctioned while firing. User: <b>[user]</b> Weapon: <b>[src]</b> Magazine: <b>[current_mag]</b>")
+			flags_gun_features &= ~GUN_BURST_FIRING
+			in_chamber = null
+			click_empty(user)
+			return NONE
 
-	if(targloc != curloc)
-		simulate_recoil(dual_wield, user, target)
+		if(targloc != curloc)
+			simulate_recoil(dual_wield, user, target)
 
-		//This is where the projectile leaves the barrel and deals with projectile code only.
-		//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-		in_chamber = null // It's not in the gun anymore
-		INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/item/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target)
-		projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
-		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+			//This is where the projectile leaves the barrel and deals with projectile code only.
+			//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+			in_chamber = null // It's not in the gun anymore
+			INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/item/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target)
+			projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
+			//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-		if(check_for_attachment_fire)
-			active_attachable.last_fired = world.time
-		else
-			last_fired = world.time
-		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
-		. = TRUE
+			if(check_for_attachment_fire)
+				active_attachable.last_fired = world.time
+			else
+				last_fired = world.time
+			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
+			. = TRUE
 
-		shots_fired++
+			shots_fired++
 
-	else // This happens in very rare circumstances when you're moving a lot while burst firing, so I'm going to toss it up to guns jamming.
-		clear_jam(projectile_to_fire,user)
-		finish_firing()
-		return NONE
+		else // This happens in very rare circumstances when you're moving a lot while burst firing, so I'm going to toss it up to guns jamming.
+			clear_jam(projectile_to_fire,user)
+			break
 
-	//>>POST PROCESSING AND CLEANUP BEGIN HERE.<<
-	var/angle = round(Get_Angle(user,target)) //Let's do a muzzle flash.
-	muzzle_flash(angle,user)
+		//>>POST PROCESSING AND CLEANUP BEGIN HERE.<<
+		var/angle = round(Get_Angle(user,target)) //Let's do a muzzle flash.
+		muzzle_flash(angle,user)
 
-	//This is where we load the next bullet in the chamber. We check for attachments too, since we don't want to load anything if an attachment is active.
-	if(!check_for_attachment_fire && !reload_into_chamber(user)) // It has to return a bullet, otherwise it's empty. Unless it's an undershotgun.
-		click_empty(user)
-		finish_firing()
-		return NONE
+		//This is where we load the next bullet in the chamber. We check for attachments too, since we don't want to load anything if an attachment is active.
+		if(!check_for_attachment_fire && !reload_into_chamber(user)) // It has to return a bullet, otherwise it's empty. Unless it's an undershotgun.
+			click_empty(user)
+			break //Nothing else to do here, time to cancel out.
 
 		//if(bullets_fired < bullets_to_fire) // We still have some bullets to fire.
 		//	extra_delay = fire_delay * 0.5
 		//	sleep(burst_delay)
-	finish_firing()
-	return AUTOFIRE_CONTINUE
-
-/obj/item/weapon/gun/proc/finish_firing()
-	if(!(flags_gun_features & GUN_BURST_FIRING))
-		display_ammo(gun_user)
+	//if(!(flags_gun_features & GUN_BURST_FIRING))
+	//display_ammo(user)
 	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done, mainly for when we break early mid-burstfire.
+	return AUTOFIRE_CONTINUE
 
 #define EXECUTION_CHECK (attacked_mob.stat == UNCONSCIOUS || attacked_mob.is_mob_restrained()) && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))
 
@@ -1388,7 +1383,7 @@ and you're good to go.
 				SPAN_WARNING("You fire [src] point blank at [attacked_mob]!"), null, null, CHAT_TYPE_WEAPON_USE)
 
 		user.track_shot(initial(name))
-		apply_bullet_effects(projectile_to_fire, user) //We add any damage effects that we need.
+		apply_bullet_effects(projectile_to_fire, user, bullets_fired) //We add any damage effects that we need.
 
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 		SEND_SIGNAL(user, COMSIG_BULLET_DIRECT_HIT, attacked_mob)
@@ -1557,12 +1552,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(!user)
 		user = gun_user
 
-	if(flags_gun_features & GUN_AMMO_COUNTER && !(flags_gun_features & GUN_BURST_FIRING) && current_mag)
+	if(flags_gun_features & GUN_AMMO_COUNTER && current_mag)
 		var/chambered = in_chamber ? TRUE : FALSE
 		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
 
 //This proc applies some bonus effects to the shot/makes the message when a bullet is actually fired.
-/obj/item/weapon/gun/proc/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, reflex = 0, dual_wield = 0)
+/obj/item/weapon/gun/proc/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, bullets_fired = 1, reflex = 0, dual_wield = 0)
 	var/actual_sound = fire_sound
 	if(isnull(fire_sound))
 		actual_sound = pick(fire_sounds)
@@ -1760,7 +1755,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	shots_fired = 0//Let's clean everything
 	set_target(null)
 	fa_firing = FALSE
-	//gun_user?.client?.mouse_pointer_icon = initial(gun_user.client.mouse_pointer_icon)
 
 /// setter for fire_delay
 /obj/item/weapon/gun/proc/modify_fire_delay(value)
@@ -1803,8 +1797,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 /obj/item/weapon/gun/proc/stop_fire()
 	SIGNAL_HANDLER
-	//if(flags_gun_features & GUN_BURST_FIRING)
-	//	reset_fire()
+	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
+		reset_fire()
+		display_ammo()
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 
 /obj/item/weapon/gun/proc/set_gun_user(mob/to_set)
@@ -1848,6 +1843,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(gun_firemode == GUN_FIREMODE_SEMIAUTO)
 		Fire(object, gun_user, modifiers)
 		reset_fire()
+		display_ammo()
 		return
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 

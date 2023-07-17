@@ -3377,6 +3377,19 @@
 "alU" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/navigation)
+"alV" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/almayer/shipboard/brig/main_office)
 "alW" = (
 /obj/structure/stairs{
 	dir = 4
@@ -13901,11 +13914,18 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/aft_hallway)
 "bja" = (
-/obj/structure/surface/table/almayer,
+/obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/computer/secure_data{
-	dir = 1
+	dir = 1;
+	pixel_x = 16
 	},
-/turf/open/floor/almayer,
+/obj/structure/machinery/computer/crew/alt{
+	dir = 1;
+	pixel_x = -2
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/almayer/shipboard/brig/main_office)
 "bjb" = (
 /obj/structure/disposalpipe/segment,
@@ -30415,38 +30435,25 @@
 /turf/open/floor/almayer,
 /area/almayer/living/port_emb)
 "efh" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/door_control{
-	id = "courtyard_cells";
-	name = "\improper Courtyard Lockdown Shutters";
-	pixel_x = -8;
-	pixel_y = -6;
-	req_access_txt = "3"
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/transmitter/rotary{
+	name = "Brig Warden's Office Telephone";
+	phone_category = "Almayer";
+	phone_id = "Brig Warden's Office";
+	pixel_x = 7;
+	pixel_y = -10
 	},
-/obj/structure/machinery/door_control{
-	id = "Brig Lockdown Shutters";
-	name = "Brig Lockdown Shutters";
-	pixel_x = -8;
-	pixel_y = 2;
-	req_access_txt = "3"
+/obj/item/paper_bin{
+	pixel_y = 8;
+	pixel_x = -7
 	},
-/obj/structure/machinery/door_control{
-	id = "courtyard window";
-	name = "Courtyard Window Shutters";
-	pixel_x = -8;
-	pixel_y = 10;
-	req_access_txt = "3"
+/obj/item/book/manual/marine_law{
+	pixel_x = 9;
+	pixel_y = 6
 	},
-/obj/structure/machinery/door_control{
-	id = "Cell Privacy Shutters";
-	name = "Cell Privacy Shutters";
-	pixel_x = 2;
-	pixel_y = 10;
-	req_access_txt = "3"
-	},
-/obj/structure/machinery/recharger{
-	pixel_x = 6;
-	pixel_y = -2
+/obj/item/tool/pen{
+	pixel_y = 3;
+	pixel_x = -4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -30635,8 +30642,8 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/sign/safety/distribution_pipes{
-	pixel_x = -17
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -31013,6 +31020,19 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_a_s)
+"epI" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "silvercorner"
+	},
+/area/almayer/shipboard/brig/cic_hallway)
 "eqb" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/stamp/denied{
@@ -31300,18 +31320,6 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
-"euO" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	dir = 2;
-	id = "Warden Office Shutters";
-	name = "\improper Privacy Shutters"
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "red"
-	},
-/area/almayer/shipboard/brig/main_office)
 "euV" = (
 /turf/open/floor/almayer/uscm/directional{
 	dir = 8;
@@ -32632,7 +32640,7 @@
 	},
 /area/almayer/hallways/port_hallway)
 "eZj" = (
-/obj/structure/closet/secure_closet/guncabinet,
+/obj/structure/machinery/cm_vending/clothing/military_police_warden,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red"
@@ -32724,9 +32732,6 @@
 	},
 /area/almayer/living/grunt_rnr)
 "fbv" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/structure/sign/safety/security{
 	pixel_x = -17;
 	pixel_y = 6
@@ -35478,6 +35483,10 @@
 	phone_id = "Brig Cells";
 	pixel_x = 15
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
 "gjN" = (
@@ -35589,11 +35598,12 @@
 	},
 /area/almayer/shipboard/weapon_room)
 "goD" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
 	},
 /turf/open/floor/almayer{
 	icon_state = "redcorner"
@@ -36911,6 +36921,18 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering/starboard)
+"gPj" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/almayer/shipboard/brig/main_office)
 "gPr" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresUp";
@@ -38461,15 +38483,14 @@
 	},
 /area/almayer/living/offices)
 "hyz" = (
-/obj/structure/disposalpipe/junction{
-	dir = 1
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
-	},
+/obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/machinery/light{
 	unacidable = 1;
 	unslashable = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0
@@ -40907,6 +40928,9 @@
 	dir = 1;
 	name = "\improper Warden Office"
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -42796,6 +42820,9 @@
 	id = "Warden Office Shutters";
 	name = "\improper Privacy Shutters"
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/main_office)
 "jkV" = (
@@ -43203,12 +43230,11 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie)
 "jxK" = (
-/obj/structure/disposalpipe/junction{
-	dir = 1;
-	icon_state = "pipe-j2"
-	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -44390,22 +44416,18 @@
 	},
 /area/almayer/squads/charlie)
 "jZL" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/almayer_network{
-	dir = 1
-	},
 /obj/structure/machinery/light{
 	unacidable = 1;
 	unslashable = 1
 	},
-/obj/structure/transmitter{
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/secure_data{
 	dir = 1;
-	name = "Brig Warden's Office Telephone";
-	phone_category = "Offices";
-	phone_id = "Brig Warden's Office";
-	pixel_x = -16
+	pixel_x = 2
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/almayer/shipboard/brig/main_office)
 "jZO" = (
 /obj/structure/largecrate/random/barrel/blue,
@@ -47924,7 +47946,6 @@
 /area/almayer/command/combat_correspondent)
 "ltX" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/brig/main_office)
 "luk" = (
@@ -48962,6 +48983,16 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/command/corporateliason)
+"lOo" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/processing)
 "lOr" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -50677,7 +50708,39 @@
 /turf/open/floor/almayer,
 /area/almayer/command/cichallway)
 "mGn" = (
-/obj/structure/machinery/cm_vending/clothing/military_police_warden,
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/door_control{
+	id = "Cell Privacy Shutters";
+	name = "Cell Privacy Shutters";
+	pixel_x = 2;
+	pixel_y = 10;
+	req_access_txt = "3"
+	},
+/obj/structure/machinery/door_control{
+	id = "courtyard window";
+	name = "Courtyard Window Shutters";
+	pixel_x = -8;
+	pixel_y = 10;
+	req_access_txt = "3"
+	},
+/obj/structure/machinery/door_control{
+	id = "Brig Lockdown Shutters";
+	name = "Brig Lockdown Shutters";
+	pixel_x = -8;
+	pixel_y = 2;
+	req_access_txt = "3"
+	},
+/obj/structure/machinery/door_control{
+	id = "courtyard_cells";
+	name = "\improper Courtyard Lockdown Shutters";
+	pixel_x = -8;
+	pixel_y = -6;
+	req_access_txt = "3"
+	},
+/obj/structure/machinery/recharger{
+	pixel_x = 6;
+	pixel_y = -2
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -52772,7 +52835,14 @@
 	id = "Warden Office Shutters";
 	name = "\improper Privacy Shutters"
 	},
-/turf/open/floor/plating,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
 /area/almayer/shipboard/brig/main_office)
 "nyc" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -53352,6 +53422,16 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
+"nJk" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/almayer/shipboard/brig/processing)
 "nJo" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -54289,6 +54369,12 @@
 /turf/open/floor/plating,
 /area/almayer/living/officer_study)
 "oeB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "redcorner"
@@ -54647,7 +54733,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "silvercorner"
+	icon_state = "silver"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
 "omP" = (
@@ -56338,10 +56424,15 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
 "pbh" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -61549,6 +61640,9 @@
 	id = "Warden Office Shutters";
 	name = "\improper Privacy Shutters"
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/main_office)
 "rlf" = (
@@ -62508,6 +62602,9 @@
 "rEY" = (
 /obj/structure/surface/table/almayer,
 /obj/item/toy/deck,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver"
@@ -67459,6 +67556,9 @@
 	pixel_y = 11
 	},
 /obj/item/poster,
+/obj/structure/sign/safety/distribution_pipes{
+	pixel_x = -17
+	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "silver"
@@ -72452,6 +72552,18 @@
 /obj/item/weapon/dart/green,
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
+"vDK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/almayer{
+	icon_state = "red"
+	},
+/area/almayer/shipboard/brig/processing)
 "vEf" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -77778,8 +77890,11 @@
 "xHM" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/sentencing,
-/obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-j2"
+	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
 "xHW" = (
@@ -90151,9 +90266,9 @@ heQ
 lMc
 eOW
 cMl
-lMc
+vDK
 nxq
-ldu
+alV
 kJK
 bja
 jkS
@@ -90353,10 +90468,10 @@ gaJ
 tRA
 lMc
 gjL
-cMl
+lOo
 oeB
-euO
-ldu
+rkL
+gPj
 eRL
 jZL
 vBm
@@ -90759,7 +90874,7 @@ kHa
 luH
 lMc
 ycr
-bju
+nJk
 goD
 vBm
 vBm
@@ -94012,7 +94127,7 @@ awz
 awz
 jfK
 wIQ
-mPj
+epI
 omy
 xpo
 mtl

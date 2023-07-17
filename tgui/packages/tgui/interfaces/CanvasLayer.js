@@ -202,7 +202,7 @@ export class CanvasLayer extends Component {
     svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
     svg.setAttribute('width', this.canvasRef.current.width);
     svg.setAttribute('height', this.canvasRef.current.height);
-
+  
     const lines = this.lineStack.flat();
     lines.forEach(([lastX, lastY, x, y, colorSelection]) => {
       const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
@@ -215,8 +215,13 @@ export class CanvasLayer extends Component {
       line.setAttribute('stroke-linecap', 'round');
       svg.appendChild(line);
     });
-
-    return svg.outerHTML;
+  
+    const serializer = new XMLSerializer();
+    const serializedSvg = serializer.serializeToString(svg);
+    const base64Svg = btoa(serializedSvg);
+    const dataUrl = `data:image/svg+xml;base64,${base64Svg}`;
+  
+    return dataUrl;
   }
 
   render() {

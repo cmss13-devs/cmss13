@@ -546,6 +546,8 @@ SUBSYSTEM_DEF(minimaps)
 
 		if ("selectAnnouncement")
 			toolbar_updated_selection = "export"
+			
+			to_chat(usr, SPAN_WARNING(params["image"]))
 			var/datum/canvas_map/canvas_image = new(params["image"])
 
 			GLOB.canvas_drawings += canvas_image

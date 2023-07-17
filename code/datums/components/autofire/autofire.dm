@@ -21,8 +21,10 @@
 	var/datum/callback/callback_reset_fire
 	///Callback to ask the parent to fire
 	var/datum/callback/callback_fire
+	///Callback to ask the parent to display ammo
+	var/datum/callback/callback_display_ammo
 
-/datum/component/automatedfire/autofire/Initialize(_auto_fire_shot_delay = 0.3 SECONDS, _burstfire_shot_delay, _burst_shots_to_fire = 3, _fire_mode = GUN_FIREMODE_SEMIAUTO, datum/callback/_callback_bursting, datum/callback/_callback_reset_fire, datum/callback/_callback_fire)
+/datum/component/automatedfire/autofire/Initialize(_auto_fire_shot_delay = 0.3 SECONDS, _burstfire_shot_delay, _burst_shots_to_fire = 3, _fire_mode = GUN_FIREMODE_SEMIAUTO, datum/callback/_callback_bursting, datum/callback/_callback_reset_fire, datum/callback/_callback_fire, datum/callback/_callback_display_ammo)
 	. = ..()
 
 	RegisterSignal(parent, COMSIG_GUN_FIRE_MODE_TOGGLE, PROC_REF(modify_fire_mode))
@@ -39,6 +41,7 @@
 	callback_bursting = _callback_bursting
 	callback_reset_fire = _callback_reset_fire
 	callback_fire = _callback_fire
+	callback_display_ammo = _callback_display_ammo
 
 /datum/component/automatedfire/autofire/Destroy(force, silent)
 	QDEL_NULL(callback_fire)
@@ -113,6 +116,7 @@
 			shots_fired++
 			if(shots_fired == burst_shots_to_fire)
 				callback_bursting.Invoke(FALSE)
+				callback_display_ammo.Invoke()
 				bursting = FALSE
 				stop_firing()
 				if(have_to_reset_at_burst_end)//We failed to reset because we were bursting, we do it now

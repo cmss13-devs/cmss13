@@ -198,21 +198,21 @@ export class CanvasLayer extends Component {
   }
 
   convertToSVG() {
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    svg.setAttribute('width', this.canvasRef.current.width);
-    svg.setAttribute('height', this.canvasRef.current.height);
+    const svgNS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttributeNS(null, 'width', this.canvasRef.current.width);
+    svg.setAttributeNS(null, 'height', this.canvasRef.current.height);
   
     const lines = this.lineStack.flat();
     lines.forEach(([lastX, lastY, x, y, colorSelection]) => {
-      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      line.setAttribute('x1', lastX);
-      line.setAttribute('y1', lastY);
-      line.setAttribute('x2', x);
-      line.setAttribute('y2', y);
-      line.setAttribute('stroke', colorSelection);
-      line.setAttribute('stroke-width', '4');
-      line.setAttribute('stroke-linecap', 'round');
+      const line = document.createElementNS(svgNS, 'line');
+      line.setAttributeNS(null, 'x1', lastX);
+      line.setAttributeNS(null, 'y1', lastY);
+      line.setAttributeNS(null, 'x2', x);
+      line.setAttributeNS(null, 'y2', y);
+      line.setAttributeNS(null, 'stroke', colorSelection);
+      line.setAttributeNS(null, 'stroke-width', '4');
+      line.setAttributeNS(null, 'stroke-linecap', 'round');
       svg.appendChild(line);
     });
   

@@ -1125,11 +1125,11 @@ and you're good to go.
 
 	if(loc != user || (flags_gun_features & GUN_WIELDED_FIRING_ONLY && !(flags_item & WIELDED)))
 		finish_firing()
-		return NONE //If you drop it while bursting, for example.
+		return AUTOFIRE_CONTINUE //If you drop it while bursting, for example.
 
 	if(!(flags_gun_features & GUN_BURST_FIRING)) // No longer burst firing somehow
 		finish_firing()
-		return NONE
+		return AUTOFIRE_CONTINUE
 
 	//The gun should return the bullet that it already loaded from the end cycle of the last Fire().
 	var/obj/item/projectile/projectile_to_fire = load_into_chamber(user) //Load a bullet in or check for existing one.

@@ -141,7 +141,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 
 			for(var/i in 1 to 3)
 				if(issynth(human_victim)) //synth meat instead.
-					var/obj/item/reagent_container/food/snacks/meat/syntiflesh/synthetic/s_meat = new(human_victim.loc)
+					var/obj/item/reagent_container/food/snacks/meat/synthmeat/synthflesh/s_meat = new(human_victim.loc)
 					s_meat.name = "[human_victim.name] synthetic flesh"
 				else
 					var/obj/item/reagent_container/food/snacks/meat/h_meat = new(human_victim.loc)

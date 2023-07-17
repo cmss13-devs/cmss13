@@ -11,6 +11,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("Medium Armor", 0, /obj/item/clothing/suit/storage/marine/medium, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 		list("Heavy Armor", 0, /obj/item/clothing/suit/storage/marine/heavy, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 
+		//won't work until i add a marine can buy check
+		list("PRIMARY FIREARM (CHOOSE 1)", 0, null, null, null),
+		list("M4RA Battle Rifle", 0, /obj/item/weapon/gun/rifle/m4ra, MARINE_CAN_BUY_PRIMARY, VENDOR_ITEM_REGULAR),
+		list("M37A2 Pump Shotgun", 0, /obj/item/weapon/gun/shotgun/pump, MARINE_CAN_BUY_PRIMARY, VENDOR_ITEM_REGULAR),
+		list("M39 Submachine Gun", 0, /obj/item/weapon/gun/smg/m39, MARINE_CAN_BUY_PRIMARY, VENDOR_ITEM_REGULAR),
+		list("M41A Pulse Rifle MK2", 0, /obj/item/weapon/gun/rifle/m41a, MARINE_CAN_BUY_PRIMARY, VENDOR_ITEM_RECOMMENDED),
+
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 		list("Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 		list("Satchel", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),

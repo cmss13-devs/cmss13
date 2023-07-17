@@ -513,6 +513,7 @@
 /obj/item/storage/belt/marine/smartgunner/fill_preset_inventory()
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
+	new /obj/item/ammo_magazine/smartgun(src)
 
 /obj/item/storage/belt/marine/smartgunner/full/fill_preset_inventory()
 	new /obj/item/ammo_magazine/smartgun(src)
@@ -1511,6 +1512,7 @@
 /obj/item/storage/belt/gun/smartgunner/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3())
 	new /obj/item/ammo_magazine/pistol/hp(src)
+	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 

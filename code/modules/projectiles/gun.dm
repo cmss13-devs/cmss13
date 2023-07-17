@@ -1832,8 +1832,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(modifiers["shift"] || modifiers["middle"] || modifiers["right"])
 		return
 
-	//if(gun_on_cooldown(gun_user))
-	//	return
+	// Don't allow doing anything else if inside a container of some sort, like a locker.
+	if (!isturf(gun_user.loc))
+		return
 	if(!bypass_checks)
 		if(gun_user.hand && !isgun(gun_user.l_hand) || !gun_user.hand && !isgun(gun_user.r_hand)) // If the object in our active hand is not a gun, abort
 			return

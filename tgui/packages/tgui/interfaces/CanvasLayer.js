@@ -171,8 +171,7 @@ export class CanvasLayer extends Component {
 
   if (selection === 'export') {
     const svgData = this.convertToSVG();
-    const svgString = new XMLSerializer().serializeToString(svgData);
-    this.props.onImageExport(svgString);
+    this.props.onImageExport(svgData);
     return;
   }
 

@@ -293,3 +293,29 @@
 	new /obj/item/weapon/gun/shotgun/double/cane(src)
 	new /obj/item/ammo_magazine/handful/revolver/marksman/six_rounds(src)
 	new /obj/item/ammo_magazine/handful/revolver/marksman/six_rounds(src)
+
+// M4RA case and M39 case
+
+//------------
+/obj/item/storage/box/guncase/m4ra
+	name = "\improper M4RA Battle Rifle case"
+	desc = "A gun case containing the M4RA Battle Rifle. It can only use proprietary m4ra magazines."
+	storage_slots = 3
+	can_hold = list(/obj/item/weapon/gun/rifle/m4ra, /obj/item/ammo_magazine/rifle/m4ra)
+
+/obj/item/storage/box/guncase/m4ra/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/m4ra(src)
+	new /obj/item/ammo_magazine/rifle/m4ra(src)
+	new /obj/item/ammo_magazine/rifle/m4ra(src)
+
+//------------
+/obj/item/storage/box/guncase/m39
+	name = "\improper Submachine Gun M39 case"
+	desc = "A gun case containing the M39 Submachine Gun. It can only use proprietary M39 magazines."
+	storage_slots = 3
+	can_hold = list(/obj/item/weapon/gun/smg/m39, /obj/item/ammo_magazine/smg/m39)
+
+/obj/item/storage/box/guncase/m39/fill_preset_inventory()
+	new /obj/item/weapon/gun/smg/m39(src)
+	new /obj/item/ammo_magazine/smg/m39(src)
+	new /obj/item/ammo_magazine/smg/m39(src)

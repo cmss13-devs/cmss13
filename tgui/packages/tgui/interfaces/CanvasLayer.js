@@ -5,20 +5,20 @@ export class CanvasLayer extends Component {
   constructor(props) {
     super(props);
     this.canvasRef = createRef();
-
+    
     // color selection
     // using this.state prevents unpredictable behavior
     this.state = {
       selection: this.props.selection,
     };
-
+   
     // needs to be of type png of jpg
     this.img = null;
     this.imageSrc = this.props.imageSrc;
-
+    
     // stores the stacked lines
     this.lineStack = [];
-
+    
     // stores the individual line drawn
     this.currentLine = [];
 
@@ -77,7 +77,7 @@ export class CanvasLayer extends Component {
       return;
     }
 
-    // defaults to black sometimes, it's a bug I think maybe.
+     // defaults to black sometimes, it's a bug I think maybe.
     this.ctx.strokeStyle = this.state.selection;
 
     const rect = this.canvasRef.current.getBoundingClientRect();
@@ -136,7 +136,7 @@ export class CanvasLayer extends Component {
       }
       const line = this.lineStack[this.lineStack.length - 1];
 
-      // selects last color before line is yeeted, this is buggy sometimes.
+       // selects last color before line is yeeted, this is buggy sometimes.
       const prevColor = line[0][4];
       this.lineStack.pop();
 
@@ -169,13 +169,12 @@ export class CanvasLayer extends Component {
       return;
     }
 
-    if (selection === 'export') {
-      this.props.onImageExport(
-        String(this.canvasRef.current.toDataURL('image/jpeg', 0.5))
-      );
-
-      return;
-    }
+  if (selection === 'export') {
+    const svgData = this.convertToSVG();
+    const svgString = new XMLSerializer().serializeToString(svgData);
+    this.props.onImageExport(svgString);
+    return;
+  }
 
     this.setState({ selection: selection });
   };
@@ -188,7 +187,7 @@ export class CanvasLayer extends Component {
 
   drawCanvas() {
     this.img.onload = () => {
-      // this onload may or may not be causing problems.
+        // this onload may or may not be causing problems.
       this.ctx.drawImage(
         this.img,
         0,
@@ -197,6 +196,28 @@ export class CanvasLayer extends Component {
         this.canvasRef.current.height
       );
     };
+  }
+
+  convertToSVG() {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    svg.setAttribute('width', this.canvasRef.current.width);
+    svg.setAttribute('height', this.canvasRef.current.height);
+
+    const lines = this.lineStack.flat();
+    lines.forEach(([lastX, lastY, x, y, colorSelection]) => {
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', lastX);
+      line.setAttribute('y1', lastY);
+      line.setAttribute('x2', x);
+      line.setAttribute('y2', y);
+      line.setAttribute('stroke', colorSelection);
+      line.setAttribute('stroke-width', '4');
+      line.setAttribute('stroke-linecap', 'round');
+      svg.appendChild(line);
+    });
+
+    return svg.outerHTML;
   }
 
   render() {

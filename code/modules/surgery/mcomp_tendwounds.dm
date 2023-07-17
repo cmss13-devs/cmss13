@@ -1,6 +1,6 @@
 /datum/surgery/mcomp_wounds
 	name = "Tend Wounds"
-	possible_locs = list("chest")
+	possible_locs = DEFENSE_ZONES_LIVING //all hud aiming locations are suitable for yautja to target.
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	var/required_trait = TRAIT_YAUTJA_TECH// Only predators can do this

@@ -31,7 +31,8 @@
 
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_MEDIUM
-	storage_slots = 21
+	storage_slots = null
+	max_storage_space = 21 //equivalent to an IMP backpack
 	can_hold = list() // any
 	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/throwing_knife)
 
@@ -39,13 +40,18 @@
 	flags_equip_slot = NONE
 
 /obj/item/storage/bag/trash/update_icon()
-	if(length(contents) == 0)
+	var/sum_storage_cost = 0
+	for(var/obj/item/item in contents)
+		sum_storage_cost += item.get_storage_cost()
+
+	if(!sum_storage_cost)
 		icon_state = "trashbag0"
-	else if(length(contents) < 12)
+	else if(sum_storage_cost < round(max_storage_space * 0.35))
 		icon_state = "trashbag1"
-	else if(length(contents) < 21)
+	else if(sum_storage_cost < round(max_storage_space * 0.7))
 		icon_state = "trashbag2"
-	else icon_state = "trashbag3"
+	else
+		icon_state = "trashbag3"
 
 // -----------------------------
 // Plastic Bag

@@ -15,6 +15,14 @@
 	self_operable = TRUE
 
 /datum/surgery/mcomp_wounds/can_start(mob/living/carbon/human/user, mob/living/carbon/human/patient, obj/limb/limb, obj/item/tool)
+	var/list/surgery_limbs = DEFENSE_ZONES_LIVING //Creates a list of all targetable locations
+	surgery_limbs -= user.zone_selected //Removes the zone you are currently targeting
+
+	for(var/zone in surgery_limbs) //Loops through the limbs of the patient
+		if(istype(patient.active_surgeries[zone], /datum/surgery/mcomp_wounds)) //Checks if there is already a surgery of this type existing elsewhere.
+			to_chat(user, SPAN_WARNING("The [zone] is already being worked on and you have to finish that first!"))//gives a message to the person trying to perform the action
+			return FALSE
+
 	if(istype(user) && HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		if (patient.getBruteLoss() || patient.getFireLoss()) //Heals brute or burn
 			return TRUE

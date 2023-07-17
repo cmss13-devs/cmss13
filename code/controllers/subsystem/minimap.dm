@@ -550,8 +550,7 @@ SUBSYSTEM_DEF(minimaps)
 
 		if ("selectColor")
 
-			if(params["color"] in allowed_colors)
-				return params["color"]
+			toolbar_color_selection = params["color"]
 			toolbar_updated_selection = toolbar_color_selection
 			. = TRUE
 

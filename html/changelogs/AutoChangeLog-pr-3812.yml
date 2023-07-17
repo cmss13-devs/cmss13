@@ -1,5 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - qol: "Create humans tab length increase"
-  - qol: "Create humans tab now defaults to 0 range to spawn"

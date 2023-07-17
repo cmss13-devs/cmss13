@@ -3,7 +3,7 @@
 //whiskey outpost extra marines
 /datum/emergency_call/cryo_squad
 	name = "Marine Cryo Reinforcements (Squad)"
-	mob_max = 15
+	mob_max = 10
 	mob_min = 1
 	probability = 0
 	objectives = "Assist the USCM forces"

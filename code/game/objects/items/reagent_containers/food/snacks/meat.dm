@@ -28,6 +28,14 @@
 	name = "synthetic meat"
 	desc = "A synthetic slab of flesh."
 
+/obj/item/reagent_container/food/snacks/meat/syntiflesh/synthetic //meat made from synthetics
+	name = "synthetic flesh"
+	filling_color = "#ffffff"
+
+/obj/item/reagent_container/food/snacks/meat/syntiflesh/synthetic/Initialize()
+	. = ..()
+	reagents.add_reagent("pacid", 1.5)
+
 /obj/item/reagent_container/food/snacks/meat/human
 	name = "human meat"
 	desc = "A slab of flesh for cannibals."

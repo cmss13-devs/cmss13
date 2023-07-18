@@ -23,8 +23,10 @@
 	var/datum/callback/callback_fire
 	///Callback to ask the parent to display ammo
 	var/datum/callback/callback_display_ammo
+	///Callback to set parent's fa_firing
+	var/datum/callback/callback_set_firing
 
-/datum/component/automatedfire/autofire/Initialize(_auto_fire_shot_delay = 0.3 SECONDS, _burstfire_shot_delay, _burst_shots_to_fire = 3, _fire_mode = GUN_FIREMODE_SEMIAUTO, datum/callback/_callback_bursting, datum/callback/_callback_reset_fire, datum/callback/_callback_fire, datum/callback/_callback_display_ammo)
+/datum/component/automatedfire/autofire/Initialize(_auto_fire_shot_delay = 0.3 SECONDS, _burstfire_shot_delay, _burst_shots_to_fire = 3, _fire_mode = GUN_FIREMODE_SEMIAUTO, datum/callback/_callback_bursting, datum/callback/_callback_reset_fire, datum/callback/_callback_fire, datum/callback/_callback_display_ammo, datum/callback/_callback_set_firing)
 	. = ..()
 
 	RegisterSignal(parent, COMSIG_GUN_FIRE_MODE_TOGGLE, PROC_REF(modify_fire_mode))
@@ -42,12 +44,14 @@
 	callback_reset_fire = _callback_reset_fire
 	callback_fire = _callback_fire
 	callback_display_ammo = _callback_display_ammo
+	callback_set_firing = _callback_set_firing
 
 /datum/component/automatedfire/autofire/Destroy(force, silent)
 	QDEL_NULL(callback_fire)
 	QDEL_NULL(callback_reset_fire)
 	QDEL_NULL(callback_bursting)
 	QDEL_NULL(callback_display_ammo)
+	QDEL_NULL(callback_set_firing)
 	return ..()
 
 ///Setter for fire mode
@@ -126,8 +130,7 @@
 			bursting = TRUE
 			next_fire = world.time + burstfire_shot_delay
 		if(GUN_FIREMODE_AUTOMATIC)
-			var/obj/item/weapon/gun/parent_gun = parent
-			parent_gun.fa_firing = TRUE
+			callback_set_firing.Invoke(TRUE)
 			next_fire = world.time + auto_fire_shot_delay
 		if(GUN_FIREMODE_SEMIAUTO)
 			return

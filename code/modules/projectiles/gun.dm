@@ -135,9 +135,6 @@
 	///Click parameters to use when firing full-auto
 	var/fa_params = null
 
-	//Targeting.
-	///List of who yer targeting.
-	//var/tmp/list/mob/living/target
 	///Used to fire faster at more than one person.
 	var/tmp/mob/living/last_moved_mob
 	var/tmp/lock_time = -100
@@ -276,7 +273,7 @@
 		AddElement(/datum/element/drop_retrieval/gun, auto_retrieval_slot)
 	update_icon() //for things like magazine overlays
 	gun_firemode = gun_firemode_list[1] || GUN_FIREMODE_SEMIAUTO
-	AddComponent(/datum/component/automatedfire/autofire, fa_delay, burst_delay, burst_amount, gun_firemode, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
+	AddComponent(/datum/component/automatedfire/autofire, fa_delay, burst_delay, burst_amount, gun_firemode, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
 
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()
 	attachable_offset = null
@@ -1084,8 +1081,6 @@ and you're good to go.
 	*/
 	var/check_for_attachment_fire = 0
 
-	//Number of bullets based on burst. If an active attachable is shooting, bursting is always zero.
-	var/bullets_to_fire = 1
 	if(active_attachable?.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
 		check_for_attachment_fire = 1
 		if(!(active_attachable.flags_attach_features & ATTACH_PROJECTILE)) //If it's unique projectile, this is where we fire it.
@@ -1105,10 +1100,8 @@ and you're good to go.
 	the gun is not firing, it will break a lot of stuff. BREAK is fine, as it will null it.
 	*/
 	else if((gun_firemode == GUN_FIREMODE_BURSTFIRE) && burst_amount > BURST_AMOUNT_TIER_1)
-		bullets_to_fire = burst_amount
 		flags_gun_features |= GUN_BURST_FIRING
 		if(PB_burst_bullets_fired) //Has a burst been carried over from a PB?
-			bullets_to_fire -= PB_burst_bullets_fired
 			PB_burst_bullets_fired = 0 //Don't need this anymore. The torch is passed.
 
 	//Dual wielding. Do we have a gun in the other hand, is it loaded, and is it the same category?
@@ -1750,7 +1743,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/proc/reset_fire()
 	shots_fired = 0//Let's clean everything
 	set_target(null)
-	fa_firing = FALSE
+	set_auto_firing(FALSE)
 
 /// setter for fire_delay
 /obj/item/weapon/gun/proc/modify_fire_delay(value)
@@ -1836,7 +1829,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(QDELETED(object))
 		return
 	set_target(get_turf_on_clickcatcher(object, gun_user, params))
-	if(gun_firemode == GUN_FIREMODE_SEMIAUTO)
+	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) || active_attachable)
 		Fire(object, gun_user, modifiers)
 		reset_fire()
 		display_ammo()
@@ -1851,3 +1844,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(!user)
 		user = src.gun_user
 	return Fire(target, user, params, reflex, dual_wield)
+
+/// Setter proc for fa_firing
+/obj/item/weapon/gun/proc/set_auto_firing(auto = FALSE)
+	fa_firing = auto

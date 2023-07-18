@@ -384,6 +384,13 @@ Additional game mode variables.
 			// No cache, lets check now then
 			message_alien_candidates(get_alien_candidates(), dequeued = 0, cache_only = TRUE)
 			if(candidate_observer.larva_queue_cached_message)
+				var/datum/hive_status/cur_hive
+				for(var/hive_num in GLOB.hive_datum)
+					cur_hive = GLOB.hive_datum[hive_num]
+					for(var/mob_name in cur_hive.banished_ckeys)
+						if(cur_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
+							candidate_observer.larva_queue_cached_message += "\n" + SPAN_WARNING("NOTE: You are banished from the [cur_hive] and you may not rejoin unless the Queen re-admits you or dies. Your queue number won't update until there is a hive you aren't banished from.")
+							break
 				to_chat(xeno_candidate, candidate_observer.larva_queue_cached_message)
 				return FALSE
 

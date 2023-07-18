@@ -209,3 +209,14 @@
       so they can still be found correctly.
   theselfish:
   - rscadd: SOs may now get coats in their vendor.
+2023-07-17:
+  Puckaboo2:
+  - spellcheck: Some duplicate icon states have been differentiated to prevent future
+      missing icon state errors.
+  - imageadd: Added new icon states for chemical and virology dispensers.
+  - rscdel: Removed dozens of duplicate icon states from over 50 files to reduce bloat.
+  - rscdel: Removed duplicate empty icon states.
+  realforest2001:
+  - maptweak: Added Apollo Maintenance Controllers to the following locations.
+  - maptweak: Astronavigation, CIC Substation, Brig Substation, Req Aux Storage, Hangar
+      & OT & Engineering workshops, Reactor Core Room and Lifeboat Control Ring.

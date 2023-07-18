@@ -5,20 +5,20 @@ export class CanvasLayer extends Component {
   constructor(props) {
     super(props);
     this.canvasRef = createRef();
-    
+
     // color selection
     // using this.state prevents unpredictable behavior
     this.state = {
       selection: this.props.selection,
     };
-   
+
     // needs to be of type png of jpg
     this.img = null;
     this.imageSrc = this.props.imageSrc;
-    
+
     // stores the stacked lines
     this.lineStack = [];
-    
+
     // stores the individual line drawn
     this.currentLine = [];
 
@@ -77,7 +77,7 @@ export class CanvasLayer extends Component {
       return;
     }
 
-     // defaults to black sometimes, it's a bug I think maybe.
+    // defaults to black sometimes, it's a bug I think maybe.
     this.ctx.strokeStyle = this.state.selection;
 
     const rect = this.canvasRef.current.getBoundingClientRect();
@@ -136,7 +136,7 @@ export class CanvasLayer extends Component {
       }
       const line = this.lineStack[this.lineStack.length - 1];
 
-       // selects last color before line is yeeted, this is buggy sometimes.
+      // selects last color before line is yeeted, this is buggy sometimes.
       const prevColor = line[0][4];
       this.lineStack.pop();
 
@@ -169,11 +169,11 @@ export class CanvasLayer extends Component {
       return;
     }
 
-  if (selection === 'export') {
-    const svgData = this.convertToSVG();
-    this.props.onImageExport(svgData);
-    return;
-  }
+    if (selection === 'export') {
+      const svgData = this.convertToSVG();
+      this.props.onImageExport(svgData);
+      return;
+    }
 
     this.setState({ selection: selection });
   };
@@ -186,7 +186,7 @@ export class CanvasLayer extends Component {
 
   drawCanvas() {
     this.img.onload = () => {
-        // this onload may or may not be causing problems.
+      // this onload may or may not be causing problems.
       this.ctx.drawImage(
         this.img,
         0,
@@ -198,11 +198,11 @@ export class CanvasLayer extends Component {
   }
 
   convertToSVG() {
-    const svgNS = "http://www.w3.org/2000/svg";
+    const svgNS = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(svgNS, 'svg');
     svg.setAttributeNS(null, 'width', this.canvasRef.current.width);
     svg.setAttributeNS(null, 'height', this.canvasRef.current.height);
-  
+
     const lines = this.lineStack.flat();
     lines.forEach(([lastX, lastY, x, y, colorSelection]) => {
       const line = document.createElementNS(svgNS, 'line');
@@ -215,12 +215,12 @@ export class CanvasLayer extends Component {
       line.setAttributeNS(null, 'stroke-linecap', 'round');
       svg.appendChild(line);
     });
-  
+
     const serializer = new XMLSerializer();
     const serializedSvg = serializer.serializeToString(svg);
     const base64Svg = btoa(serializedSvg);
     const dataUrl = `data:image/svg+xml;base64,${base64Svg}`;
-  
+
     return dataUrl;
   }
 

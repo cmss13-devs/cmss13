@@ -88,10 +88,10 @@
 	var/obj/effect/alien/weeds/any_weeds
 	for(var/obj/effect/alien/weeds/weed in T)
 		if(weed.weed_strength >= WEED_LEVEL_HIVE && weed.linked_hive.hivenumber == hivenumber)
-			hive_weeds = Weed
+			hive_weeds = weed
 			break
 		if(weed.weed_strength >= WEED_LEVEL_WEAK && weed.linked_hive.hivenumber == hivenumber) //check for ANY weeds
-			any_weeds = Weed
+			any_weeds = weed
 
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(!any_weeds && !hive_weeds) //you need at least some weeds to plant on.

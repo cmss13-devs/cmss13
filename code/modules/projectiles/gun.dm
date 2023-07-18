@@ -926,6 +926,12 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 			// \\
 //----------------------------------------------------------
 
+/obj/item/weapon/gun/afterattack(atom/A, mob/living/user, flag, params)
+	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE)) //this is expected to do something in melee.
+		active_attachable.fire_attachment(A, src, user)
+		return TRUE
+	return ..()
+
 /**
 load_into_chamber(), reload_into_chamber(), and clear_jam() do all of the heavy lifting.
 If you need to change up how a gun fires, just change these procs for that subtype

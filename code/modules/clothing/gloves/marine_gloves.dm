@@ -27,10 +27,8 @@
 
 /obj/item/clothing/gloves/marine/get_mob_overlay(mob/living/carbon/human/current_human, slot)
 	var/image/ret = ..()
-	if(!adopts_squad_color)
-		return
-	if(!(current_human.assigned_squad && current_human.assigned_squad.equipment_color))
-		return
+	if(!adopts_squad_color || !(current_human.assigned_squad && current_human.assigned_squad.equipment_color))
+		return ret
 	var/image/glove_overlay = image(squad_overlay_icon, icon_state = "std-gloves")
 	glove_overlay.alpha = current_human.assigned_squad.armor_alpha
 	glove_overlay.color = current_human.assigned_squad.equipment_color

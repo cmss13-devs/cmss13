@@ -688,7 +688,7 @@ DEFINES in setup.dm, referenced here.
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE_MODE_TOGGLE, gun_firemode)
 
 /obj/item/weapon/gun/proc/add_firemode(added_firemode, mob/user)
-	gun_firemode_list += added_firemode
+	gun_firemode_list |= added_firemode
 
 	if(!length(gun_firemode_list))
 		CRASH("add_firemode called with a resulting gun_firemode_list length of [length(gun_firemode_list)].")

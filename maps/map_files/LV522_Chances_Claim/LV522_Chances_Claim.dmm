@@ -48552,8 +48552,7 @@
 "ttf" = (
 /obj/effect/landmark/corpsespawner/forecon_spotter,
 /obj/item/weapon/gun/rifle/m41a{
-	current_mag = null;
-	layer = 4
+	current_mag = null
 	},
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/blood,

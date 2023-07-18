@@ -1466,6 +1466,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return TRUE
+	if(user.stat >= UNCONSCIOUS)
+		return
 	if(world.time < guaranteed_delay_time)
 		return
 	if((world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_NO_FIRE > 0))

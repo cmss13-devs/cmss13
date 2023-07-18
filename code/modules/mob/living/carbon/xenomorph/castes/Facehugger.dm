@@ -67,6 +67,11 @@
 		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/facehugger/Life(delta_time)
+	if(!client && !aghosted && away_timer > XENO_FACEHUGGER_LEAVE_TIMER)
+		// Become a npc once again
+		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
+		qdel(src)
+		return
 	if(stat != DEAD && !lying && !(locate(/obj/effect/alien/weeds) in get_turf(src)))
 		adjustBruteLoss(1)
 	return ..()

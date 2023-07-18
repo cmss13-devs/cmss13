@@ -612,13 +612,12 @@
 	name = "explosive pouch"
 	desc = "It can carry grenades, plastic explosives, mine boxes, and other explosives."
 	icon_state = "large_explosive"
-	storage_slots = 3
+	storage_slots = 6
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/explosive/plastic,
 		/obj/item/explosive/mine,
 		/obj/item/explosive/grenade,
-		/obj/item/storage/box/explosive_mines,
 	)
 
 /obj/item/storage/pouch/explosive/attackby(obj/item/W, mob/user)

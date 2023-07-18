@@ -216,23 +216,25 @@
 
 /obj/effect/landmark/yautja_teleport
 	name = "yautja_teleport"
+	/// The index we registered as in mainship_yautja_desc or yautja_teleport_descs
+	var/desc_index
 
 /obj/effect/landmark/yautja_teleport/Initialize(mapload, ...)
 	. = ..()
-	var/turf/T = get_turf(src)
+	var/turf/turf = get_turf(src)
+	desc_index = turf.loc.name + turf.loc_to_string()
 	if(is_mainship_level(z))
 		GLOB.mainship_yautja_teleports += src
-		GLOB.mainship_yautja_desc[T.loc.name + T.loc_to_string()] = src
+		GLOB.mainship_yautja_desc[desc_index] = src
 	else
 		GLOB.yautja_teleports += src
-		GLOB.yautja_teleport_descs[T.loc.name + T.loc_to_string()] = src
+		GLOB.yautja_teleport_descs[desc_index] = src
 
 /obj/effect/landmark/yautja_teleport/Destroy()
-	var/turf/T = get_turf(src)
 	GLOB.mainship_yautja_teleports -= src
 	GLOB.yautja_teleports -= src
-	GLOB.mainship_yautja_desc -= T.loc.name + T.loc_to_string()
-	GLOB.yautja_teleport_descs -= T.loc.name + T.loc_to_string()
+	GLOB.mainship_yautja_desc -= desc_index
+	GLOB.yautja_teleport_descs -= desc_index
 	return ..()
 
 

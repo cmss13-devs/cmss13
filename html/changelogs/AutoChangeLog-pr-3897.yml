@@ -1,0 +1,5 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - balance: "Explosive pouch inventory size from 3 to 6"
+  - balance: "Explosive pouch can no longer hold mine boxes"

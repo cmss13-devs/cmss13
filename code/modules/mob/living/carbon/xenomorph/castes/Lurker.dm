@@ -165,4 +165,4 @@
 	if(!lurker_invisibility_action)
 		return
 
-	lurker_invisibility_action.invisibility_off()
+	animate(bound_xeno, alpha = 75, time = 0.1 SECONDS, easing = QUAD_EASING)

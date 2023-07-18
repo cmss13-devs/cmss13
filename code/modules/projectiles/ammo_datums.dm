@@ -377,6 +377,11 @@
 	stamina_damage = 25
 	shrapnel_chance = 0
 
+// Reskinned rubber bullet used for the ES-4 CL pistol.
+/datum/ammo/bullet/pistol/rubber/stun
+	name = "stun pistol bullet"
+	sound_override = null
+
 // Used by M1911, Deagle and KT-42
 /datum/ammo/bullet/pistol/heavy
 	name = "heavy pistol bullet"

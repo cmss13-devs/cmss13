@@ -1103,7 +1103,7 @@ and you're good to go.
 	If burst = 1, you must null it if you ever RETURN during the for() cycle. If for whatever reason burst is left on while
 	the gun is not firing, it will break a lot of stuff. BREAK is fine, as it will null it.
 	*/
-	else if((gun_firemode == GUN_FIREMODE_BURSTFIRE) && burst_amount > 1)
+	else if((gun_firemode == GUN_FIREMODE_BURSTFIRE) && burst_amount > BURST_AMOUNT_TIER_1)
 		bullets_to_fire = burst_amount
 		flags_gun_features |= GUN_BURST_FIRING
 		if(PB_burst_bullets_fired) //Has a burst been carried over from a PB?
@@ -1219,11 +1219,6 @@ and you're good to go.
 			click_empty(user)
 			break //Nothing else to do here, time to cancel out.
 
-		//if(bullets_fired < bullets_to_fire) // We still have some bullets to fire.
-		//	extra_delay = fire_delay * 0.5
-		//	sleep(burst_delay)
-	//if(!(flags_gun_features & GUN_BURST_FIRING))
-	//display_ammo(user)
 	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done, mainly for when we break early mid-burstfire.
 	return AUTOFIRE_CONTINUE
 
@@ -1344,7 +1339,7 @@ and you're good to go.
 
 	var/bullets_to_fire = 1
 
-	if(!check_for_attachment_fire && (gun_firemode == GUN_FIREMODE_BURSTFIRE) && burst_amount > 1)
+	if(!check_for_attachment_fire && (gun_firemode == GUN_FIREMODE_BURSTFIRE) && burst_amount > BURST_AMOUNT_TIER_1)
 		bullets_to_fire = burst_amount
 		flags_gun_features |= GUN_BURST_FIRING
 
@@ -1766,7 +1761,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	burst_amount += value
 	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED, burst_amount)
 
-	if(burst_amount < 2)
+	if(burst_amount < BURST_AMOUNT_TIER_2)
 		if(GUN_FIREMODE_BURSTFIRE in gun_firemode_list)
 			remove_firemode(GUN_FIREMODE_BURSTFIRE, user)
 	else

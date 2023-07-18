@@ -2,7 +2,7 @@
 	name = "\improper ColMarTech Senior Officer Equipment Rack"
 	desc = "An automated equipment vendor for Senior Officers."
 	req_access = list(ACCESS_MARINE_SENIOR)
-	vendor_role = list(JOB_CHIEF_POLICE,JOB_CMO,JOB_XO,JOB_CHIEF_ENGINEER,JOB_CHIEF_REQUISITION)
+	vendor_role = list(JOB_CHIEF_POLICE,JOB_CMO,JOB_XO,JOB_CSO,JOB_CHIEF_ENGINEER,JOB_CHIEF_REQUISITION)
 
 /obj/structure/machinery/cm_vending/clothing/senior_officer/get_listed_products(mob/user)
 	if(!user)
@@ -13,7 +13,7 @@
 		combined += GLOB.cm_vending_clothing_cmo
 		combined += GLOB.cm_vending_clothing_military_police_chief
 		return combined
-	if(user.job == JOB_XO)
+	if(user.job == JOB_XO || JOB_CSO)
 		return GLOB.cm_vending_clothing_xo
 	else if(user.job == JOB_CHIEF_ENGINEER)
 		return GLOB.cm_vending_clothing_chief_engineer

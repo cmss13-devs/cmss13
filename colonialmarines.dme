@@ -704,6 +704,7 @@
 #include "code\game\jobs\job\command\auxiliary\senior.dm"
 #include "code\game\jobs\job\command\cic\captain.dm"
 #include "code\game\jobs\job\command\cic\executive.dm"
+#include "code\game\jobs\job\command\cic\operations.dm"
 #include "code\game\jobs\job\command\cic\staffofficer.dm"
 #include "code\game\jobs\job\command\police\chief_police.dm"
 #include "code\game\jobs\job\command\police\police.dm"

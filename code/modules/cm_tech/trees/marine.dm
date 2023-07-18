@@ -11,6 +11,7 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 	var/mob/living/carbon/human/dead_leader
 	var/job_cannot_be_overriden = list(
 		JOB_XO,
+		JOB_CSO,
 		JOB_CO
 	)
 

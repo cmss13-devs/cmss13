@@ -20,6 +20,7 @@
 			if(JOB_SQUAD_MEDIC) marine_rk = "med"
 			if(JOB_SQUAD_SMARTGUN) marine_rk = "gun"
 			if(JOB_XO) marine_rk = "xo"
+			if(JOB_CSO) marine_rk = "cso"
 			if(JOB_CO) marine_rk = "co"
 			if(JOB_GENERAL) marine_rk = "general"
 			if(JOB_PILOT) marine_rk = "po"
@@ -73,6 +74,9 @@
 				border_rk = "command"
 			if(JOB_CO)
 				marine_rk = "co"
+				border_rk = "command"
+			if(JOB_CSO)
+				marine_rk = "cso"
 				border_rk = "command"
 			if(JOB_SO)
 				marine_rk = "so"

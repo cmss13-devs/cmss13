@@ -280,9 +280,10 @@
 	var/agility = FALSE
 	var/ripping_limb = FALSE
 	var/steelcrest = FALSE
-	// Related to zooming out (primarily queen and boiler)
-	var/devour_timer = 0 // The world.time at which we will regurgitate our currently-vored victim
-	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
+	/// The world.time at which we will regurgitate our currently-vored victim
+	var/devour_timer = 0
+	/// For drones/hivelords. Extends the maximum build range they have
+	var/extra_build_dist = 0
 	/// tiles from self you can plant eggs.
 	var/egg_planting_range = 1
 	var/can_stack_builds = FALSE

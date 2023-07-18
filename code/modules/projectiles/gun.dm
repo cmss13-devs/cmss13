@@ -265,6 +265,7 @@
 	set_gun_attachment_offsets()
 	set_gun_config_values()
 	set_bullet_traits()
+	setup_firemodes()
 	update_force_list() //This gives the gun some unique attack verbs for attacking.
 	handle_starting_attachment()
 	handle_random_attachments()

@@ -629,8 +629,8 @@
 /obj/item/weapon/gun/rifle/m46c/recalculate_attachment_bonuses()
 	. = ..()
 	if(iff_enabled)
-		fire_delay += FIRE_DELAY_TIER_10
-		burst_amount -=  BURST_AMOUNT_TIER_6
+		modify_burst_amount(-BURST_AMOUNT_TIER_6)
+		modify_fire_delay(FIRE_DELAY_TIER_10)
 
 		add_firemode(GUN_FIREMODE_BURSTFIRE) //Zonenote
 	else

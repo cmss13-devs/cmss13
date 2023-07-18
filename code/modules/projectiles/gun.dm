@@ -390,8 +390,9 @@
 	//Add attachment bonuses
 	for(var/slot in attachments)
 		var/obj/item/attachable/R = attachments[slot]
-		if(!R) continue
-		fire_delay += R.delay_mod
+		if(!R)
+			continue
+		modify_fire_delay(R.delay_mod)
 		accuracy_mult += R.accuracy_mod
 		accuracy_mult_unwielded += R.accuracy_unwielded_mod
 		scatter += R.scatter_mod
@@ -404,7 +405,7 @@
 		effective_range_max += R.range_max_mod
 		recoil += R.recoil_mod
 		burst_scatter_mult += R.burst_scatter_mod
-		burst_amount += R.burst_mod
+		modify_burst_amount(R.burst_mod)
 		recoil_unwielded += R.recoil_unwielded_mod
 		aim_slowdown += R.aim_speed_mod
 		wield_delay += R.wield_delay_mod

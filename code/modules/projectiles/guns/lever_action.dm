@@ -123,7 +123,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		var/obj/item/attachable/AM = attachments[slot]
 		if(AM.damage_mod || AM.delay_mod)
 			damage_mult += AM.damage_mod
-			fire_delay += AM.delay_mod
+			modify_fire_delay(AM.delay_mod)
 	wield_delay = 0 //for one-handed levering
 
 /obj/item/weapon/gun/lever_action/proc/reset_hit_buff(mob/user, one_hand_lever)
@@ -488,7 +488,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		var/obj/item/attachable/AM = attachments[slot]
 		if(AM && (AM.damage_mod || AM.delay_mod))
 			damage_mult += AM.damage_mod
-			fire_delay += AM.delay_mod
+			modify_fire_delay(AM.delay_mod)
 	wield_delay = 0 //for one-handed levering
 
 /obj/item/weapon/gun/lever_action/xm88/Fire(atom/target, mob/living/user, params, reflex, dual_wield)

@@ -573,16 +573,6 @@
 	flashlight.Attach(src)
 	update_attachable(flashlight.slot)
 
-/obj/item/weapon/gun/pistol/mod88/training
-	current_mag = /obj/item/ammo_magazine/pistol/mod88/rubber
-
-
-/obj/item/weapon/gun/pistol/mod88/flashlight/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/flashlight/flashlight = new(src)
-	flashlight.Attach(src)
-	update_attachable(flashlight.slot)
-
 //-------------------------------------------------------
 // ES-4 - Basically a CL-exclusive reskin of the 88 mod 4 that only uses less-lethal ammo.
 

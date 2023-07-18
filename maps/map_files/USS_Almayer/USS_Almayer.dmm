@@ -1363,17 +1363,12 @@
 	},
 /area/almayer/lifeboat_pumps/north2)
 "aeD" = (
-/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	req_one_access = null;
-	req_one_access_txt = "2;7"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door"
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	dir = 1;
+	name = "\improper Chief Staff officer bunks"
 	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor4"
+	icon_state = "mono"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
 "aeE" = (
@@ -7808,16 +7803,11 @@
 	},
 /area/almayer/command/lifeboat)
 "ayh" = (
-/obj/structure/machinery/power/smes/buildable,
-/obj/structure/sign/safety/hazard{
-	pixel_x = 15;
-	pixel_y = -32
-	},
-/obj/structure/sign/safety/high_voltage{
-	pixel_y = -32
+/obj/structure/closet/secure_closet/personal/cabinet{
+	req_access = null
 	},
 /turf/open/floor/almayer{
-	icon_state = "orange"
+	icon_state = "blue"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
 "ayi" = (
@@ -9933,28 +9923,22 @@
 	},
 /area/almayer/living/numbertwobunks)
 "aFp" = (
-/obj/structure/machinery/light/small{
-	dir = 1
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/clipboard{
+	pixel_x = 4
 	},
-/obj/structure/closet/toolcloset,
+/obj/item/storage/fancy/cigarettes/lady_finger{
+	pixel_y = 5
+	},
 /turf/open/floor/almayer{
 	dir = 9;
-	icon_state = "orange"
+	icon_state = "blue"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
 "aFq" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/station_alert,
-/obj/structure/sign/safety/maint{
-	pixel_x = 32
-	},
-/obj/structure/sign/safety/terminal{
-	pixel_x = 8;
-	pixel_y = 32
-	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "orange"
+	icon_state = "blue"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
 "aFr" = (
@@ -10335,13 +10319,12 @@
 	},
 /area/almayer/living/numbertwobunks)
 "aHo" = (
-/obj/structure/machinery/computer/working_joe{
-	dir = 4;
-	pixel_x = -17
+/obj/structure/bed/chair/office/dark{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "orange"
+	icon_state = "blue"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
 "aHq" = (
@@ -10428,12 +10411,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/engineering/upper_engineering)
-"aHB" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "orange"
-	},
-/area/almayer/hull/upper_hull/u_f_p)
 "aHK" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -10511,16 +10488,19 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_missiles)
 "aIa" = (
-/obj/structure/machinery/power/terminal,
-/turf/open/floor/almayer,
-/area/almayer/hull/upper_hull/u_f_p)
-"aIb" = (
-/obj/structure/machinery/light/small{
-	dir = 4
+/obj/structure/machinery/cm_vending/clothing/senior_officer{
+	density = 0;
+	pixel_y = 30
 	},
 /turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/almayer/hull/upper_hull/u_f_p)
+"aIb" = (
+/turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "orange"
+	icon_state = "blue"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
 "aIe" = (
@@ -12211,11 +12191,12 @@
 	},
 /area/almayer/living/offices)
 "aQs" = (
-/obj/structure/surface/table/almayer,
-/obj/item/tool/extinguisher,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
+	},
 /turf/open/floor/almayer{
 	dir = 10;
-	icon_state = "orange"
+	icon_state = "blue"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
 "aQt" = (
@@ -12406,12 +12387,11 @@
 	},
 /area/almayer/living/bridgebunks)
 "aRr" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/toolbox,
-/obj/item/storage/firstaid/o2,
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "orange"
+	icon_state = "blue"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
 "aRt" = (
@@ -12997,24 +12977,6 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/aft_hallway)
-"aTR" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 2;
-	id = "CIC Lockdown";
-	layer = 2.2;
-	name = "\improper Combat Information Center Blast Door"
-	},
-/obj/structure/machinery/door/airlock/almayer/engineering/reinforced{
-	dir = 1;
-	name = "\improper Command Power Substation"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/hull/upper_hull/u_f_p)
 "aTS" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -25058,13 +25020,9 @@
 	},
 /area/almayer/engineering/lower_engineering)
 "bZH" = (
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "orange"
+	icon_state = "blue"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
 "bZJ" = (
@@ -53025,18 +52983,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/main_office)
-"nxK" = (
-/obj/structure/sign/safety/high_voltage{
-	pixel_y = -32
-	},
-/obj/structure/sign/safety/hazard{
-	pixel_x = 15;
-	pixel_y = -32
-	},
-/turf/open/floor/almayer{
-	icon_state = "blue"
-	},
-/area/almayer/hallways/aft_hallway)
 "nyj" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "docdecal2"
@@ -76757,8 +76703,8 @@
 /obj/effect/spawner/random/toolbox,
 /obj/structure/machinery/computer/working_joe{
 	dir = 4;
-	pixel_y = 14;
-	pixel_x = -17
+	pixel_x = -17;
+	pixel_y = 14
 	},
 /turf/open/floor/almayer{
 	dir = 10;
@@ -102162,10 +102108,10 @@ aiX
 lzj
 amO
 bYe
-aTR
-gpe
-gpe
+qFl
 aIa
+gpe
+gpe
 ayh
 qFl
 aSt
@@ -102364,10 +102310,10 @@ aiX
 aiX
 ukh
 amO
-nxK
-qFl
+avj
+aeD
 aFq
-aHB
+aIb
 aIb
 aRr
 qFl
@@ -102570,7 +102516,7 @@ amO
 avm
 qFl
 qFl
-aeD
+qFl
 qFl
 qFl
 qFl

@@ -1033,6 +1033,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /obj/item/clothing/suit/storage/marine/ghillie/forecon
 	name = "USCM Thermal Parka"
 	desc = "FORECON"
+	icon_state = "mercenary_miner_armor"
+	flags_atom = MOB_LOCK_ON_EQUIP|NO_SNOW_TYPE
 
 /obj/item/clothing/suit/storage/marine/sof
 	name = "\improper SOF Armor"

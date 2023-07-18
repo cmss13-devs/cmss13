@@ -129,7 +129,7 @@
 	///How many full-auto shots to get to max scatter?
 	var/fa_scatter_peak = 8
 	///How bad does the scatter get on full auto?
-	var/fa_max_scatter = 5
+	var/fa_max_scatter = 8.5
 	///The delay when firing full-auto
 	var/fa_delay = 2.5
 	///Click parameters to use when firing full-auto
@@ -926,12 +926,6 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 			// \\
 //----------------------------------------------------------
 
-/obj/item/weapon/gun/afterattack(atom/A, mob/living/user, flag, params)
-	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE)) //this is expected to do something in melee.
-		active_attachable.fire_attachment(A, src, user)
-		return TRUE
-	return ..()
-
 /**
 load_into_chamber(), reload_into_chamber(), and clear_jam() do all of the heavy lifting.
 If you need to change up how a gun fires, just change these procs for that subtype
@@ -1090,7 +1084,7 @@ and you're good to go.
 	if(active_attachable?.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
 		check_for_attachment_fire = 1
 		if(!(active_attachable.flags_attach_features & ATTACH_PROJECTILE)) //If it's unique projectile, this is where we fire it.
-			if(active_attachable.current_rounds <= 0)
+			if((active_attachable.current_rounds <= 0) && !(active_attachable.flags_attach_features & ATTACH_IGNORE_EMPTY))
 				click_empty(user) //If it's empty, let them know.
 				to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
 				to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
@@ -1644,7 +1638,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	// Note that full auto uses burst scatter multipliers
 	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
 		// The longer you fire full-auto, the worse the scatter gets
-		var/bullet_amt_scat = min((fa_shots/fa_scatter_peak) * fa_max_scatter, fa_max_scatter)
+		var/bullet_amt_scat = min((fa_shots / fa_scatter_peak) * fa_max_scatter, fa_max_scatter)
 		if(flags_item & WIELDED)
 			total_scatter_angle += max(0, bullet_amt_scat * burst_scatter_mult)
 		else

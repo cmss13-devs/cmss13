@@ -2429,7 +2429,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "flamer_nozzle_a_1"
 	w_class = SIZE_MEDIUM
 	slot = "under"
-	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_WEAPON|ATTACH_MELEE
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_WEAPON|ATTACH_MELEE|ATTACH_IGNORE_EMPTY
 	pixel_shift_x = 4
 	pixel_shift_y = 14
 

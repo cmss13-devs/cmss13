@@ -499,6 +499,7 @@
 		LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
 		))
+	recalculate_attachment_bonuses()
 
 /obj/item/weapon/gun/rifle/m46c/Destroy()
 	linked_human = null
@@ -617,6 +618,7 @@
 		to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] Action denied by [src]. Unauthorized user."))
 		return
 
+	gun_firemode = GUN_FIREMODE_SEMIAUTO
 	iff_enabled = !iff_enabled
 	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [iff_enabled? "enable": "disable"] the IFF on [src]."))
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
@@ -630,12 +632,11 @@
 /obj/item/weapon/gun/rifle/m46c/recalculate_attachment_bonuses()
 	. = ..()
 	if(iff_enabled)
-		modify_burst_amount(-BURST_AMOUNT_TIER_6)
 		modify_fire_delay(FIRE_DELAY_TIER_10)
-
-		add_firemode(GUN_FIREMODE_BURSTFIRE) //Zonenote
-	else
 		remove_firemode(GUN_FIREMODE_BURSTFIRE)
+
+	else
+		add_firemode(GUN_FIREMODE_BURSTFIRE)
 
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(mob/living/carbon/human/H)

@@ -361,6 +361,7 @@
 		)
 	wield_delay = WIELD_DELAY_NONE
 	aim_slowdown = SLOWDOWN_ADS_NONE
+	gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO, GUN_FIREMODE_AUTOMATIC)
 
 /obj/item/weapon/gun/smg/mac15/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 20,"rail_x" = 16, "rail_y" = 22, "under_x" = 22, "under_y" = 16, "stock_x" = 22, "stock_y" = 16)
@@ -368,12 +369,9 @@
 /obj/item/weapon/gun/smg/mac15/set_gun_config_values()
 	..()
 
-	/* commented out until better fullauto code
 	fa_delay = FIRE_DELAY_TIER_10
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_7
 	fa_max_scatter = SCATTER_AMOUNT_TIER_3
-	*/
-
 	fire_delay = FIRE_DELAY_TIER_10
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_5
@@ -413,6 +411,7 @@
 		)
 	wield_delay = WIELD_DELAY_MIN
 	aim_slowdown = SLOWDOWN_ADS_QUICK
+	gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO, GUN_FIREMODE_AUTOMATIC)
 	var/jammed = FALSE
 
 /obj/item/weapon/gun/smg/uzi/set_gun_attachment_offsets()
@@ -421,12 +420,9 @@
 /obj/item/weapon/gun/smg/uzi/set_gun_config_values()
 	..()
 
-	/* commented out until better fullauto code
 	fa_delay = FIRE_DELAY_TIER_9
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_5
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
-	*/
-
 	fire_delay = FIRE_DELAY_TIER_9
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2

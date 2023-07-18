@@ -79,15 +79,17 @@
 #define MOVES_WHEN_LEVERING (1<<2)
 
 //Gun attachable related flags.
-#define ATTACH_REMOVABLE 1
-#define ATTACH_ACTIVATION 2
+#define ATTACH_REMOVABLE (1<<0)
+#define ATTACH_ACTIVATION (1<<1)
 /// for attachments that fire bullets
-#define ATTACH_PROJECTILE 4
-#define ATTACH_RELOADABLE 8
+#define ATTACH_PROJECTILE (1<<2)
+#define ATTACH_RELOADABLE (1<<3)
 /// is a weapon that fires stuff
-#define ATTACH_WEAPON 16
+#define ATTACH_WEAPON (1<<4)
+/// This attachment should override ignore if it is empty
+#define ATTACH_IGNORE_EMPTY (1<<5)
 /// This attachment should activate if you attack() with it attached.
-#define ATTACH_MELEE 32
+#define ATTACH_MELEE (1<<6)
 
 //Ammo magazine defines, for flags_magazine
 

@@ -124,8 +124,6 @@
 	// Full auto
 	///Whether or not the gun is firing full-auto
 	var/fa_firing = FALSE
-	///How many shots have been fired using full-auto. Used to figure out scatter
-	var/fa_shots = 0
 	///How many full-auto shots to get to max scatter?
 	var/fa_scatter_peak = 8
 	///How bad does the scatter get on full auto?
@@ -1637,7 +1635,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	// Note that full auto uses burst scatter multipliers
 	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
 		// The longer you fire full-auto, the worse the scatter gets
-		var/bullet_amt_scat = min((fa_shots / fa_scatter_peak) * fa_max_scatter, fa_max_scatter)
+		var/bullet_amt_scat = min((shots_fired / fa_scatter_peak) * fa_max_scatter, fa_max_scatter)
 		if(flags_item & WIELDED)
 			total_scatter_angle += max(0, bullet_amt_scat * burst_scatter_mult)
 		else

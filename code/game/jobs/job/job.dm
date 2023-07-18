@@ -221,7 +221,7 @@
 	var/mob/living/carbon/human/new_character = new(NP.loc)
 	new_character.lastarea = get_area(NP.loc)
 
-	NP.client.prefs.copy_all_to(new_character)
+	NP.client.prefs.copy_all_to(new_character, title)
 
 	if (NP.client.prefs.be_random_body)
 		var/datum/preferences/TP = new()

@@ -63,6 +63,7 @@
 		start_processing()
 		set_range()
 	update_icon()
+	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(unset_range))
 
 /obj/structure/machinery/defenses/sentry/Destroy() //Clear these for safety's sake.
 	targets = null
@@ -107,7 +108,9 @@
 			range_bounds = RECT(x, y - 4, 7, 7)
 
 /obj/structure/machinery/defenses/sentry/proc/unset_range()
-	qdel(range_bounds)
+	SIGNAL_HANDLER
+	if(range_bounds)
+		QDEL_NULL(range_bounds)
 
 /obj/structure/machinery/defenses/sentry/update_icon()
 	..()
@@ -367,7 +370,7 @@
 				targets.Remove(A)
 				continue
 
-			if(M.get_target_lock(faction_group) || M.invisibility)
+			if(M.get_target_lock(faction_group) || M.invisibility || HAS_TRAIT(M, TRAIT_ABILITY_BURROWED))
 				if(M == target)
 					target = null
 				targets.Remove(M)
@@ -536,11 +539,13 @@
 	choice_categories = list()
 	selected_categories = list()
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
+	var/obj/structure/machinery/camera/cas/linked_cam
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
 	if(deployment_system)
 		deployment_system.deployed_turret = null
 		deployment_system = null
+	QDEL_NULL(linked_cam)
 	. = ..()
 
 #define SENTRY_SNIPER_RANGE 10

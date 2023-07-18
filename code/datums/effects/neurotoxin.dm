@@ -21,9 +21,8 @@
 	/// Stamina damage per tick. Major balance number.
 	var/stam_dam = 7
 
-/datum/effects/neurotoxin/New(atom/thing)
-	..(thing)
-	cause_data = create_cause_data("neurotoxic gas")
+/datum/effects/neurotoxin/New(atom/thing, mob/from = null)
+	..(thing, from, effect_name)
 
 /datum/effects/neurotoxin/validate_atom(atom/thing)
 	if(isxeno(thing) || isobj(thing))
@@ -36,9 +35,10 @@
 	var/mob/living/carbon/affected_mob = affected_atom
 	if(!.)
 		return FALSE
-	if(affected_mob.stat)
+	if(affected_mob.stat == DEAD)
 		return
 // General effects
+	affected_mob.last_damage_data = cause_data
 	affected_mob.apply_stamina_damage(stam_dam)
 	affected_mob.make_dizzy(12)
 

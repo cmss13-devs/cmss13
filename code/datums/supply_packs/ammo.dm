@@ -308,15 +308,17 @@
 
 //------------------------Smartgunner stuff----------------
 
-/datum/supply_packs/ammo_smartgun_powerpack
-	name = "M56 smartgun powerpack crate (x2)"
+/datum/supply_packs/ammo_smartgun_battery_pack
+	name = "M56 smartgun battery crate (x4)"
 	contains = list(
-		/obj/item/smartgun_powerpack,
-		/obj/item/smartgun_powerpack,
+		/obj/item/smartgun_battery,
+		/obj/item/smartgun_battery,
+		/obj/item/smartgun_battery,
+		/obj/item/smartgun_battery,
 	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper smartgun powerpacks crate"
+	containername = "\improper smartgun battery crate"
 	group = "Ammo"
 
 /datum/supply_packs/ammo_smartgun

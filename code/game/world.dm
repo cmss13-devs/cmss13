@@ -98,7 +98,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	// If the server's configured for local testing, get everything set up ASAP.
 	// Shamelessly stolen from the test manager's host_tests() proc
 	if(testing_locally)
-		master_mode = "extended"
+		master_mode = "Extended"
 
 		// Wait for the game ticker to initialize
 		while(!SSticker.initialized)

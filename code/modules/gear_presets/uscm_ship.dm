@@ -198,6 +198,7 @@
 		ACCESS_MARINE_MAINT,
 		ACCESS_MARINE_OT,
 		ACCESS_MARINE_SYNTH,
+		ACCESS_MARINE_AI,
 	)
 	assignment = JOB_CHIEF_ENGINEER
 	rank = JOB_CHIEF_ENGINEER
@@ -510,7 +511,7 @@
 
 /datum/equipment_preset/uscm_ship/xo/New()
 	. = ..()
-	access = get_all_marine_access() - ACCESS_MARINE_CAPTAIN
+	access = get_main_marine_access()
 
 /datum/equipment_preset/uscm_ship/xo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -581,7 +582,7 @@
 
 /datum/equipment_preset/uscm_ship/sea/New()
 	. = ..()
-	access = get_all_marine_access() - ACCESS_MARINE_CAPTAIN
+	access = get_main_marine_access()
 
 /datum/equipment_preset/uscm_ship/sea/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -733,7 +734,7 @@
 
 /datum/equipment_preset/uscm_ship/officer/New()
 	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
+	access = get_all_marine_access()
 
 /datum/equipment_preset/uscm_ship/officer/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels

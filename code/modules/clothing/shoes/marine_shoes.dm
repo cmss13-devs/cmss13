@@ -63,6 +63,16 @@
 /obj/item/clothing/shoes/marine/upp_knife
 	knife_type = /obj/item/attachable/bayonet/upp
 
+/obj/item/clothing/shoes/marine/joe
+	name = "biohazard boots"
+	desc = "A pair of somewhat cheaply made biohazard boots. Tomorrow, Together."
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	knife_type = /obj/item/attachable/bayonet
+
 /obj/item/clothing/shoes/dress
 	name = "dress shoes"
 	desc = "Pre-polished fancy dress shoes. You can see your reflection in them."

@@ -243,7 +243,7 @@
 	spawning = TRUE
 	close_spawn_windows()
 
-	var/mob/living/carbon/human/character = create_character() //creates the human and transfers vars and mind
+	var/mob/living/carbon/human/character = create_character(TRUE) //creates the human and transfers vars and mind
 	RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], late_join = TRUE)
 	EquipCustomItems(character)
 
@@ -349,7 +349,7 @@
 	show_browser(src, dat, "Late Join", "latechoices", "size=420x700")
 
 
-/mob/new_player/proc/create_character()
+/mob/new_player/proc/create_character(is_late_join = FALSE)
 	spawning = TRUE
 	close_spawn_windows()
 
@@ -368,7 +368,7 @@
 
 	new_character.lastarea = get_area(loc)
 
-	client.prefs.copy_all_to(new_character)
+	client.prefs.copy_all_to(new_character, job, is_late_join)
 
 	if (client.prefs.be_random_body)
 		var/datum/preferences/TP = new()

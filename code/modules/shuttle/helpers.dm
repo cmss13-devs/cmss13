@@ -8,7 +8,8 @@
 
 /datum/door_controller/aggregate/Destroy(force, ...)
 	. = ..()
-	QDEL_NULL_LIST(door_controllers)
+	QDEL_LIST_ASSOC_VAL(door_controllers)
+	door_controllers = null
 
 /datum/door_controller/aggregate/proc/set_label(label)
 	for(var/datum/door_controller/single/cont in door_controllers)

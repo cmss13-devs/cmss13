@@ -50,6 +50,7 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/xenohide,
 		/datum/action/xeno_action/activable/pounce/facehugger,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -66,7 +67,12 @@
 		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/facehugger/Life(delta_time)
-	if(stat != DEAD && !lying)
+	if(!client && !aghosted && away_timer > XENO_FACEHUGGER_LEAVE_TIMER)
+		// Become a npc once again
+		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
+		qdel(src)
+		return
+	if(stat != DEAD && !lying && !(locate(/obj/effect/alien/weeds) in get_turf(src)))
 		adjustBruteLoss(1)
 	return ..()
 
@@ -143,9 +149,9 @@
 
 /mob/living/carbon/xenomorph/facehugger/proc/handle_hug(mob/living/carbon/human/human)
 	var/obj/item/clothing/mask/facehugger/hugger = new /obj/item/clothing/mask/facehugger(loc, hivenumber)
-	var/did_hug = hugger.attach(human, TRUE, 0.5)
+	var/did_hug = hugger.attach(human, TRUE, 0.5, client?.ckey)
 	if(client)
-		client?.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
+		client.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
 	var/area/hug_area = get_area(src)
 	if(hug_area)
 		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)

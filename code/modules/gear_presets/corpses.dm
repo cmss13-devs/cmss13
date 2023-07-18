@@ -16,28 +16,32 @@
 
 /datum/equipment_preset/corpse/load_status(mob/living/carbon/human/new_human)
 	. = ..(new_human)
+
+	// These two values matter because they are checked on death for weed_food
+	new_human.undefibbable = TRUE
+	if(xenovictim)
+		new_human.chestburst = 2
+
 	new_human.death(create_cause_data("existing"), TRUE) //Kills the new mob
 	new_human.apply_damage(100, BRUTE)
 	new_human.apply_damage(100, BRUTE)
 	new_human.apply_damage(100, BRUTE)
 	if(xenovictim)
-		var/datum/internal_organ/O
+		var/datum/internal_organ/organ
 		var/i
 		for(i in list("heart","lungs"))
-			O = new_human.internal_organs_by_name[i]
+			organ = new_human.internal_organs_by_name[i]
 			new_human.internal_organs_by_name -= i
-			new_human.internal_organs -= O
-		new_human.chestburst = 2
+			new_human.internal_organs -= organ
 		new_human.update_burst()
 		//buckle to nest
-		var/obj/structure/bed/nest/N = locate() in get_turf(src)
-		if(N)
-			new_human.buckled = N
-			new_human.setDir(N.dir)
+		var/obj/structure/bed/nest/nest = locate() in get_turf(src)
+		if(nest)
+			new_human.buckled = nest
+			new_human.setDir(nest.dir)
 			new_human.update_canmove()
-			N.buckled_mob = new_human
-			N.afterbuckle(new_human)
-	new_human.undefibbable = TRUE
+			nest.buckled_mob = new_human
+			nest.afterbuckle(new_human)
 	new_human.spawned_corpse = TRUE
 	new_human.updatehealth()
 	new_human.pulse = PULSE_NONE
@@ -217,7 +221,7 @@
 /datum/equipment_preset/corpse/clown/New()
 	. = ..()
 	//As a joke, clown has all access so they can clown everywhere...
-	access = get_all_accesses()
+	access = get_all_main_access()
 
 /datum/equipment_preset/corpse/clown/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..() //To load gender, randomise appearance, etc.
@@ -711,7 +715,7 @@
 	assignment = "Colonial Liberation Front Soldier"
 	idtype = /obj/item/card/id/silver
 	xenovictim = FALSE
-	faction = FACTION_UPP
+	faction = FACTION_CLF
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -753,6 +757,7 @@
 	assignment = "Union of Progressive Peoples Soldier"
 	idtype = /obj/item/card/id/silver
 	xenovictim = FALSE
+	faction = FACTION_UPP
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -792,10 +797,10 @@
 /datum/equipment_preset/corpse/pmc
 	name = "Corpse - Weyland-Yutani PMC (Standard)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	assignment = "Weyland-Yutani PMC (Standard)"
+	assignment = JOB_PMC_STANDARD
 	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
-	rank = JOB_PMC
+	rank = JOB_PMC_STANDARD
 	paygrade = "PMC-OP"
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc

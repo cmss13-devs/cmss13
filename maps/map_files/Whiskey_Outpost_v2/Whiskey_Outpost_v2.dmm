@@ -1048,7 +1048,7 @@
 /obj/item/device/healthanalyzer,
 /obj/item/device/healthanalyzer,
 /obj/item/device/healthanalyzer,
-/obj/item/weapon/gun/shotgun/double/sawn,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -8232,7 +8232,7 @@
 /area/whiskey_outpost/outside/north/platform)
 "Dw" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/weapon/gun/shotgun/double/sawn,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/wood,
 /area/whiskey_outpost/inside/caves/caverns)
 "Dy" = (

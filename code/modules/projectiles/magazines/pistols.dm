@@ -8,7 +8,7 @@
 	caliber = "9mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m4a3"
-	max_rounds = 9
+	max_rounds = 12
 	w_class = SIZE_SMALL
 	default_ammo = /datum/ammo/bullet/pistol
 	gun_type = /obj/item/weapon/gun/pistol/m4a3
@@ -55,7 +55,7 @@
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = ".45"
 	icon_state = "m4a345"//rename later
-	max_rounds = 14
+	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/pistol/m1911
 
 

@@ -210,8 +210,8 @@
 		to_chat(user, SPAN_DANGER("The Bluespace portal resists your attempt to add another item.")) //light failure
 	else
 		to_chat(user, SPAN_DANGER("The Bluespace generator malfunctions!"))
-		for (var/obj/O in src.contents) //it broke, delete what was in it
-			qdel(O)
+		for (var/obj/thing in contents) //it broke, delete what was in it
+			qdel(thing)
 		crit_fail = 1
 		icon_state = "brokenpack"
 
@@ -883,17 +883,21 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 					return
 	. = ..()
 
-/obj/item/storage/backpack/marine/engineerpack/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
+/obj/item/storage/backpack/marine/engineerpack/afterattack(obj/target, mob/user, proximity)
+	if(!proximity)
 		return
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
-		O.reagents.trans_to(src, max_fuel)
-		to_chat(user, SPAN_NOTICE(" You crack the cap off the top of the pack and fill it back up again from the tank."))
-		playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
-		return
-	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
-		to_chat(user, SPAN_NOTICE(" The pack is already full!"))
-		return
+	if(istype(target, /obj/structure/reagent_dispensers))
+		if(!(istypestrict(target, /obj/structure/reagent_dispensers/fueltank)))
+			to_chat(user, SPAN_NOTICE("This must be filled with a fuel tank."))
+			return
+		if(reagents.total_volume < max_fuel)
+			target.reagents.trans_to(src, max_fuel)
+			to_chat(user, SPAN_NOTICE("You crack the cap off the top of the pack and fill it back up again from the tank."))
+			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
+			return
+		if(reagents.total_volume == max_fuel)
+			to_chat(user, SPAN_NOTICE("The pack is already full!"))
+			return
 	..()
 
 /obj/item/storage/backpack/marine/engineerpack/get_examine_text(mob/user)
@@ -918,6 +922,42 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	max_fuel = 500
 	fuel_type = "utnapthal"
 	has_gamemode_skin = TRUE
+
+/obj/item/storage/backpack/marine/engineerpack/flamethrower/verb/remove_reagents()
+	set name = "Empty canister"
+	set category = "Object"
+
+	set src in usr
+
+	if(usr.get_active_hand() != src)
+		return
+
+	if(alert(usr, "Do you really want to empty out [src]?", "Empty canister", "Yes", "No") != "Yes")
+		return
+
+	reagents.clear_reagents()
+
+	playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
+	to_chat(usr, SPAN_NOTICE("You empty out [src]"))
+	update_icon()
+
+//this is to revert change for the backpack that are for flametrower usage.
+// so that they can use custom mix to refill those backpack
+/obj/item/storage/backpack/marine/engineerpack/flamethrower/afterattack(obj/target, mob/user, proximity)
+	if(!proximity)
+		return
+	if (!(istype(target, /obj/structure/reagent_dispensers/fueltank)))
+		return
+
+	if (reagents.total_volume >= max_fuel)
+		to_chat(user, SPAN_NOTICE("The pack is already full!"))
+		return
+
+	if(reagents.total_volume < max_fuel)
+		target.reagents.trans_to(src, max_fuel)
+		to_chat(user, SPAN_NOTICE("You crack the cap off the top of the pack and fill it back up again from the tank."))
+		playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
+		return
 
 /obj/item/storage/backpack/marine/engineerpack/flamethrower/attackby(obj/item/W, mob/living/user)
 	if (istype(W, /obj/item/ammo_magazine/flamer_tank))

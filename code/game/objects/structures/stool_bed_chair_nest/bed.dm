@@ -208,6 +208,20 @@
 			return
 	..()
 
+/obj/structure/bed/roller/Collided(atom/movable/moving_atom)
+	if(!isxeno(moving_atom))
+		return ..()
+
+	if(buckled_mob && buckled_mob.stat != DEAD)
+		return ..()
+
+	if(buckled_bodybag)
+		var/mob/mob_in_bodybag = locate(/mob) in buckled_bodybag
+		if(mob_in_bodybag && mob_in_bodybag.stat != DEAD)
+			return ..()
+
+	return
+
 /obj/item/roller
 	name = "roller bed"
 	desc = "A collapsed roller bed that can be carried around."

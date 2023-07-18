@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - balance: "Burrowers are now unable to burrow while inside a non-burrow area"

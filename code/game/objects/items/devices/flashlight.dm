@@ -286,7 +286,7 @@
 
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
-	fuel = rand(1600 SECONDS, 2000 SECONDS)
+	fuel = rand(9.5 MINUTES, 10.5 MINUTES)
 
 /obj/item/device/flashlight/flare/update_icon()
 	overlays?.Cut()
@@ -416,7 +416,7 @@
 
 /obj/item/device/flashlight/flare/on/illumination/Initialize()
 	. = ..()
-	fuel = rand(800 SECONDS, 1000 SECONDS) // Half the duration of a flare, but justified since it's invincible
+	fuel = rand(4.5 MINUTES, 5.5 MINUTES) // Half the duration of a flare, but justified since it's invincible
 
 /obj/item/device/flashlight/flare/on/illumination/update_icon()
 	return

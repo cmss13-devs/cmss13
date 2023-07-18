@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - rscadd: "Added optional adaptive client zooming to match in-game zoom. This allows display to be pixel perfect on most monitors if enabled, it removes blurring of game introduced by Stretch to Fit mode, at the cost of slightly reduced vertical size. It is best used with Auto Fit viewport feature enabled."

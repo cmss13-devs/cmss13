@@ -12,6 +12,8 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/faction = FACTION_XENOMORPH
 	var/flags_embryo = FALSE // Used in /ciphering/predator property
+	/// The ckey of any player hugger that made this embryo
+	var/hugger_ckey
 
 /obj/item/alien_embryo/Initialize(mapload, ...)
 	. = ..()
@@ -20,8 +22,8 @@
 		affected_mob.status_flags |= XENO_HOST
 		START_PROCESSING(SSobj, src)
 		if(iscarbon(affected_mob))
-			var/mob/living/carbon/C = affected_mob
-			C.med_hud_set_status()
+			var/mob/living/carbon/affected_carbon = affected_mob
+			affected_carbon.med_hud_set_status()
 	else
 		return INITIALIZE_HINT_QDEL
 
@@ -29,10 +31,11 @@
 	if(affected_mob)
 		affected_mob.status_flags &= ~(XENO_HOST)
 		if(iscarbon(affected_mob))
-			var/mob/living/carbon/C = affected_mob
-			C.med_hud_set_status()
+			var/mob/living/carbon/affected_carbon = affected_mob
+			affected_carbon.med_hud_set_status()
 		STOP_PROCESSING(SSobj, src)
 		affected_mob = null
+	GLOB.player_embryo_list -= src
 	. = ..()
 
 /obj/item/alien_embryo/process()
@@ -45,24 +48,24 @@
 		affected_mob.status_flags &= ~(XENO_HOST)
 		STOP_PROCESSING(SSobj, src)
 		if(iscarbon(affected_mob))
-			var/mob/living/carbon/C = affected_mob
-			C.med_hud_set_status()
+			var/mob/living/carbon/affected_carbon = affected_mob
+			affected_carbon.med_hud_set_status()
 		affected_mob = null
 		return FALSE
 
 	if(affected_mob.stat == DEAD)
 		if(ishuman(affected_mob))
-			var/mob/living/carbon/human/H = affected_mob
-			if(world.time > H.timeofdeath + H.revive_grace_period) //Can't be defibbed.
-				var/mob/living/carbon/xenomorph/larva/L = locate() in affected_mob
-				if(L)
-					L.chest_burst(affected_mob)
+			var/mob/living/carbon/human/affected_human = affected_mob
+			if(world.time > affected_human.timeofdeath + affected_human.revive_grace_period) //Can't be defibbed.
+				var/mob/living/carbon/xenomorph/larva/larva_embryo = locate() in affected_mob
+				if(larva_embryo)
+					larva_embryo.chest_burst(affected_mob)
 				qdel(src)
 				return FALSE
 		else
-			var/mob/living/carbon/xenomorph/larva/L = locate() in affected_mob
-			if(L)
-				L.chest_burst(affected_mob)
+			var/mob/living/carbon/xenomorph/larva/larva_embryo = locate() in affected_mob
+			if(larva_embryo)
+				larva_embryo.chest_burst(affected_mob)
 			STOP_PROCESSING(SSobj, src)
 			return FALSE
 
@@ -86,12 +89,12 @@
 			if(stage < 5)
 				counter += 1 * hive.larva_gestation_multiplier
 
-		if(stage < 5 && counter >= 120)
+		if(stage < 5 && counter >= 90)
 			counter = 0
 			stage++
 			if(iscarbon(affected_mob))
-				var/mob/living/carbon/C = affected_mob
-				C.med_hud_set_status()
+				var/mob/living/carbon/affected_carbon = affected_mob
+				affected_carbon.med_hud_set_status()
 
 	switch(stage)
 		if(2)
@@ -129,9 +132,9 @@
 		if(6)
 			larva_autoburst_countdown--
 			if(!larva_autoburst_countdown)
-				var/mob/living/carbon/xenomorph/larva/L = locate() in affected_mob
-				if(L)
-					L.chest_burst(affected_mob)
+				var/mob/living/carbon/xenomorph/larva/larva_embryo = locate() in affected_mob
+				if(larva_embryo)
+					larva_embryo.chest_burst(affected_mob)
 
 //We look for a candidate. If found, we spawn the candidate as a larva
 //Order of priority is bursted individual (if xeno is enabled), then random candidate, and then it's up for grabs and spawns braindead
@@ -145,19 +148,40 @@
 
 	var/mob/picked
 	// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva.
-	if((!isyautja(affected_mob) || (isyautja(affected_mob) && prob(20))) && istype(affected_mob.buckled,  /obj/structure/bed/nest))
-		if(affected_mob.first_xeno || (affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, JOB_XENOMORPH)))
+	if((!isyautja(affected_mob) || (isyautja(affected_mob) && prob(20))) && istype(affected_mob.buckled, /obj/structure/bed/nest))
+		if(affected_mob.first_xeno || (affected_mob.client?.prefs?.be_special & BE_ALIEN_AFTER_DEATH && !jobban_isbanned(affected_mob, JOB_XENOMORPH)))
 			picked = affected_mob
-		else if(affected_mob.mind && affected_mob.mind.ghost_mob && affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, JOB_XENOMORPH))
-			picked = affected_mob.mind.ghost_mob
-
+		else if(affected_mob.mind?.ghost_mob && affected_mob.client?.prefs?.be_special & BE_ALIEN_AFTER_DEATH && !jobban_isbanned(affected_mob, JOB_XENOMORPH))
+			picked = affected_mob.mind.ghost_mob // This currently doesn't look possible
+		else if(affected_mob.persistent_ckey)
+			for(var/mob/dead/observer/cur_obs as anything in GLOB.observer_list)
+				if(cur_obs.ckey != affected_mob.persistent_ckey)
+					continue
+				if(cur_obs?.client?.prefs?.be_special & BE_ALIEN_AFTER_DEATH && !jobban_isbanned(cur_obs, JOB_XENOMORPH))
+					picked = cur_obs
+				break
 
 	if(!picked)
 		// Get a candidate from observers
-		var/list/candidates = get_alien_candidates()
-
+		var/list/candidates = get_alien_candidates(hive)
 		if(candidates && candidates.len)
-			picked = pick(candidates)
+			// If they were facehugged by a player thats still in queue, they get second dibs on the new larva.
+			if(hugger_ckey)
+				for(var/mob/dead/observer/cur_obs as anything in candidates)
+					if(cur_obs.ckey == hugger_ckey)
+						picked = cur_obs
+						candidates -= cur_obs
+						message_alien_candidates(candidates, dequeued = 0)
+						for(var/obj/item/alien_embryo/embryo as anything in GLOB.player_embryo_list)
+							if(embryo.hugger_ckey == cur_obs.ckey && embryo != src)
+								// Skipping src just in case an admin wants to quickly check before this thing fully deletes
+								// If this nulls out any embryo, wow
+								embryo.hugger_ckey = null
+						break
+
+			if(!picked)
+				picked = candidates[1]
+				message_alien_candidates(candidates, dequeued = 1)
 
 	// Spawn the larva
 	var/mob/living/carbon/xenomorph/larva/new_xeno
@@ -239,36 +263,37 @@
 
 	victim.spawn_gibs()
 
-	for(var/mob/living/carbon/xenomorph/larva/L in victim)
-		var/datum/hive_status/hive = GLOB.hive_datum[L.hivenumber]
-		L.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
-		playsound(L, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
+	for(var/mob/living/carbon/xenomorph/larva/larva_embryo in victim)
+		var/datum/hive_status/hive = GLOB.hive_datum[larva_embryo.hivenumber]
+		larva_embryo.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
+		playsound(larva_embryo, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
 
-		if(L.client)
-			L.set_lighting_alpha_from_prefs(L.client)
+		if(larva_embryo.client)
+			larva_embryo.set_lighting_alpha_from_prefs(larva_embryo.client)
 
-		L.attack_log += "\[[time_stamp()]\]<font color='red'> chestbursted from [key_name(victim)]</font>"
-		victim.attack_log += "\[[time_stamp()]\]<font color='orange'> Was chestbursted, larva was [key_name(L)]</font>"
+		larva_embryo.attack_log += "\[[time_stamp()]\]<font color='red'> chestbursted from [key_name(victim)]</font>"
+		victim.attack_log += "\[[time_stamp()]\]<font color='orange'> Was chestbursted, larva was [key_name(larva_embryo)]</font>"
 
 		if(burstcount)
-			step(L, pick(cardinal))
+			step(larva_embryo, pick(cardinal))
 
 		if(round_statistics)
 			round_statistics.total_larva_burst++
+		GLOB.larva_burst_by_hive[hive] = (GLOB.larva_burst_by_hive[hive] || 0) + 1
 		burstcount++
 
-		if(!L.ckey && L.burrowable && loc && is_ground_level(loc.z) && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
-			L.visible_message(SPAN_XENODANGER("[L] quickly burrows into the ground."))
-			if(round_statistics && !L.statistic_exempt)
+		if(!larva_embryo.ckey && larva_embryo.burrowable && loc && is_ground_level(loc.z) && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
+			larva_embryo.visible_message(SPAN_XENODANGER("[larva_embryo] quickly burrows into the ground."))
+			if(round_statistics && !larva_embryo.statistic_exempt)
 				round_statistics.track_new_participant(faction, -1) // keep stats sane
 			hive.stored_larva++
 			hive.hive_ui.update_burrowed_larva()
-			qdel(L)
+			qdel(larva_embryo)
 
 		if(!victim.first_xeno)
-			to_chat(L, SPAN_XENOHIGHDANGER("The Queen's will overwhelms your instincts..."))
-			to_chat(L, SPAN_XENOHIGHDANGER("\"[hive.hive_orders]\""))
-			log_attack("[key_name(victim)] chestbursted, the larva was [key_name(L)].") //this is so that admins are not spammed with los logs
+			to_chat(larva_embryo, SPAN_XENOHIGHDANGER("The Queen's will overwhelms your instincts..."))
+			to_chat(larva_embryo, SPAN_XENOHIGHDANGER("\"[hive.hive_orders]\""))
+			log_attack("[key_name(victim)] chestbursted, the larva was [key_name(larva_embryo)].") //this is so that admins are not spammed with los logs
 
 	for(var/obj/item/alien_embryo/AE in victim)
 		qdel(AE)
@@ -278,31 +303,31 @@
 		victim.gib(cause)
 	else
 		if(ishuman(victim))
-			var/mob/living/carbon/human/H = victim
-			H.last_damage_data = cause
+			var/mob/living/carbon/human/victim_human = victim
+			victim_human.last_damage_data = cause
 			var/datum/internal_organ/O
 			var/i
 			for(i in list("heart","lungs")) //This removes (and later garbage collects) both organs. No heart means instant death.
-				O = H.internal_organs_by_name[i]
-				H.internal_organs_by_name -= i
-				H.internal_organs -= O
+				O = victim_human.internal_organs_by_name[i]
+				victim_human.internal_organs_by_name -= i
+				victim_human.internal_organs -= O
 		victim.death(cause) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
 		victim.chestburst = 2
 		victim.update_burst()
 
 // Squeeze thru dense objects as a larva, as airlocks
-/mob/living/carbon/xenomorph/larva/proc/scuttle(obj/structure/S)
+/mob/living/carbon/xenomorph/larva/proc/scuttle(obj/structure/target)
 	var/move_dir = get_dir(src, loc)
-	for(var/atom/movable/AM in get_turf(S))
-		if(AM != S && AM.density && AM.BlockedPassDirs(src, move_dir))
-			to_chat(src, SPAN_WARNING("\The [AM] prevents you from squeezing under \the [S]!"))
+	for(var/atom/movable/AM in get_turf(target))
+		if(AM != target && AM.density && AM.BlockedPassDirs(src, move_dir))
+			to_chat(src, SPAN_WARNING("\The [AM] prevents you from squeezing under \the [target]!"))
 			return
 	// Is it an airlock?
-	if(istype(S, /obj/structure/machinery/door/airlock))
-		var/obj/structure/machinery/door/airlock/A = S
-		if(A.locked || A.welded) //Can't pass through airlocks that have been bolted down or welded
-			to_chat(src, SPAN_WARNING("\The [A] is locked down tight. You can't squeeze underneath!"))
+	if(istype(target, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/selected_airlock = target
+		if(selected_airlock.locked || selected_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
+			to_chat(src, SPAN_WARNING("\The [selected_airlock] is locked down tight. You can't squeeze underneath!"))
 			return
-	visible_message(SPAN_WARNING("\The [src] scuttles underneath \the [S]!"), \
-	SPAN_WARNING("You squeeze and scuttle underneath \the [S]."), null, 5)
-	forceMove(S.loc)
+	visible_message(SPAN_WARNING("\The [src] scuttles underneath \the [target]!"), \
+	SPAN_WARNING("You squeeze and scuttle underneath \the [target]."), null, 5)
+	forceMove(target.loc)

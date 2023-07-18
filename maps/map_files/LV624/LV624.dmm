@@ -866,7 +866,7 @@
 /area/lv624/ground/caves/south_east_caves)
 "aec" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/weapon/gun/shotgun/double,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "aed" = (
@@ -7940,7 +7940,7 @@
 "aIH" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/clothing/mask/cigarette/cigar,
-/obj/item/weapon/gun/shotgun/double/with_stock,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/lv624/ground/jungle/west_jungle/ceiling)
@@ -12062,7 +12062,7 @@
 /area/lv624/lazarus/comms)
 "aZi" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/chem_dispenser/beer{
+/obj/structure/machinery/chem_dispenser/soda/beer{
 	pixel_y = 26
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -14106,10 +14106,9 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/west_nexus_road)
 "fja" = (
-/obj/item/attachable/bayonet{
+/obj/item/weapon/unathiknife{
 	desc = "A curved blade made of a strange material. It looks both old and very sharp.";
 	force = 30;
-	icon_state = "unathiknife";
 	name = "\improper alien blade";
 	throwforce = 26
 	},
@@ -16137,7 +16136,7 @@
 "kRr" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/shotgun/full,
-/obj/item/weapon/gun/shotgun/double/with_stock,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_y = -6
 	},
@@ -17272,10 +17271,9 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "nED" = (
-/obj/item/attachable/bayonet{
+/obj/item/weapon/unathiknife{
 	desc = "A curved blade made of a strange material. It looks both old and very sharp.";
 	force = 30;
-	icon_state = "unathiknife";
 	name = "\improper alien blade";
 	throwforce = 26
 	},

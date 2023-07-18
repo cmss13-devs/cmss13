@@ -13093,7 +13093,7 @@
 /area/bigredv2/outside/c)
 "aKv" = (
 /obj/structure/bed/chair/wood/normal,
-/obj/item/weapon/gun/shotgun/double/with_stock,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -33890,7 +33890,7 @@
 	},
 /area/bigredv2/caves_sw)
 "pYE" = (
-/obj/item/weapon/gun/shotgun/double/sawn,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/shuttle/escapepod{
 	icon_state = "floor5"
 	},
@@ -37919,7 +37919,7 @@
 	pixel_y = 7
 	},
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/double/sawn,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/reagent_container/food/snacks/packaged_burger,
 /turf/open/floor/plating{
 	dir = 8;

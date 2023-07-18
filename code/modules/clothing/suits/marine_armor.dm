@@ -184,7 +184,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		new_look = GLOB.armor_style_list[user.client.prefs.preferred_armor]
 
 	icon_state = replacetext(icon_state,"1","[new_look]")
-	update_icon()
+	update_icon(user)
 
 /obj/item/clothing/suit/storage/marine/pickup(mob/user)
 	if(flags_marine_armor & ARMOR_LAMP_ON)
@@ -416,7 +416,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 
 /obj/item/clothing/suit/storage/marine/smartgunner
-	name = "M56 combat harness"
+	name = "\improper M56 combat harness"
 	desc = "A heavy protective vest designed to be worn with the M56 Smartgun System. \nIt has specially designed straps and reinforcement to carry the Smartgun and accessories."
 	icon_state = "8"
 	item_state = "armor"
@@ -446,6 +446,35 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		name = "M56 combat harness"
 	//select_gamemode_skin(type)
 
+/obj/item/clothing/suit/storage/marine/smartgunner/mob_can_equip(mob/equipping_mob, slot, disable_warning = FALSE)
+	. = ..()
+
+	if(equipping_mob.back)
+		to_chat(equipping_mob, SPAN_WARNING("You can't equip [src] while wearing a backpack."))
+		return FALSE
+
+/obj/item/clothing/suit/storage/marine/smartgunner/equipped(mob/user, slot, silent)
+	. = ..()
+
+	if(slot == WEAR_JACKET)
+		RegisterSignal(user, COMSIG_HUMAN_ATTEMPTING_EQUIP, PROC_REF(check_equipping))
+
+/obj/item/clothing/suit/storage/marine/smartgunner/proc/check_equipping(mob/living/carbon/human/equipping_human, obj/item/equipping_item, slot)
+	SIGNAL_HANDLER
+
+	if(slot != WEAR_BACK)
+		return
+
+	. = COMPONENT_HUMAN_CANCEL_ATTEMPT_EQUIP
+
+	if(equipping_item.flags_equip_slot == SLOT_BACK)
+		to_chat(equipping_human, SPAN_WARNING("You can't equip [equipping_item] on your back while wearing [src]."))
+		return
+
+/obj/item/clothing/suit/storage/marine/smartgunner/unequipped(mob/user, slot)
+	. = ..()
+
+	UnregisterSignal(user, COMSIG_HUMAN_ATTEMPTING_EQUIP)
 
 /obj/item/clothing/suit/storage/marine/leader
 	name = "\improper B12 pattern marine armor"
@@ -550,6 +579,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	storage_slots = 3
+	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	time_to_unequip = 0.5 SECONDS
 	time_to_equip = 1 SECONDS
 	uniform_restricted = null

@@ -52,6 +52,10 @@
 //from /mob/living/carbon/human/equip_to_slot()
 #define COMSIG_HUMAN_EQUIPPED_ITEM "human_equipped_item"
 
+/// From /mob/proc/equip_to_slot_if_possible()
+#define COMSIG_HUMAN_ATTEMPTING_EQUIP "human_attempting_equip"
+	#define COMPONENT_HUMAN_CANCEL_ATTEMPT_EQUIP (1<<0)
+
 //from /mob/living/carbon/human/Life()
 #define COMSIG_HUMAN_SET_UNDEFIBBABLE "human_set_undefibbable"
 

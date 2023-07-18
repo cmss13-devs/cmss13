@@ -4,67 +4,79 @@
 
 // Plant weeds
 /datum/action/xeno_action/onclick/plant_weeds/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check())
 		return
-	if(!X.check_state())
+	if(!xeno.check_state())
 		return
-	if(X.burrow)
-		return
-
-	var/turf/T = X.loc
-
-	if(!istype(T))
-		to_chat(X, SPAN_WARNING("You can't do that here."))
+	if(xeno.burrow)
 		return
 
-	var/is_weedable = T.is_weedable()
+	var/turf/turf = xeno.loc
+
+	if(!istype(turf))
+		to_chat(xeno, SPAN_WARNING("You can't do that here."))
+		return
+
+	if(turf.density)
+		to_chat(xeno, SPAN_WARNING("You can't do that here."))
+		return
+
+	var/is_weedable = turf.is_weedable()
 	if(!is_weedable)
-		to_chat(X, SPAN_WARNING("Bad place for a garden!"))
+		to_chat(xeno, SPAN_WARNING("Bad place for a garden!"))
 		return
 	if(!plant_on_semiweedable && is_weedable < FULLY_WEEDABLE)
-		to_chat(X, SPAN_WARNING("Bad place for a garden!"))
+		to_chat(xeno, SPAN_WARNING("Bad place for a garden!"))
 		return
 
-	var/obj/effect/alien/weeds/node/N = locate() in T
-	if(N && N.weed_strength >= X.weed_level)
-		to_chat(X, SPAN_WARNING("There's a pod here already!"))
+	var/obj/effect/alien/weeds/node/node = locate() in turf
+	if(node && node.weed_strength >= xeno.weed_level)
+		to_chat(xeno, SPAN_WARNING("There's a pod here already!"))
 		return
 
-	var/obj/effect/alien/resin/trap/resin_trap = locate() in T
+	var/obj/effect/alien/resin/trap/resin_trap = locate() in turf
 	if(resin_trap)
-		to_chat(X, SPAN_WARNING("You can't weed on top of a trap!"))
+		to_chat(xeno, SPAN_WARNING("You can't weed on top of a trap!"))
+		return
+
+	var/obj/effect/alien/weeds/weed = node || locate() in turf
+	if(weed && weed.weed_strength >= WEED_LEVEL_HIVE)
+		to_chat(xeno, SPAN_WARNING("These weeds are too strong to plant a node on!"))
+		return
+
+	for(var/obj/structure/struct in turf)
+		if(struct.density && !(struct.flags_atom & ON_BORDER)) // Not sure exactly if we need to test against ON_BORDER though
+			to_chat(xeno, SPAN_WARNING("You can't do that here."))
+			return
+
+	var/area/area = get_area(turf)
+	if(isnull(area) || !(area.is_resin_allowed))
+		if(area.flags_area & AREA_UNWEEDABLE)
+			to_chat(xeno, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
+			return
+		to_chat(xeno, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		return
+
+	if(!check_and_use_plasma_owner())
 		return
 
 	var/list/to_convert
-	if(N)
-		to_convert = N.children.Copy()
+	if(node)
+		to_convert = node.children.Copy()
 
-	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in T
-	if (W && W.weed_strength >= WEED_LEVEL_HIVE)
-		to_chat(X, SPAN_WARNING("These weeds are too strong to plant a node on!"))
-		return
-
-	var/area/AR = get_area(T)
-	if(isnull(AR) || !(AR.is_resin_allowed))
-		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
-		return
-
-	if (!check_and_use_plasma_owner())
-		return
-
-	X.visible_message(SPAN_XENONOTICE("\The [X] regurgitates a pulsating node and plants it on the ground!"), \
+	xeno.visible_message(SPAN_XENONOTICE("\The [xeno] regurgitates a pulsating node and plants it on the ground!"), \
 	SPAN_XENONOTICE("You regurgitate a pulsating node and plant it on the ground!"), null, 5)
-	var/obj/effect/alien/weeds/node/new_node = new node_type(X.loc, src, X)
+	var/obj/effect/alien/weeds/node/new_node = new node_type(xeno.loc, src, xeno)
 
 	if(to_convert)
-		for(var/weed in to_convert)
-			var/turf/target_turf = get_turf(weed)
+		for(var/cur_weed in to_convert)
+			var/turf/target_turf = get_turf(cur_weed)
 			if(target_turf && !target_turf.density)
 				new /obj/effect/alien/weeds(target_turf, new_node)
-			qdel(weed)
+			qdel(cur_weed)
 
-	playsound(X.loc, "alien_resin_build", 25)
+	playsound(xeno.loc, "alien_resin_build", 25)
 	apply_cooldown()
 	return ..()
 
@@ -597,6 +609,9 @@
 
 	var/area/AR = get_area(T)
 	if(isnull(AR) || !(AR.is_resin_allowed))
+		if(AR.flags_area & AREA_UNWEEDABLE)
+			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
+			return
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return FALSE
 
@@ -760,12 +775,12 @@
 	SPAN_XENOWARNING("You spit a [xeno.ammo.name] at [atom]!") )
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
+	var/obj/item/projectile/proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))
+	proj.generate_bullet(xeno.ammo)
+	proj.permutated += xeno
+	proj.def_zone = xeno.get_limbzone_target()
+	proj.fire_at(spit_target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
 
-	var/obj/item/projectile/Proj = new (current_turf, create_cause_data(initial(xeno.caste_type), xeno))
-	Proj.generate_bullet(xeno.ammo)
-	Proj.permutated += xeno
-	Proj.def_zone = xeno.get_limbzone_target()
-	Proj.fire_at(spit_target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
 	spitting = FALSE
 
 	SEND_SIGNAL(xeno, COMSIG_XENO_POST_SPIT)
@@ -985,7 +1000,10 @@
 
 	if(blunt_stab)
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes its tail into [target]'s [limb ? limb.display_name : "chest"], bashing it!"), SPAN_XENOWARNING("You swipe your tail into [target]'s [limb? limb.display_name : "chest"], bashing it!"))
-		playsound(target, "punch", 50, TRUE)
+		if(prob(1))
+			playsound(target, 'sound/effects/comical_bonk.ogg', 50, TRUE)
+		else
+			playsound(target, "punch", 50, TRUE)
 		// The xeno smashes the target with their tail, moving it to the side and thus their direction as well.
 		stab_direction = turn(stabbing_xeno.dir, pick(90, -90))
 		stab_overlay = "slam"

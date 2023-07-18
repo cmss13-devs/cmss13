@@ -52,6 +52,11 @@
 /obj/structure/machinery/door_control/attackby(obj/item/W, mob/user as mob)
 	return src.attack_hand(user)
 
+/obj/structure/machinery/door_control/ex_act(severity)
+	if(indestructible)
+		return FALSE
+	..()
+
 /obj/structure/machinery/door_control/proc/handle_dropship(ship_id)
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(ship_id)
 	if (!istype(shuttle))

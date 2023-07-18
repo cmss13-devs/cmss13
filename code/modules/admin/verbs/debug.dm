@@ -149,11 +149,11 @@
 		if (H.wear_id)
 			var/obj/item/card/id/id = H.wear_id
 			id.icon_state = "gold"
-			id:access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()
+			id:access = get_global_access()
 		else
 			var/obj/item/card/id/id = new/obj/item/card/id(M);
 			id.icon_state = "gold"
-			id:access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()
+			id:access = get_all_main_access()
 			id.registered_name = H.real_name
 			id.registered_ref = WEAKREF(H)
 			id.assignment = "Captain"

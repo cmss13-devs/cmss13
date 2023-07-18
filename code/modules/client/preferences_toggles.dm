@@ -201,13 +201,19 @@
 		to_chat(src, SPAN_BOLDNOTICE("The icon on your taskbar will no longer flash when an admin messages you. Warning, use at own risk."))
 
 //be special
-/client/verb/toggle_be_special(role in be_special_flags)
+/client/verb/toggle_be_special()
 	set name = "Toggle SpecialRole Candidacy"
 	set category = "Preferences"
 	set desc = "Toggles which special roles you would like to be a candidate for, during events."
-	var/role_flag = be_special_flags[role]
 
-	if(!role_flag) return
+	var/list/be_special_flags = list(
+		"Xenomorph after unrevivable death" = BE_ALIEN_AFTER_DEATH,
+		"Agent" = BE_AGENT,
+	)
+	var/role = tgui_input_list(usr, "Toggle which candidacy?", "Select role", be_special_flags)
+	if(!role)
+		return
+	var/role_flag = be_special_flags[role]
 	prefs.be_special ^= role_flag
 	prefs.save_preferences()
 	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible)."))
@@ -268,6 +274,7 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_click'>Toggle Middle Mouse Ability Activation</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ability_deactivation'>Toggle Ability Deactivation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
@@ -281,7 +288,7 @@
 	for (var/pref_button in pref_buttons)
 		dat += "[pref_button]\n"
 
-	var/height = 50+22*length(pref_buttons)
+	var/height = 50+24*length(pref_buttons)
 
 	show_browser(src, dat, "Toggle Preferences", "togglepreferences", "size=475x[height]")
 
@@ -347,6 +354,14 @@
 		to_chat(src, SPAN_NOTICE("Your selected ability will now be activated with middle clicking."))
 	else
 		to_chat(src, SPAN_NOTICE("Your selected ability will now be activated with shift clicking."))
+	prefs.save_preferences()
+
+/client/proc/toggle_ability_deactivation() // Toggle whether the current ability can be deactivated when re-selected
+	prefs.toggle_prefs ^= TOGGLE_ABILITY_DEACTIVATION_OFF
+	if (prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
+		to_chat(src, SPAN_NOTICE("Your current ability can no longer be toggled off when re-selected."))
+	else
+		to_chat(src, SPAN_NOTICE("Your current ability can be toggled off when re-selected."))
 	prefs.save_preferences()
 
 /client/proc/toggle_clickdrag_override() //Toggle whether mousedown clicks immediately when on disarm or harm intent to prevent click-dragging from 'eating' attacks.

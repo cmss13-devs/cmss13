@@ -1,4 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - refactor: "create many sub-type for item to clean the code."

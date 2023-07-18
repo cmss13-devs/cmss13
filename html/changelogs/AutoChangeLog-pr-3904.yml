@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - qol: "Added a preference to disable xeno ability deactivation when re-selecting the same ability"

@@ -164,5 +164,6 @@
 	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invisibility_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
 	if(!lurker_invisibility_action)
 		return
-
-	animate(bound_xeno, alpha = 75, time = 0.1 SECONDS, easing = QUAD_EASING)
+	to_chat(bound_xeno, SPAN_XENOWARNING("[bound_xeno.alpha]"))
+	animate(bound_xeno, alpha = 80, time = 0.1 SECONDS, easing = QUAD_EASING)
+	to_chat(bound_xeno, SPAN_XENOWARNING("[bound_xeno.alpha]"))

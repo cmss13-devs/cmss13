@@ -5928,6 +5928,7 @@
 /obj/item/device/radio/marine,
 /obj/item/device/radio/marine,
 /obj/item/device/radio/marine,
+/obj/item/folded_tent/cmd,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
@@ -15879,6 +15880,10 @@
 /obj/item/reagent_container/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner"
+	},
+/obj/item/folded_tent/med{
+	pixel_x = -8;
+	pixel_y = 14
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -29641,11 +29646,6 @@
 	pixel_x = 9
 	},
 /obj/item/reagent_container/pill/happy,
-/obj/item/stack/tile/plasteel{
-	layer = 2.5;
-	pixel_x = -8;
-	pixel_y = 4
-	},
 /obj/item/clothing/glasses/disco_fever{
 	pixel_x = -3;
 	pixel_y = -2
@@ -37919,18 +37919,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/vehiclehangar)
-"gCu" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/item/folded_tent/cmd,
-/turf/open/floor/almayer{
-	icon_state = "plating_striped"
-	},
-/area/almayer/squads/req)
 "gCw" = (
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_x = 10
@@ -40074,18 +40062,6 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"hBP" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/item/folded_tent/med,
-/turf/open/floor/almayer{
-	icon_state = "plating_striped"
-	},
-/area/almayer/squads/req)
 "hBU" = (
 /obj/structure/largecrate/random/secure,
 /obj/effect/decal/warning_stripes{
@@ -42087,8 +42063,9 @@
 /area/almayer/squads/delta)
 "ixN" = (
 /obj/structure/largecrate,
-/obj/item/prop/almayer/handheld1{
-	pixel_y = 12
+/obj/item/folded_tent/reqs{
+	pixel_x = -3;
+	pixel_y = 10
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -57095,18 +57072,6 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/aft_hallway)
-"pvF" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/item/folded_tent/reqs,
-/turf/open/floor/almayer{
-	icon_state = "plating_striped"
-	},
-/area/almayer/squads/req)
 "pvJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -71603,18 +71568,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/grunt_rnr)
-"vSr" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/item/folded_tent/big,
-/turf/open/floor/almayer{
-	icon_state = "plating_striped"
-	},
-/area/almayer/squads/req)
 "vSE" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/almayer{
@@ -74734,11 +74687,16 @@
 	desc = "A supply crate containing everything you need to stop a CLF uprising.";
 	name = "\improper USCM crate 'FOB supplies'"
 	},
-/obj/item/storage/box/mousetraps{
-	pixel_y = 12
-	},
 /obj/structure/sign/arcturianstopsign{
 	pixel_y = 32
+	},
+/obj/item/folded_tent/big{
+	pixel_y = 10;
+	pixel_x = -6
+	},
+/obj/item/storage/box/mousetraps{
+	pixel_y = 12;
+	pixel_x = 3
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -119280,7 +119238,7 @@ bEi
 bZr
 bmD
 ngw
-gCu
+pjG
 boz
 bpR
 bpR
@@ -119483,7 +119441,7 @@ brp
 bZr
 bmD
 xId
-hBP
+pjG
 boz
 bpR
 bpR
@@ -119889,7 +119847,7 @@ buz
 bZr
 bmD
 dmE
-pvF
+pjG
 boz
 bpR
 bpR
@@ -120092,7 +120050,7 @@ bEm
 bZr
 bmD
 hAc
-vSr
+pjG
 boz
 bpR
 bpR

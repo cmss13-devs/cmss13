@@ -112,7 +112,7 @@
 	icon_state = "cmd"
 	desc = "A standard USCM Command Tent. This one comes equipped with a self-powered Overwatch Console and a Telephone. Unfold in a suitable location to maximize usefulness. Staff Officer not included. ENTRANCE TO THE SOUTH."
 	dim_x = 2
-	dim_y = 3
+	dim_y = 4
 	off_x = -1
 	template = /datum/map_template/tent/cmd
 
@@ -121,7 +121,7 @@
 	icon_state = "med"
 	desc = "A standard USCM Medical Tent. This one comes equipped with advanced field surgery facilities. Unfold in a suitable location to maximize health gains. Surgical Tray not included. ENTRANCE TO THE SOUTH."
 	dim_x = 2
-	dim_y = 3
+	dim_y = 4
 	template = /datum/map_template/tent/med
 
 /obj/item/folded_tent/reqs
@@ -129,7 +129,7 @@
 	icon_state = "req"
 	desc = "A standard USCM Requisitions Tent. Now, you can enjoy req line anywhere you go! Unfold in a suitable location to maximize resource distribution. ASRS not included. ENTRANCE TO THE SOUTH."
 	dim_x = 4
-	dim_y = 3
+	dim_y = 4
 	off_x = -2
 	template = /datum/map_template/tent/reqs
 
@@ -138,7 +138,7 @@
 	icon_state = "big"
 	desc = "A standard USCM Tent. This one is just a bigger, general purpose version. Unfold in a suitable location for maximum FOB vibes. Mess Tech not included. ENTRANCE TO THE SOUTH."
 	dim_x = 3
-	dim_y = 3
+	dim_y = 4
 	off_x = -2
 	template = /datum/map_template/tent/big
 

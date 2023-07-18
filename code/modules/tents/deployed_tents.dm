@@ -3,6 +3,7 @@
 /obj/structure/tent
 	name = "tent"
 	icon = 'icons/obj/structures/tents_deployed_classic.dmi'
+	desc = "Can be torn down with an entrenching tool."
 	opacity = FALSE // Seems only the initial turf blocks light, not all of the multitile. Therefore, useless.
 	layer = INTERIOR_WALL_SOUTH_LAYER // This should be below FLY_LAYER but just thank chairs and other bs
 	health = 200
@@ -11,7 +12,7 @@
 	/// Turf dimensions along the X axis, beginning from left, at ground level
 	var/x_dim = 2
 	/// Turf dimensions along the Y axis, beginning from bottom, at ground level
-	var/y_dim = 3
+	var/y_dim = 4
 
 	/// How much cold protection to add to entering humans - Full body clothing means complete (1) protection
 	var/cold_protection_factor = 0.4
@@ -77,22 +78,45 @@
 /obj/structure/tent/attack_alien(mob/living/carbon/xenomorph/M)
 	if(unslashable)
 		return
-	health -= 20
+
+	M.animation_attack_on(src)
+	health -= rand(M.melee_damage_lower, M.melee_damage_upper)
+	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
+
+	M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"), \
+	SPAN_DANGER("You [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+
 	if(health <= 0)
 		visible_message(SPAN_BOLDWARNING("The [src] collapses!"))
-		qdel(src)
+		qdel(src)//need to unregister all the signal first? turn off roof plane for everyone inside?
+
+	return XENO_ATTACK_ACTION
+
+/obj/structure/tent/attackby(obj/item/item, mob/user)
+	var/obj/item/tool/shovel/shovel = item
+	if(istype(shovel) && !shovel.folded)
+		visible_message(SPAN_HIGHDANGER("[user] is trying to tear down the [src]"))
+		playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
+		if(do_after(user, 150, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, src) && !QDELETED(src))
+			visible_message(SPAN_HIGHDANGER("[user] tears down the [src]"))
+			playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
+			qdel(src)
+
+/obj/structure/tent/get_projectile_hit_boolean(obj/item/projectile/P)
+	return FALSE // Always fly through the tent
+
 
 /// Command tent, providing basics for field command: a phone, and an overwatch console
 /obj/structure/tent/cmd
 	icon_state = "cmd_interior"
 	roof_state = "cmd_top"
-	desc = "A standard USCM Command Tent. This one comes equipped with a self-powered Overwatch Console and a Telephone. It is very frail, do not burn, expose to sharp objects, or explosives."
+	desc = "A standard USCM Command Tent. This one comes equipped with a self-powered Overwatch Console and a Telephone. It is very frail, do not burn, expose to sharp objects, or explosives. Can be torn down with an entrenching tool."
 
 /// Medical tent, procures a buff to surgery speed
 /obj/structure/tent/med
 	icon_state = "med_interior"
 	roof_state = "med_top"
-	desc = "A standard USCM Medical Tent. This one comes equipped with advanced field surgery facilities. It is very fragile however and won't withstand the rigors of war."
+	desc = "A standard USCM Medical Tent. This one comes equipped with advanced field surgery facilities. It is very fragile however and won't withstand the rigors of war. Can be torn down with an entrenching tool."
 	var/surgery_speed_mult = 0.9
 	var/surgery_pain_reduction = 5
 

@@ -84,13 +84,13 @@
 	if(!user.check_plasma(30))
 		return
 
-	var/obj/effect/alien/weeds/hive_weeds = null
-	var/obj/effect/alien/weeds/any_weeds = null
-	for(var/obj/effect/alien/weeds/Weed in T)
-		if(Weed.weed_strength >= WEED_LEVEL_HIVE && Weed.linked_hive.hivenumber == hivenumber)
+	var/obj/effect/alien/weeds/hive_weeds
+	var/obj/effect/alien/weeds/any_weeds
+	for(var/obj/effect/alien/weeds/weed in T)
+		if(weed.weed_strength >= WEED_LEVEL_HIVE && weed.linked_hive.hivenumber == hivenumber)
 			hive_weeds = Weed
 			break
-		if(Weed.weed_strength >= WEED_LEVEL_WEAK && Weed.linked_hive.hivenumber == hivenumber) //check for ANY weeds
+		if(weed.weed_strength >= WEED_LEVEL_WEAK && weed.linked_hive.hivenumber == hivenumber) //check for ANY weeds
 			any_weeds = Weed
 
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
@@ -116,8 +116,8 @@
 	if(!user.check_plasma(30))
 		return
 
-	for(var/obj/effect/alien/weeds/Weed in T)
-		if(Weed.weed_strength >= WEED_LEVEL_HIVE || user.mutation_type == CARRIER_EGGSAC)
+	for(var/obj/effect/alien/weeds/weed in T)
+		if(weed.weed_strength >= WEED_LEVEL_HIVE || user.mutation_type == CARRIER_EGGSAC)
 			user.use_plasma(30)
 			var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T, hivenumber)
 

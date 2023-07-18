@@ -554,6 +554,9 @@
 /datum/equipment_preset/synth/working_joe/engi
 	name = "Synthetic - Hazmat Joe"
 
+/datum/equipment_preset/synth/working_joe/engi/load_race(mob/living/carbon/human/new_human)
+	new_human.set_species(SYNTH_HAZARD_JOE)
+
 /datum/equipment_preset/synth/working_joe/engi/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,2)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/joe(new_human), WEAR_FEET)

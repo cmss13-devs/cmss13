@@ -681,6 +681,8 @@ DEFINES in setup.dm, referenced here.
 		else
 			gun_firemode = gun_firemode_list[1]
 
+	playsound(source, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
+
 	if(ishuman(source))
 		to_chat(source, SPAN_NOTICE("[icon2html(src, source)] You switch to <b>[gun_firemode]</b>."))
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE_MODE_TOGGLE, gun_firemode)

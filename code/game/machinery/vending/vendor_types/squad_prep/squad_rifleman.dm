@@ -11,7 +11,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("Medium Armor", 0, /obj/item/clothing/suit/storage/marine/medium, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 		list("Heavy Armor", 0, /obj/item/clothing/suit/storage/marine/heavy, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 
-		//won't work until i add a marine can buy check
 		list("PRIMARY FIREARM GUNCASE(CHOOSE 1)", 0, null, null, null),
 		list("M4RA Battle Rifle guncase", 0, /obj/item/storage/box/guncase/m4ra, MARINE_CAN_BUY_PRIMARY, VENDOR_ITEM_REGULAR),
 		list("M37A2 Pump Shotgun guncase", 0, /obj/item/storage/box/guncase/pumpshotgun, MARINE_CAN_BUY_PRIMARY, VENDOR_ITEM_REGULAR),

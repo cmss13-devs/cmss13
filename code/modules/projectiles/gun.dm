@@ -1825,15 +1825,27 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
 	if (!isturf(gun_user.loc))
 		return
+
 	if(!bypass_checks)
 		if(gun_user.hand && !isgun(gun_user.l_hand) || !gun_user.hand && !isgun(gun_user.r_hand)) // If the object in our active hand is not a gun, abort
 			return
+
 		if(gun_user.throw_mode)
 			return
+
 		if(gun_user.Adjacent(object)) //Dealt with by attack code
 			return
+
 	if(QDELETED(object))
 		return
+
+	if(gun_user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (gun_user.a_intent == INTENT_HELP))
+		if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
+			//Absolutely SCREAM this at people so they don't get killed by it
+			to_chat(gun_user, SPAN_HIGHDANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
+			click_empty(gun_user)
+		return FALSE
+
 	set_target(get_turf_on_clickcatcher(object, gun_user, params))
 	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) || active_attachable)
 		Fire(object, gun_user, modifiers)

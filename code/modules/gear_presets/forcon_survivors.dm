@@ -169,21 +169,36 @@
 
 ///*****************************//
 
-/datum/equipment_preset/survivor/forecon/grenadier
-	name = "Survivor - USCM Reconnaissance Grenadier"
-	assignment = "Reconnaissance Grenadier"
-	skills = /datum/skills/military/survivor/forecon_grenadier
+/datum/equipment_preset/survivor/forecon/sniper
+	name = "Survivor - USCM Reconnaissance Sniper"
+	assignment = "Reconnaissance Sniper"
+	skills = /datum/skills/military/survivor/forecon_sniper
 
-/datum/equipment_preset/survivor/forecon/grenadier/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/launcher/grenade/m81/m79(new_human), WEAR_L_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911(new_human), WEAR_R_HAND)
-	..()
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/grenade(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/incendiary(new_human), WEAR_IN_BACK)
+/datum/equipment_preset/survivor/forecon/sniper/load_gear(mob/living/carbon/human/new_human)
+	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
+	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
+	var/obj/item/clothing/accessory/ranks/marine/e5/pin = new()
+	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
+	uniform.attach_accessory(new_human,pouch)
+	uniform.attach_accessory(new_human,patch_uscm)
+	uniform.attach_accessory(new_human,pin)
+	uniform.attach_accessory(new_human,patch_forecon)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot(new /obj/item/clothing/suit/storage/marine/ghillie/forecon(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/flask/marine(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/facepaint/sniper(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	spawn_random_headgear(new_human)
 	add_forecon_equipment(new_human)
+	add_forecon_weapon_pistol(new_human)
 
 //---------------------------\\
 

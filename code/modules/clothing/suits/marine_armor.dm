@@ -1030,6 +1030,10 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 #undef FULL_CAMOUFLAGE_ALPHA
 
+/obj/item/clothing/suit/storage/marine/ghillie/forecon
+	name = "USCM Thermal Parka"
+	desc = "FORECON"
+
 /obj/item/clothing/suit/storage/marine/sof
 	name = "\improper SOF Armor"
 	desc = "A heavily customized suit of M3 armor. Used by Marine Raiders."

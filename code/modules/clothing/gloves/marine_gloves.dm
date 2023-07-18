@@ -37,12 +37,6 @@
 	ret.overlays += glove_overlay
 	return ret
 
-/*
-	var/image/ret = ..()
-	if(adopts_squad_color && slot == WEAR_HANDS && istype(current_human) && current_human.assigned_squad)
-		ret.overlays += current_human.assigned_squad.equipment_color
-	return ret
-*/
 /obj/item/clothing/gloves/marine/insulated
 	name = "marine insulated gloves"
 	desc = "These gloves will protect the wearer from electric shock."

@@ -759,7 +759,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/skorpion/set_gun_config_values()
 	..()
-	fa_delay = FIRE_DELAY_TIER_9
+	fire_delay = FIRE_DELAY_TIER_9
 	fa_scatter_peak = 15 //shots
 	fa_max_scatter = SCATTER_AMOUNT_TIER_4
 

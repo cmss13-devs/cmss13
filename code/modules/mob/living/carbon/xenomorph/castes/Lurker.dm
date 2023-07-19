@@ -165,4 +165,9 @@
 	if(!lurker_invisibility_action)
 		return
 
+	var/mob/living/carbon/human/bumped_into = movable_atom
+	if(bumped_into.alpha < 100) //ignore invisible scouts and preds
+		return
+	
+	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You bumped into someone and lost your invisibility!"))
 	lurker_invisibility_action.invisibility_off()

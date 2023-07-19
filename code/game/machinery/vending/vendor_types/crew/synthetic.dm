@@ -289,7 +289,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 /obj/structure/machinery/cm_vending/own_points/experimental_tools/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/coin/marine/synth))
 		if(user.drop_inv_item_to_loc(W, src))
-			available_points = available_points = 45
+			available_points = 45
 			available_points_to_display = available_points
 			to_chat(user, SPAN_NOTICE("You insert \the [W] into \the [src]."))
 			return

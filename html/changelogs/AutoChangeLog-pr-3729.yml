@@ -1,0 +1,5 @@
+author: "GoldenDarkness55"
+delete-after: True
+changes:
+  - balance: "Base rav cooldown regain per slash reduced (4 to 3), empowered charge stun duration reduced (2 to 1.3), empower duration increased (5 to 6.5), empower cooldown reduced (22 to 18), duration window for second empower cast reduced (15 to 6), base shield gain reduced (75 to 50), shield gain per marine reduced (80 to 50), maximum empower targets increased (5 to 6), scissor slash cooldown reduced (10 to 6), and damage reduced (45 to 40)"
+  - balance: "Hedge rav doesn't lose speed anymore, but loses 10 slash damage instead. Shield duration increased (2 to 2.5), Fire Spikes shard range increased (5 to 6), Spike Shed shard lockout duration reduced (30 to 15), shard lock speed reduced to maintain same speed as previously. Shard damage increased (5 to 8), shard slowdown duration reduced (8 to 3), shard gain per tick reduced (10 to 5), shard gain per bullet reduced (20 to 10), added shard gain per slash (15)"

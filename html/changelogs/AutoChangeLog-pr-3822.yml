@@ -1,0 +1,5 @@
+author: "QuickLoad"
+delete-after: True
+changes:
+  - balance: "Tones down ERT skills. Impacts VAIPO/Dutch'sDozen/CMB/UPP/CLF/EMerc."
+  - balance: "Gives PMC & SurvPMC a trained level of CQC."

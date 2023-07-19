@@ -52,6 +52,7 @@
 		air.breakable = TRUE
 		air.indestructible = FALSE
 		air.unslashable = FALSE
+		air.unacidable = FALSE
 
 
 /obj/docking_port/mobile/escape_shuttle/proc/evac_launch()
@@ -93,6 +94,15 @@
 	on_ignition()
 	setTimer(ignitionTime)
 	launched = TRUE
+
+	if(!crash_land) // so doors won't break in space
+		for(var/obj/structure/machinery/door/air in door_handler.doors)
+			for(var/obj/effect/xenomorph/acid/acid in air.loc)
+				qdel(acid)
+			air.breakable = FALSE
+			air.indestructible = TRUE
+			air.unacidable = TRUE
+
 
 /obj/docking_port/mobile/escape_shuttle/proc/create_crash_point()
 	for(var/i = 1 to 10)

@@ -1064,7 +1064,7 @@
 	else
 		embedded_id.forceMove(src)
 
-/// Handles all the locking and unlocking of bracers.
+/// Verb to let Yautja attempt the unlocking.
 /obj/item/clothing/gloves/yautja/hunter/verb/toggle_lock()
 	set name = "Toggle Bracer Lock"
 	set desc = "Toggle the lock on your bracers, allowing them to be removed."
@@ -1080,13 +1080,14 @@
 
 	attempt_toggle_lock(usr, FALSE)
 
+/// Handles all the locking and unlocking of bracers.
 /obj/item/clothing/gloves/yautja/proc/attempt_toggle_lock(mob/user, force_lock)
 	if(!user)
 		return FALSE
 
-	var/obj/item/grab/G = user.get_active_hand()
-	if(istype(G))
-		var/mob/living/carbon/human/victim = G.grabbed_thing
+	var/obj/item/grab/held_mob = user.get_active_hand()
+	if(istype(held_mob))
+		var/mob/living/carbon/human/victim = held_mob.grabbed_thing
 		var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
 		if(isspeciesyautja(victim) && !(victim.stat == DEAD))
 			to_chat(user, SPAN_WARNING("You cannot unlock the bracer of a living hunter!"))
@@ -1094,11 +1095,12 @@
 
 		if(istype(bracer))
 			if(alert("Are you sure you want to unlock this [victim.species]'s bracer?", "Unlock Bracers", "Yes", "No") == "Yes")
-				if(user.get_active_hand() == G && victim && victim.gloves == bracer)
+				if(user.get_active_hand() == held_mob && victim && victim.gloves == bracer)
 					log_interact(user, victim, "[key_name(user)] unlocked the [bracer.name] of [key_name(victim)].")
 					user.visible_message(SPAN_WARNING("[user] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You unlock the bracer."))
 					bracer.toggle_lock_internal(victim)
 					return TRUE
+			return FALSE
 		else
 			to_chat(user, SPAN_WARNING("<b>This [victim.species] does not have a bracer attached.</b>"))
 			return FALSE
@@ -1107,6 +1109,7 @@
 		toggle_lock_internal(user)
 		return TRUE
 
+/// The actual unlock/lock function.
 /obj/item/clothing/gloves/yautja/proc/toggle_lock_internal(mob/user, force_lock)
 	if(((flags_item & NODROP) || (flags_inventory & CANTSTRIP)) && !force_lock)
 		flags_item &= ~NODROP
@@ -1115,6 +1118,7 @@
 			to_chat(user, SPAN_WARNING("The bracer beeps pleasantly, releasing it's grip on your forearm."))
 		else
 			to_chat(user, SPAN_WARNING("With an angry blare the bracer releases your forearm."))
+		return TRUE
 	else
 		flags_item |= NODROP
 		flags_inventory |= CANTSTRIP
@@ -1122,4 +1126,5 @@
 			to_chat(user, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
 		else
 			to_chat(user, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
-	return TRUE
+		return TRUE
+	return FALSE//Technically should never reach this.

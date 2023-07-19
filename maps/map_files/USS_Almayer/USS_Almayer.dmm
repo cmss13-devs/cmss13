@@ -15802,13 +15802,12 @@
 "bhM" = (
 /obj/structure/safe,
 /obj/item/coin/platinum,
-/obj/item/attachable/suppressor,
 /obj/item/spacecash/c1000/counterfeit,
 /obj/item/spacecash/c1000/counterfeit,
 /obj/item/clothing/accessory/storage/holster,
-/obj/item/weapon/gun/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88/rubber,
-/obj/item/ammo_magazine/pistol/mod88/rubber,
+/obj/item/weapon/gun/pistol/es4,
+/obj/item/ammo_magazine/pistol/es4,
+/obj/item/ammo_magazine/pistol/es4,
 /obj/item/clothing/suit/armor/bulletproof,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)

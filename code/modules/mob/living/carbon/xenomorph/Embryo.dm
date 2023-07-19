@@ -163,7 +163,7 @@
 
 	if(!picked)
 		// Get a candidate from observers
-		var/list/candidates = get_alien_candidates()
+		var/list/candidates = get_alien_candidates(hive)
 		if(candidates && candidates.len)
 			// If they were facehugged by a player thats still in queue, they get second dibs on the new larva.
 			if(hugger_ckey)

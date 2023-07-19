@@ -243,7 +243,7 @@
 	var/list/tackle_counter
 	var/evolving = FALSE // Whether the xeno is in the process of evolving
 	/// The damage dealt by a xeno whenever they take damage near someone
-	var/acid_blood_damage = 20
+	var/acid_blood_damage = 25
 	var/nocrit = FALSE
 	var/deselect_timer = 0 // Much like Carbon.last_special is a short tick record to prevent accidental deselects of abilities
 	var/got_evolution_message = FALSE
@@ -1087,3 +1087,28 @@
 		if(D)
 			color_override = D.color
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration, color_override)
+
+/mob/living/carbon/xenomorph/Collide(atom/movable/movable_atom)
+	. = ..()
+	if(behavior_delegate)
+		behavior_delegate.on_collide(movable_atom)
+
+/mob/living/carbon/xenomorph/proc/scuttle(obj/structure/current_structure)
+	if (mob_size != MOB_SIZE_SMALL)
+		return FALSE
+
+	var/move_dir = get_dir(src, loc)
+	for(var/atom/movable/atom in get_turf(current_structure))
+		if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))
+			to_chat(src, SPAN_WARNING("[atom] prevents you from squeezing under [current_structure]!"))
+			return FALSE
+	// Is it an airlock?
+	if(istype(current_structure, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/current_airlock = current_structure
+		if(current_airlock.locked || current_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
+			to_chat(src, SPAN_WARNING("[current_airlock] is locked down tight. You can't squeeze underneath!"))
+			return FALSE
+	visible_message(SPAN_WARNING("[src] scuttles underneath [current_structure]!"), \
+	SPAN_WARNING("You squeeze and scuttle underneath [current_structure]."), max_distance = 5)
+	forceMove(current_structure.loc)
+	return TRUE

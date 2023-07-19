@@ -18,3 +18,18 @@
 //the define for visible message range in combat
 #define COMBAT_MESSAGE_RANGE 3
 #define DEFAULT_MESSAGE_RANGE 7
+
+//Predator decloak multpliers based on the standard.
+#define DECLOAK_STANDARD (10 SECONDS)
+/// Forced for any unspecified reason.
+#define DECLOAK_FORCED 1
+/// Caused by being worn by non humans.
+#define DECLOAK_SPECIES 0.75
+/// Caused by fire extinguisher.
+#define DECLOAK_EXTINGUISHER 1.5
+/// Caused by predalien screech.
+#define DECLOAK_PREDALIEN 2
+/// Caused by being in a body of water.
+#define DECLOAK_SUBMERGED 2
+/// Caused by an EMP.
+#define DECLOAK_EMP 3

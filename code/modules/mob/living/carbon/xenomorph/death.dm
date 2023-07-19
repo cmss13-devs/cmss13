@@ -38,7 +38,7 @@
 			if(GLOB.hive_datum[hivenumber].stored_larva)
 				GLOB.hive_datum[hivenumber].stored_larva = round(GLOB.hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead queen
 
-				var/list/players_with_xeno_pref = get_alien_candidates()
+				var/list/players_with_xeno_pref = get_alien_candidates(GLOB.hive_datum[hivenumber])
 				if(players_with_xeno_pref && istype(GLOB.hive_datum[hivenumber].hive_location, /obj/effect/alien/resin/special/pylon/core))
 					var/turf/larva_spawn = get_turf(GLOB.hive_datum[hivenumber].hive_location)
 					var/count = 0

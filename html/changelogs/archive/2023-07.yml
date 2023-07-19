@@ -138,3 +138,111 @@
 2023-07-11:
   BeagleGaming1:
   - bugfix: Fixes the Working Joe species
+2023-07-12:
+  Morrow:
+  - bugfix: Stops xenos from bypassing dead moving via roller beds
+  - balance: Telebaton now scales in stunforce effectiveness based on policing skill
+  - balance: Marines called with foxtrot nerfed from 15 to 10.
+  SpartanBobby:
+  - maptweak: 'LV522: Flips the layout of engineering making the T-comms unit on the
+      far side of the LZ'
+  - balance: reduces the M1911 magazine size from 14 to 7
+  Steelpoint:
+  - balance: Synthetic Armour slowdown has been decreased
+2023-07-13:
+  QuickLoad, Thwomper:
+  - imageadd: Synthetic Uniforms & Vest with United Americas flair and classic jumpsuits
+      which remind you of life on the Frontier. Sprited by THE THWOMPA himself!
+  - qol: Synthetic Vendor is more organized. Removes scrub cap, adds shoe.
+2023-07-14:
+  Drathek:
+  - bugfix: Fix ghosting preventing first dibs on the larva in a hugged marine
+  Unknownity:
+  - bugfix: Fixed burrowed mobs being able to be targeted by sentries, mines and SG
+      autofire.
+  - bugfix: Fixed burrowed mobs being able to grab mobs on the surface.
+  - bugfix: Fixed burrowed mobs being able to resist while burrowed.
+  - bugfix: Fixed burrowers taking damage from direct flame and shrapnel from explosions.
+  - bugfix: Fixed burrowers being able to get slashed from enemy Xenos on the surface.
+  - bugfix: Fixed burrowers unburrow stun to now properly target and stun enemy Xenos.
+  - soundadd: Added sounds for the Burrower when they are burrowing and unburrowing.
+2023-07-15:
+  BeagleGaming1:
+  - code_imp: Messed with chem and drink dispenser code
+  Ben10083:
+  - spellcheck: Fixed typos relating to M74 airburst packets.
+  - mapadd: Combat Information Center Reception now has a telephone
+  - maptweak: Medical Lower telephone shifted to the left
+  Drathek:
+  - bugfix: Fix morpher ejected items and dumped objectives not restoring their mouse_opacity
+      setting.
+  Morrow:
+  - admin: VV Jump To Fix
+  - balance: Lurkers now lose their invisibility when they run into a person
+  Steelpoint:
+  - ui: Predator Ship is now called 'Yautja Ship" for teleporting Predators
+  Zonespace27:
+  - admin: Removed msay. All staff now have access to asay
+  ondrej008:
+  - bugfix: The HE OB now deals the correct amount of damage to xenos, before it dealt
+      half damage caused by xenos being forced to rest before it hit.
+  realforest2001:
+  - soundadd: Added a drag sound for footstep component
+  - bugfix: Fixes the icon on the alien blade on LV.
+  - bugfix: Carbon copies can no longer infinitely breed.
+  - rscadd: Added a PMC Synth Survivor preset, and stopped PMC Synth Survivor using
+      the ERT set.
+  - bugfix: You can no longer weld non metal containers closed.
+  - bugfix: Fixes the toggle notification sound verb for Yautja bracers not working.
+2023-07-16:
+  Drathek:
+  - rscadd: Facehuggers now convert to their NPC version after 7 minutes of inactivity
+      and no client.
+  - code_imp: Cleanup join as xeno button code somewhat.
+  Drathek, Fira:
+  - bugfix: Fixed an issue with table flips that could make some tables incorrectly
+      unflippable, and cause infinite loops. It is no longer possible to flip tables
+      that t-shape or cross, or spans more than 5 tiles away from you.
+  Drathek, Steelpoint:
+  - bugfix: Fixed possible hardeletes for predator landmarks and vehicles. Predator
+      teleporation descriptions now do not change if the area is altered at runtime
+      so they can still be found correctly.
+  theselfish:
+  - rscadd: SOs may now get coats in their vendor.
+2023-07-17:
+  Puckaboo2:
+  - spellcheck: Some duplicate icon states have been differentiated to prevent future
+      missing icon state errors.
+  - imageadd: Added new icon states for chemical and virology dispensers.
+  - rscdel: Removed dozens of duplicate icon states from over 50 files to reduce bloat.
+  - rscdel: Removed duplicate empty icon states.
+  realforest2001:
+  - maptweak: Added Apollo Maintenance Controllers to the following locations.
+  - maptweak: Astronavigation, CIC Substation, Brig Substation, Req Aux Storage, Hangar
+      & OT & Engineering workshops, Reactor Core Room and Lifeboat Control Ring.
+2023-07-19:
+  Ben10083:
+  - rscadd: Working Joes now have a unique death message. Credit to Quickload for
+      the message.
+  - soundadd: Working Joes now have a death rattle. Credit to Quickload for shifting
+      through Alien Isolation audio files.
+  - qol: Things that die with intent eyes now lose color in their eyes on death.
+  Drathek:
+  - bugfix: Banished players will no longer be candidates for hives they are banished
+      from.
+  - bugfix: Cryoing will now set your larva queue time so you don't get prioritized
+      over others that have been waiting.
+  - admin: Shuttle intoTheSunset will set larva queue time the same as other situations.
+  - qol: Added a preference to disable xeno ability deactivation when re-selecting
+      the same ability
+  Morrow:
+  - rscadd: Added bayonet pouch to req
+  - balance: Explosive pouch inventory size from 3 to 6
+  - balance: Explosive pouch can no longer hold mine boxes
+  NewyearnewmeUwu:
+  - rscadd: Added the ES-4 electrostatic pistol to the CL's safe.
+  realforest2001:
+  - balance: Reduced tranq pistol bullet damage from 40 to 15
+  - bugfix: Fixes another synth survivor variant having marine comms.
+  theselfish:
+  - spellcheck: Goodbye Squad Spotter, hello regular non-squaded Spotter.

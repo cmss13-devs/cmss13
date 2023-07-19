@@ -46,6 +46,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
 	/client/proc/toggle_middle_mouse_click,
+	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
 	/client/proc/toggle_dualwield,
 	/client/proc/toggle_middle_mouse_swap_hands,
@@ -713,17 +714,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
-				if(MOD_CHANNEL)
-					if(admin_holder?.check_for_rights(R_MOD))
-						if(prefs.tgui_say)
-							var/msay = tgui_say_create_open_command(MOD_CHANNEL)
-							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[msay]")
-						else
-							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=msay")
-					else
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 				if(ADMIN_CHANNEL)
-					if(admin_holder?.check_for_rights(R_ADMIN))
+					if(admin_holder?.check_for_rights(R_MOD))
 						if(prefs.tgui_say)
 							var/asay = tgui_say_create_open_command(ADMIN_CHANNEL)
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[asay]")

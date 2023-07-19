@@ -150,7 +150,7 @@
 			last_larva_time = world.time
 		if(spawning_larva || (last_larva_queue_time + spawn_cooldown * 4) < world.time)
 			last_larva_queue_time = world.time
-			var/list/players_with_xeno_pref = get_alien_candidates()
+			var/list/players_with_xeno_pref = get_alien_candidates(linked_hive)
 			if(players_with_xeno_pref && players_with_xeno_pref.len)
 				if(spawning_larva && spawn_burrowed_larva(players_with_xeno_pref[1]))
 					// We were in spawning_larva mode and successfully spawned someone

@@ -111,6 +111,21 @@
 	else
 		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with shift clicking."))
 
+/mob/living/carbon/xenomorph/verb/ability_deactivation_toggle()
+	set name = "Toggle Ability Deactivation"
+	set desc = "Toggles whether you can deactivate your currently active ability when re-selecting it."
+	set category = "Alien"
+
+	if (!client || !client.prefs)
+		return
+
+	client.prefs.toggle_prefs ^= TOGGLE_ABILITY_DEACTIVATION_OFF
+	client.prefs.save_preferences()
+	if (client.prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
+		to_chat(src, SPAN_NOTICE("Your current ability can no longer be toggled off when re-selected."))
+	else
+		to_chat(src, SPAN_NOTICE("Your current ability can be toggled off when re-selected."))
+
 /mob/living/carbon/xenomorph/verb/directional_attack_toggle()
 	set name = "Toggle Directional Attacks"
 	set desc = "Toggles the use of directional assist attacks."

@@ -181,6 +181,8 @@
 #define TRAIT_ABILITY_NO_PLASMA_TRANSFER "t_ability_no_plasma_transfer"
 /// Shows that the xeno queen is on ovi
 #define TRAIT_ABILITY_OVIPOSITOR "t_ability_ovipositor"
+/// Used for burrowed mobs, prevent's SG/sentrys/claymores from autofiring
+#define TRAIT_ABILITY_BURROWED "t_ability_burrowed"
 
 //-- item traits --
 // TOOL TRAITS
@@ -233,7 +235,8 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_TWOBORE_TRAINING,
 	TRAIT_LEADERSHIP,
 	TRAIT_DEXTROUS,
-	TRAIT_REAGENT_SCANNER
+	TRAIT_REAGENT_SCANNER,
+	TRAIT_ABILITY_BURROWED
 ))
 
 /*

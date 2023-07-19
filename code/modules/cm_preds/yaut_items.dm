@@ -396,7 +396,7 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	var/ship_to_tele = list("Public" = -1, "Human Ship" = "Human")
+	var/ship_to_tele = list("Yautja Ship" = -1, "Human Ship" = "Human")
 
 	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || is_admin_level(H.z))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))

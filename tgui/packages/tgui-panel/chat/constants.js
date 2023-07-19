@@ -125,14 +125,8 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_ADMINCHAT,
     name: 'Admin Chat',
     description: 'ASAY messages',
-    selector: '.admin_channel, .adminsay, .headminsay',
-    admin: true,
-  },
-  {
-    type: MESSAGE_TYPE_MODCHAT,
-    name: 'Mod Chat',
-    description: 'MSAY messages',
-    selector: '.mod_channel, .mod, .adminmod, .staffsay',
+    selector:
+      '.admin_channel, .adminsay, .headminsay, .mod_channel, .mod, .adminmod, .staffsay',
     admin: true,
   },
   {

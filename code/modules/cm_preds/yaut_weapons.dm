@@ -995,7 +995,7 @@
 	var/obj/item/projectile/projectile = create_bullet(ammo, initial(name))
 	projectile.SetLuminosity(1)
 	in_chamber = projectile
-	charge_time--
+	charge_time -= shot_cost
 	return in_chamber
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/has_ammunition()
@@ -1008,7 +1008,7 @@
 /obj/item/weapon/gun/energy/yautja/plasmapistol/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund)
-		charge_time *= 2
+		charge_time += shot_cost
 		log_debug("Plasma Pistol refunded shot.")
 	return TRUE
 

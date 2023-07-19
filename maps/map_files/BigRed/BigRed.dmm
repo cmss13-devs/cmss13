@@ -15991,9 +15991,6 @@
 	dir = 1;
 	name = "\improper Operations EVA"
 	},
-/obj/effect/landmark/nightmare{
-	insert_tag = "uppcrash"
-	},
 /turf/open/floor{
 	icon_state = "delivery"
 	},

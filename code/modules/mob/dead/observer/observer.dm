@@ -56,6 +56,8 @@
 	var/observer_actions = list(/datum/action/observer_action/join_xeno)
 	var/datum/action/minimap/observer/minimap
 	var/larva_queue_cached_message
+	///Used to bypass time of death checks such as when being selected for larva.
+	var/bypass_time_of_death_checks = FALSE
 
 	alpha = 127
 
@@ -368,6 +370,8 @@ Works together with spawning an observer, noted above.
 		// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers
 		// We don't change facehugger timeofdeath because they are still on cooldown if they died as a hugger
 		var/new_tod = isfacehugger(src) ? 1 : ghost.timeofdeath
+		// if they died as facehugger, bypass typical TOD checks
+		ghost.bypass_time_of_death_checks = isfacehugger(src) ? TRUE : FALSE
 		ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
 
 	ghost.set_huds_from_prefs()

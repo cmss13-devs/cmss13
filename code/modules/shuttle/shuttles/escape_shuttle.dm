@@ -9,7 +9,8 @@
 	ignitionTime = 8 SECONDS
 	ignition_sound = 'sound/effects/escape_pod_warmup.ogg'
 	/// The % chance of the escape pod crashing into the groundmap
-	var/crash_land_chance = 33
+	var/early_crash_land_chance = 75
+	var/crash_land_chance = 25
 
 	var/datum/door_controller/single/door_handler = new()
 	var/launched = FALSE
@@ -24,6 +25,7 @@
 			air.breakable = FALSE
 			air.indestructible = TRUE
 			air.unacidable = TRUE
+			air.linked_shuttle = src
 
 /obj/docking_port/mobile/escape_shuttle/proc/cancel_evac()
 	door_handler.control_doors("force-unlock")
@@ -43,6 +45,11 @@
 	for(var/area/interior_area in shuttle_areas)
 		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in interior_area)
 			cryotube.dock_state = STATE_READY
+	for(var/obj/structure/machinery/door/air in door_handler.doors) 
+		air.breakable = TRUE
+		air.indestructible = FALSE
+		air.unslashable = FALSE
+	
 
 /obj/docking_port/mobile/escape_shuttle/proc/evac_launch()
 	if(mode == SHUTTLE_CRASHED)
@@ -76,7 +83,7 @@
 		return
 
 	destination = null
-	if(prob(crash_land_chance))
+	if(prob((EvacuationAuthority.evac_status >= EVACUATION_STATUS_IN_PROGRESS ? crash_land_chance : early_crash_land_chance)))
 		create_crash_point()
 
 	set_mode(SHUTTLE_IGNITING)

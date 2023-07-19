@@ -49,7 +49,8 @@
 	var/updatedir = TRUE //Do we have to update our dir as the ghost moves around?
 	var/atom/movable/following = null
 	var/datum/orbit_menu/orbit_menu
-	var/mob/observetarget = null //The target mob that the ghost is observing. Used as a reference in logout()
+	/// The target mob that the ghost is observing. Used as a reference in logout()
+	var/mob/observetarget = null
 	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/own_orbit_size = 0

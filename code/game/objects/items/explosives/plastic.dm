@@ -213,23 +213,6 @@
 
 	return TRUE
 
-/obj/item/explosive/plastic/breaching_charge/can_place(mob/user, atom/target)
-	if(!is_type_in_list(target, breachable))//only items on the list are allowed
-		to_chat(user, SPAN_WARNING("You cannot plant \the [name] on \the [target]!"))
-		return FALSE
-
-	if(SSinterior.in_interior(target))// vehicle checks again JUST IN CASE
-		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \the [src]."))
-		return FALSE
-
-	if(istype(target, /obj/structure/window))//no breaching charges on the briefing windows / brig / CIC e.e
-		var/obj/structure/window/W = target
-		if(W.not_damageable)
-			to_chat(user, SPAN_WARNING("[W] is much too tough for you to do anything to it with [src].")) //On purpose to mimic wall message
-			return FALSE
-
-	return TRUE
-
 /obj/item/explosive/plastic/proc/calculate_pixel_offset(mob/user, atom/target)
 	switch(get_dir(user, target))
 		if(NORTH)
@@ -312,13 +295,6 @@
 	cell_explosion(target_turf, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 	qdel(src)
 
-/obj/item/explosive/plastic/breaching_charge/handle_explosion(turf/target_turf, dir, cause_data)
-	var/explosion_target = get_step(target_turf, dir)
-	create_shrapnel(explosion_target, 40, dir, angle,/datum/ammo/bullet/shrapnel/metal, cause_data)
-	sleep(1)// prevents explosion from eating shrapnel
-	cell_explosion(target_turf, 60, 60, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, dir, cause_data)
-	qdel(src)
-
 /obj/item/explosive/plastic/proc/delayed_prime(turf/target_turf)
 	prime(TRUE)
 
@@ -342,3 +318,59 @@
 	min_timer = 3
 	penetration = 0.60
 	deploying_time = 10
+	var/shrapnel_volume = 40
+
+/obj/item/explosive/plastic/breaching_charge/can_place(mob/user, atom/target)
+	if(!is_type_in_list(target, breachable))//only items on the list are allowed
+		to_chat(user, SPAN_WARNING("You cannot plant [name] on [target]!"))
+		return FALSE
+
+	if(SSinterior.in_interior(target))// vehicle checks again JUST IN CASE
+		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy [src]."))
+		return FALSE
+
+	if(istype(target, /obj/structure/window))//no breaching charges on the briefing windows / brig / CIC e.e
+		var/obj/structure/window/window = target
+		if(window.not_damageable)
+			to_chat(user, SPAN_WARNING("[window] is much too tough for you to do anything to it with [src].")) //On purpose to mimic wall message
+			return FALSE
+
+	return TRUE
+
+/obj/item/explosive/plastic/breaching_charge/handle_explosion(turf/target_turf, dir, cause_data)
+	var/explosion_target = get_step(target_turf, dir)
+	create_shrapnel(explosion_target, shrapnel_volume, dir, angle,/datum/ammo/bullet/shrapnel/metal, cause_data)
+	addtimer(CALLBACK(src, PROC_REF(trigger_explosion), target_turf, dir, cause_data), 1 SECONDS)
+
+/obj/item/explosive/plastic/breaching_charge/proc/trigger_explosion(turf/target_turf, dir, cause_data)
+	cell_explosion(target_turf, 60, 60, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, dir, cause_data)
+	qdel(src)
+
+/obj/item/explosive/plastic/breaching_charge/plasma
+	name = "plasma charge"
+	desc = "An alien explosive device. Who knows what it might do."
+	icon_state = "plasma-charge"
+	overlay_image = "plasma-active"
+	w_class = SIZE_SMALL
+	angle = 55
+	timer = 5
+	min_timer = 5
+	penetration = 0.60
+	deploying_time = 10
+	flags_item = NOBLUDGEON|ITEM_PREDATOR
+	shrapnel_volume = 10
+
+/obj/item/explosive/plastic/breaching_charge/plasma/can_place(mob/user, atom/target)
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		to_chat(user, SPAN_WARNING("You don't quite understand how the device works..."))
+		return FALSE
+	..()
+
+/obj/item/explosive/plastic/breaching_charge/plasma/handle_explosion(turf/target_turf, dir, cause_data)
+	var/explosion_target = get_step(target_turf, dir)
+	create_shrapnel(explosion_target, shrapnel_volume, dir, angle,/datum/ammo/bullet/shrapnel/plasma, cause_data)
+	addtimer(CALLBACK(src, PROC_REF(trigger_explosion), target_turf, dir, cause_data), 1 SECONDS)
+
+/obj/item/explosive/plastic/breaching_charge/plasma/trigger_explosion(turf/target_turf, dir, cause_data)
+	cell_explosion(target_turf, 90, 90, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, dir, cause_data)
+	qdel(src)

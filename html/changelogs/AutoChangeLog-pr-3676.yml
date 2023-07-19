@@ -1,0 +1,10 @@
+author: "Anuv"
+delete-after: True
+changes:
+  - bugfix: "#3775"
+  - rscadd: "Added a new storm siren unique to NV, new survivor types"
+  - spellcheck: "Updates to the waking distress call notif."
+  - code_imp: "Weather-related code changes. Update to the handheld maps."
+  - soundadd: "Added new monsoon weather sfx, new map-unique ambience, new storm siren sfx."
+  - maptweak: "New LZ (LZ2 Palm Airfield) in the NE with a construction zone. Removed a number of rocks around cave areas. Increased hive location choices from 3 to 4. Added glass ceilings to facility areas (deep caves are still protected, can be OB'd). Slightly widened the 45 minute weed protection areas around LZs. Added a fog monsoon to the SE beach that dissipates after an hour. Expanded east beach. New SW cave section. Opened up the walkway west of LZ1. Enhanced survivor loot and mats to a comparable degree to current maps. Many small changes to lessen chokes and offer more route choice for xenos and marines alike. Removed Spearhead/Rival and laser pistols. Swapped fawras for monkeys. Added more survivor-type choices. Added a bar area and decrepit truck to the north beach."
+  - config: "Enabled NV again as a map in maps.txt."

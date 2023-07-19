@@ -22132,7 +22132,7 @@
 /area/corsat/gamma/biodome/toxins)
 "biR" = (
 /obj/structure/surface/table/woodentable,
-/obj/structure/machinery/chem_dispenser/beer{
+/obj/structure/machinery/chem_dispenser/soda/beer{
 	dir = 8;
 	pixel_x = 15
 	},
@@ -25197,7 +25197,7 @@
 /area/corsat/sigma/south/offices)
 "bsN" = (
 /obj/structure/surface/table/woodentable,
-/obj/structure/machinery/chem_dispenser/beer{
+/obj/structure/machinery/chem_dispenser/soda/beer{
 	dir = 8
 	},
 /turf/open/floor/corsat{

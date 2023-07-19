@@ -2839,6 +2839,10 @@
 	pixel_y = 7
 	},
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/computer/working_joe{
+	dir = 4;
+	pixel_x = -17
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver"
@@ -5322,7 +5326,13 @@
 "are" = (
 /obj/structure/machinery/computer/demo_sim{
 	dir = 4;
-	pixel_x = -16
+	pixel_x = -17;
+	pixel_y = 8
+	},
+/obj/structure/machinery/computer/working_joe{
+	dir = 4;
+	pixel_x = -17;
+	pixel_y = -8
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
@@ -9677,6 +9687,9 @@
 /area/almayer/shipboard/brig/main_office)
 "aEm" = (
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/working_joe{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -10322,6 +10335,10 @@
 	},
 /area/almayer/living/numbertwobunks)
 "aHo" = (
+/obj/structure/machinery/computer/working_joe{
+	dir = 4;
+	pixel_x = -17
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange"
@@ -12663,7 +12680,7 @@
 /area/almayer/hallways/starboard_hallway)
 "aSt" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/chem_dispenser/beer,
+/obj/structure/machinery/chem_dispenser/soda/beer,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -15785,13 +15802,12 @@
 "bhM" = (
 /obj/structure/safe,
 /obj/item/coin/platinum,
-/obj/item/attachable/suppressor,
 /obj/item/spacecash/c1000/counterfeit,
 /obj/item/spacecash/c1000/counterfeit,
 /obj/item/clothing/accessory/storage/holster,
-/obj/item/weapon/gun/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88/rubber,
-/obj/item/ammo_magazine/pistol/mod88/rubber,
+/obj/item/weapon/gun/pistol/es4,
+/obj/item/ammo_magazine/pistol/es4,
+/obj/item/ammo_magazine/pistol/es4,
 /obj/item/clothing/suit/armor/bulletproof,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
@@ -18126,7 +18142,7 @@
 /area/almayer/squads/bravo)
 "buQ" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/station_alert{
+/obj/structure/machinery/computer/working_joe{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -21033,11 +21049,11 @@
 	},
 /area/almayer/squads/req)
 "bIw" = (
-/obj/structure/machinery/prop/almayer/computer,
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/computer/working_joe,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red"
@@ -37407,7 +37423,7 @@
 	name = "Medical Telephone";
 	phone_category = "Almayer";
 	phone_id = "Medical Lower";
-	pixel_x = 23
+	pixel_x = 16
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -38933,11 +38949,11 @@
 /area/almayer/medical/upper_medical)
 "hbZ" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/station_alert{
-	dir = 4
-	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = -17
+	},
+/obj/structure/machinery/computer/working_joe{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -39720,13 +39736,27 @@
 /area/almayer/hallways/port_hallway)
 "hvv" = (
 /obj/structure/disposalpipe/segment,
-/obj/item/clipboard,
-/obj/item/paper,
-/obj/item/tool/pen/blue,
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
 	},
+/obj/item/clipboard{
+	base_pixel_x = 20;
+	pixel_x = 5
+	},
+/obj/item/paper{
+	pixel_x = 5
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = 5
+	},
 /obj/structure/surface/table/reinforced/black,
+/obj/structure/transmitter/rotary{
+	name = "CIC Reception Telephone";
+	phone_category = "Command";
+	phone_id = "CIC Reception";
+	pixel_x = -7;
+	pixel_y = 4
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "hvw" = (
@@ -49721,6 +49751,9 @@
 "lXg" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/recharger,
+/obj/structure/machinery/computer/working_joe{
+	pixel_y = 16
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -56132,6 +56165,10 @@
 	},
 /obj/effect/decal/cleanable/cobweb2/dynamic,
 /obj/item/packageWrap,
+/obj/structure/machinery/computer/working_joe{
+	dir = 8;
+	pixel_x = 17
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor5"
 	},
@@ -76717,6 +76754,11 @@
 	},
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
+/obj/structure/machinery/computer/working_joe{
+	dir = 4;
+	pixel_y = 14;
+	pixel_x = -17
+	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "orange"

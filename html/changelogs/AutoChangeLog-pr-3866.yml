@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Carbon copies can no longer infinitely breed."

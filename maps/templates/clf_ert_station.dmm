@@ -1828,7 +1828,7 @@
 /turf/open/gm/river,
 /area/adminlevel/ert_station/clf_station)
 "RR" = (
-/obj/structure/machinery/chem_dispenser/beer{
+/obj/structure/machinery/chem_dispenser/soda/beer{
 	density = 0;
 	pixel_y = 10
 	},

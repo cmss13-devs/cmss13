@@ -1073,12 +1073,13 @@
 
 	if(usr.stat)
 		to_chat(usr, SPAN_WARNING("You can't do that right now..."))
-		return
+		return FALSE
 	if(!HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
 		to_chat(usr, SPAN_WARNING("You have no idea how to use this..."))
 		return FALSE
 
 	attempt_toggle_lock(usr, FALSE)
+	return TRUE
 
 /// Handles all the locking and unlocking of bracers.
 /obj/item/clothing/gloves/yautja/proc/attempt_toggle_lock(mob/user, force_lock)
@@ -1086,44 +1087,45 @@
 		return FALSE
 
 	var/obj/item/grab/held_mob = user.get_active_hand()
-	if(istype(held_mob))
-		var/mob/living/carbon/human/victim = held_mob.grabbed_thing
-		var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
-		if(isspeciesyautja(victim) && !(victim.stat == DEAD))
-			to_chat(user, SPAN_WARNING("You cannot unlock the bracer of a living hunter!"))
-			return FALSE
-
-		if(istype(bracer))
-			if(alert("Are you sure you want to unlock this [victim.species]'s bracer?", "Unlock Bracers", "Yes", "No") == "Yes")
-				if(user.get_active_hand() == held_mob && victim && victim.gloves == bracer)
-					log_interact(user, victim, "[key_name(user)] unlocked the [bracer.name] of [key_name(victim)].")
-					user.visible_message(SPAN_WARNING("[user] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You unlock the bracer."))
-					bracer.toggle_lock_internal(victim)
-					return TRUE
-			return FALSE
-		else
-			to_chat(user, SPAN_WARNING("<b>This [victim.species] does not have a bracer attached.</b>"))
-			return FALSE
-	else
+	if(!istype(held_mob))
 		log_attack("[key_name_admin(usr)] has unlocked their own bracer.")
 		toggle_lock_internal(user)
 		return TRUE
 
+	var/mob/living/carbon/human/victim = held_mob.grabbed_thing
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
+	if(isspeciesyautja(victim) && !(victim.stat == DEAD))
+		to_chat(user, SPAN_WARNING("You cannot unlock the bracer of a living hunter!"))
+		return FALSE
+
+	if(!istype(bracer))
+		to_chat(user, SPAN_WARNING("<b>This [victim.species] does not have a bracer attached.</b>"))
+		return FALSE
+
+	if(alert("Are you sure you want to unlock this [victim.species]'s bracer?", "Unlock Bracers", "Yes", "No") != "Yes")
+		return FALSE
+
+	if(user.get_active_hand() == held_mob && victim && victim.gloves == bracer)
+		log_interact(user, victim, "[key_name(user)] unlocked the [bracer.name] of [key_name(victim)].")
+		user.visible_message(SPAN_WARNING("[user] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You unlock the bracer."))
+		bracer.toggle_lock_internal(victim)
+		return TRUE
+
 /// The actual unlock/lock function.
-/obj/item/clothing/gloves/yautja/proc/toggle_lock_internal(mob/user, force_lock)
+/obj/item/clothing/gloves/yautja/proc/toggle_lock_internal(mob/wearer, force_lock)
 	if(((flags_item & NODROP) || (flags_inventory & CANTSTRIP)) && !force_lock)
 		flags_item &= ~NODROP
 		flags_inventory &= ~CANTSTRIP
-		if(isyautja(user))
-			to_chat(user, SPAN_WARNING("The bracer beeps pleasantly, releasing it's grip on your forearm."))
+		if(!isyautja(wearer))
+			to_chat(wearer, SPAN_WARNING("The bracer beeps pleasantly, releasing it's grip on your forearm."))
 		else
-			to_chat(user, SPAN_WARNING("With an angry blare the bracer releases your forearm."))
+			to_chat(wearer, SPAN_WARNING("With an angry blare the bracer releases your forearm."))
 		return TRUE
+
+	flags_item |= NODROP
+	flags_inventory |= CANTSTRIP
+	if(isyautja(wearer))
+		to_chat(wearer, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
 	else
-		flags_item |= NODROP
-		flags_inventory |= CANTSTRIP
-		if(isyautja(user))
-			to_chat(user, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
-		else
-			to_chat(user, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
-		return TRUE
+		to_chat(wearer, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+	return TRUE

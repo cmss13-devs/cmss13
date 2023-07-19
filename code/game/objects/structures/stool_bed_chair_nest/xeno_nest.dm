@@ -192,12 +192,12 @@
 	recently_nested = TRUE
 	addtimer(VARSET_CALLBACK(src, recently_nested, FALSE), 5 SECONDS)
 
-/obj/structure/bed/nest/buckle_mob(mob/M as mob, mob/user as mob)
+/obj/structure/bed/nest/buckle_mob(mob/mob, mob/user)
 	. = FALSE
-	if(!isliving(M) || islarva(user) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.stat || user.lying || M.buckled || !iscarbon(user))
+	if(!isliving(mob) || islarva(user) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.stat || user.lying || mob.buckled || !iscarbon(user))
 		return
 
-	if(isxeno(M))
+	if(isxeno(mob))
 		to_chat(user, SPAN_WARNING("You can't buckle your sisters."))
 		return
 
@@ -205,69 +205,64 @@
 		to_chat(user, SPAN_WARNING("There's already someone in [src]."))
 		return
 
-	if(M.mob_size > MOB_SIZE_HUMAN)
-		to_chat(user, SPAN_WARNING("\The [M] is too big to fit in [src]."))
+	if(mob.mob_size > MOB_SIZE_HUMAN)
+		to_chat(user, SPAN_WARNING("\The [mob] is too big to fit in [src]."))
 		return
 
-	if(!isxeno(user) || issynth(M))
+	if(!isxeno(user) || issynth(mob))
 		to_chat(user, SPAN_WARNING("Gross! You're not touching that stuff."))
 		return
 
-	if(isyautja(M) && !force_nest)
-		to_chat(user, SPAN_WARNING("\The [M] seems to be wearing some kind of resin-resistant armor!"))
+	if(isyautja(mob) && !force_nest)
+		to_chat(user, SPAN_WARNING("\The [mob] seems to be wearing some kind of resin-resistant armor!"))
 		return
 
-	if(M == user)
+	if(mob == user)
 		return
 
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(!H.lying) //Don't ask me why is has to be
-			to_chat(user, SPAN_WARNING("[M] is resisting, ground them."))
+	var/mob/living/carbon/human/human = null
+	if(ishuman(mob))
+		human = mob
+		if(!human.lying) //Don't ask me why is has to be
+			to_chat(user, SPAN_WARNING("[mob] is resisting, ground them."))
 			return
 
 	var/securing_time = 15
 	// Don't increase the nesting time for monkeys and other species
-	if(ishuman_strict(M))
+	if(ishuman_strict(mob))
 		securing_time = 75
 
-	user.visible_message(SPAN_WARNING("[user] pins [M] into [src], preparing the securing resin."),
-	SPAN_WARNING("[user] pins [M] into [src], preparing the securing resin."))
-	var/M_loc = M.loc
+	user.visible_message(SPAN_WARNING("[user] pins [mob] into [src], preparing the securing resin."),
+	SPAN_WARNING("[user] pins [mob] into [src], preparing the securing resin."))
+	var/M_loc = mob.loc
 	if(!do_after(user, securing_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		return
-	if(M.loc != M_loc)
+	if(mob.loc != M_loc)
 		return
 
 	if(buckled_mob) //Just in case
 		to_chat(user, SPAN_WARNING("There's already someone in [src]."))
 		return
 
-	if(ishuman(M)) //Improperly stunned Marines won't be nested
-		var/mob/living/carbon/human/H = M
-		if(!H.lying) //Don't ask me why is has to be
-			to_chat(user, SPAN_WARNING("[M] is resisting, ground them."))
+	if(human) //Improperly stunned Marines won't be nested
+		if(!human.lying) //Don't ask me why is has to be
+			to_chat(user, SPAN_WARNING("[mob] is resisting, ground them."))
 			return
 
-	do_buckle(M, user)
-	ADD_TRAIT(M, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
+	do_buckle(mob, user)
+	ADD_TRAIT(mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
 
-	if(!ishuman(M))
+	if(!human)
 		return TRUE
 
 	//Disabling motion detectors and other stuff they might be carrying
-	var/mob/living/carbon/human/H = M
-	H.start_nesting_cooldown()
-	H.disable_special_flags()
-	H.disable_lights()
-	H.disable_special_items()
+	human.start_nesting_cooldown()
+	human.disable_special_flags()
+	human.disable_lights()
+	human.disable_special_items()
 
-	if(H.mind)
-		var/choice = alert(M, "You have no possibility of escaping unless freed by your fellow marines, do you wish to Ghost? If you are freed while ghosted, you will be given the choice to return to your body.", ,"Ghost", "Remain")
-		if(choice == "Ghost")
-			// Ask to ghostize() so they can reenter, to leave mind and such intact
-			ghost_of_buckled_mob = M.ghostize(can_reenter_corpse = TRUE)
-			ghost_of_buckled_mob?.can_reenter_corpse = FALSE // Just don't for now
+	if(human.mind)
+		human.do_ghost()
 
 	return TRUE
 

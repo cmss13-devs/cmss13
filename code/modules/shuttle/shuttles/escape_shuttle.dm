@@ -98,7 +98,8 @@
 	if(!crash_land) // so doors won't break in space
 		for(var/obj/structure/machinery/door/air in door_handler.doors)
 			for(var/obj/effect/xenomorph/acid/acid in air.loc)
-				qdel(acid)
+				if(acid.acid_t == air)
+					qdel(acid)
 			air.breakable = FALSE
 			air.indestructible = TRUE
 			air.unacidable = TRUE

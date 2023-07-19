@@ -95,7 +95,7 @@
 	indestructible = TRUE
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/yautja/Initialize()
-	..()
+	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_YAUTJA_ARMORY_OPENED, PROC_REF(open))
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment

@@ -420,6 +420,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers
 			var/new_tod = isfacehugger(src) ? 1 : world.time
+			ghost.bypass_time_of_death_checks = isfacehugger(src)
 			ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
 		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE

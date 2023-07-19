@@ -841,8 +841,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			if(istype(bracer))
 				if(grabber.action_busy)
 					return FALSE
-				if(bracer.last_charge > world.time)
-					to_chat(user, SPAN_WARNING("It is too soon for [bracer.name] to siphon power again."))
+				if(!COOLDOWN_FINISHED(bracer, bracer_recharge))
+					to_chat(user, SPAN_WARNING("It is too soon for [bracer.name] to siphon power again. Wait [COOLDOWN_SECONDSLEFT(bracer, bracer_recharge)] seconds."))
 					return FALSE
 				to_chat(user, SPAN_NOTICE("You rest your bracer against the APC interface and begin to siphon off some of the stored energy."))
 				if(!do_after(grabber, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
@@ -869,7 +869,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 					return FALSE
 				playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
 				bracer.charge += charge_to_use
-				bracer.last_charge = (world.time + bracer.charge_cooldown)
+				COOLDOWN_START(bracer, bracer_recharge, bracer.charge_cooldown)
 				to_chat(grabber, SPAN_YAUTJABOLD("[icon2html(bracer)] \The <b>[bracer]</b> beep: Power siphon complete. Charge at [bracer.charge]/[bracer.charge_max]."))
 				if(bracer.notification_sound)
 					playsound(bracer.loc, 'sound/items/pred_bracer.ogg', 75, 1)

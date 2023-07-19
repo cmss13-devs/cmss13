@@ -35,8 +35,6 @@
 	var/charge_rate = 30
 	/// Cooldown on draining power from APC
 	var/charge_cooldown = COOLDOWN_BRACER_CHARGE
-	/// Worldtime of last recharge
-	var/last_charge
 	var/cloaked = 0
 	var/cloak_timer = 0
 	var/cloak_malfunction = 0
@@ -47,6 +45,7 @@
 
 	var/mob/living/carbon/human/owner //Pred spawned on, or thrall given to.
 	var/obj/item/clothing/gloves/yautja/linked_bracer //Bracer linked to this one (thrall or mentor).
+	COOLDOWN_DECLARE(bracer_recharge)
 
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	. = ..()
@@ -95,13 +94,13 @@
 		human_holder.update_power_display(perc_charge)
 
 	//Non-Yautja have a chance to get stunned with each power drain
-	if(cloaked)
-		if(!HAS_TRAIT(human_holder, TRAIT_YAUTJA_TECH) && !human_holder.hunter_data.thralled)
-			if(prob(15))
-				decloak(human_holder)
-				shock_user(human_holder)
-		if(human_holder.stat == DEAD)
-			decloak(human_holder, TRUE)
+	if(!cloaked)
+		return
+	if(human_holder.stat == DEAD)
+		decloak(human_holder, TRUE)
+	if(!HAS_TRAIT(human_holder, TRAIT_YAUTJA_TECH) && !human_holder.hunter_data.thralled && prob(15))
+		decloak(human_holder)
+		shock_user(human_holder)
 
 /// handles decloaking only on HUNTER gloves
 /obj/item/clothing/gloves/yautja/proc/decloak()

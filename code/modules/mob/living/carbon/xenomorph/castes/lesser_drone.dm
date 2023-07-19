@@ -48,7 +48,7 @@
 	icon_state = "Lesser Drone Walking"
 	plasma_types = list(PLASMA_PURPLE)
 	tier = 0
-	mob_size = MOB_SIZE_XENO_SMALL
+	mob_size = MOB_SIZE_XENO_VERY_SMALL
 	life_value = 0
 	default_honor_value = 0
 	show_only_numbers = TRUE

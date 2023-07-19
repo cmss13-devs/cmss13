@@ -45,13 +45,8 @@
 	desc = "An alien drone. Looks... smaller."
 	icon = 'icons/mob/xenos/drone.dmi'
 	icon_size = 48
-	icon_state = "Drone Walking"
+	icon_state = "Lesser Drone Walking"
 	plasma_types = list(PLASMA_PURPLE)
-	tier = 1
-	pixel_x = -8
-	old_x = -8
-	pixel_y = -4
-	old_y = -4
 	tier = 0
 	mob_size = MOB_SIZE_SMALL
 	life_value = 0
@@ -86,16 +81,6 @@
 	icon_xeno = 'icons/mob/xenos/lesser_drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/lesser_drone.dmi'
 
-/mob/living/carbon/xenomorph/lesser_drone/update_icons()
-	. = ..()
-
-	var/matrix/scale_matrix = new()
-	scale_matrix.Scale(0.8, 0.8)
-
-	base_transform = scale_matrix  //Threaten the spriters with this until they give a sprite - Morrow
-	transform = scale_matrix
-	enable_pixel_scaling()
-
 /mob/living/carbon/xenomorph/lesser_drone/age_xeno()
 	if(stat == DEAD || !caste || QDELETED(src) || !client)
 		return
@@ -103,3 +88,5 @@
 	age = XENO_NORMAL
 
 	hud_update()
+
+	xeno_jitter(25)

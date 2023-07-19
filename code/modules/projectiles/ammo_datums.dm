@@ -2352,6 +2352,7 @@
 	flags_ammo_behavior = AMMO_IGNORE_RESIST
 
 	damage = 55
+	penetration = 50
 
 /datum/ammo/energy/yautja/rifle/blast
 	name = "plasma shatterer"
@@ -2360,6 +2361,7 @@
 
 	shell_speed = AMMO_SPEED_TIER_4
 	damage = 40
+	penetration = 50
 
 /datum/ammo/energy/yautja/rifle/blast/on_hit_mob(mob/M, obj/item/projectile/P)
 	var/L = get_turf(M)

@@ -1,0 +1,4 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - balance: "Lurkers don't lose invisibility when they bump into partly visible mobs."

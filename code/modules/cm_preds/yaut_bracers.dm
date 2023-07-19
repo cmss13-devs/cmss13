@@ -349,10 +349,6 @@
 	playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
 	return TRUE
 
-// Toggle the notification sound
-/obj/item/clothing/gloves/yautja/hunter/toggle_notification_sound()
-	set category = "Yautja.Misc"
-
 //Should put a cool menu here, like ninjas.
 /obj/item/clothing/gloves/yautja/hunter/verb/wristblades()
 	set name = "Use Wrist Blades"

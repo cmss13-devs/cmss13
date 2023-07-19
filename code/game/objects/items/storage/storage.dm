@@ -799,9 +799,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	storage_close(watcher)
 
 /obj/item/storage/proc/dump_objectives()
-	for(var/obj/item/I in src)
-		if(I.is_objective)
-			I.forceMove(loc)
+	for(var/obj/item/cur_item in src)
+		if(cur_item.is_objective)
+			remove_from_storage(cur_item, loc)
 
 
 /obj/item/storage/Destroy()

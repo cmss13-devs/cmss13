@@ -67,6 +67,11 @@
 		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/facehugger/Life(delta_time)
+	if(!client && !aghosted && away_timer > XENO_FACEHUGGER_LEAVE_TIMER)
+		// Become a npc once again
+		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
+		qdel(src)
+		return
 	if(stat != DEAD && !lying && !(locate(/obj/effect/alien/weeds) in get_turf(src)))
 		adjustBruteLoss(1)
 	return ..()
@@ -215,22 +220,6 @@
 
 /mob/living/carbon/xenomorph/facehugger/add_xeno_shield(added_amount, shield_source, type = /datum/xeno_shield, duration = -1, decay_amount_per_second = 1, add_shield_on = FALSE, max_shield = 200)
 	return
-
-/mob/living/carbon/xenomorph/facehugger/proc/scuttle(obj/structure/current_structure)
-	var/move_dir = get_dir(src, loc)
-	for(var/atom/movable/atom in get_turf(current_structure))
-		if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))
-			to_chat(src, SPAN_WARNING("\The [atom] prevents you from squeezing under \the [current_structure]!"))
-			return
-	// Is it an airlock?
-	if(istype(current_structure, /obj/structure/machinery/door/airlock))
-		var/obj/structure/machinery/door/airlock/current_airlock = current_structure
-		if(current_airlock.locked || current_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
-			to_chat(src, SPAN_WARNING("\The [current_airlock] is locked down tight. You can't squeeze underneath!"))
-			return
-	visible_message(SPAN_WARNING("\The [src] scuttles underneath \the [current_structure]!"), \
-	SPAN_WARNING("You squeeze and scuttle underneath \the [current_structure]."), null, 5)
-	forceMove(current_structure.loc)
 
 /mob/living/carbon/xenomorph/facehugger/emote(act, m_type, message, intentional, force_silence)
 	playsound(loc, "alien_roar_larva", 15)

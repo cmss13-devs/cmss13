@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - admin: "Removed the R_REJUVINATE permissions flag and replaces instances where it is used with R_MOD."
+  - admin: "Added logs if a restricted proc is proccalled."

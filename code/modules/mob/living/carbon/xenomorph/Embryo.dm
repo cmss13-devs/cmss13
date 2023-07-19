@@ -38,7 +38,7 @@
 	GLOB.player_embryo_list -= src
 	. = ..()
 
-/obj/item/alien_embryo/process()
+/obj/item/alien_embryo/process(delta_time)
 	if(!affected_mob) //The mob we were gestating in is straight up gone, we shouldn't be here
 		STOP_PROCESSING(SSobj, src)
 		qdel(src)
@@ -72,24 +72,26 @@
 	if(affected_mob.in_stasis == STASIS_IN_CRYO_CELL)
 		return FALSE //If they are in cryo, the embryo won't grow.
 
-	process_growth()
+	process_growth(delta_time)
 
-/obj/item/alien_embryo/proc/process_growth()
+/obj/item/alien_embryo/proc/process_growth(delta_time)
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	/// The total time the person is hugged divided by stages until burst
+	var/per_stage_hugged_time = CONFIG_GET(number/embryo_burst_timer) / 5
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.
 		if(affected_mob.in_stasis || affected_mob.bodytemperature < 170)
 			if(stage < 5)
-				counter += 0.33 * hive.larva_gestation_multiplier
-			else if(stage == 4)
-				counter += 0.11 * hive.larva_gestation_multiplier
+				counter += 0.33 * hive.larva_gestation_multiplier * delta_time
+			if(stage == 4) // Stasis affects late-stage less
+				counter += 0.11 * hive.larva_gestation_multiplier * delta_time
 		else if(HAS_TRAIT(affected_mob, TRAIT_NESTED)) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
-			counter += 1.5 * hive.larva_gestation_multiplier //Currently twice as much, can be changed
+			counter += 1.5 * hive.larva_gestation_multiplier * delta_time //Currently twice as much, can be changed
 		else
 			if(stage < 5)
-				counter += 1 * hive.larva_gestation_multiplier
+				counter += 1 * hive.larva_gestation_multiplier * delta_time
 
-		if(stage < 5 && counter >= 90)
+		if(stage < 5 && counter >= per_stage_hugged_time)
 			counter = 0
 			stage++
 			if(iscarbon(affected_mob))
@@ -149,14 +151,21 @@
 	var/mob/picked
 	// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva.
 	if((!isyautja(affected_mob) || (isyautja(affected_mob) && prob(20))) && istype(affected_mob.buckled, /obj/structure/bed/nest))
-		if(affected_mob.first_xeno || (affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, JOB_XENOMORPH)))
+		if(affected_mob.first_xeno || (affected_mob.client?.prefs?.be_special & BE_ALIEN_AFTER_DEATH && !jobban_isbanned(affected_mob, JOB_XENOMORPH)))
 			picked = affected_mob
-		else if(affected_mob.mind && affected_mob.mind.ghost_mob && affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, JOB_XENOMORPH))
-			picked = affected_mob.mind.ghost_mob
+		else if(affected_mob.mind?.ghost_mob && affected_mob.client?.prefs?.be_special & BE_ALIEN_AFTER_DEATH && !jobban_isbanned(affected_mob, JOB_XENOMORPH))
+			picked = affected_mob.mind.ghost_mob // This currently doesn't look possible
+		else if(affected_mob.persistent_ckey)
+			for(var/mob/dead/observer/cur_obs as anything in GLOB.observer_list)
+				if(cur_obs.ckey != affected_mob.persistent_ckey)
+					continue
+				if(cur_obs?.client?.prefs?.be_special & BE_ALIEN_AFTER_DEATH && !jobban_isbanned(cur_obs, JOB_XENOMORPH))
+					picked = cur_obs
+				break
 
 	if(!picked)
 		// Get a candidate from observers
-		var/list/candidates = get_alien_candidates()
+		var/list/candidates = get_alien_candidates(hive)
 		if(candidates && candidates.len)
 			// If they were facehugged by a player thats still in queue, they get second dibs on the new larva.
 			if(hugger_ckey)
@@ -308,20 +317,3 @@
 		victim.death(cause) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
 		victim.chestburst = 2
 		victim.update_burst()
-
-// Squeeze thru dense objects as a larva, as airlocks
-/mob/living/carbon/xenomorph/larva/proc/scuttle(obj/structure/target)
-	var/move_dir = get_dir(src, loc)
-	for(var/atom/movable/AM in get_turf(target))
-		if(AM != target && AM.density && AM.BlockedPassDirs(src, move_dir))
-			to_chat(src, SPAN_WARNING("\The [AM] prevents you from squeezing under \the [target]!"))
-			return
-	// Is it an airlock?
-	if(istype(target, /obj/structure/machinery/door/airlock))
-		var/obj/structure/machinery/door/airlock/selected_airlock = target
-		if(selected_airlock.locked || selected_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
-			to_chat(src, SPAN_WARNING("\The [selected_airlock] is locked down tight. You can't squeeze underneath!"))
-			return
-	visible_message(SPAN_WARNING("\The [src] scuttles underneath \the [target]!"), \
-	SPAN_WARNING("You squeeze and scuttle underneath \the [target]."), null, 5)
-	forceMove(target.loc)

@@ -38,7 +38,7 @@
 	GLOB.player_embryo_list -= src
 	. = ..()
 
-/obj/item/alien_embryo/process()
+/obj/item/alien_embryo/process(delta_time)
 	if(!affected_mob) //The mob we were gestating in is straight up gone, we shouldn't be here
 		STOP_PROCESSING(SSobj, src)
 		qdel(src)
@@ -72,24 +72,26 @@
 	if(affected_mob.in_stasis == STASIS_IN_CRYO_CELL)
 		return FALSE //If they are in cryo, the embryo won't grow.
 
-	process_growth()
+	process_growth(delta_time)
 
-/obj/item/alien_embryo/proc/process_growth()
+/obj/item/alien_embryo/proc/process_growth(delta_time)
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	/// The total time the person is hugged divided by stages until burst
+	var/per_stage_hugged_time = CONFIG_GET(number/embryo_burst_timer) / 5
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.
 		if(affected_mob.in_stasis || affected_mob.bodytemperature < 170)
 			if(stage < 5)
-				counter += 0.33 * hive.larva_gestation_multiplier
-			else if(stage == 4)
-				counter += 0.11 * hive.larva_gestation_multiplier
+				counter += 0.33 * hive.larva_gestation_multiplier * delta_time
+			if(stage == 4) // Stasis affects late-stage less
+				counter += 0.11 * hive.larva_gestation_multiplier * delta_time
 		else if(HAS_TRAIT(affected_mob, TRAIT_NESTED)) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
-			counter += 1.5 * hive.larva_gestation_multiplier //Currently twice as much, can be changed
+			counter += 1.5 * hive.larva_gestation_multiplier * delta_time //Currently twice as much, can be changed
 		else
 			if(stage < 5)
-				counter += 1 * hive.larva_gestation_multiplier
+				counter += 1 * hive.larva_gestation_multiplier * delta_time
 
-		if(stage < 5 && counter >= 90)
+		if(stage < 5 && counter >= per_stage_hugged_time)
 			counter = 0
 			stage++
 			if(iscarbon(affected_mob))

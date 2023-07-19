@@ -372,7 +372,7 @@ Works together with spawning an observer, noted above.
 		// We don't change facehugger timeofdeath because they are still on cooldown if they died as a hugger
 		var/new_tod = isfacehugger(src) ? 1 : ghost.timeofdeath
 		// if they died as facehugger, bypass typical TOD checks
-		ghost.bypass_time_of_death_checks = isfacehugger(src) ? TRUE : FALSE
+		ghost.bypass_time_of_death_checks = isfacehugger(src)
 		ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
 
 	ghost.set_huds_from_prefs()

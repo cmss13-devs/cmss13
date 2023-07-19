@@ -34,3 +34,7 @@ AddTimelock(/datum/job/logistics/otech, list(
 	name = JOB_ORDNANCE_TECH
 	icon_state = "ot_spawn"
 	job = /datum/job/logistics/otech
+<<<<<<< HEAD
+=======
+
+>>>>>>> master

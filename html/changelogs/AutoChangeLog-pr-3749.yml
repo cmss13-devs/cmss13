@@ -1,0 +1,8 @@
+author: "Diegoflores31"
+delete-after: True
+changes:
+  - balance: "Acid Splash damage increased to 25"
+  - balance: "Acid Splash damage can be reduced with BIO armor."
+  - balance: "Reduced Light armor BIO resistance by 10"
+  - balance: "Increased Heavy armor BIO resistance by 5"
+  - balance: "Increased VL vest BIO resistance by 5"

@@ -1,6 +1,7 @@
 /datum/species/synthetic/colonial/working_joe
 	name = SYNTH_WORKING_JOE
 	name_plural = "Working Joes"
+	death_message = "violently gargles fluid and seizes up, the glow in their eyes dimming..."
 	uses_ethnicity = FALSE
 	burn_mod = 0.65 // made for hazardous environments, withstanding temperatures up to 1210 degrees
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT, TRAIT_CANNOT_EAT)
@@ -14,6 +15,11 @@
 	. = ..()
 	give_action(joe, /datum/action/joe_emote_panel)
 
+// Special death noise for Working Joe
+/datum/species/synthetic/colonial/working_joe/handle_death(mob/living/carbon/human/dying_joe, gibbed)
+	if(!gibbed) //A gibbed Joe won't have a death rattle
+		playsound(dying_joe.loc, pick_weight(list('sound/voice/joe/death_normal.ogg' = 75, 'sound/voice/joe/death_silence.ogg' = 10, 'sound/voice/joe/death_tomorrow.ogg' = 10,'sound/voice/joe/death_dream.ogg' = 5)), 25, FALSE)
+	return ..()
 
 /// Open the WJ's emote panel, which allows them to use voicelines
 /datum/species/synthetic/colonial/working_joe/open_emote_panel()

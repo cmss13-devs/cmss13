@@ -209,3 +209,40 @@
       so they can still be found correctly.
   theselfish:
   - rscadd: SOs may now get coats in their vendor.
+2023-07-17:
+  Puckaboo2:
+  - spellcheck: Some duplicate icon states have been differentiated to prevent future
+      missing icon state errors.
+  - imageadd: Added new icon states for chemical and virology dispensers.
+  - rscdel: Removed dozens of duplicate icon states from over 50 files to reduce bloat.
+  - rscdel: Removed duplicate empty icon states.
+  realforest2001:
+  - maptweak: Added Apollo Maintenance Controllers to the following locations.
+  - maptweak: Astronavigation, CIC Substation, Brig Substation, Req Aux Storage, Hangar
+      & OT & Engineering workshops, Reactor Core Room and Lifeboat Control Ring.
+2023-07-19:
+  Ben10083:
+  - rscadd: Working Joes now have a unique death message. Credit to Quickload for
+      the message.
+  - soundadd: Working Joes now have a death rattle. Credit to Quickload for shifting
+      through Alien Isolation audio files.
+  - qol: Things that die with intent eyes now lose color in their eyes on death.
+  Drathek:
+  - bugfix: Banished players will no longer be candidates for hives they are banished
+      from.
+  - bugfix: Cryoing will now set your larva queue time so you don't get prioritized
+      over others that have been waiting.
+  - admin: Shuttle intoTheSunset will set larva queue time the same as other situations.
+  - qol: Added a preference to disable xeno ability deactivation when re-selecting
+      the same ability
+  Morrow:
+  - rscadd: Added bayonet pouch to req
+  - balance: Explosive pouch inventory size from 3 to 6
+  - balance: Explosive pouch can no longer hold mine boxes
+  NewyearnewmeUwu:
+  - rscadd: Added the ES-4 electrostatic pistol to the CL's safe.
+  realforest2001:
+  - balance: Reduced tranq pistol bullet damage from 40 to 15
+  - bugfix: Fixes another synth survivor variant having marine comms.
+  theselfish:
+  - spellcheck: Goodbye Squad Spotter, hello regular non-squaded Spotter.

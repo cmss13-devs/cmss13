@@ -46,6 +46,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
 	/client/proc/toggle_middle_mouse_click,
+	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
 	/client/proc/toggle_dualwield,
 	/client/proc/toggle_middle_mouse_swap_hands,
@@ -314,7 +315,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(!CONFIG_GET(flag/no_localhost_rank))
 		var/static/list/localhost_addresses = list("127.0.0.1", "::1")
 		if(isnull(address) || (address in localhost_addresses))
-			var/datum/admins/admin = new("!localhost!", R_EVERYTHING, ckey)
+			var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
 			admin.associate(src)
 			RoleAuthority.roles_whitelist[ckey] = WHITELIST_EVERYTHING
 
@@ -616,7 +617,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 */
 /client/proc/init_verbs()
 	if(IsAdminAdvancedProcCall())
-		return
+		alert_proccall("init_verbs")
+		return PROC_BLOCKED
 	var/list/verblist = list()
 	var/list/verbstoprocess = verbs.Copy()
 	if(mob)

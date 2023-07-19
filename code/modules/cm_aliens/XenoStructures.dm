@@ -394,11 +394,13 @@
 		return attack_hand(user)
 
 /obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
-	if(islarva(user))
-		var/mob/living/carbon/xenomorph/larva/L = user
-		if (L.hivenumber == hivenumber)
-			L.scuttle(src)
-		return
+	if(isxeno(user))
+		var/mob/living/carbon/xenomorph/xeno_user = user
+		if (xeno_user.hivenumber != hivenumber && !xeno_user.ally_of_hivenumber(hivenumber))
+			return
+		if(xeno_user.scuttle(src))
+			return
+		return ..()
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if (C.ally_of_hivenumber(hivenumber))

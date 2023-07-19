@@ -92,6 +92,7 @@
 
 		list("POUCHES", -1, null, null),
 		list("Autoinjector Pouch", round(scale * 2), /obj/item/storage/pouch/autoinjector, VENDOR_ITEM_REGULAR),
+		list("Bayonet Pouch", round(scale * 2), /obj/item/storage/pouch/bayonet, VENDOR_ITEM_REGULAR),
 		list("Construction Pouch", round(scale * 2), /obj/item/storage/pouch/construction, VENDOR_ITEM_REGULAR),
 		list("Document Pouch", round(scale * 2), /obj/item/storage/pouch/document/small, VENDOR_ITEM_REGULAR),
 		list("Electronics Pouch", round(scale * 2), /obj/item/storage/pouch/electronics, VENDOR_ITEM_REGULAR),

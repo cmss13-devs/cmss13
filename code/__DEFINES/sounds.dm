@@ -71,6 +71,7 @@
 #define AMBIENCE_ALMAYER 'sound/ambience/almayerambience.ogg'
 #define AMBIENCE_LV624 'sound/ambience/ambienceLV624.ogg'
 #define AMBIENCE_BIGRED 'sound/ambience/desert.ogg'
+#define AMBIENCE_NV 'sound/ambience/ambienceNV.ogg'
 #define AMBIENCE_PRISON 'sound/ambience/shipambience.ogg'
 #define AMBIENCE_TRIJENT 'sound/ambience/desert.ogg'
 

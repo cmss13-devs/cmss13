@@ -1,0 +1,4 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - bugfix: "fix some area having no apc on the almayer making them not behave like they should specialy when hijack happen."

@@ -1,0 +1,6 @@
+author: "TeDGamer"
+delete-after: True
+changes:
+  - bugfix: "Xenos allied to the hive can now open hive's doors"
+  - bugfix: "Huggers can now scuttle doors"
+  - code_imp: "Combined hugger + larva code to allow for any small castes to scuttle"

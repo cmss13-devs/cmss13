@@ -1057,15 +1057,26 @@
 /datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
 		return FALSE
+
 	if(jobban_isbanned(user, JOB_XENOMORPH)) // User is jobbanned
 		to_chat(user, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
 		return FALSE
+
 	if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
 		var/time_left = round((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until 3 minutes have passed ([time_left] seconds remaining)."))
 		return FALSE
+
 	if(totalXenos.len <= 0)
 		to_chat(user, SPAN_WARNING("The hive has fallen, you can't join it!"))
+		return FALSE
+
+	if(!living_xeno_queen)
+		to_chat(user, SPAN_WARNING("The selected hive does not have a Queen!"))
+		return FALSE
+
+	if(!living_xeno_queen.ovipositor)
+		to_chat(user, SPAN_WARNING("The selected hive does not have a Queen on Ovipositor!"))
 		return FALSE
 
 	update_lesser_drone_limit()
@@ -1074,6 +1085,7 @@
 	for(var/mob/mob as anything in totalXenos)
 		if(islesserdrone(mob))
 			current_lesser_drone_count++
+
 	if(lesser_drone_limit <= current_lesser_drone_count)
 		to_chat(user, SPAN_WARNING("\The [GLOB.hive_datum[hivenumber]] cannot support more lesser drones! Limit: <b>[current_lesser_drone_count]/[lesser_drone_limit]</b>"))
 		return FALSE

@@ -576,14 +576,6 @@ Additional game mode variables.
 		to_chat(xeno_candidate, SPAN_WARNING("The selected hive does not have a hive core to spawn from!"))
 		return
 
-	if(!hive.living_xeno_queen)
-		to_chat(xeno_candidate, SPAN_WARNING("The selected hive does not have a Queen!"))
-		return
-
-	if(!hive.living_xeno_queen.ovipositor)
-		to_chat(xeno_candidate, SPAN_WARNING("The selected hive does not have a Queen on Ovipositor!"))
-		return
-
 	hive.hive_location.spawn_lesser_drone(xeno_candidate)
 
 	return TRUE

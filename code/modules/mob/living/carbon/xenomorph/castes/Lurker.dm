@@ -164,12 +164,10 @@
 	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invisibility_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
 	if(!lurker_invisibility_action)
 		return
-	if(bound_xeno.alpha >= 85)
-		return
 
 	var/mob/living/carbon/human/bumped_into = movable_atom
 	if(bumped_into.alpha < 100) //ignore invisible scouts and preds
 		return
 	
-	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You bumped into someone and partly lost your invisibility!"))
-	animate(bound_xeno, alpha = 85, time = 0.1 SECONDS, easing = QUAD_EASING)
+	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You bumped into someone and lost your invisibility!"))
+	lurker_invisibility_action.invisibility_off()

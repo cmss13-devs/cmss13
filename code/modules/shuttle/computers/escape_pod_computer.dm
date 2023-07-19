@@ -227,7 +227,7 @@
 	return FALSE
 
 /obj/structure/machinery/door/airlock/evacuation/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(locked && !unslashable) //doors become slashable after evac is called
+	if(density && !unslashable) //doors become slashable after evac is called
 		if(xeno.claw_type >= CLAW_TYPE_SHARP)
 			xeno.animation_attack_on(src)
 			playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -242,6 +242,6 @@
 	return FALSE
 
 /obj/structure/machinery/door/airlock/evacuation/get_applying_acid_time() //you can melt evacuation doors only when they are manually locked
-	if(!locked)
+	if(!density)
 		return -1
-	..()
+	return ..()

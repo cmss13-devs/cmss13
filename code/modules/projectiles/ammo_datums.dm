@@ -2808,8 +2808,8 @@
 	damage_type = BRUTE
 	bonus_projectiles_type = /datum/ammo/xeno/bone_chips/spread
 
-	damage = 5
-	max_range = 5
+	damage = 8
+	max_range = 6
 	accuracy = HIT_ACCURACY_TIER_8
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_7
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_7
@@ -2824,8 +2824,8 @@
 			return
 	if(ishuman_strict(M) || isxeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-		if(M.slowed < 8)
-			M.apply_effect(8, SLOW)
+		if(M.slowed < 3)
+			M.apply_effect(3, SLOW)
 
 /datum/ammo/xeno/bone_chips/spread
 	name = "small bone chips"

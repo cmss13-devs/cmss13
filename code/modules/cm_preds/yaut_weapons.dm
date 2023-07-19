@@ -891,7 +891,7 @@
 /obj/item/weapon/gun/energy/yautja/plasmarifle/load_into_chamber()
 	if(charge_time >= 80)
 		ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/blast]
-		charge_time = 0
+		charge_time -= 80
 	else
 		ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt]
 		charge_time -= 10

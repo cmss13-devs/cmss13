@@ -391,7 +391,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		ghostize(TRUE)
 	else
 		var/list/options = list("Ghost", "Stay in body")
-		if(check_rights(R_MOD))
+		if(check_other_rights(client, R_MOD, FALSE))
 			options = list("Aghost") + options
 		var/text_prompt = "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)"
 		var/is_nested = (buckled && istype(buckled, /obj/structure/bed/nest)) ? TRUE : FALSE
@@ -407,8 +407,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
 		var/turf/location = get_turf(src)
 		if(location) //to avoid runtime when a mob ends up in nullspace
-			msg_admin_niche("[key_name_admin(usr)] has ghosted. [ADMIN_JMP(location)]")
-		log_game("[key_name_admin(usr)] has ghosted.")
+			msg_admin_niche("[key_name_admin(client)] has ghosted. [ADMIN_JMP(location)]")
+		log_game("[key_name_admin(client)] has ghosted.")
 		var/mob/dead/observer/ghost = ghostize((is_nested && nest && !QDELETED(nest))) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost && !is_admin_level(z))
 			ghost.timeofdeath = world.time

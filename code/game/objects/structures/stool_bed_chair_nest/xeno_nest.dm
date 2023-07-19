@@ -261,7 +261,7 @@
 	human.disable_lights()
 	human.disable_special_items()
 
-	if(human.mind)
+	if(human.client)
 		human.do_ghost()
 
 	return TRUE

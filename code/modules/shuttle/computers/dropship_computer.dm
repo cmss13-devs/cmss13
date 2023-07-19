@@ -1,6 +1,6 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight
 	name = "dropship navigation computer"
-	desc = "flight computer for dropship"
+	desc = "A flight computer that can be used for autopilot or long-range flights."
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
@@ -267,7 +267,7 @@
 	hijack.fire()
 	GLOB.alt_ctrl_disabled = TRUE
 
-	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg')
+	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
 
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/hivenumber = XENO_HIVE_NORMAL

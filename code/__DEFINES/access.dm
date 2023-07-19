@@ -43,6 +43,14 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 
 #define ACCESS_MARINE_SYNTH 36
 
+// AI Core Accesses
+/// Used in temporary passes
+#define ACCESS_MARINE_AI_TEMP 90
+/// Used as dedicated access to ARES Core.
+#define ACCESS_MARINE_AI 91
+/// Used to access Maintenance Protocols on ARES Interface.
+#define ACCESS_ARES_DEBUG 92
+
 //Surface access levels
 #define ACCESS_CIVILIAN_PUBLIC 100
 #define ACCESS_CIVILIAN_LOGISTICS 101

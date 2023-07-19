@@ -339,5 +339,10 @@
 
 	return TRUE
 
+/obj/effect/alien/resin/special/pylon/core/attack_ghost(mob/dead/observer/user)
+	. = ..()
+	if(SSticker.mode.check_xeno_late_join(user))
+		SSticker.mode.attempt_to_join_as_lesser_drone(user)
+
 #undef PYLON_REPAIR_TIME
 #undef PYLON_WEEDS_REGROWTH_TIME

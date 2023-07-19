@@ -1005,7 +1005,7 @@
 	volume = RADIO_VOLUME_QUIET
 	ignore_z = FALSE
 	has_hud = TRUE
-	hud_type = MOB_HUD_FORECON
+	hud_type = MOB_HUD_FACTION_USCM
 
 /obj/item/device/radio/headset/almayer/mcom/vc
 	name = "marine vehicle crew radio headset"

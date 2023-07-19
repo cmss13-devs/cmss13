@@ -1,43 +1,11 @@
 ///*****************************LV-522 Force Recon Survivors*******************************************************/
 //Nanu told me to put them here so they dont clutter up survivors.dm
-/datum/faction/forecon
-	name = "USCM Force Recon"
-	faction_tag = FACTION_FORECON
-
-/datum/faction/forecon/modify_hud_holder(image/holder, mob/living/carbon/human/human)
-	var/hud_icon_state
-	var/obj/item/card/id/ID = human.get_idcard()
-	var/_role
-	if(human.mind)
-		_role = human.job
-	else if(ID)
-		_role = ID.rank
-	switch(_role)
-		if(JOB_FORECON_CO)
-			hud_icon_state = "co"
-		if(JOB_FORECON_SL)
-			hud_icon_state = "sl"
-		if(JOB_FORECON_SYN)
-			hud_icon_state = "synth"
-		if(JOB_FORECON_SNIPER)
-			hud_icon_state = "spec"
-		if(JOB_FORECON_MARKSMAN)
-			hud_icon_state = "spec"
-		if(JOB_FORECON_SMARTGUNNER)
-			hud_icon_state = "smartgunner"
-		if(JOB_FORECON_SUPPORT)
-			hud_icon_state = "support"
-		if(JOB_FORECON_RIFLEMAN)
-			hud_icon_state = "rifleman"
-	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "forecon_[hud_icon_state]")
-
 /datum/equipment_preset/survivor/forecon
 	paygrade = "ME5"
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
 	rank = JOB_SURVIVOR
-	faction_group = list(FACTION_USCM, FACTION_SURVIVOR, FACTION_FORECON,)
+	faction_group = list(FACTION_USCM, FACTION_SURVIVOR,)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,

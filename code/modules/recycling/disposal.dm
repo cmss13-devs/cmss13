@@ -151,17 +151,21 @@
 			if(grabbed_mob.mob_size > max_grab_size || !(grabbed_mob.status_flags & CANPUSH))
 				to_chat(user, SPAN_WARNING("You don't have the strength to move [grabbed_mob]!"))
 				return FALSE//can't tighten your grip on mobs bigger than you and mobs you can't push.
-			else if(user.grab_level >= GRAB_AGGRESSIVE)
+			if(user.grab_level >= GRAB_AGGRESSIVE)
 				user.visible_message(SPAN_WARNING("[user] starts putting [grabbed_mob] into [src]."),
 				SPAN_WARNING("You start putting [grabbed_mob] into [src]."))
-				if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-					grabbed_mob.forceMove(src)
-					user.visible_message(SPAN_WARNING("[user] puts [grabbed_mob] into [src]."),
-					SPAN_WARNING("[user] puts [grabbed_mob] into [src]."))
-					user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has placed [key_name(grabbed_mob)] in disposals.</font>")
-					grabbed_mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in disposals by [user] ([user.ckey])</font>")
-					msg_admin_attack("[user] ([user.ckey]) placed [key_name(grabbed_mob)] in a disposals unit in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-					flush(TRUE)//Forcibly flushing someone if forced in by another player.
+				if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+					user.visible_message(SPAN_WARNING("[user] stops putting [grabbed_mob] into [src]."),
+					SPAN_WARNING("You stop putting [grabbed_mob] into [src]."))
+					return FALSE
+
+				grabbed_mob.forceMove(src)
+				user.visible_message(SPAN_WARNING("[user] puts [grabbed_mob] into [src]."),
+				SPAN_WARNING("[user] puts [grabbed_mob] into [src]."))
+				user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has placed [key_name(grabbed_mob)] in disposals.</font>")
+				grabbed_mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in disposals by [user] ([user.ckey])</font>")
+				msg_admin_attack("[user] ([user.ckey]) placed [key_name(grabbed_mob)] in a disposals unit in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+				flush(TRUE)//Forcibly flushing someone if forced in by another player.
 			else
 				to_chat(user, SPAN_WARNING("You need a better grip to force [grabbed_mob] in there!"))
 		return

@@ -1127,4 +1127,3 @@
 		else
 			to_chat(user, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
 		return TRUE
-	return FALSE//Technically should never reach this.

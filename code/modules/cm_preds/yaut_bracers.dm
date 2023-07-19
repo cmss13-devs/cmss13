@@ -215,7 +215,7 @@
 	var/caster_material = "ebony"
 
 	var/obj/item/card/id/bracer_chip/embedded_id
-
+	var/owner_rank = CLAN_RANK_UNBLOODED_INT
 
 	var/caster_deployed = FALSE
 	var/obj/item/weapon/gun/energy/yautja/plasma_caster/caster
@@ -224,8 +224,10 @@
 	var/obj/item/weapon/wristblades/left_wristblades
 	var/obj/item/weapon/wristblades/right_wristblades
 
-/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_caster_material)
+/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_caster_material, new_owner_rank)
 	. = ..()
+	if(new_owner_rank)
+		owner_rank = new_owner_rank
 	embedded_id = new(src)
 	if(new_translator_type)
 		translator_type = new_translator_type

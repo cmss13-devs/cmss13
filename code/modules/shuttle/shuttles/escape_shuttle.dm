@@ -20,12 +20,15 @@
 /obj/docking_port/mobile/escape_shuttle/Initialize(mapload)
 	. = ..(mapload)
 	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/door/air in place)
+		for(var/obj/structure/machinery/door/airlock/evacuation/air in place)
 			door_handler.doors += list(air)
 			air.breakable = FALSE
 			air.indestructible = TRUE
 			air.unacidable = TRUE
 			air.linked_shuttle = src
+	if(id == ESCAPE_SHUTTLE_EAST_CL)
+		early_crash_land_chance = 25
+		crash_land_chance = 5
 
 /obj/docking_port/mobile/escape_shuttle/proc/cancel_evac()
 	door_handler.control_doors("force-unlock")
@@ -45,11 +48,11 @@
 	for(var/area/interior_area in shuttle_areas)
 		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in interior_area)
 			cryotube.dock_state = STATE_READY
-	for(var/obj/structure/machinery/door/air in door_handler.doors) 
+	for(var/obj/structure/machinery/door/air in door_handler.doors)
 		air.breakable = TRUE
 		air.indestructible = FALSE
 		air.unslashable = FALSE
-	
+
 
 /obj/docking_port/mobile/escape_shuttle/proc/evac_launch()
 	if(mode == SHUTTLE_CRASHED)

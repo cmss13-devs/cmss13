@@ -40,7 +40,7 @@
 	var/combat_equipment = TRUE
 
 /obj/structure/ship_ammo/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
-	if(unslashable) 
+	if(unslashable)
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -409,7 +409,7 @@
 	max_ammo_count = 1
 	ammo_name = "area denial sentry"
 	travelling_time = 0 // handled by droppod
-	point_cost = 800
+	point_cost = 600
 	accuracy_range = 0 // pinpoint
 	max_inaccuracy = 0
 	/// Special structures it needs to break with drop pod

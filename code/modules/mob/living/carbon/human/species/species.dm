@@ -122,6 +122,8 @@
 
 /datum/species/proc/larva_impregnated(obj/item/alien_embryo/embryo)
 	return
+
+/// Override to add an emote panel to a species
 /datum/species/proc/open_emote_panel()
 	return
 

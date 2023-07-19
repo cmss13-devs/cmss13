@@ -241,8 +241,14 @@
 		else
 			return get_step(start, EAST)
 
-/// Get a list of observers that can be alien candidates, optionally sorted by larva_queue_time
-/proc/get_alien_candidates(sorted = TRUE)
+/**
+ * Get a list of observers that can be alien candidates.
+ *
+ * Arguments:
+ * * hive - The hive we're filling a slot for to check if the player is banished
+ * * sorted - Whether to sort by larva_queue_time (default TRUE) or leave unsorted
+ */
+/proc/get_alien_candidates(datum/hive_status/hive = null, sorted = TRUE)
 	var/list/candidates = list()
 
 	for(var/mob/dead/observer/cur_obs as anything in GLOB.observer_list)
@@ -272,6 +278,15 @@
 		// Mods with larva protection cannot be drafted
 		if((cur_obs.client.admin_holder && (cur_obs.client.admin_holder.rights & R_MOD)) && !cur_obs.adminlarva)
 			continue
+
+		if(hive)
+			var/banished = FALSE
+			for(var/mob_name in hive.banished_ckeys)
+				if(hive.banished_ckeys[mob_name] == cur_obs.ckey)
+					banished = TRUE
+					break
+			if(banished)
+				continue
 
 		candidates += cur_obs
 

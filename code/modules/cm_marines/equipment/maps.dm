@@ -125,10 +125,10 @@
 	desc = "An overview of LV-522 schematics."
 	html_link = "images/b/bb/C_claim.png"
 	color = "cyan"
-/obj/item/map/new_varadero//to-do actually finish this map
+/obj/item/map/new_varadero
 	name = "\improper New Varadero map"
-	desc = "The blueprint and readout of the UA outpost New Varadero"
-	html_link = "images/0/0d/Kutjevo_a1.jpg"//replace later
+	desc = "A labeled blueprint of the UA outpost New Varadero"
+	html_link = "images/9/94/New_Varadero.png"
 	color = "red"
 
 //used by marine equipment machines to spawn the correct map.
@@ -195,7 +195,7 @@
 		if (MAP_NEW_VARADERO)
 			name = "\improper New Varadero map"
 			desc = "The blueprint and readout of the UA outpost New Varadero"
-			html_link = "images/0/0d/Kutjevo_a1.jpg"//replace later
+			html_link = "images/9/94/New_Varadero.png"//replace later
 			color = "red"
 
 		else

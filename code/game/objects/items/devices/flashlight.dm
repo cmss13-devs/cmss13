@@ -430,7 +430,7 @@
 
 /obj/item/device/flashlight/flare/on/starshell_ash
 	name = "burning star shell ash"
-	desc = "Bright burning ash from a Star Shell 40mm. Don't touch, oh it'll burn ya'."
+	desc = "Bright burning ash from a Star Shell 40mm. Don't touch, or it'll burn ya'."
 	icon_state = "starshell_ash"
 	brightness_on = 7
 	anchored = TRUE//can't be picked up

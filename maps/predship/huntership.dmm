@@ -2002,37 +2002,17 @@
 	},
 /area/yautja)
 "ov" = (
-/obj/item/storage/belt/utility/full{
-	color = "#6b675e";
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools.";
-	name = "\improper Yautja toolbelt"
-	},
-/obj/item/storage/belt/utility/full{
-	color = "#6b675e";
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools.";
-	name = "\improper Yautja toolbelt"
-	},
-/obj/item/storage/belt/utility/full{
-	color = "#6b675e";
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools.";
-	name = "\improper Yautja toolbelt"
-	},
-/obj/item/storage/belt/utility/full{
-	color = "#6b675e";
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools.";
-	name = "\improper Yautja toolbelt"
-	},
-/obj/item/storage/belt/utility/full{
-	color = "#6b675e";
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools.";
-	name = "\improper Yautja toolbelt"
-	},
-/obj/item/stack/yautja_rope,
-/obj/item/stack/yautja_rope,
 /obj/structure/surface/rack{
 	color = "#6b675e";
 	layer = 2.79
 	},
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

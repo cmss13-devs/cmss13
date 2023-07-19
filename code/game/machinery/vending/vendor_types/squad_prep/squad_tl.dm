@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_tl, list(
 		list("Powerloader Certification", 45, /obj/item/pamphlet/skill/powerloader, null, VENDOR_ITEM_REGULAR),
 		list("Large Shotgun Shell Pouch", 10, /obj/item/storage/pouch/shotgun/large, null, VENDOR_ITEM_RECOMMENDED),
 		list("Insulated Gloves", 3, /obj/item/clothing/gloves/yellow, null, VENDOR_ITEM_REGULAR),
-		list("M276 SMG Armor Rig", 5, /obj/item/storage/belt/gun/m39, null, VENDOR_ITEM_REGULAR),
+		list("M276 SMG Armor Rig", 15, /obj/item/storage/belt/gun/m39, null, VENDOR_ITEM_REGULAR),
 
 		list("RADIO KEYS", 0, null, null, null),
 		list("Engineering Radio Encryption Key", 5, /obj/item/device/encryptionkey/engi, null, VENDOR_ITEM_REGULAR),

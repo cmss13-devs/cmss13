@@ -20,7 +20,7 @@
 #define DEFAULT_MESSAGE_RANGE 7
 
 //Predator decloak multpliers based on the standard.
-#define DECLOAK_STANDARD 10 SECONDS
+#define DECLOAK_STANDARD (10 SECONDS)
 /// Forced for any unspecified reason.
 #define DECLOAK_FORCED 1
 /// Caused by being worn by non humans.

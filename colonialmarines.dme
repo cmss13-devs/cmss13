@@ -1890,6 +1890,7 @@
 #include "code\modules\mob\living\carbon\xenomorph\castes\Hellhound.dm"
 #include "code\modules\mob\living\carbon\xenomorph\castes\Hivelord.dm"
 #include "code\modules\mob\living\carbon\xenomorph\castes\Larva.dm"
+#include "code\modules\mob\living\carbon\xenomorph\castes\lesser_drone.dm"
 #include "code\modules\mob\living\carbon\xenomorph\castes\Lurker.dm"
 #include "code\modules\mob\living\carbon\xenomorph\castes\Praetorian.dm"
 #include "code\modules\mob\living\carbon\xenomorph\castes\Predalien.dm"

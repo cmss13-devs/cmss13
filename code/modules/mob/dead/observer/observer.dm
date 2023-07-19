@@ -413,8 +413,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(ghost && !is_admin_level(z))
 			ghost.timeofdeath = world.time
 
-			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers
-			var/new_tod = isfacehugger(src) ? 1 : world.time
+			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers/lesser drones
+			var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : world.time
+
 			ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
 		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE
@@ -772,6 +773,21 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(SSticker.mode.check_xeno_late_join(src))
 		SSticker.mode.attempt_to_join_as_facehugger(src)
+
+/mob/dead/verb/join_as_lesser_drone()
+	set category = "Ghost.Join"
+	set name = "Join as a Lesser Drone"
+	set desc = "Try joining as a Lesser Drone to support the hive."
+
+	if (!client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_xeno_late_join(src))
+		SSticker.mode.attempt_to_join_as_lesser_drone(src)
 
 /mob/dead/verb/join_as_zombie() //Adapted from join as hellhoud
 	set category = "Ghost.Join"

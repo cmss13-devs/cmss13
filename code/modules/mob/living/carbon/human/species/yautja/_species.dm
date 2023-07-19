@@ -254,6 +254,8 @@
 	var/static/list/yautja_emotes
 	/// Static list of categories
 	var/static/list/yautja_categories = list()
+	/// Panel allows you to spam, so a manual CD is added here
+	COOLDOWN_DECLARE(panel_emote_cooldown)
 
 /datum/yautja_emote_panel/New()
 	if(!length(yautja_emotes))
@@ -274,6 +276,13 @@
 	if(!ui)
 		ui = new(user, src, "YautjaEmotes")
 		ui.open()
+
+/datum/yautja_emote_panel/ui_data(mob/user)
+	var/list/data = list()
+
+	data["on_cooldown"] = !COOLDOWN_FINISHED(src, panel_emote_cooldown)
+
+	return data
 
 /datum/yautja_emote_panel/ui_state(mob/user)
 	return GLOB.conscious_state
@@ -307,11 +316,12 @@
 
 			path = text2path(params["emotePath"])
 
-			if(!path)
-				return FALSE
+			if(!path || !COOLDOWN_FINISHED(src, panel_emote_cooldown))
+				return
 
 			if(!(path in subtypesof(/datum/emote/living/carbon/human/yautja)))
 				return FALSE
 
+			COOLDOWN_START(src, panel_emote_cooldown, 2.5 SECONDS)
 			usr.emote(initial(path.key))
 			return TRUE

@@ -1,6 +1,7 @@
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Divider, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
+import { BooleanLike } from '../../common/react';
 
 type Emote = {
   id: string;
@@ -12,11 +13,12 @@ type Emote = {
 type BackendContext = {
   categories: string[];
   emotes: Emote[];
+  on_cooldown: BooleanLike;
 };
 
 const EmoteTab = (props, context) => {
   const { data, act } = useBackend<BackendContext>(context);
-  const { categories, emotes } = data;
+  const { categories, emotes, on_cooldown } = data;
   const [categoryIndex, setCategoryIndex] = useLocalState(
     context,
     'category_index',
@@ -74,6 +76,7 @@ const EmoteTab = (props, context) => {
                     <Button
                       content={item.text}
                       tooltip={item.id}
+                      disabled={on_cooldown}
                       onClick={() =>
                         act('emote', {
                           emotePath: item.path,

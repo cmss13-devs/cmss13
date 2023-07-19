@@ -58,6 +58,7 @@
 	can_hivemind_speak = FALSE
 	crit_health = 0
 	gib_chance = 100
+	acid_blood_damage = 15
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,

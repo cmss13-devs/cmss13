@@ -6,7 +6,7 @@
 	melee_vehicle_damage = XENO_DAMAGE_TIER_1
 	max_health = XENO_HEALTH_LESSER_DRONE
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
-	plasma_max = XENO_PLASMA_TIER_2
+	plasma_max = XENO_PLASMA_TIER_3
 	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_NO_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_NO_ARMOR
@@ -27,8 +27,6 @@
 
 	tackle_min = 4
 	tackle_max = 4
-	tacklestrength_min = 3
-	tacklestrength_max = 4
 
 	aura_strength = 1
 
@@ -55,7 +53,6 @@
 	counts_for_slots = FALSE
 	counts_for_roundend = FALSE
 	refunds_larva_if_banished = FALSE
-	can_hivemind_speak = FALSE
 	crit_health = 0
 	gib_chance = 100
 	acid_blood_damage = 15

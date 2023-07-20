@@ -35,7 +35,7 @@
 		PF.flags_can_pass_behind = NONE
 
 /obj/structure/blocker/tent/get_projectile_hit_boolean(obj/item/projectile/P)
-	..()
+	. = ..()
 	return FALSE // Always fly through the tent
 
 //Blocks all direction, basically an invisible wall

@@ -131,7 +131,6 @@
 	adjustBruteLoss(amount * damage_taken_mod)
 	use_plasma(amount * 2)
 	updatehealth()
-	modify_healed(amount)
 	new /datum/effects/heal_over_time(target_xeno, amount, 10, 1)
 	target_xeno.xeno_jitter(1 SECONDS)
 	target_xeno.flick_heal_overlay(10 SECONDS, "#00be6f")
@@ -140,6 +139,7 @@
 	playsound(src, "alien_drool", 25)
 	var/datum/behavior_delegate/drone_healer/healer_delegate = src.behavior_delegate
 	healer_delegate.salve_applied_recently = TRUE
+	healer_delegate.modify_healed(amount)
 	update_icons()
 	addtimer(CALLBACK(healer_delegate, /datum/behavior_delegate/drone_healer/proc/un_salve), 10 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
@@ -213,8 +213,8 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/activable/healer_sacrifice/use_ability(atom/atom)
-	var/mob/living/carbon/Xenomorph/xeno = owner
-	var/mob/living/carbon/Xenomorph/target = atom
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/target = atom
 
 	if(!istype(target))
 		return
@@ -251,14 +251,14 @@
 	target.xeno_jitter(1 SECONDS)
 	target.flick_heal_overlay(3 SECONDS, "#44253d")
 
-	target.SetKnockedout(0)
-	target.SetStunned(0)
-	target.SetKnockeddown(0)
-	target.SetDazed(0)
-	target.SetSlowed(0)
-	target.SetSuperslowed(0)
+	target.SetKnockDown(0)
+	target.SetStun(0)
+	target.SetKnockDown(0)
+	target.SetDaze(0)
+	target.SetSlow(0)
+	target.SetSuperslow(0)
 
-	var/datum/behavior_delegate/healer_delegate/behavior_delegate = behavior_delegate
+	var/datum/behavior_delegate/drone_healer/behavior_delegate = xeno.behavior_delegate
 	if(istype(behavior_delegate) && behavior_delegate.healed_amount >= behavior_delegate.max_healed_amount && xeno.client && xeno.hive)
 		addtimer(CALLBACK(xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), xeno.client), 5 SECONDS)
 
@@ -266,9 +266,9 @@
 
 /datum/action/xeno_action/activable/healer_sacrifice/action_activate()
 	..()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.selected_ability == src)
-		var/datum/behavior_delegate/healer_delegate/behavior_delegate = behavior_delegate
+		var/datum/behavior_delegate/drone_healer/behavior_delegate = xeno.behavior_delegate
 		if(!istype(behavior_delegate))
 			return
 		if (behavior_delegate.healed_amount < behavior_delegate.max_healed_amount)

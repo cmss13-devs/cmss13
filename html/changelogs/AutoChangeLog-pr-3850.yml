@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added donator kit boxes that hold a donator's special gear. They can be destroyed with a right-click while on the ground, and are locked to the donator."
+  - code_imp: "Tidied up typepaths for many donator items to make it clearer what or who they are for."
+  - code_imp: "Removed the requirement for donators to match their character name to our config file."

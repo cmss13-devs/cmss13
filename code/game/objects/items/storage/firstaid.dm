@@ -212,6 +212,22 @@
 /obj/item/storage/firstaid/surgical/empty/fill_preset_inventory()
 	return
 
+//---------TOOLKIT---------
+
+/obj/item/storage/firstaid/toolkit
+	name = "toolkit"
+	desc = "An combat engineering toolkit intended to carry electrical and mechanical supplies into combat."
+	icon_state = "toolkit"
+	item_state = "fulton"
+
+/obj/item/storage/firstaid/toolkit/update_icon()
+	if(content_watchers || !length(contents))
+		icon_state = "toolkit_empty"
+	else
+		icon_state = icon_full
+
+/obj/item/storage/firstaid/toolkit/empty/fill_preset_inventory()
+	return
 
 //---------SYRINGE CASE---------
 

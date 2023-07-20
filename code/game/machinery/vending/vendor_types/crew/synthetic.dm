@@ -21,6 +21,7 @@
 		list("Industrial Blowtorch", 2, /obj/item/tool/weldingtool/largetank, null, VENDOR_ITEM_REGULAR),
 		list("High-Capacity Industrial Blowtorch", 4, /obj/item/tool/weldingtool/hugetank, null, VENDOR_ITEM_REGULAR),
 		list("Plastic Explosive", 3, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
+		list("Toolkit", 1, /obj/item/storage/firstaid/toolkit/empty, null, VENDOR_ITEM_REGULAR),
 
 		list("FIRSTAID KITS", 0, null, null, null),
 		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_REGULAR),

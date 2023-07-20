@@ -4,12 +4,13 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	"Shattered Glass",
 	"Minor Structural Damage",
 	"Major Structural Damage",
+	"Janitorial",
 	"Chemical Spill",
 	"Fire",
-	"Power Failure",
 	"Communications Failure",
 	"Power Generation Failure",
 	"Electrical Fault",
+	"Support",
 	"Other"
 	))
 
@@ -856,7 +857,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			var/priority_report = FALSE
 			var/maint_type = tgui_input_list(operator, "What is the type of maintenance item you wish to report?", "Report Category", GLOB.maintenance_categories, 30 SECONDS)
 			switch(maint_type)
-				if("Major Structural Damage", "Communications Failure",	"Power Generation Failure")
+				if("Major Structural Damage", "Fire", "Communications Failure",	"Power Generation Failure")
 					priority_report = TRUE
 
 			if(!maint_type)
@@ -889,8 +890,13 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			var/assigned = ticket.ticket_assignee
 			if(assigned)
 				if(assigned == last_login)
-					to_chat(usr, SPAN_WARNING("You cannot claim a ticket you are already assigned!"))
-					return FALSE
+					var/prompt = tgui_alert(usr, "You already claimed this ticket! Do you wish to drop your claim?", "Unclaim ticket", list("Yes", "No"))
+					if(prompt != "Yes")
+						return FALSE
+					/// set ticket back to pending
+					ticket.ticket_assignee = null
+					ticket.ticket_status = TICKET_PENDING
+					return claim
 				var/choice = tgui_alert(usr, "This ticket has already been claimed by [assigned]! Do you wish to override their claim?", "Claim Override", list("Yes", "No"))
 				if(choice != "Yes")
 					claim = FALSE
@@ -916,7 +922,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			var/datum/ares_ticket/ticket = locate(params["ticket"])
 			if(!istype(ticket))
 				return FALSE
-			if(ticket.ticket_assignee != last_login)
+			if(ticket.ticket_assignee != last_login && ticket.ticket_assignee) //must be claimed by you or unclaimed.)
 				to_chat(usr, SPAN_WARNING("You cannot update a ticket that is not assigned to you!"))
 				return FALSE
 			var/choice = tgui_alert(usr, "What do you wish to mark the ticket as?", "Mark", list(TICKET_COMPLETED, TICKET_REJECTED), 20 SECONDS)

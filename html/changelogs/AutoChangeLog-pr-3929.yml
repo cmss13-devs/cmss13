@@ -1,4 +1,0 @@
-author: "Awantje"
-delete-after: True
-changes:
-  - bugfix: "The M56D no longer let's you violate density code when exiting it."

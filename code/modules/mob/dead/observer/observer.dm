@@ -374,7 +374,7 @@ Works together with spawning an observer, noted above.
 		// if they died as facehugger or lesser drone, bypass typical TOD checks
 		ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
 
-		ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+		ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
 
 	ghost.set_huds_from_prefs()
 

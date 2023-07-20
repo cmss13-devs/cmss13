@@ -395,7 +395,7 @@
 /// remove hide and apply cooldown
 /datum/action/xeno_action/onclick/xenohide/proc/post_attack()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno.layer != XENO_HIDING_LAYER)
+	if(xeno.layer == XENO_HIDING_LAYER)
 		xeno.layer = initial(xeno.layer)
 		to_chat(xeno, SPAN_NOTICE("You have stopped hiding."))
 		button.icon_state = "template"

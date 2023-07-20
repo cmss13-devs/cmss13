@@ -1947,9 +1947,10 @@
 		marine_announcement("A nuclear device has been authorized by High Command and will be delivered to requisitions via ASRS.", "NUCLEAR ORDINANCE AUTHORIZED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
 		log_game("[key_name_admin(usr)] has authorized a [nuketype], requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has authorized a [nuketype], requested by [key_name_admin(ref_person)]")
+
 	if(href_list["nukedeny"])
 		var/mob/ref_person = locate(href_list["nukedeny"])
-		marine_announcement("USCM High Command has denied your request for Nuclear Ordinance.", "NUCLEAR ORDINANCE DENIED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
+		marine_announcement("USCM High Command has denied the request for Nuclear Ordinance.", "NUCLEAR ORDINANCE DENIED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN) //TODO I WANT THIS TO BE WORDED BETTER
 		log_game("[key_name_admin(usr)] has denied nuclear ordinance, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has dnied nuclear ordinance, requested by [key_name_admin(ref_person)]")
 

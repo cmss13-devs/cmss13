@@ -1,6 +1,0 @@
-author: "BeagleGaming1"
-delete-after: True
-changes:
-  - config: "Moved time to burst to the config"
-  - balance: "Fixed time to burst, lowering it from 15 minutes to 7.5 minutes by default"
-  - balance: "Stasis bags used on late-stage mobs properly slow growth down less"

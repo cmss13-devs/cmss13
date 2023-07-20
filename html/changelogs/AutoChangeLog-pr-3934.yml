@@ -1,0 +1,6 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - balance: "Removes large pouches as buyable from all squad roles other than SL"
+  - balance: "Removes medkit, medical (the base ones, not first aid), and syringe pouches from squad prep room vendors"
+  - balance: "Replaces the EZ-injector first aid pouch with the alternate tricord/bandage/splint/ointment version in the squad prep room vendors"

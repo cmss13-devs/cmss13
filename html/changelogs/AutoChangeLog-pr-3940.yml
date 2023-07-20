@@ -1,0 +1,5 @@
+author: "Ben10083"
+delete-after: True
+changes:
+  - rscadd: "Facehuggers now bypass time of death checks when being considered for larva."
+  - code_imp: "new variable for observers to handle bypass of time of death checks"

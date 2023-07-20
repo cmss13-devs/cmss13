@@ -47,12 +47,12 @@
 /datum/emergency_call/goon/chem_retrieval/New()
 	..()
 	dispatch_message = "[MAIN_SHIP_NAME], this is USCSS Royce. Our squad is boarding to retrieve all samples of a chemical recently scanned from your research department. You should already have received a significant sum of money for your department's discovery. In return we ask that you cooperate and provide everything related to the chemical to our retrieval team."
-	objectives = "Secure all documents, samples, and chemicals containing the property DNA_Disintegrating from [MAIN_SHIP_NAME] research department."
+	objectives = "Secure all documents, samples, and chemicals containing the property DNA_Disintegrating from [MAIN_SHIP_NAME] research department and return them to Response Team Station."
 
 /datum/emergency_call/goon/chem_retrieval/proc/check_objective_info()
 	if(objective_info)
-		objectives = "Secure all documents, samples and chemicals related to [objective_info] from [MAIN_SHIP_NAME] research department."
-	objectives += "Assume at least 30 units are located within the department. If they can not make more that should be all. Cooperate with the onboard CL to ensure all who know the complete recipe are kept silenced with a contract of confidentiality. All humans who have ingested the chemical must be brought back dead or alive. Viral scan is required for any humans who is suspected of ingestion. The professor may call for PMC back up if things get out of hand."
+		objectives = "Secure all documents, samples and chemicals related to [objective_info] from [MAIN_SHIP_NAME] research department and return them to Response Team Station."
+	objectives += "Assume at least 30 units are located within the department. If they can not make more that should be all. Cooperate with the onboard CL to ensure all who know the complete recipe are kept silenced with a contract of confidentiality. All humans who have ingested the chemical must be brought back dead or alive. Viral scan is required for any humans who is suspected of ingestion. You must not deploy to the colony without explicit permission from PMC Dispatch or the Psi Division. The professor may call for PMC back up if things get out of hand."
 	checked_objective = TRUE
 
 /datum/emergency_call/goon/chem_retrieval/create_member(datum/mind/M, turf/override_spawn_loc)

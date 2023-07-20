@@ -92,7 +92,7 @@ jobs:
       - name: Find Maps
         id: map_finder
         run: |
-          echo "$(shopt -s extglob)"
+          bash shopt -s extglob
           echo "$(ls -mw0 maps/!(*override*).json)" > maps_output.txt
           sed -i -e s+maps/+\"+g -e s+.json+\"+g maps_output.txt
           echo "Maps: $(cat maps_output.txt)"

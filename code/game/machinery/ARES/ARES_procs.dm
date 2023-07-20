@@ -966,15 +966,14 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 					priority_report = TRUE
 
 			var/confirm = alert(operator, "Please confirm the submission of your access ticket request. \n\n Priority: [priority_report ? "Yes" : "No"] \n Holder: '[ticket_holder]' \n Details: '[details]' \n\n Is this correct?", "Confirmation", "Yes", "No")
-			if(confirm == "Yes")
-				if(link)
-					var/datum/ares_ticket/access/access_ticket = new(last_login, ticket_holder, details, priority_report)
-					link.tickets_access += access_ticket
-					if(priority_report)
-						ares_apollo_talk("Priority Access Request: [ticket_holder] - ID [access_ticket.ticket_id]. Seek and resolve.")
-					log_game("ARES: Access Ticket '\ref[access_ticket]' created by [key_name(operator)] as [last_login] with Holder '[ticket_holder]' and Details of '[details]'.")
-					return TRUE
-			return FALSE
+			if(confirm != "Yes" || !link)
+				return FALSE
+			var/datum/ares_ticket/access/access_ticket = new(last_login, ticket_holder, details, priority_report)
+			link.tickets_access += access_ticket
+			if(priority_report)
+				ares_apollo_talk("Priority Access Request: [ticket_holder] - ID [access_ticket.ticket_id]. Seek and resolve.")
+			log_game("ARES: Access Ticket '\ref[access_ticket]' created by [key_name(operator)] as [last_login] with Holder '[ticket_holder]' and Details of '[details]'.")
+			return TRUE
 
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)

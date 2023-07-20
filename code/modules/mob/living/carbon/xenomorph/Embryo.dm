@@ -223,8 +223,8 @@
 		var/area/burst_area = get_area(src)
 		if(burst_area)
 			for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-				to_chat(observer, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b> at \the <b>[burst_area]</b>! [OBSERVER_JMP(observer, affected_mob)]"))
-			to_chat(src, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b> at \the <b>[burst_area]</b>!"))
+				to_chat(observer, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b> at \the <b>[burst_area]!</b> [OBSERVER_JMP(observer, affected_mob)]"))
+			to_chat(src, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b> at \the <b>[burst_area]!</b>"))
 		else
 			for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
 				to_chat(observer, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]!</b> [OBSERVER_JMP(observer, affected_mob)]"))

@@ -1944,6 +1944,9 @@
 		new_order.approvedby = "USCM High Command"
 		supply_controller.shoppinglist += new_order
 
+		//Can no longer request a nuke
+		GLOB.ares_link.interface.nuke_available = FALSE
+
 		marine_announcement("A nuclear device has been authorized by High Command and will be delivered to requisitions via ASRS.", "NUCLEAR ORDINANCE AUTHORIZED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
 		log_game("[key_name_admin(usr)] has authorized a [nuketype], requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has authorized a [nuketype], requested by [key_name_admin(ref_person)]")

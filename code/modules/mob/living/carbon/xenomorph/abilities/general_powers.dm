@@ -396,11 +396,9 @@
 		return
 
 	if(X.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
-		X.layer = MOB_LAYER
-		X.update_wounds()
 		var/datum/action/hide_ability = get_xeno_action_by_type(X, /datum/action/xeno_action/onclick/xenohide)
 		if(hide_ability)
-			hide_ability.button.icon_state = "template"
+			hide_ability.post_attack()
 
 	if(isravager(X))
 		X.emote("roar")

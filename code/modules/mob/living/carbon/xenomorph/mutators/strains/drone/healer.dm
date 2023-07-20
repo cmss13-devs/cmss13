@@ -14,6 +14,7 @@
 		/datum/action/xeno_action/onclick/plant_resin_fruit, // Second macro. Resin fruits belong to Gardener, but Healer has a minor variant.
 		/datum/action/xeno_action/activable/apply_salve, //Third macro, heal over time ability.
 		/datum/action/xeno_action/activable/transfer_plasma/healer, //Fourth macro, an improved plasma transfer.
+		/datum/action/xeno_action/activable/healer_sacrifice, //Fifth macro, the ultimate ability to sacrifice yourself
 	)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/drone_healer
@@ -203,7 +204,7 @@
 	var/transfer_mod = 0.75 // only transfers 75% of current healer's health
 	macro_path = /datum/action/xeno_action/verb/verb_healer_sacrifice
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/verb/verb_healer_sacrifice()
 	set category = "Alien"

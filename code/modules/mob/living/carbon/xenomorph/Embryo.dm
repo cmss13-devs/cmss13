@@ -218,6 +218,17 @@
 		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
 		playsound_client(new_xeno.client, 'sound/effects/xeno_newlarva.ogg', 25, 1)
 
+		/// Inform observers to grab some popcorn
+		var/area/burst_area = get_area(src)
+		if(burst_area)
+			for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+				to_chat(observer, SPAN_DEADSAY("<b>[new_xeno]</b> is about to chestburst out of [affected_mob] at \the <b>[burst_area]</b>! [OBSERVER_JMP(observer, human)]"))
+			to_chat(src, SPAN_DEADSAY("<b>[new_xeno]</b> is about to chestburst out of [affected_mob] at \the <b>[burst_area]</b>!"))
+		else
+			for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+				to_chat(observer, SPAN_DEADSAY("<b>[new_xeno]</b> is about to chestburst out of [affected_mob]!</b> [OBSERVER_JMP(observer, human)]"))
+			to_chat(src, SPAN_DEADSAY("<b>[new_xeno]</b> is about to chestburst out of [affected_mob]! <b>[name]</b>"))
+
 	stage = 6
 
 /mob/living/carbon/xenomorph/larva/proc/cause_unbearable_pain(mob/living/carbon/victim)

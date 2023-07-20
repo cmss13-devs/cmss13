@@ -65,9 +65,6 @@
 
 /datum/behavior_delegate/proc/melee_attack_additional_effects_self()
 	SEND_SIGNAL(bound_xeno, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF)
-	var/datum/action/xeno_action/onclick/xenohide/hide = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/xenohide)
-	if(hide)
-		hide.post_attack()
 
 // Identical to the above 3 procs but for ranged attacks.
 /**

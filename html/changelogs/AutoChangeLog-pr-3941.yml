@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Reduces yautja armor bullet resistance by 5, and puts that 5 extra onto the heavy armor."

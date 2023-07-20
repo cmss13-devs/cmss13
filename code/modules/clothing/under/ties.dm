@@ -610,7 +610,8 @@
 		/obj/item/weapon/throwing_knife,
 	)
 	storage_flags = STORAGE_ALLOW_QUICKDRAW|STORAGE_FLAGS_POUCH
-	var/draw_cooldown = 0
+
+	COOLDOWN_DECLARE(draw_cooldown)
 
 /obj/item/storage/internal/accessory/knifeharness/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -619,13 +620,13 @@
 /obj/item/storage/internal/accessory/knifeharness/attack_hand(mob/user, mods)
 	. = ..()
 
-	if(draw_cooldown >= world.time)
+	if(!COOLDOWN_FINISHED(src, draw_cooldown))
 		to_chat(user, SPAN_WARNING("You need to wait before drawing another knife!"))
 		return FALSE
 
 	if(length(contents))
 		contents[length(contents)].attack_hand(user, mods)
-		draw_cooldown = world.time + BAYONET_DRAW_DELAY
+		COOLDOWN_START(src, draw_cooldown, BAYONET_DRAW_DELAY)
 
 /obj/item/storage/internal/accessory/knifeharness/_item_insertion(obj/item/inserted_item, prevent_warning = 0)
 	..()

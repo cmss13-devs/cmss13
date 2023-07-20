@@ -136,6 +136,7 @@
 	H.regenerate_icons()
 
 	if(braindeath_on_decap)
+		brainmob.timeofdeath = world.time
 		brainmob.set_stat(DEAD)
 		brainmob.death(cause)
 

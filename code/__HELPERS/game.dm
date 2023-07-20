@@ -241,8 +241,14 @@
 		else
 			return get_step(start, EAST)
 
-/// Get a list of observers that can be alien candidates, optionally sorted by larva_queue_time
-/proc/get_alien_candidates(sorted = TRUE)
+/**
+ * Get a list of observers that can be alien candidates.
+ *
+ * Arguments:
+ * * hive - The hive we're filling a slot for to check if the player is banished
+ * * sorted - Whether to sort by larva_queue_time (default TRUE) or leave unsorted
+ */
+/proc/get_alien_candidates(datum/hive_status/hive = null, sorted = TRUE)
 	var/list/candidates = list()
 
 	for(var/mob/dead/observer/cur_obs as anything in GLOB.observer_list)
@@ -273,6 +279,15 @@
 		if((cur_obs.client.admin_holder && (cur_obs.client.admin_holder.rights & R_MOD)) && !cur_obs.adminlarva)
 			continue
 
+		if(hive)
+			var/banished = FALSE
+			for(var/mob_name in hive.banished_ckeys)
+				if(hive.banished_ckeys[mob_name] == cur_obs.ckey)
+					banished = TRUE
+					break
+			if(banished)
+				continue
+
 		candidates += cur_obs
 
 	// Optionally sort by larva_queue_time
@@ -290,20 +305,15 @@
  * * cache_only - Whether to not actually send a to_chat message and instead only update larva_queue_cached_message
  */
 /proc/message_alien_candidates(list/candidates, dequeued, cache_only = FALSE)
-	var/new_players = 0
 	for(var/i in (1 + dequeued) to candidates.len)
 		var/mob/dead/observer/cur_obs = candidates[i]
 
 		// Generate the messages
-		var/cached_message = SPAN_XENONOTICE("You are currently [i-dequeued]\th in the larva queue. There are [new_players] ahead of you that have yet to play this round.")
+		var/cached_message = SPAN_XENONOTICE("You are currently [i-dequeued]\th in the larva queue.")
 		cur_obs.larva_queue_cached_message = cached_message
 		if(!cache_only)
 			var/chat_message = dequeued ? replacetext(cached_message, "currently", "now") : cached_message
 			to_chat(candidates[i], chat_message)
-
-		// Count how many are prioritized
-		if(cur_obs.client.player_details.larva_queue_time < 2) // 0 and 1 because facehuggers/t-domers are slightly deprioritized
-			new_players++
 
 /proc/convert_k2c(temp)
 	return ((temp - T0C))

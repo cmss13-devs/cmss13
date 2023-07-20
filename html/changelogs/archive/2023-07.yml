@@ -116,3 +116,214 @@
   - balance: changes M4A3 magazine size from 9 to 12
   Zonespace27:
   - bugfix: The maintenance jack should work a little better at crowbarring things.
+2023-07-09:
+  Khadd:
+  - rscadd: added a iv tube between the user and the bloodpack / iv drip
+  - imageadd: sprites for the iv tube
+  Zonespace27:
+  - rscadd: Working Joes now have an emote panel to use voice lines, accessible as
+      an action button.
+  theselfish:
+  - qol: Foxtrot's radio channel is now on if you have multi-squad in your headset.
+2023-07-10:
+  BeagleGaming1:
+  - rscadd: Acid runners don't get acid from slashing nested humans
+  - rscadd: Very late-stage marines do not give acid
+  - bugfix: Fixes one way of abusing resin fruit
+  Drathek:
+  - rscdel: Remove first life priority for larva queue
+  - bugfix: Fix ghosting as a facehugger counting as death for the larva queue
+  blackdragonTOW:
+  - spellcheck: Added "U1" designation to the UGL attachment.
+2023-07-11:
+  BeagleGaming1:
+  - bugfix: Fixes the Working Joe species
+2023-07-12:
+  Morrow:
+  - bugfix: Stops xenos from bypassing dead moving via roller beds
+  - balance: Telebaton now scales in stunforce effectiveness based on policing skill
+  - balance: Marines called with foxtrot nerfed from 15 to 10.
+  SpartanBobby:
+  - maptweak: 'LV522: Flips the layout of engineering making the T-comms unit on the
+      far side of the LZ'
+  - balance: reduces the M1911 magazine size from 14 to 7
+  Steelpoint:
+  - balance: Synthetic Armour slowdown has been decreased
+2023-07-13:
+  QuickLoad, Thwomper:
+  - imageadd: Synthetic Uniforms & Vest with United Americas flair and classic jumpsuits
+      which remind you of life on the Frontier. Sprited by THE THWOMPA himself!
+  - qol: Synthetic Vendor is more organized. Removes scrub cap, adds shoe.
+2023-07-14:
+  Drathek:
+  - bugfix: Fix ghosting preventing first dibs on the larva in a hugged marine
+  Unknownity:
+  - bugfix: Fixed burrowed mobs being able to be targeted by sentries, mines and SG
+      autofire.
+  - bugfix: Fixed burrowed mobs being able to grab mobs on the surface.
+  - bugfix: Fixed burrowed mobs being able to resist while burrowed.
+  - bugfix: Fixed burrowers taking damage from direct flame and shrapnel from explosions.
+  - bugfix: Fixed burrowers being able to get slashed from enemy Xenos on the surface.
+  - bugfix: Fixed burrowers unburrow stun to now properly target and stun enemy Xenos.
+  - soundadd: Added sounds for the Burrower when they are burrowing and unburrowing.
+2023-07-15:
+  BeagleGaming1:
+  - code_imp: Messed with chem and drink dispenser code
+  Ben10083:
+  - spellcheck: Fixed typos relating to M74 airburst packets.
+  - mapadd: Combat Information Center Reception now has a telephone
+  - maptweak: Medical Lower telephone shifted to the left
+  Drathek:
+  - bugfix: Fix morpher ejected items and dumped objectives not restoring their mouse_opacity
+      setting.
+  Morrow:
+  - admin: VV Jump To Fix
+  - balance: Lurkers now lose their invisibility when they run into a person
+  Steelpoint:
+  - ui: Predator Ship is now called 'Yautja Ship" for teleporting Predators
+  Zonespace27:
+  - admin: Removed msay. All staff now have access to asay
+  ondrej008:
+  - bugfix: The HE OB now deals the correct amount of damage to xenos, before it dealt
+      half damage caused by xenos being forced to rest before it hit.
+  realforest2001:
+  - soundadd: Added a drag sound for footstep component
+  - bugfix: Fixes the icon on the alien blade on LV.
+  - bugfix: Carbon copies can no longer infinitely breed.
+  - rscadd: Added a PMC Synth Survivor preset, and stopped PMC Synth Survivor using
+      the ERT set.
+  - bugfix: You can no longer weld non metal containers closed.
+  - bugfix: Fixes the toggle notification sound verb for Yautja bracers not working.
+2023-07-16:
+  Drathek:
+  - rscadd: Facehuggers now convert to their NPC version after 7 minutes of inactivity
+      and no client.
+  - code_imp: Cleanup join as xeno button code somewhat.
+  Drathek, Fira:
+  - bugfix: Fixed an issue with table flips that could make some tables incorrectly
+      unflippable, and cause infinite loops. It is no longer possible to flip tables
+      that t-shape or cross, or spans more than 5 tiles away from you.
+  Drathek, Steelpoint:
+  - bugfix: Fixed possible hardeletes for predator landmarks and vehicles. Predator
+      teleporation descriptions now do not change if the area is altered at runtime
+      so they can still be found correctly.
+  theselfish:
+  - rscadd: SOs may now get coats in their vendor.
+2023-07-17:
+  Puckaboo2:
+  - spellcheck: Some duplicate icon states have been differentiated to prevent future
+      missing icon state errors.
+  - imageadd: Added new icon states for chemical and virology dispensers.
+  - rscdel: Removed dozens of duplicate icon states from over 50 files to reduce bloat.
+  - rscdel: Removed duplicate empty icon states.
+  realforest2001:
+  - maptweak: Added Apollo Maintenance Controllers to the following locations.
+  - maptweak: Astronavigation, CIC Substation, Brig Substation, Req Aux Storage, Hangar
+      & OT & Engineering workshops, Reactor Core Room and Lifeboat Control Ring.
+2023-07-19:
+  Ben10083:
+  - rscadd: Working Joes now have a unique death message. Credit to Quickload for
+      the message.
+  - soundadd: Working Joes now have a death rattle. Credit to Quickload for shifting
+      through Alien Isolation audio files.
+  - qol: Things that die with intent eyes now lose color in their eyes on death.
+  Drathek:
+  - bugfix: Banished players will no longer be candidates for hives they are banished
+      from.
+  - bugfix: Cryoing will now set your larva queue time so you don't get prioritized
+      over others that have been waiting.
+  - admin: Shuttle intoTheSunset will set larva queue time the same as other situations.
+  - qol: Added a preference to disable xeno ability deactivation when re-selecting
+      the same ability
+  Morrow:
+  - rscadd: Added bayonet pouch to req
+  - balance: Explosive pouch inventory size from 3 to 6
+  - balance: Explosive pouch can no longer hold mine boxes
+  NewyearnewmeUwu:
+  - rscadd: Added the ES-4 electrostatic pistol to the CL's safe.
+  realforest2001:
+  - balance: Reduced tranq pistol bullet damage from 40 to 15
+  - bugfix: Fixes another synth survivor variant having marine comms.
+  theselfish:
+  - spellcheck: Goodbye Squad Spotter, hello regular non-squaded Spotter.
+2023-07-20:
+  Anuv:
+  - bugfix: '#3775'
+  - rscadd: Added a new storm siren unique to NV, new survivor types
+  - spellcheck: Updates to the waking distress call notif.
+  - code_imp: Weather-related code changes. Update to the handheld maps.
+  - soundadd: Added new monsoon weather sfx, new map-unique ambience, new storm siren
+      sfx.
+  - maptweak: New LZ (LZ2 Palm Airfield) in the NE with a construction zone. Removed
+      a number of rocks around cave areas. Increased hive location choices from 3
+      to 4. Added glass ceilings to facility areas (deep caves are still protected,
+      can be OB'd). Slightly widened the 45 minute weed protection areas around LZs.
+      Added a fog monsoon to the SE beach that dissipates after an hour. Expanded
+      east beach. New SW cave section. Opened up the walkway west of LZ1. Enhanced
+      survivor loot and mats to a comparable degree to current maps. Many small changes
+      to lessen chokes and offer more route choice for xenos and marines alike. Removed
+      Spearhead/Rival and laser pistols. Swapped fawras for monkeys. Added more survivor-type
+      choices. Added a bar area and decrepit truck to the north beach.
+  - config: Enabled NV again as a map in maps.txt.
+  Awantje:
+  - bugfix: The M56D no longer let's you violate density code when exiting it.
+  BeagleGaming1:
+  - config: Moved time to burst to the config
+  - balance: Fixed time to burst, lowering it from 15 minutes to 7.5 minutes by default
+  - balance: Stasis bags used on late-stage mobs properly slow growth down less
+  Ben10083:
+  - qol: Non player Facehuggers now also notify the hive when they facehug something.
+  - spellcheck: fix typo relating to Starshell ash
+  Diegoflores31:
+  - balance: Acid Splash damage increased to 25
+  - balance: Acid Splash damage can be reduced with BIO armor.
+  - balance: Reduced Light armor BIO resistance by 10
+  - balance: Increased Heavy armor BIO resistance by 5
+  - balance: Increased VL vest BIO resistance by 5
+  GoldenDarkness55:
+  - balance: Base rav cooldown regain per slash reduced (4 to 3), empowered charge
+      stun duration reduced (2 to 1.3), empower duration increased (5 to 6.5), empower
+      cooldown reduced (22 to 18), duration window for second empower cast reduced
+      (15 to 6), base shield gain reduced (75 to 50), shield gain per marine reduced
+      (80 to 50), maximum empower targets increased (5 to 6), scissor slash cooldown
+      reduced (10 to 6), and damage reduced (45 to 40)
+  - balance: Hedge rav doesn't lose speed anymore, but loses 10 slash damage instead.
+      Shield duration increased (2 to 2.5), Fire Spikes shard range increased (5 to
+      6), Spike Shed shard lockout duration reduced (30 to 15), shard lock speed reduced
+      to maintain same speed as previously. Shard damage increased (5 to 8), shard
+      slowdown duration reduced (8 to 3), shard gain per tick reduced (10 to 5), shard
+      gain per bullet reduced (20 to 10), added shard gain per slash (15)
+  Huffie56:
+  - bugfix: fix some area having no apc on the almayer making them not behave like
+      they should specialy when hijack happen.
+  IowaPotatoFarmer:
+  - rscadd: The PMC Crash on Solaris Ridge now spawns one PMC medic survivor and one
+      PMC engineer survivor.
+  - bugfix: The Wey-Yu goon survivors now have their unique corporate white camo M41A
+      MK2 back.
+  Kaboomcat:
+  - imageadd: Updated the gin bottle sprite
+  QuickLoad:
+  - balance: Tones down ERT skills. Impacts VAIPO/Dutch'sDozen/CMB/UPP/CLF/EMerc.
+  - balance: Gives PMC & SurvPMC a trained level of CQC.
+  Steelpoint:
+  - maptweak: More weed spawns so larva don't spawn in area with no weed to evolve
+      on.
+  - rscadd: Predator toolbelt is now a unique item with its own sprite.
+  TeDGamer:
+  - bugfix: Xenos allied to the hive can now open hive's doors
+  - bugfix: Huggers can now scuttle doors
+  - code_imp: Combined hugger + larva code to allow for any small castes to scuttle
+  Zonespace27:
+  - balance: Trashbags now hold normal items and can be looked through like a box
+      or storage container.
+  - balance: Trashbags no longer fit in your belt slot.
+  ihatethisengine:
+  - balance: Lurkers don't lose invisibility when they bump into partly visible mobs.
+  realforest2001:
+  - admin: Removed the R_REJUVINATE permissions flag and replaces instances where
+      it is used with R_MOD.
+  - admin: Added logs if a restricted proc is proccalled.
+  silencer_pl:
+  - qol: Default paper and desc_lore viewing windows are now larger to match the expected
+      content in them better.

@@ -49,13 +49,16 @@
 	var/updatedir = TRUE //Do we have to update our dir as the ghost moves around?
 	var/atom/movable/following = null
 	var/datum/orbit_menu/orbit_menu
-	var/mob/observetarget = null //The target mob that the ghost is observing. Used as a reference in logout()
+	/// The target mob that the ghost is observing. Used as a reference in logout()
+	var/mob/observetarget = null
 	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/own_orbit_size = 0
 	var/observer_actions = list(/datum/action/observer_action/join_xeno)
 	var/datum/action/minimap/observer/minimap
 	var/larva_queue_cached_message
+	///Used to bypass time of death checks such as when being selected for larva.
+	var/bypass_time_of_death_checks = FALSE
 
 	alpha = 127
 
@@ -368,6 +371,8 @@ Works together with spawning an observer, noted above.
 		// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers
 		// We don't change facehugger timeofdeath because they are still on cooldown if they died as a hugger
 		var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
+		// if they died as facehugger, bypass typical TOD checks
+		ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
 		ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
 
 	ghost.set_huds_from_prefs()
@@ -413,9 +418,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(ghost && !is_admin_level(z))
 			ghost.timeofdeath = world.time
 
-			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers/lesser drones
-			var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : world.time
-
+			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers
+			var/new_tod = isfacehugger(src) ? 1 : world.time
 			ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
 		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE

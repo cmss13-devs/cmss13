@@ -368,11 +368,12 @@ Works together with spawning an observer, noted above.
 		if(ghost.client.player_data)
 			ghost.client.player_data.load_timestat_data()
 
-		// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers
-		// We don't change facehugger timeofdeath because they are still on cooldown if they died as a hugger
+		// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
 		var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
-		// if they died as facehugger, bypass typical TOD checks
+
+		// if they died as facehugger or lesser drone, bypass typical TOD checks
 		ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
+
 		ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
 
 	ghost.set_huds_from_prefs()
@@ -418,8 +419,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(ghost && !is_admin_level(z))
 			ghost.timeofdeath = world.time
 
-			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers
-			var/new_tod = isfacehugger(src) ? 1 : world.time
+			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
+			var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
+
+			// if they died as facehugger or lesser drone, bypass typical TOD checks
+			ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
+
 			ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
 		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE

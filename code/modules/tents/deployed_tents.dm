@@ -110,6 +110,12 @@
 	. = ..()
 	return FALSE // Always fly through the tent
 
+/obj/structure/tent/Destroy()
+	for(var/turf/turf in locs)
+		for(var/mob/mobs in turf)
+			mob_exited_tent(mobs)
+	. = ..()
+
 /// Command tent, providing basics for field command: a phone, and an overwatch console
 /obj/structure/tent/cmd
 	icon_state = "cmd_interior"

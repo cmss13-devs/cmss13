@@ -13,7 +13,7 @@
 	/// Map Template to use for the tent
 	var/template
 	/// Var to make it deployable anywhere
-	var/unrestricted_deployment = 0
+	var/unrestricted_deployment = FALSE
 
 /// Check an area is clear for deployment of the tent
 /obj/item/folded_tent/proc/check_area(turf/ref_turf, mob/message_receiver, display_error = FALSE)

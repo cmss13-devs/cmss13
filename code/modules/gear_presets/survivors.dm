@@ -1417,7 +1417,7 @@
 	paygrade = "UE1"
 	origin_override = ORIGIN_UPP
 	rank = JOB_SURVIVOR
-	skills = /datum/skills/upp
+	skills = /datum/skills/military/survivor/upp_private
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
@@ -1455,7 +1455,7 @@
 	name = "Survivor - UPP Soldier"
 	paygrade = "UE2"
 	assignment = "UPP Soldier"
-	skills = /datum/skills/upp
+	skills = /datum/skills/military/survivor/upp_private
 
 /datum/equipment_preset/survivor/upp/soldier/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/veteran/UPP/uniform = new()
@@ -1478,7 +1478,7 @@
 	name = "Survivor - UPP Sapper"
 	paygrade = "UE3S"
 	assignment = "UPP Sapper"
-	skills = /datum/skills/upp/combat_engineer
+	skills = /datum/skills/military/survivor/upp_sapper
 
 /datum/equipment_preset/survivor/upp/sapper/load_gear(mob/living/carbon/human/new_human)
 
@@ -1504,7 +1504,7 @@
 	name = "Survivor - UPP Medic"
 	paygrade = "UE3M"
 	assignment = "UPP Medic"
-	skills = /datum/skills/upp/combat_medic
+	skills = /datum/skills/military/survivor/upp_medic
 
 /datum/equipment_preset/survivor/upp/medic/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/veteran/UPP/medic/uniform = new()
@@ -1534,7 +1534,7 @@
 	name = "Survivor - UPP Specialist"
 	paygrade = "UE4"
 	assignment = "UPP Specialist"
-	skills = /datum/skills/upp
+	skills = /datum/skills/military/survivor/upp_spec
 
 /datum/equipment_preset/survivor/upp/specialist/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy(new_human), WEAR_HEAD)
@@ -1555,7 +1555,7 @@
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 	assignment = "UPP Squad Leader"
 	role_comm_title = "UPP 173Rd RECON SL"
-	skills = /datum/skills/upp/SL
+	skills = /datum/skills/military/survivor/upp_sl
 
 /datum/equipment_preset/survivor/upp/squad_leader/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/officer (new_human), WEAR_BODY)

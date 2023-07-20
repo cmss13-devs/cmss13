@@ -19,6 +19,8 @@
 #define COMBAT_MESSAGE_RANGE 3
 #define DEFAULT_MESSAGE_RANGE 7
 
+#define BAYONET_DRAW_DELAY (1 SECONDS)
+
 //Predator decloak multpliers based on the standard.
 #define DECLOAK_STANDARD (10 SECONDS)
 /// Forced for any unspecified reason.

@@ -396,9 +396,9 @@
 		return
 
 	if(X.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
-		var/datum/action/hide_ability = get_xeno_action_by_type(X, /datum/action/xeno_action/onclick/xenohide)
-		if(hide_ability)
-			hide_ability.post_attack()
+		var/datum/action/xeno_action/onclick/xenohide/hide = get_xeno_action_by_type(X, /datum/action/xeno_action/onclick/xenohide)
+		if(hide)
+			hide.post_attack()
 
 	if(isravager(X))
 		X.emote("roar")

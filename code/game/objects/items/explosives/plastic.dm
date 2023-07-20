@@ -335,6 +335,12 @@
 			to_chat(user, SPAN_WARNING("[window] is much too tough for you to do anything to it with [src].")) //On purpose to mimic wall message
 			return FALSE
 
+	if(istype(target, /turf/closed/wall))
+		var/turf/closed/wall/W = target
+		if(W.hull)
+			to_chat(user, SPAN_WARNING("You are unable to stick \the [src] to the [W]!"))
+			return FALSE
+
 	return TRUE
 
 /obj/item/explosive/plastic/breaching_charge/handle_explosion(turf/target_turf, dir, cause_data)
@@ -364,7 +370,7 @@
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You don't quite understand how the device works..."))
 		return FALSE
-	..()
+	. = ..()
 
 /obj/item/explosive/plastic/breaching_charge/plasma/handle_explosion(turf/target_turf, dir, cause_data)
 	var/explosion_target = get_step(target_turf, dir)

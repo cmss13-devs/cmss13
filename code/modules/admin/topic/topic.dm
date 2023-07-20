@@ -1925,6 +1925,34 @@
 			log_game("[key_name_admin(usr)] has granted self-destruct, requested by [key_name_admin(ref_person)]")
 			message_admins("[key_name_admin(usr)] has granted self-destruct, requested by [key_name_admin(ref_person)]", 1)
 
+	if(href_life["nukeapprove"])
+		var/mob/ref_person = locate(href_list["nukeapprove"])
+		var/nuketype = "Encrypted Operational Nuke"
+		var/prompt tgui_alert(usr, "Do you want the nuke to be Encrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
+		if(prompt == "Decrypted")
+			nuketype = "Decrypted Operational Nuke"
+		prompt = tgui_alert(usr, "Are you sure you want to authorize a [nuketype] to the marines? This will greatly affect the round!", "DEFCON 1", list("Yes", "No"))
+		if(prompt != "yes")
+			return
+
+		//make ASRS order for nuke
+		var/datum/supply_order/new_order = new()
+		new_order.ordernum = supply_controller.ordernum
+		supply_controller.ordernum++
+		new_order.object = supply_controller.supply_packs[nuketype]
+		new_order.orderedby = ref_person
+		new_order.approvedby = "USCM High Command"
+		supply_controller.shoppinglist += new_order
+
+		marine_announcement("A nuclear device has been authorized by High Command and will be delivered to requisitions via ASRS.", "NUCLEAR ORDINANCE AUTHORIZED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
+		log_game("[key_name_admin(usr)] has authorized a [nuketype], requested by [key_name_admin(ref_person)]")
+		message_admins("[key_name_admin(usr)] has authorized a [nuketype], requested by [key_name_admin(ref_person)]")
+	if(href_life["nukedeny"])
+		var/mob/ref_person = locate(href_list["nukedeny"])
+		marine_announcement("USCM High Command has denied your request for Nuclear Ordinance.", "NUCLEAR ORDINANCE DENIED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
+		log_game("[key_name_admin(usr)] has authorized a [nuketype], requested by [key_name_admin(ref_person)]")
+		message_admins("[key_name_admin(usr)] has authorized a [nuketype], requested by [key_name_admin(ref_person)]")
+
 	if(href_list["sddeny"]) // CentComm-deny. The self-destruct is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["sddeny"])
 		marine_announcement("The self-destruct request has not received a response, ARES is now recalculating statistics.", "Self-Destruct System", logging = ARES_LOG_SECURITY)

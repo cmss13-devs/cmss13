@@ -70,7 +70,7 @@
 #define HUD_ARMOR_STATES_XENO  10
 
 /// Multiplier for time taken for a xeno to place down a resin structure
-#define BUILD_TIME_MULT_LESSER_DRONE 0.5
+#define BUILD_TIME_MULT_LESSER_DRONE 2
 #define BUILD_TIME_MULT_XENO 1
 #define BUILD_TIME_MULT_BUILDER 1
 #define BUILD_TIME_MULT_HIVELORD 0.5

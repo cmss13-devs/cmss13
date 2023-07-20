@@ -1,0 +1,4 @@
+author: "QuickLode"
+delete-after: True
+changes:
+  - bugfix: "limits the Survivor CMB Synthetic comms"

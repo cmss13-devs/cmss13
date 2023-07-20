@@ -12,7 +12,7 @@
 	var/off_y = 0
 	/// Map Template to use for the tent
 	var/template
-	/// Var to make it deployable anywhere
+	/// If this tent can be deployed anywhere
 	var/unrestricted_deployment = FALSE
 
 /// Check an area is clear for deployment of the tent

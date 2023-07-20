@@ -131,6 +131,7 @@
 	adjustBruteLoss(amount * damage_taken_mod)
 	use_plasma(amount * 2)
 	updatehealth()
+	modify_healed(amount)
 	new /datum/effects/heal_over_time(target_xeno, amount, 10, 1)
 	target_xeno.xeno_jitter(1 SECONDS)
 	target_xeno.flick_heal_overlay(10 SECONDS, "#00be6f")
@@ -147,6 +148,9 @@
 
 	var/salve_applied_recently = FALSE
 	var/mutable_appearance/salve_applied_icon
+
+	var/healed_amount = 0
+	var/max_healed_amount = 10000
 
 /datum/behavior_delegate/drone_healer/on_update_icons()
 	if(!salve_applied_icon)
@@ -173,3 +177,102 @@
 /datum/behavior_delegate/drone_healer/proc/un_salve()
 	salve_applied_recently = FALSE
 	bound_xeno.update_icons()
+
+/*
+	SACRIFICE
+*/
+
+/datum/behavior_delegate/drone_healer/proc/modify_healed(amount)
+	healed_amount += amount
+	if(healed_amount > max_healed_amount)
+		healed_amount = max_healed_amount
+	if(healed_amount < 0)
+		healed_amount = 0
+
+/datum/behavior_delegate/drone_healer/append_to_stat()
+	. = list()
+	. += "Healed amount: [healed_amount]"
+	if(healed_amount >= max_healed_amount)
+		. += "Sacrifice will grant you new life."
+
+/datum/action/xeno_action/activable/healer_sacrifice
+	name = "Sacrifice"
+	action_icon_state = "screech"
+	ability_name = "sacrifice"
+	var/max_range = 2
+	var/transfer_mod = 0.75 // only transfers 75% of current healer's health
+	macro_path = /datum/action/xeno_action/verb/verb_healer_sacrifice
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_2
+
+/datum/action/xeno_action/verb/verb_healer_sacrifice()
+	set category = "Alien"
+	set name = "Sacrifice"
+	set hidden = 1
+	var/action_name = "Sacrifice"
+	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/activable/healer_sacrifice/use_ability(atom/atom)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/Xenomorph/target = atom
+
+	if(!istype(target))
+		return
+
+	if(target == xeno)
+		to_chat(xeno, "You can't heal yourself!")
+		return
+
+	if(!xeno.check_state())
+		return
+
+	if(target.stat == DEAD)
+		to_chat(xeno, SPAN_WARNING("[target] is already dead!"))
+		return
+
+	if(target.health >= target.maxHealth)
+		to_chat(xeno, SPAN_WARNING("\The [target] is already at max health!"))
+		return
+
+	if(!isturf(xeno.loc))
+		to_chat(xeno, SPAN_WARNING("You can't transfer health from here!"))
+		return
+
+	if(get_dist(xeno, target) > max_range)
+		to_chat(xeno, SPAN_WARNING("You need to be closer to [target]."))
+		return
+
+	xeno.say(";MY LIFE FOR THE QUEEN!!!")
+	target.visible_message(SPAN_XENOHIGHDANGER("[xeno] sacrifices itself to heal [target]!"), SPAN_XENOHIGHDANGER("[xeno] sacrifices itself for you!"))
+
+	target.gain_health(xeno.health * transfer_mod)
+	target.updatehealth()
+
+	target.xeno_jitter(1 SECONDS)
+	target.flick_heal_overlay(3 SECONDS, "#44253d")
+
+	target.SetKnockedout(0)
+	target.SetStunned(0)
+	target.SetKnockeddown(0)
+	target.SetDazed(0)
+	target.SetSlowed(0)
+	target.SetSuperslowed(0)
+
+	var/datum/behavior_delegate/healer_delegate/behavior_delegate = behavior_delegate
+	if(istype(behavior_delegate) && behavior_delegate.healed_amount >= behavior_delegate.max_healed_amount && xeno.client && xeno.hive)
+		addtimer(CALLBACK(xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), xeno.client), 5 SECONDS)
+
+	xeno.gib("sacrificing itself")
+
+/datum/action/xeno_action/activable/healer_sacrifice/action_activate()
+	..()
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(xeno.selected_ability == src)
+		var/datum/behavior_delegate/healer_delegate/behavior_delegate = behavior_delegate
+		if(!istype(behavior_delegate))
+			return
+		if (behavior_delegate.healed_amount < behavior_delegate.max_healed_amount)
+			to_chat(xeno, SPAN_HIGHDANGER("Warning: [ability_name] is a last measure skill. Using it will kill you."))
+		else
+			to_chat(xeno, SPAN_HIGHDANGER("Warning: [ability_name] is a last measure skill. Using it will kill you, but new life will be granted for your hard work for the hive."))
+

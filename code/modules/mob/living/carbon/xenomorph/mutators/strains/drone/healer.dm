@@ -141,7 +141,8 @@
 	playsound(src, "alien_drool", 25)
 	var/datum/behavior_delegate/drone_healer/healer_delegate = src.behavior_delegate
 	healer_delegate.salve_applied_recently = TRUE
-	healer_delegate.modify_transferred(amount * damage_taken_mod)
+	if(target_xeno.mutation_type != DRONE_HEALER && !isfacehugger(target_xeno)) // no cheap grinding
+		healer_delegate.modify_transferred(amount * damage_taken_mod)
 	update_icons()
 	addtimer(CALLBACK(healer_delegate, /datum/behavior_delegate/drone_healer/proc/un_salve), 10 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 

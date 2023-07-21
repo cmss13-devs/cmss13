@@ -128,6 +128,7 @@
 	if(target_xeno.mutation_type == DRONE_HEALER)
 		damage_taken_mod = 1
 
+
 	face_atom(target_xeno)
 	adjustBruteLoss(amount * damage_taken_mod)
 	use_plasma(amount * 2)
@@ -151,7 +152,7 @@
 	var/mutable_appearance/salve_applied_icon
 
 	var/trasnferred_amount = 0
-	var/max_trasnferred_amount = 15000
+	var/max_transferred_amount = 10000
 
 /datum/behavior_delegate/drone_healer/on_update_icons()
 	if(!salve_applied_icon)
@@ -258,7 +259,7 @@
 
 	target.SetKnockDown(0)
 	target.SetStun(0)
-	target.SetKnockDown(0)
+	target.SetKnockOut(0)
 	target.SetDaze(0)
 	target.SetSlow(0)
 	target.SetSuperslow(0)
@@ -277,7 +278,7 @@
 		if(!istype(behavior_delegate))
 			return
 		if (behavior_delegate.trasnferred_amount < behavior_delegate.max_transferred_amount)
-			to_chat(xeno, SPAN_HIGHDANGER("Warning: [ability_name] is a last measure skill. Using it will kill you."))
+			to_chat(xeno, SPAN_HIGHDANGER("Warning: [name] is a last measure skill. Using it will kill you."))
 		else
-			to_chat(xeno, SPAN_HIGHDANGER("Warning: [ability_name] is a last measure skill. Using it will kill you, but new life will be granted for your hard work for the hive."))
+			to_chat(xeno, SPAN_HIGHDANGER("Warning: [name] is a last measure skill. Using it will kill you, but new life will be granted for your hard work for the hive."))
 

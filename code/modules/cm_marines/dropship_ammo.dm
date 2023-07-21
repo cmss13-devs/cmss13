@@ -353,12 +353,12 @@
 	icon_state = "fatty"
 	ammo_id = "f"
 	travelling_time = 50
-	point_cost = 500
+	point_cost = 300
 	fire_mission_delay = 4
 
 /obj/structure/ship_ammo/rocket/thermobaric/detonate_on(turf/impact)
 	impact.ceiling_debris_check(3)
-	fire_spread(impact, create_cause_data(initial(name), source_mob), 4, 25, 50, "#c96500") //Very intense but the fire doesn't last very long
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 4, 25, 50, "#c96500"), 0.5 SECONDS) //Very intense but the fire doesn't last very long
 	for(var/mob/living/carbon/victim in orange(5, impact))
 		victim.throw_atom(impact, 3, 15, src, TRUE) // Implosion throws affected towards center of vacuum
 	QDEL_IN(src, 0.5 SECONDS)

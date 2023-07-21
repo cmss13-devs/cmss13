@@ -1,5 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - balance: "Modifies INTERRUPT_NO_NEEDHAND flag to require you hold the item at least in one hand."
-  - balance: "Changes splint back to using INTERRUPT_NO_NEEDHAND"

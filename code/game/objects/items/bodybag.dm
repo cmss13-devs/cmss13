@@ -131,7 +131,9 @@
 			dead_mobs += mob
 			continue
 		var/mob/living/carbon/human/human = mob
-		if(issynth(human) || (human.check_tod() && human.is_revivable() && human.get_ghost())) // revivable
+		if(issynth(human))
+			continue
+		if(human.check_tod() && human.is_revivable()) // revivable
 			continue
 		dead_mobs += mob
 	var/mob/living/mob_to_store

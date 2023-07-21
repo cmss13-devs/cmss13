@@ -60588,10 +60588,6 @@
 	pixel_x = 33;
 	pixel_y = -1
 	},
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = 11
-	},
 /obj/structure/surface/rack,
 /obj/item/storage/fancy/vials,
 /obj/item/storage/fancy/vials,

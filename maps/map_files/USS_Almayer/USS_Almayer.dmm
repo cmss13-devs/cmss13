@@ -53714,6 +53714,10 @@
 	dir = 4;
 	pixel_y = 4
 	},
+/obj/item/tool/hand_labeler{
+	pixel_x = -6;
+	pixel_y = -5
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner"
@@ -55908,17 +55912,7 @@
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin/wy{
-	pixel_x = -7;
-	pixel_y = 7
-	},
-/obj/item/tool/pen{
-	pixel_y = 8
-	},
-/obj/item/tool/hand_labeler{
-	pixel_x = 8
-	},
+/obj/structure/machinery/photocopier,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -60518,6 +60512,9 @@
 /obj/item/storage/fancy/vials/empty{
 	pixel_y = 10;
 	start_vials = 2
+	},
+/obj/item/tool/pen{
+	pixel_y = 8
 	},
 /turf/open/floor/almayer{
 	dir = 8;

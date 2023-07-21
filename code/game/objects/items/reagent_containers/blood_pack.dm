@@ -2,10 +2,10 @@
 #define BLOOD_BAG_TAKING 0
 
 /obj/item/reagent_container/blood
-	name = "BloodPack"
-	desc = "Contains blood used for transfusion."
+	name = "blood pack"
+	desc = "A blood pack. Contains fluids, typically used for transfusions."
 	icon = 'icons/obj/items/bloodpack.dmi'
-	icon_state = "empty"
+	icon_state = "bloodpack"
 	volume = 300
 	matter = list("plastic" = 500)
 	flags_atom = CAN_BE_SYRINGED
@@ -20,7 +20,7 @@
 /obj/item/reagent_container/blood/Initialize()
 	. = ..()
 	if(blood_type != null)
-		name = "BloodPack [blood_type]"
+		name = "[blood_type] blood pack"
 		reagents.add_reagent("blood", initial(volume), list("viruses" = null, "blood_type" = blood_type, "resistances" = null))
 		update_icon()
 
@@ -29,10 +29,25 @@
 
 /obj/item/reagent_container/blood/update_icon()
 	var/percent = round((reagents.total_volume / volume) * 100)
-	switch(percent)
-		if(0 to 9) icon_state = "empty"
-		if(10 to 50) icon_state = "half"
-		if(51 to INFINITY) icon_state = "full"
+	overlays = null
+	underlays = null
+
+	if(blood_type)
+		overlays += image('icons/obj/items/bloodpack.dmi', src, blood_type)
+
+	if(reagents && reagents.total_volume)
+		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
+
+		switch(percent)
+			if(0 to 19) filling.icon_state = "[icon_state]10"
+			if(20 to 39) filling.icon_state = "[icon_state]25"
+			if(40 to 64) filling.icon_state = "[icon_state]50"
+			if(65 to 79) filling.icon_state = "[icon_state]75"
+			if(80 to 90) filling.icon_state = "[icon_state]80"
+			if(91 to INFINITY) filling.icon_state = "[icon_state]100"
+
+		filling.color = mix_color_from_reagents(reagents.reagent_list)
+		underlays += filling
 
 /obj/item/reagent_container/blood/proc/update_beam()
 	if(current_beam)
@@ -132,7 +147,7 @@
 	connected_to.visible_message("[src] breaks free of [connected_to]!", "[src] is pulled out of you!")
 	connected_to.apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
 	if(connected_to.pain.feels_pain)
-		connected_to.emote("scream")
+		connected_to.emote("pain")
 	connected_to.active_transfusions -= src
 	connected_to.base_pixel_x = 0
 	connected_to = null

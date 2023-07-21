@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed the prompt when nested to ghost: Now uses a TGUI prompt and sets larva queue time."

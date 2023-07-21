@@ -39,7 +39,8 @@
 		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
 
 		switch(percent)
-			if(0 to 19) filling.icon_state = "[icon_state]10"
+			if(1 to 9) filling.icon_state = "[icon_state]5"
+			if(10 to 19) filling.icon_state = "[icon_state]10"
 			if(20 to 39) filling.icon_state = "[icon_state]25"
 			if(40 to 64) filling.icon_state = "[icon_state]50"
 			if(65 to 79) filling.icon_state = "[icon_state]75"

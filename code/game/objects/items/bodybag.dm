@@ -122,25 +122,25 @@
 
 /obj/structure/closet/bodybag/store_mobs(stored_units) // overriding this
 	var/list/dead_mobs = list()
-	for(var/mob/living/M in loc)
-		if(M.buckled)
+	for(var/mob/living/mob in loc)
+		if(mob.buckled)
 			continue
-		if(M.stat != DEAD) // covers alive mobs
+		if(mob.stat != DEAD) // covers alive mobs
 			continue
-		if(!ishuman(M)) // all the dead other shit
-			dead_mobs += M
+		if(!ishuman(mob)) // all the dead other shit
+			dead_mobs += mob
 			continue
-		var/mob/living/carbon/human/H = M
-		if(H.check_tod() || issynth(H) || H.is_revivable() && H.get_ghost()) // revivable
+		var/mob/living/carbon/human/human = mob
+		if(issynth(human) || (human.check_tod() && human.is_revivable() && human.get_ghost())) // revivable
 			continue
-		dead_mobs += M
+		dead_mobs += mob
 	var/mob/living/mob_to_store
 	if(dead_mobs.len)
 		mob_to_store = pick(dead_mobs)
 		mob_to_store.forceMove(src)
 		stored_units += mob_size
-	for(var/obj/item/limb/L in loc)
-		L.forceMove(src)
+	for(var/obj/item/limb/limb in loc)
+		limb.forceMove(src)
 	return stored_units
 
 /obj/structure/closet/bodybag/attack_hand(mob/living/user)

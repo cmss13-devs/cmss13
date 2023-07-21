@@ -140,7 +140,7 @@
 	playsound(src, "alien_drool", 25)
 	var/datum/behavior_delegate/drone_healer/healer_delegate = src.behavior_delegate
 	healer_delegate.salve_applied_recently = TRUE
-	healer_delegate.modify_healed(amount)
+	healer_delegate.modify_transferred(amount * damage_taken_mod)
 	update_icons()
 	addtimer(CALLBACK(healer_delegate, /datum/behavior_delegate/drone_healer/proc/un_salve), 10 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
@@ -150,8 +150,8 @@
 	var/salve_applied_recently = FALSE
 	var/mutable_appearance/salve_applied_icon
 
-	var/healed_amount = 0
-	var/max_healed_amount = 10000
+	var/trasnferred_amount = 0
+	var/max_trasnferred_amount = 15000
 
 /datum/behavior_delegate/drone_healer/on_update_icons()
 	if(!salve_applied_icon)
@@ -183,17 +183,17 @@
 	SACRIFICE
 */
 
-/datum/behavior_delegate/drone_healer/proc/modify_healed(amount)
-	healed_amount += amount
-	if(healed_amount > max_healed_amount)
-		healed_amount = max_healed_amount
-	if(healed_amount < 0)
-		healed_amount = 0
+/datum/behavior_delegate/drone_healer/proc/modify_transferred(amount)
+	trasnferred_amount += amount
+	if(trasnferred_amount > max_transferred_amount)
+		trasnferred_amount = max_transferred_amount
+	if(trasnferred_amount < 0)
+		trasnferred_amount = 0
 
 /datum/behavior_delegate/drone_healer/append_to_stat()
 	. = list()
-	. += "Healed amount: [healed_amount]"
-	if(healed_amount >= max_healed_amount)
+	. += "Trasnferred health amount: [trasnferred_amount]"
+	if(trasnferred_amount >= max_transferred_amount)
 		. += "Sacrifice will grant you new life."
 
 /datum/action/xeno_action/activable/healer_sacrifice
@@ -224,6 +224,10 @@
 		to_chat(xeno, "You can't heal yourself!")
 		return
 
+	if(isfacehugger(target))
+		to_chat(xeno, "It would be a waste...")
+		return
+
 	if(!xeno.check_state())
 		return
 
@@ -236,7 +240,7 @@
 		return
 
 	if(!isturf(xeno.loc))
-		to_chat(xeno, SPAN_WARNING("You can't transfer health from here!"))
+		to_chat(xeno, SPAN_WARNING("You cannot transfer health from here!"))
 		return
 
 	if(get_dist(xeno, target) > max_range)
@@ -260,7 +264,7 @@
 	target.SetSuperslow(0)
 
 	var/datum/behavior_delegate/drone_healer/behavior_delegate = xeno.behavior_delegate
-	if(istype(behavior_delegate) && behavior_delegate.healed_amount >= behavior_delegate.max_healed_amount && xeno.client && xeno.hive)
+	if(istype(behavior_delegate) && behavior_delegate.trasnferred_amount >= behavior_delegate.max_transferred_amount && xeno.client && xeno.hive)
 		addtimer(CALLBACK(xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), xeno.client), 5 SECONDS)
 
 	xeno.gib("sacrificing itself")
@@ -272,7 +276,7 @@
 		var/datum/behavior_delegate/drone_healer/behavior_delegate = xeno.behavior_delegate
 		if(!istype(behavior_delegate))
 			return
-		if (behavior_delegate.healed_amount < behavior_delegate.max_healed_amount)
+		if (behavior_delegate.trasnferred_amount < behavior_delegate.max_transferred_amount)
 			to_chat(xeno, SPAN_HIGHDANGER("Warning: [ability_name] is a last measure skill. Using it will kill you."))
 		else
 			to_chat(xeno, SPAN_HIGHDANGER("Warning: [ability_name] is a last measure skill. Using it will kill you, but new life will be granted for your hard work for the hive."))

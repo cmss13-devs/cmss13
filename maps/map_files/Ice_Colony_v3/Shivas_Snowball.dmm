@@ -6004,7 +6004,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "aRc" = (
-/obj/structure/machinery/chem_dispenser/beer{
+/obj/structure/machinery/chem_dispenser/soda/beer{
 	pixel_y = 8
 	},
 /obj/structure/surface/table/reinforced/prison,

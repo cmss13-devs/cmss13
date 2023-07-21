@@ -1,0 +1,4 @@
+author: "ClairionCM"
+delete-after: True
+changes:
+  - rscadd: "Chem ERT objectives now mention that they cant deploy without explicit permission."

@@ -10582,10 +10582,6 @@
 /area/almayer/lifeboat_pumps/north1)
 "aIC" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/research{
-	dir = 1;
-	pixel_y = -1
-	},
 /obj/item/reagent_container/glass/beaker/large{
 	pixel_x = -7
 	},

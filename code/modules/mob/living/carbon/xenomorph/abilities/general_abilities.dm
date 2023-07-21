@@ -510,7 +510,7 @@
 	SIGNAL_HANDLER
 
 	if(tracked_queen)
-		UnregisterSignal(tracked_queen, list(COMSIG_QUEEN_MOUNT_OVIPOSITOR, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, COMSIG_PARENT_QDELETING))
+		UnregisterSignal(tracked_queen, list(COMSIG_QUEEN_MOUNT_OVIPOSITOR, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR))
 
 	tracked_queen = new_queen
 

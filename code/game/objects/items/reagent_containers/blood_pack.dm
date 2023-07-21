@@ -189,9 +189,8 @@
 	blood_type = "O-"
 
 /obj/item/reagent_container/blood/empty
-	name = "Empty BloodPack"
-	desc = "Seems pretty useless... Maybe if there were a way to fill it?"
-	icon_state = "empty"
+	name = "empty blood pack"
+	desc = "An empty blood pack. Sorry, vampires, no luck here."
 
 #undef BLOOD_BAG_INJECTING
 #undef BLOOD_BAG_TAKING

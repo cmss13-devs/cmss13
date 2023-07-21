@@ -4106,18 +4106,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/obj/structure/surface/table/almayer,
-/obj/item/folder/white{
-	pixel_x = 6
-	},
-/obj/item/clothing/glasses/science{
-	pixel_x = -4;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/glass/beaker/large,
-/obj/item/reagent_container/glass/beaker{
-	pixel_x = 5
-	},
+/obj/structure/machinery/photocopier,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -43100,10 +43089,16 @@
 	pixel_x = 7;
 	pixel_y = -25
 	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/research{
-	dir = 1;
-	pixel_y = -1
+/obj/structure/surface/rack,
+/obj/item/storage/box/autoinjectors{
+	pixel_x = 1;
+	pixel_y = -3
+	},
+/obj/item/storage/box/sprays{
+	pixel_y = 5
+	},
+/obj/item/storage/box/beakers{
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -43604,10 +43599,21 @@
 /turf/closed/wall/almayer,
 /area/almayer/squads/alpha_bravo_shared)
 "jeq" = (
-/obj/structure/machinery/photocopier,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/folder/white{
+	pixel_x = 6
+	},
+/obj/item/reagent_container/glass/beaker/large,
+/obj/item/reagent_container/glass/beaker{
+	pixel_x = 5
+	},
+/obj/item/clothing/glasses/science{
+	pixel_x = -4;
+	pixel_y = 7
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -70662,17 +70668,8 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/obj/structure/surface/rack,
-/obj/item/storage/box/beakers{
-	pixel_y = 12
-	},
-/obj/item/storage/box/sprays{
-	pixel_y = 5
-	},
-/obj/item/storage/box/autoinjectors{
-	pixel_x = 1;
-	pixel_y = -3
-	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/research,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner"

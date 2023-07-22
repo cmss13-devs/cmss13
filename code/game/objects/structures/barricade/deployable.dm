@@ -203,6 +203,9 @@
 			to_chat(user, SPAN_WARNING("[src.singular_name] doesn't need repairs."))
 			return
 
+		if(!(WT.remove_fuel(2, user)))
+			return
+
 		user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 		SPAN_NOTICE("You begin repairing the damage to [src]."))
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, TRUE)
@@ -213,11 +216,8 @@
 			if(!do_after(user, welding_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 				return
 		else
-			if(!do_after(user, welding_time, INTERRUPT_UNCONSCIOUS|INTERRUPT_KNOCKED_DOWN|INTERRUPT_STUNNED|INTERRUPT_NEEDHAND, BUSY_ICON_FRIENDLY, src)) //you can move while repairing if you have cade in hand
+			if(!do_after(user, welding_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, src, INTERRUPT_DIFF_LOC)) //you can move while repairing if you have cade in hand
 				return
-
-		if(!(WT.remove_fuel(2, user)))
-			return
 
 		user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 		SPAN_NOTICE("You repair [src]."))

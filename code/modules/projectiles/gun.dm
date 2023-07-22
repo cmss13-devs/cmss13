@@ -1816,7 +1816,10 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		return
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
-	if (!isturf(gun_user.loc))
+	if(!isturf(gun_user.loc))
+		return
+
+	if(istype(object, /atom/movable/screen))
 		return
 
 	if(!bypass_checks)
@@ -1858,3 +1861,4 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 /// Setter proc for fa_firing
 /obj/item/weapon/gun/proc/set_auto_firing(auto = FALSE)
+	fa_firing = auto

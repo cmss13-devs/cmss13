@@ -161,7 +161,6 @@
 	icon_state = "b92fs"
 	item_state = "b92fs"
 	current_mag = /obj/item/ammo_magazine/pistol/b92fs
-	gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO)
 
 /obj/item/weapon/gun/pistol/b92fs/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -172,7 +171,7 @@
 		BFA.flags_attach_features &= ~ATTACH_REMOVABLE
 		BFA.Attach(src)
 		update_attachable(BFA.slot)
-		gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO, GUN_FIREMODE_BURSTFIRE)
+		add_firemode(GUN_FIREMODE_BURSTFIRE)
 
 /obj/item/weapon/gun/pistol/b92fs/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
@@ -752,7 +751,8 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 		/obj/item/attachable/lasersight, //Underbarrel
 		/obj/item/attachable/burstfire_assembly,
 	)
-	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC)
+	start_semiauto = FALSE
+	start_automatic = TRUE
 
 /obj/item/weapon/gun/pistol/skorpion/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 18,"rail_x" = 16, "rail_y" = 21, "under_x" = 23, "under_y" = 15, "stock_x" = 23, "stock_y" = 15)

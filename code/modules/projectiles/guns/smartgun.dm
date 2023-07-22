@@ -63,7 +63,8 @@
 	gun_category = GUN_CATEGORY_HEAVY
 	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
 	auto_retrieval_slot = WEAR_J_STORE
-	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC)
+	start_semiauto = FALSE
+	start_automatic = TRUE
 
 
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)

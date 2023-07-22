@@ -361,7 +361,7 @@
 		)
 	wield_delay = WIELD_DELAY_NONE
 	aim_slowdown = SLOWDOWN_ADS_NONE
-	gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO, GUN_FIREMODE_AUTOMATIC)
+	start_automatic = TRUE
 
 /obj/item/weapon/gun/smg/mac15/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 20,"rail_x" = 16, "rail_y" = 22, "under_x" = 22, "under_y" = 16, "stock_x" = 22, "stock_y" = 16)
@@ -410,7 +410,7 @@
 		)
 	wield_delay = WIELD_DELAY_MIN
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO, GUN_FIREMODE_AUTOMATIC)
+	start_automatic = TRUE
 	var/jammed = FALSE
 
 /obj/item/weapon/gun/smg/uzi/set_gun_attachment_offsets()

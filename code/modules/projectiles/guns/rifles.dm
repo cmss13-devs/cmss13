@@ -149,7 +149,7 @@
 		/obj/item/attachable/scope/mini/nsg23,
 		/obj/item/attachable/attached_gun/flamer/advanced,
 	)
-	gun_firemode_list = list(GUN_FIREMODE_BURSTFIRE)
+	start_semiauto = FALSE
 
 /obj/item/weapon/gun/rifle/nsg23/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -326,7 +326,6 @@
 		)
 
 	random_spawn_chance = 0
-	gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO, GUN_FIREMODE_BURSTFIRE)
 
 /obj/item/weapon/gun/rifle/m41a/elite/xm40/handle_starting_attachment()
 	..()

@@ -217,15 +217,17 @@
 	///Current selected firemode of the gun.
 	var/gun_firemode = GUN_FIREMODE_SEMIAUTO
 	///List of allowed firemodes.
-	var/list/gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO)
+	var/list/gun_firemode_list = list()
 	///How many bullets the gun fired while bursting/auto firing
 	var/shots_fired = 0
 	/// Currently selected target to fire at. Set with set_target()
 	VAR_PRIVATE/atom/target
 	/// Current user (holding) of the gun. Set with set_gun_user()
 	VAR_PRIVATE/mob/gun_user
-	/// If this gun should spawn with automatic fire. Private due to it never needing to be edited.
-	VAR_PRIVATE/start_automatic = FALSE
+	/// If this gun should spawn with semi-automatic fire. Protected due to it never needing to be edited.
+	VAR_PROTECTED/start_semiauto = TRUE
+	/// If this gun should spawn with automatic fire. Protected due to it never needing to be edited.
+	VAR_PROTECTED/start_automatic = FALSE
 
 
 /**

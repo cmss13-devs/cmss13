@@ -705,8 +705,14 @@ DEFINES in setup.dm, referenced here.
 		do_toggle_firemode(user, gun_firemode)
 
 /obj/item/weapon/gun/proc/setup_firemodes()
-	if(burst_amount > BURST_AMOUNT_TIER_1 && !(GUN_FIREMODE_BURSTFIRE in gun_firemode_list))
-		gun_firemode_list += GUN_FIREMODE_BURSTFIRE
+	if(start_semiauto)
+		gun_firemode_list |= GUN_FIREMODE_SEMIAUTO
+
+	if(burst_amount > BURST_AMOUNT_TIER_1)
+		gun_firemode_list |= GUN_FIREMODE_BURSTFIRE
+
+	if(start_automatic)
+		gun_firemode_list |= GUN_FIREMODE_AUTOMATIC
 
 	switch(length(gun_firemode_list))
 		if(0)

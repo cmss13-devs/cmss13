@@ -365,7 +365,8 @@
 /obj/item/weapon/gun/flamer/M240T/auto // With NEW advances in science, we've learned how to drain a pyro's tank in 6 seconds, or your money back!
 	name = "\improper M240-T2 incinerator unit"
 	desc = "A prototyped model of the M240-T incinerator unit, it was discontinued after its automatic mode was deemed too expensive to deploy in the field."
-	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC)
+	start_semiauto = FALSE
+	start_automatic = TRUE
 
 GLOBAL_LIST_EMPTY(flamer_particles)
 /particles/flamer_fire

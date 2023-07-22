@@ -15,7 +15,8 @@
 	force = 20
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_RECOIL_BUILDUP|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HEAVY
-	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC)
+	start_semiauto = FALSE
+	start_automatic = TRUE
 
 /obj/item/weapon/gun/minigun/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -83,7 +84,8 @@
 		/obj/item/attachable/m60barrel,
 		/obj/item/attachable/bipod/m60,
 	)
-	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC)
+	start_semiauto = FALSE
+	start_automatic = TRUE
 	var/cover_open = FALSE //if the gun's feed-cover is open or not.
 
 

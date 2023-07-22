@@ -10243,6 +10243,9 @@
 "eOT" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/prop/server_equipment/laptop/on,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -16644,6 +16647,16 @@
 	icon_state = "floor_plate"
 	},
 /area/lv522/atmos/way_in_command_centre)
+"hrw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	icon_state = "blue1"
+	},
+/area/lv522/outdoors/colony_streets/windbreaker/observation)
 "hrx" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -32613,6 +32626,19 @@
 	icon_state = "white_cyan1"
 	},
 /area/lv522/indoors/a_block/medical/glass)
+"nrL" = (
+/obj/structure/surface/table/almayer{
+	dir = 8;
+	flipped = 1
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "blue_plate"
+	},
+/area/lv522/indoors/a_block/admin)
 "nrP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -38559,6 +38585,19 @@
 	icon_state = "greenfull"
 	},
 /area/lv522/indoors/b_block/hydro)
+"pJh" = (
+/obj/structure/surface/table/almayer{
+	dir = 4;
+	flipped = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "blue_plate"
+	},
+/area/lv522/indoors/a_block/admin)
 "pJj" = (
 /obj/structure/closet/crate/hydroponics/prespawned,
 /turf/open/floor/prison{
@@ -60175,6 +60214,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
+"xJg" = (
+/obj/structure/machinery/light,
+/turf/open/floor/strata{
+	icon_state = "blue1"
+	},
+/area/lv522/outdoors/colony_streets/windbreaker/observation)
 "xJt" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
 /turf/open/floor/corsat{
@@ -91925,7 +91970,7 @@ tDS
 vzg
 vUx
 nmB
-nmB
+nrL
 nmB
 ddP
 vwQ
@@ -93045,7 +93090,7 @@ uaY
 xNG
 eJR
 eJR
-sOL
+xJg
 wDj
 aij
 qSH
@@ -93514,7 +93559,7 @@ tDS
 ddC
 btb
 tAh
-tAh
+pJh
 jLf
 tAh
 oew
@@ -94403,7 +94448,7 @@ tOt
 qSH
 cYn
 xei
-iWg
+hrw
 iWg
 sOL
 sOL

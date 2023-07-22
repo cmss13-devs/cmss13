@@ -246,3 +246,137 @@
   - bugfix: Fixes another synth survivor variant having marine comms.
   theselfish:
   - spellcheck: Goodbye Squad Spotter, hello regular non-squaded Spotter.
+2023-07-20:
+  Anuv:
+  - bugfix: '#3775'
+  - rscadd: Added a new storm siren unique to NV, new survivor types
+  - spellcheck: Updates to the waking distress call notif.
+  - code_imp: Weather-related code changes. Update to the handheld maps.
+  - soundadd: Added new monsoon weather sfx, new map-unique ambience, new storm siren
+      sfx.
+  - maptweak: New LZ (LZ2 Palm Airfield) in the NE with a construction zone. Removed
+      a number of rocks around cave areas. Increased hive location choices from 3
+      to 4. Added glass ceilings to facility areas (deep caves are still protected,
+      can be OB'd). Slightly widened the 45 minute weed protection areas around LZs.
+      Added a fog monsoon to the SE beach that dissipates after an hour. Expanded
+      east beach. New SW cave section. Opened up the walkway west of LZ1. Enhanced
+      survivor loot and mats to a comparable degree to current maps. Many small changes
+      to lessen chokes and offer more route choice for xenos and marines alike. Removed
+      Spearhead/Rival and laser pistols. Swapped fawras for monkeys. Added more survivor-type
+      choices. Added a bar area and decrepit truck to the north beach.
+  - config: Enabled NV again as a map in maps.txt.
+  Awantje:
+  - bugfix: The M56D no longer let's you violate density code when exiting it.
+  BeagleGaming1:
+  - config: Moved time to burst to the config
+  - balance: Fixed time to burst, lowering it from 15 minutes to 7.5 minutes by default
+  - balance: Stasis bags used on late-stage mobs properly slow growth down less
+  Ben10083:
+  - qol: Non player Facehuggers now also notify the hive when they facehug something.
+  - spellcheck: fix typo relating to Starshell ash
+  Diegoflores31:
+  - balance: Acid Splash damage increased to 25
+  - balance: Acid Splash damage can be reduced with BIO armor.
+  - balance: Reduced Light armor BIO resistance by 10
+  - balance: Increased Heavy armor BIO resistance by 5
+  - balance: Increased VL vest BIO resistance by 5
+  GoldenDarkness55:
+  - balance: Base rav cooldown regain per slash reduced (4 to 3), empowered charge
+      stun duration reduced (2 to 1.3), empower duration increased (5 to 6.5), empower
+      cooldown reduced (22 to 18), duration window for second empower cast reduced
+      (15 to 6), base shield gain reduced (75 to 50), shield gain per marine reduced
+      (80 to 50), maximum empower targets increased (5 to 6), scissor slash cooldown
+      reduced (10 to 6), and damage reduced (45 to 40)
+  - balance: Hedge rav doesn't lose speed anymore, but loses 10 slash damage instead.
+      Shield duration increased (2 to 2.5), Fire Spikes shard range increased (5 to
+      6), Spike Shed shard lockout duration reduced (30 to 15), shard lock speed reduced
+      to maintain same speed as previously. Shard damage increased (5 to 8), shard
+      slowdown duration reduced (8 to 3), shard gain per tick reduced (10 to 5), shard
+      gain per bullet reduced (20 to 10), added shard gain per slash (15)
+  Huffie56:
+  - bugfix: fix some area having no apc on the almayer making them not behave like
+      they should specialy when hijack happen.
+  IowaPotatoFarmer:
+  - rscadd: The PMC Crash on Solaris Ridge now spawns one PMC medic survivor and one
+      PMC engineer survivor.
+  - bugfix: The Wey-Yu goon survivors now have their unique corporate white camo M41A
+      MK2 back.
+  Kaboomcat:
+  - imageadd: Updated the gin bottle sprite
+  QuickLoad:
+  - balance: Tones down ERT skills. Impacts VAIPO/Dutch'sDozen/CMB/UPP/CLF/EMerc.
+  - balance: Gives PMC & SurvPMC a trained level of CQC.
+  Steelpoint:
+  - maptweak: More weed spawns so larva don't spawn in area with no weed to evolve
+      on.
+  - rscadd: Predator toolbelt is now a unique item with its own sprite.
+  TeDGamer:
+  - bugfix: Xenos allied to the hive can now open hive's doors
+  - bugfix: Huggers can now scuttle doors
+  - code_imp: Combined hugger + larva code to allow for any small castes to scuttle
+  Zonespace27:
+  - balance: Trashbags now hold normal items and can be looked through like a box
+      or storage container.
+  - balance: Trashbags no longer fit in your belt slot.
+  ihatethisengine:
+  - balance: Lurkers don't lose invisibility when they bump into partly visible mobs.
+  realforest2001:
+  - admin: Removed the R_REJUVINATE permissions flag and replaces instances where
+      it is used with R_MOD.
+  - admin: Added logs if a restricted proc is proccalled.
+  silencer_pl:
+  - qol: Default paper and desc_lore viewing windows are now larger to match the expected
+      content in them better.
+2023-07-21:
+  Awantje:
+  - code_imp: Medicomp surgery tools no longer care about what zone you target.
+  Ben10083:
+  - rscadd: Facehuggers now bypass time of death checks when being considered for
+      larva.
+  - code_imp: new variable for observers to handle bypass of time of death checks
+  Drathek:
+  - code_imp: Removed extra CI testing for override maps
+  Morrow:
+  - bugfix: Colonial Marshal ERT now uses their own faction
+  - bugfix: Anchorpoint marines now use the proper define for USCM
+  - rscadd: Added sounds for inserting and removing knifes to the knife webbing
+  - rscadd: Added draw delay for knives to the knife webbing
+  - rscadd: Allowed using quickdraw with the knife webbing
+  - rscadd: Allowed knife webbing to be alt-clicked to draw from it
+  - rscadd: Knife webbing is now spawned full
+  - code_imp: Standardized knife draw delay in a define
+  - balance: Modifies INTERRUPT_NO_NEEDHAND flag to require you hold the item at least
+      in one hand.
+  - balance: Changes splint back to using INTERRUPT_NO_NEEDHAND
+  - balance: Removes large pouches as buyable from all squad roles other than SL
+  - balance: Removes medkit, medical (the base ones, not first aid), and syringe pouches
+      from squad prep room vendors
+  - balance: Replaces the EZ-injector first aid pouch with the alternate tricord/bandage/splint/ointment
+      version in the squad prep room vendors
+  QuickLode:
+  - bugfix: limits the Survivor CMB Synthetic comms
+  harryob:
+  - admin: you can no longer touch bad vars
+  realforest2001:
+  - bugfix: Fixes PMC survivor synth spawning with marine comms, again.
+  - bugfix: Reduces yautja armor bullet resistance by 5, and puts that 5 extra onto
+      the heavy armor.
+  - rscadd: Added donator kit boxes that hold a donator's special gear. They can be
+      destroyed with a right-click while on the ground, and are locked to the donator.
+  - code_imp: Tidied up typepaths for many donator items to make it clearer what or
+      who they are for.
+  - code_imp: Removed the requirement for donators to match their character name to
+      our config file.
+2023-07-22:
+  Ben10083:
+  - qol: Ghosts now informed when a non-nested host is about to chestburst
+  ClairionCM:
+  - rscadd: Chem ERT objectives now mention that they cant deploy without explicit
+      permission.
+  Drathek:
+  - bugfix: 'Fixed the prompt when nested to ghost: Now uses a TGUI prompt and sets
+      larva queue time.'
+  Morrow:
+  - balance: Decreased blood bag IV insertion time from 3 to 1 second
+  Waseemq1235:
+  - code_imp: Adds unrestricted_deployment var to tents. Bypasses groundside checks.

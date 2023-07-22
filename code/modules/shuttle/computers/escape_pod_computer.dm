@@ -227,14 +227,18 @@
 	return FALSE
 
 /obj/structure/machinery/door/airlock/evacuation/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(density && !unslashable) //doors become slashable after evac is called
-		if(xeno.claw_type >= CLAW_TYPE_SHARP)
-			xeno.animation_attack_on(src)
-			playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-			take_damage(HEALTH_DOOR / XENO_HITS_TO_DESTROY_BOLTED_DOOR)
-			return XENO_ATTACK_ACTION
-		else
-			to_chat(xeno, SPAN_WARNING("[src] is bolted down tight."))
+	if(!density || unslashable) //doors become slashable after evac is called
+		return FALSE
+	
+	if(xeno.claw_type < CLAW_TYPE_SHARP)
+		to_chat(xeno, SPAN_WARNING("[src] is bolted down tight."))
+		return XENO_NO_DELAY_ACTION
+	
+	xeno.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	take_damage(HEALTH_DOOR / XENO_HITS_TO_DESTROY_BOLTED_DOOR)
+	return XENO_ATTACK_ACTION
+			
 	return FALSE //Probably a better idea that these cannot be forced open.
 
 /obj/structure/machinery/door/airlock/evacuation/attack_remote()

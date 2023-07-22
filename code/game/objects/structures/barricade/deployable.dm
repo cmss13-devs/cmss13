@@ -172,8 +172,8 @@
 	if(istype(W, /obj/item/stack/folding_barricade))
 		var/obj/item/stack/folding_barricade/F = W
 
-		if(health < maxhealth * 0.80 || F.health < F.maxhealth * 0.80)
-			to_chat(user, "You cannot stack too damaged [src.singular_name]\s.")
+		if(health < maxhealth * 0.75 || F.health < F.maxhealth * 0.75)
+			to_chat(user, "You cannot stack damaged [src.singular_name]\s.")
 			return
 
 		if(!ismob(src.loc))
@@ -260,10 +260,10 @@
 
 /obj/item/stack/folding_barricade/get_examine_text(mob/user)
 	. = ..()
-	if(health < maxhealth * 0.80)
+	if(health < maxhealth * 0.75)
 		. += SPAN_WARNING("It appears to be damaged.")
 	else if(health < maxhealth)
-		. += SPAN_WARNING("It appears to be slightly damaged.")
+		. += SPAN_WARNING("It appears to be scratched.")
 
 /obj/item/stack/folding_barricade/three
 	amount = 3

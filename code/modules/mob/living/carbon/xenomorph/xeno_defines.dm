@@ -353,7 +353,7 @@
 	/// How many lesser drones the hive can support
 	var/lesser_drone_limit = 0
 
-	var/datum/tacmap/tacmap
+	var/datum/tacmap/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
 
 /datum/hive_status/New()

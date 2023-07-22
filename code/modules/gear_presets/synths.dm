@@ -352,7 +352,7 @@
 	role_comm_title = "CMB Syn"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/CMB,
-		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB,
+		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB/limited,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/CM_uniform,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,

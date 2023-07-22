@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "Bump rust_g to 2.1.0 and bump all github testing ubuntu versions to latest."

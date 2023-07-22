@@ -289,11 +289,11 @@
 /obj/item/tool/pen/fountain/Initialize(mapload, mob/living/carbon/human/user)
 	. = ..()
 	var/turf/current_turf = get_turf(src)
-	if(locate(/mob/living/carbon/human) in current_turf)
-		var/mob/new_owner = (locate(/mob/living/carbon/human) in current_turf)
+	var/mob/living/carbon/human/new_owner = locate() in current_turf
+	if(new_owner)
 		owner = new_owner.real_name
-	if(locate(/obj/structure/machinery/cryopod) in current_turf)
-		var/obj/structure/machinery/cryopod/new_owners_pod = (locate(/obj/structure/machinery/cryopod) in current_turf)
+	var/obj/structure/machinery/cryopod/new_owners_pod = locate() in current_turf
+	if(new_owners_pod)
 		owner = new_owners_pod.occupant.real_name
 
 /obj/item/tool/pen/fountain/get_examine_text(mob/user)

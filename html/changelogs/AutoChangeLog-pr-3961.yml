@@ -1,0 +1,5 @@
+author: "nauticall"
+delete-after: True
+changes:
+  - imageadd: "Resprited blood bags to look nicer and use proper a proper overlay/underlay system. Their types are also now distinguishable at a glance."
+  - code_imp: "Reworked the way blood bag sprites work behind the scenes to use the overlay/underlay system."

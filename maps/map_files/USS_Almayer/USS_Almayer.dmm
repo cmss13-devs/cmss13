@@ -65941,7 +65941,8 @@
 /area/almayer/living/briefing)
 "sTV" = (
 /obj/structure/machinery/power/apc/almayer/hardened{
-	dir = 1
+	dir = 1;
+	cell_type = /obj/item/cell/hyper
 	},
 /turf/open/floor/plating,
 /area/almayer/command/airoom)

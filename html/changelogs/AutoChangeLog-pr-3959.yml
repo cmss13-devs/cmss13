@@ -1,0 +1,5 @@
+author: "Khadd"
+delete-after: True
+changes:
+  - bugfix: "blowtorch no longer loses fuel on clicks that produce no action"
+  - code_imp: "replaced 1-letter vars"

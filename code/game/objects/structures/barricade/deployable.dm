@@ -172,7 +172,7 @@
 	if(istype(W, /obj/item/stack/folding_barricade))
 		var/obj/item/stack/folding_barricade/F = W
 
-		if(round(health/maxhealth * 100) =< 75 || round(F.health/F.maxhealth * 100) =< 75)
+		if(round(health/maxhealth * 100) <= 75 || round(F.health/F.maxhealth * 100) <= 75)
 			to_chat(user, "You cannot stack damaged [src.singular_name]\s.")
 			return
 
@@ -262,7 +262,7 @@
 
 /obj/item/stack/folding_barricade/get_examine_text(mob/user)
 	. = ..()
-	if(round(health/maxhealth * 100) =< 75)
+	if(round(health/maxhealth * 100) <= 75)
 		. += SPAN_WARNING("It appears to be damaged.")
 	else if(health < maxhealth)
 		. += SPAN_WARNING("It appears to be scratched.")

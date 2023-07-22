@@ -1,5 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - bugfix: "Colonial Marshal ERT now uses their own faction"
-  - bugfix: "Anchorpoint marines now use the proper define for USCM"

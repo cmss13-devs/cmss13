@@ -17,9 +17,9 @@
 	plane = HUD_PLANE
 	layer = ABOVE_HUD_LAYER
 	animate_movement = SLIDE_STEPS
-//	speech_span = SPAN_ROBOT
+// speech_span = SPAN_ROBOT
 	vis_flags = VIS_INHERIT_PLANE
-//	appearance_flags = APPEARANCE_UI
+// appearance_flags = APPEARANCE_UI
 	/// A reference to the object in the slot. Grabs or items, generally.
 	var/obj/master = null
 	/// A reference to the owner HUD, if any.
@@ -37,6 +37,14 @@
 	 * But for now, this works.
 	 */
 	var/del_on_map_removal = TRUE
+
+	/// If FALSE, this will not be cleared when calling /client/clear_screen()
+	var/clear_with_screen = TRUE
+
+/atom/movable/screen/Destroy()
+	master = null
+	hud = null // Not currently ever used
+	return ..()
 
 /**
  * A screen object, which acts as a container for turfs and other things

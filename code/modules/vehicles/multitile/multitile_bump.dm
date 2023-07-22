@@ -1,4 +1,4 @@
-/obj/vehicle/multitile/Collide(var/atom/A)
+/obj/vehicle/multitile/Collide(atom/A)
 	if(A && !QDELETED(A))
 		A.last_bumped = world.time
 		A.Collided(src)
@@ -7,7 +7,7 @@
 
 //-----------------MAIN BUMP HANDLING PROC-------------------
 
-/atom/proc/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/atom/proc/handle_vehicle_bump(obj/vehicle/multitile/V)
 	return FALSE
 
 //-----------------------------------------------------------
@@ -15,7 +15,7 @@
 //-----------------------------------------------------------
 
 
-/turf/closed/wall/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/turf/closed/wall/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!hull && !(V.vehicle_flags & VEHICLE_CLASS_WEAK))
 		take_damage(V.wall_ram_damage)
 		V.take_damage_type(10, "blunt", src)
@@ -27,7 +27,7 @@
 //-------------------------OBJECTS---------------------------
 //-----------------------------------------------------------
 
-/obj/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!unacidable)
 		V.take_damage_type(5, "blunt", src)
 		visible_message(SPAN_DANGER("\The [V] crushes [src]!"))
@@ -37,7 +37,7 @@
 
 //-------------------------STRUCTURES------------------------
 
-/obj/structure/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!indestructible && !unacidable && !(V.vehicle_flags & VEHICLE_CLASS_WEAK))
 		visible_message(SPAN_DANGER("\The [V] crushes [src]!"))
 		playsound(V, 'sound/effects/metal_crash.ogg', 20)
@@ -46,7 +46,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/barricade/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/barricade/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!(V.vehicle_flags & VEHICLE_CLASS_WEAK))
 		take_damage(maxhealth)
 		visible_message(SPAN_DANGER("\The [V] crushes [src]!"))
@@ -55,7 +55,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/barricade/plasteel/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/barricade/plasteel/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.seats[VEHICLE_DRIVER])
 		close(src)
 		return FALSE
@@ -63,19 +63,19 @@
 		. = ..()
 		return FALSE
 
-/obj/structure/barricade/deployable/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/barricade/deployable/handle_vehicle_bump(obj/vehicle/multitile/V)
 	visible_message(SPAN_DANGER("\The [V] crushes [src]!"))
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	collapse()
 	return TRUE
 
-/obj/structure/barricade/handrail/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/barricade/handrail/handle_vehicle_bump(obj/vehicle/multitile/V)
 	visible_message(SPAN_DANGER("\The [V] crushes [src]!"))
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	take_damage(maxhealth)
 	return TRUE
 
-/obj/structure/alien/movable_wall/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/alien/movable_wall/handle_vehicle_bump(obj/vehicle/multitile/V)
 	playsound(V, 'sound/effects/metal_crash.ogg', 35)
 	V.take_damage_type(5, "blunt", src)
 
@@ -89,7 +89,7 @@
 		qdel(src)
 	return TRUE
 
-/obj/structure/mortar/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/mortar/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(fixed)
 		if(V.seats[VEHICLE_DRIVER])
 			to_chat(V.seats[VEHICLE_DRIVER], SPAN_WARNING("[src]'s supports are bolted and welded into the floor. You need to find a way around!"))
@@ -105,14 +105,14 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/surface/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/surface/handle_vehicle_bump(obj/vehicle/multitile/V)
 	detach_all()
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 	qdel(src)
 	return TRUE
 
-/obj/structure/surface/table/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/surface/table/handle_vehicle_bump(obj/vehicle/multitile/V)
 	detach_all()
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
@@ -121,14 +121,14 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/surface/rack/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/surface/rack/handle_vehicle_bump(obj/vehicle/multitile/V)
 	detach_all()
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 	deconstruct()
 	return TRUE
 
-/obj/structure/reagent_dispensers/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/reagent_dispensers/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(prob(50))
 		new /obj/effect/particle_effect/water(src.loc)
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
@@ -136,7 +136,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/reagent_dispensers/fueltank/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/reagent_dispensers/fueltank/handle_vehicle_bump(obj/vehicle/multitile/V)
 	reagents.source_mob = V.seats[VEHICLE_DRIVER]
 	if(reagents.handle_volatiles())
 		if(V.seats[VEHICLE_DRIVER])
@@ -148,31 +148,31 @@
 	qdel(src)
 	return FALSE
 
-/obj/structure/dropship_equipment/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/dropship_equipment/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.seats[VEHICLE_DRIVER])
-		var/last_moved = V.l_move_time	//in case VC moves before answering
+		var/last_moved = V.l_move_time //in case VC moves before answering
 		if(alert(V.seats[VEHICLE_DRIVER], "Are you sure you want to crush \the [name]?", "Ramming confirmation","Yes","No") == "Yes")
 			if(last_moved == V.l_move_time)
 				visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 				playsound(V, 'sound/effects/metal_crash.ogg', 20)
 				log_attack("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
-				message_staff("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
+				message_admins("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
 				qdel(src)
 				return FALSE
 	return FALSE
 
-/obj/structure/powerloader_wreckage/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/powerloader_wreckage/handle_vehicle_bump(obj/vehicle/multitile/V)
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	qdel(src)
 	return FALSE
 
-/obj/structure/largecrate/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/largecrate/handle_vehicle_bump(obj/vehicle/multitile/V)
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 	unpack()
 	return TRUE
 
-/obj/structure/largecrate/machine/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/largecrate/machine/handle_vehicle_bump(obj/vehicle/multitile/V)
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 	if(turf_blocked_check())
 		qdel(src)
@@ -180,7 +180,7 @@
 		unpack()
 	return FALSE
 
-/obj/structure/closet/crate/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/closet/crate/handle_vehicle_bump(obj/vehicle/multitile/V)
 	open()
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
@@ -188,7 +188,7 @@
 	return FALSE
 
 //med-heavy tank crushes boulders
-/obj/structure/prop/dam/large_boulder/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/prop/dam/large_boulder/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_MEDIUM || V.vehicle_flags & VEHICLE_CLASS_HEAVY)
 		visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 		playsound(V, 'sound/soundscape/rocksfalling2.ogg', 20)
@@ -196,7 +196,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/prop/dam/wide_boulder/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/prop/dam/wide_boulder/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_MEDIUM || V.vehicle_flags & VEHICLE_CLASS_HEAVY)
 		visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 		playsound(V, 'sound/soundscape/rocksfalling2.ogg', 20)
@@ -204,7 +204,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/fence/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/fence/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!(V.vehicle_flags & VEHICLE_CLASS_MEDIUM || V.vehicle_flags & VEHICLE_CLASS_HEAVY))
 		V.move_momentum -= V.move_momentum * 0.5
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
@@ -212,7 +212,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/foamed_metal/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/foamed_metal/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!(V.vehicle_flags & VEHICLE_CLASS_MEDIUM || V.vehicle_flags & VEHICLE_CLASS_HEAVY))
 		V.move_momentum -= V.move_momentum * 0.5
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
@@ -220,7 +220,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/grille/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/grille/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!(V.vehicle_flags & VEHICLE_CLASS_MEDIUM || V.vehicle_flags & VEHICLE_CLASS_HEAVY))
 		V.move_momentum -= V.move_momentum * 0.5
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
@@ -228,7 +228,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/inflatable/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/inflatable/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 		V.move_momentum -= V.move_momentum * 0.5
 	visible_message(SPAN_DANGER("\The [V] rams \the [src]!"))
@@ -236,7 +236,7 @@
 	deflate(TRUE)
 	return TRUE
 
-/obj/structure/bed/chair/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/bed/chair/handle_vehicle_bump(obj/vehicle/multitile/V)
 	visible_message(SPAN_DANGER("\The [V] rams \the [src]!"))
 	if(stacked_size)
 		stack_collapse()
@@ -244,7 +244,7 @@
 		qdel(src)
 	return TRUE
 
-/obj/structure/prop/dam/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/prop/dam/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_MEDIUM)
 		V.move_momentum -= V.move_momentum * 0.5
 	else if(!(V.vehicle_flags & VEHICLE_CLASS_HEAVY))
@@ -255,19 +255,19 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/prop/dam/drill/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/prop/dam/drill/handle_vehicle_bump(obj/vehicle/multitile/V)
 	return FALSE
 
-/obj/structure/prop/dam/torii/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/prop/dam/torii/handle_vehicle_bump(obj/vehicle/multitile/V)
 	return FALSE
 
-/obj/structure/prop/dam/large_boulder/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/prop/dam/large_boulder/handle_vehicle_bump(obj/vehicle/multitile/V)
 	return FALSE
 
-/obj/structure/prop/dam/wide_boulder/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/prop/dam/wide_boulder/handle_vehicle_bump(obj/vehicle/multitile/V)
 	return FALSE
 
-/obj/structure/flora/tree/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/flora/tree/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 		return FALSE
 	else if(V.vehicle_flags & VEHICLE_CLASS_LIGHT)
@@ -279,10 +279,10 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/flora/tree/jungle/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/flora/tree/jungle/handle_vehicle_bump(obj/vehicle/multitile/V)
 	return FALSE
 
-/obj/structure/window/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/window/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(not_damageable)
 		return FALSE
 
@@ -292,7 +292,7 @@
 
 //-------------------------MACHINERY------------------------
 
-/obj/structure/machinery/door/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/door/handle_vehicle_bump(obj/vehicle/multitile/V)
 	// We attempt to open doors before crushing them
 	// Check if we can even fit through first
 	var/list/vehicle_dimensions = V.get_dimensions()
@@ -307,23 +307,23 @@
 	if(!unacidable)
 		visible_message(SPAN_DANGER("\The [V] pushes [src] over!"))
 		playsound(V, 'sound/effects/metal_crash.ogg', 20)
-		Destroy()
+		qdel(src)
 	return FALSE
 
-/obj/structure/machinery/door/poddoor/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/door/poddoor/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!(V.vehicle_flags & VEHICLE_CLASS_WEAK))
 		if(!unacidable)
 			visible_message(SPAN_DANGER("\The [V] pushes [src] over!"))
 			playsound(V, 'sound/effects/metal_crash.ogg', 35)
 			V.take_damage_type(10, "blunt", V)
-			Destroy()
+			qdel(src)
 	return FALSE
 
-/obj/structure/machinery/door/poddoor/shutters/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/door/poddoor/shutters/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!unacidable)
 		visible_message(SPAN_DANGER("\The [V] pushes [src] over!"))
 		playsound(V, 'sound/effects/metal_crash.ogg', 35)
-		Destroy()
+		qdel(src)
 	return FALSE
 
 /obj/structure/machinery/door/poddoor/almayer/handle_vehicle_bump(obj/vehicle/multitile/V)
@@ -334,23 +334,23 @@
 		else
 			visible_message(SPAN_DANGER("\The [V] crushes [src]!"))
 			playsound(V, 'sound/effects/metal_crash.ogg', 35)
-			Destroy()
+			qdel(src)
 	return FALSE
 
-/obj/structure/machinery/cm_vending/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/cm_vending/handle_vehicle_bump(obj/vehicle/multitile/V)
 	visible_message(SPAN_DANGER("\The [V] pushes [src] over!"))
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	tip_over()
 	return TRUE
 
-/obj/structure/machinery/m56d_post/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/m56d_post/handle_vehicle_bump(obj/vehicle/multitile/V)
 	new /obj/item/device/m56d_post(loc)
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] drives over \the [src]!"))
 	qdel(src)
 	return TRUE
 
-/obj/structure/machinery/m56d_hmg/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/m56d_hmg/handle_vehicle_bump(obj/vehicle/multitile/V)
 	var/obj/item/device/m56d_gun/HMG = new(loc)
 	HMG.name = name
 	HMG.rounds = rounds
@@ -361,13 +361,13 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/machinery/m56d_hmg/mg_turret/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/m56d_hmg/mg_turret/handle_vehicle_bump(obj/vehicle/multitile/V)
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] drives over \the [src]!"))
 	update_health(health + 1)
 	return TRUE
 
-/obj/structure/machinery/m56d_hmg/auto/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/m56d_hmg/auto/handle_vehicle_bump(obj/vehicle/multitile/V)
 	var/obj/item/device/m2c_gun/HMG = new(loc)
 	HMG.name = name
 	HMG.rounds = rounds
@@ -381,7 +381,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/machinery/defenses/sentry/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/defenses/sentry/handle_vehicle_bump(obj/vehicle/multitile/V)
 	visible_message(SPAN_DANGER("\The [V] drives over \the [src]!"))
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	if(static)
@@ -399,32 +399,32 @@
 		forceMove(HD)
 	return TRUE
 
-/obj/structure/machinery/defenses/sentry/premade/dropship/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/defenses/sentry/premade/dropship/handle_vehicle_bump(obj/vehicle/multitile/V)
 	deployment_system.undeploy_sentry()
 	return FALSE
 
-/obj/structure/machinery/m56d_hmg/mg_turret/dropship/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/m56d_hmg/mg_turret/dropship/handle_vehicle_bump(obj/vehicle/multitile/V)
 	deployment_system.undeploy_mg()
 	return FALSE
 
-/obj/structure/machinery/defenses/sentry/launchable/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/defenses/sentry/launchable/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.seats[VEHICLE_DRIVER])
-		var/last_moved = V.l_move_time	//in case VC moves before answering
+		var/last_moved = V.l_move_time //in case VC moves before answering
 		if(alert(V.seats[VEHICLE_DRIVER], "Are you sure you want to crush \the [name]?", "Ramming confirmation","Yes","No") == "Yes")
 			if(last_moved == V.l_move_time)
 				visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 				playsound(V, 'sound/effects/metal_crash.ogg', 20)
 				log_attack("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
-				message_staff("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
+				message_admins("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
 				qdel(src)
 				return FALSE
 	return FALSE
 
-/obj/structure/machinery/disposal/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/disposal/handle_vehicle_bump(obj/vehicle/multitile/V)
 	qdel(src)
 	return TRUE
 
-/obj/structure/machinery/hydro_floodlight/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/hydro_floodlight/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 		return FALSE
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
@@ -432,7 +432,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/machinery/floodlight/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/floodlight/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 		return FALSE
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
@@ -440,7 +440,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/machinery/colony_floodlight/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/colony_floodlight/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 		return FALSE
 	if(!(V.vehicle_flags & VEHICLE_CLASS_HEAVY))
@@ -450,7 +450,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/machinery/floodlight/landing/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/floodlight/landing/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_HEAVY)
 		playsound(V, 'sound/effects/metal_crash.ogg', 20)
 		visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
@@ -458,7 +458,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/machinery/autolathe/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/autolathe/handle_vehicle_bump(obj/vehicle/multitile/V)
 	for(var/obj/I in component_parts)
 		if(I.reliability != 100 && crit_fail)
 			I.crit_fail = 1
@@ -469,7 +469,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/structure/machinery/portable_atmospherics/hydroponics/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!(V.vehicle_flags & VEHICLE_CLASS_WEAK))
 		playsound(V, 'sound/effects/metal_crash.ogg', 20)
 		visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
@@ -479,21 +479,21 @@
 
 //-------------------------VEHICLES------------------------
 
-/obj/vehicle/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/vehicle/handle_vehicle_bump(obj/vehicle/multitile/V)
 	V.take_damage_type(5, "blunt", V)
-	health = health - Ceiling(maxhealth/2.8)	//we destroy any simple vehicle in 3 crushes
+	health = health - Ceiling(maxhealth/2.8) //we destroy any simple vehicle in 3 crushes
 	healthcheck()
 
 	visible_message(SPAN_DANGER("\The [V] crushes into \the [src]!"))
 	playsound(V, 'sound/effects/metal_crash.ogg', 35)
 	return FALSE
 
-/obj/vehicle/multitile/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/obj/vehicle/multitile/handle_vehicle_bump(obj/vehicle/multitile/V)
 	var/damage
 
-	if(last_move_dir == REVERSE_DIR(V.last_move_dir))	//crashing into each other
+	if(last_move_dir == REVERSE_DIR(V.last_move_dir)) //crashing into each other
 		damage = move_momentum + V.move_momentum
-	else if(last_move_dir == V.last_move_dir)	//crashing into something from behind
+	else if(last_move_dir == V.last_move_dir) //crashing into something from behind
 		damage = max(V.move_momentum - move_momentum, 0)
 	else
 		damage = V.move_momentum
@@ -517,7 +517,7 @@
 //-------------------------MOBS------------------------------
 //-----------------------------------------------------------
 
-/mob/living/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/mob/living/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(is_mob_incapacitated(1))
 		apply_damage(7 + rand(0, 5), BRUTE)
 		return TRUE
@@ -572,15 +572,15 @@
 		last_damage_data = create_cause_data("[initial(V.name)] roadkill", driver)
 		log_attack("[key_name(src)] was rammed by [key_name(driver)] with [V].")
 		if(faction == driver.faction)
-			msg_admin_ff("[key_name(driver)] rammed [key_name(src)] with \the [V] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[driver.x];Y=[driver.y];Z=[driver.z]'>JMP</a>) ([driver.client ? "<a href='?priv_msg=[driver.client.ckey]'>PM</a>" : "NO CLIENT"])")
+			msg_admin_ff("[key_name(driver)] rammed [key_name(src)] with \the [V] in [get_area(src)] [ADMIN_JMP(driver)] [ADMIN_PM(driver)]")
 	else
-		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].")	//to be able to determine whether vehicle was pushign friendlies
+		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].") //to be able to determine whether vehicle was pushign friendlies
 
 	return mob_moved
 
 //-------------------------HUMANS------------------------
 
-/mob/living/carbon/human/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/mob/living/carbon/human/handle_vehicle_bump(obj/vehicle/multitile/V)
 	var/mob/living/driver = V.get_seat_mob(VEHICLE_DRIVER)
 	var/dmg = FALSE
 
@@ -615,15 +615,15 @@
 		last_damage_data = create_cause_data("[initial(V.name)] roadkill", driver)
 		log_attack("[key_name(src)] was rammed by [key_name(driver)] with [V].")
 		if(faction == driver.faction)
-			msg_admin_ff("[key_name(driver)] rammed and damaged member of allied faction [key_name(src)] with \the [V] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[driver.x];Y=[driver.y];Z=[driver.z]'>JMP</a>) ([driver.client ? "<a href='?priv_msg=[driver.client.ckey]'>PM</a>" : "NO CLIENT"])")
+			msg_admin_ff("[key_name(driver)] rammed and damaged member of allied faction [key_name(src)] with \the [V] in [get_area(src)] [ADMIN_JMP(driver)] [ADMIN_PM(driver)]")
 	else
-		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].")	//to be able to determine whether vehicle was pushing friendlies
+		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].") //to be able to determine whether vehicle was pushing friendlies
 
 	return TRUE
 
 //-------------------------XENOS------------------------
 
-/mob/living/carbon/Xenomorph/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/mob/living/carbon/xenomorph/handle_vehicle_bump(obj/vehicle/multitile/V)
 
 	//whether xeno is knocked down
 	var/is_knocked_down = FALSE
@@ -635,17 +635,17 @@
 	var/momentum_penalty = FALSE
 
 	if((mob_size >= MOB_SIZE_IMMOBILE) && !is_mob_incapacitated() && !buckled)
-		if(!(V.vehicle_flags & VEHICLE_CLASS_HEAVY))	//heavy vehicles just don't give a damn
+		if(!(V.vehicle_flags & VEHICLE_CLASS_HEAVY)) //heavy vehicles just don't give a damn
 			var/dir_between = get_dir(src, V)
 			if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 				blocked = TRUE
 			//Check what dir they should be facing to be looking directly at the vehicle
-			else if(dir_between == dir)	//front hit (facing the vehicle)
+			else if(dir_between == dir) //front hit (facing the vehicle)
 				blocked = TRUE
-			else if(dir_between == reverse_dir[dir])	// rear hit (facing directly away from the vehicle)
+			else if(dir_between == reverse_dir[dir]) // rear hit (facing directly away from the vehicle)
 				takes_damage = TRUE
 			//side hit
-			else if(caste.caste_type == XENO_CASTE_QUEEN)	// queen blocks even with sides
+			else if(caste.caste_type == XENO_CASTE_QUEEN) // queen blocks even with sides
 				blocked = TRUE
 			else
 				momentum_penalty = TRUE
@@ -739,16 +739,16 @@
 	return FALSE
 
 //BURROWER
-/mob/living/carbon/Xenomorph/Burrower/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/mob/living/carbon/xenomorph/burrower/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(burrow)
 		return TRUE
 	else
 		return . = ..()
 
 //DEFENDER
-/mob/living/carbon/Xenomorph/Defender/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/mob/living/carbon/xenomorph/defender/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(fortify)
-		if(V.vehicle_flags & VEHICLE_CLASS_WEAK)	//defenders being able to completely block armored vehicles by crawling into a boulder is ridiculous
+		if(V.vehicle_flags & VEHICLE_CLASS_WEAK) //defenders being able to completely block armored vehicles by crawling into a boulder is ridiculous
 			visible_message(SPAN_DANGER("[src] digs it's claws into the ground, anchoring itself in place and halting [V] in it's tracks!"),
 			SPAN_DANGER("You dig your claws into the ground, stopping [V] in it's tracks!"))
 			return FALSE
@@ -778,11 +778,11 @@
 
 //CRUSHER CHARGE COLLISION
 //Crushers going top speed can charge into & move vehicles with broken/without locmotion module
-/obj/vehicle/multitile/Collided(var/atom/A)
+/obj/vehicle/multitile/Collided(atom/A)
 	. = ..()
 
-	if(isXenoCrusher(A))
-		var/mob/living/carbon/Xenomorph/Crusher/C = A
+	if(iscrusher(A))
+		var/mob/living/carbon/xenomorph/crusher/C = A
 		if(!C.throwing)
 			return
 		var/do_move = TRUE

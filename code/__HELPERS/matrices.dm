@@ -107,8 +107,22 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 /proc/color_matrix_identity()
 	return list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0,0,0)
 
+//word of warning: using a matrix like this as a color value will simplify it back to a string after being set
+/proc/color_hex2color_matrix(string)
+	var/length = length(string)
+	if((length != 7 && length != 9) || length != length_char(string))
+		return color_matrix_identity()
+	var/r = hex2num(copytext(string, 2, 4))/255
+	var/g = hex2num(copytext(string, 4, 6))/255
+	var/b = hex2num(copytext(string, 6, 8))/255
+	var/a = 1
+	if(length == 9)
+		a = hex2num(copytext(string, 8, 10))/255
+	if(!isnum(r) || !isnum(g) || !isnum(b) || !isnum(a))
+		return color_matrix_identity()
+	return list(r,0,0,0, 0,g,0,0, 0,0,b,0, 0,0,0,a, 0,0,0,0)
 
-///Converts a hex colour string to a colour matrix.
+///Converts a hex color string to a color matrix.
 /proc/color_matrix_from_string(string)
 	if(!string || !istext(string))
 		return color_matrix_identity()
@@ -207,9 +221,9 @@ round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), ro
 
 
 /**Creates a matrix to re-paint a sprite, replacing pure red, green, and blue with 3 different shades. Doesn't work with mixed tones of RGB or whites or greys
--- *must* be pure. R/G/B 255 becomes the new colour, darker shades become correspondingly darker.
+-- *must* be pure. R/G/B 255 becomes the new color, darker shades become correspondingly darker.
 The arg is a list of hex colours, for ex "list("#d4c218", "#b929f7", "#339933"".
-if you want variations of the same colour, color_matrix_recolor_red() is simpler.**/
+if you want variations of the same color, color_matrix_recolor_red() is simpler.**/
 /proc/color_matrix_recolor_rgb(list/replacement_shades)
 	var/list/final_matrix = color_matrix_identity()
 
@@ -220,7 +234,7 @@ if you want variations of the same colour, color_matrix_recolor_red() is simpler
 
 	for(var/I in 1 to 3)
 		if(!istext(replacement_shades[I]))
-			CRASH("color_matrix_recolor_rgb() called with a replacement colour that wasn't a hex string.")
+			CRASH("color_matrix_recolor_rgb() called with a replacement color that wasn't a hex string.")
 
 		var/list/current_replacer = color_matrix_from_string(replacement_shades[I])
 		final_matrix[1 + spacer] = current_replacer[1]
@@ -231,10 +245,10 @@ if you want variations of the same colour, color_matrix_recolor_red() is simpler
 	return final_matrix
 
 
-/**Creates a matrix to re-paint a sprite, replacing shades of red with corresponding shades of a new colour. In the base sprite, Hue must always be pure red.
-Saturation and Lightness can be anything. Arg is a hex string for a colour. Proc is by Lummox JR, www.byond.com/forum/post/2209545
+/**Creates a matrix to re-paint a sprite, replacing shades of red with corresponding shades of a new color. In the base sprite, Hue must always be pure red.
+Saturation and Lightness can be anything. Arg is a hex string for a color. Proc is by Lummox JR, www.byond.com/forum/post/2209545
 color_matrix_recolor_rgb is more complex, but gives more precise control over the palette, at least if using 3 or fewer colours.**/
-proc/color_matrix_recolor_red(new_color)
+/proc/color_matrix_recolor_red(new_color)
 	var/image/I = new
 	var/list/M
 	// create the matrix via short form

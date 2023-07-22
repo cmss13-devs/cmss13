@@ -9,12 +9,12 @@
 	icon_state = "cell"
 	item_state = "cell"
 
-	force = 5.0
-	throwforce = 5.0
+	force = 5
+	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
-	var/charge = 1000	// note %age conveted to actual charge in New
+	var/charge = 1000 // note %age conveted to actual charge in New
 	var/maxcharge = 1000
 	var/minor_fault = 0 //If not 100% reliable, it will build up faults.
 	matter = list("metal" = 700, "glass" = 50)
@@ -34,23 +34,23 @@
 	else
 		overlays += image('icons/obj/structures/machinery/power.dmi', "cell-o1")
 
-/obj/item/cell/proc/percent()		// return % charge of cell
+/obj/item/cell/proc/percent() // return % charge of cell
 	return 100.0*charge/maxcharge
 
 /obj/item/cell/proc/fully_charged()
 	return (charge == maxcharge)
 
 // use power from a cell
-/obj/item/cell/proc/use(var/amount)
-	if(charge < amount)	return 0
+/obj/item/cell/proc/use(amount)
+	if(charge < amount) return 0
 	charge = (charge - amount)
 	return 1
 
 // recharge the cell
-/obj/item/cell/proc/give(var/amount)
-	if(maxcharge < amount)	return 0
+/obj/item/cell/proc/give(amount)
+	if(maxcharge < amount) return 0
 	var/amount_used = min(maxcharge-charge,amount)
-	if(crit_fail)	return 0
+	if(crit_fail) return 0
 	if(!prob(reliability))
 		minor_fault++
 		if(prob(minor_fault))
@@ -124,7 +124,7 @@
 /obj/item/cell/secborg
 	name = "\improper security borg rechargeable D battery"
 
-	maxcharge = 600	//600 max charge / 100 charge per shot = six shots
+	maxcharge = 600 //600 max charge / 100 charge per shot = six shots
 	matter = list("metal" = 700, "glass" = 40)
 
 /obj/item/cell/secborg/empty
@@ -179,8 +179,9 @@
 	charge = 30000
 	maxcharge = 30000
 	matter = list("metal" = 700, "glass" = 80)
-	use()
-		return 1
+
+/obj/item/cell/infinite/use()
+	return 1
 
 /obj/item/cell/potato
 	name = "\improper potato battery"

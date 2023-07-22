@@ -2,7 +2,9 @@ SUBSYSTEM_DEF(statpanels)
 	name = "Stat Panels"
 	wait = 0.4 SECONDS
 	init_order = SS_INIT_STATPANELS
+	init_stage = INITSTAGE_EARLY
 	priority = SS_PRIORITY_STATPANEL
+	flags = SS_NO_INIT
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 	var/list/currentrun = list()
 	var/list/global_data
@@ -25,10 +27,10 @@ SUBSYSTEM_DEF(statpanels)
 		if(SSmapping.next_map_configs)
 			cached = SSmapping.next_map_configs[GROUND_MAP]
 		global_data = list(
-			"Map: [SSmapping.configs[GROUND_MAP]?.map_name || "Loading..."]",
+			"Map: [SSmapping.configs?[GROUND_MAP]?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached?.map_name]" : null,
-//			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]", // this is commented because we don't have it and we should have it instead of using debug DB - be the hero of today
-//          "Round Time: [ROUND_TIME]",
+			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
+//   "Round Time: [ROUND_TIME]",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
 			"Round Time: [duration2text()]",
 			"Operation Time: [worldtime2text()]",
@@ -63,6 +65,12 @@ SUBSYSTEM_DEF(statpanels)
 
 			if(target.stat_tab == "Tickets" && num_fires % default_wait == 0)
 				set_tickets_tab(target)
+
+			if(!length(GLOB.sdql2_queries) && ("SDQL2" in target.panel_tabs))
+				target.stat_panel.send_message("remove_sdql2")
+
+			else if(length(GLOB.sdql2_queries) && (target.stat_tab == "SDQL2" || !("SDQL2" in target.panel_tabs)) && (num_fires % default_wait == 0))
+				set_SDQL2_tab(target)
 
 		if(target.mob)
 			var/mob/target_mob = target.mob
@@ -133,7 +141,7 @@ SUBSYSTEM_DEF(statpanels)
 		if(turf_content in overrides)
 			continue
 		//if(turf_content.IsObscured()) // requires click under flags to work
-		//	continue
+		// continue
 		atoms_to_display += turf_content
 
 	/// Set the atoms we're meant to display
@@ -190,7 +198,7 @@ SUBSYSTEM_DEF(statpanels)
 		list("World Time:", "[world.time]"),
 		list("Globals:", GLOB.stat_entry(), "\ref[GLOB]"),
 		list("[config]:", config.stat_entry(), "\ref[config]"),
-//		list("Byond:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)) (Internal Tick Usage: [round(MAPTICK_LAST_INTERNAL_TICK_USAGE,0.1)]%)"),
+// list("Byond:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)) (Internal Tick Usage: [round(MAPTICK_LAST_INTERNAL_TICK_USAGE,0.1)]%)"),
 		list("Byond:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)"),
 		list("Master Controller:", Master.stat_entry(), "\ref[Master]"),
 		list("Failsafe Controller:", Failsafe.stat_entry(), "\ref[Failsafe]"),
@@ -198,6 +206,17 @@ SUBSYSTEM_DEF(statpanels)
 	)
 	for(var/datum/controller/subsystem/sub_system as anything in Master.subsystems)
 		mc_data[++mc_data.len] = list("\[[sub_system.state_letter()]][sub_system.name]", sub_system.stat_entry(), text_ref(sub_system))
+
+/// Sets the current tab to the SDQL tab
+/datum/controller/subsystem/statpanels/proc/set_SDQL2_tab(client/target)
+	var/list/sdql2_initial = list()
+	//sdql2_initial[length(sdql2_initial)++] = list("", "Access Global SDQL2 List", REF(GLOB.sdql2_vv_statobj))
+	var/list/sdql2_querydata = list()
+	//for(var/datum/sdql2_query/query as anything in GLOB.sdql2_queries)
+		//sdql2_querydata = query.generate_stat()
+
+	sdql2_initial += sdql2_querydata
+	target.stat_panel.send_message("update_sdql2", sdql2_initial)
 
 ///immediately update the active statpanel tab of the target client
 /datum/controller/subsystem/statpanels/proc/immediate_send_stat_data(client/target)
@@ -246,6 +265,11 @@ SUBSYSTEM_DEF(statpanels)
 		set_tickets_tab(target)
 		return TRUE
 
+	if(!length(GLOB.sdql2_queries) && ("SDQL2" in target.panel_tabs))
+		target.stat_panel.send_message("remove_sdql2")
+
+	else if(length(GLOB.sdql2_queries) && target.stat_tab == "SDQL2")
+		set_SDQL2_tab(target)
 
 /// Stat panel window declaration
 /client/var/datum/tgui_window/stat_panel
@@ -314,8 +338,8 @@ SUBSYSTEM_DEF(statpanels)
 	if(actively_tracking)
 		stop_turf_tracking()
 	var/static/list/connections = list(
-		COMSIG_MOVABLE_MOVED = .proc/on_mob_move,
-		COMSIG_MOB_LOGOUT = .proc/on_mob_logout,
+		COMSIG_MOVABLE_MOVED = PROC_REF(on_mob_move),
+		COMSIG_MOB_LOGOUT = PROC_REF(on_mob_logout),
 	)
 	AddComponent(/datum/component/connect_mob_behalf, parent, connections)
 	actively_tracking = TRUE

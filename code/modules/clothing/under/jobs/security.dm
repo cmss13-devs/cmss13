@@ -1,8 +1,8 @@
 /*
  * Contains:
- *		Security
- *		Detective
- *		Head of Security
+ * Security
+ * Detective
+ * Head of Security
  */
 
 /*

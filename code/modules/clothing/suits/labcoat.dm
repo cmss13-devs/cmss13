@@ -19,7 +19,7 @@
 
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
-		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/baton,
 		/obj/item/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
@@ -47,21 +47,21 @@
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 	var/buttoned = TRUE
 
-	verb/toggle()
-		set name = "Toggle Labcoat Buttons"
-		set category = "Object"
-		set src in usr
+/obj/item/clothing/suit/storage/labcoat/verb/toggle()
+	set name = "Toggle Labcoat Buttons"
+	set category = "Object"
+	set src in usr
 
-		if(!usr.canmove || usr.stat || usr.is_mob_restrained())
-			return 0
+	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
+		return 0
 
-		if(src.buttoned == TRUE)
-			src.icon_state = "[initial(icon_state)]_open"
-			src.buttoned = FALSE
-		else
-			src.icon_state = initial(icon_state) //doesn't need to be a string
-			src.buttoned = TRUE
-		update_clothing_icon()
+	if(src.buttoned == TRUE)
+		src.icon_state = "[initial(icon_state)]_open"
+		src.buttoned = FALSE
+	else
+		src.icon_state = initial(icon_state) //doesn't need to be a string
+		src.buttoned = TRUE
+	update_clothing_icon()
 
 /obj/item/clothing/suit/storage/labcoat/red
 	name = "red labcoat"
@@ -159,7 +159,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	blood_overlay_type = "armor"
 	siemens_coefficient = 0.7
 	valid_accessory_slots = list(ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
@@ -170,7 +170,7 @@
 /obj/item/clothing/suit/storage/snow_suit/synth
 	name = "synthetic's snow suit"
 	desc = "A snow suit designed for keeping synthetic units within acceptable temperature ranges in extremely cold environments to prevent power supply inefficiency. Due to advancements made in synthetic insulation, they are not required for most cold environments."
-	armor_melee = CLOTHING_ARMOR_NONE //no free armour for synths
+	armor_melee = CLOTHING_ARMOR_NONE //no free armor for synths
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
 	armor_energy = CLOTHING_ARMOR_NONE
@@ -180,7 +180,7 @@
 		/obj/item/weapon/gun/,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
-		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/baton,
 		/obj/item/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
@@ -213,19 +213,20 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-	allowed = list(/obj/item/weapon/gun,
+	allowed = list(
+		/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/ammo_magazine,
 		/obj/item/explosive/grenade,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
-		/obj/item/storage/backpack/general_belt,
 		/obj/item/storage/large_holster/machete,
-		/obj/item/weapon/melee/baseballbat,
-		/obj/item/weapon/melee/baseballbat/metal,
+		/obj/item/weapon/baseballbat,
+		/obj/item/weapon/baseballbat/metal,
 		/obj/item/device/motiondetector,
-		/obj/item/device/walkman)
+		/obj/item/device/walkman,
+	)
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/Initialize()
 	. = ..()
@@ -276,20 +277,25 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	blood_overlay_type = "armor"
 	siemens_coefficient = 0.7
-	allowed = list(/obj/item/weapon/gun,
+	allowed = list(
+		/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/ammo_magazine,
 		/obj/item/explosive/grenade,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
-		/obj/item/storage/backpack/general_belt,
 		/obj/item/storage/large_holster/machete,
-		/obj/item/weapon/melee/baseballbat,
-		/obj/item/weapon/melee/baseballbat/metal,
+		/obj/item/weapon/baseballbat,
+		/obj/item/weapon/baseballbat/metal,
 		/obj/item/device/motiondetector,
-		/obj/item/device/walkman)
+		/obj/item/device/walkman,
+	)
 
+/obj/item/clothing/suit/storage/snow_suit/liaison
+	name = "liaison's winter coat"
+	desc = "A Weyland-Yutani winter coat. Only the best comfort for the liaison in a cold environment."
+	icon_state = "snowsuit_liaison"

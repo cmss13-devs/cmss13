@@ -8,8 +8,8 @@
 	desc = "A little medical robot. He looks somewhat underwhelmed."
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "medibot0"
-	density = 0
-	anchored = 0
+	density = FALSE
+	anchored = FALSE
 	health = 20
 	maxhealth = 20
 	req_access =list(ACCESS_MARINE_MEDBAY)
@@ -50,21 +50,30 @@
 
 
 
-/obj/structure/machinery/bot/medbot/New()
-	..()
+/obj/structure/machinery/bot/medbot/Initialize(mapload, ...)
+	. = ..()
 	src.icon_state = "medibot[src.on]"
 
-	spawn(4)
-		if(src.skin)
-			src.overlays += image('icons/obj/structures/machinery/aibots.dmi', "medskin_[src.skin]")
-
-		src.botcard = new /obj/item/card/id(src)
-		if(isnull(src.botcard_access) || (src.botcard_access.len < 1))
-			var/datum/job/J = RoleAuthority ? RoleAuthority.roles_by_path[/datum/job/civilian/doctor] : new /datum/job/civilian/doctor
-			botcard.access = J.get_access()
-		else
-			src.botcard.access = src.botcard_access
+	addtimer(CALLBACK(src, PROC_REF(setup_bot)), 0.4 SECONDS)
 	start_processing()
+
+/obj/structure/machinery/bot/medbot/proc/setup_bot()
+	if(src.skin)
+		src.overlays += image('icons/obj/structures/machinery/aibots.dmi', "medskin_[src.skin]")
+
+	src.botcard = new /obj/item/card/id(src)
+	if(isnull(src.botcard_access) || (src.botcard_access.len < 1))
+		var/datum/job/J = RoleAuthority ? RoleAuthority.roles_by_path[/datum/job/civilian/doctor] : new /datum/job/civilian/doctor
+		botcard.access = J.get_access()
+	else
+		src.botcard.access = src.botcard_access
+
+/obj/structure/machinery/bot/medbot/Destroy()
+	botcard_access = null
+	patient = null
+	oldpatient = null
+	path = null
+	return ..()
 
 /obj/structure/machinery/bot/medbot/turn_on()
 	. = ..()
@@ -239,7 +248,7 @@
 			src.speak(message)
 
 		for (var/mob/living/carbon/C in view(7,src)) //Time to find a patient!
-			if ((C.stat == 2) || !isHumanStrict(C))
+			if ((C.stat == 2) || !ishuman_strict(C))
 				continue
 
 			if ((C == src.oldpatient) && (world.time < src.last_found + 100))
@@ -254,9 +263,9 @@
 					src.speak(message)
 					src.visible_message("<b>[src]</b> points at [C.name]!")
 					src.last_newpatient_speak = world.time
-//					if(declare_treatment)
-//						var/area/location = get_area(src)
-//						broadcast_medical_hud_message("[src.name] is treating <b>[C]</b> in <b>[location]</b>", src)
+// if(declare_treatment)
+// var/area/location = get_area(src)
+// broadcast_medical_hud_message("[src.name] is treating <b>[C]</b> in <b>[location]</b>", src)
 				break
 			else
 				continue
@@ -420,12 +429,12 @@
 			src.currently_healing = 0
 			return
 
-//	src.speak(reagent_id)
+// src.speak(reagent_id)
 	reagent_id = null
 	return
 
 
-/obj/structure/machinery/bot/medbot/proc/speak(var/message)
+/obj/structure/machinery/bot/medbot/proc/speak(message)
 	if((!src.on) || (!message))
 		return
 	visible_message("[src] beeps, \"[message]\"")
@@ -468,10 +477,10 @@
 
 
 /*
- *	Medbot Assembly -- Can be made out of all three medkits.
+ * Medbot Assembly -- Can be made out of all three medkits.
  */
 
-/obj/item/storage/firstaid/attackby(var/obj/item/robot_parts/S, mob/user as mob)
+/obj/item/storage/firstaid/attackby(obj/item/robot_parts/S, mob/user as mob)
 
 	if ((!istype(S, /obj/item/robot_parts/arm/l_arm)) && (!istype(S, /obj/item/robot_parts/arm/r_arm)))
 		..()

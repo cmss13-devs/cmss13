@@ -1,10 +1,10 @@
 /datum/xeno_mutator/hedgehog
 	name = "STRAIN: Ravager - Hedgehog"
-	description = "You build up shards internally over time and also when taking damage that increase your armor's resilience. You can use these to power several abilities, offensive and defensive in nature."
-	flavor_description = "In the midst of the Chaos of the battlefield, there is also opportunity."
+	description = "You lose your empower, charge, scissor cut and some slash damage, for a bit more explosive resistance, immunity to small explosions, and you gain several new abilities that allow you to become a spiky tank. You build up shards internally over time and also when taking damage that increase your armor's resilience. You can use these shards to power three new abilities: Spike Shield, which gives you a temporary shield that spits bone shards around you when damaged, Fire Spikes, which launches spikes at your target that slows them and does extra damage if they move, and finally, Spike Shed, which launches spikes all around yourself and gives you a temporary speed boost as an escape plan at the cost of all your stored shards and being unable to gain shards for thirty seconds."
+	flavor_description = "They will be of iron will and steely muscle. In great armor shall they be clad, and with the mightiest spikes will they be armed."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list(XENO_CASTE_RAVAGER)  	// Only Ravager.
+	caste_whitelist = list(XENO_CASTE_RAVAGER) // Only Ravager.
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/onclick/empower,
 		/datum/action/xeno_action/activable/pounce/charge,
@@ -23,13 +23,13 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Ravager/ravager = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/ravager/ravager = mutator_set.xeno
 
 	ravager.mutation_type = RAVAGER_HEDGEHOG
 	ravager.plasma_max = 0
 	ravager.small_explosives_stun = FALSE
 	ravager.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
-	ravager.speed_modifier += XENO_SPEED_SLOWMOD_TIER_8
+	ravager.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 
 	apply_behavior_holder(ravager)
 
@@ -43,11 +43,12 @@
 
 	// Shard config
 	var/max_shards = 300
-	var/shard_gain_onlife = 10
-	var/shards_per_projectile = 20
+	var/shard_gain_onlife = 5
+	var/shards_per_projectile = 10
+	var/shards_per_slash = 15
 	var/armor_buff_per_fifty_shards = 2.50
-	var/shard_lock_duration = 300
-	var/shard_lock_speed_mod = 0.85
+	var/shard_lock_duration = 150
+	var/shard_lock_speed_mod = 0.45
 
 	// Shard state
 	var/shards = 0
@@ -73,7 +74,7 @@
 
 	shards = 0
 	shards_locked = TRUE
-	addtimer(CALLBACK(src, .proc/unlock_shards), shard_lock_duration)
+	addtimer(CALLBACK(src, PROC_REF(unlock_shards)), shard_lock_duration)
 
 /datum/behavior_delegate/ravager_hedgehog/proc/unlock_shards()
 
@@ -109,9 +110,25 @@
 	bound_xeno.armor_modifier += armor_buff_count * armor_buff_per_fifty_shards
 	bound_xeno.recalculate_armor()
 	times_armor_buffed = armor_buff_count
+
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
+	var/percentage_shards = round((shards / max_shards) * 100, 10)
+	if(percentage_shards)
+		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_shards]")
 	return
+
+
+/datum/behavior_delegate/ravager_hedgehog/handle_death(mob/M)
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
 
 /datum/behavior_delegate/ravager_hedgehog/on_hitby_projectile()
 	if (!shards_locked)
 		shards = min(max_shards, shards + shards_per_projectile)
+	return
+
+/datum/behavior_delegate/ravager_hedgehog/melee_attack_additional_effects_self()
+	if (!shards_locked)
+		shards = min(max_shards, shards + shards_per_slash)
 	return

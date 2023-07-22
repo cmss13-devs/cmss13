@@ -96,7 +96,7 @@
 
 /datum/cas_fire_mission/proc/execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null)
 	if(initial_turf == null || check(linked_console) != FIRE_MISSION_ALL_GOOD)
-		return -1
+		return FIRE_MISSION_NOT_EXECUTABLE
 
 	var/relative_dir
 	for(var/mob/M in range(15, initial_turf))
@@ -110,8 +110,8 @@
 			ds_identifier = "DROPSHIP"
 
 		M.show_message( \
-			SPAN_HIGHDANGER("A [ds_identifier] FLIES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING GO [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
+			SPAN_HIGHDANGER("A [ds_identifier] FLIES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING GO [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)
 
 	// Xenos have time to react to the first message
@@ -128,8 +128,8 @@
 			ds_identifier = "DROPSHIP"
 
 		M.show_message( \
-			SPAN_HIGHDANGER("A [ds_identifier] FIRES TO YOUR [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING FIRE TO YOUR [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
+			SPAN_HIGHDANGER("A [ds_identifier] FIRES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING FIRE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
 		)
 
 	var/turf/current_turf = initial_turf
@@ -172,3 +172,61 @@
 		sleep(step_delay)
 	if(envelope)
 		envelope.change_current_loc(null)
+
+
+/**
+ * Used only in the simulation room, proper tracking is done in the add_user_to_tracking envelop.
+ * This shouldn't be used in any other procs.
+ */
+/datum/cas_fire_mission/proc/add_user_to_sim_tracking(mob/living/user, obj/effect/firemission_guidance/guidance)
+
+	var/mob/tracked_user = user
+	if(!tracked_user.client || !guidance)
+		return
+
+	tracked_user.reset_view(guidance)
+	if(!(user in guidance.users))
+		guidance.users += tracked_user
+
+// Used only in the simulator room for testing firemissions. Seemed better to just to copy here.
+/datum/cas_fire_mission/proc/simulate_execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, mob/living/user, direction = NORTH, steps = 12, step_delay = 3)
+	if(!initial_turf)
+		return FIRE_MISSION_NOT_EXECUTABLE
+
+	var/obj/effect/firemission_guidance/guidance = new()
+
+	guidance.forceMove(locate(initial_turf.x,initial_turf.y, initial_turf.z))
+
+	add_user_to_sim_tracking(user, guidance)
+	var/turf/current_turf = initial_turf
+	var/tally_step = steps / mission_length //how much shots we need before moving to next turf
+	var/next_step = tally_step //when we move to next turf
+	var/sx = 0
+	var/sy = 0 //perpendicular multiplication
+
+	switch(direction)
+		if(NORTH) //default direction
+			sx = 1
+			sy = 0
+		if(SOUTH)
+			sx = -1
+			sy = 0
+		if(EAST)
+			sx = 0
+			sy = -1
+		if(WEST)
+			sx = 0
+			sy = 1
+	for(var/step in 1 to steps)
+		if(step > next_step)
+			current_turf = get_step(current_turf,direction)
+			next_step += tally_step
+		var/datum/cas_fire_mission_record/item
+		for(item in records)
+			if(length(item.offsets) < step || item.offsets[step] == null || item.offsets[step] == "-")
+				continue
+			var/offset = item.offsets[step]
+			var/turf/shootloc = locate(current_turf.x + sx*offset, current_turf.y + sy*offset, current_turf.z)
+			item.weapon.open_simulated_fire_firemission(shootloc)
+			guidance.forceMove(locate(initial_turf.x,initial_turf.y + step, initial_turf.z))
+		sleep(step_delay)

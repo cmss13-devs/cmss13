@@ -6,12 +6,12 @@
 		return 0
 
 	if(stat == DEAD) //DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
-		blinded = 1
+		blinded = TRUE
 		silent = 0
 	else //ALIVE. LIGHTS ARE ON
 		if(health <= HEALTH_THRESHOLD_DEAD || (species.has_organ["brain"] && !has_brain()))
 			death(last_damage_data)
-			blinded = 1
+			blinded = TRUE
 			silent = 0
 			return 1
 
@@ -21,7 +21,7 @@
 					if(prob(3))
 						fake_attack(src)
 					if(!handling_hal)
-						INVOKE_ASYNC(src, /mob/living/carbon.proc/handle_hallucinations)
+						INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon, handle_hallucinations))
 
 				if(hallucination <= 2)
 					hallucination = 0
@@ -54,12 +54,12 @@
 				new /datum/effects/crit/human(src)
 
 		if(knocked_out)
-			blinded = 1
-			stat = UNCONSCIOUS
+			blinded = TRUE
+			set_stat(UNCONSCIOUS)
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
 		else if(sleeping)
-			speech_problem_flag = 1
+			speech_problem_flag = TRUE
 			if(regular_update)
 				handle_dreams()
 				apply_damage(-3, HALLOSS)
@@ -67,11 +67,11 @@
 					if((mind.active && client != null) || immune_to_ssd) //This also checks whether a client is connected, if not, sleep is not reduced.
 						sleeping = max(sleeping - 1, 0)
 				if(prob(2) && health && !hal_crit)
-					addtimer(CALLBACK(src, .proc/emote, "snore"))
-			blinded = 1
-			stat = UNCONSCIOUS
+					addtimer(CALLBACK(src, PROC_REF(emote), "snore"))
+			blinded = TRUE
+			set_stat(UNCONSCIOUS)
 		else
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 
 		if(in_stasis == STASIS_IN_CRYO_CELL) blinded = TRUE //Always blinded while in stasisTUBES
 
@@ -79,19 +79,19 @@
 			return
 		//Eyes
 		if(!species.has_organ["eyes"]) //Presumably if a species has no eyes, they see via something else.
-			eye_blind = 0
+			SetEyeBlind(0)
 			if(stat == CONSCIOUS) //even with 'eye-less' vision, unconsciousness makes you blind
-				blinded = 0
-			eye_blurry = 0
-		else if(!has_eyes())           //Eyes cut out? Permablind.
-			eye_blind =  1
-			blinded =    1
-			eye_blurry = 1
-		else if(eye_blind)		       //Blindness, heals slowly over time
-			eye_blind =  max(eye_blind - 1, 0)
-			blinded =    1
-		else if(eye_blurry)	           //Blurry eyes heal slowly
-			eye_blurry = max(eye_blurry - 1, 0)
+				blinded = FALSE
+			SetEyeBlur(0)
+		else if(!has_eyes()) //Eyes cut out? Permablind.
+			SetEyeBlind(1)
+			blinded = 1
+			// we don't need to blur vision if they are blind...
+		else if(eye_blind) //Blindness, heals slowly over time
+			ReduceEyeBlind(1)
+			blinded = TRUE
+		else if(eye_blurry) //Blurry eyes heal slowly
+			ReduceEyeBlur(1)
 
 		//Ears
 		if(ear_deaf) //Deafness, heals slowly over time
@@ -122,17 +122,17 @@
 		handle_statuses()
 
 		if(paralyzed)
-			speech_problem_flag = 1
+			speech_problem_flag = TRUE
 			apply_effect(1, WEAKEN)
 			silent = 1
-			blinded = 1
+			blinded = TRUE
 			use_me = 0
 			pain.apply_pain_reduction(PAIN_REDUCTION_FULL)
 			paralyzed--
 
 		if(drowsyness)
 			drowsyness = max(0,drowsyness - 2)
-			eye_blurry = max(2, eye_blurry)
+			EyeBlur(2)
 			if(drowsyness > 10 && prob(5))
 				sleeping++
 				apply_effect(5, PARALYZE)

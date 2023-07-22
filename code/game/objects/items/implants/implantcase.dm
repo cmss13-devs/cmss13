@@ -20,7 +20,7 @@
 
 /obj/item/implantcase/attackby(obj/item/I as obj, mob/user as mob)
 	..()
-	if (istype(I, /obj/item/tool/pen))
+	if (HAS_TRAIT(I, TRAIT_TOOL_PEN))
 		var/t = stripped_input(user, "What would you like the label to be?", text("[]", src.name), null)
 		if (user.get_active_hand() != I)
 			return
@@ -31,8 +31,8 @@
 		else
 			src.name = "Glass Case"
 	else if(istype(I, /obj/item/reagent_container/syringe))
-		if(!src.imp)	return
-		if(!src.imp.allow_reagents)	return
+		if(!src.imp) return
+		if(!src.imp.allow_reagents) return
 		if(src.imp.reagents.total_volume >= src.imp.reagents.maximum_volume)
 			to_chat(user, SPAN_DANGER("[src] is full."))
 		else

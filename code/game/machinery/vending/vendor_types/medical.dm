@@ -12,7 +12,7 @@
 	hackable = TRUE
 
 	vendor_theme = VENDOR_THEME_COMPANY
-	vend_delay = 5
+	vend_delay = 0.5 SECONDS
 
 	var/datum/health_scan/last_health_display
 
@@ -24,7 +24,6 @@
 		/obj/item/reagent_container/hypospray/autoinjector/inaprovaline,
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane,
 		/obj/item/reagent_container/hypospray/autoinjector/oxycodone,
-		/obj/item/reagent_container/hypospray/autoinjector/quickclot,
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord,
 		/obj/item/reagent_container/hypospray/autoinjector/emergency,
@@ -62,7 +61,7 @@
 	if(healthscan)
 		. += SPAN_NOTICE("The [src.name] offers assisted medical scan, for ease of usage with minimal training. Present the target in front of the scanner to scan.")
 
-/obj/structure/machinery/cm_vending/sorted/medical/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/machinery/cm_vending/sorted/medical/attackby(obj/item/I, mob/user)
 	if(stat == WORKING && LAZYLEN(chem_refill) && (istype(I, /obj/item/reagent_container/hypospray/autoinjector) || istype(I, /obj/item/reagent_container/glass/bottle))) // only if we are completely fine and working
 		if(!hacked)
 			if(!allowed(user))
@@ -131,11 +130,11 @@
 		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = TRUE)
 		return
 
-/obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(scale)
 	listed_products = list(
 		list("FIELD SUPPLIES", -1, null, null),
-		list("Advanced Burn Kit", round(scale * 7), /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
-		list("Advanced Trauma Kit", round(scale * 7), /obj/item/stack/medical/advanced/bruise_pack, VENDOR_ITEM_REGULAR),
+		list("Burn Kit", round(scale * 7), /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
+		list("Trauma Kit", round(scale * 7), /obj/item/stack/medical/advanced/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Ointment", round(scale * 7), /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Roll of Gauze", round(scale * 7), /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Splints", round(scale * 7), /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
@@ -147,7 +146,6 @@
 		list("Autoinjector (Inaprovaline)", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Kelotane)", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/kelotane, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Oxycodone)", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/oxycodone, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (QuickClot)", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/quickclot, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tramadol, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tricord)", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tricord, VENDOR_ITEM_REGULAR),
 
@@ -156,7 +154,7 @@
 		list("Bottle (Dylovene)", round(scale * 5), /obj/item/reagent_container/glass/bottle/antitoxin, VENDOR_ITEM_REGULAR),
 		list("Bottle (Dexalin)", round(scale * 5), /obj/item/reagent_container/glass/bottle/dexalin, VENDOR_ITEM_REGULAR),
 		list("Bottle (Inaprovaline)", round(scale * 5), /obj/item/reagent_container/glass/bottle/inaprovaline, VENDOR_ITEM_REGULAR),
-		list("Bottle (Kelotane)", round(scale * 5), 	/obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
+		list("Bottle (Kelotane)", round(scale * 5), /obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
 		list("Bottle (Oxycodone)", round(scale * 5), /obj/item/reagent_container/glass/bottle/oxycodone, VENDOR_ITEM_REGULAR),
 		list("Bottle (Peridaxon)", round(scale * 5), /obj/item/reagent_container/glass/bottle/peridaxon, VENDOR_ITEM_REGULAR),
 		list("Bottle (Tramadol)", round(scale * 5), /obj/item/reagent_container/glass/bottle/tramadol, VENDOR_ITEM_REGULAR),
@@ -168,7 +166,6 @@
 		list("Pill Bottle (Inaprovaline)", round(scale * 3), /obj/item/storage/pill_bottle/inaprovaline, VENDOR_ITEM_REGULAR),
 		list("Pill Bottle (Kelotane)", round(scale * 3), /obj/item/storage/pill_bottle/kelotane, VENDOR_ITEM_REGULAR),
 		list("Pill Bottle (Peridaxon)", round(scale * 2), /obj/item/storage/pill_bottle/peridaxon, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (QuickClot)", round(scale * 2), /obj/item/storage/pill_bottle/quickclot, VENDOR_ITEM_REGULAR),
 		list("Pill Bottle (Tramadol)", round(scale * 3), /obj/item/storage/pill_bottle/tramadol, VENDOR_ITEM_REGULAR),
 
 		list("MEDICAL UTILITIES", -1, null, null),
@@ -198,17 +195,17 @@
 		/obj/item/reagent_container/glass/bottle/oxycodone,
 		/obj/item/reagent_container/glass/bottle/peridaxon,
 		/obj/item/reagent_container/glass/bottle/tramadol,
-		)
+	)
 	stack_refill = null
 
-/obj/structure/machinery/cm_vending/sorted/medical/chemistry/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry/populate_product_list(scale)
 	listed_products = list(
 		list("LIQUID BOTTLES", -1, null, null),
 		list("Bicaridine Bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/bicaridine, VENDOR_ITEM_REGULAR),
 		list("Dylovene Bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/antitoxin, VENDOR_ITEM_REGULAR),
 		list("Dexalin Bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/dexalin, VENDOR_ITEM_REGULAR),
 		list("Inaprovaline Bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/inaprovaline, VENDOR_ITEM_REGULAR),
-		list("Kelotane Bottle", round(scale * 5), 	/obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
+		list("Kelotane Bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
 		list("Oxycodone Bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/oxycodone, VENDOR_ITEM_REGULAR),
 		list("Peridaxon Bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/peridaxon, VENDOR_ITEM_REGULAR),
 		list("Tramadol Bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/tramadol, VENDOR_ITEM_REGULAR),
@@ -248,10 +245,10 @@
 	stack_refill = list(
 		/obj/item/stack/medical/ointment,
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint
+		/obj/item/stack/medical/splint,
 	)
 
-/obj/structure/machinery/cm_vending/sorted/medical/marinemed/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/populate_product_list(scale)
 	listed_products = list(
 		list("AUTOINJECTORS", -1, null, null),
 		list("First-Aid Autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
@@ -275,7 +272,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood
 	name = "\improper MM Blood Dispenser"
-	desc = "Marine Med brand Blood Pack Dispensary"
+	desc = "The Marine Med Brand Blood Pack Dispensary is the premier, top-of-the-line blood dispenser of 2105! Get yours today!" //Don't update this year, the joke is it's old.
 	icon_state = "blood"
 	wrenchable = TRUE
 	hackable = TRUE
@@ -297,7 +294,7 @@
 	chem_refill = null
 	stack_refill = null
 
-/obj/structure/machinery/cm_vending/sorted/medical/blood/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/medical/blood/populate_product_list(scale)
 	return
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/antag
@@ -308,7 +305,7 @@
 	name = "\improper NanoMed"
 	desc = "Wall-mounted Medical Equipment Dispenser."
 	icon_state = "wallmed"
-	vend_delay = 7
+	vend_delay = 0.7 SECONDS
 
 	req_access = list()
 
@@ -334,12 +331,24 @@
 		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless
+		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
+	)
+	stack_refill = list(
+		/obj/item/stack/medical/bruise_pack,
+		/obj/item/stack/medical/splint,
+		/obj/item/stack/medical/ointment,
+	)
+
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited
+	desc = "Wall-mounted Medical Equipment Dispenser. This version is more limited than standard USCM NanoMeds."
+
+	chem_refill = list(
+		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
 	)
 	stack_refill = list(
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/stack/medical/ointment,
-		/obj/item/stack/medical/splint
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat
@@ -356,8 +365,8 @@
 		list("Health Analyzer", 8, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
 
 		list("FIELD SUPPLIES", -1, null, null),
-		list("Advanced Burn Kit", 8, /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
-		list("Advanced Trauma Kit", 8, /obj/item/stack/medical/advanced/bruise_pack, VENDOR_ITEM_REGULAR),
+		list("Burn Kit", 8, /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
+		list("Trauma Kit", 8, /obj/item/stack/medical/advanced/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Ointment", 8, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Roll of Gauze", 8, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Splints", 8, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR)
@@ -365,7 +374,7 @@
 	stack_refill = list(
 		/obj/item/stack/medical/ointment,
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint
+		/obj/item/stack/medical/splint,
 	)
 
 	unacidable = TRUE
@@ -373,7 +382,7 @@
 	wrenchable = FALSE
 	hackable = FALSE
 
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/populate_product_list(scale)
 	return
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/souto

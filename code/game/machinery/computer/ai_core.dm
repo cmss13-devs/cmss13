@@ -1,9 +1,9 @@
 /obj/structure/AIcore
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 	name = "AI core"
 	icon = 'icons/obj/structures/machinery/AI.dmi'
-	icon_state = "0"
+	icon_state = "hydra-off"
 	var/state = 0
 	var/obj/item/circuitboard/aicore/circuit = null
 	var/obj/item/device/mmi/brain = null
@@ -16,7 +16,7 @@
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					to_chat(user, SPAN_NOTICE(" You wrench the frame into place."))
-					anchored = 1
+					anchored = TRUE
 					state = 1
 			if(iswelder(P))
 				var/obj/item/tool/weldingtool/WT = P
@@ -37,7 +37,7 @@
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					to_chat(user, SPAN_NOTICE(" You unfasten the frame."))
-					anchored = 0
+					anchored = FALSE
 					state = 0
 			if(istype(P, /obj/item/circuitboard/aicore) && !circuit)
 				if(user.drop_held_item())
@@ -51,7 +51,7 @@
 				to_chat(user, SPAN_NOTICE(" You screw the circuit board into place."))
 				state = 2
 				icon_state = "2"
-			if(istype(P, /obj/item/tool/crowbar) && circuit)
+			if(HAS_TRAIT(P, TRAIT_TOOL_CROWBAR) && circuit)
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You remove the circuit board."))
 				state = 1
@@ -78,7 +78,7 @@
 						to_chat(user, SPAN_NOTICE("You add cables to the frame."))
 				return
 		if(3)
-			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
+			if(HAS_TRAIT(P, TRAIT_TOOL_WIRECUTTERS))
 				if (brain)
 					to_chat(user, "Get that brain out of there first")
 				else
@@ -121,7 +121,7 @@
 					to_chat(usr, "Added [mmi].")
 					icon_state = "3b"
 
-			if(istype(P, /obj/item/tool/crowbar) && brain)
+			if(HAS_TRAIT(P, TRAIT_TOOL_CROWBAR) && brain)
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You remove the brain."))
 				brain.forceMove(loc)
@@ -129,7 +129,7 @@
 				icon_state = "3"
 
 		if(4)
-			if(istype(P, /obj/item/tool/crowbar))
+			if(HAS_TRAIT(P, TRAIT_TOOL_CROWBAR))
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You remove the glass panel."))
 				state = 3
@@ -151,14 +151,14 @@
 /obj/structure/AIcore/deactivated
 	name = "Inactive AI"
 	icon = 'icons/obj/structures/machinery/AI.dmi'
-	icon_state = "ai-empty"
-	anchored = 1
+	icon_state = "hydra-off"
+	anchored = TRUE
 	state = 20//So it doesn't interact based on the above. Not really necessary.
 
-	attackby(var/obj/item/device/aicard/A as obj, var/mob/user as mob)
-		if(istype(A, /obj/item/device/aicard))//Is it?
-			A.transfer_ai("INACTIVE","AICARD",src,user)
-		return
+/obj/structure/AIcore/deactivated/attackby(obj/item/device/aicard/A as obj, mob/user as mob)
+	if(istype(A, /obj/item/device/aicard))//Is it?
+		A.transfer_ai("INACTIVE","AICARD",src,user)
+	return
 
 /*
 This is a good place for AI-related object verbs so I'm sticking it here.
@@ -166,7 +166,7 @@ If adding stuff to this, don't forget that an AI need to cancel_camera() wheneve
 That prevents a few funky behaviors.
 */
 //What operation to perform based on target, what ineraction to perform based on object used, target itself, user. The object used is src and calls this proc.
-/obj/item/proc/transfer_ai(var/choice as text, var/interaction as text, var/target, var/mob/U as mob)
+/obj/item/proc/transfer_ai(choice as text, interaction as text, target, mob/U as mob)
 	if(!src:flush)
 		switch(choice)
 			if("AICORE")//AI mob.

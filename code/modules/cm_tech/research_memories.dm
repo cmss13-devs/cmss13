@@ -20,7 +20,7 @@
 
 	return clue_categories
 
-/datum/research_objective_memory_interface/proc/get_objective(var/label, var/completed, var/instances, var/points_earned, var/custom_color = FALSE, var/custom_status = FALSE)
+/datum/research_objective_memory_interface/proc/get_objective(label, completed, instances, points_earned, custom_color = FALSE, custom_status = FALSE)
 	var/list/objective = list()
 	objective["label"] = label
 	objective["content_credits"] = (points_earned ? "([points_earned])" : "")

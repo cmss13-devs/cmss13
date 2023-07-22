@@ -1,9 +1,9 @@
 /* Cards
  * Contains:
- *		DATA CARD
- *		ID CARD
- *		FINGERPRINT CARD HOLDER
- *		FINGERPRINT CARD
+ * DATA CARD
+ * ID CARD
+ * FINGERPRINT CARD HOLDER
+ * FINGERPRINT CARD
  */
 
 
@@ -50,6 +50,7 @@
 	desc = "This card contains coordinates to the fabled Clown Planet. Handle with care."
 	function = "teleporter"
 	data = "Clown Land"
+	black_market_value = 50
 
 /*
  * ID CARDS
@@ -64,7 +65,8 @@
 	var/faction = FACTION_NEUTRAL
 	var/list/faction_group
 
-	var/registered_name = "Unknown" // The name registered_name on the card
+	/// The name registered_name on the card
+	var/registered_name = "Unknown"
 	var/registered_ref = null
 	var/registered_gid = 0
 	flags_equip_slot = SLOT_ID
@@ -72,15 +74,21 @@
 	var/blood_type = "\[UNSET\]"
 
 	//alt titles are handled a bit weirdly in order to unobtrusively integrate into existing ID system
-	var/assignment = null	//can be alt title or the actual job
-	var/rank = null			//actual job
-	var/paygrade = "ME1"  // Marine's paygrade
-	var/claimedgear = 1 // For medics and engineers to 'claim' a locker
+
+	/// can be alt title or the actual job
+	var/assignment = null
+	/// actual job
+	var/rank = null
+	/// Marine's paygrade
+	var/paygrade = "ME1"
+	/// For medics and engineers to 'claim' a locker
+	var/claimedgear = 1
 
 	var/list/uniform_sets = null
 	var/list/vended_items
 
-	var/pinned_on_uniform = TRUE //whether the id's onmob overlay only appear when wearing a uniform
+	/// whether the id's onmob overlay only appear when wearing a uniform
+	var/pinned_on_uniform = TRUE
 
 	var/modification_log = list()
 
@@ -94,7 +102,7 @@
 	user.visible_message("[user] shows you: [icon2html(src, viewers(user))] [name]: assignment: [assignment]")
 	src.add_fingerprint(user)
 
-/obj/item/card/id/proc/set_user_data(var/mob/living/carbon/human/H)
+/obj/item/card/id/proc/set_user_data(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 
@@ -103,7 +111,7 @@
 	registered_gid = H.gid
 	blood_type = H.blood_type
 
-/obj/item/card/id/proc/set_assignment(var/new_assignment)
+/obj/item/card/id/proc/set_assignment(new_assignment)
 	assignment = new_assignment
 	name = "[registered_name]'s ID Card ([assignment])"
 
@@ -200,14 +208,25 @@
 	icon_state = "pmc"
 	registered_name = "The Corporation"
 	assignment = "Corporate Mercenary"
-	New()
-		access = get_all_centcom_access()
-		..()
+
+/obj/item/card/id/pmc/New()
+	access = get_all_weyland_access()
+	..()
 
 /obj/item/card/id/pmc/ds
 	name = "\improper Corporate holo-badge"
 	desc = "It lists a callsign and a blood type. Issued to Whiteout protocol teams only."
 	icon_state = "ds"
+
+/obj/item/card/id/marshal
+	name = "\improper CMB marshal gold badge"
+	desc = "A coveted gold badge signifying that the wearer is one of the few CMB Marshals patroling the outer rim. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
+	icon_state = "cmbmar"
+
+/obj/item/card/id/deputy
+	name = "\improper CMB deputy silver badge"
+	desc = "The silver badge which represents that the wearer is a CMB Deputy. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
+	icon_state = "cmbdep"
 
 /obj/item/card/id/general
 	name = "general officer holo-badge"
@@ -215,8 +234,9 @@
 	icon_state = "general"
 	registered_name = "The USCM"
 	assignment = "General"
-	New()
-		access = get_all_centcom_access()
+
+/obj/item/card/id/general/New()
+	access = get_all_weyland_access()
 
 /obj/item/card/id/provost
 	name = "provost holo-badge"
@@ -224,8 +244,9 @@
 	icon_state = "provost"
 	registered_name = "Provost Office"
 	assignment = "Provost"
-	New()
-		access = get_all_centcom_access()
+
+/obj/item/card/id/provost/New()
+	access = get_all_weyland_access()
 
 /obj/item/card/id/syndicate
 	name = "agent card"
@@ -241,7 +262,7 @@
 	assignment = "Agent"
 	name = "[registered_name]'s ID Card ([assignment])"
 
-/obj/item/card/id/syndicate/afterattack(var/obj/item/O as obj, mob/user as mob, proximity)
+/obj/item/card/id/syndicate/afterattack(obj/item/O as obj, mob/user as mob, proximity)
 	if(!proximity) return
 	if(istype(O, /obj/item/card/id))
 		var/obj/item/card/id/I = O
@@ -308,9 +329,10 @@
 	item_state = "gold_id"
 	registered_name = "Captain"
 	assignment = "Captain"
-	New()
-		access = get_all_marine_access()
-		..()
+
+/obj/item/card/id/captains_spare/New()
+	access = get_all_marine_access()
+	..()
 
 /obj/item/card/id/centcom
 	name = "\improper CentCom. ID"
@@ -318,9 +340,10 @@
 	icon_state = "centcom"
 	registered_name = "Central Command"
 	assignment = "General"
-	New()
-		access = get_all_centcom_access()
-		..()
+
+/obj/item/card/id/centcom/New()
+	access = get_all_weyland_access()
+	..()
 
 
 /obj/item/card/id/equipped(mob/living/carbon/human/H, slot)

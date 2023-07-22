@@ -1,76 +1,72 @@
-GLOBAL_LIST_INIT(wy_ranks, list(
-	"division_code" = list(
-		"X" = "",
+/datum/paygrade/wy_ranks
+	name = "WYC Paygrade"
+	pay_multiplier = 1
 
-		"1" = "Spc Serv.",
-		"2" = "C.R.",
-		"3" = "Comms.",
-		"4" = "PMC Disp.",
-		"5" = "R&D",
-		"6" = "Eco",
-		"7" = "Psi"
-	),
-	"job_code" = list(
-		"X" = "",
+/datum/paygrade/wy_ranks/wyc1
+	paygrade = "WYC1"
+	name = "Trainee"
+	prefix = "Trn."
+	ranking = 0
 
-		"A" = "Trainee",
-		"B" = "Junior Executive",
-		"C" = "Executive",
-		"D" = "Senior Executive",
-		"E" = "Executive Specialist",
-		"F" = "Executive Supervisor",
-		"G" = "Assistant Manager",
-		"H" = "Division Manager",
-		"I" = "Chief Executive",
-		"J" = "Director"
-	),
-	"job_code_prefix" = list(
-		"X" = "",
+/datum/paygrade/wy_ranks/wyc2
+	paygrade = "WYC2"
+	name = "Junior Executive"
+	prefix = "Jr. Exec."
+	ranking = 1
+	pay_multiplier = 2
 
-		"A" = "Trn.",
-		"B" = "Jr. Exec.",
-		"C" = "Exec.",
-		"D" = "Sr. Exec.",
-		"E" = "Exec. Spc.",
-		"F" = "Exec. Suvp.",
-		"G" = "Assis. Mng.",
-		"H" = "Div. Mng.",
-		"I" = "Chief. Exec.",
-		"J" = "Director"
-	)
-))
+/datum/paygrade/wy_ranks/wyc3
+	paygrade = "WYC3"
+	name = "Executive"
+	prefix = "Exec."
+	ranking = 2
+	pay_multiplier = 3
 
-/mob/living/carbon/human/proc/apply_wy_rank_code(var/code, var/assignment, var/c_title)
+/datum/paygrade/wy_ranks/wyc4
+	paygrade = "WYC4"
+	name = "Senior Executive"
+	prefix = "Sr. Exec."
+	ranking = 3
+	pay_multiplier = 4
 
-	if(c_title)
-		comm_title = c_title
-	else
-		comm_title = trim(get_paygrades(code, TRUE))
+/datum/paygrade/wy_ranks/wyc5
+	paygrade = "WYC5"
+	name = "Executive Specialist"
+	prefix = "Exec. Spc."
+	ranking = 4
+	pay_multiplier = 5
 
-	var/obj/item/card/id/I = wear_id
+/datum/paygrade/wy_ranks/wyc6
+	paygrade = "WYC6"
+	name = "Executive Supervisor"
+	prefix = "Exec. Suvp."
+	ranking = 5
+	pay_multiplier = 6
 
-	if(istype(I))
-		I.paygrade = code
-		I.rank = code
+/datum/paygrade/wy_ranks/wyc7
+	paygrade = "WYC7"
+	name = "Assistant Manager"
+	prefix = "Assis. Mng."
+	ranking = 6
+	pay_multiplier = 7
 
-		if(!assignment)
-			I.assignment = get_paygrades(code)
-		else
-			I.assignment = assignment
+/datum/paygrade/wy_ranks/wyc8
+	paygrade = "WYC8"
+	name = "Division Manager"
+	prefix = "Div. Mng."
+	ranking = 7
+	pay_multiplier = 8
 
-		I.name = "[I.registered_name]'s ID Card ([I.assignment])"
+/datum/paygrade/wy_ranks/wyc9
+	paygrade = "WYC9"
+	name = "Chief Executive"
+	prefix = "Chief. Exec."
+	ranking = 8
+	pay_multiplier = 9
 
-/proc/get_named_wy_ranks(var/code)
-	if(!GLOB.wy_ranks[code])
-		return
-	var/named_ranks = list()
-
-	for(var/rank in GLOB.wy_ranks[code])
-		var/rank_name = GLOB.wy_ranks[code][rank]
-		if(rank == "X")
-			named_ranks += list("None" = rank)
-			continue
-
-		named_ranks += list("[rank_name]" = rank)
-
-	return named_ranks
+/datum/paygrade/wy_ranks/wyc10
+	paygrade = "WYC10"
+	name = "Director"
+	prefix = "Director"
+	ranking = 9
+	pay_multiplier = 10

@@ -33,16 +33,30 @@
 	var/placed = 0
 	var/obj/item/defenses/handheld/HD
 
+	/// Defence Laptop
+	var/nickname = ""
+	var/encryptable = TRUE
+	/// laptop which is currently linked to the sentry
+	var/obj/item/device/sentry_computer/linked_laptop = null
+	var/has_camera = FALSE
+	var/list/choice_categories = list()
+
+	var/list/selected_categories = list()
+
 
 /obj/structure/machinery/defenses/Initialize()
 	. = ..()
 	update_icon()
 	connect()
 
+/obj/structure/machinery/defenses/Destroy()
+	if(!QDESTROYING(HD))
+		QDEL_NULL(HD)
+	return ..()
+
 /obj/structure/machinery/defenses/proc/connect()
 	if(static)
 		return FALSE
-	sleep(0.5 SECONDS)
 	if(placed && !HD)
 		HD = new handheld_type
 		if(!HD.TR)
@@ -73,6 +87,8 @@
 	message += "\n"
 	if(display_additional_stats)
 		message += SPAN_INFO("Its display reads - Kills: [kills] | Shots: [shots].")
+	if(length(nickname) > 0)
+		message += SPAN_INFO("\nIt has been assigned the name: [nickname]")
 	. += message
 
 /obj/structure/machinery/defenses/proc/power_on()
@@ -89,6 +105,44 @@
 	turned_on = FALSE
 	power_off_action()
 	update_icon()
+
+/**
+ * Update state category for this structure.
+ * @param user: user who has initiated this change.
+ * @param category: category of change.
+ * @param selection: configuration value for category.
+ */
+/obj/structure/machinery/defenses/proc/update_choice(mob/user, category, selection)
+	if(category in selected_categories)
+		selected_categories[category] = selection
+		switch(category)
+			if(SENTRY_CATEGORY_IFF)
+				handle_iff(selection)
+				return TRUE
+		return FALSE
+
+	switch(category)
+		if("nickname")
+			nickname = selection
+			message_admins("[key_name_admin(user)] has labelled structure to [nickname]", user.x, user.y, user.z)
+			return TRUE
+	return FALSE
+
+/**
+ * Update the IFF status of this structure.
+ * @param selection: faction selection string.
+ */
+/obj/structure/machinery/defenses/proc/handle_iff(selection)
+	switch(selection)
+		if(FACTION_USCM)
+			faction_group = FACTION_LIST_MARINE
+		if(FACTION_WEYLAND)
+			faction_group = FACTION_LIST_MARINE_WY
+		if(FACTION_HUMAN)
+			faction_group = FACTION_LIST_HUMANOID
+		if(FACTION_COLONY)
+			faction_group = list(FACTION_MARINE, FACTION_COLONIST)
+
 
 /obj/structure/machinery/defenses/start_processing()
 	if(!machine_processing)
@@ -108,12 +162,12 @@
 	if(owner_mob && owner_mob != src)
 		owner_mob.track_shot(initial(name))
 
-/obj/structure/machinery/defenses/proc/friendly_faction(var/factions)
+/obj/structure/machinery/defenses/proc/friendly_faction(factions)
 	if(factions in faction_group)
 		return TRUE
 	return FALSE
 
-/obj/structure/machinery/defenses/attackby(var/obj/item/O as obj, mob/user as mob)
+/obj/structure/machinery/defenses/attackby(obj/item/O as obj, mob/user as mob)
 	if(QDELETED(O))
 		return
 
@@ -147,13 +201,63 @@
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't have the training to do this."))
 			return
+		// if the sentry can have key interacted with
+		// and if the multitool is able to do it
+		// we need to ask what to do
+		var/list/multitool_actions = list()
+		var/obj/item/device/multitool/tool = O
+		if(encryptable && !linked_laptop && length(tool.encryption_keys) > 0)
+			multitool_actions += "encrypt"
+		if(encryptable && linked_laptop)
+			multitool_actions += "decrypt"
+		if(encryptable && !linked_laptop)
+			multitool_actions += "disassemble"
 
+		var/result = null
+		if(length(multitool_actions) > 1)
+			result = tgui_input_list(user, "What do you want to do with the multitool", "Multitool interaction", multitool_actions)
+		else if (length(multitool_actions) == 1)
+			result = multitool_actions[1]
+
+		if(!result)
+			return
+		switch(result)
+			if("encrypt")
+				var/key_found = FALSE
+				for(var/i in tool.encryption_keys)
+					var/datum/weakref/ref = tool.encryption_keys[i]
+					var/obj/item = ref.resolve()
+					if(istype(item, /obj/item/device/sentry_computer))
+						var/obj/item/device/sentry_computer/computer = item
+						to_chat(usr, SPAN_NOTICE("Attempting link to [item] [computer.serial_number]."))
+						playsound(src, 'sound/machines/scanning.ogg', 25, FALSE)
+						computer.register(tool, user, src)
+						key_found = TRUE
+						break
+				if(!key_found)
+					to_chat(user, SPAN_WARNING("No valid encryption key found. Link \the [tool] with a sentry computer."))
+				return
+			if("decrypt")
+				// unregister
+				var/loaded_key = linked_laptop.serial_number
+				if(length(tool.encryption_keys) == 0)
+					to_chat(user, SPAN_NOTICE("\The [src] is encrypted. To use \the [tool] it must be paired with the laptop [linked_laptop.serial_number]."))
+				if(tool.encryption_keys[loaded_key])
+					to_chat(user, SPAN_NOTICE("Attempting decryption of [src]."))
+					linked_laptop.unregister(tool, user, src)
+				else
+					to_chat(user, SPAN_WARNING("\The [src] is already encrypted by laptop [linked_laptop.serial_number]. You must load its encryption key to decrypt."))
+				return
 		if(health < health_max * 0.25)
 			to_chat(user, SPAN_WARNING("\The [src] is too damaged to pick up!"))
 			return
 
 		if(static)
 			to_chat(user, SPAN_WARNING("\The [src] is bolted to the ground!"))
+			return
+
+		if(linked_laptop)
+			to_chat(user, SPAN_WARNING("\The [src] is currently encrypted by [linked_laptop]. To deconstruct \the [src] it must first be unlinked."))
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] begins disassembling \the [src]."), SPAN_NOTICE("You begin disassembling \the [src]."))
@@ -174,7 +278,7 @@
 				LAZYADD(faction_group, i)
 		power_off()
 		HD.forceMove(T)
-		HD.set_name_label(name_label)
+		transfer_label_component(HD)
 		HD.dropped = 1
 		HD.update_icon()
 		placed = 0
@@ -199,6 +303,10 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			return
 		else
+			var/turf/open/floor = get_turf(src)
+			if(!floor.allow_construction)
+				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))
+				return FALSE
 			user.visible_message(SPAN_NOTICE("[user] begins securing [src] to the ground."),
 			SPAN_NOTICE("You begin securing [src] to the ground."))
 
@@ -237,11 +345,11 @@
 
 	return TRUE
 
-/obj/structure/machinery/defenses/attack_hand(var/mob/user)
+/obj/structure/machinery/defenses/attack_hand(mob/user)
 	if(!attack_hand_checks(user))
 		return
 
-	if(isYautja(user))
+	if(isyautja(user))
 		to_chat(user, SPAN_WARNING("You punch [src] but nothing happens."))
 		return
 
@@ -266,7 +374,7 @@
 		if(!can_be_near_defense)
 			for(var/obj/structure/machinery/defenses/def in urange(defense_check_range, loc))
 				if(def != src && def.turned_on && !def.can_be_near_defense)
-					to_chat(user, SPAN_WARNING("This is too close to a [def.name]!"))
+					to_chat(user, SPAN_WARNING("This is too close to a [def]!"))
 					return
 
 		power_on()
@@ -274,17 +382,17 @@
 		power_off()
 
 
-/obj/structure/machinery/defenses/proc/attack_hand_checks(var/mob/user)
+/obj/structure/machinery/defenses/proc/attack_hand_checks(mob/user)
 	return TRUE
 
-/obj/structure/machinery/defenses/proc/power_on_action(var/mob/user)
+/obj/structure/machinery/defenses/proc/power_on_action(mob/user)
 	return
 
-/obj/structure/machinery/defenses/proc/power_off_action(var/mob/user)
+/obj/structure/machinery/defenses/proc/power_off_action(mob/user)
 	return
 
 // DAMAGE HANDLING
-/obj/structure/machinery/defenses/update_health(var/damage = 0) //Negative damage restores health.
+/obj/structure/machinery/defenses/update_health(damage = 0) //Negative damage restores health.
 	health -= damage
 
 	if(health > health_max)
@@ -292,6 +400,7 @@
 
 	if(health <= 0 && stat != DEFENSE_DESTROYED)
 		stat |= DEFENSE_DESTROYED
+		SEND_SIGNAL(src, COMSIG_SENTRY_DESTROYED_ALERT)
 		destroyed_action()
 		return
 
@@ -299,7 +408,7 @@
 		damaged_action(damage)
 
 	if(stat == DEFENSE_DAMAGED)
-		density = 0
+		density = FALSE
 	else
 		density = initial(density)
 
@@ -315,13 +424,13 @@
 	if(!QDELETED(src))
 		qdel(src)
 
-/obj/structure/machinery/defenses/proc/damaged_action(var/damage)
+/obj/structure/machinery/defenses/proc/damaged_action(damage)
 	if(health < health_max * 0.15)
 		visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] cracks and breaks apart!"))
 		stat |= DEFENSE_DAMAGED
 		turned_on = FALSE
 
-/obj/structure/machinery/defenses/emp_act(var/severity)
+/obj/structure/machinery/defenses/emp_act(severity)
 	if(turned_on)
 		if(prob(50))
 			visible_message("[icon2html(src, viewers(src))] <span class='danger'>[src] beeps and buzzes wildly, flashing odd symbols on its screen before shutting down!</span>")
@@ -334,16 +443,16 @@
 		update_health(25)
 	return
 
-/obj/structure/machinery/defenses/ex_act(var/severity)
+/obj/structure/machinery/defenses/ex_act(severity)
 	if(health <= 0)
 		return
 	update_health(severity)
 
-/obj/structure/machinery/defenses/bullet_act(var/obj/item/projectile/P)
+/obj/structure/machinery/defenses/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	visible_message(SPAN_WARNING("[src] is hit by the [P.name]!"))
+	visible_message(SPAN_WARNING("[src] is hit by the [P]!"))
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & AMMO_XENO_ACID) //Fix for xenomorph spit doing baby damage.
+	if(ammo_flags & AMMO_ACIDIC) //Fix for xenomorph spit doing baby damage.
 		update_health(round(P.damage/3))
 	else
 		update_health(round(P.damage/10))
@@ -358,6 +467,9 @@
 	if(owner_mob)
 		owner_mob = null
 	HD = null // FIXME: Might also need to delete. Unsure.
+	if(linked_laptop)
+		linked_laptop.unpair_sentry(src)
+		linked_laptop = null
 	. = ..()
 
 /obj/structure/machinery/defenses/verb/toggle_turret_locks_verb()

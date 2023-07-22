@@ -1,13 +1,15 @@
-#define to_world_log(message)                               world.log << (message)
-#define debug_msg(message)                                  to_world(message) // A message define designed to be easily found and deleted
-#define debug_log(message)                                  to_world_log(message)
-#define sound_to(target, sound)                             target << (sound)
-#define to_file(file_entry, source_var)                     file_entry << (source_var)
-#define from_file(file_entry, target_var)                   file_entry >> (target_var)
-#define close_browser(target, browser_name)                 target << browse(null, "window=[browser_name]")
-#define show_image(target, image)                           target << (image)
-#define send_rsc(target, args...)             				target << browse_rsc(##args)
-#define open_link(target, url)                              target << link(url)
+#define to_world_log(message)    world.log << (message)
+
+/// A message define designed to be easily found and deleted
+#define debug_msg(message)   to_world(message)
+#define debug_log(message)   to_world_log(message)
+#define sound_to(target, sound)  target << (sound)
+#define to_file(file_entry, source_var)  file_entry << (source_var)
+#define from_file(file_entry, target_var)    file_entry >> (target_var)
+#define close_browser(target, browser_name)  target << browse(null, "window=[browser_name]")
+#define show_image(target, image)    target << (image)
+#define send_rsc(target, args...) target << browse_rsc(##args)
+#define open_link(target, url)   target << link(url)
 
 #define any2ref(x) ref(x)
 
@@ -31,12 +33,14 @@
 // Ensures L is initailized after this point
 #define LAZYINITLIST(L) if (!L) L = list()
 // Sets a L back to null iff it is empty
-#define UNSETEMPTY(L) if (L && !L.len) L = null
+#define UNSETEMPTY(L) if (L && !length(L)) L = null
 // Removes I from list L, and sets I to null if it is now empty
 #define LAZYREMOVE(L, I) if(L) { L -= I; if(!length(L)) { L = null; } }
 // Adds I to L, initializing L if necessary
 #define LAZYADD(L, I) if(!L) { L = list(); } L += I;
 #define LAZYOR(L, I) if(!L) { L = list(); } L |= I;
+///Returns the key of the submitted item in the list
+#define LAZYFIND(L, V) (L ? L.Find(V) : 0)
 // Insert I into L at position X, initializing L if necessary
 #define LAZYINSERT(L, I, X) if(!L) { L = list(); } L.Insert(X, I);
 // Adds I to L, initializing L if necessary, if I is not already in L
@@ -55,6 +59,14 @@
 #define LAZYCOPY(L) L?.Copy()
 // Reads L or an empty list if L is not a list.  Note: Does NOT assign, L may be an expression.
 #define SANITIZE_LIST(L) ( islist(L) ? L : list() )
+///Adds to the item K the value V, if the list is null it will initialize it
+#define LAZYADDASSOC(L, K, V) if(!L) { L = list(); } L[K] += V;
+///This is used to add onto lazy assoc list when the value you're adding is a /list/. This one has extra safety over lazyaddassoc because the value could be null (and thus cant be used to += objects)
+#define LAZYADDASSOCLIST(L, K, V) if(!L) { L = list(); } L[K] += list(V);
+///Removes the value V from the item K, if the item K is empty will remove it from the list, if the list is empty will set the list to null
+#define LAZYREMOVEASSOC(L, K, V) if(L) { if(L[K]) { L[K] -= V; if(!length(L[K])) L -= K; } if(!length(L)) L = null; }
+///Accesses an associative list, returns null if nothing is found
+#define LAZYACCESSASSOC(L, I, K) L ? L[I] ? L[I][K] ? L[I][K] : null : null : null
 
 // Insert an object A into a sorted list using cmp_proc (/code/_helpers/cmp.dm) for comparison.
 #define ADD_SORTED(list, A, cmp_proc) if(!list.len) {list.Add(A)} else {list.Insert(FindElementIndex(A, list, cmp_proc), A)}

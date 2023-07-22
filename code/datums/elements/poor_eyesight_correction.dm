@@ -5,8 +5,8 @@
 	. = ..()
 	if(!isclothing(target))
 		return ELEMENT_INCOMPATIBLE
-	RegisterSignal(target, COMSIG_ITEM_EQUIPPED, .proc/prescription_equipped)
-	RegisterSignal(target, COMSIG_ITEM_UNEQUIPPED, .proc/prescription_unequipped)
+	RegisterSignal(target, COMSIG_ITEM_EQUIPPED, PROC_REF(prescription_equipped))
+	RegisterSignal(target, COMSIG_ITEM_UNEQUIPPED, PROC_REF(prescription_unequipped))
 
 /datum/element/poor_eyesight_correction/Detach(datum/source, force)
 	UnregisterSignal(source, list(

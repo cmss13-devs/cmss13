@@ -44,9 +44,9 @@
 		node.invoke(context)
 
 /// Same as branch, but selects a subset of the given nodes
-///    amount: how many items to pick
-///    choices: nested nodes to pick from
-///    each node should have a 'weight' key if you want to use weighted pick
+/// amount: how many items to pick
+/// choices: nested nodes to pick from
+/// each node should have a 'weight' key if you want to use weighted pick
 /datum/nmnode/picker
 	id = "pick"
 	var/amount = 1
@@ -71,6 +71,9 @@
 			pickables[node] = node.raw["weight"]
 	var/list/datum/nmnode/picked = list()
 	var/remaining = src.amount
+#if defined(UNIT_TESTS)
+	remaining = length(pickables) // Force all to be picked for testing (this could potentially make false positives though)
+#endif
 	while(length(pickables) && remaining > 0)
 		var/datum/nmnode/node = pickweight(pickables)
 		remaining--

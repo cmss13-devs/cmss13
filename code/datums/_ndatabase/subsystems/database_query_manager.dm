@@ -22,11 +22,12 @@
 var/datum/controller/subsystem/database_query_manager/SSdatabase
 
 /datum/controller/subsystem/database_query_manager
-	name          = "Database QM"
-	wait		  = 1
-	init_order    = SS_INIT_DATABASE
-	priority      = SS_PRIORITY_DATABASE // Low prio SS_TICKER
-	flags         = SS_TICKER
+	name   = "Database QM"
+	wait   = 1
+	init_order = SS_INIT_DATABASE
+	init_stage = INITSTAGE_EARLY
+	priority   = SS_PRIORITY_DATABASE // Low prio SS_TICKER
+	flags  = SS_TICKER|SS_NO_INIT
 
 	var/datum/db/connection/connection
 	var/datum/db/connection_settings/settings
@@ -51,12 +52,12 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	queries_active = list()
 	queries_current = list()
 	queries_standby = list()
-	var/list/result = loadsql("config/dbconfig.txt")
-	settings = connection_settings_from_config(result)
 	NEW_SS_GLOBAL(SSdatabase)
 
-/datum/controller/subsystem/database_query_manager/Initialize()
-	set waitfor=0
+/datum/controller/subsystem/database_query_manager/proc/start_up()
+	set waitfor = FALSE
+
+	settings = connection_settings_from_config(CONFIG_GET(string/db_provider))
 	connection = settings.create_connection()
 	connection.keep()
 
@@ -176,7 +177,7 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	var/list/Lines = file2list(filename)
 	var/list/result = list()
 	for(var/t in Lines)
-		if(!t)	continue
+		if(!t) continue
 
 		t = trim(t)
 		if(length(t) == 0)

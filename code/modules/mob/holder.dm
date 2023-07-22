@@ -30,17 +30,17 @@
 	for(var/mob/M in src.contents)
 		M.attackby(W,user)
 
-/obj/item/holder/proc/show_message(var/message, var/m_type)
+/obj/item/holder/proc/show_message(message, m_type)
 	for(var/mob/living/M in contents)
 		M.show_message(message,m_type)
 
 //Mob procs and vars for scooping up
 /mob/living/var/holder_type
 
-/mob/living/proc/get_scooped(var/mob/living/carbon/grabber)
+/mob/living/proc/get_scooped(mob/living/carbon/grabber)
 	if(!holder_type)
 		return
-	if(isXeno(grabber))
+	if(isxeno(grabber))
 		to_chat(grabber, SPAN_WARNING("You leave [src] alone. It cannot be made a host, so there is no use for it."))
 		return
 	if(locate(/obj/item/explosive/plastic) in contents)
@@ -64,25 +64,27 @@
 	desc = "It's a small maintenance robot."
 	icon_state = "drone"
 
-/obj/item/holder/Runtime
-	name = "Runtime"
-	desc = "Her fur has the look and feel of velvet, and her tail quivers occasionally."
-	icon_state = "cat"
-
 /obj/item/holder/cat
 	name = "cat"
 	desc = "A domesticated, feline pet. Has a tendency to adopt crewmembers."
 	icon_state = "cat2"
 
-/obj/item/holder/blackcat
+/obj/item/holder/cat/kitten
+	name = "kitten"
+	desc = "D'aaawwww"
+
+/obj/item/holder/cat/Jones
+	name = "\improper Jones"
+	desc = "A tough, old stray whose origin no one seems to know."
+
+/obj/item/holder/cat/blackcat
 	name = "black cat"
 	desc = "It's a cat, now in black!"
 	icon_state = "cat"
 
-/obj/item/holder/Jones
-	name = "Jones"
-	desc = "A tough, old stray whose origin no one seems to know."
-	icon_state = "cat2"
+/obj/item/holder/cat/blackcat/Runtime
+	name = "\improper Runtime"
+	desc = "Her fur has the look and feel of velvet, and her tail quivers occasionally."
 
 /obj/item/holder/kitten
 	name = "kitten"
@@ -97,6 +99,19 @@
 	w_class = SIZE_TINY;
 	flags_equip_slot = null
 
-/obj/item/holder/mouse/Doc
+/obj/item/holder/mouse/white
+	icon_state = "mouse_white"
+
+/obj/item/holder/mouse/gray
+	icon_state = "mouse_gray"
+
+/obj/item/holder/mouse/brown
+	icon_state = "mouse_brown"
+
+/obj/item/holder/mouse/white/Doc
 	name = "Doc"
 	desc = "Senior researcher of the Almayer. Likes: cheese, experiments, explosions."
+
+/obj/item/holder/mouse/brown/Tom
+	name = "Tom"
+	desc = "Jerry the cat is not amused."

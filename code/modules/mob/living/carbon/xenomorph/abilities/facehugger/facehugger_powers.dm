@@ -1,7 +1,7 @@
 /datum/action/xeno_action/activable/pounce/facehugger/post_windup_effects(interrupted)
 	..()
 
-	var/mob/living/carbon/Xenomorph/facehugger = owner
+	var/mob/living/carbon/xenomorph/facehugger = owner
 	if(!istype(facehugger) || interrupted)
 		return
 	facehugger.update_icons(TRUE)
@@ -10,7 +10,7 @@
 	if(!ishuman(L))
 		return
 
-	var/mob/living/carbon/Xenomorph/Facehugger/facehugger = owner
+	var/mob/living/carbon/xenomorph/facehugger/facehugger = owner
 	if(!istype(facehugger))
 		return
 
@@ -25,4 +25,4 @@
 		if(current_airlock.density) //if its CLOSED YOU'RE SCUTTLING AND CANNOT POUNCE!!!
 			to_chat(owner, SPAN_WARNING("You cannot do that while squeezing and scuttling!"))
 			return FALSE
-	..()
+	return ..()

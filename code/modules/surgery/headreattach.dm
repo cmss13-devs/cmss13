@@ -1,6 +1,6 @@
 //Procedures in this file: Synth head reattachment
 //////////////////////////////////////////////////////////////////
-//					  REATTACHING ROBOHEAD	     				//
+//   REATTACHING ROBOHEAD //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/head_reattach
@@ -14,7 +14,7 @@
 		/datum/surgery_step/peel_skin,
 		/datum/surgery_step/reattach_head,
 		/datum/surgery_step/mend_connections,
-		/datum/surgery_step/cauterize/reposition_flesh
+		/datum/surgery_step/cauterize/reposition_flesh,
 	)
 	requires_bodypart = FALSE
 	requires_bodypart_type = LIMB_DESTROYED
@@ -49,8 +49,9 @@
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_SUBOPTIMAL,
 		/obj/item/tool/crowbar = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
-		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_AWFUL
-		)
+		/obj/item/maintenance_jack = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
+		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_AWFUL,
+	)
 	time = 4 SECONDS
 
 /datum/surgery_step/peel_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -61,7 +62,7 @@
 	log_interact(user, target, "[key_name(user)] began to peel back tattered skin around [key_name(target)]'s neck with \the [tool].")
 
 /datum/surgery_step/peel_skin/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] draws back the ragged flesh of [target]'s neck stump."),	\
+	user.visible_message(SPAN_NOTICE("[user] draws back the ragged flesh of [target]'s neck stump."), \
 	SPAN_NOTICE("You draw back the ragged flesh of [target]'s neck stump."))
 
 	surgery.affected_limb.setAmputatedTree()
@@ -90,14 +91,14 @@
 	log_interact(user, target, "[key_name(user)] started to attach [tool] to [key_name(target)]'s reshaped neck.")
 
 /datum/surgery_step/reattach_head/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/head_reattach/surgery)
-	user.visible_message(SPAN_NOTICE("[user] reattaches [target]'s head to the bones and musculature of \his body."),	\
+	user.visible_message(SPAN_NOTICE("[user] reattaches [target]'s head to the bones and musculature of \his body."), \
 	SPAN_NOTICE("You reattach [target]'s head to the bones and musculature of \his body."))
 	log_interact(user, target, "[key_name(user)] attached [tool] to [key_name(target)]'s neck.")
 
 	surgery.patient_head = tool
 
 	user.drop_inv_item_to_loc(surgery.patient_head, target)
-	surgery.affected_limb.robotize(TRUE)
+	surgery.affected_limb.robotize(surgery_in_progress = TRUE, uncalibrated = FALSE, synth_skin = TRUE)
 	target.updatehealth()
 	target.regenerate_icons()
 
@@ -129,7 +130,7 @@
 	log_interact(user, target, "[key_name(user)] started to reshape [key_name(target)]'s head esophagal and vocal region with \the [tool].")
 
 /datum/surgery_step/mend_connections/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] finishes reconstructing [target]'s throat."),	\
+	user.visible_message(SPAN_NOTICE("[user] finishes reconstructing [target]'s throat."), \
 	SPAN_NOTICE("You finish reconstructing [target]'s throat."))
 
 	log_interact(user, target, "[key_name(user)] reshaped [key_name(target)]'s head esophagal and vocal region with \the [tool].")
@@ -154,7 +155,7 @@
 	log_interact(user, target, "[key_name(user)] started to adjust the area around [key_name(target)]'s neck with \the [tool].")
 
 /datum/surgery_step/cauterize/reposition_flesh/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/head_reattach/surgery)
-	user.visible_message(SPAN_NOTICE("[user] finishes adjusting [target]'s neck."),	\
+	user.visible_message(SPAN_NOTICE("[user] finishes adjusting [target]'s neck."), \
 	SPAN_NOTICE("You finish adjusting [target]'s neck."))
 	log_interact(user, target, "[key_name(user)] adjusted the area around [key_name(target)]'s neck with \the [tool].")
 
@@ -165,7 +166,7 @@
 	if(surgery.patient_head.brainmob.mind)
 		surgery.patient_head.brainmob.mind.transfer_to(target)
 
-	else	// attempt to transfer linked ghost if not found
+	else // attempt to transfer linked ghost if not found
 		for(var/mob/dead/observer/G in GLOB.observer_list)
 			if(istype(G) && G.mind && G.mind.original == surgery.patient_head.brainmob && G.can_reenter_corpse)
 				G.mind.original = target

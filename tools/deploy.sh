@@ -13,18 +13,24 @@ mkdir -p \
     $1/maps \
     $1/icons \
     $1/sound \
-    $1/strings
+	$1/config \
+    $1/strings \
+	$1/nano \
+	$1/map_config
 
 if [ -d ".git" ]; then
   mkdir -p $1/.git/logs
   cp -r .git/logs/* $1/.git/logs/
 fi
 
-cp ColonialMarinesALPHA.dmb ColonialMarinesALPHA.rsc $1/
+cp colonialmarines.dmb colonialmarines.rsc $1/
 cp -r maps/* $1/maps/
 cp -r icons/* $1/icons/
 cp -r sound/* $1/sound/
 cp -r strings/* $1/strings/
+cp -r config/* $1/config/
+cp -r nano/* $1/nano/
+cp -r map_config/* $1/map_config/
 
 #remove .dm files from _maps
 

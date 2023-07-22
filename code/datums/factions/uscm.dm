@@ -16,7 +16,7 @@
 		switch(GET_DEFAULT_ROLE(_role))
 			if(JOB_SQUAD_ENGI) marine_rk = "engi"
 			if(JOB_SQUAD_SPECIALIST) marine_rk = "spec"
-			if(JOB_SQUAD_RTO) marine_rk = "rto"
+			if(JOB_SQUAD_TEAM_LEADER) marine_rk = "tl"
 			if(JOB_SQUAD_MEDIC) marine_rk = "med"
 			if(JOB_SQUAD_SMARTGUN) marine_rk = "gun"
 			if(JOB_XO) marine_rk = "xo"
@@ -60,13 +60,14 @@
 	else
 		var/marine_rk
 		var/border_rk
+		var/icon_prefix = "hudsquad_"
 		var/obj/item/card/id/ID = H.get_idcard()
 		var/_role
 		if(H.mind)
 			_role = H.job
 		else if(ID)
 			_role = ID.rank
-		switch(GET_DEFAULT_ROLE(_role))
+		switch(_role)
 			if(JOB_XO)
 				marine_rk = "xo"
 				border_rk = "command"
@@ -76,7 +77,7 @@
 			if(JOB_SO)
 				marine_rk = "so"
 				border_rk = "command"
-			if(JOB_GENERAL, JOB_COLONEL)
+			if(JOB_GENERAL, JOB_COLONEL, JOB_ACMC, JOB_CMC)
 				marine_rk = "general"
 				border_rk = "command"
 			if(JOB_INTEL)
@@ -85,15 +86,11 @@
 				marine_rk = "po"
 			if(JOB_DROPSHIP_CREW_CHIEF)
 				marine_rk = "dcc"
-			if(JOB_CREWMAN)
-				marine_rk = "tc"
 			if(JOB_CHIEF_POLICE)
 				marine_rk = "cmp"
 				border_rk = "command"
 			if(JOB_POLICE)
 				marine_rk = "mp"
-			if(JOB_POLICE_CADET)
-				marine_rk = "mpcadet"
 			if(JOB_WARDEN)
 				marine_rk = "warden"
 				border_rk = "command"
@@ -126,6 +123,7 @@
 				marine_rk = "syn"
 			if(JOB_MESS_SERGEANT)
 				marine_rk = "messtech"
+			// Provost
 			if(JOB_PROVOST_ENFORCER)
 				marine_rk = "pve"
 			if(JOB_PROVOST_TML)
@@ -139,14 +137,60 @@
 			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
 				marine_rk = "pvm"
 				border_rk = "command"
+			// TIS
 			if(JOB_TIS_IO)
 				marine_rk = "tisio"
 			if(JOB_TIS_SA)
 				marine_rk = "tissa"
+			// Riot MPs
+			if(JOB_RIOT)
+				marine_rk = "rmp"
+			if(JOB_RIOT_CHIEF)
+				marine_rk = "crmp"
+			// Whiskey Outpost
+			if(JOB_WO_CO)
+				marine_rk = "wo_co"
+			if(JOB_WO_XO)
+				marine_rk = "wo_xo"
+			if(JOB_WO_CHIEF_POLICE)
+				marine_rk = "hgsl"
+			if(JOB_WO_SO)
+				marine_rk = "vhg"
+			if(JOB_WO_CREWMAN)
+				marine_rk = "hgspec"
+			if(JOB_WO_POLICE)
+				marine_rk = "hg"
+			if(JOB_WO_CMO)
+				marine_rk = "wo_cmo"
+			if(JOB_WO_DOCTOR)
+				marine_rk = "wo_doctor"
+			if(JOB_WO_RESEARCHER)
+				marine_rk = "wo_chemist"
+			if(JOB_WO_CHIEF_REQUISITION)
+				marine_rk = "wo_ro"
+			if(JOB_WO_PILOT)
+				marine_rk = "wo_mcrew"
+			// Colonial Marshals
+			if(JOB_CMB_TL)
+				marine_rk = "mar"
+				icon_prefix = "cmb_"
+			if(JOB_CMB)
+				marine_rk = "dep"
+				icon_prefix = "cmb_"
+			if(JOB_CMB_SYN)
+				marine_rk = "syn"
+				icon_prefix = "cmb_"
+			if(JOB_CMB_ICC)
+				marine_rk = "icc"
+				icon_prefix = "cmb_"
+			if(JOB_CMB_OBS)
+				marine_rk = "obs"
+				icon_prefix = "cmb_"
+
 		if(marine_rk)
 			var/image/I = image('icons/mob/hud/marine_hud.dmi', H, "hudsquad")
 			I.color = "#5A934A"
 			holder.overlays += I
-			holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "hudsquad_[marine_rk]")
+			holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "[icon_prefix][marine_rk]")
 			if(border_rk)
 				holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "hudmarineborder[border_rk]")

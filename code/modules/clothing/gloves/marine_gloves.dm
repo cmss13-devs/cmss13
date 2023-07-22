@@ -10,8 +10,8 @@
 	permeability_coefficient = 0.05
 	flags_cold_protection = BODY_FLAG_HANDS
 	flags_heat_protection = BODY_FLAG_HANDS
-	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
-	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
+	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 	flags_armor_protection = BODY_FLAG_HANDS
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -51,6 +51,7 @@
 	desc = "Shiny and impressive. They look expensive."
 	icon_state = "black"
 	item_state = "bgloves"
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/senior
 	name = "senior officer gloves"
@@ -69,6 +70,7 @@
 	item_state = "ygloves"
 	siemens_coefficient = 0
 	permeability_coefficient = 0.01
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/techofficer/commander
 	name = "commanding officer's gloves"
@@ -117,6 +119,7 @@
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/veteran/insulated
 	name = "insulated armored gloves"
@@ -124,13 +127,13 @@
 	icon_state = "insulated"
 	item_state = "insulated"
 
-/obj/item/clothing/gloves/marine/veteran/PMC
+/obj/item/clothing/gloves/marine/veteran/pmc
 	name = "\improper WY PMC gloves"
 	icon_state = "pmc"
 	item_state = "pmc"
 	desc = "Standard issue kevlon fiber gloves manufactured for and by Weyland-Yutani PMC dispatch division. They are insulated against electrical shock."
 
-/obj/item/clothing/gloves/marine/veteran/PMC/commando
+/obj/item/clothing/gloves/marine/veteran/pmc/commando
 	name = "\improper M5X gauntlets"
 	desc = "A pair of heavily armored gloves made to complete the M5X exoskeleton armor"
 	icon_state = "gauntlets"
@@ -167,7 +170,23 @@
 	armor_rad = CLOTHING_ARMOR_HARDCORE
 	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
 	unacidable = TRUE
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/veteran/insulated/van_bandolier
 	name = "custom shooting gloves"
 	desc = "Highly protective against injury, temperature, and electric shock. Cool in the summer, warm in the winter, and a secure grip on any surface. You could buy a lot for the price of these, and they're worth every penny."
+
+/obj/item/clothing/gloves/marine/joe
+	name = "Seegson hazardous gloves"
+	desc = "Special Synthetic gloves made for touching and interacting with extremely hazardous materials. Resistant to biohazard liquids, corrosive materials and more. SEEGSON is proudly displayed on the back, along with a biohazard symbol. Tomorrow, Together."
+	icon_state = "working_joe"
+	item_state = "working_joe"
+	siemens_coefficient = 0
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_VERYHIGH
+	armor_rad = CLOTHING_ARMOR_VERYHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	unacidable = TRUE
+	adopts_squad_color = FALSE

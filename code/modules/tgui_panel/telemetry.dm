@@ -89,7 +89,7 @@
 			return
 
 		/* TODO - Reintroduce this when we get a proper round ID tracking,
-		    and we want to log it to database
+			and we want to log it to database
 
 		var/list/query_data = list()
 		if (!isnull(GLOB.round_id))
@@ -112,6 +112,6 @@
 	// This fucker has a history of playing on a banned account.
 	if(found)
 		var/msg = "[key_name(client)] has a banned account in connection history! (Matched: [found["ckey"]], [found["address"]], [found["computer_id"]])"
-		message_staff(msg)
+		message_admins(msg)
 		log_admin_private(msg)
 		//log_suspicious_login(msg, access_log_mirror = FALSE)

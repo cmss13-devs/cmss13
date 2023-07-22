@@ -13,13 +13,13 @@
 	allowed_sensors = list(/obj/item/device/assembly/timer)
 	max_container_volume = 60
 	var/det_time = 40
-	var/dangerous = 0		//Make an danger overlay for humans?
+	var/dangerous = FALSE //Make an danger overlay for humans?
 	var/arm_sound = 'sound/weapons/armbomb.ogg'
 	var/has_arm_sound = TRUE
 	var/underslug_launchable = FALSE
 	var/hand_throwable = TRUE
-	harmful = TRUE	//Is it harmful? Are they banned for synths?
-	antigrief_protection = TRUE	//Should it be checked by antigrief?
+	harmful = TRUE //Is it harmful? Are they banned for synths?
+	antigrief_protection = TRUE //Should it be checked by antigrief?
 
 /obj/item/explosive/grenade/Initialize()
 	. = ..()
@@ -63,7 +63,7 @@
 	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
 		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from priming the grenade!"))
 		// Let staff know, in case someone's actually about to try to grief
-		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 		return
 
 	if(SEND_SIGNAL(user, COMSIG_GRENADE_PRE_PRIME) & COMPONENT_GRENADE_PRIME_CANCEL)
@@ -106,11 +106,11 @@
 		activate_sensors()
 	else
 		active = TRUE
-		det_time ? addtimer(CALLBACK(src, .proc/prime), det_time) : prime()
+		det_time ? addtimer(CALLBACK(src, PROC_REF(prime)), det_time) : prime()
 	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they cant be stored anywhere
 	update_icon()
 
-/obj/item/explosive/grenade/prime(var/force = FALSE)
+/obj/item/explosive/grenade/prime(force = FALSE)
 	..()
 	if(!QDELETED(src))
 		w_class = initial(w_class)
@@ -118,10 +118,10 @@
 /obj/item/explosive/grenade/update_icon()
 	if(active && dangerous)
 		overlays+=new/obj/effect/overlay/danger
-		dangerous = 0
+		dangerous = FALSE
 	. = ..()
 
-/obj/item/explosive/grenade/launch_towards(var/datum/launch_metadata/LM)
+/obj/item/explosive/grenade/launch_towards(datum/launch_metadata/LM)
 	if(active && ismob(LM.thrower))
 		var/mob/M = LM.thrower
 		M.count_niche_stat(STATISTICS_NICHE_GRENADES)

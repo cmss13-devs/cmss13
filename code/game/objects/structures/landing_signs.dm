@@ -5,7 +5,7 @@
 	icon_state = "laz_sign"
 	bound_width = 64
 	bound_height = 64
-	density = 1
+	density = TRUE
 
 /obj/structure/lz_sign/lazarus_sign
 	name = "Lazarus Landing Sign"
@@ -33,7 +33,7 @@
 
 /obj/structure/lz_sign/dam_sign
 	name = "Trijent landing sign"
-	desc = "A large sign that reads 'Trijent mining colony', with half the sign written in Japanese.."
+	desc = "A large sign that reads 'Trijent mining colony', with half the sign written in Japanese."
 	icon = 'icons/obj/structures/props/landing_signs.dmi'
 	icon_state = "dam_sign"
 

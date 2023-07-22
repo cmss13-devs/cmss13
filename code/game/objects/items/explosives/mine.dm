@@ -6,19 +6,19 @@
 	desc = "The M20 Claymore is a directional proximity-triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. The mine is triggered by movement both on the mine itself, and on the space immediately in front of it. Detonation sprays shrapnel forwards in a 120-degree cone. The words \"FRONT TOWARD ENEMY\" are embossed on the front."
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "m20"
-	force = 5.0
+	force = 5
 	w_class = SIZE_SMALL
 	//layer = MOB_LAYER - 0.1 //You can't just randomly hide claymores under boxes. Booby-trapping bodies is fine though
-	throwforce = 5.0
+	throwforce = 5
 	throw_range = 6
 	throw_speed = SPEED_VERY_FAST
 	unacidable = TRUE
 	flags_atom = FPRINT|CONDUCT
 	allowed_sensors = list(/obj/item/device/assembly/prox_sensor)
 	max_container_volume = 120
-	reaction_limits = list(	"max_ex_power" = 105,	"base_ex_falloff" = 60,	"max_ex_shards" = 32,
-							"max_fire_rad" = 5,		"max_fire_int" = 12,	"max_fire_dur" = 18,
-							"min_fire_rad" = 2,		"min_fire_int" = 3,		"min_fire_dur" = 3
+	reaction_limits = list( "max_ex_power" = 105, "base_ex_falloff" = 60, "max_ex_shards" = 32,
+							"max_fire_rad" = 5, "max_fire_int" = 12, "max_fire_dur" = 18,
+							"min_fire_rad" = 2, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
 	angle = 60
 	use_dir = TRUE
@@ -53,7 +53,7 @@
 	if(user.loc && (user.loc.density || locate(/obj/structure/fence) in user.loc))
 		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
 		return TRUE
-	if(user.z == GLOB.interior_manager.interior_z)
+	if(SSinterior.in_interior(user))
 		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return TRUE
 
@@ -88,7 +88,7 @@
 
 	deploy_mine(user)
 
-/obj/item/explosive/mine/proc/deploy_mine(var/mob/user)
+/obj/item/explosive/mine/proc/deploy_mine(mob/user)
 	if(!hard_iff_lock && user)
 		iff_signal = user.faction
 
@@ -198,6 +198,8 @@
 		return
 	if(L.get_target_lock(iff_signal) || isrobot(L))
 		return
+	if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
+		return
 	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."), \
 	SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."), \
 	SPAN_DANGER("You hear a click."))
@@ -222,7 +224,7 @@
 			disarm()
 
 
-/obj/item/explosive/mine/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/item/explosive/mine/attack_alien(mob/living/carbon/xenomorph/M)
 	if(triggered) //Mine is already set to go off
 		return XENO_NO_DELAY_ACTION
 
@@ -256,7 +258,7 @@
 /obj/effect/mine_tripwire
 	name = "claymore tripwire"
 	anchored = TRUE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
 	unacidable = TRUE //You never know
 	var/obj/item/explosive/mine/linked_claymore

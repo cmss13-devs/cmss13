@@ -67,7 +67,7 @@
 
 	playsound(src.loc, 'sound/effects/spray2.ogg', 25, 1, 3)
 
-/obj/item/reagent_container/spray/proc/Spray_at(atom/A, var/mob/user)
+/obj/item/reagent_container/spray/proc/Spray_at(atom/A, mob/user)
 	var/obj/effect/decal/chempuff/D = new /obj/effect/decal/chempuff(get_turf(src))
 	D.create_reagents(amount_per_transfer_from_this)
 	reagents.trans_to(D, amount_per_transfer_from_this, 1 / spray_size)
@@ -75,7 +75,7 @@
 	D.source_user = user
 	D.move_towards(A, 3, spray_size)
 
-/obj/item/reagent_container/spray/attack_self(var/mob/user)
+/obj/item/reagent_container/spray/attack_self(mob/user)
 	..()
 
 	if(!possible_transfer_amounts)

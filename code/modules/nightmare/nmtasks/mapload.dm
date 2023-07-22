@@ -71,7 +71,7 @@
 	var/list/bounds = parsed.bounds
 	if(length(bounds) < 6)
 		return
-	var/list/TT = 	block(	locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
+	var/list/TT = block( locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
 							locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
 	var/list/area/arealist = list()
 	var/list/atom/atomlist = list()

@@ -3,7 +3,7 @@
 #define ANTIGRIEF_OPTION_NEW_PLAYERS "Enabled for New Players"
 #define ANTIGRIEF_OPTION_DISABLED "Disabled"
 
-/client/proc/cmd_mentor_check_new_players()	//Allows mentors / admins to determine who the newer players are.
+/client/proc/cmd_mentor_check_new_players() //Allows mentors / admins to determine who the newer players are.
 	set category = "Admin"
 	set name = "Check new Players"
 
@@ -63,18 +63,18 @@
 	var/mute_string
 
 	switch(mute_type)
-		if(MUTE_IC)			mute_string = "IC (say and emote)"
-		if(MUTE_OOC)		mute_string = "OOC"
-		if(MUTE_PRAY)		mute_string = "pray"
-		if(MUTE_ADMINHELP)	mute_string = "adminhelp, admin PM and ASAY"
-		if(MUTE_DEADCHAT)	mute_string = "deadchat and DSAY"
-		if(MUTE_ALL)		mute_string = "everything"
-		else				return FALSE
+		if(MUTE_IC) mute_string = "IC (say and emote)"
+		if(MUTE_OOC) mute_string = "OOC"
+		if(MUTE_PRAY) mute_string = "pray"
+		if(MUTE_ADMINHELP) mute_string = "adminhelp, admin PM and ASAY"
+		if(MUTE_DEADCHAT) mute_string = "deadchat and DSAY"
+		if(MUTE_ALL) mute_string = "everything"
+		else return FALSE
 
 	if(automute)
 		muteunmute = "auto-muted"
 		M.client.prefs.muted |= mute_type
-		message_staff("SPAM AUTOMUTE: [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
+		message_admins("SPAM AUTOMUTE: [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
 		to_chat(M, "You have been [muteunmute] from [mute_string] by the SPAM AUTOMUTE system. Contact an admin.")
 
 		return FALSE
@@ -86,7 +86,7 @@
 		muteunmute = "muted"
 		M.client.prefs.muted |= mute_type
 
-	message_staff("[key_name_admin(usr)] has [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
+	message_admins("[key_name_admin(usr)] has [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
 	to_chat(M, "You have been [muteunmute] from [mute_string].")
 
 /client/proc/toggle_own_ghost_vis()
@@ -124,15 +124,15 @@
 	switch(antigrief_choice)
 		if(ANTIGRIEF_OPTION_DISABLED)
 			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_DISABLED)
-			message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has disabled explosive antigrief."))
+			message_admins(FONT_SIZE_LARGE("[key_name_admin(usr)] has disabled explosive antigrief."))
 		if(ANTIGRIEF_OPTION_ENABLED)
-			message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has fully enabled explosive antigrief for all players."))
+			message_admins(FONT_SIZE_LARGE("[key_name_admin(usr)] has fully enabled explosive antigrief for all players."))
 			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_ENABLED)
 		if(ANTIGRIEF_OPTION_NEW_PLAYERS)
-			message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has enabled explosive antigrief for new players (less than 10 total human hours)."))
+			message_admins(FONT_SIZE_LARGE("[key_name_admin(usr)] has enabled explosive antigrief for new players (less than 10 total human hours)."))
 			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_NEW_PLAYERS)
 		else
-			message_staff(FONT_SIZE_LARGE("Error! [key_name_admin(usr)] attempted to toggle explosive antigrief but the selected value was [antigrief_choice]. Setting it to enabled."))
+			message_admins(FONT_SIZE_LARGE("Error! [key_name_admin(usr)] attempted to toggle explosive antigrief but the selected value was [antigrief_choice]. Setting it to enabled."))
 			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_ENABLED)
 
 /client/proc/check_explosive_antigrief()

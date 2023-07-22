@@ -1,4 +1,4 @@
-/mob/living/carbon/Xenomorph/proc/build_resin(var/atom/A, var/thick = FALSE, var/message = TRUE, var/use_plasma = TRUE, var/add_build_mod = 1)
+/mob/living/carbon/xenomorph/proc/build_resin(atom/A, thick = FALSE, message = TRUE, use_plasma = TRUE, add_build_mod = 1)
 	if(!selected_resin)
 		return SECRETE_RESIN_FAIL
 
@@ -12,7 +12,7 @@
 		return SECRETE_RESIN_FAIL
 	if(use_plasma && !check_plasma(total_resin_cost))
 		return SECRETE_RESIN_FAIL
-	if(GLOB.interior_manager.interior_z == z)
+	if(SSinterior.in_interior(src))
 		to_chat(src, SPAN_XENOWARNING("It's too tight in here to build."))
 		return SECRETE_RESIN_FAIL
 
@@ -138,24 +138,24 @@
 	var/atom/new_resin = RC.build(current_turf, hivenumber, src)
 	if(RC.max_per_xeno != RESIN_CONSTRUCTION_NO_MAX)
 		LAZYADD(built_structures[RC.build_path], new_resin)
-		RegisterSignal(new_resin, COMSIG_PARENT_QDELETING, .proc/remove_built_structure)
+		RegisterSignal(new_resin, COMSIG_PARENT_QDELETING, PROC_REF(remove_built_structure))
 
 	new_resin.add_hiddenprint(src) //so admins know who placed it
 
 	if(istype(new_resin, /turf/closed))
 		for(var/mob/living/carbon/human/enclosed_human in new_resin.contents)
 			if(enclosed_human.stat == DEAD)
-				msg_admin_niche("[src.ckey]/([src]) has built a closed resin structure, [new_resin.name], on top of a dead human, [enclosed_human.ckey]/([enclosed_human]), at [new_resin.x],[new_resin.y],[new_resin.z] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[new_resin.x];Y=[new_resin.y];Z=[new_resin.z]'>JMP</a>)")
+				msg_admin_niche("[src.ckey]/([src]) has built a closed resin structure, [new_resin.name], on top of a dead human, [enclosed_human.ckey]/([enclosed_human]), at [new_resin.x],[new_resin.y],[new_resin.z] [ADMIN_JMP(new_resin)]")
 
 	return SECRETE_RESIN_SUCCESS
 
-/mob/living/carbon/Xenomorph/proc/remove_built_structure(var/atom/A)
+/mob/living/carbon/xenomorph/proc/remove_built_structure(atom/A)
 	SIGNAL_HANDLER
 	LAZYREMOVE(built_structures[A.type], A)
 	if(!built_structures[A.type])
 		built_structures -= A.type
 
-/mob/living/carbon/Xenomorph/proc/place_construction(var/turf/current_turf, var/datum/construction_template/xenomorph/structure_template)
+/mob/living/carbon/xenomorph/proc/place_construction(turf/current_turf, datum/construction_template/xenomorph/structure_template)
 	if(!structure_template || !check_state() || action_busy)
 		return
 
@@ -171,7 +171,7 @@
 	if(hive.living_xeno_queen)
 		xeno_message("Hive: A new <b>[structure_template]<b> construction has been designated at [sanitize_area(current_area_name)]!", 3, hivenumber)
 
-/mob/living/carbon/Xenomorph/proc/make_marker(turf/target_turf)
+/mob/living/carbon/xenomorph/proc/make_marker(turf/target_turf)
 	if(!target_turf)
 		return FALSE
 	var/found_weeds = FALSE
@@ -197,14 +197,14 @@
 	if(!found_weeds)
 		to_chat(src, SPAN_XENOMINORWARNING("You made the resin mark on ground with no weeds, it will break soon without any."))
 
-	if(isXenoQueen(src))
+	if(isqueen(src))
 		NM.color = "#7a21c4"
 	else
 		NM.color = "#db6af1"
 	if(hive.living_xeno_queen)
 		var/current_area_name = get_area_name(target_turf)
 
-		for(var/mob/living/carbon/Xenomorph/X in hive.totalXenos)
+		for(var/mob/living/carbon/xenomorph/X in hive.totalXenos)
 			to_chat(X, SPAN_XENOANNOUNCE("[src.name] has declared: [NM.mark_meaning.desc] in [sanitize_area(current_area_name)]! (<a href='?src=\ref[X];overwatch=1;target=\ref[NM]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[NM]'>Track</a>)"))
 			//this is killing the tgui chat and I dont know why
 	return TRUE

@@ -15,11 +15,13 @@
 	/// a mob from using said action
 	var/hidden = FALSE
 	var/unique = TRUE
+	/// A signal on the mob that will cause the action to activate
+	var/listen_signal
 
 /datum/action/New(Target, override_icon_state)
 	target = Target
 	button = new
-	if(target)
+	if(target && isatom(target))
 		var/image/IMG = image(target.icon, button, target.icon_state)
 		IMG.pixel_x = 0
 		IMG.pixel_y = 0
@@ -42,6 +44,12 @@
 
 /datum/action/proc/action_activate()
 	return
+
+/// handler for when a keybind signal is received by the action, calls the action_activate proc asynchronous
+/datum/action/proc/keybind_activation()
+	SIGNAL_HANDLER
+	if(can_use_action())
+		INVOKE_ASYNC(src, PROC_REF(action_activate))
 
 /datum/action/proc/can_use_action()
 	if(hidden)
@@ -88,9 +96,11 @@
 		remove_from(owner)
 	SEND_SIGNAL(src, COMSIG_ACTION_GIVEN, L)
 	L.handle_add_action(src)
+	if(listen_signal)
+		RegisterSignal(L, listen_signal, PROC_REF(keybind_activation))
 	owner = L
 
-/mob/proc/handle_add_action(var/datum/action/action)
+/mob/proc/handle_add_action(datum/action/action)
 	LAZYADD(actions, action)
 	if(client)
 		client.screen += action.button
@@ -109,13 +119,13 @@
 	L.handle_remove_action(src)
 	owner = null
 
-/mob/proc/handle_remove_action(var/datum/action/action)
+/mob/proc/handle_remove_action(datum/action/action)
 	actions?.Remove(action)
 	if(client)
 		client.screen -= action.button
 	update_action_buttons()
 
-/mob/living/carbon/human/handle_remove_action(var/datum/action/action)
+/mob/living/carbon/human/handle_remove_action(datum/action/action)
 	if(selected_ability == action)
 		action.action_activate()
 	return ..()
@@ -151,7 +161,7 @@
 
 /datum/action/item_action
 	name = "Use item"
-	var/obj/item/holder_item	//the item that has this action in its list of actions. Is not necessarily the target
+	var/obj/item/holder_item //the item that has this action in its list of actions. Is not necessarily the target
 								//e.g. gun attachment action: target = attachment, holder = gun.
 	unique = FALSE
 

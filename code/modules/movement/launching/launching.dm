@@ -21,8 +21,13 @@
 	// Tracked information
 	var/dist = 0
 
+/datum/launch_metadata/Destroy(force, ...)
+	target = null
+	thrower = null
+	return ..()
 
-/datum/launch_metadata/proc/get_collision_callbacks(var/atom/A)
+
+/datum/launch_metadata/proc/get_collision_callbacks(atom/A)
 	var/highest_matching = null
 	var/list/matching = list()
 
@@ -75,31 +80,31 @@
 	throwing = FALSE
 	rebounding = FALSE
 
-/atom/movable/proc/mob_launch_collision(var/mob/living/L)
+/atom/movable/proc/mob_launch_collision(mob/living/L)
 	if (!rebounding)
 		L.hitby(src)
 
-/atom/movable/proc/obj_launch_collision(var/obj/O)
-	if (!O.anchored && !rebounding && !isXeno(src))
+/atom/movable/proc/obj_launch_collision(obj/O)
+	if (!O.anchored && !rebounding && !isxeno(src))
 		O.Move(get_step(O, dir))
 	else if (!rebounding && rebounds)
 		var/oldloc = loc
 		var/launched_speed = cur_speed
-		addtimer(CALLBACK(src, .proc/rebound, oldloc, launched_speed), 0.5)
+		addtimer(CALLBACK(src, PROC_REF(rebound), oldloc, launched_speed), 0.5)
 
 	if (!rebounding)
 		O.hitby(src)
 
-/atom/movable/proc/turf_launch_collision(var/turf/T)
+/atom/movable/proc/turf_launch_collision(turf/T)
 	if (!rebounding && rebounds)
 		var/oldloc = loc
 		var/launched_speed = cur_speed
-		addtimer(CALLBACK(src, .proc/rebound, oldloc, launched_speed), 0.5)
+		addtimer(CALLBACK(src, PROC_REF(rebound), oldloc, launched_speed), 0.5)
 
 	if (!rebounding)
 		T.hitby(src)
 
-/atom/movable/proc/rebound(var/oldloc, var/launched_speed)
+/atom/movable/proc/rebound(oldloc, launched_speed)
 	if (loc == oldloc)
 		rebounding = TRUE
 		var/datum/launch_metadata/LM = new()
@@ -111,11 +116,11 @@
 
 		launch_towards(LM)
 
-/atom/movable/proc/try_to_throw(var/mob/living/user)
+/atom/movable/proc/try_to_throw(mob/living/user)
 	return TRUE
 
 // Proc for throwing items (should only really be used for throw)
-/atom/movable/proc/throw_atom(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
+/atom/movable/proc/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS)
 	var/temp_pass_flags = pass_flags
 	switch (launch_type)
 		if (NORMAL_LAUNCH)
@@ -137,7 +142,7 @@
 	launch_towards(LM)
 
 // Proc for throwing or propelling movable atoms towards a target
-/atom/movable/proc/launch_towards(var/datum/launch_metadata/LM)
+/atom/movable/proc/launch_towards(datum/launch_metadata/LM)
 	if (!istype(LM))
 		CRASH("invalid launch_metadata passed to launch_towards")
 	if (!LM.target || !src)
@@ -207,3 +212,17 @@
 					CB.Invoke(src)
 				else
 					CB.Invoke()
+	QDEL_NULL(launch_metadata)
+
+/atom/movable/proc/throw_random_direction(range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS)
+	var/throw_direction = pick(CARDINAL_ALL_DIRS)
+
+	var/turf/furthest_turf = get_turf(src)
+	var/turf/temp_turf = get_turf(src)
+	for (var/x in 1 to range)
+		temp_turf = get_step(furthest_turf, throw_direction)
+		if (!temp_turf)
+			break
+		furthest_turf = temp_turf
+
+	throw_atom(furthest_turf, range, speed, thrower, spin, launch_type, pass_flags)

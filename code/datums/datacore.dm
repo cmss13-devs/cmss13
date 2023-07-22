@@ -33,7 +33,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		departments += marines_by_squad
 		var/list/manifest_out = list()
 		for(var/datum/data/record/t in GLOB.data_core.general)
-			if(t.fields["mob_faction"] != FACTION_MARINE)	//we process only USCM humans
+			if(t.fields["mob_faction"] != FACTION_MARINE) //we process only USCM humans
 				continue
 			var/name = t.fields["name"]
 			var/rank = t.fields["rank"]
@@ -86,7 +86,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/list/squad_sublists = ROLES_SQUAD_ALL.Copy() //Are there any marines in the squad?
 
 	for(var/datum/data/record/t in GLOB.data_core.general)
-		if(t.fields["mob_faction"] != FACTION_MARINE)	//we process only USCM humans
+		if(t.fields["mob_faction"] != FACTION_MARINE) //we process only USCM humans
 			continue
 
 		var/name = t.fields["name"]
@@ -197,7 +197,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	dat = replacetext(dat, "\t", "")
 	return dat
 
-/datum/datacore/proc/manifest(var/nosleep = 0)
+/datum/datacore/proc/manifest(nosleep = 0)
 	spawn()
 		if(!nosleep)
 			sleep(40)
@@ -226,43 +226,46 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	if(foundrecord)
 		if(assignment)
 			foundrecord.fields["rank"] = assignment
-		if (rank)
+		if(rank)
 			foundrecord.fields["real_rank"] = rank
-		if (p_stat)
+		if(p_stat)
 			foundrecord.fields["p_stat"] = p_stat
+		if(!use_name)
+			if(name)
+				foundrecord.fields["name"] = name
 		return TRUE
 	return FALSE
 
-/datum/datacore/proc/manifest_inject(var/mob/living/carbon/human/H)
+/datum/datacore/proc/manifest_inject(mob/living/carbon/human/H)
 	var/assignment
 	if(H.job)
 		assignment = H.job
 	else
 		assignment = "Unassigned"
 
-	var/id = add_zero(num2hex(H.gid), 6)	//this was the best they could come up with? A large random number? *sigh*
+	var/id = add_zero(num2hex(H.gid), 6) //this was the best they could come up with? A large random number? *sigh*
 	//var/icon/front = new(get_id_photo(H), dir = SOUTH)
 	//var/icon/side = new(get_id_photo(H), dir = WEST)
 
 	//General Record
 	var/datum/data/record/G = new()
-	G.fields["id"]			= id
-	G.fields["name"]		= H.real_name
-	G.fields["real_rank"]	= H.job
-	G.fields["rank"]		= assignment
-	G.fields["squad"]		= H.assigned_squad ? H.assigned_squad.name : null
-	G.fields["age"]			= H.age
-	G.fields["p_stat"]		= "Active"
-	G.fields["m_stat"]		= "Stable"
-	G.fields["sex"]			= H.gender
-	G.fields["species"]		= H.get_species()
-	G.fields["origin"]		= H.origin
-	G.fields["faction"]		= H.personal_faction
-	G.fields["mob_faction"]	= H.faction
-	G.fields["religion"]	= H.religion
-	G.fields["ref"]			= WEAKREF(H)
-	//G.fields["photo_front"]	= front
-	//G.fields["photo_side"]	= side
+	G.fields["id"] = id
+	G.fields["name"] = H.real_name
+	G.fields["real_rank"] = H.job
+	G.fields["rank"] = assignment
+	G.fields["squad"] = H.assigned_squad ? H.assigned_squad.name : null
+	G.fields["age"] = H.age
+	G.fields["p_stat"] = "Active"
+	G.fields["m_stat"] = "Stable"
+	G.fields["sex"] = H.gender
+	G.fields["species"] = H.get_species()
+	G.fields["origin"] = H.origin
+	G.fields["faction"] = H.personal_faction
+	G.fields["mob_faction"] = H.faction
+	G.fields["religion"] = H.religion
+	G.fields["ref"] = WEAKREF(H)
+	//G.fields["photo_front"] = front
+	//G.fields["photo_side"] = side
 
 	if(H.gen_record && !jobban_isbanned(H, "Records"))
 		G.fields["notes"] = H.gen_record
@@ -272,22 +275,22 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 
 	//Medical Record
 	var/datum/data/record/M = new()
-	M.fields["id"]					= id
-	M.fields["name"]				= H.real_name
-	M.fields["b_type"]				= H.blood_type
-	M.fields["mi_dis"]				= "None"
-	M.fields["mi_dis_d"]			= "No minor disabilities have been declared."
-	M.fields["ma_dis"]				= "None"
-	M.fields["ma_dis_d"]			= "No major disabilities have been diagnosed."
-	M.fields["alg"]					= "None"
-	M.fields["alg_d"]				= "No allergies have been detected in this patient."
-	M.fields["cdi"]					= "None"
-	M.fields["cdi_d"]				= "No diseases have been diagnosed at the moment."
-	M.fields["last_scan_time"]		= null
-	M.fields["last_scan_result"]	= "No scan data on record" // body scanner results
-	M.fields["autodoc_data"]		= list()
-	M.fields["autodoc_manual"]		= list()
-	M.fields["ref"]					= WEAKREF(H)
+	M.fields["id"] = id
+	M.fields["name"] = H.real_name
+	M.fields["b_type"] = H.blood_type
+	M.fields["mi_dis"] = "None"
+	M.fields["mi_dis_d"] = "No minor disabilities have been declared."
+	M.fields["ma_dis"] = "None"
+	M.fields["ma_dis_d"] = "No major disabilities have been diagnosed."
+	M.fields["alg"] = "None"
+	M.fields["alg_d"] = "No allergies have been detected in this patient."
+	M.fields["cdi"] = "None"
+	M.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
+	M.fields["last_scan_time"] = null
+	M.fields["last_scan_result"] = "No scan data on record" // body scanner results
+	M.fields["autodoc_data"] = list()
+	M.fields["autodoc_manual"] = list()
+	M.fields["ref"] = WEAKREF(H)
 
 	if(H.med_record && !jobban_isbanned(H, "Records"))
 		M.fields["notes"] = H.med_record
@@ -297,26 +300,32 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 
 	//Security Record
 	var/datum/data/record/S = new()
-	S.fields["id"]			= id
-	S.fields["name"]		= H.real_name
-	S.fields["criminal"]	= "None"
-	S.fields["incident"]	= ""
-	S.fields["ref"]			= WEAKREF(H)
+	S.fields["id"] = id
+	S.fields["name"] = H.real_name
+	S.fields["criminal"] = "None"
+	S.fields["incident"] = ""
+	S.fields["ref"] = WEAKREF(H)
+
+	if(H.sec_record && !jobban_isbanned(H, "Records"))
+		var/new_comment = list("entry" = H.sec_record, "created_by" = list("name" = "\[REDACTED\]", "rank" = "Military Police"), "deleted_by" = null, "deleted_at" = null, "created_at" = "Pre-Deployment")
+		S.fields["comments"] = list("1" = new_comment)
+		S.fields["notes"] = H.sec_record
 	security += S
+
 
 	//Locked Record
 	var/datum/data/record/L = new()
-	L.fields["id"]			= md5("[H.real_name][H.job]")
-	L.fields["name"]		= H.real_name
-	L.fields["rank"] 		= H.job
-	L.fields["age"]			= H.age
-	L.fields["sex"]			= H.gender
-	L.fields["b_type"]		= H.b_type
-	L.fields["species"]		= H.get_species()
-	L.fields["origin"]		= H.origin
-	L.fields["faction"]		= H.personal_faction
-	L.fields["religion"]	= H.religion
-	L.fields["ref"]			= WEAKREF(H)
+	L.fields["id"] = md5("[H.real_name][H.job]")
+	L.fields["name"] = H.real_name
+	L.fields["rank"] = H.job
+	L.fields["age"] = H.age
+	L.fields["sex"] = H.gender
+	L.fields["b_type"] = H.b_type
+	L.fields["species"] = H.get_species()
+	L.fields["origin"] = H.origin
+	L.fields["faction"] = H.personal_faction
+	L.fields["religion"] = H.religion
+	L.fields["ref"] = WEAKREF(H)
 
 	if(H.exploit_record && !jobban_isbanned(H, "Records"))
 		L.fields["exploit_record"] = H.exploit_record
@@ -325,12 +334,12 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	locked += L
 
 
-proc/get_id_photo(var/mob/living/carbon/human/H)
+/proc/get_id_photo(mob/living/carbon/human/H)
 	var/icon/preview_icon = null
 
 	//var/g = "m"
 	//if (H.gender == FEMALE)
-	//	g = "f"
+	// g = "f"
 
 	var/icon/icobase = H.species.icobase
 	var/icon/temp

@@ -23,9 +23,9 @@
 	health = 750
 	acid_resistant = TRUE
 
-	move_max_momentum = 5	//same top speed, but takes 5 tiles to reach it
+	move_max_momentum = 5 //same top speed, but takes 5 tiles to reach it
 
-/obj/item/hardpoint/locomotion/treads/on_install(var/obj/vehicle/multitile/V)
+/obj/item/hardpoint/locomotion/treads/on_install(obj/vehicle/multitile/V)
 	for(var/obj/item/hardpoint/support/overdrive_enhancer/OD in V.hardpoints)
 		if(OD.health > 0)
 			OD.apply_buff(V)

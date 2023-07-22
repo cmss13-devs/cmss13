@@ -6,10 +6,10 @@
 	icon_state = "computer_generic"
 	density = TRUE
 	circuit = /obj/item/circuitboard/computer/pod
-	var/id = 1.0
+	var/id = 1
 	var/obj/structure/machinery/mass_driver/connected = null
-	var/timing = 0.0
-	var/time = 30.0
+	var/timing = 0
+	var/time = 30
 	var/title = "Mass Driver Controls"
 	processing = TRUE
 
@@ -51,10 +51,10 @@
 			return
 	return
 
-/obj/structure/machinery/computer/pod/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/pod/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/pod/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/pod/attack_hand(mob/user as mob)
 	if(..())
 		return
 
@@ -62,7 +62,7 @@
 	user.set_interaction(src)
 	if(connected)
 		var/d2
-		if(timing)	//door controls do not need timers.
+		if(timing) //door controls do not need timers.
 			d2 = "<A href='?src=\ref[src];time=0'>Stop Time Launch</A>"
 		else
 			d2 = "<A href='?src=\ref[src];time=1'>Initiate Time Launch</A>"
@@ -136,19 +136,17 @@
 
 
 /obj/structure/machinery/computer/pod/old
-	icon_state = "old"
 	name = "DoorMex Control Computer"
 	title = "Door Controls"
-
-
 
 /obj/structure/machinery/computer/pod/old/syndicate
 	name = "ProComp Executive IIc"
 	desc = "The Syndicate operate on a tight budget. Operates external airlocks."
+	icon_state = "syndicomp"
 	title = "External Airlock Controls"
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
 
-/obj/structure/machinery/computer/pod/old/syndicate/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/pod/old/syndicate/attack_hand(mob/user as mob)
 	if(!allowed(user))
 		to_chat(user, SPAN_DANGER("Access Denied"))
 		return
@@ -157,4 +155,5 @@
 
 /obj/structure/machinery/computer/pod/old/swf
 	name = "Magix System IV"
+	icon_state = "wizard"
 	desc = "An arcane artifact that holds much magic. Running E-Knock 2.2: Sorceror's Edition"

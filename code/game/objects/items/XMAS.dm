@@ -37,10 +37,12 @@
 			to_chat(H, SPAN_DANGER("You've ruined Christmas for [H.opened_gift] marines now..."))
 
 		H.opened_gift++
-	var fancy = rand(1,100) //Check if it has the possibility of being a FANCY present
-	var exFancy = rand(1,20) // Checks if it might be one of the ULTRA fancy presents.
-	var gift_type = /obj/item/storage/fancy/crayons   //Default, just in case
-
+	/// Check if it has the possibility of being a FANCY present
+	var fancy = rand(1,100)
+	/// Checks if it might be one of the ULTRA fancy presents.
+	var exFancy = rand(1,20)
+	/// Default, just in case
+	var gift_type = /obj/item/storage/fancy/crayons
 	if(fancy > 90)
 		if(exFancy == 1)
 			to_chat(M, SPAN_NOTICE(" Just what the fuck is it???"))
@@ -64,9 +66,9 @@
 			gift_type = pick(
 			/obj/item/weapon/gun/revolver/mateba,
 			/obj/item/weapon/gun/pistol/heavy,
-			/obj/item/weapon/melee/claymore,
-			/obj/item/weapon/melee/energy/sword/green,
-			/obj/item/weapon/melee/energy/sword/red,
+			/obj/item/weapon/claymore,
+			/obj/item/weapon/energy/sword/green,
+			/obj/item/weapon/energy/sword/red,
 			/obj/item/attachable/heavy_barrel,
 			/obj/item/attachable/extended_barrel,
 			/obj/item/attachable/burstfire_assembly,
@@ -94,7 +96,7 @@
 		/obj/item/poster,
 		/obj/item/toy/bikehorn,
 		/obj/item/toy/beach_ball,
-		/obj/item/weapon/melee/banhammer,
+		/obj/item/weapon/banhammer,
 		/obj/item/toy/crossbow,
 		/obj/item/toy/gun,
 		/obj/item/toy/katana,
@@ -111,6 +113,9 @@
 		/obj/item/toy/prize/seraph,
 		/obj/item/toy/spinningtoy,
 		/obj/item/clothing/accessory/horrible,
+		/obj/item/clothing/shoes/slippers,
+		/obj/item/clothing/shoes/slippers_worn,
+		/obj/item/clothing/head/collectable/tophat/super,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/reddot,
@@ -122,7 +127,7 @@
 		/obj/item/attachable/stock/rifle,
 		/obj/item/attachable/scope)
 
-	if(!ispath(gift_type,/obj/item))	return
+	if(!ispath(gift_type,/obj/item)) return
 	to_chat(M, SPAN_NOTICE(" At least it's something..."))
 	var/obj/item/I = new gift_type(M)
 	M.temp_drop_inv_item(src)

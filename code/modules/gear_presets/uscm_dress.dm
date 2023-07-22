@@ -15,13 +15,13 @@
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/dress)
 
-/datum/equipment_preset/uscm_event/dress/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/dress/blues(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/dress(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/marine/dress_cover(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/dress/blues(H), WEAR_JACKET)
+/datum/equipment_preset/uscm_event/dress/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/dress/blues(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/dress(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/marine/dress_cover(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/dress/blues(new_human), WEAR_JACKET)
 
 /datum/equipment_preset/uscm_event/dress/lcpl
 	name = "Dress Blues - (E-3) Lance Corporal"
@@ -37,9 +37,9 @@
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
 
-/datum/equipment_preset/uscm_event/dress/nco/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/dress/blues/senior(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco(H), WEAR_JACKET)
+/datum/equipment_preset/uscm_event/dress/nco/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/dress/blues/senior(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco(new_human), WEAR_JACKET)
 	. = ..()
 
 /datum/equipment_preset/uscm_event/dress/nco/sgt
@@ -50,10 +50,10 @@
 	name = "Dress Blues - (E-6) Staff Sergeant"
 	paygrade = "ME6"
 	skills = /datum/skills/SEA
-	access = list(ACCESS_MARINE_COMMANDER, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP)
 
-/datum/equipment_preset/uscm_event/dress/nco/snco/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
+/datum/equipment_preset/uscm_event/dress/nco/snco/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(new_human), WEAR_L_EAR)
 	. = ..()
 
 /datum/equipment_preset/uscm_event/dress/nco/snco/gysgt
@@ -83,7 +83,7 @@
 	paygrade = "MO1"
 	idtype = /obj/item/card/id/silver
 	skills = /datum/skills/SO
-	access = list(ACCESS_MARINE_COMMANDER, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_MEDBAY)
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
@@ -91,11 +91,11 @@
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/dress)
 
-/datum/equipment_preset/uscm_event/dress/officer/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/dress/blues/senior(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/marine/dress_cover/officer(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
+/datum/equipment_preset/uscm_event/dress/officer/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/dress/blues/senior(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/marine/dress_cover/officer(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
 	. = ..()
 
 /datum/equipment_preset/uscm_event/dress/officer/firstlt
@@ -111,7 +111,7 @@
 
 /datum/equipment_preset/uscm_event/dress/officer/capt/New()
 	. = ..()
-	access = get_all_marine_access() - ACCESS_MARINE_CAPTAIN
+	access = get_main_marine_access()
 
 /datum/equipment_preset/uscm_event/dress/officer/co
 	name = "Dress Blues - (O-4) Major"
@@ -147,9 +147,9 @@
 	. = ..()
 	access = get_all_marine_access()
 
-/datum/equipment_preset/uscm_event/dress/officer/general/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/dress/blues/general(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom(H), WEAR_L_EAR)
+/datum/equipment_preset/uscm_event/dress/officer/general/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/dress/blues/general(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom(new_human), WEAR_L_EAR)
 	. = ..()
 
 

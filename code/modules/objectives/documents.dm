@@ -10,7 +10,7 @@
 	state = OBJECTIVE_ACTIVE
 	controller = TREE_MARINE
 
-/datum/cm_objective/document/New(var/obj/item/document_objective/D)
+/datum/cm_objective/document/New(obj/item/document_objective/D)
 	. = ..()
 	document = D
 	initial_area = get_area(document)
@@ -27,7 +27,7 @@
 /datum/cm_objective/document/get_related_label()
 	return document.label
 
-/datum/cm_objective/document/complete(var/mob/living/carbon/human/user)
+/datum/cm_objective/document/complete(mob/living/carbon/human/user)
 	. = ..()
 
 	SSobjectives.statistics["documents_total_points_earned"] += value

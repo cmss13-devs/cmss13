@@ -2,7 +2,7 @@
 
 /obj/item/stack/flag
 	name = "flags"
-	desc = "Some colourful flags."
+	desc = "Some colorful flags."
 	singular_name = "flag"
 	amount = 10
 	max_amount = 10
@@ -50,7 +50,7 @@
 	if(upright)
 		upright = 0
 		icon_state = base_state
-		anchored = 0
+		anchored = FALSE
 		src.visible_message("<b>[user]</b> knocks down [src].")
 	else
 		..()

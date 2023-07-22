@@ -3,8 +3,8 @@
 	singular_name = "light floor tile"
 	desc = "A floor tile, made out of glass. It produces light."
 	icon_state = "tile_e"
-	force = 3.0
-	throwforce = 5.0
+	force = 3
+	throwforce = 5
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "smashed")
 	stack_id = "light floor tile"
 	turf_type = /turf/open/floor/light

@@ -118,7 +118,7 @@
 	if (timeout)
 		src.timeout = timeout
 		start_time = world.time
-		QDEL_REF_IN(src, timeout)
+		QDEL_IN(src, timeout)
 
 /datum/tgui_list_input/Destroy(force, ...)
 	SStgui.close_uis(src)

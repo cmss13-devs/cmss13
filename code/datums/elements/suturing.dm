@@ -41,7 +41,7 @@
 	description_pain = desc_pain
 	description_wounds = desc_wounds
 
-	RegisterSignal(target, list(COMSIG_ITEM_ATTACK, COMSIG_ITEM_ATTACK_SELF), .proc/begin_suture)
+	RegisterSignal(target, list(COMSIG_ITEM_ATTACK, COMSIG_ITEM_ATTACK_SELF), PROC_REF(begin_suture))
 
 /datum/element/suturing/Detach(datum/source, force)
 	UnregisterSignal(source, list(COMSIG_ITEM_ATTACK, COMSIG_ITEM_ATTACK_SELF))
@@ -63,7 +63,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 		to_chat(user, SPAN_WARNING("You don't know how to [description_verb] [user == target ? "yourself" : target] with \the [suturing_item]!"))
 		return
 
-	INVOKE_ASYNC(src, .proc/suture, suturing_item, user, target, target.get_limb(check_zone(user.zone_selected))) //do_after sleeps.
+	INVOKE_ASYNC(src, PROC_REF(suture), suturing_item, user, target, target.get_limb(check_zone(user.zone_selected))) //do_after sleeps.
 	return COMPONENT_CANCEL_ATTACK
 
 /datum/element/suturing/proc/suture(obj/item/suturing_item, mob/living/carbon/user, mob/living/carbon/human/target, obj/limb/target_limb, looping)
@@ -139,7 +139,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 		if(user != target)
 			to_chat(user, SPAN_DANGER("[target] couldn't hold still through the pain of the [description_verbing]!"))
 		to_chat(target, SPAN_DANGER("The pain was too much, you couldn't hold still!"))
-		INVOKE_ASYNC(target, /mob.proc/emote, "pain")
+		INVOKE_ASYNC(target, TYPE_PROC_REF(/mob, emote), "pain")
 		return
 
 	/*Adjust suture time by how much damage we're going to remove. This does technically have a loophole where you could start a suture for ~5 damage and then
@@ -153,10 +153,10 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 		return
 
 	//Add the sutures.
-	var/added_sutures =	SEND_SIGNAL(target_limb, COMSIG_LIMB_ADD_SUTURES, suture_brute, suture_burn)
+	var/added_sutures = SEND_SIGNAL(target_limb, COMSIG_LIMB_ADD_SUTURES, suture_brute, suture_burn)
 	if(!added_sutures) //No suture datum to answer the signal
 		new /datum/suture_handler(target_limb)
-		added_sutures =	SEND_SIGNAL(target_limb, COMSIG_LIMB_ADD_SUTURES, suture_brute, suture_burn) //This time, with feeling.
+		added_sutures = SEND_SIGNAL(target_limb, COMSIG_LIMB_ADD_SUTURES, suture_brute, suture_burn) //This time, with feeling.
 
 	if(added_sutures & SUTURED_FULLY)
 		user.affected_message(target,
@@ -185,10 +185,10 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 	. = ..()
 	remaining_brute = target_limb.brute_dam
 	remaining_burn = target_limb.burn_dam
-	RegisterSignal(target_limb, COMSIG_LIMB_TAKEN_DAMAGE, .proc/update_sutures)
-	RegisterSignal(target_limb, COMSIG_LIMB_ADD_SUTURES, .proc/add_sutures)
-	RegisterSignal(target_limb, COMSIG_LIMB_SUTURE_CHECK, .proc/check_sutures)
-	RegisterSignal(target_limb, COMSIG_LIMB_REMOVE_SUTURES, .proc/remove_sutures)
+	RegisterSignal(target_limb, COMSIG_LIMB_TAKEN_DAMAGE, PROC_REF(update_sutures))
+	RegisterSignal(target_limb, COMSIG_LIMB_ADD_SUTURES, PROC_REF(add_sutures))
+	RegisterSignal(target_limb, COMSIG_LIMB_SUTURE_CHECK, PROC_REF(check_sutures))
+	RegisterSignal(target_limb, COMSIG_LIMB_REMOVE_SUTURES, PROC_REF(remove_sutures))
 
 ///Unregisters datum. The signals are the only references to this.
 /datum/suture_handler/proc/remove_sutures(obj/limb/target_limb)

@@ -37,7 +37,7 @@
 
 
 	/*
-/datum/character_trait/skills/
+/datum/character_trait/skills
 	trait_name = ""
 	trait_desc = ""
 	skill =

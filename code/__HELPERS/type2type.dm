@@ -1,11 +1,11 @@
 /*
  * Holds procs designed to change one type of value, into another.
  * Contains:
- *			hex2num & num2hex
- *			file2list
- *			angle2dir
- *			angle2text
- *			worldtime2text
+ * hex2num & num2hex
+ * file2list
+ * angle2dir
+ * angle2text
+ * worldtime2text
  */
 
 //Returns an integer given a hex input
@@ -169,71 +169,70 @@
 	return
 
 //Converts an angle (degrees) into an ss13 direction
-/proc/angle2dir(var/degree)
+/proc/angle2dir(degree)
 	degree = ((degree+22.5)%365)
-	if(degree < 45)		return NORTH
-	if(degree < 90)		return NORTHEAST
-	if(degree < 135)	return EAST
-	if(degree < 180)	return SOUTHEAST
-	if(degree < 225)	return SOUTH
-	if(degree < 270)	return SOUTHWEST
-	if(degree < 315)	return WEST
+	if(degree < 45) return NORTH
+	if(degree < 90) return NORTHEAST
+	if(degree < 135) return EAST
+	if(degree < 180) return SOUTHEAST
+	if(degree < 225) return SOUTH
+	if(degree < 270) return SOUTHWEST
+	if(degree < 315) return WEST
 	return NORTHWEST
 
 //returns the north-zero clockwise angle in degrees, given a direction
 
-/proc/dir2angle(var/D)
+/proc/dir2angle(D)
 	switch(D)
-		if(NORTH)		return 0
-		if(SOUTH)		return 180
-		if(EAST)		return 90
-		if(WEST)		return 270
-		if(NORTHEAST)	return 45
-		if(SOUTHEAST)	return 135
-		if(NORTHWEST)	return 315
-		if(SOUTHWEST)	return 225
-		else			return null
+		if(NORTH) return 0
+		if(SOUTH) return 180
+		if(EAST) return 90
+		if(WEST) return 270
+		if(NORTHEAST) return 45
+		if(SOUTHEAST) return 135
+		if(NORTHWEST) return 315
+		if(SOUTHWEST) return 225
+		else return null
 
 //returns a number to be used to index lists; based off dmi direction ordering: 1:SOUTH(2) 2:NORTH(1) 3:EAST(4) 4:WEST(8) etc...
 
-/proc/dir2indexnum(var/D)
+/proc/dir2indexnum(D)
 	switch(D)
-		if(NORTH)		return 2
-		if(SOUTH)		return 1
-		if(EAST)		return 3
-		if(WEST)		return 4
-		if(NORTHEAST)	return 7
-		if(SOUTHEAST)	return 5
-		if(NORTHWEST)	return 8
-		if(SOUTHWEST)	return 6
-		else			return null
+		if(NORTH) return 2
+		if(SOUTH) return 1
+		if(EAST) return 3
+		if(WEST) return 4
+		if(NORTHEAST) return 7
+		if(SOUTHEAST) return 5
+		if(NORTHWEST) return 8
+		if(SOUTHWEST) return 6
+		else return null
 
 //Converts a blend_mode constant to one acceptable to icon.Blend()
 /proc/blendMode2iconMode(blend_mode)
 	switch(blend_mode)
 		if(BLEND_MULTIPLY) return ICON_MULTIPLY
-		if(BLEND_ADD)      return ICON_ADD
+		if(BLEND_ADD)   return ICON_ADD
 		if(BLEND_SUBTRACT) return ICON_SUBTRACT
-		else               return ICON_OVERLAY
+		else    return ICON_OVERLAY
 
 //Converts a rights bitfield into a string
 /proc/rights2text(rights,seperator="")
-	if(rights & R_BUILDMODE)	. += "[seperator]+BUILDMODE"
-	if(rights & R_ADMIN)		. += "[seperator]+ADMIN"
-	if(rights & R_BAN)			. += "[seperator]+BAN"
-	if(rights & R_SERVER)		. += "[seperator]+SERVER"
-	if(rights & R_DEBUG)		. += "[seperator]+DEBUG"
-	if(rights & R_POSSESS)		. += "[seperator]+POSSESS"
-	if(rights & R_PERMISSIONS)	. += "[seperator]+PERMISSIONS"
-	if(rights & R_STEALTH)		. += "[seperator]+STEALTH"
-	if(rights & R_REJUVINATE)	. += "[seperator]+REJUVINATE"
-	if(rights & R_COLOR)		. += "[seperator]+COLOR"
-	if(rights & R_VAREDIT)		. += "[seperator]+VAREDIT"
-	if(rights & R_SOUNDS)		. += "[seperator]+SOUND"
-	if(rights & R_SPAWN)		. += "[seperator]+SPAWN"
-	if(rights & R_MOD)			. += "[seperator]+MODERATOR"
-	if(rights & R_MENTOR)		. += "[seperator]+MENTOR"
-	if(rights & R_NOLOCK)		. += "[seperator]+NOLOCK"
+	if(rights & R_BUILDMODE) . += "[seperator]+BUILDMODE"
+	if(rights & R_ADMIN) . += "[seperator]+ADMIN"
+	if(rights & R_BAN) . += "[seperator]+BAN"
+	if(rights & R_SERVER) . += "[seperator]+SERVER"
+	if(rights & R_DEBUG) . += "[seperator]+DEBUG"
+	if(rights & R_POSSESS) . += "[seperator]+POSSESS"
+	if(rights & R_PERMISSIONS) . += "[seperator]+PERMISSIONS"
+	if(rights & R_STEALTH) . += "[seperator]+STEALTH"
+	if(rights & R_COLOR) . += "[seperator]+COLOR"
+	if(rights & R_VAREDIT) . += "[seperator]+VAREDIT"
+	if(rights & R_SOUNDS) . += "[seperator]+SOUND"
+	if(rights & R_SPAWN) . += "[seperator]+SPAWN"
+	if(rights & R_MOD) . += "[seperator]+MODERATOR"
+	if(rights & R_MENTOR) . += "[seperator]+MENTOR"
+	if(rights & R_NOLOCK) . += "[seperator]+NOLOCK"
 	return .
 
 /// Return html to load a url.
@@ -277,3 +276,58 @@
 		else //regex everything else (works for /proc too)
 			return lowertext(replacetext("[the_type]", "[type2parent(the_type)]/", ""))
 
+
+//This is a weird one:
+//It returns a list of all var names found in the string
+//These vars must be in the [var_name] format
+//It's only a proc because it's used in more than one place
+
+//Takes a string and a datum
+//The string is well, obviously the string being checked
+//The datum is used as a source for var names, to check validity
+//Otherwise every single word could technically be a variable!
+/proc/string2listofvars(t_string, datum/var_source)
+	if(!t_string || !var_source)
+		return list()
+
+	. = list()
+
+	var/var_found = findtext(t_string,"\[") //Not the actual variables, just a generic "should we even bother" check
+	if(var_found)
+		//Find var names
+
+		// "A dog said hi [name]!"
+		// splittext() --> list("A dog said hi ","name]!"
+		// jointext() --> "A dog said hi name]!"
+		// splittext() --> list("A","dog","said","hi","name]!")
+
+		t_string = replacetext(t_string,"\[","\[ ")//Necessary to resolve "word[var_name]" scenarios
+		var/list/list_value = splittext(t_string,"\[")
+		var/intermediate_stage = jointext(list_value, null)
+
+		list_value = splittext(intermediate_stage," ")
+		for(var/value in list_value)
+			if(findtext(value,"]"))
+				value = splittext(value,"]") //"name]!" --> list("name","!")
+				for(var/A in value)
+					if(var_source.vars.Find(A))
+						. += A
+
+/// Formats a larger number to correct textual representation without losing data
+/proc/big_number_to_text(number)
+	return num2text(number, INFINITY)
+
+/proc/text2list(text, delimiter="\n")
+	var/delim_len = length(delimiter)
+	if (delim_len < 1)
+		return list(text)
+
+	. = list()
+	var/last_found = 1
+	var/found
+
+	do
+		found       = findtext(text, delimiter, last_found, 0)
+		.          += copytext(text, last_found, found)
+		last_found  = found + delim_len
+	while (found)

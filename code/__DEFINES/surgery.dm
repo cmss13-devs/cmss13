@@ -52,7 +52,7 @@ unless the surgical tool is completely unsuited to what it's being used for.*/
 
 
 /////////////////////////////
-//	 	SURGICAL TOOLS	   //
+// SURGICAL TOOLS    //
 /////////////////////////////
 
 //Lists of tools and surgery time multipliers when using them. These are shared lists - a number of steps have their own individual lists.
@@ -73,7 +73,7 @@ unless the surgical tool is completely unsuited to what it's being used for.*/
 	)
 
 /////////////////////////////
-//	 	CUT AND SEAL	   //
+// CUT AND SEAL    //
 /////////////////////////////
 
 /**Tools used to open incisions or cut flesh. IMS listed separately as the generic incision surgery uses it to skip steps.
@@ -92,7 +92,7 @@ See also /datum/surgery_step/cut_larval_pseudoroots, /datum/surgery_step/retract
 ///Tools used to close incisions. May need surgical line in future. Check /datum/surgery_step/cauterize var/tools_lit if adding activatable tools.
 #define SURGERY_TOOLS_CAUTERIZE list(\
 	/obj/item/tool/surgery/cautery = SURGERY_TOOL_MULT_IDEAL,\
-	/obj/item/tool/surgery/wound_clamp	= SURGERY_TOOL_MULT_IDEAL,\
+	/obj/item/tool/surgery/wound_clamp = SURGERY_TOOL_MULT_IDEAL,\
 	/obj/item/tool/surgery/scalpel/laser = SURGERY_TOOL_MULT_IDEAL,\
 	/obj/item/clothing/mask/cigarette = SURGERY_TOOL_MULT_SUBOPTIMAL,\
 	/obj/item/tool/lighter = SURGERY_TOOL_MULT_SUBSTITUTE,\
@@ -100,7 +100,7 @@ See also /datum/surgery_step/cut_larval_pseudoroots, /datum/surgery_step/retract
 	)
 
 /////////////////////////////
-//	 	PINCH AND PRY	   //
+// PINCH AND PRY    //
 /////////////////////////////
 
 ///Tools used to grab and remove things delicately. See also /datum/surgery_step/remove_larva.
@@ -121,7 +121,7 @@ See also /datum/surgery_step/cut_larval_pseudoroots, /datum/surgery_step/retract
 	)
 
 /////////////////////////////
-//       FLESH TEARS	   //
+//    FLESH TEARS    //
 /////////////////////////////
 
 ///Tools used to patch damaged bloodvessels. Same tools as SUTURE, but fixovein exists specifically for this work and is best at it.
@@ -141,15 +141,15 @@ See also /datum/surgery_step/cut_larval_pseudoroots, /datum/surgery_step/retract
 	)
 
 /////////////////////////////
-//		BONES SHATTER	   //
+// BONES SHATTER    //
 /////////////////////////////
 
 /**Tools used to sever limb bones. Same tools as /datum/surgery_step/saw_encased, but with hacking/chopping tools being better than sawing.
 See also /datum/surgery_step/saw_off_limb/failure var/list/cannot_hack, listing the tools that can't instantly chop a limb.**/
 #define SURGERY_TOOLS_SEVER_BONE list(\
 	/obj/item/tool/surgery/circular_saw = SURGERY_TOOL_MULT_IDEAL,\
-	/obj/item/weapon/melee/twohanded/fireaxe = SURGERY_TOOL_MULT_SUBOPTIMAL,\
-	/obj/item/weapon/melee/claymore/mercsword/machete = SURGERY_TOOL_MULT_SUBOPTIMAL,\
+	/obj/item/weapon/twohanded/fireaxe = SURGERY_TOOL_MULT_SUBOPTIMAL,\
+	/obj/item/weapon/claymore/mercsword/machete = SURGERY_TOOL_MULT_SUBOPTIMAL,\
 	/obj/item/tool/hatchet = SURGERY_TOOL_MULT_SUBSTITUTE,\
 	/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_SUBSTITUTE,\
 	/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\
@@ -158,7 +158,8 @@ See also /datum/surgery_step/saw_off_limb/failure var/list/cannot_hack, listing 
 ///Tools used to open and close ribs/skull. Heavy-duty prying, haemostat/wirecutter won't cut it.
 #define SURGERY_TOOLS_PRY_ENCASED list(\
 	/obj/item/tool/surgery/retractor = SURGERY_TOOL_MULT_IDEAL,\
-	/obj/item/tool/crowbar = SURGERY_TOOL_MULT_SUBSTITUTE\
+	/obj/item/tool/crowbar = SURGERY_TOOL_MULT_SUBSTITUTE,\
+	/obj/item/maintenance_jack = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\
 	)
 
 ///Tools used to patch lightly damaged bones or before setting. May need surgical line in future.
@@ -168,20 +169,20 @@ See also /datum/surgery_step/saw_off_limb/failure var/list/cannot_hack, listing 
 	)
 
 /////////////////////////////
-//	 	Medicomp steps	   //
+// Medicomp steps    //
 /////////////////////////////
-#define SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND	list(\
+#define SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND list(\
 	/obj/item/tool/surgery/stabilizer_gel = SURGERY_TOOL_MULT_IDEAL,\
 	/obj/item/tool/surgery/bonegel = SURGERY_TOOL_MULT_SUBSTITUTE,\
 	/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\
 	)
 
-#define SURGERY_TOOLS_MEDICOMP_MEND_WOUND	list(\
-	/obj/item/tool/surgery/healing_gun	= SURGERY_TOOL_MULT_IDEAL,\
+#define SURGERY_TOOLS_MEDICOMP_MEND_WOUND list(\
+	/obj/item/tool/surgery/healing_gun = SURGERY_TOOL_MULT_IDEAL,\
 	)
 
-#define SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND	list(\
-	/obj/item/tool/surgery/wound_clamp	= SURGERY_TOOL_MULT_IDEAL,\
+#define SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND list(\
+	/obj/item/tool/surgery/wound_clamp = SURGERY_TOOL_MULT_IDEAL,\
 	/obj/item/tool/surgery/cautery = SURGERY_TOOL_MULT_SUBSTITUTE,\
 	/obj/item/tool/lighter = SURGERY_TOOL_MULT_SUBSTITUTE,\
 	/obj/item/tool/weldingtool = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\

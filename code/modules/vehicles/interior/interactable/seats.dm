@@ -5,6 +5,7 @@
 	unacidable = TRUE
 	unslashable = TRUE
 	indestructible = TRUE
+	can_rotate = FALSE
 
 	//you want these chairs to not be easily obscured by objects
 	layer = BELOW_MOB_LAYER
@@ -29,11 +30,11 @@
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
 
-/obj/structure/bed/chair/comfy/vehicle/afterbuckle(var/mob/M)
+/obj/structure/bed/chair/comfy/vehicle/afterbuckle(mob/M)
 	..()
 	handle_afterbuckle(M)
 
-/obj/structure/bed/chair/comfy/vehicle/proc/handle_afterbuckle(var/mob/M)
+/obj/structure/bed/chair/comfy/vehicle/proc/handle_afterbuckle(mob/M)
 
 	if(!vehicle)
 		return
@@ -72,7 +73,7 @@
 	desc = "Comfortable seat for a driver."
 	seat = VEHICLE_DRIVER
 
-/obj/structure/bed/chair/comfy/vehicle/driver/do_buckle(var/mob/target, var/mob/user)
+/obj/structure/bed/chair/comfy/vehicle/driver/do_buckle(mob/target, mob/user)
 	required_skill = vehicle.required_skill
 	if(!skillcheck(target, SKILL_VEHICLE, required_skill))
 		if(target == user)
@@ -91,7 +92,7 @@
 	seat = VEHICLE_GUNNER
 	required_skill = SKILL_VEHICLE_CREWMAN
 
-/obj/structure/bed/chair/comfy/vehicle/gunner/do_buckle(var/mob/target, var/mob/user)
+/obj/structure/bed/chair/comfy/vehicle/gunner/do_buckle(mob/target, mob/user)
 	// Gunning always requires crewman-level skill
 	if(!skillcheck(target, SKILL_VEHICLE, required_skill))
 		if(target == user)
@@ -101,13 +102,13 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(!H.allow_gun_usage)
-			if(isSynth(user))
+			if(issynth(user))
 				to_chat(user, SPAN_WARNING("Your programming does not allow you to use heavy weaponry."))
 			else
 				to_chat(user, SPAN_WARNING("You are unable to use heavy weaponry."))
 			return
 
-	for(var/obj/item/I in user.contents)		//prevents shooting while zoomed in, but zoom can still be activated and used without shooting
+	for(var/obj/item/I in user.contents) //prevents shooting while zoomed in, but zoom can still be activated and used without shooting
 		if(I.zoom)
 			I.zoom(user)
 
@@ -116,13 +117,10 @@
 
 	return ..()
 
-/obj/structure/bed/chair/comfy/vehicle/rotate()
-	set hidden = TRUE
-
 /obj/structure/bed/chair/comfy/vehicle/attackby(obj/item/W, mob/living/user)
 	return
 
-/obj/structure/bed/chair/comfy/vehicle/attack_alien(var/mob/living/carbon/Xenomorph/X, var/dam_bonus)
+/obj/structure/bed/chair/comfy/vehicle/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus)
 
 	if(X.is_mob_incapacitated() || !Adjacent(X))
 		return
@@ -144,7 +142,7 @@
 
 	return ..()
 
-/obj/structure/bed/chair/comfy/vehicle/driver/armor/do_buckle(var/mob/target, var/mob/user)
+/obj/structure/bed/chair/comfy/vehicle/driver/armor/do_buckle(mob/target, mob/user)
 	. = ..()
 	update_icon()
 
@@ -166,11 +164,11 @@
 
 	return ..()
 
-/obj/structure/bed/chair/comfy/vehicle/gunner/armor/do_buckle(var/mob/target, var/mob/user)
+/obj/structure/bed/chair/comfy/vehicle/gunner/armor/do_buckle(mob/target, mob/user)
 	. = ..()
 	update_icon()
 
-/obj/structure/bed/chair/comfy/vehicle/gunner/armor/handle_afterbuckle(var/mob/M)
+/obj/structure/bed/chair/comfy/vehicle/gunner/armor/handle_afterbuckle(mob/M)
 
 	if(!vehicle)
 		return
@@ -227,11 +225,11 @@
 	return ..()
 
 
-/obj/structure/bed/chair/comfy/vehicle/support_gunner/do_buckle(var/mob/target, var/mob/user)
+/obj/structure/bed/chair/comfy/vehicle/support_gunner/do_buckle(mob/target, mob/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(!H.allow_gun_usage)
-			if(isSynth(user))
+			if(issynth(user))
 				to_chat(user, SPAN_WARNING("Your programming does not allow you to use firearms."))
 			else
 				to_chat(user, SPAN_WARNING("You are unable to use firearms."))
@@ -248,7 +246,7 @@
 	if(buckled_mob)
 		overlays += over_image
 
-/obj/structure/bed/chair/comfy/vehicle/support_gunner/handle_afterbuckle(var/mob/M)
+/obj/structure/bed/chair/comfy/vehicle/support_gunner/handle_afterbuckle(mob/M)
 
 	if(!vehicle)
 		return
@@ -304,7 +302,8 @@
 	icon_state = "vehicle_seat"
 	var/image/chairbar = null
 	var/broken = FALSE
-	buildstacktype = 0
+	buildstackamount = 0
+	can_rotate = FALSE
 	picked_up_item = null
 
 	unslashable = FALSE
@@ -320,7 +319,7 @@
 	chairbar = image('icons/obj/vehicles/interiors/general.dmi', "vehicle_bars")
 	chairbar.layer = ABOVE_MOB_LAYER
 
-	addtimer(CALLBACK(src, .proc/setup_buckle_offsets), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(setup_buckle_offsets)), 1 SECONDS)
 
 	handle_rotation()
 
@@ -403,11 +402,15 @@
 //attack handling
 
 /obj/structure/bed/chair/vehicle/attack_alien(mob/living/user)
-	if(!broken && !unslashable)
+	if(!unslashable)
 		user.visible_message(SPAN_WARNING("[user] smashes \the [src]!"),
 		SPAN_WARNING("You smash \the [src]!"))
 		playsound(loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
-		break_seat()
+		if(!broken)
+			break_seat()
+		else
+			deconstruct(FALSE)
+
 
 /obj/structure/bed/chair/vehicle/attackby(obj/item/W, mob/living/user)
 	if((iswelder(W) && broken))
@@ -450,6 +453,3 @@
 				break_seat()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			break_seat()
-
-/obj/structure/bed/chair/vehicle/rotate()
-	return

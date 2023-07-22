@@ -7,10 +7,10 @@
 
 // SMES itself
 /obj/structure/machinery/power/smes/buildable
-	var/max_coils = 6 			//30M capacity, 1.5MW input/output when fully upgraded /w default coils
-	var/cur_coils = 1 			// Current amount of installed coils
-	var/safeties_enabled = 1 	// If 0 modifications can be done without discharging the SMES, at risk of critical failure.
-	var/failing = 0 			// If 1 critical failure has occured and SMES explosion is imminent.
+	var/max_coils = 6 //30M capacity, 1.5MW input/output when fully upgraded /w default coils
+	var/cur_coils = 1 // Current amount of installed coils
+	var/safeties_enabled = 1 // If 0 modifications can be done without discharging the SMES, at risk of critical failure.
+	var/failing = 0 // If 1 critical failure has occured and SMES explosion is imminent.
 	should_be_mapped = 1
 	unslashable = TRUE
 	unacidable = TRUE
@@ -53,7 +53,7 @@
 	// Light Overload - X% chance to overload each lighting circuit in connected powernet. APC based.
 	// APC Failure - X% chance to destroy APC causing very weak explosion too. Won't cause hull breach or serious harm.
 	// SMES Explosion - X% chance to destroy the SMES, in moderate explosion. May cause small hull breach.
-/obj/structure/machinery/power/smes/buildable/proc/total_system_failure(var/intensity = 0, var/mob/user as mob)
+/obj/structure/machinery/power/smes/buildable/proc/total_system_failure(intensity = 0, mob/user as mob)
 	if (!intensity)
 		return
 
@@ -73,7 +73,7 @@
 		if(G.siemens_coefficient == 0)
 			user_protected = 1
 	log_game("SMES FAILURE: <b>[src.x]X [src.y]Y [src.z]Z</b> User: [usr.ckey], Intensity: [intensity]/100")
-	message_staff("SMES FAILURE: <b>[src.x]X [src.y]Y [src.z]Z</b> User: [usr.ckey], Intensity: [intensity]/100 - <A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>")
+	message_admins("SMES FAILURE: <b>[src.x]X [src.y]Y [src.z]Z</b> User: [usr.ckey], Intensity: [intensity]/100 [ADMIN_JMP(src)]")
 
 
 	switch (intensity)
@@ -130,7 +130,7 @@
 			s.set_up(10,1,src)
 			s.start()
 			to_chat(h_user, "Massive electrical arc sparks between you and [src]. Last thing you can think about is \"Oh shit...\"")
-			// Remember, we have few gigajoules of electricity here.. Turn them into crispy toast.
+			// Remember, we have few gigajoules of electricity here... Turn them into crispy toast.
 			h_user.apply_damage(rand(150,195), BURN)
 			h_user.apply_effect(25, PARALYZE)
 			spawn(0)
@@ -142,7 +142,7 @@
 			if (prob(50))
 				// Added admin-notifications so they can stop it when griffed.
 				log_game("SMES explosion imminent.")
-				message_staff("SMES explosion imminent.")
+				message_admins("SMES explosion imminent.")
 				src.ping("DANGER! Magnetic containment field unstable! Containment field failure imminent!")
 				failing = 1
 				// 30 - 60 seconds and then BAM!
@@ -159,7 +159,7 @@
 
 
 	// Gets powernet APCs and overloads lights or breaks the APC completely, depending on percentages.
-/obj/structure/machinery/power/smes/buildable/proc/apcs_overload(var/failure_chance, var/overload_chance)
+/obj/structure/machinery/power/smes/buildable/proc/apcs_overload(failure_chance, overload_chance)
 	if (!src.powernet)
 		return
 
@@ -179,7 +179,7 @@
 	else
 		..()
 
-/obj/structure/machinery/power/smes/buildable/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/power/smes/buildable/attackby(obj/item/W as obj, mob/user as mob)
 	// No more disassembling of overloaded SMESs. You broke it, now enjoy the consequences.
 	if (failing)
 		to_chat(user, SPAN_WARNING("The [src]'s screen is flashing with alerts. It seems to be overloaded! Touching it now is probably not a good idea."))

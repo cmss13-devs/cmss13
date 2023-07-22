@@ -6,16 +6,16 @@
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
 	flags_cold_protection = BODY_FLAG_HANDS
-	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
 	flags_heat_protection = BODY_FLAG_HANDS
-	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
+	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 
-/obj/item/clothing/gloves/fyellow                             //Cheap Chinese Crap
+/obj/item/clothing/gloves/fyellow  //Cheap Chinese Crap
 	desc = "These gloves are cheap copies of the coveted gloves, no way this can end badly."
 	name = "budget insulated gloves"
 	icon_state = "lightbrown"
 	item_state = "lightbrowngloves"
-	siemens_coefficient = 1			//Set to a default of 1, gets overridden in New()
+	siemens_coefficient = 1 //Set to a default of 1, gets overridden in New()
 	permeability_coefficient = 0.05
 
 /obj/item/clothing/gloves/fyellow/New()
@@ -28,9 +28,9 @@
 	icon_state = "black"
 	item_state = "bgloves"
 	flags_cold_protection = BODY_FLAG_HANDS
-	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
 	flags_heat_protection = BODY_FLAG_HANDS
-	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
+	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 
 
 /obj/item/clothing/gloves/orange

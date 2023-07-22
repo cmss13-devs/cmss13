@@ -12,7 +12,7 @@
 
 // Like view but bypasses luminosity check
 
-/proc/hear(var/range, var/atom/source)
+/proc/hear(range, atom/source)
 	if(!source)
 		return FALSE
 	var/lum = source.luminosity
@@ -59,7 +59,7 @@
 // It will keep doing this until it checks every content possible. This will fix any problems with mobs, that are inside objects,
 // being unable to hear people due to being in a box within a bag.
 
-/proc/recursive_mob_check(var/atom/O,  var/list/L = list(), var/recursion_limit = 3, var/client_check = 1, var/sight_check = 1, var/include_radio = 1)
+/proc/recursive_mob_check(atom/O, list/L = list(), recursion_limit = 3, client_check = 1, sight_check = 1, include_radio = 1)
 
 	//debug_mob += O.contents.len
 	if(!recursion_limit)
@@ -86,7 +86,7 @@
 	return L
 
 /// Will attempt to find what's holding this item if it's being contained by something, ie if it's in a satchel held by a human, this'll return the human
-/proc/recursive_holder_check(var/obj/item/held_item, var/recursion_limit = 3)
+/proc/recursive_holder_check(obj/item/held_item, recursion_limit = 3)
 	if(recursion_limit <= 0)
 		return held_item
 	if(!held_item.loc || isturf(held_item.loc))
@@ -97,7 +97,7 @@
 // The old system would loop through lists for a total of 5000 per function call, in an empty server.
 // This new system will loop at around 1000 in an empty server.
 // Returns a list of mobs in range of R from source. Used in radio and say code.
-/proc/get_mobs_in_view(var/R, var/atom/source)
+/proc/get_mobs_in_view(R, atom/source)
 	var/turf/T = get_turf(source)
 	var/list/hear = list()
 
@@ -129,7 +129,7 @@
 	return hear
 
 ///only gets FUNCTIONING radios
-/proc/get_radios_in_view(var/R, var/atom/source)
+/proc/get_radios_in_view(R, atom/source)
 	var/turf/T = get_turf(source)
 	var/list/hear = list()
 
@@ -145,7 +145,7 @@
 				hear += A
 	return hear
 
-/proc/get_mobs_in_radio_ranges(var/list/obj/item/device/radio/radios)
+/proc/get_mobs_in_radio_ranges(list/obj/item/device/radio/radios)
 
 	set background = 1
 
@@ -179,44 +179,41 @@
 			if(ear)
 				// Ghostship is magic: Ghosts can hear radio chatter from anywhere
 				if(speaker_coverage[ear] || (istype(M, /mob/dead/observer) && (M.client) && (M.client.prefs) && (M.client.prefs.toggles_chat & CHAT_GHOSTRADIO)))
-					. |= M		// Since we're already looping through mobs, why bother using |= ? This only slows things down.
+					. |= M // Since we're already looping through mobs, why bother using |= ? This only slows things down.
 	return .
 
-#define SIGN(X) ((X<0)?-1:1)
-
-proc
-	inLineOfSight(X1,Y1,X2,Y2,Z=1,PX1=16.5,PY1=16.5,PX2=16.5,PY2=16.5)
-		var/turf/T
-		if(X1==X2)
-			if(Y1==Y2)
-				return 1 //Light cannot be blocked on same tile
-			else
-				var/s = SIGN(Y2-Y1)
-				Y1+=s
-				while(Y1!=Y2)
-					T=locate(X1,Y1,Z)
-					if(T.opacity)
-						return 0
-					Y1+=s
+/proc/inLineOfSight(X1,Y1,X2,Y2,Z=1,PX1=16.5,PY1=16.5,PX2=16.5,PY2=16.5)
+	var/turf/T
+	if(X1==X2)
+		if(Y1==Y2)
+			return 1 //Light cannot be blocked on same tile
 		else
-			var/m=(32*(Y2-Y1)+(PY2-PY1))/(32*(X2-X1)+(PX2-PX1))
-			var/b=(Y1+PY1/32-0.015625)-m*(X1+PX1/32-0.015625) //In tiles
-			var/signX = SIGN(X2-X1)
-			var/signY = SIGN(Y2-Y1)
-			if(X1<X2)
-				b+=m
-			while(X1!=X2 || Y1!=Y2)
-				if(round(m*X1+b-Y1))
-					Y1+=signY //Line exits tile vertically
-				else
-					X1+=signX //Line exits tile horizontally
+			var/s = SIGN(Y2-Y1)
+			Y1+=s
+			while(Y1!=Y2)
 				T=locate(X1,Y1,Z)
 				if(T.opacity)
 					return 0
-		return 1
+				Y1+=s
+	else
+		var/m=(32*(Y2-Y1)+(PY2-PY1))/(32*(X2-X1)+(PX2-PX1))
+		var/b=(Y1+PY1/32-0.015625)-m*(X1+PX1/32-0.015625) //In tiles
+		var/signX = SIGN(X2-X1)
+		var/signY = SIGN(Y2-Y1)
+		if(X1<X2)
+			b+=m
+		while(X1!=X2 || Y1!=Y2)
+			if(round(m*X1+b-Y1))
+				Y1+=signY //Line exits tile vertically
+			else
+				X1+=signX //Line exits tile horizontally
+			T=locate(X1,Y1,Z)
+			if(T.opacity)
+				return 0
+	return 1
 #undef SIGN
 
-proc/isInSight(var/atom/A, var/atom/B)
+/proc/isInSight(atom/A, atom/B)
 	var/turf/Aturf = get_turf(A)
 	var/turf/Bturf = get_turf(B)
 
@@ -244,42 +241,87 @@ proc/isInSight(var/atom/A, var/atom/B)
 		else
 			return get_step(start, EAST)
 
-// Same as above but for alien candidates.
-/proc/get_alien_candidates()
+/**
+ * Get a list of observers that can be alien candidates.
+ *
+ * Arguments:
+ * * hive - The hive we're filling a slot for to check if the player is banished
+ * * sorted - Whether to sort by larva_queue_time (default TRUE) or leave unsorted
+ */
+/proc/get_alien_candidates(datum/hive_status/hive = null, sorted = TRUE)
 	var/list/candidates = list()
 
-	for(var/i in GLOB.observer_list)
-		var/mob/dead/observer/O = i
+	for(var/mob/dead/observer/cur_obs as anything in GLOB.observer_list)
+		// Preference check
+		if(!cur_obs.client || !cur_obs.client.prefs || !(cur_obs.client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
+			continue
+
 		// Jobban check
-		if(!O.client || !O.client.prefs || !(O.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) || jobban_isbanned(O, JOB_XENOMORPH))
+		if(jobban_isbanned(cur_obs, JOB_XENOMORPH))
 			continue
 
 		//players that can still be revived are skipped
-		if(O.mind && O.mind.original && ishuman(O.mind.original))
-			var/mob/living/carbon/human/H = O.mind.original
-			if (H.check_tod() && H.is_revivable())
+		if(cur_obs.mind && cur_obs.mind.original && ishuman(cur_obs.mind.original))
+			var/mob/living/carbon/human/cur_human = cur_obs.mind.original
+			if(cur_human.check_tod() && cur_human.is_revivable())
 				continue
 
 		// copied from join as xeno
-		var/deathtime = world.time - O.timeofdeath
-		if(deathtime < 3000 && ( !O.client.admin_holder || !(O.client.admin_holder.rights & R_ADMIN)) )
+		var/deathtime = world.time - cur_obs.timeofdeath
+		if(deathtime < XENO_JOIN_DEAD_TIME && ( !cur_obs.client.admin_holder || !(cur_obs.client.admin_holder.rights & R_ADMIN) || !cur_obs.bypass_time_of_death_checks))
 			continue
 
-		// Admins and AFK players cannot be drafted
-		if(O.client.inactivity / 600 > ALIEN_SELECT_AFK_BUFFER + 5 || (O.client.admin_holder && (O.client.admin_holder.rights & R_MOD)) && O.adminlarva == 0)
+		// AFK players cannot be drafted
+		if(cur_obs.client.inactivity > XENO_JOIN_AFK_TIME_LIMIT)
 			continue
 
-		candidates += O
+		// Mods with larva protection cannot be drafted
+		if((cur_obs.client.admin_holder && (cur_obs.client.admin_holder.rights & R_MOD)) && !cur_obs.adminlarva)
+			continue
+
+		if(hive)
+			var/banished = FALSE
+			for(var/mob_name in hive.banished_ckeys)
+				if(hive.banished_ckeys[mob_name] == cur_obs.ckey)
+					banished = TRUE
+					break
+			if(banished)
+				continue
+
+		candidates += cur_obs
+
+	// Optionally sort by larva_queue_time
+	if(sorted && length(candidates))
+		candidates = sort_list(candidates, GLOBAL_PROC_REF(cmp_obs_larvaqueuetime_asc))
 
 	return candidates
 
-/proc/convert_k2c(var/temp)
+/**
+ * Messages observers that are currently candidates an update on the queue.
+ *
+ * Arguments:
+ * * candidates - The list of observers from get_alien_candidates()
+ * * dequeued - How many candidates to skip messaging because they were dequeued
+ * * cache_only - Whether to not actually send a to_chat message and instead only update larva_queue_cached_message
+ */
+/proc/message_alien_candidates(list/candidates, dequeued, cache_only = FALSE)
+	for(var/i in (1 + dequeued) to candidates.len)
+		var/mob/dead/observer/cur_obs = candidates[i]
+
+		// Generate the messages
+		var/cached_message = SPAN_XENONOTICE("You are currently [i-dequeued]\th in the larva queue.")
+		cur_obs.larva_queue_cached_message = cached_message
+		if(!cache_only)
+			var/chat_message = dequeued ? replacetext(cached_message, "currently", "now") : cached_message
+			to_chat(candidates[i], chat_message)
+
+/proc/convert_k2c(temp)
 	return ((temp - T0C))
 
-/proc/convert_c2k(var/temp)
+/proc/convert_c2k(temp)
 	return ((temp + T0C))
 
-/proc/getWireFlag(var/wire)
+/proc/getWireFlag(wire)
 	return 2**(wire-1)
 
 /**
@@ -331,4 +373,29 @@ proc/isInSight(var/atom/A, var/atom/B)
 /proc/flick_overlay_to_clients(image/image_to_show, list/show_to, duration)
 	for(var/client/add_to in show_to)
 		add_to.images += image_to_show
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/remove_images_from_clients, image_to_show, show_to), duration, TIMER_CLIENT_TIME)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_images_from_clients), image_to_show, show_to), duration, TIMER_CLIENT_TIME)
+
+/// Get active players who are playing in the round
+/proc/get_active_player_count(alive_check = FALSE, afk_check = FALSE, faction_check = FALSE, faction = FACTION_NEUTRAL)
+	var/active_players = 0
+	for(var/mob/current_mob in GLOB.player_list)
+		if(!(current_mob && current_mob.client))
+			continue
+		if(alive_check && current_mob.stat)
+			continue
+		else if(afk_check && current_mob.client.is_afk())
+			continue
+		else if(faction_check)
+			if(!isliving(current_mob))
+				continue
+			var/mob/living/current_living = current_mob
+			if(faction != current_living.faction)
+				continue
+		else if(isnewplayer(current_mob))
+			continue
+		else if(isobserver(current_mob))
+			var/mob/dead/observer/current_observer = current_mob
+			if(current_observer.started_as_observer)
+				continue
+		active_players++
+	return active_players

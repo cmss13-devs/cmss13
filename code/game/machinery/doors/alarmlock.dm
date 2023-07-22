@@ -2,7 +2,7 @@
 
 	name = "Glass Alarm Airlock"
 	icon = 'icons/obj/structures/doors/Doorglass.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 	var/datum/radio_frequency/air_connection
@@ -17,8 +17,12 @@
 	. = ..()
 	SSradio.remove_object(src, air_frequency)
 	air_connection = SSradio.add_object(src, air_frequency, RADIO_TO_AIRALARM)
-	open()
+	INVOKE_ASYNC(src, PROC_REF(open))
 
+/obj/structure/machinery/door/airlock/alarmlock/Destroy()
+	SSradio.remove_object(src, air_frequency)
+	air_connection = null
+	return ..()
 
 /obj/structure/machinery/door/airlock/alarmlock/receive_signal(datum/signal/signal)
 	..()

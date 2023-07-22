@@ -31,7 +31,7 @@
 /datum/action/xeno_action/New(Target, override_icon_state)
 	. = ..()
 	if(charges != NO_ACTION_CHARGES)
-		RegisterSignal(src, COMSIG_XENO_ACTION_USED, .proc/remove_charge)
+		RegisterSignal(src, COMSIG_XENO_ACTION_USED, PROC_REF(remove_charge))
 	if(charge_time)
 		charge_ready = FALSE
 	update_button_icon()
@@ -62,7 +62,7 @@
 /datum/action/xeno_action/proc/track_xeno_ability_stats()
 	if(!owner)
 		return
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if (ability_name && round_statistics)
 		round_statistics.track_ability_usage(ability_name)
 		X.track_ability_usage(ability_name, X.caste_type)
@@ -70,7 +70,7 @@
 /datum/action/xeno_action/can_use_action()
 	if(!owner)
 		return FALSE
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.is_mob_incapacitated() && !X.dazed && !X.lying && !X.buckled && X.plasma_stored >= plasma_cost)
 		return TRUE
 
@@ -94,7 +94,7 @@
 
 // Helper proc that checks and uses plasma if possible, returning TRUE
 // if the use was successful
-/datum/action/xeno_action/proc/check_and_use_plasma_owner(var/plasma_to_use)
+/datum/action/xeno_action/proc/check_and_use_plasma_owner(plasma_to_use)
 	if (!check_plasma_owner(plasma_to_use))
 		return FALSE
 
@@ -103,7 +103,7 @@
 
 // Checks the host Xeno's plasma. Returns TRUE if the amount of plasma
 // is sufficient to use the ability and FALSE otherwise.
-/datum/action/xeno_action/proc/check_plasma_owner(var/plasma_to_use)
+/datum/action/xeno_action/proc/check_plasma_owner(plasma_to_use)
 	if(!owner)
 		return
 
@@ -111,11 +111,11 @@
 	if(plasma_to_use)
 		plasma_to_check = plasma_to_use
 
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	return X.check_plasma(plasma_to_check)
 
 // Uses plasma on the owner.
-/datum/action/xeno_action/proc/use_plasma_owner(var/plasma_to_use)
+/datum/action/xeno_action/proc/use_plasma_owner(plasma_to_use)
 	if(!owner)
 		return
 
@@ -123,7 +123,7 @@
 	if(plasma_to_use)
 		plasma_to_check = plasma_to_use
 
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	X.use_plasma(plasma_to_check)
 
 /// A wrapper for use_ability that sends a signal
@@ -131,6 +131,13 @@
 	// TODO: make hidden a part of can_use_action
 	if(!hidden && can_use_action() && use_ability(arglist(args)))
 		SEND_SIGNAL(src, COMSIG_XENO_ACTION_USED, owner)
+		return TRUE
+
+	return FALSE
+
+// For actions that do something on each life tick
+/datum/action/xeno_action/proc/life_tick()
+	return
 
 // Activable actions - most abilities in the game. Require Shift/Middle click to do their 'main' effects.
 // The action_activate code of these actions does NOT call use_ability.
@@ -147,10 +154,12 @@
 		return
 	if(hidden)
 		return // There's no where we want a hidden action to be selectable right?
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.selected_ability == src)
 		if(xeno.deselect_timer > world.time)
 			return // We clicked the same ability in a very short time
+		if(xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
+			return
 		to_chat(xeno, "You will no longer use [ability_name] with \
 			[xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
 		button.icon_state = "template"
@@ -177,7 +186,7 @@
 	button.icon_state = "template"
 
 
-/datum/action/xeno_action/activable/remove_from(mob/living/carbon/Xenomorph/xeno)
+/datum/action/xeno_action/activable/remove_from(mob/living/carbon/xenomorph/xeno)
 	..()
 	if(xeno.selected_ability == src)
 		xeno.selected_ability = null
@@ -200,10 +209,10 @@
 // IF YOU WANT AGE SCALING SET IT
 // THIS PROC SHOULD NEVER BE OVERRIDDEN BY CHILDREN
 // AND SHOULD __ALWAYS__ BE CALLED IN USE_ABILITY
-/datum/action/xeno_action/proc/apply_cooldown(var/cooldown_modifier = 1)
+/datum/action/xeno_action/proc/apply_cooldown(cooldown_modifier = 1)
 	if(!owner)
 		return
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	// Uh oh! STINKY! already on cooldown
 	if (cooldown_timer_id != TIMER_ID_NULL)
 	/*
@@ -225,7 +234,7 @@
 	cooldown_to_apply = cooldown_to_apply * (1 - Clamp(X.cooldown_reduction_percentage, 0, 0.5))
 
 	// Add a unique timer
-	cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), cooldown_to_apply, TIMER_UNIQUE|TIMER_STOPPABLE)
+	cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), cooldown_to_apply, TIMER_UNIQUE|TIMER_STOPPABLE)
 	current_cooldown_duration = cooldown_to_apply
 	current_cooldown_start_time = world.time
 
@@ -242,10 +251,10 @@
 	if(cooldown_timer_id != TIMER_ID_NULL)
 		deltimer(cooldown_timer_id)
 
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	// Note: no check to see if we're already on CD. we just flat override whatever's there
 	cooldown_duration = cooldown_duration * (1 - Clamp(X.cooldown_reduction_percentage, 0, 0.5))
-	cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), cooldown_duration, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+	cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), cooldown_duration, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 	current_cooldown_duration = cooldown_duration
 	current_cooldown_start_time = world.time
 
@@ -312,7 +321,7 @@
 	else
 		// Looks like timers are back on the menu, boys
 		var/new_cooldown_duration = current_cooldown_duration - amount - (world.time - current_cooldown_start_time)
-		cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), new_cooldown_duration, TIMER_UNIQUE | TIMER_STOPPABLE)
+		cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), new_cooldown_duration, TIMER_UNIQUE | TIMER_STOPPABLE)
 		current_cooldown_duration = new_cooldown_duration
 		current_cooldown_start_time = world.time
 
@@ -337,7 +346,7 @@
 			to_chat(owner, SPAN_XENODANGER("You feel your strength return! You can use [name] again!"))
 
 /datum/action/xeno_action/proc/start_charging_ability()
-	charge_timer_id = addtimer(CALLBACK(src, .proc/finish_charging_ability), charge_time, TIMER_UNIQUE|TIMER_STOPPABLE)
+	charge_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_charging_ability)), charge_time, TIMER_UNIQUE|TIMER_STOPPABLE)
 	to_chat(owner, SPAN_XENOWARNING("You start charging up your <b>[name]</b>!"))
 
 /datum/action/xeno_action/proc/finish_charging_ability()
@@ -355,7 +364,7 @@
 
 // Helper proc to get an action on a target Xeno by type.
 // Used to interact with abilities from the outside
-/proc/get_xeno_action_by_type(mob/living/carbon/Xenomorph/X, var/typepath)
+/proc/get_xeno_action_by_type(mob/living/carbon/xenomorph/X, typepath)
 	if (!istype(X))
 		CRASH("xeno_action.dm: get_xeno_action_by_type invoked with non-xeno first argument.")
 
@@ -366,7 +375,7 @@
 
 // Helper proc to check if there is anything blocking the way from mob M to the atom A
 // Max distance can be supplied to check some of the way instead of the whole way.
-/proc/check_clear_path_to_target(var/mob/M, var/atom/A, var/smash_windows = TRUE, var/max_distance = 1000)
+/proc/check_clear_path_to_target(mob/M, atom/A, smash_windows = TRUE, max_distance = 1000)
 	if(A.z != M.z)
 		return FALSE
 
@@ -394,3 +403,54 @@
 				return FALSE
 
 	return TRUE
+
+
+//An ability that does something actively when toggled
+/datum/action/xeno_action/active_toggle
+	action_type = XENO_ACTION_ACTIVATE
+	var/action_active = FALSE //Is the action active
+	var/plasma_use_per_tick = 0 //How much plasma it costs us to upkeep
+	var/action_start_message = ""
+	var/action_end_message = ""
+
+/datum/action/xeno_action/active_toggle/can_use_action()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno && !xeno.is_mob_incapacitated() && (action_active || xeno.plasma_stored >= plasma_cost))
+		return TRUE
+	return FALSE
+
+/datum/action/xeno_action/active_toggle/action_activate()
+	toggle_toggle()
+
+/datum/action/xeno_action/active_toggle/life_tick()
+	if(action_active && should_use_plasma())
+		. = check_and_use_plasma_owner(plasma_use_per_tick)
+		if(. == FALSE)
+			disable_toggle()
+		return
+	return FALSE
+
+//Checking if plasma should be used
+/datum/action/xeno_action/active_toggle/proc/should_use_plasma()
+	return TRUE
+
+/datum/action/xeno_action/active_toggle/proc/toggle_toggle()
+	if(action_active)
+		disable_toggle()
+	else
+		enable_toggle()
+
+/datum/action/xeno_action/active_toggle/proc/disable_toggle()
+	action_active = FALSE
+	button.icon_state = "template"
+	if(action_end_message)
+		to_chat(owner, SPAN_WARNING(action_end_message))
+
+/datum/action/xeno_action/active_toggle/proc/enable_toggle()
+	if(!check_and_use_plasma_owner(plasma_cost))
+		return
+	action_active = TRUE
+	button.icon_state = "template_active"
+	track_xeno_ability_stats()
+	if(action_start_message)
+		to_chat(owner, SPAN_NOTICE(action_start_message))

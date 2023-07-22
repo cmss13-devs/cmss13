@@ -2,13 +2,13 @@
 	overlay_fullscreen("pain", /atom/movable/screen/fullscreen/pain, 2)
 	clear_fullscreen("pain")
 
-mob/var/list/pain_stored = list()
-mob/var/last_pain_message = ""
-mob/var/next_pain_time = 0
+/mob/var/list/pain_stored = list()
+/mob/var/last_pain_message = ""
+/mob/var/next_pain_time = 0
 
 // partname is the name of a body part
 // amount is a num from 1 to 100
-mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0)
+/mob/living/carbon/proc/pain(partname, amount, force, burning = 0)
 	if(stat >= DEAD || (world.time < next_pain_time && !force))
 		return
 	if(pain.reduction_pain > 0)
@@ -25,8 +25,8 @@ mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0
 			var/i
 			for(var/obj/limb/O in list(right_hand, left_hand))
 				if(!O || !O.is_usable()) continue //Not if the organ can't possibly function.
-				if(O.name == "l_hand") 	drop_l_hand()
-				else 					drop_r_hand()
+				if(O.name == "l_hand") drop_l_hand()
+				else drop_r_hand()
 				i++
 			if(i) msg += ", [pick("fumbling with","struggling with","losing control of")] your [i < 2 ? "hand" : "hands"]"
 			to_chat(H, SPAN_WARNING("[msg]."))
@@ -56,7 +56,7 @@ mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0
 		to_chat(src, msg)
 	next_pain_time = world.time + (100 - amount)
 
-mob/living/carbon/proc/custom_pain(message, flash_strength)
+/mob/living/carbon/proc/custom_pain(message, flash_strength)
 	if(stat >= UNCONSCIOUS)
 		return FALSE
 	if(!pain.feels_pain)
@@ -67,7 +67,7 @@ mob/living/carbon/proc/custom_pain(message, flash_strength)
 
 // message is the custom message to be displayed
 // flash_strength is 0 for weak pain flash, 1 for strong pain flash
-mob/living/carbon/human/custom_pain(message, flash_strength)
+/mob/living/carbon/human/custom_pain(message, flash_strength)
 	. = ..()
 	if(!.)
 		return
@@ -82,9 +82,9 @@ mob/living/carbon/human/custom_pain(message, flash_strength)
 	next_pain_time = world.time + 100
 	return TRUE
 
-mob/living/carbon/human/proc/handle_pain()
+/mob/living/carbon/human/proc/handle_pain()
 	if(stat >= UNCONSCIOUS)
-		return 	// not when sleeping
+		return // not when sleeping
 	if(!pain.feels_pain)
 		return
 	if(pain.reduction_pain >= PAIN_REDUCTION_HEAVY)

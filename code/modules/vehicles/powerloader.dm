@@ -4,8 +4,8 @@
 	desc = "The Caterpillar P-5000 Work Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects, first designed in January 29, 2025 by Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere."
 	icon_state = "powerloader_open"
 	layer = POWERLOADER_LAYER //so the top appears above windows and wall mounts
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	luminosity = 5
 	move_delay = 8
 	buckling_y = 9
@@ -176,7 +176,7 @@
 	if(linked_powerloader.buckled_mob && linked_powerloader.buckled_mob == user)
 		linked_powerloader.unbuckle() //drop a clamp, you auto unbuckle from the powerloader.
 
-/obj/item/powerloader_clamp/update_icon(var/icon_tag = "")
+/obj/item/powerloader_clamp/update_icon(icon_tag = "")
 	if(loaded)
 		if(!icon_tag)
 			icon_tag = "big_crate"
@@ -188,7 +188,7 @@
 
 //--------------------INTERACTION PROCS-----------------
 
-/obj/item/powerloader_clamp/get_examine_text(mob/user, var/compact_info = FALSE)
+/obj/item/powerloader_clamp/get_examine_text(mob/user, compact_info = FALSE)
 	if(compact_info && loaded)
 		return list(SPAN_NOTICE("There is a [icon2html(loaded, user)] [SPAN_HELPFUL(loaded.name)] in the [icon2html(src, user)] [src.name]."))
 	else
@@ -203,7 +203,7 @@
 	else
 		return ..()
 
-/obj/item/powerloader_clamp/afterattack(var/atom/target, var/mob/user, var/proximity)
+/obj/item/powerloader_clamp/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
 		return
 	if(!linked_powerloader)
@@ -307,7 +307,7 @@
 	grab_object(user, target, load_target_tag)
 
 //a bit unsafe proc
-/obj/item/powerloader_clamp/proc/grab_object(var/mob/user, var/obj/target, var/target_tag = "", var/sound = 'sound/machines/hydraulics_2.ogg')
+/obj/item/powerloader_clamp/proc/grab_object(mob/user, obj/target, target_tag = "", sound = 'sound/machines/hydraulics_2.ogg')
 	if(loaded)
 		to_chat(user, SPAN_WARNING("\The [src] must be empty in order to grab \the [target]!"))
 		return
@@ -333,9 +333,9 @@
 	desc = "Remains of some unfortunate Power Loader. Completely unrepairable."
 	icon = 'icons/obj/vehicles/powerloader.dmi'
 	icon_state = "wreck"
-	density = 1
-	anchored = 0
-	opacity = 0
+	density = TRUE
+	anchored = FALSE
+	opacity = FALSE
 	pixel_x = -18
 	pixel_y = -5
 
@@ -358,7 +358,7 @@
 
 /obj/vehicle/powerloader/ft
 	name = "\improper Ferret Heavy Industries Mk4 Power Loader"
-	desc = "The Ferret Heavy Industries Mk4 Power Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first designed in January 29, 2025 by the Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has the signature blue and white livery of the now defunct Ferret Heavy Industries that went bankrupt two years ago.."
+	desc = "The Ferret Heavy Industries Mk4 Power Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first designed in January 29, 2025 by the Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has the signature blue and white livery of the now defunct Ferret Heavy Industries that went bankrupt two years ago."
 	icon_state = "powerloader_open_ft"
 	base_state = "powerloader_ft"
 	open_state = "powerloader_open_ft"

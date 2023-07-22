@@ -39,12 +39,27 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	xeno_cooldown = 5 SECONDS
 
-	 /// Extra armor when fortified and facing bullets.
+	/// Extra armor when fortified and facing bullets.
 	var/frontal_armor = 5
-	 /// Extra armor when steelcrest, fortified, and facing bullets.
+	/// Extra armor when steelcrest, fortified, and facing bullets.
 	var/steelcrest_frontal_armor = 15
 
 /datum/action/xeno_action/activable/tail_stab/slam
 	name = "Tail Slam"
 	ability_name = "tail slam"
 	blunt_stab = TRUE
+
+/datum/action/xeno_action/onclick/soak
+	name = "Soak"
+	action_icon_state = "soak"
+	ability_name = "soak"
+	macro_path = /datum/action/xeno_action/verb/verb_soak
+	action_type = XENO_ACTION_ACTIVATE
+	ability_primacy = XENO_PRIMARY_ACTION_5
+	plasma_cost = 20
+	xeno_cooldown = 17 SECONDS
+
+	/// Requires 140 damage taken within 6 seconds to activate the ability
+	var/damage_threshold = 140
+	/// Initially zero, gets damage added when the ability is activated
+	var/damage_accumulated = 0

@@ -43,7 +43,7 @@
 		return
 
 	// Kick off the full-auto
-	INVOKE_ASYNC(src, .proc/repeat_fire, user)
+	INVOKE_ASYNC(src, PROC_REF(repeat_fire), user)
 
 /obj/item/weapon/gun/proc/full_auto_stop(client/source, atom/A, params)
 	SIGNAL_HANDLER
@@ -65,7 +65,7 @@
 	fa_target = hovered
 	fa_params = params2list(params)
 
-/obj/item/weapon/gun/proc/repeat_fire(var/mob/user)
+/obj/item/weapon/gun/proc/repeat_fire(mob/user)
 	if(!fa_target)
 		return
 
@@ -90,15 +90,12 @@
 		return
 
 	user.face_atom(fa_target)
-	if(user.gun_mode && !(fa_target in target))
-		PreFire(fa_target, user, fa_params)
-	else
-		Fire(fa_target, user, fa_params)
+	Fire(fa_target, user, fa_params)
 
-	addtimer(CALLBACK(src, .proc/repeat_fire, user), fa_delay)
+	addtimer(CALLBACK(src, PROC_REF(repeat_fire), user), fa_delay)
 
 // Make sure we're not trying to start full auto when the gun isn't even held by anyone
-/obj/item/weapon/gun/dropped(var/mob/user)
+/obj/item/weapon/gun/dropped(mob/user)
 	..()
 
 	if(!user.client)
@@ -111,7 +108,7 @@
 	))
 
 // Also make sure it's registered when held in any hand and full-auto is on
-/obj/item/weapon/gun/equipped(var/mob/user, var/slot)
+/obj/item/weapon/gun/equipped(mob/user, slot)
 	..()
 
 	if(!user.client)
@@ -127,6 +124,6 @@
 		return
 
 	if(flags_gun_features & GUN_FULL_AUTO_ON)
-		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, .proc/full_auto_start)
-		RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, .proc/full_auto_stop)
-		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, .proc/full_auto_new_target)
+		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, PROC_REF(full_auto_start))
+		RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, PROC_REF(full_auto_stop))
+		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, PROC_REF(full_auto_new_target))

@@ -3,7 +3,7 @@
 	voice_name = "synthesized voice"
 	var/syndicate = 0
 	immune_to_ssd = 1
-	var/list/speech_synthesizer_langs = list()	//which languages can be vocalized by the speech synthesizer
+	var/list/speech_synthesizer_langs = list() //which languages can be vocalized by the speech synthesizer
 
 	//Used in say.dm.
 	var/speak_statement = "states"
@@ -23,8 +23,8 @@
 	add_language(LANGUAGE_ENGLISH)
 
 /mob/living/silicon/Destroy()
-	..()
 	SSmob.living_misc_mobs -= src
+	return ..()
 
 /mob/living/silicon/proc/show_laws()
 	return
@@ -49,19 +49,19 @@
 	to_chat(src, SPAN_DANGER("Warning: Electromagnetic pulse detected."))
 	..()
 
-/mob/living/silicon/stun_effect_act(var/stun_amount, var/agony_amount)
-	return	//immune
+/mob/living/silicon/stun_effect_act(stun_amount, agony_amount)
+	return //immune
 
-/mob/living/silicon/proc/damage_mob(var/brute = 0, var/fire = 0, var/tox = 0)
+/mob/living/silicon/proc/damage_mob(brute = 0, fire = 0, tox = 0)
 	return
 
 /mob/living/silicon/IsAdvancedToolUser()
 	return 1
 
-/mob/living/silicon/apply_effect(var/effect = 0,var/effecttype = STUN, var/blocked = 0)
+/mob/living/silicon/apply_effect(effect = 0, effecttype = STUN, blocked = 0)
 	return 0//The only effect that can hit them atm is flashes and they still directly edit so this works for now
 
-/proc/islinked(var/mob/living/silicon/robot/bot, var/mob/living/silicon/ai/ai)
+/proc/islinked(mob/living/silicon/robot/bot, mob/living/silicon/ai/ai)
 	if(!istype(bot) || !istype(ai))
 		return 0
 	if (bot.connected_ai == ai)
@@ -99,23 +99,23 @@
 	onclose(src, "airoster")
 
 //can't inject synths
-/mob/living/silicon/can_inject(var/mob/user, var/error_msg)
+/mob/living/silicon/can_inject(mob/user, error_msg)
 	if(error_msg)
-		to_chat(user, SPAN_WARNING("The armoured plating is too tough."))
+		to_chat(user, SPAN_WARNING("The armored plating is too tough."))
 	return 0
 
 
 //Silicon mob language procs
 
 /mob/living/silicon/can_speak(datum/language/speaking)
-	return universal_speak || (speaking in src.speech_synthesizer_langs)	//need speech synthesizer support to vocalize a language
+	return universal_speak || (speaking in src.speech_synthesizer_langs) //need speech synthesizer support to vocalize a language
 
-/mob/living/silicon/add_language(var/language, var/can_speak=1)
+/mob/living/silicon/add_language(language, can_speak=1)
 	if (..(language) && can_speak)
 		speech_synthesizer_langs.Add(GLOB.all_languages[language])
 		return 1
 
-/mob/living/silicon/remove_language(var/rem_language)
+/mob/living/silicon/remove_language(rem_language)
 	..(rem_language)
 
 	for (var/datum/language/L in speech_synthesizer_langs)
@@ -181,8 +181,8 @@
 
 	flavor_text =  strip_html(input(usr, "Please enter your new flavour text.", "Flavour text", null)  as text)
 
-/mob/living/silicon/binarycheck()
-	return 1
+/mob/living/silicon/hear_apollo()
+	return TRUE
 
 /mob/living/silicon/rejuvenate()
 	..()

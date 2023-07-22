@@ -1,0 +1,273 @@
+@use '../base.scss';
+@use '../colors.scss';
+@use '../functions.scss' as *;
+
+$light: #ffbf00;
+$dark: #111100;
+
+$loading_color: #b88a00;
+$animation_load_duration: 1s;
+
+$small-text: 1rem;
+$large-text: 1.5rem;
+
+.SentryGun {
+  span {
+    font-size: $small-text;
+  }
+  .TopPanelSlide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    z-index: 1;
+    animation-duration: $animation_load_duration;
+    animation-name: slideouttop;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    background-color: $dark;
+    border-bottom: 0.5rem solid $light;
+  }
+  .BottomPanelSlide {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    z-index: 1;
+    animation-duration: $animation_load_duration;
+    animation-name: slideoutbot;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    background-color: $dark;
+    border-top: 0.5rem solid $light;
+  }
+
+  @keyframes slideouttop {
+    from {
+      width: 100%;
+      margin-top: 0;
+    }
+
+    to {
+      margin-top: -50%;
+      visibility: hidden;
+    }
+  }
+
+  @keyframes slideoutbot {
+    from {
+      width: 100%;
+      margin-bottom: 0%;
+    }
+
+    to {
+      margin-bottom: -50%;
+      visibility: hidden;
+    }
+  }
+
+  .SentryBox {
+    border: 2px solid $light;
+  }
+
+  .TitleBox {
+    @extend .SentryBox;
+    padding: 3px;
+  }
+
+  .Button {
+    font-size: $small-text;
+  }
+
+  .ProgressBar__content {
+    color: $dark;
+  }
+
+  .SentryCard {
+    height: 100%;
+    width: 270px;
+    margin-left: 2px;
+    margin-right: 2px;
+    span {
+      font-size: $large-text;
+      display: block;
+      width: 100%;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+    .Title {
+      display: inline-block;
+      width: 270px;
+      padding: 6px;
+    }
+    .GunFlex {
+      width: 270px;
+    }
+  }
+
+  .CameraBox {
+    width: 640px;
+    height: 480px;
+  }
+
+  .IFFBox {
+    @extend .EngagedBox;
+    span {
+      font-size: $large-text;
+      display: block;
+      width: 100%;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+  }
+
+  .EmptyDisplay {
+    margin-top: 6px;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/bg-westonyamada.svg');
+    .Stack {
+      .Stack__item {
+        width: 100%;
+      }
+    }
+    span {
+      display: block;
+      font-size: $large-text;
+      text-align: center;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+  }
+
+  .TitleContainer {
+    align-content: center;
+    align-items: center;
+  }
+
+  .Tab {
+    height: 2.5rem;
+  }
+
+  .Tab__text {
+    font-size: $large-text;
+  }
+
+  .AmmoBoundingBox {
+    @extend .SentryBox;
+    padding: 3px;
+    width: 4rem;
+  }
+
+  .AmmoBoundingBoxWarning {
+    @extend .AmmoBoundingBox;
+    animation: warningBoxAnimation 1s infinite;
+    span {
+      animation: warningTextAnimation 1s infinite;
+    }
+  }
+
+  .EngagedBox {
+    padding: 3px;
+    text-align: center;
+    border: 2px solid $light;
+    span {
+      display: inline-block;
+      font-family: monospace;
+      font-weight: bold;
+      font-size: $large-text;
+    }
+  }
+
+  .EngagedWarningBox {
+    @extend .EngagedBox;
+    animation: warningBoxAnimation 1s infinite;
+    span {
+      animation: warningTextAnimation 1s infinite;
+    }
+  }
+
+  @keyframes warningBoxAnimation {
+    0% {
+      background-color: rgba($color: $light, $alpha: 0);
+    }
+    49% {
+      background-color: rgba($color: $light, $alpha: 0);
+    }
+    50% {
+      background-color: rgba($color: $light, $alpha: 1);
+    }
+    100% {
+      background-color: rgba($color: $light, $alpha: 1);
+    }
+  }
+  @keyframes warningTextAnimation {
+    0% {
+      color: $light;
+    }
+
+    49% {
+      color: $light;
+    }
+    50% {
+      color: $dark;
+    }
+    100% {
+      color: $dark;
+    }
+  }
+
+  .TitleText {
+    text-align: center;
+    span {
+      font-size: 1.5rem;
+    }
+  }
+
+  .SentryCameraStack {
+    span {
+      font-size: 1.5rem;
+    }
+    .Button__content {
+    }
+  }
+
+  .SelectionFlexItem {
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    min-width: 23%;
+    flex-grow: 1;
+  }
+
+  .SelectionMenu {
+    align-content: space-between;
+    .Title {
+      text-align: center;
+    }
+    .Option {
+      margin-top: 1px;
+      margin-bottom: 1px;
+    }
+
+    .Button {
+      background-color: $dark;
+      width: 100%;
+      color: $light;
+    }
+    .Button__content {
+      text-align: center;
+    }
+    .Selected {
+      background-color: $light;
+      color: $dark;
+    }
+  }
+}
+
+.Test {
+  border: 1px solid red;
+}

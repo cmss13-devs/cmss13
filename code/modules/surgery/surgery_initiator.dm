@@ -4,8 +4,8 @@
 	  *
 	  */
 
-proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/affecting, mob/living/user)
-	if(!tool)
+/proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/affecting, mob/living/user)
+	if(!tool && !(affecting.status & LIMB_UNCALIBRATED_PROSTHETIC))
 		return FALSE
 
 	var/target_zone = user.zone_selected
@@ -17,7 +17,12 @@ proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/a
 		to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
 		return FALSE
 	else
-		if(!T.supports_surgery)
+		if(!istype(T) || !T.supports_surgery)
+			if(tool.flags_item & CAN_DIG_SHRAPNEL) //Both shrapnel removal and prosthetic repair shouldn't be affected by being on the dropship.
+				tool.dig_out_shrapnel_check(target, user)
+				return TRUE //Otherwise you get 'poked' by the knife.
+			if(HAS_TRAIT(tool, TRAIT_TOOL_BLOWTORCH) && affecting)
+				return FALSE
 			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG))
 				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
 			return FALSE
@@ -144,7 +149,7 @@ proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/a
 
 	var/datum/surgery/procedure = new surgeryinstance.type(target, target_zone, affecting)
 	#ifdef DEBUG_SURGERY_INIT
-	message_staff("[procedure.name] started.")
+	message_admins("[procedure.name] started.")
 	#endif
 	procedure.attempt_next_step(user, tool)
 	return TRUE

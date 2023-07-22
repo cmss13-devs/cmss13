@@ -12,18 +12,18 @@
 	duration = null
 	flags = DEL_ON_DEATH | INF_DURATION
 
-/datum/effects/xeno_slow/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest", ttl = 3.5 SECONDS)
+/datum/effects/xeno_slow/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest", ttl = 3.5 SECONDS)
 	. = ..(A, from, last_dmg_source, zone)
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), ttl)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), ttl)
 
 	if (ishuman(A))
 		var/mob/living/carbon/human/H = A
 		H.update_xeno_hostile_hud()
 
 
-/datum/effects/xeno_slow/validate_atom(var/atom/A)
-	if (!ishuman(A) && !isXeno(A))
+/datum/effects/xeno_slow/validate_atom(atom/A)
+	if (!ishuman(A) && !isxeno(A))
 		return FALSE
 
 	var/mob/M = A
@@ -48,7 +48,7 @@
 		return
 
 	var/mob/living/carbon/human/H = affected_atom
-	addtimer(CALLBACK(H, /mob/living/carbon/human.proc/update_xeno_hostile_hud), 3)
+	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, update_xeno_hostile_hud)), 3)
 
 	. = ..()
 

@@ -3,10 +3,10 @@
 	desc = "Cools gas when connected to pipe network"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "freezer_0"
-	density = 1
+	density = TRUE
 	anchored = TRUE
 
-	var/opened = 0	//for deconstruction
+	var/opened = 0 //for deconstruction
 
 /obj/structure/pipes/unary/freezer/create_valid_directions()
 	valid_directions = list(dir)
@@ -17,7 +17,7 @@
 	else
 		icon_state = "freezer_0"
 
-/obj/structure/pipes/unary/freezer/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/pipes/unary/freezer/attackby(obj/item/O as obj, mob/user as mob)
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
 		opened = !opened
 		to_chat(user, "You [opened ? "open" : "close"] the maintenance hatch of [src].")
@@ -36,7 +36,7 @@
 	desc = "Exchanges heat between two input gases. Setup for fast heat transfer"
 	icon = 'icons/obj/pipes/heat_exchanger.dmi'
 	icon_state = "intact"
-	density = 1
+	density = TRUE
 
 /obj/structure/pipes/unary/heat_exchanger/update_icon()
 	if(length(connected_to))
@@ -50,9 +50,9 @@
 	desc = "Heats gas when connected to a pipe network"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "heater_0"
-	density = 1
-	anchored = 1.0
-	var/opened = 0		//for deconstruction
+	density = TRUE
+	anchored = TRUE
+	var/opened = 0 //for deconstruction
 
 /obj/structure/pipes/unary/heater/create_valid_directions()
 	valid_directions = list(dir)
@@ -65,7 +65,7 @@
 		icon_state = "heater_0"
 
 //dismantling code. copied from autolathe
-/obj/structure/pipes/unary/heater/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/pipes/unary/heater/attackby(obj/item/O as obj, mob/user as mob)
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
 		opened = !opened
 		to_chat(user, "You [opened ? "open" : "close"] the maintenance hatch of [src].")
@@ -100,14 +100,14 @@
 			return
 		add_underlay(T, dir)
 
-/obj/structure/pipes/unary/outlet_injector/hide(var/invis)
+/obj/structure/pipes/unary/outlet_injector/hide(invis)
 	update_underlays()
 
 
 /obj/structure/pipes/unary/oxygen_generator
 	icon = 'icons/obj/pipes/oxygen_generator.dmi'
 	icon_state = "intact_off"
-	density = 1
+	density = TRUE
 	name = "Oxygen Generator"
 	desc = ""
 	dir = SOUTH

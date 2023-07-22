@@ -1,12 +1,12 @@
 #define DEFAULT_MAP_SIZE 15
 
-/obj/structure/machinery/computer/security
-	name = "Security Cameras Console"
+/obj/structure/machinery/computer/cameras
+	name = "security cameras console"
 	desc = "Used to access the various cameras on the station."
 	icon_state = "cameras"
 	var/obj/structure/machinery/camera/current
 	var/list/network = list(CAMERA_NET_MILITARY)
-	circuit = /obj/item/circuitboard/computer/security
+	circuit = /obj/item/circuitboard/computer/cameras
 
 	/// The turf where the camera was last updated.
 	var/turf/last_camera_turf
@@ -21,8 +21,9 @@
 	var/list/range_turfs = list()
 
 	var/colony_camera_mapload = TRUE
+	var/admin_console = FALSE
 
-/obj/structure/machinery/computer/security/Initialize(mapload)
+/obj/structure/machinery/computer/cameras/Initialize(mapload)
 	. = ..()
 	// Map name has to start and end with an A-Z character,
 	// and definitely NOT with a square bracket or even a number.
@@ -34,6 +35,7 @@
 
 	// Initialize map objects
 	cam_screen = new
+	cam_screen.icon = null
 	cam_screen.name = "screen"
 	cam_screen.assigned_map = map_name
 	cam_screen.del_on_map_removal = FALSE
@@ -42,16 +44,23 @@
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = FALSE
 
-/obj/structure/machinery/computer/security/Destroy()
+/obj/structure/machinery/computer/cameras/Destroy()
+	SStgui.close_uis(src)
+	QDEL_NULL(current)
+	QDEL_NULL(cam_screen)
 	qdel(cam_screen)
+	QDEL_NULL(cam_background)
 	qdel(cam_background)
+	range_turfs = null
+	last_camera_turf = null
+	concurrent_users = null
 	return ..()
 
-/obj/structure/machinery/computer/security/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/cameras/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/security/attack_hand(mob/user)
-	if(is_admin_level(z))
+/obj/structure/machinery/computer/cameras/attack_hand(mob/user)
+	if(!admin_console && is_admin_level(z))
 		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the ship!"))
 		return
 	if(inoperable())
@@ -60,12 +69,12 @@
 		user.set_interaction(src)
 	tgui_interact(user)
 
-/obj/structure/machinery/computer/security/ui_status(mob/user, datum/ui_state/state)
+/obj/structure/machinery/computer/cameras/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(inoperable())
 		return UI_DISABLED
 
-/obj/structure/machinery/computer/security/tgui_interact(mob/user, datum/tgui/ui)
+/obj/structure/machinery/computer/cameras/tgui_interact(mob/user, datum/tgui/ui)
 	// Update UI
 	ui = SStgui.try_update_ui(user, src, ui)
 
@@ -89,7 +98,7 @@
 		ui = new(user, src, "CameraConsole", name)
 		ui.open()
 
-/obj/structure/machinery/computer/security/ui_data()
+/obj/structure/machinery/computer/cameras/ui_data()
 	var/list/data = list()
 	data["network"] = network
 	data["activeCamera"] = null
@@ -100,7 +109,7 @@
 		)
 	return data
 
-/obj/structure/machinery/computer/security/ui_static_data()
+/obj/structure/machinery/computer/cameras/ui_static_data()
 	var/list/data = list()
 	data["mapRef"] = map_name
 	var/list/cameras = get_available_cameras()
@@ -113,7 +122,7 @@
 
 	return data
 
-/obj/structure/machinery/computer/security/ui_act(action, params)
+/obj/structure/machinery/computer/cameras/ui_act(action, params)
 	. = ..()
 	if(.)
 		return
@@ -140,7 +149,7 @@
 
 		return TRUE
 
-/obj/structure/machinery/computer/security/proc/update_active_camera_screen()
+/obj/structure/machinery/computer/cameras/proc/update_active_camera_screen()
 	// Show static if can't use the camera
 	if(!current?.can_use())
 		show_camera_static()
@@ -185,7 +194,7 @@
 
 	START_PROCESSING(SSfastobj, src) // fastobj to somewhat keep pace with lighting updates
 
-/obj/structure/machinery/computer/security/process()
+/obj/structure/machinery/computer/cameras/process()
 	if(current)
 		var/list/visible_turfs = list()
 		var/area/A
@@ -195,7 +204,7 @@
 				visible_turfs += visible_turf
 		cam_screen.vis_contents = visible_turfs
 
-/obj/structure/machinery/computer/security/ui_close(mob/user)
+/obj/structure/machinery/computer/cameras/ui_close(mob/user)
 	var/user_ref = WEAKREF(user)
 	var/is_living = isliving(user)
 	// Living creature or not, we remove you anyway.
@@ -212,13 +221,14 @@
 		STOP_PROCESSING(SSfastobj, src)
 	user.unset_interaction()
 
-/obj/structure/machinery/computer/security/proc/show_camera_static()
+/obj/structure/machinery/computer/cameras/proc/show_camera_static()
 	cam_screen.vis_contents.Cut()
+	last_camera_turf = null
 	cam_background.icon_state = "scanline2"
 	cam_background.fill_rect(1, 1, DEFAULT_MAP_SIZE, DEFAULT_MAP_SIZE)
 
 // Returns the list of cameras accessible from this computer
-/obj/structure/machinery/computer/security/proc/get_available_cameras()
+/obj/structure/machinery/computer/cameras/proc/get_available_cameras()
 	var/list/D = list()
 	for(var/obj/structure/machinery/camera/C in cameranet.cameras)
 		if(!C.network)
@@ -232,106 +242,113 @@
 			D["[C.c_tag]"] = C
 	return D
 
-/obj/structure/machinery/computer/security/telescreen
+/obj/structure/machinery/computer/cameras/telescreen
 	name = "Telescreen"
 	desc = "Used for watching an empty arena."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "telescreen"
 	network = list("thunder")
-	density = 0
+	density = FALSE
 	circuit = null
 
-/obj/structure/machinery/computer/security/telescreen/update_icon()
+/obj/structure/machinery/computer/cameras/telescreen/update_icon()
 	icon_state = initial(icon_state)
 	if(stat & BROKEN)
 		icon_state += "b"
 	return
 
-/obj/structure/machinery/computer/security/telescreen/entertainment
+/obj/structure/machinery/computer/cameras/telescreen/entertainment
 	name = "entertainment monitor"
 	desc = "Damn, why do they never have anything interesting on these things?"
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "entertainment"
 	circuit = null
 
-/obj/structure/machinery/computer/security/wooden_tv
+/obj/structure/machinery/computer/cameras/wooden_tv
 	name = "Security Cameras"
 	desc = "An old TV hooked into the station's camera network."
 	icon_state = "security_det"
 	circuit = null
 
-/obj/structure/machinery/computer/security/wooden_tv/almayer
+/obj/structure/machinery/computer/cameras/wooden_tv/almayer
 	name = "Ship Security Cameras"
 	network = list(CAMERA_NET_ALMAYER)
 
-/obj/structure/machinery/computer/security/wooden_tv/prop
+/obj/structure/machinery/computer/cameras/wooden_tv/prop
 	name = "Television Set"
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW."
 	network = null
 
-/obj/structure/machinery/computer/security/wooden_tv/ot
+/obj/structure/machinery/computer/cameras/wooden_tv/ot
 	name = "Mortar Monitoring Set"
 	desc = "A Console linked to Mortar launched cameras."
 	network = list(CAMERA_NET_MORTAR)
 
-/obj/structure/machinery/computer/security/mining
+/obj/structure/machinery/computer/cameras/mining
 	name = "Outpost Cameras"
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	desc = "Used to access the various cameras on the outpost."
-	icon_state = "miningcameras"
+	icon_state = "cameras"
 	network = list("MINE")
-	circuit = /obj/item/circuitboard/computer/security/mining
+	circuit = /obj/item/circuitboard/computer/cameras/mining
 
-/obj/structure/machinery/computer/security/engineering
+/obj/structure/machinery/computer/cameras/engineering
 	name = "Engineering Cameras"
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	desc = "Used to monitor fires and breaches."
-	icon_state = "engineeringcameras"
+	icon_state = "cameras"
 	network = list("Engineering","Power Alarms","Atmosphere Alarms","Fire Alarms")
-	circuit = /obj/item/circuitboard/computer/security/engineering
+	circuit = /obj/item/circuitboard/computer/cameras/engineering
 
-/obj/structure/machinery/computer/security/nuclear
+/obj/structure/machinery/computer/cameras/nuclear
 	name = "Mission Monitor"
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	desc = "Used to access the built-in cameras in helmets."
 	icon_state = "syndicam"
 	network = list("NUKE")
 	circuit = null
 
 
-/obj/structure/machinery/computer/security/almayer
-	density = 0
+/obj/structure/machinery/computer/cameras/almayer
+	density = FALSE
 	icon_state = "security_cam"
 	network = list(CAMERA_NET_ALMAYER)
 
-/obj/structure/machinery/computer/security/almayer/containment
+/obj/structure/machinery/computer/cameras/almayer/containment
 	name = "Containment Cameras"
 	network = list(CAMERA_NET_CONTAINMENT)
 
-/obj/structure/machinery/computer/security/almayer/vehicle
+/obj/structure/machinery/computer/cameras/almayer/ares
+	name = "ARES Core Cameras"
+	network = list(CAMERA_NET_ARES)
+
+/obj/structure/machinery/computer/cameras/almayer/vehicle
 	name = "Ship Security Cameras"
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_VEHICLE)
 
-/obj/structure/machinery/computer/security/hangar
+/obj/structure/machinery/computer/cameras/hangar
 	name = "Dropship Security Cameras Console"
 	icon_state = "security_cam"
 	density = FALSE
 	network = list(CAMERA_NET_ALAMO, CAMERA_NET_NORMANDY)
 
-/obj/structure/machinery/computer/security/containment
+/obj/structure/machinery/computer/cameras/containment
 	name = "Containment Cameras"
 	network = list(CAMERA_NET_CONTAINMENT, CAMERA_NET_RESEARCH)
 
-/obj/structure/machinery/computer/security/containment/hidden
+/obj/structure/machinery/computer/cameras/containment/hidden
 	network = list(CAMERA_NET_CONTAINMENT, CAMERA_NET_CONTAINMENT_HIDDEN, CAMERA_NET_RESEARCH)
 
-/obj/structure/machinery/computer/security/almayer_network
+/obj/structure/machinery/computer/cameras/almayer_network
 	network = list(CAMERA_NET_ALMAYER)
 
-/obj/structure/machinery/computer/security/almayer_network/vehicle
+/obj/structure/machinery/computer/cameras/almayer_network/vehicle
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_VEHICLE)
 
-/obj/structure/machinery/computer/security/mortar
+/obj/structure/machinery/computer/cameras/mortar
 	name = "Mortar Camera Interface"
 	alpha = 0
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	density = FALSE
 	use_power = USE_POWER_NONE
 	idle_power_usage = 0
@@ -341,13 +358,13 @@
 	exproof = TRUE
 	colony_camera_mapload = FALSE
 
-/obj/structure/machinery/computer/security/mortar/emp_act(severity)
+/obj/structure/machinery/computer/cameras/mortar/emp_act(severity)
 	return FALSE
 
-/obj/structure/machinery/computer/security/dropship
+/obj/structure/machinery/computer/cameras/dropship
 	name = "abstract dropship camera computer"
 	desc = "A computer to monitor cameras linked to the dropship."
-	density = 1
+	density = TRUE
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "consoleleft"
 	circuit = null
@@ -356,11 +373,11 @@
 	exproof = TRUE
 
 
-/obj/structure/machinery/computer/security/dropship/one
+/obj/structure/machinery/computer/cameras/dropship/one
 	name = "\improper 'Alamo' camera controls"
 	network = list(CAMERA_NET_ALAMO, CAMERA_NET_LASER_TARGETS)
 
-/obj/structure/machinery/computer/security/dropship/two
+/obj/structure/machinery/computer/cameras/dropship/two
 	name = "\improper 'Normandy' camera controls"
 	network = list(CAMERA_NET_NORMANDY, CAMERA_NET_LASER_TARGETS)
 

@@ -3,16 +3,17 @@
 /////////////////////////////////////////////
 /obj/effect/particle_effect/smoke/chem
 	icon = 'icons/effects/chemsmoke.dmi'
-	opacity = 0
+	icon_state = ""
+	opacity = FALSE
 	time_to_live = 300
-	anchored = 1
+	anchored = TRUE
 	smokeranking = SMOKE_RANK_HIGH
 
 /obj/effect/particle_effect/smoke/chem/Initialize()
 	. = ..()
 	create_reagents(500)
 
-/obj/effect/particle_effect/smoke/chem/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/particle_effect/smoke/chem/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_SMOKE
@@ -39,7 +40,8 @@
 // Culls the selected turfs to a (roughly) circle shape, then calls smokeFlow() to make
 // sure the smoke can actually path to the turfs. This culls any turfs it can't reach.
 //------------------------------------------
-/datum/effect_system/smoke_spread/chem/set_up(var/datum/reagents/carry = null, n = 10, c = 0, loca, direct)
+/datum/effect_system/smoke_spread/chem/set_up(datum/reagents/carry = null, n = 10, c = 0, loca, direct, datum/cause_data/new_cause_data)
+	cause_data = istype(new_cause_data) ? new_cause_data : cause_data
 	range = n * 0.3
 	cardinals = c
 	carry.copy_to(chemholder, carry.total_volume)
@@ -67,7 +69,7 @@
 	smokeFlow(location, targetTurfs, wallList)
 
 	//set the density of the cloud - for diluting reagents
-	density = max(1, targetTurfs.len / 4)	//clamp the cloud density minimum to 1 so it cant multiply the reagents
+	density = max(1, targetTurfs.len / 4) //clamp the cloud density minimum to 1 so it cant multiply the reagents
 
 	//Admin messaging
 	var/contained = ""
@@ -81,14 +83,10 @@
 	var/whereLink = "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
 
 	if(carry.my_atom.fingerprintslast)
-		var/mob/M = GLOB.directory[carry.my_atom.fingerprintslast]
-		var/more = ""
-		if(M)
-			more = "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo;extra=\ref[M]'>?</a>)"
-		message_staff("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated key is [carry.my_atom.fingerprintslast][more].")
+		message_admins("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
 		log_game("A chemical smoke reaction has taken place in ([where])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
 	else
-		message_staff("A chemical smoke reaction has taken place in ([whereLink]). No associated key.")
+		message_admins("A chemical smoke reaction has taken place in ([whereLink]). No associated key.")
 		log_game("A chemical smoke reaction has taken place in ([where])[contained]. No associated key.")
 
 
@@ -102,7 +100,7 @@
 //------------------------------------------
 /datum/effect_system/smoke_spread/chem/start()
 
-	if(!location)	//kill grenade if it somehow ends up in nullspace
+	if(!location) //kill grenade if it somehow ends up in nullspace
 		return
 
 	//reagent application - only run if there are extra reagents in the smoke
@@ -134,7 +132,7 @@
 						if(prob(proba))
 							R.reaction_turf(T, R.volume)
 						for(var/atom/A in T.contents)
-							if(istype(A, /obj/effect/particle_effect/smoke/chem))	//skip the item if it is chem smoke
+							if(istype(A, /obj/effect/particle_effect/smoke/chem)) //skip the item if it is chem smoke
 								continue
 							else if(istype(A, /mob))
 								var/dist = cheap_pythag(T.x - location.x, T.y - location.y)
@@ -150,7 +148,7 @@
 	var/color = mix_color_from_reagents(chemholder.reagents.reagent_list)
 	var/icon/I
 	if(color)
-		I = icon('icons/effects/chemsmoke.dmi')
+		I = icon('icons/effects/chemsmoke.dmi', "smoke")
 		I += color
 	else
 		I = icon('icons/effects/96x96.dmi', "smoke")
@@ -164,7 +162,7 @@
 	for(var/i = 0, i < range, i++)
 		var/radius = i * 1.5
 		if(!radius)
-			INVOKE_ASYNC(src, .proc/spawnSmoke, location, I, 1)
+			INVOKE_ASYNC(src, PROC_REF(spawnSmoke), location, I, 1)
 			continue
 
 		var/offset = 0
@@ -172,7 +170,7 @@
 		var/angle = round(ToDegrees(arcLength / radius), 1)
 
 		if(!IsInteger(radius))
-			offset = 45		//degrees
+			offset = 45 //degrees
 
 		for(var/j = 0, j < points, j++)
 			var/a = (angle * j) + offset
@@ -182,7 +180,7 @@
 			if(!T)
 				continue
 			if(T in targetTurfs)
-				INVOKE_ASYNC(src, .proc/spawnSmoke, T, I, range)
+				INVOKE_ASYNC(src, PROC_REF(spawnSmoke), T, I, range)
 
 #undef arcLength
 
@@ -191,18 +189,18 @@
 // Randomizes and spawns the smoke effect.
 // Also handles deleting the smoke once the effect is finished.
 //------------------------------------------
-/datum/effect_system/smoke_spread/chem/proc/spawnSmoke(var/turf/T, var/icon/I, var/dist = 1)
+/datum/effect_system/smoke_spread/chem/proc/spawnSmoke(turf/T, icon/I, dist = 1)
 	var/obj/effect/particle_effect/smoke/chem/smoke = new(location)
 	if(chemholder.reagents.reagent_list.len)
-		chemholder.reagents.copy_to(smoke, chemholder.reagents.total_volume / dist, safety = 1)	//copy reagents to the smoke so mob/breathe() can handle inhaling the reagents
+		chemholder.reagents.copy_to(smoke, chemholder.reagents.total_volume / dist, safety = 1) //copy reagents to the smoke so mob/breathe() can handle inhaling the reagents
 	smoke.icon = I
 	smoke.layer = FLY_LAYER
 	smoke.setDir(pick(cardinal))
 	smoke.pixel_x = -32 + rand(-8,8)
 	smoke.pixel_y = -32 + rand(-8,8)
 	walk_to(smoke, T)
-	smoke.SetOpacity(1)		//switching opacity on after the smoke has spawned, and then
-	sleep(150+rand(0,20))	// turning it off before it is deleted results in cleaner
+	smoke.SetOpacity(1) //switching opacity on after the smoke has spawned, and then
+	sleep(150+rand(0,20)) // turning it off before it is deleted results in cleaner
 	if(smoke.opacity)
 		smoke.SetOpacity(0)
 	fadeOut(smoke)
@@ -211,7 +209,7 @@
 //------------------------------------------
 // Fades out the smoke smoothly using it's alpha variable.
 //------------------------------------------
-/datum/effect_system/smoke_spread/chem/proc/fadeOut(var/atom/A, var/frames = 16)
+/datum/effect_system/smoke_spread/chem/proc/fadeOut(atom/A, frames = 16)
 	var/step = A.alpha / frames
 	for(var/i = 0, i < frames, i++)
 		A.alpha -= step

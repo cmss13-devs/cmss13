@@ -105,23 +105,26 @@
 	description = "A strong neurotoxin that puts the subject into a death-like state."
 	reagent_state = SOLID
 	color = "#669900" // rgb: 102, 153, 0
-	properties = list(PROPERTY_TOXIC = 1)
+	properties = list()
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/toxin/zombiepowder/on_mob_life(mob/living/carbon/M)
 	. = ..()
-	if(!.) return
+	if(!. || deleted)
+		return
 	M.status_flags |= FAKEDEATH
 	M.apply_damage(0.5*REM, OXY)
-	M.apply_effect(10, WEAKEN)
+	M.apply_effect(2, WEAKEN)
 	M.silent = max(M.silent, 10)
-	M.tod = worldtime2text()
 
-/datum/reagent/toxin/zombiepowder/Destroy()
-	if(holder && ismob(holder.my_atom))
-		var/mob/M = holder.my_atom
-		M.status_flags &= ~FAKEDEATH
+/datum/reagent/toxin/zombiepowder/on_delete()
 	. = ..()
+	if(!.)
+		return
+
+	var/mob/living/holder_mob = .
+
+	holder_mob.status_flags &= ~FAKEDEATH
 
 /datum/reagent/toxin/mindbreaker
 	name = "Mindbreaker Toxin"
@@ -218,7 +221,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_RELAXING = 8, PROPERTY_HYPOXEMIC = 4, PROPERTY_TOXIC = 2)
 
-/datum/reagent/toxin/beer2	//disguised as normal beer for use by emagged brobots
+/datum/reagent/toxin/beer2 //disguised as normal beer for use by emagged brobots
 	name = "Beer"
 	id = "beer2"
 	description = "An alcoholic beverage made from malted grains, hops, yeast, and water. The fermentation appears to be incomplete." //If the players manage to analyze this, they deserve to know something is wrong.

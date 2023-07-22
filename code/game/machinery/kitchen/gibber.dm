@@ -15,7 +15,7 @@
 	idle_power_usage = 2
 	active_power_usage = 500
 
-/obj/structure/machinery/gibber/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/gibber/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -39,7 +39,7 @@
 			log_misc("a [src] didn't find an input plate.")
 			return
 
-/obj/structure/machinery/gibber/autogibber/Collided(var/atom/A)
+/obj/structure/machinery/gibber/autogibber/Collided(atom/A)
 	if(!input_plate) return
 
 	if(ismob(A))
@@ -82,37 +82,53 @@
 	else
 		startgibbing(user)
 
-/obj/structure/machinery/gibber/attackby(obj/item/grab/G as obj, mob/user as mob)
+/obj/structure/machinery/gibber/attackby(obj/item/grab/grabbed as obj, mob/user as mob)
 	if(occupant)
 		to_chat(user, SPAN_WARNING("The gibber is full, empty it first!"))
 		return
 
-	if(HAS_TRAIT(G, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(grabbed, TRAIT_TOOL_WRENCH))
 		. = ..()
 		return
 
-	if(!(istype(G, /obj/item/grab)) )
+	if(!(istype(grabbed, /obj/item/grab)) )
 		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
 
-	if( !iscarbon(G.grabbed_thing) && !istype(G.grabbed_thing, /mob/living/simple_animal) )
+	if( !iscarbon(grabbed.grabbed_thing) && !istype(grabbed.grabbed_thing, /mob/living/simple_animal) )
 		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
-	var/mob/living/M = G.grabbed_thing
-	if(user.grab_level < GRAB_AGGRESSIVE && !istype(G.grabbed_thing, /mob/living/carbon/Xenomorph))
+
+	var/mob/living/victim = grabbed.grabbed_thing
+
+	if(user.grab_level < GRAB_AGGRESSIVE && !istype(grabbed.grabbed_thing, /mob/living/carbon/xenomorph))
 		to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 		return
 
-	if(M.abiotic(1))
+	if(victim.abiotic(1))
 		to_chat(user, SPAN_WARNING("Subject may not have abiotic items on."))
 		return
 
-	user.visible_message(SPAN_DANGER("[user] starts to put [M] into the gibber!"))
+	user.visible_message(SPAN_DANGER("[user] starts to put [victim] into the gibber!"))
 	add_fingerprint(user)
-	if(do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_DOMESTIC), INTERRUPT_ALL, BUSY_ICON_HOSTILE) && G && G.grabbed_thing && !occupant)
-		user.visible_message(SPAN_DANGER("[user] stuffs [M] into the gibber!"))
-		M.forceMove(src)
-		occupant = M
+
+	///If someone's being LRP and doing funny chef shit, this lets admins know. This *shouldn't* flag preds, though.
+	if(ishuman(victim) && ishuman_strict(user) && !occupant)
+		var/turf/turf_ref = get_turf(user)
+		var/area/area = get_area(user)
+		message_admins("ALERT: [user] ([user.key]) is trying to gib [victim] ([victim.key]) in [area.name] [ADMIN_JMP(turf_ref)]</font>")
+		log_attack("[key_name(user)] tried to gib [victim] ([victim.key]) in [area.name]")
+		to_chat(user, SPAN_DANGER("Are you insane?!"))
+		if(do_after(user, 30 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE && grabbed && grabbed.grabbed_thing && !occupant))
+			user.visible_message(SPAN_DANGER("[user] stuffs [victim] into the gibber!"))
+			victim.forceMove(src)
+			occupant = victim
+			update_icon()
+
+	else if(do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_DOMESTIC), INTERRUPT_ALL, BUSY_ICON_HOSTILE) && grabbed && grabbed.grabbed_thing && !occupant)
+		user.visible_message(SPAN_DANGER("[user] stuffs [victim] into the gibber!"))
+		victim.forceMove(src)
+		occupant = victim
 		update_icon()
 
 /obj/structure/machinery/gibber/verb/eject()
@@ -154,8 +170,8 @@
 	var/totalslabs = 2
 
 	var/obj/item/reagent_container/food/snacks/meat/meat_template = /obj/item/reagent_container/food/snacks/meat/monkey
-	if(istype(occupant, /mob/living/carbon/Xenomorph))
-		var/mob/living/carbon/Xenomorph/X = occupant
+	if(istype(occupant, /mob/living/carbon/xenomorph))
+		var/mob/living/carbon/xenomorph/X = occupant
 		meat_template = /obj/item/reagent_container/food/snacks/meat/xenomeat
 		totalslabs = 1
 		if(X.caste_type == XENO_CASTE_QUEEN)//have to do queen and predalien first because they are T0 and T1
@@ -188,7 +204,7 @@
 
 	QDEL_NULL(occupant)
 
-	addtimer(CALLBACK(src, .proc/create_gibs, totalslabs, allmeat), gibtime)
+	addtimer(CALLBACK(src, PROC_REF(create_gibs), totalslabs, allmeat), gibtime)
 
 /obj/structure/machinery/gibber/proc/create_gibs(totalslabs, list/obj/item/reagent_container/food/snacks/allmeat)
 	playsound(loc, 'sound/effects/splat.ogg', 25, 1)

@@ -1,8 +1,8 @@
 /* Diffrent misc types of tiles
  * Contains:
- *		Grass
- *		Wood
- *		Carpet
+ * Grass
+ * Wood
+ * Carpet
  */
 
 /obj/item/stack/tile
@@ -10,8 +10,8 @@
 	singular_name = "abstract tile"
 	desc = "If you're seeing this, then a Dev made a mistake. Report it on Github."
 	w_class = SIZE_MEDIUM
-	force = 1.0
-	throwforce = 1.0
+	force = 1
+	throwforce = 1
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	max_amount = 60
@@ -19,19 +19,19 @@
 
 	var/turf_type = /turf/open/floor/plating
 
-/obj/item/stack/tile/Initialize(mapload, amount, var/new_turf_type)
+/obj/item/stack/tile/Initialize(mapload, amount, new_turf_type)
 	. = ..()
 	if(new_turf_type)
 		set_turf_type(new_turf_type)
 
-/obj/item/stack/tile/proc/set_turf_type(var/new_turf_type)
+/obj/item/stack/tile/proc/set_turf_type(new_turf_type)
 	var/turf/open/floor/floor_type = new_turf_type
 	name = "[initial(floor_type.name)] tile"
 	singular_name = name
 	turf_type = new_turf_type
 	stack_id = name
 
-/obj/item/stack/tile/proc/build(var/turf/build_turf)
+/obj/item/stack/tile/proc/build(turf/build_turf)
 	build_turf.ChangeTurf(turf_type)
 
 /obj/item/stack/tile/plasteel
@@ -40,9 +40,9 @@
 	desc = "Those could work as a pretty decent throwing weapon."
 	icon_state = "tile"
 	w_class = SIZE_MEDIUM
-	force = 6.0
+	force = 6
 	matter = list("metal" = 937.5)
-	throwforce = 8.0
+	throwforce = 8
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	flags_atom = FPRINT|CONDUCT

@@ -23,7 +23,7 @@ GLOBAL_DATUM_INIT(default_state, /datum/ui_state/default, new)
 	if(. > UI_CLOSE && loc) //must not be in nullspace.
 		. = min(., shared_living_ui_distance(src_object)) // Check the distance...
 	//if(. == UI_INTERACTIVE && !src.IsAdvancedToolUser())) // unhandy living mobs can only look, not touch.
-	//	return UI_UPDATE
+	// return UI_UPDATE
 
 /mob/living/silicon/ai/default_can_use_topic(src_object)
 	. = shared_ui_interaction(src_object)

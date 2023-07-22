@@ -36,7 +36,7 @@ In practice this means that:
 
 There are several things that need to be remembered:
 
->	Whenever we do something that should cause an overlay to update (which doesn't use standard procs
+> Whenever we do something that should cause an overlay to update (which doesn't use standard procs
 	( i.e. you do something like l_hand = /obj/item/something new(src) )
 	You will need to call the relevant update_inv_* proc:
 		update_inv_head()
@@ -61,14 +61,14 @@ There are several things that need to be remembered:
 	corgi etc. Instead, it'll just return without doing any work. So no harm in calling it for corgis and such.
 
 
->	There are also these special cases:
-		UpdateDamageIcon()	//handles damage overlays for brute/burn damage //(will rename this when I geta round to it)
-		update_body()	//Handles updating your mob's icon to reflect their gender/race/complexion etc
-		update_hair()	//Handles updating your hair overlay (used to be update_face, but mouth and
+> There are also these special cases:
+		UpdateDamageIcon() //handles damage overlays for brute/burn damage //(will rename this when I geta round to it)
+		update_body() //Handles updating your mob's icon to reflect their gender/race/complexion etc
+		update_hair() //Handles updating your hair overlay (used to be update_face, but mouth and
 																			...eyes were merged into update_body)
 		update_targeted() // Updates the target overlay when someone points a gun at you
 
->	If you need to update all overlays you can use regenerate_icons(). it works exactly like update_clothing used to.
+> If you need to update all overlays you can use regenerate_icons(). it works exactly like update_clothing used to.
 
 
 */
@@ -90,27 +90,23 @@ There are several things that need to be remembered:
 		overlays_standing[cache_index] = null
 
 
-/mob/living/carbon/human/update_transform(var/force = FALSE)
+/mob/living/carbon/human/update_transform(force = FALSE)
 	if(lying == lying_prev && !force)
 		return
 	lying_prev = lying
-	var/matrix/M = matrix()
-	var/matrix/L = matrix() //Counter-rotation for langchat text.
+	var/matrix/new_matrix = matrix()
 	if(lying)
 		if(pulledby && pulledby.grab_level >= GRAB_CARRY)
-			M.Turn(90)
-			L.Turn(270)
+			new_matrix.Turn(90)
 		else
 			if(prob(50))
-				M.Turn(90)
-				L.Turn(270)
+				new_matrix.Turn(90)
 			else
-				M.Turn(270)
-				L.Turn(90)
-			M.Translate(rand(-10,10),rand(-10,10))
-		apply_transform(M)
+				new_matrix.Turn(270)
+			new_matrix.Translate(rand(-10,10), rand(-10,10))
+		apply_transform(new_matrix)
 	else
-		apply_transform(M)
+		apply_transform(new_matrix)
 
 /mob/living/carbon/human/UpdateDamageIcon()
 	for(var/obj/limb/O in limbs)
@@ -209,27 +205,21 @@ There are several things that need to be remembered:
 			overlays_standing[HAIR_LAYER] = hair_s
 			apply_overlay(HAIR_LAYER)
 
-
 //Call when target overlay should be added/removed
 /mob/living/carbon/human/update_targeted()
 	remove_overlay(TARGETED_LAYER)
-	var/image/I
-	if(targeted_by && target_locked)
-		I = image("icon" = target_locked)
-	else if(!targeted_by && target_locked)
-		QDEL_NULL(target_locked)
+
+	var/image/holo_card_image
+
 	if(holo_card_color)
-		if(I)
-			I.overlays += image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "holo_card_[holo_card_color]")
-		else
-			I = image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "holo_card_[holo_card_color]")
-	if(!I)
+		holo_card_image = image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "holo_card_[holo_card_color]")
+
+	if(!holo_card_image)
 		return
-	I.layer = -TARGETED_LAYER
-	overlays_standing[TARGETED_LAYER] = I
+
+	holo_card_image.layer = -TARGETED_LAYER
+	overlays_standing[TARGETED_LAYER] = holo_card_image
 	apply_overlay(TARGETED_LAYER)
-
-
 
 //Call when someone is gauzed or splinted, or when one of those items are removed
 /mob/living/carbon/human/update_med_icon()
@@ -354,7 +344,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	if(!wear_id.pinned_on_uniform || (w_uniform && w_uniform.displays_id && !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED)))
 		var/image/id_overlay = wear_id.get_mob_overlay(src, WEAR_ID)
 		id_overlay.layer = -ID_LAYER
-		overlays_standing[ID_LAYER]	= id_overlay
+		overlays_standing[ID_LAYER] = id_overlay
 		apply_overlay(ID_LAYER)
 
 /mob/living/carbon/human/update_inv_gloves()
@@ -374,7 +364,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	if(!I)
 		return
 	I.layer = -GLOVES_LAYER
-	overlays_standing[GLOVES_LAYER]	= I
+	overlays_standing[GLOVES_LAYER] = I
 	apply_overlay(GLOVES_LAYER)
 
 
@@ -440,7 +430,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 			client.screen += s_store
 			s_store.screen_loc = hud_used.ui_datum.hud_slot_offset(s_store, hud_used.ui_datum.ui_sstore1)
 
-		var/image/I	= s_store.get_mob_overlay(src, WEAR_J_STORE)
+		var/image/I = s_store.get_mob_overlay(src, WEAR_J_STORE)
 		I.layer = -SUIT_STORE_LAYER
 		overlays_standing[SUIT_STORE_LAYER] = I
 		apply_overlay(SUIT_STORE_LAYER)
@@ -678,7 +668,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 
 //Adds a collar overlay above the helmet layer if the suit has one
-//	Suit needs an identically named sprite in icons/mob/collar.dmi
+// Suit needs an identically named sprite in icons/mob/collar.dmi
 /mob/living/carbon/human/proc/update_collar()
 	remove_overlay(COLLAR_LAYER)
 	if(!istype(wear_suit,/obj/item/clothing/suit))
@@ -687,7 +677,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	var/image/I = S.get_collar()
 	if(I)
 		I.layer = -COLLAR_LAYER
-		overlays_standing[COLLAR_LAYER]	= I
+		overlays_standing[COLLAR_LAYER] = I
 		apply_overlay(COLLAR_LAYER)
 
 /mob/living/carbon/human/update_burst()

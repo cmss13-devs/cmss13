@@ -56,10 +56,10 @@ SUBSYSTEM_DEF(item_cleanup)
 		if(o.loc.z in z_levels) //item is on the proper Z-level
 			qdel(o)
 
-/proc/add_to_garbage(var/atom/a)
+/proc/add_to_garbage(atom/a)
 	addToListNoDupe(item_cleanup_list, a)
 
-/proc/remove_from_garbage(var/atom/a)
+/proc/remove_from_garbage(atom/a)
 	item_cleanup_list -= a
 	if(SSitem_cleanup)
 		SSitem_cleanup.items_to_clean_up -= a

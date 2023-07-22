@@ -1,4 +1,4 @@
-/obj/item/weapon/melee/baton
+/obj/item/weapon/baton
 	name = "stunbaton"
 	desc = "A stun baton for incapacitating people with."
 	icon_state = "stunbaton"
@@ -11,30 +11,30 @@
 	w_class = SIZE_MEDIUM
 
 	attack_verb = list("beaten")
-	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_COMMANDER, ACCESS_WY_CORPORATE, ACCESS_WY_PMC_GREEN, ACCESS_CIVILIAN_BRIG)
+	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_SENIOR, ACCESS_WY_CORPORATE, ACCESS_WY_PMC_GREEN, ACCESS_CIVILIAN_BRIG)
 	var/stunforce = 50
-	var/status = 0		//whether the thing is on or not
+	var/status = 0 //whether the thing is on or not
 	var/obj/item/cell/bcell = null
-	var/hitcost = 1000	//oh god why do power cells carry so much charge? We probably need to make a distinction between "industrial" sized power cells for APCs and power cells for everything else.
+	var/hitcost = 1000 //oh god why do power cells carry so much charge? We probably need to make a distinction between "industrial" sized power cells for APCs and power cells for everything else.
 	var/has_user_lock = TRUE //whether the baton prevents people without correct access from using it.
 
-/obj/item/weapon/melee/baton/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is putting the live [name] in \his mouth! It looks like \he's trying to commit suicide.</span>")
+/obj/item/weapon/baton/suicide_act(mob/user)
+	user.visible_message(SPAN_SUICIDE("[user] is putting the live [name] in \his mouth! It looks like \he's trying to commit suicide."))
 	return (FIRELOSS)
 
-/obj/item/weapon/melee/baton/Initialize(mapload, ...)
+/obj/item/weapon/baton/Initialize(mapload, ...)
 	. = ..()
 	bcell = new/obj/item/cell/high(src) //Fuckit lets givem all the good cells
 	update_icon()
 
-/obj/item/weapon/melee/baton/Destroy()
+/obj/item/weapon/baton/Destroy()
 	QDEL_NULL(bcell)
 	return ..()
 
 // legacy type, remove when able
-/obj/item/weapon/melee/baton/loaded
+/obj/item/weapon/baton/loaded
 
-/obj/item/weapon/melee/baton/proc/deductcharge(var/chrgdeductamt)
+/obj/item/weapon/baton/proc/deductcharge(chrgdeductamt)
 	if(bcell)
 		if(bcell.use(chrgdeductamt))
 			return TRUE
@@ -43,7 +43,7 @@
 			update_icon()
 			return FALSE
 
-/obj/item/weapon/melee/baton/update_icon()
+/obj/item/weapon/baton/update_icon()
 	if(status)
 		icon_state = "[initial(icon_state)]_active"
 	else if(!bcell)
@@ -51,25 +51,25 @@
 	else
 		icon_state = "[initial(icon_state)]"
 
-/obj/item/weapon/melee/baton/get_examine_text(mob/user)
+/obj/item/weapon/baton/get_examine_text(mob/user)
 	. = ..()
 	if(bcell)
 		. += SPAN_NOTICE("The baton is [round(bcell.percent())]% charged.")
 	else
 		. += SPAN_WARNING("The baton does not have a power source installed.")
 
-/obj/item/weapon/melee/baton/attack_hand(mob/user)
+/obj/item/weapon/baton/attack_hand(mob/user)
 	if(check_user_auth(user))
 		..()
 
 
-/obj/item/weapon/melee/baton/equipped(mob/user, slot)
+/obj/item/weapon/baton/equipped(mob/user, slot)
 	..()
 	check_user_auth(user)
 
 
 //checks if the mob touching the baton has proper access
-/obj/item/weapon/melee/baton/proc/check_user_auth(mob/user)
+/obj/item/weapon/baton/proc/check_user_auth(mob/user)
 	if(!has_user_lock)
 		return TRUE
 	var/mob/living/carbon/human/H = user
@@ -86,10 +86,10 @@
 			add_fingerprint(user)
 			return FALSE
 	return TRUE
-/obj/item/weapon/melee/baton/pull_response(mob/puller)
+/obj/item/weapon/baton/pull_response(mob/puller)
 	return check_user_auth(puller)
 
-/obj/item/weapon/melee/baton/attackby(obj/item/W, mob/user)
+/obj/item/weapon/baton/attackby(obj/item/W, mob/user)
 
 	if(istype(W, /obj/item/cell))
 		if(!bcell)
@@ -112,7 +112,7 @@
 			return
 		..()
 
-/obj/item/weapon/melee/baton/attack_self(mob/user)
+/obj/item/weapon/baton/attack_self(mob/user)
 	..()
 
 	if(has_user_lock && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
@@ -132,7 +132,7 @@
 	add_fingerprint(user)
 
 
-/obj/item/weapon/melee/baton/attack(mob/M, mob/user)
+/obj/item/weapon/baton/attack(mob/M, mob/user)
 	if(has_user_lock && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
@@ -146,8 +146,8 @@
 
 	var/target_zone = check_zone(user.zone_selected)
 	if(user.a_intent == INTENT_HARM)
-		if (!..())	//item/attack() does it's own messaging and logs
-			return FALSE	// item/attack() will return TRUE if they hit, 0 if they missed.
+		if (!..()) //item/attack() does it's own messaging and logs
+			return FALSE // item/attack() will return TRUE if they hit, 0 if they missed.
 
 		if(!status)
 			return TRUE
@@ -177,7 +177,7 @@
 
 	//stun effects
 
-	if(!isYautja(L) && !isXeno(L)) //Xenos and Predators are IMMUNE to all baton stuns.
+	if(!isyautja(L) && !isxeno(L)) //Xenos and Predators are IMMUNE to all baton stuns.
 		L.emote("pain")
 		L.apply_stamina_damage(stun, target_zone, ARMOR_ENERGY)
 
@@ -196,24 +196,24 @@
 
 	return TRUE
 
-/obj/item/weapon/melee/baton/emp_act(severity)
+/obj/item/weapon/baton/emp_act(severity)
 	if(bcell)
-		bcell.emp_act(severity)	//let's not duplicate code everywhere if we don't have to please.
+		bcell.emp_act(severity) //let's not duplicate code everywhere if we don't have to please.
 	..()
 
 //secborg stun baton module
-/obj/item/weapon/melee/baton/robot/attack_self(mob/user)
+/obj/item/weapon/baton/robot/attack_self(mob/user)
 	//try to find our power cell
 	var/mob/living/silicon/robot/R = loc
 	if (istype(R))
 		bcell = R.cell
 	return ..()
 
-/obj/item/weapon/melee/baton/robot/attackby(obj/item/W, mob/user)
+/obj/item/weapon/baton/robot/attackby(obj/item/W, mob/user)
 	return
 
 //Makeshift stun baton. Replacement for stun gloves.
-/obj/item/weapon/melee/baton/cattleprod
+/obj/item/weapon/baton/cattleprod
 	name = "stunprod"
 	desc = "An improvised stun baton."
 	icon_state = "stunprod"

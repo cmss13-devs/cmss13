@@ -14,6 +14,8 @@
 	response_disarm = "gently pushes aside"
 	response_harm   = "kicks"
 	friendly = "nibbles"
+	black_market_value = 50
+	dead_black_market_value = 0
 
 /mob/living/simple_animal/bunny/dave
 	name = "Dave"

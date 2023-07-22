@@ -3,11 +3,11 @@
 	name = "lattice"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "latticefull"
-	density = 0
-	anchored = 1.0
+	density = FALSE
+	anchored = TRUE
 	layer = LATTICE_LAYER
 	plane = FLOOR_PLANE
-	//	flags = CONDUCT
+	// flags = CONDUCT
 
 /obj/structure/lattice/Initialize()
 	. = ..()
@@ -69,7 +69,7 @@
 
 /obj/structure/lattice/proc/updateOverlays()
 	//if(!(istype(src.loc, /turf/open/space)))
-	//	qdel(src)
+	// qdel(src)
 	spawn(1)
 		overlays = list()
 

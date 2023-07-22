@@ -8,7 +8,7 @@
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-	density = 1
+	density = TRUE
 	// So you can't hide it under corpses
 	layer = ABOVE_MOB_LAYER
 	flags_atom = RELAY_CLICK
@@ -32,7 +32,7 @@
 	/// If set to 1, can't unanchor and move the mortar, used for map spawns and WO
 	var/fixed = FALSE
 
-	var/obj/structure/machinery/computer/security/mortar/internal_camera
+	var/obj/structure/machinery/computer/cameras/mortar/internal_camera
 
 /obj/structure/mortar/Initialize()
 	. = ..()
@@ -45,7 +45,7 @@
 	QDEL_NULL(internal_camera)
 	return ..()
 
-/obj/structure/mortar/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/mortar/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER
@@ -56,8 +56,8 @@
 	else
 		return FALSE
 
-/obj/structure/mortar/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(isXenoLarva(M))
+/obj/structure/mortar/attack_alien(mob/living/carbon/xenomorph/M)
+	if(islarva(M))
 		return XENO_NO_DELAY_ACTION
 
 	if(fixed)
@@ -86,7 +86,7 @@
 	return XENO_ATTACK_ACTION
 
 /obj/structure/mortar/attack_hand(mob/user)
-	if(isYautja(user))
+	if(isyautja(user))
 		to_chat(user, SPAN_WARNING("You kick [src] but nothing happens."))
 		return
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
@@ -265,7 +265,7 @@
 			for(var/mob/M in range(7))
 				shake_camera(M, 3, 1)
 
-			addtimer(CALLBACK(src, .proc/handle_shell, T, mortar_shell), travel_time)
+			addtimer(CALLBACK(src, PROC_REF(handle_shell), T, mortar_shell), travel_time)
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
@@ -303,7 +303,7 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
 
-/obj/structure/mortar/proc/handle_shell(var/turf/target, var/obj/item/mortar_shell/shell)
+/obj/structure/mortar/proc/handle_shell(turf/target, obj/item/mortar_shell/shell)
 	if(protected_by_pylon(TURF_PROTECTION_MORTAR, target))
 		firing = FALSE
 		return
@@ -316,8 +316,8 @@
 		else
 			relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_DANGER("A SHELL IS COMING DOWN TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
-			SPAN_DANGER("YOU HEAR SOMETHING COMING DOWN TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
+			SPAN_DANGER("A SHELL IS COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_DANGER("YOU HEAR SOMETHING COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)
 	sleep(2.5 SECONDS) // Sleep a bit to give a message
 	for(var/mob/M in range(10, target))
@@ -326,8 +326,8 @@
 		else
 			relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
+			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)
 	sleep(2 SECONDS) // Wait out the rest of the landing time
 	target.ceiling_debris_check(2)

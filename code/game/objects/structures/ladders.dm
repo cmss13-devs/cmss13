@@ -4,10 +4,10 @@
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "ladder11"
 	var/id = null
-	var/height = 0							//The 'height' of the ladder. higher numbers are considered physically higher
-	var/obj/structure/ladder/down = null	//The ladder below this one
-	var/obj/structure/ladder/up = null		//The ladder above this one
-	anchored = 1
+	var/height = 0 //The 'height' of the ladder. higher numbers are considered physically higher
+	var/obj/structure/ladder/down = null //The ladder below this one
+	var/obj/structure/ladder/up = null //The ladder above this one
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = LADDER_LAYER
@@ -37,7 +37,7 @@
 				up = L
 				continue
 
-		if(up && down)	//If both our connections are filled
+		if(up && down) //If both our connections are filled
 			break
 	update_icon()
 
@@ -64,7 +64,7 @@
 	else if(down)
 		icon_state = "ladder01"
 
-	else	//wtf make your ladders properly assholes
+	else //wtf make your ladders properly assholes
 		icon_state = "ladder00"
 
 /obj/structure/ladder/attack_hand(mob/user)
@@ -140,7 +140,7 @@
 //Peeking up/down
 /obj/structure/ladder/MouseDrop(over_object, src_location, over_location)
 	if((over_object == usr && (in_range(src, usr))))
-		if(isXenoLarva(usr) || isobserver(usr) || usr.is_mob_incapacitated() || usr.blinded || usr.lying)
+		if(islarva(usr) || isobserver(usr) || usr.is_mob_incapacitated() || usr.blinded || usr.lying)
 			to_chat(usr, "You can't do that in your current state.")
 			return
 		if(is_watching)
@@ -209,7 +209,7 @@
 		if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(G, user))
 			to_chat(user, SPAN_WARNING("\The [G.name]'s safe-area accident inhibitor prevents you from priming the grenade!"))
 			// Let staff know, in case someone's actually about to try to grief
-			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 			return
 
 		user.visible_message(SPAN_WARNING("[user] takes position to throw [G] [ladder_dir_name] [src]."),
@@ -265,7 +265,7 @@
 	GLOB.hijack_bustable_ladders += src
 
 /obj/structure/ladder/fragile_almayer/Destroy()
-	GLOB.hijack_bustable_windows -= src
+	GLOB.hijack_bustable_ladders -= src
 	return ..()
 
 /obj/structure/ladder/fragile_almayer/deconstruct()
@@ -277,7 +277,7 @@
 	desc = "Well, it was only a matter of time."
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "ladder00"
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = LADDER_LAYER

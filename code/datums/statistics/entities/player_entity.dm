@@ -1,5 +1,5 @@
-#define PREFFILE_VERSION_MIN	3
-#define PREFFILE_VERSION_MAX	3
+#define PREFFILE_VERSION_MIN 3
+#define PREFFILE_VERSION_MAX 3
 
 /datum/entity/statistic
 	var/name = null
@@ -18,7 +18,7 @@
 	var/savefile_version
 	var/save_loaded = FALSE
 
-/datum/entity/player_entity/proc/get_playtime(var/branch, var/type)
+/datum/entity/player_entity/proc/get_playtime(branch, type)
 	var/playtime = 0
 	if(player_stats["[branch]"])
 		var/datum/entity/player_stats/branch_stat = player_stats["[branch]"]

@@ -9,7 +9,7 @@
 	return all_hardpoints
 
 //Returns all activatable hardpoints
-/obj/vehicle/multitile/proc/get_activatable_hardpoints(var/seat)
+/obj/vehicle/multitile/proc/get_activatable_hardpoints(seat)
 	var/list/hps = list()
 	for(var/obj/item/hardpoint/H in hardpoints)
 		if(istype(H, /obj/item/hardpoint/holder))
@@ -22,7 +22,7 @@
 	return hps
 
 //Returns hardpoints that use ammunition
-/obj/vehicle/multitile/proc/get_hardpoints_with_ammo(var/seat)
+/obj/vehicle/multitile/proc/get_hardpoints_with_ammo(seat)
 	var/list/hps = list()
 	for(var/obj/item/hardpoint/H in hardpoints)
 		if(istype(H, /obj/item/hardpoint/holder))
@@ -35,7 +35,7 @@
 	return hps
 
 // Returns a hardpoint by its name
-/obj/vehicle/multitile/proc/find_hardpoint(var/name)
+/obj/vehicle/multitile/proc/find_hardpoint(name)
 	for(var/obj/item/hardpoint/H in hardpoints)
 		if(istype(H, /obj/item/hardpoint/holder))
 			var/obj/item/hardpoint/holder/HP = H
@@ -62,7 +62,7 @@
 
 //Putting on hardpoints
 //Similar to repairing stuff, down to the time delay
-/obj/vehicle/multitile/proc/install_hardpoint(var/obj/item/O, var/mob/user)
+/obj/vehicle/multitile/proc/install_hardpoint(obj/item/O, mob/user)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You don't know what to do with [O] on \the [src]."))
 		return
@@ -131,7 +131,7 @@
 
 //User-orientated proc for taking of hardpoints
 //Again, similar to the above ones
-/obj/vehicle/multitile/proc/uninstall_hardpoint(var/obj/item/O, var/mob/user)
+/obj/vehicle/multitile/proc/uninstall_hardpoint(obj/item/O, mob/user)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
 		return
@@ -149,8 +149,9 @@
 		hps += H
 
 	var/chosen_hp = tgui_input_list(usr, "Select a hardpoint to remove", "Hardpoint Removal", (hps + "Cancel"))
-	if(chosen_hp == "Cancel")
+	if(chosen_hp == "Cancel" || !chosen_hp)
 		return
+
 	var/obj/item/hardpoint/old = chosen_hp
 
 	if(!old)
@@ -198,7 +199,7 @@
 
 //General proc for putting on hardpoints
 //ALWAYS CALL THIS WHEN ATTACHING HARDPOINTS
-/obj/vehicle/multitile/proc/add_hardpoint(var/obj/item/hardpoint/HP, var/mob/user)
+/obj/vehicle/multitile/proc/add_hardpoint(obj/item/hardpoint/HP, mob/user)
 	HP.owner = src
 	HP.forceMove(src)
 	hardpoints += HP
@@ -210,7 +211,7 @@
 
 //General proc for taking off hardpoints
 //ALWAYS CALL THIS WHEN REMOVING HARDPOINTS
-/obj/vehicle/multitile/proc/remove_hardpoint(var/obj/item/hardpoint/old, var/mob/user)
+/obj/vehicle/multitile/proc/remove_hardpoint(obj/item/hardpoint/old, mob/user)
 	if(!(old in hardpoints))
 		return
 
@@ -231,7 +232,7 @@
 	update_icon()
 
 //proc that fires non selected weaponry
-/obj/vehicle/multitile/proc/shoot_other_weapon(var/mob/living/carbon/human/M, var/seat, var/atom/A)
+/obj/vehicle/multitile/proc/shoot_other_weapon(mob/living/carbon/human/M, seat, atom/A)
 
 	if(!istype(M))
 		return
@@ -253,7 +254,7 @@
 	return
 
 //proc that activates support module if it can be activated and you meet requirements
-/obj/vehicle/multitile/proc/activate_support_module(var/mob/living/carbon/human/M, var/seat, var/atom/A)
+/obj/vehicle/multitile/proc/activate_support_module(mob/living/carbon/human/M, seat, atom/A)
 
 	if(!istype(M))
 		return

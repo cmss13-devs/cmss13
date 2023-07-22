@@ -14,6 +14,9 @@
 	to_world("<B>If you die as a zombie, you come back.  NO MATTER HOW MUCH DAMAGE.</B>")
 	to_world("<B>Don't ahelp asking for specific details, you won't get them.</B>")
 
+/datum/game_mode/infection/get_roles_list()
+	return ROLES_USCM
+
 /datum/game_mode/infection/pre_setup()
 	return ..()
 
@@ -118,4 +121,6 @@
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
+
+
 	return 1

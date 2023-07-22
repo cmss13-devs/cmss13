@@ -3,7 +3,7 @@
 	desc = "An adapter for regular, supply and scrubbers pipes"
 	icon_state = "map_universal"
 
-/obj/structure/pipes/standard/simple/visible/universal/update_icon(var/safety = 0)
+/obj/structure/pipes/standard/simple/visible/universal/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 	alpha = 255
@@ -20,7 +20,7 @@
 	desc = "An adapter for regular, supply and scrubbers pipes"
 	icon_state = "map_universal"
 
-/obj/structure/pipes/standard/simple/hidden/universal/update_icon(var/safety = 0)
+/obj/structure/pipes/standard/simple/hidden/universal/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 	alpha = 255
@@ -32,13 +32,13 @@
 	universal_underlays(dir)
 	universal_underlays(turn(dir, -180))
 
-/obj/structure/pipes/proc/universal_underlays(var/direction)
+/obj/structure/pipes/proc/universal_underlays(direction)
 	var/turf/T = loc
 	add_underlay_adapter(T, direction)
 	add_underlay_adapter(T, direction)
 	add_underlay_adapter(T, direction)
 
-/obj/structure/pipes/proc/add_underlay_adapter(var/turf/T, var/direction) //modified from add_underlay, does not make exposed underlays
+/obj/structure/pipes/proc/add_underlay_adapter(turf/T, direction) //modified from add_underlay, does not make exposed underlays
 	if(T.intact_tile && level == 1)
 		underlays += icon_manager.get_atmos_icon("underlay", direction, color_cache_name(src), "down")
 	else
@@ -47,8 +47,8 @@
 
 /obj/structure/pipes/standard/cap
 	name = "pipe endcap"
-	desc = "An endcap for pipes"
-	icon = 'icons/obj/pipes/pipes.dmi'
+	desc = "An endcap for pipes."
+	icon = 'icons/obj/pipes/pipes3.dmi'
 	icon_state = ""
 	level = 2
 	dir = SOUTH
@@ -57,7 +57,7 @@
 /obj/structure/pipes/standard/cap/create_valid_directions()
 	valid_directions = list(dir)
 
-/obj/structure/pipes/standard/cap/update_icon(var/safety = 0)
+/obj/structure/pipes/standard/cap/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 
@@ -72,14 +72,14 @@
 
 /obj/structure/pipes/standard/cap/visible/scrubbers
 	name = "scrubbers pipe endcap"
-	desc = "An endcap for scrubbers pipes"
+	desc = "An endcap for scrubbers pipes."
 	icon_state = "cap-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
 	color = PIPE_COLOR_RED
 
 /obj/structure/pipes/standard/cap/visible/supply
 	name = "supply pipe endcap"
-	desc = "An endcap for supply pipes"
+	desc = "An endcap for supply pipes."
 	icon_state = "cap-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE
@@ -95,17 +95,21 @@
 
 /obj/structure/pipes/standard/cap/hidden/scrubbers
 	name = "scrubbers pipe endcap"
-	desc = "An endcap for scrubbers pipes"
+	desc = "An endcap for scrubbers pipes."
 	icon_state = "cap-f-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
 	color = PIPE_COLOR_RED
 
 /obj/structure/pipes/standard/cap/hidden/supply
 	name = "supply pipe endcap"
-	desc = "An endcap for supply pipes"
+	desc = "An endcap for supply pipes."
 	icon_state = "cap-f-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE
+
+/obj/structure/pipes/standard/cap/hidden/supply/no_boom
+	name = "reinforced supply pipe endcap"
+	explodey = FALSE
 
 
 /obj/structure/pipes/standard/tank
@@ -115,7 +119,7 @@
 	desc = "A large vessel containing pressurized gas."
 	dir = SOUTH
 	valid_directions = list(SOUTH)
-	density = 1
+	density = TRUE
 	var/actual_icon_state = "air"
 
 /obj/structure/pipes/standard/tank/New()

@@ -3,8 +3,8 @@
 	desc = "A board for pinning important notices upon."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "nboard00"
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	var/notices = 0
 
 /obj/structure/noticeboard/Initialize()
@@ -17,7 +17,7 @@
 	icon_state = "nboard0[notices]"
 
 //attaching papers!!
-/obj/structure/noticeboard/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/noticeboard/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/paper))
 		if(notices < 5)
 			O.add_fingerprint(user)
@@ -25,7 +25,7 @@
 			user.drop_held_item()
 			O.forceMove(src)
 			notices++
-			icon_state = "nboard0[notices]"	//update sprite
+			icon_state = "nboard0[notices]" //update sprite
 			to_chat(user, SPAN_NOTICE("You pin the paper to the noticeboard."))
 		else
 			to_chat(user, SPAN_NOTICE("You reach to pin your paper to the board but hesitate. You are certain your paper will not be seen among the many others already attached."))
@@ -42,11 +42,11 @@
 	..()
 	usr.set_interaction(src)
 	if(href_list["remove"])
-		if((usr.stat || usr.is_mob_restrained()))	//For when a player is handcuffed while they have the notice window open
+		if((usr.stat || usr.is_mob_restrained())) //For when a player is handcuffed while they have the notice window open
 			return
 		var/obj/item/P = locate(href_list["remove"])
 		if((P && P.loc == src))
-			P.forceMove(get_turf(src)	)//dump paper on the floor because you're a clumsy fuck
+			P.forceMove(get_turf(src) )//dump paper on the floor because you're a clumsy fuck
 			P.add_fingerprint(usr)
 			add_fingerprint(usr)
 			notices--
@@ -58,11 +58,11 @@
 		var/obj/item/P = locate(href_list["write"])
 
 		if((P && P.loc == src)) //ifthe paper's on the board
-			if(istype(usr.r_hand, /obj/item/tool/pen)) //and you're holding a pen
+			if(HAS_TRAIT(usr.r_hand, TRAIT_TOOL_PEN))
 				add_fingerprint(usr)
 				P.attackby(usr.r_hand, usr) //then do ittttt
 			else
-				if(istype(usr.l_hand, /obj/item/tool/pen)) //check other hand for pen
+				if(HAS_TRAIT(usr.l_hand, TRAIT_TOOL_PEN)) //check other hand for pen
 					add_fingerprint(usr)
 					P.attackby(usr.l_hand, usr)
 				else

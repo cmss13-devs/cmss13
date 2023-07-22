@@ -1,8 +1,8 @@
 /* Filing cabinets!
  * Contains:
- *		Filing Cabinets
- *		Security Record Cabinets
- *		Medical Record Cabinets
+ * Filing Cabinets
+ * Security Record Cabinets
+ * Medical Record Cabinets
  */
 
 
@@ -14,8 +14,8 @@
 	desc = "A large cabinet with drawers."
 	icon = 'icons/obj/structures/props/misc.dmi'
 	icon_state = "filingcabinet"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	wrenchable = TRUE
 	var/list/allowed_types = list(/obj/item/paper, /obj/item/folder, /obj/item/clipboard, /obj/item/photo, /obj/item/paper_bundle, /obj/item/pamphlet)
 
@@ -35,7 +35,7 @@
 	icon_state = "chestdrawer"
 
 
-/obj/structure/filingcabinet/filingcabinet	//not changing the path to avoid unecessary map issues, but please don't name stuff like this in the future -Pete
+/obj/structure/filingcabinet/filingcabinet //not changing the path to avoid unecessary map issues, but please don't name stuff like this in the future -Pete
 	icon_state = "tallcabinet"
 
 
@@ -121,7 +121,7 @@
 					counter++
 				P.info += "</TT>"
 				P.name = "Security Record ([G.fields["name"]])"
-			virgin = 0	//tabbing here is correct- it's possible for people to try and use it
+			virgin = 0 //tabbing here is correct- it's possible for people to try and use it
 						//before the records have been generated, so we do this inside the loop.
 
 /obj/structure/filingcabinet/security/attack_hand()
@@ -154,7 +154,7 @@
 					counter++
 				P.info += "</TT>"
 				P.name = "Medical Record ([G.fields["name"]])"
-			virgin = 0	//tabbing here is correct- it's possible for people to try and use it
+			virgin = 0 //tabbing here is correct- it's possible for people to try and use it
 						//before the records have been generated, so we do this inside the loop.
 
 /obj/structure/filingcabinet/medical/attack_hand()

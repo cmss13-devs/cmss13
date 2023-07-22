@@ -19,7 +19,7 @@ log transactions
 	desc = "For all your monetary needs!"
 	icon = 'icons/obj/structures/machinery/terminals.dmi'
 	icon_state = "atm"
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	var/datum/money_account/authenticated_account
@@ -42,6 +42,10 @@ log transactions
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 
+/obj/structure/machinery/atm/Destroy()
+	QDEL_NULL(spark_system)
+	return ..()
+
 /obj/structure/machinery/atm/attackby(obj/item/I as obj, mob/user as mob)
 	if(inoperable())
 		to_chat(user, SPAN_NOTICE("You try to use it ,but it appears to be unpowered!"))
@@ -56,8 +60,14 @@ log transactions
 				authenticated_account = null
 	else if(authenticated_account)
 		if(istype(I,/obj/item/spacecash))
+			var/obj/item/spacecash/spacecash = I
 			//consume the money
-			authenticated_account.money += I:worth
+			if(spacecash.counterfeit)
+				authenticated_account.money += round(spacecash.worth * 0.25)
+				visible_message(SPAN_DANGER("[src] starts sparking and making error noises as you load [I] into it!"))
+				spark_system.start()
+			else
+				authenticated_account.money += spacecash.worth
 			if(prob(50))
 				playsound(loc, 'sound/items/polaroid1.ogg', 15, 1)
 			else
@@ -76,37 +86,10 @@ log transactions
 			to_chat(user, SPAN_INFO("You insert [I] into [src]."))
 			src.attack_hand(user)
 			qdel(I)
-	else if(istype(I, /obj/item/holder/cat) || istype(I, /obj/item/holder/Jones))
-
-		user.visible_message(SPAN_DANGER("[user] begins stuffing [I] into the ATM!"))
-		playsound(src, "sound/machines/fax.ogg", 5)
-		if(!do_after(user, 70, INTERRUPT_ALL, BUSY_ICON_BUILD))
-			return
-		visible_message(SPAN_DANGER("You hear a loud metallic grinding sound."))
-		playsound(src, 'sound/effects/splat.ogg', 25, 1)
-		playsound(src, "sound/voice/cat_meow_7.ogg", 15)
-
-		for(var/mob/M in I.contents)
-
-			if(M.client) // if someone was playing the mob, log it
-				M.attack_log += "\[[time_stamp()]\] Was gibbed by <b>[key_name(user)]</b>"
-				user.attack_log += "\[[time_stamp()]\] Gibbed <b>[key_name(M)]</b>"
-				msg_admin_attack("[key_name(user)] gibbed [key_name(M)] in [user.loc.name] ([user.x], [user.y], [user.z]).", user.x, user.y, user.z)
-
-			M.spawn_gibs()
-			M.death(create_cause_data("ATM", user), TRUE)
-			M.ghostize()
-
-		var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(src.loc)
-		meat.name = "raw [I.name] tenderloin"
-		QDEL_NULL(I)
-		var/turf/atm_turf = get_turf(src)
-		addtimer(CALLBACK(src, .proc/drop_money, atm_turf), 30, TIMER_UNIQUE)
-
 	else
 		..()
 
-/obj/structure/machinery/atm/proc/drop_money(var/turf)
+/obj/structure/machinery/atm/proc/drop_money(turf)
 		playsound(turf, "sound/machines/ping.ogg", 15)
 		new /obj/item/spacecash/c100(turf)
 
@@ -205,7 +188,7 @@ log transactions
 	else
 		close_browser(user,"atm")
 
-/obj/structure/machinery/atm/Topic(var/href, var/href_list)
+/obj/structure/machinery/atm/Topic(href, href_list)
 	. = ..()
 	if(.)
 		return
@@ -249,9 +232,9 @@ log transactions
 				// check if they have low security enabled
 				scan_user(usr)
 
-				if(!ticks_left_locked_down && held_card)
+				if(!ticks_left_locked_down)
 					var/tried_account_num = text2num(href_list["account_num"])
-					if(!tried_account_num)
+					if(!tried_account_num && held_card)
 						tried_account_num = held_card.associated_account_number
 					var/tried_pin = text2num(href_list["account_pin"])
 
@@ -285,6 +268,7 @@ log transactions
 						playsound(src, 'sound/machines/twobeep.ogg', 25, 1)
 						ticks_left_timeout = 120
 						view_screen = NO_SCREEN
+						number_incorrect_tries = 0
 
 						//create a transaction log entry
 						var/datum/transaction/T = new()
@@ -314,7 +298,7 @@ log transactions
 						//remove the money
 						authenticated_account.money -= amount
 
-						//	spawn_money(amount,src.loc)
+						// spawn_money(amount,src.loc)
 						spawn_ewallet(amount,src.loc,usr)
 
 						//create an entry in the account transaction log
@@ -481,7 +465,7 @@ log transactions
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.stat || usr.lying)	return
+	if(!usr || usr.stat || usr.lying) return
 
 	if(ishuman(usr) && held_card)
 		to_chat(usr, "You remove \the [held_card] from \the [src].")
@@ -494,7 +478,7 @@ log transactions
 		to_chat(usr, "There is nothing to remove from \the [src].")
 	return
 
-/obj/structure/machinery/atm/proc/spawn_ewallet(var/sum, loc, mob/living/carbon/human/human_user as mob)
+/obj/structure/machinery/atm/proc/spawn_ewallet(sum, loc, mob/living/carbon/human/human_user as mob)
 	var/obj/item/spacecash/ewallet/E = new /obj/item/spacecash/ewallet(loc)
 	if(ishuman(human_user) && !human_user.get_active_hand())
 		human_user.put_in_hands(E)

@@ -1,7 +1,7 @@
 /*
  * Contains:
- * 		Beds
- *		Roller beds
+ * Beds
+ * Roller beds
  */
 
 /*
@@ -28,7 +28,7 @@
 	var/buckling_sound = 'sound/effects/buckle.ogg'
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
 
-/obj/structure/bed/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/bed/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
@@ -40,18 +40,18 @@
 		else
 			icon_state = "[base_bed_icon]_down"
 
-obj/structure/bed/Destroy()
+/obj/structure/bed/Destroy()
 	if(buckled_bodybag)
 		unbuckle()
 	. = ..()
 
-/obj/structure/bed/ex_act(var/power)
+/obj/structure/bed/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 
 /obj/structure/bed/deconstruct(disassembled = TRUE)
 	if(!disassembled)
-		if(!isnull(buildstacktype))
+		if(!isnull(buildstacktype) && buildstackamount)
 			new buildstacktype(get_turf(src), buildstackamount)
 	return ..()
 
@@ -61,12 +61,12 @@ obj/structure/bed/Destroy()
 		M.pixel_y = buckling_y
 		M.old_y = buckling_y
 		if(base_bed_icon)
-			density = 1
+			density = TRUE
 	else
 		M.pixel_y = initial(buckled_mob.pixel_y)
 		M.old_y = initial(buckled_mob.pixel_y)
 		if(base_bed_icon)
-			density = 0
+			density = FALSE
 
 	update_icon()
 
@@ -77,7 +77,7 @@ obj/structure/bed/Destroy()
 	B.forceMove(loc)
 	B.setDir(dir)
 	buckled_bodybag = B
-	density = 1
+	density = TRUE
 	update_icon()
 	if(buckling_y)
 		buckled_bodybag.pixel_y = buckled_bodybag.buckle_offset + buckling_y
@@ -88,7 +88,7 @@ obj/structure/bed/Destroy()
 		buckled_bodybag.pixel_y = initial(buckled_bodybag.pixel_y)
 		buckled_bodybag.roller_buckled = null
 		buckled_bodybag = null
-		density = 0
+		density = FALSE
 		update_icon()
 	else
 		..()
@@ -208,6 +208,20 @@ obj/structure/bed/Destroy()
 			return
 	..()
 
+/obj/structure/bed/roller/Collided(atom/movable/moving_atom)
+	if(!isxeno(moving_atom))
+		return ..()
+
+	if(buckled_mob && buckled_mob.stat != DEAD)
+		return ..()
+
+	if(buckled_bodybag)
+		var/mob/mob_in_bodybag = locate(/mob) in buckled_bodybag
+		if(mob_in_bodybag && mob_in_bodybag.stat != DEAD)
+			return ..()
+
+	return
+
 /obj/item/roller
 	name = "roller bed"
 	desc = "A collapsed roller bed that can be carried around."
@@ -270,7 +284,7 @@ obj/structure/bed/Destroy()
 	QDEL_NULL(held)
 
 //////////////////////////////////////////////
-//			PORTABLE SURGICAL BED			//
+// PORTABLE SURGICAL BED //
 //////////////////////////////////////////////
 
 /obj/structure/bed/portable_surgery
@@ -330,9 +344,8 @@ var/global/list/activated_medevac_stretchers = list()
 	if(buckled_mob || buckled_bodybag)
 		overlays += image("icon_state"="stretcher_box","layer"=LYING_LIVING_MOB_LAYER + 0.1)
 
-
-/obj/structure/bed/medevac_stretcher/verb/activate_medevac_beacon()
-	set name = "Activate medevac"
+/obj/structure/bed/medevac_stretcher/verb/toggle_medevac_beacon_verb()
+	set name = "Toggle medevac"
 	set desc = "Toggle the medevac beacon inside the stretcher."
 	set category = "Object"
 	set src in oview(1)
@@ -370,13 +383,10 @@ var/global/list/activated_medevac_stretchers = list()
 			to_chat(user, SPAN_WARNING("[src] must be in the open or under a glass roof."))
 			return
 
-		if(buckled_mob || buckled_bodybag)
-			stretcher_activated = TRUE
-			activated_medevac_stretchers += src
-			to_chat(user, SPAN_NOTICE("You activate [src]'s beacon."))
-			update_icon()
-		else
-			to_chat(user, SPAN_WARNING("You need to attach something to [src] before you can activate its beacon yet."))
+		stretcher_activated = TRUE
+		activated_medevac_stretchers += src
+		to_chat(user, SPAN_NOTICE("You activate [src]'s beacon."))
+		update_icon()
 
 /obj/item/roller/medevac
 	name = "medevac stretcher"
@@ -384,3 +394,17 @@ var/global/list/activated_medevac_stretchers = list()
 	icon_state = "stretcher_folded"
 	rollertype = /obj/structure/bed/medevac_stretcher
 	matter = list("plastic" = 5000, "metal" = 5000)
+
+/obj/item/roller/medevac/deploy_roller(mob/user, atom/location)
+	var/obj/structure/bed/medevac_stretcher/medevac_stretcher = new rollertype(location)
+	medevac_stretcher.add_fingerprint(user)
+	user.temp_drop_inv_item(src)
+	qdel(src)
+	medevac_stretcher.toggle_medevac_beacon(user)
+
+//bedroll
+/obj/structure/bed/bedroll
+	name = "bedroll"
+	desc = "bedroll"
+	icon_state = "bedroll_o"
+	icon = 'icons/monkey_icos.dmi'

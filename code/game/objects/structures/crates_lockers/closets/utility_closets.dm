@@ -1,12 +1,12 @@
 /* Utility Closets
  * Contains:
- *		Emergency Closet
- *		Fire Closet
- *		Tool Closet
- *		Radiation Closet
- *		Bombsuit Closet
- *		Hydrant
- *		First Aid
+ * Emergency Closet
+ * Fire Closet
+ * Tool Closet
+ * Radiation Closet
+ * Bombsuit Closet
+ * Hydrant
+ * First Aid
  */
 
 /*
@@ -22,7 +22,12 @@
 /obj/structure/closet/emcloset/Initialize()
 	. = ..()
 
+#ifndef UNIT_TESTS
 	switch (pickweight(list("small" = 55, "aid" = 25, "tank" = 10, "both" = 10, "nothing" = 0, "delete" = 0)))
+#else
+	var/test = "both"
+	switch (test) // We don't want randomness in tests
+#endif
 		if ("small")
 			new /obj/item/tank/emergency_oxygen(src)
 			new /obj/item/tank/emergency_oxygen(src)
@@ -51,12 +56,12 @@
 
 		// teehee - Ah, tg coders...
 		if ("delete")
-			qdel(src)
+			return INITIALIZE_HINT_QDEL
 
 		//If you want to re-add fire, just add "fire" = 15 to the pick list.
 		/*if ("fire")
 			new /obj/structure/closet/firecloset(src.loc)
-			qdel(src)*/
+			return INITIALIZE_HINT_QDEL*/
 
 /obj/structure/closet/emcloset/legacy/Initialize()
 	. = ..()
@@ -200,8 +205,8 @@
 	icon_state = "hydrant"
 	icon_closed = "hydrant"
 	icon_opened = "hydrant_open"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	wall_mounted = 1
 	store_mobs = FALSE
 	var/spawn_empty = FALSE
@@ -227,8 +232,8 @@
 	icon_state = "medical_wall"
 	icon_closed = "medical_wall"
 	icon_opened = "medical_wall_open"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	wall_mounted = 1
 	store_mobs = FALSE
 

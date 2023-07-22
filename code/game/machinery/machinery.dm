@@ -1,95 +1,95 @@
 /*
 Overview:
-   Used to create objects that need a per step proc call.  Default definition of 'New()'
-   stores a reference to src machine in global 'machines list'.  Default definition
-   of 'Del' removes reference to src machine in global 'machines list'.
+	Used to create objects that need a per step proc call.  Default definition of 'New()'
+	stores a reference to src machine in global 'machines list'.  Default definition
+	of 'Del' removes reference to src machine in global 'machines list'.
 
 Class Variables:
-   use_power (num)
-      current state of auto power use.
-      Possible Values:
-         USE_POWER_NONE: 0 -- no auto power use
-         USE_POWER_IDLE: 1 -- machine is using power at its idle power level
-         USE_POWER_ACTIVE: 2 -- machine is using power at its active power level
+	use_power (num)
+		current state of auto power use.
+		Possible Values:
+			USE_POWER_NONE: 0 -- no auto power use
+			USE_POWER_IDLE: 1 -- machine is using power at its idle power level
+			USE_POWER_ACTIVE: 2 -- machine is using power at its active power level
 
 	needs_power (num)
-	  is this thing affected by an area being unpowered
-	  Possible Values:
-	     FALSE -- machine will process as if though in a powered area
-	     TRUE -- machine will function normally
+	is this thing affected by an area being unpowered
+	Possible Values:
+		FALSE -- machine will process as if though in a powered area
+		TRUE -- machine will function normally
 
-   active_power_usage (num)
-      Value for the amount of power to use when in active power mode
+	active_power_usage (num)
+		Value for the amount of power to use when in active power mode
 
-   idle_power_usage (num)
-      Value for the amount of power to use when in idle power mode
+	idle_power_usage (num)
+		Value for the amount of power to use when in idle power mode
 
-   power_channel (num)
-      What channel to draw from when drawing power for power mode
-      Possible Values:
-         EQUIP:0 -- Equipment Channel
-         LIGHT:2 -- Lighting Channel
-         ENVIRON:3 -- Environment Channel
+	power_channel (num)
+		What channel to draw from when drawing power for power mode
+		Possible Values:
+			EQUIP:0 -- Equipment Channel
+			LIGHT:2 -- Lighting Channel
+			ENVIRON:3 -- Environment Channel
 
-   component_parts (list)
-      A list of component parts of machine used by frame based machines.
+	component_parts (list)
+		A list of component parts of machine used by frame based machines.
 
-   uid (num)
-      Unique id of machine across all machines.
+	uid (num)
+		Unique id of machine across all machines.
 
-   stat (bitflag)
-      Machine status bit flags.
-      Possible bit flags:
-         BROKEN:1 -- Machine is broken
-         NOPOWER:2 -- No power is being supplied to machine.
-         POWEROFF:4 -- tbd
-         MAINT:8 -- machine is currently under going maintenance.
-         EMPED:16 -- temporary broken by EMP pulse
+	stat (bitflag)
+		Machine status bit flags.
+		Possible bit flags:
+			BROKEN:1 -- Machine is broken
+			NOPOWER:2 -- No power is being supplied to machine.
+			POWEROFF:4 -- tbd
+			MAINT:8 -- machine is currently under going maintenance.
+			EMPED:16 -- temporary broken by EMP pulse
 
-   manual (num)
-      Currently unused.
+	manual (num)
+		Currently unused.
 
 Class Procs:
-   New()                     'game/machinery/machine.dm'
+	New()  'game/machinery/machine.dm'
 
-   Dispose()                     'game/machinery/machine.dm'
+	Dispose()  'game/machinery/machine.dm'
 
-      Default definition uses 'use_power', 'power_channel', 'active_power_usage',
-      'idle_power_usage', 'powered()', and 'use_power()' implement behavior.
+		Default definition uses 'use_power', 'power_channel', 'active_power_usage',
+		'idle_power_usage', 'powered()', and 'use_power()' implement behavior.
 
-   powered(chan = EQUIP)         'modules/power/power.dm'
-      Checks to see if area that contains the object has power available for power
-      channel given in 'chan'.
+	powered(chan = EQUIP)  'modules/power/power.dm'
+		Checks to see if area that contains the object has power available for power
+		channel given in 'chan'.
 
-   use_power(amount, chan=EQUIP, autocalled)   'modules/power/power.dm'
-      Deducts 'amount' from the power channel 'chan' of the area that contains the object.
-      If it's autocalled then everything is normal, if something else calls use_power we are going to
-      need to recalculate the power two ticks in a row.
+	use_power(amount, chan=EQUIP, autocalled)   'modules/power/power.dm'
+		Deducts 'amount' from the power channel 'chan' of the area that contains the object.
+		If it's autocalled then everything is normal, if something else calls use_power we are going to
+		need to recalculate the power two ticks in a row.
 
-   power_change()               'modules/power/power.dm'
-      Called by the area that contains the object when ever that area under goes a
-      power state change (area runs out of power, or area channel is turned off).
+	power_change()    'modules/power/power.dm'
+		Called by the area that contains the object when ever that area under goes a
+		power state change (area runs out of power, or area channel is turned off).
 
-   RefreshParts()               'game/machinery/machine.dm'
-      Called to refresh the variables in the machine that are contributed to by parts
-      contained in the component_parts list. (example: glass and material amounts for
-      the autolathe)
+	RefreshParts()    'game/machinery/machine.dm'
+		Called to refresh the variables in the machine that are contributed to by parts
+		contained in the component_parts list. (example: glass and material amounts for
+		the autolathe)
 
-      Default definition does nothing.
+		Default definition does nothing.
 
-   assign_uid()               'game/machinery/machine.dm'
-      Called by machine to assign a value to the uid variable.
+	assign_uid()    'game/machinery/machine.dm'
+		Called by machine to assign a value to the uid variable.
 
-   process()                  'game/machinery/machine.dm'
-      Called by the 'master_controller' once per game tick for each machine that is listed in the 'machines' list.
+	process()   'game/machinery/machine.dm'
+		Called by the 'master_controller' once per game tick for each machine that is listed in the 'machines' list.
 
 
 	Compiled by Aygar
 */
 
-//         NONE -- no auto power use
-//         IDLE -- machine is using power at its idle power level
-//         ACTIVE -- machine is using power at its active power level
+//  NONE -- no auto power use
+//  IDLE -- machine is using power at its idle power level
+//  ACTIVE -- machine is using power at its active power level
 
 /obj/structure/machinery
 	name = "machinery"
@@ -110,6 +110,22 @@ Class Procs:
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	var/power_machine = FALSE //Whether the machine should process on power, or normal processor
 
+/obj/structure/machinery/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION("", "-----MACHINERY-----")
+	VV_DROPDOWN_OPTION(VV_HK_TOGGLEPOWER, "Toggle Needs Power")
+
+/obj/structure/machinery/vv_do_topic(list/href_list)
+	. = ..()
+	if(href_list[VV_HK_TOGGLEPOWER])
+		if(!check_rights(R_VAREDIT))
+			return
+
+		needs_power = !needs_power
+		power_change()
+		message_admins("[key_name(src, TRUE)] has toggled needs_power to [needs_power] on [src] in [get_area(src)] ([x],[y],[z]).", x, y, z)
+
+
 /obj/structure/machinery/Initialize(mapload, ...)
 	. = ..()
 	machines += src
@@ -126,7 +142,7 @@ Class Procs:
 		A.remove_machine(src) //takes care of removing machine from power usage
 	. = ..()
 
-/obj/structure/machinery/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
@@ -169,21 +185,21 @@ Class Procs:
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
-				deconstruct()
+				deconstruct(FALSE)
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				deconstruct()
+				deconstruct(FALSE)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			deconstruct()
+			deconstruct(FALSE)
 			return
 	return
 
 //sets the use_power var and then forces an area power update
-/obj/structure/machinery/proc/update_use_power(var/new_use_power)
+/obj/structure/machinery/proc/update_use_power(new_use_power)
 	if (new_use_power == use_power)
-		return	//don't need to do anything
+		return //don't need to do anything
 
 	var/delta_power = 0 //figuring how much our power delta is
 	delta_power -= calculate_current_power_usage() //current usage
@@ -201,10 +217,10 @@ Class Procs:
 			return idle_power_usage + active_power_usage
 	return 0
 
-/obj/structure/machinery/proc/operable(var/additional_flags = 0)
+/obj/structure/machinery/proc/operable(additional_flags = 0)
 	return !inoperable(additional_flags)
 
-/obj/structure/machinery/proc/inoperable(var/additional_flags = 0)
+/obj/structure/machinery/proc/inoperable(additional_flags = 0)
 	return (stat & (NOPOWER|BROKEN|additional_flags))
 
 /obj/structure/machinery/Topic(href, href_list)
@@ -264,16 +280,16 @@ Class Procs:
 /obj/structure/machinery/proc/RefreshParts() //Placeholder proc for machines that are built using frames.
 	return
 
-/obj/structure/machinery/proc/state(var/msg)
-  for(var/mob/O in hearers(src, null))
-    O.show_message("[icon2html(src, O)] [SPAN_NOTICE("[msg]")]", 2)
+/obj/structure/machinery/proc/state(msg)
+	for(var/mob/O in hearers(src, null))
+		O.show_message("[icon2html(src, O)] [SPAN_NOTICE("[msg]")]", SHOW_MESSAGE_AUDIBLE)
 
 /obj/structure/machinery/proc/ping(text=null)
-  if (!text)
-    text = "\The [src] pings."
+	if (!text)
+		text = "\The [src] pings."
 
-  state(text, "blue")
-  playsound(src.loc, 'sound/machines/ping.ogg', 25, 0)
+	state(text, "blue")
+	playsound(src.loc, 'sound/machines/ping.ogg', 25, 0)
 
 /obj/structure/machinery/proc/shock(mob/user, prb)
 	if(inoperable())
@@ -300,7 +316,7 @@ Class Procs:
 	qdel(src)
 	return 1
 
-/obj/structure/machinery/proc/get_repair_move_text(var/include_name = TRUE)
+/obj/structure/machinery/proc/get_repair_move_text(include_name = TRUE)
 	return
 
 // UI related procs \\

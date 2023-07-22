@@ -2,7 +2,7 @@
 	name = "Don't see this."
 	desc = "A compact version of the USCM defenses. Designed for quick deployment of the associated type in the field."
 	icon = 'icons/obj/structures/machinery/defenses/sentry.dmi'
-	icon_state = "uac_sentry_handheld"
+	icon_state = "DMR uac_sentry_handheld"
 
 	force = 5
 	throwforce = 5
@@ -27,11 +27,11 @@
 	connect()
 
 /obj/item/defenses/handheld/Destroy()
-	TR = null // FIXME: Might also need to delete. Unsure.
+	if(!QDESTROYING(TR))
+		QDEL_NULL(TR)
 	return ..()
 
 /obj/item/defenses/handheld/proc/connect()
-	sleep(0.5 SECONDS)
 	if(dropped && !TR)
 		TR = new defense_type
 		if(!TR.HD)
@@ -40,7 +40,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/defenses/handheld/attack_self(var/mob/living/carbon/human/user)
+/obj/item/defenses/handheld/attack_self(mob/living/carbon/human/user)
 	..()
 
 	if(!istype(user))
@@ -48,8 +48,8 @@
 
 	deploy_handheld(user)
 
-/obj/item/defenses/handheld/proc/deploy_handheld(var/mob/living/carbon/human/user)
-	if(user.z == GLOB.interior_manager.interior_z)
+/obj/item/defenses/handheld/proc/deploy_handheld(mob/living/carbon/human/user)
+	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
 
@@ -66,7 +66,12 @@
 		blocked = TRUE
 		break
 
-	if(istype(T, /turf/closed))
+	if(istype(T, /turf/open))
+		var/turf/open/floor = T
+		if(!floor.allow_construction)
+			to_chat(user, SPAN_WARNING("You cannot deploy \a [src] here, find a more secure surface!"))
+			return FALSE
+	else
 		blocked = TRUE
 
 	if(blocked)
@@ -85,7 +90,7 @@
 	TR.placed = 1
 	TR.update_icon()
 	TR.setDir(direction)
-	TR.set_name_label(name_label)
+	transfer_label_component(TR)
 	TR.owner_mob = user
 	dropped = 0
 	user.drop_inv_item_to_loc(src, TR)
@@ -112,7 +117,7 @@
 		"Mini-Sentry Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "Mini uac_sentry_handheld")
 	)
 
-/obj/item/defenses/handheld/sentry/upgrade_string_to_type(var/upgrade_string)
+/obj/item/defenses/handheld/sentry/upgrade_string_to_type(upgrade_string)
 	switch(upgrade_string)
 		if("DMR Upgrade")
 			return /obj/item/defenses/handheld/sentry/dmr
@@ -155,7 +160,7 @@
 		"Mini-Flamer Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/flamer.dmi', icon_state = "Mini uac_flamer_handheld")
 	)
 
-/obj/item/defenses/handheld/sentry/flamer/upgrade_string_to_type(var/upgrade_string)
+/obj/item/defenses/handheld/sentry/flamer/upgrade_string_to_type(upgrade_string)
 	switch(upgrade_string)
 		if("Long-Range Plasma Upgrade")
 			return /obj/item/defenses/handheld/sentry/flamer/plasma
@@ -211,7 +216,7 @@
 		"Micro-Tesla Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/tesla.dmi', icon_state = "Micro tesla_coil_handheld")
 	)
 
-/obj/item/defenses/handheld/tesla_coil/upgrade_string_to_type(var/upgrade_string)
+/obj/item/defenses/handheld/tesla_coil/upgrade_string_to_type(upgrade_string)
 	switch(upgrade_string)
 		if("Overclocked Upgrade")
 			return /obj/item/defenses/handheld/tesla_coil/stun
@@ -242,7 +247,7 @@
 		"Cloaking Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/bell_tower.dmi', icon_state = "Cloaker bell_tower_handheld")
 	)
 
-/obj/item/defenses/handheld/bell_tower/upgrade_string_to_type(var/upgrade_string)
+/obj/item/defenses/handheld/bell_tower/upgrade_string_to_type(upgrade_string)
 	switch(upgrade_string)
 		if("Motion-Detection Upgrade" )
 			return /obj/item/defenses/handheld/bell_tower/md
@@ -276,7 +281,7 @@
 		"Extended Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi', icon_state = "Range planted_flag_handheld")
 	)
 
-/obj/item/defenses/handheld/planted_flag/upgrade_string_to_type(var/upgrade_string)
+/obj/item/defenses/handheld/planted_flag/upgrade_string_to_type(upgrade_string)
 	switch(upgrade_string)
 		if("Warbanner Upgrade")
 			return /obj/item/defenses/handheld/planted_flag/warbanner

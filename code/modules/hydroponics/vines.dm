@@ -4,9 +4,9 @@
 	name = "space vines"
 	desc = "An extremely expansionistic species of vine."
 	icon = 'icons/effects/spacevines.dmi'
-	icon_state = "Light1"
-	anchored = 1
-	density = 0
+	icon_state = "light_1"
+	anchored = TRUE
+	density = FALSE
 	layer = FLY_LAYER
 
 	// Vars used by vines with seed data.
@@ -29,9 +29,10 @@
 	if(master)
 		master.vines -= src
 		master.growth_queue -= src
-	. = ..()
+	master = null
+	return ..()
 
-/obj/effect/plantsegment/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/plantsegment/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH
@@ -105,7 +106,7 @@
 			energy = 2
 			return
 
-		src.opacity = 1
+		src.opacity = TRUE
 		layer = FLY_LAYER
 	else if(!limited_growth)
 		src.icon_state = pick("Hvy1", "Hvy2", "Hvy3")
@@ -288,24 +289,27 @@
 	if(!istype(src.loc,/turf/open/floor))
 		qdel(src)
 
-	INVOKE_ASYNC(src, .proc/spawn_piece, src.loc)
+	INVOKE_ASYNC(src, PROC_REF(spawn_piece), src.loc)
 
 	START_PROCESSING(SSobj, src)
 
 /obj/effect/plant_controller/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	. = ..()
+	return ..()
 
-/obj/effect/plant_controller/proc/spawn_piece(var/turf/location)
-	var/obj/effect/plantsegment/SV = new(location)
-	SV.limited_growth = src.limited_growth
-	growth_queue += SV
-	vines += SV
-	SV.master = src
+/obj/effect/plant_controller/proc/spawn_piece(turf/location)
+	if(QDELETED(src))
+		return
+
+	var/obj/effect/plantsegment/vine = new(location)
+	vine.limited_growth = src.limited_growth
+	growth_queue += vine
+	vines += vine
+	vine.master = src
 	if(seed)
-		SV.seed = seed
-		SV.name = "[seed.seed_name] vines"
-		SV.update()
+		vine.seed = seed
+		vine.name = "[seed.seed_name] vines"
+		vine.update()
 
 /obj/effect/plant_controller/process()
 

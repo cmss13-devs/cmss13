@@ -8,7 +8,8 @@
 	)
 	//add items there that behave like structures for whatever dumb reason
 	var/list/blacklisted_item_types = list(
-		/obj/item/device/radio/intercom
+		/obj/item/device/radio/intercom,
+		/obj/item/device/sentry_computer
 	)
 
 /obj/structure/surface/Initialize()
@@ -43,23 +44,23 @@
 		attach_item(O, FALSE)
 	draw_item_overlays()
 
-/obj/structure/surface/proc/in_blacklist(var/obj/item/O)
+/obj/structure/surface/proc/in_blacklist(obj/item/O)
 	for(var/allowed_type in blacklisted_item_types)
 		if(istype(O, allowed_type))
 			return TRUE
 	return FALSE
 
-/obj/structure/surface/proc/attach_item(var/obj/item/O, var/update = TRUE)
+/obj/structure/surface/proc/attach_item(obj/item/O, update = TRUE)
 	if(!O)
 		return
 	if(O.luminosity) //it can't make light as an overlay
 		return
 	O.forceMove(src)
-	RegisterSignal(O, COMSIG_ATOM_DECORATED, .proc/decorate_update)
+	RegisterSignal(O, COMSIG_ATOM_DECORATED, PROC_REF(decorate_update))
 	if(update)
 		draw_item_overlays()
 
-/obj/structure/surface/proc/detach_item(var/obj/item/O)
+/obj/structure/surface/proc/detach_item(obj/item/O)
 	O.pixel_x = initial(O.pixel_x)
 	O.pixel_y = initial(O.pixel_y)
 	UnregisterSignal(O, COMSIG_ATOM_DECORATED)
@@ -76,7 +77,7 @@
 		UnregisterSignal(O, COMSIG_ATOM_DECORATED)
 		O.forceMove(loc)
 
-/obj/structure/surface/proc/get_item(var/list/click_data)
+/obj/structure/surface/proc/get_item(list/click_data)
 	var/i = LAZYLEN(contents)
 	if(!click_data)
 		return
@@ -95,15 +96,15 @@
 	return FALSE
 
 /obj/structure/surface/proc/draw_item_overlays()
-    overlays.Cut()
-    for(var/obj/item/O in contents)
-        var/image/I = image(O.icon)
-        I.appearance = O.appearance
-        I.appearance_flags |= RESET_COLOR
-        I.overlays = O.overlays
-        LAZYADD(overlays, I)
+	overlays.Cut()
+	for(var/obj/item/O in contents)
+		var/image/I = image(O.icon)
+		I.appearance = O.appearance
+		I.appearance_flags |= RESET_COLOR
+		I.overlays = O.overlays
+		LAZYADD(overlays, I)
 
-/obj/structure/surface/clicked(var/mob/user, var/list/mods)
+/obj/structure/surface/clicked(mob/user, list/mods)
 	if(mods["shift"] && !mods["middle"])
 		var/obj/item/O = get_item(mods)
 		if(!O)
@@ -113,7 +114,7 @@
 		return TRUE
 	..()
 
-/obj/structure/surface/proc/try_to_open_container(var/mob/user, mods)
+/obj/structure/surface/proc/try_to_open_container(mob/user, mods)
 	if(!Adjacent(user))
 		return
 

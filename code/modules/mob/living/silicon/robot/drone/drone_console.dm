@@ -11,10 +11,10 @@
 	//Used to enable or disable drone fabrication.
 	var/obj/structure/machinery/drone_fabricator/dronefab
 
-/obj/structure/machinery/computer/drone_control/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/drone_control/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/structure/machinery/computer/drone_control/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/drone_control/attack_hand(mob/user as mob)
 	if(..())
 		return
 
@@ -76,7 +76,7 @@
 
 		if(D.stat != 2)
 			to_chat(usr, SPAN_DANGER("You issue a kill command for the unfortunate drone."))
-			message_staff("[key_name_admin(usr)] issued kill order for drone [key_name_admin(D)] from control console.")
+			message_admins("[key_name_admin(usr)] issued kill order for drone [key_name_admin(D)] from control console.")
 			log_game("[key_name(usr)] issued kill order for [key_name(src)] from control console.")
 			D.shut_down()
 

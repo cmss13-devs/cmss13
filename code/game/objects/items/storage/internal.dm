@@ -11,10 +11,10 @@
 	name = master_object.name
 
 /obj/item/storage/internal/attack_hand()
-	return		//make sure this is never picked up
+	return //make sure this is never picked up
 
 /obj/item/storage/internal/mob_can_equip()
-	return FALSE	//make sure this is never picked up
+	return FALSE //make sure this is never picked up
 
 //Helper procs to cleanly implement internal storages - storage items that provide inventory slots for other items.
 //These procs are completely optional, it is up to the master item to decide when it's storage get's opened by calling open()
@@ -90,7 +90,7 @@
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.l_store == master_object && !H.get_active_hand())	//Prevents opening if it's in a pocket.
+		if(H.l_store == master_object && !H.get_active_hand()) //Prevents opening if it's in a pocket.
 			H.put_in_hands(master_object)
 			H.l_store = null
 			return FALSE
@@ -121,7 +121,7 @@
 	if(master_object.on_pocket_attackby(W,user))
 		. = ..()
 
-/obj/item/storage/internal/Adjacent(var/atom/neighbor)
+/obj/item/storage/internal/Adjacent(atom/neighbor)
 	return master_object.Adjacent(neighbor)
 
 /obj/item/storage/internal/open(mob/user)
@@ -169,26 +169,26 @@
 
 
 // Marine Helmet Storage
-/obj/item/storage/internal/helmet
+/obj/item/storage/internal/headgear
 	var/list/garb_items
 	var/slots_reserved_for_garb
 
-/obj/item/storage/internal/helmet/can_be_inserted(obj/item/item, stop_messages) //We don't need to stop messages, but it can be left in.
+/obj/item/storage/internal/headgear/can_be_inserted(obj/item/item, stop_messages) //We don't need to stop messages, but it can be left in.
 	. = ..()
 	if(!.)
 		return
 
 	if(!HAS_FLAG(item.flags_obj, OBJ_IS_HELMET_GARB) && length(contents) - length(garb_items) >= storage_slots - slots_reserved_for_garb)
 		if(!stop_messages)
-			to_chat(usr, SPAN_WARNING("This slot is reserved for helmet accessories!"))
+			to_chat(usr, SPAN_WARNING("This slot is reserved for headgear accessories!"))
 		return FALSE
 
-/obj/item/storage/internal/helmet/_item_insertion(obj/item/item, prevent_warning = FALSE)
+/obj/item/storage/internal/headgear/_item_insertion(obj/item/item, prevent_warning = FALSE)
 	if(HAS_FLAG(item.flags_obj, OBJ_IS_HELMET_GARB))
 		LAZYADD(garb_items, item)
 	return ..()
 
-/obj/item/storage/internal/helmet/_item_removal(obj/item/item, atom/new_location)
+/obj/item/storage/internal/headgear/_item_removal(obj/item/item, atom/new_location)
 	if(HAS_FLAG(item.flags_obj, OBJ_IS_HELMET_GARB))
 		LAZYREMOVE(garb_items, item)
 	return ..()

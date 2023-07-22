@@ -2,10 +2,10 @@
 	name = "blood"
 	desc = "It's thick and gooey. This probably isn't a safe place to be."
 	gender = PLURAL
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	layer = ABOVE_WEED_LAYER
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "mfloor1"
 	random_icon_states = list("mfloor1", "mfloor2", "mfloor3", "mfloor4", "mfloor5", "mfloor6", "mfloor7")
@@ -40,7 +40,7 @@
 			dry()
 			return
 		dry_start_time = world.time
-		addtimer(CALLBACK(src, .proc/dry), drying_time * (amount+1))
+		addtimer(CALLBACK(src, PROC_REF(dry)), drying_time * (amount+1))
 
 /obj/effect/decal/cleanable/blood/Crossed(atom/movable/AM)
 	. = ..()
@@ -127,11 +127,11 @@
 	name = "gibs"
 	desc = "They look bloody and gruesome."
 	gender = PLURAL
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	layer = TURF_LAYER
 	icon = 'icons/effects/blood.dmi'
-	icon_state = "gibbl5"
+	icon_state = ""
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")
 	cleanable_type = CLEANABLE_BLOOD_GIBS
 	var/fleshcolor = "#830303"
@@ -163,7 +163,7 @@
 	random_icon_states = list("gibmid1", "gibmid2", "gibmid3")
 
 
-/obj/effect/decal/cleanable/blood/gibs/proc/streak(var/list/directions)
+/obj/effect/decal/cleanable/blood/gibs/proc/streak(list/directions)
 	var/direction = pick(directions)
 	for (var/i = 0, i < pick(1, 200; 2, 150; 3, 50; 4), i++)
 		sleep(3)

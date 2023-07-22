@@ -2,7 +2,7 @@
 	name = "Vehicle Crewman Kits"
 	contains = list(
 		/obj/item/pamphlet/skill/vc,
-		/obj/item/pamphlet/skill/vc
+		/obj/item/pamphlet/skill/vc,
 	)
 	cost = 0
 	containertype = /obj/structure/closet/crate/supply

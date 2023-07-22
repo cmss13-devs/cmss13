@@ -22,7 +22,7 @@
 			if (target.stat == 2) lostTarget(target)
 			// If not detecting with motion camera...
 
-/obj/structure/machinery/camera/proc/newTarget(var/mob/target)
+/obj/structure/machinery/camera/proc/newTarget(mob/target)
 	if (isAI(target)) return 0
 	if (detectTime == 0)
 		detectTime = world.time // start the clock
@@ -30,7 +30,7 @@
 		motionTargets += target
 	return 1
 
-/obj/structure/machinery/camera/proc/lostTarget(var/mob/target)
+/obj/structure/machinery/camera/proc/lostTarget(mob/target)
 	if (target in motionTargets)
 		motionTargets -= target
 	if (motionTargets.len == 0)

@@ -1,8 +1,8 @@
 SUBSYSTEM_DEF(law_init)
-	name       = "Law Init"
+	name    = "Law Init"
 	init_order = SS_INIT_LAW
-	flags      = SS_NO_FIRE
-	
+	flags   = SS_NO_FIRE
+
 	var/list/laws = list() // All laws
 	var/list/optional_law = list()
 	var/list/minor_law = list()
@@ -23,5 +23,5 @@ SUBSYSTEM_DEF(law_init)
 		capital_law += new L
 
 	laws = optional_law + minor_law + major_law + capital_law
-	
-	return ..()
+
+	return SS_INIT_SUCCESS

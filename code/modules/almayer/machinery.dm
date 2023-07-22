@@ -1,76 +1,12 @@
 //-----USS Almayer Machinery file -----//
 // Put any new machines in here before map is released and everything moved to their proper positions.
 
-
-
-//-----USS Almayer Props -----//
-//Put any props that don't function properly, they could function in the future but for now are for looks. This system could be expanded for other maps too. ~Art
-
-/obj/item/prop/almayer
-	name = "GENERIC USS ALMAYER PROP"
-	desc = "THIS SHOULDN'T BE VISIBLE, AHELP 'ART-P03' IF SEEN IN ROUND WITH LOCATION"
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
-	icon_state = "hangarbox"
-
-/obj/item/prop/almayer/box
-	name = "metal crate"
-	desc = "A metal crate used often for storing small electronics that go into dropships"
-	icon_state = "hangarbox"
-	w_class = SIZE_LARGE
-
-/obj/item/prop/almayer/flight_recorder
-	name = "\improper FR-112 flight recorder"
-	desc = "A small red box that contains flight data from a dropship while it's on mission. Usually referred to as the black box, although this one comes in bloody red."
-	icon_state = "flight_recorder"
-	w_class = SIZE_LARGE
-
-/obj/item/prop/almayer/flight_recorder/colony
-	name = "\improper CIR-60 colony information recorder"
-	desc = "A small red box that records colony announcements, colonist flatlines and other key readouts. Usually refered to the black box, although this one comes in bloody red."
-	icon_state = "flight_recorder"
-	w_class = SIZE_LARGE
-
-/obj/item/prop/almayer/lantern_pod
-	name = "\improper LANTERN pod"
-	desc = "A long green box mounted into a dropship to provide various optical support for its ground targeting systems."
-	icon_state = "lantern_pod"
-	w_class = SIZE_LARGE
-
-/obj/item/prop/almayer/flare_launcher
-	name = "\improper MJU-77/C case"
-	desc = "A flare launcher that usually gets mounted onto dropships to help survivability against infrared tracking missiles."
-	icon_state = "flare_launcher"
-	w_class = SIZE_SMALL
-
-/obj/item/prop/almayer/chaff_launcher
-	name = "\improper RR-247 Chaff case"
-	desc = "A chaff launcher that usually gets mounted onto dropships to help survivability against radar tracking missiles."
-	icon_state = "chaff_launcher"
-	w_class = SIZE_MEDIUM
-
-/obj/item/prop/almayer/handheld1
-	name = "small handheld"
-	desc = "A small piece of electronic doodads"
-	icon_state = "handheld1"
-	w_class = SIZE_SMALL
-
-/obj/item/prop/almayer/comp_closed
-	name = "dropship maintenance computer"
-	desc = "A closed dropship maintenance computer that technicians and pilots use to find out what's wrong with a dropship. It has various outlets for different systems."
-	icon_state = "hangar_comp"
-	w_class = SIZE_LARGE
-
-/obj/item/prop/almayer/comp_open
-	name = "dropship maintenance computer"
-	desc = "An opened dropship maintenance computer, it seems to be off however. It's used by technicians and pilots to find damaged or broken systems on a dropship. It has various outlets for different systems."
-	icon_state = "hangar_comp_open"
-	w_class = SIZE_LARGE
-
 /obj/structure/machinery/prop/almayer
 	name = "GENERIC USS ALMAYER PROP"
 	desc = "THIS SHOULDN'T BE VISIBLE, AHELP 'ART-P01' IF SEEN IN ROUND WITH LOCATION"
 
 /obj/structure/machinery/prop/almayer/hangar/dropship_part_fabricator
+
 /obj/structure/machinery/prop/almayer/computer/PC
 	name = "personal desktop"
 	desc = "A small computer hooked up into the ship's computer network."
@@ -80,8 +16,8 @@
 	name = "systems computer"
 	desc = "A small computer hooked up into the ship's systems."
 
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 
@@ -138,93 +74,45 @@
 /obj/structure/machinery/prop/almayer/CICmap
 	name = "map table"
 	desc = "A table that displays a map of the current target location"
-	unacidable = TRUE
-	density = 1
-	anchored = 1
-	use_power = USE_POWER_IDLE
-	idle_power_usage = 20
-	var/list/current_viewers = list()
-
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "maptable"
-
-	var/map_type = TACMAP_DEFAULT
-	var/map_base_type = TACMAP_BASE_OCCLUDED
-	var/map_additional_parameter = null
+	anchored = TRUE
+	use_power = USE_POWER_IDLE
+	density = TRUE
+	idle_power_usage = 2
+	///flags that we want to be shown when you interact with this table
+	var/datum/tacmap/map
+	var/minimap_type = MINIMAP_FLAG_USCM
 
 /obj/structure/machinery/prop/almayer/CICmap/Initialize()
 	. = ..()
-	SSmapview.map_machines += src
+	map = new(src, minimap_type)
 
 /obj/structure/machinery/prop/almayer/CICmap/Destroy()
-	for(var/mob/living/L in current_viewers)
-		to_chat(L, SPAN_NOTICE("You stop looking at the map."))
-		close_browser(L,"marineminimap")
-		current_viewers -= L
-		continue
-	SSmapview.map_machines -= src
+	QDEL_NULL(map)
 	return ..()
 
-/obj/structure/machinery/prop/almayer/CICmap/examine(mob/living/user)
-	if(ishuman(user) && get_dist(src,user) < 3 && powered())
-		if(user in current_viewers)
-			to_chat(user, SPAN_NOTICE("You stop looking at the map."))
-			close_browser(user, "marineminimap")
-			current_viewers -= user
-			return
-		current_viewers += user
-		to_chat(user, SPAN_NOTICE("You start looking at the map."))
-		var/icon/O = overlay_tacmap(map_type, map_base_type, map_additional_parameter)
-		user << browse_rsc(O, "marine_minimap.png")
-		show_browser(user, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
-		return
-	..()
-
-/obj/structure/machinery/prop/almayer/CICmap/proc/update_mapview()
-	var/icon/O = overlay_tacmap(map_type, map_base_type, map_additional_parameter)
-	for(var/mob/living/L in current_viewers)
-		if(!powered() || get_dist(src,L) > 2)
-			to_chat(L, SPAN_NOTICE("You stop looking at the map."))
-			close_browser(L, "marineminimap")
-			current_viewers -= L
-			continue
-
-		L << browse_rsc(O, "marine_minimap.png")
-		show_browser(L, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
-
-
-/obj/structure/machinery/prop/almayer/CICmap/Topic(href, href_list)
+/obj/structure/machinery/prop/almayer/CICmap/attack_hand(mob/user)
 	. = ..()
-	if(.)
-		return
-	if(href_list["close"] && usr)
-		to_chat(usr, SPAN_NOTICE("You stop looking at the map."))
-		close_browser(usr, "marineminimap")
-		current_viewers -= usr
+
+	map.tgui_interact(user)
 
 /obj/structure/machinery/prop/almayer/CICmap/upp
-	map_type = TACMAP_FACTION
-	map_base_type = TACMAP_BASE_OPEN
-	map_additional_parameter = FACTION_UPP
+	minimap_type = MINIMAP_FLAG_UPP
 
 /obj/structure/machinery/prop/almayer/CICmap/clf
-	map_type = TACMAP_FACTION
-	map_base_type = TACMAP_BASE_OPEN
-	map_additional_parameter = FACTION_CLF
+	minimap_type = MINIMAP_FLAG_CLF
 
 /obj/structure/machinery/prop/almayer/CICmap/pmc
-	map_type = TACMAP_FACTION
-	map_base_type = TACMAP_BASE_OPEN
-	map_additional_parameter = FACTION_PMC
-
+	minimap_type = MINIMAP_FLAG_PMC
 
 //Nonpower using props
 
 /obj/structure/prop/almayer
 	name = "GENERIC USS ALMAYER PROP"
 	desc = "THIS SHOULDN'T BE VISIBLE, AHELP 'ART-P02' IF SEEN IN ROUND WITH LOCATION"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 
 /obj/structure/prop/almayer/minigun_crate
 	name = "30mm ammo crate"
@@ -333,12 +221,16 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
+/obj/structure/prop/almayer/particle_cannon/corsat
+	name = "\improper CORSAT-PROTO-QUANTUM-CALCULATOR"
+	desc = ""
+
 /obj/structure/prop/almayer/name_stencil
 	name = "USS Almayer"
 	desc = "The name of the ship stenciled on the hull."
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	icon_state = "almayer0"
-	density = 0 //dunno who would walk on it, but you know.
+	density = FALSE //dunno who would walk on it, but you know.
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -347,7 +239,7 @@
 	desc = "A large number stenciled on the hangar floor used to designate which dropship it is."
 	icon = 'icons/obj/structures/props/almayer_props96.dmi'
 	icon_state = "dropship1"
-	density = 0
+	density = FALSE
 	layer = ABOVE_TURF_LAYER
 
 
@@ -356,8 +248,8 @@
 	desc = "Some large cables."
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "cannon_cables"
-	density = 0
-	mouse_opacity = 0
+	density = FALSE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = LADDER_LAYER
 	unslashable = TRUE
 	unacidable = TRUE
@@ -374,7 +266,7 @@
 	desc = "A connector for the large cannon cables."
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "cannon_cable_connector"
-	density = 1
+	density = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -401,8 +293,8 @@
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "recycler"
 
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 

@@ -62,7 +62,7 @@
 		burn_tile()
 
 
-/turf/open/floor/ceiling_debris_check(var/size = 1)
+/turf/open/floor/ceiling_debris_check(size = 1)
 	ceiling_debris(size)
 
 /turf/open/floor/return_siding_icon_state()
@@ -141,11 +141,14 @@
 	burnt = FALSE
 	ChangeTurf(plating_type)
 
-/turf/open/floor/attackby(obj/item/C, mob/user)
+/turf/open/floor/attackby(obj/item/hitting_item, mob/user)
 	if(hull_floor) //no interaction for hulls
 		return
 
-	if(istype(C, /obj/item/tool/crowbar) && (tool_flags & (REMOVE_CROWBAR|BREAK_CROWBAR)))
+	if(src.weeds)
+		return weeds.attackby(hitting_item,user)
+
+	if(HAS_TRAIT(hitting_item, TRAIT_TOOL_CROWBAR) && (tool_flags & (REMOVE_CROWBAR|BREAK_CROWBAR)))
 		if(broken || burnt)
 			to_chat(user, SPAN_WARNING("You remove the broken tiles."))
 		else
@@ -159,7 +162,7 @@
 		make_plating()
 		return
 
-	if(HAS_TRAIT(C, TRAIT_TOOL_SCREWDRIVER) && (tool_flags & REMOVE_SCREWDRIVER))
+	if(HAS_TRAIT(hitting_item, TRAIT_TOOL_SCREWDRIVER) && (tool_flags & REMOVE_SCREWDRIVER))
 		to_chat(user, SPAN_WARNING("You unscrew the planks."))
 		new tile_type(src, 1, type)
 		playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)

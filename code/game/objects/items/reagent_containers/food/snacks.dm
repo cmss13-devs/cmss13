@@ -1,7 +1,7 @@
-/*	SNACK
-*	snack are food items that after being consume destroy themself.
-*	some snack are slice able.
-*	some produce trash after being consume/destroyed.
+/* SNACK
+* snack are food items that after being consume destroy themself.
+* some snack are slice able.
+* some produce trash after being consume/destroyed.
 */
 
 /obj/item/reagent_container/food/snacks
@@ -19,15 +19,15 @@
 	center_of_mass = "x=15;y=15"
 
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
-/obj/item/reagent_container/food/snacks/proc/On_Consume(var/mob/M)
+/obj/item/reagent_container/food/snacks/proc/On_Consume(mob/M)
 	SEND_SIGNAL(src, COMSIG_SNACK_EATEN, M)
-	if(!usr)	return
+	if(!usr) return
 
 	if(!reagents.total_volume)
 		if(M == usr)
 			to_chat(usr, SPAN_NOTICE("You finish eating \the [src]."))
 		M.visible_message(SPAN_NOTICE("[M] finishes eating \the [src]."))
-		usr.drop_inv_item_on_ground(src)	//so icons update :[
+		usr.drop_inv_item_on_ground(src) //so icons update :[
 
 		if(trash)
 			if(ispath(trash,/obj/item))
@@ -47,9 +47,9 @@
 	user.next_move += attack_speed
 
 /obj/item/reagent_container/food/snacks/attack(mob/M, mob/user)
-	if(reagents && !reagents.total_volume)						//Shouldn't be needed but it checks to see if it has anything left in it.
+	if(reagents && !reagents.total_volume) //Shouldn't be needed but it checks to see if it has anything left in it.
 		to_chat(user, SPAN_DANGER("None of [src] left, oh no!"))
-		M.drop_inv_item_on_ground(src)	//so icons update :[
+		M.drop_inv_item_on_ground(src) //so icons update :[
 		qdel(src)
 		return 0
 
@@ -63,8 +63,12 @@
 		if(fullness > 540 && world.time < C.overeat_cooldown)
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
 			return
-		if(isSynth(C))
+		if(issynth(C))
 			fullness = 200 //Synths never get full
+
+		if(HAS_TRAIT(M, TRAIT_CANNOT_EAT)) //Do not feed the Working Joes
+			to_chat(user, SPAN_DANGER("[user == M ? "You are" : "[M] is"] unable to eat!"))
+			return
 
 		if(fullness > 540)
 			C.overeat_cooldown = world.time + OVEREAT_TIME
@@ -100,7 +104,7 @@
 				SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
 				SPAN_NOTICE("[user] fed [user == M ? "themselves" : "[M]"] [src]."))
 
-		if(reagents)								//Handle ingestion of the reagent.
+		if(reagents) //Handle ingestion of the reagent.
 			playsound(M.loc,'sound/items/eatfood.ogg', 15, 1)
 			if(reagents.total_volume)
 				reagents.set_source_mob(user)
@@ -136,13 +140,7 @@
 	else
 		. += SPAN_NOTICE("\The [src] was bitten multiple times!")
 
-/obj/item/reagent_container/food/snacks/set_name_label(var/new_label)
-	name_label = new_label
-	name = made_from_player + initial(name)
-	if(name_label)
-		name += " ([name_label])"
-
-/obj/item/reagent_container/food/snacks/set_origin_name_prefix(var/name_prefix)
+/obj/item/reagent_container/food/snacks/set_origin_name_prefix(name_prefix)
 	made_from_player = name_prefix
 
 /obj/item/reagent_container/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
@@ -189,7 +187,7 @@
 		inaccurate = 1
 	else
 		return 1
-	if ( 	!istype(loc, /obj/structure/surface/table) && \
+	if ( !istype(loc, /obj/structure/surface/table) && \
 			(!isturf(src.loc) || \
 			!(locate(/obj/structure/surface/table) in src.loc) && \
 			!(locate(/obj/structure/machinery/optable) in src.loc) && \
@@ -216,7 +214,7 @@
 	qdel(src)
 	return
 
-/obj/item/reagent_container/food/snacks/attack_animal(var/mob/M)
+/obj/item/reagent_container/food/snacks/attack_animal(mob/M)
 	if(isanimal(M))
 		if(iscorgi(M))
 			if(bitecount == 0 || prob(50))
@@ -241,36 +239,36 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 /*
-*	SNACKS
-*	Comment on what items in subcategory snacks need to behave:
-*	Items in the "Snacks" subcategory are food items that people actually eat.
-*	The key points are that they are created already filled with reagents and are destroyed when empty.
-*	Additionally, they make a "munching" noise when eaten.
+* SNACKS
+* Comment on what items in subcategory snacks need to behave:
+* Items in the "Snacks" subcategory are food items that people actually eat.
+* The key points are that they are created already filled with reagents and are destroyed when empty.
+* Additionally, they make a "munching" noise when eaten.
 *
-*	Notes by Darem:
-*	Food in the "snacks" subtype can hold a maximum of 50 units Generally speaking.
-*	You don't want to go over 40 total for the item because you want to leave space for extra condiments.
-*	If you want effect besides healing, add a reagent for it.
-*	Try to stick to existing reagents when possible (so if you want a stronger healing effect, just use Tricordrazine).
-*	On use effect (such as the old officer eating a donut code) requires a unique reagent (unless you can figure out a better way).
+* Notes by Darem:
+* Food in the "snacks" subtype can hold a maximum of 50 units Generally speaking.
+* You don't want to go over 40 total for the item because you want to leave space for extra condiments.
+* If you want effect besides healing, add a reagent for it.
+* Try to stick to existing reagents when possible (so if you want a stronger healing effect, just use Tricordrazine).
+* On use effect (such as the old officer eating a donut code) requires a unique reagent (unless you can figure out a better way).
 *
-*	Comment on how the old and new system compare?:
-*	The nutriment reagent and bitesize variable replace the old heal_amt and amount variables.
-*	Each unit of nutriment is equal to 2 of the old heal_amt variable. Bitesize is the rate at which the reagents are consumed.
-*	So if you have 6 nutriment and a bitesize of 2, then it'll take 3 bites to eat.
-*	Unlike the old system, the contained reagents are evenly spread among all the bites. No more contained reagents = no more bites.
+* Comment on how the old and new system compare?:
+* The nutriment reagent and bitesize variable replace the old heal_amt and amount variables.
+* Each unit of nutriment is equal to 2 of the old heal_amt variable. Bitesize is the rate at which the reagents are consumed.
+* So if you have 6 nutriment and a bitesize of 2, then it'll take 3 bites to eat.
+* Unlike the old system, the contained reagents are evenly spread among all the bites. No more contained reagents = no more bites.
 *
-*	Example on how to add a new snack item:
-*	here is an example of the new formatting for anyone who wants to add more food items.
-*	/obj/item/reagent_container/food/snacks/xenoburger				///Identification path for the object.
-*	name = "Xenoburger"												///Name that displays in the UI.
-*	desc = "Smells caustic. Tastes like heresy."					///Duh
-*	icon_state = "xburger"											///Refers to an icon in food.dmi
-*	/obj/item/reagent_container/food/snacks/xenoburger/Initialize()	///Don't mess with this.
-*	. = ..()														///Same here.
-*	reagents.add_reagent("xenomicrobes", 10)						///This is what is in the food item. you may copy/paste
-*	reagents.add_reagent("nutriment", 2)							///	this line of code for all the contents.
-*	bitesize = 3													///This is the amount each bite consumes.
+* Example on how to add a new snack item:
+* here is an example of the new formatting for anyone who wants to add more food items.
+* /obj/item/reagent_container/food/snacks/xenoburger ///Identification path for the object.
+* name = "Xenoburger" ///Name that displays in the UI.
+* desc = "Smells caustic. Tastes like heresy." ///Duh
+* icon_state = "xburger" ///Refers to an icon in food.dmi
+* /obj/item/reagent_container/food/snacks/xenoburger/Initialize() ///Don't mess with this.
+* . = ..() ///Same here.
+* reagents.add_reagent("xenomicrobes", 10) ///This is what is in the food item. you may copy/paste
+* reagents.add_reagent("nutriment", 2) /// this line of code for all the contents.
+* bitesize = 3 ///This is the amount each bite consumes.
 */
 
 /obj/item/reagent_container/food/snacks/aesirsalad
@@ -351,7 +349,7 @@
 
 /obj/item/reagent_container/food/snacks/cookie
 	name = "cookie"
-	desc = "COOKIE!!!"
+	desc = "A delicious and crumbly chocolate chip cookie. Don't feed to parrots."
 	icon_state = "COOKIE!!!"
 	filling_color = "#DBC94F"
 
@@ -548,6 +546,12 @@
 /obj/item/reagent_container/food/snacks/egg/yellow
 	icon_state = "egg-yellow"
 	egg_color = "yellow"
+
+/obj/item/reagent_container/food/snacks/egg/random/Initialize()
+	. = ..()
+	var/newegg = pick(subtypesof(/obj/item/reagent_container/food/snacks/egg))
+	new newegg(loc)
+	qdel(src)
 
 /obj/item/reagent_container/food/snacks/friedegg
 	name = "Fried egg"
@@ -755,7 +759,7 @@
 	filling_color = "#D63C3C"
 
 /obj/item/reagent_container/food/snacks/human/burger
-	name = "burger"
+	name = "bob burger"
 	desc = "A bloody burger."
 	icon_state = "hamburger"
 
@@ -803,7 +807,7 @@
 
 /obj/item/reagent_container/food/snacks/tofuburger
 	name = "Tofu Burger"
-	desc = "What.. is that meat?"
+	desc = "What... is that meat?"
 	icon_state = "tofuburger"
 	filling_color = "#FFFEE0"
 
@@ -899,7 +903,7 @@
 
 /obj/item/reagent_container/food/snacks/muffin
 	name = "Muffin"
-	desc = "A delicious and spongy little cake"
+	desc = "A little muffin. Spongy, moist, and delicious."
 	icon_state = "muffin"
 	filling_color = "#E0CF9B"
 
@@ -942,7 +946,7 @@
 
 /obj/item/reagent_container/food/snacks/waffles
 	name = "waffles"
-	desc = "Mmm, waffles"
+	desc = "Mmm, waffles."
 	icon_state = "waffles"
 	trash = /obj/item/trash/waffles
 	filling_color = "#E6DEB5"
@@ -952,6 +956,19 @@
 	reagents.add_reagent("bread", 5)
 	reagents.add_reagent("sugar", 3)
 	bitesize = 2
+
+/obj/item/reagent_container/food/snacks/pancakes
+	name = "pancakes"
+	desc = "Golden brown creamy pancakes fresh from the griddle. Drizzled with maple syrup and topped with a slice of butter."
+	icon_state = "pancakes"
+	filling_color = "#bb9857"
+	bitesize = 2
+
+/obj/item/reagent_container/food/snacks/pancakes/Initialize()
+	. = ..()
+	reagents.add_reagent("bread", 6)
+	reagents.add_reagent("sugar", 4)
+	reagents.add_reagent("milk", 5)
 
 /obj/item/reagent_container/food/snacks/eggplantparm
 	name = "Eggplant Parmigiana"
@@ -1130,7 +1147,7 @@
 
 /obj/item/reagent_container/food/snacks/popcorn
 	name = "Popcorn"
-	desc = "Now let's find some cinema."
+	desc = "Buttery movie theater-style popcorn. Now to find a movie to watch while eating it."
 	icon_state = "popcorn"
 	trash = /obj/item/trash/popcorn
 	var/unpopped = 0
@@ -1143,7 +1160,7 @@
 	bitesize = 0.1 //this snack is supposed to be eating during looooong time. And this it not dinner food! --rastaf0
 
 /obj/item/reagent_container/food/snacks/popcorn/On_Consume()
-	if(prob(unpopped))	//lol ...what's the point?
+	if(prob(unpopped)) //lol ...what's the point?
 		to_chat(usr, SPAN_DANGER("You bite down on an un-popped kernel!"))
 		unpopped = max(0, unpopped-1)
 	..()
@@ -1281,8 +1298,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/meatsteak
-	name = "Meat steak"
-	desc = "A piece of hot spicy meat."
+	name = "steak"
+	desc = "A fine cut of grilled meat, spiced with salt and pepper. Where the meat came from is, well, probably best left unanswered."
 	icon_state = "meatstake"
 	trash = /obj/item/trash/plate
 	filling_color = "#7A3D11"
@@ -1511,6 +1528,7 @@
 	icon_state = "monkeycube"
 	bitesize = 12
 	filling_color = "#ADAC7F"
+	black_market_value = 25
 	var/monkey_type = /mob/living/carbon/human/monkey
 
 /obj/item/reagent_container/food/snacks/monkeycube/Initialize()
@@ -1534,7 +1552,7 @@
 		to_chat(user, "You unwrap the cube.")
 		package = 0
 
-/obj/item/reagent_container/food/snacks/monkeycube/On_Consume(var/mob/M)
+/obj/item/reagent_container/food/snacks/monkeycube/On_Consume(mob/M)
 	to_chat(M, SPAN_WARNING("Something inside of you suddently expands!"))
 
 	if (istype(M, /mob/living/carbon/human))
@@ -1555,7 +1573,7 @@
 			I.take_damage(rand(I.min_bruised_damage, I.min_broken_damage+1))
 		if (!E.hidden && prob(60)) //set it snuggly
 			E.hidden = surprise
-		else 		//someone is having a bad day
+		else //someone is having a bad day
 			E.createwound(CUT, 30)
 			E.embed(surprise)
 	..()
@@ -2120,9 +2138,9 @@
 
 /*
 *Sliceable
-*	All the food items that can be sliced into smaller bits like Meatbread and Cheesewheels
-*	sliceable is just an organization type path, it doesn't have any additional code or variables tied to it.
-*	Make it that every big items are cut down into six smaller slice as a standart.
+* All the food items that can be sliced into smaller bits like Meatbread and Cheesewheels
+* sliceable is just an organization type path, it doesn't have any additional code or variables tied to it.
+* Make it that every big items are cut down into six smaller slice as a standart.
 */
 
 /obj/item/reagent_container/food/snacks/sliceable
@@ -2268,6 +2286,7 @@
 	icon_state = "cheesecake"
 	slice_path = /obj/item/reagent_container/food/snacks/cheesecakeslice
 	filling_color = "#FAF7AF"
+	black_market_value = 30
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesecake/Initialize()
 	. = ..()
@@ -2282,6 +2301,7 @@
 	trash = /obj/item/trash/plate
 	filling_color = "#FAF7AF"
 	bitesize = 2
+	black_market_value = 20
 
 /obj/item/reagent_container/food/snacks/sliceable/plaincake
 	name = "Vanilla Cake"
@@ -2396,6 +2416,7 @@
 	icon_state = "cheesewheel"
 	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge
 	filling_color = "#FFF700"
+	black_market_value = 25 //mendoza likes cheese.
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/Initialize()
 	. = ..()
@@ -2408,6 +2429,7 @@
 	icon_state = "cheesewedge"
 	filling_color = "#FFF700"
 	bitesize = 2
+	black_market_value = 10
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/immature
 	name = "immature cheese wheel"
@@ -2594,7 +2616,7 @@
 	. = ..()
 	reagents.add_reagent("bread", 1)
 	reagents.add_reagent("sodiumchloride", 1)
-	
+
 /*
 *PIZZA.
 *object parent for all the object pizza give the number of slice produce and the filling color.
@@ -2612,7 +2634,7 @@
 	name = "Mystery Pizza"
 	desc = "Edible looking, hunger inducing, mysterious pizza."
 	slice_path = /obj/item/reagent_container/food/snacks/mysteryslice
-	
+
 /obj/item/reagent_container/food/snacks/sliceable/pizza/mystery/Initialize()
 	. = ..()
 	reagents.add_reagent("bread", 15)
@@ -2628,7 +2650,7 @@
 	desc = "You go first."
 	filling_color = "#BAA14C"
 	bitesize = 2
-	
+
 /obj/item/reagent_container/food/snacks/mysteryslice/Initialize()
 	. = ..() // I'm not rewriting a chunk of cooking backend for this, so this just slices into random icons. Intriguing!
 	icon_state = pick("pizzamargheritaslice","meatpizzaslice","mushroompizzaslice","vegetablepizzaslice")
@@ -2864,7 +2886,7 @@
 			boxtotagto = boxes[boxes.len]
 
 		boxtotagto.boxtag = "[boxtotagto.boxtag][t]"
-
+		playsound(src, "paper_writing", 15, TRUE)
 		update_icon()
 		return
 	..()
@@ -3225,11 +3247,25 @@
 	reagents.add_reagent("bread", 4)
 	reagents.add_reagent("sodiumchloride", 12)
 
+/obj/item/reagent_container/food/snacks/kepler_crisps/flamehot
+	name = "Kepler Flamehot"
+	desc = "'They're disturbingly good!' Due to an exceptionally well-timed ad campaign with the release of Kepler Flamehot in 2165, the Kepler brand was able to overtake other confectionary Weyland products by quarter three of that year. Contains 0% trans fat."
+	icon_state = "flamehotkepler"
+	bitesize = 2
+	trash = /obj/item/trash/kepler/flamehot
+
+/obj/item/reagent_container/food/snacks/kepler_crisps/flamehot/Initialize()
+	. = ..()
+	reagents.add_reagent("bread", 4)
+	reagents.add_reagent("sodiumchloride", 4)
+	reagents.add_reagent("hotsauce", 8)
+
 //Wrapped candy bars
 
 /obj/item/reagent_container/food/snacks/wrapped
 	package = 1
 	bitesize = 3
+	black_market_value = 5
 	var/obj/item/trash/wrapper = null //Why this and not trash? Because it pulls the wrapper off when you unwrap it as a trash item.
 
 /obj/item/reagent_container/food/snacks/wrapped/attack_self(mob/user)
@@ -3268,6 +3304,23 @@
 	. = ..()
 	reagents.add_reagent("nutriment", 7)
 	reagents.add_reagent("coco", 10)
+
+/obj/item/reagent_container/food/snacks/wrapped/chunk/hunk
+	name = "HUNK crate"
+	desc = "A 'crate', as the marketing called it, of \"The <b>HUNK</b>\" brand chocolate. An early version of the CHUNK box, the HUNK bar was hit by a class action lawsuit and forced to go into bankruptcy and get bought out by the Company when hundreds of customers had their teeth crack from simply attempting to eat the bar."
+	icon_state = "hunk"
+	w_class = SIZE_MEDIUM
+	hitsound = "swing_hit"
+	force = 35 //ILLEGAL LIMIT OF CHOCOLATE
+	throwforce = 50
+	bitesize = 20
+	wrapper = /obj/item/trash/chunk/hunk
+
+/obj/item/reagent_container/food/snacks/wrapped/chunk/hunk/Initialize()
+	. = ..()
+	reagents.add_reagent("nutriment", 5)
+	reagents.add_reagent("iron", 30)
+	reagents.add_reagent("coco", 5)
 
 /obj/item/reagent_container/food/snacks/wrapped/barcardine
 	name = "Barcardine Bars"

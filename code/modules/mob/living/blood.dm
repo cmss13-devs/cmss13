@@ -10,10 +10,14 @@
 	if(NO_BLOOD in species.flags)
 		return
 
-	if(stat != DEAD && bodytemperature >= 170)	//Dead or cryosleep people do not pump the blood.
+	if(stat != DEAD && bodytemperature >= 170) //Dead or cryosleep people do not pump the blood.
 		//Blood regeneration if there is some space
 		if(blood_volume < max_blood)
 			blood_volume += 0.1 // regenerate blood VERY slowly
+		else if(blood_volume > max_blood)
+			blood_volume -= 0.1 // The reverse in case we've gotten too much blood in our body
+			if(blood_volume > limit_blood)
+				blood_volume = limit_blood // This should never happen, but lets make sure
 
 		var/b_volume = blood_volume
 
@@ -42,18 +46,21 @@
 					oxyloss += 3
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 				if(eye_blurry < 50)
-					eye_blurry += 6
+					AdjustEyeBlur(6)
 				if(oxyloss < 50)
 					oxyloss += 10
 				oxyloss += 2
 				if(prob(15))
 					apply_effect(rand(1,3), PARALYZE)
 					var/word = pick("dizzy","woozy","faint")
-					to_chat(src, SPAN_DANGER("You feel extremely [word]."))
+					to_chat(src, SPAN_DANGER("You feel very [word]."))
 			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
+				if(eye_blurry < 50)
+					AdjustEyeBlur(6)
 				oxyloss += 5
 				toxloss += 3
 				if(prob(15))
+					apply_effect(rand(1,3), PARALYZE)
 					var/word = pick("dizzy","woozy","faint")
 					to_chat(src, SPAN_DANGER("You feel extremely [word]."))
 			if(0 to BLOOD_VOLUME_SURVIVE)
@@ -67,7 +74,7 @@
 				nutrition -= 3
 
 // Xeno blood regeneration
-/mob/living/carbon/Xenomorph/handle_blood()
+/mob/living/carbon/xenomorph/handle_blood()
 	if(stat != DEAD) //Only living xenos regenerate blood
 		//Blood regeneration if there is some space
 		if(blood_volume < max_blood)
@@ -114,7 +121,7 @@
 			if(b_id == "blood" && B.data_properties && !(B.data_properties["blood_type"] in get_safe_blood(blood_type)))
 				reagents.add_reagent("toxin", amount * 0.5)
 			else
-				blood_volume = min(blood_volume + round(amount, 0.1), BLOOD_VOLUME_MAXIMUM)
+				blood_volume = min(blood_volume + round(amount, 0.1), limit_blood)
 		else
 			reagents.add_reagent(B.id, amount, B.data_properties)
 			reagents.update_total()
@@ -156,13 +163,13 @@
 	return 1
 
 
-/mob/living/carbon/human/take_blood(obj/O, var/amount)
+/mob/living/carbon/human/take_blood(obj/O, amount)
 	if(species && species.flags & NO_BLOOD)
 		return
 
 	. = ..()
 
-/mob/living/carbon/Xenomorph/take_blood(obj/O, var/amount)
+/mob/living/carbon/xenomorph/take_blood(obj/O, amount)
 	if(!O.reagents || amount <= 0 || blood_volume <= 0)
 		return
 
@@ -178,7 +185,12 @@
 		plasmas += plasma
 
 	for(var/plasma in plasmas)
-		O.reagents.add_reagent(plasma,amount / plasmas.len) //An even amount of each plasma and blood type
+		//An even amount of each plasma and blood type
+		if(plasma == PLASMA_EGG)
+			//Preserve hive_number for the possible larva
+			O.reagents.add_reagent(plasma, amount / plasmas.len, list("hive_number" = hivenumber))
+		else
+			O.reagents.add_reagent(plasma, amount / plasmas.len)
 
 	blood_volume = max(0, blood_volume - amount)
 	return 1
@@ -240,10 +252,12 @@
 
 //returns the color of the mob's blood
 /mob/living/proc/get_blood_color()
-	return "#A10808"
+	return BLOOD_COLOR_HUMAN
 
-/mob/living/carbon/Xenomorph/get_blood_color()
-	return "#dffc00"
+/mob/living/carbon/xenomorph/get_blood_color()
+	if(caste && caste.royal_caste)
+		return BLOOD_COLOR_XENO_ROYAL
+	return BLOOD_COLOR_XENO
 
 /mob/living/carbon/human/get_blood_color()
 	return species.blood_color
@@ -253,18 +267,19 @@
 /mob/proc/get_blood_id()
 	return
 
-/mob/living/carbon/Xenomorph/get_blood_id()
-	return "xenoblood"
-
-/mob/living/carbon/Xenomorph/Queen/get_blood_id()
-	return "xenobloodroyal"
-
-/mob/living/carbon/Xenomorph/Praetorian/get_blood_id()
-	return "xenobloodroyal"
+/mob/living/carbon/xenomorph/get_blood_id()
+	if(special_blood)
+		return special_blood
+	if(caste.royal_caste)
+		return "xenobloodroyal"
+	else
+		return "xenoblood"
 
 /mob/living/carbon/human/get_blood_id()
 	if((NO_BLOOD in species.flags))
 		return
+	if(special_blood)
+		return special_blood
 	if(species.name == "Yautja")
 		return "greenblood"
 	if(species.flags & IS_SYNTHETIC)
@@ -350,7 +365,7 @@
 
 	..()
 
-/mob/living/carbon/Xenomorph/add_splatter_floor(turf/T, small_drip, b_color)
+/mob/living/carbon/xenomorph/add_splatter_floor(turf/T, small_drip, b_color)
 	if(!T)
 		T = get_turf(src)
 
@@ -360,6 +375,7 @@
 	var/obj/effect/decal/cleanable/blood/xeno/XB = locate() in T.contents
 	if(!XB)
 		XB = new(T)
+		XB.color = get_blood_color()
 
 
 /mob/living/silicon/robot/add_splatter_floor(turf/T, small_drip, b_color)

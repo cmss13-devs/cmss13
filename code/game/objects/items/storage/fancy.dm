@@ -3,21 +3,22 @@
  * .. Sorry for the shitty path name, I couldnt think of a better one.
  *
  * WARNING: var/icon_type is used for both examine text and sprite name. Please look at the procs below and adjust your sprite names accordingly
- *		TODO: Cigarette boxes should be ported to this standard
+ * TODO: Cigarette boxes should be ported to this standard
  *
  * Contains:
- *		Donut Box
- *		Egg Box
- *		Candle Box
- *		Crayon Box
- *		Cigarette Box
- *		Cigar Box
+ * Donut Box
+ * Egg Box
+ * Candle Box
+ * Crayon Box
+ * Cigarette Box
+ * Cigar Box
  */
 
 /obj/item/storage/fancy
 	icon = 'icons/obj/items/food.dmi'
-	icon_state = "donutbox6"
+	icon_state = "donutbox"
 	name = "donut box"
+	desc = "A box where round, heavenly, holey pastries reside."
 	var/icon_type = "donut"
 
 /obj/item/storage/fancy/update_icon()
@@ -47,7 +48,8 @@
 	icon = 'icons/obj/items/food.dmi'
 	icon_state = "eggbox"
 	icon_type = "egg"
-	name = "egg box"
+	name = "egg carton"
+	desc = "A storage container filled with neatly-lined, egg-shaped holes."
 	storage_slots = 12
 	max_storage_space = 24
 	can_hold = list(/obj/item/reagent_container/food/snacks/egg)
@@ -91,6 +93,7 @@
 	storage_slots = 6
 	icon_type = "crayon"
 	can_hold = list(/obj/item/toy/crayon)
+	black_market_value = 25
 
 /obj/item/storage/fancy/crayons/fill_preset_inventory()
 	new /obj/item/toy/crayon/red(src)
@@ -122,6 +125,9 @@
 ////////////
 /obj/item/storage/fancy/cigarettes
 	icon = 'icons/obj/items/cigarettes.dmi'
+	icon_state = "cigpacket"
+	name = "cigarette packet"
+	desc = "A packet of cigarettes with a built-in lighter compartment."
 	w_class = SIZE_TINY
 	throwforce = 2
 	flags_equip_slot = SLOT_WAIST
@@ -131,7 +137,7 @@
 		/obj/item/clothing/mask/cigarette,
 		/obj/item/clothing/mask/cigarette/ucigarette,
 		/obj/item/clothing/mask/cigarette/bcigarette,
-		/obj/item/tool/lighter
+		/obj/item/tool/lighter,
 	)
 	icon_type = "cigarette"
 	var/default_cig_type=/obj/item/clothing/mask/cigarette
@@ -233,6 +239,7 @@
 	storage_slots = 7
 	can_hold = list(/obj/item/clothing/mask/cigarette/cigar)
 	icon_type = "cigar"
+	black_market_value = 30
 	var/default_cigar_type = /obj/item/clothing/mask/cigarette/cigar
 
 /obj/item/storage/fancy/cigar/fill_preset_inventory()
@@ -342,6 +349,7 @@
 	icon_state = "vialbox0"
 	icon_type = "vial"
 	name = "vial storage box"
+	desc = "A place to store your fragile vials when you are not using them."
 	is_objective = TRUE
 	storage_slots = 6
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_CLICK_GATHER
@@ -392,7 +400,7 @@
 	storage_slots = 6
 	req_access = list(ACCESS_MARINE_MEDBAY)
 
-/obj/item/storage/lockbox/vials/update_icon(var/itemremoved = 0)
+/obj/item/storage/lockbox/vials/update_icon(itemremoved = 0)
 	var/total_contents = src.contents.len - itemremoved
 	src.icon_state = "vialbox[total_contents]"
 	src.overlays.Cut()

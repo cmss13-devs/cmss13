@@ -1,15 +1,15 @@
 /obj/structure/sign
 	icon = 'icons/obj/structures/props/decals.dmi'
-	anchored = 1
-	opacity = 0
-	density = 0
+	anchored = TRUE
+	opacity = FALSE
+	density = FALSE
 	layer = WALL_OBJ_LAYER
 
 /obj/structure/sign/ex_act(severity)
 	deconstruct(FALSE)
 	return
 
-/obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob)	//deconstruction
+/obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob) //deconstruction
 	if(HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && !istype(src, /obj/structure/sign/double))
 		to_chat(user, "You unfasten the sign with your [tool].")
 		var/obj/item/sign/S = new(src.loc)
@@ -24,10 +24,10 @@
 	name = "sign"
 	desc = ""
 	icon = 'icons/obj/structures/props/decals.dmi'
-	w_class = SIZE_MEDIUM		//big
+	w_class = SIZE_MEDIUM //big
 	var/sign_state = ""
 
-/obj/item/sign/attackby(obj/item/tool as obj, mob/user as mob)	//construction
+/obj/item/sign/attackby(obj/item/tool as obj, mob/user as mob) //construction
 	if(HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && isturf(user.loc))
 		var/direction = tgui_input_list(usr, "In which direction?", "Select direction.", list("North", "East", "South", "West", "Cancel"))
 		if(direction == "Cancel") return
@@ -49,8 +49,8 @@
 		qdel(src)
 	else ..()
 
-  //=====================//
- // Miscellaneous Signs //
+//=====================//
+// Miscellaneous Signs //
 //=====================//
 
 /obj/structure/sign/nosmoking_1
@@ -70,7 +70,7 @@
 
 /obj/structure/sign/kiddieplaque
 	name = "AI developers plaque"
-	desc = "Next to the extremely long list of names and job titles, there is a drawing of a little child. The child appears to be retarded. Beneath the image, someone has scratched the word \"PACKETS\""
+	desc = "Next to the extremely long list of names and job titles, there is a drawing of a little child. Beneath the image, someone has scratched the word \"PACKETS\""
 	icon_state = "kiddieplaque"
 
 /obj/structure/sign/arcturianstopsign
@@ -78,7 +78,7 @@
 	desc = "This is the Arcturian stop sign that some Bravos from First Platoon stole on the last shore leave."
 	icon_state = "arcturian_stop_sign"
 
-/obj/structure/sign/double/maltesefalcon	//The sign is 64x32, so it needs two tiles. ;3
+/obj/structure/sign/double/maltesefalcon //The sign is 64x32, so it needs two tiles. ;3
 	name = "The Maltese Falcon"
 	desc = "The Maltese Falcon, Space Bar and Grill."
 
@@ -113,9 +113,9 @@
 	name = "sign"
 	icon = 'icons/obj/structures/props/semiotic_standard.dmi'
 	desc = "A sign denoting Semiotic Standard. The Interstellar Commerce Commission requires that these symbols be placed pretty much everywhere for your safety."
-	anchored = 1
-	opacity = 0
-	density = 0
+	anchored = TRUE
+	opacity = FALSE
+	density = FALSE
 
 /obj/structure/sign/safety/airlock
 	name = "airlock semiotic"
@@ -568,7 +568,7 @@
 
 /obj/structure/sign/ROsign
 	name = "\improper USCM Requisitions Office Guidelines"
-	desc = " 1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cyrosleep underwear is non-permissible.\n 3. The Requsitions Officer has the final say and the right to decline service. Only the Acting Captain may override their decisions.\n 4. Please treat your Requsitions staff with respect. They work hard."
+	desc = " 1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cyrosleep underwear is non-permissible.\n 3. The Requsitions Officer has the final say and the right to decline service. Only the Acting Commanding Officer may override their decisions.\n 4. Please treat your Requsitions staff with respect. They work hard."
 	icon_state = "roplaque"
 
 /obj/structure/sign/prop1
@@ -592,3 +592,9 @@
 	desc = "An unbelievably creepy cat clock that surveys the room with every tick and every tock."
 	icon = 'icons/obj/structures/props/catclock.dmi'
 	icon_state = "cat_clock_motion"
+
+/obj/structure/sign/dartboard
+	name = "dartboard"
+	desc = "A dartboard, secured with a nail and a string. It has bullet holes and knife stab marks over and around it."
+	icon = 'icons/obj/structures/props/props.dmi'
+	icon_state = "dart_board"

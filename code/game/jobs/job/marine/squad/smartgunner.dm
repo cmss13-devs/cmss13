@@ -8,10 +8,10 @@
 	gear_preset = /datum/equipment_preset/uscm/sg
 	entry_message_body = "<a href='"+URL_WIKI_SG_GUIDE+"'>You are the smartgunner.</a> Your task is to provide heavy weapons support."
 
-/datum/job/marine/smartgunner/set_spawn_positions(var/count)
+/datum/job/marine/smartgunner/set_spawn_positions(count)
 	spawn_positions = sg_slot_formula(count)
 
-/datum/job/marine/smartgunner/get_total_positions(var/latejoin = 0)
+/datum/job/marine/smartgunner/get_total_positions(latejoin = 0)
 	var/positions = spawn_positions
 	if(latejoin)
 		positions = sg_slot_formula(get_total_marines())

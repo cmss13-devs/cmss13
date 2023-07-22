@@ -4,9 +4,9 @@
 	desc = "A pair of black shoes."
 
 	flags_cold_protection = BODY_FLAG_FEET
-	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
+	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
 	flags_heat_protection = BODY_FLAG_FEET
-	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
+	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 
 /obj/item/clothing/shoes/brown
 	name = "brown shoes"
@@ -38,6 +38,11 @@
 	desc = "Stylish red shoes."
 	icon_state = "red"
 
+/obj/item/clothing/shoes/red/knife
+	name = "dirty red shoes"
+	desc = "Stylish red shoes with a small space to hold a knife."
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/tool/screwdriver)
+
 /obj/item/clothing/shoes/white
 	name = "white shoes"
 	icon_state = "white"
@@ -58,7 +63,7 @@
 	icon_state = "orange"
 	var/obj/item/handcuffs/chained = null
 
-/obj/item/clothing/shoes/orange/proc/attach_cuffs(var/obj/item/handcuffs/cuffs, mob/user as mob)
+/obj/item/clothing/shoes/orange/proc/attach_cuffs(obj/item/handcuffs/cuffs, mob/user as mob)
 	if (src.chained) return
 
 	user.drop_held_item()

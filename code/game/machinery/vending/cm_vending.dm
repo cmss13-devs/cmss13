@@ -1,13 +1,3 @@
-#define VEND_TO_HAND (1<<0)
-#define VEND_UNIFORM_RANKS (1<<1)
-#define VEND_UNIFORM_AUTOEQUIP (1<<2)
-#define VEND_LIMITED_INVENTORY (1<<3)
-#define VEND_CLUTTER_PROTECTION (1<<4)
-#define VEND_CATEGORY_CHECK (1<<5)
-#define VEND_INSTANCED_CATEGORY (1<<6)
-#define VEND_FACTION_THEMES (1<<7)
-#define VEND_USE_VENDOR_FLAGS (1<<8)
-
 /obj/structure/machinery/cm_vending
 	name = "\improper Theoretical Marine selector"
 
@@ -29,12 +19,12 @@
 	var/hackable = FALSE
 	var/hacked = FALSE
 
-	var/vendor_theme = VENDOR_THEME_COMPANY		//sets vendor theme in NanoUI
+	var/vendor_theme = VENDOR_THEME_COMPANY //sets vendor theme in NanoUI
 
-	var/list/vendor_role = list()	//to be compared with assigned_role to only allow those to use that machine. Converted to list by Jeser 09.05.20
-	var/squad_tag = ""				//same to restrict vendor to specified squad
+	var/list/vendor_role = list() //to be compared with assigned_role to only allow those to use that machine. Converted to list by Jeser 09.05.20
+	var/squad_tag = "" //same to restrict vendor to specified squad
 
-	var/use_points = FALSE			//disabling these two grants unlimited access to items for adminab... I mean, events purposes
+	var/use_points = FALSE //disabling these two grants unlimited access to items for adminab... I mean, events purposes
 	var/use_snowflake_points = FALSE
 
 	var/available_points_to_display = 0
@@ -44,8 +34,8 @@
 	var/gloves_type = /obj/item/clothing/gloves/marine
 	var/headset_type = /obj/item/device/radio/headset/almayer/marine
 
-	var/vend_delay = 0		//delaying vending of an item (for drinks machines animation, for example). Make sure to synchronize this with animation duration
-	var/vend_sound			//use with caution. Potential spam
+	var/vend_delay = 0 //delaying vending of an item (for drinks machines animation, for example). Make sure to synchronize this with animation duration
+	var/vend_sound //use with caution. Potential spam
 
 	var/vend_x_offset = 0
 	var/vend_y_offset = 0
@@ -58,12 +48,12 @@
 
 /*
 Explanation on stat flags:
-BROKEN						vendor is not operational and it's not a power issue
-NOPOWER						vendor has no power
-MAINT						we have to actually do a maintenance on vendor with tools to fix it
-IN_REPAIR(REPAIR_STEPS)		for maintenance repair steps
-TIPPED_OVER					for flipped sprite
-IN_USE						used for vending/denying
+BROKEN vendor is not operational and it's not a power issue
+NOPOWER vendor has no power
+MAINT we have to actually do a maintenance on vendor with tools to fix it
+IN_REPAIR(REPAIR_STEPS) for maintenance repair steps
+TIPPED_OVER for flipped sprite
+IN_USE used for vending/denying
 */
 
 //------------GENERAL PROCS---------------
@@ -73,7 +63,7 @@ IN_USE						used for vending/denying
 	. = ..()
 	cm_build_inventory(get_listed_products(), 1, 3)
 
-/obj/structure/machinery/power_change(var/area/master_area = null)
+/obj/structure/machinery/power_change(area/master_area = null)
 	..()
 	update_icon()
 
@@ -81,18 +71,18 @@ IN_USE						used for vending/denying
 
 	//restoring sprite to initial
 	overlays.Cut()
-	//icon_state = initial(icon_state)	//shouldn't be needed but just in case
+	//icon_state = initial(icon_state) //shouldn't be needed but just in case
 	var/matrix/A = matrix()
 	apply_transform(A)
 
-	if(stat & NOPOWER || stat & TIPPED_OVER)		//tipping off without breaking uses "_off" sprite
+	if(stat & NOPOWER || stat & TIPPED_OVER) //tipping off without breaking uses "_off" sprite
 		overlays += image(icon, "[icon_state]_off")
-	if(stat & MAINT)		//if we require maintenance, then it is completely "_broken"
+	if(stat & MAINT) //if we require maintenance, then it is completely "_broken"
 		icon_state = "[initial(icon_state)]_broken"
-		if(stat & IN_REPAIR)	//if someone started repairs, they unscrewed "_panel"
+		if(stat & IN_REPAIR) //if someone started repairs, they unscrewed "_panel"
 			overlays += image(icon, "[icon_state]_panel")
 
-	if(stat & TIPPED_OVER)		//finally, if it is tipped over, flip the sprite
+	if(stat & TIPPED_OVER) //finally, if it is tipped over, flip the sprite
 		A.Turn(90)
 		apply_transform(A)
 
@@ -119,7 +109,7 @@ IN_USE						used for vending/denying
 
 GLOBAL_LIST_EMPTY(vending_products)
 
-/obj/structure/machinery/cm_vending/proc/cm_build_inventory(var/list/items, var/name_index=1, var/type_index=3)
+/obj/structure/machinery/cm_vending/proc/cm_build_inventory(list/items, name_index=1, type_index=3)
 	for (var/list/item in items)
 		// initial item count setup
 		var/item_name = item[name_index]
@@ -128,12 +118,16 @@ GLOBAL_LIST_EMPTY(vending_products)
 		if (!item_name || item_name == "" || !typepath)
 			continue
 
-		GLOB.vending_products[typepath] = 1
+		if(islist(typepath))
+			for(var/path in typepath)
+				GLOB.vending_products[path] = 1
+		else
+			GLOB.vending_products[typepath] = 1
 
 //get which turf the vendor will dispense its products on.
 /obj/structure/machinery/cm_vending/proc/get_appropriate_vend_turf()
 	var/turf/T = loc
-	if(vend_x_offset != 0 || vend_y_offset != 0)	//this check should be more less expensive than using locate to locate your own tile every vending.
+	if(vend_x_offset != 0 || vend_y_offset != 0) //this check should be more less expensive than using locate to locate your own tile every vending.
 		T = locate(x + vend_x_offset, y + vend_y_offset, z)
 	return T
 
@@ -143,30 +137,190 @@ GLOBAL_LIST_EMPTY(vending_products)
 	if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) && hackable)
 		. += SPAN_NOTICE("You believe you can hack this one to remove the access requirements.")
 
-/obj/structure/machinery/cm_vending/proc/hack_access(var/mob/user)
+/obj/structure/machinery/cm_vending/proc/hack_access(mob/user)
 	if(!hackable)
 		to_chat(user, SPAN_WARNING("[src] cannot be hacked."))
 		return
 
 	hacked = !hacked
 	if(hacked)
-		to_chat(user, SPAN_WARNING("You have succesfully removed access restrictions in [src]."))
+		to_chat(user, SPAN_WARNING("You have successfully removed access restrictions in [src]."))
 		if(user && is_mainship_level(z))
 			SSclues.create_print(get_turf(user), user, "A small piece of cut wire is found on the fingerprint.")
 	else
 		to_chat(user, SPAN_WARNING("You have restored access restrictions in [src]."))
 	return
 
+
+//Called when we vend something
+/obj/structure/machinery/cm_vending/proc/update_derived_ammo_and_boxes(list/item_being_vended)
+	if(!LAZYLEN(item_being_vended))
+		return
+
+	update_derived_from_ammo(item_being_vended)
+	update_derived_from_boxes(item_being_vended[3])
+
+//Called when we add something in
+/obj/structure/machinery/cm_vending/proc/update_derived_ammo_and_boxes_on_add(list/item_being_added)
+	if(!LAZYLEN(item_being_added))
+		return
+	update_derived_from_ammo(item_being_added)
+	//We are ADDING a box, so need to INCREASE the number of magazines rather than subtracting it
+	update_derived_from_boxes(item_being_added[3], TRUE)
+
+/obj/structure/machinery/cm_vending/proc/update_derived_from_ammo(list/base_ammo_item, add_box = FALSE)
+	if(!LAZYLEN(base_ammo_item))
+		return
+	//Item is a vented magazine / grenade / whatever, update all dependent boxes
+	var/datum/item_to_multiple_box_pairing/item_to_box_mapping = GLOB.item_to_box_mapping.get_item_to_box_mapping(base_ammo_item[3])
+	if(!item_to_box_mapping)
+		return
+	var/list/topic_listed_products = get_listed_products(usr)
+	for(var/datum/item_box_pairing/item_box_pairing as anything in item_to_box_mapping.item_box_pairings)
+		for(var/list/product in topic_listed_products)
+			if(product[3] == item_box_pairing.box)
+				//We recalculate the amount of boxes we ought to have based on how many magazines we have
+				product[2] = round(base_ammo_item[2] / item_box_pairing.items_in_box)
+				break
+
+/obj/structure/machinery/cm_vending/proc/update_derived_from_boxes(obj/item/box_being_added_or_removed, add_box = FALSE)
+	var/datum/item_box_pairing/item_box_pairing = GLOB.item_to_box_mapping.get_box_to_item_mapping(box_being_added_or_removed)
+	if(!item_box_pairing)
+		return
+	//Item is a vented box, update base ammo count
+	//and then update all the relevant boxes based on the new item count by calling this function again with the ammo parameter
+	var/list/topic_listed_products = get_listed_products(usr)
+	for(var/list/product in topic_listed_products)
+		if(product[3] == item_box_pairing.item)
+			if(add_box)
+				//We increase the amount of available magazines based on how many magazines we vended in a box
+				product[2] = product[2] + item_box_pairing.items_in_box
+			else
+				//We lower the amount of available magazines based on how many magazines we vended in a box
+				product[2] = max(product[2] - item_box_pairing.items_in_box, 0) //Just in case some shenanigans happen
+
+			//After we update the magazines, we update the connected boxes
+			//Just in case we have a small ammo box and a big ammo box (like say, grenades do)
+			update_derived_from_ammo(product)
+			return
+
+//A proc that checks all the items if they can be restocked
+//AKA if a mag is full, an ammo box is full, flamer mags having the correct fluid and so on
+/obj/structure/machinery/cm_vending/proc/check_if_item_is_good_to_restock(obj/item/item_to_stock, mob/user)
+	. = FALSE //Item is NOT good to restock
+
+	//Guns handling
+	if(isgun(item_to_stock))
+		var/obj/item/weapon/gun/G = item_to_stock
+		if(G.in_chamber || (G.current_mag && !istype(G.current_mag, /obj/item/ammo_magazine/internal)) || (istype(G.current_mag, /obj/item/ammo_magazine/internal) && G.current_mag.current_rounds > 0) )
+			to_chat(user, SPAN_WARNING("[G] is still loaded. Unload it before you can restock it."))
+			return
+		for(var/obj/item/attachable/A in G.contents) //Search for attachments on the gun. This is the easier method
+			if((A.flags_attach_features & ATTACH_REMOVABLE) && !(is_type_in_list(A, G.starting_attachment_types))) //There are attachments that are default and others that can't be removed
+				to_chat(user, SPAN_WARNING("[G] has non-standard attachments equipped. Detach them before you can restock it."))
+				return
+	//various stacks handling
+	else if(istype(item_to_stock, /obj/item/stack/folding_barricade))
+		var/obj/item/stack/folding_barricade/B = item_to_stock
+		if(B.amount != 3)
+			to_chat(user, SPAN_WARNING("[B]s are being stored in [SPAN_HELPFUL("stacks of 3")] for convenience. Add to \the [B] stack to make it a stack of 3 before restocking."))
+			return
+	//M94 flare packs handling
+	else if(istype(item_to_stock, /obj/item/storage/box/m94))
+		var/obj/item/storage/box/m94/flare_pack = item_to_stock
+		if(flare_pack.contents.len < flare_pack.max_storage_space)
+			to_chat(user, SPAN_WARNING("\The [item_to_stock] is not full."))
+			return
+		var/flare_type
+		if(istype(item_to_stock, /obj/item/storage/box/m94/signal))
+			flare_type = /obj/item/device/flashlight/flare/signal
+		else
+			flare_type = /obj/item/device/flashlight/flare
+		for(var/obj/item/device/flashlight/flare/F in flare_pack.contents)
+			if(F.fuel < 1)
+				to_chat(user, SPAN_WARNING("Some flares in \the [F] are used."))
+				return
+			if(F.type != flare_type)
+				to_chat(user, SPAN_WARNING("Some flares in \the [F] are not of the correct type."))
+				return
+	//Machete holsters handling
+	else if(istype(item_to_stock, /obj/item/storage/large_holster/machete))
+		var/obj/item/weapon/claymore/mercsword/machete/mac = locate(/obj/item/weapon/claymore/mercsword/machete) in item_to_stock
+		if(!mac)
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [item_to_stock] is empty."))
+			return FALSE
+	//Machete holsters handling
+	else if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
+		var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
+		if(AR.pockets && AR.pockets.contents.len)
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
+			return FALSE
+	//magazines handling
+	else if(istype(item_to_stock, /obj/item/ammo_magazine))
+		//flamer fuel tanks handling
+		if(istype(item_to_stock, /obj/item/ammo_magazine/flamer_tank))
+			var/obj/item/ammo_magazine/flamer_tank/FT = item_to_stock
+			if(FT.flamer_chem != initial(FT.flamer_chem))
+				to_chat(user, SPAN_WARNING("\The [FT] contains non-standard fuel."))
+				return
+		var/obj/item/ammo_magazine/A = item_to_stock
+		if(A.current_rounds < A.max_rounds)
+			to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
+			return
+	//magazine ammo boxes handling
+	else if(istype(item_to_stock, /obj/item/ammo_box/magazine))
+		var/obj/item/ammo_box/magazine/A = item_to_stock
+		//shotgun shells ammo boxes handling
+		if(A.handfuls)
+			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_to_stock.contents
+			if(!AM)
+				to_chat(user, SPAN_WARNING("Something is wrong with \the [A], tell a coder."))
+				return
+			if(AM.current_rounds != AM.max_rounds)
+				to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
+				return
+		else if(A.contents.len < A.num_of_magazines)
+			to_chat(user, SPAN_WARNING("[A] is not full."))
+			return
+		else
+			for(var/obj/item/ammo_magazine/M in A.contents)
+				if(M.current_rounds != M.max_rounds)
+					to_chat(user, SPAN_WARNING("Not all magazines in \the [A] are full."))
+					return
+	//loose rounds ammo box handling
+	else if(istype(item_to_stock, /obj/item/ammo_box/rounds))
+		var/obj/item/ammo_box/rounds/A = item_to_stock
+		if(A.bullet_amount < A.max_bullet_amount)
+			to_chat(user, SPAN_WARNING("[A] is not full."))
+			return
+	//Marine armor handling
+	else if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
+		var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
+		if(AR.pockets && AR.pockets.contents.len)
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
+			return FALSE
+	//Marine helmet handling
+	else if(istype(item_to_stock, /obj/item/clothing/head/helmet/marine))
+		var/obj/item/clothing/head/helmet/marine/H = item_to_stock
+		if(H.pockets && H.pockets.contents.len)
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
+			return FALSE
+	return TRUE //Item IS good to restock!
+
 //------------MAINTENANCE PROCS---------------
 
-/obj/structure/machinery/cm_vending/proc/malfunction()	//proper malfunction, that requires MAINTenance
+/obj/structure/machinery/cm_vending/proc/malfunction() //proper malfunction, that requires MAINTenance
 	if(stat & MAINT)
 		return
 	stat &= ~WORKING
 	stat |= (BROKEN|MAINT)
 	update_icon()
 
-/obj/structure/machinery/cm_vending/proc/tip_over()		//tipping over, flipping back is enough, unless vendor was broken before being tipped over
+/obj/structure/machinery/cm_vending/proc/tip_over() //tipping over, flipping back is enough, unless vendor was broken before being tipped over
 	stat |= TIPPED_OVER
 	density = FALSE
 	if(!(stat & MAINT))
@@ -177,12 +331,12 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/structure/machinery/cm_vending/proc/flip_back()
 	density = TRUE
 	stat &= ~TIPPED_OVER
-	if(!(stat & MAINT))		//we fix vendor only if it was tipped over while working. No magic fixing of broken and then tipped over vendors.
+	if(!(stat & MAINT)) //we fix vendor only if it was tipped over while working. No magic fixing of broken and then tipped over vendors.
 		stat &= ~BROKEN
 		stat |= WORKING
 	update_icon()
 
-/obj/structure/machinery/cm_vending/get_repair_move_text(var/include_name = TRUE)
+/obj/structure/machinery/cm_vending/get_repair_move_text(include_name = TRUE)
 	if(!stat)
 		return
 
@@ -204,7 +358,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 //------------INTERACTION PROCS---------------
 
-/obj/structure/machinery/cm_vending/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/cm_vending/attack_alien(mob/living/carbon/xenomorph/M)
 	if(stat & TIPPED_OVER || indestructible)
 		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
 		return XENO_NO_DELAY_ACTION
@@ -231,7 +385,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	var/shove_time = 80
 	if(M.mob_size >= MOB_SIZE_BIG)
 		shove_time = 30
-	if(istype(M,/mob/living/carbon/Xenomorph/Crusher))
+	if(istype(M,/mob/living/carbon/xenomorph/crusher))
 		shove_time = 15
 
 	xeno_attack_delay(M) //Adds delay here and returns nothing because otherwise it'd cause lag *after* finishing the shove.
@@ -374,15 +528,16 @@ GLOBAL_LIST_EMPTY(vending_products)
 			else
 				// if vendor has no costs and is inventory limited
 				var/inventory_count = itemspec[2]
-				if(inventory_count <= 0)	//to avoid dropping more than one product when there's
+				if(inventory_count <= 0) //to avoid dropping more than one product when there's
 					to_chat(usr, SPAN_WARNING("[itemspec[1]] is out of stock."))
 					vend_fail()
-					return TRUE		// one left and the player spam click during a lagspike.
+					return TRUE // one left and the player spam click during a lagspike.
 
 			vendor_successful_vend(src, itemspec, user)
+			return TRUE
 	add_fingerprint(user)
 
-/obj/structure/machinery/cm_vending/proc/handle_points(var/mob/living/carbon/human/user, var/list/itemspec)
+/obj/structure/machinery/cm_vending/proc/handle_points(mob/living/carbon/human/user, list/itemspec)
 	. = TRUE
 	var/cost = itemspec[2]
 	if(instanced_vendor_points)
@@ -533,10 +688,10 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	..()
 
-/obj/structure/machinery/cm_vending/proc/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/proc/get_listed_products(mob/user)
 	return listed_products
 
-/obj/structure/machinery/cm_vending/proc/can_access_to_vend(mob/user, var/display=TRUE)
+/obj/structure/machinery/cm_vending/proc/can_access_to_vend(mob/user, display=TRUE)
 	if(!hacked)
 		if(!allowed(user))
 			if(display)
@@ -583,7 +738,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	.["vendor_type"] = "base"
 	.["theme"] = vendor_theme
 	if(vend_flags & VEND_FACTION_THEMES)
-		.["theme"] = VENDOR_THEME_COMPANY	//for potential future PMC version
+		.["theme"] = VENDOR_THEME_COMPANY //for potential future PMC version
 		var/mob/living/carbon/human/human = user
 		switch(human.faction)
 			if(FACTION_UPP)
@@ -601,7 +756,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/structure/machinery/cm_vending/gear
 	name = "ColMarTech Automated Gear Rack"
 	desc = "An automated equipment rack hooked up to a colossal storage of standard-issue gear."
-	icon_state = "gear_rack"
+	icon_state = "gear"
 	use_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
 	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_TO_HAND
@@ -635,16 +790,17 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/structure/machinery/cm_vending/sorted
 	name = "\improper ColMarTech generic sorted rack/vendor"
 	desc = "This is pure vendor without points system."
-	icon_state = "guns_rack"
+	icon_state = "guns"
 	vendor_theme = VENDOR_THEME_USCM
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
+	show_points = FALSE
 
 	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
 	var/list/corresponding_types_list
 
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
-	populate_product_list(1.2)
+	populate_product_list_and_boxes(1.2)
 	cm_build_inventory(get_listed_products(), 1, 3)
 	corresponding_types_list = GLOB.cm_vending_gear_corresponding_types_list
 	GLOB.cm_vending_vendors += src
@@ -654,15 +810,39 @@ GLOBAL_LIST_EMPTY(vending_products)
 	return ..()
 
 //this proc, well, populates product list based on roundstart amount of players
-/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list_and_boxes(scale)
+	populate_product_list(scale)
+	if(vend_flags & VEND_LOAD_AMMO_BOXES)
+		populate_ammo_boxes()
 	return
+
+//this proc, well, populates product list based on roundstart amount of players
+/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(scale)
+	return
+
+/obj/structure/machinery/cm_vending/sorted/proc/populate_ammo_boxes()
+	var/list/tmp_list = list()
+	for(var/list/L as anything in listed_products)
+		if(!L[3])
+			continue
+		var/datum/item_to_multiple_box_pairing/IMBP = GLOB.item_to_box_mapping.get_item_to_box_mapping(L[3])
+		if(!IMBP)
+			continue
+		for(var/datum/item_box_pairing/IBP as anything in IMBP.item_box_pairings)
+			tmp_list += list(list(initial(IBP.box.name), round(L[2] / IBP.items_in_box), IBP.box, VENDOR_ITEM_REGULAR))
+
+	//Putting Ammo and other boxes on the bottom of the list as per player preferences
+	if(tmp_list.len > 0)
+		listed_products += list(list("BOXES", -1, null, null))
+		for(var/list/L as anything in tmp_list)
+			listed_products += list(L)
 
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
 	. = ..(user)
 	.["vendor_type"] = "sorted"
 	.["displayed_categories"] = vendor_user_inventory_list(src, user, null, 4)
 
-/obj/structure/machinery/cm_vending/sorted/MouseDrop_T(var/atom/movable/A, mob/user)
+/obj/structure/machinery/cm_vending/sorted/MouseDrop_T(atom/movable/A, mob/user)
 
 	if(inoperable())
 		return
@@ -711,23 +891,23 @@ GLOBAL_LIST_EMPTY(vending_products)
 			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
 			SPAN_NOTICE("You stock [src] with \a [R[1]]."))
 			R[2]++
+			update_derived_ammo_and_boxes_on_add(R)
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
 //sending an /empty ammo box type path here will return corresponding regular (full) type of this box
 //if there is one set in corresponding_box_types or will return FALSE otherwise
-/obj/structure/machinery/cm_vending/sorted/proc/return_corresponding_type(var/unusual_path)
+/obj/structure/machinery/cm_vending/sorted/proc/return_corresponding_type(unusual_path)
 	if(corresponding_types_list.Find(unusual_path))
 		return corresponding_types_list[unusual_path]
 	return
-
 
 //------------GEAR VENDORS---------------
 //For vendors with their own points available
 /obj/structure/machinery/cm_vending/own_points
 	name = "\improper ColMarTech generic vendor"
 	desc = "This is a vendor with its own points system."
-	icon_state = "guns_rack"
+	icon_state = "gear"
 	vendor_theme = VENDOR_THEME_USCM
 	use_points = TRUE
 	use_snowflake_points = FALSE
@@ -757,6 +937,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 //same thing, but spawns only 1 item from the list
 /obj/effect/essentials_set/random/New(loc)
+	if(!spawned_gear_list)
+		return
+
 	var/typepath = pick(spawned_gear_list)
 	if(ispath(typepath, /obj/item/weapon/gun))
 		new typepath(loc, TRUE)
@@ -783,6 +966,10 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		/obj/item/ammo_box/magazine/m39/ap/empty = /obj/item/ammo_box/magazine/m39/ap,
 		/obj/item/ammo_box/magazine/m39/incen/empty = /obj/item/ammo_box/magazine/m39/incen,
 		/obj/item/ammo_box/magazine/m39/le/empty = /obj/item/ammo_box/magazine/m39/le,
+
+		/obj/item/ammo_box/magazine/m4ra/empty = /obj/item/ammo_box/magazine/m4ra,
+		/obj/item/ammo_box/magazine/m4ra/ap/empty = /obj/item/ammo_box/magazine/m4ra/ap,
+		/obj/item/ammo_box/magazine/m4ra/incen/empty = /obj/item/ammo_box/magazine/m4ra/incen,
 
 		/obj/item/ammo_box/magazine/l42a/empty = /obj/item/ammo_box/magazine/l42a,
 		/obj/item/ammo_box/magazine/l42a/ap/empty = /obj/item/ammo_box/magazine/l42a/ap,
@@ -858,28 +1045,28 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 
 //---helper procs
 
-proc/vendor_user_inventory_list(var/vendor, mob/user, var/cost_index=2, var/priority_index=5)
+/proc/vendor_user_inventory_list(vendor, mob/user, cost_index=2, priority_index=5)
 	. = list()
 	// default list format
-	//	(
-	// 		name: str
-	//		cost
-	//		item reference
-	//		allowed to buy flag
-	//		item priority (mandatory/recommended/regular)
-	//	)
+	// (
+	// name: str
+	// cost
+	// item reference
+	// allowed to buy flag
+	// item priority (mandatory/recommended/regular)
+	// )
 	var/obj/structure/machinery/cm_vending/vending_machine = vendor
 	var/list/ui_listed_products = vending_machine.get_listed_products(user)
 
 	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
 
-		var/p_name = myprod[1]					//taking it's name
+		var/p_name = myprod[1] //taking it's name
 		var/p_cost = cost_index == null ? 0 : myprod[cost_index]
-		var/item_ref = myprod[3]
+		var/obj/item/item_ref = myprod[3]
 		var/priority = myprod[priority_index]
-
-		var/obj/item/I = item_ref
+		if(islist(item_ref)) // multi-vending
+			item_ref = item_ref[1]
 
 		var/is_category = item_ref == null
 
@@ -890,7 +1077,7 @@ proc/vendor_user_inventory_list(var/vendor, mob/user, var/cost_index=2, var/prio
 			"prod_index" = i,
 			"prod_name" = p_name,
 			"prod_color" = priority,
-			"prod_desc" = initial(I.desc),
+			"prod_desc" = initial(item_ref.desc),
 			"prod_cost" = p_cost,
 			"image" = imgid
 		)
@@ -911,121 +1098,85 @@ proc/vendor_user_inventory_list(var/vendor, mob/user, var/cost_index=2, var/prio
 		var/last_category = .[last_index]
 		last_category["items"] += list(display_item)
 
-proc/vendor_inventory_ui_data(var/vendor, mob/user)
+/proc/vendor_inventory_ui_data(vendor, mob/user)
 	. = list()
 	var/obj/structure/machinery/cm_vending/vending_machine = vendor
 	var/list/ui_listed_products = vending_machine.get_listed_products(user)
 	var/list/ui_categories = list()
 
 	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
-		var/p_amount = myprod[2]				//amount left
+		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
+		var/p_amount = myprod[2] //amount left
 		ui_categories += list(p_amount)
 	.["stock_listing"] = ui_categories
 
-proc/vendor_user_ui_data(var/obj/structure/machinery/cm_vending/vending_machine, mob/user)
+/proc/vendor_user_ui_data(obj/structure/machinery/cm_vending/vending_machine, mob/user)
 	if(vending_machine.vend_flags & VEND_LIMITED_INVENTORY)
 		return vendor_inventory_ui_data(vending_machine, user)
 
 	. = list()
 	var/list/ui_listed_products = vending_machine.get_listed_products(user)
 	// list format
-	//	(
-	// 		name: str
-	//		cost
-	//		item reference
-	//		allowed to buy flag
-	//		item priority (mandatory/recommended/regular)
-	//	)
+	// (
+	// name: str
+	// cost
+	// item reference
+	// allowed to buy flag
+	// item priority (mandatory/recommended/regular)
+	// )
 
 	var/list/stock_values = list()
 
-	var/mob/living/carbon/human/H = user
-	var/buy_flags = H.marine_buy_flags
+	var/mob/living/carbon/human/marine = user
 	var/points = 0
 
 	if(vending_machine.instanced_vendor_points)
 		points = vending_machine.available_points_to_display
 	else
 		if(vending_machine.use_snowflake_points)
-			points = H.marine_snowflake_points
+			points = marine.marine_snowflake_points
 		else if(vending_machine.use_points)
-			points = H.marine_points
+			points = marine.marine_points
 
 	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
 		var/prod_available = FALSE
 		var/p_cost = myprod[2]
-		var/avail_flag = myprod[4]
-		if(points >= p_cost && (!avail_flag || buy_flags & avail_flag))
+		var/category = myprod[4]
+		if(points >= p_cost && (!category || ((category in marine.marine_buyable_categories) && (marine.marine_buyable_categories[category]))))
 			prod_available = TRUE
 		stock_values += list(prod_available)
 
 	.["stock_listing"] = stock_values
 	.["current_m_points"] = points
 
-proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/itemspec, var/mob/living/carbon/human/user)
+/proc/vendor_successful_vend(obj/structure/machinery/cm_vending/vendor, list/itemspec, mob/living/carbon/human/user)
 	if(vendor.stat & IN_USE)
 		return
 	vendor.stat |= IN_USE
 
 	var/vend_flags = vendor.vend_flags
-
 	var/turf/target_turf = vendor.get_appropriate_vend_turf(user)
-	if(LAZYLEN(itemspec))	//making sure it's not empty
+	if(LAZYLEN(itemspec)) //making sure it's not empty
 		if(vendor.vend_delay)
 			vendor.overlays.Cut()
 			vendor.icon_state = "[initial(vendor.icon_state)]_vend"
 			if(vendor.vend_sound)
-				playsound(vendor.loc, vendor.vend_sound, 25, 1, 2)	//heard only near vendor
+				playsound(vendor.loc, vendor.vend_sound, 25, 1, 2) //heard only near vendor
 			sleep(vendor.vend_delay)
 
 		var/prod_type = itemspec[3]
-
-		var/obj/item/new_item
-		if(ispath(prod_type, /obj/item))
-			if(ispath(prod_type, /obj/item/weapon/gun))
-				new_item = new prod_type(target_turf, TRUE)
-			else
-				if(prod_type == /obj/item/device/radio/headset/almayer/marine)
-					prod_type = vendor.headset_type
-				else if(prod_type == /obj/item/clothing/gloves/marine)
-					prod_type = vendor.gloves_type
-				new_item = new prod_type(target_turf)
-			new_item.add_fingerprint(user)
+		if(islist(prod_type))
+			for(var/each_type in prod_type)
+				vendor_successful_vend_one(vendor, each_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM)
 		else
-			new_item = new prod_type(target_turf)
+			vendor_successful_vend_one(vendor, prod_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM)
 
 		if(vend_flags & VEND_LIMITED_INVENTORY)
 			itemspec[2]--
+			if(vend_flags & VEND_LOAD_AMMO_BOXES)
+				vendor.update_derived_ammo_and_boxes(itemspec)
 
-		if(vend_flags & VEND_UNIFORM_RANKS)
-			// apply ranks to clothing
-			var/bitf = itemspec[4]
-			if(bitf)
-				if(bitf == MARINE_CAN_BUY_UNIFORM)
-					var/obj/item/clothing/under/underclothes = new_item
-					//Gives ranks to the ranked
-					if(user.wear_id && user.wear_id.paygrade)
-						var/rankpath = get_rank_pins(user.wear_id.paygrade)
-						if(rankpath)
-							var/obj/item/clothing/accessory/ranks/rank_insignia = new rankpath()
-							underclothes.attach_accessory(user, rank_insignia)
-
-		if(vend_flags & VEND_UNIFORM_AUTOEQUIP)
-			// autoequip
-			if(istype(new_item, /obj/item) && new_item.flags_equip_slot != NO_FLAGS)	//auto-equipping feature here
-				if(new_item.flags_equip_slot == SLOT_ACCESSORY)
-					if(user.w_uniform)
-						var/obj/item/clothing/clothing = user.w_uniform
-						if(clothing.can_attach_accessory(new_item))
-							clothing.attach_accessory(user, new_item)
-				else
-					user.equip_to_appropriate_slot(new_item)
-
-		if(vend_flags & VEND_TO_HAND)
-			if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
-				user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
 	else
 		to_chat(user, SPAN_WARNING("ERROR: itemspec is missing. Please report this to admins."))
 		sleep(15)
@@ -1033,29 +1184,87 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 	vendor.stat &= ~IN_USE
 	vendor.update_icon()
 
-proc/handle_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/listed_products, var/mob/living/carbon/human/vending_human)
+/proc/vendor_successful_vend_one(obj/structure/machinery/cm_vending/vendor, prod_type, mob/living/carbon/human/user, turf/target_turf, insignas_override)
+	var/obj/item/new_item
+	var/vend_flags = vendor.vend_flags
+	if(ispath(prod_type, /obj/item))
+		if(ispath(prod_type, /obj/item/weapon/gun))
+			new_item = new prod_type(target_turf, TRUE)
+		else
+			if(prod_type == /obj/item/device/radio/headset/almayer/marine)
+				prod_type = vendor.headset_type
+			else if(prod_type == /obj/item/clothing/gloves/marine)
+				prod_type = vendor.gloves_type
+			new_item = new prod_type(target_turf)
+		new_item.add_fingerprint(user)
+	else
+		new_item = new prod_type(target_turf)
+
+	if(vend_flags & VEND_UNIFORM_RANKS)
+		if(insignas_override)
+			var/obj/item/clothing/under/underclothes = new_item
+			//Gives ranks to the ranked
+			if(istype(underclothes) && user.wear_id && user.wear_id.paygrade)
+				var/rankpath = get_rank_pins(user.wear_id.paygrade)
+				if(rankpath)
+					var/obj/item/clothing/accessory/ranks/rank_insignia = new rankpath()
+					underclothes.attach_accessory(user, rank_insignia)
+
+	if(vend_flags & VEND_UNIFORM_AUTOEQUIP)
+		// autoequip
+		if(istype(new_item, /obj/item) && new_item.flags_equip_slot != NO_FLAGS) //auto-equipping feature here
+			if(new_item.flags_equip_slot == SLOT_ACCESSORY)
+				if(user.w_uniform)
+					var/obj/item/clothing/clothing = user.w_uniform
+					if(clothing.can_attach_accessory(new_item))
+						clothing.attach_accessory(user, new_item)
+			else
+				user.equip_to_appropriate_slot(new_item)
+
+	if(vend_flags & VEND_TO_HAND)
+		if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
+			if(vendor.Adjacent(user))
+				user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
+
+	new_item.post_vendor_spawn_hook(user)
+
+/proc/handle_vend(obj/structure/machinery/cm_vending/vendor, list/listed_products, mob/living/carbon/human/vending_human)
 	if(vendor.vend_flags & VEND_USE_VENDOR_FLAGS)
 		return TRUE
-	var/can_buy_flags = listed_products[4]
-	if(!(vending_human.marine_buy_flags & can_buy_flags))
-		return FALSE
-
-	if(can_buy_flags == (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH))
-		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_R_POUCH)
-			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_R_POUCH
-		else
-			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_L_POUCH
-		return TRUE
-	if(can_buy_flags == (MARINE_CAN_BUY_COMBAT_R_POUCH|MARINE_CAN_BUY_COMBAT_L_POUCH))
-		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_COMBAT_R_POUCH)
-			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_R_POUCH
-		else
-			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_L_POUCH
-		return TRUE
-
-	vending_human.marine_buy_flags &= ~can_buy_flags
+	var/buying_category = listed_products[4]
+	if(buying_category)
+		if(!(buying_category in vending_human.marine_buyable_categories))
+			return FALSE
+		if(!vending_human.marine_buyable_categories[buying_category])
+			return FALSE
+		vending_human.marine_buyable_categories[buying_category] -= 1
 	return TRUE
 
+// Unload ALL the items throwing them around randomly, optionally destroying the vendor
+/obj/structure/machinery/cm_vending/proc/catastrophic_failure(throw_objects = TRUE, destroy = FALSE)
+	stat |= IN_USE
+	var/list/products = get_listed_products()
+	var/i = 1
+	while(i <= length(products))
+		sleep(0.5)
+		var/list/itemspec = products[i]
+		if(!itemspec[2] || itemspec[2] <= 0)
+			i++
+			continue
+		itemspec[2] -= 1
+		var/list/spawned = list()
+		if(islist(itemspec[3]))
+			for(var/path in itemspec[3])
+				spawned += new path(loc)
+		else if(itemspec[3])
+			var/path = itemspec[3]
+			spawned += new path(loc)
+		if(throw_objects)
+			for(var/atom/movable/spawned_atom in spawned)
+				INVOKE_ASYNC(spawned_atom, TYPE_PROC_REF(/atom/movable, throw_atom), pick(orange(src, 4)), 4, SPEED_FAST)
+	stat &= ~IN_USE
+	if(destroy)
+		qdel(src)
 
 //------------HACKING---------------
 
@@ -1063,16 +1272,16 @@ proc/handle_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/listed_
 /*
 /obj/structure/machinery/vending/proc/get_wire_descriptions()
 	return list(
-		VENDING_WIRE_EXTEND    = "Inventory control computer",
-		VENDING_WIRE_IDSCAN    = "ID scanner",
-		VENDING_WIRE_SHOCK     = "Ground safety",
+		VENDING_WIRE_EXTEND = "Inventory control computer",
+		VENDING_WIRE_IDSCAN = "ID scanner",
+		VENDING_WIRE_SHOCK  = "Ground safety",
 		VENDING_WIRE_SHOOT_INV = "Dispenser motor control"
 	)
 
-/obj/structure/machinery/vending/proc/isWireCut(var/wire)
+/obj/structure/machinery/vending/proc/isWireCut(wire)
 	return !(wires & getWireFlag(wire))
 
-/obj/structure/machinery/vending/proc/cut(var/wire)
+/obj/structure/machinery/vending/proc/cut(wire)
 	wires ^= getWireFlag(wire)
 
 	switch(wire)
@@ -1087,7 +1296,7 @@ proc/handle_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/listed_
 				src.shoot_inventory = TRUE
 				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
 
-/obj/structure/machinery/vending/proc/mend(var/wire)
+/obj/structure/machinery/vending/proc/mend(wire)
 	wires |= getWireFlag(wire)
 
 	switch(wire)
@@ -1100,7 +1309,7 @@ proc/handle_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/listed_
 			src.shoot_inventory = FALSE
 			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
 
-/obj/structure/machinery/vending/proc/pulse(var/wire)
+/obj/structure/machinery/vending/proc/pulse(wire)
 	switch(wire)
 		if(VENDING_WIRE_EXTEND)
 			src.extended_inventory = !src.extended_inventory

@@ -10,7 +10,7 @@
 	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -23,7 +23,7 @@
 		/obj/item/weapon/gun/,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
-		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/baton,
 		/obj/item/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
@@ -81,6 +81,14 @@
 	has_buttons = TRUE
 	icon_state = "coat_officer"
 
+/obj/item/clothing/suit/storage/jacket/marine/pilot
+	name = "\improper M70B1 light flak jacket"
+	desc = "A light flak jacket used by dropship pilots to protect themselves while flying in the cockpit. This specific flak jacket has been designed for style and comfort over protection, and it shows. Don't get hit by any stray bullets!"
+	icon_state = "pilot_alt"
+	has_buttons = TRUE
+	flags_atom = NO_SNOW_TYPE
+	initial_icon_state = "pilot_alt"
+
 /obj/item/clothing/suit/storage/jacket/marine/service/mp
 	name = "military police service jacket"
 	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments to use full armor, making these barely used by on duty MPs. This variant is also available to regular Marines, if they are willing to bear the shame."
@@ -129,7 +137,7 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/dress
 	name = "marine dress jacket"
-	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
+	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy, but it still gives off that unga vibe."
 	icon_state = "marine_formal"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -257,3 +265,13 @@
 	desc = "The jacket of the legendary Marine dress blues, virtually unchanged since the 19th century. Features the sleek dark design of the uniform worn by a commissioned officer."
 	icon_state = "o_jacket"
 	item_state = "o_jacket"
+
+//==================War Correspondent==================\\
+
+/obj/item/clothing/suit/storage/jacket/marine/reporter
+	name = "combat correspondent jacket"
+	desc = "A jacket for the most fashionable war correspondents."
+	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
+	icon_state = "wc_suit"
+	item_state = "wc_suit"
+	contained_sprite = TRUE

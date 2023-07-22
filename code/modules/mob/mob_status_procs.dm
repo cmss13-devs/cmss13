@@ -10,7 +10,7 @@
 
 /mob/proc/stun_callback_check()
 	if(stunned && stunned < recovery_constant)
-		stun_timer = addtimer(CALLBACK(src, .proc/stun_callback), (stunned/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+		stun_timer = addtimer(CALLBACK(src, PROC_REF(stun_callback)), (stunned/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 		return
 
 	if(stun_timer != TIMER_ID_NULL)
@@ -97,7 +97,7 @@
 
 /mob/proc/knocked_down_callback_check()
 	if(knocked_down && knocked_down < recovery_constant)
-		knocked_down_timer = addtimer(CALLBACK(src, .proc/knocked_down_callback), (knocked_down/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) // times whatever amount we have per tick
+		knocked_down_timer = addtimer(CALLBACK(src, PROC_REF(knocked_down_callback)), (knocked_down/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) // times whatever amount we have per tick
 		return
 
 	if(knocked_down_timer)
@@ -105,6 +105,9 @@
 	knocked_down_timer = null
 
 /mob/var/knocked_out_timer
+
+/mob/proc/knocked_out_start()
+	return
 
 /mob/proc/knocked_out_callback()
 	knocked_out = 0
@@ -114,7 +117,8 @@
 
 /mob/proc/knocked_out_callback_check()
 	if(knocked_out && knocked_out < recovery_constant)
-		knocked_out_timer = addtimer(CALLBACK(src, .proc/knocked_out_callback), (knocked_out/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) // times whatever amount we have per tick
+		knocked_out_start()
+		knocked_out_timer = addtimer(CALLBACK(src, PROC_REF(knocked_out_callback)), (knocked_out/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) // times whatever amount we have per tick
 		return
 	else if(!knocked_out)
 		//It's been called, and we're probably inconscious, so fix that.
@@ -133,7 +137,7 @@
 		knocked_down = max(max(knocked_down,amount),0)
 		knockdown_clock_adjustment()
 		knocked_down_callback_check()
-		update_canmove()	//updates lying, canmove and icons
+		update_canmove() //updates lying, canmove and icons
 	return
 
 /mob/proc/SetKnockDown(amount)
@@ -141,14 +145,14 @@
 		knocked_down = max(amount,0)
 		knockdown_clock_adjustment()
 		knocked_down_callback_check()
-		update_canmove()	//updates lying, canmove and icons
+		update_canmove() //updates lying, canmove and icons
 	return
 
 /mob/proc/AdjustKnockDown(amount)
 	if(status_flags & CANKNOCKDOWN)
 		knocked_down = max(knocked_down + amount,0)
 		knocked_down_callback_check()
-		update_canmove()	//updates lying, canmove and icons
+		update_canmove() //updates lying, canmove and icons
 	return
 
 /mob/proc/knockout_clock_adjustment()
@@ -159,7 +163,7 @@
 		knocked_out = max(max(knocked_out,amount),0)
 		knockout_clock_adjustment()
 		knocked_out_callback_check()
-		update_canmove()	//updates lying, canmove and icons
+		update_canmove() //updates lying, canmove and icons
 	return
 
 /mob/proc/SetKnockOut(amount)
@@ -167,14 +171,14 @@
 		knocked_out = max(amount,0)
 		knockout_clock_adjustment()
 		knocked_out_callback_check()
-		update_canmove()	//updates lying, canmove and icons
+		update_canmove() //updates lying, canmove and icons
 	return
 
 /mob/proc/AdjustKnockOut(amount)
 	if(status_flags & CANKNOCKOUT)
 		knocked_out = max(knocked_out + amount,0)
 		knocked_out_callback_check()
-		update_canmove()	//updates lying, canmove and icons
+		update_canmove() //updates lying, canmove and icons
 	return
 
 /mob/proc/Sleeping(amount)
@@ -203,15 +207,43 @@
 
 /mob/proc/EyeBlur(amount)
 	eye_blurry = max(max(eye_blurry, amount), 0)
+	update_eye_blur()
 	return
 
 /mob/proc/SetEyeBlur(amount)
 	eye_blurry = max(amount, 0)
+	update_eye_blur()
 	return
 
 /mob/proc/AdjustEyeBlur(amount)
 	eye_blurry = max(eye_blurry + amount, 0)
+	update_eye_blur()
 	return
+
+/mob/proc/ReduceEyeBlur(amount)
+	eye_blurry = max(eye_blurry - amount, 0)
+	update_eye_blur()
+	return
+
+///Apply the blurry overlays to a mobs clients screen
+/mob/proc/update_eye_blur()
+	if(!client)
+		return
+	var/atom/movable/plane_master_controller/game_plane_master_controller = hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
+
+	if(!eye_blurry)
+		clear_fullscreen("eye_blur", 0.5 SECONDS)
+		game_plane_master_controller.remove_filter("eye_blur")
+		return
+
+	switch(client.prefs?.pain_overlay_pref_level)
+		if(PAIN_OVERLAY_IMPAIR)
+			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/impaired, CEILING(clamp(eye_blurry * 0.3, 1, 6), 1))
+		if(PAIN_OVERLAY_LEGACY)
+			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/blurry)
+		else // PAIN_OVERLAY_BLURRY
+			game_plane_master_controller.add_filter("eye_blur", 1, gauss_blur_filter(clamp(eye_blurry * 0.1, 0.6, 3)))
+
 
 /mob/proc/TalkStutter(amount)
 	stuttering = max(max(stuttering, amount), 0)
@@ -223,6 +255,18 @@
 
 /mob/proc/AdjustTalkStutter(amount)
 	stuttering = max(stuttering + amount,0)
+	return
+
+/mob/proc/SetEyeBlind(amount)
+	eye_blind = max(amount, 0)
+	return
+
+/mob/proc/AdjustEyeBlind(amount)
+	eye_blind = max(eye_blind + amount, 0)
+	return
+
+/mob/proc/ReduceEyeBlind(amount)
+	eye_blind = max(eye_blind - amount, 0)
 	return
 
 /mob/proc/AdjustEarDeafness(amount)

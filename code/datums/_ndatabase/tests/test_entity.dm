@@ -9,14 +9,14 @@
 	field_types = list("name"=DB_FIELDTYPE_STRING_MEDIUM, "description"=DB_FIELDTYPE_STRING_MAX, "value"=DB_FIELDTYPE_BIGINT)
 
 // redefine this for faster operations
-/datum/entity_meta/test_entity/map(var/datum/entity/test_entity/ET, var/list/values)
+/datum/entity_meta/test_entity/map(datum/entity/test_entity/ET, list/values)
 	ET.id = text2num(values[DB_DEFAULT_ID_FIELD])
 	ET.name = values["name"]
 	ET.description = values["description"]
 	ET.value = text2num(values["value"])
 
 // redefine this for faster operations
-/datum/entity_meta/test_entity/unmap(var/datum/entity/test_entity/ET, include_id = TRUE)
+/datum/entity_meta/test_entity/unmap(datum/entity/test_entity/ET, include_id = TRUE)
 	var/list/values = list()
 	if(include_id)
 		values[DB_DEFAULT_ID_FIELD] = ET.id
@@ -27,7 +27,7 @@
 
 /proc/test_read(id)
 	var/datum/entity/test_entity/ET = SSentity_manager.select(/datum/entity/test_entity, id)
-	ET.sync_then(CALLBACK(GLOBAL_PROC, /proc/log_sync))
+	ET.sync_then(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(log_sync)))
 
 /proc/test_insert(name, desc, value)
 	var/datum/entity/test_entity/ET = SSentity_manager.select(/datum/entity/test_entity)
@@ -47,10 +47,10 @@
 	ET.delete()
 
 /proc/test_filter(value)
-	SSentity_manager.filter_then(/datum/entity/test_entity, DB_COMP("value", DB_EQUALS, value), CALLBACK(GLOBAL_PROC, /proc/log_filter))
+	SSentity_manager.filter_then(/datum/entity/test_entity, DB_COMP("value", DB_EQUALS, value), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(log_filter)))
 
-/proc/log_filter(var/list/datum/entity/elist)
+/proc/log_filter(list/datum/entity/elist)
 	to_world("got [elist.len] items")
 
-/proc/log_sync(var/datum/entity/test_entity/ET)
+/proc/log_sync(datum/entity/test_entity/ET)
 	to_world("id:[ET.id] = name: [ET.name], description: [ET.description], value: [ET.value]")

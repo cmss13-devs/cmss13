@@ -43,7 +43,7 @@
 	if(admin_holder && ((R_ADMIN & admin_holder.rights) || (R_MOD & admin_holder.rights)))
 		for(var/client/C in GLOB.clients)
 			var/entry = "[C.key]"
-			if(C.mob)	//Juuuust in case
+			if(C.mob) //Juuuust in case
 				if(istype(C.mob, /mob/new_player))
 					entry += " - In Lobby"
 					counted_humanoids["Lobby"]++
@@ -87,8 +87,8 @@
 										counted_humanoids["USCM Marines"]++
 								else
 									counted_humanoids[C.mob.faction]++
-						else if(isXeno(C.mob))
-							var/mob/living/carbon/Xenomorph/X = C.mob
+						else if(isxeno(C.mob))
+							var/mob/living/carbon/xenomorph/X = C.mob
 							counted_xenos[X.hivenumber]++
 							if(X.faction == FACTION_PREDALIEN)
 								counted_xenos[FACTION_PREDALIEN]++
@@ -158,7 +158,7 @@
 	var/dat = ""
 	var/list/mappings
 	if(CONFIG_GET(flag/show_manager))
-		LAZYSET(mappings, "<B style='color:purple'>Management</B>", R_HOST)
+		LAZYSET(mappings, "<B style='color:purple'>Management</B>", R_PERMISSIONS)
 	if(CONFIG_GET(flag/show_devs))
 		LAZYSET(mappings, "<B style='color:blue'>Maintainers</B>", R_PROFILER)
 	LAZYSET(mappings, "<B style='color:red'>Admins</B>", R_ADMIN)

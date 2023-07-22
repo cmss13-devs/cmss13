@@ -7,7 +7,7 @@
 SUBSYSTEM_DEF(html_ui)
 	name = "HTMLUI"
 	wait = 1.7 SECONDS
-	flags = SS_NO_INIT | SS_NO_TICK_CHECK
+	flags = SS_NO_INIT
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	var/list/update = list()
 

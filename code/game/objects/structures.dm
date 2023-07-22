@@ -1,6 +1,6 @@
-#define	CLIMB_DELAY_SHORT		0.2 SECONDS
-#define	CLIMB_DELAY_MEDIUM		1 SECONDS
-#define CLIMB_DELAY_LONG		2 SECONDS
+#define CLIMB_DELAY_SHORT 0.2 SECONDS
+#define CLIMB_DELAY_MEDIUM 1 SECONDS
+#define CLIMB_DELAY_LONG 2 SECONDS
 
 /obj/structure
 	icon = 'icons/obj/structures/structures.dmi'
@@ -11,7 +11,7 @@
 	var/unslashable = FALSE
 	var/wrenchable = FALSE
 	health = 100
-	anchored = 1
+	anchored = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	can_block_movement = TRUE
 
@@ -84,7 +84,7 @@
 
 	do_climb(target)
 
-/obj/structure/proc/can_climb(var/mob/living/user)
+/obj/structure/proc/can_climb(mob/living/user)
 	if(!climbable || !can_touch(user))
 		return FALSE
 
@@ -108,7 +108,7 @@
 
 	return TRUE
 
-/obj/structure/proc/do_climb(var/mob/living/user, mods)
+/obj/structure/proc/do_climb(mob/living/user, mods)
 	if(!can_climb(user))
 		return
 
@@ -138,7 +138,13 @@
 			climb_string = "[user] tactically vaults over \the [src]!"
 	user.visible_message(SPAN_WARNING(climb_string))
 
+	var/list/grabbed_things = list()
+	for(var/obj/item/grab/grabbing in list(user.l_hand, user.r_hand))
+		grabbed_things += grabbing.grabbed_thing
+		grabbing.grabbed_thing.forceMove(user.loc)
 	user.forceMove(TT)
+	for(var/atom/movable/thing as anything in grabbed_things) // grabbed things aren't moved to the tile immediately to: make the animation better, preserve the grab
+		thing.forceMove(TT)
 
 /obj/structure/proc/structure_shaken()
 

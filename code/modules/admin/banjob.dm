@@ -7,8 +7,8 @@ won't recognize the older one, as an example.
 
 */
 
-var/jobban_runonce			// Updates legacy bans with new info
-var/jobban_keylist[0]		//to store the keys & ranks
+var/jobban_runonce // Updates legacy bans with new info
+var/jobban_keylist[0] //to store the keys & ranks
 
 /proc/check_jobban_path(X)
 	. = ckey(X)
@@ -26,7 +26,7 @@ var/jobban_keylist[0]		//to store the keys & ranks
 	jobban_keylist[rank][ckey] = "Reason Unspecified"
 
 //returns a reason if M is banned from rank, returns 0 otherwise
-/proc/jobban_isbanned(mob/M, rank, var/datum/entity/player/P = null)
+/proc/jobban_isbanned(mob/M, rank, datum/entity/player/P = null)
 	if(!rank)
 		return "Non-existant job"
 	rank = ckey(rank)
@@ -64,7 +64,7 @@ var/jobban_keylist[0]		//to store the keys & ranks
 /proc/jobban_unban(mob/M, rank)
 	jobban_remove("[M.ckey] - [ckey(rank)]")
 
-/proc/ban_unban_log_save(var/formatted_log)
+/proc/ban_unban_log_save(formatted_log)
 	text2file(formatted_log,"data/ban_unban_log.txt")
 
 /proc/jobban_remove(X)
@@ -74,19 +74,19 @@ var/jobban_keylist[0]		//to store the keys & ranks
 		L.Remove(r1.group[1])
 		return 1
 
-/client/proc/cmd_admin_job_ban(var/mob/M)
+/client/proc/cmd_admin_job_ban(mob/M)
 	if(!check_rights(R_BAN|R_MOD))
 		return
 
 	if(admin_holder)
 		admin_holder.job_ban(M)
 
-/datum/admins/proc/job_ban(var/mob/M)
+/datum/admins/proc/job_ban(mob/M)
 	if(!ismob(M))
 		to_chat(usr, "This can only be used on instances of type /mob")
 		return
 
-	if(!M.ckey)	//sanity
+	if(!M.ckey) //sanity
 		to_chat(usr, "This mob has no ckey")
 		return
 	if(!RoleAuthority)

@@ -2,7 +2,7 @@
 Contains most of the procs that are called when a mob is attacked by something
 */
 
-/mob/living/carbon/human/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone)
+/mob/living/carbon/human/stun_effect_act(stun_amount, agony_amount, def_zone)
 	var/obj/limb/affected = get_limb(check_zone(def_zone))
 	var/siemens_coeff = get_siemens_coefficient_organ(affected)
 	stun_amount *= siemens_coeff
@@ -30,7 +30,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	..(stun_amount, agony_amount, def_zone)
 
-/mob/living/carbon/human/getarmor(var/def_zone, var/type)
+/mob/living/carbon/human/getarmor(def_zone, type)
 	var/armorval = 0
 	var/total = 0
 
@@ -50,11 +50,11 @@ Contains most of the procs that are called when a mob is attacked by something
 	return (armorval/max(total, 1))
 
 //this proc returns the Siemens coefficient of electrical resistivity for a particular external organ.
-/mob/living/carbon/human/proc/get_siemens_coefficient_organ(var/obj/limb/def_zone)
+/mob/living/carbon/human/proc/get_siemens_coefficient_organ(obj/limb/def_zone)
 	if (!def_zone)
-		return 1.0
+		return 1
 
-	var/siemens_coefficient = 1.0
+	var/siemens_coefficient = 1
 
 	var/list/clothing_items = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes, glasses) // What all are we checking?
 	for(var/obj/item/clothing/C in clothing_items)
@@ -63,18 +63,23 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	return siemens_coefficient
 
-//this proc returns the armour value for a particular external organ.
-/mob/living/carbon/human/proc/getarmor_organ(var/obj/limb/def_zone, var/type)
+//this proc returns the armor value for a particular external organ.
+/mob/living/carbon/human/proc/getarmor_organ(obj/limb/def_zone, type)
 	if(!type)
 		return FALSE
 	var/protection = 0
 	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes, glasses)
 	for(var/gear in protective_gear)
-		if(gear && istype(gear ,/obj/item/clothing))
+		if(gear && istype(gear, /obj/item/clothing))
 			var/obj/item/clothing/C = gear
 			if(C.flags_armor_protection & def_zone.body_part)
 				protection += C.get_armor(type)
 	return protection
+
+/mob/living/carbon/human/get_sharp_obj_blocker(obj/limb/limb)
+	for(var/obj/item/gear in list(head, wear_mask, wear_suit, w_uniform, gloves, shoes, glasses))
+		if(HAS_FLAG(gear.flags_armor_protection, limb.body_part) && HAS_FLAG(gear.flags_inventory, BLOCKSHARPOBJ))
+			return gear
 
 /mob/living/carbon/human/proc/check_head_coverage()
 
@@ -88,10 +93,10 @@ Contains most of the procs that are called when a mob is attacked by something
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/check_shields(var/damage = 0, var/attack_text = "the attack", var/combistick=0)
+/mob/living/carbon/human/proc/check_shields(damage = 0, attack_text = "the attack", combistick=0)
 	if(l_hand && istype(l_hand, /obj/item/weapon))//Current base is the prob(50-d/3)
-		if(combistick && istype(l_hand,/obj/item/weapon/melee/yautja/combistick) && prob(66))
-			var/obj/item/weapon/melee/yautja/combistick/C = l_hand
+		if(combistick && istype(l_hand,/obj/item/weapon/yautja/combistick) && prob(66))
+			var/obj/item/weapon/yautja/combistick/C = l_hand
 			if(C.on)
 				return TRUE
 
@@ -115,8 +120,8 @@ Contains most of the procs that are called when a mob is attacked by something
 			return TRUE
 
 	if(r_hand && istype(r_hand, /obj/item/weapon))
-		if(combistick && istype(r_hand,/obj/item/weapon/melee/yautja/combistick) && prob(66))
-			var/obj/item/weapon/melee/yautja/combistick/C = r_hand
+		if(combistick && istype(r_hand,/obj/item/weapon/yautja/combistick) && prob(66))
+			var/obj/item/weapon/yautja/combistick/C = r_hand
 			if(C.on)
 				return TRUE
 
@@ -166,7 +171,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 
 //Returns 1 if the attack hit, 0 if it missed.
-/mob/living/carbon/human/proc/attacked_by(var/obj/item/I, var/mob/living/user)
+/mob/living/carbon/human/proc/attacked_by(obj/item/I, mob/living/user)
 	if(!I || !user)
 		return FALSE
 
@@ -221,7 +226,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/bloody = FALSE
 	if((I.damtype == BRUTE || I.damtype == HALLOSS) && prob(I.force*2 + 25))
 		var/color_override = (affecting.status & LIMB_ROBOT) ? COLOR_OIL : null
-		I.add_mob_blood(src, color_override)	//Make the weapon bloody, not the person.
+		I.add_mob_blood(src, color_override) //Make the weapon bloody, not the person.
 		if(prob(33))
 			bloody = TRUE
 			var/turf/location = loc
@@ -254,7 +259,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	if (I.damtype == BRUTE && !I.is_robot_module() && !(I.flags_item & (NODROP|DELONDROP)))
 		damage = I.force
 		if(damage > 40) damage = 40  //Some sanity, mostly for yautja weapons. CONSTANT STICKY ICKY
-		if (weapon_sharp && prob(3) && !isYautja(user)) // make yautja less likely to get their weapon stuck
+		if (weapon_sharp && prob(3) && !isyautja(user)) // make yautja less likely to get their weapon stuck
 			affecting.embed(I)
 
 	return TRUE
@@ -268,7 +273,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/datum/launch_metadata/LM = O.launch_metadata
 
 	//empty active hand and we're in throw mode
-	var/can_catch = (!(O.flags_atom & ITEM_UNCATCHABLE) || isYautja(src))
+	var/can_catch = (!(O.flags_atom & ITEM_UNCATCHABLE) || isyautja(src))
 	if (throw_mode && can_catch && !get_active_hand() && cur_speed <= SPEED_VERY_FAST && \
 		!is_mob_incapacitated() && isturf(O.loc) && put_in_active_hand(O)
 	)
@@ -287,12 +292,12 @@ Contains most of the procs that are called when a mob is attacked by something
 		var/mob/living/L = LM.thrower
 		zone = check_zone(L.zone_selected)
 	else
-		zone = rand_zone("chest", 75)	//Hits a random part of the body, geared towards the chest
+		zone = rand_zone("chest", 75) //Hits a random part of the body, geared towards the chest
 
 	if (!zone)
 		visible_message(SPAN_NOTICE("\The [O] misses [src] narrowly!"), null, null, 5)
 		return
-	O.throwing = FALSE		//it hit, so stop moving
+	O.throwing = FALSE //it hit, so stop moving
 
 	if ((LM.thrower != src) && check_shields(impact_damage, "[O]"))
 		return
@@ -349,7 +354,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 			//Sharp objects will always embed if they do enough damage.
 			//Thrown sharp objects have some momentum already and have a small chance to embed even if the damage is below the threshold
-			if (!isYautja(src) && ((sharp && prob(damage/(10*I.w_class)*100)) || (damage > embed_threshold && prob(embed_chance))))
+			if (!isyautja(src) && ((sharp && prob(damage/(10*I.w_class)*100)) || (damage > embed_threshold && prob(embed_chance))))
 				affecting.embed(I)
 
 /mob/living/carbon/human/proc/get_id_faction_group()
@@ -361,7 +366,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	return C.faction_group
 
-/mob/living/proc/get_target_lock(var/access_to_check)
+/mob/living/proc/get_target_lock(access_to_check)
 	if(isnull(access_to_check))
 		return
 
@@ -383,7 +388,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	if(.)
 		update_xeno_hostile_hud()
 
-/mob/living/carbon/human/get_target_lock(var/access_to_check)
+/mob/living/carbon/human/get_target_lock(access_to_check)
 	if(isnull(access_to_check))
 		return
 

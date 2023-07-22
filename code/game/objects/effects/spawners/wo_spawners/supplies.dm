@@ -16,46 +16,55 @@
 
 /obj/effect/landmark/wo_supplies/attachments/standard
 	amount = list(10,15)
-	stuff = list(/obj/item/attachable/suppressor,
-				/obj/item/attachable/bayonet,
-				/obj/item/attachable/flashlight,
-				/obj/item/attachable/attached_gun/grenade)
+	stuff = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/attached_gun/grenade,
+	)
 
 
 /obj/effect/landmark/wo_supplies/attachments/common
 	amount = list(3,7)
-	stuff = list(/obj/item/attachable/reddot,
-				/obj/item/attachable/bipod,
-				/obj/item/attachable/burstfire_assembly,
-				/obj/item/attachable/reddot,
-				/obj/item/attachable/lasersight,
-				/obj/item/attachable/extended_barrel,
-				/obj/item/attachable/compensator,
-				/obj/item/attachable/magnetic_harness)
+	stuff = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/magnetic_harness,
+	)
 
 /obj/effect/landmark/wo_supplies/attachments/scarce
 	amount = list(1,5)
-	stuff = list(/obj/item/attachable/attached_gun/shotgun,
-				/obj/item/attachable/attached_gun/flamer,
-				/obj/item/attachable/stock/revolver,
-				/obj/item/attachable/stock/smg,
-				/obj/item/attachable/stock/shotgun,
-				/obj/item/attachable/stock/rifle,
-				/obj/item/attachable/gyro,
-				/obj/item/attachable/verticalgrip,
-				/obj/item/attachable/angledgrip,
-				/obj/item/attachable/scope/mini)
+	stuff = list(
+		/obj/item/attachable/attached_gun/shotgun,
+		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/stock/revolver,
+		/obj/item/attachable/stock/smg,
+		/obj/item/attachable/stock/shotgun,
+		/obj/item/attachable/stock/rifle,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/scope/mini,
+	)
 
 /obj/effect/landmark/wo_supplies/attachments/rare
 	amount = list(0,2)
-	stuff = list(/obj/item/attachable/heavy_barrel,
-				/obj/item/attachable/scope,
-				/obj/item/attachable/gyro)
+	stuff = list(
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/gyro,
+	)
 
 
 
 /obj/effect/landmark/wo_supplies/guns
-	icon = 'icons/obj/items/weapons/guns/gun.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon_state = ""
 
 /obj/effect/landmark/wo_supplies/guns/common
 	amount = list(5,10)
@@ -73,7 +82,7 @@
 	stuff = list(/obj/item/weapon/gun/smg/m39)
 
 /obj/effect/landmark/wo_supplies/guns/common/m44
-	icon_state = "m44"
+	icon_state = "m44r"
 	stuff = list(/obj/item/weapon/gun/revolver/m44)
 
 /obj/effect/landmark/wo_supplies/guns/common/m4a3
@@ -98,6 +107,7 @@
 
 /obj/effect/landmark/wo_supplies/storage
 	icon = 'icons/obj/items/storage.dmi'
+	icon_state = null
 	amount = list(1,5)
 
 /obj/effect/landmark/wo_supplies/storage/webbing
@@ -155,7 +165,7 @@
 	stuff = list(/obj/item/storage/belt/shotgun)
 
 /obj/effect/landmark/wo_supplies/storage/belts/m44belt
-	icon_state = "m44_holster"
+	icon_state = "m44r_holster"
 	stuff = list(/obj/item/storage/belt/gun/m44)
 
 /obj/effect/landmark/wo_supplies/storage/belts/m4a3belt
@@ -170,46 +180,49 @@
 
 
 /obj/effect/landmark/wo_supplies/storage/belts/lifesaver
-	icon_state = "medicalbag"
+	icon_state = "medicbag"
 	stuff = list(/obj/item/storage/belt/medical/lifesaver/full)
 
 
 
 
 /obj/effect/landmark/wo_supplies/ammo
-	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon_state = ""
 	amount = list(1,5)
 
 /obj/effect/landmark/wo_supplies/ammo/powerpack
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/clothing/backpacks.dmi'
 	icon_state = "powerpack"
-	stuff = list(/obj/item/smartgun_powerpack)
+	stuff = list(/obj/item/smartgun_battery)
 
 /obj/effect/landmark/wo_supplies/ammo/box
+	icon = 'icons/obj/items/weapons/guns/ammo_boxes/boxes_and_lids.dmi'
+	icon_state = ""
 	amount = list(1,2)
 
 /obj/effect/landmark/wo_supplies/ammo/box/m41a
-	icon_state = "big_ammo_box"
+	icon_state = "base_m41"
 	stuff = list(/obj/item/ammo_box/rounds)
 
 /obj/effect/landmark/wo_supplies/ammo/box/smg
-	icon_state = "big_ammo_box_m39"
+	icon_state = "base_m39"
 	stuff = list(/obj/item/ammo_box/rounds/smg)
 
 /obj/effect/landmark/wo_supplies/ammo/box/m41amag
-	icon_state = "mag_box_m41"
+	icon_state = "base_m41"
 	stuff = list(/obj/item/ammo_box/magazine)
 
 /obj/effect/landmark/wo_supplies/ammo/box/slug
-	icon_state = "shell_box"
+	icon_state = "base_slug"
 	stuff = list(/obj/item/ammo_box/magazine/shotgun)
 
 /obj/effect/landmark/wo_supplies/ammo/box/buck
-	icon_state = "shell_box_buck"
+	icon_state = "base_buck"
 	stuff = list(/obj/item/ammo_box/magazine/shotgun/buckshot)
 
 /obj/effect/landmark/wo_supplies/ammo/box/smgmag
-	icon_state = "mag_box_m39"
+	icon_state = "base_m39"
 	stuff = list(/obj/item/ammo_box/magazine/m39)
 
 
@@ -218,25 +231,25 @@
 	amount = list(0,1)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aap
-	icon_state = "big_ammo_box_ap"
+	icon_state = "base_m41"
 	stuff = list(/obj/item/ammo_box/rounds/ap)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aapmag
-	icon_state = "mag_box_m41_ap"
+	icon_state = "base_m41"
 	stuff = list(/obj/item/ammo_box/magazine/ap)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aincend
-	icon_state = "mag_box_m41_incen"
+	icon_state = "base_inc"
 	stuff = list(/obj/item/ammo_box/magazine/incen)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aextend
-	icon_state = "mag_box_m41_ext"
+	icon_state = "base_m41"
 	stuff = list(/obj/item/ammo_box/magazine/ext)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/smgap
-	icon_state = "mag_box_m39_ap"
+	icon_state = "base_m39"
 	stuff = list(/obj/item/ammo_box/magazine/m39/ap)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/smgextend
-	icon_state = "mag_box_m39_ext"
+	icon_state = "base_m39"
 	stuff = list(/obj/item/ammo_box/magazine/m39/ext)

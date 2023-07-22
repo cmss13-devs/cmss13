@@ -15,15 +15,7 @@ An object that just hold x, y, and z positions coordinates
 
 
 
-/obj/effect/landmark/shuttle_loc and its 3 sub-types :
---------------------------------
-These are simple landmarks that exist to serve as locations for finding the reference turfs
-Make sure each source, interim, and target landmarks have the same unique name
-Otherwise there is a 50% chance it will fail horribly and spectacularly
-
-
-
-/proc/get_shuttle_turfs(var/turf/ref, var/shuttle) :
+/proc/get_shuttle_turfs(turf/ref, shuttle) :
 --------------------------------
 ref: the reference turf, gotten from its respective landmark
 shuttle: The name of the shuttle in question. Synonymous with the name of the ref landmark.
@@ -36,7 +28,7 @@ See the documentation of /datum/shuttle_area_info for more.
 
 
 
-/proc/rotate_shuttle_turfs(var/list/L, var/deg = 0)
+/proc/rotate_shuttle_turfs(list/L, deg = 0)
 --------------------------------
 L: The shuttle turfs to rotate. MUST be coord datums indexed by turf, a la get_shuttle_turfs()
 deg: In degrees, how much to rotate the shuttle (clockwise).
@@ -51,7 +43,7 @@ e.g. Something up to the right relative to its landmark will end up down to the 
 ONLY called when moving to either the trg landmark or a crs landmark
 
 
-/proc/move_shuttle_to(var/turf/trg, var/turftoleave = null, var/list/source, var/iselevator = 0, datum/shuttle/ferry/marine/shuttle)
+/proc/move_shuttle_to(turf/trg, turftoleave = null, list/source, iselevator = 0, datum/shuttle/ferry/marine/shuttle)
 --------------------------------
 trg: The target reference turf, see var/turf/ref from the previous proc
 turftoleave: Allows leaving other turfs behind as needed. Note: must be a path
@@ -72,26 +64,26 @@ TODO: Create /datum/shuttle/ferry/marine/elevator and depreciate this
 
 DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 
- - Step one is to map the physical shuttle somewhere on the map.
+- Step one is to map the physical shuttle somewhere on the map.
 
- - Step two is to add the shuttle datum to shuttle_controller.dm
+- Step two is to add the shuttle datum to shuttle_controller.dm
 	- the shuttle_tag var is the primary identifier of the shuttle, we'll see this again later on
 	- the info_tag is how you identify the shuttle in the s_info assoc. list, that's the next step
 
- - Step three is the worst part: map out the s_info listing based on the physical shuttle.
+- Step three is the worst part: map out the s_info listing based on the physical shuttle.
 	- follow the examaples already here as a guideline and this should be fairly straightforward.
-	 - keep in mind this is will be retrieved with info_tag on the shuttle datum so those need to EXACTLY match.
+	- keep in mind this is will be retrieved with info_tag on the shuttle datum so those need to EXACTLY match.
 
- - Step four: decide which subtype of landmark you need you need the shuttle to be placed into, or
-              define a new one to suit your needs. Either way, the landmarks need to properly register
-			  (at ABSOLUTE MINIMUM) turfs in locs_move, locs_dock, and locs_land which map to the starting,
-			  transit, and end locations of the shuttle respectively.
+- Step four: decide which subtype of landmark you need you need the shuttle to be placed into, or
+	define a new one to suit your needs. Either way, the landmarks need to properly register
+	(at ABSOLUTE MINIMUM) turfs in locs_move, locs_dock, and locs_land which map to the starting,
+	transit, and end locations of the shuttle respectively.
 
- - Step five: map the landmarks onto the map. These need to have the EXACT same name and be translateable
-              somehow to the master shuttle tag, the macros further down in this file are a good example
-			  for the most part. Convention is to name the landmarks 1, 2, 3, etc. as necessary.
+- Step five: map the landmarks onto the map. These need to have the EXACT same name and be translateable
+	somehow to the master shuttle tag, the macros further down in this file are a good example
+	for the most part. Convention is to name the landmarks 1, 2, 3, etc. as necessary.
 
- - Step six: add a shuttle console, this is code-by-copypaste for the most part.
+- Step six: add a shuttle console, this is code-by-copypaste for the most part.
 
 */
 
@@ -99,404 +91,10 @@ var/global/list/s_info = null
 
 /proc/loadShuttleInfoDatums()
 	s_info = list()
-
-	//This is how we switch from using those damn areas into using relative positions
-	//These hold the RELATIVE positions to the base turf of a shuttle
-	//When making a new one, make the base turf something obvious or explicitly name it next to the instantiation.
-	//As long as the list is just right, it'll be okay
-
-	/*
-	The way these conventions work:
-		1. Use newlist to instantiate the coords datums
-		2. All coord datums with the same value being set for y_pos go on the same line
-		3. Each line will be sorted from left to right from lowest to highest value for x_pos
-		4. A picture like the one below is preferred for bug testing and reference, but not required
-	Here's the default set, which translates to this:
-	O O O O O
-	O X X X O
-	O X T X O
-	O X X X O
-	O O O O O
-	Where X is a turf it brings with it, O is a turf it doesn't, and T is the reference turf.
-	Note how the code includes a datum for the reference turf, as the shuttle code will not automatically bring it
-
-	Furthermore, there should be rar a file called ShuttleGenerator.rar on the repository
-	which has a Java program that will generate the text for you.
-	*/
-
-	/*
-	s_info["ERROR"] = newlist(
-		/datum/coords {x_pos = -1; y_pos = 1}, /datum/coords {x_pos = 0; y_pos = 1}, /datum/coords {x_pos = 1; y_pos = 1},
-		/datum/coords {x_pos = -1; y_pos = 0}, /datum/coords {x_pos = 0; y_pos = 0}, /datum/coords {x_pos = 1; y_pos = 0},
-		/datum/coords {x_pos = -1; y_pos = -1}, /datum/coords {x_pos = 0; y_pos = -1}, /datum/coords {x_pos = 1; y_pos = -1}
-	)
-	*/
-
-	//Rasputin
-	/*
-x_pos = 0 1 2 3 4 5 6 7 8
-		| | | | | | | | |
-		O O O X X X O O O -- y_pos = 17
-		O O O X X X O O O -- y_pos = 16
-		O X X X X X X X O -- y_pos = 15
-		X X X X X X X X X -- y_pos = 14
-		X X X X X X X X X -- y_pos = 13
-		X X X X X X X X X -- y_pos = 12
-		X X X X X X X X X -- y_pos = 11
-		X X X X X X X X X -- y_pos = 10
-		X X X X X X X X X -- y_pos = 9
-		X X X X X X X X X -- y_pos = 8
-		X X X X X X X X X -- y_pos = 7
-		O O X X X X X O O -- y_pos = 6
-		O O X X X X X O O -- y_pos = 5
-		O X X X X X X X O -- y_pos = 4
-		O X X X X X X X O -- y_pos = 3
-		O O X X X X X O O -- y_pos = 2
-		O O O X X X O O O -- y_pos = 1
-		T O O X X X O O O -- y_pos = 0
-	*/
-	s_info["Dropship 1"] = newlist(
-		/datum/coords {x_pos = 3; y_pos = 17}, /datum/coords {x_pos = 4; y_pos = 17}, /datum/coords {x_pos = 5; y_pos = 17},
-
-		/datum/coords {x_pos = 3; y_pos = 16}, /datum/coords {x_pos = 4; y_pos = 16}, /datum/coords {x_pos = 5; y_pos = 16},
-
-		/datum/coords {x_pos = 1; y_pos = 15}, /datum/coords {x_pos = 2; y_pos = 15}, /datum/coords {x_pos = 3; y_pos = 15}, /datum/coords {x_pos = 4; y_pos = 15}, /datum/coords {x_pos = 5; y_pos = 15}, /datum/coords {x_pos = 6; y_pos = 15}, /datum/coords {x_pos = 7; y_pos = 15},
-
-		/datum/coords {x_pos = 0; y_pos = 14}, /datum/coords {x_pos = 1; y_pos = 14}, /datum/coords {x_pos = 2; y_pos = 14}, /datum/coords {x_pos = 3; y_pos = 14}, /datum/coords {x_pos = 4; y_pos = 14}, /datum/coords {x_pos = 5; y_pos = 14}, /datum/coords {x_pos = 6; y_pos = 14}, /datum/coords {x_pos = 7; y_pos = 14}, /datum/coords {x_pos = 8; y_pos = 14},
-
-		/datum/coords {x_pos = 0; y_pos = 13}, /datum/coords {x_pos = 1; y_pos = 13}, /datum/coords {x_pos = 2; y_pos = 13}, /datum/coords {x_pos = 3; y_pos = 13}, /datum/coords {x_pos = 4; y_pos = 13}, /datum/coords {x_pos = 5; y_pos = 13}, /datum/coords {x_pos = 6; y_pos = 13}, /datum/coords {x_pos = 7; y_pos = 13}, /datum/coords {x_pos = 8; y_pos = 13},
-
-		/datum/coords {x_pos = 0; y_pos = 12}, /datum/coords {x_pos = 1; y_pos = 12}, /datum/coords {x_pos = 2; y_pos = 12}, /datum/coords {x_pos = 3; y_pos = 12}, /datum/coords {x_pos = 4; y_pos = 12}, /datum/coords {x_pos = 5; y_pos = 12}, /datum/coords {x_pos = 6; y_pos = 12}, /datum/coords {x_pos = 7; y_pos = 12}, /datum/coords {x_pos = 8; y_pos = 12},
-
-		/datum/coords {x_pos = 0; y_pos = 11}, /datum/coords {x_pos = 1; y_pos = 11}, /datum/coords {x_pos = 2; y_pos = 11}, /datum/coords {x_pos = 3; y_pos = 11}, /datum/coords {x_pos = 4; y_pos = 11}, /datum/coords {x_pos = 5; y_pos = 11}, /datum/coords {x_pos = 6; y_pos = 11}, /datum/coords {x_pos = 7; y_pos = 11}, /datum/coords {x_pos = 8; y_pos = 11},
-
-		/datum/coords {x_pos = 0; y_pos = 10}, /datum/coords {x_pos = 1; y_pos = 10}, /datum/coords {x_pos = 2; y_pos = 10}, /datum/coords {x_pos = 3; y_pos = 10}, /datum/coords {x_pos = 4; y_pos = 10}, /datum/coords {x_pos = 5; y_pos = 10}, /datum/coords {x_pos = 6; y_pos = 10}, /datum/coords {x_pos = 7; y_pos = 10}, /datum/coords {x_pos = 8; y_pos = 10},
-
-		/datum/coords {x_pos = 0; y_pos = 9}, /datum/coords {x_pos = 1; y_pos = 9}, /datum/coords {x_pos = 2; y_pos = 9}, /datum/coords {x_pos = 3; y_pos = 9}, /datum/coords {x_pos = 4; y_pos = 9}, /datum/coords {x_pos = 5; y_pos = 9}, /datum/coords {x_pos = 6; y_pos = 9}, /datum/coords {x_pos = 7; y_pos = 9}, /datum/coords {x_pos = 8; y_pos = 9},
-
-		/datum/coords {x_pos = 0; y_pos = 8}, /datum/coords {x_pos = 1; y_pos = 8}, /datum/coords {x_pos = 2; y_pos = 8}, /datum/coords {x_pos = 3; y_pos = 8}, /datum/coords {x_pos = 4; y_pos = 8}, /datum/coords {x_pos = 5; y_pos = 8}, /datum/coords {x_pos = 6; y_pos = 8}, /datum/coords {x_pos = 7; y_pos = 8}, /datum/coords {x_pos = 8; y_pos = 8},
-
-		/datum/coords {x_pos = 0; y_pos = 7}, /datum/coords {x_pos = 1; y_pos = 7}, /datum/coords {x_pos = 2; y_pos = 7}, /datum/coords {x_pos = 3; y_pos = 7}, /datum/coords {x_pos = 4; y_pos = 7}, /datum/coords {x_pos = 5; y_pos = 7}, /datum/coords {x_pos = 6; y_pos = 7}, /datum/coords {x_pos = 7; y_pos = 7}, /datum/coords {x_pos = 8; y_pos = 7},
-
-		/datum/coords {x_pos = 2; y_pos = 6}, /datum/coords {x_pos = 3; y_pos = 6}, /datum/coords {x_pos = 4; y_pos = 6}, /datum/coords {x_pos = 5; y_pos = 6}, /datum/coords {x_pos = 6; y_pos = 6},
-
-		/datum/coords {x_pos = 2; y_pos = 5}, /datum/coords {x_pos = 3; y_pos = 5}, /datum/coords {x_pos = 4; y_pos = 5}, /datum/coords {x_pos = 5; y_pos = 5}, /datum/coords {x_pos = 6; y_pos = 5},
-
-		/datum/coords {x_pos = 1; y_pos = 4}, /datum/coords {x_pos = 2; y_pos = 4}, /datum/coords {x_pos = 3; y_pos = 4}, /datum/coords {x_pos = 4; y_pos = 4}, /datum/coords {x_pos = 5; y_pos = 4}, /datum/coords {x_pos = 6; y_pos = 4}, /datum/coords {x_pos = 7; y_pos = 4},
-
-		/datum/coords {x_pos = 1; y_pos = 3}, /datum/coords {x_pos = 2; y_pos = 3}, /datum/coords {x_pos = 3; y_pos = 3}, /datum/coords {x_pos = 4; y_pos = 3}, /datum/coords {x_pos = 5; y_pos = 3}, /datum/coords {x_pos = 6; y_pos = 3}, /datum/coords {x_pos = 7; y_pos = 3},
-
-		/datum/coords {x_pos = 2; y_pos = 2}, /datum/coords {x_pos = 3; y_pos = 2}, /datum/coords {x_pos = 4; y_pos = 2}, /datum/coords {x_pos = 5; y_pos = 2}, /datum/coords {x_pos = 6; y_pos = 2},
-
-		/datum/coords {x_pos = 3; y_pos = 1}, /datum/coords {x_pos = 4; y_pos = 1}, /datum/coords {x_pos = 5; y_pos = 1},
-
-		/datum/coords {x_pos = 3; y_pos = 0}, /datum/coords {x_pos = 4; y_pos = 0}, /datum/coords {x_pos = 5; y_pos = 0},
-	)
-
-	//Droppod
-/*
-
-x_pos = 0 1 2 3 4 5 6 7 8
-		| | | | | | | | |
-		O O O O O O O O O -- y_pos = 9
-		O X X X X X X X O -- y_pos = 8
-		O X X X X X X X O -- y_pos = 7
-		O X X X X X X X O -- y_pos = 6
-		O X X X X X X X O -- y_pos = 5
-		O X X X X X X X O -- y_pos = 4
-		O X X X X X X X O -- y_pos = 3
-		O X X X X X X X O -- y_pos = 2
-		O X X X X X X X O -- y_pos = 1
-		T O O O O O O O O -- y_pos = 0
-	*/
-	s_info["Dropship 2"] = newlist(
-		/datum/coords {x_pos = 1; y_pos = 7}, /datum/coords {x_pos = 2; y_pos = 7}, /datum/coords {x_pos = 3; y_pos = 7}, /datum/coords {x_pos = 4; y_pos = 7}, /datum/coords {x_pos = 5; y_pos = 7}, /datum/coords {x_pos = 6; y_pos = 7}, /datum/coords {x_pos = 7; y_pos = 7},
-
-		/datum/coords {x_pos = 1; y_pos = 6}, /datum/coords {x_pos = 2; y_pos = 6}, /datum/coords {x_pos = 3; y_pos = 6}, /datum/coords {x_pos = 4; y_pos = 6}, /datum/coords {x_pos = 5; y_pos = 6}, /datum/coords {x_pos = 6; y_pos = 6}, /datum/coords {x_pos = 7; y_pos = 6},
-
-		/datum/coords {x_pos = 1; y_pos = 5}, /datum/coords {x_pos = 2; y_pos = 5}, /datum/coords {x_pos = 3; y_pos = 5}, /datum/coords {x_pos = 4; y_pos = 5}, /datum/coords {x_pos = 5; y_pos = 5}, /datum/coords {x_pos = 6; y_pos = 5}, /datum/coords {x_pos = 7; y_pos = 5},
-
-		/datum/coords {x_pos = 1; y_pos = 4}, /datum/coords {x_pos = 2; y_pos = 4}, /datum/coords {x_pos = 3; y_pos = 4}, /datum/coords {x_pos = 4; y_pos = 4}, /datum/coords {x_pos = 5; y_pos = 4}, /datum/coords {x_pos = 6; y_pos = 4}, /datum/coords {x_pos = 7; y_pos = 4},
-
-		/datum/coords {x_pos = 1; y_pos = 3}, /datum/coords {x_pos = 2; y_pos = 3}, /datum/coords {x_pos = 3; y_pos = 3}, /datum/coords {x_pos = 4; y_pos = 3}, /datum/coords {x_pos = 5; y_pos = 3}, /datum/coords {x_pos = 6; y_pos = 3}, /datum/coords {x_pos = 7; y_pos = 3},
-
-		/datum/coords {x_pos = 1; y_pos = 2}, /datum/coords {x_pos = 2; y_pos = 2}, /datum/coords {x_pos = 3; y_pos = 2}, /datum/coords {x_pos = 4; y_pos = 2}, /datum/coords {x_pos = 5; y_pos = 2}, /datum/coords {x_pos = 6; y_pos = 2}, /datum/coords {x_pos = 7; y_pos = 2},
-
-		/datum/coords {x_pos = 1; y_pos = 1}, /datum/coords {x_pos = 2; y_pos = 1}, /datum/coords {x_pos = 3; y_pos = 1}, /datum/coords {x_pos = 4; y_pos = 1}, /datum/coords {x_pos = 5; y_pos = 1}, /datum/coords {x_pos = 6; y_pos = 1}, /datum/coords {x_pos = 7; y_pos = 1},
-	)
-
-//Almayer Evac Pods
-/*
-x_pos = 0 1 2 3 4 5
-		| | | | | |
-		O O O O O O -- y_pos = 6
-		O X X X X O -- y_pos = 5
-		O X X X X O -- y_pos = 4
-		O X X X X O -- y_pos = 3
-		O X X X X O -- y_pos = 2
-		O X X X X O -- y_pos = 1
-		T O O O O O -- y_pos = 0
-	*/
-	s_info["Almayer Evac"] = newlist(
-		/datum/coords {x_pos = 1; y_pos = 5}, /datum/coords {x_pos = 2; y_pos = 5}, /datum/coords {x_pos = 3; y_pos = 5}, /datum/coords {x_pos = 4; y_pos = 5},
-
-		/datum/coords {x_pos = 1; y_pos = 4}, /datum/coords {x_pos = 2; y_pos = 4}, /datum/coords {x_pos = 3; y_pos = 4}, /datum/coords {x_pos = 4; y_pos = 4},
-
-		/datum/coords {x_pos = 1; y_pos = 3}, /datum/coords {x_pos = 2; y_pos = 3}, /datum/coords {x_pos = 3; y_pos = 3}, /datum/coords {x_pos = 4; y_pos = 3},
-
-		/datum/coords {x_pos = 1; y_pos = 2}, /datum/coords {x_pos = 2; y_pos = 2}, /datum/coords {x_pos = 3; y_pos = 2}, /datum/coords {x_pos = 4; y_pos = 2},
-
-		/datum/coords {x_pos = 1; y_pos = 1}, /datum/coords {x_pos = 2; y_pos = 1}, /datum/coords {x_pos = 3; y_pos = 1}, /datum/coords {x_pos = 4; y_pos = 1}
-	)
-
-//Alternate Almayer Evac Pods
-/*
-x_pos = 0 1 2 3 4 5 6
-		| | | | | | |
-		O O O O O O O -- y_pos = 5
-		O X X X X X O -- y_pos = 4
-		O X X X X X O -- y_pos = 3
-		O X X X X X O -- y_pos = 2
-		O X X X X X O -- y_pos = 1
-		T O O O O O O -- y_pos = 0
-	*/
-	s_info["Alt Almayer Evac"] = newlist(
-		/datum/coords {x_pos = 1; y_pos = 4}, /datum/coords {x_pos = 2; y_pos = 4}, /datum/coords {x_pos = 3; y_pos = 4}, /datum/coords {x_pos = 4; y_pos = 4}, /datum/coords {x_pos = 5; y_pos = 4},
-
-		/datum/coords {x_pos = 1; y_pos = 3}, /datum/coords {x_pos = 2; y_pos = 3}, /datum/coords {x_pos = 3; y_pos = 3}, /datum/coords {x_pos = 4; y_pos = 3}, /datum/coords {x_pos = 5; y_pos = 3},
-
-		/datum/coords {x_pos = 1; y_pos = 2}, /datum/coords {x_pos = 2; y_pos = 2}, /datum/coords {x_pos = 3; y_pos = 2}, /datum/coords {x_pos = 4; y_pos = 2}, /datum/coords {x_pos = 5; y_pos = 2},
-
-		/datum/coords {x_pos = 1; y_pos = 1}, /datum/coords {x_pos = 2; y_pos = 1}, /datum/coords {x_pos = 3; y_pos = 1}, /datum/coords {x_pos = 4; y_pos = 1}, /datum/coords {x_pos = 5; y_pos = 1}
-	)
-
-	//Almayer Dropship
-
-	s_info["Almayer Dropship"] = newlist(
-
-	/datum/coords{x_pos=3;y_pos=20}, /datum/coords{x_pos=4;y_pos=20}, /datum/coords{x_pos=5;y_pos=20}, /datum/coords{x_pos=6;y_pos=20}, /datum/coords{x_pos=7;y_pos=20},
-
-	/datum/coords{x_pos=3;y_pos=19}, /datum/coords{x_pos=4;y_pos=19}, /datum/coords{x_pos=5;y_pos=19}, /datum/coords{x_pos=6;y_pos=19}, /datum/coords{x_pos=7;y_pos=19},
-
-	/datum/coords{x_pos=3;y_pos=18}, /datum/coords{x_pos=4;y_pos=18}, /datum/coords{x_pos=5;y_pos=18}, /datum/coords{x_pos=6;y_pos=18}, /datum/coords{x_pos=7;y_pos=18},
-
-	/datum/coords{x_pos=1;y_pos=17}, /datum/coords{x_pos=2;y_pos=17}, /datum/coords{x_pos=3;y_pos=17}, /datum/coords{x_pos=4;y_pos=17}, /datum/coords{x_pos=5;y_pos=17}, /datum/coords{x_pos=6;y_pos=17}, /datum/coords{x_pos=7;y_pos=17}, /datum/coords{x_pos=8;y_pos=17}, /datum/coords{x_pos=9;y_pos=17},
-
-	/datum/coords{x_pos=1;y_pos=16}, /datum/coords{x_pos=2;y_pos=16}, /datum/coords{x_pos=3;y_pos=16}, /datum/coords{x_pos=4;y_pos=16}, /datum/coords{x_pos=5;y_pos=16}, /datum/coords{x_pos=6;y_pos=16}, /datum/coords{x_pos=7;y_pos=16}, /datum/coords{x_pos=8;y_pos=16}, /datum/coords{x_pos=9;y_pos=16},
-
-	/datum/coords{x_pos=0;y_pos=15}, /datum/coords{x_pos=1;y_pos=15}, /datum/coords{x_pos=2;y_pos=15}, /datum/coords{x_pos=3;y_pos=15}, /datum/coords{x_pos=4;y_pos=15}, /datum/coords{x_pos=5;y_pos=15}, /datum/coords{x_pos=6;y_pos=15}, /datum/coords{x_pos=7;y_pos=15}, /datum/coords{x_pos=8;y_pos=15}, /datum/coords{x_pos=9;y_pos=15}, /datum/coords{x_pos=10;y_pos=15},
-
-	/datum/coords{x_pos=0;y_pos=14}, /datum/coords{x_pos=1;y_pos=14}, /datum/coords{x_pos=2;y_pos=14}, /datum/coords{x_pos=3;y_pos=14}, /datum/coords{x_pos=4;y_pos=14}, /datum/coords{x_pos=5;y_pos=14}, /datum/coords{x_pos=6;y_pos=14}, /datum/coords{x_pos=7;y_pos=14}, /datum/coords{x_pos=8;y_pos=14}, /datum/coords{x_pos=9;y_pos=14}, /datum/coords{x_pos=10;y_pos=14},
-
-	/datum/coords{x_pos=0;y_pos=13}, /datum/coords{x_pos=1;y_pos=13}, /datum/coords{x_pos=2;y_pos=13}, /datum/coords{x_pos=3;y_pos=13}, /datum/coords{x_pos=4;y_pos=13}, /datum/coords{x_pos=5;y_pos=13}, /datum/coords{x_pos=6;y_pos=13}, /datum/coords{x_pos=7;y_pos=13}, /datum/coords{x_pos=8;y_pos=13}, /datum/coords{x_pos=9;y_pos=13}, /datum/coords{x_pos=10;y_pos=13},
-
-	/datum/coords{x_pos=1;y_pos=12}, /datum/coords{x_pos=2;y_pos=12}, /datum/coords{x_pos=3;y_pos=12}, /datum/coords{x_pos=4;y_pos=12}, /datum/coords{x_pos=5;y_pos=12}, /datum/coords{x_pos=6;y_pos=12}, /datum/coords{x_pos=7;y_pos=12}, /datum/coords{x_pos=8;y_pos=12}, /datum/coords{x_pos=9;y_pos=12},
-
-	/datum/coords{x_pos=1;y_pos=11}, /datum/coords{x_pos=2;y_pos=11}, /datum/coords{x_pos=3;y_pos=11}, /datum/coords{x_pos=4;y_pos=11}, /datum/coords{x_pos=5;y_pos=11}, /datum/coords{x_pos=6;y_pos=11}, /datum/coords{x_pos=7;y_pos=11}, /datum/coords{x_pos=8;y_pos=11}, /datum/coords{x_pos=9;y_pos=11},
-
-	/datum/coords{x_pos=1;y_pos=10}, /datum/coords{x_pos=2;y_pos=10}, /datum/coords{x_pos=3;y_pos=10}, /datum/coords{x_pos=4;y_pos=10}, /datum/coords{x_pos=5;y_pos=10}, /datum/coords{x_pos=6;y_pos=10}, /datum/coords{x_pos=7;y_pos=10}, /datum/coords{x_pos=8;y_pos=10}, /datum/coords{x_pos=9;y_pos=10},
-
-	/datum/coords{x_pos=1;y_pos=9}, /datum/coords{x_pos=2;y_pos=9}, /datum/coords{x_pos=3;y_pos=9}, /datum/coords{x_pos=4;y_pos=9}, /datum/coords{x_pos=5;y_pos=9}, /datum/coords{x_pos=6;y_pos=9}, /datum/coords{x_pos=7;y_pos=9}, /datum/coords{x_pos=8;y_pos=9}, /datum/coords{x_pos=9;y_pos=9},
-
-	/datum/coords{x_pos=1;y_pos=8}, /datum/coords{x_pos=2;y_pos=8}, /datum/coords{x_pos=3;y_pos=8}, /datum/coords{x_pos=4;y_pos=8}, /datum/coords{x_pos=5;y_pos=8}, /datum/coords{x_pos=6;y_pos=8}, /datum/coords{x_pos=7;y_pos=8}, /datum/coords{x_pos=8;y_pos=8}, /datum/coords{x_pos=9;y_pos=8},
-
-	/datum/coords{x_pos=0;y_pos=7}, /datum/coords{x_pos=1;y_pos=7}, /datum/coords{x_pos=2;y_pos=7}, /datum/coords{x_pos=3;y_pos=7}, /datum/coords{x_pos=4;y_pos=7}, /datum/coords{x_pos=5;y_pos=7}, /datum/coords{x_pos=6;y_pos=7}, /datum/coords{x_pos=7;y_pos=7}, /datum/coords{x_pos=8;y_pos=7}, /datum/coords{x_pos=9;y_pos=7}, /datum/coords{x_pos=10;y_pos=7},
-
-	/datum/coords{x_pos=0;y_pos=6}, /datum/coords{x_pos=1;y_pos=6}, /datum/coords{x_pos=2;y_pos=6}, /datum/coords{x_pos=3;y_pos=6}, /datum/coords{x_pos=4;y_pos=6}, /datum/coords{x_pos=5;y_pos=6}, /datum/coords{x_pos=6;y_pos=6}, /datum/coords{x_pos=7;y_pos=6}, /datum/coords{x_pos=8;y_pos=6}, /datum/coords{x_pos=9;y_pos=6}, /datum/coords{x_pos=10;y_pos=6},
-
-	/datum/coords{x_pos=0;y_pos=5}, /datum/coords{x_pos=1;y_pos=5}, /datum/coords{x_pos=2;y_pos=5}, /datum/coords{x_pos=3;y_pos=5}, /datum/coords{x_pos=4;y_pos=5}, /datum/coords{x_pos=5;y_pos=5}, /datum/coords{x_pos=6;y_pos=5}, /datum/coords{x_pos=7;y_pos=5}, /datum/coords{x_pos=8;y_pos=5}, /datum/coords{x_pos=9;y_pos=5}, /datum/coords{x_pos=10;y_pos=5},
-
-	/datum/coords{x_pos=0;y_pos=4}, /datum/coords{x_pos=1;y_pos=4}, /datum/coords{x_pos=2;y_pos=4}, /datum/coords{x_pos=3;y_pos=4}, /datum/coords{x_pos=4;y_pos=4}, /datum/coords{x_pos=5;y_pos=4}, /datum/coords{x_pos=6;y_pos=4}, /datum/coords{x_pos=7;y_pos=4}, /datum/coords{x_pos=8;y_pos=4}, /datum/coords{x_pos=9;y_pos=4}, /datum/coords{x_pos=10;y_pos=4},
-
-	/datum/coords{x_pos=0;y_pos=3}, /datum/coords{x_pos=1;y_pos=3}, /datum/coords{x_pos=2;y_pos=3}, /datum/coords{x_pos=3;y_pos=3}, /datum/coords{x_pos=4;y_pos=3}, /datum/coords{x_pos=5;y_pos=3}, /datum/coords{x_pos=6;y_pos=3}, /datum/coords{x_pos=7;y_pos=3}, /datum/coords{x_pos=8;y_pos=3}, /datum/coords{x_pos=9;y_pos=3}, /datum/coords{x_pos=10;y_pos=3},
-
-	/datum/coords{x_pos=2;y_pos=2}, /datum/coords{x_pos=3;y_pos=2}, /datum/coords{x_pos=4;y_pos=2}, /datum/coords{x_pos=5;y_pos=2}, /datum/coords{x_pos=6;y_pos=2}, /datum/coords{x_pos=7;y_pos=2}, /datum/coords{x_pos=8;y_pos=2},
-
-	/datum/coords{x_pos=3;y_pos=1}, /datum/coords{x_pos=7;y_pos=1},
-
-	/datum/coords{x_pos=1;y_pos=0}, /datum/coords{x_pos=2;y_pos=0}, /datum/coords{x_pos=3;y_pos=0}, /datum/coords{x_pos=7;y_pos=0}, /datum/coords{x_pos=8;y_pos=0}, /datum/coords{x_pos=9;y_pos=0},
-
-	)
-
-/*
-x_pos = 0 1 2 3 4 5 6 7 8 9 ....	   15 16
-		| | | | | | | | | | | | | | | | | |
-		O O O O O O O O	O O O O O O O O O O	-- y_pos = 6
-		O X X X X X X X X X X X X X X X X O -- y_pos = 5
-		O X X X X X X X X X X X X X X X X O -- y_pos = 4
-		O X X X X X X X X X X X X X X X X O	-- y_pos = 3
-		O X X X X X X X X X X X X X X X X O -- y_pos = 2
-		O X X X X X X X X X X X X X X X X O -- y_pos = 1
-		T O O O O O O O O O O O O O O O O O	-- y_pos = 0
-*/
-
-	s_info["CORSAT Monorail"] = newlist(
-
-	/datum/coords{x_pos=1;y_pos=5}, /datum/coords{x_pos=2;y_pos=5}, /datum/coords{x_pos=3;y_pos=5}, /datum/coords{x_pos=4;y_pos=5}, /datum/coords{x_pos=5;y_pos=5}, /datum/coords{x_pos=6;y_pos=5}, /datum/coords{x_pos=7;y_pos=5},
-	/datum/coords{x_pos=8;y_pos=5}, /datum/coords{x_pos=9;y_pos=5}, /datum/coords{x_pos=10;y_pos=5}, /datum/coords{x_pos=11;y_pos=5}, /datum/coords{x_pos=12;y_pos=5}, /datum/coords{x_pos=13;y_pos=5}, /datum/coords{x_pos=14;y_pos=5}, /datum/coords{x_pos=15;y_pos=5},
-	/datum/coords{x_pos=1;y_pos=4}, /datum/coords{x_pos=2;y_pos=4}, /datum/coords{x_pos=3;y_pos=4}, /datum/coords{x_pos=4;y_pos=4}, /datum/coords{x_pos=5;y_pos=4}, /datum/coords{x_pos=6;y_pos=4}, /datum/coords{x_pos=7;y_pos=4},
-	/datum/coords{x_pos=8;y_pos=4}, /datum/coords{x_pos=9;y_pos=4}, /datum/coords{x_pos=10;y_pos=4}, /datum/coords{x_pos=11;y_pos=4}, /datum/coords{x_pos=12;y_pos=4}, /datum/coords{x_pos=13;y_pos=4}, /datum/coords{x_pos=14;y_pos=4}, /datum/coords{x_pos=15;y_pos=4},
-	/datum/coords{x_pos=1;y_pos=3}, /datum/coords{x_pos=2;y_pos=3}, /datum/coords{x_pos=3;y_pos=3}, /datum/coords{x_pos=4;y_pos=3}, /datum/coords{x_pos=5;y_pos=3}, /datum/coords{x_pos=6;y_pos=3}, /datum/coords{x_pos=7;y_pos=3},
-	/datum/coords{x_pos=8;y_pos=3}, /datum/coords{x_pos=9;y_pos=3}, /datum/coords{x_pos=10;y_pos=3}, /datum/coords{x_pos=11;y_pos=3}, /datum/coords{x_pos=12;y_pos=3}, /datum/coords{x_pos=13;y_pos=3}, /datum/coords{x_pos=14;y_pos=3}, /datum/coords{x_pos=15;y_pos=3},
-	/datum/coords{x_pos=1;y_pos=2}, /datum/coords{x_pos=2;y_pos=2}, /datum/coords{x_pos=3;y_pos=2}, /datum/coords{x_pos=4;y_pos=2}, /datum/coords{x_pos=5;y_pos=2}, /datum/coords{x_pos=6;y_pos=2}, /datum/coords{x_pos=7;y_pos=2},
-	/datum/coords{x_pos=8;y_pos=2}, /datum/coords{x_pos=9;y_pos=2}, /datum/coords{x_pos=10;y_pos=2}, /datum/coords{x_pos=11;y_pos=2}, /datum/coords{x_pos=12;y_pos=2}, /datum/coords{x_pos=13;y_pos=2}, /datum/coords{x_pos=14;y_pos=2}, /datum/coords{x_pos=15;y_pos=2},
-	/datum/coords{x_pos=1;y_pos=1}, /datum/coords{x_pos=2;y_pos=1}, /datum/coords{x_pos=3;y_pos=1}, /datum/coords{x_pos=4;y_pos=1}, /datum/coords{x_pos=5;y_pos=1}, /datum/coords{x_pos=6;y_pos=1}, /datum/coords{x_pos=7;y_pos=1},
-	/datum/coords{x_pos=8;y_pos=1}, /datum/coords{x_pos=9;y_pos=1}, /datum/coords{x_pos=10;y_pos=1}, /datum/coords{x_pos=11;y_pos=1}, /datum/coords{x_pos=12;y_pos=1}, /datum/coords{x_pos=13;y_pos=1}, /datum/coords{x_pos=14;y_pos=1}, /datum/coords{x_pos=15;y_pos=1},
-
-	)
-
 	return 1
 
-/obj/effect/landmark/shuttle_loc
-	desc = "The reference landmark for shuttles"
-	icon = 'icons/old_stuff/mark.dmi'
-	icon_state = "spawn_shuttle"
-	var/rotation = 0 //When loading to this landmark, how much to rotate the turfs. See /proc/rotate_shuttle_turfs()
 
-// How these work:
-// They exist in the map
-// queued into shuttle_landmarks which is a glob list. landmarks SS calls back:
-// initialize_marker and link_loc get called
-// This is the base type, there are three (four) subtypes:
-// marine_src, marine_int, and marine_trg, and also marine_crs (crash)
-/obj/effect/landmark/shuttle_loc/New()
-	set waitfor = 0
-	shuttle_landmarks += src
-	..()
-
-/obj/effect/landmark/shuttle_loc/proc/initialize_marker()
-	return
-
-/obj/effect/landmark/shuttle_loc/proc/link_loc()
-	set waitfor = 0
-
-/obj/effect/landmark/shuttle_loc/marine_src
-	icon_state = "spawn_shuttle_dock"
-/obj/effect/landmark/shuttle_loc/marine_int
-	icon_state = "spawn_shuttle_move"
-/obj/effect/landmark/shuttle_loc/marine_trg
-	icon_state = "spawn_shuttle_land"
-/obj/effect/landmark/shuttle_loc/marine_crs
-	icon_state = "spawn_shuttle_crash"
-
-
-// TLDR: Computes a shuttle_tag given the passed string, retrieves that shuttle datum,
-// 		 and dumps the source turf of whatever called it into the passed list.
-#define SHUTTLE_LINK_LOCATIONS(T, L) \
-..(); \
-if(!shuttle_controller) { qdel(src); return FALSE }; \
-var/datum/shuttle/ferry/marine/S = shuttle_controller.shuttles["[MAIN_SHIP_NAME] [T] [name]"]; \
-if(!S) {log_debug("ERROR CODE SO1: unable to find shuttle with the tag of: ["[MAIN_SHIP_NAME] [T] [name]"]."); \
-return FALSE}; \
-L[get_turf(src)] = rotation; \
-qdel(src)
-
-/obj/effect/landmark/shuttle_loc/marine_src/dropship/initialize_marker() //Name these "1" or "2", etc.
-	// This is some NEXT LEVEL macro use.
-	// This dumps the turfs of marine_src into each DS's docking locs
-	SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_dock)
-
-	// This underlays the walls of the dropship with the icon of the landmark turf (purely visual; its for the parts of the dropship sprite that have holes).
-	var/turf/T_src = pick(S.locs_dock)
-	var/list/turfs_to_init = get_shuttle_turfs(T_src, S.info_datums)
-	for(var/turf/T in turfs_to_init)
-		if(istype(T, /turf/closed/shuttle))
-			T.underlays += mutable_appearance(T_src.icon, T_src.icon_state, TURF_LAYER, FLOOR_PLANE)
-
-/obj/effect/landmark/shuttle_loc/marine_src/evacuation
-
-/obj/effect/landmark/shuttle_loc/marine_src/evacuation/link_loc()
-	..()
-	var/datum/shuttle/ferry/marine/evacuation_pod/S = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [name]"]
-	if(!S)
-		log_debug("ERROR CODE SO1: unable to find shuttle with the tag of: ["[MAIN_SHIP_NAME] Evac [name]"].")
-		return FALSE
-	S.locs_dock[get_turf(src)] = rotation
-	S.link_support_units(get_turf(src)) //Process links.
-
-/obj/effect/landmark/shuttle_loc/marine_int/dropship/link_loc()
-	SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_move)
-
-/obj/effect/landmark/shuttle_loc/marine_trg/landing/link_loc()
-	SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_land)
-
-/obj/effect/landmark/shuttle_loc/marine_trg/evacuation/link_loc()
-	SHUTTLE_LINK_LOCATIONS("Evac", S.locs_land)
-
-/obj/effect/landmark/shuttle_loc/marine_crs/dropship
-
-/obj/effect/landmark/shuttle_loc/marine_crs/dropship/link_loc()
-	..()
-
-	// Sort the crash location into the ship section it belongs to
-	var/ship_section = ""
-	// determine upper/lower deck first
-	if(y > ALMAYER_DECK_BOUNDARY)
-		ship_section = UPPER_DECK
-	else if(y < ALMAYER_DECK_BOUNDARY)
-		ship_section = LOWER_DECK
-
-	ship_section += " "
-
-	// then fore/mid/aftship
-	if (x <= ALMAYER_FORE_BOUNDARY)
-		ship_section += FORESHIP
-	else if(x >= ALMAYER_AFT_BOUNDARY)
-		ship_section += AFTSHIP
-	else
-		ship_section += MIDSHIP
-
-	if(isnull(shuttle_controller.locs_crash[ship_section]))
-		shuttle_controller.locs_crash[ship_section] = list()
-
-	shuttle_controller.locs_crash[ship_section][get_turf(src)] = rotation
-	qdel(src)
-
-#undef SHUTTLE_LINK_LOCATIONS
-
-// Handle ground links
-#define GROUND_LINK_LOCATIONS(T, L) \
-..(); \
-var/targetTurf = get_turf(src);\
-var/datum/shuttle/ferry/marine/S = shuttle_controller.shuttles["Ground [T] [name]"]; \
-if(!S) {log_debug("ERROR CODE SO1: unable to find shuttle with the tag of: ["Ground [T] [name]"].")};\
-L[targetTurf] = rotation; \
-qdel(src)
-
-// Stripped-down variant of the dropship effects. Here, we don't need crashes
-// or evacuation functionality
-// These are for use by GROUND shuttle analogs.
-// Any ground transport should register a datum in the non-backend
-// shuttles code and then place these landmarks with a unique name to achieve functionality.
-/obj/effect/landmark/shuttle_loc/marine_src/ground/link_loc()
-	GROUND_LINK_LOCATIONS("Transport", S.locs_dock)
-
-/obj/effect/landmark/shuttle_loc/marine_int/ground/link_loc()
-	GROUND_LINK_LOCATIONS("Transport", S.locs_move)
-
-/obj/effect/landmark/shuttle_loc/marine_trg/ground/link_loc()
-	GROUND_LINK_LOCATIONS("Transport", S.locs_land)
-
-
-#undef GROUND_LINK_LOCATIONS
-
-
-/proc/get_landing_lights(var/turf/ref)
-
-	var/list/lights = list()
-
-	var/searchx
-	var/searchy
-	var/turf/searchspot
-	for(searchx=-5, searchx<15, searchx++)
-		for(searchy=-5, searchy<30, searchy++)
-			searchspot = locate(ref.x+searchx, ref.y+searchy, ref.z)
-			for(var/obj/structure/machinery/landinglight/L in searchspot)
-				lights += L
-
-	return lights
-
-/proc/get_shuttle_turfs(var/turf/ref, var/list/L)
+/proc/get_shuttle_turfs(turf/ref, list/L)
 
 	var/list/source = list()
 
@@ -511,7 +109,7 @@ qdel(src)
 
 	return source
 
-/proc/rotate_shuttle_turfs(var/list/L, var/deg = 0)
+/proc/rotate_shuttle_turfs(list/L, deg = 0)
 
 	if((deg % 90) != 0) return //Not a right or straight angle, don't do anything
 	if(!istype(L) || !L.len) return null

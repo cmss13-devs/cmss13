@@ -1,4 +1,4 @@
-/proc/notes_add(var/key, var/note, var/mob/usr)
+/proc/notes_add(key, note, mob/usr)
 	if (!key || !note)
 		return
 
@@ -40,7 +40,7 @@
 	infos += P
 	info << infos
 
-	message_staff("[key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]")
+	message_admins("[key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]")
 	qdel(info)
 
 	//Updating list of keys with notes on them
@@ -53,7 +53,7 @@
 	qdel(note_list)
 
 
-/proc/notes_del(var/key, var/index)
+/proc/notes_del(key, index)
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
@@ -63,12 +63,12 @@
 	infos.Remove(item)
 	info << infos
 
-	message_staff("[key_name_admin(usr)] deleted one of [key]'s notes.")
+	message_admins("[key_name_admin(usr)] deleted one of [key]'s notes.")
 
 	qdel(info)
 
-/proc/player_notes_show_irc(var/key as text)
-	var/dat = "          Info on [key]%0D%0A"
+/proc/player_notes_show_irc(key as text)
+	var/dat = "   Info on [key]%0D%0A"
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos

@@ -11,37 +11,7 @@
 		return 1
 	return
 
-/mob/living/carbon/verb/warcry_macro()
-	set name = "warcry"
-	set hidden = 1
-
-	to_chat(usr, SPAN_WARNING("Your species doesn't have a warcry associated with it!"))
-
-/mob/living/carbon/human/warcry_macro()
-	emote("warcry", player_caused = TRUE)
-
-/mob/living/carbon/human/yautja/warcry_macro()
-	emote("roar", player_caused = TRUE)
-
-/mob/living/carbon/Xenomorph/warcry_macro()
-	emote("roar", player_caused = TRUE)
-
-/mob/living/carbon/verb/medic_macro()
-	set name = "medic"
-	set hidden = 1
-
-	to_chat(usr, SPAN_WARNING("Your species doesn't have a help cry associated with it!"))
-
-/mob/living/carbon/human/medic_macro()
-	emote("medic", player_caused = TRUE)
-
-/mob/living/carbon/human/yautja/medic_macro()
-	emote("click", player_caused = TRUE)
-
-/mob/living/carbon/Xenomorph/medic_macro()
-	emote("needhelp", player_caused = TRUE)
-
-/mob/living/carbon/check_view_change(var/new_size, var/atom/source)
+/mob/living/carbon/check_view_change(new_size, atom/source)
 	LAZYREMOVE(view_change_sources, source)
 	var/highest_view = 0
 	for(var/view_source as anything in view_change_sources)
@@ -54,10 +24,9 @@
 		new_size = highest_view
 	return new_size
 
-/mob/living/carbon/proc/handle_queen_screech(var/mob/living/carbon/Xenomorph/Queen/queen, var/list/mobs_in_view)
+/mob/living/carbon/proc/handle_queen_screech(mob/living/carbon/xenomorph/queen/queen, list/mobs_in_view)
 	if(!(src in mobs_in_view))
 		return
-	scream_stun_timeout = 20 SECONDS
 	var/dist = get_dist(queen, src)
 	if(dist <= 4)
 		to_chat(src, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
@@ -70,3 +39,7 @@
 		if(!ear_deaf || !HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 			AdjustEarDeafness(2)
 		to_chat(src, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
+
+///Checks if something prevents sharp objects from interacting with the mob (such as armor blocking surgical tools / surgery)
+/mob/living/carbon/proc/get_sharp_obj_blocker(obj/limb/limb)
+	return null

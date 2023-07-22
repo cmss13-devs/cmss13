@@ -8,7 +8,7 @@
 	xeno_cooldown = 10
 
 /datum/action/xeno_action/onclick/toggle_agility/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
@@ -20,13 +20,13 @@
 	macro_path = /datum/action/xeno_action/verb/verb_fling
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 65
+	xeno_cooldown = 60
 
 	// Configurables
 	var/fling_distance = 4
-	var/stun_power = 1
-	var/weaken_power = 1
-	var/slowdown = FALSE
+	var/stun_power = 0
+	var/weaken_power = 0.5
+	var/slowdown = 2
 
 
 // Warrior Lunge
@@ -40,7 +40,7 @@
 	xeno_cooldown = 100
 
 	// Configurables
-	var/grab_range = 6
+	var/grab_range = 4
 	var/click_miss_cooldown = 15
 	var/twitch_message_cooldown = 0 //apparently this is necessary for a tiny code that makes the lunge message on cooldown not be spammable, doesn't need to be big so 5 will do.
 
@@ -53,7 +53,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_punch
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 50
+	xeno_cooldown = 45
 
 	// Configurables
 	var/base_damage = 25

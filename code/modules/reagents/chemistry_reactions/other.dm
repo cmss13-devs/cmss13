@@ -6,7 +6,7 @@
 	result_amount = 1
 	var/sensitivity_threshold = 0
 
-/datum/chemical_reaction/explosive/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/explosive/on_reaction(datum/reagents/holder, created_volume)
 	if(created_volume > sensitivity_threshold)
 		holder.trigger_volatiles = TRUE
 	return
@@ -34,12 +34,12 @@
 	required_reagents = list("uranium" = 1, "iron" = 1) // Yes, laugh, it's the best recipe I could think of that makes a little bit of sense
 	result_amount = 2
 
-	on_reaction(var/datum/reagents/holder, var/created_volume)
-		var/location = get_turf(holder.my_atom)
-		// 100 created volume = 4 heavy range & 7 light range. A few tiles smaller than traitor EMP grandes.
-		// 200 created volume = 8 heavy range & 14 light range. 4 tiles larger than traitor EMP grenades.
-		empulse(location, round(created_volume / 24), round(created_volume / 14), 1)
-		holder.clear_reagents()
+/datum/chemical_reaction/emp_pulse/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	// 100 created volume = 4 heavy range & 7 light range. A few tiles smaller than traitor EMP grandes.
+	// 200 created volume = 8 heavy range & 14 light range. 4 tiles larger than traitor EMP grenades.
+	empulse(location, round(created_volume / 24), round(created_volume / 14), 1)
+	holder.clear_reagents()
 
 
 /datum/chemical_reaction/pttoxin
@@ -114,6 +114,13 @@
 	required_reagents = list("mercury" = 1, "sugar" = 1, "lithium" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/sleen
+	name = "Sleen"
+	id = "sleen"
+	result = "sleen"
+	required_reagents = list("oxycodone" = 1, "souto_lime" = 1)
+	result_amount = 2
+
 /datum/chemical_reaction/pacid
 	name = "Polytrinic acid"
 	id = "pacid"
@@ -149,12 +156,12 @@
 	required_reagents = list("aluminum" = 1, "potassium" = 1, "sulfur" = 1 )
 	result_amount = 3
 
-	on_reaction(var/datum/reagents/holder, var/created_volume)
-		var/location = get_turf(holder.my_atom)
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(2, 1, location)
-		s.start()
-		new /obj/item/device/flashlight/flare/on/illumination/chemical(location, created_volume)
+/datum/chemical_reaction/flash_powder/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+	s.set_up(2, 1, location)
+	s.start()
+	new /obj/item/device/flashlight/flare/on/illumination/chemical(location, created_volume)
 
 /datum/chemical_reaction/chemfire
 	name = "Napalm"
@@ -163,7 +170,7 @@
 	required_reagents = list("aluminum" = 1, "phoron" = 1, "sulphuric acid" = 1 )
 	result_amount = 1
 
-/datum/chemical_reaction/chemfire/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/chemfire/on_reaction(datum/reagents/holder, created_volume)
 	holder.trigger_volatiles = TRUE
 	return
 
@@ -175,7 +182,7 @@
 	required_reagents = list("fluorine" = 3, "chlorine" = 1)
 	result_amount = 1
 
-/datum/chemical_reaction/chlorinetrifluoride/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/chlorinetrifluoride/on_reaction(datum/reagents/holder, created_volume)
 	holder.trigger_volatiles = TRUE
 	return
 
@@ -246,14 +253,14 @@
 	secondary = 1
 	mob_react = FALSE
 
-	on_reaction(var/datum/reagents/holder, var/created_volume)
-		var/location = get_turf(holder.my_atom)
-		var/datum/effect_system/smoke_spread/chem/S = new /datum/effect_system/smoke_spread/chem
-		S.attach(location)
-		S.set_up(holder, created_volume, 0, location)
-		playsound(location, 'sound/effects/smoke.ogg', 25, 1)
-		INVOKE_ASYNC(S, /datum/effect_system/smoke_spread/chem.proc/start)
-		holder.clear_reagents()
+/datum/chemical_reaction/chemsmoke/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	var/datum/effect_system/smoke_spread/chem/S = new /datum/effect_system/smoke_spread/chem
+	S.attach(location)
+	S.set_up(holder, created_volume, 0, location)
+	playsound(location, 'sound/effects/smoke.ogg', 25, 1)
+	INVOKE_ASYNC(S, TYPE_PROC_REF(/datum/effect_system/smoke_spread/chem, start))
+	holder.clear_reagents()
 
 /datum/chemical_reaction/potassium_chloride
 	name = "Potassium Chloride"
@@ -303,10 +310,11 @@
 	result = null
 	required_reagents = list("iron" = 5, "frostoil" = 5, "phoron" = 20)
 	result_amount = 1
-	on_reaction(var/datum/reagents/holder, var/created_volume)
-		var/location = get_turf(holder.my_atom)
-		new /obj/item/stack/sheet/mineral/phoron(location)
-		return
+
+/datum/chemical_reaction/phoronsolidification/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	new /obj/item/stack/sheet/mineral/phoron(location)
+	return
 
 /datum/chemical_reaction/plastication
 	name = "Plastic"
@@ -314,9 +322,10 @@
 	result = null
 	required_reagents = list("pacid" = 10, "plasticide" = 20)
 	result_amount = 1
-	on_reaction(var/datum/reagents/holder)
-		new /obj/item/stack/sheet/mineral/plastic(get_turf(holder.my_atom),10)
-		return
+
+/datum/chemical_reaction/plastication/on_reaction(datum/reagents/holder)
+	new /obj/item/stack/sheet/mineral/plastic(get_turf(holder.my_atom),10)
+	return
 
 /datum/chemical_reaction/virus_food
 	name = "Virus Food"
@@ -345,22 +354,21 @@
 	required_reagents = list("fluorosurfactant" = 1, "water" = 1)
 	result_amount = 2
 
-	on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/foam/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/mob/M as anything in viewers(5, location))
+		to_chat(M, SPAN_WARNING("The solution violently bubbles!"))
 
-		var/location = get_turf(holder.my_atom)
-		for(var/mob/M as anything in viewers(5, location))
-			to_chat(M, SPAN_WARNING("The solution violently bubbles!"))
+	location = get_turf(holder.my_atom)
 
-		location = get_turf(holder.my_atom)
+	for(var/mob/M as anything in viewers(5, location))
+		to_chat(M, SPAN_WARNING("The solution spews out foam!"))
+	//for(var/datum/reagent/R in holder.reagent_list)
 
-		for(var/mob/M as anything in viewers(5, location))
-			to_chat(M, SPAN_WARNING("The solution spews out foam!"))
-		//for(var/datum/reagent/R in holder.reagent_list)
-
-		var/datum/effect_system/foam_spread/s = new()
-		s.set_up(created_volume, location, holder, 0)
-		s.start()
-		holder.clear_reagents()
+	var/datum/effect_system/foam_spread/s = new()
+	s.set_up(created_volume, location, holder, 0)
+	s.start()
+	holder.clear_reagents()
 
 
 /datum/chemical_reaction/metal_foam
@@ -370,16 +378,15 @@
 	required_reagents = list("aluminum" = 3, "foaming_agent" = 1, "pacid" = 1)
 	result_amount = 5
 
-	on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/metal_foam/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
 
-		var/location = get_turf(holder.my_atom)
+	for(var/mob/M as anything in viewers(5, location))
+		to_chat(M, SPAN_WARNING("The solution spews out a metallic shiny foam!"))
 
-		for(var/mob/M as anything in viewers(5, location))
-			to_chat(M, SPAN_WARNING("The solution spews out a metallic shiny foam!"))
-
-		var/datum/effect_system/foam_spread/s = new()
-		s.set_up(created_volume, location, holder, 1)
-		s.start()
+	var/datum/effect_system/foam_spread/s = new()
+	s.set_up(created_volume, location, holder, 1)
+	s.start()
 
 
 /datum/chemical_reaction/ironfoam
@@ -389,16 +396,15 @@
 	required_reagents = list("iron" = 3, "foaming_agent" = 1, "pacid" = 1)
 	result_amount = 5
 
-	on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/ironfoam/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
 
-		var/location = get_turf(holder.my_atom)
+	for(var/mob/M as anything in viewers(5, location))
+		to_chat(M, SPAN_WARNING("The solution spews out a metallic dull foam!"))
 
-		for(var/mob/M as anything in viewers(5, location))
-			to_chat(M, SPAN_WARNING("The solution spews out a metallic dull foam!"))
-
-		var/datum/effect_system/foam_spread/s = new()
-		s.set_up(created_volume, location, holder, 2)
-		s.start()
+	var/datum/effect_system/foam_spread/s = new()
+	s.set_up(created_volume, location, holder, 2)
+	s.start()
 
 
 /datum/chemical_reaction/foaming_agent

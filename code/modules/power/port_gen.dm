@@ -7,8 +7,8 @@
 	desc = "A portable generator used for emergency backup power."
 	icon = 'generator.dmi'
 	icon_state = "off"
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 	directwired = 0
 	var/t_status = 0
 	var/t_per = 5000
@@ -42,13 +42,13 @@ display round(lastgen) and phorontank amount
 
 //Baseline portable generator. Has all the default handling. Not intended to be used on it's own (since it generates unlimited power).
 /obj/structure/machinery/power/port_gen
-	name = "Placeholder Generator"	//seriously, don't use this. It can't be anchored without VV magic.
-	desc = "A portable generator for emergency backup power"
+	name = "Placeholder Generator" //seriously, don't use this. It can't be anchored without VV magic.
+	desc = "A portable generator for emergency backup power."
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "portgen0"
-	density = 1
-	anchored = 0
-//	directwired = 0
+	density = TRUE
+	anchored = FALSE
+// directwired = 0
 	use_power = USE_POWER_NONE
 	unslashable = FALSE
 
@@ -101,6 +101,30 @@ display round(lastgen) and phorontank amount
 		. += SPAN_NOTICE("The generator is on.")
 	else
 		. += SPAN_NOTICE("The generator is off.")
+
+/obj/structure/machinery/power/port_gen/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
+	if(!active && !anchored)
+		return ..()
+
+	if(attacking_xeno.mob_size < MOB_SIZE_XENO)
+		to_chat(attacking_xeno, SPAN_XENOWARNING("You're too small to do any significant damage to affect this!"))
+		return XENO_NO_DELAY_ACTION
+
+	attacking_xeno.animation_attack_on(src)
+	attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] slashes [src]!"), SPAN_DANGER("You slash [src]!"))
+	playsound(attacking_xeno, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
+
+	if(active)
+		active = FALSE
+		stop_processing()
+		icon_state = initial(icon_state)
+		visible_message(SPAN_NOTICE("[src] sputters to a stop!"))
+		return XENO_NONCOMBAT_ACTION
+
+	if(anchored)
+		anchored = FALSE
+		visible_message(SPAN_NOTICE("[src]'s bolts are dislodged!"))
+		return XENO_NONCOMBAT_ACTION
 
 //A power generator that runs on solid plasma sheets.
 /obj/structure/machinery/power/port_gen/pacman
@@ -207,7 +231,7 @@ display round(lastgen) and phorontank amount
 /obj/structure/machinery/power/port_gen/pacman/proc/overheat()
 	explosion(src.loc, 2, 5, 2, -1)
 
-/obj/structure/machinery/power/port_gen/pacman/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/power/port_gen/pacman/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, sheet_path))
 		var/obj/item/stack/addstack = O
 		var/amount = min((max_sheets - sheets), addstack.amount)
@@ -240,7 +264,7 @@ display round(lastgen) and phorontank amount
 				to_chat(user, SPAN_NOTICE(" You open the access panel."))
 			else
 				to_chat(user, SPAN_NOTICE(" You close the access panel."))
-		else if(istype(O, /obj/item/tool/crowbar) && open)
+		else if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR) && open)
 			var/obj/structure/machinery/constructable_frame/new_frame = new /obj/structure/machinery/constructable_frame(src.loc)
 			for(var/obj/item/I in component_parts)
 				if(I.reliability < 100)
@@ -328,7 +352,7 @@ display round(lastgen) and phorontank amount
 			close_browser(usr, "port_gen")
 			usr.unset_interaction()
 
-/obj/structure/machinery/power/port_gen/pacman/inoperable(var/additional_flags)
+/obj/structure/machinery/power/port_gen/pacman/inoperable(additional_flags)
 	return (stat & (BROKEN|additional_flags)) //Removes NOPOWER check since its a goddam generator and doesn't need power
 
 /obj/structure/machinery/power/port_gen/pacman/super
@@ -338,8 +362,9 @@ display round(lastgen) and phorontank amount
 	power_gen = 15000
 	time_per_sheet = 120
 	board_path = /obj/item/circuitboard/machine/pacman/super
-	overheat()
-		explosion(src.loc, 3, 3, 3, -1)
+
+/obj/structure/machinery/power/port_gen/pacman/super/overheat()
+	explosion(src.loc, 3, 3, 3, -1)
 
 /obj/structure/machinery/power/port_gen/pacman/mrs
 	name = "M.R.S.P.A.C.M.A.N.-type Portable Generator"
@@ -348,5 +373,6 @@ display round(lastgen) and phorontank amount
 	power_gen = 40000
 	time_per_sheet = 150
 	board_path = /obj/item/circuitboard/machine/pacman/mrs
-	overheat()
-		explosion(src.loc, 4, 4, 4, -1)
+
+/obj/structure/machinery/power/port_gen/pacman/mrs/overheat()
+	explosion(src.loc, 4, 4, 4, -1)

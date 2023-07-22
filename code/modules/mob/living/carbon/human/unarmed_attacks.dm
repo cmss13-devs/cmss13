@@ -1,14 +1,14 @@
 //Species unarmed attacks
 /datum/unarmed_attack
-	var/attack_verb = list("attack")	// Empty hand hurt intent verb.
-	var/damage = 0						// Extra empty hand attack damage.
+	var/attack_verb = list("attack") // Empty hand hurt intent verb.
+	var/damage = 0 // Extra empty hand attack damage.
 	var/attack_sound = "punch"
 	var/miss_sound = 'sound/weapons/punchmiss.ogg'
 	var/shredding = FALSE // Calls the old attack_alien() behavior on objects/mobs when on harm intent.
 	var/sharp = FALSE
 	var/edge = FALSE
 
-/datum/unarmed_attack/proc/is_usable(var/mob/living/carbon/human/user)
+/datum/unarmed_attack/proc/is_usable(mob/living/carbon/human/user)
 	if(!user.melee_allowed)
 		to_chat(user, SPAN_DANGER("You are currently unable to attack."))
 		return FALSE
@@ -23,7 +23,7 @@
 	sharp = TRUE
 	edge = TRUE
 
-/datum/unarmed_attack/bite/is_usable(var/mob/living/carbon/human/user)
+/datum/unarmed_attack/bite/is_usable(mob/living/carbon/human/user)
 	if(!user.melee_allowed)
 		return FALSE
 

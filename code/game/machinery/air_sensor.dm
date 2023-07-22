@@ -3,7 +3,7 @@
 	icon_state = "gsensor1"
 	name = "Gas Sensor"
 
-	anchored = 1
+	anchored = TRUE
 	var/state = 0
 
 	var/id_tag
@@ -58,3 +58,7 @@
 /obj/structure/machinery/air_sensor/Initialize()
 	. = ..()
 	set_frequency(frequency)
+
+/obj/structure/machinery/air_sensor/Destroy()
+	SSradio.remove_object(src, frequency)
+	return ..()

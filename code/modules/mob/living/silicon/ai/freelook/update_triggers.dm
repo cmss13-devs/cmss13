@@ -8,47 +8,48 @@
 	var/image/obscured
 
 /turf/proc/visibilityChanged()
-	if(SSticker)
+	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
 		cameranet.updateVisibility(src)
 
 /obj/structure/machinery/door/poddoor/shutters/open()
-	if(SSticker)
+	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
 		cameranet.updateVisibility(src)
 	. = ..()
 
 
 /obj/structure/machinery/door/poddoor/shutters/close()
-	if(SSticker)
+	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
 		cameranet.updateVisibility(src)
 	. = ..()
 
 
 /obj/structure/machinery/door/poddoor/shutters/Destroy()
-	if(SSticker)
+	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
 		cameranet.updateVisibility(src)
 	. = ..()
 // STRUCTURES
 
 /obj/structure/Destroy()
-	if(SSticker)
+	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
 		cameranet.updateVisibility(src)
 	. = ..()
 
 /obj/structure/Initialize()
 	. = ..()
-	if(SSticker)
+	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
 		cameranet.updateVisibility(src)
 
 // EFFECTS
 
 /obj/effect/Destroy()
-	if(SSticker)
+	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
 		cameranet.updateVisibility(src)
 	. = ..()
 
 /obj/effect/Initialize(mapload, ...)
 	. = ..()
-	cameranet.updateVisibility(src)
+	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
+		cameranet.updateVisibility(src)
 
 
 

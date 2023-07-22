@@ -49,8 +49,8 @@
 	visuals.icon = icon
 	visuals.icon_state = icon_state
 	Draw()
-	RegisterSignal(origin, COMSIG_MOVABLE_MOVED, .proc/redrawing)
-	RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/redrawing)
+	RegisterSignal(origin, COMSIG_MOVABLE_MOVED, PROC_REF(redrawing))
+	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(redrawing))
 
 /**
  * Triggered by signals set up when the beam is set up. If it's still sane to create a beam, it removes the old beam, creates a new one. Otherwise it kills the beam.
@@ -81,7 +81,7 @@
  */
 /datum/beam/proc/Draw()
 	if(always_turn)
-		origin.setDir(get_dir(origin, target))	//Causes the source of the beam to rotate to continuosly face the BeamTarget.
+		origin.setDir(get_dir(origin, target)) //Causes the source of the beam to rotate to continuosly face the BeamTarget.
 	var/Angle = round(Get_Angle(origin,target))
 	var/matrix/rot_matrix = matrix()
 	var/turf/origin_turf = get_turf(origin)
@@ -143,6 +143,44 @@
 	anchored = TRUE
 	var/datum/beam/owner
 
+/obj/effect/ebeam/laser
+	name = "laser beam"
+	desc = "A laser beam!"
+	alpha = 200
+	var/strength = EYE_PROTECTION_FLAVOR
+	var/probability = 20
+
+/obj/effect/ebeam/laser/Crossed(atom/movable/AM)
+	. = ..()
+	if(! (prob(probability) && ishuman(AM)) )
+		return
+	var/mob/living/carbon/human/moving_human = AM
+	var/laser_protection = moving_human.get_eye_protection()
+	var/rand_laser_power = rand(EYE_PROTECTION_FLAVOR, strength)
+	if(rand_laser_power > laser_protection)
+		//ouch!
+		INVOKE_ASYNC(moving_human, /mob/proc/emote, "pain")
+		visible_message(SPAN_DANGER("[moving_human] screams out in pain as \the [src] moves across their eyes!"), SPAN_NOTICE("Aurgh!!! \The [src] moves across your unprotected eyes for a split-second!"))
+	else
+		if(HAS_TRAIT(moving_human, TRAIT_BIMEX))
+			visible_message(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades as \the [src] passes over them."))
+			//drip = bonus balloonchat
+			moving_human.balloon_alert_to_viewers("the laser bounces off [moving_human.gender == MALE ? "his" : "her"] BiMex© personal shades!", "the laser bounces off your BiMex© personal shades!")
+		else
+			visible_message(SPAN_NOTICE("[moving_human]'s headgear protects them from \the [src]."), SPAN_NOTICE("Your headgear protects you from  \the [src]."))
+
+/obj/effect/ebeam/laser/intense
+	name = "intense laser beam"
+	alpha = 255
+	strength = EYE_PROTECTION_FLASH
+	probability = 35
+
+/obj/effect/ebeam/laser/weak
+	name = "weak laser beam"
+	alpha = 150
+	strength = EYE_PROTECTION_FLAVOR
+	probability = 5
+
 /obj/effect/ebeam/Destroy()
 	owner = null
 	return ..()
@@ -154,9 +192,10 @@
 	mouse_opacity = FALSE
 
 	var/tmp/atom/BeamSource
-	Initialize()
-		..()
-		QDEL_IN(src, 10)
+
+/obj/effect/overlay/beam/Initialize()
+	. = ..()
+	QDEL_IN(src, 10)
 
 /**
  * This is what you use to start a beam. Example: origin.Beam(target, args). **Store the return of this proc if you don't set maxdist or time, you need it to delete the beam.**
@@ -172,15 +211,15 @@
  */
 /atom/proc/beam(atom/BeamTarget, icon_state="b_beam", icon='icons/effects/beam.dmi', time = BEAM_INFINITE_DURATION, maxdistance = INFINITY, beam_type=/obj/effect/ebeam, always_turn = TRUE)
 	var/datum/beam/newbeam = new(src, BeamTarget, icon, icon_state, time, maxdistance, beam_type, always_turn)
-	INVOKE_ASYNC(newbeam, /datum/beam/.proc/Start)
+	INVOKE_ASYNC(newbeam, TYPE_PROC_REF(/datum/beam, Start))
 	return newbeam
 
-/proc/zap_beam(var/atom/source, var/zap_range, var/damage, var/list/blacklistmobs)
+/proc/zap_beam(atom/source, zap_range, damage, list/blacklistmobs)
 	var/list/zap_data = list()
-	for(var/mob/living/carbon/Xenomorph/beno in oview(zap_range, source))
+	for(var/mob/living/carbon/xenomorph/beno in oview(zap_range, source))
 		zap_data += beno
 	for(var/xeno in zap_data)
-		var/mob/living/carbon/Xenomorph/living = xeno
+		var/mob/living/carbon/xenomorph/living = xeno
 		if(!living)
 			return
 		if(living.stat == DEAD)

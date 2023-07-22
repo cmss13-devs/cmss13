@@ -35,13 +35,16 @@ del: Removed old things
 qol: made something easier to use
 balance: rebalanced something
 fix: fixed a few things
+spellcheck: fixed a few typos
+ui: changed something relating to user interfaces
+code: changed some code
+refactor: refactored some code
 soundadd: added a new sound thingy
 sounddel: removed an old sound thingy
 imageadd: added some icons and images
 imagedel: deleted some icons and images
-spellcheck: fixed a few typos
-code: changed some code
-refactor: refactored some code
+mapadd: added a new map or section to a map
+maptweak: tweaked a map
 config: changed some config setting
 admin: messed with admin stuff
 server: something server ops should know

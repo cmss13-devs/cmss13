@@ -25,7 +25,7 @@
 	icon_state = "syndicate1"
 	icon_closed = "syndicate1"
 	icon_opened = "syndicate1_open"
-	anchored = 0
+	anchored = FALSE
 
 /obj/structure/closet/gimmick/russian
 	name = "russian surplus closet"
@@ -77,7 +77,7 @@
 	icon_state = "syndicate"
 	icon_closed = "syndicate"
 	icon_opened = "syndicate_open"
-	anchored = 1
+	anchored = TRUE
 /obj/structure/closet/thunderdome/tdred
 	name = "red-team Thunderdome closet"
 
@@ -86,12 +86,12 @@
 	new /obj/item/clothing/suit/armor/tdome/red(src)
 	new /obj/item/clothing/suit/armor/tdome/red(src)
 	new /obj/item/clothing/suit/armor/tdome/red(src)
-	new /obj/item/weapon/melee/energy/sword(src)
-	new /obj/item/weapon/melee/energy/sword(src)
-	new /obj/item/weapon/melee/energy/sword(src)
-	new /obj/item/weapon/melee/baton(src)
-	new /obj/item/weapon/melee/baton(src)
-	new /obj/item/weapon/melee/baton(src)
+	new /obj/item/weapon/energy/sword(src)
+	new /obj/item/weapon/energy/sword(src)
+	new /obj/item/weapon/energy/sword(src)
+	new /obj/item/weapon/baton(src)
+	new /obj/item/weapon/baton(src)
+	new /obj/item/weapon/baton(src)
 	new /obj/item/storage/box/flashbangs(src)
 	new /obj/item/storage/box/flashbangs(src)
 	new /obj/item/storage/box/flashbangs(src)
@@ -110,12 +110,12 @@
 	new /obj/item/clothing/suit/armor/tdome/green(src)
 	new /obj/item/clothing/suit/armor/tdome/green(src)
 	new /obj/item/clothing/suit/armor/tdome/green(src)
-	new /obj/item/weapon/melee/energy/sword(src)
-	new /obj/item/weapon/melee/energy/sword(src)
-	new /obj/item/weapon/melee/energy/sword(src)
-	new /obj/item/weapon/melee/baton(src)
-	new /obj/item/weapon/melee/baton(src)
-	new /obj/item/weapon/melee/baton(src)
+	new /obj/item/weapon/energy/sword(src)
+	new /obj/item/weapon/energy/sword(src)
+	new /obj/item/weapon/energy/sword(src)
+	new /obj/item/weapon/baton(src)
+	new /obj/item/weapon/baton(src)
+	new /obj/item/weapon/baton(src)
 	new /obj/item/storage/box/flashbangs(src)
 	new /obj/item/storage/box/flashbangs(src)
 	new /obj/item/storage/box/flashbangs(src)

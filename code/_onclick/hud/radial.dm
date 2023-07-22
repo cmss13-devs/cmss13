@@ -23,17 +23,17 @@ GLOBAL_LIST_EMPTY(radial_menus)
 /atom/movable/screen/radial/slice/MouseEntered(location, control, params)
 	. = ..()
 	icon_state = "radial_slice_focus"
-/*	if(tooltips)
+/* if(tooltips)
 		openToolTip(usr, src, params, title = name) */
 
 /atom/movable/screen/radial/slice/MouseExited(location, control, params)
 	. = ..()
 	icon_state = "radial_slice"
-/*	if(tooltips)
+/* if(tooltips)
 		closeToolTip(usr) */
 
 
-/atom/movable/screen/radial/slice/clicked(var/mob/user)
+/atom/movable/screen/radial/slice/clicked(mob/user)
 	if(user.client == parent.current_user)
 		if(next_page)
 			parent.next_page()
@@ -55,7 +55,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	. = ..()
 	icon_state = "radial_center"
 
-/atom/movable/screen/radial/center/clicked(var/mob/user)
+/atom/movable/screen/radial/center/clicked(mob/user)
 	if(user.client == parent.current_user)
 		parent.finished = TRUE
 		return TRUE
@@ -256,7 +256,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	setup_menu(use_tooltips)
 
 
-/datum/radial_menu/proc/extract_image(image/E, var/label, var/use_labels)
+/datum/radial_menu/proc/extract_image(image/E, label, use_labels)
 	var/mutable_appearance/MA = new /mutable_appearance(E)
 	if(MA)
 		MA.layer = ABOVE_HUD_LAYER

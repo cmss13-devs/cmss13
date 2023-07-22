@@ -9,28 +9,29 @@
 	id = "drink"
 	description = "Uh, some kind of drink."
 	reagent_state = LIQUID
-	nutriment_factor = 1 * REAGENTS_METABOLISM
+	nutriment_factor = 0.5 * REAGENTS_METABOLISM
+	// Drinks should be used up faster than other reagents.
+	custom_metabolism = FOOD_METABOLISM
 	color = "#E78108" // rgb: 231, 129, 8
 	var/adj_dizzy = 0
 	var/adj_drowsy = 0
 	var/adj_sleepy = 0
 	var/adj_temp = 0
 
-/datum/reagent/drink/on_mob_life(mob/living/M, alien)
-	//This is all way too snowflake to accurately transition to the property system so it stays here
-	if(alien == IS_YAUTJA || alien == IS_HORROR || !holder)
+/datum/reagent/drink/on_mob_life(mob/living/M, alien, delta_time)
+	. = ..()
+	if(!.)
 		return
-	M.nutrition += nutriment_factor
-	// Drinks should be used up faster than other reagents.
-	holder.remove_reagent(src.id, FOOD_METABOLISM * 2)
+	//This is all way too snowflake to accurately transition to the property system so it stays here
+	M.nutrition += nutriment_factor * delta_time
 	if(adj_dizzy)
-		M.dizziness = max(0,M.dizziness + adj_dizzy)
+		M.dizziness = max(0,M.dizziness + adj_dizzy * delta_time)
 	if(adj_drowsy)
-		M.drowsyness = max(0,M.drowsyness + adj_drowsy)
+		M.drowsyness = max(0,M.drowsyness + adj_drowsy * delta_time)
 	if(adj_sleepy)
-		M.sleeping = max(0,M.sleeping + adj_sleepy)
+		M.sleeping = max(0,M.sleeping + adj_sleepy * delta_time)
 	if(adj_temp && M.bodytemperature < 310) //310 is the normal bodytemp. 310.055
-		M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
+		M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time))
 		M.recalculate_move_delay = TRUE
 
 /datum/reagent/drink/cold
@@ -59,10 +60,10 @@
 	description = "Tomatoes made into juice. What a waste of big, juicy tomatoes, huh?"
 	color = "#731008" // rgb: 115, 16, 8
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(M.getFireLoss() && prob(20)) M.heal_limb_damage(0,1)
+/datum/reagent/drink/tomatojuice/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	if(M.getFireLoss() && prob(20)) M.heal_limb_damage(0,1)
 
 
 /datum/reagent/drink/limejuice
@@ -70,10 +71,11 @@
 	id = "limejuice"
 	description = "The sweet-sour juice of limes."
 	color = "#365E30" // rgb: 54, 94, 48
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(M.getToxLoss() && prob(20)) M.apply_damage(-1*REM, TOX)
+
+/datum/reagent/drink/limejuice/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	if(M.getToxLoss() && prob(20)) M.apply_damage(-1*REM, TOX)
 
 /datum/reagent/drink/carrotjuice
 	name = "Carrot juice"
@@ -81,19 +83,19 @@
 	description = "It is just like a carrot but without crunching."
 	color = "#973800" // rgb: 151, 56, 0
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.eye_blurry = max(M.eye_blurry-1 , 0)
-		M.eye_blind = max(M.eye_blind-1 , 0)
-		if(!data) data = 1
-		switch(data)
-			if(1 to 20)
-				//nothing
-			if(21 to INFINITY)
-				if(prob(data-10))
-					M.disabilities &= ~NEARSIGHTED
-		data++
+/datum/reagent/drink/carrotjuice/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	M.ReduceEyeBlur(1)
+	M.ReduceEyeBlind(1)
+	if(!data) data = 1
+	switch(data)
+		if(1 to 20)
+			//nothing
+		if(21 to INFINITY)
+			if(prob(data-10))
+				M.disabilities &= ~NEARSIGHTED
+	data++
 
 /datum/reagent/drink/berryjuice
 	name = "Berry Juice"
@@ -113,10 +115,10 @@
 	description = "A tasty juice blended from various kinds of very deadly and toxic berries."
 	color = "#863353" // rgb: 134, 51, 83
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.apply_damage(1, TOX)
+/datum/reagent/drink/poisonberryjuice/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	M.apply_damage(1, TOX)
 
 /datum/reagent/drink/watermelonjuice
 	name = "Watermelon Juice"
@@ -159,12 +161,12 @@
 	description = "An opaque white liquid produced by the mammary glands of mammals."
 	color = "#DFDFDF" // rgb: 223, 223, 223
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(M.getBruteLoss() && prob(20)) M.heal_limb_damage(1,0)
-		holder.remove_reagent("capsaicin", 10*REAGENTS_METABOLISM)
-		holder.remove_reagent("hotsauce", 10*REAGENTS_METABOLISM)
+/datum/reagent/drink/milk/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	if(M.getBruteLoss() && prob(20)) M.heal_limb_damage(1,0)
+	holder.remove_reagent("capsaicin", 10*REAGENTS_METABOLISM)
+	holder.remove_reagent("hotsauce", 10*REAGENTS_METABOLISM)
 
 /datum/reagent/drink/milk/soymilk
 	name = "Soy Milk"
@@ -191,18 +193,18 @@
 	color = "#AEE5E4" // rgb" 174, 229, 228
 	adj_temp = 0
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(!M)
-			M = holder.my_atom
-		if(prob(1))
-			M.emote("shiver")
-		M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 0)
-		M.recalculate_move_delay = TRUE
-		holder.remove_reagent("capsaicin", 5)
-		holder.remove_reagent("hotsauce", 5)
-		holder.remove_reagent(src.id, FOOD_METABOLISM)
+/datum/reagent/drink/cold/milkshake/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	if(!M)
+		M = holder.my_atom
+	if(prob(1))
+		M.emote("shiver")
+	M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 0)
+	M.recalculate_move_delay = TRUE
+	holder.remove_reagent("capsaicin", 5)
+	holder.remove_reagent("hotsauce", 5)
+	holder.remove_reagent(src.id, FOOD_METABOLISM)
 
 //SOUTO//
 
@@ -211,7 +213,7 @@
 	id = "souto_classic"
 	description = "A tangerine flavored soda that's canned in Havana"
 	color = "#802b00"
-	adj_drowsy 	= 	-10
+	adj_drowsy = -10
 	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/drink/souto/cherry
@@ -277,7 +279,7 @@
 	id = "grapesoda"
 	description = "Grapes made into a fine drank."
 	color = "#421C52" // rgb: 98, 57, 53
-	adj_drowsy 	= 	-3
+	adj_drowsy = -3
 
 /datum/reagent/drink/cold/space_cola
 	name = "Space Cola"
@@ -285,7 +287,7 @@
 	description = "A refreshing beverage."
 	reagent_state = LIQUID
 	color = "#100800" // rgb: 16, 8, 0
-	adj_drowsy 	= 	-3
+	adj_drowsy = -3
 
 /datum/reagent/drink/cold/wy_cola
 	name = "Fruit Beer"
@@ -301,13 +303,13 @@
 	color = "#100800" // rgb: 16, 8, 0
 	adj_sleepy = -2
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.make_jittery(20)
-		M.druggy = max(M.druggy, 30)
-		M.dizziness +=5
-		M.drowsyness = 0
+/datum/reagent/drink/cold/nuka_cola/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	M.make_jittery(20)
+	M.druggy = max(M.druggy, 30)
+	M.dizziness +=5
+	M.drowsyness = 0
 
 /datum/reagent/drink/cold/spacemountainwind
 	name = "Mountain Wind"
@@ -362,7 +364,7 @@
 	. = ..()
 	if(!.) return
 	M.make_jittery(5)
-	if(adj_temp > 0)
+	if(adj_temp > 0 && holder)
 		holder.remove_reagent("frostoil", 10*REAGENTS_METABOLISM)
 
 	if(volume > overdose)
@@ -377,7 +379,7 @@
 			M.apply_effect(20, PARALYZE)
 			var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
 			if(prob(10) && E)
-				E.damage += 0.5
+				E.take_damage(0.5, TRUE)
 				M.emote(pick("twitch", "blink_r", "shiver"))
 
 /datum/reagent/drink/coffee/icecoffee
@@ -397,11 +399,11 @@
 	adj_temp = 5
 	chemclass = CHEM_CLASS_NONE
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.sleeping = 0
-		if(M.getBruteLoss() && prob(20)) M.heal_limb_damage(1,0)
+/datum/reagent/drink/coffee/soy_latte/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	M.sleeping = 0
+	if(M.getBruteLoss() && prob(20)) M.heal_limb_damage(1,0)
 
 /datum/reagent/drink/coffee/cafe_latte
 	name = "Cafe Latte"
@@ -411,11 +413,11 @@
 	adj_sleepy = 0
 	adj_temp = 5
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.sleeping = 0
-		if(M.getBruteLoss() && prob(20)) M.heal_limb_damage(1,0)
+/datum/reagent/drink/coffee/cafe_latte/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	M.sleeping = 0
+	if(M.getBruteLoss() && prob(20)) M.heal_limb_damage(1,0)
 
 /datum/reagent/drink/tea
 	name = "Tea"
@@ -428,11 +430,11 @@
 	adj_temp = 5
 	chemclass = CHEM_CLASS_UNCOMMON
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(M.getToxLoss() && prob(20))
-			M.apply_damage(-1, TOX)
+/datum/reagent/drink/tea/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	if(M.getToxLoss() && prob(20))
+		M.apply_damage(-1, TOX)
 
 /datum/reagent/drink/tea/icetea
 	name = "Iced Tea"
@@ -503,22 +505,22 @@
 	reagent_state = LIQUID
 	color = "#666300" // rgb: 102, 99, 0
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.druggy = max(M.druggy, 50)
-		M.confused = max(M.confused+2,0)
-		M.make_dizzy(10)
-		if(!M.stuttering) M.stuttering = 1
-		M.stuttering += 3
-		if(!data) data = 1
-		data++
-		switch(data)
-			if(51 to 200)
-				M.sleeping++
-			if(201 to INFINITY)
-				M.sleeping++
-				M.apply_damage(2, TOX)
+/datum/reagent/atomicbomb/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	M.druggy = max(M.druggy, 50)
+	M.confused = max(M.confused+2,0)
+	M.make_dizzy(10)
+	if(!M.stuttering) M.stuttering = 1
+	M.stuttering += 3
+	if(!data) data = 1
+	data++
+	switch(data)
+		if(51 to 200)
+			M.sleeping++
+		if(201 to INFINITY)
+			M.sleeping++
+			M.apply_damage(2, TOX)
 
 /datum/reagent/gargle_blaster
 	name = "Pan-Galactic Gargle Blaster"
@@ -527,21 +529,21 @@
 	reagent_state = LIQUID
 	color = "#664300" // rgb: 102, 67, 0
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(!data) data = 1
-		data++
-		M.dizziness +=6
-		if(data >= 15 && data <45)
-			if(!M.stuttering) M.stuttering = 1
-			M.stuttering += 3
-		else if(data >= 45 && prob(50) && data <55)
-			M.confused = max(M.confused+3,0)
-		else if(data >=55)
-			M.druggy = max(M.druggy, 55)
-		else if(data >=200)
-			M.apply_damage(2, TOX)
+/datum/reagent/gargle_blaster/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	if(!data) data = 1
+	data++
+	M.dizziness +=6
+	if(data >= 15 && data <45)
+		if(!M.stuttering) M.stuttering = 1
+		M.stuttering += 3
+	else if(data >= 45 && prob(50) && data <55)
+		M.confused = max(M.confused+3,0)
+	else if(data >=55)
+		M.druggy = max(M.druggy, 55)
+	else if(data >=200)
+		M.apply_damage(2, TOX)
 
 /datum/reagent/neurotoxin
 	name = "Neurotoxin"
@@ -550,22 +552,22 @@
 	reagent_state = LIQUID
 	color = "#2E2E61" // rgb: 46, 46, 97
 
-	on_mob_life(mob/living/carbon/M)
-		. = ..()
-		if(!.) return
-		M.knocked_down = max(M.knocked_down, 3)
-		if(!data) data = 1
-		data++
-		M.dizziness +=6
-		if(data >= 15 && data <45)
-			if(!M.stuttering) M.stuttering = 1
-			M.stuttering += 3
-		else if(data >= 45 && prob(50) && data <55)
-			M.confused = max(M.confused+3,0)
-		else if(data >=55)
-			M.druggy = max(M.druggy, 55)
-		else if(data >=200)
-			M.apply_damage(2, TOX)
+/datum/reagent/neurotoxin/on_mob_life(mob/living/carbon/M)
+	. = ..()
+	if(!.) return
+	M.knocked_down = max(M.knocked_down, 3)
+	if(!data) data = 1
+	data++
+	M.dizziness +=6
+	if(data >= 15 && data <45)
+		if(!M.stuttering) M.stuttering = 1
+		M.stuttering += 3
+	else if(data >= 45 && prob(50) && data <55)
+		M.confused = max(M.confused+3,0)
+	else if(data >=55)
+		M.druggy = max(M.druggy, 55)
+	else if(data >=200)
+		M.apply_damage(2, TOX)
 
 /datum/reagent/hippies_delight
 	name = "Hippies' Delight"
@@ -574,37 +576,37 @@
 	reagent_state = LIQUID
 	color = "#664300" // rgb: 102, 67, 0
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.druggy = max(M.druggy, 50)
-		if(!data) data = 1
-		data++
-		switch(data)
-			if(1 to 5)
-				if(!M.stuttering) M.stuttering = 1
-				M.make_dizzy(10)
-				if(prob(10)) M.emote(pick("twitch","giggle"))
-			if(5 to 10)
-				if(!M.stuttering) M.stuttering = 1
-				M.make_jittery(20)
-				M.make_dizzy(20)
-				M.druggy = max(M.druggy, 45)
-				if(prob(20)) M.emote(pick("twitch","giggle"))
-			if(10 to 200)
-				if(!M.stuttering) M.stuttering = 1
-				M.make_jittery(40)
-				M.make_dizzy(40)
-				M.druggy = max(M.druggy, 60)
-				if(prob(30)) M.emote(pick("twitch","giggle"))
-			if(200 to INFINITY)
-				if(!M.stuttering) M.stuttering = 1
-				M.make_jittery(60)
-				M.make_dizzy(60)
-				M.druggy = max(M.druggy, 75)
-				if(prob(40)) M.emote(pick("twitch","giggle"))
-				if(prob(30)) M.apply_damage(2, TOX)
-		holder.remove_reagent(src.id, 0.2)
+/datum/reagent/hippies_delight/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	M.druggy = max(M.druggy, 50)
+	if(!data) data = 1
+	data++
+	switch(data)
+		if(1 to 5)
+			if(!M.stuttering) M.stuttering = 1
+			M.make_dizzy(10)
+			if(prob(10)) M.emote(pick("twitch","giggle"))
+		if(5 to 10)
+			if(!M.stuttering) M.stuttering = 1
+			M.make_jittery(20)
+			M.make_dizzy(20)
+			M.druggy = max(M.druggy, 45)
+			if(prob(20)) M.emote(pick("twitch","giggle"))
+		if(10 to 200)
+			if(!M.stuttering) M.stuttering = 1
+			M.make_jittery(40)
+			M.make_dizzy(40)
+			M.druggy = max(M.druggy, 60)
+			if(prob(30)) M.emote(pick("twitch","giggle"))
+		if(200 to INFINITY)
+			if(!M.stuttering) M.stuttering = 1
+			M.make_jittery(60)
+			M.make_dizzy(60)
+			M.druggy = max(M.druggy, 75)
+			if(prob(40)) M.emote(pick("twitch","giggle"))
+			if(prob(30)) M.apply_damage(2, TOX)
+	holder.remove_reagent(src.id, 0.2)
 
 /datum/reagent/drink/cold/rewriter
 	name = "Rewriter"
@@ -612,30 +614,20 @@
 	id = "rewriter"
 	color = "#485000" // rgb:72, 080, 0
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.make_jittery(5)
+/datum/reagent/drink/cold/rewriter/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	M.make_jittery(5)
 
-/datum/reagent/doctor_delight
+/datum/reagent/drink/doctor_delight
 	name = "The Doctor's Delight"
 	id = "doctorsdelight"
 	description = "A gulp a day keeps the MediBot away. That's probably for the best."
-	reagent_state = LIQUID
 	color = "#FF8CFF" // rgb: 255, 140, 255
-	nutriment_factor = 1 * FOOD_METABOLISM
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M:nutrition += nutriment_factor
-		holder.remove_reagent(src.id, FOOD_METABOLISM)
-		if(M:getOxyLoss() && prob(50)) M:apply_damage(-2, OXY)
-		if(M:getBruteLoss() && prob(60)) M:heal_limb_damage(2,0)
-		if(M:getFireLoss() && prob(50)) M:heal_limb_damage(0,2)
-		if(M:getToxLoss() && prob(50)) M:apply_damage(-2, TOX)
-		if(M.dizziness !=0) M.dizziness = max(0,M.dizziness-15)
-		if(M.confused !=0) M.confused = max(0,M.confused - 5)
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	properties = list(PROPERTY_NEOGENETIC = 0.5, PROPERTY_ANTICORROSIVE = 0.5, PROPERTY_ANTITOXIC = 0.5, PROPERTY_OXYGENATING = 0.5, PROPERTY_RELAXING = 1)
+	adj_dizzy = -3
 
 /datum/reagent/drink/cold/kiraspecial
 	name = "Kira Special"

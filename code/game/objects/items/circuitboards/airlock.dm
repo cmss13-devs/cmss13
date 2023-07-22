@@ -1,12 +1,14 @@
 
 /obj/item/circuitboard/airlock
 	name = "airlock electronics"
+	gender = PLURAL
 	icon_state = "door_electronics"
-	w_class = SIZE_SMALL //It should be tiny! -Agouri
+	w_class = SIZE_SMALL
 	matter = list("metal" = 50,"glass" = 50)
 	req_access = list(ACCESS_CIVILIAN_ENGINEERING)
 	var/list/conf_access = null
-	var/one_access = 0 //if set to 1, door would receive req_one_access instead of req_access
+	/// if set to 1, door would receive req_one_access instead of req_access
+	var/one_access = 0
 	var/last_configurator = null
 	var/locked = 1
 	var/fried = FALSE
@@ -42,7 +44,7 @@
 
 		t1 += "<br>"
 
-		var/list/accesses = get_all_accesses()
+		var/list/accesses = get_all_main_access()
 		for (var/acc in accesses)
 			var/aname = get_access_desc(acc)
 
@@ -92,7 +94,7 @@
 	attack_self(usr)
 
 
-/obj/item/circuitboard/airlock/proc/toggle_access(var/acc)
+/obj/item/circuitboard/airlock/proc/toggle_access(acc)
 	if (acc == "all")
 		conf_access = null
 	else

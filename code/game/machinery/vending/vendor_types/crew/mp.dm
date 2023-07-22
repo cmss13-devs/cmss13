@@ -12,10 +12,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police, list(
 		list("M4A3 Pistol", 0, /obj/item/storage/belt/gun/m4a3/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 		list("Mod 88 Pistol", 0, /obj/item/storage/belt/gun/m4a3/mod88, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 
-		list("ARMOR (CHOOSE 1)", 0, null, null, null),
+		list("ARMOR (TAKE ALL)", 0, null, null, null),
 		list("Military Police M2 Armor", 0, /obj/item/clothing/suit/storage/marine/MP, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Military Police M2 Armor and Service Jacket", 0, /obj/item/clothing/suit/storage/marine/MP/jacket, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Military Police M2 Padless Armor", 0, /obj/item/clothing/suit/storage/marine/MP/padless, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Military Police M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
@@ -25,15 +23,15 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police, list(
 		list("Security HUD Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
-		list("First-Aid Pouch (Full)", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		list("Medium General Pouch", 0, /obj/item/storage/pouch/general/medium, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("First-Aid Pouch (Full)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Medium General Pouch", 0, /obj/item/storage/pouch/general/medium, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
 		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("HAT (CHOOSE 1)", 0, null, null, null),
-		list("MP Beret", 0, /obj/item/clothing/head/helmet/beret/marine/mp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
+		list("MP Beret", 0, /obj/item/clothing/head/beret/marine/mp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 
 	))
 
@@ -41,9 +39,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police, list(
 	name = "\improper ColMarTech Military Police Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of Military Police standard-issue equipment."
 	req_access = list(ACCESS_MARINE_BRIG)
-	vendor_role = list(JOB_POLICE, JOB_POLICE_CADET)
+	vendor_role = list(JOB_POLICE)
 
-/obj/structure/machinery/cm_vending/clothing/military_police/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/military_police/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_military_police
 
 //------------ Warden CLOTHING VENDOR---------------
@@ -61,10 +59,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_warden, list(
 		list("Mod 88 Pistol", 0, /obj/item/storage/belt/gun/m4a3/mod88, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 		list("M44 Revolver", 0, /obj/item/storage/belt/gun/m44/mp, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 
-		list("ARMOR (CHOOSE 1)", 0, null, null, null),
+		list("ARMOR (TAKE ALL)", 0, null, null, null),
 		list("Military Warden M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/warden, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Military Warden M3 Armor and Service Jacket", 0, /obj/item/clothing/suit/storage/marine/MP/warden/jacket, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Military Warden M3 Padless Armor", 0, /obj/item/clothing/suit/storage/marine/MP/warden/padless, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Military Police M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
@@ -74,15 +70,15 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_warden, list(
 		list("Security HUD Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
-		list("First-Aid Pouch (Full)", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		list("Medium General Pouch", 0, /obj/item/storage/pouch/general/medium, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("First-Aid Pouch (Full)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Medium General Pouch", 0, /obj/item/storage/pouch/general/medium, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
 		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("HAT (CHOOSE 1)", 0, null, null, null),
-		list("Warden Peaked Cap", 0, /obj/item/clothing/head/helmet/beret/marine/mp/warden, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
+		list("Warden Peaked Cap", 0, /obj/item/clothing/head/beret/marine/mp/warden, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 	))
 
 /obj/structure/machinery/cm_vending/clothing/military_police_warden
@@ -91,5 +87,5 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_warden, list(
 	req_access = list(ACCESS_MARINE_BRIG)
 	vendor_role = list(JOB_WARDEN)
 
-/obj/structure/machinery/cm_vending/clothing/military_police_warden/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/military_police_warden/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_military_police_warden

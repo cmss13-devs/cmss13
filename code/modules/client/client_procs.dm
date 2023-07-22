@@ -1,12 +1,12 @@
 	////////////
 	//SECURITY//
 	////////////
-#define TOPIC_SPAM_DELAY	2		//2 ticks is about 2/10ths of a second; it was 4 ticks, but that caused too many clicks to be lost due to lag
-#define UPLOAD_LIMIT		10485760	//Restricts client uploads to the server to 10MB //Boosted this thing. What's the worst that can happen?
-#define MIN_CLIENT_VERSION	0		//Just an ambiguously low version for now, I don't want to suddenly stop people playing.
+#define TOPIC_SPAM_DELAY 2 //2 ticks is about 2/10ths of a second; it was 4 ticks, but that caused too many clicks to be lost due to lag
+#define UPLOAD_LIMIT 10485760 //Restricts client uploads to the server to 10MB //Boosted this thing. What's the worst that can happen?
+#define MIN_CLIENT_VERSION 0 //Just an ambiguously low version for now, I don't want to suddenly stop people playing.
 									//I would just like the code ready should it ever need to be used.
-#define GOOD_BYOND_MAJOR	513
-#define GOOD_BYOND_MINOR	1500
+#define GOOD_BYOND_MAJOR 513
+#define GOOD_BYOND_MINOR 1500
 
 GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
@@ -15,12 +15,12 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1548" = "bug breaking the \"alpha\" functionality in the game, allowing clients to be able to see things/mobs they should not be able to see.",
 	))
 
-#define LIMITER_SIZE	5
-#define CURRENT_SECOND	1
-#define SECOND_COUNT	2
-#define CURRENT_MINUTE	3
-#define MINUTE_COUNT	4
-#define ADMINSWARNED_AT	5
+#define LIMITER_SIZE 5
+#define CURRENT_SECOND 1
+#define SECOND_COUNT 2
+#define CURRENT_MINUTE 3
+#define MINUTE_COUNT 4
+#define ADMINSWARNED_AT 5
 	/*
 	When somebody clicks a link in game, this Topic is called first.
 	It does the stuff in this proc and  then is redirected to the Topic() proc for the src=[0xWhatever]
@@ -46,16 +46,19 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
 	/client/proc/toggle_middle_mouse_click,
+	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
 	/client/proc/toggle_dualwield,
 	/client/proc/toggle_middle_mouse_swap_hands,
 	/client/proc/toggle_vend_item_to_hand,
 	/client/proc/switch_item_animations,
-	/client/proc/toggle_admin_sound_types
+	/client/proc/toggle_admin_sound_types,
+	/client/proc/receive_random_tip,
+	/client/proc/set_eye_blur_type,
 ))
 
 /client/Topic(href, href_list, hsrc)
-	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
+	if(!usr || usr != mob) //stops us calling Topic for somebody else's client. Also helps prevent usr=null
 		return
 
 	// asset_cache
@@ -82,7 +85,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				msg += " Administrators have been informed."
 				log_game("[key_name(src)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
 				message_admins("[key_name(usr)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
-			to_chat(src, "<span class='danger'>[msg]</span>")
+			to_chat(src, SPAN_DANGER("[msg]"))
 			return
 
 	var/stl = CONFIG_GET(number/second_topic_limit)
@@ -95,20 +98,30 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			topiclimiter[SECOND_COUNT] = 0
 		topiclimiter[SECOND_COUNT] += 1
 		if (topiclimiter[SECOND_COUNT] > stl)
-			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
+			to_chat(src, SPAN_DANGER("Your previous action was ignored because you've done too many in a second"))
 			return
 
 	// Tgui Topic middleware
 	if(tgui_Topic(href_list))
 		return
+
+	//Logs all other hrefs
+	if(CONFIG_GET(flag/log_hrefs) && GLOB.world_href_log)
+		WRITE_LOG(GLOB.world_href_log, "<small>[src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>")
+
 	if(href_list["reload_tguipanel"])
 		nuke_chat()
 	if(href_list["reload_statbrowser"])
 		stat_panel.reinitialize()
 
+	// TGUIless adminhelp
+	if(href_list["tguiless_adminhelp"])
+		no_tgui_adminhelp(input(src, "Enter your ahelp", "Ahelp") as null|message)
+		return
+
 	//byond bug ID:2256651
 	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
-		to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
+		to_chat(src, SPAN_DANGER("An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)"))
 		src << browse("...", "window=asset_cache_browser")
 		return
 
@@ -119,7 +132,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//search the href for script injection
 	if(findtext(href,"<script",1,0) )
 		world.log << "Attempted use of scripts within a topic call, by [src]"
-		message_staff("Attempted use of scripts within a topic call, by [src]")
+		message_admins("Attempted use of scripts within a topic call, by [src]")
 		//del(usr)
 		return
 
@@ -137,8 +150,17 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return
 
 	else if(href_list["FaxView"])
-		var/info = locate(href_list["FaxView"])
-		show_browser(usr, "<body class='paper'>[info]</body>", "Fax Message", "Fax Message")
+
+		var/datum/fax/info = locate(href_list["FaxView"])
+
+		if(!istype(info))
+			return
+
+		if(info.photo_list)
+			for(var/photo in info.photo_list)
+				usr << browse_rsc(info.photo_list[photo], photo)
+
+		show_browser(usr, "<body class='paper'>[info.data]</body>", "Fax Message", "Fax Message")
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)
@@ -187,10 +209,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		var/datum/entity/player/P = get_player_from_key(key)
 		P.remove_note(index)
 
-	//Logs all hrefs
-	if(CONFIG_GET(flag/log_hrefs) && href_logfile)
-		href_logfile << "<small>[time2text(world.timeofday,"hh:mm")] [src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>"
-
 	switch(href_list["_src_"])
 		if("admin_holder")
 			hsrc = admin_holder
@@ -221,15 +239,15 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			if(proc_to_call in GLOB.whitelisted_client_procs)
 				call(src, proc_to_call)()
 			else
-				message_staff("[key_name_admin(src)] attempted to do a href exploit. (Inputted command: [html_encode(proc_to_call)])")
+				message_admins("[key_name_admin(src)] attempted to do a href exploit. (Inputted command: [html_encode(proc_to_call)])")
 			return // Don't call hsrc in this case since it's ourselves
 
 	if(href_list[CLAN_ACTION])
 		clan_topic(href, href_list)
 
-	return ..()	//redirect to hsrc.Topic()
+	return ..() //redirect to hsrc.Topic()
 
-/client/proc/handle_spam_prevention(var/message, var/mute_type)
+/client/proc/handle_spam_prevention(message, mute_type)
 	if(CONFIG_GET(flag/automute_on) && !admin_holder && src.last_message == message)
 		src.last_message_count++
 		if(src.last_message_count >= SPAM_TRIGGER_AUTOMUTE)
@@ -249,13 +267,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(filelength > UPLOAD_LIMIT)
 		to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT/1024]KiB.</font>")
 		return 0
-/*	//Don't need this at the moment. But it's here if it's needed later.
+/* //Don't need this at the moment. But it's here if it's needed later.
 	//Helps prevent multiple files being uploaded at once. Or right after eachother.
 	var/time_to_wait = fileaccess_timer - world.time
 	if(time_to_wait > 0)
 		to_chat(src, "<font color='red'>Error: AllowUpload(): Spam prevention. Please wait [round(time_to_wait/10)] seconds.</font>")
 		return 0
-	fileaccess_timer = world.time + FTPDELAY	*/
+	fileaccess_timer = world.time + FTPDELAY */
 	return 1
 
 
@@ -264,9 +282,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	///////////
 /client/New(TopicData)
 	soundOutput = new /datum/soundOutput(src)
-	TopicData = null							//Prevent calls to client.Topic from connect
+	TopicData = null //Prevent calls to client.Topic from connect
 
-	if(!(connection in list("seeker", "web")))					//Invalid connection type.
+	if(!(connection in list("seeker", "web"))) //Invalid connection type.
 		return null
 
 	if(IsGuestKey(key))
@@ -279,10 +297,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	// Instantiate stat panel
 	stat_panel = new(src, "statbrowser")
-	stat_panel.subscribe(src, .proc/on_stat_panel_message)
+	stat_panel.subscribe(src, PROC_REF(on_stat_panel_message))
 
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
+	tgui_say = new(src, "tgui_say")
 
 	// Change the way they should download resources.
 	var/static/next_external_rsc = 0
@@ -296,8 +315,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(!CONFIG_GET(flag/no_localhost_rank))
 		var/static/list/localhost_addresses = list("127.0.0.1", "::1")
 		if(isnull(address) || (address in localhost_addresses))
-			var/datum/admins/admin = new("!localhost!", R_EVERYTHING, ckey)
+			var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
 			admin.associate(src)
+			RoleAuthority.roles_whitelist[ckey] = WHITELIST_EVERYTHING
 
 	//Admin Authorisation
 	admin_holder = admin_datums[ckey]
@@ -312,8 +332,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		prefs = new /datum/preferences(src)
 		preferences_datums[ckey] = prefs
 	prefs.client_reconnected(src)
-	prefs.last_ip = address				//these are gonna be used for banning
-	prefs.last_id = computer_id			//these are gonna be used for banning
+	prefs.last_ip = address //these are gonna be used for banning
+	prefs.last_id = computer_id //these are gonna be used for banning
 	fps = prefs.fps
 	xeno_prefix = prefs.xeno_prefix
 	xeno_postfix = prefs.xeno_postfix
@@ -336,7 +356,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		GLOB.player_details[ckey] = player_details
 
 	view = world_view_size
-	. = ..()	//calls mob.Login()
+	. = ..() //calls mob.Login()
 
 	if(SSinput.initialized)
 		INVOKE_ASYNC(src, /client/proc/set_macros)
@@ -370,16 +390,17 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		inline_js = file("html/statbrowser.js"),
 		inline_css = file("html/statbrowser.css"),
 	)
-	addtimer(CALLBACK(src, .proc/check_panel_loaded), 30 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(check_panel_loaded)), 30 SECONDS)
 
 	tgui_panel.initialize()
+	tgui_say.initialize()
 
 	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list["Global"]
 	CEI.show_player_event_info(src)
 
 	if(mob && !isobserver(mob) && !isnewplayer(mob))
-		if(isXeno(mob))
-			var/mob/living/carbon/Xenomorph/X = mob
+		if(isxeno(mob))
+			var/mob/living/carbon/xenomorph/X = mob
 			if(X.hive && GLOB.custom_event_info_list[X.hive])
 				CEI = GLOB.custom_event_info_list[X.hive]
 				CEI.show_player_event_info(src)
@@ -418,7 +439,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			add_verb(src, /client/proc/set_ooc_color_self)
 
 	//if(prefs.window_skin & TOGGLE_WINDOW_SKIN)
-	//	set_night_skin()
+	// set_night_skin()
 
 	load_player_data()
 
@@ -430,7 +451,18 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//DISCONNECT//
 	//////////////
 /client/Del()
+	if(!gc_destroyed)
+		gc_destroyed = world.time
+		if (!QDELING(src))
+			stack_trace("Client does not purport to be QDELING, this is going to cause bugs in other places!")
+
+		SEND_SIGNAL(src, COMSIG_PARENT_QDELETING, TRUE)
+		Destroy()
+	return ..()
+
+/client/Destroy()
 	QDEL_NULL(soundOutput)
+	QDEL_NULL(obj_window)
 	if(prefs)
 		prefs.owner = null
 		QDEL_NULL(prefs.preview_dummy)
@@ -445,14 +477,12 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	unansweredAhelps?.Remove(computer_id)
 	log_access("Logout: [key_name(src)]")
 	if(CLIENT_IS_STAFF(src))
-		message_staff("Admin logout: [key_name(src)]")
+		message_admins("Admin logout: [key_name(src)]")
 
-	. = ..()
+		var/list/adm = get_admin_counts(R_MOD)
+		REDIS_PUBLISH("byond.access", "type" = "logout", "key" = src.key, "remaining" = length(adm["total"]), "afk" = length(adm["afk"]))
 
-/client/Destroy()
-	QDEL_NULL(obj_window)
-	. = ..()
-
+	..()
 	return QDEL_HINT_HARDDEL_NOW
 
 
@@ -464,7 +494,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /client/proc/notify_login()
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[byond_version].[byond_build]")
 	if(CLIENT_IS_STAFF(src))
-		message_staff("Admin login: [key_name(src)]")
+		message_admins("Admin login: [key_name(src)]")
+
+		var/list/adm = get_admin_counts(R_MOD)
+		REDIS_PUBLISH("byond.access", "type" = "login", "key" = src.key, "remaining" = length(adm["total"]), "afk" = length(adm["afk"]))
+
 	if(CONFIG_GET(flag/log_access))
 		for(var/mob/M in GLOB.player_list)
 			if( M.key && (M.key != key) )
@@ -472,22 +506,22 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if( (M.lastKnownIP == address) )
 					matches += "IP ([address])"
 				if( (connection != "web") && (M.computer_id == computer_id) )
-					if(matches)	matches += " and "
+					if(matches) matches += " and "
 					matches += "ID ([computer_id])"
 					spawn() alert("You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
 				if(matches)
 					if(M.client)
-						message_staff("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as <A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(M)]</A>.")]", 1)
+						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as <A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(M)]</A>.")]", 1)
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)].")
 					else
-						message_staff("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in).")]", 1)
+						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in).")]", 1)
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in).")
 
 
 //checks if a client is afk
 //3000 frames = 5 minutes
 /client/proc/is_afk(duration=3000)
-	if(inactivity > duration)	return inactivity
+	if(inactivity > duration) return inactivity
 	return 0
 
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
@@ -497,9 +531,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		src << browse('code/modules/asset_cache/validate_assets.html', "window=asset_cache_browser")
 
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
-		addtimer(CALLBACK(SSassets.transport, /datum/asset_transport.proc/send_assets_slow, src, SSassets.transport.preload), 5 SECONDS)
+		addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
 
-/proc/setup_player_entity(var/ckey)
+/proc/setup_player_entity(ckey)
 	if(!ckey)
 		return
 	if(player_entities["[ckey]"])
@@ -516,9 +550,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		// var/datum/entity/player_entity/P = player_entities["[key_ref]"]
 		// P.save_statistics()
 	log_debug("STATISTICS: Statistics saving complete.")
-	message_staff("STATISTICS: Statistics saving complete.")
+	message_admins("STATISTICS: Statistics saving complete.")
 
-/client/proc/clear_chat_spam_mute(var/warn_level = 1, var/message = FALSE, var/increase_warn = FALSE)
+/client/proc/clear_chat_spam_mute(warn_level = 1, message = FALSE, increase_warn = FALSE)
 	if(talked > warn_level)
 		return
 	talked = 0
@@ -532,7 +566,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	add_verb(src, /client/proc/show_combat_chat_preferences)
 	add_verb(src, /client/proc/show_ghost_preferences)
 
-/client/proc/runtime_macro_insert(var/macro_button, var/parent, var/command)
+/client/proc/runtime_macro_insert(macro_button, parent, command)
 	if (!macro_button || !parent || !command)
 		return
 
@@ -546,7 +580,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	winset(src, "[parent].[macro_button]", "parent=[parent];name=[macro_button];command=[command]")
 
-/client/proc/runtime_macro_remove(var/macro_button, var/parent)
+/client/proc/runtime_macro_remove(macro_button, parent)
 	if (!macro_button || !parent)
 		return
 
@@ -558,7 +592,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	winset(src, "[parent].[macro_button]", "parent=")
 
-/client/verb/read_key_down(var/key as text|null)
+/client/verb/read_key_down(key as text|null)
 	set name = ".Read Key Down"
 	set hidden = TRUE
 
@@ -567,7 +601,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	SEND_SIGNAL(src, COMSIG_CLIENT_KEY_DOWN, key)
 
-/client/verb/read_key_up(var/key as text|null)
+/client/verb/read_key_up(key as text|null)
 	set name = ".Read Key Up"
 	set hidden = TRUE
 
@@ -578,12 +612,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 
 /**
-  * Compiles a full list of verbs to be sent to the browser
-  * Sends the 2D verbs vector of (verb category, verb name)
-  */
+* Compiles a full list of verbs to be sent to the browser
+* Sends the 2D verbs vector of (verb category, verb name)
+*/
 /client/proc/init_verbs()
 	if(IsAdminAdvancedProcCall())
-		return
+		alert_proccall("init_verbs")
+		return PROC_BLOCKED
 	var/list/verblist = list()
 	var/list/verbstoprocess = verbs.Copy()
 	if(mob)
@@ -650,14 +685,54 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					movement_keys[key] = WEST
 				if("South")
 					movement_keys[key] = SOUTH
-				if("Say")
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
-				if("OOC")
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
-				if("LOOC")
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
-				if("Me")
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
+				if(SAY_CHANNEL)
+					if(prefs.tgui_say)
+						var/say = tgui_say_create_open_command(SAY_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[say]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
+				if(COMMS_CHANNEL)
+					if(prefs.tgui_say)
+						var/radio = tgui_say_create_open_command(COMMS_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[radio]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
+				if(ME_CHANNEL)
+					if(prefs.tgui_say)
+						var/me = tgui_say_create_open_command(ME_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[me]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
+				if(OOC_CHANNEL)
+					if(prefs.tgui_say)
+						var/ooc = tgui_say_create_open_command(OOC_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[ooc]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
+				if(LOOC_CHANNEL)
+					if(prefs.tgui_say)
+						var/looc = tgui_say_create_open_command(LOOC_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
+				if(ADMIN_CHANNEL)
+					if(admin_holder?.check_for_rights(R_MOD))
+						if(prefs.tgui_say)
+							var/asay = tgui_say_create_open_command(ADMIN_CHANNEL)
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[asay]")
+						else
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=asay")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
+				if(MENTOR_CHANNEL)
+					if(admin_holder?.check_for_rights(R_MENTOR))
+						if(prefs.tgui_say)
+							var/mentor = tgui_say_create_open_command(MENTOR_CHANNEL)
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[mentor]")
+						else
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=mentorsay")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 				if("Whisper")
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 
@@ -682,7 +757,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	var/mob/dead/observer/observer = mob
 	observer.ManualFollow(target)
 
-/client/proc/check_timelock(var/list/roles, var/hours)
+/client/proc/check_timelock(list/roles, hours)
 	var/timelock_name = "[islist(roles) ? jointext(roles, "") : roles][hours]"
 	if(!GLOB.timelocks[timelock_name])
 		GLOB.timelocks[timelock_name] = TIMELOCK_JOB(roles, hours)
@@ -696,3 +771,24 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	set hidden = TRUE
 
 	init_verbs()
+
+/client/proc/open_filter_editor(atom/in_atom)
+	if(admin_holder)
+		admin_holder.filteriffic = new /datum/filter_editor(in_atom)
+		admin_holder.filteriffic.tgui_interact(mob)
+
+/// Clears the client's screen, aside from ones that opt out
+/client/proc/clear_screen()
+	for (var/object in screen)
+		if (istype(object, /atom/movable/screen))
+			var/atom/movable/screen/screen_object = object
+			if (!screen_object.clear_with_screen)
+				continue
+
+		screen -= object
+
+///opens the particle editor UI for the in_atom object for this client
+/client/proc/open_particle_editor(atom/movable/in_atom)
+	if(admin_holder)
+		admin_holder.particle_test = new /datum/particle_editor(in_atom)
+		admin_holder.particle_test.tgui_interact(mob)

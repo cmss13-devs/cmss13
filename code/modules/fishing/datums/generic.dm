@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(fishing_loot_tables)
 		/obj/item/reagent_container/pill/ultrazine/unmarked
 	)
 
-/datum/fish_loot_table/proc/return_caught_fish(var/common_weight, var/uncommon_weight, var/rare_weight, var/ultra_rare_weight)
+/datum/fish_loot_table/proc/return_caught_fish(common_weight, uncommon_weight, rare_weight, ultra_rare_weight)
 	if(prob(common_weight))
 		return pick(common_fishable_atoms)
 	else if (prob(uncommon_weight))

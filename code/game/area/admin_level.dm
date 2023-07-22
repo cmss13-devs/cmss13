@@ -100,8 +100,8 @@
 
 /area/adminlevel/bunker01/caves/xeno/Entered(A, atom/OldLoc)
 	. = ..()
-	if(isXeno(A))
-		var/mob/living/carbon/Xenomorph/X = A
+	if(isxeno(A))
+		var/mob/living/carbon/xenomorph/X = A
 
 		X.away_timer = XENO_LEAVE_TIMER
 		X.set_hive_and_update(hivenumber)
@@ -110,8 +110,24 @@
 /area/adminlevel/ert_station
 	name = "ERT Station"
 	icon_state = "green"
-	requires_power = 0
+	requires_power = FALSE
 	flags_area = AREA_NOTUNNEL
+
+/area/adminlevel/ert_station/upp_station
+	name = "UPP Station"
+	icon_state = "green"
+
+/area/adminlevel/ert_station/clf_station
+	name = "CLF Station"
+	icon_state = "white"
+
+/area/adminlevel/ert_station/weyland_station
+	name = "Weyland-Yutani Station"
+	icon_state = "red"
+
+/area/adminlevel/ert_station/freelancer_station
+	name = "Freelancer Station"
+	icon_state = "yellow"
 
 /area/adminlevel/ert_station/shuttle_dispatch
 	name = "Shuttle Dispatch Station"
@@ -124,3 +140,7 @@
 	icon_state = "green"
 	requires_power = 0
 	flags_area = AREA_NOTUNNEL
+
+/area/misc/testroom
+	requires_power = FALSE
+	name = "Test Room"

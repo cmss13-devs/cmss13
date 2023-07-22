@@ -2,9 +2,9 @@ var/list/active_diseases = list()
 
 
 SUBSYSTEM_DEF(disease)
-	name     = "Disease"
-	wait     = 2 SECONDS
-	flags    = SS_NO_INIT | SS_KEEP_TIMING | SS_DISABLE_FOR_TESTING
+	name  = "Disease"
+	wait  = 2 SECONDS
+	flags = SS_NO_INIT | SS_KEEP_TIMING
 	priority = SS_PRIORITY_DISEASE
 
 	var/list/currentrun = list()

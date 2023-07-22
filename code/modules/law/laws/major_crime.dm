@@ -79,3 +79,8 @@
 	name = "Misuse of Authority"
 	desc = "The exercising of power to a malicious extent by Military Police or deputized personnel acting as an MP; examples include beating a downed prisoner, excessive use of harmful or non-lethal force, or other abusive actions that led to the harm of a person in custody. Detained suspects should not have more force used on them than necessary in order to pacify them. Force may be used against retaliating or escaping parties only to the point where they are sufficiently pacified."
 	brig_time = 20
+
+/datum/law/major_law/unauthorized_deployment
+	name = "Unauthorized Deployment"
+	desc = "To deploy into the area of operations without permission of the relevant head of department or Commander where appropriate whilst still performing assigned duties. (I.E A doctor deploying without permission, with the intentions to perform field surgery.) Deploying without intent to perform assigned duties remains desertion."
+	brig_time = 10

@@ -1,11 +1,10 @@
-import { CHANNELS } from '../constants';
 import { getHistoryAt, getHistoryLength } from '../helpers';
 import { Modal } from '../types';
 
 /**  Sets the input value to chat history at index historyCounter. */
 export const handleViewHistory = function (this: Modal) {
   const { channel } = this.state;
-  const { historyCounter } = this.fields;
+  const { historyCounter, availableChannels } = this.fields;
   if (historyCounter > 0 && getHistoryLength()) {
     this.fields.value = getHistoryAt(historyCounter);
     if (channel < 2) {
@@ -18,7 +17,7 @@ export const handleViewHistory = function (this: Modal) {
     this.fields.value = this.fields.tempHistory;
     this.fields.tempHistory = '';
     this.setState({
-      buttonContent: CHANNELS[channel],
+      buttonContent: availableChannels[channel],
       edited: true,
     });
   }

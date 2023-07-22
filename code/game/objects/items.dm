@@ -2,7 +2,8 @@
 	name = "item"
 	icon = 'icons/obj/items/items.dmi'
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
-	var/image/blood_overlay = null //this saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
+	/// this saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
+	var/image/blood_overlay = null
 	var/randpixel = 6
 
 	var/item_state = null //if you don't want to use icon_state for onmob inhand/belt/back/ear/suitstorage/glove sprite.
@@ -11,34 +12,38 @@
 	/// When set to true, every single sprite can be found in the one icon .dmi, rather than being spread into onmobs, inhands, and objects
 	var/contained_sprite = FALSE
 
-	var/r_speed = 1.0
+	var/r_speed = 1
 	var/force = 0
 	var/damtype = BRUTE
 	var/embeddable = TRUE //FALSE if unembeddable
 	var/embedded_organ = null
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
-	 ///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
+	///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 	var/list/attack_verb
 
 	health = null
 
 	rebounds = TRUE
 
-	var/sharp = 0		// whether this item cuts
-	var/edge = 0		// whether this item is more likely to dismember
-	var/pry_capable = 0 //whether this item can be used to pry things open.
-	var/heat_source = 0 //whether this item is a source of heat, and how hot it is (in Kelvin).
+	/// whether this item cuts
+	var/sharp = 0
+	/// whether this item is more likely to dismember
+	var/edge = 0
+	/// whether this item can be used to pry things open.
+	var/pry_capable = 0
+	/// whether this item is a source of heat, and how hot it is (in Kelvin).
+	var/heat_source = 0
 
 	//SOUND VARS
 	///Sound to be played when item is picked up
-	var/pickupsound
+	var/pickup_sound
 	///Volume of pickup sound
 	var/pickupvol = 15
 	///Whether the pickup sound will vary in pitch/frequency
 	var/pickup_vary = TRUE
 
 	///Sound to be played when item is dropped
-	var/dropsound
+	var/drop_sound
 	///Volume of drop sound
 	var/dropvol = 15
 	///Whether the drop sound will vary in pitch/frequency
@@ -53,64 +58,99 @@
 	var/w_class = SIZE_MEDIUM
 	var/storage_cost = null
 	flags_atom = FPRINT
-	var/flags_item = NO_FLAGS	//flags for item stuff that isn't clothing/equipping specific.
-	var/flags_equip_slot = NO_FLAGS		//This is used to determine on which slots an item can fit.
+	/// flags for item stuff that isn't clothing/equipping specific.
+	var/flags_item = NO_FLAGS
+	/// This is used to determine on which slots an item can fit.
+	var/flags_equip_slot = NO_FLAGS
 
 	//Since any item can now be a piece of clothing, this has to be put here so all items share it.
-	var/flags_inventory = NO_FLAGS //This flag is used for various clothing/equipment item stuff
-	var/flags_inv_hide = NO_FLAGS //This flag is used to determine when items in someone's inventory cover others. IE helmets making it so you can't see glasses, etc.
+	/// This flag is used for various clothing/equipment item stuff
+	var/flags_inventory = NO_FLAGS
+	/// This flag is used to determine when items in someone's inventory cover others. IE helmets making it so you can't see glasses, etc.
+	var/flags_inv_hide = NO_FLAGS
 
 	var/obj/item/master = null
 
-	var/flags_armor_protection = NO_FLAGS //see setup.dm for appropriate bit flags
-	var/flags_heat_protection = NO_FLAGS //flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
-	var/flags_cold_protection = NO_FLAGS //flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
-
-	var/max_heat_protection_temperature //Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by flags_heat_protection flags
-	var/min_cold_protection_temperature //Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by flags_cold_protection flags
-
-	var/list/actions //list of /datum/action's that this item has.
-	var/list/actions_types //list of paths of action datums to give to the item on New().
+	/// see setup.dm for appropriate bit flags
+	var/flags_armor_protection = NO_FLAGS
+	/// flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
+	var/flags_heat_protection = NO_FLAGS
+	/// flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
+	var/flags_cold_protection = NO_FLAGS
+	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by flags_heat_protection flags
+	var/max_heat_protection_temperature
+	/// Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by flags_cold_protection flags
+	var/min_cold_protection_temperature
+	/// list of /datum/action's that this item has.
+	var/list/actions
+	/// list of paths of action datums to give to the item on New().
+	var/list/actions_types
 
 	//var/heat_transfer_coefficient = 1 //0 prevents all transfers, 1 is invisible
-	var/gas_transfer_coefficient = 1 // for leaking gas from turf to mask and vice-versa (for masks right now, but at some point, i'd like to include space helmets)
-	var/permeability_coefficient = 1 // for chemicals/diseases
-	var/siemens_coefficient = 1 // for electrical admittance/conductance (electrocution checks and shit)
-	var/slowdown = 0 // How much clothing is slowing you down. Negative values speeds you up
 
-	var/list/allowed = null //suit storage stuff.
-	var/zoomdevicename = null //name used for message when binoculars/scope is used
-	var/zoom = 0 //1 if item is actively being used to zoom. For scoped guns and binoculars.
-	var/zoom_initial_mob_dir = null // the initial dir the mob faces when it zooms in
-
-	var/list/obj/item/uniform_restricted //Need to wear this uniform to equip this
-
-	var/time_to_equip = 0 // set to ticks it takes to equip a worn suit.
-	var/time_to_unequip = 0 // set to ticks it takes to unequip a worn suit.
-
-	var/icon_override = null  //Used to override hardcoded ON-MOB clothing dmis in human clothing proc (i.e. not the icon_state sprites).
+	/// for leaking gas from turf to mask and vice-versa (for masks right now, but at some point, i'd like to include space helmets)
+	var/gas_transfer_coefficient = 1
+	/// for chemicals/diseases
+	var/permeability_coefficient = 1
+	/// for electrical admittance/conductance (electrocution checks and shit)
+	var/siemens_coefficient = 1
+	/// How much clothing is slowing you down. Negative values speeds you up
+	var/slowdown = 0
+	/// suit storage stuff.
+	var/list/allowed = null
+	/// name used for message when binoculars/scope is used
+	var/zoomdevicename = null
+	/// 1 if item is actively being used to zoom. For scoped guns and binoculars.
+	var/zoom = 0
+	/// the initial dir the mob faces when it zooms in
+	var/zoom_initial_mob_dir = null
+	/// Need to wear this uniform to equip this
+	var/list/obj/item/uniform_restricted
+	/// set to ticks it takes to equip a worn suit.
+	var/time_to_equip = 0
+	/// set to ticks it takes to unequip a worn suit.
+	var/time_to_unequip = 0
+	/// Used to override hardcoded ON-MOB clothing dmis in human clothing proc (i.e. not the icon_state sprites).
+	var/icon_override = null
 
 	var/list/sprite_sheets
 	var/list/item_icons
+	/// overrides the default
+	var/list/item_state_slots
 
-	var/list/item_state_slots //overrides the default
+	/// If the item uses flag MOB_LOCK_ON_PICKUP, this is the mob owner reference.
+	var/mob/living/carbon/human/locked_to_mob = null
+	/// Sounds played when this item is equipped
+	var/list/equip_sounds
+	/// Sounds played when this item is unequipped
+	var/list/unequip_sounds
 
-	var/mob/living/carbon/human/locked_to_mob = null	// If the item uses flag MOB_LOCK_ON_PICKUP, this is the mob owner reference.
-
-	var/list/equip_sounds//Sounds played when this item is equipped
-	var/list/unequip_sounds //Same but when unequipped
-
-	 ///Vision impairing effect if worn on head/mask/glasses.
+	///Vision impairing effect if worn on head/mask/glasses.
 	var/vision_impair = VISION_IMPAIR_NONE
 
-	 ///Used for stepping onto flame and seeing how much dmg you take and if you're ignited.
+	///Used for stepping onto flame and seeing how much dmg you take and if you're ignited.
 	var/fire_intensity_resistance
 
 	var/map_specific_decoration = FALSE
-	var/blood_color = "" //color of the blood on us if there's any.
-	appearance_flags = KEEP_TOGETHER //taken from blood.dm
+	/// color of the blood on us if there's any.
+	var/blood_color = ""
+	/// taken from blood.dm
+	appearance_flags = KEEP_TOGETHER
+	/// lets us know if the item is an objective or not
+	var/is_objective = FALSE
 
-	var/is_objective = FALSE //lets us know if the item is an objective or not
+	/// Allows for bigger than 32x32 sprites.
+	var/worn_x_dimension = 32
+	var/worn_y_dimension = 32
+
+	/// Allows for bigger than 32x32 sprites, these govern inhand sprites. (Like a longer sword that's normal-sized on your back)
+	var/inhand_x_dimension = 32
+	var/inhand_y_dimension = 32
+
+	/// checks if the item is set up in the table or not
+	var/table_setup = FALSE
+	/// checks if the item will be specially placed on the table
+	var/has_special_table_placement = FALSE
 
 	var/list/inherent_traits
 
@@ -129,6 +169,9 @@
 
 	if(flags_item & ITEM_PREDATOR)
 		AddElement(/datum/element/yautja_tracked_item)
+
+	if(flags_item & MOB_LOCK_ON_EQUIP)
+		AddComponent(/datum/component/id_lock)
 
 /obj/item/Destroy()
 	flags_item &= ~DELONDROP //to avoid infinite loop of unequip, delete, unequip, delete.
@@ -165,7 +208,7 @@
 				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
 				deconstruct(FALSE)
 
-/obj/item/mob_launch_collision(var/mob/living/L)
+/obj/item/mob_launch_collision(mob/living/L)
 	forceMove(L.loc)
 	..()
 
@@ -264,6 +307,9 @@ cases. Override_icon_state should be a list.*/
 // Due to storage type consolidation this should get used more now.
 // I have cleaned it up a little, but it could probably use more.  -Sayu
 /obj/item/attackby(obj/item/W, mob/user)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACKED, W, user) & COMPONENT_CANCEL_ITEM_ATTACK)
+		return
+
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W
 		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
@@ -276,7 +322,7 @@ cases. Override_icon_state should be a list.*/
 						failure = 1
 						continue
 					success = 1
-					S.handle_item_insertion(I, TRUE, user)	//The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
+					S.handle_item_insertion(I, TRUE, user) //The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
 				if(success && !failure)
 					to_chat(user, SPAN_NOTICE("You put everything in [S]."))
 				else if(success)
@@ -310,8 +356,8 @@ cases. Override_icon_state should be a list.*/
 		qdel(src)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
-	if(dropsound && (src.loc?.z))
-		playsound(src, dropsound, dropvol, drop_vary)
+	if(drop_sound && (src.loc?.z))
+		playsound(src, drop_sound, dropvol, drop_vary)
 	src.do_drop_animation(user)
 
 	appearance_flags &= ~NO_CLIENT_COLOR //So saturation/desaturation etc. effects affect it.
@@ -321,8 +367,8 @@ cases. Override_icon_state should be a list.*/
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
-	if(pickupsound && !silent && src.loc?.z)
-		playsound(src, pickupsound, pickupvol, pickup_vary)
+	if(pickup_sound && !silent && src.loc?.z)
+		playsound(src, pickup_sound, pickupvol, pickup_vary)
 	do_pickup_animation(user)
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
@@ -369,8 +415,6 @@ cases. Override_icon_state should be a list.*/
 	SHOULD_CALL_PARENT(TRUE)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
-	if((flags_item & MOB_LOCK_ON_EQUIP) && !locked_to_mob)
-		locked_to_mob = user
 
 	if(item_action_slot_check(user, slot))
 		add_verb(user, verbs)
@@ -388,7 +432,7 @@ cases. Override_icon_state should be a list.*/
 	if(LAZYLEN(uniform_restricted))
 		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
 		if(flags_equip_slot & slotdefine2slotbit(slot))
-			RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, .proc/check_for_uniform_restriction)
+			RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, PROC_REF(check_for_uniform_restriction))
 
 // Called after the item is removed from equipment slot.
 /obj/item/proc/unequipped(mob/user, slot)
@@ -400,7 +444,7 @@ cases. Override_icon_state should be a list.*/
 	UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, src, slot)
 
-/obj/item/proc/check_for_uniform_restriction(mob/user, obj/item/item, var/slot)
+/obj/item/proc/check_for_uniform_restriction(mob/user, obj/item/item, slot)
 	SIGNAL_HANDLER
 
 	if(item.flags_equip_slot & slotdefine2slotbit(slot))
@@ -422,14 +466,8 @@ cases. Override_icon_state should be a list.*/
 	if(!M)
 		return FALSE
 
-	if(flags_item & MOB_LOCK_ON_EQUIP && locked_to_mob)
-		if(locked_to_mob.undefibbable && locked_to_mob.stat == DEAD || QDELETED(locked_to_mob))
-			locked_to_mob = null
-
-		if(locked_to_mob != M)
-			if(!disable_warning)
-				to_chat(M, SPAN_WARNING("This item has been ID-locked to [locked_to_mob]."))
-			return FALSE
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTEMPTING_EQUIP, M) & COMPONENT_CANCEL_EQUIP)
+		return FALSE
 
 	if(ishuman(M))
 		//START HUMAN
@@ -743,8 +781,10 @@ cases. Override_icon_state should be a list.*/
 
 
 /obj/item/proc/showoff(mob/user)
-	for (var/mob/M in view(user))
-		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>",1)
+	var/list/viewers = get_mobs_in_view(world_view_size, user)
+	user.langchat_speech("holds up [src].", viewers, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+	for (var/mob/M in viewers)
+		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>", SHOW_MESSAGE_VISIBLE)
 
 /mob/living/carbon/verb/showoff()
 	set name = "Show Held Item"
@@ -780,11 +820,12 @@ cases. Override_icon_state should be a list.*/
 
 /obj/item/proc/unzoom(mob/living/user)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
-	INVOKE_ASYNC(user, /atom.proc/visible_message, SPAN_NOTICE("[user] looks up from [zoom_device]."),
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
 	SPAN_NOTICE("You look up from [zoom_device]."))
 	zoom = !zoom
 	COOLDOWN_START(user, zoom_cooldown, 20)
 	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
+	SEND_SIGNAL(src, COMSIG_ITEM_UNZOOM, user)
 	UnregisterSignal(src, list(
 		COMSIG_ITEM_DROPPED,
 		COMSIG_ITEM_UNWIELD,
@@ -796,7 +837,7 @@ cases. Override_icon_state should be a list.*/
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
 
-/obj/item/proc/zoom_handle_mob_move_or_look(mob/living/mover, var/actually_moving, var/direction, var/specific_direction)
+/obj/item/proc/zoom_handle_mob_move_or_look(mob/living/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 
 	if(mover.dir != zoom_initial_mob_dir && mover.client) //Dropped when disconnected, whoops
@@ -820,8 +861,8 @@ cases. Override_icon_state should be a list.*/
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
 			COMSIG_ITEM_UNWIELD,
-		), .proc/unzoom_dropped_callback)
-		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, .proc/zoom_handle_mob_move_or_look)
+		), PROC_REF(unzoom_dropped_callback))
+		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(zoom_handle_mob_move_or_look))
 
 		zoom_initial_mob_dir = user.dir
 
@@ -842,6 +883,7 @@ cases. Override_icon_state should be a list.*/
 				user.client.pixel_x = -viewoffset
 				user.client.pixel_y = 0
 
+	SEND_SIGNAL(src, COMSIG_ITEM_ZOOM, user)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
 	user.visible_message(SPAN_NOTICE("[user] peers through \the [zoom_device]."),
 	SPAN_NOTICE("You peer through \the [zoom_device]."))
@@ -954,6 +996,35 @@ cases. Override_icon_state should be a list.*/
 	SEND_SIGNAL(src, COMSIG_ATOM_TEMPORARY_ANIMATION_START, 3)
 	// This is instant on byond's end, but to our clients this looks like a quick drop
 	animate(src, alpha = old_alpha, pixel_x = old_x, pixel_y = old_y, transform = old_transform, time = 3, easing = CUBIC_EASING)
+
+
+/**
+ * Set the item up on a table.
+ * @param target: table which is being used to host the item.
+ */
+/obj/item/proc/set_to_table(obj/structure/surface/target)
+	if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		table_setup = TRUE
+		usr.drop_inv_item_to_loc(src, target.loc)
+	else
+		to_chat(usr, SPAN_WARNING("You fail to setup the [name]"))
+
+/**
+ * Called to reset the state of the item to not be settled on the table.
+ */
+/obj/item/proc/teardown()
+	table_setup = FALSE
+
+/**
+ * Grab item when its placed on table
+ */
+/obj/item/MouseDrop(over_object)
+	if(!has_special_table_placement)
+		return ..()
+
+	if(over_object == usr && Adjacent(usr) && has_special_table_placement)
+		teardown()
+		usr.put_in_any_hand_if_possible(src, disable_warning = TRUE)
 
 /atom/movable/proc/do_item_attack_animation(atom/attacked_atom, visual_effect_icon, obj/item/used_item)
 	var/image/attack_image

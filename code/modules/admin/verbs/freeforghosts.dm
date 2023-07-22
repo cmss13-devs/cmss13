@@ -1,4 +1,4 @@
-/client/proc/free_mob_for_ghosts(var/mob/living/M in GLOB.living_mob_list)
+/client/proc/free_mob_for_ghosts(mob/living/M in GLOB.living_mob_list)
 	set category = null
 	set name = "Free for Ghosts"
 
@@ -8,9 +8,9 @@
 
 	free_for_ghosts(M)
 
-	message_staff("[key_name_admin(usr)] freed [key_name(M)] for ghosts to take.")
+	message_admins("[key_name_admin(usr)] freed [key_name(M)] for ghosts to take.")
 
-/client/proc/free_for_ghosts(var/mob/living/M in GLOB.living_mob_list)
+/client/proc/free_for_ghosts(mob/living/M in GLOB.living_mob_list)
 	if(!ismob(M))
 		return
 
@@ -20,7 +20,7 @@
 	if(mind || client)
 		ghostize(FALSE)
 
-	GLOB.freed_mob_list |= src
+	GLOB.freed_mob_list |= WEAKREF(src)
 
 /client/proc/free_all_mobs_in_view()
 	set name = "Free All Mobs"
@@ -36,4 +36,4 @@
 	for(var/mob/living/M in view())
 		free_for_ghosts(M)
 
-	message_staff(WRAP_STAFF_LOG(usr, "freed all mobs in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "freed all mobs in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)

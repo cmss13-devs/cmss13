@@ -15,41 +15,47 @@
 	max_amount = 8
 
 /obj/item/stack/yautja_rope/attack(mob/living/mob_victim, mob/living/carbon/human/user)
-	. = ..()
-	if(!.)
-		return
+	if(mob_victim.stat != DEAD)
+		return ..()
+
+	if(mob_victim.mob_size != MOB_SIZE_HUMAN)
+		to_chat(user, SPAN_WARNING("[mob_victim] has the wrong body plan to hang up."))
+		return TRUE
 
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 		to_chat(user, SPAN_WARNING("You're not strong enough to lift [mob_victim] up with a rope. Also, that's kind of fucked up."))
-		return
-
-	if(mob_victim.mob_size != MOB_SIZE_HUMAN)
-		return
+		return TRUE
 
 	var/mob/living/carbon/human/victim = mob_victim
-	if(victim.stat != DEAD)
-		return
 
 	if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
-		return
+		return TRUE
 
-	to_chat(user, SPAN_NOTICE("You start securing the rope to the ceiling..."))
+	user.visible_message(SPAN_NOTICE("[user] starts to secure \his rope to the ceiling..."),
+		SPAN_NOTICE("You start securing the rope to the ceiling..."))
+
 	if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
 		var/turf/rturf = get_turf(victim)
 		var/area/rarea = get_area(victim)
 		if(rturf.density)
 			to_chat(user, SPAN_WARNING("They're in a wall!"))
-			return
+			return TRUE
 		if(rarea.ceiling == CEILING_NONE)
-			to_chat(user, SPAN_WARNING("There's no ceiling!"))
+			to_chat(user, SPAN_WARNING("There's no ceiling to hang them from!"))
+			return TRUE
+		user.visible_message(SPAN_NOTICE("[user] secures the rope."),
+			SPAN_NOTICE("You secure the rope."))
+		if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
 			return
-		to_chat(user, SPAN_NOTICE("You secure the rope."))
-		to_chat(user, SPAN_NOTICE("You start hanging [victim] by the rope..."))
-		if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
-			to_chat(user, SPAN_NOTICE("You finish the hanging of [victim]."))
-			user.stop_pulling()
-			victim.get_hung()
-			use(1)
+		user.visible_message(SPAN_WARNING("[user] begins hanging [victim] up by the rope..."),
+			SPAN_NOTICE("You start hanging [victim] up by the rope..."))
+		if(!do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
+			return
+		user.visible_message(SPAN_WARNING("[user] hangs [victim] from the ceiling!"), SPAN_NOTICE("You finish hanging [victim]."))
+		user.stop_pulling()
+		victim.get_hung()
+		use(1)
+	return TRUE
 
 /mob/living/carbon/human/proc/get_hung()
 	animate(src, pixel_y = 9, time = 0.5 SECONDS, easing = SINE_EASING|EASE_OUT)
@@ -63,12 +69,12 @@
 	animate(pixel_x = rand_swing, time = 3 SECONDS,  easing = SINE_EASING|EASE_OUT)
 
 	anchored = TRUE
-	RegisterSignal(src, COMSIG_ATTEMPT_MOB_PULL, .proc/deny_pull)
+	RegisterSignal(src, COMSIG_ATTEMPT_MOB_PULL, PROC_REF(deny_pull))
 	RegisterSignal(src, list(
 		COMSIG_ITEM_ATTEMPT_ATTACK,
 		COMSIG_LIVING_REJUVENATED,
 		COMSIG_HUMAN_REVIVED
-		), .proc/cut_down)
+		), PROC_REF(cut_down))
 
 /mob/living/carbon/human/proc/deny_pull()
 	return COMPONENT_CANCEL_MOB_PULL

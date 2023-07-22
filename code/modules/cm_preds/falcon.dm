@@ -12,7 +12,7 @@
 	flags_equip_slot = SLOT_EAR
 	flags_item = ITEM_PREDATOR
 
-/obj/item/falcon_drone/get_examine_location(var/mob/living/carbon/human/wearer, var/mob/examiner, var/slot, var/t_he = "They", var/t_his = "their", var/t_him = "them", var/t_has = "have", var/t_is = "are")
+/obj/item/falcon_drone/get_examine_location(mob/living/carbon/human/wearer, mob/examiner, slot, t_he = "They", t_his = "their", t_him = "them", t_has = "have", t_is = "are")
 	switch(slot)
 		if(WEAR_L_EAR)
 			return "on [t_his] shoulder"
@@ -47,18 +47,22 @@
 
 /mob/hologram/falcon
 	name = "falcon drone"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "falcon_drone_active"
 	hud_possible = list(HUNTER_HUD)
 	var/obj/item/falcon_drone/parent_drone
+	var/obj/item/clothing/gloves/yautja/owned_bracers
 	desc = "An agile drone used by Yautja to survey the hunting grounds."
 
 /mob/hologram/falcon/Initialize(mapload, mob/M, obj/item/falcon_drone/drone, obj/item/clothing/gloves/yautja/bracers)
 	. = ..()
 	parent_drone = drone
-	RegisterSignal(bracers, COMSIG_ITEM_DROPPED, .proc/handle_bracer_drop)
+	owned_bracers = bracers
+	RegisterSignal(owned_bracers, COMSIG_ITEM_DROPPED, PROC_REF(handle_bracer_drop))
 	med_hud_set_status()
 	add_to_all_mob_huds()
 
-/mob/hologram/falcon/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/hologram/falcon/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if(PF)
 		PF.flags_pass = PASS_MOB_THRU|PASS_MOB_IS|PASS_BUILDING
@@ -73,8 +77,11 @@
 	hud.remove_from_hud(src)
 
 /mob/hologram/falcon/med_hud_set_status()
+	if(!hud_list)
+		return
+
 	var/image/holder = hud_list[HUNTER_HUD]
-	holder.icon_state = "falcon_drone_active"
+	holder?.icon_state = "falcon_drone_active"
 
 /mob/hologram/falcon/Destroy()
 	if(parent_drone)
@@ -82,7 +89,12 @@
 			if(!linked_mob.equip_to_slot_if_possible(parent_drone, WEAR_R_EAR, TRUE, FALSE, TRUE, TRUE, FALSE))
 				linked_mob.put_in_hands(parent_drone)
 		parent_drone = null
+	if(owned_bracers)
+		UnregisterSignal(owned_bracers, COMSIG_ITEM_DROPPED)
+		owned_bracers = null
+
 	remove_from_all_mob_huds()
+
 	return ..()
 
 /mob/hologram/falcon/ex_act()

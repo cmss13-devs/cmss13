@@ -5,8 +5,8 @@
 	desc = "A little cleaning robot, he looks so excited!"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "cleanbot0"
-	density = 0
-	anchored = 0
+	density = FALSE
+	anchored = FALSE
 	//weight = 1.0E7
 	health = 25
 	maxhealth = 25
@@ -21,7 +21,7 @@
 	req_access = list(ACCESS_CIVILIAN_ENGINEERING)
 	var/path[] = new()
 	var/patrol_path[] = null
-	var/beacon_freq = 1445		// navigation beacon frequency
+	var/beacon_freq = 1445 // navigation beacon frequency
 	var/closest_dist
 	var/closest_loc
 	var/failed_steps
@@ -47,6 +47,11 @@
 
 	start_processing()
 
+/obj/structure/machinery/bot/cleanbot/Destroy()
+	QDEL_NULL(target)
+	QDEL_NULL(oldtarget)
+	SSradio.remove_object(src, beacon_freq)
+	. = ..()
 
 /obj/structure/machinery/bot/cleanbot/turn_on()
 	. = ..()
@@ -82,7 +87,7 @@ text("<A href='?src=\ref[src];operation=start'>[src.on ? "On" : "Off"]</A>"))
 	if(!src.locked || isRemoteControlling(user))
 		dat += text({"<BR>Cleans Blood: []<BR>"}, text("<A href='?src=\ref[src];operation=blood'>[src.blood ? "Yes" : "No"]</A>"))
 		dat += text({"<BR>Patrol station: []<BR>"}, text("<A href='?src=\ref[src];operation=patrol'>[src.should_patrol ? "Yes" : "No"]</A>"))
-	//	dat += text({"<BR>Beacon frequency: []<BR>"}, text("<A href='?src=\ref[src];operation=freq'>[src.beacon_freq]</A>"))
+	// dat += text({"<BR>Beacon frequency: []<BR>"}, text("<A href='?src=\ref[src];operation=freq'>[src.beacon_freq]</A>"))
 	if(src.open && !src.locked)
 		dat += text({"
 Odd looking screw twiddled: []<BR>
@@ -163,9 +168,9 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 		for (var/obj/effect/decal/cleanable/D in view(7,src))
 			for(var/T in src.target_types)
 				if(isnull(D.targeted_by) && (D.type == T || D.parent_type == T) && D != src.oldtarget)   // If the mess isn't targeted
-					src.oldtarget = D								 // or if it is but the bot is gone.
-					src.target = D									 // and it's stuff we clean?  Clean it.
-					D.targeted_by = src	// Claim the mess we are targeting.
+					src.oldtarget = D  // or if it is but the bot is gone.
+					src.target = D  // and it's stuff we clean?  Clean it.
+					D.targeted_by = src // Claim the mess we are targeting.
 					return
 
 	if(!src.target || src.target == null)
@@ -273,19 +278,19 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 	if(src.blood)
 		target_types += /obj/effect/decal/cleanable/blood
 
-/obj/structure/machinery/bot/cleanbot/proc/clean(var/obj/effect/decal/cleanable/target)
-	anchored = 1
+/obj/structure/machinery/bot/cleanbot/proc/clean(obj/effect/decal/cleanable/target)
+	anchored = TRUE
 	icon_state = "cleanbot-c"
 	visible_message(SPAN_DANGER("[src] begins to clean up the [target]"))
 	cleaning = 1
 	var/cleantime = 50
-	if(istype(target,/obj/effect/decal/cleanable/dirt))		// Clean Dirt much faster
+	if(istype(target,/obj/effect/decal/cleanable/dirt)) // Clean Dirt much faster
 		cleantime = 10
 	spawn(cleantime)
 		cleaning = 0
 		qdel(target)
 		icon_state = "cleanbot[on]"
-		anchored = 0
+		anchored = FALSE
 		target = null
 
 /obj/structure/machinery/bot/cleanbot/explode()

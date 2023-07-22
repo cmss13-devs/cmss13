@@ -13,7 +13,7 @@
 	chemclass = CHEM_CLASS_RARE
 
 
-/datum/reagent/blood/reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
+/datum/reagent/blood/reaction_mob(mob/M, method=TOUCH, volume)
 	var/datum/reagent/blood/self = src
 	src = null
 	if(self.data_properties && self.data_properties["viruses"])
@@ -28,7 +28,7 @@
 				M.contract_disease(D, 1, 0)
 
 
-/datum/reagent/blood/reaction_turf(var/turf/T, var/volume)//splash the blood all over the place
+/datum/reagent/blood/reaction_turf(turf/T, volume)//splash the blood all over the place
 	if(!istype(T)) return
 	var/datum/reagent/blood/self = src
 	src = null
@@ -42,14 +42,14 @@
 	name = "Green Blood"
 	id = "greenblood"
 	description = "A thick green blood, definitely not human."
-	color = "#20d450"
+	color = BLOOD_COLOR_YAUTJA
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_HIGH_VALUE
 
 /datum/reagent/blood/synth_blood
 	name = "Synthetic Blood"
 	id = "whiteblood"
-	color = "#EEEEEE"
+	color = BLOOD_COLOR_SYNTHETIC
 	description = "A synthetic blood-like liquid used by all Synthetics. Very effective as a medium for liquid cooling of electronics."
 	chemclass = CHEM_CLASS_NONE
 
@@ -63,7 +63,7 @@
 /datum/reagent/blood/xeno_blood
 	name = "Acidic Blood"
 	id = "xenoblood"
-	color = "#dffc00"
+	color = BLOOD_COLOR_XENO
 	description = "A corrosive blood like substance. Makeup appears to be made out of acids and blood plasma."
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_HIGH_VALUE
@@ -72,7 +72,7 @@
 /datum/reagent/blood/xeno_blood/royal
 	name = "Dark Acidic Blood"
 	id = "xenobloodroyal"
-	color = "#bbb900"
+	color = BLOOD_COLOR_XENO_ROYAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_CORROSIVE = 6)
@@ -85,7 +85,7 @@
 	color = "#C81040" // rgb: 200, 16, 64
 	properties = list(PROPERTY_CURING = 4)
 
-/datum/reagent/vaccine/reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
+/datum/reagent/vaccine/reaction_mob(mob/M, method=TOUCH, volume)
 	if(has_species(M,"Horror"))
 		return
 	var/datum/reagent/vaccine/self = src
@@ -114,17 +114,17 @@
 	chemfiresupp = TRUE
 	intensitymod = -3
 
-/datum/reagent/water/reaction_turf(var/turf/T, var/volume)
+/datum/reagent/water/reaction_turf(turf/T, volume)
 	if(!istype(T)) return
 	src = null
 	if(volume >= 3)
 		T.wet_floor(FLOOR_WET_WATER)
 
-/datum/reagent/water/reaction_obj(var/obj/O, var/volume)
+/datum/reagent/water/reaction_obj(obj/O, volume)
 	src = null
 	O.extinguish()
 
-/datum/reagent/water/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)//Splashing people with water can help put them out!
+/datum/reagent/water/reaction_mob(mob/living/M, method=TOUCH, volume)//Splashing people with water can help put them out!
 	if(!istype(M, /mob/living))
 		return
 	if(method == TOUCH)
@@ -158,6 +158,17 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_HALLUCINOGENIC = 2)
+
+/datum/reagent/sleen
+	name = "Sleen"
+	id = "sleen"
+	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for it's distinct red hue. Overdosing can cause hallucinations, loss of coordination, seizures, brain damage, respiratory failure, and death."
+	reagent_state = LIQUID
+	color = "#C21D24" // rgb: 194, 29, 36
+	overdose = MED_REAGENTS_OVERDOSE
+	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_PAINKILLING = 6)
 
 /datum/reagent/serotrotium
 	name = "Serotrotium"
@@ -269,7 +280,7 @@
 
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
-/datum/reagent/carbon/reaction_turf(var/turf/T, var/volume)
+/datum/reagent/carbon/reaction_turf(turf/T, volume)
 	src = null
 	if(!istype(T, /turf/open/space))
 		var/obj/effect/decal/cleanable/dirt/dirtoverlay = locate(/obj/effect/decal/cleanable/dirt, T)
@@ -439,7 +450,7 @@
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_CARCINOGENIC = 2)
 
-/datum/reagent/uranium/reaction_turf(var/turf/T, var/volume)
+/datum/reagent/uranium/reaction_turf(turf/T, volume)
 	src = null
 	if(volume >= 3)
 		if(!istype(T, /turf/open/space))
@@ -495,18 +506,18 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 
-/datum/reagent/space_cleaner/reaction_obj(var/obj/O, var/volume)
+/datum/reagent/space_cleaner/reaction_obj(obj/O, volume)
 	if(istype(O, /obj/effect/decal/cleanable))
 		var/obj/effect/decal/cleanable/C = O
 		C.cleanup_cleanable()
 	else if(O)
 		O.clean_blood()
 
-/datum/reagent/space_cleaner/reaction_turf(var/turf/T, var/volume)
+/datum/reagent/space_cleaner/reaction_turf(turf/T, volume)
 	if(volume >= 1 && istype(T))
 		T.clean_cleanables()
 
-/datum/reagent/space_cleaner/reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
+/datum/reagent/space_cleaner/reaction_mob(mob/M, method=TOUCH, volume)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if(C.r_hand)
@@ -581,7 +592,7 @@
 	reagent_state = LIQUID
 	color = "#535E66" // rgb: 83, 94, 102
 
-/datum/reagent/nanites/reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
+/datum/reagent/nanites/reaction_mob(mob/M, method=TOUCH, volume)
 	src = null
 	if((prob(10) && method==TOUCH) || method==INGEST)
 		M.contract_disease(new /datum/disease/robotic_transformation(0),1)
@@ -593,7 +604,7 @@
 	reagent_state = LIQUID
 	color = "#535E66" // rgb: 83, 94, 102
 
-/datum/reagent/xenomicrobes/reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
+/datum/reagent/xenomicrobes/reaction_mob(mob/M, method=TOUCH, volume)
 	src = null
 	if((prob(10) && method==TOUCH) || method==INGEST)
 		M.contract_disease(new /datum/disease/xeno_transformation(0),1)
@@ -665,13 +676,13 @@
 	custom_metabolism = 100 //disappears immediately
 	properties = list(PROPERTY_RAVENING = 1)
 
-/datum/reagent/blackgoo/reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
+/datum/reagent/blackgoo/reaction_mob(mob/M, method=TOUCH, volume)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == "Human")
 			H.contract_disease(new /datum/disease/black_goo)
 
-/datum/reagent/blackgoo/reaction_turf(var/turf/T, var/volume)
+/datum/reagent/blackgoo/reaction_turf(turf/T, volume)
 	if(!istype(T)) return
 	if(volume < 3) return
 	if(!(locate(/obj/effect/decal/cleanable/blackgoo) in T))
@@ -698,9 +709,9 @@
 	description = "Known as Ultra Thick Napthal Fuel, a sticky combustible liquid chemical, typically used with flamethrowers."
 	burncolor = "#EE6515"
 	properties = list(
-		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_5,
-		PROPERTY_DURATION 	= BURN_TIME_TIER_2,
-		PROPERTY_RADIUS 	= 5
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_5,
+		PROPERTY_DURATION = BURN_TIME_TIER_2,
+		PROPERTY_RADIUS = 5,
 	)
 
 // This is gellie fuel. Green Flames.
@@ -713,9 +724,9 @@
 	burncolor = "#00ff00"
 	burn_sprite = "green"
 	properties = list(
-		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_2,
-		PROPERTY_DURATION 	= BURN_TIME_TIER_5,
-		PROPERTY_RADIUS 	= 7
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION = BURN_TIME_TIER_5,
+		PROPERTY_RADIUS = 7,
 	)
 	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
@@ -728,9 +739,9 @@
 	burncolor = "#00b8ff"
 	burn_sprite = "blue"
 	properties = list(
-		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_7,
-		PROPERTY_DURATION 	= BURN_TIME_TIER_4,
-		PROPERTY_RADIUS 	= 6
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_7,
+		PROPERTY_DURATION = BURN_TIME_TIER_4,
+		PROPERTY_RADIUS = 6,
 	)
 
 // This is the green flamer fuel for the pyro.
@@ -743,22 +754,36 @@
 	burncolor = "#00ff00"
 	burn_sprite = "green"
 	properties = list(
-		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_2,
-		PROPERTY_DURATION 	= BURN_TIME_TIER_5,
-		PROPERTY_RADIUS 	= 6
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION = BURN_TIME_TIER_5,
+		PROPERTY_RADIUS = 6,
 	)
 	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /datum/reagent/napalm/penetrating
-	name = "Napalm EX"
-	id = "napalmex"
+	name = "Napalm E"
+	id = "napalme"
 	description = "A sticky combustible liquid chemical that penetrates the best fire retardants."
 	color = "#800080"
 	burncolor = "#800080"
 	burn_sprite = "dynamic"
 	properties = list(
-		PROPERTY_INTENSITY 			= BURN_LEVEL_TIER_2,
-		PROPERTY_DURATION 			= BURN_TIME_TIER_5,
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION = BURN_TIME_TIER_5,
+		PROPERTY_RADIUS = 6,
+		PROPERTY_FIRE_PENETRATING = 1,
+	)
+
+/datum/reagent/napalm/deathsquad //version of fuel for dsquad flamers.
+	name = "Napalm EX"
+	id = "napalmex"
+	description = "A sticky combustible liquid chemical made up of a combonation of rare and dangerous reagents both that penetrates the best fire retardants, and burns extremely hot."
+	color = "#641dd6"
+	burncolor = "#641dd6"
+	burn_sprite = "dynamic"
+	properties = list(
+		PROPERTY_INTENSITY 			= BURN_LEVEL_TIER_7,
+		PROPERTY_DURATION 			= BURN_TIME_TIER_4,
 		PROPERTY_RADIUS 			= 6,
 		PROPERTY_FIRE_PENETRATING	= 1
 	)
@@ -775,7 +800,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 9)
 
-/datum/reagent/chlorinetrifluoride/on_mob_life(var/mob/living/M) // Not a good idea, instantly messes you up from the inside out.
+/datum/reagent/chlorinetrifluoride/on_mob_life(mob/living/M) // Not a good idea, instantly messes you up from the inside out.
 	. = ..()
 	M.adjust_fire_stacks(max(M.fire_stacks, 15))
 	M.IgniteMob(TRUE)
@@ -851,7 +876,7 @@
 	power = 1.5
 	falloff_modifier = -0.4
 
-/datum/reagent/cyclonite/on_mob_life(var/mob/living/M)
+/datum/reagent/cyclonite/on_mob_life(mob/living/M)
 	. = ..()
 	M.apply_damage(1, TOX)
 
@@ -923,7 +948,7 @@
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_HEMOSITIC = 4)
 
-/datum/reagent/plasma/egg/on_mob_life(var/mob/living/M)
+/datum/reagent/plasma/egg/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.)
 		return
@@ -937,7 +962,10 @@
 		//it turns into an actual embryo at this point
 		volume = 0
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
-		embryo.hivenumber = XENO_HIVE_NORMAL
+		if(data_properties && data_properties["hive_number"])
+			embryo.hivenumber = data_properties["hive_number"]
+		else
+			embryo.hivenumber = XENO_HIVE_NORMAL
 		to_chat(H, SPAN_WARNING("Your stomach cramps and you suddenly feel very sick!"))
 
 /datum/reagent/plasma/neurotoxin

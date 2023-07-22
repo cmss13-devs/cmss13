@@ -1,10 +1,10 @@
 var/list/cellauto_cells = list()
 
 SUBSYSTEM_DEF(cellauto)
-	name     = "Cellular Automata"
-	wait     = 0.05 SECONDS
+	name  = "Cellular Automata"
+	wait  = 0.05 SECONDS
 	priority = SS_PRIORITY_CELLAUTO
-	flags    = SS_NO_INIT
+	flags = SS_NO_INIT
 
 	var/list/currentrun = list()
 

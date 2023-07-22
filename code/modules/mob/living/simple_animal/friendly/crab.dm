@@ -17,6 +17,8 @@
 	response_harm   = "stomps the"
 	stop_automated_movement = 1
 	friendly = "pinches"
+	black_market_value = 50
+	dead_black_market_value = 0
 	var/obj/item/inventory_head
 	var/obj/item/inventory_mask
 
@@ -24,7 +26,7 @@
 	..()
 	//CRAB movement
 	if(!ckey && !stat)
-		if(isturf(src.loc) && !resting && !buckled)		//This is so it only moves if it's not inside a closet, gentics machine, etc.
+		if(isturf(src.loc) && !resting && !buckled) //This is so it only moves if it's not inside a closet, gentics machine, etc.
 			turns_since_move++
 			if(turns_since_move >= turns_per_move)
 				Move(get_step(src,pick(4,8)))

@@ -4,7 +4,7 @@
 	icon_state = "folding_0"
 	health = 350
 	maxhealth = 350
-	burn_multiplier = 1.15
+	burn_multiplier = 0.85
 	brute_multiplier = 1
 	crusher_resistant = TRUE
 	force_level_absorption = 15
@@ -17,7 +17,7 @@
 	anchored = TRUE
 	repair_materials = list("metal" = 0.3, "plasteel" = 0.45)
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
-	var/source_type = /obj/item/stack/folding_barricade	//had to add this here, cause mapped in porta cades were unfoldable.
+	var/source_type = /obj/item/stack/folding_barricade //had to add this here, cause mapped in porta cades were unfoldable.
 
 /obj/structure/barricade/deployable/get_examine_text(mob/user)
 	. = ..()
@@ -88,7 +88,7 @@
 		usr.visible_message(SPAN_NOTICE("[usr] starts collapsing [src]."),
 			SPAN_NOTICE("You begin collapsing [src]."))
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-		if(do_after(usr, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+		if(do_after(usr, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
 			collapse(usr)
 		else
 			to_chat(usr, SPAN_WARNING("You stop collapsing [src]."))
@@ -103,10 +103,11 @@
 		user.put_in_active_hand(FB)
 	qdel(src)
 
-/obj/structure/barricade/deployable/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/barricade/deployable/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if(PF)
 		PF.flags_can_pass_front &= ~PASS_OVER_THROW_MOB
+		PF.flags_can_pass_behind &= ~PASS_OVER_THROW_MOB
 
 
 // Cade in hands

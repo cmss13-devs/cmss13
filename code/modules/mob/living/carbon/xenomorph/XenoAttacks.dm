@@ -1,9 +1,9 @@
 //There has to be a better way to define this shit. ~ Z
 //can't equip anything
-/mob/living/carbon/Xenomorph/attack_ui(slot_id)
+/mob/living/carbon/xenomorph/attack_ui(slot_id)
 	return
 
-/mob/living/carbon/Xenomorph/attack_animal(mob/living/M as mob)
+/mob/living/carbon/xenomorph/attack_animal(mob/living/M as mob)
 
 	if(isanimal(M))
 		var/mob/living/simple_animal/S = M
@@ -20,13 +20,34 @@
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(S)]</font>")
 			updatehealth()
 
-/mob/living/carbon/Xenomorph/attack_hand(mob/living/carbon/human/M)
+/mob/living/carbon/xenomorph/attack_hand(mob/living/carbon/human/M)
 	if(..())
 		return TRUE
 
 	switch(M.a_intent)
 
 		if(INTENT_HELP)
+			if(back && Adjacent(M))
+				back.add_fingerprint(M)
+				var/obj/item/storage/backpack = back
+				if(backpack && !M.action_busy)
+					if(stat != DEAD) // If the Xeno is alive, fight back
+						if(!M.ally_of_hivenumber(hivenumber))
+							M.KnockDown(rand(caste.tacklestrength_min, caste.tacklestrength_max))
+							playsound(M.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
+							M.visible_message(SPAN_WARNING("\The [M] tried to open \the [backpack] on [src] but instead gets a tail swipe to the head!"))
+							return FALSE
+
+					M.visible_message(SPAN_NOTICE("\The [M] starts opening \the [backpack] on [src]"), \
+					SPAN_NOTICE("You begin to open \the [backpack] on [src], so you can check its contents."), null, 5, CHAT_TYPE_FLUFF_ACTION)
+					if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC)) //Timed opening.
+						to_chat(M, SPAN_WARNING("You were interrupted!"))
+						return FALSE
+					if(!Adjacent(M))
+						to_chat(M, SPAN_WARNING("You were interrupted!"))
+						return FALSE
+					backpack.open(M)
+					return
 			if(stat == DEAD)
 				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src], but nothing happens."), \
 				SPAN_WARNING("You poke \the [src], but nothing happens."), null, 5, CHAT_TYPE_FLUFF_ACTION)
@@ -38,7 +59,7 @@
 			if(M == src || anchored)
 				return 0
 
-			if(stat != DEAD && isHumanStrict(M))
+			if(stat != DEAD && ishuman_strict(M))
 				return 0
 
 			M.start_pulling(src)
@@ -68,11 +89,14 @@
 
 //Hot hot Aliens on Aliens action.
 //Actually just used for eating people.
-/mob/living/carbon/Xenomorph/attack_alien(mob/living/carbon/Xenomorph/M)
+/mob/living/carbon/xenomorph/attack_alien(mob/living/carbon/xenomorph/M)
 	if (M.fortify || M.burrow)
 		return XENO_NO_DELAY_ACTION
 
-	if(isXenoLarva(M)) //Larvas can't eat people
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		return XENO_NO_DELAY_ACTION
+
+	if(islarva(M)) //Larvas can't eat people
 		M.visible_message(SPAN_DANGER("[M] nudges its head against \the [src]."), \
 		SPAN_DANGER("You nudge your head against \the [src]."), null, null, CHAT_TYPE_XENO_FLUFF)
 		return
@@ -142,7 +166,10 @@
 			log_attack("[key_name(M)] [slash_verb]ed [key_name(src)]")
 
 			M.flick_attack_overlay(src, "slash")
-			playsound(loc, slash_sound, 25, 1)
+			if(custom_slashed_sound)
+				playsound(loc, custom_slashed_sound, 25, 1)
+			else
+				playsound(loc, slash_sound, 25, 1)
 			apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = XVX_ARMOR_EFFECTIVEMULT)
 
 			if(M.behavior_delegate)
@@ -155,8 +182,8 @@
 		if(INTENT_DISARM)
 			M.animation_attack_on(src)
 			M.flick_attack_overlay(src, "disarm")
-			var/is_shover_queen = isXenoQueen(M)
-			var/can_resist_shove = M.hivenumber != src.hivenumber || ((isXenoQueen(src) || IS_XENO_LEADER(src)) && !is_shover_queen)
+			var/is_shover_queen = isqueen(M)
+			var/can_resist_shove = M.hivenumber != src.hivenumber || ((isqueen(src) || IS_XENO_LEADER(src)) && !is_shover_queen)
 			var/can_mega_shove = is_shover_queen || IS_XENO_LEADER(M)
 			if(can_mega_shove && !can_resist_shove)
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
@@ -169,7 +196,7 @@
 				SPAN_WARNING("You shove \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
-/mob/living/carbon/Xenomorph/proc/attempt_headbutt(var/mob/living/carbon/Xenomorph/target)
+/mob/living/carbon/xenomorph/proc/attempt_headbutt(mob/living/carbon/xenomorph/target)
 	//Responding to a raised head
 	if(target.flags_emote & EMOTING_HEADBUTT && do_after(src, 5, INTERRUPT_MOVED, EMOTE_ICON_HEADBUTT))
 		if(!(target.flags_emote & EMOTING_HEADBUTT)) //Additional check for if the target moved or was already headbutted.
@@ -197,7 +224,7 @@
 		to_chat(src, SPAN_NOTICE("You were left hanging!"))
 	flags_emote &= ~EMOTING_HEADBUTT
 
-/mob/living/carbon/Xenomorph/proc/attempt_tailswipe(var/mob/living/carbon/Xenomorph/target)
+/mob/living/carbon/xenomorph/proc/attempt_tailswipe(mob/living/carbon/xenomorph/target)
 	//Responding to a raised tail
 	if(target.flags_emote & EMOTING_TAIL_SWIPE && do_after(src, 5, INTERRUPT_MOVED, EMOTE_ICON_TAILSWIPE))
 		if(!(target.flags_emote & EMOTING_TAIL_SWIPE)) //Additional check for if the target moved or was already tail swiped.

@@ -19,7 +19,7 @@
 #define CAPITAL_CRIME 8
 
 //These are bitflags for special punishments
-#define PERMABRIG 		1
-#define DOUBLE_TIME 	2
+#define PERMABRIG 1
+#define DOUBLE_TIME 2
 #define SAME_AS_ACCUSED 4
-#define DEMOTION 		8
+#define DEMOTION 8

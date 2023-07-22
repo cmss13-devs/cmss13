@@ -1,10 +1,13 @@
-proc/random_ethnicity()
+#define isdeaf(A) (ismob(A) && ((A?:sdisabilities & DISABILITY_DEAF) || A?:ear_deaf))
+#define xeno_hivenumber(A) (isxeno(A) ? A?:hivenumber : FALSE)
+
+/proc/random_ethnicity()
 	return pick(GLOB.ethnicities_list)
 
-proc/random_body_type()
+/proc/random_body_type()
 	return pick(GLOB.body_types_list)
 
-proc/random_hair_style(gender, species = "Human")
+/proc/random_hair_style(gender, species = "Human")
 	var/h_style = "Crewcut"
 
 	var/list/valid_hairstyles = list()
@@ -26,7 +29,7 @@ proc/random_hair_style(gender, species = "Human")
 	return h_style
 
 
-proc/random_facial_hair_style(gender, species = "Human")
+/proc/random_facial_hair_style(gender, species = "Human")
 	var/f_style = "Shaved"
 
 	var/list/valid_facialhairstyles = list()
@@ -47,11 +50,11 @@ proc/random_facial_hair_style(gender, species = "Human")
 
 		return f_style
 
-proc/random_name(gender, species = "Human")
-	if(gender==FEMALE)	return capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
-	else				return capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
+/proc/random_name(gender, species = "Human")
+	if(gender==FEMALE) return capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
+	else return capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
 
-proc/has_species(var/mob/M, var/species)
+/proc/has_species(mob/M, species)
 	if(!M || !istype(M,/mob/living/carbon/human))
 		return FALSE
 	var/mob/living/carbon/human/H = M
@@ -65,7 +68,7 @@ proc/has_species(var/mob/M, var/species)
 
 // We change real name, so we change the voice too if we are humans
 // It also ensures our mind's name gets changed
-/mob/proc/change_real_name(var/mob/M, var/new_name)
+/mob/proc/change_real_name(mob/M, new_name)
 	if(!new_name)
 		return FALSE
 
@@ -80,7 +83,7 @@ proc/has_species(var/mob/M, var/species)
 
 	return TRUE
 
-/mob/proc/change_mind_name(var/new_mind_name)
+/mob/proc/change_mind_name(new_mind_name)
 	if(!mind)
 		return FALSE
 	if(!new_mind_name)
@@ -88,7 +91,7 @@ proc/has_species(var/mob/M, var/species)
 	mind.name = new_mind_name
 	return TRUE
 
-/mob/proc/change_mob_voice(var/new_voice_name)
+/mob/proc/change_mob_voice(new_voice_name)
 	if(!ishuman(src))
 		return FALSE
 	if(!new_voice_name)
@@ -97,17 +100,17 @@ proc/has_species(var/mob/M, var/species)
 	H.voice = new_voice_name
 	return TRUE
 
-/*Changing/updating a mob's client colour matrices. These render over the map window and affect most things the player sees, except things like inventory,
+/*Changing/updating a mob's client color matrices. These render over the map window and affect most things the player sees, except things like inventory,
 text popups, HUD, and some fullscreens. Code based on atom filter code, since these have similar issues with application order - for ex. if you have
-a desaturation and a recolour matrix, you'll get very different results if you desaturate before recolouring, or recolour before desaturating.
+a desaturation and a recolor matrix, you'll get very different results if you desaturate before recoloring, or recolor before desaturating.
 
 See matrices.dm for the matrix procs.
 
-If you want to recolour a specific atom, you should probably do it as a colour matrix filter instead since that code already exists.
+If you want to recolor a specific atom, you should probably do it as a color matrix filter instead since that code already exists.
 
-Apparently colour matrices are not the same sort of matrix used by matrix datums and can't be worked with using normal matrix procs.*/
+Apparently color matrices are not the same sort of matrix used by matrix datums and can't be worked with using normal matrix procs.*/
 
-///Adds a colour matrix and updates the client. Priority is the order the matrices are applied, lowest first. Will replace an existing matrix of the same name, if one exists.
+///Adds a color matrix and updates the client. Priority is the order the matrices are applied, lowest first. Will replace an existing matrix of the same name, if one exists.
 /mob/proc/add_client_color_matrix(name, priority, list/params, time, easing)
 	LAZYINITLIST(client_color_matrices)
 
@@ -116,8 +119,8 @@ Apparently colour matrices are not the same sort of matrix used by matrix datums
 
 	update_client_color_matrices(time, easing)
 
-/**Combines all colour matrices and applies them to the client.
-Also used on login to give a client its new body's colour matrices.
+/**Combines all color matrices and applies them to the client.
+Also used on login to give a client its new body's color matrices.
 Responsible for sorting the matrices.
 Transition is animated but instant by default.**/
 /mob/proc/update_client_color_matrices(time = 0 SECONDS, easing = LINEAR_EASING)
@@ -131,7 +134,7 @@ Transition is animated but instant by default.**/
 		return
 
 	//Sort the matrix packages by priority.
-	client_color_matrices = sortTim(client_color_matrices, /proc/cmp_filter_data_priority, TRUE)
+	client_color_matrices = sortTim(client_color_matrices, GLOBAL_PROC_REF(cmp_filter_data_priority), TRUE)
 
 	var/list/final_matrix
 

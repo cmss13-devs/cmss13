@@ -30,9 +30,9 @@
 	. = ..()
 
 /obj/item/device/assembly/signaller/activate()
-	if(cooldown > 0)	return 0
+	if(cooldown > 0) return 0
 	cooldown = 2
-	addtimer(CALLBACK(src, .proc/process_cooldown), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(process_cooldown)), 1 SECONDS)
 
 	signal()
 	return 1
@@ -110,7 +110,7 @@
 	radio_connection.post_signal(src, signal)
 	return
 
-/obj/item/device/assembly/signaller/pulse(var/radio = 0)
+/obj/item/device/assembly/signaller/pulse(radio = 0)
 	if(istype(src.loc, /obj/structure/machinery/door/airlock) && src.airlock_wire && src.wires)
 		var/obj/structure/machinery/door/airlock/A = src.loc
 		A.pulse(src.airlock_wire)
@@ -139,7 +139,7 @@
 /obj/item/device/assembly/signaller/proc/set_frequency(new_frequency)
 	SSradio.remove_object(src, frequency)
 	frequency = new_frequency
-	radio_connection = SSradio.add_object(src, frequency, RADIO_CHAT)
+	radio_connection = SSradio.add_object(src, frequency, RADIO_SIGNALS)
 
 /obj/item/device/assembly/signaller/Destroy()
 	SSradio.remove_object(src, frequency)

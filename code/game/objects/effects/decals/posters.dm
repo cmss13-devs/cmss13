@@ -8,7 +8,7 @@
 	var/serial_number = 0
 
 
-/obj/item/poster/New(turf/loc, var/given_serial = 0)
+/obj/item/poster/New(turf/loc, given_serial = 0)
 	if(given_serial == 0)
 		serial_number = rand(1, GLOB.poster_designs.len)
 	else
@@ -22,12 +22,12 @@
 	name = "poster"
 	desc = "A large piece of cheap printed paper."
 	icon = 'icons/obj/structures/props/posters.dmi'
-	anchored = 1
-	var/serial_number	//determines the design of the poster
+	anchored = TRUE
+	var/serial_number //determines the design of the poster
 	var/ruined = 0
 
 
-/obj/structure/sign/poster/Initialize(mapload, var/serial)
+/obj/structure/sign/poster/Initialize(mapload, serial)
 	. = ..()
 	if(serial)
 		serial_number = serial
@@ -78,7 +78,7 @@
 
 
 //separated to reduce code duplication. Moved here for ease of reference and to unclutter r_wall/attackby()
-/turf/closed/wall/proc/place_poster(var/obj/item/poster/P, var/mob/user)
+/turf/closed/wall/proc/place_poster(obj/item/poster/P, mob/user)
 
 	if(!istype(src,/turf/closed/wall))
 		to_chat(user, SPAN_DANGER("You can't place this here!"))
@@ -102,7 +102,7 @@
 	var/temp_loc = user.loc
 	flick("poster_being_set",D)
 	D.forceMove(src)
-	qdel(P)	//delete it now to cut down on sanity checks afterwards. Agouri's code supports rerolling it anyway
+	qdel(P) //delete it now to cut down on sanity checks afterwards. Agouri's code supports rerolling it anyway
 	playsound(D.loc, 'sound/items/poster_being_created.ogg', 25, 1)
 
 	if(!do_after(user, 17, INTERRUPT_ALL, BUSY_ICON_HOSTILE))

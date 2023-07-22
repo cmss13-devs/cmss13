@@ -16,7 +16,7 @@
 	var/build_stage = BARRICADE_SANDBAG_1
 	metallic = FALSE
 
-/obj/structure/barricade/sandbags/New(loc, mob/user, direction, var/amount = 1)
+/obj/structure/barricade/sandbags/New(loc, mob/user, direction, amount = 1)
 	if(direction)
 		setDir(direction)
 
@@ -34,6 +34,8 @@
 	..()
 
 	icon_state = "sandbag[build_stage]"
+	if(dir > 2)
+		layer = OBJ_LAYER //This prevents cades from becoming invisible under a north/south facing plasteel cade.
 
 /obj/structure/barricade/sandbags/update_damage_state()
 	var/changed = FALSE
@@ -88,7 +90,7 @@
 		user.visible_message(SPAN_NOTICE("[user] starts adding more [SB] to [src]."), \
 			SPAN_NOTICE("You start adding sandbags to [src]."))
 		for(var/i = build_stage to BARRICADE_SANDBAG_5)
-			if(build_stage >= BARRICADE_SANDBAG_5 || !do_after(user, 5, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src) || build_stage >= BARRICADE_SANDBAG_5)
+			if(build_stage >= BARRICADE_SANDBAG_5 || !do_after(user, 5, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src) || build_stage >= BARRICADE_SANDBAG_5 || SB.amount == 0)
 				break
 			SB.use(1)
 			increment_build_stage()
@@ -105,7 +107,7 @@
 			new /obj/item/stack/barbed_wire(loc)
 		if(stack_type && health > 0)
 			new stack_type(loc, stack_amount)
-	density = 0
+	density = FALSE
 	qdel(src)
 
 /obj/structure/barricade/sandbags/proc/increment_build_stage()
@@ -145,7 +147,7 @@
 	climbable = FALSE
 	. = ..()
 
-/obj/structure/barricade/sandbags/wired/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/barricade/sandbags/wired/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
 	flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB

@@ -19,7 +19,7 @@
 	if(slot != WEAR_HANDS) return FALSE
 	return TRUE //only give action button when the gloves are worn
 
-/obj/item/clothing/gloves/marine/boom_glove/attack_self(var/mob/user)
+/obj/item/clothing/gloves/marine/boom_glove/attack_self(mob/user)
 	if(!ishuman(user))
 		return
 

@@ -36,7 +36,7 @@
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_MEDICINE
 
-/datum/chem_property/special/hypergenetic/process(mob/living/M, var/potency = 1)
+/datum/chem_property/special/hypergenetic/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(potency)
 	if(!ishuman(M))
 		return
@@ -44,21 +44,21 @@
 	for(var/datum/internal_organ/O in H.internal_organs)
 		M.apply_internal_damage(-potency, O)
 
-/datum/chem_property/special/hypergenetic/process_overdose(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/special/hypergenetic/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.adjustCloneLoss(potency * delta_time)
 
-/datum/chem_property/special/hypergenetic/process_critical(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/special/hypergenetic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.take_limb_damage(1.5 * potency * delta_time, 1.5 * potency * delta_time)
 
-/datum/chem_property/special/hypergenetic/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(!isXenoOrHuman(M))
+/datum/chem_property/special/hypergenetic/reaction_mob(mob/M, method=TOUCH, volume, potency)
+	if(!isxeno_human(M))
 		return
 	M.AddComponent(/datum/component/healing_reduction, -potency * volume * POTENCY_MULTIPLIER_LOW) //reduces heal reduction if present
 	if(ishuman(M)) //heals on contact with humans/xenos
 		var/mob/living/carbon/human/H = M
 		H.heal_limb_damage(potency * volume * POTENCY_MULTIPLIER_LOW)
-	if(isXeno(M)) //more effective on xenos to account for higher HP
-		var/mob/living/carbon/Xenomorph/X = M
+	if(isxeno(M)) //more effective on xenos to account for higher HP
+		var/mob/living/carbon/xenomorph/X = M
 		X.gain_health(potency * volume)
 
 /datum/chem_property/special/organhealing
@@ -68,17 +68,17 @@
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_MEDICINE
 
-/datum/chem_property/special/organhealing/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/special/organhealing/process(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
 	for(var/datum/internal_organ/O in H.internal_organs)
 		M.apply_internal_damage(-0.5 * potency * delta_time, O)
 
-/datum/chem_property/special/organhealing/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/special/organhealing/process_overdose(mob/living/M, potency = 1)
 	M.adjustCloneLoss(POTENCY_MULTIPLIER_MEDIUM * potency)
 
-/datum/chem_property/special/organhealing/process_critical(mob/living/M, var/potency = 1)
+/datum/chem_property/special/organhealing/process_critical(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency)
 
 /datum/chem_property/special/DNA_Disintegrating
@@ -89,16 +89,16 @@
 	category = PROPERTY_TYPE_TOXICANT|PROPERTY_TYPE_ANOMALOUS
 	value = 16
 
-/datum/chem_property/special/DNA_Disintegrating/process(mob/living/M, var/potency = 1)
+/datum/chem_property/special/DNA_Disintegrating/process(mob/living/M, potency = 1)
 	M.adjustCloneLoss(POTENCY_MULTIPLIER_EXTREME * potency)
 	if(ishuman(M) && M.cloneloss >= 190)
 		var/mob/living/carbon/human/H = M
 		H.contract_disease(new /datum/disease/xeno_transformation(0),1) //This is the real reason PMCs are being sent to retrieve it.
 
 /datum/chem_property/special/DNA_Disintegrating/trigger()
-	SSticker.mode.get_specific_call("Weyland-Yutani PMC (Chemical Investigation Squad)", TRUE, FALSE, holder.name)
+	SSticker.mode.get_specific_call("Weyland-Yutani Goon (Chemical Investigation Squad)", FALSE, FALSE, holder.name, TRUE)
 	chemical_data.update_credits(10)
-	message_staff("The research department has discovered DNA_Disintegrating in [holder.name] adding 10 bonus tech points.")
+	message_admins("The research department has discovered DNA_Disintegrating in [holder.name] adding 10 bonus tech points.")
 	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
 	tree.add_points(10)
 	ai_announcement("NOTICE: Encrypted data transmission received from USCSS Royce. Shuttle inbound.")
@@ -112,7 +112,7 @@
 	value = 16
 	max_level = 6
 
-/datum/chem_property/special/ciphering/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/special/ciphering/process(mob/living/M, potency = 1, delta_time)
 	if(!GLOB.hive_datum[level]) // This should probably always be valid
 		return
 
@@ -178,7 +178,7 @@
 	category = PROPERTY_TYPE_ANOMALOUS
 	value = 666
 
-/datum/chem_property/special/embryonic/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/special/embryonic/process(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
@@ -197,7 +197,7 @@
 	category = PROPERTY_TYPE_ANOMALOUS
 	value = 666
 
-/datum/chem_property/special/transforming/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/special/transforming/process(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
@@ -211,7 +211,7 @@
 	category = PROPERTY_TYPE_ANOMALOUS
 	value = 666
 
-/datum/chem_property/special/ravening/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/special/ravening/process(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
@@ -226,7 +226,7 @@
 	value = 666
 	max_level = 4
 
-/datum/chem_property/special/curing/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/special/curing/process(mob/living/M, potency = 1, delta_time)
 	var/datum/species/zombie/zs = GLOB.all_species[SPECIES_ZOMBIE]
 
 	if(!ishuman(M))
@@ -252,7 +252,7 @@
 	category = PROPERTY_TYPE_MEDICINE|PROPERTY_TYPE_ANOMALOUS
 	value = 666
 
-/datum/chem_property/special/omnipotent/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/special/omnipotent/process(mob/living/M, potency = 1, delta_time)
 	M.reagents.remove_all_type(/datum/reagent/toxin, 2.5*REM * delta_time, 0, 1)
 	M.setCloneLoss(0)
 	M.setOxyLoss(0)
@@ -262,8 +262,8 @@
 	M.setBrainLoss(0)
 	M.disabilities = 0
 	M.sdisabilities = 0
-	M.eye_blurry = 0
-	M.eye_blind = 0
+	M.SetEyeBlur(0)
+	M.SetEyeBlind(0)
 	M.set_effect(0, WEAKEN)
 	M.set_effect(0, STUN)
 	M.set_effect(0, PARALYZE)

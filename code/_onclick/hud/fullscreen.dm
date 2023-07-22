@@ -30,7 +30,7 @@
 
 	if(animated)
 		animate(screen, alpha = 0, time = animated)
-		addtimer(CALLBACK(src, .proc/clear_fullscreen_after_animate, screen), animated, TIMER_CLIENT_TIME)
+		addtimer(CALLBACK(src, PROC_REF(clear_fullscreen_after_animate), screen), animated, TIMER_CLIENT_TIME)
 	else
 		if(client)
 			client.screen -= screen
@@ -68,7 +68,7 @@
 	screen_loc = "CENTER-7,CENTER-7"
 	layer = FULLSCREEN_LAYER
 	plane = FULLSCREEN_PLANE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/severity = 0
 	var/fs_view = 7
 	var/show_when_dead = FALSE
@@ -131,6 +131,12 @@
 	icon_state = "druggy"
 	layer = FULLSCREEN_DRUGGY_LAYER
 
+/atom/movable/screen/fullscreen/blurry
+	icon = 'icons/mob/hud/screen1.dmi'
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	icon_state = "blurry"
+	layer = FULLSCREEN_BLURRY_LAYER
+
 /atom/movable/screen/fullscreen/nvg
 	icon = 'icons/mob/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
@@ -159,6 +165,9 @@
 /atom/movable/screen/fullscreen/xeno_pain
 	icon_state = "xeno_painoverlay"
 	layer = FULLSCREEN_PAIN_LAYER
+
+/atom/movable/screen/fullscreen/laser_blind
+	icon_state = "impairedoverlay1"
 
 //Weather overlays//
 

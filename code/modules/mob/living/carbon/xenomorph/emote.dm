@@ -1,132 +1,113 @@
-/mob/living/carbon/Xenomorph/emote(var/act, var/m_type = 1, var/message = null, player_caused)
-	if(findtext(act, "-", 1, null))
-		var/t1 = findtext(act, "-", 1, null)
-		act = copytext(act, 1, t1)
+/datum/emote/living/carbon/xeno
+	mob_type_allowed_typecache = list(/mob/living/carbon/xenomorph)
+	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound, /mob/living/carbon/xenomorph/facehugger, /mob/living/carbon/xenomorph/larva)
+	keybind_category = CATEGORY_XENO_EMOTE
+	var/predalien_sound
+	var/larva_sound
 
-	if(stat && act != "help")
-		return
+/datum/emote/living/carbon/xeno/get_sound(mob/living/user)
+	. = ..()
 
-	switch(act)
-		if("me")
-			if(silent)
-				return
-			if(player_caused)
-				if(client)
-					if(client.prefs.muted & MUTE_IC)
-						to_chat(src, SPAN_WARNING("You cannot send IC messages (muted)"))
-						return
-					if(client.handle_spam_prevention(message, MUTE_IC))
-						return
-			if(stat)
-				return
-			if(!message)
-				return
-			return INVOKE_ASYNC(src, /mob.proc/custom_emote, m_type, message, player_caused)
+	if(ispredalien(user) && predalien_sound)
+		. = predalien_sound
 
-		if("custom")
-			return INVOKE_ASYNC(src, /mob.proc/custom_emote, m_type, message, player_caused)
+	if(islarva(user) && larva_sound)
+		. = larva_sound
 
-		if("growl")
-			if(isXenoPredalien(src))
-				emote_audio_helper("<B>The [name]</B> growls.", 'sound/voice/predalien_growl.ogg', 25, player_caused)
-				return
+/datum/emote/living/carbon/xeno/growl
+	key = "growl"
+	message = "growls."
+	sound = "alien_growl"
+	predalien_sound = 'sound/voice/predalien_growl.ogg'
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-			emote_audio_helper("<B>The [name]</B> growls.", "alien_growl", player_caused = player_caused)
-			return
+/datum/emote/living/carbon/xeno/hiss
+	key = "hiss"
+	message = "hisses."
+	sound = "alien_hiss"
+	predalien_sound = 'sound/voice/predalien_hiss.ogg'
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-		if("hiss")
-			if(isXenoPredalien(src))
-				emote_audio_helper("<B>The [name]</B> hisses.", 'sound/voice/predalien_hiss.ogg', 25, player_caused)
-				return
+/datum/emote/living/carbon/xeno/needshelp
+	key = "needshelp"
+	message = "needs help!"
+	sound = "alien_help"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-			emote_audio_helper("<B>The [name]</B> hisses.", "alien_hiss", player_caused = player_caused)
-			return
+/datum/emote/living/carbon/xeno/roar
+	mob_type_blacklist_typecache = list()
 
-		if("needhelp")
-			emote_audio_helper("<B>The [name]</B> needs help!", "alien_help", 25, player_caused)
-			return
+	key = "roar"
+	message = "roars!"
+	sound = "alien_roar"
+	predalien_sound = 'sound/voice/predalien_roar.ogg'
+	larva_sound = "alien_roar_larva"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-		if("roar")
-			if(isXenoPredalien(src))
-				emote_audio_helper("<B>The [name]</B> roars!", 'sound/voice/predalien_roar.ogg', 40, player_caused)
-				return
+/datum/emote/living/carbon/xeno/tail
+	key = "tail"
+	message = "swipes its tail."
+	sound = "alien_tail_swipe"
 
-			emote_audio_helper("<B>The [name]</B> roars!", "alien_roar", 40, player_caused)
-			return
+/datum/emote/living/carbon/xeno/hellhound
+	mob_type_allowed_typecache = list(/mob/living/carbon/xenomorph/hellhound)
+	keybind = FALSE
 
-		if("tail")
-			emote_audio_helper("<B>The [name]</B> swipes its tail.", "alien_tail_swipe", 40, player_caused)
-			return
+/datum/emote/living/carbon/xeno/hellhound/roar
+	key = "roar"
+	key_third_person = "roars"
+	message = "roars!"
+	sound = 'sound/voice/ed209_20sec.ogg'
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-		/*
-		if("dance")
+/datum/emote/living/carbon/xeno/hellhound/scratch
+	key = "scratch"
+	key_third_person = "scratches"
+	message = "scratches."
+	hands_use_check = TRUE
 
-			if(!is_mob_restrained())
-			//	message = "<B>The [name]</B> dances around!"
-				m_type = 1
-				spawn(0)
-					for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2))
-						canmove = 0
-						setDir(i)
-						sleep(1)
-				canmove = 1
-		*/
+/datum/emote/living/carbon/xeno/hellhound/paw
+	key = "paw"
+	key_third_person = "paws"
+	message = "flails its paw."
+	hands_use_check = TRUE
 
-		if("help")
-			to_chat(src, "<br><br><b>To use an emote, type an asterix (*) before a following word. Emotes with a sound are <span style='color: green;'>green</span>. Spamming emotes with sound will likely get you banned. Don't do it.<br><br>\
-			dance, \
-			<span style='color: green;'>growl</span>, \
-			<span style='color: green;'>hiss</span>, \
-			me, \
-			<span style='color: green;'>needhelp</span>, \
-			<span style='color: green;'>roar</span>, \
-			<span style='color: green;'>tail</span>, \
-			</b><br>")
-		else
-			to_chat(src, text("Invalid Emote: []", act))
+/datum/emote/living/carbon/xeno/hellhound/sway
+	key = "sway"
+	key_third_person = "sways"
+	message = "sways around dizzily."
 
-	if(message)
-		log_emote("[name]/[key] : [message]")
-		if(m_type & 1)
-			for(var/mob/O in viewers(src, null))
-				O.show_message(message, m_type)
-		else
-			for(var/mob/O in hearers(src, null))
-				O.show_message(message, m_type)
+/datum/emote/living/carbon/xeno/hellhound/snore
+	key = "snore"
+	key_third_person = "snores"
+	message = "snores."
 
-/mob/living/carbon/Xenomorph/proc/emote_audio_helper(var/message, var/sound_to_play, var/volume = 15, var/player_caused)
-	if(recent_audio_emote && player_caused)
-		to_chat(src, "You just did an audible emote. Wait a while.")
-		return
+/datum/emote/living/carbon/xeno/hellhound/grunt
+	key = "grunt"
+	key_third_person = "grunts"
+	message = "grunts."
 
-	playsound(loc, sound_to_play, volume)
+/datum/emote/living/carbon/xeno/hellhound/rumble
+	key = "rumble"
+	key_third_person = "rumbles"
+	message = "rumbles deeply."
 
-	if(player_caused)
-		start_audio_emote_cooldown()
+/datum/emote/living/carbon/xeno/hellhound/howl
+	key = "howl"
+	key_third_person = "howls"
+	message = "howls!"
 
-	log_emote("[name]/[key] : [message]")
-	for(var/mob/O in hearers(src, null))
-		O.show_message(message, 2)
+/datum/emote/living/carbon/xeno/hellhound/growl
+	key = "growl"
+	key_third_person = "growls"
+	message = "emits a strange, menacing growl."
 
+/datum/emote/living/carbon/xeno/hellhound/stare
+	key = "stare"
+	key_third_person = "stares"
+	message = "stares."
 
-/mob/living/carbon/Xenomorph/Larva/emote(var/act, var/m_type = 1, var/message = null, player_caused)
-	if(findtext(act, "-", 1, null))
-		var/t1 = findtext(act, "-", 1, null)
-		act = copytext(act, 1, t1)
-
-	if(stat && act != "help")
-		return
-
-	playsound(loc, "alien_roar_larva", 15)
-	return
-
-/mob/living/carbon/Xenomorph/Facehugger/emote(var/act, var/m_type = 1, var/message = null, player_caused)
-	if(findtext(act, "-", 1, null))
-		var/t1 = findtext(act, "-", 1, null)
-		act = copytext(act, 1, t1)
-
-	if(stat && act != "help")
-		return
-
-	playsound(loc, "alien_roar_larva", 15)
-	return
+/datum/emote/living/carbon/xeno/hellhound/sniff
+	key = "sniff"
+	key_third_person = "sniffs"
+	message = "sniffs about."

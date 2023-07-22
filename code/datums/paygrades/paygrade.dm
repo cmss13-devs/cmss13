@@ -10,7 +10,7 @@ GLOBAL_LIST_INIT_TYPED(paygrades, /datum/paygrade, setup_paygrades())
 	var/rank_pin
 	var/ranking = 0
 
-	 /// Actually gives you the fucking money from your paygrade in your ATM account. Multiplier of 1 equals PFC pay.
+	/// Actually gives you the fucking money from your paygrade in your ATM account. Multiplier of 1 equals PFC pay.
 	var/pay_multiplier = 1
 
 /proc/setup_paygrades()
@@ -25,6 +25,7 @@ GLOBAL_LIST_INIT_TYPED(paygrades, /datum/paygrade, setup_paygrades())
 				.[pg_id] = new PG
 
 GLOBAL_LIST_INIT(highcom_paygrades, list(
+	"PvI",
 	"NO7",
 	"MO7",
 	"NO8",
@@ -51,4 +52,10 @@ GLOBAL_LIST_INIT(co_paygrades, list(
 	"MO6C",
 	"MO5",
 	"MO4"
+))
+
+GLOBAL_LIST_INIT(wy_paygrades, list(
+	"WYC8",
+	"WYC9",
+	"WYC10"
 ))

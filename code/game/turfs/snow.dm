@@ -10,7 +10,7 @@
 	is_groundmap_turf = TRUE
 
 	//PLACING/REMOVING/BUILDING
-/turf/open/snow/attackby(var/obj/item/I, var/mob/user)
+/turf/open/snow/attackby(obj/item/I, mob/user)
 
 	//Light Stick
 	if(istype(I, /obj/item/lightstick))
@@ -24,7 +24,7 @@
 			return
 
 		user.visible_message("\blue[user.name] planted \the [L] into [src].")
-		L.anchored = 1
+		L.anchored = TRUE
 		L.icon_state = "lightstick_[L.s_color][L.anchored]"
 		user.drop_held_item()
 		L.forceMove(src)
@@ -46,7 +46,7 @@
 			var/mob/living/carbon/C = AM
 			var/slow_amount = 0.75
 			var/can_stuck = 1
-			if(istype(C, /mob/living/carbon/Xenomorph)||isYautja(C))
+			if(istype(C, /mob/living/carbon/xenomorph)||isyautja(C))
 				slow_amount = 0.25
 				can_stuck = 0
 			var/new_slowdown = C.next_move_slowdown + (slow_amount * bleed_layer)
@@ -60,7 +60,7 @@
 
 
 //Update icon
-/turf/open/snow/update_icon(var/update_full, var/skip_sides)
+/turf/open/snow/update_icon(update_full, skip_sides)
 	icon_state = "snow_[bleed_layer]"
 	setDir(pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST))
 	switch(bleed_layer)

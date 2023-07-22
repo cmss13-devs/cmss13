@@ -1,10 +1,10 @@
 /obj/structure/machinery/hydro_floodlight_switch
 	name = "Biodome Floodlight Switch"
-	icon = 'icons/turf/ground_map.dmi'
+	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "panelnopower"
 	desc = "This switch controls the floodlights surrounding the archaeology complex. It only functions when there is power."
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	var/ispowered = FALSE
 	var/turned_on = 0 //has to be toggled in engineering
 	use_power = USE_POWER_IDLE
@@ -18,6 +18,13 @@
 		floodlist += F
 		F.fswitch = src
 	start_processing()
+
+/obj/structure/machinery/hydro_floodlight_switch/Destroy()
+	for(var/obj/structure/machinery/hydro_floodlight/floodlight as anything in floodlist)
+		floodlight.fswitch = null
+	floodlist = null
+	return ..()
+
 
 /obj/structure/machinery/hydro_floodlight_switch/process()
 	var/lightpower = 0
@@ -78,8 +85,8 @@
 	name = "Biodome Floodlight"
 	icon = 'icons/obj/structures/machinery/big_floodlight.dmi'
 	icon_state = "flood_s_off"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	layer = WINDOW_LAYER
 	var/damaged = 0 //Can be smashed by xenos
 	var/is_lit = 0
@@ -91,6 +98,9 @@
 	var/lum_value = 7
 
 /obj/structure/machinery/hydro_floodlight/Destroy()
+	if(fswitch?.floodlist)
+		fswitch.floodlist -= src
+	fswitch = null
 	SetLuminosity(0)
 	return ..()
 
@@ -141,7 +151,7 @@
 			to_chat(user, SPAN_WARNING("It's already damaged."))
 			return 0
 		else
-			if(isXenoLarva(user))
+			if(islarva(user))
 				return //Larvae can't do shit
 			if(user.get_active_hand())
 				to_chat(user, SPAN_WARNING("You need your claws empty for this!"))

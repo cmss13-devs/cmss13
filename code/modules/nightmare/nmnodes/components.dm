@@ -15,7 +15,7 @@
 
 /datum/component/nmnode_cond/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_NIGHTMARE_APPLYING_NODE, .proc/check_for_cond)
+	RegisterSignal(parent, COMSIG_NIGHTMARE_APPLYING_NODE, PROC_REF(check_for_cond))
 
 /datum/component/nmnode_cond/UnregisterFromParent()
 	. = ..()
@@ -24,6 +24,9 @@
 /datum/component/nmnode_cond/proc/check_for_cond(datum/nmnode/source, datum/nmcontext/context)
 	SIGNAL_HANDLER
 	var/value = context.get_scenario_value(src.pname)
+#if defined(UNIT_TESTS)
+	return // Force true for testing (this could potentially make false positives though)
+#endif
 	if(!(negate ^ (value == pvalue)))
 		return COMPONENT_ABORT_NMNODE
 
@@ -37,7 +40,7 @@
 /datum/element/nmnode_prob/Attach(target, probvalue)
 	. = ..()
 	src.probvalue = probvalue
-	RegisterSignal(target, COMSIG_NIGHTMARE_APPLYING_NODE, .proc/check_prob)
+	RegisterSignal(target, COMSIG_NIGHTMARE_APPLYING_NODE, PROC_REF(check_prob))
 
 /datum/element/nmnode_prob/Detach(datum/source, force)
 	. = ..()
@@ -45,5 +48,8 @@
 
 /datum/element/nmnode_prob/proc/check_prob(datum/nmnode/source)
 	SIGNAL_HANDLER
+#if defined(UNIT_TESTS)
+	return // Force true for testing
+#endif
 	if(rand() > probvalue)
 		return COMPONENT_ABORT_NMNODE

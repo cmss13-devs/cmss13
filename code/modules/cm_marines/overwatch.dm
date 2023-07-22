@@ -6,10 +6,9 @@
 	name = "Overwatch Console"
 	desc = "State of the art machinery for giving orders to a squad."
 	icon_state = "dummy"
-	req_access = list(ACCESS_MARINE_BRIDGE)
+	req_access = list(ACCESS_MARINE_DATABASE)
 	unacidable = TRUE
 
-	var/mob/living/carbon/human/current_mapviewer = null
 	var/datum/squad/current_squad = null
 	var/state = 0
 	var/obj/structure/machinery/camera/cam = null
@@ -26,26 +25,32 @@
 	var/marine_filter_enabled = TRUE
 	var/faction = FACTION_MARINE
 
+	var/datum/tacmap/tacmap
+	var/minimap_type = MINIMAP_FLAG_USCM
+
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
-	SSmapview.map_machines += src
+	tacmap = new(src, minimap_type)
 
 /obj/structure/machinery/computer/overwatch/Destroy()
-	SSmapview.map_machines -= src
+	QDEL_NULL(tacmap)
 	return ..()
 
-/obj/structure/machinery/computer/overwatch/attackby(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
+/obj/structure/machinery/computer/overwatch/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
 	return
 
-/obj/structure/machinery/computer/overwatch/bullet_act(var/obj/item/projectile/Proj) //Can't shoot it
+/obj/structure/machinery/computer/overwatch/bullet_act(obj/item/projectile/Proj) //Can't shoot it
 	return FALSE
 
-/obj/structure/machinery/computer/overwatch/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/overwatch/attack_remote(mob/user as mob)
 	if(!ismaintdrone(user))
 		return attack_hand(user)
 
 /obj/structure/machinery/computer/overwatch/attack_hand(mob/user)
 	if(..())  //Checks for power outages
+		return
+
+	if(istype(src, /obj/structure/machinery/computer/overwatch/almayer/broken))
 		return
 
 	if(!ishighersilicon(usr) && !skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
@@ -148,8 +153,8 @@
 	else
 		var/leader_text = ""
 		var/leader_count = 0
-		var/rto_text = ""
-		var/rto_count = 0
+		var/tl_text = ""
+		var/tl_count = 0
 		var/spec_text = ""
 		var/spec_count = 0
 		var/medic_text = ""
@@ -210,7 +215,7 @@
 				if(H.job)
 					role = H.job
 				else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
-					var/obj/item/card/id/ID = H.wear_id		//we use their ID to get their role.
+					var/obj/item/card/id/ID = H.wear_id //we use their ID to get their role.
 					if(ID.rank) role = ID.rank
 
 				if(current_squad.squad_leader)
@@ -277,9 +282,9 @@
 				if(JOB_SQUAD_LEADER)
 					leader_text += marine_infos
 					leader_count++
-				if(JOB_SQUAD_RTO)
-					rto_text += marine_infos
-					rto_count++
+				if(JOB_SQUAD_TEAM_LEADER)
+					tl_text += marine_infos
+					tl_count++
 				if(JOB_SQUAD_SPECIALIST)
 					spec_text += marine_infos
 					spec_count++
@@ -299,7 +304,7 @@
 					misc_text += marine_infos
 
 		dat += "<b>[leader_count ? "Squad Leader Deployed" : SET_CLASS("No Squad Leader Deployed!", INTERFACE_RED)]</b><BR>"
-		dat += "<b>Squad Radio Telephone Operators: [rto_count ? "[rto_count]" : SET_CLASS("No Squad Radio Telephone Operators Deployed!", INTERFACE_RED)]</b><BR>"
+		dat += "<b>Fireteam Leaders: [tl_count ? "[tl_count]" : SET_CLASS("No Fireteam Leaders Deployed!", INTERFACE_RED)]</b><BR>"
 		dat += "<b>[spec_count ? "Squad Specialist Deployed" : SET_CLASS("No Specialist Deployed!", INTERFACE_RED)]</b><BR>"
 		dat += "<b>[smart_count ? "Squad Smartgunner Deployed" : SET_CLASS("No Smartgunner Deployed!", INTERFACE_RED)]</b><BR>"
 		dat += "<b>Squad Hospital Corpsmen: [medic_count] Deployed | Squad Combat Technicians: [engi_count] Deployed</b><BR>"
@@ -310,7 +315,7 @@
 		dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"
 		dat += "<th>Name</th><th>Role</th><th>State</th><th>Location</th><th>SL Distance</th><th>Filter</th></tr>"
 		if(!living_marines_sorting)
-			dat += leader_text + rto_text + spec_text + medic_text + engi_text + smart_text + marine_text + misc_text
+			dat += leader_text + tl_text + spec_text + medic_text + engi_text + smart_text + marine_text + misc_text
 		else
 			dat += conscious_text + unconscious_text + dead_text
 		dat += "</table>"
@@ -375,23 +380,7 @@
 	dat += "<A href='?src=\ref[src];operation=back'>Back</a></body>"
 	return dat
 
-/obj/structure/machinery/computer/overwatch/proc/update_mapview(var/close = 0)
-	if(close || !current_squad || !current_mapviewer || !Adjacent(current_mapviewer))
-		close_browser(current_mapviewer, "marineminimap")
-		current_mapviewer = null
-		return
-	var/icon/O = overlay_tacmap(TACMAP_DEFAULT)
-	if(O)
-		current_mapviewer << browse_rsc(O, "marine_minimap.png")
-		show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
-
 /obj/structure/machinery/computer/overwatch/Topic(href, href_list)
-	if(href_list["close"])
-		if(current_mapviewer)
-			close_browser(current_mapviewer, "marineminimap")
-		current_mapviewer = null
-		return
-
 	if(..())
 		return
 	if(!href_list["operation"])
@@ -403,12 +392,7 @@
 	switch(href_list["operation"])
 		// main interface
 		if("mapview")
-			if(current_mapviewer)
-				update_mapview(1)
-				return
-			current_mapviewer = usr
-			update_mapview()
-			return
+			tacmap.tgui_interact(usr)
 		if("back")
 			state = 0
 		if("monitor")
@@ -446,6 +430,7 @@
 			current_squad = null
 			if(cam && !ishighersilicon(usr))
 				usr.reset_view(null)
+				usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 			cam = null
 			state = 0
 		if("pick_squad")
@@ -609,13 +594,17 @@
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Searching for helmet cam. No helmet cam found for this marine! Tell your squad to put their helmets on!")]")
 				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping helmet cam view of [cam_target].")]")
+					usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					cam = null
 					usr.reset_view(null)
 				else if(usr.client.view != world_view_size)
 					to_chat(usr, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
+					if(cam)
+						usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					cam = new_cam
 					usr.reset_view(cam)
+					usr.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 	attack_hand(usr) //The above doesn't ever seem to work.
 
 /obj/structure/machinery/computer/overwatch/check_eye(mob/user)
@@ -627,6 +616,8 @@
 /obj/structure/machinery/computer/overwatch/on_unset_interaction(mob/user)
 	..()
 	if(!isRemoteControlling(user))
+		if(cam)
+			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 		cam = null
 		user.reset_view(null)
 
@@ -639,7 +630,7 @@
 
 
 // Alerts all groundside marines about the incoming OB
-/obj/structure/machinery/computer/overwatch/proc/alert_ob(var/turf/target)
+/obj/structure/machinery/computer/overwatch/proc/alert_ob(turf/target)
 	var/area/ob_area = get_area(target)
 	if(!ob_area)
 		return
@@ -743,7 +734,7 @@
 					if(!findtext(R.fields["ma_crim"],"Insubordination."))
 						R.fields["criminal"] = "*Arrest*"
 						if(R.fields["ma_crim"] == "None")
-							R.fields["ma_crim"]	= "Insubordination."
+							R.fields["ma_crim"] = "Insubordination."
 						else
 							R.fields["ma_crim"] += "Insubordination."
 
@@ -853,9 +844,9 @@
 	busy = TRUE
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment request for squad '[current_squad]' accepted. Orbital cannons are now calibrating.")]")
 	playsound(T,'sound/effects/alert.ogg', 25, 1)  //Placeholder
-	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch.proc/alert_ob, T), 2 SECONDS)
-	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch.proc/begin_fire), 6 SECONDS)
-	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch.proc/fire_bombard, user, A, T), 6 SECONDS + 6)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, alert_ob), T), 2 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, begin_fire)), 6 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, fire_bombard), user, A, T), 6 SECONDS + 6)
 
 /obj/structure/machinery/computer/overwatch/proc/begin_fire()
 	for(var/mob/living/carbon/H in GLOB.alive_mob_list)
@@ -872,8 +863,11 @@
 
 	var/ob_name = lowertext(almayer_orbital_cannon.tray.warhead.name)
 	announce_dchat("\A [ob_name] targeting [A.name] has been fired!", T)
-	message_staff(FONT_SIZE_HUGE("ALERT: [key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
+	message_admins(FONT_SIZE_HUGE("ALERT: [key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]' [ADMIN_JMP(T)]"))
 	log_attack("[key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]'")
+
+	/// Project ARES interface log.
+	GLOB.ares_link.log_ares_bombardment(user, ob_name, "X[x_bomb], Y[y_bomb] in [A.name]")
 
 	busy = FALSE
 	var/turf/target = locate(T.x + rand(-3, 3), T.y + rand(-3, 3), T.z)
@@ -936,9 +930,12 @@
 	busy = FALSE
 
 /obj/structure/machinery/computer/overwatch/almayer
-	density = 0
+	density = FALSE
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "overwatch"
+
+/obj/structure/machinery/computer/overwatch/almayer/broken
+	name = "Broken Overwatch Console"
 
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF
@@ -947,7 +944,7 @@
 /obj/structure/machinery/computer/overwatch/pmc
 	faction = FACTION_PMC
 /obj/structure/machinery/computer/overwatch/twe
-	faction = FACTION_RESS
+	faction = FACTION_TWE
 /obj/structure/machinery/computer/overwatch/freelance
 	faction = FACTION_FREELANCER
 
@@ -955,8 +952,8 @@
 	name = "Supply Drop Pad"
 	desc = "Place a crate on here to allow bridge Overwatch officers to drop them on people's heads."
 	icon = 'icons/effects/warning_stripes.dmi'
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = 2.1 //It's the floor, man

@@ -9,7 +9,7 @@
 /obj/item/tool/pen/robopen/attack_self(mob/user)
 	..()
 
-	var/choice = tgui_input_list(usr, "Would you like to change colour or mode?", "Change Mode", list("Colour","Mode"))
+	var/choice = tgui_input_list(usr, "Would you like to change color or mode?", "Change Mode", list("Colour","Mode"))
 	if(!choice)
 		return
 
@@ -17,7 +17,7 @@
 
 	switch(choice)
 		if("Colour")
-			var/newcolour = tgui_input_list(usr, "Which colour would you like to use?", list("black","blue","red","green","yellow"))
+			var/newcolour = tgui_input_list(usr, "Which color would you like to use?", list("black","blue","red","green","yellow"))
 			if(newcolour) pen_colour = newcolour
 		if("Mode")
 			if (mode == 1)
@@ -64,7 +64,7 @@
 	..()
 	deploy_paper(get_turf(src))
 
-/obj/item/form_printer/proc/deploy_paper(var/turf/T)
+/obj/item/form_printer/proc/deploy_paper(turf/T)
 	T.visible_message(SPAN_NOTICE("\The [src.loc] dispenses a sheet of crisp white paper."))
 	new /obj/item/paper(T)
 

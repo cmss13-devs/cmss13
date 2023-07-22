@@ -2,39 +2,39 @@
 
 //Global proc for checking if the game is whiskey outpost so I dont need to type if(gamemode == whiskey outpost) 50000 times
 /proc/Check_WO()
-	if(SSticker.mode == "Whiskey Outpost" || master_mode == "Whiskey Outpost")
+	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || master_mode == GAMEMODE_WHISKEY_OUTPOST)
 		return 1
 	return 0
 
 /datum/game_mode/whiskey_outpost
-	name = "Whiskey Outpost"
-	config_tag = "Whiskey Outpost"
-	required_players 		= 0
-	xeno_bypass_timer 		= 1
+	name = GAMEMODE_WHISKEY_OUTPOST
+	config_tag = GAMEMODE_WHISKEY_OUTPOST
+	required_players = 0
+	xeno_bypass_timer = 1
 	flags_round_type = MODE_NEW_SPAWN
 	role_mappings = list(
-					/datum/job/command/commander/whiskey = JOB_CO,
-					/datum/job/command/executive/whiskey = JOB_XO,
-					/datum/job/civilian/synthetic/whiskey = JOB_SYNTH,
-					/datum/job/command/warrant/whiskey = JOB_CHIEF_POLICE,
-					/datum/job/command/bridge/whiskey = JOB_SO,
-					/datum/job/command/tank_crew/whiskey = JOB_CREWMAN,
-					/datum/job/command/police/whiskey = JOB_POLICE,
-					/datum/job/command/pilot/whiskey = JOB_PILOT,
-					/datum/job/logistics/requisition/whiskey = JOB_CHIEF_REQUISITION,
-					/datum/job/civilian/professor/whiskey = JOB_CMO,
-					/datum/job/civilian/doctor/whiskey = JOB_DOCTOR,
-					/datum/job/civilian/researcher/whiskey = JOB_RESEARCHER,
-					/datum/job/logistics/engineering/whiskey = JOB_CHIEF_ENGINEER,
-					/datum/job/logistics/tech/maint/whiskey = JOB_MAINT_TECH,
-					/datum/job/logistics/cargo/whiskey = JOB_CARGO_TECH,
-					/datum/job/civilian/liaison/whiskey = JOB_CORPORATE_LIAISON,
-					/datum/job/marine/leader/whiskey = JOB_SQUAD_LEADER,
-					/datum/job/marine/specialist/whiskey = JOB_SQUAD_SPECIALIST,
-					/datum/job/marine/smartgunner/whiskey = JOB_SQUAD_SMARTGUN,
-					/datum/job/marine/medic/whiskey = JOB_SQUAD_MEDIC,
-					/datum/job/marine/engineer/whiskey = JOB_SQUAD_ENGI,
-					/datum/job/marine/standard/whiskey = JOB_SQUAD_MARINE
+		/datum/job/command/commander/whiskey = JOB_CO,
+		/datum/job/command/executive/whiskey = JOB_XO,
+		/datum/job/civilian/synthetic/whiskey = JOB_SYNTH,
+		/datum/job/command/warrant/whiskey = JOB_CHIEF_POLICE,
+		/datum/job/command/bridge/whiskey = JOB_SO,
+		/datum/job/command/tank_crew/whiskey = JOB_CREWMAN,
+		/datum/job/command/police/whiskey = JOB_POLICE,
+		/datum/job/command/pilot/whiskey = JOB_PILOT,
+		/datum/job/logistics/requisition/whiskey = JOB_CHIEF_REQUISITION,
+		/datum/job/civilian/professor/whiskey = JOB_CMO,
+		/datum/job/civilian/doctor/whiskey = JOB_DOCTOR,
+		/datum/job/civilian/researcher/whiskey = JOB_RESEARCHER,
+		/datum/job/logistics/engineering/whiskey = JOB_CHIEF_ENGINEER,
+		/datum/job/logistics/tech/maint/whiskey = JOB_MAINT_TECH,
+		/datum/job/logistics/cargo/whiskey = JOB_CARGO_TECH,
+		/datum/job/civilian/liaison/whiskey = JOB_CORPORATE_LIAISON,
+		/datum/job/marine/leader/whiskey = JOB_SQUAD_LEADER,
+		/datum/job/marine/specialist/whiskey = JOB_SQUAD_SPECIALIST,
+		/datum/job/marine/smartgunner/whiskey = JOB_SQUAD_SMARTGUN,
+		/datum/job/marine/medic/whiskey = JOB_SQUAD_MEDIC,
+		/datum/job/marine/engineer/whiskey = JOB_SQUAD_ENGI,
+		/datum/job/marine/standard/whiskey = JOB_SQUAD_MARINE,
 	)
 
 
@@ -87,6 +87,7 @@
 	return 1
 
 /datum/game_mode/whiskey_outpost/pre_setup()
+	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
 	for(var/obj/effect/landmark/whiskey_outpost/xenospawn/X)
 		xeno_spawns += X.loc
 	for(var/obj/effect/landmark/whiskey_outpost/supplydrops/S)
@@ -113,7 +114,7 @@
 
 	CONFIG_SET(flag/remove_gun_restrictions, TRUE)
 	sleep(10)
-	to_world("<span class='round_header'>The current game mode is - WHISKEY OUTPOST!</span>")
+	to_world(SPAN_ROUND_HEADER("The current game mode is - WHISKEY OUTPOST!"))
 	to_world(SPAN_ROUNDBODY("It is the year 2177 on the planet LV-624, five years before the arrival of the USS Almayer and the 2nd 'Falling Falcons' Battalion in the sector"))
 	to_world(SPAN_ROUNDBODY("The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM presence in the Neroid Sector"))
 	to_world(SPAN_ROUNDBODY("[SSmapping.configs[GROUND_MAP].map_name], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces"))
@@ -125,10 +126,10 @@
 	switch(map_locale) //Switching it up.
 		if(0)
 			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures.  We're setting up a distress call, but we need you to hold [SSmapping.configs[GROUND_MAP].map_name] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your positon, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
-	addtimer(CALLBACK(src, .proc/story_announce, 0), 3 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(story_announce), 0), 3 MINUTES)
 	return ..()
 
-/datum/game_mode/whiskey_outpost/proc/story_announce(var/time)
+/datum/game_mode/whiskey_outpost/proc/story_announce(time)
 	switch(time)
 		if(0)
 			marine_announcement("This is Captain Hans Naiche, Commander of the 3rd Bataillion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and likely wiped out by hostile local creatures as we've attempted to set our base up.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
@@ -138,14 +139,14 @@
 			marine_announcement("Captain Naiche here. We've tracked the bulk of enemy forces on the move and [SSmapping.configs[GROUND_MAP].map_name] is likely to be hit before they reach the base. We need you to hold them off while we finish sending the distress call. Expect incoming within a few minutes. Godspeed, [SSmapping.configs[GROUND_MAP].map_name].", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 
 	if(time <= 2)
-		addtimer(CALLBACK(src, .proc/story_announce, time+1), 3 MINUTES)
+		addtimer(CALLBACK(src, PROC_REF(story_announce), time+1), 3 MINUTES)
 
 /datum/game_mode/whiskey_outpost/proc/update_controllers()
 	//Update controllers while we're on this mode
 	if(SSitem_cleanup)
 		//Cleaning stuff more aggressively
 		SSitem_cleanup.start_processing_time = 0
-		SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
+		SSitem_cleanup.percentage_of_garbage_to_delete = 1
 		SSitem_cleanup.wait = 1 MINUTES
 		SSitem_cleanup.next_fire = 1 MINUTES
 		spawn(0)
@@ -196,7 +197,7 @@
 	xeno_wave = min(xeno_wave + 1, WO_MAX_WAVE)
 
 
-/datum/game_mode/whiskey_outpost/proc/announce_xeno_wave(var/datum/whiskey_outpost_wave/wave_data)
+/datum/game_mode/whiskey_outpost/proc/announce_xeno_wave(datum/whiskey_outpost_wave/wave_data)
 	if(!istype(wave_data))
 		return
 	if(wave_data.command_announcement.len > 0)
@@ -223,14 +224,14 @@
 			J.total_positions = J.current_positions
 		J.current_positions = J.get_total_positions(TRUE)
 	to_world("<B>New players may no longer join the game.</B>")
-	message_staff("Wave one has begun. Disabled new player game joining.")
-	message_staff("Wave one has begun. Disabled new player game joining except for replacement of cryoed marines.")
+	message_admins("Wave one has begun. Disabled new player game joining.")
+	message_admins("Wave one has begun. Disabled new player game joining except for replacement of cryoed marines.")
 	world.update_status()
 
 /datum/game_mode/whiskey_outpost/count_xenos()//Counts braindead too
 	var/xeno_count = 0
 	for(var/i in GLOB.living_xeno_list)
-		var/mob/living/carbon/Xenomorph/X = i
+		var/mob/living/carbon/xenomorph/X = i
 		if(is_ground_level(X.z) && !istype(X.loc,/turf/open/space)) // If they're connected/unghosted and alive and not debrained
 			xeno_count += 1 //Add them to the amount of people who're alive.
 
@@ -260,7 +261,7 @@
 		round_statistics.track_round_end()
 	if(finished == 1)
 		log_game("Round end result - xenos won")
-		to_world("<span class='round_header'>The Xenos have succesfully defended their hive from colonization.</span>")
+		to_world(SPAN_ROUND_HEADER("The Xenos have succesfully defended their hive from colonization."))
 		to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
 		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
 		to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then..."))
@@ -273,7 +274,7 @@
 
 	else if(finished == 2)
 		log_game("Round end result - marines won")
-		to_world("<span class='round_header'>Against the onslaught, the marines have survived.</span>")
+		to_world(SPAN_ROUND_HEADER("Against the onslaught, the marines have survived."))
 		to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in the Neroid Sector begin to converge on LV-624."))
 		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
 		to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
@@ -286,7 +287,7 @@
 
 	else
 		log_game("Round end result - no winners")
-		to_world("<span class='round_header'>NOBODY WON!</span>")
+		to_world(SPAN_ROUND_HEADER("NOBODY WON!"))
 		to_world(SPAN_ROUNDBODY("How? Don't ask me..."))
 		world << 'sound/misc/sadtrombone.ogg'
 		if(round_statistics)
@@ -303,12 +304,13 @@
 
 	calculate_end_statistics()
 
+
 	return 1
 
 /datum/game_mode/proc/auto_declare_completion_whiskey_outpost()
 	return
 
-/datum/game_mode/whiskey_outpost/proc/place_whiskey_outpost_drop(var/OT = "sup") //Art revamping spawns 13JAN17
+/datum/game_mode/whiskey_outpost/proc/place_whiskey_outpost_drop(OT = "sup") //Art revamping spawns 13JAN17
 	var/turf/T = pick(supply_spawns)
 	var/randpick
 	var/list/randomitems = list()
@@ -397,9 +399,9 @@
 				choosemax = rand(1,5)
 				randomitems = list(/obj/item/storage/box/explosive_mines,
 								/obj/item/storage/box/explosive_mines,
-								/obj/item/explosive/grenade/HE/m15,
-								/obj/item/explosive/grenade/HE/m15,
-								/obj/item/explosive/grenade/HE,
+								/obj/item/explosive/grenade/high_explosive/m15,
+								/obj/item/explosive/grenade/high_explosive/m15,
+								/obj/item/explosive/grenade/high_explosive,
 								/obj/item/storage/box/nade_box
 								)
 			if(36 to 40) // Junk
@@ -435,7 +437,7 @@
 				if(I && istype(I,/obj/item/stack/sheet/mineral/phoron) || istype(I,/obj/item/stack/rods) || istype(I,/obj/item/stack/sheet/glass) || istype(I,/obj/item/stack/sheet/metal) || istype(I,/obj/item/stack/sheet/plasteel) || istype(I,/obj/item/stack/sheet/wood))
 					I:amount = rand(30,50) //Give them more building materials.
 				if(I && istype(I,/obj/structure/machinery/floodlight))
-					I.anchored = 0
+					I.anchored = FALSE
 
 
 	else
@@ -451,70 +453,70 @@
 
 	name = "Recycler"
 	desc = "Instructions: Place objects you want to destroy on top of it and use the machine. Use with care"
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	var/working = 0
 
-	attack_hand(mob/user)
-		if(inoperable(MAINT))
-			return
-		if(user.lying || user.stat)
-			return
-		if(ismaintdrone(usr) || \
-			istype(usr, /mob/living/carbon/Xenomorph))
-			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
-			return
-		if(working)
-			to_chat(user, SPAN_DANGER("Wait for it to recharge first."))
-			return
-
-		var/remove_max = 10
-		var/turf/T = src.loc
-		if(T)
-			to_chat(user, SPAN_DANGER("You turn on the recycler."))
-			var/removed = 0
-			for(var/i, i < remove_max, i++)
-				for(var/obj/O in T)
-					if(istype(O,/obj/structure/closet/crate))
-						var/obj/structure/closet/crate/C = O
-						if(C.contents.len)
-							to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled"))
-							continue
-						new /obj/item/stack/sheet/metal(get_step(src,dir))
-						O.forceMove(get_turf(locate(84,237,2))) //z.2
-//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
-						removed++
-						break
-					else if(istype(O,/obj/item))
-						var/obj/item/I = O
-						if(I.anchored)
-							continue
-						O.forceMove(get_turf(locate(84,237,2))) //z.2
-//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
-						removed++
-						break
-				for(var/mob/M in T)
-					if(istype(M,/mob/living/carbon/Xenomorph))
-						var/mob/living/carbon/Xenomorph/X = M
-						if(!X.stat == DEAD)
-							continue
-						X.forceMove(get_turf(locate(84,237,2))) //z.2
-//						X.forceMove(get_turf(locate(30,70,1)) )//z.1
-						removed++
-						break
-				if(removed && !working)
-					playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
-					working = 1 //Stops the sound from repeating
-				if(removed >= remove_max)
-					break
-
-		working = 1
-		addtimer(VARSET_CALLBACK(src, working, FALSE), 10 SECONDS)
-
-	ex_act(severity)
+/obj/structure/machinery/wo_recycler/attack_hand(mob/user)
+	if(inoperable(MAINT))
 		return
+	if(user.lying || user.stat)
+		return
+	if(ismaintdrone(usr) || \
+		istype(usr, /mob/living/carbon/xenomorph))
+		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
+		return
+	if(working)
+		to_chat(user, SPAN_DANGER("Wait for it to recharge first."))
+		return
+
+	var/remove_max = 10
+	var/turf/T = src.loc
+	if(T)
+		to_chat(user, SPAN_DANGER("You turn on the recycler."))
+		var/removed = 0
+		for(var/i, i < remove_max, i++)
+			for(var/obj/O in T)
+				if(istype(O,/obj/structure/closet/crate))
+					var/obj/structure/closet/crate/C = O
+					if(C.contents.len)
+						to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled"))
+						continue
+					new /obj/item/stack/sheet/metal(get_step(src,dir))
+					O.forceMove(get_turf(locate(84,237,2))) //z.2
+// O.forceMove(get_turf(locate(30,70,1)) )//z.1
+					removed++
+					break
+				else if(istype(O,/obj/item))
+					var/obj/item/I = O
+					if(I.anchored)
+						continue
+					O.forceMove(get_turf(locate(84,237,2))) //z.2
+// O.forceMove(get_turf(locate(30,70,1)) )//z.1
+					removed++
+					break
+			for(var/mob/M in T)
+				if(istype(M,/mob/living/carbon/xenomorph))
+					var/mob/living/carbon/xenomorph/X = M
+					if(!X.stat == DEAD)
+						continue
+					X.forceMove(get_turf(locate(84,237,2))) //z.2
+// X.forceMove(get_turf(locate(30,70,1)) )//z.1
+					removed++
+					break
+			if(removed && !working)
+				playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
+				working = 1 //Stops the sound from repeating
+			if(removed >= remove_max)
+				break
+
+	working = 1
+	addtimer(VARSET_CALLBACK(src, working, FALSE), 10 SECONDS)
+
+/obj/structure/machinery/wo_recycler/ex_act(severity)
+	return
 
 
 ////////////////////
@@ -598,7 +600,7 @@
 		return
 
 	activated = 1
-	anchored = 1
+	anchored = TRUE
 	w_class = 10
 	icon_state = "[icon_activated]"
 	playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
@@ -615,7 +617,7 @@
 	qdel(src)
 	return
 
-/obj/item/device/whiskey_supply_beacon/proc/drop_supplies(var/turf/T,var/SD)
+/obj/item/device/whiskey_supply_beacon/proc/drop_supplies(turf/T, SD)
 	if(!istype(T)) return
 	var/list/spawnitems = list()
 	var/obj/structure/closet/crate/crate
@@ -686,10 +688,10 @@
 							/obj/item/ammo_magazine/flamer_tank/large,
 							fuel)
 		if(6) // Scout
-			spawnitems = list(/obj/item/ammo_magazine/rifle/m4ra,
-							/obj/item/ammo_magazine/rifle/m4ra,
-							/obj/item/ammo_magazine/rifle/m4ra/incendiary,
-							/obj/item/ammo_magazine/rifle/m4ra/impact)
+			spawnitems = list(/obj/item/ammo_magazine/rifle/m4ra/custom,
+							/obj/item/ammo_magazine/rifle/m4ra/custom,
+							/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
+							/obj/item/ammo_magazine/rifle/m4ra/custom/impact)
 	crate.storage_capacity = 60
 	for(var/path in spawnitems)
 		new path(crate)
@@ -727,5 +729,8 @@
 			new /obj/item/paper/crumpled(T)
 		qdel(src)
 
-/datum/game_mode/whiskey_outpost/announce_bioscans(var/delta = 2)
+/datum/game_mode/whiskey_outpost/announce_bioscans(variance = 2)
 	return // No bioscans needed in WO
+
+/datum/game_mode/whiskey_outpost/get_escape_menu()
+	return "Making a last stand on..."

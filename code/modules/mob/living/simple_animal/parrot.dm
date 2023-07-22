@@ -1,11 +1,11 @@
 /* Parrots!
  * Contains
- * 		Defines
- *		Inventory (headset stuff)
- *		Attack responces
- *		AI
- *		Procs / Verbs (usable by players)
- *		Sub-types
+ * Defines
+ * Inventory (headset stuff)
+ * Attack responces
+ * AI
+ * Procs / Verbs (usable by players)
+ * Sub-types
  */
 
 /*
@@ -14,15 +14,15 @@
 
 //Only a maximum of one action and one intent should be active at any given time.
 //Actions
-#define PARROT_PERCH 1		//Sitting/sleeping, not moving
-#define PARROT_SWOOP 2		//Moving towards or away from a target
-#define PARROT_WANDER 4		//Moving without a specific target in mind
+#define PARROT_PERCH 1 //Sitting/sleeping, not moving
+#define PARROT_SWOOP 2 //Moving towards or away from a target
+#define PARROT_WANDER 4 //Moving without a specific target in mind
 
 //Intents
-#define PARROT_STEAL 8		//Flying towards a target to steal it/from it
-#define PARROT_ATTACK 16	//Flying towards a target to attack it
-#define PARROT_RETURN 32	//Flying towards its perch
-#define PARROT_FLEE 64		//Flying away from its attacker
+#define PARROT_STEAL 8 //Flying towards a target to steal it/from it
+#define PARROT_ATTACK 16 //Flying towards a target to attack it
+#define PARROT_RETURN 32 //Flying towards its perch
+#define PARROT_FLEE 64 //Flying away from its attacker
 
 
 /mob/living/simple_animal/parrot
@@ -41,7 +41,7 @@
 
 	speak_chance = 1//1% (1 in 100) chance every tick; So about once per 150 seconds, assuming an average tick is 1.5s
 	turns_per_move = 5
-	meat_type = /obj/item/reagent_container/food/snacks/cracker/
+	meat_type = /obj/item/reagent_container/food/snacks/cracker
 
 	response_help  = "pets the"
 	response_disarm = "gently moves aside the"
@@ -70,9 +70,9 @@
 	//Parrots will generally sit on their pertch unless something catches their eye.
 	//These vars store their preffered perch and if they dont have one, what they can use as a perch
 	var/obj/parrot_perch = null
-	var/obj/desired_perches = list(/obj/structure/computerframe, 		/obj/structure/displaycase, \
-									/obj/structure/filingcabinet,		/obj/structure/machinery/teleport, \
-									/obj/structure/machinery/computer,			/obj/structure/machinery/suit_storage_unit, \
+	var/obj/desired_perches = list(/obj/structure/computerframe, /obj/structure/displaycase, \
+									/obj/structure/filingcabinet, /obj/structure/machinery/teleport, \
+									/obj/structure/machinery/computer, /obj/structure/machinery/suit_storage_unit, \
 									/obj/structure/machinery/telecomms, \
 									/obj/structure/machinery/smartfridge, \
 									/obj/structure/machinery/recharge_station)
@@ -83,7 +83,7 @@
 /mob/living/simple_animal/parrot/Initialize()
 	. = ..()
 	if(!ears)
-		var/headset = pick(	/obj/item/device/radio/headset)
+		var/headset = pick( /obj/item/device/radio/headset)
 		ears = new headset(src)
 
 	parrot_sleep_dur = parrot_sleep_max //In case someone decides to change the max without changing the duration var
@@ -95,7 +95,7 @@
 		/mob/living/simple_animal/parrot/proc/perch_player,
 	))
 
-/mob/living/simple_animal/parrot/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/simple_animal/parrot/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_OVER|PASS_FLAGS_CRAWLER
@@ -114,11 +114,11 @@
 	user.set_interaction(src)
 	if(user.stat) return
 
-	var/dat = 	"<div align='center'><b>Inventory of [name]</b></div><p>"
+	var/dat = "<div align='center'><b>Inventory of [name]</b></div><p>"
 	if(ears)
-		dat +=	"<br><b>Headset:</b> [ears] (<a href='?src=\ref[src];remove_inv=ears'>Remove</a>)"
+		dat += "<br><b>Headset:</b> [ears] (<a href='?src=\ref[src];remove_inv=ears'>Remove</a>)"
 	else
-		dat +=	"<br><b>Headset:</b> <a href='?src=\ref[src];add_inv=ears'>Nothing</a>"
+		dat += "<br><b>Headset:</b> <a href='?src=\ref[src];add_inv=ears'>Nothing</a>"
 
 	user << browse(dat, text("window=mob[];size=325x500", name))
 	onclose(user, "mob[real_name]")
@@ -196,7 +196,7 @@
 								if("Cargo")
 									available_channels.Add(":q")
 
-						if(headset_to_add.translate_binary)
+						if(headset_to_add.translate_apollo)
 							available_channels.Add(":b")
 		else
 			..()
@@ -222,7 +222,7 @@
 		if(M.health < 50) //Weakened mob? Fight back!
 			parrot_state |= PARROT_ATTACK
 		else
-			parrot_state |= PARROT_FLEE		//Otherwise, fly like a bat out of hell!
+			parrot_state |= PARROT_FLEE //Otherwise, fly like a bat out of hell!
 			drop_parrot_held_item(0)
 	return
 
@@ -240,7 +240,7 @@
 		icon_state = "parrot_fly"
 
 //Mobs with objects
-/mob/living/simple_animal/parrot/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_animal/parrot/attackby(obj/item/O as obj, mob/user as mob)
 	..()
 	if(!stat && !client && !istype(O, /obj/item/stack/medical))
 		if(O.force)
@@ -254,7 +254,7 @@
 	return
 
 //Bullets
-/mob/living/simple_animal/parrot/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/simple_animal/parrot/bullet_act(obj/item/projectile/Proj)
 	..()
 	if(!stat && !client)
 		if(parrot_state == PARROT_PERCH)
@@ -349,7 +349,7 @@
 			//Search for item to steal
 			parrot_interest = search_for_item()
 			if(parrot_interest)
-				INVOKE_ASYNC(src, .proc/emote, "looks in [parrot_interest]'s direction and takes flight")
+				INVOKE_ASYNC(src, PROC_REF(emote), "looks in [parrot_interest]'s direction and takes flight")
 				parrot_state = PARROT_SWOOP|PARROT_STEAL
 				icon_state = "parrot_fly"
 			return
@@ -366,15 +366,15 @@
 			step(src, pick(cardinal))
 			return
 
-		if(!held_item && !parrot_perch) //If we've got nothing to do.. look for something to do.
+		if(!held_item && !parrot_perch) //If we've got nothing to do... look for something to do.
 			var/atom/movable/AM = search_for_perch_and_item() //This handles checking through lists so we know it's either a perch or stealable item
 			if(AM)
-				if(istype(AM, /obj/item) || isliving(AM))	//If stealable item
+				if(istype(AM, /obj/item) || isliving(AM)) //If stealable item
 					parrot_interest = AM
-					INVOKE_ASYNC(src, .proc/emote, "turns and flies towards [parrot_interest]")
+					INVOKE_ASYNC(src, PROC_REF(emote), "turns and flies towards [parrot_interest]")
 					parrot_state = PARROT_SWOOP|PARROT_STEAL
 					return
-				else	//Else it's a perch
+				else //Else it's a perch
 					parrot_perch = AM
 					parrot_state = PARROT_SWOOP|PARROT_RETURN
 					return
@@ -432,7 +432,7 @@
 
 		if(in_range(src, parrot_perch))
 			src.forceMove(parrot_perch.loc)
-			INVOKE_ASYNC(src, .proc/drop_parrot_held_item)
+			INVOKE_ASYNC(src, PROC_REF(drop_parrot_held_item))
 			parrot_state = PARROT_PERCH
 			icon_state = "parrot_sit"
 			return
@@ -485,11 +485,11 @@
 				var/obj/limb/affecting = H.get_limb(rand_zone(pick(parrot_dam_zone)))
 
 				H.apply_damage(damage, BRUTE, affecting, sharp=1)
-				INVOKE_ASYNC(src, .proc/emote, pick("pecks [H]'s [affecting]", "cuts [H]'s [affecting] with its talons"))
+				INVOKE_ASYNC(src, PROC_REF(emote), pick("pecks [H]'s [affecting]", "cuts [H]'s [affecting] with its talons"))
 
 			else
 				L.apply_damage(damage, BRUTE)
-				INVOKE_ASYNC(src, .proc/emote, pick("pecks at [L]", "claws [L]"))
+				INVOKE_ASYNC(src, PROC_REF(emote), pick("pecks at [L]", "claws [L]"))
 			return
 
 		//Otherwise, fly towards the mob!
@@ -501,7 +501,7 @@
 		walk(src,0)
 		parrot_interest = null
 		parrot_perch = null
-		INVOKE_ASYNC(src, .proc/drop_parrot_held_item)
+		INVOKE_ASYNC(src, PROC_REF(drop_parrot_held_item))
 		parrot_state = PARROT_WANDER
 		return
 
@@ -638,7 +638,7 @@
 
 	return
 
-/mob/living/simple_animal/parrot/proc/drop_parrot_held_item(var/drop_gently = 1)
+/mob/living/simple_animal/parrot/proc/drop_parrot_held_item(drop_gently = 1)
 	set name = "Drop held item"
 	set category = "Parrot"
 	set desc = "Drop the item you're holding."
@@ -694,9 +694,9 @@
 /mob/living/simple_animal/parrot/Poly/Initialize()
 	ears = new /obj/item/device/radio/headset(src)
 	available_channels = list(":e")
-	..()
+	. = ..()
 
-/mob/living/simple_animal/parrot/say(var/message)
+/mob/living/simple_animal/parrot/say(message)
 
 	if(stat)
 		return
@@ -730,20 +730,20 @@
 	..(message)
 
 
-/mob/living/simple_animal/parrot/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null)
+/mob/living/simple_animal/parrot/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null)
 	if(prob(50))
 		parrot_hear(message)
 	..(message,verb,language,alt_name,italics,speaker)
 
 
 
-/mob/living/simple_animal/parrot/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/mob/speaker = null, var/hard_to_hear = 0, var/command, var/vname, var/no_paygrade)
+/mob/living/simple_animal/parrot/hear_radio(message, verb="says", datum/language/language=null, part_a, part_b, mob/speaker = null, hard_to_hear = 0, command, vname, no_paygrade)
 	if(prob(50))
 		parrot_hear("[pick(available_channels)] [message]")
 	..(message,verb,language,part_a,part_b,speaker,hard_to_hear)
 
 
-/mob/living/simple_animal/parrot/proc/parrot_hear(var/message="")
+/mob/living/simple_animal/parrot/proc/parrot_hear(message="")
 	if(!message || stat)
 		return
 	speech_buffer.Add(message)

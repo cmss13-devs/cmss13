@@ -2,7 +2,7 @@
 	name = "Colonial Liberation Front"
 	faction_tag = FACTION_CLF
 
-/datum/faction/clf/modify_hud_holder(var/image/holder, var/mob/living/carbon/human/human)
+/datum/faction/clf/modify_hud_holder(image/holder, mob/living/carbon/human/human)
 	var/hud_icon_state
 	var/obj/item/card/id/ID = human.get_idcard()
 	var/_role
@@ -29,7 +29,8 @@
 /datum/faction/clf/get_antag_guns_snowflake_equipment()
 	return list(
 		list("PRIMARY FIREARMS", 0, null, null, null),
-		list("Basira-Armstrong Rifle", 30, /obj/item/weapon/gun/rifle/hunting, null, VENDOR_ITEM_REGULAR),
+		list("ABR-40 Hunting Rifle", 30, /obj/item/weapon/gun/rifle/l42a/abr40, null, VENDOR_ITEM_REGULAR),
+		list("Basira-Armstrong Bolt-Action", 15, /obj/item/weapon/gun/boltaction, null, VENDOR_ITEM_REGULAR),
 		list("CZ-81 Machine Pistol", 20, /obj/item/ammo_magazine/pistol/skorpion, null, VENDOR_ITEM_REGULAR),
 		list("Double Barrel Shotgun", 30, /obj/item/weapon/gun/shotgun/double, null, VENDOR_ITEM_REGULAR),
 		list("HG 37-12 Pump Shotgun", 30, /obj/item/weapon/gun/shotgun/double/sawn, null, VENDOR_ITEM_REGULAR),
@@ -42,7 +43,8 @@
 		list("Sawn-Off Shotgun", 30, /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb, null, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
-		list("Basira-Armstrong Magazine (6.5mm)", 5, /obj/item/ammo_magazine/rifle/hunting, null, VENDOR_ITEM_REGULAR),
+		list("ABR-40 Magazine (10x24mm)", 20, /obj/item/ammo_magazine/rifle/l42a/abr40, null, VENDOR_ITEM_REGULAR),
+		list("Basira-Armstrong Magazine (6.5mm)", 5, /obj/item/ammo_magazine/rifle/boltaction, null, VENDOR_ITEM_REGULAR),
 		list("Box Of Buckshot Shells", 10, /obj/item/ammo_magazine/shotgun/buckshot, null, VENDOR_ITEM_REGULAR),
 		list("Box Of Flechette Shells", 10, /obj/item/ammo_magazine/shotgun/flechette, null, VENDOR_ITEM_REGULAR),
 		list("Box Of Shotgun Slugs", 10, /obj/item/ammo_magazine/shotgun, null, VENDOR_ITEM_REGULAR),
@@ -67,7 +69,8 @@
 		list("88M4 AP Magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/mod88, null, VENDOR_ITEM_REGULAR),
 		list("Beretta 92FS Magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/b92fs, null, VENDOR_ITEM_REGULAR),
 		list("KT-42 Magazine (.44)", 5, /obj/item/ammo_magazine/pistol/kt42, null, VENDOR_ITEM_REGULAR),
-		list("Spearhead Speed Loader (.357)", 5, /obj/item/ammo_magazine/revolver/cmb, null, VENDOR_ITEM_REGULAR),
+		list("Spearhead Speed Loader (.357)", 10, /obj/item/ammo_magazine/revolver/cmb/normalpoint, VENDOR_ITEM_REGULAR),
+		list("Hollowpoint Spearhead Speed Loader (.357)", 5, /obj/item/ammo_magazine/revolver/cmb, VENDOR_ITEM_REGULAR),
 		list("S&W Speed Loader (.357)", 5, /obj/item/ammo_magazine/revolver/small, null, VENDOR_ITEM_REGULAR),
 		list("Tiny Pistol Magazine (.22)", 5, /obj/item/ammo_magazine/pistol/holdout, null, VENDOR_ITEM_REGULAR),
 
@@ -85,7 +88,7 @@
 
 		list("UTILITIES", 0, null, null, null),
 		list("Type 80 Bayonet", 3, /obj/item/attachable/bayonet/upp, null, VENDOR_ITEM_REGULAR),
-		list("Lunge Mine", 120, /obj/item/weapon/melee/twohanded/lungemine, null, VENDOR_ITEM_REGULAR),
+		list("Lunge Mine", 120, /obj/item/weapon/twohanded/lungemine, null, VENDOR_ITEM_REGULAR),
 		list("Melee Weapon (Random)", 7, /obj/effect/essentials_set/random/clf_melee, null, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", 3, /obj/item/storage/box/m94, null, VENDOR_ITEM_RECOMMENDED),
 		list("Smoke Grenade", 7, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR)
@@ -94,7 +97,8 @@
 /datum/faction/clf/get_antag_guns_sorted_equipment()
 	return list(
 		list("PRIMARY FIREARMS", -1, null, null),
-		list("Basira-Armstrong Rifle", 20, /obj/item/weapon/gun/rifle/hunting, VENDOR_ITEM_REGULAR),
+		list("ABR-40 Hunting Rifle", 30, /obj/item/weapon/gun/rifle/l42a/abr40, null, VENDOR_ITEM_REGULAR),
+		list("Basira-Armstrong Bolt-Action", 15, /obj/item/weapon/gun/boltaction, null, VENDOR_ITEM_REGULAR),
 		list("CZ-81 Machine Pistol", 20, /obj/item/ammo_magazine/pistol/skorpion, VENDOR_ITEM_REGULAR),
 		list("Double Barrel Shotgun", 20, /obj/item/weapon/gun/shotgun/double, VENDOR_ITEM_REGULAR),
 		list("HG 37-12 Pump Shotgun", 20, /obj/item/weapon/gun/shotgun/double/sawn, VENDOR_ITEM_REGULAR),
@@ -107,7 +111,8 @@
 		list("Sawn-Off Shotgun", 20, /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", -1, null, null),
-		list("Basira-Armstrong Magazine (6.5mm)", 60, /obj/item/ammo_magazine/rifle/hunting, VENDOR_ITEM_REGULAR),
+		list("ABR-40 Magazine (10x24mm)", 20, /obj/item/ammo_magazine/rifle/l42a/abr40, null, VENDOR_ITEM_REGULAR),
+		list("Basira-Armstrong Magazine (6.5mm)", 5, /obj/item/ammo_magazine/rifle/boltaction, null, VENDOR_ITEM_REGULAR),
 		list("Box Of Buckshot Shells", 15, /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
 		list("Box Of Flechette Shells", 15, /obj/item/ammo_magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
 		list("Box Of Shotgun Slugs", 15, /obj/item/ammo_magazine/shotgun, VENDOR_ITEM_REGULAR),
@@ -132,16 +137,17 @@
 		list("88M4 AP Magazine (9mm)", 40, /obj/item/ammo_magazine/pistol/mod88, VENDOR_ITEM_REGULAR),
 		list("Beretta 92FS Magazine (9mm)", 40, /obj/item/ammo_magazine/pistol/b92fs, VENDOR_ITEM_REGULAR),
 		list("KT-42 Magazine (.44)", 40, /obj/item/ammo_magazine/pistol/kt42, VENDOR_ITEM_REGULAR),
-		list("Spearhead Speed Loader (.357)", 40, /obj/item/ammo_magazine/revolver/cmb, VENDOR_ITEM_REGULAR),
+		list("Spearhead Speed Loader (.357)", 40, /obj/item/ammo_magazine/revolver/cmb/normalpoint, VENDOR_ITEM_REGULAR),
+		list("Hollowpoint Spearhead Speed Loader (.357)", 40, /obj/item/ammo_magazine/revolver/cmb, VENDOR_ITEM_REGULAR),
 		list("S&W Speed Loader (.357)", 40, /obj/item/ammo_magazine/revolver/small, VENDOR_ITEM_REGULAR),
 		list("Tiny Pistol Magazine (.22)", 40, /obj/item/ammo_magazine/pistol/holdout, VENDOR_ITEM_REGULAR),
 
 		list("MELEE WEAPONS", -1, null, null),
-		list("Baseball Bat", 10, /obj/item/weapon/melee/baseballbat, VENDOR_ITEM_REGULAR),
-		list("Baseball Bat (Metal)", 5, /obj/item/weapon/melee/baseballbat/metal, VENDOR_ITEM_REGULAR),
-		list("Fireaxe", 5, /obj/item/weapon/melee/twohanded/fireaxe, VENDOR_ITEM_REGULAR),
+		list("Baseball Bat", 10, /obj/item/weapon/baseballbat, VENDOR_ITEM_REGULAR),
+		list("Baseball Bat (Metal)", 5, /obj/item/weapon/baseballbat/metal, VENDOR_ITEM_REGULAR),
+		list("Fireaxe", 5, /obj/item/weapon/twohanded/fireaxe, VENDOR_ITEM_REGULAR),
 		list("Hatchet", 15, /obj/item/tool/hatchet, VENDOR_ITEM_REGULAR),
-		list("Spear", 10, /obj/item/weapon/melee/twohanded/spear, VENDOR_ITEM_REGULAR),
+		list("Spear", 10, /obj/item/weapon/twohanded/spear, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", -1, null, null),
 		list("M94 Marking Flare Pack", 20, /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),

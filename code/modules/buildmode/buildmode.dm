@@ -27,7 +27,7 @@
 	mode = new /datum/buildmode_mode/basic(src)
 	holder = c
 	buttons = list()
-	li_cb = CALLBACK(src, .proc/post_login)
+	li_cb = CALLBACK(src, PROC_REF(post_login))
 	holder.player_details.post_login_callbacks += li_cb
 	holder.show_popup_menus = FALSE
 	create_buttons()
@@ -150,6 +150,7 @@
 		if(istype(M.client.click_intercept, /datum/buildmode))
 			var/datum/buildmode/B = M.client.click_intercept
 			B.quit()
+			message_admins("[key_name(usr)] has left build mode.")
 			log_admin("[key_name(usr)] has left build mode.")
 		else
 			new /datum/buildmode(M.client)

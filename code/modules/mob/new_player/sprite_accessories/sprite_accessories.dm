@@ -18,11 +18,11 @@
 */
 
 /datum/sprite_accessory
-	var/icon			// the icon file the accessory is located in
-	var/icon_state		// the icon_state of the accessory
-	var/preview_state	// a custom preview state for whatever reason
+	var/icon // the icon file the accessory is located in
+	var/icon_state // the icon_state of the accessory
+	var/preview_state // a custom preview state for whatever reason
 
-	var/name			// the preview name of the accessory
+	var/name // the preview name of the accessory
 
 	// Determines if the accessory will be skipped or included in random hair generations
 	var/gender = NEUTER

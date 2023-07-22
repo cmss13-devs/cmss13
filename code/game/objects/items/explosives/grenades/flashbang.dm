@@ -2,6 +2,7 @@
 	name = "flashbang"
 	icon_state = "flashbang"
 	item_state = "grenade_flashbang"
+	black_market_value = 10
 
 	//can be used by synths
 	harmful = FALSE
@@ -22,7 +23,7 @@
 			new /obj/item/explosive/grenade/flashbang/noskill(loc)
 			return INITIALIZE_HINT_QDEL
 		else if(SSticker.current_state < GAME_STATE_PLAYING)
-			RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/replace_flashbang)
+			RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(replace_flashbang))
 	return ..()
 
 /obj/item/explosive/grenade/flashbang/proc/replace_flashbang()
@@ -52,7 +53,7 @@
 
 	var/turf/T = get_turf(src)
 	for(var/obj/structure/closet/L in hear(7, T))
-		SEND_SIGNAL(L, COMSIG_OBJ_FLASHBANGED, src)
+		SEND_SIGNAL(L, COMSIG_CLOSET_FLASHBANGED, src)
 
 	for(var/mob/living/carbon/M in hear(7, T))
 		bang(T, M)
@@ -66,9 +67,9 @@
 // Added a new proc called 'bang' that takes a location and a person to be banged.
 // Called during the loop that bangs people in lockers/containers and when banging
 // people in normal view.  Could theoretically be called during other explosions.
-/obj/item/explosive/grenade/flashbang/proc/bang(var/turf/T , var/mob/living/carbon/M)
+/obj/item/explosive/grenade/flashbang/proc/bang(turf/T , mob/living/carbon/M)
 
-	if(isXeno(M))
+	if(isxeno(M))
 		return
 
 	to_chat(M, SPAN_WARNING("<B>BANG</B>"))
@@ -161,7 +162,7 @@
 //Created by Polymorph, fixed by Sieve
 /obj/item/explosive/grenade/flashbang/cluster
 	name = "cluster flashbang"
-	desc = "Use of this weapon may be considered a war crime in your area, consult your local captain."
+	desc = "Use of this weapon may be considered a war crime in your area, consult your local commanding officer."
 	icon_state = "cluster"
 	no_damage = TRUE
 
@@ -171,7 +172,7 @@
 	det_time = 10
 	active = TRUE
 	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they cant be stored anywhere
-	addtimer(CALLBACK(src, .proc/prime), det_time)
+	addtimer(CALLBACK(src, PROC_REF(prime)), det_time)
 
 /obj/item/explosive/grenade/flashbang/cluster/prime()
 	for(var/i in 1 to rand(2,5))
@@ -192,7 +193,7 @@
 	var/temploc = get_turf(src)
 	//segments scatter in all directions
 	walk_away(src,temploc,rand(1,4))
-	addtimer(CALLBACK(src, .proc/prime), rand(10,20))
+	addtimer(CALLBACK(src, PROC_REF(prime)), rand(10,20))
 	return ..()
 
 //Segment spawns cluster versions of flashbangs, 3 total
@@ -210,7 +211,7 @@
 	var/temploc = get_turf(src)
 	walk_away(src,temploc,rand(1,4))
 	playsound(src.loc, 'sound/weapons/armbomb.ogg', 25, 1, 6)
-	addtimer(CALLBACK(src, .proc/prime), rand(10,20))
+	addtimer(CALLBACK(src, PROC_REF(prime)), rand(10,20))
 
 //special flashbang nade for events. Skills are not required neither affect the effect.
 //Knockdowns only within 3x3 area, causes temporary blindness, deafness and daze, depending on range and type of mob. Effects reduced when lying.
@@ -231,7 +232,7 @@
 	. = ..()
 	activate()
 
-/obj/item/explosive/grenade/flashbang/noskill/bang(var/turf/T , var/mob/living/M)
+/obj/item/explosive/grenade/flashbang/noskill/bang(turf/T , mob/living/M)
 	if(M.stat == DEAD)
 		return
 
@@ -239,12 +240,12 @@
 
 	//some effects for non-humans
 	if(!ishuman(M))
-		if(isXeno(M))
+		if(isxeno(M))
 			if(get_dist(M, T) <= 4)
-				var/mob/living/carbon/Xenomorph/X = M
+				var/mob/living/carbon/xenomorph/X = M
 				X.Daze(2)
 				X.SetEarDeafness(max(X.ear_deaf, 3))
-		else	//simple mobs?
+		else //simple mobs?
 			M.Stun(5)
 			M.KnockDown(1)
 
@@ -328,7 +329,7 @@
 	M.apply_effect(paralyze_amount, PARALYZE)
 
 	if(flash_amount)
-		M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, flash_amount)
+		M.flash_eyes(EYE_PROTECTION_FLASH, TRUE, /atom/movable/screen/fullscreen/flash, flash_amount)
 	if(deafen_amount)
 		M.SetEarDeafness(max(M.ear_deaf, deafen_amount))
 

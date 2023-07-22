@@ -24,7 +24,7 @@ Bonus
 	transmittable = -2
 	level = 4
 
-/datum/symptom/weight_gain/Activate(var/datum/disease/advance/A)
+/datum/symptom/weight_gain/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
 		var/mob/living/M = A.affected_mob
@@ -65,7 +65,7 @@ Bonus
 	transmittable = -2
 	level = 3
 
-/datum/symptom/weight_loss/Activate(var/datum/disease/advance/A)
+/datum/symptom/weight_loss/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
 		var/mob/living/M = A.affected_mob
@@ -107,7 +107,7 @@ Bonus
 	transmittable = -2
 	level = 4
 
-/datum/symptom/weight_loss/Activate(var/datum/disease/advance/A)
+/datum/symptom/weight_loss/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
 		var/mob/living/M = A.affected_mob

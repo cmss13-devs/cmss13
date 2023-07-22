@@ -54,7 +54,7 @@
 	id = "oxycodone"
 	description = "Oxycodone is an opioid agonist with addiction potential similar to that of morphine. It is approved for the treatment of patients with moderate to severe pain who are expected to need continuous opioids for an extended period of time. Overdosing on oxycodone can cause hallucinations, brain damage and be highly toxic."
 	reagent_state = LIQUID
-	color = "#C805DC"
+	color = "#E01D25"
 	custom_metabolism = AMOUNT_PER_TIME(15, 5 MINUTES) // Lasts 5 minutes for 15 units
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
@@ -163,16 +163,18 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_HIGH_VALUE
-	properties = list(	PROPERTY_CROSSMETABOLIZING = 1,
-						PROPERTY_ANTITOXIC = 1,
-						PROPERTY_HEMOGENIC = 9,
-						PROPERTY_OXYGENATING = 6,
-						PROPERTY_ANTICARCINOGENIC = 6,
-						PROPERTY_BONEMENDING = 6,
-						PROPERTY_AIDING = 1,
-						PROPERTY_ANTIHALLUCINOGENIC = 2,
-						PROPERTY_FOCUSING = 6,
-						PROPERTY_CURING = 4)
+	properties = list(
+		PROPERTY_CROSSMETABOLIZING = 1,
+		PROPERTY_ANTITOXIC = 1,
+		PROPERTY_YAUTJA_HEMOGENIC = 9,
+		PROPERTY_OXYGENATING = 6,
+		PROPERTY_ANTICARCINOGENIC = 6,
+		PROPERTY_BONEMENDING = 6,
+		PROPERTY_AIDING = 1,
+		PROPERTY_ANTIHALLUCINOGENIC = 2,
+		PROPERTY_FOCUSING = 6,
+		PROPERTY_CURING = 4,
+	)
 	flags = REAGENT_TYPE_MEDICAL
 
 /datum/reagent/medical/neuraline //injected by neurostimulator implant
@@ -203,7 +205,7 @@
 /datum/reagent/medical/russianred
 	name = "Russian Red"
 	id = "russianred"
-	description = "An emergency radiation treatment, however it has extreme side effects."
+	description = "An emergency radiation treatment. The list of potential side effects include retinal damage and unconsciousness."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	custom_metabolism = AMOUNT_PER_TIME(1, 2 SECONDS)
@@ -249,7 +251,7 @@
 /datum/reagent/medical/bicaridine // yes it cures IB, it's located in some other part of wound code for whatever reason
 	name = "Bicaridine"
 	id = "bicaridine"
-	description = "Bicaridine is an analgesic medication and can be used to treat severe external blunt trauma and to stabilize patients. Overdosing will cause caustic burns, but can mend internal broken bloodvessels."
+	description = "Bicaridine is an analgesic medication and can be used to treat severe external blunt trauma and to stabilize patients. Overdosing on Bicaridine will cause caustic burns and toxins."
 	reagent_state = LIQUID
 	color = "#E8756C"
 	overdose = REAGENTS_OVERDOSE
@@ -267,18 +269,6 @@
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_NEOGENETIC = 3)
-
-/datum/reagent/medical/quickclot
-	name = "Quick Clot"
-	id = "quickclot"
-	description = "Vastly improves the blood's natural ability to coagulate and stop bleeding by hightening platelet production and effectiveness. Overdosing will cause extreme blood clotting, resulting in severe tissue damage."
-	reagent_state = LIQUID
-	color = "#CC00FF"
-	overdose = LOWH_REAGENTS_OVERDOSE
-	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
-	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
-	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_UNKNOWN = 6) //handled by blood code
 
 /datum/reagent/medical/adrenaline
 	name = "Epinephrine"
@@ -349,7 +339,7 @@
 /datum/reagent/medical/rezadone
 	name = "Rezadone"
 	id = "rezadone"
-	description = "A powder derived from fish toxin, this substance can effectively treat genetic damage in humanoids, though excessive consumption has side effects."
+	description = "A powder derived from fish toxin, this substance can effectively treat genetic damage in humanoids. Excessive consumption may cause disastrous side effects."
 	reagent_state = SOLID
 	color = "#669900" // rgb: 102, 153, 0
 	overdose = REAGENTS_OVERDOSE
@@ -367,7 +357,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_UNKNOWN = 1)
 
-/datum/reagent/medical/ethylredoxrazine	// FUCK YOU, ALCOHOL
+/datum/reagent/medical/ethylredoxrazine // FUCK YOU, ALCOHOL
 	name = "Ethylredoxrazine"
 	id = "ethylredoxrazine"
 	description = "Neutralizes the effects of alcohol in the blood stream, by oxidizing it into water molecules. However, it does not stop immediate intoxication. Ethylredoxrazine being a powerful oxidizer, it becomes toxic in high doses."
@@ -415,7 +405,7 @@
 /datum/reagent/medical/antized
 	name = "Anti-Zed"
 	id = "antiZed"
-	description = "Destroy the zombie virus in living humans and prevents regeneration for those who have already turned."
+	description = "An experimental drug that destroys the zombie virus in living humans and prevents regeneration for those who have already turned."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)

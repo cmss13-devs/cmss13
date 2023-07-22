@@ -6,7 +6,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 140
-	plasma_cost = 5
+	plasma_cost = 20
 	// Config options
 	distance = 9
 	knockdown = TRUE
@@ -40,7 +40,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 180
-	plasma_cost = 20
+	plasma_cost = 30
 
 	var/damage = 65
 
@@ -67,8 +67,8 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	plasma_cost = 20
-	xeno_cooldown = 12 SECONDS
+	plasma_cost = 50
+	xeno_cooldown = 26 SECONDS
 	var/shield_amount = 200
 
 /datum/action/xeno_action/activable/fling/charger
@@ -121,7 +121,7 @@
 
 
 
-/datum/action/xeno_action/onclick/charger_charge/proc/handle_movement(mob/living/carbon/Xenomorph/Xeno, atom/oldloc, dir, forced)
+/datum/action/xeno_action/onclick/charger_charge/proc/handle_movement(mob/living/carbon/xenomorph/Xeno, atom/oldloc, dir, forced)
 	SIGNAL_HANDLER
 	if(Xeno.pulling)
 		if(!momentum)
@@ -134,7 +134,7 @@
 		if(!momentum)
 			return
 		var/lol = get_ranged_target_turf(Xeno, charge_dir, momentum/2)
-		INVOKE_ASYNC(Xeno, /atom/movable.proc/throw_atom, lol, momentum/2, SPEED_FAST, null, TRUE)
+		INVOKE_ASYNC(Xeno, TYPE_PROC_REF(/atom/movable, throw_atom), lol, momentum/2, SPEED_FAST, null, TRUE)
 		stop_momentum()
 		return
 	if(!isturf(Xeno.loc))
@@ -188,7 +188,7 @@
 				dist = momentum * 0.25
 			step(Mob, ram_dir, dist)
 			Mob.take_overall_armored_damage(momentum * 6)
-			INVOKE_ASYNC(Mob, /mob/living/carbon/human.proc/emote,"pain")
+			INVOKE_ASYNC(Mob, TYPE_PROC_REF(/mob/living/carbon/human, emote),"pain")
 			shake_camera(Mob, 7,3)
 			animation_flash_color(Mob)
 
@@ -206,13 +206,13 @@
 	if(!covered)
 		stop_momentum()
 
-/datum/action/xeno_action/onclick/charger_charge/proc/update_speed(mob/living/carbon/Xenomorph/Xeno)
+/datum/action/xeno_action/onclick/charger_charge/proc/update_speed(mob/living/carbon/xenomorph/Xeno)
 	SIGNAL_HANDLER
 	Xeno.speed += momentum * speed_per_momentum
 
 /datum/action/xeno_action/onclick/charger_charge/proc/stop_momentum(datum/source)
 	SIGNAL_HANDLER
-	var/mob/living/carbon/Xenomorph/Xeno = owner
+	var/mob/living/carbon/xenomorph/Xeno = owner
 	if(momentum == max_momentum)
 		Xeno.visible_message(SPAN_DANGER("[Xeno] skids to a halt!"))
 
@@ -227,10 +227,10 @@
 		stop_momentum()
 	else
 		momentum -= amount
-		var/mob/living/carbon/Xenomorph/Xeno = owner
+		var/mob/living/carbon/xenomorph/Xeno = owner
 		Xeno.recalculate_speed()
 
-/datum/action/xeno_action/onclick/charger_charge/proc/handle_collision(mob/living/carbon/Xenomorph/Xeno, atom/tar)
+/datum/action/xeno_action/onclick/charger_charge/proc/handle_collision(mob/living/carbon/xenomorph/Xeno, atom/tar)
 	SIGNAL_HANDLER
 	if(!momentum)
 		stop_momentum()
@@ -259,14 +259,14 @@
 	xeno_cooldown = 10 SECONDS
 
 /datum/action/xeno_action/activable/tumble/proc/on_end_throw(start_charging)
-	var/mob/living/carbon/Xenomorph/Xeno = owner
+	var/mob/living/carbon/xenomorph/Xeno = owner
 	Xeno.flags_atom &= ~DIRLOCK
 	if(start_charging)
 		SEND_SIGNAL(Xeno, COMSIG_XENO_START_CHARGING)
 
 
 /datum/action/xeno_action/activable/tumble/proc/handle_mob_collision(mob/living/carbon/Mob)
-	var/mob/living/carbon/Xenomorph/Xeno = owner
+	var/mob/living/carbon/xenomorph/Xeno = owner
 	Xeno.visible_message(SPAN_XENODANGER("[Xeno] Sweeps to the side, knocking down [Mob]!"), SPAN_XENODANGER("You knock over [Mob] as you sweep to the side!"))
 	var/turf/target_turf = get_turf(Mob)
 	playsound(Mob,'sound/weapons/alien_claw_block.ogg', 50, 1)

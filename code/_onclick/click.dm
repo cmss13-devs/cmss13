@@ -1,5 +1,5 @@
 // Enables a tool to test ingame click rate.
-#define DEBUG_CLICK_RATE	0
+#define DEBUG_CLICK_RATE 0
 
 /// 1 decisecond click delay (above and beyond mob/next_move)
 /mob/var/next_click = 0
@@ -18,7 +18,7 @@
 */
 
 /client/Click(atom/A, location, control, params)
-	if (control && !ignore_next_click)	// No .click macros allowed, and only one click per mousedown.
+	if (control && !ignore_next_click) // No .click macros allowed, and only one click per mousedown.
 		ignore_next_click = TRUE
 		return usr.do_click(A, location, params)
 
@@ -58,7 +58,7 @@
 	if(SEND_SIGNAL(src, COMSIG_MOB_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
 		return
 
-	if(istype(A, /obj/statclick))
+	if(istype(A, /obj/effect/statclick))
 		A.clicked(src, mods)
 		return
 
@@ -71,7 +71,9 @@
 		return
 
 	// Click handled elsewhere. (These clicks are not affected by the next_move cooldown)
-	if (click(A, mods) | A.clicked(src, mods, location, params))
+	if(click(A, mods))
+		return
+	if(A.clicked(src, mods, location, params))
 		return
 
 	// Default click functions from here on.
@@ -80,7 +82,8 @@
 		return
 
 	face_atom(A)
-
+	if(mods["middle"])
+		return
 	// Special type of click.
 	if (is_mob_restrained())
 		RestrainedClickOn(A)
@@ -88,12 +91,16 @@
 
 	// Throwing stuff, can't throw on inventory items nor screen objects nor items inside storages.
 	if (throw_mode && A.loc != src && !isstorage(A.loc) && !istype(A, /atom/movable/screen))
-		throw_item(A)
+		//if we're past the throw delay just throw, add the new delay time, and reset the buffer
+		if(COOLDOWN_FINISHED(src, throw_delay))
+			throw_item(A)
+			COOLDOWN_START(src, throw_delay, THROW_DELAY)
+			throw_buffer = 0
+		//if we're still in the throw delay we check if the buffer is already used, if not then we throw the item and set the buffer as used
+		else if(!throw_buffer)
+			throw_item(A)
+			throw_buffer++
 		return
-
-	// Last thing clicked is tracked for something somewhere.
-	if(!isgun(A) && !isturf(A) && !istype(A,/atom/movable/screen))
-		last_target_click = world.time
 
 	var/obj/item/W = get_active_hand()
 
@@ -102,8 +109,8 @@
 		mode()
 		return
 
-	//Self-harm preference. isXeno check because xeno clicks on self are redirected to the turf below the pointer.
-	if(A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isXeno(src))
+	//Self-harm preference. isxeno check because xeno clicks on self are redirected to the turf below the pointer.
+	if(A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isxeno(src))
 		if(W)
 			if(W.force && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
 				if(world.time % 3)
@@ -119,7 +126,7 @@
 	if (!isturf(loc))
 		return
 
-	if (world.time <= next_move && A.loc != src)	// Attack click cooldown check
+	if (world.time <= next_move && A.loc != src) // Attack click cooldown check
 		return
 
 	next_move = world.time
@@ -137,7 +144,7 @@
 	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, A, mods)
 	return
 
-/mob/proc/click_adjacent(atom/A, var/obj/item/W, mods)
+/mob/proc/click_adjacent(atom/A, obj/item/W, mods)
 	if(W)
 		if(W.attack_speed && !src.contains(A)) //Not being worn or carried in the user's inventory somewhere, including internal storages.
 			next_move += W.attack_speed
@@ -167,7 +174,7 @@
 
 	return FALSE
 
-/*	OLD DESCRIPTION
+/* OLD DESCRIPTION
 	Standard mob ClickOn()
 	Handles exceptions: Buildmode, middle click, modified clicks, mech actions
 
@@ -181,10 +188,10 @@
 	* mob/RangedAttack(atom,params) - used only ranged, only used for tk and laser eyes but could be changed
 */
 
-/mob/proc/click(var/atom/A, var/list/mods)
+/mob/proc/click(atom/A, list/mods)
 	return FALSE
 
-/atom/proc/clicked(var/mob/user, var/list/mods)
+/atom/proc/clicked(mob/user, list/mods)
 	if (mods["shift"] && !mods["middle"])
 		if(can_examine(user))
 			examine(user)
@@ -198,7 +205,7 @@
 		return TRUE
 	return FALSE
 
-/atom/movable/clicked(var/mob/user, var/list/mods)
+/atom/movable/clicked(mob/user, list/mods)
 	if (..())
 		return TRUE
 
@@ -218,7 +225,7 @@
 	proximity_flag is not currently passed to attack_hand, and is instead used
 	in human click code to allow glove touches only at melee range.
 */
-/mob/proc/UnarmedAttack(var/atom/A, var/proximity_flag, click_parameters)
+/mob/proc/UnarmedAttack(atom/A, proximity_flag, click_parameters)
 	return
 
 /*
@@ -229,7 +236,7 @@
 	for things like ranged glove touches, spitting alien acid/neurotoxin,
 	animals lunging, etc.
 */
-/mob/proc/RangedAttack(var/atom/A, var/params)
+/mob/proc/RangedAttack(atom/A, params)
 	return
 
 /*
@@ -238,7 +245,7 @@
 	Used when you are handcuffed and click things.
 	Not currently used by anything but could easily be.
 */
-/mob/proc/RestrainedClickOn(var/atom/A)
+/mob/proc/RestrainedClickOn(atom/A)
 	return
 
 /*
@@ -248,7 +255,7 @@
 */
 
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
-/mob/proc/face_atom(var/atom/A)
+/mob/proc/face_atom(atom/A)
 
 	if( !A || !x || !y || !A.x || !A.y ) return
 	var/dx = A.x - x
@@ -280,7 +287,7 @@
 	if(!specific_direction)
 		specific_direction = direction
 
-	facedir(direction, specific_direction)
+	face_dir(direction, specific_direction)
 
 
 
@@ -295,7 +302,7 @@
 	icon_state = "catcher"
 	layer = 0
 	plane = -99
-	mouse_opacity = 2
+	mouse_opacity = MOUSE_OPACITY_OPAQUE
 	screen_loc = "CENTER-7,CENTER-7"
 	flags_atom = NOINTERACT
 
@@ -317,12 +324,35 @@
 
 
 
-/client/proc/change_view(new_size, var/atom/source)
+/client/proc/change_view(new_size, atom/source)
 	if(SEND_SIGNAL(mob, COMSIG_MOB_CHANGE_VIEW, new_size) & COMPONENT_OVERRIDE_VIEW)
 		return TRUE
 	view = mob.check_view_change(new_size, source)
 	apply_clickcatcher()
 	mob.reload_fullscreens()
+
+	if(prefs.adaptive_zoom)
+		INVOKE_ASYNC(src, PROC_REF(adaptive_zoom))
+	else if(prefs.auto_fit_viewport)
+		INVOKE_ASYNC(src, VERB_REF(fit_viewport))
+
+/client/proc/get_adaptive_zoom_factor()
+	if(!prefs.adaptive_zoom)
+		return 0
+	var/zoom = prefs.adaptive_zoom
+	if(view <= 8)
+		return zoom * 2
+	else if(view <= 15)
+		return zoom * 1
+	else
+		return 0
+
+/// Attempts to scale client zoom automatically to fill 1080p multiples. Best used with auto fit viewport.
+/client/proc/adaptive_zoom()
+	var/icon_size = world.icon_size * get_adaptive_zoom_factor()
+	winset(src, "mapwindow.map", "icon-size=[icon_size]")
+	if(prefs.auto_fit_viewport)
+		fit_viewport()
 
 /client/proc/create_clickcatcher()
 	if(!void)
@@ -398,5 +428,5 @@
 		attack_self(user)
 		return
 	user.do_click(A, null, params)
-	addtimer(CALLBACK(src, .proc/autoclick, user, A, params), 0.1)
+	addtimer(CALLBACK(src, PROC_REF(autoclick), user, A, params), 0.1)
 #endif

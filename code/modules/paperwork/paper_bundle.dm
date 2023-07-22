@@ -42,7 +42,7 @@
 			to_chat(user, SPAN_NOTICE("You add \the [W.name] to [(src.name == "paper bundle") ? "the paper bundle" : src.name]."))
 			qdel(W)
 	else
-		if(istype(W, /obj/item/tool/pen) || istype(W, /obj/item/toy/crayon))
+		if(HAS_TRAIT(W, TRAIT_TOOL_PEN) || istype(W, /obj/item/toy/crayon))
 			close_browser(usr, name) //Closes the dialog
 		if(page < contents.len)
 			page = contents.len
@@ -204,7 +204,7 @@
 		overlays = I.overlays
 	underlays = 0
 	var/i = 0
-	var/photo
+	var/photo = 0
 	for(var/obj/O in src)
 		var/image/IMG = image('icons/obj/items/paper.dmi')
 		if(istype(O, /obj/item/paper))
@@ -218,14 +218,17 @@
 		else if(istype(O, /obj/item/photo))
 			var/obj/item/photo/PH = O
 			IMG = PH.tiny
-			photo = 1
+			photo++
 			overlays += IMG
 	if(i>1)
 		desc =  "[i] papers clipped to each other."
 	else
 		desc = "A single sheet of paper."
 	if(photo)
-		desc += "\nThere is a photo attached to it."
+		if(photo > 1)
+			desc += "\nThere are also [photo] photos attached to it."
+		else
+			desc += "\nThere is also a photo attached to it."
 	overlays += image('icons/obj/items/paper.dmi', "clip")
 
 /obj/item/paper_bundle/proc/attach_doc(obj/item/I, mob/living/user, no_message)

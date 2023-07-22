@@ -13,11 +13,11 @@
 	if(disabilities & COUGHING)
 		if((prob(5) && knocked_out <= 1))
 			drop_held_item()
-			INVOKE_ASYNC(src, .proc/emote, "cough")
+			INVOKE_ASYNC(src, PROC_REF(emote), "cough")
 			return
 
 	if(disabilities & TOURETTES)
-		speech_problem_flag = 1
+		speech_problem_flag = TRUE
 		if((prob(10) && knocked_out <= 1))
 			apply_effect(10, STUN)
 			spawn()
@@ -36,7 +36,7 @@
 				return
 
 	if(disabilities & NERVOUS)
-		speech_problem_flag = 1
+		speech_problem_flag = TRUE
 		if(prob(10))
 			stuttering = max(10, stuttering)
 			return
@@ -50,7 +50,7 @@
 			if(4 to 6)
 				if(getBrainLoss() >= 15 && eye_blurry <= 0)
 					to_chat(src, SPAN_DANGER("It becomes hard to see for some reason."))
-					eye_blurry = 10
+					AdjustEyeBlur(10)
 			if(7 to 9)
 				if(getBrainLoss() >= 35 && (hand && get_held_item()))
 					to_chat(src, SPAN_DANGER("Your hand won't respond properly, you drop what you're holding."))

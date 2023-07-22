@@ -34,10 +34,14 @@
 	widen_cooldown = 70
 	tremor_cooldown = 450
 
-/mob/living/carbon/Xenomorph/Burrower
+	minimum_evolve_time = 7 MINUTES
+
+	minimap_icon = "burrower"
+
+/mob/living/carbon/xenomorph/burrower
 	caste_type = XENO_CASTE_BURROWER
 	name = XENO_CASTE_BURROWER
-	desc = "A beefy, alien with sharp claws."
+	desc = "A beefy alien with sharp claws."
 	icon = 'icons/mob/xenos/burrower.dmi'
 	icon_size = 64
 	icon_state = "Burrower Walking"
@@ -49,6 +53,7 @@
 	base_pixel_x = 0
 	base_pixel_y = -20
 	tier = 2
+
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
@@ -61,43 +66,47 @@
 		/datum/action/xeno_action/onclick/place_trap, //second macro
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
+		/datum/action/xeno_action/onclick/tacmap,
 		)
+
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
-		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
-		)
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
+	)
+
 	mutation_type = BURROWER_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/burrower.dmi'
 	icon_xenonid = 'icons/mob/xenonids/burrower.dmi'
 
-/mob/living/carbon/Xenomorph/Burrower/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+/mob/living/carbon/xenomorph/burrower/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
 	sight |= SEE_TURFS
 
-/mob/living/carbon/Xenomorph/Burrower/update_canmove()
+/mob/living/carbon/xenomorph/burrower/update_canmove()
 	. = ..()
 	if(burrow)
 		density = FALSE
 		canmove = FALSE
 		return canmove
 
-/mob/living/carbon/Xenomorph/Burrower/ex_act(severity)
+/mob/living/carbon/xenomorph/burrower/ex_act(severity)
 	if(burrow)
 		return
 	..()
 
-/mob/living/carbon/Xenomorph/Burrower/attack_hand()
+/mob/living/carbon/xenomorph/burrower/attack_hand()
 	if(burrow)
 		return
 	..()
 
-/mob/living/carbon/Xenomorph/Burrower/attackby()
+/mob/living/carbon/xenomorph/burrower/attackby()
 	if(burrow)
 		return
 	..()
 
-/mob/living/carbon/Xenomorph/Burrower/get_projectile_hit_chance()
+/mob/living/carbon/xenomorph/burrower/get_projectile_hit_chance()
 	. = ..()
 	if(burrow)
 		return 0

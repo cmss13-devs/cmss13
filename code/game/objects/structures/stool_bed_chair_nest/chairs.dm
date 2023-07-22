@@ -2,20 +2,23 @@
 #define DROPSHIP_CHAIR_FOLDED 2
 #define DROPSHIP_CHAIR_BROKEN 3
 
-/obj/structure/bed/chair //YES, chairs are a type of bed, which are a type of stool. This works, believe me.	-Pete
+/obj/structure/bed/chair //YES, chairs are a type of bed, which are a type of stool. This works, believe me. -Pete
 	name = "chair"
 	desc = "A rectangular metallic frame sitting on four legs with a back panel. Designed to fit the sitting position, more or less comfortably."
 	icon_state = "chair"
 	buckle_lying = FALSE
-	var/propelled = 0 //Check for fire-extinguisher-driven chairs
-	var/picked_up_item = /obj/item/weapon/melee/twohanded/folded_metal_chair
+	var/propelled = FALSE //Check for fire-extinguisher-driven chairs
+	var/can_rotate = TRUE
+	var/picked_up_item = /obj/item/weapon/twohanded/folded_metal_chair
 	var/stacked_size = 0
 
 /obj/structure/bed/chair/Initialize()
 	. = ..()
 	handle_rotation()
+	if(!can_rotate)
+		verbs.Remove(/obj/structure/bed/chair/verb/rotate)
 
-/obj/structure/bed/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/bed/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_AROUND|PASS_UNDER
@@ -34,6 +37,8 @@
 	if(!picked_up_item)
 		return
 	var/mob/living/carbon/human/H = over
+	if(usr != H)
+		return
 	if(!CAN_PICKUP(H, src))
 		return
 	if(buckled_mob)
@@ -42,7 +47,7 @@
 	if(stacked_size)
 		to_chat(H, SPAN_NOTICE("You cannot fold a chair while its stacked!"))
 		return
-	var/obj/item/weapon/melee/twohanded/folded_metal_chair/FMC = new picked_up_item(loc)
+	var/obj/item/weapon/twohanded/folded_metal_chair/FMC = new picked_up_item(loc)
 	if(H.put_in_active_hand(FMC))
 		qdel(src)
 	else if(H.put_in_inactive_hand(FMC))
@@ -56,7 +61,7 @@
 	if(stacked_size)
 		if(!CAN_PICKUP(user, src))
 			return
-		var/obj/item/weapon/melee/twohanded/folded_metal_chair/F = locate() in contents
+		var/obj/item/weapon/twohanded/folded_metal_chair/F = locate() in contents
 		user.put_in_active_hand(F)
 		stacked_size--
 		update_overlays()
@@ -68,7 +73,7 @@
 			flags_can_pass_all_temp |= PASS_OVER
 			projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 
-/obj/structure/bed/chair/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/bed/chair/attack_alien(mob/living/carbon/xenomorph/M)
 	. = ..()
 	if(stacked_size)
 		stack_collapse()
@@ -77,7 +82,7 @@
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH) && stacked_size)
 		to_chat(user, SPAN_NOTICE("You'll need to unstack the chairs before you can take one apart."))
 		return FALSE
-	if(istype(I, /obj/item/weapon/melee/twohanded/folded_metal_chair) && picked_up_item)
+	if(istype(I, /obj/item/weapon/twohanded/folded_metal_chair) && picked_up_item)
 		if(I.flags_item & WIELDED)
 			return ..()
 		if(locate(/mob/living) in loc)
@@ -141,7 +146,7 @@
 	visible_message(SPAN_HIGHDANGER("The stack of chairs collapses!!!"))
 	var/turf/starting_turf = get_turf(src)
 	playsound(starting_turf, 'sound/weapons/metal_chair_crash.ogg', 30, 1, 30)
-	for(var/obj/item/weapon/melee/twohanded/folded_metal_chair/falling_chair in src.contents)
+	for(var/obj/item/weapon/twohanded/folded_metal_chair/falling_chair in src.contents)
 		stacked_size--
 		update_overlays()
 
@@ -153,7 +158,7 @@
 		falling_chair.pixel_x = rand(-8, 8)
 		falling_chair.pixel_y = rand(-8, 8)
 		falling_chair.throw_atom(target_turf, rand(2, 5), SPEED_FAST, null, TRUE)
-	var/obj/item/weapon/melee/twohanded/folded_metal_chair/I = new picked_up_item(starting_turf)
+	var/obj/item/weapon/twohanded/folded_metal_chair/I = new picked_up_item(starting_turf)
 	I.throw_atom(starting_turf, rand(2, 5), SPEED_FAST, null, TRUE)
 	qdel(src)
 
@@ -208,18 +213,25 @@
 		handle_rotation()
 		return
 	else
-		if(istype(usr, /mob/living/simple_animal/mouse))
+		if(!ishuman(usr))
 			return
-		if(!usr || !isturf(usr.loc))
-			return
-		if(usr.stat || usr.is_mob_restrained())
-			return
-
-		setDir(turn(src.dir, 90))
-		handle_rotation()
+		human_rotate()
 		return
 
+/obj/structure/bed/chair/proc/human_rotate()
+	if(!usr || !isturf(usr.loc))
+		return
+	if(usr.is_mob_incapacitated())
+		return
+	setDir(turn(src.dir, 90))
+	handle_rotation()
+	return
+
 //Chair types
+/obj/structure/bed/chair/bolted
+	desc = "A rectangular metallic frame sitting on four legs with a back panel. Designed to fit the sitting position, more or less comfortably. It appears to be bolted to the ground."
+	picked_up_item = null
+
 /obj/structure/bed/chair/wood
 	buildstacktype = /obj/item/stack/sheet/wood
 	debris = list(/obj/item/stack/sheet/wood)
@@ -283,8 +295,13 @@
 	name = "Delta squad chair"
 	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Delta squad blue. This chair is most likely to be the first to fight and first to die."
 
+/obj/structure/bed/chair/comfy/ares
+	icon_state = "comfychair_ares"
+	name = "AI core chair"
+	desc = "A functional chair designed for comfortably sitting a single person with intent to facilitate interactions with the ship AI."
+
 /obj/structure/bed/chair/office
-	anchored = 0
+	anchored = FALSE
 	drag_delay = 1 //Pulling something on wheels is easy
 	picked_up_item = null
 
@@ -303,7 +320,7 @@
 		occupant.apply_effect(6, STUTTER)
 		occupant.apply_damage(10, BRUTE, def_zone)
 		playsound(src.loc, 'sound/weapons/punch1.ogg', 25, 1)
-		if(ishuman(A) && !isYautja(A))
+		if(ishuman(A) && !isyautja(A))
 			var/mob/living/victim = A
 			def_zone = rand_zone()
 			victim.apply_effect(6, STUN)
@@ -314,23 +331,21 @@
 
 /obj/structure/bed/chair/office/light
 	icon_state = "officechair_white"
-	anchored = 0
+	anchored = FALSE
 
 /obj/structure/bed/chair/office/dark
 	icon_state = "officechair_dark"
-	anchored = 0
+	anchored = FALSE
 
 /obj/structure/bed/chair/dropship
+	can_rotate = FALSE
 	picked_up_item = null
 
 /obj/structure/bed/chair/dropship/pilot
 	icon_state = "pilot_chair"
-	anchored = 1
+	anchored = TRUE
 	name = "pilot's chair"
 	desc = "A specially designed chair for pilots to sit in."
-
-/obj/structure/bed/chair/dropship/pilot/rotate()
-	return // no
 
 /obj/structure/bed/chair/dropship/pilot/unbuckle()
 	if(buckled_mob && buckled_mob.buckled == src)
@@ -388,7 +403,7 @@
 		return
 	..()
 
-/obj/structure/bed/chair/dropship/passenger/proc/fold_down(var/break_it = 0)
+/obj/structure/bed/chair/dropship/passenger/proc/fold_down(break_it = 0)
 	if(chair_state == DROPSHIP_CHAIR_UNFOLDED)
 		is_animating = 1
 		flick("hotseat_new_folding", src)
@@ -400,7 +415,7 @@
 			chair_state = DROPSHIP_CHAIR_FOLDED
 		addtimer(VARSET_CALLBACK(src, icon_state, "hotseat_new_folded"), 5) // animation length
 
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair/fold_down(var/break_it = 1)
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair/fold_down(break_it = 1)
 	if(chair_state == DROPSHIP_CHAIR_UNFOLDED)
 		unbuckle()
 		chair_state = DROPSHIP_CHAIR_BROKEN
@@ -419,9 +434,6 @@
 	if(chair_state == DROPSHIP_CHAIR_BROKEN)
 		chair_state = DROPSHIP_CHAIR_UNFOLDED
 		icon_state = "hotseat"
-
-/obj/structure/bed/chair/dropship/passenger/rotate()
-	return // no
 
 /obj/structure/bed/chair/dropship/passenger/buckle_mob(mob/living/M, mob/living/user)
 	if(chair_state != DROPSHIP_CHAIR_UNFOLDED)
@@ -521,15 +533,15 @@
 	debris = list()
 	picked_up_item = null
 
-/obj/item/weapon/melee/twohanded/folded_metal_chair //used for when someone picks up the chair
+/obj/item/weapon/twohanded/folded_metal_chair //used for when someone picks up the chair
 	name = "metal folding chair"
 	desc = "A metal folding chair, probably could be turned into a seat by anyone with half a braincell working."
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "folding_chair"
 	item_state = "folding_chair"
 	attack_verb = list("bashed", "battered", "chaired")
-	force = 1.0
-	throwforce = 3.0
+	force = 1
+	throwforce = 3
 	sharp = null
 	edge = 0
 	w_class = SIZE_LARGE
@@ -537,7 +549,7 @@
 	flags_item = TWOHANDED
 	var/placed_object = /obj/structure/bed/chair
 
-/obj/item/weapon/melee/twohanded/folded_metal_chair/attack(mob/living/M as mob, mob/living/user as mob)
+/obj/item/weapon/twohanded/folded_metal_chair/attack(mob/living/M as mob, mob/living/user as mob)
 	. = ..()
 	if(!.)
 		return
@@ -545,7 +557,7 @@
 		M.apply_stamina_damage(17, check_zone(user.zone_selected))
 	playsound(get_turf(user), 'sound/weapons/metal_chair_clang.ogg', 20, 1)
 
-/obj/item/weapon/melee/twohanded/folded_metal_chair/afterattack(atom/target, mob/user, proximity)
+/obj/item/weapon/twohanded/folded_metal_chair/afterattack(atom/target, mob/user, proximity)
 	if(flags_item & WIELDED)
 		return
 	if(isturf(target))
@@ -563,6 +575,6 @@
 		O.dir = user.dir
 		qdel(src)
 
-/obj/item/weapon/melee/twohanded/folded_metal_chair/mob_launch_collision(var/mob/living/L)
+/obj/item/weapon/twohanded/folded_metal_chair/mob_launch_collision(mob/living/L)
 	playsound(get_turf(src), 'sound/weapons/metal_chair_slam.ogg', 50, 1)
 	..()

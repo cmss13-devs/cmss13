@@ -1,7 +1,7 @@
-#define VISION_MODE_OFF		0
-#define VISION_MODE_NVG		1
-#define VISION_MODE_THERMAL	2
-#define VISION_MODE_MESON	3
+#define VISION_MODE_OFF 0
+#define VISION_MODE_NVG 1
+#define VISION_MODE_THERMAL 2
+#define VISION_MODE_MESON 3
 
 ///parent type
 /obj/item/clothing/mask/gas/yautja
@@ -26,21 +26,22 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	unequip_sounds = list('sound/items/air_release.ogg')
 
-	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
+	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROT
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_cold_protection = BODY_FLAG_HEAD
-	flags_inventory = COVEREYES|COVERMOUTH|NOPRESSUREDMAGE|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|BLOCKSHARPOBJ
+	flags_inventory = COVEREYES|COVERMOUTH|NOPRESSUREDMAGE|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDELOWHAIR
 	flags_item = ITEM_PREDATOR
 	filtered_gases = list("phoron", "sleeping_agent", "carbon_dioxide")
 	gas_filter_strength = 3
-	eye_protection = 2
+	eye_protection = EYE_PROTECTION_WELDING
 	var/current_goggles = VISION_MODE_OFF
 	vision_impair = VISION_IMPAIR_NONE
 	unacidable = TRUE
 	time_to_unequip = 20
 	anti_hug = 5
 	fire_intensity_resistance = 10
+	black_market_value = 100
 	var/list/mask_huds = list(MOB_HUD_XENO_STATUS, MOB_HUD_HUNTER, MOB_HUD_HUNTER_CLAN, MOB_HUD_MEDICAL_OBSERVER)
 	var/thrall = FALSE //Used to affect icon generation.
 
@@ -58,7 +59,7 @@
 	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mask_number]_[armor_material]")
 
 /obj/item/clothing/mask/gas/yautja/pickup(mob/living/user)
-	if(isYautja(user))
+	if(isyautja(user))
 		remove_from_missing_pred_gear(src)
 	..()
 
@@ -179,7 +180,7 @@
 /obj/item/clothing/mask/gas/yautja/hunter
 	name = "clan mask"
 	desc = "A beautifully designed metallic face mask, both ornate and functional."
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
@@ -187,6 +188,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	eye_protection = EYE_PROTECTION_WELDING
 	anti_hug = 100
 
 /obj/item/clothing/mask/gas/yautja/hunter/toggle_zoom()
@@ -194,7 +196,7 @@
 	..()
 /obj/item/clothing/mask/gas/yautja/hunter/togglesight()
 	set category = "Yautja.Utility"
-	if(!isYautja(usr))
+	if(!isyautja(usr))
 		to_chat(usr, SPAN_WARNING("You have no idea how to work this thing!"))
 		return
 	..()
@@ -249,7 +251,6 @@
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_cold_protection = BODY_FLAG_HEAD
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDELOWHAIR
-	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
 	item_state_slots = list(WEAR_FACE = "pred_mask1_ebony")
 	var/map_random = FALSE

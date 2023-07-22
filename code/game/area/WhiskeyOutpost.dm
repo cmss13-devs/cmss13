@@ -12,10 +12,12 @@
 /area/whiskey_outpost/inside
 	name = "Interior Whiskey Outpost"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	minimap_color = MINIMAP_AREA_CAVES
 
 /area/whiskey_outpost/inside/hospital
 	name = "\improper Hospital"
 	icon_state = "medical"
+	minimap_color = MINIMAP_AREA_MEDBAY_CAVE
 
 /area/whiskey_outpost/inside/hospital/triage
 	name = "\improper Triage Center"
@@ -23,6 +25,7 @@
 /area/whiskey_outpost/inside/cic
 	name = "\improper Command Information Center"
 	icon_state = "CIC"
+	minimap_color = MINIMAP_AREA_COMMAND_CAVE
 
 /area/whiskey_outpost/inside/bunker
 	name = "\improper Bunker"
@@ -55,6 +58,7 @@
 /area/whiskey_outpost/inside/engineering
 	name = "\improper Engineering"
 	icon_state = "engineering"
+	minimap_color = MINIMAP_AREA_ENGI_CAVE
 
 /area/whiskey_outpost/inside/living
 	name = "\improper Living Quarters"
@@ -79,6 +83,7 @@
 	power_light = FALSE
 	power_equip = FALSE
 	power_environ = FALSE
+	minimap_color = MINIMAP_AREA_COLONY
 
 /area/whiskey_outpost/outside/north
 	name = "\improper Northern Beach"
@@ -179,6 +184,7 @@
 	power_light = FALSE
 	power_equip = FALSE
 	power_environ = FALSE
+	minimap_color = MINIMAP_AREA_CONTESTED_ZONE
 
 /area/whiskey_outpost/inside/caves/tunnel
 	name = "\improper Tunnel"

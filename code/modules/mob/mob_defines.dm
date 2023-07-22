@@ -1,5 +1,5 @@
 /mob
-	density = 1
+	density = TRUE
 	layer = MOB_LAYER
 	animate_movement = 2
 	rebounds = TRUE
@@ -13,7 +13,6 @@
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
 	var/chatWarn = 0 //Tracks how many times someone has spammed and gives them a no-no timer
-	var/talked = 0 //Won't let someone say something again in under a second.
 
 	var/atom/movable/screen/hands = null //robot
 
@@ -37,35 +36,64 @@
 	var/computer_id = null //to track the players
 	var/list/attack_log = list( )
 	var/atom/movable/interactee //the thing that the mob is currently interacting with (e.g. a computer, another mob (stripping a mob), manning a hmg)
-	var/sdisabilities = 0	//Carbon
-	var/disabilities = 0	//Carbon
+	var/sdisabilities = 0 //Carbon
+	var/disabilities = 0 //Carbon
 	var/atom/movable/pulling = null
 	var/next_move = null
-	var/next_move_slowdown = 0	// Amount added during the next movement_delay(), then is reset.
+	var/next_move_slowdown = 0 // Amount added during the next movement_delay(), then is reset.
 	var/speed = 0 //Speed that modifies the movement delay of a given mob
 	var/recalculate_move_delay = TRUE // Whether move delay needs to be recalculated, on by default so that new mobs actually get movement delay calculated upon creation
 	var/crawling = FALSE
 	var/can_crawl = TRUE
-	var/monkeyizing = null	//Carbon
+	var/monkeyizing = null //Carbon
 	var/hand = null
-	var/eye_blind = null	//Carbon
-	var/eye_blurry = null	//Carbon
-	var/ear_deaf = null		//Carbon
-	var/ear_damage = null	//Carbon
-	var/stuttering = null	//Carbon
-	var/slurring = null		//Carbon
-	var/real_name = null
+
+	// status effects that decrease over time \\
+
+	/// timer for blinding
+	var/eye_blind = 0 //Carbon
+	/// Does the mob have blurry sight
+	var/eye_blurry = 0 //Carbon
+	var/ear_deaf = 0 //Carbon
+	var/ear_damage = 0 //Carbon
+	var/stuttering = 0 //Carbon
+	var/slurring = 0 //Carbon
+	var/paralyzed = 0 //Carbon
+	var/druggy = 0 //Carbon
+	var/confused = 0 //Carbon
+	var/drowsyness = 0.0//Carbon
+	var/dizziness = 0//Carbon
+	var/jitteriness = 0//Carbon
+	var/floatiness = 0
+	var/knocked_out = 0
+	var/stunned = 0
+	var/frozen = 0
+	var/knocked_down = 0
+	var/losebreath = 0.0//Carbon
+	var/dazed = 0
+	var/slowed = 0 // X_SLOW_AMOUNT
+	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
+	var/shakecamera = 0
+
+	// bool status effects \\
+
+	/// bool that tracks if blind
+	var/blinded = FALSE
+	var/sleeping = 0 //Carbon
+	var/resting = 0 //Carbon
+	var/is_floating = 0
+	var/is_dizzy = 0
+	var/is_jittery = 0
+
+	// strings \\
+
+	var/real_name = ""
 	var/flavor_text = ""
 	var/med_record = ""
 	var/sec_record = ""
 	var/gen_record = ""
 	var/exploit_record = ""
-	var/blinded = null
-	var/druggy = 0			//Carbon
-	var/confused = 0		//Carbon
-	var/sleeping = 0		//Carbon
-	var/resting = 0			//Carbon
-	var/paralyzed = 0		//Carbon
+
 	var/gibbing = FALSE
 	var/lying = FALSE
 	var/lying_prev = 0
@@ -73,10 +101,10 @@
 	var/lastpuke = 0
 	unacidable = FALSE
 	var/mob_size = MOB_SIZE_HUMAN
-	var/list/embedded = list()          // Embedded items, since simple mobs don't have organs.
-	var/list/datum/language/languages = list()         // For speaking/listening.
+	var/list/embedded = list()   // Embedded items, since simple mobs don't have organs.
+	var/list/datum/language/languages = list()  // For speaking/listening.
 	var/list/speak_emote = list("says") // Verbs used when speaking. Defaults to 'say' if speak_emote is null.
-	var/emote_type = 1		// Define emote default type, 1 for seen emotes, 2 for heard emotes
+	var/emote_type = 1 // Define emote default type, 1 for seen emotes, 2 for heard emotes
 
 	var/name_archive //For admin things like possession
 
@@ -97,33 +125,20 @@
 	var/life_steps_total = 0
 	var/life_kills_total = 0
 	var/life_damage_taken_total = 0
+	var/life_revives_total = 0
+	var/festivizer_hits_total = 0
 
 	var/life_value = 1 // when killed, the killee gets this much added to its life_kills_total
 	var/default_honor_value = 1 // when killed by a yautja, this determines the minimum amount of honor gained
 
-	var/bodytemperature = 310.055	//98.7 F
+	var/bodytemperature = 310.055 //98.7 F
 	var/old_x = 0
 	var/old_y = 0
-	var/drowsyness = 0.0//Carbon
-	var/dizziness = 0//Carbon
-	var/is_dizzy = 0
-	var/is_jittery = 0
-	var/jitteriness = 0//Carbon
-	var/is_floating = 0
-	var/floatiness = 0
-	var/charges = 0.0
+
+	var/charges = 0
 	var/nutrition = NUTRITION_NORMAL//Carbon
 
-	var/overeatduration = 0		// How long this guy is overeating //Carbon
-	var/knocked_out = 0.0
-	var/stunned = 0.0
-	var/frozen = 0.0
-	var/knocked_down = 0.0
-	var/losebreath = 0.0//Carbon
-	var/dazed = 0.0
-	var/slowed = 0.0 // X_SLOW_AMOUNT
-	var/superslowed = 0.0 // X_SUPERSLOW_AMOUNT
-	var/shakecamera = 0
+	var/overeatduration = 0 // How long this guy is overeating //Carbon
 	var/recovery_constant = 1
 	var/a_intent = INTENT_HELP//Living
 	var/m_intent = MOVE_INTENT_RUN
@@ -152,7 +167,7 @@
 
 	var/voice_name = "unidentifiable voice"
 
-	var/job = null					// Internal job title used when mob is spawned. Preds are "Predator", Xenos are "Xenomorph", Marines have their actual job title
+	var/job = null // Internal job title used when mob is spawned. Preds are "Predator", Xenos are "Xenomorph", Marines have their actual job title
 	var/comm_title = ""
 	var/faction = FACTION_NEUTRAL
 	var/faction_group
@@ -170,7 +185,7 @@
 
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
-	var/status_flags = CANKNOCKDOWN|CANPUSH|STATUS_FLAGS_DEBILITATE	//bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
+	var/status_flags = CANKNOCKDOWN|CANPUSH|STATUS_FLAGS_DEBILITATE //bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
 
 	var/area/lastarea = null
 	var/obj/control_object //Used by admins to possess objects. All mobs should have this var
@@ -191,7 +206,7 @@
 
 	var/recently_pointed_to = 0 //used as cooldown for the pointing verb.
 
-	///Colour matrices to be applied to the client window. Assoc. list.
+	///Color matrices to be applied to the client window. Assoc. list.
 	var/list/client_color_matrices
 
 	var/list/image/hud_list //This mob's HUD (med/sec, etc) images. Associative list.
@@ -200,7 +215,7 @@
 
 	var/action_busy //whether the mob is currently doing an action that takes time (do_after proc)
 	var/resisting // whether the mob is currently resisting (primarily for do_after proc)
-	var/clicked_something 	// a list of booleans for if a mob did a specific click
+	var/clicked_something // a list of booleans for if a mob did a specific click
 							// only left click, shift click, right click, and middle click
 
 	var/datum/cause_data/last_damage_data // for tracking whatever damaged us last
@@ -211,6 +226,12 @@
 	var/next_delay_delay = 10 // how much time we wait for next calc of move delay
 	var/move_delay
 
+	///Holds the time when a mob can throw an item next, only applies after two throws, reference /mob/proc/do_click()
+	COOLDOWN_DECLARE(throw_delay)
+
+	///holds the buffer to allow for throwing two things before the cooldown effects throwing, reference /mob/proc/do_click()
+	var/throw_buffer = 0
+
 	var/list/datum/action/actions = list()
 
 	can_block_movement = TRUE
@@ -220,6 +241,9 @@
 
 	///the mob's tgui player panel
 	var/datum/player_panel/mob_panel
+
+	///the mob's tgui player panel
+	var/datum/language_menu/mob_language_menu
 
 	var/datum/focus
 
@@ -236,3 +260,185 @@
 	var/list/important_radio_channels = list()
 
 	var/datum/click_intercept
+
+	/// Used for tracking last uses of emotes for cooldown purposes
+	var/list/emotes_used
+
+	///the icon currently used for the typing indicator's bubble
+	var/mutable_appearance/active_typing_indicator
+	///the icon currently used for the thinking indicator's bubble
+	var/mutable_appearance/active_thinking_indicator
+	/// User is thinking in character. Used to revert to thinking state after stop_typing
+	var/thinking_IC = FALSE
+
+/mob/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_EXPLODE, "Trigger Explosion")
+	VV_DROPDOWN_OPTION(VV_HK_EMPULSE, "Trigger EM Pulse")
+	VV_DROPDOWN_OPTION(VV_HK_SETMATRIX, "Set Base Matrix")
+	VV_DROPDOWN_OPTION("", "-----MOB-----")
+	VV_DROPDOWN_OPTION(VV_HK_GIVE_DISEASE, "Give Disease")
+	VV_DROPDOWN_OPTION(VV_HK_BUILDMODE, "Give Build Mode")
+	VV_DROPDOWN_OPTION(VV_HK_GIB, "Gib")
+	VV_DROPDOWN_OPTION(VV_HK_DROP_ALL, "Drop All")
+	VV_DROPDOWN_OPTION(VV_HK_DIRECT_CONTROL, "Assume Direct Control")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_VERB, "Add Verb")
+	VV_DROPDOWN_OPTION(VV_HK_REMOVE_VERB, "Remove Verb")
+	VV_DROPDOWN_OPTION(VV_HK_SELECT_EQUIPMENT, "Select Equipment")
+	VV_DROPDOWN_OPTION(VV_HK_EDIT_SKILL, "Edit Skills")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_LANGUAGE, "Add Language")
+	VV_DROPDOWN_OPTION(VV_HK_REMOVE_LANGUAGE, "Remove Language")
+	VV_DROPDOWN_OPTION(VV_HK_REGEN_ICONS, "Regenerate Icons")
+
+/mob/vv_get_header()
+	. = ..()
+	var/refid = REF(src)
+	. += "<font size='1'><br><a href='?_src_=vars;[HrefToken()];view_combat_logs=[refid]'>View Combat Logs</a><br></font>"
+
+/mob/vv_do_topic(list/href_list)
+	. = ..()
+
+	if(href_list[VV_HK_SETMATRIX])
+		if(!check_rights(R_DEBUG|R_ADMIN|R_VAREDIT))
+			return
+
+		if(!LAZYLEN(usr.client.stored_matrices))
+			to_chat(usr, "You don't have any matrices stored!")
+			return
+
+		var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (usr.client.stored_matrices + "Revert to Default" + "Cancel"))
+		if(!matrix_name || matrix_name == "Cancel")
+			return
+		else if (matrix_name == "Revert to Default")
+			base_transform = null
+			transform = matrix()
+			disable_pixel_scaling()
+			return
+
+		var/matrix/MX = LAZYACCESS(usr.client.stored_matrices, matrix_name)
+		if(!MX)
+			return
+
+		base_transform = MX
+		transform = MX
+
+		if (alert(usr, "Would you like to enable pixel scaling?", "Confirm", "Yes", "No") == "Yes")
+			enable_pixel_scaling()
+
+	if(href_list[VV_HK_GIVE_DISEASE])
+		if(!check_rights(R_ADMIN))
+			return
+
+		usr.client.give_disease(src)
+
+	if(href_list[VV_HK_BUILDMODE])
+		if(!check_rights(R_ADMIN))
+			return
+
+		if(!client || !client.admin_holder || !(client.admin_holder.rights & R_MOD))
+			to_chat(usr, "This can only be used on people with +MOD permissions")
+			return
+
+		log_admin("[key_name(usr)] has toggled buildmode on [key_name(src)]")
+		message_admins("[key_name_admin(usr)] has toggled buildmode on [key_name_admin(src)]")
+
+		togglebuildmode(src)
+
+	if(href_list[VV_HK_GIB])
+		if(!check_rights(R_MOD))
+			return
+
+		usr.client.cmd_admin_gib(src)
+
+	if(href_list[VV_HK_DROP_ALL])
+		if(!check_rights(R_DEBUG|R_ADMIN))
+			return
+
+		if(usr.client)
+			usr.client.cmd_admin_drop_everything(src)
+
+	if(href_list[VV_HK_DIRECT_CONTROL])
+		if(!check_rights(R_ADMIN))
+			return
+
+		if(usr.client)
+			usr.client.cmd_assume_direct_control(src)
+
+	if(href_list[VV_HK_ADD_VERB])
+		if(!check_rights(R_DEBUG))
+			return
+
+		var/list/possibleverbs = list()
+		possibleverbs += "Cancel" // One for the top...
+		possibleverbs += typesof(/mob/proc,/mob/verb,/mob/living/proc,/mob/living/verb)
+		switch(type)
+			if(/mob/living/carbon/human)
+				possibleverbs += typesof(/mob/living/carbon/proc,/mob/living/carbon/verb,/mob/living/carbon/human/verb,/mob/living/carbon/human/proc)
+			if(/mob/living/silicon/robot)
+				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/robot/proc,/mob/living/silicon/robot/verb)
+			if(/mob/living/silicon/ai)
+				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/ai/proc)
+		possibleverbs -= verbs
+		possibleverbs += "Cancel" // ...And one for the bottom
+
+		var/verb = tgui_input_list(usr, "Select a verb!", "Verbs", possibleverbs)
+		if(!verb || verb == "Cancel")
+			return
+		else
+			add_verb(src, verb)
+
+	if(href_list[VV_HK_SELECT_EQUIPMENT])
+		if(!check_rights(R_SPAWN))
+			return
+
+		usr.client.cmd_admin_dress(src)
+
+	if(href_list[VV_HK_ADD_LANGUAGE])
+		if(!check_rights(R_SPAWN))
+			return
+
+		var/new_language = tgui_input_list(usr, "Please choose a language to add.","Language", GLOB.all_languages)
+
+		if(!new_language)
+			return
+
+		if(add_language(new_language))
+			to_chat(usr, "Added [new_language] to [src].")
+		else
+			to_chat(usr, "Mob already knows that language.")
+
+	if(href_list[VV_HK_REMOVE_LANGUAGE])
+		if(!check_rights(R_SPAWN))
+			return
+
+		if(!languages.len)
+			to_chat(usr, "This mob knows no languages.")
+			return
+
+		var/datum/language/rem_language = tgui_input_list(usr, "Please choose a language to remove.","Language", languages)
+
+		if(!rem_language)
+			return
+
+		if(remove_language(rem_language.name))
+			to_chat(usr, "Removed [rem_language] from [src].")
+		else
+			to_chat(usr, "Mob doesn't know that language.")
+
+	if(href_list[VV_HK_REMOVE_VERB])
+		if(!check_rights(R_DEBUG))
+			return
+
+		var/verb = tgui_input_list(usr, "Please choose a verb to remove.","Verbs", verbs)
+
+		if(!verb)
+			return
+		else
+			remove_verb(src, verb)
+
+	if(href_list[VV_HK_REGEN_ICONS])
+		if(!check_rights(R_MOD))
+			return
+
+		src.regenerate_icons()
+

@@ -1,10 +1,10 @@
-#define FRIDGE_WIRE_SHOCK		1
-#define FRIDGE_WIRE_SHOOT_INV	2
-#define FRIDGE_WIRE_IDSCAN		3
+#define FRIDGE_WIRE_SHOCK 1
+#define FRIDGE_WIRE_SHOOT_INV 2
+#define FRIDGE_WIRE_IDSCAN 3
 
-#define FRIDGE_LOCK_COMPLETE	1
-#define FRIDGE_LOCK_ID			2
-#define FRIDGE_LOCK_NOLOCK		3
+#define FRIDGE_LOCK_COMPLETE 1
+#define FRIDGE_LOCK_ID 2
+#define FRIDGE_LOCK_NOLOCK 3
 
 /* SmartFridge.  Much todo
 */
@@ -40,7 +40,7 @@
 	GLOB.vending_products[/obj/item/reagent_container/glass/bottle] = 1
 	GLOB.vending_products[/obj/item/storage/pill_bottle] = 1
 
-/obj/structure/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/proc/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/food/snacks/grown/) || istype(O,/obj/item/seeds/))
 		return 1
 	return 0
@@ -65,7 +65,7 @@
 //*   Item Adding
 //********************/
 
-/obj/structure/machinery/smartfridge/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/smartfridge/attackby(obj/item/O as obj, mob/user as mob)
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		. = ..()
 		return
@@ -92,7 +92,7 @@
 		if(user.drop_held_item())
 			add_local_item(O)
 			user.visible_message(SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
-								 SPAN_NOTICE("You add \the [O] to \the [src]."))
+								SPAN_NOTICE("You add \the [O] to \the [src]."))
 
 	else if(istype(O, /obj/item/storage/bag/plants))
 		var/obj/item/storage/bag/plants/P = O
@@ -127,17 +127,17 @@
 
 	tgui_interact(user)
 
-/obj/structure/machinery/smartfridge/proc/add_local_item(var/obj/item/O)
+/obj/structure/machinery/smartfridge/proc/add_local_item(obj/item/O)
 	add_item(item_quants, O)
 
-/obj/structure/machinery/smartfridge/proc/add_item(var/list/target, var/obj/item/O)
+/obj/structure/machinery/smartfridge/proc/add_item(list/target, obj/item/O)
 	O.forceMove(src)
 	if(target[O.name])
 		target[O.name] += O
 	else
 		target[O.name] = list(O)
 
-/obj/structure/machinery/smartfridge/proc/add_network_item(var/obj/item/O)
+/obj/structure/machinery/smartfridge/proc/add_network_item(obj/item/O)
 	if(is_in_network())
 		add_item(chemical_data.shared_item_storage, O)
 		return TRUE
@@ -332,9 +332,12 @@
 		if("cutwire")
 			if(!panel_open)
 				return FALSE
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+				return FALSE
 			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(user, "You need wirecutters!")
+				to_chat(user, SPAN_WARNING("You need wirecutters!"))
 				return TRUE
 
 			var/wire = params["wire"]
@@ -343,9 +346,12 @@
 		if("fixwire")
 			if(!panel_open)
 				return FALSE
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+				return FALSE
 			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(user, "You need wirecutters!")
+				to_chat(user, SPAN_WARNING("You need wirecutters!"))
 				return TRUE
 			var/wire = params["wire"]
 			mend(wire)
@@ -353,30 +359,33 @@
 		if("pulsewire")
 			if(!panel_open)
 				return FALSE
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+				return FALSE
 			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 				to_chat(user, "You need multitool!")
 				return TRUE
 			var/wire = params["wire"]
 			if (isWireCut(wire))
-				to_chat(usr, "You can't pulse a cut wire.")
+				to_chat(usr, SPAN_WARNING("You can't pulse a cut wire."))
 				return TRUE
 			pulse(wire)
 			return TRUE
 	return FALSE
 
 //*************
-//*	Hacking
+//* Hacking
 //**************/
 
 /obj/structure/machinery/smartfridge/proc/get_wire_descriptions()
 	return list(
-		FRIDGE_WIRE_SHOCK      = "Ground safety",
+		FRIDGE_WIRE_SHOCK   = "Ground safety",
 		FRIDGE_WIRE_SHOOT_INV  = "Dispenser motor control",
-		FRIDGE_WIRE_IDSCAN     = "ID scanner"
+		FRIDGE_WIRE_IDSCAN  = "ID scanner"
 	)
 
-/obj/structure/machinery/smartfridge/proc/cut(var/wire)
+/obj/structure/machinery/smartfridge/proc/cut(wire)
 	wires ^= getWireFlag(wire)
 
 	switch(wire)
@@ -391,7 +400,7 @@
 			locked = FRIDGE_LOCK_COMPLETE //totally lock it down
 			visible_message(SPAN_NOTICE("\The [src] emits a slight thunk."))
 
-/obj/structure/machinery/smartfridge/proc/mend(var/wire)
+/obj/structure/machinery/smartfridge/proc/mend(wire)
 	wires |= getWireFlag(wire)
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
@@ -403,7 +412,7 @@
 			locked = FRIDGE_LOCK_ID //back to normal
 			visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
-/obj/structure/machinery/smartfridge/proc/pulse(var/wire)
+/obj/structure/machinery/smartfridge/proc/pulse(wire)
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
 			COOLDOWN_START(src, electrified_cooldown, 30 SECONDS)
@@ -418,7 +427,7 @@
 			locked = FRIDGE_LOCK_NOLOCK //open sesame
 			visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
-/obj/structure/machinery/smartfridge/proc/isWireCut(var/wire)
+/obj/structure/machinery/smartfridge/proc/isWireCut(wire)
 	return !(wires & getWireFlag(wire))
 
 /obj/structure/machinery/smartfridge/proc/throw_item()
@@ -448,7 +457,7 @@
 
 
 //********************
-//*	Smartfridge types
+//* Smartfridge types
 //*********************/
 
 /obj/structure/machinery/smartfridge/seeds
@@ -459,7 +468,7 @@
 	icon_on = "seeds"
 	icon_off = "seeds-off"
 
-/obj/structure/machinery/smartfridge/seeds/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/seeds/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/seeds/))
 		return 1
 	return 0
@@ -471,9 +480,9 @@
 	icon_state = "smartfridge" //To fix the icon in the map editor.
 	icon_on = "smartfridge_chem"
 	is_secure_fridge = TRUE
-	req_one_access = list(ACCESS_MARINE_CMO, 33)
+	req_one_access = list(ACCESS_MARINE_CMO)
 
-/obj/structure/machinery/smartfridge/secure/medbay/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/secure/medbay/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/glass/))
 		return 1
 	if(istype(O,/obj/item/storage/pill_bottle/))
@@ -492,7 +501,7 @@
 	icon_on = "smartfridge_virology"
 	icon_off = "smartfridge_virology-off"
 
-/obj/structure/machinery/smartfridge/secure/virology/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/secure/virology/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/glass/beaker/vial/))
 		return 1
 	return 0
@@ -505,7 +514,7 @@
 	req_one_access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MEDPREP)
 	networked = TRUE
 
-/obj/structure/machinery/smartfridge/chemistry/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/chemistry/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/storage/pill_bottle) || istype(O,/obj/item/reagent_container) || istype(O,/obj/item/storage/fancy/vials))
 		return 1
 	return 0
@@ -522,6 +531,6 @@
 	name = "\improper Drink Showcase"
 	desc = "A refrigerated storage unit for tasty tasty alcohol."
 
-/obj/structure/machinery/smartfridge/drinks/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/drinks/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks) || istype(O,/obj/item/reagent_container/food/condiment))
 		return 1

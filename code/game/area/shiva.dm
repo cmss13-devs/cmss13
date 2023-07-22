@@ -8,6 +8,7 @@
 	can_build_special = TRUE //T-Comms structure
 	temperature = ICE_COLONY_TEMPERATURE
 	lighting_use_dynamic = TRUE
+	minimap_color = MINIMAP_AREA_COLONY
 
 /area/shuttle/drop1/shiva
 	name = "Shiva's Snowball - Dropship Alamo Landing Zone"
@@ -15,6 +16,7 @@
 	icon = 'icons/turf/area_shiva.dmi'
 	lighting_use_dynamic = TRUE
 	is_resin_allowed = FALSE
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/shuttle/drop2/shiva
 	name = "Shiva's Snowball - Dropship Normandy Landing Zone"
@@ -22,13 +24,16 @@
 	icon = 'icons/turf/area_shiva.dmi'
 	lighting_use_dynamic = TRUE
 	is_resin_allowed = FALSE
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/shiva/exterior/lz1_console
 	name = "Shiva's Snowball - Dropship Alamo Console"
 	requires_power = FALSE
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/shiva/exterior/lz1_console/two
 	name = "Shiva's Snowball - Dropship Normandy Console"
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/shiva/exterior
 	name = "Shiva's Snowball - Exterior"
@@ -61,12 +66,15 @@
 
 /area/shiva/exterior/telecomm/lz1_north
 	name = "Shiva's Snowball - North LZ1 Communications Relay"
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/shiva/exterior/telecomm/lz2_southeast
 	name = "Shiva's Snowball - South-East LZ2 Communications Relay"
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/shiva/exterior/telecomm/lz2_northeast
 	name = "Shiva's Snowball - North-East LZ2 Communications Relay"
+	minimap_color = MINIMAP_AREA_LZ
 
 
 //telecomms areas - interior
@@ -78,12 +86,15 @@
 /area/shiva/interior/telecomm/lz1_biceps
 	name = "Shiva's Snowball - Fort Biceps Communications Relay"
 	icon_state = "hangars0"
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/shiva/interior/telecomm/lz1_flight
 	name = "Shiva's Snowball - LZ1 Aerodrome Communications Relay"
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/shiva/interior/telecomm/lz2_research
 	name = "Shiva's Snowball - Argentinian Communications Relay"
+	minimap_color = MINIMAP_AREA_LZ
 
 //telecomms areas - caves
 /area/shiva/caves/telecomm
@@ -93,6 +104,7 @@
 
 /area/shiva/caves/telecomm/lz2_south
 	name = "Shiva's Snowball - Backup Communications Relay"
+	minimap_color = MINIMAP_AREA_LZ
 
 //exterior areas
 
@@ -101,12 +113,14 @@
 	icon_state = "landing_valley"
 	is_resin_allowed = FALSE
 	is_landing_zone = TRUE
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/shiva/exterior/lz2_fortress
 	name = "Shiva's Snowball - Landing Bulwark"
 	icon_state = "lz2_fortress"
 	is_resin_allowed = FALSE
 	is_landing_zone = TRUE
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/shiva/exterior/valley
 	name = "Shiva's Snowball - Storage Bunker Valley"
@@ -139,6 +153,7 @@
 /area/shiva/exterior/research_alley
 	name = "Shiva's Snowball - South Research Alley"
 	icon_state = "junkyard2"
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 
 
@@ -160,6 +175,7 @@
 /area/shiva/interior/caves/s_lz2
 	name = "Shiva's Snowball - South LZ2 Caves"
 	icon_state = "caves3"
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/shiva/interior/caves/cp_camp
 	name = "Shiva's Snowball - Cave Camp"
@@ -168,6 +184,7 @@
 /area/shiva/interior/caves/research_caves
 	name = "Shiva's Snowball - South Research Hab Caves"
 	icon_state = "caves2"
+	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 
 /area/shiva/interior/caves/medseceng_caves
 	name = "Shiva's Snowball - South Med-Sec-Eng Complex Caves"
@@ -181,6 +198,7 @@
 /area/shiva/interior/colony/botany
 	name = "Shiva's Snowball - MegaStruct(TM) Botanical Dorms"
 	icon_state = "res1"
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/shiva/interior/colony/s_admin
 	name = "Shiva's Snowball - MegaStruct(TM) Crisis Center"
@@ -189,6 +207,7 @@
 /area/shiva/interior/colony/n_admin
 	name = "Shiva's Snowball - MegaStruct(TM) Administration"
 	icon_state = "res3"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/shiva/interior/colony/central
 	name = "Shiva's Snowball - MegaStruct(TM) Residential Life"

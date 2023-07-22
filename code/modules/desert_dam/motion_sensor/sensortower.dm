@@ -1,9 +1,9 @@
 //sensor tower for deser dam. It is there to add the xeno's to the tactical map for marines.
 
-#define SENSORTOWER_BUILDSTATE_WORKING		0
-#define SENSORTOWER_BUILDSTATE_BLOWTORCH	1
-#define SENSORTOWER_BUILDSTATE_WIRECUTTERS	2
-#define SENSORTOWER_BUILDSTATE_WRENCH		3
+#define SENSORTOWER_BUILDSTATE_WORKING 0
+#define SENSORTOWER_BUILDSTATE_BLOWTORCH 1
+#define SENSORTOWER_BUILDSTATE_WIRECUTTERS 2
+#define SENSORTOWER_BUILDSTATE_WRENCH 3
 
 /obj/structure/machinery/sensortower
 	name = "\improper experimental sensor tower"
@@ -13,8 +13,8 @@
 	anchored = TRUE
 	density = TRUE
 	unslashable = TRUE
-	unacidable = TRUE	  //NOPE.jpg
-	use_power = TRUE
+	unacidable = TRUE   //NOPE.jpg
+	needs_power = FALSE
 	idle_power_usage = 1000
 	var/buildstate = SENSORTOWER_BUILDSTATE_BLOWTORCH //What state of building it are we on, 0-3, 1 is "broken", the default
 	var/is_on = FALSE  //Is this damn thing on or what?
@@ -22,6 +22,9 @@
 	var/fail_check_ticks = 50 //Check for failure every this many ticks
 	//The sensor tower fails more often since it is experimental.
 	var/cur_tick = 0 //Tick updater
+
+	/// weakrefs of xenos temporarily added to the marine minimap
+	var/list/minimap_added = list()
 
 
 /obj/structure/machinery/sensortower/update_icon()
@@ -44,10 +47,29 @@
 
 /obj/structure/machinery/sensortower/process()
 	if(!is_on || buildstate || !anchored) //Default logic checking
+		remove_xenos_from_minimap()
 		return FALSE
 	if(inoperable())
+		remove_xenos_from_minimap()
 		return FALSE
 	checkfailure()
+	add_xenos_to_minimap()
+
+/obj/structure/machinery/sensortower/proc/remove_xenos_from_minimap()
+	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)
+		if(WEAKREF(current_xeno) in minimap_added)
+			SSminimaps.remove_marker(current_xeno)
+			current_xeno.add_minimap_marker()
+			minimap_added -= WEAKREF(current_xeno)
+
+/obj/structure/machinery/sensortower/proc/add_xenos_to_minimap()
+	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)
+		if(WEAKREF(current_xeno) in minimap_added)
+			return
+
+		SSminimaps.remove_marker(current_xeno)
+		current_xeno.add_minimap_marker(MINIMAP_FLAG_USCM|MINIMAP_FLAG_XENO)
+		minimap_added += WEAKREF(current_xeno)
 
 /obj/structure/machinery/sensortower/proc/checkfailure()
 	cur_tick++
@@ -97,16 +119,17 @@
 		is_on = FALSE
 		cur_tick = 0
 		update_icon()
-		stop_processing()
+		STOP_PROCESSING(SSslowobj, src)
+		remove_xenos_from_minimap()
 		return TRUE
 	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("<b>\The [src]</b> lights up as [usr] turns the power on.")]")
 	is_on = TRUE
 	cur_tick = 0
 	update_icon()
-	start_processing()
+	START_PROCESSING(SSslowobj, src)
 	return TRUE
 
-/obj/structure/machinery/sensortower/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/sensortower/attackby(obj/item/O as obj, mob/user as mob)
 	if(iswelder(O))
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
@@ -171,7 +194,7 @@
 	else
 		return ..() //Deal with everything else, like hitting with stuff
 
-/obj/structure/machinery/sensortower/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/sensortower/attack_alien(mob/living/carbon/xenomorph/M)
 	if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH)
 		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
@@ -205,14 +228,6 @@
 		M.visible_message(SPAN_DANGER("[M] stops destroying \the [src]'s internal machinery!"), \
 		SPAN_DANGER("You stop destroying \the [src]'s internal machinery!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_NO_DELAY_ACTION
-
-/obj/structure/machinery/sensortower/stop_processing()
-	SSticker.toweractive = FALSE
-	..()
-
-/obj/structure/machinery/sensortower/start_processing()
-	SSticker.toweractive = TRUE
-	..()
 
 /obj/structure/machinery/sensortower/power_change()
 	..()

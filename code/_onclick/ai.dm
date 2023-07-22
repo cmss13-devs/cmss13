@@ -10,7 +10,7 @@
 	Note that AI have no need for the adjacency proc, and so this proc is a lot cleaner.
 */
 
-/mob/click(var/atom/A, var/list/mods)
+/mob/click(atom/A, list/mods)
 	..()
 
 	if(!client || !client.remote_control)
@@ -40,7 +40,7 @@
 
 /*
 	AI has no need for the UnarmedAttack() and RangedAttack() procs,
-	because the AI code is not generic;	attack_remote() is used instead.
+	because the AI code is not generic; attack_remote() is used instead.
 	The below is only really for safety, or you can alter the way
 	it functions and re-insert it above.
 */
@@ -83,7 +83,7 @@
 /atom/proc/AICtrlClick()
 	return
 
-atom/proc/AIAltClick()
+/atom/proc/AIAltClick()
 	return
 
 /obj/structure/machinery/door/airlock/AICtrlClick() // Bolts doors

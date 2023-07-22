@@ -16,12 +16,14 @@
 
 	var/leaders = 0
 
-/datum/emergency_call/cryo_squad_equipped/spawn_candidates(announce, override_spawn_loc)
+/datum/emergency_call/cryo_squad_equipped/spawn_candidates(announce, override_spawn_loc, announce_dispatch_message)
 	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
 	leaders = cryo_squad.num_leaders
-	return ..()
+	. = ..()
+	if(length(members))
+		shipwide_ai_announcement("Successfully deployed [length(members)] Foxtrot marines.")
 
-/datum/emergency_call/cryo_squad_equipped/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/cryo_squad_equipped/create_member(datum/mind/M, turf/override_spawn_loc)
 	set waitfor = 0
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		name_of_spawn = /obj/effect/landmark/ert_spawns/distress_wo
@@ -69,7 +71,7 @@
 	to_chat(H, SPAN_BOLD("Objectives: [objectives]"))
 
 
-datum/emergency_call/cryo_squad_equipped/platoon
+/datum/emergency_call/cryo_squad_equipped/platoon
 	name = "Marine Cryo Reinforcements (Full Equipment) (Platoon)"
 	mob_min = 8
 	mob_max = 30

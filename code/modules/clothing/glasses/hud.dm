@@ -1,5 +1,6 @@
 /obj/item/clothing/glasses/hud
 	name = "HUD"
+	gender = NEUTER
 	desc = "A heads-up display that provides important info in (almost) real time."
 	flags_atom = null //doesn't protect eyes because it's a monocle, duh
 
@@ -135,6 +136,7 @@
 
 /obj/item/clothing/glasses/hud/security/jensenshades
 	name = "augmented shades"
+	gender = PLURAL
 	desc = "Polarized bioneural eyewear, designed to augment your vision. Why don't you try getting a job?"
 	icon_state = "jensenshades"
 	item_state = "jensenshades"

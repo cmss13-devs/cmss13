@@ -40,10 +40,10 @@
 /obj/item/stack/medical/advanced/ointment/upgraded
 	name = "upgraded burn kit"
 	singular_name = "upgraded burn kit"
-	stack_id = "upgraded advanced burn kit"
+	stack_id = "upgraded burn kit"
 
 	icon_state = "burnkit_upgraded"
-	desc = "An upgraded advanced burn treatment kit. Three times as effective as standard-issue, and non-replenishable. Use sparingly on only the most critical burns."
+	desc = "An upgraded burn treatment kit. Three times as effective as standard-issue, and non-replenishable. Use sparingly on only the most critical burns."
 
 	max_amount = 10
 	amount = 10
@@ -55,10 +55,10 @@
 /obj/item/stack/medical/advanced/bruise_pack/upgraded
 	name = "upgraded trauma kit"
 	singular_name = "upgraded trauma kit"
-	stack_id = "upgraded advanced trauma kit"
+	stack_id = "upgraded trauma kit"
 
 	icon_state = "traumakit_upgraded"
-	desc = "An upgraded advanced trauma treatment kit. Three times as effective as standard-issue, and non-replenishable. Use sparingly on only the most critical wounds."
+	desc = "An upgraded trauma treatment kit. Three times as effective as standard-issue, and non-replenishable. Use sparingly on only the most critical wounds."
 
 	max_amount = 10
 	amount = 10
@@ -130,13 +130,13 @@
 /obj/item/weapon/gun/pill
 	name = "pill gun"
 	desc = "A spring-loaded rifle designed to fit pills, designed to inject patients from a distance."
-	icon = 'icons/obj/items/weapons/guns/gun.dmi'
+	icon = 'icons/obj/items/weapons/guns/legacy/old_cmguns.dmi'
 	icon_state = "syringegun"
 	item_state = "syringegun"
 	w_class = SIZE_MEDIUM
 	throw_speed = SPEED_SLOW
 	throw_range = 10
-	force = 4.0
+	force = 4
 
 	current_mag = /obj/item/ammo_magazine/internal/pillgun
 

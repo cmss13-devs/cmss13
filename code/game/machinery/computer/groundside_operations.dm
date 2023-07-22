@@ -2,14 +2,15 @@
 	name = "groundside operations console"
 	desc = "This can be used for various important functions."
 	icon_state = "comm"
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_SENIOR)
 	unslashable = TRUE
 	unacidable = TRUE
 
-	var/mob/living/carbon/human/current_mapviewer
-
 	var/obj/structure/machinery/camera/cam = null
 	var/datum/squad/current_squad = null
+
+	var/datum/tacmap/tacmap
+	var/minimap_type = MINIMAP_FLAG_USCM
 
 	var/is_announcement_active = TRUE
 	var/announcement_title = COMMAND_ANNOUNCE
@@ -17,17 +18,20 @@
 	var/add_pmcs = TRUE
 	var/lz_selection = TRUE
 	var/has_squad_overwatch = TRUE
-	var/tacmap_type = TACMAP_DEFAULT
-	var/tacmap_base_type = TACMAP_BASE_OCCLUDED
-	var/tacmap_additional_parameter = null
-	var/minimap_name = "Marine Minimap"
 	var/faction = FACTION_MARINE
 
 /obj/structure/machinery/computer/groundside_operations/Initialize()
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		add_pmcs = FALSE
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
-		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/disable_pmc)
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(disable_pmc))
+	tacmap = new(src, minimap_type)
+	return ..()
+
+/obj/structure/machinery/computer/groundside_operations/Destroy()
+	QDEL_NULL(tacmap)
+	QDEL_NULL(cam)
+	current_squad = null
 	return ..()
 
 /obj/structure/machinery/computer/groundside_operations/proc/disable_pmc()
@@ -35,16 +39,16 @@
 		add_pmcs = FALSE
 	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP)
 
-/obj/structure/machinery/computer/groundside_operations/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/groundside_operations/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/attack_hand(mob/user as mob)
 	if(..() || !allowed(user) || inoperable())
 		return
 
 	ui_interact(user)
 
-/obj/structure/machinery/computer/groundside_operations/ui_interact(var/mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/ui_interact(mob/user as mob)
 	user.set_interaction(src)
 
 	var/dat = "<head><title>Groundside Operations Console</title></head><body>"
@@ -57,7 +61,7 @@
 		dat += "<BR><hr>"
 
 	if(lz_selection && SSticker.mode && (isnull(SSticker.mode.active_lz) || isnull(SSticker.mode.active_lz.loc)))
-		dat += "<BR>Primary LZ <BR><A HREF='?src=\ref[src];operation=selectlz'>Select primary LZ</A>"
+		dat += "<BR><A href='?src=\ref[src];operation=selectlz'>Designate Primary LZ</A><BR>"
 		dat += "<BR><hr>"
 
 	if(has_squad_overwatch)
@@ -131,7 +135,7 @@
 				if(H.job)
 					role = H.job
 				else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
-					var/obj/item/card/id/ID = H.wear_id		//we use their ID to get their role.
+					var/obj/item/card/id/ID = H.wear_id //we use their ID to get their role.
 					if(ID.rank)
 						role = ID.rank
 
@@ -185,37 +189,22 @@
 	dat += "<A href='?src=\ref[src];operation=refresh'>Refresh</a><br>"
 	return dat
 
-/obj/structure/machinery/computer/groundside_operations/proc/update_mapview(var/close = 0)
-	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
-		close_browser(current_mapviewer, "marineminimap")
-		current_mapviewer = null
-		return
-
-	var/icon/O = overlay_tacmap(tacmap_type, tacmap_base_type, tacmap_additional_parameter)
-	if(O)
-		current_mapviewer << browse_rsc(O, "marine_minimap.png")
-		show_browser(current_mapviewer, "<img src=marine_minimap.png>", minimap_name, "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
-
 /obj/structure/machinery/computer/groundside_operations/Topic(href, href_list)
-	if (href_list["close"] && current_mapviewer)
-		close_browser(current_mapviewer, "marineminimap")
-		current_mapviewer = null
-		return
-
 	if(..())
 		return FALSE
 
 	usr.set_interaction(src)
 	switch(href_list["operation"])
+
 		if("mapview")
-			if(current_mapviewer)
-				update_mapview(TRUE)
-				return
-			current_mapviewer = usr
-			update_mapview()
+			tacmap.tgui_interact(usr)
 			return
 
 		if("announce")
+			if(usr.client.prefs.muted & MUTE_IC)
+				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
+				return
+
 			if(!is_announcement_active)
 				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
 				return FALSE
@@ -237,8 +226,8 @@
 					signed = "[paygrade] [id.registered_name]"
 
 			marine_announcement(input, announcement_title, faction_to_display = announcement_faction, add_PMCs = add_pmcs, signature = signed)
-			addtimer(CALLBACK(src, .proc/reactivate_announcement, usr), COOLDOWN_COMM_MESSAGE)
-			message_staff("[key_name(usr)] has made a command announcement.")
+			addtimer(CALLBACK(src, PROC_REF(reactivate_announcement), usr), COOLDOWN_COMM_MESSAGE)
+			message_admins("[key_name(usr)] has made a command announcement.")
 			log_announcement("[key_name(usr)] has announced the following: [input]")
 
 		if("award")
@@ -247,13 +236,14 @@
 		if("selectlz")
 			if(SSticker.mode.active_lz)
 				return
-			var/lz_choices = list()
-			for(var/obj/structure/machinery/computer/shuttle_control/console in machines)
-				if(is_ground_level(console.z) && !console.onboard && console.shuttle_type == SHUTTLE_DROPSHIP)
-					lz_choices += console
-			var/new_lz = input(usr, "Choose the primary LZ for this operation", "Operation Staging")  as null|anything in lz_choices
-			if(new_lz)
-				SSticker.mode.select_lz(new_lz)
+			var/lz_choices = list("lz1", "lz2")
+			var/new_lz = tgui_input_list(usr, "Select primary LZ", "LZ Select", lz_choices)
+			if(!new_lz)
+				return
+			if(new_lz == "lz1")
+				SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
+			else
+				SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
 
 		if("pick_squad")
 			var/list/squad_list = list()
@@ -283,16 +273,20 @@
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Searching for helmet cam. No helmet cam found for this marine! Tell your squad to put their helmets on!")]")
 				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping helmet cam view of [cam_target].")]")
+					usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					cam = null
 					usr.reset_view(null)
 				else if(usr.client.view != world_view_size)
 					to_chat(usr, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
+					if(cam)
+						usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					cam = new_cam
 					usr.reset_view(cam)
+					usr.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 
 		if("activate_echo")
-			var/reason = input(usr, "What is the purpose of Echo Squad?", "Activation Reason")
+			var/reason = strip_html(input(usr, "What is the purpose of Echo Squad?", "Activation Reason"))
 			if(!reason)
 				return
 			if(alert(usr, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") != "Yes") return
@@ -301,14 +295,14 @@
 				visible_message(SPAN_BOLDNOTICE("ERROR: Unable to locate Echo Squad database."))
 				return
 			echo_squad.engage_squad(TRUE)
-			message_staff("[key_name(usr)] activated Echo Squad for '[reason]'.")
+			message_admins("[key_name(usr)] activated Echo Squad for '[reason]'.")
 
 		if("refresh")
 			attack_hand(usr)
 
 	updateUsrDialog()
 
-/obj/structure/machinery/computer/groundside_operations/proc/reactivate_announcement(var/mob/user)
+/obj/structure/machinery/computer/groundside_operations/proc/reactivate_announcement(mob/user)
 	is_announcement_active = TRUE
 	updateUsrDialog()
 
@@ -316,6 +310,8 @@
 	..()
 
 	if(!isRemoteControlling(user))
+		if(cam)
+			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 		cam = null
 		user.reset_view(null)
 
@@ -332,10 +328,7 @@
 	add_pmcs = FALSE
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
-	tacmap_type = TACMAP_FACTION
-	tacmap_base_type = TACMAP_BASE_OPEN
-	tacmap_additional_parameter = FACTION_UPP
-	minimap_name = "UPP Tactical Map"
+	minimap_type = MINIMAP_FLAG_UPP
 
 /obj/structure/machinery/computer/groundside_operations/clf
 	announcement_title = CLF_COMMAND_ANNOUNCE
@@ -343,17 +336,11 @@
 	add_pmcs = FALSE
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
-	tacmap_type = TACMAP_FACTION
-	tacmap_base_type = TACMAP_BASE_OPEN
-	tacmap_additional_parameter = FACTION_CLF
-	minimap_name = "CLF Tactical Map"
+	minimap_type = MINIMAP_FLAG_CLF
 
 /obj/structure/machinery/computer/groundside_operations/pmc
 	announcement_title = PMC_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_PMC
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
-	tacmap_type = TACMAP_FACTION
-	tacmap_base_type = TACMAP_BASE_OPEN
-	tacmap_additional_parameter = FACTION_PMC
-	minimap_name = "PMC Tactical Map"
+	minimap_type = MINIMAP_FLAG_PMC

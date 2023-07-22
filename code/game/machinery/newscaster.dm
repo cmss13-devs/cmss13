@@ -45,7 +45,7 @@
 	var/list/datum/feed_channel/network_channels = list()
 	var/datum/feed_message/wanted_issue
 
-var/datum/feed_network/news_network = new /datum/feed_network     //The global news-network, which is coincidentally a global list.
+var/datum/feed_network/news_network = new /datum/feed_network  //The global news-network, which is coincidentally a global list.
 
 var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list that will contain reference to all newscasters in existence.
 
@@ -59,7 +59,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 	var/ispowered = TRUE //starts powered, changes with power_change()
 	//var/list/datum/feed_channel/channel_list = list() //This list will contain the names of the feed channels. Each name will refer to a data region where the messages of the feed channels are stored.
 	//OBSOLETE: We're now using a global news network
-	var/screen = 0                  //Or maybe I'll make it into a list within a list afterwards... whichever I prefer, go fuck yourselves :3
+	var/screen = 0   //Or maybe I'll make it into a list within a list afterwards... whichever I prefer, go fuck yourselves :3
 		// 0 = welcome screen - main menu
 		// 1 = view feed channels
 		// 2 = create feed channel
@@ -79,7 +79,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 		// 1 = the opposite
 	var/unit_no = 0 //Each newscaster has a unit number
 	//var/datum/feed_message/wanted //We're gonna use a feed_message to store data of the wanted person because fields are similar
-	//var/wanted_issue = 0          //OBSOLETE
+	//var/wanted_issue = 0   //OBSOLETE
 		// 0 = there's no WANTED issued, we don't need a special icon_state
 		// 1 = Guess what.
 	var/alert_delay = 500
@@ -87,27 +87,27 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 		// 0 = there hasn't been a news/wanted update in the last alert_delay
 		// 1 = there has
 	var/scanned_user = "Unknown" //Will contain the name of the person who currently uses the newscaster
-	var/msg = "";                //Feed message
+	var/msg = ""; //Feed message
 	var/obj/item/photo/photo = null
 	var/channel_name = ""; //the feed channel which will be receiving the feed, or being created
-	var/c_locked=0;        //Will our new channel be locked to public submissions?
-	var/hitstaken = 0      //Death at 3 hits from an item with force>=15
+	var/c_locked=0; //Will our new channel be locked to public submissions?
+	var/hitstaken = 0   //Death at 3 hits from an item with force>=15
 	var/datum/feed_channel/viewing_channel = null
 	luminosity = 0
-	anchored = 1
+	anchored = TRUE
 
 
-/obj/structure/machinery/newscaster/security_unit                   //Security unit
+/obj/structure/machinery/newscaster/security_unit    //Security unit
 	name = "Security Newscaster"
 	securityCaster = 1
 
-/obj/structure/machinery/newscaster/security_unit/New()         //Constructor, ho~
+/obj/structure/machinery/newscaster/security_unit/New()  //Constructor, ho~
 	allCasters += src
-	src.paper_remaining = 15            // Will probably change this to something better
+	src.paper_remaining = 15 // Will probably change this to something better
 	for(var/obj/structure/machinery/newscaster/NEWSCASTER in allCasters) // Let's give it an appropriate unit number
 		src.unit_no++
 	src.update_icon() //for any custom ones on the map...
-	..()                                //I just realised the newscasters weren't in the global machines list. The superconstructor call will tend to that
+	..() //I just realised the newscasters weren't in the global machines list. The superconstructor call will tend to that
 
 /obj/structure/machinery/newscaster/security_unit/Destroy()
 	allCasters -= src
@@ -172,7 +172,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 /obj/structure/machinery/newscaster/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/structure/machinery/newscaster/attack_hand(mob/user as mob)            //########### THE MAIN BEEF IS HERE! And in the proc below this...############
+/obj/structure/machinery/newscaster/attack_hand(mob/user as mob) //########### THE MAIN BEEF IS HERE! And in the proc below this...############
 	if(!src.ispowered || src.isbroken)
 		return
 	if(istype(user, /mob/living/carbon/human) || istype(user,/mob/living/silicon) )
@@ -255,10 +255,10 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 				dat+="<BR><A href='?src=\ref[src];setScreen=[3]'>Return</A><BR>"
 			if(7)
 				dat+="<B><FONT COLOR='maroon'>ERROR: Could not submit Feed Channel to Network.</B></FONT><HR><BR>"
-				//var/list/existing_channels = list()            //Let's get dem existing channels - OBSOLETE
+				//var/list/existing_channels = list() //Let's get dem existing channels - OBSOLETE
 				var/list/existing_authors = list()
 				for(var/datum/feed_channel/FC in news_network.network_channels)
-					//existing_channels += FC.channel_name       //OBSOLETE
+					//existing_channels += FC.channel_name    //OBSOLETE
 					if(FC.author == "\[REDACTED\]")
 						existing_authors += FC.backup_author
 					else
@@ -283,7 +283,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 				var/message_num=0
 				for(var/datum/feed_channel/FC in news_network.network_channels)
 					if(!FC.censored)
-						message_num += length(FC.messages)    //Dont forget, datum/feed_channel's var messages is a list of datum/feed_message
+						message_num += length(FC.messages) //Dont forget, datum/feed_channel's var messages is a list of datum/feed_message
 					else
 						active_num--
 				dat+="Network currently serves a total of [total_num] Feed channels, [active_num] of which are active, and a total of [message_num] Feed Stories." //TODO: CONTINUE
@@ -470,7 +470,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 					newChannel.channel_name = src.channel_name
 					newChannel.author = src.scanned_user
 					newChannel.locked = c_locked
-					news_network.network_channels += newChannel                        //Adding channel to the global network
+					news_network.network_channels += newChannel //Adding channel to the global network
 					src.screen=5
 			src.updateUsrDialog()
 			//src.update_icon()
@@ -505,7 +505,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 					newMsg.img = photo.img
 				for(var/datum/feed_channel/FC in news_network.network_channels)
 					if(FC.channel_name == src.channel_name)
-						FC.messages += newMsg                  //Adding message to the network's appropriate feed_channel
+						FC.messages += newMsg   //Adding message to the network's appropriate feed_channel
 						break
 				src.screen=4
 				for(var/obj/structure/machinery/newscaster/NEWSCASTER in allCasters)
@@ -570,7 +570,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 			else
 				var/choice = alert("Please confirm Wanted Issue [(input_param==1) ? ("creation.") : ("edit.")]","Network Security Handler","Confirm","Cancel")
 				if(choice=="Confirm")
-					if(input_param==1)          //If input_param == 1 we're submitting a new wanted issue. At 2 we're just editing an existing one. See the else below
+					if(input_param==1)   //If input_param == 1 we're submitting a new wanted issue. At 2 we're just editing an existing one. See the else below
 						var/datum/feed_message/WANTED = new /datum/feed_message
 						WANTED.author = src.channel_name
 						WANTED.body = src.msg
@@ -700,23 +700,23 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 	if (src.isbroken)
 		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
 		for (var/mob/O in hearers(5, src.loc))
-			O.show_message("<EM>[user.name]</EM> further abuses the shattered [src.name].")
+			O.show_message("<EM>[user.name]</EM> further abuses the shattered [src.name].", SHOW_MESSAGE_VISIBLE)
 	else
 		if(!(I.flags_item & NOBLUDGEON) && I.force)
 			if(I.force <15)
 				for (var/mob/O in hearers(5, src.loc))
-					O.show_message("[user.name] hits the [src.name] with the [I.name] with no visible effect." )
+					O.show_message("[user.name] hits the [src.name] with the [I.name] with no visible effect.", SHOW_MESSAGE_VISIBLE)
 					playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 			else
 				src.hitstaken++
 				if(src.hitstaken==3)
 					for (var/mob/O in hearers(5, src.loc))
-						O.show_message("[user.name] smashes the [src.name]!" )
+						O.show_message("[user.name] smashes the [src.name]!", SHOW_MESSAGE_VISIBLE)
 					src.isbroken=1
 					playsound(src.loc, 'sound/effects/Glassbr3.ogg', 50, 1)
 				else
 					for (var/mob/O in hearers(5, src.loc))
-						O.show_message("[user.name] forcefully slams the [src.name] with the [I.name]!" )
+						O.show_message("[user.name] forcefully slams the [src.name] with the [I.name]!", SHOW_MESSAGE_VISIBLE)
 					playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 		else
 			to_chat(user, "<FONT COLOR='blue'>This does nothing.</FONT>")
@@ -755,7 +755,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 	desc = "An issue of The Griffon, the newspaper circulating aboard Weyland-Yutani Space Stations."
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "newspaper"
-	w_class = SIZE_TINY	//Let's make it fit in trashbags!
+	w_class = SIZE_TINY //Let's make it fit in trashbags!
 	attack_verb = list("bapped")
 	var/screen = 0
 	var/pages = 0
@@ -765,7 +765,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 	var/scribble=""
 	var/scribble_page = null
 
-obj/item/newspaper/attack_self(mob/user as mob)
+/obj/item/newspaper/attack_self(mob/user as mob)
 	..()
 	if(!ishuman(user))
 		to_chat(user, "The paper is full of intelligible symbols!")
@@ -847,7 +847,7 @@ obj/item/newspaper/attack_self(mob/user as mob)
 	onclose(human_user, "newspaper_main")
 
 
-obj/item/newspaper/Topic(href, href_list)
+/obj/item/newspaper/Topic(href, href_list)
 	var/mob/living/U = usr
 	..()
 	if ((src in U.contents) || ( istype(loc, /turf) && in_range(src, U) ))
@@ -879,8 +879,8 @@ obj/item/newspaper/Topic(href, href_list)
 			src.attack_self(src.loc)
 
 
-obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/pen))
+/obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
+	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		if(src.scribble_page == src.curr_page)
 			to_chat(user, "<FONT COLOR='blue'>There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?</FONT>")
 		else
@@ -900,9 +900,9 @@ obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
 
 
 /obj/structure/machinery/newscaster/proc/scan_user(mob/living/user as mob)
-	if(istype(user,/mob/living/carbon/human))                       //User is a human
+	if(istype(user,/mob/living/carbon/human))    //User is a human
 		var/mob/living/carbon/human/human_user = user
-		if(human_user.wear_id)                                      //Newscaster scans you
+		if(human_user.wear_id)   //Newscaster scans you
 			if(istype(human_user.wear_id, /obj/item/card/id) )
 				var/obj/item/card/id/ID = human_user.wear_id
 				src.scanned_user ="[ID.registered_name] ([ID.assignment])"
@@ -926,14 +926,14 @@ obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
 	return
 
 //Removed for now so these aren't even checked every tick. Left this here in-case Agouri needs it later.
-///obj/structure/machinery/newscaster/process()       //Was thinking of doing the icon update through process, but multiple iterations per second does not
-//	return                                  //bode well with a newscaster network of 10+ machines. Let's just return it, as it's added in the machines list.
+///obj/structure/machinery/newscaster/process()    //Was thinking of doing the icon update through process, but multiple iterations per second does not
+// return   //bode well with a newscaster network of 10+ machines. Let's just return it, as it's added in the machines list.
 
 /obj/structure/machinery/newscaster/proc/newsAlert(channel)   //This isn't Agouri's work, for it is ugly and vile.
-	var/turf/T = get_turf(src)                      //Who the fuck uses spawn(600) anyway, jesus christ
+	var/turf/T = get_turf(src)   //Who the fuck uses spawn(600) anyway, jesus christ
 	if(channel)
 		for(var/mob/O in hearers(world_view_size-1, T))
-			O.show_message("<span class='newscaster'><EM>[src.name]</EM> beeps, \"Breaking news from [channel]!\"</span>",2)
+			O.show_message(SPAN_NEWSCASTER("<EM>[src.name]</EM> beeps, \"Breaking news from [channel]!\""), SHOW_MESSAGE_AUDIBLE)
 		src.alert = 1
 		src.update_icon()
 		spawn(30 SECONDS)
@@ -942,6 +942,6 @@ obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
 		playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)
 	else
 		for(var/mob/O in hearers(world_view_size-1, T))
-			O.show_message("<span class='newscaster'><EM>[src.name]</EM> beeps, \"Attention! Wanted issue distributed!\"</span>",2)
+			O.show_message(SPAN_NEWSCASTER("<EM>[src.name]</EM> beeps, \"Attention! Wanted issue distributed!\""), SHOW_MESSAGE_AUDIBLE)
 		playsound(src.loc, 'sound/machines/warning-buzzer.ogg', 25, 1)
 	return

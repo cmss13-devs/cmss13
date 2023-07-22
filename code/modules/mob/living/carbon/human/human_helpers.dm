@@ -9,7 +9,7 @@
 		g = "f"
 	return g
 
-/proc/get_limb_icon_name(var/datum/species/S, var/body_type, var/gender, var/limb_name, var/ethnicity)
+/proc/get_limb_icon_name(datum/species/S, body_type, gender, limb_name, ethnicity)
 	if(S.uses_ethnicity)
 		switch(limb_name)
 			if ("torso")
@@ -163,10 +163,14 @@
 	else
 		b_icon = B.icon_name
 
+	if(isspeciesyautja(src))
+		e_icon = src.ethnicity
+		b_icon = src.body_type
+
 	for(var/obj/limb/L in limbs)
 		L.icon_name = get_limb_icon_name(species, b_icon, gender, L.display_name, e_icon)
 
-/mob/living/carbon/human/can_inject(var/mob/user, var/error_msg, var/target_zone)
+/mob/living/carbon/human/can_inject(mob/user, error_msg, target_zone)
 	if(species?.flags & IS_SYNTHETIC)
 		if(user && error_msg)
 			to_chat(user, SPAN_WARNING("[src] has no flesh to inject."))
@@ -202,7 +206,7 @@
 	return FALSE
 
 
-/mob/living/carbon/human/is_mob_restrained(var/check_grab = 1)
+/mob/living/carbon/human/is_mob_restrained(check_grab = 1)
 	if(check_grab && pulledby && pulledby.grab_level >= GRAB_AGGRESSIVE)
 		return 1
 	if (handcuffed)
@@ -238,6 +242,10 @@
 			return
 	var/list/cont = contents_recursive()
 	for(var/i in cont)
+		if(istype(i, /obj/item/device/assembly/prox_sensor))
+			var/obj/item/device/assembly/prox_sensor/prox = i
+			if(prox.scanning)
+				prox.toggle_scan()
 		if(istype(i, /obj/item/device/motiondetector))
 			var/obj/item/device/motiondetector/md = i
 			md.toggle_active(src, old_active = TRUE, forced = TRUE)
@@ -255,7 +263,7 @@
 	for(var/obj/item/device/radio/headset/h in cont)
 		h.on = FALSE
 
-/mob/living/carbon/human/proc/disable_lights(var/armor = 1, var/guns = 1, var/flares = 1, var/misc = 1)
+/mob/living/carbon/human/proc/disable_lights(armor = 1, guns = 1, flares = 1, misc = 1)
 	var/light_off = 0
 	var/goes_out = 0
 	if(armor)
@@ -267,6 +275,9 @@
 			for(var/obj/item/attachable/flashlight/FL in H.pockets)
 				if(FL.activate_attachment(H, src, TRUE))
 					light_off++
+		for(var/obj/item/clothing/head/hardhat/headlamp in contents)
+			if(headlamp.turn_off_light(src))
+				light_off++
 	if(guns)
 		for(var/obj/item/weapon/gun/G in contents)
 			if(G.turn_off_light(src))
@@ -305,7 +316,7 @@
 
 /mob/living/carbon/human/a_intent_change(intent as num)
 	. = ..()
-	if(HAS_TRAIT(src, TRAIT_INTENT_EYES) && (src.stat != DEAD)) //1st gen synths change eye colour based on intent. But not when they're dead.
+	if(HAS_TRAIT(src, TRAIT_INTENT_EYES) && (src.stat != DEAD)) //1st gen synths change eye color based on intent. But not when they're dead.
 		switch(a_intent)
 			if(INTENT_HELP) //Green, defalt
 				r_eyes = 0
@@ -403,7 +414,7 @@
 /mob/living/carbon/human/proc/has_item_in_ears(item)
 	return (item == wear_l_ear) || (item == wear_r_ear)
 
-/mob/living/carbon/human/can_be_pulled_by(var/mob/M)
+/mob/living/carbon/human/can_be_pulled_by(mob/M)
 	var/ignores_stripdrag_flag = FALSE
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -436,18 +447,27 @@
 /mob/living/carbon/human/proc/show_hud_tracker()
 	if(hud_used && !hud_used.locate_leader.alpha)
 		hud_used.locate_leader.alpha = 255
-		hud_used.locate_leader.mouse_opacity = 1
+		hud_used.locate_leader.mouse_opacity = MOUSE_OPACITY_ICON
 
 /mob/living/carbon/human/proc/hide_hud_tracker()
 	if(hud_used && hud_used.locate_leader.alpha)
 		hud_used.locate_leader.alpha = 0
-		hud_used.locate_leader.mouse_opacity = 0
+		hud_used.locate_leader.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/mob/living/carbon/human/handle_blood_splatter(var/splatter_dir)
+/mob/living/carbon/human/handle_blood_splatter(splatter_dir)
 	species.handle_blood_splatter(src, splatter_dir)
 
-/mob/living/carbon/human/alter_ghost(var/mob/dead/observer/ghost)
+/mob/living/carbon/human/alter_ghost(mob/dead/observer/ghost)
 	ghost.vis_contents = vis_contents
 
 /mob/living/carbon/human/get_orbit_size()
 	return langchat_height
+
+/mob/living/carbon/human/proc/update_minimap_icon()
+	var/obj/item/device/radio/headset/headset
+	if(istype(wear_l_ear, /obj/item/device/radio/headset))
+		headset = wear_l_ear
+	else if(istype(wear_r_ear, /obj/item/device/radio/headset))
+		headset = wear_r_ear
+	if(headset)
+		headset.update_minimap_icon()

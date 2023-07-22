@@ -30,7 +30,7 @@ var/cmp_field = "name"
 	return sorttext(a.ckey, b.ckey)
 
 /proc/cmp_subsystem_init(datum/controller/subsystem/a, datum/controller/subsystem/b)
-	return initial(b.init_order) - initial(a.init_order)	//uses initial() so it can be used on types
+	return initial(b.init_order) - initial(a.init_order) //uses initial() so it can be used on types
 
 /proc/cmp_subsystem_display(datum/controller/subsystem/a, datum/controller/subsystem/b)
 	return sorttext(b.name, a.name)
@@ -54,3 +54,15 @@ var/cmp_field = "name"
 		. = B.qdels - A.qdels
 
 var/atom/cmp_dist_origin=null
+
+/proc/cmp_typepaths_asc(A, B)
+	return sorttext("[B]","[A]")
+
+/// Compares mobs based on their timeofdeath value in ascending order
+/proc/cmp_mob_deathtime_asc(mob/A, mob/B)
+	return A.timeofdeath - B.timeofdeath
+
+/// Compares observers based on their larva_queue_time value in ascending order
+/// Assumes the client on the observer is not null
+/proc/cmp_obs_larvaqueuetime_asc(mob/dead/observer/A, mob/dead/observer/B)
+	return A.client.player_details.larva_queue_time - B.client.player_details.larva_queue_time

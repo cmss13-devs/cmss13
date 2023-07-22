@@ -8,7 +8,7 @@
 
 // creates a new object and deletes itself
 /obj/effect/spawner/random/Initialize()
-	..()
+	. = ..()
 
 	if(!prob(spawn_nothing_percentage))
 		if(spawn_on_roundstart)
@@ -31,6 +31,8 @@
 // creates the random item
 /obj/effect/spawner/random/proc/spawn_item()
 	var/build_path = item_to_spawn()
+	if(!ispath(build_path))
+		return
 	return (new build_path(src.loc))
 
 
@@ -38,13 +40,14 @@
 	name = "Random Tool"
 	desc = "This is a random tool"
 	icon_state = "random_tool"
-	item_to_spawn()
-		return pick(/obj/item/tool/screwdriver,\
-					/obj/item/tool/wirecutters,\
-					/obj/item/tool/weldingtool,\
-					/obj/item/tool/crowbar,\
-					/obj/item/tool/wrench,\
-					/obj/item/device/flashlight)
+
+/obj/effect/spawner/random/tool/item_to_spawn()
+	return pick(/obj/item/tool/screwdriver,\
+				/obj/item/tool/wirecutters,\
+				/obj/item/tool/weldingtool,\
+				/obj/item/tool/crowbar,\
+				/obj/item/tool/wrench,\
+				/obj/item/device/flashlight)
 
 
 /obj/effect/spawner/random/technology_scanner
@@ -52,22 +55,24 @@
 	desc = "This is a random technology scanner."
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "atmos"
-	item_to_spawn()
-		return pick(prob(5);/obj/item/device/t_scanner,\
-					prob(2);/obj/item/device/radio,\
-					prob(5);/obj/item/device/analyzer)
+
+/obj/effect/spawner/random/technology_scanner/item_to_spawn()
+	return pick(prob(5);/obj/item/device/t_scanner,\
+				prob(2);/obj/item/device/radio,\
+				prob(5);/obj/item/device/analyzer)
 
 
 /obj/effect/spawner/random/powercell
 	name = "Random Powercell"
 	desc = "This is a random powercell."
 	icon_state = "random_cell_battery"
-	item_to_spawn()
-		return pick(prob(10);/obj/item/cell/crap,\
-					prob(40);/obj/item/cell,\
-					prob(40);/obj/item/cell/high,\
-					prob(9);/obj/item/cell/super,\
-					prob(1);/obj/item/cell/hyper)
+
+/obj/effect/spawner/random/powercell/item_to_spawn()
+	return pick(prob(10);/obj/item/cell/crap,\
+				prob(40);/obj/item/cell,\
+				prob(40);/obj/item/cell/high,\
+				prob(9);/obj/item/cell/super,\
+				prob(1);/obj/item/cell/hyper)
 
 
 /obj/effect/spawner/random/bomb_supply
@@ -75,22 +80,24 @@
 	desc = "This is a random bomb supply."
 	icon = 'icons/obj/items/new_assemblies.dmi'
 	icon_state = "signaller"
-	item_to_spawn()
-		return pick(/obj/item/device/assembly/igniter,\
-					/obj/item/device/assembly/prox_sensor,\
-					/obj/item/device/assembly/signaller,\
-					/obj/item/device/multitool)
+
+/obj/effect/spawner/random/bomb_supply/item_to_spawn()
+	return pick(/obj/item/device/assembly/igniter,\
+				/obj/item/device/assembly/prox_sensor,\
+				/obj/item/device/assembly/signaller,\
+				/obj/item/device/multitool)
 
 
 /obj/effect/spawner/random/toolbox
 	name = "Random Toolbox"
 	desc = "This is a random toolbox."
 	icon_state = "random_toolbox"
-	item_to_spawn()
-		return pick(prob(3);/obj/item/storage/toolbox/mechanical,\
-					prob(2);/obj/item/storage/toolbox/electrical,\
-					prob(2);/obj/item/storage/toolbox/mechanical/green,\
-					prob(1);/obj/item/storage/toolbox/emergency)
+
+/obj/effect/spawner/random/toolbox/item_to_spawn()
+	return pick(prob(3);/obj/item/storage/toolbox/mechanical,\
+				prob(2);/obj/item/storage/toolbox/electrical,\
+				prob(2);/obj/item/storage/toolbox/mechanical/green,\
+				prob(1);/obj/item/storage/toolbox/emergency)
 
 
 /obj/effect/spawner/random/tech_supply
@@ -99,100 +106,147 @@
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "cell"
 	spawn_nothing_percentage = 50
-	item_to_spawn()
-		return pick(prob(3);/obj/effect/spawner/random/powercell,\
-					prob(2);/obj/effect/spawner/random/technology_scanner,\
-					prob(1);/obj/item/packageWrap,\
-					prob(2);/obj/effect/spawner/random/bomb_supply,\
-					prob(1);/obj/item/tool/extinguisher,\
-					prob(1);/obj/item/clothing/gloves/fyellow,\
-					prob(3);/obj/item/stack/cable_coil,\
-					prob(2);/obj/effect/spawner/random/toolbox,\
-					prob(2);/obj/item/storage/belt/utility,\
-					prob(5);/obj/effect/spawner/random/tool)
+
+/obj/effect/spawner/random/tech_supply/item_to_spawn()
+	return pick(prob(3);/obj/effect/spawner/random/powercell,\
+				prob(2);/obj/effect/spawner/random/technology_scanner,\
+				prob(1);/obj/item/packageWrap,\
+				prob(2);/obj/effect/spawner/random/bomb_supply,\
+				prob(1);/obj/item/tool/extinguisher,\
+				prob(1);/obj/item/clothing/gloves/fyellow,\
+				prob(3);/obj/item/stack/cable_coil,\
+				prob(2);/obj/effect/spawner/random/toolbox,\
+				prob(2);/obj/item/storage/belt/utility,\
+				prob(5);/obj/effect/spawner/random/tool)
 
 
 /obj/effect/spawner/random/attachment
 	name = "Random Attachment"
 	desc = "This is a random attachment"
 	icon_state = "random_attachment"
-	item_to_spawn()
-		return pick(prob(3);/obj/item/attachable/flashlight,\
-					prob(3);/obj/item/attachable/reddot,\
-					prob(3);/obj/item/attachable/extended_barrel,\
-					prob(3);/obj/item/attachable/magnetic_harness,\
-					prob(2);/obj/item/attachable/flashlight/grip,\
-					prob(2);/obj/item/attachable/suppressor,\
-					prob(2);/obj/item/attachable/burstfire_assembly,\
-					prob(2);/obj/item/attachable/compensator,\
-					prob(1);/obj/item/attachable/scope/mini_iff,\
-					prob(1);/obj/item/attachable/heavy_barrel,\
-					prob(1);/obj/item/attachable/scope/mini)
 
+/obj/effect/spawner/random/attachment/item_to_spawn()
+	return pick(prob(3);/obj/item/attachable/flashlight,\
+				prob(3);/obj/item/attachable/reddot,\
+				prob(3);/obj/item/attachable/extended_barrel,\
+				prob(3);/obj/item/attachable/magnetic_harness,\
+				prob(2);/obj/item/attachable/flashlight/grip,\
+				prob(2);/obj/item/attachable/suppressor,\
+				prob(2);/obj/item/attachable/burstfire_assembly,\
+				prob(2);/obj/item/attachable/compensator,\
+				prob(1);/obj/item/attachable/scope/mini_iff,\
+				prob(1);/obj/item/attachable/heavy_barrel,\
+				prob(1);/obj/item/attachable/scope/mini)
+
+/obj/effect/spawner/random/balaclavas
+	name = "Random Balaclava"
+	desc = "This is a randomly chosen balaclava."
+	icon_state = "loot_goggles"
+	spawn_nothing_percentage = 50
+
+/obj/effect/spawner/random/balaclavas/item_to_spawn()
+	return pick(prob(100);/obj/item/clothing/mask/balaclava,\
+				prob(50);/obj/item/clothing/mask/balaclava/tactical,\
+				prob(25);/obj/item/clothing/mask/rebreather/scarf/green,\
+				prob(25);/obj/item/clothing/mask/rebreather/scarf/gray,\
+				prob(25);/obj/item/clothing/mask/rebreather/scarf/tan,\
+				prob(10);/obj/item/clothing/mask/rebreather/skull,\
+				prob(10);/obj/item/clothing/mask/rebreather/skull/black)
+
+///If anyone wants to make custom sprites for this and the bala random spawner, be my guest.
+/obj/effect/spawner/random/facepaint
+	name = "Random Facepaint"
+	desc = "This is a randomly chosen facepaint."
+	icon_state = "loot_goggles"
+	spawn_nothing_percentage = 50
+
+/obj/effect/spawner/random/facepaint/item_to_spawn()
+	return pick(prob(100);/obj/item/facepaint/black,\
+				prob(50);/obj/item/facepaint/green,\
+				prob(25);/obj/item/facepaint/brown,\
+				prob(25);/obj/item/facepaint/sunscreen_stick,\
+				prob(10);/obj/item/facepaint/sniper,\
+				prob(10);/obj/item/facepaint/skull)
 
 /obj/effect/spawner/random/supply_kit
 	name = "Random Supply Kit"
 	desc = "This is a random kit."
 	icon_state = "random_kit"
-	item_to_spawn()
-		return pick(prob(3);/obj/item/storage/box/kit/pursuit,\
-					prob(3);/obj/item/storage/box/kit/mini_intel,\
-					prob(3);/obj/item/storage/box/kit/mini_jtac,\
-					prob(2);/obj/item/storage/box/kit/mou53_sapper,\
-					prob(1);/obj/item/storage/box/kit/heavy_support)
+
+/obj/effect/spawner/random/supply_kit/item_to_spawn()
+	return pick(prob(3);/obj/item/storage/box/kit/pursuit,\
+				prob(3);/obj/item/storage/box/kit/self_defense,\
+				prob(3);/obj/item/storage/box/kit/mini_medic,\
+				prob(2);/obj/item/storage/box/kit/mou53_sapper,\
+				prob(1);/obj/item/storage/box/kit/heavy_support)
+
+/obj/effect/spawner/random/supply_kit/market/item_to_spawn()
+	return pick(prob(3);/obj/item/storage/box/kit/pursuit,\
+				prob(3);/obj/item/storage/box/kit/mini_intel,\
+				prob(3);/obj/item/storage/box/kit/mini_jtac,\
+				prob(2);/obj/item/storage/box/kit/mou53_sapper,\
+				prob(1);/obj/item/storage/box/kit/heavy_support)
 
 /obj/effect/spawner/random/toy
 	name = "Random Toy"
 	desc = "This is a random toy."
 	icon_state = "ipool"
-	item_to_spawn()
-		return pick(/obj/item/storage/wallet,\
-					/obj/item/storage/photo_album,\
-					/obj/item/storage/box/snappops,\
-					/obj/item/storage/fancy/crayons,\
-					/obj/item/storage/belt/champion,\
-					/obj/item/tool/soap/deluxe,\
-					/obj/item/tool/pickaxe/silver,\
-					/obj/item/tool/pen/invisible,\
-					/obj/item/explosive/grenade/smokebomb,\
-					/obj/item/corncob,\
-					/obj/item/poster,\
-					/obj/item/toy/bikehorn,\
-					/obj/item/toy/beach_ball,\
-					/obj/item/weapon/melee/banhammer,\
-					/obj/item/toy/balloon,\
-					/obj/item/toy/blink,\
-					/obj/item/toy/crossbow,\
-					/obj/item/toy/gun,\
-					/obj/item/toy/katana,\
-					/obj/item/toy/prize/deathripley,\
-					/obj/item/toy/prize/durand,\
-					/obj/item/toy/prize/fireripley,\
-					/obj/item/toy/prize/gygax,\
-					/obj/item/toy/prize/honk,\
-					/obj/item/toy/prize/marauder,\
-					/obj/item/toy/prize/mauler,\
-					/obj/item/toy/prize/odysseus,\
-					/obj/item/toy/prize/phazon,\
-					/obj/item/toy/prize/ripley,\
-					/obj/item/toy/prize/seraph,\
-					/obj/item/toy/spinningtoy,\
-					/obj/item/toy/sword,\
-					/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,\
-					/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,\
-					/obj/item/clothing/accessory/horrible)
+
+/obj/effect/spawner/random/toy/item_to_spawn()
+	return pick(/obj/item/storage/wallet,\
+				/obj/item/storage/photo_album,\
+				/obj/item/storage/box/snappops,\
+				/obj/item/storage/fancy/crayons,\
+				/obj/item/storage/belt/champion,\
+				/obj/item/tool/soap/deluxe,\
+				/obj/item/tool/pickaxe/silver,\
+				/obj/item/tool/pen/invisible,\
+				/obj/item/explosive/grenade/smokebomb,\
+				/obj/item/corncob,\
+				/obj/item/poster,\
+				/obj/item/toy/bikehorn,\
+				/obj/item/toy/beach_ball,\
+				/obj/item/weapon/banhammer,\
+				/obj/item/toy/balloon,\
+				/obj/item/toy/blink,\
+				/obj/item/toy/crossbow,\
+				/obj/item/toy/gun,\
+				/obj/item/toy/katana,\
+				/obj/item/toy/prize/deathripley,\
+				/obj/item/toy/prize/durand,\
+				/obj/item/toy/prize/fireripley,\
+				/obj/item/toy/prize/gygax,\
+				/obj/item/toy/prize/honk,\
+				/obj/item/toy/prize/marauder,\
+				/obj/item/toy/prize/mauler,\
+				/obj/item/toy/prize/odysseus,\
+				/obj/item/toy/prize/phazon,\
+				/obj/item/toy/prize/ripley,\
+				/obj/item/toy/prize/seraph,\
+				/obj/item/toy/spinningtoy,\
+				/obj/item/toy/sword,\
+				/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,\
+				/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,\
+				/obj/item/clothing/accessory/horrible,\
+				/obj/item/clothing/shoes/slippers,\
+				/obj/item/clothing/shoes/slippers_worn,\
+				/obj/item/clothing/head/collectable/tophat/super)
 
 /obj/effect/spawner/random/pills
 	name = "Pill Bottle Loot Spawner" // 60% chance for strong loot
 	desc = "This is a random pill bottle, for survivors. Remember to set spawn nothing percentage chance in instancing"
 	icon_state = "loot_pills"
-	item_to_spawn()
-		return pick(prob(4);/obj/item/storage/pill_bottle/ultrazine/skillless,\
-					prob(4);/obj/item/storage/pill_bottle/mystery/skillless,\
-					prob(4);/obj/item/storage/pill_bottle/stimulant/skillless,\
-					prob(3);/obj/item/storage/pill_bottle/alkysine/skillless,\
-					prob(3);/obj/item/storage/pill_bottle/imidazoline/skillless,\
-					prob(2);/obj/item/storage/pill_bottle/packet/oxycodone)
+
+/obj/effect/spawner/random/pills/item_to_spawn()
+	return pick(prob(4);/obj/item/storage/pill_bottle/inaprovaline/skillless,\
+				prob(4);/obj/item/storage/pill_bottle/mystery/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/alkysine/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/imidazoline/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/tramadol/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/bicaridine/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/kelotane/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/peridaxon/skillless,\
+				prob(2);/obj/item/storage/pill_bottle/packet/oxycodone)
 
 /obj/effect/spawner/random/pills/lowchance
 	spawn_nothing_percentage = 80
@@ -210,17 +264,18 @@
 	name = "Goggles Loot Spawner"
 	desc = "This is a random set of goggles, for survivors. Remember to set spawn nothing percentage chance in instancing"
 	icon_state = "loot_goggles"
-	item_to_spawn()
-		return pick(prob(4);/obj/item/clothing/glasses/thermal/syndi/bug_b_gone,\
-					prob(4);/obj/item/clothing/glasses/thermal/syndi,\
-					prob(4);/obj/item/clothing/glasses/thermal/monocle,\
-					prob(4);/obj/item/clothing/glasses/thermal/eyepatch,\
-					prob(4);/obj/item/clothing/glasses/welding/superior,\
-					prob(4);/obj/item/clothing/glasses/hud/security/jensenshades,\
-					prob(4);/obj/item/clothing/glasses/meson/refurbished,\
-					prob(4);/obj/item/clothing/glasses/science,\
-					prob(4);/obj/item/clothing/glasses/hud/sensor,\
-					prob(4);/obj/item/clothing/glasses/sunglasses/sechud/eyepiece)
+
+/obj/effect/spawner/random/goggles/item_to_spawn()
+	return pick(prob(4);/obj/item/clothing/glasses/thermal/syndi/bug_b_gone,\
+				prob(4);/obj/item/clothing/glasses/thermal/syndi,\
+				prob(4);/obj/item/clothing/glasses/thermal/monocle,\
+				prob(4);/obj/item/clothing/glasses/thermal/eyepatch,\
+				prob(4);/obj/item/clothing/glasses/welding/superior,\
+				prob(4);/obj/item/clothing/glasses/hud/security/jensenshades,\
+				prob(4);/obj/item/clothing/glasses/meson/refurbished,\
+				prob(4);/obj/item/clothing/glasses/science,\
+				prob(4);/obj/item/clothing/glasses/hud/sensor,\
+				prob(4);/obj/item/clothing/glasses/sunglasses/sechud/eyepiece)
 
 /obj/effect/spawner/random/goggles/lowchance
 	spawn_nothing_percentage = 80
@@ -238,12 +293,12 @@
 	name = "sentry Loot Spawner"
 	desc = "This is a random sentry, for survivors. Remember to set spawn nothing percentage chance in instancing"
 	icon_state = "loot_sentry"
-	item_to_spawn()
-		return pick(/obj/item/defenses/handheld/tesla_coil,\
-					/obj/item/defenses/handheld/planted_flag,\
-					/obj/item/defenses/handheld/bell_tower,\
-					/obj/item/defenses/handheld/sentry,\
-					/obj/item/defenses/handheld/sentry/flamer)
+
+/obj/effect/spawner/random/sentry/item_to_spawn()
+	return pick(/obj/item/defenses/handheld/tesla_coil,\
+				/obj/item/defenses/handheld/planted_flag,\
+				/obj/item/defenses/handheld/sentry,\
+				/obj/item/defenses/handheld/sentry/flamer)
 
 /obj/effect/spawner/random/sentry/lowchance
 	spawn_nothing_percentage = 80
@@ -292,7 +347,7 @@
 		ammopath = guns[gunpath]
 	spawn_weapon_on_floor(gunpath, ammopath, rand(mags_min, mags_max))
 
-/obj/effect/spawner/random/gun/proc/spawn_weapon_on_floor(var/gunpath, var/ammopath, var/ammo_amount = 1)
+/obj/effect/spawner/random/gun/proc/spawn_weapon_on_floor(gunpath, ammopath, ammo_amount = 1)
 
 	var/atom/spawnloc = src
 	spawnloc = get_turf(spawnloc)
@@ -365,9 +420,9 @@
 	desc = "spawns a surv rifle and some ammo"
 	icon_state = "loot_rifle"
 	guns = list(
-		/obj/item/weapon/gun/boltaction/colony = /obj/item/ammo_magazine/rifle/boltaction/colony,
-		/obj/item/weapon/gun/boltaction/colony = /obj/item/ammo_magazine/rifle/boltaction/colony,
-		/obj/item/weapon/gun/boltaction/colony = /obj/item/ammo_magazine/rifle/boltaction/colony,
+		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
+		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
+		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
 		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
 		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
 		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
@@ -378,7 +433,7 @@
 		/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
 		/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
 		/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
-		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
+		/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
 		/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped = /obj/item/ammo_magazine/rifle/nsg23
 		)
 
@@ -412,7 +467,6 @@
 		/obj/item/weapon/gun/lever_action/r4t = /obj/item/ammo_magazine/lever_action,
 		/obj/item/weapon/gun/shotgun/merc = null,
 		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717 = null,
-		/obj/item/weapon/gun/shotgun/double = null
 	) //no ammotypes needed as it spawns random 12g boxes. Apart from the r4t. why is the r4t in the shotgun pool? fuck you, that's why.
 
 /obj/effect/spawner/random/gun/shotgun/lowchance
@@ -466,7 +520,6 @@
 	icon_state = "loot_special"
 	guns = list(
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
-		/obj/item/weapon/gun/m60 = /obj/item/ammo_magazine/m60,
 		/obj/item/weapon/gun/shotgun/merc = null,
 		/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable = /obj/item/prop/folded_anti_tank_sadar,
 		/obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle,
@@ -495,9 +548,10 @@
 	name = "Random Claymore"
 	desc = "This is a random deployed and active claymore."
 	icon_state = "claymore"
-	item_to_spawn()
-		return pick(/obj/item/explosive/mine/active/no_iff,\
-					/obj/item/explosive/mine/pmc/active)
+
+/obj/effect/spawner/random/claymore/item_to_spawn()
+	return pick(/obj/item/explosive/mine/active/no_iff,\
+				/obj/item/explosive/mine/pmc/active)
 
 /obj/effect/spawner/random/claymore/spawn_item()
 	var/build_path = item_to_spawn()

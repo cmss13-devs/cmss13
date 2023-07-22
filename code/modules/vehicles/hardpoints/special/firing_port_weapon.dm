@@ -36,14 +36,21 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
 
-/obj/item/hardpoint/special/firing_port_weapon/get_hardpoint_info()
-	var/dat = "<hr>"
-	dat += "[name]<br>"
-	if(ammo)
-		dat += "Ammo: [ammo ? (ammo.current_rounds ? ammo.current_rounds : "<font color=\"red\">0</font>") : "<font color=\"red\">0</font>"]/[ammo ? ammo.max_rounds : "<font color=\"red\">0</font>"]"
-	return dat
 
-/obj/item/hardpoint/special/firing_port_weapon/can_activate(var/mob/user, var/atom/A)
+//for le tgui
+/obj/item/hardpoint/special/firing_port_weapon/get_tgui_info()
+	var/list/data = list()
+
+	data["name"] = name
+	data["uses_ammo"] = TRUE
+	data["current_rounds"] = ammo.current_rounds
+	data["max_rounds"] = ammo.max_rounds
+	data["fpw"] = TRUE
+
+	return data
+
+
+/obj/item/hardpoint/special/firing_port_weapon/can_activate(mob/user, atom/A)
 	if(!owner)
 		return FALSE
 
@@ -61,7 +68,7 @@
 		return FALSE
 
 	if(world.time < next_use)
-		if(cooldown >= 20)	//filter out guns with high firerate to prevent message spam.
+		if(cooldown >= 20) //filter out guns with high firerate to prevent message spam.
 			to_chat(user, SPAN_WARNING("You need to wait [SPAN_HELPFUL((next_use - world.time) / 10)] seconds before [name] can be used again."))
 		return FALSE
 
@@ -82,10 +89,7 @@
 
 	return TRUE
 
-/obj/item/hardpoint/special/firing_port_weapon/get_examine_text(mob/user, var/integrity_only = FALSE)
-	return list()
-
-/obj/item/hardpoint/special/firing_port_weapon/reload(var/mob/user)
+/obj/item/hardpoint/special/firing_port_weapon/reload(mob/user)
 	if(!ammo)
 		ammo = new /obj/item/ammo_magazine/hardpoint/firing_port_weapon
 	else
@@ -97,7 +101,7 @@
 	if(user && owner.get_mob_seat(user))
 		to_chat(user, SPAN_WARNING("\The [name]'s automated reload is finished. Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b>"))
 
-/obj/item/hardpoint/special/firing_port_weapon/proc/start_auto_reload(var/mob/user)
+/obj/item/hardpoint/special/firing_port_weapon/proc/start_auto_reload(mob/user)
 	if(reloading)
 		to_chat(user, SPAN_WARNING("\The [name] is already being reloaded. Wait [SPAN_HELPFUL("[((reload_time_started + reload_time - world.time) / 10)]")] seconds."))
 		return
@@ -105,15 +109,15 @@
 		to_chat(user, SPAN_WARNING("\The [name] is out of ammunition! Wait [reload_time / 10] seconds for automatic reload to finish."))
 	reloading = TRUE
 	reload_time_started = world.time
-	addtimer(CALLBACK(src, .proc/reload, user), reload_time)
+	addtimer(CALLBACK(src, PROC_REF(reload), user), reload_time)
 
 //try adding magazine to hardpoint's backup clips. Called via weapons loader
-/obj/item/hardpoint/special/firing_port_weapon/try_add_clip(var/obj/item/ammo_magazine/A, var/mob/user)
+/obj/item/hardpoint/special/firing_port_weapon/try_add_clip(obj/item/ammo_magazine/A, mob/user)
 	to_chat(user, SPAN_NOTICE("\The [name] reloads automatically."))
 	return FALSE
 
 
-/obj/item/hardpoint/special/firing_port_weapon/fire(var/mob/user, var/atom/A)
+/obj/item/hardpoint/special/firing_port_weapon/fire(mob/user, atom/A)
 	if(user.get_active_hand())
 		to_chat(user, SPAN_WARNING("You need a free hand to use \the [name]."))
 		return
@@ -133,6 +137,6 @@
 		fire_projectile(user, T)
 		if(ammo.current_rounds <= 0)
 			break
-		if(bullets_fired < burst_amount)	//we need to sleep only if there are more bullets to shoot in the burst
+		if(bullets_fired < burst_amount) //we need to sleep only if there are more bullets to shoot in the burst
 			sleep(3)
 	to_chat(user, SPAN_WARNING("[src] Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b>"))

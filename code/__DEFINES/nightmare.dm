@@ -21,7 +21,7 @@
 #define NIGHTMARE_STATUS_DONE 2
 
 // Nightmare task execution results
-#define NIGHTMARE_TASK_OK     0
+#define NIGHTMARE_TASK_OK  0
 #define NIGHTMARE_TASK_ASYNC  1
 #define NIGHTMARE_TASK_ERROR  2
 

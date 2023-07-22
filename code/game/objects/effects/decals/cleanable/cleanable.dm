@@ -71,7 +71,7 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 
 /obj/effect/decal/cleanable/proc/cleanup_cleanable()
 	cleaned_up = TRUE
-	if(!cleanable_turf?.cleanables[cleanable_type])
+	if(!cleanable_turf?.cleanables || !cleanable_turf?.cleanables[cleanable_type])
 		return
 	clear_overlay()
 	if(!QDELING(cleanable_turf.cleanables[cleanable_type]))

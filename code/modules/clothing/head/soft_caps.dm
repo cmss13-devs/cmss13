@@ -26,7 +26,7 @@
 		else
 			icon_state = "[cap_color]soft"
 			to_chat(usr, "You flip the hat back in normal position.")
-		update_clothing_icon()	//so our mob-overlays update
+		update_clothing_icon() //so our mob-overlays update
 
 /obj/item/clothing/head/soft/red
 	name = "red cap"
@@ -87,6 +87,7 @@
 	desc = "It's a trucker hat. They're becoming collector items since Ferret went under in 2180."
 	icon_state = "ferretsoft"
 	cap_color = "ferret"
+	black_market_value = 25
 
 /obj/item/clothing/head/soft/sec
 	name = "security cap"

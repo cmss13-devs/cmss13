@@ -1,9 +1,14 @@
-/datum/entity/player_entity/proc/show_statistics(mob/user, var/datum/entity/statistic/round/viewing_round = round_statistics, var/update_data = FALSE)
+//*******************************************************
+//*******************STAT PANEL**************************
+//*******************************************************
+
+
+/datum/entity/player_entity/proc/show_statistics(mob/user, datum/entity/statistic/round/viewing_round = round_statistics, update_data = FALSE)
 	if(update_data)
 		update_panel_data(round_statistics)
 	ui_interact(user)
 
-/datum/entity/player_entity/proc/ui_interact(mob/user, ui_key = "statistics", var/datum/nanoui/ui = null, var/force_open = 1)
+/datum/entity/player_entity/proc/ui_interact(mob/user, ui_key = "statistics", datum/nanoui/ui = null, force_open = 1)
 	data["menu"] = menu
 	data["subMenu"] = subMenu
 	data["dataMenu"] = dataMenu
@@ -14,7 +19,6 @@
 		ui = new(user, src, ui_key, "cm_stat_panel.tmpl", "Statistics", 450, 700, null, -1)
 		ui.set_initial_data(data)
 		ui.open()
-		ui.set_auto_update(0)
 
 /datum/entity/player_entity/Topic(href, href_list)
 	var/mob/user = usr
@@ -32,17 +36,30 @@
 /datum/entity/player_entity/proc/check_eye()
 	return
 
+//*******************************************************
+//*******************KILL PANEL**************************
+//*******************************************************
+
+
 /datum/entity/statistic/round/proc/show_kill_feed(mob/user)
-	ui_interact(user)
+	tgui_interact(user)
 
-/datum/entity/statistic/round/proc/ui_interact(mob/user, ui_key = "kills", var/datum/nanoui/ui = null, var/force_open = 1)
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, death_data, force_open)
-
+/datum/entity/statistic/round/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "cm_kill_panel.tmpl", "Kill Feed", 800, 900, null, -1)
-		ui.set_initial_data(death_data)
+		ui = new(user, src, "KillPanel", "Killfeed")
 		ui.open()
-		ui.set_auto_update(1)
+		ui.set_autoupdate(FALSE)
+
+/datum/entity/statistic/round/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/entity/statistic/round/ui_data(mob/user)
+	var/list/data = list()
+
+	data["death_data"] = death_data
+
+	return data
 
 /datum/entity/statistic/round/proc/check_eye()
 	return
@@ -51,7 +68,7 @@
 //*******************PLAYER DATA*************************
 //*******************************************************
 
-/datum/entity/player_entity/proc/update_panel_data(var/datum/entity/statistic/round/viewing_round = round_statistics)
+/datum/entity/player_entity/proc/update_panel_data(datum/entity/statistic/round/viewing_round = round_statistics)
 	data["current_time"] = worldtime2text()
 
 	if(viewing_round)
@@ -724,7 +741,6 @@
 		"total_projectiles_hit_xeno" = total_projectiles_hit_xeno,
 		"total_slashes" = total_slashes,
 		"total_friendly_fire_instances" = total_friendly_fire_instances,
-		"total_friendly_fire_kills" = total_friendly_fire_kills,
 		"total_huggers_applied" = total_huggers_applied,
 		"total_larva_burst" = total_larva_burst,
 		"participants" = participants_list,

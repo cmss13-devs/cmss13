@@ -5,15 +5,15 @@
 	name = "janicart"
 	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "pussywagon"
-	anchored = 0
-	density = 1
+	anchored = FALSE
+	density = TRUE
 	flags_atom = OPENCONTAINER
 	buildstacktype = null //can't be disassembled and doesn't drop anything when destroyed
 	//copypaste sorry
 	picked_up_item = null
 	var/amount_per_transfer_from_this = 5 //shit I dunno, adding this so syringes stop runtime erroring. --NeoFite
-	var/obj/item/storage/bag/trash/mybag	= null
-	var/callme = "pimpin' ride"	//how do people refer to it?
+	var/obj/item/storage/bag/trash/mybag = null
+	var/callme = "pimpin' ride" //how do people refer to it?
 	var/move_delay = 2
 
 /obj/structure/bed/chair/janicart/Initialize()
@@ -103,7 +103,7 @@
 				buckled_mob.pixel_y = 7
 
 
-/obj/structure/bed/chair/janicart/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/bed/chair/janicart/bullet_act(obj/item/projectile/Proj)
 	if(buckled_mob)
 		if(prob(85))
 			return buckled_mob.bullet_act(Proj)

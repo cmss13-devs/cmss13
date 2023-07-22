@@ -21,7 +21,10 @@
 	var/background_icon = "background"
 	var/background_icon_locked = "marine"
 
-/datum/tech/proc/can_unlock(var/mob/M)
+	var/announce_name
+	var/announce_message
+
+/datum/tech/proc/can_unlock(mob/M)
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(!holder.has_access(M, TREE_ACCESS_MODIFY))
@@ -41,7 +44,7 @@
 
 	return TRUE
 
-/datum/tech/proc/check_tier_level(var/mob/M)
+/datum/tech/proc/check_tier_level(mob/M)
 	if(holder.tier.tier < tier.tier)
 		if(M)
 			to_chat(M, SPAN_WARNING("This tier level has not been unlocked yet!"))
@@ -56,17 +59,22 @@
 	return TRUE
 
 /** Called when a tech is unlocked. Usually, benefits can be applied here
-  * however, the purchase can still be cancelled by returning FALSE
-  *
-  * If you sleep in this proc, you must call can_unlock after the sleep ends to make sure you can still purchase the tech in question
+* however, the purchase can still be cancelled by returning FALSE
+*
+* If you sleep in this proc, you must call can_unlock after the sleep ends to make sure you can still purchase the tech in question
 **/
 /datum/tech/proc/on_unlock(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
 
 	unlocked = TRUE
 	to_chat(user, SPAN_HELPFUL("You have purchased the '[name]' tech node."))
+	log_admin("[key_name_admin(user)] has bought '[name]' via tech points.")
 	holder.spend_points(required_points)
 	update_icon(node)
+
+	if(!(tech_flags & TECH_FLAG_NO_ANNOUNCE) && announce_message && announce_name)
+		marine_announcement(announce_message, announce_name, 'sound/misc/notice2.ogg')
+
 	return TRUE
 
 /datum/tech/ui_status(mob/user, datum/ui_state/state)
@@ -113,12 +121,12 @@
 			holder.purchase_node(usr, src)
 			. = TRUE
 
-/datum/tech/proc/on_tree_insertion(var/datum/techtree/tree)
+/datum/tech/proc/on_tree_insertion(datum/techtree/tree)
 	holder = tree
 	background_icon = tree.background_icon
 	background_icon_locked = tree.background_icon_locked
 
-/datum/tech/proc/update_icon(var/obj/effect/node)
+/datum/tech/proc/update_icon(obj/effect/node)
 	node.overlays.Cut()
 	if(!icon_state)
 		node.icon = 'icons/effects/techtree/tech.dmi'

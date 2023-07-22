@@ -10,42 +10,83 @@ $lightHover: #eaeaea;
 ////////////////////////////////////////////////
 // Normal chat colors
 $say: #a4bad6;
-$radio: #1ecc43;
+$comms: #b4b4b4;
 $me: #5975da;
-$ooc: #cca300;
+$ooc: #1c52f5;
+$looc: #e362b4;
+$mentor: #b5850d;
+$asay: #9611d4;
 
 ////////////////////////////////////////////////
 // Subchannel chat colors
-$ai: #d65d95;
-$binary: #1e90ff;
-$centcom: #2681a5;
-$command: #fcdf03;
-$engi: #f37746;
+$highcom: #318779;
+$command: #779cc2;
+$engi: #a66300;
 $hive: #855d85;
-$medical: #57b8f0;
-$science: #c68cfa;
-$security: #dd3535;
-$syndicate: #8f4a4b;
-$service: #6ca729;
-$supply: #b88646;
+$medsci: #008160;
+$security: #a52929;
+$req: #ba8e41;
+$alpha: #db2626;
+$bravo: #c68610;
+$charlie: #aa55aa;
+$delta: #007fcf;
+$echo: #3eb489;
+$foxtrot: #ad6d48;
+$jtac: #ad3b98;
+$wy: #fe9b24;
+$cct: #4dc5ce;
+$intel: #027d02;
+$pmc: #4dc5ce;
+$clf: #8e83ca;
+$upp: #8f4a4b;
+$colony: #993399;
 
 $_channel_map: (
   'say': $say,
-  'radio': $radio,
+  'comms': $comms,
   'me': $me,
   'ooc': $ooc,
-  'ai': $ai,
-  'binary': $binary,
-  'centcom': $centcom,
+  'looc': $looc,
+  'whisper': $say,
+  'mentor': $mentor,
+  'asay': $asay,
+  'department': $comms,
+  'highcom': $highcom,
   'command': $command,
   'engi': $engi,
   'hive': $hive,
-  'medical': $medical,
-  'science': $science,
+  'medsci': $medsci,
   'security': $security,
-  'syndicate': $syndicate,
-  'service': $service,
-  'supply': $supply,
+  'req': $req,
+  'alpha': $alpha,
+  'bravo': $bravo,
+  'charlie': $charlie,
+  'delta': $delta,
+  'echo': $echo,
+  'foxtrot': $foxtrot,
+  'jtac': $jtac,
+  'wy': $wy,
+  'cct': $cct,
+  'intel': $intel,
+  'sof': $highcom,
+  'ship': $comms,
+  'colony': $colony,
+  'upp-med': $upp,
+  'upp-engi': $upp,
+  'upp-cmd': $upp,
+  'upp-kdo': $upp,
+  'upp': $upp,
+  'clf-med': $clf,
+  'clf-engi': $clf,
+  'clf-cmd': $clf,
+  'clf-cct': $clf,
+  'clf': $clf,
+  'pmc-med': $pmc,
+  'pmc-engi': $pmc,
+  'pmc-cct': $pmc,
+  'pmc-cmd': $pmc,
+  'specops': $pmc,
+  'pmc': $pmc,
 );
 
 $channel_keys: map.keys($_channel_map) !default;

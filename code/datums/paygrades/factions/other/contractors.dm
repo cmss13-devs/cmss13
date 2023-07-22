@@ -28,7 +28,7 @@
 /datum/paygrade/contractors/syn
 	paygrade = "VAI-S"
 	name = "VAI Synthetic"
-	prefix = "VAI SYN"
+	prefix = "VAI Syn"
 	pay_multiplier = 0
 
 /datum/paygrade/contractors/lead

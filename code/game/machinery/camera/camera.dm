@@ -11,8 +11,8 @@
 	var/list/network = list(CAMERA_NET_MILITARY)
 	var/c_tag = null
 	var/c_tag_order = 999
-	var/status = 1.0
-	anchored = 1.0
+	var/status = 1
+	anchored = TRUE
 	var/panel_open = FALSE // 0 = Closed / 1 = Open
 	var/invuln = null
 	var/bugged = 0
@@ -66,10 +66,10 @@
 
 /obj/structure/machinery/camera/set_pixel_location()
 	switch(dir)
-		if(NORTH)		pixel_y = -18
-		if(SOUTH)		pixel_y = 40
-		if(EAST)		pixel_x = -27
-		if(WEST)		pixel_x = 27
+		if(NORTH) pixel_y = -18
+		if(SOUTH) pixel_y = 40
+		if(EAST) pixel_x = -27
+		if(WEST) pixel_x = 27
 
 /obj/structure/machinery/camera/emp_act(severity)
 	if(!isEmpProof())
@@ -99,7 +99,7 @@
 		..(severity)
 	return
 
-/obj/structure/machinery/camera/proc/setViewRange(var/num = 7)
+/obj/structure/machinery/camera/proc/setViewRange(num = 7)
 	src.view_range = num
 	cameranet.updateVisibility(src, 0)
 
@@ -158,8 +158,8 @@
 			else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
 			show_browser(O, info, itemname, itemname)
 		for(var/mob/O in GLOB.player_list)
-			if (istype(O.interactee, /obj/structure/machinery/computer/security))
-				var/obj/structure/machinery/computer/security/S = O.interactee
+			if (istype(O.interactee, /obj/structure/machinery/computer/cameras))
+				var/obj/structure/machinery/computer/cameras/S = O.interactee
 				if (S.current == src)
 					to_chat(O, "[U] holds \a [itemname] up to one of the cameras ...")
 					show_browser(O, info, itemname, itemname)
@@ -198,8 +198,8 @@
 //This might be redundant, because of check_eye()
 /obj/structure/machinery/camera/proc/kick_viewers()
 	for(var/mob/O in GLOB.player_list)
-		if (istype(O.interactee, /obj/structure/machinery/computer/security))
-			var/obj/structure/machinery/computer/security/S = O.interactee
+		if (istype(O.interactee, /obj/structure/machinery/computer/cameras))
+			var/obj/structure/machinery/computer/cameras/S = O.interactee
 			if (S.current == src)
 				O.unset_interaction()
 				O.reset_view(null)
@@ -244,21 +244,21 @@
 
 //Return a working camera that can see a given mob
 //or null if none
-/proc/seen_by_camera(var/mob/M)
+/proc/seen_by_camera(mob/M)
 	for(var/obj/structure/machinery/camera/C in oview(4, M))
-		if(C.can_use())	// check if camera disabled
+		if(C.can_use()) // check if camera disabled
 			return C
 	return null
 
-/proc/near_range_camera(var/mob/M)
+/proc/near_range_camera(mob/M)
 
 	for(var/obj/structure/machinery/camera/C in range(4, M))
-		if(C.can_use())	// check if camera disabled
+		if(C.can_use()) // check if camera disabled
 			return C
 
 	return null
 
-/obj/structure/machinery/camera/proc/weld(var/obj/item/tool/weldingtool/WT, var/mob/user)
+/obj/structure/machinery/camera/proc/weld(obj/item/tool/weldingtool/WT, mob/user)
 
 	if(user.action_busy)
 		return 0
@@ -283,7 +283,7 @@
 
 /obj/structure/machinery/camera/mortar
 	alpha = 0
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	density = FALSE
 	invuln = TRUE
 	network = list(CAMERA_NET_MORTAR)
@@ -310,21 +310,22 @@
 	// users looking directly at this, not via console
 	var/list/mob/viewing_users = list()
 
-/obj/structure/machinery/camera/cas/Initialize(mapload, var/c_tag_name)
+/obj/structure/machinery/camera/cas/Initialize(mapload, c_tag_name)
 	c_tag = c_tag_name
 	return ..()
 
 /obj/structure/machinery/camera/cas/Destroy()
 	for(var/mob/M as anything in viewing_users)
 		M.reset_view()
+	QDEL_NULL(viewing_users)
 	return ..()
 
-/obj/structure/machinery/camera/cas/proc/view_directly(var/mob/living/carbon/human/user)
+/obj/structure/machinery/camera/cas/proc/view_directly(mob/living/carbon/human/user)
 	viewing_users += user
 	user.client?.eye = get_turf(src)
 	user.client?.perspective = EYE_PERSPECTIVE
 
-/obj/structure/machinery/camera/cas/proc/remove_from_view(var/mob/living/carbon/human/user)
+/obj/structure/machinery/camera/cas/proc/remove_from_view(mob/living/carbon/human/user)
 	viewing_users -= user
 
 /obj/structure/machinery/camera/cas/isXRay()

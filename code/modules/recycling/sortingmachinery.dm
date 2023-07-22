@@ -4,14 +4,14 @@
 	icon = 'icons/obj/items/storage.dmi'
 	icon_state = "deliverycloset"
 	var/obj/wrapped = null
-	density = 1
+	density = TRUE
 	var/sortTag = null
 	var/examtext = null
 	var/nameset = 0
 	var/label_y
 	var/label_x
 	var/tag_x
-	anchored = 0
+	anchored = FALSE
 
 /obj/structure/bigDelivery/attack_hand(mob/user as mob)
 	if(wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
@@ -38,7 +38,7 @@
 		else
 			to_chat(user, SPAN_WARNING("You need to set a destination first!"))
 
-	else if(istype(W, /obj/item/tool/pen))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
 			if("Title")
 				var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
@@ -145,7 +145,7 @@
 		else
 			to_chat(user, SPAN_WARNING("You need to set a destination first!"))
 
-	else if(istype(W, /obj/item/tool/pen))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
 			if("Title")
 				var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
@@ -215,12 +215,12 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "deliveryPaper"
 	w_class = SIZE_MEDIUM
-	var/amount = 25.0
+	var/amount = 25
 
 
-/obj/item/packageWrap/afterattack(var/obj/target as obj, mob/user as mob, proximity)
+/obj/item/packageWrap/afterattack(obj/target as obj, mob/user as mob, proximity)
 	if(!proximity) return
-	if(!istype(target))	//this really shouldn't be necessary (but it is).	-Pete
+	if(!istype(target)) //this really shouldn't be necessary (but it is). -Pete
 		return
 	if(istype(target, /obj/item/smallDelivery) || istype(target,/obj/structure/bigDelivery) \
 	|| istype(target, /obj/item/gift) || istype(target, /obj/item/evidencebag))
@@ -238,7 +238,7 @@
 	if (istype(target, /obj/item) && !(isstorage(target) && !istype(target,/obj/item/storage/box)))
 		var/obj/item/O = target
 		if (src.amount > 1)
-			var/obj/item/smallDelivery/P = new /obj/item/smallDelivery(get_turf(O.loc))	//Aaannd wrap it up!
+			var/obj/item/smallDelivery/P = new /obj/item/smallDelivery(get_turf(O.loc)) //Aaannd wrap it up!
 			if(!istype(O.loc, /turf))
 				if(user.client)
 					user.client.screen -= O
@@ -348,7 +348,7 @@
 /obj/structure/machinery/disposal/deliveryChute
 	name = "Delivery chute"
 	desc = "A chute for big and small packages alike!"
-	density = 1
+	density = TRUE
 	icon_state = "intake"
 
 	var/c_mode = 0
@@ -358,7 +358,7 @@
 	spawn(5)
 		trunk = locate() in src.loc
 		if(trunk)
-			trunk.linked = src	// link the pipe trunk to self
+			trunk.linked = src // link the pipe trunk to self
 
 /obj/structure/machinery/disposal/deliveryChute/interact()
 	return
@@ -366,8 +366,8 @@
 /obj/structure/machinery/disposal/deliveryChute/update()
 	return
 
-/obj/structure/machinery/disposal/deliveryChute/Collided(var/atom/movable/AM) //Go straight into the chute
-	if(istype(AM, /obj/item/projectile) || istype(AM, /obj/effect))	return
+/obj/structure/machinery/disposal/deliveryChute/Collided(atom/movable/AM) //Go straight into the chute
+	if(istype(AM, /obj/item/projectile) || istype(AM, /obj/effect)) return
 	switch(dir)
 		if(NORTH)
 			if(AM.loc.y != src.loc.y+1) return
@@ -386,25 +386,25 @@
 /obj/structure/machinery/disposal/deliveryChute/flush()
 	flushing = 1
 	flick("intake-closing", src)
-	var/obj/structure/disposalholder/H = new()	// virtual holder object which actually
+	var/obj/structure/disposalholder/H = new() // virtual holder object which actually
 												// travels through the pipes.
 
 	sleep(10)
 	playsound(src, 'sound/machines/disposalflush.ogg', 25, 0)
 	sleep(5) // wait for animation to finish
 
-	H.init(src)	// copy the contents of disposer to holder
+	H.init(src) // copy the contents of disposer to holder
 
 	H.start(src) // start the holder processing movement
 	flushing = 0
 	// now reset disposal state
 	flush = 0
-	if(mode == 2)	// if was ready,
-		mode = 1	// switch to charging
+	if(mode == 2) // if was ready,
+		mode = 1 // switch to charging
 	update()
 	return
 
-/obj/structure/machinery/disposal/deliveryChute/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/machinery/disposal/deliveryChute/attackby(obj/item/I, mob/user)
 	if(!I || !user)
 		return
 
@@ -433,8 +433,8 @@
 				var/obj/structure/disposalconstruct/C = new (src.loc)
 				C.ptype = 8 // 8 =  Delivery chute
 				C.update()
-				C.anchored = 1
-				C.density = 1
+				C.anchored = TRUE
+				C.density = TRUE
 				qdel(src)
 			return
 		else

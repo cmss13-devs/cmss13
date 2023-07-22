@@ -1,17 +1,17 @@
 /*
- *	These absorb the functionality of the plant bag, ore satchel, etc.
- *	They use the use_to_pickup, quick_gather, and quick_empty functions
- *	that were already defined in weapon/storage, but which had been
- *	re-implemented in other classes.
+ * These absorb the functionality of the plant bag, ore satchel, etc.
+ * They use the use_to_pickup, quick_gather, and quick_empty functions
+ * that were already defined in weapon/storage, but which had been
+ * re-implemented in other classes.
  *
- *	Contains:
- *		Trash Bag
- *		Mining Satchel
- *		Plant Bag
- *		Sheet Snatcher
- *		Cash Bag
+ * Contains:
+ * Trash Bag
+ * Mining Satchel
+ * Plant Bag
+ * Sheet Snatcher
+ * Cash Bag
  *
- *	-Sayu
+ * -Sayu
  */
 
 //  Generic non-item
@@ -20,7 +20,7 @@
 	flags_equip_slot = SLOT_WAIST
 
 // -----------------------------
-//          Trash bag
+//   Trash bag
 // -----------------------------
 /obj/item/storage/bag/trash
 	name = "trash bag"
@@ -30,27 +30,31 @@
 	item_state = "trashbag"
 
 	w_class = SIZE_LARGE
-	max_w_class = SIZE_SMALL
-	storage_slots = 21
+	max_w_class = SIZE_MEDIUM
+	storage_slots = null
+	max_storage_space = 21 //equivalent to an IMP backpack
 	can_hold = list() // any
-	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/melee/throwing_knife)
+	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/throwing_knife)
 
 	storage_flags = STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_QUICK_GATHER|STORAGE_CLICK_GATHER
+	flags_equip_slot = NONE
 
 /obj/item/storage/bag/trash/update_icon()
-	if(contents.len == 0)
-		icon_state = "trashbag0"
-	else if(contents.len < 12)
-		icon_state = "trashbag1"
-	else if(contents.len < 21)
-		icon_state = "trashbag2"
-	else icon_state = "trashbag3"
+	var/sum_storage_cost = 0
+	for(var/obj/item/item in contents)
+		sum_storage_cost += item.get_storage_cost()
 
-/obj/item/storage/bag/trash/open(mob/user)
-	return
+	if(!sum_storage_cost)
+		icon_state = "trashbag0"
+	else if(sum_storage_cost < round(max_storage_space * 0.35))
+		icon_state = "trashbag1"
+	else if(sum_storage_cost < round(max_storage_space * 0.7))
+		icon_state = "trashbag2"
+	else
+		icon_state = "trashbag3"
 
 // -----------------------------
-//        Plastic Bag
+// Plastic Bag
 // -----------------------------
 
 /obj/item/storage/bag/plasticbag
@@ -64,10 +68,10 @@
 	max_w_class = SIZE_SMALL
 	storage_slots = 21
 	can_hold = list() // any
-	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/melee/throwing_knife)
+	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/throwing_knife)
 
 // -----------------------------
-//        Mining Satchel
+// Mining Satchel
 // -----------------------------
 
 /obj/item/storage/bag/ore
@@ -85,7 +89,7 @@
 
 
 // -----------------------------
-//          Plant bag
+//   Plant bag
 // -----------------------------
 
 /obj/item/storage/bag/plants
@@ -100,12 +104,12 @@
 	can_hold = list(
 		/obj/item/reagent_container/food/snacks/grown,
 		/obj/item/seeds,
-		/obj/item/grown
+		/obj/item/grown,
 	)
 
 
 // -----------------------------
-//        Sheet Snatcher
+// Sheet Snatcher
 // -----------------------------
 // Because it stacks stacks, this doesn't operate normally.
 // However, making it a storage/bag allows us to reuse existing code in some places. -Sayu
@@ -156,7 +160,7 @@
 
 	for(var/obj/item/stack/sheet/sheet in contents)
 		if(S.type == sheet.type) // we are violating the amount limitation because these are not sane objects
-			sheet.amount += amount	// they should only be removed through procs in this file, which split them up.
+			sheet.amount += amount // they should only be removed through procs in this file, which split them up.
 			S.amount -= amount
 			inserted = 1
 			break
@@ -183,7 +187,7 @@
 //Turned numbered display on. Appears to work as intended, despite above comment -- Vanagandr.
 
 /obj/item/storage/bag/sheetsnatcher/orient2hud()
-	var/adjusted_contents = contents.len
+	var/adjusted_contents = length(contents)
 
 	//Numbered contents display
 	var/list/datum/numbered_display/numbered_contents
@@ -205,7 +209,7 @@
 
 
 // Modified quick_empty verb drops appropriate sized stacks
-/obj/item/storage/bag/sheetsnatcher/empty(var/mob/user)
+/obj/item/storage/bag/sheetsnatcher/empty(mob/user)
 	var/location = get_turf(src)
 	for(var/obj/item/stack/sheet/S in contents)
 		while(S.amount)
@@ -236,7 +240,7 @@
 	return ..(S,new_location)
 
 // -----------------------------
-//    Sheet Snatcher (Cyborg)
+// Sheet Snatcher (Cyborg)
 // -----------------------------
 
 /obj/item/storage/bag/sheetsnatcher/borg
@@ -245,7 +249,7 @@
 	capacity = 500//Borgs get more because >specialization
 
 // -----------------------------
-//           Cash Bag
+//    Cash Bag
 // -----------------------------
 
 /obj/item/storage/bag/cash

@@ -1,6 +1,6 @@
 #define STATE_DEFAULT 1
 #define STATE_EVACUATION 2
-#define STATE_EVACUATION_CANCEL	3
+#define STATE_EVACUATION_CANCEL 3
 #define STATE_DISTRESS 4
 #define STATE_DESTROY 5
 #define STATE_DEFCONLIST 6
@@ -11,13 +11,13 @@
 
 
 
-#define COMMAND_SHIP_ANNOUNCE		"Command Ship Announcement"
+#define COMMAND_SHIP_ANNOUNCE "Command Ship Announcement"
 
 /obj/structure/machinery/computer/almayer_control
 	name = "almayer control console"
 	desc = "This is used for controlling ship and its related functions."
 	icon_state = "comm_alt"
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_SENIOR)
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -34,10 +34,10 @@
 	var/currmsg = 0
 	var/aicurrmsg = 0
 
-/obj/structure/machinery/computer/almayer_control/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/almayer_control/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/almayer_control/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/almayer_control/attack_hand(mob/user as mob)
 	if(..() || !allowed(user) || inoperable())
 		return
 
@@ -118,7 +118,7 @@
 		return FALSE
 
 	usr.set_interaction(src)
-
+	var/datum/ares_link/link = GLOB.ares_link
 	switch(href_list["operation"])
 		if("main")
 			state = STATE_DEFAULT
@@ -142,8 +142,8 @@
 					signed = "[paygrade] [id.registered_name]"
 
 			shipwide_ai_announcement(input, COMMAND_SHIP_ANNOUNCE, signature = signed)
-			addtimer(CALLBACK(src, .proc/reactivate_announcement, usr), COOLDOWN_COMM_MESSAGE)
-			message_staff("[key_name(usr)] has made a shipwide annoucement.")
+			addtimer(CALLBACK(src, PROC_REF(reactivate_announcement), usr), COOLDOWN_COMM_MESSAGE)
+			message_admins("[key_name(usr)] has made a shipwide annoucement.")
 			log_announcement("[key_name(usr)] has announced the following to the ship: [input]")
 
 
@@ -162,7 +162,8 @@
 					return FALSE
 
 				log_game("[key_name(usr)] has called for an emergency evacuation.")
-				message_staff("[key_name_admin(usr)] has called for an emergency evacuation.")
+				message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
+				link.log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
 				return TRUE
 
 			state = STATE_EVACUATION
@@ -175,20 +176,20 @@
 
 				spawn(35)//some time between AI announcements for evac cancel and SD cancel.
 					if(EvacuationAuthority.evac_status == EVACUATION_STATUS_STANDING_BY)//nothing changed during the wait
-						 //if the self_destruct is active we try to cancel it (which includes lowering alert level to red)
+						//if the self_destruct is active we try to cancel it (which includes lowering alert level to red)
 						if(!EvacuationAuthority.cancel_self_destruct(1))
 							//if SD wasn't active (likely canceled manually in the SD room), then we lower the alert level manually.
 							set_security_level(SEC_LEVEL_RED, TRUE) //both SD and evac are inactive, lowering the security level.
 
 				log_game("[key_name(usr)] has canceled the emergency evacuation.")
-				message_staff("[key_name_admin(usr)] has canceled the emergency evacuation.")
+				message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.")
+				link.log_ares_security("Cancel Evacuation", "[usr] has cancelled the emergency evacuation.")
 				return TRUE
 
 			state = STATE_EVACUATION_CANCEL
 
 		if("distress")
 			if(state == STATE_DISTRESS)
-				//Comment to test
 				if(world.time < DISTRESS_TIME_LOCK)
 					to_chat(usr, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
 					return FALSE
@@ -200,7 +201,6 @@
 					to_chat(usr, SPAN_WARNING("ARES has denied your request for operational security reasons."))
 					return FALSE
 
-				 //Comment block to test
 				if(world.time < cooldown_request + COOLDOWN_COMM_REQUEST)
 					to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
 					return FALSE
@@ -212,7 +212,7 @@
 				for(var/client/C in GLOB.admins)
 					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 						C << 'sound/effects/sos-morse-code.ogg'
-				message_staff("[key_name(usr)] has requested a Distress Beacon! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
+				message_admins("[key_name(usr)] has requested a Distress Beacon! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
 				to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 
 				cooldown_request = world.time
@@ -245,7 +245,7 @@
 				for(var/client/C in GLOB.admins)
 					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 						C << 'sound/effects/sos-morse-code.ogg'
-				message_staff("[key_name(usr)] has requested Self-Destruct! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
+				message_admins("[key_name(usr)] has requested Self-Destruct! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
 				to_chat(usr, SPAN_NOTICE("A self-destruct request has been sent to USCM Central Command."))
 				cooldown_destruct = world.time
 				return TRUE
@@ -259,8 +259,8 @@
 		if("viewmessage")
 			state = STATE_VIEWMESSAGE
 			if (!currmsg)
-				if(href_list["message-num"]) 	currmsg = text2num(href_list["message-num"])
-				else 							state = STATE_MESSAGELIST
+				if(href_list["message-num"]) currmsg = text2num(href_list["message-num"])
+				else state = STATE_MESSAGELIST
 
 		if("delmessage")
 			state = (currmsg) ? STATE_DELMESSAGE : STATE_MESSAGELIST
@@ -304,14 +304,14 @@
 			set_security_level(seclevel2num(level_selected))
 
 			log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
-			message_staff("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
+			message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
 
 		if("award")
 			print_medal(usr, src)
 
 	updateUsrDialog()
 
-/obj/structure/machinery/computer/almayer_control/proc/reactivate_announcement(var/mob/user)
+/obj/structure/machinery/computer/almayer_control/proc/reactivate_announcement(mob/user)
 	is_announcement_active = TRUE
 	updateUsrDialog()
 

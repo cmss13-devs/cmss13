@@ -135,48 +135,63 @@
 	if(!seat)
 		return
 
-	var/dat = "[V]<br>"
-	dat += "Current armor resistances:<br>"
+	V.tgui_interact(user)
+
+// BEGIN TGUI \\
+
+/obj/vehicle/multitile/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "VehicleStatus", "[name]")
+		ui.open()
+
+/obj/vehicle/multitile/ui_data(mob/user)
+	var/list/data = list()
+
 	var/list/resist_name = list("Bio" = "acid", "Slash" = "slash", "Bullet" = "bullet", "Expl" = "explosive", "Blunt" = "blunt")
+	var/list/resist_data_list = list()
 
 	for(var/i in resist_name)
-		var/resist = 1 - LAZYACCESS(V.dmg_multipliers, LAZYACCESS(resist_name, i))
-		if(resist > 0)
-			dat += SPAN_HELPFUL("[resist * 100]% [i] ")
-		else
-			dat += "<font color=\"red\">[resist * 100]% [i] </font>"
+		var/resist = 1 - LAZYACCESS(dmg_multipliers, LAZYACCESS(resist_name, i))
+		resist_data_list += list(list(
+			"name" = i,
+			"pct" = resist
+		))
 
-	dat += "<br>"
+	data["resistance_data"] = resist_data_list
+	data["integrity"] = round(100 * health / initial(health))
+	data["door_locked"] = door_locked
+	data["total_passenger_slots"] = interior.passengers_slots
+	data["total_taken_slots"] = interior.passengers_taken_slots
 
-	if(V.health <= 0)
-		dat += "Hull integrity: <font color=\"red\">\[CRITICAL FAILURE\]</font>"
-	else
-		dat += "Hull integrity: [round(100.0 * V.health / initial(V.health))]%"
+	var/list/passenger_category_data_list = list()
 
-	var/list/hps = V.hardpoints.Copy()
+	for(var/datum/role_reserved_slots/RRS in interior.role_reserved_slots)
+		passenger_category_data_list += list(list(
+			"name" = RRS.category_name,
+			"taken" = RRS.taken,
+			"total" = RRS.total
+		))
+
+	data["passenger_categories_data"] = passenger_category_data_list
+
+	var/list/hps = hardpoints.Copy()
+	var/list/hardpoint_data_list = list()
 
 	for(var/obj/item/hardpoint/holder/H in hps)
-		dat += H.get_hardpoint_info()
+		hardpoint_data_list += H.get_tgui_info()
 		LAZYREMOVE(hps, H)
 	for(var/obj/item/hardpoint/H in hps)
-		dat += H.get_hardpoint_info()
+		hardpoint_data_list += list(H.get_tgui_info())
 
-	dat += "<hr>"
+	data["hardpoint_data"] = hardpoint_data_list
 
-	if(V.health <= 0)
-		dat += "Doors locks: <font color=\"red\">BROKEN</font>.<br>"
-	else
-		dat += "Doors locks: [V.door_locked ? "<font color=\"green\">Enabled</font>" : "<font color=\"red\">Disabled</font>"].<br>"
+	return data
 
-	V.interior.update_passenger_count()
-	dat += "Common passengers capacity: [V.interior.passengers_taken_slots]/[V.interior.passengers_slots].<br>"
+/obj/vehicle/multitile/ui_state(mob/user)
+	return GLOB.not_incapacitated_state
 
-	for(var/datum/role_reserved_slots/RRS in V.interior.role_reserved_slots)
-		dat += "[RRS.category_name] passengers capacity: [RRS.taken]/[RRS.total].<br>"
-
-	show_browser(user, dat, "Vehicle Status Info", "vehicle_info")
-	onclose(user, "vehicle_info")
-	return
+// END TGUI \\
 
 //opens vehicle controls guide, that contains description of all verbs and shortcuts in it
 /obj/vehicle/multitile/proc/open_controls_guide()
@@ -201,19 +216,19 @@
 		return
 
 	var/dat = "<b><i>Common verbs:</i></b><br>1. <b>\"A: Change Active Hardpoint\"</b> - brings up a list of all not destroyed activatable hardpoints you have access to and allows you to switch your current active hardpoint to one from the list. To activate currently selected hardpoint, click on your target. <font color='#cd6500'><b>MAKE SURE NOT TO HIT MARINES.</b></font><br>\
-	 2. <b>\"G: Name Vehicle\"</b> - used to add a custom name to the vehicle. Single use. 26 characters maximum.<br> \
-	 3. <b>\"I: Get Status Info\"</b> - brings up \"Vehicle Status Info\" window with all available information about your vehicle.<br> \
+	2. <b>\"G: Name Vehicle\"</b> - used to add a custom name to the vehicle. Single use. 26 characters maximum.<br> \
+	3. <b>\"I: Get Status Info\"</b> - brings up \"Vehicle Status Info\" window with all available information about your vehicle.<br> \
 	<font color='#cd6500'><b><i>Driver verbs:</i></b></font><br> 1. <b>\"G: Activate Horn\"</b> - activates vehicle horn. Keep in mind, that vehicle horn is very loud and can be heard from afar by both allies and foes.<br> \
-	 2. <b>\"G: Toggle Door Locks\"</b> - toggles vehicle's access restrictions. Crewman, Brig and Command accesses bypass these restrictions.<br> \
+	2. <b>\"G: Toggle Door Locks\"</b> - toggles vehicle's access restrictions. Crewman, Brig and Command accesses bypass these restrictions.<br> \
 	<font color=\"red\"><b><i>Gunner verbs:</i></b></font><br> 1. <b>\"A: Cycle Active Hardpoint\"</b> - works similarly to one above, except it automatically switches to next hardpoint in a list allowing you to switch faster.<br> \
-	 2. <b>\"G: Toggle Middle/Shift Clicking\"</b> - toggles between using <i>Middle Mouse Button</i> click and <i>Shift + Click</i> to fire not currently selected weapon if possible.<br> \
-	 3. <b>\"G: Toggle Turret Gyrostabilizer\"</b> - toggles Turret Gyrostabilizer allowing it to keep current direction ignoring hull turning. <i>(Exists only on vehicles with rotating turret, e.g. M34A2 Longstreet Light Tank)</i><br> \
+	2. <b>\"G: Toggle Middle/Shift Clicking\"</b> - toggles between using <i>Middle Mouse Button</i> click and <i>Shift + Click</i> to fire not currently selected weapon if possible.<br> \
+	3. <b>\"G: Toggle Turret Gyrostabilizer\"</b> - toggles Turret Gyrostabilizer allowing it to keep current direction ignoring hull turning. <i>(Exists only on vehicles with rotating turret, e.g. M34A2 Longstreet Light Tank)</i><br> \
 	<font color='#003300'><b><i>Support Gunner verbs:</i></b></font><br> 1. <b>\"Reload Firing Port Weapon\"</b> - initiates automated reloading process for M56 FPW. Requires a confirmation.<br> \
 	<font color='#cd6500'><b><i>Driver shortcuts:</i></b></font><br> 1. <b>\"CTRL + Click\"</b> - activates vehicle horn.<br> \
 	<font color=\"red\"><b><i>Gunner shortcuts:</i></b></font><br> 1. <b>\"ALT + Click\"</b> - toggles Turret Gyrostabilizer. <i>(Exists only on vehicles with rotating turret, e.g. M34A2 Longstreet Light Tank)</i><br> \
-	 2. <b>\"CTRL + Click\"</b> - activates not destroyed activatable support module.<br> \
-	 3. <b>\"Middle Mouse Button Click (MMB)\"</b> - default shortcut to shoot currently not selected weapon if possible. Won't work if <i>SHIFT + Click</i> firing is toggled ON.<br> \
-	 4. <b>\"SHIFT + Click\"</b> - examines target as usual, unless <i>\"G: Toggle Middle/Shift Clicking\"</i> verb was used to toggle <i>SHIFT + Click</i> firing ON. In this case, it will fire currently not selected weapon if possible.<br>"
+	2. <b>\"CTRL + Click\"</b> - activates not destroyed activatable support module.<br> \
+	3. <b>\"Middle Mouse Button Click (MMB)\"</b> - default shortcut to shoot currently not selected weapon if possible. Won't work if <i>SHIFT + Click</i> firing is toggled ON.<br> \
+	4. <b>\"SHIFT + Click\"</b> - examines target as usual, unless <i>\"G: Toggle Middle/Shift Clicking\"</i> verb was used to toggle <i>SHIFT + Click</i> firing ON. In this case, it will fire currently not selected weapon if possible.<br>"
 
 	show_browser(user, dat, "Vehicle Controls Guide", "vehicle_help", "size=900x500")
 	onclose(user, "vehicle_help")
@@ -277,11 +292,11 @@
 		return
 
 	//post-checks
-	if(V.seats[seat] != user)	//check that we are still in seat
+	if(V.seats[seat] != user) //check that we are still in seat
 		to_chat(user, SPAN_WARNING("You need to be buckled to vehicle seat to do this."))
 		return
 
-	if(V.nickname)	//check again if second VC was faster.
+	if(V.nickname) //check again if second VC was faster.
 		to_chat(user, SPAN_WARNING("The other crewman beat you to it!"))
 		return
 
@@ -289,7 +304,7 @@
 	V.name = initial(V.name) + " \"[V.nickname]\""
 	to_chat(user, SPAN_NOTICE("You've added \"[V.nickname]\" nickname to your vehicle."))
 
-	message_staff(WRAP_STAFF_LOG(user, "added \"[V.nickname]\" nickname to their [initial(V.name)]. ([V.x],[V.y],[V.z])"), V.x, V.y, V.z)
+	message_admins(WRAP_STAFF_LOG(user, "added \"[V.nickname]\" nickname to their [initial(V.name)]. ([V.x],[V.y],[V.z])"), V.x, V.y, V.z)
 
 	V.initialize_cameras(TRUE)
 
@@ -325,7 +340,7 @@
 
 /obj/vehicle/multitile/proc/perform_honk()
 	if(honk_sound)
-		playsound(loc, honk_sound, 75, TRUE, 15)	//heard within ~15 tiles
+		playsound(loc, honk_sound, 75, TRUE, 15) //heard within ~15 tiles
 
 //Support gunner verbs
 

@@ -3,12 +3,13 @@
 
 /turf/open
 	plane = FLOOR_PLANE
+	minimap_color = MINIMAP_AREA_COLONY
 	var/is_groundmap_turf = FALSE //whether this a turf used as main turf type for the 'outside' of a map.
 	var/allow_construction = TRUE //whether you can build things like barricades on this turf.
 	var/bleed_layer = 0 //snow layer
 	var/wet = 0 //whether the turf is wet (only used by floors).
 	var/supports_surgery = TRUE
-	var/scorchable = FALSE	//if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
+	var/scorchable = FALSE //if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
 
@@ -70,13 +71,13 @@
 			overlays += I
 
 	if(scorchedness)
-		if(!icon_state_before_scorching)				//I hate you mappers, stop var editting turfs
+		if(!icon_state_before_scorching) //I hate you mappers, stop var editting turfs
 			icon_state_before_scorching = icon_state
 		var/new_icon_state = "[icon_state_before_scorching]_scorched[scorchedness]"
-		if(icon_state != new_icon_state)				//no point in updating the icon_state if it would be updated to be the same thing that it was
+		if(icon_state != new_icon_state) //no point in updating the icon_state if it would be updated to be the same thing that it was
 			icon_state = new_icon_state
-			for(var/i in GLOB.cardinals)				//but we still check so that we can update our neighbor's overlays if we do
-				var/turf/open/T = get_step(src, i)		//since otherwise they'd be stuck with overlays that were made with
+			for(var/i in GLOB.cardinals) //but we still check so that we can update our neighbor's overlays if we do
+				var/turf/open/T = get_step(src, i) //since otherwise they'd be stuck with overlays that were made with
 				T.update_icon()
 		for(var/i in GLOB.cardinals)
 			var/turf/open/T = get_step(src, i)
@@ -94,7 +95,7 @@
 				edge_overlay.SwapColor(rgb(255, 0, 255, 255), rgb(0, 0, 0, 0))
 				overlays += edge_overlay
 
-/turf/open/proc/scorch(var/heat_level)
+/turf/open/proc/scorch(heat_level)
 	// All scorched icons should be in the dmi that their unscorched bases are
 	// "name_scorched#" where # is the scorchedness level 0 - 1 - 2 - 3
 	// 0 being no scorch, and 3 the most scorched
@@ -102,26 +103,26 @@
 	// depending on the heat_level either will singe or progressively increase the scorchedness up to level 3
 	// heat_level's logic has been written to scale with /obj/flamer_fire's burnlevel --- greenfire=15,orangefire=30,bluefire=40,whitefire=80
 
-	if(scorchedness == 3)					//already scorched to hell, no point in doing anything more
+	if(scorchedness == 3) //already scorched to hell, no point in doing anything more
 		return
 
 	switch(heat_level)
 		if(0)
 			return
 
-		if(1) 						// 1 only singes
-			if(!scorchedness)  		// we only singe that which hasnt burned
+		if(1) // 1 only singes
+			if(!scorchedness) // we only singe that which hasnt burned
 				scorchedness = 1
 
 		if(2 to 30)
-			scorchedness = Clamp(scorchedness + 1, 0, 3)	//increase scorch by 1 (not that hot of a fire)
+			scorchedness = Clamp(scorchedness + 1, 0, 3) //increase scorch by 1 (not that hot of a fire)
 
 		if(31 to 60)
-			scorchedness = Clamp(scorchedness + 2, 0, 3)	//increase scorch by 2 (hotter fire)
+			scorchedness = Clamp(scorchedness + 2, 0, 3) //increase scorch by 2 (hotter fire)
 
 		if(61 to INFINITY)
-			scorchedness = 3								//max out the scorchedness (hottest fire)
-			var/turf/open/singe_target 						//super heats singe the surrounding singeables
+			scorchedness = 3 //max out the scorchedness (hottest fire)
+			var/turf/open/singe_target //super heats singe the surrounding singeables
 			for(var/i in GLOB.cardinals)
 				singe_target = get_step(src, i)
 				if(istype(singe_target, /turf/open))
@@ -155,6 +156,7 @@
 
 /turf/open/void/vehicle
 	density = TRUE
+	opacity = TRUE
 
 /turf/open/void/is_weedable()
 	return NOT_WEEDABLE
@@ -176,6 +178,7 @@
 	icon = 'icons/turf/floors/bigred.dmi'
 	icon_state = "mars_sand_1"
 	is_groundmap_turf = TRUE
+	minimap_color = MINIMAP_MARS_DIRT
 
 
 /turf/open/mars_cave
@@ -196,6 +199,7 @@
 	name = "dirt"
 	icon = 'icons/turf/floors/bigred.dmi'
 	icon_state = "mars_dirt_1"
+	minimap_color = MINIMAP_DIRT
 
 
 /turf/open/mars_dirt/Initialize(mapload, ...)
@@ -280,7 +284,7 @@
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "desert"
 
-/turf/open/gm/attackby(var/obj/item/I, var/mob/user)
+/turf/open/gm/attackby(obj/item/I, mob/user)
 
 	//Light Stick
 	if(istype(I, /obj/item/lightstick))
@@ -294,7 +298,7 @@
 			return
 
 		user.visible_message("\blue[user.name] planted \the [L] into [src].")
-		L.anchored = 1
+		L.anchored = TRUE
 		L.icon_state = "lightstick_[L.s_color][L.anchored]"
 		user.drop_held_item()
 		L.forceMove(src)
@@ -314,6 +318,7 @@
 	name = "dirt"
 	icon_state = "desert"
 	baseturfs = /turf/open/gm/dirt
+	minimap_color = MINIMAP_DIRT
 
 /turf/open/gm/dirt/Initialize(mapload, ...)
 	. = ..()
@@ -325,6 +330,40 @@
 	icon_state = "grass1"
 	baseturfs = /turf/open/gm/grass
 	scorchable = "grass1"
+
+/turf/open/gm/grass/grass1
+	icon_state = "grass1"
+
+/turf/open/gm/grass/grass2
+	icon_state = "grass2"
+
+/turf/open/gm/grass/grassbeach
+	icon_state = "grassbeach"
+
+/turf/open/gm/grass/grassbeach/north
+
+/turf/open/gm/grass/grassbeach/south
+	dir = 1
+
+/turf/open/gm/grass/grassbeach/west
+	dir = 4
+
+/turf/open/gm/grass/grassbeach/east
+	dir = 8
+
+/turf/open/gm/grass/gbcorner
+	icon_state = "gbcorner"
+
+/turf/open/gm/grass/gbcorner/north_west
+
+/turf/open/gm/grass/gbcorner/south_east
+	dir = 1
+
+/turf/open/gm/grass/gbcorner/south_west
+	dir = 4
+
+/turf/open/gm/grass/gbcorner/north_east
+	dir = 8
 
 /turf/open/gm/grass/Initialize(mapload, ...)
 	. = ..()
@@ -344,12 +383,52 @@
 	name = "dirt"
 	icon_state = "dirt"
 	baseturfs = /turf/open/gm/dirt2
+	minimap_color = MINIMAP_DIRT
 
 /turf/open/gm/dirtgrassborder
 	name = "grass"
 	icon_state = "grassdirt_edge"
 	baseturfs = /turf/open/gm/dirtgrassborder
 	scorchable = "grass1"
+
+/turf/open/gm/dirtgrassborder/north
+
+/turf/open/gm/dirtgrassborder/south
+	dir = 1
+
+/turf/open/gm/dirtgrassborder/west
+	dir = 4
+
+/turf/open/gm/dirtgrassborder/east
+	dir = 8
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner
+	icon_state = "grassdirt_corner"
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east
+	dir = 1
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east
+	dir = 4
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west
+	dir = 8
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner2
+	icon_state = "grassdirt_corner2"
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east
+	dir = 1
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east
+	dir = 4
+
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west
+	dir = 8
 
 /turf/open/gm/dirtgrassborder/Initialize(mapload, ...)
 	. = ..()
@@ -379,8 +458,10 @@
 	var/cover_icon_state = "grate"
 	var/default_name = "river"
 	var/no_overlay = FALSE
+	var/base_river_slowdown = 1.75
 	baseturfs = /turf/open/gm/river
 	supports_surgery = FALSE
+	minimap_color = MINIMAP_WATER
 
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
@@ -426,7 +507,7 @@
 
 	if(!covered)
 		var/mob/living/carbon/C = AM
-		var/river_slowdown = 1.75
+		var/river_slowdown = base_river_slowdown
 
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = AM
@@ -438,10 +519,10 @@
 						to_chat(H, SPAN_WARNING(" Your bracers hiss and spark as they short out!"))
 						Y.decloak(H, TRUE)
 
-		else if(isXeno(C))
-			river_slowdown = 1.3
-			if(isXenoBoiler(C))
-				river_slowdown = -0.5
+		else if(isxeno(C))
+			river_slowdown -= 0.7
+			if(isboiler(C))
+				river_slowdown -= 1
 
 		var/new_slowdown = C.next_move_slowdown + river_slowdown
 		C.next_move_slowdown = new_slowdown
@@ -452,7 +533,7 @@
 			SEND_SIGNAL(H, COMSIG_HUMAN_CLEAR_BLOODY_FEET)
 
 
-/turf/open/gm/river/proc/cleanup(var/mob/living/carbon/human/M)
+/turf/open/gm/river/proc/cleanup(mob/living/carbon/human/M)
 	if(!M || !istype(M)) return
 
 	if(M.back)
@@ -488,6 +569,30 @@
 
 /turf/open/gm/river/ocean
 	color = "#dae3e2"
+	base_river_slowdown = 4 // VERY. SLOW.
+
+/turf/open/gm/river/ocean/Entered(atom/movable/AM)
+	. = ..()
+	if(prob(20)) // fuck you
+		if(!ismob(AM))
+			return
+		var/mob/unlucky_mob = AM
+		var/turf/target_turf = get_random_turf_in_range(AM.loc, 3, 0)
+		var/datum/launch_metadata/LM = new()
+		LM.target = target_turf
+		LM.range = get_dist(AM.loc, target_turf)
+		LM.speed = SPEED_FAST
+		LM.thrower = unlucky_mob
+		LM.spin = TRUE
+		LM.pass_flags = NO_FLAGS
+		to_chat(unlucky_mob, SPAN_WARNING("The ocean currents sweep you off your feet and throw you away!"))
+		unlucky_mob.launch_towards(LM)
+		return
+
+	if(world.time % 5)
+		if(ismob(AM))
+			var/mob/rivermob = AM
+			to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
 
 /turf/open/gm/coast
 	name = "coastline"
@@ -495,6 +600,44 @@
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
 
+/turf/open/gm/coast/north
+
+/turf/open/gm/coast/south
+	dir = 1
+
+/turf/open/gm/coast/west
+	dir = 4
+
+/turf/open/gm/coast/east
+	dir = 8
+
+/turf/open/gm/coast/beachcorner
+	icon_state = "beachcorner"
+
+/turf/open/gm/coast/beachcorner/north_west
+
+/turf/open/gm/coast/beachcorner/north_east
+	dir = 1
+
+/turf/open/gm/coast/beachcorner/south_east
+	dir = 4
+
+/turf/open/gm/coast/beachcorner/south_west
+	dir = 8
+
+/turf/open/gm/coast/beachcorner2
+	icon_state = "beachcorner2"
+
+/turf/open/gm/coast/beachcorner2/north_west
+
+/turf/open/gm/coast/beachcorner2/north_east
+	dir = 1
+
+/turf/open/gm/coast/beachcorner2/south_west
+	dir = 4
+
+/turf/open/gm/coast/beachcorner2/south_east
+	dir = 8
 
 /turf/open/gm/riverdeep
 	name = "river"
@@ -502,6 +645,7 @@
 	can_bloody = FALSE
 	baseturfs = /turf/open/gm/riverdeep
 	supports_surgery = FALSE
+	minimap_color = MINIMAP_WATER
 
 
 /turf/open/gm/riverdeep/Initialize(mapload, ...)
@@ -520,7 +664,7 @@
 	name = "empty space"
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "black"
-	density = 1
+	density = TRUE
 	supports_surgery = FALSE
 
 /turf/open/gm/empty/is_weedable()
@@ -581,7 +725,7 @@
 	var/bushes_spawn = 1
 	var/plants_spawn = 1
 	name = "wet grass"
-	desc = "Thick, long wet grass"
+	desc = "Thick, long, wet grass."
 	icon = 'icons/turf/floors/jungle.dmi'
 	icon_state = "grass1"
 	var/icon_spawn_state = "grass1"
@@ -618,7 +762,7 @@
 
 
 
-/turf/open/jungle/proc/Spread(var/probability, var/prob_loss = 50)
+/turf/open/jungle/proc/Spread(probability, prob_loss = 50)
 	if(probability <= 0)
 		return
 	for(var/turf/open/jungle/J in orange(1, src))
@@ -634,7 +778,7 @@
 		if(P && prob(probability))
 			P.Spread(probability - prob_loss)
 
-/turf/open/jungle/attackby(var/obj/item/I, var/mob/user)
+/turf/open/jungle/attackby(obj/item/I, mob/user)
 	//Light Stick
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
@@ -647,7 +791,7 @@
 			return
 
 		user.visible_message("\blue[user.name] planted \the [L] into [src].")
-		L.anchored = 1
+		L.anchored = TRUE
 		L.icon_state = "lightstick_[L.s_color][L.anchored]"
 		user.drop_held_item()
 		L.forceMove(src)
@@ -670,6 +814,7 @@
 	icon = 'icons/turf/floors/jungle.dmi'
 	icon_state = "grass_path"
 	icon_spawn_state = "dirt"
+	minimap_color = MINIMAP_DIRT
 
 /turf/open/jungle/path/Initialize(mapload, ...)
 	. = ..()
@@ -743,7 +888,7 @@
 
 /turf/open/jungle/water/deep
 	plants_spawn = 0
-	density = 1
+	density = TRUE
 	icon_state = "water2"
 	icon_spawn_state = "water2"
 
@@ -778,7 +923,7 @@
 	icon_state = "plating"
 
 /turf/open/shuttle/brig // Added this floor tile so that I have a separate turf to check in the shuttle -- Polymorph
-	name = "Brig floor"        // Also added it into the 2x3 brig area of the shuttle.
+	name = "Brig floor" // Also added it into the 2x3 brig area of the shuttle.
 	icon_state = "floor4"
 
 /turf/open/shuttle/escapepod

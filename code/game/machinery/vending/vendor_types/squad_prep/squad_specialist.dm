@@ -9,9 +9,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 		list("Sniper Set", 0, /obj/item/storage/box/spec/sniper, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
 
 		list("EXTRA SCOUT AMMUNITION", 0, null, null, null),
-		list("A19 High Velocity Impact Magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/m4ra/impact, null, VENDOR_ITEM_REGULAR),
-		list("A19 High Velocity Incendiary Magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/m4ra/incendiary, null, VENDOR_ITEM_REGULAR),
-		list("A19 High Velocity Magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/m4ra, null, VENDOR_ITEM_REGULAR),
+		list("A19 High Velocity Impact Magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/m4ra/custom/impact, null, VENDOR_ITEM_REGULAR),
+		list("A19 High Velocity Incendiary Magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary, null, VENDOR_ITEM_REGULAR),
+		list("A19 High Velocity Magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/m4ra/custom, null, VENDOR_ITEM_REGULAR),
 
 		list("EXTRA SNIPER AMMUNITION", 0, null, null, null),
 		list("M42A Flak Magazine (10x28mm)", 15, /obj/item/ammo_magazine/sniper/flak, null, VENDOR_ITEM_REGULAR),
@@ -50,7 +50,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 		list("JTAC Pamphlet", 15, /obj/item/pamphlet/skill/jtac, null, VENDOR_ITEM_REGULAR),
 		list("Engineering Pamphlet", 15, /obj/item/pamphlet/skill/engineer, null, VENDOR_ITEM_REGULAR),
 		list("Powerloader Certification", 45, /obj/item/pamphlet/skill/powerloader, null, VENDOR_ITEM_REGULAR),
-		list("Large Shotgun Shell Pouch", 10, /obj/item/storage/pouch/shotgun/large, null, VENDOR_ITEM_REGULAR),
 
 		list("RADIO KEYS", 0, null, null, null),
 		list("Engineering Radio Encryption Key", 5, /obj/item/device/encryptionkey/engi, null, VENDOR_ITEM_REGULAR),
@@ -68,7 +67,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 	vendor_role = list(JOB_SQUAD_SPECIALIST)
 	req_access = list(ACCESS_MARINE_SPECPREP)
 
-/obj/structure/machinery/cm_vending/gear/spec/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/gear/spec/get_listed_products(mob/user)
 	return GLOB.cm_vending_gear_spec
 
 
@@ -81,6 +80,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 		list("Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/marine, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
+		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
 
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 		list("Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
@@ -96,16 +96,16 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 		list("M276 Shotgun Shell Loading Rig", 0, /obj/item/storage/belt/shotgun, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
-		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_RECOMMENDED),
-		list("First-Aid Pouch (Splints, Gauze, Ointment)", 0, /obj/item/storage/pouch/firstaid/full/alternate, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_RECOMMENDED),
-		list("First-Aid Pouch (Pill Packets)", 0, /obj/item/storage/pouch/firstaid/full/pills, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_RECOMMENDED),
-		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		list("Large Magazine Pouch", 0, /obj/item/storage/pouch/magazine/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_RECOMMENDED),
-		list("Large Shotgun Shell Pouch", 0, /obj/item/storage/pouch/shotgun/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_RECOMMENDED),
-		list("Large Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		list("Medium General Pouch", 0, /obj/item/storage/pouch/general/medium, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		list("Pistol Pouch", 0, /obj/item/storage/pouch/pistol, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("First-Aid Pouch (Splints, Gauze, Ointment)", 0, /obj/item/storage/pouch/firstaid/full/alternate, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("First-Aid Pouch (Pill Packets)", 0, /obj/item/storage/pouch/firstaid/full/pills, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Magazine Pouch", 0, /obj/item/storage/pouch/magazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("Shotgun Shell Pouch", 0, /obj/item/storage/pouch/shotgun, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("Large Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Medium General Pouch", 0, /obj/item/storage/pouch/general/medium, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Pistol Pouch", 0, /obj/item/storage/pouch/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
 		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
@@ -125,7 +125,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 	req_access = list(ACCESS_MARINE_SPECPREP)
 	vendor_role = list(JOB_SQUAD_SPECIALIST)
 
-/obj/structure/machinery/cm_vending/clothing/specialist/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/specialist/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_specialist
 
 /obj/structure/machinery/cm_vending/clothing/specialist/alpha
@@ -152,22 +152,22 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 
 /obj/effect/essentials_set/hedp_6_pack
 	spawned_gear_list = list(
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
 	)
 
 /obj/effect/essentials_set/hefa_6_pack
 	spawned_gear_list = list(
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
 	)
 
 /obj/effect/essentials_set/hidp_6_pack
@@ -192,12 +192,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 
 /obj/effect/essentials_set/agmf_6_pack
 	spawned_gear_list = list(
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
 	)
 
 /obj/effect/essentials_set/agmi_6_pack

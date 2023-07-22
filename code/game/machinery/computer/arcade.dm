@@ -6,6 +6,7 @@
 	circuit = /obj/item/circuitboard/computer/arcade
 	unacidable = FALSE
 	density = TRUE
+	black_market_value = 35 //mendoza likes games
 	var/enemy_name = "Fury Fuhrer"
 	var/temp = "Sponsored by Weyland-Yutani and the United States Colonial Marines" //Temporary message, for attack messages, etc
 	var/player_hp = 30 //Player health/attack points
@@ -14,16 +15,16 @@
 	var/enemy_mp = 25
 	var/gameover = 0
 	var/blocked = 0 //Player cannot attack/heal while set
-	var/list/prizes = list(	/obj/item/storage/box/MRE			    = 3,
-							/obj/item/spacecash/c10					= 4,
-							/obj/item/ammo_magazine/flamer_tank			    = 1,
-							/obj/item/tool/lighter/zippo			= 2,
-							/obj/item/tool/weldingtool					= 1,
-							/obj/item/storage/box/uscm_mre			= 2,
-							/obj/item/device/camera				        	= 2,
-							/obj/item/device/camera_film					= 4,
-							/obj/item/cell/crap/empty				= 3,
-							/obj/item/tool/hand_labeler					= 1
+	var/list/prizes = list( /obj/item/storage/box/MRE = 3,
+							/obj/item/spacecash/c10 = 4,
+							/obj/item/ammo_magazine/flamer_tank = 1,
+							/obj/item/tool/lighter/zippo = 2,
+							/obj/item/tool/weldingtool = 1,
+							/obj/item/storage/box/uscm_mre = 2,
+							/obj/item/device/camera = 2,
+							/obj/item/device/camera_film = 4,
+							/obj/item/cell/crap/empty = 3,
+							/obj/item/tool/hand_labeler = 1
 							)
 
 /obj/structure/machinery/computer/arcade
@@ -129,7 +130,7 @@
 					new /obj/item/toy/gun_ammo(src.loc)
 
 				else if(istype(prizeselect, /obj/item/clothing/suit/syndicatefake)) //Helmet is part of the suit
-					new	/obj/item/clothing/head/syndicatefake(src.loc)
+					new /obj/item/clothing/head/syndicatefake(src.loc)
 
 			else
 				var/atom/movable/prize = pick(contents)

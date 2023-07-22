@@ -191,7 +191,7 @@ SUBSYSTEM_DEF(vote)
 	return .
 
 
-/datum/controller/subsystem/vote/proc/handle_client_joining(var/dcs, var/client/C)
+/datum/controller/subsystem/vote/proc/handle_client_joining(dcs, client/C)
 	SIGNAL_HANDLER
 
 	var/datum/action/innate/vote/V = give_action(C.mob, /datum/action/innate/vote)
@@ -231,9 +231,11 @@ SUBSYSTEM_DEF(vote)
 
 		carryover[i] += vote.total_votes
 
-/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, datum/callback/on_end)
+/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, datum/callback/on_end, send_clients_vote = FALSE)
 	var/vote_sound = 'sound/ambience/alarm4.ogg'
 	var/vote_sound_vol = 5
+	var/randomize_entries = FALSE
+
 	if(!mode)
 		var/admin = FALSE
 		var/ckey = ckey(initiator_key)
@@ -269,6 +271,7 @@ SUBSYSTEM_DEF(vote)
 				choices.Add("Restart Round", "Continue Playing")
 			if("gamemode")
 				question = "Gamemode vote"
+				randomize_entries = TRUE
 				for(var/mode_type in config.gamemode_cache)
 					var/datum/game_mode/M = initial(mode_type)
 					if(initial(M.config_tag))
@@ -279,6 +282,7 @@ SUBSYSTEM_DEF(vote)
 				question = "Ground map vote"
 				vote_sound = 'sound/voice/start_your_voting.ogg'
 				vote_sound_vol = 15
+				randomize_entries = TRUE
 				var/list/maps = list()
 				for(var/i in config.maplist[GROUND_MAP])
 					var/datum/map_config/VM = config.maplist[GROUND_MAP][i]
@@ -301,12 +305,13 @@ SUBSYSTEM_DEF(vote)
 				choices.Add(maps)
 				if(!length(choices))
 					return FALSE
-				SSentity_manager.filter_then(/datum/entity/map_vote, null, CALLBACK(src, .proc/carry_over_callback))
+				SSentity_manager.filter_then(/datum/entity/map_vote, null, CALLBACK(src, PROC_REF(carry_over_callback)))
 
 				if(CONFIG_GET(flag/allow_vote_adjustment_callback))
-					vote_adjustment_callback = CALLBACK(src, .proc/map_vote_adjustment)
+					vote_adjustment_callback = CALLBACK(src, PROC_REF(map_vote_adjustment))
 			if("shipmap")
 				question = "Ship map vote"
+				randomize_entries = TRUE
 				var/list/maps = list()
 				for(var/i in config.maplist[SHIP_MAP])
 					var/datum/map_config/VM = config.maplist[SHIP_MAP][i]
@@ -331,8 +336,15 @@ SUBSYSTEM_DEF(vote)
 					if(!option || mode || !usr.client)
 						break
 					choices.Add(option)
+
+				if(tgui_input_list(usr, "Do you want to randomize the vote option order?", "Randomize", list("Yes", "No")) == "Yes")
+					randomize_entries = TRUE
+
 			else
 				return FALSE
+
+		if(randomize_entries)
+			choices = shuffle(choices)
 
 		for(var/i in choices)
 			choices[i] = 0
@@ -355,8 +367,10 @@ SUBSYSTEM_DEF(vote)
 			if(question)
 				V.set_name("Vote: [question]")
 			C.player_details.player_actions += V
+			if(send_clients_vote)
+				C.mob.vote()
 
-		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN, .proc/handle_client_joining)
+		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN, PROC_REF(handle_client_joining))
 		SStgui.update_uis(src)
 		return TRUE
 	return FALSE
@@ -387,7 +401,7 @@ SUBSYSTEM_DEF(vote)
 
 /datum/action/innate/vote/give_to(mob/M)
 	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_REMOVE_VOTE_BUTTON, .proc/remove_vote_action)
+	RegisterSignal(SSdcs, COMSIG_GLOB_REMOVE_VOTE_BUTTON, PROC_REF(remove_vote_action))
 
 /datum/action/innate/vote/proc/remove_vote_action(datum/source)
 	SIGNAL_HANDLER
@@ -437,11 +451,11 @@ SUBSYSTEM_DEF(vote)
 
 // possible_vote_types JSON TABLE FOR THE CLIENT MENU
 // PARAMETERS
-// name					string		display name
-// icon					string		font awesome icon
-// color 				string		color, not in hex
-// admin_only			boolean		controls whether an option is admin_only
-// variable_required	string		The vote may not be activated (by non-admins) if a variable passed in data does not evaluate to true.
+// name string display name
+// icon string font awesome icon
+// color string color, not in hex
+// admin_only boolean controls whether an option is admin_only
+// variable_required string The vote may not be activated (by non-admins) if a variable passed in data does not evaluate to true.
 GLOBAL_LIST_INIT(possible_vote_types, list(
 	"restart" = list(
 		"name" = "Restart Vote",

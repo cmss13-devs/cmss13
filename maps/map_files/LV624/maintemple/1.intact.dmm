@@ -49,15 +49,11 @@
 	dir = 8
 	},
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "aO" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1;
-	tag = "icon-comfychair (EAST)"
+	dir = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -146,7 +142,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dF" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dJ" = (
 /obj/structure/barricade/handrail/strata{
@@ -186,19 +182,19 @@
 	dir = 4;
 	health = 80
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -2
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 2
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 10
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -250,12 +246,12 @@
 "eY" = (
 /obj/structure/showcase{
 	color = "#FFE55C";
-	desc = "This statue seems taller and somehow mightier than the others.. it makes you want to steer away from it.";
+	desc = "This statue seems taller and somehow mightier than the others... it makes you want to steer away from it.";
 	icon = 'icons/mob/humans/species/r_synthetic.dmi';
 	icon_state = "Synthetic_Template";
 	name = "massive statue"
 	},
-/obj/item/weapon/melee/yautja/combistick{
+/obj/item/weapon/yautja/combistick{
 	anchored = 1;
 	color = "#FFE55C";
 	desc = "This ancient and frayed gilded spear almost gleans with its razor-sharp edge.";
@@ -282,10 +278,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "fl" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/caves/sand_temple)
 "fD" = (
 /obj/structure/barricade/handrail/strata{
@@ -294,9 +287,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "fE" = (
 /obj/structure/bed/alien{
@@ -342,9 +333,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "gw" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "gA" = (
 /obj/structure/curtain/red,
@@ -354,10 +343,10 @@
 /area/lv624/ground/caves/sand_temple)
 "gI" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush{
-	desc = "The oranges aren't done yet.. this sucks.";
+	desc = "The oranges aren't done yet... this sucks.";
 	name = "orange tree"
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/sand_temple)
 "gL" = (
 /turf/open/floor/strata{
@@ -369,7 +358,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/twohanded/yautja/spear,
+/obj/item/weapon/twohanded/yautja/spear,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -395,24 +384,22 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "hi" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "hu" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/yautja/knife{
+/obj/item/weapon/yautja/knife{
 	color = "#FFE55C";
 	name = "sacred ceremonial dagger";
 	pixel_x = -10
 	},
-/obj/item/weapon/melee/yautja/knife{
+/obj/item/weapon/yautja/knife{
 	color = "#FFE55C";
 	name = "sacred ceremonial dagger"
 	},
-/obj/item/weapon/melee/yautja/knife{
+/obj/item/weapon/yautja/knife{
 	color = "#FFE55C";
 	name = "sacred ceremonial dagger";
 	pixel_x = 9
@@ -431,7 +418,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "hD" = (
-/obj/item/weapon/melee/yautja/knife,
+/obj/item/weapon/yautja/knife,
 /turf/open/gm/dirtgrassborder{
 	icon_state = "desert2"
 	},
@@ -458,7 +445,7 @@
 /area/lv624/ground/caves/sand_temple)
 "ig" = (
 /obj/structure/morgue/sarcophagus,
-/obj/item/weapon/melee/twohanded/yautja/glaive/damaged{
+/obj/item/weapon/twohanded/yautja/glaive/damaged{
 	name = "damaged war glaive"
 	},
 /turf/open/floor/corsat{
@@ -478,7 +465,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "iN" = (
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	pixel_x = -6;
 	pixel_y = 7
 	},
@@ -564,7 +551,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},
@@ -648,7 +635,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "mZ" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},
@@ -765,7 +752,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "rI" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -888,7 +875,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	layer = 3.1;
 	pixel_x = 6;
 	pixel_y = 7
@@ -1096,7 +1083,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -1135,7 +1122,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple/powered)
 "BI" = (
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	pixel_x = 6;
 	pixel_y = 7
 	},
@@ -1189,9 +1176,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "DH" = (
 /obj/structure/showcase{
@@ -1201,7 +1186,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	layer = 3.1;
 	pixel_x = -6;
 	pixel_y = 7
@@ -1243,7 +1228,7 @@
 	dir = 4;
 	health = 80
 	},
-/obj/item/weapon/melee/claymore/mercsword/machete{
+/obj/item/weapon/claymore/mercsword/machete{
 	desc = "This machete seems not standard issue, indeed it seems to be an ancient military design. Smells like the jungle.";
 	name = "\improper Dutch's Machete"
 	},
@@ -1341,7 +1326,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},
@@ -1380,10 +1365,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Jc" = (
 /turf/open/shuttle{
@@ -1391,7 +1373,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "Je" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -1484,7 +1466,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -1533,8 +1515,7 @@
 /area/lv624/ground/caves/sand_temple)
 "MB" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 4;
-	tag = "icon-comfychair (EAST)"
+	dir = 4
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -1653,7 +1634,7 @@
 	},
 /area/lv624/ground/caves/sand_temple/powered)
 "PO" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},
@@ -1682,9 +1663,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "QL" = (
 /obj/structure/stairs/perspective{
@@ -1703,8 +1682,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Rx" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 8;
-	tag = "icon-comfychair (EAST)"
+	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -1790,9 +1768,7 @@
 	color = "#b29082"
 	},
 /turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple{
-	color = "#b29082"
-	})
+/area/lv624/ground/caves/sand_temple)
 "UU" = (
 /obj/structure/xenoautopsy/tank/broken,
 /turf/open/shuttle{
@@ -1814,12 +1790,11 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "Vu" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/sand_temple)
 "Wl" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1;
-	tag = "icon-comfychair (EAST)"
+	dir = 1
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -1849,12 +1824,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"Xb" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082"
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "Xg" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -1862,10 +1831,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Xz" = (
 /obj/structure/platform/mineral/sandstone/runed{
@@ -1875,8 +1841,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "XV" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1;
-	tag = "icon-comfychair (EAST)"
+	dir = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple/powered)
@@ -1918,10 +1883,7 @@
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8
 	},
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/east_river)
 "Zt" = (
 /obj/structure/prop/brazier,
@@ -2710,7 +2672,7 @@ mv
 mv
 kO
 PA
-Xb
+UP
 mv
 mv
 mv
@@ -2794,7 +2756,7 @@ mv
 mv
 kO
 PA
-Xb
+UP
 mv
 mv
 mv

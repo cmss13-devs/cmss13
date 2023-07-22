@@ -4,10 +4,7 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/sand_temple)
 "ap" = (
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "as" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -24,14 +21,11 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "ax" = (
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/lv624/ground/caves/sand_temple)
 "aA" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/caves/sand_temple)
 "aI" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -52,16 +46,11 @@
 	dir = 8
 	},
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "aO" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "aT" = (
 /obj/structure/stairs/perspective{
@@ -75,9 +64,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "bP" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "bZ" = (
@@ -85,16 +72,10 @@
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "ci" = (
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/caves/sand_temple)
 "de" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dr" = (
 /obj/structure/stairs/perspective{
@@ -143,7 +124,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dF" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dJ" = (
 /obj/structure/barricade/handrail/strata{
@@ -170,10 +151,7 @@
 /area/lv624/ground/caves/sand_temple)
 "dQ" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/caves/sand_temple)
 "dV" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -194,9 +172,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "ez" = (
-/turf/open/gm/coast{
-	dir = 4
-	},
+/turf/open/gm/coast/west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "eM" = (
 /obj/structure/stairs/perspective{
@@ -207,16 +183,11 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "eY" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
-/turf/open/gm/dirtgrassborder,
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "fl" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/caves/sand_temple)
 "fD" = (
 /obj/structure/barricade/handrail/strata{
@@ -225,30 +196,20 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "fE" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 4
 	},
-/turf/open/gm/coast{
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/caves/sand_temple)
 "fP" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
-/turf/open/gm/coast{
-	dir = 8
-	},
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/coast/east,
 /area/lv624/ground/caves/sand_temple)
 "gw" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "gA" = (
 /obj/structure/curtain/red,
@@ -258,10 +219,10 @@
 /area/lv624/ground/caves/sand_temple)
 "gI" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush{
-	desc = "The oranges aren't done yet.. this sucks.";
+	desc = "The oranges aren't done yet... this sucks.";
 	name = "orange tree"
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/sand_temple)
 "gL" = (
 /turf/open/floor/strata{
@@ -273,10 +234,7 @@
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/caves/sand_temple)
 "gY" = (
 /obj/structure/stairs/perspective{
@@ -298,21 +256,14 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "hi" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "hu" = (
-/obj/item/weapon/melee/claymore/mercsword,
-/turf/open/gm/coast{
-	icon_state = "beachcorner2"
-	},
+/obj/item/weapon/claymore/mercsword,
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/caves/sand_temple)
 "hA" = (
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/caves/sand_temple)
 "hD" = (
 /turf/open/gm/dirtgrassborder{
@@ -321,13 +272,10 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "hO" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 8;
-	tag = "icon-comfychair (EAST)"
+	dir = 8
 	},
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
-/turf/open/gm/dirtgrassborder,
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "ic" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -339,7 +287,7 @@
 /area/lv624/ground/caves/sand_temple)
 "ig" = (
 /obj/structure/morgue/sarcophagus,
-/obj/item/weapon/melee/twohanded/yautja/glaive/damaged{
+/obj/item/weapon/twohanded/yautja/glaive/damaged{
 	name = "damaged war glaive"
 	},
 /turf/open/floor/corsat{
@@ -363,16 +311,11 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "iM" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/caves/sand_temple)
 "iN" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/caves/sand_temple)
 "iW" = (
 /obj/structure/barricade/handrail/strata{
@@ -386,33 +329,19 @@
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
 "ja" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/caves/sand_temple)
 "jZ" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/caves/sand_temple)
 "ky" = (
 /obj/structure/platform/mineral/sandstone/runed,
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/caves/sand_temple)
 "lm" = (
-/turf/open/gm/coast{
-	dir = 8
-	},
+/turf/open/gm/coast/east,
 /area/lv624/ground/caves/sand_temple)
 "lt" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -453,7 +382,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},
@@ -513,7 +442,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "mZ" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},
@@ -543,9 +472,7 @@
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/caves/sand_temple)
 "od" = (
 /obj/structure/platform/mineral/sandstone/runed{
@@ -575,9 +502,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "po" = (
-/turf/open/gm/coast{
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/caves/sand_temple)
 "pu" = (
 /obj/structure/stairs/perspective{
@@ -593,10 +518,7 @@
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/caves/sand_temple)
 "pN" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
@@ -631,10 +553,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "rd" = (
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/caves/sand_temple)
 "rA" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
@@ -643,7 +562,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "rI" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -758,7 +677,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	layer = 3.1;
 	pixel_x = 6;
 	pixel_y = 7
@@ -820,13 +739,8 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "vC" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/caves/sand_temple)
 "vN" = (
 /obj/structure/platform/mineral/sandstone/runed{
@@ -835,10 +749,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "vY" = (
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/caves/sand_temple)
 "we" = (
 /obj/structure/stairs/perspective{
@@ -899,24 +810,17 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "wP" = (
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/caves/sand_temple)
 "wQ" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/caves/sand_temple)
 "wR" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 1
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/sand_temple)
 "wS" = (
 /obj/structure/showcase{
@@ -930,9 +834,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "wU" = (
-/turf/open/gm/coast{
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/caves/sand_temple)
 "wZ" = (
 /turf/open/gm/dirtgrassborder{
@@ -940,15 +842,10 @@
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
 "xp" = (
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "xu" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "xx" = (
@@ -978,17 +875,11 @@
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/caves/sand_temple)
 "yf" = (
 /obj/effect/landmark/yautja_teleport,
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "yh" = (
 /obj/structure/platform/mineral/sandstone/runed{
@@ -1028,13 +919,10 @@
 	dir = 8;
 	layer = 3.01
 	},
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/lv624/ground/caves/sand_temple)
 "zA" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/caves/sand_temple)
 "zO" = (
 /obj/structure/platform/mineral/sandstone/runed{
@@ -1051,9 +939,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Ak" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/gm/coast{
-	dir = 8
-	},
+/turf/open/gm/coast/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Ao" = (
 /obj/structure/showcase{
@@ -1063,7 +949,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -1079,15 +965,10 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Aw" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/caves/sand_temple)
 "AB" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "AQ" = (
 /obj/structure/stairs/perspective{
@@ -1121,7 +1002,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "BI" = (
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	pixel_x = 6;
 	pixel_y = 7
 	},
@@ -1175,23 +1056,18 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "Dj" = (
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Dl" = (
 /obj/structure/platform/mineral/sandstone/runed,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "Ds" = (
-/obj/structure/flora/jungle/plantbot1{
-	icon_state = "alienplant1";
+/obj/structure/flora/jungle/alienplant1{
 	layer = 4.13;
-	luminosity = 2;
 	pixel_y = 18
 	},
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "Dw" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -1200,9 +1076,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "DH" = (
 /obj/structure/showcase{
@@ -1212,7 +1086,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	layer = 3.1;
 	pixel_x = -6;
 	pixel_y = 7
@@ -1233,10 +1107,7 @@
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8
 	},
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/east_river)
 "Eq" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1256,26 +1127,15 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "Es" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner"
-	},
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/caves/sand_temple)
 "EB" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/caves/sand_temple)
 "EJ" = (
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/caves/sand_temple)
 "EM" = (
 /obj/structure/showcase{
@@ -1312,7 +1172,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "Ff" = (
-/obj/item/weapon/melee/twohanded/yautja/spear,
+/obj/item/weapon/twohanded/yautja/spear,
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 4
 	},
@@ -1331,17 +1191,12 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "FS" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /obj/item/hunting_trap{
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/caves/sand_temple)
 "Ge" = (
 /turf/open/floor/corsat{
@@ -1356,9 +1211,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "Gu" = (
-/turf/open/gm/coast{
-	dir = 8
-	},
+/turf/open/gm/coast/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "GO" = (
 /obj/structure/stairs/perspective{
@@ -1390,12 +1243,9 @@
 "Hk" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/bed/chair/comfy/black{
-	dir = 1;
-	tag = "icon-comfychair (EAST)"
+	dir = 1
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/caves/sand_temple)
 "Hl" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1426,7 +1276,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},
@@ -1450,10 +1300,7 @@
 	pixel_x = 10;
 	pixel_y = 3
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/caves/sand_temple)
 "Ix" = (
 /obj/structure/barricade/handrail/strata,
@@ -1469,10 +1316,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Jc" = (
 /turf/open/shuttle{
@@ -1480,7 +1324,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "Je" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -1562,21 +1406,16 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Ki" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/caves/sand_temple)
 "Kk" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Kr" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 1
 	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/caves/sand_temple)
 "KB" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1600,18 +1439,14 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "KL" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Lg" = (
 /turf/open/gm/river,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Lt" = (
 /obj/item/reagent_container/food/snacks/stew,
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/south,
 /area/lv624/ground/caves/sand_temple)
 "LF" = (
 /obj/structure/stairs/perspective{
@@ -1632,7 +1467,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -1677,15 +1512,10 @@
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "MB" = (
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/south,
 /area/lv624/ground/caves/sand_temple)
 "MD" = (
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "MK" = (
 /turf/open/gm/dirtgrassborder{
@@ -1693,9 +1523,7 @@
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
 "MX" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "Nt" = (
@@ -1750,9 +1578,7 @@
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 1
 	},
-/turf/open/gm/coast{
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/caves/sand_temple)
 "PA" = (
 /obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
@@ -1777,7 +1603,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "PO" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},
@@ -1805,17 +1631,13 @@
 /area/lv624/ground/caves/sand_temple)
 "PR" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed,
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/south,
 /area/lv624/ground/caves/sand_temple)
 "QG" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "QL" = (
 /obj/structure/stairs/perspective{
@@ -1830,15 +1652,10 @@
 /area/lv624/ground/caves/sand_temple)
 "QX" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 4;
-	tag = "icon-comfychair (EAST)"
-	},
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
-/turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/caves/sand_temple)
 "Rg" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -1850,8 +1667,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Rx" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 8;
-	tag = "icon-comfychair (EAST)"
+	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -1903,21 +1719,17 @@
 /turf/open/gm/river,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "TY" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3"
-	},
+/obj/structure/flora/jungle/vines/light_3,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/caves/sand_temple)
 "Ug" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8
 	},
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/lv624/ground/caves/sand_temple)
 "Uk" = (
 /obj/structure/stairs/perspective{
@@ -1931,9 +1743,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/caves/sand_temple)
 "UK" = (
 /turf/open/gm/dirtgrassborder{
@@ -1954,13 +1764,11 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "Vu" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/sand_temple)
 "Wl" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/caves/sand_temple)
 "Ws" = (
 /obj/structure/barricade/handrail/strata{
@@ -1988,15 +1796,11 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "XV" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1;
-	tag = "icon-comfychair (EAST)"
+	dir = 1
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
@@ -2004,9 +1808,7 @@
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 1
 	},
-/turf/open/gm/coast{
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/caves/sand_temple)
 "Yu" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{

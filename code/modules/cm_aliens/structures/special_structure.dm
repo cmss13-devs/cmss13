@@ -2,7 +2,7 @@
  * Special Structures
  */
 
-/proc/get_xeno_structure_desc(var/name)
+/proc/get_xeno_structure_desc(name)
 	var/message
 	switch(name)
 		if(XENO_STRUCTURE_CORE)
@@ -24,6 +24,7 @@
 /obj/effect/alien/resin/special
 	name = "Special Resin Structure"
 	icon = 'icons/mob/xenos/structures64x64.dmi'
+	icon_state = ""
 	pixel_x = -16
 	pixel_y = -16
 	health = 200
@@ -38,7 +39,7 @@
 
 	plane = FLOOR_PLANE
 
-/obj/effect/alien/resin/special/Initialize(mapload, var/hive_ref)
+/obj/effect/alien/resin/special/Initialize(mapload, hive_ref)
 	. = ..()
 	maxhealth = health
 
@@ -65,6 +66,6 @@
 
 	. = ..()
 
-/obj/effect/alien/resin/special/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/effect/alien/resin/special/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.can_destroy_special() || M.hivenumber != linked_hive.hivenumber)
 		return ..()

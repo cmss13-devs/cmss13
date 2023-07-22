@@ -75,21 +75,21 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_METABOLITE
 
-/datum/chem_property/neutral/ketogenic/process(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/ketogenic/process(mob/living/M, potency = 1)
 	M.nutrition = max(M.nutrition - POTENCY_MULTIPLIER_VHIGH * potency, 0)
 	M.overeatduration = 0
 	if(M.reagents.remove_all_type(/datum/reagent/ethanol, potency, 0, 1)) //Ketosis causes rapid metabolization of alcohols
 		M.confused = min(M.confused + potency,10*potency)
 		M.drowsyness = min(M.drowsyness + potency,15*potency)
 
-/datum/chem_property/neutral/ketogenic/process_overdose(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/ketogenic/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.nutrition = max(M.nutrition - 5 * potency * delta_time, 0)
 	M.apply_damage(potency, TOX)
 	if(prob(2.5 * potency * delta_time) && ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.vomit()
 
-/datum/chem_property/neutral/ketogenic/process_critical(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/ketogenic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/neuroinhibiting
@@ -101,7 +101,7 @@
 	value = -1
 	max_level = 7
 
-/datum/chem_property/neutral/neuroinhibiting/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/neuroinhibiting/process(mob/living/M, potency = 1, delta_time)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
@@ -115,11 +115,11 @@
 	if(potency > 3)
 		M.sdisabilities |= DISABILITY_MUTE
 
-/datum/chem_property/neutral/neuroinhibiting/process_overdose(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/neuroinhibiting/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(0.5 * potency * delta_time, BRAIN)
 	M.disabilities |= NERVOUS
 
-/datum/chem_property/neutral/neuroinhibiting/process_critical(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/neuroinhibiting/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_MEDIUM * potency, BRAIN)
 
 /datum/chem_property/neutral/alcoholic
@@ -130,25 +130,58 @@
 	category = PROPERTY_TYPE_STIMULANT
 	value = 0
 
-/datum/chem_property/neutral/alcoholic/process(mob/living/M, var/potency = 1, delta_time)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
+/datum/chem_property/neutral/alcoholic/process(mob/living/mob, potency = 1, delta_time)
+	if(ishuman(mob))
+		var/mob/living/carbon/human/human = mob
+		if(human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
 			return
-	M.confused = min(M.confused + 0.5 * potency * delta_time, 5 * potency)
-	M.drowsyness = min(M.drowsyness + 0.5 * potency * delta_time, 5 * potency)
 
-/datum/chem_property/neutral/alcoholic/process_overdose(mob/living/M, var/potency = 1, delta_time)
-	M.confused += min(M.confused + potency * delta_time, 10 * potency)
-	M.drowsyness += min(M.drowsyness + potency * delta_time, 10 * potency)
-	M.apply_damage(0.25 * potency * delta_time, TOX)
+	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_VVLOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
+	mob.drowsyness = min(mob.drowsyness + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
 
-/datum/chem_property/neutral/alcoholic/process_critical(mob/living/M, var/potency = 1, delta_time)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
-		if(L)
-			L.damage += POTENCY_MULTIPLIER_LOW * potency
+	if(prob(50 * delta_time) || potency >= 5)
+		mob.confused = min(mob.confused + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
+		mob.slurring = min(mob.slurring + POTENCY_MULTIPLIER_VLOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
+
+/datum/chem_property/neutral/alcoholic/process_overdose(mob/living/mob, potency = 1, delta_time)
+	mob.apply_damage(POTENCY_MULTIPLIER_VLOW * potency * delta_time, TOX)
+	mob.apply_damage(POTENCY_MULTIPLIER_LOW * potency * delta_time, OXY)
+
+	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_VLOW * potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
+	mob.drowsyness = min(mob.drowsyness + potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
+
+	if(prob(POTENCY_MULTIPLIER_MEDIUM * delta_time))
+		mob.sleeping = min(mob.sleeping + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
+
+	if(prob(POTENCY_MULTIPLIER_MEDIUM * potency * delta_time) && ishuman(mob))
+		var/mob/living/carbon/human/human = mob
+		human.vomit()
+
+	if(prob(75 * delta_time) || potency >= 5)
+		mob.confused = min(mob.confused + potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
+		mob.slurring = min(mob.slurring + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
+
+/datum/chem_property/neutral/alcoholic/process_critical(mob/living/mob, potency = 1, delta_time)
+	mob.apply_damage(POTENCY_MULTIPLIER_LOW * potency * delta_time, TOX)
+	mob.apply_damage(potency * delta_time, OXY)
+
+	mob.confused = min(mob.confused + POTENCY_MULTIPLIER_MEDIUM * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
+	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
+	mob.drowsyness = min(mob.drowsyness + POTENCY_MULTIPLIER_MEDIUM * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
+	mob.slurring = min(mob.slurring + potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
+
+	if(prob(POTENCY_MULTIPLIER_VHIGH * potency * delta_time))
+		mob.sleeping = min(mob.sleeping + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
+
+	if(prob(POTENCY_MULTIPLIER_VHIGH * potency * delta_time) && ishuman(mob))
+		var/mob/living/carbon/human/human = mob
+		human.vomit()
+
+	if(ishuman(mob))
+		var/mob/living/carbon/human/human = mob
+		var/datum/internal_organ/liver/liver = human.internal_organs_by_name["liver"]
+		if(liver)
+			liver.take_damage(POTENCY_MULTIPLIER_LOW * potency, TRUE)
 
 /datum/chem_property/neutral/hallucinogenic
 	name = PROPERTY_HALLUCINOGENIC
@@ -157,7 +190,7 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 
-/datum/chem_property/neutral/hallucinogenic/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/hallucinogenic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(5 * delta_time))
 		M.emote(pick("twitch","drool","moan","giggle"))
 	if(potency > CREATE_MAX_TIER_1)
@@ -165,13 +198,13 @@
 		M.make_jittery(5)
 	M.druggy = min(M.druggy + 0.5 * potency * delta_time, potency * 10)
 
-/datum/chem_property/neutral/hallucinogenic/process_overdose(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/hallucinogenic/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(isturf(M.loc) && !istype(M.loc, /turf/open/space) && M.canmove && !M.is_mob_restrained())
 		step(M, pick(cardinal))
 	M.hallucination += 10
 	M.make_jittery(5)
 
-/datum/chem_property/neutral/hallucinogenic/process_critical(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/hallucinogenic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(0.5 * potency * delta_time, BRAIN)
 	M.apply_effect(20, PARALYZE)
 
@@ -182,19 +215,19 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 
-/datum/chem_property/neutral/relaxing/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/relaxing/process(mob/living/M, potency = 1, delta_time)
 	M.reagent_move_delay_modifier += potency
 	if(prob(5 * delta_time))
 		M.emote("yawn")
 	M.recalculate_move_delay = TRUE
 
-/datum/chem_property/neutral/relaxing/process_overdose(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/relaxing/process_overdose(mob/living/M, potency = 1, delta_time)
 	//heart beats slower
 	M.reagent_move_delay_modifier += POTENCY_MULTIPLIER_MEDIUM * potency
 	if(prob(10))
 		to_chat(M, SPAN_WARNING("You feel incredibly weak!"))
 
-/datum/chem_property/neutral/relaxing/process_critical(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/relaxing/process_critical(mob/living/M, potency = 1, delta_time)
 	//heart stops beating, lungs stop working
 	if(prob(7.5 * potency * delta_time))
 		M.apply_effect(potency, PARALYZE)
@@ -211,7 +244,7 @@
 	category = PROPERTY_TYPE_METABOLITE
 	volatile = TRUE
 
-/datum/chem_property/neutral/hyperthermic/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/hyperthermic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(5 * delta_time))
 		M.emote("gasp")
 		to_chat(M, SPAN_DANGER("<b>Your insides feel uncomfortably hot !</b>"))
@@ -221,11 +254,11 @@
 		M.apply_effect(potency,AGONY,0)
 	M.recalculate_move_delay = TRUE
 
-/datum/chem_property/neutral/hyperthermic/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/hyperthermic/process_overdose(mob/living/M, potency = 1)
 	M.bodytemperature = max(M.bodytemperature + POTENCY_MULTIPLIER_VHIGH * potency,0)
 	M.apply_effect(POTENCY_MULTIPLIER_MEDIUM * potency,AGONY,0)
 
-/datum/chem_property/neutral/hyperthermic/process_critical(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/hyperthermic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/hypothermic
@@ -235,17 +268,17 @@
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_METABOLITE
 
-/datum/chem_property/neutral/hypothermic/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/hypothermic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(5 * delta_time))
 		M.emote("shiver")
 	M.bodytemperature = max(M.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency,0)
 	M.recalculate_move_delay = TRUE
 
-/datum/chem_property/neutral/hypothermic/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/hypothermic/process_overdose(mob/living/M, potency = 1)
 	M.bodytemperature = max(M.bodytemperature - POTENCY_MULTIPLIER_VHIGH * potency,0)
 	M.drowsyness  = max(M.drowsyness, 30)
 
-/datum/chem_property/neutral/hypothermic/process_critical(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/hypothermic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/balding
@@ -257,7 +290,7 @@
 	value = 0
 	max_level = 2
 
-/datum/chem_property/neutral/balding/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/balding/process(mob/living/M, potency = 1, delta_time)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if((H.h_style != "Bald" || H.f_style != "Shaved"))
@@ -266,10 +299,10 @@
 			H.f_style = "Shaved"
 			H.update_hair()
 
-/datum/chem_property/neutral/balding/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/balding/process_overdose(mob/living/M, potency = 1)
 	M.adjustCloneLoss(POTENCY_MULTIPLIER_LOW * potency)
 
-/datum/chem_property/neutral/balding/process_critical(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/balding/process_critical(mob/living/M, potency = 1, delta_time)
 	M.adjustCloneLoss(0.5 * potency * delta_time)
 
 /datum/chem_property/neutral/fluffing
@@ -280,7 +313,7 @@
 	category = PROPERTY_TYPE_IRRITANT
 	value = 0
 
-/datum/chem_property/neutral/fluffing/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/fluffing/process(mob/living/M, potency = 1, delta_time)
 	if(prob(2.5 * potency * delta_time) && ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.h_style = "Bald"
@@ -290,12 +323,12 @@
 		H.update_hair()
 		to_chat(M, SPAN_NOTICE("Your head feels different..."))
 
-/datum/chem_property/neutral/fluffing/process_overdose(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/fluffing/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(prob(2.5 * potency * delta_time))
 		to_chat(M, SPAN_WARNING("You feel itchy all over!"))
 		M.take_limb_damage(potency) //Hair growing inside your body
 
-/datum/chem_property/neutral/fluffing/process_critical(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/fluffing/process_critical(mob/living/M, potency = 1, delta_time)
 	to_chat(M, SPAN_WARNING("You feel like something is penetrating your skull!"))
 	M.apply_damage(0.5 * potency * delta_time, BRAIN) //Hair growing into brain
 
@@ -307,7 +340,7 @@
 	category = PROPERTY_TYPE_IRRITANT
 	value = 0
 
-/datum/chem_property/neutral/allergenic/process(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/allergenic/process(mob/living/M, potency = 1)
 	if(prob(POTENCY_MULTIPLIER_VHIGH * potency))
 		M.emote(pick("sneeze","blink","cough"))
 
@@ -324,7 +357,7 @@
 
 	M.pain.reset_pain_reduction()
 
-/datum/chem_property/neutral/euphoric/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/euphoric/process(mob/living/M, potency = 1, delta_time)
 	if(!..())
 		return
 
@@ -332,11 +365,11 @@
 	if(prob(POTENCY_MULTIPLIER_VHIGH * potency))
 		M.emote(pick("laugh","giggle","chuckle","grin","smile","twitch"))
 
-/datum/chem_property/neutral/euphoric/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/euphoric/process_overdose(mob/living/M, potency = 1)
 	if(prob(POTENCY_MULTIPLIER_VHIGH * potency))
 		M.emote("collapse") //ROFL
 
-/datum/chem_property/neutral/euphoric/process_critical(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/euphoric/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, OXY)
 	to_chat(M, SPAN_WARNING("You are laughing so much you can't breathe!"))
 
@@ -347,15 +380,15 @@
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 
-/datum/chem_property/neutral/emetic/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/emetic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(0.5 * holder.volume * potency * delta_time) && ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.vomit() //vomit() already has a timer on in
 
-/datum/chem_property/neutral/emetic/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/emetic/process_overdose(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_LOW * potency, TOX)
 
-/datum/chem_property/neutral/emetic/process_critical(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/emetic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_LOW * potency, TOX)
 
 /datum/chem_property/neutral/psychostimulating
@@ -367,7 +400,7 @@
 	value = 0
 	max_level = 7
 
-/datum/chem_property/neutral/psychostimulating/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/psychostimulating/process(mob/living/M, potency = 1, delta_time)
 	if(holder.volume <= 0.1 && holder.data != -1)
 		holder.data = -1
 		if(potency == 1)
@@ -382,7 +415,7 @@
 		if(world.time > holder.data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			holder.data = world.time
 			if(potency == 1)
-				to_chat(M, SPAN_NOTICE("Your mind feels stable.. a little stable."))
+				to_chat(M, SPAN_NOTICE("Your mind feels stable... a little stable."))
 				M.confused = max(M.confused-1,0)
 			else if(potency == 2)
 				to_chat(M, SPAN_NOTICE("Your mind feels focused and undivided."))
@@ -394,10 +427,10 @@
 				to_chat(M, SPAN_NOTICE("Your mind feels perfectly focused."))
 				M.confused = 0
 
-/datum/chem_property/neutral/psychostimulating/process_overdose(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/psychostimulating/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(0.5 * potency * delta_time, BRAIN)
 
-/datum/chem_property/neutral/psychostimulating/process_critical(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/psychostimulating/process_critical(mob/living/M, potency = 1, delta_time)
 	M.hallucination = min(200, M.hallucination)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, BRAIN)
 
@@ -409,16 +442,16 @@
 	category = PROPERTY_TYPE_STIMULANT
 	value = 1
 
-/datum/chem_property/neutral/antihallucinogenic/process(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/antihallucinogenic/process(mob/living/M, potency = 1)
 	M.reagents.remove_reagent("mindbreaker", 5)
 	M.reagents.remove_reagent("space_drugs", 5)
 	M.hallucination = max(0, M.hallucination - POTENCY_MULTIPLIER_EXTREME * potency)
 	M.druggy = max(0, M.druggy - POTENCY_MULTIPLIER_EXTREME * potency)
 
-/datum/chem_property/neutral/antihallucinogenic/process_overdose(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/antihallucinogenic/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(0.5 * potency * delta_time, TOX)
 
-/datum/chem_property/neutral/antihallucinogenic/process_critical(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/antihallucinogenic/process_critical(mob/living/M, potency = 1)
 	M.apply_damages(potency, potency, POTENCY_MULTIPLIER_HIGH * potency)
 
 /datum/chem_property/neutral/hypometabolic
@@ -444,7 +477,7 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 
-/datum/chem_property/neutral/sedative/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/sedative/process(mob/living/M, potency = 1, delta_time)
 	if(M.confused < 25 && M.sleeping < 20)
 		M.confused += POTENCY_MULTIPLIER_MEDIUM * potency
 	if(M.confused > 25)
@@ -453,10 +486,10 @@
 	else if(prob(25))
 		M.emote("yawn")
 
-/datum/chem_property/neutral/sedative/process_overdose(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/sedative/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.adjust_effect(0.5 * potency * delta_time, PARALYZE)
 
-/datum/chem_property/neutral/sedative/process_critical(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/sedative/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, OXY)
 
 /datum/chem_property/neutral/hyperthrottling
@@ -467,7 +500,7 @@
 	category = PROPERTY_TYPE_STIMULANT
 	value = 3
 
-/datum/chem_property/neutral/hyperthrottling/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/hyperthrottling/process(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
@@ -480,10 +513,10 @@
 	to_chat(M, SPAN_NOTICE("You feel like you're in a dream. It is as if the world is standing still."))
 	M.universal_understand = TRUE //Brain is working so fast it can understand the intension of everything it hears
 
-/datum/chem_property/neutral/hyperthrottling/process_overdose(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/hyperthrottling/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(1.5 * potency * delta_time, BRAIN)
 
-/datum/chem_property/neutral/hyperthrottling/process_critical(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/hyperthrottling/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_effect(potency * delta_time, PARALYZE)
 
 /datum/chem_property/neutral/viscous
@@ -512,7 +545,7 @@
 	category = PROPERTY_TYPE_REACTANT
 	value = 1
 
-/datum/chem_property/neutral/thermostabilizing/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/thermostabilizing/process(mob/living/M, potency = 1, delta_time)
 	if(M.bodytemperature > 310)
 		M.bodytemperature = max(310, M.bodytemperature - (20 * potency * delta_time * TEMPERATURE_DAMAGE_COEFFICIENT))
 		M.recalculate_move_delay = TRUE
@@ -520,10 +553,10 @@
 		M.bodytemperature = min(310, M.bodytemperature + (20 * potency * delta_time * TEMPERATURE_DAMAGE_COEFFICIENT))
 		M.recalculate_move_delay = TRUE
 
-/datum/chem_property/neutral/thermostabilizing/process_overdose(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/thermostabilizing/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.apply_effect(20, PARALYZE)
 
-/datum/chem_property/neutral/thermostabilizing/process_critical(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/thermostabilizing/process_critical(mob/living/M, potency = 1, delta_time)
 	M.drowsyness  = max(M.drowsyness, 30)
 
 /datum/chem_property/neutral/focusing
@@ -534,22 +567,22 @@
 	category = PROPERTY_TYPE_STIMULANT
 	value = 0
 
-/datum/chem_property/neutral/focusing/process(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/focusing/process(mob/living/M, potency = 1)
 	M.reagents.remove_all_type(/datum/reagent/ethanol, potency, 0, 1)
 	M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
-	M.eye_blurry = max(M.eye_blurry - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+	M.ReduceEyeBlur(POTENCY_MULTIPLIER_MEDIUM * potency)
 	M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	if(potency >= POTENCY_MAX_TIER_1)
-		M.eye_blind = 0
+		M.SetEyeBlind(0)
 		M.silent = 0
 
-/datum/chem_property/neutral/focusing/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/focusing/process_overdose(mob/living/M, potency = 1)
 	M.apply_damage(potency, TOX)
 
-/datum/chem_property/neutral/focusing/process_critical(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/focusing/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(potency * POTENCY_MULTIPLIER_HIGH, TOX)
 
 /datum/chem_property/neutral/transformative
@@ -561,7 +594,7 @@
 	value = 3
 	var/heal_amount = 0.75
 
-/datum/chem_property/neutral/transformative/process(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/transformative/process(mob/living/M, potency = 1, delta_time)
 	var/true_heal = heal_amount * potency * delta_time
 	if(M.getBruteLoss())
 		M.apply_damage(-true_heal, BRUTE)
@@ -570,10 +603,10 @@
 		M.apply_damage(-true_heal, BURN)
 		M.apply_damage(true_heal * 0.1, TOX)
 
-/datum/chem_property/neutral/transformative/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/transformative/process_overdose(mob/living/M, potency = 1)
 	M.apply_damage(heal_amount * (potency * POTENCY_MULTIPLIER_LOW), TOX)
 
-/datum/chem_property/neutral/transformative/process_critical(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/transformative/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(heal_amount * potency * delta_time, TOX)
 
 /datum/chem_property/neutral/unknown
@@ -583,8 +616,8 @@
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_ANOMALOUS|PROPERTY_TYPE_UNADJUSTABLE
 
-/datum/chem_property/neutral/unknown/process_overdose(mob/living/M, var/potency = 1, delta_time)
+/datum/chem_property/neutral/unknown/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(0.5 * potency * delta_time, BRUTE)
 
-/datum/chem_property/neutral/unknown/process_critical(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/unknown/process_critical(mob/living/M, potency = 1)
 	M.apply_damages(POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency)

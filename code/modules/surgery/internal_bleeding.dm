@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////
-//					INTERNAL WOUND PATCHING						//
+// INTERNAL WOUND PATCHING //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/internal_bleeding
@@ -7,11 +7,11 @@
 	priority = SURGERY_PRIORITY_HIGH
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW, SURGERY_DEPTH_DEEP)
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_NOVICE
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 	steps = list(/datum/surgery_step/fix_vein)
 
-/datum/surgery/internal_bleeding/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/internal_bleeding/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	for(var/datum/wound/W as anything in L.wounds)
 		if(W.internal)
 			return TRUE
@@ -24,6 +24,9 @@
 	desc = "mend the damaged blood vessel"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/organ1.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/fix_vein/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

@@ -1,16 +1,18 @@
 /obj
-	//Used to store information about the contents of the object.
+	/// Used to store information about the contents of the object.
 	var/list/matter
-	//determines whether or not the object can be destroyed by an explosion
+	/// determines whether or not the object can be destroyed by an explosion
 	var/indestructible = FALSE
 	var/health = null
-	var/reliability = 100	//Used by SOME devices to determine how reliable they are.
+	/// Used by SOME devices to determine how reliable they are.
+	var/reliability = 100
 	var/crit_fail = 0
-	unacidable = FALSE //universal "unacidabliness" var, here so you can use it in any obj.
+	/// universal "unacidabliness" var, here so you can use it in any obj.
+	unacidable = FALSE
 	animate_movement = 2
 	var/throwforce = 1
-	var/in_use = FALSE // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
-
+	/// If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
+	var/in_use = FALSE
 	var/mob/living/buckled_mob
 	var/buckle_lying = FALSE //Is the mob buckled in a lying position
 	var/can_buckle = FALSE
@@ -18,14 +20,20 @@
 	cares about surface conditions. The lowest multiplier of objects on the tile is used.**/
 	var/surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL
 
-	var/projectile_coverage = 0 //an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile, assuming density and throwpass. Used by barricades, tables and window frames
-	var/garbage = FALSE //set to true if the item is garbage and should be deleted after awhile
+	/// an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile, assuming density and throwpass. Used by barricades, tables and window frames
+	var/projectile_coverage = 0
+	/// set to true if the item is garbage and should be deleted after awhile
+	var/garbage = FALSE
+
 	var/list/req_access = null
 	var/list/req_one_access = null
 	var/req_access_txt = null
 	var/req_one_access_txt = null
 
 	var/flags_obj = NO_FLAGS
+	/// set when a player uses a pen on a renamable object
+	var/renamedByPlayer = FALSE
+
 
 /obj/Initialize(mapload, ...)
 	. = ..()
@@ -38,9 +46,48 @@
 	. = ..()
 	remove_from_garbage(src)
 
+/obj/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_EXPLODE, "Trigger Explosion")
+	VV_DROPDOWN_OPTION(VV_HK_EMPULSE, "Trigger EM Pulse")
+	VV_DROPDOWN_OPTION(VV_HK_SETMATRIX, "Set Base Matrix")
+	VV_DROPDOWN_OPTION("", "-----OBJECT-----")
+	VV_DROPDOWN_OPTION(VV_HK_MASS_DEL_TYPE, "Delete all of type")
+
+/obj/vv_do_topic(list/href_list)
+	. = ..()
+
+	if(href_list[VV_HK_SETMATRIX])
+		if(!check_rights(R_DEBUG|R_ADMIN|R_VAREDIT))
+			return
+
+		if(!LAZYLEN(usr.client.stored_matrices))
+			to_chat(usr, "You don't have any matrices stored!")
+			return
+
+		var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (usr.client.stored_matrices + "Revert to Default" + "Cancel"))
+		if(!matrix_name || matrix_name == "Cancel")
+			return
+		else if (matrix_name == "Revert to Default")
+			base_transform = null
+			transform = matrix()
+			disable_pixel_scaling()
+			return
+
+		var/matrix/MX = LAZYACCESS(usr.client.stored_matrices, matrix_name)
+		if(!MX)
+			return
+
+		base_transform = MX
+		transform = MX
+
+		if (alert(usr, "Would you like to enable pixel scaling?", "Confirm", "Yes", "No") == "Yes")
+			enable_pixel_scaling()
+
+
 // object is being physically reduced into parts
 /obj/proc/deconstruct(disassembled = TRUE)
-	density = 0
+	density = FALSE
 	qdel(src)
 
 /obj/item/proc/is_used_on(obj/O, mob/user)
@@ -58,7 +105,7 @@
 	else
 		. = "[icon2html(src, user)] \a [src]"
 
-/obj/item/proc/get_examine_location(var/mob/living/carbon/human/wearer, var/mob/examiner, var/slot, var/t_He = "They", var/t_his = "their", var/t_him = "them", var/t_has = "have", var/t_is = "are")
+/obj/item/proc/get_examine_location(mob/living/carbon/human/wearer, mob/examiner, slot, t_He = "They", t_his = "their", t_him = "them", t_has = "have", t_is = "are")
 	switch(slot)
 		if(WEAR_HEAD)
 			return "on [t_his] head"
@@ -137,7 +184,7 @@
 	if(istype(M) && M.client && M.interactee == src)
 		attack_self(M)
 
-/obj/proc/update_health(var/damage = 0)
+/obj/proc/update_health(damage = 0)
 	if(damage)
 		health -= damage
 	if(health <= 0)
@@ -150,7 +197,7 @@
 	return
 
 
-/obj/proc/hear_talk(mob/living/M as mob, msg, var/verb="says", var/datum/language/speaking, var/italics = 0)
+/obj/proc/hear_talk(mob/living/M as mob, msg, verb="says", datum/language/speaking, italics = 0)
 	return
 
 /obj/attack_hand(mob/user)
@@ -176,6 +223,7 @@
 
 /obj/proc/afterbuckle(mob/M as mob) // Called after somebody buckled / unbuckled
 	handle_rotation()
+	SEND_SIGNAL(src, COSMIG_OBJ_AFTER_BUCKLE, buckled_mob)
 	return buckled_mob
 
 /obj/proc/unbuckle()
@@ -185,6 +233,7 @@
 		buckled_mob.update_canmove()
 
 		var/M = buckled_mob
+		REMOVE_TRAITS_IN(buckled_mob, TRAIT_SOURCE_BUCKLE)
 		buckled_mob = null
 
 		afterbuckle(M)
@@ -215,18 +264,18 @@
 	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.lying || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
 		return
 
-	if (isXeno(user))
+	if (isxeno(user))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do that, try a nest."))
 		return
 	if (iszombie(user))
 		return
 
 	if(density)
-		density = 0
+		density = FALSE
 		if(!step(M, get_dir(M, src)) && loc != M.loc)
-			density = 1
+			density = TRUE
 			return
-		density = 1
+		density = TRUE
 	else
 		if(M.loc != src.loc)
 			step_towards(M, src) //buckle if you're right next to it
@@ -254,11 +303,9 @@
 		src.add_fingerprint(user)
 		afterbuckle(target)
 		if(buckle_lying) // Make sure buckling to beds/nests etc only turns, and doesn't give a random offset
-			var/matrix/M = matrix()
-			var/matrix/L = matrix() //Counterrotation for langchat text.
-			M.Turn(90)
-			L.Turn(270)
-			target.apply_transform(M)
+			var/matrix/new_matrix = matrix()
+			new_matrix.Turn(90)
+			target.apply_transform(new_matrix)
 		return TRUE
 
 /obj/proc/send_buckling_message(mob/M, mob/user)
@@ -326,9 +373,9 @@
 	var/spritesheet = FALSE
 	if(icon_override)
 		mob_icon = icon_override
-		if(slot == 	WEAR_L_HAND)
+		if(slot == WEAR_L_HAND)
 			mob_state = "[mob_state]_l"
-		if(slot == 	WEAR_R_HAND)
+		if(slot == WEAR_R_HAND)
 			mob_state = "[mob_state]_r"
 	else if(use_spritesheet(bodytype, slot, mob_state))
 		spritesheet = TRUE
@@ -340,11 +387,26 @@
 	else
 		mob_icon = default_onmob_icons[slot]
 
-	if(user_human)
-		return user_human.species.get_offset_overlay_image(spritesheet, mob_icon, mob_state, color, slot)
-	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
+	var/image/overlay_img
 
-/obj/item/proc/use_spritesheet(var/bodytype, var/slot, var/icon_state)
+	if(user_human)
+		overlay_img = user_human.species.get_offset_overlay_image(spritesheet, mob_icon, mob_state, color, slot)
+	else
+		overlay_img = overlay_image(mob_icon, mob_state, color, RESET_COLOR)
+
+	var/inhands = slot == (WEAR_L_HAND || WEAR_R_HAND)
+
+	var/offset_x = worn_x_dimension
+	var/offset_y = worn_y_dimension
+	if(inhands)
+		offset_x = inhand_x_dimension
+		offset_y = inhand_y_dimension
+
+	center_image(overlay_img, offset_x, offset_y)
+
+	return overlay_img
+
+/obj/item/proc/use_spritesheet(bodytype, slot, icon_state)
 	if(!LAZYISIN(sprite_sheets, bodytype))
 		return FALSE
 	if(slot == WEAR_R_HAND || slot == WEAR_L_HAND)
@@ -356,7 +418,7 @@
 	return (slot != WEAR_JACKET && slot != WEAR_HEAD)
 
 // Adding a text string at the end of the object
-/obj/proc/add_label(var/obj/O, user)
+/obj/proc/add_label(obj/O, user)
 	var/label = copytext(reject_bad_text(input(user,"Label text?", "Set label", "")), 1, MAX_NAME_LEN)
 
 	// Checks for valid labelling/name length
@@ -372,7 +434,7 @@
 /obj/proc/extinguish()
 	return
 
-/obj/handle_flamer_fire(obj/flamer_fire/fire, var/damage, var/delta_time)
+/obj/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
 	. = ..()
 	flamer_fire_act(damage, fire.weapon_cause_data)
 
@@ -386,5 +448,9 @@
 
 	return 1 SECONDS
 
-/obj/proc/set_origin_name_prefix(var/name_prefix)
+/obj/proc/set_origin_name_prefix(name_prefix)
+	return
+
+/// override for subtypes that require extra behaviour when spawned from a vendor
+/obj/proc/post_vendor_spawn_hook(mob/living/carbon/human/user)
 	return

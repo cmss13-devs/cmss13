@@ -11,7 +11,7 @@
 	var/flavour_text = "You read over the pamphlet a few times, learning a new skill."
 	var/bypass_pamphlet_limit = FALSE
 
-obj/item/pamphlet/Initialize()
+/obj/item/pamphlet/Initialize()
 	. = ..()
 
 	trait = GLOB.character_traits[trait]
@@ -96,8 +96,8 @@ obj/item/pamphlet/Initialize()
 	user.hud_set_squad()
 
 	var/obj/item/card/id/ID = user.wear_id
-	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Squad Spotter")
-	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Squad Spotter")
+	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Spotter")
+	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Spotter")
 
 /obj/item/pamphlet/skill/machinegunner
 	name = "heavy machinegunner instructional pamphlet"
@@ -111,7 +111,8 @@ obj/item/pamphlet/Initialize()
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has a powerloader insignia. The title reads 'Moving freight and squishing heads - a practical guide to Caterpillar P-5000 Work Loader'."
 	icon_state = "pamphlet_powerloader"
 	trait = /datum/character_trait/skills/powerloader
-	bypass_pamphlet_limit = TRUE //it's really not necessary to stop people from learning powerloader skill
+	/// it's really not necessary to stop people from learning powerloader skill
+	bypass_pamphlet_limit = TRUE
 
 /obj/item/pamphlet/skill/police
 	name = "Policing instructional pamphlet"
@@ -181,6 +182,7 @@ obj/item/pamphlet/Initialize()
 
 /obj/item/pamphlet/language/monkey
 	name = "scribbled drawings"
+	gender = PLURAL
 	desc = "A piece of paper covered in crude depictions of bananas and various types of primates. Probably drawn by a three-year-old child - or an unusually intelligent marine."
 	trait = /datum/character_trait/language/primitive
 

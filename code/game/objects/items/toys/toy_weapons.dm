@@ -1,7 +1,7 @@
 /*
- *		Toy gun
- *		Toy crossbow
- *		Toy swords
+ * Toy gun
+ * Toy crossbow
+ * Toy swords
 */
 
 
@@ -20,7 +20,7 @@
 	matter = list("glass" = 10,"metal" = 10)
 
 	attack_verb = list("struck", "pistol whipped", "hit", "bashed")
-	var/bullets = 7.0
+	var/bullets = 7
 
 /obj/item/toy/gun/get_examine_text(mob/user)
 	desc = "There are [bullets] caps\s left. Looks almost like the real thing! Ages 8 and up."
@@ -54,13 +54,13 @@
 		return
 	src.add_fingerprint(user)
 	if (src.bullets < 1)
-		user.show_message(SPAN_DANGER("*click* *click*"), 2)
+		user.show_message(SPAN_DANGER("*click* *click*"), SHOW_MESSAGE_AUDIBLE)
 		playsound(user, 'sound/weapons/gun_empty.ogg', 15, 1)
 		return
 	playsound(user, 'sound/weapons/Gunshot.ogg', 15, 1)
 	src.bullets--
 	for(var/mob/O in viewers(user, null))
-		O.show_message(SPAN_DANGER("<B>[user] fires a cap gun at [target]!</B>"), 1, SPAN_DANGER("You hear a gunshot"), 2)
+		O.show_message(SPAN_DANGER("<B>[user] fires a cap gun at [target]!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear a gunshot"), SHOW_MESSAGE_AUDIBLE)
 
 /obj/item/toy/gun_ammo
 	name = "ammo-caps"
@@ -72,11 +72,11 @@
 
 	var/amount_left = 7
 
-	update_icon()
-		if(amount_left)
-			icon_state = "cap_ammo"
-		else
-			icon_state = "cap_ammo_e"
+/obj/item/toy/gun_ammo/update_icon()
+	if(amount_left)
+		icon_state = "cap_ammo"
+	else
+		icon_state = "cap_ammo_e"
 
 
 /*
@@ -92,91 +92,89 @@
 	attack_verb = list("attacked", "struck", "hit")
 	var/bullets = 5
 
-	examine(mob/user)
-		..()
-		if (bullets)
-			to_chat(user, SPAN_NOTICE(" It is loaded with [bullets] foam darts!"))
+/obj/item/toy/crossbow/examine(mob/user)
+	..()
+	if (bullets)
+		to_chat(user, SPAN_NOTICE(" It is loaded with [bullets] foam darts!"))
 
-	attackby(obj/item/I as obj, mob/user as mob)
-		if(istype(I, /obj/item/toy/crossbow_ammo))
-			if(bullets <= 4)
-				if(user.drop_held_item())
-					qdel(I)
-					bullets++
-					to_chat(user, SPAN_NOTICE(" You load the foam dart into the crossbow."))
-			else
-				to_chat(usr, SPAN_DANGER("It's already fully loaded."))
-
-
-	afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
-		if(!isturf(target.loc) || target == user) return
-		if(flag) return
-
-		if (locate (/obj/structure/surface/table, src.loc))
-			return
-		else if (bullets)
-			var/turf/trg = get_turf(target)
-			var/obj/effect/foam_dart_dummy/D = new/obj/effect/foam_dart_dummy(get_turf(src))
-			bullets--
-			D.icon_state = "foamdart"
-			D.name = "foam dart"
-			playsound(user.loc, 'sound/items/syringeproj.ogg', 15, 1)
-
-			for(var/i=0, i<6, i++)
-				if (D)
-					if(D.loc == trg) break
-					step_towards(D,trg)
-
-					for(var/mob/living/M in D.loc)
-						if(!istype(M,/mob/living)) continue
-						if(M == user) continue
-						for(var/mob/O in viewers(world_view_size, D))
-							O.show_message(SPAN_DANGER("[M] was hit by the foam dart!"), 1)
-						new /obj/item/toy/crossbow_ammo(M.loc)
-						qdel(D)
-						return
-
-					for(var/atom/A in D.loc)
-						if(A == user) continue
-						if(A.density)
-							new /obj/item/toy/crossbow_ammo(A.loc)
-							qdel(D)
-
-				sleep(1)
-
-			spawn(10)
-				if(D)
-					new /obj/item/toy/crossbow_ammo(D.loc)
-					qdel(D)
-
-			return
-		else if (bullets == 0)
-			user.apply_effect(5, WEAKEN)
-			for(var/mob/O in viewers(world_view_size, user))
-				O.show_message(SPAN_DANGER("[user] realized they were out of ammo and starting scrounging for some!"), 1)
+/obj/item/toy/crossbow/attackby(obj/item/I as obj, mob/user as mob)
+	if(istype(I, /obj/item/toy/crossbow_ammo))
+		if(bullets <= 4)
+			if(user.drop_held_item())
+				qdel(I)
+				bullets++
+				to_chat(user, SPAN_NOTICE(" You load the foam dart into the crossbow."))
+		else
+			to_chat(usr, SPAN_DANGER("It's already fully loaded."))
 
 
-	attack(mob/M as mob, mob/user as mob)
-		src.add_fingerprint(user)
+/obj/item/toy/crossbow/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
+	if(!isturf(target.loc) || target == user) return
+	if(flag) return
 
-// ******* Check
-
-		if (src.bullets > 0 && M.lying)
-
-			for(var/mob/O in viewers(M, null))
-				if(O.client)
-					O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head and pulls the trigger!</B>"), 1, SPAN_DANGER("You hear the sound of foam against skull"), 2)
-					O.show_message(SPAN_DANGER("[M] was hit in the head by the foam dart!"), 1)
-
-			playsound(user.loc, 'sound/items/syringeproj.ogg', 15, 1)
-			new /obj/item/toy/crossbow_ammo(M.loc)
-			src.bullets--
-		else if (M.lying && src.bullets == 0)
-			for(var/mob/O in viewers(M, null))
-				if (O.client)
-					O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B>"), 1, SPAN_DANGER("You hear someone fall"), 2)
-			user.apply_effect(5, WEAKEN)
+	if (locate (/obj/structure/surface/table, src.loc))
 		return
+	else if (bullets)
+		var/turf/trg = get_turf(target)
+		var/obj/effect/foam_dart_dummy/D = new/obj/effect/foam_dart_dummy(get_turf(src))
+		bullets--
+		D.icon_state = "foamdart"
+		D.name = "foam dart"
+		playsound(user.loc, 'sound/items/syringeproj.ogg', 15, 1)
+
+		for(var/i=0, i<6, i++)
+			if (D)
+				if(D.loc == trg) break
+				step_towards(D,trg)
+
+				for(var/mob/living/M in D.loc)
+					if(!istype(M,/mob/living)) continue
+					if(M == user) continue
+					for(var/mob/O in viewers(world_view_size, D))
+						O.show_message(SPAN_DANGER("[M] was hit by the foam dart!"), SHOW_MESSAGE_VISIBLE)
+					new /obj/item/toy/crossbow_ammo(M.loc)
+					qdel(D)
+					return
+
+				for(var/atom/A in D.loc)
+					if(A == user) continue
+					if(A.density)
+						new /obj/item/toy/crossbow_ammo(A.loc)
+						qdel(D)
+
+			sleep(1)
+
+		spawn(10)
+			if(D)
+				new /obj/item/toy/crossbow_ammo(D.loc)
+				qdel(D)
+
+		return
+	else if (bullets == 0)
+		user.apply_effect(5, WEAKEN)
+		for(var/mob/O in viewers(world_view_size, user))
+			O.show_message(SPAN_DANGER("[user] realized they were out of ammo and starting scrounging for some!"), SHOW_MESSAGE_VISIBLE)
+
+
+/obj/item/toy/crossbow/attack(mob/M as mob, mob/user as mob)
+	src.add_fingerprint(user)
+
+	if (src.bullets > 0 && M.lying)
+
+		for(var/mob/O in viewers(M, null))
+			if(O.client)
+				O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head and pulls the trigger!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear the sound of foam against skull!"), SHOW_MESSAGE_AUDIBLE)
+				O.show_message(SPAN_DANGER("[M] was hit in the head by the foam dart!"), SHOW_MESSAGE_VISIBLE)
+
+		playsound(user.loc, 'sound/items/syringeproj.ogg', 15, 1)
+		new /obj/item/toy/crossbow_ammo(M.loc)
+		src.bullets--
+	else if (M.lying && src.bullets == 0)
+		for(var/mob/O in viewers(M, null))
+			if (O.client)
+				O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear someone fall"), SHOW_MESSAGE_AUDIBLE)
+		user.apply_effect(5, WEAKEN)
+	return
 
 /obj/item/toy/crossbow_ammo
 	name = "foam dart"
@@ -189,9 +187,9 @@
 	name = ""
 	desc = ""
 	icon = 'icons/obj/items/toy.dmi'
-	icon_state = "null"
-	anchored = 1
-	density = 0
+	icon_state = null
+	anchored = TRUE
+	density = FALSE
 
 
 /*
@@ -203,7 +201,7 @@
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "sword0"
 	item_state = "sword0"
-	var/active = 0.0
+	var/active = 0
 	w_class = SIZE_SMALL
 	flags_item = NOSHIELD
 	attack_verb = list("attacked", "struck", "hit")

@@ -16,7 +16,7 @@
 	RegisterSignal(SSdcs, list(
 		COMSIG_GLOB_MARINE_DEATH,
 		COMSIG_GLOB_XENO_DEATH
-	), .proc/handle_mob_deaths)
+	), PROC_REF(handle_mob_deaths))
 
 /datum/cm_objective/recover_corpses/Destroy()
 	corpses = null
@@ -33,6 +33,15 @@
 			var/mob/living/carbon/human/M = new /mob/living/carbon/human(spawnpoint)
 			M.create_hud() //Need to generate hud before we can equip anything apparently...
 			arm_equipment(M, spawner.equip_path, TRUE, FALSE)
+			for(var/obj/structure/bed/nest/found_nest in spawnpoint)
+				for(var/turf/the_turf in list(get_step(found_nest, NORTH),get_step(found_nest, EAST),get_step(found_nest, WEST)))
+					if(the_turf.density)
+						found_nest.dir = get_dir(found_nest, the_turf)
+						found_nest.pixel_x = found_nest.buckling_x["[found_nest.dir]"]
+						found_nest.pixel_y = found_nest.buckling_y["[found_nest.dir]"]
+						M.dir = get_dir(the_turf,found_nest)
+				if(!found_nest.buckled_mob)
+					found_nest.do_buckle(M,M)
 		objective_spawn_corpse.Remove(spawner)
 
 /datum/cm_objective/recover_corpses/post_round_start()
@@ -49,13 +58,13 @@
 		return
 
 	LAZYDISTINCTADD(corpses, dead_mob)
-	RegisterSignal(dead_mob, COMSIG_PARENT_QDELETING, .proc/handle_corpse_deletion)
-	RegisterSignal(dead_mob, COMSIG_LIVING_REJUVENATED, .proc/handle_mob_revival)
+	RegisterSignal(dead_mob, COMSIG_PARENT_QDELETING, PROC_REF(handle_corpse_deletion))
+	RegisterSignal(dead_mob, COMSIG_LIVING_REJUVENATED, PROC_REF(handle_mob_revival))
 
-	if (isXeno(dead_mob))
-		RegisterSignal(dead_mob, COMSIG_XENO_REVIVED, .proc/handle_mob_revival)
+	if (isxeno(dead_mob))
+		RegisterSignal(dead_mob, COMSIG_XENO_REVIVED, PROC_REF(handle_mob_revival))
 	else
-		RegisterSignal(dead_mob, COMSIG_HUMAN_REVIVED, .proc/handle_mob_revival)
+		RegisterSignal(dead_mob, COMSIG_HUMAN_REVIVED, PROC_REF(handle_mob_revival))
 
 
 /datum/cm_objective/recover_corpses/proc/handle_mob_revival(mob/living/carbon/revived_mob)
@@ -63,7 +72,7 @@
 
 	UnregisterSignal(revived_mob, list(COMSIG_LIVING_REJUVENATED, COMSIG_PARENT_QDELETING))
 
-	if (isXeno(revived_mob))
+	if (isxeno(revived_mob))
 		UnregisterSignal(revived_mob, COMSIG_XENO_REVIVED)
 	else
 		UnregisterSignal(revived_mob, COMSIG_HUMAN_REVIVED)
@@ -79,7 +88,7 @@
 		COMSIG_PARENT_QDELETING
 	))
 
-	if (isXeno(deleted_mob))
+	if (isxeno(deleted_mob))
 		UnregisterSignal(deleted_mob, COMSIG_XENO_REVIVED)
 	else
 		UnregisterSignal(deleted_mob, COMSIG_HUMAN_REVIVED)
@@ -90,14 +99,14 @@
 /datum/cm_objective/recover_corpses/proc/score_corpse(mob/target)
 	var/value = 0
 
-	if(isYautja(target))
+	if(isyautja(target))
 		value = OBJECTIVE_ABSOLUTE_VALUE
 
-	else if(isXeno(target))
-		var/mob/living/carbon/Xenomorph/X = target
+	else if(isxeno(target))
+		var/mob/living/carbon/xenomorph/X = target
 		switch(X.tier)
 			if(1)
-				if(isXenoPredalien(X))
+				if(ispredalien(X))
 					value = OBJECTIVE_ABSOLUTE_VALUE
 				else value = OBJECTIVE_LOW_VALUE
 			if(2)
@@ -105,10 +114,10 @@
 			if(3)
 				value = OBJECTIVE_EXTREME_VALUE
 			else
-				if(isXenoQueen(X)) //Queen is Tier 0 for some reason...
+				if(isqueen(X)) //Queen is Tier 0 for some reason...
 					value = OBJECTIVE_ABSOLUTE_VALUE
 
-	else if(isHumanSynthStrict(target))
+	else if(ishumansynth_strict(target))
 		return OBJECTIVE_LOW_VALUE
 
 	return value
@@ -134,7 +143,96 @@
 			corpses -= target
 			scored_corpses += target
 
-			if (isXeno(target))
+			if (isxeno(target))
 				UnregisterSignal(target, COMSIG_XENO_REVIVED)
 			else
 				UnregisterSignal(target, COMSIG_HUMAN_REVIVED)
+
+// --------------------------------------------
+// *** Get a mob to an area/level ***
+// --------------------------------------------
+#define MOB_CAN_COMPLETE_AFTER_DEATH 1
+#define MOB_FAILS_ON_DEATH 2
+
+/datum/cm_objective/move_mob
+	var/area/destination
+	var/mob/living/target
+	var/mob_can_die = MOB_CAN_COMPLETE_AFTER_DEATH
+	objective_flags = OBJECTIVE_DO_NOT_TREE
+
+
+/datum/cm_objective/move_mob/New(mob/living/survivor)
+	if(istype(survivor, /mob/living))
+		target = survivor
+		RegisterSignal(survivor, COMSIG_MOB_DEATH, PROC_REF(handle_death))
+		RegisterSignal(survivor, COMSIG_PARENT_QDELETING, PROC_REF(handle_corpse_deletion))
+	activate()
+	. = ..()
+
+/datum/cm_objective/move_mob/Destroy()
+	UnregisterSignal(target, list(
+		COMSIG_MOB_DEATH,
+		COMSIG_PARENT_QDELETING,
+		COMSIG_LIVING_REJUVENATED,
+	))
+	if (isxeno(target))
+		UnregisterSignal(target, COMSIG_XENO_REVIVED)
+	else
+		UnregisterSignal(target, COMSIG_HUMAN_REVIVED)
+	destination = null
+	target = null
+	return ..()
+
+/datum/cm_objective/move_mob/proc/handle_corpse_deletion(mob/living/carbon/deleted_mob)
+	SIGNAL_HANDLER
+
+	qdel(src)
+
+/datum/cm_objective/move_mob/proc/handle_death(mob/living/carbon/dead_mob)
+	SIGNAL_HANDLER
+
+	if(mob_can_die == MOB_FAILS_ON_DEATH)
+		deactivate()
+		if (isxeno(dead_mob))
+			RegisterSignal(dead_mob, COMSIG_XENO_REVIVED, PROC_REF(handle_mob_revival))
+		else
+			RegisterSignal(dead_mob, COMSIG_HUMAN_REVIVED, PROC_REF(handle_mob_revival))
+		RegisterSignal(dead_mob, COMSIG_LIVING_REJUVENATED, PROC_REF(handle_mob_revival))
+
+/datum/cm_objective/move_mob/proc/handle_mob_revival(mob/living/carbon/revived_mob)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(revived_mob, list(COMSIG_LIVING_REJUVENATED))
+
+	if (isxeno(revived_mob))
+		UnregisterSignal(revived_mob, COMSIG_XENO_REVIVED)
+	else
+		UnregisterSignal(revived_mob, COMSIG_HUMAN_REVIVED)
+	activate()
+
+/datum/cm_objective/move_mob/check_completion()
+	. = ..()
+	if(istype(get_area(target),destination))
+		if(target.stat != DEAD || mob_can_die & MOB_CAN_COMPLETE_AFTER_DEATH)
+			complete()
+			return TRUE
+
+/datum/cm_objective/move_mob/complete()
+	SSobjectives.statistics["survivors_rescued"]++
+	SSobjectives.statistics["survivors_rescued_total_points_earned"] += value
+	award_points()
+	deactivate()
+
+/datum/cm_objective/move_mob/almayer
+	destination = /area/almayer
+
+/datum/cm_objective/move_mob/almayer/survivor
+	name = "Rescue the Survivor"
+	mob_can_die = MOB_FAILS_ON_DEATH
+	value = OBJECTIVE_EXTREME_VALUE
+
+/datum/cm_objective/move_mob/almayer/vip
+	name = "Rescue the VIP"
+	mob_can_die = MOB_FAILS_ON_DEATH
+	value = OBJECTIVE_ABSOLUTE_VALUE
+	objective_flags = OBJECTIVE_DO_NOT_TREE

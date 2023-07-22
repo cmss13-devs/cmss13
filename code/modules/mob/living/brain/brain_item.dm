@@ -4,9 +4,9 @@
 	desc = "A piece of juicy meat found in a person's head."
 	icon_state = "brain2"
 	flags_atom = NO_FLAGS
-	force = 1.0
+	force = 1
 	w_class = SIZE_SMALL
-	throwforce = 1.0
+	throwforce = 1
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 
@@ -17,9 +17,9 @@
 	var/mob/living/brain/brainmob = null
 
 /obj/item/organ/brain/xeno
-	name = "thinkpan"
-	desc = "It looks kind of like an enormous wad of purple bubblegum."
-	icon_state = "chitin"
+	name = "alien brain"
+	desc = "For a brain, it looks kind of like an enormous wad of purple bubblegum."
+	icon_state = "xenobrain"
 
 /obj/item/organ/brain/New()
 	..()
@@ -27,7 +27,7 @@
 		if(brainmob && brainmob.client)
 			brainmob.client.screen.len = null //clear the hud
 
-/obj/item/organ/brain/proc/transfer_identity(var/mob/living/carbon/H)
+/obj/item/organ/brain/proc/transfer_identity(mob/living/carbon/H)
 	name = "[H]'s brain"
 	brainmob = new(src)
 	brainmob.name = H.real_name
@@ -44,9 +44,9 @@
 	if(brainmob?.client)//if thar be a brain inside... the brain.
 		. += "You can feel the small spark of life still left in this one."
 	else
-		. += "This one seems particularly lifeless. Perhaps it will regain some of its luster later.."
+		. += "This one seems particularly lifeless. Perhaps it will regain some of its luster later."
 
-/obj/item/organ/brain/removed(var/mob/living/target,var/mob/living/user)
+/obj/item/organ/brain/removed(mob/living/target, mob/living/user)
 
 	..()
 
@@ -57,7 +57,7 @@
 	if(istype(B) && istype(H))
 		B.transfer_identity(target)
 
-/obj/item/organ/brain/replaced(var/mob/living/target)
+/obj/item/organ/brain/replaced(mob/living/target)
 
 	if(target.key)
 		target.ghostize()

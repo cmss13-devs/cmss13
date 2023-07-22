@@ -11,7 +11,7 @@
 	can_hold = list(
 		/obj/item/tool/surgery,
 		/obj/item/stack/medical/advanced/bruise_pack,
-		/obj/item/stack/nanopaste
+		/obj/item/stack/nanopaste,
 	)
 
 /obj/item/storage/surgical_tray/empty/fill_preset_inventory()

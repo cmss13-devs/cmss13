@@ -15,8 +15,8 @@
 /obj/item/ammo_box/magazine/shotgun/update_icon()
 	if(overlays)
 		overlays.Cut()
-	overlays += image(icon, icon_state = "[icon_state]_lid")				//adding lid
-	overlays += image(icon, icon_state = "text[overlay_gun_type]")		//adding text
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
 
 /obj/item/ammo_box/magazine/shotgun/empty
 	empty = TRUE

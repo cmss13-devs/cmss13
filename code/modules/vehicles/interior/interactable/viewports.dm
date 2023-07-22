@@ -15,7 +15,7 @@
 /obj/structure/interior_viewport/ex_act()
 	return
 
-/obj/structure/interior_viewport/attack_hand(var/mob/M)
+/obj/structure/interior_viewport/attack_hand(mob/M)
 	if(!vehicle)
 		return
 

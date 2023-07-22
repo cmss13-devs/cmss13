@@ -53,7 +53,7 @@ map sorokyne_strata
 	minplayers 130
 endmap
 
-map LV522_Chances_Claim
+map lv522_chances_claim
 	minplayers 130
 endmap
 
@@ -61,8 +61,4 @@ map new_varadero
 endmap
 
 map whiskey_outpost_v2
-endmap
-
-map haunted_house_v2
-	voteweight 0
 endmap

@@ -20,24 +20,39 @@ All ShuttleMove procs go here
 	if(!(. & (MOVE_TURF|MOVE_CONTENTS)))
 		return
 
-//	var/shuttle_dir = shuttle.dir
+// var/shuttle_dir = shuttle.dir
 	for(var/i in contents)
 		var/atom/movable/thing = i
 		SEND_SIGNAL(thing, COMSIG_MOVABLE_SHUTTLE_CRUSH, shuttle)
 		if(ismob(thing))
 			if(isliving(thing))
 				var/mob/living/M = thing
-//				if(M.status_flags & INCORPOREAL)
-//					continue // Ghost things don't splat
+// if(M.status_flags & INCORPOREAL)
+// continue // Ghost things don't splat
 				if(M.buckled)
 					M.buckled.unbuckle()//M, TRUE)
 				if(M.pulledby)
 					M.pulledby.stop_pulling()
 				M.stop_pulling()
-				M.visible_message("<span class='warning'>[shuttle] slams into [M]!</span>")
+				M.visible_message(SPAN_WARNING("[shuttle] slams into [M]!"))
 				M.gib()
 
 		else //non-living mobs shouldn't be affected by shuttles, which is why this is an else
+			if(thing.anchored)
+				// Ordered by most likely:
+				if(istype(thing, /obj/structure/machinery/landinglight))
+					continue
+				if(istype(thing, /obj/docking_port))
+					continue
+				if(istype(thing, /obj/structure/machinery/camera))
+					continue
+				if(istype(thing, /obj/structure/machinery/floodlight/landing/floor))
+					continue
+
+				// SSshuttle also removes these in remove_ripples, but its timing is weird
+				if(!istype(thing, /obj/effect))
+					log_debug("[shuttle] deleted an anchored [thing]")
+
 			qdel(thing)
 
 // Called on the old turf to move the turf data
@@ -57,7 +72,7 @@ All ShuttleMove procs go here
 /turf/proc/afterShuttleMove(turf/oldT, rotation)
 	//Dealing with the turf we left behind
 	oldT.TransferComponents(src)
-//	SSexplosions.wipe_turf(src)
+// SSexplosions.wipe_turf(src)
 
 	var/shuttle_boundary = baseturfs.Find(/turf/baseturf_skipover/shuttle)
 	if(shuttle_boundary)
@@ -100,11 +115,11 @@ All ShuttleMove procs go here
 		onTransitZ(oldT.z, newT.z)
 
 	//if(light) // tg lighting
-	//	update_light()
+	// update_light()
 	if(rotation)
 		shuttleRotate(rotation)
 
-//	update_parallax_contents()
+// update_parallax_contents()
 
 	return TRUE
 
@@ -164,7 +179,7 @@ All ShuttleMove procs go here
 /obj/structure/machinery/door/airlock/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
 	for(var/obj/structure/machinery/door/airlock/A in range(1, src))  // includes src
-		INVOKE_ASYNC(A, /obj/structure/machinery/door/.proc/close)
+		INVOKE_ASYNC(A, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 /obj/structure/machinery/camera/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()

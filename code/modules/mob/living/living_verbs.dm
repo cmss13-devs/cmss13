@@ -11,14 +11,20 @@
 		to_chat(src, SPAN_WARNING("You can't resist in your current state."))
 		return
 
+	if(isxeno(src))
+		var/mob/living/carbon/xenomorph/xeno = src
+		if(xeno.burrow)
+			to_chat(src, SPAN_WARNING("You can't resist in your current state."))
+			return
+
 	resisting = TRUE
 
 	next_move = world.time + 20
 
 	//Getting out of someone's inventory.
 	if(istype(loc, /obj/item/holder))
-		var/obj/item/holder/H = loc		//Get our item holder.
-		var/mob/M = H.loc           	//Get our mob holder (if any).
+		var/obj/item/holder/H = loc //Get our item holder.
+		var/mob/M = H.loc //Get our mob holder (if any).
 
 		if(istype(M))
 			M.drop_inv_item_on_ground(H)
@@ -110,7 +116,7 @@
 		last_special = world.time + 100
 		to_chat(src, SPAN_DANGER("You lean on the back of \the [C] and start pushing the door open. (this will take about [breakout_time] minutes)"))
 		for(var/mob/O in viewers(loc))
-			O.show_message(SPAN_DANGER("<B>The [loc] begins to shake violently!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>The [loc] begins to shake violently!</B>"), SHOW_MESSAGE_VISIBLE)
 
 		if(!do_after(src, (breakout_time*1 MINUTES), INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST))
 			return
@@ -138,7 +144,7 @@
 			SC.update_icon()
 			to_chat(src, SPAN_DANGER("You successfully break out!"))
 			for(var/mob/O in viewers(loc))
-				O.show_message(SPAN_DANGER("<B>\the [src] successfully broke out of \the [SC]!</B>"), 1)
+				O.show_message(SPAN_DANGER("<B>\the [src] successfully broke out of \the [SC]!</B>"), SHOW_MESSAGE_VISIBLE)
 			if(istype(SC.loc, /obj/structure/bigDelivery)) //Do this to prevent contents from being opened into nullspace (read: bluespace)
 				var/obj/structure/bigDelivery/BD = SC.loc
 				BD.attack_hand(src)
@@ -149,8 +155,8 @@
 			C.update_icon()
 			to_chat(src, SPAN_DANGER("You successfully break out!"))
 			for(var/mob/O in viewers(loc))
-				O.show_message(SPAN_DANGER("<B>\the [src] successfully broke out of \the [C]!</B>"), 1)
-			if(istype(C.loc, /obj/structure/bigDelivery)) //nullspace ect.. read the comment above
+				O.show_message(SPAN_DANGER("<B>\the [src] successfully broke out of \the [C]!</B>"), SHOW_MESSAGE_VISIBLE)
+			if(istype(C.loc, /obj/structure/bigDelivery)) //nullspace ect... read the comment above
 				var/obj/structure/bigDelivery/BD = C.loc
 				BD.attack_hand(src)
 			C.open()

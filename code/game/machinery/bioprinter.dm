@@ -121,7 +121,7 @@
 					break
 			if(!valid_recipe)
 				log_admin("[key_name(usr)] attempted to print an invalid recipe ([recipe]) on \the [src].")
-				message_staff("[key_name(usr)] attempted to print an invalid recipe ([recipe]) on \the [src].")
+				message_admins("[key_name(usr)] attempted to print an invalid recipe on \the [src].")
 				return FALSE
 			var/datum/bioprinter_recipe/recipe_datum = new recipe
 			stored_metal -= recipe_datum.metal
@@ -131,7 +131,7 @@
 			var/new_organ = recipe_datum.path
 			print_time = world.time + recipe_datum.time
 			printing_item = recipe_datum
-			addtimer(CALLBACK(src, .proc/print_limb, new_organ), recipe_datum.time)
+			addtimer(CALLBACK(src, PROC_REF(print_limb), new_organ), recipe_datum.time)
 			QDEL_NULL(recipe_datum)
 			return TRUE
 		if("eject")
@@ -144,7 +144,7 @@
 			return TRUE
 
 
-/obj/structure/machinery/bioprinter/proc/print_limb(var/limb_path)
+/obj/structure/machinery/bioprinter/proc/print_limb(limb_path)
 	if(inoperable())
 		return
 	new limb_path(get_turf(src))

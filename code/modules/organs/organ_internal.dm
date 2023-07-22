@@ -17,7 +17,7 @@
 	var/cut_away = FALSE //internal organ has its links to the body severed, organ is ready to be removed.
 	var/removed_type //When removed, forms this object.
 	var/robotic_type //robotic version of removed_type, used in mechanize().
-	var/rejecting            // Is this organ already being rejected?
+	var/rejecting // Is this organ already being rejected?
 	var/obj/item/organ/organ_holder // If not in a body, held in this item.
 	var/list/transplant_data
 	///status of organ - is it healthy, broken, bruised?
@@ -64,14 +64,14 @@
 				E.internal_organs = list()
 			E.internal_organs |= src
 
-/datum/internal_organ/proc/take_damage(amount, var/silent=0)
+/datum/internal_organ/proc/take_damage(amount, silent = FALSE)
 	if(src.robotic == ORGAN_ROBOT)
 		src.damage += (amount * 0.8)
 	else
 		src.damage += amount
 
 	var/obj/limb/parent = owner.get_limb(parent_limb)
-	if (!silent)
+	if(!silent)
 		owner.custom_pain("Something inside your [parent.display_name] hurts a lot.", 1)
 	set_organ_status()
 
@@ -176,12 +176,12 @@
 		if(owner.getToxLoss() >= 60 && !owner.reagents.has_reagent("anti_toxin"))
 			//Healthy liver suffers on its own
 			if (src.damage < min_broken_damage)
-				src.damage += 0.2 * PROCESS_ACCURACY
+				src.take_damage(0.2 * PROCESS_ACCURACY)
 			//Damaged one shares the fun
 			else
 				var/datum/internal_organ/O = pick(owner.internal_organs)
 				if(O)
-					O.damage += 0.2 * PROCESS_ACCURACY
+					O.take_damage(0.2 * PROCESS_ACCURACY, TRUE)
 
 		//Detox can heal small amounts of damage
 		if (src.damage && src.damage < src.min_bruised_damage && owner.reagents.has_reagent("anti_toxin"))
@@ -263,19 +263,19 @@
 	var/eye_surgery_stage = 0 //stores which stage of the eye surgery the eye is at
 
 /datum/internal_organ/eyes/process() //Eye damage replaces the old eye_stat var.
-	..()
+	. = ..()
 	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 		return
 	if(organ_status >= ORGAN_BRUISED)
-		owner.eye_blurry = 20
+		owner.SetEyeBlur(20)
 	if(organ_status >= ORGAN_BROKEN)
-		owner.eye_blind = 20
+		owner.SetEyeBlind(20)
 
 /datum/internal_organ/eyes/prosthetic
 	robotic = ORGAN_ROBOT
 	removed_type = /obj/item/organ/eyes/prosthetic
 
-/datum/internal_organ/proc/remove(var/mob/user)
+/datum/internal_organ/proc/remove(mob/user)
 	if(!removed_type)
 		return 0
 

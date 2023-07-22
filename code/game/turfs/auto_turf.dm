@@ -4,7 +4,7 @@
 	icon_state = "sand_1"//editor icon
 	is_groundmap_turf = TRUE
 	var/icon_prefix = "sand"
-	var/layer_name = new/list("layer 1", "layer2", "layer 3", "layer 4", "layer 5")
+	var/layer_name = list("layer 1", "layer2", "layer 3", "layer 4", "layer 5")
 	var/variant = 0
 	var/variant_prefix_name = ""
 
@@ -48,7 +48,7 @@
 
 	..()
 
-/turf/open/auto_turf/proc/changing_layer(var/new_layer)
+/turf/open/auto_turf/proc/changing_layer(new_layer)
 	if(isnull(new_layer) || new_layer == bleed_layer)
 		return
 
@@ -66,14 +66,14 @@
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(20) && bleed_layer)
 				var/new_bleed_layer = min(0, bleed_layer - 1)
-				addtimer(CALLBACK(src, .proc/changing_layer, new_bleed_layer), 1)
+				addtimer(CALLBACK(src, PROC_REF(changing_layer), new_bleed_layer), 1)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(60) && bleed_layer)
 				var/new_bleed_layer = max(bleed_layer - 2, 0)
-				addtimer(CALLBACK(src, .proc/changing_layer, new_bleed_layer), 1)
+				addtimer(CALLBACK(src, PROC_REF(changing_layer), new_bleed_layer), 1)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(bleed_layer)
-				addtimer(CALLBACK(src, .proc/changing_layer, 0), 1)
+				addtimer(CALLBACK(src, PROC_REF(changing_layer), 0), 1)
 
 
 //Actual auto-turfs now
@@ -164,7 +164,7 @@
 /turf/open/auto_turf/snow/is_weedable()
 	return bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
 
-/turf/open/auto_turf/snow/attackby(var/obj/item/I, var/mob/user)
+/turf/open/auto_turf/snow/attackby(obj/item/I, mob/user)
 	//Light Stick
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
@@ -177,7 +177,7 @@
 			return
 
 		user.visible_message("\blue[user.name] planted \the [L] into [src].")
-		L.anchored = 1
+		L.anchored = TRUE
 		L.icon_state = "lightstick_[L.s_color][L.anchored]"
 		user.drop_held_item()
 		L.forceMove(src)
@@ -187,7 +187,7 @@
 		playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
 
 //Digging up snow
-/turf/open/auto_turf/snow/attack_alien(mob/living/carbon/Xenomorph/M)
+/turf/open/auto_turf/snow/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.a_intent == INTENT_HARM) //Missed slash.
 		return
 	if(M.a_intent == INTENT_HELP || !bleed_layer)
@@ -216,7 +216,7 @@
 			var/mob/living/carbon/C = AM
 			var/slow_amount = 0.35
 			var/can_stuck = 1
-			if(istype(C, /mob/living/carbon/Xenomorph)||isYautja(C))
+			if(istype(C, /mob/living/carbon/xenomorph)||isyautja(C))
 				slow_amount = 0.15
 				can_stuck = 0
 			var/new_slowdown = C.next_move_slowdown + (slow_amount * bleed_layer)

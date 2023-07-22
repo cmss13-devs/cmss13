@@ -1,4 +1,8 @@
-#define MIDNIGHT_ROLLOVER		864000	//number of deciseconds in a day
+#define MIDNIGHT_ROLLOVER 864000 //number of deciseconds in a day
+
+#define MILLISECONDS *0.01
+
+#define DECISECONDS *1 //the base unit all of these defines are scaled by, because byond uses that as a unit of measurement for some fucking reason
 
 #define SECONDS *10
 
@@ -10,10 +14,6 @@
 #define MINUTES_TO_HOURS /60
 
 #define DECISECONDS_TO_HOURS /36000
-
-#define XENO_LEAVE_TIMER_LARVA 80 //80 seconds
-#define XENO_LEAVE_TIMER 300 //300 seconds
-#define XENO_AVAILABLE_TIMER 60 //60 seconds, when to add a xeno to the avaliable list so ghosts can get ready
 
 var/midnight_rollovers = 0
 var/rollovercheck_last_timeofday = 0
@@ -29,9 +29,9 @@ var/rollovercheck_last_timeofday = 0
 	rollovercheck_last_timeofday = world.timeofday
 	return midnight_rollovers
 
-///Returns the world time in english. Do not use to get date information - starts at 0 + 12 hours.
+///Returns the world time in english. Do not use to get date information - starts at 0 + a random time offset from 10 minutes to 24 hours.
 /proc/worldtime2text(format = "hh:mm", time = world.time)
-	return gameTimestamp(format, time + 12 HOURS)
+	return gameTimestamp(format, time + GLOB.time_offset)
 
 /proc/gameTimestamp(format = "hh:mm:ss", wtime=null)
 	if(!wtime)
@@ -78,6 +78,10 @@ var/rollovercheck_last_timeofday = 0
 #define DS2TICKS(DS) ((DS)/world.tick_lag)
 
 #define TICKS2DS(T) ((T) TICKS)
+
+#define MS2DS(T) ((T) MILLISECONDS)
+
+#define DS2MS(T) ((T) * 100)
 
 //Takes a value of time in deciseconds.
 //Returns a text value of that number in hours, minutes, or seconds.

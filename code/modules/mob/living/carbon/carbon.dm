@@ -11,9 +11,13 @@
 	if(SSweather.is_weather_event)
 		handle_weather(delta_time)
 
+	if(stat != CONSCIOUS)
+		remove_all_indicators()
+
 /mob/living/carbon/Destroy()
 	stomach_contents?.Cut()
-
+	view_change_sources = null
+	active_transfusions = null
 	. = ..()
 
 	QDEL_NULL_LIST(internal_organs)
@@ -41,7 +45,7 @@
 		if(prob(30))
 			for(var/mob/M in hearers(4, src))
 				if(M.client)
-					M.show_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."), 2)
+					M.show_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."), SHOW_MESSAGE_AUDIBLE)
 		var/obj/item/I = user.get_active_hand()
 		if(I && I.force)
 			var/d = rand(round(I.force / 4), I.force)
@@ -57,18 +61,18 @@
 				src.take_limb_damage(d)
 			for(var/mob/M as anything in viewers(user, null))
 				if(M.client)
-					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [I.name]!")), 2)
+					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [I.name]!")), SHOW_MESSAGE_AUDIBLE)
 			user.track_hit(initial(I.name))
 			playsound(user.loc, 'sound/effects/attackblob.ogg', 25, 1)
 
 			if(prob(max(4*(100*getBruteLoss()/maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
 				last_damage_data = create_cause_data("chestbursting", user)
 				gib(last_damage_data)
-	else if(!chestburst && (status_flags & XENO_HOST) && isXenoLarva(user))
-		var/mob/living/carbon/Xenomorph/Larva/L = user
+	else if(!chestburst && (status_flags & XENO_HOST) && islarva(user))
+		var/mob/living/carbon/xenomorph/larva/L = user
 		L.chest_burst(src)
 
-/mob/living/carbon/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data)
+/mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data)
 
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
@@ -90,7 +94,7 @@
 		apply_effect(knock_value, PARALYZE)
 		explosion_throw(severity, direction)
 
-/mob/living/carbon/gib(var/cause = "gibbing")
+/mob/living/carbon/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	if(legcuffed)
 		drop_inv_item_on_ground(legcuffed)
 
@@ -162,7 +166,7 @@
 				return TRUE
 		else
 			var/obj/limb/affecting = get_limb(check_zone(M.zone_selected))
-			if(initiate_surgery_moment(null, src, affecting, M))
+			if(affecting && initiate_surgery_moment(null, src, affecting, M))
 				return TRUE
 
 	for(var/datum/disease/D in viruses)
@@ -176,7 +180,7 @@
 	M.next_move += 7 //Adds some lag to the 'attack'. Adds up to 11 in combination with click_adjacent.
 	return
 
-/mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null)
+/mob/living/carbon/electrocute_act(shock_damage, obj/source, siemens_coeff = 1.0, def_zone = null)
 	if(status_flags & GODMODE) //godmode
 		return FALSE
 	shock_damage *= siemens_coeff
@@ -192,7 +196,7 @@
 			SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"), \
 			SPAN_DANGER("You hear a heavy electrical crack.") \
 		)
-		if(isXeno(src) && mob_size >= MOB_SIZE_BIG)
+		if(isxeno(src) && mob_size >= MOB_SIZE_BIG)
 			apply_effect(1, STUN)//Sadly, something has to stop them from bumping them 10 times in a second
 			apply_effect(1, WEAKEN)
 		else
@@ -218,7 +222,7 @@
 /mob/living/carbon/swap_hand()
 	var/obj/item/wielded_item = get_active_hand()
 	if(wielded_item && (wielded_item.flags_item & WIELDED)) //this segment checks if the item in your hand is twohanded.
-		var/obj/item/weapon/melee/twohanded/offhand/offhand = get_inactive_hand()
+		var/obj/item/weapon/twohanded/offhand/offhand = get_inactive_hand()
 		if(offhand && (offhand.flags_item & WIELDED))
 			to_chat(src, SPAN_WARNING("Your other hand is too busy holding \the [offhand.name]")) //So it's an offhand.
 			return
@@ -228,7 +232,7 @@
 		wielded_item.zoom(src)
 	..()
 	if(hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
-		if(hand)	//This being 1 means the left hand is in use
+		if(hand) //This being 1 means the left hand is in use
 			hud_used.l_hand_hud_object.icon_state = "hand_active"
 			hud_used.r_hand_hud_object.icon_state = "hand_inactive"
 		else
@@ -236,7 +240,7 @@
 			hud_used.r_hand_hud_object.icon_state = "hand_active"
 	return
 
-/mob/living/carbon/proc/activate_hand(var/selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
+/mob/living/carbon/proc/activate_hand(selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
 
 	if(istext(selhand))
 		selhand = lowertext(selhand)
@@ -404,8 +408,8 @@
 	show_browser(user, dat, name, "mob[name]")
 
 //generates realistic-ish pulse output based on preset levels
-/mob/living/carbon/proc/get_pulse(var/method)	//method 0 is for hands, 1 is for machines, more accurate
-	var/temp = 0								//see setup.dm:694
+/mob/living/carbon/proc/get_pulse(method) //method 0 is for hands, 1 is for machines, more accurate
+	var/temp = 0 //see setup.dm:694
 	switch(src.pulse)
 		if(PULSE_NONE)
 			return "0"
@@ -423,7 +427,7 @@
 			return num2text(method ? temp : temp + rand(-10, 10))
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
-//			output for machines^	^^^^^^^output for people^^^^^^^^^
+// output for machines^ ^^^^^^^output for people^^^^^^^^^
 
 /mob/living/carbon/verb/mob_sleep()
 	set name = "Sleep"
@@ -496,7 +500,7 @@
 
 /mob/living/carbon/get_examine_text(mob/user)
 	. = ..()
-	if(isYautja(user))
+	if(isyautja(user))
 		. += SPAN_BLUE("[src] is worth [max(life_kills_total, default_honor_value)] honor.")
 		if(src.hunter_data.hunted)
 			. += SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name].")
@@ -510,10 +514,3 @@
 			. += SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'.")
 		else if(src.hunter_data.gear)
 			. += SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set].")
-
-/mob/living/carbon/get_vv_options()
-	. = ..()
-	. += "<option value>-----CARBON-----</option>"
-	. += "<option value='?_src_=vars;changehivenumber=\ref[src]'>Change Hivenumber</option>"
-	. += "<option value='?_src_=vars;addtrait=\ref[src]'>Add Trait</option>"
-	. += "<option value='?_src_=vars;removetrait=\ref[src]'>Remove Trait</option>"

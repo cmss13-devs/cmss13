@@ -7,8 +7,8 @@
 #define FIREDOOR_MIN_TEMP 0
 
 // Bitflags
-#define FIREDOOR_ALERT_HOT      1
-#define FIREDOOR_ALERT_COLD     2
+#define FIREDOOR_ALERT_HOT   1
+#define FIREDOOR_ALERT_COLD  2
 
 
 /obj/structure/machinery/door/firedoor
@@ -17,8 +17,8 @@
 	icon = 'icons/obj/structures/doors/DoorHazard.dmi'
 	icon_state = "door_open"
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING)
-	opacity = 0
-	density = 0
+	opacity = FALSE
+	density = FALSE
 	layer = FIREDOOR_OPEN_LAYER
 	open_layer = FIREDOOR_OPEN_LAYER // Just below doors when open
 	closed_layer = FIREDOOR_CLOSED_LAYER // Just above doors when closed
@@ -128,13 +128,12 @@
 		return
 
 	var/alarmed = lockdown
-	for(var/area/A in areas_added)		//Checks if there are fire alarms in any areas associated with that firedoor
+	for(var/area/A in areas_added) //Checks if there are fire alarms in any areas associated with that firedoor
 		if(A.flags_alarm_state & ALARM_WARNING_FIRE || A.air_doors_activated)
 			alarmed = 1
-
-	var/answer = alert(user, "Would you like to [density ? "open" : "close"] this [src.name]?[ alarmed && density ? "\nNote that by doing so, you acknowledge any damages from opening this\n[src.name] as being your own fault, and you will be held accountable under the law." : ""]",\
-	"\The [src]", "Yes, [density ? "open" : "close"]", "No")
-	if(answer == "No")
+	if(tgui_alert(user,\
+	"Would you like to [density ? "open" : "close"] this [src.name]?[ alarmed && density ? "\nNote that by doing so, you acknowledge any damages from opening this\n[src.name] as being your own fault, and you will be held accountable under the law." : ""]",\
+	"\The [src]", list("Yes", "No")) != "Yes")
 		return
 	if(user.is_mob_incapacitated() || (!user.canmove && !isRemoteControlling(user)) || (get_dist(src, user) > 1  && !isRemoteControlling(user)))
 		to_chat(user, "Sorry, you must remain able bodied and close to \the [src] in order to use it.")
@@ -157,14 +156,14 @@
 			// Accountability!
 			users_to_open |= user.name
 			needs_to_close = 1
-		INVOKE_ASYNC(src, .proc/open, TRUE)
+		INVOKE_ASYNC(src, PROC_REF(open), TRUE)
 	else
-		INVOKE_ASYNC(src, .proc/close)
+		INVOKE_ASYNC(src, PROC_REF(close))
 
 	if(needs_to_close)
 		spawn(50)
 			alarmed = 0
-			for(var/area/A in areas_added)		//Just in case a fire alarm is turned off while the firedoor is going through an autoclose cycle
+			for(var/area/A in areas_added) //Just in case a fire alarm is turned off while the firedoor is going through an autoclose cycle
 				if(A.flags_alarm_state & ALARM_WARNING_FIRE || A.air_doors_activated)
 					alarmed = 1
 			if(alarmed)
@@ -225,9 +224,9 @@
 			"You force \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \the [C]!",\
 			"You hear metal strain and groan, and a door [density ? "opening" : "closing"].")
 			if(density)
-				INVOKE_ASYNC(src, .proc/open, TRUE)
+				INVOKE_ASYNC(src, PROC_REF(open), TRUE)
 			else
-				INVOKE_ASYNC(src, .proc/close)
+				INVOKE_ASYNC(src, PROC_REF(close))
 			return
 
 /obj/structure/machinery/door/firedoor/try_to_activate_door(mob/user)
@@ -249,7 +248,7 @@
 	latetoggle()
 	return ..()
 
-/obj/structure/machinery/door/firedoor/open(var/forced = FALSE)
+/obj/structure/machinery/door/firedoor/open(forced = FALSE)
 	if(!forced)
 		if(inoperable())
 			return //needs power to open unless it was forced

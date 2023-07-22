@@ -1,9 +1,9 @@
 /datum/soundOutput
 	var/client/owner
-	var/scape_cooldown				= INITIAL_SOUNDSCAPE_COOLDOWN //This value is changed when entering an area. Time it takes for a soundscape sound to be triggered
-	var/list/soundscape_playlist 	= list() //Updated on changing areas
-	var/ambience 					= null //The file currently being played as ambience
-	var/status_flags 				= 0 //For things like ear deafness, psychodelic effects, and other things that change how all sounds behave
+	var/scape_cooldown = INITIAL_SOUNDSCAPE_COOLDOWN //This value is changed when entering an area. Time it takes for a soundscape sound to be triggered
+	var/list/soundscape_playlist = list() //Updated on changing areas
+	var/ambience = null //The file currently being played as ambience
+	var/status_flags = 0 //For things like ear deafness, psychodelic effects, and other things that change how all sounds behave
 	var/list/echo
 /datum/soundOutput/New(client/C)
 	if(!C)
@@ -27,8 +27,8 @@
 		var/turf/owner_turf = get_turf(owner.mob)
 		if(owner_turf)
 			// We're in an interior and sound came from outside
-			if(owner_turf.z == GLOB.interior_manager.interior_z && owner_turf.z != T.z)
-				var/datum/interior/VI = GLOB.interior_manager.get_interior_by_coords(owner_turf.x, owner_turf.y)
+			if(SSinterior.in_interior(owner_turf) && owner_turf.z != T.z)
+				var/datum/interior/VI = SSinterior.get_interior_by_coords(owner_turf.x, owner_turf.y, owner_turf.z)
 				if(VI && VI.exterior)
 					var/turf/candidate = get_turf(VI.exterior)
 					if(candidate.z != T.z)
@@ -128,8 +128,8 @@
 		S.status = SOUND_UPDATE
 		sound_to(owner, S)
 
-/client/proc/adjust_volume_prefs(var/volume_key, var/prompt = "", var/channel_update = 0)
-	volume_preferences[volume_key]	= (tgui_input_number(src, prompt, "Volume", volume_preferences[volume_key]*100)) / 100
+/client/proc/adjust_volume_prefs(volume_key, prompt = "", channel_update = 0)
+	volume_preferences[volume_key] = (tgui_input_number(src, prompt, "Volume", volume_preferences[volume_key]*100)) / 100
 	if(volume_preferences[volume_key] > 1)
 		volume_preferences[volume_key] = 1
 	if(volume_preferences[volume_key] < 0)

@@ -1,17 +1,11 @@
-var/list/shuttle_landmarks = list()
 var/list/item_pool_landmarks = list()
 
 SUBSYSTEM_DEF(landmark_init)
-	name       = "Landmark Init"
+	name    = "Landmark Init"
 	init_order = SS_INIT_LANDMARK
-	flags      = SS_NO_FIRE
+	flags   = SS_NO_FIRE
 
 /datum/controller/subsystem/landmark_init/Initialize()
-	for(var/obj/effect/landmark/shuttle_loc/L in shuttle_landmarks)
-		L.initialize_marker()
-		L.link_loc()
-		shuttle_landmarks -= L
-
 	// List of all the datums we need to loop through
 	var/list/datum/item_pool_holder/pools = list()
 
@@ -66,7 +60,7 @@ SUBSYSTEM_DEF(landmark_init)
 			newly_spawned.forceMove(T)
 			pool.turfs -= T
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 // Java bean thingy to hold what I need to populate these
 /datum/item_pool_holder
@@ -78,7 +72,7 @@ SUBSYSTEM_DEF(landmark_init)
 	// List of turfs to consider as candidates
 	var/list/turfs
 
-/datum/item_pool_holder/New(var/pool_name)
+/datum/item_pool_holder/New(pool_name)
 	src.pool_name = pool_name
 	turfs = list()
 

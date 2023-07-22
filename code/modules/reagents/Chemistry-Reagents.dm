@@ -83,12 +83,12 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	for(var/datum/chem_property/P in properties)
 		P.post_update_reagent()
 
-/datum/reagent/proc/reaction_mob(var/mob/M, var/method=TOUCH, var/volume) //By default we have a chance to transfer some
-	if(!istype(M, /mob/living))	return 0
+/datum/reagent/proc/reaction_mob(mob/M, method=TOUCH, volume) //By default we have a chance to transfer some
+	if(!istype(M, /mob/living)) return 0
 	var/datum/reagent/self = src
-	src = null										  //of the reagent to the mob on TOUCHING it.
+	src = null   //of the reagent to the mob on TOUCHING it.
 
-	if(self.holder)		//for catching rare runtimes
+	if(self.holder) //for catching rare runtimes
 		if(!istype(self.holder.my_atom, /obj/effect/particle_effect/smoke/chem))
 			// If the chemicals are in a smoke cloud, do not try to let the chemicals "penetrate" into the mob's system (balance station 13) -- Doohl
 
@@ -121,23 +121,23 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 	return 1
 
-/datum/reagent/proc/reaction_obj(var/obj/O, var/volume)
+/datum/reagent/proc/reaction_obj(obj/O, volume)
 	for(var/datum/chem_property/P in properties)
 		var/potency = P.level * 0.5
 		P.reaction_obj(O, volume, potency)
 	//By default we transfer a small part of the reagent to the object
 	//if it can hold reagents. nope!
 	//if(O.reagents)
-	//	O.reagents.add_reagent(id,volume/3)
+	// O.reagents.add_reagent(id,volume/3)
 	return
 
-/datum/reagent/proc/reaction_turf(var/turf/T, var/volume)
+/datum/reagent/proc/reaction_turf(turf/T, volume)
 	for(var/datum/chem_property/P in properties)
 		var/potency = P.level * 0.5
 		P.reaction_turf(T, volume, potency)
 	return
 
-/datum/reagent/proc/on_mob_life(mob/living/M, alien, var/delta_time)
+/datum/reagent/proc/on_mob_life(mob/living/M, alien, delta_time)
 	if(alien == IS_HORROR || !holder)
 		return
 
@@ -156,11 +156,11 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 //Pre-processing
 /datum/reagent/proc/handle_pre_processing(mob/living/M)
-	var/list/mods = list(	REAGENT_EFFECT		= TRUE,
-							REAGENT_BOOST 		= FALSE,
-							REAGENT_PURGE 		= FALSE,
-							REAGENT_FORCE 		= FALSE,
-							REAGENT_CANCEL		= FALSE)
+	var/list/mods = list( REAGENT_EFFECT = TRUE,
+							REAGENT_BOOST = FALSE,
+							REAGENT_PURGE = FALSE,
+							REAGENT_FORCE = FALSE,
+							REAGENT_CANCEL = FALSE)
 
 	for(var/datum/chem_property/P in properties)
 		var/list/A = P.pre_process(M)
@@ -172,7 +172,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	return mods
 
 //Main Processing
-/datum/reagent/proc/handle_processing(mob/living/M, var/list/mods, var/delta_time)
+/datum/reagent/proc/handle_processing(mob/living/M, list/mods, delta_time)
 	for(var/datum/chem_property/P in properties)
 		//A level of 1 == 0.5 potency, which is equal to REM (0.2/0.4) in the old system
 		//That means the level of the property by default is the number of REMs the effect had in the old system
@@ -193,7 +193,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		holder.remove_all_type(/datum/reagent,mods[REAGENT_PURGE] * delta_time)
 
 //Dead Processing, see /mob/living/carbon/human/proc/handle_necro_chemicals_in_body()
-/datum/reagent/proc/handle_dead_processing(mob/living/M, var/list/mods, var/delta_time)
+/datum/reagent/proc/handle_dead_processing(mob/living/M, list/mods, delta_time)
 	var/processing_in_dead = FALSE
 	for(var/datum/chem_property/P in properties)
 		var/potency = mods[REAGENT_EFFECT] * ((P.level+mods[REAGENT_BOOST]) * 0.5)
@@ -214,9 +214,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	for(var/datum/chem_property/P in properties)
 		P.on_delete(M)
 
-	return
+	return M
 
-/datum/reagent/proc/make_alike(var/datum/reagent/C)
+/datum/reagent/proc/make_alike(datum/reagent/C)
 	name = C.name
 	id = C.id
 	color = C.color
@@ -252,7 +252,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	falloff_modifier =  C.falloff_modifier
 	flags = C.flags
 
-/datum/chemical_reaction/proc/make_alike(var/datum/chemical_reaction/C)
+/datum/chemical_reaction/proc/make_alike(datum/chemical_reaction/C)
 	if(!C)
 		return
 	id = C.id
@@ -296,21 +296,23 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 
 /datum/reagent/proc/properties_to_datums()
-	if(chemical_properties_list)
-		var/new_properties = list()
-		for(var/P in properties)
-			if(istype(P, /datum/chem_property))
-				new_properties += P
-				continue
-			var/datum/chem_property/D = chemical_properties_list[P]
-			if(D)
-				D = new D.type()
-				D.level = properties[P]
-				D.holder = src
-				new_properties += D
-		return new_properties
-	else
-		return properties
+#ifdef UNIT_TESTS
+	if(!chemical_properties_list)
+		CRASH("Chemistry reagents are not set up!")
+#endif
+
+	var/new_properties = list()
+	for(var/prop in properties)
+		if(istype(prop, /datum/chem_property))
+			new_properties += prop
+			continue
+		var/datum/chem_property/chem = chemical_properties_list[prop]
+		if(chem)
+			chem = new chem.type()
+			chem.level = properties[prop]
+			chem.holder = src
+			new_properties += chem
+	return new_properties
 
 /datum/reagent/proc/properties_to_assoc()
 	var/new_properties = list()
@@ -323,7 +325,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		new_properties += property_level
 	return new_properties
 
-/datum/reagent/proc/get_property(var/property_name)
+/datum/reagent/proc/get_property(property_name)
 	var/i = 1
 	for(var/datum/chem_property/P in properties)
 		if(P.name == property_name)
@@ -331,7 +333,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		i++
 	return FALSE
 
-/datum/reagent/proc/relevel_property(var/property_name, var/new_level = 1)
+/datum/reagent/proc/relevel_property(property_name, new_level = 1)
 	var/i = 1
 	var/datum/chem_property/R
 	for(var/datum/chem_property/P in properties)
@@ -348,7 +350,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	recalculate_variables()
 	return TRUE
 
-/datum/reagent/proc/remove_property(var/property)
+/datum/reagent/proc/remove_property(property)
 	for(var/datum/chem_property/P in properties)
 		if(P.name == property)
 			P.reset_reagent()

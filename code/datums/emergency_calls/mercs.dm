@@ -5,7 +5,7 @@
 /datum/emergency_call/mercs
 	name = "Freelancers (Squad)"
 	mob_max = 8
-	probability = 25
+	probability = 20
 
 
 /datum/emergency_call/mercs/New()
@@ -51,7 +51,7 @@
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist the [MAIN_SHIP_NAME]..")))
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Ensure they are not destroyed.</b>")))
 
-/datum/emergency_call/mercs/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/mercs/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -75,7 +75,7 @@
 		to_chat(H, SPAN_ROLE_HEADER("You are a Freelancer Mercenary!"))
 	print_backstory(H)
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 /datum/emergency_call/mercs/platoon
 	name = "Freelancers (Platoon)"
@@ -132,7 +132,7 @@
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist the [MAIN_SHIP_NAME]..")))
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Ensure they are not destroyed.</b>")))
 
-/datum/emergency_call/heavy_mercs/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/heavy_mercs/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -143,7 +143,7 @@
 	M.transfer_to(H, TRUE)
 	H.job = "Mercenary"
 
-	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))       //First one spawned is always the leader.
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/other/elite_merc/leader, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are the Elite Mercenary leader!"))
@@ -164,4 +164,4 @@
 		to_chat(H, SPAN_ROLE_HEADER("You are an Elite Mercenary!"))
 	print_backstory(H)
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

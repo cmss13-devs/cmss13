@@ -1,7 +1,7 @@
 /datum/paygrade/marine
 	name = "Marine Paygrade"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine
-	pay_multiplier = 1
+	pay_multiplier = 1.6
 
 // ENLISTED PAYGRADES
 
@@ -11,7 +11,7 @@
 	prefix = "PVT"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e1
 	ranking = 0
-	pay_multiplier = 0.8
+	pay_multiplier = 1.6
 
 /datum/paygrade/marine/e2
 	paygrade = "ME2"
@@ -19,7 +19,7 @@
 	prefix = "PFC"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e2
 	ranking = 1
-	pay_multiplier = 1 // the default.
+	pay_multiplier = 1.7
 
 /datum/paygrade/marine/e3
 	paygrade = "ME3"
@@ -27,7 +27,7 @@
 	prefix = "LCpl"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e3
 	ranking = 2
-	pay_multiplier = 1.4
+	pay_multiplier = 1.9
 
 /datum/paygrade/marine/e4
 	paygrade = "ME4"
@@ -35,7 +35,7 @@
 	prefix = "Cpl"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e4
 	ranking = 3
-	pay_multiplier = 1.6
+	pay_multiplier = 2.1
 
 /datum/paygrade/marine/e5
 	paygrade = "ME5"
@@ -43,7 +43,7 @@
 	prefix = "Sgt"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e5
 	ranking = 4
-	pay_multiplier = 1.8
+	pay_multiplier = 2.2
 
 /datum/paygrade/marine/e6
 	paygrade = "ME6"
@@ -51,7 +51,7 @@
 	prefix = "SSgt"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e6
 	ranking = 5
-	pay_multiplier = 2
+	pay_multiplier = 2.4
 
 /datum/paygrade/marine/e7
 	paygrade = "ME7"
@@ -93,11 +93,11 @@
 	ranking = 10
 	pay_multiplier = 3
 
-/datum/paygrade/marine/e9s
-	paygrade = "ME9S"
+/datum/paygrade/marine/e9c
+	paygrade = "ME9C"
 	name = "Sergeant Major of the Colonial Marine Corps"
 	prefix = "SMCMC"
-	rank_pin = /obj/item/clothing/accessory/ranks/marine/e10c
+	rank_pin = /obj/item/clothing/accessory/ranks/marine/e9c
 	ranking = 11
 	pay_multiplier = 3
 

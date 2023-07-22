@@ -1,14 +1,14 @@
-/*      This is code made by Stuicey.
-        He gave us/me permission to port it over.
+/*   This is code made by Stuicey.
+		He gave us/me permission to port it over.
 		STUI - System Tabbed User Interface
 		A system that allows admins to filter their chats
-		ATTACK_LOG 		1
-		ADMIN_LOG 		2
-		STAFF_CHAT 		3
-		OOC_CHAT 		4
-		GAME_CHAT 		5
-		DEBUG 			6
-		RUNTIME         7
+		ATTACK_LOG 1
+		ADMIN_LOG 2
+		STAFF_CHAT 3
+		OOC_CHAT 4
+		GAME_CHAT 5
+		DEBUG 6
+		RUNTIME  7
 		DEFAULT CONFIG LENGTH == 150
 		TODO:
 			** setup a way of opening a single log
@@ -28,20 +28,25 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 
 /datum/STUI
 	var/name = "STUI"
-	var/list/attack	= list()		//Attack logs
-	var/list/admin = list()			//Admin logs
-	var/list/staff = list()			//Staff Chat
-	var/list/ooc = list()			//OOC chat
-	var/list/game = list()			//Game Chat
-	var/list/debug = list()			//Debug info
-	var/list/runtime = list()       //Runtimes
-	var/list/tgui = list()			//TGUI
-	var/list/processing	= 0     	//bitflag for logs that need processing
+	var/list/attack = list() //Attack logs
+	var/list/admin = list() //Admin logs
+	var/list/staff = list() //Staff Chat
+	var/list/ooc = list() //OOC chat
+	var/list/game = list() //Game Chat
+	var/list/debug = list() //Debug info
+	var/list/runtime = list()    //Runtimes
+	var/list/tgui = list() //TGUI
+	var/list/processing = 0 //bitflag for logs that need processing
+
+/datum/STUI/New()
+	. = ..()
+	if(length(stui_init_runtimes)) // Report existing errors that might have occured during static initializers
+		runtime = stui_init_runtimes.Copy()
 
 /datum/STUI/Topic(href, href_list)
 	if(href_list["command"])
 		usr.STUI_log = text2num(href_list["command"])
-		processing |= usr.STUI_log		//forces the UI to update
+		processing |= usr.STUI_log //forces the UI to update
 
 /datum/STUI/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE
@@ -83,17 +88,16 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 		if(attack.len > stui_length+1)
 			attack.Cut(,attack.len-stui_length)
 		.["logs"][STUI_TEXT_ATTACK] = attack
-		if(ooc.len > stui_length+1)
-			ooc.Cut(,ooc.len-stui_length)
-		.["logs"][STUI_TEXT_OOC] = ooc
-	if(user.client.admin_holder.rights & R_ADMIN)
 		if(admin.len > stui_length+1)
 			admin.Cut(,admin.len-stui_length)
 		.["logs"][STUI_TEXT_STAFF] = admin
 		if(staff.len > stui_length+1)
 			staff.Cut(,staff.len-stui_length)
 		.["logs"][STUI_TEXT_STAFF_CHAT] = staff
-	if((user.client.admin_holder.rights & R_ADMIN) || (user.client.admin_holder.rights & R_DEBUG))
+		if(ooc.len > stui_length+1)
+			ooc.Cut(,ooc.len-stui_length)
+		.["logs"][STUI_TEXT_OOC] = ooc
+	if((user.client.admin_holder.rights & R_MOD) || (user.client.admin_holder.rights & R_DEBUG))
 		if(game.len > stui_length+1)
 			game.Cut(,game.len-stui_length)
 		.["logs"][STUI_TEXT_GAME] = game

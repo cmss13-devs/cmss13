@@ -1,17 +1,16 @@
 var/list/weather_notify_objects = list()
 
 SUBSYSTEM_DEF(weather)
-	name          = "Weather"
-	wait          = 5 SECONDS
-	priority      = SS_PRIORITY_LIGHTING
-	flags         = SS_NO_TICK_CHECK
+	name   = "Weather"
+	wait   = 5 SECONDS
+	priority   = SS_PRIORITY_LIGHTING
 
 	// Tracking vars for controller state
-	var/is_weather_event = FALSE			// Is there a weather event going on right now?
-	var/is_weather_event_starting = FALSE	// Is there a weather event starting right now?
-	var/controller_state_lock = FALSE		// Used to prevent double-calls of important methods. Is set anytime
+	var/is_weather_event = FALSE // Is there a weather event going on right now?
+	var/is_weather_event_starting = FALSE // Is there a weather event starting right now?
+	var/controller_state_lock = FALSE // Used to prevent double-calls of important methods. Is set anytime
 											// the controller enters a proc that significantly modifies its state
-	var/current_event_start_time			// Self explanatory
+	var/current_event_start_time // Self explanatory
 
 	COOLDOWN_DECLARE(last_event_end_time)
 	COOLDOWN_DECLARE(last_event_check_time)
@@ -43,7 +42,7 @@ SUBSYSTEM_DEF(weather)
 		var/weathertype = SSmapping.configs[GROUND_MAP].weather_holder
 		map_holder = new weathertype
 		setup_weather_areas()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/weather/proc/setup_weather_areas()
 	weather_areas = list()
@@ -57,7 +56,7 @@ SUBSYSTEM_DEF(weather)
 	else
 		curr_master_turf_overlay.icon_state = ""
 
-/datum/controller/subsystem/weather/proc/force_weather_holder(var/weather_holder)
+/datum/controller/subsystem/weather/proc/force_weather_holder(weather_holder)
 	if(weather_holder)
 		if(istext(weather_holder)) weather_holder = text2path(weather_holder)
 		if(ispath(weather_holder))
@@ -112,7 +111,7 @@ SUBSYSTEM_DEF(weather)
 	is_weather_event_starting = TRUE
 	weather_event_type = event_typepath
 	map_holder.weather_warning(weather_event_type)
-	addtimer(CALLBACK(src, .proc/start_weather_event), map_holder.warn_time)
+	addtimer(CALLBACK(src, PROC_REF(start_weather_event)), map_holder.warn_time)
 	return TRUE
 
 // Adjust our state to indicate that we're starting a new event
@@ -199,7 +198,7 @@ SUBSYSTEM_DEF(weather)
 	name = "weather vfx holder"
 	icon = 'icons/effects/weather.dmi'
 	invisibility = 0
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = WEATHER_LAYER
 
 /obj/effect/weather_vfx_holder/rain

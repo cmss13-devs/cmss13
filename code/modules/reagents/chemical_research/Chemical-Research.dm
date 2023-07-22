@@ -1,4 +1,4 @@
-var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
+var/global/datum/chemical_data/chemical_data = new /datum/chemical_data
 
 /datum/chemical_data
 	var/rsc_credits = 0
@@ -14,17 +14,17 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	var/list/chemical_networks = list()
 	var/list/shared_item_storage = list()
 	var/list/shared_item_quantity = list()
-	var/list/chemical_objective_list = list()	//List of all objective reagents indexed by ID associated with the objective value
-	var/list/chemical_not_completed_objective_list = list()	//List of not completed objective reagents indexed by ID associated with the objective value
-	var/list/chemical_identified_list = list()	//List of all identified objective reagents indexed by ID associated with the objective value
+	var/list/chemical_objective_list = list() //List of all objective reagents indexed by ID associated with the objective value
+	var/list/chemical_not_completed_objective_list = list() //List of not completed objective reagents indexed by ID associated with the objective value
+	var/list/chemical_identified_list = list() //List of all identified objective reagents indexed by ID associated with the objective value
 
-/datum/chemical_data/proc/update_credits(var/change)
+/datum/chemical_data/proc/update_credits(change)
 	rsc_credits = max(0, rsc_credits + change)
 
-/datum/chemical_data/proc/update_income(var/change)
+/datum/chemical_data/proc/update_income(change)
 	research_allocation_amount = max(0, research_allocation_amount + change)
 
-/datum/chemical_data/proc/save_document(var/obj/item/paper/research_report/R, var/document_type, var/title)
+/datum/chemical_data/proc/save_document(obj/item/paper/research_report/R, document_type, title)
 	if(!research_documents["[document_type]"])
 		research_documents["[document_type]"] = list()
 	var/save_time = worldtime2text()
@@ -36,7 +36,7 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	)
 	research_documents["[document_type]"] += list(new_document)
 
-/datum/chemical_data/proc/get_report(var/doc_type, var/doc_title)
+/datum/chemical_data/proc/get_report(doc_type, doc_title)
 	var/obj/item/paper/research_report/report = null
 	for(var/document_data in chemical_data.research_documents[doc_type])
 		if(document_data["document_title"] == doc_title)
@@ -44,7 +44,7 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 			break
 	return report
 
-/datum/chemical_data/proc/publish_document(var/obj/item/paper/research_report/R, var/document_type, var/title)
+/datum/chemical_data/proc/publish_document(obj/item/paper/research_report/R, document_type, title)
 	if(!research_publications["[document_type]"])
 		research_publications["[document_type]"] = list()
 	var/save_time = worldtime2text()
@@ -56,7 +56,7 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	)
 	research_publications["[document_type]"] += list(new_document)
 
-/datum/chemical_data/proc/unpublish_document(var/document_type, var/title)
+/datum/chemical_data/proc/unpublish_document(document_type, title)
 	if(!research_publications["[document_type]"])
 		return TRUE
 	var/list/published_to_remove = list()
@@ -81,7 +81,7 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 		published_docs -= list(published_doc)
 	return TRUE
 
-/datum/chemical_data/proc/save_new_properties(var/list/properties)
+/datum/chemical_data/proc/save_new_properties(list/properties)
 	var/list/property_names = list()
 	for(var/datum/chem_property/P in properties) //just save the names
 		if(P.category & PROPERTY_TYPE_UNADJUSTABLE || P.category & PROPERTY_TYPE_ANOMALOUS)
@@ -98,47 +98,61 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 			research_property_data += P
 
 //Chem storage for various chem dispensers
-/datum/chemical_data/proc/add_chem_storage(var/obj/structure/machinery/chem_storage/C)
-	if(chemical_networks.Find(C.network))
+/datum/chemical_data/proc/add_chem_storage(obj/structure/machinery/chem_storage/storage)
+	if(chemical_networks.Find(storage.network))
 		return FALSE
 	else
-		chemical_networks[C.network] = C
+		chemical_networks[storage.network] = storage
 
-/datum/chemical_data/proc/connect_chem_storage(var/network)
-	var/obj/structure/machinery/chem_storage/C = chemical_networks[network]
-	if(!C)
+/datum/chemical_data/proc/remove_chem_storage(obj/structure/machinery/chem_storage/storage)
+	if(!istype(storage))
+		return FALSE
+	return chemical_networks.Remove(storage.network)
+
+/datum/chemical_data/proc/connect_chem_storage(network)
+	var/obj/structure/machinery/chem_storage/storage = chemical_networks[network]
+	if(!storage)
 		return FALSE
 	//Make the chem storage scale with number of dispensers
-	C.recharge_rate += 5
-	C.max_energy += 50
-	C.energy = C.max_energy
-	return C
+	storage.recharge_rate += 5
+	storage.max_energy += 50
+	storage.energy = storage.max_energy
+	return storage
 
+/datum/chemical_data/proc/disconnect_chem_storage(network)
+	var/obj/structure/machinery/chem_storage/storage = chemical_networks[network]
+	if(!storage)
+		return FALSE
+	//Make the chem storage scale with number of dispensers
+	storage.recharge_rate -= 5
+	storage.max_energy -= 50
+	storage.energy = storage.max_energy
+	return TRUE
 
-/datum/chemical_data/proc/complete_chemical(var/datum/reagent/S)
+/datum/chemical_data/proc/complete_chemical(datum/reagent/chem)
 	update_credits(2)
-	chemical_identified_list[S.id] = S.objective_value
-	chemical_not_completed_objective_list -= S.id
+	chemical_identified_list[chem.id] = chem.objective_value
+	chemical_not_completed_objective_list -= chem.id
 
 	SSobjectives.statistics["chemicals_completed"]++
-	SSobjectives.statistics["chemicals_total_points_earned"] += S.objective_value
+	SSobjectives.statistics["chemicals_total_points_earned"] += chem.objective_value
 
 	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
-	tree.add_points(S.objective_value)
+	tree.add_points(chem.objective_value)
 
 
-/datum/chemical_data/proc/add_chemical_objective(var/datum/reagent/S)
-	chemical_objective_list[S.id] = S.objective_value
-	chemical_not_completed_objective_list[S.id] = S.objective_value
+/datum/chemical_data/proc/add_chemical_objective(datum/reagent/chem)
+	chemical_objective_list[chem.id] = chem.objective_value
+	chemical_not_completed_objective_list[chem.id] = chem.objective_value
 
-/datum/chemical_data/proc/get_tgui_data(var/chemid)
-	var/datum/reagent/S = chemical_reagents_list[chemid]
-	if(!S)
+/datum/chemical_data/proc/get_tgui_data(chemid)
+	var/datum/reagent/chem = chemical_reagents_list[chemid]
+	if(!chem)
 		error("Invalid chemid [chemid]")
 		return
 	var/list/clue = list()
 
-	clue["text"] = S.name
+	clue["text"] = chem.name
 
 	return clue
 

@@ -29,7 +29,7 @@
 					list(name, 0, uniform_path, NO_FLAGS, VENDOR_ITEM_REGULAR)
 				)
 
-/obj/structure/machinery/cm_vending/clothing/dress/proc/get_products_preset(var/list/presets)
+/obj/structure/machinery/cm_vending/clothing/dress/proc/get_products_preset(list/presets)
 	. = list()
 	for(var/preset in presets)
 		var/datum/equipment_preset/pre = new preset()
@@ -74,7 +74,7 @@
 				if(uniform_path in vended_items)
 					can_vend = FALSE
 				var/name = sanitize(initial(O.name))
-				var/flags = can_vend ? NO_FLAGS : MARINE_CAN_BUY_ALL
+				var/flags = can_vend ? null : MARINE_CAN_BUY_DRESS
 				display_list += list(
 					list(name, 0, uniform_path, flags, VENDOR_ITEM_REGULAR)
 				)
@@ -93,7 +93,7 @@
 	var/list/stock_values = list()
 	for (var/i in 1 to length(ui_listed_products))
 		var/prod_available = TRUE
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
 		var/uniform_path = myprod[3]
 		if(uniform_path in vended_items)
 			prod_available = FALSE
@@ -155,3 +155,140 @@
 			IT.add_fingerprint(usr)
 			LAZYADD(id_card.vended_items, item_path)
 			return TRUE
+
+//A clothing vendor for admins and devs to test all the items in the game
+/obj/structure/machinery/cm_vending/clothing/super_snowflake
+	name = "\improper Super Snowflake Vendor"
+	desc = "WARNING: The quantity of items contained within can slow down reality."
+	icon_state = "snowflake"
+	use_points = TRUE //"use points", but everything is free
+	show_points = FALSE
+	use_snowflake_points = FALSE
+	vendor_theme = VENDOR_THEME_COMPANY
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_TO_HAND
+	vend_delay = 1 SECONDS
+	var/list/items
+	var/list/obj/item/item_types
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/get_listed_products(mob/user)
+	//If we don't have an object type, we ask the user to supply it
+	if(!item_types)
+		var/obj/item/chosen = get_item_category_from_user()
+		if(!chosen)
+			return
+		item_types = list(chosen)
+
+	if(!items)
+		items = list()
+		for(var/obj/item/item_type as anything in item_types)
+			add_items(item_type)
+
+	return items
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/get_item_category_from_user()
+	var/item = tgui_input_text(usr,"What item to stock?", "Stock Vendor","")
+	if(!item)
+		return
+	var/list/types = typesof(/obj/item)
+	var/list/matches = new()
+
+	//Figure out which object they might be trying to fetch
+	for(var/path in types)
+		if(findtext("[path]", item))
+			matches += path
+
+	if(matches.len==0)
+		return
+
+	var/obj/item/chosen
+	if(matches.len==1)
+		chosen = matches[1]
+	else
+		//If we have multiple options, let them select which one they meant
+		chosen = tgui_input_list(usr, "Select an object type", "Select Object", matches)
+
+	return chosen
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items(obj/item/item_type)
+	for(var/obj/item/I as anything in typesof(item_type))
+		items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION("", "----SNOWFLAKE VENDOR-----")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_ITEMS_TO_VENDOR, "Add Items to Vendor")
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/vv_do_topic(list/href_list)
+	. = ..()
+	if(href_list[VV_HK_ADD_ITEMS_TO_VENDOR])
+		var/obj/structure/machinery/cm_vending/clothing/super_snowflake/vendor = locate(href_list["add_items_to_vendor"])
+		if(!istype(vendor))
+			return
+		vendor.add_items_to_vendor()
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items_to_vendor()
+	if(!check_rights(R_MOD))
+		to_chat(usr, SPAN_WARNING("This option isn't for you."))
+		return
+
+	var/obj/item/chosen = get_item_category_from_user()
+	if(!chosen)
+		return
+	add_items(chosen)
+
+	log_admin("[key_name(usr)] added an item [chosen] to [src].")
+	msg_admin_niche("[key_name(usr)] added an item [chosen] to [src].")
+
+//Vendor types
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/accessory
+	name = "\improper Super Snowflake Vendor, Accessories"
+	item_types = list(/obj/item/clothing/accessory)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/ammo
+	name = "\improper Super Snowflake Vendor, Ammunition"
+	item_types = list(/obj/item/ammo_magazine)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/backpack
+	name = "\improper Super Snowflake Vendor, Backpacks"
+	item_types = list(/obj/item/storage/backpack)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/belt
+	name = "\improper Super Snowflake Vendor, Belts"
+	item_types = list(/obj/item/storage/belt)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/glasses
+	name = "\improper Super Snowflake Vendor, Glasses"
+	item_types = list(/obj/item/clothing/glasses)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/gloves
+	name = "\improper Super Snowflake Vendor, Gloves"
+	item_types = list(/obj/item/clothing/gloves)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/helmet
+	name = "\improper Super Snowflake Vendor, Helmets"
+	item_types = list(/obj/item/clothing/head)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/mask
+	name = "\improper Super Snowflake Vendor, Masks"
+	item_types = list(/obj/item/clothing/mask)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/pouch
+	name = "\improper Super Snowflake Vendor, Pouches"
+	item_types = list(/obj/item/storage/pouch)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/shoes
+	name = "\improper Super Snowflake Vendor, Shoes"
+	item_types = list(/obj/item/clothing/shoes)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/suit
+	name = "\improper Super Snowflake Vendor, Suits"
+	item_types = list(/obj/item/clothing/suit)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/uniform
+	name = "\improper Super Snowflake Vendor, Uniforms"
+	item_types = list(/obj/item/clothing/under)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/weapon
+	name = "\improper Super Snowflake Vendor, Weapons"
+	item_types = list(/obj/item/weapon)

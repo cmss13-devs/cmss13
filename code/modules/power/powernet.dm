@@ -1,5 +1,5 @@
 /datum/powernet
-	var/list/nodes = list()		// all APCs & sources
+	var/list/nodes = list() // all APCs & sources
 	var/powernet_name = ""
 
 	var/newload = 0
@@ -9,7 +9,7 @@
 	var/viewload = 0
 	var/number = 0
 
-	var/perapc = 0			// per-apc avilability
+	var/perapc = 0 // per-apc avilability
 	var/perapc_excess = 0
 	var/netexcess = 0
 
@@ -44,11 +44,11 @@
 
 		perapc = avail/numapc + perapc_excess
 
-	if( netexcess > 100)		// if there was excess power last cycle
+	if( netexcess > 100) // if there was excess power last cycle
 		if(nodes && nodes.len)
-			for(var/obj/structure/machinery/power/smes/S in nodes)	// find the SMESes in the network
+			for(var/obj/structure/machinery/power/smes/S in nodes) // find the SMESes in the network
 				if(S.powernet == src)
-					S.restore()				// and restore some of the power that was used
+					S.restore() // and restore some of the power that was used
 				else
 					error("[S.name] (\ref[S]) had a [S.powernet ? "different (\ref[S.powernet])" : "null"] powernet to our powernet (\ref[src]).")
 					nodes.Remove(S)
@@ -64,7 +64,7 @@
 	return max(avail - load, 0)
 
 //Attempts to draw power from a powernet. Returns the actual amount of power drawn
-/datum/powernet/proc/draw_power(var/requested_amount)
+/datum/powernet/proc/draw_power(requested_amount)
 	var/surplus = max(avail - newload, 0)
 	var/actual_draw = min(requested_amount, surplus)
 	newload += actual_draw

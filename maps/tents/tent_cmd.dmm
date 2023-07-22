@@ -1,0 +1,73 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/blocker/tent{
+	dir = 8
+	},
+/obj/structure/bed/chair,
+/turf/template_noop,
+/area/template_noop)
+"d" = (
+/obj/structure/blocker/tent{
+	dir = 4
+	},
+/obj/structure/bed/chair,
+/turf/template_noop,
+/area/template_noop)
+"o" = (
+/obj/structure/blocker/tent{
+	dir = 4
+	},
+/obj/structure/blocker/tent{
+	dir = 1
+	},
+/obj/structure/surface/table,
+/obj/structure/transmitter/tent{
+	phone_category = "Command";
+	phone_id = "Ground Command";
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/turf/template_noop,
+/area/template_noop)
+"p" = (
+/turf/template_noop,
+/area/template_noop)
+"v" = (
+/obj/structure/blocker/tent{
+	dir = 4
+	},
+/obj/structure/tent_curtain,
+/turf/template_noop,
+/area/template_noop)
+"A" = (
+/obj/structure/blocker/tent{
+	dir = 8
+	},
+/obj/structure/surface/table,
+/obj/structure/blocker/tent{
+	dir = 1
+	},
+/obj/structure/machinery/computer/overwatch/tent,
+/turf/template_noop,
+/area/template_noop)
+"X" = (
+/obj/structure/tent/cmd,
+/obj/structure/blocker/tent{
+	dir = 8
+	},
+/obj/structure/tent_curtain,
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+p
+A
+a
+X
+"}
+(2,1,1) = {"
+p
+o
+d
+v
+"}

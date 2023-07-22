@@ -6,6 +6,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 /obj/effect/landmark/railgun_computer
 	name = "Railgun computer landmark"
+	desc = "A computer with an orange interface, it's idly blinking, awaiting a password."
 
 /obj/effect/landmark/railgun_computer/Initialize(mapload, ...)
 	. = ..()
@@ -48,26 +49,32 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 /obj/structure/machinery/computer/railgun/Initialize()
 	. = ..()
+
+	if(is_admin_level(SSmapping.ground_start) || is_mainship_level(SSmapping.ground_start))
+		return
+
 	if(!GLOB.railgun_eye_location)
+#ifndef UNIT_TESTS
 		stack_trace("Railgun eye location is not initialised! There is no landmark for it on [SSmapping.configs[GROUND_MAP].map_name]")
+#endif
 		return INITIALIZE_HINT_QDEL
 	target_z = GLOB.railgun_eye_location.z_pos
 
-/obj/structure/machinery/computer/railgun/attackby(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
+/obj/structure/machinery/computer/railgun/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
 	return
 
-/obj/structure/machinery/computer/railgun/bullet_act(var/obj/item/projectile/Proj) //Can't shoot it
+/obj/structure/machinery/computer/railgun/bullet_act(obj/item/projectile/Proj) //Can't shoot it
 	return FALSE
 
-/obj/structure/machinery/computer/railgun/proc/set_operator(var/mob/living/carbon/human/H)
+/obj/structure/machinery/computer/railgun/proc/set_operator(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 	remove_current_operator()
 
 	operator = H
-	RegisterSignal(operator, COMSIG_PARENT_QDELETING, .proc/remove_current_operator)
-	RegisterSignal(operator, COMSIG_MOVABLE_MOVED, .proc/remove_current_operator)
-	RegisterSignal(operator, COMSIG_MOB_POST_CLICK, .proc/fire_gun)
+	RegisterSignal(operator, COMSIG_PARENT_QDELETING, PROC_REF(remove_current_operator))
+	RegisterSignal(operator, COMSIG_MOVABLE_MOVED, PROC_REF(remove_current_operator))
+	RegisterSignal(operator, COMSIG_MOB_POST_CLICK, PROC_REF(fire_gun))
 
 	if(!last_location)
 		if(GLOB.railgun_eye_location)
@@ -78,10 +85,10 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 		start_location = last_location
 
 	eye = new(last_location, operator)
-	RegisterSignal(eye, COMSIG_MOVABLE_PRE_MOVE, .proc/check_and_set_zlevel)
-	RegisterSignal(eye, COMSIG_PARENT_QDELETING, .proc/remove_current_operator)
+	RegisterSignal(eye, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_and_set_zlevel))
+	RegisterSignal(eye, COMSIG_PARENT_QDELETING, PROC_REF(remove_current_operator))
 
-/obj/structure/machinery/computer/railgun/proc/check_and_set_zlevel(var/mob/hologram/railgun/H, var/turf/NewLoc, var/direction)
+/obj/structure/machinery/computer/railgun/proc/check_and_set_zlevel(mob/hologram/railgun/H, turf/NewLoc, direction)
 	SIGNAL_HANDLER
 	if(!start_location)
 		start_location = GLOB.railgun_eye_location.get_turf_from_coord()
@@ -90,7 +97,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 		H.loc = start_location
 		return COMPONENT_OVERRIDE_MOVE
 
-/obj/structure/machinery/computer/railgun/proc/can_fire(var/mob/living/carbon/human/H, var/turf/T)
+/obj/structure/machinery/computer/railgun/proc/can_fire(mob/living/carbon/human/H, turf/T)
 	if(T.z != target_z)
 		return FALSE
 
@@ -119,7 +126,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	ammo = min(ammo + 1, max_ammo)
 
 	if(ammo < max_ammo)
-		addtimer(CALLBACK(src, .proc/recharge_ammo), ammo_recharge_time, TIMER_UNIQUE|TIMER_OVERRIDE)
+		addtimer(CALLBACK(src, PROC_REF(recharge_ammo)), ammo_recharge_time, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 	if(operator)
 		to_chat(operator, SPAN_NOTICE("[icon2html(src)] Loaded in a shell [SPAN_BOLD("([ammo]/[max_ammo] shells left).")]"))
@@ -127,7 +134,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 /obj/effect/warning/railgun
 	color = "#0000ff"
 
-/obj/structure/machinery/computer/railgun/proc/fire_gun(var/mob/living/carbon/human/H, var/atom/A, var/mods)
+/obj/structure/machinery/computer/railgun/proc/fire_gun(mob/living/carbon/human/H, atom/A, mods)
 	SIGNAL_HANDLER
 
 	if(!H.client)
@@ -142,7 +149,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 	next_fire = world.time + fire_cooldown
 
-	addtimer(CALLBACK(src, .proc/recharge_ammo), ammo_recharge_time, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(recharge_ammo)), ammo_recharge_time, TIMER_UNIQUE)
 	ammo--
 
 	to_chat(H, SPAN_NOTICE("[icon2html(src)] Firing shell. [SPAN_BOLD("([ammo]/[max_ammo] shells left).")]"))
@@ -155,9 +162,9 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	H.client.images += I
 	playsound_client(H.client, 'sound/machines/railgun/railgun_shoot.ogg')
 
-	addtimer(CALLBACK(src, .proc/land_shot, T, H.client, warning_zone, I), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(land_shot), T, H.client, warning_zone, I), 10 SECONDS)
 
-/obj/structure/machinery/computer/railgun/proc/land_shot(var/turf/T, var/client/firer, var/obj/effect/warning/droppod/warning_zone, var/image/to_remove)
+/obj/structure/machinery/computer/railgun/proc/land_shot(turf/T, client/firer, obj/effect/warning/droppod/warning_zone, image/to_remove)
 	if(warning_zone)
 		qdel(warning_zone)
 
@@ -185,7 +192,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	operator.update_sight()
 	operator = null
 
-/obj/structure/machinery/computer/railgun/attack_hand(var/mob/living/carbon/human/H)
+/obj/structure/machinery/computer/railgun/attack_hand(mob/living/carbon/human/H)
 	if(..())
 		return
 
@@ -220,23 +227,27 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	mouse_icon = 'icons/effects/mouse_pointer/mecha_mouse.dmi'
 
 /mob/hologram/railgun/Initialize(mapload, mob/M)
-	. = ..(mapload, M)
+	. = ..()
+
+	if(!M)
+		return
 
 	if(allow_turf_entry(src, loc) & COMPONENT_TURF_DENY_MOVEMENT)
 		loc = GLOB.railgun_eye_location.get_turf_from_coord()
 		to_chat(M, SPAN_WARNING("[icon2html(src)] Observation area was blocked. Switched to a viewable location."))
 
-	RegisterSignal(M, COMSIG_HUMAN_UPDATE_SIGHT, .proc/see_only_turf)
-	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, .proc/allow_turf_entry)
+	RegisterSignal(M, COMSIG_HUMAN_UPDATE_SIGHT, PROC_REF(see_only_turf))
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(allow_turf_entry))
 	M.update_sight()
 
 /mob/hologram/railgun/Destroy()
-	UnregisterSignal(linked_mob, COMSIG_HUMAN_UPDATE_SIGHT)
-	linked_mob.update_sight()
+	if(linked_mob)
+		UnregisterSignal(linked_mob, COMSIG_HUMAN_UPDATE_SIGHT)
+		linked_mob.update_sight()
 
 	return ..()
 
-/mob/hologram/railgun/proc/see_only_turf(var/mob/living/carbon/human/H)
+/mob/hologram/railgun/proc/see_only_turf(mob/living/carbon/human/H)
 	SIGNAL_HANDLER
 
 	H.see_in_dark = 50
@@ -244,7 +255,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	H.see_invisible = SEE_INVISIBLE_MINIMUM
 	return COMPONENT_OVERRIDE_UPDATE_SIGHT
 
-/mob/hologram/railgun/proc/allow_turf_entry(var/mob/self, var/turf/to_enter)
+/mob/hologram/railgun/proc/allow_turf_entry(mob/self, turf/to_enter)
 	SIGNAL_HANDLER
 
 	if(protected_by_pylon(TURF_PROTECTION_OB, to_enter))

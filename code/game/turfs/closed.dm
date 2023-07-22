@@ -1,9 +1,7 @@
-
-
 //turfs with density = TRUE
 /turf/closed
-	density = 1
-	opacity = 1
+	density = TRUE
+	opacity = TRUE
 
 /turf/closed/insert_self_into_baseturfs()
 	return
@@ -30,6 +28,7 @@
 
 		if(istype(turf_to_check,/turf/open))
 			turf_to_check.overlays += image('icons/turf/walls/walls.dmi', "rock_side_[direction]", 2.99) //Really high since it's an overhead turf and it shouldn't collide with anything else
+
 
 //Ground map dense jungle
 /turf/closed/gm
@@ -61,23 +60,15 @@
 		icon_state = "wall2"
 
 
-
-
 //desertdam rock
 /turf/closed/desert_rock
-    name = "rockwall"
-    icon = 'icons/turf/walls/cave.dmi'
-    icon_state = "cavewall1"
-
-
-
-
-
-
-
+	name = "rockwall"
+	icon = 'icons/turf/walls/cave.dmi'
+	icon_state = "cavewall1"
 
 
 //ICE WALLS-----------------------------------//
+
 //Ice Wall
 /turf/closed/ice
 	name = "dense ice wall"
@@ -103,6 +94,27 @@
 /turf/closed/ice/intersection
 	icon_state = "Intersection"
 
+//Ice Secret Wall
+/turf/closed/ice/secret
+	desc = "There is something inside..."
+
+/turf/closed/ice/secret/single
+	icon_state = "Single"
+
+/turf/closed/ice/secret/end
+	icon_state = "End"
+
+/turf/closed/ice/secret/straight
+	icon_state = "Straight"
+
+/turf/closed/ice/secret/corner
+	icon_state = "Corner"
+
+/turf/closed/ice/secret/junction
+	icon_state = "T-Junction"
+
+/turf/closed/ice/secret/intersection
+	icon_state = "Intersection"
 
 
 //Ice Thin Wall
@@ -111,7 +123,7 @@
 	icon = 'icons/turf/walls/icewalllight.dmi'
 	icon_state = "Single"
 	desc = "It is very thin."
-	opacity = 0
+	opacity = FALSE
 
 /turf/closed/ice/thin/single
 	icon_state = "Single"
@@ -131,11 +143,27 @@
 /turf/closed/ice/thin/intersection
 	icon_state = "Intersection"
 
-
-//Ice Secret Wall
-/turf/closed/ice/secret
-	icon_state = "ice_wall_0"
+//Thin Ice Secret Wall
+/turf/closed/ice/thin/secret
 	desc = "There is something inside..."
+
+/turf/closed/ice/thin/secret/single
+	icon_state = "Single"
+
+/turf/closed/ice/thin/secret/end
+	icon_state = "End"
+
+/turf/closed/ice/thin/secret/straight
+	icon_state = "Straight"
+
+/turf/closed/ice/thin/secret/corner
+	icon_state = "Corner"
+
+/turf/closed/ice/thin/secret/junction
+	icon_state = "T-Junction"
+
+/turf/closed/ice/thin/secret/intersection
+	icon_state = "Intersection"
 
 
 //ROCK WALLS------------------------------//
@@ -195,11 +223,6 @@
 	icon_state = "corner_overlay"
 
 
-
-
-
-
-
 //SHUTTLE 'WALLS'
 //not a child of turf/closed/wall because shuttle walls are magical, don't smoothes with normal walls, etc
 
@@ -207,6 +230,10 @@
 	name = "wall"
 	icon_state = "wall1"
 	icon = 'icons/turf/shuttle.dmi'
+	layer = ABOVE_TURF_LAYER
+
+/turf/closed/shuttle/is_weedable()
+	return FULLY_WEEDABLE
 
 /turf/closed/shuttle/dropship
 	icon = 'icons/turf/walls/walls.dmi'
@@ -216,14 +243,13 @@
 	icon = 'icons/turf/ert_shuttle.dmi'
 	icon_state = "stan4"
 
-
 /turf/closed/shuttle/dropship1
 	name = "\improper Alamo"
 	icon = 'icons/turf/dropship.dmi'
 	icon_state = "1"
 
 /turf/closed/shuttle/dropship1/transparent
-	opacity = 0
+	opacity = FALSE
 
 /turf/closed/shuttle/dropship2
 	name = "\improper Normandy"
@@ -231,7 +257,7 @@
 	icon_state = "1"
 
 /turf/closed/shuttle/dropship2/transparent
-	opacity = 0
+	opacity = FALSE
 
 /turf/closed/shuttle/dropship2/tornado
 	name = "\improper Tornado"
@@ -253,7 +279,7 @@
 
 /turf/closed/shuttle/lifeboat/transparent
 	icon_state = "window1"
-	opacity = 0
+	opacity = FALSE
 
 //INSERT EXPLOSION CODE
 /turf/closed/shuttle/lifeboat/proc/transform_crash()

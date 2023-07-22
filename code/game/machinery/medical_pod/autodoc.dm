@@ -1,8 +1,8 @@
 //Autodoc
 /obj/structure/machinery/medical_pod/autodoc
-	name = "\improper autodoc medical system"
-	desc = "A fancy machine developed to be capable of operating on people with minimal human intervention. The interface is rather complex and would only be useful to trained Doctors however."
-	icon_state = "autodoc"
+	name = "\improper autodoc emergency medical system"
+	desc = "An emergency surgical device designed to perform life-saving treatments and basic surgeries on patients automatically, without the need of a surgeon. <br>It still requires someone with medical knowledge to program the treatments correctly; for this reason, colonies that use these often have paramedics trained in autodoc operation."
+	icon_state = "autodoc_open"
 
 	entry_timer = 2 SECONDS
 	skilllock = SKILL_SURGERY_NOVICE
@@ -35,11 +35,6 @@
 			icon_state = "autodoc_closed"
 	else
 		icon_state = "autodoc_open"
-
-/obj/structure/machinery/medical_pod/autodoc/get_examine_text(mob/user)
-	. = ..()
-	if(ishuman(user))
-		. += SPAN_NOTICE("It has [stored_metal] metal available for limb replacements.")
 
 /obj/structure/machinery/medical_pod/autodoc/Initialize()
 	. = ..()
@@ -74,8 +69,8 @@
 		visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> malfunctions as [usr] aborts the surgery in progress.")
 		occupant.take_limb_damage(rand(30,50),rand(30,50))
 		surgery = FALSE
-		// message_staff for now, may change to message_admins later
-		message_staff("[key_name(usr)] ejected [key_name(occupant)] from the autodoc during surgery causing damage.")
+		// message_admins for now, may change to message_admins later
+		message_admins("[key_name(usr)] ejected [key_name(occupant)] from the autodoc during surgery causing damage.")
 		return TRUE
 	return TRUE
 
@@ -104,7 +99,7 @@
 
 
 
-/obj/structure/machinery/medical_pod/autodoc/power_change(var/area/master_area = null)
+/obj/structure/machinery/medical_pod/autodoc/power_change(area/master_area = null)
 	..()
 	if(stat & NOPOWER)
 		visible_message("\The [src] engages the safety override, ejecting the occupant.")
@@ -112,9 +107,9 @@
 		go_out()
 		return
 
-/obj/structure/machinery/medical_pod/autodoc/proc/heal_limb(var/mob/living/carbon/human/human, var/brute, var/burn)
+/obj/structure/machinery/medical_pod/autodoc/proc/heal_limb(mob/living/carbon/human/human, brute, burn)
 	var/list/obj/limb/parts = human.get_damaged_limbs(brute,burn)
-	if(!parts.len)	return
+	if(!parts.len) return
 	var/obj/limb/picked = pick(parts)
 	if(picked.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		picked.heal_damage(brute, burn, TRUE)
@@ -156,14 +151,14 @@
 				if(occupant.blood_volume < BLOOD_VOLUME_NORMAL)
 					if(blood_pack.reagents.get_reagent_amount("blood") < 4)
 						blood_pack.reagents.add_reagent("blood", 195, list("viruses"=null,"blood_type"="O-","resistances"=null))
-						visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Blood reserves depleted, switching to fresh bag.")
+						visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Blood reserves depleted, switching to fresh container.")
 					occupant.inject_blood(blood_pack, 8) // double iv stand rate
 					if(prob(10))
 						visible_message("\The [src] whirrs and gurgles as it transfuses blood.")
 						to_chat(occupant, SPAN_INFO("You feel slightly less faint."))
 				else
 					blood_transfer = 0
-					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Blood transfer complete.")
+					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Blood transfusion complete.")
 			if(heal_brute)
 				if(occupant.getBruteLoss() > 0)
 					heal_limb(occupant, 3, 0)
@@ -190,7 +185,7 @@
 						to_chat(occupant, SPAN_INFO("You feel slightly less ill."))
 				else
 					heal_toxin = 0
-					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Chelation complete.")
+					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Toxin removal complete.")
 
 
 #define LIMB_SURGERY 1
@@ -539,7 +534,7 @@
 	go_out()
 
 
-/obj/structure/machinery/medical_pod/autodoc/proc/open_incision(mob/living/carbon/human/target, var/obj/limb/L)
+/obj/structure/machinery/medical_pod/autodoc/proc/open_incision(mob/living/carbon/human/target, obj/limb/L)
 	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_SURFACE)
 		sleep(INCISION_MANAGER_MAX_DURATION*surgery_mod)
 		if(!surgery)
@@ -548,7 +543,7 @@
 		target.incision_depths[L.name] = SURGERY_DEPTH_SHALLOW //Can immediately proceed to other surgery steps
 		target.updatehealth()
 
-/obj/structure/machinery/medical_pod/autodoc/proc/close_incision(mob/living/carbon/human/target, var/obj/limb/L)
+/obj/structure/machinery/medical_pod/autodoc/proc/close_incision(mob/living/carbon/human/target, obj/limb/L)
 	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_SHALLOW)
 		sleep(CAUTERY_MAX_DURATION*surgery_mod)
 		if(!surgery)
@@ -557,14 +552,14 @@
 		L.remove_all_bleeding(TRUE)
 		target.updatehealth()
 
-/obj/structure/machinery/medical_pod/autodoc/proc/open_encased(mob/living/carbon/human/target, var/obj/limb/L)
+/obj/structure/machinery/medical_pod/autodoc/proc/open_encased(mob/living/carbon/human/target, obj/limb/L)
 	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_SHALLOW)
 		sleep((CIRCULAR_SAW_MAX_DURATION*surgery_mod) + (RETRACTOR_MAX_DURATION*surgery_mod))
 		if(!surgery)
 			return
 		target.incision_depths[L.name] = SURGERY_DEPTH_DEEP
 
-/obj/structure/machinery/medical_pod/autodoc/proc/close_encased(mob/living/carbon/human/target, var/obj/limb/L)
+/obj/structure/machinery/medical_pod/autodoc/proc/close_encased(mob/living/carbon/human/target, obj/limb/L)
 	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_DEEP)
 		sleep((RETRACTOR_MAX_DURATION*surgery_mod) + (BONEGEL_REPAIR_MAX_DURATION*surgery_mod))
 		if(!surgery)
@@ -585,12 +580,13 @@
 //Auto Doc console that links up to it.
 /obj/structure/machinery/autodoc_console
 	name = "\improper autodoc medical system control console"
+	desc = "The control interface used to operate the adjoining autodoc. Requires training to use properly."
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "sleeperconsole"
 	var/obj/structure/machinery/medical_pod/autodoc/connected = null
 	dir = SOUTH
-	anchored = 1 //About time someone fixed this.
-	density = 0
+	anchored = TRUE //About time someone fixed this.
+	density = FALSE
 	unslashable = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 40
@@ -621,7 +617,7 @@
 	. = ..()
 
 
-/obj/structure/machinery/autodoc_console/power_change(var/area/master_area = null)
+/obj/structure/machinery/autodoc_console/power_change(area/master_area = null)
 	..()
 	if(stat & NOPOWER)
 		if(icon_state != "sleeperconsole-p")
@@ -649,9 +645,9 @@
 		if(occupant)
 			var/t1
 			switch(occupant.stat)
-				if(0)	t1 = "conscious"
-				if(1)	t1 = "<font color='blue'>unconscious</font>"
-				if(2)	t1 = "<font color='red'><b>dead</b></font>"
+				if(0) t1 = "conscious"
+				if(1) t1 = "<font color='blue'>unconscious</font>"
+				if(2) t1 = "<font color='red'><b>dead</b></font>"
 			var/operating
 			switch(connected.surgery)
 				if(0) operating = "Auto-Doc: STANDING BY"
@@ -689,13 +685,13 @@
 									dat += "Burn Damage Treatment"
 								if("toxin")
 									surgeryqueue["toxin"] = 1
-									dat += "Toxin Damage Chelation"
+									dat += "Bloodstream Toxin Removal"
 								if("dialysis")
 									surgeryqueue["dialysis"] = 1
 									dat += "Dialysis"
 								if("blood")
 									surgeryqueue["blood"] = 1
-									dat += "Blood Transfer"
+									dat += "Emergency Blood Transfusion"
 						if(ORGAN_SURGERY)
 							switch(A.surgery_procedure)
 								if("damage")
@@ -711,7 +707,7 @@
 									dat += "Internal Bleeding Surgery"
 								if("broken")
 									surgeryqueue["broken"] = 1
-									dat += "Broken Bone Surgery"
+									dat += "Bone Repair Treatment"
 								if("missing")
 									surgeryqueue["missing"] = 1
 									dat += "Limb Replacement Surgery"
@@ -723,7 +719,7 @@
 									dat += "Facial Reconstruction Surgery"
 								if("open")
 									surgeryqueue["open"] = 1
-									dat += "Close Open Incision"
+									dat += "Close Open Incisions"
 					dat += "<br>"
 
 			dat += "<hr><a href='?src=\ref[src];surgery=1'>Begin Surgery</a> - <a href='?src=\ref[src];refresh=1'>Refresh Menu</a> - <a href='?src=\ref[src];clear=1'>Clear Queue</a><hr>"
@@ -734,38 +730,21 @@
 					dat += "<a href='?src=\ref[src];brute=1'>Brute Damage Treatment</a><br>"
 				if(isnull(surgeryqueue["burn"]))
 					dat += "<a href='?src=\ref[src];burn=1'>Burn Damage Treatment</a><br>"
-				dat += "<b>Orthopedic Surgeries</b>"
-				dat += "<br>"
-				if(isnull(surgeryqueue["broken"]))
-					dat += "<a href='?src=\ref[src];broken=1'>Broken Bone Surgery</a><br>"
-				if(isnull(surgeryqueue["internal"]))
-					dat += "<a href='?src=\ref[src];internal=1'>Internal Bleeding Surgery</a><br>"
+				if(isnull(surgeryqueue["open"]))
+					dat += "<a href='?src=\ref[src];open=1'>Close Open Incisions</a><br>"
 				if(isnull(surgeryqueue["shrapnel"]))
 					dat += "<a href='?src=\ref[src];shrapnel=1'>Shrapnel Removal Surgery</a><br>"
-				dat += "<b>Organ Surgeries</b>"
-				dat += "<br>"
-				if(isnull(surgeryqueue["eyes"]))
-					dat += "<a href='?src=\ref[src];eyes=1'>Corrective Eye Surgery</a><br>"
-				if(isnull(surgeryqueue["organdamage"]))
-					dat += "<a href='?src=\ref[src];organdamage=1'>Organ Damage Treatment</a><br>"
 				dat += "<b>Hematology Treatments</b>"
 				dat += "<br>"
 				if(isnull(surgeryqueue["blood"]))
-					dat += "<a href='?src=\ref[src];blood=1'>Blood Transfer</a><br>"
+					dat += "<a href='?src=\ref[src];blood=1'>Emergency Blood Transfusion</a><br>"
 				if(isnull(surgeryqueue["dialysis"]))
 					dat += "<a href='?src=\ref[src];dialysis=1'>Dialysis</a><br>"
 				if(isnull(surgeryqueue["toxin"]))
-					dat += "<a href='?src=\ref[src];toxin=1'>Toxin Damage Chelation</a><br>"
-				dat += "<b>Special Surgeries</b>"
+					dat += "<a href='?src=\ref[src];toxin=1'>Bloodstream Toxin Removal</a><br>"
 				dat += "<br>"
-				if(isnull(surgeryqueue["open"]))
-					dat += "<a href='?src=\ref[src];open=1'>Close Open Incision</a><br>"
-				if(isnull(surgeryqueue["facial"]))
-					dat += "<a href='?src=\ref[src];facial=1'>Facial Reconstruction Surgery</a><br>"
-				if(isnull(surgeryqueue["missing"]))
-					dat += "<a href='?src=\ref[src];missing=1'>Limb Replacement Surgery</a><hr>"
 		else
-			dat += "The Auto-Doc is empty."
+			dat += "The autodoc is empty."
 	dat += text("<a href='?src=\ref[];mach_close=sleeper'>Close</a>", user)
 	show_browser(user, dat, "Auto-Doc Medical System", "sleeper", "size=300x400")
 	onclose(user, "sleeper")
@@ -903,5 +882,6 @@
 		add_fingerprint(usr)
 
 /obj/structure/machinery/medical_pod/autodoc/unskilled
-	desc = "This autodoc has been loaded with extra programming so that it can be used without training. Neat!"
+	name = "advanced autodoc emergency medical system"
+	desc = "A much more expensive model of autodoc modified with an A.I. diagnostic unit. The result is a much simpler, point-and-click interface that anyone, regardless of training, can use. Often employed in autodoc systems deployed to military front lines for soldiers to use."
 	skilllock = null

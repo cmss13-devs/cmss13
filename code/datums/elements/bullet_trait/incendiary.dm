@@ -18,9 +18,9 @@
 		burn_reagent = reagent
 	burn_stacks = stacks
 
-	RegisterSignal(target, COMSIG_BULLET_ACT_LIVING, .proc/ignite_living, override = TRUE)
-	RegisterSignal(target, COMSIG_POST_BULLET_ACT_HUMAN, .proc/ignite_human, override = TRUE)
-	RegisterSignal(target, COMSIG_BULLET_ACT_XENO, .proc/ignite_xeno, override = TRUE)
+	RegisterSignal(target, COMSIG_BULLET_ACT_LIVING, PROC_REF(ignite_living), override = TRUE)
+	RegisterSignal(target, COMSIG_POST_BULLET_ACT_HUMAN, PROC_REF(ignite_human), override = TRUE)
+	RegisterSignal(target, COMSIG_BULLET_ACT_XENO, PROC_REF(ignite_xeno), override = TRUE)
 
 /datum/element/bullet_trait_incendiary/Detach(datum/target)
 	UnregisterSignal(target, list(
@@ -45,7 +45,7 @@
 	projectile_target.IgniteMob(TRUE)
 	to_chat(projectile_target, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
 
-/datum/element/bullet_trait_incendiary/proc/ignite_xeno(datum/target, mob/living/carbon/Xenomorph/projectile_target, damage, damage_actual)
+/datum/element/bullet_trait_incendiary/proc/ignite_xeno(datum/target, mob/living/carbon/xenomorph/projectile_target, damage, damage_actual)
 	SIGNAL_HANDLER
 
 	if(projectile_target.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)

@@ -1,18 +1,18 @@
 #define RANGE_TURFS(RADIUS, CENTER) \
-  block( \
-    locate(max(CENTER.x-(RADIUS),1),          max(CENTER.y-(RADIUS),1),          CENTER.z), \
-    locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
-  )
+block( \
+	locate(max(CENTER.x-(RADIUS),1),   max(CENTER.y-(RADIUS),1),   CENTER.z), \
+	locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
+)
 
 //Admin perms are in global.dm.
 
-#define NO_FLAGS 0 // To make it even more clear that something is a bitfield
+/// To make it even more clear that something is a bitfield.
+#define NO_FLAGS 0
 
-#define GLOBAL_PROC		"magic BS"
+#define GLOBAL_PROC "magic BS"
 
 //Game defining directives.
 #define MAIN_AI_SYSTEM "ARES v3.2"
-#define MAIN_SHIP_ESCAPE_POD_NUMBER 18
 
 // Maploader bounds indices
 #define MAP_MINX 1
@@ -23,6 +23,7 @@
 #define MAP_MAXZ 6
 
 #define MAP_MAXSIZE 300
+
 
 #define MAP_ICE_COLONY "Ice Colony" // Highpop only
 #define MAP_LV_624 "LV-624"
@@ -35,35 +36,38 @@
 #define MAP_CORSAT "CORSAT" // Highpop only
 #define MAP_KUTJEVO "Kutjevo Refinery"
 #define MAP_ICE_COLONY_V3 "Shivas Snowball" //Ice Rework, low pop enabled.
-#define MAP_HAUNTED_HOUSE_V2 "Haunted House V2"
 #define MAP_RUNTIME "USS Runtime"
 #define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
 
-#define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
+#define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
+#define GAMEMODE_HIVE_WARS "Hive Wars"
 
-#define PREROUND_TIME 360 // time before the round starts
+/// Number of players before we switch to lowpop maps only (LV, BR, Prison).
+#define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130
+/// Time before the round starts.
+#define PREROUND_TIME 360
 
 //A set of constants used to determine which type of mute an admin wishes to apply:
 //Please read and understand the muting/automuting stuff before changing these. MUTE_IC_AUTO etc = (MUTE_IC << 1)
 //Therefore there needs to be a gap between the flags for the automute flags
-#define MUTE_IC			1
-#define MUTE_OOC		2
-#define MUTE_PRAY		4
-#define MUTE_ADMINHELP	8
-#define MUTE_DEADCHAT	16
-#define MUTE_ALL		31
+#define MUTE_IC 1
+#define MUTE_OOC 2
+#define MUTE_PRAY 4
+#define MUTE_ADMINHELP 8
+#define MUTE_DEADCHAT 16
+#define MUTE_ALL 31
 
 //Number of identical messages required to get the spam-prevention automute thing to trigger warnings and automutes
 #define SPAM_TRIGGER_WARNING 5
 #define SPAM_TRIGGER_AUTOMUTE 10
 
 //Some constants for DB_Ban
-#define BANTYPE_PERMA		1
-#define BANTYPE_TEMP		2
-#define BANTYPE_JOB_PERMA	3
-#define BANTYPE_JOB_TEMP	4
-#define BANTYPE_ANY_FULLBAN	5 //used to locate stuff to unban.
+#define BANTYPE_PERMA 1
+#define BANTYPE_TEMP 2
+#define BANTYPE_JOB_PERMA 3
+#define BANTYPE_JOB_TEMP 4
+#define BANTYPE_ANY_FULLBAN 5 //used to locate stuff to unban.
 
 #define SEE_INVISIBLE_MINIMUM 5
 
@@ -73,19 +77,23 @@
 
 #define SEE_INVISIBLE_LIVING 25
 
-#define SEE_INVISIBLE_LEVEL_ONE 35	//Used by some stuff in code. It's really poorly organized.
-#define INVISIBILITY_LEVEL_ONE 35	//Used by some stuff in code. It's really poorly organized.
+#define SEE_INVISIBLE_LEVEL_ONE 35 //Used by some stuff in code. It's really poorly organized.
+#define INVISIBILITY_LEVEL_ONE 35 //Used by some stuff in code. It's really poorly organized.
 
-#define SEE_INVISIBLE_LEVEL_TWO 45	//Used by some other stuff in code. It's really poorly organized.
-#define INVISIBILITY_LEVEL_TWO 45	//Used by some other stuff in code. It's really poorly organized.
+#define SEE_INVISIBLE_LEVEL_TWO 45 //Used by some other stuff in code. It's really poorly organized.
+#define INVISIBILITY_LEVEL_TWO 45 //Used by some other stuff in code. It's really poorly organized.
 
 #define INVISIBILITY_OBSERVER 60
 #define SEE_INVISIBLE_OBSERVER 60
 
 #define INVISIBILITY_MAXIMUM 100
 
+#define INVISIBILITY_ABSTRACT 101 //only used for abstract objects that aren't really "there" but can't be datums
+
 //Object specific defines
-#define CANDLE_LUM 3 //For how bright candles are
+
+/// For how bright candles are.
+#define CANDLE_LUM 3
 
 
 //Preference toggles//
@@ -93,41 +101,42 @@
 #define SOUND_ADMINHELP (1<<0)
 #define SOUND_MIDI (1<<1)
 #define SOUND_AMBIENCE (1<<2)
-#define SOUND_LOBBY	(1<<3)
+#define SOUND_LOBBY (1<<3)
 #define SOUND_INTERNET (1<<4)
 #define SOUND_REBOOT (1<<5)
 #define SOUND_ADMIN_MEME (1<<6)
-#define SOUND_ADMIN_ATMOSPHERIC	(1<<7)
+#define SOUND_ADMIN_ATMOSPHERIC (1<<7)
+#define SOUND_ARES_MESSAGE (1<<8)
 
 //toggles_chat
-#define CHAT_OOC			(1<<0)
-#define CHAT_DEAD			(1<<1)
-#define CHAT_GHOSTEARS		(1<<2)
-#define CHAT_GHOSTSIGHT		(1<<3)
-#define CHAT_PRAYER			(1<<4)
-#define CHAT_RADIO			(1<<5)
-#define CHAT_ATTACKLOGS		(1<<6)
-#define CHAT_DEBUGLOGS		(1<<7)
-#define CHAT_LOOC			(1<<8)
-#define CHAT_GHOSTRADIO 	(1<<9)
-#define SHOW_TYPING 		(1<<10)
-#define CHAT_FFATTACKLOGS 	(1<<11)
-#define CHAT_GHOSTHIVEMIND	(1<<12)
-#define CHAT_NICHELOGS		(1<<13)
+#define CHAT_OOC (1<<0)
+#define CHAT_DEAD (1<<1)
+#define CHAT_GHOSTEARS (1<<2)
+#define CHAT_GHOSTSIGHT (1<<3)
+#define CHAT_PRAYER (1<<4)
+#define CHAT_RADIO (1<<5)
+#define CHAT_ATTACKLOGS (1<<6)
+#define CHAT_DEBUGLOGS (1<<7)
+#define CHAT_LOOC (1<<8)
+#define CHAT_GHOSTRADIO (1<<9)
+#define SHOW_TYPING (1<<10)
+#define CHAT_FFATTACKLOGS (1<<11)
+#define CHAT_GHOSTHIVEMIND (1<<12)
+#define CHAT_NICHELOGS (1<<13)
 
 //toggles_ghost
 #define GHOST_HEALTH_SCAN  (1<<0)
 
 //toggles_flashing
-#define FLASH_ROUNDSTART		(1<<0)
-#define FLASH_ROUNDEND			(1<<1)
-#define FLASH_CORPSEREVIVE		(1<<2)
-#define FLASH_ADMINPM			(1<<3)
-#define FLASH_UNNEST			(1<<4)
-#define FLASH_POOLSPAWN			(1<<5)
+#define FLASH_ROUNDSTART (1<<0)
+#define FLASH_ROUNDEND (1<<1)
+#define FLASH_CORPSEREVIVE (1<<2)
+#define FLASH_ADMINPM (1<<3)
+#define FLASH_UNNEST (1<<4)
+#define FLASH_POOLSPAWN (1<<5)
 
 //toggles_langchat
-#define LANGCHAT_SEE_EMOTES		(1<<0)
+#define LANGCHAT_SEE_EMOTES (1<<0)
 
 //toggles_ert
 #define PLAY_LEADER (1<<0)
@@ -144,7 +153,7 @@
 
 //=================================================
 
-#define TOGGLES_CHAT_DEFAULT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_ATTACKLOGS|CHAT_LOOC|CHAT_GHOSTHIVEMIND)
+#define TOGGLES_CHAT_DEFAULT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_LOOC|CHAT_GHOSTHIVEMIND)
 
 #define TOGGLES_GHOST_DEFAULT (GHOST_HEALTH_SCAN)
 
@@ -172,49 +181,47 @@
 // and the time before it leaves again
 // note that this is multiplied by 10 in the shuttle controller. Hence, this is not defined in deciseconds but in real seconds
 
-#define DOCK_ATTEMPT_TIMEOUT 			20 SECONDS	//how long in ticks we wait before assuming the docking controller is broken or blown up.
-#define DROPSHIP_WARMUP_TIME			10 SECONDS
-#define DROPSHIP_DROP_MSG_DELAY			30 SECONDS
-#define DROPSHIP_TRANSIT_DURATION		100 SECONDS	// 100 seconds
-#define DROPSHIP_CORSAT_DURATION		30 SECONDS  // 30 seconds
-#define ELEVATOR_TRANSIT_DURATION		5 SECONDS	// 5 seconds
-#define TRANSIT_POD_TRANSIT_DURATION	30 SECONDS 	// 30 seconds
-#define DROPSHIP_CRASH_TRANSIT_DURATION	3 MINUTES	// 180 seconds. 3 minutes
-#define ERT_SHUTTLE_TRANSIT_DURATION    30 SECONDS	// what are these comments for
+/// how long in ticks we wait before assuming the docking controller is broken or blown up.
+#define DOCK_ATTEMPT_TIMEOUT 20 SECONDS
+#define DROPSHIP_WARMUP_TIME 10 SECONDS
+#define DROPSHIP_DROP_MSG_DELAY 30 SECONDS
+#define DROPSHIP_TRANSIT_DURATION 100 SECONDS
+#define DROPSHIP_CORSAT_DURATION 30 SECONDS
+#define ELEVATOR_TRANSIT_DURATION 5 SECONDS
+#define TRANSIT_POD_TRANSIT_DURATION 30 SECONDS
+#define DROPSHIP_CRASH_TRANSIT_DURATION 3 MINUTES
+#define ERT_SHUTTLE_TRANSIT_DURATION 30 SECONDS
 
-#define SHUTTLE_RECHARGE  2 MINUTES // 2 minutes
-#define ELEVATOR_RECHARGE 15 SECONDS  // 15 seconds
+#define SHUTTLE_RECHARGE  2 MINUTES
+#define ELEVATOR_RECHARGE 15 SECONDS
 
 //Shuttle moving status
-//#define SHUTTLE_IDLE		0
-#define SHUTTLE_WARMUP		1
-#define SHUTTLE_INTRANSIT	2
-#define SHUTTLE_CRASHED		3
+//#define SHUTTLE_IDLE 0
+#define SHUTTLE_WARMUP 1
+#define SHUTTLE_INTRANSIT 2
 
 //Ferry shuttle processing status
-#define IDLE_STATE		0
-#define WAIT_LAUNCH		1
-#define FORCE_LAUNCH	2
-#define WAIT_ARRIVE		3
-#define WAIT_FINISH		4
-#define FORCE_CRASH		5
+#define IDLE_STATE 0
+#define WAIT_LAUNCH 1
+#define FORCE_LAUNCH 2
+#define WAIT_ARRIVE 3
+#define WAIT_FINISH 4
+#define FORCE_CRASH 5
 
 //Security levels
-#define SEC_LEVEL_GREEN	0
-#define SEC_LEVEL_BLUE	1
-#define SEC_LEVEL_RED	2
-#define SEC_LEVEL_DELTA	3
+#define SEC_LEVEL_GREEN 0
+#define SEC_LEVEL_BLUE 1
+#define SEC_LEVEL_RED 2
+#define SEC_LEVEL_DELTA 3
 
 //Alarm levels.
-#define ALARM_WARNING_FIRE 	(1<<0)
-#define ALARM_WARNING_ATMOS	(1<<1)
-#define ALARM_WARNING_EVAC	(1<<2)
-#define ALARM_WARNING_READY	(1<<3)
-#define ALARM_WARNING_DOWN	(1<<4)
-#define ALARM_LOCKDOWN		(1<<5)
-
-//some arbitrary defines to be used by self-pruning global lists. (see master_controller)
-#define PROCESS_KILL 26	//Used to trigger removal from a processing list
+// flags_alarm_state
+#define ALARM_WARNING_FIRE (1<<0)
+#define ALARM_WARNING_ATMOS (1<<1)
+#define ALARM_WARNING_EVAC (1<<2)
+#define ALARM_WARNING_READY (1<<3)
+#define ALARM_WARNING_DOWN (1<<4)
+#define ALARM_LOCKDOWN (1<<5)
 
 //=================================================
 #define HOSTILE_STANCE_IDLE 1
@@ -224,15 +231,19 @@
 #define HOSTILE_STANCE_TIRED 5
 //=================================================
 
-#define ROUNDSTART_LOGOUT_REPORT_TIME 10 MINUTES //Amount of time (in deciseconds) after the rounds starts, that the player disconnect report is issued.
+/// Amount of time (in deciseconds) after the rounds starts, that the player disconnect report is issued.
+#define ROUNDSTART_LOGOUT_REPORT_TIME 10 MINUTES
 
 //=================================================
 //Game mode related defines.
 
-#define TRANSITIONEDGE	3 //Distance from edge to move to another z-level
+/// Distance from edge to move to another z-level.
+#define TRANSITIONEDGE 3
 
 //Flags for zone sleeping
-#define GET_RANDOM_FREQ rand(32000, 55000) //Frequency stuff only works with 45kbps oggs.
+
+/// Frequency stuff only works with 45kbps oggs.
+#define GET_RANDOM_FREQ rand(32000, 55000)
 
 
 // Ceilings
@@ -298,10 +309,13 @@
 #define BARRICADE_DMG_MODERATE 2
 #define BARRICADE_DMG_HEAVY 3
 
-#define BARRICADE_BSTATE_FORTIFIED 	3 // Used by handrails to indicate reinforcing
-#define BARRICADE_BSTATE_SECURED 	2 // fresh barricade
-#define BARRICADE_BSTATE_UNSECURED 	1 // intermediate state before cade is movable (no apparent effect on health)
-#define BARRICADE_BSTATE_MOVABLE 	0 // ready to be deconstructed and can be moved
+#define BARRICADE_BSTATE_FORTIFIED 3 // Used by handrails to indicate reinforcing
+#define BARRICADE_BSTATE_SECURED 2 // fresh barricade
+
+/// Intermediate state before cade is movable (no apparent effect on health).
+#define BARRICADE_BSTATE_UNSECURED 1
+/// Ready to be deconstructed and can be moved.
+#define BARRICADE_BSTATE_MOVABLE 0
 
 // Defines for sandbag build stages
 #define BARRICADE_SANDBAG_1 1
@@ -311,11 +325,11 @@
 #define BARRICADE_SANDBAG_5 5
 
 // Defines for sandbag tresholds
-#define BARRICADE_SANDBAG_TRESHOLD_1	75
-#define BARRICADE_SANDBAG_TRESHOLD_2	150
-#define BARRICADE_SANDBAG_TRESHOLD_3	225
-#define BARRICADE_SANDBAG_TRESHOLD_4	300
-#define BARRICADE_SANDBAG_TRESHOLD_5	450
+#define BARRICADE_SANDBAG_TRESHOLD_1 75
+#define BARRICADE_SANDBAG_TRESHOLD_2 150
+#define BARRICADE_SANDBAG_TRESHOLD_3 225
+#define BARRICADE_SANDBAG_TRESHOLD_4 300
+#define BARRICADE_SANDBAG_TRESHOLD_5 450
 
 // Defines for wall types
 #define WALL_METAL "metal"
@@ -377,6 +391,7 @@
 #define FIRE_MISSION_WEAPON_REMOVED 8
 #define FIRE_MISSION_WEAPON_UNUSABLE 16
 #define FIRE_MISSION_WEAPON_OUT_OF_AMMO 32
+#define FIRE_MISSION_NOT_EXECUTABLE -1
 
 //Defines for firemission state
 #define FIRE_MISSION_STATE_IDLE 0
@@ -387,7 +402,7 @@
 #define FIRE_MISSION_STATE_COOLDOWN 16
 
 //Defines for the ticker
-#define GAME_STATE_COMPILE_FINISHED	5
+#define GAME_STATE_COMPILE_FINISHED 5
 
 // Misc client defines
 #define MIN_FPS 0
@@ -399,13 +414,22 @@
 #define SHUTTLE_GROUND   3
 
 // Misc game defines
-#define EXTINGUISHER_WATER_USE_AMT	5 // Amount of water consumed by extinguisher per use //why is this a define let alone a GLOBAL define oh my good lord
+
+/// Amount of water consumed by extinguisher per use.//why is this a define let alone a GLOBAL define oh my good lord
+#define EXTINGUISHER_WATER_USE_AMT 5
 
 // Chat delay amounts
-#define CHAT_SAY_DELAY      2
+#define CHAT_SAY_DELAY   2
 #define CHAT_SAY_DELAY_SPAM 10
-#define CHAT_OOC_DELAY      5
+#define CHAT_OOC_DELAY   5
 #define CHAT_OOC_DELAY_SPAM 10
+
+/// Max characters per minute allowed to speak
+#define CHAT_CPM_ALLOWED  1500
+/// Minimum character length counted for a single message
+#define CHAT_CPM_MINIMUM  50
+/// Buffer period over which speaking budget is considered
+#define CHAT_CPM_PERIOD   5 MINUTES
 
 // Decorator Priorities
 #define DECORATOR_USUAL 0
@@ -427,13 +451,15 @@
 #define CHAT_TYPE_TAKING_HIT 256
 #define CHAT_TYPE_PAIN 512
 
-#define CHAT_TYPE_ALL ((1<<16) - 1) // this is so if we have newer flags, we still have ALL working. This will work for 16 first flags
+/// This is so if we have newer flags, we still have ALL working. This will work for 16 first flags.
+#define CHAT_TYPE_ALL ((1<<16) - 1)
+
 #define CHAT_TYPE_TARGETS_ME CHAT_TYPE_TAKING_HIT
 
-// Used for pre-setting tgchat message type as combat messages
+/// Used for pre-setting tgchat message type as combat messages
 #define CHAT_TYPE_ALL_COMBAT (CHAT_TYPE_BEING_HIT|CHAT_TYPE_WEAPON_USE|CHAT_TYPE_ARMOR_DAMAGE|CHAT_TYPE_MELEE_HIT|CHAT_TYPE_COMBAT_ACTION|CHAT_TYPE_XENO_COMBAT|CHAT_TYPE_TAKING_HIT)
 
-// Window skin types
+/// Window skin types
 #define TOGGLE_WINDOW_SKIN 1
 
 // Quadtree values
@@ -447,7 +473,9 @@
 
 
 #define QTREE_EXCLUDE_OBSERVER 1
-#define QTREE_SCAN_MOBS 2 //Return mob list instead of client list
+
+/// Return mob list instead of client list.
+#define QTREE_SCAN_MOBS 2
 
 // Ship section bounds
 
@@ -473,15 +501,15 @@
 #define ALMAYER_FORE_BOUNDARY 121
 #define ALMAYER_AFT_BOUNDARY 197
 
-/proc/get_accurate_dist(var/turf/A, var/turf/B)
+/proc/get_accurate_dist(turf/A, turf/B)
 	var/dist
 	if(!A || !B)
 		dist = 0
 	else
 		var/dx = abs(A.x - B.x)
 		var/dy = abs(A.y - B.y)
-		if(dx>=dy)	dist = (0.934*dx) + (0.427*dy)
-		else		dist = (0.427*dx) + (0.934*dy)
+		if(dx>=dy) dist = (0.934*dx) + (0.427*dy)
+		else dist = (0.427*dx) + (0.934*dy)
 
 	return dist
 
@@ -502,6 +530,7 @@
 
 // Performance toggle flags
 /// Set conservative MC timings on game start
+// perf_flags
 #define PERF_TOGGLE_LAZYSS (1<<0)
 /// Disable bloody footprints
 #define PERF_TOGGLE_NOBLOODPRINTS (1<<1)

@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 
 /datum/techtree/marine/New()
 	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, .proc/setup_leader)
+	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(setup_leader))
 
 /datum/techtree/marine/proc/setup_leader(datum/source)
 	SIGNAL_HANDLER
@@ -35,7 +35,7 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 		var/obj/structure/machinery/computer/tech_control/TC = i
 		TC.attached_tree = src
 
-/datum/techtree/marine/has_access(var/mob/M, var/access_required)
+/datum/techtree/marine/has_access(mob/M, access_required)
 	switch(access_required)
 		if(TREE_ACCESS_VIEW)
 			if(M.faction == faction)
@@ -46,16 +46,16 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 
 	return FALSE
 
-/datum/techtree/marine/can_attack(var/mob/living/carbon/H)
+/datum/techtree/marine/can_attack(mob/living/carbon/H)
 	return !ishuman(H)
 
-/datum/techtree/marine/proc/transfer_leader_to(var/mob/living/carbon/human/H)
+/datum/techtree/marine/proc/transfer_leader_to(mob/living/carbon/human/H)
 	if(!H)
 		return
 	remove_leader()
 
-	RegisterSignal(H, COMSIG_MOVABLE_MOVED, .proc/handle_zlevel_check)
-	RegisterSignal(H, COMSIG_MOB_DEATH, .proc/handle_death)
+	RegisterSignal(H, COMSIG_MOVABLE_MOVED, PROC_REF(handle_zlevel_check))
+	RegisterSignal(H, COMSIG_MOB_DEATH, PROC_REF(handle_death))
 
 	leader = H
 
@@ -68,20 +68,20 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 	))
 	leader = null
 
-/datum/techtree/marine/proc/handle_death(var/mob/living/carbon/human/H)
+/datum/techtree/marine/proc/handle_death(mob/living/carbon/human/H)
 	SIGNAL_HANDLER
 	if((H.job in job_cannot_be_overriden) && (!dead_leader || !dead_leader.check_tod()))
-		RegisterSignal(H, COMSIG_PARENT_QDELETING, .proc/cleanup_dead_leader)
-		RegisterSignal(H, COMSIG_HUMAN_REVIVED, .proc/readd_leader)
+		RegisterSignal(H, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_dead_leader))
+		RegisterSignal(H, COMSIG_HUMAN_REVIVED, PROC_REF(readd_leader))
 		dead_leader = H
 	remove_leader()
 
-/datum/techtree/marine/proc/cleanup_dead_leader(var/mob/living/carbon/human/H)
+/datum/techtree/marine/proc/cleanup_dead_leader(mob/living/carbon/human/H)
 	SIGNAL_HANDLER
 	if(dead_leader == H)
 		dead_leader = null
 
-/datum/techtree/marine/proc/readd_leader(var/mob/living/carbon/human/H)
+/datum/techtree/marine/proc/readd_leader(mob/living/carbon/human/H)
 	SIGNAL_HANDLER
 	if(H != dead_leader)
 		stack_trace("Non-leader attempted to be re-added back to command.")
@@ -89,7 +89,7 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 	remove_dead_leader()
 	transfer_leader_to(H)
 
-/datum/techtree/marine/proc/handle_zlevel_check(var/mob/living/carbon/human/H)
+/datum/techtree/marine/proc/handle_zlevel_check(mob/living/carbon/human/H)
 	SIGNAL_HANDLER
 	if(!is_mainship_level(H.z))
 		remove_leader()
@@ -112,7 +112,7 @@ GLOBAL_LIST_EMPTY(tech_controls_marine)
 
 	icon_state = "techweb"
 
-	req_access = list(ACCESS_MARINE_BRIDGE)
+	req_access = list(ACCESS_MARINE_COMMAND)
 	density = TRUE
 	anchored = TRUE
 	wrenchable = FALSE
@@ -134,7 +134,7 @@ GLOBAL_LIST_EMPTY(tech_controls_marine)
 /obj/structure/machinery/computer/tech_control/attackby(obj/item/I, mob/user)
 	return
 
-/obj/structure/machinery/computer/tech_control/attack_hand(var/mob/M)
+/obj/structure/machinery/computer/tech_control/attack_hand(mob/M)
 	. = ..()
 
 	if(!skillcheck(M, SKILL_INTEL, SKILL_INTEL_TRAINED) && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)

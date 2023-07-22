@@ -3,7 +3,7 @@
 	icon_state = "grenade_custom"
 	desc = "A custom chemical grenade with an M40 casing. This one is made to fit into underslung grenade launchers, but can also be thrown by hand."
 	w_class = SIZE_SMALL
-	force = 2.0
+	force = 2
 	dangerous = TRUE
 	customizable = TRUE
 	underslug_launchable = TRUE
@@ -22,9 +22,9 @@
 	icon_state = "large_grenade_custom"
 	allowed_containers = list(/obj/item/reagent_container/glass)
 	max_container_volume = 180
-	reaction_limits = list(	"max_ex_power" = 215,	"base_ex_falloff" = 90,	"max_ex_shards" = 32,
-							"max_fire_rad" = 5,		"max_fire_int" = 20,	"max_fire_dur" = 24,
-							"min_fire_rad" = 1,		"min_fire_int" = 3,		"min_fire_dur" = 3
+	reaction_limits = list( "max_ex_power" = 215, "base_ex_falloff" = 90, "max_ex_shards" = 32,
+							"max_fire_rad" = 5, "max_fire_int" = 20, "max_fire_dur" = 24,
+							"min_fire_rad" = 1, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
 	underslug_launchable = FALSE
 	has_blast_wave_dampener = TRUE
@@ -191,7 +191,7 @@
 			new /obj/item/explosive/grenade/flashbang/noskill(loc)
 			return INITIALIZE_HINT_QDEL
 		else if(SSticker.current_state < GAME_STATE_PLAYING)
-			RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/replace_teargas)
+			RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(replace_teargas))
 	. = ..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)

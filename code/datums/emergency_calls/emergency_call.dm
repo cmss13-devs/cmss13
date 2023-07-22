@@ -33,7 +33,7 @@
 	var/max_engineers = 1
 	var/max_heavies = 1
 	var/max_smartgunners = 1
-	var/shuttle_id = "Distress" //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
+	var/shuttle_id = MOBILE_SHUTTLE_ID_ERT1 //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = FALSE
 	var/spawn_max_amount = FALSE
 
@@ -51,7 +51,7 @@
 		return FALSE
 	for(var/S in total_calls)
 		var/datum/emergency_call/C= new S()
-		if(!C)	continue
+		if(!C) continue
 		if(C.name == "name") continue //The default parent, don't add it
 		all_calls += C
 
@@ -79,12 +79,12 @@
 	else
 		return chosen_call
 
-/datum/game_mode/proc/get_specific_call(var/call_name, var/announce = TRUE, var/is_emergency = TRUE, var/info = "")
+/datum/game_mode/proc/get_specific_call(call_name, announce = TRUE, is_emergency = TRUE, info = "", announce_dispatch_message = TRUE)
 	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
 		if(E.name == call_name)
 			var/datum/emergency_call/em_call = new E.type()
 			em_call.objective_info = info
-			em_call.activate(announce, is_emergency)
+			em_call.activate(announce, is_emergency, announce_dispatch_message)
 			return
 	error("get_specific_call could not find emergency call '[call_name]'")
 	return
@@ -98,6 +98,8 @@
 			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("\n[ert_message]. &gt; <a href='?src=\ref[M];joinresponseteam=1;'><b>Join Response Team</b></a> &lt; </span>")))
 			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("You cannot join if you have Ghosted recently. Click the link in chat, or use the verb in the ghost tab to join.</span>\n")))
 
+			give_action(M, /datum/action/join_ert, src)
+
 /datum/game_mode/proc/activate_distress()
 	var/datum/emergency_call/random_call = get_random_call()
 	if(!istype(random_call, /datum/emergency_call)) //Something went horribly wrong
@@ -105,7 +107,7 @@
 	random_call.activate()
 	return
 
-/datum/emergency_call/proc/check_timelock(var/client/C, var/list/roles, var/hours)
+/datum/emergency_call/proc/check_timelock(client/C, list/roles, hours)
 	if(C?.check_timelock(roles, hours))
 		return TRUE
 	return FALSE
@@ -115,11 +117,15 @@
 	set category = "Ghost.Join"
 	set desc = "Join an ongoing distress call response. You must be ghosted to do this."
 
-	if(jobban_isbanned(usr, "Syndicate") || jobban_isbanned(usr, "Emergency Response Team"))
-		to_chat(usr, SPAN_DANGER("You are jobbanned from the emergency response team!"))
+	do_join_response_team()
+
+/mob/dead/observer/proc/do_join_response_team()
+
+	if(jobban_isbanned(src, "Syndicate") || jobban_isbanned(src, "Emergency Response Team"))
+		to_chat(src, SPAN_DANGER("You are jobbanned from the emergency response team!"))
 		return
 	if(!SSticker.mode || !SSticker.mode.picked_calls.len)
-		to_chat(usr, SPAN_WARNING("No distress beacons are active. You will be notified if this changes."))
+		to_chat(src, SPAN_WARNING("No distress beacons are active. You will be notified if this changes."))
 		return
 
 	var/list/beacons = list()
@@ -133,48 +139,48 @@
 
 		beacons += list("[name]" = em_call) // I hate byond
 
-	var/choice = tgui_input_list(usr, "Choose a distress beacon to join", "", beacons)
+	var/choice = tgui_input_list(src, "Choose a distress beacon to join", "", beacons)
 
 	if(!choice)
-		to_chat(usr, "Something seems to have gone wrong!")
+		to_chat(src, "Something seems to have gone wrong!")
 		return
 
 	if(!beacons[choice] || !(beacons[choice] in SSticker.mode.picked_calls))
-		to_chat(usr, "That choice is no longer available!")
+		to_chat(src, "That choice is no longer available!")
 		return
 
 	var/datum/emergency_call/distress = beacons[choice]
 
 	if(!istype(distress) || !distress.mob_max)
-		to_chat(usr, SPAN_WARNING("The emergency response team is already full!"))
+		to_chat(src, SPAN_WARNING("The emergency response team is already full!"))
 		return
 	var/deathtime = world.time - usr.timeofdeath
 
 	if(deathtime < 1 MINUTES) //Nice try, ghosting right after the announcement
 		if(SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST) // people ghost so often on whiskey outpost.
-			to_chat(usr, SPAN_WARNING("You ghosted too recently."))
+			to_chat(src, SPAN_WARNING("You ghosted too recently."))
 			return
 
-	if(!usr.mind) //How? Give them a new one anyway.
-		usr.mind = new /datum/mind(usr.key, usr.ckey)
-		usr.mind.active = 1
-		usr.mind.current = usr
-		usr.mind_initialize()
-	if(usr.mind.key != usr.key)
-		usr.mind.key = usr.key //Sigh. This can happen when admin-switching people into afking people, leading to runtime errors for a clientless key.
+	if(!mind) //How? Give them a new one anyway.
+		mind = new /datum/mind(key, ckey)
+		mind.active = 1
+		mind.current = src
+		mind_initialize()
+	if(mind.key != key)
+		mind.key = key //Sigh. This can happen when admin-switching people into afking people, leading to runtime errors for a clientless key.
 
-	if(!usr.client || !usr.mind)
+	if(!client || !mind)
 		return //Somehow
-	if(usr.mind in distress.candidates)
-		to_chat(usr, SPAN_WARNING("You are already a candidate for this emergency response team."))
+	if(mind in distress.candidates)
+		to_chat(src, SPAN_WARNING("You are already a candidate for this emergency response team."))
 		return
 
-	if(distress.add_candidate(usr))
-		to_chat(usr, SPAN_BOLDNOTICE("You are now a candidate in the emergency response team! If there are enough candidates, you may be picked to be part of the team."))
+	if(distress.add_candidate(src))
+		to_chat(src, SPAN_BOLDNOTICE("You are now a candidate in the emergency response team! If there are enough candidates, you may be picked to be part of the team."))
 	else
-		to_chat(usr, SPAN_WARNING("You did not get enlisted in the response team. Better luck next time!"))
+		to_chat(src, SPAN_WARNING("You did not get enlisted in the response team. Better luck next time!"))
 
-/datum/emergency_call/proc/activate(announce = TRUE, var/turf/override_spawn_loc)
+/datum/emergency_call/proc/activate(announce = TRUE, turf/override_spawn_loc, announce_dispatch_message = TRUE)
 	set waitfor = 0
 	if(!SSticker.mode) //Something horribly wrong with the gamemode ticker
 		return
@@ -182,85 +188,115 @@
 	SSticker.mode.picked_calls += src
 
 	show_join_message() //Show our potential candidates the message to let them join.
-	message_staff("Distress beacon: '[name]' activated [src.hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"]. Looking for candidates.")
+	message_admins("Distress beacon: '[name]' activated [src.hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"]. Looking for candidates.")
 
 	if(announce)
-		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg')
+		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg', logging = ARES_LOG_SECURITY)
 
-	addtimer(CALLBACK(src, /datum/emergency_call.proc/spawn_candidates, announce, override_spawn_loc), 30 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), announce, override_spawn_loc, announce_dispatch_message), 30 SECONDS)
 
-/datum/emergency_call/proc/spawn_candidates(announce = TRUE, override_spawn_loc)
+/datum/emergency_call/proc/spawn_candidates(announce = TRUE, override_spawn_loc, announce_dispatch_message = TRUE)
 	if(SSticker.mode)
 		SSticker.mode.picked_calls -= src
 
+	SEND_SIGNAL(src, COMSIG_ERT_SETUP)
+
 	if(candidates.len < mob_min && !spawn_max_amount)
-		message_staff("Aborting distress beacon, not enough candidates: found [candidates.len].")
+		message_admins("Aborting distress beacon, not enough candidates: found [candidates.len].")
 		members = list() //Empty the members list.
 		candidates = list()
 
 		if(announce)
-			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
+			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
+		return
 
-	else //We've got enough!
-		//Trim down the list
-		var/list/datum/mind/picked_candidates = list()
-		if(mob_max > 0)
-			var/mob_count = 0
-			while (mob_count < mob_max && candidates.len)
-				var/datum/mind/M = pick(candidates) //Get a random candidate, then remove it from the candidates list.
-				if(!istype(M))//Something went horrifically wrong
-					candidates.Remove(M)
-					continue //Lets try this again
-				if(M.current && M.current.stat != DEAD)
-					candidates.Remove(M) //Strip them from the list, they aren't dead anymore.
-					if(!candidates.len)
-						break //NO picking from empty lists
-					continue
-				picked_candidates.Add(M)
+	//We've got enough!
+	//Trim down the list
+	var/list/datum/mind/picked_candidates = list()
+	if(mob_max > 0)
+		var/mob_count = 0
+		while (mob_count < mob_max && candidates.len)
+			var/datum/mind/M = pick(candidates) //Get a random candidate, then remove it from the candidates list.
+			if(!istype(M))//Something went horrifically wrong
 				candidates.Remove(M)
-				mob_count++
-			if(candidates.len)
-				for(var/datum/mind/I in candidates)
-					if(I.current)
-						to_chat(I.current, SPAN_WARNING("You didn't get selected to join the distress team. Better luck next time!"))
+				continue //Lets try this again
+			if(!GLOB.directory[M.ckey])
+				candidates -= M
+				continue
+			if(M.current && M.current.stat != DEAD)
+				candidates.Remove(M) //Strip them from the list, they aren't dead anymore.
+				if(!candidates.len)
+					break //NO picking from empty lists
+				continue
+			picked_candidates.Add(M)
+			candidates.Remove(M)
+			mob_count++
+		if(candidates.len)
+			for(var/datum/mind/I in candidates)
+				if(I.current)
+					to_chat(I.current, SPAN_WARNING("You didn't get selected to join the distress team. Better luck next time!"))
 
-		if(announce)
-			marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg') //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
+	if(announce)
+		marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg', logging = ARES_LOG_SECURITY) //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
 
-		message_staff("Distress beacon: [src.name] finalized, setting up candidates.")
+	message_admins("Distress beacon: [src.name] finalized, setting up candidates.")
 
-		//Let the deadchat know what's up since they are usually curious
-		for(var/mob/dead/observer/M in GLOB.observer_list)
-			if(M.client)
-				to_chat(M, SPAN_NOTICE("Distress beacon: [src.name] finalized."))
+	//Let the deadchat know what's up since they are usually curious
+	for(var/mob/dead/observer/M in GLOB.observer_list)
+		if(M.client)
+			to_chat(M, SPAN_NOTICE("Distress beacon: [src.name] finalized."))
 
-		var/datum/shuttle/ferry/shuttle = shuttle_controller?.shuttles[shuttle_id]
-		if(!istype(shuttle))
-			if(shuttle_id) //Cryo distress doesn't have a shuttle
-				message_staff("Warning: Distress shuttle not found.")
-		spawn_items()
+	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttle_id)
 
-		if(shuttle && auto_shuttle_launch)
-			shuttle.launch()
+	if(!istype(shuttle))
+		if(shuttle_id) //Cryo distress doesn't have a shuttle
+			message_admins("Warning: Distress shuttle not found.")
+	spawn_items()
 
-		var/i = 0
-		if(picked_candidates.len)
-			for(var/datum/mind/M in picked_candidates)
-				members += M
-				i++
-				if(i > mob_max)
-					break //Some logic. Hopefully this will never happen..
-				create_member(M, override_spawn_loc)
+	if(shuttle && auto_shuttle_launch)
+		var/obj/structure/machinery/computer/shuttle/ert/comp = shuttle.getControlConsole()
+		var/list/lzs = comp.get_landing_zones()
+		if(!length(lzs))
+			message_admins("Auto shuttle launch set for ert [name] but no lzs allowed.")
+			return
+
+		var/list/active_lzs = list()
+		var/list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP))
+		for(var/obj/docking_port/stationary/dock as anything in lzs)
+			// filter for almayer only
+			if(!(dock.z in z_levels))
+				continue
+			// filter for free lzs
+			if(shuttle.canDock(dock) != SHUTTLE_CAN_DOCK)
+				continue
+			active_lzs += list(dock)
+
+		if(!length(active_lzs))
+			message_admins("Auto shuttle launch set for ert [name] but no lzs available.")
+			return
+
+		SSshuttle.moveShuttleToDock(shuttle, pick(active_lzs), TRUE)
+
+	var/i = 0
+	if(picked_candidates.len)
+		for(var/datum/mind/M in picked_candidates)
+			members += M
+			i++
+			if(i > mob_max)
+				break //Some logic. Hopefully this will never happen..
+			create_member(M, override_spawn_loc)
 
 
-		if(spawn_max_amount && i < mob_max)
-			for(var/c in i to mob_max)
-				create_member(null, override_spawn_loc)
+	if(spawn_max_amount && i < mob_max)
+		for(var/c in i to mob_max)
+			create_member(null, override_spawn_loc)
 
-		candidates = list()
+	candidates = list()
+	if(arrival_message && announce)
+		marine_announcement(arrival_message, "Intercepted Tranmission:")
 
-/datum/emergency_call/proc/add_candidate(var/mob/M)
-	if(!M.client || (M.mind && (M.mind in candidates)) || istype(M, /mob/living/carbon/Xenomorph))
+/datum/emergency_call/proc/add_candidate(mob/M)
+	if(!M.client || (M.mind && (M.mind in candidates)) || istype(M, /mob/living/carbon/xenomorph))
 		return FALSE //Not connected or already there or something went wrong.
 	if(M.mind)
 		candidates += M.mind
@@ -279,7 +315,7 @@
 		landmark = SAFEPICK(GLOB.ert_spawns[name_of_spawn])
 	return landmark ? get_turf(landmark) : null
 
-/datum/emergency_call/proc/create_member(datum/mind/M, var/turf/override_spawn_loc) //This is the parent, each type spawns its own variety.
+/datum/emergency_call/proc/create_member(datum/mind/M, turf/override_spawn_loc) //This is the parent, each type spawns its own variety.
 	return
 
 //Spawn various items around the shuttle area thing.

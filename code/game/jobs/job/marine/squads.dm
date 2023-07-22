@@ -26,7 +26,7 @@
 
 /datum/squad
 	var/name //Name of the squad
-	var/tracking_id = null	//Used for the tracking subsystem
+	var/tracking_id = null //Used for the tracking subsystem
 	var/max_positions = -1 //Maximum number allowed in a squad. Defaults to infinite
 	var/color = 0 //Color for helmets, etc.
 	var/list/access = list() //Which special access do we grant them
@@ -34,21 +34,21 @@
 	var/max_engineers = 3 //maximum # of engineers allowed in squad
 	var/max_medics = 4 //Ditto, squad medics
 	var/max_specialists = 1
-	var/max_rto = 2
+	var/max_tl = 2
 	var/max_smartgun = 1
 	var/max_leaders = 1
 	var/radio_freq = 1461 //Squad radio headset frequency.
 
 	///Variables for showing up in various places
-	var/usable = FALSE	 //Is it used in-game?
+	var/usable = FALSE  //Is it used in-game?
 	var/roundstart = TRUE /// Whether this squad can be picked at roundstart
-	var/locked = FALSE	//Is it available for squad management?
-	var/active = FALSE	//Is it visible in overwatch?
-	var/faction = FACTION_MARINE	//What faction runs the squad?
+	var/locked = FALSE //Is it available for squad management?
+	var/active = FALSE //Is it visible in overwatch?
+	var/faction = FACTION_MARINE //What faction runs the squad?
 
 	///Squad Type Specifics
-	var/squad_type = "Squad"	//Referenced for aSL details. Squad/Team/Cell etc.
-	var/lead_icon	//Referenced for SL's 'L' icon. If nulled, won't override icon for aSLs.
+	var/squad_type = "Squad" //Referenced for aSL details. Squad/Team/Cell etc.
+	var/lead_icon //Referenced for SL's 'L' icon. If nulled, won't override icon for aSLs.
 
 	//vvv Do not set these in squad defines
 	var/mob/living/carbon/human/squad_leader = null //Who currently leads it.
@@ -56,12 +56,12 @@
 									"FT1" = null,
 									"FT2" = null,
 									"FT3" = null
-									)	//FT leaders stored here
+									) //FT leaders stored here
 	var/list/list/fireteams = list(
 							"FT1" = list(),
 							"FT2" = list(),
 							"FT3" = list()
-							)			//3 FTs where references to marines stored.
+							) //3 FTs where references to marines stored.
 	var/list/squad_info_data = list()
 
 	var/num_engineers = 0
@@ -69,11 +69,11 @@
 	var/num_leaders = 0
 	var/num_smartgun = 0
 	var/num_specialists = 0
-	var/num_rto = 0
-	var/count = 0	//Current # in the squad
-	var/list/marines_list = list()	// list of mobs (or name, not always a mob ref) in that squad.
+	var/num_tl = 0
+	var/count = 0 //Current # in the squad
+	var/list/marines_list = list() // list of mobs (or name, not always a mob ref) in that squad.
 
-	var/mob/living/carbon/human/overwatch_officer = null	//Who's overwatching this squad?
+	var/mob/living/carbon/human/overwatch_officer = null //Who's overwatching this squad?
 	COOLDOWN_DECLARE(next_supplydrop)
 
 	///Text strings, not HTML safe so don't use it without encoding
@@ -83,6 +83,8 @@
 	var/obj/item/device/squad_beacon/sbeacon = null
 	var/obj/item/device/squad_beacon/bomb/bbeacon = null
 	var/obj/structure/supply_drop/drop_pad = null
+
+	var/minimap_color = MINIMAP_SQUAD_UNKNOWN
 
 
 /datum/squad/marine
@@ -97,24 +99,28 @@
 	color = 1
 	access = list(ACCESS_MARINE_ALPHA)
 	radio_freq = ALPHA_FREQ
+	minimap_color = MINIMAP_SQUAD_ALPHA
 
 /datum/squad/marine/bravo
 	name = SQUAD_MARINE_2
 	color = 2
 	access = list(ACCESS_MARINE_BRAVO)
 	radio_freq = BRAVO_FREQ
+	minimap_color = MINIMAP_SQUAD_BRAVO
 
 /datum/squad/marine/charlie
 	name = SQUAD_MARINE_3
 	color = 3
 	access = list(ACCESS_MARINE_CHARLIE)
 	radio_freq = CHARLIE_FREQ
+	minimap_color = MINIMAP_SQUAD_CHARLIE
 
 /datum/squad/marine/delta
 	name = SQUAD_MARINE_4
 	color = 4
 	access = list(ACCESS_MARINE_DELTA)
 	radio_freq = DELTA_FREQ
+	minimap_color = MINIMAP_SQUAD_DELTA
 
 /datum/squad/marine/echo
 	name = SQUAD_MARINE_5
@@ -122,6 +128,7 @@
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 	radio_freq = ECHO_FREQ
 	omni_squad_vendor = TRUE
+	minimap_color = MINIMAP_SQUAD_ECHO
 
 	active = FALSE
 	roundstart = FALSE
@@ -131,6 +138,7 @@
 	name = SQUAD_MARINE_CRYO
 	color = 6
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
+	minimap_color = MINIMAP_SQUAD_FOXTROT
 
 	omni_squad_vendor = TRUE
 	radio_freq = CRYO_FREQ
@@ -145,6 +153,7 @@
 	radio_freq = SOF_FREQ
 	squad_type = "Team"
 	lead_icon = "soctl"
+	minimap_color = MINIMAP_SQUAD_SOF
 
 	active = FALSE
 	roundstart = FALSE
@@ -227,7 +236,7 @@
 	SStracking.setup_trackers(null, "FT3")
 	update_all_squad_info()
 
-	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, .proc/setup_supply_drop_list)
+	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, PROC_REF(setup_supply_drop_list))
 
 /datum/squad/proc/setup_supply_drop_list()
 	SIGNAL_HANDLER
@@ -248,7 +257,7 @@
 		overwatch_officer = null
 		clear_ref_tracking(previous)
 	overwatch_officer = M
-	RegisterSignal(overwatch_officer, COMSIG_PARENT_QDELETING, .proc/personnel_deleted, override = TRUE)
+	RegisterSignal(overwatch_officer, COMSIG_PARENT_QDELETING, PROC_REF(personnel_deleted), override = TRUE)
 	return TRUE
 
 /// Explicitely relinquish overwatch control
@@ -271,6 +280,7 @@
 	return TRUE
 
 /// Clear references in squad listing upon deletion. Zap also erases the kept records.
+/// NOTE: zap will be set true for a forced COMSIG_PARENT_QDELETING
 /datum/squad/proc/personnel_deleted(mob/M, zap = FALSE)
 	SIGNAL_HANDLER
 	if(M == overwatch_officer)
@@ -320,7 +330,7 @@
 	to_chat(targets, html = message, type = MESSAGE_TYPE_RADIO)
 
 /// Displays a message to squad members directly on the game map
-/datum/squad/proc/send_maptext(var/text = "", var/title_text = "", var/only_leader = 0)
+/datum/squad/proc/send_maptext(text = "", title_text = "", only_leader = 0)
 	var/message_colour = squad_colors_chat[color]
 	if(only_leader)
 		if(squad_leader)
@@ -333,7 +343,7 @@
 				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
 
 /// Displays a message to the squad members in chat
-/datum/squad/proc/send_message(var/text = "", var/plus_name = 0, var/only_leader = 0)
+/datum/squad/proc/send_message(text = "", plus_name = 0, only_leader = 0)
 	var/nametext = ""
 	if(plus_name)
 		nametext = "[usr.name] transmits: "
@@ -345,30 +355,30 @@
 			if(!SL.stat && SL.client)
 				if(plus_name)
 					SL << sound('sound/effects/tech_notification.ogg')
-				to_chat(SL, "[SPAN_BLUE("<B>SL Overwatch:</b> [nametext][text]")]")
+				to_chat(SL, "[SPAN_BLUE("<B>SL Overwatch:</b> [nametext][text]")]", type = MESSAGE_TYPE_RADIO)
 				return
 	else
 		for(var/mob/living/carbon/human/M in marines_list)
 			if(!M.stat && M.client) //Only living and connected people in our squad
 				if(plus_name)
 					M << sound('sound/effects/tech_notification.ogg')
-				to_chat(M, "[SPAN_BLUE("<B>Overwatch:</b> [nametext][text]")]")
+				to_chat(M, "[SPAN_BLUE("<B>Overwatch:</b> [nametext][text]")]", type = MESSAGE_TYPE_RADIO)
 
 
 
 //Straight-up insert a marine into a squad.
 //This sets their ID, increments the total count, and so on. Everything else is done in job_controller.dm.
 //So it does not check if the squad is too full already, or randomize it, etc.
-/datum/squad/proc/put_marine_in_squad(var/mob/living/carbon/human/M, var/obj/item/card/id/ID)
+/datum/squad/proc/put_marine_in_squad(mob/living/carbon/human/M, obj/item/card/id/ID)
 
 	if(!istype(M))
-		return FALSE	//Logic
+		return FALSE //Logic
 	if(!src.usable)
 		return FALSE
 	if(!M.job)
-		return FALSE	//Not yet
+		return FALSE //Not yet
 	if(M.assigned_squad)
-		return FALSE	//already in a squad
+		return FALSE //already in a squad
 
 	var/obj/item/card/id/C = ID
 	if(!C)
@@ -376,7 +386,7 @@
 	if(!C)
 		C = M.get_active_hand()
 	if(!istype(C))
-		return FALSE	//No ID found
+		return FALSE //No ID found
 
 	var/assignment = M.job
 	var/paygrade
@@ -395,9 +405,9 @@
 		if(JOB_SQUAD_SPECIALIST)
 			assignment = JOB_SQUAD_SPECIALIST
 			num_specialists++
-		if(JOB_SQUAD_RTO)
-			assignment = JOB_SQUAD_RTO
-			num_rto++
+		if(JOB_SQUAD_TEAM_LEADER)
+			assignment = JOB_SQUAD_TEAM_LEADER
+			num_tl++
 			M.important_radio_channels += radio_freq
 		if(JOB_SQUAD_SMARTGUN)
 			assignment = JOB_SQUAD_SMARTGUN
@@ -405,7 +415,7 @@
 		if(JOB_SQUAD_LEADER)
 			if(squad_leader && GET_DEFAULT_ROLE(squad_leader.job) != JOB_SQUAD_LEADER) //field promoted SL
 				var/old_lead = squad_leader
-				demote_squad_leader()	//replaced by the real one
+				demote_squad_leader() //replaced by the real one
 				SStracking.start_tracking(tracking_id, old_lead)
 			assignment = squad_type + " Leader"
 			squad_leader = M
@@ -424,7 +434,7 @@
 			if(name == JOB_MARINE_RAIDER)
 				if(squad_leader && GET_DEFAULT_ROLE(squad_leader.job) != JOB_MARINE_RAIDER_SL) //field promoted SL
 					var/old_lead = squad_leader
-					demote_squad_leader()	//replaced by the real one
+					demote_squad_leader() //replaced by the real one
 					SStracking.start_tracking(tracking_id, old_lead)
 				assignment = squad_type + " Leader"
 				squad_leader = M
@@ -437,18 +447,18 @@
 			if(name == JOB_MARINE_RAIDER)
 				assignment = "Officer"
 
-	RegisterSignal(M, COMSIG_PARENT_QDELETING, .proc/personnel_deleted, override = TRUE)
+	RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(personnel_deleted), override = TRUE)
 	if(assignment != JOB_SQUAD_LEADER)
 		SStracking.start_tracking(tracking_id, M)
 
-	count++		//Add up the tally. This is important in even squad distribution.
+	count++ //Add up the tally. This is important in even squad distribution.
 
 	if(GET_DEFAULT_ROLE(M.job) != JOB_SQUAD_MARINE)
 		log_admin("[key_name(M)] has been assigned as [name] [M.job]") // we don't want to spam squad marines but the others are useful
 
 	marines_list += M
-	M.assigned_squad = src	//Add them to the squad
-	C.access += (src.access + extra_access)	//Add their squad access to their ID
+	M.assigned_squad = src //Add them to the squad
+	C.access += (src.access + extra_access) //Add their squad access to their ID
 	C.assignment = "[name] [assignment]"
 
 	SEND_SIGNAL(M, COMSIG_SET_SQUAD)
@@ -466,14 +476,14 @@
 	return TRUE
 
 //proc used by the overwatch console to transfer marine to another squad
-/datum/squad/proc/remove_marine_from_squad(mob/living/carbon/human/M, var/obj/item/card/id/ID)
+/datum/squad/proc/remove_marine_from_squad(mob/living/carbon/human/M, obj/item/card/id/ID)
 	if(M.assigned_squad != src)
-		return		//not assigned to the correct squad
+		return //not assigned to the correct squad
 	var/obj/item/card/id/C = ID
 	if(!istype(C))
 		C = M.wear_id
 	if(!istype(C))
-		return FALSE	//Abort, no ID found
+		return FALSE //Abort, no ID found
 
 	C.access -= src.access
 	C.assignment = M.job
@@ -511,8 +521,8 @@
 			num_specialists--
 		if(JOB_SQUAD_SMARTGUN)
 			num_smartgun--
-		if(JOB_SQUAD_RTO)
-			num_rto--
+		if(JOB_SQUAD_TEAM_LEADER)
+			num_tl--
 		if(JOB_SQUAD_LEADER)
 			num_leaders--
 
@@ -531,8 +541,8 @@
 			old_lead.comm_title = "ComTech"
 		if(JOB_SQUAD_MEDIC)
 			old_lead.comm_title = "HM"
-		if(JOB_SQUAD_RTO)
-			old_lead.comm_title = "RTO"
+		if(JOB_SQUAD_TEAM_LEADER)
+			old_lead.comm_title = "TL"
 		if(JOB_SQUAD_SMARTGUN)
 			old_lead.comm_title = "SG"
 		if(JOB_SQUAD_LEADER)
@@ -559,13 +569,13 @@
 			ID.access -= ACCESS_MARINE_LEADER
 	REMOVE_TRAITS_IN(old_lead, TRAIT_SOURCE_SQUAD_LEADER)
 	old_lead.hud_set_squad()
-	old_lead.update_inv_head()	//updating marine helmet leader overlays
+	old_lead.update_inv_head() //updating marine helmet leader overlays
 	old_lead.update_inv_wear_suit()
 	to_chat(old_lead, FONT_SIZE_BIG(SPAN_BLUE("You're no longer the [squad_type] Leader for [src]!")))
 
 //Not a safe proc. Returns null if squads or jobs aren't set up.
 //Mostly used in the marine squad console in marine_consoles.dm.
-/proc/get_squad_by_name(var/text)
+/proc/get_squad_by_name(text)
 	if(!RoleAuthority || RoleAuthority.squads.len == 0)
 		return null
 	var/datum/squad/S
@@ -574,13 +584,13 @@
 			return S
 	return null
 
-/datum/squad/proc/engage_squad(var/toggle_lock = FALSE)
+/datum/squad/proc/engage_squad(toggle_lock = FALSE)
 	active = TRUE//Shows up in Overwatch
 	usable = TRUE//Shows up in most backend checks
 	if(toggle_lock)//Allows adding new marines
 		locked = FALSE
 
-/datum/squad/proc/lock_squad(var/toggle_lock = FALSE)
+/datum/squad/proc/lock_squad(toggle_lock = FALSE)
 	active = FALSE
 	usable = FALSE
 	if(toggle_lock)
@@ -592,18 +602,18 @@
 	if(H.assigned_fireteam)
 		if(fireteam_leaders[H.assigned_fireteam])
 			if(fireteam_leaders[H.assigned_fireteam] == H)
-				unassign_ft_leader(H.assigned_fireteam, TRUE)	//remove marine from TL position
+				unassign_ft_leader(H.assigned_fireteam, TRUE) //remove marine from TL position
 			else
-				SStracking.stop_tracking(H.assigned_fireteam, H)	//remove from previous FT group
+				SStracking.stop_tracking(H.assigned_fireteam, H) //remove from previous FT group
 				if(H.stat == CONSCIOUS)
 					to_chat(fireteam_leaders[fireteam], FONT_SIZE_BIG(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was unassigned from your fireteam.")))
 		fireteams[H.assigned_fireteam].Remove(H)
 		var/ft = H.assigned_fireteam
 		H.assigned_fireteam = fireteam
-		fireteams[fireteam].Add(H)			//adding to fireteam
+		fireteams[fireteam].Add(H) //adding to fireteam
 		update_fireteam(ft)
 		update_fireteam(fireteam)
-		if(fireteam_leaders[fireteam])		//if TL exists -> FT group, otherwise -> SL group
+		if(fireteam_leaders[fireteam]) //if TL exists -> FT group, otherwise -> SL group
 			SStracking.start_tracking(fireteam, H)
 			if(H.stat == CONSCIOUS)
 				to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned to [fireteam]. Report to your Fireteam Leader ASAP.")))
@@ -614,11 +624,11 @@
 				to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned to [fireteam].")))
 	else
 		fireteams[fireteam].Add(H)
-		H.assigned_fireteam = fireteam		//adding to fireteam
+		H.assigned_fireteam = fireteam //adding to fireteam
 		update_fireteam(fireteam)
 		update_free_mar()
 		if(fireteam_leaders[fireteam])
-			SStracking.stop_tracking(tracking_id, H)	//remove from previous FT group
+			SStracking.stop_tracking(tracking_id, H) //remove from previous FT group
 			SStracking.start_tracking(fireteam, H)
 			if(H.stat == CONSCIOUS)
 				to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned to [fireteam]. Report to your Fireteam Leader ASAP.")))
@@ -634,8 +644,8 @@
 	update_fireteam(ft)
 	update_free_mar()
 	if(fireteam_leaders[ft])
-		SStracking.stop_tracking(ft, H)			//remove from FT group
-		SStracking.start_tracking(tracking_id, H)	//add to SL group
+		SStracking.stop_tracking(ft, H) //remove from FT group
+		SStracking.start_tracking(tracking_id, H) //add to SL group
 		to_chat(fireteam_leaders[ft], FONT_SIZE_HUGE(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was unassigned from your fireteam.")))
 	if(!H.stat)
 		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were unassigned from [ft].")))
@@ -647,7 +657,7 @@
 	fireteam_leaders[fireteam] = H
 	H.hud_set_squad()
 	update_fireteam(fireteam)
-	SStracking.set_leader(H.assigned_fireteam, H)		//Set FT leader as leader of this group
+	SStracking.set_leader(H.assigned_fireteam, H) //Set FT leader as leader of this group
 	SStracking.start_tracking("marine_sl", H)
 	if(H.stat == CONSCIOUS)
 		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned as [fireteam] Team Leader.")))
@@ -659,7 +669,7 @@
 	fireteam_leaders[fireteam] = null
 	H.hud_set_squad()
 	if(clear_group_id)
-		reassign_ft_tracker_group(fireteam, H.assigned_fireteam, tracking_id)	//transfer whole FT to SL group
+		reassign_ft_tracker_group(fireteam, H.assigned_fireteam, tracking_id) //transfer whole FT to SL group
 		update_fireteam(fireteam)
 	if(!H.stat)
 		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were unassigned as [fireteam] Team Leader.")))
@@ -679,12 +689,12 @@
 	var/obj/item/card/id/ID = target.get_idcard()
 	if(!ID || !(ID.rank in ROLES_MARINES))
 		return
-	if(ID.rank == JOB_SQUAD_LEADER || squad_leader == target)		//if SL/aSL are chosen
+	if(ID.rank == JOB_SQUAD_LEADER || squad_leader == target) //if SL/aSL are chosen
 		var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Cancel", "Unassign Fireteam 1 Leader", "Unassign Fireteam 2 Leader", "Unassign Fireteam 3 Leader", "Unassign all Team Leaders"))
 		if(target.assigned_squad != src)
-			return		//in case they somehow change squad while SL is choosing
+			return //in case they somehow change squad while SL is choosing
 		if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
-			return		//if SL got knocked out or demoted while choosing
+			return //if SL got knocked out or demoted while choosing
 		switch(choice)
 			if("Unassign Fireteam 1 Leader") unassign_ft_leader("FT1", TRUE)
 			if("Unassign Fireteam 2 Leader") unassign_ft_leader("FT2", TRUE)
@@ -694,7 +704,7 @@
 		target.hud_set_squad()
 		return
 	if(target.assigned_fireteam)
-		if(fireteam_leaders[target.assigned_fireteam] == target)	//Check if person already is FT leader
+		if(fireteam_leaders[target.assigned_fireteam] == target) //Check if person already is FT leader
 			var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Cancel", "Unassign from Team Leader position"))
 			if(target.assigned_squad != src)
 				return
@@ -736,12 +746,12 @@
 //Managing MIA and KIA statuses for marines
 /datum/squad/proc/change_squad_status(mob/living/carbon/human/target)
 	if(target == squad_leader)
-		return		//you can't mark yourself KIA
+		return //you can't mark yourself KIA
 	var/choice = tgui_input_list(squad_leader, "Marine status management: M.I.A. for missing marines, K.I.A. for confirmed unrevivable dead.", "Squad Management", list("Cancel", "Remove status", "M.I.A.", "K.I.A."))
 	if(target.assigned_squad != src)
-		return		//in case they somehow change squad while SL is choosing
+		return //in case they somehow change squad while SL is choosing
 	if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
-		return		//if SL got knocked out or demoted while choosing
+		return //if SL got knocked out or demoted while choosing
 	switch(choice)
 		if("Remove status") target.squad_status = null
 		if("M.I.A.")

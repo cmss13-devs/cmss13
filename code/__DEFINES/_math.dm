@@ -6,25 +6,25 @@
  */
 #define get_turf(A) get_step(A, 0)
 
-#define CARDINAL_DIRS 		list(1,2,4,8)
-#define CARDINAL_ALL_DIRS 	list(1,2,4,5,6,8,9,10)
+#define CARDINAL_DIRS list(1,2,4,8)
+#define CARDINAL_ALL_DIRS list(1,2,4,5,6,8,9,10)
 
 //some colors
-#define COLOR_RED 		"#FF0000"
-#define COLOR_GREEN 	"#00FF00"
-#define COLOR_BLUE 		"#0000FF"
-#define COLOR_CYAN 		"#00FFFF"
-#define COLOR_PINK 		"#FF00FF"
-#define COLOR_YELLOW 	"#FFFF00"
-#define COLOR_ORANGE 	"#FF9900"
-#define COLOR_WHITE 	"#FFFFFF"
-#define COLOR_BLACK 	"#000000"
-#define COLOR_OIL		"#030303"
+#define COLOR_RED "#FF0000"
+#define COLOR_GREEN "#00FF00"
+#define COLOR_BLUE "#0000FF"
+#define COLOR_CYAN "#00FFFF"
+#define COLOR_PINK "#FF00FF"
+#define COLOR_YELLOW "#FFFF00"
+#define COLOR_ORANGE "#FF9900"
+#define COLOR_WHITE "#FFFFFF"
+#define COLOR_BLACK "#000000"
+#define COLOR_OIL "#030303"
 
 //Grass Colors
-#define COLOR_G_ICE     "#C7EDDE" //faded cyan
-#define COLOR_G_DES     "#FF7C1C" //bright orange
-#define COLOR_G_JUNG    "#64AA6E" //faded green
+#define COLOR_G_ICE "#C7EDDE" //faded cyan
+#define COLOR_G_DES "#FF7C1C" //bright orange
+#define COLOR_G_JUNG "#64AA6E" //faded green
 
 #define LEFT 1
 #define RIGHT 2
@@ -46,3 +46,6 @@
 // Will filter out extra rotations and negative rotations
 // E.g: 540 becomes 180. -180 becomes 180.
 #define SIMPLIFY_DEGREES(degrees) (MODULUS((degrees), 360))
+
+/// Gets the sign of x, returns -1 if negative, 0 if 0, 1 if positive
+#define SIGN(x) ( ((x) > 0) - ((x) < 0) )

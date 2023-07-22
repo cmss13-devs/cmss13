@@ -6,9 +6,9 @@
 	desc = "It looks like a weird egg."
 	name = "egg"
 	icon_state = "Egg Growing"
-	density = 0
-	anchored = 1
-	layer = LYING_BETWEEN_MOB_LAYER	//to stop hiding eggs under corpses
+	density = FALSE
+	anchored = TRUE
+	layer = LYING_BETWEEN_MOB_LAYER //to stop hiding eggs under corpses
 	health = 80
 	plane = GAME_PLANE
 	var/list/egg_triggers = list()
@@ -17,7 +17,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
 
-/obj/effect/alien/egg/Initialize(mapload, var/hive)
+/obj/effect/alien/egg/Initialize(mapload, hive)
 	. = ..()
 	create_egg_triggers()
 	if (hive)
@@ -25,21 +25,35 @@
 
 	set_hive_data(src, hivenumber)
 	update_icon()
-	INVOKE_ASYNC(src, .proc/Grow)
+	addtimer(CALLBACK(src, PROC_REF(Grow)), rand(EGG_MIN_GROWTH_TIME, EGG_MAX_GROWTH_TIME))
 
 /obj/effect/alien/egg/Destroy()
 	. = ..()
-	QDEL_NULL_LIST(egg_triggers)
+	for(var/obj/effect/egg_trigger/trigger as anything in egg_triggers)
+		trigger.linked_egg = null
+		trigger.linked_eggmorph = null
+		qdel(trigger)
+	if(egg_triggers)
+		egg_triggers.Cut()
+	egg_triggers = null
 
 /obj/effect/alien/egg/ex_act(severity)
 	Burst(TRUE)//any explosion destroys the egg.
 
 /obj/effect/alien/egg/get_examine_text(mob/user)
 	. = ..()
-	if(isXeno(user) && status == EGG_GROWN)
+	if(isxeno(user) && status == EGG_GROWN)
 		. += "Ctrl + Click egg to retrieve child into your empty hand if you can carry it."
 
-/obj/effect/alien/egg/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/effect/alien/egg/attack_alien(mob/living/carbon/xenomorph/M)
+	if(status == EGG_BURST || status == EGG_DESTROYED)
+		M.animation_attack_on(src)
+		M.visible_message(SPAN_XENONOTICE("[M] clears the hatched egg."), \
+		SPAN_XENONOTICE("You clear the hatched egg."))
+		playsound(src.loc, "alien_resin_break", 25)
+		qdel(src)
+		return XENO_NONCOMBAT_ACTION
+
 	if(M.hivenumber != hivenumber)
 		M.animation_attack_on(src)
 		M.visible_message(SPAN_XENOWARNING("[M] crushes \the [src]"),
@@ -51,37 +65,28 @@
 		return attack_hand(M)
 
 	switch(status)
-		if(EGG_BURST, EGG_DESTROYED)
-			M.animation_attack_on(src)
-			M.visible_message(SPAN_XENONOTICE("\The [M] clears the hatched egg."), \
-			SPAN_XENONOTICE("You clear the hatched egg."))
-			playsound(src.loc, "alien_resin_break", 25)
-			qdel(src)
-			return XENO_NONCOMBAT_ACTION
 		if(EGG_GROWING)
 			to_chat(M, SPAN_XENOWARNING("The child is not developed yet."))
 			return XENO_NO_DELAY_ACTION
 		if(EGG_GROWN)
-			if(isXenoLarva(M))
+			if(islarva(M))
 				to_chat(M, SPAN_XENOWARNING("You nudge the egg, but nothing happens."))
 				return
 			to_chat(M, SPAN_XENONOTICE("You retrieve the child."))
 			Burst(FALSE)
 	return XENO_NONCOMBAT_ACTION
 
-/obj/effect/alien/egg/clicked(var/mob/user, var/list/mods)
+/obj/effect/alien/egg/clicked(mob/user, list/mods)
 	if(isobserver(user) || get_dist(src, user) > 1)
 		return
-	var/mob/living/carbon/Xenomorph/X = user
+	var/mob/living/carbon/xenomorph/X = user
 	if(istype(X) && status == EGG_GROWN && mods["ctrl"] && X.caste.can_hold_facehuggers)
 		Burst(FALSE, FALSE, X)
+		return TRUE
 
 	return ..()
 
 /obj/effect/alien/egg/proc/Grow()
-	set waitfor = 0
-	update_icon()
-	sleep(rand(EGG_MIN_GROWTH_TIME, EGG_MAX_GROWTH_TIME))
 	if(status == EGG_GROWING)
 		icon_state = "Egg"
 		status = EGG_GROWN
@@ -109,7 +114,7 @@
 		var/obj/effect/egg_trigger/ET = trigger
 		ET.moveToNullspace()
 
-/obj/effect/alien/egg/proc/Burst(var/kill = TRUE, var/instant_trigger = FALSE, var/mob/living/carbon/Xenomorph/X = null) //drops and kills the facehugger if any is remaining
+/obj/effect/alien/egg/proc/Burst(kill = TRUE, instant_trigger = FALSE, mob/living/carbon/xenomorph/X = null, is_hugger_player_controlled = FALSE) //drops and kills the facehugger if any is remaining
 	if(kill && status != EGG_DESTROYED)
 		hide_egg_triggers()
 		status = EGG_DESTROYED
@@ -122,19 +127,21 @@
 		icon_state = "Egg Opened"
 		flick("Egg Opening", src)
 		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
-		addtimer(CALLBACK(src, .proc/release_hugger, instant_trigger, X), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(release_hugger), instant_trigger, X, is_hugger_player_controlled), 1 SECONDS)
 
-/obj/effect/alien/egg/proc/release_hugger(var/instant_trigger, var/mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/egg/proc/release_hugger(instant_trigger, mob/living/carbon/xenomorph/X, is_hugger_player_controlled = FALSE)
 	if(!loc || status == EGG_DESTROYED)
 		return
 
 	status = EGG_BURST
+	if(is_hugger_player_controlled)
+		return //Don't need to spawn a hugger, a player controls it already!
 	var/obj/item/clothing/mask/facehugger/child = new(loc, hivenumber)
 
 	child.flags_embryo = flags_embryo
 	flags_embryo = NO_FLAGS // Lose the embryo flags when passed on
 
-	if(X && X.caste.can_hold_facehuggers && (!X.l_hand || !X.r_hand))	//sanity checks
+	if(X && X.caste.can_hold_facehuggers && (!X.l_hand || !X.r_hand)) //sanity checks
 		X.put_in_hands(child)
 		return
 
@@ -144,10 +151,10 @@
 	else
 		child.go_idle()
 
-/obj/effect/alien/egg/bullet_act(var/obj/item/projectile/P)
+/obj/effect/alien/egg/bullet_act(obj/item/projectile/P)
 	..()
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX))
+	if(ammo_flags & (AMMO_XENO))
 		return
 	health -= P.damage
 	healthcheck()
@@ -190,7 +197,7 @@
 
 				qdel(F)
 
-				addtimer(CALLBACK(src, .proc/deploy_egg_triggers), 30 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(deploy_egg_triggers)), 30 SECONDS)
 			if(EGG_DESTROYED)
 				to_chat(user, SPAN_XENOWARNING("This egg is no longer usable."))
 			if(EGG_GROWING, EGG_GROWN)
@@ -229,7 +236,7 @@
 
 /obj/effect/alien/egg/HasProximity(atom/movable/AM)
 	if(status == EGG_GROWN)
-		if(!can_hug(AM, hivenumber) || isYautja(AM) || isSynth(AM)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
+		if(!can_hug(AM, hivenumber) || isyautja(AM) || issynth(AM)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
 			return
 		Burst(FALSE, TRUE, null)
 
@@ -242,12 +249,33 @@
 /obj/effect/alien/egg/forsaken
 	hivenumber = XENO_HIVE_FORSAKEN
 
+/obj/effect/alien/egg/attack_ghost(mob/dead/observer/user)
+	. = ..() //Do a view printout as needed just in case the observer doesn't want to join as a Hugger but wants info
+	if(is_mainship_level(src) && !SSticker.mode.is_in_endgame) // if we're not in hijack don't allow this
+		to_chat(user, SPAN_WARNING("The hive's influence doesn't reach that far!"))
+		return
+	if(status == EGG_GROWING)
+		to_chat(user, SPAN_WARNING("\The [src] is still growing, give it some time!"))
+		return
+	if(status != EGG_GROWN)
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
+		return
+
+	if(!GLOB.hive_datum[hivenumber].can_spawn_as_hugger(user))
+		return
+	//Need to check again because time passed due to the confirmation window
+	if(status != EGG_GROWN)
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
+		return
+	GLOB.hive_datum[hivenumber].spawn_as_hugger(user, src)
+	Burst(FALSE, FALSE, null, TRUE)
+
 //The invisible traps around the egg to tell it there's a mob right next to it.
 /obj/effect/egg_trigger
 	name = "egg trigger"
 	icon = 'icons/effects/effects.dmi'
-	anchored = 1
-	mouse_opacity = 0
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = INVISIBILITY_MAXIMUM
 	var/obj/effect/alien/egg/linked_egg
 	var/obj/effect/alien/resin/special/eggmorph/linked_eggmorph

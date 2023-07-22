@@ -26,37 +26,46 @@ const jobIsHead = (jobId) => jobId % 10 === 0;
 
 const jobToColor = (jobId) => {
   if (jobId >= 0 && jobId < 10) {
-    return COLORS.department.captain;
+    return COLORS.shipDeps.highcom;
   }
   if (jobId >= 10 && jobId < 20) {
-    return COLORS.shipDeps.command;
+    return COLORS.department.captain;
   }
   if (jobId >= 20 && jobId < 30) {
-    return COLORS.shipDeps.security;
+    return COLORS.shipDeps.command;
   }
   if (jobId >= 30 && jobId < 40) {
-    return COLORS.shipDeps.medsci;
+    return COLORS.shipDeps.security;
   }
   if (jobId >= 40 && jobId < 50) {
-    return COLORS.shipDeps.engineering;
+    return COLORS.shipDeps.medsci;
   }
   if (jobId >= 50 && jobId < 60) {
-    return COLORS.shipDeps.cargo;
+    return COLORS.shipDeps.engineering;
   }
   if (jobId >= 60 && jobId < 70) {
-    return COLORS.shipDeps.alpha;
+    return COLORS.shipDeps.cargo;
   }
   if (jobId >= 70 && jobId < 80) {
-    return COLORS.shipDeps.bravo;
+    return COLORS.shipDeps.alpha;
   }
   if (jobId >= 80 && jobId < 90) {
-    return COLORS.shipDeps.charlie;
+    return COLORS.shipDeps.bravo;
   }
   if (jobId >= 90 && jobId < 100) {
-    return COLORS.shipDeps.delta;
+    return COLORS.shipDeps.charlie;
   }
   if (jobId >= 100 && jobId < 110) {
+    return COLORS.shipDeps.delta;
+  }
+  if (jobId >= 110 && jobId < 120) {
     return COLORS.shipDeps.echo;
+  }
+  if (jobId >= 120 && jobId < 130) {
+    return COLORS.shipDeps.foxtrot;
+  }
+  if (jobId >= 130 && jobId < 140) {
+    return COLORS.shipDeps.raiders;
   }
   if (jobId >= 200 && jobId < 230) {
     return COLORS.department.centcom;

@@ -4,15 +4,15 @@
 	icon = 'icons/obj/items/clothing/ties.dmi'
 	icon_state = "bluetie"
 	w_class = SIZE_SMALL
-	var/image/inv_overlay = null	//overlay used when attached to clothing.
-	var/obj/item/clothing/has_suit = null		//the suit the tie may be attached to
+	var/image/inv_overlay = null //overlay used when attached to clothing.
+	var/obj/item/clothing/has_suit = null //the suit the tie may be attached to
 	var/slot = ACCESSORY_SLOT_DECOR
 	var/list/mob_overlay = list()
 	var/overlay_state = null
 	var/list/accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/ties.dmi', WEAR_JACKET = 'icons/mob/humans/onmob/ties.dmi')
 	///Jumpsuit flags that cause the accessory to be hidden. format: "x" OR "(x|y|z)" (w/o quote marks).
 	var/jumpsuit_hide_states
-	var/high_visibility	//if it should appear on examine without detailed view
+	var/high_visibility //if it should appear on examine without detailed view
 	var/removable = TRUE
 	flags_equip_slot = SLOT_ACCESSORY
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/ties_monkey.dmi')
@@ -28,7 +28,7 @@
 	inv_overlay = null
 	. = ..()
 
-/obj/item/clothing/accessory/proc/can_attach_to(var/mob/user, var/obj/item/clothing/C)
+/obj/item/clothing/accessory/proc/can_attach_to(mob/user, obj/item/clothing/C)
 	return TRUE
 
 //when user attached an accessory to S
@@ -64,7 +64,7 @@
 //default attack_hand behaviour
 /obj/item/clothing/accessory/attack_hand(mob/user as mob)
 	if(has_suit)
-		return	//we aren't an object on the ground so don't call parent. If overriding to give special functions to a host item, return TRUE so that the host doesn't continue its own attack_hand.
+		return //we aren't an object on the ground so don't call parent. If overriding to give special functions to a host item, return TRUE so that the host doesn't continue its own attack_hand.
 	..()
 
 ///Extra text to append when attached to another clothing item and the host clothing is examined.
@@ -96,8 +96,8 @@
 			if(body_part)
 				var/their = "their"
 				switch(M.gender)
-					if(MALE)	their = "his"
-					if(FEMALE)	their = "her"
+					if(MALE) their = "his"
+					if(FEMALE) their = "her"
 
 				var/sound = "pulse"
 				var/sound_strength
@@ -138,9 +138,9 @@
 /obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user, silent)
 	. = ..()
 	if(.)
-		RegisterSignal(S, COMSIG_ITEM_PICKUP, .proc/remove_medal)
+		RegisterSignal(S, COMSIG_ITEM_PICKUP, PROC_REF(remove_medal))
 
-/obj/item/clothing/accessory/medal/proc/remove_medal(var/obj/item/clothing/C, var/mob/user)
+/obj/item/clothing/accessory/medal/proc/remove_medal(obj/item/clothing/C, mob/user)
 	SIGNAL_HANDLER
 	if(user.real_name != recipient_name)
 		C.remove_accessory(user, src)
@@ -217,9 +217,9 @@
 
 			if(!H.stat && H.pain.feels_pain)
 				if(prob(35))
-					INVOKE_ASYNC(H, /mob.proc/emote, "pain")
+					INVOKE_ASYNC(H, TYPE_PROC_REF(/mob, emote), "pain")
 				else
-					INVOKE_ASYNC(H, /mob.proc/emote, "me", 1, "winces.")
+					INVOKE_ASYNC(H, TYPE_PROC_REF(/mob, emote), "me", 1, "winces.")
 
 	if(U.can_attach_accessory(src) && user.drop_held_item())
 		U.attach_accessory(H, src, TRUE)
@@ -344,15 +344,20 @@
 
 //patches
 /obj/item/clothing/accessory/patch
-	name = "\improper USCM patch"
+	name = "USCM patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
 	icon_state = "uscmpatch"
 	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
 /obj/item/clothing/accessory/patch/falcon
-	name = "\improper Falling Falcons patch"
+	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
+
+/obj/item/clothing/accessory/patch/forecon
+	name = "USCM Force Reconnaissance patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the USS Hanyut, USCM FORECON."
+	icon_state = "forecon_patch"
 
 /obj/item/clothing/accessory/poncho
 	name = "USCM Poncho"
@@ -388,7 +393,7 @@
 	QDEL_NULL(hold)
 	return ..()
 
-/obj/item/clothing/accessory/storage/clicked(var/mob/user, var/list/mods)
+/obj/item/clothing/accessory/storage/clicked(mob/user, list/mods)
 	if(mods["alt"] && !isnull(hold) && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
 		return
 	. = ..()
@@ -412,7 +417,7 @@
 	hold.emp_act(severity)
 	..()
 
-/obj/item/clothing/accessory/storage/hear_talk(mob/M, var/msg)
+/obj/item/clothing/accessory/storage/hear_talk(mob/M, msg)
 	hold.hear_talk(M, msg)
 	..()
 
@@ -528,7 +533,7 @@
 	can_hold = list(
 		/obj/item/tool/surgery,
 		/obj/item/stack/medical/advanced/bruise_pack,
-		/obj/item/stack/nanopaste
+		/obj/item/stack/nanopaste,
 	)
 
 /obj/item/storage/internal/accessory/surg_vest/attackby(obj/item/W, mob/user)
@@ -579,11 +584,20 @@
 	desc = "A matte blue synthcotton vest purpose-made for holding surgical tools."
 	icon_state = "vest_blue"
 
+/obj/item/clothing/accessory/storage/surg_vest/blue/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
+
 /obj/item/clothing/accessory/storage/knifeharness
 	name = "M272 pattern knife vest"
 	desc = "An older generation M272 pattern knife vest once employed by the USCM. Can hold up to 5 knives. It is made of synthcotton."
 	icon_state = "vest_knives"
 	hold = /obj/item/storage/internal/accessory/knifeharness
+
+/obj/item/clothing/accessory/storage/knifeharness/attack_hand(mob/user, mods)
+	if(!mods || !mods["alt"] || !length(hold.contents))
+		return ..()
+
+	hold.contents[length(contents)].attack_hand(user, mods)
 
 /obj/item/storage/internal/accessory/knifeharness
 	storage_slots = 5
@@ -593,8 +607,34 @@
 		/obj/item/tool/kitchen/utensil/pknife,
 		/obj/item/tool/kitchen/knife,
 		/obj/item/attachable/bayonet,
-		/obj/item/weapon/melee/throwing_knife,
+		/obj/item/weapon/throwing_knife,
 	)
+	storage_flags = STORAGE_ALLOW_QUICKDRAW|STORAGE_FLAGS_POUCH
+
+	COOLDOWN_DECLARE(draw_cooldown)
+
+/obj/item/storage/internal/accessory/knifeharness/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/weapon/throwing_knife(src)
+
+/obj/item/storage/internal/accessory/knifeharness/attack_hand(mob/user, mods)
+	. = ..()
+
+	if(!COOLDOWN_FINISHED(src, draw_cooldown))
+		to_chat(user, SPAN_WARNING("You need to wait before drawing another knife!"))
+		return FALSE
+
+	if(length(contents))
+		contents[length(contents)].attack_hand(user, mods)
+		COOLDOWN_START(src, draw_cooldown, BAYONET_DRAW_DELAY)
+
+/obj/item/storage/internal/accessory/knifeharness/_item_insertion(obj/item/inserted_item, prevent_warning = 0)
+	..()
+	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
+
+/obj/item/storage/internal/accessory/knifeharness/_item_removal(obj/item/removed_item, atom/new_location)
+	..()
+	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
 /obj/item/clothing/accessory/storage/knifeharness/duelling
 	name = "decorated harness"
@@ -602,16 +642,16 @@
 	icon_state = "unathiharness2"
 	hold = /obj/item/storage/internal/accessory/knifeharness/duelling
 
-obj/item/storage/internal/accessory/knifeharness/duelling
+/obj/item/storage/internal/accessory/knifeharness/duelling
 	storage_slots = 2
 	max_storage_space = 2
 	can_hold = list(
-		/obj/item/weapon/melee/unathiknife,
+		/obj/item/weapon/unathiknife,
 	)
 
 /obj/item/storage/internal/accessory/knifeharness/duelling/fill_preset_inventory()
-	new /obj/item/weapon/melee/unathiknife(src)
-	new /obj/item/weapon/melee/unathiknife(src)
+	new /obj/item/weapon/unathiknife(src)
+	new /obj/item/weapon/unathiknife(src)
 
 /obj/item/clothing/accessory/storage/droppouch
 	name = "drop pouch"
@@ -620,16 +660,17 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 
 	hold = /obj/item/storage/internal/accessory/drop_pouch
 
+
 /obj/item/storage/internal/accessory/drop_pouch
-	w_class = SIZE_LARGE	//Allow storage containers that's medium or below
+	w_class = SIZE_LARGE //Allow storage containers that's medium or below
 	storage_slots = null
 	max_w_class = SIZE_MEDIUM
-	max_storage_space = 6	//weight system like backpacks, hold enough for 2 medium (normal) size items, or 3 small items, or 6 tiny items
-	cant_hold = list(	//Prevent inventory powergame
+	max_storage_space = 6 //weight system like backpacks, hold enough for 2 medium (normal) size items, or 3 small items, or 6 tiny items
+	cant_hold = list( //Prevent inventory powergame
 		/obj/item/storage/firstaid,
 		/obj/item/storage/bible,
 		)
-	storage_flags = NONE	//no verb, no quick draw, no tile gathering
+	storage_flags = NONE //no verb, no quick draw, no tile gathering
 
 /obj/item/clothing/accessory/storage/holster
 	name = "shoulder holster"
@@ -656,8 +697,7 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 	/obj/item/ammo_magazine/revolver,
 	/obj/item/weapon/gun/flare,
 	/obj/item/device/flashlight/flare
-
-	 )
+	)
 
 /obj/item/storage/internal/accessory/holster/on_stored_atom_del(atom/movable/AM)
 	if(AM == current_gun)
@@ -747,7 +787,7 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 	if(isliving(user))
 		user.visible_message(SPAN_DANGER("[user] displays their Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."),SPAN_DANGER("You display your Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."))
 
-/obj/item/clothing/accessory/holobadge/attackby(var/obj/item/O, var/mob/user)
+/obj/item/clothing/accessory/holobadge/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/card/id))
 
 		var/obj/item/card/id/id_card = null
@@ -772,12 +812,20 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 /obj/item/storage/box/holobadge
 	name = "holobadge box"
 	desc = "A box claiming to contain holobadges."
-	New()
-		new /obj/item/clothing/accessory/holobadge(src)
-		new /obj/item/clothing/accessory/holobadge(src)
-		new /obj/item/clothing/accessory/holobadge(src)
-		new /obj/item/clothing/accessory/holobadge(src)
-		new /obj/item/clothing/accessory/holobadge/cord(src)
-		new /obj/item/clothing/accessory/holobadge/cord(src)
-		..()
-		return
+
+/obj/item/storage/box/holobadge/New()
+	new /obj/item/clothing/accessory/holobadge(src)
+	new /obj/item/clothing/accessory/holobadge(src)
+	new /obj/item/clothing/accessory/holobadge(src)
+	new /obj/item/clothing/accessory/holobadge(src)
+	new /obj/item/clothing/accessory/holobadge/cord(src)
+	new /obj/item/clothing/accessory/holobadge/cord(src)
+	..()
+	return
+
+/obj/item/clothing/accessory/storage/owlf_vest
+	name = "\improper OWLF agent vest"
+	desc = "This is a fancy-looking ballistics vest, meant to be attached to a uniform." //No stats for these yet, just placeholder implementation.
+	icon = 'icons/obj/items/clothing/ties.dmi'
+	icon_state = "owlf_vest"
+	item_state = "owlf_vest"

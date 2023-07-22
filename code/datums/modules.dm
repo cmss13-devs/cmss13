@@ -3,41 +3,41 @@
 // actual modules needed is referenced through modulestypes and the object type
 
 /datum/module
-	var/status				// bits set if working, 0 if broken
-	var/installed			// bits set if installed, 0 if missing
+	var/status // bits set if working, 0 if broken
+	var/installed // bits set if installed, 0 if missing
 
 // moduletypes datum
 // this is per-object type, and shows the modules needed for a type of object
 
 /datum/moduletypes
-	var/list/modcount = list()	// assoc list of the count of modules for a type
+	var/list/modcount = list() // assoc list of the count of modules for a type
 
 
-var/list/modules = list(			// global associative list
+var/list/modules = list( // global associative list
 	/obj/structure/machinery/power/apc = "card_reader,power_control,id_auth,cell_power,cell_charge")
 
 
-/datum/module/New(var/obj/O)
+/datum/module/New(obj/O)
 
-	var/type = O.type		// the type of the creating object
+	var/type = O.type // the type of the creating object
 
-	var/mneed = mods.inmodlist(type)		// find if this type has modules defined
+	var/mneed = mods.inmodlist(type) // find if this type has modules defined
 
-	if(!mneed)		// not found in module list?
-		qdel(src)	// delete self, thus ending proc
+	if(!mneed) // not found in module list?
+		qdel(src) // delete self, thus ending proc
 
-	var/needed = mods.getbitmask(type)		// get a bitmask for the number of modules in this object
+	var/needed = mods.getbitmask(type) // get a bitmask for the number of modules in this object
 	status = needed
 	installed = needed
 
-/datum/moduletypes/proc/addmod(var/type, var/modtextlist)
-	modules += type	// index by type text
+/datum/moduletypes/proc/addmod(type, modtextlist)
+	modules += type // index by type text
 	modules[type] = modtextlist
 
-/datum/moduletypes/proc/inmodlist(var/type)
+/datum/moduletypes/proc/inmodlist(type)
 	return type in modules
 
-/datum/moduletypes/proc/getbitmask(var/type)
+/datum/moduletypes/proc/getbitmask(type)
 	var/count = modcount[type]
 	if(count)
 		return 2**count-1

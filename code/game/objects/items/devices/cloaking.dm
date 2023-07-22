@@ -7,7 +7,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	item_state = "electronic"
-	throwforce = 5.0
+	throwforce = 5
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
@@ -23,10 +23,8 @@
 	spark_system.attach(src)
 
 /obj/item/device/chameleon/Destroy()
-	if(spark_system)
-		qdel(spark_system)
-		spark_system = null
-	. = ..()
+	QDEL_NULL(spark_system)
+	return ..()
 
 /obj/item/device/chameleon/dropped(mob/user)
 	disrupt(user)

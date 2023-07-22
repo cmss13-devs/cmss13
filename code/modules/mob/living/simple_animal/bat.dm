@@ -10,7 +10,7 @@
 	speak_emote = list("screeches")
 	emote_hear = list("screeches")
 
-/mob/living/simple_animal/bat/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/simple_animal/bat/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_OVER|PASS_FLAGS_CRAWLER
@@ -19,12 +19,12 @@
 	. = ..()
 	if(!ckey && stat == CONSCIOUS && prob(5))
 		if(locate(/turf/closed,get_step(src, NORTH)))
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 			icon_state = "bat_hanging"
 			wander = 0
 			speak_chance = 0
 	else if(ckey || (stat == UNCONSCIOUS && prob(5)))
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 		icon_state = "bat"
 		wander = 1
 		canmove = 1

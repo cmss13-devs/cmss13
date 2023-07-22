@@ -25,15 +25,15 @@
 		flagIndex+=1
 	return Borgwires
 
-/mob/living/silicon/robot/proc/isWireColorCut(var/wireColor)
+/mob/living/silicon/robot/proc/isWireColorCut(wireColor)
 	var/wireFlag = BorgWireColorToFlag[wireColor]
 	return ((src.borgwires & wireFlag) == 0)
 
-/mob/living/silicon/robot/proc/isWireCut(var/wireIndex)
+/mob/living/silicon/robot/proc/isWireCut(wireIndex)
 	var/wireFlag = BorgIndexToFlag[wireIndex]
 	return ((src.borgwires & wireFlag) == 0)
 
-/mob/living/silicon/robot/proc/cut(var/wireColor)
+/mob/living/silicon/robot/proc/cut(wireColor)
 	var/wireFlag = BorgWireColorToFlag[wireColor]
 	var/wireIndex = BorgWireColorToIndex[wireColor]
 	borgwires &= ~wireFlag
@@ -51,7 +51,7 @@
 
 	src.interact(usr)
 
-/mob/living/silicon/robot/proc/mend(var/wireColor)
+/mob/living/silicon/robot/proc/mend(wireColor)
 	var/wireFlag = BorgWireColorToFlag[wireColor]
 	var/wireIndex = BorgWireColorToIndex[wireColor]
 	borgwires |= wireFlag
@@ -66,10 +66,10 @@
 	src.interact(usr)
 
 
-/mob/living/silicon/robot/proc/pulse(var/wireColor)
+/mob/living/silicon/robot/proc/pulse(wireColor)
 	var/wireIndex = BorgWireColorToIndex[wireColor]
 	switch(wireIndex)
-		if(BORG_WIRE_LAWCHECK)	//Forces a law update if the borg is set to receive them. Since an update would happen when the borg checks its laws anyway, not much use, but eh
+		if(BORG_WIRE_LAWCHECK) //Forces a law update if the borg is set to receive them. Since an update would happen when the borg checks its laws anyway, not much use, but eh
 			if (src.lawupdate)
 				src.photosync()
 
@@ -118,7 +118,7 @@
 			var/t1 = text2num(href_list["borgwires"])
 			var/obj/item/held_item = usr.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(usr, "You need wirecutters!")
+				to_chat(usr, SPAN_WARNING("You need wirecutters!"))
 				return
 			if (src.isWireColorCut(t1))
 				src.mend(t1)
@@ -128,10 +128,10 @@
 			var/t1 = text2num(href_list["pulse"])
 			var/obj/item/held_item = usr.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-				to_chat(usr, "You need a multitool!")
+				to_chat(usr, SPAN_WARNING("You need a multitool!"))
 				return
 			if (src.isWireColorCut(t1))
-				to_chat(usr, "You can't pulse a cut wire.")
+				to_chat(usr, SPAN_WARNING("You can't pulse a cut wire."))
 				return
 			else
 				src.pulse(t1)

@@ -1,12 +1,14 @@
 // At minimum every mob has a hear_say proc.
+/mob/proc/hear_apollo()
+	return FALSE
 
-/mob/proc/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
+/mob/proc/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol)
 
 	if(!client && !(mind && mind.current != src))
 		return
 
-	if(sleeping || stat == 1)
-		hear_sleep(message)
+	if(stat == UNCONSCIOUS)
+		hear_sleep(src, message, src == speaker, Adjacent(speaker))
 		return
 
 	var/style = "body"
@@ -30,7 +32,7 @@
 			message = stars(message)
 
 	if(language)
-		style = language.colour
+		style = language.color
 
 	var/speaker_name = speaker.name
 	if(ishuman(speaker) && ishuman(src))
@@ -55,18 +57,18 @@
 
 
 /mob/proc/hear_radio(
-	var/message, var/verb="says",
-	var/datum/language/language=null,
-	var/part_a, var/part_b,
-	var/mob/speaker = null,
-	var/hard_to_hear = 0, var/vname ="",
-	var/command = 0, var/no_paygrade = FALSE)
+	message, verb="says",
+	datum/language/language=null,
+	part_a, part_b,
+	mob/speaker = null,
+	hard_to_hear = 0, vname ="",
+	command = 0, no_paygrade = FALSE)
 
 	if(!client && !(mind && mind.current != src))
 		return
 
-	if(sleeping || stat==1) //If unconscious or sleeping
-		hear_sleep(message)
+	if(stat == UNCONSCIOUS)
+		hear_sleep(src, message, FALSE, FALSE)
 		return
 	var/comm_paygrade = ""
 
@@ -89,7 +91,7 @@
 			message = stars(message)
 
 	if(language)
-		style = language.colour
+		style = language.color
 
 	if(hard_to_hear)
 		message = stars(message)
@@ -185,7 +187,7 @@
 		else
 			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span></span>", type = MESSAGE_TYPE_RADIO)
 
-/mob/proc/hear_signlang(var/message, var/verb = "gestures", var/datum/language/language, var/mob/speaker = null)
+/mob/proc/hear_signlang(message, verb = "gestures", datum/language/language, mob/speaker = null)
 	var/comm_paygrade = ""
 	if(!client)
 		return
@@ -205,9 +207,24 @@
 			M.show_message(message)
 	src.show_message(message)
 
-/mob/proc/hear_sleep(var/message)
+/mob/proc/hear_sleep(mob/speaker = null, message, hearing_self = FALSE, proximity_flag = FALSE)
 	var/heard = ""
-	if(prob(15))
+
+	if(sdisabilities & DISABILITY_DEAF || ear_deaf)
+		if(speaker == src)
+			to_chat(src, SPAN_WARNING("You cannot hear yourself speak!"))
+		else
+			to_chat(src, SPAN_LOCALSAY("Someone near talks but you cannot hear them."))
+		return
+
+	if(hearing_self)
+		heard = SPAN_LOCALSAY("You mutter something about... [stars(message, clear_char_probability = 99)]")
+
+	else if(!sleeping && proximity_flag)
+		heard = SPAN_LOCALSAY("You hear someone near you say something... [stars(message, clear_char_probability = 90)]")
+
+	else if(prob(15))
+
 		var/list/punctuation = list(",", "!", ".", ";", "?")
 		var/list/messages = splittext(message, " ")
 		var/R = rand(1, messages.len)
@@ -216,9 +233,9 @@
 			heardword = copytext(heardword,2)
 		if(copytext(heardword,-1) in punctuation)
 			heardword = copytext(heardword,1,length(heardword))
-		heard = SPAN_LOCALSAY("<span class = 'game_say'>...You hear something about...[heardword]</span>")
+		heard = SPAN_LOCALSAY("...You hear something about...[heardword]")
 
 	else
-		heard = SPAN_LOCALSAY("<span class = 'game_say'>...<i>You almost hear someone talking</i>...</span>")
+		heard = SPAN_LOCALSAY("...<i>You almost hear someone talking</i>...")
 
 	to_chat(src, heard)

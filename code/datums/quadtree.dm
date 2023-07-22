@@ -81,7 +81,7 @@
 			&& coords.y_pos >= center_y - height /2  \
 			&& coords.y_pos <= center_y + height / 2)
 
-/datum/shape/rectangle/proc/contains_atom(var/atom/A)
+/datum/shape/rectangle/proc/contains_atom(atom/A)
 	return (A.x >= center_x - width / 2  \
 			&& A.x <= center_x + width / 2 \
 			&& A.y >= center_y - height /2  \

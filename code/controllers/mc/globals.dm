@@ -14,7 +14,7 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 
 	var/datum/controller/exclude_these = new
 	gvars_datum_in_built_vars = exclude_these.vars + list(NAMEOF(src, gvars_datum_protected_varlist), NAMEOF(src, gvars_datum_in_built_vars), NAMEOF(src, gvars_datum_init_order))
-	QDEL_IN(exclude_these, 0)	//signal logging isn't ready
+	QDEL_IN(exclude_these, 0) //signal logging isn't ready
 
 	log_world("[vars.len - gvars_datum_in_built_vars.len] global variables")
 
@@ -28,6 +28,11 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 /datum/controller/global_vars/stat_entry(msg)
 	msg = "Edit"
 	return msg
+
+/datum/controller/global_vars/vv_edit_var(var_name, var_value)
+	if(gvars_datum_protected_varlist[var_name])
+		return FALSE
+	return ..()
 
 /datum/controller/global_vars/Initialize()
 	gvars_datum_init_order = list()

@@ -6,9 +6,9 @@
 	desc = "It looks like a hiding hole."
 	name = "resin hole"
 	icon_state = "trap0"
-	density = 0
-	opacity = 0
-	anchored = 1
+	density = FALSE
+	opacity = FALSE
+	anchored = TRUE
 	health = 5
 	layer = RESIN_STRUCTURE_LAYER
 	var/list/tripwires = list()
@@ -21,7 +21,7 @@
 	var/datum/cause_data/cause_data
 	plane = FLOOR_PLANE
 
-/obj/effect/alien/resin/trap/Initialize(mapload, mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/resin/trap/Initialize(mapload, mob/living/carbon/xenomorph/X)
 	. = ..()
 	if(X)
 		created_by = X.ckey
@@ -29,6 +29,8 @@
 
 	cause_data = create_cause_data("resin trap", X)
 	set_hive_data(src, hivenumber)
+	if(hivenumber == XENO_HIVE_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/resin/trap/Initialize()
 	. = ..()
@@ -40,7 +42,7 @@
 		WD.overlays.Cut()
 
 /obj/effect/alien/resin/trap/get_examine_text(mob/user)
-	if(!isXeno(user))
+	if(!isxeno(user))
 		return ..()
 	. = ..()
 	switch(trap_type)
@@ -52,6 +54,14 @@
 			. += "It's filled with pressurised gas."
 		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			. += "It's filled with pressurised acid."
+
+/obj/effect/alien/resin/trap/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		hivenumber = XENO_HIVE_FORSAKEN
+		set_hive_data(src, XENO_HIVE_FORSAKEN)
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /obj/effect/alien/resin/trap/proc/facehugger_die()
 	var/obj/item/clothing/mask/facehugger/FH = new (loc)
@@ -76,7 +86,7 @@
 	..()
 
 /obj/effect/alien/resin/trap/bullet_act(obj/item/projectile/P)
-	var/mob/living/carbon/Xenomorph/X = P.firer
+	var/mob/living/carbon/xenomorph/X = P.firer
 	if(istype(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
 		return
 
@@ -85,7 +95,7 @@
 /obj/effect/alien/resin/trap/HasProximity(atom/movable/AM)
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
-			if(can_hug(AM, hivenumber) && !isYautja(AM) && !isSynth(AM))
+			if(can_hug(AM, hivenumber) && !isyautja(AM) && !issynth(AM))
 				var/mob/living/L = AM
 				L.visible_message(SPAN_WARNING("[L] trips on [src]!"),\
 								SPAN_DANGER("You trip on [src]!"))
@@ -94,21 +104,21 @@
 		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			if(ishuman(AM))
 				var/mob/living/carbon/human/H = AM
-				if(isSynth(H) || isYautja(H))
+				if(issynth(H) || isyautja(H))
 					return
 				if(H.stat == DEAD || H.lying)
 					return
 				if(H.ally_of_hivenumber(hivenumber))
 					return
 				trigger_trap()
-			if(isXeno(AM))
-				var/mob/living/carbon/Xenomorph/X = AM
+			if(isxeno(AM))
+				var/mob/living/carbon/xenomorph/X = AM
 				if(X.hivenumber != hivenumber)
 					trigger_trap()
 			if(isVehicleMultitile(AM) && trap_type != RESIN_TRAP_GAS)
 				trigger_trap()
 
-/obj/effect/alien/resin/trap/proc/set_state(var/state = RESIN_TRAP_EMPTY)
+/obj/effect/alien/resin/trap/proc/set_state(state = RESIN_TRAP_EMPTY)
 	switch(state)
 		if(RESIN_TRAP_EMPTY)
 			trap_type = RESIN_TRAP_EMPTY
@@ -133,11 +143,11 @@
 	var/area/A = get_area(src)
 	facehugger_die()
 	clear_tripwires()
-	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hivenumber)
 			to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's facehugger traps at [A.name] has been burnt!"))
 
-/obj/effect/alien/resin/trap/proc/get_spray_type(var/level)
+/obj/effect/alien/resin/trap/proc/get_spray_type(level)
 	switch(level)
 		if(RESIN_TRAP_ACID1)
 			return /obj/effect/xenomorph/spray/weak
@@ -148,7 +158,7 @@
 		if(RESIN_TRAP_ACID3)
 			return /obj/effect/xenomorph/spray/strong
 
-/obj/effect/alien/resin/trap/proc/trigger_trap(var/destroyed = FALSE)
+/obj/effect/alien/resin/trap/proc/trigger_trap(destroyed = FALSE)
 	set waitfor = 0
 	var/area/A = get_area(src)
 	var/trap_type_name = ""
@@ -159,6 +169,7 @@
 			trap_type_name = "hugger"
 			var/obj/item/clothing/mask/facehugger/FH = new (loc)
 			FH.hivenumber = hivenumber
+			set_hive_data(FH, hivenumber)
 			set_state()
 			visible_message(SPAN_WARNING("[FH] gets out of [src]!"))
 			sleep(15)
@@ -185,7 +196,7 @@
 			clear_tripwires()
 	if(!A)
 		return
-	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hivenumber)
 			if(destroyed)
 				to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's [trap_type_name] traps at [A.name] has been destroyed!"))
@@ -196,7 +207,7 @@
 	QDEL_NULL_LIST(tripwires)
 	tripwires = list()
 
-/obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/xenomorph/X)
 	if(X.hivenumber != hivenumber)
 		return ..()
 
@@ -229,8 +240,8 @@
 		to_chat(X, SPAN_XENONOTICE("It already has good acid in."))
 		return XENO_NO_DELAY_ACTION
 
-	if(isXenoBoiler(X))
-		var/mob/living/carbon/Xenomorph/Boiler/B = X
+	if(isboiler(X))
+		var/mob/living/carbon/xenomorph/boiler/B = X
 
 		if(!B.check_plasma(200))
 			to_chat(B, SPAN_XENOWARNING("You must produce more plasma before doing this."))
@@ -284,7 +295,7 @@
 		setup_tripwires()
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
 
-		if(isXenoBurrower(X))
+		if(isburrower(X))
 			set_state(RESIN_TRAP_ACID3)
 		else
 			set_state(RESIN_TRAP_ACID1 + X.acid_level - 1)
@@ -304,7 +315,7 @@
 		tripwires += HT
 
 /obj/effect/alien/resin/trap/attackby(obj/item/W, mob/user)
-	if(!(istype(W, /obj/item/clothing/mask/facehugger) && isXeno(user)))
+	if(!(istype(W, /obj/item/clothing/mask/facehugger) && isxeno(user)))
 		return ..()
 	if(trap_type != RESIN_TRAP_EMPTY)
 		to_chat(user, SPAN_XENOWARNING("You can't put a hugger in this hole!"))
@@ -313,7 +324,7 @@
 	if(FH.stat == DEAD)
 		to_chat(user, SPAN_XENOWARNING("You can't put a dead facehugger in [src]."))
 	else
-		var/mob/living/carbon/Xenomorph/X = user
+		var/mob/living/carbon/xenomorph/X = user
 		if (!istype(X))
 			return
 
@@ -344,8 +355,8 @@
 
 /obj/effect/hole_tripwire
 	name = "hole tripwire"
-	anchored = 1
-	mouse_opacity = 0
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
 	unacidable = TRUE //You never know
 	var/obj/effect/alien/resin/trap/linked_trap
@@ -365,5 +376,5 @@
 		qdel(src)
 		return
 
-	if(ishuman(A) || isXeno(A) || isVehicleMultitile(A))
+	if(ishuman(A) || isxeno(A) || isVehicleMultitile(A))
 		linked_trap.HasProximity(A)

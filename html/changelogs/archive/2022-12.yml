@@ -562,3 +562,424 @@
   - rscadd: Flares flame is now separate and will always face up.
   - rscadd: Converted flares flames to grayscale, allowing flares of any color to
       be made.
+2022-12-18:
+  Drathek, SubjectD9341:
+  - rscadd: Standard issue marine backpacks can now be equipped to most allied xenos
+      (Runners/Praetorians/Drones/Defenders/Warriors/Sentinels/Spitters) and accessed.
+      Use a pack in help intent on a xeno to strap it to her after a duration. Access
+      it with an empty hand in help intent after a duration. Drag a xeno with a pack
+      to you when you have an empty hand to unstrap it from her after a duration.
+  - rscadd: Added the Shake verb to storage items. Humans and xenos can now shake
+      emptyable inventories which has a 75% chance to drop an item if there are any.
+      Xenos also have a 25% chance to cause the pack fall off them when empty.
+  - balance: Resin fruit is now class size medium but size cost large so five can
+      fit in a backpack.
+  - soundadd: Emptying a storage item now uses the existing rustle sound (or whatever
+      use_sound its configured to use).
+  - soundadd: Unequipping a backpack now uses the existing rustle sound (or whatever
+      use_sound its configured to use).
+  - imageadd: Added sprites for regular and medical packs on Runners/Praetorians/Drones/Defenders/Warriors/Sentinels/Spitters.
+  - code_imp: Any storage item that is STORAGE_ALLOW_EMPTY now either adds/removes
+      empty_verb and toggle_click_empty depending on if the user is a xeno.
+  - code_imp: Refactored /atom/movable/vis_obj/xeno_wounds so it can be more generic
+      as just vis_obj (now it will be used by both wounds and packs and packs don't
+      need to be xeno_wounds) and use VIS_INHERIT_DIR instead of a signal.
+  - bugfix: Xeno wounds no longer inherit hive color.
+  SpartanBobby:
+  - balance: 'LV522: Some walls in the Atmospheric processor have been removed/replaced
+      with windows'
+  ThePiachu:
+  - rscadd: Added a set of Super Snowflake Vendors for admins and devs to play with.
+      If you spawn the base one you can stock it with any item and its subtypes as
+      defined when you first spawn it / interact with it.
+  carlarctg:
+  - refactor: Refactored weed slowdown to work based on a signal sent to the recipient
+      carrying list data.
+  - code_imp: Added a variable for weed slowdown multiplier to species. Human Heroes
+      have 0.5 weed slowdown because haha funny. Transferred Yautja's weed immunity
+      to species.
+  realforest2001:
+  - rscadd: Corporate Security radio renamed to Corporate, changed corporate equipment
+      presets to use it also.
+  - rscadd: Added Japanese to all corporate presets, including survivors.
+2022-12-19:
+  Huffie56:
+  - rscadd: Added an ATM in brig and move the med vendor in brig infirmary
+  ThePiachu:
+  - bugfix: Fixed the DME file order again.
+  carlarctg:
+  - imageadd: 'Added attachment sprites for every bayonet type.
+
+      balance:The CMB revolver has received a complete overhaul. It has completely
+      refreshed alien isolation sounds, has gotten a complete stat pass, and now fires
+      by default hollowpoint rounds (Like in Isolation!)
+
+      add:The S&W ''model 48'' revolver is very powerful, but also inaccurate. You
+      will be able to focus on your shots better if you do some cool tricks with it
+      first?
+
+      add:Nagant: Shrapnel shot has unique handful sprites.
+
+      add:BR blasters have USCM pistol placeholder inhands.'
+  - bugfix: Fixes blood and footprints blocking weed clearing.
+  - bugfix: Hitting a turf with any item will first check if the item has weeds on
+      it, and attack them if so. You probably shouldn't be able to pry up floor tiles
+      while the floortile is covered in alien resin..
+  harryob:
+  - bugfix: you are now gentle with the reagent tanks.
+  realforest2001:
+  - bugfix: Fixes crit burrowers being able to move while burrowed still.
+  stanalbatross:
+  - balance: crusher AOE slashes will no longer reduce the cooldown of their shield
+      ability even more
+  - balance: increased the plasma cost of a few crusher abilities
+2022-12-20:
+  CometBlaze:
+  - bugfix: Terminals will now spawn on the correct side of SMESes
+  - bugfix: Round start broken SMESes will now function as expected once repaired
+  Morrow:
+  - balance: Removes groundside nanomeds refilling splints and skilless injectors.
+  - balance: Nerfs non-med APC nanomeds to basic groundside level.
+  carlarctg:
+  - bugfix: Fixes a runtime in specialist.dm
+  diegoflores31:
+  - rscadd: Added a new strain for lurker "Vampire".
+  - rscadd: 'Vampire Lurker exchanges all of your abilities for a fast paced combat
+      style more focused into dealing damage and
+
+      mobility.'
+  - rscadd: 'Active 1 : Rush . Pounces for a maximun of 4 tiles and slashes the objetive
+      once on impact . applying a screenshake and daze to the target . Landing this
+      ability reduces the cooldown by half. (cooldown 6 seconds)'
+  - rscadd: 'Active 2 . Flurry : unleashes a 1X3 slash at the targeted direction that
+      slows your enemies on impact healing you by 30 hp . (cooldown 3 seconds)'
+  - rscadd: 'Active 3 : Tail Jab : Attacks your enemies from a maximun of  2 tiles
+      away while dealing a small amount of damage ( 20)  and knocking them down .
+      if you attack a enemy that is on critical state it will deal 80 damage with
+      penetration and heal you by 150 hp. (cooldown 7 seconds)'
+  stanalbatross:
+  - refactor: refactored show_message to use defines over magic numbers
+  - refactor: cleaned up megaphone code a bit
+  - admin: disabled the "x cut a wire" message as wires (cables) are unimportant
+  - balance: reduced the amount of monomolecular acid in spitter tailstab to 2u, reduced
+      the amount of monomolecular acid in boiler tailstab to 6u.
+  - balance: halved the sniper sentry's range to 10 tiles
+  - balance: reduced the sniper sentry's accuracy by 20%
+  - balance: reduced the sniper sentry's delay between shots from 2s to 1.25s
+  - balance: reduced the plasma sentry's range to 10 tiles
+  - balance: reduced the plasma sentry's delay between shots from 10s to 7s
+2022-12-21:
+  Crowbar764:
+  - bugfix: fixed un-meltable incendiary ammo on New Varadero
+  Morrow:
+  - rscadd: MPs will now start at LCPL for the first 10 hours of playtime.
+  - rscdel: MP Cadet is removed.
+  ThePiachu:
+  - qol: Acid Runner and Hedgehog Ravager now get a HUD bar representing how much
+      acid and how many shards they have stored.
+  - qol: Now you won't even try transferring plasma to xenos that don't use plasma,
+      saving you the effort and letting you know you misclicked.
+  carlarctg:
+  - code_imp: Removed deprecated typecheck on human updatehealth()
+  fira:
+  - code_imp: Updated the Master Controller from /tg/
+  - code_imp: Database subsystems now load early, letting players join during game
+      initialization.
+  - code_imp: Rewrote speech spam filter, using a character budget over time. Old
+      one wouldn't let you speak during init. Yes, you should still be able to use
+      copypastas (within reason)
+  - code_imp: Changed error handling to work during static init, so early errors can
+      be displayed in STUI instead of forgotten.
+  stanalbatross:
+  - bugfix: hotfixed rolling your sleeves while your jacket was down breaking chat
+  - rscadd: ported TG's eye blurriness effects
+  - code_imp: made all instances of eye_blurry modification use the proper procs
+  - code_imp: changed obj/plane_master_controller to atom/movable/plane_master_controller.
+      Same logic as obj/screen being changed.
+  - rscadd: charger crushers, upon charging welding fuel tanks, will now cause them
+      to explode
+  - admin: ported the filter editor from tgstation, it is a VV dropdown option.
+  - code_imp: converted 1500 instances of 4 spaces being used instead of tabs to tabs
+  - rscdel: Removed ten unused nanoui templates. Don't worry, they'll all be going
+      away soon.
+  - code_imp: fixed most instances of types not having a starting / in the codebase
+2022-12-22:
+  Crowbar764:
+  - bugfix: fixed a runtime with ballistic goggles
+  Huffie56:
+  - bugfix: change position of camera in synth closet.
+  - bugfix: change position of camera in laundry room
+  - bugfix: change position of camera in Brig armory
+  - bugfix: change position of camera in perma cell section
+  - bugfix: change position of camera in upper engi north of CE office
+  Molto:
+  - rscadd: Added the operation name to the marines status tab
+  Puckaboo, Carlarc:
+  - imageadd: Added unique strain sprites for Healer and Gardener.
+  - imageadd: Healer drone now gains an overlay for 10 seconds after healing a target.
+  - imageadd: Gardener drone's sac changes colors depending on what fruit is selected.
+  - imageadd: Altered fruit glow colors.
+  - imageadd: Reflavored the healing effect of Healer to be 'applying salve', ability
+      icon changed to show this.
+  RenaRenaRe:
+  - rscadd: Fire penetration now works with OT grenades and other chemical fires,
+      not just as flamer fuel.
+  - rscadd: Ravagers are now a dummy option in the demolition simulator.
+  Segrain:
+  - bugfix: Folding metal barricades no longer get a christmas miracle of invisibility.
+  ThePiachu:
+  - rscadd: Added an automated ammo box management system to various vendors stocking
+      bulk ammo and grenades. It will automatically combine ammo magazine into boxes,
+      and divide boxes into individual magazines (or grenades, MRE packets, etc.).
+      The boxes will appear at the bottom of the vendor (yes, this also includes the
+      regular grenade boxes that used to be higher).
+  - qol: Cargo will no longer need to pack individual vended ammo magazines into boxes
+      thanks to the ammo box management system. Your chains have been broken!
+  - qol: Requisitions vendor now stocks 3-packs of grenades as well as individual
+      HEDP grenades.
+  - qol: Requisitions ammo vendor now can vend a lot more individual magazines (actual
+      number of magazines remains unchanged, just the ammo boxes have been consolidated
+      into magazines).
+  - qol: Requisition vendors now vend to floor when they are not vending to the front
+      desks. This will make filling crates of ammo boxes or rappels easier.
+  - code_imp: Minor changes to code around some ammo boxes to remove one phantom box
+      and prevent intermediate box types from being indexed when they shouldn't be.
+  - code_imp: Refactored the code that checks whether items are in mint enough condition
+      to re-stock.
+  - bugfix: Fixed a super snowflake admin proc appearing where it doesn't belong.
+  carlarctg:
+  - rscadd: The Beretta has been buffed significantly, and now resembles a higher-capacity
+      M4A3 with less bullet damage. It also has a small chance to spawn as the 93R
+      police issue burstfire variant.
+  - rscadd: The Hipower has been completely reworked and redesigned into a new weapon,
+      with new sprites, new inhands, new lore, new stats. It fires 14 bullets that
+      push back (not knock back) close targets when struck.
+  - rscadd: The Deagle's normal shots (unobtainable by COs) throw back any hit targets
+      like heavy m44, and deal great damage. However, the gun is very inaccurate.
+  - rscadd: The PK9 has recieved an accuracy buff as it was hitting nothing.
+  - rscadd: The KT-42 has been made into a cross between a mod88 and a VP, quickly
+      firing strong, inaccurate AP bullets.
+  - rscadd: The unfinished RXM5-EVA pistol has been finished! With its own unique
+      codersprite for inhands. It fires weak non-AP red laser bolts that deal some
+      stamina damage and have a small chance of weakly igniting the target. Only really
+      accessible in New Varadero for now.
+  - imageadd: Added attachment sprites for every bayonet type.
+  - balance: The CMB revolver has received a complete overhaul. It has completely
+      refreshed alien isolation sounds, has gotten a complete stat pass, and now fires
+      by default hollowpoint rounds (Like in Isolation!)
+  - rscadd: The S&W 'model 48' revolver is very powerful, but also inaccurate. You
+      will be able to focus on your shots better if you do some cool tricks with it
+      first?
+  - rscadd: 'Nagant: Shrapnel shot has unique handful sprites.'
+  - rscadd: BR blasters have USCM pistol placeholder inhands.
+  - spellcheck: removed a misuse of an improper escape verb on the purchasable folding
+      barricades crate.
+  - admin: Adds a festivizer to christmas that paints things red or green. Usable
+      by both humans and xenomorphs.
+  - rscadd: Added more tips of the round, and removed outdated, useless, or redundant
+      ones.
+  - rscadd: Added a button to get a random round tip in character gameplay settings.
+  fira:
+  - bugfix: Fix notably Flare Gun ignoring targets when striking the targeted ground
+      location.
+  - bugfix: Starshells won't show the regular flare flame effect anymore.
+  harryob:
+  - bugfix: fixes a runtime relating to the queen eye crossing over weeds
+  moltoretardo:
+  - spellcheck: fixed sqaud on the squad transfer console
+  stanalbatross:
+  - rscdel: removed the already nonfunctional stickyban panel
+  - rscdel: removed some airlock docking controller code that was unused
+  - rscdel: removed nanoui functionality from TTVs. They were already nonfunctional,
+      this just makes it so you can't open a nonfunctional UI with them.
+2022-12-23:
+  Casper:
+  - qol: Fire alarms now trigger on click
+  - bugfix: Fixed fire alarm sprite issues
+  Morrow:
+  - rscdel: Removes the ability for the festivizer to work on mobs or vehicles
+  Morrow, WalterMeldron:
+  - bugfix: Makes the festivizer less intense color-wise
+  ThePiachu:
+  - bugfix: Fixed a runtime caused by sending command orders to null clients.
+  carlarctg:
+  - bugfix: Fixed infinite xeno festivizers in build order
+  realforest2001:
+  - bugfix: Removed bloat/duplicate code in the contractors ERT while doing headset
+      updates
+  - rscadd: Added Command, Engineering, Medical and CCT channels for PMCs, CLF and
+      UPP.
+  - rscadd: Added headsets and encryption keys for the above, and a few other channels.
+  - rscadd: Added keys to talk on faction channels without needing to juggle keys
+      to make :H work.
+  - rscadd: 'UPP channels mostly reflect the USCM channel allocations (command is
+      #V compared to USCM :V) using V/M/N/J/U General/T Commando'
+  - rscadd: CLF channels are A Med/B Engi/C Cmd/D CCT/G General
+  - rscadd: PMC channels are E Engi/F Med/P General/O CCT/Z Cmd /K Whiteout
+2022-12-24:
+  SpartanBobby:
+  - bugfix: fixed a misplaced wall in CIC cryo
+  Stalkerino:
+  - bugfix: renamed lethal mode to IFF on the M46C and the M56
+  carlarctg:
+  - rscdel: Removed almost all the PMC corpses from all the maps. Replaced them with
+      W-Y Security Guards (goons)
+  - rscadd: Sprinkled some soul in some nightmare inserts that hosted these PMC corpses
+      because i cannot help myself. For example the LV crash and hydro holds have
+      some wooden barricades, the big red admin hold got some mostly-empty M41 magazine
+      boxes.
+  - rscadd: Almost all of the PMC corpse spawns' NSG 23s and magazines were replaced
+      with corpo M41s equipped with rubber bullets. Where relevant, there are also
+      normal magazines that can be picked up, such as the big red offices crashed
+      ship.
+  fira:
+  - bugfix: Increased contrast and fixed adjustment on flare flames.
+  - rscadd: Flares shot by flare gun will now align on landing similar to thrown ones.
+2022-12-25:
+  Casper:
+  - refactor: MP JAS computer now uses TGUI
+  Morrow:
+  - bugfix: Fixes goon corpse headset preset
+  ThePiachu:
+  - qol: Xenos without plasma won't try building special structures anymore.
+  - code_imp: Made a variable have a more descriptive name.
+  stanalbatross:
+  - bugfix: fixed examining vehicle parts not returning anything
+  - bugfix: fixed vendors being able to vend to your hand while you are not adjacent
+      to them
+  - bugfix: fixed hardpoint removal list staying on your screen if you tried to x
+      out of it
+  - bugfix: people with vehicle skill but without engi skill can now also see hardpoint
+      integrity
+  - code_imp: fixed all trailing slashes at the ends of paths in the codebase
+  - balance: deep ocean water on NV will now toss you around and massively slow you
+      down to discourage you from going in it
+  - balance: added an extra flank route to the predship cave on NV
+  - bugfix: made the big LZ doors on NV visible again
+2022-12-26:
+  ChainsawMullet:
+  - rscdel: Removed R-1NG bell from Engineer vendors and map spawns.
+  Molto:
+  - spellcheck: fixed Solaris wall typo
+  Stalkerino:
+  - spellcheck: fixed a typo when a larva spawns in the spawn pool
+  somepersondunno:
+  - spellcheck: fixed 2 typos for a vampire lurker ability.
+2022-12-27:
+  BeagleGaming1:
+  - spellcheck: Shortened Commanding Officer Survivor in job preferences to only take
+      one line
+  Molto:
+  - spellcheck: fixed punctuation of some desc
+  Segrain:
+  - bugfix: Contractors ERT once again gets its proper equipment.
+  ThePiachu:
+  - rscadd: Observers can now join as Facehuggers using any planted egg or a Carrier.
+  - rscadd: Ghosts now have a verb to join as a Facehugger from a Carrier or an Egg
+      Morpher (egg list would be too cluttered).
+  - code_imp: Refactored the code around joining as a Facehugger to be less Egg Morpher
+      centric.
+  - balance: Rebalanced how many Facehuggers a Hive can support. Now it's based on
+      Xeno population rather than Marine population.
+  - bugfix: Fixed Acider and Hedgehog overlays persisting after their death.
+  - code_imp: Tiny refactor to Warden overlay cutting as well.
+  carlarctg:
+  - bugfix: Fix entering a ghosted xeno not removing ghostize sleep.
+  harryob:
+  - code_imp: all instances of relative pathing against our styleguide have been changed.
+  insertnamehere123:
+  - bugfix: fixed a bug where a healer drone could use healing salve on burning xenos
+  stanalbatross:
+  - refactor: changed the botany machines to tgui
+  - rscdel: removed the 5s cooldown on every action using the botany machines. Research
+      should not be limited by arbitrary long cooldowns with these.
+  - rscadd: 'added three new changelog labels: ui, mapadd, and maptweak!'
+  - ui: converted the A.C.I.D. harness to use TGUI
+2022-12-28:
+  BeagleGaming1:
+  - admin: Adds a staff flag that can toggle whether Predators can big SD while not
+      on the hunting grounds
+  Casper:
+  - bugfix: fixes TGUI runtime
+  - spellcheck: fixes tech tree start-up text
+  - bugfix: corrects signaller frequency UI
+  Huffie56:
+  - refactor: Fix indentation change four space indentation into a tabulation in .dm
+      files.
+  Morrow:
+  - bugfix: 'reverts overwatch refactor
+
+      :cl:'
+  Skegal:
+  - rscadd: Added Full Body Paint to Loadout
+  ThePiachu:
+  - bugfix: Fixed a runtime caused by fires being mid-smothering while weather changed.
+  - bugfix: Fixed a Vanguard Praetorian runtime.
+  - refactor: Refactored Vanguard shield code a bit to remove unnecesary typecasting.
+  - code_imp: Refactored the code around listing squad members for the Overwatch Console,
+      Crew Monitor and the Groundside Operations Computer.
+  carlarctg:
+  - balance: Increased amount of slots in the SU-6's belt from 6 to 7.
+  - balance: Smartpistol kit spawns with a full belt instead of two spare magazines.
+  - balance: Increased Smartpistol damage from 25 to 30, reduced armor-piercing from
+      25 to 20.
+  - imageadd: Adds an alternate PO flightsuit (and jacket) for sale in the equipment
+      vendor. Located on the dorms next to CIC.
+  fira:
+  - bugfix: Fixed Flaregun to have terrible unwielded accuracy, instead of completely
+      negative.
+  - bugfix: Scatter is not applied to ground-targeted weaponry (like Flaregun) as
+      it would cause projectiles to miss wide to max range.
+  harryob:
+  - bugfix: a couple subsystems now report their initialisation correctly.
+  stanalbatross:
+  - ui: converted the rarely used gas tanks to tgui
+2022-12-29:
+  Casper:
+  - bugfix: sling pouch is now more reliable while moving
+  - bugfix: fixed bipod slow never being removed on weapon drop
+  Lacasitospro:
+  - bugfix: Fixes webbings' side states being too bulky
+  ThePiachu:
+  - rscadd: Re-added the old objective of rescuing survivors. Now each survivor rescued
+      alive and brought to Almayer will net the USCM a good deal of points for their
+      Techweb.
+  carlarctg:
+  - bugfix: Fix bug in which xenos couldn't eat fruit below default max health
+  - rscadd: Adds a cosmetic garb slot to boonie hats and other USCM caps.
+  - code_imp: Slightly improved cmcap code.
+  - bugfix: Fixed entering APC being 0.1 seconds instead of 1 second.
+  harryob:
+  - code_imp: 515 compatibility is here
+2022-12-30:
+  Molto:
+  - bugfix: fixed the gsmes sprite overlay
+  stanalbatross:
+  - qol: converted the M46c's verbs to hud buttons. Sprites by Nauticall.
+  - qol: added a "toggle id lock" hud button to the CO smartgun
+  - bugfix: fixed the queen spawn picker tgui input list leaving you in the lobby
+      art if you let it time out. If you let this happen, if will now pick a random
+      spawn.
+  - balance: you can no longer remove bullets from HPR mags
+  - bugfix: lockers no longer paralyse you when getting out of them
+  - bugfix: berets no longer make the sounds of armour being taken off
+2022-12-31:
+  Huffie56:
+  - rscadd: Added emergency shutter and buttons to activate the alarm that where missing.
+  - rscdel: Remove some shutters between canteen and squad prep.
+  - bugfix: fixed some emergency shutters being in the wrong direction.
+  - rscadd: changed the all internal layout of PO quarter, standartize DCC/PO bunkroomsize
+      added a new bathroom.
+  Morrow:
+  - bugfix: Fixes runtime with pre-mapped decapitated heads
+  chowdermcarthor:
+  - bugfix: Walls that are indestructible will now show it in the description.
+  - bugfix: The synthetic's breaching hammer no longer allows you to attempt to destroy
+      an indestructible wall.
+  stanalbatross:
+  - bugfix: fixed a ton of instances where organs were not using the take_damage proc,
+      resulting in them not properly breaking
+  - code_imp: made a ton of eye_blind things use the procs for it
+  thwompa:
+  - maptweak: Converted vacant space in the lower-starboard hull maint area to a secret
+      hideout.

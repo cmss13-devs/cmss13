@@ -37,7 +37,7 @@
 	if(welded)
 		. += SPAN_INFO("It seems welded shut.")
 
-/obj/structure/pipes/vents/update_icon(var/safety = 0)
+/obj/structure/pipes/vents/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 	overlays.Cut()

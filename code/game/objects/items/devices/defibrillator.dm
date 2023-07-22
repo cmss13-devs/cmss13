@@ -34,6 +34,11 @@
 	dcell = new/obj/item/cell(src)
 	update_icon()
 
+/obj/item/device/defibrillator/Destroy()
+	QDEL_NULL(dcell)
+	QDEL_NULL(sparks)
+	return ..()
+
 /obj/item/device/defibrillator/update_icon()
 	icon_state = initial(icon_state)
 	overlays.Cut()
@@ -90,7 +95,7 @@
 	update_icon()
 	add_fingerprint(user)
 
-/mob/living/carbon/human/proc/get_ghost(var/check_client = TRUE, var/check_can_reenter = TRUE)
+/mob/living/carbon/human/proc/get_ghost(check_client = TRUE, check_can_reenter = TRUE)
 	if(client)
 		return null
 
@@ -110,8 +115,8 @@
 		return FALSE
 	return TRUE
 
-/obj/item/device/defibrillator/proc/check_revive(var/mob/living/carbon/human/H, mob/living/carbon/human/user)
-	if(!ishuman(H) || isYautja(H))
+/obj/item/device/defibrillator/proc/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
+	if(!ishuman(H) || isyautja(H))
 		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You don't even know where to put the paddles!"))
 		return
 	if(!ready)
@@ -132,7 +137,7 @@
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interfering."))
 		return
 
-	if((!H.check_tod() && !isSynth(H))) //synthetic species have no expiration date
+	if((!H.check_tod() && !issynth(H))) //synthetic species have no expiration date
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient is braindead."))
 		return
 
@@ -187,7 +192,7 @@
 
 	var/datum/internal_organ/heart/heart = H.internal_organs_by_name["heart"]
 	if(heart && prob(25))
-		heart.damage += heart_damage_to_deal //Allow the defibrillator to possibly worsen heart damage. Still rare enough to just be the "clone damage" of the defib
+		heart.take_damage(heart_damage_to_deal, TRUE) //Allow the defibrillator to possibly worsen heart damage. Still rare enough to just be the "clone damage" of the defib
 
 	if(!H.is_revivable())
 		playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
@@ -223,6 +228,7 @@
 		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: Defibrillation successful."))
 		playsound(get_turf(src), 'sound/items/defib_success.ogg', 25, 0)
 		user.track_life_saved(user.job)
+		user.life_revives_total++
 		H.handle_revive()
 		to_chat(H, SPAN_NOTICE("You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane."))
 		if(H.client?.prefs.toggles_flashing & FLASH_CORPSEREVIVE)

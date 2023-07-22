@@ -3,9 +3,9 @@
 	var/midi
 
 SUBSYSTEM_DEF(midi)
-	name     = "Midi"
-	wait     = 2 SECONDS
-	flags    = SS_NO_INIT|SS_BACKGROUND|SS_DISABLE_FOR_TESTING
+	name  = "Midi"
+	wait  = 2 SECONDS
+	flags = SS_NO_INIT|SS_BACKGROUND
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	priority = SS_PRIORITY_MIDI
 

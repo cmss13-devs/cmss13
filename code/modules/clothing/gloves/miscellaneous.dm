@@ -4,16 +4,16 @@
 	icon_state = "captain"
 	item_state = "egloves"
 	flags_cold_protection = BODY_FLAG_HANDS
-	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
 	flags_heat_protection = BODY_FLAG_HANDS
-	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
+	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 
 /obj/item/clothing/gloves/cyborg
 	desc = "beep boop borp"
 	name = "cyborg gloves"
 	icon_state = "black"
 	item_state = "r_hands"
-	siemens_coefficient = 1.0
+	siemens_coefficient = 1
 
 /obj/item/clothing/gloves/swat
 	desc = "These tactical gloves are somewhat fire and impact-resistant."
@@ -24,9 +24,9 @@
 	permeability_coefficient = 0.05
 
 	flags_cold_protection = BODY_FLAG_HANDS
-	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
 	flags_heat_protection = BODY_FLAG_HANDS
-	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
+	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 
 /obj/item/clothing/gloves/combat //Combined effect of SWAT gloves and insulated gloves
 	desc = "These tactical gloves are somewhat fire and impact resistant."
@@ -36,9 +36,9 @@
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
 	flags_cold_protection = BODY_FLAG_HANDS
-	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
 	flags_heat_protection = BODY_FLAG_HANDS
-	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
+	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 
 /obj/item/clothing/gloves/latex
 	name = "latex gloves"
@@ -76,7 +76,7 @@
 	var/boxing_verb = pick(attack_verb)
 	if (A in range(1, M))
 		if(isliving(A) && M.a_intent == INTENT_HARM)
-			if(isYautja(A) || isXeno(A))
+			if(isyautja(A) || isxeno(A))
 				return 0
 			if (ishuman(A))
 				var/mob/living/carbon/human/L = A
@@ -86,7 +86,7 @@
 					return 1
 				if (L.halloss > 100)
 					playsound(loc, knockout_sound, 50, FALSE)
-					M.show_message(FONT_SIZE_LARGE(SPAN_WARNING("KNOCKOUT!")))
+					M.show_message(FONT_SIZE_LARGE(SPAN_WARNING("KNOCKOUT!")), SHOW_MESSAGE_VISIBLE)
 					return 1
 				if (L.lying == 1 || L.stat == UNCONSCIOUS)//Can't beat 'em while they're down.
 					to_chat(M, SPAN_WARNING("You can't box with [A], they're already down!"))
@@ -100,7 +100,7 @@
 
 /obj/item/clothing/gloves/boxing/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) || W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
-		to_chat(user, SPAN_NOTICE("It would be a great dishonor to cut open these fine boxing gloves."))	//Nope
+		to_chat(user, SPAN_NOTICE("It would be a great dishonor to cut open these fine boxing gloves.")) //Nope
 		return
 	..()
 

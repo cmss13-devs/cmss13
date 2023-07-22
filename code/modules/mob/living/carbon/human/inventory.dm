@@ -1,6 +1,6 @@
 /mob/living/carbon/human/verb/quick_equip()
 	set name = "quick-equip"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
@@ -135,7 +135,7 @@
 		if(updatename)
 			name = get_visible_name()
 		if(I.flags_inv_hide & (HIDEALLHAIR|HIDETOPHAIR|HIDELOWHAIR))
-			update_hair()	//rebuild hair
+			update_hair() //rebuild hair
 		if(I.flags_inv_hide & HIDEEARS)
 			update_inv_ears()
 		if(I.flags_inv_hide & HIDEMASK)
@@ -192,7 +192,7 @@
 			apply_damage(25, BRUTE, "head")
 	name = get_visible_name() // doing this without a check, still cheaper than doing it every Life() tick -spookydonut
 	if(I.flags_inv_hide & (HIDEALLHAIR|HIDETOPHAIR|HIDELOWHAIR))
-		update_hair()	//rebuild hair
+		update_hair() //rebuild hair
 	if(I.flags_inv_hide & HIDEEARS)
 		update_inv_ears()
 	if(I.flags_inv_hide & HIDEEYES)
@@ -297,7 +297,7 @@
 			if(head.flags_inv_hide & HIDEFACE)
 				name = get_visible_name()
 			if(head.flags_inv_hide & (HIDEALLHAIR|HIDETOPHAIR|HIDELOWHAIR))
-				update_hair()	//rebuild hair
+				update_hair() //rebuild hair
 			if(head.flags_inv_hide & HIDEEARS)
 				update_inv_ears()
 			if(head.flags_inv_hide & HIDEMASK)
@@ -504,7 +504,7 @@
 	src.visible_message(SPAN_DANGER("[src] tries to remove [M]'s [I.name]."), \
 					SPAN_DANGER("You are trying to remove [M]'s [I.name]."), null, 5)
 	I.add_fingerprint(src)
-	if(do_after(src, HUMAN_STRIP_DELAY * src.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+	if(do_after(src, HUMAN_STRIP_DELAY * src.get_skill_duration_multiplier(SKILL_CQC), INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 		if(I && Adjacent(M) && I == M.get_item_by_slot(slot_to_process))
 			M.drop_inv_item_on_ground(I)
 			log_interact(src, M, "[key_name(src)] removed [key_name(M)]'s [I.name] ([slot_to_process]) successfully.")
@@ -528,7 +528,7 @@
 			to_chat(src, SPAN_WARNING("You can't put \the [I.name] on [M]!"))
 			return
 		visible_message(SPAN_NOTICE("[src] tries to put \the [I.name] on [M]."), null, null, 5)
-		if(do_after(src, HUMAN_STRIP_DELAY * src.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+		if(do_after(src, HUMAN_STRIP_DELAY * src.get_skill_duration_multiplier(SKILL_CQC), INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			if(I == get_active_hand() && !M.get_item_by_slot(slot_to_process) && Adjacent(M))
 				if(I.flags_item & WIELDED) //to prevent re-wielding it during the do_after
 					I.unwield(src)
@@ -543,3 +543,9 @@
 	if(M)
 		if(interactee == M && Adjacent(M))
 			M.show_inv(src)
+
+/mob/living/carbon/human/drop_inv_item_on_ground(obj/item/I, nomoveupdate, force)
+	remember_dropped_object(I)
+	return ..()
+
+

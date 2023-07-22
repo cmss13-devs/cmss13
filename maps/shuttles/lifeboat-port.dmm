@@ -240,8 +240,7 @@
 	throw_dir = 1
 	},
 /turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
+	icon_state = "test_floor4"
 	},
 /area/shuttle/lifeboat)
 "CI" = (
@@ -302,8 +301,7 @@
 /area/shuttle/lifeboat)
 "Jg" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor8";
-	tag = "icon-floor8"
+	icon_state = "floor8"
 	},
 /area/shuttle/lifeboat)
 "Jw" = (
@@ -328,14 +326,12 @@
 	throw_dir = 1
 	},
 /turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
+	icon_state = "test_floor4"
 	},
 /area/shuttle/lifeboat)
 "Nm" = (
 /turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
+	icon_state = "test_floor4"
 	},
 /area/shuttle/lifeboat)
 "Ob" = (
@@ -429,7 +425,7 @@
 /area/shuttle/lifeboat)
 "Uf" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/security/almayer/vehicle{
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
 	dir = 8
 	},
 /turf/open/shuttle/lifeboat,

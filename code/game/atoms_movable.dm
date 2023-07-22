@@ -1,7 +1,7 @@
 /atom/movable
 	layer = OBJ_LAYER
 	var/last_move_dir = null
-	var/anchored = 0
+	var/anchored = FALSE
 	var/drag_delay = 3 //delay (in deciseconds) added to mob's move_delay when pulling it.
 	var/l_move_time = 1
 	var/throwing = 0
@@ -15,6 +15,9 @@
 	var/acid_damage = 0 //Counter for stomach acid damage. At ~60 ticks, dissolved
 
 	var/move_intentionally = FALSE // this is for some deep stuff optimization. This means that it is regular movement that can only be NSWE and you don't need to perform checks on diagonals. ALWAYS reset it back to FALSE when done
+
+	/// How much this mob|object is worth when lowered into the ASRS pit while the black market is unlocked.
+	var/black_market_value = 0
 
 	var/datum/component/orbiter/orbiting
 
@@ -40,7 +43,7 @@
 //Overlays
 /atom/movable/overlay
 	var/atom/master = null
-	anchored = 1
+	anchored = TRUE
 
 /atom/movable/overlay/New()
 	..()
@@ -57,10 +60,36 @@
 		return src.master.attack_hand(a, b, c)
 	return
 
+/atom/movable/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_EDIT_PARTICLES, "Edit Particles")
 
+/atom/movable/vv_do_topic(list/href_list)
+	. = ..()
 
+	if(!.)
+		return
 
+	if(href_list[VV_HK_EDIT_PARTICLES] && check_rights(R_VAREDIT))
+		var/client/C = usr.client
+		C?.open_particle_editor(src)
 
+/atom/movable/vv_edit_var(var_name, var_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, step_x) = TRUE, NAMEOF_STATIC(src, step_y) = TRUE, NAMEOF_STATIC(src, step_size) = TRUE, NAMEOF_STATIC(src, bounds) = TRUE)
+	var/static/list/careful_edits = list(NAMEOF_STATIC(src, bound_x) = TRUE, NAMEOF_STATIC(src, bound_y) = TRUE, NAMEOF_STATIC(src, bound_width) = TRUE, NAMEOF_STATIC(src, bound_height) = TRUE)
+	var/static/list/not_falsey_edits = list(NAMEOF_STATIC(src, bound_width) = TRUE, NAMEOF_STATIC(src, bound_height) = TRUE)
+	if(banned_edits[var_name])
+		return FALSE //PLEASE no.
+	if(careful_edits[var_name] && (var_value % world.icon_size) != 0)
+		return FALSE
+	if(not_falsey_edits[var_name] && !var_value)
+		return FALSE
+
+	if(!isnull(.))
+		datum_flags |= DF_VAR_EDITED
+		return
+
+	return ..()
 
 //when a mob interact with something that gives them a special view,
 //check_eye() is called to verify that they're still eligible.
@@ -103,7 +132,7 @@
 
 
 // Spin for a set amount of time at a set speed using directional states
-/atom/movable/proc/spin(var/duration, var/turn_delay = 1, var/clockwise = 0, var/cardinal_only = 1)
+/atom/movable/proc/spin(duration, turn_delay = 1, clockwise = 0, cardinal_only = 1)
 	set waitfor = 0
 
 	if (turn_delay < 1)
@@ -122,7 +151,7 @@
 		setDir(turn(dir, spin_degree))
 		duration -= turn_delay
 
-/atom/movable/proc/spin_circle(var/num_circles = 1, var/turn_delay = 1, var/clockwise = 0, var/cardinal_only = 1)
+/atom/movable/proc/spin_circle(num_circles = 1, turn_delay = 1, clockwise = 0, cardinal_only = 1)
 	set waitfor = 0
 
 	if (num_circles < 1 || turn_delay < 1)
@@ -174,7 +203,7 @@
 /atom/movable/clone/attack_hand(mob/user)
 	return src.mstr.attack_hand(user)
 
-/atom/movable/clone/attack_alien(mob/living/carbon/Xenomorph/M, dam_bonus)
+/atom/movable/clone/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus)
 	return src.mstr.attack_alien(M, dam_bonus)
 
 /atom/movable/clone/attack_animal(mob/living/M as mob)
@@ -192,7 +221,7 @@
 
 /atom/movable/proc/create_clone_movable(shift_x, shift_y)
 	var/atom/movable/clone/C = new /atom/movable/clone(src.loc)
-	C.density = 0
+	C.density = FALSE
 	C.proj_x = shift_x
 	C.proj_y = shift_y
 
@@ -206,18 +235,18 @@
 	//Translate clone position by projection factor
 	//This is done first to reduce movement latency
 
-	clone.anchored 		= anchored //Some of these may be suitable for Init
-	clone.appearance 	= appearance
-	clone.dir 			= dir
-	clone.flags_atom 	= flags_atom
-	clone.density 		= density
-	clone.layer 		= layer
-	clone.level 		= level
-	clone.name 			= name
-	clone.pixel_x 		= pixel_x
-	clone.pixel_y 		= pixel_y
-	clone.transform 	= transform
-	clone.invisibility 	= invisibility
+	clone.anchored = anchored //Some of these may be suitable for Init
+	clone.appearance = appearance
+	clone.dir = dir
+	clone.flags_atom = flags_atom
+	clone.density = density
+	clone.layer = layer
+	clone.level = level
+	clone.name = name
+	clone.pixel_x = pixel_x
+	clone.pixel_y = pixel_y
+	clone.transform = transform
+	clone.invisibility = invisibility
 	////////////////////
 
 	if(light) //Clone lighting
@@ -248,5 +277,5 @@
 
 /atom/movable/proc/safe_throw_at(atom/target, range, speed, mob/thrower, spin = TRUE)
 	//if((force < (move_resist * MOVE_FORCE_THROW_RATIO)) || (move_resist == INFINITY))
-	//	return
+	// return
 	return throw_atom(target, range, speed, thrower, spin)

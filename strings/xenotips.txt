@@ -1,6 +1,6 @@
 Acid pillars can be sneakily placed next to a door in order to surprise marines.
-Alien structures like clusters, walls, or pillars are absolutely vital to your victory, be it as cover or to delay and funnel marines.
-Always thank your drones and hivelords for supporting the hive!
+Alien structures like clusters, walls, or pillars are vital to your victory, be it as cover or to delay and funnel marines.
+Always thank your drones and Hivelords for supporting the hive!
 Don't underestimate survivors. They have no armor but that makes them very fast, they're inherently hardier than marines and have various tricks up their sleeves.
 While the Queen is de-ovied, the hive does not gain evolution points.
 Try out new castes or strains that you might have passed up initially. You might find them to be surprisingly fun.
@@ -15,12 +15,22 @@ Moving through pipes is noisy and entering/leaving the vents has a noticeable vi
 If a fellow alien is stunned, be sure to drag them to safety.
 On help intent, click a xenomorph who is on fire to pat them out. This works on marines too!
 Frenzy increases your speed and damage, Recovery increases your health regeneration, and Warding increases the time you have until you bleed out in critical health.
-Turn off your night vision to see light offscreen. This lets you know if a marine is nearby, but make sure they don't have Night-Vision goggles.
-You can devour bursted corpses in order to transport them to the Spawn Pool or Egg Morpher easier.
+Remember that, as a Xenomorph, you can fully disable your night-vision. This helps put into perspective how hidden your position is to marines onscreen.
+You can devour burst corpses in order to transport them to the Spawn Pool or Egg Morpher easier.
 The bigger you are, the more time it'll take to enter a tunnel.
-Drag yourself onto a hole in a wall as a medium-sized or smaller xeno to pass through it.
+Drag yourself onto a hole in a wall as a medium-sized or smaller Xeno to pass through it.
 Claymores have directional explosions. Set them off early by slashing them from behind.
 If you have difficulty clicking marines, try using Directional Slashing, though there's no directional slashing for abilities.
 You can diagonally pounce through the corners of fire as a Lurker or Runner without getting ignited.
-When playing as xeno, consider aiming at the limbs instead of the chest. Marine armour doesn't protect the arms and legs as well as it does the body.
-As xeno, you can break Night-Vision goggles that some marines wear on their helmets. Just aim for the head and slash until the goggles shatter.
+When playing as Xeno, consider aiming at the limbs instead of the chest. Marine armor doesn't protect the arms and legs as well as it does the body.
+As Xeno, you can break Night-Vision goggles that some marines wear on their helmets. Just aim for the head and slash until the goggles shatter.
+Pounces are ineffective on marines who are laying down.
+You may rest immediately during a pounce to pounce straight through mobs. It's not very practical or useful though.
+Pouncing someone who is buckled to a chair will still stun them, but you won't jump into their tile and they will not be knocked to the ground.
+Star shell dust from said grenades is just as meltable as normal flares.
+You can join the hive as a living Facehugger by clicking on the hive's Eggmorpher. This works on other hives too..
+Playable Facehuggers can leap onto targets with a one-second windup, but this will only infect them if they are adjacent to it.  Otherwise, it will simply knock them down for a small duration.
+As a Facehugger, you cannot talk in hivemind, but you can still open Hive Status and overwatch your sisters. This can be useful if you're locating other Facehuggers, flanker castes, or trying to learn from experienced Facehugger players.
+Shift-clicking the Queen indicator will tell you what area you are in, on the map.
+Resisting on a water tile will immediately put out fires. Make sure you're alone though - It's usually better to let a friendly Xenomorph pat you out than it is to expose yourself to open water.
+You can filter out the Xenomorphs displayed in hive status by health, allowing you to look only for wounded sisters.

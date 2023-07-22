@@ -1,13 +1,16 @@
 
-var/list/unansweredAhelps = list()			//This feels inefficient, but I can't think of a better way. Stores the message indexed by CID
+var/list/unansweredAhelps = list() //This feels inefficient, but I can't think of a better way. Stores the message indexed by CID
 
-GLOBAL_LIST_EMPTY(WYFaxes)			//Departmental faxes
+GLOBAL_LIST_EMPTY(PressFaxes)
+GLOBAL_LIST_EMPTY(WYFaxes) //Departmental faxes
 GLOBAL_LIST_EMPTY(USCMFaxes)
 GLOBAL_LIST_EMPTY(ProvostFaxes)
-GLOBAL_LIST_EMPTY(GeneralFaxes)		//Inter-machine faxes
-GLOBAL_LIST_EMPTY(fax_contents)		//List of fax contents to maintain it even if source paper is deleted
+GLOBAL_LIST_EMPTY(CMBFaxes)
+GLOBAL_LIST_EMPTY(GeneralFaxes) //Inter-machine faxes
+GLOBAL_LIST_EMPTY(fax_contents) //List of fax contents to maintain it even if source paper is deleted
 
-GLOBAL_LIST_EMPTY(failed_fultons) 	//A list of fultoned items which weren't collected and fell back down
+GLOBAL_LIST_EMPTY(failed_fultons) //A list of fultoned items which weren't collected and fell back down
+GLOBAL_LIST_EMPTY(larva_burst_by_hive)
 
 GLOBAL_LIST_INIT_TYPED(custom_huds_list, /datum/custom_hud, setup_all_huds())
 GLOBAL_LIST_INIT_TYPED(custom_human_huds, /datum/custom_hud, setup_human_huds())
@@ -15,15 +18,33 @@ GLOBAL_LIST_INIT_TYPED(custom_human_huds, /datum/custom_hud, setup_human_huds())
 //Since it didn't really belong in any other category, I'm putting this here
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
 
-var/readied_players = 0								//How many players are readied up in the lobby
+var/readied_players = 0 //How many players are readied up in the lobby
 
 GLOBAL_LIST_EMPTY_TYPED(other_factions_human_list, /mob/living/carbon/human)
 
-var/global/list/ai_mob_list = list()				//List of all AIs
+var/global/list/ai_mob_list = list() //List of all AIs
 
-GLOBAL_LIST_EMPTY(freed_mob_list) 	// List of mobs freed for ghosts
+GLOBAL_LIST_EMPTY(freed_mob_list) // List of mobs freed for ghosts
 
 GLOBAL_LIST_INIT(available_taskbar_icons, setup_taskbar_icons())
+
+GLOBAL_LIST_EMPTY(minimap_icons)
+
+GLOBAL_LIST_EMPTY(mainship_pipes)
+
+/proc/initiate_minimap_icons()
+	var/list/icons = list()
+	for(var/iconstate in icon_states('icons/UI_icons/map_blips.dmi'))
+		var/icon/image = icon('icons/UI_icons/map_blips.dmi', icon_state = iconstate)
+		icons[iconstate] += image
+
+	var/list/base64_icons = list()
+	for(var/iconstate in icons)
+		base64_icons[iconstate] = icon2base64(icons[iconstate])
+
+	GLOB.minimap_icons = base64_icons
+
+
 
 // Xeno stuff //
 // Resin constructions parameters
@@ -33,7 +54,6 @@ GLOBAL_LIST_INIT(resin_build_order_drone, list(
 	/datum/resin_construction/resin_turf/wall,
 	/datum/resin_construction/resin_turf/membrane,
 	/datum/resin_construction/resin_obj/door,
-	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
 	/datum/resin_construction/resin_obj/resin_spike
@@ -44,11 +64,20 @@ GLOBAL_LIST_INIT(resin_build_order_hivelord, list(
 	/datum/resin_construction/resin_turf/wall/reflective,
 	/datum/resin_construction/resin_turf/membrane/thick,
 	/datum/resin_construction/resin_obj/door/thick,
-	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/acid_pillar,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
 	/datum/resin_construction/resin_obj/resin_spike
+))
+
+GLOBAL_LIST_INIT(resin_build_order_hivelord_whisperer, list(
+	/datum/resin_construction/resin_turf/wall,
+	/datum/resin_construction/resin_turf/membrane,
+	/datum/resin_construction/resin_obj/door,
+	/datum/resin_construction/resin_obj/sticky_resin,
+	/datum/resin_construction/resin_obj/fast_resin,
+	/datum/resin_construction/resin_obj/resin_spike,
+	/datum/resin_construction/resin_obj/resin_node
 ))
 
 GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(
@@ -56,7 +85,6 @@ GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(
 	/datum/resin_construction/resin_turf/wall/reflective,
 	/datum/resin_construction/resin_turf/membrane/queen,
 	/datum/resin_construction/resin_obj/door/queen,
-	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/acid_pillar,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
@@ -70,17 +98,17 @@ GLOBAL_LIST_INIT_TYPED(resin_mark_meanings, /datum/xeno_mark_define, setup_resin
 GLOBAL_REFERENCE_LIST_INDEXED(xeno_datum_list, /datum/caste_datum, caste_type)
 
 //Chem Stuff
-var/global/list/chemical_reactions_filtered_list	//List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
-var/global/list/chemical_reactions_list		//List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.
-var/global/list/chemical_reagents_list		//List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
-var/global/list/chemical_properties_list	//List of all /datum/chem_property datums indexed by property name
+var/global/list/chemical_reactions_filtered_list //List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
+var/global/list/chemical_reactions_list //List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.
+var/global/list/chemical_reagents_list //List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
+var/global/list/chemical_properties_list //List of all /datum/chem_property datums indexed by property name
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
 var/global/list/list/chemical_gen_classes_list = list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"tau" = list())
 //properties generated in chemicals, helps to make sure the same property doesn't show up 10 times
 GLOBAL_LIST_INIT_TYPED(generated_properties, /list, list("positive" = list(), "negative" = list(), "neutral" = list()))
 
-GLOBAL_LIST_INIT_TYPED(ammo_list, /datum/ammo, setup_ammo())					//List of all ammo types. Used by guns to tell the projectile how to act.
-GLOBAL_REFERENCE_LIST_INDEXED(joblist, /datum/job, title)					//List of all jobstypes, minus borg and AI
+GLOBAL_LIST_INIT_TYPED(ammo_list, /datum/ammo, setup_ammo()) //List of all ammo types. Used by guns to tell the projectile how to act.
+GLOBAL_REFERENCE_LIST_INDEXED(joblist, /datum/job, title) //List of all jobstypes, minus borg and AI
 
 /*Surgical lists.
 surgery_invasiveness_levels lists possible incision depths.
@@ -122,11 +150,11 @@ GLOBAL_LIST_INIT_TYPED(all_yautja_capes, /obj/item/clothing/yautja_cape, setup_y
 //Languages/species/whitelist.
 GLOBAL_LIST_INIT_TYPED(all_species, /datum/species, setup_species())
 GLOBAL_REFERENCE_LIST_INDEXED(all_languages, /datum/language, name)
-GLOBAL_LIST_INIT(language_keys, setup_language_keys())					//table of say codes for all languages
+GLOBAL_LIST_INIT(language_keys, setup_language_keys()) //table of say codes for all languages
 
 // Origins
 GLOBAL_REFERENCE_LIST_INDEXED(origins, /datum/origin, name)
-GLOBAL_LIST_INIT(player_origins, list(ORIGIN_USCM, ORIGIN_USCM_LUNA, ORIGIN_USCM_OTHER, ORIGIN_USCM_COLONY, ORIGIN_USCM_FOREIGN, ORIGIN_USCM_AW))
+GLOBAL_LIST_INIT(player_origins, USCM_ORIGINS)
 
 //Xeno mutators
 GLOBAL_REFERENCE_LIST_INDEXED_SORTED(xeno_mutator_list, /datum/xeno_mutator, name)
@@ -146,6 +174,12 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja()
 ))
 
+GLOBAL_LIST_INIT(xeno_evolve_times, setup_xeno_evolve_times())
+
+/proc/setup_xeno_evolve_times()
+	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
+		LAZYADDASSOCLIST(., num2text(initial(caste.minimum_evolve_time)), caste)
+
 GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())
 
 // Posters
@@ -153,17 +187,20 @@ GLOBAL_LIST_INIT(poster_designs, subtypesof(/datum/poster))
 
 //Preferences stuff
 	// Ethnicities
-GLOBAL_REFERENCE_LIST_INDEXED(ethnicities_list, /datum/ethnicity, name)			// Stores /datum/ethnicity indexed by name
+GLOBAL_REFERENCE_LIST_INDEXED(ethnicities_list, /datum/ethnicity, name) // Stores /datum/ethnicity indexed by name
 	// Body Types
-GLOBAL_REFERENCE_LIST_INDEXED(body_types_list, /datum/body_type, name)			// Stores /datum/body_type indexed by name
+GLOBAL_REFERENCE_LIST_INDEXED(body_types_list, /datum/body_type, name) // Stores /datum/body_type indexed by name
 	//Hairstyles
-GLOBAL_REFERENCE_LIST_INDEXED(hair_styles_list, /datum/sprite_accessory/hair, name)			//stores /datum/sprite_accessory/hair indexed by name
-GLOBAL_REFERENCE_LIST_INDEXED(facial_hair_styles_list, /datum/sprite_accessory/facial_hair, name)	//stores /datum/sprite_accessory/facial_hair indexed by name
+GLOBAL_REFERENCE_LIST_INDEXED(hair_styles_list, /datum/sprite_accessory/hair, name) //stores /datum/sprite_accessory/hair indexed by name
+GLOBAL_REFERENCE_LIST_INDEXED(facial_hair_styles_list, /datum/sprite_accessory/facial_hair, name) //stores /datum/sprite_accessory/facial_hair indexed by name
 GLOBAL_REFERENCE_LIST_INDEXED(hair_gradient_list, /datum/sprite_accessory/hair_gradient, name)
 GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/yautja_hair, name)
 
 	//Backpacks
 var/global/list/backbaglist = list("Backpack", "Satchel")
+	//Armor styles
+GLOBAL_LIST_INIT(armor_style_list, list("Padded" = 1, "Padless" = 2, "Ridged" = 3, "Carrier" = 4, "Skull" = 5, "Smooth" = 6, "Random"))
+
 // var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
 var/global/round_should_check_for_win = TRUE
 
@@ -216,22 +253,30 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 #undef HALF_EDGE_RIGHT
 #undef HALF_EDGE_LEFT
 
-#define cached_key_number_decode(key_number_data) cached_params_decode(key_number_data, /proc/key_number_decode)
-#define cached_number_list_decode(number_list_data) cached_params_decode(number_list_data, /proc/number_list_decode)
+GLOBAL_LIST_INIT(color_vars, list("color"))
 
-/proc/cached_params_decode(var/params_data, var/decode_proc)
+#define cached_key_number_decode(key_number_data) cached_params_decode(key_number_data, GLOBAL_PROC_REF(key_number_decode))
+#define cached_number_list_decode(number_list_data) cached_params_decode(number_list_data, GLOBAL_PROC_REF(number_list_decode))
+
+GLOBAL_LIST_INIT(typecache_mob, typecacheof(/mob))
+
+GLOBAL_LIST_INIT(typecache_living, typecacheof(/mob/living))
+
+GLOBAL_LIST_INIT(emote_list, init_emote_list())
+
+/proc/cached_params_decode(params_data, decode_proc)
 	. = paramslist_cache[params_data]
 	if(!.)
 		. = call(decode_proc)(params_data)
 		paramslist_cache[params_data] = .
 
-/proc/key_number_decode(var/key_number_data)
+/proc/key_number_decode(key_number_data)
 	var/list/L = params2list(key_number_data)
 	for(var/key in L)
 		L[key] = text2num(L[key])
 	return L
 
-/proc/number_list_decode(var/number_list_data)
+/proc/number_list_decode(number_list_data)
 	var/list/L = params2list(number_list_data)
 	for(var/i in 1 to L.len)
 		L[i] = text2num(L[i])
@@ -313,8 +358,8 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 		if(gap < 1)
 			gap = 1
 		for(var/i = 1; gap + i <= length(surgeries); i++)
-			var/datum/surgery/l = surgeries[i]		//Fucking hate
-			var/datum/surgery/r = surgeries[gap+i]	//how lists work here
+			var/datum/surgery/l = surgeries[i] //Fucking hate
+			var/datum/surgery/r = surgeries[gap+i] //how lists work here
 			if(l.priority < r.priority)
 				surgeries.Swap(i, gap + i)
 				swapped = 1
@@ -348,7 +393,7 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 	//faction event messages
 	var/list/custom_event_info_list = list()
 	var/datum/custom_event_info/CEI = new /datum/custom_event_info
-	CEI.faction = "Global"		//the old public one for whole server to see
+	CEI.faction = "Global" //the old public one for whole server to see
 	custom_event_info_list[CEI.faction] = CEI
 	for(var/T in FACTION_LIST_HUMANOID)
 		CEI = new /datum/custom_event_info
@@ -409,7 +454,7 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 		if(islist(chemical_reactions_filtered_list[reaction]))
 			var/list/L = chemical_reactions_filtered_list[reaction]
 			for(var/t in L)
-				. += "    has: [t]\n"
+				. += " has: [t]\n"
 	world << .
 */
 
@@ -437,3 +482,31 @@ var/global/list/available_specialist_kit_boxes = list(
 			"Scout" = 2,
 			"Demo" = 2,
 			)
+
+/proc/init_global_referenced_datums()
+	init_keybindings()
+	generate_keybind_ui_data()
+
+/proc/init_emote_list()
+	. = list()
+	for(var/path in subtypesof(/datum/emote))
+		var/datum/emote/E = new path()
+		if(E.key)
+			if(!.[E.key])
+				.[E.key] = list(E)
+			else
+				.[E.key] += E
+		else if(E.message) //Assuming all non-base emotes have this
+			stack_trace("Keyless emote: [E.type]")
+
+		if(E.key_third_person) //This one is optional
+			if(!.[E.key_third_person])
+				.[E.key_third_person] = list(E)
+			else
+				.[E.key_third_person] |= E
+
+GLOBAL_LIST_EMPTY(topic_tokens)
+GLOBAL_PROTECT(topic_tokens)
+
+GLOBAL_LIST_EMPTY(topic_commands)
+GLOBAL_PROTECT(topic_commands)

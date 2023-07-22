@@ -90,10 +90,6 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/reagent_container/hypospray/autoinjector/quickclot{
-	pixel_x = 3;
-	pixel_y = 3
-	},
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
@@ -192,6 +188,12 @@
 /obj/effect/landmark/crap_item,
 /obj/item/ammo_magazine/smg/m39/extended,
 /obj/item/weapon/gun/smg/m39,
+/obj/structure/machinery/door_control{
+	id = "secure_inner_blast";
+	name = "Secure Inner Doors";
+	pixel_x = 25;
+	pixel_y = 5
+	},
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -220,7 +222,7 @@
 	},
 /area/lv624/lazarus/armory)
 "B" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	locked = 1;
 	name = "\improper Nexus Dome Armory"
 	},
@@ -232,10 +234,10 @@
 /obj/structure/surface/rack,
 /obj/item/explosive/plastic,
 /obj/item/explosive/plastic,
-/obj/item/explosive/grenade/HE/PMC,
-/obj/item/explosive/grenade/HE/PMC,
-/obj/item/explosive/grenade/HE/PMC,
-/obj/item/explosive/grenade/HE/PMC,
+/obj/item/explosive/grenade/high_explosive/pmc,
+/obj/item/explosive/grenade/high_explosive/pmc,
+/obj/item/explosive/grenade/high_explosive/pmc,
+/obj/item/explosive/grenade/high_explosive/pmc,
 /obj/structure/machinery/door_control{
 	id = "garage_blast";
 	name = "Garage Shutters";

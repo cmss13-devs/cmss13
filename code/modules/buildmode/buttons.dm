@@ -17,7 +17,7 @@
 	icon_state = "buildmode_basic"
 	screen_loc = "NORTH,WEST"
 
-/atom/movable/screen/buildmode/mode/clicked(location, var/list/modifiers)
+/atom/movable/screen/buildmode/mode/clicked(location, list/modifiers)
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		bd.toggle_modeswitch()
 	else if(LAZYACCESS(modifiers, RIGHT_CLICK))
@@ -84,6 +84,7 @@
 	name = "Quit Buildmode"
 
 /atom/movable/screen/buildmode/quit/clicked(client/c)
+	message_admins("[key_name(c)] has left build mode.")
 	log_admin("[key_name(c)] has left build mode.")
 	bd.quit()
 	return TRUE

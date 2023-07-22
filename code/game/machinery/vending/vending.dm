@@ -1,96 +1,129 @@
-#define CAT_NORMAL 0
-#define CAT_HIDDEN 1
-#define CAT_COIN   2
+#define CAT_NORMAL list("name" = "", "icon" = "")
+#define CAT_HIDDEN list("name" = "Contraband", "icon" = "user-secret")
+#define CAT_COIN list("name" = "Premium", "icon" = "coins")
 
-#define VENDING_WIRE_EXTEND    1
-#define VENDING_WIRE_IDSCAN    2
-#define VENDING_WIRE_SHOCK     3
+#define VENDING_WIRE_EXTEND 1
+#define VENDING_WIRE_IDSCAN 2
+#define VENDING_WIRE_SHOCK 3
 #define VENDING_WIRE_SHOOT_INV 4
 
-#define	VEND_HAND	1
+#define VEND_HAND 1
 
 /datum/data/vending_product
 	var/product_name = "generic"
 	var/product_path = null
 	var/amount = 0
+	var/max_amount
 	var/price = 0
 	var/display_color = "white"
-	var/category = CAT_NORMAL
+	var/category
+
+GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending)
 
 /obj/structure/machinery/vending
-	name = "Vendomat"
+	name = "\improper Vendomat"
 	desc = "A generic vending machine."
 	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "generic"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	layer = BELOW_OBJ_LAYER
 
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
-	var/vend_power_usage = 150 //actuators and stuff
+	var/vend_power_usage = 150
 
-	var/active = 1 //No sales pitches if off!
-	var/delay_product_spawn // If set, uses sleep() in product spawn proc (mostly for seeds to retrieve correct names).
-	var/vend_ready = 1 //Are we ready to vend?? Is it time??
-	var/vend_delay = 10 //How long does it take to vend?
-	var/datum/data/vending_product/currently_vending = null // A /datum/data/vending_product instance of what we're paying for right now.
+	/// if false, the vendor will not send sales pitches
+	var/active = TRUE
+	/// if set, uses sleep() in product spawn proc (mostly for seeds to retrieve correct names).
+	var/delay_product_spawn
+	/// if the vendor can vend an item
+	var/vend_ready = TRUE
+	/// time delay between items can be vended
+	var/vend_delay = 1 SECONDS
+
+	// A /datum/data/vending_product instance of what we're paying for right now.
+	var/datum/data/vending_product/currently_vending = null
 
 	// To be filled out at compile time
-	var/list/products	= list() // For each, use the following pattern:
-	var/list/contraband	= list() // list(/type/path = amount,/type/path2 = amount2)
-	var/list/premium 	= list() // No specified amount = only one in stock
-	var/list/prices     = list() // Prices for each item, list(/type/path = price), items not in the list don't have a price.
+	var/list/products = list() // For each, use the following pattern:
+	var/list/contraband = list() // list(/type/path = amount, /type/path2 = amount2)
+	var/list/premium = list() // No specified amount = only one in stock
+	var/list/prices  = list() // Prices for each item, list(/type/path = price), items not in the list don't have a price.
 
-	var/product_slogans = "" //String of slogans separated by semicolons, optional
-	var/product_ads = "" //String of small ad messages in the vending screen - random chance
+	/// string of slogans separated by semicolons, optional
+	var/product_slogans = ""
+	/// string of small ad messages in the vending screen - random chance
+	var/product_ads = ""
+
+	/// Used to increase prices of a specific type of vendor.
+	var/product_type = VENDOR_PRODUCT_TYPE_UNDEF
+
 	var/list/product_records = list()
 	var/list/hidden_records = list()
 	var/list/coin_records = list()
 	var/list/slogan_list = list()
-	var/list/small_ads = list() // small ad messages in the vending screen - random chance of popping up whenever you open it
-	var/vend_reply //Thank you for shopping!
+
+	/// sent after vending an item
+	var/vend_reply
 	var/last_reply = 0
-	var/last_slogan = 0 //When did we last pitch?
-	var/slogan_delay = 600 //How long until we can pitch again?
-	var/icon_vend //Icon_state when vending!
-	var/icon_deny //Icon_state when vending!
-	var/seconds_electrified = 0 //Shock customers like an airlock.
-	var/shoot_inventory = FALSE //Fire items at customers! We're broken!
-	var/shut_up = 0 //Stop spouting those godawful pitches!
-	var/extended_inventory = 0 //can we access the hidden inventory?
-	var/panel_open = FALSE //Hacking that vending machine. Gonna get a free candy bar.
+	/// when did we last pitch?
+	var/last_slogan = 0
+	/// how long until we can pitch again?
+	var/slogan_delay = 600
+	/// icon_state when vending
+	var/icon_vend
+	/// icon_state when failing to vend
+	var/icon_deny
+	/// shock customers like an airlock.
+	var/seconds_electrified = 0
+	/// fire items at customers! We're broken!
+	var/shoot_inventory = FALSE
+	/// stop spouting those godawful pitches!
+	var/shut_up = FALSE
+	/// can we access the hidden inventory?
+	var/extended_inventory = FALSE
+	/// if the vendor is currently being hacked
+	var/panel_open = FALSE
 	var/wires = 15
 	var/obj/item/coin/coin
 	var/announce_hacked = TRUE
 
-	var/check_accounts = 0		// 1 = requires PIN and checks accounts.  0 = You slide an ID, it vends, SPACE COMMUNISM!
+	/// if true, checks the relevant account has enough money before vending
+	var/check_accounts = FALSE
 	var/obj/item/spacecash/ewallet/ewallet
 	var/is_tipped_over = FALSE
-	var/hacking_safety = 0 //1 = Will never shoot inventory or allow all access
+
+	/// if true, will never shoot inventory or allow all access
+	var/hacking_safety = FALSE
 	wrenchable = TRUE
 	var/vending_dir
 
 /obj/structure/machinery/vending/Initialize(mapload, ...)
 	. = ..()
-	src.slogan_list = splittext(src.product_slogans, ";")
+	LAZYADD(GLOB.total_vending_machines, src)
+	slogan_list = splittext(product_slogans, ";")
 
 	// So not all machines speak at the exact same time.
 	// The first time this machine says something will be at slogantime + this random value,
 	// so if slogantime is 10 minutes, it will say it at somewhere between 10 and 20 minutes after the machine is crated.
-	src.last_slogan = world.time + rand(0, slogan_delay)
+	last_slogan = world.time + rand(0, slogan_delay)
 
-	src.build_inventory(products)
+	build_inventory(products)
 		//Add hidden inventory
-	src.build_inventory(contraband, 1)
-	src.build_inventory(premium, 0, 1)
+	build_inventory(contraband, 1)
+	build_inventory(premium, 0, 1)
 	power_change()
 	start_processing()
+
+/obj/structure/machinery/vending/Destroy()
+	LAZYREMOVE(GLOB.total_vending_machines, src)
+	return ..()
 
 /obj/structure/machinery/vending/update_icon()
 	overlays.Cut()
 	if(panel_open)
-		overlays += image(src.icon, "[initial(icon_state)]-panel")
+		overlays += image(icon, "[initial(icon_state)]-panel")
 	if(stat & BROKEN)
 		icon_state = "[initial(icon_state)]-broken"
 	else if(stat & NOPOWER)
@@ -102,17 +135,17 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))
-				INVOKE_ASYNC(src, .proc/malfunction)
+				INVOKE_ASYNC(src, PROC_REF(malfunction))
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				INVOKE_ASYNC(src, .proc/malfunction)
+				INVOKE_ASYNC(src, PROC_REF(malfunction))
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 
 /obj/structure/machinery/vending/proc/select_gamemode_equipment(gamemode)
 	return
 
-/obj/structure/machinery/vending/proc/build_inventory(var/list/productlist,hidden=0,req_coin=0)
+/obj/structure/machinery/vending/proc/build_inventory(list/productlist, hidden = FALSE, req_coin = FALSE)
 
 	for(var/typepath in productlist)
 		var/amount = productlist[typepath]
@@ -120,30 +153,30 @@
 		if(isnull(amount)) amount = 1
 
 		var/obj/item/temp_path = typepath
-		var/datum/data/vending_product/R = new /datum/data/vending_product()
+		var/datum/data/vending_product/product = new /datum/data/vending_product()
 
-		R.product_path = typepath
-		R.amount = amount
-		R.price = price
+		product.product_path = typepath
+		product.amount = amount
+		product.price = price
+		product.max_amount = amount
 
-		if(ispath(typepath,/obj/item/weapon/gun) || ispath(typepath,/obj/item/ammo_magazine) || ispath(typepath,/obj/item/explosive/grenade) || ispath(typepath,/obj/item/weapon/gun/flamer) || ispath(typepath,/obj/item/storage) )
-			R.display_color = "black"
+		if(ispath(typepath, /obj/item/weapon/gun) || ispath(typepath, /obj/item/ammo_magazine) || ispath(typepath, /obj/item/explosive/grenade) || ispath(typepath, /obj/item/weapon/gun/flamer) || ispath(typepath, /obj/item/storage) )
+			product.display_color = "black"
 		else
-			R.display_color = "white"
+			product.display_color = "white"
 
 		if(hidden)
-			R.category=CAT_HIDDEN
-			hidden_records += R
+			product.category=CAT_HIDDEN
+			hidden_records += product
 		else if(req_coin)
-			R.category=CAT_COIN
-			coin_records += R
+			product.category=CAT_COIN
+			coin_records += product
 		else
-			R.category=CAT_NORMAL
-			product_records += R
+			product_records += product
 
-		R.product_name = initial(temp_path.name)
+		product.product_name = initial(temp_path.name)
 
-/obj/structure/machinery/vending/get_repair_move_text(var/include_name = TRUE)
+/obj/structure/machinery/vending/get_repair_move_text(include_name = TRUE)
 	if(!stat)
 		return
 
@@ -163,35 +196,35 @@
 	else
 		return "[nominative] is being affected by some power-related issue."
 
-/obj/structure/machinery/vending/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/vending/attackby(obj/item/item, mob/user)
 	if(is_tipped_over)
 		to_chat(user, "Tip it back upright first!")
 		return FALSE
 
-	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 		if(stat == WORKING)
-			src.panel_open = !src.panel_open
-			to_chat(user, "You [src.panel_open ? "open" : "close"] the maintenance panel.")
+			panel_open = !panel_open
+			to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
 			update_icon()
 			return TRUE
 		else if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
 		else if(stat & BROKEN)
-			to_chat(user, SPAN_NOTICE("You start to unscrew \the [src]'s broken panel."))
+			to_chat(user, SPAN_NOTICE("You start to unscrew the [src]'s broken panel."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
-				to_chat(user, SPAN_WARNING("You stop unscrewing \the [src]'s broken panel."))
+				to_chat(user, SPAN_WARNING("You stop unscrewing the [src]'s broken panel."))
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You unscrew \the [src]'s broken panel and remove it, exposing many broken wires."))
+			to_chat(user, SPAN_NOTICE("You unscrew the [src]'s broken panel and remove it, exposing many broken wires."))
 			stat &= ~BROKEN
 			stat |= REPAIR_STEP_ONE
 			return TRUE
 		else if(stat & REPAIR_STEP_FOUR)
-			to_chat(user, SPAN_NOTICE("You start to fasten \the [src]'s new panel."))
+			to_chat(user, SPAN_NOTICE("You start to fasten the [src]'s new panel."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
-				to_chat(user, SPAN_WARNING("You stop fastening \the [src]'s new panel."))
+				to_chat(user, SPAN_WARNING("You stop fastening the [src]'s new panel."))
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You fasten \the [src]'s new panel, fully repairing the vendor."))
+			to_chat(user, SPAN_NOTICE("You fasten the [src]'s new panel, fully repairing the vendor."))
 			stat &= ~REPAIR_STEP_FOUR
 			stat |= FULLY_REPAIRED
 			update_icon()
@@ -200,7 +233,7 @@
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return FALSE
-	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+	else if(HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
@@ -208,11 +241,11 @@
 			attack_hand(user)
 			return
 		else if(stat & REPAIR_STEP_ONE)
-			to_chat(user, SPAN_NOTICE("You start to remove \the [src]'s broken wires."))
+			to_chat(user, SPAN_NOTICE("You start to remove the [src]'s broken wires."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
-				to_chat(user, SPAN_WARNING("You stop removing \the [src]'s broken wires."))
+				to_chat(user, SPAN_WARNING("You stop removing the [src]'s broken wires."))
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken broken wires."))
+			to_chat(user, SPAN_NOTICE("You remove the [src]'s broken broken wires."))
 			stat &= ~REPAIR_STEP_ONE
 			stat |= REPAIR_STEP_TWO
 			return TRUE
@@ -220,22 +253,22 @@
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return FALSE
-	else if(istype(W, /obj/item/stack/cable_coil))
+	else if(istype(item, /obj/item/stack/cable_coil))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
-		var/obj/item/stack/cable_coil/CC = W
+		var/obj/item/stack/cable_coil/CC = item
 		if(stat & REPAIR_STEP_TWO)
 			if(CC.amount < 5)
 				to_chat(user, SPAN_WARNING("You need more cable coil to replace the removed wires."))
-			to_chat(user, SPAN_NOTICE("You start to replace \the [src]'s removed wires."))
+			to_chat(user, SPAN_NOTICE("You start to replace the [src]'s removed wires."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
-				to_chat(user, SPAN_WARNING("You stop replacing \the [src]'s removed wires."))
+				to_chat(user, SPAN_WARNING("You stop replacing the [src]'s removed wires."))
 				return FALSE
 			if(!CC || !CC.use(5))
 				to_chat(user, SPAN_WARNING("You need more cable coil to replace the removed wires."))
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken broken wires."))
+			to_chat(user, SPAN_NOTICE("You remove the [src]'s broken broken wires."))
 			stat &= ~REPAIR_STEP_TWO
 			stat |= REPAIR_STEP_THREE
 			return TRUE
@@ -243,20 +276,20 @@
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
-	else if(istype(W, /obj/item/stack/sheet/metal))
+	else if(istype(item, /obj/item/stack/sheet/metal))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
-		var/obj/item/stack/sheet/metal/M = W
+		var/obj/item/stack/sheet/metal/M = item
 		if(stat & REPAIR_STEP_THREE)
-			to_chat(user, SPAN_NOTICE("You start to construct a new panel for \the [src]."))
+			to_chat(user, SPAN_NOTICE("You start to construct a new panel for the [src]."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
-				to_chat(user, SPAN_WARNING("You stop constructing a new panel for \the [src]."))
+				to_chat(user, SPAN_WARNING("You stop constructing a new panel for the [src]."))
 				return FALSE
 			if(!M || !M.use(1))
 				to_chat(user, SPAN_WARNING("You a sheet of metal to construct a new panel."))
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You construct a new panel for \the [src]."))
+			to_chat(user, SPAN_NOTICE("You construct a new panel for the [src]."))
 			stat &= ~REPAIR_STEP_THREE
 			stat |= REPAIR_STEP_FOUR
 			return TRUE
@@ -264,56 +297,55 @@
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
-	else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	else if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
 		if(!wrenchable) return
 
 		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!src) return
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			switch (anchored)
 				if (0)
-					anchored = 1
-					user.visible_message("[user] tightens the bolts securing \the [src] to the floor.", "You tighten the bolts securing \the [src] to the floor.")
+					anchored = TRUE
+					user.visible_message("[user] tightens the bolts securing the [src] to the floor.", "You tighten the bolts securing the [src] to the floor.")
 				if (1)
-					user.visible_message("[user] unfastens the bolts securing \the [src] to the floor.", "You unfasten the bolts securing \the [src] to the floor.")
-					anchored = 0
+					user.visible_message("[user] unfastens the bolts securing the [src] to the floor.", "You unfasten the bolts securing the [src] to the floor.")
+					anchored = FALSE
 		return
-	else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
-		if(src.panel_open)
+	else if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
+		if(panel_open)
 			attack_hand(user)
 		return
-	else if(istype(W, /obj/item/coin))
-		if(user.drop_inv_item_to_loc(W, src))
-			coin = W
-			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
-			ui_interact(user)
+	else if(istype(item, /obj/item/coin))
+		if(coin)
+			user.balloon_alert(user, "already a coin!")
+			return
+		if(user.drop_inv_item_to_loc(item, src))
+			coin = item
+			to_chat(user, SPAN_NOTICE(" You insert the [item] into the [src]"))
+			tgui_interact(user)
 		return
-	else if(istype(W, /obj/item/card))
-		var/obj/item/card/I = W
-		scan_card(I)
-		ui_interact(user)
-		return
-	else if (istype(W, /obj/item/spacecash/ewallet))
-		if(user.drop_inv_item_to_loc(W, src))
-			ewallet = W
-			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
-			ui_interact(user)
+	else if(istype(item, /obj/item/spacecash))
+		if(inoperable())
+			return
+		user.set_interaction(src)
+		if(seconds_electrified && shock(user, 100))
+			return
+		tgui_interact(user)
 		return
 
 	..()
 
-/obj/structure/machinery/vending/proc/scan_card(var/obj/item/card/I)
+/obj/structure/machinery/vending/proc/scan_card(obj/item/card/card)
 	if(!currently_vending) return
-	if (istype(I, /obj/item/card/id))
-		var/obj/item/card/id/C = I
+	if (istype(card, /obj/item/card/id))
 		visible_message(SPAN_INFO("[usr] swipes a card through [src]."))
-		var/datum/money_account/CH = get_account(C.associated_account_number)
+		var/datum/money_account/CH = get_account(card.associated_account_number)
 		if (CH) // Only proceed if card contains proper account number.
 			if(!CH.suspended)
 				if(CH.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
 					if(vendor_account)
 						var/attempt_pin = tgui_input_number(usr, "Enter pin code", "Vendor transaction")
-						var/datum/money_account/D = attempt_account_access(C.associated_account_number, attempt_pin, 2)
+						var/datum/money_account/D = attempt_account_access(card.associated_account_number, attempt_pin, 2)
 						transfer_and_vend(D)
 					else
 						to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Unable to access account. Check security settings and try again.")]")
@@ -325,7 +357,7 @@
 		else
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Error: Unable to access your account. Please contact technical support if problem persists.")]")
 
-/obj/structure/machinery/vending/proc/transfer_and_vend(var/datum/money_account/acc)
+/obj/structure/machinery/vending/proc/transfer_and_vend(datum/money_account/acc)
 	if(acc)
 		var/transaction_amount = currently_vending.price
 		if(transaction_amount <= acc.money)
@@ -336,13 +368,13 @@
 
 			//create entries in the two account transaction logs
 			var/datum/transaction/T = new()
-			T.target_name = "[vendor_account.owner_name] (via [src.name])"
+			T.target_name = "[vendor_account.owner_name] (via [name])"
 			T.purpose = "Purchase of [currently_vending.product_name]"
 			if(transaction_amount > 0)
 				T.amount = "([transaction_amount])"
 			else
 				T.amount = "[transaction_amount]"
-			T.source_terminal = src.name
+			T.source_terminal = name
 			T.date = current_date_string
 			T.time = worldtime2text()
 			acc.transaction_log.Add(T)
@@ -351,22 +383,22 @@
 			T.target_name = acc.owner_name
 			T.purpose = "Purchase of [currently_vending.product_name]"
 			T.amount = "[transaction_amount]"
-			T.source_terminal = src.name
+			T.source_terminal = name
 			T.date = current_date_string
 			T.time = worldtime2text()
 			vendor_account.transaction_log.Add(T)
 
 			// Vend the item
-			src.vend(src.currently_vending, usr)
+			vend(currently_vending, usr)
 			currently_vending = null
 		else
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("You don't have that much money!")]")
 	else
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Error: Unable to access your account. Please contact technical support if problem persists.")]")
 
-/obj/structure/machinery/vending/proc/GetProductIndex(var/datum/data/vending_product/P)
+/obj/structure/machinery/vending/proc/GetProductIndex(datum/data/vending_product/product)
 	var/list/plist
-	switch(P.category)
+	switch(product.category)
 		if(CAT_NORMAL)
 			plist=product_records
 		if(CAT_HIDDEN)
@@ -374,10 +406,10 @@
 		if(CAT_COIN)
 			plist=coin_records
 		else
-			warning("UNKNOWN CATEGORY [P.category] IN TYPE [P.product_path] INSIDE [type]!")
-	return plist.Find(P)
+			warning("UNKNOWN CATEGORY [product.category] IN TYPE [product.product_path] INSIDE [type]!")
+	return plist.Find(product)
 
-/obj/structure/machinery/vending/proc/GetProductByID(var/pid, var/category)
+/obj/structure/machinery/vending/proc/GetProductByID(pid, category)
 	switch(category)
 		if(CAT_NORMAL)
 			return product_records[pid]
@@ -393,9 +425,9 @@
 	if(is_tipped_over)
 		if(user.action_busy)
 			return
-		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place.."))
+		user.visible_message(SPAN_NOTICE("[user] begins to heave the [src] back into place!"), SPAN_NOTICE("You start heaving the [src] back into place..."))
 		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_NOTICE("[user] rights the [src]!"),SPAN_NOTICE("You right the [src]!"))
+			user.visible_message(SPAN_NOTICE("[user] rights the [src]!"), SPAN_NOTICE("You right the [src]!"))
 			flip_back()
 		return
 
@@ -404,206 +436,369 @@
 
 	user.set_interaction(src)
 
-	if(src.seconds_electrified != 0)
-		if(shock(user, 100))
+	if(seconds_electrified && shock(user, 100))
+		return
+
+	tgui_interact(user)
+
+/obj/structure/machinery/vending/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Vending", name)
+		ui.open()
+
+/obj/structure/machinery/vending/ui_act(action, params)
+	. = ..()
+
+	var/mob/user = usr
+
+	if(.)
+		return
+	switch(action)
+		if("vend")
+			. = vend(params)
+		if("cutwire")
+			if(!panel_open)
+				return FALSE
+			var/obj/item/held_item = user.get_held_item()
+			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
+				to_chat(user, "You need some wirecutters!")
+				return TRUE
+
+			var/wire = params["wire"]
+			cut(wire)
+			return TRUE
+		if("fixwire")
+			if(!panel_open)
+				return FALSE
+			var/obj/item/held_item = user.get_held_item()
+			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
+				to_chat(user, "You need some wirecutters!")
+				return TRUE
+			var/wire = params["wire"]
+			mend(wire)
+			return TRUE
+		if("pulsewire")
+			if(!panel_open)
+				return FALSE
+			var/obj/item/held_item = user.get_held_item()
+			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
+				to_chat(user, "You need a multitool!")
+				return TRUE
+			var/wire = params["wire"]
+			if (isWireCut(wire))
+				to_chat(usr, "You can't pulse a cut wire.")
+				return TRUE
+			pulse(wire)
+			return TRUE
+
+/obj/structure/machinery/vending/proc/can_vend(user, silent=FALSE)
+	. = FALSE
+	if(!vend_ready)
+		return
+	if(panel_open)
+		to_chat(user, SPAN_WARNING("The vending machine cannot dispense products while its service panel is open!"))
+		return
+	return TRUE
+
+/obj/structure/machinery/vending/proc/vend(list/params)
+	var/mob/user = usr
+
+	. = TRUE
+	if(!can_vend(user))
+		return
+	vend_ready = FALSE //One thing at a time!!
+	var/datum/data/vending_product/record = locate(params["ref"])
+	var/list/record_to_check = product_records + coin_records
+	if(extended_inventory)
+		record_to_check = product_records + coin_records + hidden_records
+	if(!record || !istype(record) || !record.product_path)
+		vend_ready = TRUE
+		return
+	var/price_to_use = record.price
+	if(record in hidden_records)
+		if(!extended_inventory)
+			vend_ready = TRUE
+			return
+	else if(!(record in record_to_check))
+		vend_ready = TRUE
+		message_admins("Vending machine exploit attempted by [key_name_admin(user)]!")
+		return
+	if(record.amount <= 0)
+		speak("Sold out of [record.name].")
+		flick(icon_deny, src)
+		vend_ready = TRUE
+		return
+
+	if(coin_records.Find(record))
+		if(!coin)
+			speak("Coin required.")
+			vend_ready = TRUE
+			return
+		if(coin.string_attached)
+			if(prob(50))
+				to_chat(user, SPAN_NOTICE("You successfully pull the coin out before the [src] could swallow it."))
+				user.put_in_hands(coin)
+			else
+				to_chat(user, SPAN_NOTICE("You weren't able to pull the coin out fast enough, the machine ate it, string and all."))
+				QDEL_NULL(coin)
+		else
+			QDEL_NULL(coin)
+
+	// The checking_id() proc is currently determining whether to pay or not, not exactly just ID
+	// So lets treat cash like an alternative ID for these greedy machines
+	var/sufficent_cash = FALSE
+	var/ripped_off = FALSE
+	var/obj/item/spacecash/cash = user.get_active_hand()
+	if(!istype(cash))
+		cash = user.get_inactive_hand()
+	if(istype(cash))
+		sufficent_cash = cash.worth >= price_to_use
+
+	var/obj/item/card/id/user_id
+	if(checking_id())
+		if(ishuman(user))
+			var/mob/living/carbon/human/human_user = user
+			user_id = human_user.get_idcard()
+
+		if(!allowed(user))
+			speak("Access denied.")
+			flick(icon_deny, src)
+			vend_ready = TRUE
 			return
 
-	ui_interact(user)
+		if(!user_id && !sufficent_cash)
+			speak("No card found.")
+			flick(icon_deny, src)
+			vend_ready = TRUE
+			return
 
-/obj/structure/machinery/vending/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+		if(price_to_use)
+			var/datum/money_account/account
+			if(user_id)
+				account = get_account(user_id.associated_account_number)
 
-	var/list/display_list = list()
-	var/list/display_records = list()
-	display_records += product_records
-	if(extended_inventory)
-		display_records += hidden_records
-	if(coin)
-		display_records += coin_records
-	for (var/datum/data/vending_product/R in display_records)
-		var/prodname = adminscrub(R.product_name)
-		if(R.amount) prodname += ": [R.amount]"
-		else prodname += ": SOLD OUT"
-		if(R.price) prodname += " (Price: [R.price])"
-		prodname = "<color = [R.display_color]>[prodname]</color>"
-		display_list += list(list("product_name" = prodname, "product_color" = R.display_color, "amount" = R.amount, "prod_index" = GetProductIndex(R), "prod_cat" = R.category))
+			if(!account && !sufficent_cash)
+				speak("No account found.")
+				flick(icon_deny, src)
+				vend_ready = TRUE
+				return
 
-	var/list/data = list(
-		"vendor_name" = name,
-		"panel_open" = panel_open,
-		"currently_vending_name" = currently_vending ? sanitize(currently_vending.product_name) : null,
-		"premium_length" = premium.len,
-		"ewallet" = ewallet ? ewallet.name : null,
-		"ewallet_worth" = ewallet ? ewallet.worth : null,
-		"coin" = coin ? coin.name : null,
-		"displayed_records" = display_list,
-		"wires" = null
-	)
+			if(!account || !transfer_money(account, record))
+				if (!sufficent_cash)
+					speak("You do not possess the funds to purchase [record.product_name].")
+					flick(icon_deny, src)
+					vend_ready = TRUE
+					return
+
+				insert_money(cash, record)
+				if(cash.worth && !istype(cash, /obj/item/spacecash/ewallet))
+					qdel(cash)
+					ripped_off = TRUE
+
+	speak(vend_reply)
+	use_power(active_power_usage)
+	if(icon_vend) //Show the vending animation if needed
+		flick(icon_vend, src)
+	var/obj/item/vended_item
+	vended_item = new record.product_path(get_turf(src))
+	record.amount--
+	playsound(src, "sound/machines/vending.ogg", 40, TRUE)
+	if(user.Adjacent(src) && user.put_in_hands(vended_item))
+		to_chat(user, SPAN_NOTICE("You take \the [record.product_name] out of the slot."))
+	else
+		to_chat(user, SPAN_WARNING("\The [record.product_name] falls onto the floor!"))
+	if(ripped_off)
+		flick(icon_deny, src)
+		addtimer(VARSET_CALLBACK(src, vend_ready, TRUE), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(speak), "Insufficient change. Please contact a supervisor."), 1 SECONDS)
+		return
+	vend_ready = TRUE
+
+/obj/structure/machinery/vending/proc/transfer_money(datum/money_account/user_account, datum/data/vending_product/currently_vending)
+	var/transaction_amount = currently_vending.price
+	if(!(transaction_amount <= user_account.money))
+		return FALSE
+
+	if(user_account.suspended || user_account.security_level != 0)
+		return FALSE
+
+	//transfer the money
+	user_account.money -= transaction_amount
+	vendor_account.money += transaction_amount
+
+	//create entries in the two account transaction logs
+	var/datum/transaction/new_transaction = new()
+	new_transaction.target_name = "[vendor_account.owner_name] (via [name])"
+	new_transaction.purpose = "Purchase of [currently_vending.product_name]"
+	if(transaction_amount > 0)
+		new_transaction.amount = "([transaction_amount])"
+	else
+		new_transaction.amount = "[transaction_amount]"
+	new_transaction.source_terminal = name
+	new_transaction.date = current_date_string
+	new_transaction.time = worldtime2text()
+	user_account.transaction_log.Add(new_transaction)
+
+	new_transaction = new()
+	new_transaction.target_name = user_account.owner_name
+	new_transaction.purpose = "Purchase of [currently_vending.product_name]"
+	new_transaction.amount = "[transaction_amount]"
+	new_transaction.source_terminal = name
+	new_transaction.date = current_date_string
+	new_transaction.time = worldtime2text()
+	vendor_account.transaction_log.Add(new_transaction)
+
+	return TRUE
+
+/obj/structure/machinery/vending/proc/insert_money(obj/item/spacecash/cash, datum/data/vending_product/currently_vending)
+	var/transaction_amount = currently_vending.price
+	if(transaction_amount > cash.worth)
+		return FALSE
+
+	//transfer the money
+	cash.worth -= transaction_amount
+	vendor_account.money += transaction_amount
+
+	//consume the cash if needed
+	if(!cash.worth)
+		qdel(cash)
+
+	//create entries in the account transaction logs
+	var/datum/transaction/new_transaction = new()
+	new_transaction.target_name = "CASH"
+	new_transaction.purpose = "Purchase of [currently_vending.product_name]"
+	new_transaction.amount = "[transaction_amount]"
+	new_transaction.source_terminal = name
+	new_transaction.date = current_date_string
+	new_transaction.time = worldtime2text()
+	vendor_account.transaction_log.Add(new_transaction)
+
+	return TRUE
+
+/**
+ * Returns TRUE if this vending machine is scanning for IDs.
+ */
+/obj/structure/machinery/vending/proc/checking_id()
+	if(hacking_safety)
+		return TRUE
+
+	if(isWireCut(VENDING_WIRE_IDSCAN))
+		return FALSE
+
+	return TRUE
+
+/obj/structure/machinery/vending/ui_data(mob/user)
+	. = list()
+	var/obj/item/card/id/id_card
+	var/datum/money_account/account
+	if(ishuman(user))
+		var/mob/living/carbon/human/human_user = user
+		id_card = human_user.get_idcard()
+		if(id_card)
+			account = get_account(id_card.associated_account_number)
+
+	var/cash_worth
+	var/obj/item/spacecash/cash = user.get_active_hand()
+	if(!istype(cash))
+		cash = user.get_inactive_hand()
+	if(istype(cash))
+		cash_worth = cash.worth
+
+	if(account)
+		.["user"] = list()
+		.["user"]["name"] = account.owner_name
+		.["user"]["cash"] = max(account.money, cash_worth)
+		.["user"]["job"] =  id_card.assignment
+	else if(cash_worth)
+		.["user"] = list()
+		.["user"]["name"] = ""
+		.["user"]["cash"] = cash.worth
+		.["user"]["job"] =  ""
+	else
+		.["user"] = null
+
+	.["stock"] = list()
+	for (var/datum/data/vending_product/product_record in product_records + coin_records + hidden_records)
+		var/list/product_data = list(
+			name = product_record.product_name,
+			amount = product_record.amount,
+		)
+
+		.["stock"][product_record.product_name] = product_data
+
+	.["extended_inventory"] = extended_inventory
 
 	var/list/wire_descriptions = get_wire_descriptions()
 	var/list/panel_wires = list()
 	for(var/wire = 1 to wire_descriptions.len)
 		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
 
-	if(panel_wires.len)
-		data["wires"] = panel_wires
+	.["electrical"] = list(
+		"electrified" = seconds_electrified > 0,
+		"panel_open" = panel_open,
+		"wires" = panel_wires,
+		"shoot_inventory" = shoot_inventory,
+		"powered" = TRUE,
+	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	.["checking_id"] = checking_id()
 
-	if (!ui)
-		ui = new(user, src, ui_key, "vending_machine.tmpl", name , 450, 600)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(0)
+	.["access"] = allowed(user)
 
-/obj/structure/machinery/vending/Topic(href, href_list)
-	. = ..()
-	if(.)
-		return
-	if(inoperable())
-		return
-	if(usr.is_mob_incapacitated())
-		return
+/obj/structure/machinery/vending/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
-	if(href_list["remove_coin"] && !istype(usr,/mob/living/silicon))
-		if(!coin)
-			to_chat(usr, "There is no coin in this machine.")
-			return
+/obj/structure/machinery/vending/ui_static_data(mob/user)
+	var/list/data = list()
+	data["product_records"] = list()
 
-		coin.forceMove(src.loc)
-		if(!usr.get_active_hand())
-			usr.put_in_hands(coin)
-		to_chat(usr, SPAN_NOTICE(" You remove the [coin] from the [src]"))
-		coin = null
+	var/list/categories = list()
 
-	if(href_list["remove_ewallet"] && !istype(usr,/mob/living/silicon))
-		if (!ewallet)
-			to_chat(usr, "There is no charge card in this machine.")
-			return
-		ewallet.forceMove(src.loc)
-		if(!usr.get_active_hand())
-			usr.put_in_hands(ewallet)
-		to_chat(usr, SPAN_NOTICE(" You remove the [ewallet] from the [src]"))
-		ewallet = null
+	data["product_records"] = collect_records_for_static_data(product_records, categories)
+	data["coin_records"] = collect_records_for_static_data(coin_records, categories, premium = TRUE)
+	data["hidden_records"] = collect_records_for_static_data(hidden_records, categories, premium = TRUE)
+	data["categories"] = categories
 
-	if (isRemoteControlling(usr) || (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
-		usr.set_interaction(src)
-		if ((href_list["vend"]) && vend_ready && !currently_vending)
+	return data
 
-			if(!allowed(usr) && (wires & VENDING_WIRE_IDSCAN || hacking_safety)) //For SECURE VENDING MACHINES YEAH. Hacking safety always prevents bypassing emag or access
-				to_chat(usr, SPAN_WARNING("Access denied.")) //Unless emagged of course
-				flick(src.icon_deny,src)
-				return
+/obj/structure/machinery/vending/proc/collect_records_for_static_data(list/records, list/categories, premium)
+	var/static/list/default_category = list(
+		"name" = "Products",
+		"icon" = "cart-shopping",
+	)
 
-			var/idx=text2num(href_list["vend"])
-			var/cat=text2num(href_list["cat"])
+	var/list/out_records = list()
 
-			var/datum/data/vending_product/R = GetProductByID(idx,cat)
-			if (!R || !istype(R) || !R.product_path || R.amount <= 0)
-				return
+	for (var/datum/data/vending_product/record as anything in records)
+		var/list/static_record = list(
+			path = replacetext(replacetext("[record.product_path]", "/obj/item/", ""), "/", "-"),
+			name = record.product_name,
+			price = record.price,
+			max_amount = record.max_amount,
+			ref = REF(record),
+		)
 
-			if(R.price == null)
-				src.vend(R, usr)
-			else
-				if (ewallet)
-					if (R.price <= ewallet.worth)
-						ewallet.worth -= R.price
-						src.vend(R, usr)
-					else
-						to_chat(usr, SPAN_DANGER("The ewallet doesn't have enough money to pay for that."))
-						src.currently_vending = R
-						ui_interact(usr)
+		var/list/category = record.category || default_category
+		if (!isnull(category))
+			if (!(category["name"] in categories))
+				categories[category["name"]] = list(
+					"icon" = category["icon"],
+				)
 
-				else
-					src.currently_vending = R
-					ui_interact(usr)
+			static_record["category"] = category["name"]
 
-			return
+		if (premium)
+			static_record["premium"] = TRUE
 
-		else if (href_list["cancel_buying"])
-			src.currently_vending = null
-			ui_interact(usr)
-			return
+		out_records += list(static_record)
 
-		else if ((href_list["cutwire"]) && (src.panel_open))
-			var/wire = text2num(href_list["cutwire"])
+	return out_records
 
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
-				return 0
+/obj/structure/machinery/vending/ui_assets(mob/user)
+	return list(get_asset_datum(/datum/asset/spritesheet/vending))
 
-			var/obj/item/held_item = usr.get_held_item()
-			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(usr, "You need wirecutters!")
-				return
-
-			if (src.isWireCut(wire))
-				src.mend(wire)
-			else
-				src.cut(wire)
-
-			if(announce_hacked && is_mainship_level(z))
-				announce_hacked = FALSE
-				SSclues.create_print(get_turf(usr), usr, "The fingerprint contains oil and wire pieces.")
-
-		else if ((href_list["pulsewire"]) && (src.panel_open))
-			var/wire = text2num(href_list["pulsewire"])
-
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
-				return 0
-
-			var/obj/item/held_item = usr.get_held_item()
-			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-				to_chat(usr, "You need a multitool!")
-				return
-
-			if (src.isWireCut(wire))
-				to_chat(usr, "You can't pulse a cut wire.")
-				return
-			else
-				src.pulse(wire)
-
-		else if ((href_list["togglevoice"]) && (src.panel_open))
-			src.shut_up = !src.shut_up
-
-		src.add_fingerprint(usr)
-		return 1
-	else
-		close_browser(usr, "window=vending")
-
-
-/obj/structure/machinery/vending/proc/vend(datum/data/vending_product/R, mob/user)
-	if(!allowed(user) && (wires & VENDING_WIRE_IDSCAN || hacking_safety)) //For SECURE VENDING MACHINES YEAH
-		to_chat(user, SPAN_WARNING("Access denied.")) //Unless emagged of course
-		flick(src.icon_deny,src)
-		return
-
-	if (R in coin_records)
-		if(!coin)
-			to_chat(user, SPAN_NOTICE(" You need to insert a coin to get this item."))
-			return
-		if(coin.string_attached)
-			if(prob(50))
-				to_chat(user, SPAN_NOTICE(" You successfully pull the coin out before the [src] could swallow it."))
-			else
-				to_chat(user, SPAN_NOTICE(" You weren't able to pull the coin out fast enough, the machine ate it, string and all."))
-				QDEL_NULL(coin)
-		else
-			QDEL_NULL(coin)
-
-	vend_ready = 0 //One thing at a time!!
-	R.amount--
-
-	if(((src.last_reply + (src.vend_delay + 200)) <= world.time) && src.vend_reply)
-		spawn(0)
-			src.speak(src.vend_reply)
-			src.last_reply = world.time
-
-
-	release_item(R, vend_delay, user)
-	vend_ready = 1
-
-/obj/structure/machinery/vending/proc/release_item(var/datum/data/vending_product/R, var/delay_vending = 0, var/mob/living/carbon/human/user)
+/obj/structure/machinery/vending/proc/release_item(datum/data/vending_product/product, delay_vending = 0, mob/living/carbon/human/user)
 	set waitfor = 0
 
 	//We interact with the UI only if a user is present
@@ -612,18 +807,18 @@
 		ui_interact(user)
 
 	if (delay_vending)
-		use_power(vend_power_usage)	//actuators and stuff
+		use_power(vend_power_usage) //actuators and stuff
 		if (icon_vend)
-			flick(icon_vend,src) //Show the vending animation if needed
+			flick(icon_vend, src) //Show the vending animation if needed
 		sleep(delay_vending)
 	if (vending_dir == VEND_HAND && istype(user) && Adjacent(user))
-		user.put_in_hands(new R.product_path)
-	else if (ispath(R.product_path,/obj/item/weapon/gun))
-		. = new R.product_path(get_turf(src), 1)
+		user.put_in_hands(new product.product_path)
+	else if (ispath(product.product_path, /obj/item/weapon/gun))
+		. = new product.product_path(get_turf(src), 1)
 	else
-		. = new R.product_path(get_turf(src))
+		. = new product.product_path(get_turf(src))
 
-/obj/structure/machinery/vending/MouseDrop_T(var/atom/movable/A, mob/user)
+/obj/structure/machinery/vending/MouseDrop_T(atom/movable/A, mob/user)
 
 	if(inoperable())
 		return
@@ -635,48 +830,48 @@
 		return
 
 	if(istype(A, /obj/item))
-		var/obj/item/I = A
-		stock(I, user)
+		var/obj/item/item = A
+		stock(item, user)
 		ui_interact(user)
 
 /obj/structure/machinery/vending/proc/stock(obj/item/item_to_stock, mob/user)
-	var/datum/data/vending_product/R //Let's try with a new datum.
-	 //More accurate comparison between absolute paths.
-	for(R in (product_records + hidden_records + coin_records))
-		if(item_to_stock.type == R.product_path && !istype(item_to_stock,/obj/item/storage)) //Nice try, specialists/engis
+	var/datum/data/vending_product/product //Let's try with a new datum.
+	//More accurate comparison between absolute paths.
+	for(product in (product_records + hidden_records + coin_records))
+		if(item_to_stock.type == product.product_path && !istype(item_to_stock, /obj/item/storage)) //Nice try, specialists/engis
 			if(isgun(item_to_stock))
-				var/obj/item/weapon/gun/G = item_to_stock
-				if(G.in_chamber || (G.current_mag && !istype(G.current_mag, /obj/item/ammo_magazine/internal)) || (istype(G.current_mag, /obj/item/ammo_magazine/internal) && G.current_mag.current_rounds > 0) )
-					to_chat(user, SPAN_WARNING("[G] is still loaded. Unload it before you can restock it."))
+				var/obj/item/weapon/gun/gun = item_to_stock
+				if(gun.in_chamber || (gun.current_mag && !istype(gun.current_mag, /obj/item/ammo_magazine/internal)) || (istype(gun.current_mag, /obj/item/ammo_magazine/internal) && gun.current_mag.current_rounds > 0) )
+					to_chat(user, SPAN_WARNING("\The [gun] is still loaded. Unload it before you can restock it."))
 					return
-				for(var/obj/item/attachable/A in G.contents) //Search for attachments on the gun. This is the easier method
-					if((A.flags_attach_features & ATTACH_REMOVABLE) && !(is_type_in_list(A, G.starting_attachment_types))) //There are attachments that are default and others that can't be removed
-						to_chat(user, SPAN_WARNING("[G] has non-standard attachments equipped. Detach them before you can restock it."))
+				for(var/obj/item/attachable/attach in gun.contents) //Search for attachments on the gun. This is the easier method
+					if((attach.flags_attach_features & ATTACH_REMOVABLE) && !(is_type_in_list(attach, gun.starting_attachment_types))) //There are attachments that are default and others that can't be removed
+						to_chat(user, SPAN_WARNING("\The [gun] has non-standard attachments equipped. Detach them before you can restock it."))
 						return
 
 			if(istype(item_to_stock, /obj/item/ammo_magazine))
-				var/obj/item/ammo_magazine/A = item_to_stock
-				if(A.current_rounds < A.max_rounds)
-					to_chat(user, SPAN_WARNING("[A] isn't full. Fill it before you can restock it."))
+				var/obj/item/ammo_magazine/mag = item_to_stock
+				if(mag.current_rounds < mag.max_rounds)
+					to_chat(user, SPAN_WARNING("\The [mag] isn't full. Fill it before you can restock it."))
 					return
-			if(istype(item_to_stock,/obj/item/device/walkman))
-				var/obj/item/device/walkman/W = item_to_stock
-				if(W.tape)
-					to_chat(user,SPAN_WARNING("Remove the tape first!"))
+			if(istype(item_to_stock, /obj/item/device/walkman))
+				var/obj/item/device/walkman/item = item_to_stock
+				if(item.tape)
+					to_chat(user, SPAN_WARNING("Remove the tape first!"))
 					return
 
 			if(istype(item_to_stock, /obj/item/device/defibrillator))
-				var/obj/item/device/defibrillator/D = item_to_stock
-				if(!D.dcell)
+				var/obj/item/device/defibrillator/defib = item_to_stock
+				if(!defib.dcell)
 					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs a cell in it to be restocked!"))
 					return
-				if(D.dcell.charge < D.dcell.maxcharge)
+				if(defib.dcell.charge < defib.dcell.maxcharge)
 					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
 					return
 
 			if(istype(item_to_stock, /obj/item/cell))
-				var/obj/item/cell/C = item_to_stock
-				if(C.charge < C.maxcharge)
+				var/obj/item/cell/cell = item_to_stock
+				if(cell.charge < cell.maxcharge)
 					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
 					return
 
@@ -690,47 +885,47 @@
 				S.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
-			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R.product_name]."),
-			SPAN_NOTICE("You stock [src] with \a [R.product_name]."))
-			R.amount++
+			user.visible_message(SPAN_NOTICE("[user] stocks the [src] with \a [product.product_name]."),
+			SPAN_NOTICE("You stock the [src] with \a [product.product_name]."))
+			product.amount++
 			return //We found our item, no reason to go on.
 
 /obj/structure/machinery/vending/process()
 	if(inoperable())
 		return
 
-	if(!src.active)
+	if(!active)
 		return
 
-	if(src.seconds_electrified > 0)
-		src.seconds_electrified--
+	if(seconds_electrified > 0)
+		seconds_electrified--
 
 	//Pitch to the people!  Really sell it!
-	if(((src.last_slogan + src.slogan_delay) <= world.time) && (src.slogan_list.len > 0) && (!src.shut_up) && prob(5))
-		var/slogan = pick(src.slogan_list)
-		src.speak(slogan)
-		src.last_slogan = world.time
+	if(((last_slogan + slogan_delay) <= world.time) && (slogan_list.len > 0) && (!shut_up) && prob(5))
+		var/slogan = pick(slogan_list)
+		speak(slogan)
+		last_slogan = world.time
 
-	if(src.shoot_inventory && prob(2) && !hacking_safety)
-		src.throw_item()
+	if(shoot_inventory && prob(2) && !hacking_safety)
+		throw_item()
 
 	return
 
-/obj/structure/machinery/vending/proc/speak(var/message)
+/obj/structure/machinery/vending/proc/speak(message)
 	if(stat & NOPOWER)
 		return
 
 	if (!message)
 		return
 
-	for(var/mob/O in hearers(src, null))
-		O.show_message("<span class='game say'><span class='name'>[src]</span> beeps, \"[message]\"</span>",2)
+	for(var/mob/mob in hearers(src, null))
+		mob.show_message("<span class='game say'><span class='name'>[src]</span> beeps, \"[message]\"</span>", SHOW_MESSAGE_AUDIBLE)
 	return
 
 /obj/structure/machinery/vending/power_change()
 	..()
 	if(stat & NOPOWER)
-		addtimer(CALLBACK(src, .proc/update_icon), rand(1, 15))
+		addtimer(CALLBACK(src, PROC_REF(update_icon)), rand(1, 15))
 		return
 	update_icon()
 
@@ -738,17 +933,17 @@
 /obj/structure/machinery/vending/proc/malfunction()
 	if(stat & BROKEN)
 		return
-	var/release_amt = rand(3,4)
-	for(var/datum/data/vending_product/R in src.product_records)
-		if (R.amount <= 0) //Try to use a record that actually has something to dump.
+	var/release_amt = rand(3, 4)
+	for(var/datum/data/vending_product/product in product_records)
+		if (product.amount <= 0) //Try to use a record that actually has something to dump.
 			continue
-		var/dump_path = R.product_path
+		var/dump_path = product.product_path
 		if (!dump_path)
 			continue
 
-		while(R.amount > 0 && release_amt > 0)
-			release_item(R, 0)
-			R.amount--
+		while(product.amount > 0 && release_amt > 0)
+			release_item(product, 0)
+			product.amount--
 			release_amt--
 		break
 	stat |= BROKEN
@@ -758,76 +953,77 @@
 //Somebody cut an important wire and now we're following a new definition of "pitch."
 /obj/structure/machinery/vending/proc/throw_item()
 	var/obj/throw_item = null
-	var/mob/living/target = locate() in view(7,src)
+	var/mob/living/target = locate() in view(7, src)
 	if(!target)
 		return 0
 
-	for(var/datum/data/vending_product/R in product_records)
-		if (R.amount <= 0) //Try to use a record that actually has something to dump.
+	for(var/datum/data/vending_product/product in product_records)
+		if (product.amount <= 0) //Try to use a record that actually has something to dump.
 			continue
-		var/dump_path = R.product_path
+		var/dump_path = product.product_path
 		if (!dump_path)
 			continue
 
-		R.amount--
-		throw_item = release_item(R, 0)
+		product.amount--
+		throw_item = release_item(product, 0)
 		break
 	if (!throw_item)
 		return 0
 	INVOKE_ASYNC(throw_item, /atom/movable/proc/throw_atom, target, 16, SPEED_AVERAGE, src)
-	src.visible_message(SPAN_WARNING("[src] launches [throw_item.name] at [target]!"))
+	visible_message(SPAN_WARNING("The [src] launches \the [throw_item] at [target]!"))
+	playsound(src, "sound/machines/vending.ogg", 40, TRUE)
 	return 1
 
 /obj/structure/machinery/vending/proc/get_wire_descriptions()
 	return list(
-		VENDING_WIRE_EXTEND    = "Inventory control computer",
-		VENDING_WIRE_IDSCAN    = "ID scanner",
-		VENDING_WIRE_SHOCK     = "Ground safety",
+		VENDING_WIRE_EXTEND = "Inventory control computer",
+		VENDING_WIRE_IDSCAN = "ID scanner",
+		VENDING_WIRE_SHOCK  = "Ground safety",
 		VENDING_WIRE_SHOOT_INV = "Dispenser motor control"
 	)
 
-/obj/structure/machinery/vending/proc/isWireCut(var/wire)
+/obj/structure/machinery/vending/proc/isWireCut(wire)
 	return !(wires & getWireFlag(wire))
 
-/obj/structure/machinery/vending/proc/cut(var/wire)
+/obj/structure/machinery/vending/proc/cut(wire)
 	wires ^= getWireFlag(wire)
 
 	switch(wire)
 		if(VENDING_WIRE_EXTEND)
-			src.extended_inventory = 0
-			visible_message(SPAN_NOTICE("A weak yellow light turns off underneath \the [src]."))
+			extended_inventory = TRUE
+			visible_message(SPAN_NOTICE("A weak yellow light turns off underneath the [src]."))
 		if(VENDING_WIRE_SHOCK)
-			src.seconds_electrified = -1
-			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
+			seconds_electrified = -1
+			visible_message(SPAN_DANGER("Electric arcs shoot off from the [src]!"))
 		if (VENDING_WIRE_SHOOT_INV)
-			if(!src.shoot_inventory)
-				src.shoot_inventory = TRUE
-				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
+			if(!shoot_inventory)
+				shoot_inventory = TRUE
+				visible_message(SPAN_WARNING("The [src] begins whirring noisily."))
 
-/obj/structure/machinery/vending/proc/mend(var/wire)
+/obj/structure/machinery/vending/proc/mend(wire)
 	wires |= getWireFlag(wire)
 
 	switch(wire)
 		if(VENDING_WIRE_EXTEND)
-			src.extended_inventory = 1
-			visible_message(SPAN_NOTICE("A weak yellow light turns on underneath \the [src]."))
+			extended_inventory = FALSE
+			visible_message(SPAN_NOTICE("A weak yellow light turns on underneath the [src]."))
 		if(VENDING_WIRE_SHOCK)
-			src.seconds_electrified = 0
+			seconds_electrified = 0
 		if (VENDING_WIRE_SHOOT_INV)
-			src.shoot_inventory = FALSE
-			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
+			shoot_inventory = FALSE
+			visible_message(SPAN_NOTICE("The [src] stops whirring."))
 
-/obj/structure/machinery/vending/proc/pulse(var/wire)
+/obj/structure/machinery/vending/proc/pulse(wire)
 	switch(wire)
 		if(VENDING_WIRE_EXTEND)
-			src.extended_inventory = !src.extended_inventory
-			visible_message(SPAN_NOTICE("A weak yellow light turns [extended_inventory ? "on" : "off"] underneath \the [src]."))
+			extended_inventory = !extended_inventory
+			visible_message(SPAN_NOTICE("A weak yellow light turns [extended_inventory ? "on" : "off"] underneath the [src]."))
 		if (VENDING_WIRE_SHOCK)
-			src.seconds_electrified = 30
-			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
+			seconds_electrified = 30
+			visible_message(SPAN_DANGER("Electric arcs shoot off from the [src]!"))
 		if (VENDING_WIRE_SHOOT_INV)
-			src.shoot_inventory = !src.shoot_inventory
+			shoot_inventory = !shoot_inventory
 			if(shoot_inventory)
-				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
+				visible_message(SPAN_WARNING("The [src] begins whirring noisily."))
 			else
-				visible_message(SPAN_NOTICE("\The [src] stops whirring."))
+				visible_message(SPAN_NOTICE("The [src] stops whirring."))

@@ -2,8 +2,8 @@
 	var/name = "Mark Menu"
 	var/data_initialized = FALSE //for the UI interaction
 
-/datum/mark_menu_ui/proc/open_mark_menu(var/mob/user)
-	var/mob/living/carbon/Xenomorph/X = user
+/datum/mark_menu_ui/proc/open_mark_menu(mob/user)
+	var/mob/living/carbon/xenomorph/X = user
 	if(!X.client)
 		return
 
@@ -26,7 +26,7 @@
 	)
 
 /datum/mark_menu_ui/ui_static_data(mob/user)
-	var/mob/living/carbon/Xenomorph/X = user
+	var/mob/living/carbon/xenomorph/X = user
 	if(!istype(X))
 		return
 
@@ -47,7 +47,7 @@
 	.["mark_meanings"] = mark_meanings
 
 /datum/mark_menu_ui/ui_data(mob/user)
-	var/mob/living/carbon/Xenomorph/X = user
+	var/mob/living/carbon/xenomorph/X = user
 
 	if(!istype(X))
 		return
@@ -64,7 +64,7 @@
 		var/obj/effect/alien/resin/marker/RM = type
 		var/mark_owner = null
 		var/mark_owner_name = null
-		for(var/mob/living/carbon/Xenomorph/XX in X.hive.totalXenos)
+		for(var/mob/living/carbon/xenomorph/XX in X.hive.totalXenos)
 			if(XX.nicknumber == RM.createdby)
 				mark_owner = XX.nicknumber
 				mark_owner_name = XX.name
@@ -86,7 +86,8 @@
 	.["tracked_mark"] = null
 	if(X.tracked_marker)
 		var/datum/weakref/weak_reference = WEAKREF(X.tracked_marker)
-		.["tracked_mark"] = weak_reference.reference
+		if(weak_reference) // WEAKREF also tested QDELETED
+			.["tracked_mark"] = weak_reference.reference
 
 /datum/mark_menu_ui/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -107,7 +108,7 @@
 	if(.)
 		return
 
-	var/mob/living/carbon/Xenomorph/X = usr
+	var/mob/living/carbon/xenomorph/X = usr
 
 	if(!istype(X))
 		return
@@ -155,10 +156,10 @@
 				update_all_data()
 				. = TRUE
 				return
-			else if(isXenoQueen(X))
-				var/mob/living/carbon/Xenomorph/mark_to_destroy_owner
+			else if(isqueen(X))
+				var/mob/living/carbon/xenomorph/mark_to_destroy_owner
 				to_chat(X, SPAN_XENONOTICE("You psychically command the [mark_to_destroy.mark_meaning.name] resin mark to be destroyed."))
-				for(var/mob/living/carbon/Xenomorph/XX in X.hive.totalXenos)
+				for(var/mob/living/carbon/xenomorph/XX in X.hive.totalXenos)
 					if(XX.nicknumber == mark_to_destroy.createdby)
 						mark_to_destroy_owner = XX
 				to_chat(mark_to_destroy_owner, SPAN_XENONOTICE("Your [mark_to_destroy.mark_meaning.name] resin mark was commanded to be destroyed by [X.name]."))
@@ -172,20 +173,20 @@
 			var/obj/effect/alien/resin/marker/mark_to_force = locate(params["type"])
 			if(!mark_to_force)
 				return
-			if(!isXenoQueen(X))
+			if(!isqueen(X))
 				to_chat(X, SPAN_XENONOTICE("You lack the permissions to do this."))
 				return
 			var/FunkTownOhyea = "Force all to track"
 			var/list/possible_xenos = list()
 			possible_xenos |= FunkTownOhyea
-			for(var/mob/living/carbon/Xenomorph/T in GLOB.living_xeno_list)
+			for(var/mob/living/carbon/xenomorph/T in GLOB.living_xeno_list)
 				if (T != X && !is_admin_level(T.z) && X.hivenumber == T.hivenumber)
 					possible_xenos += T
 
-			var/mob/living/carbon/Xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos, theme="hive_status")
+			var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos, theme="hive_status")
 
 			if(selected_xeno == FunkTownOhyea)
-				for(var/mob/living/carbon/Xenomorph/forced_xeno in X.hive.totalXenos)
+				for(var/mob/living/carbon/xenomorph/forced_xeno in X.hive.totalXenos)
 					forced_xeno.stop_tracking_resin_mark(FALSE, TRUE)
 					to_chat(forced_xeno, SPAN_XENOANNOUNCE("Hive! Your queen commands: [mark_to_force.mark_meaning.desc] in [get_area_name(mark_to_force)]. (<a href='?src=\ref[X];overwatch=1;target=\ref[mark_to_force]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[mark_to_force]'>Track</a>)"))
 					forced_xeno.start_tracking_resin_mark(mark_to_force)

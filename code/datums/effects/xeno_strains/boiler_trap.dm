@@ -20,7 +20,7 @@
 	return ..()
 
 /datum/effects/boiler_trap/validate_atom(atom/A)
-	if(!isXenoOrHuman(A))
+	if(!isxeno_human(A))
 		return FALSE
 	var/mob/M = A
 	return (M.stat != DEAD)

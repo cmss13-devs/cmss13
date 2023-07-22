@@ -1,10 +1,8 @@
 // Holds props for helmet garb
 
 /obj/item/prop/helmetgarb
-	name = "Placeholder"
-	desc = "placeholder"
 	icon = 'icons/obj/items/helmet_garb.dmi'
-	icon_state = "placeholder"
+	icon_state = null
 	w_class = SIZE_TINY
 	garbage = TRUE
 
@@ -30,6 +28,7 @@
 
 /obj/item/prop/helmetgarb/spent_slug
 	name = "spent slugs"
+	gender = PLURAL
 	desc = "For when you need to knock your target down with superior stopping power. These three have already been fired."
 	icon_state = "spent_slug"
 
@@ -39,7 +38,7 @@
 	icon_state = "spent_flech"
 
 /obj/item/prop/helmetgarb/prescription_bottle
-	name = "perscription medication"
+	name = "prescription medication"
 	desc = "Anti-anxiety meds? Amphetamines? The cure for Sudden Sleep Disorder? The label can't be read, leaving the now absent contents forever a mystery. The cap is screwed on tighter than any ID lock."
 	icon_state = "prescription_bottle"
 
@@ -55,7 +54,7 @@
 
 /obj/item/prop/helmetgarb/rosary
 	name = "rosary"
-	desc = "The Emperor Protects! I mean, Jesus Saves!"
+	desc = "Jesus Saves Lives!"
 	icon_state = "rosary"
 
 /obj/item/prop/helmetgarb/lucky_feather
@@ -127,14 +126,14 @@
 
 	attached_item = MO
 
-	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, .proc/remove_attached_item)
-	RegisterSignal(attached_item, COMSIG_ITEM_EQUIPPED, .proc/toggle_check)
+	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, PROC_REF(remove_attached_item))
+	RegisterSignal(attached_item, COMSIG_ITEM_EQUIPPED, PROC_REF(toggle_check))
 
 	if(ismob(attached_item.loc))
 		set_attached_mob(attached_item.loc)
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/prop/helmetgarb/helmet_nvg/attackby(obj/item/A as obj, mob/user as mob)
 	if(istype(A,/obj/item/cell))
 		recharge(A, user)
 
@@ -144,7 +143,7 @@
 	else
 		..()
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/recharge(var/obj/item/cell/C, mob/user as mob)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/recharge(obj/item/cell/C, mob/user as mob)
 	if(user.action_busy)
 		return
 	if(src != user.get_inactive_hand())
@@ -248,13 +247,13 @@
 	return ..()
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/set_attached_mob(var/mob/User)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/set_attached_mob(mob/User)
 	attached_mob = User
 	activation = new /datum/action/item_action/toggle(src, attached_item)
 	activation.give_to(attached_mob)
 	add_verb(attached_mob, /obj/item/prop/helmetgarb/helmet_nvg/proc/toggle)
-	RegisterSignal(attached_mob, COMSIG_HUMAN_XENO_ATTACK, .proc/break_nvg)
-	RegisterSignal(attached_item, COMSIG_ITEM_DROPPED, .proc/remove_attached_mob)
+	RegisterSignal(attached_mob, COMSIG_HUMAN_XENO_ATTACK, PROC_REF(break_nvg))
+	RegisterSignal(attached_item, COMSIG_ITEM_DROPPED, PROC_REF(remove_attached_mob))
 
 /obj/item/prop/helmetgarb/helmet_nvg/proc/remove_attached_item()
 	SIGNAL_HANDLER
@@ -286,7 +285,7 @@
 	remove_nvg()
 	attached_mob = null
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_check(var/obj/item/I, var/mob/living/carbon/human/user, slot)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_check(obj/item/I, mob/living/carbon/human/user, slot)
 	SIGNAL_HANDLER
 
 	if(attached_mob != user && slot == WEAR_HEAD)
@@ -298,11 +297,11 @@
 		remove_nvg()
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/enable_nvg(var/mob/living/carbon/human/user)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/enable_nvg(mob/living/carbon/human/user)
 	if(nightvision)
 		remove_nvg()
 
-	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, .proc/update_sight)
+	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, PROC_REF(update_sight))
 
 	user.add_client_color_matrix("nvg", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#7aff7a")))
 	user.overlay_fullscreen("nvg", /atom/movable/screen/fullscreen/flash/noise/nvg)
@@ -318,7 +317,7 @@
 	START_PROCESSING(SSobj, src)
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/update_sight(var/mob/M)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/update_sight(mob/M)
 	SIGNAL_HANDLER
 
 	if(lighting_alpha < 255)
@@ -371,7 +370,7 @@
 		return
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/ui_action_click(var/mob/owner, var/obj/item/holder)
+/obj/item/prop/helmetgarb/helmet_nvg/ui_action_click(mob/owner, obj/item/holder)
 	toggle_nods(owner)
 
 
@@ -386,7 +385,7 @@
 			break
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_nods(var/mob/living/carbon/human/user)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_nods(mob/living/carbon/human/user)
 	if(user.is_mob_incapacitated())
 		return
 
@@ -414,7 +413,7 @@
 			activation.update_button_icon()
 
 		if(shape != NVG_SHAPE_COSMETIC)
-			RegisterSignal(user, COMSIG_MOB_CHANGE_VIEW, .proc/change_view) // will flip non-cosmetic nvgs back up when zoomed
+			RegisterSignal(user, COMSIG_MOB_CHANGE_VIEW, PROC_REF(change_view)) // will flip non-cosmetic nvgs back up when zoomed
 
 	else
 		to_chat(user, SPAN_NOTICE("You push \the [src] back up onto your helmet."))
@@ -426,13 +425,13 @@
 		remove_nvg()
 		UnregisterSignal(user, COMSIG_MOB_CHANGE_VIEW)
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/change_view(var/mob/M, var/new_size)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/change_view(mob/M, new_size)
 	SIGNAL_HANDLER
 
 	if(new_size > 7) // cannot use binos with NVG
 		toggle_nods(M)
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/break_nvg(mob/living/carbon/human/user, list/slashdata, var/mob/living/carbon/Xenomorph/Xeno) //xenos can break NVG if aim head
+/obj/item/prop/helmetgarb/helmet_nvg/proc/break_nvg(mob/living/carbon/human/user, list/slashdata, mob/living/carbon/xenomorph/Xeno) //xenos can break NVG if aim head
 	SIGNAL_HANDLER
 
 	if(check_zone(Xeno.zone_selected) == "head" && user == attached_mob)
@@ -510,3 +509,9 @@
 	name = "10x99mm XM42B casing pipe"
 	desc = "The XM42B was an experimental weapons platform briefly fielded by the USCM and Wey-Yu PMC teams. It was manufactured by ARMAT systems at the Atlas weapons facility. Unfortunately the project had its funding pulled alongside the M5 integrated gasmask program. This spent casing has been converted into a pipe, but there is too much tar in the mouthpiece for it to be useable."
 	icon_state = "bullet_pipe"
+
+/obj/item/prop/helmetgarb/chaplain_patch
+	name = "\improper USCM chaplain helmet patch"
+	desc = "This patch is all that remains of the Chaplaincy of the USS Almayer, along with the Chaplains themselves. Both no longer exist as a result of losses suffered during Operation Tychon Tackle."
+	icon_state = "chaplain_patch"
+	flags_obj = OBJ_NO_HELMET_BAND

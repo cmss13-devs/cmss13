@@ -142,8 +142,7 @@
 "L" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/floor/shiva{
 	dir = 1

@@ -1,8 +1,8 @@
 SUBSYSTEM_DEF(human)
-	name          = "Human Life"
-	wait          = 2 SECONDS
-	flags         = SS_NO_INIT | SS_KEEP_TIMING
-	priority      = SS_PRIORITY_HUMAN
+	name   = "Human Life"
+	wait   = 2 SECONDS
+	flags  = SS_NO_INIT | SS_KEEP_TIMING
+	priority   = SS_PRIORITY_HUMAN
 
 	var/list/currentrun = list()
 

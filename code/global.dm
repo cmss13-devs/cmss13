@@ -2,29 +2,31 @@
 #define MAIN_SHIP_NAME SSmapping.get_main_ship_name()
 #define MAIN_SHIP_DEFAULT_NAME "USS Almayer"
 //=================================================
-//Please don't edit these values without speaking to Errorage first	~Carn
+//Please don't edit these values without speaking to Errorage first ~Carn
 //Admin Permissions
-#define R_BUILDMODE		(1<<0)
-#define R_ADMIN			(1<<1)
-#define R_BAN			(1<<2)
-#define R_SERVER		(1<<3)
-#define R_DEBUG			(1<<4)
-#define R_POSSESS		(1<<5)
-#define R_PERMISSIONS	(1<<6)
-#define R_STEALTH		(1<<7)
-#define R_REJUVINATE	(1<<8)
-#define R_COLOR			(1<<9)
-#define R_VAREDIT		(1<<10)
-#define R_SOUNDS		(1<<11)
-#define R_SPAWN			(1<<12)
-#define R_MOD			(1<<13)
-#define R_MENTOR		(1<<14)
-#define R_HOST			(1<<15)
-#define R_PROFILER		(1<<16)
-#define R_NOLOCK		(1<<17)
-#define R_EVENT			(1<<18)
+#define R_BUILDMODE (1<<0)
+#define R_ADMIN (1<<1)
+#define R_BAN (1<<2)
+#define R_SERVER (1<<3)
+#define R_DEBUG (1<<4)
+#define R_POSSESS (1<<5)
+#define R_PERMISSIONS (1<<6)
+#define R_STEALTH (1<<7)
+#define R_COLOR (1<<8)
+#define R_VAREDIT (1<<9)
+#define R_SOUNDS (1<<10)
+#define R_SPAWN (1<<11)
+#define R_MOD (1<<12)
+#define R_MENTOR (1<<13)
+#define R_HOST (1<<14)
+#define R_PROFILER (1<<15)
+#define R_NOLOCK (1<<16)
+#define R_EVENT (1<<17)
 
-#define R_EVERYTHING	((1<<19)-1) //the sum of all other rank permissions
+/// The sum of all other rank permissions, other than host or profiler.
+#define RL_EVERYTHING (R_BUILDMODE|R_ADMIN|R_BAN|R_SERVER|R_DEBUG|R_PERMISSIONS|R_POSSESS|R_STEALTH|R_COLOR|R_VAREDIT|R_EVENT|R_SOUNDS|R_NOLOCK|R_SPAWN|R_MOD|R_MENTOR)
+/// Truely everything
+#define RL_HOST (RL_EVERYTHING|R_HOST|R_PROFILER)
 // 512.1430 increases maximum bit flags from 16 to 24, so the following flags should be available for future changes:
 //=================================================
 
@@ -37,25 +39,22 @@
 		//items that ask to be called every cycle
 
 //////////////
-var/list/paper_tag_whitelist = list("center","p","div","span","h1","h2","h3","h4","h5","h6","hr","pre",	\
-	"big","small","font","i","u","b","s","sub","sup","tt","br","hr","ol","ul","li","caption","col",	\
+var/list/paper_tag_whitelist = list("center","p","div","span","h1","h2","h3","h4","h5","h6","hr","pre", \
+	"big","small","font","i","u","b","s","sub","sup","tt","br","hr","ol","ul","li","caption","col", \
 	"table","td","th","tr")
 
 ///////////////
 
-var/diary = null
-var/round_stats = null
-var/round_scheduler_stats = null
-var/mutator_logs = null
-var/href_logfile = null
 var/command_name = "Central Command"
 var/station_name = "[MAIN_SHIP_NAME]"
 var/game_version = "Colonial Marines"
-var/game_year = "2182"
+var/game_year = 2182
 
-var/going = 1.0
+var/going = 1
 var/master_mode = "Distress Signal"
-var/secret_force_mode = "secret" // if this is anything but "secret", the secret rotation will forceably choose this mode
+
+/// If this is anything but "secret", the secret rotation will forceably choose this mode.
+var/secret_force_mode = "secret"
 
 var/host = null
 var/ooc_allowed = 1
@@ -74,7 +73,7 @@ var/total_silenced = 0
 var/list/admin_log = list()
 var/list/asset_log = list()
 
-var/CELLRATE = 0.006	// multiplier for watts per tick <> cell storage (eg: 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
+var/CELLRATE = 0.006 // multiplier for watts per tick <> cell storage (eg: 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
 						//It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided
 var/CHARGELEVEL = 0.001 // Cap for how fast cells charge, as a percentage-per-tick (0.01 means cellcharge is capped to 1% per second)
 
@@ -83,6 +82,8 @@ var/VehicleGearConsole
 
 //Spawnpoints.
 var/list/fallen_list = list()
+/// This is for dogtags placed on crosses- they will show up at the end-round memorial.
+var/list/fallen_list_cross = list()
 var/list/cardinal = list(NORTH, SOUTH, EAST, WEST)
 var/list/diagonals = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 var/list/alldirs = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
@@ -93,7 +94,7 @@ var/list/IClog = list()
 var/list/OOClog = list()
 var/list/adminlog = list()
 
-var/Debug = 0	// global debug switch
+var/Debug = 0 // global debug switch
 
 var/datum/moduletypes/mods = new()
 
@@ -119,8 +120,10 @@ var/list/AAlarmWireColorToIndex
 #define MAX_BOOK_MESSAGE_LEN 9216
 #define MAX_NAME_LEN 26
 
-#define shuttle_time_in_station 3 MINUTES // 3 minutes in the station
-#define shuttle_time_to_arrive 10 MINUTES // 10 minutes to arrive
+/// 3 minutes in the station.
+#define shuttle_time_in_station 3 MINUTES
+/// 10 minutes to arrive.
+#define shuttle_time_to_arrive 10 MINUTES
 
 	// MySQL configuration
 
@@ -151,8 +154,11 @@ var/destroy_cancel = 0
 
 //Coordinate obsfucator
 //Used by the rangefinders and linked systems to prevent coords collection/prefiring
-var/global/obfs_x = 0 //A number between -500 and 500
-var/global/obfs_y = 0 //A number between -500 and 500
+
+/// A number between -500 and 500.
+var/global/obfs_x = 0
+/// A number between -500 and 500.
+var/global/obfs_y = 0
 
 // Which lobby art is on display
 // This is updated by the lobby art turf when it initializes
@@ -170,30 +176,4 @@ var/list/almayer_ship_sections = list(
 	"Lower deck Foreship",
 	"Lower deck Midship",
 	"Lower deck Aftship"
-
-	/*
-	why the fuck is the code below commented you may ask? its a much cleaner solution, isn't it? i agree, but look at this:
-
-		Upper deck Aftship Lower deck Foreship Lower deck Midship Lower deck Aftship
-		Upper deck Aftship Lower deck Foreship Lower deck Midship Lower deck Aftship
-		Upper deck Aftship Lower deck Foreship Lower deck Midship Lower deck Aftship
-		almayer_ship_sections almayer_ship_sections
-
-
-
-	these are actual, real debug prints of the contents of the list if it is defined with the code below.
-	i'm not fucking with you, dm really grabbed all the drugs it had on hand, stuffed it in the dishwasher,
-	sniffed the fumes and licked every plate clean after.
-
-	it even managed to get the VARIABLE NAME in the fucking list AS AN ELEMENT. THE VARIABLE NAME.
-
-	this is by far the most cursed code i have ever written, someone needs to hire a fucking excorcist
-
-	(UPPER_DECK + " " + FORESHIP),
-	(UPPER_DECK + " " + MIDSHIP),
-	(UPPER_DECK + " " + AFTSHIP),
-	(LOWER_DECK + " " + FORESHIP),
-	(LOWER_DECK + " " + MIDSHIP),
-	(LOWER_DECK + " " + AFTSHIP)
-	*/
 )

@@ -12,20 +12,12 @@
 		"jquery.min.js" = 'html/jquery.min.js',
 	)
 
-/datum/asset/nanoui
+/datum/asset/directory
 	var/list/common = list()
+	var/list/common_dirs = list()
+	var/list/uncommon_dirs = list()
 
-	var/list/common_dirs = list(
-		"nano/css/",
-		"nano/images/",
-		"nano/js/",
-		"nano/js/uiscripts/",
-	)
-	var/list/uncommon_dirs = list(
-		"nano/templates/",
-	)
-
-/datum/asset/nanoui/register()
+/datum/asset/directory/register()
 	// Crawl the directories to find files.
 	for(var/path in common_dirs)
 		var/list/filenames = flist(path)
@@ -46,7 +38,7 @@
 				continue
 			SSassets.transport.register_asset(filename, fcopy_rsc(path + filename))
 
-/datum/asset/nanoui/send(client, uncommon, var/send_only_temp = FALSE)
+/datum/asset/directory/send(client, uncommon, send_only_temp = FALSE)
 	if(!client)
 		log_debug("Warning! Tried to send nanoui data with a null client! (asset_list_items.dm line 76)")
 		return
@@ -58,16 +50,25 @@
 	if(!send_only_temp)
 		SSassets.transport.send_assets(client, common)
 
-/datum/asset/nanoui/weapons
-	common = list()
+/datum/asset/directory/nanoui
+	common_dirs = list(
+		"nano/css/",
+		"nano/images/",
+		"nano/js/",
+		"nano/js/uiscripts/",
+	)
+	uncommon_dirs = list(
+		"nano/templates/",
+	)
 
+/datum/asset/directory/nanoui/weapons
 	common_dirs = list(
 		"nano/images/weapons/",
 	)
 
 	uncommon_dirs = list()
 
-/datum/asset/nanoui/weapons/send(client)
+/datum/asset/directory/nanoui/weapons/send(client)
 	if(!client)
 		log_debug("Warning! Tried to send nanoui weapon data with a null client! (asset_list_items.dm line 93)")
 		return
@@ -107,7 +108,7 @@
 	keep_local_name = TRUE
 	assets = list()
 
-/datum/asset/simple/dynamic_icons/proc/update(var/filename)
+/datum/asset/simple/dynamic_icons/proc/update(filename)
 	var/list/filenames = list(filename)
 	if(islist(filename))
 		filenames = filename
@@ -119,7 +120,7 @@
 			if(ACI)
 				SSassets.transport.preload += list(key=ACI)
 
-/datum/asset/simple/dynamic_icons/proc/register_single(var/asset_name)
+/datum/asset/simple/dynamic_icons/proc/register_single(asset_name)
 	var/datum/asset_cache_item/ACI = SSassets.transport.register_asset(asset_name, assets[asset_name])
 	if (!ACI)
 		log_asset("ERROR: Invalid asset: [type]:[asset_name]:[ACI]")
@@ -152,7 +153,7 @@
 /datum/asset/spritesheet/chat/register()
 	InsertAll("emoji", 'icons/emoji.dmi')
 	// pre-loading all lanugage icons also helps to avoid meta
-/*	InsertAll("language", 'icons/misc/language.dmi')
+/* InsertAll("language", 'icons/misc/language.dmi')
 	// catch languages which are pulling icons from another file
 	for(var/path in typesof(/datum/language))
 		var/datum/language/L = path
@@ -197,6 +198,39 @@
 		Insert("[icon_name]_big", iconBig)
 	return ..()
 
+
+/datum/asset/spritesheet/playtime_rank
+	name = "playtimerank"
+
+/datum/asset/spritesheet/playtime_rank/register()
+	var/icon_file = 'icons/mob/hud/hud.dmi'
+	var/tier1_state = "hudxenoupgrade1"
+	var/tier2_state = "hudxenoupgrade2"
+	var/tier3_state = "hudxenoupgrade3"
+	var/tier4_state = "hudxenoupgrade4"
+
+	var/icon/tier1_icon = icon(icon_file, tier1_state, SOUTH)
+	var/icon/tier2_icon = icon(icon_file, tier2_state, SOUTH)
+	var/icon/tier3_icon = icon(icon_file, tier3_state, SOUTH)
+	var/icon/tier4_icon = icon(icon_file, tier4_state, SOUTH)
+
+
+	tier1_icon.Crop(6,26,18,14)
+	tier1_icon.Scale(32, 32)
+	Insert("tier1_big", tier1_icon)
+
+	tier2_icon.Crop(6,28,18,16)
+	tier2_icon.Scale(32, 32)
+	Insert("tier2_big", tier2_icon)
+
+	tier3_icon.Crop(6,30,18,18)
+	tier3_icon.Scale(32, 32)
+	Insert("tier3_big", tier3_icon)
+
+	tier4_icon.Crop(6,30,18,18)
+	tier4_icon.Scale(32, 32)
+	Insert("tier4_big", tier4_icon)
+	return ..()
 
 /datum/asset/spritesheet/choose_mark
 	name = "choosemark"
@@ -246,7 +280,7 @@
 		list("Med", "hudsquad_med"),
 		list("SG", "hudsquad_gun"),
 		list("Spc", "hudsquad_spec"),
-		list("RTO", "hudsquad_rto"),
+		list("TL", "hudsquad_tl"),
 		list("SL", "hudsquad_leader"),
 	)
 
@@ -343,7 +377,56 @@
 		Insert("[icon_name]_big", iconBig)
 	return ..()
 
+/datum/asset/spritesheet/gun_lineart
+	name = "gunlineart"
+
+/datum/asset/spritesheet/gun_lineart/register()
+	InsertAll("", 'icons/obj/items/weapons/guns/lineart.dmi')
+	..()
+
+
 /datum/asset/simple/orbit
 	assets = list(
 		"ghost.png" = 'html/images/ghost.png'
+	)
+
+/datum/asset/simple/radar_assets
+	assets = list(
+		"ntosradarbackground.png" = 'icons/images/ui_images/ntosradar_background.png',
+		"ntosradarpointer.png" = 'icons/images/ui_images/ntosradar_pointer.png',
+		"ntosradarpointerS.png" = 'icons/images/ui_images/ntosradar_pointer_S.png'
+	)
+
+/datum/asset/simple/firemodes
+	assets = list(
+		"auto.png" = 'html/images/auto.png',
+		"disabled_auto.png" = 'html/images/disabled_automatic.png',
+		"burst.png" = 'html/images/burst.png',
+		"disabled_burst.png" = 'html/images/disabled_burst.png',
+		"single.png" = 'html/images/single.png',
+		"disabled_single.png" = 'html/images/disabled_single.png',
+	)
+
+
+/datum/asset/simple/particle_editor
+	assets = list(
+		"motion" = 'icons/images/ui_images/particle_editor/motion.png',
+
+		"uniform" = 'icons/images/ui_images/particle_editor/uniform_rand.png',
+		"normal" ='icons/images/ui_images/particle_editor/normal_rand.png',
+		"linear" = 'icons/images/ui_images/particle_editor/linear_rand.png',
+		"square_rand" = 'icons/images/ui_images/particle_editor/square_rand.png',
+
+		"num" = 'icons/images/ui_images/particle_editor/num_gen.png',
+		"vector" = 'icons/images/ui_images/particle_editor/vector_gen.png',
+		"box" = 'icons/images/ui_images/particle_editor/box_gen.png',
+		"circle" = 'icons/images/ui_images/particle_editor/circle_gen.png',
+		"sphere" = 'icons/images/ui_images/particle_editor/sphere_gen.png',
+		"square" = 'icons/images/ui_images/particle_editor/square_gen.png',
+		"cube" = 'icons/images/ui_images/particle_editor/cube_gen.png',
+	)
+
+/datum/asset/simple/vv
+	assets = list(
+		"view_variables.css" = 'html/admin/view_variables.css'
 	)

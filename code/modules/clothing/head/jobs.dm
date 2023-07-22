@@ -26,7 +26,7 @@
 	flags_inv_hide = NO_FLAGS
 	flags_armor_protection = 0
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
+	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROT
 	siemens_coefficient = 0.9
 	flags_armor_protection = 0
 
@@ -41,7 +41,7 @@
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_EYES
 
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
+	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROT
 
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_LOW
@@ -68,6 +68,8 @@
 	icon_state = "beret"
 	siemens_coefficient = 0.9
 	flags_armor_protection = 0
+	pickup_sound = null
+	drop_sound = null
 
 //Security
 /obj/item/clothing/head/beret/sec

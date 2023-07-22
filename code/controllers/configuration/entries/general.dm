@@ -1,9 +1,9 @@
 /*
 Basics, the most important.
 */
-/datum/config_entry/string/servername	// The name used for the server almost universally.
+/datum/config_entry/string/servername // The name used for the server almost universally.
 
-/datum/config_entry/string/serversqlname	// Short form of the previous used for the DB.
+/datum/config_entry/string/serversqlname // Short form of the previous used for the DB.
 
 /datum/config_entry/string/server // If you set this location, it sends you there instead of trying to reconnect.
 
@@ -17,7 +17,7 @@ Basics, the most important.
 
 /datum/config_entry/string/new_round_alert_role_id
 
-/datum/config_entry/flag/hub	// if the game appears on the hub or not
+/datum/config_entry/flag/hub // if the game appears on the hub or not
 
 /datum/config_entry/string/wikiurl
 
@@ -41,7 +41,7 @@ Basics, the most important.
 
 /// Host of the webmap
 /datum/config_entry/string/webmap_host
-	config_entry_value = "https://affectedarc07.co.uk/tgmc.php?m="
+	config_entry_value = "https://affectedarc07.github.io/SS13WebMap/CMSS13/"
 
 /datum/config_entry/string/python_path
 
@@ -55,16 +55,16 @@ Administrative related.
 /datum/config_entry/flag/no_localhost_rank
 	protection = CONFIG_ENTRY_LOCKED
 
-/datum/config_entry/flag/admin_legacy_system	//Defines whether the server uses the legacy admin system with admins.txt or the SQL system
+/datum/config_entry/flag/admin_legacy_system //Defines whether the server uses the legacy admin system with admins.txt or the SQL system
 	protection = CONFIG_ENTRY_LOCKED
 
-/datum/config_entry/flag/protect_legacy_admins	//Stops any admins loaded by the legacy system from having their rank edited by the permissions panel
+/datum/config_entry/flag/protect_legacy_admins //Stops any admins loaded by the legacy system from having their rank edited by the permissions panel
 	protection = CONFIG_ENTRY_LOCKED
 
-/datum/config_entry/flag/protect_legacy_ranks	//Stops any ranks loaded by the legacy system from having their flags edited by the permissions panel
+/datum/config_entry/flag/protect_legacy_ranks //Stops any ranks loaded by the legacy system from having their flags edited by the permissions panel
 	protection = CONFIG_ENTRY_LOCKED
 
-/datum/config_entry/flag/load_legacy_ranks_only	//Loads admin ranks only from legacy admin_ranks.txt, while enabled ranks are mirrored to the database
+/datum/config_entry/flag/load_legacy_ranks_only //Loads admin ranks only from legacy admin_ranks.txt, while enabled ranks are mirrored to the database
 	protection = CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/flag/log_admin
@@ -127,6 +127,9 @@ Administrative related.
 
 /datum/config_entry/flag/allow_vote_adjustment_callback
 
+/// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
+/datum/config_entry/flag/log_timers_on_bucket_reset
+
 /datum/config_entry/number/vote_adjustment_callback
 	config_entry_value = 0.1
 
@@ -140,7 +143,7 @@ Administrative related.
 	config_entry_value = "#ffbf00"
 
 /datum/config_entry/string/ooc_color_debug
- 	config_entry_value = "#6bd1b4"
+	config_entry_value = "#6bd1b4"
 
 /datum/config_entry/string/ooc_color_admin
 	config_entry_value = "#ff8000"
@@ -152,7 +155,7 @@ Administrative related.
 
 /datum/config_entry/flag/usealienwhitelist
 
-/datum/config_entry/flag/use_age_restriction_for_jobs	//Do jobs use account age restrictions? --requires database
+/datum/config_entry/flag/use_age_restriction_for_jobs //Do jobs use account age restrictions? --requires database
 
 /datum/config_entry/flag/use_exp_tracking
 
@@ -171,9 +174,9 @@ Administrative related.
 
 /datum/config_entry/flag/prevent_dupe_names
 
-/datum/config_entry/flag/kick_inactive	//force disconnect for inactive players
+/datum/config_entry/flag/kick_inactive //force disconnect for inactive players
 
-/datum/config_entry/flag/automute_on	//enables automuting/spam prevention
+/datum/config_entry/flag/automute_on //enables automuting/spam prevention
 
 /datum/config_entry/flag/autooocmute
 
@@ -240,7 +243,7 @@ Administrative related.
 	config_entry_value = 15
 	min_val = 0
 
-/datum/config_entry/number/afk_period	//time in ds until a player is considered inactive
+/datum/config_entry/number/afk_period //time in ds until a player is considered inactive
 	config_entry_value = 3000
 	integer = FALSE
 	min_val = 0
@@ -260,7 +263,7 @@ Voting
 
 // Gamemode to auto-switch to at the start of the round
 /datum/config_entry/string/gamemode_default
-	config_entry_value = "extended"
+	config_entry_value = "Extended"
 
 // Rounds needed for gamemode vote
 /datum/config_entry/number/gamemode_rounds_needed
@@ -269,7 +272,7 @@ Voting
 /datum/config_entry/number/rounds_until_hard_restart
 	config_entry_value = -1 // -1 is disabled by default, 0 is every round, x is after so many rounds
 
-/datum/config_entry/number/vote_delay	// Minimum time between voting sessions. (deciseconds, 10 minute default)
+/datum/config_entry/number/vote_delay // Minimum time between voting sessions. (deciseconds, 10 minute default)
 	config_entry_value = 6000
 	integer = FALSE
 	min_val = 0
@@ -325,7 +328,7 @@ Master controller and performance related.
 	integer = FALSE
 	var/sync_validate = FALSE
 
-/datum/config_entry/number/ticklag/New()	//ticklag weirdly just mirrors fps
+/datum/config_entry/number/ticklag/New() //ticklag weirdly just mirrors fps
 	var/datum/config_entry/CE = /datum/config_entry/number/fps
 	config_entry_value = 10 / initial(CE.config_entry_value)
 	return ..()
@@ -339,7 +342,7 @@ Master controller and performance related.
 			FPS.ValidateAndSet(10 / config_entry_value)
 		sync_validate = FALSE
 
-/datum/config_entry/number/tick_limit_mc_init	//SSinitialization throttling
+/datum/config_entry/number/tick_limit_mc_init //SSinitialization throttling
 	config_entry_value = TICK_LIMIT_MC_INIT_DEFAULT
 	min_val = 0 //oranges warned us
 	integer = FALSE
@@ -363,22 +366,22 @@ The default value assumes youtube-dl is in your system PATH
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
 
-/datum/config_entry/number/error_cooldown	// The "cooldown" time for each occurrence of a unique error
+/datum/config_entry/number/error_cooldown // The "cooldown" time for each occurrence of a unique error
 	config_entry_value = 600
 	integer = FALSE
 	min_val = 0
 
 
-/datum/config_entry/number/error_limit	// How many occurrences before the next will silence them
+/datum/config_entry/number/error_limit // How many occurrences before the next will silence them
 	config_entry_value = 50
 
 
-/datum/config_entry/number/error_silence_time	// How long a unique error will be silenced for
+/datum/config_entry/number/error_silence_time // How long a unique error will be silenced for
 	config_entry_value = 6000
 	integer = FALSE
 
 
-/datum/config_entry/number/error_msg_delay	// How long to wait between messaging admins about occurrences of a unique error
+/datum/config_entry/number/error_msg_delay // How long to wait between messaging admins about occurrences of a unique error
 	config_entry_value = 50
 	integer = FALSE
 
@@ -420,7 +423,7 @@ The default value assumes youtube-dl is in your system PATH
 	return str_val != "\[Put the name here\]" && ..()
 
 
-/datum/config_entry/string/panic_server_address	//Reconnect a player this linked server if this server isn't accepting new players
+/datum/config_entry/string/panic_server_address //Reconnect a player this linked server if this server isn't accepting new players
 
 
 /datum/config_entry/string/panic_server_address/ValidateAndSet(str_val)
@@ -488,8 +491,6 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/flag/ooc_country_flags
 
-/datum/config_entry/flag/report_runtimes
-
 /datum/config_entry/flag/record_rounds
 
 /datum/config_entry/str_list/lobby_art_images
@@ -525,3 +526,98 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/string/adminhelp_webhook_name
 
 /datum/config_entry/string/adminhelp_ahelp_link
+
+/datum/config_entry/string/round_results_webhook_url
+
+/// InfluxDB v2 Host to connect to for sending statistics (over HTTP API)
+/datum/config_entry/string/influxdb_host
+/// InfluxDB v2 Bucket to send staistics to
+/datum/config_entry/string/influxdb_bucket
+/// InfluxDB v2 Organization to access buckets of
+/datum/config_entry/string/influxdb_org
+/// InfluxDB v2 API Token to access the organization and bucket
+/datum/config_entry/string/influxdb_token
+
+/// How often to snapshot general game statistics to influxdb driver
+/datum/config_entry/number/influxdb_stats_period
+	config_entry_value = 30
+/// How often to snapshot MC statistics
+/datum/config_entry/number/influxdb_mcstats_period
+	config_entry_value = 60
+/// How often to send queued influxdb statistics
+/datum/config_entry/number/influxdb_send_period
+	config_entry_value = 10
+
+/// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
+/datum/config_entry/flag/log_timers_on_bucket_reset
+
+/datum/config_entry/number/hard_deletes_overrun_threshold
+	integer = FALSE
+	min_val = 0
+	default = 0.5
+
+/datum/config_entry/number/hard_deletes_overrun_limit
+	default = 0
+	min_val = 0
+
+/datum/config_entry/string/bot_prefix
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/bot_command
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/certification_minutes
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/topic_max_size
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/log_world_topic
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/keyed_list/topic_tokens
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_TEXT
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/keyed_list/topic_tokens/ValidateListEntry(key_name, key_value)
+	return key_value != "topic_token" && ..()
+
+
+//Fail2Topic settings.
+/datum/config_entry/number/topic_rate_limit
+	config_entry_value = 5
+	min_val = 1
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/topic_max_fails
+	config_entry_value = 5
+	min_val = 1
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/topic_rule_name
+	config_entry_value = "_DD_Fail2topic"
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/topic_max_size
+	config_entry_value = 500
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/topic_enabled
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/redis_enabled
+	config_entry_value = FALSE
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/redis_logging
+	config_entry_value = FALSE
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/redis_connection
+	config_entry_value = "redis://127.0.0.1/"
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/instance_name
+	config_entry_value = "game"
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED

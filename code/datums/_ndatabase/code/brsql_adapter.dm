@@ -63,7 +63,7 @@
 	post_pflds = _post_pflds
 
 // maybe pflds can be changed to named parameters? but that might take time. The contract is set, so changes here shouldn't affect your code besides performance
-/datum/db/brsql_cached_query/proc/spawn_query(var/datum/db/filter/F, var/list/pflds)
+/datum/db/brsql_cached_query/proc/spawn_query(datum/db/filter/F, list/pflds)
 	for(var/i in pre_pflds)
 		pflds.Add(i)
 	var/query = "[pre_filter] [adapter.get_filter(F, casts, pflds)] [post_filter]"
@@ -85,14 +85,14 @@
 	return TRUE
 
 
-/datum/db/adapter/brsql_adapter/read_table(table_name, var/list/ids, var/datum/callback/CB, sync = FALSE)
+/datum/db/adapter/brsql_adapter/read_table(table_name, list/ids, datum/callback/CB, sync = FALSE)
 	var/query_gettable = getquery_select_table(table_name, ids)
 	if(sync)
 		SSdatabase.create_query_sync(query_gettable, CB)
 	else
 		SSdatabase.create_query(query_gettable, CB)
 
-/datum/db/adapter/brsql_adapter/update_table(table_name, var/list/values, var/datum/callback/CB, sync = FALSE)
+/datum/db/adapter/brsql_adapter/update_table(table_name, list/values, datum/callback/CB, sync = FALSE)
 	var/list/qpars = list()
 	var/query_updatetable = getquery_update_table(table_name, values, qpars)
 	if(sync)
@@ -100,30 +100,30 @@
 	else
 		SSdatabase.create_parametric_query(query_updatetable, qpars, CB)
 
-/datum/db/adapter/brsql_adapter/insert_table(table_name, var/list/values, var/datum/callback/CB, sync = FALSE)
+/datum/db/adapter/brsql_adapter/insert_table(table_name, list/values, datum/callback/CB, sync = FALSE)
 	if(!sync)
 		set waitfor = 0
 	var/length = values.len
 	var/list/qpars = list()
 	var/query_inserttable = getquery_insert_table(table_name, values, qpars)
-	var/datum/callback/callback = CALLBACK(src, /datum/db/adapter/brsql_adapter.proc/after_insert_table, CB, length, table_name)
+	var/datum/callback/callback = CALLBACK(src, TYPE_PROC_REF(/datum/db/adapter/brsql_adapter, after_insert_table), CB, length, table_name)
 	if(sync)
 		SSdatabase.create_parametric_query_sync(query_inserttable, qpars, callback)
 	else
 		SSdatabase.create_parametric_query(query_inserttable, qpars, callback)
 
-/datum/db/adapter/brsql_adapter/proc/after_insert_table(var/datum/callback/CB, length, table_name, uid, var/list/results, var/datum/db/query/brsql/query)
+/datum/db/adapter/brsql_adapter/proc/after_insert_table(datum/callback/CB, length, table_name, uid, list/results, datum/db/query/brsql/query)
 	CB.Invoke(query.last_insert_id)
 
 
-/datum/db/adapter/brsql_adapter/delete_table(table_name, var/list/ids, var/datum/callback/CB, sync = FALSE)
+/datum/db/adapter/brsql_adapter/delete_table(table_name, list/ids, datum/callback/CB, sync = FALSE)
 	var/query_deletetable = getquery_delete_table(table_name, ids)
 	if(sync)
 		SSdatabase.create_query_sync(query_deletetable, CB)
 	else
 		SSdatabase.create_query(query_deletetable, CB)
 
-/datum/db/adapter/brsql_adapter/read_filter(table_name, var/datum/db/filter, var/datum/callback/CB, sync = FALSE)
+/datum/db/adapter/brsql_adapter/read_filter(table_name, datum/db/filter, datum/callback/CB, sync = FALSE)
 	var/list/qpars = list()
 	var/query_gettable = getquery_filter_table(table_name, filter, qpars)
 	if(sync)
@@ -131,7 +131,7 @@
 	else
 		SSdatabase.create_parametric_query(query_gettable, qpars, CB)
 
-/datum/db/adapter/brsql_adapter/read_view(var/datum/entity_view_meta/view, var/datum/db/filter/filter, var/datum/callback/CB, sync=FALSE)
+/datum/db/adapter/brsql_adapter/read_view(datum/entity_view_meta/view, datum/db/filter/filter, datum/callback/CB, sync=FALSE)
 	var/v_key = "v_[view.type]"
 	var/list/qpars = list()
 	var/datum/db/brsql_cached_query/cached_view = cached_queries[v_key]
@@ -143,7 +143,7 @@
 	else
 		SSdatabase.create_parametric_query(query_getview, qpars, CB)
 
-/datum/db/adapter/brsql_adapter/sync_table(type_name, table_name, var/list/field_types)
+/datum/db/adapter/brsql_adapter/sync_table(type_name, table_name, list/field_types)
 	var/list/qpars = list()
 	var/query_gettable = getquery_systable_gettable(table_name, qpars)
 	var/datum/db/query_response/table_meta = SSdatabase.create_parametric_query_sync(query_gettable, qpars)
@@ -163,15 +163,15 @@
 		return TRUE // no action required
 
 	var/tablecount = internal_table_count(table_name)
-	// check if we have any records	
+	// check if we have any records
 	if(tablecount == 0)
 		// just MURDER IT
 		return internal_drop_table(table_name) && internal_create_table(table_name, field_types) && internal_record_table_in_sys(type_name, table_name, field_types, id)
-	
+
 	return internal_drop_backup_table(table_name) && internal_create_backup_table(table_name, old_fields) && internal_migrate_to_backup(table_name, old_fields) && \
 		internal_update_table(table_name, field_types, old_fields) && internal_record_table_in_sys(type_name, table_name, field_types, id)
-	
-/datum/db/adapter/brsql_adapter/sync_index(index_name, table_name, var/list/fields, unique, cluster)
+
+/datum/db/adapter/brsql_adapter/sync_index(index_name, table_name, list/fields, unique, cluster)
 	var/list/qpars = list()
 	var/query_getindex = getquery_sysindex_getindex(index_name, table_name, qpars)
 	var/datum/db/query_response/index_meta = SSdatabase.create_parametric_query_sync(query_getindex, qpars)
@@ -279,7 +279,7 @@
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
-/datum/db/adapter/brsql_adapter/proc/internal_migrate_table(table_name, var/list/field_types_old)
+/datum/db/adapter/brsql_adapter/proc/internal_migrate_table(table_name, list/field_types_old)
 	var/list/fields = list(DB_DEFAULT_ID_FIELD)
 	for(var/field in field_types_old)
 		fields += field
@@ -291,7 +291,7 @@
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
-/datum/db/adapter/brsql_adapter/proc/internal_migrate_to_backup(table_name, var/list/field_types_old)
+/datum/db/adapter/brsql_adapter/proc/internal_migrate_to_backup(table_name, list/field_types_old)
 	var/list/fields = list(DB_DEFAULT_ID_FIELD)
 	for(var/field in field_types_old)
 		fields += field
@@ -303,7 +303,7 @@
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
-/datum/db/adapter/brsql_adapter/proc/internal_update_table(table_name, var/list/field_types_new, var/list/field_types_old)
+/datum/db/adapter/brsql_adapter/proc/internal_update_table(table_name, list/field_types_new, list/field_types_old)
 	for(var/field in field_types_old)
 		if(!field_types_new[field])
 			var/query = getquery_update_table_delete_column(table_name, field)
@@ -311,7 +311,7 @@
 			if(sit_check.status != DB_QUERY_FINISHED)
 				issue_log += "Unable to update table `[table_name]`, error: '[sit_check.error]'"
 				return FALSE // OH SHIT OH FUCK
-	
+
 	for(var/field in field_types_new)
 		if(!field_types_old[field])
 			var/query = getquery_update_table_add_column(table_name, field, field_types_new[field])
@@ -339,13 +339,13 @@
 		CREATE TABLE IF NOT EXISTS `[connection.database]`.`[BRSQL_SYSINDEXNAME]` (id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,index_name TEXT NOT NULL,table_name TEXT NOT NULL,fields_hash TEXT NOT NULL,fields_current TEXT NOT NULL)
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_systable_gettable(table_name, var/list/qpar)
+/datum/db/adapter/brsql_adapter/proc/getquery_systable_gettable(table_name, list/qpar)
 	qpar.Add("[table_name]")
 	return {"
 		SELECT id, type_name, table_name, fields_hash, fields_current FROM `[connection.database]`.`[BRSQL_SYSTABLENAME]` WHERE table_name = ?
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_sysindex_getindex(index_name, table_name, var/list/qpar)
+/datum/db/adapter/brsql_adapter/proc/getquery_sysindex_getindex(index_name, table_name, list/qpar)
 	qpar.Add("[index_name]")
 	qpar.Add("[table_name]")
 	return {"
@@ -384,7 +384,7 @@
 		);
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_systable_recordtable(type_name, table_name, field_types, var/list/qpar, id = null)
+/datum/db/adapter/brsql_adapter/proc/getquery_systable_recordtable(type_name, table_name, field_types, list/qpar, id = null)
 	var/field_text = fields2savetext(field_types)
 	var/new_hash = sha1(field_text)
 	qpar.Add("[type_name]")
@@ -399,8 +399,8 @@
 	return {"
 			UPDATE `[connection.database]`.`[BRSQL_SYSTABLENAME]` SET type_name = ?, table_name = ?, fields_hash = ?, fields_current= ? WHERE id=[text2num(id)];
 		"}
-		
-/datum/db/adapter/brsql_adapter/proc/getquery_sysindex_recordindex(index_name, table_name, fields, var/list/qpar, id = null)
+
+/datum/db/adapter/brsql_adapter/proc/getquery_sysindex_recordindex(index_name, table_name, fields, list/qpar, id = null)
 	var/field_text = jointext(fields, ",")
 	var/new_hash = sha1(field_text)
 	qpar.Add("[index_name]")
@@ -416,14 +416,14 @@
 			UPDATE `[connection.database]`.`[BRSQL_SYSINDEXNAME]` SET index_name = ?, table_name = ?, fields_hash = ?, fields_current= ? WHERE id=[text2num(id)];
 		"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_insert_into_backup(table_name, var/list/fields)
+/datum/db/adapter/brsql_adapter/proc/getquery_insert_into_backup(table_name, list/fields)
 	var/field_text = jointext(fields, ", ")
 	return {"
 		INSERT INTO `[connection.database]`.`[BRSQL_BACKUP_PREFIX][table_name]` ([field_text])
 		SELECT [field_text] FROM `[connection.database]`.`[table_name]`
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_insert_from_backup(table_name, var/list/fields)
+/datum/db/adapter/brsql_adapter/proc/getquery_insert_from_backup(table_name, list/fields)
 	var/field_text = jointext(fields, ", ")
 	return {"
 		INSERT INTO `[connection.database]`.`[table_name]` ([field_text])
@@ -431,7 +431,7 @@
 	"}
 
 
-/datum/db/adapter/brsql_adapter/proc/getquery_select_table(table_name, var/list/ids, var/list/fields)
+/datum/db/adapter/brsql_adapter/proc/getquery_select_table(table_name, list/ids, list/fields)
 	var/id_text = ""
 	var/first = TRUE
 	for(var/id in ids)
@@ -443,12 +443,12 @@
 		SELECT [fields?(""+jointext(fields,",")+""):"*"]  FROM `[connection.database]`.`[table_name]` WHERE id in ([id_text])
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_filter_table(table_name, var/datum/db/filter, var/list/pflds, var/list/fields)
+/datum/db/adapter/brsql_adapter/proc/getquery_filter_table(table_name, datum/db/filter, list/pflds, list/fields)
 	return {"
 		SELECT [fields?(""+jointext(fields,",")+""):"*"]  FROM `[connection.database]`.`[table_name]` WHERE [get_filter(filter, null, pflds)]
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_insert_table(table_name, var/list/values, var/list/pflds)
+/datum/db/adapter/brsql_adapter/proc/getquery_insert_table(table_name, list/values, list/pflds)
 	var/calltext = ""
 	var/insert_items = ""
 	var/first = TRUE
@@ -474,12 +474,12 @@
 			local_first = FALSE
 		calltext += "([local_text])"
 		first = FALSE
-	
+
 	return {"
 		INSERT INTO `[connection.database]`.`[table_name]` ([insert_items]) VALUES [calltext];
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_update_row(table_name, var/list/values, var/list/pflds)
+/datum/db/adapter/brsql_adapter/proc/getquery_update_row(table_name, list/values, list/pflds)
 	var/calltext = ""
 	var/first = TRUE
 	var/id = 0
@@ -504,7 +504,7 @@
 		UPDATE `[connection.database]`.`[table_name]` SET [calltext] WHERE id = [id];
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_update_table(table_name, var/list/values, var/list/parameters)
+/datum/db/adapter/brsql_adapter/proc/getquery_update_table(table_name, list/values, list/parameters)
 	var/calltext = ""
 	var/update_items = ""
 	var/first = TRUE
@@ -544,13 +544,13 @@
 		) UPDATE `[connection.database]`.`[table_name]` INNER JOIN `__prep_update` ON `[table_name]`.id = `__prep_update`.id SET [update_items]
 	"}
 
-/datum/db/adapter/brsql_adapter/proc/getquery_delete_table(table_name, var/list/ids)
+/datum/db/adapter/brsql_adapter/proc/getquery_delete_table(table_name, list/ids)
 	var/idtext = ""
 	var/first = TRUE
 	for(var/id in ids)
 		if(!first)
 			idtext+=","
-		idtext += "[text2num(id)]"	
+		idtext += "[text2num(id)]"
 		first = FALSE
 	return {"
 		DELETE FROM `[connection.database]`.`[table_name]` WHERE id IN ([idtext]);
@@ -578,31 +578,31 @@
 			return "BIGINT"
 		if(DB_FIELDTYPE_CHAR)
 			return "VARCHAR(1)"
-		if(DB_FIELDTYPE_STRING_SMALL)	
+		if(DB_FIELDTYPE_STRING_SMALL)
 			return "VARCHAR(16)"
-		if(DB_FIELDTYPE_STRING_MEDIUM)	
+		if(DB_FIELDTYPE_STRING_MEDIUM)
 			return "VARCHAR(64)"
-		if(DB_FIELDTYPE_STRING_LARGE)	
+		if(DB_FIELDTYPE_STRING_LARGE)
 			return "VARCHAR(256)"
-		if(DB_FIELDTYPE_STRING_MAX)	
+		if(DB_FIELDTYPE_STRING_MAX)
 			return "VARCHAR(4000)"
-		if(DB_FIELDTYPE_DATE)	
+		if(DB_FIELDTYPE_DATE)
 			return "DATETIME"
-		if(DB_FIELDTYPE_TEXT)	
+		if(DB_FIELDTYPE_TEXT)
 			return "TEXT"
-		if(DB_FIELDTYPE_BLOB)	
+		if(DB_FIELDTYPE_BLOB)
 			return "BLOB"
 		if(DB_FIELDTYPE_DECIMAL)
 			return "DECIMAL(18,5)"
 	return FALSE
 
-/datum/db/adapter/brsql_adapter/proc/fields2text(var/list/L)
+/datum/db/adapter/brsql_adapter/proc/fields2text(list/L)
 	var/list/result = list()
 	for(var/item in L)
 		result += "[item] [fieldtype2text(L[item])]"
 	return jointext(result, ",")
 
-/datum/db/adapter/brsql_adapter/proc/fields2savetext(var/list/L)
+/datum/db/adapter/brsql_adapter/proc/fields2savetext(list/L)
 	var/list/result = list()
 	for(var/item in L)
 		result += "[item]:[L[item]]"
@@ -616,7 +616,7 @@
 		result[split2[1]] = text2num(split2[2])
 	return result
 
-/datum/db/adapter/brsql_adapter/prepare_view(var/datum/entity_view_meta/view)
+/datum/db/adapter/brsql_adapter/prepare_view(datum/entity_view_meta/view)
 	var/list/datum/entity_meta/meta_to_load = list(BRSQL_ROOT_NAME = view.root_entity_meta)
 	var/list/meta_to_table = list(BRSQL_ROOT_NAME = BRSQL_ROOT_ALIAS)
 	var/list/datum/db/filter/join_conditions = list()
@@ -634,7 +634,7 @@
 		if(!field_path)
 			field_path = field
 		internal_parse_column(field, field_path, view, shared_options, meta_to_load, meta_to_table, join_conditions, field_alias)
-	
+
 	if(view.root_filter)
 		var/list/filter_columns = view.root_filter.get_columns()
 		for(var/field in filter_columns)
@@ -642,14 +642,14 @@
 
 	internal_generate_view_query(view, shared_options, meta_to_load, meta_to_table, join_conditions, field_alias)
 
-/datum/db/adapter/brsql_adapter/proc/internal_proc_to_text(var/datum/db/native_function/NF, var/list/field_alias, var/list/pflds)
+/datum/db/adapter/brsql_adapter/proc/internal_proc_to_text(datum/db/native_function/NF, list/field_alias, list/pflds)
 	switch(NF.type)
 		if(/datum/db/native_function/case)
 			var/datum/db/native_function/case/case_f = NF
 			var/result_true = case_f.result_true
 			var/result_false = case_f.result_false
 			var/condition_text = get_filter(case_f.condition, field_alias, pflds)
-			var/true_text			
+			var/true_text
 			if(result_true)
 				var/datum/db/native_function/native_true = result_true
 				if(istype(native_true))
@@ -673,9 +673,9 @@
 				false_text = "ELSE ([false_text]) "
 			return "CASE WHEN [condition_text] THEN ([true_text]) [false_text] END"
 		else
-			return NF.default_to_string(field_alias, pflds)	
+			return NF.default_to_string(field_alias, pflds)
 
-/datum/db/adapter/brsql_adapter/proc/internal_generate_view_query(var/datum/entity_view_meta/view, var/list/shared_options, var/list/datum/entity_meta/meta_to_load, var/list/meta_to_table, var/list/datum/db/filter/join_conditions, var/list/field_alias)
+/datum/db/adapter/brsql_adapter/proc/internal_generate_view_query(datum/entity_view_meta/view, list/shared_options, list/datum/entity_meta/meta_to_load, list/meta_to_table, list/datum/db/filter/join_conditions, list/field_alias)
 	var/list/pre_pflds = list()
 	var/query_text = "SELECT "
 	for(var/fld in view.fields)
@@ -696,7 +696,7 @@
 		var/join_c = get_filter(join_conditions[alias_t], null, pre_pflds)
 		join_text += "LEFT JOIN "
 		join_text += "`[connection.database]`.`[name_t]` as `[alias_t]` on [join_c] "
-	
+
 	query_text += join_text
 
 	query_text += "WHERE "
@@ -734,7 +734,7 @@
 		var/group_text = "GROUP BY "
 		var/index_order = 1
 		for(var/fld in view.group_by)
-			var/field = field_alias[fld]			
+			var/field = field_alias[fld]
 			group_text += "[field]"
 			if(index_order != group_length)
 				group_text += ","
@@ -745,12 +745,12 @@
 	cached_queries[key] = new /datum/db/brsql_cached_query(src, query_part_1, query_part_2, field_alias, pre_pflds, post_pflds)
 
 
-/datum/db/adapter/brsql_adapter/proc/internal_parse_column(field, field_value, var/datum/entity_view_meta/view, var/list/shared_options, var/list/datum/entity_meta/meta_to_load, var/list/meta_to_table, var/list/datum/db/filter/join_conditions, var/list/field_alias)
+/datum/db/adapter/brsql_adapter/proc/internal_parse_column(field, field_value, datum/entity_view_meta/view, list/shared_options, list/datum/entity_meta/meta_to_load, list/meta_to_table, list/datum/db/filter/join_conditions, list/field_alias)
 	var/datum/db/native_function/NF = field_value
 	// this is a function?
 	if(istype(NF))
 		var/list/field_list = NF.get_columns()
-		
+
 		for(var/sub_field in field_list)
 			internal_parse_column(sub_field, sub_field, view, shared_options, meta_to_load, meta_to_table, join_conditions, field_alias)
 		if(field)

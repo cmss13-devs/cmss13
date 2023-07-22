@@ -1,0 +1,495 @@
+2023-02-01:
+  BeagleGaming1:
+  - spellcheck: Fixes a missing space in Death Nettle's description
+  - bugfix: Xenos can unbuckle marines from Operating Tables
+  Waseemq1235:
+  - bugfix: Removes Weyland from random generated names
+  realforest2001:
+  - bugfix: Maploader no longer nukes ghosts into a weird glitchy state where they
+      can't see anything
+  stanalbatross:
+  - code_imp: removed all useless overspecific .0s from the codebase
+2023-02-02:
+  BKryth:
+  - balance: Increased cost of Sentry Post to 600 to 800
+  - balance: Increased the distance required on how far apart they must be from another
+      turret from 2 to 4
+  - balance: Increased the light the omni sentry emits
+  - rscadd: Sentry Post now breaks barricades on where it lands
+  - rscadd: Sentry Post can be upgraded with 10 metal to give it extra maximum health
+  - rscadd: Sentry Post now requires a manual reload every 100 shots with a 500 rounds
+      stored internally
+  LynxSolstice, Geeves:
+  - balance: interaction circles that appear of above your head while cloaked are
+      now harder to see (does not include circles above interacted with objects (ie.
+      nests, C4s, breaching charges, xenos eating people, whatever predators have).
+      That is to say, interaction circles inherit the alpha of cloaked users.
+  Segrain:
+  - bugfix: Timed actions are once again actually correctly timed.
+2023-02-03:
+  carlarctg:
+  - code_imp: 'Ports backend support for 64x64 onmob (and item) sprites from TGstation
+      PR #12465.'
+  - rscadd: VASTLY enhances the Black Market. Black market items are obtainable by
+      deconstructing a supply computer and pulsing the circuit board. If you're knowledgeable
+      in engineering enough.
+  - rscadd: Added a whole new category for black market items and thoroughly enhanced
+      the possible contraband items to order. Guns, drugs, and worse are plentiful
+      in stock...
+  - rscadd: Various valuable, rare, or otherwise interesting items now have a 'black
+      market value' that allows them to be sent down the ASRS elevator in exchange
+      for black market points to order various things with. Anything that's 'rare'
+      is probably worth something. Added a scanner to the black market to let them
+      detect said points.
+  - rscadd: Added DIALOGUE to the black market.
+  - bugfix: FIxed some construction wirecutter steps needing a screwdriver for some
+      reason.
+  - spellcheck: slightly changed human remains' description
+  - rscadd: Added the maintenance jack, can be found in the black market for now.
+  - code_imp: Improved supply shuttle code somewhat.
+  realforest2001:
+  - code_imp: Explosions are now hard-capped by code.
+  stanalbatross:
+  - ui: added a dropdown list and search functionality to the keybind tgui to make
+      it significantly easier to use
+  - bugfix: fixed synths being able to attack via throwing when in smartpack protection
+      mode
+  - bugfix: ghosts can no longer take huggers from eggs prehijack shipside
+  zeroisthebiggay:
+  - spellcheck: '''executed by headbite'' to ''headbite execution'' when listing someone
+      dying to a headbite in deadchat'
+2023-02-04:
+  NewyearnewmeUwu:
+  - code_imp: modernizes the poor eyesight trait to use eyeblur
+  carlarctg:
+  - balance: Made Flurry target a completely random limb.
+  - balance: Headbite does 60 damage to the head instead of 200. (Still instakills)
+  - code_imp: Removed unused variable from tail jab.
+  stanalbatross:
+  - bugfix: fixed a potential runtime in clothing.dm and added a better debug message
+      for it.
+2023-02-05:
+  BeagleGaming1:
+  - bugfix: Changed layer of LV-624's tree so you can see the medical hud if marines
+      are hidden (dead) behind it
+  KiVts:
+  - bugfix: fixed bugs related to dropship matrices
+  harryob:
+  - refactor: the tacmap is now better, everywhere it appears, for the queen and cic
+  - ui: the orbit menu now has icons (from the minimap)
+  - rscadd: ghosts now get a minimap
+  - bugfix: extended now actually works, and doesn't spawn in inhuman abombinations
+2023-02-06:
+  BeagleGaming1:
+  - bugfix: Crew Monitoring computers can now be deconstructed the same way as any
+      computer
+  - bugfix: The ASRS can no longer steal your groin.
+  Morrow:
+  - balance: Removes ultrazine spawns on maps.
+  - balance: Removes ultrazine and antag stims as explicit random loot items.
+  NewyearnewmeUwu:
+  - rscdel: Removed skull balaclavas and skull facepaint from the loadout options
+  - maptweak: adds a single skull facepaint and balaclava, each hidden in their own
+      locations on the Almayer.
+  Zonespace27:
+  - admin: Attack logs are no longer displayed to chat by default
+  harryob:
+  - refactor: refactor's admin VV
+  - admin: can now edit lists with any reliability, can now edit bitfields without
+      maths
+  - ui: added the particle editor and colour matrix editor (from tiviplus and Y0SH1M4S73R
+      respectively) for admins via VV
+  - qol: you can now keybind every emote
+  - refactor: emotes are now datums
+  realforest2001:
+  - server: TGUI logs are now in a unique file to reduce clutter.
+  - server: Temporarily increases maximum bantime due to system issues.
+2023-02-07:
+  Morrow:
+  - balance: Removes slight randomness in armor and critical armor pierce chance
+  NewyearnewmeUwu:
+  - spellcheck: you will no longer be struck by Tail Sweep's Tail Sweep.
+  Zonespace27:
+  - admin: You no longer need to stay adminned to get newbie popups as SEA
+  stanalbatross:
+  - bugfix: fixed being able to use the pickup keybind while incapacitated
+2023-02-08:
+  Zonespace27:
+  - bugfix: Fixed uniforms causing excessive server lag
+  stanalbatross:
+  - rscdel: removed the MP timelock requirement from XO, CE, and RO
+  - rscdel: removed the RTO timelock requirement from SL, instead you now need 10
+      hours of squad roles
+  - bugfix: fixed some small or uncommon runtimes
+2023-02-09:
+  CapCamIII:
+  - rscadd: PMCs are now able to use antag vendors.
+  - balance: Multiple loadout and skill changes to PMCs and Whiteout
+  - balance: Buffs whiteout flame damage to blue flame damage.
+  - bugfix: PMC Investigator Lead now appropriately spawns with a medical pouch in
+      their pocket, instead of nothing.
+  - bugfix: Maximum skill preset now appropriately also has BE and intel skill, at
+      maximum of course.
+  - bugfix: PMC Smartgunner now appropriately a VP78 to go along with their VP78 magazines
+  - bugfix: Whiteout now appropriately have night vision.
+  - bugfix: M41A/2 now appropriately comes equipped with a collapsible stock.
+  - spellcheck: PMC smartgun drum now has a seperate description and name from base
+      SG to match its different appearance.
+  harryob:
+  - bugfix: you can now unbind special keybinds, and your keybind preferences won't
+      be forgotten
+  - admin: msay now appears within tgui-say
+  stanalbatross:
+  - refactor: refactored /gib so it cannot be written in a bugcausing way
+  - bugfix: fixed 2 runtimes
+  theflyingflail:
+  - bugfix: 'fixed skylight nightmare insert survivor spawner
+
+      :cl:
+
+      <!-- Both :cl:''s are required for the changelog to work! -->'
+2023-02-10:
+  NewyearnewmeUwu:
+  - refactor: refactored mobs.dm, mob_defines
+  - code_imp: changed up the IO phone code
+  harryob:
+  - bugfix: removed unnecessary debug from runtime logs
+  insertnamehere123:
+  - spellcheck: grund is now ground
+  stanalbatross:
+  - code_imp: removed some <span>s and replaced w/ macros
+2023-02-11:
+  Jade_Pearl:
+  - bugfix: Readded the beloved *whimper emote for humans.
+  Molto:
+  - bugfix: fixed the spearhead honk icon
+  - imageadd: added the spearhead flipped icon
+  carlarctg:
+  - balance: 'Updates and buffs the following weapons: Basira-Armstrong Rifle, Model
+      12 Bolt-Action Rifle, M37-17 pump shotgun, Dragunov sniper rifle'
+  - imageadd: The Basira rifle has been reflavored as the removed 'ceremonial' ABR-40,
+      now a hunting-civilian version of the L42. It effectively has the same stats
+      as the L42, just don't take the stock off!
+  - rscadd: 'Its magazines can only fit 12 bullets, but they still have the classic
+      L42 kick to them. The magazines are completely compatible between both military
+      and civilian gun types.
+
+      add:: Additionally, there are now holo-targeting magazines available for the
+      ABR-40, for hunting target capture purposes.'
+  - rscadd: The Contractor ERT has a chance to spawn with a tacticool ABR-40 loadout,
+      with three spare holotarget magazines on their webbing.
+  - balance: Like the bolt-action rifle's sprite implies, this is now the new Basira-Armstrong
+      rifle.
+  - rscadd: Its stats have recieved an overhaul and it can now hold its own against
+      a Xenomorph (or marine if you're CLF)
+  - rscadd: Additionally, its bullets will push back (not stun) targets within three
+      meters, to increase viability for colony usage.
+  - balance: Did you know that the 10% damage mod the M37-17 pump shotgun was supposed
+      to have didn't work? Now it does! And it deals 15% more damage to make up for
+      it.
+  - rscdel: However, it can now be melted down.
+  - balance: The dragunov has been revamped into a DMR, needing no skill to fire,
+      dealing good damage, and having the same push-back feature the bolt-action now
+      has.
+  - balance: Removes Autodocs from the Almayer
+  harryob:
+  - admin: mods can now access the view combat logs button
+  - ui: changes the main interface a bit
+  - bugfix: vendors are a little more responsive now
+2023-02-12:
+  BeagleGaming1:
+  - admin: Added a Queen Mother Subtle Message
+  carlarctg:
+  - code_imp: Cleans up some machinery harddels
+  - bugfix: Fixes Zombie Powder bugging the fuck out by slapping a ton of FAKEDEATH
+      checks everywhere. It now properly shows the holder as dead on HUDs and scans.
+  - bugfix: Fixed an issue in which sometimes qdeleted reagents still procced on life.
+  - bugfix: Fixed examining things changing your direction if you're incapacitated.
+  - bugfix: Added FAKEDEATH to the mob_incapacitated() check.
+2023-02-13:
+  Huffie56:
+  - maptweak: renamed buttons for secures storage to Secure Inner Doors and Secure
+      Outer Doors to make it more clear of what they do.
+  - maptweak: fix a floating apc in armory on standard map
+  NewyearnewmeUwu:
+  - maptweak: changes the default ss13 airlock in big red tcomms to a cm airlock
+  - bugfix: removed the funny misplaced door on shivas
+  - spellcheck: RO sign now says aCO instead of aXO
+  carlarctg:
+  - spellcheck: Removed all instances of 'colour' and replaced them with 'color'
+  realforest2001:
+  - bugfix: Fixes unnamed doors on colonies.
+  - bugfix: 'Fixes duplicate definitions from #2164'
+2023-02-14:
+  BKryth:
+  - refactor: moved the code for sentry laptop's table placement to a parent object
+      so it can be used by other objects.
+  stanalbatross:
+  - rscdel: got rid of storage powergame, laser guns, pred healing equipment, and
+      spiders from the black market
+2023-02-15:
+  Mister-moon1:
+  - qol: Yautja and WJs can now emote without a cooldown being initiated
+  NewyearnewmeUwu:
+  - code_imp: gibbing another human takes an unmodifiable 30 seconds
+  - admin: admins are alerted when a human tries to gib another human
+2023-02-16:
+  BeagleGaming1:
+  - bugfix: Restricts deconstructing racks / tables to all intents but help, allowing
+      you to place wrenches on tables and racks
+  Molto:
+  - bugfix: fixed steak sometimes not giving cutlet
+  NewyearnewmeUwu:
+  - maptweak: you can now walk below the water cooler in kutjevo medical
+  TheDonkified:
+  - bugfix: Loading a new character slot will properly update your character trait
+      points. You can now modify multiple human characters' character traits without
+      having to reload.
+  carlarctg:
+  - imageadd: Adds 64x64 'super top hat' as a toy item. Adds it to toy lists and to
+      the toy store in Big Red.
+  nauticall:
+  - rscadd: Added several new fortunes to fortune cookies.
+  - code_imp: Alphabetized the fortunes.txt file for fortune cookie blurbs.
+  realforest2001:
+  - rscadd: 'Updates Almayer ID Codes:'
+  - rscadd: Rebrands "Logistics" to "Database" as its primary function is to update
+      other IDs/Squad stuff. Removed Database from roles that ought not have it.
+  - rscadd: CMO has been given Database access.
+  - rscadd: Rebrands "Bridge" as "Command" as it was used for all command areas anyway.
+      Most doors that used Logistics, other than squad ones, now use Command.
+  - rscadd: Senior Command given access to Brig, however only to the office portion,
+      not holding cells.
+  - rscadd: Armory access code has been put to use again.
+  - rscadd: Maintenance Access no longer allows you to walk into rooms you don't have
+      access to.
+  - rscadd: Moved MP Armory button to the door it opens rather than CMPs office.
+  - rscadd: Commanding Officer's Office has had a remote door control button placed
+      on the desk, to let people in and out.
+  - spellcheck: Renamed ACCESS_MARINE_WO to ACCESS_MARINE_CMP as it is long outdated.
+  - rscadd: Engineering Storage can no longer be hacked.
+  - rscdel: Removed Brig access from Staff Officer and Intel Officer, along with two
+      admin dress clothes presets.
+  - bugfix: Riot Control lockers open on code blue, the correct level for their use.
+  - bugfix: Fixes two random brig doors in the middle of CIC hallway
+  stanalbatross:
+  - bugfix: fixed the healthscanner not showing the colour of chems and advice
+2023-02-17:
+  BeagleGaming1:
+  - bugfix: Makes CHUNK boxes not lethal
+  NewyearnewmeUwu:
+  - rscadd: IOs can now get a service jacket from their vendor.
+  - rscdel: IOs no longer spawn with the tanker jacket.
+  Silencer_pl:
+  - imageadd: Older, more anatomically correct and less cartoony cat sprites have
+      been readded. Jones is a calico again!
+  - rscdel: Cats can no longer be gibbed in ATMs.
+  harryob:
+  - admin: staff log -> admin log
+  - qol: you can now keybind showing held item
+  - bugfix: prevents silly bubbles appearing after death or unconsciousness
+  realforest2001:
+  - bugfix: Fixes compilation
+  stanalbatross:
+  - code_imp: repathed camera consoles to make more sense
+  - bugfix: fixed a minor bug with cameras
+  - rscdel: survivors and corpses can no longer spawn with 7-slot combat packs
+  - bugfix: fixed a few instances of surv presets having satchels that overrode each
+      other
+2023-02-18:
+  realforest2001:
+  - bugfix: The predator Falcon drone now has a sprite for observers, rather than
+      being a random white queen eye
+2023-02-19:
+  BeagleGaming1:
+  - bugfix: Gives Cargo Containers subtypes
+  - maptweak: The small containers are now properly only 1 tile high
+  Morrow:
+  - balance: Gives Researchers Intel 1
+  NewyearnewmeUwu:
+  - maptweak: opened up 2 spots in Trijent's sand temple area
+  carlarctg:
+  - rscadd: Adds a new (and currently the only) random event, 'Economy Inflation'.
+      The USS Almayer recieves a broad-band signal sent to all nearby UA-affiliated
+      colonies and vessels that requests a specific kind of vendors stationed on them
+      have their prices increased, due to some randomly-selected incident backstory.
+      There will be a random delay before the change comes into effect, so make sure
+      you buy all you need beforehand! The announcement will only be visible shipside
+      to avoid communications clutter.
+  - code_imp: Added 'product type' variable to non-CM vendors, such as food, beverages,
+      souto, recreation, used for the above.
+  - code_imp: Added a global list for non-CM vending machines.
+2023-02-20:
+  Totalepicness:
+  - balance: Fixes base crusher having half it's intended cooldown for the shield
+      ability
+  carlarctg:
+  - rscadd: Added a lisping character trait, makes you thound thupid. All roles above
+      Staff Sergeant are unable to lisp, and neither is any kind of Synthetic. Predators
+      can lisp if they really want to, not really recommended. Pretty sure most active
+      predators would kill you for that, but the option's there.
+  harryob:
+  - rscadd: mentors can now appear as an imaginary SEA to newer players in need of
+      a hand
+  - bugfix: removed some errors from the options and messages menu
+  - bugfix: fixed runtimes when accessing gun stat interfaces
+  - bugfix: restored the previous functionality of larva/facehuggers having little
+      rees
+  stanalbatross:
+  - qol: added a keybind for rotate-chair
+2023-02-21:
+  Puckaboo2:
+  - bugfix: Gardener Drone will now have her 5% healing buff on weeds properly applied.
+  - code_imp: Any xenomorph strain description that previously did not completely
+      disclose any abilities or attributes that will be removed or changed upon mutating
+      will now disclose them, often within the first sentence.
+  - rscadd: Every xenomorph strain now has flavor text, personalized as a message
+      from the Queen, herself.
+  Segrain:
+  - bugfix: WO works once again.
+  TheDonkified:
+  - bugfix: Table flipping and unflipping is now more descriptive and less buggy.
+      You can no longer flip table that you are on top of.
+  carlarctg:
+  - rscadd: Increased amount of prey cats can leap upon, including larva and facehuggers.
+2023-02-22:
+  carlarctg:
+  - soundadd: Added two unused sounds, one roar, one death noise, for the future.
+  - soundadd: Added predalien growl to Devastate, predalien pounce noise to Pounce,
+      and gave predalien its unique death noise.
+  - soundadd: Added a predator facehugged noise.
+  - soundadd: Added medium-strength footsteps to Predalien.
+  - code_imp: Added a pre_pounce_effects() proc.
+  - refactor: Refactored binocular overlays and camos into being variable-dependent.
+  harryob:
+  - admin: admins can now harm mobs by specific damage types in vv again
+  insertnamehere123:
+  - spellcheck: Changed a noun (Water) to an adjective (Watery)
+2023-02-23:
+  CapCamIII:
+  - spellcheck: Changes the following weapon names. XM42B to XM43E1, M1911 SOCOM >
+      M48A4, M43 Hummingbird > D18 Hummingbird, M40-SD > XM40, Mk210 > XM38
+  - spellcheck: B8 smartscope now doesn't say it fits on the M46C.
+  Joe lampost:
+  - rscadd: 'Added one emote and changed another emote
+
+      add:Predators can now self destruct bracers worn by humans'
+  - bugfix: fixed the loudroar emote
+  NewyearnewmeUwu:
+  - bugfix: crates are now always unanchored when they land
+  Puckaboo2:
+  - bugfix: Mentioned how Charger's stomp changes in the strain description and how
+      Hedgehog has immunity to small explosions.
+  - spellcheck: Fixed some grammar and spelling errors in the strain descriptions.
+  Tropical_Flak:
+  - imageadd: Changed the Seegson cargo container to be yellow instead of green.
+  carlarctg:
+  - rscadd: Braziers and torches can now be crafted with runed sandstone sheets by
+      Yautja. Braziers need to be filled with wood and then lit. Torches just need
+      to be lit.
+  - rscadd: Plasma casters and pistols are now heat sources so they can ignite braziers
+      and torches.
+  realforest2001:
+  - bugfix: Provost Enforcers and Team Leaders can now USE the beanbags they spawn
+      with.
+2023-02-24:
+  Puckaboo2:
+  - bugfix: Added the missing icon states of several uniforms which had the ability
+      to roll sleeves up.
+  harryob:
+  - ui: adds an escape menu, with some (not many) buttons on it
+  - qol: prevented new keybinds binding over existing ones
+  - bugfix: prevented ert spawns causing unknown demons if you disconnect after becoming
+      a candidate
+2023-02-25:
+  IowaPotatoFarmer:
+  - rscadd: Added the ability for xenomorphs to turn off hardhats on the ground.
+  - bugfix: Hardhat headlamps no longer stay on when their wearer dies.
+  - code_imp: Changed hardhat code to be in line with flashlight code.
+  LynxSolstice:
+  - maptweak: Makes LV624 more jungle-y and less desert-like. North of the river changed
+      to reflect this. All grass turfs (turf/open/gm/grass) replaced with their weedable
+      variant (turf/open/gm/grass/weedable)
+  Puckaboo2:
+  - bugfix: Reinforced resin secretions now have separate ability icons from their
+      normal counterparts.
+  - bugfix: Resin secretion ability icons without borders now fit snugly inside their
+      templates.
+  - bugfix: All ability icons that either did not have borders, had misshapen borders,
+      had incorrect colors in portions of their borders, or  did not align properly
+      in the ability icon template now have a proper border surrounding their icons
+      and have been moved to their proper position.
+  - bugfix: Removed a beige pixel in the slashing animation.
+  - bugfix: Headbite's animation is now anatomically accurate.
+  - imageadd: 'Added 3 different bite animations: one for humans, one for carnivorous
+      mammals, and one for vampiric creatures.'
+  - bugfix: Humans will now cover their noses when they wear surgical masks.
+  carlarctg:
+  - bugfix: Fixed building braziers not building braziers.
+  - bugfix: Plasma pistols (and cutters) can be placed in storage again.
+  - code_imp: Added a new flag, IGNITING_ITEM, that lets 'heat source' items fit inside
+      storage.
+  - refactor: Refactors gun, attachment, ammo, and ammo box icons to be held in separate
+      folders per faction.
+  mullenpaul:
+  - refactor: alamo and normandy now using tgshuttles
+  - refactor: escape pods now using tgshuttles
+  - refactor: when a pilot flies the dropship optimisation will automatically apply
+  - refactor: temporarily forced autopilot delay to 30s
+  - maptweak: all maps now use tgshuttles for landing zones
+  - maptweak: all escape pods now tgshuttles
+  - admin: moved admin shuttle to shuttle manipulator
+2023-02-26:
+  BeagleGaming1:
+  - bugfix: Fixes a log_debug error
+  Carlarc, Nauticall:
+  - soundadd: Added squeak plush noises used both on the new plush and on the farwa
+      dolls.
+  - imageadd: Added a new plushie, hidden somewhere.
+  - code_imp: Added a helpful inhands template to the files.
+  Sulaboy:
+  - rscadd: Added item M276 pattern combat toolbelt rig as a point buy item (15 points)
+      to combat engineer vendor.
+  - imageadd: Sprites for M276 pattern combat toolbelt rig
+2023-02-27:
+  BeagleGaming1:
+  - bugfix: Working Joes no longer get custom loadout items
+  CapCamIII:
+  - bugfix: Marine Raiders spawn not starving again.
+  NewyearnewmeUwu:
+  - bugfix: you will no longer become Unknown when you ghost
+  - bugfix: speaking a different default language than English while whispering now
+      works.
+  harryob:
+  - bugfix: your hotkeys actually save
+  - bugfix: unbinding hotkeys works properly
+  - bugfix: no ghost "Unbound" when you rebind the key to a new key
+  - bugfix: '"Unbound" appears when you unbind a key in a janky way'
+  - ui: the keybind menu now searches every category for hotkeys, not just the category
+      you're in
+  - ui: the keybind menu is less janky to use, and doesn't require you to click to
+      select your input
+2023-02-28:
+  CapCamIII:
+  - rscadd: Adds the M4RA as the standard marine DMR, identical stats to L42 with
+      the exception of fitting a v or agrip and no removable stock, stats still the
+      same as l42 without stock.
+  - rscdel: L42 from all marine accessible sources with the exception of black market
+  - balance: Scout M4RA is now the M4RA Custom, it can use standard M4RA magazines
+      but standard M4RA cannot use custom magazines.
+  - balance: Scout M4RA now has L42/M4RA standard stats with the exception of lower
+      damage.
+  - balance: Scout M4RA now can fit magnetic harness, laser sight, however it can
+      no longer fit recoil compensator
+  - bugfix: R4T sling now has the correct color scheme on LV522
+  - spellcheck: New desc for M4RA and L42 by misty
+  - imageadd: New M4RA icons by triio, both scout and normal
+  Kraso:
+  - bugfix: Berserker ravager's Apprehend ability no longer slows you down for an
+      absurd amount of time.
+  Segrain:
+  - bugfix: Ghosts no longer can stop you from unflipping a table.
+  - bugfix: Igniters can once again be put into containers.
+  harryob:
+  - bugfix: the xm-88 mouse cursor was appearing when it shouldn't (without the scope),
+      and you can now opt out of seeing custom mouse cursors entirely

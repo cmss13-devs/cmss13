@@ -3,7 +3,7 @@
 	name = "Delimb"
 	permissions_required = R_VAREDIT
 
-/datum/player_action/delimb/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/delimb/act(client/user, mob/target, list/params)
 	if(!params["limbs"] || !ishuman(target))
 		return
 
@@ -29,7 +29,7 @@
 	name = "Relimb"
 	permissions_required = R_VAREDIT
 
-/datum/player_action/relimb/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/relimb/act(client/user, mob/target, list/params)
 	if(!params["limbs"] || !ishuman(target))
 		return
 
@@ -69,7 +69,7 @@
 	name = "Cryo Human"
 
 
-/datum/player_action/cryo_human/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/cryo_human/act(client/user, mob/target, list/params)
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		if(H.assigned_squad)
@@ -93,7 +93,7 @@
 					if(set_name && !available_specialist_sets.Find(set_name))
 						available_specialist_sets += set_name
 			S.forget_marine_in_squad(H)
-		message_staff("[key_name_admin(user)] sent [key_name_admin(target)] ([H.job]) to cryogenics.")
+		message_admins("[key_name_admin(user)] sent [key_name_admin(target)] ([H.job]) to cryogenics.")
 
 	SSticker.mode.latejoin_tally-- //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
 
@@ -127,7 +127,7 @@
 	name = "Set Speed"
 	permissions_required = R_VAREDIT
 
-/datum/player_action/set_speed/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/set_speed/act(client/user, mob/target, list/params)
 	if(isnull(params["speed"]))
 		return
 
@@ -140,7 +140,7 @@
 	name = "Set Status Flags"
 	permissions_required = R_VAREDIT
 
-/datum/player_action/set_status_flags/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/set_status_flags/act(client/user, mob/target, list/params)
 	if(isnull(params["status_flags"]))
 		return
 
@@ -153,7 +153,7 @@
 	name = "Set Pain"
 	permissions_required = R_VAREDIT
 
-/datum/player_action/set_pain/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/set_pain/act(client/user, mob/target, list/params)
 	if(isnull(params["feels_pain"]))
 		return
 
@@ -170,7 +170,7 @@
 	name = "Select Equipment"
 	permissions_required = R_SPAWN
 
-/datum/player_action/select_equipment/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/select_equipment/act(client/user, mob/target, list/params)
 	user.cmd_admin_dress_human(target)
 	return TRUE
 
@@ -179,14 +179,18 @@
 	name = "Strip Equipment"
 	permissions_required = R_SPAWN
 
-/datum/player_action/strip_equipment/act(var/client/user, var/mob/target, var/list/params)
-	for (var/obj/item/I in target)
-		if(params["drop_items"])
-			target.drop_inv_item_to_loc(I, target.loc, FALSE, TRUE)
-		else
-			qdel(I)
+/datum/player_action/strip_equipment/act(client/user, mob/target, list/params)
+	for (var/obj/item/current_item in target)
+		if(istype(current_item, /obj/item/card/id))
+			continue
 
-	message_staff("[key_name_admin(user)] stripped [target] of their items.")
+		if(params["drop_items"])
+			target.drop_inv_item_to_loc(current_item, target.loc, FALSE, TRUE)
+			continue
+
+		qdel(current_item)
+
+	message_admins("[key_name_admin(user)] stripped [target] of their items.")
 	return TRUE
 
 /datum/player_action/set_squad
@@ -194,7 +198,7 @@
 	name = "Set Squad"
 	permissions_required = R_VAREDIT
 
-/datum/player_action/set_squad/act(var/client/user, var/mob/living/carbon/human/target, var/list/params)
+/datum/player_action/set_squad/act(client/user, mob/living/carbon/human/target, list/params)
 	var/list/squads = list()
 	for(var/datum/squad/S in RoleAuthority.squads)
 		squads[S.name] = S
@@ -205,7 +209,7 @@
 
 	var/success = transfer_marine_to_squad(target, squads[selected_squad], target.assigned_squad, target.get_idcard())
 
-	message_staff("[key_name_admin(user)][success ? "" : " failed to"] set [key_name_admin(target)]'s squad to [selected_squad].")
+	message_admins("[key_name_admin(user)][success ? "" : " failed to"] set [key_name_admin(target)]'s squad to [selected_squad].")
 	return TRUE
 
 /datum/player_action/set_faction
@@ -213,12 +217,12 @@
 	name = "Set Faction"
 	permissions_required = R_VAREDIT
 
-/datum/player_action/set_faction/act(var/client/user, var/mob/living/carbon/human/target, var/list/params)
+/datum/player_action/set_faction/act(client/user, mob/living/carbon/human/target, list/params)
 	var/new_faction = tgui_input_list(usr, "Select faction.", "Faction Choice", FACTION_LIST_HUMANOID)
 	if(!new_faction)
 		new_faction = FACTION_NEUTRAL
 	target.faction = new_faction
 	target.faction_group = list(new_faction)
 
-	message_staff("[key_name_admin(user)][new_faction ? "" : " failed to"] set [key_name_admin(target)]'s faction to [new_faction].")
+	message_admins("[key_name_admin(user)][new_faction ? "" : " failed to"] set [key_name_admin(target)]'s faction to [new_faction].")
 	return TRUE

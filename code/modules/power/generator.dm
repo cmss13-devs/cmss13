@@ -2,8 +2,8 @@
 	name = "thermoelectric generator"
 	desc = "It's a high efficiency thermoelectric generator."
 	icon_state = "teg"
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 100 //Watts, I hope.  Just enough to do the computer and display things.

@@ -27,7 +27,7 @@
 	to_chat(M, SPAN_NOTICE(" This allows you to speak privately with your fellow UPP allies."))
 	to_chat(M, SPAN_NOTICE(" Utilize it with your radio to prevent enemy radio interceptions."))
 
-/datum/emergency_call/upp_commando/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/upp_commando/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -36,7 +36,7 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
 
-	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))       //First one spawned is always the leader.
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/upp/commando/leader, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Commando Team Leader of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
@@ -49,5 +49,5 @@
 		arm_equipment(H, /datum/equipment_preset/upp/commando, TRUE, TRUE)
 	print_backstory(H)
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 

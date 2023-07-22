@@ -1,9 +1,9 @@
 /* Tables and Racks
  * Contains:
- *		Tables
- *		Wooden tables
- *		Reinforced tables
- *		Racks
+ * Tables
+ * Wooden tables
+ * Reinforced tables
+ * Racks
  */
 
 /*
@@ -14,10 +14,10 @@
 	desc = "A square metal surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
 	icon = 'icons/obj/structures/tables.dmi'
 	icon_state = "table"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	layer = TABLE_LAYER
-	throwpass = 1	//You can throw objects over this, despite it's density.")
+	throwpass = 1 //You can throw objects over this, despite it's density.")
 	climbable = 1
 	breakable = 1
 	var/parts = /obj/item/frame/table
@@ -48,7 +48,7 @@
 	update_adjacent()
 	update_icon()
 
-/obj/structure/surface/table/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/surface/table/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_TYPE_CRAWLER|PASS_CRUSHER_CHARGE
@@ -66,19 +66,21 @@
 	return ..()
 
 /obj/structure/surface/table/proc/update_adjacent(location)
-	if(!location) location = src //location arg is used to correctly update neighbour tables when deleting a table.
+	if(!location)
+		location = src //location arg is used to correctly update neighbour tables when deleting a table.
+
 	for(var/direction in CARDINAL_ALL_DIRS)
 		var/obj/structure/surface/table/T = locate(/obj/structure/surface/table, get_step(location,direction))
-		if(T)
+		if(T && !HAS_TRAIT(T, TRAIT_TABLE_FLIPPING))
 			T.update_icon()
 
 /obj/structure/surface/table/Crossed(atom/movable/O)
 	..()
-	if(istype(O,/mob/living/carbon/Xenomorph/Ravager) || istype(O,/mob/living/carbon/Xenomorph/Crusher))
-		var/mob/living/carbon/Xenomorph/M = O
+	if(istype(O,/mob/living/carbon/xenomorph/ravager) || istype(O,/mob/living/carbon/xenomorph/crusher))
+		var/mob/living/carbon/xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
 			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
-			deconstruct()
+			deconstruct(FALSE)
 
 /obj/structure/surface/table/Destroy()
 	var/tableloc = loc
@@ -129,11 +131,11 @@
 				if(direction < 5)
 					dir_sum += direction
 				else
-					if(direction == 5)	//This permits the use of all table directions. (Set up so clockwise around the central table is a higher value, from north)
+					if(direction == 5) //This permits the use of all table directions. (Set up so clockwise around the central table is a higher value, from north)
 						dir_sum += 16
 					if(direction == 6)
 						dir_sum += 32
-					if(direction == 8)	//Aherp and Aderp.  Jezes I am stupid.  -- SkyMarshal
+					if(direction == 8) //Aherp and Aderp.  Jezes I am stupid.  -- SkyMarshal
 						dir_sum += 8
 					if(direction == 10)
 						dir_sum += 64
@@ -158,7 +160,7 @@
 		dir_sum %= 16
 	if((dir_sum%16) in list(13, 14, 7, 11)) //Three-way intersection
 		table_type = 5 //full table as three-way intersections are not sprited, would require 64 sprites to handle all combinations.  TOO BAD -- SkyMarshal
-		switch(dir_sum%16)	//Begin computation of the special type tables.  --SkyMarshal
+		switch(dir_sum%16) //Begin computation of the special type tables.  --SkyMarshal
 			if(7)
 				if(dir_sum == 23)
 					table_type = 6
@@ -260,14 +262,19 @@
 
 /obj/structure/surface/table/attackby(obj/item/W, mob/user, click_data)
 	if(!W) return
+
+	if (W.has_special_table_placement)
+		W.set_to_table(src)
+		return
+
 	if(istype(W, /obj/item/grab) && get_dist(src, user) <= 1)
-		if(isXeno(user)) return
+		if(isxeno(user)) return
 		var/obj/item/grab/G = W
 		if(istype(G.grabbed_thing, /mob/living))
 			var/mob/living/M = G.grabbed_thing
 			if(user.a_intent == INTENT_HARM)
 				if(user.grab_level > GRAB_AGGRESSIVE)
-					if (prob(15))	M.apply_effect(5, WEAKEN)
+					if (prob(15)) M.apply_effect(5, WEAKEN)
 					M.apply_damage(8, def_zone = "head")
 					user.visible_message(SPAN_DANGER("[user] slams [M]'s face against [src]!"),
 					SPAN_DANGER("You slam [M]'s face against [src]!"))
@@ -282,7 +289,7 @@
 				SPAN_DANGER("You throw [M] on [src]."))
 		return
 
-	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))
 		user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."),
 		SPAN_NOTICE("You start disassembling [src]."))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -300,7 +307,7 @@
 			playsound(src.loc, 'sound/weapons/wristblades_hit.ogg', 25, 1)
 			user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
 				SPAN_DANGER("You slice [src] apart!"))
-			deconstruct()
+			deconstruct(FALSE)
 		else
 			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))
 		return
@@ -316,20 +323,27 @@
 		return
 	..()
 
-/obj/structure/surface/table/proc/straight_table_check(var/direction)
-	var/obj/structure/surface/table/T
-	for(var/angle in list(-90, 90))
-		T = locate() in get_step(loc, turn(direction, angle))
-		if(T && !T.flipped)
-			return 0
-	T = locate() in get_step(src.loc,direction)
-	if(!T || T.flipped)
-		return 1
-	if(istype(T, /obj/structure/surface/table/reinforced/))
-		var/obj/structure/surface/table/reinforced/R = T
-		if(R.status == 2)
-			return 0
-	return T.straight_table_check(direction)
+/// Checks whether a table is a straight line along a given axis
+/obj/structure/surface/table/proc/straight_table_check(direction)
+	var/obj/structure/surface/table/table = src
+	var/obj/structure/surface/table/side_table
+	var/tables_count = 7 // Lazy extra safety against infinite loops. If table big, can't flip, i guess.
+	while(--tables_count)
+		// Check whether there are connected tables perpendicular to the axis
+		for(var/angle in list(-90, 90))
+			side_table = locate() in get_step(table, turn(direction, angle))
+			if(side_table && !side_table.flipped)
+				return FALSE
+		table = locate() in get_step(table, direction)
+		if(!table || table.flipped)
+			return TRUE
+		if(istype(table, /obj/structure/surface/table/reinforced))
+			var/obj/structure/surface/table/reinforced/reinforced_table = table
+			if(reinforced_table.status == RTABLE_NORMAL)
+				return FALSE
+	if(!tables_count)
+		return FALSE
+	return TRUE
 
 /obj/structure/surface/table/verb/do_flip()
 	set name = "Flip table"
@@ -344,8 +358,11 @@
 		to_chat(usr, SPAN_WARNING("You're not angry enough to flip [src]."))
 		return
 
+	if(get_turf(usr) == get_turf(src))
+		to_chat(usr, SPAN_WARNING("You need to get off [src] in order to flip it."))
+		return
+
 	if(!flip(get_cardinal_dir(usr, src)))
-		to_chat(usr, SPAN_WARNING("[src] won't budge."))
 		return
 
 	usr.visible_message(SPAN_WARNING("[usr] flips [src]!"),
@@ -355,30 +372,34 @@
 	if(climbable)
 		structure_shaken()
 
-	flip_cooldown = world.time + 50
+	flip_cooldown = world.time + 5 SECONDS
 
-/obj/structure/surface/table/proc/unflipping_check(var/direction)
+/obj/structure/surface/table/proc/unflipping_check(direction)
 	if(world.time < flip_cooldown)
-		return 0
+		to_chat(usr, SPAN_WARNING("You have moved a table too recently."))
+		return FALSE
 
-	for(var/mob/M in oview(src, 0))
-		return 0
+	for(var/mob/living/mob_behind_table in oview(src, 0))
+		to_chat(usr, SPAN_WARNING("[mob_behind_table] is in the way of [src]."))
+		return FALSE
 
-	var/list/L = list()
+	var/list/directions = list()
 	if(direction)
-		L.Add(direction)
+		directions.Add(direction)
 	else
-		L.Add(turn(src.dir,-90))
-		L.Add(turn(src.dir,90))
-	for(var/new_dir in L)
-		var/obj/structure/surface/table/T = locate() in get_step(loc, new_dir)
-		if(T)
-			if(T.flipped && T.dir == src.dir && !T.unflipping_check(new_dir))
-				return 0
-	for(var/obj/structure/S in loc)
-		if((S.flags_atom & ON_BORDER) && S.density && S != src) //We would put back on a structure that wouldn't allow it
-			return 0
-	return 1
+		directions.Add(turn(src.dir,-90))
+		directions.Add(turn(src.dir,90))
+	for(var/new_dir in directions)
+		var/obj/structure/surface/table/adjacent_table = locate() in get_step(loc, new_dir)
+		if(!adjacent_table)
+			continue
+		if(adjacent_table.flipped && adjacent_table.dir == src.dir && !adjacent_table.unflipping_check(new_dir))
+			return FALSE
+	for(var/obj/structure/structure_behind_table in get_turf(src))
+		if((structure_behind_table.flags_atom & ON_BORDER) && structure_behind_table.density && structure_behind_table != src) //We would put back on a structure that wouldn't allow it
+			to_chat(usr, SPAN_WARNING("[structure_behind_table] is in the way of [src]."))
+			return FALSE
+	return TRUE
 
 /obj/structure/surface/table/proc/do_put()
 	set name = "Put table back"
@@ -390,49 +411,60 @@
 		return
 
 	if(!unflipping_check())
-		to_chat(usr, SPAN_WARNING("[src] won't budge."))
 		return
 
 	unflip()
 
-	flip_cooldown = world.time + 50
+	flip_cooldown = world.time + 5 SECONDS
 
-/obj/structure/surface/table/proc/flip(var/direction)
+/**
+ * Flip a table along a certain direction. By default checks whether table is flippable along axis perpendicular to flip direction.
+ */
+/obj/structure/surface/table/proc/flip(direction, skip_straight_check=FALSE)
 	if(world.time < flip_cooldown)
-		return 0
+		to_chat(usr, SPAN_WARNING("You have moved a table too recently."))
+		return FALSE
 
-	if(!straight_table_check(turn(direction, 90)) || !straight_table_check(turn(direction, -90)))
-		return 0
+	if(!skip_straight_check && !(straight_table_check(turn(direction, 90)) && straight_table_check(turn(direction, -90))))
+		to_chat(usr, SPAN_WARNING("[src] is too wide to be flipped."))
+		return FALSE
+
+	ADD_TRAIT(src, TRAIT_TABLE_FLIPPING, TRAIT_SOURCE_FLIP_TABLE)
 
 	verbs -= /obj/structure/surface/table/verb/do_flip
 	verbs += /obj/structure/surface/table/proc/do_put
 
 	detach_all()
 
-	var/list/targets = list(get_step(src,dir),get_step(src, turn(dir, 45)),get_step(src, turn(dir, -45)))
-	for(var/atom/movable/A in get_turf(src))
-		if(!A.anchored)
-			spawn(0)
-				A.throw_atom(pick(targets), 1, SPEED_FAST)
+	var/list/targets = list(get_step(src, dir), get_step(src, turn(dir, 45)), get_step(src, turn(dir, -45)))
+	for(var/atom/movable/movable_on_table in get_turf(src))
+		if(!movable_on_table.anchored)
+			INVOKE_ASYNC(movable_on_table, TYPE_PROC_REF(/atom/movable, throw_atom), pick(targets), 1, SPEED_FAST)
 
 	projectile_coverage = flipped_projectile_coverage
 
 	setDir(direction)
 	if(dir != NORTH)
 		layer = FLY_LAYER
-	flipped = 1
+	flipped = TRUE
 	flags_can_pass_all_temp &= ~PASS_UNDER
 	flags_atom |= ON_BORDER
-	for(var/D in list(turn(direction, 90), turn(direction, -90)))
-		var/obj/structure/surface/table/T = locate() in get_step(src,D)
-		if(T && !T.flipped)
-			T.flip(direction)
+
+	for(var/adjacent_dir in list(turn(direction, 90), turn(direction, -90)))
+		var/obj/structure/surface/table/adjacent_table = locate() in get_step(src, adjacent_dir)
+		if(adjacent_table && !adjacent_table.flipped)
+			// Can skip straight check because we already iterated through all the tables that are connected to this table
+			adjacent_table.flip(direction, TRUE)
+
 	update_icon()
 	update_adjacent()
 
-	return 1
+	REMOVE_TRAIT(src, TRAIT_TABLE_FLIPPING, TRAIT_SOURCE_FLIP_TABLE)
+
+	return TRUE
 
 /obj/structure/surface/table/proc/unflip()
+	ADD_TRAIT(src, TRAIT_TABLE_FLIPPING, TRAIT_SOURCE_FLIP_TABLE)
 	verbs -= /obj/structure/surface/table/proc/do_put
 	verbs += /obj/structure/surface/table/verb/do_flip
 
@@ -451,7 +483,9 @@
 	update_icon()
 	update_adjacent()
 
-	return 1
+	REMOVE_TRAIT(src, TRAIT_TABLE_FLIPPING, TRAIT_SOURCE_FLIP_TABLE)
+
+	return TRUE
 
 /*
  * Wooden tables
@@ -479,7 +513,7 @@
 	parts = /obj/item/frame/table/wood/fancy
 	table_prefix = "fwood"
 
-/obj/structure/surface/table/woodentable/fancy/flip(var/direction)
+/obj/structure/surface/table/woodentable/fancy/flip(direction)
 	return 0 //That is mahogany!
 /*
  * Gambling tables
@@ -500,12 +534,12 @@
 	desc = "A square metal surface resting on four legs. This one has side panels, making it useful as a desk, but impossible to flip."
 	icon_state = "reinftable"
 	health = 140
-	var/status = 2
+	var/status = RTABLE_NORMAL
 	reinforced = TRUE
 	table_prefix = "reinf"
 	parts = /obj/item/frame/table/reinforced
 
-/obj/structure/surface/table/reinforced/flip(var/direction)
+/obj/structure/surface/table/reinforced/flip(direction)
 	return 0 //No, just no. It's a full desk, you can't flip that
 
 /obj/structure/surface/table/reinforced/attackby(obj/item/W as obj, mob/user as mob)
@@ -515,7 +549,7 @@
 			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
-			if(status == 2)
+			if(status == RTABLE_NORMAL)
 				user.visible_message(SPAN_NOTICE("[user] starts weakening [src]."),
 				SPAN_NOTICE("You start weakening [src]"))
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
@@ -523,7 +557,7 @@
 					if(!src || !WT.isOn()) return
 					user.visible_message(SPAN_NOTICE("[user] weakens [src]."),
 					SPAN_NOTICE("You weaken [src]"))
-					src.status = 1
+					src.status = RTABLE_WEAKENED
 			else
 				user.visible_message(SPAN_NOTICE("[user] starts welding [src] back together."),
 				SPAN_NOTICE("You start welding [src] back together."))
@@ -532,13 +566,13 @@
 					if(!src || !WT.isOn()) return
 					user.visible_message(SPAN_NOTICE("[user] welds [src] back together."),
 					SPAN_NOTICE("You weld [src] back together."))
-					status = 2
+					status = RTABLE_NORMAL
 			return
 		return
 
-	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		if(status == 2)
-			return
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP) && status == RTABLE_NORMAL)
+		return
+
 	..()
 
 /obj/structure/surface/table/reinforced/prison
@@ -553,13 +587,14 @@
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
-		/turf/closed/wall)
+		/turf/closed/wall,
+	)
 
 /obj/structure/surface/table/reinforced/almayer_blend/north
 	icon_state = "reqNtable"
 	table_prefix = "reqN"
 
-/obj/structure/surface/table/reinforced/almayer_blend/flip(var/direction)
+/obj/structure/surface/table/reinforced/almayer_blend/flip(direction)
 	return 0
 
 /obj/structure/surface/table/reinforced/almayer_B
@@ -567,7 +602,7 @@
 	icon_state = "req_table" //this one actually auto-tiles, but has no flipped state!
 	table_prefix = "req_"
 
-/obj/structure/surface/table/reinforced/almayer_B/flip(var/direction)
+/obj/structure/surface/table/reinforced/almayer_B/flip(direction)
 	return 0
 
 /obj/structure/surface/table/reinforced/black
@@ -576,7 +611,7 @@
 	icon_state = "blacktable" //this one actually auto-tiles, but has no flipped state!
 	table_prefix = "black"
 
-/obj/structure/surface/table/reinforced/black/flip(var/direction)
+/obj/structure/surface/table/reinforced/black/flip(direction)
 	return FALSE
 
 /obj/structure/surface/table/almayer
@@ -587,7 +622,7 @@
 /obj/structure/surface/table/reinforced/cloth
 	name = "cloth table"
 	desc = "A fancy cloth-topped wooden table, bolted to the floor. Fit for formal occasions."
-	icon_state = "cloth"
+	icon_state = "clothtable"
 	table_prefix = "cloth"
 
 /*
@@ -598,17 +633,17 @@
 	desc = "A bunch of metal shelves stacked on top of eachother. Excellent for storage purposes, less so as cover."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "rack"
-	density = 1
+	density = TRUE
 	layer = TABLE_LAYER
-	anchored = 1.0
-	throwpass = 1	//You can throw objects over this, despite it's density.
+	anchored = TRUE
+	throwpass = 1 //You can throw objects over this, despite it's density.
 	breakable = 1
 	climbable = 1
 	health = 100
 	var/parts = /obj/item/frame/rack
 	debris = list(/obj/item/frame/rack)
 
-/obj/structure/surface/rack/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/surface/rack/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH|PASS_CRUSHER_CHARGE
@@ -630,7 +665,7 @@
 		step(I, get_dir(I, src))
 
 /obj/structure/surface/rack/attackby(obj/item/W, mob/user, click_data)
-	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))
 		deconstruct(TRUE)
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		return
@@ -640,11 +675,11 @@
 
 /obj/structure/surface/rack/Crossed(atom/movable/O)
 	..()
-	if(istype(O,/mob/living/carbon/Xenomorph/Ravager) || istype(O,/mob/living/carbon/Xenomorph/Crusher))
-		var/mob/living/carbon/Xenomorph/M = O
+	if(istype(O,/mob/living/carbon/xenomorph/ravager) || istype(O,/mob/living/carbon/xenomorph/crusher))
+		var/mob/living/carbon/xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
 			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
-			deconstruct()
+			deconstruct(FALSE)
 
 /obj/structure/surface/rack/deconstruct(disassembled = TRUE)
 	if(disassembled)
@@ -652,7 +687,7 @@
 			new parts(loc)
 	else
 		new /obj/item/stack/sheet/metal(loc)
-	density = 0
+	density = FALSE
 	return ..()
 
 /obj/structure/surface/rack/ex_act(severity, direction)

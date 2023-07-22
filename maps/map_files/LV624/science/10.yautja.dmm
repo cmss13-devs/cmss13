@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "ab" = (
 /turf/closed/wall/r_wall,
@@ -20,7 +20,7 @@
 	layer = 3.3;
 	name = "\improper Science Wing Blast Door"
 	},
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome"
@@ -51,6 +51,7 @@
 "aj" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
+/obj/item/weapon/yautja/combistick,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -69,9 +70,7 @@
 /area/lv624/lazarus/research)
 "an" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/south_medbay_road)
 "ao" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -134,7 +133,7 @@
 	},
 /area/lv624/lazarus/research)
 "av" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "aw" = (
 /obj/structure/machinery/optable,
@@ -154,7 +153,7 @@
 	},
 /area/lv624/lazarus/research)
 "ay" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},
@@ -184,6 +183,11 @@
 	dir = 8
 	},
 /obj/effect/landmark/crap_item,
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Lazarus Landing";
+	phone_id = "Research Dome"
+	},
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -214,7 +218,7 @@
 	},
 /area/lv624/lazarus/research)
 "aG" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome"
@@ -225,7 +229,7 @@
 	},
 /area/lv624/lazarus/research)
 "aH" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome"
@@ -245,12 +249,7 @@
 	pixel_y = 5
 	},
 /obj/item/paper/research_notes,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "white"
@@ -300,7 +299,7 @@
 	layer = 3.3;
 	name = "\improper Science Wing Blast Door"
 	},
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},
@@ -317,7 +316,7 @@
 	},
 /area/lv624/lazarus/research)
 "aP" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},
@@ -394,8 +393,7 @@
 /area/lv624/lazarus/research)
 "bb" = (
 /obj/structure/surface/table,
-/obj/item/weapon/melee/yautja/scythe,
-/obj/item/weapon/melee/yautja/combistick,
+/obj/item/weapon/yautja/scythe,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
@@ -431,14 +429,14 @@
 	},
 /area/lv624/lazarus/research)
 "bg" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "bh" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/central_jungle)
 "bi" = (
 /obj/structure/surface/table,
-/obj/item/weapon/melee/yautja/knife,
+/obj/item/weapon/yautja/knife,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
@@ -539,6 +537,18 @@
 "Np" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/scientist,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/research)
+"WJ" = (
+/obj/effect/landmark/crap_item,
+/obj/structure/machinery/door_control{
+	id = "secure_inner_blast";
+	name = "Secure Inner Doors";
+	pixel_x = -25;
+	pixel_y = 5
+	},
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -663,7 +673,7 @@ al
 ar
 aJ
 Lo
-gd
+WJ
 ar
 aZ
 CC

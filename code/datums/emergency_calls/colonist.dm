@@ -5,13 +5,13 @@
 	name = "Colonists"
 	mob_max = 8
 	mob_min = 1
-	arrival_message = "Incoming Transmission: 'This is the *static*. We are *static*.'"
+	arrival_message = "'This is the *static*. We are *static*.'"
 	objectives = "Follow the orders given to you."
 	probability = 0
 	var/preset = /datum/equipment_preset/colonist
 
 
-/datum/emergency_call/colonist/create_member(datum/mind/M, var/turf/override_spawn_loc) //Blank ERT with only basic items.
+/datum/emergency_call/colonist/create_member(datum/mind/M, turf/override_spawn_loc) //Blank ERT with only basic items.
 	set waitfor = 0
 	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 

@@ -12,9 +12,6 @@ $background-radial-opacity: 0.2 !default;
   $label: base.$color-fg
 );
 
-$small-text: 2vw;
-$large-text: 3vw;
-
 %theme-crt {
   @include meta.load-css(
     '../components/Divider.scss',
@@ -36,7 +33,8 @@ $large-text: 3vw;
     $with: (
       'text-color': base.$color-fg,
       'background-color': base.$color-bg,
-      'border-color': base.$color-fg
+      'border-color': base.$color-fg,
+      'font-family': $font-family
     )
   );
 
@@ -156,13 +154,11 @@ $large-text: 3vw;
   span {
     color: base.$color-fg;
     font-family: $font-family;
-    font-size: $small-text;
     font-weight: bold;
   }
 
   .Button {
     font-family: $font-family;
-    font-size: $small-text;
     font-weight: bold;
     border: 1px solid base.$color-fg;
     &:hover,
@@ -192,12 +188,7 @@ $large-text: 3vw;
   }
 
   .Tab__text {
-    font-size: $large-text;
     font-family: $font-family;
-  }
-
-  .Tab__left {
-    font-size: $large-text;
   }
 
   .Tabs--horizontal {

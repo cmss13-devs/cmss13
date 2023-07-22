@@ -2,8 +2,8 @@
 /obj/structure/machinery/part_fabricator
 	name = "part fabricator"
 	desc = "A large automated 3D printer for producing runtime errors."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	icon = 'icons/obj/structures/machinery/drone_fab.dmi'
@@ -20,10 +20,10 @@
 /obj/structure/machinery/part_fabricator/proc/get_point_store()
 	return 0
 
-/obj/structure/machinery/part_fabricator/proc/add_to_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/proc/add_to_point_store(number = 1)
 	return
 
-/obj/structure/machinery/part_fabricator/proc/spend_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/proc/spend_point_store(number = 1)
 	return
 
 /obj/structure/machinery/part_fabricator/dropship/ui_data(mob/user)
@@ -60,7 +60,7 @@
 	spend_point_store(cost)
 	icon_state = "drone_fab_active"
 	busy = TRUE
-	addtimer(CALLBACK(src, .proc/do_build_part, part_type), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(do_build_part), part_type), 10 SECONDS)
 
 /obj/structure/machinery/part_fabricator/proc/do_build_part(part_type)
 	busy = FALSE
@@ -119,13 +119,16 @@
 	valid_parts = /obj/structure/dropship_equipment
 	valid_ammo = /obj/structure/ship_ammo
 
+	unslashable = TRUE
+	unacidable = TRUE
+
 /obj/structure/machinery/part_fabricator/dropship/get_point_store()
 	return supply_controller.dropship_points
 
-/obj/structure/machinery/part_fabricator/dropship/add_to_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/dropship/add_to_point_store(number = 1)
 	supply_controller.dropship_points += number
 
-/obj/structure/machinery/part_fabricator/dropship/spend_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/dropship/spend_point_store(number = 1)
 	supply_controller.dropship_points -= number
 
 /obj/structure/machinery/part_fabricator/dropship/ui_static_data(mob/user)
@@ -229,10 +232,10 @@
 /obj/structure/machinery/part_fabricator/tank/get_point_store()
 	return supply_controller.tank_points
 
-/obj/structure/machinery/part_fabricator/tank/add_to_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/tank/add_to_point_store(number = 1)
 	supply_controller.tank_points += number
 
-/obj/structure/machinery/part_fabricator/tank/spend_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/tank/spend_point_store(number = 1)
 	supply_controller.tank_points -= number
 
 /obj/structure/machinery/part_fabricator/tank/ui_static_data(mob/user)

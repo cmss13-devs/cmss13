@@ -2,15 +2,23 @@
     "map_name": "New Varadero",
     "map_path": "map_files/New_Varadero",
     "map_file": "New_Varadero.dmm",
+    "webmap_url": "NewVaradero",
+    "weather_holder": "/datum/weather_ss_map_holder/new_varadero",
 
     "survivor_types": [
-        "/datum/equipment_preset/survivor/scientist/lv",
-        "/datum/equipment_preset/survivor/doctor/lv",
-        "/datum/equipment_preset/survivor/chaplain/lv",
-        "/datum/equipment_preset/survivor/engineer/lv",
-        "/datum/equipment_preset/survivor/trucker/lv",
-        "/datum/equipment_preset/survivor/security/lv",
-        "/datum/equipment_preset/survivor/colonial_marshal/lv"
+        "/datum/equipment_preset/survivor/scientist/nv",
+        "/datum/equipment_preset/survivor/doctor/nv",
+        "/datum/equipment_preset/survivor/chaplain/nv",
+        "/datum/equipment_preset/survivor/engineer/nv",
+        "/datum/equipment_preset/survivor/trucker/nv",
+        "/datum/equipment_preset/survivor/interstellar_commerce_commission_liason/nv",
+        "/datum/equipment_preset/survivor/security/nv",
+        "/datum/equipment_preset/survivor/beachbum",
+        "/datum/equipment_preset/survivor/miner",
+        "/datum/equipment_preset/survivor/clf"
+    ],
+	"CO_survivor_types": [
+        "/datum/equipment_preset/survivor/new_varadero/commander"
     ],
 
     "defcon_triggers": [
@@ -20,12 +28,13 @@
         580,
         0.0
     ],
-    "survivor_message": "You are an UA employee on the island outpost of New Varadero, it is vital that you do all that you can to contain the outbreak, or at least survive.",
+    "survivor_message": "You are an employee for the United Americas on the island outpost of New Varadero. A newfound discovery has unleashed unspeakable horrors. Do everything you can to survive.",
     "map_item_type": "/obj/item/map/new_varadero",
-    "announce_text": "A manual distress signal has been received from United American outpost New Varadero. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.\nDesgination: Radio survey station\n\nPop: 98\nTemp: 95F : 35C ext\nRanking officer: Maj. Afric Zimmerman\nTelecommunications array: Repair required\n\nNo further information available at this time.",
+    "announce_text": "An automated distress signal has been received from UA Outpost New Varadero. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.\nDesignation: Island research station and mining facility\n\nPopulation: 47\nCurrent Temperature: 68F Interior, 97F Exterior\nOutpost Commander: UA Rep. Steve Haifisch\nTelecommunications Array: Repairs required\n\nNo further information available at this time.",
     "monkey_types": [
-        "farwa"
+        "monkey"
     ],
+    "environment_traits": { "Fog": true },
     "traits": [{ "Ground": true }],
     "xvx_hives": {
         "xeno_hive_alpha": 0,
@@ -33,6 +42,7 @@
         "xeno_hive_charlie": 0,
         "xeno_hive_delta": 0
     },
+    "camouflage": "jungle",
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

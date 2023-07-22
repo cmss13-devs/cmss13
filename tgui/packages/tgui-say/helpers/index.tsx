@@ -27,7 +27,7 @@ export const windowClose = () => {
 /** Some QoL to hide the window on load. Doesn't log this event */
 export const windowLoad = () => {
   Byond.winset('tgui_say', {
-    pos: '848,500',
+    pos: '700,500',
   });
   setClosed();
 };
@@ -124,16 +124,18 @@ export const getCss = (
  * lightMode - boolean. If true, returns the light mode selector.
  * radioPrefix - string. If not empty, returns the radio prefix selector.
  * channel - number. The channel to use.
+ * availableChannels - the channels that the modal can use
  */
 export const getTheme = (
   lightMode: boolean,
   radioPrefix: string,
-  channel: number
+  channel: number,
+  availableChannels: ReadonlyArray<string>
 ): string => {
   return (
     (lightMode && 'lightMode') ||
     RADIO_PREFIXES[radioPrefix]?.id ||
-    CHANNELS[channel]?.toLowerCase()
+    availableChannels[channel]?.toLowerCase()
   );
 };
 
@@ -155,3 +157,21 @@ export const timers = {
 /** Checks if a parameter is null or undefined. Returns bool */
 export const valueExists = (param: any): boolean =>
   param !== null && param !== undefined;
+
+export const getAvailableChannels = (
+  roles: Array<String>
+): ReadonlyArray<string> => {
+  const availableChannels: Array<string> = [...CHANNELS];
+  if (!roles) {
+    return availableChannels;
+  }
+
+  if (roles.includes('Mentor')) {
+    availableChannels.push('Mentor');
+  }
+  if (roles.includes('Mod')) {
+    availableChannels.push('ASAY');
+  }
+
+  return availableChannels;
+};

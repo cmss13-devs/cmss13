@@ -1,23 +1,33 @@
 // Clickable stat() button.
-/obj/statclick
+/obj/effect/statclick
 	name = "Initializing..."
 	var/target
 
-INITIALIZE_IMMEDIATE(/obj/statclick)
+INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 
-/obj/statclick/Initialize(mapload, text, target) //Don't port this to Initialize it's too critical
+/obj/effect/statclick/Initialize(mapload, text, target)
 	. = ..()
 	name = text
 	src.target = target
+	if(isdatum(target)) //Harddel man bad
+		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 
-/obj/statclick/proc/update(text)
+/obj/effect/statclick/Destroy()
+	target = null
+	return ..()
+
+/obj/effect/statclick/proc/cleanup()
+	SIGNAL_HANDLER
+	qdel(src)
+
+/obj/effect/statclick/proc/update(text)
 	name = text
 	return src
 
-/obj/statclick/debug
+/obj/effect/statclick/debug
 	var/class
 
-/obj/statclick/debug/clicked()
+/obj/effect/statclick/debug/clicked()
 	if(!usr.client.admin_holder || !target)
 		return
 	if(!class)
@@ -53,6 +63,35 @@ INITIALIZE_IMMEDIATE(/obj/statclick)
 
 	message_admins("Admin [key_name_admin(usr)] has restarted the [controller] controller.")
 
+/client/proc/debug_controller()
+	set category = "Debug.Controllers"
+	set name = "Debug Controller"
+	set desc = "Debug the various periodic loop controllers for the game (be careful!)"
+
+	if(!admin_holder)
+		return
+
+	var/list/controllers = list()
+	var/list/controller_choices = list()
+
+	for (var/datum/controller/controller in world)
+		if (istype(controller, /datum/controller/subsystem))
+			continue
+		controllers["[controller] (controller.type)"] = controller //we use an associated list to ensure clients can't hold references to controllers
+		controller_choices += "[controller] (controller.type)"
+
+	var/datum/controller/controller_string = input("Select controller to debug", "Debug Controller") as null|anything in controller_choices
+	var/datum/controller/controller = controllers[controller_string]
+
+	if (!istype(controller))
+		return
+	debug_variables(controller)
+
+	//SSblackbox.record_feedback("tally", "admin_verb", 1, "Restart Failsafe Controller")
+	message_admins("Admin [key_name_admin(usr)] is debugging the [controller] controller.")
+
+	message_admins("Admin [key_name_admin(usr)] has restarted the [controller] controller.")
+
 /client/proc/debug_role_authority()
 	set category = "Debug.Controllers"
 	set name = "Debug Role Authority"
@@ -61,4 +100,4 @@ INITIALIZE_IMMEDIATE(/obj/statclick)
 		to_chat(usr, "RoleAuthority not found!")
 		return
 	debug_variables(RoleAuthority)
-	message_staff("Admin [key_name_admin(usr)] is debugging the Role Authority.")
+	message_admins("Admin [key_name_admin(usr)] is debugging the Role Authority.")

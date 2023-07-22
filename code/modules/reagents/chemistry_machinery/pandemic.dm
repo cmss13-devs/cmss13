@@ -3,14 +3,14 @@
 	name = "Disease Analyser"
 	icon = 'icons/obj/structures/machinery/virology.dmi'
 	icon_state = "analyser"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 
 
 /obj/structure/machinery/computer/pandemic
 	name = "PanD.E.M.I.C 2200"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "mixer0"
 	density = TRUE

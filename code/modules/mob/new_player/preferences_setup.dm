@@ -1,5 +1,5 @@
 //The mob should have a gender you want before running this proc. Will run fine without H
-datum/preferences/proc/randomize_appearance(var/mob/living/carbon/human/H)
+/datum/preferences/proc/randomize_appearance(mob/living/carbon/human/H)
 	if(H)
 		if(H.gender == MALE)
 			gender = MALE
@@ -22,7 +22,7 @@ datum/preferences/proc/randomize_appearance(var/mob/living/carbon/human/H)
 	if(H)
 		copy_appearance_to(H,1)
 
-datum/preferences/proc/randomize_hair_color(var/target = "hair")
+/datum/preferences/proc/randomize_hair_color(target = "hair")
 	if(prob (75) && target == "facial") // Chance to inherit hair color
 		r_facial = r_hair
 		g_facial = g_hair
@@ -82,7 +82,7 @@ datum/preferences/proc/randomize_hair_color(var/target = "hair")
 			g_facial = green
 			b_facial = blue
 
-datum/preferences/proc/randomize_eyes_color()
+/datum/preferences/proc/randomize_eyes_color()
 	var/red
 	var/green
 	var/blue
@@ -132,7 +132,7 @@ datum/preferences/proc/randomize_eyes_color()
 
 
 
-datum/preferences/proc/randomize_skin_color()
+/datum/preferences/proc/randomize_skin_color()
 	var/red
 	var/green
 	var/blue
@@ -180,7 +180,7 @@ datum/preferences/proc/randomize_skin_color()
 	g_skin = green
 	b_skin = blue
 
-/datum/preferences/proc/update_preview_icon(var/refresh_limb_status)
+/datum/preferences/proc/update_preview_icon(refresh_limb_status)
 	if(!owner)
 		return
 
@@ -234,8 +234,8 @@ datum/preferences/proc/randomize_skin_color()
 			return /datum/equipment_preset/uscm/specialist_equipped
 		if(JOB_SQUAD_SMARTGUN)
 			return /datum/equipment_preset/uscm/smartgunner_equipped
-		if(JOB_SQUAD_RTO)
-			return /datum/equipment_preset/uscm/rto_equipped
+		if(JOB_SQUAD_TEAM_LEADER)
+			return /datum/equipment_preset/uscm/tl_equipped
 		if(JOB_CO)
 			if(length(RoleAuthority.roles_whitelist))
 				var/datum/job/J = RoleAuthority.roles_by_name[JOB_CO]
@@ -253,6 +253,8 @@ datum/preferences/proc/randomize_skin_color()
 			return /datum/equipment_preset/uscm_ship/dcc/full
 		if(JOB_CORPORATE_LIAISON)
 			return /datum/equipment_preset/uscm_ship/liaison
+		if(JOB_COMBAT_REPORTER)
+			return /datum/equipment_preset/uscm_ship/reporter
 		if(JOB_SYNTH)
 			if(length(RoleAuthority.roles_whitelist))
 				var/datum/job/J = RoleAuthority.roles_by_name[JOB_SYNTH]
@@ -260,16 +262,12 @@ datum/preferences/proc/randomize_skin_color()
 			return /datum/equipment_preset/synth/uscm
 		if(JOB_WORKING_JOE)
 			return /datum/equipment_preset/synth/working_joe
-		if(JOB_POLICE_CADET)
-			return /datum/equipment_preset/uscm_ship/uscm_police/mp_cadet
 		if(JOB_POLICE)
 			return /datum/equipment_preset/uscm_ship/uscm_police/mp
 		if(JOB_CHIEF_POLICE)
 			return /datum/equipment_preset/uscm_ship/uscm_police/cmp
 		if(JOB_WARDEN)
 			return /datum/equipment_preset/uscm_ship/uscm_police/warden
-		if(JOB_CREWMAN)
-			return /datum/equipment_preset/uscm/tank/full
 		if(JOB_SEA)
 			return /datum/equipment_preset/uscm_ship/sea
 		if(JOB_CHIEF_ENGINEER)
@@ -293,12 +291,14 @@ datum/preferences/proc/randomize_skin_color()
 		if(JOB_MESS_SERGEANT)
 			return /datum/equipment_preset/uscm_ship/chef
 		if(JOB_SURVIVOR)
-			if(length(SSmapping.configs[GROUND_MAP].survivor_types))
-				return pick(SSmapping.configs[GROUND_MAP].survivor_types)
+			var/list/survivor_types = pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[pref_special_job_options[JOB_SURVIVOR]]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[pref_special_job_options[JOB_SURVIVOR]] : SSmapping.configs[GROUND_MAP].survivor_types
+			if(length(survivor_types))
+				return pick(survivor_types)
 			return /datum/equipment_preset/survivor
 		if(JOB_SYNTH_SURVIVOR)
-			if(length(SSmapping.configs[GROUND_MAP].synth_survivor_types))
-				return pick(SSmapping.configs[GROUND_MAP].synth_survivor_types)
+			var/list/survivor_types = pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[pref_special_job_options[JOB_SURVIVOR]]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[pref_special_job_options[JOB_SURVIVOR]] : SSmapping.configs[GROUND_MAP].synth_survivor_types
+			if(length(survivor_types))
+				return pick(survivor_types)
 			return /datum/equipment_preset/synth/survivor
 		if(JOB_CO_SURVIVOR)
 			if(length(SSmapping.configs[GROUND_MAP].CO_survivor_types))

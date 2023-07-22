@@ -14,8 +14,8 @@
 
 	max_temperature = 18000 //K, walls will take damage if they're next to a fire hotter than this
 
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 
 	tiles_with = list(
 		/turf/closed/wall,
@@ -25,8 +25,8 @@
 		/obj/structure/machinery/door,
 		/obj/structure/machinery/cm_vending/sorted/attachments/blend,
 		/obj/structure/machinery/cm_vending/sorted/cargo_ammo/blend,
-		/obj/structure/machinery/cm_vending/sorted/cargo_guns/blend
-		)
+		/obj/structure/machinery/cm_vending/sorted/cargo_guns/blend,
+	)
 
 /turf/closed/wall/almayer/update_icon()
 	..()
@@ -38,7 +38,7 @@
 		if(r1 >= 9)
 			overlays += image(icon, icon_state = "almayer_deco_wall[r2]")
 
-/turf/closed/wall/almayer/take_damage(dam, var/mob/M)
+/turf/closed/wall/almayer/take_damage(dam, mob/M)
 	var/damage_check = max(0, damage + dam)
 	if(damage_check >= damage_cap && M && is_mainship_level(z))
 		SSclues.create_print(get_turf(M), M, "The fingerprint contains specks of metal and dirt.")
@@ -62,7 +62,7 @@
 /turf/closed/wall/almayer/no_door_tile
 	tiles_with = list(/turf/closed/wall,/obj/structure/window/framed,/obj/structure/window_frame,/obj/structure/girder)
 
-/turf/closed/wall/almayer/outer/take_damage(dam, var/mob/M)
+/turf/closed/wall/almayer/outer/take_damage(dam, mob/M)
 	return
 
 /turf/closed/wall/almayer/white
@@ -100,16 +100,16 @@
 	. = ..()
 
 /turf/closed/wall/almayer/research/containment/wall/take_damage(dam, mob/M)
-	if(isXeno(M))
+	if(isxeno(M))
 		return
 	. = ..()
 
 /turf/closed/wall/almayer/research/containment/wall/attackby(obj/item/W, mob/user)
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	. = ..()
 
-/turf/closed/wall/almayer/research/containment/wall/attack_alien(mob/living/carbon/Xenomorph/user)
+/turf/closed/wall/almayer/research/containment/wall/attack_alien(mob/living/carbon/xenomorph/user)
 	return
 
 /turf/closed/wall/almayer/research/containment/wall/corner
@@ -126,7 +126,7 @@
 	flick("containment_wall_divide_lowering", src)
 	icon_state = "containment_wall_divide_lowered"
 	SetOpacity(0)
-	density = 0
+	density = FALSE
 	operating = FALSE
 	change_weeds()
 
@@ -137,7 +137,7 @@
 	flick("containment_wall_divide_rising", src)
 	icon_state = "containment_wall_divide"
 	SetOpacity(1)
-	density = 1
+	density = TRUE
 	operating = FALSE
 
 	change_weeds()
@@ -185,7 +185,7 @@
 /turf/closed/wall/almayer/research/containment/wall/purple
 	name = "cell window"
 	icon_state = "containment_window"
-	opacity = 0
+	opacity = FALSE
 
 
 
@@ -224,7 +224,7 @@
 	name = "wall"
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "riveted"
-	opacity = 1
+	opacity = TRUE
 	hull = 1
 
 
@@ -237,14 +237,14 @@
 /turf/closed/wall/indestructible/fakeglass
 	name = "window"
 	icon_state = "fakewindows"
-	opacity = 0
+	opacity = FALSE
 
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
 	desc = "Assorted artworks."
 	icon = 'icons/lobby/title.dmi'
 	icon_state = ""
-//	icon_state = "title_holiday"
+// icon_state = "title_holiday"
 	layer = FLY_LAYER
 	special_icon = 1
 
@@ -270,7 +270,7 @@
 
 /turf/closed/wall/indestructible/invisible
 	icon_state = "invisible"
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 
 
@@ -331,7 +331,7 @@
 	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters, can can still be blown up or melted by boilers.
 	baseturfs = /turf/open/floor/sandstone/runed
 
-/turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/Xenomorph/user)
+/turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/xenomorph/user)
 	visible_message("[user] scrapes uselessly against [src] with their claws.")
 	return
 
@@ -412,6 +412,8 @@
 	walltype = WALL_CULT
 	color = "#3c3434"
 
+/turf/closed/wall/cult/make_girder(destroyed_girder)
+	return
 
 /turf/closed/wall/vault
 	icon_state = "rockvault"
@@ -545,26 +547,29 @@
 //SOLARIS RIDGE TILESET//
 
 /turf/closed/wall/solaris
-	name = "solaris ridge colony wall"
+	name = "colony wall"
 	icon = 'icons/turf/walls/solaris/solaris.dmi'
 	icon_state = "solaris_interior"
-	desc = "Tough looking walls that have been blasted by sand since they day they were erected. A testament to human willpower."
+	desc = "Tough looking walls that have been blasted by sand since the day they were erected. A testament to human willpower."
 	walltype = WALL_SOLARIS
 
 /turf/closed/wall/solaris/reinforced
+	name = "reinforced colony wall"
 	icon_state = "solaris_interior_r"
 	walltype = WALL_SOLARISR
 	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
 
 /turf/closed/wall/solaris/reinforced/hull
+	name = "heavy reinforced colony wall"
+	icon_state = "solaris_interior_h"
 	hull = 1
 
 /turf/closed/wall/solaris/reinforced/hull/lv522
 	name = "Colony Windbreaker"
 
 /turf/closed/wall/solaris/rock
-	name = "solaris ridge rock wall"
+	name = "rock wall"
 	icon_state = "solaris_rock"
 	walltype = WALL_SOLARIS_ROCK
 	hull = 1
@@ -633,7 +638,7 @@
 	icon = 'icons/turf/walls/ice_colony/shiva_turfs.dmi'
 
 /turf/closed/wall/shiva/ice
-	name = "black ice sabs"
+	name = "black ice slabs"
 	icon_state = "shiva_ice"
 	desc = "Slabs on slabs of dirty black ice crusted over ancient rock formations. The permafrost fluctuates between 20in and 12in during the summer months."
 	walltype = WALL_SHIVA_ICE //Not a metal wall
@@ -699,18 +704,35 @@
 	var/datum/cause_data/construction_data
 	flags_turf = TURF_ORGANIC
 
+/turf/closed/wall/resin/Initialize(mapload)
+	. = ..()
+
+	for(var/obj/effect/alien/weeds/node/weed_node in contents)
+		qdel(weed_node)
+
+	if(hivenumber == XENO_HIVE_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
+/turf/closed/wall/resin/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		hivenumber = XENO_HIVE_FORSAKEN
+		set_hive_data(src, XENO_HIVE_FORSAKEN)
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
 /turf/closed/wall/resin/pillar
 	name = "resin pillar segment"
 	hull = TRUE
 
-/turf/closed/wall/resin/proc/set_resin_builder(var/mob/M)
+/turf/closed/wall/resin/proc/set_resin_builder(mob/M)
 	if(istype(M) && should_track_build)
 		construction_data = create_cause_data(initial(name), M)
 
 /turf/closed/wall/resin/make_girder()
 	return
 
-/turf/closed/wall/resin/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
+/turf/closed/wall/resin/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	take_damage(dam)
 
 //this one is only for map use
@@ -733,10 +755,10 @@
 	icon_state = "membrane"
 	walltype = WALL_MEMBRANE
 	damage_cap = HEALTH_WALL_XENO_MEMBRANE
-	opacity = 0
+	opacity = FALSE
 	alpha = 180
 
-/turf/closed/wall/resin/membrane/can_bombard(var/mob/living/carbon/Xenomorph/X)
+/turf/closed/wall/resin/membrane/can_bombard(mob/living/carbon/xenomorph/X)
 	if(!istype(X))
 		return FALSE
 
@@ -744,7 +766,7 @@
 
 	return hive.is_ally(X)
 
-/turf/closed/wall/resin/membrane/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/turf/closed/wall/resin/membrane/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_GLASS
@@ -756,14 +778,14 @@
 	var/next_push = 0
 	var/is_moving = FALSE
 
-/datum/movable_wall_group/New(var/list/datum/movable_wall_group/merge)
+/datum/movable_wall_group/New(list/datum/movable_wall_group/merge)
 	. = ..()
 	for(var/i in merge)
 		var/datum/movable_wall_group/MWG = i
 		for(var/wall in MWG.walls)
 			add_structure(wall)
 
-/datum/movable_wall_group/proc/add_structure(var/obj/structure/alien/movable_wall/MW)
+/datum/movable_wall_group/proc/add_structure(obj/structure/alien/movable_wall/MW)
 	if(MW.group)
 		MW.group.remove_structure(MW, TRUE)
 	LAZYOR(walls, MW)
@@ -775,7 +797,7 @@
 	QDEL_NULL_LIST(walls)
 	return ..()
 
-/datum/movable_wall_group/proc/remove_structure(var/obj/structure/alien/movable_wall/MW, var/merge)
+/datum/movable_wall_group/proc/remove_structure(obj/structure/alien/movable_wall/MW, merge)
 	LAZYREMOVE(walls, MW)
 	MW.group = null
 	if(!walls)
@@ -802,7 +824,7 @@
 			qdel(src)
 
 
-/datum/movable_wall_group/proc/try_move_in_direction(var/dir, var/list/forget)
+/datum/movable_wall_group/proc/try_move_in_direction(dir, list/forget)
 	var/turf/T
 	var/obj/structure/alien/movable_wall/MW
 	var/failed = FALSE
@@ -892,18 +914,18 @@
 		set_hive_data(src, hive)
 	recalculate_structure()
 	update_tied_turf(loc)
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, .proc/update_tied_turf)
-	RegisterSignal(src, COMSIG_MOVABLE_XENO_START_PULLING, .proc/allow_xeno_drag)
-	RegisterSignal(src, COMSIG_MOVABLE_PULLED, .proc/continue_allowing_drag)
+	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(update_tied_turf))
+	RegisterSignal(src, COMSIG_MOVABLE_XENO_START_PULLING, PROC_REF(allow_xeno_drag))
+	RegisterSignal(src, COMSIG_MOVABLE_PULLED, PROC_REF(continue_allowing_drag))
 
 /obj/structure/alien/movable_wall/ex_act(severity, direction)
 	take_damage(severity)
 
-/obj/structure/alien/movable_wall/proc/continue_allowing_drag(_, var/mob/living/L)
-	if(isXeno(L))
+/obj/structure/alien/movable_wall/proc/continue_allowing_drag(_, mob/living/L)
+	if(isxeno(L))
 		return COMPONENT_IGNORE_ANCHORED
 
-/obj/structure/alien/movable_wall/proc/allow_xeno_drag(_, var/mob/living/carbon/Xenomorph/X)
+/obj/structure/alien/movable_wall/proc/allow_xeno_drag(_, mob/living/carbon/xenomorph/X)
 	return COMPONENT_ALLOW_PULL
 
 /obj/structure/alien/movable_wall/update_icon()
@@ -937,15 +959,15 @@
 
 	wall_connections = dirs_to_corner_states(wall_dirs)
 
-/obj/structure/alien/movable_wall/proc/take_damage(var/damage)
+/obj/structure/alien/movable_wall/proc/take_damage(damage)
 	health -= damage
 	if(health <= 0)
 		deconstruct(FALSE)
 	else
 		update_icon()
 
-/obj/structure/alien/movable_wall/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(isXenoLarva(M))
+/obj/structure/alien/movable_wall/attack_alien(mob/living/carbon/xenomorph/M)
+	if(islarva(M))
 		return FALSE
 
 	if(M.a_intent == INTENT_HELP)
@@ -1003,7 +1025,7 @@
 
 	return ..()
 
-/obj/structure/alien/movable_wall/proc/update_tied_turf(var/turf/T)
+/obj/structure/alien/movable_wall/proc/update_tied_turf(turf/T)
 	SIGNAL_HANDLER
 
 	if(!T)
@@ -1011,21 +1033,21 @@
 
 	if(tied_turf)
 		UnregisterSignal(tied_turf, COMSIG_TURF_ENTER)
-	RegisterSignal(T, COMSIG_TURF_ENTER, .proc/check_for_move)
+	RegisterSignal(T, COMSIG_TURF_ENTER, PROC_REF(check_for_move))
 	tied_turf = T
 
 /obj/structure/alien/movable_wall/forceMove(atom/dest)
 	. = ..()
 	update_tied_turf(loc)
 
-/obj/structure/alien/movable_wall/proc/check_for_move(var/turf/T, atom/movable/mover)
+/obj/structure/alien/movable_wall/proc/check_for_move(turf/T, atom/movable/mover)
 	if(group.next_push > world.time)
 		return
 
 	var/target_dir = get_dir(mover, T)
 
-	if(isXeno(mover))
-		var/mob/living/carbon/Xenomorph/X = mover
+	if(isxeno(mover))
+		var/mob/living/carbon/xenomorph/X = mover
 		if(X.hivenumber != hivenumber || X.throwing)
 			return
 
@@ -1104,7 +1126,7 @@
 	new_proj.accuracy = HIT_ACCURACY_TIER_7 // 35% chance to hit something
 
 	// Move back to who fired you.
-	RegisterSignal(new_proj, COMSIG_BULLET_PRE_HANDLE_TURF, .proc/bullet_ignore_turf)
+	RegisterSignal(new_proj, COMSIG_BULLET_PRE_HANDLE_TURF, PROC_REF(bullet_ignore_turf))
 	new_proj.permutated |= src
 
 	var/angle = Get_Angle(src, P.firer) + rand(30, -30)
@@ -1114,7 +1136,7 @@
 
 	return TRUE
 
-/turf/closed/wall/resin/reflective/proc/bullet_ignore_turf(obj/item/projectile/P, var/turf/T)
+/turf/closed/wall/resin/reflective/proc/bullet_ignore_turf(obj/item/projectile/P, turf/T)
 	SIGNAL_HANDLER
 	if(T == src)
 		return COMPONENT_BULLET_PASS_THROUGH
@@ -1140,7 +1162,7 @@
 
 /turf/closed/wall/resin/hitby(atom/movable/AM)
 	..()
-	if(isXeno(AM))
+	if(isxeno(AM))
 		return
 	visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."), \
 	SPAN_DANGER("You hit \the [src]."))
@@ -1154,11 +1176,11 @@
 	take_damage(tforce)
 
 
-/turf/closed/wall/resin/attack_alien(mob/living/carbon/Xenomorph/M)
+/turf/closed/wall/resin/attack_alien(mob/living/carbon/xenomorph/M)
 	if(SEND_SIGNAL(src, COMSIG_WALL_RESIN_XENO_ATTACK, M) & COMPONENT_CANCEL_XENO_ATTACK)
 		return XENO_NO_DELAY_ACTION
 
-	if(isXenoLarva(M)) //Larvae can't do shit
+	if(islarva(M)) //Larvae can't do shit
 		return
 	if(M.a_intent == INTENT_HELP)
 		return XENO_NO_DELAY_ACTION
@@ -1183,6 +1205,11 @@
 
 
 /turf/closed/wall/resin/attack_hand(mob/user)
+	if(isxeno(user) && istype(user.get_active_hand(), /obj/item/grab))
+		var/obj/item/grab/grab_item_dummy = user.get_active_hand()
+		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
+		user_as_xenomorph.do_nesting_host(grab_item_dummy.grabbed_thing, src)
+
 	to_chat(user, SPAN_WARNING("You scrape ineffectively at \the [src]."))
 
 /turf/closed/wall/resin/attackby(obj/item/W, mob/living/user)
@@ -1224,7 +1251,7 @@
 	if(mapload)
 		ScrapeAway()
 		return
-	addtimer(CALLBACK(src, .proc/ScrapeAway), duration)
+	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
 
 /turf/closed/wall/resin/can_be_dissolved()

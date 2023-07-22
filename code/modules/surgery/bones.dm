@@ -1,7 +1,7 @@
 //Procedures in this file: Fracture repair surgery
 //Steps will only work in a surgery of /datum/surgery/bone_repair or a child of that due to affected_bone var.
 //////////////////////////////////////////////////////////////////
-//						BONE SURGERY							//
+// BONE SURGERY //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/bone_repair
@@ -12,7 +12,7 @@
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 	steps = list(
 		/datum/surgery_step/mend_bones,
-		/datum/surgery_step/set_bones
+		/datum/surgery_step/set_bones,
 	)
 	var/affected_bone //Used for messaging.
 
@@ -27,7 +27,7 @@
 			if("groin")
 				affected_bone = "pelvis"
 
-/datum/surgery/bone_repair/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/bone_repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	return L.status & LIMB_BROKEN
 
 //------------------------------------
@@ -37,6 +37,9 @@
 	desc = "repair the fractured bones"
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	success_sound = 'sound/handling/bandage.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/mend_bones/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
 	if(surgery.affected_bone)
@@ -124,9 +127,13 @@
 	desc = "set the bones"
 	tools = list(
 		/obj/item/tool/surgery/bonesetter = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/tool/wrench = SURGERY_TOOL_MULT_SUBSTITUTE
-		)
+		/obj/item/tool/wrench = SURGERY_TOOL_MULT_SUBSTITUTE,
+		/obj/item/maintenance_jack = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
+	)
 	time = 4 SECONDS
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/effects/bone_break6.ogg'
+	failure_sound = 'sound/effects/bone_break1.ogg'
 
 /datum/surgery_step/set_bones/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
 	switch(surgery.affected_limb.name) //Yet another set of different messages because I just have to be Like This.

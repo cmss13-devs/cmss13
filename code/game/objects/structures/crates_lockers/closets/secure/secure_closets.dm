@@ -2,7 +2,7 @@
 	name = "secure locker"
 	desc = "It's an immobile card-locked storage unit."
 	icon_state = "secure1"
-	density = 1
+	density = TRUE
 	opened = 0
 	var/locked = 1
 	var/broken = 0
@@ -41,7 +41,7 @@
 				open()
 			else
 				src.req_access = list()
-				src.req_access += pick(get_all_accesses())
+				src.req_access += pick(get_all_main_access())
 	..()
 
 /obj/structure/closet/secure_closet/proc/togglelock(mob/living/user)
@@ -86,7 +86,7 @@
 			var/obj/item/grab/G = W
 			if(G.grabbed_thing)
 				if(src.large)
-					src.MouseDrop_T(G.grabbed_thing, user)	//act like they were dragged onto the closet
+					src.MouseDrop_T(G.grabbed_thing, user) //act like they were dragged onto the closet
 				else
 					to_chat(user, SPAN_NOTICE("The locker is too small to stuff [W:affecting] into!"))
 			return
@@ -101,8 +101,8 @@
 			return
 		return ..(W,user)
 	else
-		if(isXeno(user))
-			var/mob/living/carbon/Xenomorph/opener = user
+		if(isxeno(user))
+			var/mob/living/carbon/xenomorph/opener = user
 			src.attack_alien(opener)
 			return
 		togglelock(user)
@@ -112,7 +112,7 @@
 	if(src.locked)
 		src.togglelock(user)
 	else
-		if(opened && isXeno(user))
+		if(opened && isxeno(user))
 			return // stop xeno closing them
 		src.toggle(user)
 

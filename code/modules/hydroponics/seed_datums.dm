@@ -1,4 +1,4 @@
-var/global/list/seed_types = list()       // A list of all seed data.
+var/global/list/seed_types = list()    // A list of all seed data.
 var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious trial and error goodness.
 
 // Debug for testing seed genes.
@@ -7,7 +7,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 	set name = "Show Plant Genes"
 	set desc = "Prints the round's plant gene masks."
 
-	if(!admin_holder)	return
+	if(!admin_holder) return
 
 	if(!gene_tag_masks)
 		to_chat(usr, "Gene masks not set.")
@@ -21,7 +21,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 // and mutant varieties use their uid converted to a string instead.
 // Looks like shit but it's sort of necessary.
 
-proc/populate_seed_list()
+/proc/populate_seed_list()
 
 	// Populate the global seed datum list.
 	for(var/type in typesof(/datum/seed)-/datum/seed)
@@ -57,73 +57,73 @@ proc/populate_seed_list()
 		gene_tag_masks[gene_tag] = gene_mask
 
 /datum/plantgene
-	var/genetype    // Label used when applying trait.
+	var/genetype // Label used when applying trait.
 	var/list/values // Values to copy into the target seed datum.
 
 /datum/seed
 
 	//Tracking.
-	var/uid                        // Unique identifier.
-	var/name                       // Index for global list.
-	var/seed_name                  // Plant name for seed packet.
-	var/seed_noun = "seeds"        // Descriptor for packet.
-	var/display_name               // Prettier name.
-	var/roundstart                 // If set, seed will not display variety number.
-	var/mysterious                 // Only used for the random seed packets.
+	var/uid // Unique identifier.
+	var/name    // Index for global list.
+	var/seed_name   // Plant name for seed packet.
+	var/seed_noun = "seeds" // Descriptor for packet.
+	var/display_name    // Prettier name.
+	var/roundstart  // If set, seed will not display variety number.
+	var/mysterious  // Only used for the random seed packets.
 
 	// Output.
-	var/list/products              // Possible fruit/other product paths.
-	var/list/mutants               // Possible predefined mutant varieties, if any.
-	var/list/chems                 // Chemicals that plant produces in products/injects into victim.
-	var/list/consume_gasses        // The plant will absorb these gasses during its life.
-	var/list/exude_gasses          // The plant will exude these gasses during its life.
+	var/list/products   // Possible fruit/other product paths.
+	var/list/mutants    // Possible predefined mutant varieties, if any.
+	var/list/chems  // Chemicals that plant produces in products/injects into victim.
+	var/list/consume_gasses // The plant will absorb these gasses during its life.
+	var/list/exude_gasses   // The plant will exude these gasses during its life.
 
 	//Tolerances.
-	var/requires_nutrients = 1      // The plant can starve.
+	var/requires_nutrients = 1   // The plant can starve.
 	var/nutrient_consumption = 0.25 // Plant eats this much per tick.
-	var/requires_water = 1          // The plant can become dehydrated.
-	var/water_consumption = 3       // Plant drinks this much per tick.
-	var/ideal_heat = 293            // Preferred temperature in Kelvin.
-	var/heat_tolerance = 20         // Departure from ideal that is survivable.
-	var/ideal_light = 8             // Preferred light level in luminosity.
-	var/light_tolerance = 5         // Departure from ideal that is survivable.
-	var/toxins_tolerance = 5        // Resistance to poison.
-	var/lowkpa_tolerance = 25       // Low pressure capacity.
-	var/highkpa_tolerance = 200     // High pressure capacity.
-	var/pest_tolerance = 5          // Threshold for pests to impact health.
-	var/weed_tolerance = 5          // Threshold for weeds to impact health.
+	var/requires_water = 1   // The plant can become dehydrated.
+	var/water_consumption = 3    // Plant drinks this much per tick.
+	var/ideal_heat = 293 // Preferred temperature in Kelvin.
+	var/heat_tolerance = 20  // Departure from ideal that is survivable.
+	var/ideal_light = 8  // Preferred light level in luminosity.
+	var/light_tolerance = 5  // Departure from ideal that is survivable.
+	var/toxins_tolerance = 5 // Resistance to poison.
+	var/lowkpa_tolerance = 25    // Low pressure capacity.
+	var/highkpa_tolerance = 200  // High pressure capacity.
+	var/pest_tolerance = 5   // Threshold for pests to impact health.
+	var/weed_tolerance = 5   // Threshold for weeds to impact health.
 
 	//General traits.
-	var/endurance = 100             // Maximum plant HP when growing.
-	var/yield = 0                   // Amount of product.
-	var/lifespan = 0                // Time before the plant dies.
-	var/maturation = 0              // Time taken before the plant is mature.
-	var/production = 0              // Time before harvesting can be undertaken again.
-	var/growth_stages = 6           // Number of stages the plant passes through before it is mature.
-	var/harvest_repeat = 0          // If 1, this plant will fruit repeatedly..
-	var/potency = 1                 // General purpose plant strength value.
-	var/spread = 0                  // 0 limits plant to tray, 1 = creepers, 2 = vines.
-	var/carnivorous = 0             // 0 = none, 1 = eat pests in tray, 2 = eat living things  (when a vine).
-	var/parasite = 0                // 0 = no, 1 = gain health from weed level.
-	var/immutable = 0                // If set, plant will never mutate. If -1, plant is  highly mutable.
-	var/alter_temp                  // If set, the plant will periodically alter local temp by this amount.
+	var/endurance = 100  // Maximum plant HP when growing.
+	var/yield = 0    // Amount of product.
+	var/lifespan = 0 // Time before the plant dies.
+	var/maturation = 0   // Time taken before the plant is mature.
+	var/production = 0   // Time before harvesting can be undertaken again.
+	var/growth_stages = 6    // Number of stages the plant passes through before it is mature.
+	var/harvest_repeat = 0   // If 1, this plant will fruit repeatedly..
+	var/potency = 1  // General purpose plant strength value.
+	var/spread = 0   // 0 limits plant to tray, 1 = creepers, 2 = vines.
+	var/carnivorous = 0  // 0 = none, 1 = eat pests in tray, 2 = eat living things  (when a vine).
+	var/parasite = 0 // 0 = no, 1 = gain health from weed level.
+	var/immutable = 0 // If set, plant will never mutate. If -1, plant is  highly mutable.
+	var/alter_temp   // If set, the plant will periodically alter local temp by this amount.
 
 	// Cosmetics.
-	var/plant_icon                  // Icon to use for the plant growing in the tray.
-	var/product_icon                // Base to use for fruit coming from this plant (if a vine).
-	var/product_colour              // Colour to apply to product base (if a vine).
-	var/packet_icon = "seed"        // Icon to use for physical seed packet item.
-	var/biolum                      // Plant is bioluminescent.
-	var/biolum_colour               // The colour of the plant's radiance.
-	var/flowers                     // Plant has a flower overlay.
+	var/plant_icon   // Icon to use for the plant growing in the tray.
+	var/product_icon // Base to use for fruit coming from this plant (if a vine).
+	var/product_colour   // Color to apply to product base (if a vine).
+	var/packet_icon = "seed" // Icon to use for physical seed packet item.
+	var/biolum   // Plant is bioluminescent.
+	var/biolum_colour    // The color of the plant's radiance.
+	var/flowers  // Plant has a flower overlay.
 	var/flower_icon = "vine_fruit"  // Which overlay to use.
-	var/flower_colour               // Which colour to use.
+	var/flower_colour    // Which color to use.
 
 //Creates a random seed. MAKE SURE THE LINE HAS DIVERGED BEFORE THIS IS CALLED.
 /datum/seed/proc/randomize()
 
 	roundstart = 0
-	seed_name = "strange plant"     // TODO: name generator.
+	seed_name = "strange plant"  // TODO: name generator.
 	display_name = "strange plants" // TODO: name generator.
 	mysterious = 1
 
@@ -132,64 +132,64 @@ proc/populate_seed_list()
 	potency = rand(5,30)
 
 	var/list/plant_icons = pick(list(
-		list("seed-chili",              "chili"),
-		list("seed-icepepper",          "chiliice"),
-		list("seed-berry",              "berry"),
-		list("seed-glowberry",          "glowberry"),
-		list("seed-poisonberry",        "poisonberry"),
-		list("seed-deathberry",         "deathberry"),
-		list("seed-nettle",             "nettle"),
-		list("seed-deathnettle",        "deathnettle"),
-		list("seed-tomato",             "tomato"),
-		list("seed-bloodtomato",        "bloodtomato"),
-		list("seed-killertomato",       "killertomato"),
-		list("seed-bluetomato",         "bluetomato"),
-		list("seed-bluespacetomato",    "bluespacetomato"),
-		list("seed-eggplant",           "eggplant"),
-		list("seed-eggy",               "eggy"),
-		list("seed-apple",              "apple"),
-		list("seed-goldapple",          "goldapple"),
+		list("seed-chili",   "chili"),
+		list("seed-icepepper",   "chiliice"),
+		list("seed-berry",   "berry"),
+		list("seed-glowberry",   "glowberry"),
+		list("seed-poisonberry", "poisonberry"),
+		list("seed-deathberry",  "deathberry"),
+		list("seed-nettle",  "nettle"),
+		list("seed-deathnettle", "deathnettle"),
+		list("seed-tomato",  "tomato"),
+		list("seed-bloodtomato", "bloodtomato"),
+		list("seed-killertomato",    "killertomato"),
+		list("seed-bluetomato",  "bluetomato"),
+		list("seed-bluespacetomato", "bluespacetomato"),
+		list("seed-eggplant",    "eggplant"),
+		list("seed-eggy",    "eggy"),
+		list("seed-apple",   "apple"),
+		list("seed-goldapple",   "goldapple"),
 		list("seed-ambrosiavulgaris",   "ambrosiavulgaris"),
-		list("seed-ambrosiadeus",       "ambrosiadeus"),
-		list("mycelium-chanter",        "chanter"),
-		list("mycelium-plump",          "plump"),
-		list("mycelium-reishi",         "reishi"),
-		list("mycelium-liberty",        "liberty"),
-		list("mycelium-amanita",        "amanita"),
-		list("mycelium-angel",          "angel"),
-		list("mycelium-tower",          "towercap"),
-		list("mycelium-glowshroom",     "glowshroom"),
+		list("seed-ambrosiadeus",    "ambrosiadeus"),
+		list("mycelium-chanter", "chanter"),
+		list("mycelium-plump",   "plump"),
+		list("mycelium-reishi",  "reishi"),
+		list("mycelium-liberty", "liberty"),
+		list("mycelium-amanita", "amanita"),
+		list("mycelium-angel",   "angel"),
+		list("mycelium-tower",   "towercap"),
+		list("mycelium-glowshroom",  "glowshroom"),
 		list("mycelium-walkingmushroom","walkingmushroom"),
-		list("mycelium-plast",          "plastellium"),
-		list("seed-harebell",           "harebell"),
-		list("seed-poppy",              "poppy"),
-		list("seed-sunflower",          "sunflower"),
-		list("seed-grapes",             "grape"),
-		list("seed-greengrapes",        "greengrape"),
-		list("seed-peanut",             "peanut"),
-		list("seed-cabbage",            "cabbage"),
-		list("seed-shand",              "shand"),
-		list("seed-mtear",              "mtear"),
-		list("seed-banana",             "banana"),
-		list("seed-corn",               "corn"),
-		list("seed-potato",             "potato"),
-		list("seed-soybean",            "soybean"),
-		list("seed-wheat",              "wheat"),
-		list("seed-rice",               "rice"),
-		list("seed-carrot",             "carrot"),
+		list("mycelium-plast",   "plastellium"),
+		list("seed-harebell",    "harebell"),
+		list("seed-poppy",   "poppy"),
+		list("seed-sunflower",   "sunflower"),
+		list("seed-grapes",  "grape"),
+		list("seed-greengrapes", "greengrape"),
+		list("seed-peanut",  "peanut"),
+		list("seed-cabbage", "cabbage"),
+		list("seed-shand",   "shand"),
+		list("seed-mtear",   "mtear"),
+		list("seed-banana",  "banana"),
+		list("seed-corn",    "corn"),
+		list("seed-potato",  "potato"),
+		list("seed-soybean", "soybean"),
+		list("seed-wheat",   "wheat"),
+		list("seed-rice",    "rice"),
+		list("seed-carrot",  "carrot"),
 		list("seed-ambrosiavulgaris",   "weeds"),
-		list("seed-whitebeet",          "whitebeet"),
-		list("seed-sugarcane",          "sugarcane"),
-		list("seed-watermelon",         "watermelon"),
-		list("seed-pumpkin",            "pumpkin"),
-		list("seed-lime",               "lime"),
-		list("seed-lemon",              "lemon"),
-		list("seed-orange",             "orange"),
-		list("seed-grass",              "grass"),
-		list("seed-cocoapod",           "cocoapod"),
-		list("seed-cherry",             "cherry"),
-		list("seed-kudzu",              "kudzu"),
-		list("seed-replicapod",         "replicapod")
+		list("seed-whitebeet",   "whitebeet"),
+		list("seed-sugarcane",   "sugarcane"),
+		list("seed-watermelon",  "watermelon"),
+		list("seed-pumpkin", "pumpkin"),
+		list("seed-lime",    "lime"),
+		list("seed-lemon",   "lemon"),
+		list("seed-orange",  "orange"),
+		list("seed-grass",   "grass"),
+		list("seed-cocoapod",    "cocoapod"),
+		list("seed-cherry",  "cherry"),
+		list("seed-kudzu",   "kudzu"),
+		list("seed-replicapod",  "replicapod")
 		))
 
 	packet_icon = plant_icons[1]
@@ -268,9 +268,9 @@ proc/populate_seed_list()
 	else
 		requires_water = 0
 
-	ideal_heat =       rand(100,400)
+	ideal_heat =    rand(100,400)
 	heat_tolerance =   rand(10,30)
-	ideal_light =      rand(2,10)
+	ideal_light =   rand(2,10)
 	light_tolerance =  rand(2,7)
 	toxins_tolerance = rand(2,7)
 	pest_tolerance =   rand(2,7)
@@ -315,7 +315,7 @@ proc/populate_seed_list()
 	return pick(mutants)
 
 //Mutates the plant overall (randomly).
-/datum/seed/proc/mutate(var/degree,var/turf/source_turf)
+/datum/seed/proc/mutate(degree, turf/source_turf)
 
 	if(!degree || immutable > 0) return
 
@@ -330,32 +330,32 @@ proc/populate_seed_list()
 				endurance = max(0,endurance-rand(10,20))
 				source_turf.visible_message(SPAN_DANGER("\The [display_name] withers rapidly!"))
 			if(1) //Gluttony!
-				nutrient_consumption =      max(0,  min(5,   nutrient_consumption + rand(-(degree*0.1),(degree*0.1))))
-				water_consumption =         max(0,  min(50,  water_consumption    + rand(-degree,degree)))
+				nutrient_consumption =   max(0,  min(5,   nutrient_consumption + rand(-(degree*0.1),(degree*0.1))))
+				water_consumption =  max(0,  min(50,  water_consumption + rand(-degree,degree)))
 			if(2) //Endurance
-				endurance =                 max(10, min(100, endurance            + (rand(-5,5)   * degree)))
+				endurance =  max(10, min(100, endurance + (rand(-5,5)   * degree)))
 			if(3) //Light tolerance
-				ideal_light =               max(0,  min(30,  ideal_light          + (rand(-1,1)   * degree)))
-				light_tolerance =           max(0,  min(10,  light_tolerance      + (rand(-2,2)   * degree)))
+				ideal_light =    max(0,  min(30,  ideal_light   + (rand(-1,1)   * degree)))
+				light_tolerance =    max(0,  min(10,  light_tolerance   + (rand(-2,2)   * degree)))
 			if(4) //Toxin tolerance
-				toxins_tolerance =          max(0,  min(10,  weed_tolerance       + (rand(-2,2)   * degree)))
+				toxins_tolerance =   max(0,  min(10,  weed_tolerance    + (rand(-2,2)   * degree)))
 			if(5) //Weed tolerance
-				weed_tolerance  =           max(0,  min(10,  weed_tolerance       + (rand(-2,2)   * degree)))
+				weed_tolerance  =    max(0,  min(10,  weed_tolerance    + (rand(-2,2)   * degree)))
 				if(prob(degree*5))
-					carnivorous =           max(0,  min(2,   carnivorous          + rand(-degree,degree)))
+					carnivorous =    max(0,  min(2,   carnivorous   + rand(-degree,degree)))
 					if(carnivorous)
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name] shudders hungrily."))
 				else if(prob(degree*5))
 					parasite = !parasite
 			if(6) //Production
-				production =                max(1,  min(10,  production           + (rand(-1,1)   * degree)))
+				production = max(1,  min(10,  production    + (rand(-1,1)   * degree)))
 			if(7) //Lifespan
-				lifespan =                  max(10, min(30,  lifespan             + (rand(-2,2)   * degree)))
-				if(yield != -1) yield =     max(0,  min(10,  yield                + (rand(-2,2)   * degree)))
+				lifespan =   max(10, min(30,  lifespan  + (rand(-2,2)   * degree)))
+				if(yield != -1) yield =  max(0,  min(10,  yield + (rand(-2,2)   * degree)))
 			if(8) //Potency
-				potency =                   max(0,  min(200, potency              + (rand(-20,20) * degree)))
+				potency =    max(0,  min(200, potency   + (rand(-20,20) * degree)))
 			if(9) //Maturity
-				maturation =                max(0,  min(30,  maturation      + (rand(-1,1)   * degree)))
+				maturation = max(0,  min(30,  maturation   + (rand(-1,1)   * degree)))
 				if(prob(degree*5))
 					harvest_repeat = !harvest_repeat
 			if(10) //Bioluminecence
@@ -365,7 +365,7 @@ proc/populate_seed_list()
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name] begins to glow!"))
 						if(prob(degree*2))
 							biolum_colour = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
-							source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s glow <font color='[biolum_colour]'>changes colour</font>!"))
+							source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s glow <font color='[biolum_colour]'>changes color</font>!"))
 					else
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s glow dims..."))
 			if(11) //Flowers?
@@ -375,11 +375,11 @@ proc/populate_seed_list()
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name] sprouts a bevy of flowers!"))
 						if(prob(degree*2))
 							flower_colour = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
-						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s flowers <font=[flower_colour]>changes colour</font>!"))
+						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s flowers <font=[flower_colour]>changes color</font>!"))
 					else
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s flowers wither and fall off."))
 			else //New chems! (20% chance)
-				var/new_chem = list(pick(	prob(10);pick(chemical_gen_classes_list["C1"]),\
+				var/new_chem = list(pick( prob(10);pick(chemical_gen_classes_list["C1"]),\
 											prob(15);pick(chemical_gen_classes_list["C2"]),\
 											prob(25);pick(chemical_gen_classes_list["C3"]),\
 											prob(30);pick(chemical_gen_classes_list["C4"]),\
@@ -391,7 +391,7 @@ proc/populate_seed_list()
 	return
 
 //Mutates a specific trait/set of traits.
-/datum/seed/proc/apply_gene(var/datum/plantgene/gene)
+/datum/seed/proc/apply_gene(datum/plantgene/gene)
 
 	if(!gene || !gene.values || immutable > 0) return
 
@@ -402,7 +402,7 @@ proc/populate_seed_list()
 
 			if(gene.values.len < 6) return
 
-			if(yield > 0)     yield =     max(1,round(yield*0.85))
+			if(yield > 0)  yield =  max(1,round(yield*0.85))
 			if(endurance > 0) endurance = max(1,round(endurance*0.85))
 			if(lifespan > 0)  lifespan =  max(1,round(lifespan*0.85))
 
@@ -436,66 +436,66 @@ proc/populate_seed_list()
 				for(var/gas in exude_gasses)
 					exude_gasses[gas] = max(1,round(exude_gasses[gas]*0.8))
 
-			alter_temp =           gene.values[4]
-			potency =              gene.values[5]
-			harvest_repeat =       gene.values[6]
+			alter_temp =    gene.values[4]
+			potency =   gene.values[5]
+			harvest_repeat =    gene.values[6]
 
 		if("consumption")
 
 			if(gene.values.len < 7) return
 
-			consume_gasses =       gene.values[1]
+			consume_gasses =    gene.values[1]
 			requires_nutrients =   gene.values[2]
 			nutrient_consumption = gene.values[3]
-			requires_water =       gene.values[4]
-			water_consumption =    gene.values[5]
-			carnivorous =          gene.values[6]
-			parasite =             gene.values[7]
+			requires_water =    gene.values[4]
+			water_consumption = gene.values[5]
+			carnivorous =   gene.values[6]
+			parasite =  gene.values[7]
 
 		if("environment")
 
 			if(gene.values.len < 6) return
 
-			ideal_heat =           gene.values[1]
-			heat_tolerance =       gene.values[2]
-			ideal_light =          gene.values[3]
-			light_tolerance =      gene.values[4]
-			lowkpa_tolerance  =    gene.values[5]
-			highkpa_tolerance =    gene.values[6]
+			ideal_heat =    gene.values[1]
+			heat_tolerance =    gene.values[2]
+			ideal_light =   gene.values[3]
+			light_tolerance =   gene.values[4]
+			lowkpa_tolerance  = gene.values[5]
+			highkpa_tolerance = gene.values[6]
 
 		if("resistance")
 
 			if(gene.values.len < 3) return
 
-			toxins_tolerance =     gene.values[1]
-			pest_tolerance =       gene.values[2]
-			weed_tolerance =       gene.values[3]
+			toxins_tolerance =  gene.values[1]
+			pest_tolerance =    gene.values[2]
+			weed_tolerance =    gene.values[3]
 
 		if("vigour")
 
 			if(gene.values.len < 6) return
 
-			endurance =            gene.values[1]
-			yield =                gene.values[2]
-			lifespan =             gene.values[3]
-			spread =               gene.values[4]
-			maturation =           gene.values[5]
-			production =           gene.values[6]
+			endurance = gene.values[1]
+			yield = gene.values[2]
+			lifespan =  gene.values[3]
+			spread =    gene.values[4]
+			maturation =    gene.values[5]
+			production =    gene.values[6]
 
 		if("flowers")
 
 			if(gene.values.len < 7) return
 
-			product_icon =         gene.values[1]
-			product_colour =       gene.values[2]
-			biolum =               gene.values[3]
-			biolum_colour =        gene.values[4]
-			flowers =              gene.values[5]
-			flower_icon =          gene.values[6]
-			flower_colour =        gene.values[7]
+			product_icon =  gene.values[1]
+			product_colour =    gene.values[2]
+			biolum =    gene.values[3]
+			biolum_colour = gene.values[4]
+			flowers =   gene.values[5]
+			flower_icon =   gene.values[6]
+			flower_colour = gene.values[7]
 
 //Returns a list of the desired trait values.
-/datum/seed/proc/get_gene(var/genetype)
+/datum/seed/proc/get_gene(genetype)
 
 	if(!genetype) return 0
 
@@ -505,67 +505,67 @@ proc/populate_seed_list()
 	switch(genetype)
 		if("products")
 			P.values = list(
-				(products             ? products             : 0),
-				(chems                ? chems                : 0),
-				(exude_gasses         ? exude_gasses         : 0),
-				(alter_temp           ? alter_temp           : 0),
-				(potency              ? potency              : 0),
-				(harvest_repeat       ? harvest_repeat       : 0)
+				(products  ? products  : 0),
+				(chems ? chems : 0),
+				(exude_gasses  ? exude_gasses  : 0),
+				(alter_temp    ? alter_temp    : 0),
+				(potency   ? potency   : 0),
+				(harvest_repeat    ? harvest_repeat    : 0)
 				)
 
 		if("consumption")
 			P.values = list(
-				(consume_gasses       ? consume_gasses       : 0),
+				(consume_gasses    ? consume_gasses    : 0),
 				(requires_nutrients   ? requires_nutrients   : 0),
 				(nutrient_consumption ? nutrient_consumption : 0),
-				(requires_water       ? requires_water       : 0),
-				(water_consumption    ? water_consumption    : 0),
-				(carnivorous          ? carnivorous          : 0),
-				(parasite             ? parasite             : 0)
+				(requires_water    ? requires_water    : 0),
+				(water_consumption ? water_consumption : 0),
+				(carnivorous   ? carnivorous   : 0),
+				(parasite  ? parasite  : 0)
 				)
 
 		if("environment")
 			P.values = list(
-				(ideal_heat           ? ideal_heat           : 0),
-				(heat_tolerance       ? heat_tolerance       : 0),
-				(ideal_light          ? ideal_light          : 0),
-				(light_tolerance      ? light_tolerance      : 0),
-				(lowkpa_tolerance     ? lowkpa_tolerance     : 0),
-				(highkpa_tolerance    ? highkpa_tolerance    : 0)
+				(ideal_heat    ? ideal_heat    : 0),
+				(heat_tolerance    ? heat_tolerance    : 0),
+				(ideal_light   ? ideal_light   : 0),
+				(light_tolerance   ? light_tolerance   : 0),
+				(lowkpa_tolerance  ? lowkpa_tolerance  : 0),
+				(highkpa_tolerance ? highkpa_tolerance : 0)
 				)
 
 		if("resistance")
 			P.values = list(
-				(toxins_tolerance     ? toxins_tolerance     : 0),
-				(pest_tolerance       ? pest_tolerance       : 0),
-				(weed_tolerance       ? weed_tolerance       : 0)
+				(toxins_tolerance  ? toxins_tolerance  : 0),
+				(pest_tolerance    ? pest_tolerance    : 0),
+				(weed_tolerance    ? weed_tolerance    : 0)
 				)
 
 		if("vigour")
 			P.values = list(
-				(endurance            ? endurance            : 0),
-				(yield                ? yield                : 0),
-				(lifespan             ? lifespan             : 0),
-				(spread               ? spread               : 0),
-				(maturation           ? maturation           : 0),
-				(production           ? production           : 0)
+				(endurance ? endurance : 0),
+				(yield ? yield : 0),
+				(lifespan  ? lifespan  : 0),
+				(spread    ? spread    : 0),
+				(maturation    ? maturation    : 0),
+				(production    ? production    : 0)
 				)
 
 		if("flowers")
 			P.values = list(
-				(product_icon         ? product_icon         : 0),
-				(product_colour       ? product_colour       : 0),
-				(biolum               ? biolum               : 0),
-				(biolum_colour        ? biolum_colour        : 0),
-				(flowers              ? flowers              : 0),
-				(flower_icon          ? flower_icon          : 0),
-				(flower_colour        ? flower_colour        : 0)
+				(product_icon  ? product_icon  : 0),
+				(product_colour    ? product_colour    : 0),
+				(biolum    ? biolum    : 0),
+				(biolum_colour ? biolum_colour : 0),
+				(flowers   ? flowers   : 0),
+				(flower_icon   ? flower_icon   : 0),
+				(flower_colour ? flower_colour : 0)
 				)
 
 	return (P ? P : 0)
 
 //Place the plant products at the feet of the user.
-/datum/seed/proc/harvest(var/mob/user,var/yield_mod,var/harvest_sample)
+/datum/seed/proc/harvest(mob/user, yield_mod, harvest_sample)
 
 	if(!user)
 		return
@@ -626,7 +626,7 @@ proc/populate_seed_list()
 // When the seed in this machine mutates/is modified, the tray seed value
 // is set to a new datum copied from the original. This datum won't actually
 // be put into the global datum list until the product is harvested, though.
-/datum/seed/proc/diverge(var/modified)
+/datum/seed/proc/diverge(modified)
 
 	if(immutable > 0) return
 
@@ -637,49 +637,49 @@ proc/populate_seed_list()
 	new_seed.roundstart = 0
 
 	//Copy over everything else.
-	if(products)       new_seed.products = products.Copy()
-	if(mutants)        new_seed.mutants = mutants.Copy()
-	if(chems)          new_seed.chems = chems.Copy()
+	if(products)    new_seed.products = products.Copy()
+	if(mutants) new_seed.mutants = mutants.Copy()
+	if(chems)   new_seed.chems = chems.Copy()
 	if(consume_gasses) new_seed.consume_gasses = consume_gasses.Copy()
 	if(exude_gasses)   new_seed.exude_gasses = exude_gasses.Copy()
 
-	new_seed.seed_name =            "[(roundstart ? "[(modified ? "modified" : "mutant")] " : "")][seed_name]"
-	new_seed.display_name =         "[(roundstart ? "[(modified ? "modified" : "mutant")] " : "")][display_name]"
-	new_seed.seed_noun =            seed_noun
+	new_seed.seed_name = "[(roundstart ? "[(modified ? "modified" : "mutant")] " : "")][seed_name]"
+	new_seed.display_name =  "[(roundstart ? "[(modified ? "modified" : "mutant")] " : "")][display_name]"
+	new_seed.seed_noun = seed_noun
 
 	new_seed.requires_nutrients =   requires_nutrients
 	new_seed.nutrient_consumption = nutrient_consumption
-	new_seed.requires_water =       requires_water
-	new_seed.water_consumption =    water_consumption
-	new_seed.ideal_heat =           ideal_heat
-	new_seed.heat_tolerance =       heat_tolerance
-	new_seed.ideal_light =          ideal_light
-	new_seed.light_tolerance =      light_tolerance
-	new_seed.toxins_tolerance =     toxins_tolerance
-	new_seed.lowkpa_tolerance =     lowkpa_tolerance
-	new_seed.highkpa_tolerance =    highkpa_tolerance
-	new_seed.pest_tolerance =       pest_tolerance
-	new_seed.weed_tolerance =       weed_tolerance
-	new_seed.endurance =            endurance
-	new_seed.yield =                yield
-	new_seed.lifespan =             lifespan
-	new_seed.maturation =           maturation
-	new_seed.production =           production
-	new_seed.growth_stages =        growth_stages
-	new_seed.harvest_repeat =       harvest_repeat
-	new_seed.potency =              potency
-	new_seed.spread =               spread
-	new_seed.carnivorous =          carnivorous
-	new_seed.parasite =             parasite
-	new_seed.plant_icon =           plant_icon
-	new_seed.product_icon =         product_icon
-	new_seed.product_colour =       product_colour
-	new_seed.packet_icon =          packet_icon
-	new_seed.biolum =               biolum
-	new_seed.biolum_colour =        biolum_colour
-	new_seed.flowers =              flowers
-	new_seed.flower_icon =          flower_icon
-	new_seed.alter_temp = 			alter_temp
+	new_seed.requires_water =    requires_water
+	new_seed.water_consumption = water_consumption
+	new_seed.ideal_heat =    ideal_heat
+	new_seed.heat_tolerance =    heat_tolerance
+	new_seed.ideal_light =   ideal_light
+	new_seed.light_tolerance =   light_tolerance
+	new_seed.toxins_tolerance =  toxins_tolerance
+	new_seed.lowkpa_tolerance =  lowkpa_tolerance
+	new_seed.highkpa_tolerance = highkpa_tolerance
+	new_seed.pest_tolerance =    pest_tolerance
+	new_seed.weed_tolerance =    weed_tolerance
+	new_seed.endurance = endurance
+	new_seed.yield = yield
+	new_seed.lifespan =  lifespan
+	new_seed.maturation =    maturation
+	new_seed.production =    production
+	new_seed.growth_stages = growth_stages
+	new_seed.harvest_repeat =    harvest_repeat
+	new_seed.potency =   potency
+	new_seed.spread =    spread
+	new_seed.carnivorous =   carnivorous
+	new_seed.parasite =  parasite
+	new_seed.plant_icon =    plant_icon
+	new_seed.product_icon =  product_icon
+	new_seed.product_colour =    product_colour
+	new_seed.packet_icon =   packet_icon
+	new_seed.biolum =    biolum
+	new_seed.biolum_colour = biolum_colour
+	new_seed.flowers =   flowers
+	new_seed.flower_icon =   flower_icon
+	new_seed.alter_temp = alter_temp
 
 	return new_seed
 

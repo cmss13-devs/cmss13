@@ -34,17 +34,17 @@
 /obj/structure/inflatable
 	name = "inflatable wall"
 	desc = "An inflated membrane. Do not puncture."
-	density = 1
-	anchored = 1
-	opacity = 0
+	density = TRUE
+	anchored = TRUE
+	opacity = FALSE
 
 	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "wall"
 
-	health = 50.0
+	health = 50
 	var/deflated = FALSE
 
-/obj/structure/inflatable/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/inflatable/bullet_act(obj/item/projectile/Proj)
 	health -= Proj.damage
 	..()
 	if(health <= 0 && !deflated)
@@ -67,13 +67,13 @@
 	return
 
 
-/obj/structure/inflatable/proc/attack_generic(mob/living/user, damage = 0)	//used by attack_animal
+/obj/structure/inflatable/proc/attack_generic(mob/living/user, damage = 0) //used by attack_animal
 	health -= damage
 	user.animation_attack_on(src)
 	if(health <= 0)
 		user.visible_message(SPAN_DANGER("[user] tears open [src]!"))
 		deflate(1)
-	else	//for nicer text~
+	else //for nicer text~
 		user.visible_message(SPAN_DANGER("[user] tears at [src]!"))
 
 /obj/structure/inflatable/attack_animal(mob/user as mob)
@@ -94,7 +94,7 @@
 		..()
 	return
 
-/obj/structure/inflatable/proc/hit(var/damage, var/sound_effect = 1)
+/obj/structure/inflatable/proc/hit(damage, sound_effect = 1)
 	health = max(0, health - damage)
 	if(sound_effect)
 		playsound(loc, 'sound/effects/Glasshit_old.ogg', 25, 1)
@@ -102,7 +102,7 @@
 		deflate(1)
 
 
-/obj/structure/inflatable/proc/deflate(var/violent=0)
+/obj/structure/inflatable/proc/deflate(violent=0)
 	set waitfor = 0
 	if(deflated)
 		return
@@ -112,12 +112,12 @@
 		visible_message("[src] rapidly deflates!")
 		flick("wall_popping", src)
 		sleep(10)
-		deconstruct(TRUE)
+		deconstruct(FALSE)
 	else
 		visible_message("[src] slowly deflates.")
 		flick("wall_deflating", src)
 		spawn(50)
-			deconstruct(FALSE)
+			deconstruct(TRUE)
 
 
 /obj/structure/inflatable/deconstruct(disassembled = TRUE)
@@ -136,7 +136,7 @@
 
 	if(isobserver(usr)) //to stop ghosts from deflating
 		return
-	if(isXeno(usr))
+	if(isxeno(usr))
 		return
 
 	if(!deflated)
@@ -148,8 +148,8 @@
 /obj/structure/inflatable/popped
 	name = "popped inflatable wall"
 	desc = "It used to be an inflatable wall, now it's just a mess of plastic."
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	deflated = TRUE
 
 	icon = 'icons/obj/items/inflatable.dmi'
@@ -166,9 +166,9 @@
 
 /obj/structure/inflatable/door //Based on mineral door code
 	name = "inflatable door"
-	density = 1
-	anchored = 1
-	opacity = 0
+	density = TRUE
+	anchored = TRUE
+	opacity = FALSE
 
 	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "door_closed"
@@ -211,8 +211,8 @@
 	//playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
 	flick("door_opening",src)
 	sleep(10)
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	state = 1
 	update_icon()
 	isSwitchingStates = 0
@@ -222,8 +222,8 @@
 	//playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
 	flick("door_closing",src)
 	sleep(10)
-	density = 1
-	opacity = 0
+	density = TRUE
+	opacity = FALSE
 	state = 0
 	update_icon()
 	isSwitchingStates = 0
@@ -234,7 +234,7 @@
 	else
 		icon_state = "door_closed"
 
-/obj/structure/inflatable/door/deflate(var/violent=0)
+/obj/structure/inflatable/door/deflate(violent=0)
 	set waitfor = 0
 	playsound(loc, 'sound/machines/hiss.ogg', 25, 1)
 	if(violent)

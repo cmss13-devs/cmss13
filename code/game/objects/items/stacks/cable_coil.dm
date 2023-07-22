@@ -21,7 +21,7 @@
 	stack_id = "cable coil"
 	attack_speed = 3
 
-/obj/item/stack/cable_coil/Initialize(mapload, length = MAXCOIL, var/param_color = null)
+/obj/item/stack/cable_coil/Initialize(mapload, length = MAXCOIL, param_color = null)
 	. = ..()
 	src.amount = length
 	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
@@ -117,13 +117,13 @@
 		..()
 	return
 
-/obj/item/stack/cable_coil/use(var/used)
+/obj/item/stack/cable_coil/use(used)
 	if( ..() )
 		updateicon()
 		update_wclass()
 		return 1
 
-/obj/item/stack/cable_coil/add(var/extra)
+/obj/item/stack/cable_coil/add(extra)
 	if( ..() )
 		updateicon()
 		update_wclass()
@@ -140,7 +140,7 @@
 		to_chat(user, SPAN_WARNING("You can't lay cable at a place that far away."))
 		return
 
-	if(F.intact_tile)		// if floor is intact, complain
+	if(F.intact_tile) // if floor is intact, complain
 		to_chat(user, SPAN_WARNING("You can't lay cable there unless the floor tiles are removed."))
 		return
 
@@ -148,7 +148,7 @@
 		var/dirn
 
 		if(user.loc == F)
-			dirn = user.dir			// if laying on the tile we're on, lay in the direction we're facing
+			dirn = user.dir // if laying on the tile we're on, lay in the direction we're facing
 		else
 			dirn = get_dir(F, user)
 
@@ -191,30 +191,30 @@
 
 	var/turf/T = C.loc
 
-	if(!isturf(T) || T.intact_tile)		// sanity checks, also stop use interacting with T-scanner revealed cable
+	if(!isturf(T) || T.intact_tile) // sanity checks, also stop use interacting with T-scanner revealed cable
 		return
 
-	if(get_dist(C, user) > 1)		// make sure it's close enough
+	if(get_dist(C, user) > 1) // make sure it's close enough
 		to_chat(user, SPAN_WARNING("You can't lay cable at a place that far away."))
 		return
 
 
-	if(U == T)		// do nothing if we clicked a cable we're standing on
-		return		// may change later if can think of something logical to do
+	if(U == T) // do nothing if we clicked a cable we're standing on
+		return // may change later if can think of something logical to do
 
 	var/dirn = get_dir(C, user)
 
-	if(C.d1 == dirn || C.d2 == dirn)		// one end of the clicked cable is pointing towards us
-		if(U.intact_tile)						// can't place a cable if the floor is complete
+	if(C.d1 == dirn || C.d2 == dirn) // one end of the clicked cable is pointing towards us
+		if(U.intact_tile) // can't place a cable if the floor is complete
 			to_chat(user, SPAN_WARNING("You can't lay cable there unless the floor tiles are removed."))
 			return
 		else
 			// cable is pointing at us, we're standing on an open tile
 			// so create a stub pointing at the clicked cable on our tile
 
-			var/fdirn = turn(dirn, 180)		// the opposite direction
+			var/fdirn = turn(dirn, 180) // the opposite direction
 
-			for(var/obj/structure/cable/LC in U)		// check to make sure there's not a cable there already
+			for(var/obj/structure/cable/LC in U) // check to make sure there's not a cable there already
 				if(LC.d1 == fdirn || LC.d2 == fdirn)
 					to_chat(user, SPAN_WARNING("There's already a cable at that position."))
 					return
@@ -234,21 +234,21 @@
 					qdel(NC)
 
 			return
-	else if(C.d1 == 0)		// exisiting cable doesn't point at our position, so see if it's a stub
+	else if(C.d1 == 0) // exisiting cable doesn't point at our position, so see if it's a stub
 							// if so, make it a full cable pointing from it's old direction to our dirn
-		var/nd1 = C.d2	// these will be the new directions
+		var/nd1 = C.d2 // these will be the new directions
 		var/nd2 = dirn
 
 
-		if(nd1 > nd2)		// swap directions to match icons/states
+		if(nd1 > nd2) // swap directions to match icons/states
 			nd1 = dirn
 			nd2 = C.d2
 
 
-		for(var/obj/structure/cable/LC in T)		// check to make sure there's no matching cable
-			if(LC == C)			// skip the cable we're interacting with
+		for(var/obj/structure/cable/LC in T) // check to make sure there's no matching cable
+			if(LC == C) // skip the cable we're interacting with
 				continue
-			if((LC.d1 == nd1 && LC.d2 == nd2) || (LC.d1 == nd2 && LC.d2 == nd1) )	// make sure no cable matches either direction
+			if((LC.d1 == nd1 && LC.d2 == nd2) || (LC.d1 == nd2 && LC.d2 == nd1) ) // make sure no cable matches either direction
 				to_chat(user, SPAN_WARNING("There's already a cable at that position."))
 				return
 

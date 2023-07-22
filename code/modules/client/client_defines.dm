@@ -9,7 +9,7 @@
 	// Holds the client's current mentorhelp thread
 	var/datum/mentorhelp/current_mhelp = null
 
-	var/last_message	= "" //Contains the last message sent by this client - used to protect against copy-paste spamming.
+	var/last_message = "" //Contains the last message sent by this client - used to protect against copy-paste spamming.
 	var/last_message_count = 0 //contins a number of how many times a message identical to last_message was sent.
 	var/talked = 0
 	var/chatWarn = 0
@@ -39,10 +39,10 @@
 		///////////////
 		//SOUND STUFF//
 		///////////////
-	var/played			= 0
-	var/midi_silenced	= 0
+	var/played = 0
+	var/midi_silenced = 0
 	var/datum/soundOutput/soundOutput
-	var/list/volume_preferences = list(1, 0.5, 1, 0.85)//Game, music, admin midis, lobby music
+	var/list/volume_preferences = list(1, 0.5, 1, 0.6)//Game, music, admin midis, lobby music
 
 		////////////
 		//SECURITY//
@@ -52,16 +52,17 @@
 	//control_freak = 1
 
 	var/received_irc_pm = -99999
-	var/irc_admin			//IRC admin that spoke with them last.
-	var/mute_irc = 0
+
+	var/talked_at = 0 //Won't let someone say something again in under a second.
+	var/talked_sum = 0 // running sum of chars spoke in past 5 minutes
 
 
 		////////////////////////////////////
 		//things that require the database//
 		////////////////////////////////////
-	var/player_age = "Requires database"	//So admins know why it isn't working - Used to determine how old the account is - in days.
-	var/related_accounts_ip = "Requires database"	//So admins know why it isn't working - Used to determine what other accounts previously logged in from this ip
-	var/related_accounts_cid = "Requires database"	//So admins know why it isn't working - Used to determine what other accounts previously logged in from this computer id
+	var/player_age = "Requires database" //So admins know why it isn't working - Used to determine how old the account is - in days.
+	var/related_accounts_ip = "Requires database" //So admins know why it isn't working - Used to determine what other accounts previously logged in from this ip
+	var/related_accounts_cid = "Requires database" //So admins know why it isn't working - Used to determine what other accounts previously logged in from this computer id
 
 	var/human_name_ban = FALSE
 
@@ -124,3 +125,9 @@
 	//screen_text vars
 	///lazylist of screen_texts for this client, first in this list is the one playing
 	var/list/atom/movable/screen/text/screen_text/screen_texts
+
+	/// Does this client have typing indicators enabled?
+	var/typing_indicators = TRUE
+
+	///datum that controls the displaying and hiding of tooltips
+	var/datum/tooltip/tooltips

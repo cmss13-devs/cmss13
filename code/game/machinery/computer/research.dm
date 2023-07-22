@@ -17,6 +17,10 @@
 	. = ..()
 	photocopier = locate(/obj/structure/machinery/photocopier,get_step(src, NORTH))
 
+/obj/structure/machinery/computer/research/Destroy()
+	QDEL_NULL(photocopier)
+	. = ..()
+
 /obj/structure/machinery/computer/research/attackby(obj/item/B, mob/living/user)
 	//Collecting grants
 	if(istype(B, /obj/item/paper/research_notes))

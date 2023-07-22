@@ -5,6 +5,7 @@
 	can_build_special = TRUE
 	powernet_name = "ground"
 	ambience_exterior = AMBIENCE_TRIJENT
+	minimap_color = MINIMAP_AREA_COLONY
 
 //INTERIOR
 // areas under rock
@@ -14,6 +15,7 @@
 /area/desert_dam/interior/lab_northeast
 	name = "Northeastern Lab"
 	icon_state = "purple"
+	minimap_color = MINIMAP_AREA_RESEARCH
 /area/desert_dam/interior/lab_northeast/east_lab_lobby
 	name = "East Lab Lobby"
 	icon_state = "green"
@@ -73,6 +75,9 @@
 	icon_state = "red"
 
 //Dam Interior
+/area/desert_dam/interior/dam_interior
+	minimap_color = MINIMAP_AREA_ENGI
+
 /area/desert_dam/interior/dam_interior/engine_room
 	name = "Engineering Generator Room"
 	icon_state = "yellow"
@@ -172,6 +177,7 @@
 	soundscape_playlist = SCAPE_PL_CAVE
 	soundscape_interval = 25
 	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
+	minimap_color = MINIMAP_AREA_CAVES
 /area/desert_dam/interior/caves/northern_caves
 	name = "Northern Caves"
 	icon_state = "red"
@@ -205,6 +211,7 @@
 /area/desert_dam/building/substation
 	name = "Substation"
 	icon = 'icons/turf/dam_areas.dmi'
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/desert_dam/building/substation/northwest
 	name = "Command Substation"
@@ -230,6 +237,9 @@
 	is_resin_allowed = FALSE
 
 //Administration
+/area/desert_dam/building/administration
+	minimap_color = MINIMAP_AREA_COMMAND
+
 /area/desert_dam/building/administration/control_room
 	name = "Administration Landing Control Room"
 	icon_state = "yellow"
@@ -309,6 +319,9 @@
 
 
 //Medical
+/area/desert_dam/building/medical
+	minimap_color = MINIMAP_AREA_MEDBAY
+
 /area/desert_dam/building/medical/garage
 	name = "Medical Garage"
 	icon_state = "garage"
@@ -390,6 +403,9 @@
 
 
 //Hydroponics
+/area/desert_dam/building/hydroponics
+	minimap_color = MINIMAP_AREA_RESEARCH
+
 /area/desert_dam/building/hydroponics/hydroponics
 	name = "Hydroponics"
 	icon_state = "hydro"
@@ -411,6 +427,9 @@
 	is_resin_allowed = FALSE
 
 //Water Treatment Plant 1
+/area/desert_dam/building/water_treatment_one
+	minimap_color = MINIMAP_AREA_ENGI
+
 /area/desert_dam/building/water_treatment_one
 	name = "Water Treatment One"
 	icon_state = "yellow"
@@ -452,6 +471,9 @@
 	icon_state = "green"
 
 //Water Treatment Plant 2
+/area/desert_dam/building/water_treatment_two
+	minimap_color = MINIMAP_AREA_ENGI
+
 /area/desert_dam/building/water_treatment_two
 	name = "Water Treatment Two"
 	icon_state = "yellow"
@@ -498,6 +520,9 @@
 */
 
 //Security
+/area/desert_dam/building/security
+	minimap_color = MINIMAP_AREA_SEC
+
 /area/desert_dam/building/security/prison
 	name = "Security Prison"
 	icon_state = "sec_prison"
@@ -608,6 +633,9 @@
 
 
 //NorthWest Lab Buildings
+/area/desert_dam/building/lab_northwest
+	minimap_color = MINIMAP_AREA_RESEARCH
+
 /area/desert_dam/building/lab_northwest/west_lab_robotics
 	name = "West Lab Robotics"
 	icon_state = "ass_line"
@@ -671,11 +699,13 @@
 	icon_state = "landing_pad"
 	is_resin_allowed = FALSE
 	is_landing_zone = TRUE
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/desert_dam/exterior/landing_pad_one_external
 	name = "Airstrip Landing Valley"
 	icon_state = "landing_pad_ext"
 	is_resin_allowed = FALSE
+	minimap_color = MINIMAP_AREA_LZ
 
 
 //Landing Pad for the Normandy. THIS IS NOT THE SHUTTLE AREA
@@ -684,11 +714,13 @@
 	icon_state = "landing_pad"
 	is_resin_allowed = FALSE
 	is_landing_zone = TRUE
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/desert_dam/exterior/landing_pad_two_external
 	name = "Aerodrome Landing Valley"
 	icon_state = "landing_pad_ext"
 	is_resin_allowed = FALSE
+	minimap_color = MINIMAP_AREA_LZ
 
 //Valleys
 //Near LZ

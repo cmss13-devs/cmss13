@@ -2,6 +2,7 @@
 
 /obj/item/clothing/glasses/night
 	name = "\improper TV1 night vision goggles"
+	gender = PLURAL
 	desc = "A neat looking pair of civilian grade night vision goggles."
 	icon_state = "night"
 	item_state = "night"
@@ -26,6 +27,7 @@
 
 /obj/item/clothing/glasses/night/M4RA
 	name = "\improper M4RA Battle sight"
+	gender = NEUTER
 	desc = "A headset and night vision goggles system for the M4RA Battle Rifle. Allows highlighted imaging of surroundings, as well as the ability to view the suit sensor health status readouts of other marines. Click it to toggle."
 	icon = 'icons/obj/items/clothing/glasses.dmi'
 	icon_state = "m4ra_goggles"
@@ -39,6 +41,7 @@
 
 /obj/item/clothing/glasses/night/medhud
 	name = "\improper Mark 4 Battle Medic sight"
+	gender = NEUTER
 	desc = "A headset and night vision goggles system for the M4RA Battle Rifle. Allows highlighted imaging of surroundings, as well as the ability to view the health statuses of others. Click it to toggle."
 	icon = 'icons/obj/items/clothing/glasses.dmi'
 	icon_state = "m4_goggles"
@@ -51,6 +54,7 @@
 
 /obj/item/clothing/glasses/night/m42_night_goggles
 	name = "\improper M42 scout sight"
+	gender = NEUTER
 	desc = "A headset and night vision goggles system for the M42 Scout Rifle. Allows highlighted imaging of surroundings. Click it to toggle."
 	icon = 'icons/obj/items/clothing/glasses.dmi'
 	icon_state = "m42_goggles"
@@ -74,6 +78,7 @@
 
 /obj/item/clothing/glasses/night/m42_night_goggles/upp
 	name = "\improper Type 9 commando goggles"
+	gender = PLURAL
 	desc = "A headset and night vision goggles system used by UPP forces. Allows highlighted imaging of surroundings. Click it to toggle."
 	icon_state = "upp_goggles"
 	deactive_state = "upp_goggles_0"
@@ -82,6 +87,7 @@
 
 /obj/item/clothing/glasses/night/m56_goggles
 	name = "\improper M56 head mounted sight"
+	gender = NEUTER
 	desc = "A headset and goggles system for the M56 Smartgun. Has a low-res short-range imager, allowing for view of terrain."
 	icon = 'icons/obj/items/clothing/glasses.dmi'
 	icon_state = "m56_goggles"
@@ -94,27 +100,25 @@
 	req_skill_level = SKILL_SPEC_SMARTGUN
 
 	var/far_sight = FALSE
-	var/powerpack = null
+	var/obj/item/weapon/gun/smartgun/linked_smartgun = null
 
 /obj/item/clothing/glasses/night/m56_goggles/Destroy()
-	powerpack = null
+	linked_smartgun = null
 	disable_far_sight()
 	return ..()
 
-/obj/item/clothing/glasses/night/m56_goggles/proc/link_powerpack(var/mob/user)
-	if(!QDELETED(user) && !QDELETED(user.back))
-		if(istype(user.back, /obj/item/smartgun_powerpack))
-			powerpack = user.back
+/obj/item/clothing/glasses/night/m56_goggles/proc/link_smartgun(mob/user)
+	if(!QDELETED(user))
+		linked_smartgun = locate() in user
+		if(linked_smartgun)
 			return TRUE
 	return FALSE
 
 /obj/item/clothing/glasses/night/m56_goggles/mob_can_equip(mob/user, slot)
 	if(slot == WEAR_EYES)
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			if(!istype(H.back, /obj/item/smartgun_powerpack))
-				to_chat(user, "You must be wearing an M56 Powerpack on your back to wear these.")
-				return FALSE
+		if(!link_smartgun(user))
+			to_chat(user, SPAN_NOTICE("You must have your smartgun equipped to wear these."))
+			return FALSE
 	return ..()
 
 /obj/item/clothing/glasses/night/m56_goggles/equipped(mob/user, slot)
@@ -123,16 +127,17 @@
 	return ..()
 
 /obj/item/clothing/glasses/night/m56_goggles/dropped(mob/living/carbon/human/user)
+	linked_smartgun = null
 	disable_far_sight(user)
 	return ..()
 
-/obj/item/clothing/glasses/night/m56_goggles/proc/set_far_sight(mob/living/carbon/human/user, var/set_to_state = TRUE)
+/obj/item/clothing/glasses/night/m56_goggles/proc/set_far_sight(mob/living/carbon/human/user, set_to_state = TRUE)
 	if(set_to_state)
 		if(user.glasses != src)
 			to_chat(user, SPAN_WARNING("You can't activate far sight without wearing \the [src]!"))
 			return
-		if(!link_powerpack(user))
-			to_chat(user, SPAN_WARNING("You can't use this without a powerpack!"))
+		if(!link_smartgun(user))
+			to_chat(user, SPAN_WARNING("You can't use this without a smartgun!"))
 			return
 		far_sight = TRUE
 		if(user)
@@ -140,7 +145,7 @@
 				user.client.change_view(8, src)
 		START_PROCESSING(SSobj, src)
 	else
-		powerpack = null
+		linked_smartgun = null
 		far_sight = FALSE
 		if(user)
 			if(user.client)
@@ -148,8 +153,8 @@
 		STOP_PROCESSING(SSobj, src)
 
 	var/datum/action/item_action/m56_goggles/far_sight/FT = locate(/datum/action/item_action/m56_goggles/far_sight) in actions
-	FT.update_button_icon()
-
+	if(FT)
+		FT.update_button_icon()
 
 /obj/item/clothing/glasses/night/m56_goggles/proc/disable_far_sight(mob/living/carbon/human/user)
 	if(!istype(user))
@@ -163,14 +168,11 @@
 	if(!istype(user))
 		set_far_sight(null, FALSE)
 		return PROCESS_KILL
-	if(powerpack != user.back)
+	if(!link_smartgun(user))
 		set_far_sight(user, FALSE)
 		return PROCESS_KILL
-	var/obj/item/smartgun_powerpack/pp = user.back
-	if(istype(pp))
-		var/obj/item/cell/c = pp.pcell
-		if(!pp.drain_powerpack(25 * delta_time, c))
-			set_far_sight(user, FALSE)
+	if(!linked_smartgun.drain_battery(25 * delta_time))
+		set_far_sight(user, FALSE)
 
 /datum/action/item_action/m56_goggles/far_sight/New()
 	. = ..()
@@ -195,8 +197,14 @@
 	else
 		button.icon_state = "template"
 
+/obj/item/clothing/glasses/night/m56_goggles/whiteout
+	name = "\improper M56T head mounted sight"
+	desc = "A headset and goggles system for the M56T 'Terminator' Smartgun. Has a low-light vision processor as well as a system allowing detection of thermal signatures though solid surfaces."
+	vision_flags = SEE_TURFS|SEE_MOBS
+
 /obj/item/clothing/glasses/night/yautja
 	name = "bio-mask nightvision"
+	gender = NEUTER
 	desc = "A vision overlay generated by the Bio-Mask. Used for low-light conditions."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "visor_nvg"
@@ -237,7 +245,7 @@
 
 /obj/item/clothing/glasses/night/experimental_mesons/mob_can_equip(mob/user, slot)
 	if(slot == WEAR_EYES)
-		if(!isSynth(user))
+		if(!issynth(user))
 			to_chat(user, "The experimental meson goggles start probing at your eyes, searching for an attachment point, and you immediately take them off.")
 			return FALSE
 	return ..()

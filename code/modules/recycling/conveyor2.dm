@@ -7,15 +7,15 @@
 	name = "conveyor belt"
 	desc = "A conveyor belt."
 	layer = CONVEYOR_LAYER // so they appear under stuff
-	anchored = 1
-	var/operating = 0	// 1 if running forward, -1 if backwards, 0 if off
-	var/operable = 1	// true if can operate (no broken segments in this belt run)
-	var/forwards		// this is the default (forward) direction, set by the map dir
-	var/backwards		// hopefully self-explanatory
-	var/movedir			// the actual direction to move stuff in
+	anchored = TRUE
+	var/operating = 0 // 1 if running forward, -1 if backwards, 0 if off
+	var/operable = 1 // true if can operate (no broken segments in this belt run)
+	var/forwards // this is the default (forward) direction, set by the map dir
+	var/backwards // hopefully self-explanatory
+	var/movedir // the actual direction to move stuff in
 
-	var/list/affecting	// the list of all items that will be moved this ptick
-	var/id = ""			// the control ID	- must match controller ID
+	var/list/affecting // the list of all items that will be moved this ptick
+	var/id = "" // the control ID - must match controller ID
 
 /obj/structure/machinery/conveyor/centcom_auto
 	id = "round_end_belt"
@@ -88,8 +88,8 @@
 		return
 	use_power(100)
 
-	affecting = loc.contents - src		// moved items will be all in loc
-	spawn(1)	// slight delay to prevent infinite propagation due to map order	//TODO: please no spawn() in process(). It's a very bad idea
+	affecting = loc.contents - src // moved items will be all in loc
+	spawn(1) // slight delay to prevent infinite propagation due to map order //TODO: please no spawn() in process(). It's a very bad idea
 		var/items_moved = 0
 		for(var/atom/movable/A in affecting)
 			if(!A.anchored)
@@ -100,10 +100,10 @@
 				break
 
 // attack with item, place item on conveyor
-/obj/structure/machinery/conveyor/attackby(var/obj/item/I, mob/user)
-	if(isrobot(user))	return //Carn: fix for borgs dropping their modules on conveyor belts
+/obj/structure/machinery/conveyor/attackby(obj/item/I, mob/user)
+	if(isrobot(user)) return //Carn: fix for borgs dropping their modules on conveyor belts
 	var/obj/item/grab/G = I
-	if(istype(G))	// handle grabbed mob
+	if(istype(G)) // handle grabbed mob
 		if(ismob(G.grabbed_thing))
 			var/mob/GM = G.grabbed_thing
 			step(GM, get_dir(GM, src))
@@ -178,14 +178,14 @@
 	desc = "A conveyor control switch."
 	icon = 'icons/obj/structures/machinery/recycling.dmi'
 	icon_state = "switch-off"
-	var/position = 0			// 0 off, -1 reverse, 1 forward
-	var/last_pos = -1			// last direction setting
-	var/operated = 1			// true if just operated
+	var/position = 0 // 0 off, -1 reverse, 1 forward
+	var/last_pos = -1 // last direction setting
+	var/operated = 1 // true if just operated
 
-	var/id = "" 				// must match conveyor IDs to control them
+	var/id = "" // must match conveyor IDs to control them
 
-	var/list/conveyors		// the list of converyors that are controlled by this switch
-	anchored = 1
+	var/list/conveyors // the list of converyors that are controlled by this switch
+	anchored = TRUE
 
 
 

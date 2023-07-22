@@ -4,7 +4,7 @@
 	icon_state = "briefcase"
 	item_state = "briefcase"
 	flags_atom = FPRINT|CONDUCT
-	force = 8.0
+	force = 8
 	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_LARGE
@@ -18,12 +18,12 @@
 
 	drowsy_threshold = CLOTHING_ARMOR_MEDIUM - M.getarmor(affecting, ARMOR_MELEE)
 
-	if(affecting == "head" && istype(M, /mob/living/carbon/) && !isXeno(M))
+	if(affecting == "head" && istype(M, /mob/living/carbon/) && !isxeno(M))
 		for(var/mob/O in viewers(user, null))
 			if(M != user)
-				O.show_message(text(SPAN_DANGER("<B>[M] has been hit over the head with a [name] by [user]!</B>")), 1)
+				O.show_message(text(SPAN_DANGER("<B>[M] has been hit over the head with a [name] by [user]!</B>")), SHOW_MESSAGE_VISIBLE)
 			else
-				O.show_message(text(SPAN_DANGER("<B>[M] hit \himself with a [name] on the head!</B>")), 1)
+				O.show_message(text(SPAN_DANGER("<B>[M] hit \himself with a [name] on the head!</B>")), SHOW_MESSAGE_VISIBLE)
 		if(drowsy_threshold > 0)
 			M.apply_effect(min(drowsy_threshold, 10) , DROWSY)
 
@@ -42,4 +42,4 @@
 	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
 	icon_state = "suitcase"
 	item_state = "suitcase"
-	force = 8.0
+	force = 8

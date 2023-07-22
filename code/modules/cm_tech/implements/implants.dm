@@ -89,7 +89,7 @@
 	..()
 	implant(user, TRUE)
 
-/obj/item/device/implanter/proc/implant(var/mob/M, var/self_inject)
+/obj/item/device/implanter/proc/implant(mob/M, self_inject)
 	if(uses <= 0)
 		return
 
@@ -117,7 +117,7 @@
 
 	var/mob/living/host
 
-/obj/item/device/internal_implant/proc/on_implanted(var/mob/living/M)
+/obj/item/device/internal_implant/proc/on_implanted(mob/living/M)
 	SHOULD_CALL_PARENT(TRUE)
 	host = M
 
@@ -134,13 +134,13 @@
 /obj/item/device/internal_implant/nvg
 	var/implant_health = 2
 
-/obj/item/device/internal_implant/nvg/on_implanted(var/mob/living/M)
+/obj/item/device/internal_implant/nvg/on_implanted(mob/living/M)
 	. = ..()
-	RegisterSignal(M, COMSIG_HUMAN_POST_UPDATE_SIGHT, .proc/give_nvg)
-	RegisterSignal(M, COMSIG_MOB_DEATH, .proc/remove_health)
+	RegisterSignal(M, COMSIG_HUMAN_POST_UPDATE_SIGHT, PROC_REF(give_nvg))
+	RegisterSignal(M, COMSIG_MOB_DEATH, PROC_REF(remove_health))
 	give_nvg(M)
 
-/obj/item/device/internal_implant/nvg/proc/remove_health(var/mob/living/M)
+/obj/item/device/internal_implant/nvg/proc/remove_health(mob/living/M)
 	SIGNAL_HANDLER
 	implant_health--
 	if(implant_health <= 0)
@@ -152,7 +152,7 @@
 	else
 		to_chat(M, SPAN_WARNING("You feel the effects of the nightvision implant waning."))
 
-/obj/item/device/internal_implant/nvg/proc/give_nvg(var/mob/living/M)
+/obj/item/device/internal_implant/nvg/proc/give_nvg(mob/living/M)
 	SIGNAL_HANDLER
 	M.see_in_dark = 12
 	M.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
@@ -177,9 +177,9 @@
 		COMSIG_MOB_TAKE_DAMAGE,
 		COMSIG_HUMAN_TAKE_DAMAGE,
 		COMSIG_XENO_TAKE_DAMAGE
-	), .proc/check_revive)
+	), PROC_REF(check_revive))
 
-/obj/item/device/internal_implant/rejuv/proc/check_revive(var/mob/living/M, list/damagedata, damagetype)
+/obj/item/device/internal_implant/rejuv/proc/check_revive(mob/living/M, list/damagedata, damagetype)
 	SIGNAL_HANDLER
 	if((M.health - damagedata["damage"]) <= HEALTH_THRESHOLD_CRIT)
 		UnregisterSignal(M, list(
@@ -188,9 +188,9 @@
 			COMSIG_XENO_TAKE_DAMAGE
 		))
 
-		INVOKE_ASYNC(src, .proc/revive, M)
+		INVOKE_ASYNC(src, PROC_REF(revive), M)
 
-/obj/item/device/internal_implant/rejuv/proc/revive(var/mob/living/M)
+/obj/item/device/internal_implant/rejuv/proc/revive(mob/living/M)
 	M.heal_all_damage()
 
 	for(var/i in stimulant_to_inject)
@@ -216,25 +216,25 @@
 
 /obj/item/device/internal_implant/agility/on_implanted(mob/living/M)
 	. = ..()
-	RegisterSignal(M, COMSIG_HUMAN_POST_MOVE_DELAY, .proc/handle_movedelay)
-	RegisterSignal(M, COMSIG_LIVING_CLIMB_STRUCTURE, .proc/handle_climbing)
-	RegisterSignal(M, COMSIG_HUMAN_CARRY, .proc/handle_fireman)
-	RegisterSignal(M, COMSIG_MOB_GRAB_UPGRADE, .proc/handle_grab)
+	RegisterSignal(M, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
+	RegisterSignal(M, COMSIG_LIVING_CLIMB_STRUCTURE, PROC_REF(handle_climbing))
+	RegisterSignal(M, COMSIG_HUMAN_CARRY, PROC_REF(handle_fireman))
+	RegisterSignal(M, COMSIG_MOB_GRAB_UPGRADE, PROC_REF(handle_grab))
 
-/obj/item/device/internal_implant/agility/proc/handle_movedelay(var/mob/living/M, list/movedata)
+/obj/item/device/internal_implant/agility/proc/handle_movedelay(mob/living/M, list/movedata)
 	SIGNAL_HANDLER
 	movedata["move_delay"] *= move_delay_mult
 
-/obj/item/device/internal_implant/agility/proc/handle_climbing(var/mob/living/M, list/climbdata)
+/obj/item/device/internal_implant/agility/proc/handle_climbing(mob/living/M, list/climbdata)
 	SIGNAL_HANDLER
 	climbdata["climb_delay"] *= climb_delay_mult
 
-/obj/item/device/internal_implant/agility/proc/handle_fireman(var/mob/living/M, list/carrydata)
+/obj/item/device/internal_implant/agility/proc/handle_fireman(mob/living/M, list/carrydata)
 	SIGNAL_HANDLER
 	carrydata["carry_delay"] *= carry_delay_mult
 	return COMPONENT_CARRY_ALLOW
 
-/obj/item/device/internal_implant/agility/proc/handle_grab(var/mob/living/M, list/grabdata)
+/obj/item/device/internal_implant/agility/proc/handle_grab(mob/living/M, list/grabdata)
 	SIGNAL_HANDLER
 	grabdata["grab_delay"] *= grab_delay_mult
 	return TRUE
@@ -243,7 +243,7 @@
 	name = "subdermal armor implant"
 	desc = "This implant will grant you armor under the skin, reducing incoming damage and strengthening bones."
 	implant_type = /obj/item/device/internal_implant/subdermal_armor
-	implant_string = "your skin becoming significantly harder.. That's going to hurt in a decade."
+	implant_string = "your skin becoming significantly harder... That's going to hurt in a decade."
 
 /obj/item/device/internal_implant/subdermal_armor
 	var/burn_damage_mult = 0.9
@@ -256,16 +256,16 @@
 		COMSIG_MOB_TAKE_DAMAGE,
 		COMSIG_HUMAN_TAKE_DAMAGE,
 		COMSIG_XENO_TAKE_DAMAGE
-	), .proc/handle_damage)
-	RegisterSignal(M, COMSIG_HUMAN_BONEBREAK_PROBABILITY, .proc/handle_bonebreak)
+	), PROC_REF(handle_damage))
+	RegisterSignal(M, COMSIG_HUMAN_BONEBREAK_PROBABILITY, PROC_REF(handle_bonebreak))
 
-/obj/item/device/internal_implant/subdermal_armor/proc/handle_damage(var/mob/living/M, list/damagedata, damagetype)
+/obj/item/device/internal_implant/subdermal_armor/proc/handle_damage(mob/living/M, list/damagedata, damagetype)
 	SIGNAL_HANDLER
 	if(damagetype == BRUTE)
 		damagedata["damage"] *= brute_damage_mult
 	else if(damagetype == BURN)
 		damagedata["damage"] *= burn_damage_mult
 
-/obj/item/device/internal_implant/subdermal_armor/proc/handle_bonebreak(var/mob/living/M, list/bonedata)
+/obj/item/device/internal_implant/subdermal_armor/proc/handle_bonebreak(mob/living/M, list/bonedata)
 	SIGNAL_HANDLER
 	bonedata["bonebreak_probability"] *= bone_break_mult

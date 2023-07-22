@@ -1,4 +1,4 @@
-#define UPGRADE_COOLDOWN	2 SECONDS
+#define UPGRADE_COOLDOWN 2 SECONDS
 
 /obj/item/grab
 	name = "grab"
@@ -37,7 +37,7 @@
 	if(user.grab_level >= GRAB_CARRY)
 		return
 	if(istype(target, /obj/effect))//if you click a blood splatter with a grab instead of the turf,
-		target = get_turf(target)	//we still try to move the grabbed thing to the turf.
+		target = get_turf(target) //we still try to move the grabbed thing to the turf.
 	if(isturf(target))
 		var/turf/T = target
 		if(!T.density && T.Adjacent(user))
@@ -59,14 +59,21 @@
 		return
 
 	if(!ishuman(user)) //only humans can reinforce a grab.
-		if (isXeno(user))
-			var/mob/living/carbon/Xenomorph/X = user
+		if (isxeno(user))
+			var/mob/living/carbon/xenomorph/X = user
 			X.pull_power(grabbed_thing)
 		return
 
 
 	var/mob/victim = grabbed_thing
-	if(victim.mob_size > user.mob_size || !(victim.status_flags & CANPUSH))
+	var/max_grab_size = user.mob_size
+	/// Amazing what you can do with a bit of dexterity.
+	if(HAS_TRAIT(user, TRAIT_DEXTROUS))
+		max_grab_size++
+	/// Strong mobs can lift above their own weight.
+	if(HAS_TRAIT(user, TRAIT_SUPER_STRONG))//NB; this will mean Yautja can bodily lift MOB_SIZE_XENO(3) and Synths can lift MOB_SIZE_XENO_SMALL(2)
+		max_grab_size++
+	if(victim.mob_size > max_grab_size || !(victim.status_flags & CANPUSH))
 		return //can't tighten your grip on mobs bigger than you and mobs you can't push.
 	last_upgrade = world.time
 
@@ -94,12 +101,12 @@
 /obj/item/grab/attack(mob/living/M, mob/living/user)
 	if(M == grabbed_thing)
 		attack_self(user)
-	else if(M == user && user.pulling && isXeno(user))
-		var/mob/living/carbon/Xenomorph/X = user
+	else if(M == user && user.pulling && isxeno(user))
+		var/mob/living/carbon/xenomorph/X = user
 		var/mob/living/carbon/pulled = X.pulling
 		if(!istype(pulled))
 			return
-		if(isXeno(pulled) || isSynth(pulled))
+		if(isxeno(pulled) || issynth(pulled))
 			to_chat(X, SPAN_WARNING("That wouldn't taste very good."))
 			return 0
 		if(pulled.buckled)
@@ -124,7 +131,7 @@
 		X.visible_message(SPAN_DANGER("[X] starts to devour [pulled]!"), \
 		SPAN_DANGER("You start to devour [pulled]!"), null, 5)
 		if(do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			if(isXeno(pulled.loc) && !X.stomach_contents.len)
+			if(isxeno(pulled.loc) && !X.stomach_contents.len)
 				to_chat(X, SPAN_WARNING("Someone already ate \the [pulled]."))
 				return 0
 			if(X.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !X.stomach_contents.len) //make sure you've still got them in your claws, and alive
@@ -134,10 +141,9 @@
 				X.visible_message(SPAN_WARNING("[X] devours [pulled]!"), \
 					SPAN_WARNING("You devour [pulled]!"), null, 5)
 
-				//IMPORTANT CODER NOTE: Due to us using the old lighting engine, we need to hacky hack hard to get this working properly
-				//So we're just going to get the lights out of here by forceMoving them to a far-away place
-				//They will be recovered when regurgitating, since this also calls forceMove
-				pulled.moveToNullspace()
+				if(ishuman(pulled))
+					var/mob/living/carbon/human/pulled_human = pulled
+					pulled_human.disable_lights()
 
 				//Then, we place the mob where it ought to be
 				X.stomach_contents.Add(pulled)

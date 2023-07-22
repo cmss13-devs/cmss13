@@ -1,10 +1,9 @@
-GLOBAL_LIST_INIT(ui_data_keybindings, generate_keybind_ui_data())
+GLOBAL_LIST_EMPTY(ui_data_keybindings)
 
 /proc/generate_keybind_ui_data()
-	. = list()
-	for (var/name in GLOB.keybindings_by_name)
+	for(var/name in GLOB.keybindings_by_name)
 		var/datum/keybinding/kb = GLOB.keybindings_by_name[name]
-		.[kb.category] += list(list(
+		GLOB.ui_data_keybindings[kb.category] += list(list(
 			"name" = kb.name,
 			"full_name" = kb.full_name,
 			"hotkey" = kb.hotkey_keys,
@@ -15,7 +14,7 @@ GLOBAL_LIST_INIT(ui_data_keybindings, generate_keybind_ui_data())
 	var/client/owner
 	var/datum/preferences/prefs
 
-/datum/tgui_macro/New(var/client/C, var/datum/preferences/P)
+/datum/tgui_macro/New(client/C, datum/preferences/P)
 	. = ..()
 	owner = C
 	if(C)
@@ -69,6 +68,7 @@ GLOBAL_LIST_INIT(ui_data_keybindings, generate_keybind_ui_data())
 			if(!params["key"])
 				if(kbinds[old_key])
 					kbinds[old_key] -= kb_name
+					kbinds["Unbound"] += kb_name
 					if(!length(kbinds[old_key]))
 						kbinds -= old_key
 				INVOKE_ASYNC(owner, /client/proc/set_macros)
@@ -91,6 +91,9 @@ GLOBAL_LIST_INIT(ui_data_keybindings, generate_keybind_ui_data())
 				if(!length(kbinds[old_key]))
 					kbinds -= old_key
 
+			if(LAZYISIN(kbinds["Unbound"], old_key))
+				kbinds["Unbound"] -= old_key
+
 			kbinds[full_key] += list(kb_name)
 			kbinds[full_key] = sortList(kbinds[full_key])
 
@@ -107,10 +110,12 @@ GLOBAL_LIST_INIT(ui_data_keybindings, generate_keybind_ui_data())
 			for(var/key in keys)
 				if(kbinds[key])
 					kbinds[key] -= kb_name
+					kbinds["Unbound"] += kb_name
 					if(!length(kbinds[key]))
 						kbinds -= key
 
 			prefs.save_preferences()
+			INVOKE_ASYNC(owner, /client/proc/set_macros)
 			return TRUE
 		if("clear_all_keybinds")
 			var/choice = tgui_alert(owner, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", list("Hotkey", "Classic", "Cancel"))

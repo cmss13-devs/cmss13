@@ -1,12 +1,13 @@
 //shuttle mode defines
-#define SHUTTLE_IDLE       "idle"
+#define SHUTTLE_IDLE    "idle"
 #define SHUTTLE_IGNITING   "igniting"
-#define SHUTTLE_RECALL     "recalled"
-#define SHUTTLE_CALL       "called"
-#define SHUTTLE_DOCKED     "docked"
+#define SHUTTLE_RECALL  "recalled"
+#define SHUTTLE_CALL    "called"
+#define SHUTTLE_DOCKED  "docked"
 #define SHUTTLE_STRANDED   "stranded"
-#define SHUTTLE_ESCAPE     "escape"
-#define SHUTTLE_ENDGAME    "endgame: game over"
+#define SHUTTLE_CRASHED   "crashed"
+#define SHUTTLE_ESCAPE  "escape"
+#define SHUTTLE_ENDGAME "endgame: game over"
 #define SHUTTLE_RECHARGING "recharging"
 #define SHUTTLE_PREARRIVAL "pre-arrival"
 
@@ -35,7 +36,7 @@
 #define GAMEMODE_IMMUNE (1<<0)
 
 // Ripples, effects that signal a shuttle's arrival
-#define SHUTTLE_RIPPLE_TIME 100
+#define SHUTTLE_RIPPLE_TIME 5 SECONDS
 
 #define TRANSIT_REQUEST 1
 #define TRANSIT_READY 2
@@ -57,20 +58,20 @@
 #define ENGINE_DEFAULT_MAXSPEED_ENGINES 5
 
 //Docking error flags
-#define DOCKING_SUCCESS          0
-#define DOCKING_BLOCKED          (1<<0)
-#define DOCKING_IMMOBILIZED      (1<<1)
-#define DOCKING_AREA_EMPTY       (1<<2)
+#define DOCKING_SUCCESS   0
+#define DOCKING_BLOCKED   (1<<0)
+#define DOCKING_IMMOBILIZED   (1<<1)
+#define DOCKING_AREA_EMPTY    (1<<2)
 #define DOCKING_NULL_DESTINATION (1<<3)
-#define DOCKING_NULL_SOURCE      (1<<4)
+#define DOCKING_NULL_SOURCE   (1<<4)
 
 //Docking turf movements
-#define MOVE_TURF     1
-#define MOVE_AREA     2
+#define MOVE_TURF  1
+#define MOVE_AREA  2
 #define MOVE_CONTENTS 4
 
 //Rotation params
-#define ROTATE_DIR    1
+#define ROTATE_DIR 1
 #define ROTATE_SMOOTH 2
 #define ROTATE_OFFSET 4
 
@@ -90,3 +91,42 @@
 
 #define LOCKDOWN_TIME 6 MINUTES
 #define GROUND_LOCKDOWN_TIME 3 MINUTES
+
+#define MOBILE_SHUTTLE_ID_ERT1 "ert_response_shuttle"
+#define MOBILE_SHUTTLE_ID_ERT2 "ert_pmc_shuttle"
+#define MOBILE_SHUTTLE_ID_ERT3 "ert_upp_shuttle"
+#define MOBILE_SHUTTLE_ID_ERT_SMALL "ert_rescue_shuttle"
+#define MOBILE_SHUTTLE_ID_ERT_BIG "ert_boarding_shuttle"
+
+#define MOBILE_TRIJENT_ELEVATOR "trijentshuttle2"
+#define STAT_TRIJENT_LZ1 "trigent_lz1"
+#define STAT_TRIJENT_LZ2 "trigent_lz2"
+#define STAT_TRIJENT_ENGI "trigent_engineering"
+#define STAT_TRIJENT_OMEGA "trigent_omega"
+
+#define MOBILE_SHUTTLE_LIFEBOAT_PORT "lifeboat-port"
+#define MOBILE_SHUTTLE_LIFEBOAT_STARBOARD "lifeboat-starboard"
+#define MOBILE_SHUTTLE_VEHICLE_ELEVATOR "vehicle_elevator"
+
+#define DROPSHIP_ALAMO "dropship_alamo"
+#define DROPSHIP_NORMANDY "dropship_normandy"
+
+#define ALMAYER_DROPSHIP_LZ1 "almayer-hangar-lz1"
+#define ALMAYER_DROPSHIP_LZ2 "almayer-hangar-lz2"
+
+#define DROPSHIP_LZ1 "dropship-lz1"
+#define DROPSHIP_LZ2 "dropship-lz2"
+
+#define ESCAPE_SHUTTLE "escape-shuttle"
+#define ESCAPE_SHUTTLE_EAST "escape_shuttle_e"
+#define ESCAPE_SHUTTLE_EAST_CL "escape_shuttle_e_cl"
+#define ESCAPE_SHUTTLE_WEST "escape_shuttle_w"
+#define ESCAPE_SHUTTLE_NORTH "escape_shuttle_n"
+#define ESCAPE_SHUTTLE_SOUTH "escape_shuttle_s"
+
+#define ESCAPE_SHUTTLE_WEST_PREFIX "escape_shuttle_w"
+#define ESCAPE_SHUTTLE_EAST_PREFIX "escape_shuttle_e"
+#define ESCAPE_SHUTTLE_NORTH_PREFIX "escape_shuttle_n"
+#define ESCAPE_SHUTTLE_SOUTH_PREFIX "escape_shuttle_s"
+
+#define ESCAPE_SHUTTLE_DOCK_PREFIX "almayer-hangar-escape-shuttle-"

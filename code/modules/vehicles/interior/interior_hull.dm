@@ -2,17 +2,17 @@
 //these are staying beyond the walking area and are not getting in the way of shots, spits and other stuff.
 
 //for mapping
-//INTERIOR_WALL_NORTH_LAYER 2.02
+//WALL_LAYER 2.02
 //INTERIOR_WALL_SOUTH_LAYER 5.2
 /obj/structure/interior_wall
 	name = "interior wall"
 	desc = "An interior wall."
 	icon = 'icons/obj/vehicles/interiors/tank.dmi'
-	density = 1
-	opacity = 1
-	anchored = 1
-	mouse_opacity = 0
-	layer = INTERIOR_WALL_NORTH_LAYER
+	density = TRUE
+	opacity = TRUE
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	layer = WALL_LAYER
 	flags_atom = NOINTERACT
 	unacidable = TRUE
 	unslashable = TRUE
@@ -30,10 +30,10 @@
 	name = "interior roof"
 	desc = "An interior roof."
 	icon = 'icons/obj/vehicles/interiors/tank.dmi'
-	density = 0
-	opacity = 0
-	anchored = 1
-	mouse_opacity = 0
+	density = FALSE
+	opacity = FALSE
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = ABOVE_FLY_LAYER
 	flags_atom = NOINTERACT
 	unacidable = TRUE

@@ -13,4 +13,4 @@
 
 /obj/structure/droppod/tech/post_land()
 	. = ..()
-	addtimer(CALLBACK(src, .proc/recall), time_until_return)
+	addtimer(CALLBACK(src, PROC_REF(recall)), time_until_return)

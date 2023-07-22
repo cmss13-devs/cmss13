@@ -31,29 +31,28 @@
 	mob_flags = KNOWS_TECHNOLOGY
 	flags = IS_WHITELISTED|NO_BREATHE|NO_CLONE_LOSS|NO_BLOOD|NO_POISON|IS_SYNTHETIC|NO_CHEM_METABOLIZATION|NO_NEURO|HAS_UNDERWEAR
 
-	blood_color = "#EEEEEE"
+	blood_color = BLOOD_COLOR_SYNTHETIC
 
 	has_organ = list(
-		"heart" =    /datum/internal_organ/heart/prosthetic,
-		"brain" =    /datum/internal_organ/brain/prosthetic,
+		"heart" = /datum/internal_organ/heart/prosthetic,
+		"brain" = /datum/internal_organ/brain/prosthetic,
 		)
 
 	knock_down_reduction = 5
 	stun_reduction = 5
-
-	acid_blood_dodge_chance = 35
+	acid_blood_dodge_chance = 25
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/synthetic/proc/toggle_HUD
+		/mob/living/carbon/human/synthetic/proc/toggle_HUD,
 	)
 
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
-	H.set_languages(list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH))
+	H.set_languages(ALL_SYNTH_LANGUAGES)
 	GLOB.alive_human_list -= H
 	return ..()
 
-/datum/species/synthetic/apply_signals(var/mob/living/carbon/human/H)
-	RegisterSignal(H, COMSIG_HUMAN_IMPREGNATE, .proc/cancel_impregnate, TRUE)
+/datum/species/synthetic/apply_signals(mob/living/carbon/human/H)
+	RegisterSignal(H, COMSIG_HUMAN_IMPREGNATE, PROC_REF(cancel_impregnate), TRUE)
 
 /datum/species/synthetic/proc/cancel_impregnate(datum/source)
 	SIGNAL_HANDLER
@@ -76,12 +75,12 @@
 	name = SYNTH_COLONY
 	name_plural = "Colonial Synthetics"
 	uses_ethnicity = TRUE
-	burn_mod = 0.65 // made for hazardous environments, withstanding temperatures up to 1210 degrees
+	burn_mod = 0.8
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG)
 
 	pain_type = /datum/pain/synthetic/colonial
 	rarity_value = 1.5
-	slowdown = 0.45
+	slowdown = 0.2
 	total_health = 200 //But more durable
 
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
@@ -90,7 +89,7 @@
 	stun_reduction = 3.5
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/toggle_inherent_nightvison
+		/mob/living/carbon/human/proc/toggle_inherent_nightvison,
 	)
 
 /datum/species/synthetic/colonial/colonial_gen_two
@@ -104,16 +103,6 @@
 	//sets colonial_gen_one synth's hair to black
 	hair_color = "#000000"
 	//sets colonial_gen_one synth's icon to WJ sprite
-	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
-	deform = 'icons/mob/humans/species/r_synthetic.dmi'
-
-/datum/species/synthetic/colonial/working_joe
-	name = SYNTH_WORKING_JOE
-	name_plural = "Working Joes"
-	uses_ethnicity = FALSE
-	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
-
-	hair_color = "#000000"
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'
 
@@ -133,8 +122,8 @@
 
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE // we don't want combat synths to run around in the dark
 
-	knock_down_reduction = 5.0
-	stun_reduction = 5.0
+	knock_down_reduction = 5
+	stun_reduction = 5
 
 	inherent_verbs = null
 
@@ -147,4 +136,4 @@
 
 	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/human
 
-	blood_color = "#A10808"
+	blood_color = BLOOD_COLOR_HUMAN

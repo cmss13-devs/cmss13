@@ -2,11 +2,11 @@ var/CMinutes = null
 var/savefile/Banlist
 
 
-/proc/CheckBan(var/ckey, var/id, var/address)
-	if(!Banlist)		// if Banlist cannot be located for some reason
-		LoadBans()		// try to load the bans
-		if(!Banlist)	// uh oh, can't find bans!
-			return 0	// ABORT ABORT ABORT
+/proc/CheckBan(ckey, id, address)
+	if(!Banlist) // if Banlist cannot be located for some reason
+		LoadBans() // try to load the bans
+		if(!Banlist) // uh oh, can't find bans!
+			return 0 // ABORT ABORT ABORT
 
 	. = list()
 	var/appeal
@@ -22,9 +22,9 @@ var/savefile/Banlist
 			else
 				.["desc"] = "\nReason: [Banlist["reason"]]\nExpires: [GetExp(Banlist["minutes"])]\nBy: [Banlist["bannedby"]][appeal]"
 		else
-			Banlist.cd	= "/base/[ckey][id]"
-			.["desc"]	= "\nReason: [Banlist["reason"]]\nExpires: <B>PERMENANT</B>\nBy: [Banlist["bannedby"]][appeal]"
-		.["reason"]	= "ckey/id"
+			Banlist.cd = "/base/[ckey][id]"
+			.["desc"] = "\nReason: [Banlist["reason"]]\nExpires: <B>PERMENANT</B>\nBy: [Banlist["bannedby"]][appeal]"
+		.["reason"] = "ckey/id"
 		return .
 	else
 		for (var/A in Banlist.dir)
@@ -83,7 +83,7 @@ var/savefile/Banlist
 		if (!Banlist["key"] || !Banlist["id"])
 			RemoveBan(A)
 			log_admin("Invalid Ban.")
-			message_staff("Invalid Ban.")
+			message_admins("Invalid Ban.")
 			continue
 
 		if (!Banlist["temp"]) continue
@@ -93,10 +93,10 @@ var/savefile/Banlist
 
 
 /proc/AddBan(ckey, computerid, reason, bannedby, temp, minutes, address)
-	if(!Banlist)		// if Banlist cannot be located for some reason
-		LoadBans()		// try to load the bans
-		if(!Banlist)	// uh oh, can't find bans!
-			return 0	// ABORT ABORT ABORT
+	if(!Banlist) // if Banlist cannot be located for some reason
+		LoadBans() // try to load the bans
+		if(!Banlist) // uh oh, can't find bans!
+			return 0 // ABORT ABORT ABORT
 
 	var/bantimestamp
 
@@ -121,10 +121,10 @@ var/savefile/Banlist
 	return 1
 
 /proc/RemoveBan(foldername)
-	if(!Banlist)		// if Banlist cannot be located for some reason
-		LoadBans()		// try to load the bans
-		if(!Banlist)	// uh oh, can't find bans!
-			return 0	// ABORT ABORT ABORT
+	if(!Banlist) // if Banlist cannot be located for some reason
+		LoadBans() // try to load the bans
+		if(!Banlist) // uh oh, can't find bans!
+			return 0 // ABORT ABORT ABORT
 
 	var/key
 	var/id
@@ -138,11 +138,11 @@ var/savefile/Banlist
 
 	if(!usr)
 		log_admin("Ban Expired: [key]")
-		message_staff("Ban Expired: [key]")
+		message_admins("Ban Expired: [key]")
 	else
 		ban_unban_log_save("[key_name_admin(usr)] unbanned [key]")
 		log_admin("[key_name_admin(usr)] unbanned [key]")
-		message_staff("[key_name_admin(usr)] unbanned: [key]")
+		message_admins("[key_name_admin(usr)] unbanned: [key]")
 	for (var/A in Banlist.dir)
 		Banlist.cd = "/base/[A]"
 		if (key == Banlist["key"] /*|| id == Banlist["id"]*/)
@@ -170,9 +170,9 @@ var/savefile/Banlist
 /datum/admins/proc/unbanpanel()
 	var/dat
 
-	var/list/datum/view_record/player_ban_view/PBV = DB_VIEW(/datum/view_record/player_ban_view) // no filter
+	var/list/datum/view_record/players/PBV = DB_VIEW(/datum/view_record/players, DB_OR(DB_COMP("is_permabanned", DB_EQUALS, 1), DB_COMP("is_time_banned", DB_EQUALS, 1))) // a filter
 
-	for(var/datum/view_record/player_ban_view/ban in PBV)
+	for(var/datum/view_record/players/ban in PBV)
 		var/expiry
 		if(!ban.is_permabanned)
 			expiry = GetExp(ban.expiration)
@@ -225,19 +225,22 @@ var/savefile/Banlist
 	for (var/A in Banlist.dir)
 		RemoveBan(A)
 
-/client/proc/cmd_admin_do_ban(var/mob/M)
+/client/proc/cmd_admin_do_ban(mob/M)
+	if(IsAdminAdvancedProcCall())
+		alert_proccall("cmd_admin_do_ban")
+		return PROC_BLOCKED
 	if(!check_rights(R_BAN|R_MOD))  return
 
 	if(!ismob(M)) return
 
 	if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
-		return	//mods+ cannot be banned. Even if they could, the ban doesn't affect them anyway
+		return //mods+ cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 	if(!M.ckey)
 		to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))
 		return
 	var/mob_key = M.ckey
-	var/mins = tgui_input_number(usr,"How long (in minutes)? \n 180 = 3 hours \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time", 1440, 43800, 1)
+	var/mins = tgui_input_number(usr,"How long (in minutes)? \n 180 = 3 hours \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time", 1440, 262800, 1)
 	if(!mins)
 		return
 	if(mins >= 525600) mins = 525599

@@ -59,14 +59,14 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 		COMSIG_BULLET_PRE_HANDLE_OBJ,
 		COMSIG_BULLET_PRE_HANDLE_TURF,
 		COMSIG_BULLET_PRE_HANDLE_MOB,
-	), .proc/handle_bullet)
+	), PROC_REF(handle_bullet))
 
-/datum/element/bullet_trait_damage_boost/proc/check_type(var/atom/A)
+/datum/element/bullet_trait_damage_boost/proc/check_type(atom/A)
 	if(istype(A, /obj/structure/machinery/door)) return "door"
 	//add more cases for other interactions (switch doesn't seem to work with istype)
 	else return 0
 
-/datum/element/bullet_trait_damage_boost/proc/handle_bullet(var/obj/item/projectile/P, var/atom/A)
+/datum/element/bullet_trait_damage_boost/proc/handle_bullet(obj/item/projectile/P, atom/A)
 	SIGNAL_HANDLER
 
 	atom_type = check_type(A)

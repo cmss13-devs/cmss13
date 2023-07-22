@@ -347,6 +347,21 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 6, 60, 30, "#EE6515"), 0.5 SECONDS) //Color changed into napalm's color to better convey how intense the fire actually is.
 	QDEL_IN(src, 0.5 SECONDS)
 
+/obj/structure/ship_ammo/rocket/thermobaric
+	name = "\improper BLU-200 'Dragons Breath'"
+	desc = "The BLU-200 Dragons Breath a thermobaric fuel-air bomb. The aerosolized fuel mixture creates a vacuum when ignited causing serious damage to those in its way."
+	icon_state = "fatty"
+	ammo_id = "f"
+	travelling_time = 50
+	point_cost = 300
+	fire_mission_delay = 4
+
+/obj/structure/ship_ammo/rocket/thermobaric/detonate_on(turf/impact)
+	impact.ceiling_debris_check(3)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 4, 25, 50, "#c96500"), 0.5 SECONDS) //Very intense but the fire doesn't last very long
+	for(var/mob/living/carbon/victim in orange(5, impact))
+		victim.throw_atom(impact, 3, 15, src, TRUE) // Implosion throws affected towards center of vacuum
+	QDEL_IN(src, 0.5 SECONDS)
 
 
 //minirockets

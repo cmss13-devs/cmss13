@@ -23,23 +23,23 @@
 	. = ..()
 	. += SPAN_INFO("Drag its sprite onto yourself to undeploy.")
 
-/obj/structure/barricade/deployable/attackby(obj/item/W, mob/user)
+/obj/structure/barricade/deployable/attackby(obj/item/item, mob/user)
 
-	if(iswelder(W))
-		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+	if(iswelder(item))
+		if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
 		if(user.action_busy)
 			return
-		var/obj/item/tool/weldingtool/WT = W
+		var/obj/item/tool/weldingtool/welder = item
 		if(health == maxhealth)
 			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 			return
 
-		weld_cade(WT, user)
+		weld_cade(welder, user)
 		return
 
-	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+	else if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 		if(user.action_busy)
 			return
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
@@ -54,7 +54,7 @@
 			else
 				to_chat(user, SPAN_WARNING("You stop collapsing [src]."))
 
-	if(try_nailgun_usage(W, user))
+	if(try_nailgun_usage(item, user))
 		return
 
 	. = ..()
@@ -168,11 +168,11 @@
 
 	use(1)
 
-/obj/item/stack/folding_barricade/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/stack/folding_barricade))
-		var/obj/item/stack/folding_barricade/F = W
+/obj/item/stack/folding_barricade/attackby(obj/item/item, mob/user)
+	if(istype(item, /obj/item/stack/folding_barricade))
+		var/obj/item/stack/folding_barricade/folding = item
 
-		if(round(health/maxhealth * 100) <= 75 || round(F.health/F.maxhealth * 100) <= 75)
+		if(round(health/maxhealth * 100) <= 75 || round(folding.health/folding.maxhealth * 100) <= 75)
 			to_chat(user, "You cannot stack damaged [src.singular_name]\s.")
 			return
 
@@ -183,27 +183,27 @@
 			to_chat(user, "You cannot stack more [src.singular_name]\s.")
 			return
 
-		var/to_transfer = min(max_amount - amount, F.amount)
-		health = min(F.health, health)
-		F.use(to_transfer)
+		var/to_transfer = min(max_amount - amount, folding.amount)
+		health = min(folding.health, health)
+		folding.use(to_transfer)
 		add(to_transfer)
 		to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
 		return
 
-	else if(iswelder(W))
-		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+	else if(iswelder(item))
+		if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
 
 		if(user.action_busy)
 			return
 
-		var/obj/item/tool/weldingtool/WT = W
+		var/obj/item/tool/weldingtool/welder = item
 		if(health == maxhealth)
 			to_chat(user, SPAN_WARNING("[src.singular_name] doesn't need repairs."))
 			return
 
-		if(!(WT.remove_fuel(2, user)))
+		if(!(welder.remove_fuel(2, user)))
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),

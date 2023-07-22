@@ -49,7 +49,7 @@
 			user.visible_message(SPAN_NOTICE("[user] starts collapsing [src]."), \
 				SPAN_NOTICE("You begin collapsing [src]..."))
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-			if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+			if(do_after(user, 1.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
 				collapse(usr)
 			else
 				to_chat(user, SPAN_WARNING("You stop collapsing [src]."))
@@ -172,7 +172,7 @@
 	if(istype(W, /obj/item/stack/folding_barricade))
 		var/obj/item/stack/folding_barricade/F = W
 
-		if(health < maxhealth * 0.75 || F.health < F.maxhealth * 0.75)
+		if(round(health/maxhealth * 100) =< 75 || round(F.health/F.maxhealth * 100) =< 75)
 			to_chat(user, "You cannot stack damaged [src.singular_name]\s.")
 			return
 
@@ -194,9 +194,6 @@
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
-		if(src != user.get_inactive_hand())
-			to_chat(user, SPAN_WARNING("You need to hold [src.singular_name] in hand or deploy to repair it."))
-			return
 
 		if(user.action_busy)
 			return
@@ -213,9 +210,14 @@
 		SPAN_NOTICE("You begin repairing the damage to [src]."))
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, TRUE)
 
-		var/welding_time = (skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED) ? 3 SECONDS : 6 SECONDS) * amount
-		if(!do_after(user, welding_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
-			return
+		var/welding_time = (skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED) ? 5 SECONDS : 10 SECONDS) * amount
+
+		if(src != user.get_inactive_hand())
+			if(!do_after(user, welding_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
+				return
+		else
+			if(!do_after(user, welding_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, src)) //you can move while repairing if you have cade in hand
+				return
 
 		user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 		SPAN_NOTICE("You repair [src]."))
@@ -260,7 +262,7 @@
 
 /obj/item/stack/folding_barricade/get_examine_text(mob/user)
 	. = ..()
-	if(health < maxhealth * 0.75)
+	if(round(health/maxhealth * 100) =< 75)
 		. += SPAN_WARNING("It appears to be damaged.")
 	else if(health < maxhealth)
 		. += SPAN_WARNING("It appears to be scratched.")

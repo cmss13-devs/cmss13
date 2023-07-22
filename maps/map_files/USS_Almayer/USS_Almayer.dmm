@@ -9807,10 +9807,6 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "aEZ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	dir = 1;
@@ -26375,11 +26371,6 @@
 /area/almayer/hallways/repair_bay)
 "cfT" = (
 /obj/structure/pipes/vents/pump,
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_x = -2;
-	pixel_y = -1
-	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "sterile_green_side"
@@ -29754,8 +29745,8 @@
 /area/almayer/engineering/upper_engineering/starboard)
 "dbD" = (
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "w-y2"
+	dir = 4;
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
 "dcd" = (
@@ -34053,14 +34044,8 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "eSo" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /turf/open/floor/almayer{
+	dir = 5;
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
@@ -39165,11 +39150,6 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "hec" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_x = -1;
-	pixel_y = 1
-	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "sterile_green_side"
@@ -41757,12 +41737,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
-"iom" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "w-y0"
-	},
-/area/almayer/medical/medical_science)
 "iow" = (
 /obj/structure/machinery/cm_vending/sorted/attachments/squad{
 	req_access = null;
@@ -41819,11 +41793,6 @@
 	},
 /area/almayer/hull/upper_hull/u_m_s)
 "ipQ" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -12;
-	pixel_y = 2
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -46826,10 +46795,6 @@
 	},
 /area/almayer/lifeboat_pumps/south2)
 "kBo" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side"
@@ -48090,6 +48055,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
+	},
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -49765,11 +49734,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south2)
 "lMv" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1;
-	pixel_y = -1
-	},
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side"
@@ -50936,11 +50900,13 @@
 "msi" = (
 /obj/structure/filingcabinet/filingcabinet{
 	density = 0;
+	layer = 2.9;
 	pixel_x = 7;
 	pixel_y = 16
 	},
 /obj/structure/filingcabinet/filingcabinet{
 	density = 0;
+	layer = 2.9;
 	pixel_x = -8;
 	pixel_y = 16
 	},
@@ -59394,16 +59360,6 @@
 	},
 /area/almayer/squads/alpha_bravo_shared)
 "qfy" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/obj/structure/machinery/disposal{
-	density = 0;
-	desc = "A pneumatic delivery unit. Sends items to the requisitions.";
-	icon_state = "delivery_med";
-	name = "Requisitions Delivery Unit";
-	pixel_y = 29
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -59411,6 +59367,14 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	pixel_x = -1
+	},
+/obj/structure/filingcabinet/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/obj/structure/filingcabinet/filingcabinet{
+	pixel_x = 7;
+	pixel_y = 16
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -61797,6 +61761,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
+	pixel_x = -1;
 	pixel_y = 1
 	},
 /turf/open/floor/almayer{
@@ -63358,10 +63323,6 @@
 	},
 /area/almayer/squads/alpha_bravo_shared)
 "rSD" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
 	},
@@ -65080,8 +65041,7 @@
 "sHZ" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "w-y1"
+	icon_state = "sterile_green"
 	},
 /area/almayer/medical/medical_science)
 "sIf" = (
@@ -66275,10 +66235,6 @@
 	},
 /area/almayer/squads/req)
 "tjn" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -76196,13 +76152,15 @@
 	dir = 8;
 	layer = 3.1
 	},
-/obj/structure/filingcabinet/filingcabinet{
-	pixel_x = 7;
-	pixel_y = 16
+/obj/structure/disposalpipe/trunk{
+	dir = 1
 	},
-/obj/structure/filingcabinet/filingcabinet{
-	pixel_x = -8;
-	pixel_y = 16
+/obj/structure/machinery/disposal{
+	density = 0;
+	desc = "A pneumatic delivery unit. Sends items to the requisitions.";
+	icon_state = "delivery_med";
+	name = "Requisitions Delivery Unit";
+	pixel_y = 29
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -109352,8 +109310,8 @@ qam
 riE
 gAS
 lMv
-kBP
-jsx
+dbD
+eSo
 qmD
 aIC
 lJv
@@ -109555,8 +109513,8 @@ kBP
 kBP
 jsx
 tjn
-iom
-vkp
+aCC
+kXw
 pQP
 qAT
 vOy
@@ -109960,9 +109918,9 @@ rQy
 wWR
 ycj
 vkp
-eSo
-dbD
-vkp
+pxo
+aCC
+kXw
 hVf
 dVu
 vqW

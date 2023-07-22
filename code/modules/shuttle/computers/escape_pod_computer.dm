@@ -235,7 +235,6 @@
 			return XENO_ATTACK_ACTION
 		else
 			to_chat(xeno, SPAN_WARNING("[src] is bolted down tight."))
-			return XENO_NO_DELAY_ACTION
 	return FALSE //Probably a better idea that these cannot be forced open.
 
 /obj/structure/machinery/door/airlock/evacuation/attack_remote()

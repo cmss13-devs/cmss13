@@ -39,35 +39,17 @@
 		weld_cade(WT, user)
 		return
 
-	else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		if(user.action_busy)
-			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-			to_chat(user, SPAN_WARNING("You do not know where the loosening bolts are on [src]..."))
-			return
-		else
-			if(build_state == BARRICADE_BSTATE_UNSECURED)
-				to_chat(user, SPAN_NOTICE("You tighten the bolts on [src]."))
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				build_state = BARRICADE_BSTATE_SECURED
-			else
-				to_chat(user, SPAN_NOTICE("You loosen the bolts on [src]."))
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				build_state = BARRICADE_BSTATE_UNSECURED
-
 	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-		if(build_state != BARRICADE_BSTATE_UNSECURED)
-			return
 		if(user.action_busy)
 			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not know how to collapse [src] using a crowbar..."))
 			return
 		else
 			user.visible_message(SPAN_NOTICE("[user] starts collapsing [src]."), \
 				SPAN_NOTICE("You begin collapsing [src]..."))
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+			if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 				collapse(usr)
 			else
 				to_chat(user, SPAN_WARNING("You stop collapsing [src]."))
@@ -190,8 +172,8 @@
 	if(istype(W, /obj/item/stack/folding_barricade))
 		var/obj/item/stack/folding_barricade/F = W
 
-		if(health != maxhealth || F.health != F.maxhealth)
-			to_chat(user, "You cannot stack damaged [src.singular_name]\s.")
+		if(health < maxhealth * 0.80 || F.health < F.maxhealth * 0.80)
+			to_chat(user, "You cannot stack too damaged [src.singular_name]\s.")
 			return
 
 		if(!ismob(src.loc))
@@ -202,6 +184,7 @@
 			return
 
 		var/to_transfer = min(max_amount - amount, F.amount)
+		health = min(F.health, health)
 		F.use(to_transfer)
 		add(to_transfer)
 		to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
@@ -230,7 +213,7 @@
 		SPAN_NOTICE("You begin repairing the damage to [src]."))
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, TRUE)
 
-		var/welding_time = skillcheck(user, SKILL_CONSTRUCTION, 2) ? 5 SECONDS : 10 SECONDS
+		var/welding_time = (skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED) ? 3 SECONDS : 6 SECONDS) * amount
 		if(!do_after(user, welding_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 			return
 
@@ -277,8 +260,10 @@
 
 /obj/item/stack/folding_barricade/get_examine_text(mob/user)
 	. = ..()
-	if(health < maxhealth)
+	if(health < maxhealth * 0.80)
 		. += SPAN_WARNING("It appears to be damaged.")
+	else if(health < maxhealth)
+		. += SPAN_WARNING("It appears to be slightly damaged.")
 
 /obj/item/stack/folding_barricade/three
 	amount = 3

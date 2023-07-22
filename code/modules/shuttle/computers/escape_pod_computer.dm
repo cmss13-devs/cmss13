@@ -239,7 +239,6 @@
 	take_damage(HEALTH_DOOR / XENO_HITS_TO_DESTROY_BOLTED_DOOR)
 	return XENO_ATTACK_ACTION
 			
-	return FALSE //Probably a better idea that these cannot be forced open.
 
 /obj/structure/machinery/door/airlock/evacuation/attack_remote()
 	return FALSE

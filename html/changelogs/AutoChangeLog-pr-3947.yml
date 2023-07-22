@@ -1,4 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - qol: "Ghosts now informed when a non-nested host is about to chestburst"

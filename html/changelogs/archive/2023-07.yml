@@ -367,3 +367,16 @@
       who they are for.
   - code_imp: Removed the requirement for donators to match their character name to
       our config file.
+2023-07-22:
+  Ben10083:
+  - qol: Ghosts now informed when a non-nested host is about to chestburst
+  ClairionCM:
+  - rscadd: Chem ERT objectives now mention that they cant deploy without explicit
+      permission.
+  Drathek:
+  - bugfix: 'Fixed the prompt when nested to ghost: Now uses a TGUI prompt and sets
+      larva queue time.'
+  Morrow:
+  - balance: Decreased blood bag IV insertion time from 3 to 1 second
+  Waseemq1235:
+  - code_imp: Adds unrestricted_deployment var to tents. Bypasses groundside checks.

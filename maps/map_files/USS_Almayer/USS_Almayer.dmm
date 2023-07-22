@@ -4106,6 +4106,15 @@
 	pixel_x = -1
 	},
 /obj/structure/machinery/photocopier,
+/obj/item/storage/box/botanydisk{
+	pixel_y = 9
+	},
+/obj/item/storage/box/botanydisk{
+	pixel_y = 9
+	},
+/obj/item/storage/box/botanydisk{
+	pixel_y = 9
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -7578,7 +7587,6 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
-/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -8541,6 +8549,10 @@
 /obj/structure/machinery/botany/editor,
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
+	},
+/obj/item/clothing/glasses/science{
+	pixel_x = -4;
+	pixel_y = 7
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -10581,12 +10593,16 @@
 /area/almayer/lifeboat_pumps/north1)
 "aIC" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/glass/beaker/large{
-	pixel_x = -7
-	},
 /obj/item/reagent_container/glass/beaker{
 	pixel_x = 6;
 	pixel_y = -1
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/glass/beaker/large{
+	pixel_x = -7
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
@@ -30707,6 +30723,11 @@
 	layer = 3.1;
 	pixel_y = 4
 	},
+/obj/item/storage/box/pillbottles{
+	layer = 3.5;
+	pixel_x = -2;
+	pixel_y = 11
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -37220,6 +37241,10 @@
 	pixel_x = 5;
 	pixel_y = 29
 	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = 5;
+	pixel_y = 12
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -38129,6 +38154,10 @@
 /obj/structure/filingcabinet/chestdrawer{
 	density = 0;
 	pixel_x = -16
+	},
+/obj/item/storage/box/autoinjectors{
+	pixel_x = -16;
+	pixel_y = 7
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -43104,17 +43133,9 @@
 	pixel_x = 7;
 	pixel_y = -25
 	},
-/obj/structure/surface/rack,
-/obj/item/storage/box/autoinjectors{
-	pixel_x = 1;
-	pixel_y = -3
-	},
-/obj/item/storage/box/sprays{
-	pixel_y = 5
-	},
-/obj/item/storage/box/beakers{
-	pixel_y = 12
-	},
+/obj/structure/closet/secure_closet/hydroresearch,
+/obj/item/reagent_container/glass/watertank,
+/obj/item/reagent_container/glass/watertank,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner"
@@ -43613,16 +43634,13 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/surface/table/almayer,
-/obj/item/folder/white{
-	pixel_x = 6
+/obj/structure/reagent_dispensers/watertank,
+/obj/item/reagent_container/glass/beaker/large{
+	pixel_x = -6;
+	pixel_y = 8
 	},
-/obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker{
-	pixel_x = 5
-	},
-/obj/item/clothing/glasses/science{
-	pixel_x = -4;
+	pixel_x = 6;
 	pixel_y = 7
 	},
 /turf/open/floor/almayer{
@@ -48219,6 +48237,9 @@
 /obj/structure/machinery/chem_master{
 	vial_maker = 1
 	},
+/obj/item/storage/box/beakers{
+	pixel_y = 12
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -50179,15 +50200,12 @@
 /area/almayer/hull/lower_hull/l_f_p)
 "lZZ" = (
 /obj/structure/surface/rack,
-/obj/item/storage/box/pillbottles{
-	pixel_y = 12
-	},
-/obj/item/storage/box/pillbottles{
-	pixel_y = 6
-	},
-/obj/item/storage/box/pillbottles{
-	pixel_y = -2
-	},
+/obj/item/storage/fancy/vials/empty,
+/obj/item/storage/fancy/vials/empty,
+/obj/item/storage/fancy/vials/empty,
+/obj/item/storage/fancy/vials/empty,
+/obj/item/storage/fancy/vials/empty,
+/obj/item/storage/fancy/vials/empty,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -52106,6 +52124,10 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
+	},
+/obj/item/folder/white{
+	pixel_x = 2;
+	pixel_y = -12
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -55950,6 +55972,10 @@
 	pixel_y = 28
 	},
 /obj/structure/machinery/photocopier,
+/obj/item/storage/box/sprays{
+	pixel_x = -4;
+	pixel_y = 9
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -71808,9 +71834,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/bridgebunks)
 "vDa" = (
-/obj/structure/closet/secure_closet/hydroresearch,
-/obj/item/reagent_container/glass/watertank,
-/obj/item/reagent_container/glass/watertank,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},

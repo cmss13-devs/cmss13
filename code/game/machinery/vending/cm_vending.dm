@@ -1182,6 +1182,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		sleep(15)
 
 	vendor.stat &= ~IN_USE
+	vendor.icon_state = initial(vendor.icon_state)
 	vendor.update_icon()
 
 /proc/vendor_successful_vend_one(obj/structure/machinery/cm_vending/vendor, prod_type, mob/living/carbon/human/user, turf/target_turf, insignas_override)

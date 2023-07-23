@@ -510,16 +510,15 @@
 	SIGNAL_HANDLER
 
 	if(tracked_queen)
-		UnregisterSignal(tracked_queen, list(COMSIG_QUEEN_MOUNT_OVIPOSITOR, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, COMSIG_PARENT_QDELETING))
+		UnregisterSignal(tracked_queen, list(COMSIG_QUEEN_MOUNT_OVIPOSITOR, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR))
 
 	tracked_queen = new_queen
 
-	if(!tracked_queen.ovipositor)
+	if(!tracked_queen?.ovipositor)
 		hide_from(owner)
 
 	RegisterSignal(tracked_queen, COMSIG_QUEEN_MOUNT_OVIPOSITOR, PROC_REF(handle_mount_ovipositor))
 	RegisterSignal(tracked_queen, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(handle_dismount_ovipositor))
-	RegisterSignal(tracked_queen, COMSIG_PARENT_QDELETING, PROC_REF(handle_queen_qdel))
 
 /// deals with the queen mounting the ovipositor, unhiding the action from the user
 /datum/action/xeno_action/onclick/tacmap/proc/handle_mount_ovipositor()
@@ -531,13 +530,6 @@
 /datum/action/xeno_action/onclick/tacmap/proc/handle_dismount_ovipositor()
 	SIGNAL_HANDLER
 
-	hide_from(owner)
-
-/// cleans up references to the queen when the queen is being qdel'd, hides the action from the user
-/datum/action/xeno_action/onclick/tacmap/proc/handle_queen_qdel()
-	SIGNAL_HANDLER
-
-	tracked_queen = null
 	hide_from(owner)
 
 /datum/action/xeno_action/onclick/tacmap/use_ability(atom/target)

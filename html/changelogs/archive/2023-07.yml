@@ -367,3 +367,39 @@
       who they are for.
   - code_imp: Removed the requirement for donators to match their character name to
       our config file.
+2023-07-22:
+  Ben10083:
+  - qol: Ghosts now informed when a non-nested host is about to chestburst
+  ClairionCM:
+  - rscadd: Chem ERT objectives now mention that they cant deploy without explicit
+      permission.
+  Drathek:
+  - bugfix: 'Fixed the prompt when nested to ghost: Now uses a TGUI prompt and sets
+      larva queue time.'
+  Morrow:
+  - balance: Decreased blood bag IV insertion time from 3 to 1 second
+  Waseemq1235:
+  - code_imp: Adds unrestricted_deployment var to tents. Bypasses groundside checks.
+2023-07-23:
+  Anuv:
+  - rscadd: Added a headset to Researchers with the intel channel included
+  Ben10083:
+  - maptweak: AI Core APC now uses a hyper capacity cell
+  Drathek:
+  - bugfix: Fix xeno tacmap staying open when it should be unavailable
+  - code_imp: Bump rust_g to 2.1.0 and bump all github testing ubuntu versions to
+      latest.
+  Khadd:
+  - bugfix: blowtorch no longer loses fuel on clicks that produce no action
+  - code_imp: replaced 1-letter vars
+  QuickLode:
+  - bugfix: Surgical graft now fits in surgical trays and vests.
+  blackdragonTOW:
+  - rscadd: 'Added new CAS Missile: BLU-200 Dragons Breath'
+  ihatethisengine:
+  - bugfix: vendors icon_state resets after vending as intended.
+  nauticall:
+  - imageadd: Resprited blood bags to look nicer and use proper a proper overlay/underlay
+      system. Their types are also now distinguishable at a glance.
+  - code_imp: Reworked the way blood bag sprites work behind the scenes to use the
+      overlay/underlay system.

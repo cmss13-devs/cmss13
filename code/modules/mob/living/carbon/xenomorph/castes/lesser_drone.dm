@@ -11,7 +11,7 @@
 	xeno_explosion_resistance = XENO_NO_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_LOW
-	speed = XENO_SPEED_TIER_7
+	speed = XENO_SPEED_TIER_6
 
 	evolution_allowed = FALSE
 	can_be_revived = FALSE
@@ -26,7 +26,7 @@
 	max_build_dist = 1
 
 	tackle_min = 4
-	tackle_max = 4
+	tackle_max = 5
 
 	aura_strength = 1
 
@@ -64,7 +64,7 @@
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/corrosive_acid/weak,
 		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/onclick/plant_weeds, //first macro
+		/datum/action/xeno_action/onclick/plant_weeds/lesser, //first macro
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin, //third macro
 		/datum/action/xeno_action/onclick/tacmap,
@@ -89,3 +89,9 @@
 	hud_update()
 
 	xeno_jitter(25)
+
+/mob/living/carbon/xenomorph/lesser_drone/initialize_pass_flags(datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_pass = PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO
+		PF.flags_can_pass_all = PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO

@@ -138,8 +138,7 @@
 
 /datum/equipment_preset/survivor/forecon/marksman
 	name = "Survivor - USCM Reconnaissance Designated Marksman"
-	assignment = "Reconnaissance Marksman"
-	rank = JOB_FORECON_MARKSMAN
+	assignment = JOB_FORECON_MARKSMAN
 	skills = /datum/skills/military/survivor/forecon_marksman
 
 /datum/equipment_preset/survivor/forecon/marksman/load_gear(mob/living/carbon/human/new_human)
@@ -164,6 +163,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot(new /obj/item/smartgun_battery(new_human), WEAR_IN_BACK)
 	add_forecon_weapon(new_human)
 	spawn_random_headgear(new_human)
 	add_forecon_equipment(new_human)

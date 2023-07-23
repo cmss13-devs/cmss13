@@ -1036,17 +1036,12 @@
 		to_chat(user, SPAN_WARNING("\The [GLOB.hive_datum[hivenumber]] cannot support more facehuggers! Limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"))
 		return FALSE
 
-	if(user.action_busy)
-		to_chat(user, SPAN_WARNING("You are already attempting to join the game!"))
-		return
-
-	user.action_busy = TRUE
-
-	if(alert(user, "Are you sure you want to become a facehugger?", "Confirmation", "Yes", "No") != "Yes")
-		user.action_busy = FALSE
+	if(tgui_alert(user, "Are you sure you want to become a facehugger?", "Confirmation", list("Yes", "No")) != "Yes")
 		return FALSE
 
-	user.action_busy = FALSE
+	if(!user.client)
+		return FALSE
+
 	return TRUE
 
 /datum/hive_status/proc/spawn_as_hugger(mob/dead/observer/user, atom/A)

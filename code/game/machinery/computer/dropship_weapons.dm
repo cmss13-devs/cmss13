@@ -274,35 +274,11 @@
 	.["equipment_data"] = get_sanitised_equipment(dropship)
 
 	// medevac targets
-	var/list/stretchers = list()
+	.["medevac_targets"] = list()
 	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
 		if (istype(equipment, /obj/structure/dropship_equipment/medevac_system))
 			var/obj/structure/dropship_equipment/medevac_system/medevac = equipment
-			stretchers = medevac.get_targets()
-			to_chat(usr, "found medevacs")
-
-	.["medevac_targets"] = list()
-	for(var/stretcher_ref in stretchers)
-		var/obj/structure/bed/medevac_stretcher/stretcher = stretchers[stretcher_ref]
-		to_chat(usr, "found [stretcher]")
-
-		var/area/AR = get_area(stretcher)
-		to_chat(usr, "at [AR]")
-		var/list/target_data = list()
-		target_data["area"] = AR
-
-		var/mob/living/carbon/human/occupant = stretcher.buckled_mob
-		to_chat(usr, "occupant [occupant]")
-		if(occupant)
-			to_chat(usr, "stretcher found [occupant]")
-			target_data["occupant"] = occupant.name
-			if(ishuman(occupant))
-				target_data["triage_card"] = occupant.holo_card_color
-		else
-			to_chat(usr, "stretcher empty")
-
-		.["medevac_targets"] += list(target_data)
-		to_chat(usr, "stretcher found done")
+			.["medevac_targets"] += medevac.ui_data(user)
 
 	.["targets_data"] = get_targets()
 	.["camera_target"] = camera_target_id

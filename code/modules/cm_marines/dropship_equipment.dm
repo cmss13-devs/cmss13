@@ -960,6 +960,35 @@
 
 	activate_winch(user)
 
+/obj/structure/dropship_equipment/medevac_system/ui_data(mob/user)
+	var/list/stretchers = get_targets()
+
+	. = list()
+	for(var/stretcher_ref in stretchers)
+		var/obj/structure/bed/medevac_stretcher/stretcher = stretchers[stretcher_ref]
+
+		var/area/AR = get_area(stretcher)
+		var/list/target_data = list()
+		target_data["area"] = AR
+		target_data["ref"] = stretcher_ref
+
+		var/mob/living/carbon/human/occupant = stretcher.buckled_mob
+		if(occupant)
+			target_data["occupant"] = occupant.name
+			target_data["time_of_death"] = occupant.tod
+			target_data["damage"] = list(
+				"hp" = occupant.health,
+				"brute" = occupant.bruteloss,
+				"oxy" = occupant.oxyloss,
+				"tox" = occupant.toxloss,
+				"fire" = occupant.fireloss
+			)
+			if(ishuman(occupant))
+				target_data["damage"]["undefib"] = occupant.undefibbable
+				target_data["triage_card"] = occupant.holo_card_color
+
+		. += list(target_data)
+
 /obj/structure/dropship_equipment/medevac_system/proc/activate_winch(mob/user)
 	set waitfor = 0
 	var/old_stretcher = linked_stretcher

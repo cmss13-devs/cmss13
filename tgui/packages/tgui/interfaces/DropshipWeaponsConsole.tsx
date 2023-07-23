@@ -18,7 +18,16 @@ interface DropshipProps {
 type MedevacTargets = {
   area: string;
   occupant: string;
-  triage_card: string;
+  ref: string;
+  triage_card?: string;
+  damage?: {
+    hp: number;
+    brute: number;
+    oxy: number;
+    tox: number;
+    fire: number;
+    undefib: number;
+  };
 };
 
 type LazeTarget = {
@@ -342,19 +351,17 @@ const getLazeButtonProps = (context) => {
   const lazes = range(0, 3).map((x) =>
     x > data.targets_data.length ? undefined : data.targets_data[x]
   );
-  const dir: mfddir = 'right';
   const get_laze = (index: number) => {
     const laze = lazes.find((_, i) => i === index);
     if (laze === undefined) {
       return { children: 'NONE' };
-    } else {
-      return {
-        children: laze?.target_name.split(' ')[0] ?? 'NONE',
-        onClick: laze
-          ? () => act('set-camera', { 'equipment_id': laze.target_tag })
-          : undefined,
-      };
     }
+    return {
+      children: laze?.target_name.split(' ')[0] ?? 'NONE',
+      onClick: laze
+        ? () => act('set-camera', { 'equipment_id': laze.target_tag })
+        : undefined,
+    };
   };
   return [
     { children: 'SIGNALS' },
@@ -365,11 +372,48 @@ const getLazeButtonProps = (context) => {
   ];
 };
 
+const getEquipmentRightProps = (context) => {
+  const [equipmentPanel] = useEquipmentState(context);
+  switch (equipmentPanel) {
+    default:
+      return getMedevacRightProps(context);
+  }
+};
+
+const getMedevacRightProps = (context) => {
+  const { act, data } = useBackend<DropshipProps>(context);
+  const get_medevac = (index: number) => {
+    const target = data.medevac_targets.find((_, i) => i === index);
+    if (!target) {
+      return undefined;
+    }
+
+    const names = target.occupant.split(' ');
+    return {
+      children: `${names[names.length - 1]} ${names[0][0]}.`,
+      onClick: () =>
+        act('equipment_interact', {
+          'equipment': 'medevac',
+          'ref': target.ref,
+        }),
+    };
+  };
+  return [
+    { children: 'WOUNDED' },
+    get_medevac(0),
+    get_medevac(1),
+    get_medevac(2),
+    get_medevac(3),
+  ];
+};
+
 const getRightButtons = (context) => {
   const [panelState] = usePanelState(context);
   const dir: mfddir = 'right';
   const getProps = () => {
     switch (panelState) {
+      case 'equipment':
+        return getEquipmentRightProps(context);
       default:
         return getLazeButtonProps(context);
     }
@@ -392,17 +436,65 @@ const MedevacOverview = (_, context) => {
   const { data } = useBackend<DropshipProps>(context);
   return (
     <Stack vertical>
-      <Stack.Item>f</Stack.Item>
       {data.medevac_targets.map((x) => (
-        <Stack.Item key={x.occupant}>{x.occupant}</Stack.Item>
+        <Stack.Item key={x.occupant}>
+          <MedevacOccupant data={x} />
+        </Stack.Item>
       ))}
     </Stack>
   );
 };
 
+const MedevacOccupant = (props: { data: MedevacTargets }, context) => {
+  return (
+    <Box className="Test">
+      <Flex justify="space-between">
+        <Flex.Item grow>
+          <Box>ECG mockup to show if the patient is alive or not</Box>
+        </Flex.Item>
+        <Flex.Item grow className="Test">
+          <Stack vertical>
+            <Stack.Item>{props.data.occupant}</Stack.Item>
+            <Stack.Item>{props.data.area}</Stack.Item>
+            <Stack.Item>a pin on a minimap</Stack.Item>
+          </Stack>
+        </Flex.Item>
+        <Flex.Item grow>
+          <Flex fill justify="space-around">
+            <Flex.Item>
+              HP
+              <br />
+              {props.data.damage?.hp}
+            </Flex.Item>
+            <Flex.Item>
+              Brute
+              <br />
+              {props.data.damage?.brute}
+            </Flex.Item>
+            <Flex.Item>
+              Fire
+              <br />
+              {props.data.damage?.fire}
+            </Flex.Item>
+            <Flex.Item>
+              Tox
+              <br />
+              {props.data.damage?.tox}
+            </Flex.Item>
+            <Flex.Item>
+              Oxy
+              <br /> {props.data.damage?.oxy}
+            </Flex.Item>
+          </Flex>
+        </Flex.Item>
+      </Flex>
+    </Box>
+  );
+};
+
 const EquipmentPanel = (props, context) => {
-  const [equipmentPanel, setEquipmentPanel] = useEquipmentState(context);
-  const Selector = (_, context) => {
+  const [equipmentPanel] = useEquipmentState(context);
+  const Selector = () => {
     switch (equipmentPanel) {
       case 'medevac system':
         return <MedevacOverview />;

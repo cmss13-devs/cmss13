@@ -1,0 +1,4 @@
+author: "JackieEstegado"
+delete-after: True
+changes:
+  - maptweak: "Made LV-624's \"Fully-locked\" Research nightmare insert no longer have indestructible blast doors."

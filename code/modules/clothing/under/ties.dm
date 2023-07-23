@@ -529,7 +529,7 @@
 	new /obj/item/device/multitool(src)
 
 /obj/item/storage/internal/accessory/surg_vest
-	storage_slots = 13
+	storage_slots = 14
 	can_hold = list(
 		/obj/item/tool/surgery,
 		/obj/item/stack/medical/advanced/bruise_pack,
@@ -569,6 +569,7 @@
 	new /obj/item/tool/surgery/FixOVein(src)
 	new /obj/item/stack/nanopaste(src)
 	new /obj/item/tool/surgery/surgical_line(src)
+	new /obj/item/tool/surgery/synthgraft(src)
 
 /obj/item/clothing/accessory/storage/surg_vest
 	name = "surgical webbing vest"

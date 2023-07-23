@@ -77,14 +77,14 @@
 				w_uniform.add_fingerprint(attacking_mob)
 
 			attacking_mob.start_pulling(src)
-
 			return 1
 
 		if(INTENT_HARM)
 			// See if they can attack, and which attacks to use.
 			var/datum/unarmed_attack/attack = attacking_mob.species.unarmed
-			if(!attack.is_usable(attacking_mob)) attack = attacking_mob.species.secondary_unarmed
-			if(!attack.is_usable(attacking_mob)) return
+			if(!attack.is_usable(attacking_mob))
+				attack = attacking_mob.species.secondary_unarmed
+				return
 
 			last_damage_data = create_cause_data("fisticuffs", src)
 			attacking_mob.attack_log += text("\[[time_stamp()]\] <font color='red'>[pick(attack.attack_verb)]ed [key_name(src)]</font>")

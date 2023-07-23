@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - balance: "Decreased blood bag IV insertion time from 3 to 1 second"

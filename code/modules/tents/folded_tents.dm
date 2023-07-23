@@ -12,6 +12,8 @@
 	var/off_y = 0
 	/// Map Template to use for the tent
 	var/template
+	/// If this tent can be deployed anywhere
+	var/unrestricted_deployment = FALSE
 
 /// Check an area is clear for deployment of the tent
 /obj/item/folded_tent/proc/check_area(turf/ref_turf, mob/message_receiver, display_error = FALSE)
@@ -20,7 +22,7 @@
 	var/list/turf_block = get_deployment_area(ref_turf)
 	for(var/turf/turf as anything in turf_block)
 		var/area/area = get_area(turf)
-		if(!area.can_build_special)
+		if(!area.can_build_special && !unrestricted_deployment)
 			if(message_receiver)
 				to_chat(message_receiver, SPAN_WARNING("You cannot deploy tents on restricted areas."))
 			if(display_error)
@@ -73,7 +75,7 @@
 	if(!istype(deploy_turf) || (deploy_turf.x + dim_x > world.maxx) || (deploy_turf.y + dim_y > world.maxy)) // Map border basically
 		return
 
-	if(!is_ground_level(deploy_turf.z))
+	if(!is_ground_level(deploy_turf.z) && !unrestricted_deployment)
 		to_chat(user, SPAN_WARNING("USCM Operational Tents are intended for operations, not ship or space recreation."))
 		return
 

@@ -554,6 +554,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			var/obj/item/storage/internal/accessory/holster/holster = cycled_holster.hold
 			if(holster.current_gun)
 				return holster.current_gun
+
+		for(var/obj/item/clothing/accessory/storage/cycled_accessory in w_uniform.accessories)
+			var/obj/item/storage/internal/accessory/accessory_storage = cycled_accessory.hold
+			if(accessory_storage.storage_flags & STORAGE_ALLOW_QUICKDRAW)
+				return accessory_storage
+
 		return FALSE
 
 	if(istype(slot) && (slot.storage_flags & STORAGE_ALLOW_QUICKDRAW))

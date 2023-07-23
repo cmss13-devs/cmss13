@@ -1789,6 +1789,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 /obj/item/weapon/gun/proc/stop_fire()
 	SIGNAL_HANDLER
+	if(gun_user.get_active_hand() != src)
+		return
+
 	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
 		reset_fire()
 		display_ammo()

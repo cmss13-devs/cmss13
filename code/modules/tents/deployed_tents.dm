@@ -56,6 +56,7 @@
 		return
 	var/mob/subject_mob = subject
 	RegisterSignal(subject_mob, list(COMSIG_MOVABLE_TURF_ENTERED, COMSIG_GHOST_MOVED), PROC_REF(mob_moved), override = TRUE) // Must override because we can't know if mob was already inside tent without keeping an awful ref list
+	subject_mob.RegisterSignal(src, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, tent_deletion_clean_up), override = TRUE)
 	var/atom/movable/screen/plane_master/roof/roof_plane = subject_mob.hud_used.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = INVISIBILITY_MAXIMUM
 	if(ishuman(subject))
@@ -72,8 +73,13 @@
 
 /obj/structure/tent/proc/mob_exited_tent(mob/subject)
 	UnregisterSignal(subject, list(COMSIG_MOVABLE_TURF_ENTERED, COMSIG_GHOST_MOVED, COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS))
+	subject.UnregisterSignal(src, COMSIG_PARENT_QDELETING)
 	var/atom/movable/screen/plane_master/roof/roof_plane = subject.hud_used.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = 0
+
+/mob/proc/tent_deletion_clean_up(obj/structure/tent/deleting_tent)
+	SIGNAL_HANDLER
+	deleting_tent.mob_exited_tent(src)
 
 /obj/structure/tent/attack_alien(mob/living/carbon/xenomorph/M)
 	if(unslashable)
@@ -88,7 +94,7 @@
 
 	if(health <= 0)
 		visible_message(SPAN_BOLDWARNING("The [src] collapses!"))
-		qdel(src)//need to unregister all the signal first? turn off roof plane for everyone inside?
+		qdel(src)
 
 	return XENO_ATTACK_ACTION
 
@@ -109,12 +115,6 @@
 /obj/structure/tent/get_projectile_hit_boolean(obj/item/projectile/P)
 	. = ..()
 	return FALSE // Always fly through the tent
-
-/obj/structure/tent/Destroy()
-	for(var/turf/turf in locs)
-		for(var/mob/mobs in turf)
-			mob_exited_tent(mobs)
-	. = ..()
 
 /// Command tent, providing basics for field command: a phone, and an overwatch console
 /obj/structure/tent/cmd

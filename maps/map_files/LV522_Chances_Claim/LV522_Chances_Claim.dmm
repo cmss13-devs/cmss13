@@ -407,13 +407,9 @@
 	},
 /area/lv522/atmos/way_in_command_centre)
 "akp" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/floor/strata{
-	icon_state = "blue1"
-	},
-/area/lv522/outdoors/colony_streets/windbreaker/observation)
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/prison,
+/area/lv522/atmos/outdoor)
 "akM" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/oob)
@@ -8523,14 +8519,6 @@
 	icon_state = "darkpurplefull2"
 	},
 /area/lv522/indoors/a_block/dorms)
-"eai" = (
-/obj/structure/largecrate/random/case/double,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_marked"
-	},
-/area/lv522/atmos/outdoor)
 "eam" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/corsat{
@@ -10437,10 +10425,11 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/central_streets)
 "eOT" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/prop/server_equipment/laptop/on,
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/machinery/power/apc/weak{
+	dir = 1
 	},
 /turf/open/floor/strata{
 	icon_state = "blue1"
@@ -21048,6 +21037,7 @@
 "iWg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
+/obj/structure/prop/server_equipment/laptop/on,
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -23458,6 +23448,9 @@
 	icon_state = "brown"
 	},
 /area/lv522/atmos/reactor_garage)
+"jMN" = (
+/turf/open/floor/corsat,
+/area/lv522/oob)
 "jMZ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/pen/blue/clicky{
@@ -29154,6 +29147,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
+"lTi" = (
+/obj/structure/girder,
+/turf/open/floor/corsat,
+/area/lv522/oob)
 "lTj" = (
 /obj/structure/prop/invuln/minecart_tracks,
 /obj/structure/prop/invuln/minecart_tracks{
@@ -33004,10 +33001,11 @@
 	},
 /area/lv522/indoors/a_block/corpo/glass)
 "nqQ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/prison,
-/area/lv522/atmos/outdoor)
+/obj/item/stack/sheet/metal,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/lv522/atmos/east_reactor/south)
 "nqY" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -33026,8 +33024,12 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "nrh" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/floor/prison,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked"
+	},
 /area/lv522/atmos/outdoor)
 "nri" = (
 /obj/structure/platform_decoration,
@@ -43096,13 +43098,10 @@
 /area/lv522/outdoors/colony_streets/east_central_street)
 "rbZ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
+/turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/south)
 "rcd" = (
 /obj/structure/surface/table/almayer,
@@ -43393,9 +43392,6 @@
 	},
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
 "rhh" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
 /obj/structure/bed/chair/wheelchair,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata{
@@ -55591,9 +55587,13 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/garage)
 "vDw" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/prison,
-/area/lv522/atmos/outdoor)
+/obj/item/ammo_magazine/rifle/heap{
+	current_rounds = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
 "vDL" = (
 /obj/structure/prop/ice_colony/dense/planter_box{
 	dir = 5
@@ -56025,6 +56025,10 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
+"vKP" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/corsat,
+/area/lv522/oob)
 "vKR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -76347,7 +76351,7 @@ sQu
 sQu
 gWI
 iAv
-iAv
+akp
 iAv
 iAv
 iAv
@@ -76574,7 +76578,7 @@ gWI
 iAv
 iAv
 iAv
-nqQ
+vZP
 iAv
 saC
 saC
@@ -76800,10 +76804,10 @@ kri
 iAv
 iAv
 iAv
-vDw
-vDw
-eai
-eai
+xzn
+xzn
+nrh
+nrh
 saC
 saC
 tjR
@@ -77029,7 +77033,7 @@ iAv
 mWw
 nmK
 nrh
-xzn
+nrh
 xzn
 xzn
 fLS
@@ -77255,7 +77259,7 @@ iAv
 iAv
 saC
 eYA
-saC
+akp
 hHd
 mTo
 xkB
@@ -90201,9 +90205,9 @@ xVq
 xmD
 jjl
 hLY
-uvt
+vDw
 rbZ
-tiQ
+jMN
 bjd
 rMD
 eZF
@@ -90429,8 +90433,8 @@ hef
 iFk
 jef
 pfj
-ayX
-tiQ
+qjG
+jMN
 bjd
 nRy
 pqQ
@@ -90657,7 +90661,7 @@ hna
 yiu
 oyK
 ayX
-tiQ
+vKP
 bjd
 osm
 pqQ
@@ -90884,7 +90888,7 @@ hna
 wea
 hLY
 dpz
-tiQ
+jMN
 bjd
 lfj
 pqQ
@@ -91111,7 +91115,7 @@ gGg
 wTq
 jWB
 lKl
-tiQ
+lTi
 bjd
 lul
 dfK
@@ -91335,7 +91339,7 @@ lkl
 xVq
 hdQ
 ayX
-xmD
+nqQ
 hdQ
 asH
 tiQ
@@ -92945,7 +92949,7 @@ saC
 saC
 wDj
 eOT
-akp
+sOL
 sOL
 sOL
 wDj

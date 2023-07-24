@@ -812,16 +812,6 @@
 #undef OPEN_SLOTS
 #undef GUARANTEED_SLOTS
 
-// returns if that location can be used to plant eggs
-/datum/hive_status/proc/in_egg_plant_range(turf/T)
-	if(!istype(living_xeno_queen))
-		return TRUE // xenos already dicked without queen. Let them plant whereever
-
-	if(!living_xeno_queen.ovipositor)
-		return FALSE // ovid queen only
-
-	return get_dist(living_xeno_queen, T) <= egg_planting_range
-
 /datum/hive_status/proc/can_build_structure(structure_name)
 	if(!structure_name || !hive_structures_limit[structure_name])
 		return FALSE

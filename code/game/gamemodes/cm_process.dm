@@ -251,8 +251,7 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 	var/num_CLF = 0
 	var/num_headcount = 0
 
-	for(var/faction_member in GLOB.alive_human_list)
-		var/mob/living/carbon/human/current_human = faction_member
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
 		if(!(current_human.z && (current_human.z in z_levels) && !istype(current_human.loc, /turf/open/space)))
 			continue
 		if(current_human.faction in FACTION_LIST_WY || current_human.job == "Corporate Liaison") //The CL is assigned the USCM faction for gameplay purposes

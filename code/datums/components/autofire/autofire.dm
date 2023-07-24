@@ -26,7 +26,7 @@
 	///Callback to set parent's fa_firing
 	var/datum/callback/callback_set_firing
 
-/datum/component/automatedfire/autofire/Initialize(_auto_fire_shot_delay = 0.3 SECONDS, _burstfire_shot_delay, _burst_shots_to_fire = 3, _fire_mode = GUN_FIREMODE_SEMIAUTO, datum/callback/_callback_bursting, datum/callback/_callback_reset_fire, datum/callback/_callback_fire, datum/callback/_callback_display_ammo, datum/callback/_callback_set_firing)
+/datum/component/automatedfire/autofire/Initialize(auto_fire_shot_delay = 0.3 SECONDS, burstfire_shot_delay, burst_shots_to_fire = 3, fire_mode = GUN_FIREMODE_SEMIAUTO, datum/callback/callback_bursting, datum/callback/callback_reset_fire, datum/callback/callback_fire, datum/callback/callback_display_ammo, datum/callback/callback_set_firing)
 	. = ..()
 
 	RegisterSignal(parent, COMSIG_GUN_FIRE_MODE_TOGGLE, PROC_REF(modify_fire_mode))
@@ -36,15 +36,15 @@
 	RegisterSignal(parent, COMSIG_GUN_FIRE, PROC_REF(initiate_shot))
 	RegisterSignal(parent, COMSIG_GUN_STOP_FIRE, PROC_REF(stop_firing))
 
-	auto_fire_shot_delay = _auto_fire_shot_delay
-	burstfire_shot_delay = _burstfire_shot_delay
-	burst_shots_to_fire = _burst_shots_to_fire
-	fire_mode = _fire_mode
-	callback_bursting = _callback_bursting
-	callback_reset_fire = _callback_reset_fire
-	callback_fire = _callback_fire
-	callback_display_ammo = _callback_display_ammo
-	callback_set_firing = _callback_set_firing
+	src.auto_fire_shot_delay = auto_fire_shot_delay
+	src.burstfire_shot_delay = burstfire_shot_delay
+	src.burst_shots_to_fire = burst_shots_to_fire
+	src.fire_mode = fire_mode
+	src.callback_bursting = callback_bursting
+	src.callback_reset_fire = callback_reset_fire
+	src.callback_fire = callback_fire
+	src.callback_display_ammo = callback_display_ammo
+	src.callback_set_firing = callback_set_firing
 
 /datum/component/automatedfire/autofire/Destroy(force, silent)
 	QDEL_NULL(callback_fire)
@@ -55,24 +55,24 @@
 	return ..()
 
 ///Setter for fire mode
-/datum/component/automatedfire/autofire/proc/modify_fire_mode(datum/source, _fire_mode)
+/datum/component/automatedfire/autofire/proc/modify_fire_mode(datum/source, fire_mode)
 	SIGNAL_HANDLER
-	fire_mode = _fire_mode
+	src.fire_mode = fire_mode
 
 ///Setter for auto fire shot delay
-/datum/component/automatedfire/autofire/proc/modify_fire_shot_delay(datum/source, _auto_fire_shot_delay)
+/datum/component/automatedfire/autofire/proc/modify_fire_shot_delay(datum/source, auto_fire_shot_delay)
 	SIGNAL_HANDLER
-	auto_fire_shot_delay = _auto_fire_shot_delay
+	src.auto_fire_shot_delay = auto_fire_shot_delay
 
 ///Setter for the number of shots in a burst
-/datum/component/automatedfire/autofire/proc/modify_burst_shots_to_fire(datum/source, _burst_shots_to_fire)
+/datum/component/automatedfire/autofire/proc/modify_burst_shots_to_fire(datum/source, burst_shots_to_fire)
 	SIGNAL_HANDLER
-	burst_shots_to_fire = _burst_shots_to_fire
+	src.burst_shots_to_fire = burst_shots_to_fire
 
 ///Setter for burst shot delay
-/datum/component/automatedfire/autofire/proc/modify_burstfire_shot_delay(datum/source, _burstfire_shot_delay)
+/datum/component/automatedfire/autofire/proc/modify_burstfire_shot_delay(datum/source, burstfire_shot_delay)
 	SIGNAL_HANDLER
-	burstfire_shot_delay = _burstfire_shot_delay
+	src.burstfire_shot_delay = burstfire_shot_delay
 
 ///Insert the component in the bucket system if it was not in already
 /datum/component/automatedfire/autofire/proc/initiate_shot()

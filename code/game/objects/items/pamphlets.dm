@@ -96,8 +96,8 @@
 	user.hud_set_squad()
 
 	var/obj/item/card/id/ID = user.wear_id
-	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Squad Spotter")
-	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Squad Spotter")
+	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Spotter")
+	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Spotter")
 
 /obj/item/pamphlet/skill/machinegunner
 	name = "heavy machinegunner instructional pamphlet"

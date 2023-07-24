@@ -309,6 +309,7 @@
 	name = "tranquilizer bullet"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
 	stamina_damage = 30
+	damage = 15
 
 //2020 rebalance: is supposed to counter runners and lurkers, dealing high damage to the only castes with no armor.
 //Limited by its lack of versatility and lower supply, so marines finally have an answer for flanker castes that isn't just buckshot.
@@ -376,6 +377,11 @@
 	stamina_damage = 25
 	shrapnel_chance = 0
 
+// Reskinned rubber bullet used for the ES-4 CL pistol.
+/datum/ammo/bullet/pistol/rubber/stun
+	name = "stun pistol bullet"
+	sound_override = null
+
 // Used by M1911, Deagle and KT-42
 /datum/ammo/bullet/pistol/heavy
 	name = "heavy pistol bullet"
@@ -383,7 +389,7 @@
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	damage = 55
-	penetration= ARMOR_PENETRATION_TIER_3
+	penetration = ARMOR_PENETRATION_TIER_3
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /datum/ammo/bullet/pistol/heavy/super //Commander's variant
@@ -2802,8 +2808,8 @@
 	damage_type = BRUTE
 	bonus_projectiles_type = /datum/ammo/xeno/bone_chips/spread
 
-	damage = 5
-	max_range = 5
+	damage = 8
+	max_range = 6
 	accuracy = HIT_ACCURACY_TIER_8
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_7
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_7
@@ -2818,8 +2824,8 @@
 			return
 	if(ishuman_strict(M) || isxeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-		if(M.slowed < 8)
-			M.apply_effect(8, SLOW)
+		if(M.slowed < 3)
+			M.apply_effect(3, SLOW)
 
 /datum/ammo/xeno/bone_chips/spread
 	name = "small bone chips"

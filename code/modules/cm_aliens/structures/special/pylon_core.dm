@@ -150,7 +150,7 @@
 			last_larva_time = world.time
 		if(spawning_larva || (last_larva_queue_time + spawn_cooldown * 4) < world.time)
 			last_larva_queue_time = world.time
-			var/list/players_with_xeno_pref = get_alien_candidates()
+			var/list/players_with_xeno_pref = get_alien_candidates(linked_hive)
 			if(players_with_xeno_pref && players_with_xeno_pref.len)
 				if(spawning_larva && spawn_burrowed_larva(players_with_xeno_pref[1]))
 					// We were in spawning_larva mode and successfully spawned someone
@@ -162,9 +162,14 @@
 		if(linked_hive.hijack_burrowed_surge && (last_surge_time + surge_cooldown) < world.time)
 			last_surge_time = world.time
 			linked_hive.stored_larva++
+			linked_hive.hijack_burrowed_left--
 			announce_dchat("The hive has gained another burrowed larva! Use the Join As Xeno verb to take it.", src)
 			if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
 				surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
+			if(linked_hive.hijack_burrowed_left < 1)
+				linked_hive.hijack_burrowed_surge = FALSE
+				xeno_message(SPAN_XENOANNOUNCE("The hive's power wanes. You will no longer gain pooled larva over time."), 3, linked_hive.hivenumber)
+
 
 	// Hive core can repair itself over time
 	if(health < maxhealth && last_healed <= world.time)
@@ -321,6 +326,23 @@
 		log_admin("Hivecore cooldown reset proc aborted due to hivecore cooldown var being set to false before the cooldown has finished!")
 		// Tell admins that this condition is reached so they know what has happened if it fails somehow
 		return
+
+/obj/effect/alien/resin/special/pylon/core/proc/spawn_lesser_drone(mob/xeno_candidate)
+	if(!linked_hive.can_spawn_as_lesser_drone(xeno_candidate))
+		return FALSE
+
+	var/mob/living/carbon/xenomorph/lesser_drone/new_drone = new /mob/living/carbon/xenomorph/lesser_drone(loc, null, linked_hive.hivenumber)
+	xeno_candidate.mind.transfer_to(new_drone, TRUE)
+	new_drone.visible_message(SPAN_XENODANGER("A lesser drone emerges out of [src]!"), SPAN_XENODANGER("You emerge out of [src] and awaken from your slumber. For the Hive!"))
+	playsound(new_drone, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
+	new_drone.generate_name()
+
+	return TRUE
+
+/obj/effect/alien/resin/special/pylon/core/attack_ghost(mob/dead/observer/user)
+	. = ..()
+	if(SSticker.mode.check_xeno_late_join(user))
+		SSticker.mode.attempt_to_join_as_lesser_drone(user)
 
 #undef PYLON_REPAIR_TIME
 #undef PYLON_WEEDS_REGROWTH_TIME

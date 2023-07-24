@@ -16,28 +16,32 @@
 
 /datum/equipment_preset/corpse/load_status(mob/living/carbon/human/new_human)
 	. = ..(new_human)
+
+	// These two values matter because they are checked on death for weed_food
+	new_human.undefibbable = TRUE
+	if(xenovictim)
+		new_human.chestburst = 2
+
 	new_human.death(create_cause_data("existing"), TRUE) //Kills the new mob
 	new_human.apply_damage(100, BRUTE)
 	new_human.apply_damage(100, BRUTE)
 	new_human.apply_damage(100, BRUTE)
 	if(xenovictim)
-		var/datum/internal_organ/O
+		var/datum/internal_organ/organ
 		var/i
 		for(i in list("heart","lungs"))
-			O = new_human.internal_organs_by_name[i]
+			organ = new_human.internal_organs_by_name[i]
 			new_human.internal_organs_by_name -= i
-			new_human.internal_organs -= O
-		new_human.chestburst = 2
+			new_human.internal_organs -= organ
 		new_human.update_burst()
 		//buckle to nest
-		var/obj/structure/bed/nest/N = locate() in get_turf(src)
-		if(N)
-			new_human.buckled = N
-			new_human.setDir(N.dir)
+		var/obj/structure/bed/nest/nest = locate() in get_turf(src)
+		if(nest)
+			new_human.buckled = nest
+			new_human.setDir(nest.dir)
 			new_human.update_canmove()
-			N.buckled_mob = new_human
-			N.afterbuckle(new_human)
-	new_human.undefibbable = TRUE
+			nest.buckled_mob = new_human
+			nest.afterbuckle(new_human)
 	new_human.spawned_corpse = TRUE
 	new_human.updatehealth()
 	new_human.pulse = PULSE_NONE

@@ -111,6 +111,11 @@
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
 	var/turf/T = get_turf(usr)
+	if(istype(T, /turf/open))
+		var/turf/open/floor = T
+		if(!floor.allow_construction)
+			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+			return FALSE
 	var/fail = FALSE
 	if(T.density)
 		fail = TRUE
@@ -195,6 +200,11 @@
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
 	var/turf/T = get_turf(user)
+	if(istype(T, /turf/open))
+		var/turf/open/floor = T
+		if(!floor.allow_construction)
+			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+			return FALSE
 	var/fail = FALSE
 	if(T.density)
 		fail = TRUE
@@ -370,6 +380,11 @@
 		if(fail)
 			to_chat(user, SPAN_WARNING("You can't install \the [src] here, something is in the way."))
 			return
+		if(istype(T, /turf/open))
+			var/turf/open/floor = T
+			if(!floor.allow_construction)
+				to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+				return FALSE
 
 		if(gun_mounted)
 			to_chat(user, "You're securing the M56D into place...")
@@ -891,7 +906,7 @@
 	user.visible_message(SPAN_NOTICE("[user] lets go of \the [src]."),SPAN_NOTICE("You let go of \the [src], letting the gun rest."))
 	user.unfreeze()
 	user.reset_view(null)
-	user.forceMove(get_step(src, reverse_direction(src.dir)))
+	user.Move(get_step(src, reverse_direction(src.dir)))
 	user.setDir(dir) //set the direction of the player to the direction the gun is facing
 	user_old_x = 0 //reset our x
 	user_old_y = 0 //reset our y
@@ -1061,7 +1076,7 @@
 	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return FALSE
-	if(OT.density || !isturf(OT))
+	if(OT.density || !isturf(OT) || !OT.allow_construction)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
 		return FALSE
 	if(rotate_check.density)

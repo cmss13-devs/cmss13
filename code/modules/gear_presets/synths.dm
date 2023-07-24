@@ -352,7 +352,7 @@
 	role_comm_title = "CMB Syn"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/CMB,
-		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB,
+		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB/limited,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/CM_uniform,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
@@ -394,7 +394,7 @@
 	idtype = /obj/item/card/id/pmc
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/pmc,
-		WEAR_L_EAR = /obj/item/device/radio/headset/distress/pmc,
+		WEAR_L_EAR = /obj/item/device/radio/headset/distress/pmc/hvh,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/marine/veteran/pmc,
 		WEAR_ACCESSORY = /obj/item/clothing/accessory/storage/droppouch,
@@ -450,6 +450,59 @@
 	)
 
 	survivor_variant = ENGINEERING_SURVIVOR
+
+	faction = FACTION_SURVIVOR
+	faction_group = list(FACTION_SURVIVOR)
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND)
+
+/datum/equipment_preset/synth/survivor/pmc
+	name = "Survivor - Synthetic - PMC Support Synth"
+
+	idtype = /obj/item/card/id/pmc
+	assignment = JOB_PMC_SYNTH
+	rank = JOB_PMC_SYNTH
+	role_comm_title = "WY Syn"
+
+/datum/equipment_preset/synth/survivor/pmc/load_race(mob/living/carbon/human/new_human)
+		new_human.set_species(SYNTH_GEN_THREE)
+
+/datum/equipment_preset/synth/survivor/pmc/load_gear(mob/living/carbon/human/new_human)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth, WEAR_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/weapon/telebaton, WEAR_IN_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/nailgun, WEAR_IN_JACKET)
+
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
+		new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/command/hvh, WEAR_L_EAR)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/experimental_mesons, WEAR_EYES)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc, WEAR_FACE)
+
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
+
+		new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/white, WEAR_BACK)
+		new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
+		new_human.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
+		new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini, WEAR_IN_BACK)
+		new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/nailgun, WEAR_IN_BACK)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/auto_cpr, WEAR_IN_BACK)
+
+		new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full/dutch, WEAR_WAIST)
+		new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/nailgun/compact, WEAR_J_STORE)
+
+		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical, WEAR_L_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/tool/screwdriver/tactical, WEAR_IN_L_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_L_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/tool/wirecutters/tactical, WEAR_IN_L_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/tool/wrench, WEAR_IN_L_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/stack/cable_coil, WEAR_IN_L_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/stack/cable_coil, WEAR_IN_L_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/device/multitool, WEAR_IN_L_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank, WEAR_IN_L_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire, WEAR_R_STORE)
 
 //*****************************************************************************************************/
 
@@ -532,6 +585,7 @@
 	new_human.h_style = "Bald"
 	new_human.f_style = "Shaved"
 	if(prob(5))
+		new_human.grad_style = "None" //No gradients for Working Joes
 		new_human.h_style = "Shoulder-length Hair" //Added the chance of hair as per Monkeyfist lore accuracy
 	new_human.r_eyes = 0
 	new_human.g_eyes = 0

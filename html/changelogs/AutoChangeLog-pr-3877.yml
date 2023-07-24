@@ -1,0 +1,12 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - code_imp: "Changes /datum/rank to /datum/yautja_rank to be clearer on what it is used for."
+  - rscadd: "Added access defines for Yautja ship."
+  - rscadd: "Added rank identifiers on Yautja equipment presets to help set access levels on their bracer chips."
+  - maptweak: "Changed the doors on the Yautja ship to be their own subtypes, with certain ones being locked to Yautja or certain Yautja Ranks."
+  - code_imp: "Slightly modernised obj/proc/allowed, and also made it check for access on bracer chips if present."
+  - maptweak: "Replaced the unworthy prey section of the Yautja Ship with a secondary armory for plasma rifles, however the door is inaccessible to most Yautja. Intended to make it a bit less obvious admins are spawning them in for the rare times they're used/necessary."
+  - maptweak: "Above armory will automatically open if an Abomination is detected."
+  - maptweak: "Reduces amount of herbs on the Yautja Ship."
+  - maptweak: "Fixes the \"Consoles\" orientation in the Yautja flight deck."

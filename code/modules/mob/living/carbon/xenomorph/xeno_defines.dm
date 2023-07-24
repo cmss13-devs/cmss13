@@ -1,5 +1,3 @@
-#define JOIN_AS_FACEHUGGER_DELAY 3 MINUTES
-
 // Actual caste datum basedef
 /datum/caste_datum
 	var/caste_type = ""
@@ -352,6 +350,9 @@
 	var/hugger_timelock = 15 MINUTES
 	/// How many huggers can the hive support
 	var/playable_hugger_limit = 0
+
+	/// How many lesser drones the hive can support
+	var/lesser_drone_limit = 0
 
 	var/datum/tacmap/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
@@ -901,8 +902,11 @@
 			qdel(S)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
-			if(isfacehugger(xeno))
+			if(isfacehugger(xeno) || islesserdrone(xeno))
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
+				if(xeno.stomach_contents.len)
+					xeno.devour_timer = 0
+					xeno.handle_stomach_contents()
 				qdel(xeno)
 				continue
 			if(xeno.hunter_data.hunted && !isqueen(xeno))
@@ -916,7 +920,7 @@
 				qdel(xeno)
 			stored_larva++
 			continue
-		if(!isfacehugger(xeno))
+		if(xeno.tier >= 1)
 			xenos_count++
 	for(var/i in GLOB.alive_mob_list)
 		var/mob/living/potential_host = i
@@ -1044,8 +1048,12 @@
 		to_chat(user, SPAN_WARNING("\The [GLOB.hive_datum[hivenumber]] cannot support more facehuggers! Limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"))
 		return FALSE
 
-	if(alert(user, "Are you sure you want to become a facehugger?", "Confirmation", "Yes", "No") != "Yes")
+	if(tgui_alert(user, "Are you sure you want to become a facehugger?", "Confirmation", list("Yes", "No")) != "Yes")
 		return FALSE
+
+	if(!user.client)
+		return FALSE
+
 	return TRUE
 
 /datum/hive_status/proc/spawn_as_hugger(mob/dead/observer/user, atom/A)
@@ -1054,6 +1062,53 @@
 	hugger.visible_message(SPAN_XENODANGER("A facehugger suddenly emerges out of \the [A]!"), SPAN_XENODANGER("You emerge out of \the [A] and awaken from your slumber. For the Hive!"))
 	playsound(hugger, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
 	hugger.generate_name()
+
+/datum/hive_status/proc/update_lesser_drone_limit()
+	lesser_drone_limit = Ceiling(totalXenos.len / 3)
+
+/datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user)
+	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
+		return FALSE
+
+	if(jobban_isbanned(user, JOB_XENOMORPH)) // User is jobbanned
+		to_chat(user, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
+		return FALSE
+
+	if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
+		var/time_left = round((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until 30 seconds have passed ([time_left] seconds remaining)."))
+		return FALSE
+
+	if(totalXenos.len <= 0)
+		to_chat(user, SPAN_WARNING("The hive has fallen, you can't join it!"))
+		return FALSE
+
+	if(!living_xeno_queen)
+		to_chat(user, SPAN_WARNING("The selected hive does not have a Queen!"))
+		return FALSE
+
+	if(!living_xeno_queen.ovipositor && !SSticker.mode.is_in_endgame)
+		to_chat(user, SPAN_WARNING("The selected hive does not have a Queen on Ovipositor!"))
+		return FALSE
+
+	update_lesser_drone_limit()
+
+	var/current_lesser_drone_count = 0
+	for(var/mob/mob as anything in totalXenos)
+		if(islesserdrone(mob))
+			current_lesser_drone_count++
+
+	if(lesser_drone_limit <= current_lesser_drone_count)
+		to_chat(user, SPAN_WARNING("[GLOB.hive_datum[hivenumber]] cannot support more lesser drones! Limit: <b>[current_lesser_drone_count]/[lesser_drone_limit]</b>"))
+		return FALSE
+
+	if(tgui_alert(user, "Are you sure you want to become a lesser drone?", "Confirmation", list("Yes", "No")) != "Yes")
+		return FALSE
+
+	if(!user.client)
+		return FALSE
+
+	return TRUE
 
 ///Called by /obj/item/alien_embryo when a host is bursting to determine extra larva per burst
 /datum/hive_status/proc/increase_larva_after_burst()

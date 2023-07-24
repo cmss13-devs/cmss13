@@ -391,5 +391,22 @@
 		// Tell admins that this condition is reached so they know what has happened if it fails somehow
 		return
 
+/obj/effect/alien/resin/special/pylon/core/proc/spawn_lesser_drone(mob/xeno_candidate)
+	if(!linked_hive.can_spawn_as_lesser_drone(xeno_candidate))
+		return FALSE
+
+	var/mob/living/carbon/xenomorph/lesser_drone/new_drone = new /mob/living/carbon/xenomorph/lesser_drone(loc, null, linked_hive.hivenumber)
+	xeno_candidate.mind.transfer_to(new_drone, TRUE)
+	new_drone.visible_message(SPAN_XENODANGER("A lesser drone emerges out of [src]!"), SPAN_XENODANGER("You emerge out of [src] and awaken from your slumber. For the Hive!"))
+	playsound(new_drone, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
+	new_drone.generate_name()
+
+	return TRUE
+
+/obj/effect/alien/resin/special/pylon/core/attack_ghost(mob/dead/observer/user)
+	. = ..()
+	if(SSticker.mode.check_xeno_late_join(user))
+		SSticker.mode.attempt_to_join_as_lesser_drone(user)
+
 #undef PYLON_REPAIR_TIME
 #undef PYLON_WEEDS_REGROWTH_TIME

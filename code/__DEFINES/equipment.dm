@@ -82,7 +82,6 @@
 #define NOTABLEMERGE (1<<13)
 /// Has heat source but isn't 'on fire' and thus can be stored
 #define IGNITING_ITEM (1<<14)
-
 //==========================================================================================
 
 

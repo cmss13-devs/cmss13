@@ -261,14 +261,12 @@
 	if(!length(yautja_emotes))
 		var/list/emotes_to_add = list()
 		for(var/datum/emote/living/carbon/human/yautja/emote as anything in subtypesof(/datum/emote/living/carbon/human/yautja))
-			if(!initial(emote.key))
+			if(!initial(emote.key) || initial(emote.no_panel)
 				continue
 
 			if(!(initial(emote.category) in yautja_categories))
 				yautja_categories += initial(emote.category)
 			emotes_to_add += emote
-		/// I hate this method, but anything else I tried just seemed to make the whole UI blank.
-		emotes_to_add -= /datum/emote/living/carbon/human/yautja/species_sound/loudroar
 		yautja_emotes = emotes_to_add
 
 /datum/yautja_emote_panel/proc/ui_interact(mob/user, datum/tgui/ui)

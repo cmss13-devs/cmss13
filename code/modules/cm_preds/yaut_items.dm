@@ -895,14 +895,14 @@
 	flags_item = ITEM_PREDATOR|DELONDROP|NODROP
 	paygrade = null
 
-/obj/item/card/id/bracer_chip/set_user_data(mob/living/carbon/human/H)
-	if(!istype(H))
+/obj/item/card/id/bracer_chip/set_user_data(mob/living/carbon/human/human_user)
+	if(!istype(human_user))
 		return
 
-	registered_name = H.real_name
-	registered_ref = WEAKREF(H)
-	registered_gid = H.gid
-	blood_type = H.blood_type
+	registered_name = human_user.real_name
+	registered_ref = WEAKREF(human_user)
+	registered_gid = human_user.gid
+	blood_type = human_user.blood_type
 
 	var/list/new_access = list(ACCESS_YAUTJA_SECURE)
 	var/obj/item/clothing/gloves/yautja/hunter/bracer = loc

@@ -25,9 +25,13 @@
 	initialize_post_marine_gear_list()
 	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc()
-	spawn(50)
-		marine_announcement("We've lost contact with the Weyland-Yutani's research facility, [name]. The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
+
 	return ..()
+
+/datum/game_mode/infection/proc/map_announcement()
+	if(SSmapping.configs[GROUND_MAP].infection_announce_text)
+		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
+		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
 
 /datum/game_mode/infection/proc/initialize_post_survivor_list()
 	if(synth_survivor)
@@ -35,7 +39,6 @@
 	for(var/datum/mind/survivor in survivors)
 		if(transform_survivor(survivor) == 1)
 			survivors -= survivor
-	tell_survivor_story()
 
 /datum/game_mode/infection/can_start()
 	initialize_starting_survivor_list()

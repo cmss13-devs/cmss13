@@ -814,7 +814,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
 
 				if(stat & BROKEN)
-					var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+					var/datum/effect_system/spark_spread/spark = new()
 					spark.set_up(3, 1, src)
 					spark.start()
 					to_chat(grabber, SPAN_DANGER("The APC's power currents surge eratically, damaging your chassis!"))

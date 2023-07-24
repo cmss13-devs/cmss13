@@ -2216,8 +2216,10 @@
 
 	damage = 40
 	shell_speed = AMMO_SPEED_TIER_2
+
 /datum/ammo/energy/yautja/pistol/incendiary
 	damage = 10
+
 /datum/ammo/energy/yautja/pistol/incendiary/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
@@ -2233,8 +2235,8 @@
 	icon_state = "shrapnel_plasma"
 	damage_type = BURN
 
-/datum/ammo/bullet/shrapnel/plasma/on_hit_mob(mob/M, obj/item/projectile/P)
-	M.apply_effect(2, WEAKEN)
+/datum/ammo/bullet/shrapnel/plasma/on_hit_mob(mob/hit_mob, obj/item/projectile/hit_projectile)
+	hit_mob.apply_effect(2, WEAKEN)
 
 /datum/ammo/energy/yautja/caster
 	name = "root caster bolt"

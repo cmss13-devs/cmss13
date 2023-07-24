@@ -102,7 +102,7 @@
 	desc = "A suit of armor with light padding. It looks old, yet functional."
 
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
@@ -118,7 +118,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_HEAD|BODY_FLAG_LEGS
 	flags_item = ITEM_PREDATOR
 	armor_melee = CLOTHING_ARMOR_HIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_HIGH
 	armor_energy = CLOTHING_ARMOR_HIGH
 	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
@@ -396,7 +396,7 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	var/ship_to_tele = list("Public" = -1, "Human Ship" = "Human")
+	var/ship_to_tele = list("Yautja Ship" = -1, "Human Ship" = "Human")
 
 	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || is_admin_level(H.z))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))

@@ -163,3 +163,18 @@
 /obj/item/clothing/gloves/marine/veteran/insulated/van_bandolier
 	name = "custom shooting gloves"
 	desc = "Highly protective against injury, temperature, and electric shock. Cool in the summer, warm in the winter, and a secure grip on any surface. You could buy a lot for the price of these, and they're worth every penny."
+
+/obj/item/clothing/gloves/marine/joe
+	name = "Seegson hazardous gloves"
+	desc = "Special Synthetic gloves made for touching and interacting with extremely hazardous materials. Resistant to biohazard liquids, corrosive materials and more. SEEGSON is proudly displayed on the back, along with a biohazard symbol. Tomorrow, Together."
+	icon_state = "working_joe"
+	item_state = "working_joe"
+	siemens_coefficient = 0
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_VERYHIGH
+	armor_rad = CLOTHING_ARMOR_VERYHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	unacidable = TRUE
+	adopts_squad_color = FALSE

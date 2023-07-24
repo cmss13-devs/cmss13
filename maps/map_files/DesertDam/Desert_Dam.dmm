@@ -9738,7 +9738,7 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDq" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/weapon/gun/shotgun/double/with_stock,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDr" = (
@@ -39995,7 +39995,7 @@
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "cxg" = (
-/obj/item/weapon/gun/shotgun/double/with_stock,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "cxh" = (
@@ -60906,6 +60906,12 @@
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
+"goY" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_5"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "gpi" = (
 /obj/structure/prop/dam/large_boulder/boulder1,
 /turf/open/desert/dirt,
@@ -62422,6 +62428,13 @@
 "lNu" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"lNN" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/jungle{
+	bushes_spawn = 0;
+	icon_state = "grass_impenetrable"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "lOM" = (
 /obj/effect/decal/sand_overlay/sand2/corner2,
 /turf/open/asphalt/cement,
@@ -64035,6 +64048,10 @@
 	icon_state = "wood"
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"rEa" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/plating,
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
 "rEH" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
@@ -100035,7 +100052,7 @@ amq
 afI
 ana
 amZ
-ana
+goY
 agL
 afG
 arH
@@ -104942,12 +104959,12 @@ acu
 afG
 afI
 akW
-akW
+lNN
 agL
 amn
 afI
 akW
-akW
+lNN
 agL
 afG
 aqG
@@ -109400,7 +109417,7 @@ alI
 alI
 aoI
 aoN
-apg
+rEa
 apk
 apg
 apy
@@ -110572,7 +110589,7 @@ aoI
 aoN
 apg
 apk
-apg
+rEa
 apy
 afP
 amx

@@ -103,7 +103,7 @@
 	paygrade = "WYC7"
 
 /datum/equipment_preset/wy/manager/division_manager
-	name = "Corporate - new_human - Division Manager"
+	name = "Corporate - H - Division Manager"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_DIVISION_MANAGER
 	rank = JOB_DIVISION_MANAGER

@@ -13859,7 +13859,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aOC" = (
-/obj/item/weapon/gun/shotgun/double/with_stock,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
@@ -14261,7 +14261,7 @@
 /area/ice_colony/surface/bar/bar)
 "aPy" = (
 /obj/structure/surface/table/woodentable,
-/obj/structure/machinery/chem_dispenser/beer,
+/obj/structure/machinery/chem_dispenser/soda/beer,
 /obj/structure/machinery/alarm{
 	dir = 1;
 	pixel_y = -24

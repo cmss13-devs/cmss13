@@ -23,7 +23,7 @@ var/global/datum/authority/branch/role/RoleAuthority
 #define MED_PRIORITY 2
 #define LOW_PRIORITY 3
 
-#define SHIPSIDE_ROLE_WEIGHT 0.5
+#define SHIPSIDE_ROLE_WEIGHT 0.25
 
 var/global/players_preassigned = 0
 
@@ -762,6 +762,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			M = /mob/living/carbon/xenomorph/larva/predalien
 		if(XENO_CASTE_FACEHUGGER)
 			M = /mob/living/carbon/xenomorph/facehugger
+		if(XENO_CASTE_LESSER_DRONE)
+			M = /mob/living/carbon/xenomorph/lesser_drone
 		if(XENO_CASTE_RUNNER)
 			M = /mob/living/carbon/xenomorph/runner
 		if(XENO_CASTE_DRONE)

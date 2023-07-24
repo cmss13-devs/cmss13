@@ -219,49 +219,51 @@
 		toggle(TRUE)
 
 
-/obj/item/tool/weldingtool/attack(mob/M, mob/user)
+/obj/item/tool/weldingtool/attack(mob/target, mob/user)
 
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/limb/S = H.get_limb(user.zone_selected)
+	if(ishuman(target))
+		var/mob/living/carbon/human/human = target
+		var/obj/limb/limb = human.get_limb(user.zone_selected)
 
-		if (!S) return
-		if(!(S.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)) || user.a_intent != INTENT_HELP)
+		if (!limb) return
+		if(!(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)) || user.a_intent != INTENT_HELP)
 			return ..()
 
 		if(user.action_busy)
 			return
 		var/self_fixing = FALSE
 
-		if(H.species.flags & IS_SYNTHETIC && M == user)
+		if(human.species.flags & IS_SYNTHETIC && target == user)
 			self_fixing = TRUE
 
-		if(S.brute_dam && welding)
+		if(limb.brute_dam && welding)
 			remove_fuel(1,user)
 			if(self_fixing)
-				user.visible_message(SPAN_WARNING("\The [user] begins fixing some dents on their [S.display_name]."), \
-					SPAN_WARNING("You begin to carefully patch some dents on your [S.display_name] so as not to void your warranty."))
+				user.visible_message(SPAN_WARNING("\The [user] begins fixing some dents on their [limb.display_name]."), \
+					SPAN_WARNING("You begin to carefully patch some dents on your [limb.display_name] so as not to void your warranty."))
 				if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					return
 
-			S.heal_damage(15, 0, TRUE)
-			H.pain.recalculate_pain()
-			H.UpdateDamageIcon()
-			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [H]'s [S.display_name] with \the [src]."), \
-								SPAN_WARNING("You patch some dents on \the [H]'s [S.display_name] with \the [src]."))
+			limb.heal_damage(15, 0, TRUE)
+			human.pain.recalculate_pain()
+			human.UpdateDamageIcon()
+			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [human]'s [limb.display_name] with \the [src]."), \
+								SPAN_WARNING("You patch some dents on \the [human]'s [limb.display_name] with \the [src]."))
 			return
 		else
 			to_chat(user, SPAN_WARNING("Nothing to fix!"))
 
 	else
+		if(ismob(target))
+			remove_fuel(1)
 		return ..()
 
-/obj/item/tool/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
+/obj/item/tool/weldingtool/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)
 		return
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
+	if (istype(target, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,target) <= 1)
 		if(!welding)
-			O.reagents.trans_to(src, max_fuel)
+			target.reagents.trans_to(src, max_fuel)
 			weld_tick = 0
 			user.visible_message(SPAN_NOTICE("[user] refills [src]."), \
 			SPAN_NOTICE("You refill [src]."))
@@ -270,14 +272,12 @@
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a blowtorch.")
 			log_game("[key_name(user)] triggered a fueltank explosion with a blowtorch.")
 			to_chat(user, SPAN_DANGER("You begin welding on the fueltank, and in a last moment of lucidity realize this might not have been the smartest thing you've ever done."))
-			var/obj/structure/reagent_dispensers/fueltank/tank = O
+			var/obj/structure/reagent_dispensers/fueltank/tank = target
 			tank.explode()
 		return
 	if (welding)
-		remove_fuel(1)
-
-		if(isliving(O))
-			var/mob/living/L = O
+		if(isliving(target))
+			var/mob/living/L = target
 			L.IgniteMob()
 
 
@@ -557,8 +557,6 @@
 		if(attacked_door.locked) //Bolted
 			to_chat(user, SPAN_DANGER("You can't pry open [attacked_door] while it is bolted shut."))
 			return
-		if(!attacked_door.arePowerSystemsOn()) //Opens like normal if unpowered
-			return FALSE
 
 		if(requires_superstrength_pry)
 			if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
@@ -645,7 +643,7 @@
 				resin_door.Open()
 				return
 
-	if(istype(attacked_obj, /turf/open/floor))
+	else if(istype(attacked_obj, /turf/open/floor))
 		var/turf/open/floor/flooring = attacked_obj
 
 		if(crowbar_mode && user.a_intent == INTENT_HELP) //Only pry flooring on help intent
@@ -709,17 +707,22 @@ Welding backpack
 	to_chat(user, SPAN_NOTICE("You cannot figure out how to use \the [W] with [src]."))
 	return
 
-/obj/item/tool/weldpack/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
+/obj/item/tool/weldpack/afterattack(obj/target as obj, mob/user as mob, proximity)
+	if(!proximity) // this replaces and improves the get_dist(src,target) <= 1 checks used previously
 		return
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
-		O.reagents.trans_to(src, max_fuel)
-		to_chat(user, SPAN_NOTICE(" You crack the cap off the top of \the [src] and fill it back up again from the tank."))
-		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
-		return
-	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
-		to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
-		return
+	if(istype(target, /obj/structure/reagent_dispensers))
+		if(!(istypestrict(target, /obj/structure/reagent_dispensers/fueltank)))
+			to_chat(user, SPAN_NOTICE("This must be filled with a fuel tank."))
+			return
+		if(reagents.total_volume < max_fuel)
+			target.reagents.trans_to(src, max_fuel)
+			to_chat(user, SPAN_NOTICE("You crack the cap off the top of \the [src] and fill it back up again from the tank."))
+			playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
+			return
+		if (reagents.total_volume >= max_fuel)
+			to_chat(user, SPAN_NOTICE("[src] is already full!"))
+			return
+	..()
 
 /obj/item/tool/weldpack/get_examine_text(mob/user)
 	. = ..()

@@ -108,28 +108,28 @@
 			sound_to(recipient, 'sound/effects/mhelp.ogg')
 		to_chat(recipient, wrap_message(msg, sender))
 
-	for(var/client/C in GLOB.admins)
+	for(var/client/admin_client in GLOB.admins)
 		var/formatted = msg
 		var/soundfile
 
-		if(!C || C == recipient)
+		if(!admin_client || admin_client == recipient)
 			continue
 
 		// Initial broadcast
-		else if(!staff_only && !recipient && CLIENT_HAS_RIGHTS(C, R_MENTOR))
+		else if(!staff_only && !recipient && CLIENT_HAS_RIGHTS(admin_client, R_MENTOR))
 			formatted = wrap_message(formatted, sender)
 			soundfile = 'sound/effects/mhelp.ogg'
 
-		// Staff eavesdrop
-		else if(CLIENT_HAS_RIGHTS(C, R_MENTOR) && CLIENT_IS_STAFF(C))
+		// Eavesdrop
+		else if(CLIENT_HAS_RIGHTS(admin_client, R_MENTOR) && (!staff_only || CLIENT_IS_STAFF(admin_client)) && admin_client != sender)
 			if(include_keys)
 				formatted = SPAN_MENTORHELP(key_name(sender, TRUE) + " -> " + key_name(recipient, TRUE) + ": ") + msg
 
 		else continue
 
-		if(soundfile && with_sound && (C.prefs?.toggles_sound & SOUND_ADMINHELP))
-			sound_to(C, soundfile)
-		to_chat(C, formatted)
+		if(soundfile && with_sound && (admin_client.prefs?.toggles_sound & SOUND_ADMINHELP))
+			sound_to(admin_client, soundfile)
+		to_chat(admin_client, formatted)
 	return
 
 // Makes the sender input a message and sends it

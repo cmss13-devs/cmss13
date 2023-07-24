@@ -101,6 +101,14 @@
 	group = "Operations"
 	iteration_needed = null
 
+/datum/supply_packs/technuclearbomb
+	name = "Intel Operational Nuke"
+	cost = 0
+	containertype = /obj/structure/machinery/nuclearbomb/tech
+	buyable = 0
+	group = "Operations"
+	iteration_needed = null
+
 /datum/supply_packs/spec_kits
 	name = "Weapons Specialist Kits"
 	contains = list(

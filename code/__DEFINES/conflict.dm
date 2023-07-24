@@ -200,6 +200,7 @@
 
 // human armor
 #define CLOTHING_ARMOR_NONE 0
+#define CLOTHING_ARMOR_VERYLOW 5
 #define CLOTHING_ARMOR_LOW 10
 #define CLOTHING_ARMOR_MEDIUMLOW 15
 #define CLOTHING_ARMOR_MEDIUM 20
@@ -232,6 +233,7 @@
 //OB timings
 #define OB_TRAVEL_TIMING 12 SECONDS
 #define OB_CRASHING_DOWN 1 SECONDS
+#define OB_CLUSTER_DURATION 45 SECONDS
 //=================================================
 
 //Health of various items

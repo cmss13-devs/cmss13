@@ -12,7 +12,7 @@
 #define LANGUAGE_XENOMORPH "Xenomorph"
 #define LANGUAGE_HIVEMIND "Hivemind"
 
-#define LANGUAGE_APOLLO "Apollo Link"
+#define LANGUAGE_APOLLO "APOLLO Link"
 
 #define LANGUAGE_TELEPATH "Telepath Implant"
 

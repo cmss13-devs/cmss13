@@ -11,8 +11,6 @@
 #define OVEREAT_TIME 200
 
 //=================================================
-#define ALIEN_SELECT_AFK_BUFFER 1 // How many minutes that a person can be AFK before not being allowed to be an alien.
-
 #define HEAT_DAMAGE_LEVEL_1 2 //Amount of damage applied when your body temperature just passes the 360.15k safety point
 #define HEAT_DAMAGE_LEVEL_2 4 //Amount of damage applied when your body temperature passes the 400K point
 #define HEAT_DAMAGE_LEVEL_3 8 //Amount of damage applied when your body temperature passes the 1000K point
@@ -223,6 +221,7 @@
 //Mob sizes
 #define MOB_SIZE_SMALL 0
 #define MOB_SIZE_HUMAN 1
+#define MOB_SIZE_XENO_VERY_SMALL 1.5
 #define MOB_SIZE_XENO_SMALL 2
 #define MOB_SIZE_XENO 3
 #define MOB_SIZE_BIG 4

@@ -48,8 +48,15 @@
 			if(!got_evolution_message)
 				evolve_message()
 				got_evolution_message = TRUE
+
 			if(ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)
 				evolution_stored += progress_amount
+				return
+
+			if(evolution_stored > evolution_threshold + progress_amount)
+				evolution_stored -= progress_amount
+				return
+
 		else
 			evolution_stored += progress_amount
 

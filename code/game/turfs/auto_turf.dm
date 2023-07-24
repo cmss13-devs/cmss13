@@ -316,9 +316,6 @@
 	icon = 'icons/turf/floors/auto_shale.dmi'
 	icon_prefix = "shale"
 
-/turf/open/auto_turf/shale/is_weedable()
-	return SEMI_WEEDABLE
-
 /turf/open/auto_turf/shale/get_dirt_type()
 	return DIRT_TYPE_SHALE
 

@@ -28,6 +28,10 @@
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 
+/area/lv522/oob/w_y_vault
+	name = "LV522 - Weyland Secure Vault"
+	icon_state = "blue"
+
 //Landing Zone 1
 
 /area/lv522/landing_zone_1

@@ -106,6 +106,13 @@
 	new /obj/item/tool/wirecutters(src)
 	new /obj/item/device/t_scanner(src)
 
+/obj/item/storage/belt/utility/full/pred
+	name = "\improper Yautja toolbelt"
+	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "utilitybelt_pred"
+	item_state = "utility"
+
 /obj/item/storage/belt/medical
 	name = "\improper M276 pattern medical storage rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is a less common configuration, designed to transport medical supplies and pistol ammunition. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
@@ -735,8 +742,8 @@
 	)
 	cant_hold = list()
 	flap = FALSE
-	var/draw_cooldown = 0
-	var/draw_cooldown_interval = 1 SECONDS
+
+	COOLDOWN_DECLARE(draw_cooldown)
 
 /obj/item/storage/belt/knifepouch/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -751,9 +758,9 @@
 	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
 /obj/item/storage/belt/knifepouch/attack_hand(mob/user, mods)
-	if(draw_cooldown < world.time)
+	if(COOLDOWN_FINISHED(src, draw_cooldown))
 		..()
-		draw_cooldown = world.time + draw_cooldown_interval
+		COOLDOWN_START(src, draw_cooldown, BAYONET_DRAW_DELAY)
 		playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 	else
 		to_chat(user, SPAN_WARNING("You need to wait before drawing another knife!"))

@@ -837,8 +837,8 @@
 	icon_state = "van"
 	bound_height = 64
 	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
+	unslashable = FALSE
+	unacidable = FALSE
 
 /obj/structure/prop/vehicles/crawler
 	name = "colony crawler"

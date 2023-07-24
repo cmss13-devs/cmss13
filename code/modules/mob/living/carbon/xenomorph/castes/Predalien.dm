@@ -139,13 +139,15 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 		if(ishuman(victim) && !isworkingjoe(victim)) //No joe meat, can still gib it though
 			var/mob/living/carbon/human/human_victim = victim
 
+			var/flesh_type = /obj/item/reagent_container/food/snacks/meat
+			var/flesh = "meat"
+			if(issynth(human_victim))
+				flesh_type = /obj/item/reagent_container/food/snacks/meat/synthmeat/synthflesh
+				flesh = "synthetic flesh"
 			for(var/i in 1 to 3)
-				if(issynth(human_victim)) //synth meat instead.
-					var/obj/item/reagent_container/food/snacks/meat/synthmeat/synthflesh/s_meat = new(human_victim.loc)
-					s_meat.name = "[human_victim.name] synthetic flesh"
-				else
-					var/obj/item/reagent_container/food/snacks/meat/h_meat = new(human_victim.loc)
-					h_meat.name = "[human_victim.name] meat"
+				var/obj/item/reagent_container/food/snacks/meat/new_meat = new flesh_type(human_victim.loc)
+				new_meat.name = "[human_victim.name] [flesh]"
+				
 
 		else if (isxeno(victim))
 			var/mob/living/carbon/xenomorph/xeno_victim = victim

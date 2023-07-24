@@ -92,8 +92,8 @@
 	///Multiplier. Increased and decreased through attachments. Multiplies the accuracy/scatter penalty of the projectile when firing onehanded while moving.
 	var/movement_onehanded_acc_penalty_mult = 5 //Multiplier. Increased and decreased through attachments. Multiplies the accuracy/scatter penalty of the projectile when firing onehanded while moving.
 
-	///For regular shots, how long to wait before firing again.
-	var/fire_delay = 0
+	///For regular shots, how long to wait before firing again. Use modify_fire_delay and set_fire_delay instead of modifying this on the fly
+	VAR_PROTECTED/fire_delay = 0
 	///When it was last fired, related to world.time.
 	var/last_fired = 0
 
@@ -112,10 +112,10 @@
 	var/delay_style = WEAPON_DELAY_SCATTER_AND_ACCURACY
 
 	//Burst fire.
-	///How many shots can the weapon shoot in burst? Anything less than 2 and you cannot toggle burst.
-	var/burst_amount = 1
-	///The delay in between shots. Lower = less delay = faster.
-	var/burst_delay = 1
+	///How many shots can the weapon shoot in burst? Anything less than 2 and you cannot toggle burst. Use modify_burst_amount and set_burst_amount instead of modifying this
+	VAR_PROTECTED/burst_amount = 1
+	///The delay in between shots. Lower = less delay = faster. Use modify_burst_delay and set_burst_delay instead of modifying this
+	VAR_PROTECTED/burst_delay = 1
 	///When burst-firing, this number is extra time before the weapon can fire again. Depends on number of rounds fired.
 	var/extra_delay = 0
 	///When PB burst firing and handing off to /fire after a target moves out of range, this is how many bullets have been fired.
@@ -309,12 +309,12 @@
 * This makes reading each gun's values MUCH easier.
 */
 /obj/item/weapon/gun/proc/set_gun_config_values()
-	fire_delay = FIRE_DELAY_TIER_5
+	set_fire_delay(FIRE_DELAY_TIER_5)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
-	burst_amount = BURST_AMOUNT_TIER_1
+	set_burst_amount(BURST_AMOUNT_TIER_5)
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	damage_falloff_mult = DAMAGE_FALLOFF_TIER_10
@@ -766,7 +766,6 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/unwield(mob/user)
 	. = ..()
-	//REMOVE_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
 	if(.)
 		slowdown = initial(slowdown)
 
@@ -1748,12 +1747,33 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	set_target(null)
 	set_auto_firing(FALSE)
 
-/// setter for fire_delay
+/// adder for fire_delay
 /obj/item/weapon/gun/proc/modify_fire_delay(value)
 	fire_delay += value
 	SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay)
 
+/// setter for fire_delay
+/obj/item/weapon/gun/proc/set_fire_delay(value)
+	fire_delay = value
+	SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay)
+
+/// getter for fire_delay
+/obj/item/weapon/gun/proc/get_fire_delay(value)
+	return fire_delay
+
 /// setter for burst_amount
+/obj/item/weapon/gun/proc/set_burst_amount(value, mob/user)
+	burst_amount = value
+	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED, burst_amount)
+
+	if(burst_amount < BURST_AMOUNT_TIER_2)
+		if(GUN_FIREMODE_BURSTFIRE in gun_firemode_list)
+			remove_firemode(GUN_FIREMODE_BURSTFIRE, user)
+	else
+		if(!(GUN_FIREMODE_BURSTFIRE in gun_firemode_list))
+			add_firemode(GUN_FIREMODE_BURSTFIRE, user)
+
+/// adder for burst_amount
 /obj/item/weapon/gun/proc/modify_burst_amount(value, mob/user)
 	burst_amount += value
 	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED, burst_amount)
@@ -1765,9 +1785,14 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(!(GUN_FIREMODE_BURSTFIRE in gun_firemode_list))
 			add_firemode(GUN_FIREMODE_BURSTFIRE, user)
 
-/// Setter for burst_delay
+/// Adder for burst_delay
 /obj/item/weapon/gun/proc/modify_burst_delay(value, mob/user)
 	burst_delay += value
+	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOT_DELAY_MODIFIED, burst_delay)
+
+/// Setter for burst_delay
+/obj/item/weapon/gun/proc/set_burst_delay(value, mob/user)
+	burst_delay = value
 	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOT_DELAY_MODIFIED, burst_delay)
 
 ///Set the target and take care of hard delete

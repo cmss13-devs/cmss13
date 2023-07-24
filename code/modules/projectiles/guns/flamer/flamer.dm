@@ -51,7 +51,7 @@
 
 /obj/item/weapon/gun/flamer/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_4 * 5
+	set_fire_delay(FIRE_DELAY_TIER_4 * 5)
 
 /obj/item/weapon/gun/flamer/unique_action(mob/user)
 	toggle_gun_safety()
@@ -367,6 +367,10 @@
 	desc = "A prototyped model of the M240-T incinerator unit, it was discontinued after its automatic mode was deemed too expensive to deploy in the field."
 	start_semiauto = FALSE
 	start_automatic = TRUE
+
+/obj/item/weapon/gun/flamer/M240T/auto/set_gun_config_values()
+	. = ..()
+	set_fire_delay(FIRE_DELAY_TIER_3)
 
 GLOBAL_LIST_EMPTY(flamer_particles)
 /particles/flamer_fire

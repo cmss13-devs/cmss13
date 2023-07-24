@@ -64,7 +64,7 @@
 	SIGNAL_HANDLER
 	auto_fire_shot_delay = _auto_fire_shot_delay
 
-///Setter for the number of shot in a burst
+///Setter for the number of shots in a burst
 /datum/component/automatedfire/autofire/proc/modify_burst_shots_to_fire(datum/source, _burst_shots_to_fire)
 	SIGNAL_HANDLER
 	burst_shots_to_fire = _burst_shots_to_fire

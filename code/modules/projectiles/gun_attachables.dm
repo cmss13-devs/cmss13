@@ -854,7 +854,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/scope/proc/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
 	if(G.zoom)
 		G.accuracy_mult += accuracy_scoped_buff
-		G.fire_delay += delay_scoped_nerf
+		G.modify_fire_delay(delay_scoped_nerf)
 		G.damage_falloff_mult += damage_falloff_scoped_buff
 		using_scope = TRUE
 		RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, PROC_REF(remove_scoped_buff))
@@ -864,7 +864,7 @@ Defined in conflicts.dm of the #defines folder.
 	UnregisterSignal(user, COMSIG_LIVING_ZOOM_OUT)
 	using_scope = FALSE
 	G.accuracy_mult -= accuracy_scoped_buff
-	G.fire_delay -= delay_scoped_nerf
+	G.modify_fire_delay(-delay_scoped_nerf)
 	G.damage_falloff_mult -= damage_falloff_scoped_buff
 
 /obj/item/attachable/scope/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
@@ -2457,7 +2457,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/flamer_nozzle/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
 	. = ..()
 
-	if(world.time < gun.last_fired + gun.fire_delay)
+	if(world.time < gun.last_fired + gun.get_fire_delay())
 		return
 
 	if((gun.flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(gun.flags_item & WIELDED))

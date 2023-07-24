@@ -8135,7 +8135,7 @@
 "ayZ" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -33399,12 +33399,9 @@
 /area/almayer/hallways/starboard_umbilical)
 "eBO" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = 11
-	},
+/obj/structure/bed,
 /turf/open/floor/almayer{
-	dir = 5;
+	dir = 4;
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
@@ -35807,18 +35804,26 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "fGu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research,
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "researchlockdownext_door";
-	name = "\improper Research Doorway Shutter"
-	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door_control{
+	dir = 1;
+	id = "researchlockdownext";
+	name = "Window Shutters";
+	pixel_x = -26;
+	pixel_y = 6;
+	req_access_txt = "28"
+	},
+/obj/structure/machinery/door_control{
+	dir = 1;
+	id = "researchlockdownext_door";
+	name = "Door Shutters";
+	pixel_x = -26;
+	pixel_y = 1;
+	req_access_txt = "28"
 	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor4"
+	dir = 8;
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
 "fGN" = (
@@ -39700,9 +39705,16 @@
 	},
 /area/almayer/command/cic)
 "hrn" = (
-/obj/structure/bed,
+/obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
+	name = "\improper Research Reception Laboratory"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 8;
+	id = "Containment Breach";
+	name = "\improper Secure Airlock"
+	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green"
+	icon_state = "test_floor4"
 	},
 /area/almayer/medical/medical_science)
 "hrF" = (
@@ -40623,9 +40635,17 @@
 /area/almayer/hallways/port_hallway)
 "hPe" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "researchlockdownext_door";
+	name = "\improper Research Doorway Shutter"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Containment Breach";
+	name = "\improper Secure Airlock"
+	},
 /turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_side"
+	icon_state = "test_floor4"
 	},
 /area/almayer/medical/medical_science)
 "hPg" = (
@@ -49806,16 +49826,16 @@
 /area/almayer/medical/operating_room_two)
 "lON" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door_control{
-	dir = 1;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "researchlockdownext_door";
-	name = "Door Shutters";
-	pixel_x = 29;
-	req_access_txt = "28"
+	name = "\improper Research Doorway Shutter"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Containment Breach";
+	name = "\improper Secure Airlock"
 	},
 /turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side"
+	icon_state = "test_floor4"
 	},
 /area/almayer/medical/medical_science)
 "lPB" = (
@@ -51351,9 +51371,16 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "mFq" = (
-/obj/structure/machinery/camera/autoname/almayer,
+/obj/structure/machinery/door_control{
+	dir = 1;
+	id = "researchlockdownext_door";
+	name = "Door Shutters";
+	pixel_y = 29;
+	req_access_txt = "28"
+	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green"
+	dir = 1;
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
 "mFD" = (
@@ -52437,20 +52464,6 @@
 	dir = 4
 	},
 /obj/structure/machinery/iv_drip,
-/obj/structure/machinery/door_control{
-	dir = 1;
-	id = "researchlockdownext_door";
-	name = "Door Shutters";
-	pixel_y = -28;
-	req_access_txt = "28"
-	},
-/obj/structure/machinery/door_control{
-	dir = 1;
-	id = "researchlockdownext";
-	name = "Window Shutters";
-	pixel_y = -23;
-	req_access_txt = "28"
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -53444,18 +53457,8 @@
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/main_office)
 "nxF" = (
-/obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
-	dir = 1;
-	name = "\improper Research Reception Laboratory"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/medical_science)
 "nxK" = (
 /obj/structure/sign/safety/high_voltage{
@@ -55003,6 +55006,10 @@
 	},
 /obj/structure/disposalpipe/trunk,
 /obj/structure/machinery/disposal,
+/obj/structure/sink{
+	pixel_x = 1;
+	pixel_y = -2
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side"
@@ -58653,11 +58660,13 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
+/obj/structure/bed,
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile"
+	dir = 4;
+	icon_state = "sterile_green_corner"
 	},
 /area/almayer/medical/medical_science)
 "pRy" = (
@@ -71254,17 +71263,15 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "vqW" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "researchlockdownext_door";
-	name = "\improper Research Doorway Shutter"
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor4"
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
 "vqZ" = (
@@ -109518,14 +109525,14 @@ kBP
 kBP
 jsx
 tjn
-hrn
+aCC
 kXw
 pQP
 qAT
 vOy
+vOy
 mFq
-kXw
-pxo
+vqW
 ajl
 ybf
 aii
@@ -109924,11 +109931,11 @@ wWR
 ycj
 vkp
 tjn
-hrn
+aCC
 kXw
 hVf
 dVu
-vqW
+dVu
 lON
 dVu
 oDR
@@ -110131,7 +110138,7 @@ kBo
 hec
 naR
 vOy
-vOy
+hrn
 vOy
 aRd
 aIo

@@ -285,21 +285,6 @@
 	QDEL_NULL(embedded_id)
 	return ..()
 
-/obj/item/clothing/gloves/yautja/hunter/process()
-	if(!ishuman(loc))
-		STOP_PROCESSING(SSobj, src)
-		return
-
-	var/mob/living/carbon/human/human = loc
-
-	//Non-Yautja have a chance to get stunned with each power drain
-	if((!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled) && prob(15))
-		if(cloaked)
-			decloak(human, TRUE, DECLOAK_SPECIES)
-		shock_user(human)
-
-	return ..()
-
 /obj/item/clothing/gloves/yautja/hunter/dropped(mob/user)
 	move_chip_to_bracer()
 	if(cloaked)

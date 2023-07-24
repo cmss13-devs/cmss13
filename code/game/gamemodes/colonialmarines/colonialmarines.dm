@@ -377,14 +377,14 @@
 			var/list/living_player_list = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
 			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
 				var/headcount = count_per_faction()
-				var/living = headcount[5]
-				if ((headcount[2] / living) > MAJORITY) // headcount[2] = Weyland-Yutani
+				var/living = headcount["total_headcount"]
+				if ((headcount["WY_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/LastManStanding_WY.ogg')
-				else if ((headcount[3] / living) > MAJORITY) // headcount[3] = UPP
+				else if ((headcount["UPP_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/LastManStanding_UPP.ogg')
-				else if ((headcount[4] / living) > MAJORITY) // headcount[4] = CLF
+				else if ((headcount["CLF_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/LastManStanding_CLF.ogg')
-				else if ((headcount[1] / living) > MAJORITY) // headcount[1] = Marines
+				else if ((headcount["marine_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
 			else
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')

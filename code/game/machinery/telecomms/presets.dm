@@ -295,6 +295,9 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/handle_xeno_acquisition(turf/weeded_turf)
 	SIGNAL_HANDLER
 
+	if(corrupted)
+		return
+
 	if(!weeded_turf.weeds)
 		return
 

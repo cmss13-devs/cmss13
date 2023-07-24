@@ -8,7 +8,6 @@
 /datum/game_mode
 	var/list/datum/emergency_call/all_calls = list() //initialized at round start and stores the datums.
 	var/datum/emergency_call/picked_calls[] = list() //Which distress calls are currently active
-	round_time_lobby = world.time
 
 /datum/game_mode/proc/ares_online()
 	var/name = "ARES Online"

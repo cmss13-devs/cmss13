@@ -261,7 +261,7 @@
 	if(!length(yautja_emotes))
 		var/list/emotes_to_add = list()
 		for(var/datum/emote/living/carbon/human/yautja/emote as anything in subtypesof(/datum/emote/living/carbon/human/yautja))
-			if(!initial(emote.key) || initial(emote.no_panel)
+			if(!initial(emote.key) || initial(emote.no_panel))
 				continue
 
 			if(!(initial(emote.category) in yautja_categories))

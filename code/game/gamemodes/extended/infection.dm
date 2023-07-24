@@ -34,6 +34,9 @@
 	if(SSmapping.configs[GROUND_MAP].infection_announce_text)
 		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].infection_announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
+	else if(SSmapping.configs[GROUND_MAP].announce_text) //if we missed a infection text for above, or just don't need a special one, we just use default announcement
+		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
+		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]"))
 
 /datum/game_mode/infection/proc/initialize_post_survivor_list()
 	if(synth_survivor)

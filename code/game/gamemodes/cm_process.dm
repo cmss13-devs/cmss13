@@ -272,7 +272,7 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 			num_headcount++
 			continue
 		num_headcount++
-	return list(num_marines,num_WY,num_UPP,num_CLF,num_headcount)
+	return list("marine_headcount" = num_marines,"WY_headcount" = num_WY,"UPP_headcount" = num_UPP,"CLF_headcount" = num_CLF,"total_headcount" = num_headcount)
 
 /*
 #undef QUEEN_DEATH_COUNTDOWN

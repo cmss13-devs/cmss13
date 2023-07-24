@@ -1,9 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - rscadd: "Added sounds for inserting and removing knifes to the knife webbing"
-  - rscadd: "Added draw delay for knives to the knife webbing"
-  - rscadd: "Allowed using quickdraw with the knife webbing"
-  - rscadd: "Allowed knife webbing to be alt-clicked to draw from it"
-  - rscadd: "Knife webbing is now spawned full"
-  - code_imp: "Standardized knife draw delay in a define"

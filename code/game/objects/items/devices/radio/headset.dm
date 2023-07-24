@@ -439,6 +439,12 @@
 	icon_state = "med_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/med)
 
+/obj/item/device/radio/headset/almayer/research
+	name = "researcher radio headset"
+	desc = "A headset used by medbay's skilled researchers. Channels are as follows: :m - medical, :t - intel."
+	icon_state = "med_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/medres)
+
 /obj/item/device/radio/headset/almayer/ct
 	name = "supply radio headset"
 	desc = "Used by the lowly Cargo Technicians of the USCM, light weight and portable. To access the supply channel, use :u."

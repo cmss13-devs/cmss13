@@ -1,0 +1,6 @@
+author: "MarpleJones, ihatethisengine2"
+delete-after: True
+changes:
+  - rscadd: "Added new sprites for the Eggsac Carrier. Includes an additional death sound for the eggsac bursting."
+  - rscadd: "Added a hive announcement for when a Carrier dies with eggs."
+  - bugfix: "Carrier egg drop chance upon death now works as intended."

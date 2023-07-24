@@ -327,3 +327,85 @@
   silencer_pl:
   - qol: Default paper and desc_lore viewing windows are now larger to match the expected
       content in them better.
+2023-07-21:
+  Awantje:
+  - code_imp: Medicomp surgery tools no longer care about what zone you target.
+  Ben10083:
+  - rscadd: Facehuggers now bypass time of death checks when being considered for
+      larva.
+  - code_imp: new variable for observers to handle bypass of time of death checks
+  Drathek:
+  - code_imp: Removed extra CI testing for override maps
+  Morrow:
+  - bugfix: Colonial Marshal ERT now uses their own faction
+  - bugfix: Anchorpoint marines now use the proper define for USCM
+  - rscadd: Added sounds for inserting and removing knifes to the knife webbing
+  - rscadd: Added draw delay for knives to the knife webbing
+  - rscadd: Allowed using quickdraw with the knife webbing
+  - rscadd: Allowed knife webbing to be alt-clicked to draw from it
+  - rscadd: Knife webbing is now spawned full
+  - code_imp: Standardized knife draw delay in a define
+  - balance: Modifies INTERRUPT_NO_NEEDHAND flag to require you hold the item at least
+      in one hand.
+  - balance: Changes splint back to using INTERRUPT_NO_NEEDHAND
+  - balance: Removes large pouches as buyable from all squad roles other than SL
+  - balance: Removes medkit, medical (the base ones, not first aid), and syringe pouches
+      from squad prep room vendors
+  - balance: Replaces the EZ-injector first aid pouch with the alternate tricord/bandage/splint/ointment
+      version in the squad prep room vendors
+  QuickLode:
+  - bugfix: limits the Survivor CMB Synthetic comms
+  harryob:
+  - admin: you can no longer touch bad vars
+  realforest2001:
+  - bugfix: Fixes PMC survivor synth spawning with marine comms, again.
+  - bugfix: Reduces yautja armor bullet resistance by 5, and puts that 5 extra onto
+      the heavy armor.
+  - rscadd: Added donator kit boxes that hold a donator's special gear. They can be
+      destroyed with a right-click while on the ground, and are locked to the donator.
+  - code_imp: Tidied up typepaths for many donator items to make it clearer what or
+      who they are for.
+  - code_imp: Removed the requirement for donators to match their character name to
+      our config file.
+2023-07-22:
+  Ben10083:
+  - qol: Ghosts now informed when a non-nested host is about to chestburst
+  ClairionCM:
+  - rscadd: Chem ERT objectives now mention that they cant deploy without explicit
+      permission.
+  Drathek:
+  - bugfix: 'Fixed the prompt when nested to ghost: Now uses a TGUI prompt and sets
+      larva queue time.'
+  Morrow:
+  - balance: Decreased blood bag IV insertion time from 3 to 1 second
+  Waseemq1235:
+  - code_imp: Adds unrestricted_deployment var to tents. Bypasses groundside checks.
+2023-07-23:
+  Anuv:
+  - rscadd: Added a headset to Researchers with the intel channel included
+  Ben10083:
+  - maptweak: AI Core APC now uses a hyper capacity cell
+  Drathek:
+  - bugfix: Fix xeno tacmap staying open when it should be unavailable
+  - code_imp: Bump rust_g to 2.1.0 and bump all github testing ubuntu versions to
+      latest.
+  Khadd:
+  - bugfix: blowtorch no longer loses fuel on clicks that produce no action
+  - code_imp: replaced 1-letter vars
+  QuickLode:
+  - bugfix: Surgical graft now fits in surgical trays and vests.
+  blackdragonTOW:
+  - rscadd: 'Added new CAS Missile: BLU-200 Dragons Breath'
+  ihatethisengine:
+  - bugfix: vendors icon_state resets after vending as intended.
+  nauticall:
+  - imageadd: Resprited blood bags to look nicer and use proper a proper overlay/underlay
+      system. Their types are also now distinguishable at a glance.
+  - code_imp: Reworked the way blood bag sprites work behind the scenes to use the
+      overlay/underlay system.
+2023-07-24:
+  JackieEstegado:
+  - maptweak: Made LV-624's "Fully-locked" Research nightmare insert no longer have
+      indestructible blast doors.
+  Morrow:
+  - bugfix: Fixes wood window numbering

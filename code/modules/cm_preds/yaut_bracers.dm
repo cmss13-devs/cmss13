@@ -101,15 +101,6 @@
 	var/perc = (charge / charge_max * 100)
 	human.update_power_display(perc)
 
-	//Non-Yautja have a chance to get stunned with each power drain
-	if(!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled)
-		if(prob(15))
-			if(cloaked)
-				decloak(human, TRUE, DECLOAK_SPECIES)
-				cloak_timer = world.time + 5 SECONDS
-			shock_user(human)
-			return FALSE
-
 	return TRUE
 
 /obj/item/clothing/gloves/yautja/proc/shock_user(mob/living/carbon/human/M)
@@ -283,10 +274,11 @@
 	var/mob/living/carbon/human/human = loc
 
 	//Non-Yautja have a chance to get stunned with each power drain
-	if(cloaked && !isyautja(human))
-		if(prob(15))
+	if((!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled) && prob(15))
+		if(cloaked)
 			decloak(human, TRUE, DECLOAK_SPECIES)
-			shock_user(human)
+		shock_user(human)
+
 	return ..()
 
 /obj/item/clothing/gloves/yautja/hunter/dropped(mob/user)

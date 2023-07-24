@@ -342,6 +342,8 @@
 
 	var/list/banished_ckeys = list()
 
+	var/list/deflectors = list()
+
 	var/hivecore_cooldown = FALSE
 
 	var/need_round_end_check = FALSE
@@ -1249,6 +1251,64 @@
 			return TRUE
 
 	return ..()
+
+/datum/hive_status/proc/on_stance_change(faction)
+	if(!ignore_queen_check && !living_xeno_queen)
+		return
+	if(allies[faction])
+		xeno_announcement(SPAN_XENOANNOUNCE("Your Queen set up alliance with [faction]!"), hivenumber, XENO_GENERAL_ANNOUNCE)
+	else
+		xeno_announcement(SPAN_XENOANNOUNCE("Your Queen broke alliance with [faction]!"), hivenumber, XENO_GENERAL_ANNOUNCE)
+
+	for(var/hivenumber in GLOB.hive_datum)
+		target_hive = GLOB.hive_datum[hivenumber]
+		if(hive.name != faction)
+			continue
+		if(!hive.ignore_queen_check && !hive.living_xeno_queen)
+			break
+		if(allies[faction])
+			xeno_announcement(SPAN_XENOANNOUNCE("You sense that [faction] Queen set up alliance with us!"), target_hive, XENO_GENERAL_ANNOUNCE)
+		else
+			xeno_announcement(SPAN_XENOANNOUNCE("You sense that [faction] Queen broke alliance with us!"), target_hive, XENO_GENERAL_ANNOUNCE)
+
+	for(var/mob/living/carbon/xenomorph/xeno in totalXenos)
+		if(!xeno.iff_tag)
+			continue
+		if(!faction in xeno.iff_tag.faction_groups)
+			continue
+		if(xeno in deflectors)
+			continue
+		if(alert(xeno, "Your Queen broke alliance with [faction]. Your IFF tag begins to suppress your connection with the hive. Do you wish to remove the tag and stay with Queen or become Tamed? You have 15 seconds to decide", "Choose", "Stay with Queen", "Become Tamed") == "Become Tamed")
+			if(!xeno.iff_tag)
+				to_chat(xeno, SPAN_XENOWARNING("It's too late now. Your IFF tag is broken and your service to Queen continues."))
+				continue
+			deflectors += xeno
+			continue
+		to_chat(xeno, SPAN_XENOWARNING("You decided to stay with Queen."))
+
+	addtimer(CALLBACK(src, PROC_REF(handle_deflectors), 15 SECONDS))
+
+/datum/hive_status/proc/handle_deflectors()
+	for(var/mob/living/carbon/xenomorph/xeno in totalXenos)
+		if(!xeno)
+			continue
+		if(xeno.status == DEAD)
+			continue
+		if(!xeno.iff_tag)
+			continue
+		if(xeno in deflectors)
+			xeno.set_hive_and_update(XENO_HIVE_TAMED)
+			to_chat(xeno, SPAN_XENOWARNING("You lose connection with your hive. Now there is no Queen, only masters."))
+			continue
+
+		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
+		xeno.iff_tag = null
+
+	if(deflectors.len < 1)
+		return
+
+	xeno_announcement(SPAN_XENOANNOUNCE("You sense that [deflectors.Join(", ")] deflected from your hive and became Tamed! Traitors!"), src, XENO_GENERAL_ANNOUNCE)
+	deflectors = list()
 
 //Xeno Resin Mark Shit, the very best place for it too :0)
 //Defines at the bottom of this list here will show up at the top in the mark menu

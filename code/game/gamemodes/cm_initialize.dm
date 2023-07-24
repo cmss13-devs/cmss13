@@ -548,6 +548,38 @@ Additional game mode variables.
 
 	return TRUE
 
+/datum/game_mode/proc/attempt_to_join_as_lesser_drone(mob/xeno_candidate)
+	var/list/active_hives = list()
+	var/datum/hive_status/hive
+	var/last_active_hive = 0
+	for(var/hivenumber in GLOB.hive_datum)
+		hive = GLOB.hive_datum[hivenumber]
+		if(hive.totalXenos.len <= 0)
+			continue
+		active_hives[hive.name] = hive.hivenumber
+		last_active_hive = hive.hivenumber
+
+	if(active_hives.len <= 0)
+		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Hives active at this point for you to join."))
+		return FALSE
+
+	if(active_hives.len > 1)
+		var/hive_picked = tgui_input_list(xeno_candidate, "Select which Hive to attempt joining.", "Hive Choice", active_hives, theme="hive_status")
+		if(!hive_picked)
+			to_chat(xeno_candidate, SPAN_ALERT("Hive choice error. Aborting."))
+			return
+		hive = GLOB.hive_datum[active_hives[hive_picked]]
+	else
+		hive = GLOB.hive_datum[last_active_hive]
+
+	if(!hive.hive_location)
+		to_chat(xeno_candidate, SPAN_WARNING("The selected hive does not have a hive core to spawn from!"))
+		return
+
+	hive.hive_location.spawn_lesser_drone(xeno_candidate)
+
+	return TRUE
+
 /datum/game_mode/proc/transfer_xeno(xeno_candidate, mob/living/new_xeno)
 	if(!xeno_candidate || !isxeno(new_xeno) || QDELETED(new_xeno))
 		return FALSE

@@ -38,6 +38,11 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	name = "Facehugger",
 	key = /mob/living/carbon/xenomorph/facehugger,
 	color = "purple"
+	),
+	list(
+	name = "Lesser Drone",
+	key = /mob/living/carbon/xenomorph/lesser_drone,
+	color = "purple"
 	)
 	),
 

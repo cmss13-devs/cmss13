@@ -377,6 +377,11 @@
 	stamina_damage = 25
 	shrapnel_chance = 0
 
+// Reskinned rubber bullet used for the ES-4 CL pistol.
+/datum/ammo/bullet/pistol/rubber/stun
+	name = "stun pistol bullet"
+	sound_override = null
+
 // Used by M1911, Deagle and KT-42
 /datum/ammo/bullet/pistol/heavy
 	name = "heavy pistol bullet"
@@ -2212,11 +2217,26 @@
 	damage = 40
 	shell_speed = AMMO_SPEED_TIER_2
 
-/datum/ammo/energy/yautja/pistol/set_bullet_traits()
+/datum/ammo/energy/yautja/pistol/incendiary
+	damage = 10
+
+/datum/ammo/energy/yautja/pistol/incendiary/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
+
+/datum/ammo/bullet/shrapnel/plasma
+	name = "plasma wave"
+	shrapnel_chance = 0
+	penetration = ARMOR_PENETRATION_TIER_10
+	accuracy = HIT_ACCURACY_TIER_MAX
+	damage = 15
+	icon_state = "shrapnel_plasma"
+	damage_type = BURN
+
+/datum/ammo/bullet/shrapnel/plasma/on_hit_mob(mob/hit_mob, obj/item/projectile/hit_projectile)
+	hit_mob.apply_effect(2, WEAKEN)
 
 /datum/ammo/energy/yautja/caster
 	name = "root caster bolt"
@@ -2803,8 +2823,8 @@
 	damage_type = BRUTE
 	bonus_projectiles_type = /datum/ammo/xeno/bone_chips/spread
 
-	damage = 5
-	max_range = 5
+	damage = 8
+	max_range = 6
 	accuracy = HIT_ACCURACY_TIER_8
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_7
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_7
@@ -2819,8 +2839,8 @@
 			return
 	if(ishuman_strict(M) || isxeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-		if(M.slowed < 8)
-			M.apply_effect(8, SLOW)
+		if(M.slowed < 3)
+			M.apply_effect(3, SLOW)
 
 /datum/ammo/xeno/bone_chips/spread
 	name = "small bone chips"

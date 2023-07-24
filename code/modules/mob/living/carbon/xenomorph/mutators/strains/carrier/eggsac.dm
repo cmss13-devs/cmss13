@@ -36,6 +36,8 @@
 		playsound(carrier.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
 	carrier.huggers_cur = 0
 	carrier.huggers_max = 0
+	carrier.update_hugger_overlays()
+	carrier.update_eggsac_overlays()
 	carrier.eggs_max = 12
 	carrier.egg_planting_range = 2
 	return TRUE
@@ -74,3 +76,4 @@
 				egg_generation_progress = 0
 				xeno.eggs_cur++
 				to_chat(xeno, SPAN_XENONOTICE("You generate a egg. Now sheltering: [xeno.eggs_cur] / [xeno.eggs_max]."))
+				xeno.update_icons()

@@ -180,16 +180,16 @@
 				limb.max_damage = 35
 		limb.time_to_knit = -1
 
-/datum/species/yautja/handle_post_spawn(mob/living/carbon/human/H)
-	GLOB.alive_human_list -= H
-	H.universal_understand = 1
+/datum/species/yautja/handle_post_spawn(mob/living/carbon/human/hunter)
+	GLOB.alive_human_list -= hunter
+	hunter.universal_understand = 1
 
-	H.blood_type = "Y*"
-	H.h_style = "Standard"
+	hunter.blood_type = "Y*"
+	hunter.h_style = "Standard"
 	#ifndef UNIT_TESTS // Since this is a hard ref, we shouldn't confuse create_and_destroy
-	GLOB.yautja_mob_list += H
+	GLOB.yautja_mob_list += hunter
 	#endif
-	for(var/obj/limb/limb in H.limbs)
+	for(var/obj/limb/limb in hunter.limbs)
 		switch(limb.name)
 			if("groin","chest")
 				limb.min_broken_damage = 145
@@ -208,7 +208,8 @@
 				limb.max_damage = 150
 				limb.time_to_knit = 600 // 1 minute to self heal bone break, time is in tenths of a second
 
-	H.set_languages(list(LANGUAGE_YAUTJA))
+	hunter.set_languages(list(LANGUAGE_YAUTJA))
+	give_action(hunter, /datum/action/yautja_emote_panel)
 	return ..()
 
 /datum/species/yautja/get_hairstyle(style)
@@ -220,3 +221,107 @@
 
 /datum/species/yautja/handle_paygrades()
 	return ""
+
+/// Open the Yautja emote panel, which allows them to use their emotes easier.
+/datum/species/yautja/open_emote_panel()
+	var/datum/yautja_emote_panel/ui = new(usr)
+	ui.ui_interact(usr)
+
+/datum/action/yautja_emote_panel
+	name = "Open Emote Panel"
+	action_icon_state = "looc_toggle"
+
+/datum/action/yautja_emote_panel/can_use_action()
+	. = ..()
+	if(!.)
+		return FALSE
+
+	if(!isyautja(owner))
+		return FALSE
+
+	return TRUE
+
+/datum/action/yautja_emote_panel/action_activate()
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/human_owner = owner
+	var/datum/species/yautja/yautja_species = human_owner.species
+	yautja_species.open_emote_panel()
+
+/datum/yautja_emote_panel
+	/// Static dict ("category" : (emotes)) of every yautja emote typepath
+	var/static/list/yautja_emotes
+	/// Static list of categories
+	var/static/list/yautja_categories = list()
+	/// Panel allows you to spam, so a manual CD is added here
+	COOLDOWN_DECLARE(panel_emote_cooldown)
+
+/datum/yautja_emote_panel/New()
+	if(!length(yautja_emotes))
+		var/list/emotes_to_add = list()
+		for(var/datum/emote/living/carbon/human/yautja/emote as anything in subtypesof(/datum/emote/living/carbon/human/yautja))
+			if(!initial(emote.key))
+				continue
+
+			if(!(initial(emote.category) in yautja_categories))
+				yautja_categories += initial(emote.category)
+			emotes_to_add += emote
+		/// I hate this method, but anything else I tried just seemed to make the whole UI blank.
+		emotes_to_add -= /datum/emote/living/carbon/human/yautja/species_sound/loudroar
+		yautja_emotes = emotes_to_add
+
+/datum/yautja_emote_panel/proc/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "YautjaEmotes")
+		ui.open()
+
+/datum/yautja_emote_panel/ui_data(mob/user)
+	var/list/data = list()
+
+	data["on_cooldown"] = !COOLDOWN_FINISHED(src, panel_emote_cooldown)
+
+	return data
+
+/datum/yautja_emote_panel/ui_state(mob/user)
+	return GLOB.conscious_state
+
+/datum/yautja_emote_panel/ui_static_data(mob/user)
+	var/list/data = list()
+
+	data["categories"] = yautja_categories
+	data["emotes"] = list()
+
+	for(var/datum/emote/living/carbon/human/yautja/emote as anything in yautja_emotes)
+		data["emotes"] += list(list(
+			"id" = initial(emote.key),
+			"text" = (initial(emote.override_say) || initial(emote.say_message) || initial(emote.key)),
+			"category" = initial(emote.category),
+			"path" = "[emote]",
+		))
+
+	return data
+
+/datum/yautja_emote_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("emote")
+			var/datum/emote/living/carbon/human/yautja/path
+			if(!params["emotePath"])
+				return FALSE
+
+			path = text2path(params["emotePath"])
+
+			if(!path || !COOLDOWN_FINISHED(src, panel_emote_cooldown))
+				return
+
+			if(!(path in subtypesof(/datum/emote/living/carbon/human/yautja)))
+				return FALSE
+
+			COOLDOWN_START(src, panel_emote_cooldown, 2.5 SECONDS)
+			usr.emote(initial(path.key))
+			return TRUE

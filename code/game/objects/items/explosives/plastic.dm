@@ -336,9 +336,9 @@
 			return FALSE
 
 	if(istype(target, /turf/closed/wall))
-		var/turf/closed/wall/W = target
-		if(W.hull)
-			to_chat(user, SPAN_WARNING("You are unable to stick \the [src] to the [W]!"))
+		var/turf/closed/wall/targeted_wall = target
+		if(targeted_wall.hull)
+			to_chat(user, SPAN_WARNING("You are unable to stick [src] to [targeted_wall]!"))
 			return FALSE
 
 	return TRUE

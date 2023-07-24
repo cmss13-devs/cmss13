@@ -284,6 +284,8 @@
 #define COOLDOWN_COMM_CENTRAL 30 SECONDS
 #define COOLDOWN_COMM_DESTRUCT 5 MINUTES
 
+///Cooldown for pred recharge
+#define COOLDOWN_BRACER_CHARGE 3 MINUTES
 
 // magic value to use for indicating a proc slept
 #define PROC_RETURN_SLEEP -1

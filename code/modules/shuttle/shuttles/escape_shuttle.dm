@@ -26,9 +26,6 @@
 			air.indestructible = TRUE
 			air.unacidable = TRUE
 			air.linked_shuttle = src
-	if(id == ESCAPE_SHUTTLE_EAST_CL)
-		early_crash_land_chance = 25
-		crash_land_chance = 5
 
 /obj/docking_port/mobile/escape_shuttle/proc/cancel_evac()
 	door_handler.control_doors("force-unlock")
@@ -212,6 +209,8 @@
 	id = ESCAPE_SHUTTLE_EAST_CL
 	width = 4
 	height = 5
+	early_crash_land_chance = 25
+	crash_land_chance = 5
 
 /obj/docking_port/mobile/escape_shuttle/w
 	id = ESCAPE_SHUTTLE_WEST

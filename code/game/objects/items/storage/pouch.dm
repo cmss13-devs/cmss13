@@ -58,28 +58,11 @@
 	max_w_class = SIZE_MEDIUM
 	cant_hold = list( //Prevent inventory bloat
 		/obj/item/storage/firstaid,
-		/obj/item/storage/bible
+		/obj/item/storage/bible,
+		/obj/item/storage/box,
 	)
 	storage_slots = null
 	max_storage_space = 2
-
-/obj/item/storage/pouch/general/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/ammo_magazine/shotgun))
-		var/obj/item/ammo_magazine/shotgun/M = W
-		dump_ammo_to(M,user)
-	else if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/box/m94))
-		dump_into(W, user)
-	else
-		return ..()
-
-/obj/item/storage/pouch/general/can_be_inserted(obj/item/W, stop_messages)
-	. = ..()
-	if(. && W.w_class == SIZE_MEDIUM)
-		for(var/obj/item/I in return_inv())
-			if(I.w_class >= SIZE_MEDIUM)
-				if(!stop_messages)
-					to_chat(usr, SPAN_NOTICE("[src] is already too bulky with [I]."))
-				return FALSE
 
 /obj/item/storage/pouch/general/medium
 	name = "medium general pouch"
@@ -467,13 +450,6 @@
 /obj/item/storage/pouch/magazine/pistol/large/vp78/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
-
-/obj/item/storage/pouch/magazine/shotgun/attackby(obj/item/W, mob/living/user)
-	if(istype(W, /obj/item/ammo_magazine/shotgun))
-		var/obj/item/ammo_magazine/shotgun/M = W
-		dump_ammo_to(M, user, M.transfer_handful_amount)
-	else
-		return ..()
 
 /obj/item/storage/pouch/magazine/pulse_rifle/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)

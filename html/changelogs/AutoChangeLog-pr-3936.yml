@@ -1,0 +1,4 @@
+author: "Katskan"
+delete-after: True
+changes:
+  - bugfix: "Fixed synthetics getting an extra 45 points more than any previous who had used the gadget vendor"

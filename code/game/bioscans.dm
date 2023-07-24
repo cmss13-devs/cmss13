@@ -110,7 +110,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 
 
 /// This will do something after Project ARES.
-/datum/bioscan_data/proc/can_ares_bioscan()
+/datum/bioscan_data/proc/ares_can_bioscan()
 	var/datum/ares_link/link = GLOB.ares_link
 	if(!istype(link))
 		return FALSE
@@ -120,8 +120,15 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 
 /// The announcement to all Humans. Slightly off for the planet and elsewhere, accurate for the ship.
 /datum/bioscan_data/proc/ares_bioscan(forced = FALSE, variance = 2)
-	if(!forced && !can_ares_bioscan())
-		message_admins("BIOSCAN: An ARES bioscan has failed.")
+	var/datum/ares_link/link = GLOB.ares_link
+	if(!forced && !ares_can_bioscan())
+		message_admins("An ARES Bioscan has failed.")
+		var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
+		var/input = "Bioscan failed. \n\nInvestigation into Bioscan subsystem recommended."
+		if(ares_can_log())
+			link.log_ares_bioscan(name, input)
+		if(ares_can_interface())
+			marine_announcement(input, name, 'sound/misc/interference.ogg', logging = ARES_LOG_NONE)
 		return
 	//Adjust the randomness there so everyone gets the same thing
 	var/fake_xenos_on_planet = max(0, xenos_on_planet + rand(-variance, variance))
@@ -130,10 +137,12 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 
 	log_game("BIOSCAN: ARES bioscan completed. [input]")
 
-	var/datum/ares_link/link = GLOB.ares_link
-	link.log_ares_bioscan(name, input)
-	if(forced || (link.p_interface && !link.p_interface.inoperable()))
+	if(forced || ares_can_log())
+		link.log_ares_bioscan(name, input) //if interface is down, bioscan still logged, just have to go read it.
+	if(forced || ares_can_interface())
 		marine_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
+	else
+		message_admins("An ARES Bioscan has succeeded, but was not announced.")
 
 /// The announcement to all Xenos. Slightly off for the human ship, accurate otherwise.
 /datum/bioscan_data/proc/qm_bioscan(variance = 2)

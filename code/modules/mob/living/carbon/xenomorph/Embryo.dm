@@ -190,7 +190,8 @@
 
 	if(isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
 		new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nAn abomination has been detected at [get_area_name(new_xeno)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately"))
+		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nAn abomination has been detected at [get_area_name(new_xeno)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately.\n\nHeavy Armory unlocked."))
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_ARMORY_OPENED)
 	else
 		new_xeno = new(affected_mob)
 
@@ -217,6 +218,18 @@
 		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
 		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
 		playsound_client(new_xeno.client, 'sound/effects/xeno_newlarva.ogg', 25, 1)
+
+	// Inform observers to grab some popcorn if it isnt nested
+	if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))
+		var/area/burst_area = get_area(src)
+		if(burst_area)
+			for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+				to_chat(observer, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b> at \the <b>[burst_area]!</b> [OBSERVER_JMP(observer, affected_mob)]"))
+			to_chat(src, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b> at \the <b>[burst_area]!</b>"))
+		else
+			for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+				to_chat(observer, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]!</b> [OBSERVER_JMP(observer, affected_mob)]"))
+			to_chat(src, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]!</b>"))
 
 	stage = 6
 

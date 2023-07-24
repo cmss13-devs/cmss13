@@ -1,0 +1,4 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - bugfix: "fixed behavior_immobile flag using wrong number"

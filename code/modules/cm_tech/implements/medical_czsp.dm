@@ -186,21 +186,21 @@
 
 /obj/item/weapon/gun/pill/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
 	if(!able_to_fire(user))
-		return
+		return NONE
 
 	if(!current_mag.current_rounds)
 		click_empty(user)
-		return
+		return NONE
 
 	if(!istype(current_mag, /obj/item/ammo_magazine/internal/pillgun))
-		return
+		return NONE
 
 	var/obj/item/ammo_magazine/internal/pillgun/internal_mag = current_mag
 	var/obj/item/reagent_container/pill/pill_to_use = LAZYACCESS(internal_mag.pills, 1)
 
 	if(QDELETED(pill_to_use))
 		click_empty(user)
-		return
+		return NONE
 
 	var/obj/item/projectile/pill/P = new /obj/item/projectile/pill(src, user, src)
 	P.generate_bullet(GLOB.ammo_list[/datum/ammo/pill], 0, 0)
@@ -211,6 +211,7 @@
 	playsound(user.loc, 'sound/items/syringeproj.ogg', 50, 1)
 
 	P.fire_at(target, user, src)
+	return AUTOFIRE_CONTINUE
 
 /datum/ammo/pill
 	name = "syringe"

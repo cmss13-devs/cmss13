@@ -1,4 +1,0 @@
-author: "silencer_pl"
-delete-after: True
-changes:
-  - qol: "Default paper and desc_lore viewing windows are now larger to match the expected content in them better."

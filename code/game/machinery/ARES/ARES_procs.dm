@@ -1,4 +1,18 @@
 GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
+GLOBAL_LIST_INIT(maintenance_categories, list(
+	"Broken Light",
+	"Shattered Glass",
+	"Minor Structural Damage",
+	"Major Structural Damage",
+	"Janitorial",
+	"Chemical Spill",
+	"Fire",
+	"Communications Failure",
+	"Power Generation Failure",
+	"Electrical Fault",
+	"Support",
+	"Other"
+	))
 
 /datum/ares_link
 	var/link_id = MAIN_SHIP_DEFAULT_NAME
@@ -35,14 +49,12 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 		speaker = "Unknown"
 	var/datum/ares_link/link = GLOB.ares_link
 	if(!link.p_apollo || link.p_apollo.inoperable())
-		return
+		return FALSE
 	if(!link.p_interface || link.p_interface.inoperable())
-		return
+		return FALSE
 	link.apollo_log.Add("[worldtime2text()]: [speaker], '[message]'")
 
 /datum/ares_link/proc/log_ares_bioscan(title, input)
-	if(!p_bioscan || p_bioscan.inoperable() || !interface)
-		return FALSE
 	interface.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
 
 /datum/ares_link/proc/log_ares_bombardment(mob/living/user, ob_name, coordinates)
@@ -60,6 +72,32 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 /datum/ares_link/proc/log_ares_security(title, details)
 	interface.records_security.Add(new /datum/ares_record/security(title, details))
 // ------ End ARES Logging Procs ------ //
+
+/proc/ares_apollo_talk(broadcast_message)
+	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
+	for(var/mob/living/silicon/decoy/ship_ai/ai in ai_mob_list)
+		if(ai.stat == DEAD)
+			return FALSE
+		apollo.broadcast(ai, broadcast_message)
+	for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
+		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
+			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+
+/proc/ares_can_interface()
+	var/obj/structure/machinery/ares/processor/interface/processor = GLOB.ares_link.p_interface
+	if(!istype(GLOB.ares_link))
+		return FALSE
+	if(processor && !processor.inoperable())
+		return TRUE
+	return FALSE //interface processor not found or is broken
+
+/proc/ares_can_log()
+	var/obj/structure/machinery/computer/ares_console/interface = GLOB.ares_link.interface
+	if(!istype(GLOB.ares_link))
+		return FALSE
+	if(interface && !interface.inoperable())
+		return TRUE
+	return FALSE //ares interface not found or is broken
 
 // ------ ARES Interface Procs ------ //
 /obj/structure/machinery/computer/proc/get_ares_access(obj/item/card/id/card)
@@ -463,6 +501,19 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 			current_menu = "read_deleted"
 
 		// -- Emergency Buttons -- //
+		if("general_quarters")
+			if(security_level == SEC_LEVEL_RED || security_level == SEC_LEVEL_DELTA)
+				to_chat(usr, SPAN_WARNING("Alert level is already red or above, General Quarters cannot be called."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			set_security_level(2, no_sound = TRUE, announce = FALSE)
+			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
+			log_game("[key_name(usr)] has called for general quarters via ARES.")
+			message_admins("[key_name_admin(usr)] has called for general quarters via ARES.")
+			var/datum/ares_link/link = GLOB.ares_link
+			link.log_ares_security("General Quarters", "[last_login] has called for general quarters via ARES.")
+			. = TRUE
+
 		if("evacuation_start")
 			if(security_level < SEC_LEVEL_RED)
 				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
@@ -551,7 +602,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 		return APOLLO_ACCESS_AUTHED
 	if(ACCESS_MARINE_AI_TEMP in card.access)
 		return APOLLO_ACCESS_TEMP
-	if((ACCESS_MARINE_COMMAND in card.access ) || (ACCESS_MARINE_ENGINEERING in card.access) || (ACCESS_WY_CORPORATE in card.access))
+	if((ACCESS_MARINE_SENIOR in card.access ) || (ACCESS_MARINE_ENGINEERING in card.access) || (ACCESS_WY_CORPORATE in card.access))
 		return APOLLO_ACCESS_REPORTER
 	else
 		return APOLLO_ACCESS_REQUEST
@@ -577,7 +628,8 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 	set name = "Eject ID Card"
 	set src in oview(1)
 
-	if(!usr || usr.stat || usr.lying) return
+	if(!usr || usr.stat || usr.lying)
+		return FALSE
 
 	if(authenticator_id)
 		authenticator_id.loc = get_turf(src)
@@ -604,11 +656,14 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 
 /obj/structure/machinery/computer/working_joe/attackby(obj/object, mob/user)
 	if(istype(object, /obj/item/card/id))
+		if(!ticket_console)
+			to_chat(user, SPAN_WARNING("This console doesn't have an ID port!"))
+			return FALSE
 		if(!operable())
 			to_chat(user, SPAN_NOTICE("You try to insert [object] but [src] remains silent."))
-			return
+			return FALSE
 		var/obj/item/card/id/idcard = object
-		if((ACCESS_MARINE_AI in idcard.access) || (ACCESS_ARES_DEBUG in idcard.access))
+		if((idcard.assignment == JOB_WORKING_JOE) || (ACCESS_ARES_DEBUG in idcard.access))
 			if(!authenticator_id)
 				if(user.drop_held_item())
 					object.forceMove(src)
@@ -620,7 +675,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 					target_id = object
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
-				return
+				return FALSE
 		else
 			if(!target_id)
 				if(user.drop_held_item())
@@ -628,7 +683,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 					target_id = object
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
-				return
+				return FALSE
 	else
 		..()
 
@@ -689,26 +744,42 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 	for(var/datum/ares_ticket/maintenance/maint_ticket as anything in link.tickets_maintenance)
 		if(!istype(maint_ticket))
 			continue
+		var/lock_status = TICKET_OPEN
+		switch(maint_ticket.ticket_status)
+			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_COMPLETED)
+				lock_status = TICKET_CLOSED
+
 		var/list/current_maint = list()
+		current_maint["id"] = maint_ticket.ticket_id
 		current_maint["time"] = maint_ticket.ticket_time
-		current_maint["title"] = maint_ticket.ticket_name
+		current_maint["priority_status"] = maint_ticket.ticket_priority
+		current_maint["category"] = maint_ticket.ticket_name
 		current_maint["details"] = maint_ticket.ticket_details
 		current_maint["status"] = maint_ticket.ticket_status
 		current_maint["submitter"] = maint_ticket.ticket_submitter
 		current_maint["assignee"] = maint_ticket.ticket_assignee
+		current_maint["lock_status"] = lock_status
 		current_maint["ref"] = "\ref[maint_ticket]"
 		logged_maintenance += list(current_maint)
 	data["maintenance_tickets"] = logged_maintenance
 
 	var/list/logged_access = list()
-	for(var/datum/ares_ticket/access_ticket/access_ticket as anything in link.tickets_access)
+	for(var/datum/ares_ticket/access/access_ticket as anything in link.tickets_access)
+		var/lock_status = TICKET_OPEN
+		switch(access_ticket.ticket_status)
+			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_COMPLETED)
+				lock_status = TICKET_CLOSED
+
 		var/list/current_ticket = list()
+		current_ticket["id"] = access_ticket.ticket_id
 		current_ticket["time"] = access_ticket.ticket_time
+		current_ticket["priority_status"] = access_ticket.ticket_priority
 		current_ticket["title"] = access_ticket.ticket_name
 		current_ticket["details"] = access_ticket.ticket_details
 		current_ticket["status"] = access_ticket.ticket_status
 		current_ticket["submitter"] = access_ticket.ticket_submitter
 		current_ticket["assignee"] = access_ticket.ticket_assignee
+		current_ticket["lock_status"] = lock_status
 		current_ticket["ref"] = "\ref[access_ticket]"
 		logged_access += list(current_ticket)
 	data["access_tickets"] = logged_access
@@ -758,7 +829,7 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 					authentication = get_ares_access(idcard)
 					last_login = idcard.registered_name
 			else
-				to_chat(usr, SPAN_WARNING("You require an ID card to access this terminal!"))
+				to_chat(operator, SPAN_WARNING("You require an ID card to access this terminal!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(authentication)
@@ -796,20 +867,113 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 			current_menu = "maint_claim"
 
 		if("new_report")
-			var/name = tgui_input_text(usr, "What is the type of maintenance item you wish to report?\n\nExample:\n 'Broken light in Aft Hallway.'", "Ticket Name", encode = FALSE)
-			if(!name)
+			var/priority_report = FALSE
+			var/maint_type = tgui_input_list(operator, "What is the type of maintenance item you wish to report?", "Report Category", GLOB.maintenance_categories, 30 SECONDS)
+			switch(maint_type)
+				if("Major Structural Damage", "Fire", "Communications Failure",	"Power Generation Failure")
+					priority_report = TRUE
+
+			if(!maint_type)
 				return FALSE
-			var/details = tgui_input_text(usr, "What are the details for this report?", "Ticket Details", encode = FALSE)
+			var/details = tgui_input_text(operator, "What are the details for this report?", "Ticket Details", encode = FALSE)
 			if(!details)
 				return FALSE
-			var/confirm = tgui_alert(usr, "Please confirm the submission of your maintenance report. \n\n [name] \n\n [details] \n\n Is this correct?", "Confirmation", list("Yes", "No"))
+
+			if((authentication >= APOLLO_ACCESS_REPORTER) && !priority_report)
+				var/is_priority = tgui_alert(operator, "Is this a priority report?", "Priority designation", list("Yes", "No"))
+				if(is_priority == "Yes")
+					priority_report = TRUE
+
+			var/confirm = alert(operator, "Please confirm the submission of your maintenance report. \n\n Priority: [priority_report ? "Yes" : "No"] \n Category: '[maint_type]' \n Details: '[details]' \n\n Is this correct?", "Confirmation", "Yes", "No")
 			if(confirm == "Yes")
 				if(link)
-					var/datum/ares_ticket/maintenance/maint_ticket = new(last_login, name, details)
+					var/datum/ares_ticket/maintenance/maint_ticket = new(last_login, maint_type, details, priority_report)
 					link.tickets_maintenance += maint_ticket
-					log_game("ARES: Maintenance Ticket created by [key_name(operator)] as [last_login] with Header '[name]' and Details of '[details]'.")
+					if(priority_report)
+						ares_apollo_talk("Priority Maintenance Report: [maint_type] - ID [maint_ticket.ticket_id]. Seek and resolve.")
+					log_game("ARES: Maintenance Ticket '\ref[maint_ticket]' created by [key_name(operator)] as [last_login] with Category '[maint_type]' and Details of '[details]'.")
 					return TRUE
 			return FALSE
+
+		if("claim_ticket")
+			var/datum/ares_ticket/ticket = locate(params["ticket"])
+			if(!istype(ticket))
+				return FALSE
+			var/claim = TRUE
+			var/assigned = ticket.ticket_assignee
+			if(assigned)
+				if(assigned == last_login)
+					var/prompt = tgui_alert(usr, "You already claimed this ticket! Do you wish to drop your claim?", "Unclaim ticket", list("Yes", "No"))
+					if(prompt != "Yes")
+						return FALSE
+					/// set ticket back to pending
+					ticket.ticket_assignee = null
+					ticket.ticket_status = TICKET_PENDING
+					return claim
+				var/choice = tgui_alert(usr, "This ticket has already been claimed by [assigned]! Do you wish to override their claim?", "Claim Override", list("Yes", "No"))
+				if(choice != "Yes")
+					claim = FALSE
+			if(claim)
+				ticket.ticket_assignee = last_login
+				ticket.ticket_status = TICKET_ASSIGNED
+			return claim
+
+		if("cancel_ticket")
+			var/datum/ares_ticket/ticket = locate(params["ticket"])
+			if(!istype(ticket))
+				return FALSE
+			if(ticket.ticket_submitter != last_login)
+				to_chat(usr, SPAN_WARNING("You cannot cancel a ticket that does not belong to you!"))
+				return FALSE
+			to_chat(usr, SPAN_WARNING("[ticket.ticket_type] [ticket.ticket_id] has been cancelled."))
+			ticket.ticket_status = TICKET_CANCELLED
+			if(ticket.ticket_priority)
+				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been cancelled.")
+			return TRUE
+
+		if("mark_ticket")
+			var/datum/ares_ticket/ticket = locate(params["ticket"])
+			if(!istype(ticket))
+				return FALSE
+			if(ticket.ticket_assignee != last_login && ticket.ticket_assignee) //must be claimed by you or unclaimed.)
+				to_chat(usr, SPAN_WARNING("You cannot update a ticket that is not assigned to you!"))
+				return FALSE
+			var/choice = tgui_alert(usr, "What do you wish to mark the ticket as?", "Mark", list(TICKET_COMPLETED, TICKET_REJECTED), 20 SECONDS)
+			switch(choice)
+				if(TICKET_COMPLETED)
+					ticket.ticket_status = TICKET_COMPLETED
+				if(TICKET_REJECTED)
+					ticket.ticket_status = TICKET_REJECTED
+				else
+					return FALSE
+			if(ticket.ticket_priority)
+				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by [last_login].")
+			to_chat(usr, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
+			return TRUE
+
+		if("new_access")
+			var/priority_report = FALSE
+			var/ticket_holder = tgui_input_text(operator, "Who is the ticket for?", "Ticket Holder", encode = FALSE)
+			if(!ticket_holder)
+				return FALSE
+			var/details = tgui_input_text(operator, "What is the purpose of this access ticket?", "Ticket Details", encode = FALSE)
+			if(!details)
+				return FALSE
+
+			if(authentication >= APOLLO_ACCESS_AUTHED)
+				var/is_priority = tgui_alert(operator, "Is this a priority request?", "Priority designation", list("Yes", "No"))
+				if(is_priority == "Yes")
+					priority_report = TRUE
+
+			var/confirm = alert(operator, "Please confirm the submission of your access ticket request. \n\n Priority: [priority_report ? "Yes" : "No"] \n Holder: '[ticket_holder]' \n Details: '[details]' \n\n Is this correct?", "Confirmation", "Yes", "No")
+			if(confirm != "Yes" || !link)
+				return FALSE
+			var/datum/ares_ticket/access/access_ticket = new(last_login, ticket_holder, details, priority_report)
+			link.tickets_access += access_ticket
+			if(priority_report)
+				ares_apollo_talk("Priority Access Request: [ticket_holder] - ID [access_ticket.ticket_id]. Seek and resolve.")
+			log_game("ARES: Access Ticket '\ref[access_ticket]' created by [key_name(operator)] as [last_login] with Holder '[ticket_holder]' and Details of '[details]'.")
+			return TRUE
 
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)

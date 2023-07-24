@@ -36,6 +36,8 @@
 		playsound(carrier.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
 	carrier.huggers_cur = 0
 	carrier.huggers_max = 0
+	carrier.update_hugger_overlays()
+	carrier.update_eggsac_overlays()
 	carrier.eggs_max = 12
 	carrier.extra_build_dist = 1
 	return TRUE
@@ -73,3 +75,4 @@
 			if(egg_generation_progress >= 15)
 				egg_generation_progress = 0
 				xeno.eggs_cur++
+				xeno.update_icons()

@@ -1,0 +1,7 @@
+author: "ghostsheet"
+delete-after: True
+changes:
+  - rscadd: "Large General Pouch has stricter restriction against internal boxes."
+  - rscadd: "Large General Pouch no longer restricted to 1 medium item."
+  - rscadd: "Large General Pouch added to REQ."
+  - rscadd: "Shuffled REQ pouch order into Meds, Engi, Misc, Ammo."

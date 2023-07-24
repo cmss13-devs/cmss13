@@ -591,6 +591,9 @@
 	var/obj/effect/alien/resin/special/resin_parent
 
 /obj/effect/alien/weeds/node/pylon/proc/set_parent_damaged()
+	if(!resin_parent)
+		return
+
 	var/obj/effect/alien/resin/special/pylon/parent_pylon = resin_parent
 	parent_pylon.damaged = TRUE
 
@@ -617,6 +620,9 @@
 	return
 
 /obj/effect/alien/weeds/node/pylon/cluster/set_parent_damaged()
+	if(!resin_parent)
+		return
+
 	var/obj/effect/alien/resin/special/cluster/parent_cluster = resin_parent
 	parent_cluster.damaged = TRUE
 

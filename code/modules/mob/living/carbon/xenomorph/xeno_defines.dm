@@ -318,6 +318,7 @@
 		XENO_STRUCTURE_EGGMORPH = 6,
 		XENO_STRUCTURE_EVOPOD = 2,
 		XENO_STRUCTURE_RECOVERY = 6,
+		XENO_STRUCTURE_PYLON = 10,
 	)
 
 	var/global/list/hive_structure_types = list(
@@ -367,6 +368,7 @@
 		return
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(setup_evolution_announcements))
+	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(setup_pylon_limits))
 
 /datum/hive_status/proc/setup_evolution_announcements()
 	SIGNAL_HANDLER
@@ -376,6 +378,11 @@
 			continue
 
 		addtimer(CALLBACK(src, PROC_REF(announce_evolve_available), GLOB.xeno_evolve_times[time]), text2num(time))
+
+/datum/hive_status/proc/setup_pylon_limits()
+	SIGNAL_HANDLER
+
+	hive_structures_limit[XENO_STRUCTURE_PYLON] = length(GLOB.all_static_telecomms_towers) ? length(GLOB.all_static_telecomms_towers) : 2
 
 /datum/hive_status/proc/announce_evolve_available(list/datum/caste_datum/available_castes)
 

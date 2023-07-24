@@ -211,12 +211,22 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	bound_width = 64
 	freq_listening = list(COLONY_FREQ)
 	var/toggle_cooldown = 0
+	var/corrupted = FALSE
+	var/image/corruption_image = null
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize()
+	. = ..()
+
+	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/attack_hand(mob/user)
 	if(user.action_busy)
 		return
 	if(toggle_cooldown > world.time) //cooldown only to prevent spam toggling
 		to_chat(user, SPAN_WARNING("\The [src]'s processors are still cooling! Wait before trying to flip the switch again."))
+		return
+	if(corrupted)
+		to_chat(user, SPAN_WARNING("[src] is entangled in resin. Impossible to interact with."))
 		return
 	var/current_state = on
 	if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
@@ -281,6 +291,69 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		update_icon()
 	else
 		update_icon()
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/handle_xeno_acquisition(turf/weeded_turf)
+	SIGNAL_HANDLER
+
+	if(!weeded_turf.weeds)
+		return
+
+	if(weeded_turf.weeds.weed_strength < WEED_LEVEL_HIVE)
+		return
+
+	if(!weeded_turf.weeds.parent)
+		return
+
+	if(!istypestrict(weeded_turf.weeds.parent, /obj/effect/alien/weeds/node/pylon/cluster))
+		return
+
+	if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
+		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (XENO_COMM_ACQUISITION_TIME - ROUND_TIME))
+		return
+
+	var/obj/effect/alien/weeds/node/pylon/cluster/parent_node = weeded_turf.weeds.parent
+
+	var/obj/effect/alien/resin/special/cluster/cluster_parent = parent_node.resin_parent
+
+	var/list/held_children_weeds = parent_node.children
+	var/cluster_loc = cluster_parent.loc
+	var/linked_hive = cluster_parent.linked_hive
+
+	parent_node.children = list()
+
+	qdel(cluster_parent)
+
+	var/obj/effect/alien/resin/special/pylon/new_pylon = new(cluster_loc, linked_hive)
+	new_pylon.node.children = held_children_weeds
+
+	for(var/obj/effect/alien/weeds/weed in new_pylon.node.children)
+		weed.parent = new_pylon.node
+
+	RegisterSignal(new_pylon, COMSIG_PARENT_QDELETING, PROC_REF(uncorrupt))
+
+	corrupted = TRUE
+
+	corruption_image = image(icon, icon_state = "resin_growing") //seems to start at the end of the loop for some reason?, figure out why before merge - Morrow
+
+	flick_overlay(src, corruption_image, (4 SECONDS))
+	addtimer(CALLBACK(src, PROC_REF(switch_to_idle_corruption)), (4 SECONDS))
+
+	new_pylon.comms_relay_connection()
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/uncorrupt(datum/deleting_datum)
+	SIGNAL_HANDLER
+
+	corrupted = FALSE
+
+	overlays -= corruption_image
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/switch_to_idle_corruption()
+	if(!corrupted)
+		return
+
+	corruption_image = image(icon, icon_state = "resin_idle")
+
+	overlays += corruption_image
 
 /obj/structure/machinery/telecomms/relay/preset/telecomms
 	id = "Telecomms Relay"

@@ -113,7 +113,7 @@
 // These behaviors are either of the person performing the action or any targets.
 
 /// You cannot move the person while this action is being performed
-#define BEHAVIOR_IMMOBILE (1<<18)
+#define BEHAVIOR_IMMOBILE (1<<19)
 
 // *************************************** //
 //    END DO_AFTER FLAGS //

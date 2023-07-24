@@ -1,0 +1,7 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Adds a plasma breaching charge that detonates a plasma wave stunning those opposite it."
+  - rscadd: "Adds the name of the tracked item to the Yautja gear tracker."
+  - rscadd: "Added an alternate mode for the Plasma Pistol and moved the incendiary property to it."
+  - rscadd: "Added MINIMAP_FLAG_ALL to Yautja globe map."

@@ -1765,25 +1765,13 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/proc/set_burst_amount(value, mob/user)
 	burst_amount = value
 	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED, burst_amount)
-
-	if(burst_amount < BURST_AMOUNT_TIER_2)
-		if(GUN_FIREMODE_BURSTFIRE in gun_firemode_list)
-			remove_firemode(GUN_FIREMODE_BURSTFIRE, user)
-	else
-		if(!(GUN_FIREMODE_BURSTFIRE in gun_firemode_list))
-			add_firemode(GUN_FIREMODE_BURSTFIRE, user)
+	setup_firemodes()
 
 /// adder for burst_amount
 /obj/item/weapon/gun/proc/modify_burst_amount(value, mob/user)
 	burst_amount += value
 	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED, burst_amount)
-
-	if(burst_amount < BURST_AMOUNT_TIER_2)
-		if(GUN_FIREMODE_BURSTFIRE in gun_firemode_list)
-			remove_firemode(GUN_FIREMODE_BURSTFIRE, user)
-	else
-		if(!(GUN_FIREMODE_BURSTFIRE in gun_firemode_list))
-			add_firemode(GUN_FIREMODE_BURSTFIRE, user)
+	setup_firemodes()
 
 /// Adder for burst_delay
 /obj/item/weapon/gun/proc/modify_burst_delay(value, mob/user)

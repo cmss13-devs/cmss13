@@ -32,7 +32,7 @@
 
 /datum/game_mode/infection/proc/map_announcement()
 	if(SSmapping.configs[GROUND_MAP].infection_announce_text)
-		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
+		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].infection_announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
 
 /datum/game_mode/infection/proc/initialize_post_survivor_list()

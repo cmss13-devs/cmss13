@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Made Yautja cloak cost no power to operate, and created multipliers for disabled duration based upon what caused the Yautja to decloak."

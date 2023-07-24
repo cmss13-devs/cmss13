@@ -54,7 +54,7 @@
 	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/own_orbit_size = 0
-	var/observer_actions = list(/datum/action/observer_action/join_xeno)
+	var/observer_actions = list(/datum/action/observer_action/join_xeno, /datum/action/observer_action/join_lesser_drone)
 	var/datum/action/minimap/observer/minimap
 	var/larva_queue_cached_message
 	///Used to bypass time of death checks such as when being selected for larva.
@@ -368,12 +368,13 @@ Works together with spawning an observer, noted above.
 		if(ghost.client.player_data)
 			ghost.client.player_data.load_timestat_data()
 
-		// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers
-		// We don't change facehugger timeofdeath because they are still on cooldown if they died as a hugger
-		var/new_tod = isfacehugger(src) ? 1 : ghost.timeofdeath
-		// if they died as facehugger, bypass typical TOD checks
-		ghost.bypass_time_of_death_checks = isfacehugger(src)
-		ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+		// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
+		var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
+
+		// if they died as facehugger or lesser drone, bypass typical TOD checks
+		ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
+
+		ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
 
 	ghost.set_huds_from_prefs()
 
@@ -418,9 +419,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(ghost && !is_admin_level(z))
 			ghost.timeofdeath = world.time
 
-			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers
-			var/new_tod = isfacehugger(src) ? 1 : world.time
-			ghost.bypass_time_of_death_checks = isfacehugger(src)
+			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
+			var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
+
+			// if they died as facehugger or lesser drone, bypass typical TOD checks
+			ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
+
 			ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
 		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE
@@ -778,6 +782,21 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(SSticker.mode.check_xeno_late_join(src))
 		SSticker.mode.attempt_to_join_as_facehugger(src)
+
+/mob/dead/verb/join_as_lesser_drone()
+	set category = "Ghost.Join"
+	set name = "Join as a Lesser Drone"
+	set desc = "Try joining as a Lesser Drone to support the hive."
+
+	if (!client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_xeno_late_join(src))
+		SSticker.mode.attempt_to_join_as_lesser_drone(src)
 
 /mob/dead/verb/join_as_zombie() //Adapted from join as hellhoud
 	set category = "Ghost.Join"

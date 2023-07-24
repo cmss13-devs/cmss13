@@ -5,7 +5,7 @@
 	icon_state = "globe"
 	breakable = FALSE
 
-	minimap_type = MINIMAP_FLAG_XENO|MINIMAP_FLAG_USCM
+	minimap_type = MINIMAP_FLAG_ALL
 
 /obj/structure/machinery/autolathe/yautja
 	name = "yautja autolathe"

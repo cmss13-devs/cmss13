@@ -101,15 +101,6 @@
 	var/perc = (charge / charge_max * 100)
 	human.update_power_display(perc)
 
-	//Non-Yautja have a chance to get stunned with each power drain
-	if(!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled)
-		if(prob(15))
-			if(cloaked)
-				decloak(human)
-				cloak_timer = world.time + 5 SECONDS
-			shock_user(human)
-			return FALSE
-
 	return TRUE
 
 /obj/item/clothing/gloves/yautja/proc/shock_user(mob/living/carbon/human/M)
@@ -242,7 +233,7 @@
 		if(wearer.gloves == src)
 			wearer.visible_message(SPAN_DANGER("You hear a hiss and crackle!"), SPAN_DANGER("Your bracers hiss and spark!"), SPAN_DANGER("You hear a hiss and crackle!"))
 			if(cloaked)
-				decloak(wearer)
+				decloak(wearer, TRUE, DECLOAK_EMP)
 		else
 			var/turf/our_turf = get_turf(src)
 			our_turf.visible_message(SPAN_DANGER("You hear a hiss and crackle!"), SPAN_DANGER("You hear a hiss and crackle!"))
@@ -282,29 +273,25 @@
 
 	var/mob/living/carbon/human/human = loc
 
-	if(cloaked)
-		charge = max(charge - 10, 0)
-		if(charge <= 0)
-			decloak(loc)
-		//Non-Yautja have a chance to get stunned with each power drain
-		if(!isyautja(human))
-			if(prob(15))
-				decloak(human)
-				shock_user(human)
-		return
+	//Non-Yautja have a chance to get stunned with each power drain
+	if((!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled) && prob(15))
+		if(cloaked)
+			decloak(human, TRUE, DECLOAK_SPECIES)
+		shock_user(human)
+
 	return ..()
 
 /obj/item/clothing/gloves/yautja/hunter/dropped(mob/user)
 	move_chip_to_bracer()
 	if(cloaked)
-		decloak(user)
+		decloak(user, TRUE)
 	..()
 
 /obj/item/clothing/gloves/yautja/hunter/on_enter_storage(obj/item/storage/S)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/human = loc
 		if(cloaked)
-			decloak(human)
+			decloak(human, TRUE)
 	. = ..()
 
 //We use this to activate random verbs for non-Yautja
@@ -421,15 +408,17 @@
 	var/gear_on_almayer = 0
 	var/gear_low_orbit = 0
 	var/closest = 10000
+	/// The item itself, to be referenced so Yautja know what to look for.
+	var/obj/closest_item
 	var/direction = -1
 	var/atom/areaLoc = null
-	for(var/obj/item/I as anything in GLOB.loose_yautja_gear)
-		var/atom/loc = get_true_location(I)
-		if(I.anchored)
+	for(var/obj/item/tracked_item as anything in GLOB.loose_yautja_gear)
+		var/atom/loc = get_true_location(tracked_item)
+		if(tracked_item.anchored)
 			continue
-		if(is_honorable_carrier(recursive_holder_check(I)))
+		if(is_honorable_carrier(recursive_holder_check(tracked_item)))
 			continue
-		if(istype(get_area(I), /area/yautja))
+		if(istype(get_area(tracked_item), /area/yautja))
 			continue
 		if(is_reserved_level(loc.z))
 			gear_low_orbit++
@@ -441,6 +430,7 @@
 			var/dist = get_dist(M,loc)
 			if(dist < closest)
 				closest = dist
+				closest_item = tracked_item
 				direction = get_dir(M,loc)
 				areaLoc = loc
 	for(var/mob/living/carbon/human/Y as anything in GLOB.yautja_mob_list)
@@ -472,9 +462,9 @@
 		output = TRUE
 		var/areaName = get_area_name(areaLoc)
 		if(closest == 0)
-			to_chat(M, SPAN_NOTICE("You are directly on top of the closest signature."))
+			to_chat(M, SPAN_NOTICE("You are directly on top of the[closest_item ? " <b>[closest_item.name]</b>'s" : ""] signature."))
 		else
-			to_chat(M, SPAN_NOTICE("The closest signature is [closest > 10 ? "approximately <b>[round(closest, 10)]</b>" : "<b>[closest]</b>"] paces <b>[dir2text(direction)]</b> in <b>[areaName]</b>."))
+			to_chat(M, SPAN_NOTICE("The closest signature[closest_item ? ", a <b>[closest_item.name]</b>" : ""], is [closest > 10 ? "approximately <b>[round(closest, 10)]</b>" : "<b>[closest]</b>"] paces <b>[dir2text(direction)]</b> in <b>[areaName]</b>."))
 	if(!output)
 		to_chat(M, SPAN_NOTICE("There are no signatures that require your attention."))
 	return TRUE
@@ -528,7 +518,6 @@
 		if(true_cloak)
 			M.invisibility = INVISIBILITY_LEVEL_ONE
 			M.see_invisible = SEE_INVISIBLE_LEVEL_ONE
-			new_alpha = 75
 
 		log_game("[key_name_admin(usr)] has enabled their cloaking device.")
 		M.visible_message(SPAN_WARNING("[M] vanishes into thin air!"), SPAN_NOTICE("You are now invisible to normal detection."))
@@ -553,17 +542,18 @@
 	sparks.set_up(5, 4, src)
 	sparks.start()
 
-	decloak(wearer, TRUE)
+	decloak(wearer, TRUE, DECLOAK_EXTINGUISHER)
 
-/obj/item/clothing/gloves/yautja/hunter/decloak(mob/user, forced)
+/obj/item/clothing/gloves/yautja/hunter/decloak(mob/user, forced, force_multipler = DECLOAK_FORCED)
 	if(!user)
 		return
 
 	UnregisterSignal(user, COMSIG_HUMAN_EXTINGUISH)
 	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)
 
+	var/decloak_timer = (DECLOAK_STANDARD * force_multipler)
 	if(forced)
-		cloak_malfunction = world.time + 10 SECONDS
+		cloak_malfunction = world.time + decloak_timer
 
 	cloaked = FALSE
 	log_game("[key_name_admin(usr)] has disabled their cloaking device.")
@@ -573,7 +563,7 @@
 	if(true_cloak)
 		user.invisibility = initial(user.invisibility)
 		user.see_invisible = initial(user.see_invisible)
-	cloak_timer = world.time + 5 SECONDS
+	cloak_timer = world.time + (DECLOAK_STANDARD / 2)
 
 	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.add_to_hud(user)

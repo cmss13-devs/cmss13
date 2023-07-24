@@ -80,7 +80,7 @@
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_medic
 	equipment = /datum/equipment_preset/survivor/pmc/medic
-	synth_equipment = /datum/equipment_preset/pmc/synth
+	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"You are NOT aware of the xenomorph threat.",\
 	"Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.")
@@ -93,7 +93,7 @@
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_engineer
 	equipment = /datum/equipment_preset/survivor/pmc/engineer
-	synth_equipment = /datum/equipment_preset/pmc/synth
+	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"You are NOT aware of the xenomorph threat.",\
 	"Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.")

@@ -1435,8 +1435,8 @@
 
 /datum/equipment_preset/survivor/upp/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/veteran/UPP/uniform = new()
-	var/R = rand(1,2)
-	switch(R)
+	var/random_number = rand(1,2)
+	switch(random_number)
 		if(1)
 			uniform.roll_suit_jacket(new_human)
 		if(2)
@@ -1459,8 +1459,8 @@
 
 /datum/equipment_preset/survivor/upp/soldier/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/veteran/UPP/uniform = new()
-	var/R = rand(1,2)
-	switch(R)
+	var/random_number = rand(1,2)
+	switch(random_number)
 		if(1)
 			uniform.roll_suit_jacket(new_human)
 		if(2)

@@ -1066,7 +1066,7 @@
 
 	need_round_end_check = TRUE
 
-	var/list/renegades = list()
+	var/list/defectors = list()
 
 /datum/hive_status/corrupted/add_xeno(mob/living/carbon/xenomorph/X)
 	. = ..()
@@ -1270,9 +1270,26 @@
 	. = ..()
 	hive_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0
 	hive_structures_limit[XENO_STRUCTURE_EVOPOD] = 0
-	allies[FACTION_MARINE] = TRUE
-	allies[FACTION_WY] = TRUE
-	allies[FACTION_PMC] = TRUE
+	for(var/faction in FACTION_LIST_HUMANOID) //renegades allied to all humanoids, but it mostly affects structures. Their ability to attack humanoids and other xenos (including of the same hive) depends on iff settings
+		allies[faction] = TRUE
+
+/datum/hive_status/corrupted/renegade/proc/iff_protection_check(mob/living/carbon/xenomorph/xeno, mob/living/carbon/attempt_harm_mob)
+	if(xeno == attempt_harm_mob)
+		return TRUE //you cannot hurt yourself...
+	if(!xeno.iff_tag)
+		return FALSE //can attack anyone if you don't have iff tag
+	if(isxeno(attempt_harm_mob))
+		var/mob/living/carbon/xenomorph/target_xeno = attempt_harm_mob
+		if(!target_xeno.iff_tag)
+			return FALSE //can attack any xeno who don't have iff tag
+		for(var/faction in xeno.iff_tag.faction_groups)
+			if(faction in target_xeno.iff_tag.faction_groups)
+				return TRUE //cannot attack xenos with same iff setting
+		return FALSE
+	for(var/faction in xeno.iff_tag.faction_groups)
+		if(faction in attempt_harm_mob.faction_group)
+			return TRUE //cannot attack mob if iff is set to at least one of its factions
+	return FALSE
 
 /datum/hive_status/corrupted/renegade/faction_is_ally(faction, ignore_queen_check = TRUE)
 	return ..()
@@ -1302,7 +1319,7 @@
 	. = ..()
 	if(allies[faction])
 		return
-	if(!(faction in list(FACTION_MARINE, FACTION_WY, FACTION_PMC)))
+	if(!(faction in FACTION_LIST_HUMANOID))
 		return
 
 	for(var/mob/living/carbon/xenomorph/xeno in totalXenos) // handle defecting xenos on betrayal
@@ -1310,40 +1327,40 @@
 			continue
 		if(!(faction in xeno.iff_tag.faction_groups))
 			continue
-		if(xeno in renegades)
+		if(xeno in defectors)
 			continue
 		if(xeno.caste_type == XENO_CASTE_QUEEN)
 			continue
 		INVOKE_ASYNC(src, PROC_REF(give_defection_choice), xeno, faction)
-	addtimer(CALLBACK(src, PROC_REF(handle_renegades), faction), 11 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(handle_defectors), faction), 11 SECONDS)
 
 /datum/hive_status/corrupted/proc/give_defection_choice(mob/living/carbon/xenomorph/xeno, faction)
 	if(tgui_alert(xeno, "Your Queen has broken alliance with [faction]. Your IFF tag begins to suppress your connection with the hive. Do you wish to remove the tag and stay with Queen or do you wish to stay loyal to your new masters? You have 10 seconds to decide.", "Choose", list("Stay with Queen", "Stay with your masters"), 10 SECONDS) == "Stay with your masters")
 		if(!xeno.iff_tag)
 			to_chat(xeno, SPAN_XENOWARNING("It's too late now. Your IFF tag is broken and your service to the Queen continues."))
 			return
-		renegades += xeno
+		defectors += xeno
 		xeno.set_hive_and_update(XENO_HIVE_RENEGADE)
 		to_chat(xeno, SPAN_XENOANNOUNCE("You lost connection with your hive. Now there is no Queen, only masters."))
 		return
 	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
 	xeno.iff_tag = null
 
-/datum/hive_status/corrupted/proc/handle_renegades(faction)
+/datum/hive_status/corrupted/proc/handle_defectors(faction)
 	for(var/mob/living/carbon/xenomorph/xeno in totalXenos)
 		if(!xeno.iff_tag)
 			continue
-		if(xeno in renegades)
+		if(xeno in defectors)
 			continue
 		if(!(faction in xeno.iff_tag.faction_groups))
 			continue
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
 		xeno.iff_tag = null
-	if(!length(renegades))
+	if(!length(defectors))
 		return
 
-	xeno_message(SPAN_XENOANNOUNCE("You sense that [renegades.Join(", ")] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
-	renegades = list()
+	xeno_message(SPAN_XENOANNOUNCE("You sense that [defectors.Join(", ")] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
+	defectors = list()
 
 //Xeno Resin Mark Shit, the very best place for it too :0)
 //Defines at the bottom of this list here will show up at the top in the mark menu

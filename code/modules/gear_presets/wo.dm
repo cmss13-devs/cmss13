@@ -579,10 +579,6 @@
 	name = "WO Combat Reporter" //CL
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	access = list(
-		ACCESS_WY_GENERAL, ACCESS_ILLEGAL_PIRATE, ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP,
-		ACCESS_MARINE_RESEARCH, ACCESS_MARINE_MEDBAY, ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS, ACCESS_COME_BACK_TO_ME)
 	assignment = JOB_WO_CORPORATE_LIAISON
 	rank = JOB_WO_CORPORATE_LIAISON
 	paygrade = "WYC2"
@@ -592,6 +588,10 @@
 
 	minimap_icon = "surv"
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
+
+/datum/equipment_preset/wo/reporter/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_LIAISON) + list(ACCESS_PRESS)
 
 /datum/equipment_preset/wo/reporter/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel

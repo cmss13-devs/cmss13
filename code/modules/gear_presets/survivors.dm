@@ -1157,9 +1157,12 @@
 	paygrade = "WYC2"
 	role_comm_title = "ICC Rep."
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND,ACCESS_COME_BACK_TO_ME)
 
 	survivor_variant = CORPORATE_SURVIVOR
+
+/datum/equipment_preset/survivor/interstellar_commerce_commission_liason/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_CIVIL_LIAISON)
 
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liason/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(new_human), WEAR_BODY)

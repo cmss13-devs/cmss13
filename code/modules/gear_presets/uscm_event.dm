@@ -185,28 +185,11 @@
 	name = "USCM Provost"
 
 	idtype = /obj/item/card/id/provost
-	access = list(
-		ACCESS_MARINE_BRIG,
-		ACCESS_MARINE_COMMAND,
-		ACCESS_MARINE_DROPSHIP,
-		ACCESS_MARINE_DATABASE,
-		ACCESS_MARINE_PREP,
-		ACCESS_MARINE_MEDBAY,
-		ACCESS_MARINE_MORGUE,
-		ACCESS_MARINE_ALPHA,
-		ACCESS_MARINE_BRAVO,
-		ACCESS_MARINE_CHARLIE,
-		ACCESS_MARINE_DELTA,
-		ACCESS_MARINE_ENGINEERING,
-		ACCESS_MARINE_MAINT,
-		ACCESS_MARINE_OT,
-		ACCESS_COME_BACK_TO_ME,
-	)
 	skills = /datum/skills/provost
 
 /datum/equipment_preset/uscm_event/provost/New()
 	. = ..()
-	access = get_access(ACCESS_LIST_GLOBAL)
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /datum/equipment_preset/uscm_event/provost/enforcer
 	name = "Provost Enforcer (ME5)"
@@ -464,28 +447,11 @@
 	name = "UAAC-TIS"
 
 	idtype = /obj/item/card/id/provost
-	access = list(
-		ACCESS_MARINE_BRIG,
-		ACCESS_MARINE_COMMAND,
-		ACCESS_MARINE_DROPSHIP,
-		ACCESS_MARINE_DATABASE,
-		ACCESS_MARINE_PREP,
-		ACCESS_MARINE_MEDBAY,
-		ACCESS_MARINE_MORGUE,
-		ACCESS_MARINE_ALPHA,
-		ACCESS_MARINE_BRAVO,
-		ACCESS_MARINE_CHARLIE,
-		ACCESS_MARINE_DELTA,
-		ACCESS_MARINE_ENGINEERING,
-		ACCESS_MARINE_MAINT,
-		ACCESS_MARINE_OT,
-		ACCESS_COME_BACK_TO_ME,
-	)
 	skills = /datum/skills/provost
 
 /datum/equipment_preset/uscm_event/uaac/tis/New()
 	. = ..()
-	access = get_access(ACCESS_LIST_GLOBAL)
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /datum/equipment_preset/uscm_event/uaac/tis/io
 	name = "UAAC-TIS Intelligence Officer (NO2)"

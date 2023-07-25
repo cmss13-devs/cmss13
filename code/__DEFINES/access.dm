@@ -119,10 +119,14 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_LIST_WY_BASE "Wey-Yu (Basic)"
 ///Wey-Yu PMCs access.
 #define ACCESS_LIST_WY_PMC "Wey-Yu (PMC)"
+///Access levels for WY senior leadership
+#define ACCESS_LIST_WY_SENIOR "Wey-Yu (Senior Lead)"
 ///All access levels associated with Weyland Yutani
 #define ACCESS_LIST_WY_ALL "Wey-Yu (ALL)"
 
 ///All the access levels in the civillian category, excluding Press.
-#define ACCESS_LIST_COLONIAL_ALL "Colonial All"
+#define ACCESS_LIST_COLONIAL_ALL "Colonial (ALL)"
+///Used by the Wey-Yu - Civil Authority Liaison
+#define ACCESS_LIST_CIVIL_LIAISON "Colonial (Liaison)"
 ///The access used by delivery ERT (Pizza/Souto)
 #define ACCESS_LIST_DELIVERY "Delivery"

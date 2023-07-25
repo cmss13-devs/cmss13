@@ -1336,7 +1336,7 @@
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
 		xeno.iff_tag = null
 
-	if(renegades.len < 1)
+	if(!length(renegades))
 		return
 
 	xeno_message(SPAN_XENOANNOUNCE("You sense that [renegades.Join(", ")] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)

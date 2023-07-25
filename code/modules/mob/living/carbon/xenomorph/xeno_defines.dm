@@ -1252,6 +1252,25 @@
 
 	return ..()
 
+/datum/hive_status/corrupted/renegade
+	name = "Renegade Hive"
+	reporting_id = "renegade"
+	hivenumber = XENO_HIVE_RENEGADE
+	prefix = "Renegade "
+	color = "#9c7a4d"
+
+	dynamic_evolution = FALSE
+	allow_no_queen_actions = TRUE
+	allow_queen_evolve = FALSE
+	ignore_slots = TRUE
+	latejoin_burrowed = FALSE
+
+/datum/hive_status/corrupted/tamed/New()
+	. = ..()
+	hive_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0
+	hive_structures_limit[XENO_STRUCTURE_EVOPOD] = 0
+	allies[FACTION_MARINE] = TRUE
+
 /datum/hive_status/proc/on_stance_change(faction)
 	if(!living_xeno_queen)
 		return
@@ -1263,18 +1282,17 @@
 	for(var/number in GLOB.hive_datum)
 		var/datum/hive_status/target_hive = GLOB.hive_datum[number]
 		if(target_hive.name != faction)
-			xeno_message(SPAN_XENOANNOUNCE("[target_hive.name] != [faction]!"), hivenumber)
 			continue
-		if(!target_hive.living_xeno_queen)
+		if(!target_hive.living_xeno_queen && !target_hive.allow_no_queen_actions)
 			return
 		if(allies[faction])
-			xeno_message(SPAN_XENOANNOUNCE("You sense that [faction] Queen set up alliance with us!"), 3, target_hive.hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("You sense that [name] Queen set up alliance with us!"), 3, target_hive.hivenumber)
 			return
 		else
-			xeno_message(SPAN_XENOANNOUNCE("You sense that [faction] Queen broke alliance with us!"), 3, target_hive.hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("You sense that [name] Queen broke alliance with us!"), 3, target_hive.hivenumber)
 			return
 
-	if(allies[faction])
+	if(allies[faction] || faction != FACTION_MARINE)
 		return
 
 	for(var/mob/living/carbon/xenomorph/xeno in totalXenos) // handle deflecting xenos on betrayal
@@ -1284,20 +1302,23 @@
 			continue
 		if(xeno in deflectors)
 			continue
-		// if(xeno.caste == XENO_CASTE_QUEEN)
-		// 	continue
+		if(xeno.caste_type == XENO_CASTE_QUEEN)
+			continue
 		INVOKE_ASYNC(src, PROC_REF(give_deflection_choice), xeno, faction)
 	addtimer(CALLBACK(src, PROC_REF(handle_deflectors), faction), 10 SECONDS)
 
 /datum/hive_status/proc/give_deflection_choice(mob/living/carbon/xenomorph/xeno, faction)
-	if(alert(xeno, "Your Queen has broken alliance with [faction]. Your IFF tag begins to suppress your connection with the hive. Do you wish to remove the tag and stay with Queen or become Tamed? You have 10 seconds to decide.", "Choose", "Stay with Queen", "Become Tamed") == "Become Tamed")
+	if(alert(xeno, "Your Queen has broken alliance with [faction]. Your IFF tag begins to suppress your connection with the hive. Do you wish to remove the tag and stay with Queen or deflect? You have 10 seconds to decide.", "Choose", "Stay with Queen", "Stay with your masters") == "Stay with your masters")
 		if(!xeno.iff_tag)
-			to_chat(xeno, SPAN_XENOWARNING("It's too late now. Your IFF tag is broken and your service to Queen continues."))
+			to_chat(xeno, SPAN_XENOWARNING("It's too late now. Your IFF tag is broken and your service to the Queen continues."))
 			return
 		deflectors += xeno
-		to_chat(xeno, SPAN_XENOWARNING("You decided to become Tamed."))
+		xeno.set_hive_and_update(XENO_HIVE_RENEGADE)
+		to_chat(xeno, SPAN_XENOANNOUNCE("You lost connection with your hive. Now there is no Queen, only masters."))
 		return
 	to_chat(xeno, SPAN_XENOWARNING("You decided to stay with Queen."))
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
+	xeno.iff_tag = null
 
 
 /datum/hive_status/proc/handle_deflectors(faction)
@@ -1309,19 +1330,16 @@
 		if(!xeno.iff_tag)
 			continue
 		if(xeno in deflectors)
-			xeno.set_hive_and_update(XENO_HIVE_TAMED)
-			to_chat(xeno, SPAN_XENOANNOUNCE("You lost connection with your hive. Now there is no Queen, only masters."))
 			continue
 		if(!(faction in xeno.iff_tag.faction_groups))
 			continue
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
-
 		xeno.iff_tag = null
 
 	if(deflectors.len < 1)
 		return
 
-	xeno_message(SPAN_XENOANNOUNCE("You sense that [deflectors.Join(", ")] deflected from your hive and became Tamed! Traitors!"), 3, hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("You sense that [deflectors.Join(", ")] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
 	deflectors = list()
 
 //Xeno Resin Mark Shit, the very best place for it too :0)

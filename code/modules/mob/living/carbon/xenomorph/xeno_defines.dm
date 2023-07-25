@@ -1271,6 +1271,8 @@
 	hive_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0
 	hive_structures_limit[XENO_STRUCTURE_EVOPOD] = 0
 	allies[FACTION_MARINE] = TRUE
+	allies[FACTION_WY] = TRUE
+	allies[FACTION_PMC] = TRUE
 
 /datum/hive_status/corrupted/renegade/faction_is_ally(faction, ignore_queen_check = TRUE)
 	return ..()
@@ -1298,7 +1300,9 @@
 
 /datum/hive_status/corrupted/on_stance_change(faction)
 	. = ..()
-	if(allies[faction] || faction != FACTION_MARINE)
+	if(allies[faction])
+		return
+	if(!(faction in list(FACTION_MARINE, FACTION_WY, FACTION_PMC)))
 		return
 
 	for(var/mob/living/carbon/xenomorph/xeno in totalXenos) // handle defecting xenos on betrayal
@@ -1325,13 +1329,8 @@
 	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
 	xeno.iff_tag = null
 
-
 /datum/hive_status/corrupted/proc/handle_renegades(faction)
 	for(var/mob/living/carbon/xenomorph/xeno in totalXenos)
-		if(!xeno)
-			continue
-		if(xeno.stat == DEAD)
-			continue
 		if(!xeno.iff_tag)
 			continue
 		if(xeno in renegades)
@@ -1340,7 +1339,6 @@
 			continue
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
 		xeno.iff_tag = null
-
 	if(!length(renegades))
 		return
 

@@ -1,0 +1,7 @@
+author: "Ben10083"
+delete-after: True
+changes:
+  - bugfix: "Working Joes no longer spawn meat when butchered by Abominations"
+  - bugfix: "Synthetics now are butchered into synthflesh when butchered by Abominations"
+  - rscadd: "special meat subtype 'synthflesh' if Synthetics get butchered. Uses same recipes as synthmeat"
+  - imageadd: "synthflesh sprite"

@@ -18,7 +18,6 @@
     ],
     "map_item_type": "/obj/item/map/lazarus_landing_map",
     "announce_text": "An automated distress signal has been received from archaeology site Lazarus Landing, on border world LV-624. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
-    "infection_announce_text": "ZOMBIES OMG HELP HELP HELP HELP HELP PLEASE ###SHIPNAME### COME SAVE US OMGOMGOMG!!!!",
     "monkey_types": [
         "farwa",
         "monkey",

@@ -610,8 +610,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 	while(dizziness > 100)
 		if(client)
 			if(buckled || resting)
-			client.pixel_x = 0
-			client.pixel_y = 0
+				client.pixel_x = 0
+				client.pixel_y = 0
 		else
 			var/amplitude = dizziness*(sin(dizziness * 0.044 * world.time) + 1) / 70
 			client.pixel_x = amplitude * sin(0.008 * dizziness * world.time)

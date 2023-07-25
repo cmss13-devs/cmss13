@@ -48,8 +48,7 @@
 		//SECURITY//
 		////////////
 	var/next_allowed_topic_time = 10
-	// comment out the line below when debugging locally to enable the options & messages menu
-	//control_freak = 1
+	control_freak = CONTROL_FREAK_MACROS
 
 	var/received_irc_pm = -99999
 

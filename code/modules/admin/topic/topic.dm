@@ -1928,6 +1928,8 @@
 
 	if(href_list["nukeapprove"])
 		var/mob/ref_person = locate(href_list["nukeapprove"])
+		if(!istype(ref_person))
+			return FALSE
 		var/nuketype = "Encrypted Operational Nuke"
 		var/prompt = tgui_alert(usr, "Do you want the nuke to be Encrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 		if(prompt == "Decrypted")
@@ -1954,6 +1956,8 @@
 
 	if(href_list["nukedeny"])
 		var/mob/ref_person = locate(href_list["nukedeny"])
+		if(!istype(ref_person))
+			return FALSE
 		marine_announcement("USCM High Command has denied the request for Nuclear Ordnance.", "NUCLEAR ORDNANCE DENIED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN) //TODO I WANT THIS TO BE WORDED BETTER
 		log_game("[key_name_admin(usr)] has denied nuclear ordnance, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has dnied nuclear ordnance, requested by [key_name_admin(ref_person)]")

@@ -71,7 +71,6 @@
 		// Become a npc once again
 		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
 		qdel(src)
-		return
 		adjustBruteLoss(1)
 	return ..()
 

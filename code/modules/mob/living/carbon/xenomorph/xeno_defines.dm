@@ -1273,6 +1273,10 @@
 	for(var/faction in FACTION_LIST_HUMANOID) //renegades allied to all humanoids, but it mostly affects structures. Their ability to attack humanoids and other xenos (including of the same hive) depends on iff settings
 		allies[faction] = TRUE
 
+/datum/hive_status/corrupted/renegade/can_spawn_as_hugger(mob/dead/observer/user)
+	to_chat(user, SPAN_WARNING("The [name] cannot support facehuggers."))
+	return FALSE
+
 /datum/hive_status/corrupted/renegade/proc/iff_protection_check(mob/living/carbon/xenomorph/xeno, mob/living/carbon/attempt_harm_mob)
 	if(xeno == attempt_harm_mob)
 		return TRUE //you cannot hurt yourself...

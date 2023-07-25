@@ -342,8 +342,6 @@
 
 	var/list/banished_ckeys = list()
 
-	var/list/renegades = list()
-
 	var/hivecore_cooldown = FALSE
 
 	var/need_round_end_check = FALSE
@@ -1068,6 +1066,8 @@
 
 	need_round_end_check = TRUE
 
+	var/list/renegades = list()
+
 /datum/hive_status/corrupted/add_xeno(mob/living/carbon/xenomorph/X)
 	. = ..()
 	X.add_language(LANGUAGE_ENGLISH)
@@ -1258,6 +1258,7 @@
 	hivenumber = XENO_HIVE_RENEGADE
 	prefix = "Renegade "
 	color = "#9c7a4d"
+	ui_color ="#80705c"
 
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
@@ -1292,6 +1293,8 @@
 			xeno_message(SPAN_XENOANNOUNCE("You sense that [name] Queen broke alliance with us!"), 3, target_hive.hivenumber)
 			return
 
+/datum/hive_status/corrupted/on_stance_change(faction)
+	. = ..()
 	if(allies[faction] || faction != FACTION_MARINE)
 		return
 
@@ -1307,7 +1310,7 @@
 		INVOKE_ASYNC(src, PROC_REF(give_defection_choice), xeno, faction)
 	addtimer(CALLBACK(src, PROC_REF(handle_renegades), faction), 11 SECONDS)
 
-/datum/hive_status/proc/give_defection_choice(mob/living/carbon/xenomorph/xeno, faction)
+/datum/hive_status/corrupted/proc/give_defection_choice(mob/living/carbon/xenomorph/xeno, faction)
 	if(tgui_alert(xeno, "Your Queen has broken alliance with [faction]. Your IFF tag begins to suppress your connection with the hive. Do you wish to remove the tag and stay with Queen or do you wish to stay loyal to your new masters? You have 10 seconds to decide.", "Choose", list("Stay with Queen", "Stay with your masters"), 10 SECONDS) == "Stay with your masters")
 		if(!xeno.iff_tag)
 			to_chat(xeno, SPAN_XENOWARNING("It's too late now. Your IFF tag is broken and your service to the Queen continues."))
@@ -1320,7 +1323,7 @@
 	xeno.iff_tag = null
 
 
-/datum/hive_status/proc/handle_renegades(faction)
+/datum/hive_status/corrupted/proc/handle_renegades(faction)
 	for(var/mob/living/carbon/xenomorph/xeno in totalXenos)
 		if(!xeno)
 			continue

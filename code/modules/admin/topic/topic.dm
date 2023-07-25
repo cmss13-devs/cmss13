@@ -982,7 +982,7 @@
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Observer.)", 1)
 
 	else if(href_list["revive"])
-		if(!check_rights(R_MOD)) 
+		if(!check_rights(R_MOD))
 			return
 
 		var/mob/living/L = locate(href_list["revive"])
@@ -1948,15 +1948,15 @@
 		//Can no longer request a nuke
 		GLOB.ares_link.interface.nuke_available = FALSE
 
-		marine_announcement("A nuclear device has been authorized by High Command and will be delivered to requisitions via ASRS.", "NUCLEAR ORDINANCE AUTHORIZED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
+		marine_announcement("A nuclear device has been authorized by High Command and will be delivered to requisitions via ASRS.", "NUCLEAR ORDNANCE AUTHORIZED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
 		log_game("[key_name_admin(usr)] has authorized a [nuketype], requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has authorized a [nuketype], requested by [key_name_admin(ref_person)]")
 
 	if(href_list["nukedeny"])
 		var/mob/ref_person = locate(href_list["nukedeny"])
-		marine_announcement("USCM High Command has denied the request for Nuclear Ordinance.", "NUCLEAR ORDINANCE DENIED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN) //TODO I WANT THIS TO BE WORDED BETTER
-		log_game("[key_name_admin(usr)] has denied nuclear ordinance, requested by [key_name_admin(ref_person)]")
-		message_admins("[key_name_admin(usr)] has dnied nuclear ordinance, requested by [key_name_admin(ref_person)]")
+		marine_announcement("USCM High Command has denied the request for Nuclear Ordnance.", "NUCLEAR ORDNANCE DENIED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN) //TODO I WANT THIS TO BE WORDED BETTER
+		log_game("[key_name_admin(usr)] has denied nuclear ordnance, requested by [key_name_admin(ref_person)]")
+		message_admins("[key_name_admin(usr)] has dnied nuclear ordnance, requested by [key_name_admin(ref_person)]")
 
 	if(href_list["sddeny"]) // CentComm-deny. The self-destruct is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["sddeny"])

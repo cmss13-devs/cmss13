@@ -296,7 +296,7 @@
 
 	var/allow_no_queen_actions = FALSE
 	var/evolution_without_ovipositor = TRUE //Temporary for the roundstart.
-	/// Set to true if you want to prevent evolutions into Queens
+	/// Set to false if you want to prevent evolutions into Queens
 	var/allow_queen_evolve = TRUE
 	/// Set to true if you want to prevent bursts and spawns of new xenos. Will also prevent healing if the queen no longer exists
 	var/hardcore = FALSE
@@ -1307,9 +1307,7 @@
 	ui_color ="#80705c"
 
 	dynamic_evolution = FALSE
-	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
-	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
 
 /datum/hive_status/corrupted/renegade/New()

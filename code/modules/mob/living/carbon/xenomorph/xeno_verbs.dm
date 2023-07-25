@@ -29,6 +29,13 @@
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 
+	if(hive.hivenumber == XENO_HIVE_RENEGADE) //Renegade's ability to attack someone depends on IFF settings, not on alliance
+		if(!src.iff_tag)
+			to_chat(src, SPAN_NOTICE("You have no IFF tag. You can attack anyone."))
+			return
+		to_chat(src, SPAN_NOTICE("Your IFF tag settings are: [english_list(src.iff_tag.faction_groups, "None")]. You cannot attack creatures within these settings."))
+		return
+
 	if(interference)
 		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
 		return

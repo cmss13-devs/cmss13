@@ -29,6 +29,8 @@
 		user.put_in_hands(iff_tag)
 		iff_tag = null
 		user.visible_message(SPAN_NOTICE("[user] removes \the [src]'s IFF tag."), SPAN_NOTICE("You remove \the [src]'s IFF tag."), max_distance = 3)
+		if(src.hive.hivenumber == XENO_HIVE_RENEGADE) //it's important to know their IFF settings for renegade
+			to_chat(src, SPAN_NOTICE("Your IFF tag was removed. You can now attack anyone."))
 		return
 	return ..()
 

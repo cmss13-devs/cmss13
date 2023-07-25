@@ -577,40 +577,35 @@
 	icon_state = "pill_canister11"
 	max_storage_space = 5
 	skilllock = SKILL_MEDICAL_DEFAULT //CL can open it
-	var/idlock = 1
+	var/idlock = TRUE
 	pill_type_to_fill = /obj/item/reagent_container/pill/ultrazine/unmarked
 	display_maptext = FALSE //for muh corporate secrets - Stan_Albatross
 
-	req_access = list(ACCESS_WY_EXEC, ACCESS_WY_RESEARCH)
-	var/req_role = JOB_CORPORATE_LIAISON
+	req_one_access = list(ACCESS_WY_EXEC, ACCESS_WY_RESEARCH)
 	black_market_value = 35
 
 
 /obj/item/storage/pill_bottle/ultrazine/proc/id_check(mob/user)
 
 	if(!idlock)
-		return 1
+		return TRUE
 
 	var/mob/living/carbon/human/H = user
 
 	if(!allowed(user))
 		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
-		return 0
+		return FALSE
 
 	var/obj/item/card/id/I = H.wear_id
 	if(!istype(I)) //not wearing an ID
 		to_chat(H, SPAN_NOTICE("It must have some kind of ID lock..."))
-		return 0
+		return FALSE
 
 	if(I.registered_name != H.real_name)
 		to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
-		return 0
+		return FALSE
 
-	if(req_role && I.rank != req_role)
-		to_chat(H, SPAN_NOTICE("It must have some kind of ID lock..."))
-		return 0
-
-	return 1
+	return TRUE
 
 /obj/item/storage/pill_bottle/ultrazine/attack_self(mob/living/user)
 	if(!id_check(user))
@@ -624,7 +619,7 @@
 
 /obj/item/storage/pill_bottle/ultrazine/skillless
 	name = "\improper Ultrazine pill bottle"
-	idlock = 0
+	idlock = FALSE
 	display_maptext = TRUE
 	maptext_label = "Uz"
 

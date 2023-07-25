@@ -149,7 +149,7 @@
 		if (H.wear_id)
 			var/obj/item/card/id/id = H.wear_id
 			id.icon_state = "gold"
-			id:access = get_global_access()
+			id:access = get_access(ACCESS_LIST_GLOBAL)
 		else
 			var/obj/item/card/id/id = new/obj/item/card/id(M);
 			id.icon_state = "gold"

@@ -39,7 +39,7 @@
 
 /datum/equipment_preset/uscm_event/colonel/New()
 	. = ..()
-	access = get_global_access()
+	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/uscm_event/colonel/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom(new_human), WEAR_L_EAR)
@@ -74,7 +74,7 @@
 
 /datum/equipment_preset/uscm_event/general/New()
 	. = ..()
-	access = get_global_access()
+	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/uscm_event/general/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
@@ -206,7 +206,7 @@
 
 /datum/equipment_preset/uscm_event/provost/New()
 	. = ..()
-	access = get_global_access()
+	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/uscm_event/provost/enforcer
 	name = "Provost Enforcer (ME5)"
@@ -485,7 +485,7 @@
 
 /datum/equipment_preset/uscm_event/uaac/tis/New()
 	. = ..()
-	access = get_global_access()
+	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/uscm_event/uaac/tis/io
 	name = "UAAC-TIS Intelligence Officer (NO2)"

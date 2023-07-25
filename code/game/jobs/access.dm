@@ -97,7 +97,7 @@
 /proc/get_access(access_list = ACCESS_LIST_GLOBAL)
 	switch(access_list)
 		if(ACCESS_LIST_GLOBAL)
-			return get_access(ACCESS_LIST_MARINE_ALL) + get_access(ACCESS_LIST_WY_ALL) + get_access(ACCESS_LIST_COLONIAL_ALL)
+			return list(ACCESS_ILLEGAL_PIRATE) + get_access(ACCESS_LIST_MARINE_ALL) + get_access(ACCESS_LIST_WY_ALL) + get_access(ACCESS_LIST_COLONIAL_ALL)
 		if(ACCESS_LIST_MARINE_MAIN)
 			return list(
 				ACCESS_MARINE_SENIOR,
@@ -143,7 +143,18 @@
 				ACCESS_MARINE_AI_TEMP,
 			) + get_access(ACCESS_LIST_MARINE_MAIN)
 
-		if(ACCESS_LIST_WY_LIAISON)
+		if(ACCESS_LIST_EMERGENCY_RESPONSE)
+			return list(
+				ACCESS_MARINE_MAINT,
+				ACCESS_MARINE_MEDBAY,
+				ACCESS_MARINE_KITCHEN,
+				ACCESS_PRESS,
+			)
+
+		if(ACCESS_LIST_UA)
+			return get_access(ACCESS_LIST_MARINE_MAIN) + get_access(ACCESS_LIST_COLONIAL_ALL)
+
+		if(ACCESS_LIST_MARINE_LIAISON)
 			return list(
 				ACCESS_WY_GENERAL,
 				ACCESS_WY_COLONIAL,
@@ -166,6 +177,17 @@
 				ACCESS_CIVILIAN_COMMAND,
 			)
 
+		if(ACCESS_LIST_DELIVERY)
+			return list(
+				ACCESS_MARINE_COMMAND,
+				ACCESS_MARINE_CARGO,
+				ACCESS_CIVILIAN_PUBLIC,
+				ACCESS_CIVILIAN_RESEARCH,
+				ACCESS_CIVILIAN_ENGINEERING,
+				ACCESS_CIVILIAN_LOGISTICS,
+			)
+
+
 		if(ACCESS_LIST_WY_ALL)
 			return list(
 				ACCESS_WY_GENERAL,
@@ -184,20 +206,22 @@
 				ACCESS_WY_SENIOR_LEAD,
 			)
 
+		if(ACCESS_LIST_WY_BASE)
+			return list(
+				ACCESS_WY_GENERAL,
+				ACCESS_WY_COLONIAL,
+			) + get_access(ACCESS_LIST_COLONIAL_ALL)
+
 		if(ACCESS_LIST_WY_PMC)
 			return list(
 				ACCESS_WY_GENERAL,
 				ACCESS_WY_COLONIAL,
 				ACCESS_WY_SECURITY,
 				ACCESS_WY_RESEARCH,
-				ACCESS_MARINE_RESEARCH,
 				ACCESS_WY_ARMORY,
 				ACCESS_WY_PMC,
-			) + get_access(ACCESS_LIST_COLONIAL_ALL)
+			) + get_access(ACCESS_LIST_COLONIAL_ALL) + get_access(ACCESS_LIST_EMERGENCY_RESPONSE)
 
-///Grants access to EVERYWHERE
-/proc/get_global_access()
-	return get_access(ACCESS_LIST_MARINE_ALL) + get_access(ACCESS_LIST_COLONIAL_ALL) + get_access(ACCESS_LIST_WY_ALL) + list(ACCESS_ILLEGAL_PIRATE)
 ///Grants standard access for all factions, does not include high restrictions like COs office.
 /proc/get_all_main_access()
 	return get_antagonist_access() + get_access(ACCESS_LIST_COLONIAL_ALL) + get_access(ACCESS_LIST_WY_ALL)
@@ -205,14 +229,6 @@
 ///CLF & UPP, UPP Commandos have global.
 /proc/get_antagonist_access()
 	return get_access(ACCESS_LIST_MARINE_MAIN) + list(ACCESS_ILLEGAL_PIRATE)
-
-///This is only used by USCM ERTs at present
-/proc/get_friendly_ert_access()
-	return get_access(ACCESS_LIST_MARINE_MAIN) + get_access(ACCESS_LIST_COLONIAL_ALL)
-
-///Pizza and Souto
-/proc/get_civil_ert_access()
-	return list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_CARGO, ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 
 /proc/get_region_accesses(code)
 	switch(code)
@@ -234,7 +250,7 @@
 				ACCESS_MARINE_RO,
 				ACCESS_MARINE_CARGO,
 				ACCESS_MARINE_SEA,
-				ACCESS_MARINE_SYNTH
+				ACCESS_MARINE_SYNTH,
 			)
 		if(6)//Marines
 			return list(
@@ -245,7 +261,7 @@
 				ACCESS_MARINE_LEADER,
 				ACCESS_MARINE_SPECPREP,
 				ACCESS_MARINE_TL_PREP,
-				ACCESS_MARINE_KITCHEN
+				ACCESS_MARINE_KITCHEN,
 			)
 		if(7)//Squads
 			return list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)

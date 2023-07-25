@@ -102,15 +102,27 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 //See /proc/get_access(access_list = ACCESS_LIST_GLOBAL)
 ///Well... everything (non Yautja).
 #define ACCESS_LIST_GLOBAL "EVERYTHING"
+
 ///Most of the USCM Access Levels used on the USS Almayer, excluding highly restricted ones.
-#define ACCESS_LIST_MARINE_MAIN "Marine Main"
+#define ACCESS_LIST_MARINE_MAIN "Almayer (Main)"
 ///All USCM Access levels used on the USS Almayer
-#define ACCESS_LIST_MARINE_ALL "Marine All"
-///Used by the WY-USCM Liaison
-#define ACCESS_LIST_WY_LIAISON "Corp Liaison"
-///Weyland Yutani PMCs access.
-#define ACCESS_LIST_WY_PMC "PMC"
+#define ACCESS_LIST_MARINE_ALL "Almayer (ALL)"
+///Used by the Wey-Yu - USCM Liaison
+#define ACCESS_LIST_MARINE_LIAISON "Wey-Yu (Liaison)"
+
+///The accesses granted to emergency responders.
+#define ACCESS_LIST_EMERGENCY_RESPONSE "Almayer (ERT)"
+///Access used by United Americas responders.
+#define ACCESS_LIST_UA "United Americas"
+
+///Generic/basic access to Wey-Yu stuff
+#define ACCESS_LIST_WY_BASE "Wey-Yu (Basic)"
+///Wey-Yu PMCs access.
+#define ACCESS_LIST_WY_PMC "Wey-Yu (PMC)"
 ///All access levels associated with Weyland Yutani
-#define ACCESS_LIST_WY_ALL "All WY"
+#define ACCESS_LIST_WY_ALL "Wey-Yu (ALL)"
+
 ///All the access levels in the civillian category, excluding Press.
 #define ACCESS_LIST_COLONIAL_ALL "Colonial All"
+///The access used by delivery ERT (Pizza/Souto)
+#define ACCESS_LIST_DELIVERY "Delivery"

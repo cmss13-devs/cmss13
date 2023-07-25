@@ -72,7 +72,7 @@
 
 /datum/equipment_preset/uscm_ship/liaison/New()
 	. = ..()
-	access = get_access(ACCESS_LIST_WY_LIAISON)
+	access = get_access(ACCESS_LIST_MARINE_LIAISON)
 
 /datum/equipment_preset/uscm_ship/liaison/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel/lockable/liaison

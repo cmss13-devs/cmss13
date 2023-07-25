@@ -562,7 +562,7 @@
 
 /datum/equipment_preset/other/pizza/New()
 	. = ..()
-	access = get_civil_ert_access()
+	access = get_access(ACCESS_LIST_DELIVERY)
 
 /datum/equipment_preset/other/pizza/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE,FEMALE)
@@ -607,7 +607,7 @@
 
 /datum/equipment_preset/other/souto/New()
 	. = ..()
-	access = get_civil_ert_access()
+	access = get_access(ACCESS_LIST_DELIVERY)
 
 /datum/equipment_preset/other/souto/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE

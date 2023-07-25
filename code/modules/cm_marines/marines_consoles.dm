@@ -594,11 +594,11 @@
 /obj/structure/machinery/computer/squad_changer/ui_static_data(mob/user)
 	var/list/data = list()
 	var/list/squads = list()
-	for(var/datum/squad/S in RoleAuthority.squads)
-		if(S.name != "Root" && !S.locked && S.active && S.faction == faction)
+	for(var/datum/squad/current_squad in RoleAuthority.squads)
+		if(current_squad.name != "Root" && !current_squad.locked && current_squad.active && current_squad.faction == faction)
 			var/list/squad = list(list(
-				"name" = S.name,
-				"color" = S.color-1
+				"name" = current_squad.name,
+				"color" = current_squad.equipment_color
 			))
 			squads += squad
 	data["squads"] = squads

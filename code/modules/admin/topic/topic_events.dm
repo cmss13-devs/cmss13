@@ -22,6 +22,8 @@
 			owner.award_medal()
 		if("jelly")
 			owner.award_jelly()
+		if("nuke")
+			owner.give_nuke()
 		if("pmcguns")
 			owner.toggle_gun_restrictions()
 		if("monkify")

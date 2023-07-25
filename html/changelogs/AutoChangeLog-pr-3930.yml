@@ -1,0 +1,6 @@
+author: "QuickLode"
+delete-after: True
+changes:
+  - rscadd: "Radio titles for W-Y prepositioned Synthetics"
+  - qol: "Swaps PMC Synthetic autocompressor for a crew monitor to facilitate search and rescue."
+  - bugfix: "fixes PMC Synthetic ID & removes redundant graft"

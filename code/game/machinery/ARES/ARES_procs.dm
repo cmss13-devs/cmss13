@@ -4,12 +4,13 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	"Shattered Glass",
 	"Minor Structural Damage",
 	"Major Structural Damage",
+	"Janitorial",
 	"Chemical Spill",
 	"Fire",
-	"Power Failure",
 	"Communications Failure",
 	"Power Generation Failure",
 	"Electrical Fault",
+	"Support",
 	"Other"
 	))
 
@@ -500,6 +501,19 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			current_menu = "read_deleted"
 
 		// -- Emergency Buttons -- //
+		if("general_quarters")
+			if(security_level == SEC_LEVEL_RED || security_level == SEC_LEVEL_DELTA)
+				to_chat(usr, SPAN_WARNING("Alert level is already red or above, General Quarters cannot be called."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			set_security_level(2, no_sound = TRUE, announce = FALSE)
+			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
+			log_game("[key_name(usr)] has called for general quarters via ARES.")
+			message_admins("[key_name_admin(usr)] has called for general quarters via ARES.")
+			var/datum/ares_link/link = GLOB.ares_link
+			link.log_ares_security("General Quarters", "[last_login] has called for general quarters via ARES.")
+			. = TRUE
+
 		if("evacuation_start")
 			if(security_level < SEC_LEVEL_RED)
 				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
@@ -856,7 +870,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			var/priority_report = FALSE
 			var/maint_type = tgui_input_list(operator, "What is the type of maintenance item you wish to report?", "Report Category", GLOB.maintenance_categories, 30 SECONDS)
 			switch(maint_type)
-				if("Major Structural Damage", "Communications Failure",	"Power Generation Failure")
+				if("Major Structural Damage", "Fire", "Communications Failure",	"Power Generation Failure")
 					priority_report = TRUE
 
 			if(!maint_type)
@@ -956,6 +970,86 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 					log_game("ARES: Access Ticket '\ref[access_ticket]' created by [key_name(operator)] as [last_login] with Holder '[ticket_holder]' and Details of '[details]'.")
 					return TRUE
 			return FALSE
+
+		if("claim_ticket")
+			var/datum/ares_ticket/ticket = locate(params["ticket"])
+			if(!istype(ticket))
+				return FALSE
+			var/claim = TRUE
+			var/assigned = ticket.ticket_assignee
+			if(assigned)
+				if(assigned == last_login)
+					var/prompt = tgui_alert(usr, "You already claimed this ticket! Do you wish to drop your claim?", "Unclaim ticket", list("Yes", "No"))
+					if(prompt != "Yes")
+						return FALSE
+					/// set ticket back to pending
+					ticket.ticket_assignee = null
+					ticket.ticket_status = TICKET_PENDING
+					return claim
+				var/choice = tgui_alert(usr, "This ticket has already been claimed by [assigned]! Do you wish to override their claim?", "Claim Override", list("Yes", "No"))
+				if(choice != "Yes")
+					claim = FALSE
+			if(claim)
+				ticket.ticket_assignee = last_login
+				ticket.ticket_status = TICKET_ASSIGNED
+			return claim
+
+		if("cancel_ticket")
+			var/datum/ares_ticket/ticket = locate(params["ticket"])
+			if(!istype(ticket))
+				return FALSE
+			if(ticket.ticket_submitter != last_login)
+				to_chat(usr, SPAN_WARNING("You cannot cancel a ticket that does not belong to you!"))
+				return FALSE
+			to_chat(usr, SPAN_WARNING("[ticket.ticket_type] [ticket.ticket_id] has been cancelled."))
+			ticket.ticket_status = TICKET_CANCELLED
+			if(ticket.ticket_priority)
+				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been cancelled.")
+			return TRUE
+
+		if("mark_ticket")
+			var/datum/ares_ticket/ticket = locate(params["ticket"])
+			if(!istype(ticket))
+				return FALSE
+			if(ticket.ticket_assignee != last_login && ticket.ticket_assignee) //must be claimed by you or unclaimed.)
+				to_chat(usr, SPAN_WARNING("You cannot update a ticket that is not assigned to you!"))
+				return FALSE
+			var/choice = tgui_alert(usr, "What do you wish to mark the ticket as?", "Mark", list(TICKET_COMPLETED, TICKET_REJECTED), 20 SECONDS)
+			switch(choice)
+				if(TICKET_COMPLETED)
+					ticket.ticket_status = TICKET_COMPLETED
+				if(TICKET_REJECTED)
+					ticket.ticket_status = TICKET_REJECTED
+				else
+					return FALSE
+			if(ticket.ticket_priority)
+				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by [last_login].")
+			to_chat(usr, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
+			return TRUE
+
+		if("new_access")
+			var/priority_report = FALSE
+			var/ticket_holder = tgui_input_text(operator, "Who is the ticket for?", "Ticket Holder", encode = FALSE)
+			if(!ticket_holder)
+				return FALSE
+			var/details = tgui_input_text(operator, "What is the purpose of this access ticket?", "Ticket Details", encode = FALSE)
+			if(!details)
+				return FALSE
+
+			if(authentication >= APOLLO_ACCESS_AUTHED)
+				var/is_priority = tgui_alert(operator, "Is this a priority request?", "Priority designation", list("Yes", "No"))
+				if(is_priority == "Yes")
+					priority_report = TRUE
+
+			var/confirm = alert(operator, "Please confirm the submission of your access ticket request. \n\n Priority: [priority_report ? "Yes" : "No"] \n Holder: '[ticket_holder]' \n Details: '[details]' \n\n Is this correct?", "Confirmation", "Yes", "No")
+			if(confirm != "Yes" || !link)
+				return FALSE
+			var/datum/ares_ticket/access/access_ticket = new(last_login, ticket_holder, details, priority_report)
+			link.tickets_access += access_ticket
+			if(priority_report)
+				ares_apollo_talk("Priority Access Request: [ticket_holder] - ID [access_ticket.ticket_id]. Seek and resolve.")
+			log_game("ARES: Access Ticket '\ref[access_ticket]' created by [key_name(operator)] as [last_login] with Holder '[ticket_holder]' and Details of '[details]'.")
+			return TRUE
 
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)

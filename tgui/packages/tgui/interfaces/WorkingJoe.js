@@ -586,13 +586,11 @@ const MaintManagement = (props, context) => {
             view_icon = 'circle-check';
           }
           let can_claim = 'Yes';
-          if (ticket.assignee === logged_in) {
-            can_claim = 'No';
-          } else if (ticket.lock_status === 'CLOSED') {
+          if (ticket.lock_status === 'CLOSED') {
             can_claim = 'No';
           }
           let can_mark = 'Yes';
-          if (ticket.assignee !== logged_in) {
+          if (ticket.assignee !== logged_in && ticket.assignee !== null) {
             can_mark = 'No';
           } else if (ticket.lock_status === 'CLOSED') {
             can_mark = 'No';

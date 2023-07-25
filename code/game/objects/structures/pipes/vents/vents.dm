@@ -145,7 +145,7 @@
 	gas_holder = spreader
 	spreader.attach(src)
 
-	new /obj/effect/warning/explosive/gas(src.loc, warning_time)
+	new /obj/effect/warning/explosive/gas(loc, warning_time)
 	visible_message(SPAN_HIGHDANGER("[src] begins to hiss as gas builds up within it."), SPAN_HIGHDANGER("You hear a hissing."), radius)
 	addtimer(CALLBACK(src, PROC_REF(release_gas), radius), warning_time)
 
@@ -153,6 +153,6 @@
 	radius = Clamp(radius, 1, 10)
 	if(!gas_holder || welded)
 		return FALSE
-	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
+	playsound(loc, 'sound/effects/smoke.ogg', 25, 1, 4)
 	gas_holder.set_up(radius, 0, get_turf(src), null, 10 SECONDS)
 	gas_holder.start()

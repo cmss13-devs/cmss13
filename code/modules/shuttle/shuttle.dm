@@ -635,7 +635,7 @@
 			var/mob/dead/observer/obs = mob.ghostize(FALSE)
 			if(obs)
 				obs.timeofdeath = world.time
-				obs.client?.player_details.larva_queue_time = world.time
+				obs.client?.player_details.larva_queue_time = max(obs.client.player_details.larva_queue_time, world.time)
 			mob.moveToNullspace()
 
 	// Now that mobs are stowed, delete the shuttle

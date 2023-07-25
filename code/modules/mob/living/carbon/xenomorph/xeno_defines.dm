@@ -1266,7 +1266,7 @@
 	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
 
-/datum/hive_status/corrupted/tamed/New()
+/datum/hive_status/corrupted/renegade/New()
 	. = ..()
 	hive_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0
 	hive_structures_limit[XENO_STRUCTURE_EVOPOD] = 0

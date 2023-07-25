@@ -40,6 +40,7 @@
 // General effects
 	affected_mob.last_damage_data = cause_data
 	affected_mob.apply_stamina_damage(stam_dam)
+	affected_mob.make_dizzy(12)
 
 // Effect levels (shit that doesn't stack)
 	switch(duration)
@@ -101,6 +102,7 @@
 		step(affected_mob, pick(CARDINAL_ALL_DIRS))
 		affected_mob.apply_effect(5, DAZE) // Unable to talk and weldervision
 		affected_mob.make_jittery(25)
+		affected_mob.make_dizzy(55)
 		affected_mob.emote("pain")
 		stumble = FALSE
 		addtimer(VARSET_CALLBACK(src,stumble,TRUE),3 SECONDS)

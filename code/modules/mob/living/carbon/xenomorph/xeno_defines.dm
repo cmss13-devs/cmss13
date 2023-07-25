@@ -342,7 +342,7 @@
 
 	var/list/banished_ckeys = list()
 
-	var/list/deflectors = list()
+	var/list/renegades = list()
 
 	var/hivecore_cooldown = FALSE
 
@@ -1300,19 +1300,19 @@
 			continue
 		if(!(faction in xeno.iff_tag.faction_groups))
 			continue
-		if(xeno in deflectors)
+		if(xeno in renegades)
 			continue
 		if(xeno.caste_type == XENO_CASTE_QUEEN)
 			continue
 		INVOKE_ASYNC(src, PROC_REF(give_deflection_choice), xeno, faction)
-	addtimer(CALLBACK(src, PROC_REF(handle_deflectors), faction), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(handle_renegades), faction), 10 SECONDS)
 
 /datum/hive_status/proc/give_deflection_choice(mob/living/carbon/xenomorph/xeno, faction)
-	if(alert(xeno, "Your Queen has broken alliance with [faction]. Your IFF tag begins to suppress your connection with the hive. Do you wish to remove the tag and stay with Queen or deflect? You have 10 seconds to decide.", "Choose", "Stay with Queen", "Stay with your masters") == "Stay with your masters")
+	if(alert(xeno, "Your Queen has broken alliance with [faction]. Your IFF tag begins to suppress your connection with the hive. Do you wish to remove the tag and stay with Queen or do you wish to stay loyal to your new masters? You have 10 seconds to decide.", "Choose", "Stay with Queen", "Stay with your masters") == "Stay with your masters")
 		if(!xeno.iff_tag)
 			to_chat(xeno, SPAN_XENOWARNING("It's too late now. Your IFF tag is broken and your service to the Queen continues."))
 			return
-		deflectors += xeno
+		renegades += xeno
 		xeno.set_hive_and_update(XENO_HIVE_RENEGADE)
 		to_chat(xeno, SPAN_XENOANNOUNCE("You lost connection with your hive. Now there is no Queen, only masters."))
 		return
@@ -1321,7 +1321,7 @@
 	xeno.iff_tag = null
 
 
-/datum/hive_status/proc/handle_deflectors(faction)
+/datum/hive_status/proc/handle_renegades(faction)
 	for(var/mob/living/carbon/xenomorph/xeno in totalXenos)
 		if(!xeno)
 			continue
@@ -1329,18 +1329,18 @@
 			continue
 		if(!xeno.iff_tag)
 			continue
-		if(xeno in deflectors)
+		if(xeno in renegades)
 			continue
 		if(!(faction in xeno.iff_tag.faction_groups))
 			continue
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
 		xeno.iff_tag = null
 
-	if(deflectors.len < 1)
+	if(renegades.len < 1)
 		return
 
-	xeno_message(SPAN_XENOANNOUNCE("You sense that [deflectors.Join(", ")] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
-	deflectors = list()
+	xeno_message(SPAN_XENOANNOUNCE("You sense that [renegades.Join(", ")] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
+	renegades = list()
 
 //Xeno Resin Mark Shit, the very best place for it too :0)
 //Defines at the bottom of this list here will show up at the top in the mark menu

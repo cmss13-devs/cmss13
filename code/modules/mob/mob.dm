@@ -612,13 +612,18 @@ note dizziness decrements automatically in the mob's Life() proc.
 			var/amplitude = dizziness*(sin(dizziness * 0.044 * world.time) + 1) / 70
 			client.pixel_x = amplitude * sin(0.008 * dizziness * world.time)
 			client.pixel_y = amplitude * cos(0.008 * dizziness * world.time)
-
+			if(!buckled && !resting && prob(1))
+				to_chat(src, "The dizziness is becoming unbearable! It should pass faster if you lie down.")
+		if(buckled || resting)
+			client.pixel_x = 0
+			client.pixel_y = 0
 		sleep(1)
 	//endwhile - reset the pixel offsets to zero
 	is_dizzy = 0
 	if(client)
 		client.pixel_x = 0
 		client.pixel_y = 0
+		to_chat(src, "The dizziness has passed, you're starting to feel better.")
 
 // jitteriness - copy+paste of dizziness
 

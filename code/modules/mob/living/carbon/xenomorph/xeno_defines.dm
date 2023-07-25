@@ -295,6 +295,7 @@
 	var/evolution_bonus = 0
 
 	var/allow_no_queen_actions = FALSE
+	var/allow_no_queen_evo = FALSE
 	var/evolution_without_ovipositor = TRUE //Temporary for the roundstart.
 	/// Set to false if you want to prevent evolutions into Queens
 	var/allow_queen_evolve = TRUE
@@ -1183,6 +1184,7 @@
 	destruction_allowed = XENO_NOBODY
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
+	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
@@ -1197,6 +1199,7 @@
 
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
+	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
@@ -1214,6 +1217,7 @@
 
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
+	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
@@ -1243,6 +1247,7 @@
 
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
+	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
@@ -1308,6 +1313,7 @@
 
 	dynamic_evolution = FALSE
 	allow_queen_evolve = FALSE
+	allow_no_queen_evo = TRUE
 	latejoin_burrowed = FALSE
 
 /datum/hive_status/corrupted/renegade/New()

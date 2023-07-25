@@ -211,8 +211,6 @@
 
 		if(!evolution_ovipositor_threshold && world.time >= SSticker.round_start_time + round_time_evolution_ovipositor)
 			for(var/hivenumber in GLOB.hive_datum)
-				if(hivenumber == XENO_HIVE_RENEGADE)
-					continue //renegades can keep evolving w/o ovipositor
 				hive = GLOB.hive_datum[hivenumber]
 				hive.evolution_without_ovipositor = FALSE
 				if(hive.living_xeno_queen && !hive.living_xeno_queen.ovipositor)

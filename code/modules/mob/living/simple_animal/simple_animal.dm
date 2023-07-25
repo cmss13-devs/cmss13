@@ -353,9 +353,6 @@
 	if(stat)
 		return
 
-	if(speak_emote.len)
-		verb = pick(speak_emote)
-
 	message = capitalize(trim_left(message))
 
 	..(message) //if the animal has a ckey then it will log the message

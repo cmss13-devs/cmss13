@@ -382,6 +382,7 @@
 	name = "Hide"
 	action_icon_state = "xenohide"
 	plasma_cost = 0
+	xeno_cooldown = 0.5 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_hide
 	action_type = XENO_ACTION_CLICK
 	listen_signal = COMSIG_KB_XENO_HIDE
@@ -390,6 +391,15 @@
 	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
+
+/// remove hide and apply modified attack cooldown
+/datum/action/xeno_action/onclick/xenohide/proc/post_attack()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno.layer == XENO_HIDING_LAYER)
+		xeno.layer = initial(xeno.layer)
+		button.icon_state = "template"
+		xeno.update_wounds()
+	apply_cooldown(4) //2 second cooldown after attacking
 
 /datum/action/xeno_action/onclick/xenohide/give_to(mob/living/living_mob)
 	. = ..()

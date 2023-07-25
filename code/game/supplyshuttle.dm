@@ -191,11 +191,11 @@ var/datum/controller/supply/supply_controller = new()
 	var/list/data = list()
 
 	var/list/squad_list = list()
-	for(var/datum/squad/S in RoleAuthority.squads)
-		if(S.active && S.faction == faction && S.color)
+	for(var/datum/squad/current_squad in RoleAuthority.squads)
+		if(current_squad.active && current_squad.faction == faction && current_squad.equipment_color)
 			squad_list += list(list(
-				"squad_name" = S.name,
-				"squad_color" = squad_colors[S.color]
+				"squad_name" = current_squad.name,
+				"squad_color" = current_squad.equipment_color
 				))
 
 	data["can_pick_squad"] = can_pick_squad

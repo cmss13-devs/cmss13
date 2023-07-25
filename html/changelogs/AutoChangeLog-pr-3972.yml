@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscadd: "Added the debug verb Mass-Screenshot and a python script MapTileImageTool to combine those images into a single full image map."

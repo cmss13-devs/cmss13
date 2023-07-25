@@ -396,11 +396,9 @@
 		return
 
 	if(X.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
-		X.layer = MOB_LAYER
-		X.update_wounds()
-		var/datum/action/hide_ability = get_xeno_action_by_type(X, /datum/action/xeno_action/onclick/xenohide)
-		if(hide_ability)
-			hide_ability.button.icon_state = "template"
+		var/datum/action/xeno_action/onclick/xenohide/hide = get_xeno_action_by_type(X, /datum/action/xeno_action/onclick/xenohide)
+		if(hide)
+			hide.post_attack()
 
 	if(isravager(X))
 		X.emote("roar")
@@ -508,6 +506,8 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno.check_state(TRUE))
 		return
+	if (!action_cooldown_check())
+		return
 	if(xeno.layer != XENO_HIDING_LAYER)
 		xeno.layer = XENO_HIDING_LAYER
 		to_chat(xeno, SPAN_NOTICE("You are now hiding."))
@@ -517,6 +517,7 @@
 		to_chat(xeno, SPAN_NOTICE("You have stopped hiding."))
 		button.icon_state = "template"
 	xeno.update_wounds()
+	apply_cooldown()
 	return ..()
 
 /datum/action/xeno_action/onclick/place_trap/use_ability(atom/A)

@@ -367,7 +367,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	overlays_standing[GLOVES_LAYER] = I
 	apply_overlay(GLOVES_LAYER)
 
-
 /mob/living/carbon/human/update_inv_glasses()
 	remove_overlay(GLASSES_LAYER)
 	if(glasses)
@@ -458,12 +457,15 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		if(istype(head, /obj/item/clothing/head/helmet/marine))
 			var/obj/item/clothing/head/helmet/marine/marine_helmet = head
 			if(assigned_squad && marine_helmet.flags_marine_helmet & HELMET_SQUAD_OVERLAY)
-				var/datum/squad/S = assigned_squad
-				var/leader = S.squad_leader == src
-				if(S.color <= helmetmarkings.len)
-					var/image/J = leader? helmetmarkings_sql[S.color] : helmetmarkings[S.color]
-					J.layer = -HEAD_SQUAD_LAYER
-					overlays_standing[HEAD_SQUAD_LAYER] = J
+				if(assigned_squad && assigned_squad.equipment_color)
+					var/leader = assigned_squad.squad_leader
+					var/image/helmet_overlay = image(marine_helmet.helmet_overlay_icon, icon_state = "std-helmet")
+					if(leader == src)
+						helmet_overlay = image(marine_helmet.helmet_overlay_icon, icon_state = "sql-helmet")
+					helmet_overlay.layer = -HEAD_SQUAD_LAYER
+					helmet_overlay.alpha = assigned_squad.armor_alpha
+					helmet_overlay.color = assigned_squad.equipment_color
+					overlays_standing[HEAD_SQUAD_LAYER] = helmet_overlay
 					apply_overlay(HEAD_SQUAD_LAYER)
 
 			var/num_helmet_overlays = 0
@@ -517,14 +519,16 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		if(istype(wear_suit, /obj/item/clothing/suit/storage/marine))
 			var/obj/item/clothing/suit/storage/marine/marine_armor = wear_suit
 			if(marine_armor.flags_marine_armor & ARMOR_SQUAD_OVERLAY)
-				if(assigned_squad)
-					var/datum/squad/S = assigned_squad
-					var/leader = S.squad_leader == src
-					if(S.color <= helmetmarkings.len)
-						var/image/J = leader? armormarkings_sql[S.color] : armormarkings[S.color]
-						J.layer = -SUIT_SQUAD_LAYER
-						overlays_standing[SUIT_SQUAD_LAYER] = J
-						apply_overlay(SUIT_SQUAD_LAYER)
+				if(assigned_squad && assigned_squad.equipment_color)
+					var/leader = assigned_squad.squad_leader
+					var/image/squad_overlay = image(marine_armor.squad_overlay_icon, icon_state = "std-armor")
+					if(leader == src)
+						squad_overlay = image(marine_armor.squad_overlay_icon, icon_state = "sql-armor")
+					squad_overlay.layer = -SUIT_SQUAD_LAYER
+					squad_overlay.alpha = assigned_squad.armor_alpha
+					squad_overlay.color = assigned_squad.equipment_color
+					overlays_standing[SUIT_SQUAD_LAYER] = squad_overlay
+					apply_overlay(SUIT_SQUAD_LAYER)
 
 			if(marine_armor.armor_overlays.len)
 				var/image/K

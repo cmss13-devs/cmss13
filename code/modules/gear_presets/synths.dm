@@ -141,7 +141,7 @@
 
 /datum/equipment_preset/synth/survivor/New()
 	. = ..()
-	access = get_all_civilian_access() + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH + ACCESS_WY_CORPORATE //Access to civillians stuff + medbay stuff + engineering stuff + research
+	access = get_access(ACCESS_LIST_COLONIAL_ALL) + get_region_accesses(2) + get_region_accesses(4) + ACCESS_MARINE_RESEARCH //Access to civillians stuff + medbay stuff + engineering stuff + research
 
 /datum/equipment_preset/synth/survivor/load_gear(mob/living/carbon/human/new_human)
 	for(var/equipment in equipment_to_spawn)

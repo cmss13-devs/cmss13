@@ -41,7 +41,7 @@
 
 /datum/equipment_preset/wo/commander/New()
 	. = ..()
-	access = get_all_marine_access()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /datum/equipment_preset/wo/commander/load_gear(mob/living/carbon/human/new_human)
 	var/sidearm = "Mateba"
@@ -109,7 +109,7 @@
 
 /datum/equipment_preset/wo/xo/New()
 	. = ..()
-	access = get_main_marine_access()
+	access = get_access(ACCESS_LIST_MARINE_MAIN)
 
 /datum/equipment_preset/wo/xo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -580,9 +580,9 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(
-		ACCESS_WY_CORPORATE, ACCESS_ILLEGAL_PIRATE, ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP,
+		ACCESS_WY_GENERAL, ACCESS_ILLEGAL_PIRATE, ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_RESEARCH, ACCESS_MARINE_MEDBAY, ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
+		ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS, ACCESS_COME_BACK_TO_ME)
 	assignment = JOB_WO_CORPORATE_LIAISON
 	rank = JOB_WO_CORPORATE_LIAISON
 	paygrade = "WYC2"

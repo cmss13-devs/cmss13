@@ -467,12 +467,12 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_WY_PMC_GREEN,
-		ACCESS_WY_PMC_ORANGE,
-		ACCESS_WY_PMC_RED,
-		ACCESS_WY_PMC_BLACK,
-		ACCESS_WY_PMC_WHITE,
-		ACCESS_WY_CORPORATE,
+		ACCESS_WY_MEDICAL,
+		ACCESS_WY_ENGINEERING,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_LEADERSHIP,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_GENERAL,
 	)
 
 /datum/equipment_preset/corpse/bridgeofficer/johnson/load_gear(mob/living/carbon/human/new_human)
@@ -527,12 +527,9 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_WY_PMC_GREEN,
-		ACCESS_WY_PMC_ORANGE,
-		ACCESS_WY_PMC_RED,
-		ACCESS_WY_PMC_BLACK,
-		ACCESS_WY_PMC_WHITE,
-		ACCESS_WY_CORPORATE,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_GENERAL,
 	)
 
 /datum/equipment_preset/corpse/wysec/load_gear(mob/living/carbon/human/new_human)
@@ -629,8 +626,6 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
 	)
 
 /datum/equipment_preset/corpse/ua_riot/load_gear(mob/living/carbon/human/new_human)
@@ -678,11 +673,15 @@
 	faction_group = FACTION_LIST_WY
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(
-		ACCESS_WY_CORPORATE,
+		ACCESS_WY_GENERAL,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_LEADERSHIP,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_EXEC,
+		ACCESS_WY_RESEARCH,
+		ACCESS_WY_ENGINEERING,
+		ACCESS_WY_MEDICAL,
 		ACCESS_ILLEGAL_PIRATE,
-		ACCESS_MARINE_DROPSHIP,
-		ACCESS_MARINE_RESEARCH,
-		ACCESS_MARINE_MEDBAY,
 	)
 
 /datum/equipment_preset/corpse/wy/manager/load_gear(mob/living/carbon/human/new_human)
@@ -724,8 +723,7 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
+		ACCESS_COME_BACK_TO_ME,
 	)
 
 /datum/equipment_preset/corpse/clf/load_gear(mob/living/carbon/human/new_human)
@@ -766,8 +764,7 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
+		ACCESS_COME_BACK_TO_ME,
 	)
 
 /datum/equipment_preset/corpse/upp/load_gear(mob/living/carbon/human/new_human)
@@ -807,9 +804,16 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_WY_CORPORATE,
 		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+		ACCESS_WY_GENERAL,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_PMC,
 	)
 
 /datum/equipment_preset/corpse/pmc/load_gear(mob/living/carbon/human/new_human)
@@ -889,8 +893,7 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
+		ACCESS_COME_BACK_TO_ME,
 	)
 
 /datum/equipment_preset/corpse/freelancer/load_gear(mob/living/carbon/human/new_human)
@@ -929,8 +932,7 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
+		ACCESS_COME_BACK_TO_ME,
 	)
 
 /datum/equipment_preset/corpse/dutchrifle/load_gear(mob/living/carbon/human/new_human)
@@ -967,8 +969,7 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
+		ACCESS_COME_BACK_TO_ME,
 	)
 
 /datum/equipment_preset/corpse/pizza/load_gear(mob/living/carbon/human/new_human)
@@ -1014,7 +1015,7 @@
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
 		ACCESS_MARINE_MAINT,
-		ACCESS_WY_CORPORATE,
+		ACCESS_COME_BACK_TO_ME,
 	)
 
 /datum/equipment_preset/corpse/gladiator/load_gear(mob/living/carbon/human/new_human)

@@ -93,85 +93,122 @@
 		return
 	return 1
 
+
+/proc/get_access(access_list = ACCESS_LIST_GLOBAL)
+	switch(access_list)
+		if(ACCESS_LIST_GLOBAL)
+			return get_access(ACCESS_LIST_MARINE_ALL) + get_access(ACCESS_LIST_WY_ALL) + get_access(ACCESS_LIST_COLONIAL_ALL)
+		if(ACCESS_LIST_MARINE_MAIN)
+			return list(
+				ACCESS_MARINE_SENIOR,
+				ACCESS_MARINE_DATABASE,
+				ACCESS_MARINE_COMMAND,
+				ACCESS_MARINE_CMP,
+				ACCESS_MARINE_BRIG,
+				ACCESS_MARINE_ARMORY,
+				ACCESS_MARINE_CMO,
+				ACCESS_MARINE_MEDBAY,
+				ACCESS_MARINE_CHEMISTRY,
+				ACCESS_MARINE_MORGUE,
+				ACCESS_MARINE_RESEARCH,
+				ACCESS_MARINE_CE,
+				ACCESS_MARINE_ENGINEERING,
+				ACCESS_MARINE_MAINT,
+				ACCESS_MARINE_OT,
+				ACCESS_MARINE_RO,
+				ACCESS_MARINE_CARGO,
+				ACCESS_MARINE_PREP,
+				ACCESS_MARINE_MEDPREP,
+				ACCESS_MARINE_ENGPREP,
+				ACCESS_MARINE_SMARTPREP,
+				ACCESS_MARINE_LEADER,
+				ACCESS_MARINE_SPECPREP,
+				ACCESS_MARINE_TL_PREP,
+				ACCESS_MARINE_ALPHA,
+				ACCESS_MARINE_BRAVO,
+				ACCESS_MARINE_CHARLIE,
+				ACCESS_MARINE_DELTA,
+				ACCESS_MARINE_PILOT,
+				ACCESS_MARINE_DROPSHIP,
+				ACCESS_MARINE_SEA,
+				ACCESS_MARINE_KITCHEN,
+				ACCESS_MARINE_SYNTH,
+				ACCESS_PRESS,
+			)
+
+		if(ACCESS_LIST_MARINE_ALL)
+			return list(
+				ACCESS_MARINE_CO,
+				ACCESS_MARINE_AI,
+				ACCESS_MARINE_AI_TEMP,
+			) + get_access(ACCESS_LIST_MARINE_MAIN)
+
+		if(ACCESS_LIST_WY_LIAISON)
+			return list(
+				ACCESS_WY_GENERAL,
+				ACCESS_WY_COLONIAL,
+				ACCESS_WY_FLIGHT,
+				ACCESS_WY_RESEARCH,
+				ACCESS_WY_EXEC,
+				ACCESS_MARINE_COMMAND,
+				ACCESS_MARINE_RESEARCH,
+				ACCESS_MARINE_MEDBAY,
+			) + get_access(ACCESS_LIST_COLONIAL_ALL)
+
+		if(ACCESS_LIST_COLONIAL_ALL)
+			return list(
+				ACCESS_CIVILIAN_PUBLIC,
+				ACCESS_CIVILIAN_RESEARCH,
+				ACCESS_CIVILIAN_ENGINEERING,
+				ACCESS_CIVILIAN_LOGISTICS,
+				ACCESS_CIVILIAN_BRIG,
+				ACCESS_CIVILIAN_MEDBAY,
+				ACCESS_CIVILIAN_COMMAND,
+			)
+
+		if(ACCESS_LIST_WY_ALL)
+			return list(
+				ACCESS_WY_GENERAL,
+				ACCESS_WY_COLONIAL,
+				ACCESS_WY_MEDICAL,
+				ACCESS_WY_SECURITY,
+				ACCESS_WY_ENGINEERING,
+				ACCESS_WY_FLIGHT,
+				ACCESS_WY_RESEARCH,
+				ACCESS_WY_EXEC,
+				ACCESS_WY_PMC,
+				ACCESS_WY_PMC_TL,
+				ACCESS_WY_ARMORY,
+				ACCESS_WY_SECRETS,
+				ACCESS_WY_LEADERSHIP,
+				ACCESS_WY_SENIOR_LEAD,
+			)
+
+		if(ACCESS_LIST_WY_PMC)
+			return list(
+				ACCESS_WY_GENERAL,
+				ACCESS_WY_COLONIAL,
+				ACCESS_WY_SECURITY,
+				ACCESS_WY_RESEARCH,
+				ACCESS_MARINE_RESEARCH,
+				ACCESS_WY_ARMORY,
+				ACCESS_WY_PMC,
+			) + get_access(ACCESS_LIST_COLONIAL_ALL)
+
 ///Grants access to EVERYWHERE
 /proc/get_global_access()
-	return get_all_marine_access() + get_all_main_access()
+	return get_access(ACCESS_LIST_MARINE_ALL) + get_access(ACCESS_LIST_COLONIAL_ALL) + get_access(ACCESS_LIST_WY_ALL) + list(ACCESS_ILLEGAL_PIRATE)
 ///Grants standard access for all factions, does not include high restrictions like COs office.
 /proc/get_all_main_access()
-	return get_antagonist_access() + get_all_civilian_access() + get_all_weyland_access()
-
-/proc/get_all_civilian_access()
-	return list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
-	)
-
-///Includes restricted accesses
-/proc/get_all_marine_access()
-	return list(
-		ACCESS_MARINE_CO,
-		ACCESS_MARINE_AI,
-		ACCESS_MARINE_AI_TEMP,
-		) + get_main_marine_access()
-
-///All Almayer accesses other than the highly restricted ones, such as CO's office.
-/proc/get_main_marine_access()
-	return list(
-		ACCESS_MARINE_SENIOR,
-		ACCESS_MARINE_DATABASE,
-		ACCESS_MARINE_COMMAND,
-		ACCESS_MARINE_CMP,
-		ACCESS_MARINE_BRIG,
-		ACCESS_MARINE_ARMORY,
-		ACCESS_MARINE_CMO,
-		ACCESS_MARINE_MEDBAY,
-		ACCESS_MARINE_CHEMISTRY,
-		ACCESS_MARINE_MORGUE,
-		ACCESS_MARINE_RESEARCH,
-		ACCESS_MARINE_CE,
-		ACCESS_MARINE_ENGINEERING,
-		ACCESS_MARINE_MAINT,
-		ACCESS_MARINE_OT,
-		ACCESS_MARINE_RO,
-		ACCESS_MARINE_CARGO,
-		ACCESS_MARINE_PREP,
-		ACCESS_MARINE_MEDPREP,
-		ACCESS_MARINE_ENGPREP,
-		ACCESS_MARINE_SMARTPREP,
-		ACCESS_MARINE_LEADER,
-		ACCESS_MARINE_SPECPREP,
-		ACCESS_MARINE_TL_PREP,
-		ACCESS_MARINE_ALPHA,
-		ACCESS_MARINE_BRAVO,
-		ACCESS_MARINE_CHARLIE,
-		ACCESS_MARINE_DELTA,
-		ACCESS_MARINE_PILOT,
-		ACCESS_MARINE_DROPSHIP,
-		ACCESS_MARINE_SEA,
-		ACCESS_MARINE_KITCHEN,
-		ACCESS_MARINE_SYNTH,
-		ACCESS_PRESS,
-	)
-
-/proc/get_all_weyland_access()
-	return list(ACCESS_WY_PMC_GREEN, ACCESS_WY_PMC_ORANGE, ACCESS_WY_PMC_RED, ACCESS_WY_PMC_BLACK, ACCESS_WY_PMC_WHITE, ACCESS_WY_CORPORATE)
+	return get_antagonist_access() + get_access(ACCESS_LIST_COLONIAL_ALL) + get_access(ACCESS_LIST_WY_ALL)
 
 ///CLF & UPP, UPP Commandos have global.
 /proc/get_antagonist_access()
-	return get_main_marine_access() + list(ACCESS_ILLEGAL_PIRATE)
-
-///Used by PMCs and elite mercs.
-/proc/get_weyland_pmc_access()
-	return get_all_main_access()
+	return get_access(ACCESS_LIST_MARINE_MAIN) + list(ACCESS_ILLEGAL_PIRATE)
 
 ///This is only used by USCM ERTs at present
 /proc/get_friendly_ert_access()
-	return get_main_marine_access() + get_all_civilian_access()
+	return get_access(ACCESS_LIST_MARINE_MAIN) + get_access(ACCESS_LIST_COLONIAL_ALL)
 
 ///Pizza and Souto
 /proc/get_civil_ert_access()
@@ -179,32 +216,49 @@
 
 /proc/get_region_accesses(code)
 	switch(code)
-		if(0)
-			return get_all_main_access()
-		if(1)
-			return list(ACCESS_MARINE_CMP, ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY) // Security
-		if(2)
-			return list(ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_CHEMISTRY) // Medbay
-		if(3)
-			return list(ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE) // Research
-		if(4)
-			return list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_OT, ACCESS_MARINE_MAINT) // Engineering
-		if(5)
-			return list(ACCESS_MARINE_CO, ACCESS_MARINE_SENIOR, ACCESS_MARINE_DATABASE, ACCESS_MARINE_COMMAND, ACCESS_MARINE_RO, ACCESS_MARINE_CARGO, ACCESS_MARINE_SEA, ACCESS_MARINE_SYNTH) // Command
-		if(6)
-			return list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ENGPREP, ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_TL_PREP, ACCESS_MARINE_KITCHEN)//spess mahreens
-		if(7)
-			return list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA) // Squads
-		if(8)
+		if(0)//Everything
+			return get_access(ACCESS_LIST_COLONIAL_ALL) + get_access(ACCESS_LIST_MARINE_MAIN)
+		if(1)//Security
+			return list(ACCESS_MARINE_CMP, ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY)
+		if(2)//Medbay
+			return list(ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_CHEMISTRY)
+		if(3)//Research
+			return list(ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
+		if(4)//Engineering
+			return list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_OT, ACCESS_MARINE_MAINT)
+		if(5)//Command
 			return list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
-	) //Civilian
+				ACCESS_MARINE_SENIOR,
+				ACCESS_MARINE_DATABASE,
+				ACCESS_MARINE_COMMAND,
+				ACCESS_MARINE_RO,
+				ACCESS_MARINE_CARGO,
+				ACCESS_MARINE_SEA,
+				ACCESS_MARINE_SYNTH
+			)
+		if(6)//Marines
+			return list(
+				ACCESS_MARINE_PREP,
+				ACCESS_MARINE_MEDPREP,
+				ACCESS_MARINE_ENGPREP,
+				ACCESS_MARINE_SMARTPREP,
+				ACCESS_MARINE_LEADER,
+				ACCESS_MARINE_SPECPREP,
+				ACCESS_MARINE_TL_PREP,
+				ACCESS_MARINE_KITCHEN
+			)
+		if(7)//Squads
+			return list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
+		if(8)//Civilian
+			return list(
+				ACCESS_CIVILIAN_PUBLIC,
+				ACCESS_CIVILIAN_RESEARCH,
+				ACCESS_CIVILIAN_ENGINEERING,
+				ACCESS_CIVILIAN_LOGISTICS,
+				ACCESS_CIVILIAN_BRIG,
+				ACCESS_CIVILIAN_MEDBAY,
+				ACCESS_CIVILIAN_COMMAND,
+			)
 
 /proc/get_region_accesses_name(code)
 	switch(code)
@@ -272,12 +326,22 @@
 		if(ACCESS_MARINE_KITCHEN) return "Kitchen"
 		if(ACCESS_MARINE_SYNTH) return "Synthetic Storage"
 		if(ACCESS_MARINE_AI) return "AI Core"
+		if(ACCESS_MARINE_AI_TEMP) return "AI Access"
+		if(ACCESS_ARES_DEBUG) return "AI Debug"
 
 /proc/get_weyland_access_desc(A)
 	switch(A)
-		if(ACCESS_WY_PMC_GREEN) return "Wey-Yu PMC Green"
-		if(ACCESS_WY_PMC_ORANGE) return "Wey-Yu PMC Orange"
-		if(ACCESS_WY_PMC_RED) return "Wey-Yu PMC Red"
-		if(ACCESS_WY_PMC_BLACK) return "Wey-Yu PMC Black"
-		if(ACCESS_WY_PMC_WHITE) return "Wey-Yu PMC White"
-		if(ACCESS_WY_CORPORATE) return "Wey-Yu Executive"
+		if(ACCESS_WY_GENERAL) return "Wey-Yu General"
+		if(ACCESS_WY_COLONIAL) return "Wey-Yu Colony"
+		if(ACCESS_WY_MEDICAL) return "Wey-Yu Medical"
+		if(ACCESS_WY_SECURITY) return "Wey-Yu Security"
+		if(ACCESS_WY_ENGINEERING) return "Wey-Yu Engineering"
+		if(ACCESS_WY_FLIGHT) return "Wey-Yu Flight Control"
+		if(ACCESS_WY_RESEARCH) return "Wey-Yu Research"
+		if(ACCESS_WY_EXEC) return "Wey-Yu Corporate"
+		if(ACCESS_WY_PMC) return "Wey-Yu PMC"
+		if(ACCESS_WY_PMC_TL) return "Wey-Yu PMC Lead"
+		if(ACCESS_WY_ARMORY) return "Wey-Yu Armory"
+		if(ACCESS_WY_SECRETS) return "Wey-Yu HighSec"
+		if(ACCESS_WY_LEADERSHIP) return "Wey-Yu Leadership"
+		if(ACCESS_WY_SENIOR_LEAD) return "Wey-Yu Senior Leadership"

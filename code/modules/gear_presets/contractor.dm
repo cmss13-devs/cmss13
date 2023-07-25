@@ -598,7 +598,7 @@
 
 /datum/equipment_preset/contractor/covert/heavy/New()
 	. = ..()
-	access = get_weyland_pmc_access()
+	access = get_access(ACCESS_LIST_WY_PMC)
 
 /datum/equipment_preset/contractor/covert/heavy/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -651,7 +651,7 @@
 
 /datum/equipment_preset/contractor/covert/engi/New()
 	. = ..()
-	access = get_weyland_pmc_access()
+	access = get_access(ACCESS_LIST_WY_PMC)
 
 /datum/equipment_preset/contractor/covert/engi/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/wy_davisone, WEAR_BODY)
@@ -703,7 +703,7 @@
 
 /datum/equipment_preset/contractor/covert/medic/New()
 	. = ..()
-	access = get_weyland_pmc_access()
+	access = get_access(ACCESS_LIST_WY_PMC)
 
 /datum/equipment_preset/contractor/covert/medic/load_gear(mob/living/carbon/human/new_human)
 	//clothing

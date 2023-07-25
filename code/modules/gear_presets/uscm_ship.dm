@@ -30,7 +30,7 @@
 
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
-		ACCESS_WY_CORPORATE,
+		ACCESS_WY_GENERAL,
 		ACCESS_ILLEGAL_PIRATE,
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_RESEARCH,
@@ -41,7 +41,7 @@
 		ACCESS_CIVILIAN_LOGISTICS,
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_WY_CORPORATE_DS,
+		ACCESS_WY_FLIGHT,
 		ACCESS_CIVILIAN_COMMAND,
 	)
 	assignment = JOB_CORPORATE_LIAISON
@@ -69,6 +69,10 @@
 	dress_hat = list()
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/laceup)
+
+/datum/equipment_preset/uscm_ship/liaison/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_WY_LIAISON)
 
 /datum/equipment_preset/uscm_ship/liaison/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel/lockable/liaison
@@ -421,7 +425,7 @@
 
 /datum/equipment_preset/uscm_ship/commander/New()
 	. = ..()
-	access = get_all_marine_access()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /datum/equipment_preset/uscm_ship/commander/load_race(mob/living/carbon/human/new_human, client/mob_client)
 	..()
@@ -511,7 +515,7 @@
 
 /datum/equipment_preset/uscm_ship/xo/New()
 	. = ..()
-	access = get_main_marine_access()
+	access = get_access(ACCESS_LIST_MARINE_MAIN)
 
 /datum/equipment_preset/uscm_ship/xo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -582,7 +586,7 @@
 
 /datum/equipment_preset/uscm_ship/sea/New()
 	. = ..()
-	access = get_main_marine_access()
+	access = get_access(ACCESS_LIST_MARINE_MAIN)
 
 /datum/equipment_preset/uscm_ship/sea/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -734,7 +738,7 @@
 
 /datum/equipment_preset/uscm_ship/officer/New()
 	. = ..()
-	access = get_all_marine_access()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /datum/equipment_preset/uscm_ship/officer/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels

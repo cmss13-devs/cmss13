@@ -51,7 +51,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 /// Used to access Maintenance Protocols on ARES Interface.
 #define ACCESS_ARES_DEBUG 92
 
-//Surface access levels
+//Civilian access levels
 #define ACCESS_CIVILIAN_PUBLIC 100
 #define ACCESS_CIVILIAN_LOGISTICS 101
 #define ACCESS_CIVILIAN_ENGINEERING 102
@@ -59,17 +59,31 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_CIVILIAN_BRIG 104
 #define ACCESS_CIVILIAN_MEDBAY 105
 #define ACCESS_CIVILIAN_COMMAND 106
+#define ACCESS_PRESS 110
 
-//Special access levels. Should be alright to modify these.
-#define ACCESS_WY_PMC_GREEN 180
-#define ACCESS_WY_PMC_ORANGE 181
-#define ACCESS_WY_PMC_RED 182
-#define ACCESS_WY_PMC_BLACK 183
-#define ACCESS_WY_PMC_WHITE 184
-#define ACCESS_WY_CORPORATE 200
-#define ACCESS_ILLEGAL_PIRATE 201
-#define ACCESS_WY_CORPORATE_DS 202
-#define ACCESS_PRESS 203
+///The generic "I'm a bad guy" access
+#define ACCESS_ILLEGAL_PIRATE 120
+
+//Weyland Yutani access levels
+///Found on just about all corporate ID cards
+#define ACCESS_WY_GENERAL 200
+///WY employee override for most colonial areas
+#define ACCESS_WY_COLONIAL 201
+#define ACCESS_WY_MEDICAL 202
+#define ACCESS_WY_SECURITY 203
+#define ACCESS_WY_ENGINEERING 204
+#define ACCESS_WY_FLIGHT 205
+#define ACCESS_WY_RESEARCH 206
+///WY access given to field executives, like a marine liaison.
+#define ACCESS_WY_EXEC 207
+#define ACCESS_WY_PMC 210
+#define ACCESS_WY_PMC_TL 211
+#define ACCESS_WY_ARMORY 212
+///Secret research or other projects with highly restricted access
+#define ACCESS_WY_SECRETS 213
+#define ACCESS_WY_LEADERSHIP 215
+///WY senior leadership, the highest ranks
+#define ACCESS_WY_SENIOR_LEAD 216
 //=================================================
 
 // Yautja Access Levels
@@ -79,3 +93,24 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_YAUTJA_ELDER 251
 /// Ancients only
 #define ACCESS_YAUTJA_ANCIENT 252
+
+///Temporary, just so I can flag places I need to change
+#define ACCESS_COME_BACK_TO_ME 999
+
+
+//Big lists of access codes, so I can get rid of the half a million different "get_bla_bla_bla_access" procs.
+//See /proc/get_access(access_list = ACCESS_LIST_GLOBAL)
+///Well... everything (non Yautja).
+#define ACCESS_LIST_GLOBAL "EVERYTHING"
+///Most of the USCM Access Levels used on the USS Almayer, excluding highly restricted ones.
+#define ACCESS_LIST_MARINE_MAIN "Marine Main"
+///All USCM Access levels used on the USS Almayer
+#define ACCESS_LIST_MARINE_ALL "Marine All"
+///Used by the WY-USCM Liaison
+#define ACCESS_LIST_WY_LIAISON "Corp Liaison"
+///Weyland Yutani PMCs access.
+#define ACCESS_LIST_WY_PMC "PMC"
+///All access levels associated with Weyland Yutani
+#define ACCESS_LIST_WY_ALL "All WY"
+///All the access levels in the civillian category, excluding Press.
+#define ACCESS_LIST_COLONIAL_ALL "Colonial All"

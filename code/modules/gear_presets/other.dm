@@ -280,7 +280,7 @@
 
 /datum/equipment_preset/other/elite_merc/standard/New()
 	. = ..()
-	access = get_weyland_pmc_access()
+	access = get_access(ACCESS_LIST_WY_PMC)
 
 /datum/equipment_preset/other/elite_merc/standard/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add unique backpacks and satchels
@@ -321,7 +321,7 @@
 
 /datum/equipment_preset/other/elite_merc/heavy/New()
 	. = ..()
-	access = get_weyland_pmc_access()
+	access = get_access(ACCESS_LIST_WY_PMC)
 
 /datum/equipment_preset/other/elite_merc/heavy/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
@@ -365,7 +365,7 @@
 
 /datum/equipment_preset/other/elite_merc/engineer/New()
 	. = ..()
-	access = get_weyland_pmc_access()
+	access = get_access(ACCESS_LIST_WY_PMC)
 
 /datum/equipment_preset/other/elite_merc/engineer/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
@@ -422,7 +422,7 @@
 
 /datum/equipment_preset/other/elite_merc/medic/New()
 	. = ..()
-	access = get_weyland_pmc_access()
+	access = get_access(ACCESS_LIST_WY_PMC)
 
 /datum/equipment_preset/other/elite_merc/medic/load_gear(mob/living/carbon/human/new_human)
 	//webbing
@@ -472,7 +472,7 @@
 
 /datum/equipment_preset/other/elite_merc/leader/New()
 	. = ..()
-	access = get_weyland_pmc_access()
+	access = get_access(ACCESS_LIST_WY_PMC)
 
 /datum/equipment_preset/other/elite_merc/leader/load_gear(mob/living/carbon/human/new_human)
 	//clothes
@@ -789,7 +789,7 @@
 
 /datum/equipment_preset/other/xeno_cultist/New()
 	. = ..()
-	access = get_all_civilian_access()
+	access = get_access(ACCESS_LIST_COLONIAL_ALL)
 
 /datum/equipment_preset/other/xeno_cultist/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain/cultist(new_human), WEAR_BODY)

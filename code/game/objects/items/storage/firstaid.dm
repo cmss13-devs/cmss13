@@ -581,7 +581,7 @@
 	pill_type_to_fill = /obj/item/reagent_container/pill/ultrazine/unmarked
 	display_maptext = FALSE //for muh corporate secrets - Stan_Albatross
 
-	req_access = list(ACCESS_WY_CORPORATE)
+	req_access = list(ACCESS_WY_EXEC, ACCESS_WY_RESEARCH)
 	var/req_role = JOB_CORPORATE_LIAISON
 	black_market_value = 35
 

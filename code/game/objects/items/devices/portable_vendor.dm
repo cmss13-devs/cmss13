@@ -238,7 +238,7 @@
 	special_prod_time_lock = CL_BRIEFCASE_TIME_LOCK
 	special_prods = list(/obj/item/implanter/neurostim, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison)
 
-	req_access = list(ACCESS_WY_CORPORATE)
+	req_access = list(ACCESS_WY_EXEC)
 	req_role = JOB_CORPORATE_LIAISON
 	listed_products = list(
 		list("INCENTIVES", 0, null, null, null),

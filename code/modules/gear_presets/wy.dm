@@ -7,13 +7,13 @@
 	idtype = /obj/item/card/id/silver
 	faction_group = FACTION_LIST_WY
 	access = list(
-		ACCESS_WY_CORPORATE,
+		ACCESS_WY_GENERAL,
 		ACCESS_ILLEGAL_PIRATE,
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_RESEARCH,
-		ACCESS_WY_CORPORATE_DS,
 		ACCESS_MARINE_MEDBAY,
+		ACCESS_COME_BACK_TO_ME,
 	)
 	skills = /datum/skills/civilian
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -21,7 +21,7 @@
 
 /datum/equipment_preset/wy/New()
 	. = ..()
-	access += get_all_civilian_access() + get_all_weyland_access()
+	access += get_access(ACCESS_LIST_COLONIAL_ALL) + get_access(ACCESS_LIST_WY_ALL)
 
 /datum/equipment_preset/wy/load_id(mob/living/carbon/human/new_human)
 	. = ..()

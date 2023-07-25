@@ -457,6 +457,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 					new_title = "[record.title] at [record.time]"
 					new_details = record.details
 					records_announcement -= record
+				if(ARES_RECORD_SECURITY)
+					new_title = "[record.title] at [record.time]"
+					new_details = record.details
+					records_security -= record
 				if(ARES_RECORD_BIOSCAN)
 					new_title = "[record.title] at [record.time]"
 					new_details = record.details

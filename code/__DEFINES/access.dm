@@ -88,7 +88,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_WY_SECRETS 213
 
 #define ACCESS_WY_LEADERSHIP 215
-///WY senior leadership, the highest ranks
+///Senior leadership, the highest ranks
 #define ACCESS_WY_SENIOR_LEAD 216
 
 //=================================================
@@ -105,8 +105,41 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 
 #define ACCESS_UPP_COMMANDO 239
 #define ACCESS_UPP_LEADERSHIP 240
-///UPP senior leadership, the highest ranks
+///Senior leadership, the highest ranks
 #define ACCESS_UPP_SENIOR_LEAD 241
+
+//=================================================
+
+//Colonial Liberation Front access levels (260-289)
+///Found on just about all CLF ID cards
+#define ACCESS_CLF_GENERAL 260
+#define ACCESS_CLF_MEDICAL 261
+#define ACCESS_CLF_ENGINEERING 262
+#define ACCESS_CLF_SECURITY 263
+#define ACCESS_CLF_ARMORY 264
+#define ACCESS_CLF_FLIGHT 265
+
+#define ACCESS_CLF_LEADERSHIP 270
+///Senior leadership, the highest ranks
+#define ACCESS_CLF_SENIOR_LEAD 271
+
+//=================================================
+
+//Three World Empire access levels (290-319)
+///Found on just about all Imperial ID cards
+#define ACCESS_TWE_GENERAL 290
+#define ACCESS_TWE_MEDICAL 291
+#define ACCESS_TWE_ENGINEERING 292
+#define ACCESS_TWE_SECURITY 293
+#define ACCESS_TWE_ARMORY 294
+#define ACCESS_TWE_FLIGHT 295
+#define ACCESS_TWE_RESEARCH 296
+
+#define ACCESS_TWE_COMMANDO 299
+#define ACCESS_TWE_LEADERSHIP 300
+///Senior leadership, the highest ranks
+#define ACCESS_TWE_SENIOR_LEAD 301
+
 //=================================================
 
 // Yautja Access Levels

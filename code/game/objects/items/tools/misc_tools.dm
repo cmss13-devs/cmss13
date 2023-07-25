@@ -200,7 +200,7 @@
 			if(input == oldname || !input)
 				to_chat(user, SPAN_NOTICE("You changed [target] to... well... [target]."))
 			else
-				msg_admin_niche("[key_name(usr)] changed \the [src]'s name to [input] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+				msg_admin_niche("[key_name(usr)] changed \the [src]'s name to [input] [ADMIN_JMP(src)]")
 				target.AddComponent(/datum/component/rename, input, target.desc)
 				var/datum/component/label/label = target.GetComponent(/datum/component/label)
 				if(label)
@@ -218,7 +218,7 @@
 			if(input == olddesc || !input)
 				to_chat(user, SPAN_NOTICE("You decide against changing [target]'s description."))
 			else
-				msg_admin_niche("[key_name(usr)] changed \the [src]'s description to [input] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+				msg_admin_niche("[key_name(usr)] changed \the [src]'s description to [input] [ADMIN_JMP(src)]")
 				target.AddComponent(/datum/component/rename, target.name, input)
 				to_chat(user, SPAN_NOTICE("You have successfully changed [target]'s description."))
 				obj_target.renamedByPlayer = TRUE
@@ -275,6 +275,25 @@
 	desc = "It's an invisible pen marker."
 	pen_colour = "white"
 
+/obj/item/tool/pen/fountain
+	desc = "A luxurious fountain pen, embossed with gold accents. Its intricate mechanics allow the user to switch between various ink colors with a simple twist."
+	name = "fountain pen"
+	icon_state = "fountain_pen"
+	item_state = "fountain_pen"
+	matter = list("metal" = 20, "gold" = 10)
+	var/static/list/colour_list = list("red", "blue", "green", "yellow", "purple", "pink", "brown", "black", "orange") // Can add more colors as required
+	var/current_colour_index = 1
+
+/obj/item/tool/pen/fountain/attack_self(mob/living/carbon/human/user)
+	if(on)
+		current_colour_index = (current_colour_index % length(colour_list)) + 1
+		pen_colour = colour_list[current_colour_index]
+		balloon_alert(user,"you twist the pen and change the ink color to [pen_colour].")
+		if(clicky)
+			playsound(user.loc, 'sound/items/pen_click_on.ogg', 100, 1, 5)
+		update_pen_state()
+	else
+		..()
 
 /obj/item/tool/pen/attack(mob/M as mob, mob/user as mob)
 	if(!ismob(M))

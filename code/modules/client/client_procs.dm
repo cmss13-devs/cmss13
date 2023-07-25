@@ -46,6 +46,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
 	/client/proc/toggle_middle_mouse_click,
+	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
 	/client/proc/toggle_dualwield,
 	/client/proc/toggle_middle_mouse_swap_hands,
@@ -152,7 +153,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 		var/datum/fax/info = locate(href_list["FaxView"])
 
-		if(!istype(info))	
+		if(!istype(info))
 			return
 
 		if(info.photo_list)
@@ -314,7 +315,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(!CONFIG_GET(flag/no_localhost_rank))
 		var/static/list/localhost_addresses = list("127.0.0.1", "::1")
 		if(isnull(address) || (address in localhost_addresses))
-			var/datum/admins/admin = new("!localhost!", R_EVERYTHING, ckey)
+			var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
 			admin.associate(src)
 			RoleAuthority.roles_whitelist[ckey] = WHITELIST_EVERYTHING
 
@@ -451,6 +452,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//////////////
 /client/Del()
 	if(!gc_destroyed)
+		gc_destroyed = world.time
+		if (!QDELING(src))
+			stack_trace("Client does not purport to be QDELING, this is going to cause bugs in other places!")
+
 		SEND_SIGNAL(src, COMSIG_PARENT_QDELETING, TRUE)
 		Destroy()
 	return ..()
@@ -612,7 +617,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 */
 /client/proc/init_verbs()
 	if(IsAdminAdvancedProcCall())
-		return
+		alert_proccall("init_verbs")
+		return PROC_BLOCKED
 	var/list/verblist = list()
 	var/list/verbstoprocess = verbs.Copy()
 	if(mob)
@@ -709,17 +715,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
-				if(MOD_CHANNEL)
-					if(admin_holder?.check_for_rights(R_MOD))
-						if(prefs.tgui_say)
-							var/msay = tgui_say_create_open_command(MOD_CHANNEL)
-							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[msay]")
-						else
-							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=msay")
-					else
-						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 				if(ADMIN_CHANNEL)
-					if(admin_holder?.check_for_rights(R_ADMIN))
+					if(admin_holder?.check_for_rights(R_MOD))
 						if(prefs.tgui_say)
 							var/asay = tgui_say_create_open_command(ADMIN_CHANNEL)
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[asay]")

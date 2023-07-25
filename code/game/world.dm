@@ -39,7 +39,6 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
 
 	initialize_tgs()
-	initialize_marine_armor()
 
 	#ifdef UNIT_TESTS
 	GLOB.test_log = "data/logs/tests.log"
@@ -98,7 +97,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	// If the server's configured for local testing, get everything set up ASAP.
 	// Shamelessly stolen from the test manager's host_tests() proc
 	if(testing_locally)
-		master_mode = "extended"
+		master_mode = "Extended"
 
 		// Wait for the game ticker to initialize
 		while(!SSticker.initialized)
@@ -393,8 +392,11 @@ var/datum/BSQL_Connection/connection
 		CRASH("[lib] init error: [init]")
 
 /world/proc/HandleTestRun()
-	//trigger things to run the whole process
+	// Wait for the game ticker to initialize
 	Master.sleep_offline_after_initializations = FALSE
+	UNTIL(SSticker.initialized)
+
+	//trigger things to run the whole process
 	SSticker.request_start()
 	CONFIG_SET(number/round_end_countdown, 0)
 	var/datum/callback/cb

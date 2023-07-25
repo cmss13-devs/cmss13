@@ -64,12 +64,21 @@
 	M.animation_attack_on(src)
 	unpack()
 	M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"), \
-					  SPAN_DANGER("You smash [src] apart!"), 5, CHAT_TYPE_XENO_COMBAT)
+					  SPAN_DANGER("You smash [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/largecrate/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		unpack()
+
+/obj/structure/largecrate/proc/take_damage(damage)
+	health -= damage
+	if(health <= 0)
+		unpack()
+
+/obj/structure/largecrate/bullet_act(obj/item/projectile/P)
+	take_damage(P.calculate_damage(P.damage))
+	return TRUE
 
 /obj/structure/largecrate/mule
 	icon_state = "mulecrate"
@@ -347,8 +356,6 @@
 					/obj/item/weapon/gun/revolver/cmb = /obj/item/ammo_magazine/revolver/cmb,
 					/obj/item/weapon/gun/shotgun/merc = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 					/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = /obj/item/ammo_magazine/handful/shotgun/buckshot,
-					/obj/item/weapon/gun/shotgun/double = /obj/item/ammo_magazine/handful/shotgun/buckshot,
-					/obj/item/weapon/gun/shotgun/double/with_stock = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 					/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
 					/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
 					/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,

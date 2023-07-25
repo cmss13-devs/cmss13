@@ -28,44 +28,6 @@
 #define SOF 7
 #define NOSQUAD 8
 
-var/list/armormarkings = list()
-var/list/armormarkings_sql = list()
-var/list/helmetmarkings = list()
-var/list/helmetmarkings_sql = list()
-var/list/glovemarkings = list()
-var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), rgb(65,72,200), rgb(103,214,146), rgb(196, 122, 80), rgb(64, 0, 0))
-var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150,255), rgb(130,140,255), rgb(103,214,146), rgb(196, 122, 80), rgb(64, 0, 0))
-
-/proc/initialize_marine_armor()
-	var/i
-	for(i=1, i<(length(squad_colors) + 1), i++)
-		var/squad_color = squad_colors[i]
-		var/armor_color = rgb(hex2num(copytext(squad_color, 2, 4)), hex2num(copytext(squad_color, 4, 6)), hex2num(copytext(squad_color, 6, 8)), 125)
-
-		var/image/armor
-		var/image/helmet
-		var/image/glove
-
-		armor = image('icons/mob/humans/onmob/suit_1.dmi',icon_state = "std-armor")
-		armor.color = armor_color
-		armormarkings += armor
-		armor = image('icons/mob/humans/onmob/suit_1.dmi',icon_state = "sql-armor")
-		armor.color = armor_color
-		armormarkings_sql += armor
-
-		helmet = image('icons/mob/humans/onmob/head_1.dmi',icon_state = "std-helmet")
-		helmet.color = armor_color
-		helmetmarkings += helmet
-		helmet = image('icons/mob/humans/onmob/head_1.dmi',icon_state = "sql-helmet")
-		helmet.color = armor_color
-		helmetmarkings_sql += helmet
-
-		glove = image('icons/mob/humans/onmob/hands_garb.dmi',icon_state = "std-gloves")
-		glove.color = armor_color
-		glovemarkings += glove
-
-
-
 // MARINE STORAGE ARMOR
 
 /obj/item/clothing/suit/storage/marine
@@ -122,7 +84,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	var/armor_overlays[]
 	actions_types = list(/datum/action/item_action/toggle)
 	var/flags_marine_armor = ARMOR_SQUAD_OVERLAY|ARMOR_LAMP_OVERLAY
-	var/specialty = "M3 pattern marine" //Same thing here. Give them a specialty so that they show up correctly in vendors.
+	var/specialty = "M3 pattern marine" //Same thing here. Give them a specialty so that they show up correctly in vendors. speciality does NOTHING if you have NO_NAME_OVERRIDE
 	w_class = SIZE_HUGE
 	uniform_restricted = list(/obj/item/clothing/under/marine)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
@@ -132,10 +94,10 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	drop_sound = "armorequip"
 	equip_sounds = list('sound/handling/putting_on_armor1.ogg')
 	var/armor_variation = 0
+	/// The dmi where the grayscale squad overlays are contained
+	var/squad_overlay_icon = 'icons/mob/humans/onmob/suit_1.dmi'
 
-	//speciality does NOTHING if you have NO_NAME_OVERRIDE
-
-/obj/item/clothing/suit/storage/marine/Initialize()
+/obj/item/clothing/suit/storage/marine/Initialize(mapload)
 	. = ..()
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
@@ -143,12 +105,12 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 			name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: generals).
 		else
 			name += " armor"
-	if(armor_variation)
-		icon_state = replacetext(icon_state,"1","[rand(1,armor_variation)]")
 
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type)
 	armor_overlays = list("lamp") //Just one for now, can add more later.
+	if(armor_variation && mapload)
+		post_vendor_spawn_hook()
 	update_icon()
 	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
 	pockets.bypass_w_limit = list(
@@ -170,6 +132,22 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		overlays += I
 	else armor_overlays["lamp"] = null
 	if(user) user.update_inv_wear_suit()
+
+
+/obj/item/clothing/suit/storage/marine/post_vendor_spawn_hook(mob/living/carbon/human/user) //used for randomizing/selecting a variant for armors.
+	var/new_look //used for the icon_state text replacement.
+
+	if(!user?.client?.prefs)
+		new_look = rand(1,armor_variation)
+
+	else if(user.client.prefs.preferred_armor == "Random")
+		new_look = rand(1,armor_variation)
+
+	else
+		new_look = GLOB.armor_style_list[user.client.prefs.preferred_armor]
+
+	icon_state = replacetext(icon_state,"1","[new_look]")
+	update_icon(user)
 
 /obj/item/clothing/suit/storage/marine/pickup(mob/user)
 	if(flags_marine_armor & ARMOR_LAMP_ON)
@@ -206,8 +184,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	..()
 
 	if(!isturf(user.loc))
-		to_chat(user, SPAN_WARNING("You cannot turn the light on while in [user.loc].")) //To prevent some lighting anomalities.
+		to_chat(user, SPAN_WARNING("You cannot turn the light [is_light_on() ? "off" : "on"] while in [user.loc].")) //To prevent some lighting anomalies.
 		return
+
 	if(flashlight_cooldown > world.time)
 		return
 	if(!ishuman(user))
@@ -400,7 +379,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 
 /obj/item/clothing/suit/storage/marine/smartgunner
-	name = "M56 combat harness"
+	name = "\improper M56 combat harness"
 	desc = "A heavy protective vest designed to be worn with the M56 Smartgun System. \nIt has specially designed straps and reinforcement to carry the Smartgun and accessories."
 	icon_state = "8"
 	item_state = "armor"
@@ -430,6 +409,35 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		name = "M56 combat harness"
 	//select_gamemode_skin(type)
 
+/obj/item/clothing/suit/storage/marine/smartgunner/mob_can_equip(mob/equipping_mob, slot, disable_warning = FALSE)
+	. = ..()
+
+	if(equipping_mob.back)
+		to_chat(equipping_mob, SPAN_WARNING("You can't equip [src] while wearing a backpack."))
+		return FALSE
+
+/obj/item/clothing/suit/storage/marine/smartgunner/equipped(mob/user, slot, silent)
+	. = ..()
+
+	if(slot == WEAR_JACKET)
+		RegisterSignal(user, COMSIG_HUMAN_ATTEMPTING_EQUIP, PROC_REF(check_equipping))
+
+/obj/item/clothing/suit/storage/marine/smartgunner/proc/check_equipping(mob/living/carbon/human/equipping_human, obj/item/equipping_item, slot)
+	SIGNAL_HANDLER
+
+	if(slot != WEAR_BACK)
+		return
+
+	. = COMPONENT_HUMAN_CANCEL_ATTEMPT_EQUIP
+
+	if(equipping_item.flags_equip_slot == SLOT_BACK)
+		to_chat(equipping_human, SPAN_WARNING("You can't equip [equipping_item] on your back while wearing [src]."))
+		return
+
+/obj/item/clothing/suit/storage/marine/smartgunner/unequipped(mob/user, slot)
+	. = ..()
+
+	UnregisterSignal(user, COMSIG_HUMAN_ATTEMPTING_EQUIP)
 
 /obj/item/clothing/suit/storage/marine/leader
 	name = "\improper B12 pattern marine armor"
@@ -465,10 +473,34 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
-	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	storage_slots = 2
+
+/obj/item/clothing/suit/storage/marine/light/padded
+	icon_state = "L1"
+	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/light/padless
+	icon_state = "L2"
+	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/light/padless_lines
+	icon_state = "L3"
+	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/light/carrier
+	icon_state = "L4"
+	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/light/skull
+	icon_state = "L5"
+	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/light/smooth
+	icon_state = "L6"
+	armor_variation = 0
 
 /obj/item/clothing/suit/storage/marine/light/vest
 	name = "\improper M3-VL pattern ballistics vest"
@@ -480,7 +512,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_VERYLOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 1
@@ -510,6 +542,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	storage_slots = 3
+	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	time_to_unequip = 0.5 SECONDS
 	time_to_equip = 1 SECONDS
 	uniform_restricted = null
@@ -520,7 +553,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/heavy
 	name = "\improper M3-EOD pattern heavy armor"
-	desc = "A heavier version of the standard M3 pattern armor, the armor is primarily designed to withstand ballistic, explosive, and internal damage, with the drawback of increased bulk and thus reduced movement speed, alongside little additional protection from standard blunt force impacts and none from biological threats."
+	desc = "A heavier version of the standard M3 pattern armor, the armor is primarily designed to withstand ballistic, explosive, and internal damage, with the drawback of increased bulk and thus reduced movement speed, alongside little additional protection from standard blunt force impacts and biological threats."
 	desc_lore = "This configuration of the iconic armor was developed during the Canton War in 2160 between the UPP and USCM - Designed in response to a need for higher protection for ComTechs assigned as EODs during the conflict, this is the pinnacle of protection for your average marine. The shoulders and kneepads have both been expanded upon heavily, covering up the arteries on each limb. A special spall liner was developed for this suit, with the same technology being used in the M70 Flak Jacket being developed at the same time."
 	specialty = "\improper M3-EOD pattern"
 	icon_state = "H1"
@@ -528,12 +561,36 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
-	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
+
+/obj/item/clothing/suit/storage/marine/heavy/padded
+	icon_state = "H1"
+	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/heavy/padless
+	icon_state = "H2"
+	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/heavy/padless_lines
+	icon_state = "H3"
+	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/heavy/carrier
+	icon_state = "H4"
+	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/heavy/skull
+	icon_state = "H5"
+	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/heavy/smooth
+	icon_state = "H6"
+	armor_variation = 0
 
 //===========================//SPECIALIST\\================================\\
 //=======================================================================\\

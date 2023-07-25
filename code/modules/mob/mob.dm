@@ -3,6 +3,7 @@
 	GLOB.dead_mob_list -= src
 	GLOB.alive_mob_list -= src
 	GLOB.player_list -= src
+	GLOB.freed_mob_list -= src
 
 	ghostize(FALSE)
 
@@ -21,6 +22,7 @@
 	QDEL_NULL_LIST(viruses)
 	resistances?.Cut()
 	QDEL_LIST_ASSOC_VAL(implants)
+	qdel(hud_used) // The hud will null it
 
 	. = ..()
 
@@ -256,6 +258,9 @@
 	if(!istype(W))
 		return FALSE
 
+	if(SEND_SIGNAL(src, COMSIG_MOB_ATTEMPTING_EQUIP, W, slot) & COMPONENT_MOB_CANCEL_ATTEMPT_EQUIP)
+		return FALSE
+
 	if(!W.mob_can_equip(src, slot, disable_warning))
 		if(del_on_fail)
 			qdel(W)
@@ -354,6 +359,9 @@
 		SEND_SIGNAL(client, COMSIG_CLIENT_RESET_VIEW, A)
 	return
 
+/mob/proc/reset_observer_view_on_deletion(atom/deleted, force)
+	SIGNAL_HANDLER
+	reset_view(null)
 
 /mob/proc/show_inv(mob/user)
 	user.set_interaction(src)
@@ -835,7 +843,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			return FALSE
 		to_chat(src, SPAN_WARNING("You attempt to get a good grip on [selection] in your body."))
 	else
-		if(get_active_hand())
+		if(usr.get_active_hand())
 			to_chat(usr, SPAN_WARNING("You need an empty hand for this!"))
 			return FALSE
 		to_chat(usr, SPAN_WARNING("You attempt to get a good grip on [selection] in [src]'s body."))

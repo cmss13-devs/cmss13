@@ -138,7 +138,7 @@
 				serialized["icon"] = icon ? icon : "private"
 
 				if(human.assigned_squad)
-					serialized["background_color"] = human.assigned_squad.color ? squad_colors[human.assigned_squad.color] : human.assigned_squad.minimap_color
+					serialized["background_color"] = human.assigned_squad.equipment_color ? human.assigned_squad.equipment_color : human.assigned_squad.minimap_color
 				else
 					serialized["background_color"] = human.assigned_equipment_preset?.minimap_background
 

@@ -60,7 +60,7 @@
 
 	//TODO: handle_speech_problems
 	if (src.stuttering)
-		message = stutter(message)
+		message = stutter(message, stuttering)
 
 	var/list/listening = hearers(message_range, src)
 	listening |= src

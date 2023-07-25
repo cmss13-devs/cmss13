@@ -269,3 +269,317 @@
       once taken out
   harryob:
   - admin: allows admins to send ahelps to mentors
+2023-05-15:
+  BeagleGaming1:
+  - rscadd: Adds the "Hardcore" trait for Riflemen
+  Drathek:
+  - bugfix: Fixed runtimes with the ID Console
+  - bugfix: Account numbers are now far less likely to match another person's account
+  - ui: Changed linked account field in the ID Console to a restricted input field
+  - admin: Tweaked and added more server log verbs
+  - code_imp: Removed dead code in lurker rush suggesting it lowered cooldown on a
+      successful hit
+  Emanthealmighty:
+  - bugfix: Fixed predaliens being unable to attack enemy xenomorphs.
+  Frans_Feiffer:
+  - imageadd: Resprited Dinodubba and Eonoc's donor gear.
+  - rscadd: Adds the ability to toggle open Eonoc's donor gear.
+  LynxSolstice:
+  - soundadd: Cleaned up the sonic boom sound effect to remove the "missile launching"
+      sound, which caused an inconsistency when the dropship wasn't using missiles.
+2023-05-16:
+  BeagleGaming1:
+  - rscadd: You can whisper and hear nearby people while knocked out. Getting knocked
+      out changes the sound environment to reflect that.
+  Drathek:
+  - bugfix: Fixed marking faxes and prays
+  - code_imp: Replaced most admin HREF topic links to use define macros instead
+  - admin: Removed missing HREF topic links for adminmoreinfo (? button)
+  TeDGamer:
+  - bugfix: Playable huggers no longer block xeno ammo / spits.
+2023-05-17:
+  Emanthealmighty:
+  - bugfix: Fixed huggers occasionally dying before they can impregnate a host.
+  Git-Nivrak:
+  - balance: Removed the cooldown on missing Dancer's impale and tail trip abilities.
+  - bugfix: Dancer's slash tag no longer gets consumed by tail trip if the target
+      is out of range.
+  SpartanBobby:
+  - bugfix: fixed problems with some fire shutters being the wrong DIR or out of place
+  - maptweak: fixed problem with warning stripes not being flush with walls and placed
+      warning stripe tiles under some blastdoors that lacked them
+  TeDGamer:
+  - bugfix: Sniper's Aimed Shot and Spotter's Target cooldown is applied consistently
+      in can_check_use.
+  harryob:
+  - qol: observer hud buttons for view crew manifest, hive status and joining the
+      hunt (if you're a pred), along with keybinds for joining the hunt
+  - bugfix: you can now hide the buttons at the bottom of the ghost hud with f12
+2023-05-18:
+  Huffie56:
+  - bugfix: fix being able to launch elevator without fixing power in the concerned
+      areas.
+  - code_imp: connected the APC inside the elevator to the power net ground.
+  - code_imp: add the ability for the elevator area to loose power.
+  - maptweak: move all the call buttons for the elevator inside area that have APC.
+  Morrow:
+  - rscadd: Handheld maps added to all squad marine vendors.
+  - rscadd: Wardens are now staff sergeants
+  fira:
+  - bugfix: Fixed opening paper maps breaking some hotkey usage.
+  harryob:
+  - qol: whitelisted predators now only see the option to join pred rounds as a ghost
+      in the top left when it is a pred round
+  - bugfix: space is now uninhabitable again
+  - bugfix: new players will now no longer have no hotkeys, and be unable to move
+      or talk, because that sucks
+  realforest2001:
+  - spellcheck: Adjusted names of Solaris Ridge walls to represent what they are without
+      using the colony's name.
+2023-05-19:
+  BeagleGaming1:
+  - admin: Adds an event toggle for staff to toggle "Hardcore", causing all humans
+      to be unrevivable on death
+  Drathek harryob:
+  - server: Moved the local.db database location from root to the data folder
+  Huffie56:
+  - code_imp: Regroup all the code of the vendors that are in squads prep into the
+      same file squad_prep.
+  - code_imp: use the general uniform to hold the common items that are vended in
+      it and all the squad prep vendors.
+  - code_imp: move the training weapon vendor into the file of requisition.dm
+  ghostsheet:
+  - bugfix: Announcement are included in 'Radio' chat filter
+  - bugfix: Overwatch messages are included in 'Radio' chat filter
+2023-05-20:
+  Morrow:
+  - rscadd: Added a HUD icon "blood" for when someone or something is giving or taking
+      blood from you.
+  - bugfix: Fixed some duplicate code in /mob/living/carbon/human/Destroy()
+  - bugfix: Fixed a runtime in blood packs when disconnecting a blood pack
+  - bugfix: Fixed mobs that don't feel pain screaming in pain when blood bags disconnect.
+  Morrow, KoishiVibe, Kaga:
+  - rscadd: Added lore to scopes/sights.
+  Segrain:
+  - bugfix: Preferences for job options (e.g. civilian/military correspondent) now
+      properly save between rounds.
+  - bugfix: WO Field Doctor no longer inherits regular doctor's job options (and associated
+      rank).
+  - qol: Selecting job options is now better readable.
+  - qol: Survivor variant preference is moved to job selection screen.
+  realforest2001:
+  - rscadd: Added a warning/reminder to cryomarine spawns to ahelp if they want to
+      cryo/ghost upon spawning in, to stop people wasting the ERT call.
+2023-05-21:
+  BeagleGaming1:
+  - qol: lets player facehuggers see their lifetime hugs on the status panel
+2023-05-22:
+  Huffie56:
+  - bugfix: remove the luminosity when torch and plant that produce the light are
+      destroy.
+  morrowwolf:
+  - balance: DS part fabricator, chem simulator, chem storage are now unslashable/unacidable
+2023-05-23:
+  Emanthealmighty:
+  - bugfix: Fixed huggers not passively dying if they fail to attach to a target.
+  Hopek:
+  - balance: Zombies now have their own language and don't understand English
+  - rscadd: Medics finally get medic clothing racks on WO
+  - bugfix: Xeno Directional attack no longer friendly fires their own walls and doors.
+      You need to actually click on the sprite if you mean to destroy it
+  Huffie56:
+  - bugfix: fix the dead will now be properly turn into zombie when infected by black
+      go virus.
+  LynxSolstice:
+  - rscadd: Added an M276 Pattern Combat Toolbelt rig to the SEA's vendor machine.
+  Morrow:
+  - balance: Acid blood damage from 12 to 20.
+  NewyearnewmeUwu:
+  - rscadd: Adds the basis for CO (and other) faction preferences
+  Segrain:
+  - bugfix: Boiler's slowdown for zooming now properly resets on unzooming regardless
+      of what causes it.
+  - bugfix: Trapper's zoomed vision is no longer unintentionally offset.
+  - bugfix: Trapper no longer gets globber's Acid Shroud ability messing its keybinds.
+  - rscadd: Using Show Held Item is now visible in abovehead popup.
+  - bugfix: IV drips work with xenomorphs once again.
+  SpartanBobby:
+  - rscadd: Added two books to the USS Almayer
+  - maptweak: made instances of books and magazines on the USS Almayer into actual
+      items
+  TOBKA4:
+  - admin: Larva surge can now be toggled per-hive with the no_burrowed var
+  TopHatPenguin:
+  - bugfix: Adds missing fire shutters to a number of key areas in the upper deck
+      and removes duplicate ones.
+  fluffe9911:
+  - bugfix: Zombies should no longer randomly decide to take a hour to revive.
+  realforest2001:
+  - admin: Added more ticket autoreplies and re-ordered the interaction buttons.
+  stanalbatross:
+  - spellcheck: renamed the advanced burn kit and advanced trauma kit to burn kit
+      and trauma kit. tweaked some first-aid kit descriptions.
+  - spellcheck: renamed the "Advanced XRF scanner" to "XRF scanner"
+2023-05-24:
+  Morrow:
+  - rscdel: Aim mode removal
+  - balance: Yautja armor rebalance
+  c4xmaniac2:
+  - mapadd: added 4 new NM inserts to Science Annex
+  - maptweak: sentry in the park no longer terrorizes new players, and the stupid
+      fucking console doesn't block movement.
+2023-05-26:
+  Drathek:
+  - bugfix: Fix shuttle landing lights getting stuck on
+  - imageadd: Added a transparent gray sprite to act as a shadow when a shuttle or
+      something is looming over that tile
+  - code_imp: Added unit_testing to annotate and fail for runtimes, added a unit_test
+      for 515, and improved debug information for reference lookups.
+  - code_imp: Moved chemistry list setup to a new reagents subsystem rather than potentially
+      before every reagents initialization.
+  - code_imp: Ported many updates to SSgarbage, SSatoms, and create_and_destroy fixing
+      inconsistent garbage handling, an edge case with atoms late loading, and improved
+      speed.
+  - bugfix: Fix nightmare inserts not occurring during unit testing (they will also
+      ignore probabilities for testing now).
+  - bugfix: Fix runtimes for bad deletes and various hard deletes.
+  - maptweak: Fix some nightmare inserts causing errors.
+  - server: Initialize log for errors/warnings for SSatoms is now in each round's
+      respective log folder.
+  harryob:
+  - bugfix: fixed some objects with icon states unassigned
+  - ui: the portable vendor for CLs is now tgui
+  spartanbobby:
+  - rscadd: Adds a new flavour of Kepler to the game "Kepler Flamehot"
+2023-05-27:
+  BeagleGaming1:
+  - balance: Unsplinted broken bones that are not hands or feet can now cause IB
+  - balance: bloodbag capacity raised to 300u
+  Diegoflores31:
+  - balance: Whiskey Outpost will start on Global Hardcore mode by default.
+  Katskan:
+  - rscadd: Synthetic gets a chance to dodge xeno acid blood spray
+  Morrow:
+  - bugfix: Fixed helmets stopping all of your limbs from being delimbed
+  - bugfix: Fixed a runtime due to lack of cause data for head delimb
+  Warfan1815:
+  - qol: 'Two improved strip systems: the one in the player panel now doesn''t strip
+      IDs, and there is a new one that strips all in view.'
+  - qol: Removed now obsolete "cryo clf" roles from the gear list
+  - qol: changed multiple single letter definitions to more apt definitions
+  - rscadd: Added a new selection to the create-humans panel where the spawning admin
+      gets to choose the level of equipment ("full equipment", "no weapons", "no equipment")
+  - admin: made IDs exempt from being removed by the strip verbs
+  realforest2001:
+  - rscadd: Added the ability for carbon mobs to have special blood.
+  - code_imp: Updated the get_blood_id proc for xenos to check a variable rather than
+      hard-code overrides for Queen and Praetorian.
+  - code_imp: Changed most references to blood color to use defines.
+2023-05-28:
+  Drathek:
+  - bugfix: Fixed the emergency locker sometimes hard deleting
+  Huffie56:
+  - refactor: Refactored predator flaying. Should be a lot less janky across the board.
+      Flaying can be paused and resumed.
+  - rscadd: Rope + flaying messages are now also shown to witnesses, instead of just
+      the predator. Flaying has been given RED TEXT to make it clear something bad
+      is going on.
+  - bugfix: Predators can no longer flay someone who has already been flayed, or queue
+      up multiple flayings at once.
+  - bugfix: Predators can no longer scalp someone who has no head.
+  - bugfix: Decapitated and flayed bodies no longer appear to have a head.
+  - bugfix: Using the ceremonial dagger or rope no longer hits people before applying.
+  Katskan:
+  - balance: synthetic pilot skill increased from 1 to 2
+  LunaMayn:
+  - rscadd: Added dartboards and darts to throw at your friends.
+  NewyearnewmeUwu:
+  - rscadd: You can now hide small items in potted plants.
+  - rscadd: Fire alarms now announce who activates/deactivates them.
+  TenguHangover:
+  - rscadd: added sleen as a reagent, 1:1 lime souto and oxycodone. Slightly less
+      painkilling than oxy, and slightly addictive.
+  - rscadd: corrects oxycodone color to red dye instead of purple.
+  ihatethisengine:
+  - balance: reduced the medevac cooldown from 60 seconds to 20 seconds.
+  - rscadd: anyone with the skills of a doctor or a pilot can manage the medevac by
+      interacting with the system itself.
+  - qol: medical stretcher automatically activates when deployed.
+2023-05-29:
+  Huffie56:
+  - bugfix: Fix Inconsistencies with text when toggling lights while being inside
+      a closet for example.
+  Khadd:
+  - bugfix: fixed upp synths having 2 different names and clf synths now get a name
+      when they're given the equipment preset
+  Morrow:
+  - balance: Without a hive core Xenos no longer get stored larva from latejoin marines
+      or bursts
+  NewyearnewmeUwu:
+  - rscadd: Added armor preference as an option in the preferences menu
+  - code_imp: Changed the way armor variation is handled upon initializing. Also,
+      surplus uniform vendors now use an essentials set to randomly pick an armor
+      set regardless of your preferences.
+2023-05-30:
+  BeagleGaming1:
+  - admin: Deferring to mentorhelp gives a specific message instead of a generic resolution
+      message
+  Drathek:
+  - bugfix: Fixed non-queen xeno overwatch persisting on a dead xeno
+  LynxSolstice, Sionnach:
+  - rscadd: Adds a new IMP framed back item, the Ammo Rack.
+  - balance: Added the new Ammo Rack to the Req vendor. At a scaling of (round*1),
+      it should be pretty scarce. The ammo rack also is unthrowable and adds a flat
+      .5 second increase to movement delay.
+  - imageadd: Added icons for Ammo_Pack_ and onmobs for each state (0, 1, 2, and 3)
+  Morrow:
+  - rscadd: Adds buyable blood bags to corpsmen vendors
+  - rscadd: Adds a revive fun fact
+  SpartanBobby:
+  - rscadd: Adds Laser-Light Combo attachment unique to VP78
+  - rscadd: Adds new description to VP78
+  fira:
+  - bugfix: XvX end and Admin ending round won't play nuclear detonation sequence
+      music anymore.
+  - bugfix: Fixed a bug in radio signaling cleanup that was notably preventing signallers
+      from working as intended, and likely caused issues for other devices.
+  ghostsheet:
+  - rscadd: Added ARES conclusion announcement for marine major.
+  - rscadd: Added a harmless smoke cloud to Acid Runner's "For the Hive" ability.
+  - rscadd: Added a M89-S Signal Flare pack to SL essential kit.
+  harryob:
+  - bugfix: there's less random vendors on WO
+2023-05-31:
+  BeagleGaming1:
+  - admin: Allows auto rename VV to not be encoded
+  - rscdel: Removes certain parts of the black market
+  Drathek:
+  - balance: Acid Runner's For the Hive ability now clears its slowdown effect when
+      canceled
+  - admin: USCM cryo spawns (Foxtrot) that normally inject into the manifest will
+      now also get their money accounts set up automatically
+  Huffie56:
+  - bugfix: trijent shuttle apc can now be properly fixed...
+  - maptweak: added a scenery around the fix to make it look more natural.
+  LynxSolstice:
+  - rscadd: Field kit for all roles. (spawner with a map). Sandbags and E-Tool buyable
+      in the rifleman vendor.
+  - code_imp: Moved the map from a _KIT bitflag to a new bitflag, added the fieldkit
+      to all squad roles.
+  - balance: Added half stacks of sandbags to the rifleman vendor, buyable for one
+      stack each for 5 points.
+  Morrow:
+  - admin: Adds logging for buying tech
+  - balance: Made more areas in LV522 reactor OB-able
+  - balance: Removes addictive from sleen
+  NewyearnewmeUwu:
+  - bugfix: You can restock vendors with armors again.
+  Segrain:
+  - bugfix: Removed an exploit involving closets/crates.
+  TenguHangover:
+  - bugfix: Corrected the nurse's starting descriptor in line with IB changes.
+  ihatethisengine:
+  - spellcheck: damage taken fun fact now correctly states that player "took" so many
+      damage instead of "did".
+  realforest2001:
+  - bugfix: SG vendor no longer has Burstfire Adapter as SG cannot use it

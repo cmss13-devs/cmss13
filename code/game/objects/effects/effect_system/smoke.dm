@@ -180,18 +180,20 @@
 
 /obj/effect/particle_effect/smoke/mustard/Move()
 	. = ..()
-	for(var/mob/living/carbon/human/R in get_turf(src))
-		affect(R)
+	for(var/mob/living/carbon/human/creature in get_turf(src))
+		affect(creature)
 
-/obj/effect/particle_effect/smoke/mustard/affect(mob/living/carbon/human/R)
-	..()
-	R.burn_skin(0.75)
-	if(R.coughedtime != 1)
-		R.coughedtime = 1
-		if(ishuman(R)) //Humans only to avoid issues
-			R.emote("gasp")
-		addtimer(VARSET_CALLBACK(R, coughedtime, 0), 2 SECONDS)
-	R.updatehealth()
+/obj/effect/particle_effect/smoke/mustard/affect(mob/living/carbon/human/creature)
+	if(!istype(creature) || issynth(creature))
+		return FALSE
+
+	creature.burn_skin(0.75)
+	if(creature.coughedtime != 1)
+		creature.coughedtime = 1
+		if(ishuman(creature)) //Humans only to avoid issues
+			creature.emote("gasp")
+		addtimer(VARSET_CALLBACK(creature, coughedtime, 0), 2 SECONDS)
+	creature.updatehealth()
 	return
 
 /////////////////////////////////////////////
@@ -244,6 +246,55 @@
 	M.updatehealth()
 
 
+/////////////////////////////////////////////
+// CN20 Nerve Gas
+/////////////////////////////////////////////
+
+/obj/effect/particle_effect/smoke/cn20
+	name = "CN20 nerve gas"
+	smokeranking = SMOKE_RANK_HIGH
+	color = "#80c7e4"
+
+/obj/effect/particle_effect/smoke/cn20/Move()
+	. = ..()
+	for(var/mob/living/carbon/human/creature in get_turf(src))
+		affect(creature)
+
+/obj/effect/particle_effect/smoke/cn20/affect(mob/living/carbon/human/creature)
+	if(!istype(creature) || issynth(creature) || creature.stat == DEAD)
+		return FALSE
+	if(isyautja(creature) && prob(75))
+		return FALSE
+
+	if (creature.wear_mask && (creature.wear_mask.flags_inventory & BLOCKGASEFFECT))
+		return FALSE
+
+	var/effect_amt = round(6 + amount*6)
+
+	creature.apply_damage(12, OXY)
+	creature.SetEarDeafness(max(creature.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
+	if(!creature.eye_blind) //Eye exposure damage
+		to_chat(creature, SPAN_DANGER("Your eyes sting. You can't see!"))
+	creature.SetEyeBlind(round(effect_amt/3))
+	if(creature.coughedtime != 1 && !creature.stat) //Coughing/gasping
+		creature.coughedtime = 1
+		if(prob(50))
+			creature.emote("cough")
+		else
+			creature.emote("gasp")
+		addtimer(VARSET_CALLBACK(creature, coughedtime, 0), 1.5 SECONDS)
+	if (prob(20))
+		creature.apply_effect(1, WEAKEN)
+
+	//Topical damage (neurotoxin on exposed skin)
+	to_chat(creature, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
+	if(prob(60 + round(amount*15))) //Highly likely to drop items due to arms/hands seizing up
+		creature.drop_held_item()
+	if(ishuman(creature))
+		creature.temporary_slowdown = max(creature.temporary_slowdown, 4) //One tick every two second
+		creature.recalculate_move_delay = TRUE
+	return TRUE
+
 //////////////////////////////////////
 // FLASHBANG SMOKE
 ////////////////////////////////////
@@ -255,6 +306,17 @@
 	icon_state = "sparks"
 	icon = 'icons/effects/effects.dmi'
 	smokeranking = SMOKE_RANK_MED
+
+/////////////////////////////////////////
+// Acid Runner Smoke, Harmless Visuals only
+/////////////////////////////////////////
+/obj/effect/particle_effect/smoke/acid_runner_harmless
+	color = "#86B028"
+	time_to_live = 2
+	opacity = FALSE
+	alpha = 200
+	smokeranking = SMOKE_RANK_HARMLESS
+	amount = 0
 
 /////////////////////////////////////////
 // BOILER SMOKES
@@ -272,14 +334,14 @@
 	var/gas_damage = 20
 
 /obj/effect/particle_effect/smoke/xeno_burn/Initialize(mapload, amount, datum/cause_data/cause_data)
-	var/mob/living/carbon/xenomorph/xeno = cause_data?.resolve_mob()
-	if (istype(xeno) && xeno.hivenumber)
-		hivenumber = xeno.hivenumber
+	if(istype(cause_data))
+		var/datum/ui_state/hive_state/cause_data_hive_state = GLOB.hive_state[cause_data.faction]
+		var/new_hive_number = cause_data_hive_state?.hivenumber
+		if(new_hive_number)
+			hivenumber = new_hive_number
+			set_hive_data(src, new_hive_number)
 
-		set_hive_data(src, hivenumber)
-
-	. = ..()
-
+	return ..()
 
 /obj/effect/particle_effect/smoke/xeno_burn/apply_smoke_effect(turf/T)
 	..()
@@ -376,7 +438,7 @@
 	if(!issynth(moob))
 		var/datum/effects/neurotoxin/neuro_effect = locate() in moob.effects_list
 		if(!neuro_effect)
-			neuro_effect = new /datum/effects/neurotoxin(moob)
+			neuro_effect = new(moob, cause_data.resolve_mob())
 			neuro_effect.strength = effect_amt
 		neuro_effect.duration += neuro_dose
 		if(moob.coughedtime != 1 && !moob.stat) //Coughing/gasping
@@ -529,6 +591,9 @@
 
 /datum/effect_system/smoke_spread/phosphorus/weak
 	smoke_type = /obj/effect/particle_effect/smoke/phosphorus/weak
+
+/datum/effect_system/smoke_spread/cn20
+	smoke_type = /obj/effect/particle_effect/smoke/cn20
 
 // XENO SMOKES
 

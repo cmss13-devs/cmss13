@@ -14,12 +14,14 @@
 	var/page = 1
 	var/screen = 0
 
-	var/list/color_types = list("red", "green", "black", "blue")
+	var/list/cover_colours = list("red", "green", "black", "blue")
+	var/cover_colour
 
 /obj/item/notepad/Initialize(mapload, ...)
 	. = ..()
-
-	icon_state = initial(icon_state) + "_[pick(color_types)]"
+	if(!cover_colour)
+		cover_colour = pick(cover_colours)
+	icon_state = initial(icon_state) + "_[cover_colour]"
 
 	for(var/i = 1 to paper_left)
 		new /obj/item/paper(src)
@@ -125,3 +127,15 @@
 	if((loc == usr && usr.stat == CONSCIOUS))
 		name = "[(n_name ? text("[n_name]") : "notepad")]"
 	add_fingerprint(usr)
+
+/obj/item/notepad/black
+	cover_colour = "black"
+
+/obj/item/notepad/blue
+	cover_colour = "blue"
+
+/obj/item/notepad/green
+	cover_colour = "green"
+
+/obj/item/notepad/red
+	cover_colour = "red"

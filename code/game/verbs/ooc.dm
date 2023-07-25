@@ -190,17 +190,30 @@
 	var/view_size = getviewsize(view)
 	var/aspect_ratio = view_size[1] / view_size[2]
 
-	// Calculate desired pixel width using window size and aspect ratio
-	var/sizes = params2list(winget(src, "mainwindow.split;mapwindow", "size"))
+	var/desired_width = 0
+	var/sizes = params2list(winget(src, "mainwindow.split;mapwindow;mainwindow", "size"))
 	var/map_size = splittext(sizes["mapwindow.size"], "x")
-	var/height = text2num(map_size[2])
-	var/desired_width = round(height * aspect_ratio)
-	if (text2num(map_size[1]) == desired_width)
-		// Nothing to do
-		return
+
+	if(prefs.adaptive_zoom)
+		// If using adaptive zoom, we directly use the intended horizontal map size to be pixel perfect
+		var/zoom_factor = get_adaptive_zoom_factor()
+		if(zoom_factor)
+			desired_width = view_size[1] * world.icon_size * zoom_factor + 4 // 4 pixels margin
+
+	if(!desired_width)
+		// Calculate desired pixel width using window size and aspect ratio
+		var/height = text2num(map_size[2])
+		desired_width = round(height * aspect_ratio)
 
 	var/split_size = splittext(sizes["mainwindow.split.size"], "x")
 	var/split_width = text2num(split_size[1])
+	// Always leave at least 240px of verb panel for the poor sod to switch back if they made a mistake
+	if(split_width - desired_width < 240)
+		desired_width = split_width - 240
+
+	if (text2num(map_size[1]) == desired_width)
+		// Nothing to do
+		return
 
 	// Calculate and apply a best estimate
 	// +4 pixels are for the width of the splitter's handle

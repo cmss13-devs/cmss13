@@ -99,8 +99,8 @@
 /area/lv624/ground/caves/north_central_caves)
 "au" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/weapon/gun/shotgun/double/with_stock,
-/obj/item/weapon/gun/shotgun/double/with_stock{
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_y = 7
 	},
 /turf/open/floor/wood,

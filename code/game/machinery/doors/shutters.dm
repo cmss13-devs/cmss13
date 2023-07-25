@@ -32,28 +32,32 @@
 	return
 
 /obj/structure/machinery/door/poddoor/shutters/open()
-	if(operating == 1) //doors can still open when emag-disabled
+	if(operating) //doors can still open when emag-disabled
 		return
-	if(!operating) //in case of emag
-		operating = 1
+
+	operating = TRUE
 	flick("[base_icon_state]c0", src)
 	icon_state = "[base_icon_state]0"
 	playsound(loc, 'sound/machines/blastdoor.ogg', 25)
-	sleep(10)
+
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
+	return TRUE
+
+/obj/structure/machinery/door/poddoor/shutters/finish_open()
 	density = FALSE
 	layer = open_layer
 	SetOpacity(0)
 
-	if(operating == 1) //emag again
-		operating = 0
+	if(operating) //emag again
+		operating = FALSE
 	if(autoclose)
 		addtimer(CALLBACK(src, PROC_REF(autoclose)), 150)
-	return 1
 
 /obj/structure/machinery/door/poddoor/shutters/close()
 	if(operating)
 		return
-	operating = 1
+
+	operating = TRUE
 	flick("[base_icon_state]c1", src)
 	icon_state = "[base_icon_state]1"
 	layer = closed_layer
@@ -62,9 +66,11 @@
 		SetOpacity(1)
 	playsound(loc, 'sound/machines/blastdoor.ogg', 25)
 
-	sleep(10)
-	operating = 0
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed)
 	return
+
+/obj/structure/machinery/door/poddoor/shutters/finish_close()
+	operating = FALSE
 
 /obj/structure/machinery/door/poddoor/shutters/almayer
 	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'
@@ -80,6 +86,17 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/Initialize()
 	. = ..()
 	relativewall_neighbours()
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/yautja
+	name = "Armory Shutter"
+	id = "Yautja Armory"
+	needs_power = FALSE
+	unacidable = TRUE
+	indestructible = TRUE
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/yautja/Initialize()
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_YAUTJA_ARMORY_OPENED, PROC_REF(open))
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment
 	unacidable = TRUE

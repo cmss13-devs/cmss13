@@ -77,9 +77,28 @@
 /obj/docking_port/mobile/marine_dropship/proc/is_door_locked(direction)
 	return door_control.is_door_locked(direction)
 
+/obj/docking_port/mobile/marine_dropship/enterTransit()
+	. = ..()
+	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED)) //Launching on first drop.
+		SSticker.mode.ds_first_drop(src)
+
 /obj/docking_port/mobile/marine_dropship/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
 	control_doors("force-lock-launch", "all", force=TRUE, asynchronous = FALSE)
+
+	if(is_hijacked)
+		return
+
+	for(var/area/checked_area in shuttle_areas)
+		for(var/mob/living/carbon/xenomorph/checked_xeno in checked_area)
+			if(checked_xeno.stat == DEAD)
+				continue
+
+			var/name = "Unidentified Lifesigns"
+			var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
+			shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg')
+			set_security_level(SEC_LEVEL_RED)
+			return
 
 /obj/docking_port/mobile/marine_dropship/alamo
 	name = "Alamo"
@@ -148,6 +167,14 @@
 	. = ..()
 	link_landing_lights()
 
+/obj/docking_port/stationary/marine_dropship/Destroy()
+	. = ..()
+	for(var/obj/structure/machinery/landinglight/light in landing_lights)
+		light.linked_port = null
+	if(landing_lights)
+		landing_lights.Cut()
+	landing_lights = null // We didn't make them, so lets leave them
+
 /obj/docking_port/stationary/marine_dropship/proc/link_landing_lights()
 	var/list/coords = return_coords()
 	var/scan_range = 5
@@ -159,8 +186,9 @@
 	for(var/xscan = x0; xscan < x1; xscan++)
 		for(var/yscan = y0; yscan < y1; yscan++)
 			var/turf/searchspot = locate(xscan, yscan, src.z)
-			for(var/obj/structure/machinery/landinglight/L in searchspot)
-				landing_lights += L
+			for(var/obj/structure/machinery/landinglight/light in searchspot)
+				landing_lights += light
+				light.linked_port = src
 
 /obj/docking_port/stationary/marine_dropship/proc/turn_on_landing_lights()
 	for(var/obj/structure/machinery/landinglight/light in landing_lights)
@@ -187,10 +215,11 @@
 		console?.update_equipment()
 	if(is_ground_level(z) && !SSobjectives.first_drop_complete)
 		SSticker.mode.ds_first_landed(src)
+		SSticker.mode.flags_round_type |= MODE_DS_LANDED
+
 	if(xeno_announce)
 		xeno_announcement(SPAN_XENOANNOUNCE("The dropship has landed."), "everything")
 		xeno_announce = FALSE
-
 
 /obj/docking_port/stationary/marine_dropship/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
@@ -248,6 +277,8 @@
 			to_chat(affected_mob, SPAN_WARNING("The floor jolts under your feet!"))
 			// shake_camera(affected_mob, 10, 1)
 			affected_mob.apply_effect(3, WEAKEN)
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /datum/map_template/shuttle/alamo
 	name = "Alamo"

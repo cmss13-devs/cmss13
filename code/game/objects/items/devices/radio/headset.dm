@@ -65,6 +65,7 @@
 
 /obj/item/device/radio/headset/Destroy()
 	wearer = null
+	QDEL_NULL_LIST(keys)
 	return ..()
 
 /obj/item/device/radio/headset/proc/set_volume_setting()
@@ -437,6 +438,12 @@
 	desc = "A headset used by the highly trained staff of the medbay. To access the medical channel, use :m."
 	icon_state = "med_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/med)
+
+/obj/item/device/radio/headset/almayer/research
+	name = "researcher radio headset"
+	desc = "A headset used by medbay's skilled researchers. Channels are as follows: :m - medical, :t - intel."
+	icon_state = "med_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/medres)
 
 /obj/item/device/radio/headset/almayer/ct
 	name = "supply radio headset"
@@ -960,20 +967,23 @@
 //CMB Headsets
 /obj/item/device/radio/headset/distress/CMB
 	name = "\improper CMB Earpiece"
-	desc = "A sleek headset used by The Colonial Marshal Bureau, crafted in Sol. Low profile and comfortable. No one is above the law. Featured channels include: ; - CMB, :g - public, :v - marine command, :m - medbay, :t - intel."
+	desc = "A sleek headset used by The Colonial Marshal Bureau, crafted in Sol. Low profile and comfortable. No one is above the law. Featured channels include: ; - CMB, :o - Colony, :g - public, :v - marine command, :m - medbay, :t - intel."
 	frequency = CMB_FREQ
 	icon_state = "cmb_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmb)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_USCM
 
+/obj/item/device/radio/headset/distress/CMB/limited
+	name = "\improper Damaged CMB Earpiece"
+	desc = "A sleek headset used by The Colonial Marshal Bureau, crafted in Sol. Low profile and comfortable. No one is above the law. This one is damaged, so the channels are: ; - CMB, :o - Colony."
+	initial_keys = list(/obj/item/device/encryptionkey/colony)
+
 /obj/item/device/radio/headset/distress/CMB/ICC
 	name = "\improper ICC Liaison Headset"
-	desc = "An expensive headset used by The Interstellar Commerce Commission. This one in particular has a liaison chip with the CMB. Featured channels include: ; - CMB, :g - public, :v - marine command, :m - medbay, :t - intel, :y - Weyland-Yutani."
-	frequency = CMB_FREQ
+	desc = "An expensive headset used by The Interstellar Commerce Commission. This one in particular has a liaison chip with the CMB. Featured channels include: ; - CMB, :o - Colony, :g - public, :v - marine command, :m - medbay, :t - intel, :y - Weyland-Yutani."
 	icon_state = "wy_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/WY, /obj/item/device/encryptionkey/cmb)
-	has_hud = TRUE
 
 /obj/item/device/radio/headset/almayer/highcom
 	name = "USCM High Command headset"

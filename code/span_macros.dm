@@ -55,6 +55,7 @@
 // Misc
 #define SPAN_BOLD(X) "<span class='bold'>[X]</span>"
 #define SPAN_UNDERLINE(X) "<span class='underline'>[X]</span>"
+#define SPAN_LARGE(X) "<span class='large'>[X]</span>"
 
 #define SPAN_BOLDANNOUNCE(X) "<span class='boldannounce'>[X]</span>"
 #define SPAN_BOLDNOTICE(X) "<span class='boldnotice'>[X]</span>"
@@ -103,3 +104,5 @@
 #define SPAN_ORANGE(X) "<span class='orange'>[X]</span>"
 #define SPAN_PURPLE(X) "<span class='purple'>[X]</span>"
 #define SPAN_MAROON(X) "<font color=Maroon>[X]</font>"
+
+#define SPAN_STAFF_IC(X) "<span class='staff_ic'>[X]</span>"

@@ -67,7 +67,7 @@
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc
 	equipment = /datum/equipment_preset/survivor/pmc
-	synth_equipment = /datum/equipment_preset/pmc/synth
+	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -78,9 +78,35 @@
 
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_medic
+	equipment = /datum/equipment_preset/survivor/pmc/medic
+	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"You are NOT aware of the xenomorph threat.",\
+	"Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.")
+	story_text = "You are a PMC medic from Weyland-Yutani. Your ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconcious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
+	roundstart_damage_min = 3
+	roundstart_damage_max = 10
+	roundstart_damage_times = 2
+
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_engineer
+	equipment = /datum/equipment_preset/survivor/pmc/engineer
+	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"You are NOT aware of the xenomorph threat.",\
+	"Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.")
+	story_text = "You are a PMC engineer from Weyland-Yutani. Your ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconcious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
+	roundstart_damage_min = 3
+	roundstart_damage_max = 10
+	roundstart_damage_times = 2
+
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl
 	equipment = /datum/equipment_preset/survivor/wy/manager
-	synth_equipment = /datum/equipment_preset/pmc/synth
+	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")

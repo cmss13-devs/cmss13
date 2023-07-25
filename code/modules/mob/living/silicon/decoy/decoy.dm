@@ -1,13 +1,3 @@
-/mob/living/silicon/decoy/ship_ai //For the moment, pending better pathing.
-	var/silent_announcement_cooldown = 0
-
-/mob/living/silicon/decoy/ship_ai/Initialize()
-	. = ..()
-	name = MAIN_AI_SYSTEM
-	desc = "This is the artificial intelligence system for the [MAIN_SHIP_NAME]. Like many other military-grade AI systems, this one was manufactured by Weyland-Yutani."
-	ai_headset = new(src)
-	ai_mob_list += src
-
 //Should likely just replace this with an actual AI mob in the future. Might as well.
 /mob/living/silicon/decoy
 	name = "AI"
@@ -20,6 +10,26 @@
 	bound_width = 96
 	custom_slashed_sound = "alien_claw_metal"
 	var/obj/item/device/radio/headset/almayer/mcom/ai/ai_headset //The thing it speaks into.
+	maxHealth = 1000
+	health = 1000
+
+/mob/living/silicon/decoy/ship_ai //For the moment, pending better pathing.
+	var/silent_announcement_cooldown = 0
+
+/mob/living/silicon/decoy/ship_ai/Initialize()
+	. = ..()
+	name = MAIN_AI_SYSTEM
+	desc = "This is the artificial intelligence system for the [MAIN_SHIP_NAME]. Like many other military-grade AI systems, this one was manufactured by Weyland-Yutani."
+	ai_headset = new(src)
+	ai_mob_list += src
+	real_name = MAIN_AI_SYSTEM
+
+/mob/living/silicon/decoy/ship_ai/Destroy()
+	QDEL_NULL(ai_headset)
+#ifdef UNIT_TESTS
+	ai_mob_list -= src // Or should we always remove them?
+#endif
+	return ..()
 
 /mob/living/silicon/decoy/Life(delta_time)
 	if(stat == DEAD)

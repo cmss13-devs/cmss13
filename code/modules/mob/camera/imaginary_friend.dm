@@ -39,7 +39,7 @@
 /mob/camera/imaginary_friend/Initialize(mapload, mob/owner)
 	. = ..()
 
-	if(!owner)
+	if(!owner || !owner.client)
 		return INITIALIZE_HINT_QDEL
 
 	src.owner = owner

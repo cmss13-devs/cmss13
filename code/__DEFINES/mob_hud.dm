@@ -65,3 +65,5 @@
 //for tracking the queen/hivecore on xeno locator huds
 #define TRACKER_QUEEN "Queen"
 #define TRACKER_HIVE "Hive Core"
+#define TRACKER_LEADER "Leader"
+#define TRACKER_TUNNEL "Tunnel"

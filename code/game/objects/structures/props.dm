@@ -24,7 +24,7 @@
 	. = ..()
 	if(isxeno(user))
 		return
-	else if (ishuman(user) && istype(W, /obj/item/tool/wrench))
+	else if (ishuman(user) && HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		on = !on
 		visible_message("You wrench the controls of \the [src]. The drill jumps to life." , "[user] wrenches the controls of \the [src]. The drill jumps to life.")
 
@@ -501,7 +501,7 @@
 	. = ..()
 	if(isxeno(user))
 		return
-	else if (ishuman(user) && istype(W, /obj/item/tool/crowbar))
+	else if (ishuman(user) && HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		on = !on
 		visible_message("You pry at the control valve on [src]. The machine shudders." , "[user] pries at the control valve on [src]. The entire machine shudders.")
 
@@ -648,6 +648,10 @@
 	health = 150
 	luminosity = 6
 
+/obj/structure/prop/brazier/Destroy()
+	SetLuminosity(0)
+	return ..()
+
 /obj/structure/prop/brazier/Initialize()
 	. = ..()
 	if(luminosity)
@@ -736,7 +740,7 @@
 	icon_state = "small_wire"
 
 /obj/structure/prop/ice_colony/poly_kevlon_roll
-	name = "poly_kevlon roll"
+	name = "plastic roll"
 	desc = "A big roll of poly-kevlon plastic used in temporary shelter construction."
 	icon_state = "kevlon_roll"
 	anchored = FALSE

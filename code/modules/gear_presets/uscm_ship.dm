@@ -70,21 +70,21 @@
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/laceup)
 
-/datum/equipment_preset/uscm_ship/liaison/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/liaison/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel/lockable/liaison
 	//There is no suitable backpack for a CL really...
-	//if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+	//if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		//back_item = /obj/item/storage/backpack
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcl(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcl(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
-/datum/equipment_preset/uscm_ship/liaison/load_rank(mob/living/carbon/human/H)
-	if(H.client)
-		var/playtime = get_job_playtime(H.client, rank)
-		if(H.client.prefs.playtime_perks)
+/datum/equipment_preset/uscm_ship/liaison/load_rank(mob/living/carbon/human/new_human)
+	if(new_human.client)
+		var/playtime = get_job_playtime(new_human.client, rank)
+		if(new_human.client.prefs.playtime_perks)
 			if(playtime > JOB_PLAYTIME_TIER_4)
 				return "WYC5"
 			else if(playtime > JOB_PLAYTIME_TIER_3)
@@ -125,19 +125,19 @@
 	minimap_icon = "correspondent"
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
 
-/datum/equipment_preset/uscm_ship/reporter/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/reporter/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/reporter(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/reporter(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/reporter(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/camera(H), WEAR_L_HAND)
-	H.equip_to_slot_or_del(new /obj/item/device/camera_film(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/notepad(H), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/reporter(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/reporter(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/reporter(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/camera(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/device/camera_film(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/taperecorder(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/notepad(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/uscm_ship/reporter_uscm
 	name = "Combat Correspondent"
@@ -157,29 +157,29 @@
 	minimap_icon = "correspondent"
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 
-/datum/equipment_preset/uscm_ship/reporter_uscm/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/reporter_uscm/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
 	var/obj/item/clothing/under/marine/uniform = new()
-	uniform.attach_accessory(H, new /obj/item/clothing/accessory/storage/black_vest/brown_vest)
+	uniform.attach_accessory(new_human, new /obj/item/clothing/accessory/storage/black_vest/brown_vest)
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/reporter(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(uniform, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/reporter(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(new_human), WEAR_R_STORE)
 
-	H.equip_to_slot_or_del(new /obj/item/device/camera(H), WEAR_L_HAND)
-	H.equip_to_slot_or_del(new /obj/item/device/camera_film(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/notepad(H), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/camera(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/device/camera_film(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/taperecorder(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/notepad(new_human), WEAR_IN_BACK)
 
 //*****************************************************************************************************/
 
@@ -198,6 +198,7 @@
 		ACCESS_MARINE_MAINT,
 		ACCESS_MARINE_OT,
 		ACCESS_MARINE_SYNTH,
+		ACCESS_MARINE_AI,
 	)
 	assignment = JOB_CHIEF_ENGINEER
 	rank = JOB_CHIEF_ENGINEER
@@ -211,18 +212,18 @@
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/ce)
 
-/datum/equipment_preset/uscm_ship/chief_engineer/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/chief_engineer/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine/tech
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/ce(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/ce(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/electronics(H), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/ce(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/ce(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/electronics(new_human), WEAR_R_STORE)
 
 //*****************************************************************************************************/
 
@@ -245,25 +246,25 @@
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 
-/datum/equipment_preset/uscm_ship/maint/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/maint/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine/tech
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/welding(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/device/demo_scanner(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/bag/trash(H), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/demo_scanner(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/bag/trash(new_human), WEAR_L_HAND)
 
-/datum/equipment_preset/uscm_ship/maint/load_rank(mob/living/carbon/human/H)
-	if(H.client)
-		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
+/datum/equipment_preset/uscm_ship/maint/load_rank(mob/living/carbon/human/new_human)
+	if(new_human.client)
+		if(get_job_playtime(new_human.client, rank) < JOB_PLAYTIME_TIER_1)
 			return "ME1"
 	return paygrade
 
@@ -290,19 +291,19 @@
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 
-/datum/equipment_preset/uscm_ship/ordn/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/ordn/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine/tech
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi/OT(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/device/demo_scanner(H), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi/OT(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/demo_scanner(new_human), WEAR_L_STORE)
 
 //*****************************************************************************************************/
 
@@ -335,19 +336,19 @@
 
 	utility_under = list(/obj/item/clothing/under/rank/ro_suit)
 
-/datum/equipment_preset/uscm_ship/ro/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/ro/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/industrial
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/ro(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/ro_suit(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/req(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/flash(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/ro(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/ro_suit(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/req(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flash(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 
 //*****************************************************************************************************/
 
@@ -366,23 +367,23 @@
 
 	utility_under = list(/obj/item/clothing/under/rank/cargotech)
 
-/datum/equipment_preset/uscm_ship/cargo/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/cargo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/industrial
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/ct(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/cargotech(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beanie(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/ct(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/cargotech(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beanie(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(new_human), WEAR_R_STORE)
 
-/datum/equipment_preset/uscm_ship/cargo/load_rank(mob/living/carbon/human/H)
-	if(H.client)
-		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
+/datum/equipment_preset/uscm_ship/cargo/load_rank(mob/living/carbon/human/new_human)
+	if(new_human.client)
+		if(get_job_playtime(new_human.client, rank) < JOB_PLAYTIME_TIER_1)
 			return "ME1"
 	return paygrade
 
@@ -422,18 +423,18 @@
 	. = ..()
 	access = get_all_marine_access()
 
-/datum/equipment_preset/uscm_ship/commander/load_race(mob/living/carbon/human/H, client/mob_client)
+/datum/equipment_preset/uscm_ship/commander/load_race(mob/living/carbon/human/new_human, client/mob_client)
 	..()
-	ADD_TRAIT(H, TRAIT_EMOTE_CD_EXEMPT, TRAIT_SOURCE_JOB)
+	ADD_TRAIT(new_human, TRAIT_EMOTE_CD_EXEMPT, TRAIT_SOURCE_JOB)
 
-/datum/equipment_preset/uscm_ship/commander/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/commander/load_gear(mob/living/carbon/human/new_human)
 	var/sidearm = "Mateba"
 	var/kit = null
 	var/sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
 	var/back_item = /obj/item/storage/backpack/satchel/lockable
 
-	if(H.client && H.client.prefs)
-		sidearm = H.client.prefs.commander_sidearm
+	if(new_human.client && new_human.client.prefs)
+		sidearm = new_human.client.prefs.commander_sidearm
 		switch(sidearm)
 			if("Mateba")
 				sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
@@ -450,18 +451,18 @@
 			if("VP78")
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/vp78
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress/commander(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new sidearmpath(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(H), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress/commander(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new sidearmpath(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_L_HAND)
 	if(kit)
-		H.equip_to_slot_or_del(new kit(H), WEAR_IN_BACK)
+		new_human.equip_to_slot_or_del(new kit(new_human), WEAR_IN_BACK)
 
 //*****************************************************************************************************/
 
@@ -475,9 +476,9 @@
 	role_comm_title = "CO"
 	minimum_age = 35
 
-/datum/equipment_preset/uscm_ship/commander/council/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/council(H), WEAR_HEAD)
+/datum/equipment_preset/uscm_ship/commander/council/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/council(new_human), WEAR_HEAD)
 	. = ..()
 
 /datum/equipment_preset/uscm_ship/commander/council/plus
@@ -485,8 +486,8 @@
 	idtype = /obj/item/card/id/general
 	paygrade = "MO6"
 
-/datum/equipment_preset/uscm_ship/commander/council/plus/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/councilchief(H), WEAR_HEAD)
+/datum/equipment_preset/uscm_ship/commander/council/plus/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/councilchief(new_human), WEAR_HEAD)
 	. = ..()
 
 //*****************************************************************************************************/
@@ -510,22 +511,22 @@
 
 /datum/equipment_preset/uscm_ship/xo/New()
 	. = ..()
-	access = get_all_marine_access() - ACCESS_MARINE_CAPTAIN
+	access = get_main_marine_access()
 
-/datum/equipment_preset/uscm_ship/xo/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/xo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/exec(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/exec(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_L_STORE)
 
 //*****************************************************************************************************/
 
@@ -545,20 +546,20 @@
 	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_BRONZE)
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 
-/datum/equipment_preset/uscm_ship/so/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/so/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/ro(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/ro(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_L_HAND)
 
 //*****************************************************************************************************/
 
@@ -581,27 +582,27 @@
 
 /datum/equipment_preset/uscm_ship/sea/New()
 	. = ..()
-	access = get_all_marine_access() - ACCESS_MARINE_CAPTAIN
+	access = get_main_marine_access()
 
-/datum/equipment_preset/uscm_ship/sea/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/sea/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m44/custom(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/drillhat(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/device/flash(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
-	H.equip_to_slot_or_del(new /obj/item/device/whistle(H), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m44/custom(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/drillhat(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flash(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/device/whistle(new_human), WEAR_R_HAND)
 
 /datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/rankee)
 	if(rankee?.client?.prefs?.pref_special_job_options[rank])
-		paygrade = rankee.client.prefs.pref_special_job_options[rank]
+		paygrade = get_paygrade_id_by_name(rankee.client.prefs.pref_special_job_options[rank])
 
 	return paygrade
 
@@ -621,15 +622,15 @@
 
 	minimap_icon = "pilot"
 
-/datum/equipment_preset/uscm_ship/po/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/po/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
-	if(H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+	if(new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/po(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/po(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
 //*****************************************************************************************************/
 
@@ -639,21 +640,21 @@
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/pilot)
 
-/datum/equipment_preset/uscm_ship/po/full/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/po/full/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
-	if(H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+	if(new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/po(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/pilot(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/po(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/pilot(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(new_human), WEAR_EYES)
 
 //*****************************************************************************************************/
 
@@ -671,15 +672,15 @@
 
 	minimap_icon = "dcc"
 
-/datum/equipment_preset/uscm_ship/dcc/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/dcc/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
-	if(H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+	if(new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/po(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/dcc(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/po(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/dcc(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
 //*****************************************************************************************************/
 
@@ -689,21 +690,21 @@
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/pilot/dcc)
 
-/datum/equipment_preset/uscm_ship/dcc/full/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/dcc/full/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
-	if(H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+	if(new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/po(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/dcc(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest/dcc(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/po(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/dcc(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest/dcc(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(new_human), WEAR_EYES)
 
 //*****************************************************************************************************/
 
@@ -733,18 +734,18 @@
 
 /datum/equipment_preset/uscm_ship/officer/New()
 	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
+	access = get_all_marine_access()
 
-/datum/equipment_preset/uscm_ship/officer/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/officer/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
-	H.equip_if_possible(new /obj/item/clothing/under/rank/centcom/officer(H), WEAR_BODY)
-	H.equip_if_possible(new /obj/item/clothing/shoes/centcom(H), WEAR_FEET)
-	H.equip_if_possible(new /obj/item/clothing/gloves/white(H), WEAR_HANDS)
-	H.equip_if_possible(new /obj/item/clothing/head/beret/centcom/officer(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
+	new_human.equip_if_possible(new /obj/item/clothing/under/rank/centcom/officer(new_human), WEAR_BODY)
+	new_human.equip_if_possible(new /obj/item/clothing/shoes/centcom(new_human), WEAR_FEET)
+	new_human.equip_if_possible(new /obj/item/clothing/gloves/white(new_human), WEAR_HANDS)
+	new_human.equip_if_possible(new /obj/item/clothing/head/beret/centcom/officer(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
 
-	H.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
-	H.equip_if_possible(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
+	new_human.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(new_human), WEAR_EYES)
+	new_human.equip_if_possible(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 
 //*****************************************************************************************************/
 
@@ -763,23 +764,23 @@
 
 	utility_under = list(/obj/item/clothing/under/marine/chef)
 
-/datum/equipment_preset/uscm_ship/chef/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/chef/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/chefhat(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/chef(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/chef(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/chef(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/chefhat(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/chef(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/chef(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/chef(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(new_human), WEAR_R_STORE)
 
-/datum/equipment_preset/uscm_ship/chef/load_rank(mob/living/carbon/human/H)
-	if(H.client)
-		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
+/datum/equipment_preset/uscm_ship/chef/load_rank(mob/living/carbon/human/new_human)
+	if(new_human.client)
+		if(get_job_playtime(new_human.client, rank) < JOB_PLAYTIME_TIER_1)
 			return "ME1"
 	return paygrade

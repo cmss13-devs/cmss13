@@ -166,7 +166,7 @@
 	. += ""
 
 //A simple handler for checking your state. Used in pretty much all the procs.
-/mob/living/carbon/xenomorph/proc/check_state(permissive = 0)
+/mob/living/carbon/xenomorph/proc/check_state(permissive = FALSE)
 	if(!permissive)
 		if(is_mob_incapacitated() || lying || buckled || evolving || !isturf(loc))
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
@@ -453,6 +453,9 @@
 		if(istype(O, /obj/structure/fence))
 			has_obstacle = TRUE
 			break
+		if(istype(O, /obj/structure/tunnel))
+			has_obstacle = TRUE
+			break
 		if(istype(O, /obj/structure/bed))
 			if(istype(O, /obj/structure/bed/chair/dropship/passenger))
 				var/obj/structure/bed/chair/dropship/passenger/P = O
@@ -726,6 +729,10 @@
 
 	if(!ishuman(current_mob))
 		to_chat(src, SPAN_XENONOTICE("This is not a host."))
+		return
+
+	if(current_mob.stat == DEAD)
+		to_chat(src, SPAN_XENONOTICE("This host is dead."))
 		return
 
 	var/mob/living/carbon/human/host_to_nest = current_mob

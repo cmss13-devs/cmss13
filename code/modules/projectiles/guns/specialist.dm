@@ -93,7 +93,6 @@
 	if(!check_can_use(target))
 		return
 
-	sniper_rifle.aimed_shot_cooldown = world.time + sniper_rifle.aimed_shot_cooldown_delay
 	human.face_atom(target)
 
 	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
@@ -190,9 +189,10 @@
 		to_chat(H, SPAN_WARNING("Something is in the way, or you're out of range!"))
 		if(cover_lose_focus)
 			to_chat(H, SPAN_WARNING("You lose focus."))
-			sniper_rifle.aimed_shot_cooldown = world.time + sniper_rifle.aimed_shot_cooldown_delay * 0.5
+			COOLDOWN_START(sniper_rifle, aimed_shot_cooldown, sniper_rifle.aimed_shot_cooldown_delay * 0.5)
 		return FALSE
 
+	COOLDOWN_START(sniper_rifle, aimed_shot_cooldown, sniper_rifle.aimed_shot_cooldown_delay)
 	return TRUE
 
 /datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(mob/firer, mob/target, obj/item/projectile/P)
@@ -267,7 +267,7 @@
 	if(toggling_action)
 		toggling_action.update_button_icon()
 
-/obj/item/weapon/gun/rifle/sniper/toggle_burst(mob/user)
+/obj/item/weapon/gun/rifle/sniper/set_bursting(mob/user)
 	if(has_aimed_shot)
 		toggle_laser(user)
 	else
@@ -321,8 +321,8 @@
 
 /obj/item/weapon/gun/rifle/sniper/M42A/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6*3
-	burst_amount = BURST_AMOUNT_TIER_1
+	set_fire_delay(FIRE_DELAY_TIER_6*3)
+	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT * 3 //you HAVE to be able to hit
 	scatter = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -365,9 +365,9 @@
 
 /obj/item/weapon/gun/rifle/sniper/XM42B/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6 * 6 //Big boy damage, but it takes a lot of time to fire a shot.
+	set_fire_delay(FIRE_DELAY_TIER_6 * 6 )//Big boy damage, but it takes a lot of time to fire a shot.
 	//Kaga: Adjusted from 56 (Tier 4, 7*8) -> 30 (Tier 6, 5*6) ticks. 95 really wasn't big-boy damage anymore, although I updated it to 125 to remain consistent with the other 10x99mm caliber weapon (M42C). Now takes only twice as long as the M42A.
-	burst_amount = BURST_AMOUNT_TIER_1
+	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT + 2*HIT_ACCURACY_MULT_TIER_10 //Who coded this like this, and why? It just calculates out to 1+1=2. Leaving a note here to check back later.
 	scatter = SCATTER_AMOUNT_TIER_10
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -430,8 +430,8 @@
 
 /obj/item/weapon/gun/rifle/sniper/elite/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6*5
-	burst_amount = BURST_AMOUNT_TIER_1
+	set_fire_delay(FIRE_DELAY_TIER_6*5)
+	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT * 3 //Was previously BAM + HAMT10, similar to the XM42B, and coming out to 1.5? Changed to be consistent with M42A. -Kaga
 	scatter = SCATTER_AMOUNT_TIER_10 //Was previously 8, changed to be consistent with the XM42B.
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -507,9 +507,9 @@
 
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
-	burst_amount = BURST_AMOUNT_TIER_2
-	burst_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_6)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
@@ -584,9 +584,9 @@
 
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
-	burst_amount = BURST_AMOUNT_TIER_2
-	burst_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_6)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_10)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
@@ -800,7 +800,7 @@
 		var/obj/item/explosive/grenade/G = cylinder.contents[1]
 		if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(G, user))
 			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
-			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 			return FALSE
 
 
@@ -922,7 +922,7 @@
 
 /obj/item/weapon/gun/launcher/grenade/m92/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_4*4
+	set_fire_delay(FIRE_DELAY_TIER_4*4)
 
 /obj/item/weapon/gun/launcher/grenade/m92/able_to_fire(mob/living/user)
 	. = ..()
@@ -949,7 +949,7 @@
 
 /obj/item/weapon/gun/launcher/grenade/m81/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_4 * 1.5
+	set_fire_delay(FIRE_DELAY_TIER_4 * 1.5)
 
 /obj/item/weapon/gun/launcher/grenade/m81/on_pocket_removal()
 	..()
@@ -1058,7 +1058,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6*2
+	set_fire_delay(FIRE_DELAY_TIER_6*2)
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -1082,7 +1082,7 @@
 			return 0
 		if(user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
 			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
-			msg_admin_niche("[key_name(user)] attempted to fire \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			msg_admin_niche("[key_name(user)] attempted to fire \a [name] in [get_area(src)] [ADMIN_JMP(loc)]")
 			return FALSE
 		if(current_mag && current_mag.current_rounds > 0)
 			make_rocket(user, 0, 1)
@@ -1225,9 +1225,9 @@
 
 /obj/item/weapon/gun/launcher/rocket/m57a4/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_5
-	burst_delay = FIRE_DELAY_TIER_7
-	burst_amount = BURST_AMOUNT_TIER_4
+	set_fire_delay(FIRE_DELAY_TIER_5)
+	set_burst_delay(FIRE_DELAY_TIER_7)
+	set_burst_amount(BURST_AMOUNT_TIER_4)
 	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -1372,7 +1372,7 @@
 
 /obj/item/weapon/gun/flare/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_10)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = 0

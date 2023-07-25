@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - admin: "Tweaked and added more server log verbs"

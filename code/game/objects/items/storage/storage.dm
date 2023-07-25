@@ -22,9 +22,7 @@
 	var/atom/movable/screen/storage/storage_start = null //storage UI
 	var/atom/movable/screen/storage/storage_continue = null
 	var/atom/movable/screen/storage/storage_end = null
-	var/atom/movable/screen/storage/stored_start = null
-	var/atom/movable/screen/storage/stored_continue = null
-	var/atom/movable/screen/storage/stored_end = null
+	var/datum/item_storage_box/stored_ISB = null // This contains what previously was known as stored_start, stored_continue, and stored_end
 	var/atom/movable/screen/close/closer = null
 	var/foldable = null
 	var/use_sound = "rustle" //sound played when used. null for no sound.
@@ -204,6 +202,8 @@ var/list/global/item_storage_box_cache = list()
 	var/atom/movable/screen/storage/start = null
 	var/atom/movable/screen/storage/continued = null
 	var/atom/movable/screen/storage/end = null
+	/// The index that indentifies me inside item_storage_box_cache
+	var/index
 
 /datum/item_storage_box/New()
 	start = new()
@@ -212,6 +212,13 @@ var/list/global/item_storage_box_cache = list()
 	continued.icon_state = "stored_continue"
 	end = new()
 	end.icon_state = "stored_end"
+
+/datum/item_storage_box/Destroy(force, ...)
+	QDEL_NULL(start)
+	QDEL_NULL(continued)
+	QDEL_NULL(end)
+	item_storage_box_cache[index] = null // Or would it be better to -= src?
+	return ..()
 
 /obj/item/storage/proc/space_orient_objs(list/obj/item/display_contents)
 	var/baseline_max_storage_space = 21 //should be equal to default backpack capacity
@@ -243,11 +250,12 @@ var/list/global/item_storage_box_cache = list()
 	for(var/obj/item/O in contents)
 		startpoint = endpoint + 1
 		endpoint += storage_width * O.get_storage_cost()/max_storage_space
+		var/isb_index = "[startpoint], [endpoint], [stored_cap_width]"
 
 		click_border_start.Add(startpoint)
 		click_border_end.Add(endpoint)
 
-		if(!item_storage_box_cache["[startpoint], [endpoint], [stored_cap_width]"])
+		if(!item_storage_box_cache[isb_index])
 			var/datum/item_storage_box/box = new()
 			var/matrix/M_start = matrix()
 			var/matrix/M_continue = matrix()
@@ -259,16 +267,15 @@ var/list/global/item_storage_box_cache = list()
 			box.start.apply_transform(M_start)
 			box.continued.apply_transform(M_continue)
 			box.end.apply_transform(M_end)
-			item_storage_box_cache["[startpoint], [endpoint], [stored_cap_width]"] = box
+			box.index = isb_index
+			item_storage_box_cache[isb_index] = box
 
-		var/datum/item_storage_box/ISB = item_storage_box_cache["[startpoint], [endpoint], [stored_cap_width]"]
-		stored_start = ISB.start
-		stored_continue = ISB.continued
-		stored_end = ISB.end
+		var/datum/item_storage_box/ISB = item_storage_box_cache[isb_index]
+		stored_ISB = ISB
 
-		storage_start.overlays += src.stored_start
-		storage_start.overlays += src.stored_continue
-		storage_start.overlays += src.stored_end
+		storage_start.overlays += ISB.start
+		storage_start.overlays += ISB.continued
+		storage_start.overlays += ISB.end
 
 		O.screen_loc = "4:[round((startpoint+endpoint)/2)+(2+O.hud_offset)],2:16"
 		O.layer = ABOVE_HUD_LAYER
@@ -792,9 +799,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	storage_close(watcher)
 
 /obj/item/storage/proc/dump_objectives()
-	for(var/obj/item/I in src)
-		if(I.is_objective)
-			I.forceMove(loc)
+	for(var/obj/item/cur_item in src)
+		if(cur_item.is_objective)
+			remove_from_storage(cur_item, loc)
 
 
 /obj/item/storage/Destroy()
@@ -806,9 +813,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	QDEL_NULL(storage_start)
 	QDEL_NULL(storage_continue)
 	QDEL_NULL(storage_end)
-	QDEL_NULL(stored_start)
-	QDEL_NULL(stored_continue)
-	QDEL_NULL(stored_end)
+	QDEL_NULL(stored_ISB)
 	QDEL_NULL(closer)
 	return ..()
 

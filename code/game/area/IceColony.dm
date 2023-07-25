@@ -46,7 +46,6 @@
 
 /area/ice_colony/exterior/surface
 	name = "\improper Ice Colony - Exterior Surface"
-	fake_zlevel = 1 // above ground
 	soundscape_playlist = SCAPE_PL_WIND
 
 //Equivalent of space. None of this area should be accessible. If these are valleys, make separate areas
@@ -153,7 +152,6 @@
 	name = "\improper Ice Colony - Exterior Underground"
 	icon_state = "cave"
 	ceiling = CEILING_DEEP_UNDERGROUND
-	fake_zlevel = 2 // underground
 	ambience_exterior = null
 //
 // Caves
@@ -189,7 +187,6 @@
 	name = "\improper Ice Colony - Built Surface"
 	icon_state = "clear"
 	ceiling = CEILING_METAL
-	fake_zlevel = 1 // above ground
 
 /*
  * Surface - Bar
@@ -485,7 +482,6 @@
 	name = "\improper Ice Colony - Built Underground"
 	icon_state = "explored"
 	ceiling = CEILING_DEEP_UNDERGROUND_METAL
-	fake_zlevel = 2 // underground
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
 	sound_environment = SOUND_ENVIRONMENT_ROOM

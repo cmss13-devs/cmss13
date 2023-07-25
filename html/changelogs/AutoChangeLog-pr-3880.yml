@@ -1,0 +1,7 @@
+author: "Ben10083"
+delete-after: True
+changes:
+  - bugfix: "Non-techweb nuke now works properly."
+  - ui: "Nuke timers now use minutes instead of seconds"
+  - spellcheck: "Nukes renamed to 'Encrypted' and 'Decrypted' nuke respectively."
+  - admin: "Ability to spawn nuke added to event panel"

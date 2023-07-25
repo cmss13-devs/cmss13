@@ -23,8 +23,11 @@
 	var/wikiurl = CONFIG_GET(string/wikiurl)
 	if(wikiurl)
 		dat = {"
+				<!DOCTYPE html>
 				<html>
 				<head>
+					<meta http-equiv="X-UA-Compatible" content="IE=edge">
+					<meta charset="utf-8">
 					<style>
 						img {
 							display: none;
@@ -51,7 +54,7 @@
 
 				</html>
 			"}
-	show_browser(usr, dat, name, "map", "size=[window_size]")
+	show_browser(usr, dat, name, "papermap", "size=[window_size]")
 
 /obj/item/map/lazarus_landing_map
 	name = "\improper Lazarus Landing Map"
@@ -122,10 +125,10 @@
 	desc = "An overview of LV-522 schematics."
 	html_link = "images/b/bb/C_claim.png"
 	color = "cyan"
-/obj/item/map/new_varadero//to-do actually finish this map
+/obj/item/map/new_varadero
 	name = "\improper New Varadero map"
-	desc = "The blueprint and readout of the UA outpost New Varadero"
-	html_link = "images/0/0d/Kutjevo_a1.jpg"//replace later
+	desc = "A labeled blueprint of the UA outpost New Varadero"
+	html_link = "images/9/94/New_Varadero.png"
 	color = "red"
 
 //used by marine equipment machines to spawn the correct map.
@@ -192,7 +195,7 @@
 		if (MAP_NEW_VARADERO)
 			name = "\improper New Varadero map"
 			desc = "The blueprint and readout of the UA outpost New Varadero"
-			html_link = "images/0/0d/Kutjevo_a1.jpg"//replace later
+			html_link = "images/9/94/New_Varadero.png"//replace later
 			color = "red"
 
 		else

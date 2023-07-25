@@ -27,7 +27,6 @@ export const HealthScan = (props, context) => {
     has_blood,
     body_temperature,
     pulse,
-    internal_bleeding,
     implants,
     core_fracture,
     lung_ruptured,
@@ -195,19 +194,12 @@ export const HealthScan = (props, context) => {
             </LabeledList.Item>
             <LabeledList.Item label={'Pulse'}>{pulse}</LabeledList.Item>
           </LabeledList>
-          {internal_bleeding ||
+          {implants ||
           (brainslug && bodyscanner) ||
-          implants ||
           hugged ||
           core_fracture ||
           (lung_ruptured && bodyscanner) ? (
             <Divider />
-          ) : null}
-          {internal_bleeding ? (
-            <NoticeBox danger>
-              Internal Bleeding Detected!
-              {healthanalyser ? ' Advanced scanner required for location.' : ''}
-            </NoticeBox>
           ) : null}
           {implants && detail_level !== 1 ? (
             <NoticeBox danger>
@@ -358,7 +350,7 @@ const ScannerLimbs = (props, context) => {
                       [Bleeding]
                     </Box>
                   ) : null}
-                  {limb.internal_bleeding && bodyscanner ? (
+                  {limb.internal_bleeding ? (
                     <Box inline color={'red'} bold={1}>
                       [Internal Bleeding]
                     </Box>

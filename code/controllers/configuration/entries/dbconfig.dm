@@ -29,5 +29,5 @@
 	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/string/db_filename
-	config_entry_value = "local.db"
+	config_entry_value = "data/local.db"
 	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED

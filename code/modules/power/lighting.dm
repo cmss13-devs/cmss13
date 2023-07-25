@@ -758,6 +758,7 @@
 	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
 	unslashable = TRUE
 	unacidable = TRUE
+	var/obj/docking_port/stationary/marine_dropship/linked_port = null
 
 //Don't allow blowing those up, so Marine nades don't fuck them
 /obj/structure/machinery/landinglight/ex_act(severity)
@@ -766,6 +767,12 @@
 /obj/structure/machinery/landinglight/Initialize(mapload, ...)
 	. = ..()
 	turn_off()
+
+/obj/structure/machinery/landinglight/Destroy()
+	. = ..()
+	if(linked_port)
+		linked_port.landing_lights -= src
+		linked_port = null
 
 /obj/structure/machinery/landinglight/proc/turn_off()
 	icon_state = initial(icon_state)

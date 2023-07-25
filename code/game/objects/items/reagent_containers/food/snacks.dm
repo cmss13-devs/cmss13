@@ -66,6 +66,10 @@
 		if(issynth(C))
 			fullness = 200 //Synths never get full
 
+		if(HAS_TRAIT(M, TRAIT_CANNOT_EAT)) //Do not feed the Working Joes
+			to_chat(user, SPAN_DANGER("[user == M ? "You are" : "[M] is"] unable to eat!"))
+			return
+
 		if(fullness > 540)
 			C.overeat_cooldown = world.time + OVEREAT_TIME
 
@@ -3242,6 +3246,19 @@
 	. = ..()
 	reagents.add_reagent("bread", 4)
 	reagents.add_reagent("sodiumchloride", 12)
+
+/obj/item/reagent_container/food/snacks/kepler_crisps/flamehot
+	name = "Kepler Flamehot"
+	desc = "'They're disturbingly good!' Due to an exceptionally well-timed ad campaign with the release of Kepler Flamehot in 2165, the Kepler brand was able to overtake other confectionary Weyland products by quarter three of that year. Contains 0% trans fat."
+	icon_state = "flamehotkepler"
+	bitesize = 2
+	trash = /obj/item/trash/kepler/flamehot
+
+/obj/item/reagent_container/food/snacks/kepler_crisps/flamehot/Initialize()
+	. = ..()
+	reagents.add_reagent("bread", 4)
+	reagents.add_reagent("sodiumchloride", 4)
+	reagents.add_reagent("hotsauce", 8)
 
 //Wrapped candy bars
 

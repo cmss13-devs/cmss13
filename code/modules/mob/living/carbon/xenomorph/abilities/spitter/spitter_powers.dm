@@ -30,8 +30,7 @@
 	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/charge_spit/proc/disable_spatter()
 	SIGNAL_HANDLER

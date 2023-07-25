@@ -134,6 +134,15 @@
 	icon_state = "dark_sterile"
 	},
 /area/adminlevel/ert_station)
+"cK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer{
+	icon_state = "floor"
+	},
+/area/adminlevel/ert_station)
 "cU" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -438,6 +447,13 @@
 	icon_state = "floor"
 	},
 /area/adminlevel/ert_station)
+"iz" = (
+/obj/structure/disposalpipe/junction,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silver"
+	},
+/area/adminlevel/ert_station)
 "iL" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -445,6 +461,12 @@
 /turf/open/floor/almayer{
 	icon_state = "plating_striped"
 	},
+/area/adminlevel/ert_station)
+"iR" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2
+	},
+/turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/ert_station)
 "ja" = (
 /turf/open/floor/plating,
@@ -464,6 +486,23 @@
 "kx" = (
 /turf/closed/wall/indestructible/splashscreen,
 /area/start)
+"kN" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "floor"
+	},
+/area/adminlevel/ert_station)
+"me" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silver"
+	},
+/area/adminlevel/ert_station)
 "nP" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -506,6 +545,9 @@
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station)
 "ot" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2
+	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red"
@@ -531,6 +573,12 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew1,
 /area/space)
+"oS" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station)
 "oW" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -551,6 +599,12 @@
 	dir = 5;
 	icon_state = "red"
 	},
+/area/adminlevel/ert_station)
+"ph" = (
+/obj/structure/disposalpipe/junction{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
 "pm" = (
 /turf/open/floor/almayer{
@@ -664,6 +718,12 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew5,
 /area/space)
+"sN" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station)
 "th" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
@@ -694,6 +754,9 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Dormitories"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "floor"
@@ -762,6 +825,9 @@
 /obj/item/tool/wet_sign,
 /obj/item/tool/wet_sign,
 /obj/item/tool/mop,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -858,6 +924,13 @@
 	icon_state = "floor"
 	},
 /area/adminlevel/ert_station)
+"wL" = (
+/obj/structure/machinery/disposal/deliveryChute,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/space)
 "wW" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/ert_station)
@@ -967,7 +1040,7 @@
 	},
 /area/adminlevel/ert_station)
 "zk" = (
-/obj/structure/machinery/chem_dispenser/beer{
+/obj/structure/machinery/chem_dispenser/soda/beer{
 	density = 0;
 	pixel_y = 10
 	},
@@ -1005,6 +1078,15 @@
 	icon_state = "silver"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
+"zN" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/adminlevel/ert_station)
 "zO" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/recharger,
@@ -1033,6 +1115,14 @@
 "AS" = (
 /turf/closed/wall/almayer/outer,
 /area/tdome/tdome2)
+"Bv" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "floor"
+	},
+/area/adminlevel/ert_station)
 "Bw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -1109,6 +1199,9 @@
 	dir = 1;
 	name = "Detention Cell";
 	req_access = null
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull"
@@ -1239,6 +1332,9 @@
 	dir = 1;
 	name = "Restroom"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -1250,6 +1346,14 @@
 	icon_state = "silver"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
+"Fd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station)
 "Fo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -1407,6 +1511,15 @@
 	icon_state = "silver"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
+"HQ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "silver"
+	},
+/area/adminlevel/ert_station)
 "HW" = (
 /obj/docking_port/stationary/emergency_response/idle_port4,
 /turf/open/floor/plating/almayer,
@@ -1450,6 +1563,9 @@
 /area/adminlevel/ert_station)
 "ID" = (
 /obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -1465,6 +1581,9 @@
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station)
 "IO" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2
+	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "red"
@@ -1519,6 +1638,9 @@
 	},
 /area/adminlevel/ert_station)
 "KA" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "greencorner"
@@ -1566,6 +1688,9 @@
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Lt" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2
+	},
 /turf/open/floor/almayer{
 	icon_state = "greencorner"
 	},
@@ -1665,10 +1790,28 @@
 /area/adminlevel/ert_station)
 "MG" = (
 /obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver"
 	},
+/area/adminlevel/ert_station)
+"ML" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/adminlevel/ert_station)
+"MQ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
 "Nc" = (
 /obj/effect/decal/warning_stripes{
@@ -1709,6 +1852,9 @@
 /area/adminlevel/ert_station)
 "NE" = (
 /obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	icon_state = "floor"
 	},
@@ -1843,7 +1989,19 @@
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 2
+	},
 /turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station)
+"Qd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer{
+	icon_state = "floor"
+	},
 /area/adminlevel/ert_station)
 "Qq" = (
 /obj/structure/bed/sofa/vert/grey/top,
@@ -1971,6 +2129,15 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
+	},
+/area/adminlevel/ert_station)
+"Tg" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer{
+	icon_state = "floor"
 	},
 /area/adminlevel/ert_station)
 "Ti" = (
@@ -2111,6 +2278,14 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station/shuttle_dispatch)
+"UT" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "floor"
+	},
+/area/adminlevel/ert_station)
 "UW" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -2244,6 +2419,12 @@
 	pixel_y = 16
 	},
 /turf/open/floor/carpet,
+/area/adminlevel/ert_station)
+"XF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
 "XR" = (
 /turf/open/floor/almayer{
@@ -4949,13 +5130,13 @@ Qr
 Qr
 Qr
 AI
-Qr
-uI
+Tg
+Fd
 CK
 ot
 IO
-wW
-aa
+iR
+wL
 aC
 aa
 aa
@@ -5076,32 +5257,32 @@ YU
 AL
 AL
 AL
-AL
+zN
 ET
-NZ
-NZ
-NZ
-NZ
-NZ
+sN
+sN
+sN
+sN
+sN
 uf
-GB
-Qr
-Qr
+HQ
+UT
+cK
 an
+oS
 an
-an
 Qr
-Qr
-Qr
+Tg
+Bv
 Lt
 PY
 PY
 PY
 KA
-Qr
-an
-an
-an
+Bv
+XF
+XF
+MQ
 uI
 eG
 Is
@@ -5228,7 +5409,7 @@ Ni
 AL
 AL
 AL
-AL
+ML
 YU
 op
 Po
@@ -5238,12 +5419,12 @@ Po
 VC
 GB
 an
-Qr
-Pr
-Pr
-Pr
-Qr
-an
+Qd
+me
+iz
+me
+Bv
+ph
 Qr
 ZI
 Ys
@@ -5395,7 +5576,7 @@ pP
 vD
 vD
 GB
-an
+oS
 Qr
 ZI
 gA
@@ -5547,7 +5728,7 @@ vD
 vD
 vD
 GB
-an
+oS
 Qr
 ZI
 Ys
@@ -5699,7 +5880,7 @@ vD
 Kk
 uN
 GB
-Qr
+kN
 PS
 TD
 YW
@@ -5851,7 +6032,7 @@ vD
 vD
 Qz
 GB
-an
+oS
 MB
 Pr
 Pr
@@ -6003,7 +6184,7 @@ vD
 vD
 vD
 GB
-an
+oS
 QJ
 YU
 OF
@@ -6155,7 +6336,7 @@ Gq
 Gq
 Gq
 Qr
-an
+oS
 QJ
 YU
 aj
@@ -6307,7 +6488,7 @@ Ge
 an
 Ge
 Qr
-Qr
+kN
 QJ
 YU
 Zy

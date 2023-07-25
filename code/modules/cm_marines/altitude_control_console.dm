@@ -38,6 +38,10 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 	. = ..()
 	START_PROCESSING(SSslowobj, src)
 
+/obj/structure/machinery/computer/altitude_control_console/Destroy()
+	STOP_PROCESSING(SSslowobj, src)
+	return ..()
+
 /obj/structure/machinery/computer/altitude_control_console/process()
 	. = ..()
 	var/temperature_change

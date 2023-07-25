@@ -208,6 +208,20 @@
 			return
 	..()
 
+/obj/structure/bed/roller/Collided(atom/movable/moving_atom)
+	if(!isxeno(moving_atom))
+		return ..()
+
+	if(buckled_mob && buckled_mob.stat != DEAD)
+		return ..()
+
+	if(buckled_bodybag)
+		var/mob/mob_in_bodybag = locate(/mob) in buckled_bodybag
+		if(mob_in_bodybag && mob_in_bodybag.stat != DEAD)
+			return ..()
+
+	return
+
 /obj/item/roller
 	name = "roller bed"
 	desc = "A collapsed roller bed that can be carried around."
@@ -330,9 +344,8 @@ var/global/list/activated_medevac_stretchers = list()
 	if(buckled_mob || buckled_bodybag)
 		overlays += image("icon_state"="stretcher_box","layer"=LYING_LIVING_MOB_LAYER + 0.1)
 
-
-/obj/structure/bed/medevac_stretcher/verb/activate_medevac_beacon()
-	set name = "Activate medevac"
+/obj/structure/bed/medevac_stretcher/verb/toggle_medevac_beacon_verb()
+	set name = "Toggle medevac"
 	set desc = "Toggle the medevac beacon inside the stretcher."
 	set category = "Object"
 	set src in oview(1)
@@ -370,13 +383,10 @@ var/global/list/activated_medevac_stretchers = list()
 			to_chat(user, SPAN_WARNING("[src] must be in the open or under a glass roof."))
 			return
 
-		if(buckled_mob || buckled_bodybag)
-			stretcher_activated = TRUE
-			activated_medevac_stretchers += src
-			to_chat(user, SPAN_NOTICE("You activate [src]'s beacon."))
-			update_icon()
-		else
-			to_chat(user, SPAN_WARNING("You need to attach something to [src] before you can activate its beacon yet."))
+		stretcher_activated = TRUE
+		activated_medevac_stretchers += src
+		to_chat(user, SPAN_NOTICE("You activate [src]'s beacon."))
+		update_icon()
 
 /obj/item/roller/medevac
 	name = "medevac stretcher"
@@ -384,6 +394,13 @@ var/global/list/activated_medevac_stretchers = list()
 	icon_state = "stretcher_folded"
 	rollertype = /obj/structure/bed/medevac_stretcher
 	matter = list("plastic" = 5000, "metal" = 5000)
+
+/obj/item/roller/medevac/deploy_roller(mob/user, atom/location)
+	var/obj/structure/bed/medevac_stretcher/medevac_stretcher = new rollertype(location)
+	medevac_stretcher.add_fingerprint(user)
+	user.temp_drop_inv_item(src)
+	qdel(src)
+	medevac_stretcher.toggle_medevac_beacon(user)
 
 //bedroll
 /obj/structure/bed/bedroll

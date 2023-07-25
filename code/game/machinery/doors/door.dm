@@ -247,7 +247,6 @@
 		return FALSE
 
 	operating = TRUE
-	CHECK_TICK
 	src.density = TRUE
 	src.layer = closed_layer
 	do_animate("closing")

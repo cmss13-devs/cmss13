@@ -235,7 +235,10 @@ var/list/datum/mob_hud/huds = list(
 			hud.remove_hud_from(src)
 		else if (istype(hud, /datum/mob_hud/xeno_infection) || istype(hud, /datum/mob_hud/brainworm))
 			hud.remove_hud_from(src)
-
+	if (xeno_hostile_hud)
+		xeno_hostile_hud = FALSE
+		var/datum/mob_hud/hostile_hud = huds[MOB_HUD_XENO_HOSTILE]
+		hostile_hud.remove_hud_from(src)
 
 
 

@@ -54,7 +54,7 @@
 	id = "oxycodone"
 	description = "Oxycodone is an opioid agonist with addiction potential similar to that of morphine. It is approved for the treatment of patients with moderate to severe pain who are expected to need continuous opioids for an extended period of time. Overdosing on oxycodone can cause hallucinations, brain damage and be highly toxic."
 	reagent_state = LIQUID
-	color = "#C805DC"
+	color = "#E01D25"
 	custom_metabolism = AMOUNT_PER_TIME(15, 5 MINUTES) // Lasts 5 minutes for 15 units
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
@@ -205,7 +205,7 @@
 /datum/reagent/medical/russianred
 	name = "Russian Red"
 	id = "russianred"
-	description = "An emergency radiation treatment, however it has extreme side effects."
+	description = "An emergency radiation treatment. The list of potential side effects include retinal damage and unconsciousness."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	custom_metabolism = AMOUNT_PER_TIME(1, 2 SECONDS)
@@ -251,7 +251,7 @@
 /datum/reagent/medical/bicaridine // yes it cures IB, it's located in some other part of wound code for whatever reason
 	name = "Bicaridine"
 	id = "bicaridine"
-	description = "Bicaridine is an analgesic medication and can be used to treat severe external blunt trauma and to stabilize patients. Overdosing will cause caustic burns, but can mend internal broken bloodvessels."
+	description = "Bicaridine is an analgesic medication and can be used to treat severe external blunt trauma and to stabilize patients. Overdosing on Bicaridine will cause caustic burns and toxins."
 	reagent_state = LIQUID
 	color = "#E8756C"
 	overdose = REAGENTS_OVERDOSE
@@ -339,7 +339,7 @@
 /datum/reagent/medical/rezadone
 	name = "Rezadone"
 	id = "rezadone"
-	description = "A powder derived from fish toxin, this substance can effectively treat genetic damage in humanoids, though excessive consumption has side effects."
+	description = "A powder derived from fish toxin, this substance can effectively treat genetic damage in humanoids. Excessive consumption may cause disastrous side effects."
 	reagent_state = SOLID
 	color = "#669900" // rgb: 102, 153, 0
 	overdose = REAGENTS_OVERDOSE
@@ -405,7 +405,7 @@
 /datum/reagent/medical/antized
 	name = "Anti-Zed"
 	id = "antiZed"
-	description = "Destroy the zombie virus in living humans and prevents regeneration for those who have already turned."
+	description = "An experimental drug that destroys the zombie virus in living humans and prevents regeneration for those who have already turned."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)

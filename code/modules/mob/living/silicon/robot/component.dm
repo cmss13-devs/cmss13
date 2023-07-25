@@ -20,6 +20,11 @@
 /datum/robot_component/New(mob/living/silicon/robot/R)
 	src.owner = R
 
+/datum/robot_component/Destroy(force, ...)
+	. = ..()
+	owner = null
+	QDEL_NULL(wrapped)
+
 /datum/robot_component/proc/install()
 /datum/robot_component/proc/uninstall()
 

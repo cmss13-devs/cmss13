@@ -262,8 +262,12 @@ SUBSYSTEM_DEF(minimaps)
  * removes an image from raw tracked lists, invoked by callback
  */
 /datum/controller/subsystem/minimaps/proc/removeimage(image/blip, atom/target)
+	var/turf/turf_gotten = get_turf(target)
+	if(!turf_gotten)
+		return
+	var/z_level = turf_gotten.z
 	for(var/flag in GLOB.all_minimap_flags)
-		minimaps_by_z["[target.z]"].images_raw["[flag]"] -= blip
+		minimaps_by_z["[z_level]"].images_raw["[flag]"] -= blip
 	blip.UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 	removal_cbs -= target
 
@@ -296,13 +300,17 @@ SUBSYSTEM_DEF(minimaps)
 	pixel_y = MINIMAP_PIXEL_FROM_WORLD(source.y) + SSminimaps.minimaps_by_z["[source_z]"].y_offset
 
 /**
- * Removes an atom and it's blip from the subsystem
+ * Removes an atom and it's blip from the subsystem.
+ * Force has no effect on this proc, but is here because we are a COMSIG_PARENT_QDELETING handler.
  */
-/datum/controller/subsystem/minimaps/proc/remove_marker(atom/source, minimap_flag)
+/datum/controller/subsystem/minimaps/proc/remove_marker(atom/source, force, minimap_flag)
 	SIGNAL_HANDLER
 	if(!removal_cbs[source]) //already removed
 		return
 	UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_Z_CHANGED))
+	images_by_source -= source
+	removal_cbs[source].Invoke()
+	removal_cbs -= source
 	var/turf/turf_gotten = get_turf(source)
 	if(!turf_gotten)
 		return
@@ -312,10 +320,6 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		for(var/flag in GLOB.all_minimap_flags)
 			minimaps_by_z["[z_level]"].images_assoc["[flag]"] -= source
-	images_by_source -= source
-	removal_cbs[source].Invoke()
-	removal_cbs -= source
-
 
 /**
  * Fetches a /atom/movable/screen/minimap instance or creates on if none exists
@@ -391,18 +395,24 @@ SUBSYSTEM_DEF(minimaps)
 		owner.client.screen += map
 	minimap_displayed = !minimap_displayed
 
-/datum/action/minimap/give_to(mob/M)
+/datum/action/minimap/give_to(mob/target)
 	. = ..()
 
 	if(default_overwatch_level)
 		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags)
 	else
-		RegisterSignal(M, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
-	if(!SSminimaps.minimaps_by_z["[M.z]"] || !SSminimaps.minimaps_by_z["[M.z]"].hud_image)
-		return
-	map = SSminimaps.fetch_minimap_object(M.z, minimap_flags)
+		RegisterSignal(target, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
 
-/datum/action/minimap/remove_from(mob/M)
+	var/turf/turf_gotten = get_turf(target)
+	if(!turf_gotten)
+		return
+	var/z_level = turf_gotten.z
+
+	if(!SSminimaps.minimaps_by_z["[z_level]"] || !SSminimaps.minimaps_by_z["[z_level]"].hud_image)
+		return
+	map = SSminimaps.fetch_minimap_object(z_level, minimap_flags)
+
+/datum/action/minimap/remove_from(mob/target)
 	. = ..()
 	if(minimap_displayed)
 		owner?.client?.screen -= map
@@ -482,6 +492,16 @@ SUBSYSTEM_DEF(minimaps)
 		return UI_UPDATE
 	else
 		return UI_CLOSE
+
+/datum/tacmap/xeno/ui_status(mob/user)
+	if(!isxeno(user))
+		return UI_CLOSE
+
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(!xeno.hive?.living_xeno_queen?.ovipositor)
+		return UI_CLOSE
+
+	return UI_INTERACTIVE
 
 /datum/tacmap_holder
 	var/map_ref

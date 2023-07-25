@@ -72,7 +72,7 @@
 
 /obj/item/weapon/gun/pistol/m4a3/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_10)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -93,7 +93,7 @@
 
 /obj/item/weapon/gun/pistol/m4a3/custom/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_10)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -122,7 +122,7 @@
 
 /obj/item/weapon/gun/pistol/m1911/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
+	set_fire_delay(FIRE_DELAY_TIER_8)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -140,7 +140,7 @@
 
 /obj/item/weapon/gun/pistol/m1911/socom/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
+	set_fire_delay(FIRE_DELAY_TIER_8)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_8
@@ -171,14 +171,14 @@
 		BFA.flags_attach_features &= ~ATTACH_REMOVABLE
 		BFA.Attach(src)
 		update_attachable(BFA.slot)
-		flags_gun_features |= GUN_BURST_ON
+		add_firemode(GUN_FIREMODE_BURSTFIRE)
 
 /obj/item/weapon/gun/pistol/b92fs/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/b92fs/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_10)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_7
@@ -218,9 +218,9 @@
 
 /obj/item/weapon/gun/pistol/heavy/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_4
-	burst_amount = BURST_AMOUNT_TIER_2
-	burst_delay = FIRE_DELAY_TIER_7
+	set_fire_delay(FIRE_DELAY_TIER_4)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_7)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -242,7 +242,7 @@
 
 /obj/item/weapon/gun/pistol/heavy/co/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_5
+	set_fire_delay(FIRE_DELAY_TIER_5)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -285,7 +285,7 @@
 
 /obj/item/weapon/gun/pistol/c99/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_10)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -337,7 +337,7 @@
 
 /obj/item/weapon/gun/pistol/kt42/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_1
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -373,7 +373,7 @@
 
 /obj/item/weapon/gun/pistol/holdout/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -410,7 +410,7 @@
 
 /obj/item/weapon/gun/pistol/clfpistol/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_10)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -462,8 +462,8 @@
 	if(!manually_slided)
 		click_empty()
 		to_chat(user, SPAN_DANGER("\The [src] makes a clicking noise! You need to manually rack the slide after loading in a new magazine!"))
-		return
-	..()
+		return NONE
+	return ..()
 
 /obj/item/weapon/gun/pistol/highpower/unique_action(mob/user)
 	if(!manually_slided)
@@ -488,7 +488,7 @@
 
 /obj/item/weapon/gun/pistol/highpower/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_5
+	set_fire_delay(FIRE_DELAY_TIER_5)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -552,9 +552,9 @@
 
 /obj/item/weapon/gun/pistol/mod88/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_7
@@ -574,11 +574,48 @@
 	update_attachable(flashlight.slot)
 
 //-------------------------------------------------------
+// ES-4 - Basically a CL-exclusive reskin of the 88 mod 4 that only uses less-lethal ammo.
+
+/obj/item/weapon/gun/pistol/es4
+	name = "\improper ES-4 electrostatic pistol"
+	desc = "A Weyland Corp manufactured less-than-lethal pistol. Originally manufactured in the 2080s, the ES-4 electrostatic pistol fires electrically-charged bullets with high accuracy, though its cost and constant need for cleaning makes it a rare sight."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/wy.dmi'
+	icon_state = "es4"
+	item_state = "es4"
+	fire_sound = 'sound/weapons/gun_es4.ogg'
+	firesound_volume = 20
+	reload_sound = 'sound/weapons/gun_88m4_reload.ogg'
+	unload_sound = 'sound/weapons/gun_88m4_unload.ogg'
+	current_mag = /obj/item/ammo_magazine/pistol/es4
+	force = 8
+	muzzle_flash = "muzzle_flash_blue"
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	attachable_allowed = list(
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/lasersight,
+	)
+
+/obj/item/weapon/gun/pistol/es4/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 21, "rail_x" = 10, "rail_y" = 22, "under_x" = 25, "under_y" = 18, "stock_x" = 18, "stock_y" = 15)
+
+
+/obj/item/weapon/gun/pistol/es4/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_7
+	scatter_unwielded = SCATTER_AMOUNT_TIER_7
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+
+//-------------------------------------------------------
 //VP78 - the only pistol viable as a primary.
 
 /obj/item/weapon/gun/pistol/vp78
 	name = "\improper VP78 pistol"
-	desc = "A massive, formidable automatic handgun chambered in 9mm squash-head rounds. Commonly seen in the hands of wealthy Weyland-Yutani members."
+	desc = "A massive, formidable semi-automatic handgun chambered in 9mm squash-head rounds. A common sight throughout both UA and 3WE space, often held by both Weyland-Yutani PMC units and corporate executives. This weapon is also undergoing limited field testing as part of the USCM's next generation pistol program. The slide is engraved with the Weyland-Yutani logo reminding you who's really in charge."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "vp78"
 	item_state = "vp78"
@@ -595,14 +632,14 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/compensator,
-		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/laser_light_combo,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 	)
 
 /obj/item/weapon/gun/pistol/vp78/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/lasersight/VP = new(src)
+	var/obj/item/attachable/flashlight/laser_light_combo/VP = new(src)
 	VP.flags_attach_features &= ~ATTACH_REMOVABLE
 	VP.hidden = FALSE
 	VP.Attach(src)
@@ -614,9 +651,9 @@
 
 /obj/item/weapon/gun/pistol/vp78/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_4
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_4)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -646,9 +683,9 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/auto9/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_7
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_7)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_10)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -678,9 +715,9 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/chimp/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
-	burst_delay = FIRE_DELAY_TIER_9
-	burst_amount = BURST_AMOUNT_TIER_2
+	set_fire_delay(FIRE_DELAY_TIER_8)
+	set_burst_delay(FIRE_DELAY_TIER_9)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -710,9 +747,9 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/smart/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_10)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -739,7 +776,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 	fire_sound = 'sound/weapons/gun_skorpion.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/skorpion
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	attachable_allowed = list(
 		/obj/item/attachable/reddot, //Rail
 		/obj/item/attachable/reflex,
@@ -750,14 +787,16 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/lasersight, //Underbarrel
 		/obj/item/attachable/burstfire_assembly,
-		)
+	)
+	start_semiauto = FALSE
+	start_automatic = TRUE
 
 /obj/item/weapon/gun/pistol/skorpion/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 18,"rail_x" = 16, "rail_y" = 21, "under_x" = 23, "under_y" = 15, "stock_x" = 23, "stock_y" = 15)
 
 /obj/item/weapon/gun/pistol/skorpion/set_gun_config_values()
 	..()
-	fa_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_9)
 	fa_scatter_peak = 15 //shots
 	fa_max_scatter = SCATTER_AMOUNT_TIER_4
 

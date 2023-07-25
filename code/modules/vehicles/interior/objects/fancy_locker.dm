@@ -11,7 +11,10 @@
 
 /obj/structure/closet/fancy/Initialize()
 	. = ..()
+	return INITIALIZE_HINT_LATELOAD
 
+/obj/structure/closet/fancy/LateInitialize()
+	. = ..()
 	interior = new(src)
 	INVOKE_ASYNC(src, PROC_REF(do_create_interior))
 
@@ -27,7 +30,6 @@
 		var/succ = interior.enter(M, "default")
 		if(!succ)
 			break
-
 
 /obj/structure/interior_exit/fancy
 	name = "fancy wooden door"

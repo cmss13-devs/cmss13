@@ -350,7 +350,7 @@
 	if (targeted_by && target_locked)
 		overlays += target_locked
 
-/mob/living/simple_animal/say(message, datum/language/speaking = null)
+/mob/living/simple_animal/say(message)
 	if(stat)
 		return
 

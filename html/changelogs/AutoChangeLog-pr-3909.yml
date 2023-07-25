@@ -1,0 +1,5 @@
+author: "BraveMole, Zonespace"
+delete-after: True
+changes:
+  - bugfix: "Smartgunners can no longer shoot their smartgun while aghosted"
+  - balance: "The Uzi and Mac-15 now have full-auto"

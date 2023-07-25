@@ -180,18 +180,20 @@
 	if(P)
 		return P.id
 
-/obj/docking_port/proc/is_in_shuttle_bounds(atom/A)
-	var/turf/T = get_turf(A)
-	if(T.z != z)
+/obj/docking_port/proc/is_in_shuttle_bounds(atom/target)
+	if(!target)
+		return FALSE
+	var/turf/target_turf = get_turf(target)
+	if(!target_turf || target_turf.z != z)
 		return FALSE
 	var/list/bounds = return_coords()
 	var/x0 = bounds[1]
 	var/y0 = bounds[2]
 	var/x1 = bounds[3]
 	var/y1 = bounds[4]
-	if(!ISINRANGE(T.x, min(x0, x1), max(x0, x1)))
+	if(!ISINRANGE(target_turf.x, min(x0, x1), max(x0, x1)))
 		return FALSE
-	if(!ISINRANGE(T.y, min(y0, y1), max(y0, y1)))
+	if(!ISINRANGE(target_turf.y, min(y0, y1), max(y0, y1)))
 		return FALSE
 	return TRUE
 
@@ -626,15 +628,15 @@
 
 /obj/docking_port/mobile/proc/intoTheSunset()
 	// Loop over mobs
-	for(var/t in return_turfs())
-		var/turf/T = t
-		for(var/mob/living/L in T.GetAllContents())
+	for(var/turf/turf as anything in return_turfs())
+		for(var/mob/living/mob in turf.GetAllContents())
 			// Ghostize them and put them in nullspace stasis (for stat & possession checks)
-			//L.notransform = TRUE
-			var/mob/dead/observer/O = L.ghostize(FALSE)
-			if(O)
-				O.timeofdeath = world.time
-			L.moveToNullspace()
+			//mob.notransform = TRUE
+			var/mob/dead/observer/obs = mob.ghostize(FALSE)
+			if(obs)
+				obs.timeofdeath = world.time
+				obs.client?.player_details.larva_queue_time = max(obs.client.player_details.larva_queue_time, world.time)
+			mob.moveToNullspace()
 
 	// Now that mobs are stowed, delete the shuttle
 	jumpToNullSpace()
@@ -644,7 +646,7 @@
 		return FALSE
 	var/list/turfs = ripple_area(S1)
 	for(var/t in turfs)
-		ripples += new /obj/effect/abstract/ripple(t, animate_time)
+		ripples += new /obj/effect/abstract/ripple/shadow(t, animate_time)
 	return TRUE
 
 /obj/docking_port/mobile/proc/remove_ripples()
@@ -727,7 +729,7 @@
 
 /obj/docking_port/mobile/proc/check_effects()
 	if(!ripples.len)
-		if((mode == SHUTTLE_CALL) || (mode == SHUTTLE_RECALL))
+		if((mode == SHUTTLE_PREARRIVAL))
 			var/tl = timeLeft(1)
 			if(tl <= SHUTTLE_RIPPLE_TIME)
 				create_ripples(destination, tl)

@@ -143,7 +143,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	health = null
-	layer = TURF_LAYER
+	layer = ABOVE_TURF_LAYER//Being on turf layer was causing issues with cameras. This SHOULDN'T cause any problems.
 	plane = FLOOR_PLANE
 	density = FALSE
 	opacity = FALSE

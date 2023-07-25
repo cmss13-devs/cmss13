@@ -218,30 +218,52 @@
 
 	message_admins("[key_name(usr)] used Toggle Wake In View.")
 
+/client/proc/cmd_mod_say(msg as text)
+	set name = "Msay" // This exists for ease of admins who were used to using msay instead of asay
+	set category = "Admin"
+	set hidden = TRUE
+
+	cmd_admin_say(msg)
+
 /client/proc/cmd_admin_say(msg as text)
 	set name = "Asay" //Gave this shit a shorter name so you only have to time out "asay" rather than "admin say" to use it --NeoFite
 	set category = "Admin"
 	set hidden = TRUE
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN|R_MOD))
 		return
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
-	if(!msg)
+
+	if (!msg)
 		return
 
-	log_adminpm("ADMIN : [key_name(src)] : [msg]")
-	REDIS_PUBLISH("byond.asay", "author" = src.key, "message" = strip_html(msg), "host" = ishost(src), "rank" = admin_holder.rank)
+	REDIS_PUBLISH("byond.asay", "author" = src.key, "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.rank)
+
+	if(findtext(msg, "@") || findtext(msg, "#"))
+		var/list/link_results = check_asay_links(msg)
+		if(length(link_results))
+			msg = link_results[ASAY_LINK_NEW_MESSAGE_INDEX]
+			link_results[ASAY_LINK_NEW_MESSAGE_INDEX] = null
+			var/list/pinged_admin_clients = link_results[ASAY_LINK_PINGED_ADMINS_INDEX]
+			for(var/iter_ckey in pinged_admin_clients)
+				var/client/iter_admin_client = pinged_admin_clients[iter_ckey]
+				if(!iter_admin_client?.admin_holder)
+					continue
+				window_flash(iter_admin_client)
+				SEND_SOUND(iter_admin_client.mob, sound('sound/misc/asay_ping.ogg'))
+
+	log_adminpm("ADMIN: [key_name(src)] : [msg]")
 
 	var/color = "adminsay"
 	if(ishost(usr))
 		color = "headminsay"
 
-	if(check_rights(R_ADMIN,0))
-		msg = "<span class='[color]'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> (<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[mob]'>JMP</a>): <span class='message'>[msg]</span></span>"
-		for(var/client/C in GLOB.admins)
-			if(R_ADMIN & C.admin_holder.rights)
-				to_chat(C, msg)
+	var/channel = "ADMIN:"
+	channel = "[admin_holder.rank]:"
+	for(var/client/client as anything in GLOB.admins)
+		if((R_ADMIN|R_MOD) & client.admin_holder.rights)
+			to_chat(client, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>")
 
 /datum/admins/proc/alertall()
 	set name = "Alert All"
@@ -317,7 +339,7 @@
 		else
 			if(mob.get_type_in_ears(/obj/item/device/radio/headset))
 				to_chat(mob, message)
-	message_admins("[key_name(usr)] used Subtle Message All In View from [message_option], saying \"[input]\".")
+	message_admins(SPAN_STAFF_IC("[key_name(usr)] used Subtle Message All In View from [message_option], saying \"[input]\"."))
 
 #undef SUBTLE_MESSAGE_IN_HEAD
 #undef SUBTLE_MESSAGE_WEYLAND
@@ -327,50 +349,6 @@
 /client/proc/get_admin_say()
 	var/msg = input(src, null, "asay \"text\"") as text|null
 	cmd_admin_say(msg)
-
-/client/proc/cmd_mod_say(msg as text)
-	set name = "Msay"
-	set category = "Admin"
-	set hidden = TRUE
-
-	if(!check_rights(R_ADMIN|R_MOD))
-		return
-
-	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
-
-	if (!msg)
-		return
-
-	REDIS_PUBLISH("byond.msay", "author" = src.key, "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.rank)
-
-	if(findtext(msg, "@") || findtext(msg, "#"))
-		var/list/link_results = check_asay_links(msg)
-		if(length(link_results))
-			msg = link_results[ASAY_LINK_NEW_MESSAGE_INDEX]
-			link_results[ASAY_LINK_NEW_MESSAGE_INDEX] = null
-			var/list/pinged_admin_clients = link_results[ASAY_LINK_PINGED_ADMINS_INDEX]
-			for(var/iter_ckey in pinged_admin_clients)
-				var/client/iter_admin_client = pinged_admin_clients[iter_ckey]
-				if(!iter_admin_client?.admin_holder)
-					continue
-				window_flash(iter_admin_client)
-				SEND_SOUND(iter_admin_client.mob, sound('sound/misc/asay_ping.ogg'))
-
-	log_adminpm("MOD: [key_name(src)] : [msg]")
-
-	var/color = "mod"
-	if (check_rights(R_ADMIN,0))
-		color = "adminmod"
-
-	var/channel = "MOD:"
-	channel = "[admin_holder.rank]:"
-	for(var/client/C in GLOB.admins)
-		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> (<A HREF='?src=\ref[C.admin_holder];[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>")
-
-/client/proc/get_mod_say()
-	var/msg = input(src, null, "msay \"text\"") as text|null
-	cmd_mod_say(msg)
 
 /client/proc/cmd_mentor_say(msg as text)
 	set name = "MentorSay"
@@ -420,6 +398,33 @@
 
 	remove_verb(src, admin_verbs_hideable)
 	add_verb(src, /client/proc/enable_admin_verbs)
+
+/client/proc/strip_all_in_view()
+	set name = "Strip All"
+	set category = "Admin.InView"
+	set hidden = TRUE
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	if(tgui_alert(src, "This will strip ALL mobs within your view range. Are you sure?", "Confirmation", list("Yes", "Cancel")) != "Yes")
+		return
+
+	var/strip_self = FALSE
+	if(tgui_alert(src, "Do you want to strip yourself as well?", "Confirmation", list("Yes", "No")) == "Yes")
+		strip_self = TRUE
+
+	for(var/mob/living/current_mob in view())
+		if(!strip_self && usr == current_mob)
+			continue
+		for (var/obj/item/current_item in current_mob)
+			//no more deletion of ID cards
+			if(istype(current_item, /obj/item/card/id))
+				continue
+			qdel(current_item)
+
+	message_admins(WRAP_STAFF_LOG(usr, "stripped everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
 
 /client/proc/rejuvenate_all_in_view()
 	set name = "Rejuvenate All"
@@ -575,6 +580,8 @@
 		<A href='?src=\ref[src];[HrefToken()];inviews=alertall'>Alert Message In View</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];inviews=subtlemessageall'>Subtle Message In View</A><BR>
 		<BR>
+		<A href='?src=\ref[src];[HrefToken()];inviews=stripall'>Strip All Mobs In View</A><BR>
+		<BR>
 		"}
 
 	show_browser(usr, dat, "In View Panel", "inviews")
@@ -651,10 +658,14 @@
 /proc/set_lz_resin_allowed(allowed = TRUE)
 	if(allowed)
 		for(var/area/A in all_areas)
+			if(A.flags_area & AREA_UNWEEDABLE)
+				continue
 			A.is_resin_allowed = TRUE
 		msg_admin_niche("Areas close to landing zones are now weedable.")
 	else
 		for(var/area/A in all_areas)
+			if(A.flags_area & AREA_UNWEEDABLE)
+				continue
 			A.is_resin_allowed = initial(A.is_resin_allowed)
 		msg_admin_niche("Areas close to landing zones cannot be weeded now.")
 	GLOB.resin_lz_allowed = allowed
@@ -796,3 +807,21 @@
 
 	SSticker.mode.toggleable_flags ^= MODE_SHIPSIDE_SD
 	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD) ? "toggled SD protection off, Yautja can now big self destruct anywhere" : "toggled SD protection on, Yautja can now only big self destruct on the hunting grounds"].")
+
+/client/proc/toggle_hardcore_perma()
+	set name = "Toggle Hardcore"
+	set category = "Admin.Flags"
+
+	if(!admin_holder || !check_rights(R_MOD, FALSE))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) && tgui_alert(usr, "Are you sure you want to toggle Hardcore mode on? This will cause all humans to instantly go perma on death.", "Confirmation", list("Yes", "Cancel")) != "Yes")
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
+	message_admins("[src] has toggled Hardcore [MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) ? "on, causing all humans to instantly go perma on death" : "off, causing all humans to die like normal"].")
+

@@ -72,7 +72,6 @@
 		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
 		qdel(src)
 		return
-	if(stat != DEAD && !lying && !(locate(/obj/effect/alien/weeds) in get_turf(src)))
 		adjustBruteLoss(1)
 	return ..()
 

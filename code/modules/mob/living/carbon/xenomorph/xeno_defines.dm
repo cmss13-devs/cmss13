@@ -1295,7 +1295,7 @@
 	if(allies[faction] || faction != FACTION_MARINE)
 		return
 
-	for(var/mob/living/carbon/xenomorph/xeno in totalXenos) // handle deflecting xenos on betrayal
+	for(var/mob/living/carbon/xenomorph/xeno in totalXenos) // handle defecting xenos on betrayal
 		if(!xeno.iff_tag)
 			continue
 		if(!(faction in xeno.iff_tag.faction_groups))
@@ -1304,10 +1304,10 @@
 			continue
 		if(xeno.caste_type == XENO_CASTE_QUEEN)
 			continue
-		INVOKE_ASYNC(src, PROC_REF(give_deflection_choice), xeno, faction)
+		INVOKE_ASYNC(src, PROC_REF(give_defection_choice), xeno, faction)
 	addtimer(CALLBACK(src, PROC_REF(handle_renegades), faction), 10 SECONDS)
 
-/datum/hive_status/proc/give_deflection_choice(mob/living/carbon/xenomorph/xeno, faction)
+/datum/hive_status/proc/give_defection_choice(mob/living/carbon/xenomorph/xeno, faction)
 	if(alert(xeno, "Your Queen has broken alliance with [faction]. Your IFF tag begins to suppress your connection with the hive. Do you wish to remove the tag and stay with Queen or do you wish to stay loyal to your new masters? You have 10 seconds to decide.", "Choose", "Stay with Queen", "Stay with your masters") == "Stay with your masters")
 		if(!xeno.iff_tag)
 			to_chat(xeno, SPAN_XENOWARNING("It's too late now. Your IFF tag is broken and your service to the Queen continues."))
@@ -1316,7 +1316,6 @@
 		xeno.set_hive_and_update(XENO_HIVE_RENEGADE)
 		to_chat(xeno, SPAN_XENOANNOUNCE("You lost connection with your hive. Now there is no Queen, only masters."))
 		return
-	to_chat(xeno, SPAN_XENOWARNING("You decided to stay with Queen."))
 	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
 	xeno.iff_tag = null
 

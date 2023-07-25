@@ -1,0 +1,4 @@
+author: "blackdragonTOW"
+delete-after: True
+changes:
+  - rscadd: "Added unique, faction dependent music to Round End in the event that Xenos lose post hijack."

@@ -1273,7 +1273,7 @@
 	allies[FACTION_MARINE] = TRUE
 
 /datum/hive_status/corrupted/renegade/faction_is_ally(faction, ignore_queen_check = TRUE)
-	return . = ..()
+	return ..()
 
 /datum/hive_status/proc/on_stance_change(faction)
 	if(!living_xeno_queen)

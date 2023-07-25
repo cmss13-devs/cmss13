@@ -594,8 +594,8 @@ below 100 is not dizzy
 	if(!istype(src, /mob/living/carbon/human)) // for the moment, only humans get dizzy
 		return
 
-	dizziness = min(1000, dizziness + amount) // store what will be new value
-													// clamped to max 1000
+	dizziness = min(500, dizziness + amount) // store what will be new value
+													// clamped to max 500
 	if(dizziness > 100 && !is_dizzy)
 		INVOKE_ASYNC(src, PROC_REF(dizzy_process))
 

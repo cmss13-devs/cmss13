@@ -327,6 +327,7 @@
 	unacidable = TRUE
 	ignore_z = TRUE
 	black_market_value = 100
+	flags_item = ITEM_PREDATOR
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
 	if(!isyautja(M)) //Nope.
@@ -337,9 +338,6 @@
 		if(!hellhound.stat)
 			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
-
-/obj/item/device/radio/headset/yautja/attackby()
-	return
 
 /obj/item/device/radio/headset/yautja/elder //primarily for use in another MR
 	name = "\improper Elder Communicator"
@@ -697,6 +695,7 @@
 	var/tether_range = 5
 	var/mob/trapped_mob
 	layer = LOWER_ITEM_LAYER
+	flags_item = ITEM_PREDATOR
 
 /obj/item/hunting_trap/Destroy()
 	cleanup_tether()
@@ -889,10 +888,30 @@
 	desc = "A complex cypher chip embedded within a set of clan bracers."
 	icon = 'icons/obj/items/radio.dmi'
 	icon_state = "upp_key"
+	access = list(ACCESS_YAUTJA_SECURE)
 	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_ID
 	flags_item = ITEM_PREDATOR|DELONDROP|NODROP
 	paygrade = null
+
+/obj/item/card/id/bracer_chip/set_user_data(mob/living/carbon/human/human_user)
+	if(!istype(human_user))
+		return
+
+	registered_name = human_user.real_name
+	registered_ref = WEAKREF(human_user)
+	registered_gid = human_user.gid
+	blood_type = human_user.blood_type
+
+	var/list/new_access = list(ACCESS_YAUTJA_SECURE)
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = loc
+	if(istype(bracer) && bracer.owner_rank)
+		switch(bracer.owner_rank)
+			if(CLAN_RANK_ELDER_INT, CLAN_RANK_LEADER_INT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELDER)
+			if(CLAN_RANK_ADMIN_INT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+	access = new_access
 
 /obj/item/storage/medicomp
 	name = "medicomp"

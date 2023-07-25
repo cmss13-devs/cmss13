@@ -14,6 +14,7 @@
 #define islarva(A) (istype(A, /mob/living/carbon/xenomorph/larva))
 #define ispredalienlarva(A) (istype(A, /mob/living/carbon/xenomorph/larva/predalien))
 #define isfacehugger(A) (istype(A, /mob/living/carbon/xenomorph/facehugger))
+#define islesserdrone(A) (istype(A, /mob/living/carbon/xenomorph/lesser_drone))
 #define ispraetorian(A) (istype(A, /mob/living/carbon/xenomorph/praetorian))
 #define isqueen(A) (istype(A, /mob/living/carbon/xenomorph/queen))
 #define isravager(A) (istype(A, /mob/living/carbon/xenomorph/ravager))

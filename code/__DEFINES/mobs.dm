@@ -222,6 +222,7 @@
 //Mob sizes
 #define MOB_SIZE_SMALL 0
 #define MOB_SIZE_HUMAN 1
+#define MOB_SIZE_XENO_VERY_SMALL 1.5
 #define MOB_SIZE_XENO_SMALL 2
 #define MOB_SIZE_XENO 3
 #define MOB_SIZE_BIG 4

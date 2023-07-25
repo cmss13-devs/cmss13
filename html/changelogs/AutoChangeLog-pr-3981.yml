@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Allowed Falcon Drones to relay speech back to their operators."

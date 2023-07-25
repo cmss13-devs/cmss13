@@ -1,0 +1,5 @@
+author: "Ben10083"
+delete-after: True
+changes:
+  - rscadd: "Infection gamemode announcement fixed and adjusts for each map, like Distress Signal"
+  - code_imp: "elements of distress signal post_setup code moved to parent to be called by all gamemodes"

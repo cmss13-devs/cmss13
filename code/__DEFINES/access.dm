@@ -51,6 +51,8 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 /// Used to access Maintenance Protocols on ARES Interface.
 #define ACCESS_ARES_DEBUG 92
 
+//=================================================
+
 //Civilian access levels
 #define ACCESS_CIVILIAN_PUBLIC 100
 #define ACCESS_CIVILIAN_LOGISTICS 101
@@ -64,7 +66,9 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 ///The generic "I'm a bad guy" access
 #define ACCESS_ILLEGAL_PIRATE 120
 
-//Weyland Yutani access levels
+//=================================================
+
+//Weyland Yutani access levels (200-229)
 ///Found on just about all corporate ID cards
 #define ACCESS_WY_GENERAL 200
 ///WY employee override for most colonial areas
@@ -76,23 +80,42 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_WY_RESEARCH 206
 ///WY access given to field executives, like a marine liaison.
 #define ACCESS_WY_EXEC 207
+
 #define ACCESS_WY_PMC 210
 #define ACCESS_WY_PMC_TL 211
 #define ACCESS_WY_ARMORY 212
 ///Secret research or other projects with highly restricted access
 #define ACCESS_WY_SECRETS 213
+
 #define ACCESS_WY_LEADERSHIP 215
 ///WY senior leadership, the highest ranks
 #define ACCESS_WY_SENIOR_LEAD 216
+
+//=================================================
+
+//Union of Progressive Peoples access levels (230-259)
+///Found on just about all Union ID cards
+#define ACCESS_UPP_GENERAL 230
+#define ACCESS_UPP_MEDICAL 231
+#define ACCESS_UPP_ENGINEERING 232
+#define ACCESS_UPP_SECURITY 233
+#define ACCESS_UPP_ARMORY 234
+#define ACCESS_UPP_FLIGHT 235
+#define ACCESS_UPP_RESEARCH 236
+
+#define ACCESS_UPP_COMMANDO 239
+#define ACCESS_UPP_LEADERSHIP 240
+///UPP senior leadership, the highest ranks
+#define ACCESS_UPP_SENIOR_LEAD 241
 //=================================================
 
 // Yautja Access Levels
 /// Requires a visible ID chip to open
-#define ACCESS_YAUTJA_SECURE 250
+#define ACCESS_YAUTJA_SECURE 390
 /// Elders+ only
-#define ACCESS_YAUTJA_ELDER 251
+#define ACCESS_YAUTJA_ELDER 391
 /// Ancients only
-#define ACCESS_YAUTJA_ANCIENT 252
+#define ACCESS_YAUTJA_ANCIENT 392
 
 ///Temporary, just so I can flag places I need to change
 #define ACCESS_COME_BACK_TO_ME 999

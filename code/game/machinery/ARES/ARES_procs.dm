@@ -580,6 +580,8 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			var/reason = tgui_input_text(usr, "Please enter reason nuclear ordnance is required.", "Reason for Nuclear Ordnance")
+			if(!reason)
+				return FALSE
 			for(var/client/admin in GLOB.admins)
 				if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 					playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)

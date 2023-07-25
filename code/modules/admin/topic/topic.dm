@@ -1932,8 +1932,8 @@
 		var/prompt = tgui_alert(usr, "Do you want the nuke to be Encrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 		if(prompt == "Decrypted")
 			nuketype = "Decrypted Operational Nuke"
-		prompt = tgui_alert(usr, "Are you sure you want to authorize a [nuketype] to the marines? This will greatly affect the round!", "DEFCON 1", list("Yes", "No"))
-		if(prompt != "yes")
+		prompt = tgui_alert(usr, "Are you sure you want to authorize a [nuketype] to the marines? This will greatly affect the round!", "DEFCON 1", list("No", "Yes"))
+		if(prompt != "Yes")
 			return
 
 		//make ASRS order for nuke

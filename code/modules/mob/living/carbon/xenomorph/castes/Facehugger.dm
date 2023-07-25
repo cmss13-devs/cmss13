@@ -68,7 +68,7 @@
 
 /mob/living/carbon/xenomorph/facehugger/Life(delta_time)
 	if(stat != DEAD && !lying && !(mutation_type == FACEHUGGER_WATCHER) && !(locate(/obj/effect/alien/weeds) in get_turf(src)))
-		// Become a npc once again
+		//  Become a npc once again
 		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
 		qdel(src)
 		return

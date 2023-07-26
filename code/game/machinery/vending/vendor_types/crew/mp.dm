@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police, list(
 		list("Military Police M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 
 		list("HANDGUN CASE (CHOOSE 1)", 0, null, null, null),
-		list("88 mod 4 Combat Pistol Case", 0, /obj/item/storage/box/guncase/88Mod4, MARINE_CAN_BUY_HANDGUN, VENDOR_ITEM_MANDATORY),
+		list("88 mod 4 Combat Pistol Case", 0, /obj/item/storage/box/guncase/mod88, MARINE_CAN_BUY_HANDGUN, VENDOR_ITEM_MANDATORY),
 		list("M44 Combat Revolver case", 0, /obj/item/storage/box/guncase/m44, MARINE_CAN_BUY_HANDGUN, VENDOR_ITEM_MANDATORY),
 		list("M4A3 Service Pistol case", 0, /obj/item/storage/box/guncase/m4a3, MARINE_CAN_BUY_HANDGUN, VENDOR_ITEM_MANDATORY),
 
@@ -71,7 +71,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_warden, list(
 		list("Military Police M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 
 		list("HANDGUN CASE (CHOOSE 1)", 0, null, null, null),
-		list("88 mod 4 Combat Pistol Case", 0, /obj/item/storage/box/guncase/88Mod4, MARINE_CAN_BUY_HANDGUN, VENDOR_ITEM_MANDATORY),
+		list("88 mod 4 Combat Pistol Case", 0, /obj/item/storage/box/guncase/mod88, MARINE_CAN_BUY_HANDGUN, VENDOR_ITEM_MANDATORY),
 		list("M44 Combat Revolver case", 0, /obj/item/storage/box/guncase/m44, MARINE_CAN_BUY_HANDGUN, VENDOR_ITEM_MANDATORY),
 		list("M4A3 Service Pistol case", 0, /obj/item/storage/box/guncase/m4a3, MARINE_CAN_BUY_HANDGUN, VENDOR_ITEM_MANDATORY),
 

@@ -297,13 +297,13 @@
 //Handgun case for Military police vendor three mag , a railflashligh and the handgun.
 
 //88 Mod 4 Combat Pistol
-/obj/item/storage/box/guncase/88Mod4
+/obj/item/storage/box/guncase/mod88
 	name = "\improper 88 mod 4 combat pistol case"
 	desc = "A gun case containing an 88 Mod 4 Combat Pistol."
 	storage_slots = 4
 	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/pistol/mod88, /obj/item/ammo_magazine/pistol/mod88)
 
-/obj/item/storage/box/guncase/88Mod4/fill_preset_inventory()
+/obj/item/storage/box/guncase/mod88/fill_preset_inventory()
 	new /obj/item/attachable/flashlight(src)
 	new /obj/item/weapon/gun/pistol/mod88(src)
 	new /obj/item/ammo_magazine/pistol/mod88(src)

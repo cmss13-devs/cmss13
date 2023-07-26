@@ -10,6 +10,7 @@ import './styles/themes/abductor.scss';
 import './styles/themes/cardtable.scss';
 import './styles/themes/crt/crt-blue.scss';
 import './styles/themes/crt/crt-green.scss';
+import './styles/themes/crt/crt-red.scss';
 import './styles/themes/crt/crt-yellow.scss';
 import './styles/themes/spookyconsole.scss';
 import './styles/themes/hackerman.scss';

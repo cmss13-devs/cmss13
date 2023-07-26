@@ -81,7 +81,7 @@
 			if(photo_list)
 				for(var/photo in photo_list)
 					user << browse_rsc(photo_list[photo], photo)
-			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
+			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name, "size=650x700")
 			onclose(user, name)
 		else
 			read_paper(user)
@@ -94,7 +94,7 @@
 	if(photo_list)
 		for(var/photo in photo_list)
 			user << browse_rsc(photo_list[photo], photo)
-	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name)
+	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name, "size=650x700")
 	onclose(user, name)
 
 /obj/item/paper/verb/rename()

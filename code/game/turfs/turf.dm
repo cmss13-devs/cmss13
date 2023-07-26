@@ -118,6 +118,12 @@
 	VV_DROPDOWN_OPTION(VV_HK_EXPLODE, "Trigger Explosion")
 	VV_DROPDOWN_OPTION(VV_HK_EMPULSE, "Trigger EM Pulse")
 
+/turf/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, x), NAMEOF_STATIC(src, y), NAMEOF_STATIC(src, z))
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
+
 /turf/ex_act(severity)
 	return 0
 
@@ -500,7 +506,7 @@
 	var/area/A = get_area(src)
 	switch(A.ceiling)
 		if(CEILING_GLASS)
-			return "The ceiling above is glass. That's not going stop anything."
+			return "The ceiling above is glass. That's not going to stop anything."
 		if(CEILING_METAL)
 			return "The ceiling above is metal. You can't see through it with a camera from above, but that's not going to stop anything."
 		if(CEILING_UNDERGROUND_ALLOW_CAS)

@@ -4877,7 +4877,9 @@
 /turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/jungle/west_jungle)
 "ayj" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/bioprinter{
+	stored_metal = 1000
+	},
 /obj/structure/machinery/light/small{
 	dir = 4
 	},

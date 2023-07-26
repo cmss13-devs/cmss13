@@ -219,41 +219,43 @@
 		toggle(TRUE)
 
 
-/obj/item/tool/weldingtool/attack(mob/M, mob/user)
+/obj/item/tool/weldingtool/attack(mob/target, mob/user)
 
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/limb/S = H.get_limb(user.zone_selected)
+	if(ishuman(target))
+		var/mob/living/carbon/human/human = target
+		var/obj/limb/limb = human.get_limb(user.zone_selected)
 
-		if (!S) return
-		if(!(S.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)) || user.a_intent != INTENT_HELP)
+		if (!limb) return
+		if(!(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)) || user.a_intent != INTENT_HELP)
 			return ..()
 
 		if(user.action_busy)
 			return
 		var/self_fixing = FALSE
 
-		if(H.species.flags & IS_SYNTHETIC && M == user)
+		if(human.species.flags & IS_SYNTHETIC && target == user)
 			self_fixing = TRUE
 
-		if(S.brute_dam && welding)
+		if(limb.brute_dam && welding)
 			remove_fuel(1,user)
 			if(self_fixing)
-				user.visible_message(SPAN_WARNING("\The [user] begins fixing some dents on their [S.display_name]."), \
-					SPAN_WARNING("You begin to carefully patch some dents on your [S.display_name] so as not to void your warranty."))
+				user.visible_message(SPAN_WARNING("\The [user] begins fixing some dents on their [limb.display_name]."), \
+					SPAN_WARNING("You begin to carefully patch some dents on your [limb.display_name] so as not to void your warranty."))
 				if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					return
 
-			S.heal_damage(15, 0, TRUE)
-			H.pain.recalculate_pain()
-			H.UpdateDamageIcon()
-			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [H]'s [S.display_name] with \the [src]."), \
-								SPAN_WARNING("You patch some dents on \the [H]'s [S.display_name] with \the [src]."))
+			limb.heal_damage(15, 0, TRUE)
+			human.pain.recalculate_pain()
+			human.UpdateDamageIcon()
+			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [human]'s [limb.display_name] with \the [src]."), \
+								SPAN_WARNING("You patch some dents on \the [human]'s [limb.display_name] with \the [src]."))
 			return
 		else
 			to_chat(user, SPAN_WARNING("Nothing to fix!"))
 
 	else
+		if(ismob(target))
+			remove_fuel(1)
 		return ..()
 
 /obj/item/tool/weldingtool/afterattack(obj/target, mob/user, proximity)
@@ -274,8 +276,6 @@
 			tank.explode()
 		return
 	if (welding)
-		remove_fuel(1)
-
 		if(isliving(target))
 			var/mob/living/L = target
 			L.IgniteMob()

@@ -2657,7 +2657,7 @@ Defined in conflicts.dm of the #defines folder.
 		UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 
 	if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
-		G.remove_bullet_trait("iff")
+		G.remove_firemode(GUN_FIREMODE_AUTOMATIC)
 
 	if(!QDELETED(G))
 		playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
@@ -2693,7 +2693,7 @@ Defined in conflicts.dm of the #defines folder.
 				RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
 
 				if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
-					G.add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
+					G.add_firemode(GUN_FIREMODE_AUTOMATIC)
 
 			else
 				to_chat(user, SPAN_NOTICE("You retract [src]."))

@@ -17,6 +17,7 @@
 	gun_category = GUN_CATEGORY_HEAVY
 	start_semiauto = FALSE
 	start_automatic = TRUE
+	autofire_slow_mult = 1
 
 /obj/item/weapon/gun/minigun/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -86,6 +87,7 @@
 	)
 	start_semiauto = FALSE
 	start_automatic = TRUE
+	autofire_slow_mult = 1
 	var/cover_open = FALSE //if the gun's feed-cover is open or not.
 
 

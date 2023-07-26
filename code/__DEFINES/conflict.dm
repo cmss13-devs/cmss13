@@ -68,7 +68,7 @@
 #define GUN_ANTIQUE (1<<13)
 /// Whether the gun has been fired by its current user (reset upon `dropped()`)
 #define GUN_RECOIL_BUILDUP (1<<14)
-/// support weapon, bipod will grant IFF
+/// support weapon, bipod will grant autofire
 #define GUN_SUPPORT_PLATFORM (1<<15)
 /// No gun description, only base desc
 #define GUN_NO_DESCRIPTION (1<<16)

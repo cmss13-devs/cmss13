@@ -367,6 +367,7 @@
 	desc = "A prototyped model of the M240-T incinerator unit, it was discontinued after its automatic mode was deemed too expensive to deploy in the field."
 	start_semiauto = FALSE
 	start_automatic = TRUE
+	autofire_slow_mult = 1
 
 /obj/item/weapon/gun/flamer/M240T/auto/set_gun_config_values()
 	. = ..()

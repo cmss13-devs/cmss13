@@ -15,6 +15,8 @@
 	var/have_to_reset_at_burst_end = FALSE
 	///If we are in a burst
 	var/bursting = FALSE
+	/// The multiplier for how much slower the parent should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc.
+	var/automatic_delay_mult = 1
 	///Callback to set bursting mode on the parent
 	var/datum/callback/callback_bursting
 	///Callback to ask the parent to reset its firing vars
@@ -26,7 +28,7 @@
 	///Callback to set parent's fa_firing
 	var/datum/callback/callback_set_firing
 
-/datum/component/automatedfire/autofire/Initialize(auto_fire_shot_delay = 0.3 SECONDS, burstfire_shot_delay, burst_shots_to_fire = 3, fire_mode = GUN_FIREMODE_SEMIAUTO, datum/callback/callback_bursting, datum/callback/callback_reset_fire, datum/callback/callback_fire, datum/callback/callback_display_ammo, datum/callback/callback_set_firing)
+/datum/component/automatedfire/autofire/Initialize(auto_fire_shot_delay = 0.3 SECONDS, burstfire_shot_delay, burst_shots_to_fire = 3, fire_mode = GUN_FIREMODE_SEMIAUTO, automatic_delay_mult = 1, datum/callback/callback_bursting, datum/callback/callback_reset_fire, datum/callback/callback_fire, datum/callback/callback_display_ammo, datum/callback/callback_set_firing)
 	. = ..()
 
 	RegisterSignal(parent, COMSIG_GUN_FIRE_MODE_TOGGLE, PROC_REF(modify_fire_mode))
@@ -40,6 +42,7 @@
 	src.burstfire_shot_delay = burstfire_shot_delay
 	src.burst_shots_to_fire = burst_shots_to_fire
 	src.fire_mode = fire_mode
+	src.automatic_delay_mult = automatic_delay_mult
 	src.callback_bursting = callback_bursting
 	src.callback_reset_fire = callback_reset_fire
 	src.callback_fire = callback_fire
@@ -131,7 +134,7 @@
 			next_fire = world.time + burstfire_shot_delay
 		if(GUN_FIREMODE_AUTOMATIC)
 			callback_set_firing.Invoke(TRUE)
-			next_fire = world.time + auto_fire_shot_delay
+			next_fire = world.time + (auto_fire_shot_delay * automatic_delay_mult)
 		if(GUN_FIREMODE_SEMIAUTO)
 			return
 	schedule_shot()

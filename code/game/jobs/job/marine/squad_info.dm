@@ -17,7 +17,7 @@
 			update_squad_leader()
 	var/list/data = squad_info_data.Copy()
 	data["squad"] = name
-	data["squad_color"] = squad_colors[color]
+	data["squad_color"] = equipment_color
 	data["is_lead"] = get_leadership(user)
 	data["objective"] = list(
 		"primary" = primary_objective,

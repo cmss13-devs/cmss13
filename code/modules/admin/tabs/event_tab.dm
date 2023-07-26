@@ -402,6 +402,29 @@
 
 	give_jelly_award(last_hive_checked, as_admin=TRUE)
 
+/client/proc/give_nuke()
+	if(!check_rights(R_ADMIN))
+		return
+	var/nuketype = "Decrypted Operational Nuke"
+	var/encrypt = tgui_alert(src, "Do you want the nuke to be already decrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
+	if(encrypt == "Encrypted")
+		nuketype = "Encrypted Operational Nuke"
+	var/prompt = tgui_alert(src, "THIS CAN BE USED TO END THE ROUND. Are you sure you want to spawn a nuke? The nuke will be put onto the ASRS Lift.", "DEFCON 1", list("No", "Yes"), 30 SECONDS)
+	if(prompt != "Yes")
+		return
+
+	var/datum/supply_order/new_order = new()
+	new_order.ordernum = supply_controller.ordernum
+	supply_controller.ordernum++
+	new_order.object = supply_controller.supply_packs[nuketype]
+	new_order.orderedby = MAIN_AI_SYSTEM
+	new_order.approvedby = MAIN_AI_SYSTEM
+	supply_controller.shoppinglist += new_order
+
+	marine_announcement("A nuclear device has been supplied and will be delivered to requisitions via ASRS.", "NUCLEAR ARSENAL ACQUIRED", 'sound/misc/notice2.ogg')
+	message_admins("[key_name_admin(usr)] admin-spawned a [encrypt] nuke.")
+	log_game("[key_name_admin(usr)] admin-spawned a [encrypt] nuke.")
+
 /client/proc/turn_everyone_into_primitives()
 	var/random_names = FALSE
 	if (alert(src, "Do you want to give everyone random numbered names?", "Confirmation", "Yes", "No") == "Yes")
@@ -535,10 +558,11 @@
 	if(!input)
 		return FALSE
 
-	var/datum/ares_link/link = GLOB.ares_link
-	if(link.p_interface.inoperable())
-		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
-		return
+	if(!ares_can_interface())
+		var/prompt = tgui_alert(src, "ARES interface processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		if(prompt == "No")
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's interface processor may be offline or destroyed."))
+			return
 
 	ai_announcement(input)
 	message_admins("[key_name_admin(src)] has created an AI comms report")
@@ -558,15 +582,12 @@
 
 	var/datum/ares_link/link = GLOB.ares_link
 	if(link.p_apollo.inoperable())
-		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
-		return FALSE
+		var/prompt = tgui_alert(src, "ARES APOLLO processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		if(prompt == "No")
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's APOLLO processor may be offline or destroyed."))
+			return FALSE
 
-	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
-	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
-		apollo.broadcast(AI, input)
-	for(var/mob/listener as anything in (GLOB.human_mob_list + GLOB.dead_mob_list))
-		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
-			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+	ares_apollo_talk(input)
 	message_admins("[key_name_admin(src)] has created an AI APOLLO report")
 	log_admin("AI APOLLO report: [input]")
 
@@ -580,14 +601,15 @@
 	var/input = input(usr, "This is an announcement type message from the ship's AI. This will be announced to every conscious human on Almayer z-level. Be aware, this will work even if ARES unpowered/destroyed. Check with online staff before you send this.", "What?", "") as message|null
 	if(!input)
 		return FALSE
-	for(var/obj/structure/machinery/ares/processor/interface/processor in machines)
-		if(processor.inoperable())
-			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+	if(!ares_can_interface())
+		var/prompt = tgui_alert(src, "ARES interface processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		if(prompt == "No")
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's interface processor may be offline or destroyed."))
 			return
 
-		shipwide_ai_announcement(input)
-		message_admins("[key_name_admin(src)] has created an AI shipwide report")
-		log_admin("[key_name_admin(src)] AI shipwide report: [input]")
+	shipwide_ai_announcement(input)
+	message_admins("[key_name_admin(src)] has created an AI shipwide report")
+	log_admin("[key_name_admin(src)] AI shipwide report: [input]")
 
 /client/proc/cmd_admin_create_predator_report()
 	set name = "Report: Yautja AI"
@@ -685,6 +707,7 @@
 		<B>Misc</B><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=medal'>Award a medal</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=jelly'>Award a royal jelly</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=nuke'>Spawn a nuke</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
 		<BR>

@@ -49,14 +49,14 @@
 /// Scales with clan size
 #define CLAN_LIMIT_SIZE 2
 
-var/global/list/datum/rank/clan_ranks = list(
-	CLAN_RANK_UNBLOODED = new /datum/rank/unblooded(),
-	CLAN_RANK_YOUNG = new /datum/rank/young(),
-	CLAN_RANK_BLOODED = new /datum/rank/blooded(),
-	CLAN_RANK_ELITE = new /datum/rank/elite(),
-	CLAN_RANK_ELDER = new /datum/rank/elder(),
-	CLAN_RANK_LEADER = new /datum/rank/leader(),
-	CLAN_RANK_ADMIN = new /datum/rank/ancient()
+var/global/list/datum/yautja_rank/clan_ranks = list(
+	CLAN_RANK_UNBLOODED = new /datum/yautja_rank/unblooded(),
+	CLAN_RANK_YOUNG = new /datum/yautja_rank/young(),
+	CLAN_RANK_BLOODED = new /datum/yautja_rank/blooded(),
+	CLAN_RANK_ELITE = new /datum/yautja_rank/elite(),
+	CLAN_RANK_ELDER = new /datum/yautja_rank/elder(),
+	CLAN_RANK_LEADER = new /datum/yautja_rank/leader(),
+	CLAN_RANK_ADMIN = new /datum/yautja_rank/ancient()
 )
 
 var/global/list/clan_ranks_ordered = list(

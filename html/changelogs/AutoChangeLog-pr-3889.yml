@@ -1,4 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - rscadd: "Predator toolbelt is now a unique item with its own sprite."

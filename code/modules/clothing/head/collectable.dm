@@ -29,3 +29,7 @@
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 	w_class = SIZE_LARGE
+
+/obj/item/clothing/head/collectable/petehat
+	icon_state = "petehat"
+	item_state = "petehat"

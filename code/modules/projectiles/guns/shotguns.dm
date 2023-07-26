@@ -1221,7 +1221,12 @@ can cause issues with ammo types getting mixed up during the burst.
 	playsound(src, 'sound/machines/switch.ogg', 15, TRUE)
 	return TRUE
 
-/obj/item/weapon/gun/shotgun/pump/dual_tube/set_bursting()
+/obj/item/weapon/gun/shotgun/pump/dual_tube/verb/toggle_tube()
+	set category = "Weapons"
+	set name = "Toggle Shotgun Tube"
+	set desc = "Toggles which shotgun tube your gun loads from."
+	set src = usr.contents
+
 	var/obj/item/weapon/gun/shotgun/pump/dual_tube/shotgun = get_active_firearm(usr)
 	if(shotgun == src)
 		swap_tube(usr)

@@ -267,11 +267,15 @@
 	if(toggling_action)
 		toggling_action.update_button_icon()
 
-/obj/item/weapon/gun/rifle/sniper/set_bursting(mob/user)
-	if(has_aimed_shot)
+/obj/item/weapon/gun/rifle/sniper/verb/toggle_laser()
+	set category = "Weapons"
+	set name = "Toggle Laser"
+	set desc = "Toggles your laser on or off."
+	set src = usr.contents
+
+	var/obj/item/weapon/gun/rifle/sniper/sniper = get_active_firearm(usr)
+	if((sniper == src) && has_aimed_shot)
 		toggle_laser(user)
-	else
-		..()
 
 //Pow! Headshot.
 /obj/item/weapon/gun/rifle/sniper/M42A

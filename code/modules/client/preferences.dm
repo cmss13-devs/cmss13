@@ -100,6 +100,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_flavor_text = ""
 	//CO-specific preferences
 	var/commander_sidearm = "Mateba"
+	var/co_career_path = "infantry"
 	var/affiliation = "Unaligned"
 	//SEA specific preferences
 
@@ -479,6 +480,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				dat += "<h2><b><u>Commander Settings:</u></b></h2>"
 				dat += "<b>Commander Whitelist Status:</b> <a href='?_src_=prefs;preference=commander_status;task=input'><b>[commander_status]</b></a><br>"
 				dat += "<b>Commander Sidearm:</b> <a href='?_src_=prefs;preference=co_sidearm;task=input'><b>[commander_sidearm]</b></a><br>"
+				dat += "<b>Commander Career Path:</b> <a href='?_src_=prefs;preference=co_career_path;task=input'><b>[co_career_path]</b></a><br>"
 				dat += "<b>Commander Affiliation:</b> <a href='?_src_=prefs;preference=co_affiliation;task=input'><b>[affiliation]</b></a><br>"
 				dat += "</div>"
 			else
@@ -1337,6 +1339,12 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					affiliation = new_co_affiliation
 
+				if("co_career_path")
+					var/list/options = list("Infantry", "Intel", "Logistics", "Aviation")
+					var/new_career_path = tgui_input_list(user, "Choose your career path.", "Commanding Officer's Career Path", options)
+					if(!new_career_path)
+						return
+					command-path = new_command_path // Default should be infantry, with the other paths overriding it.
 
 				if("yautja_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)

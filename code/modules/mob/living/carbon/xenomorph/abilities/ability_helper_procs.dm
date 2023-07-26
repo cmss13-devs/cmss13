@@ -31,12 +31,6 @@
 	if(isobj(O))
 		I = O
 
-		if(istype(I, /obj/structure/window_frame))
-			var/obj/structure/window_frame/WF = I
-			if(WF.reinforced && acid_type != /obj/effect/xenomorph/acid/strong)
-				to_chat(src, SPAN_WARNING("This [O.name] is too tough to be melted by your weak acid."))
-				return
-
 		wait_time = I.get_applying_acid_time()
 		if(wait_time == -1)
 			to_chat(src, SPAN_WARNING("You cannot dissolve \the [I]."))

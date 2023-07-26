@@ -1,4 +1,0 @@
-author: "Zonespace27"
-delete-after: True
-changes:
-  - bugfix: "Welding goggles are no longer marked as \"mandatory\" in comtech vendors"

@@ -1,5 +1,0 @@
-author: "BeagleGaming1"
-delete-after: True
-changes:
-  - rscadd: "How long disarm stuns for depends on the difference in CQC skill between the participants"
-  - bugfix: "CQC properly affects disarm chance again"

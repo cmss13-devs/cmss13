@@ -1,5 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - rscadd: "You can now petition High Command via ARES for a nuclear device, bypassing techweb (If you can convince them, that is.)"
-  - admin: "Implemented Admin side of ARES Nuke request to allow for granting of different nuke types, or denying the request."

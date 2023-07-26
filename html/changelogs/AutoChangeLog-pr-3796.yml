@@ -1,5 +1,0 @@
-author: "Hopek"
-delete-after: True
-changes:
-  - rscadd: "Changed the description flavortext of the fountain pen to match the new lore. There is now a laser engraving of the owner on the pen itself."
-  - rscadd: "Added a detailed lore description for the fountain pen."

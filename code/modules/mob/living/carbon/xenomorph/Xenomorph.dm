@@ -960,6 +960,7 @@
 	if(iscarrier(src))
 		huggers_max = caste.huggers_max
 		eggs_max = caste.eggs_max
+	need_weeds = mutators.need_weeds
 
 
 /mob/living/carbon/xenomorph/proc/recalculate_acid()

@@ -180,6 +180,7 @@
 	var/mob/living/carbon/xenomorph/xeno
 	var/pull_multiplier = 1
 	var/egg_laying_multiplier = 1
+	var/need_weeds = TRUE
 	//Strains Below
 	remaining_points = 6
 

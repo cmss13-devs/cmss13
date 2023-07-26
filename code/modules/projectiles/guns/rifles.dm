@@ -150,6 +150,8 @@
 		/obj/item/attachable/attached_gun/flamer/advanced,
 	)
 	start_semiauto = FALSE
+	start_automatic = TRUE
+	autofire_slow_mult = 1.1
 
 /obj/item/weapon/gun/rifle/nsg23/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -171,6 +173,7 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	damage_falloff_mult = 0
+	fa_max_scatter = SCATTER_AMOUNT_TIER_5
 
 /obj/item/weapon/gun/rifle/nsg23/handle_starting_attachment()
 	..()

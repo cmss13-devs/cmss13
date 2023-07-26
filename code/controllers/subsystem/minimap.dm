@@ -493,6 +493,16 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		return UI_CLOSE
 
+/datum/tacmap/xeno/ui_status(mob/user)
+	if(!isxeno(user))
+		return UI_CLOSE
+
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(!xeno.hive?.living_xeno_queen?.ovipositor)
+		return UI_CLOSE
+
+	return UI_INTERACTIVE
+
 /datum/tacmap_holder
 	var/map_ref
 	var/atom/movable/screen/minimap/map

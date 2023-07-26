@@ -37,3 +37,11 @@
 #define REVOLVER_TIP_COLOR_INCENDIARY AMMO_BAND_COLOR_INCENDIARY
 #define REVOLVER_TIP_COLOR_PENETRATING AMMO_BAND_COLOR_PENETRATING
 #define REVOLVER_TIP_COLOR_TOXIN AMMO_BAND_COLOR_TOXIN
+
+#define GUN_FIREMODE_SEMIAUTO "semi-auto fire mode"
+#define GUN_FIREMODE_BURSTFIRE "burst-fire mode"
+#define GUN_FIREMODE_AUTOMATIC "automatic fire mode"
+
+//autofire component fire callback return flags
+#define AUTOFIRE_CONTINUE (1<<0)
+#define AUTOFIRE_SUCCESS (1<<1)

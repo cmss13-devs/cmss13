@@ -94,6 +94,9 @@
 	handle_regular_status_updates(FALSE)
 	update_canmove()
 	knocked_down_timer = null
+	if(isxeno(src) && !resting) // !resting because we dont wanna prematurely update wounds if they're just trying to rest
+		var/mob/living/carbon/xenomorph/xeno = src
+		xeno.update_wounds()
 
 /mob/proc/knocked_down_callback_check()
 	if(knocked_down && knocked_down < recovery_constant)

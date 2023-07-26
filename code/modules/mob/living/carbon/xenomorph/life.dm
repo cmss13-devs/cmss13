@@ -334,11 +334,6 @@ Make sure their actual health updates immediately.*/
 	if(!T || !istype(T))
 		return
 
-	var/is_runner_hiding
-
-	if(isrunner(src) && layer != initial(layer))
-		is_runner_hiding = 1
-
 	if(caste)
 		if(caste.innate_healing || check_weeds_for_healing())
 			if(!hive) return // can't heal if you have no hive, sorry bud
@@ -369,8 +364,15 @@ Make sure their actual health updates immediately.*/
 			if(armor_integrity > armor_integrity_max)
 				armor_integrity = armor_integrity_max
 
-		else //Xenos restore plasma VERY slowly off weeds, regardless of health, as long as they are not using special abilities
-			if(prob(50) && !is_runner_hiding && !current_aura)
+		else
+			if(!need_weeds) //corrupted and renegades can heal off weeds, but slowly
+				if(lying || resting)
+					if(health < 0) //Unconscious
+						heal_wounds(caste.heal_knocked_out * regeneration_multiplier * 0.15, recoveryActual * 0.5)
+					else
+						heal_wounds(caste.heal_resting * regeneration_multiplier * 0.15, recoveryActual * 0.5)
+					plasma_stored += round(plasma_gain * plasma_max / 100 * recovery_aura/4 * 0.15)
+			else if(prob(50) && !current_aura) //Xenos restore plasma VERY slowly off weeds, regardless of health, as long as they are not using special abilities
 				plasma_stored += 0.1 * plasma_max / 100
 
 
@@ -604,8 +606,6 @@ Make sure their actual health updates immediately.*/
 
 	if(W && W.linked_hive.is_ally(src))
 		return TRUE //weeds, yes!
-	if(need_weeds)
-		return FALSE //needs weeds, doesn't have any
 	if(hive && hive.living_xeno_queen && !is_mainship_level(hive.living_xeno_queen.loc.z) && is_mainship_level(loc.z))
 		return FALSE //We are on the ship, but the Queen isn't
 	return TRUE //we have off-weed healing, and either we're on Almayer with the Queen, or we're on non-Almayer, or the Queen is dead, good enough!

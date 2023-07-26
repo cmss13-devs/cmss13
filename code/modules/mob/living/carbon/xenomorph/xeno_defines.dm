@@ -1115,13 +1115,15 @@
 
 	var/list/defectors = list()
 
-/datum/hive_status/corrupted/add_xeno(mob/living/carbon/xenomorph/X)
+/datum/hive_status/corrupted/add_xeno(mob/living/carbon/xenomorph/xeno)
 	. = ..()
-	X.add_language(LANGUAGE_ENGLISH)
+	xeno.add_language(LANGUAGE_ENGLISH)
+	xeno.need_weeds = FALSE
 
-/datum/hive_status/corrupted/remove_xeno(mob/living/carbon/xenomorph/X, hard)
+/datum/hive_status/corrupted/remove_xeno(mob/living/carbon/xenomorph/xeno, hard)
 	. = ..()
-	X.remove_language(LANGUAGE_ENGLISH)
+	xeno.remove_language(LANGUAGE_ENGLISH)
+	xeno.need_weeds = FALSE
 
 /datum/hive_status/corrupted/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	if(!faction_is_ally(FACTION_MARINE, TRUE))

@@ -544,13 +544,13 @@
 				new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm/tan(new_human), WEAR_HEAD)
 				new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
 				//uniform
-				new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/dress(new_human), WEAR_BODY)
+				new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
 				//gun
 				new_human.equip_to_slot_or_del(new sidearmpath(new_human), WEAR_WAIST)
 				if(kit)
 					new_human.equip_to_slot_or_del(new kit(new_human), WEAR_IN_BACK)
 					//limbs
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/dress(new_human), WEAR_HANDS)
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/black(new_human), WEAR_HANDS)
 					new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(new_human), WEAR_FEET)
 					new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_L_HAND)
 					//pockets

@@ -570,6 +570,7 @@
 	name = "heavy revolver bullet"
 
 	damage = 35
+	accurate_range = 4
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
 

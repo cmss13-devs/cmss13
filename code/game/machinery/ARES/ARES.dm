@@ -137,7 +137,7 @@
 	/// The current deleted chat log of 1:1 conversations being read.
 	var/list/deleted_1to1 = list()
 
-	/// Holds all (/datum/ares_record/announcement)s and (/datum/ares_record/security)s
+	/// Holds all (/datum/ares_record/announcement)s
 	var/list/records_announcement = list()
 	/// Holds all (/datum/ares_record/bioscan)s
 	var/list/records_bioscan = list()

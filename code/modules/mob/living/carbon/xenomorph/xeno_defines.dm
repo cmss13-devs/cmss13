@@ -1123,7 +1123,7 @@
 /datum/hive_status/corrupted/remove_xeno(mob/living/carbon/xenomorph/xeno, hard)
 	. = ..()
 	xeno.remove_language(LANGUAGE_ENGLISH)
-	xeno.need_weeds = FALSE
+	xeno.need_weeds = TRUE
 
 /datum/hive_status/corrupted/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	if(!faction_is_ally(FACTION_MARINE, TRUE))

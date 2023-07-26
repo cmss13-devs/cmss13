@@ -364,16 +364,14 @@ Make sure their actual health updates immediately.*/
 			if(armor_integrity > armor_integrity_max)
 				armor_integrity = armor_integrity_max
 
-		else
-			if(!need_weeds) //corrupted and renegades can heal off weeds, but slowly
-				if(lying || resting)
-					if(health < 0) //Unconscious
-						heal_wounds(caste.heal_knocked_out * regeneration_multiplier * 0.15, recoveryActual * 0.5)
-					else
-						heal_wounds(caste.heal_resting * regeneration_multiplier * 0.15, recoveryActual * 0.5)
-					plasma_stored += round(plasma_gain * plasma_max / 100 * recovery_aura/4 * 0.15)
-			else if(prob(50) && !current_aura) //Xenos restore plasma VERY slowly off weeds, regardless of health, as long as they are not using special abilities
-				plasma_stored += 0.1 * plasma_max / 100
+		else if(!need_weeds && (lying || resting)) //corrupted and renegades can heal off weeds, but slowly
+			if(health < 0) //Unconscious
+				heal_wounds(caste.heal_knocked_out * regeneration_multiplier * 0.15, recoveryActual * 0.5)
+			else
+				heal_wounds(caste.heal_resting * regeneration_multiplier * 0.15, recoveryActual * 0.5)
+			plasma_stored += round(plasma_gain * plasma_max / 100 * recovery_aura/4 * 0.15)
+		else if(prob(50) && !current_aura) //Xenos restore plasma VERY slowly off weeds, regardless of health, as long as they are not using special abilities
+			plasma_stored += 0.1 * plasma_max / 100
 
 
 		for(var/datum/action/xeno_action/action in src.actions)

@@ -468,7 +468,49 @@
 				if(kit)
 					new_human.equip_to_slot_or_del(new kit(new_human), WEAR_IN_BACK)
 					//limbs
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/black(new_human), WEAR_HANDS)
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+					new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_L_HAND)
+					//pockets
+					new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+					new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(new_human), WEAR_L_STORE)
+					//Jacket
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(new_human), WEAR_JACKET)
+			if("Engineering")
+				//back
+				new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+				//head
+				new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/eng(new_human), WEAR_HEAD)
+				new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
+				//uniform
+				new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/engineer(new_human), WEAR_BODY)
+				//gun
+				new_human.equip_to_slot_or_del(new sidearmpath(new_human), WEAR_WAIST)
+				if(kit)
+					new_human.equip_to_slot_or_del(new kit(new_human), WEAR_IN_BACK)
+					//limbs
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+					new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_L_HAND)
+					//pockets
+					new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+					new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(new_human), WEAR_L_STORE)
+					//Jacket
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(new_human), WEAR_JACKET)
+			if("Medical")
+				//back
+				new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+				//head
+				new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/dress(new_human), WEAR_HEAD)
+				new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
+				//uniform
+				new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/medic(new_human), WEAR_BODY)
+				//gun
+				new_human.equip_to_slot_or_del(new sidearmpath(new_human), WEAR_WAIST)
+				if(kit)
+					new_human.equip_to_slot_or_del(new kit(new_human), WEAR_IN_BACK)
+					//limbs
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
 					new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 					new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_L_HAND)
 					//pockets
@@ -493,6 +535,8 @@
 					//pockets
 					new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 					new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(new_human), WEAR_L_STORE)
+					//Jacket
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(new_human), WEAR_JACKET)
 			if("Logistics")
 				//back
 				new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
@@ -516,10 +560,9 @@
 				//back
 				new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 				//head
-				new_human.equip_to_slot_or_del(new  /obj/item/clothing/head/helmet/marine/pilot(new_human), WEAR_HEAD)
 				new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
 				//uniform
-				new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/flight(new_human), WEAR_BODY)
+				new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot(new_human), WEAR_BODY)
 				//gun
 				new_human.equip_to_slot_or_del(new sidearmpath(new_human), WEAR_WAIST)
 				if(kit)
@@ -531,6 +574,8 @@
 					//pockets
 					new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 					new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(new_human), WEAR_L_STORE)
+					//Jacket
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(new_human), WEAR_JACKET)
 
 
 //*****************************************************************************************************/

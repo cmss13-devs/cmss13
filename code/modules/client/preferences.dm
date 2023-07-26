@@ -1340,7 +1340,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					affiliation = new_co_affiliation
 
 				if("co_career_path")
-					var/list/options = list("Infantry", "Intel", "Logistics", "Aviation")
+					var/list/options = list("Infantry", "Engineering", "Medical", "Intel", "Logistics", "Aviation")
 					var/new_career_path = tgui_input_list(user, "Choose your career path.", "Commanding Officer's Career", options)
 					if(!new_career_path)
 						return

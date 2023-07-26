@@ -427,6 +427,8 @@
 		else if(M.r_hand == src)
 			M.update_inv_r_hand()
 
+	setup_firemodes()
+
 /obj/item/weapon/gun/proc/handle_random_attachments()
 	var/attachmentchoice
 
@@ -1766,13 +1768,11 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/proc/set_burst_amount(value, mob/user)
 	burst_amount = value
 	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED, burst_amount)
-	setup_firemodes()
 
 /// adder for burst_amount
 /obj/item/weapon/gun/proc/modify_burst_amount(value, mob/user)
 	burst_amount += value
 	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED, burst_amount)
-	setup_firemodes()
 
 /// Adder for burst_delay
 /obj/item/weapon/gun/proc/modify_burst_delay(value, mob/user)

@@ -1204,8 +1204,7 @@ and you're good to go.
 
 		shots_fired++
 
-	else // This happens in very rare circumstances when you're moving a lot while burst firing, so I'm going to toss it up to guns jamming.
-		clear_jam(projectile_to_fire,user)
+	else
 		return TRUE
 
 	//>>POST PROCESSING AND CLEANUP BEGIN HERE.<<

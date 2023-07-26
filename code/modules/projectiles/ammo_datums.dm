@@ -573,8 +573,10 @@
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
 
-/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/M, obj/item/projectile/P)
-	knockback(M, P, 4)
+/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/M, obj/item/projectile/fired_projectile)
+	if(fired_projectile.distance_travelled > accurate_range)
+		return
+	shake_camera(M, 6, 4)
 
 /datum/ammo/bullet/revolver/incendiary
 	name = "incendiary revolver bullet"

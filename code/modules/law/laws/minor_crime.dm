@@ -52,5 +52,6 @@
 	brig_time = 10
 
 /datum/law/minor_law/false_testemony
-	desc = "To intentionally and willingly lie to a MP or deputized officer, during a legal investigation with the intent to disrupt said investigation"
+	name = "False Testemony"
+	desc = "To intentionally and willingly lie to a MP or deputized officer, during a legal investigation with the intent to disrupt said investigation."
 	brig_time = 5

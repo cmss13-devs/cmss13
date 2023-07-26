@@ -171,7 +171,9 @@
 	current_mag = /obj/item/ammo_magazine/pkp
 	w_class = SIZE_LARGE
 	force = 30 //the image of a upp machinegunner beating someone to death with a gpmg makes me laugh
-	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY|GUN_CAN_POINTBLANK|GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_AMMO_COUNTER
+	start_semiauto = FALSE
+	start_automatic = TRUE
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK|GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_AMMO_COUNTER
 	gun_category = GUN_CATEGORY_HEAVY
 	attachable_allowed = list(
 		/obj/item/attachable/pkpbarrel,
@@ -211,10 +213,11 @@
 /obj/item/weapon/gun/pkp/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_10
-	burst_amount = BURST_AMOUNT_TIER_5
-	burst_delay = FIRE_DELAY_TIER_10
+	burst_amount = BURST_AMOUNT_TIER_6
+	burst_delay = FIRE_DELAY_TIER_9
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	fa_max_scatter = SCATTER_AMOUNT_TIER_8
 	scatter = SCATTER_AMOUNT_TIER_10
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	scatter_unwielded = SCATTER_AMOUNT_TIER_10

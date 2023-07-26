@@ -493,9 +493,9 @@
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_5)
+	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT * 3
 	scatter = SCATTER_AMOUNT_TIER_8
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	damage_falloff_mult = 0

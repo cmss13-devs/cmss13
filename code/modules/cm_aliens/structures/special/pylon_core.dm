@@ -41,11 +41,9 @@
 		qdel(node)
 
 	if(activated)
-		for(var/obj/effect/alien/resin/structure as anything in linked_hive.hive_structures)
-			if(!istypestrict(structure, /obj/effect/alien/resin/special/pylon))
-				continue
-			var/obj/effect/alien/resin/special/pylon/pylon = structure
-			pylon.activated = FALSE
+		if(XENO_STRUCTURE_PYLON in linked_hive.hive_structures)
+			for(var/obj/effect/alien/resin/special/pylon/pylon as anything in linked_hive.hive_structures[XENO_STRUCTURE_PYLON]
+				pylon.activated = FALSE
 
 		marine_announcement("ALERT.\n\nEnergy build up around communication relays halted.", "[MAIN_AI_SYSTEM] Biological Scanner") // Ask lore team for a better AI system name, honestly a second look for these announcements may be good - Morrow
 		for(var/hivenumber in GLOB.hive_datum)

@@ -54,3 +54,6 @@
 #define COMSIG_GUN_AUTOFIREDELAY_MODIFIED "gun_autofiredelay_modified"
 #define COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED "gun_burst_shots_to_fire_modified"
 #define COMSIG_GUN_BURST_SHOT_DELAY_MODIFIED "gun_burst_shot_delay_modified"
+
+/// from /obj/item/weapon/gun/proc/recalculate_attachment_bonuses() : ()
+#define COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES "gun_recalculate_attachment_bonuses"

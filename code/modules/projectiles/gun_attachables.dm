@@ -851,6 +851,28 @@ Defined in conflicts.dm of the #defines folder.
 	delay_scoped_nerf = FIRE_DELAY_TIER_9 //to compensate initial debuff. We want "high_fire_delay"
 	damage_falloff_scoped_buff = -0.4 //has to be negative
 
+/obj/item/attachable/scope/Attach(obj/item/weapon/gun/gun)
+	. = ..()
+	RegisterSignal(gun, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES, PROC_REF(handle_attachment_recalc))
+
+/obj/item/attachable/scope/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
+	. = ..()
+	UnregisterSignal(detaching_gub, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
+
+
+/// Due to the bipod's interesting way of handling stat modifications, this is necessary to prevent exploits.
+/obj/item/attachable/scope/proc/handle_attachment_recalc(obj/item/weapon/gun/source)
+	SIGNAL_HANDLER
+
+	if(!source.zoom)
+		return
+
+	if(using_scope)
+		source.accuracy_mult += accuracy_scoped_buff
+		source.modify_fire_delay(delay_scoped_nerf)
+		source.damage_falloff_mult += damage_falloff_scoped_buff
+
+
 /obj/item/attachable/scope/proc/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
 	if(G.zoom)
 		G.accuracy_mult += accuracy_scoped_buff
@@ -2651,6 +2673,7 @@ Defined in conflicts.dm of the #defines folder.
 	burst_scatter_mod = 0
 	delay_mod = FIRE_DELAY_TIER_10
 	G.recalculate_attachment_bonuses()
+	G.stop_fire()
 	var/mob/living/user
 	if(isliving(G.loc))
 		user = G.loc
@@ -2688,6 +2711,7 @@ Defined in conflicts.dm of the #defines folder.
 				else
 					delay_mod = -FIRE_DELAY_TIER_10
 				G.recalculate_attachment_bonuses()
+				G.stop_fire()
 
 				initial_mob_dir = user.dir
 				RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))

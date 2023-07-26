@@ -429,6 +429,8 @@
 
 	setup_firemodes()
 
+	SEND_SIGNAL(src, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
+
 /obj/item/weapon/gun/proc/handle_random_attachments()
 	var/attachmentchoice
 

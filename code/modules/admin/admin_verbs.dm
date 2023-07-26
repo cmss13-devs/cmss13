@@ -191,6 +191,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/restart_controller,
 	/client/proc/debug_controller,
 	/client/proc/cmd_debug_toggle_should_check_for_win,
+	/client/proc/cmd_debug_mass_screenshot,
 	/client/proc/enable_debug_verbs,
 	/client/proc/toggledebuglogs,
 	/client/proc/togglenichelogs,

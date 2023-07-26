@@ -757,7 +757,7 @@
 
 /obj/item/weapon/gun/launcher/spike/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
+	set_fire_delay(FIRE_DELAY_TIER_6)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_8
@@ -859,7 +859,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6*2
+	set_fire_delay(FIRE_DELAY_TIER_6*2)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -908,6 +908,8 @@
 	if(refund) charge_time *= 2
 	return TRUE
 
+#define FIRE_MODE_STANDARD "Standard"
+#define FIRE_MODE_INCENDIARY "Incendiary"
 /obj/item/weapon/gun/energy/yautja/plasmapistol
 	name = "plasma pistol"
 	desc = "A plasma pistol capable of rapid fire. It has an integrated battery. Can be used to set fires, either to braziers or on people."
@@ -920,7 +922,12 @@
 	ammo = /datum/ammo/energy/yautja/pistol
 	muzzle_flash = null // TO DO, add a decent one.
 	w_class = SIZE_MEDIUM
+	/// Max amount of shots
 	var/charge_time = 40
+	/// Amount of charge_time drained per shot
+	var/shot_cost = 1
+	/// standard (sc = 1) or incendiary (sc = 5)
+	var/mode = FIRE_MODE_STANDARD
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|IGNITING_ITEM|TWOHANDED
 
@@ -950,7 +957,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_7
+	set_fire_delay(FIRE_DELAY_TIER_7)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_8
@@ -961,9 +968,14 @@
 	if(isyautja(user))
 		. = ..()
 		. += SPAN_NOTICE("It currently has <b>[charge_time]/40</b> charge.")
+
+		if(mode == FIRE_MODE_INCENDIARY)
+			. += SPAN_RED("It is set to fire incendiary plasma bolts.")
+		else
+			. += SPAN_ORANGE("It is set to fire plasma bolts.")
 	else
 		. = list()
-		. += SPAN_NOTICE("This thing looks like an alien rifle of some kind. Strange.")
+		. += SPAN_NOTICE("This thing looks like an alien gun of some kind. Strange.")
 
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/able_to_fire(mob/user)
@@ -979,7 +991,7 @@
 	var/obj/item/projectile/projectile = create_bullet(ammo, initial(name))
 	projectile.SetLuminosity(1)
 	in_chamber = projectile
-	charge_time--
+	charge_time -= shot_cost
 	return in_chamber
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/has_ammunition()
@@ -991,8 +1003,29 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
-	if(refund) charge_time *= 2
+	if(refund)
+		charge_time += shot_cost
+		log_debug("Plasma Pistol refunded shot.")
 	return TRUE
+
+/obj/item/weapon/gun/energy/yautja/plasmapistol/use_unique_action()
+	switch(mode)
+		if(FIRE_MODE_STANDARD)
+			mode = FIRE_MODE_INCENDIARY
+			shot_cost = 5
+			fire_delay = FIRE_DELAY_TIER_5
+			to_chat(usr, SPAN_NOTICE("[src] will now fire incendiary plasma bolts."))
+			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/pistol/incendiary]
+
+		if(FIRE_MODE_INCENDIARY)
+			mode = FIRE_MODE_STANDARD
+			shot_cost = 1
+			fire_delay = FIRE_DELAY_TIER_7
+			to_chat(usr, SPAN_NOTICE("[src] will now fire plasma bolts."))
+			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/pistol]
+
+#undef FIRE_MODE_STANDARD
+#undef FIRE_MODE_INCENDIARY
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster
 	name = "plasma caster"
@@ -1047,7 +1080,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
+	set_fire_delay(FIRE_DELAY_TIER_6)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + FIRE_DELAY_TIER_6
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -1063,21 +1096,21 @@
 				if("low power stun bolts")
 					strength = "high power stun bolts"
 					charge_cost = 100
-					fire_delay = FIRE_DELAY_TIER_6 * 3
+					set_fire_delay(FIRE_DELAY_TIER_6 * 3)
 					fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/stun]
 				if("high power stun bolts")
 					strength = "plasma immobilizers"
 					charge_cost = 300
-					fire_delay = FIRE_DELAY_TIER_6 * 20
+					set_fire_delay(FIRE_DELAY_TIER_6 * 20)
 					fire_sound = 'sound/weapons/pulse.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere/stun]
 				if("plasma immobilizers")
 					strength = "low power stun bolts"
 					charge_cost = 30
-					fire_delay = FIRE_DELAY_TIER_6
+					set_fire_delay(FIRE_DELAY_TIER_6)
 					fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/stun]
@@ -1086,14 +1119,14 @@
 				if("plasma bolts")
 					strength = "plasma spheres"
 					charge_cost = 1200
-					fire_delay = FIRE_DELAY_TIER_6 * 20
+					set_fire_delay(FIRE_DELAY_TIER_6 * 20)
 					fire_sound = 'sound/weapons/pulse.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere]
 				if("plasma spheres")
 					strength = "plasma bolts"
 					charge_cost = 100
-					fire_delay = FIRE_DELAY_TIER_6 * 3
+					set_fire_delay(FIRE_DELAY_TIER_6 * 3)
 					fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt]
@@ -1105,7 +1138,7 @@
 			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
 			strength = "plasma bolts"
 			charge_cost = 100
-			fire_delay = FIRE_DELAY_TIER_6 * 3
+			set_fire_delay(FIRE_DELAY_TIER_6 * 3)
 			fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 			to_chat(usr, SPAN_NOTICE("[src] will now fire [strength]."))
 			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt]
@@ -1115,7 +1148,7 @@
 			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
 			strength = "low power stun bolts"
 			charge_cost = 30
-			fire_delay = FIRE_DELAY_TIER_6
+			set_fire_delay(FIRE_DELAY_TIER_6)
 			fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 			to_chat(usr, SPAN_NOTICE("[src] will now fire [strength]."))
 			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/stun]

@@ -1,5 +1,0 @@
-author: "IowaPotatoFarmer"
-delete-after: True
-changes:
-  - rscadd: "The PMC Crash on Solaris Ridge now spawns one PMC medic survivor and one PMC engineer survivor."
-  - bugfix: "The Wey-Yu goon survivors now have their unique corporate white camo M41A MK2 back."

@@ -1341,10 +1341,10 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("co_career_path")
 					var/list/options = list("Infantry", "Intel", "Logistics", "Aviation")
-					var/new_career_path = tgui_input_list(user, "Choose your career path.", "Commanding Officer's Career Path", options)
+					var/new_career_path = tgui_input_list(user, "Choose your career path.", "Commanding Officer's Career", options)
 					if(!new_career_path)
 						return
-					command-path = new_command_path // Default should be infantry, with the other paths overriding it.
+					co_career_path = new_career_path // Default should be infantry, with the other paths overriding it.
 
 				if("yautja_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)

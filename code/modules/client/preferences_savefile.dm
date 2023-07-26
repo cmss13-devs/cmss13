@@ -173,7 +173,7 @@
 
 	S["commander_status"] >> commander_status
 	S["co_sidearm"] >> commander_sidearm
-	S["co_command_path"] >> co_command_path
+	S["co_command_path"] >> co_career_path
 	S["co_affiliation"] >> affiliation
 	S["yautja_status"] >> yautja_status
 	S["synth_status"] >> synth_status
@@ -247,7 +247,7 @@
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
 	commander_status = sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Colonel's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
-	co_career_path = sanitize_inlist(co_career_path, list("Infantry", "Intel", "Logistics", Aviation), initial(co_career_path))
+	co_career_path = sanitize_inlist(co_career_path, list("Infantry", "Intel", "Logistics", "Aviation"), initial(co_career_path))
 	affiliation = sanitize_inlist(affiliation, FACTION_ALLEGIANCE_USCM_COMMANDER, initial(affiliation))
 	yautja_status = sanitize_inlist(yautja_status, whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status = sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))
@@ -355,7 +355,7 @@
 
 	S["commander_status"] << commander_status
 	S["co_sidearm"] << commander_sidearm
-	S["co_command_path"] << co_command_path
+	S["co_command_path"] << co_career_path
 	S["co_affiliation"] << affiliation
 	S["yautja_status"] << yautja_status
 	S["synth_status"] << synth_status

@@ -700,6 +700,9 @@ DEFINES in setup.dm, referenced here.
 		CRASH("add_firemode called with a resulting gun_firemode_list length of [length(gun_firemode_list)].")
 
 /obj/item/weapon/gun/proc/remove_firemode(removed_firemode, mob/user)
+	if(!(removed_firemode in gun_firemode_list))
+		return
+
 	if(!length(gun_firemode_list) || (length(gun_firemode_list) == 1))
 		CRASH("remove_firemode called with gun_firemode_list length [length(gun_firemode_list)].")
 

@@ -1821,6 +1821,15 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	RegisterSignal(gun_user, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
 	RegisterSignal(gun_user, COMSIG_MOB_MOUSEUP, PROC_REF(stop_fire))
 
+/obj/item/weapon/gun/hands_swapped(mob/living/carbon/swapper_of_hands)
+	if(src == swapper_of_hands.get_active_hand())
+		set_gun_user(swapper_of_hands)
+		return
+
+	if(gun_user)
+		UnregisterSignal(gun_user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
+		gun_user = null
+
 ///Update the target if you draged your mouse
 /obj/item/weapon/gun/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
 	SIGNAL_HANDLER

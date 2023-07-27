@@ -548,3 +548,9 @@
       of SDing another Yautja.
   - rscadd: Added a message to all Yautja if an SD is cancelled.
   - ui: Adds a UI panel for Yautja emotes, all credit to Zonespace.
+2023-07-27:
+  Ben10083:
+  - bugfix: ARES security logs now are properly displayed
+  - ui: Xenos (and others) now see comms relays on minimap
+  Drathek:
+  - code_imp: Bump alternate 515 testing to byond 1610

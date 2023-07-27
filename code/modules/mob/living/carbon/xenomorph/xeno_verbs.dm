@@ -29,7 +29,7 @@
 		if(!src.iff_tag)
 			to_chat(src, SPAN_NOTICE("You have no IFF tag. You can attack anyone."))
 			return
-		to_chat(src, SPAN_NOTICE("Your IFF tag settings are: [english_list(src.iff_tag.faction_groups, "None")]. You cannot attack creatures within these settings."))
+		to_chat(src, SPAN_NOTICE("Your IFF tag settings are: [english_list(iff_tag.faction_groups, "None")]. You cannot attack creatures within these settings."))
 		return
 
 	if((!hive.living_xeno_queen || Check_WO()) && !hive.allow_no_queen_actions) //No Hive status on WO

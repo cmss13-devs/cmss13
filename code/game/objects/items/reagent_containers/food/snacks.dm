@@ -63,8 +63,8 @@
 		if(fullness > 540 && world.time < C.overeat_cooldown)
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
 			return
-		if(issynth(C))
-			fullness = 200 //Synths never get full
+		if(issynth(C) || isxeno(C))
+			fullness = 200 //Synths and xenos never get full
 
 		if(HAS_TRAIT(M, TRAIT_CANNOT_EAT)) //Do not feed the Working Joes
 			to_chat(user, SPAN_DANGER("[user == M ? "You are" : "[M] is"] unable to eat!"))
@@ -232,6 +232,30 @@
 				N.visible_message("[N] nibbles away at [src].", "")
 			//N.emote("nibbles away at the [src]")
 			N.health = min(N.health + 1, N.maxHealth)
+
+/obj/item/reagent_container/food/snacks/attack_alien(mob/living/carbon/xenomorph/M)
+	if(reagents && !reagents.total_volume) //Shouldn't be needed but it checks to see if it has anything left in it.
+		to_chat(M, SPAN_DANGER("None of [src] left, oh no!"))
+		M.drop_inv_item_on_ground(src) //so icons update :[
+		qdel(src)
+		return XENO_NO_DELAY_ACTION
+
+	if(package)
+		return XENO_NO_DELAY_ACTION
+
+	if(reagents) //Handle ingestion of the reagent.
+		playsound(M.loc,'sound/items/eatfood.ogg', 15, 1)
+		if(reagents.total_volume)
+			reagents.set_source_mob(M)
+			if(reagents.total_volume > bitesize)
+				reagents.trans_to_ingest(M, bitesize)
+			else
+				reagents.trans_to_ingest(M, reagents.total_volume)
+			bitecount++
+			On_Consume(M)
+		return XENO_NONCOMBAT_ACTION
+
+	return XENO_NO_DELAY_ACTION
 
 
 ////////////////////////////////////////////////////////////////////////////////

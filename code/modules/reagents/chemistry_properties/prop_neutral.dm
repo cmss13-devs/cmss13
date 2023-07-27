@@ -60,6 +60,18 @@
 	else
 		M.nutrition += holder.nutriment_factor * level
 
+
+/datum/chem_property/neutral/nutritious/reaction_mob(mob/M, method=TOUCH, volume, potency)
+	if(method == INGEST && isxeno(M))
+		var/mob/living/carbon/xenomorph/xeno = M
+		if(xeno.health < xeno.maxHealth)
+			xeno.gain_health(holder.nutriment_factor * level * 5)
+			xeno.flick_heal_overlay(1 SECONDS, "#666d09")
+		xeno.reagents.remove_reagent("nutriment", volume, TRUE) //xenos don't process chems so we don't want it to max at 100u
+		holder.on_delete()
+
+
+
 /datum/chem_property/neutral/nutritious/reset_reagent()
 	holder.nutriment_factor = initial(holder.nutriment_factor)
 	..()

@@ -1365,9 +1365,8 @@
 		if(allies[faction])
 			xeno_message(SPAN_XENOANNOUNCE("You sense that [name] Queen set up alliance with us!"), 3, target_hive.hivenumber)
 			return
-		else
-			xeno_message(SPAN_XENOANNOUNCE("You sense that [name] Queen broke alliance with us!"), 3, target_hive.hivenumber)
-			return
+
+		xeno_message(SPAN_XENOANNOUNCE("You sense that [name] Queen broke alliance with us!"), 3, target_hive.hivenumber)
 
 /datum/hive_status/corrupted/on_stance_change(faction)
 	. = ..()

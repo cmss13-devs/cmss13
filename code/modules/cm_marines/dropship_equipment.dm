@@ -449,7 +449,7 @@
 	icon_state = "spotlights"
 	desc = "A set of high-powered spotlights to illuminate large areas. Fits on electronics attach points of dropships. Moving this will require a powerloader."
 	is_interactable = TRUE
-	point_cost = 25
+	point_cost = 50
 	var/spotlights_cooldown
 	var/brightness = 11
 
@@ -513,7 +513,7 @@
 	name = "\improper LZ detector"
 	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone mid-flight."
 	icon_state = "lz_detector"
-	point_cost = 25
+	point_cost = 50
 	var/obj/structure/machinery/computer/cameras/dropship/linked_cam_console
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/update_equipment()

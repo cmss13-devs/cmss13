@@ -409,3 +409,148 @@
       indestructible blast doors.
   Morrow:
   - bugfix: Fixes wood window numbering
+2023-07-26:
+  BeagleGaming1:
+  - code_imp: Changed squad color code from a list to a variable
+  - rscadd: How long disarm stuns for depends on the difference in CQC skill between
+      the participants
+  - bugfix: CQC properly affects disarm chance again
+  Ben10083:
+  - rscadd: You can now petition High Command via ARES for a nuclear device, bypassing
+      techweb (If you can convince them, that is.)
+  - admin: Implemented Admin side of ARES Nuke request to allow for granting of different
+      nuke types, or denying the request.
+  - bugfix: Working Joes no longer spawn meat when butchered by Abominations
+  - bugfix: Synthetics now are butchered into synthflesh when butchered by Abominations
+  - rscadd: special meat subtype 'synthflesh' if Synthetics get butchered. Uses same
+      recipes as synthmeat
+  - imageadd: synthflesh sprite
+  - bugfix: Non-techweb nuke now works properly.
+  - ui: Nuke timers now use minutes instead of seconds
+  - spellcheck: Nukes renamed to 'Encrypted' and 'Decrypted' nuke respectively.
+  - admin: Ability to spawn nuke added to event panel
+  - rscadd: Infection gamemode announcement fixed and adjusts for each map, like Distress
+      Signal
+  - code_imp: elements of distress signal post_setup code moved to parent to be called
+      by all gamemodes
+  - balance: Xenomorphs lose their hiding ability for 2 seconds after a melee attack.
+      0.5 second cooldown applied to hide ability.
+  - balance: Carriers with Eggsac strain can now place eggs on regular weeds.
+  - bugfix: Extra egg planting range now properly applied for Eggsac strain and Queen
+      on ovi
+  - qol: Eggsac Carriers now notified when they generate a egg.
+  - code_imp: new variable to xenomorphs to dictate egg planting distance, and removal
+      of unused procs
+  - balance: LVL-624 Robotics Dome operating table replaced with bioprinter.
+  BraveMole, Zonespace:
+  - bugfix: Smartgunners can no longer shoot their smartgun while aghosted
+  - balance: The Uzi and Mac-15 now have full-auto
+  Drathek:
+  - bugfix: Fixed xeno hide ability not checking for busy status.
+  - bugfix: Fix bodybags not accepting warm (recent) dead bodies even if unreviveable
+  - code_imp: Added additional lints to dmi/test.py to test for duplicate state names
+      and excessive quantity and added another type path to the missing_icons unit_test.
+  - imageadd: Renamed and moved some icons around to comply with new testing.
+  - bugfix: Fixed ability deactivation and late join current slot toggles not persisting.
+  - bugfix: Toggle the Ability to Hurt Yourself now says On when you can hurt yourself.
+  - bugfix: Fix huggers not retaining at least their old death value.
+  - rscadd: Added the debug verb Mass-Screenshot and a python script MapTileImageTool
+      to combine those images into a single full image map.
+  Hopek:
+  - rscadd: Changed the description flavortext of the fountain pen to match the new
+      lore. There is now a laser engraving of the owner on the pen itself.
+  - rscadd: Added a detailed lore description for the fountain pen.
+  Katskan:
+  - bugfix: Fixed synthetics getting an extra 45 points more than any previous who
+      had used the gadget vendor
+  MarpleJones, ihatethisengine2:
+  - rscadd: Added new sprites for the Eggsac Carrier. Includes an additional death
+      sound for the eggsac bursting.
+  - rscadd: Added a hive announcement for when a Carrier dies with eggs.
+  - bugfix: Carrier egg drop chance upon death now works as intended.
+  Morrow:
+  - bugfix: Stops multiple facehuggers spawning from one client
+  - rscadd: Added lesser drones
+  QuickLode:
+  - rscadd: Radio titles for W-Y prepositioned Synthetics
+  - qol: Swaps PMC Synthetic autocompressor for a crew monitor to facilitate search
+      and rescue.
+  - bugfix: fixes PMC Synthetic ID & removes redundant graft
+  Zonespace27:
+  - bugfix: Welding goggles are no longer marked as "mandatory" in comtech vendors
+  blackdragonTOW:
+  - rscadd: Added unique, faction dependent music to Round End in the event that Xenos
+      lose post hijack.
+  ghostsheet:
+  - rscadd: Large General Pouch has stricter restriction against internal boxes.
+  - rscadd: Large General Pouch no longer restricted to 1 medium item.
+  - rscadd: Large General Pouch added to REQ.
+  - rscadd: Shuffled REQ pouch order into Meds, Engi, Misc, Ammo.
+  - rscadd: Tents can be destroyed with an E-tool.
+  - rscadd: Tents are now in their respective department, Big tent is now in Bravo
+      Bunks.
+  - rscadd: You can no longer stand behind a tent.
+  - bugfix: Xenos can now slash tents from the side.
+  - bugfix: Tents no longer randomly block bullets.
+  - bugfix: Staying inside a tent when it is destroyed no longer give your permanent
+      see-through roof vision.
+  ihatethisengine:
+  - balance: early pod launch now has a 75% chance of crashing, launch after the timer
+      has a 25% chance.
+  - rscadd: CL's pod has a 25% chance of crashing on early launch and only 5% otherwise.
+  - rscadd: xenos can slash and melt manually locked pod's doors.
+  - bugfix: fixed behavior_immobile flag using wrong number
+  realforest2001:
+  - rscadd: Adds a plasma breaching charge that detonates a plasma wave stunning those
+      opposite it.
+  - rscadd: Adds the name of the tracked item to the Yautja gear tracker.
+  - rscadd: Added an alternate mode for the Plasma Pistol and moved the incendiary
+      property to it.
+  - rscadd: Added MINIMAP_FLAG_ALL to Yautja globe map.
+  - rscadd: Adds functional maintenance ticket control to the Apollo Console
+  - rscadd: Adds a unique ID system for each ticket. Credit to Ben10083 for the idea.
+  - rscadd: Adds procs for vents to spew gas within a radius. Not currently usable
+      without proccall.
+  - code_imp: Starts work on Access Tickets.
+  - code_imp: START of contribs from Ben10083
+  - rscadd: ARES now announces when Bioscan fails.
+  - code_imp: new procs to see if ARES can talk, or log something. Bioscan proc renamed
+      for consistency.
+  - admin: Admins can now force an ARES announcement or communication if subsystem
+      is offline.
+  - rscadd: new emergency protocol from ARES; call General Quarters, which sets the
+      ship to immediate Red Alert.
+  - rscadd: New APOLLO maintenance ticket categories; Janitorial and Support. Fire
+      now a priority ticket
+  - qol: Claimed APOLLO tickets can be unclaimed
+  - qol: APOLLO tickets can be rejected/completed if unclaimed by any Working Joe
+  - code_imp: END of contribs from Ben10083
+  - code_imp: Changes /datum/rank to /datum/yautja_rank to be clearer on what it is
+      used for.
+  - rscadd: Added access defines for Yautja ship.
+  - rscadd: Added rank identifiers on Yautja equipment presets to help set access
+      levels on their bracer chips.
+  - maptweak: Changed the doors on the Yautja ship to be their own subtypes, with
+      certain ones being locked to Yautja or certain Yautja Ranks.
+  - code_imp: Slightly modernised obj/proc/allowed, and also made it check for access
+      on bracer chips if present.
+  - maptweak: Replaced the unworthy prey section of the Yautja Ship with a secondary
+      armory for plasma rifles, however the door is inaccessible to most Yautja. Intended
+      to make it a bit less obvious admins are spawning them in for the rare times
+      they're used/necessary.
+  - maptweak: Above armory will automatically open if an Abomination is detected.
+  - maptweak: Reduces amount of herbs on the Yautja Ship.
+  - maptweak: Fixes the "Consoles" orientation in the Yautja flight deck.
+  - rscadd: Allowed Falcon Drones to relay speech back to their operators.
+  - rscadd: Made Yautja cloak cost no power to operate, and created multipliers for
+      disabled duration based upon what caused the Yautja to decloak.
+  - rscadd: Added a toggle for Yautja bracer lock. This also works with the same mechanic
+      of SDing another Yautja.
+  - rscadd: Added a message to all Yautja if an SD is cancelled.
+  - ui: Adds a UI panel for Yautja emotes, all credit to Zonespace.
+2023-07-27:
+  Ben10083:
+  - bugfix: ARES security logs now are properly displayed
+  - ui: Xenos (and others) now see comms relays on minimap
+  Drathek:
+  - code_imp: Bump alternate 515 testing to byond 1610

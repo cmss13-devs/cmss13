@@ -812,16 +812,6 @@
 #undef OPEN_SLOTS
 #undef GUARANTEED_SLOTS
 
-// returns if that location can be used to plant eggs
-/datum/hive_status/proc/in_egg_plant_range(turf/T)
-	if(!istype(living_xeno_queen))
-		return TRUE // xenos already dicked without queen. Let them plant whereever
-
-	if(!living_xeno_queen.ovipositor)
-		return FALSE // ovid queen only
-
-	return get_dist(living_xeno_queen, T) <= egg_planting_range
-
 /datum/hive_status/proc/can_build_structure(structure_name)
 	if(!structure_name || !hive_structures_limit[structure_name])
 		return FALSE
@@ -1054,6 +1044,7 @@
 	hugger.visible_message(SPAN_XENODANGER("A facehugger suddenly emerges out of \the [A]!"), SPAN_XENODANGER("You emerge out of \the [A] and awaken from your slumber. For the Hive!"))
 	playsound(hugger, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
 	hugger.generate_name()
+	hugger.timeofdeath = user.timeofdeath // Keep old death time
 
 /datum/hive_status/proc/update_lesser_drone_limit()
 	lesser_drone_limit = Ceiling(totalXenos.len / 3)

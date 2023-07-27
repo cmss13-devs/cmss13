@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed ability deactivation and late join current slot toggles not persisting."
-  - bugfix: "Toggle the Ability to Hurt Yourself now says On when you can hurt yourself."

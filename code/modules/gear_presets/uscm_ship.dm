@@ -480,7 +480,7 @@
 		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white,
 		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/black,
 		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit,
-		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon
+		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon,
 	)
 
 /datum/equipment_preset/uscm_ship/commander/council/load_gear(mob/living/carbon/human/new_human)

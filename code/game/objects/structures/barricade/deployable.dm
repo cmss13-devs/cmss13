@@ -204,16 +204,11 @@
 		if(user.action_busy)
 			return
 
-		var/need_repairs = 0
-		for(var/counter in 1 to length(stack_health))
-			if(stack_health[counter] < maxhealth)
-				need_repairs++
-
-		if(!need_repairs)
+		var/obj/item/tool/weldingtool/welder = item
+		if(min(stack_health) == maxhealth)
 			to_chat(user, SPAN_WARNING("[src.singular_name] doesn't need repairs."))
 			return
 
-		var/obj/item/tool/weldingtool/welder = item
 		if(!(welder.remove_fuel(2, user)))
 			return
 
@@ -221,7 +216,7 @@
 		SPAN_NOTICE("You begin repairing the damage to [src]."))
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, TRUE)
 
-		var/welding_time = (skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED) ? 5 SECONDS : 10 SECONDS) * need_repairs
+		var/welding_time = (skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED) ? 5 SECONDS : 10 SECONDS) * amount
 
 		if(src != user.get_inactive_hand())
 			if(!do_after(user, welding_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))

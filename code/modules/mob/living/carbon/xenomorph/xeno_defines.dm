@@ -1411,7 +1411,7 @@
 			continue
 		if(!(faction in xeno.iff_tag.faction_groups))
 			continue
-		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
 		xeno.adjustBruteLoss(50)
 		xeno.iff_tag.forceMove(get_turf(xeno))
 		xeno.iff_tag = null

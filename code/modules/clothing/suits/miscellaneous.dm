@@ -287,10 +287,10 @@
 		/obj/item/device/radio,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/crew_monitor,
-		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
 		/obj/item/device/motiondetector,
 	)
+
 
 /obj/item/clothing/suit/storage/utility_vest
 	name = "utility vest"

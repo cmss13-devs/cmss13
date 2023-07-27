@@ -2270,9 +2270,9 @@
 /obj/structure/sign/safety/terminal{
 	pixel_x = -17
 	},
-/obj/item/reagent_container/food/snacks/fishandchips{
-	pixel_y = 8;
-	pixel_x = -8
+/obj/item/paper{
+	name = "note from your predecessor";
+	info = "Tackle is today. I am leaving this note so that the Chaplain who follows me may remember me. While the outlook is not good, I am sure that my faith will protect me as it will protect you. Signed <i>a name blotted out by ink.</i>"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/hull/upper_hull/u_m_s)
@@ -2337,7 +2337,6 @@
 /obj/item/storage/box/matches,
 /obj/item/reagent_container/food/drinks/bottle/wine{
 	volume = 0;
-	name = "empty Doublebeard Bearded Special Wine";
 	desc = "Seems someone's took that whole 'this is my blood drink of it' thing a bit to heart."
 	},
 /turf/open/floor/wood/ship,
@@ -3486,10 +3485,6 @@
 	dir = 8
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/paper{
-	desc = "Tackle is today. I am leaving this note so that the Chaplain who follows me may remember me. While the outlook is not good, I am sure that my faith will protect me as it will protect you. Signed <i>a name blotted out by ink.</i>";
-	name = "note from your predecessor"
-	},
 /obj/structure/machinery/computer/emails{
 	dir = 4
 	},

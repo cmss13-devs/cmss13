@@ -2450,7 +2450,7 @@
 			return
 
 		if(ishuman(M))
-			M.apply_effect(2.5, SUPERSLOW)
+			M.apply_effect(5, SUPERSLOW)
 			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
 
 		var/no_clothes_neuro = FALSE
@@ -2475,9 +2475,11 @@
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return
 
-		if(M.knocked_down < 0.7) // apply knockdown only if current knockdown is less than 0.7 second
-			M.apply_effect(0.7, WEAKEN)
+		if(M.knocked_down < 0.8) // apply knockdown only if current knockdown is less than 0.7 second
+			M.apply_effect(0.8, WEAKEN)
 			M.visible_message(SPAN_DANGER("[M] falls prone."))
+		if(M.slowed <1.5)
+			M.apply_effect(1.5, SLOW)
 
 /datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(ishuman(M))

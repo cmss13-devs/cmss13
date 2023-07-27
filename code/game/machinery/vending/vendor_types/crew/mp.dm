@@ -7,6 +7,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police, list(
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mmpo, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Security HUD Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+		list("Gear Belt", 0, /obj/item/storage/belt/security/MP/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
 
 		list("ARMOR (TAKE ALL)", 0, null, null, null),
 		list("Military Police M2 Armor", 0, /obj/item/clothing/suit/storage/marine/MP, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -17,6 +18,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police, list(
 		list("M44 Combat Revolver case", 0, /obj/item/storage/box/guncase/m44, MARINE_CAN_BUY_HANDGUN, VENDOR_ITEM_MANDATORY),
 		list("M4A3 Service Pistol case", 0, /obj/item/storage/box/guncase/m4a3, MARINE_CAN_BUY_HANDGUN, VENDOR_ITEM_MANDATORY),
 
+		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 		list("Military Police Satchel", 0, /obj/item/storage/backpack/satchel/sec, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 		list("Satchel", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
@@ -65,6 +67,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_warden, list(
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/cmpcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Security HUD Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+		list("Gear Belt", 0, /obj/item/storage/belt/security/MP/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
 
 		list("ARMOR (TAKE ALL)", 0, null, null, null),
 		list("Military Warden M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/warden, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -75,6 +78,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_warden, list(
 		list("M44 Combat Revolver case", 0, /obj/item/storage/box/guncase/m44, MARINE_CAN_BUY_HANDGUN, VENDOR_ITEM_MANDATORY),
 		list("M4A3 Service Pistol case", 0, /obj/item/storage/box/guncase/m4a3, MARINE_CAN_BUY_HANDGUN, VENDOR_ITEM_MANDATORY),
 
+		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 		list("Military Police Satchel", 0, /obj/item/storage/backpack/satchel/sec, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 		list("Satchel", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),

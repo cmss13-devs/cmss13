@@ -36,7 +36,7 @@
 		LAZYREMOVE(A.linked_pylons, src)
 
 	if(node)
-		qdel_null(node)
+		QDEL_NULL(node)
 	. = ..()
 
 /obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/xenomorph/M)

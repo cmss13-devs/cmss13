@@ -19,14 +19,14 @@
 	center_of_mass = "x=15;y=15"
 
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
-/obj/item/reagent_container/food/snacks/proc/On_Consume(mob/M)
-	SEND_SIGNAL(src, COMSIG_SNACK_EATEN, M)
+/obj/item/reagent_container/food/snacks/proc/On_Consume(mob/target_mob)
+	SEND_SIGNAL(src, COMSIG_SNACK_EATEN, target_mob)
 	if(!usr) return
 
 	if(!reagents.total_volume)
-		if(M == usr)
+		if(target_mob == usr)
 			to_chat(usr, SPAN_NOTICE("You finish eating \the [src]."))
-		M.visible_message(SPAN_NOTICE("[M] finishes eating \the [src]."))
+		target_mob.visible_message(SPAN_NOTICE("[target_mob] finishes eating \the [src]."))
 		update_icon()
 
 		if(trash)
@@ -35,7 +35,7 @@
 				trash_item = new trash(usr)
 			else if(istype(trash,/obj/item))
 				trash_item = trash
-			if(isxeno(M))
+			if(isxeno(target_mob))
 				trash_item.forceMove(get_turf(src))
 			else
 				usr.put_in_hands(trash_item)
@@ -237,10 +237,10 @@
 			//N.emote("nibbles away at the [src]")
 			N.health = min(N.health + 1, N.maxHealth)
 
-/obj/item/reagent_container/food/snacks/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/item/reagent_container/food/snacks/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(reagents && !reagents.total_volume) //Shouldn't be needed but it checks to see if it has anything left in it.
-		to_chat(M, SPAN_DANGER("None of [src] left, oh no!"))
-		M.drop_inv_item_on_ground(src) //so icons update :[
+		to_chat(xeno, SPAN_DANGER("None of [src] left, oh no!"))
+		xeno.drop_inv_item_on_ground(src) //so icons update :[
 		qdel(src)
 		return XENO_NO_DELAY_ACTION
 
@@ -248,15 +248,15 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(reagents) //Handle ingestion of the reagent.
-		playsound(M.loc,'sound/items/eatfood.ogg', 15, 1)
+		playsound(xeno.loc,'sound/items/eatfood.ogg', 15, 1)
 		if(reagents.total_volume)
-			reagents.set_source_mob(M)
+			reagents.set_source_mob(xeno)
 			if(reagents.total_volume > bitesize)
-				reagents.trans_to_ingest(M, bitesize)
+				reagents.trans_to_ingest(xeno, bitesize)
 			else
-				reagents.trans_to_ingest(M, reagents.total_volume)
+				reagents.trans_to_ingest(xeno, reagents.total_volume)
 			bitecount++
-			On_Consume(M)
+			On_Consume(xeno)
 		return XENO_NONCOMBAT_ACTION
 
 	return XENO_NO_DELAY_ACTION

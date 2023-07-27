@@ -123,10 +123,14 @@ SUBSYSTEM_DEF(mapping)
 		++i
 
 	// load the maps
-	for (var/P in parsed_maps)
-		var/datum/parsed_map/pm = P
-		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE))
+	for (var/datum/parsed_map/pm as anything in parsed_maps)
+		var/cur_z = start_z + parsed_maps[pm]
+		if (!pm.load(1, 1, cur_z, no_changeturf = TRUE))
 			errorList |= pm.original_path
+		if(istype(z_list[cur_z], /datum/space_level))
+			var/datum/space_level/cur_level = z_list[cur_z]
+			cur_level.x_bounds = pm.bounds[MAP_MAXX]
+			cur_level.y_bounds = pm.bounds[MAP_MAXY]
 	if(!silent)
 		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
 	return parsed_maps

@@ -10,7 +10,7 @@
 	tier = /datum/tier/four
 
 	announce_name = "NUCLEAR ARSENAL ACQUIRED"
-	announce_message = "A nuclear device has been purchased and will be delivered to requisitions via ASRS."
+	announce_message = "A nuclear device has been authorized and will be delivered to requisitions via ASRS."
 
 	flags = TREE_FLAG_MARINE
 
@@ -20,11 +20,12 @@
 /datum/tech/nuke/on_unlock()
 	. = ..()
 
-	var/datum/supply_order/new_order = new /datum/supply_order()
+	var/datum/supply_order/new_order = new()
 	new_order.ordernum = supply_controller.ordernum
 	supply_controller.ordernum++
-	new_order.object = supply_controller.supply_packs["Intel Operational Nuke"]
+	new_order.object = supply_controller.supply_packs["Encrypted Operational Nuke"]
 	new_order.orderedby = MAIN_AI_SYSTEM
+	new_order.approvedby = MAIN_AI_SYSTEM
 
 	supply_controller.shoppinglist += new_order
 

@@ -333,23 +333,28 @@ Additional game mode variables.
 /datum/game_mode/proc/check_xeno_late_join(mob/xeno_candidate)
 	if(jobban_isbanned(xeno_candidate, JOB_XENOMORPH)) // User is jobbanned
 		to_chat(xeno_candidate, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
-		return
-	return 1
+		return FALSE
+	return TRUE
 
-/datum/game_mode/proc/attempt_to_join_as_xeno(mob/xeno_candidate, instant_join = 0)
+/datum/game_mode/proc/attempt_to_join_as_xeno(mob/xeno_candidate, instant_join = FALSE)
 	var/list/available_xenos = list()
 	var/list/available_xenos_non_ssd = list()
 
-	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
-		var/area/A = get_area(X)
-		if(is_admin_level(X.z) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted)
-			continue //xenos on admin z level and aghosted ones don't count
-		if(istype(X) && ((!islarva(X) && (XENO_LEAVE_TIMER - X.away_timer < XENO_AVAILABLE_TIMER)) || (islarva(X) && (XENO_LEAVE_TIMER_LARVA - X.away_timer < XENO_AVAILABLE_TIMER))))
-			if(!X.client)
-				available_xenos += X
-			else
-				available_xenos_non_ssd += X
-
+	for(var/mob/living/carbon/xenomorph/cur_xeno as anything in GLOB.living_xeno_list)
+		if(cur_xeno.aghosted)
+			continue //aghosted xenos don't count
+		var/area/area = get_area(cur_xeno)
+		if(is_admin_level(cur_xeno.z) && (!area || !(area.flags_area & AREA_ALLOW_XENO_JOIN)))
+			continue //xenos on admin z level don't count
+		if(!istype(cur_xeno))
+			continue
+		var/required_time = islarva(cur_xeno) ? XENO_LEAVE_TIMER_LARVA - cur_xeno.away_timer : XENO_LEAVE_TIMER - cur_xeno.away_timer
+		if(required_time > XENO_AVAILABLE_TIMER)
+			continue
+		if(!cur_xeno.client)
+			available_xenos += cur_xeno
+		else
+			available_xenos_non_ssd += cur_xeno
 
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
@@ -379,6 +384,13 @@ Additional game mode variables.
 			// No cache, lets check now then
 			message_alien_candidates(get_alien_candidates(), dequeued = 0, cache_only = TRUE)
 			if(candidate_observer.larva_queue_cached_message)
+				var/datum/hive_status/cur_hive
+				for(var/hive_num in GLOB.hive_datum)
+					cur_hive = GLOB.hive_datum[hive_num]
+					for(var/mob_name in cur_hive.banished_ckeys)
+						if(cur_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
+							candidate_observer.larva_queue_cached_message += "\n" + SPAN_WARNING("NOTE: You are banished from the [cur_hive] and you may not rejoin unless the Queen re-admits you or dies. Your queue number won't update until there is a hive you aren't banished from.")
+							break
 				to_chat(xeno_candidate, candidate_observer.larva_queue_cached_message)
 				return FALSE
 
@@ -533,6 +545,38 @@ Additional game mode variables.
 	else
 		var/obj/effect/alien/resin/special/eggmorph/morpher = facehugger_choice
 		morpher.join_as_facehugger_from_this(xeno_candidate)
+
+	return TRUE
+
+/datum/game_mode/proc/attempt_to_join_as_lesser_drone(mob/xeno_candidate)
+	var/list/active_hives = list()
+	var/datum/hive_status/hive
+	var/last_active_hive = 0
+	for(var/hivenumber in GLOB.hive_datum)
+		hive = GLOB.hive_datum[hivenumber]
+		if(hive.totalXenos.len <= 0)
+			continue
+		active_hives[hive.name] = hive.hivenumber
+		last_active_hive = hive.hivenumber
+
+	if(active_hives.len <= 0)
+		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Hives active at this point for you to join."))
+		return FALSE
+
+	if(active_hives.len > 1)
+		var/hive_picked = tgui_input_list(xeno_candidate, "Select which Hive to attempt joining.", "Hive Choice", active_hives, theme="hive_status")
+		if(!hive_picked)
+			to_chat(xeno_candidate, SPAN_ALERT("Hive choice error. Aborting."))
+			return
+		hive = GLOB.hive_datum[active_hives[hive_picked]]
+	else
+		hive = GLOB.hive_datum[last_active_hive]
+
+	if(!hive.hive_location)
+		to_chat(xeno_candidate, SPAN_WARNING("The selected hive does not have a hive core to spawn from!"))
+		return
+
+	hive.hive_location.spawn_lesser_drone(xeno_candidate)
 
 	return TRUE
 

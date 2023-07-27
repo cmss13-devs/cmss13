@@ -590,11 +590,13 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<div id='column3'>"
 			dat += "<h2><b><u>Gameplay Toggles:</u></b></h2>"
 			dat += "<b>Toggle Being Able to Hurt Yourself: \
-					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_IGNORE_SELF]'><b>[toggle_prefs & TOGGLE_IGNORE_SELF ? "On" : "Off"]</b></a><br>"
+					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_IGNORE_SELF]'><b>[toggle_prefs & TOGGLE_IGNORE_SELF ? "Off" : "On"]</b></a><br>"
 			dat += "<b>Toggle Help Intent Safety: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_HELP_INTENT_SAFETY]'><b>[toggle_prefs & TOGGLE_HELP_INTENT_SAFETY ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Middle Mouse Ability Activation: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_MIDDLE_MOUSE_CLICK]'><b>[toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "On" : "Off"]</b></a><br>"
+			dat += "<b>Toggle Ability Deactivation: \
+					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_ABILITY_DEACTIVATION_OFF]'><b>[toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF ? "Off" : "On"]</b></a><br>"
 			dat += "<b>Toggle Directional Assist: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_DIRECTIONAL_ATTACK]'><b>[toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Magazine Auto-Ejection: \
@@ -1229,7 +1231,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					predator_gender = predator_gender == MALE ? FEMALE : MALE
 				if("pred_age")
 					var/new_predator_age = tgui_input_number(user, "Choose your Predator's age(175 to 3000):", "Character Preference", 1234, 3000, 175)
-					if(new_predator_age) 
+					if(new_predator_age)
 						predator_age = max(min( round(text2num(new_predator_age)), 3000),175)
 				if("pred_trans_type")
 					var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", PRED_TRANSLATORS)

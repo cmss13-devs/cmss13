@@ -28760,7 +28760,7 @@
 	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. This one has been expended";
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
 	icon_state = "m83a2";
-	item_state = d;
+	item_state = "m83a2";
 	name = "\improper Broken L42A battle rifle";
 	pixel_y = -6;
 	pixel_x = -7

@@ -66,7 +66,7 @@ var/accuracy_mult_unwielded
 ////SCATTER////
 */
 
-#define SCATTER_AMOUNT_NEURO 60
+#define SCATTER_AMOUNT_NEURO 45
 #define SCATTER_AMOUNT_TIER_1 15
 #define SCATTER_AMOUNT_TIER_2 10
 #define SCATTER_AMOUNT_TIER_3 8

@@ -135,6 +135,9 @@
 		structure.activated = TRUE
 		addtimer(CALLBACK(structure, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
 
+#define ENDGAME_LARVA_CAP_MULTIPLIER 0.4
+#define LARVA_ADDITION_MULTIPLIER 0.05
+
 /// Looped proc via timer to give larva after time
 /obj/effect/alien/resin/special/pylon/endgame/proc/give_larva()
 	if(!activated)
@@ -143,8 +146,21 @@
 	if(!linked_hive.hive_location || !linked_hive.living_xeno_queen)
 		return
 
-	linked_hive.stored_larva++
+	var/list/hive_xenos = linked_hive.totalXenos
+
+	for(var/mob/living/carbon/xenomorph/xeno in hive_xenos)
+		if(!xeno.counts_for_slots)
+			hive_xenos -= xeno
+
+	if(length(hive_xenos) > (length(GLOB.alive_human_list) * ENDGAME_LARVA_CAP_MULTIPLIER))
+		return
+
+	linked_hive.partial_larva += length(hive_xenos) * LARVA_ADDITION_MULTIPLIER
+	linked_hive.convert_partial_larva_to_full_larva()
 	linked_hive.hive_ui.update_burrowed_larva()
+
+#undef ENDGAME_LARVA_CAP_MULTIPLIER
+#undef LARVA_ADDITION_MULTIPLIER
 
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core

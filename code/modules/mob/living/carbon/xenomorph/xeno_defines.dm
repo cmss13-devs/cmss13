@@ -1114,6 +1114,10 @@
 /datum/hive_status/proc/increase_larva_after_burst()
 	var/extra_per_burst = CONFIG_GET(number/extra_larva_per_burst)
 	partial_larva += extra_per_burst
+	convert_partial_larva_to_full_larva()
+
+///Called after times when partial larva are added to process them to stored larva
+/datum/hive_status/proc/convert_partial_larva_to_full_larva()
 	for(var/i = 1 to partial_larva)
 		partial_larva--
 		stored_larva++

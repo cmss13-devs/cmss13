@@ -76,13 +76,13 @@
 			to_chat(usr, SPAN_WARNING("You stop collapsing [src]."))
 
 /obj/structure/barricade/deployable/proc/collapse(mob/living/carbon/human/user)
-	var/obj/item/stack/folding_barricade/FB = new source_type(loc)
-	FB.health = health
-	FB.maxhealth = maxhealth
+	var/obj/item/stack/folding_barricade/folding = new source_type(loc)
+	folding.stack_health = list(health)
+	folding.maxhealth = maxhealth
 	if(istype(user))
 		user.visible_message(SPAN_NOTICE("[user] collapses [src]."),
 			SPAN_NOTICE("You collapse [src]."))
-		user.put_in_active_hand(FB)
+		user.put_in_active_hand(folding)
 	qdel(src)
 
 /obj/structure/barricade/deployable/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -114,6 +114,8 @@
 		WEAR_J_STORE = "folding"
 	)
 	icon = 'icons/obj/items/marine-items.dmi'
+
+	var/list/stack_health = list(350)
 
 /obj/item/stack/folding_barricade/update_icon()
 	. = ..()
@@ -160,7 +162,7 @@
 
 	var/obj/structure/barricade/deployable/cade = new(user.loc)
 	cade.setDir(user.dir)
-	cade.health = health
+	cade.health = pop(stack_health)
 	cade.maxhealth = maxhealth
 	cade.source_type = singular_type
 	cade.update_damage_state()
@@ -171,20 +173,24 @@
 /obj/item/stack/folding_barricade/attackby(obj/item/item, mob/user)
 	if(istype(item, /obj/item/stack/folding_barricade))
 		var/obj/item/stack/folding_barricade/folding = item
-
-		if(round(health/maxhealth * 100) <= 75 || round(folding.health/folding.maxhealth * 100) <= 75)
-			to_chat(user, "You cannot stack damaged [src.singular_name]\s.")
+		if(!ismob(src.loc)) //gather from ground
+			if(amount >= max_amount)
+				to_chat(user, "You cannot stack more [folding.singular_name]\s.")
+				return
+			var/to_transfer = min(folding.max_amount - folding.amount, amount)
+			for(var/counter in 1 to to_transfer)
+				folding.stack_health += pop(stack_health)
+			use(to_transfer)
+			folding.add(to_transfer)
+			to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
 			return
-
-		if(!ismob(src.loc))
-			return ..()
-
 		if(amount >= max_amount)
 			to_chat(user, "You cannot stack more [src.singular_name]\s.")
 			return
 
 		var/to_transfer = min(max_amount - amount, folding.amount)
-		health = min(folding.health, health)
+		for(var/counter in 1 to to_transfer)
+			stack_health += pop(folding.stack_health)
 		folding.use(to_transfer)
 		add(to_transfer)
 		to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
@@ -199,7 +205,7 @@
 			return
 
 		var/obj/item/tool/weldingtool/welder = item
-		if(health == maxhealth)
+		if(min(stack_health) == maxhealth)
 			to_chat(user, SPAN_WARNING("[src.singular_name] doesn't need repairs."))
 			return
 
@@ -223,9 +229,10 @@
 		SPAN_NOTICE("You repair [src]."))
 		user.count_niche_stat(STATISTICS_NICHE_REPAIR_CADES)
 
-		health += 200
-		if(health > maxhealth)
-			health = maxhealth
+		for(var/counter in 1 to length(stack_health))
+			stack_health[counter] += 200
+			if(stack_health[counter] > maxhealth)
+				stack_health[counter] = maxhealth
 
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, TRUE)
 		return
@@ -233,14 +240,15 @@
 	. = ..()
 
 /obj/item/stack/folding_barricade/attack_hand(mob/user)
-	var/mob/living/carbon/human/H = user
-	if(!(amount > 1 && H.back == src))
+	var/mob/living/carbon/human/human = user
+	if(!(amount > 1 && (human.back == src || human.get_inactive_hand() == src)))
 		return ..()
-	var/obj/item/stack/F = new singular_type(user, 1)
-	transfer_fingerprints_to(F)
-	user.put_in_hands(F)
+	var/obj/item/stack/folding_barricade/folding = new singular_type(user, 1)
+	transfer_fingerprints_to(folding)
+	folding.stack_health = list(pop(stack_health))
+	user.put_in_hands(folding)
 	src.add_fingerprint(user)
-	F.add_fingerprint(user)
+	folding.add_fingerprint(user)
 	use(1)
 
 /obj/item/stack/folding_barricade/MouseDrop(obj/over_object as obj)
@@ -262,10 +270,9 @@
 
 /obj/item/stack/folding_barricade/get_examine_text(mob/user)
 	. = ..()
-	if(round(health/maxhealth * 100) <= 75)
+	if(round(min(stack_health)/maxhealth * 100) <= 75)
 		. += SPAN_WARNING("It appears to be damaged.")
-	else if(health < maxhealth)
-		. += SPAN_WARNING("It appears to be scratched.")
 
 /obj/item/stack/folding_barricade/three
 	amount = 3
+	stack_health = list(350, 350, 350)

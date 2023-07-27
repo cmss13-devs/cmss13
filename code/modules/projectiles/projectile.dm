@@ -505,8 +505,8 @@
 
 			var/mob/living/carbon/shotby = firer
 			if(istype(shotby))
-				L.attack_log += "[\[time_stamp()]\] [src], fired by [key_name(firer)], narrowly missed [key_name(L)]"
-				shotby.attack_log += "[\[time_stamp()]\] [src], fired by [key_name(shotby)], narrowly missed [key_name(L)]"
+				L.attack_log += "\[[time_stamp()]\] [src], fired by [key_name(firer)], narrowly missed [key_name(L)]"
+				shotby.attack_log += "\[[time_stamp()]\] [src], fired by [key_name(shotby)], narrowly missed [key_name(L)]"
 				log_message = "[src], fired by [key_name(firer)], narrowly missed [key_name(L)]"
 			log_attack(log_message)
 

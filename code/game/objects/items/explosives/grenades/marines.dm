@@ -555,7 +555,7 @@
 
 	playsound(smacked.loc, impact_sound, 75, 1)
 	smacked.apply_damage(impact_damage, BRUTE)
-	smacked.attack_log += "[\[time_stamp()]\] [src], fired by [fingerprintslast], struck [key_name(smacked)]."
+	smacked.attack_log += "\[[time_stamp()]\] [src], fired by [fingerprintslast], struck [key_name(smacked)]."
 
 	random_tile = get_random_turf_in_range(src,ram_distance,ram_distance) //getting random tile for bounce
 	src.throw_atom(random_tile,ram_distance,SPEED_FAST,src,TRUE,NORMAL_LAUNCH,NO_FLAGS) //time for a little trolling

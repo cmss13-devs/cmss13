@@ -257,16 +257,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 // Shotguns
-
-/datum/supply_packs/contraband/seized/sawny
-	name = "Sawn-off Spearhead Rival 78 crate (x1 ammo box included)"
-	contains = list(
-		/obj/item/weapon/gun/shotgun/double/damaged, //its not actually sawed off........... get fuked
-		/obj/item/ammo_magazine/shotgun/buckshot,
-	)
-	dollar_cost = 45
-	containertype = /obj/structure/largecrate/black_market
-
 /datum/supply_packs/contraband/seized/custom
 	name = "custom-built shotgun crate (x1 ammo box included)"
 	contains = list(

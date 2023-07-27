@@ -177,7 +177,7 @@
 			if(!authenticated || !target_id_card)
 				return
 
-			var/new_name = params["name"] // reject_bad_name() can be added here
+			var/new_name = strip_html(params["name"])
 			if(!new_name)
 				visible_message(SPAN_NOTICE("[src] buzzes rudely."))
 				return
@@ -191,7 +191,7 @@
 				return
 
 			if(target == "Custom")
-				var/custom_name = params["custom_name"]
+				var/custom_name = strip_html(params["custom_name"])
 				if(custom_name)
 					target_id_card.assignment = custom_name
 			else
@@ -594,11 +594,11 @@
 /obj/structure/machinery/computer/squad_changer/ui_static_data(mob/user)
 	var/list/data = list()
 	var/list/squads = list()
-	for(var/datum/squad/S in RoleAuthority.squads)
-		if(S.name != "Root" && !S.locked && S.active && S.faction == faction)
+	for(var/datum/squad/current_squad in RoleAuthority.squads)
+		if(current_squad.name != "Root" && !current_squad.locked && current_squad.active && current_squad.faction == faction)
 			var/list/squad = list(list(
-				"name" = S.name,
-				"color" = S.color-1
+				"name" = current_squad.name,
+				"color" = current_squad.equipment_color
 			))
 			squads += squad
 	data["squads"] = squads

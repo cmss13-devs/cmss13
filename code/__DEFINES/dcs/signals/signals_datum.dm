@@ -61,3 +61,6 @@
 
 // from /datum/emergency_call/proc/spawn_candidates()
 #define COMSIG_ERT_SETUP "ert_setup"
+
+// from /proc/update_living_queens() : /mob/living/carbon/xenomorph/queen
+#define COMSIG_HIVE_NEW_QUEEN "hive_new_queen"

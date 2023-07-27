@@ -9733,7 +9733,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "aDr" = (
-/obj/structure/machinery/chem_dispenser/beer,
+/obj/structure/machinery/chem_dispenser/soda/beer,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outpost/canteen)
 "aDs" = (
@@ -10184,7 +10184,7 @@
 	},
 /area/strata/ag/interior/dorms)
 "aEK" = (
-/obj/structure/machinery/chem_dispenser/beer,
+/obj/structure/machinery/chem_dispenser/soda/beer,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata{
 	icon_state = "orange_tile"
@@ -10624,7 +10624,7 @@
 /area/strata/ag/interior/dorms)
 "aFR" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/shotgun/double/with_stock,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -12088,7 +12088,7 @@
 	},
 /area/strata/ag/interior/outpost/admin)
 "aKQ" = (
-/obj/structure/machinery/chem_dispenser/beer,
+/obj/structure/machinery/chem_dispenser/soda/beer,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata{
 	dir = 4;

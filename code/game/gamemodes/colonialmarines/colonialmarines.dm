@@ -118,8 +118,6 @@
 	if(SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_BASIC_RT])
 		flags_round_type |= MODE_BASIC_RT
 
-	round_time_lobby = world.time
-
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 
@@ -142,11 +140,6 @@
 		var/turf/T = get_turf(pick_n_take(GLOB.monkey_spawns))
 		var/monkey_to_spawn = pick(monkey_types)
 		new monkey_to_spawn(T)
-
-/datum/game_mode/colonialmarines/proc/ares_online()
-	var/name = "ARES Online"
-	var/input = "ARES. Online. Good morning, marines."
-	shipwide_ai_announcement(input, name, 'sound/AI/ares_online.ogg')
 
 /datum/game_mode/colonialmarines/proc/map_announcement()
 	if(SSmapping.configs[GROUND_MAP].announce_text)
@@ -272,7 +265,7 @@
 			continue
 
 	if(groundside_humans > (groundside_xenos * GROUNDSIDE_XENO_MULTIPLIER))
-		SSticker.mode.get_specific_call("Xenomorphs Groundside (Forsaken)", FALSE, FALSE)
+		SSticker.mode.get_specific_call("Xenomorphs Groundside (Forsaken)", FALSE, FALSE, announce_dispatch_message = FALSE)
 
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_GROUND_CHECK, 1 MINUTES)
 
@@ -354,6 +347,8 @@
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
+#define MAJORITY 0.5 // What percent do we consider a 'majority?'
+
 /datum/game_mode/colonialmarines/declare_completion()
 	announce_ending()
 	var/musical_track
@@ -372,7 +367,20 @@
 				round_statistics.current_map.total_marine_victories++
 				round_statistics.current_map.total_marine_majors++
 		if(MODE_INFESTATION_X_MINOR)
-			musical_track = pick('sound/theme/neutral_melancholy1.ogg','sound/theme/neutral_melancholy2.ogg')
+			var/list/living_player_list = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
+			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
+				var/headcount = count_per_faction()
+				var/living = headcount["total_headcount"]
+				if ((headcount["WY_headcount"] / living) > MAJORITY)
+					musical_track = pick('sound/theme/LastManStanding_WY.ogg')
+				else if ((headcount["UPP_headcount"] / living) > MAJORITY)
+					musical_track = pick('sound/theme/LastManStanding_UPP.ogg')
+				else if ((headcount["CLF_headcount"] / living) > MAJORITY)
+					musical_track = pick('sound/theme/LastManStanding_CLF.ogg')
+				else if ((headcount["marine_headcount"] / living) > MAJORITY)
+					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
+			else
+				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
 			end_icon = "xeno_minor"
 			if(round_statistics && round_statistics.current_map)
 				round_statistics.current_map.total_xeno_victories++
@@ -581,3 +589,4 @@
 
 #undef HIJACK_EXPLOSION_COUNT
 #undef MARINE_MAJOR_ROUND_END_DELAY
+#undef MAJORITY

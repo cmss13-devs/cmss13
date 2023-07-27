@@ -55,10 +55,9 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_west_jungle)
 "lR" = (
-/obj/item/attachable/bayonet{
+/obj/item/weapon/unathiknife{
 	desc = "A curved blade made of a strange material. It looks both old and very sharp.";
 	force = 30;
-	icon_state = "unathiknife";
 	name = "\improper alien blade";
 	throwforce = 26
 	},

@@ -27,7 +27,7 @@
 		if(M == usr)
 			to_chat(usr, SPAN_NOTICE("You finish eating \the [src]."))
 		M.visible_message(SPAN_NOTICE("[M] finishes eating \the [src]."))
-		usr.drop_inv_item_on_ground(src) //so icons update :[
+		update_icon()
 
 		if(trash)
 			var/obj/item/trash_item

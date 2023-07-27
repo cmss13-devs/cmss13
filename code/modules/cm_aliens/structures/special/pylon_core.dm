@@ -36,7 +36,7 @@
 		LAZYREMOVE(A.linked_pylons, src)
 
 	if(node)
-		qdel(node)
+		qdel_null(node)
 	. = ..()
 
 /obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/xenomorph/M)
@@ -114,6 +114,7 @@
 
 	. = ..()
 
+/// Checks if all comms towers are connected and then starts end game content on all pylons if they are
 /obj/effect/alien/resin/special/pylon/endgame/proc/comms_relay_connection()
 	for(var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/checked_comms_relay in GLOB.all_static_telecomms_towers)
 		if(!checked_comms_relay.corrupted)
@@ -134,6 +135,7 @@
 		structure.activated = TRUE
 		addtimer(CALLBACK(structure, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
 
+/// Looped proc via timer to give larva after time
 /obj/effect/alien/resin/special/pylon/endgame/proc/give_larva()
 	if(!activated)
 		return

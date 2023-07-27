@@ -18,8 +18,6 @@
 	var/damaged = FALSE
 	var/plasma_stored = 0
 	var/plasma_required_to_repair = 1000
-	var/activated = FALSE
-	COOLDOWN_DECLARE(larva_given_time)
 
 	var/protection_level = TURF_PROTECTION_CAS
 
@@ -39,23 +37,6 @@
 
 	if(node)
 		qdel(node)
-
-	if(activated)
-		if(XENO_STRUCTURE_PYLON in linked_hive.hive_structures)
-			for(var/obj/effect/alien/resin/special/pylon/pylon as anything in linked_hive.hive_structures[XENO_STRUCTURE_PYLON])
-				pylon.activated = FALSE
-
-		marine_announcement("ALERT.\n\nEnergy build up around communication relays halted.", "[MAIN_AI_SYSTEM] Biological Scanner") // Ask lore team for a better AI system name, honestly a second look for these announcements may be good - Morrow
-		for(var/hivenumber in GLOB.hive_datum)
-			var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
-			if(!length(checked_hive.totalXenos))
-				continue
-
-			if(checked_hive == linked_hive)
-				xeno_announcement(SPAN_XENOANNOUNCE("We have lost our control of the tall's communication relays."), hivenumber, XENO_GENERAL_ANNOUNCE)
-			else
-				xeno_announcement(SPAN_XENOANNOUNCE("Another hive has lost control of the tall's communication relays."), hivenumber, XENO_GENERAL_ANNOUNCE)
-
 	. = ..()
 
 /obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/xenomorph/M)
@@ -106,20 +87,37 @@
 	playsound(loc, "alien_resin_build", 25)
 
 /obj/effect/alien/resin/special/pylon/proc/place_node()
-	var/obj/effect/alien/weeds/node/pylon/W = new node_type(loc, null, null, linked_hive)
-	W.resin_parent = src
-	return W
+	var/obj/effect/alien/weeds/node/pylon/pylon_node = new node_type(loc, null, null, linked_hive)
+	pylon_node.resin_parent = src
+	return pylon_node
 
-/obj/effect/alien/resin/special/pylon/proc/comms_relay_connection()
-	var/check = TRUE
+/obj/effect/alien/resin/special/pylon/endgame
+	cover_range = WEED_RANGE_CORE
+	var/activated = FALSE
 
+/obj/effect/alien/resin/special/pylon/endgame/Destroy()
+	if(activated)
+		if(XENO_STRUCTURE_PYLON in linked_hive.hive_structures)
+			for(var/obj/effect/alien/resin/special/pylon/endgame/pylon as anything in linked_hive.hive_structures[XENO_STRUCTURE_PYLON])
+				pylon.activated = FALSE
+
+		marine_announcement("ALERT.\n\nEnergy build up around communication relays halted.", "[MAIN_AI_SYSTEM] Biological Scanner") // Ask lore team for a better AI system name, honestly a second look for these announcements may be good - Morrow
+		for(var/hivenumber in GLOB.hive_datum)
+			var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
+			if(!length(checked_hive.totalXenos))
+				continue
+
+			if(checked_hive == linked_hive)
+				xeno_announcement(SPAN_XENOANNOUNCE("We have lost our control of the tall's communication relays."), hivenumber, XENO_GENERAL_ANNOUNCE)
+			else
+				xeno_announcement(SPAN_XENOANNOUNCE("Another hive has lost control of the tall's communication relays."), hivenumber, XENO_GENERAL_ANNOUNCE)
+
+	. = ..()
+
+/obj/effect/alien/resin/special/pylon/endgame/proc/comms_relay_connection()
 	for(var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/checked_comms_relay in GLOB.all_static_telecomms_towers)
 		if(!checked_comms_relay.corrupted)
-			check = FALSE
-			break
-
-	if(!check)
-		return FALSE
+			return
 
 	marine_announcement("ALERT.\n\nIrregular build up of energy around communication relays.", "[MAIN_AI_SYSTEM] Biological Scanner") // Ask lore team for a better AI system name, honestly a second look for these announcements may be good - Morrow
 	for(var/hivenumber in GLOB.hive_datum)
@@ -132,25 +130,19 @@
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("Another hive has harnessed the tall's communication relays.[linked_hive.faction_is_ally(checked_hive.name) ? "" : " Stop them!"]"), hivenumber, XENO_GENERAL_ANNOUNCE)
 
-	for(var/obj/effect/alien/resin/special/pylon/structure as anything in linked_hive.hive_structures[XENO_STRUCTURE_PYLON])
+	for(var/obj/effect/alien/resin/special/pylon/endgame/structure in linked_hive.hive_structures[XENO_STRUCTURE_PYLON])
 		structure.activated = TRUE
-		addtimer(CALLBACK(structure, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN)
+		addtimer(CALLBACK(structure, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
 
-/obj/effect/alien/resin/special/pylon/proc/give_larva()
+/obj/effect/alien/resin/special/pylon/endgame/proc/give_larva()
 	if(!activated)
 		return
 
-	if(!COOLDOWN_FINISHED(src, larva_given_time)) //Somehow out of sync or doubled timers so we kill this "recursion"
-		return
-
-	if(!linked_hive.hive_location || !linked_hive.living_xeno_queen) //without a queen and a hive core we do not give larva but we don't deactivate either
-		addtimer(CALLBACK(src, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN)
+	if(!linked_hive.hive_location || !linked_hive.living_xeno_queen)
 		return
 
 	linked_hive.stored_larva++
 	linked_hive.hive_ui.update_burrowed_larva()
-	COOLDOWN_START(src, larva_given_time, (XENO_PYLON_ACTIVATION_COOLDOWN - 1)) //Hypothetically stops any stacked timers, there is probably a better way to do this but I'm having a brain fart, ask Harry - Morrow
-	addtimer(CALLBACK(src, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN)
 
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core

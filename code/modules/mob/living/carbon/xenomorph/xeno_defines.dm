@@ -316,7 +316,7 @@
 		XENO_STRUCTURE_EGGMORPH = 6,
 		XENO_STRUCTURE_EVOPOD = 2,
 		XENO_STRUCTURE_RECOVERY = 6,
-		XENO_STRUCTURE_PYLON = 10,
+		XENO_STRUCTURE_PYLON = 2,
 	)
 
 	var/global/list/hive_structure_types = list(

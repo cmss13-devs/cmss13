@@ -211,7 +211,11 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	bound_width = 64
 	freq_listening = list(COLONY_FREQ)
 	var/toggle_cooldown = 0
+
+	/// Tower has been taken over by xenos, is not usable
 	var/corrupted = FALSE
+
+	/// Held image for the current overlay on the tower from xeno corruption
 	var/image/corruption_image = null
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize()
@@ -307,7 +311,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	if(!weeded_turf.weeds.parent)
 		return
 
-	if(!istypestrict(weeded_turf.weeds.parent, /obj/effect/alien/weeds/node/pylon/cluster))
+	if(!istype(weeded_turf.weeds.parent, /obj/effect/alien/weeds/node/pylon/cluster))
 		return
 
 	if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
@@ -326,7 +330,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	qdel(cluster_parent)
 
-	var/obj/effect/alien/resin/special/pylon/new_pylon = new(cluster_loc, linked_hive)
+	var/obj/effect/alien/resin/special/pylon/endgame/new_pylon = new(cluster_loc, linked_hive)
 	new_pylon.node.children = held_children_weeds
 
 	for(var/obj/effect/alien/weeds/weed in new_pylon.node.children)
@@ -336,10 +340,10 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	corrupted = TRUE
 
-	corruption_image = image(icon, icon_state = "resin_growing") //seems to start at the end of the loop for some reason?, figure out why before merge - Morrow
+	corruption_image = image(icon, icon_state = "resin_growing")
 
-	flick_overlay(src, corruption_image, (4 SECONDS))
-	addtimer(CALLBACK(src, PROC_REF(switch_to_idle_corruption)), (4 SECONDS))
+	flick_overlay(src, corruption_image, (2 SECONDS))
+	addtimer(CALLBACK(src, PROC_REF(switch_to_idle_corruption)), (2 SECONDS))
 
 	new_pylon.comms_relay_connection()
 

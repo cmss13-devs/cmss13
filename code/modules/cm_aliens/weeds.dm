@@ -55,7 +55,7 @@
 		linked_hive = GLOB.hive_datum[hivenumber]
 
 	set_hive_data(src, hivenumber)
-	if(spread_on_semiweedable)
+	if(spread_on_semiweedable && weed_strength < WEED_LEVEL_HIVE)
 		if(color)
 			var/list/RGB = ReadRGB(color)
 			RGB[1] = Clamp(RGB[1] + 35, 0, 255)
@@ -588,6 +588,7 @@
 	weed_strength = WEED_LEVEL_HIVE
 	node_range = WEED_RANGE_PYLON
 	overlay_node = FALSE
+	spread_on_semiweedable = TRUE
 	var/obj/effect/alien/resin/special/resin_parent
 
 /obj/effect/alien/weeds/node/pylon/proc/set_parent_damaged()
@@ -618,6 +619,9 @@
 
 /obj/effect/alien/weeds/node/pylon/acid_spray_act()
 	return
+
+/obj/effect/alien/weeds/node/pylon/cluster
+	spread_on_semiweedable = FALSE
 
 /obj/effect/alien/weeds/node/pylon/cluster/set_parent_damaged()
 	if(!resin_parent)

@@ -220,6 +220,10 @@
 		to_chat(M, SPAN_XENOWARNING("You can't climb through a tunnel while immobile."))
 		return XENO_NO_DELAY_ACTION
 
+	if(M.caste_type == XENO_CASTE_QUEEN)
+		to_chat(M, SPAN_XENOWARNING("You're too large to fit in the tunnel!"))
+		return XENO_NO_DELAY_ACTION
+
 	if(!hive.tunnels.len)
 		to_chat(M, SPAN_WARNING("\The [src] doesn't seem to lead anywhere."))
 		return XENO_NO_DELAY_ACTION

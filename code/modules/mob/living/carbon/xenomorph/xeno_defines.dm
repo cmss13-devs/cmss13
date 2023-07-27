@@ -1419,7 +1419,7 @@
 		return
 
 	xeno_message(SPAN_XENOANNOUNCE("You sense that [defectors.Join(", ")] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
-	defectors = list()
+	defectors.Cut()
 
 //Xeno Resin Mark Shit, the very best place for it too :0)
 //Defines at the bottom of this list here will show up at the top in the mark menu

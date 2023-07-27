@@ -1398,7 +1398,7 @@
 		to_chat(xeno, SPAN_XENOANNOUNCE("You lost connection with your hive. Now there is no Queen, only masters."))
 		to_chat(xeno, SPAN_NOTICE("Your IFF tag settings are: [english_list(xeno.iff_tag.faction_groups, "None")]. You cannot attack creatures within these settings."))
 		return
-	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
 	xeno.adjustBruteLoss(50)
 	xeno.iff_tag.forceMove(get_turf(xeno))
 	xeno.iff_tag = null

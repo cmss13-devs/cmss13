@@ -65,7 +65,7 @@
 	if(method == INGEST && isxeno(M))
 		var/mob/living/carbon/xenomorph/xeno = M
 		if(xeno.health < xeno.maxHealth)
-			xeno.gain_health(holder.nutriment_factor * level * 5)
+			xeno.gain_health(holder.nutriment_factor * level * 2.5)
 			xeno.flick_heal_overlay(1 SECONDS, "#666d09")
 		xeno.reagents.remove_reagent("nutriment", volume, TRUE) //xenos don't process chems so we don't want it to max at 100u
 		holder.on_delete()

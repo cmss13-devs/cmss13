@@ -30,11 +30,15 @@
 		usr.drop_inv_item_on_ground(src) //so icons update :[
 
 		if(trash)
+			var/obj/item/trash_item
 			if(ispath(trash,/obj/item))
-				var/obj/item/TrashItem = new trash(usr)
-				usr.put_in_hands(TrashItem)
+				trash_item = new trash(usr)
 			else if(istype(trash,/obj/item))
-				usr.put_in_hands(trash)
+				trash_item = trash
+			if(isxeno(M))
+				trash_item.forceMove(get_turf(src))
+			else
+				usr.put_in_hands(trash_item)
 		qdel(src)
 	return
 

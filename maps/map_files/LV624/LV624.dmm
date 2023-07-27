@@ -4877,7 +4877,9 @@
 /turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/jungle/west_jungle)
 "ayj" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/bioprinter{
+	stored_metal = 1000
+	},
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -12062,7 +12064,7 @@
 /area/lv624/lazarus/comms)
 "aZi" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/chem_dispenser/beer{
+/obj/structure/machinery/chem_dispenser/soda/beer{
 	pixel_y = 26
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,

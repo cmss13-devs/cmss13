@@ -38,7 +38,7 @@
 	GLOB.player_embryo_list -= src
 	. = ..()
 
-/obj/item/alien_embryo/process()
+/obj/item/alien_embryo/process(delta_time)
 	if(!affected_mob) //The mob we were gestating in is straight up gone, we shouldn't be here
 		STOP_PROCESSING(SSobj, src)
 		qdel(src)
@@ -72,24 +72,26 @@
 	if(affected_mob.in_stasis == STASIS_IN_CRYO_CELL)
 		return FALSE //If they are in cryo, the embryo won't grow.
 
-	process_growth()
+	process_growth(delta_time)
 
-/obj/item/alien_embryo/proc/process_growth()
+/obj/item/alien_embryo/proc/process_growth(delta_time)
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	/// The total time the person is hugged divided by stages until burst
+	var/per_stage_hugged_time = CONFIG_GET(number/embryo_burst_timer) / 5
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.
 		if(affected_mob.in_stasis || affected_mob.bodytemperature < 170)
 			if(stage < 5)
-				counter += 0.33 * hive.larva_gestation_multiplier
-			else if(stage == 4)
-				counter += 0.11 * hive.larva_gestation_multiplier
+				counter += 0.33 * hive.larva_gestation_multiplier * delta_time
+			if(stage == 4) // Stasis affects late-stage less
+				counter += 0.11 * hive.larva_gestation_multiplier * delta_time
 		else if(HAS_TRAIT(affected_mob, TRAIT_NESTED)) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
-			counter += 1.5 * hive.larva_gestation_multiplier //Currently twice as much, can be changed
+			counter += 1.5 * hive.larva_gestation_multiplier * delta_time //Currently twice as much, can be changed
 		else
 			if(stage < 5)
-				counter += 1 * hive.larva_gestation_multiplier
+				counter += 1 * hive.larva_gestation_multiplier * delta_time
 
-		if(stage < 5 && counter >= 90)
+		if(stage < 5 && counter >= per_stage_hugged_time)
 			counter = 0
 			stage++
 			if(iscarbon(affected_mob))
@@ -98,6 +100,14 @@
 
 	switch(stage)
 		if(2)
+			if(prob(4))
+				if(affected_mob.knocked_out < 1)
+					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
+					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"), \
+												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
+					affected_mob.apply_effect(1, PARALYZE)
+					affected_mob.make_jittery(105)
+					affected_mob.take_limb_damage(1)
 			if(prob(2))
 				var/message = SPAN_WARNING("[pick("Your chest hurts a little bit", "Your stomach hurts")].")
 				to_chat(affected_mob, message)
@@ -111,15 +121,15 @@
 					affected_mob.take_limb_damage(1)
 			else if(prob(2))
 				affected_mob.emote("[pick("sneeze", "cough")]")
-		if(4)
-			if(prob(1))
+			if(prob(5))
 				if(affected_mob.knocked_out < 1)
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"), \
-												SPAN_DANGER("You start shaking uncontrollably!"))
-					affected_mob.apply_effect(10, PARALYZE)
+												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
+					affected_mob.apply_effect(2, PARALYZE)
 					affected_mob.make_jittery(105)
 					affected_mob.take_limb_damage(1)
+		if(4)
 			if(prob(2))
 				affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 				var/message = pick("Your chest hurts badly", "It becomes difficult to breathe", "Your heart starts beating rapidly, and each beat is painful")
@@ -127,6 +137,14 @@
 				to_chat(affected_mob, message)
 				if(prob(50))
 					affected_mob.emote("scream")
+			if(prob(6))
+				if(affected_mob.knocked_out < 1)
+					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
+					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"), \
+												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
+					affected_mob.apply_effect(3, PARALYZE)
+					affected_mob.make_jittery(105)
+					affected_mob.take_limb_damage(1)
 		if(5)
 			become_larva()
 		if(6)
@@ -163,7 +181,7 @@
 
 	if(!picked)
 		// Get a candidate from observers
-		var/list/candidates = get_alien_candidates()
+		var/list/candidates = get_alien_candidates(hive)
 		if(candidates && candidates.len)
 			// If they were facehugged by a player thats still in queue, they get second dibs on the new larva.
 			if(hugger_ckey)
@@ -188,7 +206,8 @@
 
 	if(isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
 		new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nAn abomination has been detected at [get_area_name(new_xeno)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately"))
+		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nAn abomination has been detected at [get_area_name(new_xeno)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately.\n\nHeavy Armory unlocked."))
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_ARMORY_OPENED)
 	else
 		new_xeno = new(affected_mob)
 
@@ -215,6 +234,18 @@
 		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
 		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
 		playsound_client(new_xeno.client, 'sound/effects/xeno_newlarva.ogg', 25, 1)
+
+	// Inform observers to grab some popcorn if it isnt nested
+	if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))
+		var/area/burst_area = get_area(src)
+		if(burst_area)
+			for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+				to_chat(observer, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b> at \the <b>[burst_area]!</b> [OBSERVER_JMP(observer, affected_mob)]"))
+			to_chat(src, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b> at \the <b>[burst_area]!</b>"))
+		else
+			for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+				to_chat(observer, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]!</b> [OBSERVER_JMP(observer, affected_mob)]"))
+			to_chat(src, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]!</b>"))
 
 	stage = 6
 
@@ -314,20 +345,3 @@
 		victim.death(cause) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
 		victim.chestburst = 2
 		victim.update_burst()
-
-// Squeeze thru dense objects as a larva, as airlocks
-/mob/living/carbon/xenomorph/larva/proc/scuttle(obj/structure/target)
-	var/move_dir = get_dir(src, loc)
-	for(var/atom/movable/AM in get_turf(target))
-		if(AM != target && AM.density && AM.BlockedPassDirs(src, move_dir))
-			to_chat(src, SPAN_WARNING("\The [AM] prevents you from squeezing under \the [target]!"))
-			return
-	// Is it an airlock?
-	if(istype(target, /obj/structure/machinery/door/airlock))
-		var/obj/structure/machinery/door/airlock/selected_airlock = target
-		if(selected_airlock.locked || selected_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
-			to_chat(src, SPAN_WARNING("\The [selected_airlock] is locked down tight. You can't squeeze underneath!"))
-			return
-	visible_message(SPAN_WARNING("\The [src] scuttles underneath \the [target]!"), \
-	SPAN_WARNING("You squeeze and scuttle underneath \the [target]."), null, 5)
-	forceMove(target.loc)

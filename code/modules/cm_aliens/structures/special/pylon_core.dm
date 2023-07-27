@@ -150,7 +150,7 @@
 			last_larva_time = world.time
 		if(spawning_larva || (last_larva_queue_time + spawn_cooldown * 4) < world.time)
 			last_larva_queue_time = world.time
-			var/list/players_with_xeno_pref = get_alien_candidates()
+			var/list/players_with_xeno_pref = get_alien_candidates(linked_hive)
 			if(players_with_xeno_pref && players_with_xeno_pref.len)
 				if(spawning_larva && spawn_burrowed_larva(players_with_xeno_pref[1]))
 					// We were in spawning_larva mode and successfully spawned someone
@@ -326,6 +326,23 @@
 		log_admin("Hivecore cooldown reset proc aborted due to hivecore cooldown var being set to false before the cooldown has finished!")
 		// Tell admins that this condition is reached so they know what has happened if it fails somehow
 		return
+
+/obj/effect/alien/resin/special/pylon/core/proc/spawn_lesser_drone(mob/xeno_candidate)
+	if(!linked_hive.can_spawn_as_lesser_drone(xeno_candidate))
+		return FALSE
+
+	var/mob/living/carbon/xenomorph/lesser_drone/new_drone = new /mob/living/carbon/xenomorph/lesser_drone(loc, null, linked_hive.hivenumber)
+	xeno_candidate.mind.transfer_to(new_drone, TRUE)
+	new_drone.visible_message(SPAN_XENODANGER("A lesser drone emerges out of [src]!"), SPAN_XENODANGER("You emerge out of [src] and awaken from your slumber. For the Hive!"))
+	playsound(new_drone, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
+	new_drone.generate_name()
+
+	return TRUE
+
+/obj/effect/alien/resin/special/pylon/core/attack_ghost(mob/dead/observer/user)
+	. = ..()
+	if(SSticker.mode.check_xeno_late_join(user))
+		SSticker.mode.attempt_to_join_as_lesser_drone(user)
 
 #undef PYLON_REPAIR_TIME
 #undef PYLON_WEEDS_REGROWTH_TIME

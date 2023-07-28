@@ -66,7 +66,6 @@
 
 	if(method == INGEST && isxeno(target_mob))
 		var/mob/living/carbon/xenomorph/xeno = target_mob
-		if(xeno.stat == DEAD)
 		if(xeno.health < xeno.maxHealth || xeno.plasma_stored < xeno.plasma_max)
 			xeno.gain_health(holder.nutriment_factor * level * 4)
 			xeno.gain_plasma(holder.nutriment_factor * level * 4)

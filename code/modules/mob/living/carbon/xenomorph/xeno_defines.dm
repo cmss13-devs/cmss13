@@ -1352,9 +1352,9 @@
 	if(!living_xeno_queen)
 		return
 	if(allies[faction])
-		xeno_message(SPAN_XENOANNOUNCE("Your Queen set up alliance with [faction]!"), 3, hivenumber)
+		xeno_message(SPAN_XENOANNOUNCE("Your Queen set up an alliance with [faction]!"), 3, hivenumber)
 	else
-		xeno_message(SPAN_XENOANNOUNCE("Your Queen broke alliance with [faction]!"), 3, hivenumber)
+		xeno_message(SPAN_XENOANNOUNCE("Your Queen broke the alliance with [faction]!"), 3, hivenumber)
 
 	for(var/number in GLOB.hive_datum)
 		var/datum/hive_status/target_hive = GLOB.hive_datum[number]

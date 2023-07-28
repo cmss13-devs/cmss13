@@ -87,7 +87,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_age = 100
 	var/predator_h_style = "Standard"
 	var/predator_skin_color = "tan"
-	var/predator_use_legacy = "No"
+	var/predator_use_legacy = "None"
 	var/predator_translator_type = "Modern"
 	var/predator_mask_type = 1
 	var/predator_armor_type = 1
@@ -1237,7 +1237,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(new_predator_age)
 						predator_age = max(min( round(text2num(new_predator_age)), 3000),175)
 				if("pred_use_legacy")
-					var/legacy_choice = tgui_alert(user, "Do you wish to use your legacy gear?", "Legacy Gear", list("Yes", "No"))
+					var/legacy_choice = tgui_alert(user, "What legacy set do you wish to use?", "Legacy Set", PRED_LEGACIES)
 					if(!legacy_choice)
 						return
 					predator_use_legacy = legacy_choice

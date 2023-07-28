@@ -61,28 +61,28 @@
 	fire_intensity_resistance = 10
 	black_market_value = 100
 
-/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", legacy_yautja = "No")
+/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", legacy = "None")
 	. = ..()
 	if(thrall)
 		return
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
 
-	if(legacy_yautja != "No")
-		switch(legacy_yautja)
-			if("trblackdragon")
+	if(legacy != "None")
+		switch(legacy)
+			if("dragon")
 				icon_state = "halfarmor_elder_tr"
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_tr")
 				return
-			if("joshuu")
+			if("swamp")
 				icon_state = "halfarmor_elder_joshuu"
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_joshuu")
 				return
-			if("feweh")
+			if("enforcer")
 				icon_state = "halfarmor_elder_feweh"
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_feweh")
 				return
-			if("forwardslashn")
+			if("collector")
 				icon_state = "halfarmor_elder_n"
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_n")
 				return

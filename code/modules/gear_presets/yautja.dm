@@ -44,8 +44,6 @@
 		mob_client = new_human.client
 	if(mob_client?.prefs)
 		using_legacy = mob_client.prefs.predator_use_legacy
-		if(using_legacy == "Yes")
-			using_legacy = mob_client.ckey
 		armor_number = mob_client.prefs.predator_armor_type
 		boot_number = mob_client.prefs.predator_boot_type
 		mask_number = mob_client.prefs.predator_mask_type

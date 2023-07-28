@@ -28,6 +28,7 @@
 	return //No vanity items for Yautja!
 
 /datum/equipment_preset/yautja/load_gear(mob/living/carbon/human/new_human, client/mob_client)
+	var/using_legacy = "No"
 	var/armor_number = 1
 	var/boot_number = 1
 	var/mask_number = 1
@@ -42,6 +43,9 @@
 	if(!mob_client)
 		mob_client = new_human.client
 	if(mob_client?.prefs)
+		using_legacy = mob_client.prefs.predator_use_legacy
+		if(using_legacy == "Yes")
+			using_legacy = mob_client.ckey
 		armor_number = mob_client.prefs.predator_armor_type
 		boot_number = mob_client.prefs.predator_boot_type
 		mask_number = mob_client.prefs.predator_mask_type
@@ -62,8 +66,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/medicomp/full(new_human), WEAR_IN_BELT)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/knife(new_human, boot_number, greave_material), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter(new_human, armor_number, armor_material), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter(new_human, mask_number, mask_material), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter(new_human, armor_number, armor_material, using_legacy), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter(new_human, mask_number, mask_material, using_legacy), WEAR_FACE)
 
 	var/cape_path = GLOB.all_yautja_capes[cape_type]
 	if(ispath(cape_path))

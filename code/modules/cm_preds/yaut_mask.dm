@@ -46,16 +46,34 @@
 	var/thrall = FALSE //Used to affect icon generation.
 
 
-/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,12), armor_material = "ebony", elder_restricted = 0)
+/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,12), armor_material = "ebony", legacy_yautja = "No")
 	..()
 	forceMove(location)
 	if(thrall)
 		return
 
+	if(legacy_yautja != "No")
+		switch(legacy_yautja)
+			if("trblackdragon")
+				icon_state = "pred_mask_elder_tr"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_tr")
+				return
+			if("joshuu")
+				icon_state = "pred_mask_elder_joshuu"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_joshuu")
+				return
+			if("feweh")
+				icon_state = "pred_mask_elder_feweh"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_feweh")
+				return
+			if("forwardslashn")
+				icon_state = "pred_mask_elder_n"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_n")
+				return
+
 	if(mask_number > 12)
 		mask_number = 1
 	icon_state = "pred_mask[mask_number]_[armor_material]"
-
 	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mask_number]_[armor_material]")
 
 /obj/item/clothing/mask/gas/yautja/pickup(mob/living/user)

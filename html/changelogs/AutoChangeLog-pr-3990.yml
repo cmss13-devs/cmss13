@@ -1,0 +1,5 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - rscadd: "Added announcements for xenos about forming and breaking alliances."
+  - rscadd: "Xenos with IFF tag now have a choice to stay loyal to USCM when Queen decides to betray."

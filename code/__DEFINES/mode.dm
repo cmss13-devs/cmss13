@@ -74,7 +74,7 @@
 #define ROUNDSTATUS_FOG_DOWN 1
 #define ROUNDSTATUS_PODDOORS_OPEN 2
 
-#define LATEJOIN_MARINES_PER_LATEJOIN_LARVA 3
+#define LATEJOIN_MARINES_PER_LATEJOIN_LARVA 2.5
 
 //=================================================
 #define SHOW_ITEM_ANIMATIONS_NONE 0 //Do not show any item pickup animations

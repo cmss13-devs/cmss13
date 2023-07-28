@@ -37,6 +37,10 @@
 	if(!hive)
 		return FALSE
 
+	if(hivenumber == XENO_HIVE_RENEGADE)
+		var/datum/hive_status/corrupted/renegade/renegade_hive = hive
+		return renegade_hive.iff_protection_check(src, attempt_harm_mob)
+
 	return hive.is_ally(attempt_harm_mob)
 
 // need this to set the data for walls/eggs/huggers when they are initialized

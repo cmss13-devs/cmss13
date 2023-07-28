@@ -1,9 +1,0 @@
-author: "ghostsheet"
-delete-after: True
-changes:
-  - rscadd: "Tents can be destroyed with an E-tool."
-  - rscadd: "Tents are now in their respective department, Big tent is now in Bravo Bunks."
-  - rscadd: "You can no longer stand behind a tent."
-  - bugfix: "Xenos can now slash tents from the side."
-  - bugfix: "Tents no longer randomly block bullets."
-  - bugfix: "Staying inside a tent when it is destroyed no longer give your permanent see-through roof vision."

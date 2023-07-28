@@ -279,9 +279,9 @@
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
 
-	adjust_effect(-3, PARALYZE)
-	adjust_effect(-3, STUN)
-	adjust_effect(-3, WEAKEN)
+	adjust_effect(-6, PARALYZE)
+	adjust_effect(-6, STUN)
+	adjust_effect(-6, WEAKEN)
 
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 

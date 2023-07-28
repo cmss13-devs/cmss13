@@ -554,3 +554,22 @@
   - ui: Xenos (and others) now see comms relays on minimap
   Drathek:
   - code_imp: Bump alternate 515 testing to byond 1610
+2023-07-28:
+  BeagleGaming1:
+  - rscadd: Added a new CO jacket to the CO vendor
+  Ben10083:
+  - bugfix: Speech problems such as lisping now applies when using megaphone
+  GoldenDarkness55:
+  - balance: Dropship machine gun cost lowered from 300 to 50.
+  - balance: Dropship rappel module cost lowered from 500 to 50.
+  - balance: Dropship spotlight cost lowered from 300 to 50.
+  - balance: Dropship LZ detector cost lowered from 400 to 50.
+  Khadd:
+  - bugfix: xenos now update their wound icon when getting up
+  Morrow:
+  - bugfix: Fixed sentries firing turning off their lights
+  - rscadd: Shovels can now be used to collapse tunnels
+  zzzmike:
+  - balance: when facehugged, more paralyze chance with a smaller paralyze duration
+  - ui: during hugged effects, changes messaging to encourage new players to seek
+      help

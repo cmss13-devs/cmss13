@@ -1,4 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - bugfix: "Speech problems such as lisping now applies when using megaphone"

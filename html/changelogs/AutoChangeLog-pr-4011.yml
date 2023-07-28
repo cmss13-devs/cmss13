@@ -1,4 +1,0 @@
-author: "Khadd"
-delete-after: True
-changes:
-  - bugfix: "xenos now update their wound icon when getting up"

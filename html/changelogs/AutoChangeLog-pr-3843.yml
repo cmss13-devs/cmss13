@@ -1,5 +1,0 @@
-author: "zzzmike"
-delete-after: True
-changes:
-  - balance: "when facehugged, more paralyze chance with a smaller paralyze duration"
-  - ui: "during hugged effects, changes messaging to encourage new players to seek help"

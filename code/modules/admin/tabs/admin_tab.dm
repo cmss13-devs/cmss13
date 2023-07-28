@@ -169,12 +169,12 @@
 		if(N.is_ban)
 			var/ban_text = N.ban_time ? "Banned for [N.ban_time] | " : ""
 			color = "#880000"
-			dat += "<font color=[color]>[ban_text][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
+			dat += "<font color=[color]>[ban_text][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] (ID: [N.round_id])</i></font> "
 		else
 			if(N.is_confidential)
 				color = "#AA0055"
 
-			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
+			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] (ID: [N.round_id])</i></font> "
 		dat += "<br><br>"
 
 	dat += "<br>"

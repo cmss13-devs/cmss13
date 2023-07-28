@@ -1082,11 +1082,11 @@
 		if(islesserdrone(mob))
 			current_lesser_drone_count++
 
-	if(lesser_drone_limit <= current_lesser_drone_count)
-		to_chat(user, SPAN_WARNING("[GLOB.hive_datum[hivenumber]] cannot support more lesser drones! Limit: <b>[current_lesser_drone_count]/[lesser_drone_limit]</b>"))
+	if(tgui_alert(user, "Are you sure you want to become a lesser drone?", "Confirmation", list("Yes", "No")) != "Yes")
 		return FALSE
 
-	if(tgui_alert(user, "Are you sure you want to become a lesser drone?", "Confirmation", list("Yes", "No")) != "Yes")
+	if(lesser_drone_limit <= current_lesser_drone_count)
+		to_chat(user, SPAN_WARNING("[GLOB.hive_datum[hivenumber]] cannot support more lesser drones! Limit: <b>[current_lesser_drone_count]/[lesser_drone_limit]</b>"))
 		return FALSE
 
 	if(!user.client)

@@ -295,8 +295,9 @@
 	var/evolution_bonus = 0
 
 	var/allow_no_queen_actions = FALSE
+	var/allow_no_queen_evo = FALSE
 	var/evolution_without_ovipositor = TRUE //Temporary for the roundstart.
-	/// Set to true if you want to prevent evolutions into Queens
+	/// Set to false if you want to prevent evolutions into Queens
 	var/allow_queen_evolve = TRUE
 	/// Set to true if you want to prevent bursts and spawns of new xenos. Will also prevent healing if the queen no longer exists
 	var/hardcore = FALSE
@@ -812,16 +813,6 @@
 #undef OPEN_SLOTS
 #undef GUARANTEED_SLOTS
 
-// returns if that location can be used to plant eggs
-/datum/hive_status/proc/in_egg_plant_range(turf/T)
-	if(!istype(living_xeno_queen))
-		return TRUE // xenos already dicked without queen. Let them plant whereever
-
-	if(!living_xeno_queen.ovipositor)
-		return FALSE // ovid queen only
-
-	return get_dist(living_xeno_queen, T) <= egg_planting_range
-
 /datum/hive_status/proc/can_build_structure(structure_name)
 	if(!structure_name || !hive_structures_limit[structure_name])
 		return FALSE
@@ -1054,6 +1045,7 @@
 	hugger.visible_message(SPAN_XENODANGER("A facehugger suddenly emerges out of \the [A]!"), SPAN_XENODANGER("You emerge out of \the [A] and awaken from your slumber. For the Hive!"))
 	playsound(hugger, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
 	hugger.generate_name()
+	hugger.timeofdeath = user.timeofdeath // Keep old death time
 
 /datum/hive_status/proc/update_lesser_drone_limit()
 	lesser_drone_limit = Ceiling(totalXenos.len / 3)
@@ -1121,13 +1113,15 @@
 
 	need_round_end_check = TRUE
 
-/datum/hive_status/corrupted/add_xeno(mob/living/carbon/xenomorph/X)
-	. = ..()
-	X.add_language(LANGUAGE_ENGLISH)
+	var/list/defectors = list()
 
-/datum/hive_status/corrupted/remove_xeno(mob/living/carbon/xenomorph/X, hard)
+/datum/hive_status/corrupted/add_xeno(mob/living/carbon/xenomorph/xeno)
 	. = ..()
-	X.remove_language(LANGUAGE_ENGLISH)
+	xeno.add_language(LANGUAGE_ENGLISH)
+
+/datum/hive_status/corrupted/remove_xeno(mob/living/carbon/xenomorph/xeno, hard)
+	. = ..()
+	xeno.remove_language(LANGUAGE_ENGLISH)
 
 /datum/hive_status/corrupted/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	if(!faction_is_ally(FACTION_MARINE, TRUE))
@@ -1190,6 +1184,7 @@
 	destruction_allowed = XENO_NOBODY
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
+	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
@@ -1204,6 +1199,7 @@
 
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
+	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
@@ -1221,6 +1217,7 @@
 
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
+	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
@@ -1250,6 +1247,7 @@
 
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
+	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
@@ -1304,6 +1302,123 @@
 			return TRUE
 
 	return ..()
+
+/datum/hive_status/corrupted/renegade
+	name = "Renegade Hive"
+	reporting_id = "renegade"
+	hivenumber = XENO_HIVE_RENEGADE
+	prefix = "Renegade "
+	color = "#9c7a4d"
+	ui_color ="#80705c"
+
+	dynamic_evolution = FALSE
+	allow_queen_evolve = FALSE
+	allow_no_queen_evo = TRUE
+	latejoin_burrowed = FALSE
+
+/datum/hive_status/corrupted/renegade/New()
+	. = ..()
+	hive_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0
+	hive_structures_limit[XENO_STRUCTURE_EVOPOD] = 0
+	for(var/faction in FACTION_LIST_HUMANOID) //renegades allied to all humanoids, but it mostly affects structures. Their ability to attack humanoids and other xenos (including of the same hive) depends on iff settings
+		allies[faction] = TRUE
+
+/datum/hive_status/corrupted/renegade/can_spawn_as_hugger(mob/dead/observer/user)
+	to_chat(user, SPAN_WARNING("The [name] cannot support facehuggers."))
+	return FALSE
+
+/datum/hive_status/corrupted/renegade/proc/iff_protection_check(mob/living/carbon/xenomorph/xeno, mob/living/carbon/attempt_harm_mob)
+	if(xeno == attempt_harm_mob)
+		return TRUE //you cannot hurt yourself...
+	if(!xeno.iff_tag)
+		return FALSE //can attack anyone if you don't have iff tag
+	if(isxeno(attempt_harm_mob))
+		var/mob/living/carbon/xenomorph/target_xeno = attempt_harm_mob
+		if(!target_xeno.iff_tag)
+			return FALSE //can attack any xeno who don't have iff tag
+		for(var/faction in xeno.iff_tag.faction_groups)
+			if(faction in target_xeno.iff_tag.faction_groups)
+				return TRUE //cannot attack xenos with same iff setting
+		return FALSE
+	for(var/faction in xeno.iff_tag.faction_groups)
+		if(faction in attempt_harm_mob.faction_group)
+			return TRUE //cannot attack mob if iff is set to at least one of its factions
+	return FALSE
+
+/datum/hive_status/corrupted/renegade/faction_is_ally(faction, ignore_queen_check = TRUE)
+	return ..()
+
+/datum/hive_status/proc/on_stance_change(faction)
+	if(!living_xeno_queen)
+		return
+	if(allies[faction])
+		xeno_message(SPAN_XENOANNOUNCE("Your Queen set up an alliance with [faction]!"), 3, hivenumber)
+	else
+		xeno_message(SPAN_XENOANNOUNCE("Your Queen broke the alliance with [faction]!"), 3, hivenumber)
+
+	for(var/number in GLOB.hive_datum)
+		var/datum/hive_status/target_hive = GLOB.hive_datum[number]
+		if(target_hive.name != faction)
+			continue
+		if(!target_hive.living_xeno_queen && !target_hive.allow_no_queen_actions)
+			return
+		if(allies[faction])
+			xeno_message(SPAN_XENOANNOUNCE("You sense that [name] Queen set up an alliance with us!"), 3, target_hive.hivenumber)
+			return
+
+		xeno_message(SPAN_XENOANNOUNCE("You sense that [name] Queen broke the alliance with us!"), 3, target_hive.hivenumber)
+
+/datum/hive_status/corrupted/on_stance_change(faction)
+	. = ..()
+	if(allies[faction])
+		return
+	if(!(faction in FACTION_LIST_HUMANOID))
+		return
+
+	for(var/mob/living/carbon/xenomorph/xeno in totalXenos) // handle defecting xenos on betrayal
+		if(!xeno.iff_tag)
+			continue
+		if(!(faction in xeno.iff_tag.faction_groups))
+			continue
+		if(xeno in defectors)
+			continue
+		if(xeno.caste_type == XENO_CASTE_QUEEN)
+			continue
+		INVOKE_ASYNC(src, PROC_REF(give_defection_choice), xeno, faction)
+	addtimer(CALLBACK(src, PROC_REF(handle_defectors), faction), 11 SECONDS)
+
+/datum/hive_status/corrupted/proc/give_defection_choice(mob/living/carbon/xenomorph/xeno, faction)
+	if(tgui_alert(xeno, "Your Queen has broken the alliance with the [faction]. The device inside your carapace begins to suppress your connection with the Hive. Do you remove it and stay loyal to her?", "Alliance broken!", list("Stay loyal", "Obey the talls"), 10 SECONDS) == "Obey the talls")
+		if(!xeno.iff_tag)
+			to_chat(xeno, SPAN_XENOWARNING("It's too late now. The device is gone and your service to the Queen continues."))
+			return
+		defectors += xeno
+		xeno.set_hive_and_update(XENO_HIVE_RENEGADE)
+		to_chat(xeno, SPAN_XENOANNOUNCE("You lost the connection with your Hive. Now you have no Queen, only your masters."))
+		to_chat(xeno, SPAN_NOTICE("Your instincts have changed, you seem compelled to protect [english_list(xeno.iff_tag.faction_groups, "no one")]."))
+		return
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the Hive!"))
+	xeno.adjustBruteLoss(50)
+	xeno.iff_tag.forceMove(get_turf(xeno))
+	xeno.iff_tag = null
+
+/datum/hive_status/corrupted/proc/handle_defectors(faction)
+	for(var/mob/living/carbon/xenomorph/xeno in totalXenos)
+		if(!xeno.iff_tag)
+			continue
+		if(xeno in defectors)
+			continue
+		if(!(faction in xeno.iff_tag.faction_groups))
+			continue
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
+		xeno.adjustBruteLoss(50)
+		xeno.iff_tag.forceMove(get_turf(xeno))
+		xeno.iff_tag = null
+	if(!length(defectors))
+		return
+
+	xeno_message(SPAN_XENOANNOUNCE("You sense that [english_list(defectors)] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
+	defectors.Cut()
 
 //Xeno Resin Mark Shit, the very best place for it too :0)
 //Defines at the bottom of this list here will show up at the top in the mark menu

@@ -506,7 +506,9 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno.check_state(TRUE))
 		return
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
+		return
+	if(xeno.action_busy)
 		return
 	if(xeno.layer != XENO_HIDING_LAYER)
 		xeno.layer = XENO_HIDING_LAYER

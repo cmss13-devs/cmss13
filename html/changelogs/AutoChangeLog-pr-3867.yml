@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Added additional lints to dmi/test.py to test for duplicate state names and excessive quantity and added another type path to the missing_icons unit_test."
-  - imageadd: "Renamed and moved some icons around to comply with new testing."

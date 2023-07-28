@@ -51,7 +51,7 @@
 			faction_groups = list()
 	to_chat(programmer, SPAN_NOTICE("You <b>[option]</b> the IFF group data, the IFF group on the tag now reads as: [english_list(faction_groups, "None")]"))
 	if(xeno?.hive.hivenumber == XENO_HIVE_RENEGADE) //it's important to know their IFF settings for renegade
-		to_chat(xeno, SPAN_NOTICE("Your IFF tag settings were changed: [english_list(faction_groups, "None")]. You cannot attack creatures within these settings."))
+		to_chat(xeno, SPAN_NOTICE("Your instincts have changed, you seem compelled to protect [english_list(faction_groups, "no one")]."))
 	return TRUE
 
 /obj/item/iff_tag/pmc_handler

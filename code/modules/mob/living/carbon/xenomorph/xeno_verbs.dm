@@ -27,9 +27,9 @@
 
 	if(hive.hivenumber == XENO_HIVE_RENEGADE) //Renegade's ability to attack someone depends on IFF settings, not on alliance
 		if(!iff_tag)
-			to_chat(src, SPAN_NOTICE("You have no IFF tag. You can attack anyone."))
+			to_chat(src, SPAN_NOTICE("You are not oblidged to protect anyone."))
 			return
-		to_chat(src, SPAN_NOTICE("Your IFF tag settings are: [english_list(iff_tag.faction_groups, "None")]. You cannot attack creatures within these settings."))
+		to_chat(src, SPAN_NOTICE("You seem compelled to protect [english_list(faction_groups, "no one")]."))
 		return
 
 	if((!hive.living_xeno_queen || Check_WO()) && !hive.allow_no_queen_actions) //No Hive status on WO

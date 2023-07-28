@@ -1388,14 +1388,14 @@
 	addtimer(CALLBACK(src, PROC_REF(handle_defectors), faction), 11 SECONDS)
 
 /datum/hive_status/corrupted/proc/give_defection_choice(mob/living/carbon/xenomorph/xeno, faction)
-	if(tgui_alert(xeno, "Your Queen has broken the alliance with [faction]. Your IFF tag begins to suppress your connection with the Hive. Do you wish to remove the tag and stay with your Queen or do you wish to stay loyal to your new masters? You have 10 seconds to decide.", "Choose", list("Stay with the Queen", "Stay with your masters"), 10 SECONDS) == "Stay with your masters")
+	if(tgui_alert(xeno, "Your Queen has broken the alliance with [faction]. The talls made device inside your carapace begins to suppress your connection with the Hive. Do you wish to remove the tag and stay with your Queen or do you wish to stay loyal to your new masters? You have 10 seconds to decide.", "Choose", list("Stay with the Queen", "Stay with your masters"), 10 SECONDS) == "Stay with your masters")
 		if(!xeno.iff_tag)
-			to_chat(xeno, SPAN_XENOWARNING("It's too late now. Your IFF tag is broken and your service to the Queen continues."))
+			to_chat(xeno, SPAN_XENOWARNING("It's too late now. The device is gone and your service to the Queen continues."))
 			return
 		defectors += xeno
 		xeno.set_hive_and_update(XENO_HIVE_RENEGADE)
 		to_chat(xeno, SPAN_XENOANNOUNCE("You lost the connection with your Hive. Now you have no Queen, only your masters."))
-		to_chat(xeno, SPAN_NOTICE("Your IFF tag settings are: [english_list(xeno.iff_tag.faction_groups, "None")]. You cannot attack creatures within these settings."))
+		to_chat(xeno, SPAN_NOTICE("Your instincts have changed, you seem compelled to protect [english_list(faction_groups, "no one")]."))
 		return
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the Hive!"))
 	xeno.adjustBruteLoss(50)
@@ -1417,7 +1417,7 @@
 	if(!length(defectors))
 		return
 
-	xeno_message(SPAN_XENOANNOUNCE("You sense that [defectors.Join(", ")] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("You sense that [english_list(defectors)] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
 	defectors.Cut()
 
 //Xeno Resin Mark Shit, the very best place for it too :0)

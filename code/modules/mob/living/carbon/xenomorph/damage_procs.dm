@@ -30,7 +30,7 @@
 		iff_tag = null
 		user.visible_message(SPAN_NOTICE("[user] removes \the [src]'s IFF tag."), SPAN_NOTICE("You remove \the [src]'s IFF tag."), max_distance = 3)
 		if(hive.hivenumber == XENO_HIVE_RENEGADE) //it's important to know their IFF settings for renegade
-			to_chat(src, SPAN_NOTICE("Your IFF tag was removed. You can now attack anyone."))
+			to_chat(src, SPAN_NOTICE("With the removal of the device, your instincts have returned to normal."))
 		return
 	return ..()
 

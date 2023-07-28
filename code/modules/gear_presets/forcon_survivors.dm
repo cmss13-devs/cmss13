@@ -5,7 +5,7 @@
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
 	rank = JOB_SURVIVOR
-	faction_group = list(FACTION_USCM, FACTION_SURVIVOR,)
+	faction_group = list(FACTION_USCM, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,

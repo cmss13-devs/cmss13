@@ -29,7 +29,7 @@
 		if(!iff_tag)
 			to_chat(src, SPAN_NOTICE("You are not oblidged to protect anyone."))
 			return
-		to_chat(src, SPAN_NOTICE("You seem compelled to protect [english_list(faction_groups, "no one")]."))
+		to_chat(src, SPAN_NOTICE("You seem compelled to protect [english_list(iff_tag.faction_groups, "no one")]."))
 		return
 
 	if((!hive.living_xeno_queen || Check_WO()) && !hive.allow_no_queen_actions) //No Hive status on WO

@@ -10869,6 +10869,12 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/brig/main_office)
+"aJB" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "aJG" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8;
@@ -29002,7 +29008,6 @@
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/no_build{
-	dir = 2;
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/command/airoom)
@@ -29356,6 +29361,31 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
+"cUK" = (
+/obj/structure/closet/crate/trashcart{
+	opened = 1
+	},
+/obj/item/prop/helmetgarb/helmet_nvg/cosmetic{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/prop/helmetgarb/helmet_nvg/cosmetic{
+	pixel_x = 9;
+	pixel_y = -9
+	},
+/obj/item/prop/helmetgarb/helmet_nvg/cosmetic{
+	pixel_y = 4;
+	pixel_x = -6
+	},
+/obj/item/prop/helmetgarb/helmet_nvg/cosmetic{
+	pixel_x = -2;
+	pixel_y = -18
+	},
+/obj/effect/decal/cleanable/cobweb2,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "cVs" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -33710,7 +33740,18 @@
 	},
 /area/almayer/hull/upper_hull/u_a_s)
 "eJg" = (
-/obj/structure/largecrate/random/barrel/red,
+/obj/structure/surface/table/almayer,
+/obj/item/ammo_box/magazine/heap/empty{
+	pixel_y = -5;
+	pixel_x = -6
+	},
+/obj/item/ammo_box/magazine/heap/empty{
+	pixel_x = 4
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
@@ -35543,6 +35584,11 @@
 "fAS" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/effect/decal/strata_decals/grime/grime4,
+/obj/item/ammo_magazine/smg/m39/heap{
+	pixel_x = -8;
+	current_rounds = 0
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -37162,6 +37208,39 @@
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
+"gkF" = (
+/obj/structure/surface/table/almayer,
+/obj/item/prop{
+	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. This one has been expended";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
+	icon_state = "m83a2";
+	item_state = "m83a2";
+	name = "\improper Broken L42A battle rifle";
+	pixel_y = -6;
+	pixel_x = -7
+	},
+/obj/item/prop{
+	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. This one has been expended";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
+	icon_state = "m83a2_folded";
+	item_state = "m83a2_folded";
+	name = "\improper Broken L42A battle rifle";
+	pixel_y = 9;
+	pixel_x = 11
+	},
+/obj/item/prop{
+	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. This one has been expended";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
+	icon_state = "m83a2";
+	item_state = "m83a2";
+	name = "\improper Broken L42A battle rifle";
+	pixel_y = 1;
+	pixel_x = -1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "gkK" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -37399,6 +37478,19 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
+"gsI" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/item/tool/warning_cone{
+	pixel_x = -20;
+	pixel_y = 18
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = 13;
+	pixel_y = 15
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/starboard_hallway)
 "gsL" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -37940,6 +38032,18 @@
 "gCd" = (
 /obj/structure/machinery/light/small{
 	dir = 8
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/structure/prop/invuln{
+	desc = "big pile energy.";
+	icon = 'icons/obj/structures/machinery/artillery.dmi';
+	icon_state = "29";
+	name = "barrel pile";
+	density = 0
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
@@ -46254,7 +46358,29 @@
 	},
 /area/almayer/shipboard/brig/armory)
 "ktB" = (
-/obj/structure/largecrate/random/barrel/white,
+/obj/structure/surface/table/almayer,
+/obj/item/ammo_magazine/rifle/heap{
+	current_rounds = 0;
+	pixel_y = 5;
+	pixel_x = 6
+	},
+/obj/item/ammo_magazine/rifle/heap{
+	current_rounds = 0;
+	pixel_y = 10;
+	pixel_x = -4
+	},
+/obj/item/ammo_magazine/rifle/heap{
+	current_rounds = 0;
+	pixel_x = -12;
+	pixel_y = -13
+	},
+/obj/item/ammo_magazine/rifle/heap{
+	current_rounds = 0;
+	pixel_x = -3;
+	pixel_y = -4
+	},
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
@@ -48087,6 +48213,19 @@
 	icon_state = "orange"
 	},
 /area/almayer/hallways/hangar)
+"llW" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime4,
+/obj/item/ammo_magazine/smg/m39/heap{
+	pixel_y = -1;
+	pixel_x = 6;
+	current_rounds = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "lmk" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -49211,10 +49350,10 @@
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_s)
 "lGO" = (
-/obj/structure/largecrate/random/case/double,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
+/obj/item/frame/rack,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "lHc" = (
@@ -50174,6 +50313,17 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/alpha)
+"miB" = (
+/obj/item/ammo_magazine/rocket/custom{
+	pixel_y = -7
+	},
+/obj/item/large_shrapnel/at_rocket_dud{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_s)
 "miE" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -50197,6 +50347,12 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
+"mja" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_s)
 "mji" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -51562,6 +51718,19 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
+"mPS" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime1{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "mPX" = (
 /turf/open/floor/almayer{
 	icon_state = "orange"
@@ -54413,6 +54582,20 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/brig/processing)
+"oeK" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln{
+	desc = "big pile energy.";
+	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon_state = "cannon_cables";
+	name = "barrel pile";
+	density = 0
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_s)
 "oeL" = (
 /obj/structure/machinery/vending/coffee{
 	density = 0;
@@ -55474,6 +55657,25 @@
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = 32
 	},
+/obj/structure/surface/table/almayer,
+/obj/item/ammo_magazine/rifle/m4ra/heap{
+	current_rounds = 0;
+	pixel_x = 11;
+	pixel_y = -6
+	},
+/obj/item/ammo_magazine/rifle/m4ra/heap{
+	current_rounds = 0
+	},
+/obj/item/ammo_magazine/rifle/m4ra/heap{
+	current_rounds = 0;
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/ammo_magazine/rifle/m4ra/heap{
+	current_rounds = 0;
+	pixel_y = 12;
+	pixel_x = 9
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -55605,6 +55807,29 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
+"oGg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop{
+	desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. The trigger is missing, the barrel is bent, and it no longer appropriately feeds magazines.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
+	icon_state = "m41amk1_e";
+	item_state = "m41amk1";
+	name = "\improper Broken M41A pulse rifle";
+	pixel_y = 7
+	},
+/obj/item/prop{
+	desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. The trigger is missing, the barrel is bent, and it no longer appropriately feeds magazines.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
+	icon_state = "m41amk1_e";
+	item_state = "m41amk1";
+	name = "\improper Broken M41A pulse rifle";
+	pixel_y = -5;
+	pixel_x = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "oGx" = (
 /obj/structure/closet/secure_closet/surgical{
 	pixel_x = 30
@@ -56055,6 +56280,16 @@
 	icon_state = "cargo"
 	},
 /area/almayer/living/tankerbunks)
+"oRb" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime1{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_s)
 "oRj" = (
 /obj/structure/stairs{
 	icon_state = "ramptop"
@@ -57840,6 +58075,14 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/lower_medical_medbay)
+"pLI" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_s)
 "pLW" = (
 /obj/structure/machinery/firealarm{
 	dir = 4;
@@ -60697,6 +60940,12 @@
 	icon_state = "emerald"
 	},
 /area/almayer/squads/charlie)
+"rbi" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_s)
 "rbp" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/almayer{
@@ -63563,7 +63812,20 @@
 	},
 /area/almayer/command/cic)
 "soZ" = (
-/obj/structure/largecrate/random/case/double,
+/obj/structure/surface/table/almayer,
+/obj/item/ammo_box/magazine/heap/empty{
+	pixel_x = -7;
+	pixel_y = 5
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/ammo_box/magazine/heap/empty{
+	pixel_x = 9;
+	pixel_y = -6
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
@@ -65144,6 +65406,27 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
+"tbL" = (
+/obj/structure/surface/table/almayer,
+/obj/item/ammo_magazine/rifle/heap{
+	current_rounds = 0;
+	pixel_x = -3;
+	pixel_y = -4
+	},
+/obj/item/ammo_magazine/rifle/heap{
+	current_rounds = 0
+	},
+/obj/item/ammo_magazine/rifle/heap{
+	current_rounds = 0;
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "tce" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
@@ -65332,6 +65615,58 @@
 	icon_state = "plating"
 	},
 /area/almayer/shipboard/brig/armory)
+"tgr" = (
+/obj/structure/closet/crate/trashcart{
+	opened = 1
+	},
+/obj/item/ammo_magazine/rifle/l42a/heap{
+	current_rounds = 0
+	},
+/obj/item/ammo_magazine/rifle/l42a/heap{
+	current_rounds = 0;
+	pixel_y = -6;
+	pixel_x = 9
+	},
+/obj/item/ammo_magazine/rifle/l42a/heap{
+	current_rounds = 0;
+	pixel_y = 9;
+	pixel_x = 9
+	},
+/obj/item/ammo_magazine/rifle/l42a/heap{
+	current_rounds = 0;
+	pixel_y = 4;
+	pixel_x = -9
+	},
+/obj/item/ammo_magazine/rifle/l42a/heap{
+	current_rounds = 0;
+	pixel_y = 7;
+	pixel_x = -2
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
+"tgR" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/lmg/heap{
+	current_rounds = 0
+	},
+/obj/structure/closet/crate/supply,
+/obj/item/ammo_magazine/rifle/lmg/heap{
+	current_rounds = 0;
+	pixel_x = -10;
+	pixel_y = -4
+	},
+/obj/item/ammo_magazine/rifle/lmg/heap{
+	current_rounds = 0;
+	pixel_x = 4;
+	pixel_y = -7
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "tgS" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/sign/safety/maint{
@@ -68549,6 +68884,28 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_m_s)
+"uAy" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln{
+	desc = "big pile energy.";
+	icon = 'icons/obj/structures/machinery/artillery.dmi';
+	icon_state = "29";
+	name = "barrel pile";
+	density = 0
+	},
+/obj/structure/prop/invuln{
+	desc = "big pile energy.";
+	icon = 'icons/obj/structures/machinery/artillery.dmi';
+	icon_state = "27";
+	name = "barrel pile";
+	density = 0
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_s)
 "uAC" = (
 /obj/item/bedsheet/purple{
 	layer = 3.2
@@ -70094,6 +70451,18 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
+"vhv" = (
+/obj/item/prop{
+	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. This one has been expended";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
+	icon_state = "m83a2_folded";
+	item_state = "m83a2_folded";
+	name = "\improper Broken L42A battle rifle";
+	pixel_y = -7;
+	pixel_x = -1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_s)
 "vhw" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -70105,6 +70474,35 @@
 /obj/structure/closet/firecloset,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
+"vhN" = (
+/obj/structure/surface/table/almayer,
+/obj/item/prop{
+	desc = "Test version of the L42A issued in limited numbers to the Colonial Marines. This one has seen better days. The aiming reticule is bent, the stock is loose and its magazine can't be removed.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
+	icon_state = "l42mk1";
+	item_state = "l42mk1";
+	name = "\improper Broken L42A battle rifle";
+	pixel_y = -14
+	},
+/obj/item/prop{
+	desc = "Test version of the L42A issued in limited numbers to the Colonial Marines. This one has seen better days. The aiming reticule is bent, the stock is loose and its magazine can't be removed.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
+	icon_state = "l42mk1";
+	item_state = "l42mk1";
+	name = "\improper Broken L42A battle rifle";
+	pixel_y = 12;
+	pixel_x = 12
+	},
+/obj/item/prop{
+	desc = "Test version of the L42A issued in limited numbers to the Colonial Marines. This one has seen better days. The aiming reticule is bent, the stock is loose and its magazine can't be removed.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
+	icon_state = "l42mk1";
+	item_state = "l42mk1";
+	name = "\improper Broken L42A battle rifle";
+	pixel_x = -1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_s)
 "vhR" = (
 /obj/structure/flora/pottedplant{
 	desc = "It is made of Fiberbush(tm). It contains asbestos.";
@@ -76895,6 +77293,15 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/living/officer_study)
+"yaB" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime2,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "yaG" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk,
@@ -111016,11 +111423,11 @@ bNz
 dIR
 yky
 hhw
-xnY
-xnY
-aSm
-aLf
-aLf
+miB
+vhN
+tgr
+oeK
+uAy
 soZ
 hhw
 bwd
@@ -111219,12 +111626,12 @@ jQA
 bgF
 kvN
 hhw
-aSm
-aLf
-aSm
-aSm
-aLf
-aSm
+gkF
+vhv
+llW
+tbL
+pLI
+mPS
 hhw
 aLG
 aYO
@@ -111422,14 +111829,14 @@ qoX
 jfm
 lYu
 maw
+yaB
+mja
+jfm
 fAS
-jfm
-jfm
-fAS
-jfm
-jfm
+rbi
+oRb
 bUP
-aem
+gsI
 mUa
 xNB
 bdd
@@ -111625,12 +112032,12 @@ bgH
 bgH
 bPV
 hhw
-aLF
-bPV
+cUK
+aJB
 lGO
 oDu
-bPU
-bPS
+oGg
+tgR
 hhw
 irI
 awb

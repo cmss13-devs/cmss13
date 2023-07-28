@@ -19,7 +19,7 @@ export const WorkingJoe = (props, context) => {
   const PageComponent = PAGES[current_menu]();
 
   return (
-    <Window theme="crtblue" width={780} height={725}>
+    <Window theme="crtblue" width={950} height={725}>
       <Window.Content scrollable>
         <PageComponent />
       </Window.Content>
@@ -44,7 +44,7 @@ const Login = (props, context) => {
       <Box mb="2rem" fontFamily="monospace">
         WY-DOS Executive
       </Box>
-      <Box fontFamily="monospace">Version 12.7.1</Box>
+      <Box fontFamily="monospace">Version 12.8.3</Box>
       <Box fontFamily="monospace">Copyright © 2182, Weyland Yutani Corp.</Box>
 
       <Button
@@ -149,8 +149,8 @@ const MainMenu = (props, context) => {
           )}
           <Stack.Item>
             <Button
-              content="Submit a Maintenance Ticket"
-              tooltip="Report a Maintenance problem to ARES."
+              content="Maintenance Tickets"
+              tooltip="View or Report any maintenance problems."
               icon="comments"
               ml="auto"
               px="2rem"
@@ -197,11 +197,11 @@ const MainMenu = (props, context) => {
             <Stack.Item grow>
               <h3>Task Management</h3>
             </Stack.Item>
-            {ticket_console && (
+            {!!ticket_console && (
               <Stack.Item>
                 <Button
-                  content="Create Access Ticket"
-                  tooltip="Grant temporary visitation access to personnel."
+                  content="Manage Access Tickets"
+                  tooltip="Approve, or deny, temporary visitation access to personnel."
                   icon="user-shield"
                   ml="auto"
                   px="2rem"
@@ -222,7 +222,6 @@ const MainMenu = (props, context) => {
                 width="33vw"
                 bold
                 onClick={() => act('page_maintenance')}
-                disabled={logged_in}
               />
             </Stack.Item>
           </Stack>
@@ -352,10 +351,7 @@ const MaintReports = (props, context) => {
     last_page,
     current_menu,
     maintenance_tickets,
-    temp_maint_name,
-    temp_maint_details,
   } = data;
-
   return (
     <>
       <Section>
@@ -394,7 +390,7 @@ const MaintReports = (props, context) => {
       </Section>
 
       <Section>
-        <h1 align="center">Report Maintenance</h1>
+        <h1 align="center">Maintenance Reports</h1>
         <Flex
           direction="column"
           justify="center"
@@ -422,28 +418,72 @@ const MaintReports = (props, context) => {
             p=".75rem"
             align="center"
             fontSize="1.25rem">
+            <Flex.Item bold width="5rem" shrink="0" mr="1.5rem">
+              ID
+            </Flex.Item>
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
-            <Flex.Item width="15rem" grow bold>
-              Title
+            <Flex.Item width="12rem" bold>
+              Category
             </Flex.Item>
-            <Flex.Item width="35rem" textAlign="left">
+            <Flex.Item width="40rem" bold>
               Details
             </Flex.Item>
           </Flex>
         )}
         {maintenance_tickets.map((ticket, i) => {
+          let view_status = 'Ticket is pending assignment.';
+          let view_icon = 'circle-question';
+          if (ticket.status === 'assigned') {
+            view_status = 'Ticket is assigned.';
+            view_icon = 'circle-plus';
+          } else if (ticket.status === 'rejected') {
+            view_status = 'Ticket has been rejected.';
+            view_icon = 'circle-xmark';
+          } else if (ticket.status === 'cancelled') {
+            view_status = 'Ticket was cancelled by reporter.';
+            view_icon = 'circle-stop';
+          } else if (ticket.status === 'completed') {
+            view_status = 'Ticket has been successfully resolved.';
+            view_icon = 'circle-check';
+          }
+          let can_cancel = 'Yes';
+          if (ticket.submitter !== logged_in) {
+            can_cancel = 'No';
+          } else if (ticket.lock_status === 'CLOSED') {
+            can_cancel = 'No';
+          }
+
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
-              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+              {!!ticket.priority_status && (
+                <Flex.Item width="5rem" shrink="0" mr="1.5rem" bold color="red">
+                  {ticket.id}
+                </Flex.Item>
+              )}
+              {!ticket.priority_status && (
+                <Flex.Item width="5rem" shrink="0" mr="1.5rem" bold>
+                  {ticket.id}
+                </Flex.Item>
+              )}
+              <Flex.Item italic width="6rem" shrink="0" mr="1rem">
                 {ticket.time}
               </Flex.Item>
-              <Flex.Item width="15rem" grow italic>
-                {ticket.title}
+              <Flex.Item width="12rem" mr="1rem">
+                {ticket.category}
               </Flex.Item>
-              <Flex.Item width="35rem" ml="1rem" shrink="0" textAlign="left">
+              <Flex.Item width="40rem" shrink="0" textAlign="left">
                 {ticket.details}
+              </Flex.Item>
+              <Flex.Item width="8rem" ml="1rem">
+                <Button icon={view_icon} tooltip={view_status} />
+                <Button.Confirm
+                  icon="file-circle-xmark"
+                  tooltip="Cancel Ticket"
+                  disabled={can_cancel === 'No'}
+                  onClick={() => act('cancel_ticket', { ticket: ticket.ref })}
+                />
               </Flex.Item>
             </Flex>
           );
@@ -501,13 +541,112 @@ const MaintManagement = (props, context) => {
 
       <Section>
         <h1 align="center">Maintenance Reports Management</h1>
+
+        {!!maintenance_tickets.length && (
+          <Flex
+            mt="2rem"
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem">
+            <Flex.Item bold width="5rem" shrink="0">
+              ID
+            </Flex.Item>
+            <Flex.Item bold width="6rem" shrink="0" ml="1rem">
+              Time
+            </Flex.Item>
+            <Flex.Item width="12rem" bold>
+              Category
+            </Flex.Item>
+            <Flex.Item width="20rem" bold>
+              Details
+            </Flex.Item>
+            <Flex.Item width="10rem" bold>
+              Submit By
+            </Flex.Item>
+            <Flex.Item width="10rem" bold ml="0.5rem">
+              Assigned To
+            </Flex.Item>
+          </Flex>
+        )}
+        {maintenance_tickets.map((ticket, i) => {
+          let view_status = 'Ticket is pending assignment.';
+          let view_icon = 'circle-question';
+          if (ticket.status === 'assigned') {
+            view_status = 'Ticket is assigned.';
+            view_icon = 'circle-plus';
+          } else if (ticket.status === 'rejected') {
+            view_status = 'Ticket has been rejected.';
+            view_icon = 'circle-xmark';
+          } else if (ticket.status === 'cancelled') {
+            view_status = 'Ticket was cancelled by reporter.';
+            view_icon = 'circle-stop';
+          } else if (ticket.status === 'completed') {
+            view_status = 'Ticket has been successfully resolved.';
+            view_icon = 'circle-check';
+          }
+          let can_claim = 'Yes';
+          if (ticket.lock_status === 'CLOSED') {
+            can_claim = 'No';
+          }
+          let can_mark = 'Yes';
+          if (ticket.assignee !== logged_in && ticket.assignee !== null) {
+            can_mark = 'No';
+          } else if (ticket.lock_status === 'CLOSED') {
+            can_mark = 'No';
+          }
+
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              {!!ticket.priority_status && (
+                <Flex.Item width="5rem" shrink="0" bold color="red">
+                  {ticket.id}
+                </Flex.Item>
+              )}
+              {!ticket.priority_status && (
+                <Flex.Item width="5rem" shrink="0" bold>
+                  {ticket.id}
+                </Flex.Item>
+              )}
+              <Flex.Item italic width="6rem" shrink="0" ml="1rem">
+                {ticket.time}
+              </Flex.Item>
+              <Flex.Item width="12rem">{ticket.category}</Flex.Item>
+              <Flex.Item width="20rem" shrink="0" textAlign="left">
+                {ticket.details}
+              </Flex.Item>
+              <Flex.Item width="10rem" shrink="0" textAlign="left">
+                {ticket.submitter}
+              </Flex.Item>
+              <Flex.Item width="10rem" shrink="0" textAlign="left" ml="0.5rem">
+                {ticket.assignee}
+              </Flex.Item>
+              <Flex.Item width="8rem" ml="1rem" direction="column">
+                <Button icon={view_icon} tooltip={view_status} />
+                <Button.Confirm
+                  icon="user-lock"
+                  tooltip="Claim Ticket"
+                  disabled={can_claim === 'No'}
+                  onClick={() => act('claim_ticket', { ticket: ticket.ref })}
+                />
+                <Button.Confirm
+                  icon="user-gear"
+                  tooltip="Mark Ticket"
+                  disabled={can_mark === 'No'}
+                  onClick={() => act('mark_ticket', { ticket: ticket.ref })}
+                />
+              </Flex.Item>
+            </Flex>
+          );
+        })}
       </Section>
     </>
   );
 };
 const AccessRequests = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu } = data;
+  const { logged_in, access_text, last_page, current_menu, access_tickets } =
+    data;
 
   return (
     <>
@@ -548,6 +687,103 @@ const AccessRequests = (props, context) => {
 
       <Section>
         <h1 align="center">Request Access</h1>
+        <Flex
+          direction="column"
+          justify="center"
+          align="center"
+          height="100%"
+          color="darkgrey"
+          fontSize="2rem"
+          mt="-3rem"
+          bold>
+          <Button
+            content="New Report"
+            icon="exclamation-circle"
+            width="30vw"
+            textAlign="center"
+            fontSize="1.5rem"
+            mt="5rem"
+            onClick={() => act('new_report')}
+          />
+        </Flex>
+
+        {!!access_tickets.length && (
+          <Flex
+            mt="2rem"
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem">
+            <Flex.Item bold width="5rem" shrink="0" mr="1.5rem">
+              ID
+            </Flex.Item>
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+              Time
+            </Flex.Item>
+            <Flex.Item width="12rem" bold>
+              Category
+            </Flex.Item>
+            <Flex.Item width="40rem" bold>
+              Details
+            </Flex.Item>
+          </Flex>
+        )}
+        {access_tickets.map((ticket, i) => {
+          let view_status = 'Ticket is pending assignment.';
+          let view_icon = 'circle-question';
+          if (ticket.status === 'assigned') {
+            view_status = 'Ticket is assigned.';
+            view_icon = 'circle-plus';
+          } else if (ticket.status === 'rejected') {
+            view_status = 'Ticket has been rejected.';
+            view_icon = 'circle-xmark';
+          } else if (ticket.status === 'cancelled') {
+            view_status = 'Ticket was cancelled by reporter.';
+            view_icon = 'circle-stop';
+          } else if (ticket.status === 'completed') {
+            view_status = 'Ticket has been successfully resolved.';
+            view_icon = 'circle-check';
+          }
+          let can_cancel = 'Yes';
+          if (ticket.submitter !== logged_in) {
+            can_cancel = 'No';
+          } else if (ticket.lock_status === 'CLOSED') {
+            can_cancel = 'No';
+          }
+
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              {!!ticket.priority_status && (
+                <Flex.Item width="5rem" shrink="0" mr="1.5rem" bold color="red">
+                  {ticket.id}
+                </Flex.Item>
+              )}
+              {!ticket.priority_status && (
+                <Flex.Item width="5rem" shrink="0" mr="1.5rem" bold>
+                  {ticket.id}
+                </Flex.Item>
+              )}
+              <Flex.Item italic width="6rem" shrink="0" mr="1rem">
+                {ticket.time}
+              </Flex.Item>
+              <Flex.Item width="12rem" mr="1rem">
+                {ticket.category}
+              </Flex.Item>
+              <Flex.Item width="40rem" shrink="0" textAlign="left">
+                {ticket.details}
+              </Flex.Item>
+              <Flex.Item width="8rem" ml="1rem">
+                <Button icon={view_icon} tooltip={view_status} />
+                <Button.Confirm
+                  icon="file-circle-xmark"
+                  tooltip="Cancel Ticket"
+                  disabled={can_cancel === 'No'}
+                  onClick={() => act('cancel_ticket', { ticket: ticket.ref })}
+                />
+              </Flex.Item>
+            </Flex>
+          );
+        })}
       </Section>
     </>
   );
@@ -599,9 +835,11 @@ const AccessReturns = (props, context) => {
     </>
   );
 };
+
 const AccessTickets = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu } = data;
+  const { logged_in, access_text, last_page, current_menu, access_tickets } =
+    data;
 
   return (
     <>
@@ -642,6 +880,79 @@ const AccessTickets = (props, context) => {
 
       <Section>
         <h1 align="center">Access Ticket Management</h1>
+
+        {!!access_tickets.length && (
+          <Flex
+            mt="2rem"
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem">
+            <Flex.Item bold width="5rem" shrink="0" mr="1.5rem">
+              ID
+            </Flex.Item>
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+              Time
+            </Flex.Item>
+            <Flex.Item width="12rem" mr="1rem" bold>
+              Category
+            </Flex.Item>
+            <Flex.Item width="30rem" bold>
+              Details
+            </Flex.Item>
+          </Flex>
+        )}
+        {access_tickets.map((ticket, i) => {
+          let can_claim = 'Yes';
+          if (ticket.assignee === logged_in) {
+            can_claim = 'No';
+          } else if (ticket.lock_status === 'CLOSED') {
+            can_claim = 'No';
+          }
+          let can_mark = 'Yes';
+          if (ticket.assignee !== logged_in) {
+            can_mark = 'No';
+          } else if (ticket.lock_status === 'CLOSED') {
+            can_mark = 'No';
+          }
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              {!!ticket.priority_status && (
+                <Flex.Item width="5rem" shrink="0" mr="1.5rem" bold color="red">
+                  {ticket.id}
+                </Flex.Item>
+              )}
+              {!ticket.priority_status && (
+                <Flex.Item width="5rem" shrink="0" mr="1.5rem" bold>
+                  {ticket.id}
+                </Flex.Item>
+              )}
+              <Flex.Item italic width="6rem" shrink="0" mr="1rem">
+                {ticket.time}
+              </Flex.Item>
+              <Flex.Item width="12rem" mr="1rem">
+                {ticket.category}
+              </Flex.Item>
+              <Flex.Item width="30rem" shrink="0" textAlign="left">
+                {ticket.details}
+              </Flex.Item>
+              <Flex.Item ml="1rem">
+                <Button.Confirm
+                  icon="user-lock"
+                  tooltip="Claim Ticket"
+                  disabled={can_claim === 'No'}
+                  onClick={() => act('claim_ticket', { ticket: ticket.ref })}
+                />
+                <Button.Confirm
+                  icon="user-gear"
+                  tooltip="Mark Ticket"
+                  disabled={can_mark === 'No'}
+                  onClick={() => act('mark_ticket', { ticket: ticket.ref })}
+                />
+              </Flex.Item>
+            </Flex>
+          );
+        })}
       </Section>
     </>
   );

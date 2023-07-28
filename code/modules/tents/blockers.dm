@@ -7,6 +7,7 @@
 	invisibility = INVISIBILITY_MAXIMUM
 	density = TRUE
 	opacity = FALSE // Unfortunately this doesn't behave as we'd want with ON_BORDER so we can't make tent opaque
+	throwpass = TRUE // Needs this so xenos can attack through the blocker and hit the tents or people inside
 	/// The tent this blocker relates to, will be destroyed along with it
 	var/obj/structure/tent/linked_tent
 
@@ -36,3 +37,9 @@
 /obj/structure/blocker/tent/get_projectile_hit_boolean(obj/item/projectile/P)
 	. = ..()
 	return FALSE // Always fly through the tent
+
+//Blocks all direction, basically an invisible wall
+/obj/structure/blocker/tent/full_tile
+	flags_atom = NO_FLAGS
+	icon = 'icons/landmarks.dmi'
+	icon_state = "invisible_wall"

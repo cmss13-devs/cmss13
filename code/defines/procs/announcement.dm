@@ -46,7 +46,7 @@
 				targets.Remove(H)
 
 		var/datum/ares_link/link = GLOB.ares_link
-		if(link.interface && !(link.interface.inoperable()))
+		if(ares_can_log())
 			switch(logging)
 				if(ARES_LOG_MAIN)
 					link.log_ares_announcement(title, message)
@@ -99,7 +99,7 @@
 		INVOKE_ASYNC(AI, TYPE_PROC_REF(/mob/living/silicon/decoy/ship_ai, say), message)
 
 	var/datum/ares_link/link = GLOB.ares_link
-	if(link.interface && !(link.interface.inoperable()))
+	if(ares_can_log())
 		switch(logging)
 			if(ARES_LOG_MAIN)
 				link.log_ares_announcement("[MAIN_AI_SYSTEM] Comms Update", message)
@@ -151,7 +151,7 @@
 			targets.Remove(T)
 
 	var/datum/ares_link/link = GLOB.ares_link
-	if(link.interface && !(link.interface.inoperable()))
+	if(ares_can_log())
 		link.log_ares_announcement("[title] Shipwide Update", message)
 
 	announcement_helper(message, title, targets, sound_to_play)

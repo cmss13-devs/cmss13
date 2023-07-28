@@ -1,0 +1,4 @@
+author: "GoldenDarkness55"
+delete-after: True
+changes:
+  - balance: "Player controlled facehuggers apply the same knockout duration as regular ones."

@@ -1022,7 +1022,7 @@
 	for(var/mob_name in banished_ckeys)
 		if(banished_ckeys[mob_name] == user.ckey)
 			to_chat(user, SPAN_WARNING("You are banished from the [name], you may not rejoin unless the Queen re-admits you or dies."))
-			return
+			return FALSE
 
 	update_hugger_limit()
 

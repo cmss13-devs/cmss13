@@ -65,7 +65,7 @@
 		var/mob/living/carbon/xenomorph/xeno = target_mob
 		if(xeno.health < xeno.maxHealth || xeno.plasma_stored < xeno.plasma_max)
 			xeno.gain_health(holder.nutriment_factor * level * 4)
-			xeno.plasma_stored = min(xeno.plasma_stored + holder.nutriment_factor * level * 4, xeno.plasma_max)
+			xeno.gain_plasma(holder.nutriment_factor * level * 4)
 			xeno.flick_heal_overlay(1 SECONDS, "#666d09")
 		xeno.reagents.remove_reagent("nutriment", volume, TRUE) //xenos don't process chems so we don't want it to max at 100u
 		holder.on_delete()

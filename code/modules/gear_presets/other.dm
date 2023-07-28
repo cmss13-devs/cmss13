@@ -912,7 +912,7 @@
 
 /datum/equipment_preset/other/tank/New()
 	. = ..()
-	access = get_antagonist_access()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE)
 
 /datum/equipment_preset/other/tank/load_gear(mob/living/carbon/human/new_human)
 

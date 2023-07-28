@@ -521,11 +521,11 @@
 /obj/structure/machinery/door/airlock/almayer/research
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/structures/doors/medidoor.dmi'
-	req_access = list(ACCESS_MARINE_RESEARCH)
+	req_one_access = list(ACCESS_MARINE_RESEARCH, ACCESS_WY_RESEARCH, ACCESS_WY_EXEC)
 
 /obj/structure/machinery/door/airlock/almayer/research/colony
 	req_access = null
-	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL, ACCESS_WY_RESEARCH)
 
 /obj/structure/machinery/door/airlock/almayer/research/autoname
 	autoname = TRUE
@@ -536,7 +536,7 @@
 
 /obj/structure/machinery/door/airlock/almayer/research/reinforced/colony
 	req_access = null
-	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL, ACCESS_WY_RESEARCH)
 
 /obj/structure/machinery/door/airlock/almayer/research/glass
 	name = "\improper Research Airlock"

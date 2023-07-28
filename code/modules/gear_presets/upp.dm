@@ -7,7 +7,7 @@
 
 /datum/equipment_preset/upp/New()
 	. = ..()
-	access = get_antagonist_access()
+	access = get_access(ACCESS_LIST_UPP_ALL)
 
 /datum/equipment_preset/upp/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(60;MALE,40;FEMALE)

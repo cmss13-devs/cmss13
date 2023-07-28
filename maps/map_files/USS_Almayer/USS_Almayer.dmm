@@ -9295,7 +9295,7 @@
 	id = "containmentlockdown_S";
 	name = "Containment Lockdown";
 	pixel_y = 28;
-	req_one_access_txt = "19;28"
+	req_one_access_txt = "28"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -35058,7 +35058,7 @@
 	name = "Containment Lockdown";
 	pixel_x = 29;
 	pixel_y = 3;
-	req_one_access_txt = "19;28"
+	req_one_access_txt = "28"
 	},
 /obj/structure/window/reinforced{
 	dir = 8;

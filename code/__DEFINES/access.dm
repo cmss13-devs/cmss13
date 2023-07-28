@@ -173,6 +173,8 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 
 ///Generic/basic access to Wey-Yu stuff
 #define ACCESS_LIST_WY_BASE "Wey-Yu (Basic)"
+///Wey-Yu Corp Security access.
+#define ACCESS_LIST_WY_GOON "Wey-Yu (Goons)"
 ///Wey-Yu PMCs access.
 #define ACCESS_LIST_WY_PMC "Wey-Yu (PMC)"
 ///Access levels for WY senior leadership
@@ -186,3 +188,9 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_LIST_CIVIL_LIAISON "Colonial (Liaison)"
 ///The access used by delivery ERT (Pizza/Souto)
 #define ACCESS_LIST_DELIVERY "Delivery"
+
+///All access levels associated with UPP
+#define ACCESS_LIST_UPP_ALL "UPP (ALL)"
+
+///All access levels associated with CLF
+#define ACCESS_LIST_CLF_ALL "CLF (ALL)"

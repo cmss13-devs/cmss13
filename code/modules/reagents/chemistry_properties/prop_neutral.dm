@@ -61,8 +61,12 @@
 		M.nutrition += holder.nutriment_factor * level
 
 /datum/chem_property/neutral/nutritious/reaction_mob(mob/target_mob, method=TOUCH, volume, potency)
+	if(target_mob.stat == DEAD)
+		return
+
 	if(method == INGEST && isxeno(target_mob))
 		var/mob/living/carbon/xenomorph/xeno = target_mob
+		if(xeno.stat == DEAD)
 		if(xeno.health < xeno.maxHealth || xeno.plasma_stored < xeno.plasma_max)
 			xeno.gain_health(holder.nutriment_factor * level * 4)
 			xeno.gain_plasma(holder.nutriment_factor * level * 4)

@@ -65,12 +65,14 @@
 	)
 
 /mob/proc/track_mob_death(datum/cause_data/cause_data, turf/death_loc)
-	if(!mind || statistic_exempt)
-		return
-
 	if(cause_data && !istype(cause_data))
 		stack_trace("track_mob_death called with string cause ([cause_data]) instead of datum")
 		cause_data = create_cause_data(cause_data)
+
+	attack_log += "\[[time_stamp()]\] died to [cause_data.cause_name]"
+
+	if(!mind || statistic_exempt)
+		return
 
 	var/datum/entity/statistic/death/new_death = DB_ENTITY(/datum/entity/statistic/death)
 	var/datum/entity/player/player_entity = get_player_from_key(mind.ckey)

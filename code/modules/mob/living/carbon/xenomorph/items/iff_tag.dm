@@ -20,7 +20,7 @@
 		xeno.iff_tag = src
 		injector.drop_inv_item_to_loc(src, xeno)
 		if(xeno.hive.hivenumber == XENO_HIVE_RENEGADE) //it's important to know their IFF settings for renegade
-			to_chat(xeno, SPAN_NOTICE("With the insertion of the device inside your carapace your instincts have changed, you seem compelled to protect [english_list(faction_groups, "no one")]."))
+			to_chat(xeno, SPAN_NOTICE("With the insertion of the device into your carapace, your instincts have changed compelling you to protect [english_list(faction_groups, "no one")]."))
 		return
 	return ..()
 

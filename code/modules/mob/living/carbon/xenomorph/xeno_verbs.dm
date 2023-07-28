@@ -27,7 +27,7 @@
 
 	if(hive.hivenumber == XENO_HIVE_RENEGADE) //Renegade's ability to attack someone depends on IFF settings, not on alliance
 		if(!iff_tag)
-			to_chat(src, SPAN_NOTICE("You are not oblidged to protect anyone."))
+			to_chat(src, SPAN_NOTICE("You are not obligated to protect anyone."))
 			return
 		to_chat(src, SPAN_NOTICE("You seem compelled to protect [english_list(iff_tag.faction_groups, "no one")]."))
 		return

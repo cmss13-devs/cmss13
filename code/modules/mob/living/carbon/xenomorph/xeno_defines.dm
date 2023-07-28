@@ -1388,7 +1388,7 @@
 	addtimer(CALLBACK(src, PROC_REF(handle_defectors), faction), 11 SECONDS)
 
 /datum/hive_status/corrupted/proc/give_defection_choice(mob/living/carbon/xenomorph/xeno, faction)
-	if(tgui_alert(xeno, "Your Queen has broken the alliance with [faction]. The talls made device inside your carapace begins to suppress your connection with the Hive. Do you wish to remove the tag and stay with your Queen or do you wish to stay loyal to your new masters? You have 10 seconds to decide.", "Choose", list("Stay with the Queen", "Stay with your masters"), 10 SECONDS) == "Stay with your masters")
+	if(tgui_alert(xeno, "Your Queen has broken the alliance with [faction]. The device inside your carapace begins to suppress your connection with the Hive. Do you wish to remove the tag and stay with your Queen or do you wish to stay loyal to your new masters? You have 10 seconds to decide.", "Choose", list("Stay with the Queen", "Stay with your masters"), 10 SECONDS) == "Stay with your masters")
 		if(!xeno.iff_tag)
 			to_chat(xeno, SPAN_XENOWARNING("It's too late now. The device is gone and your service to the Queen continues."))
 			return

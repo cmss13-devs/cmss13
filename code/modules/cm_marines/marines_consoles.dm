@@ -109,7 +109,7 @@
 								<u>Access:</u><br>
 								"}
 
-					var/known_access_rights = get_all_main_access()
+					var/known_access_rights = get_access(ACCESS_LIST_MARINE_ALL)
 					for(var/A in target_id_card.access)
 						if(A in known_access_rights)
 							contents += "  [get_access_desc(A)]"
@@ -205,7 +205,7 @@
 						visible_message("[SPAN_BOLD("[src]")] states, \"DATA ERROR: Can not find next entry in database: [target]\"")
 						return
 					new_access = job.get_access()
-				target_id_card.access -= get_access(ACCESS_LIST_WY_ALL) + get_all_main_access()
+				target_id_card.access -= get_access(ACCESS_LIST_WY_ALL) + get_access(ACCESS_LIST_MARINE_MAIN)
 				target_id_card.access |= new_access
 				target_id_card.assignment = target
 				target_id_card.rank = target

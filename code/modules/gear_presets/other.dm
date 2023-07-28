@@ -38,7 +38,7 @@
 
 /datum/equipment_preset/other/freelancer/New()
 	. = ..()
-	access = get_all_main_access()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) //ACCESS_COME_BACK_TO_ME
 
 /datum/equipment_preset/other/freelancer/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(60;MALE,40;FEMALE)
@@ -247,7 +247,7 @@
 
 /datum/equipment_preset/other/elite_merc/New()
 	. = ..()
-	access = get_all_main_access()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) //ACCESS_COME_BACK_TO_ME
 
 /datum/equipment_preset/other/elite_merc/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(70;MALE,30;FEMALE)
@@ -512,7 +512,7 @@
 
 /datum/equipment_preset/other/business_person/New()
 	. = ..()
-	access = get_all_main_access()
+	access = get_access(ACCESS_LIST_CIVIL_LIAISON)
 
 /datum/equipment_preset/other/business_person/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels

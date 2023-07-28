@@ -278,14 +278,6 @@
 				ACCESS_UPP_SENIOR_LEAD,
 			) + get_access(ACCESS_LIST_COLONIAL_ALL) + get_access(ACCESS_LIST_EMERGENCY_RESPONSE)
 
-///Grants standard access for all factions, does not include high restrictions like COs office.
-/proc/get_all_main_access()
-	return get_antagonist_access() + get_access(ACCESS_LIST_COLONIAL_ALL) + get_access(ACCESS_LIST_WY_ALL)
-
-///CLF & UPP, UPP Commandos have global.
-/proc/get_antagonist_access()
-	return get_access(ACCESS_LIST_MARINE_MAIN) + list(ACCESS_ILLEGAL_PIRATE)
-
 /proc/get_region_accesses(code)
 	switch(code)
 		if(0)//Everything

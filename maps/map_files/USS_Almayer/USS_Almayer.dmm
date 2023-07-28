@@ -4893,16 +4893,16 @@
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "apR" = (
-/obj/structure/pipes/vents/pump{
-	name = "Secure Air Vent";
-	welded = 1
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
 	},
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
+	},
+/obj/structure/pipes/vents/pump/no_boom{
+	welded = 1;
+	name = "Secure Reinforced Air Vent"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -5252,7 +5252,6 @@
 	name = "\improper Containment Cell 1";
 	unacidable = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -5265,12 +5264,13 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
 /area/almayer/medical/containment/cell)
 "aqS" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -7503,7 +7503,7 @@
 	},
 /area/almayer/medical/hydroponics)
 "awR" = (
-/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -28000,7 +28000,7 @@
 	},
 /area/almayer/hull/upper_hull/u_a_s)
 "coJ" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 10
 	},
 /turf/open/floor/almayer{
@@ -29022,7 +29022,6 @@
 	pixel_x = 16;
 	pixel_y = 16
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -29041,6 +29040,7 @@
 	pixel_y = -6;
 	req_one_access_txt = "19;28"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -29253,11 +29253,11 @@
 	},
 /area/almayer/engineering/upper_engineering/starboard)
 "cQo" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 5
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -32897,7 +32897,7 @@
 	},
 /area/almayer/engineering/port_atmos)
 "eqD" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 9
 	},
 /turf/open/floor/almayer/research/containment/floor2{
@@ -39695,7 +39695,6 @@
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
 "hqh" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_x = 1;
@@ -39705,6 +39704,7 @@
 	icon_state = "NW-out";
 	pixel_y = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer/research/containment/entrance,
 /area/almayer/medical/containment/cell)
 "hqs" = (
@@ -42168,9 +42168,6 @@
 	},
 /area/almayer/engineering/laundry)
 "iwJ" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
 	pixel_y = -1
@@ -42178,6 +42175,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
 	},
 /turf/open/floor/almayer/research/containment/entrance{
 	dir = 8
@@ -42346,10 +42346,10 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "iAz" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "sterile_green_side"
@@ -44051,18 +44051,17 @@
 	},
 /area/almayer/shipboard/brig/perma)
 "jlA" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/containment)
 "jlG" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_x = 1;
@@ -44072,6 +44071,7 @@
 	icon_state = "SW-out";
 	pixel_y = -1
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer/research/containment/entrance,
 /area/almayer/medical/containment/cell)
 "jlN" = (
@@ -45028,9 +45028,6 @@
 	id = "Containment Cell 3";
 	name = "\improper Containment Cell 3"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -45042,6 +45039,9 @@
 	dir = 4;
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -45726,11 +45726,11 @@
 	},
 /area/almayer/command/airoom)
 "kbJ" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side"
@@ -46836,7 +46836,6 @@
 	},
 /area/almayer/hallways/hangar)
 "kCE" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_x = 1;
@@ -46846,6 +46845,7 @@
 	icon_state = "NW-out";
 	pixel_y = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -46884,9 +46884,6 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "kDk" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_x = 1;
@@ -46896,6 +46893,9 @@
 	icon_state = "NE-out";
 	pixel_x = 1;
 	pixel_y = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 6
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -47033,7 +47033,7 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "kGQ" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer/research/containment/corner_var1{
@@ -48418,6 +48418,9 @@
 "lmz" = (
 /turf/closed/wall/almayer/white/hull,
 /area/space)
+"lmK" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/command/securestorage)
 "lmW" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/mirror{
@@ -50752,7 +50755,6 @@
 	},
 /area/almayer/living/briefing)
 "mnW" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/surface/table/almayer,
 /obj/item/device/reagent_scanner{
 	pixel_x = -8;
@@ -50772,6 +50774,7 @@
 	pixel_x = 7;
 	pixel_y = 7
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -52342,7 +52345,7 @@
 /turf/open/floor/carpet,
 /area/almayer/command/cichallway)
 "mWW" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 10
 	},
 /turf/open/floor/almayer/research/containment/floor2{
@@ -53121,7 +53124,6 @@
 /turf/open/floor/plating,
 /area/almayer/engineering/starboard_atmos)
 "npt" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_x = 1;
@@ -53131,6 +53133,7 @@
 	icon_state = "SW-out";
 	pixel_y = -1
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -53254,6 +53257,9 @@
 	icon_state = "green"
 	},
 /area/almayer/squads/req)
+"ntj" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/command/computerlab)
 "ntm" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = -17;
@@ -53402,7 +53408,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
 "nwi" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer/research/containment/corner{
@@ -54301,7 +54307,6 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "nPf" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/computer/cameras/almayer/containment{
 	dir = 8;
 	pixel_x = -4;
@@ -54319,6 +54324,7 @@
 	pixel_y = -4;
 	req_one_access_txt = "19;28"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -60758,7 +60764,6 @@
 	},
 /area/almayer/hallways/port_hallway)
 "qLi" = (
-/obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_x = 1;
@@ -60769,6 +60774,7 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -65572,7 +65578,7 @@
 	},
 /area/almayer/medical/containment/cell)
 "sXd" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -65842,9 +65848,6 @@
 	id = "Containment Cell 2";
 	name = "\improper Containment Cell 2"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -65856,6 +65859,9 @@
 	dir = 4;
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -72933,7 +72939,6 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "vYz" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/glass/beaker{
 	pixel_x = 8
@@ -72955,6 +72960,7 @@
 	pixel_x = -1;
 	pixel_y = 9
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -73930,7 +73936,7 @@
 	},
 /area/almayer/hallways/hangar)
 "wse" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -74708,9 +74714,9 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south2)
 "wLy" = (
-/obj/structure/pipes/vents/pump{
-	name = "Secure Air Vent";
-	welded = 1
+/obj/structure/pipes/vents/pump/no_boom{
+	welded = 1;
+	name = "Secure Reinforced Air Vent"
 	},
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 1
@@ -74760,7 +74766,7 @@
 	},
 /area/almayer/living/grunt_rnr)
 "wLN" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -76357,7 +76363,6 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
@@ -76369,6 +76374,7 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -108366,7 +108372,7 @@ vOy
 vOy
 wMO
 wky
-ajl
+sqf
 hon
 ajt
 mce
@@ -108569,7 +108575,7 @@ vOy
 ayX
 kXw
 pxo
-ajl
+sqf
 kHT
 pjM
 aim
@@ -108772,7 +108778,7 @@ vOy
 niL
 kXw
 pxo
-ajl
+sqf
 atL
 bkQ
 atL
@@ -109584,7 +109590,7 @@ vOy
 vOy
 mFq
 vqW
-ajl
+sqf
 ybf
 aii
 avj
@@ -117688,16 +117694,16 @@ adO
 aEp
 xTt
 aEp
-ioU
-ioU
-ioU
-ioU
-ioU
-aHq
-aHq
-aHq
-aHq
-aHq
+lmK
+lmK
+lmK
+lmK
+lmK
+ntj
+ntj
+ntj
+ntj
+ntj
 aHq
 cnH
 kzk

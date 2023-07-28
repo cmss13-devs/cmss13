@@ -53,7 +53,7 @@
 			if(NOTE_YAUTJA)
 				color = "#114e11"
 
-		dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i> on <i><font color=blue>[N.date] (ID: [N.round_id])</i></font> "
+		dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i> on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		dat += "<br><br>"
 
 	dat += "<br>"
@@ -168,7 +168,7 @@
 			continue
 		var/admin_ckey = N.admin_ckey
 
-		dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i> on <i><font color=blue>[N.date] (ID: [N.round_id])</i></font> "
+		dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i> on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		///Can remove notes from anyone other than yourself, unless you're the host. So long as you have deletion access anyway.
 		if((can_del && target != get_player_from_key(key)) || ishost(usr))
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];remove_wl_info=[key];remove_index=[N.id]'>Remove</A>"

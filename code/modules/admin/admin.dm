@@ -89,7 +89,7 @@
 		if(N.is_ban)
 			var/time_d = N.ban_time ? "Banned for [N.ban_time] minutes | " : ""
 			color = "#880000" //Removed confidential check because we can't make confidential bans
-			dat += "<font color=[color]>[time_d][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] (ID: [N.round_id])</i></font> "
+			dat += "<font color=[color]>[time_d][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		else
 			if(N.is_confidential)
 				color = "#AA0055"
@@ -102,7 +102,7 @@
 			else if(N.note_category == NOTE_YAUTJA)
 				color = "#114e11"
 
-			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] (ID: [N.round_id])</i></font> "
+			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		if(admin_ckey == usr.ckey || admin_ckey == "Adminbot" || ishost(usr))
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];remove_player_info=[key];remove_index=[N.id]'>Remove</A>"
 

@@ -1,9 +1,11 @@
+#define NOTE_ROUND_ID(note_entity) note_entity.round_id ? "(ID: [note_entity.round_id])" : ""
+
 /datum/entity/player_note
 	var/player_id
 	var/admin_id
 	var/text
 	var/date
-	var/round_id = "N/A"
+	var/round_id
 	var/is_ban = FALSE
 	var/ban_time
 	var/is_confidential = FALSE

@@ -164,7 +164,7 @@
 		if(!hive_status.hive_location)
 			addtimer(CALLBACK(bound_xeno.hive, TYPE_PROC_REF(/datum/hive_status, respawn_on_turf), bound_xeno.client, spawning_turf), 0.5 SECONDS)
 		else
-			addtimer(CALLBACK(bound_xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), bound_xeno.client, spawning_turf), 5 SECONDS)
+			addtimer(CALLBACK(bound_xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), bound_xeno.client), 5 SECONDS)
 	bound_xeno.gib()
 
 /mob/living/carbon/xenomorph/runner/ventcrawl_carry()

@@ -63,10 +63,12 @@
 					door_control.add_door(air, "port")
 				if("aft_door")
 					door_control.add_door(air, "aft")
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(handle_dir_change))
 
 /obj/docking_port/mobile/marine_dropship/Destroy(force)
 	. = ..()
 	qdel(door_control)
+	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 
 /obj/docking_port/mobile/marine_dropship/proc/control_doors(action, direction, force, asynchronous = TRUE)
 	// its been locked down by the queen
@@ -81,13 +83,21 @@
 	. = ..()
 	control_doors("force-lock-launch", "all", force=TRUE, asynchronous = FALSE)
 
+/obj/docking_port/mobile/marine_dropship/proc/on_dir_change(datum/source, old_dir, new_dir)
+	SIGNAL_HANDLER
+	for(var/place in shuttle_areas)
+		for(var/obj/structure/machinery/door/air in place)
+			air.handle_multidoor()
+
 /obj/docking_port/mobile/marine_dropship/alamo
 	name = "Alamo"
 	id = DROPSHIP_ALAMO
+	preferred_direction = WEST
 
 /obj/docking_port/mobile/marine_dropship/normandy
 	name = "Normandy"
 	id = DROPSHIP_NORMANDY
+	preferred_direction = EAST
 
 /obj/docking_port/mobile/marine_dropship/check()
 	. = ..()

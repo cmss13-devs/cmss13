@@ -696,7 +696,8 @@
 /obj/structure/machinery/door/airlock/hatch/cockpit/two{
 	req_access = null;
 	req_access_txt = "22";
-	req_one_access = null
+	req_one_access = null;
+	dir = 1
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/shuttle/dropship{

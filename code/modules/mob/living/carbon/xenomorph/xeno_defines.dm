@@ -947,9 +947,8 @@
 	SPAN_XENOANNOUNCE("The hive has no core! You manage to emerge from your old husk as a larva!"))
 	msg_admin_niche("[key_name(new_xeno)] burrowed out from \a [spawning_turf]. [ADMIN_JMP(spawning_turf)]")
 	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
-	if(new_xeno.client)
-		if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
-			window_flash(new_xeno.client)
+	if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
+		window_flash(new_xeno.client)
 
 	hive_ui.update_burrowed_larva()
 

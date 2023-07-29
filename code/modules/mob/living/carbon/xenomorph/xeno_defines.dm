@@ -927,12 +927,33 @@
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 
-/datum/hive_status/proc/free_respawn(client/C)
+/datum/hive_status/proc/free_respawn(client/C, turf/spawning_turf)
 	stored_larva++
 	if(!hive_location || !hive_location.spawn_burrowed_larva(C.mob))
 		stored_larva--
+		respawn_on_turf(C, spawning_turf)
 	else
 		hive_ui.update_burrowed_larva()
+
+/datum/hive_status/proc/respawn_on_turf(client/C, turf/spawning_turf)
+	var/mob/living/carbon/xenomorph/larva/new_xeno = spawn_hivenumber_larva(spawning_turf, hivenumber)
+	if(isnull(new_xeno))
+		return FALSE
+
+	if(!SSticker.mode.transfer_xeno(C.mob, new_xeno))
+		qdel(new_xeno)
+		return FALSE
+
+	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of \the [spawning_turf]!"),
+	SPAN_XENODANGER("You burrow out of \the [spawning_turf] and awaken from your slumber. For the Hive!"))
+	msg_admin_niche("[key_name(new_xeno)] burrowed out from \a [spawning_turf]. [ADMIN_JMP(spawning_turf)]")
+	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
+	to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))
+	if(new_xeno.client)
+		if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
+			window_flash(new_xeno.client)
+
+	hive_ui.update_burrowed_larva()
 
 /datum/hive_status/proc/do_buried_larva_spawn(mob/xeno_candidate)
 	var/spawning_area

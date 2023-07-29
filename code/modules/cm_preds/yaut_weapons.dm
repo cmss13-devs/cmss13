@@ -216,11 +216,20 @@
 		xenomorph.interference = 15
 
 	if(prob(15))
-		user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
-		user.spin(5, 1)
-		..() //Do it again! CRIT! This will be replaced by a bleed effect.
+		if(isxeno(target))
+			user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
+			user.spin(5, 1)
+			..()
+			return
 
-	return
+		if(ishuman(target))
+			user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to carve a deep cut on your opponent!"))
+			user.spin(5, 1)
+			var/mob/living/carbon/human/human_target = target
+			var/obj/limb/target_limb = human_target.get_limb(check_zone(user.zone_selected))
+			var/datum/wound/new_wound = target_limb.createwound(CUT, (force / 2))
+			target_limb.add_bleeding(new_wound, FALSE, 10)
+			return
 
 /obj/item/weapon/yautja/scythe/alt
 	name = "double war scythe"

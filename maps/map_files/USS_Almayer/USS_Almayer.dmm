@@ -59459,7 +59459,9 @@
 	},
 /area/almayer/hull/lower_hull)
 "qif" = (
-/obj/structure/sign/dartboard,
+/obj/structure/sign/dartboard{
+	icon = d
+	},
 /turf/closed/wall/almayer,
 /area/almayer/hallways/hangar)
 "qim" = (
@@ -75281,7 +75283,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "wXv" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/prop/invuln{
+	icon = 'icons/obj/structures/props/props.dmi';
+	icon_state = "joey";
+	desc = "A defunct Seegson-brand Working Joe lifted from deep storage by a crew of marines after the last shore leave. Attempts have been made to modify the janitorial synthetic to serve as a crude bartender, but with little success.";
+	name = "Workin' Joey"
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

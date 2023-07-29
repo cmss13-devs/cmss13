@@ -217,9 +217,9 @@
 					picked = candidates[1]
 					message_alien_candidates(candidates, dequeued = 1)
 				else
-					// Make up to 10 attempts from the queue for an unnested host
-					// At 10s per candidate, for 11 candidates (facehugger is the +1) this means we may have delayed an unnested autoburst up to 110 seconds
-					for(var/i in 1 to min(10, length(candidates)))
+					// Make up to 5 attempts from the queue for an unnested host
+					// At 10s per candidate, for 6 candidates (facehugger is the +1) this means we may have delayed an unnested autoburst up to 60 seconds
+					for(var/i in 1 to min(5, length(candidates)))
 						var/mob/dead/observer/cur_candidate = candidates[i]
 						if(!cur_candidate?.client) // Make sure they are still a valid candidate since tgui_alerts may have delayed us to this point
 							continue

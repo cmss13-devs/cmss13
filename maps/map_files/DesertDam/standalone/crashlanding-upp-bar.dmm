@@ -341,13 +341,6 @@
 	icon_state = "cement_sunbleached13"
 	},
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"fW" = (
-/obj/structure/sink,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
-/area/desert_dam/building/bar/bar_restroom)
 "ga" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
@@ -659,14 +652,6 @@
 "kD" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"kF" = (
-/obj/structure/machinery/door_control{
-	id = "dam_checkpoint_west";
-	name = "Checkpoint Lockdown"
-	},
-/obj/structure/surface/table/reinforced,
-/turf/open/floor/prison,
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "kM" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_2";
@@ -682,19 +667,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/desert_dam/building/bar/backroom)
-"lc" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "red"
-	},
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
-"lh" = (
-/obj/structure/surface/rack,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "red"
-	},
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "ln" = (
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/bar_valley_dam)
@@ -707,13 +679,6 @@
 	icon_state = "cement_sunbleached4"
 	},
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"lH" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 1;
-	name = "\improper Security Checkpoint"
-	},
-/turf/open/floor/prison,
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "lT" = (
 /turf/open/desert/dirt{
 	dir = 8;
@@ -784,11 +749,6 @@
 	icon_state = "mars_dirt_5"
 	},
 /area/desert_dam/building/bar/bar_restroom)
-"nj" = (
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "nk" = (
 /turf/closed/shuttle/ert{
 	icon_state = "T3";
@@ -796,15 +756,6 @@
 	opacity = 0
 	},
 /area/desert_dam/building/bar/bar)
-"no" = (
-/obj/structure/closet/secure_closet/security,
-/obj/item/clothing/suit/armor/vest/security,
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "np" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /obj/item/ammo_casing/bullet,
@@ -1037,6 +988,14 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"rm" = (
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	pixel_x = -30;
+	start_charge = 0
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
 "rR" = (
 /obj/structure/prop/dam/boulder/boulder1,
 /turf/open/desert/dirt{
@@ -1157,12 +1116,6 @@
 	name = "Fulcrum"
 	},
 /area/desert_dam/building/bar/bar)
-"tQ" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "tR" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/plating,
@@ -1425,11 +1378,8 @@
 	},
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "xT" = (
-/turf/open/desert/dirt{
-	dir = 6;
-	icon_state = "desert_transition_edge1"
-	},
-/area/desert_dam/exterior/valley/valley_hydro)
+/turf/template_noop,
+/area/template_noop)
 "xX" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/desert/rock,
@@ -1478,10 +1428,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/desert_dam/building/bar/bar)
-"yp" = (
-/obj/structure/flora/grass/desert/lightgrass_5,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_hydro)
 "ys" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 1
@@ -1643,24 +1589,6 @@
 	opacity = 0
 	},
 /area/desert_dam/building/bar/bar)
-"AY" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/door/window/eastleft{
-	dir = 8;
-	name = "Security Desk"
-	},
-/obj/structure/machinery/door/window/brigdoor/westleft{
-	dir = 4;
-	icon_state = "leftsecure";
-	id = "brg"
-	},
-/obj/item/paper_bin,
-/obj/item/tool/pen/blue{
-	pixel_x = -6
-	},
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "Bj" = (
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
@@ -1742,11 +1670,6 @@
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
-"BV" = (
-/turf/open/desert/dirt{
-	icon_state = "desert_transition_edge1"
-	},
-/area/desert_dam/exterior/valley/valley_hydro)
 "BW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1795,15 +1718,6 @@
 	icon_state = "rasputin3"
 	},
 /area/desert_dam/building/bar/bar)
-"Cu" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "red"
-	},
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "Cx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/sand_overlay/sand1{
@@ -1997,12 +1911,6 @@
 	opacity = 0
 	},
 /area/desert_dam/building/bar/bar)
-"EU" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "redcorner"
-	},
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "EW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -2015,13 +1923,6 @@
 /obj/structure/flora/tree/joshua,
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
-"Fb" = (
-/obj/structure/surface/rack,
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/prison{
-	icon_state = "redcorner"
-	},
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "Fd" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -2054,12 +1955,6 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"Fw" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Security Checkpoint"
-	},
-/turf/open/floor/prison,
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "FB" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 4
@@ -2158,9 +2053,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/desert_dam/building/bar/bar)
-"HD" = (
-/turf/closed/wall/rock/orange,
-/area/desert_dam/exterior/rock)
 "HH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -2208,10 +2100,6 @@
 	icon_state = "rasputin15"
 	},
 /area/desert_dam/building/bar/bar)
-"IP" = (
-/obj/structure/flora/grass/desert/lightgrass_2,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_hydro)
 "IU" = (
 /obj/item/tool/shovel,
 /turf/open/mars{
@@ -2393,17 +2281,6 @@
 /obj/structure/machinery/blackbox_recorder,
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
-"MH" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/cameras{
-	name = "Security Cameras - Operations";
-	network = list("chigusa_1")
-	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "red"
-	},
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "MM" = (
 /obj/structure/machinery/light/double{
 	dir = 4;
@@ -2473,29 +2350,6 @@
 	opacity = 0
 	},
 /area/desert_dam/building/bar/bar)
-"NP" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_x = -7;
-	pixel_y = 35
-	},
-/turf/closed/wall/rock/orange,
-/area/desert_dam/exterior/rock)
-"Ob" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/door/window/eastleft{
-	dir = 8;
-	name = "Security Desk"
-	},
-/obj/structure/machinery/door/window/brigdoor/westleft{
-	dir = 4;
-	icon_state = "leftsecure";
-	id = "brg"
-	},
-/obj/item/tool/stamp,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "Oe" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 4
@@ -2586,15 +2440,6 @@
 	icon_state = "floor_plate"
 	},
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
-"Px" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "PH" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -2657,14 +2502,6 @@
 	icon_state = "freezerfloor"
 	},
 /area/desert_dam/building/bar/bar_restroom)
-"Qh" = (
-/obj/structure/filingcabinet,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "Qk" = (
 /obj/item/ammo_magazine/rifle/type71/heap{
 	current_rounds = 0
@@ -2745,9 +2582,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/desert_dam/building/bar/bar)
-"Ry" = (
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_hydro)
 "RU" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
@@ -3168,9 +3002,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"XD" = (
-/turf/open/floor/prison,
-/area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "XF" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8
@@ -3311,36 +3142,36 @@ iy
 iy
 iy
 iy
-HD
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
+xT
 VT
 vq
 vn
 TR
 DE
 VT
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 xT
 "}
 (2,1,1) = {"
@@ -3349,37 +3180,37 @@ sO
 Bj
 SF
 iy
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
 mV
 YZ
-fW
+TR
 TR
 hT
 TR
 cI
-NP
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-Ry
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (3,1,1) = {"
 iy
@@ -3399,25 +3230,25 @@ DZ
 zm
 eh
 Dt
-NP
-HD
+xT
+xT
 Fa
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-IP
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (4,1,1) = {"
 iy
@@ -3426,7 +3257,7 @@ Ek
 zT
 iy
 Pd
-Xw
+rm
 qS
 Yq
 aO
@@ -3440,22 +3271,22 @@ vy
 jf
 kD
 kD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-BV
-yp
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (5,1,1) = {"
 iy
@@ -3480,20 +3311,20 @@ jC
 jC
 pk
 kD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-Ry
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (6,1,1) = {"
 iy
@@ -3518,20 +3349,20 @@ nk
 bO
 kf
 pk
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-Ry
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (7,1,1) = {"
 jy
@@ -3557,19 +3388,19 @@ EO
 zZ
 jm
 xz
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (8,1,1) = {"
 iy
@@ -3596,18 +3427,18 @@ kf
 SG
 WO
 UL
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (9,1,1) = {"
 iy
@@ -3636,16 +3467,16 @@ jC
 IU
 PY
 CI
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (10,1,1) = {"
 hv
@@ -3675,15 +3506,15 @@ kf
 kf
 kf
 pk
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (11,1,1) = {"
 hv
@@ -3714,14 +3545,14 @@ md
 tl
 OS
 QI
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (12,1,1) = {"
 hv
@@ -3752,14 +3583,14 @@ hJ
 Ms
 OS
 gR
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (13,1,1) = {"
 hv
@@ -3791,13 +3622,13 @@ np
 OS
 Nj
 pu
-HD
-HD
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (14,1,1) = {"
 hv
@@ -3829,13 +3660,13 @@ oo
 mb
 zS
 Iu
-HD
-HD
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (15,1,1) = {"
 hv
@@ -3868,11 +3699,11 @@ Ug
 KC
 Iu
 Db
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
 pW
 "}
 (16,1,1) = {"
@@ -3990,8 +3821,8 @@ eJ
 gm
 "}
 (19,1,1) = {"
-HD
-HD
+xT
+xT
 ln
 ln
 ln
@@ -4028,8 +3859,8 @@ ee
 Sb
 "}
 (20,1,1) = {"
-HD
-HD
+xT
+xT
 ln
 ln
 ln
@@ -4066,7 +3897,7 @@ bP
 tX
 "}
 (21,1,1) = {"
-HD
+xT
 ln
 ln
 ln
@@ -4104,8 +3935,8 @@ pq
 jr
 "}
 (22,1,1) = {"
-HD
-HD
+xT
+xT
 ln
 iI
 Yn
@@ -4142,9 +3973,9 @@ dJ
 pW
 "}
 (23,1,1) = {"
-HD
-HD
-HD
+xT
+xT
+xT
 Yn
 jw
 bI
@@ -4170,19 +4001,19 @@ ab
 vR
 bJ
 ZB
-pW
-pW
-Fw
-pW
-AY
-Ob
-pW
-pW
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (24,1,1) = {"
-HD
-HD
-HD
+xT
+xT
+xT
 wJ
 Ug
 Ug
@@ -4208,19 +4039,19 @@ HI
 OZ
 bJ
 YQ
-pW
-lc
-XD
-MH
-Cu
-EU
-XD
-lH
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (25,1,1) = {"
-HD
-HD
-HD
+xT
+xT
+xT
 FB
 ki
 px
@@ -4246,18 +4077,18 @@ HV
 ZS
 zl
 ZB
-lH
-XD
-XD
-kF
-XD
-XD
-Fb
-pW
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (26,1,1) = {"
-HD
-HD
+xT
+xT
 Yn
 is
 Ow
@@ -4284,18 +4115,18 @@ VU
 VU
 VU
 am
-pW
-no
-tQ
-tQ
-Px
-Qh
-lh
-pW
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (27,1,1) = {"
-HD
-HD
+xT
+xT
 Ch
 XZ
 Ch
@@ -4322,18 +4153,18 @@ zO
 nP
 kD
 Jk
-pW
-pW
-pW
-pW
-pW
-pW
-pW
-pW
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (28,1,1) = {"
-HD
-HD
+xT
+xT
 zO
 kD
 kD
@@ -4359,18 +4190,18 @@ Hl
 rR
 kD
 mf
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-pW
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (29,1,1) = {"
-HD
+xT
 Yn
 yk
 QW
@@ -4396,16 +4227,16 @@ mf
 Ce
 qx
 lT
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-pW
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (30,1,1) = {"
 is
@@ -4432,18 +4263,18 @@ mf
 lT
 Ce
 ln
-HD
+xT
 ln
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-nj
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (31,1,1) = {"
 XZ
@@ -4468,20 +4299,20 @@ kD
 mf
 qe
 ln
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-nj
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (32,1,1) = {"
 CE
@@ -4504,22 +4335,22 @@ ZY
 xP
 LD
 Ce
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (33,1,1) = {"
 No
@@ -4540,24 +4371,24 @@ nt
 mf
 lT
 Ce
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (34,1,1) = {"
 HV
@@ -4576,26 +4407,26 @@ gA
 zl
 YE
 Hl
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (35,1,1) = {"
 cl
@@ -4613,27 +4444,27 @@ fL
 hn
 VU
 yG
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (36,1,1) = {"
 ga
@@ -4652,26 +4483,26 @@ kD
 sn
 Fr
 Hl
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}
 (37,1,1) = {"
 eK
@@ -4691,23 +4522,23 @@ xg
 kD
 Ex
 uF
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
+xT
 "}

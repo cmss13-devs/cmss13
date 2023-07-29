@@ -114,7 +114,7 @@
 	if(src != M.wear_mask) //sanity
 		to_chat(M, SPAN_WARNING("You must wear \the [src]!"))
 		return
-	var/obj/item/clothing/gloves/yautja/Y = M.gloves //Doesn't actually reduce power, but needs the bracers anyway.
+	var/obj/item/clothing/gloves/yautja/Y = M.gloves
 	if(!Y || !istype(Y))
 		to_chat(M, SPAN_WARNING("You must be wearing your bracers, as they have the power source."))
 		return

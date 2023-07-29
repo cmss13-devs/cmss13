@@ -250,16 +250,16 @@
 /datum/internal_organ/brain/process(delta_time)
 	..()
 
-	if(organ_status >= ORGAN_BRUISED && prob(10 * delta_time))
+	if(organ_status >= ORGAN_BRUISED && prob(5 * delta_time))
 		var/dir_choice = pick(list(NORTH, SOUTH, EAST, WEST))
-		owner.Move(get_step(get_turf(owner), dir_choice))
 		owner.drop_held_items()
-		to_chat(owner, SPAN_NOTICE("Your mind wanders and goes blank a moment..."))
+		owner.Move(get_step(get_turf(owner), dir_choice))
+		to_chat(owner, SPAN_DANGER("Your mind wanders and goes blank for a moment..."))
 
-	if(organ_status >= ORGAN_BROKEN && prob(10 * delta_time))
+	if(organ_status >= ORGAN_BROKEN && prob(5 * delta_time))
 		owner.apply_effect(1, PARALYZE)
 		owner.make_jittery(50)
-		to_chat(owner, SPAN_NOTICE("Your body seizes against your control!"))
+		to_chat(owner, SPAN_DANGER("Your body seizes up!"))
 
 /datum/internal_organ/brain/prosthetic //used by synthetic species
 	robotic = ORGAN_ROBOT

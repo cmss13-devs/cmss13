@@ -59459,9 +59459,7 @@
 	},
 /area/almayer/hull/lower_hull)
 "qif" = (
-/obj/structure/sign/dartboard{
-	icon = d
-	},
+/obj/structure/sign/dartboard,
 /turf/closed/wall/almayer,
 /area/almayer/hallways/hangar)
 "qim" = (

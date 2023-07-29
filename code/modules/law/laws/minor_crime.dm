@@ -51,7 +51,7 @@
 	special_punishment = "Return of Stolen Item"
 	brig_time = 10
 
-/datum/law/minor_law/false_testemony
-	name = "False Testemony"
+/datum/law/minor_law/false_testimony
+	name = "False Testimony"
 	desc = "To intentionally and willingly lie to a MP or deputized officer, during a legal investigation with the intent to disrupt said investigation."
 	brig_time = 5

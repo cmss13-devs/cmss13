@@ -1,0 +1,4 @@
+author: "Katskan"
+delete-after: True
+changes:
+  - rscadd: "Added a stethoscope, red, yellow, and white/green armband to synthetic vendors"

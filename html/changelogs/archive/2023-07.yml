@@ -548,3 +548,50 @@
       of SDing another Yautja.
   - rscadd: Added a message to all Yautja if an SD is cancelled.
   - ui: Adds a UI panel for Yautja emotes, all credit to Zonespace.
+2023-07-27:
+  Ben10083:
+  - bugfix: ARES security logs now are properly displayed
+  - ui: Xenos (and others) now see comms relays on minimap
+  Drathek:
+  - code_imp: Bump alternate 515 testing to byond 1610
+2023-07-28:
+  BeagleGaming1:
+  - rscadd: Added a new CO jacket to the CO vendor
+  Ben10083:
+  - bugfix: Speech problems such as lisping now applies when using megaphone
+  GoldenDarkness55:
+  - balance: Dropship machine gun cost lowered from 300 to 50.
+  - balance: Dropship rappel module cost lowered from 500 to 50.
+  - balance: Dropship spotlight cost lowered from 300 to 50.
+  - balance: Dropship LZ detector cost lowered from 400 to 50.
+  Khadd:
+  - bugfix: xenos now update their wound icon when getting up
+  Morrow:
+  - bugfix: Fixed sentries firing turning off their lights
+  - rscadd: Shovels can now be used to collapse tunnels
+  zzzmike:
+  - balance: when facehugged, more paralyze chance with a smaller paralyze duration
+  - ui: during hugged effects, changes messaging to encourage new players to seek
+      help
+2023-07-29:
+  GoldenDarkness55:
+  - balance: Shaking people up shortens stun durations by 6 instead of 3.
+  - balance: Player controlled facehuggers apply the same knockout duration as regular
+      ones.
+  Morrow:
+  - balance: 2.5 squad marines per 1 larva latejoin
+  SpartanBobby:
+  - rscadd: Added a new survivor to LV522 the FORECON sniper he spawns alone his only
+      company being the corpse of his dead battle buddy, good luck
+  - maptweak: Sweeping changes to LV522 including the reactor, north of engineering,
+      LZ1, the entire central area of the map, and north of fitness in an attempt
+      to see more of the colony used and to incentivize flanking
+  ghostsheet:
+  - bugfix: Advanced mini flamer can no longer nerf itself by changing mode.
+  - rscadd: HG 37-12 pump shotgun's intergrated stock no longer give any stat change.
+  ihatethisengine:
+  - rscadd: Added announcements for xenos about forming and breaking alliances.
+  - rscadd: Xenos with IFF tag now have a choice to stay loyal to USCM when Queen
+      decides to betray.
+  spartanbobby:
+  - maptweak: heavy changes to the research department

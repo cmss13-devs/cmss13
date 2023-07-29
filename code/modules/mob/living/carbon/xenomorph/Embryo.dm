@@ -260,6 +260,8 @@
 
 		if(new_xeno.client)
 			new_xeno.client.change_view(world_view_size)
+			if(new_xeno.client.prefs?.toggles_flashing & FLASH_POOLSPAWN)
+				window_flash(new_xeno.client)
 
 		SSround_recording.recorder.track_player(new_xeno)
 

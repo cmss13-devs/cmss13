@@ -1,3 +1,6 @@
+/// The duration it takes a player controlled facehugger to leap or hug adjacently
+#define FACEHUGGER_WINDUP_DURATION 1 SECONDS
+
 /datum/action/xeno_action/activable/pounce/facehugger
 	name = "Leap"
 	action_icon_state = "pounce"
@@ -12,7 +15,7 @@
 	knockdown = TRUE
 	knockdown_duration = 0.5
 	windup = TRUE
-	windup_duration = 10
+	windup_duration = FACEHUGGER_WINDUP_DURATION
 	freeze_self = TRUE
 	freeze_time = 5
 	freeze_play_sound = FALSE

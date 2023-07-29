@@ -147,59 +147,92 @@
 					affected_mob.take_limb_damage(1)
 		if(5)
 			become_larva()
-		if(6)
+		if(7) // Stage 6 is while we are trying to find a candidate in become_larva
 			larva_autoburst_countdown--
 			if(!larva_autoburst_countdown)
 				var/mob/living/carbon/xenomorph/larva/larva_embryo = locate() in affected_mob
 				if(larva_embryo)
 					larva_embryo.chest_burst(affected_mob)
 
-//We look for a candidate. If found, we spawn the candidate as a larva
-//Order of priority is bursted individual (if xeno is enabled), then random candidate, and then it's up for grabs and spawns braindead
+///We look for a candidate. If found, we spawn the candidate as a larva
+///Order of priority is bursted individual (if xeno is enabled), then player hugger, then random candidate, and then it's up for grabs and spawns braindead
 /obj/item/alien_embryo/proc/become_larva()
 	// We do not allow chest bursts on the Centcomm Z-level, to prevent
 	// stranded players from admin experiments and other issues
 	if(!affected_mob || is_admin_level(affected_mob.z))
 		return
 
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	stage = 6 // Increase the stage value to prevent this proc getting repeated
 
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	var/mob/picked
+	var/mob/dead/observer/hugger = null
+	var/is_nested = istype(affected_mob.buckled, /obj/structure/bed/nest)
+
 	// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva.
-	if((!isyautja(affected_mob) || (isyautja(affected_mob) && prob(20))) && istype(affected_mob.buckled, /obj/structure/bed/nest))
+	if((!isyautja(affected_mob) || (isyautja(affected_mob) && prob(20))) && is_nested)
 		if(affected_mob.first_xeno || (affected_mob.client?.prefs?.be_special & BE_ALIEN_AFTER_DEATH && !jobban_isbanned(affected_mob, JOB_XENOMORPH)))
 			picked = affected_mob
 		else if(affected_mob.mind?.ghost_mob && affected_mob.client?.prefs?.be_special & BE_ALIEN_AFTER_DEATH && !jobban_isbanned(affected_mob, JOB_XENOMORPH))
 			picked = affected_mob.mind.ghost_mob // This currently doesn't look possible
 		else if(affected_mob.persistent_ckey)
 			for(var/mob/dead/observer/cur_obs as anything in GLOB.observer_list)
+				if(!cur_obs)
+					continue
 				if(cur_obs.ckey != affected_mob.persistent_ckey)
 					continue
-				if(cur_obs?.client?.prefs?.be_special & BE_ALIEN_AFTER_DEATH && !jobban_isbanned(cur_obs, JOB_XENOMORPH))
+				if(cur_obs.client?.prefs?.be_special & BE_ALIEN_AFTER_DEATH && !jobban_isbanned(cur_obs, JOB_XENOMORPH))
 					picked = cur_obs
 				break
 
 	if(!picked)
 		// Get a candidate from observers
 		var/list/candidates = get_alien_candidates(hive)
-		if(candidates && candidates.len)
+		if(candidates && length(candidates))
 			// If they were facehugged by a player thats still in queue, they get second dibs on the new larva.
 			if(hugger_ckey)
 				for(var/mob/dead/observer/cur_obs as anything in candidates)
 					if(cur_obs.ckey == hugger_ckey)
-						picked = cur_obs
-						candidates -= cur_obs
-						message_alien_candidates(candidates, dequeued = 0)
-						for(var/obj/item/alien_embryo/embryo as anything in GLOB.player_embryo_list)
-							if(embryo.hugger_ckey == cur_obs.ckey && embryo != src)
-								// Skipping src just in case an admin wants to quickly check before this thing fully deletes
-								// If this nulls out any embryo, wow
-								embryo.hugger_ckey = null
+						hugger = cur_obs
+						if(!is_nested)
+							cur_obs.ManualFollow(affected_mob)
+							if(cur_obs.client.prefs?.toggles_flashing & FLASH_POOLSPAWN)
+								window_flash(cur_obs.client)
+						if(is_nested || tgui_alert(cur_obs, "An unnested host you hugged is about to burst! Do you want to control the new larva?", "Larva maturation", list("Yes", "No"), 10 SECONDS) == "Yes")
+							picked = cur_obs
+							candidates -= cur_obs
+							message_alien_candidates(candidates, dequeued = 0)
+							for(var/obj/item/alien_embryo/embryo as anything in GLOB.player_embryo_list)
+								if(!embryo)
+									continue
+								if(embryo.hugger_ckey == cur_obs.ckey && embryo != src)
+									// Skipping src just in case an admin wants to quickly check before this thing fully deletes
+									// If this nulls out any embryo, wow
+									embryo.hugger_ckey = null
 						break
 
+			// Get a candidate from the front of the queue
 			if(!picked)
-				picked = candidates[1]
-				message_alien_candidates(candidates, dequeued = 1)
+				if(is_nested)
+					picked = candidates[1]
+					message_alien_candidates(candidates, dequeued = 1)
+				else
+					// Make up to 10 attempts from the queue for an unnested host
+					// At 10s per candidate, for 11 candidates (facehugger is the +1) this means we may have delayed an unnested autoburst up to 110 seconds
+					for(var/i in 1 to min(10, length(candidates)))
+						var/mob/dead/observer/cur_candidate = candidates[i]
+						if(!cur_candidate?.client) // Make sure they are still a valid candidate since tgui_alerts may have delayed us to this point
+							continue
+						if(cur_candidate == hugger)
+							continue // They were already asked
+						cur_candidate.ManualFollow(affected_mob)
+						if(cur_candidate.client.prefs?.toggles_flashing & FLASH_POOLSPAWN)
+							window_flash(cur_candidate.client)
+						if(tgui_alert(cur_candidate, "An unnested host is about to burst! Do you want to control the new larva?", "Larva maturation", list("Yes", "No"), 10 SECONDS) == "Yes")
+							picked = cur_candidate
+							candidates -= cur_candidate
+							message_alien_candidates(candidates, dequeued = 0)
+							break
 
 	// Spawn the larva
 	var/mob/living/carbon/xenomorph/larva/new_xeno
@@ -247,7 +280,7 @@
 				to_chat(observer, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]!</b> [OBSERVER_JMP(observer, affected_mob)]"))
 			to_chat(src, SPAN_DEADSAY("A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]!</b>"))
 
-	stage = 6
+	stage = 7 // Begin the autoburst countdown
 
 /mob/living/carbon/xenomorph/larva/proc/cause_unbearable_pain(mob/living/carbon/victim)
 	if(loc != victim)

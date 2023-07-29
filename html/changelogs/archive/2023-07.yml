@@ -573,3 +573,25 @@
   - balance: when facehugged, more paralyze chance with a smaller paralyze duration
   - ui: during hugged effects, changes messaging to encourage new players to seek
       help
+2023-07-29:
+  GoldenDarkness55:
+  - balance: Shaking people up shortens stun durations by 6 instead of 3.
+  - balance: Player controlled facehuggers apply the same knockout duration as regular
+      ones.
+  Morrow:
+  - balance: 2.5 squad marines per 1 larva latejoin
+  SpartanBobby:
+  - rscadd: Added a new survivor to LV522 the FORECON sniper he spawns alone his only
+      company being the corpse of his dead battle buddy, good luck
+  - maptweak: Sweeping changes to LV522 including the reactor, north of engineering,
+      LZ1, the entire central area of the map, and north of fitness in an attempt
+      to see more of the colony used and to incentivize flanking
+  ghostsheet:
+  - bugfix: Advanced mini flamer can no longer nerf itself by changing mode.
+  - rscadd: HG 37-12 pump shotgun's intergrated stock no longer give any stat change.
+  ihatethisengine:
+  - rscadd: Added announcements for xenos about forming and breaking alliances.
+  - rscadd: Xenos with IFF tag now have a choice to stay loyal to USCM when Queen
+      decides to betray.
+  spartanbobby:
+  - maptweak: heavy changes to the research department

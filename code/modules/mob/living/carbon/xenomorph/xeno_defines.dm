@@ -1050,7 +1050,7 @@
 	hugger.timeofdeath = user.timeofdeath // Keep old death time
 
 /datum/hive_status/proc/update_lesser_drone_limit()
-	lesser_drone_limit = max(Ceiling(length(totalXenos) / 3), lesser_drone_minimum)
+	lesser_drone_limit = lesser_drone_minimum + Ceiling(length(totalXenos) / 3)
 
 /datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])

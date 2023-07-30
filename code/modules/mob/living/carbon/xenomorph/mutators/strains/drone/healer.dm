@@ -198,11 +198,22 @@
 	if(trasnferred_amount >= max_transferred_amount)
 		. += "Sacrifice will grant you new life."
 
+/datum/behavior_delegate/drone_healer/on_life()
+	if(!bound_xeno)
+		return
+	if(bound_xeno.stat == DEAD)
+		return
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
+	var/percentage_transferred = round((trasnferred_amount / max_transferred_amount) * 100, 10)
+	if(percentage_transferred)
+		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_transferred]")
+
 /datum/action/xeno_action/activable/healer_sacrifice
 	name = "Sacrifice"
 	action_icon_state = "screech"
 	ability_name = "sacrifice"
-	var/max_range = 2
+	var/max_range = 1
 	var/transfer_mod = 0.75 // only transfers 75% of current healer's health
 	macro_path = /datum/action/xeno_action/verb/verb_healer_sacrifice
 	action_type = XENO_ACTION_CLICK
@@ -226,7 +237,7 @@
 		to_chat(xeno, "You can't heal yourself!")
 		return
 
-	if(isfacehugger(target))
+	if(isfacehugger(target) || islesserdrone(target))
 		to_chat(xeno, "It would be a waste...")
 		return
 

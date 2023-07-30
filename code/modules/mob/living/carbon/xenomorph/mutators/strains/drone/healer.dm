@@ -284,12 +284,13 @@
 /datum/action/xeno_action/activable/healer_sacrifice/action_activate()
 	..()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno.selected_ability == src)
-		var/datum/behavior_delegate/drone_healer/behavior_delegate = xeno.behavior_delegate
-		if(!istype(behavior_delegate))
-			return
-		if (behavior_delegate.trasnferred_amount < behavior_delegate.max_transferred_amount)
-			to_chat(xeno, SPAN_HIGHDANGER("Warning: [name] is a last measure skill. Using it will kill you."))
-		else
-			to_chat(xeno, SPAN_HIGHDANGER("Warning: [name] is a last measure skill. Using it will kill you, but new life will be granted for your hard work for the hive."))
+	if(xeno.selected_ability != src)
+		return
+	var/datum/behavior_delegate/drone_healer/behavior_delegate = xeno.behavior_delegate
+	if(!istype(behavior_delegate))
+		return
+	if (behavior_delegate.trasnferred_amount < behavior_delegate.max_transferred_amount)
+		to_chat(xeno, SPAN_HIGHDANGER("Warning: [name] is a last measure skill. Using it will kill you."))
+	else
+		to_chat(xeno, SPAN_HIGHDANGER("Warning: [name] is a last measure skill. Using it will kill you, but new life will be granted for your hard work for the hive."))
 

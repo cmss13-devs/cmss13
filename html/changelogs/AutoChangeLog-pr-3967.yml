@@ -1,0 +1,9 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - balance: "you can stack scratched portable cades if their HP at least 75%. Doing so will reduce the health of all barricades in the stack to the level of the most damaged."
+  - balance: "you can repair stacked portable cades but it will take longer time depending on how many cades in stack."
+  - balance: "miniengi skill makes repairs of folded portable cades faster (10 seconds to 5 seconds, same as engineer)."
+  - balance: "with engineering skill at least of miniengi you can collapse deployed portable barricade with a crowbar (wrench is no longer required, slightly faster (2 sec to 1.5 sec))."
+  - balance: "you no longer need to have folded portable cade in hand in order to repair it."
+  - balance: "if you have folded portable cade in hand, you can move while repairing it."

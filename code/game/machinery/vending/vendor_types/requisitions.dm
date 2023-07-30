@@ -36,7 +36,6 @@
 		list("MOU-53 Shotgun", round(scale * 2), /obj/item/storage/box/guncase/mou53, VENDOR_ITEM_REGULAR),
 		list("XM88 Heavy Rifle", round(scale * 3), /obj/item/storage/box/guncase/xm88, VENDOR_ITEM_REGULAR),
 		list("M41AE2 Heavy Pulse Rifle", round(scale * 2.5), /obj/item/storage/box/guncase/lmg, VENDOR_ITEM_REGULAR),
-		list("M41A Pulse Rifle MK1", round(scale * 3), /obj/item/storage/box/guncase/m41aMK1, VENDOR_ITEM_REGULAR),
 		list("M56D Heavy Machine Gun", round(scale * 2), /obj/item/storage/box/guncase/m56d, VENDOR_ITEM_REGULAR),
 		list("M2C Heavy Machine Gun", round(scale * 2), /obj/item/storage/box/guncase/m2c, VENDOR_ITEM_REGULAR),
 		list("M240 Incinerator Unit", round(scale * 2), /obj/item/storage/box/guncase/flamer, VENDOR_ITEM_REGULAR),
@@ -236,9 +235,6 @@
 		list("M41A MK2 AP Magazine (10x24mm)", round(scale * 10.5), /obj/item/ammo_magazine/rifle/ap, VENDOR_ITEM_REGULAR),
 		list("M4A3 AP Magazine (9mm)", round(scale * 2), /obj/item/ammo_magazine/pistol/ap, VENDOR_ITEM_REGULAR),
 
-		list("EXTENDED AMMUNITION", -1, null, null),
-		list("M39 Extended Magazine (10x20mm)", round(scale * 9.5) + 3, /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
-		list("M41A MK2 Extended Magazine (10x24mm)", round(scale * 8.1), /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
 
 		list("SPECIAL AMMUNITION", -1, null, null),
 		list("M56 Battery", 4, /obj/item/smartgun_battery, VENDOR_ITEM_REGULAR),
@@ -253,8 +249,6 @@
 		list("SU-6 Smartpistol Magazine (.45)", round(scale * 12,8), /obj/item/ammo_magazine/pistol/smart, VENDOR_ITEM_REGULAR),
 		list("M240 Incinerator Tank", round(scale * 3), /obj/item/ammo_magazine/flamer_tank, VENDOR_ITEM_REGULAR),
 		list("M41AE2 Box Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/lmg, VENDOR_ITEM_REGULAR),
-		list("M41A MK1 Magazine (10x24mm)", round(scale * 4.5), /obj/item/ammo_magazine/rifle/m41aMK1, VENDOR_ITEM_REGULAR),
-		list("M41A MK1 AP Magazine (10x24mm)", round(scale * 2), /obj/item/ammo_magazine/rifle/m41aMK1/ap, VENDOR_ITEM_REGULAR),
 		list("M56D Drum Magazine", round(scale * 2), /obj/item/ammo_magazine/m56d, VENDOR_ITEM_REGULAR),
 		list("M2C Box Magazine", round(scale * 2), /obj/item/ammo_magazine/m2c, VENDOR_ITEM_REGULAR),
 

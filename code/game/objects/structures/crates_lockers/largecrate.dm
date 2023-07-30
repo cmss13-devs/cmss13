@@ -194,12 +194,12 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/rifle/extended,
+		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/shotgun,
 		/obj/item/ammo_magazine/shotgun/buckshot,
 		/obj/item/ammo_magazine/shotgun/flechette,
 		/obj/item/ammo_magazine/smg/m39,
-		/obj/item/ammo_magazine/smg/m39/extended,
+		/obj/item/ammo_magazine/smg/m39,
 	)
 
 /obj/structure/largecrate/random/mini/med

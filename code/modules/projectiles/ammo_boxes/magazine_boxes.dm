@@ -2,7 +2,6 @@
 
 /obj/item/ammo_box/magazine/ap
 	name = "\improper magazine box (AP M41A x 10)"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_ap"
 	overlay_content = "_ap"
 	magazine_type = /obj/item/ammo_magazine/rifle/ap
@@ -12,7 +11,6 @@
 
 /obj/item/ammo_box/magazine/le
 	name = "\improper magazine box (LE M41A x 10)"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_le"
 	overlay_content = "_le"
 	magazine_type = /obj/item/ammo_magazine/rifle/le
@@ -22,7 +20,6 @@
 
 /obj/item/ammo_box/magazine/ext
 	name = "\improper magazine box (Ext M41A x 8)"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_ext"
 	num_of_magazines = 8
 	magazine_type = /obj/item/ammo_magazine/rifle/extended
@@ -32,7 +29,6 @@
 
 /obj/item/ammo_box/magazine/incen
 	name = "\improper magazine box (Incen M41A x 10)"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_incen"
 	overlay_content = "_incen"
 	magazine_type = /obj/item/ammo_magazine/rifle/incendiary
@@ -42,7 +38,6 @@
 
 /obj/item/ammo_box/magazine/explosive
 	name = "\improper magazine box (Explosive M41A x 10)"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_expl"
 	overlay_content = "_expl"
 	magazine_type = /obj/item/ammo_magazine/rifle/explosive
@@ -52,7 +47,6 @@
 
 /obj/item/ammo_box/magazine/heap
 	name = "magazine box (HEAP M41A x 10)"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_heap"
 	overlay_content = "_heap"
 	magazine_type = /obj/item/ammo_magazine/rifle/heap
@@ -65,7 +59,6 @@
 /obj/item/ammo_box/magazine/m39
 	name = "\improper magazine box (M39 x 12)"
 	icon_state = "base_m39"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_m39"
 	overlay_content = "_hv"
@@ -126,7 +119,6 @@
 /obj/item/ammo_box/magazine/m4ra
 	name = "\improper magazine box (M4RA x 16)"
 	icon_state = "base_m4ra"
-	flags_equip_slot = SLOT_BACK
 	overlay_gun_type = "_m4ra"
 	num_of_magazines = 16
 	magazine_type = /obj/item/ammo_magazine/rifle/m4ra
@@ -175,7 +167,6 @@
 /obj/item/ammo_box/magazine/l42a
 	name = "\improper magazine box (L42A x 16)"
 	icon_state = "base_l42"
-	flags_equip_slot = SLOT_BACK
 	overlay_gun_type = "_l42"
 	num_of_magazines = 16
 	magazine_type = /obj/item/ammo_magazine/rifle/l42a
@@ -234,7 +225,6 @@
 /obj/item/ammo_box/magazine/M16
 	name = "\improper magazine box (M16 x 12)"
 	icon_state = "base_m16"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_m16"
 	num_of_magazines = 12
@@ -259,7 +249,6 @@
 /obj/item/ammo_box/magazine/m4a3
 	name = "\improper magazine box (M4A3 x 16)"
 	icon_state = "base_m4a3"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_m4a3"
 	num_of_magazines = 16
@@ -291,7 +280,6 @@
 /obj/item/ammo_box/magazine/m44
 	name = "\improper speed loaders box (M44 x 16)"
 	icon_state = "base_m44"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_m44_reg"
 	overlay_gun_type = "_m44"
 	overlay_content = "_speed"
@@ -322,7 +310,6 @@
 /obj/item/ammo_box/magazine/su6
 	name = "\improper magazine box (SU-6 x 16)"
 	icon_state = "base_su6"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_su6"
 	num_of_magazines = 16
@@ -336,7 +323,6 @@
 /obj/item/ammo_box/magazine/mod88
 	name = "\improper magazine box (88 Mod 4 AP x 16)"
 	icon_state = "base_mod88"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_ap"
 	overlay_gun_type = "_mod88"
 	overlay_content = "_ap"
@@ -351,7 +337,6 @@
 /obj/item/ammo_box/magazine/vp78
 	name = "\improper magazine box (VP78 x 16)"
 	icon_state = "base_vp78"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_vp78"
 	num_of_magazines = 16
@@ -365,7 +350,6 @@
 /obj/item/ammo_box/magazine/type71
 	name = "\improper magazine box (Type71 x 10)"
 	icon_state = "base_type71"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_type71_reg"
 	overlay_gun_type = "_type71"
 	overlay_content = "_type71_reg"

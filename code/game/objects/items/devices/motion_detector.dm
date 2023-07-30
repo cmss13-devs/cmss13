@@ -229,11 +229,17 @@
 		if(human_user)
 			show_blip(human_user, M)
 
-	for(var/mob/hologram/queen/Q in GLOB.hologram_list)
-		if(Q.z != cur_turf.z || !(range_bounds.contains_atom(Q))) continue
+	for(var/mob/hologram/queen/eye in GLOB.hologram_list)
+		if(eye.z != cur_turf.z || !(range_bounds.contains_atom(eye))) continue
 		ping_count++
 		if(human_user)
-			show_blip(human_user, Q, "queen_eye")
+			show_blip(human_user, eye, "queen_eye")
+
+	for(var/mob/hologram/falcon/drone in GLOB.hologram_list)
+		if(drone.z != cur_turf.z || !(range_bounds.contains_atom(drone))) continue
+		ping_count++
+		if(human_user)
+			show_blip(human_user, drone, "queen_eye")
 
 	if(ping_count > 0)
 		playsound(loc, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, 0, 7, 2)

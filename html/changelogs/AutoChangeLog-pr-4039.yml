@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed ctrl+click joining as an afk xeno not checking banishment"

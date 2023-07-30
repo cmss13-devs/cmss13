@@ -221,7 +221,7 @@
 /datum/action/xeno_action/verb/verb_healer_sacrifice()
 	set category = "Alien"
 	set name = "Sacrifice"
-	set hidden = 1
+	set hidden = TRUE
 	var/action_name = "Sacrifice"
 	handle_xeno_macro(src, action_name)
 
@@ -248,7 +248,7 @@
 		return
 
 	if(target.health >= target.maxHealth)
-		to_chat(xeno, SPAN_WARNING("\The [target] is already at max health!"))
+		to_chat(xeno, SPAN_WARNING("[target] is already at max health!"))
 		return
 
 	if(!isturf(xeno.loc))

@@ -1367,6 +1367,8 @@
 		xeno_message(SPAN_XENOANNOUNCE("With the death of the Queen all alliances has been broken."), 3, hivenumber)
 
 /datum/hive_status/proc/change_stance(faction, should_ally)
+	if(faction == name)
+		return
 	if(allies[faction] == should_ally)
 		return
 	allies[faction] = should_ally

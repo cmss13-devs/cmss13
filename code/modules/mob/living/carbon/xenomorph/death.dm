@@ -69,6 +69,7 @@
 					if(!QDELETED(Q) && Q != src && Q.hivenumber == hivenumber)
 						hive.set_living_xeno_queen(Q)
 						break
+				hive.on_queen_death()
 				hive.handle_xeno_leader_pheromones()
 				if(SSticker.mode)
 					INVOKE_ASYNC(SSticker.mode, TYPE_PROC_REF(/datum/game_mode, check_queen_status), hivenumber)

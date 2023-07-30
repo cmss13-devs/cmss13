@@ -1352,13 +1352,30 @@
 /datum/hive_status/corrupted/renegade/faction_is_ally(faction, ignore_queen_check = TRUE)
 	return ..()
 
-/datum/hive_status/proc/on_stance_change(faction)
-	if(!living_xeno_queen)
+/datum/hive_status/proc/on_queen_death() //break alliances on queen's death
+	if(allow_no_queen_actions || living_xeno_queen)
 		return
-	if(allies[faction])
-		xeno_message(SPAN_XENOANNOUNCE("Your Queen set up an alliance with [faction]!"), 3, hivenumber)
-	else
-		xeno_message(SPAN_XENOANNOUNCE("Your Queen broke the alliance with [faction]!"), 3, hivenumber)
+	var/broken_alliances = FALSE
+	for(var/faction in allies)
+		if(!allies[faction])
+			continue
+		change_stance(faction, FALSE)
+		broken_alliances = TRUE
+
+
+	if(broken_alliances)
+		xeno_message(SPAN_XENOANNOUNCE("With the death of the Queen all alliances has been broken."), 3, hivenumber)
+
+/datum/hive_status/proc/change_stance(faction, should_ally)
+	if(allies[faction] == should_ally)
+		return
+	allies[faction] = should_ally
+
+	if(living_xeno_queen)
+		if(allies[faction])
+			xeno_message(SPAN_XENOANNOUNCE("Your Queen set up an alliance with [faction]!"), 3, hivenumber)
+		else
+			xeno_message(SPAN_XENOANNOUNCE("Your Queen broke the alliance with [faction]!"), 3, hivenumber)
 
 	for(var/number in GLOB.hive_datum)
 		var/datum/hive_status/target_hive = GLOB.hive_datum[number]
@@ -1367,12 +1384,15 @@
 		if(!target_hive.living_xeno_queen && !target_hive.allow_no_queen_actions)
 			return
 		if(allies[faction])
-			xeno_message(SPAN_XENOANNOUNCE("You sense that [name] Queen set up an alliance with us!"), 3, target_hive.hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("You sense that [name] [living_xeno_queen ? "Queen " : ""]set up an alliance with us!"), 3, target_hive.hivenumber)
 			return
 
-		xeno_message(SPAN_XENOANNOUNCE("You sense that [name] Queen broke the alliance with us!"), 3, target_hive.hivenumber)
+		xeno_message(SPAN_XENOANNOUNCE("You sense that [name] [living_xeno_queen ? "Queen " : ""]broke the alliance with us!"), 3, target_hive.hivenumber)
+		if(target_hive.allies[name]) //autobreak alliance on betrayal
+			target_hive.change_stance(name, FALSE)
 
-/datum/hive_status/corrupted/on_stance_change(faction)
+
+/datum/hive_status/corrupted/change_stance(faction, should_ally)
 	. = ..()
 	if(allies[faction])
 		return

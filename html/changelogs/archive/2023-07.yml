@@ -595,3 +595,18 @@
       decides to betray.
   spartanbobby:
   - maptweak: heavy changes to the research department
+2023-07-30:
+  Ben10083:
+  - bugfix: You can no longer circumvent the lesser drone limit by keeping the prompt
+      open.
+  Drathek:
+  - bugfix: Fix joining as facehugger or lesser drone not checking banishment.
+  Katskan:
+  - rscadd: Added a stethoscope, red, yellow, and white/green armband to synthetic
+      vendors
+  Morrow:
+  - bugfix: Fixed holding two guns firing both
+  harryob:
+  - admin: notes applied to players now include the round id it was applied in
+  realforest2001:
+  - bugfix: Donator custom masks now properly protect from cold weather.

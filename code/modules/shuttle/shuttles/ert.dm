@@ -31,7 +31,7 @@
 			air.breakable = FALSE
 			air.indestructible = TRUE
 			air.unacidable = TRUE
-	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(handle_dir_change))
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
 
 /obj/docking_port/mobile/emergency_response/enterTransit()
 	control_doors("force-lock-launch", force = TRUE, external_only = TRUE)
@@ -83,7 +83,7 @@
 /obj/docking_port/mobile/emergency_response/proc/on_dir_change(datum/source, old_dir, new_dir)
 	SIGNAL_HANDLER
 	for(var/obj/structure/machinery/door/shuttle_door in doors)
-		shuttle_door.handle_multidoor()
+		shuttle_door.handle_multidoor(old_dir, new_dir)
 
 // ERT Shuttle 1
 /obj/docking_port/mobile/emergency_response/ert1

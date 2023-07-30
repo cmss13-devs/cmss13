@@ -44,7 +44,7 @@
 	else
 		layer = open_layer
 
-	handle_multidoor()
+	handle_multidoor(dir, dir)
 
 /obj/structure/machinery/door/Destroy()
 	. = ..()
@@ -58,7 +58,7 @@
 	if (PF)
 		PF.flags_can_pass_all = NONE
 
-/obj/structure/machinery/door/proc/handle_multidoor()
+/obj/structure/machinery/door/proc/handle_multidoor(old_dir, new_dir)
 	if(width > 1)
 		if(dir in list(EAST, WEST))
 			bound_width = width * world.icon_size

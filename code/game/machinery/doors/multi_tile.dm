@@ -221,7 +221,7 @@
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/handle_multidoor()
+/obj/structure/machinery/door/airlock/multi_tile/almayer/handle_multidoor(old_dir, new_dir)
 	if(!(width > 1)) return //Bubblewrap
 
 	update_filler_turfs()
@@ -293,6 +293,72 @@
 		unlock(TRUE)
 		open(1)
 		lock(TRUE)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/handle_multidoor(old_dir, new_dir)
+	if(!(width > 1)) return //Bubblewrap
+	if(old_dir != new_dir)
+		var/adjust = width - 1
+		switch(old_dir)
+			if(NORTH)
+				switch(new_dir)
+					if(EAST)
+						Move(locate(x, y - adjust, z), dir)
+					if(WEST)
+						Move(locate(x, y + adjust, z), dir)
+					if(SOUTH)
+						Move(locate(x - adjust, y, z), dir)
+			if(EAST)
+				if(new_dir == WEST)
+					Move(locate(x - adjust, y, z), dir)
+			if(WEST)
+				if(new_dir == EAST)
+					Move(locate(x + adjust, y, z), dir)
+			if(SOUTH)
+				switch(new_dir)
+					if(NORTH)
+						Move(locate(x + adjust, y, z), dir)
+					if(EAST)
+						Move(locate(x, y - adjust, z), dir)
+					if(WEST)
+						Move(locate(x, y + adjust, z), dir)
+
+	update_filler_turfs()
+	if(dir in list(NORTH, SOUTH))
+		bound_height = world.icon_size * width
+		bound_width = world.icon_size
+	else if(dir in list(EAST, WEST))
+		bound_width = world.icon_size * width
+		bound_height = world.icon_size
+
+//We have to find these again since these doors are used on shuttles a lot so the turfs changes
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/update_filler_turfs()
+	for(var/turf/T in multi_filler)
+		T.SetOpacity(null)
+
+	multi_filler = list()
+	for(var/turf/T in get_filler_turfs())
+		T.SetOpacity(opacity)
+		multi_filler += list(T)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/get_filler_turfs()
+	. = list()
+	for(var/i = 1, i < width, i++)
+		if(dir == NORTH)
+			var/turf/T = locate(x, y + i, z)
+			if(T)
+				. += list(T)
+		else if (dir == SOUTH)
+			var/turf/T = locate(x, y - i, z)
+			if(T)
+				. += list(T)
+		else if (dir == EAST)
+			var/turf/T = locate(x + i, y, z)
+			if(T)
+				. += list(T)
+		else if (dir == WEST)
+			var/turf/T = locate(x - i, y, z)
+			if(T)
+				. += list(T)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1
 	name = "\improper Alamo cargo door"

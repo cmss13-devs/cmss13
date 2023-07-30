@@ -1,0 +1,4 @@
+author: "Ben10083"
+delete-after: True
+changes:
+  - bugfix: "You can no longer circumvent the lesser drone limit by keeping the prompt open."

@@ -578,6 +578,10 @@
 	icon = 'icons/obj/structures/doors/personaldoor.dmi'
 	req_access = list(ACCESS_WY_GENERAL)
 
+/obj/structure/machinery/door/airlock/almayer/generic/press
+	name = "Press Office"
+	req_access = list(ACCESS_PRESS)
+
 /obj/structure/machinery/door/airlock/almayer/marine
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/prepdoor.dmi'

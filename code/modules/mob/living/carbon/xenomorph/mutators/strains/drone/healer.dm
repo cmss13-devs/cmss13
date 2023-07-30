@@ -128,7 +128,6 @@
 	if(target_xeno.mutation_type == DRONE_HEALER)
 		damage_taken_mod = 1
 
-
 	face_atom(target_xeno)
 	adjustBruteLoss(amount * damage_taken_mod)
 	use_plasma(amount * 2)

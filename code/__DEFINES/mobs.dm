@@ -309,7 +309,7 @@
 // Queen strain flags
 #define QUEEN_NORMAL "Normal"
 
-// Queen strain flags
+// Facehugger strain flags
 #define FACEHUGGER_NORMAL "Normal"
 #define FACEHUGGER_WATCHER "Watcher"
 

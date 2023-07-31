@@ -124,7 +124,7 @@
 	icon = 'icons/mob/humans/species/r_zombie.dmi'
 	icon_state = "claw_l"
 	flags_item = NODROP|DELONDROP|ITEM_ABSTRACT
-	force = 40
+	force = MELEE_FORCE_TIER_6 //slightly higher than normal
 	w_class = SIZE_MASSIVE
 	sharp = 1
 	attack_verb = list("slashed", "torn", "scraped", "gashed", "ripped")
@@ -149,10 +149,7 @@
 				target.AddDisease(new /datum/disease/black_goo)
 				to_chat(user, SPAN_XENOWARNING("<b>You sense your target is now infected.</b>"))
 
-	if(issynth(target))
 		target.apply_effect(2, SLOW)
-	else
-		target.apply_effect(2, SUPERSLOW)
 
 /obj/item/weapon/zombie_claws/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(get_dist(src, O) > 1)

@@ -1,6 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - balance: "early pod launch now has a 75% chance of crashing, launch after the timer has a 25% chance."
-  - rscadd: "CL's pod has a 25% chance of crashing on early launch and only 5% otherwise."
-  - rscadd: "xenos can slash and melt manually locked pod's doors."

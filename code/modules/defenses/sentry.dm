@@ -1,6 +1,5 @@
 #define SENTRY_FIREANGLE 135
 #define SENTRY_RANGE 5
-#define SENTRY_MUZZLELUM 3
 #define SENTRY_ENGAGED_TIMEOUT 60 SECONDS
 #define SENTRY_LOW_AMMO_TIMEOUT 20 SECONDS
 #define SENTRY_LOW_AMMO_ALERT_PERCENTAGE 0.25
@@ -335,9 +334,6 @@
 /obj/structure/machinery/defenses/sentry/proc/muzzle_flash(angle)
 	if(isnull(angle))
 		return
-
-	SetLuminosity(SENTRY_MUZZLELUM)
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, SetLuminosity), -SENTRY_MUZZLELUM), 10)
 
 	var/image_layer = layer + 0.1
 	var/offset = 13
@@ -726,4 +722,3 @@
 
 #undef SENTRY_FIREANGLE
 #undef SENTRY_RANGE
-#undef SENTRY_MUZZLELUM

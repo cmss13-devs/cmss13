@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fix bodybags not accepting warm (recent) dead bodies even if unreviveable"

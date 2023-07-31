@@ -137,7 +137,7 @@
 	/// The current deleted chat log of 1:1 conversations being read.
 	var/list/deleted_1to1 = list()
 
-	/// Holds all (/datum/ares_record/announcement)s and (/datum/ares_record/security/security_alert)s
+	/// Holds all (/datum/ares_record/announcement)s
 	var/list/records_announcement = list()
 	/// Holds all (/datum/ares_record/bioscan)s
 	var/list/records_bioscan = list()
@@ -151,8 +151,8 @@
 	var/list/records_asrs = list()
 	/// Holds all (/datum/ares_record/security)s and (/datum/ares_record/antiair)s
 	var/list/records_security = list()
-	/// Is nuke request usable or not? (Nuke request is not currently coded to work.)
-	var/nuke_available = FALSE
+	/// Is nuke request usable or not?
+	var/nuke_available = TRUE
 
 
 	COOLDOWN_DECLARE(ares_distress_cooldown)

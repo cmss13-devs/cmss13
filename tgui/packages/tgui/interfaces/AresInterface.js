@@ -1268,8 +1268,14 @@ const AntiAir = (props, context) => {
 
 const Security = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, records_security } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    records_security,
+    access_level,
+  } = data;
 
   return (
     <>
@@ -1405,7 +1411,8 @@ const Emergency = (props, context) => {
   let nuke_reason =
     'Request a nuclear device to be authorized by USCM High Command.';
   if (!nuke_available) {
-    nuke_reason = 'No nuclear ordnance is available during this operation.';
+    nuke_reason =
+      'No nuclear ordnance is available during this operation, or one has already been provided.';
   } else if (mission_failed) {
     nuke_reason =
       'You have already lost the objective, you cannot use a nuclear device aboard the ship!';

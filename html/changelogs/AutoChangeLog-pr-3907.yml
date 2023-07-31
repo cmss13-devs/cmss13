@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added a toggle for Yautja bracer lock. This also works with the same mechanic of SDing another Yautja."
-  - rscadd: "Added a message to all Yautja if an SD is cancelled."

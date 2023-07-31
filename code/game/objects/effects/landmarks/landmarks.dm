@@ -415,7 +415,7 @@
 	if(squad)
 		LAZYREMOVE(GLOB.latejoin_by_squad[squad], src)
 	else if(job)
-		LAZYADD(GLOB.latejoin_by_job[job], src)
+		LAZYREMOVE(GLOB.latejoin_by_job[job], src)
 	else
 		GLOB.latejoin -= src
 	return ..()

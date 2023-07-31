@@ -69,9 +69,16 @@
 		stack_trace("track_mob_death called with string cause ([cause_data]) instead of datum")
 		cause_data = create_cause_data(cause_data)
 
-	var/log_message = "\[[time_stamp()]\] [key_name(src)] died"
+	var/log_message = "\[[time_stamp()]\] [key_name(src)] died to "
 	if(cause_data)
-		log_message += " to [cause_data.cause_name]"
+		log_message += "[cause_data.cause_name]"
+	else
+		log_message += "unknown causes"
+	var/mob/cause_mob = cause_data?.resolve_mob()
+	if(cause_mob)
+		log_message += " from [key_name(cause_data.resolve_mob())]"
+		cause_mob.attack_log += "\[[time_stamp()]\] [key_name(cause_mob)] killed [key_name(src)] with [cause_data.cause_name]."
+
 	attack_log += "[log_message]."
 
 	if(!mind || statistic_exempt)
@@ -101,7 +108,6 @@
 	new_death.cause_role_name = cause_data?.role
 	new_death.cause_faction_name = cause_data?.faction
 
-	var/mob/cause_mob = cause_data?.resolve_mob()
 	if(cause_mob)
 		cause_mob.life_kills_total += life_value
 

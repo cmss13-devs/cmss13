@@ -503,6 +503,9 @@
 	faction_group = null
 	ammo = new /obj/item/ammo_magazine/sentry/premade/dumb
 
+/obj/structure/machinery/defenses/sentry/premade/dumb/empty
+	ammo = new /obj/item/ammo_magazine/sentry/premade/dumb/empty
+
 //the turret inside a static sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/deployable
 	name = "UA-633 Static Gauss Turret"

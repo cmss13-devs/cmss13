@@ -378,6 +378,8 @@
 	name = "late join"
 	icon_state = "x2"
 	var/squad
+	/// What job should latejoin on this landmark
+	var/job
 
 /obj/effect/landmark/late_join/alpha
 	name = "alpha late join"
@@ -396,16 +398,24 @@
 	squad = SQUAD_MARINE_4
 
 
+/obj/effect/landmark/late_join/working_joe
+	name = "working joe late join"
+	job = JOB_WORKING_JOE
+
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()
 	if(squad)
 		LAZYADD(GLOB.latejoin_by_squad[squad], src)
+	else if(job)
+		LAZYADD(GLOB.latejoin_by_job[job], src)
 	else
 		GLOB.latejoin += src
 
 /obj/effect/landmark/late_join/Destroy()
 	if(squad)
 		LAZYREMOVE(GLOB.latejoin_by_squad[squad], src)
+	else if(job)
+		LAZYADD(GLOB.latejoin_by_job[job], src)
 	else
 		GLOB.latejoin -= src
 	return ..()

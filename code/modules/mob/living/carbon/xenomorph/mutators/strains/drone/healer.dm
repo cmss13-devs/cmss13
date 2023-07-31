@@ -151,7 +151,7 @@
 	var/salve_applied_recently = FALSE
 	var/mutable_appearance/salve_applied_icon
 
-	var/trasnferred_amount = 0
+	var/transferred_amount = 0
 	var/max_transferred_amount = 10000
 
 /datum/behavior_delegate/drone_healer/on_update_icons()
@@ -185,16 +185,16 @@
 */
 
 /datum/behavior_delegate/drone_healer/proc/modify_transferred(amount)
-	trasnferred_amount += amount
-	if(trasnferred_amount > max_transferred_amount)
-		trasnferred_amount = max_transferred_amount
-	if(trasnferred_amount < 0)
-		trasnferred_amount = 0
+	transferred_amount += amount
+	if(transferred_amount > max_transferred_amount)
+		transferred_amount = max_transferred_amount
+	if(transferred_amount < 0)
+		transferred_amount = 0
 
 /datum/behavior_delegate/drone_healer/append_to_stat()
 	. = list()
-	. += "Trasnferred health amount: [trasnferred_amount]"
-	if(trasnferred_amount >= max_transferred_amount)
+	. += "Trasnferred health amount: [transferred_amount]"
+	if(transferred_amount >= max_transferred_amount)
 		. += "Sacrifice will grant you new life."
 
 /datum/behavior_delegate/drone_healer/on_life()
@@ -204,7 +204,7 @@
 		return
 	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()
-	var/percentage_transferred = round((trasnferred_amount / max_transferred_amount) * 100, 10)
+	var/percentage_transferred = round((transferred_amount / max_transferred_amount) * 100, 10)
 	if(percentage_transferred)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_transferred]")
 
@@ -276,7 +276,7 @@
 	target.SetSuperslow(0)
 
 	var/datum/behavior_delegate/drone_healer/behavior_delegate = xeno.behavior_delegate
-	if(istype(behavior_delegate) && behavior_delegate.trasnferred_amount >= behavior_delegate.max_transferred_amount && xeno.client && xeno.hive)
+	if(istype(behavior_delegate) && behavior_delegate.transferred_amount >= behavior_delegate.max_transferred_amount && xeno.client && xeno.hive)
 		addtimer(CALLBACK(xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), xeno.client), 5 SECONDS)
 
 	xeno.gib("sacrificing itself")
@@ -289,7 +289,7 @@
 	var/datum/behavior_delegate/drone_healer/behavior_delegate = xeno.behavior_delegate
 	if(!istype(behavior_delegate))
 		return
-	if (behavior_delegate.trasnferred_amount < behavior_delegate.max_transferred_amount)
+	if (behavior_delegate.transferred_amount < behavior_delegate.max_transferred_amount)
 		to_chat(xeno, SPAN_HIGHDANGER("Warning: [name] is a last measure skill. Using it will kill you."))
 	else
 		to_chat(xeno, SPAN_HIGHDANGER("Warning: [name] is a last measure skill. Using it will kill you, but new life will be granted for your hard work for the hive."))

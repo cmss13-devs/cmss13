@@ -664,8 +664,8 @@
 							/obj/item/ammo_magazine/rocket/wp)
 		if(2) //Smartgun supplies
 			spawnitems = list(
-					/obj/item/cell/high,
-					/obj/item/cell/high,
+					/obj/item/smartgun_battery
+					/obj/item/smartgun_battery
 					/obj/item/ammo_magazine/smartgun,
 					/obj/item/ammo_magazine/smartgun,
 					/obj/item/ammo_magazine/smartgun,

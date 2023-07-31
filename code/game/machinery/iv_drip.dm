@@ -72,11 +72,11 @@
 		var/mob/living/carbon/human/H = usr
 		if(H.stat || get_dist(H, src) > 1 || H.blinded || H.lying)
 			return
-
+/*
 		if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
 			to_chat(user, SPAN_WARNING("You don't know how to connect this!"))
 			return
-
+*/
 		if(attached)
 			H.visible_message("[H] detaches \the [src] from \the [attached].", \
 			"You detach \the [src] from \the [attached].")

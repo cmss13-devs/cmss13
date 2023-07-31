@@ -1,14 +1,3 @@
-#define STATE_DEFAULT 1
-#define STATE_EVACUATION 2
-#define STATE_EVACUATION_CANCEL 3
-#define STATE_DISTRESS 4
-#define STATE_DESTROY 5
-#define STATE_DEFCONLIST 6
-
-#define STATE_MESSAGELIST 7
-#define STATE_VIEWMESSAGE 8
-#define STATE_DELMESSAGE 9
-
 #define COMMAND_SHIP_ANNOUNCE "Command Ship Announcement"
 
 /obj/structure/machinery/computer/almayer_control
@@ -19,8 +8,6 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-	var/state = STATE_DEFAULT
-
 	COOLDOWN_DECLARE(cooldown_request) // requesting a distress beacon
 	COOLDOWN_DECLARE(cooldown_destruct) // requesting evac
 	COOLDOWN_DECLARE(cooldown_central) // messaging HC (admins)
@@ -28,8 +15,6 @@
 
 	var/list/messagetitle = list()
 	var/list/messagetext = list()
-	var/currmsg = 0
-	var/aicurrmsg = 0
 
 /obj/structure/machinery/computer/almayer_control/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -81,6 +66,7 @@
 
 /obj/structure/machinery/computer/almayer_control/ui_data(mob/user)
 	var/list/data = list()
+	var/list/messages = list()
 
 	data["alert_level"] = security_level
 
@@ -94,75 +80,23 @@
 	data["evac_status"] = EvacuationAuthority.evac_status
 	if(EvacuationAuthority.evac_status == EVACUATION_STATUS_INITIATING)
 		data["evac_eta"] = EvacuationAuthority.get_status_panel_eta()
+
+	if(!messagetitle.len)
+		data["messages"] = null
+	else
+		for(var/i = 1; i<=messagetitle.len; i++)
+			var/list/messagedata = list(list(
+				"title" = messagetitle[i],
+				"text" = messagetext[i],
+				"number" = i
+			))
+			messages += messagedata
+
+		data["messages"] = messages
+
 	return data
 
 // end tgui data \\
-
-/obj/structure/machinery/computer/almayer_control/ui_interact(mob/user as mob)
-	user.set_interaction(src)
-
-	var/dat = "<head><title>Almayer Control Console</title></head><body>"
-
-	if(EvacuationAuthority.evac_status == EVACUATION_STATUS_INITIATING)
-		dat += "<B>Evacuation in Progress</B>\n<BR>\nETA: [EvacuationAuthority.get_status_panel_eta()]<BR>"
-
-	switch(state)
-		if(STATE_DEFAULT)
-			dat += "Alert Level: <A href='?src=\ref[src];operation=changeseclevel'>[get_security_level()]</A><BR>"
-			dat += "<BR><A HREF='?src=\ref[src];operation=ship_announce'>[is_announcement_active ? "Make a ship announcement" : "*Unavailable*"]</A>"
-			dat += GLOB.admins.len > 0 ? "<BR><A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A>" : "<BR>USCM communication offline"
-			dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
-			dat += "<BR><hr>"
-			dat += "<BR><hr>"
-
-
-			dat += "<BR><A HREF='?src=\ref[src];operation=messagelist'>Message list</A>"
-			dat += "<BR><A HREF='?src=\ref[src];operation=distress'>Send Distress Beacon</A>"
-			dat += "<BR><A HREF='?src=\ref[src];operation=destroy'>Activate Self-Destruct</A>"
-			switch(EvacuationAuthority.evac_status)
-				if(EVACUATION_STATUS_STANDING_BY)
-					dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_start'>Initiate emergency evacuation</A>"
-				if(EVACUATION_STATUS_INITIATING)
-					dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_cancel'>Cancel emergency evacuation</A>"
-
-		if(STATE_EVACUATION)
-			dat += "Are you sure you want to evacuate the [MAIN_SHIP_NAME]? <A HREF='?src=\ref[src];operation=evacuation_start'>Confirm</A>"
-
-		if(STATE_EVACUATION_CANCEL)
-			dat += "Are you sure you want to cancel the evacuation of the [MAIN_SHIP_NAME]? <A HREF='?src=\ref[src];operation=evacuation_cancel'>Confirm</A>"
-
-		if(STATE_DISTRESS)
-			dat += "Are you sure you want to trigger a distress signal? The signal can be picked up by anyone listening, friendly or not. <A HREF='?src=\ref[src];operation=distress'>Confirm</A>"
-
-		if(STATE_DESTROY)
-			dat += "Are you sure you want to trigger the self-destruct? This would mean abandoning ship. <A HREF='?src=\ref[src];operation=destroy'>Confirm</A>"
-
-		if(STATE_MESSAGELIST)
-			dat += "Messages:"
-			for(var/i = 1; i<=messagetitle.len; i++)
-				dat += "<BR><A HREF='?src=\ref[src];operation=viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
-
-		if(STATE_VIEWMESSAGE)
-			if (currmsg)
-				dat += "<B>[messagetitle[currmsg]]</B><BR><BR>[messagetext[currmsg]]"
-				dat += "<BR><BR><A HREF='?src=\ref[src];operation=delmessage'>Delete"
-			else
-				state = STATE_MESSAGELIST
-				attack_hand(user)
-				return FALSE
-
-		if(STATE_DELMESSAGE)
-			if (currmsg)
-				dat += "Are you sure you want to delete this message? <A HREF='?src=\ref[src];operation=delmessage2'>OK</A>|<A HREF='?src=\ref[src];operation=viewmessage'>Cancel</A>"
-			else
-				state = STATE_MESSAGELIST
-				attack_hand(user)
-				return FALSE
-
-	dat += "<BR>[(state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A HREF='?src=\ref[user];mach_close=almayer_control'>Close</A>"
-
-	show_browser(user, dat, name, "almayer_control")
-	onclose(user, "almayer_control")
 
 // tgui interact \\
 
@@ -179,9 +113,6 @@
 		// evac stuff start \\
 
 		if("evacuation_start")
-			if(announcement_faction != FACTION_MARINE)
-				return
-
 			if(security_level < SEC_LEVEL_RED)
 				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 				return FALSE
@@ -198,6 +129,24 @@
 			message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
 			var/datum/ares_link/link = GLOB.ares_link
 			link.log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
+			. = TRUE
+
+		if("evacuation_cancel")
+			if(!EvacuationAuthority.cancel_evacuation())
+				to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
+				return FALSE
+
+			spawn(35)//some time between AI announcements for evac cancel and SD cancel.
+				if(EvacuationAuthority.evac_status == EVACUATION_STATUS_STANDING_BY)//nothing changed during the wait
+					//if the self_destruct is active we try to cancel it (which includes lowering alert level to red)
+					if(!EvacuationAuthority.cancel_self_destruct(1))
+						//if SD wasn't active (likely canceled manually in the SD room), then we lower the alert level manually.
+						set_security_level(SEC_LEVEL_RED, TRUE) //both SD and evac are inactive, lowering the security level.
+
+			log_game("[key_name(usr)] has canceled the emergency evacuation.")
+			message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.")
+			var/datum/ares_link/link = GLOB.ares_link
+			link.log_ares_security("Cancel Evacuation", "[usr] has cancelled the emergency evacuation.")
 			. = TRUE
 
 		// evac stuff end \\
@@ -316,99 +265,20 @@
 			message_admins("[key_name(usr)] has requested Self-Destruct! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
 			to_chat(usr, SPAN_NOTICE("A self-destruct request has been sent to USCM Central Command."))
 			COOLDOWN_START(src, cooldown_destruct, COOLDOWN_COMM_DESTRUCT)
-			return TRUE
+			. = TRUE
+
+		if("delmessage")
+			var/number_of_message = params["number"]
+			if(!number_of_message)
+				return FALSE
+			var/title = messagetitle[number_of_message]
+			var/text  = messagetext[number_of_message]
+			messagetitle.Remove(title)
+			messagetext.Remove(text)
+			. = TRUE
+
 
 // end tgui interact \\
 
-/obj/structure/machinery/computer/almayer_control/Topic(href, href_list)
-	if(..())
-		return FALSE
-
-	usr.set_interaction(src)
-	var/datum/ares_link/link = GLOB.ares_link
-	switch(href_list["operation"])
-		if("main")
-			state = STATE_DEFAULT
-
-		if("evacuation_start")
-			if(state == STATE_EVACUATION)
-				if(security_level < SEC_LEVEL_RED)
-					to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
-					return FALSE
-
-				if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
-					to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
-					return FALSE
-
-				if(!EvacuationAuthority.initiate_evacuation())
-					to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
-					return FALSE
-
-				log_game("[key_name(usr)] has called for an emergency evacuation.")
-				message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
-				link.log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
-				return TRUE
-
-			state = STATE_EVACUATION
-
-		if("evacuation_cancel")
-			if(state == STATE_EVACUATION_CANCEL)
-				if(!EvacuationAuthority.cancel_evacuation())
-					to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
-					return FALSE
-
-				spawn(35)//some time between AI announcements for evac cancel and SD cancel.
-					if(EvacuationAuthority.evac_status == EVACUATION_STATUS_STANDING_BY)//nothing changed during the wait
-						//if the self_destruct is active we try to cancel it (which includes lowering alert level to red)
-						if(!EvacuationAuthority.cancel_self_destruct(1))
-							//if SD wasn't active (likely canceled manually in the SD room), then we lower the alert level manually.
-							set_security_level(SEC_LEVEL_RED, TRUE) //both SD and evac are inactive, lowering the security level.
-
-				log_game("[key_name(usr)] has canceled the emergency evacuation.")
-				message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.")
-				link.log_ares_security("Cancel Evacuation", "[usr] has cancelled the emergency evacuation.")
-				return TRUE
-
-			state = STATE_EVACUATION_CANCEL
-
-
-
-
-
-		if("messagelist")
-			currmsg = 0
-			state = STATE_MESSAGELIST
-
-		if("viewmessage")
-			state = STATE_VIEWMESSAGE
-			if (!currmsg)
-				if(href_list["message-num"]) currmsg = text2num(href_list["message-num"])
-				else state = STATE_MESSAGELIST
-
-		if("delmessage")
-			state = (currmsg) ? STATE_DELMESSAGE : STATE_MESSAGELIST
-
-		if("delmessage2")
-			if(currmsg)
-				var/title = messagetitle[currmsg]
-				var/text  = messagetext[currmsg]
-				messagetitle.Remove(title)
-				messagetext.Remove(text)
-				if(currmsg == aicurrmsg) aicurrmsg = 0
-				currmsg = 0
-			state = STATE_MESSAGELIST
-
-	updateUsrDialog()
-
 // end tgui \\
 
-#undef STATE_DEFAULT
-#undef STATE_EVACUATION
-#undef STATE_EVACUATION_CANCEL
-#undef STATE_DISTRESS
-#undef STATE_DESTROY
-#undef STATE_DEFCONLIST
-
-#undef STATE_MESSAGELIST
-#undef STATE_VIEWMESSAGE
-#undef STATE_DELMESSAGE

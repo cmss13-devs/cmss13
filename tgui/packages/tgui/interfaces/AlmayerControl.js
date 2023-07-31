@@ -1,11 +1,13 @@
+import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Button, Section, Flex, NoticeBox } from '../components';
+import { Button, Section, Flex, NoticeBox, Collapsible, Divider, Box } from '../components';
 import { Window } from '../layouts';
 
 export const AlmayerControl = (_props, context) => {
   const { act, data } = useBackend(context);
 
   const worldTime = data.worldtime;
+  const messages = data.messages;
 
   const evacstatus = data.evac_status;
   const evacEta = data.evac_eta;
@@ -18,13 +20,15 @@ export const AlmayerControl = (_props, context) => {
   const canRequest = // requesting distress beacon
     data.time_request < worldTime && AlertLevel === 2 && minimumTimeElapsed;
   const canEvac = (evacstatus === 0, AlertLevel >= 2); // triggering evac
-  const canDestruct = data.time_destruct < worldTime;
+  const canDestruct =
+    data.time_destruct < worldTime && minimumTimeElapsed && AlertLevel === 2;
   const canCentral = data.time_central < worldTime; // messaging HC
 
   let distress_reason;
   let destruct_reason;
   if (AlertLevel === 3) {
     distress_reason = 'Self-destruct in progress. Beacon disabled.';
+    destruct_reason = 'Self-destruct is already active!';
   } else if (AlertLevel !== 2) {
     distress_reason = 'Ship is not under an active emergency.';
     destruct_reason = 'Ship is not under an active emergency.';
@@ -33,6 +37,11 @@ export const AlmayerControl = (_props, context) => {
       'Beacon is currently on cooldown. Time remaining: ' +
       Math.ceil((data.time_message - worldTime) / 10) +
       'secs.';
+  } else if (data.time_destruct < worldTime) {
+    destruct_reason =
+      'A request has already been sent to HC. Please wait: ' +
+      Math.ceil((data.time_destruct - worldTime) / 10) +
+      'secs to send another.';
   } else if (!minimumTimeElapsed) {
     distress_reason = "It's too early to launch a distress beacon.";
     destruct_reason = "It's too early to initiate the self-destruct.";
@@ -58,7 +67,7 @@ export const AlmayerControl = (_props, context) => {
   }
 
   return (
-    <Window width={350} height={350}>
+    <Window width={450} height={700}>
       <Window.Content scrollable>
         <Section title="Ship Control">
           <Flex height="100%" direction="column">
@@ -117,7 +126,7 @@ export const AlmayerControl = (_props, context) => {
                 onClick={() => act('award')}
               />
             </Flex.Item>
-            <Section title="Evacuation">
+            <Section title="Emergency measures">
               {AlertLevel < 2 && (
                 <NoticeBox color="bad" warning={1} textAlign="center">
                   The ship must be under red alert in order to enact evacuation
@@ -140,9 +149,21 @@ export const AlmayerControl = (_props, context) => {
                 </Flex.Item>
               )}
               {evacstatus === 1 && (
-                <NoticeBox color="good" info={1} textAlign="center">
-                  Evacuation ongoing. Time until escape pod launch: {evacEta}.
-                </NoticeBox>
+                <Flex.Item>
+                  <NoticeBox color="good" info={1} textAlign="center">
+                    Evacuation ongoing. Time until escape pod launch: {evacEta}.
+                  </NoticeBox>
+                  <Button.Confirm
+                    fluid={1}
+                    color="red"
+                    icon="ban"
+                    content={'Cancel Evacuation'}
+                    confirmColor="bad"
+                    confirmContent="Confirm?"
+                    confirmIcon="question"
+                    onClick={() => act('evacuation_cancel')}
+                  />
+                </Flex.Item>
               )}
               {evacstatus === 2 && (
                 <NoticeBox color="good" info={1} textAlign="center">
@@ -154,13 +175,11 @@ export const AlmayerControl = (_props, context) => {
                   Evacuation complete.
                 </NoticeBox>
               )}
-            </Section>
-            <Section title="Self-Destruct">
               <Flex.Item>
                 {!canDestruct && (
                   <Button
                     disabled={1}
-                    content={'Self-Destruct disabled!'}
+                    content={'Self-destruct disabled!'}
                     tooltip={destruct_reason}
                     fluid={1}
                     icon="ban"
@@ -170,17 +189,15 @@ export const AlmayerControl = (_props, context) => {
                   <Button.Confirm
                     fluid={1}
                     color="red"
-                    icon="phone-volume"
-                    content={'Initiate Self-Destruct'}
+                    icon="explosion"
+                    content={'Request to initiate Self-destruct'}
                     confirmColor="bad"
-                    confirmContent="Confirm Self-Destruct?"
+                    confirmContent="Confirm Self-destruct?"
                     confirmIcon="question"
                     onClick={() => act('destroy')}
                   />
                 )}
               </Flex.Item>
-            </Section>
-            <Section title="Distress Beacon">
               <Flex.Item>
                 {!canRequest && (
                   <Button
@@ -207,6 +224,35 @@ export const AlmayerControl = (_props, context) => {
             </Section>
           </Flex>
         </Section>
+        {messages && (
+          <Fragment>
+            <Divider />
+            <Collapsible title="Messages">
+              <Flex>
+                {messages.map((entry) => {
+                  return (
+                    <Flex.Item key={entry} grow>
+                      <Section
+                        title={entry.title}
+                        buttons={
+                          <Button
+                            content={'Delete message'}
+                            color="red"
+                            icon="trash"
+                            onClick={() =>
+                              act('delmessage', { number: entry.number })
+                            }
+                          />
+                        }>
+                        <Box>{entry.text}</Box>
+                      </Section>
+                    </Flex.Item>
+                  );
+                })}
+              </Flex>
+            </Collapsible>
+          </Fragment>
+        )}
       </Window.Content>
     </Window>
   );

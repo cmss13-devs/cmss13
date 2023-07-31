@@ -12,6 +12,9 @@
 	var/obj/item/reagent_container/beaker = null
 	var/datum/beam/current_beam
 
+	//fix IV needing power to work since an IV only need gravity to work and that all map have it.
+	use_power = USE_POWER_NONE
+
 /obj/structure/machinery/iv_drip/update_icon()
 	if(attached)
 		icon_state = "hooked"

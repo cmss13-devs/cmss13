@@ -28,14 +28,14 @@
 
 //------------ CHIEF MP ---------------
 GLOBAL_LIST_INIT(cm_vending_clothing_military_police_chief, list(
+		list("POLICE SET (MANDATORY)", 0, null, null, null),
+		list("Essential Police Set", 0, /obj/effect/essentials_set/police, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("CMP Uniform", 0, /obj/item/clothing/under/marine/officer/warrant, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/cmpcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
-		list("Security HUD Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
-		list("Gear Belt", 0, /obj/item/storage/belt/security/MP/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
 
 		list("ARMOR (TAKE ALL)", 0, null, null, null),
 		list("Military Police Chief M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/WO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
@@ -317,3 +317,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("Patrol Cap", 0, /obj/item/clothing/head/cmcap, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Officer Cap", 0, /obj/item/clothing/head/cmcap/ro, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 	))
+
+/obj/effect/essentials_set/police
+	spawned_gear_list = list(
+		/obj/item/clothing/glasses/sunglasses/sechud,
+		/obj/item/storage/belt/security/MP/full,
+	)

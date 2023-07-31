@@ -439,6 +439,12 @@
 	icon_state = "med_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/med)
 
+/obj/item/device/radio/headset/almayer/research
+	name = "researcher radio headset"
+	desc = "A headset used by medbay's skilled researchers. Channels are as follows: :m - medical, :t - intel."
+	icon_state = "med_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/medres)
+
 /obj/item/device/radio/headset/almayer/ct
 	name = "supply radio headset"
 	desc = "Used by the lowly Cargo Technicians of the USCM, light weight and portable. To access the supply channel, use :u."
@@ -995,6 +1001,17 @@
 	initial_keys = list(/obj/item/device/encryptionkey/soc)
 	volume = RADIO_VOLUME_IMPORTANT
 	ignore_z = TRUE
+
+/obj/item/device/radio/headset/almayer/sof/survivor_forecon
+	name = "USCM SOF headset"
+	desc = "Issued exclusively to Marine Raiders and members of the USCM's Force Reconnaissance."
+	icon_state = "soc_headset"
+	frequency = SOF_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/soc/forecon)
+	volume = RADIO_VOLUME_QUIET
+	ignore_z = FALSE
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_USCM
 
 /obj/item/device/radio/headset/almayer/mcom/vc
 	name = "marine vehicle crew radio headset"

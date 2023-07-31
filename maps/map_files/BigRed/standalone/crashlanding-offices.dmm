@@ -1425,6 +1425,15 @@
 	icon_state = "rasputin15"
 	},
 /area/bigredv2/outside/office_complex)
+"hN" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_medic,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/office_complex)
 "id" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
@@ -1630,6 +1639,15 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/shuttle/dropship{
 	icon_state = "floor8"
+	},
+/area/bigredv2/outside/office_complex)
+"XH" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_engineer,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
 	},
 /area/bigredv2/outside/office_complex)
 
@@ -1911,7 +1929,7 @@ cX
 cX
 by
 aN
-id
+XH
 AB
 yS
 aV
@@ -2078,7 +2096,7 @@ od
 yS
 yS
 cu
-id
+hN
 yS
 yS
 yS

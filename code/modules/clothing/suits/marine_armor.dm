@@ -28,44 +28,6 @@
 #define SOF 7
 #define NOSQUAD 8
 
-var/list/armormarkings = list()
-var/list/armormarkings_sql = list()
-var/list/helmetmarkings = list()
-var/list/helmetmarkings_sql = list()
-var/list/glovemarkings = list()
-var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), rgb(65,72,200), rgb(103,214,146), rgb(196, 122, 80), rgb(64, 0, 0))
-var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150,255), rgb(130,140,255), rgb(103,214,146), rgb(196, 122, 80), rgb(64, 0, 0))
-
-/proc/initialize_marine_armor()
-	var/i
-	for(i=1, i<(length(squad_colors) + 1), i++)
-		var/squad_color = squad_colors[i]
-		var/armor_color = rgb(hex2num(copytext(squad_color, 2, 4)), hex2num(copytext(squad_color, 4, 6)), hex2num(copytext(squad_color, 6, 8)), 125)
-
-		var/image/armor
-		var/image/helmet
-		var/image/glove
-
-		armor = image('icons/mob/humans/onmob/suit_1.dmi',icon_state = "std-armor")
-		armor.color = armor_color
-		armormarkings += armor
-		armor = image('icons/mob/humans/onmob/suit_1.dmi',icon_state = "sql-armor")
-		armor.color = armor_color
-		armormarkings_sql += armor
-
-		helmet = image('icons/mob/humans/onmob/head_1.dmi',icon_state = "std-helmet")
-		helmet.color = armor_color
-		helmetmarkings += helmet
-		helmet = image('icons/mob/humans/onmob/head_1.dmi',icon_state = "sql-helmet")
-		helmet.color = armor_color
-		helmetmarkings_sql += helmet
-
-		glove = image('icons/mob/humans/onmob/hands_garb.dmi',icon_state = "std-gloves")
-		glove.color = armor_color
-		glovemarkings += glove
-
-
-
 // MARINE STORAGE ARMOR
 
 /obj/item/clothing/suit/storage/marine
@@ -122,7 +84,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	var/armor_overlays[]
 	actions_types = list(/datum/action/item_action/toggle)
 	var/flags_marine_armor = ARMOR_SQUAD_OVERLAY|ARMOR_LAMP_OVERLAY
-	var/specialty = "M3 pattern marine" //Same thing here. Give them a specialty so that they show up correctly in vendors.
+	var/specialty = "M3 pattern marine" //Same thing here. Give them a specialty so that they show up correctly in vendors. speciality does NOTHING if you have NO_NAME_OVERRIDE
 	w_class = SIZE_HUGE
 	uniform_restricted = list(/obj/item/clothing/under/marine)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
@@ -132,7 +94,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	drop_sound = "armorequip"
 	equip_sounds = list('sound/handling/putting_on_armor1.ogg')
 	var/armor_variation = 0
-	//speciality does NOTHING if you have NO_NAME_OVERRIDE
+	/// The dmi where the grayscale squad overlays are contained
+	var/squad_overlay_icon = 'icons/mob/humans/onmob/suit_1.dmi'
 
 /obj/item/clothing/suit/storage/marine/Initialize(mapload)
 	. = ..()
@@ -510,7 +473,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
-	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	storage_slots = 2
@@ -549,7 +512,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_VERYLOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 1
@@ -579,6 +542,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	storage_slots = 3
+	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	time_to_unequip = 0.5 SECONDS
 	time_to_equip = 1 SECONDS
 	uniform_restricted = null
@@ -589,7 +553,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/heavy
 	name = "\improper M3-EOD pattern heavy armor"
-	desc = "A heavier version of the standard M3 pattern armor, the armor is primarily designed to withstand ballistic, explosive, and internal damage, with the drawback of increased bulk and thus reduced movement speed, alongside little additional protection from standard blunt force impacts and none from biological threats."
+	desc = "A heavier version of the standard M3 pattern armor, the armor is primarily designed to withstand ballistic, explosive, and internal damage, with the drawback of increased bulk and thus reduced movement speed, alongside little additional protection from standard blunt force impacts and biological threats."
 	desc_lore = "This configuration of the iconic armor was developed during the Canton War in 2160 between the UPP and USCM - Designed in response to a need for higher protection for ComTechs assigned as EODs during the conflict, this is the pinnacle of protection for your average marine. The shoulders and kneepads have both been expanded upon heavily, covering up the arteries on each limb. A special spall liner was developed for this suit, with the same technology being used in the M70 Flak Jacket being developed at the same time."
 	specialty = "\improper M3-EOD pattern"
 	icon_state = "H1"
@@ -597,7 +561,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
-	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	storage_slots = 2
@@ -1028,6 +992,12 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	GS.camouflage()
 
 #undef FULL_CAMOUFLAGE_ALPHA
+
+/obj/item/clothing/suit/storage/marine/ghillie/forecon
+	name = "UDEP Thermal Poncho"
+	desc = "UDEP or the Ultra Diffusive Environmental Poncho is a camouflaged rain-cover worn to protect against the elements and chemical spills. It's commonly treated with an infrared absorbing coating, making a marine almost invisible in the rain. Favoured by USCM specialists for it's comfort and practicality."
+	icon_state = "mercenary_miner_armor"
+	flags_atom = MOB_LOCK_ON_EQUIP|NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 /obj/item/clothing/suit/storage/marine/sof
 	name = "\improper SOF Armor"

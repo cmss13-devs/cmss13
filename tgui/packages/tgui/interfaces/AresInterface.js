@@ -22,11 +22,18 @@ const PAGES = {
 
 export const AresInterface = (props, context) => {
   const { data } = useBackend(context);
-  const { current_menu } = data;
+  const { current_menu, sudo } = data;
   const PageComponent = PAGES[current_menu]();
 
+  let themecolor = 'crtblue';
+  if (sudo >= 1) {
+    themecolor = 'crtred';
+  } else if (current_menu === 'emergency') {
+    themecolor = 'crtred';
+  }
+
   return (
-    <Window theme="crtblue" width={780} height={725}>
+    <Window theme={themecolor} width={780} height={725}>
       <Window.Content scrollable>
         <PageComponent />
       </Window.Content>
@@ -1261,8 +1268,14 @@ const AntiAir = (props, context) => {
 
 const Security = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, records_security } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    records_security,
+    access_level,
+  } = data;
 
   return (
     <>
@@ -1364,6 +1377,8 @@ const Emergency = (props, context) => {
     nuketimelock,
     nuke_available,
   } = data;
+  const canQuarters = alert_level < 2;
+  let quarters_reason = 'Call for General Quarters.';
   const minimumEvacTime = worldtime > distresstimelock;
   const distressCooldown = worldtime < distresstime;
   const canDistress = alert_level === 2 && !distressCooldown && minimumEvacTime;
@@ -1396,7 +1411,8 @@ const Emergency = (props, context) => {
   let nuke_reason =
     'Request a nuclear device to be authorized by USCM High Command.';
   if (!nuke_available) {
-    nuke_reason = 'No nuclear ordnance is available during this operation.';
+    nuke_reason =
+      'No nuclear ordnance is available during this operation, or one has already been provided.';
   } else if (mission_failed) {
     nuke_reason =
       'You have already lost the objective, you cannot use a nuclear device aboard the ship!';
@@ -1445,6 +1461,20 @@ const Emergency = (props, context) => {
 
       <h1 align="center">Emergency Protocols</h1>
       <Flex align="center" justify="center" height="50%" direction="column">
+        <Button.Confirm
+          content="Call General Quarters"
+          tooltip={quarters_reason}
+          icon="triangle-exclamation"
+          color="red"
+          width="40vw"
+          textAlign="center"
+          fontSize="1.5rem"
+          p="1rem"
+          mt="5rem"
+          bold
+          onClick={() => act('general_quarters')}
+          disabled={!canQuarters}
+        />
         <Button.Confirm
           content="Initiate Evacuation"
           tooltip={evac_reason}

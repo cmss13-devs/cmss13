@@ -276,7 +276,6 @@
 	var/queen_ability_cooldown = 0
 	var/egg_amount = 0 //amount of eggs inside the queen
 	var/screech_sound_effect_list = list('sound/voice/alien_queen_screech.ogg') //the noise the Queen makes when she screeches. Done this way for VV purposes.
-	var/egg_planting_range = 3 // in ovipositor queen can plant egg up to this amount of tiles away from her position
 	var/queen_ovipositor_icon
 	var/queen_standing_icon
 
@@ -832,6 +831,7 @@
 	ADD_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))
 
 	extra_build_dist = IGNORE_BUILD_DISTANCE
+	egg_planting_range = 3
 	anchored = TRUE
 	resting = FALSE
 	update_canmove()
@@ -883,6 +883,7 @@
 
 	egg_amount = 0
 	extra_build_dist = initial(extra_build_dist)
+	egg_planting_range = initial(egg_planting_range)
 	for(var/datum/action/xeno_action/action in actions)
 		if(istype(action, /datum/action/xeno_action/onclick/grow_ovipositor))
 			var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = action
@@ -916,11 +917,6 @@
 	. = ..()
 	if(ovipositor)
 		return "Queen_ovipositor_[severity]" // I don't actually have it, but maybe one day.
-
-/mob/living/carbon/xenomorph/queen/proc/in_egg_plant_range(turf/T)
-	if(!ovipositor)
-		return FALSE // can't range plant while not in ovi... but who the fuck cares, we can't plant anyways
-	return get_dist(src, T) <= egg_planting_range
 
 /mob/living/carbon/xenomorph/queen/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	death(cause, 1)

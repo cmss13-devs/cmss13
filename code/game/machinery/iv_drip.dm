@@ -47,6 +47,7 @@
 	else if(!QDELETED(src) && attached)
 		current_beam = beam(attached, "iv_tube")
 
+//probably need to comment it out....
 /obj/structure/machinery/iv_drip/power_change()
 	. = ..()
 	if(stat & NOPOWER && attached)
@@ -70,6 +71,10 @@
 	if(ishuman(usr))
 		var/mob/living/carbon/human/H = usr
 		if(H.stat || get_dist(H, src) > 1 || H.blinded || H.lying)
+			return
+
+		if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
+			to_chat(user, SPAN_WARNING("You don't know how to connect this!"))
 			return
 
 		if(attached)

@@ -837,8 +837,8 @@
 	icon_state = "van"
 	bound_height = 64
 	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
+	unslashable = FALSE
+	unacidable = FALSE
 
 /obj/structure/prop/vehicles/crawler
 	name = "colony crawler"
@@ -1144,3 +1144,11 @@
 /obj/structure/prop/wooden_cross/update_icon()
 	if(tagged)
 		overlays += mutable_appearance('icons/obj/structures/props/crosses.dmi', "cross_overlay")
+
+
+/obj/structure/prop/invuln/rope
+	name = "rope"
+	desc = "A secure rope looks like someone might've been hiding out on those rocks."
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon_state = "rope"
+	density = FALSE

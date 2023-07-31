@@ -69,7 +69,10 @@
 		stack_trace("track_mob_death called with string cause ([cause_data]) instead of datum")
 		cause_data = create_cause_data(cause_data)
 
-	attack_log += "\[[time_stamp()]\] died to [cause_data.cause_name]"
+	var/log_message = "\[[time_stamp()]\] [key_name(src)] died"
+	if(cause_data)
+		log_message += " to [cause_data.cause_name]"
+	attack_log += "[log_message]."
 
 	if(!mind || statistic_exempt)
 		return

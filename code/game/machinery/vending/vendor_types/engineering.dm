@@ -54,6 +54,7 @@
 		list("EQUIPMENT", -1, null, null),
 		list("Utility Tool Belt", round(scale * 4), /obj/item/storage/belt/utility, VENDOR_ITEM_REGULAR),
 		list("Cable Coil", round(scale * 4), /obj/item/stack/cable_coil/random, VENDOR_ITEM_REGULAR),
+		list("Welding Goggles", round(scale * 2), /obj/item/clothing/glasses/welding, VENDOR_ITEM_REGULAR),
 
 		list("TOOLS", -1, null, null),
 		list("Blowtorch", round(scale * 4), /obj/item/tool/weldingtool, VENDOR_ITEM_REGULAR),
@@ -63,6 +64,7 @@
 		list("Wrench", round(scale * 4), /obj/item/tool/wrench, VENDOR_ITEM_REGULAR),
 		list("Multitool", round(scale * 4), /obj/item/device/multitool, VENDOR_ITEM_REGULAR),
 		list("ME3 Hand Welder", round(scale * 2), /obj/item/tool/weldingtool/simple, VENDOR_ITEM_REGULAR),
+		list("High-Capacity Industrial Blowtorch", 2, /obj/item/tool/weldingtool/hugetank, VENDOR_ITEM_REGULAR),
 
 		list("UTILITY", -1, null, null),
 		list("Sentry Gun Network Laptop", 4, /obj/item/device/sentry_computer, VENDOR_ITEM_REGULAR),

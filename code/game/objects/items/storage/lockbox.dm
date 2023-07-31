@@ -53,12 +53,6 @@
 	name = "\improper Wey-Yu equipment lockbox"
 	req_access = list(ACCESS_WY_CORPORATE)
 
-/obj/item/storage/lockbox/loyalty/fill_preset_inventory()
-	new /obj/item/ammo_magazine/pistol/mod88(src)
-	new /obj/item/ammo_magazine/pistol/mod88(src)
-	new /obj/item/ammo_magazine/pistol/mod88/rubber(src)
-	new /obj/item/ammo_magazine/pistol/mod88/rubber(src)
-
 
 /obj/item/storage/lockbox/cluster
 	name = "lockbox of cluster flashbangs"

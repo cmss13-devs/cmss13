@@ -270,4 +270,7 @@
 
 		list("MISC", 0, null, null, null),
 		list("Hollow Cane", 15, /obj/item/weapon/pole/fancy_cane/this_is_a_knife, "white", "A hollow cane that can store any commonplace sharp weaponry. Said weapon not included."),
+
+		list("AMMO", 0, null, null, null),
+		list("ES-4 stun magazine", 10, /obj/item/ammo_magazine/pistol/es4, "white", "Holds 19 rounds of specialized Conductive 9mm."),
 	)

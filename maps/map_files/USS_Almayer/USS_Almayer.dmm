@@ -28418,6 +28418,12 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/brig/execution)
+"czG" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/almayer/no_build{
+	icon_state = "ai_floors"
+	},
+/area/almayer/command/airoom)
 "czJ" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = 8;
@@ -61701,6 +61707,13 @@
 	icon_state = "redfull"
 	},
 /area/almayer/command/cic)
+"rzf" = (
+/obj/effect/landmark/late_join/working_joe,
+/obj/effect/landmark/start/working_joe,
+/turf/open/floor/almayer/no_build{
+	icon_state = "ai_floors"
+	},
+/area/almayer/command/airoom)
 "rzj" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -136366,7 +136379,7 @@ lmz
 lmz
 lmz
 lmz
-lmz
+daz
 sbJ
 sbJ
 sbJ
@@ -136569,8 +136582,8 @@ lmz
 lmz
 lmz
 lmz
-lmz
 daz
+rzf
 bRo
 wyv
 pTt
@@ -136772,8 +136785,8 @@ lmz
 lmz
 lmz
 lmz
-lmz
 daz
+czG
 ylg
 ylg
 daz
@@ -136975,7 +136988,7 @@ bdH
 bdH
 bdH
 lmz
-lmz
+daz
 daz
 daz
 daz

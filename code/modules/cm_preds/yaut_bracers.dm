@@ -46,6 +46,8 @@
 	var/mob/living/carbon/human/owner //Pred spawned on, or thrall given to.
 	var/obj/item/clothing/gloves/yautja/linked_bracer //Bracer linked to this one (thrall or mentor).
 	COOLDOWN_DECLARE(bracer_recharge)
+	/// What minimap icon this bracer should have
+	var/minimap_icon = "predator"
 
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	. = ..()
@@ -54,6 +56,8 @@
 		if(!owner)
 			owner = user
 		toggle_lock_internal(user, TRUE)
+		RegisterSignal(user, list(COMSIG_MOB_STAT_SET_ALIVE, COMSIG_MOB_DEATH), PROC_REF(update_minimap_icon))
+		INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), user)
 
 /obj/item/clothing/gloves/yautja/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -65,6 +69,8 @@
 /obj/item/clothing/gloves/yautja/dropped(mob/user)
 	STOP_PROCESSING(SSobj, src)
 	flags_item = initial(flags_item)
+	UnregisterSignal(user, list(COMSIG_MOB_STAT_SET_ALIVE, COMSIG_MOB_DEATH))
+	SSminimaps.remove_marker(user)
 	..()
 
 /obj/item/clothing/gloves/yautja/pickup(mob/living/user)
@@ -102,6 +108,14 @@
 /obj/item/clothing/gloves/yautja/proc/decloak()
 	return
 
+/// Called to update the minimap icon of the predator
+/obj/item/clothing/gloves/yautja/proc/update_minimap_icon()
+	var/turf/wearer_turf = get_turf(owner)
+	SSminimaps.remove_marker(owner)
+	if(owner?.stat >= DEAD)
+		SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("undefibbable")) //defib/undefib status doesn't really matter because they're gonna explode in the end regardless
+	else
+		SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, 'icons/ui_icons/map_blips.dmi')
 /*
 *This is the main proc for checking AND draining the bracer energy. It must have human passed as an argument.
 *It can take a negative value in amount to restore energy.
@@ -193,6 +207,7 @@
 	desc = "A pair of strange alien bracers, adapted for human biology."
 
 	color = "#b85440"
+	minimap_icon = "thrall"
 
 
 /obj/item/clothing/gloves/yautja/hunter

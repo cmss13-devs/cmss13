@@ -37,73 +37,6 @@
 	var/list/multicam_marines = list()
 
 
-/datum/overwatch_camera_holder
-	var/map_name
-	var/atom/movable/screen/map_view/cam_screen
-	var/atom/movable/screen/background/cam_background
-
-	var/obj/structure/machinery/camera/current
-
-	var/list/range_turfs = list()
-
-/datum/overwatch_camera_holder/New(number, originator_console)
-	. = ..()
-	map_name = "camera_console_[REF(originator_console)]_map_[number]"
-	cam_screen = new
-	cam_screen.icon = null
-	cam_screen.name = "screen"
-	cam_screen.assigned_map = map_name
-	cam_screen.del_on_map_removal = FALSE
-	cam_screen.screen_loc = "[map_name]:1,1"
-	cam_background = new
-	cam_background.assigned_map = map_name
-	cam_background.del_on_map_removal = FALSE
-
-/datum/overwatch_camera_holder/process()
-	if(current)
-		var/list/visible_turfs = list()
-		var/area/A
-		for(var/turf/visible_turf as anything in range_turfs)
-			A = visible_turf.loc
-			if(!A.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
-				visible_turfs += visible_turf
-		cam_screen.vis_contents = visible_turfs
-
-/datum/overwatch_camera_holder/proc/update_camera(mob/living/carbon/human/marine)
-	if(!marine)
-		return
-	if(!istype(marine.head, /obj/item/clothing/head/helmet/marine))
-		return
-
-	var/obj/item/clothing/head/helmet/marine/marine_helmet = marine.head
-	current = marine_helmet.camera
-
-	var/cam_location = current
-	if(istype(current.loc, /obj/item/clothing/head/helmet/marine))
-		var/obj/item/clothing/head/helmet/marine/helmet = current.loc
-		cam_location = helmet.loc
-
-	var/list/visible_things = current.isXRay() ? range(current.view_range, cam_location) : view(current.view_range, cam_location)
-
-	var/list/visible_turfs = list()
-	range_turfs.Cut()
-	var/area/A
-	for(var/turf/visible_turf in visible_things)
-		range_turfs += visible_turf
-		A = visible_turf.loc
-		if(!A.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
-			visible_turfs += visible_turf
-
-	var/list/bbox = get_bbox_of_atoms(visible_turfs)
-	var/size_x = bbox[3] - bbox[1] + 1
-	var/size_y = bbox[4] - bbox[2] + 1
-
-	cam_screen.vis_contents = visible_turfs
-	cam_background.icon_state = "clear"
-	cam_background.fill_rect(1, 1, size_x, size_y)
-
-	START_PROCESSING(SSfastobj, src) // fastobj to somewhat keep pace with lighting updates
-
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
 	tacmap = new(src, minimap_type)
@@ -113,6 +46,8 @@
 	camera_holders += new /datum/overwatch_camera_holder(2, src)
 	camera_holders += new /datum/overwatch_camera_holder(3, src)
 	camera_holders += new /datum/overwatch_camera_holder(4, src)
+
+	START_PROCESSING(SSsuperfastobj, src)
 
 
 
@@ -597,6 +532,9 @@
 		holder.update_camera(marine)
 		index++
 
+/obj/structure/machinery/computer/overwatch/process()
+	update_multicams()
+
 
 /obj/structure/machinery/computer/overwatch/proc/change_lead(sl_ref)
 	if(!usr)
@@ -931,6 +869,9 @@
 /obj/structure/machinery/computer/overwatch/almayer/broken
 	name = "Broken Overwatch Console"
 
+/obj/structure/machinery/computer/overwatch/almayer/broken/process()
+	return PROCESS_KILL
+
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF
 /obj/structure/machinery/computer/overwatch/upp
@@ -985,3 +926,61 @@
 #undef HIDE_ALMAYER
 #undef HIDE_GROUND
 #undef HIDE_NONE
+
+/datum/overwatch_camera_holder
+	var/map_name
+	var/atom/movable/screen/map_view/cam_screen
+	var/atom/movable/screen/background/cam_background
+
+
+	var/obj/structure/machinery/camera/current
+
+	var/list/range_turfs = list()
+
+/datum/overwatch_camera_holder/New(number, originator_console)
+	. = ..()
+	map_name = "camera_console_[REF(originator_console)]_map_[number]"
+	cam_screen = new
+	cam_screen.icon = null
+	cam_screen.name = "screen"
+	cam_screen.assigned_map = map_name
+	cam_screen.del_on_map_removal = FALSE
+	cam_screen.screen_loc = "[map_name]:1,1"
+	cam_background = new
+	cam_background.assigned_map = map_name
+	cam_background.del_on_map_removal = FALSE
+
+
+/datum/overwatch_camera_holder/proc/update_camera(mob/living/carbon/human/marine)
+	if(!marine && !current)
+		return
+	if(!istype(marine.head, /obj/item/clothing/head/helmet/marine) && !current)
+		return
+
+	if(marine)
+		var/obj/item/clothing/head/helmet/marine/marine_helmet = marine.head
+		current = marine_helmet.camera
+
+	var/cam_location = current
+	if(istype(current.loc, /obj/item/clothing/head/helmet/marine))
+		var/obj/item/clothing/head/helmet/marine/helmet = current.loc
+		cam_location = helmet.loc
+
+	var/list/visible_things = current.isXRay() ? range(current.view_range, cam_location) : view(current.view_range, cam_location)
+
+	var/list/visible_turfs = list()
+	range_turfs.Cut()
+	var/area/A
+	for(var/turf/visible_turf in visible_things)
+		range_turfs += visible_turf
+		A = visible_turf.loc
+		if(!A.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
+			visible_turfs += visible_turf
+
+	var/list/bbox = get_bbox_of_atoms(visible_turfs)
+	var/size_x = bbox[3] - bbox[1] + 1
+	var/size_y = bbox[4] - bbox[2] + 1
+
+	cam_screen.vis_contents = visible_turfs
+	cam_background.icon_state = "clear"
+	cam_background.fill_rect(1, 1, size_x, size_y)

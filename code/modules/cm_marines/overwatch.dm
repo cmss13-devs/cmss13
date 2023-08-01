@@ -143,29 +143,6 @@
 
 	tgui_interact(user)
 
-	user.set_interaction(src)
-	var/dat = "<body>"
-
-	if(!operator)
-		dat += "<BR><B>Operator:</b> <A href='?src=\ref[src];operation=change_operator'>----------</A><BR>"
-	else
-		dat += "<BR><B>Operator:</b> <A href='?src=\ref[src];operation=change_operator'>[operator.name]</A><BR>"
-		dat += "   <A href='?src=\ref[src];operation=logout'>Stop Overwatch</A><BR>"
-		dat += "<hr>"
-
-		switch(state)
-			if(0) // Base menu
-				dat += get_base_menu_text()
-			if(1) //Info screen.
-				dat += get_info_screen_text()
-			if(2)
-				dat += get_supply_drop_menu_text()
-			if(3)
-				dat += get_orbital_bombardment_control_text()
-
-	show_browser(user, dat, "Overwatch Console", "overwatch", "size=550x550")
-	return
-
 /obj/structure/machinery/computer/overwatch/ui_static_data(mob/user)
 	var/list/data = list()
 	data["mapRef"] = tacmap.map_holder.map_ref

@@ -54,6 +54,9 @@
 	req_access = list(ACCESS_WY_CORPORATE)
 
 /obj/item/storage/lockbox/loyalty/fill_preset_inventory()
+	new /obj/item/ammo_magazine/pistol/es4(src)
+	new /obj/item/ammo_magazine/pistol/es4(src)
+	new /obj/item/ammo_magazine/pistol/es4(src)
 
 /obj/item/storage/lockbox/cluster
 	name = "lockbox of cluster flashbangs"

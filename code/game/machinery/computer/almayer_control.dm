@@ -136,12 +136,7 @@
 				to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
 				return FALSE
 
-			spawn(35)//some time between AI announcements for evac cancel and SD cancel.
-				if(EvacuationAuthority.evac_status == EVACUATION_STATUS_STANDING_BY)//nothing changed during the wait
-					//if the self_destruct is active we try to cancel it (which includes lowering alert level to red)
-					if(!EvacuationAuthority.cancel_self_destruct(1))
-						//if SD wasn't active (likely canceled manually in the SD room), then we lower the alert level manually.
-						set_security_level(SEC_LEVEL_RED, TRUE) //both SD and evac are inactive, lowering the security level.
+			addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/almayer_control, cancel_evac)), 4 SECONDS)
 
 			log_game("[key_name(usr)] has canceled the emergency evacuation.")
 			message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.")
@@ -282,3 +277,9 @@
 
 // end tgui \\
 
+/obj/structure/machinery/computer/almayer_control/proc/cancel_evac()
+	if(EvacuationAuthority.evac_status == EVACUATION_STATUS_STANDING_BY)//nothing changed during the wait
+		//if the self_destruct is active we try to cancel it (which includes lowering alert level to red)
+		if(!EvacuationAuthority.cancel_self_destruct(1))
+			//if SD wasn't active (likely canceled manually in the SD room), then we lower the alert level manually.
+			set_security_level(SEC_LEVEL_RED, TRUE) //both SD and evac are inactive, lowering the security level.

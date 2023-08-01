@@ -34,7 +34,7 @@ export const AlmayerControl = (_props, context) => {
     destruct_reason = 'Ship is not under an active emergency.';
   } else if (data.time_request < worldTime) {
     distress_reason =
-      'Beacon is currently on cooldown. Time remaining: ' +
+      'Beacon is currently recharging. Time remaining: ' +
       Math.ceil((data.time_message - worldTime) / 10) +
       'secs.';
   } else if (data.time_destruct < worldTime) {
@@ -84,7 +84,7 @@ export const AlmayerControl = (_props, context) => {
             <Flex.Item>
               {!canMessage && (
                 <Button color="bad" warning={1} fluid={1} icon="ban">
-                  Shipwide announcement on cooldown :{' '}
+                  Shipwide announcement recharging:{' '}
                   {Math.ceil((data.time_message - worldTime) / 10)} secs
                 </Button>
               )}
@@ -102,7 +102,7 @@ export const AlmayerControl = (_props, context) => {
             <Flex.Item>
               {!canCentral && (
                 <Button color="bad" warning={1} fluid={1} icon="ban">
-                  High Command message on cooldown :{' '}
+                  Quantum relay re-cycling :{' '}
                   {Math.ceil((data.time_message - worldTime) / 10)} secs
                 </Button>
               )}

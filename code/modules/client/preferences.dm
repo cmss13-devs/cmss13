@@ -1943,7 +1943,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 
 /// Loads appropriate character slot for the given job as assigned in preferences.
-/datum/preferences/proc/find_assigned_slot(job_title, is_late_join = FALSE)
+/datum/preferences/proc/find_assigned_slot(job_title, is_late_join = FALSE, check_datacore = FALSE)
 	if(toggle_prefs & (is_late_join ? TOGGLE_LATE_JOIN_CURRENT_SLOT : TOGGLE_START_JOIN_CURRENT_SLOT))
 		return
 	var/slot_for_job = pref_job_slots[job_title]
@@ -1951,15 +1951,22 @@ var/const/MAX_SAVE_SLOTS = 10
 		if(JOB_SLOT_RANDOMISED_SLOT)
 			be_random_body = TRUE
 			be_random_name = TRUE
+			check_datacore = FALSE
 		if(1 to MAX_SAVE_SLOTS)
 			load_character(slot_for_job)
+	if(check_datacore)
+		for(var/datum/data/record/record as anything in GLOB.data_core.locked)
+			if(record.fields["name"] == real_name)
+				be_random_body = TRUE
+				be_random_name = TRUE
+				return
 
 /// Transfers both physical characteristics and character information to character
-/datum/preferences/proc/copy_all_to(mob/living/carbon/human/character, job_title, is_late_join = FALSE)
+/datum/preferences/proc/copy_all_to(mob/living/carbon/human/character, job_title, is_late_join = FALSE, check_datacore = FALSE)
 	if(!istype(character))
 		return
 
-	find_assigned_slot(job_title, is_late_join)
+	find_assigned_slot(job_title, is_late_join, check_datacore)
 
 	if(be_random_name)
 		real_name = random_name(gender)
@@ -1987,10 +1994,11 @@ var/const/MAX_SAVE_SLOTS = 10
 		character.flavor_texts["legs"] = flavor_texts["legs"]
 		character.flavor_texts["feet"] = flavor_texts["feet"]
 
-	character.med_record = strip_html(med_record)
-	character.sec_record = strip_html(sec_record)
-	character.gen_record = strip_html(gen_record)
-	character.exploit_record = strip_html(exploit_record)
+	if(!be_random_name)
+		character.med_record = strip_html(med_record)
+		character.sec_record = strip_html(sec_record)
+		character.gen_record = strip_html(gen_record)
+		character.exploit_record = strip_html(exploit_record)
 
 	character.age = age
 	character.gender = gender

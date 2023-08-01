@@ -283,7 +283,7 @@
 			return 1
 
 		if("Use unique action")
-			var/obj/item/weapon/gun/held_item = user.get_held_item()
+			var/obj/item/weapon/held_item = user.get_held_item()
 			if(istype(held_item))
 				held_item.use_unique_action()
 			return 1

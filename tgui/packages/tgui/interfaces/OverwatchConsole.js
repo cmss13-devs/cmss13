@@ -277,13 +277,17 @@ const SquadMonitor = (props, context) => {
         </Table.Row>
         {squad_leader && (
           <Table.Row key="index" bold>
-            <Table.Cell p="2px">{squad_leader.name}</Table.Cell>
+            <Table.Cell p="2px"><Button onClick={() => act("watch_camera", { target_ref: squad_leader.ref })}>{squad_leader.name}</Button></Table.Cell>
             <Table.Cell p="2px">{squad_leader.role}</Table.Cell>
             <Table.Cell p="2px" color={determine_status_color(squad_leader.state)}>{squad_leader.state}</Table.Cell>
             <Table.Cell p="2px">{squad_leader.area_name}</Table.Cell>
             <Table.Cell p="2px" collapsing>{squad_leader.distance}</Table.Cell>
             <Table.Cell p="2px">
-              <Button tooltip="Add/Remove from multicam" icon="camera" color="green" />
+              {squad_leader.multicammed && (
+                <Button tooltip="Remove from multicam" icon="camera" color="red" onClick={() => act("remove_multicam", { ref: squad_leader.ref })} />
+              ) || (
+                <Button tooltip="Add to multicam" icon="camera" color="green" onClick={() => act("add_multicam", { ref: squad_leader.ref })} />
+              )}
             </Table.Cell>
           </Table.Row>
         )}
@@ -307,7 +311,7 @@ const SquadMonitor = (props, context) => {
 
           return (
             <Table.Row key="index">
-              <Table.Cell p="2px">{marine.name}</Table.Cell>
+              <Table.Cell p="2px"><Button onClick={() => act("watch_camera", { target_ref: marine.ref })}>{marine.name}</Button></Table.Cell>
               <Table.Cell p="2px">{marine.role}</Table.Cell>
               <Table.Cell p="2px" color={determine_status_color(marine.state)}>{marine.state}</Table.Cell>
               <Table.Cell p="2px">{marine.area_name}</Table.Cell>
@@ -318,8 +322,12 @@ const SquadMonitor = (props, context) => {
                 ) || (
                   <Button icon="minus" color="red" tooltip="Hide marine" onClick={() => toggle_marine_hidden(marine.ref)} />
                 )}
+                {marine.multicammed && (
+                  <Button tooltip="Remove from multicam" icon="camera" color="red" onClick={() => act("remove_multicam", { ref: marine.ref })} />
+                ) || (
+                  <Button tooltip="Add to multicam" icon="camera" color="green" onClick={() => act("add_multicam", { ref: marine.ref })} />
+                )}
 
-                <Button tooltip="Add/Remove from multicam" icon="camera" color="green" />
                 <Button icon="arrow-up" color="green" tooltip="Promote marine to Squad Leader" onClick={() => act("replace_lead", { ref: marine.ref })} />
               </Table.Cell>
             </Table.Row>
@@ -335,7 +343,36 @@ const Multicam = (props, context) => {
 
 
   return (
-    <Section fontSize="14px" title="Multicam" />
+    <Section height="475px" fontSize="14px" title="Multicam">
+      <ByondUi width="25%" top="100%"
+        className="CameraConsole__map"
+        params={{
+          id: data.mapRef1,
+          type: 'map',
+        }}
+      />
+      <ByondUi width="25%" left="25%" top="100%"
+        className="CameraConsole__map"
+        params={{
+          id: data.mapRef2,
+          type: 'map',
+        }}
+      />
+      <ByondUi width="25%" left="50%" top="100%"
+        className="CameraConsole__map"
+        params={{
+          id: data.mapRef3,
+          type: 'map',
+        }}
+      />
+      <ByondUi width="25%" left="75%" top="100%"
+        className="CameraConsole__map"
+        params={{
+          id: "camera_console_[0x2006b4d]_map_4",
+          type: 'map',
+        }}
+      />
+    </Section>
   );
 };
 

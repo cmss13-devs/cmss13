@@ -1237,7 +1237,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(new_predator_age)
 						predator_age = max(min( round(text2num(new_predator_age)), 3000),175)
 				if("pred_use_legacy")
-					var/legacy_choice = tgui_alert(user, "What legacy set do you wish to use?", "Legacy Set", PRED_LEGACIES)
+					var/legacy_choice = tgui_input_list(user, "What legacy set do you wish to use?", "Legacy Set", PRED_LEGACIES)
 					if(!legacy_choice)
 						return
 					predator_use_legacy = legacy_choice

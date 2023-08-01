@@ -48,6 +48,8 @@ var/global/list/note_categories = list("Admin", "Merit", "Commanding Officer", "
 #define CC_MARK(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=[REF(user)]'>MARK</a>)"
 #define CC_REPLY(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=[REF(user)]'>RPLY</a>)"
 #define OBSERVER_JMP(observer, atom) atom ? "(<a href='?src=[REF(observer)];jumptocoord=1;X=[atom.x];Y=[atom.y];Z=[atom.z]'>JMP</a>)" : ""
+#define ARES_MARK(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];AresMark=[REF(user)]'>MARK</a>)"
+#define ARES_REPLY(user, ref) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];AresReply=[REF(user)];AresRef=[ref]'>RPLY</a>)"
 
 /atom/proc/Admin_Coordinates_Readable(area_name, admin_jump_ref)
 	var/turf/T = get_turf(src)
@@ -69,3 +71,6 @@ var/global/list/note_categories = list("Admin", "Merit", "Commanding Officer", "
 #define ANTIGRIEF_NEW_PLAYERS 1
 /// Enables antigrief entirely: Nobody can activate explosives on the Almayer, unless the ship crashed.
 #define ANTIGRIEF_ENABLED 2
+
+/// Proc has been blocked by IsAdminAdvancedProcCall()
+#define PROC_BLOCKED "PROCCALL BLOCKED"

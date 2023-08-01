@@ -22,11 +22,17 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	var/adopts_squad_color = TRUE
+	/// The dmi where the grayscale squad overlays are contained
+	var/squad_overlay_icon = 'icons/mob/humans/onmob/hands_garb.dmi'
 
-/obj/item/clothing/gloves/marine/get_mob_overlay(mob/living/carbon/human/H, slot)
+/obj/item/clothing/gloves/marine/get_mob_overlay(mob/living/carbon/human/current_human, slot)
 	var/image/ret = ..()
-	if(adopts_squad_color && slot == WEAR_HANDS && istype(H) && H.assigned_squad)
-		ret.overlays += glovemarkings[H.assigned_squad.color]
+	if(!adopts_squad_color || !(current_human.assigned_squad && current_human.assigned_squad.equipment_color))
+		return ret
+	var/image/glove_overlay = image(squad_overlay_icon, icon_state = "std-gloves")
+	glove_overlay.alpha = current_human.assigned_squad.armor_alpha
+	glove_overlay.color = current_human.assigned_squad.equipment_color
+	ret.overlays += glove_overlay
 	return ret
 
 /obj/item/clothing/gloves/marine/insulated

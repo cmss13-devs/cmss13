@@ -18,9 +18,9 @@
 
 /obj/item/weapon/gun/rifle/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_5
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_5)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -82,12 +82,13 @@
 
 /obj/item/weapon/gun/rifle/m41a/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4 + 2*HIT_ACCURACY_MULT_TIER_1
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_8
+	//fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_8 //Zonenote
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
@@ -137,7 +138,7 @@
 		/obj/item/attachable/scope/mini/nsg23,
 	)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_BURST_ON|GUN_BURST_ONLY|GUN_WY_RESTRICTED
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
 
 	random_spawn_muzzle = list(
 		/obj/item/attachable/suppressor,
@@ -148,6 +149,7 @@
 		/obj/item/attachable/scope/mini/nsg23,
 		/obj/item/attachable/attached_gun/flamer/advanced,
 	)
+	start_semiauto = FALSE
 
 /obj/item/weapon/gun/rifle/nsg23/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -158,9 +160,9 @@
 
 /obj/item/weapon/gun/rifle/nsg23/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_7
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_8
+	set_fire_delay(FIRE_DELAY_TIER_7)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_8)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_9
@@ -182,7 +184,7 @@
 	starting_attachment_types = list() //starts with the stock anyways due to handle_starting_attachment()
 
 /obj/item/weapon/gun/rifle/nsg23/no_lock
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_BURST_ON|GUN_BURST_ONLY
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(
 		/obj/item/attachable/scope/mini/nsg23,
 		/obj/item/attachable/attached_gun/flamer,//non-op flamer for normal spawns
@@ -230,9 +232,9 @@
 
 /obj/item/weapon/gun/rifle/m41a/elite/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
-	burst_amount = BURST_AMOUNT_TIER_2
-	burst_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_10)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_10
@@ -291,7 +293,7 @@
 	indestructible = TRUE
 
 	current_mag = /obj/item/ammo_magazine/rifle/xm40/heap
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_BURST_ON
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	wield_delay = WIELD_DELAY_FAST
 	map_specific_decoration = FALSE
@@ -344,9 +346,9 @@
 
 /obj/item/weapon/gun/rifle/m41a/elite/xm40/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_10)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_10
@@ -388,9 +390,9 @@
 
 /obj/item/weapon/gun/rifle/m41aMK1/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
-	burst_amount = BURST_AMOUNT_TIER_4
-	burst_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_burst_amount(BURST_AMOUNT_TIER_4)
+	set_burst_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_9
@@ -496,6 +498,7 @@
 		LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
 		))
+	recalculate_attachment_bonuses()
 
 /obj/item/weapon/gun/rifle/m46c/Destroy()
 	linked_human = null
@@ -515,9 +518,9 @@
 
 /obj/item/weapon/gun/rifle/m46c/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
-	burst_amount = BURST_AMOUNT_TIER_4
-	burst_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_8)
+	set_burst_amount(BURST_AMOUNT_TIER_4)
+	set_burst_delay(FIRE_DELAY_TIER_10)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_8
 	scatter = SCATTER_AMOUNT_TIER_8
@@ -614,6 +617,7 @@
 		to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] Action denied by [src]. Unauthorized user."))
 		return
 
+	gun_firemode = GUN_FIREMODE_SEMIAUTO
 	iff_enabled = !iff_enabled
 	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [iff_enabled? "enable": "disable"] the IFF on [src]."))
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
@@ -627,10 +631,11 @@
 /obj/item/weapon/gun/rifle/m46c/recalculate_attachment_bonuses()
 	. = ..()
 	if(iff_enabled)
-		fire_delay += FIRE_DELAY_TIER_10
-		burst_amount -=  BURST_AMOUNT_TIER_6
+		modify_fire_delay(FIRE_DELAY_TIER_10)
+		remove_firemode(GUN_FIREMODE_BURSTFIRE)
 
-		flags_gun_features &= ~GUN_BURST_ON //Gun loses some combat ability in return for IFF, as well as burst fire mode
+	else
+		add_firemode(GUN_FIREMODE_BURSTFIRE)
 
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(mob/living/carbon/human/H)
@@ -723,9 +728,9 @@
 
 /obj/item/weapon/gun/rifle/mar40/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_7
-	burst_amount = BURST_AMOUNT_TIER_4
-	burst_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_7)
+	set_burst_amount(BURST_AMOUNT_TIER_4)
+	set_burst_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -796,7 +801,7 @@
 
 /obj/item/weapon/gun/rifle/mar40/carbine/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
+	set_fire_delay(FIRE_DELAY_TIER_8)
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
@@ -842,9 +847,9 @@
 
 /obj/item/weapon/gun/rifle/mar40/lmg/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
-	burst_amount = BURST_AMOUNT_TIER_5
-	burst_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_8)
+	set_burst_amount(BURST_AMOUNT_TIER_5)
+	set_burst_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -935,9 +940,9 @@
 
 /obj/item/weapon/gun/rifle/m16/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_10
@@ -1046,9 +1051,9 @@
 
 /obj/item/weapon/gun/rifle/xm177/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_SMG
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_SMG
+	set_fire_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_SMG)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
 	scatter = SCATTER_AMOUNT_TIER_8
@@ -1123,9 +1128,9 @@
 
 /obj/item/weapon/gun/rifle/ar10/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_7
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_7
+	set_fire_delay(FIRE_DELAY_TIER_7)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_7)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_8
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_9
@@ -1185,9 +1190,9 @@
 
 /obj/item/weapon/gun/rifle/xm177/dutch/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_SMG
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_SMG
+	set_fire_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_SMG)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
 	scatter = SCATTER_AMOUNT_TIER_8
@@ -1236,10 +1241,9 @@
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_LMG
-	burst_amount = BURST_AMOUNT_TIER_5
-	burst_delay = FIRE_DELAY_TIER_LMG
-	fa_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_LMG)
+	set_burst_amount(BURST_AMOUNT_TIER_5)
+	set_burst_delay(FIRE_DELAY_TIER_LMG)
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_3
 	fa_max_scatter = SCATTER_AMOUNT_TIER_4
 	accuracy_mult = BASE_ACCURACY_MULT
@@ -1299,9 +1303,9 @@
 
 /obj/item/weapon/gun/rifle/type71/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
-	burst_amount = BURST_AMOUNT_TIER_4
-	burst_delay = FIRE_DELAY_TIER_8
+	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_burst_amount(BURST_AMOUNT_TIER_4)
+	set_burst_delay(FIRE_DELAY_TIER_8)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -1414,7 +1418,7 @@
 
 /obj/item/weapon/gun/rifle/type71/carbine/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_9)
 	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
 	scatter_unwielded = SCATTER_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
@@ -1479,8 +1483,8 @@
 	..()
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
-	fire_delay = FIRE_DELAY_TIER_9
-	burst_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_burst_delay(FIRE_DELAY_TIER_10)
 	scatter = SCATTER_AMOUNT_TIER_8
 
 	//-------------------------------------------------------
@@ -1526,8 +1530,8 @@
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
-	burst_amount = 0
+	set_fire_delay(FIRE_DELAY_TIER_8)
+	set_burst_amount(0)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
@@ -1590,8 +1594,8 @@
 
 /obj/item/weapon/gun/rifle/l42a/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
-	burst_amount = 0
+	set_fire_delay(FIRE_DELAY_TIER_8)
+	set_burst_amount(0)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6

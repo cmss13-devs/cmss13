@@ -81,7 +81,7 @@
 			if(photo_list)
 				for(var/photo in photo_list)
 					user << browse_rsc(photo_list[photo], photo)
-			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
+			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name, "size=650x700")
 			onclose(user, name)
 		else
 			read_paper(user)
@@ -94,7 +94,7 @@
 	if(photo_list)
 		for(var/photo in photo_list)
 			user << browse_rsc(photo_list[photo], photo)
-	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name)
+	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name, "size=650x700")
 	onclose(user, name)
 
 /obj/item/paper/verb/rename()
@@ -213,6 +213,8 @@
 
 
 /obj/item/paper/proc/parsepencode(t, obj/item/tool/pen/P, mob/user as mob, iscrayon = 0)
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+
 	t = replacetext(t, "\[center\]", "<center>")
 	t = replacetext(t, "\[/center\]", "</center>")
 	t = replacetext(t, "\[br\]", "<BR>")
@@ -251,9 +253,9 @@
 		t = replacetext(t, "\[/grid\]", "</td></tr></table>")
 		t = replacetext(t, "\[row\]", "</td><tr>")
 		t = replacetext(t, "\[cell\]", "<td>")
-		t = replacetext(t, "\[logo\]", "<img src = wylogo.png>")
-		t = replacetext(t, "\[wy\]", "<img src = wylogo.png>")
-		t = replacetext(t, "\[uscm\]", "<img src = uscmlogo.png>")
+		t = replacetext(t, "\[logo\]", "<img src = [asset.get_url_mappings()["wylogo.png"]]>")
+		t = replacetext(t, "\[wy\]", "<img src = [asset.get_url_mappings()["wylogo.png"]]>")
+		t = replacetext(t, "\[uscm\]", "<img src = [asset.get_url_mappings()["uscmlogo.png"]]>")
 
 		t = "<font face=\"[deffont]\" color=[P ? P.pen_colour : "black"]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
@@ -619,11 +621,21 @@
 
 /obj/item/paper/wy
 	icon_state = "paper_wy"
-	info = "<center><img src = wylogo.png></center><BR>\n<span class=\"paper_field\"></span>"
+
+/obj/item/paper/wy/Initialize(mapload, photo_list)
+	. = ..()
+
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	info = "<center><img src = [asset.get_url_mappings()["wylogo.png"]]></center><BR>\n<span class=\"paper_field\"></span>"
 
 /obj/item/paper/uscm
 	icon_state = "paper_uscm"
-	info = "<center><img src = uscmlogo.png></center><BR>\n<span class=\"paper_field\"></span>"
+
+/obj/item/paper/uscm/Initialize(mapload, photo_list)
+	. = ..()
+
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	info = "<center><img src = [asset.get_url_mappings()["uscmlogo.png"]]></center><BR>\n<span class=\"paper_field\"></span>"
 
 /obj/item/paper/research_notes
 	icon_state = "paper_wy_words"
@@ -661,7 +673,8 @@
 		if(!random_chem)
 			random_chem = pick(chemical_gen_classes_list["T1"])
 		C = chemical_reagents_list["[random_chem]"]
-	var/txt = "<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	var/txt = "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
 	switch(note_type)
 		if("synthesis")
 			var/datum/chemical_reaction/G = chemical_reactions_list[C.id]

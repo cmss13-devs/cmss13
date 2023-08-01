@@ -198,6 +198,7 @@
 		ACCESS_MARINE_MAINT,
 		ACCESS_MARINE_OT,
 		ACCESS_MARINE_SYNTH,
+		ACCESS_MARINE_AI,
 	)
 	assignment = JOB_CHIEF_ENGINEER
 	rank = JOB_CHIEF_ENGINEER
@@ -474,6 +475,13 @@
 	paygrade = "MO5"
 	role_comm_title = "CO"
 	minimum_age = 35
+
+	dress_over = list(
+		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white,
+		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/black,
+		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit,
+		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon,
+	)
 
 /datum/equipment_preset/uscm_ship/commander/council/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)

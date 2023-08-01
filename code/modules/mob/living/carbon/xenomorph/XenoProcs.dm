@@ -71,7 +71,7 @@
 
 	if(caste && caste.evolution_allowed)
 		evolve_progress = "[min(stored_evolution, evolution_threshold)]/[evolution_threshold]"
-		if(hive && !hive.allow_no_queen_actions && !caste?.evolve_without_queen)
+		if(hive && !hive.allow_no_queen_evo && !caste?.evolve_without_queen)
 			if(!hive.living_xeno_queen)
 				evolve_progress += " (NO QUEEN)"
 			else if(!(hive.living_xeno_queen.ovipositor || hive.evolution_without_ovipositor))
@@ -710,6 +710,10 @@
 
 	if(!ishuman(current_mob))
 		to_chat(src, SPAN_XENONOTICE("This is not a host."))
+		return
+
+	if(current_mob.stat == DEAD)
+		to_chat(src, SPAN_XENONOTICE("This host is dead."))
 		return
 
 	var/mob/living/carbon/human/host_to_nest = current_mob

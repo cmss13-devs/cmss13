@@ -123,6 +123,10 @@
 /datum/species/proc/larva_impregnated(obj/item/alien_embryo/embryo)
 	return
 
+/// Override to add an emote panel to a species
+/datum/species/proc/open_emote_panel()
+	return
+
 /datum/species/proc/handle_npc(mob/living/carbon/human/H)
 	set waitfor = FALSE
 	return

@@ -154,6 +154,8 @@
 	if (hive)
 		hivenumber = hive
 	set_hive_data(src, hivenumber)
+	if(hivenumber == XENO_HIVE_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/resin/sticky/Crossed(atom/movable/AM)
 	. = ..()
@@ -165,6 +167,14 @@
 	if(istype(X) && !X.ally_of_hivenumber(hivenumber))
 		X.next_move_slowdown = X.next_move_slowdown + slow_amt
 		return .
+
+/obj/effect/alien/resin/sticky/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		hivenumber = XENO_HIVE_FORSAKEN
+		set_hive_data(src, XENO_HIVE_FORSAKEN)
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /obj/effect/alien/resin/spike
 	name = "resin spike"
@@ -193,6 +203,8 @@
 		hivenumber = hive
 	set_hive_data(src, hivenumber)
 	setDir(pick(alldirs))
+	if(hivenumber == XENO_HIVE_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/resin/spike/Crossed(atom/movable/AM)
 	. = ..()
@@ -205,6 +217,14 @@
 
 	H.apply_armoured_damage(damage, penetration = penetration, def_zone = pick(target_limbs))
 	H.last_damage_data = construction_data
+
+/obj/effect/alien/resin/spike/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		hivenumber = XENO_HIVE_FORSAKEN
+		set_hive_data(src, XENO_HIVE_FORSAKEN)
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 // Praetorian Sticky Resin spit uses this.
 /obj/effect/alien/resin/sticky/thin
@@ -348,6 +368,9 @@
 
 	set_hive_data(src, hivenumber)
 
+	if(hivenumber == XENO_HIVE_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
 /obj/structure/mineral_door/resin/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	health -= dam
 	healthcheck()
@@ -371,11 +394,13 @@
 		return attack_hand(user)
 
 /obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
-	if(islarva(user))
-		var/mob/living/carbon/xenomorph/larva/L = user
-		if (L.hivenumber == hivenumber)
-			L.scuttle(src)
-		return
+	if(isxeno(user))
+		var/mob/living/carbon/xenomorph/xeno_user = user
+		if (xeno_user.hivenumber != hivenumber && !xeno_user.ally_of_hivenumber(hivenumber))
+			return
+		if(xeno_user.scuttle(src))
+			return
+		return ..()
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if (C.ally_of_hivenumber(hivenumber))
@@ -479,6 +504,13 @@
 		visible_message(SPAN_NOTICE("[src] collapses from the lack of support."))
 		qdel(src)
 
+/obj/structure/mineral_door/resin/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		hivenumber = XENO_HIVE_FORSAKEN
+		set_hive_data(src, XENO_HIVE_FORSAKEN)
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 /obj/structure/mineral_door/resin/thick
 	name = "thick resin door"
 	icon_state = "thick resin"
@@ -510,6 +542,8 @@
 		hivenumber = hive
 	set_hive_data(src, hivenumber)
 	START_PROCESSING(SSprocessing, src)
+	if(hivenumber == XENO_HIVE_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 
 /obj/effect/alien/resin/acid_pillar/proc/can_target(mob/living/carbon/current_mob, position_to_get = 0)
@@ -598,6 +632,12 @@
 
 /obj/effect/alien/resin/acid_pillar/get_projectile_hit_boolean(obj/item/projectile/P)
 	return TRUE
+
+/obj/effect/alien/resin/acid_pillar/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+	if(is_ground_level(z))
+		qdel(src)
 
 /obj/effect/alien/resin/acid_pillar/strong
 	name = "acid pillar"

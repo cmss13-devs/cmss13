@@ -326,6 +326,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/riot_shield = "helmet_riot_shield",
 	/obj/item/attachable/flashlight = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/prop/helmetgarb/chaplain_patch = "chaplain_patch",
+	/obj/item/tool/pen/fountain = "fountainpen",
 
 	// MEDICAL
 	/obj/item/stack/medical/bruise_pack ="brutepack (bandages)",
@@ -359,7 +360,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/flags_marine_helmet = HELMET_SQUAD_OVERLAY|HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 	var/helmet_bash_cooldown = 0
 
-	var/specialty = "M10 pattern marine" //Give them a specialty var so that they show up correctly in vendors.
+	var/specialty = "M10 pattern marine" //Give them a specialty var so that they show up correctly in vendors. speciality does NOTHING if you have NO_NAME_OVERRIDE.
 	valid_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
 	item_icons = list(
@@ -371,8 +372,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/storage_slots_reserved_for_garb = 1
 	var/storage_max_w_class = SIZE_TINY // can hold tiny items only, EXCEPT for glasses & metal flask.
 	var/storage_max_storage_space = 4
-
-	//speciality does NOTHING if you have NO_NAME_OVERRIDE
+	/// The dmi where the grayscale squad overlays are contained
+	var/helmet_overlay_icon = 'icons/mob/humans/onmob/head_1.dmi'
 
 /obj/item/clothing/head/helmet/marine/New(loc,
 	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))

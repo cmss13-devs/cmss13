@@ -17,7 +17,7 @@
 			return
 
 	if(disabilities & TOURETTES)
-		speech_problem_flag = 1
+		speech_problem_flag = TRUE
 		if((prob(10) && knocked_out <= 1))
 			apply_effect(10, STUN)
 			spawn()
@@ -36,7 +36,7 @@
 				return
 
 	if(disabilities & NERVOUS)
-		speech_problem_flag = 1
+		speech_problem_flag = TRUE
 		if(prob(10))
 			stuttering = max(10, stuttering)
 			return

@@ -230,6 +230,17 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define CMB_GRUNT_LIST list(JOB_CMB, JOB_CMB_TL)
 
+//-------- FORECON --------//
+
+#define JOB_FORECON_CO "Reconnaissance Commander"
+#define JOB_FORECON_SL "Reconnaissance Squad Leader"
+#define JOB_FORECON_SYN "Reconnaissance Synthetic"
+#define JOB_FORECON_SNIPER "Reconnaissance Sniper"
+#define JOB_FORECON_MARKSMAN "Reconnaissance Marksman"
+#define JOB_FORECON_SUPPORT "Reconnaissance Support Technician"
+#define JOB_FORECON_RIFLEMAN "Reconnaissance Rifleman"
+#define JOB_FORECON_SMARTGUNNER "Reconnaissance Smartgunner"
+
 //-------- UPP --------//
 #define JOB_UPP "UPP Private"
 #define JOB_UPP_CONSCRIPT "UPP Conscript"

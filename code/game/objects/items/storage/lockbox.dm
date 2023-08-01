@@ -53,6 +53,7 @@
 	name = "\improper Wey-Yu equipment lockbox"
 	req_access = list(ACCESS_WY_CORPORATE)
 
+/obj/item/storage/lockbox/loyalty/fill_preset_inventory()
 
 /obj/item/storage/lockbox/cluster
 	name = "lockbox of cluster flashbangs"

@@ -231,8 +231,9 @@
 
 	for(var/mob/hologram/holo as anything in GLOB.hologram_list)
 		if(!holo.motion_sensed)
-			return
-		if(holo.z != cur_turf.z || !(range_bounds.contains_atom(holo))) continue
+			continue
+		if(holo.z != cur_turf.z || !(range_bounds.contains_atom(holo)))
+			continue
 		ping_count++
 		if(human_user)
 			show_blip(human_user, holo, "queen_eye")

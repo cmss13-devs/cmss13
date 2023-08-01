@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Facehugger attack windup duration is now 1s like the pounce windup."

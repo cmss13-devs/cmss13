@@ -299,6 +299,15 @@
 	var/light_chance = 70 //how likely you are to light the match on the book
 	var/burn_chance = 20 //how likely you are to burn yourself once you light it
 
+/obj/item/storage/fancy/cigar/matchbook/get_examine_text(mob/user)
+	. = ..()
+	if(contents.len <= 0)
+		. += "There are no [src.icon_type]es left in the box."
+	else if(contents.len == 1)
+		. += "There is one [src.icon_type] left in the box."
+	else
+		. += "There are [src.contents.len] [src.icon_type]es in the box."
+
 /obj/item/storage/fancy/cigar/matchbook/attackby(obj/item/tool/match/W as obj, mob/living/carbon/human/user as mob)
 	if(!istype(user))
 		return

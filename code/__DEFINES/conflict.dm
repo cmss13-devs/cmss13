@@ -99,6 +99,8 @@
 #define AMMUNITION_HANDFUL_BOX (1<<2)
 #define AMMUNITION_HIDE_AMMO (1<<3)
 #define AMMUNITION_CANNOT_REMOVE_BULLETS (1<<4)
+/// If this magazine can transfer to other magazines of the same type by slapping one with the other
+#define AMMUNITION_SLAP_TRANSFER (1<<5)
 //Slowdown from various armors.
 
 /// How much shoes slow you down by default. Negative values speed you up

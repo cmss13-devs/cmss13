@@ -1,0 +1,4 @@
+author: "Dorodomki"
+delete-after: True
+changes:
+  - rscadd: "Adds A Bipod and Rail Flashlight to the HPR kit"

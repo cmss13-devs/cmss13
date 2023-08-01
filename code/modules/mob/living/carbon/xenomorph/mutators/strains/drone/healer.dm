@@ -138,7 +138,7 @@
 	to_chat(target_xeno, SPAN_XENOWARNING("[src] covers your wounds with a regenerative resin salve. You feel reinvigorated!"))
 	to_chat(src, SPAN_XENOWARNING("You regurgitate your vital fluids and some plasma to create a regenerative resin salve and apply it to [target_xeno]'s wounds. You feel weakened..."))
 	playsound(src, "alien_drool", 25)
-	var/datum/behavior_delegate/drone_healer/healer_delegate = src.behavior_delegate
+	var/datum/behavior_delegate/drone_healer/healer_delegate = behavior_delegate
 	healer_delegate.salve_applied_recently = TRUE
 	if(target_xeno.mutation_type != DRONE_HEALER && !isfacehugger(target_xeno)) // no cheap grinding
 		healer_delegate.modify_transferred(amount * damage_taken_mod)

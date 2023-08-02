@@ -87,6 +87,7 @@
 	return 1
 
 /datum/game_mode/whiskey_outpost/pre_setup()
+	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
 	for(var/obj/effect/landmark/whiskey_outpost/xenospawn/X)
 		xeno_spawns += X.loc
 	for(var/obj/effect/landmark/whiskey_outpost/supplydrops/S)
@@ -302,6 +303,7 @@
 		round_finished = 1
 
 	calculate_end_statistics()
+
 
 	return 1
 
@@ -662,8 +664,8 @@
 							/obj/item/ammo_magazine/rocket/wp)
 		if(2) //Smartgun supplies
 			spawnitems = list(
-					/obj/item/cell/high,
-					/obj/item/cell/high,
+					/obj/item/smartgun_battery,
+					/obj/item/smartgun_battery,
 					/obj/item/ammo_magazine/smartgun,
 					/obj/item/ammo_magazine/smartgun,
 					/obj/item/ammo_magazine/smartgun,

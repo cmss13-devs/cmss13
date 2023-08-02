@@ -213,8 +213,3 @@
 #define RELIGION_AGNOSTICISM "Agnostic"
 
 #define MAXIMUM_DROPPED_OBJECTS_REMEMBERED 2
-
-///////////////////MISC HUMAN FLAGS (LINKED TO VAR: FLAGS_HUMAN_MISC)///////////////////
-
-#define HUMAN_FLAG_CHANGED (1<<0)
-

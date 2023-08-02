@@ -7,6 +7,7 @@
 	total_positions = 8
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
 	late_joinable = FALSE
+	job_options = SURVIVOR_VARIANT_LIST
 	var/intro_text
 	var/story_text
 
@@ -107,8 +108,8 @@
 		arm_equipment(equipping_human, picked_spawner.equipment, FALSE, TRUE)
 	else
 		var/preferred_variant = ANY_SURVIVOR
-		if(equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR)
-			preferred_variant = equipping_human.client?.prefs?.preferred_survivor_variant
+		if(equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR)
+			preferred_variant = equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR]
 			if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && SSticker.mode.survivors_by_type_amounts[preferred_variant] && SSticker.mode.survivors_by_type_amounts[preferred_variant] >= MAX_SURVIVOR_PER_TYPE[preferred_variant])
 				preferred_variant = ANY_SURVIVOR
 
@@ -130,6 +131,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	flags_whitelist = WHITELIST_SYNTHETIC
 	total_positions = 1
 	spawn_positions = 1
+	job_options = null
 
 /datum/job/civilian/survivor/synth/set_spawn_positions(count)
 	return spawn_positions
@@ -139,8 +141,8 @@ AddTimelock(/datum/job/civilian/survivor, list(
 		arm_equipment(equipping_human, picked_spawner.synth_equipment, FALSE, TRUE)
 	else
 		var/preferred_variant = ANY_SURVIVOR
-		if(equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR)
-			preferred_variant = equipping_human.client?.prefs?.preferred_survivor_variant
+		if(equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR)
+			preferred_variant = equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR]
 			if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && SSticker.mode.survivors_by_type_amounts[preferred_variant] && SSticker.mode.survivors_by_type_amounts[preferred_variant] >= MAX_SURVIVOR_PER_TYPE[preferred_variant])
 				preferred_variant = ANY_SURVIVOR
 
@@ -156,6 +158,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	flags_whitelist = WHITELIST_COMMANDER
 	total_positions = 0
 	spawn_positions = 0
+	job_options = null
 
 /datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types

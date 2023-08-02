@@ -8,7 +8,7 @@ jobs:
   run_linters:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     name: Run Linters
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     concurrency:
       group: run_linters-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
@@ -63,7 +63,7 @@ jobs:
   compile_all_maps:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     name: Compile Maps
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Restore BYOND cache
@@ -80,9 +80,10 @@ jobs:
   find_all_maps:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     name: Find Maps to Test
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     outputs:
       maps: ${{ steps.map_finder.outputs.maps }}
+      alternate_tests: ${{ steps.alternate_test_finder.outputs.alternate_tests }}
     concurrency:
       group: find_all_maps-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
@@ -91,10 +92,16 @@ jobs:
       - name: Find Maps
         id: map_finder
         run: |
-          echo "$(ls -mw0 maps/*.json)" > maps_output.txt
+          shopt -s extglob
+          echo "$(ls -mw0 maps/!(*override*).json)" > maps_output.txt
           sed -i -e s+maps/+\"+g -e s+.json+\"+g maps_output.txt
           echo "Maps: $(cat maps_output.txt)"
           echo "maps={\"paths\":[$(cat maps_output.txt)]}" >> $GITHUB_OUTPUT
+      - name: Find Alternate Tests
+        id: alternate_test_finder
+        run: |
+          ALTERNATE_TESTS_JSON=$(jq -nRc '[inputs | capture("^(?<major>[0-9]+)\\.(?<minor>[0-9]+): (?<map>.+)$")]' .github/alternate_byond_versions.txt)
+          echo "alternate_tests=$ALTERNATE_TESTS_JSON" >> $GITHUB_OUTPUT
   run_all_tests:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     name: Unit Tests
@@ -109,3 +116,50 @@ jobs:
     uses: ./.github/workflows/run_unit_tests.yml
     with:
       map: ${{ matrix.map }}
+
+  run_alternate_tests:
+    if: "!contains(github.event.head_commit.message, '[ci skip]') && needs.find_all_maps.outputs.alternate_tests != '[]'"
+    name: Alternate Tests
+    needs: [find_all_maps]
+    strategy:
+      fail-fast: false
+      matrix:
+        setup: ${{ fromJSON(needs.find_all_maps.outputs.alternate_tests) }}
+    concurrency:
+      group: run_all_tests-${{ github.head_ref || github.run_id }}-${{ matrix.setup.major }}.${{ matrix.setup.minor }}-${{ matrix.setup.map }}
+      cancel-in-progress: true
+    uses: ./.github/workflows/run_unit_tests.yml
+    with:
+      map: ${{ matrix.setup.map }}
+      major: ${{ matrix.setup.major }}
+      minor: ${{ matrix.setup.minor }}
+
+  check_alternate_tests:
+    if: "!contains(github.event.head_commit.message, '[ci skip]') && needs.find_all_maps.outputs.alternate_tests != '[]'"
+    name: Check Alternate Tests
+    needs: [run_alternate_tests]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Alternate tests passed.
+
+  test_windows:
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    name: Windows Build
+    runs-on: windows-latest
+    concurrency:
+      group: test_windows-${{ github.head_ref || github.run_id }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v3
+      - name: Restore Yarn cache
+        uses: actions/cache@v3
+        with:
+          path: tgui/.yarn/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('tgui/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Compile
+        run: pwsh tools/ci/build.ps1
+        env:
+          DM_EXE: "C:\\byond\\bin\\dm.exe"

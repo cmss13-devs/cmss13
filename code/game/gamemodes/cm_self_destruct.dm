@@ -256,17 +256,18 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 				ship_status = 0 //Destroyed.
 			break
 
-		var/L1[] = new //Everyone who will be destroyed on the zlevel(s).
-		var/L2[] = new //Everyone who only needs to see the cinematic.
-		var/mob/M
-		var/turf/T
-		for(M in GLOB.player_list) //This only does something cool for the people about to die, but should prove pretty interesting.
-			if(!M || !M.loc) continue //In case something changes when we sleep().
-			if(M.stat == DEAD)
-				L2 |= M
-			else if(M.z in z_levels)
-				L1 |= M
-				shake_camera(M, 110, 4)
+		var/list/alive_mobs = list() //Everyone who will be destroyed on the zlevel(s).
+		var/list/dead_mobs = list() //Everyone who only needs to see the cinematic.
+		for(var/mob/current_mob as anything in GLOB.mob_list) //This only does something cool for the people about to die, but should prove pretty interesting.
+			if(!current_mob || !current_mob.loc)
+				continue //In case something changes when we sleep().
+			if(current_mob.stat == DEAD)
+				dead_mobs |= current_mob
+				continue
+			var/turf/current_turf = get_turf(current_mob)
+			if(current_turf.z in z_levels)
+				alive_mobs |= current_mob
+				shake_camera(current_mob, 110, 4)
 
 
 		sleep(100)
@@ -275,23 +276,23 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		var/atom/movable/screen/cinematic/explosion/C = new
 
 		if(play_anim)
-			for(M in L1 + L2)
-				if(M && M.loc && M.client)
-					M.client.screen |= C //They may have disconnected in the mean time.
+			for(var/mob/current_mob as anything in alive_mobs + dead_mobs)
+				if(current_mob && current_mob.loc && current_mob.client)
+					current_mob.client.screen |= C //They may have disconnected in the mean time.
 
 			sleep(15) //Extra 1.5 seconds to look at the ship.
 			flick(override ? "intro_override" : "intro_nuke", C)
 		sleep(35)
-		for(M in L1)
-			if(M && M.loc) //Who knows, maybe they escaped, or don't exist anymore.
-				T = get_turf(M)
-				if(T.z in z_levels)
-					if(istype(M.loc, /obj/structure/closet/secure_closet/freezer/fridge))
+		for(var/mob/current_mob in alive_mobs)
+			if(current_mob && current_mob.loc) //Who knows, maybe they escaped, or don't exist anymore.
+				var/turf/current_mob_turf = get_turf(current_mob)
+				if(current_mob_turf.z in z_levels)
+					if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
 						continue
-					M.death(create_cause_data("nuclear explosion"))
+					current_mob.death(create_cause_data("nuclear explosion"))
 				else
 					if(play_anim)
-						M.client.screen -= C //those who managed to escape the z level at last second shouldn't have their view obstructed.
+						current_mob.client.screen -= C //those who managed to escape the z level at last second shouldn't have their view obstructed.
 		if(play_anim)
 			flick(ship_status ? "ship_spared" : "ship_destroyed", C)
 			C.icon_state = ship_status ? "summary_spared" : "summary_destroyed"
@@ -326,6 +327,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 //Generic parent base for the self_destruct items.
 /obj/structure/machinery/self_destruct
 	icon = 'icons/obj/structures/machinery/self_destruct.dmi'
+	icon_state = "console_1"
+	var/base_icon_state = "console"
 	use_power = USE_POWER_NONE //Runs unpowered, may need to change later.
 	density = FALSE
 	anchored = TRUE //So it doesn't go anywhere.
@@ -337,7 +340,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /obj/structure/machinery/self_destruct/Initialize(mapload, ...)
 	. = ..()
-	icon_state += "_1"
+	icon_state = "[base_icon_state]_1"
 
 /obj/structure/machinery/self_destruct/Destroy()
 	. = ..()
@@ -356,17 +359,18 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 /obj/structure/machinery/self_destruct/proc/lock_or_unlock(lock)
 	set waitfor = 0
 	in_progress = 1
-	flick(initial(icon_state) + (lock? "_5" : "_2"),src)
+	flick("[base_icon_state]" + (lock? "_5" : "_2"),src)
 	sleep(9)
 	mouse_opacity = !mouse_opacity
-	icon_state = initial(icon_state) + (lock? "_1" : "_3")
+	icon_state = "[base_icon_state]" + (lock? "_1" : "_3")
 	in_progress = 0
 	active_state = active_state > SELF_DESTRUCT_MACHINE_INACTIVE ? SELF_DESTRUCT_MACHINE_INACTIVE : SELF_DESTRUCT_MACHINE_ACTIVE
 
 /obj/structure/machinery/self_destruct/console
 	name = "self-destruct control panel"
-	icon_state = "console"
-	req_one_access = list(ACCESS_MARINE_CAPTAIN, ACCESS_MARINE_SENIOR)
+	icon_state = "console_1"
+	base_icon_state = "console"
+	req_one_access = list(ACCESS_MARINE_CO, ACCESS_MARINE_SENIOR)
 
 /obj/structure/machinery/self_destruct/console/Destroy()
 	. = ..()
@@ -435,7 +439,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 /obj/structure/machinery/self_destruct/rod
 	name = "self-destruct control rod"
 	desc = "It is part of a complicated self-destruct sequence, but relatively simple to operate. Twist to arm or disarm."
-	icon_state = "rod"
+	icon_state = "rod_1"
+	base_icon_state = "rod"
 	layer = BELOW_OBJ_LAYER
 	var/activate_time
 

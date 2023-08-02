@@ -2,17 +2,28 @@
 //returns FALSE otherwise
 /obj/proc/allowed(mob/M)
 	//check if it doesn't require any access at all
-	if(check_access()) return TRUE
-	if(isRemoteControlling(M)) return TRUE //AI can do whatever he wants
+	if(check_access() || isRemoteControlling(M))
+		return TRUE
 
-	else if(ishuman(M))
+	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		//if they are holding or wearing a card that has access, that works
-		if(check_access(H.get_active_hand()) || check_access(H.wear_id)) return TRUE
-	else if(istype(M, /mob/living/carbon/xenomorph))
+		if(check_access(H.get_active_hand()) || check_access(H.wear_id))
+			return TRUE
+		return check_yautja_access(H)
+	if(istype(M, /mob/living/carbon/xenomorph))
 		var/mob/living/carbon/C = M
-		if(check_access(C.get_active_hand())) return TRUE
-	return FALSE
+		if(check_access(C.get_active_hand()))
+			return TRUE
+		return FALSE
+
+/obj/proc/check_yautja_access(mob/living/carbon/human/yautja)
+	if(!istype(yautja))
+		return FALSE
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = yautja.gloves
+	if(!istype(bracer) || !bracer.embedded_id || !check_access(bracer.embedded_id))
+		return FALSE
+	return TRUE
 
 /obj/item/proc/GetAccess() return list()
 
@@ -82,13 +93,14 @@
 		return
 	return 1
 
-/proc/get_centcom_access(job)
-	return get_all_centcom_access()
+///Grants access to EVERYWHERE
+/proc/get_global_access()
+	return get_all_marine_access() + get_all_main_access()
+///Grants standard access for all factions, does not include high restrictions like COs office.
+/proc/get_all_main_access()
+	return get_antagonist_access() + get_all_civilian_access() + get_all_weyland_access()
 
-/proc/get_all_accesses()
-	return get_all_marine_access() + get_all_civilian_accesses()
-
-/proc/get_all_civilian_accesses()
+/proc/get_all_civilian_access()
 	return list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_RESEARCH,
@@ -99,9 +111,17 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
+///Includes restricted accesses
 /proc/get_all_marine_access()
 	return list(
-		ACCESS_MARINE_CAPTAIN,
+		ACCESS_MARINE_CO,
+		ACCESS_MARINE_AI,
+		ACCESS_MARINE_AI_TEMP,
+		) + get_main_marine_access()
+
+///All Almayer accesses other than the highly restricted ones, such as CO's office.
+/proc/get_main_marine_access()
+	return list(
 		ACCESS_MARINE_SENIOR,
 		ACCESS_MARINE_DATABASE,
 		ACCESS_MARINE_COMMAND,
@@ -125,7 +145,7 @@
 		ACCESS_MARINE_SMARTPREP,
 		ACCESS_MARINE_LEADER,
 		ACCESS_MARINE_SPECPREP,
-		ACCESS_MARINE_RTO_PREP,
+		ACCESS_MARINE_TL_PREP,
 		ACCESS_MARINE_ALPHA,
 		ACCESS_MARINE_BRAVO,
 		ACCESS_MARINE_CHARLIE,
@@ -138,25 +158,29 @@
 		ACCESS_PRESS,
 	)
 
-/proc/get_all_centcom_access()
+/proc/get_all_weyland_access()
 	return list(ACCESS_WY_PMC_GREEN, ACCESS_WY_PMC_ORANGE, ACCESS_WY_PMC_RED, ACCESS_WY_PMC_BLACK, ACCESS_WY_PMC_WHITE, ACCESS_WY_CORPORATE)
 
-/proc/get_all_syndicate_access()
-	return list(ACCESS_ILLEGAL_PIRATE)
-
+///CLF & UPP, UPP Commandos have global.
 /proc/get_antagonist_access()
-	return get_all_accesses() + get_all_syndicate_access()
+	return get_main_marine_access() + list(ACCESS_ILLEGAL_PIRATE)
 
-/proc/get_antagonist_pmc_access()
-	return get_antagonist_access()
+///Used by PMCs and elite mercs.
+/proc/get_weyland_pmc_access()
+	return get_all_main_access()
 
-/proc/get_freelancer_access()
+///This is only used by USCM ERTs at present
+/proc/get_friendly_ert_access()
+	return get_main_marine_access() + get_all_civilian_access()
+
+///Pizza and Souto
+/proc/get_civil_ert_access()
 	return list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_CARGO, ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 
 /proc/get_region_accesses(code)
 	switch(code)
 		if(0)
-			return get_all_accesses()
+			return get_all_main_access()
 		if(1)
 			return list(ACCESS_MARINE_CMP, ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY) // Security
 		if(2)
@@ -166,9 +190,9 @@
 		if(4)
 			return list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_OT, ACCESS_MARINE_MAINT) // Engineering
 		if(5)
-			return list(ACCESS_MARINE_CAPTAIN, ACCESS_MARINE_SENIOR, ACCESS_MARINE_DATABASE, ACCESS_MARINE_COMMAND, ACCESS_MARINE_RO, ACCESS_MARINE_CARGO, ACCESS_MARINE_SEA, ACCESS_MARINE_SYNTH) // Command
+			return list(ACCESS_MARINE_CO, ACCESS_MARINE_SENIOR, ACCESS_MARINE_DATABASE, ACCESS_MARINE_COMMAND, ACCESS_MARINE_RO, ACCESS_MARINE_CARGO, ACCESS_MARINE_SEA, ACCESS_MARINE_SYNTH) // Command
 		if(6)
-			return list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ENGPREP, ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RTO_PREP, ACCESS_MARINE_KITCHEN)//spess mahreens
+			return list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ENGPREP, ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_TL_PREP, ACCESS_MARINE_KITCHEN)//spess mahreens
 		if(7)
 			return list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA) // Squads
 		if(8)
@@ -218,7 +242,7 @@
 		if(ACCESS_MARINE_ENGINEERING) return "[MAIN_SHIP_NAME] Engineering"
 		if(ACCESS_MARINE_OT) return "[MAIN_SHIP_NAME] Ordnance Workshop"
 		if(ACCESS_MARINE_SENIOR) return "[MAIN_SHIP_NAME] Senior Command"
-		if(ACCESS_MARINE_CAPTAIN) return "Commander's Quarters"
+		if(ACCESS_MARINE_CO) return "Commander's Quarters"
 		if(ACCESS_MARINE_DATABASE) return "[MAIN_SHIP_NAME]'s Database"
 		if(ACCESS_MARINE_COMMAND) return "[MAIN_SHIP_NAME] Command"
 		if(ACCESS_MARINE_CREWMAN) return "Vehicle Crewman"
@@ -227,7 +251,7 @@
 		if(ACCESS_MARINE_MEDPREP) return "Marine Squad Medical"
 		if(ACCESS_MARINE_SPECPREP) return "Marine Weapons Specialist"
 		if(ACCESS_MARINE_SMARTPREP) return "Marine Smartgunner"
-		if(ACCESS_MARINE_RTO_PREP) return "Marine Radio Telephone Operator"
+		if(ACCESS_MARINE_TL_PREP) return "Marine Team Leader"
 		if(ACCESS_MARINE_LEADER) return "Marine Leader"
 		if(ACCESS_MARINE_ALPHA) return "Alpha Squad"
 		if(ACCESS_MARINE_BRAVO) return "Bravo Squad"
@@ -247,8 +271,9 @@
 		if(ACCESS_MARINE_SEA) return "SEA's Office"
 		if(ACCESS_MARINE_KITCHEN) return "Kitchen"
 		if(ACCESS_MARINE_SYNTH) return "Synthetic Storage"
+		if(ACCESS_MARINE_AI) return "AI Core"
 
-/proc/get_centcom_access_desc(A)
+/proc/get_weyland_access_desc(A)
 	switch(A)
 		if(ACCESS_WY_PMC_GREEN) return "Wey-Yu PMC Green"
 		if(ACCESS_WY_PMC_ORANGE) return "Wey-Yu PMC Orange"

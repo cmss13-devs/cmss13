@@ -281,6 +281,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	weap = null
 	currentimage = null
 	left = null
+	right = null
 	up = null
 	down = null
 	return ..()

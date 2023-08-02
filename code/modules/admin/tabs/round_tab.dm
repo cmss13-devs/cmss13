@@ -46,6 +46,7 @@
 		predator_round.flags_round_type &= ~MODE_PREDATOR
 
 	message_admins("[key_name_admin(usr)] has [(predator_round.flags_round_type & MODE_PREDATOR) ? "allowed predators to spawn" : "prevented predators from spawning"].")
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_PREDATOR_ROUND_TOGGLED)
 
 /client/proc/free_slot()
 	set name = "Free Job Slots"
@@ -80,7 +81,7 @@
 
 	var/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
 	if(!active_role_names)
-		active_role_names = ROLES_REGULAR_ALL
+		active_role_names = ROLES_DISTRESS_SIGNAL
 
 	for(var/role_name as anything in active_role_names)
 		var/datum/job/job = RoleAuthority.roles_by_name[role_name]
@@ -165,12 +166,13 @@
 	set name = "Start Round"
 	set desc = "Start the round RIGHT NOW"
 	set category = "Server.Round"
-
-	if (!SSticker)
-		alert("Unable to start the game as it is not set up.")
-		return
 	if (alert("Are you sure you want to start the round early?",,"Yes","No") != "Yes")
 		return
+	if (SSticker.current_state == GAME_STATE_STARTUP)
+		message_admins("Game is setting up and will launch as soon as it is ready.")
+		message_admins(SPAN_ADMINNOTICE("[usr.key] has started the process to start the game when loading is finished."))
+		while (SSticker.current_state == GAME_STATE_STARTUP)
+			sleep(50) // it patiently waits for the game to be ready here before moving on.
 	if (SSticker.current_state == GAME_STATE_PREGAME)
 		SSticker.request_start()
 		message_admins(SPAN_BLUE("[usr.key] has started the game."))
@@ -179,3 +181,34 @@
 	else
 		to_chat(usr, "<font color='red'>Error: Start Now: Game has already started.</font>")
 		return FALSE
+
+/client/proc/toggle_cdn()
+	set name = "Toggle CDN"
+	set category = "Server"
+	var/static/admin_disabled_cdn_transport = null
+	if(alert(usr, "Are you sure you want to toggle CDN asset transport?", "Confirm", "Yes", "No") != "Yes")
+		return
+
+	var/current_transport = CONFIG_GET(string/asset_transport)
+	if(!current_transport || current_transport == "simple")
+		if(admin_disabled_cdn_transport)
+			CONFIG_SET(string/asset_transport, admin_disabled_cdn_transport)
+			admin_disabled_cdn_transport = null
+			SSassets.OnConfigLoad()
+			message_admins("[key_name_admin(usr)] re-enabled the CDN asset transport")
+			log_admin("[key_name(usr)] re-enabled the CDN asset transport")
+			return
+
+		to_chat(usr, SPAN_ADMINNOTICE("The CDN is not enabled!"))
+		if(alert(usr, "CDN asset transport is not enabled! If you're having issues with assets, you can also try disabling filename mutations.", "CDN asset transport is not enabled!", "Try disabling filename mutations", "Nevermind") == "Try disabling filename mutations")
+			SSassets.transport.dont_mutate_filenames = !SSassets.transport.dont_mutate_filenames
+			message_admins("[key_name_admin(usr)] [(SSassets.transport.dont_mutate_filenames ? "disabled" : "re-enabled")] asset filename transforms.")
+			log_admin("[key_name(usr)] [(SSassets.transport.dont_mutate_filenames ? "disabled" : "re-enabled")] asset filename transforms.")
+		return
+
+	admin_disabled_cdn_transport = current_transport
+	CONFIG_SET(string/asset_transport, "simple")
+	SSassets.OnConfigLoad()
+	SSassets.transport.dont_mutate_filenames = TRUE
+	message_admins("[key_name_admin(usr)] disabled CDN asset transport")
+	log_admin("[key_name(usr)] disabled CDN asset transport")

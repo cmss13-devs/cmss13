@@ -7,31 +7,33 @@
 	unacidable = TRUE
 	var/begin_decay_time = 0
 	health = 50
-	var/decay_ready = 0
-	var/decayed = 0 // This is here so later on we can use the ovpositor molt for research. ~BMC777
-	var/destroyed = 0
+	var/decayed = FALSE // This is here so later on we can use the ovpositor molt for research. ~BMC777
+	var/destroyed = FALSE
 
 /obj/ovipositor/Initialize(mapload, ...)
 	. = ..()
 
 	begin_decay_time = world.timeofday + QUEEN_OVIPOSITOR_DECAY_TIME
-	process_decay()
+	START_PROCESSING(SSeffects, src) // Process every second
 
-/obj/ovipositor/proc/process_decay()
-	set background = 1
+/obj/ovipositor/Destroy()
+	if(!decayed && !destroyed)
+		STOP_PROCESSING(SSeffects, src)
 
-	spawn while (!decayed && !destroyed)
-		if (world.timeofday > begin_decay_time)
-			decayed = 1
-			do_decay()
+	return ..()
 
-		if (health < 0)
-			destroyed = 1
-			explode()
+/obj/ovipositor/process()
+	if (health < 0)
+		explode()
+		return
 
-		sleep(10) // Process every second.
+	if (world.timeofday > begin_decay_time)
+		do_decay()
 
 /obj/ovipositor/proc/do_decay()
+	decayed = TRUE
+	STOP_PROCESSING(SSeffects, src)
+
 	icon_state = "ovipositor_molted"
 	flick("ovipositor_decay", src)
 	sleep(15)
@@ -43,6 +45,9 @@
 	qdel(src)
 
 /obj/ovipositor/proc/explode()
+	destroyed = TRUE
+	STOP_PROCESSING(SSeffects, src)
+
 	icon_state = "ovipositor_gibbed"
 	flick("ovipositor_explosion", src)
 	sleep(15)

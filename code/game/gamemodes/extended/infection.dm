@@ -14,6 +14,9 @@
 	to_world("<B>If you die as a zombie, you come back.  NO MATTER HOW MUCH DAMAGE.</B>")
 	to_world("<B>Don't ahelp asking for specific details, you won't get them.</B>")
 
+/datum/game_mode/infection/get_roles_list()
+	return ROLES_USCM
+
 /datum/game_mode/infection/pre_setup()
 	return ..()
 
@@ -22,9 +25,18 @@
 	initialize_post_marine_gear_list()
 	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc()
-	spawn(50)
-		marine_announcement("We've lost contact with the Weyland-Yutani's research facility, [name]. The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
+
+	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 	return ..()
+
+/datum/game_mode/infection/proc/map_announcement()
+	if(SSmapping.configs[GROUND_MAP].infection_announce_text)
+		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].infection_announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
+		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
+	else if(SSmapping.configs[GROUND_MAP].announce_text) //if we missed a infection text for above, or just don't need a special one, we just use default announcement
+		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
+		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
 
 /datum/game_mode/infection/proc/initialize_post_survivor_list()
 	if(synth_survivor)
@@ -32,7 +44,6 @@
 	for(var/datum/mind/survivor in survivors)
 		if(transform_survivor(survivor) == 1)
 			survivors -= survivor
-	tell_survivor_story()
 
 /datum/game_mode/infection/can_start()
 	initialize_starting_survivor_list()
@@ -118,4 +129,6 @@
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
+
+
 	return 1

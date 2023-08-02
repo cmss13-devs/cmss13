@@ -31,7 +31,7 @@
 	mob_flags = KNOWS_TECHNOLOGY
 	flags = IS_WHITELISTED|NO_BREATHE|NO_CLONE_LOSS|NO_BLOOD|NO_POISON|IS_SYNTHETIC|NO_CHEM_METABOLIZATION|NO_NEURO|HAS_UNDERWEAR
 
-	blood_color = "#EEEEEE"
+	blood_color = BLOOD_COLOR_SYNTHETIC
 
 	has_organ = list(
 		"heart" = /datum/internal_organ/heart/prosthetic,
@@ -40,8 +40,7 @@
 
 	knock_down_reduction = 5
 	stun_reduction = 5
-
-	acid_blood_dodge_chance = 35
+	acid_blood_dodge_chance = 25
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/synthetic/proc/toggle_HUD,
@@ -76,12 +75,12 @@
 	name = SYNTH_COLONY
 	name_plural = "Colonial Synthetics"
 	uses_ethnicity = TRUE
-	burn_mod = 0.65 // made for hazardous environments, withstanding temperatures up to 1210 degrees
+	burn_mod = 0.8
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG)
 
 	pain_type = /datum/pain/synthetic/colonial
 	rarity_value = 1.5
-	slowdown = 0.45
+	slowdown = 0.2
 	total_health = 200 //But more durable
 
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
@@ -104,16 +103,6 @@
 	//sets colonial_gen_one synth's hair to black
 	hair_color = "#000000"
 	//sets colonial_gen_one synth's icon to WJ sprite
-	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
-	deform = 'icons/mob/humans/species/r_synthetic.dmi'
-
-/datum/species/synthetic/colonial/working_joe
-	name = SYNTH_WORKING_JOE
-	name_plural = "Working Joes"
-	uses_ethnicity = FALSE
-	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT)
-
-	hair_color = "#000000"
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'
 
@@ -147,4 +136,4 @@
 
 	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/human
 
-	blood_color = "#A10808"
+	blood_color = BLOOD_COLOR_HUMAN

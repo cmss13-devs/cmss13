@@ -23,30 +23,36 @@
 	name = "\improper Dropship Alamo"
 	icon_state = "shuttlered"
 	base_muffle = MUFFLE_HIGH
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/drop1/LV624
 	name = "\improper Dropship Alamo"
 	ambience_exterior = AMBIENCE_LV624
 	icon_state = "shuttle"
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/drop1/prison
 	name = "\improper Dropship Alamo"
 	ambience_exterior = AMBIENCE_PRISON
 	icon_state = "shuttle"
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/drop1/BigRed
 	name = "\improper Dropship Alamo"
 	ambience_exterior = AMBIENCE_BIGRED
 	icon_state = "shuttle"
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/drop1/ice_colony
 	name = "\improper Dropship Alamo"
 	icon_state = "shuttle"
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/drop1/DesertDam
 	name = "\improper Dropship Alamo"
 	ambience_exterior = AMBIENCE_TRIJENT
 	icon_state = "shuttle"
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/drop1/transit
 	ambience_exterior = 'sound/ambience/dropship_ambience_loop.ogg'
@@ -74,30 +80,36 @@
 	name = "\improper Dropship Normandy"
 	icon_state = "shuttle"
 	base_muffle = MUFFLE_HIGH
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/drop2/LV624
 	name = "\improper Dropship Normandy"
 	ambience_exterior = AMBIENCE_LV624
 	icon_state = "shuttle2"
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/drop2/prison
 	name = "\improper Dropship Normandy"
 	ambience_exterior = AMBIENCE_PRISON
 	icon_state = "shuttle2"
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/drop2/BigRed
 	name = "\improper Dropship Normandy"
 	ambience_exterior = AMBIENCE_BIGRED
 	icon_state = "shuttle2"
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/drop2/ice_colony
 	name = "\improper Dropship Normandy"
 	icon_state = "shuttle2"
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/drop2/DesertDam
 	name = "\improper Dropship Normandy"
 	ambience_exterior = AMBIENCE_TRIJENT
 	icon_state = "shuttle2"
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/drop2/transit
 	ambience_exterior = 'sound/ambience/dropship_ambience_loop.ogg'

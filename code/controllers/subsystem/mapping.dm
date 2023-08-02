@@ -85,7 +85,7 @@ SUBSYSTEM_DEF(mapping)
 	z_list = SSmapping.z_list
 
 #define INIT_ANNOUNCE(X) to_chat(world, "<span class='notice'>[X]</span>"); log_world(X)
-/datum/controller/subsystem/mapping/proc/LoadGroup(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE)
+/datum/controller/subsystem/mapping/proc/LoadGroup(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE, override_map_path = "maps/")
 	. = list()
 	var/start_time = REALTIMEOFDAY
 
@@ -96,7 +96,7 @@ SUBSYSTEM_DEF(mapping)
 	var/total_z = 0
 	var/list/parsed_maps = list()
 	for (var/file in files)
-		var/full_path = "maps/[path]/[file]"
+		var/full_path = "[override_map_path]/[path]/[file]"
 		var/datum/parsed_map/pm = new(file(full_path))
 		var/bounds = pm?.bounds
 		if (!bounds)
@@ -123,19 +123,23 @@ SUBSYSTEM_DEF(mapping)
 		++i
 
 	// load the maps
-	for (var/P in parsed_maps)
-		var/datum/parsed_map/pm = P
-		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE))
+	for (var/datum/parsed_map/pm as anything in parsed_maps)
+		var/cur_z = start_z + parsed_maps[pm]
+		if (!pm.load(1, 1, cur_z, no_changeturf = TRUE))
 			errorList |= pm.original_path
+		if(istype(z_list[cur_z], /datum/space_level))
+			var/datum/space_level/cur_level = z_list[cur_z]
+			cur_level.x_bounds = pm.bounds[MAP_MAXX]
+			cur_level.y_bounds = pm.bounds[MAP_MAXY]
 	if(!silent)
 		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
 	return parsed_maps
 
-/datum/controller/subsystem/mapping/proc/Loadship(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE)
-	LoadGroup(errorList, name, path, files, traits, default_traits, silent)
+/datum/controller/subsystem/mapping/proc/Loadship(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE, override_map_path = "maps/")
+	LoadGroup(errorList, name, path, files, traits, default_traits, silent, override_map_path = override_map_path)
 
-/datum/controller/subsystem/mapping/proc/Loadground(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE)
-	LoadGroup(errorList, name, path, files, traits, default_traits, silent)
+/datum/controller/subsystem/mapping/proc/Loadground(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE, override_map_path = "maps/")
+	LoadGroup(errorList, name, path, files, traits, default_traits, silent, override_map_path = override_map_path)
 
 /datum/controller/subsystem/mapping/proc/loadWorld()
 	//if any of these fail, something has gone horribly, HORRIBLY, wrong
@@ -149,12 +153,18 @@ SUBSYSTEM_DEF(mapping)
 
 	var/datum/map_config/ground_map = configs[GROUND_MAP]
 	INIT_ANNOUNCE("Loading [ground_map.map_name]...")
-	Loadground(FailedZs, ground_map.map_name, ground_map.map_path, ground_map.map_file, ground_map.traits, ZTRAITS_GROUND)
+	var/ground_base_path = "maps/"
+	if(ground_map.override_map)
+		ground_base_path = "data/"
+	Loadground(FailedZs, ground_map.map_name, ground_map.map_path, ground_map.map_file, ground_map.traits, ZTRAITS_GROUND, override_map_path = ground_base_path)
 
 	if(!ground_map.disable_ship_map)
 		var/datum/map_config/ship_map = configs[SHIP_MAP]
+		var/ship_base_path = "maps/"
+		if(ship_map.override_map)
+			ship_base_path = "data/"
 		INIT_ANNOUNCE("Loading [ship_map.map_name]...")
-		Loadship(FailedZs, ship_map.map_name, ship_map.map_path, ship_map.map_file, ship_map.traits, ZTRAITS_MAIN_SHIP)
+		Loadship(FailedZs, ship_map.map_name, ship_map.map_path, ship_map.map_file, ship_map.traits, ZTRAITS_MAIN_SHIP, override_map_path = ship_base_path)
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
 		var/msg = "RED ALERT! The following map files failed to load: [FailedZs[1]]"

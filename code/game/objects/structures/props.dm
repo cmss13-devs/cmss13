@@ -24,7 +24,7 @@
 	. = ..()
 	if(isxeno(user))
 		return
-	else if (ishuman(user) && istype(W, /obj/item/tool/wrench))
+	else if (ishuman(user) && HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		on = !on
 		visible_message("You wrench the controls of \the [src]. The drill jumps to life." , "[user] wrenches the controls of \the [src]. The drill jumps to life.")
 
@@ -265,7 +265,6 @@
 
 /obj/structure/prop/mech/mech_parts
 	name = "mecha part"
-	icon_state = "blank"
 	flags_atom = FPRINT|CONDUCT
 
 /obj/structure/prop/mech/mech_parts/chassis
@@ -303,7 +302,7 @@
 
 /obj/structure/prop/mech/mech_parts/chassis/gygax
 	name = "Gygax Chassis"
-	icon_state = "gygas_chassis"
+	icon_state = "gygax_chassis"
 
 /obj/structure/prop/mech/mech_parts/part/gygax_torso
 	name="Gygax Torso"
@@ -333,13 +332,13 @@
 	name="Gygax Right Leg"
 	icon_state = "gygax_r_leg"
 
-/obj/structure/prop/mech/mech_parts/part/gygax_armour
-	name="Gygax Armour Plates"
-	icon_state = "gygax_armour"
+/obj/structure/prop/mech/mech_parts/part/gygax_armor
+	name="Gygax Armor Plates"
+	icon_state = "gygax_armor"
 
 /obj/structure/prop/mech/mech_parts/chassis/durand
 	name = "Durand Chassis"
-	icon_state = "gygas_chassis"
+	icon_state = "durand_chassis"
 
 /obj/structure/prop/mech/mech_parts/part/durand_torso
 	name="Durand Torso"
@@ -365,9 +364,9 @@
 	name="Durand Right Leg"
 	icon_state = "durand_r_leg"
 
-/obj/structure/prop/mech/mech_parts/part/durand_armour
-	name="Durand Armour Plates"
-	icon_state = "durand_armour"
+/obj/structure/prop/mech/mech_parts/part/durand_armor
+	name="Durand Armor Plates"
+	icon_state = "durand_armor"
 
 /obj/structure/prop/mech/mech_parts/chassis/firefighter
 	name = "Firefighter Chassis"
@@ -375,6 +374,7 @@
 
 /obj/structure/prop/mech/mech_parts/chassis/phazon
 	name = "Phazon Chassis"
+	icon_state = "phazon_chassis"
 
 /obj/structure/prop/mech/mech_parts/part/phazon_torso
 	name="Phazon Torso"
@@ -400,9 +400,13 @@
 	name="Phazon Right Leg"
 	icon_state = "phazon_r_leg"
 
+/obj/structure/prop/mech/mech_parts/part/phazon_armor_plates
+	name="Phazon Armor Plates"
+	icon_state = "phazon_armor"
+
 /obj/structure/prop/mech/mech_parts/chassis/odysseus
 	name = "Odysseus Chassis"
-	icon_state = "gygas_chassis"
+	icon_state = "odysseus_chassis"
 
 /obj/structure/prop/mech/mech_parts/part/odysseus_head
 	name="Odysseus Head"
@@ -432,6 +436,10 @@
 	name="Odysseus Right Leg"
 	desc="A Odysseus right leg. Contains somewhat complex servodrives and balance maintaining systems."
 	icon_state = "odysseus_r_leg"
+
+/obj/structure/prop/mech/mech_parts/part/odysseus_armor_plates
+	name="Odysseus Armor Plates"
+	icon_state = "odysseus_armor"
 
 //Use these to replace non-functional machinery 'props' around maps from bay12
 
@@ -493,7 +501,7 @@
 	. = ..()
 	if(isxeno(user))
 		return
-	else if (ishuman(user) && istype(W, /obj/item/tool/crowbar))
+	else if (ishuman(user) && HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		on = !on
 		visible_message("You pry at the control valve on [src]. The machine shudders." , "[user] pries at the control valve on [src]. The entire machine shudders.")
 
@@ -566,7 +574,7 @@
 	icon_state = "cash_register_broken_open"
 
 /obj/structure/prop/cash_register/off
-	icon_state = "cash_registern_off"
+	icon_state = "cash_register_off"
 
 /obj/structure/prop/cash_register/off/open
 	icon_state = "cash_register_off_open"
@@ -611,9 +619,11 @@
 	name = "non-functional hatch"
 	desc = "You'll need more than a prybar for this one."
 	icon = 'icons/obj/structures/machinery/bolt_target.dmi'
+	icon_state = "closed"
 
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal
 	icon = 'icons/obj/structures/machinery/bolt_terminal.dmi'
+	icon_state = "closed"
 
 /obj/structure/prop/invuln/dropship_parts //for TG shuttle system
 	density = TRUE
@@ -626,8 +636,8 @@
 
 /obj/structure/prop/invuln/dropship_parts/lifeboat
 	name = "Lifeboat"
+	icon_state = ""
 	icon = 'icons/turf/lifeboat.dmi'
-
 
 /obj/structure/prop/brazier
 	name = "brazier"
@@ -637,6 +647,10 @@
 	density = TRUE
 	health = 150
 	luminosity = 6
+
+/obj/structure/prop/brazier/Destroy()
+	SetLuminosity(0)
+	return ..()
 
 /obj/structure/prop/brazier/Initialize()
 	. = ..()
@@ -726,7 +740,7 @@
 	icon_state = "small_wire"
 
 /obj/structure/prop/ice_colony/poly_kevlon_roll
-	name = "poly_kevlon roll"
+	name = "plastic roll"
 	desc = "A big roll of poly-kevlon plastic used in temporary shelter construction."
 	icon_state = "kevlon_roll"
 	anchored = FALSE
@@ -823,8 +837,8 @@
 	icon_state = "van"
 	bound_height = 64
 	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
+	unslashable = FALSE
+	unacidable = FALSE
 
 /obj/structure/prop/vehicles/crawler
 	name = "colony crawler"
@@ -1130,3 +1144,17 @@
 /obj/structure/prop/wooden_cross/update_icon()
 	if(tagged)
 		overlays += mutable_appearance('icons/obj/structures/props/crosses.dmi', "cross_overlay")
+
+
+/obj/structure/prop/invuln/rope
+	name = "rope"
+	desc = "A secure rope looks like someone might've been hiding out on those rocks."
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon_state = "rope"
+	density = FALSE
+
+/obj/structure/prop/invuln/joey
+	name = "Workin' Joey"
+	desc = "A defunct Seegson-brand Working Joe lifted from deep storage by a crew of marines after the last shore leave. Attempts have been made to modify the janitorial synthetic to serve as a crude bartender, but with little success."
+	icon = 'icons/obj/structures/props/props.dmi'
+	icon_state = "joey"

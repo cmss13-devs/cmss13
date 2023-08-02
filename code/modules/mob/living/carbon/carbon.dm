@@ -17,6 +17,7 @@
 /mob/living/carbon/Destroy()
 	stomach_contents?.Cut()
 	view_change_sources = null
+	active_transfusions = null
 	. = ..()
 
 	QDEL_NULL_LIST(internal_organs)
@@ -165,7 +166,7 @@
 				return TRUE
 		else
 			var/obj/limb/affecting = get_limb(check_zone(M.zone_selected))
-			if(initiate_surgery_moment(null, src, affecting, M))
+			if(affecting && initiate_surgery_moment(null, src, affecting, M))
 				return TRUE
 
 	for(var/datum/disease/D in viruses)
@@ -237,6 +238,10 @@
 		else
 			hud_used.l_hand_hud_object.icon_state = "hand_inactive"
 			hud_used.r_hand_hud_object.icon_state = "hand_active"
+	if(l_hand)
+		l_hand.hands_swapped(src)
+	if(r_hand)
+		r_hand.hands_swapped(src)
 	return
 
 /mob/living/carbon/proc/activate_hand(selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
@@ -278,9 +283,9 @@
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
 
-	adjust_effect(-3, PARALYZE)
-	adjust_effect(-3, STUN)
-	adjust_effect(-3, WEAKEN)
+	adjust_effect(-6, PARALYZE)
+	adjust_effect(-6, STUN)
+	adjust_effect(-6, WEAKEN)
 
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 

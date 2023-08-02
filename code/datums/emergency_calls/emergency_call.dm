@@ -9,6 +9,11 @@
 	var/list/datum/emergency_call/all_calls = list() //initialized at round start and stores the datums.
 	var/datum/emergency_call/picked_calls[] = list() //Which distress calls are currently active
 
+/datum/game_mode/proc/ares_online()
+	var/name = "ARES Online"
+	var/input = "ARES. Online. Good morning, marines."
+	shipwide_ai_announcement(input, name, 'sound/AI/ares_online.ogg')
+
 //The distress call parent. Cannot be called itself due to "name" being a filtered target.
 /datum/emergency_call
 	var/name = "name"
@@ -33,7 +38,7 @@
 	var/max_engineers = 1
 	var/max_heavies = 1
 	var/max_smartgunners = 1
-	var/shuttle_id = "Distress" //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
+	var/shuttle_id = MOBILE_SHUTTLE_ID_ERT1 //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = FALSE
 	var/spawn_max_amount = FALSE
 
@@ -79,12 +84,12 @@
 	else
 		return chosen_call
 
-/datum/game_mode/proc/get_specific_call(call_name, announce = TRUE, is_emergency = TRUE, info = "")
+/datum/game_mode/proc/get_specific_call(call_name, announce = TRUE, is_emergency = TRUE, info = "", announce_dispatch_message = TRUE)
 	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
 		if(E.name == call_name)
 			var/datum/emergency_call/em_call = new E.type()
 			em_call.objective_info = info
-			em_call.activate(announce, is_emergency)
+			em_call.activate(announce, is_emergency, announce_dispatch_message)
 			return
 	error("get_specific_call could not find emergency call '[call_name]'")
 	return
@@ -180,7 +185,7 @@
 	else
 		to_chat(src, SPAN_WARNING("You did not get enlisted in the response team. Better luck next time!"))
 
-/datum/emergency_call/proc/activate(announce = TRUE, turf/override_spawn_loc)
+/datum/emergency_call/proc/activate(announce = TRUE, turf/override_spawn_loc, announce_dispatch_message = TRUE)
 	set waitfor = 0
 	if(!SSticker.mode) //Something horribly wrong with the gamemode ticker
 		return
@@ -191,11 +196,11 @@
 	message_admins("Distress beacon: '[name]' activated [src.hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"]. Looking for candidates.")
 
 	if(announce)
-		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg')
+		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg', logging = ARES_LOG_SECURITY)
 
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), announce, override_spawn_loc), 30 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), announce, override_spawn_loc, announce_dispatch_message), 30 SECONDS)
 
-/datum/emergency_call/proc/spawn_candidates(announce = TRUE, override_spawn_loc)
+/datum/emergency_call/proc/spawn_candidates(announce = TRUE, override_spawn_loc, announce_dispatch_message = TRUE)
 	if(SSticker.mode)
 		SSticker.mode.picked_calls -= src
 
@@ -207,7 +212,7 @@
 		candidates = list()
 
 		if(announce)
-			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
+			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
 		return
 
 	//We've got enough!
@@ -237,7 +242,7 @@
 					to_chat(I.current, SPAN_WARNING("You didn't get selected to join the distress team. Better luck next time!"))
 
 	if(announce)
-		marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg') //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
+		marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg', logging = ARES_LOG_SECURITY) //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
 
 	message_admins("Distress beacon: [src.name] finalized, setting up candidates.")
 
@@ -257,7 +262,7 @@
 		var/obj/structure/machinery/computer/shuttle/ert/comp = shuttle.getControlConsole()
 		var/list/lzs = comp.get_landing_zones()
 		if(!length(lzs))
-			warning("Auto shuttle launch set for ert [name] but no lzs allowed.")
+			message_admins("Auto shuttle launch set for ert [name] but no lzs allowed.")
 			return
 
 		var/list/active_lzs = list()
@@ -267,9 +272,13 @@
 			if(!(dock.z in z_levels))
 				continue
 			// filter for free lzs
-			if(shuttle.canDock(dock) != DOCKING_SUCCESS)
+			if(shuttle.canDock(dock) != SHUTTLE_CAN_DOCK)
 				continue
 			active_lzs += list(dock)
+
+		if(!length(active_lzs))
+			message_admins("Auto shuttle launch set for ert [name] but no lzs available.")
+			return
 
 		SSshuttle.moveShuttleToDock(shuttle, pick(active_lzs), TRUE)
 
@@ -288,6 +297,8 @@
 			create_member(null, override_spawn_loc)
 
 	candidates = list()
+	if(arrival_message && announce)
+		marine_announcement(arrival_message, "Intercepted Tranmission:")
 
 /datum/emergency_call/proc/add_candidate(mob/M)
 	if(!M.client || (M.mind && (M.mind in candidates)) || istype(M, /mob/living/carbon/xenomorph))

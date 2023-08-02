@@ -35,7 +35,10 @@
 	T.date = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [game_year - rand(0, 10)]"
 	T.time = "[rand(0,24)]:[rand(11,59)]"
 	T.source_terminal = "Weyland-Yutani Terminal #[rand(111,1111)]"
-	M.account_number = rand(111111, 999999)
+	for(var/attempt in 1 to 100) // Make up to 100 attempts to get a unique account number
+		M.account_number = rand(111111, 999999)
+		if(!get_account(M.account_number))
+			break // Account number is unique!
 	//add the account
 	M.transaction_log.Add(T)
 	all_money_accounts.Add(M)

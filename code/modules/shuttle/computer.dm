@@ -91,6 +91,8 @@
 	icon_state = "syndishuttle"
 	req_access = list()
 	breakable = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
 	var/disabled = FALSE
 	var/compatible_landing_zones = list()
 

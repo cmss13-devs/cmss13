@@ -3,7 +3,7 @@
 	anchored = FALSE
 	name = "AI core"
 	icon = 'icons/obj/structures/machinery/AI.dmi'
-	icon_state = "0"
+	icon_state = "hydra-off"
 	var/state = 0
 	var/obj/item/circuitboard/aicore/circuit = null
 	var/obj/item/device/mmi/brain = null
@@ -51,7 +51,7 @@
 				to_chat(user, SPAN_NOTICE(" You screw the circuit board into place."))
 				state = 2
 				icon_state = "2"
-			if(istype(P, /obj/item/tool/crowbar) && circuit)
+			if(HAS_TRAIT(P, TRAIT_TOOL_CROWBAR) && circuit)
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You remove the circuit board."))
 				state = 1
@@ -121,7 +121,7 @@
 					to_chat(usr, "Added [mmi].")
 					icon_state = "3b"
 
-			if(istype(P, /obj/item/tool/crowbar) && brain)
+			if(HAS_TRAIT(P, TRAIT_TOOL_CROWBAR) && brain)
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You remove the brain."))
 				brain.forceMove(loc)
@@ -129,7 +129,7 @@
 				icon_state = "3"
 
 		if(4)
-			if(istype(P, /obj/item/tool/crowbar))
+			if(HAS_TRAIT(P, TRAIT_TOOL_CROWBAR))
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You remove the glass panel."))
 				state = 3
@@ -151,7 +151,7 @@
 /obj/structure/AIcore/deactivated
 	name = "Inactive AI"
 	icon = 'icons/obj/structures/machinery/AI.dmi'
-	icon_state = "ai-empty"
+	icon_state = "hydra-off"
 	anchored = TRUE
 	state = 20//So it doesn't interact based on the above. Not really necessary.
 

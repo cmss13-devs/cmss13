@@ -167,7 +167,6 @@ var/waiting_for_drop_votes = 0
 	for(var/i in GLOB.good_items)
 		place_drop(get_turf(i), "good")
 
-	QDEL_LIST(GLOB.fog_blockers)
 	QDEL_LIST(GLOB.xeno_tunnels)
 
 	for(var/G in GLOB.gun_list)
@@ -422,6 +421,7 @@ var/waiting_for_drop_votes = 0
 		round_statistics.end_round_player_population = count_humans()
 
 		round_statistics.log_round_statistics()
+
 
 	return 1
 

@@ -478,6 +478,11 @@
 	path = /obj/item/storage/syringe_case
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
+/datum/autolathe/recipe/medilathe/surgical_case
+	name = "surgical case"
+	path = /obj/item/storage/surgical_case
+	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
+
 /datum/autolathe/recipe/medilathe/vial_box
 	name = "vial box"
 	path = /obj/item/storage/fancy/vials/empty

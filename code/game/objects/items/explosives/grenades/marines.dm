@@ -197,6 +197,88 @@
 
 /*
 //================================================
+				M203 Grenades
+//================================================
+*/
+
+/obj/item/explosive/grenade/incendiary/impact
+	name = "\improper 40mm incendiary grenade"
+	desc = "This is a 40mm grenade, designed to be launched by a grenade launcher and detonate on impact. This one is marked as a incendiary grenade, watch your fire."
+	icon_state = "grenade_40mm_inc"
+	det_time = 0
+	item_state = "grenade_fire"
+	hand_throwable = FALSE
+	dangerous = TRUE
+	underslug_launchable = TRUE
+	flame_level = BURN_TIME_TIER_2
+	burn_level = BURN_LEVEL_TIER_3
+	flameshape = FLAMESHAPE_DEFAULT
+	radius = 2
+	fire_type = FIRE_VARIANT_DEFAULT
+
+/obj/item/explosive/grenade/incendiary/impact/prime()
+	return
+
+/obj/item/explosive/grenade/incendiary/impact/launch_impact(atom/hit_atom)
+	..()
+	var/detonate = TRUE
+	var/turf/hit_turf = null
+	if(isobj(hit_atom) && !rebounding)
+		detonate = FALSE
+	if(isturf(hit_atom))
+		hit_turf = hit_atom
+		if(hit_turf.density && !rebounding)
+			detonate = FALSE
+	if(active && detonate) // Active, and we reached our destination.
+		var/angle = dir2angle(last_move_dir)
+		var/turf/target = locate(x + sin(angle)*radius, y + cos(angle)*radius, z)
+		if(target)
+			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, target)
+		else
+			//Not stellar, but if we can't find a direction, fall back to HIDP behaviour.
+			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, FLAMESHAPE_DEFAULT, target)
+		playsound(src, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
+		qdel(src)
+
+/obj/item/explosive/grenade/high_explosive/impact //omega hell killer grenade of doom from hell
+	name = "\improper 40mm HE grenade"
+	desc = "This is a 40mm grenade, designed to be launched by a grenade launcher and detonate on impact. This one is marked as a High-Explosive grenade, watch your fire."
+	icon_state = "grenade_40mm_he"
+	item_state = "grenade_hedp"
+	det_time = 0
+	hand_throwable = FALSE
+	dangerous = TRUE
+	underslug_launchable = TRUE
+	explosion_power = 100 //hedp
+	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+
+/obj/item/explosive/grenade/high_explosive/impact/prime()
+// We don't prime, we use launch_impact.
+
+/obj/item/explosive/grenade/high_explosive/impact/launch_impact(atom/hit_atom)
+	..()
+	var/detonate = TRUE
+	if(isobj(hit_atom) && !rebounding)
+		detonate = FALSE
+	if(isturf(hit_atom) && hit_atom.density && !rebounding)
+		detonate = FALSE
+	if(active && detonate) // Active, and we reached our destination.
+		if(explosion_power)
+			cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, last_move_dir, cause_data)
+		qdel(src)
+
+/obj/item/explosive/grenade/high_explosive/airburst/buckshot
+	name = "\improper 40mm Buckshot Shell"
+	desc = "A classic of grenade launchers everywhere, this is a 40mm shell loaded with buckshot; very dangerous, watch your fire."
+	icon_state = "grenade_40mm_buckshot"
+	item_state = "grenade_hornet_active"
+	shrapnel_count = 10
+	shrapnel_type = /datum/ammo/bullet/shotgun/spread
+	direct_hit_shrapnel = 5
+	dispersion_angle = 35//big
+
+/*
+//================================================
 				Incendiary Grenades
 //================================================
 */

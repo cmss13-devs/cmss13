@@ -37,3 +37,12 @@ GLOBAL_REFERENCE_LIST_INDEXED(adminreplies, /datum/autoreply/admin, title)
 /datum/autoreply/admin/intended
 	title = "Intended"
 	message = "This is an intended feature and therefore does not need admin intervention."
+
+/datum/autoreply/admin/event
+	title = "Event"
+	message = "There is currently a special event running and many things may be changed or different, however normal rules still apply unless you have been specifically instructed otherwise by a staff member."
+
+/datum/autoreply/admin/whitelist
+	title = "Whitelist Issue"
+	message = "Staff are unable to handle most whitelist rulebreaks in-game, please make a player report on the forums, <a href='"+URL_FORUM_PLAYER_REPORT+"'>here</a>."
+

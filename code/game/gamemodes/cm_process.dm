@@ -131,17 +131,6 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	SPAN_XENODANGER("You burrow out of the ground and awaken from your slumber. For the Hive!"))
 	new_xeno << sound('sound/effects/xeno_newlarva.ogg')
 
-//Disperses fog, doing so gradually.
-/datum/game_mode/proc/disperse_fog()
-	set waitfor = 0
-	flags_round_type &= ~MODE_FOG_ACTIVATED
-	var/i
-	for(i in round_fog)
-		round_fog -= i
-		qdel(i)
-		CHECK_TICK
-	round_fog = null
-
 // Open podlocks with the given ID if they aren't already opened.
 // DO NOT USE THIS WITH ID's CORRESPONDING TO SHUTTLES OR THEY WILL BREAK!
 /datum/game_mode/proc/open_podlocks(podlock_id)
@@ -255,6 +244,34 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 
 	return num_marines
 
+/datum/game_mode/proc/count_per_faction(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
+	var/num_marines = 0
+	var/num_WY = 0
+	var/num_UPP = 0
+	var/num_CLF = 0
+	var/num_headcount = 0
+
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+		if(!(current_human.z && (current_human.z in z_levels) && !istype(current_human.loc, /turf/open/space)))
+			continue
+		if(current_human.faction in FACTION_LIST_WY || current_human.job == "Corporate Liaison") //The CL is assigned the USCM faction for gameplay purposes
+			num_WY++
+			num_headcount++
+			continue
+		if(current_human.faction == FACTION_UPP)
+			num_UPP++
+			num_headcount++
+			continue
+		if(current_human.faction == FACTION_CLF)
+			num_CLF++
+			num_headcount++
+			continue
+		if(current_human.faction == FACTION_MARINE)
+			num_marines++
+			num_headcount++
+			continue
+		num_headcount++
+	return list("marine_headcount" = num_marines,"WY_headcount" = num_WY,"UPP_headcount" = num_UPP,"CLF_headcount" = num_CLF,"total_headcount" = num_headcount)
 
 /*
 #undef QUEEN_DEATH_COUNTDOWN

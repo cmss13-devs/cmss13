@@ -236,14 +236,6 @@
 		qdel(src)
 		return
 
-	for(var/mob/living/carbon/C in range(6))
-		if(C.target_locked)
-			var/image/I = C.target_locked
-			if(I.icon_state == "locked-y" && !isyautja(C) && C.stat != DEAD)
-				stance = HOSTILE_STANCE_ATTACK
-				target_mob = C
-				break
-
 	if(!stat)
 		switch(stance)
 			if(HOSTILE_STANCE_IDLE)

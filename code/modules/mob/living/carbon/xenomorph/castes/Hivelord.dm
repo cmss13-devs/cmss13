@@ -68,6 +68,7 @@
 		/datum/action/xeno_action/activable/secrete_resin/hivelord, //third macro
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // to be consistent with drone placement
 		/datum/action/xeno_action/active_toggle/toggle_speed, //fourth macro
+		/datum/action/xeno_action/onclick/tacmap,
 		)
 
 	inherent_verbs = list(
@@ -115,3 +116,10 @@
 	toggle_resin_walker()
 	to_chat(bound_xeno, SPAN_WARNING("You feel dizzy as the world slows down."))
 	bound_xeno.recalculate_move_delay = TRUE
+
+/// This check mainly exists because of the new resin node ability for resin whisperer.
+/mob/living/carbon/xenomorph/hivelord/proc/on_weeds()
+	var/turf/T = get_turf(src)
+	if(locate(/obj/effect/alien/weeds) in T)
+		return TRUE
+	return FALSE

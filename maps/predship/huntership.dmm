@@ -195,7 +195,7 @@
 	},
 /area/yautja)
 "ar" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 1;
 	name = "\improper Wargear Storage"
 	},
@@ -407,7 +407,7 @@
 	},
 /area/yautja)
 "aP" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Trophy Room"
 	},
@@ -427,7 +427,7 @@
 	},
 /area/yautja)
 "aT" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja{
 	name = "\improper Operation Room"
 	},
 /turf/open/shuttle/predship,
@@ -486,6 +486,10 @@
 /obj/structure/pipes/standard/simple/hidden{
 	dir = 4
 	},
+/obj/structure/machinery/computer/crew/alt{
+	faction = "Yautja";
+	pixel_y = 24
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -505,7 +509,7 @@
 /turf/open/floor/light,
 /area/yautja)
 "be" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja{
 	name = "\improper Blooded Teleporter"
 	},
 /turf/open/floor/strata{
@@ -531,13 +535,13 @@
 /turf/closed/wall/huntership,
 /area/yautja)
 "bl" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja{
 	name = "\improper Starboard Wing"
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
 "bm" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja{
 	name = "\improper Port Wing"
 	},
 /turf/open/shuttle/predship,
@@ -566,7 +570,7 @@
 	},
 /area/yautja)
 "bp" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 1;
 	name = "\improper Research Chamber"
 	},
@@ -600,7 +604,7 @@
 	},
 /area/yautja)
 "bu" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 1;
 	name = "\improper Burial Room"
 	},
@@ -618,7 +622,7 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "bx" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Storage Chamber"
 	},
@@ -680,10 +684,11 @@
 	},
 /area/yautja)
 "bD" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 1;
-	name = "\improper Unworthy Prey"
+	name = "\improper Heavy Armory"
 	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/yautja,
 /turf/open/shuttle/predship,
 /area/yautja)
 "bE" = (
@@ -697,7 +702,7 @@
 	},
 /area/yautja)
 "bG" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja{
 	name = "\improper Cooler Room"
 	},
 /turf/open/shuttle/predship,
@@ -749,13 +754,9 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "bN" = (
-/obj/structure/kitchenspike{
-	icon_state = "spikebloodygreen"
-	},
-/obj/effect/decal/cleanable/blood/gibs/xeno/body,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
+/turf/closed/wall/cult{
+	hull = 1;
+	name = "runed hull"
 	},
 /area/yautja)
 "bO" = (
@@ -781,16 +782,6 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
-"bR" = (
-/obj/structure/kitchenspike{
-	icon_state = "spikebloody"
-	},
-/obj/effect/decal/cleanable/blood/gibs,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/yautja)
 "bS" = (
 /obj/structure/pipes/standard/simple/hidden{
 	dir = 9
@@ -802,7 +793,8 @@
 	id = "Cell Lockdown 1";
 	name = "Cell Lockdown 1";
 	pixel_x = -25;
-	pixel_y = 9
+	pixel_y = 9;
+	req_one_access_txt = "250;251;252"
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -811,12 +803,13 @@
 	id = "Cell Lockdown 4";
 	name = "Cell Lockdown 4";
 	pixel_x = -7;
-	pixel_y = 9
+	pixel_y = 9;
+	req_one_access_txt = "250;251;252"
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
 "bW" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Prisoner Cell 1";
 	opacity = 0
 	},
@@ -828,7 +821,7 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "bX" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Prisoner Cell 4";
 	opacity = 0
 	},
@@ -865,7 +858,8 @@
 	id = "Cell Lockdown 2";
 	name = "Cell Lockdown 2";
 	pixel_x = -25;
-	pixel_y = 9
+	pixel_y = 9;
+	req_one_access_txt = "250;251;252"
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -876,9 +870,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/yautja)
 "cd" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -891,7 +883,7 @@
 	},
 /area/yautja)
 "ce" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Prisoner Cell 2";
 	opacity = 0
 	},
@@ -903,7 +895,7 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "cf" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Prisoner Cell 5";
 	opacity = 0
 	},
@@ -919,7 +911,8 @@
 	id = "Cell Lockdown 3";
 	name = "Cell Lockdown 3";
 	pixel_x = -25;
-	pixel_y = 9
+	pixel_y = 9;
+	req_one_access_txt = "250;251;252"
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -928,7 +921,8 @@
 	id = "Cell Lockdown 6";
 	name = "Cell Lockdown 6";
 	pixel_x = -7;
-	pixel_y = 9
+	pixel_y = 9;
+	req_one_access_txt = "250;251;252"
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
@@ -950,7 +944,7 @@
 	},
 /area/yautja)
 "cm" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Prisoner Cell 3";
 	opacity = 0
 	},
@@ -962,7 +956,7 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "cn" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Prisoner Cell 6";
 	opacity = 0
 	},
@@ -1004,7 +998,7 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "ct" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Fore Rooms"
 	},
@@ -1108,7 +1102,7 @@
 	},
 /area/yautja)
 "cA" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja{
 	name = "\improper Elder Teleporter"
 	},
 /turf/open/floor/corsat{
@@ -1117,9 +1111,9 @@
 	},
 /area/yautja)
 "cB" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 1;
-	name = "\improper Navigation Chamber"
+	name = "\improper Control Center"
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -1138,7 +1132,7 @@
 	},
 /area/yautja)
 "cF" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Engine Room"
 	},
@@ -1501,7 +1495,7 @@
 	},
 /area/yautja)
 "dc" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 1;
 	name = "\improper Research Containment"
 	},
@@ -1593,14 +1587,13 @@
 	id = "Cell Lockdown 5";
 	name = "Cell Lockdown 5";
 	pixel_x = -7;
-	pixel_y = 9
+	pixel_y = 9;
+	req_one_access_txt = "250;251;252"
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
 "dw" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/yautja)
 "dI" = (
 /turf/open/space/basic,
@@ -1616,10 +1609,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/yautja)
 "er" = (
 /obj/structure/stairs/perspective{
@@ -1675,6 +1665,24 @@
 "fj" = (
 /obj/structure/machinery/cryopod,
 /turf/open/shuttle/predship,
+/area/yautja)
+"fo" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/item/storage/box/bracer,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
 /area/yautja)
 "fq" = (
 /obj/structure/window/framed/colony/reinforced/hull{
@@ -1734,18 +1742,38 @@
 	},
 /area/yautja)
 "gb" = (
-/obj/item/reagent_container/blood/OMinus,
-/obj/item/reagent_container/blood/OMinus,
-/obj/item/reagent_container/blood/OMinus,
-/obj/item/reagent_container/blood/OMinus,
-/obj/item/reagent_container/blood/OMinus,
-/obj/item/reagent_container/blood/OMinus,
-/obj/item/reagent_container/blood/OMinus,
-/obj/item/reagent_container/blood/OMinus,
-/obj/item/reagent_container/blood/OMinus,
-/obj/item/reagent_container/blood/OMinus,
 /obj/structure/closet/crate{
 	color = "#6b675e"
+	},
+/obj/item/stack/medical/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
+/obj/item/stack/medical/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
+/obj/item/stack/medical/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
+/obj/item/stack/medical/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
+/obj/item/stack/medical/advanced/bruise_pack/predator{
+	pixel_x = 6
+	},
+/obj/item/stack/medical/advanced/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/advanced/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/advanced/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/advanced/ointment/predator{
+	pixel_x = -6
+	},
+/obj/item/stack/medical/advanced/ointment/predator{
+	pixel_x = -6
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -1760,30 +1788,31 @@
 	},
 /area/yautja)
 "gr" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
+/obj/structure/closet/crate/secure{
+	req_one_access_txt = "252";
+	color = "#6b675e";
+	name = "Secure Yautja crate"
 	},
-/obj/item/weapon/unathiknife,
-/obj/item/weapon/unathiknife{
-	attack_speed = 12;
-	force = 25
-	},
+/obj/item/explosive/grenade/spawnergrenade/hellhound,
+/obj/item/explosive/grenade/spawnergrenade/hellhound,
+/obj/item/explosive/grenade/spawnergrenade/hellhound,
+/obj/item/explosive/grenade/spawnergrenade/hellhound,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
 "gG" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
+/obj/structure/machinery/door_control{
+	id = "Yautja Armory";
+	name = "Armory Shutters";
+	pixel_x = 24;
+	req_one_access_txt = "252";
+	needs_power = 0
 	},
-/obj/item/tool/surgery/FixOVein/predatorFixOVein,
-/obj/item/tool/surgery/bonegel/predatorbonegel,
-/obj/item/tool/surgery/bonesetter/predatorbonesetter,
-/obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
 	},
 /area/yautja)
 "ha" = (
@@ -1938,13 +1967,6 @@
 	},
 /area/yautja)
 "nh" = (
-/obj/item/storage/box/bracer{
-	pixel_y = 16
-	},
-/obj/item/storage/box/bracer{
-	pixel_y = 8
-	},
-/obj/item/storage/box/bracer,
 /obj/structure/surface/rack{
 	color = "#6b675e";
 	layer = 2.79
@@ -2009,37 +2031,17 @@
 	},
 /area/yautja)
 "ov" = (
-/obj/item/storage/belt/utility/full{
-	color = "#6b675e";
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools.";
-	name = "\improper Yautja toolbelt"
-	},
-/obj/item/storage/belt/utility/full{
-	color = "#6b675e";
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools.";
-	name = "\improper Yautja toolbelt"
-	},
-/obj/item/storage/belt/utility/full{
-	color = "#6b675e";
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools.";
-	name = "\improper Yautja toolbelt"
-	},
-/obj/item/storage/belt/utility/full{
-	color = "#6b675e";
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools.";
-	name = "\improper Yautja toolbelt"
-	},
-/obj/item/storage/belt/utility/full{
-	color = "#6b675e";
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools.";
-	name = "\improper Yautja toolbelt"
-	},
-/obj/item/stack/yautja_rope,
-/obj/item/stack/yautja_rope,
 /obj/structure/surface/rack{
 	color = "#6b675e";
 	layer = 2.79
 	},
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/storage/belt/utility/full/pred,
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2150,7 +2152,7 @@
 	},
 /area/yautja)
 "sV" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Feed Hall"
 	},
@@ -2207,13 +2209,29 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"tR" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/item/storage/box/bracer,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "uf" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/yautja)
 "uO" = (
 /obj/structure/bed/chair/hunter{
@@ -2300,10 +2318,7 @@
 	dir = 8
 	},
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/yautja)
 "xn" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -2371,9 +2386,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/yautja)
 "zA" = (
 /turf/open/floor{
@@ -2409,30 +2422,46 @@
 /obj/structure/machinery/cryopod/right,
 /turf/open/shuttle/predship,
 /area/yautja)
-"Br" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert2"
+"Bg" = (
+/obj/structure/closet/crate/secure{
+	req_one_access_txt = "252";
+	color = "#6b675e";
+	name = "Secure Yautja crate"
 	},
-/area/yautja)
-"BB" = (
-/obj/structure/machinery/iv_drip,
+/obj/item/weapon/yautja/combistick,
+/obj/item/weapon/yautja/combistick{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/weapon/twohanded/yautja/glaive/alt,
+/obj/item/weapon/yautja/chain,
+/obj/item/weapon/yautja/sword,
+/obj/item/weapon/yautja/scythe,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
+	},
+/area/yautja)
+"Br" = (
+/turf/open/gm/dirtgrassborder{
+	icon_state = "desert2"
 	},
 /area/yautja)
 "BK" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/tool/surgery/cautery/predatorcautery,
-/obj/item/tool/surgery/circular_saw/predatorbonesaw,
-/obj/item/tool/surgery/hemostat/predatorhemostat,
-/obj/item/tool/surgery/retractor/predatorretractor,
-/obj/item/tool/surgery/scalpel/predatorscalpel,
+/obj/item/storage/medicomp/full,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
+	},
+/area/yautja)
+"BS" = (
+/obj/structure/machinery/prop/yautja/bubbler,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
 	},
 /area/yautja)
 "Cn" = (
@@ -2487,7 +2516,7 @@
 	},
 /area/yautja)
 "Dr" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	indestructible = 1;
 	locked = 1;
 	name = "\improper External Airlock"
@@ -2515,7 +2544,13 @@
 	},
 /area/yautja)
 "DJ" = (
-/obj/structure/machinery/computer/crew,
+/obj/structure/machinery/computer/crew/alt{
+	dir = 1;
+	name = "human monitoring computer"
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -2555,13 +2590,12 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/bedsheet{
-	anchored = 1;
+/obj/structure/showcase{
 	desc = "A console used by the Hunters for navigation purposes.";
 	dir = 8;
 	icon = 'icons/obj/structures/machinery/computer.dmi';
 	icon_state = "security_cam";
-	name = "Hunter Nav Console"
+	name = "Radar Console"
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -2582,7 +2616,7 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "Gd" = (
-/obj/structure/machinery/door/airlock/strata/autoname,
+/obj/structure/machinery/door/airlock/yautja/secure,
 /turf/open/shuttle/predship,
 /area/yautja)
 "Gk" = (
@@ -2651,18 +2685,16 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
+/obj/item/stack/medical/advanced/ointment/predator{
+	pixel_x = 6;
+	desc = "A poultice made of cold, blue petals that is rubbed on burns. Not to be removed from the ship.";
+	name = "arena soothing herbs"
+	},
+/obj/item/stack/medical/advanced/bruise_pack/predator{
+	pixel_x = -6;
+	desc = "A poultice made of soft leaves that is rubbed on bruises. Not to be removed from the ship.";
+	name = "arena mending herbs"
+	},
 /turf/open/shuttle/predship,
 /area/yautja)
 "Hp" = (
@@ -2686,6 +2718,25 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"HD" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79;
+	pixel_y = 24;
+	density = 0
+	},
+/obj/item/weapon/gun/energy/yautja/plasmarifle{
+	pixel_y = -8
+	},
+/obj/item/weapon/gun/energy/yautja/plasmarifle,
+/obj/item/weapon/gun/energy/yautja/plasmarifle{
+	pixel_y = 8
+	},
+/turf/open/floor/strata{
+	color = "#5e5d5d";
+	icon_state = "multi_tiles"
+	},
+/area/yautja)
 "HN" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -2701,8 +2752,17 @@
 	},
 /area/yautja)
 "If" = (
-/obj/structure/machinery/optable,
-/obj/effect/decal/cleanable/blood,
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/weapon/gun/energy/yautja/plasmapistol{
+	pixel_y = -8
+	},
+/obj/item/weapon/gun/energy/yautja/plasmapistol,
+/obj/item/weapon/gun/energy/yautja/plasmapistol{
+	pixel_y = 8
+	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -2748,7 +2808,7 @@
 	},
 /area/yautja)
 "Iw" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Hellhound Quarters"
 	},
 /turf/open/floor/corsat{
@@ -2757,7 +2817,7 @@
 	},
 /area/yautja)
 "IC" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja/secure/elder{
 	name = "\improper Elder Quarters"
 	},
 /turf/open/shuttle/predship,
@@ -2798,6 +2858,31 @@
 	color = "#FFE55C";
 	name = "sacred ceremonial dagger";
 	pixel_x = 25
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
+"KD" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/item/reagent_container/glass/rag/polishing_rag,
+/obj/item/reagent_container/glass/rag/polishing_rag{
+	pixel_x = 9
+	},
+/obj/item/reagent_container/glass/rag/polishing_rag{
+	pixel_x = 4;
+	pixel_y = 3
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2878,7 +2963,7 @@
 	},
 /area/yautja)
 "MI" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja{
 	name = "\improper Blooded Teleporter"
 	},
 /turf/open/floor/strata{
@@ -2932,7 +3017,7 @@
 	},
 /area/yautja)
 "Pr" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Research Containment"
 	},
 /turf/open/floor/strata{
@@ -3012,7 +3097,7 @@
 	},
 /area/yautja)
 "RS" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/yautja)
 "Sx" = (
 /turf/open/floor{
@@ -3076,13 +3161,12 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/bedsheet{
-	anchored = 1;
+/obj/structure/showcase{
 	desc = "A console used by the Hunters for navigation purposes.";
 	dir = 4;
 	icon = 'icons/obj/structures/machinery/computer.dmi';
 	icon_state = "security_cam";
-	name = "Hunter Nav Console"
+	name = "Radar Console"
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -3112,7 +3196,7 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "Wg" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Gladiator Hall"
 	},
@@ -3183,10 +3267,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/yautja)
 "XP" = (
 /obj/structure/machinery/cryopod,
@@ -3203,7 +3284,7 @@
 	},
 /area/yautja)
 "YL" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
+/obj/structure/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Cryo Room"
 	},
@@ -3219,8 +3300,11 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "Zs" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
-	name = "\improper Containment"
+/obj/structure/machinery/door/airlock/yautja/secure{
+	name = "\improper Heavy Armory"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/yautja{
+	dir = 4
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -4821,7 +4905,7 @@ bj
 aa
 aa
 aa
-aa
+dI
 aa
 bj
 bj
@@ -5033,7 +5117,7 @@ cP
 cP
 cP
 cP
-wQ
+fo
 bj
 bj
 aa
@@ -5105,7 +5189,7 @@ ZM
 au
 cP
 cP
-wQ
+fo
 bj
 bj
 bj
@@ -5154,7 +5238,7 @@ aa
 aa
 ac
 bj
-af
+bN
 ZR
 aV
 bn
@@ -5177,7 +5261,7 @@ bj
 wQ
 cP
 cP
-wQ
+fo
 bj
 bj
 bj
@@ -5226,7 +5310,7 @@ aa
 aa
 ae
 bj
-af
+bN
 aC
 cP
 bL
@@ -5249,7 +5333,7 @@ rH
 wQ
 bL
 cP
-wQ
+fo
 bj
 bj
 bj
@@ -5311,13 +5395,13 @@ bL
 cP
 bL
 bj
-wQ
+KD
 bL
 JH
 JH
-af
+bN
 be
-af
+bN
 JH
 JH
 JH
@@ -5383,7 +5467,7 @@ eS
 cP
 Uv
 bj
-bL
+BS
 JH
 JH
 bL
@@ -6323,9 +6407,9 @@ bL
 bL
 JH
 JH
-af
+bN
 MI
-af
+bN
 JH
 JH
 JH
@@ -6378,7 +6462,7 @@ aa
 aa
 ae
 bj
-af
+bN
 aC
 cP
 bL
@@ -6401,7 +6485,7 @@ ti
 Ut
 bL
 cP
-Ut
+tR
 bj
 bj
 bj
@@ -6450,7 +6534,7 @@ aa
 aa
 ad
 bj
-af
+bN
 ZR
 aV
 bn
@@ -6473,7 +6557,7 @@ bj
 Ut
 cP
 cP
-Ut
+tR
 bj
 bj
 bj
@@ -6545,7 +6629,7 @@ ZM
 zZ
 cP
 cP
-Ut
+tR
 bj
 bj
 bj
@@ -6617,7 +6701,7 @@ cP
 cP
 cP
 cP
-Ut
+tR
 bj
 bj
 aa
@@ -6770,9 +6854,9 @@ aa
 aa
 bj
 bj
-bR
+HD
+JH
 If
-bN
 bj
 bj
 bj
@@ -6842,9 +6926,9 @@ aa
 bj
 bj
 bj
-BB
+HD
 JH
-JH
+If
 bj
 bj
 bj
@@ -6988,7 +7072,7 @@ gb
 JH
 JH
 JH
-JH
+Bg
 bj
 bj
 bj
@@ -7131,7 +7215,7 @@ bD
 df
 JH
 BK
-gG
+BK
 bj
 bj
 bj
@@ -7197,7 +7281,7 @@ bj
 bL
 bL
 bL
-bL
+gG
 bL
 Fy
 dl

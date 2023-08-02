@@ -1,14 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import {
-  Stack,
-  Section,
-  Tabs,
-  Button,
-  NoticeBox,
-  Box,
-  Dimmer,
-  Icon,
-} from '../components';
+import { Stack, Section, Tabs, Button, NoticeBox, Box, Dimmer, Icon } from '../components';
 import { Window } from '../layouts';
 
 export const AntiAirConsole = (props, context) => {

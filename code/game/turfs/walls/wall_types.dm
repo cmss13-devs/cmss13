@@ -412,6 +412,8 @@
 	walltype = WALL_CULT
 	color = "#3c3434"
 
+/turf/closed/wall/cult/make_girder(destroyed_girder)
+	return
 
 /turf/closed/wall/vault
 	icon_state = "rockvault"
@@ -545,19 +547,21 @@
 //SOLARIS RIDGE TILESET//
 
 /turf/closed/wall/solaris
-	name = "solaris ridge colony wall"
+	name = "colony wall"
 	icon = 'icons/turf/walls/solaris/solaris.dmi'
 	icon_state = "solaris_interior"
 	desc = "Tough looking walls that have been blasted by sand since the day they were erected. A testament to human willpower."
 	walltype = WALL_SOLARIS
 
 /turf/closed/wall/solaris/reinforced
+	name = "reinforced colony wall"
 	icon_state = "solaris_interior_r"
 	walltype = WALL_SOLARISR
 	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
 
 /turf/closed/wall/solaris/reinforced/hull
+	name = "heavy reinforced colony wall"
 	icon_state = "solaris_interior_h"
 	hull = 1
 
@@ -565,7 +569,7 @@
 	name = "Colony Windbreaker"
 
 /turf/closed/wall/solaris/rock
-	name = "solaris ridge rock wall"
+	name = "rock wall"
 	icon_state = "solaris_rock"
 	walltype = WALL_SOLARIS_ROCK
 	hull = 1
@@ -699,6 +703,23 @@
 	var/should_track_build = FALSE
 	var/datum/cause_data/construction_data
 	flags_turf = TURF_ORGANIC
+
+/turf/closed/wall/resin/Initialize(mapload)
+	. = ..()
+
+	for(var/obj/effect/alien/weeds/node/weed_node in contents)
+		qdel(weed_node)
+
+	if(hivenumber == XENO_HIVE_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
+/turf/closed/wall/resin/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		hivenumber = XENO_HIVE_FORSAKEN
+		set_hive_data(src, XENO_HIVE_FORSAKEN)
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /turf/closed/wall/resin/pillar
 	name = "resin pillar segment"
@@ -1184,6 +1205,11 @@
 
 
 /turf/closed/wall/resin/attack_hand(mob/user)
+	if(isxeno(user) && istype(user.get_active_hand(), /obj/item/grab))
+		var/obj/item/grab/grab_item_dummy = user.get_active_hand()
+		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
+		user_as_xenomorph.do_nesting_host(grab_item_dummy.grabbed_thing, src)
+
 	to_chat(user, SPAN_WARNING("You scrape ineffectively at \the [src]."))
 
 /turf/closed/wall/resin/attackby(obj/item/W, mob/living/user)

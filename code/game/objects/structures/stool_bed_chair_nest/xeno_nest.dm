@@ -5,19 +5,23 @@
 	desc = "It's a gruesome pile of thick, sticky resin shaped like a nest."
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "nest"
-	buckling_y = 6
 	buildstacktype = null //can't be disassembled and doesn't drop anything when destroyed
 	unacidable = TRUE
 	health = 100
+	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE
+	buckle_lying = FALSE
 	var/on_fire = 0
 	var/resisting = 0
 	var/resisting_ready = 0
 	var/nest_resist_time = 1200
 	var/mob/dead/observer/ghost_of_buckled_mob =  null
 	var/hivenumber = XENO_HIVE_NORMAL
-	layer = RESIN_STRUCTURE_LAYER
-
 	var/force_nest = FALSE
+	/// counterpart to buckling_y --> offsets the buckled mob when it buckles
+	var/list/buckling_x
+	/// saves the density of the buckled_mob
+	var/buckled_mob_density
 
 /obj/structure/bed/nest/Initialize(mapload, hive)
 	. = ..()
@@ -26,6 +30,55 @@
 		hivenumber = hive
 
 	set_hive_data(src, hivenumber)
+
+	buckling_y = list("[NORTH]" = 27, "[SOUTH]" = -19, "[EAST]" = 3, "[WEST]" = 3)
+	buckling_x = list("[NORTH]" = 0, "[SOUTH]" = 0, "[EAST]" = 18, "[WEST]" = -17)
+
+	spawn_check() //nests mapped in without hosts shouldn't persist
+
+/obj/structure/bed/nest/proc/spawn_check(check_count = 0)
+	if(!buckled_mob || !locate(/mob/living/carbon) in get_turf(src))
+		if(check_count > 3)
+			qdel(src)
+		else
+			check_count++
+			addtimer(CALLBACK(src, PROC_REF(spawn_check), check_count), 10 SECONDS)
+
+/obj/structure/bed/nest/afterbuckle(mob/current_mob)
+	. = ..()
+	if(. && current_mob.pulledby)
+		current_mob.pulledby.stop_pulling()
+		resisting = FALSE //just in case
+		resisting_ready = FALSE
+
+	if(buckled_mob == current_mob)
+		buckled_mob_density = current_mob.density
+		current_mob.pixel_y = buckling_y["[dir]"]
+		current_mob.pixel_x = buckling_x["[dir]"]
+		current_mob.dir = turn(dir, 180)
+		current_mob.density = FALSE
+		pixel_y = buckling_y["[dir]"]
+		pixel_x = buckling_x["[dir]"]
+		if(dir == SOUTH)
+			buckled_mob.layer = ABOVE_TURF_LAYER
+			if(ishuman(current_mob))
+				var/mob/living/carbon/human/current_human = current_mob
+				for(var/obj/limb/current_mobs_limb in current_human.limbs)
+					current_mobs_limb.layer = TURF_LAYER
+		update_icon()
+		return
+
+	current_mob.pixel_y = initial(buckled_mob.pixel_y)
+	current_mob.pixel_x = initial(buckled_mob.pixel_x)
+	current_mob.density = buckled_mob_density
+	if(dir == SOUTH)
+		current_mob.layer = initial(current_mob.layer)
+		if(!ishuman(current_mob))
+			var/mob/living/carbon/human/current_human = current_mob
+			for(var/obj/limb/current_mobs_limb in current_human.limbs)
+				current_mobs_limb.layer =  initial(current_mobs_limb.layer)
+	if(!QDESTROYING(src))
+		qdel(src)
 
 /obj/structure/bed/nest/alpha
 	color = "#ff4040"
@@ -139,11 +192,12 @@
 	recently_nested = TRUE
 	addtimer(VARSET_CALLBACK(src, recently_nested, FALSE), 5 SECONDS)
 
-/obj/structure/bed/nest/buckle_mob(mob/M as mob, mob/user as mob)
-	if(!isliving(M) || islarva(user) || (get_dist(src, user) > 1) || (M.loc != loc) || user.is_mob_restrained() || user.stat || user.lying || M.buckled || !iscarbon(user))
+/obj/structure/bed/nest/buckle_mob(mob/mob, mob/user)
+	. = FALSE
+	if(!isliving(mob) || islarva(user) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.stat || user.lying || mob.buckled || !iscarbon(user))
 		return
 
-	if(isxeno(M))
+	if(isxeno(mob))
 		to_chat(user, SPAN_WARNING("You can't buckle your sisters."))
 		return
 
@@ -151,83 +205,72 @@
 		to_chat(user, SPAN_WARNING("There's already someone in [src]."))
 		return
 
-	if(M.mob_size > MOB_SIZE_HUMAN)
-		to_chat(user, SPAN_WARNING("\The [M] is too big to fit in [src]."))
+	if(mob.mob_size > MOB_SIZE_HUMAN)
+		to_chat(user, SPAN_WARNING("\The [mob] is too big to fit in [src]."))
 		return
 
-	if(!isxeno(user) || issynth(M))
+	if(!isxeno(user) || issynth(mob))
 		to_chat(user, SPAN_WARNING("Gross! You're not touching that stuff."))
 		return
 
-	if(isyautja(M) && !force_nest)
-		to_chat(user, SPAN_WARNING("\The [M] seems to be wearing some kind of resin-resistant armor!"))
+	if(isyautja(mob) && !force_nest)
+		to_chat(user, SPAN_WARNING("\The [mob] seems to be wearing some kind of resin-resistant armor!"))
 		return
 
-	if(M == user)
+	if(mob == user)
 		return
 
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(!H.lying) //Don't ask me why is has to be
-			to_chat(user, SPAN_WARNING("[M] is resisting, ground them."))
+	var/mob/living/carbon/human/human = null
+	if(ishuman(mob))
+		human = mob
+		if(!human.lying) //Don't ask me why is has to be
+			to_chat(user, SPAN_WARNING("[mob] is resisting, ground them."))
 			return
 
 	var/securing_time = 15
 	// Don't increase the nesting time for monkeys and other species
-	if(ishuman_strict(M))
+	if(ishuman_strict(mob))
 		securing_time = 75
 
-	user.visible_message(SPAN_WARNING("[user] pins [M] into [src], preparing the securing resin."),
-	SPAN_WARNING("[user] pins [M] into [src], preparing the securing resin."))
-	var/M_loc = M.loc
-	if(!do_after(user, securing_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	user.visible_message(SPAN_WARNING("[user] pins [mob] into [src], preparing the securing resin."),
+	SPAN_WARNING("[user] pins [mob] into [src], preparing the securing resin."))
+	var/M_loc = mob.loc
+	if(!do_after(user, securing_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		return
-	if(M.loc != M_loc)
+	if(mob.loc != M_loc)
 		return
 
 	if(buckled_mob) //Just in case
 		to_chat(user, SPAN_WARNING("There's already someone in [src]."))
 		return
 
-	if(ishuman(M)) //Improperly stunned Marines won't be nested
-		var/mob/living/carbon/human/H = M
-		if(!H.lying) //Don't ask me why is has to be
-			to_chat(user, SPAN_WARNING("[M] is resisting, ground them."))
+	if(human) //Improperly stunned Marines won't be nested
+		if(!human.lying) //Don't ask me why is has to be
+			to_chat(user, SPAN_WARNING("[mob] is resisting, ground them."))
 			return
 
-	do_buckle(M, user)
-	ADD_TRAIT(M, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
+	do_buckle(mob, user)
+	ADD_TRAIT(mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
 
-	if(!ishuman(M))
-		return
+	if(!human)
+		return TRUE
 
 	//Disabling motion detectors and other stuff they might be carrying
-	var/mob/living/carbon/human/H = M
-	H.start_nesting_cooldown()
-	H.disable_special_flags()
-	H.disable_lights()
-	H.disable_special_items()
+	human.start_nesting_cooldown()
+	human.disable_special_flags()
+	human.disable_lights()
+	human.disable_special_items()
 
-	if(H.mind)
-		var/choice = alert(M, "You have no possibility of escaping unless freed by your fellow marines, do you wish to Ghost? If you are freed while ghosted, you will be given the choice to return to your body.", ,"Ghost", "Remain")
-		if(choice == "Ghost")
-			// Ask to ghostize() so they can reenter, to leave mind and such intact
-			ghost_of_buckled_mob = M.ghostize(can_reenter_corpse = TRUE)
-			ghost_of_buckled_mob?.can_reenter_corpse = FALSE // Just don't for now
+	if(human.client)
+		human.do_ghost()
+
+	return TRUE
 
 /obj/structure/bed/nest/send_buckling_message(mob/M, mob/user)
 	M.visible_message(SPAN_XENONOTICE("[user] secretes a thick, vile resin, securing [M] into [src]!"), \
 	SPAN_XENONOTICE("[user] drenches you in a foul-smelling resin, trapping you in [src]!"), \
 	SPAN_NOTICE("You hear squelching."))
 	playsound(loc, "alien_resin_move", 50)
-
-/obj/structure/bed/nest/afterbuckle(mob/M)
-	. = ..()
-	if(. && M.pulledby)
-		M.pulledby.stop_pulling()
-		resisting = 0 //just in case
-		resisting_ready = 0
-	update_icon()
 
 /obj/structure/bed/nest/unbuckle(mob/user)
 	if(!buckled_mob)
@@ -237,21 +280,23 @@
 	buckled_mob.pixel_y = 0
 	buckled_mob.old_y = 0
 	REMOVE_TRAIT(buckled_mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
-	var/mob/living/carbon/human/H = buckled_mob
-
-	. = ..()
+	var/mob/living/carbon/human/buckled_human = buckled_mob
+	if(buckled_human.stat == DEAD )
+		buckled_mob_density = FALSE
 
 	var/mob/dead/observer/G = ghost_of_buckled_mob
 	var/datum/mind/M = G?.mind
 	ghost_of_buckled_mob = null
-	if(!istype(H) || !istype(G) || !istype(M) || H.undefibbable || H.mind || M.original != H || H.chestburst)
+
+	. = ..() //Very important that this comes after, since it deletes the nest and clears ghost_of_buckled_mob
+
+	if(!istype(buckled_human) || !istype(G) || !istype(M) || buckled_human.undefibbable || buckled_human.mind || M.original != buckled_human || buckled_human.chestburst)
 		return // Zealous checking as most is handled by ghost code
 	to_chat(G, FONT_SIZE_HUGE(SPAN_DANGER("You have been freed from your nest and may go back to your body! (Look for 'Re-enter Corpse' in Ghost verbs, or <a href='?src=\ref[G];reentercorpse=1'>click here</a>!)")))
 	sound_to(G, 'sound/effects/attackblob.ogg')
-	if(H.client?.prefs.toggles_flashing & FLASH_UNNEST)
-		window_flash(H.client)
+	if(buckled_human.client?.prefs.toggles_flashing & FLASH_UNNEST)
+		window_flash(buckled_human.client)
 	G.can_reenter_corpse = TRUE
-	return
 
 /obj/structure/bed/nest/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
@@ -262,12 +307,11 @@
 	if(on_fire)
 		overlays += "alien_fire"
 	if(buckled_mob)
-		overlays += image("icon_state"="nest_overlay","layer"=LYING_LIVING_MOB_LAYER + 0.1)
-
+		overlays += image(icon_state = "nest_overlay", dir = buckled_mob.dir, layer = ABOVE_MOB_LAYER, pixel_y = 1)
 
 /obj/structure/bed/nest/proc/healthcheck()
 	if(health <= 0)
-		density = FALSE
+		buckled_mob_density = FALSE
 		deconstruct()
 
 /obj/structure/bed/nest/fire_act()
@@ -311,12 +355,14 @@
 	name = "thick alien nest"
 	desc = "A very thick nest, oozing with a thick sticky substance."
 	layer = ABOVE_SPECIAL_RESIN_STRUCTURE_LAYER
-
+	icon_state = "pred_nest"
 	force_nest = TRUE
 	var/obj/effect/alien/resin/special/nest/linked_structure
 
 /obj/structure/bed/nest/structure/Initialize(mapload, hive, obj/effect/alien/resin/special/nest/to_link)
 	. = ..()
+	buckling_y = list("[NORTH]" = -19, "[SOUTH]" = 27, "[EAST]" = 3, "[WEST]" = 3)
+	buckling_x = list("[NORTH]" = 0, "[SOUTH]" = 0, "[EAST]" = -17, "[WEST]" = 18)
 
 	if(to_link)
 		linked_structure = to_link
@@ -333,3 +379,15 @@
 		to_chat(user, SPAN_NOTICE("The sticky resin is too strong for you to do anything to this nest"))
 		return FALSE
 	. = ..()
+
+/obj/structure/bed/nest/structure/afterbuckle(mob/current_mob)
+	. = ..()
+	switch(buckled_mob.dir)
+		if(NORTH)
+			buckled_mob.dir = SOUTH
+		if(SOUTH)
+			buckled_mob.dir = NORTH
+		if(EAST)
+			buckled_mob.dir = WEST
+		if(WEST)
+			buckled_mob.dir = EAST

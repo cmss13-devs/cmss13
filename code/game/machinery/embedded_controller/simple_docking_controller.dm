@@ -9,6 +9,10 @@
 	docking_program = new/datum/computer/file/embedded_program/docking/simple(src)
 	program = docking_program
 
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/Destroy()
+	QDEL_NULL(docking_program)
+	return ..()
+
 //A docking controller program for a simple door based docking port
 /datum/computer/file/embedded_program/docking/simple
 	var/tag_door

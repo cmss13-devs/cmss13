@@ -170,9 +170,9 @@ var/savefile/Banlist
 /datum/admins/proc/unbanpanel()
 	var/dat
 
-	var/list/datum/view_record/player_ban_view/PBV = DB_VIEW(/datum/view_record/player_ban_view) // no filter
+	var/list/datum/view_record/players/PBV = DB_VIEW(/datum/view_record/players, DB_OR(DB_COMP("is_permabanned", DB_EQUALS, 1), DB_COMP("is_time_banned", DB_EQUALS, 1))) // a filter
 
-	for(var/datum/view_record/player_ban_view/ban in PBV)
+	for(var/datum/view_record/players/ban in PBV)
 		var/expiry
 		if(!ban.is_permabanned)
 			expiry = GetExp(ban.expiration)
@@ -226,6 +226,9 @@ var/savefile/Banlist
 		RemoveBan(A)
 
 /client/proc/cmd_admin_do_ban(mob/M)
+	if(IsAdminAdvancedProcCall())
+		alert_proccall("cmd_admin_do_ban")
+		return PROC_BLOCKED
 	if(!check_rights(R_BAN|R_MOD))  return
 
 	if(!ismob(M)) return

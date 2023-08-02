@@ -31,8 +31,7 @@
 		xeno.update_icons()
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 // Defender Headbutt
 /datum/action/xeno_action/activable/headbutt/use_ability(atom/target_atom)
@@ -100,8 +99,7 @@
 	carbone.throw_atom(thrown_turf, headbutt_distance, SPEED_SLOW, src)
 	playsound(carbone,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 // Defender Tail Sweep
 /datum/action/xeno_action/onclick/tail_sweep/use_ability(atom/A)
@@ -153,8 +151,7 @@
 		playsound(human,'sound/weapons/alien_claw_block.ogg', 50, 1)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 // Defender Fortify
 /datum/action/xeno_action/activable/fortify/use_ability(atom/target)
@@ -190,8 +187,7 @@
 			button.icon_state = "template"
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/fortify/action_activate()
 	..()
@@ -262,3 +258,67 @@
 
 	UnregisterSignal(owner, COMSIG_MOB_DEATH)
 	fortify_switch(owner, FALSE)
+
+/datum/action/xeno_action/onclick/soak/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/steelcrest = owner
+
+	if (!action_cooldown_check())
+		return
+
+	if (!steelcrest.check_state())
+		return
+
+	if(!check_and_use_plasma_owner())
+		return
+
+	RegisterSignal(steelcrest, COMSIG_XENO_TAKE_DAMAGE, PROC_REF(damage_accumulate))
+	addtimer(CALLBACK(src, PROC_REF(stop_accumulating)), 6 SECONDS)
+
+	steelcrest.balloon_alert(steelcrest, "begins to take in oncoming damage!")
+
+	to_chat(steelcrest, SPAN_XENONOTICE("You begin to take in oncoming damage!"))
+
+	steelcrest.add_filter("steelcrest_enraging", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
+
+	apply_cooldown()
+	return ..()
+
+
+/datum/action/xeno_action/onclick/soak/proc/damage_accumulate(owner, damage_data, damage_type)
+	SIGNAL_HANDLER
+
+	damage_accumulated += damage_data["damage"]
+
+	if(damage_accumulated >= damage_threshold)
+		addtimer(CALLBACK(src, PROC_REF(enraged), owner))
+		UnregisterSignal(owner, COMSIG_XENO_TAKE_DAMAGE) // Two Unregistersignal because if the enrage proc doesnt happen, then it needs to stop counting
+
+/datum/action/xeno_action/onclick/soak/proc/stop_accumulating()
+	UnregisterSignal(owner, COMSIG_XENO_TAKE_DAMAGE)
+
+	damage_accumulated = 0
+	to_chat(owner, SPAN_XENONOTICE("You stop taking in oncoming damage."))
+	owner.remove_filter("steelcrest_enraging")
+
+/datum/action/xeno_action/onclick/soak/proc/enraged()
+
+	owner.remove_filter("steelcrest_enraging")
+	owner.add_filter("steelcrest_enraged", 1, list("type" = "outline", "color" = "#ad1313", "size" = 1))
+	owner.visible_message(SPAN_XENOWARNING("[owner] gets enraged after being damaged enough!"), SPAN_XENOWARNING("You feel enraged after taking in oncoming damage! Your tail slam's cooldown is reset and you heal!"))
+
+	var/mob/living/carbon/xenomorph/enraged_mob = owner
+	enraged_mob.gain_health(75) // pretty reasonable amount of health recovered
+
+	// Check actions list for tail slam and reset it's cooldown if it's there
+	var/datum/action/xeno_action/activable/tail_stab/slam/slam_action = locate() in owner.actions
+
+	if (slam_action && !slam_action.action_cooldown_check())
+		slam_action.end_cooldown()
+
+
+	addtimer(CALLBACK(src, PROC_REF(remove_enrage), owner), 3 SECONDS)
+
+
+/datum/action/xeno_action/onclick/soak/proc/remove_enrage()
+	owner.remove_filter("steelcrest_enraged")
+

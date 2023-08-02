@@ -25,8 +25,7 @@
 
 	// Only resets when invisibility ends
 	apply_cooldown_override(1000000000)
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/lurker_invisibility/proc/invisibility_off()
 	if(!owner || owner.alpha == initial(owner.alpha))
@@ -80,8 +79,7 @@
 	xeno.next_move = world.time + 1 // Autoattack reset
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/lurker_assassinate/proc/unbuff_slash()
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -109,7 +107,6 @@
 	target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
 	playsound(get_turf(target), 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
 	shake_camera(target, 2, 1)
-	apply_cooldown(0.65)
 
 /datum/action/xeno_action/activable/flurry/use_ability(atom/targeted_atom) //flurry ability
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -175,8 +172,7 @@
 			xeno.animation_attack_on(target)
 
 	xeno.emote("roar")
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/tail_jab/use_ability(atom/targeted_atom)
 
@@ -213,7 +209,7 @@
 				apply_cooldown(cooldown_modifier = 0.5)
 				return
 
-	if(!isxeno_human(hit_target) || xeno.can_not_harm(hit_target))
+	if(!isxeno_human(hit_target) || xeno.can_not_harm(hit_target) || hit_target.stat == DEAD)
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.2)
 		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
@@ -251,8 +247,7 @@
 	log_attack("[key_name(xeno)] attacked [key_name(hit_target)] with Tail Jab")
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/tail_jab/proc/reset_direction(mob/living/carbon/xenomorph/xeno, last_dir, new_dir)
 	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
@@ -278,6 +273,12 @@
 		to_chat(xeno, SPAN_XENOHIGHDANGER("You can only headbite an unconscious, adjacent target!"))
 		return
 
+	if(xeno.stat == UNCONSCIOUS)
+		return
+
+	if(xeno.stat == DEAD)
+		return
+
 	if(xeno.action_busy)
 		return
 
@@ -285,6 +286,11 @@
 	SPAN_XENOWARNING("You grab [target_carbon]’s head aggressively."))
 
 	if(!do_after(xeno, 0.8 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 2)) // would be 0.75 but that doesn't really work with numticks
+		return
+
+	// To make sure that the headbite does nothing if the target is moved away.
+	if(!xeno.Adjacent(target_carbon))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You missed! Your target was moved away before you could finish headbiting them!"))
 		return
 
 	if(target_carbon.stat == DEAD)
@@ -303,4 +309,5 @@
 	xeno.flick_heal_overlay(3 SECONDS, "#00B800")
 	xeno.emote("roar")
 	log_attack("[key_name(xeno)] was executed by [key_name(target_carbon)] with a headbite!")
-	return TRUE
+	apply_cooldown()
+	return ..()

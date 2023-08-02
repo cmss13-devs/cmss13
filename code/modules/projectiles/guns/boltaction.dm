@@ -22,7 +22,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/boltaction
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
-		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
@@ -56,8 +56,8 @@
 
 /obj/item/weapon/gun/boltaction/set_gun_config_values()
 	..()
-	burst_amount = 0
-	fire_delay = FIRE_DELAY_TIER_4
+	set_burst_amount(0)
+	set_fire_delay(FIRE_DELAY_TIER_4)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_6

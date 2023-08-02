@@ -26,7 +26,7 @@
 #define URL_WIKI_SO_GUIDE "https://cm-ss13.com/wiki/Staff_Officer"
 #define URL_WIKI_SEA_GUIDE "https://cm-ss13.com/wiki/Senior_Enlisted_Advisor"
 #define URL_WIKI_SL_GUIDE "https://cm-ss13.com/wiki/Squad_Leader"
-#define URL_WIKI_RTO_GUIDE "https://cm-ss13.com/wiki/Squad_Radio_Telephone_Operator" // Squad Roles //
+#define URL_WIKI_TL_GUIDE "https://cm-ss13.com/wiki/Squad_Radio_Telephone_Operator" // Squad Roles //
 #define URL_WIKI_SPEC_GUIDE "https://cm-ss13.com/wiki/Squad_Specialist"
 #define URL_WIKI_SG_GUIDE "https://cm-ss13.com/wiki/Squad_Smartgunner"
 #define URL_WIKI_MEDIC_GUIDE "https://cm-ss13.com/wiki/Squad_Hospital_Corpsman"
@@ -50,6 +50,7 @@
 #define URL_WIKI_MST_GUIDE "https://cm-ss13.com/wiki/Mess_Technician"
 #define URL_WIKI_CL_GUIDE "https://cm-ss13.com/wiki/Corporate_Liaison" // Misc //
 #define URL_WIKI_SURV_GUIDE "https://cm-ss13.com/wiki/Survivor"
+#define URL_WIKI_WJ_GUIDE "https://cm-ss13.com/wiki/Seegson_Working_Joe_Manual"
 
 // ------ FORUM LINKS ------ //
 #define URL_FORUM "https://forum.cm-ss13.com/"

@@ -136,3 +136,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 
 	LAZYSET(playtime_data, "loading", FALSE)
 	LAZYSET(playtime_data, "loaded", TRUE)
+
+/// Returns the total time in minutes a specific player ID has played for
+/proc/get_total_living_playtime(player_id)
+	for(var/datum/view_record/playtime/time in DB_VIEW(/datum/view_record/playtime, DB_AND(DB_COMP("player_id", DB_EQUALS, player_id), DB_COMP("role_id", DB_NOTEQUAL, "Observer"))))
+		. += time.total_minutes

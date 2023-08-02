@@ -39,7 +39,7 @@
 	if(!evolve_checks())
 		return
 
-	if((!hive.living_xeno_queen) && castepick != XENO_CASTE_QUEEN && !islarva(src) && !hive.allow_no_queen_actions)
+	if((!hive.living_xeno_queen) && castepick != XENO_CASTE_QUEEN && !islarva(src) && !hive.allow_no_queen_evo)
 		to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last Queen. You can't find the strength to evolve."))
 		return
 
@@ -140,6 +140,7 @@
 		if(3)
 			hive.tier_3_xenos |= new_xeno
 
+	log_game("EVOLVE: [key_name(src)] evolved into [new_xeno].")
 	if(mind)
 		mind.transfer_to(new_xeno)
 	else
@@ -327,6 +328,7 @@
 			qdel(new_xeno)
 		return
 
+	log_game("EVOLVE: [key_name(src)] de-evolved into [new_xeno].")
 	if(mind)
 		mind.transfer_to(new_xeno)
 	else

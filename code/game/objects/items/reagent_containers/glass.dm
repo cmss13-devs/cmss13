@@ -677,9 +677,3 @@
 		if(do_after(user,30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			user.visible_message("[user] finishes wiping off the [AM]!")
 			AM.clean_blood()
-
-
-/obj/item/reagent_container/glass/rag/get_examine_text(mob/user)
-	. = ..()
-	. += "That's \a [src]."
-	. += desc

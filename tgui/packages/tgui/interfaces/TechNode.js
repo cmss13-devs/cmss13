@@ -67,10 +67,10 @@ export const TechNode = (props, context) => {
                   unlocked
                     ? 'Already unlocked'
                     : !valid_tier
-                    ? 'Tech tier not unlocked'
-                    : !can_afford
-                    ? 'Not enough tech points'
-                    : ''
+                      ? 'Tech tier not unlocked'
+                      : !can_afford
+                        ? 'Not enough tech points'
+                        : ''
                 }
                 onClick={() => act('purchase')}
               />

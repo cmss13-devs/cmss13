@@ -1,694 +1,811 @@
-var/global/list/gear_datums = list()
+var/global/list/gear_datums_by_category = list()
+var/global/list/gear_datums_by_name = list()
 
 /proc/populate_gear_list()
-	for(var/type in typesof(/datum/gear)-/datum/gear)
-		var/datum/gear/G = new type()
-		gear_datums[G.display_name] = G
-	return 1
+	var/datum/gear/G
+	for(var/gear_type in subtypesof(/datum/gear))
+		G = new gear_type()
+		if(!G.display_name)
+			continue //Skipping parent types that are not actual items.
+		if(!G.category)
+			log_debug("Improper gear datum: [gear_type].")
+			continue
+		if(G.display_name in gear_datums_by_name)
+			log_debug("Duplicate gear datum name: [G.display_name].")
+			continue
+		LAZYSET(gear_datums_by_category[G.category], "[G.display_name] [G.cost == 1 ? "(1 point)" : "([G.cost] points)"]", G)
+		gear_datums_by_name[G.display_name] = G
 
 /datum/gear
 	var/display_name  // Name/index.
+	var/category //Used for sorting in the loadout selection.
 	var/path  // Path to item.
-	var/cost  // Number of points used.
-	var/slot  // Slot to equip to.
+	var/cost = 2 // Number of points used.
+	var/slot // Slot to equip to, if any.
 	var/list/allowed_roles   // Roles that can spawn with this item.
-	var/whitelisted   // Term to check the whitelist for..
 	var/list/allowed_origins
 
-// This is sorted both by slot and alphabetically! Don't fuck it up!
-// Headslot items
+/datum/gear/eyewear
+	category = "Eyewear"
+	slot = WEAR_EYES
 
-/datum/gear/cmbandana
-	display_name = "USCM Bandana (Green)"
-	path = /obj/item/clothing/head/cmbandana
-	cost = 3
-	slot = WEAR_HEAD
-	allowed_origins = USCM_ORIGINS
+/datum/gear/eyewear/aviators
+	display_name = "Aviator shades"
+	path = /obj/item/clothing/glasses/sunglasses/aviator
 
-/datum/gear/cmbandanatan
-	display_name = "USCM Bandana (Tan)"
-	path = /obj/item/clothing/head/cmbandana/tan
-	cost = 3
-	slot = WEAR_HEAD
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/cmbeanie
-	display_name = "USCM Beanie (Gray)"
-	path = /obj/item/clothing/head/beanie/gray
-	cost = 3
-	slot = WEAR_HEAD
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/cmbeanie/green
-	display_name = "USCM Beanie (Green)"
-	path = /obj/item/clothing/head/beanie/green
-
-/datum/gear/cmbeanie/tan
-	display_name = "USCM Beanie (Tan)"
-	path = /obj/item/clothing/head/beanie/tan
-
-/datum/gear/squadberet
-	display_name = "USCM Beret (Squad Specific)"
-	path = /obj/item/clothing/head/beret/cm/squadberet
-	cost = 3
-	slot = WEAR_HEAD
-	allowed_origins = USCM_ORIGINS
-/datum/gear/cmberet
-	display_name = "USCM Beret (Green)"
-	path = /obj/item/clothing/head/beret/cm
-	cost = 3
-	slot = WEAR_HEAD
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/cmberettan
-	display_name = "USCM Beret (Tan)"
-	path = /obj/item/clothing/head/beret/cm/tan
-	cost = 3
-	slot = WEAR_HEAD
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/cmheadband
-	display_name = "USCM Headband (Green)"
-	path = /obj/item/clothing/head/headband
-	cost = 3
-	slot = WEAR_HEAD
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/cmheadbandred
-	display_name = "USCM Headband (Red)"
-	path = /obj/item/clothing/head/headband/red
-	cost = 3
-	slot = WEAR_HEAD
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/cmheadbandtan
-	display_name = "USCM Headband (Tan)"
-	path = /obj/item/clothing/head/headband/tan
-	cost = 3
-	slot = WEAR_HEAD
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/cmheadbandbrown
-	display_name = "USCM Headband (Brown)"
-	path = /obj/item/clothing/head/headband/brown
-	cost = 3
-	slot = WEAR_HEAD
-
-/datum/gear/cmheadbandgray
-	display_name = "USCM Headband (Gray)"
-	path = /obj/item/clothing/head/headband/gray
-	cost = 3
-	slot = WEAR_HEAD
-
-/datum/gear/cmheadbandsquad
-	display_name = "USCM Headband (Squad)"
-	path = /obj/item/clothing/head/headband/squad
-	cost = 3
-	slot = WEAR_HEAD
-
-/datum/gear/cmheadset
-	display_name = "USCM Earpiece"
-	path = /obj/item/clothing/head/headset
-	cost = 3
-	slot = WEAR_HEAD
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/cmcap
-	display_name = "USCM Cap"
-	path = /obj/item/clothing/head/cmcap
-	cost = 3
-	slot = WEAR_HEAD
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/booniehat
-	display_name = "USCM Boonie Hat (Olive)"
-	path = /obj/item/clothing/head/cmcap/boonie
-	cost = 3
-	slot = WEAR_HEAD
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/booniehattan
-	display_name = "USCM Boonie Hat (Tan)"
-	path = /obj/item/clothing/head/cmcap/boonie/tan
-	cost = 3
-	slot = WEAR_HEAD
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/durag
-	display_name = "Durag (Mission Specific)"
-	path = /obj/item/clothing/head/durag
-	cost = 3
-	slot = WEAR_HEAD
-
-/datum/gear/duragblack
-	display_name = "Durag (Black)"
-	path = /obj/item/clothing/head/durag/black
-	cost = 3
-	slot = WEAR_HEAD
-
-/datum/gear/eyepatch
+/datum/gear/eyewear/eyepatch
 	display_name = "Eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch
-	cost = 2
-	slot = WEAR_EYES
 
-/datum/gear/thugshades
-	display_name = "BiMex Personal Shades"
-	path = /obj/item/clothing/glasses/sunglasses/big
-	cost = 2
-	slot = WEAR_EYES
-
-/datum/gear/sunglasses
-	display_name = "Cheap Sunglasses"
-	path = /obj/item/clothing/glasses/sunglasses
-	cost = 2
-	slot = WEAR_EYES
-
-/datum/gear/prescription_sunglasses
-	display_name = "Prescription Sunglasses"
-	path = /obj/item/clothing/glasses/sunglasses/prescription
-	cost = 2
-	slot = WEAR_EYES
-
-/datum/gear/cigar
-	display_name = "Premium Cigar"
-	path = /obj/item/clothing/mask/cigarette/cigar
-	slot = WEAR_FACE
-	cost = 2
-
-/datum/gear/classic_cigar
-	display_name = "Classic Cigar"
-	path = /obj/item/clothing/mask/cigarette/cigar/classic
-	slot = WEAR_FACE
-	cost = 3
-
-/datum/gear/cigarette
-	display_name = "Cigarette"
-	path = /obj/item/clothing/mask/cigarette
-	slot = WEAR_FACE
-	cost = 1
-
-/datum/gear/balaclava
-	display_name = "Black Balaclava"
-	path = /obj/item/clothing/mask/balaclava
-	slot = WEAR_FACE
-	cost = 2
-
-/datum/gear/balaclava/green
-	display_name = "Green Balaclava"
-	path = /obj/item/clothing/mask/balaclava/tactical
-	slot = WEAR_FACE
-	cost = 2
-
-/datum/gear/coif
-	display_name = "Coif"
-	path = /obj/item/clothing/mask/rebreather/scarf
-	cost = 2
-	slot = WEAR_FACE
-
-/datum/gear/cmbalaclava
-	display_name = "USCM Balaclava (Green)"
-	path = /obj/item/clothing/mask/rebreather/scarf/green
-	cost = 2
-	slot = WEAR_FACE
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/cmbalaclava/tan
-	display_name = "USCM Balaclava (Tan)"
-	path = /obj/item/clothing/mask/rebreather/scarf/tan
-	cost = 2
-	slot = WEAR_FACE
-
-/datum/gear/cmbalaclava/gray
-	display_name = "USCM Balaclava (Gray)"
-	path = /obj/item/clothing/mask/rebreather/scarf/gray
-	cost = 2
-	slot = WEAR_FACE
-
-/datum/gear/cmgoggles
-	display_name = "Ballistic Goggles"
-	path = /obj/item/clothing/glasses/mgoggles
-	cost = 2
-	slot = WEAR_EYES
-
-/datum/gear/cmPgoggles
-	display_name = "Prescription Ballistic Goggles"
-	path = /obj/item/clothing/glasses/mgoggles/prescription
-	cost = 2
-	slot = WEAR_EYES
-
-/datum/gear/cmgogglesblack
-	display_name = "Ballistic Goggles (Black)"
-	path = /obj/item/clothing/glasses/mgoggles/black
-	cost = 2
-	slot = WEAR_EYES
-
-/datum/gear/cmgogglesorange
-	display_name = "Ballistic Goggles (Orange)"
-	path = /obj/item/clothing/glasses/mgoggles/orange
-	cost = 2
-	slot = WEAR_EYES
-
-/datum/gear/aviators
-	display_name = "Aviator Shades"
-	path = /obj/item/clothing/glasses/sunglasses/aviator
-	cost = 2
-	slot = WEAR_EYES
-
-/datum/gear/rpgglasses
+/datum/gear/eyewear/rpg_glasses
 	display_name = "Marine RPG Glasses"
 	path = /obj/item/clothing/glasses/regular
-	cost = 2
-	slot = WEAR_EYES
 	allowed_origins = USCM_ORIGINS
 
-/datum/gear/prescglasses
+/datum/gear/eyewear/prescription_glasses
 	display_name = "Prescription Glasses"
 	path = /obj/item/clothing/glasses/regular/hipster
-	cost = 2
-	slot = WEAR_EYES
 
-/datum/gear/tacticalmask
-	display_name = "Face Wrap (Gray)"
-	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask
+/datum/gear/eyewear/goggles
+	display_name = "Ballistic goggles"
+	path = /obj/item/clothing/glasses/mgoggles
+
+/datum/gear/eyewear/prescription_goggles
+	display_name = "Prescription ballistic goggles"
+	path = /obj/item/clothing/glasses/mgoggles/prescription
+
+/datum/gear/eyewear/goggles_black
+	display_name = "Ballistic goggles, black"
+	path = /obj/item/clothing/glasses/mgoggles/black
+
+/datum/gear/eyewear/goggles_orange
+	display_name = "Ballistic goggles, orange"
+	path = /obj/item/clothing/glasses/mgoggles/orange
+
+/datum/gear/eyewear/bimex_shades
+	display_name = "BiMex personal shades"
+	path = /obj/item/clothing/glasses/sunglasses/big
+
+/datum/gear/eyewear/sunglasses
+	display_name = "Sunglasses"
+	path = /obj/item/clothing/glasses/sunglasses
+
+/datum/gear/eyewear/prescription_sunglasses
+	display_name = "Prescription sunglasses"
+	path = /obj/item/clothing/glasses/sunglasses/prescription
+
+/datum/gear/mask
+	category = "Masks and scarves"
 	slot = WEAR_FACE
-	cost = 2
 
-/datum/gear/tacticalmasktan
-	display_name = "Face Wrap (Tan)"
-	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan
-	slot = WEAR_FACE
-	cost = 2
+/datum/gear/mask/balaclava_black
+	display_name = "Balaclava, black"
+	path = /obj/item/clothing/mask/balaclava
 
-/datum/gear/tacticalmaskred
-	display_name = "Face Wrap (Red)"
-	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red
-	slot = WEAR_FACE
-	cost = 2
+/datum/gear/mask/balaclava_green
+	display_name = "Balaclava, green"
+	path = /obj/item/clothing/mask/balaclava/tactical
 
-/datum/gear/tacticalmaskgreeen
-	display_name = "Face Wrap (Green)"
-	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
-	slot = WEAR_FACE
-	cost = 2
+/datum/gear/mask/coif
+	display_name = "Coif"
+	path = /obj/item/clothing/mask/rebreather/scarf
 
-/datum/gear/tacticalmasksquad
-	display_name = "Face Wrap (Squad)"
-	path =/obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad
-	slot = WEAR_FACE
-	cost = 2
-
-/datum/gear/tacticalmaskblack
-	display_name = "Face Wrap (Black)"
+/datum/gear/mask/face_wrap_black
+	display_name = "Face wrap, black"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/black
-	slot = WEAR_FACE
-	cost = 2
-//
-/datum/gear/tornscarfclassic
-	display_name = "Scarf (Grey)"
-	path = /obj/item/clothing/mask/tornscarf
-	slot = WEAR_FACE
-	cost = 2
 
-/datum/gear/tornscarfgreen
-	display_name = "Scarf (Green)"
-	path = /obj/item/clothing/mask/tornscarf/green
-	slot = WEAR_FACE
-	cost = 2
+/datum/gear/mask/face_wrap_green
+	display_name = "Face wrap, green"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
 
-/datum/gear/tornscarfwhite
-	display_name = "Scarf (White)"
-	path = /obj/item/clothing/mask/tornscarf/snow
-	slot = WEAR_FACE
-	cost = 2
+/datum/gear/mask/face_wrap_grey
+	display_name = "Face wrap, grey"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask
 
-/datum/gear/tornscarfdesert
-	display_name = "Scarf (Desert)"
-	path = /obj/item/clothing/mask/tornscarf/desert
-	slot = WEAR_FACE
-	cost = 2
+/datum/gear/mask/face_wrap_red
+	display_name = "Face wrap, red"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red
 
-/datum/gear/tornscarfurban
-	display_name = "Scarf (Urban)"
-	path = /obj/item/clothing/mask/tornscarf/urban
-	slot = WEAR_FACE
-	cost = 2
+/datum/gear/mask/face_wrap_tan
+	display_name = "Face wrap, tan"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan
 
-/datum/gear/tornscarfblack
-	display_name = "Scarf (Black)"
+/datum/gear/mask/face_wrap_squad
+	display_name = "Face wrap, squad specific"
+	path =/obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad
+
+/datum/gear/mask/gas
+	display_name = "Gas mask"
+	path = /obj/item/clothing/mask/gas
+
+/datum/gear/mask/scarf_black
+	display_name = "Scarf, black"
 	path = /obj/item/clothing/mask/tornscarf/black
-	slot = WEAR_FACE
-	cost = 2
-//
-/datum/gear/greenfacepaint
-	display_name = "Green Facepaint"
-	path = /obj/item/facepaint/green
-	slot = WEAR_IN_BACK
-	cost = 2
 
-/datum/gear/brownfacepaint
-	display_name = "Brown Facepaint"
-	path = /obj/item/facepaint/brown
-	slot = WEAR_IN_BACK
-	cost = 2
+/datum/gear/mask/scarf_desert
+	display_name = "Scarf, desert"
+	path = /obj/item/clothing/mask/tornscarf/desert
 
-/datum/gear/blackfacepaint
-	display_name = "Black Facepaint"
-	path = /obj/item/facepaint/black
-	slot = WEAR_IN_BACK
-	cost = 2
+/datum/gear/mask/scarf_green
+	display_name = "Scarf, green"
+	path = /obj/item/clothing/mask/tornscarf/green
 
-/datum/gear/fullbodyfacepaint
-	display_name = "Fullbody Paint"
-	path = /obj/item/facepaint/sniper
-	slot = WEAR_IN_BACK
-	cost = 4 //To match with the skull paint amount of point, gave this amount of point for the same reason of the skull facepaint (too cool for everyone to be able to constantly use)
+/datum/gear/mask/scarf_grey
+	display_name = "Scarf, grey"
+	path = /obj/item/clothing/mask/tornscarf
 
-/datum/gear/aceofspades
-	display_name = "Ace of Spades"
-	path = /obj/item/toy/handcard/aceofspades
-	slot = WEAR_IN_BACK
-	cost = 2
+/datum/gear/mask/scarf_urban
+	display_name = "Scarf, urban"
+	path = /obj/item/clothing/mask/tornscarf/urban
 
-/datum/gear/pack_emeraldgreen
-	display_name = "Pack Of Emerald Greens"
-	path = /obj/item/storage/fancy/cigarettes/emeraldgreen
-	slot = WEAR_IN_BACK
-	cost = 1
+/datum/gear/mask/scarf_white
+	display_name = "Scarf, white"
+	path = /obj/item/clothing/mask/tornscarf/snow
 
-/datum/gear/pack_lucky_strikes
-	display_name = "Pack Of Lucky Strikes"
-	path = /obj/item/storage/fancy/cigarettes/lucky_strikes
-	slot = WEAR_IN_BACK
-	cost = 1
-
-/datum/gear/weed_joint
-	display_name = "Joint of Space Weed"
-	path = /obj/item/clothing/mask/cigarette/weed
-	slot = WEAR_IN_BACK
-	cost = 4
-
-/datum/gear/type_80_Bayonet
-	display_name = "Type 80 Bayonet"
-	path = /obj/item/attachable/bayonet/upp_replica
-	slot = WEAR_IN_BACK
-	cost = 4
-
-/datum/gear/m8_cartridge_bayonet
-	display_name = "M8 Cartridge Bayonet"
-	path = /obj/item/storage/box/c02_knife
-	slot = WEAR_IN_BACK
-	cost = 4
-
-/datum/gear/clfpistol
-	display_name = "D18 Holdout Pistol"
-	path = /obj/item/storage/box/clf
-	slot = WEAR_IN_BACK
-	cost = 4
-
-/datum/gear/m4a3_custom
-	display_name = "M4A3 Custom Pistol"
-	path = /obj/item/weapon/gun/pistol/m4a3/custom
-	slot = WEAR_IN_BACK
-	cost = 4
+/datum/gear/mask/uscm
 	allowed_origins = USCM_ORIGINS
 
-/datum/gear/m44_custom_revolver
-	display_name = "M44 Custom Revolver"
-	path = /obj/item/weapon/gun/revolver/m44/custom
-	slot = WEAR_IN_BACK
-	cost = 7
+/datum/gear/mask/uscm/balaclava_green
+	display_name = "USCM balaclava, green"
+	path = /obj/item/clothing/mask/rebreather/scarf/green
+
+/datum/gear/mask/uscm/balaclava_grey
+	display_name = "USCM balaclava, grey"
+	path = /obj/item/clothing/mask/rebreather/scarf/gray
+
+/datum/gear/mask/uscm/balaclava_tan
+	display_name = "USCM balaclava, tan"
+	path = /obj/item/clothing/mask/rebreather/scarf/tan
+
+/datum/gear/headwear
+	category = "Headwear"
+	cost = 3
+	slot = WEAR_HEAD
+
+/datum/gear/headwear/durag_black
+	display_name = "Durag, black"
+	path = /obj/item/clothing/head/durag/black
+
+/datum/gear/headwear/durag
+	display_name = "Durag, mission specific"
+	path = /obj/item/clothing/head/durag
+
+/datum/gear/headwear/uscm
 	allowed_origins = USCM_ORIGINS
 
-/datum/gear/jungle_boots
-	display_name = "Jungle Pattern Combat Boots"
-	path = /obj/item/clothing/shoes/marine/jungle
-	slot = WEAR_IN_BACK
+/datum/gear/headwear/uscm/bandana_green
+	display_name = "USCM bandana, green"
+	path = /obj/item/clothing/head/cmbandana
+
+/datum/gear/headwear/uscm/bandana_tan
+	display_name = "USCM bandana, tan"
+	path = /obj/item/clothing/head/cmbandana/tan
+
+/datum/gear/headwear/uscm/beanie_grey
+	display_name = "USCM beanie, grey"
+	path = /obj/item/clothing/head/beanie/gray
+
+/datum/gear/headwear/uscm/beanie_green
+	display_name = "USCM beanie, green"
+	path = /obj/item/clothing/head/beanie/green
+
+/datum/gear/headwear/uscm/beanie_tan
+	display_name = "USCM beanie, tan"
+	path = /obj/item/clothing/head/beanie/tan
+
+/datum/gear/headwear/uscm/beret_squad
+	display_name = "USCM beret, squad specific"
+	path = /obj/item/clothing/head/beret/cm/squadberet
+
+/datum/gear/headwear/uscm/beret_green
+	display_name = "USCM beret, green"
+	path = /obj/item/clothing/head/beret/cm
+
+/datum/gear/headwear/uscm/beret_tan
+	display_name = "USCM beret, tan"
+	path = /obj/item/clothing/head/beret/cm/tan
+
+/datum/gear/headwear/uscm/boonie_olive
+	display_name = "USCM boonie hat, olive"
+	path = /obj/item/clothing/head/cmcap/boonie
+
+/datum/gear/headwear/uscm/boonie_tan
+	display_name = "USCM boonie hat, tan"
+	path = /obj/item/clothing/head/cmcap/boonie/tan
+
+/datum/gear/headwear/uscm/cap
+	display_name = "USCM cap"
+	path = /obj/item/clothing/head/cmcap
+
+/datum/gear/headwear/uscm/headband_brown
+	display_name = "USCM headband, brown"
+	path = /obj/item/clothing/head/headband/brown
+
+/datum/gear/headwear/uscm/headband_green
+	display_name = "USCM headband, green"
+	path = /obj/item/clothing/head/headband
+
+/datum/gear/headwear/uscm/headband_grey
+	display_name = "USCM headband, grey"
+	path = /obj/item/clothing/head/headband/gray
+
+/datum/gear/headwear/uscm/headband_red
+	display_name = "USCM headband, red"
+	path = /obj/item/clothing/head/headband/red
+
+/datum/gear/headwear/uscm/headband_tan
+	display_name = "USCM headband, tan"
+	path = /obj/item/clothing/head/headband/tan
+
+/datum/gear/headwear/uscm/headband_squad
+	display_name = "USCM headband, squad specific"
+	path = /obj/item/clothing/head/headband/squad
+
+/datum/gear/headwear/uscm/headset
+	display_name = "USCM headset"
+	path = /obj/item/clothing/head/headset
+
+/datum/gear/helmet_garb
+	category = "Helmet accessories"
+	cost = 1
+
+/datum/gear/helmet_garb/flair_initech
+	display_name = "Flair, Initech"
+	path = /obj/item/prop/helmetgarb/flair_initech
+
+/datum/gear/helmet_garb/flair_io
+	display_name = "Flair, Io"
+	path = /obj/item/prop/helmetgarb/flair_io
+
+/datum/gear/helmet_garb/flair_peace
+	display_name = "Flair, Peace and Love"
+	path = /obj/item/prop/helmetgarb/flair_peace
+
+/datum/gear/helmet_garb/flair_uscm
+	display_name = "Flair, USCM"
+	path = /obj/item/prop/helmetgarb/flair_uscm
+
+/datum/gear/helmet_garb/helmet_gasmask
+	display_name = "M5 integrated gasmask"
+	path = /obj/item/prop/helmetgarb/helmet_gasmask
+
+/datum/gear/helmet_garb/gunoil
+	display_name = "Gun oil"
+	path = /obj/item/prop/helmetgarb/gunoil
+
+/datum/gear/helmet_garb/netting
+	display_name = "Helmet netting"
+	path = /obj/item/prop/helmetgarb/netting
+
+/datum/gear/helmet_garb/lucky_feather
+	display_name = "Lucky feather, red"
+	path = /obj/item/prop/helmetgarb/lucky_feather
+
+/datum/gear/helmet_garb/lucky_feather/yellow
+	display_name = "Lucky feather, yellow"
+	path = /obj/item/prop/helmetgarb/lucky_feather/yellow
+
+/datum/gear/helmet_garb/lucky_feather/purple
+	display_name = "Lucky feather, purple"
+	path = /obj/item/prop/helmetgarb/lucky_feather/purple
+
+/datum/gear/helmet_garb/lucky_feather/blue
+	display_name = "Lucky feather, blue"
+	path = /obj/item/prop/helmetgarb/lucky_feather/blue
+
+/datum/gear/helmet_garb/broken_nvgs
+	display_name = "Night vision goggles, broken"
+	path = /obj/item/prop/helmetgarb/helmet_nvg/cosmetic
+
+/datum/gear/helmet_garb/prescription_bottle
+	display_name = "Prescription bottle"
+	path = /obj/item/prop/helmetgarb/prescription_bottle
+
+/datum/gear/helmet_garb/raincover
+	display_name = "Rain cover"
+	path = /obj/item/prop/helmetgarb/raincover
+
+/datum/gear/helmet_garb/rabbits_foot
+	display_name = "Rabbit's foot"
+	path = /obj/item/prop/helmetgarb/rabbitsfoot
+
+/datum/gear/helmet_garb/rosary
+	display_name = "Rosary"
+	path = /obj/item/prop/helmetgarb/rosary
+
+/datum/gear/helmet_garb/spent_buck
+	display_name = "Spent buckshot"
+	path = /obj/item/prop/helmetgarb/spent_buckshot
+
+/datum/gear/helmet_garb/spent_flechette
+	display_name = "Spent flechette"
+	path = /obj/item/prop/helmetgarb/spent_flech
+
+/datum/gear/helmet_garb/spent_slugs
+	display_name = "Spent slugs"
+	path = /obj/item/prop/helmetgarb/spent_slug
+
+/datum/gear/helmet_garb/spacejam_tickets
+	display_name = "Tickets to Space Jam"
+	path = /obj/item/prop/helmetgarb/spacejam_tickets
+
+/datum/gear/helmet_garb/trimmed_wire
+	display_name = "Trimmed barbed wire"
+	path = /obj/item/prop/helmetgarb/trimmed_wire
+
+/datum/gear/helmet_garb/bullet_pipe
+	display_name = "10x99mm XM42B casing pipe"
+	path = /obj/item/prop/helmetgarb/bullet_pipe
+	allowed_origins = USCM_ORIGINS
+
+/datum/gear/helmet_garb/chaplain_patch
+	display_name = "USCM chaplain helmet patch"
+	path = /obj/item/prop/helmetgarb/chaplain_patch
+	allowed_origins = USCM_ORIGINS
+
+/datum/gear/paperwork
+	category = "Paperwork"
+
+/datum/gear/paperwork/pen
+	display_name = "Pen, black"
+	path = /obj/item/tool/pen
+	cost = 1
+
+/datum/gear/paperwork/pen_blue
+	display_name = "Pen, blue"
+	path = /obj/item/tool/pen/blue
+
+/datum/gear/paperwork/pen_green
+	display_name = "Pen, green"
+	path = /obj/item/tool/pen/green
+
+/datum/gear/paperwork/pen_red
+	display_name = "Pen, red"
+	path = /obj/item/tool/pen/red
+
+/datum/gear/paperwork/pen_fountain
+	display_name = "Pen, fountain"
+	path = /obj/item/tool/pen/fountain
 	cost = 3
 
-/datum/gear/uno_reverse_red
-	display_name = "Uno Reverse - Red"
-	path = /obj/item/toy/handcard/uno_reverse_red
-	slot = WEAR_IN_BACK
-	cost = 2
-
-/datum/gear/uno_reverse_blue
-	display_name = "Uno Reverse - Blue"
-	path = /obj/item/toy/handcard/uno_reverse_blue
-	slot = WEAR_IN_BACK
-	cost = 2
-
-/datum/gear/uno_reverse_purple
-	display_name = "Uno Reverse - Purple"
-	path = /obj/item/toy/handcard/uno_reverse_purple
-	slot = WEAR_IN_BACK
-	cost = 2
-
-/datum/gear/uno_reverse_yellow
-	display_name = "Uno Reverse - Yellow"
-	path = /obj/item/toy/handcard/uno_reverse_yellow
-	slot = WEAR_IN_BACK
-	cost = 2
-
-/datum/gear/candy
-	display_name = "Bar of candy"
-	path = /obj/item/reagent_container/food/snacks/candy
-	slot = WEAR_IN_BACK
-	cost = 2
-
-/datum/gear/lime
-	display_name = "Lucky Lime"
-	path = /obj/item/reagent_container/food/snacks/grown/lime
-	slot = WEAR_IN_BACK
-	cost = 2
-
-/datum/gear/pen
-	display_name = "Pen"
-	path = /obj/item/tool/pen
-	slot = WEAR_IN_BACK
+/datum/gear/paperwork/paper
+	display_name = "Sheet of paper"
+	path = /obj/item/paper
 	cost = 1
 
-/datum/gear/lighter
-	display_name = "Random Lighter"
-	path = /obj/item/tool/lighter/random
-	slot = WEAR_IN_BACK
+/datum/gear/paperwork/clipboard
+	display_name = "Clipboard"
+	path = /obj/item/clipboard
+
+/datum/gear/paperwork/folder_black
+	display_name = "Folder, black"
+	path = /obj/item/folder/black
+
+/datum/gear/paperwork/folder_blue
+	display_name = "Folder, blue"
+	path = /obj/item/folder/blue
+
+/datum/gear/paperwork/folder_red
+	display_name = "Folder, red"
+	path = /obj/item/folder/red
+
+/datum/gear/paperwork/folder_white
+	display_name = "Folder, white"
+	path = /obj/item/folder/white
+
+/datum/gear/paperwork/folder_yellow
+	display_name = "Folder, yellow"
+	path = /obj/item/folder/yellow
+
+/datum/gear/paperwork/notepad_black
+	display_name = "Notepad, black"
+	path = /obj/item/notepad/black
+
+/datum/gear/paperwork/notepad_blue
+	display_name = "Notepad, blue"
+	path = /obj/item/notepad/blue
+
+/datum/gear/paperwork/notepad_green
+	display_name = "Notepad, green"
+	path = /obj/item/notepad/green
+
+/datum/gear/paperwork/notepad_red
+	display_name = "Notepad, red"
+	path = /obj/item/notepad/red
+
+/datum/gear/toy
+	category = "Recreational"
+
+/datum/gear/toy/camera
+	display_name = "Camera"
+	path = /obj/item/device/camera
+
+/datum/gear/toy/mags
+	cost = 1
+
+/datum/gear/toy/mags/magazine_dirty
+	display_name = "Magazine"
+	path = /obj/item/prop/magazine/dirty
+
+/datum/gear/toy/mags/boots_magazine_one
+	display_name = "Boots Issue No.117"
+	path = /obj/item/prop/magazine/boots/n117
+
+/datum/gear/toy/mags/boots_magazine_two
+	display_name = "Boots Issue No.150"
+	path = /obj/item/prop/magazine/boots/n150
+
+/datum/gear/toy/mags/boot_magazine_three
+	display_name = "Boots Issue No.160"
+	path = /obj/item/prop/magazine/boots/n160
+
+/datum/gear/toy/mags/boots_magazine_four
+	display_name = "Boots Issue No.54"
+	path = /obj/item/prop/magazine/boots/n054
+
+/datum/gear/toy/mags/boots_magazine_five
+	display_name = "Boots Issue No.55"
+	path = /obj/item/prop/magazine/boots/n055
+
+/datum/gear/toy/film
+	display_name = "Camera film"
+	path = /obj/item/device/camera_film
+	cost = 1
+
+/datum/gear/toy/card
+	cost = 1
+
+/datum/gear/toy/card/ace_of_spades
+	display_name = "Card, ace of spades"
+	path = /obj/item/toy/handcard/aceofspades
+
+/datum/gear/toy/card/uno_reverse_red
+	display_name = "Card, Uno Reverse - red"
+	path = /obj/item/toy/handcard/uno_reverse_red
+
+/datum/gear/toy/card/uno_reverse_blue
+	display_name = "Card, Uno Reverse - blue"
+	path = /obj/item/toy/handcard/uno_reverse_blue
+
+/datum/gear/toy/card/uno_reverse_purple
+	display_name = "Card, Uno Reverse - purple"
+	path = /obj/item/toy/handcard/uno_reverse_purple
+
+/datum/gear/toy/card/uno_reverse_yellow
+	display_name = "Card, Uno Reverse - yellow"
+	path = /obj/item/toy/handcard/uno_reverse_yellow
+
+/datum/gear/toy/deck
+	display_name = "Deck of cards, regular"
+	path = /obj/item/toy/deck
+
+/datum/gear/toy/deck/uno
+	display_name = "Deck of cards, Uno"
+	path = /obj/item/toy/deck/uno
+
+/datum/gear/toy/d6
+	display_name = "Die, 6 sides"
+	path = /obj/item/toy/dice
+
+/datum/gear/toy/d20
+	display_name = "Die, 20 sides"
+	path = /obj/item/toy/dice/d20
+
+/datum/gear/toy/walkman
+	display_name = "Walkman"
+	path = /obj/item/device/walkman
+
+/datum/gear/toy/crayon
+	display_name = "Crayon"
+	path = /obj/item/toy/crayon/rainbow
+
+/datum/gear/weapon
+	category = "Weapons"
+	cost = 4
+
+/datum/gear/weapon/type_80_Bayonet
+	display_name = "Type 80 Bayonet"
+	path = /obj/item/attachable/bayonet/upp_replica
+
+/datum/gear/weapon/m8_cartridge_bayonet
+	display_name = "M8 Cartridge Bayonet"
+	path = /obj/item/storage/box/co2_knife
+
+/datum/gear/weapon/clfpistol
+	display_name = "D18 Holdout Pistol"
+	path = /obj/item/storage/box/clf
+
+/datum/gear/weapon/m4a3_custom
+	display_name = "M4A3 Custom Pistol"
+	path = /obj/item/weapon/gun/pistol/m4a3/custom
+	allowed_origins = USCM_ORIGINS
+
+/datum/gear/weapon/m44_custom_revolver
+	display_name = "M44 Custom Revolver"
+	path = /obj/item/weapon/gun/revolver/m44/custom
+	allowed_origins = USCM_ORIGINS
+
+/datum/gear/drink
+	category = "Canned drinks"
+
+/datum/gear/drink/water
+	display_name = "Bottled water"
+	path = /obj/item/reagent_container/food/drinks/cans/waterbottle
+	cost = 1
+
+/datum/gear/drink/grape_juice
+	display_name = "Grape juice"
+	path = /obj/item/reagent_container/food/drinks/cans/grape_juice
+
+/datum/gear/drink/lemon_lime
+	display_name = "Lemon lime"
+	path = /obj/item/reagent_container/food/drinks/cans/lemon_lime
+
+/datum/gear/drink/iced_tea
+	display_name = "Iced tea"
+	path = /obj/item/reagent_container/food/drinks/cans/iced_tea
+
+/datum/gear/drink/cola
+	display_name = "Classic Cola"
+	path = /obj/item/reagent_container/food/drinks/cans/classcola
+
+/datum/gear/drink/mountain_wind
+	display_name = "Mountain Wind"
+	path = /obj/item/reagent_container/food/drinks/cans/space_mountain_wind
+
+/datum/gear/drink/space_up
+	display_name = "Space Up"
+	path = /obj/item/reagent_container/food/drinks/cans/space_up
+
+/datum/gear/drink/souto_classic
+	display_name = "Classic Souto"
+	path = /obj/item/reagent_container/food/drinks/cans/souto/classic
+
+/datum/gear/drink/souto_diet
+	display_name = "Diet Souto"
+	path = /obj/item/reagent_container/food/drinks/cans/souto/diet/classic
+
+/datum/gear/drink/boda
+	display_name = "Boda Soda"
+	path = /obj/item/reagent_container/food/drinks/cans/boda
+	cost = 3 //Legally imported from UPP.
+
+/datum/gear/drink/boda/plus
+	display_name = "Boda Cola"
+	path = /obj/item/reagent_container/food/drinks/cans/bodaplus
+
+/datum/gear/drink/alcohol
+	cost = 3 //Illegal in military.
+
+/datum/gear/drink/alcohol/ale
+	display_name = "Weyland-Yutani IPA Ale"
+	path = /obj/item/reagent_container/food/drinks/cans/ale
+
+/datum/gear/drink/alcohol/aspen
+	display_name = "Weyland-Yutani Aspen Beer"
+	path = /obj/item/reagent_container/food/drinks/cans/aspen
+
+/datum/gear/drink/alcohol/beer
+	display_name = "Weyland-Yutani Lite Beer"
+	path = /obj/item/reagent_container/food/drinks/cans/beer
+
+/datum/gear/drink/alcohol/loko
+	display_name = "Thirteen Loko"
+	path = /obj/item/reagent_container/food/drinks/cans/thirteenloko
+
+/datum/gear/flask
+	category = "Flasks"
+
+/datum/gear/flask/canteen
+	display_name = "Canteen"
+	path = /obj/item/reagent_container/food/drinks/flask/canteen
+
+/datum/gear/flask/leather
+	display_name = "Leather flask"
+	path = /obj/item/reagent_container/food/drinks/flask/detflask
+
+/datum/gear/flask/leather_black
+	display_name = "Black leather flask"
+	path = /obj/item/reagent_container/food/drinks/flask/barflask
+
+/datum/gear/flask/metal
+	display_name = "Metal flask"
+	path = /obj/item/reagent_container/food/drinks/flask
+
+/datum/gear/flask/uscm
+	display_name = "USCM flask"
+	path = /obj/item/reagent_container/food/drinks/flask/marine
+
+/datum/gear/flask/vacuum
+	display_name = "Vacuum flask"
+	path = /obj/item/reagent_container/food/drinks/flask/vacuumflask
+
+/datum/gear/flask/wy
+	display_name = "WY flask"
+	path = /obj/item/reagent_container/food/drinks/flask/weylandyutani
+
+/datum/gear/snack_sweet
+	category = "Food (sweets)"
+
+/datum/gear/snack_sweet/candy
+	display_name = "Bar of candy"
+	path = /obj/item/reagent_container/food/snacks/candy
+
+/datum/gear/snack_sweet/chocolate
+	display_name = "Bar of chocolate"
+	path = /obj/item/reagent_container/food/snacks/chocolatebar
+
+/datum/gear/snack_sweet/candy_apple
+	display_name = "Candied apple"
+	path = /obj/item/reagent_container/food/snacks/candiedapple
+
+/datum/gear/snack_sweet/cookie
+	display_name = "Cookie"
+	path = /obj/item/reagent_container/food/snacks/cookie
+
+/datum/gear/snack_sweet/fortune_cookie
+	display_name = "Fortune cookie"
+	path = /obj/item/reagent_container/food/snacks/fortunecookie/prefilled
+	cost = 3
+
+/datum/gear/snack_sweet/donut_normal
+	display_name = "Donut"
+	path = /obj/item/reagent_container/food/snacks/donut/normal
+
+/datum/gear/snack_sweet/donut_jelly
+	display_name = "Jelly donut"
+	path = /obj/item/reagent_container/food/snacks/donut/jelly
+
+/datum/gear/snack_sweet/donut_cherry
+	display_name = "Cherry donut"
+	path = /obj/item/reagent_container/food/snacks/donut/cherryjelly
+
+/datum/gear/snack_packaged
+	category = "Food (packaged)"
+
+/datum/gear/snack_packaged/beef_jerky
+	display_name = "Beef jerky"
+	path = /obj/item/reagent_container/food/snacks/sosjerky
+
+/datum/gear/snack_packaged/meat_bar
+	display_name = "MEAT bar"
+	path = /obj/item/reagent_container/food/snacks/eat_bar
+
+/datum/gear/snack_packaged/kepler_crisps
+	display_name = "Kepler Crisps"
+	path = /obj/item/reagent_container/food/snacks/kepler_crisps
+
+/datum/gear/snack_packaged/burrito
+	display_name = "Packaged burrito"
+	path = /obj/item/reagent_container/food/snacks/packaged_burrito
+
+/datum/gear/snack_packaged/cheeseburger
+	display_name = "Packaged cheeseburger"
+	path = /obj/item/reagent_container/food/snacks/packaged_burger
+
+/datum/gear/snack_packaged/hotdog
+	display_name = "Packaged hotdog"
+	path = /obj/item/reagent_container/food/snacks/packaged_hdogs
+
+/datum/gear/snack_packaged/chips_pepper
+	display_name = "W-Y Pepper Chips"
+	path = /obj/item/reagent_container/food/snacks/wy_chips/pepper
+
+/datum/gear/snack_grown
+	category = "Food (healthy)"
+
+/datum/gear/snack_grown/apple
+	display_name = "Apple"
+	path = /obj/item/reagent_container/food/snacks/grown/apple
+
+/datum/gear/snack_grown/carrot
+	display_name = "Carrot"
+	path = /obj/item/reagent_container/food/snacks/grown/carrot
+
+/datum/gear/snack_grown/corn
+	display_name = "Corn"
+	path = /obj/item/reagent_container/food/snacks/grown/corn
+
+/datum/gear/snack_grown/lemon
+	display_name = "Lemon"
+	path = /obj/item/reagent_container/food/snacks/grown/lemon
+
+/datum/gear/snack_grown/lime
+	display_name = "Lime"
+	path = /obj/item/reagent_container/food/snacks/grown/lime
+
+/datum/gear/snack_grown/orange
+	display_name = "Orange"
+	path = /obj/item/reagent_container/food/snacks/grown/orange
+
+/datum/gear/snack_grown/potato
+	display_name = "Potato"
+	path = /obj/item/reagent_container/food/snacks/grown/potato
+
+/datum/gear/smoking
+	category = "Smoking"
+
+/datum/gear/smoking/cigarette
+	display_name = "Cigarette"
+	path = /obj/item/clothing/mask/cigarette
+	cost = 1
+	slot = WEAR_FACE
+
+/datum/gear/smoking/cigarette/cigar_classic
+	display_name = "Classic cigar"
+	path = /obj/item/clothing/mask/cigarette/cigar/classic
+	cost = 3
+
+/datum/gear/smoking/cigarette/cigar_premium
+	display_name = "Premium cigar"
+	path = /obj/item/clothing/mask/cigarette/cigar
 	cost = 2
 
-/datum/gear/uscmpatch
+/datum/gear/smoking/pack_emerald_green
+	display_name = "Pack Of Emerald Greens"
+	path = /obj/item/storage/fancy/cigarettes/emeraldgreen
+
+/datum/gear/smoking/pack_lucky_strikes
+	display_name = "Pack Of Lucky Strikes"
+	path = /obj/item/storage/fancy/cigarettes/lucky_strikes
+
+/datum/gear/smoking/weed_joint
+	display_name = "Joint of space weed"
+	path = /obj/item/clothing/mask/cigarette/weed
+	cost = 4
+
+/datum/gear/smoking/lighter
+	display_name = "Lighter, cheap"
+	path = /obj/item/tool/lighter/random
+	cost = 1
+
+/datum/gear/smoking/zippo
+	display_name = "Lighter, zippo"
+	path = /obj/item/tool/lighter/zippo
+
+/datum/gear/misc
+	category = "Miscellaneous"
+
+/datum/gear/misc/facepaint_green
+	display_name = "Facepaint, green"
+	path = /obj/item/facepaint/green
+
+/datum/gear/misc/facepaint_brown
+	display_name = "Facepaint, brown"
+	path = /obj/item/facepaint/brown
+
+/datum/gear/misc/facepaint_black
+	display_name = "Facepaint, black"
+	path = /obj/item/facepaint/black
+
+/datum/gear/misc/facepaint_body
+	display_name = "Fullbody paint"
+	path = /obj/item/facepaint/sniper
+	cost = 4 //To match with the skull paint amount of point, gave this amount of point for the same reason of the skull facepaint (too cool for everyone to be able to constantly use)
+
+/datum/gear/misc/jungle_boots
+	display_name = "Jungle pattern combat boots"
+	path = /obj/item/clothing/shoes/marine/jungle
+	cost = 3
+
+/datum/gear/misc/pdt_kit
+	display_name = "PDT/L kit"
+	path = /obj/item/storage/box/pdt_kit
+	cost = 3
+
+/datum/gear/misc/sunscreen_stick
+	display_name = "USCM issue sunscreen"
+	path = /obj/item/facepaint/sunscreen_stick
+	cost = 1 //The cadmium poisoning pays for the discounted cost longterm
+	allowed_origins = USCM_ORIGINS
+
+/datum/gear/misc/patch_uscm
 	display_name = "USCM shoulder patch"
 	path = /obj/item/clothing/accessory/patch
 	cost = 1
 	slot = WEAR_IN_ACCESSORY
 	allowed_origins = USCM_ORIGINS
 
-/datum/gear/falconpatch
+/datum/gear/misc/patch_uscm/falcon
 	display_name = "Falling Falcons shoulder patch"
 	path = /obj/item/clothing/accessory/patch/falcon
-	cost = 1
-	slot = WEAR_IN_ACCESSORY
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/gas_mask
-	display_name = "Gas Mask"
-	path = /obj/item/clothing/mask/gas
-	cost = 2
-	slot = WEAR_FACE
-
-/datum/gear/gunoil
-	display_name = "Gun Oil"
-	path = /obj/item/prop/helmetgarb/gunoil
-	cost = 1
-	slot = WEAR_IN_BACK
-
-/datum/gear/netting
-	display_name = "Helmet Netting"
-	path = /obj/item/prop/helmetgarb/netting
-	cost = 1
-	slot = WEAR_IN_BACK
-
-/datum/gear/spent_buck
-	display_name = "Spent Buckshot"
-	path = /obj/item/prop/helmetgarb/spent_buckshot
-	cost = 1
-	slot = WEAR_IN_BACK
-
-/datum/gear/spent_slugs
-	display_name = "Spent Slugs"
-	path = /obj/item/prop/helmetgarb/spent_slug
-	cost = 1
-	slot = WEAR_IN_BACK
-
-/datum/gear/spent_flechette
-	display_name = "Spent Flechette"
-	path = /obj/item/prop/helmetgarb/spent_flech
-	cost = 1
-	slot = WEAR_IN_BACK
-
-/datum/gear/prescription_bottle
-	display_name = "Prescription Bottle"
-	path = /obj/item/prop/helmetgarb/prescription_bottle
-	cost = 1
-	slot = WEAR_IN_BACK
-
-/datum/gear/raincover
-	display_name = "Helmet Rain Cover"
-	path = /obj/item/prop/helmetgarb/raincover
-	cost = 1
-	slot = WEAR_IN_BACK
-
-/datum/gear/rabbits_foot
-	display_name = "Rabbit's Foot"
-	path = /obj/item/prop/helmetgarb/rabbitsfoot
-	cost = 1
-	slot = WEAR_IN_BACK
-
-/datum/gear/rosary
-	display_name = "Rosary"
-	path = /obj/item/prop/helmetgarb/rosary
-	cost = 1
-	slot = WEAR_IN_BACK
-
-/datum/gear/lucky_feather
-	display_name = "Lucky Feather - Red"
-	path = /obj/item/prop/helmetgarb/lucky_feather
-	cost = 1
-	slot = WEAR_IN_BACK
-
-/datum/gear/lucky_feather/blue
-	display_name = "Lucky Feather - Blue"
-	path = /obj/item/prop/helmetgarb/lucky_feather/blue
-
-/datum/gear/lucky_feather/purple
-	display_name = "Lucky Feather - Purple"
-	path = /obj/item/prop/helmetgarb/lucky_feather/purple
-
-/datum/gear/lucky_feather/yellow
-	display_name = "Lucky Feather - Yellow"
-	path = /obj/item/prop/helmetgarb/lucky_feather/yellow
-
-/datum/gear/helmet_gasmask
-	display_name = "M5 integrated gasmask"
-	path = /obj/item/prop/helmetgarb/helmet_gasmask
-	cost = 2
-	slot = WEAR_IN_BACK
-
-/datum/gear/trimmed_wire
-	display_name = "Trimmed Barbed Wire"
-	path = /obj/item/prop/helmetgarb/trimmed_wire
-	cost = 2
-	slot = WEAR_IN_BACK
-
-/datum/gear/bullet_pipe
-	display_name = "10x99mm XM42B casing pipe"
-	path = /obj/item/prop/helmetgarb/bullet_pipe
-	cost = 1
-	slot = WEAR_IN_BACK
-
-/datum/gear/flair_initech
-	display_name = "Initech Flair"
-	path = /obj/item/prop/helmetgarb/flair_initech
-	cost = 1
-	slot = WEAR_IN_BACK
-
-/datum/gear/flair_io
-	display_name = "Io Flair"
-	path = /obj/item/prop/helmetgarb/flair_io
-	cost = 1
-	slot = WEAR_IN_BACK
-
-/datum/gear/flair_peace
-	display_name = "Peace and Love Flair"
-	path = /obj/item/prop/helmetgarb/flair_peace
-	cost = 1
-	slot = WEAR_IN_BACK
-
-/datum/gear/flair_uscm
-	display_name = "USCM Flair"
-	path = /obj/item/prop/helmetgarb/flair_uscm
-	cost = 1
-	slot = WEAR_IN_BACK
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/broken_nvgs
-	display_name = "Broken Night Vision Goggles"
-	path = /obj/item/prop/helmetgarb/helmet_nvg/cosmetic
-	cost = 1
-	slot = WEAR_IN_BACK
-
-/datum/gear/spacejam_tickets
-	display_name = "Authentic Tickets to Space Jam"
-	path = /obj/item/prop/helmetgarb/spacejam_tickets
-	cost = 4
-	slot = WEAR_IN_BACK
-
-/datum/gear/weyland_booze
-	display_name = "Weyland-Yutani Lite"
-	path = /obj/item/reagent_container/food/drinks/cans/beer
-	cost = 2
-	slot = WEAR_IN_BACK
-
-/datum/gear/weyland_IPA
-	display_name = "Weyland-Yutani IPA"
-	path = /obj/item/reagent_container/food/drinks/cans/beer
-	cost = 2
-	slot = WEAR_IN_BACK
-
-/datum/gear/flask
-	display_name = "Metal Flask"
-	path = /obj/item/reagent_container/food/drinks/flask
-	cost = 2
-	slot = WEAR_IN_BACK
-
-/datum/gear/flask_canteen
-	display_name = "Canteen"
-	path = /obj/item/reagent_container/food/drinks/flask/canteen
-	cost = 2
-	slot = WEAR_IN_BACK
-
-/datum/gear/flask_uscm
-	display_name = "USCM Flask"
-	path = /obj/item/reagent_container/food/drinks/flask/marine
-	cost = 2
-	slot = WEAR_IN_BACK
-
-/datum/gear/flask_wy
-	display_name = "WY Flask"
-	path = /obj/item/reagent_container/food/drinks/flask/weylandyutani
-	cost = 2
-	slot = WEAR_IN_BACK
-
-/datum/gear/flask_det
-	display_name = "Leather Flask"
-	path = /obj/item/reagent_container/food/drinks/flask/detflask
-	cost = 2
-	slot = WEAR_IN_BACK
-
-/datum/gear/flask_bar
-	display_name = "Black Leather Flask"
-	path = /obj/item/reagent_container/food/drinks/flask/barflask
-	cost = 2
-	slot = WEAR_IN_BACK
-
-/datum/gear/flask_vacuum
-	display_name = "Vacuum Flask"
-	path = /obj/item/reagent_container/food/drinks/flask/vacuumflask
-	cost = 3 //they're too cool for 2 points
-	slot = WEAR_IN_BACK
-
-/datum/gear/pdt_kit
-	display_name = "PDT/L Kit"
-	path = /obj/item/storage/box/pdt_kit
-	cost = 3
-	slot = WEAR_IN_BACK
-
-/datum/gear/sunscreen_stick
-	display_name = "USCM Issue Sunscreen"
-	path = /obj/item/facepaint/sunscreen_stick
-	cost = 1 //The cadmium poisoning pays for the discounted cost longterm
-	slot = WEAR_IN_BACK
-
-/datum/gear/chaplain_patch
-	display_name = "USCM Chaplain Helmet Patch"
-	path = /obj/item/prop/helmetgarb/chaplain_patch
-	cost = 1 //similar price to flairs
-	slot = WEAR_IN_BACK

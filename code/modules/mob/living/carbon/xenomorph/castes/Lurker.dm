@@ -45,6 +45,7 @@
 		/datum/action/xeno_action/activable/pounce/lurker,
 		/datum/action/xeno_action/onclick/lurker_invisibility,
 		/datum/action/xeno_action/onclick/lurker_assassinate,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -87,6 +88,15 @@
 			ability.button.icon_state = "template"
 
 	return original_damage
+
+/datum/behavior_delegate/lurker_base/override_intent(mob/living/carbon/target_carbon)
+	. = ..()
+
+	if(!isxeno_human(target_carbon))
+		return
+
+	if(next_slash_buffed)
+		return INTENT_HARM
 
 /datum/behavior_delegate/lurker_base/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
 	if (!isxeno_human(target_carbon))
@@ -141,3 +151,23 @@
 	. = list()
 	var/invis_message = (invis_start_time == -1) ? "N/A" : "[(invis_duration-(world.time - invis_start_time))/10] seconds."
 	. += "Invisibility Time Left: [invis_message]"
+
+/datum/behavior_delegate/lurker_base/on_collide(atom/movable/movable_atom)
+	. = ..()
+
+	if(!ishuman(movable_atom))
+		return
+
+	if(!bound_xeno || !bound_xeno.stealth)
+		return
+
+	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invisibility_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
+	if(!lurker_invisibility_action)
+		return
+
+	var/mob/living/carbon/human/bumped_into = movable_atom
+	if(bumped_into.alpha < 100) //ignore invisible scouts and preds
+		return
+	
+	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You bumped into someone and lost your invisibility!"))
+	lurker_invisibility_action.invisibility_off()

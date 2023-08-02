@@ -114,6 +114,13 @@
 	required_reagents = list("mercury" = 1, "sugar" = 1, "lithium" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/sleen
+	name = "Sleen"
+	id = "sleen"
+	result = "sleen"
+	required_reagents = list("oxycodone" = 1, "souto_lime" = 1)
+	result_amount = 2
+
 /datum/chemical_reaction/pacid
 	name = "Polytrinic acid"
 	id = "pacid"

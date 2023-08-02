@@ -22,6 +22,7 @@
 	item_state = "motion_detector"
 	flags_atom = FPRINT| CONDUCT
 	flags_equip_slot = SLOT_WAIST
+	inherent_traits = list(TRAIT_ITEM_NOT_IMPLANTABLE)
 	var/list/blip_pool = list()
 	var/detector_range = 14
 	var/detector_mode = MOTION_DETECTOR_LONG
@@ -309,6 +310,16 @@
 	name = "hacked motion detector"
 	desc = "A device that usually picks up non-USCM signals, but this one's been hacked to detect all non-freelancer movement instead. Fight fire with fire!"
 	iff_signal = FACTION_MERCENARY
+
+/obj/item/device/motiondetector/hacked/pmc
+	name = "corporate motion detector"
+	desc = "A device that usually picks up non-USCM signals, but this one's been reprogrammed to detect all non-PMC movement instead. Very corporate."
+	iff_signal = FACTION_PMC
+
+/obj/item/device/motiondetector/hacked/dutch
+	name = "hacked motion detector"
+	desc = "A device that usually picks up non-USCM signals, but this one's been hacked to detect all non-Dutch's Dozen movement instead. Fight fire with fire!"
+	iff_signal = FACTION_DUTCH
 
 /obj/item/device/motiondetector/hacked/contractor
 	name = "modified motion detector"

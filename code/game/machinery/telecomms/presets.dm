@@ -50,7 +50,7 @@
 	. = ..()
 
 	if(z)
-		SSminimaps.add_marker(src, z, MINIMAP_FLAG_USCM, "supply")
+		SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "supply")
 
 // doesn't need power, instead uses health
 /obj/structure/machinery/telecomms/relay/preset/tower/inoperable(additional_flags)
@@ -60,11 +60,11 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/machinery/telecomms/relay/preset/tower/tcomms_startup()
+/obj/structure/machinery/telecomms/relay/preset/tower/update_state()
 	. = ..()
 	if(on)
 		playsound(src, 'sound/machines/tcomms_on.ogg', vol = 80, vary = FALSE, sound_range = 16, falloff = 0.5)
-		msg_admin_niche("Portable communication relay started for Z-Level [src.z] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
+		msg_admin_niche("Portable communication relay started for Z-Level [src.z] [ADMIN_JMP(src)]")
 
 		if(SSobjectives && SSobjectives.comms)
 			// This is the first time colony comms have been established.
@@ -74,7 +74,7 @@
 /obj/structure/machinery/telecomms/relay/preset/tower/tcomms_shutdown()
 	. = ..()
 	if(!on)
-		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
+		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z] [ADMIN_JMP(src)]")
 
 /obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(obj/item/projectile/P)
 	..()
@@ -235,10 +235,10 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	var/area/commarea = get_area(src)
 	if(on) //now, if it went on it now uses power
 		use_power = USE_POWER_IDLE
-		message_admins("[key_name(user)] turned \the [src] in [commarea] ON. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[commloc.loc.x];Y=[commloc.loc.y];Z=[commloc.loc.z]'>JMP</a>)")
+		message_admins("[key_name(user)] turned \the [src] in [commarea] ON. [ADMIN_JMP(commloc.loc)]")
 	else
 		use_power = USE_POWER_NONE
-		message_admins("[key_name(user)] turned \the [src] in [commarea] OFF. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[commloc.loc.x];Y=[commloc.loc.y];Z=[commloc.loc.z]'>JMP</a>)")
+		message_admins("[key_name(user)] turned \the [src] in [commarea] OFF. [ADMIN_JMP(commloc.loc)]")
 	toggle_cooldown = world.time + 40
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/attackby(obj/item/I, mob/user)

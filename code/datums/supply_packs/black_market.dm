@@ -141,7 +141,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/weapon/gun/pistol/holdout(src)
 			new /obj/item/ammo_magazine/pistol/holdout(src)
 		if(3) //clf
-			switch(rand(1, 4))
+			switch(rand(1, 3))
 				if(1)
 					new /obj/item/weapon/twohanded/lungemine/damaged(src)
 				if(2)
@@ -154,11 +154,6 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 					new /obj/item/ammo_magazine/smg/mac15/extended(src)
 					new /obj/item/ammo_magazine/smg/mac15(src)
 					new /obj/item/ammo_magazine/smg/mac15(src)
-				if(4)
-					new /obj/item/weapon/gun/m60(src)
-					new /obj/item/ammo_magazine/m60(src)
-					new /obj/item/ammo_magazine/m60(src)
-					new /obj/item/ammo_magazine/m60(src)
 		if(4) //upp
 			if(prob(50))
 				new /obj/item/weapon/gun/rifle/type71(src)
@@ -262,16 +257,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 // Shotguns
-
-/datum/supply_packs/contraband/seized/sawny
-	name = "Sawn-off Spearhead Rival 78 crate (x1 ammo box included)"
-	contains = list(
-		/obj/item/weapon/gun/shotgun/double/damaged, //its not actually sawed off........... get fuked
-		/obj/item/ammo_magazine/shotgun/buckshot,
-	)
-	dollar_cost = 45
-	containertype = /obj/structure/largecrate/black_market
-
 /datum/supply_packs/contraband/seized/custom
 	name = "custom-built shotgun crate (x1 ammo box included)"
 	contains = list(
@@ -555,7 +540,6 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/drinks/flask/weylandyutani/poison,
 		/obj/item/reagent_container/food/drinks/bottle/holywater/bong,
 		/obj/item/storage/pill_bottle/paracetamol,
-		/obj/item/storage/pill_bottle/zombie_powder,
 	)
 	dollar_cost = 25
 	containertype = /obj/structure/largecrate/black_market
@@ -970,7 +954,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/cartridge_bayonet
 	name = "M8 Cartridge Bayonet Kit"
-	contains = list(/obj/item/storage/box/c02_knife)
+	contains = list(/obj/item/storage/box/co2_knife)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -1167,7 +1151,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
 			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
 			loot_message = SPAN_NOTICE("It's a bunch of random junk...")
-		if(51 to 60)
+		if(51 to 70)
 			new /obj/effect/spawner/random/bomb_supply(loc)
 			new /obj/effect/spawner/random/bomb_supply(loc)
 			new /obj/effect/spawner/random/toolbox(loc)
@@ -1175,19 +1159,11 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/effect/spawner/random/tool(loc)
 			new /obj/effect/spawner/random/attachment(loc)
 			if(prob(33))
-				new /obj/effect/spawner/random/supply_kit(loc)
+				new /obj/effect/spawner/random/supply_kit/market(loc)
 			else
 				new /obj/effect/spawner/random/attachment(loc)
 			loot_message = SPAN_NOTICE("Just some old equipment and parts.")
-		if(61 to 65)
-			// backpacks
-			for(var/i in 1 to rand(3, 6))
-				var/pack_type = pick(subtypesof(/obj/item/storage/backpack))
-				var/obj/item/storage/backpack/pack = new pack_type(loc)
-				if(pack.max_storage_space > 15)
-					pack.max_storage_space = 15
-			loot_message = SPAN_NOTICE("Some backpacks. They all look empty though...")
-		if(66 to 70)
+		if(71 to 75)
 		// CLF corpse!! Why is this here? Don't ask.
 			var/mob/living/carbon/human/corpse = new (loc)
 			corpse.create_hud() //Need to generate hud before we can equip anything apparently...
@@ -1196,12 +1172,6 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			arm_equipment(corpse, corpse_type, TRUE, FALSE) // I didn't choose the shitcode life, the shitcode life chose me
 
 			loot_message = SPAN_HIGHDANGER("IT'S A CORPSE!!")
-		if(71 to 75)
-		// Costumes.
-			new /obj/effect/landmark/costume/random(loc)
-			new /obj/effect/landmark/costume/random(loc)
-			new /obj/effect/landmark/costume/random(loc)
-			loot_message = SPAN_NOTICE("What the hell is this..?")
 		if(76 to 90)
 		// Random supply garbage.
 			new /obj/effect/spawner/random/tool(loc)

@@ -774,13 +774,13 @@ DEFINES in setup.dm, referenced here.
 	set desc = "Use anything unique your weapon is capable of. Includes pumping a shotgun or spinning a revolver. If you have an active gun attachment, this will activate on the attachment instead."
 	set src in usr
 
-	var/obj/item/weapon/gun/active_firearm = src
-	if(istype(active_firearm))
-		active_firearm.get_active_firearm(usr)
-		if(active_firearm.active_attachable)
-			src = active_firearm.active_attachable
+	var/obj/item/weapon/current_weapon = src
+	if(isgun(current_weapon))
+		var/obj/item/weapon/gun/firearm = current_weapon
+		if(firearm.active_attachable)
+			src = firearm.active_attachable
 		else
-			src = active_firearm
+			src = firearm
 
 	unique_action(usr)
 

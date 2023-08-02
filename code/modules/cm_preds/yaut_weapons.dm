@@ -154,12 +154,44 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
 	var/human_adapted = FALSE
+	///The amount this weapon interrupts hivemind link on Xenomorphs.
+	var/xeno_interfere_amount = 30
 
 	///The amount of charges towards use of special abilities.
 	var/ability_charge = 0
 	var/ability_charge_max = ABILITY_MAX_DEFAULT
 	var/ability_charge_rate = ABILITY_CHARGE_NORMAL
 	var/ability_cost = ABILITY_COST_DEFAULT
+	///Whether the ability is ready to trigger
+	var/ability_primed = FALSE
+
+
+/obj/item/weapon/yautja/dropped()
+	if(ability_primed)
+		ability_primed = FALSE
+	..()
+
+/obj/item/weapon/yautja/attack(mob/living/target, mob/living/carbon/human/user)
+	. = ..()
+	if(!.)
+		return
+	if((human_adapted || isspeciesyautja(user)) && isxeno(target))
+		var/mob/living/carbon/xenomorph/xenomorph = target
+		xenomorph.interference = xeno_interfere_amount
+
+	if(target == user || target.stat == DEAD || isanimal(target))
+		to_chat(user, SPAN_DANGER("You think you're smart?")) //very funny
+		return
+
+	if(ability_charge < ability_charge_max)
+		ability_charge += ability_charge_rate
+
+/obj/item/weapon/yautja/unique_action(mob/user)
+	if(user.get_active_hand() != src)
+		return FALSE
+	if(ability_charge < ability_cost)
+		to_chat(user, SPAN_WARNING("The blood reservoir is not full enough to do this!"))
+		return FALSE
 
 /obj/item/weapon/yautja/chain
 	name = "chainwhip"
@@ -183,9 +215,6 @@
 
 /obj/item/weapon/yautja/chain/attack(mob/target, mob/living/user)
 	. = ..()
-	if((human_adapted || isyautja(user)) && isxeno(target))
-		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
 
 /obj/item/weapon/yautja/sword
 	name = "clan sword"
@@ -205,12 +234,6 @@
 	attack_speed = 1 SECONDS
 	unacidable = TRUE
 
-/obj/item/weapon/yautja/sword/attack(mob/target, mob/living/user)
-	. = ..()
-	if((human_adapted || isyautja(user)) && isxeno(target))
-		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
-
 /obj/item/weapon/yautja/scythe
 	name = "dual war scythe"
 	desc = "A huge, incredibly sharp dual blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
@@ -228,6 +251,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	unacidable = TRUE
+	has_unique_action = TRUE
 
 	ability_cost = ABILITY_COST_SCYTHE
 	ability_charge_max = ABILITY_COST_SCYTHE
@@ -235,25 +259,53 @@
 
 /obj/item/weapon/yautja/scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
 	..()
-	if((human_adapted || isyautja(user)) && isxeno(target))
-		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 15
+	if(ability_charge >= ability_cost)
+		var/color = BLOOD_COLOR_HUMAN
+		var/alpha = 70
+		color += num2text(alpha, 2, 16)
+		add_filter("scythe_ready", 1, list("type" = "outline", "color" = color, "size" = 2))
 
-	if(prob(15))
-		if(isxeno(target))
-			user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
-			user.spin(5, 1)
-			..()
-			return
+/obj/item/weapon/yautja/scythe/attack_self(mob/user)
+	..()
+	ability_primed = !ability_primed
+	var/message = "You tighten your grip on [src], preparing to whirl it in a spin."
+	if(!ability_primed)
+		message = "You relax your grip on [src]."
+	to_chat(user, SPAN_WARNING(message))
 
-		if(ishuman(target))
-			user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to carve a deep cut on your opponent!"))
-			user.spin(5, 1)
-			var/mob/living/carbon/human/human_target = target
-			var/obj/limb/target_limb = human_target.get_limb(check_zone(user.zone_selected))
-			var/datum/wound/new_wound = target_limb.createwound(CUT, (force / 2))
-			target_limb.add_bleeding(new_wound, FALSE, 10)
-			return
+/obj/item/weapon/yautja/scythe/unique_action(mob/user)
+	. = ..()
+	if(!.)
+		return
+
+	if(!ability_primed)
+		to_chat(user, SPAN_WARNING("You need a stronger grip for this!"))
+		return FALSE
+	user.spin_circle(2)
+	for(var/mob/living/carbon/target in orange(1, user))
+		if(!isxeno_human(target) || isyautja(target))
+			continue
+
+		if(target.stat == DEAD)
+			continue
+
+		if(!check_clear_path_to_target(user, target))
+			continue
+
+		user.visible_message(SPAN_HIGHDANGER("[user] slices open the guts of [target]!"), SPAN_HIGHDANGER("You slice open the guts of [target]!"))
+		target.spawn_gibs()
+		playsound(get_turf(target), 'sound/effects/gibbed.ogg', 30, 1)
+		target.apply_effect(get_xeno_stun_duration(target, 1), WEAKEN)
+		target.apply_armoured_damage(get_xeno_damage_slash(target, (force * 1.5)), ARMOR_MELEE, BRUTE, "chest", 40)
+
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>[key_name(user)] sliced [key_name(target)] with their whirling scythe.</font>")
+		target.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(target)] was sliced by [key_name(user)] whirling their scythe.</font>")
+		log_attack("[key_name(target)] was sliced by [key_name(user)] whirling their scythe.")
+
+	ability_charge -= ability_cost
+	ability_primed = FALSE
+	remove_filter("scythe_ready")
+	return TRUE
 
 /obj/item/weapon/yautja/scythe/alt
 	name = "double war scythe"
@@ -387,20 +439,11 @@
 	. = ..()
 	if(!.)
 		return
-	if((human_adapted || isspeciesyautja(user)) && isxeno(target))
-		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
-
-	if(target == user || target.stat == DEAD)
-		to_chat(user, SPAN_DANGER("You think you're smart?")) //very funny
-		return
-	if(isanimal(target))
-		return
 
 	if((ability_charge < ability_charge_max))
 		to_chat(user, SPAN_DANGER("Your combistick's reservoir fills up with your opponent's blood!"))
 		ability_charge += ability_charge_rate
-		if(ability_charge > ability_cost)
+		if(ability_charge >= ability_cost)
 			to_chat(user, SPAN_DANGER("You may now throw your combistick!"))
 			var/color = target.get_blood_color()
 			var/alpha = 70
@@ -715,14 +758,6 @@
 	flags_atom = FPRINT|CONDUCT
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
 	attack_speed = 14 //Default is 7.
-
-/obj/item/weapon/twohanded/yautja/glaive/attack(mob/living/target, mob/living/carbon/human/user)
-	. = ..()
-	if(!.)
-		return
-	if((human_adapted || isyautja(user)) && isxeno(target))
-		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.interference = 30
 
 /obj/item/weapon/twohanded/yautja/glaive/alt
 	icon_state = "glaive_alt"
@@ -1042,7 +1077,7 @@
 		log_debug("Plasma Pistol refunded shot.")
 	return TRUE
 
-/obj/item/weapon/gun/energy/yautja/plasmapistol/use_unique_action()
+/obj/item/weapon/gun/energy/yautja/plasmapistol/unique_action()
 	switch(mode)
 		if(FIRE_MODE_STANDARD)
 			mode = FIRE_MODE_INCENDIARY
@@ -1165,7 +1200,7 @@
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt]
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/use_unique_action()
+/obj/item/weapon/gun/energy/yautja/plasma_caster/unique_action()
 	switch(mode)
 		if("stun")
 			mode = "lethal"

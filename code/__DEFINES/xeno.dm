@@ -8,6 +8,9 @@
 #define TUNNEL_ENTER_BIG_XENO_DELAY 120
 #define TUNNEL_ENTER_LARVA_DELAY 10
 
+/// The duration it takes a player controlled facehugger to leap or hug adjacently
+#define FACEHUGGER_WINDUP_DURATION 1 SECONDS
+
 // Defines for action types and click delays used by xenomorph/unarmedattack() and attack_alien().
 
 /// Full attack delay.

@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - admin: "notes applied to players now include the round id it was applied in"

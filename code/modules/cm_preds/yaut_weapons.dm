@@ -274,10 +274,7 @@
 	to_chat(user, SPAN_WARNING(message))
 
 /obj/item/weapon/yautja/scythe/unique_action(mob/user)
-	. = ..()
-	if(!.)
-		return
-
+	..()
 	if(!ability_primed)
 		to_chat(user, SPAN_WARNING("You need a stronger grip for this!"))
 		return FALSE

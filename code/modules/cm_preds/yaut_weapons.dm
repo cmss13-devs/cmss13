@@ -192,6 +192,7 @@
 	if(ability_charge < ability_cost)
 		to_chat(user, SPAN_WARNING("The blood reservoir is not full enough to do this!"))
 		return FALSE
+	return TRUE
 
 /obj/item/weapon/yautja/chain
 	name = "chainwhip"
@@ -274,7 +275,9 @@
 	to_chat(user, SPAN_WARNING(message))
 
 /obj/item/weapon/yautja/scythe/unique_action(mob/user)
-	..()
+	. = ..()
+	if(!.)
+		return
 	if(!ability_primed)
 		to_chat(user, SPAN_WARNING("You need a stronger grip for this!"))
 		return FALSE
@@ -300,7 +303,6 @@
 		log_attack("[key_name(target)] was sliced by [key_name(user)] whirling their scythe.")
 
 	ability_charge -= ability_cost
-	ability_primed = FALSE
 	remove_filter("scythe_ready")
 	return TRUE
 

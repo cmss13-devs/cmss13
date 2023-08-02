@@ -11,8 +11,7 @@
 	var/mode = 1 // 1 is injecting, 0 is taking blood.
 	var/obj/item/reagent_container/beaker = null
 	var/datum/beam/current_beam
-
-	//fix IV needing power to work since an IV only need gravity to work and that all map have it.
+	//make it so that IV doesn't require power to function.
 	use_power = USE_POWER_NONE
 
 /obj/structure/machinery/iv_drip/update_icon()
@@ -47,17 +46,6 @@
 	else if(!QDELETED(src) && attached)
 		current_beam = beam(attached, "iv_tube")
 
-//probably need to comment it out since IV don't use power.
-/*
-/obj/structure/machinery/iv_drip/power_change()
-	. = ..()
-	if(stat & NOPOWER && attached)
-		visible_message("\The [src] retracts its IV tube and shuts down.")
-		attached.active_transfusions -= src
-		attached = null
-		update_beam()
-		update_icon()
-*/
 /obj/structure/machinery/iv_drip/Destroy()
 	attached?.active_transfusions -= src
 	update_beam()
@@ -65,12 +53,7 @@
 
 /obj/structure/machinery/iv_drip/MouseDrop(over_object, src_location, over_location)
 	..()
-	/*
-	IV can't be unpowered or getting inoperable as far as i know.
-	if(inoperable())
-		visible_message("\The [src] is not powered.")
-		return
-	*/
+
 	if(ishuman(usr))
 		var/mob/living/carbon/human/user = usr
 		if(user.stat || get_dist(user, src) > 1 || user.blinded || user.lying)
@@ -99,7 +82,6 @@
 			update_icon()
 			start_processing()
 
-//replace W by container for the time that you try to fit in IV.
 /obj/structure/machinery/iv_drip/attackby(obj/item/container, mob/living/user)
 	if (istype(container, /obj/item/reagent_container))
 		if(beaker)
@@ -114,7 +96,7 @@
 			beaker = container
 
 			var/reagentnames = ""
-			//rename R by chem to represent each chem. instead of damn single letter variable.
+
 			for(var/datum/reagent/chem in beaker.reagents.reagent_list)
 				reagentnames += ";[chem.name]"
 
@@ -162,7 +144,7 @@
 			if(amount == 0)
 				if(prob(5)) visible_message("\The [src] pings.")
 				return
-			//replace t by patient for the mob being attached.
+
 			var/mob/living/carbon/patient = attached
 
 			if(!istype(patient))

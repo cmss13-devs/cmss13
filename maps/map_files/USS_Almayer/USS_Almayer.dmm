@@ -17096,6 +17096,17 @@
 	},
 /obj/structure/largecrate/random/secure,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 12;
+	layer = 4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 15;
+	pixel_y = -6
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -19740,6 +19751,24 @@
 /area/almayer/engineering/lower_engineering)
 "bBu" = (
 /obj/structure/surface/rack,
+/obj/structure/prop/invuln{
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi';
+	icon_state = "quad_rocket";
+	name = "IX-50 Anti-Air Rocket Ammo";
+	desc = "Self-guided anti-air rockets intended for use with the IX-50";
+	pixel_x = -4;
+	pixel_y = -7;
+	density = 0
+	},
+/obj/structure/prop/invuln{
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi';
+	icon_state = "quad_rocket";
+	name = "IX-50 Anti-Air Rocket Ammo";
+	desc = "Self-guided anti-air rockets intended for use with the IX-50";
+	pixel_x = 3;
+	pixel_y = 2;
+	density = 0
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red"
@@ -22299,6 +22328,17 @@
 	icon_state = "green"
 	},
 /area/almayer/squads/req)
+"bMb" = (
+/obj/structure/window/framed/almayer/hull{
+	icon_state = "twindow12"
+	},
+/obj/structure/foamed_metal,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/almayer/hull/lower_hull/l_a_s{
+	temperature = 223
+	})
 "bMq" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
 /obj/structure/machinery/light{
@@ -24251,6 +24291,20 @@
 	icon_state = "blue"
 	},
 /area/almayer/squads/charlie_delta_shared)
+"bUk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 11
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "bUo" = (
 /obj/structure/closet/secure_closet/guncabinet/red,
 /obj/item/weapon/gun/shotgun/combat,
@@ -24665,6 +24719,12 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 12;
+	layer = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
 "bWc" = (
@@ -26628,8 +26688,8 @@
 	},
 /area/almayer/hallways/port_umbilical)
 "cey" = (
-/obj/structure/largecrate/random/barrel/white,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/trash/ceramic_plate,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
 "ceC" = (
@@ -29011,6 +29071,7 @@
 	},
 /area/almayer/medical/lower_medical_lobby)
 "cAH" = (
+/obj/effect/decal/strata_decals/grime/grime4,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -29395,6 +29456,18 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/upper_engineering)
+"cHk" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/grille{
+	icon_state = "brokengrille";
+	density = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "cHl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -29431,6 +29504,19 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/lower_engineering)
+"cHU" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/largecrate/random/barrel/yellow,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 12;
+	layer = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "cIe" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -29538,9 +29624,32 @@
 	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 5;
+	pixel_x = 2;
+	pixel_y = 12;
+	layer = 4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 11
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
+/area/almayer/hull/lower_hull/l_a_p)
+"cJV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/secure,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 11
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
 "cKt" = (
 /obj/structure/bed/sofa/south/grey/left,
@@ -29782,7 +29891,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery{
-	density = 1;
 	dir = 4;
 	icon = 'icons/obj/vehicles/tank.dmi';
 	indestructible = 1;
@@ -30479,6 +30587,21 @@
 	icon_state = "plating"
 	},
 /area/almayer/engineering/engine_core)
+"ddO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 11
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "deb" = (
 /obj/structure/bed,
 /obj/structure/machinery/flasher{
@@ -31445,6 +31568,14 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
+"dvN" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/turf/closed/wall/almayer,
+/area/almayer/squads/charlie)
 "dvT" = (
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/brig/general_equipment)
@@ -31876,6 +32007,18 @@
 	icon_state = "greencorner"
 	},
 /area/almayer/hallways/starboard_hallway)
+"dEH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/structure/prop/invuln{
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi';
+	icon_state = "quad_rocket";
+	name = "IX-50 Anti-Air Rocket Ammo";
+	desc = "Self-guided anti-air rockets intended for use with the IX-50";
+	density = 0
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_f_s)
 "dEQ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/condiment/hotsauce/tabasco,
@@ -31960,6 +32103,12 @@
 	dir = 4
 	},
 /obj/structure/largecrate/random/case/double,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 5;
+	pixel_x = -1;
+	pixel_y = 12;
+	layer = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
 "dGB" = (
@@ -32481,6 +32630,11 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/starboard_hallway)
+"dRN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "dRT" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -32602,6 +32756,10 @@
 /area/almayer/hull/upper_hull/u_f_s)
 "dTu" = (
 /obj/effect/spawner/random/toolbox,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/strata_decals/grime/grime1{
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -32973,6 +33131,15 @@
 /area/almayer/command/airoom)
 "ebO" = (
 /obj/structure/machinery/light/small,
+/obj/structure/prop/invuln{
+	desc = "harmless exhaust discharge from a broken pipeline";
+	icon = 'icons/effects/effects.dmi';
+	icon_state = "smoke";
+	name = "exhaust";
+	density = 0;
+	pixel_y = 1;
+	pixel_x = -9
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -33707,6 +33874,7 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12
 	},
+/obj/item/trash/uscm_mre,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
 "emK" = (
@@ -33935,6 +34103,12 @@
 	icon_state = "test_floor5"
 	},
 /area/almayer/squads/req)
+"eqQ" = (
+/obj/effect/decal/strata_decals/grime/grime3,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "erd" = (
 /obj/structure/machinery/light{
 	unacidable = 1;
@@ -35715,8 +35889,10 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "eZX" = (
-/obj/structure/largecrate/random/barrel/green,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair{
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
 "fau" = (
@@ -36712,6 +36888,12 @@
 	icon_state = "silver"
 	},
 /area/almayer/living/briefing)
+"fvl" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/buritto,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "fvu" = (
 /obj/item/tool/crowbar,
 /turf/open/floor/almayer{
@@ -37043,9 +37225,17 @@
 	icon_state = "plating"
 	},
 /area/almayer/shipboard/brig/armory)
+"fDp" = (
+/obj/effect/decal/strata_decals/grime/grime4,
+/turf/closed/wall/almayer/outer,
+/area/almayer/hull/lower_hull/l_a_p)
 "fDv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/grille{
+	icon_state = "brokengrille";
+	density = 0
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -37477,6 +37667,12 @@
 	},
 /obj/item/tool/shovel/etool,
 /obj/item/tool/wirecutters,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -16;
+	pixel_y = -16
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -37627,8 +37823,26 @@
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
 "fNg" = (
-/obj/structure/largecrate/random/barrel/yellow,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/structure/prop/invuln{
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi';
+	icon_state = "quad_rocket";
+	name = "IX-50 Anti-Air Rocket Ammo";
+	desc = "Self-guided anti-air rockets intended for use with the IX-50";
+	pixel_x = 2;
+	pixel_y = -7;
+	density = 0
+	},
+/obj/structure/prop/invuln{
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi';
+	icon_state = "quad_rocket";
+	name = "IX-50 Anti-Air Rocket Ammo";
+	desc = "Self-guided anti-air rockets intended for use with the IX-50";
+	pixel_x = 1;
+	pixel_y = 7;
+	density = 0
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_s)
 "fNh" = (
@@ -37653,6 +37867,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
+"fNx" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -16;
+	pixel_y = -16
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "fNA" = (
 /obj/structure/closet/fireaxecabinet{
 	pixel_y = 32
@@ -37911,6 +38134,21 @@
 	pixel_y = 12
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 12;
+	layer = 4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 15;
+	pixel_y = -6
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 11
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -38167,6 +38405,7 @@
 "gai" = (
 /obj/structure/closet/firecloset,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -38921,6 +39160,8 @@
 	pixel_y = -32
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/item/trash/boonie,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -39853,6 +40094,16 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 12;
+	layer = 4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 11
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
 "gFa" = (
@@ -40430,7 +40681,9 @@
 	icon_state = "twindow4"
 	},
 /obj/structure/foamed_metal,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
 /area/almayer/hull/lower_hull/l_a_s{
 	temperature = 223
 	})
@@ -41137,6 +41390,22 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engine_core)
+"hgu" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice10";
+	pixel_x = 15;
+	pixel_y = 11
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 11
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 9;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "hgv" = (
 /turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/testlab)
@@ -42320,7 +42589,11 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "hHz" = (
-/obj/structure/machinery/door/airlock/almayer/engineering,
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	req_one_access = null;
+	req_access = null;
+	name = "\improper EVA Airlock"
+	},
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -42769,6 +43042,16 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/brig/execution)
+"hRQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/generic,
+/obj/item/trash/tray{
+	pixel_x = -11;
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
+/area/almayer/hull/lower_hull/l_m_p)
 "hRW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -43822,6 +44105,21 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/living/offices/flight)
+"imR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -16;
+	pixel_y = -16
+	},
+/obj/effect/decal/strata_decals/grime/grime2{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "ina" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
@@ -44775,7 +45073,13 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/structure/largecrate/random/barrel/yellow,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 12;
+	layer = 4
+	},
+/obj/structure/machinery/defenses/sentry/premade/dumb/empty,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "iGQ" = (
@@ -45137,6 +45441,13 @@
 	icon_state = "silver"
 	},
 /area/almayer/living/briefing)
+"iPF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime3,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "iPS" = (
 /obj/structure/machinery/cryopod/right,
 /turf/open/floor/almayer{
@@ -45513,6 +45824,32 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/processing)
+"iXK" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/structure/prop/invuln{
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi';
+	icon_state = "quad_rocket";
+	name = "IX-50 Anti-Air Rocket Ammo";
+	desc = "Self-guided anti-air rockets intended for use with the IX-50";
+	pixel_x = 3;
+	pixel_y = 2;
+	density = 0
+	},
+/obj/structure/prop/invuln{
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi';
+	icon_state = "quad_rocket";
+	name = "IX-50 Anti-Air Rocket Ammo";
+	desc = "Self-guided anti-air rockets intended for use with the IX-50";
+	pixel_x = -4;
+	pixel_y = -7;
+	density = 0
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_f_s)
 "iXT" = (
 /obj/item/trash/uscm_mre,
 /turf/open/floor/almayer,
@@ -45755,6 +46092,12 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 13;
+	layer = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "jbq" = (
@@ -45873,6 +46216,14 @@
 	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 11
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 7
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
 "jeb" = (
@@ -46338,6 +46689,16 @@
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
 /area/almayer/engineering/upper_engineering/port)
+"jlS" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/turf/closed/wall/almayer{
+	damage_cap = 15000
+	},
+/area/almayer/squads/delta)
 "jlX" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/hand_labeler,
@@ -46995,6 +47356,18 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
+"jDb" = (
+/obj/structure/prop/invuln{
+	desc = "harmless exhaust discharge from a broken pipeline";
+	icon = 'icons/effects/effects.dmi';
+	icon_state = "smoke";
+	name = "exhaust";
+	density = 0;
+	pixel_x = -9;
+	pixel_y = -17
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "jDV" = (
 /obj/effect/projector{
 	name = "Almayer_AresDown";
@@ -47030,6 +47403,12 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
+"jEt" = (
+/obj/effect/decal/strata_decals/grime/grime3,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "jFe" = (
 /obj/structure/prop/holidays/string_lights{
 	pixel_y = 27
@@ -47318,6 +47697,12 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/charlie)
+"jLk" = (
+/obj/item/tool/crowbar,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "jLs" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/prison{
@@ -47534,6 +47919,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -47913,6 +48299,13 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
+"jYX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime2,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "jZd" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8;
@@ -49741,6 +50134,16 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower_engineering)
+"kJE" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/grille,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "kJG" = (
 /obj/item/toy/deck{
 	pixel_y = 12
@@ -49933,6 +50336,12 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 13;
+	layer = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "kNO" = (
@@ -50289,12 +50698,18 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/structure/surface/rack,
-/obj/item/frame/table,
-/obj/item/frame/table,
-/obj/item/frame/table,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = 3;
+	pixel_y = -7
+	},
+/obj/structure/prop/invuln/fire,
+/obj/effect/decal/cleanable/ash,
+/obj/item/trash/crushed_cup,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
 /area/almayer/hull/lower_hull/l_m_p)
 "kUw" = (
 /obj/structure/surface/rack,
@@ -50952,6 +51367,13 @@
 /obj/effect/landmark/late_join/bravo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
+"ljy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "ljG" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_container/food/condiment/coldsauce,
@@ -51501,6 +51923,18 @@
 /obj/item/tool/weldingtool,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
+"ltF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -16;
+	pixel_y = -16
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "ltI" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -51530,8 +51964,6 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/item/clothing/head/helmet/marine/tech/tanker,
-/obj/structure/largecrate/random/secure,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -52203,6 +52635,11 @@
 	pixel_x = 12
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 15;
+	pixel_y = -6
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -52809,8 +53246,16 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
 "lTH" = (
-/obj/structure/largecrate/random/case/small,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/case/small,
+/obj/item/reagent_container/food/snacks/stewedsoymeat{
+	pixel_x = -1;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/ganucci{
+	pixel_x = 10;
+	pixel_y = 9
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
 "lTK" = (
@@ -52865,6 +53310,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
+"lXa" = (
+/obj/effect/decal/strata_decals/grime/grime4,
+/turf/open/space,
+/area/space)
 "lXg" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/recharger,
@@ -53724,6 +54173,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/bravo)
+"mqT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/molten_item,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "mqU" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8;
@@ -54448,6 +54904,14 @@
 	pixel_y = 12
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 11
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 7
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
 "mHm" = (
@@ -56109,6 +56573,16 @@
 	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 12;
+	layer = 4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 11
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
 "nka" = (
@@ -56330,6 +56804,13 @@
 	dir = 1
 	},
 /area/almayer/medical/containment/cell)
+"now" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "noV" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -57679,6 +58160,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 12;
+	layer = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
 "nOY" = (
@@ -57875,10 +58362,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
-"nTV" = (
-/obj/structure/foamed_metal,
-/turf/open/space,
-/area/space)
 "nTZ" = (
 /turf/open/floor/almayer{
 	dir = 5;
@@ -58184,6 +58667,34 @@
 	icon_state = "silver"
 	},
 /area/almayer/engineering/port_atmos)
+"obD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/pipe{
+	layer = 3.5;
+	pixel_y = 6
+	},
+/obj/structure/prop/invuln{
+	desc = "harmless exhaust discharge from a broken pipeline";
+	icon = 'icons/effects/effects.dmi';
+	icon_state = "smoke";
+	name = "exhaust";
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 18
+	},
+/obj/structure/prop/invuln{
+	desc = "harmless exhaust discharge from a broken pipeline";
+	icon = 'icons/effects/effects.dmi';
+	icon_state = "smoke";
+	name = "exhaust";
+	density = 0;
+	pixel_x = 9;
+	pixel_y = -1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "obE" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
 /obj/structure/machinery/light{
@@ -58777,6 +59288,25 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/tankerbunks)
+"ooa" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/sign/safety/water{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 12;
+	layer = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "oog" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -58808,6 +59338,28 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
+"ooy" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/sign/safety/distribution_pipes{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 13;
+	layer = 4
+	},
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "ooR" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
@@ -59343,10 +59895,28 @@
 /obj/structure/prop/tower{
 	desc = "An old portable comms tower used to transmit communications between subspace bodies. Looks like this one has seen better days."
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -16;
+	pixel_y = -16
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_a_p)
+"oyR" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 13;
+	layer = 4
+	},
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "ozi" = (
 /obj/structure/surface/table/almayer,
 /obj/item/fuelCell,
@@ -59463,6 +60033,10 @@
 /obj/effect/decal/strata_decals/grime/grime4,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
+"oBm" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "oBq" = (
 /obj/structure/bed,
 /obj/structure/machinery/flasher{
@@ -59654,7 +60228,9 @@
 	icon_state = "twindow8"
 	},
 /obj/structure/foamed_metal,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
 /area/almayer/hull/lower_hull/l_a_s{
 	temperature = 223
 	})
@@ -61548,6 +62124,13 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/upper_medical)
+"pxu" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/mob/living/simple_animal/mouse/gray,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "pxD" = (
 /obj/structure/machinery/vending/coffee{
 	pixel_x = 3;
@@ -62380,6 +62963,12 @@
 	},
 /obj/structure/largecrate/random/case/double,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 12;
+	layer = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "pNM" = (
@@ -62976,6 +63565,12 @@
 /obj/structure/grille{
 	icon_state = "brokengrille";
 	density = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -16;
+	pixel_y = -16
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -65090,6 +65685,18 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/general_equipment)
+"qRy" = (
+/obj/structure/window/framed/almayer/hull{
+	icon_state = "twindow12"
+	},
+/obj/structure/foamed_metal,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/almayer/hull/lower_hull/l_a_s{
+	temperature = 223
+	})
 "qRT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -66898,6 +67505,13 @@
 	pixel_x = -17
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -16;
+	pixel_y = -16
+	},
+/obj/structure/girder/displaced,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
 "rDt" = (
@@ -66932,6 +67546,21 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/hangar)
+"rEd" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 11
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "rEf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -67018,6 +67647,33 @@
 	icon_state = "silver"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
+"rFj" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 11
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
+"rFr" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 4;
+	icon_state = "flammable_pipe_3";
+	pixel_x = 17;
+	pixel_y = -16;
+	layer = 5.9
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	icon_state = "flammable_pipe_3";
+	pixel_x = -3;
+	pixel_y = 12;
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "rFs" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/folder/black,
@@ -67549,6 +68205,17 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/delta)
+"rQE" = (
+/obj/structure/window/framed/almayer/hull{
+	icon_state = "twindow12"
+	},
+/obj/structure/foamed_metal,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/almayer/hull/lower_hull/l_a_s{
+	temperature = 223
+	})
 "rQU" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/almayer{
@@ -68424,6 +69091,14 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/charlie_delta_shared)
+"skG" = (
+/obj/item/tank/oxygen/red,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_s{
+	temperature = 223
+	})
 "sld" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -68890,6 +69565,15 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"svB" = (
+/obj/effect/decal/strata_decals/grime/grime1{
+	dir = 8
+	},
+/obj/structure/largecrate/random/barrel/green{
+	pixel_x = 3
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "swn" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -69121,6 +69805,14 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/ce_room)
+"sAM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/grille{
+	icon_state = "brokengrille";
+	density = 0
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "sBd" = (
 /obj/structure/largecrate/random/barrel/white,
 /obj/effect/decal/cleanable/dirt,
@@ -70312,6 +71004,18 @@
 	icon_state = "blue"
 	},
 /area/almayer/living/port_emb)
+"sZO" = (
+/obj/structure/disposalpipe/segment,
+/obj/item/tool/warning_cone{
+	pixel_x = -12;
+	pixel_y = 16
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = 13;
+	pixel_y = 15
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "tab" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/box/flashbangs{
@@ -71505,6 +72209,29 @@
 	icon_state = "red"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"tvX" = (
+/obj/structure/platform,
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform_decoration{
+	dir = 5;
+	layer = 3.51
+	},
+/obj/structure/platform_decoration{
+	dir = 10
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 4;
+	icon_state = "flammable_pipe_3";
+	pixel_x = 17;
+	pixel_y = 8
+	},
+/turf/open/floor/plating,
+/area/almayer/hull/lower_hull/l_a_p)
 "twk" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -71813,6 +72540,19 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
+"tDD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 11
+	},
+/obj/item/trash/burger,
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 5;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "tDZ" = (
 /obj/structure/machinery/cryopod{
 	pixel_y = 6
@@ -72470,6 +73210,7 @@
 	pixel_y = 12
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -74932,6 +75673,13 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/perma)
+"uQO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_f_p)
 "uQU" = (
 /obj/structure/stairs{
 	dir = 1
@@ -75284,6 +76032,17 @@
 	icon_state = "emeraldfull"
 	},
 /area/almayer/living/briefing)
+"uWq" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/item/trash/boonie,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "uWC" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = -17
@@ -75434,6 +76193,20 @@
 	},
 /turf/closed/wall/almayer,
 /area/almayer/hallways/starboard_umbilical)
+"vbd" = (
+/obj/structure/surface/rack,
+/obj/structure/prop/invuln{
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi';
+	icon_state = "quad_rocket";
+	name = "IX-50 Anti-Air Rocket Ammo";
+	desc = "Self-guided anti-air rockets intended for use with the IX-50";
+	density = 0
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/almayer/shipboard/weapon_room)
 "vbf" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8
@@ -76813,6 +77586,16 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/grunt_rnr)
+"vAi" = (
+/obj/structure/largecrate/random/barrel/red,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 11
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "vAq" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -77392,6 +78175,12 @@
 	dir = 4
 	},
 /obj/structure/largecrate/random/barrel/blue,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 12;
+	layer = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -77650,6 +78439,17 @@
 "vRz" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_f_p)
+"vRJ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/item/tool/wrench{
+	pixel_y = 2;
+	pixel_x = -11
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "vRX" = (
 /obj/structure/surface/table/almayer,
 /obj/item/book/manual/medical_diagnostics_manual,
@@ -77768,6 +78568,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/upper_engineering)
+"vTw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime3,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "vTK" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_a_p)
@@ -78608,6 +79415,14 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/port_point_defense)
+"wjG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/item/trash/cheesie,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "wka" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/condiment/hotsauce/sriracha{
@@ -79077,6 +79892,14 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_m_s)
+"wtE" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 15;
+	pixel_y = -8
+	},
+/turf/closed/wall/almayer,
+/area/almayer/squads/delta)
 "wtM" = (
 /obj/structure/machinery/light{
 	unacidable = 1;
@@ -79441,6 +80264,22 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_s)
+"wCe" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -16;
+	pixel_y = -16
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/largecrate/random/barrel/yellow{
+	pixel_y = -7;
+	pixel_x = -8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "wCh" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -79683,6 +80522,12 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 5;
+	pixel_x = -1;
+	pixel_y = 12;
+	layer = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -80211,6 +81056,14 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/engineering/laundry)
+"wSA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 11
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "wSR" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -80569,6 +81422,13 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
+"wWD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime4,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "wWL" = (
 /obj/item/tool/screwdriver,
 /obj/structure/platform_decoration{
@@ -80843,6 +81703,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/gym)
+"xbG" = (
+/obj/item/trash/used_stasis_bag,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "xbN" = (
 /obj/structure/surface/rack{
 	density = 0;
@@ -82095,6 +82961,14 @@
 "xBe" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/engineering/upper_engineering)
+"xBq" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime1{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "xBQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -82881,6 +83755,12 @@
 	dir = 4
 	},
 /obj/structure/largecrate/random/barrel/green,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 12;
+	layer = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -82914,6 +83794,14 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/aft_hallway)
+"xRX" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating,
+/area/almayer/hull/lower_hull/l_m_p)
 "xSb" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/almayer{
@@ -83438,6 +84326,11 @@
 	pixel_x = 12
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 15;
+	pixel_y = -6
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
 "ybf" = (
@@ -83455,6 +84348,7 @@
 	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -83538,6 +84432,10 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
+/obj/effect/decal/strata_decals/grime/grime2{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -94607,7 +95505,7 @@ bdH
 aad
 aag
 nXP
-qSU
+iXK
 gyz
 bBA
 bAO
@@ -94810,7 +95708,7 @@ bdH
 aad
 aag
 nXP
-gyz
+dEH
 xSo
 bBA
 bAP
@@ -95219,7 +96117,7 @@ nXP
 gjv
 xSo
 bBA
-bBu
+vbd
 amg
 amg
 bFj
@@ -98288,7 +99186,7 @@ afz
 afz
 iDd
 bzy
-uMp
+uQO
 lTH
 mzo
 uMp
@@ -123287,7 +124185,7 @@ aAv
 eZi
 eZi
 yhQ
-ijh
+kJE
 ftl
 yhQ
 aaa
@@ -123897,7 +124795,7 @@ tGq
 jjT
 yhQ
 trD
-qrn
+sAM
 yhQ
 aaa
 aab
@@ -124302,7 +125200,7 @@ pfp
 pfp
 pfp
 yhQ
-wlp
+cHk
 akZ
 yhQ
 aaa
@@ -124908,10 +125806,10 @@ uvs
 ixP
 fiq
 kUt
-hGZ
-pvB
-pvB
-sQU
+xRX
+fvl
+xBq
+vRJ
 ebY
 yhQ
 aaa
@@ -125110,10 +126008,10 @@ ant
 glM
 mUn
 fiq
-tnx
-akZ
-akZ
-akZ
+ooy
+hRQ
+wjG
+vTw
 uim
 qNy
 yhQ
@@ -125314,7 +126212,7 @@ fiq
 fiq
 fiq
 jbb
-uNW
+uWq
 yhQ
 yhQ
 yhQ
@@ -125508,16 +126406,16 @@ clg
 clY
 bSJ
 iGK
+sZO
 tbK
-tbK
-pvB
+pxu
 sQU
 wUS
 cMm
 tbK
 tbK
 kNz
-oDf
+oBm
 yhQ
 aaa
 aaa
@@ -125714,12 +126612,12 @@ pNG
 akZ
 akZ
 oed
-akZ
+now
 qrn
 mOU
 oDf
-akZ
-oed
+vTw
+oyR
 uFt
 yhQ
 aaa
@@ -125913,8 +126811,8 @@ bSJ
 bSJ
 bSJ
 bSJ
-scI
-oed
+cHU
+eqQ
 yhQ
 yhQ
 yhQ
@@ -126045,13 +126943,13 @@ aaa
 aaa
 aaa
 aaa
-nTV
-nTV
-nTV
-nTV
-nTV
-nTV
-nTV
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 wVb
 gby
 aAi
@@ -126130,8 +127028,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
+bdH
+bdH
 aaa
 aab
 aaa
@@ -126250,11 +127148,11 @@ aaa
 aaa
 aaa
 aaa
-nTV
-nTV
-nTV
-nTV
-nTV
+aaa
+aaa
+aaa
+aaa
+aaa
 wVb
 iDm
 pyE
@@ -126327,14 +127225,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aab
 aaa
@@ -126526,18 +127424,18 @@ vMn
 jJT
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aab
 aaa
@@ -126724,23 +127622,23 @@ bSJ
 clL
 bVo
 clZ
-bSJ
+wtE
 bob
 ybc
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aab
 aaa
@@ -126932,18 +127830,18 @@ cJP
 jJT
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aab
 aaa
@@ -127135,18 +128033,18 @@ gEZ
 jJT
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aab
 aaa
@@ -127342,14 +128240,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aab
 aaa
@@ -127545,14 +128443,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aab
 aaa
@@ -127739,7 +128637,7 @@ bTA
 clH
 oFV
 bVq
-bSJ
+wtE
 fTx
 lGr
 vTK
@@ -127748,14 +128646,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aab
 aaa
@@ -127943,7 +128841,7 @@ bSJ
 clN
 clT
 bSJ
-cJP
+ooa
 jJT
 vTK
 aaa
@@ -127951,13 +128849,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -128154,13 +129052,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -128357,13 +129255,13 @@ vTK
 vTK
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -128553,20 +129451,20 @@ wGE
 erG
 ewO
 bWb
-cNz
+iPF
 luk
 rQj
-ngs
+vAi
 gai
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -128755,21 +129653,21 @@ jGR
 jGR
 oqu
 bSJ
+rFr
+tvX
 vuR
-vuR
-vuR
-jJT
-jJT
+dRN
+wSA
 cNz
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -128962,17 +129860,17 @@ bSJ
 bSJ
 bSJ
 bSJ
-jJT
+tDD
 mEF
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -129165,17 +130063,17 @@ qNd
 hzu
 hcI
 bSJ
-cNz
+bUk
 fDv
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -129368,17 +130266,17 @@ rYp
 oEo
 oEo
 bSJ
-cAH
+rEd
 cea
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -129571,17 +130469,17 @@ yle
 wWX
 wWX
 bSJ
-cNz
+bUk
 bpJ
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -129774,17 +130672,17 @@ vSW
 scy
 kPJ
 bSJ
-cNz
+ddO
 ubd
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -129981,13 +130879,13 @@ mGP
 emG
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -130184,13 +131082,13 @@ jea
 cAH
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -130383,17 +131281,17 @@ yfm
 fXN
 fXN
 bSJ
-jJT
+cJV
 cNz
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -130586,17 +131484,17 @@ yfm
 fXN
 fXN
 bSJ
-cNz
+bUk
 goy
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -130789,17 +131687,17 @@ gEo
 scy
 kPJ
 bSJ
-vuR
+rFj
 vzD
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -130992,17 +131890,17 @@ bSJ
 bSJ
 bSJ
 bSJ
-vuR
+hgu
 tAR
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -131193,19 +132091,19 @@ bSJ
 rHs
 ngs
 jJT
-cNz
+ljy
 cAH
-cNz
+ltF
 fKl
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -131395,20 +132293,20 @@ scy
 bSJ
 tSr
 pUY
-lGr
+obD
+vTK
+fDp
+fDp
 vTK
 vTK
-vTK
-vTK
-vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -131588,30 +132486,30 @@ bJC
 bJC
 bJC
 bJC
-bJC
+dvN
 oer
 oer
 oer
 oer
 oer
 oer
-oer
+jlS
 ybr
-vuR
+jDb
 ebO
 vTK
 aaa
+lXa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -131791,13 +132689,13 @@ lbf
 lbf
 lbf
 bJC
-vuR
+fNx
 oyG
-vuR
-cNz
+fNx
+imR
 rDi
 pXn
-cAH
+wCe
 vuR
 jJT
 vuR
@@ -131808,13 +132706,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -132000,10 +132898,10 @@ jJT
 dTu
 vuR
 dcS
-cAH
-vuR
-cAH
-cNz
+xbG
+svB
+jLk
+mqT
 xZK
 vTK
 aaa
@@ -132011,13 +132909,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -132197,7 +133095,7 @@ oXb
 oXb
 oXb
 bJC
-cNz
+jYX
 jJT
 jJT
 vTK
@@ -132214,13 +133112,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aab
@@ -132608,20 +133506,20 @@ xkI
 ijG
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -132811,20 +133709,20 @@ vNq
 wZT
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -133014,20 +133912,20 @@ dNX
 pvX
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -133217,20 +134115,20 @@ sIV
 hBU
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -133410,7 +134308,7 @@ vuR
 jJT
 cNz
 fXd
-cAH
+jEt
 vuR
 cNz
 vuR
@@ -133420,20 +134318,20 @@ brX
 mfI
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -133623,20 +134521,20 @@ vTK
 vTK
 vTK
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -133826,20 +134724,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -134012,7 +134910,7 @@ bYI
 pIf
 bJk
 haq
-cNz
+wWD
 aVl
 byQ
 ccR
@@ -134029,20 +134927,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -134232,20 +135130,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -134435,20 +135333,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -134638,20 +135536,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -134841,20 +135739,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -135044,20 +135942,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -135247,20 +136145,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -138255,7 +139153,7 @@ aad
 aag
 aag
 aag
-idt
+bMb
 tce
 xod
 bhB
@@ -138661,9 +139559,9 @@ aad
 aag
 aag
 aag
-idt
+qRy
 tce
-tce
+skG
 bhB
 sgM
 fIx
@@ -139067,7 +139965,7 @@ aad
 aag
 aag
 aag
-idt
+rQE
 tce
 jnL
 bhB
@@ -139274,7 +140172,7 @@ idt
 tce
 fKg
 fKg
-tce
+skG
 bhB
 heg
 lfQ

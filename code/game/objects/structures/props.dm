@@ -1162,8 +1162,9 @@
 	wrenchable = FALSE
 	/// converted into minutes when used to determine cooldown timer between quips
 	var/quip_delay_minimum = 5
-	/// delay between Quips. Slightly randomized with quip_delay_minimum plus a random number up to 5
+	/// delay between Quips. Slightly randomized with quip_delay_minimum plus a random number
 	COOLDOWN_DECLARE(quip_delay)
+	/// delay between attack voicelines. Short but done for anti-spam
 	COOLDOWN_DECLARE(damage_delay)
 	/// list of quip emotes, taken from Working Joe
 	var/list/quips = list(

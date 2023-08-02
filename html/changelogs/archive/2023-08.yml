@@ -1,3 +1,14 @@
 2023-08-01:
   Drathek:
   - bugfix: Fixed hung mobs merging with weeds
+2023-08-02:
+  Dorodomki:
+  - rscadd: Adds A Bipod and Rail Flashlight to the HPR kit
+  Drathek:
+  - balance: Facehugger attack windup duration is now 1s like the pounce windup.
+  Huffie56:
+  - bugfix: Care package for SG on WO will now spawn with the proper batteries for
+      them.
+  Morrow:
+  - bugfix: Fixes brain damage
+  - qol: Jittering from brain damage is now capped

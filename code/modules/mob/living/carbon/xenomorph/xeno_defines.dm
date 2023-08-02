@@ -353,6 +353,8 @@
 
 	/// How many lesser drones the hive can support
 	var/lesser_drone_limit = 0
+	/// Slots available for lesser drones will never go below this number
+	var/lesser_drone_minimum = 3
 
 	var/datum/tacmap/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
@@ -1052,7 +1054,7 @@
 	hugger.timeofdeath = user.timeofdeath // Keep old death time
 
 /datum/hive_status/proc/update_lesser_drone_limit()
-	lesser_drone_limit = Ceiling(totalXenos.len / 3)
+	lesser_drone_limit = lesser_drone_minimum + Ceiling(length(totalXenos) / 3)
 
 /datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])

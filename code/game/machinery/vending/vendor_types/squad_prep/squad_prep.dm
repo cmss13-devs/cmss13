@@ -55,6 +55,7 @@
 
 //------------SQUAD PREP UNIFORM VENDOR---------------
 
+
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep
 	name = "\improper ColMarTech Surplus Uniform Vendor"
 	desc = "An automated supply rack hooked up to a small storage of standard marine uniforms."

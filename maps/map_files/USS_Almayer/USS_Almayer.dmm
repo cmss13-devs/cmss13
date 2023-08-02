@@ -83153,7 +83153,6 @@
 	pixel_x = -7;
 	pixel_y = 5
 	},
-/obj/structure/surface/table/almayer,
 /obj/item/ammo_box/magazine/heap/empty{
 	pixel_x = 9;
 	pixel_y = -6

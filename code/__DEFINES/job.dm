@@ -146,7 +146,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_WO_CHIEF_ENGINEER "Bunker Crew Master"
 #define JOB_WO_ORDNANCE_TECH "Bunker Crew"
 
-#define JOB_WO_CHIEF_REQUISITION "Quartermaster"
+#define JOB_WO_CHIEF_REQUISITION "Bunker Quartermaster"
 #define JOB_WO_REQUISITION "Bunker Crew Logistics"
 
 #define JOB_WO_CMO "Head Surgeon"

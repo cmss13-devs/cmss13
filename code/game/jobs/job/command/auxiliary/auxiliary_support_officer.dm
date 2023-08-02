@@ -10,7 +10,7 @@
 AddTimelock(/datum/job/command/auxiliary_officer, list(
 	JOB_SQUAD_ROLES = 5 HOURS,
 	JOB_REQUISITION_ROLES = 5 HOURS,
-	JOB_ENGINEERING_ROLES = 5 HOURS,
+	JOB_ENGINEER_ROLES = 5 HOURS,
 	JOB_AUXILIARY_ROLES = 5 HOURS,
 ))
 

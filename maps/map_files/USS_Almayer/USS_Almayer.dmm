@@ -75281,7 +75281,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "wXv" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/prop/invuln/joey,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

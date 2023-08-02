@@ -13233,17 +13233,6 @@
 	icon_state = "silver"
 	},
 /area/almayer/engineering/port_atmos)
-"aXB" = (
-/obj/structure/window/framed/almayer/hull{
-	icon_state = "twindow12"
-	},
-/obj/structure/foamed_metal,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
-/area/almayer/hull/lower_hull/l_a_s{
-	temperature = 223
-	})
 "aXE" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -40291,13 +40280,7 @@
 	},
 /area/almayer/hallways/port_hallway)
 "hbw" = (
-/obj/structure/window/framed/almayer/hull{
-	icon_state = "twindow4"
-	},
-/obj/structure/foamed_metal,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_a_s{
 	temperature = 223
 	})
@@ -42937,17 +42920,6 @@
 	icon_state = "kitchen"
 	},
 /area/almayer/living/grunt_rnr)
-"iee" = (
-/obj/structure/window/framed/almayer/hull{
-	icon_state = "twindow12"
-	},
-/obj/structure/foamed_metal,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
-/area/almayer/hull/lower_hull/l_a_s{
-	temperature = 223
-	})
 "iej" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/wet_sign,
@@ -46934,15 +46906,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/morgue)
-"jHZ" = (
-/obj/structure/window/framed/almayer/hull{
-	icon_state = "twindow1"
-	},
-/obj/structure/foamed_metal,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
-/area/almayer/hull/lower_hull/l_m_s)
 "jIe" = (
 /obj/structure/ladder{
 	height = 2;
@@ -48106,18 +48069,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"ket" = (
-/obj/structure/window/framed/almayer/hull{
-	icon_state = "twindow12"
-	},
-/obj/structure/foamed_metal,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
-/area/almayer/hull/lower_hull/l_a_s{
-	temperature = 223
-	})
 "keu" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -53816,17 +53767,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
-"mmB" = (
-/obj/structure/window/framed/almayer/hull{
-	icon_state = "twindow8"
-	},
-/obj/structure/foamed_metal,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
-/area/almayer/hull/lower_hull/l_a_s{
-	temperature = 223
-	})
 "mnf" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -74187,15 +74127,6 @@
 	icon_state = "cargo"
 	},
 /area/almayer/squads/req)
-"ufK" = (
-/obj/structure/window/framed/almayer/hull{
-	icon_state = "twindow3"
-	},
-/obj/structure/foamed_metal,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
-/area/almayer/hull/lower_hull/l_m_s)
 "ugl" = (
 /obj/structure/pipes/standard/cap/hidden{
 	dir = 4
@@ -78344,15 +78275,6 @@
 	pixel_y = -16
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/lower_hull/l_m_s)
-"vBg" = (
-/obj/structure/window/framed/almayer/hull{
-	icon_state = "twindow2"
-	},
-/obj/structure/foamed_metal,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
 /area/almayer/hull/lower_hull/l_m_s)
 "vBm" = (
 /turf/closed/wall/almayer/reinforced,
@@ -83134,15 +83056,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/lower_hull/l_a_p)
-"xnF" = (
-/obj/structure/window/framed/almayer/hull{
-	icon_state = "twindow12"
-	},
-/obj/structure/foamed_metal,
-/turf/open/floor/plating,
-/area/almayer/hull/lower_hull/l_a_s{
-	temperature = 223
-	})
 "xnI" = (
 /obj/effect/landmark/start/requisition,
 /turf/open/floor/plating/plating_catwalk,
@@ -83963,15 +83876,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
-	},
-/area/almayer/hull/lower_hull/l_m_s)
-"xBM" = (
-/obj/structure/window/framed/almayer/hull{
-	icon_state = "twindow3"
-	},
-/obj/structure/foamed_metal,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
 	},
 /area/almayer/hull/lower_hull/l_m_s)
 "xBQ" = (
@@ -127741,10 +127645,10 @@ aKW
 aKW
 aKW
 aKW
-vBg
-xBM
-ufK
-jHZ
+aKW
+aKW
+aKW
+aKW
 aKW
 aKW
 riN
@@ -127944,7 +127848,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 aaa
@@ -139949,7 +139853,7 @@ aad
 aag
 aag
 aag
-xnF
+hbw
 tSQ
 tSQ
 bhB
@@ -140152,7 +140056,7 @@ aad
 aag
 aag
 aag
-iee
+hbw
 oUV
 dRM
 bhB
@@ -140355,7 +140259,7 @@ aad
 aag
 aag
 aag
-xnF
+hbw
 tSQ
 tSQ
 bhB
@@ -140558,7 +140462,7 @@ aad
 aag
 aag
 aag
-ket
+hbw
 oUV
 fov
 bhB
@@ -140761,7 +140665,7 @@ aad
 aag
 aag
 aag
-xnF
+hbw
 tSQ
 tSQ
 bhB
@@ -140964,7 +140868,7 @@ aad
 aag
 aag
 aag
-aXB
+hbw
 oUV
 sKw
 bhB
@@ -141167,7 +141071,7 @@ aad
 aag
 aag
 aag
-xnF
+hbw
 oUV
 tSQ
 tSQ
@@ -141370,7 +141274,7 @@ aad
 aag
 aag
 aag
-mmB
+hbw
 dRM
 oUV
 oUV

@@ -5,6 +5,8 @@ GLOBAL_VAR_INIT(lockdown_state, LOCKDOWN_READY)
 /obj/structure/machinery/biohazard_lockdown
 	name = "Emergency Containment Breach"
 	icon_state = "big_red_button_tablev"
+	unslashable = TRUE
+	unacidable = TRUE
 	COOLDOWN_DECLARE(containment_lockdown)
 
 /obj/structure/machinery/biohazard_lockdown/ex_act(severity)

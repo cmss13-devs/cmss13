@@ -25976,8 +25976,8 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silvercorner"
+	dir = 1;
+	icon_state = "silver"
 	},
 /area/almayer/hallways/aft_hallway)
 "cZs" = (
@@ -53695,6 +53695,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_p)
+"oyD" = (
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "silver"
+	},
+/area/almayer/hallways/aft_hallway)
 "oyG" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/almayer{
@@ -116890,7 +116899,7 @@ adO
 adO
 adO
 adO
-abg
+cbr
 akU
 abg
 vkA
@@ -117702,7 +117711,7 @@ jkj
 ahh
 aiw
 adO
-hfl
+oyD
 amO
 abg
 qpk

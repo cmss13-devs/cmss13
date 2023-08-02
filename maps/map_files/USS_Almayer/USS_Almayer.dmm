@@ -12709,7 +12709,7 @@
 	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresUp";
-	vector_x = -97;
+	vector_x = -96;
 	vector_y = 65
 	},
 /turf/open/floor/almayer/no_build{
@@ -25975,7 +25975,10 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silvercorner"
+	},
 /area/almayer/hallways/aft_hallway)
 "cZs" = (
 /turf/closed/wall/almayer/outer,
@@ -26006,21 +26009,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/containment)
-"dae" = (
-/obj/structure/machinery/door_control{
-	id = "areslockdownexterior";
-	name = "ARES Lockdown";
-	pixel_x = 25;
-	req_one_access_txt = "19"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "cargo_arrow"
-	},
-/area/almayer/hallways/aft_hallway)
 "daj" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
@@ -26723,24 +26711,6 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/shipboard/brig/surgery)
-"doE" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
-/obj/effect/projector{
-	name = "Almayer_AresUp";
-	vector_x = -97;
-	vector_y = 65
-	},
-/turf/open/floor/almayer/no_build{
-	dir = 8;
-	icon_state = "silver"
-	},
-/area/almayer/command/airoom)
 "doJ" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -30349,7 +30319,8 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/no_build{
+/turf/open/floor/almayer{
+	dir = 5;
 	icon_state = "plating"
 	},
 /area/almayer/command/securestorage)
@@ -32818,6 +32789,12 @@
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
+"fNf" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/command/telecomms)
 "fNg" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/plating/plating_catwalk,
@@ -33514,7 +33491,7 @@
 	},
 /obj/effect/projector{
 	name = "Almayer_AresUp";
-	vector_x = -97;
+	vector_x = -96;
 	vector_y = 65
 	},
 /turf/open/floor/almayer/no_build{
@@ -36937,7 +36914,7 @@
 	},
 /obj/effect/projector{
 	name = "Almayer_AresDown";
-	vector_x = 97;
+	vector_x = 96;
 	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
@@ -45422,7 +45399,7 @@
 	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresDown";
-	vector_x = 97;
+	vector_x = 96;
 	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
@@ -46187,7 +46164,10 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silvercorner"
+	},
 /area/almayer/hallways/aft_hallway)
 "lwJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -47046,7 +47026,7 @@
 "lMI" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresDown";
-	vector_x = 97;
+	vector_x = 96;
 	vector_y = -65
 	},
 /obj/structure/platform{
@@ -47238,6 +47218,21 @@
 /obj/structure/machinery/computer/tech_control,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
+"lQJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/machinery/door_control{
+	id = "areslockdownexterior";
+	name = "ARES Lockdown";
+	pixel_x = 25;
+	req_one_access_txt = "19"
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silver"
+	},
+/area/almayer/hallways/aft_hallway)
 "lQO" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -50435,6 +50430,24 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/cells)
+"nlO" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
+	},
+/obj/effect/projector{
+	name = "Almayer_AresUp";
+	vector_x = -96;
+	vector_y = 65
+	},
+/turf/open/floor/almayer/no_build{
+	dir = 4;
+	icon_state = "silver"
+	},
+/area/almayer/command/airoom)
 "nlV" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
@@ -52986,7 +52999,7 @@
 	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresDown";
-	vector_x = 97;
+	vector_x = 96;
 	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
@@ -55711,7 +55724,7 @@
 	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresDown";
-	vector_x = 97;
+	vector_x = 96;
 	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
@@ -56504,6 +56517,7 @@
 	density = 0;
 	pixel_y = 16
 	},
+/obj/effect/landmark/start/working_joe,
 /turf/open/floor/plating/plating_catwalk{
 	allow_construction = 0
 	},
@@ -60335,7 +60349,7 @@
 	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresUp";
-	vector_x = -97;
+	vector_x = -96;
 	vector_y = 65
 	},
 /turf/open/floor/almayer/no_build{
@@ -61277,7 +61291,7 @@
 	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresUp";
-	vector_x = -97;
+	vector_x = -96;
 	vector_y = 65
 	},
 /turf/open/floor/almayer/no_build{
@@ -63881,7 +63895,7 @@
 	},
 /obj/effect/projector{
 	name = "Almayer_AresDown";
-	vector_x = 97;
+	vector_x = 96;
 	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
@@ -64976,7 +64990,7 @@
 	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresDown";
-	vector_x = 97;
+	vector_x = 96;
 	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
@@ -65004,6 +65018,7 @@
 	dir = 8;
 	name = "ship-grade camera"
 	},
+/obj/structure/closet/firecloset,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -65101,7 +65116,7 @@
 	},
 /obj/effect/projector{
 	name = "Almayer_AresDown";
-	vector_x = 97;
+	vector_x = 96;
 	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
@@ -67183,7 +67198,7 @@
 	},
 /obj/effect/projector{
 	name = "Almayer_AresDown";
-	vector_x = 97;
+	vector_x = 96;
 	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
@@ -67280,17 +67295,17 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
 "ubg" = (
-/obj/effect/projector{
-	name = "Almayer_AresUp";
-	vector_x = -97;
-	vector_y = 65
-	},
 /obj/structure/platform{
 	dir = 8
 	},
 /obj/structure/stairs{
 	dir = 1;
 	icon_state = "ramptop"
+	},
+/obj/effect/projector{
+	name = "Almayer_AresUp";
+	vector_x = -96;
+	vector_y = 65
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 8;
@@ -68736,7 +68751,7 @@
 	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresUp";
-	vector_x = -97;
+	vector_x = -96;
 	vector_y = 65
 	},
 /turf/open/floor/almayer/no_build{
@@ -70597,7 +70612,7 @@
 	},
 /obj/effect/projector{
 	name = "Almayer_AresDown";
-	vector_x = 97;
+	vector_x = 96;
 	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
@@ -74854,7 +74869,10 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "silvercorner"
+	},
 /area/almayer/hallways/aft_hallway)
 "wUD" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -116062,14 +116080,14 @@ aiq
 sHB
 ajr
 amO
-aow
+abg
 anf
 apK
 anf
 apK
 arf
-auG
-dae
+lQJ
+dVE
 dVE
 dVE
 auG
@@ -116265,7 +116283,7 @@ aiq
 sHB
 aEX
 ajt
-ali
+anf
 vkA
 vkA
 vkA
@@ -116468,7 +116486,7 @@ air
 ael
 kos
 ajt
-abg
+anc
 vkA
 lMI
 omi
@@ -116874,7 +116892,7 @@ adO
 adO
 abg
 akU
-nQx
+abg
 vkA
 lfU
 lfU
@@ -117077,7 +117095,7 @@ ahf
 adO
 wUz
 aii
-abg
+nQx
 vkA
 vkA
 vkA
@@ -117095,7 +117113,7 @@ aHq
 aHq
 gOz
 ajt
-dLE
+cKY
 ioU
 ioU
 ioU
@@ -118090,7 +118108,7 @@ aiw
 ahh
 aiw
 qNH
-abg
+cnv
 aii
 abg
 qpk
@@ -118496,7 +118514,7 @@ afQ
 aiw
 oPq
 qNH
-abg
+cbr
 akU
 abg
 qpk
@@ -118699,7 +118717,7 @@ qNH
 qNH
 qNH
 adO
-abg
+cnv
 aii
 abg
 qpk
@@ -120136,7 +120154,7 @@ aqb
 aqa
 ujL
 atm
-aOs
+fNf
 jvY
 alG
 anG
@@ -133157,27 +133175,27 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aab
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+aak
+bdH
+bdH
 aKQ
-aaa
-aaa
-aab
-aaa
+bdH
+bdH
+aak
+bdH
 bdH
 bdH
 bdH
@@ -136023,7 +136041,7 @@ xgB
 xNM
 olq
 jAA
-doE
+ubg
 ubg
 roP
 roP
@@ -136429,7 +136447,7 @@ lWW
 daE
 kwp
 nlk
-gSD
+nlO
 gSD
 rGt
 rGt
@@ -139044,41 +139062,41 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aKQ
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
 bdH
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+aKQ
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa

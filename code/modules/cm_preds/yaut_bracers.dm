@@ -94,7 +94,7 @@
 		return
 	if(human_holder.stat == DEAD)
 		decloak(human_holder, TRUE)
-	if(!HAS_TRAIT(human_holder, TRAIT_YAUTJA_TECH) && !human_holder.hunter_data.thralled && prob(15))
+	if(!HAS_TRAIT(human_holder, TRAIT_YAUTJA_TECH) && !human_holder.hunter_data.thralled && prob(2))
 		decloak(human_holder)
 		shock_user(human_holder)
 
@@ -293,7 +293,7 @@
 	var/mob/living/carbon/human/human = loc
 
 	//Non-Yautja have a chance to get stunned with each power drain
-	if((!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled) && prob(15))
+	if((!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled) && prob(4))
 		if(cloaked)
 			decloak(human, TRUE, DECLOAK_SPECIES)
 		shock_user(human)

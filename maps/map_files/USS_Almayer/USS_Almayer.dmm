@@ -23808,7 +23808,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/dogtag{
-	desc = "A blank marine's information dog tag. \"Ranger\" and a pawprint is scratched into it."
+	desc = "A blank marine's information dog tag. The word ranger and a pawprint is scratched into it."
 	},
 /obj/item/device/megaphone,
 /turf/open/floor/almayer{

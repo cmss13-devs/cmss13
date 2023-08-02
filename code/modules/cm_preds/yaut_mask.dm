@@ -54,19 +54,19 @@
 
 	if(legacy != "None")
 		switch(legacy)
-			if("dragon")
+			if("Dragon")
 				icon_state = "pred_mask_elder_tr"
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_tr")
 				return
-			if("swamp")
+			if("Swamp")
 				icon_state = "pred_mask_elder_joshuu"
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_joshuu")
 				return
-			if("enforcer")
+			if("Enforcer")
 				icon_state = "pred_mask_elder_feweh"
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_feweh")
 				return
-			if("collector")
+			if("Collector")
 				icon_state = "pred_mask_elder_n"
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_n")
 				return

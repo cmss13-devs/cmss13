@@ -1158,6 +1158,8 @@
 	desc = "A defunct Seegson-brand Working Joe lifted from deep storage by a crew of marines after the last shore leave. Attempts have been made to modify the janitorial synthetic to serve as a crude bartender, but with little success."
 	icon = 'icons/obj/structures/props/props.dmi'
 	icon_state = "joey"
+	unslashable = FALSE
+	wrenchable = FALSE
 	/// converted into minutes when used to determine cooldown timer between quips
 	var/quip_delay_minimum = 3
 	/// delay between Quips. Slightly randomized with quip_delay_minimum plus a random number up to 5
@@ -1185,14 +1187,20 @@
 /obj/structure/prop/invuln/joey/Initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
+	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, PROC_REF(post_attackby))
 
 /obj/structure/prop/invuln/joey/process()
 	//check if quip_delay cooldown finished. If so, random chance it says a line
 	if(COOLDOWN_FINISHED(src, quip_delay) && prob(10))
-	emote(pick(quips))
-	var/delay = rand(3) + quip_delay_minimum
-	log_admin("Say something!")
-	COOLDOWN_START(src, quip_delay, delay MINUTES)
+		emote(pick(quips))
+		var/delay = rand(3) + quip_delay_minimum
+		COOLDOWN_START(src, quip_delay, delay MINUTES)
+
+/obj/structure/prop/invuln/joey/proc/post_attackby()
+	SIGNAL_HANDLER
+	if(COOLDOWN_FINISHED(src, damage_delay))
+		emote(pick(damaged))
+		COOLDOWN_START(src, damage_delay, 8 SECONDS)
 
 /// SAY THE LINE JOE
 /obj/structure/prop/invuln/joey/proc/emote(datum/emote/living/carbon/human/synthetic/working_joe/emote)

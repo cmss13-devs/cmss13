@@ -898,6 +898,7 @@
 		for(var/obj/effect/alien/resin/special/S in hive_structures[name_ref])
 			if(get_area(S) == hijacked_dropship)
 				continue
+			S.hijack_delete = TRUE
 			hive_structures[name_ref] -= S
 			qdel(S)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)

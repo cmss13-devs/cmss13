@@ -99,6 +99,9 @@
 	if(activated)
 		activated = FALSE
 
+		if(hijack_delete)
+			return ..()
+
 		marine_announcement("ALERT.\n\nEnergy build up around communication relay at [get_area(src)] halted.", "[MAIN_AI_SYSTEM] Biological Scanner") // Ask lore team for a better AI system name, honestly a second look for these announcements may be good - Morrow
 
 		for(var/hivenumber in GLOB.hive_datum)

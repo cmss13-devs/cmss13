@@ -7027,7 +7027,6 @@
 "awH" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/faxmachine/uscm/command,
-/obj/item/device/megaphone,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -7395,9 +7394,13 @@
 /obj/item/storage/belt/medical/full,
 /obj/item/storage/belt/medical/full,
 /obj/item/storage/belt/medical/full,
+/obj/item/device/toner{
+	pixel_y = 9
+	},
 /obj/structure/machinery/computer/working_joe{
 	dir = 8;
-	pixel_x = 17
+	pixel_x = 17;
+	layer = 3.1
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -8527,6 +8530,7 @@
 /obj/item/ashtray/glass,
 /obj/item/storage/fancy/cigarettes/kpack,
 /obj/item/device/whistle,
+/obj/item/device/megaphone,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
 "aBS" = (
@@ -40746,11 +40750,6 @@
 	},
 /obj/structure/machinery/computer/view_objectives{
 	dir = 8;
-	pixel_y = -47;
-	layer = 3.135
-	},
-/obj/structure/machinery/computer/view_objectives{
-	dir = 8;
 	pixel_y = 3;
 	layer = 3.135
 	},
@@ -56355,6 +56354,9 @@
 /obj/item/device/camera_film,
 /obj/item/device/camera_film,
 /obj/item/device/camera_film,
+/obj/item/device/toner,
+/obj/item/device/toner,
+/obj/item/device/toner,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

@@ -31861,9 +31861,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hull/lower_hull/l_a_s{
-	temperature = 223
-	})
+/area/almayer/hull/lower_hull/l_a_s)
 "dRT" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -35908,9 +35906,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hull/lower_hull/l_a_s{
-	temperature = 223
-	})
+/area/almayer/hull/lower_hull/l_a_s)
 "foI" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -40279,11 +40275,6 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/port_hallway)
-"hbw" = (
-/turf/closed/wall/almayer/outer,
-/area/almayer/hull/lower_hull/l_a_s{
-	temperature = 223
-	})
 "hbx" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -60634,13 +60625,6 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/cichallway)
-"oUV" = (
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hull/lower_hull/l_a_s{
-	temperature = 223
-	})
 "oVP" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -65606,9 +65590,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/lower_hull/l_a_s{
-	temperature = 223
-	})
+/area/almayer/hull/lower_hull/l_a_s)
 "qWt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -70185,9 +70167,7 @@
 "sKw" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/lower_hull/l_a_s{
-	temperature = 223
-	})
+/area/almayer/hull/lower_hull/l_a_s)
 "sKY" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8;
@@ -73405,11 +73385,6 @@
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
-"tSQ" = (
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/lower_hull/l_a_s{
-	temperature = 223
-	})
 "tTp" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/condiment/hotsauce/sriracha{
@@ -139650,8 +139625,8 @@ aad
 aag
 aag
 aag
-hbw
-oUV
+wVb
+hlz
 qVW
 bhB
 bJM
@@ -139853,9 +139828,9 @@ aad
 aag
 aag
 aag
-hbw
-tSQ
-tSQ
+wVb
+eFH
+eFH
 bhB
 bJN
 bLd
@@ -140056,8 +140031,8 @@ aad
 aag
 aag
 aag
-hbw
-oUV
+wVb
+hlz
 dRM
 bhB
 bJP
@@ -140259,9 +140234,9 @@ aad
 aag
 aag
 aag
-hbw
-tSQ
-tSQ
+wVb
+eFH
+eFH
 bhB
 hrX
 fIx
@@ -140462,8 +140437,8 @@ aad
 aag
 aag
 aag
-hbw
-oUV
+wVb
+hlz
 fov
 bhB
 sgM
@@ -140665,9 +140640,9 @@ aad
 aag
 aag
 aag
-hbw
-tSQ
-tSQ
+wVb
+eFH
+eFH
 bhB
 svd
 bLf
@@ -140868,8 +140843,8 @@ aad
 aag
 aag
 aag
-hbw
-oUV
+wVb
+hlz
 sKw
 bhB
 bhB
@@ -141071,10 +141046,10 @@ aad
 aag
 aag
 aag
-hbw
-oUV
-tSQ
-tSQ
+wVb
+hlz
+eFH
+eFH
 fov
 bhB
 heg
@@ -141274,11 +141249,11 @@ aad
 aag
 aag
 aag
-hbw
+wVb
 dRM
-oUV
-oUV
-oUV
+hlz
+hlz
+hlz
 bhB
 heg
 mKX

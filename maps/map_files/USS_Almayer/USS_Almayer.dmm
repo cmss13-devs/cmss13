@@ -6105,6 +6105,7 @@
 /obj/structure/machinery/door/window/eastleft{
 	req_one_access_txt = "91;92"
 	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
 	},
@@ -35875,6 +35876,7 @@
 	req_access = null;
 	req_one_access_txt = "91;92"
 	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
 	},
@@ -37388,7 +37390,9 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk{
+	allow_construction = 0
+	},
 /area/almayer/command/airoom)
 "gPc" = (
 /obj/structure/machinery/power/terminal{
@@ -57337,6 +57341,19 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
+"pEU" = (
+/obj/effect/step_trigger/clone_cleaner,
+/obj/structure/machinery/door_control{
+	id = "ARES StairsUpper";
+	name = "ARES Core Access";
+	pixel_x = 24;
+	pixel_y = 24;
+	req_one_access_txt = "1;200;90;91;92"
+	},
+/turf/open/floor/almayer/no_build{
+	icon_state = "ai_floors"
+	},
+/area/almayer/command/airoom)
 "pEY" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -65478,6 +65495,19 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
+"thn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/surface/rack{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk{
+	allow_construction = 0
+	},
+/area/almayer/command/airoom)
 "thv" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
@@ -69332,7 +69362,9 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk{
+	allow_construction = 0
+	},
 /area/almayer/command/airoom)
 "uMS" = (
 /turf/open/floor/almayer{
@@ -116824,7 +116856,7 @@ cYU
 xbN
 nQM
 tFe
-fvD
+pEU
 fvD
 orG
 cck
@@ -117225,7 +117257,7 @@ bYe
 ajt
 abg
 cck
-gNH
+thn
 gNH
 uMx
 gNH
@@ -117848,7 +117880,7 @@ rFf
 aGN
 eEo
 aHq
-iWN
+dNV
 ajt
 cKY
 ioU
@@ -118254,7 +118286,7 @@ eEo
 aGN
 rbB
 iqk
-dNV
+iWN
 ehE
 ait
 jAY

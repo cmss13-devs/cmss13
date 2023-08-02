@@ -982,3 +982,12 @@
 	var/matrix/A = matrix()
 	apply_transform(A)
 	stat &= ~BROKEN //Remove broken. MAGICAL REPAIRS
+
+//Misc
+/obj/structure/prop/invuln/joey/attack_alien(mob/living/carbon/xenomorph/Alien)
+	Alien.animation_attack_on(src)
+	Alien.visible_message(SPAN_DANGER("[Alien] [Alien.slashes_verb] [src]!"), \
+	SPAN_DANGER("You [Alien.slash_verb] [src]!"), null, 5)
+	playsound(loc, "alien_claw_metal", 25, 1)
+	attacked()
+	return XENO_NONCOMBAT_ACTION

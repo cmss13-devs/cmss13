@@ -1161,7 +1161,7 @@
 	unslashable = FALSE
 	wrenchable = FALSE
 	/// converted into minutes when used to determine cooldown timer between quips
-	var/quip_delay_minimum = 3
+	var/quip_delay_minimum = 5
 	/// delay between Quips. Slightly randomized with quip_delay_minimum plus a random number up to 5
 	COOLDOWN_DECLARE(quip_delay)
 	COOLDOWN_DECLARE(damage_delay)
@@ -1187,7 +1187,6 @@
 /obj/structure/prop/invuln/joey/Initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
-	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, PROC_REF(post_attackby))
 
 /obj/structure/prop/invuln/joey/process()
 	//check if quip_delay cooldown finished. If so, random chance it says a line
@@ -1196,8 +1195,17 @@
 		var/delay = rand(3) + quip_delay_minimum
 		COOLDOWN_START(src, quip_delay, delay MINUTES)
 
-/obj/structure/prop/invuln/joey/proc/post_attackby()
-	SIGNAL_HANDLER
+// Advert your eyes.
+/obj/structure/prop/invuln/joey/attackby(obj/item/W, mob/user)
+	attacked()
+	. = ..()
+
+/obj/structure/prop/invuln/joey/bullet_act(obj/item/projectile/P)
+	attacked()
+	. = ..()
+
+/// A terrible way of handling being hit. If signals would work it should be used.
+/obj/structure/prop/invuln/joey/proc/attacked()
 	if(COOLDOWN_FINISHED(src, damage_delay))
 		emote(pick(damaged))
 		COOLDOWN_START(src, damage_delay, 8 SECONDS)

@@ -994,6 +994,12 @@
 
 #undef FULL_CAMOUFLAGE_ALPHA
 
+/obj/item/clothing/suit/storage/marine/ghillie/forecon
+	name = "UDEP Thermal Poncho"
+	desc = "UDEP or the Ultra Diffusive Environmental Poncho is a camouflaged rain-cover worn to protect against the elements and chemical spills. It's commonly treated with an infrared absorbing coating, making a marine almost invisible in the rain. Favoured by USCM specialists for it's comfort and practicality."
+	icon_state = "mercenary_miner_armor"
+	flags_atom = MOB_LOCK_ON_EQUIP|NO_SNOW_TYPE|NO_NAME_OVERRIDE
+
 /obj/item/clothing/suit/storage/marine/sof
 	name = "\improper SOF Armor"
 	desc = "A heavily customized suit of M3 armor. Used by Marine Raiders."

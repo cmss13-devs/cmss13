@@ -149,10 +149,10 @@
 	icon_state = "big_interior"
 	roof_state = "big_top"
 	x_dim = 3
-	y_dim = 3
+	y_dim = 4
 
 /obj/structure/tent/reqs
 	icon_state = "reqs_interior"
 	roof_state = "reqs_top"
 	x_dim = 4
-	y_dim = 3
+	y_dim = 4

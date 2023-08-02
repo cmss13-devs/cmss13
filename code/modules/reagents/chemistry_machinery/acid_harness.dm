@@ -39,6 +39,10 @@
 
 /obj/item/storage/internal/accessory/black_vest/acid_harness
 	storage_slots = 2
+	can_hold = list(
+		/obj/item/reagent_container/glass/beaker,
+		/obj/item/cell,
+	)
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness
 	name = "A.C.I.D. Harness"
@@ -46,6 +50,7 @@
 	icon_state = "vest_acid_black"
 	hold = /obj/item/storage/internal/accessory/black_vest/acid_harness
 	var/obj/item/reagent_container/glass/beaker/vial/vial
+	var/obj/item/reagent_container/glass/beaker/container
 	var/obj/item/cell/battery
 	var/obj/structure/machinery/acid_core/acid_core
 

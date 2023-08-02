@@ -32,7 +32,7 @@
 
 	var/list/saved_coordinates = list()
 
-	var/list/camera_holders = list()
+	var/list/datum/overwatch_camera_holder/camera_holders = list()
 
 	var/list/multicam_marines = list()
 

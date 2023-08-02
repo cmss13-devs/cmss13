@@ -372,11 +372,11 @@
 				var/headcount = count_per_faction()
 				var/living = headcount["total_headcount"]
 				if ((headcount["WY_headcount"] / living) > MAJORITY)
-					musical_track = pick('sound/theme/LastManStanding_WY.ogg')
+					musical_track = pick('sound/theme/lastmanstanding_wy.ogg')
 				else if ((headcount["UPP_headcount"] / living) > MAJORITY)
-					musical_track = pick('sound/theme/LastManStanding_UPP.ogg')
+					musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
 				else if ((headcount["CLF_headcount"] / living) > MAJORITY)
-					musical_track = pick('sound/theme/LastManStanding_CLF.ogg')
+					musical_track = pick('sound/theme/lastmanstanding_clf.ogg')
 				else if ((headcount["marine_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
 			else

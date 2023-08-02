@@ -990,4 +990,4 @@
 	SPAN_DANGER("You [Alien.slash_verb] [src]!"), null, 5)
 	playsound(loc, "alien_claw_metal", 25, 1)
 	attacked()
-	return XENO_NONCOMBAT_ACTION
+	return XENO_ATTACK_ACTION

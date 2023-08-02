@@ -1152,3 +1152,10 @@
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "rope"
 	density = FALSE
+
+/obj/structure/prop/pred_flight
+	name = "hunter flight console"
+	desc = "A console designed by the Hunters to assist in flight pathing and navigation."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "overwatch"
+	density = TRUE

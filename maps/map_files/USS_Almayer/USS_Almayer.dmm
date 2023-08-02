@@ -2714,32 +2714,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/operating_room_two)
-"akG" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_x = -6;
-	pixel_y = 28
-	},
-/obj/structure/machinery/firealarm{
-	pixel_x = 8;
-	pixel_y = 28
-	},
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/transmitter/rotary{
-	name = "Intelligence Center Telephone";
-	phone_category = "Almayer";
-	phone_id = "Intelligence Center Telephone"
-	},
-/obj/structure/machinery/computer/cameras/almayer/vehicle{
-	dir = 4;
-	pixel_x = -17
-	},
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/command/securestorage)
 "akJ" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
@@ -4257,7 +4231,7 @@
 	dir = 5;
 	icon_state = "sterile_green_side"
 	},
-/area/almayer/medical/medical_science)
+/area/almayer/medical/upper_medical)
 "aqR" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -4402,17 +4376,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/starboard_hallway)
-"aro" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/turf/open/floor/almayer/research/containment/floor2{
-	dir = 8
-	},
-/area/almayer/medical/containment/cell)
 "arp" = (
 /obj/item/roller,
 /obj/item/roller,
@@ -6552,17 +6515,6 @@
 	layer = 2.9;
 	pixel_x = -8
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/cm_vending/clothing/medical_crew{
-	density = 0;
-	pixel_y = 16
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -6650,19 +6602,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/offices/flight)
-"azx" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/medical_science)
 "azy" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Up3";
@@ -6829,46 +6768,6 @@
 /area/almayer/engineering/lower_engineering)
 "aAc" = (
 /obj/structure/machinery/iv_drip,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door_display/research_cell{
-	dir = 8;
-	has_wall_divider = 1;
-	id = "Containment Cell 3";
-	layer = 3.2;
-	name = "Cell 3 Control";
-	pixel_x = 16;
-	pixel_y = -16
-	},
-/obj/structure/machinery/door_display/research_cell{
-	dir = 8;
-	has_wall_divider = 1;
-	id = "Containment Cell 2";
-	layer = 3.2;
-	name = "Cell 2 Control";
-	pixel_x = 16;
-	pixel_y = 16
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/machinery/door_control{
-	id = "W_Containment Cell 2";
-	name = "Containment Lockdown";
-	pixel_x = 13;
-	pixel_y = 7;
-	req_one_access_txt = "19;28"
-	},
-/obj/structure/machinery/door_control{
-	id = "W_Containment Cell 3";
-	name = "Containment Lockdown";
-	pixel_x = 13;
-	pixel_y = -6;
-	req_one_access_txt = "19;28"
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -7085,10 +6984,6 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -8295,14 +8190,6 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "containmentlockdown_S";
-	name = "\improper Containment Lockdown"
-	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -8786,11 +8673,6 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "aJt" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light,
-/obj/structure/machinery/photocopier,
 /turf/open/floor/almayer{
 	icon_state = "silvercorner"
 	},
@@ -9130,11 +9012,8 @@
 	pixel_y = -28;
 	pixel_x = 28
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/almayer,
-/area/almayer/command/computerlab)
+/area/almayer/command/securestorage)
 "aLB" = (
 /turf/closed/wall/almayer,
 /area/almayer/hallways/starboard_hallway)
@@ -10055,12 +9934,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/grunt_rnr)
-"aRi" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 1
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "aRj" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -10313,19 +10186,6 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/starboard_hallway)
-"aSu" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
-/area/almayer/medical/medical_science)
 "aSv" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -12849,19 +12709,8 @@
 	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresUp";
-	vector_x = -98;
-	vector_y = 65
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresUp";
 	vector_x = -97;
 	vector_y = 65
-	},
-/obj/structure/stairs{
-	dir = 1
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 4
@@ -13300,16 +13149,6 @@
 	icon_state = "SW-out";
 	pixel_y = -1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
 /turf/open/floor/almayer/research/containment/entrance,
 /area/almayer/medical/containment/cell)
 "biq" = (
@@ -13618,34 +13457,6 @@
 	dir = 4;
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/machinery/door_display/research_cell{
-	dir = 1;
-	id = "Containment Cell 5";
-	name = "Cell 5 Control";
-	pixel_x = 4;
-	pixel_y = -3
-	},
-/obj/structure/machinery/door_control{
-	id = "W_Containment Cell 5";
-	name = "Containment Lockdown";
-	pixel_x = -8;
-	pixel_y = -3;
-	req_one_access_txt = "19;28"
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple,
 /area/almayer/medical/containment/cell)
@@ -15715,31 +15526,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"bwL" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_x = -1
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/hydroponics)
 "bwQ" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -16393,12 +16179,6 @@
 "bAs" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/shipboard/weapon_room)
-"bAw" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 8
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "bAF" = (
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer,
@@ -17920,23 +17700,6 @@
 /obj/item/device/mass_spectrometer{
 	pixel_x = 8
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin/wy{
-	pixel_x = 6;
-	pixel_y = 5
-	},
-/obj/item/tool/pen{
-	pixel_x = 8
-	},
-/obj/item/clipboard{
-	pixel_x = -8
-	},
-/obj/item/folder/white{
-	pixel_x = -8
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -18082,17 +17845,6 @@
 	name = "General Listening Channel";
 	pixel_x = -29
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/item/reagent_container/food/snacks/cheesewedge{
-	pixel_x = -10;
-	pixel_y = 7
-	},
-/mob/living/simple_animal/mouse/white/Doc,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -18321,9 +18073,6 @@
 	pixel_y = 25
 	},
 /obj/structure/surface/table/reinforced/black,
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver"
@@ -18653,10 +18402,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -19619,10 +19364,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
-"bOH" = (
-/obj/structure/surface/rack,
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/command/securestorage)
 "bOJ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
@@ -20133,18 +19874,8 @@
 "bRh" = (
 /obj/item/reagent_container/glass/beaker/bluespace,
 /obj/structure/machinery/chem_dispenser/research,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light,
-/obj/structure/machinery/cm_vending/sorted/medical,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_corner"
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
 "bRi" = (
@@ -20211,16 +19942,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
@@ -20456,15 +20177,6 @@
 "bSy" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/engine_core)
-"bSC" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/medical_science)
 "bSG" = (
 /obj/structure/machinery/power/smes/buildable,
 /turf/open/floor/almayer{
@@ -21890,20 +21602,6 @@
 	dir = 4;
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_y = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_y = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -23697,14 +23395,6 @@
 	},
 /area/almayer/hallways/port_hallway)
 "cjU" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/structure/machinery/photocopier,
-/obj/structure/machinery/firealarm{
-	pixel_y = 28
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -23829,13 +23519,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_x = 1;
-	pixel_y = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
 	pixel_y = 1
 	},
 /turf/open/floor/almayer{
@@ -24516,29 +24199,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/armory)
-"cqq" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/structure/filingcabinet/filingcabinet{
-	density = 0;
-	pixel_x = -11;
-	pixel_y = 16
-	},
-/obj/structure/filingcabinet/filingcabinet{
-	density = 0;
-	pixel_x = 4;
-	pixel_y = 16
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/medical_science)
 "cqz" = (
 /obj/structure/surface/table/almayer,
 /obj/item/facepaint/black,
@@ -24842,16 +24502,6 @@
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/camera/autoname/almayer/containment{
-	dir = 1;
-	name = "ship-grade camera"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner"
@@ -24915,16 +24565,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/shipboard/brig/main_office)
-"cxX" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/vents/pump,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silvercorner"
-	},
-/area/almayer/command/computerlab)
 "cye" = (
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -24937,38 +24577,6 @@
 	dir = 4;
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/door_control{
-	dir = 1;
-	id = "researchlockdownext_windoor";
-	name = "Windoor Shutters";
-	pixel_x = -7;
-	pixel_y = 9;
-	req_access_txt = "28"
-	},
-/obj/structure/machinery/computer/med_data/laptop{
-	dir = 1;
-	pixel_x = 6;
-	pixel_y = -4
-	},
-/obj/structure/sign/safety/biohazard{
-	pixel_y = -32
-	},
-/obj/structure/sign/safety/ref_bio_storage{
-	pixel_x = 15;
-	pixel_y = -32
-	},
-/obj/structure/machinery/door_control{
-	dir = 1;
-	id = "researchlockdownext_se_2";
-	name = "Window Shutters";
-	pixel_x = -7;
-	pixel_y = 4;
-	req_access_txt = "28"
 	},
 /turf/open/floor/plating,
 /area/almayer/medical/medical_science)
@@ -25170,36 +24778,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
-"cDa" = (
-/obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "researchlockdownext_se_2";
-	name = "\improper Research Window Shutter"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "researchlockdownext_se_2";
-	name = "\improper Research Window Shutter"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/obj/structure/window/framed/almayer/white,
-/turf/open/floor/plating,
-/area/almayer/medical/medical_science)
 "cDe" = (
 /obj/structure/largecrate/random/barrel/white,
 /obj/structure/sign/safety/storage{
@@ -25217,12 +24795,6 @@
 /area/almayer/engineering/engine_core)
 "cDm" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -25256,12 +24828,6 @@
 /obj/item/storage/box/botanydisk,
 /obj/item/storage/box/botanydisk,
 /obj/item/storage/box/botanydisk,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -25282,15 +24848,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "cDC" = (
@@ -25304,18 +24861,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/living/grunt_rnr)
-"cDF" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light{
-	unacidable = 1;
-	unslashable = 1
-	},
-/turf/open/floor/almayer/no_build{
-	icon_state = "ai_floors"
-	},
-/area/almayer/command/airoom)
 "cDW" = (
 /obj/structure/largecrate/supply/supplies/flares,
 /turf/open/floor/almayer{
@@ -25489,10 +25034,6 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/chair/comfy,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -25577,26 +25118,6 @@
 	},
 /obj/item/reagent_container/glass/beaker/large{
 	pixel_x = -6
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light,
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/reagentgrinder{
-	pixel_y = 8
-	},
-/obj/item/stack/sheet/mineral/phoron{
-	amount = 25;
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/device/reagent_scanner{
-	pixel_x = -16;
-	pixel_y = 5
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
@@ -25721,12 +25242,6 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner"
 	},
@@ -25766,21 +25281,8 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/cm_vending/sorted/medical/blood{
-	density = 0;
-	pixel_y = 16
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "sterile_green_side"
+	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/medical_science)
 "cLN" = (
@@ -25822,11 +25324,6 @@
 	layer = 3.135
 	},
 /obj/structure/surface/table/reinforced/black,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "silver"
@@ -25930,14 +25427,6 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "containmentlockdown_S";
-	name = "\improper Containment Lockdown"
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -26004,13 +25493,6 @@
 	dir = 1;
 	name = "ship-grade camera"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -26256,16 +25738,6 @@
 	icon_state = "cargo"
 	},
 /area/almayer/living/synthcloset)
-"cWl" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
 "cWr" = (
 /obj/structure/machinery/photocopier{
 	density = 0;
@@ -26396,21 +25868,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cells)
 "cXk" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/microwave{
-	pixel_y = 5
-	},
-/obj/item/storage/box/donkpockets{
-	pixel_x = -4;
-	pixel_y = 19
-	},
-/obj/item/storage/box/donkpockets{
-	pixel_x = 4;
-	pixel_y = 16
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -26544,9 +26001,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "sterile_green_side"
@@ -26562,16 +26016,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/step_trigger/clone_cleaner,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "ARES StairsLock";
-	name = "ARES Exterior Lockdown"
-	},
-/obj/effect/step_trigger/ares_alert/access_control,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "cargo_arrow"
@@ -26658,17 +26102,6 @@
 	pixel_x = -6;
 	pixel_y = 8
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
-	},
-/obj/structure/surface/rack,
-/obj/item/storage/box/botanydisk,
-/obj/item/storage/box/botanydisk,
-/obj/item/storage/box/botanydisk,
-/obj/item/storage/box/botanydisk,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -26935,24 +26368,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/chief_mp_office)
-"dgH" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/hydroponics)
 "dgN" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel/etool{
@@ -26970,17 +26385,6 @@
 	icon_state = "NE-out";
 	pixel_x = 1;
 	pixel_y = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -27329,23 +26733,8 @@
 	},
 /obj/effect/projector{
 	name = "Almayer_AresUp";
-	vector_x = -98;
-	vector_y = 65
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/projector{
-	name = "Almayer_AresUp";
 	vector_x = -97;
 	vector_y = 65
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 8;
@@ -27809,29 +27198,6 @@
 	density = 0;
 	pixel_x = -11;
 	pixel_y = 16
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/sign/safety/intercom{
-	layer = 2.9;
-	pixel_x = -6;
-	pixel_y = 29
-	},
-/obj/structure/machinery/botany/extractor{
-	density = 0;
-	pixel_x = 15;
-	pixel_y = 16
-	},
-/obj/item/device/flashlight/pen{
-	pixel_x = 14;
-	pixel_y = 15
-	},
-/obj/structure/machinery/vending/hydroseeds{
-	density = 0;
-	pixel_x = -7;
-	pixel_y = 16;
-	req_access_txt = "28"
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -28310,19 +27676,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 1;
-	name = "\improper Computer Lab";
-	req_access = null
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/almayer/command/computerlab)
 "dGr" = (
@@ -28379,16 +27732,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/processing)
-"dGJ" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
 "dGT" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
@@ -28445,38 +27788,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_a_s)
-"dHq" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_x = -1;
-	pixel_y = 1
-	},
-/obj/structure/machinery/door/airlock/almayer/research/reinforced{
-	dir = 8;
-	name = "\improper Containment Airlock"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/medical_science)
 "dHr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -28503,24 +27814,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/shipboard/brig/surgery)
-"dHB" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/vents/pump,
-/obj/structure/machinery/computer/cameras/almayer{
-	dir = 4;
-	pixel_x = -16
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
-"dHM" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "dHZ" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -28635,18 +27928,6 @@
 "dKL" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/engineering/airmix)
-"dKO" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 1;
-	name = "\improper High Security Storage"
-	},
-/turf/open/floor/almayer{
-	icon_state = "silverfull"
-	},
-/area/almayer/command/securestorage)
 "dLb" = (
 /obj/structure/machinery/cm_vending/clothing/marine/bravo{
 	density = 0;
@@ -28989,16 +28270,6 @@
 	layer = 3.1;
 	pixel_y = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/chem_master{
-	vial_maker = 1
-	},
-/obj/item/clothing/glasses/science{
-	pixel_x = 1;
-	pixel_y = 8
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "dSX" = (
@@ -29038,14 +28309,6 @@
 	},
 /area/almayer/hull/upper_hull/u_f_s)
 "dTx" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "sterile_green_side"
@@ -29107,15 +28370,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "ARES StairsLock";
-	name = "ARES Exterior Lockdown"
-	},
-/obj/effect/step_trigger/ares_alert/access_control,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "cargo_arrow"
@@ -29184,9 +28438,6 @@
 	req_one_access_txt = "91;92"
 	},
 /obj/effect/step_trigger/clone_cleaner,
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
 	},
@@ -29540,16 +28791,6 @@
 	icon_state = "kitchen"
 	},
 /area/almayer/living/grunt_rnr)
-"eeH" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/turf/closed/wall/almayer/research/containment/wall/west,
-/area/almayer/medical/containment/cell)
 "eeN" = (
 /obj/structure/bed/chair,
 /turf/open/floor/almayer{
@@ -29809,15 +29050,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -29982,33 +29214,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/main_office)
-"enD" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "containmentlockdown_S";
-	name = "\improper Containment Lockdown"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door_control{
-	id = "containmentlockdown_S";
-	name = "Containment Lockdown";
-	pixel_y = 28;
-	req_one_access_txt = "19;28"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/medical/containment)
 "eoG" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -30029,12 +29234,6 @@
 "epn" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -30110,22 +29309,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"eqm" = (
-/obj/structure/pipes/vents/pump{
-	name = "Secure Air Vent";
-	welded = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer/research/containment/floor2{
-	dir = 1
-	},
-/area/almayer/medical/containment/cell)
 "eqI" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -30496,17 +29679,6 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1;
-	pixel_y = -1
-	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
 	dir = 1
 	},
@@ -30528,17 +29700,6 @@
 	icon_state = "cargo"
 	},
 /area/almayer/shipboard/brig/cryo)
-"eyE" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/device/camera,
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "eyG" = (
 /obj/structure/platform,
 /turf/open/floor/almayer{
@@ -30636,16 +29797,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 3.3
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -30767,21 +29918,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
-"eCc" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_x = -1
-	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
-	name = "\improper Research Hydroponics Workshop"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/hydroponics)
 "eCo" = (
 /obj/structure/platform{
 	dir = 1
@@ -30830,23 +29966,6 @@
 /obj/structure/machinery/cm_vending/clothing/medical_crew{
 	density = 0;
 	pixel_y = 16
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/sign/safety/rewire{
-	layer = 2.4;
-	pixel_x = 8;
-	pixel_y = 32
-	},
-/obj/structure/reagent_dispensers/watertank,
-/obj/item/reagent_container/glass/beaker{
-	pixel_x = 6;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/glass/beaker/large{
-	pixel_x = -6;
-	pixel_y = 8
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -31039,10 +30158,6 @@
 	},
 /area/almayer/command/cichallway)
 "eHE" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -31138,18 +30253,6 @@
 	icon_state = "ai_floors"
 	},
 /area/almayer/command/airoom)
-"eKC" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/hydroponics)
 "eKD" = (
 /obj/structure/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/almayer{
@@ -31246,13 +30349,9 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
+/turf/open/floor/almayer/no_build{
+	icon_state = "plating"
 	},
-/obj/structure/bed/chair/office/dark{
-	dir = 1
-	},
-/turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/securestorage)
 "eMh" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -31331,19 +30430,6 @@
 /obj/structure/machinery/computer/sentencing,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
-"eOY" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/turf/closed/wall/almayer/research/containment/wall/west,
-/area/almayer/medical/containment/cell)
 "ePk" = (
 /obj/structure/airlock_assembly,
 /turf/open/floor/plating,
@@ -31398,29 +30484,6 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/brig/general_equipment)
-"ePS" = (
-/obj/effect/step_trigger/clone_cleaner,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "ARES StairsLock";
-	name = "ARES Exterior Lockdown"
-	},
-/obj/effect/step_trigger/ares_alert/access_control,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/step_trigger/clone_cleaner,
-/obj/structure/machinery/door_control{
-	id = "ARES StairsUpper";
-	name = "ARES Core Access";
-	pixel_x = -24;
-	pixel_y = 24;
-	req_one_access_txt = "1;200;90;91;92"
-	},
-/turf/open/floor/almayer/no_build{
-	icon_state = "test_floor4"
-	},
-/area/almayer/command/airoom)
 "ePY" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8;
@@ -31434,31 +30497,6 @@
 "eQn" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/glass/beaker{
-	pixel_x = 8
-	},
-/obj/item/paper_bin/wy{
-	pixel_x = -5;
-	pixel_y = 6
-	},
-/obj/item/tool/pen{
-	pixel_y = -2
-	},
-/obj/structure/machinery/door_control/brbutton/alt{
-	id = "Containment Breach";
-	name = "Emergency Containment Breach";
-	pixel_x = 8;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/dropper{
-	pixel_x = -1;
-	pixel_y = 9
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -31480,13 +30518,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
 	},
 /turf/open/floor/almayer/research/containment/corner_var1{
 	icon_state = "containment_corner_variant_2"
@@ -31615,23 +30646,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
-"eTv" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor5"
-	},
-/area/almayer/medical/hydroponics)
 "eTO" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = -17
@@ -31916,12 +30930,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
 /turf/open/floor/almayer/research/containment/corner3,
 /area/almayer/medical/containment/cell)
 "eZQ" = (
@@ -31987,16 +30995,6 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/bed/chair/comfy,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side"
@@ -32058,9 +31056,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
 	},
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 8
@@ -32469,15 +31464,6 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/vending/snack{
-	pixel_x = -7
-	},
-/obj/structure/machinery/vending/coffee{
-	pixel_x = 14
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -32510,13 +31496,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 3.3
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -32750,19 +31729,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1;
-	pixel_y = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_y = -1
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -32911,20 +31877,6 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "W_Containment Cell 3";
-	name = "\improper Containment Cell 5";
-	unacidable = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "sterile_green_side"
@@ -33064,9 +32016,6 @@
 /obj/item/storage/box/monkeycubes{
 	pixel_x = 7;
 	pixel_y = 7
-	},
-/obj{
-	name = "---Merge conflict marker---"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -33277,20 +32226,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "W_Containment Cell 1";
-	name = "\improper Containment Cell 5";
-	unacidable = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
 /turf/open/floor/almayer/research/containment/corner2,
 /area/almayer/medical/containment/cell)
 "fCk" = (
@@ -33312,30 +32247,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 4;
-	health = 80;
-	pixel_y = 6
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/shower{
-	pixel_y = 16
-	},
-/obj/structure/sign/safety/biolab{
-	pixel_x = -9;
-	pixel_y = 32
-	},
-/obj/structure/sign/safety/biohazard{
-	pixel_x = 25;
-	pixel_y = 32
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80;
-	pixel_y = 6
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
 	health = 80;
 	pixel_y = 6
 	},
@@ -33426,24 +32337,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/pilotbunks)
-"fEd" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/bed/chair,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/medical/medical_science)
 "fEg" = (
 /obj/structure/machinery/power/fusion_engine{
 	name = "\improper S-52 fusion reactor 15"
@@ -33803,26 +32696,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/hangar)
-"fKz" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "containmentlockdown_S";
-	name = "\improper Containment Lockdown"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/medical/containment)
 "fKV" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/paper{
@@ -33964,47 +32837,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"fNv" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "sterile_green"
-	},
-/area/almayer/medical/containment)
-"fNy" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
-	dir = 1;
-	id = "Containment Cell 1";
-	locked = 1;
-	name = "\improper Containment Cell 1"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Containment Cell 1";
-	name = "\improper Containment Cell 1";
-	unacidable = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/turf/closed/wall/almayer/research/containment/wall/south,
-/area/almayer/medical/containment/cell)
 "fNA" = (
 /obj/structure/closet/fireaxecabinet{
 	pixel_y = 32
@@ -34039,9 +32871,6 @@
 	name = "ARES Exterior Lockdown"
 	},
 /obj/effect/step_trigger/ares_alert/access_control,
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
 	},
@@ -34188,37 +33017,8 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
-	id = "Containment Cell 3";
-	locked = 1;
-	name = "\improper Containment Cell 3";
-	unacidable = 1
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer/containment{
-	dir = 4;
-	id = "Containment Cell 3";
-	name = "\improper Containment Cell 3"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor4"
+	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/containment)
 "fQK" = (
@@ -34455,20 +33255,6 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_y = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_y = 1
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -34643,10 +33429,6 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side"
@@ -34683,15 +33465,8 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
-	},
 /turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "sterile_green_side"
+	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/medical_science)
 "gbQ" = (
@@ -34712,24 +33487,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
-"gcd" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
-	name = "\improper Research Reception Laboratory"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 8;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/medical_science)
 "gcg" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
@@ -34746,13 +33503,6 @@
 /obj/item/storage/fancy/vials,
 /obj/item/storage/fancy/vials,
 /obj/item/storage/fancy/vials,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -34764,20 +33514,8 @@
 	},
 /obj/effect/projector{
 	name = "Almayer_AresUp";
-	vector_x = -98;
-	vector_y = 65
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/projector{
-	name = "Almayer_AresUp";
 	vector_x = -97;
 	vector_y = 65
-	},
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 4
@@ -34789,13 +33527,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_s)
-"gcJ" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/cm_vending/clothing/intelligence_officer,
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/command/securestorage)
 "gcK" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -34896,12 +33627,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
 	pixel_x = -1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -35113,21 +33838,6 @@
 "giN" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	dir = 8;
-	id = "researchlockdownext_windoor";
-	name = "\improper Research Windoor Shutter"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -35659,17 +34369,6 @@
 	dir = 8
 	},
 /obj/structure/machinery/autolathe,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/item/stack/sheet/mineral/plastic{
-	amount = 15
-	},
-/obj/item/stack/sheet/glass{
-	amount = 20;
-	pixel_x = 3;
-	pixel_y = 3
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -36083,17 +34782,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cichallway)
-"gAo" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/chair/comfy{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
-/area/almayer/medical/medical_science)
 "gAt" = (
 /obj/structure/platform_decoration{
 	dir = 1
@@ -36114,16 +34802,6 @@
 "gAA" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha_bravo_shared)
-"gAP" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/landmark/start/working_joe,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/command/airoom)
 "gAR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -36196,13 +34874,6 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -36270,24 +34941,6 @@
 	icon_state = "cargo"
 	},
 /area/almayer/squads/delta)
-"gEw" = (
-/obj/structure/surface/rack,
-/obj/item/storage/fancy/vials/empty,
-/obj/item/storage/fancy/vials/empty,
-/obj/item/storage/fancy/vials/empty,
-/obj/item/storage/fancy/vials/empty,
-/obj/item/storage/fancy/vials/empty,
-/obj/item/storage/fancy/vials/empty,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_x = -29
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "gEz" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -36510,19 +35163,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_y = 1
 	},
 /turf/open/floor/almayer/research/containment/corner_var1{
 	icon_state = "containment_corner_variant_2"
@@ -36786,12 +35426,6 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -36840,29 +35474,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
-"gNy" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/glass/beaker/large,
-/obj/item/reagent_container/glass/beaker/large,
-/obj/item/reagent_container/glass/beaker{
-	pixel_x = 5
-	},
-/obj/item/reagent_container/glass/beaker{
-	pixel_x = 5
-	},
-/obj/item/reagent_container/dropper,
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
-/obj/item/reagent_container/glass/beaker/bluespace{
-	pixel_y = 12
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "gNH" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm{
@@ -36887,22 +35498,6 @@
 	},
 /obj/item/clipboard{
 	pixel_x = 7
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin/uscm,
-/obj/item/tool/pen,
-/obj/item/folder/black,
-/obj/item/storage/fancy/cigarettes/kpack,
-/obj/structure/machinery/door_control{
-	id = "CE Office Shutters";
-	name = "CE Office Shutters";
-	pixel_x = -6;
-	pixel_y = 18;
-	req_access_txt = list();
-	req_one_access_txt = "1;6"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/ce_room)
@@ -37055,23 +35650,8 @@
 	},
 /obj/effect/projector{
 	name = "Almayer_AresUp";
-	vector_x = -98;
-	vector_y = 65
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/projector{
-	name = "Almayer_AresUp";
 	vector_x = -97;
 	vector_y = 65
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 4;
@@ -37367,18 +35947,6 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "researchlockdownext_door";
-	name = "\improper Research Doorway Shutter"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -37449,30 +36017,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_m_p)
-"has" = (
-/obj/structure/surface/rack,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 8
-	},
-/obj/structure/machinery/door/window/eastleft{
-	req_access = list(19)
-	},
-/obj/structure/machinery/door/window/westright,
-/obj/item/paper_bin/uscm{
-	pixel_y = 6
-	},
-/obj/item/tool/pen{
-	pixel_x = 4;
-	pixel_y = -4
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/command/computerlab)
 "haB" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -37514,30 +36058,6 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/filingcabinet/filingcabinet{
-	density = 0;
-	layer = 2.9;
-	pixel_x = 7;
-	pixel_y = 16
-	},
-/obj/structure/filingcabinet/filingcabinet{
-	density = 0;
-	layer = 2.9;
-	pixel_x = -8;
-	pixel_y = 16
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner"
@@ -37554,15 +36074,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
-"hby" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/turf/closed/wall/almayer/research/containment/wall/corner,
-/area/almayer/medical/containment/cell)
 "hbz" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -37589,16 +36100,6 @@
 /obj/item/device/camera{
 	pixel_x = -3;
 	pixel_y = 22
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/machinery/light{
-	dir = 1
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -37754,32 +36255,6 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/brig/processing)
-"heT" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/flasher{
-	alpha = 1;
-	id = "Containment Cell 2";
-	layer = 2.1;
-	name = "Mounted Flash";
-	pixel_y = 30
-	},
-/obj/structure/machinery/light/containment{
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer/research/containment/floor2{
-	dir = 1
-	},
-/area/almayer/medical/containment/cell)
 "heV" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
@@ -37947,24 +36422,6 @@
 /obj/structure/bed/sofa/vert/grey/bot,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
-"hhB" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/containment)
 "hif" = (
 /obj/structure/machinery/floodlight/landing,
 /turf/open/floor/almayer{
@@ -38230,26 +36687,6 @@
 	pixel_x = 8;
 	pixel_y = -2
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/structure/transmitter/rotary{
-	name = "Researcher Office Telephone";
-	phone_category = "Almayer";
-	phone_id = "Research";
-	pixel_y = 6
-	},
-/obj/item/reagent_container/glass/beaker{
-	pixel_x = 6;
-	pixel_y = -1
-	},
-/obj/item/reagent_container/glass/beaker/large{
-	pixel_x = -6
-	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner"
@@ -38491,11 +36928,6 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "htX" = (
-/obj/effect/projector{
-	name = "Almayer_AresDown";
-	vector_x = 98;
-	vector_y = -65
-	},
 /obj/structure/platform{
 	dir = 8
 	},
@@ -38503,17 +36935,10 @@
 	dir = 1;
 	icon_state = "ramptop"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /obj/effect/projector{
 	name = "Almayer_AresDown";
 	vector_x = 97;
 	vector_y = -65
-	},
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -38533,33 +36958,11 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "huR" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/door/airlock/almayer/research/reinforced{
-	dir = 8;
-	name = "\improper Containment Airlock"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -38829,24 +37232,6 @@
 	icon_state = "cargo"
 	},
 /area/almayer/squads/delta)
-"hzz" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/command/computerlab)
 "hzJ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1
@@ -39136,37 +37521,9 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/medical/lower_medical_lobby)
-"hFc" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	name = "\improper Computer Lab"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "hFv" = (
 /obj/structure/machinery/medical_pod/sleeper{
 	dir = 8
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/cap/hidden{
-	dir = 4
-	},
-/obj/structure/machinery/cryo_cell{
-	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -39581,10 +37938,6 @@
 	pixel_y = 29;
 	req_access_txt = "28"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -40138,25 +38491,6 @@
 	pixel_y = 4;
 	req_access_txt = "28"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/glass/beaker/cryoxadone{
-	pixel_x = -6;
-	pixel_y = 8
-	},
-/obj/item/storage/box/autoinjectors{
-	pixel_x = -6;
-	pixel_y = -1
-	},
-/obj/item/storage/box/pillbottles{
-	pixel_x = 6;
-	pixel_y = 7
-	},
-/obj/item/device/mass_spectrometer{
-	pixel_x = 8
-	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner"
@@ -40178,19 +38512,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
-"icB" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/rack{
-	density = 0;
-	pixel_y = 16
-	},
-/obj/item/tool/wet_sign,
-/obj/item/tool/wet_sign,
-/obj/item/tool/wet_sign,
-/turf/closed/wall/almayer/outer,
-/area/almayer/command/airoom)
 "icM" = (
 /turf/closed/wall/almayer/research/containment/wall/north,
 /area/almayer/medical/containment/cell)
@@ -40545,12 +38866,6 @@
 	pixel_y = 28;
 	pixel_x = 28
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "ijU" = (
@@ -40760,17 +39075,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light{
-	unacidable = 1;
-	unslashable = 1
-	},
-/obj/structure/machinery/optable,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
 /turf/open/floor/almayer/research/containment/corner{
 	dir = 4
 	},
@@ -40958,13 +39262,6 @@
 	},
 /area/almayer/squads/req)
 "itz" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -40981,15 +39278,10 @@
 "itG" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/rack,
-/obj/item/device/taperecorder,
 /turf/open/floor/almayer{
 	icon_state = "silverfull"
 	},
-/area/almayer/command/computerlab)
+/area/almayer/command/securestorage)
 "itR" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -41215,14 +39507,6 @@
 	pixel_x = 5;
 	pixel_y = 3
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/processor{
-	pixel_x = -2;
-	pixel_y = 6
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -41354,10 +39638,6 @@
 	icon_state = "blue"
 	},
 /area/almayer/hallways/port_hallway)
-"iBd" = (
-/obj/structure/machinery/light/small,
-/turf/open/floor/almayer,
-/area/almayer/command/securestorage)
 "iBt" = (
 /turf/open/floor/plating,
 /area/almayer/hull/upper_hull/u_m_p)
@@ -41378,12 +39658,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
-"iBL" = (
-/obj/structure/machinery/camera/autoname/almayer/containment{
-	dir = 4
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "iBY" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer{
@@ -41464,25 +39738,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/starboard_umbilical)
-"iEm" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/step_trigger/clone_cleaner,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "ARES StairsLock";
-	name = "ARES Exterior Lockdown"
-	},
-/obj/effect/step_trigger/ares_alert/access_control,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "cargo_arrow"
-	},
-/area/almayer/hallways/aft_hallway)
 "iEr" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -41589,10 +39844,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -41739,44 +39990,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
-"iJg" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door_control{
-	id = "ARES StairsUpper";
-	name = "ARES Core Access";
-	pixel_x = -10;
-	pixel_y = -24;
-	req_one_access_txt = "91;92"
-	},
-/obj/structure/machinery/door_control{
-	id = "ARES StairsLock";
-	name = "ARES Exterior Lockdown";
-	pixel_y = -24;
-	req_one_access_txt = "91;92"
-	},
-/obj/structure/surface/table/reinforced/almayer_B{
-	climbable = 0;
-	indestructible = 1;
-	unacidable = 1;
-	unslashable = 1
-	},
-/obj/structure/transmitter/rotary{
-	name = "AI Reception Telephone";
-	phone_category = "ARES";
-	phone_color = "blue";
-	phone_id = "AI Reception"
-	},
-/obj/structure/machinery/door_control{
-	id = "ARES Emergency";
-	name = "ARES Emergency Lockdown";
-	pixel_x = 10;
-	pixel_y = -24;
-	req_one_access_txt = "91;92"
-	},
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/command/airoom)
 "iJB" = (
 /obj/structure/sign/safety/galley{
 	pixel_x = 8;
@@ -42153,12 +40366,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/bravo)
-"iRJ" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silvercorner"
-	},
-/area/almayer/command/securestorage)
 "iRS" = (
 /obj/item/trash/chips,
 /turf/open/floor/plating,
@@ -42277,40 +40484,11 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "containmentlockdown_S";
-	name = "\improper Containment Lockdown"
-	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
-"iUK" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/hydroponics)
 "iUZ" = (
 /obj/docking_port/stationary/escape_pod/cl,
 /turf/open/floor/plating,
@@ -42443,10 +40621,6 @@
 /area/almayer/engineering/upper_engineering)
 "iWY" = (
 /obj/structure/closet/secure_closet/engineering_chief,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
 /turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "iXb" = (
@@ -42481,21 +40655,6 @@
 /area/almayer/living/briefing)
 "iXZ" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/sign/safety/waterhazard{
-	pixel_x = 8;
-	pixel_y = -32
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor5"
 	},
@@ -42815,13 +40974,6 @@
 /obj/structure/sign/safety/chem_lab{
 	pixel_x = 5;
 	pixel_y = 29
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/closet/secure_closet/freezer/fridge,
-/obj/structure/machinery/light{
-	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -43401,14 +41553,6 @@
 	pixel_x = -16
 	},
 /obj/structure/machinery/iv_drip,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -43558,36 +41702,8 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
-	id = "Containment Cell 2";
-	locked = 1;
-	name = "\improper Containment Cell 2"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer/containment{
-	dir = 4;
-	id = "Containment Cell 2";
-	name = "\improper Containment Cell 2"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor4"
+	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/containment)
 "jss" = (
@@ -43728,27 +41844,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
-"jxu" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/medical_science)
 "jxx" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -43913,16 +42008,6 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/prop/almayer/computer{
-	dir = 4;
-	pixel_x = -17
-	},
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -43948,6 +42033,15 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
+"jEu" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silvercorner"
+	},
+/area/almayer/hallways/aft_hallway)
 "jFe" = (
 /obj/structure/prop/holidays/string_lights{
 	pixel_y = 27
@@ -44038,23 +42132,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/delta)
-"jGZ" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "containmentlockdown_S";
-	name = "\improper Containment Lockdown"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/medical/containment)
 "jHa" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -44106,10 +42183,6 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/rack,
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "jIV" = (
@@ -44451,16 +42524,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 8
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/view_objectives{
-	dir = 4
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -44507,20 +42570,6 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/flasher{
-	alpha = 1;
-	id = "Containment Cell 3";
-	layer = 2.1;
-	name = "Mounted Flash";
-	pixel_y = 30
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 1
 	},
@@ -44533,36 +42582,6 @@
 /obj/structure/machinery/photocopier,
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/cell/high{
-	pixel_x = -8;
-	pixel_y = 8
-	},
-/obj/item/cell/high{
-	pixel_x = -8;
-	pixel_y = 8
-	},
-/obj/item/cell/high{
-	pixel_x = -8;
-	pixel_y = -2
-	},
-/obj/item/cell/high{
-	pixel_x = -8;
-	pixel_y = -2
-	},
-/obj/item/device/multitool{
-	pixel_x = 8
-	},
-/obj/item/tool/screwdriver{
-	pixel_x = -3;
-	pixel_y = 4
-	},
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -44774,9 +42793,6 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
 	name = "ship-grade camera"
-	},
-/obj{
-	name = "---Merge conflict marker---"
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -45166,12 +43182,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
 /turf/open/floor/almayer/research/containment/corner4,
 /area/almayer/medical/containment/cell)
 "kfE" = (
@@ -45357,11 +43367,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/surgery)
-"kkk" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "kkt" = (
 /obj/structure/surface/table/almayer,
 /obj/item/book/manual/marine_law,
@@ -45484,12 +43489,6 @@
 "knS" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
@@ -45703,15 +43702,6 @@
 	},
 /area/almayer/living/gym)
 "krA" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -45734,23 +43724,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering/starboard)
-"krX" = (
-/obj/effect/step_trigger/clone_cleaner,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/step_trigger/clone_cleaner,
-/obj/structure/machinery/door_control{
-	id = "ARES StairsUpper";
-	name = "ARES Core Access";
-	pixel_x = 24;
-	pixel_y = 24;
-	req_one_access_txt = "1;200;90;91;92"
-	},
-/turf/open/floor/almayer/no_build{
-	icon_state = "ai_floors"
-	},
-/area/almayer/command/airoom)
 "krZ" = (
 /obj/structure/closet/secure_closet/cargotech,
 /obj/item/clothing/accessory/storage/webbing,
@@ -46023,26 +43996,12 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/brig/processing)
-"kyj" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk,
-/turf/closed/wall/almayer,
-/area/almayer/command/computerlab)
 "kyn" = (
 /obj/structure/machinery/vending/snack{
 	pixel_x = -7
 	},
 /obj/structure/machinery/vending/coffee{
 	pixel_x = 14
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/vending/cola/research{
-	pixel_x = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -46162,10 +44121,6 @@
 "kzN" = (
 /obj/structure/machinery/light{
 	dir = 1
-	},
-/obj/structure/safe,
-/obj{
-	name = "---Merge conflict marker---"
 	},
 /obj/structure/safe,
 /turf/open/floor/almayer{
@@ -46311,11 +44266,6 @@
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/disk_reader,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver"
@@ -46524,12 +44474,6 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "kKk" = (
@@ -46575,21 +44519,6 @@
 	icon_state = "plating_striped"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
-"kLf" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light/containment,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/floor/almayer/research/containment/floor2{
-	dir = 1
-	},
-/area/almayer/medical/containment/cell)
 "kLs" = (
 /obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer{
@@ -46625,13 +44554,11 @@
 /obj/structure/surface/table/reinforced/black,
 /obj/item/device/camera,
 /obj/structure/machinery/firealarm{
-	pixel_y = 28
-	},
-/obj{
-	name = "---Merge conflict marker---"
+	pixel_y = 26
 	},
 /turf/open/floor/almayer{
-	icon_state = "mono"
+	dir = 1;
+	icon_state = "silver"
 	},
 /area/almayer/command/computerlab)
 "kMH" = (
@@ -46652,19 +44579,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/port_hallway)
-"kNa" = (
-/obj/structure/surface/rack,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/firealarm{
-	dir = 1;
-	pixel_y = -28
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/command/computerlab)
 "kNi" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -46716,14 +44630,6 @@
 "kOg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	pixel_y = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_x = -1;
 	pixel_y = 1
 	},
 /turf/open/floor/almayer{
@@ -47072,21 +44978,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 1
 	},
@@ -47120,10 +45011,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"kWP" = (
-/obj/effect/landmark/start/working_joe,
-/turf/closed/wall/almayer/outer,
-/area/almayer/command/airoom)
 "kWT" = (
 /obj/structure/machinery/power/apc/almayer/hardened,
 /turf/open/floor/almayer{
@@ -47190,24 +45077,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"kYE" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/prop/almayer/computer{
-	pixel_x = 7
-	},
-/obj/structure/sign/safety/terminal{
-	pixel_x = 1;
-	pixel_y = 25
-	},
-/obj/item/prop/magazine/book/borntokill{
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/turf/closed/wall/almayer,
-/area/almayer/command/securestorage)
 "kYP" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = 32
@@ -47282,9 +45151,6 @@
 	dir = 2;
 	name = "\improper Atmospherics Wing"
 	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -47304,10 +45170,6 @@
 	name = "ARES Exterior Lockdown"
 	},
 /obj/effect/step_trigger/ares_alert/access_control,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
 	},
@@ -47371,13 +45233,6 @@
 /area/almayer/squads/charlie)
 "lbl" = (
 /obj/structure/pipes/vents/pump,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -47535,32 +45390,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
-"lei" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera"
-	},
-/obj/item/folder/white{
-	pixel_x = 6
-	},
-/obj/item/storage/fancy/vials/empty{
-	pixel_y = 10;
-	start_vials = 2
-	},
-/obj/item/tool/pen{
-	pixel_y = 8
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/chair/comfy{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/medical_science)
 "let" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -47593,7 +45422,7 @@
 	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresDown";
-	vector_x = 98;
+	vector_x = 97;
 	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
@@ -47654,13 +45483,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	pixel_x = -1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -48131,15 +45953,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
 /turf/open/floor/plating,
 /area/almayer/engineering/upper_engineering)
 "lsP" = (
@@ -48273,13 +46086,6 @@
 	pixel_y = 2
 	},
 /obj/structure/surface/table/reinforced/black,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "silver"
@@ -48318,25 +46124,10 @@
 /obj/item/reagent_container/glass/beaker/bluespace{
 	pixel_y = 12
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/chair/comfy{
-	buckling_y = 2;
-	dir = 8;
-	pixel_y = 2
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
 /area/almayer/medical/medical_science)
-"luN" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/cm_vending/clothing/intelligence_officer,
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/command/computerlab)
 "luS" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/cardboard{
@@ -48414,19 +46205,8 @@
 /area/almayer/command/airoom)
 "lwR" = (
 /obj/structure/surface/table/almayer,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/chair/comfy{
-	dir = 8
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side"
+	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/medical_science)
 "lxj" = (
@@ -48668,10 +46448,6 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -49011,11 +46787,6 @@
 /area/almayer/living/offices)
 "lHf" = (
 /obj/structure/pipes/vents/pump,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/disk_reader,
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "lHu" = (
@@ -49048,26 +46819,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
-"lIg" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer/research/containment/floor2{
-	dir = 1
-	},
-/area/almayer/medical/containment/cell)
 "lIh" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -49128,18 +46879,6 @@
 /area/almayer/living/cryo_cells)
 "lJy" = (
 /obj/structure/machinery/light,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/vents/pump,
-/obj/structure/sign/safety/storage{
-	pixel_x = 33;
-	pixel_y = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -49267,10 +47006,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/processing)
-"lMd" = (
-/obj/structure/window/reinforced,
-/turf/closed/wall/almayer,
-/area/almayer/command/securestorage)
 "lMp" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
@@ -49311,25 +47046,11 @@
 "lMI" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresDown";
-	vector_x = 98;
+	vector_x = 97;
 	vector_y = -65
 	},
 /obj/structure/platform{
 	dir = 8
-	},
-/obj/structure/stairs{
-	dir = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresDown";
-	vector_x = 97;
-	vector_y = -65
-	},
-/obj/structure/machinery/light{
-	dir = 1
 	},
 /obj/structure/stairs{
 	dir = 1
@@ -49405,22 +47126,6 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/gloves{
-	pixel_x = -4;
-	pixel_y = 13
-	},
-/obj/item/storage/box/masks{
-	pixel_x = -6;
-	pixel_y = 4
-	},
-/obj/item/tool/hand_labeler{
-	pixel_x = 5;
-	pixel_y = 3
-	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner"
@@ -49463,13 +47168,6 @@
 /obj/structure/machinery/light,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
@@ -49627,27 +47325,8 @@
 	icon_state = "NW-out";
 	pixel_y = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/surface/rack{
-	density = 0;
-	pixel_y = 16
-	},
-/obj/item/storage/xeno_tag_case/full{
-	pixel_y = 15
-	},
-/obj/item/device/camera{
-	pixel_x = -3;
-	pixel_y = 22
-	},
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
+	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/containment)
 "lSO" = (
@@ -49742,40 +47421,12 @@
 /obj/structure/closet/firecloset,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
-"lTS" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/stairs{
-	dir = 1
-	},
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresDown";
-	vector_x = 98;
-	vector_y = -65
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/turf/open/floor/almayer/no_build{
-	icon_state = "ai_floors"
-	},
-/area/almayer/command/airoom)
 "lTV" = (
 /obj/structure/pipes/standard/cap/hidden{
 	dir = 4
 	},
 /obj/structure/machinery/cryo_cell{
 	dir = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/pipes/unary/freezer{
-	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -49869,27 +47520,6 @@
 	icon_state = "green"
 	},
 /area/almayer/living/offices)
-"lXS" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1;
-	pixel_y = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
-/area/almayer/medical/containment)
 "lYi" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -49957,33 +47587,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
-"lZH" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "containmentlockdown_S";
-	name = "\improper Containment Lockdown"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/obj/structure/window/framed/almayer/white,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/medical/containment)
 "lZO" = (
 /obj/structure/disposalpipe/junction{
 	dir = 4;
@@ -50098,13 +47701,6 @@
 	layer = 2.1;
 	name = "Mounted Flash";
 	pixel_y = 30
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -50248,21 +47844,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/pilotbunks)
-"mfR" = (
-/obj/effect/step_trigger/clone_cleaner,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/reinforced/almayer_B{
-	climbable = 0;
-	indestructible = 1;
-	unacidable = 1;
-	unslashable = 1
-	},
-/turf/open/floor/almayer/no_build{
-	icon_state = "ai_floors"
-	},
-/area/almayer/command/airoom)
 "mgj" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	density = 0;
@@ -50308,19 +47889,6 @@
 /obj/item/clothing/glasses/science{
 	pixel_x = 1;
 	pixel_y = 8
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/structure/disposalpipe/trunk,
-/obj/structure/machinery/disposal,
-/obj/structure/sink{
-	pixel_x = 1;
-	pixel_y = -2
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -50386,15 +47954,6 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
 	dir = 4
 	},
@@ -50403,29 +47962,12 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/filingcabinet/seeds{
-	density = 0;
-	pixel_x = 5;
-	pixel_y = 16
-	},
-/obj/structure/filingcabinet/disk{
-	density = 0;
-	pixel_x = -11;
-	pixel_y = 16
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
 /area/almayer/medical/hydroponics)
 "miw" = (
 /obj/structure/machinery/autolathe/medilathe/full,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -50494,29 +48036,6 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie)
 "mka" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/surface/table/almayer,
-/obj/item/device/reagent_scanner{
-	pixel_x = -8;
-	pixel_y = 4
-	},
-/obj/item/clipboard{
-	pixel_x = 8
-	},
-/obj/item/paper{
-	pixel_x = 8
-	},
-/obj/effect/spawner/random/toolbox{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/storage/box/monkeycubes{
-	pixel_x = 7;
-	pixel_y = 7
-	},
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side"
@@ -50589,20 +48108,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_x = -1
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -50693,7 +48198,7 @@
 	dir = 10;
 	icon_state = "silver"
 	},
-/area/almayer/command/computerlab)
+/area/almayer/command/securestorage)
 "mnf" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -50741,29 +48246,6 @@
 	icon_state = "blue"
 	},
 /area/almayer/living/briefing)
-"mnN" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door_control{
-	dir = 1;
-	id = "researchlockdownext";
-	name = "Window Shutters";
-	pixel_x = -26;
-	pixel_y = 6;
-	req_access_txt = "28"
-	},
-/obj/structure/machinery/door_control{
-	dir = 1;
-	id = "researchlockdownext_door";
-	name = "Door Shutters";
-	pixel_x = -26;
-	pixel_y = 1;
-	req_access_txt = "28"
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "moh" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/plating/plating_catwalk,
@@ -50836,44 +48318,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall/almayer,
 /area/almayer/squads/req)
-"mpi" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/vents/pump,
-/turf/closed/wall/almayer,
-/area/almayer/command/computerlab)
 "mpm" = (
 /obj/structure/bed/chair/comfy{
 	buckling_y = 2;
 	dir = 8;
 	pixel_y = 2
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/medical/medical_science)
-"mpG" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
-	},
 /area/almayer/medical/medical_science)
 "mqb" = (
 /obj/effect/decal/warning_stripes{
@@ -50937,20 +48388,10 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/medical/upper_medical)
+/area/almayer/medical/medical_science)
 "mqK" = (
 /obj/structure/machinery/cm_vending/gear/spec,
 /obj/structure/sign/safety/hazard{
@@ -50964,12 +48405,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/bravo)
-"mqQ" = (
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "mqU" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8;
@@ -51120,25 +48555,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/alpha)
-"muL" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply,
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1;
-	pixel_y = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
-/area/almayer/medical/containment)
 "muR" = (
 /obj/item/bedsheet/purple{
 	layer = 3.2
@@ -51498,17 +48914,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -51628,13 +49033,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/vents/pump{
-	name = "Secure Air Vent";
-	welded = 1
-	},
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 8
 	},
@@ -51645,10 +49043,6 @@
 	pixel_x = -1
 	},
 /obj/structure/disposalpipe/segment,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side"
@@ -51689,16 +49083,6 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
 	dir = 8
 	},
@@ -51712,20 +49096,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/gym)
-"mHE" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/turf/closed/wall/almayer/white,
-/area/almayer/medical/medical_science)
 "mHO" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
@@ -51743,18 +49113,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/securestorage)
-"mIb" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/reagent_dispensers/water_cooler/walk_past{
-	pixel_x = 10;
-	pixel_y = 3
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/medical_science)
 "mIy" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -51992,14 +49350,6 @@
 	icon_state = "silver"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
-"mNd" = (
-/obj/structure/surface/rack,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/filingcabinet,
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "mNf" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk,
@@ -52075,12 +49425,6 @@
 "mOJ" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -52195,19 +49539,6 @@
 /obj/structure/sink{
 	pixel_y = 24
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_y = 1
-	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -52251,16 +49582,6 @@
 	freerange = 1;
 	name = "General Listening Channel";
 	pixel_y = 28
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/chem_master{
-	vial_maker = 1
-	},
-/obj/structure/sign/safety/chem_lab{
-	pixel_x = 5;
-	pixel_y = 29
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -52315,20 +49636,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/navigation)
-"mTo" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/closet/l3closet/general,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "mTZ" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -52684,17 +49991,8 @@
 /area/almayer/shipboard/brig/perma)
 "naJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "sterile_green_side"
+	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/medical_science)
 "naQ" = (
@@ -52756,18 +50054,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"ndF" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/surface/rack,
-/turf/open/floor/almayer{
-	icon_state = "silvercorner"
-	},
-/area/almayer/command/computerlab)
 "ndJ" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -53188,15 +50474,6 @@
 	icon_state = "green"
 	},
 /area/almayer/squads/req)
-"nmq" = (
-/obj/structure/machinery/camera/autoname/almayer/containment{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/turf/closed/wall/almayer/research/containment/wall/west,
-/area/almayer/medical/containment/cell)
 "nms" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/effect/decal/warning_stripes{
@@ -53396,16 +50673,6 @@
 	pixel_y = 6
 	},
 /obj/item/storage/box/pillbottles,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/closet/secure_closet/hydroresearch,
-/obj/item/reagent_container/glass/watertank,
-/obj/item/reagent_container/glass/watertank,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -53772,26 +51039,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/pilotbunks)
-"nwP" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/flasher{
-	id = "Containment Cell 5";
-	layer = 2.1;
-	name = "Mounted Flash";
-	pixel_y = 30
-	},
-/obj/structure/machinery/iv_drip,
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/turf/closed/wall/almayer/research/containment/wall/west,
-/area/almayer/medical/containment/cell)
 "nwU" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -53905,11 +51152,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
-"nAJ" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/plating,
-/area/almayer/engineering/starboard_atmos)
 "nBa" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
 	req_access = null;
@@ -54064,18 +51306,12 @@
 	dir = 8;
 	health = 80
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "nDK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	pixel_x = -1
-	},
-/obj{
-	name = "---Merge conflict marker---"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -54144,19 +51380,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_a_s)
-"nEV" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/medical_science)
 "nFh" = (
 /turf/open/floor/almayer{
 	dir = 10;
@@ -54188,24 +51411,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/starboard_point_defense)
-"nFu" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/surface/rack,
-/obj/item/storage/fancy/vials,
-/obj/item/storage/fancy/vials,
-/obj/item/storage/fancy/vials,
-/obj/item/storage/fancy/vials,
-/obj/item/storage/fancy/vials,
-/obj/item/storage/fancy/vials,
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "nFy" = (
 /obj/structure/machinery/firealarm{
 	dir = 1;
@@ -54420,15 +51625,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/hydroponics)
 "nJS" = (
@@ -54441,16 +51637,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/port_emb)
-"nKg" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/medical_science)
 "nKq" = (
 /obj/structure/machinery/status_display{
 	pixel_x = 16;
@@ -54574,31 +51760,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/execution)
-"nNg" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/flasher{
-	id = "Containment Cell 1";
-	layer = 2.1;
-	name = "Mounted Flash";
-	pixel_y = 30
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer/research/containment/corner_var1{
-	icon_state = "containment_corner_variant_2"
-	},
-/area/almayer/medical/containment/cell)
 "nNq" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/intel{
@@ -54840,9 +52001,6 @@
 	pixel_x = 4;
 	pixel_y = 16
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -54872,29 +52030,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering)
-"nSq" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/turf/closed/wall/almayer/research/containment/wall/corner{
-	dir = 4
-	},
-/area/almayer/medical/containment/cell)
-"nSB" = (
-/obj/structure/bed/chair/comfy{
-	dir = 8
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/medical/medical_science)
 "nSJ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/effect/decal/warning_stripes{
@@ -54992,34 +52127,6 @@
 	dir = 4;
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/machinery/door_control{
-	id = "W_Containment Cell 1";
-	name = "Containment Lockdown";
-	pixel_x = -7;
-	pixel_y = 1;
-	req_one_access_txt = "19;28"
-	},
-/obj/structure/machinery/door_display/research_cell{
-	id = "Containment Cell 1";
-	name = "Cell 1 Control";
-	pixel_x = 5;
-	pixel_y = 2
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
 	dir = 1
@@ -55123,12 +52230,6 @@
 	dir = 4;
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
 	dir = 8
@@ -55259,9 +52360,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
 	},
 /turf/open/floor/almayer/research/containment/corner{
 	dir = 1
@@ -55474,9 +52572,6 @@
 	req_one_access_txt = "91;92";
 	req_access = null
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
 	},
@@ -55524,17 +52619,6 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 1
 	},
@@ -55561,19 +52645,6 @@
 	},
 /area/almayer/command/cic)
 "ofV" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/closet/secure_closet/surgical{
-	pixel_x = -30
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
 /turf/closed/wall/almayer/research/containment/wall/west,
 /area/almayer/medical/containment/cell)
 "ofZ" = (
@@ -55763,15 +52834,6 @@
 	icon_state = "SW-out";
 	pixel_x = -1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/hydroponics)
 "okD" = (
@@ -55804,33 +52866,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
-"olc" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/door/window/westright,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/window/westright{
-	dir = 4;
-	req_access_txt = "28"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	dir = 8;
-	id = "researchlockdownext_windoor";
-	name = "\improper Research Windoor Shutter"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/medical_science)
 "olk" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Bathroom"
@@ -55886,10 +52921,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/general_equipment)
-"olx" = (
-/obj/structure/surface/rack,
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "olM" = (
 /obj/structure/bed/chair{
 	can_buckle = 0;
@@ -55955,19 +52986,8 @@
 	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresDown";
-	vector_x = 98;
-	vector_y = -65
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresDown";
 	vector_x = 97;
 	vector_y = -65
-	},
-/obj/structure/stairs{
-	dir = 1
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -56029,23 +53049,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/hallways/hangar)
-"onb" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresDown";
-	vector_x = 97;
-	vector_y = -65
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/stairs{
-	dir = 1
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/command/airoom)
 "onF" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
@@ -56339,18 +53342,6 @@
 	icon_state = "emerald"
 	},
 /area/almayer/squads/charlie)
-"osv" = (
-/obj/structure/machinery/camera/autoname/almayer/containment{
-	dir = 8
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer/research/containment/corner{
-	dir = 1
-	},
-/area/almayer/medical/containment/cell)
 "osx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -56585,23 +53576,6 @@
 	},
 /turf/closed/wall/almayer,
 /area/almayer/hallways/starboard_umbilical)
-"ovT" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor5"
-	},
-/area/almayer/medical/hydroponics)
 "owg" = (
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -56748,20 +53722,6 @@
 	icon_state = "cargo"
 	},
 /area/almayer/engineering/engine_core)
-"ozn" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/prop/almayer/CICmap,
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/overwatch/almayer{
-	dir = 8;
-	layer = 3.2;
-	pixel_x = -17;
-	pixel_y = 16
-	},
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/command/securestorage)
 "ozq" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
@@ -56930,10 +53890,6 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/recharge_station,
 /turf/open/floor/plating/plating_catwalk{
 	allow_construction = 0
 	},
@@ -57488,13 +54444,6 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -57562,24 +54511,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"oPP" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/projector{
-	name = "Almayer_AresDown";
-	vector_x = 97;
-	vector_y = -65
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/command/airoom)
 "oQo" = (
 /obj/item/stool,
 /turf/open/floor/almayer{
@@ -57614,24 +54545,6 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = 11
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_x = -1
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -57803,10 +54716,6 @@
 "oVI" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/extinguisher,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/sofa/south/white/left,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -57937,16 +54846,6 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
-"oYI" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
 "oZd" = (
 /obj/structure/closet/secure_closet/personal/cabinet{
 	req_access = null
@@ -58052,27 +54951,6 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/computer/cameras/almayer/containment{
-	dir = 8;
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/tool/extinguisher{
-	pixel_x = 7;
-	pixel_y = 7
-	},
-/obj/structure/machinery/door_control{
-	id = "containmentlockdown_S";
-	name = "Containment Lockdown";
-	pixel_x = -5;
-	pixel_y = -4;
-	req_one_access_txt = "19;28"
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -58163,15 +55041,6 @@
 	dir = 4
 	},
 /obj/structure/bed/chair/comfy,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -58202,12 +55071,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	pixel_x = -1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
@@ -58265,15 +55128,6 @@
 	pixel_x = 4;
 	pixel_y = 16
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_x = -1;
-	pixel_y = 1
-	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner"
@@ -58296,14 +55150,6 @@
 /obj/structure/machinery/door/airlock/almayer/research/reinforced{
 	dir = 8;
 	name = "\improper Containment Airlock"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "containmentlockdown_S";
-	name = "\improper Containment Lockdown"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -58413,17 +55259,6 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/iv_drip,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side"
@@ -58521,19 +55356,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/shipboard/brig/surgery)
-"pmb" = (
-/obj/structure/surface/rack,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/line_nexter{
-	id = "line1";
-	pixel_x = -2
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/command/computerlab)
 "pmk" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -58598,14 +55420,6 @@
 /obj/structure/machinery/iv_drip,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
 	},
 /turf/open/floor/almayer{
 	dir = 9;
@@ -58675,12 +55489,6 @@
 	unacidable = 1;
 	unslashable = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	dir = 1
-	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
 	},
@@ -58739,15 +55547,6 @@
 	icon_state = "delivery_med";
 	name = "Requisitions Delivery Unit";
 	pixel_y = 29
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/medical_pod/bodyscanner{
-	dir = 8
-	},
-/obj/structure/machinery/status_display{
-	pixel_y = 30
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -58912,22 +55711,8 @@
 	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresDown";
-	vector_x = 98;
-	vector_y = -65
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresDown";
 	vector_x = 97;
 	vector_y = -65
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/stairs{
-	dir = 1
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -58977,10 +55762,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
-"pve" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "pvh" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/item/tool/warning_cone{
@@ -58995,20 +55776,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "W_Containment Cell 2";
-	name = "\improper Containment Cell 5";
-	unacidable = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -59075,11 +55842,6 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 8
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/intel,
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "pwE" = (
@@ -59205,12 +55967,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/weapon_room)
-"pyZ" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
 "pzc" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/bed/chair{
@@ -59303,28 +56059,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"pAE" = (
-/obj/structure/machinery/light,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/hydroponics)
 "pAR" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 8
@@ -59453,18 +56187,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/lifeboat)
-"pEf" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/machinery/autodispenser{
-	dir = 4
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "pEl" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -59782,15 +56504,6 @@
 	density = 0;
 	pixel_y = 16
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/rack{
-	density = 0;
-	pixel_y = 16
-	},
-/obj/structure/janitorialcart,
-/obj/item/tool/mop,
 /turf/open/floor/plating/plating_catwalk{
 	allow_construction = 0
 	},
@@ -59863,35 +56576,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/command/cichallway)
-"pNj" = (
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
-/obj/effect/projector{
-	name = "Almayer_AresDown";
-	vector_x = 98;
-	vector_y = -65
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/projector{
-	name = "Almayer_AresDown";
-	vector_x = 97;
-	vector_y = -65
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
-/turf/open/floor/almayer/no_build{
-	icon_state = "ai_floors"
-	},
-/area/almayer/command/airoom)
 "pNo" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
@@ -59927,12 +56611,6 @@
 /turf/open/floor/almayer/research/containment/corner{
 	dir = 4
 	},
-/area/almayer/medical/containment/cell)
-"pOc" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/turf/closed/wall/almayer/research/containment/wall/west,
 /area/almayer/medical/containment/cell)
 "pOi" = (
 /obj/structure/disposalpipe/segment,
@@ -60078,37 +56756,11 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/offices)
-"pRl" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 8
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/view_objectives,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/securestorage)
 "pRr" = (
 /obj/structure/sign/poster{
 	pixel_x = -30;
 	pixel_y = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/sign/poster{
-	pixel_x = -30;
-	pixel_y = 4
-	},
-/obj/structure/surface/table/almayer,
 /turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "pRy" = (
@@ -60133,15 +56785,10 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor4"
+	icon_state = "sterile_green_side"
 	},
-/area/almayer/medical/medical_science)
+/area/almayer/medical/upper_medical)
 "pSL" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -60390,37 +57037,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
-"pXi" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/stairs{
-	dir = 1
-	},
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresUp";
-	vector_x = -98;
-	vector_y = 65
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresUp";
-	vector_x = -97;
-	vector_y = 65
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/stairs{
-	dir = 1
-	},
-/turf/open/floor/almayer/no_build{
-	dir = 8;
-	icon_state = "silver"
-	},
-/area/almayer/command/airoom)
 "pXj" = (
 /obj/structure/closet/radiation,
 /turf/open/floor/almayer{
@@ -60714,10 +57330,6 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -60787,22 +57399,6 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/port_missiles)
-"qfd" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door_control{
-	dir = 1;
-	id = "researchlockdownext_door";
-	name = "Door Shutters";
-	pixel_y = 29;
-	req_access_txt = "28"
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/medical_science)
 "qfh" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -60900,25 +57496,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/stern_hallway)
-"qht" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "qhx" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -61078,10 +57655,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_s)
-"qkw" = (
-/obj/structure/machinery/autolathe/medilathe/full,
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "qkA" = (
 /obj/structure/machinery/door_control{
 	id = "hangarentrancesouth";
@@ -61151,12 +57724,6 @@
 	dir = 4;
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
 	dir = 4
@@ -61484,12 +58051,6 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -61523,25 +58084,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/cryo_tubes)
-"quA" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	name = "\improper Medical Bay";
-	req_one_access = null
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/turf/closed/wall/almayer/white,
-/area/almayer/medical/upper_medical)
 "quI" = (
 /obj/structure/machinery/door_control{
 	id = "laddersouthwest";
@@ -61810,33 +58352,6 @@
 	icon_state = "emeraldfull"
 	},
 /area/almayer/squads/charlie_delta_shared)
-"qzB" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/body_scanconsole{
-	dir = 8;
-	layer = 3.1
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/obj/structure/machinery/disposal{
-	density = 0;
-	desc = "A pneumatic delivery unit. Sends items to the requisitions.";
-	icon_state = "delivery_med";
-	name = "Requisitions Delivery Unit";
-	pixel_y = 29
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/medical_science)
 "qAd" = (
 /obj/structure/filingcabinet/filingcabinet{
 	density = 0;
@@ -61857,20 +58372,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "W_Containment Cell 2";
-	name = "\improper Containment Cell 5";
-	unacidable = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner"
@@ -61943,14 +58444,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
-"qBR" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/hydroponics)
 "qCc" = (
 /obj/structure/sign/safety/security{
 	pixel_x = 15;
@@ -62183,10 +58676,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/device/binoculars,
 /obj/item/tool/shovel/etool,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light,
 /turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "qHl" = (
@@ -62228,21 +58717,6 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/brig/execution)
-"qHH" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/sign/safety/ref_bio_storage{
-	pixel_x = -17;
-	pixel_y = 7
-	},
-/obj/structure/sign/safety/biohazard{
-	pixel_x = -17;
-	pixel_y = -7
-	},
-/obj/structure/machinery/cm_vending/sorted/medical/chemistry,
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "qHM" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -62368,18 +58842,6 @@
 	dir = 8;
 	pixel_x = 17;
 	layer = 3.1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full,
-/obj/structure/machinery/computer/working_joe{
-	dir = 8;
-	pixel_x = 17
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -62629,9 +59091,6 @@
 /area/almayer/hull/lower_hull/l_f_s)
 "qNH" = (
 /obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
 /turf/open/floor/plating,
 /area/almayer/engineering/starboard_atmos)
 "qNR" = (
@@ -62705,12 +59164,6 @@
 /obj/structure/machinery/sleep_console{
 	dir = 8
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/medical_pod/sleeper{
-	dir = 8
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -62767,27 +59220,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/medical/morgue)
-"qQg" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor5"
-	},
-/area/almayer/medical/hydroponics)
 "qQm" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4
@@ -63003,22 +59435,6 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/charlie_delta_shared)
-"qUr" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/sleep_console{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/medical_science)
 "qUL" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 4
@@ -63041,38 +59457,9 @@
 	icon_state = "cargo"
 	},
 /area/almayer/shipboard/brig/execution)
-"qVG" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/intelligence_officer,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/command/securestorage)
-"qVI" = (
-/obj/structure/machinery/chem_storage/medbay{
-	dir = 1
-	},
-/obj/structure/machinery/chem_storage/research{
-	dir = 1;
-	layer = 3;
-	pixel_y = 18
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "qVM" = (
 /turf/closed/wall/almayer,
 /area/almayer/hull/upper_hull/u_m_p)
-"qVQ" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1;
-	req_one_access = null;
-	req_one_access_txt = "91;92"
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/command/airoom)
 "qVS" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 2;
@@ -63120,12 +59507,6 @@
 /obj/structure/pipes/vents/pump{
 	name = "Secure Air Vent";
 	welded = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/chair/comfy{
-	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -63655,14 +60036,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/command/corporateliason)
-"rjW" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silvercorner"
-	},
-/area/almayer/hallways/aft_hallway)
 "rka" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
@@ -63856,24 +60229,6 @@
 	pixel_x = 5;
 	pixel_y = -2
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/computer/cameras/almayer/ares{
-	dir = 8;
-	pixel_x = 17;
-	pixel_y = 6
-	},
-/obj/structure/surface/table/reinforced/almayer_B{
-	climbable = 0;
-	indestructible = 1;
-	unacidable = 1;
-	unslashable = 1
-	},
-/obj/item/paper_bin/uscm{
-	pixel_y = 6
-	},
-/obj/item/tool/pen,
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
 	},
@@ -63883,11 +60238,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "rmZ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1;
-	pixel_y = -1
-	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side"
@@ -63908,12 +60258,6 @@
 /obj/item/tool/hand_labeler{
 	pixel_x = -6;
 	pixel_y = -5
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/chair/comfy{
-	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -63947,44 +60291,8 @@
 	health = 80;
 	pixel_y = 6
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/shower{
-	pixel_y = 16
-	},
-/obj/structure/machinery/door_control{
-	id = "containmentlockdown_S";
-	name = "Containment Lockdown";
-	pixel_x = 29;
-	pixel_y = 3;
-	req_one_access_txt = "19;28"
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80;
-	pixel_y = 6
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
-"rnU" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "rob" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -64016,39 +60324,19 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "roP" = (
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresUp";
-	vector_x = -98;
-	vector_y = 65
-	},
 /obj/structure/platform{
 	dir = 8
 	},
 /obj/structure/stairs{
 	dir = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
 	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresUp";
 	vector_x = -97;
 	vector_y = 65
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/stairs{
-	dir = 1
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 8;
@@ -64121,24 +60409,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
-"rqm" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor5"
-	},
-/area/almayer/medical/hydroponics)
 "rqw" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -64160,7 +60430,7 @@
 	},
 /area/almayer/squads/delta)
 "rqG" = (
-/obj/structure/machinery/power/apc/almayer{
+/obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -64289,15 +60559,6 @@
 	dir = 4;
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -64538,14 +60799,6 @@
 	pixel_x = 2;
 	pixel_y = 3
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/centrifuge{
-	layer = 3.1;
-	pixel_y = 4
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -64559,17 +60812,6 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
-"ryQ" = (
-/obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/turf/open/floor/plating,
-/area/almayer/medical/upper_medical)
 "ryR" = (
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
 	req_access = list(1)
@@ -64981,25 +61223,6 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/sign/safety/terminal{
-	pixel_x = 7;
-	pixel_y = -25
-	},
-/obj/structure/surface/rack,
-/obj/item/storage/box/autoinjectors{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/obj/item/storage/box/beakers{
-	pixel_x = -6;
-	pixel_y = 5
-	},
-/obj/item/storage/box/sprays{
-	pixel_y = -3
-	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side"
@@ -65017,13 +61240,6 @@
 	icon_state = "NW-out";
 	pixel_x = -1;
 	pixel_y = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
 	},
 /turf/open/floor/almayer{
 	dir = 9;
@@ -65061,22 +61277,8 @@
 	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresUp";
-	vector_x = -98;
-	vector_y = 65
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresUp";
 	vector_x = -97;
 	vector_y = 65
-	},
-/obj/structure/stairs{
-	dir = 1
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 4;
@@ -65084,13 +61286,6 @@
 	},
 /area/almayer/command/airoom)
 "rGx" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/vents/pump{
-	name = "Secure Air Vent";
-	welded = 1
-	},
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 8
 	},
@@ -65196,26 +61391,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"rIT" = (
-/obj/effect/step_trigger/clone_cleaner,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "ARES StairsUpper";
-	name = "\improper ARES Core Shutters";
-	plane = -7
-	},
-/obj/structure/machinery/door/poddoor/almayer/blended/open{
-	id = "ARES Emergency";
-	name = "ARES Emergency Lockdown";
-	open_layer = 1.9;
-	plane = -7
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/turf/open/floor/almayer/no_build{
-	icon_state = "test_floor4"
-	},
-/area/almayer/command/airoom)
 "rIW" = (
 /obj/structure/machinery/cm_vending/gear/synth,
 /obj/effect/decal/cleanable/cobweb2,
@@ -65223,14 +61398,6 @@
 	icon_state = "cargo"
 	},
 /area/almayer/living/synthcloset)
-"rIX" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "rJb" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -65348,10 +61515,6 @@
 /obj/structure/machinery/faxmachine/uscm{
 	department = "USS Almayer's Intelligence"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/closet,
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "silver"
@@ -65448,20 +61611,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/bridgebunks)
-"rOx" = (
-/obj/structure/machinery/shower{
-	pixel_y = 16
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80;
-	pixel_y = 6
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "rOC" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -65515,13 +61664,6 @@
 	},
 /obj/structure/machinery/light/containment{
 	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -65619,9 +61761,6 @@
 /obj/structure/filingcabinet,
 /obj/structure/machinery/light{
 	dir = 4
-	},
-/obj{
-	name = "---Merge conflict marker---"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -65801,18 +61940,6 @@
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor5"
@@ -66006,18 +62133,6 @@
 	pixel_y = 28
 	},
 /obj/structure/machinery/photocopier,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/sign/safety/terminal{
-	layer = 2.5;
-	pixel_x = 8;
-	pixel_y = 32
-	},
-/obj/structure/machinery/chem_simulator{
-	density = 0;
-	pixel_y = 16
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -66565,16 +62680,6 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/sink{
-	pixel_y = 24
-	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -66588,9 +62693,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner"
@@ -66810,10 +62912,6 @@
 	dir = 4;
 	name = "ship-grade camera"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "silver"
@@ -67063,29 +63161,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/navigation)
-"sva" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "W_Containment Cell 5";
-	name = "\improper Containment Cell 5";
-	unacidable = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/turf/open/floor/almayer/research/containment/floor2{
-	dir = 8
-	},
-/area/almayer/medical/containment/cell)
 "svd" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/almayer{
@@ -67144,17 +63219,6 @@
 	icon_state = "greencorner"
 	},
 /area/almayer/living/grunt_rnr)
-"swz" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/reagent_analyzer{
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "swE" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/alarm/almayer{
@@ -67230,9 +63294,6 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -67286,17 +63347,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
-"syX" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "szm" = (
 /obj/structure/machinery/power/fusion_engine{
 	name = "\improper S-52 fusion reactor 10"
@@ -67428,15 +63478,6 @@
 	icon_state = "green"
 	},
 /area/almayer/living/grunt_rnr)
-"sBR" = (
-/obj/structure/machinery/smartfridge/chemistry,
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 28
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "sBU" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -67618,9 +63659,6 @@
 "sEY" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/bed,
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -67843,7 +63881,7 @@
 	},
 /obj/effect/projector{
 	name = "Almayer_AresDown";
-	vector_x = 98;
+	vector_x = 97;
 	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
@@ -67870,10 +63908,6 @@
 	pixel_x = 1;
 	pixel_y = -2
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side"
@@ -67969,10 +64003,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south1)
 "sNm" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /turf/open/floor/almayer/research/containment/corner{
 	dir = 1
 	},
@@ -68003,14 +64033,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -68170,10 +64192,6 @@
 /obj/structure/machinery/camera/autoname/almayer/containment{
 	dir = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side"
@@ -68213,17 +64231,6 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -68241,24 +64248,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cells)
-"sSw" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/medical_science)
 "sSx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -68288,11 +64277,6 @@
 	pixel_y = -7
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/item/reagent_container/glass/beaker/bluespace,
-/obj/structure/machinery/chem_dispenser/research,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -68559,15 +64543,6 @@
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/hydroponics)
 "sXs" = (
@@ -68597,14 +64572,9 @@
 /obj/item/tool/pen{
 	pixel_x = 6
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor5"
+	dir = 1;
+	icon_state = "silver"
 	},
 /area/almayer/command/computerlab)
 "sXE" = (
@@ -69006,22 +64976,8 @@
 	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresDown";
-	vector_x = 98;
-	vector_y = -65
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresDown";
 	vector_x = 97;
 	vector_y = -65
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/stairs{
-	dir = 1
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -69145,29 +65101,8 @@
 	},
 /obj/effect/projector{
 	name = "Almayer_AresDown";
-	vector_x = 98;
-	vector_y = -65
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/projector{
-	name = "Almayer_AresDown";
 	vector_x = 97;
 	vector_y = -65
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
-/obj/structure/machinery/door_control{
-	id = "ARES StairsUpper";
-	name = "ARES Core Access";
-	pixel_x = 24;
-	req_one_access_txt = "19;200;90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -69244,15 +65179,6 @@
 	icon_state = "sterile_green"
 	},
 /area/almayer/medical/lockerroom)
-"tjL" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/sign/safety/rewire{
-	pixel_x = -17
-	},
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/command/securestorage)
 "tjO" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -69380,11 +65306,6 @@
 "tmH" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/reinforced/black,
-/obj/effect/landmark/map_item,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
 /obj/effect/landmark/map_item,
 /turf/open/floor/almayer{
 	icon_state = "silver"
@@ -69565,13 +65486,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/structure/machinery/power/apc/almayer,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner"
@@ -69663,20 +65577,6 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/almayer/medical/hydroponics)
-"trp" = (
-/obj/effect/landmark/start/working_joe,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/recharge_station,
-/turf/open/floor/plating/plating_catwalk{
-	allow_construction = 0
-	},
-/area/almayer/command/airoom)
 "trx" = (
 /obj/structure/reagent_dispensers/fueltank/gas/hydrogen{
 	anchored = 1
@@ -69948,14 +65848,6 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -69987,13 +65879,6 @@
 "twY" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
 	},
 /turf/open/floor/almayer{
 	dir = 10;
@@ -70111,13 +65996,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
-"tzn" = (
-/obj/structure/pipes/standard/manifold/hidden/supply,
-/obj/structure/disposalpipe/junction{
-	dir = 8
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
 "tzz" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -70291,35 +66169,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/living/port_emb)
-"tDK" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
-	dir = 1;
-	id = "Containment Cell 5";
-	locked = 1;
-	name = "\improper Containment Cell 5"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Containment Cell 5";
-	name = "\improper Containment Cell 5";
-	unacidable = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/turf/closed/wall/almayer/research/containment/wall/north,
-/area/almayer/medical/containment/cell)
 "tDZ" = (
 /obj/structure/machinery/cryopod{
 	pixel_y = 6
@@ -70531,9 +66380,6 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -70562,9 +66408,6 @@
 /obj/structure/reagent_dispensers/water_cooler/walk_past{
 	pixel_x = 10;
 	pixel_y = 3
-	},
-/obj{
-	name = "---Merge conflict marker---"
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -70637,12 +66480,6 @@
 	req_one_access_txt = "91;92"
 	},
 /obj/effect/step_trigger/clone_cleaner,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/chair/office/dark{
-	dir = 8
-	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
 	},
@@ -70801,19 +66638,6 @@
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/clothing/accessory/storage/black_vest/acid_harness,
-/obj/item/clothing/accessory/storage/black_vest/acid_harness,
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -70896,13 +66720,6 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "sterile_green_side"
@@ -70967,9 +66784,6 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/almayer/research/containment/corner_var1{
 	dir = 4
 	},
@@ -71001,22 +66815,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/squads/req)
-"tPm" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research,
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "researchlockdownext_door";
-	name = "\improper Research Doorway Shutter"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "tPI" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -71040,11 +66838,6 @@
 "tQV" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/lifeboat_pumps/south1)
-"tRe" = (
-/turf/open/floor/almayer{
-	icon_state = "silverfull"
-	},
-/area/almayer/command/securestorage)
 "tRA" = (
 /obj/structure/bed/chair,
 /obj/structure/machinery/firealarm{
@@ -71188,44 +66981,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
-"tWf" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
-/obj/effect/projector{
-	name = "Almayer_AresUp";
-	vector_x = -98;
-	vector_y = 65
-	},
-/obj/effect/projector{
-	name = "Almayer_AresUp";
-	vector_x = -98;
-	vector_y = 65
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/projector{
-	name = "Almayer_AresUp";
-	vector_x = -97;
-	vector_y = 65
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
-/turf/open/floor/almayer/no_build{
-	dir = 4;
-	icon_state = "silver"
-	},
-/area/almayer/command/airoom)
 "tWg" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -71428,11 +67183,8 @@
 	},
 /obj/effect/projector{
 	name = "Almayer_AresDown";
-	vector_x = 98;
+	vector_x = 97;
 	vector_y = -65
-	},
-/obj{
-	name = "---Merge conflict marker---"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -71530,21 +67282,6 @@
 "ubg" = (
 /obj/effect/projector{
 	name = "Almayer_AresUp";
-	vector_x = -98;
-	vector_y = 65
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/projector{
-	name = "Almayer_AresUp";
 	vector_x = -97;
 	vector_y = 65
 	},
@@ -71585,11 +67322,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south2)
-"ucK" = (
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/command/securestorage)
 "udi" = (
 /turf/open/floor/almayer{
 	icon_state = "red"
@@ -71746,14 +67478,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	pixel_x = -1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -72100,10 +67824,6 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/window/southleft,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -72234,9 +67954,6 @@
 	dir = 4;
 	health = 80
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor5"
 	},
@@ -72313,9 +68030,6 @@
 	pixel_x = -2;
 	pixel_y = 6
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -72347,10 +68061,6 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -72474,20 +68184,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "W_Containment Cell 5";
-	name = "\improper Containment Cell 5";
-	unacidable = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
 	},
 /turf/open/floor/almayer/research/containment/corner_var1{
 	dir = 4
@@ -72861,10 +68557,6 @@
 	pixel_y = 1;
 	req_access_txt = "28"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side"
@@ -72935,33 +68627,6 @@
 "uCs" = (
 /obj/structure/machinery/chem_master{
 	vial_maker = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/storage/firstaid/o2{
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/obj/item/storage/firstaid/fire{
-	pixel_x = 8;
-	pixel_y = 6
-	},
-/obj/item/storage/firstaid/adv{
-	pixel_x = -6;
-	pixel_y = -2
-	},
-/obj/item/storage/firstaid/toxin{
-	pixel_x = 8;
-	pixel_y = -2
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -73037,18 +68702,6 @@
 	dir = 4;
 	health = 80
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/closet/l3closet/general,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "uEc" = (
@@ -73057,18 +68710,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/engineering/engine_core)
-"uEi" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 28
-	},
-/obj/structure/machinery/photocopier,
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "uEv" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -73095,23 +68736,8 @@
 	},
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresUp";
-	vector_x = -98;
-	vector_y = 65
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresUp";
 	vector_x = -97;
 	vector_y = 65
-	},
-/obj/structure/machinery/light{
-	unacidable = 1;
-	unslashable = 1
-	},
-/obj/structure/stairs{
-	dir = 1
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 4
@@ -73495,37 +69121,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/lower_engineering)
-"uLT" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/stairs{
-	dir = 1
-	},
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresUp";
-	vector_x = -98;
-	vector_y = 65
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresUp";
-	vector_x = -97;
-	vector_y = 65
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/stairs{
-	dir = 1
-	},
-/turf/open/floor/almayer/no_build{
-	dir = 4;
-	icon_state = "silver"
-	},
-/area/almayer/command/airoom)
 "uLW" = (
 /obj/item/tool/mop{
 	pixel_x = -6;
@@ -73852,20 +69447,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/living/port_emb)
-"uRP" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/machinery/computer/working_joe{
-	dir = 8;
-	pixel_x = 17
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
 "uRQ" = (
 /obj/item/storage/firstaid/fire,
 /obj/structure/surface/rack,
@@ -73894,29 +69475,6 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/aft_hallway)
-"uSW" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light/containment{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer/research/containment/floor2{
-	dir = 1
-	},
-/area/almayer/medical/containment/cell)
 "uTv" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/USCMtray{
@@ -74014,10 +69572,6 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating/plating_catwalk{
 	allow_construction = 0
 	},
@@ -74178,9 +69732,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/medical/lower_medical_medbay)
-"uXj" = (
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/containment/cell)
 "uXw" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	id_tag = "or03";
@@ -74417,21 +69968,6 @@
 	icon_state = "red"
 	},
 /area/almayer/squads/alpha)
-"vdn" = (
-/obj/effect/step_trigger/clone_cleaner,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "ARES StairsUpper";
-	name = "\improper ARES Core Shutters";
-	plane = -7
-	},
-/obj/structure/machinery/door/poddoor/almayer/blended/open{
-	id = "ARES Emergency";
-	name = "ARES Emergency Lockdown";
-	open_layer = 1.9;
-	plane = -7
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/command/airoom)
 "vdo" = (
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -74702,7 +70238,7 @@
 /turf/open/floor/almayer{
 	icon_state = "silver"
 	},
-/area/almayer/command/computerlab)
+/area/almayer/command/securestorage)
 "vil" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -74778,30 +70314,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/bravo)
-"viZ" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/projector{
-	name = "Almayer_AresDown";
-	vector_x = 97;
-	vector_y = -65
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
-	},
-/obj/structure/machinery/door_control{
-	id = "ARES StairsUpper";
-	name = "ARES Core Access";
-	pixel_x = -24;
-	req_one_access_txt = "19;200;90;91;92"
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/command/airoom)
 "vjb" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = -17
@@ -75010,14 +70522,6 @@
 	dir = 4;
 	health = 80
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/closet/l3closet/general,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "vot" = (
@@ -75093,20 +70597,8 @@
 	},
 /obj/effect/projector{
 	name = "Almayer_AresDown";
-	vector_x = 98;
-	vector_y = -65
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/projector{
-	name = "Almayer_AresDown";
 	vector_x = 97;
 	vector_y = -65
-	},
-/obj/structure/stairs{
-	dir = 1;
-	icon_state = "ramptop"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -75131,24 +70623,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/port_missiles)
-"vqK" = (
-/obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	dir = 8
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/reinforced/almayer_B{
-	climbable = 0;
-	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs. This one has a metal rail running above it, preventing something large passing over. Like you.";
-	indestructible = 1;
-	unacidable = 1;
-	unslashable = 1
-	},
-/turf/open/floor/almayer/no_build{
-	icon_state = "ai_floors"
-	},
-/area/almayer/command/airoom)
 "vqL" = (
 /obj/item/clothing/under/shorts/black,
 /obj/structure/machinery/power/apc/almayer{
@@ -75235,18 +70709,6 @@
 /obj/structure/machinery/light,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
-	},
-/obj/structure/reagent_dispensers/fueltank/custom,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/power/apc/almayer,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
 	},
 /obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer{
@@ -75366,27 +70828,6 @@
 /obj/effect/landmark/late_join/alpha,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
-"vuj" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light/containment{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer/research/containment/floor2{
-	dir = 1
-	},
-/area/almayer/medical/containment/cell)
 "vul" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -75426,20 +70867,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/sink{
-	pixel_y = 24
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
 	},
 /turf/open/floor/almayer/research/containment/entrance,
 /area/almayer/medical/containment/cell)
@@ -75491,19 +70918,6 @@
 /obj/item/storage/box/sprays{
 	pixel_y = -3
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/rack,
-/obj/item/storage/box/pillbottles{
-	pixel_x = 6;
-	pixel_y = 7
-	},
-/obj/item/storage/box/pillbottles{
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/obj/item/storage/box/pillbottles,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -75862,9 +71276,6 @@
 /area/almayer/hallways/stern_hallway)
 "vAv" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side"
@@ -75995,15 +71406,6 @@
 /obj/effect/landmark/start/bridge,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/bridgebunks)
-"vDX" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
-/area/almayer/medical/containment)
 "vEf" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -76339,21 +71741,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"vLl" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/structure/machinery/light,
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/containment)
 "vLA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -76390,21 +71777,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/repair_bay)
-"vMm" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/bed,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/medical_science)
 "vMn" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -76578,16 +71950,6 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/structure/bed,
-/obj/structure/machinery/power/apc/almayer{
-	dir = 4
-	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner"
@@ -76604,16 +71966,6 @@
 	icon_state = "cargo"
 	},
 /area/almayer/squads/delta)
-"vQb" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "vQe" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down2";
@@ -76661,11 +72013,6 @@
 	},
 /area/almayer/shipboard/brig/cells)
 "vQS" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/clipboard,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5"
 	},
@@ -76735,15 +72082,6 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/almayer/medical/upper_medical)
-"vSh" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/turf/closed/wall/almayer/research/containment/wall/west,
-/area/almayer/medical/containment/cell)
 "vSl" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
@@ -76817,12 +72155,6 @@
 "vTi" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/chair/office/dark{
-	dir = 8
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -76874,17 +72206,6 @@
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/machinery/cm_vending/clothing/medical_crew{
-	density = 0;
-	pixel_y = 16
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -77317,13 +72638,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/main_office)
-"wdv" = (
-/obj/structure/machinery/light/small,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silver"
-	},
-/area/almayer/command/securestorage)
 "wdz" = (
 /obj/effect/landmark/start/marine/engineer/charlie,
 /obj/effect/landmark/late_join/charlie,
@@ -77339,19 +72653,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1;
-	pixel_y = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_y = -1
 	},
 /turf/open/floor/almayer/research/containment/corner{
 	dir = 4
@@ -77380,38 +72681,11 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/upper_engineering/starboard)
-"weh" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/machinery/autolathe,
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "wet" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "containmentlockdown_S";
 	name = "\improper Containment Lockdown"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/obj/structure/machinery/door/airlock/almayer/research/reinforced{
-	dir = 8;
-	name = "\improper Containment Airlock"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -77464,13 +72738,6 @@
 	pixel_x = 5;
 	pixel_y = 24
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/seed_extractor{
-	density = 0;
-	pixel_y = 16
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -77490,14 +72757,10 @@
 	},
 /area/almayer/hull/upper_hull/u_m_p)
 "weV" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/rack,
 /turf/open/floor/almayer{
 	icon_state = "silvercorner"
 	},
-/area/almayer/command/computerlab)
+/area/almayer/command/securestorage)
 "wfh" = (
 /obj/structure/barricade/handrail{
 	dir = 4;
@@ -77602,12 +72865,6 @@
 	pixel_y = -20;
 	req_one_access_txt = "91;92"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
 	},
@@ -77625,10 +72882,6 @@
 /area/almayer/command/securestorage)
 "wgN" = (
 /obj/structure/disposalpipe/segment,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "sterile_green_side"
@@ -77662,9 +72915,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
 	},
 /turf/open/floor/almayer/research/containment/corner_var1{
 	dir = 4
@@ -78031,18 +73281,10 @@
 /obj/structure/sign/catclock{
 	pixel_y = 32
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/tool/extinguisher,
-/obj/structure/sign/catclock{
-	pixel_y = 32
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner"
 	},
-/area/almayer/medical/medical_science)
+/area/almayer/medical/upper_medical)
 "wlU" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
@@ -78079,17 +73321,6 @@
 	dir = 4;
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple,
 /area/almayer/medical/containment/cell)
@@ -78182,24 +73413,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/charlie)
-"wox" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer/research/containment/floor2{
-	dir = 1
-	},
-/area/almayer/medical/containment/cell)
 "woy" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -78247,15 +73460,6 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/research,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -78402,21 +73606,6 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/delta)
-"wtI" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "wtM" = (
 /obj/structure/machinery/light{
 	unacidable = 1;
@@ -78424,18 +73613,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
-"wtO" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/chair/office/dark{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver"
-	},
-/area/almayer/command/computerlab)
 "wuc" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Brig Medbay";
@@ -78695,10 +73872,6 @@
 /area/almayer/hull/lower_hull/l_a_s)
 "wzE" = (
 /obj/structure/bed/sofa/south/white/left,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/sofa/south/white/right,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -78712,20 +73885,6 @@
 	pixel_x = 1
 	},
 /obj/structure/reagent_dispensers/fueltank/custom,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "W_Containment Cell 3";
-	name = "\improper Containment Cell 5";
-	unacidable = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner"
@@ -78759,32 +73918,8 @@
 	name = "\improper Secure Airlock"
 	},
 /obj/structure/window/framed/almayer/white,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "containmentlockdown_S";
-	name = "\improper Containment Lockdown"
-	},
 /turf/open/floor/plating,
 /area/almayer/medical/containment)
-"wAt" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/light{
-	unacidable = 1;
-	unslashable = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/closed/wall/almayer/research/containment/wall/west,
-/area/almayer/medical/containment/cell)
 "wAA" = (
 /obj/structure/largecrate/random/barrel/red,
 /obj/structure/machinery/light{
@@ -78811,10 +73946,6 @@
 	pixel_y = 24;
 	req_one_access_txt = "1;200;90;91;92"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
 	},
@@ -78906,13 +74037,6 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "wDg" = (
-/obj/structure/machinery/camera/autoname/almayer/containment{
-	dir = 8
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /turf/open/floor/almayer/research/containment/corner_var1{
 	dir = 4
 	},
@@ -79034,18 +74158,6 @@
 	icon_state = "plating"
 	},
 /area/almayer/hallways/vehiclehangar)
-"wEy" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer/research/containment/corner_var1{
-	dir = 4
-	},
-/area/almayer/medical/containment/cell)
 "wEO" = (
 /obj/structure/platform_decoration{
 	dir = 4
@@ -79136,10 +74248,6 @@
 	pixel_y = -4;
 	req_one_access_txt = "19;28"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -79237,12 +74345,6 @@
 	},
 /area/almayer/living/grunt_rnr)
 "wII" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/bed/chair/office/dark{
-	dir = 8
-	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "silver"
@@ -79272,18 +74374,6 @@
 	icon_state = "ai_floors"
 	},
 /area/almayer/command/airoom)
-"wJa" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/turf/open/floor/almayer/research/containment/floor2{
-	dir = 8
-	},
-/area/almayer/medical/containment/cell)
 "wJb" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)
@@ -79305,14 +74395,6 @@
 	pixel_x = -3;
 	pixel_y = -1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/filingcabinet/chestdrawer{
-	density = 0;
-	pixel_x = -16
-	},
-/obj/structure/machinery/iv_drip,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "wJD" = (
@@ -79336,22 +74418,6 @@
 "wJH" = (
 /turf/closed/wall/almayer/research/containment/wall/east,
 /area/almayer/medical/containment/cell/cl)
-"wKe" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/centrifuge{
-	pixel_y = 7
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/medical_science)
 "wKk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -79409,32 +74475,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south2)
-"wLA" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/faxmachine/uscm/command{
-	density = 0;
-	department = "AI Core";
-	pixel_y = 32
-	},
-/obj/structure/surface/rack{
-	density = 0;
-	pixel_y = 16
-	},
-/obj/structure/machinery/computer/working_joe{
-	dir = 8;
-	pixel_x = 17;
-	pixel_y = -6;
-	ticket_console = 1
-	},
-/obj/item/storage/box/ids{
-	pixel_x = -4
-	},
-/turf/open/floor/almayer/no_build{
-	icon_state = "ai_floors"
-	},
-/area/almayer/command/airoom)
 "wLG" = (
 /obj/item/bedsheet/blue{
 	layer = 3.2
@@ -79500,15 +74540,6 @@
 	icon_state = "SE-out";
 	pixel_x = 1;
 	pixel_y = -1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -79684,21 +74715,6 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/storage/toolbox/mechanical{
-	pixel_x = 3;
-	pixel_y = 12
-	},
-/obj/item/storage/toolbox/electrical{
-	pixel_y = 5
-	},
-/obj/item/folder/white{
-	layer = 2.9;
-	pixel_x = -8
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -79733,16 +74749,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -79761,17 +74767,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/smartfridge/chemistry{
-	density = 0;
-	pixel_y = 16
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -80447,12 +75442,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 1
 	},
@@ -80539,40 +75528,12 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hull/lower_hull/l_f_p)
-"xgo" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/machinery/computer/research{
-	dir = 4;
-	pixel_y = 4
-	},
-/obj/item/tool/hand_labeler{
-	pixel_x = -6;
-	pixel_y = -5
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "xgr" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
-"xgs" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/intel{
-	dir = 4
-	},
-/turf/closed/wall/almayer,
-/area/almayer/command/computerlab)
 "xgB" = (
 /obj/structure/machinery/door_control{
 	id = "ARES StairsLower";
@@ -81012,29 +75973,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/brig/perma)
-"xrs" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "W_Containment Cell 1";
-	name = "\improper Containment Cell 5";
-	unacidable = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/turf/open/floor/almayer/research/containment/floor2{
-	dir = 8
-	},
-/area/almayer/medical/containment/cell)
 "xrN" = (
 /obj/structure/largecrate/supply/supplies/mre,
 /turf/open/floor/almayer{
@@ -81194,24 +76132,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/squads/charlie)
-"xvG" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "researchlockdownext_se_2";
-	name = "\improper Research Window Shutter"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "xvX" = (
 /obj/structure/machinery/cm_vending/gear/leader,
 /turf/open/floor/almayer{
@@ -81571,10 +76491,6 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -81640,27 +76556,10 @@
 	pixel_y = 16;
 	req_access_txt = "28"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/botany/editor{
-	density = 0;
-	pixel_x = 5;
-	pixel_y = 16
-	},
-/obj/item/clothing/glasses/science{
-	pixel_x = 5;
-	pixel_y = 24
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
 /area/almayer/medical/hydroponics)
-"xCz" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm,
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "xCR" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating/plating_catwalk,
@@ -81841,16 +76740,6 @@
 	pixel_y = 7
 	},
 /mob/living/simple_animal/mouse/white/Doc,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_x = -1
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -82083,14 +76972,6 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_x = -1;
-	pixel_y = 1
-	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -82250,10 +77131,6 @@
 /area/almayer/hallways/starboard_hallway)
 "xNC" = (
 /obj/structure/disposalpipe/segment,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "sterile_green_side"
@@ -82352,31 +77229,10 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/vents/pump{
-	name = "Secure Air Vent";
-	welded = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
-	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner"
 	},
 /area/almayer/medical/containment)
-"xQT" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/cm_vending/gear/intelligence_officer,
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/command/computerlab)
 "xRf" = (
 /obj/structure/sign/poster{
 	desc = "One of those hot, tanned babes back the beaches of good ol' Earth.";
@@ -82621,15 +77477,13 @@
 	},
 /area/almayer/living/port_emb)
 "xUw" = (
-/obj/effect/spawner/random/toolbox,
-/obj/structure/machinery/light/small{
-	dir = 1
+/obj/effect/spawner/random/toolbox{
+	pixel_y = 14
 	},
-/obj{
-	name = "---Merge conflict marker---"
+/obj/structure/surface/rack{
+	density = 0;
+	pixel_y = 16
 	},
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/crew/alt,
 /turf/open/floor/almayer{
 	icon_state = "orangefull"
 	},
@@ -82724,13 +77578,6 @@
 /obj/structure/machinery/autodispenser{
 	dir = 4
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/smartfridge/chemistry{
-	pixel_x = -3;
-	pixel_y = -1
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -82790,24 +77637,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
-"xXO" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/pipes/vents/pump,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor5"
-	},
-/area/almayer/medical/hydroponics)
 "xYf" = (
 /obj/structure/machinery/cm_vending/clothing/sea,
 /turf/open/floor/almayer{
@@ -83034,9 +77863,6 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /turf/open/floor/almayer/research/containment/corner{
 	dir = 1
 	},
@@ -83069,14 +77895,8 @@
 	icon_state = "SW-out";
 	pixel_y = -1
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side"
+	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/containment)
 "ydM" = (
@@ -83131,16 +77951,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south2)
-"yeM" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
 "yeN" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8
@@ -83242,12 +78052,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/living/captain_mess)
-"ygt" = (
-/obj/structure/surface/rack,
-/turf/open/floor/almayer{
-	icon_state = "silverfull"
-	},
-/area/almayer/command/computerlab)
 "ygy" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -83265,14 +78069,6 @@
 	pixel_x = 24;
 	pixel_y = 24;
 	req_one_access_txt = "1;200;90;91;92"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	name = "\improper AI Reception";
-	req_access = null;
-	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -83374,24 +78170,6 @@
 	icon_state = "plating"
 	},
 /area/almayer/engineering/engine_core)
-"yjY" = (
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "researchlockdownext";
-	name = "\improper Research Window Shutter"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "ykj" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -83464,12 +78242,6 @@
 "ylK" = (
 /obj/item/reagent_container/glass/beaker/bluespace,
 /obj/structure/machinery/chem_dispenser/research,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/chem_master{
-	vial_maker = 1
-	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -113388,7 +108160,7 @@ xie
 rqP
 xie
 aqQ
-aSu
+akw
 pSG
 ajl
 hon
@@ -113576,23 +108348,23 @@ jKK
 pjM
 aim
 vOy
-qVI
-weh
-nFu
-gEw
-qkw
 vOy
-uEi
-xgo
-swz
-hxk
-pEf
-gNy
-qHH
+vOy
+vOy
+vOy
+vOy
+vOy
+vOy
+vOy
+vOy
+vOy
+vOy
+vOy
+vOy
 vOy
 wlS
 aqQ
-mSv
+pSG
 ajl
 tEy
 pjM
@@ -113788,12 +108560,12 @@ vOy
 rYK
 rnx
 ryA
-lei
+hxk
 xWh
 luI
 sSR
 vOy
-fEd
+tHk
 tHk
 gMC
 ajo
@@ -113991,15 +108763,15 @@ vOy
 hAJ
 cGo
 dSV
-nSB
+cGo
 wJk
 mpm
 ylK
-yjY
+vOy
 dbV
 aqR
 mSv
-mHE
+ajo
 ago
 asW
 cwJ
@@ -114191,12 +108963,12 @@ ryu
 geL
 gqt
 vOy
-cqq
-bSC
+cXk
+cXk
 mgZ
-nKg
+cXk
 jnr
-azx
+cXk
 uCs
 lxj
 oVI
@@ -114392,8 +109164,8 @@ tLb
 itz
 krA
 cDm
-eCc
-syX
+qJy
+vOy
 peh
 gav
 sJX
@@ -114606,9 +109378,9 @@ pcL
 cIh
 lxj
 bOw
-qfd
-sSw
-ryQ
+aqR
+mSv
+ojM
 ybf
 aii
 avj
@@ -114799,19 +109571,19 @@ syy
 tre
 rFR
 bXD
-qzB
-qUr
+lIe
+lIe
 tMK
 avF
 oeg
 aqR
 wSC
 bKJ
-mnN
-tPm
+vOy
+vOy
 hQL
 cPC
-quA
+ajo
 ahM
 kSJ
 avj
@@ -115007,7 +109779,7 @@ qPw
 nsU
 avF
 oeg
-swQ
+aqR
 gbC
 xNC
 uBs
@@ -115201,8 +109973,8 @@ akU
 avj
 vOy
 eDH
-dgH
-eKC
+syy
+nKP
 noT
 qJy
 fTT
@@ -115210,12 +109982,12 @@ hFv
 nsU
 avG
 rmZ
-nEV
+swQ
 piY
 fGF
-gcd
+fGF
 ehp
-olc
+fGF
 giN
 bro
 qLK
@@ -115407,17 +110179,17 @@ dbj
 sXh
 sOq
 twQ
-qBR
+qJy
 vOy
 lTV
 nsU
-dxe
+aoM
 wNk
-vMm
+lIe
 vPy
-ybg
+vOy
 gCo
-dHB
+vOy
 cGI
 cye
 vOy
@@ -115608,12 +110380,12 @@ avj
 vOy
 cDp
 mkm
-qQg
-qQg
+rUQ
+rUQ
 rUQ
 vOy
 fCb
-dHq
+nsU
 dxe
 huR
 sEY
@@ -115623,7 +110395,7 @@ cLF
 fsM
 skb
 icd
-xvG
+vOy
 ayT
 aii
 avj
@@ -115815,15 +110587,15 @@ xBL
 xBL
 lCm
 vOy
-rOx
-oOy
-iBL
-rsJ
-mTo
 vOy
-sBR
+oOy
+vOy
+rsJ
+vOy
+vOy
+vOy
 cld
-gAo
+aoM
 aoM
 bHO
 qRP
@@ -116013,9 +110785,9 @@ aii
 avj
 vOy
 dxb
-bwL
-eTv
-eTv
+mkm
+iXZ
+iXZ
 iXZ
 vOy
 fCw
@@ -116029,7 +110801,7 @@ nsU
 qec
 aoM
 iWe
-cDa
+qRP
 ayT
 aii
 avj
@@ -116222,15 +110994,15 @@ utq
 aAR
 vOy
 rnQ
-mpG
+nsU
 lbl
 bRt
 voh
 vOy
 jcO
-jxu
+nsU
 lwR
-lIe
+aoM
 bRh
 dXM
 aTL
@@ -116420,9 +111192,9 @@ avj
 vOy
 weK
 oQT
-xXO
-ovT
-rqm
+iXZ
+iXZ
+iXZ
 vOy
 fnO
 aGE
@@ -116624,18 +111396,18 @@ vOy
 tzJ
 wOA
 ufq
-iUK
-pAE
+xBL
+lCm
 vOy
 vOy
 wet
-lZH
+wet
 wet
 vOy
 vOy
 kyn
-mIb
-wKe
+cXk
+cXk
 cXk
 ixK
 vOy
@@ -117029,19 +111801,19 @@ ali
 amD
 cwJ
 vOy
-uXj
-uXj
-uXj
-uXj
-uXj
-enD
-jGZ
-fKz
-uXj
-uXj
-uXj
-uXj
-uXj
+vOy
+vOy
+vOy
+vOy
+vOy
+wet
+wet
+wet
+vOy
+vOy
+vOy
+vOy
+vOy
 vOy
 vOy
 vOy
@@ -117233,16 +112005,16 @@ amK
 avj
 vOy
 nos
-eeH
-nmq
-wAt
+ofV
+ofV
+ofV
 lZZ
 slZ
 nDK
 pcR
 nos
-nwP
-nmq
+ofV
+ofV
 ofV
 lZZ
 vOy
@@ -117436,14 +112208,14 @@ akU
 avm
 vOy
 icM
-nNg
+eRn
 mHb
 wdD
-fNy
+oNp
 mRJ
-fNv
+vpp
 fql
-tDK
+icM
 gHO
 mHb
 iph
@@ -117640,7 +112412,7 @@ avj
 vOy
 icM
 ofD
-eqm
+tXx
 bie
 lSU
 lSM
@@ -117648,7 +112420,7 @@ epn
 ydA
 swT
 vuH
-eqm
+tXx
 kVY
 oNp
 vOy
@@ -117843,15 +112615,15 @@ avj
 vOy
 icM
 tOH
-xrs
+tdD
 fCg
 oNp
 hbE
 vvk
-vLl
+fql
 icM
 uvp
-sva
+tdD
 lVk
 oNp
 vOy
@@ -118048,11 +112820,11 @@ hng
 lea
 nUX
 wmJ
-hby
+qEn
 xLM
 mOJ
 lPc
-nSq
+hng
 exC
 bla
 lea
@@ -118255,7 +113027,7 @@ wDw
 hPq
 qXe
 dad
-hhB
+wDw
 cwh
 qAJ
 vOy
@@ -118454,7 +113226,7 @@ vOy
 vOy
 vOy
 xQO
-vDX
+eHE
 mka
 pbu
 eQn
@@ -118462,7 +113234,7 @@ eHE
 tpT
 vOy
 vOy
-vQb
+vOy
 vOy
 aTL
 akU
@@ -118860,11 +113632,11 @@ xdL
 hAv
 vOy
 haS
-lXS
+eHE
 dTx
 aAc
 pnO
-muL
+eHE
 vsj
 vOy
 vjf
@@ -119263,8 +114035,8 @@ ajt
 avj
 vOy
 nos
-eOY
-pOc
+ofV
+ofV
 nWC
 bZy
 mhQ
@@ -119272,8 +114044,8 @@ jCG
 mHt
 fWp
 qlo
-pOc
-vSh
+ofV
+ofV
 lZZ
 vOy
 ayT
@@ -119475,7 +114247,7 @@ ruV
 eRn
 toA
 uwa
-aro
+uwa
 kfy
 oNp
 vOy
@@ -119669,7 +114441,7 @@ amT
 mIW
 vOy
 icM
-heT
+jPA
 oFj
 rGx
 itB
@@ -119679,7 +114451,7 @@ jPA
 qER
 rGx
 pNP
-kLf
+wDC
 oNp
 vOy
 aEK
@@ -120075,17 +114847,17 @@ aio
 baB
 vOy
 icM
-lIg
-wEy
-tdD
-osv
-vuj
-ruV
-uSW
+jPA
 wDg
-tdD
+rGx
 sNm
-wox
+wDC
+ruV
+jPA
+wDg
+rGx
+sNm
+wDC
 oNp
 vOy
 alp
@@ -120279,15 +115051,15 @@ dLE
 vOy
 icM
 otm
-wJa
+tdD
 tdD
 fbE
 ydi
 ruV
 wgY
 fbE
-wJa
-wJa
+tdD
+tdD
 oaa
 oNp
 vOy
@@ -121092,13 +115864,13 @@ abg
 abg
 abx
 abx
-oYI
-cWl
-yeM
-yeM
-yeM
-uRP
-dGJ
+abx
+abg
+abx
+abx
+abx
+abg
+abx
 xZi
 hyc
 asZ
@@ -121298,7 +116070,7 @@ apK
 arf
 auG
 dae
-iEm
+dVE
 dVE
 auG
 aDp
@@ -121495,19 +116267,19 @@ aEX
 ajt
 ali
 vkA
-onb
-onb
-oPP
-viZ
-vdn
-ePS
+vkA
+vkA
+vkA
+vkA
+vkA
+laE
 laE
 fOY
 dsC
-kyj
+aHq
 mCI
 jOt
-xgs
+aHq
 aHq
 cbr
 ajt
@@ -121705,11 +116477,11 @@ vpP
 kaG
 wBv
 ipS
-cDF
+vdo
 dsC
 spP
 cDt
-bAw
+aGN
 wII
 gDg
 cnv
@@ -121903,15 +116675,15 @@ abg
 vkA
 ptX
 tgR
-pNj
+tiy
 tiy
 kaG
-krX
+ipS
 ipS
 poK
 dsC
 sXD
-rnU
+cDt
 aGN
 mSa
 vvT
@@ -122104,22 +116876,22 @@ abg
 akU
 nQx
 vkA
-lTS
+lfU
 lfU
 tZl
 sJJ
-rIT
+kaG
 ygY
-mfR
-vqK
+ipS
+lLn
 dsC
 rRL
-qht
-kkk
+cDt
+aGN
 cMh
 dGq
-rjW
-tzn
+cbr
+ajt
 anf
 wjK
 jZj
@@ -122307,17 +117079,17 @@ wUz
 aii
 abg
 vkA
-icB
-kWP
-gAP
-kWP
-qVQ
+vkA
+vkA
+vkA
+vkA
+vkA
 dWM
 tIx
-iJg
 dsC
-mpi
-hzz
+dsC
+aHq
+mCI
 oft
 aHq
 aHq
@@ -122511,18 +117283,18 @@ ajt
 abg
 dsC
 pKK
-trp
+uUJ
 oCC
 uUJ
 oeN
-wLA
+vdo
 wgr
 rmM
 dsC
 vQS
-wtI
-mqQ
-pmb
+cDt
+aGN
+eEo
 aHq
 qud
 akU
@@ -122723,9 +117495,9 @@ yeU
 giD
 dsC
 wfh
-hFc
-rIX
-has
+cDt
+aGN
+eEo
 aHq
 qlS
 qaL
@@ -122916,14 +117688,14 @@ hfl
 amO
 abg
 qpk
-akG
-ozn
-tjL
-gcJ
-xQT
-qVG
-xQT
-luN
+qpk
+qpk
+qpk
+qpk
+qpk
+qpk
+eQm
+eQm
 eQm
 jCH
 kKg
@@ -123119,9 +117891,9 @@ cZm
 aii
 abg
 qpk
-pRl
 eLU
-lMd
+eLU
+ioU
 nPG
 mmD
 qpk
@@ -123130,14 +117902,14 @@ eEo
 eEo
 fBt
 roM
-xCz
-kNa
+aGN
+eEo
 aHq
-cbr
+jEu
 ajt
 cKY
 ioU
-kYE
+ioU
 ioU
 rdt
 qVM
@@ -123313,7 +118085,7 @@ aao
 qIX
 aap
 aap
-gXS
+aiv
 aiw
 ahh
 aiw
@@ -123325,12 +118097,12 @@ qpk
 xUw
 rqG
 uoP
-iRJ
+cmK
 aLv
 jkg
 ijS
-dHM
-pve
+aGN
+aGN
 knS
 keg
 aGN
@@ -123530,12 +118302,12 @@ ioU
 ioU
 xVe
 weV
-bOH
-cxX
+qpk
+cDZ
 aGN
 eEo
 huN
-olx
+eEo
 aGN
 aJt
 aUW
@@ -123729,16 +118501,16 @@ akU
 abg
 qpk
 spX
-wdv
+wXV
 wXV
 kZL
 vij
-bOH
+qpk
 kMf
 aGN
 eEo
-eyE
-mNd
+huN
+eEo
 aGN
 tmH
 aHq
@@ -123923,29 +118695,29 @@ aeA
 aar
 aao
 aar
-nAJ
-nAJ
-nAJ
+qNH
+qNH
+qNH
 adO
 abg
 aii
 abg
 qpk
 kzN
-ucK
-dKO
+cmK
+efh
 cmK
 itG
-bOH
+qpk
 bJA
 jIl
 aGN
 lHf
-aRi
+aGN
 pwE
 bIa
 aHq
-pyZ
+abg
 ajt
 dLE
 ioU
@@ -124135,16 +118907,16 @@ oAu
 aEp
 qpk
 lqX
-iBd
-tRe
 cmK
-ygt
-bOH
+efh
+cmK
+efh
+qpk
 luD
-ndF
+aJt
 iLO
 kFf
-wtO
+iLO
 cDZ
 rLm
 aHq
@@ -141253,7 +136025,7 @@ olq
 jAA
 doE
 ubg
-pXi
+roP
 roP
 rmj
 xHi
@@ -141657,9 +136429,9 @@ lWW
 daE
 kwp
 nlk
-tWf
 gSD
-uLT
+gSD
+rGt
 rGt
 rmj
 xHi

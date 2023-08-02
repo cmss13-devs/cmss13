@@ -47,7 +47,8 @@
 	else if(!QDELETED(src) && attached)
 		current_beam = beam(attached, "iv_tube")
 
-//probably need to comment it out....
+//probably need to comment it out since IV don't use power.
+/*
 /obj/structure/machinery/iv_drip/power_change()
 	. = ..()
 	if(stat & NOPOWER && attached)
@@ -56,7 +57,7 @@
 		attached = null
 		update_beam()
 		update_icon()
-
+*/
 /obj/structure/machinery/iv_drip/Destroy()
 	attached?.active_transfusions -= src
 	update_beam()
@@ -64,10 +65,12 @@
 
 /obj/structure/machinery/iv_drip/MouseDrop(over_object, src_location, over_location)
 	..()
+	/*
+	IV can't be unpowered or getting inoperable as far as i know.
 	if(inoperable())
 		visible_message("\The [src] is not powered.")
 		return
-
+	*/
 	if(ishuman(usr))
 		var/mob/living/carbon/human/user = usr
 		if(user.stat || get_dist(user, src) > 1 || user.blinded || user.lying)
@@ -96,27 +99,28 @@
 			update_icon()
 			start_processing()
 
-
-/obj/structure/machinery/iv_drip/attackby(obj/item/W, mob/living/user)
-	if (istype(W, /obj/item/reagent_container))
+//replace W by container for the time that you try to fit in IV.
+/obj/structure/machinery/iv_drip/attackby(obj/item/container, mob/living/user)
+	if (istype(container, /obj/item/reagent_container))
 		if(beaker)
 			to_chat(user, SPAN_WARNING("There is already a reagent container loaded!"))
 			return
 
-		if((!istype(W, /obj/item/reagent_container/blood) && !istype(W, /obj/item/reagent_container/glass)) || istype(W, /obj/item/reagent_container/glass/bucket))
+		if((!istype(container, /obj/item/reagent_container/blood) && !istype(container, /obj/item/reagent_container/glass)) || istype(container, /obj/item/reagent_container/glass/bucket))
 			to_chat(user, SPAN_WARNING("That won't fit!"))
 			return
 
-		if(user.drop_inv_item_to_loc(W, src))
-			beaker = W
+		if(user.drop_inv_item_to_loc(container, src))
+			beaker = container
 
 			var/reagentnames = ""
-			for(var/datum/reagent/R in beaker.reagents.reagent_list)
-				reagentnames += ";[R.name]"
+			//rename R by chem to represent each chem. instead of damn single letter variable.
+			for(var/datum/reagent/chem in beaker.reagents.reagent_list)
+				reagentnames += ";[chem.name]"
 
 			log_admin("[key_name(user)] put a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]).")
 
-			to_chat(user, "You attach \the [W] to \the [src].")
+			to_chat(user, "You attach \the [container] to \the [src].")
 			update_beam()
 			update_icon()
 		return
@@ -158,7 +162,7 @@
 			if(amount == 0)
 				if(prob(5)) visible_message("\The [src] pings.")
 				return
-
+			//replace t by patient for the mob being attached.
 			var/mob/living/carbon/patient = attached
 
 			if(!istype(patient))

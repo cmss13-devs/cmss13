@@ -258,7 +258,8 @@
 
 	if(organ_status >= ORGAN_BROKEN && prob(5 * delta_time))
 		owner.apply_effect(1, PARALYZE)
-		owner.make_jittery(50)
+		if(owner.jitteriness < 100)
+			owner.make_jittery(50)
 		to_chat(owner, SPAN_DANGER("Your body seizes up!"))
 
 /datum/internal_organ/brain/prosthetic //used by synthetic species

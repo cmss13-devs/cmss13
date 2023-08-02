@@ -914,6 +914,16 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	max_fuel = 100
 	worn_accessible = TRUE
 
+/obj/item/storage/backpack/marine/engineerpack/welder_chestrig
+	name = "\improper Technician Welder Chestrig"
+	desc = "A specialized Chestrig worn by technicians and engineers. It carries one medium fuel tank for quick welder refueling and use."
+	icon_state = "welder_chestrig"
+	item_state = "welder_chestrig"
+	max_storage_space = 12
+	has_gamemode_skin = FALSE
+	max_fuel = 100
+	worn_accessible = TRUE
+
 // Pyrotechnician Spec backpack fuel tank
 /obj/item/storage/backpack/marine/engineerpack/flamethrower
 	name = "\improper USCM Pyrotechnician G6-2 fueltank"

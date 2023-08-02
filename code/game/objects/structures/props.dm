@@ -1152,3 +1152,9 @@
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "rope"
 	density = FALSE
+
+/obj/structure/prop/invuln/joey
+	name = "Workin' Joey"
+	desc = "A defunct Seegson-brand Working Joe lifted from deep storage by a crew of marines after the last shore leave. Attempts have been made to modify the janitorial synthetic to serve as a crude bartender, but with little success."
+	icon = 'icons/obj/structures/props/props.dmi'
+	icon_state = "joey"

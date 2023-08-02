@@ -97,46 +97,41 @@
 
 /obj/effect/alien/resin/special/pylon/endgame/Destroy()
 	if(activated)
-		if(XENO_STRUCTURE_PYLON in linked_hive.hive_structures)
-			for(var/obj/effect/alien/resin/special/pylon/endgame/pylon as anything in linked_hive.hive_structures[XENO_STRUCTURE_PYLON])
-				pylon.activated = FALSE
+		activated = FALSE
 
-		marine_announcement("ALERT.\n\nEnergy build up around communication relays halted.", "[MAIN_AI_SYSTEM] Biological Scanner") // Ask lore team for a better AI system name, honestly a second look for these announcements may be good - Morrow
+		marine_announcement("ALERT.\n\nEnergy build up around communication relay at [get_area(src)] halted.", "[MAIN_AI_SYSTEM] Biological Scanner") // Ask lore team for a better AI system name, honestly a second look for these announcements may be good - Morrow
+
 		for(var/hivenumber in GLOB.hive_datum)
 			var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
 			if(!length(checked_hive.totalXenos))
 				continue
 
 			if(checked_hive == linked_hive)
-				xeno_announcement(SPAN_XENOANNOUNCE("We have lost our control of the tall's communication relays."), hivenumber, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("We have lost our control of the tall's communication relay at [get_area(src)]."), hivenumber, XENO_GENERAL_ANNOUNCE)
 			else
-				xeno_announcement(SPAN_XENOANNOUNCE("Another hive has lost control of the tall's communication relays."), hivenumber, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("Another hive has lost control of the tall's communication relay at [get_area(src)]."), hivenumber, XENO_GENERAL_ANNOUNCE)
 
 	. = ..()
 
 /// Checks if all comms towers are connected and then starts end game content on all pylons if they are
 /obj/effect/alien/resin/special/pylon/endgame/proc/comms_relay_connection()
-	for(var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/checked_comms_relay in GLOB.all_static_telecomms_towers)
-		if(!checked_comms_relay.corrupted)
-			return
+	marine_announcement("ALERT.\n\nIrregular build up of energy around communication relays at [get_area(src)].", "[MAIN_AI_SYSTEM] Biological Scanner") // Ask lore team for a better AI system name, honestly a second look for these announcements may be good - Morrow
 
-	marine_announcement("ALERT.\n\nIrregular build up of energy around communication relays.", "[MAIN_AI_SYSTEM] Biological Scanner") // Ask lore team for a better AI system name, honestly a second look for these announcements may be good - Morrow
 	for(var/hivenumber in GLOB.hive_datum)
 		var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
 		if(!length(checked_hive.totalXenos))
 			continue
 
 		if(checked_hive == linked_hive)
-			xeno_announcement(SPAN_XENOANNOUNCE("We have harnessed the tall's communication relays. Hold them!"), hivenumber, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("We have harnessed the tall's communication relay at [get_area(src)]. Hold it!"), hivenumber, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive has harnessed the tall's communication relays.[linked_hive.faction_is_ally(checked_hive.name) ? "" : " Stop them!"]"), hivenumber, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive has harnessed the tall's communication relay at [get_area(src)].[linked_hive.faction_is_ally(checked_hive.name) ? "" : " Stop them!"]"), hivenumber, XENO_GENERAL_ANNOUNCE)
 
-	for(var/obj/effect/alien/resin/special/pylon/endgame/structure in linked_hive.hive_structures[XENO_STRUCTURE_PYLON])
-		structure.activated = TRUE
-		addtimer(CALLBACK(structure, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
+	activated = TRUE
+	addtimer(CALLBACK(src, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
 
 #define ENDGAME_LARVA_CAP_MULTIPLIER 0.4
-#define LARVA_ADDITION_MULTIPLIER 0.05
+#define LARVA_ADDITION_MULTIPLIER 0.10
 
 /// Looped proc via timer to give larva after time
 /obj/effect/alien/resin/special/pylon/endgame/proc/give_larva()

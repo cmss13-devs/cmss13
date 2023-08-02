@@ -351,6 +351,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	new_pylon.comms_relay_connection()
 
+/// Handles removing corruption effects from the comms relay
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/uncorrupt(datum/deleting_datum)
 	SIGNAL_HANDLER
 
@@ -358,6 +359,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	overlays -= corruption_image
 
+/// Handles moving the overlay from growing to idle
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/switch_to_idle_corruption()
 	if(!corrupted)
 		return

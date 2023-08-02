@@ -12893,14 +12893,14 @@
 	},
 /area/almayer/hallways/starboard_hallway)
 "aWO" = (
-/obj/effect/projector{
-	name = "Almayer_AresDown";
-	vector_x = 97;
-	vector_y = -65
-	},
 /obj/structure/stairs{
 	dir = 1;
 	icon_state = "ramptop"
+	},
+/obj/effect/projector{
+	name = "Almayer_AresDown";
+	vector_x = 98;
+	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -26804,6 +26804,22 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/starboard_hallway)
+"csc" = (
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_AresDown";
+	vector_x = 98;
+	vector_y = -65
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/stairs{
+	dir = 1
+	},
+/turf/open/floor/almayer/no_build{
+	icon_state = "ai_floors"
+	},
+/area/almayer/command/airoom)
 "csl" = (
 /obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer{
@@ -28244,16 +28260,16 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
 "cYU" = (
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresDown";
-	vector_x = 97;
-	vector_y = -65
-	},
 /obj/structure/platform{
 	dir = 4
 	},
 /obj/structure/stairs{
 	dir = 1
+	},
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_AresDown";
+	vector_x = 98;
+	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -28577,13 +28593,13 @@
 	},
 /area/almayer/shipboard/brig/surgery)
 "dgk" = (
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresUp";
-	vector_x = -97;
-	vector_y = 65
-	},
 /obj/structure/stairs{
 	dir = 1
+	},
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_AresUp";
+	vector_x = -98;
+	vector_y = 65
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 4
@@ -36596,7 +36612,7 @@
 "gxo" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_AresUp";
-	vector_x = -97;
+	vector_x = -98;
 	vector_y = 65
 	},
 /obj/structure/platform{
@@ -40764,11 +40780,6 @@
 	},
 /area/almayer/command/computerlab)
 "isC" = (
-/obj/effect/projector{
-	name = "Almayer_AresDown";
-	vector_x = 97;
-	vector_y = -65
-	},
 /obj/structure/platform{
 	dir = 8
 	},
@@ -40781,6 +40792,11 @@
 	name = "ARES Core Access";
 	pixel_x = -24;
 	req_one_access_txt = "19;200;90;91;92"
+	},
+/obj/effect/projector{
+	name = "Almayer_AresDown";
+	vector_x = 98;
+	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -44584,13 +44600,13 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "kbH" = (
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresDown";
-	vector_x = 97;
-	vector_y = -65
-	},
 /obj/structure/stairs{
 	dir = 1
+	},
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_AresDown";
+	vector_x = 98;
+	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -49508,16 +49524,16 @@
 	},
 /area/almayer/command/corporateliason)
 "mlb" = (
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresDown";
-	vector_x = 97;
-	vector_y = -65
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/stairs{
 	dir = 1
+	},
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_AresDown";
+	vector_x = 98;
+	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -53315,11 +53331,6 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/aft_hallway)
 "nQM" = (
-/obj/effect/projector{
-	name = "Almayer_AresDown";
-	vector_x = 97;
-	vector_y = -65
-	},
 /obj/structure/platform{
 	dir = 4
 	},
@@ -53332,6 +53343,11 @@
 	name = "ARES Core Access";
 	pixel_x = 24;
 	req_one_access_txt = "19;200;90;91;92"
+	},
+/obj/effect/projector{
+	name = "Almayer_AresDown";
+	vector_x = 98;
+	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -53980,14 +53996,14 @@
 	},
 /area/almayer/medical/medical_science)
 "ojd" = (
-/obj/effect/projector{
-	name = "Almayer_AresUp";
-	vector_x = -97;
-	vector_y = 65
-	},
 /obj/structure/stairs{
 	dir = 1;
 	icon_state = "ramptop"
+	},
+/obj/effect/projector{
+	name = "Almayer_AresUp";
+	vector_x = -98;
+	vector_y = 65
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 4
@@ -54830,23 +54846,6 @@
 	icon_state = "red"
 	},
 /area/almayer/lifeboat_pumps/north1)
-"oAT" = (
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresUp";
-	vector_x = -97;
-	vector_y = 65
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/stairs{
-	dir = 1
-	},
-/turf/open/floor/almayer/no_build{
-	dir = 4;
-	icon_state = "silver"
-	},
-/area/almayer/command/airoom)
 "oBq" = (
 /obj/structure/bed,
 /obj/structure/machinery/flasher{
@@ -56467,13 +56466,13 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresUp";
-	vector_x = -97;
-	vector_y = 65
-	},
 /obj/structure/stairs{
 	dir = 1
+	},
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_AresUp";
+	vector_x = -98;
+	vector_y = 65
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 4;
@@ -57397,7 +57396,7 @@
 "pFn" = (
 /obj/effect/projector{
 	name = "Almayer_AresUp";
-	vector_x = -97;
+	vector_x = -98;
 	vector_y = 65
 	},
 /obj/structure/platform{
@@ -58646,17 +58645,17 @@
 	},
 /area/almayer/medical/medical_science)
 "qjr" = (
-/obj/effect/projector{
-	name = "Almayer_AresUp";
-	vector_x = -97;
-	vector_y = 65
-	},
 /obj/structure/platform{
 	dir = 4
 	},
 /obj/structure/stairs{
 	dir = 1;
 	icon_state = "ramptop"
+	},
+/obj/effect/projector{
+	name = "Almayer_AresUp";
+	vector_x = -98;
+	vector_y = 65
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 4;
@@ -60924,17 +60923,17 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "riv" = (
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresUp";
-	vector_x = -97;
-	vector_y = 65
-	},
 /obj/structure/machinery/light{
 	unacidable = 1;
 	unslashable = 1
 	},
 /obj/structure/stairs{
 	dir = 1
+	},
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_AresUp";
+	vector_x = -98;
+	vector_y = 65
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 4
@@ -62202,6 +62201,24 @@
 	icon_state = "mono"
 	},
 /area/almayer/medical/hydroponics)
+"rJQ" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
+	},
+/obj/effect/projector{
+	name = "Almayer_AresUp";
+	vector_x = -98;
+	vector_y = 65
+	},
+/turf/open/floor/almayer/no_build{
+	dir = 8;
+	icon_state = "silver"
+	},
+/area/almayer/command/airoom)
 "rKd" = (
 /turf/open/floor/almayer/uscm/directional{
 	dir = 5
@@ -64418,16 +64435,16 @@
 	},
 /area/almayer/squads/alpha)
 "sIf" = (
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Almayer_AresDown";
-	vector_x = 97;
-	vector_y = -65
-	},
 /obj/structure/platform{
 	dir = 8
 	},
 /obj/structure/stairs{
 	dir = 1
+	},
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_AresDown";
+	vector_x = 98;
+	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -64520,6 +64537,23 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
+"sLW" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/stairs{
+	dir = 1
+	},
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_AresUp";
+	vector_x = -98;
+	vector_y = 65
+	},
+/turf/open/floor/almayer/no_build{
+	dir = 8;
+	icon_state = "silver"
+	},
+/area/almayer/command/airoom)
 "sMo" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
@@ -69188,6 +69222,29 @@
 	icon_state = "cargo"
 	},
 /area/almayer/squads/alpha)
+"uJX" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/stairs{
+	dir = 1;
+	icon_state = "ramptop"
+	},
+/obj/effect/projector{
+	name = "Almayer_AresUp";
+	vector_x = -98;
+	vector_y = 65
+	},
+/obj/effect/projector{
+	name = "Almayer_AresUp";
+	vector_x = -98;
+	vector_y = 65
+	},
+/turf/open/floor/almayer/no_build{
+	dir = 4;
+	icon_state = "silver"
+	},
+/area/almayer/command/airoom)
 "uKd" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/communications{
@@ -75232,17 +75289,17 @@
 	},
 /area/almayer/living/gym)
 "xbN" = (
-/obj/effect/projector{
-	name = "Almayer_AresDown";
-	vector_x = 97;
-	vector_y = -65
-	},
 /obj/structure/platform{
 	dir = 4
 	},
 /obj/structure/stairs{
 	dir = 1;
 	icon_state = "ramptop"
+	},
+/obj/effect/projector{
+	name = "Almayer_AresDown";
+	vector_x = 98;
+	vector_y = -65
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -78102,7 +78159,7 @@
 "yjx" = (
 /obj/effect/projector{
 	name = "Almayer_AresDown";
-	vector_x = 97;
+	vector_x = 98;
 	vector_y = -65
 	},
 /obj/structure/platform{
@@ -116445,7 +116502,7 @@ isW
 ajt
 abg
 afw
-sIf
+csc
 sIf
 yjx
 isC
@@ -135998,9 +136055,9 @@ sxC
 tAh
 neF
 pxq
+rJQ
 pFn
-pFn
-gxo
+sLW
 gxo
 pbZ
 exY
@@ -136404,9 +136461,9 @@ mvC
 tNt
 aRe
 xju
+uJX
 qjr
-qjr
-oAT
+pkI
 pkI
 pbZ
 exY

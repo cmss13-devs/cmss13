@@ -1166,10 +1166,21 @@
 	/// list of quip emotes, taken from Working Joe
 	var/list/quips = list(
 		/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow_damaged,
-		/datum/emote/living/carbon/human/synthetic/working_joe/quip/not_liking
+		/datum/emote/living/carbon/human/synthetic/working_joe/quip/not_liking,
+		/datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_can_i_help,
+		/datum/emote/living/carbon/human/synthetic/working_joe/task_update/day_never_done,
+		/datum/emote/living/carbon/human/synthetic/working_joe/task_update/required_by_apollo,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/safety_breach
 	)
 	/// list of voicelines to use when damaged
-	var/list/damaged = list()
+	var/list/damaged = list(
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/damage,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/that_stings,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/irresponsible,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/this_is_futile,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/hysterical,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/patience
+	)
 
 /obj/structure/prop/invuln/joey/Initialize()
 	. = ..()
@@ -1177,11 +1188,11 @@
 
 /obj/structure/prop/invuln/joey/process()
 	//check if quip_delay cooldown finished. If so, random chance it says a line
-	//if(COOLDOWN_FINISHED(src, quip_delay) && prob(10))
+	if(COOLDOWN_FINISHED(src, quip_delay) && prob(10))
 	emote(pick(quips))
 	var/delay = rand(3) + quip_delay_minimum
 	log_admin("Say something!")
-	//COOLDOWN_START(src, quip_delay, delay MINUTES)
+	COOLDOWN_START(src, quip_delay, delay MINUTES)
 
 /// SAY THE LINE JOE
 /obj/structure/prop/invuln/joey/proc/emote(datum/emote/living/carbon/human/synthetic/working_joe/emote)
@@ -1189,10 +1200,16 @@
 		return FALSE
 
 	for(var/mob/mob in hearers(src, null))
-		mob.show_message("<span class='game say'><span class='name'>[src]</span> says, \"[emote.say_message]\"</span>", SHOW_MESSAGE_VISIBLE)
+		mob.show_message("<span class='game say'><span class='name'>[src]</span> says, \"[initial(emote.say_message)]\"</span>", SHOW_MESSAGE_AUDIBLE)
 
-	if(emote.sound)
-		playsound(src.loc, emote.sound, 25, FALSE)
+	var/list/viewers = get_mobs_in_view(7, src)
+	for(var/mob/current_mob in viewers)
+		if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
+			viewers -= current_mob
+	langchat_speech(initial(emote.say_message), viewers, GLOB.all_languages, skip_language_check = TRUE)
+
+	if(initial(emote.sound))
+		playsound(src.loc, initial(emote.sound), 50, FALSE)
 	return TRUE
 
 

@@ -69,16 +69,16 @@
 		return
 
 	if(ishuman(usr))
-		var/mob/living/carbon/human/H = usr
-		if(H.stat || get_dist(H, src) > 1 || H.blinded || H.lying)
+		var/mob/living/carbon/human/user = usr
+		if(user.stat || get_dist(user, src) > 1 || user.blinded || user.lying)
 			return
-/*
+
 		if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
 			to_chat(user, SPAN_WARNING("You don't know how to connect this!"))
 			return
-*/
+
 		if(attached)
-			H.visible_message("[H] detaches \the [src] from \the [attached].", \
+			user.visible_message("[user] detaches \the [src] from \the [attached].", \
 			"You detach \the [src] from \the [attached].")
 			attached.active_transfusions -= src
 			attached = null
@@ -88,7 +88,7 @@
 			return
 
 		if(in_range(src, usr) && iscarbon(over_object) && get_dist(over_object, src) <= 1)
-			H.visible_message("[H] attaches \the [src] to \the [over_object].", \
+			user.visible_message("[user] attaches \the [src] to \the [over_object].", \
 			"You attach \the [src] to \the [over_object].")
 			attached = over_object
 			attached.active_transfusions += src
@@ -159,20 +159,20 @@
 				if(prob(5)) visible_message("\The [src] pings.")
 				return
 
-			var/mob/living/carbon/T = attached
+			var/mob/living/carbon/patient = attached
 
-			if(!istype(T))
+			if(!istype(patient))
 				return
-			if(ishuman(T))
-				var/mob/living/carbon/human/H = T
-				if(H.species && H.species.flags & NO_BLOOD)
+			if(ishuman(patient))
+				var/mob/living/carbon/human/user = patient
+				if(user.species && user.species.flags & NO_BLOOD)
 					return
 
 			// If the human is losing too much blood, beep.
-			if(T.blood_volume < BLOOD_VOLUME_SAFE) if(prob(5))
+			if(patient.blood_volume < BLOOD_VOLUME_SAFE) if(prob(5))
 				visible_message("\The [src] beeps loudly.")
 
-			T.take_blood(beaker,amount)
+			patient.take_blood(beaker,amount)
 			update_icon()
 
 /obj/structure/machinery/iv_drip/attack_hand(mob/user as mob)

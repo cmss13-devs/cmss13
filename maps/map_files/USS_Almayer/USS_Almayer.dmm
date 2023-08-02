@@ -68352,7 +68352,9 @@
 	},
 /obj/structure/machinery/cm_vending/clothing/senior_officer{
 	density = 0;
-	pixel_y = 30
+	pixel_y = 30;
+	req_access = list();
+	req_access_txt = "6"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
@@ -74572,7 +74574,10 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "wIr" = (
-/obj/structure/machinery/cm_vending/clothing/senior_officer,
+/obj/structure/machinery/cm_vending/clothing/senior_officer{
+	req_access = list();
+	req_access_txt = "26"
+	},
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
 	pixel_y = 32

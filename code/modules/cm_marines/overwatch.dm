@@ -81,7 +81,7 @@
 /obj/structure/machinery/computer/overwatch/ui_static_data(mob/user)
 	var/list/data = list()
 	data["mapRef"] = tacmap.map_holder.map_ref
-	for(var/i = 1; i < length(camera_holders) + 1, i++)
+	for(var/i in 1 to length(camera_holders))
 		data["mapRef[i]"] = camera_holders[i].map_name
 	return data
 
@@ -104,12 +104,13 @@
 /obj/structure/machinery/computer/overwatch/ui_data(mob/user)
 	var/list/data = list()
 
-	data["squad_list"] = list()
-	for(var/datum/squad/S in RoleAuthority.squads)
-		if(S.active && !S.overwatch_officer && S.faction == faction && S.name != "Root")
-			data["squad_list"] += S.name
+
 
 	if(!current_squad)
+		data["squad_list"] = list()
+		for(var/datum/squad/current_squad in RoleAuthority.squads)
+			if(current_squad.active && !current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
+				data["squad_list"] += current_squad.name
 		return data
 
 	data["current_squad"] = current_squad.name
@@ -294,7 +295,7 @@
 	data["z_hidden"] = z_hidden
 
 	data["saved_coordinates"] = list()
-	for(var/i=1, i < length(saved_coordinates) + 1, i++)
+	for(var/i in 1 to length(saved_coordinates))
 		data["saved_coordinates"] += list(list("x" = saved_coordinates[i]["x"], "y" = saved_coordinates[i]["y"], "comment" = saved_coordinates[i]["comment"], "index" = i))
 
 	var/obj/structure/closet/crate/supply_crate = locate() in current_squad.drop_pad.loc
@@ -410,7 +411,7 @@
 		if("replace_lead")
 			if(!params["ref"])
 				return
-			change_lead(params["ref"])
+			change_lead(user, params["ref"])
 
 		if("insubordination")
 			mark_insubordination()
@@ -536,10 +537,9 @@
 	update_multicams()
 
 
-/obj/structure/machinery/computer/overwatch/proc/change_lead(sl_ref)
-	if(!usr)
+/obj/structure/machinery/computer/overwatch/proc/change_lead(mob/user, sl_ref)
+	if(!user)
 		return
-	var/mob/user = usr
 
 	if(!current_squad)
 		return
@@ -590,10 +590,10 @@
 		selected_sl.comm_title = "aSL"
 	ADD_TRAIT(selected_sl, TRAIT_LEADERSHIP, TRAIT_SOURCE_SQUAD_LEADER)
 
-	var/obj/item/device/radio/headset/almayer/marine/R = selected_sl.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
-	if(R)
-		R.keys += new /obj/item/device/encryptionkey/squadlead/acting(R)
-		R.recalculateChannels()
+	var/obj/item/device/radio/headset/almayer/marine/sl_headset = selected_sl.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
+	if(sl_headset)
+		sl_headset.keys += new /obj/item/device/encryptionkey/squadlead/acting(sl_headset)
+		sl_headset.recalculateChannels()
 	if(istype(selected_sl.wear_id, /obj/item/card/id))
 		var/obj/item/card/id/ID = selected_sl.wear_id
 		ID.access += ACCESS_MARINE_LEADER

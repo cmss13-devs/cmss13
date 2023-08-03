@@ -1102,7 +1102,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 //----------TWE SECTION----------
 /obj/item/storage/backpack/rmc
-    has_gamemode_skin = FALSE
+	has_gamemode_skin = FALSE
 
 /obj/item/storage/backpack/rmc/heavy
 	name = "\improper heavyweight RMC backpack"

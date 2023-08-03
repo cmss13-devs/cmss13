@@ -53969,7 +53969,7 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "nJH" = (
-/obj/structure/machinery/computer/cameras/almayer/ares{
+/obj/structure/machinery/computer/cameras/almayer{
 	dir = 8;
 	pixel_x = 17
 	},

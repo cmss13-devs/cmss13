@@ -1167,7 +1167,7 @@
 	/// delay between attack voicelines. Short but done for anti-spam
 	COOLDOWN_DECLARE(damage_delay)
 	/// list of quip emotes, taken from Working Joe
-	var/list/quips = list(
+	var/static/list/quips = list(
 		/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow_damaged,
 		/datum/emote/living/carbon/human/synthetic/working_joe/quip/not_liking,
 		/datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_can_i_help,
@@ -1176,7 +1176,7 @@
 		/datum/emote/living/carbon/human/synthetic/working_joe/warning/safety_breach
 	)
 	/// list of voicelines to use when damaged
-	var/list/damaged = list(
+	var/static/list/damaged = list(
 		/datum/emote/living/carbon/human/synthetic/working_joe/warning/damage,
 		/datum/emote/living/carbon/human/synthetic/working_joe/warning/that_stings,
 		/datum/emote/living/carbon/human/synthetic/working_joe/warning/irresponsible,
@@ -1189,6 +1189,10 @@
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
+/obj/structure/prop/invuln/joey/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	. = ..()
+
 /obj/structure/prop/invuln/joey/process()
 	//check if quip_delay cooldown finished. If so, random chance it says a line
 	if(COOLDOWN_FINISHED(src, quip_delay) && prob(10))
@@ -1199,11 +1203,11 @@
 // Advert your eyes.
 /obj/structure/prop/invuln/joey/attackby(obj/item/W, mob/user)
 	attacked()
-	. = ..()
+	return ..()
 
 /obj/structure/prop/invuln/joey/bullet_act(obj/item/projectile/P)
 	attacked()
-	. = ..()
+	return ..()
 
 /// A terrible way of handling being hit. If signals would work it should be used.
 /obj/structure/prop/invuln/joey/proc/attacked()

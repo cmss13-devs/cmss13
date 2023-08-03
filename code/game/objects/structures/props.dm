@@ -1211,7 +1211,7 @@
 
 /// A terrible way of handling being hit. If signals would work it should be used.
 /obj/structure/prop/invuln/joey/proc/attacked()
-	if(COOLDOWN_FINISHED(src, damage_delay))
+	if(COOLDOWN_FINISHED(src, damage_delay) && prob(25))
 		emote(pick(damaged))
 		COOLDOWN_START(src, damage_delay, 8 SECONDS)
 

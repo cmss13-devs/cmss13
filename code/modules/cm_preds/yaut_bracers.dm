@@ -955,19 +955,10 @@
 	if(.)
 		return
 
-	for(var/obj/item/weapon/yautja/combistick/C in range(7))
-		if(C in caller.contents) //Can't yank if they are wearing it
-			return FALSE
-		if(caller.put_in_active_hand(C))//Try putting it in our active hand, or, if it's full...
-			if(!drain_power(caller, 70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.
-				return TRUE
-			caller.visible_message(SPAN_WARNING("<b>[caller] yanks [C]'s chain back!</b>"), SPAN_WARNING("<b>You yank [C]'s chain back!</b>"))
-		else if(caller.put_in_inactive_hand(C))///...Try putting it in our inactive hand.
-			if(!drain_power(caller, 70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.
-				return TRUE
-			caller.visible_message(SPAN_WARNING("<b>[caller] yanks [C]'s chain back!</b>"), SPAN_WARNING("<b>You yank [C]'s chain back!</b>"))
-		else //If neither hand can hold it, you must not have a free hand.
-			to_chat(caller, SPAN_WARNING("You need a free hand to do this!</b>"))
+	for(var/datum/effects/tethering/tether in caller.effects_list)
+		if(istype(tether.tethered.affected_atom, /obj/item/weapon/yautja/combistick))
+			var/obj/item/weapon/yautja/combistick/stick = tether.tethered.affected_atom
+			stick.recall()
 
 /obj/item/clothing/gloves/yautja/hunter/verb/translate()
 	set name = "Translator"

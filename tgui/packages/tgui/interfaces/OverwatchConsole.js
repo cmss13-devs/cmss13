@@ -580,7 +580,7 @@ const Multicam = (props, context) => {
         top="100%"
         className="CameraConsole__map"
         params={{
-          id: 'camera_console_[0x2006b4d]_map_4',
+          id: data.mapRef4,
           type: 'map',
         }}
       />

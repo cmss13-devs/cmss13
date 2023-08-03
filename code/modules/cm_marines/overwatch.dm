@@ -236,6 +236,8 @@
 
 			if(!istype(marine_human.head, /obj/item/clothing/head/helmet/marine))
 				has_helmet = FALSE
+			else
+				var/obj/item/clothing/head/helmet/marine
 
 			if(!marine_human.key || !marine_human.client)
 				if(marine_human.stat != DEAD)
@@ -376,6 +378,8 @@
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Overwatch systems deactivated. Goodbye, [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"].")]")
 			operator = null
 			current_squad = null
+			multicam_marines = list()
+			clear_multicams()
 			if(cam && !ishighersilicon(user))
 				user.reset_view(null)
 				user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
@@ -384,7 +388,7 @@
 			return TRUE
 
 		if("message")
-			if(current_squad && operator == user)
+			if(current_squad)
 				var/input = sanitize_control_chars(stripped_input(user, "Please write a message to announce to the squad:", "Squad Message"))
 				if(input)
 					current_squad.send_message(input, 1) //message, adds username
@@ -393,7 +397,7 @@
 					log_overwatch("[key_name(user)] sent '[input]' to squad [current_squad].")
 
 		if("sl_message")
-			if(current_squad && operator == user)
+			if(current_squad)
 				var/input = sanitize_control_chars(stripped_input(user, "Please write a message to announce to the squad leader:", "SL Message"))
 				if(input)
 					current_squad.send_message(input, 1, 1) //message, adds username, only to leader
@@ -441,7 +445,7 @@
 
 		if("insubordination")
 			mark_insubordination()
-		if("squad_transfer")
+		if("transfer_marine")
 			transfer_squad()
 
 		if("change_locations_ignored")
@@ -486,6 +490,7 @@
 			if(length(saved_coordinates) >= MAX_SAVED_COORDINATES)
 				popleft(saved_coordinates)
 			saved_coordinates += list(list("x" = text2num(params["x"]), "y" = text2num(params["y"])))
+			return TRUE
 		if("change_coordinate_comment")
 			if(!params["index"] || !params["comment"])
 				return
@@ -493,6 +498,7 @@
 			if(length(saved_coordinates) + 1 < index)
 				return
 			saved_coordinates[index]["comment"] = params["comment"]
+			return TRUE
 
 		if("watch_camera")
 			if(isRemoteControlling(user))
@@ -535,7 +541,7 @@
 			if(!marine)
 				return
 			multicam_marines -= marine
-			update_multicams()
+			clear_multicams()
 		if("change_operator")
 			if(operator != user)
 				if(operator && ishighersilicon(operator))
@@ -558,6 +564,13 @@
 		var/datum/overwatch_camera_holder/holder = camera_holders[index]
 		holder.update_camera(marine)
 		index++
+
+/obj/structure/machinery/computer/overwatch/proc/clear_multicams()
+	var/index = 1
+	for(var/mob/living/carbon/human/marine in multicam_marines)
+		var/datum/overwatch_camera_holder/holder = camera_holders[index]
+		holder.reset_camera()
+	update_multicams()
 
 /obj/structure/machinery/computer/overwatch/process()
 	update_multicams()
@@ -835,7 +848,7 @@
 
 /obj/structure/machinery/computer/overwatch/proc/handle_supplydrop()
 	SHOULD_NOT_SLEEP(TRUE)
-	if(!usr || usr != operator)
+	if(!usr)
 		return
 
 	if(busy)
@@ -959,10 +972,6 @@
 	var/atom/movable/screen/background/cam_background
 
 
-	var/obj/structure/machinery/camera/current
-
-	var/list/range_turfs = list()
-
 /datum/overwatch_camera_holder/New(number, originator_console)
 	. = ..()
 	map_name = "camera_console_[REF(originator_console)]_map_[number]"
@@ -978,15 +987,21 @@
 
 
 /datum/overwatch_camera_holder/proc/update_camera(mob/living/carbon/human/marine)
-	if(!marine && !current)
+	if(!marine)
+		reset_camera()
 		return
-	if(!istype(marine.head, /obj/item/clothing/head/helmet/marine) && !current)
+	if(!istype(marine.head, /obj/item/clothing/head/helmet/marine))
+		reset_camera()
 		return
 
+	var/obj/structure/machinery/camera/current
 	if(marine)
 		var/obj/item/clothing/head/helmet/marine/marine_helmet = marine.head
 		current = marine_helmet.camera
 
+	if(!current)
+		reset_camera()
+		return
 	var/cam_location = current
 	if(istype(current.loc, /obj/item/clothing/head/helmet/marine))
 		var/obj/item/clothing/head/helmet/marine/helmet = current.loc
@@ -995,10 +1010,8 @@
 	var/list/visible_things = current.isXRay() ? range(current.view_range, cam_location) : view(current.view_range, cam_location)
 
 	var/list/visible_turfs = list()
-	range_turfs.Cut()
 	var/area/area_being_checked
 	for(var/turf/visible_turf in visible_things)
-		range_turfs += visible_turf
 		area_being_checked = visible_turf.loc
 		if(!area_being_checked.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
 			visible_turfs += visible_turf
@@ -1008,5 +1021,16 @@
 	var/size_y = bbox[4] - bbox[2] + 1
 
 	cam_screen.vis_contents = visible_turfs
+	cam_background.icon_state = "clear"
+	cam_background.fill_rect(1, 1, size_x, size_y)
+
+/datum/overwatch_camera_holder/proc/reset_camera(mob/living/carbon/human/marine)
+	var/list/visible_turfs = list()
+
+	var/list/bbox = get_bbox_of_atoms(visible_turfs)
+	var/size_x = bbox[3] - bbox[1] + 1
+	var/size_y = bbox[4] - bbox[2] + 1
+
+	cam_screen.vis_contents = list()
 	cam_background.icon_state = "clear"
 	cam_background.fill_rect(1, 1, size_x, size_y)

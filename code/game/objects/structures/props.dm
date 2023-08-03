@@ -821,7 +821,7 @@
 		return
 	to_chat(xeno, SPAN_NOTICE("You begin to extinguish [src]."))
 	while(remaining_fuel)
-		if(!do_after(xeno, 1 SECONDS, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+		if(xeno.action_busy || !do_after(xeno, 1 SECONDS, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
 		fuel_drain()
 		to_chat(xeno, SPAN_NOTICE("You continue to extinguish [src]."))

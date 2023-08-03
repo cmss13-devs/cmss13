@@ -1153,6 +1153,13 @@
 	icon_state = "rope"
 	density = FALSE
 
+/obj/structure/prop/pred_flight
+	name = "hunter flight console"
+	desc = "A console designed by the Hunters to assist in flight pathing and navigation."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "overwatch"
+	density = TRUE
+
 /obj/structure/prop/invuln/joey
 	name = "Workin' Joey"
 	desc = "A defunct Seegson-brand Working Joe lifted from deep storage by a crew of marines after the last shore leave. Attempts have been made to modify the janitorial synthetic to serve as a crude bartender, but with little success."
@@ -1232,6 +1239,4 @@
 	if(initial(emote.sound))
 		playsound(loc, initial(emote.sound), 50, FALSE)
 	return TRUE
-
-
 

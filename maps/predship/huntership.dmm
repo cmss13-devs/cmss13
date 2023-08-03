@@ -674,9 +674,9 @@
 	color = "#6b675e"
 	},
 /obj/item/weapon/claymore/mercsword/machete/arnold{
+	anchored = 1;
 	desc = "Won by an Elder during their youthful hunting days. None are allowed to touch it.";
-	name = "\improper Dutch's Machete";
-	anchored = 1
+	name = "\improper Dutch's Machete"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1789,9 +1789,9 @@
 /area/yautja)
 "gr" = (
 /obj/structure/closet/crate/secure{
-	req_one_access_txt = "252";
 	color = "#6b675e";
-	name = "Secure Yautja crate"
+	name = "Secure Yautja crate";
+	req_one_access_txt = "252"
 	},
 /obj/item/explosive/grenade/spawnergrenade/hellhound,
 /obj/item/explosive/grenade/spawnergrenade/hellhound,
@@ -1806,9 +1806,9 @@
 /obj/structure/machinery/door_control{
 	id = "Yautja Armory";
 	name = "Armory Shutters";
+	needs_power = 0;
 	pixel_x = 24;
-	req_one_access_txt = "252";
-	needs_power = 0
+	req_one_access_txt = "252"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2424,9 +2424,9 @@
 /area/yautja)
 "Bg" = (
 /obj/structure/closet/crate/secure{
-	req_one_access_txt = "252";
 	color = "#6b675e";
-	name = "Secure Yautja crate"
+	name = "Secure Yautja crate";
+	req_one_access_txt = "252"
 	},
 /obj/item/weapon/yautja/combistick,
 /obj/item/weapon/yautja/combistick{
@@ -2686,14 +2686,14 @@
 	layer = 2.79
 	},
 /obj/item/stack/medical/advanced/ointment/predator{
-	pixel_x = 6;
 	desc = "A poultice made of cold, blue petals that is rubbed on burns. Not to be removed from the ship.";
-	name = "arena soothing herbs"
+	name = "arena soothing herbs";
+	pixel_x = 6
 	},
 /obj/item/stack/medical/advanced/bruise_pack/predator{
-	pixel_x = -6;
 	desc = "A poultice made of soft leaves that is rubbed on bruises. Not to be removed from the ship.";
-	name = "arena mending herbs"
+	name = "arena mending herbs";
+	pixel_x = -6
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -2721,9 +2721,9 @@
 "HD" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
+	density = 0;
 	layer = 2.79;
-	pixel_y = 24;
-	density = 0
+	pixel_y = 24
 	},
 /obj/item/weapon/gun/energy/yautja/plasmarifle{
 	pixel_y = -8
@@ -2924,13 +2924,7 @@
 	},
 /area/yautja)
 "LX" = (
-/obj/item/moneybag{
-	anchored = 1;
-	desc = "A console designed by the Hunters to assist in flight pathing and navigation.";
-	icon = 'icons/obj/structures/machinery/computer.dmi';
-	icon_state = "overwatch";
-	name = "Hunter Flight Console"
-	},
+/obj/structure/prop/pred_flight,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

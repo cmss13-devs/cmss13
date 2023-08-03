@@ -240,8 +240,8 @@ const RoleTable = (props, context) => {
         {(squad_leader && (
           <Table.Cell textAlign="center">
             {squad_leader.name ? squad_leader.name : 'NONE'}
-            <Box color={leaders_alive ? 'green' : 'red'}>
-              {leaders_alive ? 'ALIVE' : 'DEAD'}
+            <Box color={squad_leader.state !== 'Dead' ? 'green' : 'red'}>
+              {squad_leader.state !== 'Dead' ? 'ALIVE' : 'DEAD'}
             </Box>
           </Table.Cell>
         )) || (
@@ -461,8 +461,10 @@ const SquadMonitor = (props, context) => {
             return marine;
           })
           .map((marine, index) => {
-            if (marine.role === 'Squad Leader' || marine.acting_sl) {
-              return;
+            if (squad_leader) {
+              if (marine.ref === squad_leader.ref) {
+                return;
+              }
             }
             if (hidden_marines.includes(marine.ref) && !showHiddenMarines) {
               return;
@@ -474,12 +476,14 @@ const SquadMonitor = (props, context) => {
             return (
               <Table.Row key="index">
                 <Table.Cell p="2px">
-                  <Button
-                    onClick={() =>
-                      act('watch_camera', { target_ref: marine.ref })
-                    }>
-                    {marine.name}
-                  </Button>
+                  {(marine.has_helmet && (
+                    <Button
+                      onClick={() =>
+                        act('watch_camera', { target_ref: marine.ref })
+                      }>
+                      {marine.name}
+                    </Button>
+                  )) || <Box color="red">{marine.name} (NO HELMET)</Box>}
                 </Table.Cell>
                 <Table.Cell p="2px">{marine.role}</Table.Cell>
                 <Table.Cell

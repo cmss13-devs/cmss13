@@ -236,8 +236,6 @@
 
 			if(!istype(marine_human.head, /obj/item/clothing/head/helmet/marine))
 				has_helmet = FALSE
-			else
-				var/obj/item/clothing/head/helmet/marine
 
 			if(!marine_human.key || !marine_human.client)
 				if(marine_human.stat != DEAD)

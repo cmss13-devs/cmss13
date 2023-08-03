@@ -301,7 +301,7 @@
 
 /obj/item/storage/fancy/cigar/matchbook/get_examine_text(mob/user)
 	. = ..()
-	if(length(contents) <= 0)
+	if(!length(contents))
 		. += "There are no [src.icon_type]es left in the box."
 	else if(length(contents) == 1)
 		. += "There is one [src.icon_type] left in the box."

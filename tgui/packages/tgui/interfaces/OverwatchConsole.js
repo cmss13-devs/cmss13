@@ -459,93 +459,94 @@ const SquadMonitor = (props, context) => {
             </Table.Cell>
           </Table.Row>
         )}
-        {marines
-          .filter((marine) => {
-            if (marineSearch) {
-              const searchableString = String(marine.name).toLowerCase();
-              return searchableString.match(new RegExp(marineSearch, 'i'));
-            }
-            return marine;
-          })
-          .map((marine, index) => {
-            if (squad_leader) {
-              if (marine.ref === squad_leader.ref) {
+        {marines &&
+          marines
+            .filter((marine) => {
+              if (marineSearch) {
+                const searchableString = String(marine.name).toLowerCase();
+                return searchableString.match(new RegExp(marineSearch, 'i'));
+              }
+              return marine;
+            })
+            .map((marine, index) => {
+              if (squad_leader) {
+                if (marine.ref === squad_leader.ref) {
+                  return;
+                }
+              }
+              if (hidden_marines.includes(marine.ref) && !showHiddenMarines) {
                 return;
               }
-            }
-            if (hidden_marines.includes(marine.ref) && !showHiddenMarines) {
-              return;
-            }
-            if (marine.state === 'Dead' && !showDeadMarines) {
-              return;
-            }
+              if (marine.state === 'Dead' && !showDeadMarines) {
+                return;
+              }
 
-            return (
-              <Table.Row key="index">
-                <Table.Cell p="2px">
-                  {(marine.has_helmet && (
-                    <Button
-                      onClick={() =>
-                        act('watch_camera', { target_ref: marine.ref })
-                      }>
-                      {marine.name}
-                    </Button>
-                  )) || <Box color="red">{marine.name} (NO HELMET)</Box>}
-                </Table.Cell>
-                <Table.Cell p="2px">{marine.role}</Table.Cell>
-                <Table.Cell
-                  p="2px"
-                  color={determine_status_color(marine.state)}>
-                  {marine.state}
-                </Table.Cell>
-                <Table.Cell p="2px">{marine.area_name}</Table.Cell>
-                <Table.Cell p="2px" collapsing>
-                  {marine.distance}
-                </Table.Cell>
-                <Table.Cell p="2px">
-                  {(hidden_marines.includes(marine.ref) && (
-                    <Button
-                      icon="plus"
-                      color="green"
-                      tooltip="Show marine"
-                      onClick={() => toggle_marine_hidden(marine.ref)}
-                    />
-                  )) || (
-                    <Button
-                      icon="minus"
-                      color="red"
-                      tooltip="Hide marine"
-                      onClick={() => toggle_marine_hidden(marine.ref)}
-                    />
-                  )}
-                  {(marine.multicammed && (
-                    <Button
-                      tooltip="Remove from multicam"
-                      icon="camera"
-                      color="red"
-                      onClick={() =>
-                        act('remove_multicam', { ref: marine.ref })
-                      }
-                    />
-                  )) || (
-                    <Button
-                      tooltip="Add to multicam"
-                      icon="camera"
-                      color="green"
-                      onClick={() => act('add_multicam', { ref: marine.ref })}
-                    />
-                  )}
+              return (
+                <Table.Row key="index">
+                  <Table.Cell p="2px">
+                    {(marine.has_helmet && (
+                      <Button
+                        onClick={() =>
+                          act('watch_camera', { target_ref: marine.ref })
+                        }>
+                        {marine.name}
+                      </Button>
+                    )) || <Box color="red">{marine.name} (NO HELMET)</Box>}
+                  </Table.Cell>
+                  <Table.Cell p="2px">{marine.role}</Table.Cell>
+                  <Table.Cell
+                    p="2px"
+                    color={determine_status_color(marine.state)}>
+                    {marine.state}
+                  </Table.Cell>
+                  <Table.Cell p="2px">{marine.area_name}</Table.Cell>
+                  <Table.Cell p="2px" collapsing>
+                    {marine.distance}
+                  </Table.Cell>
+                  <Table.Cell p="2px">
+                    {(hidden_marines.includes(marine.ref) && (
+                      <Button
+                        icon="plus"
+                        color="green"
+                        tooltip="Show marine"
+                        onClick={() => toggle_marine_hidden(marine.ref)}
+                      />
+                    )) || (
+                      <Button
+                        icon="minus"
+                        color="red"
+                        tooltip="Hide marine"
+                        onClick={() => toggle_marine_hidden(marine.ref)}
+                      />
+                    )}
+                    {(marine.multicammed && (
+                      <Button
+                        tooltip="Remove from multicam"
+                        icon="camera"
+                        color="red"
+                        onClick={() =>
+                          act('remove_multicam', { ref: marine.ref })
+                        }
+                      />
+                    )) || (
+                      <Button
+                        tooltip="Add to multicam"
+                        icon="camera"
+                        color="green"
+                        onClick={() => act('add_multicam', { ref: marine.ref })}
+                      />
+                    )}
 
-                  <Button
-                    icon="arrow-up"
-                    color="green"
-                    tooltip="Promote marine to Squad Leader"
-                    onClick={() => act('replace_lead', { ref: marine.ref })}
-                  />
-                </Table.Cell>
-              </Table.Row>
-            );
-          })}
+                    <Button
+                      icon="arrow-up"
+                      color="green"
+                      tooltip="Promote marine to Squad Leader"
+                      onClick={() => act('replace_lead', { ref: marine.ref })}
+                    />
+                  </Table.Cell>
+                </Table.Row>
+              );
+            })}
       </Table>
     </Section>
   );

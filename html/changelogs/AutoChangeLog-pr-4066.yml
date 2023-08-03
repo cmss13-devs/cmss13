@@ -1,0 +1,5 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - ui: "changed the almayer control console from html to tgui"
+  - bugfix: "custom faction messages will now be named properly in the paper printed out from the almayer control console"

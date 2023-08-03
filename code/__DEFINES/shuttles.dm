@@ -95,6 +95,7 @@
 #define MOBILE_SHUTTLE_ID_ERT1 "ert_response_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT2 "ert_pmc_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT3 "ert_upp_shuttle"
+#define MOBILE_SHUTTLE_ID_ERT4 "ert_twe_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT_SMALL "ert_rescue_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT_BIG "ert_boarding_shuttle"
 

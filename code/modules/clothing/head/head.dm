@@ -771,7 +771,8 @@ D
 //=ROYAL MARINES=\\
 
 /obj/item/clothing/head/beanie/royal_marine
-	name = "beanie"
+	name = "royal marine beanie"
+	desc = "A standard military beanie."
 	icon_state = "rmc_beanie"
 	item_state = "rmc_beanie"
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
@@ -780,22 +781,22 @@ D
 	)
 
 /obj/item/clothing/head/beanie/royal_marine/turban
-	name = "RMC turban"
-	desc = "Turban."
+	name = "royal marine turban"
+	desc = "A standard military turban found in the royal marines. Considered a rare item these kind of turbans are prized by collectors in the UA."
 	icon_state = "rmc_turban"
 	item_state = "rmc_turban"
 
 /obj/item/clothing/head/beret/royal_marine
-	desc = "RMC beret."
+	name = "royal marine baret"
+	desc = "A green beret belonging to the royal marines commando. This beret symbolizes a royal marines ability to fight in any environment, desert, sea, artic or space a royal marine will always be ready."
 	icon_state = "rmc_beret"
 	item_state = "rmc_beret"
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-	flags_atom = NO_NAME_OVERRIDE
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
 /obj/item/clothing/head/beret/royal_marine/team_leader
-	desc = "RMC team leader beret"
 	icon_state = "rmc_beret_tl"
 	item_state = "rmc_beret_tl"

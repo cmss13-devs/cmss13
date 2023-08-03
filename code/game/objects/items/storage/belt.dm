@@ -496,19 +496,6 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/buckshot(src)
 
-
-/obj/item/storage/belt/marine/royal_marine/
-	name = "ammo load rig"
-	desc = "Good for carrying around extra ammo in the heat of the jungle. Made of special rot-resistant fabric."
-
-/obj/item/storage/belt/marine/royal_marine/rmc_f90_ammo/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/rifle/rmc_f90(src)
-
-/obj/item/storage/belt/marine/royal_marine/rmc_f90_ammo/marksman/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/rifle/rmc_f90/marksman(src)
-
 /obj/item/storage/belt/marine/smartgunner
 	name = "\improper M280 pattern smartgunner drum belt"
 	desc = "Despite the fact that 1. drum magazines are incredibly non-ergonomical, and 2. require incredibly precise machining in order to fit universally (spoiler, they don't, adding further to the myth of 'Smartgun Personalities'), the USCM decided to issue a modified marine belt (more formally known by the designation M280) with hooks and dust covers (overly complex for the average jarhead) for the M56B system's drum munitions. When the carry catch on the drum isn't getting stuck in the oiled up velcro, the rig actually does do a decent job at holding a plentiful amount of drums. But at the end of the day, compared to standard rigs... it sucks, but isn't that what being a Marine is all about?"
@@ -1145,6 +1132,15 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/highpower/black(src)
 
+/obj/item/storage/belt/gun/m4a3/vp78/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78())
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+
 /obj/item/storage/belt/gun/m44
 	name = "\improper M276 pattern M44 holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the M44 magnum revolver, along with six small pouches for speedloaders. It smells faintly of hay."
@@ -1714,3 +1710,52 @@
 	item_state = "souto_man[length(contents)]"
 	if(istype(user))
 		user.update_inv_belt() //Makes sure the onmob updates.
+
+
+
+//ROYAL MARINES COMMNADO
+
+/obj/item/storage/belt/marine/rmc
+	name = "\improper L70 pattern ammo load rig"
+	desc = "Good for carrying around extra ammo in the heat of the jungle. Made of special rot-resistant fabric."
+	icon_state = "rmc_ammo"
+	item_state = "rmc_ammo"
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	has_gamemode_skin = FALSE
+
+/obj/item/storage/belt/marine/rmc/rmc_f90_ammo/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/rmc_f90(src)
+
+/obj/item/storage/belt/marine/rmc/rmc_f90_ammo/marksman/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/rmc_f90/marksman(src)
+
+/obj/item/storage/belt/medical/rmc
+	name = "\improper L75 pattern medical storage rig"
+	desc = "The L75 is the standard load-bearing equipment of the RMC. It consists of a modular belt with various clips. This version is designed to transport medical supplies and pistol ammunition. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
+	icon_state = "rmc_medical"
+	item_state = "rmc_medical"
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+
+/obj/item/storage/belt/gun/l905
+	name = "\improper L905 gunbelt"
+	desc = "Finely-tooled leather, a L905, and six magazines. More than enough for the standard RMC commando."
+	icon_state = "rmc_pistol"
+	item_state = "rmc_pistol"
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	storage_slots = 7
+	can_hold = list(
+		/obj/item/weapon/gun/pistol/vp78,
+		/obj/item/ammo_magazine/pistol/vp78,
+	)
+	has_gamemode_skin = FALSE
+	holster_slots = list( // PLACEHOLDER PLEASE REPLACE
+		"1" = list(
+			"icon_x" = -1,
+			"icon_y" = -3))
+
+/obj/item/storage/belt/gun/l905/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78())
+	for(var/i in 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/vp78(src)

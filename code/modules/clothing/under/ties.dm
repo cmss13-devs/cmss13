@@ -359,6 +359,11 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the USS Hanyut, USCM FORECON."
 	icon_state = "forecon_patch"
 
+/obj/item/clothing/accessory/patch/royal_marines
+	name = "TWE Royal Marines Commando patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the royal marines commando."
+	icon_state = "commandopatch"
+
 /obj/item/clothing/accessory/poncho
 	name = "USCM Poncho"
 	desc = "The standard USCM poncho has variations for every climate. Custom fitted to be attached to standard USCM armor variants it is comfortable, warming or cooling as needed, and well-fit. A marine couldn't ask for more. Affectionately referred to as a \"woobie\"."

@@ -200,7 +200,7 @@
 //=ROYAL MARINES=\\
 
 /obj/item/clothing/shoes/veteran/royal_marine
-	name = "RMC combat boots"
+	name = "\improper L10 pattern combat boots"
 	desc = "Standard issue combat boots for combat scenarios or combat situations. Used by the three world empires royal marines commando units."
 	icon_state = "rmc_boots"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -226,7 +226,7 @@
 /obj/item/clothing/shoes/veteran/royal_marine/knife
 /obj/item/clothing/shoes/veteran/royal_marine/knife/Initialize(mapload, ...)
 	. = ..()
-	stored_item = new /obj/item/attachable/bayonet(src)
+	stored_item = new /obj/item/attachable/bayonet/rmc(src)
 	update_icon()
 
 /obj/item/clothing/shoes/veteran/royal_marine/knife/snow

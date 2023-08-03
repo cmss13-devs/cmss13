@@ -1775,6 +1775,25 @@
 	penetration = ARMOR_PENETRATION_TIER_7
 	damage_armor_punch = 3
 
+/datum/ammo/bullet/smartgun/holo_target //we use this for the RMC smartgun that has a support ammo instead of AP
+	name = "holo-targeting smartgun bullet"
+	damage = 30
+	var/holo_stacks = 15
+
+/datum/ammo/bullet/smartgun/holo_target/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time)
+
+/datum/ammo/bullet/smartgun/holo_target/ap
+	name = "armor-piercing smartgun bullet"
+	icon_state = "bullet"
+
+	accurate_range = 12
+	accuracy = HIT_ACCURACY_TIER_2
+	damage = 20
+	penetration = ARMOR_PENETRATION_TIER_8
+	damage_armor_punch = 1
+
 /datum/ammo/bullet/smartgun/m56_fpw
 	name = "\improper M56 FPW bullet"
 	icon_state = "redbullet"

@@ -188,10 +188,7 @@
 //=ROYAL MARINES=\\
 
 /obj/item/clothing/gloves/marine/veteran/royal_marine
-	name = "\improper RMC combat gloves"
-	desc = "Standard issue tactical gloves."
+	name = "\improper L6 pattern combat gloves"
+	desc = "Standard issue tactical gloves used by the royal marines."
 	icon_state = "rmc_gloves"
 	flags_atom = NO_NAME_OVERRIDE
-
-/obj/item/clothing/gloves/marine/veteran/royal_marine/snow
-	icon_state = "s_rmc_gloves"

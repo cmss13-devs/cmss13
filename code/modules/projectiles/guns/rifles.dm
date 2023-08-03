@@ -1693,8 +1693,8 @@
 //=ROYAL MARINES=\\
 
 /obj/item/weapon/gun/rifle/rmc_f90
-	name = "\improper RMC F903WE"
-	desc = "The standard issue rifle of the royal marines. Commonly carried by most combat personnel. Uses 10x24mm caseless ammunition."
+	name = "\improper F903A1 Rifle"
+	desc = "The standard issue rifle of the royal marines. Uniquely the royal marines are the only modern military to not use a pulse weapon. Uses 10x24mm caseless ammunition."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
 	icon_state = "aug"
 	item_state = "aug"
@@ -1736,8 +1736,8 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/rifle/rmc_f90/a_grip
-	name = "\improper RMC F903WE"
-	desc = "..."
+	name = "\improper F903A2 Rifle"
+	desc = "A non-standard issue rifle of the royal marines the F903A2 is currently being phased into the royal marines as their new mainline rifle but currently only sees use by unit leaders. Uniquely the royal marines are the only modern military to not use a pulse weapon. Uses 10x24mm caseless ammunition."
 	icon_state = "aug_com"
 	item_state = "aug_com"
 	attachable_allowed = list(
@@ -1756,8 +1756,8 @@
 	update_attachable(f90_agrip.slot)
 
 /obj/item/weapon/gun/rifle/rmc_f90/scope
-	name = "\improper RMC F903WE"
-	desc = "..."
+	name = "\improper F903A1 Marksman Rifle"
+	desc = "A variation of the F903 rifle used by the royal marines commando. This weapon only accepts the smaller 15 round magazines of 10x24mm HVAP."
 	icon_state = "aug_dmr"
 	item_state = "aug_dmr"
 	attachable_allowed = null
@@ -1794,8 +1794,7 @@
 	update_attachable(f90_dmr_barrel.slot)
 
 /obj/item/weapon/gun/rifle/rmc_f90/shotgun
-	name = "\improper RMC F903WE"
-	desc = "..."
+	name = "\improper F903A1 Breacher Rifle"
 	icon_state = "aug_mkey"
 	item_state = "aug_mkey"
 	attachable_allowed = list(

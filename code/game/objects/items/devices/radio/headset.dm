@@ -966,10 +966,10 @@
 
 /obj/item/device/radio/headset/distress/royal_marine
 	name = "Royal Marine Headset"
-	desc = "..."
+	desc = "A sleek headset used by the Royal Marines Commando. Low profile enough to fit under their unique helmets."
 	frequency = RMC_FREQ
 	icon_state = "vai_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/royal_marine, /obj/item/device/encryptionkey/public,)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/royal_marine)
 	has_hud = TRUE
 
 //CMB Headsets

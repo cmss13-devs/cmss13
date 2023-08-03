@@ -1,3 +1,24 @@
 2023-08-01:
   Drathek:
   - bugfix: Fixed hung mobs merging with weeds
+2023-08-02:
+  Dorodomki:
+  - rscadd: Adds A Bipod and Rail Flashlight to the HPR kit
+  Drathek:
+  - balance: Facehugger attack windup duration is now 1s like the pounce windup.
+  Huffie56:
+  - bugfix: Care package for SG on WO will now spawn with the proper batteries for
+      them.
+  Morrow:
+  - bugfix: Fixes brain damage
+  - qol: Jittering from brain damage is now capped
+2023-08-03:
+  Ben10083:
+  - rscadd: Lesser Drone Slots now have a minimum, currently set to 3.
+  Huffie56:
+  - balance: adding the possibility to buy "ES-4 stun magazine" for 10 point in the
+      portable vendor.
+  - bugfix: remove a bunch of ammo that where improper for ES-4 gun that are in the
+      lockbox.
+  Thwomper:
+  - maptweak: added Workin' Joey to maint bar.

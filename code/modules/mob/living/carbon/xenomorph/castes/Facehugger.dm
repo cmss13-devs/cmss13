@@ -133,7 +133,7 @@
 			to_chat(src, SPAN_WARNING("You can't infect \the [human]..."))
 			return
 		visible_message(SPAN_WARNING("\The [src] starts climbing onto \the [human]'s face..."), SPAN_XENONOTICE("You start climbing onto \the [human]'s face..."))
-		if(!do_after(src, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, human, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+		if(!do_after(src, FACEHUGGER_WINDUP_DURATION, INTERRUPT_ALL, BUSY_ICON_HOSTILE, human, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
 		if(!human.lying)
 			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down."))

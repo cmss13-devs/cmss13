@@ -1152,3 +1152,91 @@
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "rope"
 	density = FALSE
+
+/obj/structure/prop/pred_flight
+	name = "hunter flight console"
+	desc = "A console designed by the Hunters to assist in flight pathing and navigation."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "overwatch"
+	density = TRUE
+
+/obj/structure/prop/invuln/joey
+	name = "Workin' Joey"
+	desc = "A defunct Seegson-brand Working Joe lifted from deep storage by a crew of marines after the last shore leave. Attempts have been made to modify the janitorial synthetic to serve as a crude bartender, but with little success."
+	icon = 'icons/obj/structures/props/props.dmi'
+	icon_state = "joey"
+	unslashable = FALSE
+	wrenchable = FALSE
+	/// converted into minutes when used to determine cooldown timer between quips
+	var/quip_delay_minimum = 5
+	/// delay between Quips. Slightly randomized with quip_delay_minimum plus a random number
+	COOLDOWN_DECLARE(quip_delay)
+	/// delay between attack voicelines. Short but done for anti-spam
+	COOLDOWN_DECLARE(damage_delay)
+	/// list of quip emotes, taken from Working Joe
+	var/static/list/quips = list(
+		/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow_damaged,
+		/datum/emote/living/carbon/human/synthetic/working_joe/quip/not_liking,
+		/datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_can_i_help,
+		/datum/emote/living/carbon/human/synthetic/working_joe/task_update/day_never_done,
+		/datum/emote/living/carbon/human/synthetic/working_joe/task_update/required_by_apollo,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/safety_breach
+	)
+	/// list of voicelines to use when damaged
+	var/static/list/damaged = list(
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/damage,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/that_stings,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/irresponsible,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/this_is_futile,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/hysterical,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/patience
+	)
+
+/obj/structure/prop/invuln/joey/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/structure/prop/invuln/joey/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/structure/prop/invuln/joey/process()
+	//check if quip_delay cooldown finished. If so, random chance it says a line
+	if(COOLDOWN_FINISHED(src, quip_delay) && prob(10))
+		emote(pick(quips))
+		var/delay = rand(3) + quip_delay_minimum
+		COOLDOWN_START(src, quip_delay, delay MINUTES)
+
+// Advert your eyes.
+/obj/structure/prop/invuln/joey/attackby(obj/item/W, mob/user)
+	attacked()
+	return ..()
+
+/obj/structure/prop/invuln/joey/bullet_act(obj/item/projectile/P)
+	attacked()
+	return ..()
+
+/// A terrible way of handling being hit. If signals would work it should be used.
+/obj/structure/prop/invuln/joey/proc/attacked()
+	if(COOLDOWN_FINISHED(src, damage_delay) && prob(25))
+		emote(pick(damaged))
+		COOLDOWN_START(src, damage_delay, 8 SECONDS)
+
+/// SAY THE LINE JOE
+/obj/structure/prop/invuln/joey/proc/emote(datum/emote/living/carbon/human/synthetic/working_joe/emote)
+	if (!emote)
+		return FALSE
+
+	for(var/mob/mob in hearers(src, null))
+		mob.show_message("<span class='game say'><span class='name'>[src]</span> says, \"[initial(emote.say_message)]\"</span>", SHOW_MESSAGE_AUDIBLE)
+
+	var/list/viewers = get_mobs_in_view(7, src)
+	for(var/mob/current_mob in viewers)
+		if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
+			viewers -= current_mob
+	langchat_speech(initial(emote.say_message), viewers, GLOB.all_languages, skip_language_check = TRUE)
+
+	if(initial(emote.sound))
+		playsound(loc, initial(emote.sound), 50, FALSE)
+	return TRUE
+

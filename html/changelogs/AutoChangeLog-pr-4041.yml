@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Added prompts for xeno candidates to optionally take over a larva when an unnested host is ready to burst"
-  - bugfix: "Fixed larva spawning in hosts not triggering the preference unpool taskbar flash."

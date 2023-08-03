@@ -12,7 +12,7 @@
 	COOLDOWN_DECLARE(cooldown_request)
 	/// requesting evac
 	COOLDOWN_DECLARE(cooldown_destruct) 
-	 /// messaging HC (admins)
+	/// messaging HC (admins)
 	COOLDOWN_DECLARE(cooldown_central)
 	/// making a ship announcement
 	COOLDOWN_DECLARE(cooldown_message) 

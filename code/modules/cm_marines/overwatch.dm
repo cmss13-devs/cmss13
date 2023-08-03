@@ -30,11 +30,19 @@
 	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
 
+
+	///List of saved coordinates, format of ["x", "y", "comment"]
 	var/list/saved_coordinates = list()
 
+
+	///List of camera datums that we're actively updating and sending to TGUI
 	var/list/datum/overwatch_camera_holder/camera_holders = list()
 
+	///List of marines currently being multi-cammed
 	var/list/multicam_marines = list()
+
+	///Currently selected UI theme
+	var/ui_theme = "crtblue"
 
 
 /obj/structure/machinery/computer/overwatch/Initialize()
@@ -78,6 +86,23 @@
 
 	tgui_interact(user)
 
+/obj/structure/machinery/computer/overwatch/get_examine_text(mob/user)
+	. = ..()
+
+	. += SPAN_NOTICE("Alt-Click this machine to change the UI theme.")
+
+/obj/structure/machinery/computer/overwatch/clicked(mob/user, list/mods)
+
+	if(!ishuman(user))
+		return ..()
+	if(mods["alt"]) //Changing UI theme
+		var/list/possible_options = list("Blue"= "crtblue", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred")
+		var/chosen_theme = tgui_input_list(user, "Choose a UI theme:", "UI Theme", list("Blue", "Green", "Yellow", "Red"))
+		if(possible_options[chosen_theme])
+			ui_theme = possible_options[chosen_theme]
+		return TRUE
+	. = ..()
+
 /obj/structure/machinery/computer/overwatch/ui_static_data(mob/user)
 	var/list/data = list()
 	data["mapRef"] = tacmap.map_holder.map_ref
@@ -104,7 +129,7 @@
 /obj/structure/machinery/computer/overwatch/ui_data(mob/user)
 	var/list/data = list()
 
-
+	data["theme"] = ui_theme
 
 	if(!current_squad)
 		data["squad_list"] = list()
@@ -180,7 +205,8 @@
 				role = marine_human.job
 			else if(istype(marine_human.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
 				var/obj/item/card/id/ID = marine_human.wear_id //we use their ID to get their role.
-				if(ID.rank) role = ID.rank
+				if(ID.rank)
+					role = ID.rank
 
 
 			if(current_squad.squad_leader)
@@ -220,7 +246,7 @@
 				fteam = " [marine_human.assigned_fireteam]"
 
 		else //listed marine was deleted or gibbed, all we have is their name
-			for(var/datum/data/record/marine_record in GLOB.data_core.general)
+			for(var/datum/data/record/marine_record as anything in GLOB.data_core.general)
 				if(marine_record.fields["name"] == marine)
 					role = marine_record.fields["real_rank"]
 					break
@@ -344,8 +370,8 @@
 					current_squad.send_squad_message("Attention. [operator.name] has released overwatch system control. Overwatch functions deactivated.", displayed_icon = src)
 					to_chat(user, "[icon2html(src, user)] [SPAN_BOLDNOTICE("Overwatch system control override disengaged.")]")
 				else
-					var/mob/living/carbon/human/H = operator
-					var/obj/item/card/id/ID = H.get_idcard()
+					var/mob/living/carbon/human/human_operator = operator
+					var/obj/item/card/id/ID = human_operator.get_idcard()
 					current_squad.send_squad_message("Attention. [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"] is no longer your Overwatch officer. Overwatch functions deactivated.", displayed_icon = src)
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Overwatch systems deactivated. Goodbye, [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"].")]")
 			operator = null
@@ -970,11 +996,11 @@
 
 	var/list/visible_turfs = list()
 	range_turfs.Cut()
-	var/area/A
+	var/area/area_being_checked
 	for(var/turf/visible_turf in visible_things)
 		range_turfs += visible_turf
-		A = visible_turf.loc
-		if(!A.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
+		area_being_checked = visible_turf.loc
+		if(!area_being_checked.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
 			visible_turfs += visible_turf
 
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)

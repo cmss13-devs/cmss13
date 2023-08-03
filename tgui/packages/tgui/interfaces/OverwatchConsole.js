@@ -6,7 +6,10 @@ export const OverwatchConsole = (props, context) => {
   const { act, data } = useBackend(context);
 
   return (
-    <Window width={1000} height={800} theme="crtblue">
+    <Window
+      width={1000}
+      height={800}
+      theme={data.theme ? data.theme : 'crtblue'}>
       <Window.Content>
         {(!data.current_squad && <HomePanel />) || <SquadPanel />}
       </Window.Content>

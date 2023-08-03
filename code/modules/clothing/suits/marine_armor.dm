@@ -515,7 +515,7 @@
 	armor_bio = CLOTHING_ARMOR_VERYLOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	storage_slots = 2
+	storage_slots = 1
 	time_to_unequip = 0.5 SECONDS
 	time_to_equip = 1 SECONDS
 	siemens_coefficient = 0.7

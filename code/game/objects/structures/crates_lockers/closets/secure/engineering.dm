@@ -12,7 +12,7 @@
 	. = ..()
 	new /obj/item/clothing/accessory/storage/webbing(src)
 	new /obj/item/clothing/accessory/storage/black_vest/brown_vest(src)
-	new /obj/item/clothing/suit/storage/marine/light/vest(src)
+	new /obj/item/clothing/suit/armor/bulletproof(src)
 	new /obj/item/clothing/head/hardhat/white(src)
 	new /obj/item/clothing/head/welding(src)
 	new /obj/item/clothing/gloves/yellow(src)
@@ -28,6 +28,8 @@
 	new /obj/item/storage/pouch/general/medium(src)
 	new /obj/item/storage/pouch/construction(src)
 	new /obj/item/storage/pouch/tools(src)
+	new /obj/item/storage/pouch/medkit(src)
+	new /obj/item/storage/firstaid/regular(src)
 
 /obj/structure/closet/secure_closet/engineering_electrical
 	name = "electrical supplies"
@@ -120,7 +122,7 @@
 	if(!is_ground_level(z))
 		new /obj/item/device/radio/headset/almayer/mt(src)
 		new /obj/item/clothing/accessory/storage/black_vest/brown_vest(src)
-	new /obj/item/clothing/suit/storage/marine/light/vest(src)
+	new /obj/item/clothing/suit/armor/bulletproof(src)
 	new /obj/item/clothing/head/hardhat/dblue(src)
 	new /obj/item/storage/pouch/general(src)
 	new /obj/item/storage/pouch/electronics(src)

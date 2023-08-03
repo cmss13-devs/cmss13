@@ -22,7 +22,7 @@
 	var/icon_type = "donut"
 
 /obj/item/storage/fancy/update_icon()
-	icon_state = "[icon_type]box[contents.len]"
+	icon_state = "[icon_type]box[length(contents)]"
 
 /obj/item/storage/fancy/remove_from_storage(obj/item/W, atom/new_location)
 	. = ..()
@@ -32,12 +32,12 @@
 
 /obj/item/storage/fancy/get_examine_text(mob/user)
 	. = ..()
-	if(contents.len <= 0)
+	if(length(contents) <= 0)
 		. += "There are no [src.icon_type]s left in the box."
-	else if(contents.len == 1)
+	else if(length(contents) == 1)
 		. += "There is one [src.icon_type] left in the box."
 	else
-		. += "There are [src.contents.len] [src.icon_type]s in the box."
+		. += "There are [length(src.contents)] [src.icon_type]s in the box."
 
 
 /*
@@ -153,14 +153,14 @@
 	icon_state = "[initial(icon_state)]"
 
 /obj/item/storage/fancy/cigarettes/update_icon()
-	icon_state = "[initial(icon_state)][contents.len]"
+	icon_state = "[initial(icon_state)][length(contents)]"
 	return
 
 /obj/item/storage/fancy/cigarettes/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M, /mob))
 		return
 
-	if(M == user && user.zone_selected == "mouth" && contents.len > 0 && !user.wear_mask)
+	if(M == user && user.zone_selected == "mouth" && length(contents) > 0 && !user.wear_mask)
 		var/obj/item/clothing/mask/cigarette/C = locate() in src
 		if(C)
 			remove_from_storage(C, get_turf(user))
@@ -253,14 +253,14 @@
 	icon_state = "[initial(icon_state)]"
 
 /obj/item/storage/fancy/cigar/update_icon()
-	icon_state = "[initial(icon_state)][contents.len]"
+	icon_state = "[initial(icon_state)][length(contents)]"
 	return
 
 /obj/item/storage/fancy/cigar/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M, /mob))
 		return
 
-	if(M == user && user.zone_selected == "mouth" && contents.len > 0 && !user.wear_mask)
+	if(M == user && user.zone_selected == "mouth" && length(contents) > 0 && !user.wear_mask)
 		var/obj/item/clothing/mask/cigarette/cigar/C = locate() in src
 		if(C)
 			remove_from_storage(C, get_turf(user))
@@ -301,12 +301,12 @@
 
 /obj/item/storage/fancy/cigar/matchbook/get_examine_text(mob/user)
 	. = ..()
-	if(contents.len <= 0)
+	if(length(contents) <= 0)
 		. += "There are no [src.icon_type]es left in the box."
-	else if(contents.len == 1)
+	else if(length(contents) == 1)
 		. += "There is one [src.icon_type] left in the box."
 	else
-		. += "There are [src.contents.len] [src.icon_type]es in the box."
+		. += "There are [length(src.contents)] [src.icon_type]es in the box."
 
 /obj/item/storage/fancy/cigar/matchbook/attackby(obj/item/tool/match/W as obj, mob/living/carbon/human/user as mob)
 	if(!istype(user))
@@ -410,7 +410,7 @@
 	req_access = list(ACCESS_MARINE_MEDBAY)
 
 /obj/item/storage/lockbox/vials/update_icon(itemremoved = 0)
-	var/total_contents = src.contents.len - itemremoved
+	var/total_contents = length(src.contents) - itemremoved
 	src.icon_state = "vialbox[total_contents]"
 	src.overlays.Cut()
 	if (!broken)

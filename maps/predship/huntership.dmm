@@ -486,8 +486,7 @@
 /obj/structure/pipes/standard/simple/hidden{
 	dir = 4
 	},
-/obj/structure/machinery/computer/crew/alt{
-	faction = "Yautja";
+/obj/structure/machinery/computer/crew/alt/yautja{
 	pixel_y = 24
 	},
 /turf/open/floor/corsat{

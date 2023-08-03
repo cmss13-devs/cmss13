@@ -1771,7 +1771,7 @@
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-	storage_slots = 5
+	storage_slots = 7
 
 /obj/item/clothing/suit/storage/marine/veteran/royal_marine/medium //Smartgun Spec Armor
 	icon_state = "rmc_pointman"

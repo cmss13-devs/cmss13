@@ -109,8 +109,8 @@
 
 /obj/item/ammo_magazine/smartgun/holo_targetting
 	name = "holotargetting smartgun drum"
-	desc = "Holotargetting rounds for use in the royal marines commandos LX smartgun"
-	icon_state = "m56_drum_dirty"
+	desc = "Holotargetting rounds for use in the royal marines commando L56A2 smartgun."
+	icon_state = "m56_drum"
 	default_ammo = /datum/ammo/bullet/smartgun/holo_target
 	gun_type = /obj/item/weapon/gun/smartgun/rmc
 //-------------------------------------------------------

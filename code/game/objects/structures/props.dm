@@ -842,7 +842,7 @@
 /obj/structure/prop/brazier/campfire/Destroy()
 	SetLuminosity(0)
 	STOP_PROCESSING(SSobj, src)
-	. = ..()
+	return ..()
 
 #undef STATE_COMPLETE
 #undef STATE_FUEL

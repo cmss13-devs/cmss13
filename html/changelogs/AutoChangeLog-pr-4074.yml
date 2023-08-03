@@ -1,0 +1,4 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - rscdel: "You can no longer move the carp nade in the yautja ship"

@@ -149,7 +149,7 @@
 					target.AddDisease(new /datum/disease/black_goo)
 					to_chat(user, SPAN_XENOWARNING("<b>You sense your target is now infected.</b>"))
 
-			target.apply_effect(2, SLOW)
+		target.apply_effect(2, SLOW)
 
 /obj/item/weapon/zombie_claws/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(get_dist(src, O) > 1)

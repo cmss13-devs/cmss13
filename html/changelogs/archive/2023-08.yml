@@ -12,3 +12,13 @@
   Morrow:
   - bugfix: Fixes brain damage
   - qol: Jittering from brain damage is now capped
+2023-08-03:
+  Ben10083:
+  - rscadd: Lesser Drone Slots now have a minimum, currently set to 3.
+  Huffie56:
+  - balance: adding the possibility to buy "ES-4 stun magazine" for 10 point in the
+      portable vendor.
+  - bugfix: remove a bunch of ammo that where improper for ES-4 gun that are in the
+      lockbox.
+  Thwomper:
+  - maptweak: added Workin' Joey to maint bar.

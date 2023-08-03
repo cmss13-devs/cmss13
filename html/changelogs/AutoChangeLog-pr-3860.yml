@@ -1,0 +1,4 @@
+author: "ghostsheet"
+delete-after: True
+changes:
+  - rscadd: "B5 Breaching Hammer will now slow down humans who picks it up."

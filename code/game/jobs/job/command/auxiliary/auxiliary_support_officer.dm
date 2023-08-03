@@ -24,4 +24,4 @@ AddTimelock(/datum/job/command/auxiliary_officer, list(
 
 /datum/timelock/auxiliary/New(name, time_required, list/roles)
 	. = ..()
-	src.roles = JOB_AUXILIARY_ROLES_LIST
+	roles = JOB_AUXILIARY_ROLES_LIST

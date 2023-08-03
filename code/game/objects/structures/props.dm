@@ -797,7 +797,7 @@
 		return
 	to_chat(user, SPAN_NOTICE("You begin to extinguish [src]."))
 	while(remaining_fuel)
-		if(!do_after(user, 3 SECONDS, INTERRUPT_MOVED, BUSY_ICON_BUILD))
+		if(user.action_busy || !do_after(user, 3 SECONDS, INTERRUPT_MOVED, BUSY_ICON_BUILD))
 			return
 		fuel_drain()
 		to_chat(user, SPAN_NOTICE("You continue to extinguish [src]."))

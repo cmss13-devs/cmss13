@@ -190,7 +190,6 @@ const MainDashboard = (props, context) => {
   );
 };
 
-// not working
 const RoleTable = (props, context) => {
   const { act, data } = useBackend(context);
 
@@ -257,14 +256,17 @@ const RoleTable = (props, context) => {
           <Box color={ftl_alive ? 'green' : 'red'}>{ftl_alive} ALIVE</Box>
         </Table.Cell>
         <Table.Cell textAlign="center" bold>
-          <Box>{specialist_type}</Box>
+          <Box>{specialist_type ? specialist_type : 'NONE'}</Box>
           <Box color={spec_alive ? 'green' : 'red'}>
             {spec_count ? (spec_alive ? 'ALIVE' : 'DEAD') : 'NOT DEPLOYED'}
           </Box>
         </Table.Cell>
         <Table.Cell textAlign="center" bold>
+          <Box color={smart_count ? 'green' : 'red'}>
+            {smart_count ? smart_count + ' DEPLOYED' : 'NONE'}
+          </Box>
           <Box color={smart_alive ? 'green' : 'red'}>
-            {smart_count ? (smart_alive ? 'ALIVE' : 'DEAD') : 'NOT DEPLOYED'}
+            {smart_count ? (smart_alive ? 'ALIVE' : 'DEAD') : 'N/A'}
           </Box>
         </Table.Cell>
         <Table.Cell textAlign="center" bold>

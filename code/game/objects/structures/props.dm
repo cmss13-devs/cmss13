@@ -1191,7 +1191,7 @@
 
 /obj/structure/prop/invuln/joey/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	. = ..()
+	return ..()
 
 /obj/structure/prop/invuln/joey/process()
 	//check if quip_delay cooldown finished. If so, random chance it says a line
@@ -1230,7 +1230,7 @@
 	langchat_speech(initial(emote.say_message), viewers, GLOB.all_languages, skip_language_check = TRUE)
 
 	if(initial(emote.sound))
-		playsound(src.loc, initial(emote.sound), 50, FALSE)
+		playsound(loc, initial(emote.sound), 50, FALSE)
 	return TRUE
 
 

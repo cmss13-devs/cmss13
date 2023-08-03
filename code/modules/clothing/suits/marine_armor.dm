@@ -1516,7 +1516,7 @@
 	pockets.max_storage_space = 8
 
 /obj/item/clothing/suit/storage/RO
-	name = "\improper RO jacket"
+	name = "quartermaster jacket"
 	desc = "A green jacket worn by USCM personnel. The back has the flag of the United Americas on it."
 	icon_state = "RO_jacket"
 	blood_overlay_type = "coat"

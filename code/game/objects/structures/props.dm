@@ -830,14 +830,12 @@
 	visible_message(SPAN_WARNING("[xeno] extinguishes [src]!"))
 
 /obj/structure/prop/brazier/campfire/proc/fuel_drain(looping)
-	if(!fuel_stage_time) // Set the timer to 0 to make it never burn out
-		return
 	remaining_fuel--
 	if(!remaining_fuel)
 		new /obj/structure/prop/brazier/frame/full/campfire/smolder(loc)
 		qdel(src)
 		return
-	if(!looping)
+	if(!looping || !fuel_stage_time)
 		return
 	addtimer(CALLBACK(src, PROC_REF(fuel_drain), TRUE), fuel_stage_time)
 

@@ -414,12 +414,14 @@ const SquadMonitor = (props, context) => {
         {squad_leader && (
           <Table.Row key="index" bold>
             <Table.Cell p="2px">
-              <Button
-                onClick={() =>
-                  act('watch_camera', { target_ref: squad_leader.ref })
-                }>
-                {squad_leader.name}
-              </Button>
+              {(squad_leader.has_helmet && (
+                <Button
+                  onClick={() =>
+                    act('watch_camera', { target_ref: squad_leader.ref })
+                  }>
+                  {squad_leader.name}
+                </Button>
+              )) || <Box color="red">{squad_leader.name} (NO HELMET)</Box>}
             </Table.Cell>
             <Table.Cell p="2px">{squad_leader.role}</Table.Cell>
             <Table.Cell

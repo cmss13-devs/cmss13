@@ -2623,7 +2623,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/explosive/grenade/spawnergrenade/spesscarp,
+/obj/item/explosive/grenade/spawnergrenade/spesscarp{
+	anchored = 1;
+	desc = "A strange device taken from a far-off land. It looks incredibly fragile, best not to touch it."
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

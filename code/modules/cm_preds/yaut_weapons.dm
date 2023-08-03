@@ -276,7 +276,15 @@
 	chain = tether_effects["tetherer_tether"]
 	RegisterSignal(chain, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_chain))
 	RegisterSignal(src, COMSIG_ITEM_PICKUP, PROC_REF(on_pickup))
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
 
+/// The chain normally breaks if it's put into a container, so let's yank it back if that's the case
+/obj/item/weapon/yautja/combistick/proc/on_move(datum/source, atom/moved, dir, forced)
+	SIGNAL_HANDLER
+	if(!z && !is_type_in_list(loc, list(/obj/structure/surface, /mob))) // I rue for the day I can remove the surface snowflake check
+		recall()
+
+/// Clean up the chain, deleting/nulling/unregistering as needed
 /obj/item/weapon/yautja/combistick/proc/cleanup_chain()
 	SIGNAL_HANDLER
 	if(!QDELETED(chain))
@@ -286,6 +294,7 @@
 		chain = null
 
 	UnregisterSignal(src, COMSIG_ITEM_PICKUP)
+	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 
 /obj/item/weapon/yautja/combistick/proc/on_pickup(datum/source, mob/user)
 	SIGNAL_HANDLER
@@ -294,6 +303,7 @@
 
 	cleanup_chain()
 
+/// recall the combistick to the pred's hands or to be at their feet
 /obj/item/weapon/yautja/combistick/proc/recall()
 	SIGNAL_HANDLER
 	if(!chain)

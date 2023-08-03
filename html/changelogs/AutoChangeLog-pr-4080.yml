@@ -1,0 +1,5 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - rscadd: "Predators and thralls are now visible on the predship tacmap."
+  - rscadd: "Anyone wearing a stolen predator bracer is now visible on the predship tacmap."

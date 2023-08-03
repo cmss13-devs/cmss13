@@ -8,10 +8,14 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-	COOLDOWN_DECLARE(cooldown_request) // requesting a distress beacon
-	COOLDOWN_DECLARE(cooldown_destruct) // requesting evac
-	COOLDOWN_DECLARE(cooldown_central) // messaging HC (admins)
-	COOLDOWN_DECLARE(cooldown_message) // making a ship announcement
+	/// requesting a distress beacon
+	COOLDOWN_DECLARE(cooldown_request)
+	/// requesting evac
+	COOLDOWN_DECLARE(cooldown_destruct) 
+	 /// messaging HC (admins)
+	COOLDOWN_DECLARE(cooldown_central)
+	/// making a ship announcement
+	COOLDOWN_DECLARE(cooldown_message) 
 
 	var/list/messagetitle = list()
 	var/list/messagetext = list()
@@ -84,7 +88,7 @@
 	if(!messagetitle.len)
 		data["messages"] = null
 	else
-		for(var/i = 1; i<=messagetitle.len; i++)
+		for(var/i in 1 to length(messagetitle))
 			var/list/messagedata = list(list(
 				"title" = messagetitle[i],
 				"text" = messagetext[i],

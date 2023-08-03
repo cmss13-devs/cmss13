@@ -748,14 +748,16 @@
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "campfire_on"
 	density = FALSE
-	///How far the heating goes
+	///How many tiles the heating and sound goes
 	var/heating_range = 2
-	/// How many times it processes between ambience sounds
+	/// time between sounds
 	var/time_to_sound = 20
 	/// Time for it to burn through fuel
 	var/fuel_stage_time = 1 MINUTES
 	/// How much fuel it has
 	var/remaining_fuel = 5 //Maxes at 5, but burns one when made
+	/// If the fire can be manually put out
+	var/extinguishable = TRUE
 	/// Make no noise
 	var/quiet = FALSE
 
@@ -787,12 +789,12 @@
 		return
 	time_to_sound -= delta_time
 	if(time_to_sound <= 0)
-		playsound(loc, 'sound/machines/firepit_ambience.ogg', 15, FALSE, 4)
+		playsound(loc, 'sound/machines/firepit_ambience.ogg', 15, FALSE, heating_range)
 		time_to_sound = initial(time_to_sound)
 
 /obj/structure/prop/brazier/campfire/attack_hand(mob/user)
 	. = ..()
-	if(!fuel_stage_time)
+	if(!extinguishable)
 		to_chat(user, SPAN_WARNING("You cannot extinguish [src]."))
 		return
 	to_chat(user, SPAN_NOTICE("You begin to extinguish [src]."))
@@ -816,7 +818,7 @@
 	remaining_fuel++
 
 /obj/structure/prop/brazier/campfire/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(!fuel_stage_time)
+	if(!extinguishable)
 		to_chat(xeno, SPAN_WARNING("You cannot extinguish [src]."))
 		return
 	to_chat(xeno, SPAN_NOTICE("You begin to extinguish [src]."))

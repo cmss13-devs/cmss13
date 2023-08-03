@@ -117,9 +117,14 @@ const MainDashboard = (props, context) => {
       fontSize="16px"
       title={current_squad + ' Overwatch | Dashboard'}
       buttons={
-        <Button icon="sign-out-alt" onClick={() => act('logout')}>
-          Stop Overwatch
-        </Button>
+        <>
+          <Button icon="user" onClick={() => act('change_operator')}>
+            Operator - {data.operator}
+          </Button>
+          <Button icon="sign-out-alt" onClick={() => act('logout')}>
+            Stop Overwatch
+          </Button>
+        </>
       }>
       <Table fill mb="5px">
         <Table.Row bold>

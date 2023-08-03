@@ -576,6 +576,11 @@ Additional game mode variables.
 		to_chat(xeno_candidate, SPAN_WARNING("The selected hive does not have a hive core to spawn from!"))
 		return
 
+	for(var/mob_name in hive.banished_ckeys)
+		if(hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
+			to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [hive], you may not rejoin unless the Queen re-admits you or dies."))
+			return
+
 	hive.hive_location.spawn_lesser_drone(xeno_candidate)
 
 	return TRUE

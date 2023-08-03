@@ -132,8 +132,8 @@
 	equipment = /datum/equipment_preset/survivor/forecon/smartgunner
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
-/obj/effect/landmark/survivor_spawner/lv522_forecon_grenadier
-	equipment = /datum/equipment_preset/survivor/forecon/grenadier
+/obj/effect/landmark/survivor_spawner/lv522_forecon_sniper
+	equipment = /datum/equipment_preset/survivor/forecon/sniper
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
 /obj/effect/landmark/survivor_spawner/lv522_forecon_squad_leader

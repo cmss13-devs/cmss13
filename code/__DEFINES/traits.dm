@@ -175,6 +175,8 @@
 #define TRAIT_USING_WHEELCHAIR "t_using_wheelchair"
 /// If the mob will instantly go permadead upon death
 #define TRAIT_HARDCORE "t_hardcore"
+/// If the mob is a hazmat joe
+#define TRAIT_ENGI_JOE "t_engi_joe"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them
@@ -267,6 +269,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_EMOTE_CD_EXEMPT" = TRAIT_EMOTE_CD_EXEMPT,
 		"TRAIT_LISPING" = TRAIT_LISPING,
 		"TRAIT_CANNOT_EAT" = TRAIT_CANNOT_EAT,
+		"TRAIT_ENGI_JOE" = TRAIT_ENGI_JOE,
 	),
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,

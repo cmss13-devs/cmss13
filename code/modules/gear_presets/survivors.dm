@@ -1573,3 +1573,159 @@
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(new_human), WEAR_HEAD)
+
+	..()
+
+/datum/equipment_preset/survivor/upp
+	name = "UPP Soldier"
+	paygrade = "UE1"
+	origin_override = ORIGIN_UPP
+	rank = JOB_SURVIVOR
+	skills = /datum/skills/military/survivor/upp_private
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
+	faction = FACTION_UPP
+	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	role_comm_title = "UPP 173RD RECON"
+	idtype = /obj/item/card/id/dogtag
+	flags = EQUIPMENT_PRESET_EXTRA
+	uses_special_name = TRUE
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+	)
+
+/datum/equipment_preset/survivor/upp/load_name(mob/living/carbon/human/new_human, randomise)
+	var/random_name = capitalize(pick(new_human.gender == MALE ? first_names_male_upp : first_names_female_upp)) + " " + capitalize(pick(last_names_upp))
+	new_human.change_real_name(new_human, random_name)
+
+/datum/equipment_preset/survivor/upp/load_gear(mob/living/carbon/human/new_human)
+	var/obj/item/clothing/under/marine/veteran/UPP/uniform = new()
+	var/random_number = rand(1,2)
+	switch(random_number)
+		if(1)
+			uniform.roll_suit_jacket(new_human)
+		if(2)
+			uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp (new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flare(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
+
+/datum/equipment_preset/survivor/upp/soldier
+	name = "Survivor - UPP Soldier"
+	paygrade = "UE2"
+	assignment = "UPP Soldier"
+	skills = /datum/skills/military/survivor/upp_private
+
+/datum/equipment_preset/survivor/upp/soldier/load_gear(mob/living/carbon/human/new_human)
+	var/obj/item/clothing/under/marine/veteran/UPP/uniform = new()
+	var/random_number = rand(1,2)
+	switch(random_number)
+		if(1)
+			uniform.roll_suit_jacket(new_human)
+		if(2)
+			uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	add_upp_weapon(new_human)
+	spawn_random_upp_headgear(new_human)
+	spawn_random_upp_armor(new_human)
+	spawn_random_upp_belt(new_human)
+
+	..()
+
+/datum/equipment_preset/survivor/upp/sapper
+	name = "Survivor - UPP Sapper"
+	paygrade = "UE3S"
+	assignment = "UPP Sapper"
+	skills = /datum/skills/military/survivor/upp_sapper
+
+/datum/equipment_preset/survivor/upp/sapper/load_gear(mob/living/carbon/human/new_human)
+
+	var/obj/item/clothing/under/marine/veteran/UPP/engi/uniform = new()
+	var/R = rand(1,2)
+	switch(R)
+		if(1)
+			uniform.roll_suit_jacket(new_human)
+		if(2)
+			uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	spawn_random_upp_armor(new_human)
+	add_upp_weapon(new_human)
+	spawn_random_upp_headgear(new_human)
+
+	..()
+
+/datum/equipment_preset/survivor/upp/medic
+	name = "Survivor - UPP Medic"
+	paygrade = "UE3M"
+	assignment = "UPP Medic"
+	skills = /datum/skills/military/survivor/upp_medic
+
+/datum/equipment_preset/survivor/upp/medic/load_gear(mob/living/carbon/human/new_human)
+	var/obj/item/clothing/under/marine/veteran/UPP/medic/uniform = new()
+	var/random_number = rand(1,2)
+	switch(random_number)
+		if(1)
+			uniform.roll_suit_jacket(new_human)
+		if(2)
+			uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new/obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/partial(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/medic/upp(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_IN_BACK)
+	spawn_random_upp_armor(new_human)
+	add_upp_weapon(new_human)
+	spawn_random_upp_headgear(new_human)
+
+	..()
+
+/datum/equipment_preset/survivor/upp/specialist
+	name = "Survivor - UPP Specialist"
+	paygrade = "UE4"
+	assignment = "UPP Specialist"
+	skills = /datum/skills/military/survivor/upp_spec
+
+/datum/equipment_preset/survivor/upp/specialist/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP (new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/heavy (new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/flamer(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/PK9(new_human), WEAR_WAIST)
+
+	..()
+
+/datum/equipment_preset/survivor/upp/squad_leader
+	name = "Survivor - UPP Squad Leader"
+	paygrade = "UE5"
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
+	assignment = "UPP Squad Leader"
+	role_comm_title = "UPP 173Rd RECON SL"
+	skills = /datum/skills/military/survivor/upp_sl
+
+/datum/equipment_preset/survivor/upp/squad_leader/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/officer (new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/officer (new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/PK9(new_human), WEAR_WAIST)
+	add_upp_weapon(new_human)
+
+	..()

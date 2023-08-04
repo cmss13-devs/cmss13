@@ -519,6 +519,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	AddInteraction("Deferred to Mentors by [key_name_admin(usr)].", player_message = "Deferred to Mentors.")
 	to_chat(initiator, SPAN_ADMINHELP("Your ticket has been deferred to Mentors."))
+	log_admin_private("Ticket [TicketHref("#[id]")] deferred to mentors by [usr.key].")
 	log_ahelp(id, "Defer", "Deferred to mentors by [usr.key]", null,  usr.ckey)
 	Close(silent = TRUE)
 

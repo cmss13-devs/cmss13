@@ -5018,7 +5018,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/obj/structure/machinery/disposal{
+/obj/structure/machinery/disposal/delivery{
 	density = 0;
 	desc = "A pneumatic delivery unit. Sends items to the requisitions.";
 	icon_state = "delivery_engi";
@@ -23246,32 +23246,13 @@
 	},
 /area/almayer/shipboard/brig/lobby)
 "bRo" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "ARES StairsLower";
-	name = "\improper ARES Core Shutters";
-	plane = -7
-	},
-/obj/effect/step_trigger/ares_alert/public{
-	alert_id = "AresStairs";
-	alert_message = "Caution: Movement detected in ARES Core.";
-	cooldown_duration = 1200
-	},
-/obj/effect/step_trigger/ares_alert/public{
-	alert_id = "AresStairs";
-	alert_message = "Caution: Movement detected in ARES Core.";
-	cooldown_duration = 1200
-	},
-/obj/structure/machinery/door/poddoor/almayer/blended/white/open{
-	closed_layer = 3.2;
-	id = "ARES Emergency";
-	layer = 3.2;
-	name = "ARES Emergency Lockdown";
-	needs_power = 0;
-	open_layer = 1.9;
-	plane = -7
+/obj/effect/landmark/late_join/working_joe,
+/obj/effect/landmark/start/working_joe,
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/almayer/no_build{
-	icon_state = "test_floor4"
+	icon_state = "ai_floors"
 	},
 /area/almayer/command/airoom)
 "bRr" = (
@@ -23980,7 +23961,6 @@
 	},
 /area/almayer/squads/delta)
 "bUx" = (
-/obj/effect/landmark/start/working_joe,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -28487,6 +28467,12 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/brig/execution)
+"czG" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/almayer/no_build{
+	icon_state = "ai_floors"
+	},
+/area/almayer/command/airoom)
 "czJ" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = 8;
@@ -37908,19 +37894,13 @@
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_p)
 "gAe" = (
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_x = -8;
-	pixel_y = 18
+/obj/structure/machinery/door_control{
+	id = "ARES JoeCryo";
+	name = "Working Joe Cryogenics Lockdown";
+	pixel_x = 24;
+	pixel_y = 8;
+	req_one_access_txt = "19;200;90;91;92"
 	},
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_x = 8;
-	pixel_y = 18
-	},
-/obj/item/folder/white,
-/obj/item/folder/white,
-/obj/item/folder/white,
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
 	},
@@ -51792,7 +51772,6 @@
 	},
 /area/almayer/living/pilotbunks)
 "mLE" = (
-/obj/effect/landmark/start/working_joe,
 /turf/open/floor/plating,
 /area/almayer/command/airoom)
 "mLF" = (
@@ -54046,7 +54025,7 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "nJH" = (
-/obj/structure/machinery/computer/cameras/almayer/ares{
+/obj/structure/machinery/computer/cameras/almayer{
 	dir = 8;
 	pixel_x = 17
 	},
@@ -58768,6 +58747,25 @@
 	icon_state = "silvercorner"
 	},
 /area/almayer/command/computerlab)
+"pTt" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "ARES JoeCryo";
+	name = "\improper ARES Core Shutters";
+	plane = -7
+	},
+/turf/open/floor/almayer/no_build{
+	icon_state = "test_floor4"
+	},
+/area/almayer/command/airoom)
+"pTM" = (
+/obj/structure/sign/safety/water{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side"
+	},
+/area/almayer/medical/hydroponics)
 "pTT" = (
 /obj/structure/platform{
 	dir = 4
@@ -62448,6 +62446,13 @@
 	icon_state = "redfull"
 	},
 /area/almayer/command/cic)
+"rzf" = (
+/obj/effect/landmark/late_join/working_joe,
+/obj/effect/landmark/start/working_joe,
+/turf/open/floor/almayer/no_build{
+	icon_state = "ai_floors"
+	},
+/area/almayer/command/airoom)
 "rzj" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -65464,8 +65469,8 @@
 /area/almayer/living/briefing)
 "sTV" = (
 /obj/structure/machinery/power/apc/almayer/hardened{
-	dir = 1;
-	cell_type = /obj/item/cell/hyper
+	cell_type = /obj/item/cell/hyper;
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/almayer/command/airoom)
@@ -70872,12 +70877,19 @@
 	},
 /area/almayer/hull/lower_hull/l_m_p)
 "vhe" = (
-/obj/structure/prop/server_equipment/yutani_server{
+/obj/structure/filingcabinet{
 	density = 0;
-	desc = "A powerful server tower housing various AI functions.";
-	name = "server tower";
-	pixel_y = 16
+	pixel_x = -8;
+	pixel_y = 18
 	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 18
+	},
+/obj/item/folder/white,
+/obj/item/folder/white,
+/obj/item/folder/white,
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
 	},
@@ -74207,6 +74219,20 @@
 	icon_state = "bluefull"
 	},
 /area/almayer/command/cichallway)
+"wyv" = (
+/obj/structure/machinery/door_control{
+	id = "ARES JoeCryo";
+	name = "Working Joe Cryogenics Lockdown";
+	pixel_x = -24;
+	pixel_y = -8;
+	req_one_access_txt = "19;200;90;91;92"
+	},
+/obj/effect/landmark/late_join/working_joe,
+/obj/effect/landmark/start/working_joe,
+/turf/open/floor/almayer/no_build{
+	icon_state = "ai_floors"
+	},
+/area/almayer/command/airoom)
 "wyK" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -75349,7 +75375,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "wXv" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/prop/invuln/joey,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -75785,12 +75811,12 @@
 	pixel_y = 32
 	},
 /obj/item/folded_tent/big{
-	pixel_y = 10;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 10
 	},
 /obj/item/storage/box/mousetraps{
-	pixel_y = 12;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -76198,12 +76224,12 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/obj/structure/machinery/disposal{
+/obj/structure/machinery/disposal/delivery{
 	density = 0;
 	desc = "A pneumatic delivery unit. Sends items to the requisitions.";
 	icon_state = "delivery_med";
 	name = "Requisitions Delivery Unit";
-	pixel_y = 29
+	pixel_y = 28
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -78430,6 +78456,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/delta)
+"ylg" = (
+/obj/structure/machinery/cryopod,
+/turf/open/floor/almayer/no_build{
+	icon_state = "ai_floors"
+	},
+/area/almayer/command/airoom)
 "ylm" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
@@ -136635,7 +136667,7 @@ pYi
 fMl
 gUN
 bLv
-bRo
+wkM
 xvM
 osy
 cBm
@@ -137437,7 +137469,7 @@ lmz
 lmz
 lmz
 lmz
-lmz
+daz
 sbJ
 sbJ
 sbJ
@@ -137640,11 +137672,11 @@ lmz
 lmz
 lmz
 lmz
-lmz
-lmz
-lmz
-lmz
 daz
+rzf
+bRo
+wyv
+pTt
 gAe
 rCi
 gba
@@ -137843,10 +137875,10 @@ lmz
 lmz
 lmz
 lmz
-lmz
-lmz
-lmz
-lmz
+daz
+czG
+ylg
+ylg
 daz
 daz
 daz
@@ -138046,11 +138078,11 @@ bdH
 bdH
 bdH
 lmz
-lmz
-lmz
-lmz
-lmz
-lmz
+daz
+daz
+daz
+daz
+daz
 lmz
 lmz
 lmz

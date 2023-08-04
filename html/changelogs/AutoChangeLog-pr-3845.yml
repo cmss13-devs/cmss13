@@ -1,0 +1,5 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "A team of UPP survivors may spawn on Trijent Dam."
+  - mapadd: "A new nightmare insert for Trijent Dam has been added, featuring a crashed UPP dropship."

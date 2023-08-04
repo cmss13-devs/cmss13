@@ -448,6 +448,22 @@
 	..()
 	update_icon()
 
+/obj/item/storage/pill_bottle/attack_hand(mob/user, mods)
+	if(loc != user)
+		return ..()
+
+	if(!mods || !mods["alt"])
+		return ..()
+
+	if(!ishuman(user))
+		return ..()
+
+	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		error_idlock(user)
+		return FALSE
+
+	return ..()
+
 /obj/item/storage/pill_bottle/proc/error_idlock(mob/user)
 	to_chat(user, SPAN_WARNING("It must have some kind of ID lock..."))
 

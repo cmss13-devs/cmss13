@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - bugfix: "You can no longer bypass skill checks on pill bottles"

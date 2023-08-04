@@ -71,7 +71,7 @@
 /mob/living/carbon/xenomorph/runner/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = PASS_FLAGS_CRAWLER
+		PF.flags_pass |= PASS_FLAGS_CRAWLER
 
 /datum/behavior_delegate/runner_base
 	name = "Base Runner Behavior Delegate"

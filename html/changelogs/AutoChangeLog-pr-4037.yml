@@ -1,0 +1,4 @@
+author: "ghostsheet"
+delete-after: True
+changes:
+  - rscadd: "Acid Runners will now respawn where it blew up, if there is no hivecore to spawn at."

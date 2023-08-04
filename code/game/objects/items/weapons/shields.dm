@@ -123,8 +123,9 @@
 	readied_block = 60
 
 /obj/item/weapon/shield/riot/ballistic //FOR THE ROYAL MARINE SPEC DO NOT TOUCH SMELLY MAN
-	name = "Ballistic shield"
+	name = "FBS-B Ballistic shield"
 	desc = "Ballistic shield used by the royal marines commando. This shield is commonly used during boarding actions due to its lightweight but durible design."
+	desc_lore = "The Fox Ballistic Shield-B (FBS-B), was originally introduced as the FBS, attempting to be a solution to high-impact operations following increased counter-insurgency deployments since 2151. It was designed to provide maximum protection, and for the user to be able to utilize their primary armament in tandem. By 2163 tertiary ballistics trials were undertaken to ascertain it's effectiveness against improved munitions, and was additionally used as an opportunity to  deal with user complaints making their way up from quartermasters. The complaints of the original FBS were twofold: weight and extended usage in combat causing the side to melt closest to the barrel. After further material research and in the field tests were conducted, by 2171, the FBS had attained a ballistics protection classification of D, the highest available for a portable shield, by being able to stop a singular armor piercing round. This reported success was due to the usage of a new fibre reinforced lightweight composite.  In the wake of the successful improvements, the FBS was later christened the FBS-B as with the enhanced shield, the user had a tendency for maximum aggression during engagements. The nickname 'Bellicose' was given to breachers by their squaddies and later became it's official designation."
 	icon_state = "ballisticshield"
 	item_state = "ballisticshield"
 	base_icon_state = "ballisticshield"

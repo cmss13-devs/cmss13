@@ -12,13 +12,13 @@
 		_role = ID.rank
 	switch(_role)
 		if(JOB_TWE_RMC_LIEUTENANT)
-			hud_icon_state = "royalmarineslieutenant"
+			hud_icon_state = "lieutenant"
 		if(JOB_TWE_RMC_TEAMLEADER)
-			hud_icon_state = "royalmarinesteamleader"
+			hud_icon_state = "teamlead"
 		if(JOB_TWE_RMC_SPECIALIST)
-			hud_icon_state = "royalmarinesspec"
+			hud_icon_state = "spec"
 		if(JOB_TWE_RMC_RIFLEMAN)
-			hud_icon_state = "royalmarinesrifleman"
+			hud_icon_state = "rifleman"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "rmc_[hud_icon_state]")
 

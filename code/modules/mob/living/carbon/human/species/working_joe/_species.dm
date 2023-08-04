@@ -197,7 +197,7 @@
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'
 
-/datum/species/synthetic/colonial/engi_joe/engi/handle_post_spawn(mob/living/carbon/human/joe)
+/datum/species/synthetic/colonial/engi_joe/handle_post_spawn(mob/living/carbon/human/joe)
 	. = ..()
 	give_action(joe, /datum/action/joe_emote_panel)
 

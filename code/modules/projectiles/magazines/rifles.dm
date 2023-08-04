@@ -449,14 +449,14 @@
 //=ROYAL MARINES=\\
 
 /obj/item/ammo_magazine/rifle/rmc_f90
-	name = "\improper F903 HV magazine (10x24mm)"
-	desc = "A 10mm high velocity assault rifle magazine used by the royal marines."
+	name = "\improper F903 magazine (10x24mm)"
+	desc = "A 10mm assault rifle magazine used by the royal marines."
 	caliber = "10x24mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/twe_ammo.dmi'
 	icon_state = "aug"
 	item_state = "aug"
 	w_class = SIZE_MEDIUM
-	default_ammo = /datum/ammo/bullet/rifle/hv
+	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 30
 	gun_type = /obj/item/weapon/gun/rifle/rmc_f90
 	ammo_band_icon = "+m41a_band"
@@ -464,9 +464,10 @@
 
 /obj/item/ammo_magazine/rifle/rmc_f90/marksman
 	name = "\improper F903A1 Marksman HVAP magazine (10x24mm)"
-	desc = "A 10mm high velocity armor-piercing assault rifle magazine used by the royal marines."
+	desc = "A 10mm armor-piercing assault rifle magazine used by the royal marines."
 	icon_state = "aug_dmr"
 	item_state = "aug_dmr"
-	default_ammo = /datum/ammo/bullet/rifle/hvap
+	default_ammo = /datum/ammo/bullet/rifle/ap
 	gun_type = /obj/item/weapon/gun/rifle/rmc_f90/scope
-	max_rounds = 15
+	max_rounds = 20
+	ammo_band_color = AMMO_BAND_COLOR_AP

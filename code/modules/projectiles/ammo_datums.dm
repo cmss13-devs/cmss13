@@ -1073,16 +1073,6 @@
 	damage = 50
 	penetration = ARMOR_PENETRATION_TIER_8
 
-/datum/ammo/bullet/rifle/hv
-	name = "high velocity rifle bullet"
-	damage = 35
-	penetration = ARMOR_PENETRATION_TIER_7
-
-/datum/ammo/bullet/rifle/hvap
-	name = "high velocity armor-piercing rifle bullet"
-	damage = 50
-	penetration = ARMOR_PENETRATION_TIER_8
-
 /*
 //======
 					Shotgun Ammo

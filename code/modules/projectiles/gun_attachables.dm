@@ -1043,6 +1043,9 @@ Defined in conflicts.dm of the #defines folder.
 	wield_delay_mod = 0
 	dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
 
+/obj/item/attachable/scope/mini/f90
+	dynamic_aim_slowdown = SLOWDOWN_ADS_NONE
+
 /obj/item/attachable/scope/mini/flaregun/New()
 	..()
 	delay_mod = 0

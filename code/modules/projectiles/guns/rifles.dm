@@ -1771,13 +1771,13 @@
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_8
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	damage_falloff_mult = 0
 
 /obj/item/weapon/gun/rifle/rmc_f90/scope/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/scope/mini/f90_scope = new(src)
+	var/obj/item/attachable/scope/mini/f90/f90_scope = new(src)
 	var/obj/item/attachable/angledgrip/f90_agrip = new(src)
 	var/obj/item/attachable/f90_dmr_barrel/f90_dmr_barrel = new(src)
 	f90_scope.flags_attach_features &= ~ATTACH_REMOVABLE

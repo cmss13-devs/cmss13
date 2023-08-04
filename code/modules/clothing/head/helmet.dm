@@ -1252,6 +1252,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "A High-cut ballistic helmet. Designed by Lindenthal-Ehrenfeld Militärindustrie it is intended to be used by Royal Marines Commando as part of the kestrel armour system."
 	icon_state = "rmc_helm1"
 	item_state = "rmc_helm1"
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_LOW
@@ -1262,8 +1264,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_marine_helmet = NO_FLAGS
 	flags_atom = NO_NAME_OVERRIDE
 
-/obj/item/clothing/head/helmet/marine/veteran/royal_marine/team_lead
+/obj/item/clothing/head/helmet/marine/veteran/royal_marine/breacher
 	name = "L5A3 ballistic helmet"
 	desc = "A High-cut ballistic helmet featuring an attached mandible. Designed by Lindenthal-Ehrenfeld Militärindustrie it is intended to be used by Royal Marines Commando as part of the kestrel armour system"
-	icon_state = "rmc_helm_tl"
-	item_state = "rmc_helm_tl"
+	icon_state = "rmc_helm_br"
+	item_state = "rmc_helm_br"
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_LOW

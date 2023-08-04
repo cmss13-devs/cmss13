@@ -42,6 +42,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_MARINE_OT 35
 
 #define ACCESS_MARINE_SYNTH 36
+#define ACCESS_MARINE_ASO 37
 
 // AI Core Accesses
 /// Used in temporary passes

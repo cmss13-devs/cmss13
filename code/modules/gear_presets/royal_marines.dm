@@ -100,7 +100,7 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/twe/royal_marine/spec
+/datum/equipment_preset/twe/royal_marine/spec/marksman
 	name = "RMC TWE Royal Marine Commando (Marksman)"
 	paygrade = "RMC E2"
 	role_comm_title = "RMC"
@@ -109,7 +109,7 @@
 	rank = JOB_TWE_RMC_SPECIALIST
 	skills = /datum/skills/rmc/specialist
 
-/datum/equipment_preset/twe/royal_marine/spec/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/twe/royal_marine/spec/marksman/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/royal_marine, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/royal_marines, WEAR_ACCESSORY)
@@ -289,12 +289,12 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/twe/royal_marine/lieuteant //they better say it Lef-tenant or they should be banned for LRP
+/datum/equipment_preset/twe/royal_marine/lieuteant //they better say it Lef-tenant or they should be banned for LRP. More importantly this guy doesn't spawn in the ERT
 	name = "RMC TWE Royal Marine Commando (Officer)"
 	paygrade = "RMC O1"
 	role_comm_title = "RMC"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "Royal Marines Officer"
+	assignment = "Royal Marines Team Commander"
 	rank = JOB_TWE_RMC_LIEUTENANT
 	skills = /datum/skills/rmc/leader
 

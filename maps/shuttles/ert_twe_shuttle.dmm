@@ -20,6 +20,14 @@
 	icon_state = "rasputin3"
 	},
 /area/shuttle/ert)
+"g" = (
+/obj/structure/surface/rack,
+/obj/item/storage/toolbox/syndicate,
+/obj/item/storage/toolbox/syndicate,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/shuttle/ert)
 "h" = (
 /turf/open/shuttle/dropship{
 	icon_state = "floor8"
@@ -212,7 +220,8 @@
 /area/shuttle/ert)
 "Y" = (
 /obj/structure/surface/rack,
-/obj/item/storage/toolbox/syndicate,
+/obj/item/storage/backpack/rmc/frame,
+/obj/item/ammo_box/magazine/misc/mre,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
@@ -296,7 +305,7 @@ M
 (6,1,1) = {"
 O
 A
-Y
+g
 a
 H
 H

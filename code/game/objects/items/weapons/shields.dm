@@ -114,13 +114,19 @@
 	var/active = 0
 
 /obj/item/weapon/shield/riot/metal
+	name = "metal shield"
+	name = "A metal riot shield effective, but heavy."
 	icon_state = "riotmetal"
 	item_state = "riotmetal"
+	base_icon_state = "riotmetal"
 	passive_block = 40
 	readied_block = 60
 
-/obj/item/weapon/shield/riot/ballistic
+/obj/item/weapon/shield/riot/ballistic //FOR THE ROYAL MARINE SPEC DO NOT TOUCH SMELLY MAN
+	name = "Ballistic shield"
+	desc = "Ballistic shield used by the royal marines commando. This shield is commonly used during boarding actions due to its lightweight but durible design."
 	icon_state = "ballisticshield"
 	item_state = "ballisticshield"
+	base_icon_state = "ballisticshield"
 	passive_block = 60
 	readied_block = 90

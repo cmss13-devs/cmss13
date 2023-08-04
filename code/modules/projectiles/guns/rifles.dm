@@ -1702,6 +1702,7 @@
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/rmc_f90
+	flags_equip_slot = NO_FLAGS
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
@@ -1757,7 +1758,7 @@
 
 /obj/item/weapon/gun/rifle/rmc_f90/scope
 	name = "\improper F903A1 Marksman Rifle"
-	desc = "A variation of the F903 rifle used by the royal marines commando. This weapon only accepts the smaller 15 round magazines of 10x24mm HVAP."
+	desc = "A variation of the F903 rifle used by the royal marines commando. This weapon only accepts the smaller 15 round magazines of 10x24mm."
 	icon_state = "aug_dmr"
 	item_state = "aug_dmr"
 	attachable_allowed = null
@@ -1794,13 +1795,27 @@
 	update_attachable(f90_dmr_barrel.slot)
 
 /obj/item/weapon/gun/rifle/rmc_f90/shotgun
-	name = "\improper F903A1 Breacher Rifle"
+	name = "\improper F903A1/B 'Breacher' Rifle"
+	desc = "A variation of the F903 rifle used by the royal marines commando. Modified to be used in one hand with a shield. Uses 10x24mm caseless ammunition."
 	icon_state = "aug_mkey"
 	item_state = "aug_mkey"
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 	)
+
+/obj/item/weapon/gun/rifle/rmc_f90/shotgun/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_8
+	burst_amount = BURST_AMOUNT_TIER_3
+	burst_delay = FIRE_DELAY_TIER_8
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4 + 2*HIT_ACCURACY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+	recoil_unwielded = RECOIL_OFF
 
 /obj/item/weapon/gun/rifle/rmc_f90/shotgun/handle_starting_attachment()
 	..()

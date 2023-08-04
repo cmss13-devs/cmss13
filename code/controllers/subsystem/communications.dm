@@ -251,6 +251,7 @@ SUBSYSTEM_DEF(radio)
 		"[INTEL_FREQ]" = "intelradio",
 		"[WY_FREQ]" = "wyradio",
 		"[VAI_FREQ]" = "vairadio",
+		"[RMC_FREQ]" = "rmcradio",
 		"[CMB_FREQ]" = "cmbradio",
 		"[CLF_FREQ]" = "clfradio",
 		"[ALPHA_FREQ]" = "alpharadio",

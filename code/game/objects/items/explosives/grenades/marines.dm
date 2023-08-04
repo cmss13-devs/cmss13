@@ -689,3 +689,23 @@
 	burn_level = BURN_LEVEL_TIER_3
 	radius = 2
 	fire_type = FIRE_VARIANT_DEFAULT
+
+//Royal marine grenades
+
+/obj/item/explosive/grenade/high_explosive/rmc
+	name = "\improper R2175/A HEDP grenade"
+	desc = "High-Explosive Dual-Purpose. A small, but deceptively strong blast grenade that has recently been added to the arsenal of the RMC."
+	icon_state = "rmc_grenade"
+	item_state = "grenade_hedp"
+	explosion_power = 130
+	explosion_falloff = 30
+
+/obj/item/explosive/grenade/incendiary/rmc
+	name = "\improper R2175/B HIDP grenade"
+	desc = "The R2175/B HIDP is a small, but deceptively strong incendiary grenade designed to rapidly clear areas with fast-acting potent fire. It is set to detonate in 4 seconds."
+	icon_state = "rmc_grenade_fire"
+	item_state = "grenade_fire"
+	flame_level = BURN_TIME_TIER_1
+	burn_level = BURN_LEVEL_TIER_8
+	radius = 3
+	fire_type = FIRE_VARIANT_DEFAULT

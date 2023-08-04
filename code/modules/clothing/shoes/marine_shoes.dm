@@ -199,7 +199,7 @@
 
 //=ROYAL MARINES=\\
 
-/obj/item/clothing/shoes/veteran/royal_marine
+/obj/item/clothing/shoes/royal_marine
 	name = "\improper L10 pattern combat boots"
 	desc = "Standard issue combat boots for combat scenarios or combat situations. Used by the three world empires royal marines commando units."
 	icon_state = "rmc_boots"
@@ -220,14 +220,14 @@
 	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol)
 	flags_atom = NO_NAME_OVERRIDE
 
-/obj/item/clothing/shoes/veteran/royal_marine/snow
+/obj/item/clothing/shoes/royal_marine/snow
 	icon_state = "s_rmc_boots"
 
-/obj/item/clothing/shoes/veteran/royal_marine/knife
-/obj/item/clothing/shoes/veteran/royal_marine/knife/Initialize(mapload, ...)
+/obj/item/clothing/shoes/royal_marine/knife
+/obj/item/clothing/shoes/royal_marine/knife/Initialize(mapload, ...)
 	. = ..()
 	stored_item = new /obj/item/attachable/bayonet/rmc(src)
 	update_icon()
 
-/obj/item/clothing/shoes/veteran/royal_marine/knife/snow
+/obj/item/clothing/shoes/royal_marine/knife/snow
 	icon_state = "s_rmc_boots"

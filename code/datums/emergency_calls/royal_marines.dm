@@ -43,7 +43,7 @@
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CQB Specialist in the Royal Marines Commando. Born in the three world empire."))
 		arm_equipment(mob, /datum/equipment_preset/twe/royal_marine/spec/breacher, TRUE, TRUE)
 	else
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Contractor of Vanguard's Arrow Incorporated!"))
+		to_chat(mob, SPAN_ROLE_HEADER("You are a member of the Royal Marines Commando. Born in the three world empire."))
 		arm_equipment(mob, /datum/equipment_preset/twe/royal_marine/standard, TRUE, TRUE)
 
 	print_backstory(mob)

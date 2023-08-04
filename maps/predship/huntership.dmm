@@ -1790,8 +1790,7 @@
 /obj/structure/closet/crate/secure{
 	req_one_access_txt = "392";
 	color = "#6b675e";
-	name = "Secure Yautja crate";
-	req_one_access_txt = "252"
+	name = "Secure Yautja crate"
 	},
 /obj/item/explosive/grenade/spawnergrenade/hellhound,
 /obj/item/explosive/grenade/spawnergrenade/hellhound,
@@ -2427,8 +2426,7 @@
 /obj/structure/closet/crate/secure{
 	req_one_access_txt = "392";
 	color = "#6b675e";
-	name = "Secure Yautja crate";
-	req_one_access_txt = "252"
+	name = "Secure Yautja crate"
 	},
 /obj/item/weapon/yautja/combistick,
 /obj/item/weapon/yautja/combistick{

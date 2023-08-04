@@ -129,6 +129,10 @@
 	name = "Freelancer Station"
 	icon_state = "yellow"
 
+/area/adminlevel/ert_station/royal_marines_station
+	name = "HMS Patna Hangerbay"
+	icon_state = "yellow"
+
 /area/adminlevel/ert_station/shuttle_dispatch
 	name = "Shuttle Dispatch Station"
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC

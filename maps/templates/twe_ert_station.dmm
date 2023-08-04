@@ -1,0 +1,4041 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ai" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"aq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/almayer/computers/sensor_computer2{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"ar" = (
+/obj/structure/largecrate/random/barrel/blue,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"aH" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"aK" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "cargo_arrow"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"aW" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "1,1"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"aX" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"bp" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "5,13"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"bs" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "3,15"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"bG" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "6,12"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"bO" = (
+/turf/closed/wall/r_wall/elevator{
+	dir = 9
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"co" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"cL" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "2,1"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"dc" = (
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/royal_marines_station)
+"dd" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,8"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"dm" = (
+/obj/structure/closet/coffin/woodencrate,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"ds" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"du" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/platform_decoration{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"dC" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"dK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"eh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"ev" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"eX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"fp" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin7"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"fx" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 9
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"fD" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"gg" = (
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"gl" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"go" = (
+/obj/structure/platform,
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,0"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"gq" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"gx" = (
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"gJ" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"gS" = (
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/royal_marines_station)
+"gU" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "1,11"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"hk" = (
+/obj/structure/largecrate/random/barrel,
+/turf/open/shuttle/elevator/grating,
+/area/adminlevel/ert_station/royal_marines_station)
+"hm" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,7"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"hp" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "3,13"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"hA" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"hI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"hL" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orangecorner"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"iI" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,6"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"iK" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,1"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"iR" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/plating/kutjevo,
+/area/adminlevel/ert_station/royal_marines_station)
+"iS" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 9
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"jb" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"je" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"jl" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"jr" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "4,7"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"ju" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin6"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"jB" = (
+/obj/structure/platform,
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "2,0"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"jI" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,3"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"jL" = (
+/turf/open/space/basic,
+/area/space)
+"jU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"jV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"jW" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "1,4"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"kf" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "redcorner"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"kh" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"kx" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"ky" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"kH" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"kL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/prop/almayer/hangar_stencil{
+	icon_state = "dropship2"
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"kW" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"kX" = (
+/turf/open/floor/almayer{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"ll" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "cargo_arrow"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"lq" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "5,12"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"ls" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"lG" = (
+/turf/open/floor/almayer{
+	icon_state = "orangecorner"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"lN" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"lW" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/plating/kutjevo,
+/area/adminlevel/ert_station/royal_marines_station)
+"lX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/prop/almayer/hangar_stencil,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"mo" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "cargo_arrow"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"mp" = (
+/obj/structure/platform_decoration{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"mw" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,4"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"mI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"mK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/almayer/computers/sensor_computer1{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"nj" = (
+/turf/closed/wall/r_wall/elevator{
+	dir = 4
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"nl" = (
+/obj/structure/largecrate/random/barrel/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"nn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"nI" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"nT" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"nW" = (
+/obj/structure/closet/coffin/woodencrate,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"oo" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"op" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/turf/open/floor/plating/kutjevo,
+/area/adminlevel/ert_station/royal_marines_station)
+"oA" = (
+/obj/structure/platform,
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "1,0"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"oC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"oZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"pk" = (
+/obj/structure/machinery/cryopod/right,
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"ps" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "cargo_arrow"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"pJ" = (
+/turf/closed/wall/r_wall/elevator{
+	dir = 6
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"pL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"pO" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "2,13"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"qi" = (
+/obj/structure/largecrate/random/barrel/blue,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"qj" = (
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"qx" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"qG" = (
+/obj/structure/platform_decoration,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"qN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"qZ" = (
+/obj/structure/largecrate,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"ri" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/prop/almayer/hangar_stencil,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"rm" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"ro" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"rt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/platform,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"rI" = (
+/turf/closed/wall/r_wall/elevator{
+	dir = 5
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"rS" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin4"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"sb" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"sy" = (
+/turf/open/floor/plating/kutjevo,
+/area/adminlevel/ert_station/royal_marines_station)
+"sF" = (
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"sR" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "6,1"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"te" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"tr" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "3,14"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"tv" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"uc" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,4"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"uq" = (
+/obj/structure/largecrate/random/barrel,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"uE" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"uK" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"uU" = (
+/obj/structure/largecrate/random/barrel,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"vB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/royal_marines_station)
+"wl" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "2,2"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"wt" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/milosoup{
+	pixel_y = 10
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"wF" = (
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"xm" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,7"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"xy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"xE" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"xN" = (
+/obj/structure/machinery/door/airlock/multi_tile/elevator/research,
+/turf/open/shuttle/elevator/grating,
+/area/adminlevel/ert_station/royal_marines_station)
+"xW" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"xX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"yK" = (
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"yQ" = (
+/obj/structure/largecrate/random/barrel/blue,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"zk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"zw" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,12"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"zY" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Aa" = (
+/obj/structure/closet/crate/trashcart,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Ac" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Ai" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform_decoration{
+	dir = 5
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Am" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Au" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"AQ" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,6"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"AU" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,4"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Ba" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Bh" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"BC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"BV" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin8"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Ci" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin5"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Cj" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "6,2"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Cl" = (
+/obj/structure/platform_decoration{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Cm" = (
+/turf/open/floor/almayer{
+	icon_state = "redcorner"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Cu" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"CT" = (
+/turf/closed/wall/r_wall/elevator/gears,
+/area/adminlevel/ert_station/royal_marines_station)
+"Dg" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orangecorner"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Do" = (
+/obj/structure/platform,
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 6
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"DS" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "4,15"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"DV" = (
+/obj/structure/window/framed/almayer,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/royal_marines_station)
+"Ei" = (
+/obj/structure/closet/coffin/woodencrate,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"EG" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,8"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"EK" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,11"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"EX" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Fw" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"FA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"FN" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Gd" = (
+/obj/structure/machinery/cryopod,
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Gr" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"GQ" = (
+/obj/structure/platform,
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,0"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"GX" = (
+/obj/structure/platform,
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,0"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"GZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Hg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "redcorner"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Hp" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "4,10"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Hz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"HJ" = (
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"HM" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,6"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Id" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Ip" = (
+/obj/structure/platform,
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform_decoration{
+	dir = 10
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Ir" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"Iw" = (
+/obj/structure/platform,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"IC" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"IK" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/open/floor/plating/kutjevo,
+/area/adminlevel/ert_station/royal_marines_station)
+"IQ" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"JD" = (
+/obj/structure/closet/crate/trashcart,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"JO" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Kl" = (
+/obj/structure/largecrate/machine,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Ko" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/prop/tank/twe{
+	icon_state = "TOMMY TWO BARRELS";
+	layer = 5
+	},
+/turf/open/floor/plating/kutjevo,
+/area/adminlevel/ert_station/royal_marines_station)
+"Ks" = (
+/turf/open/shuttle/elevator/grating,
+/area/adminlevel/ert_station/royal_marines_station)
+"Ku" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"KD" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform_decoration{
+	dir = 5
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"KF" = (
+/turf/open/shuttle/elevator,
+/area/adminlevel/ert_station/royal_marines_station)
+"KJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Lj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Mg" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Ms" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"MJ" = (
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"MM" = (
+/obj/structure/platform,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"MQ" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,5"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"MU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"MY" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Nc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Ni" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,8"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Nm" = (
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Np" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"NE" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,3"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"NF" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"NV" = (
+/turf/closed/wall/r_wall/elevator,
+/area/adminlevel/ert_station/royal_marines_station)
+"Ok" = (
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Or" = (
+/obj/structure/machinery/cryopod{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Os" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "1,2"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"OA" = (
+/obj/structure/platform_decoration{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"OE" = (
+/obj/structure/largecrate,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"OK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"OO" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "5,14"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Pd" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/open/floor/plating/kutjevo,
+/area/adminlevel/ert_station/royal_marines_station)
+"Pg" = (
+/turf/open/shuttle/dropship,
+/area/adminlevel/ert_station/royal_marines_station)
+"Pl" = (
+/obj/structure/largecrate/random/barrel,
+/turf/open/shuttle/elevator,
+/area/adminlevel/ert_station/royal_marines_station)
+"Px" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "4,14"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"PB" = (
+/turf/open/floor/almayer{
+	icon_state = "cargo_arrow"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"PC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"PL" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"PN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/platform,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"PS" = (
+/obj/structure/largecrate/random/barrel/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"PY" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Qi" = (
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"QP" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "1,12"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Ri" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Rw" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,8"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Ry" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"RF" = (
+/turf/open/floor/almayer{
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"RH" = (
+/obj/structure/largecrate/machine,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Sc" = (
+/obj/structure/closet/crate/trashcart,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Sd" = (
+/turf/closed/wall/r_wall/elevator{
+	dir = 10
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Sm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Sv" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Sw" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,2"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"ST" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,3"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Tf" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/mint,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"Tm" = (
+/turf/closed/wall/r_wall/elevator{
+	dir = 1
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Tx" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"TY" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Ub" = (
+/obj/structure/platform,
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "6,0"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Uc" = (
+/obj/structure/largecrate/machine,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Ul" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Uq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Ur" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/royal_marines_station)
+"Ut" = (
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "red"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Uv" = (
+/obj/structure/bed/chair/comfy{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"UH" = (
+/turf/closed/wall/r_wall/elevator{
+	dir = 8
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"UJ" = (
+/obj/structure/largecrate/random/barrel/blue,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"UZ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/fishandchips,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"Va" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "4,9"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Vt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Vu" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "5,15"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Vv" = (
+/obj/docking_port/stationary/emergency_response/idle_port6,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/royal_marines_station)
+"VA" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orangecorner"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"We" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/royal_marines_station)
+"Wx" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"WC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "cargo_arrow"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"WD" = (
+/obj/structure/largecrate/machine,
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"WI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/prop/almayer/hangar_stencil{
+	icon_state = "dropship2"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"WL" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "6,13"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"WM" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"WS" = (
+/turf/closed/wall/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"Xe" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Xh" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "redcorner"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Xz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "orange"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"XF" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"XN" = (
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"XV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "cargo_arrow"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"YZ" = (
+/obj/structure/platform_decoration{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Zl" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"ZA" = (
+/obj/structure/bed/chair/comfy,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"ZO" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,5"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"ZV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/royal_marines_station)
+
+(1,1,1) = {"
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+"}
+(2,1,1) = {"
+jL
+jL
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+"}
+(3,1,1) = {"
+jL
+gS
+gS
+ar
+uq
+OE
+OE
+WS
+TY
+yK
+Sv
+Sv
+Sv
+gS
+TY
+TY
+TY
+gS
+Sv
+Sv
+Sv
+uq
+OE
+WS
+RH
+UJ
+XF
+XF
+XF
+XF
+yK
+OE
+WS
+qZ
+XF
+yK
+Uc
+gS
+gS
+jL
+jL
+jL
+jL
+jL
+jL
+"}
+(4,1,1) = {"
+jL
+gS
+Sc
+UJ
+Ok
+Qi
+nW
+WS
+TY
+XF
+oZ
+NF
+NF
+IQ
+gJ
+gJ
+gJ
+IQ
+NF
+Ac
+Ac
+Xz
+Uc
+WS
+qZ
+je
+Au
+Au
+Au
+gJ
+Qi
+yK
+WS
+RH
+je
+Qi
+uq
+nW
+gS
+gS
+gS
+gS
+gS
+gS
+jL
+"}
+(5,1,1) = {"
+jL
+gS
+RH
+je
+hL
+Xe
+WS
+WS
+WS
+ai
+Am
+jU
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+jU
+GZ
+WS
+WS
+WS
+mI
+jU
+MJ
+MJ
+MJ
+Xe
+WS
+WS
+WS
+mI
+VA
+Xz
+RH
+bO
+NV
+NV
+NV
+Sd
+gS
+jL
+"}
+(6,1,1) = {"
+jL
+gS
+UJ
+Am
+MJ
+RF
+yK
+Nm
+yK
+aK
+sb
+MJ
+MJ
+ZA
+wt
+kh
+Uv
+ZA
+UZ
+kh
+Uv
+dK
+yK
+Nm
+yK
+sb
+MJ
+MJ
+MJ
+jU
+RF
+yK
+Nm
+yK
+sb
+MJ
+dK
+qZ
+CT
+Pl
+Ks
+KF
+UH
+gS
+jL
+"}
+(7,1,1) = {"
+jL
+gS
+UJ
+Am
+MJ
+RF
+yK
+Nm
+yK
+aK
+sb
+MJ
+MJ
+ZA
+kh
+kh
+Uv
+ZA
+kh
+kh
+Uv
+RF
+yK
+Nm
+yK
+sb
+Bh
+Bh
+xE
+xE
+RF
+yK
+Nm
+yK
+sb
+MJ
+dK
+XV
+xN
+hk
+Ks
+Ks
+xN
+gS
+jL
+"}
+(8,1,1) = {"
+jL
+gS
+XF
+sb
+MJ
+dK
+yK
+Nm
+yK
+aK
+sb
+MJ
+MJ
+ZA
+kh
+kh
+Uv
+ZA
+kh
+Tf
+Uv
+RF
+yK
+Nm
+yK
+sb
+MJ
+MJ
+jU
+jU
+RF
+yK
+Nm
+yK
+Am
+MJ
+dK
+XV
+Ks
+Ks
+KF
+Ks
+Ks
+gS
+jL
+"}
+(9,1,1) = {"
+jL
+gS
+qZ
+sb
+MJ
+GZ
+WS
+WS
+WS
+ai
+sb
+MJ
+MJ
+MJ
+MJ
+MJ
+jU
+jU
+jU
+MJ
+MJ
+Xe
+WS
+WS
+WS
+WM
+Bh
+Bh
+xE
+xE
+Xe
+WS
+WS
+WS
+mI
+MJ
+dK
+XV
+Ks
+Ks
+KF
+Ks
+Ks
+gS
+jL
+"}
+(10,1,1) = {"
+jL
+gS
+nW
+sb
+MJ
+dK
+qZ
+WS
+TY
+yK
+gx
+gq
+gq
+Bh
+Bh
+FA
+jl
+jl
+gq
+gq
+gq
+gg
+kH
+WS
+uU
+sb
+MJ
+MJ
+jU
+MJ
+RF
+qZ
+WS
+Aa
+Am
+MJ
+RF
+XV
+Ks
+Ks
+Ks
+Ks
+Ks
+gS
+jL
+"}
+(11,1,1) = {"
+jL
+gS
+Ok
+hL
+MJ
+dK
+RH
+WS
+TY
+yK
+mo
+mo
+yK
+Id
+Sv
+Sv
+yK
+uE
+ll
+ll
+uE
+kH
+kH
+WS
+XF
+Am
+Bh
+Bh
+Bh
+Bh
+RF
+RH
+WS
+qZ
+Am
+MJ
+VA
+WD
+CT
+Pl
+hk
+KF
+nj
+gS
+jL
+"}
+(12,1,1) = {"
+jL
+gS
+sb
+lG
+gq
+gg
+XF
+WS
+WS
+DV
+Nm
+Nm
+DV
+WS
+WS
+WS
+WS
+WS
+Nm
+Nm
+WS
+WS
+WS
+WS
+XF
+Am
+MJ
+MJ
+MJ
+MJ
+dK
+XF
+WS
+Ei
+eX
+gq
+Dg
+RF
+rI
+Tm
+Tm
+Tm
+pJ
+gS
+jL
+"}
+(13,1,1) = {"
+jL
+gS
+sb
+RF
+Hz
+qN
+lX
+WS
+nI
+zk
+zk
+zk
+zk
+nI
+WS
+Hz
+qN
+ri
+ll
+ll
+pL
+qN
+WI
+WS
+mK
+Am
+MJ
+MJ
+kh
+Ir
+aX
+XF
+WS
+Hz
+qN
+WI
+sb
+RF
+gS
+gS
+gS
+gS
+gS
+gS
+jL
+"}
+(14,1,1) = {"
+jL
+gS
+sb
+RF
+MU
+yK
+oC
+WS
+Ur
+Ur
+yK
+yK
+Ur
+Ur
+WS
+MU
+yK
+oC
+MJ
+MJ
+MU
+yK
+oC
+WS
+aq
+eX
+gq
+gq
+gq
+ro
+hA
+XF
+WS
+MU
+yK
+oC
+sb
+RF
+gS
+jL
+jL
+jL
+jL
+jL
+jL
+"}
+(15,1,1) = {"
+jL
+gS
+ll
+ll
+Vt
+zk
+ls
+WS
+pk
+wF
+pk
+wF
+pk
+wF
+WS
+ds
+zk
+Ms
+ll
+ll
+Vt
+zk
+ls
+WS
+KJ
+WC
+ll
+uE
+yK
+yK
+XF
+XF
+WS
+ds
+zk
+Ms
+ll
+ll
+gS
+jL
+jL
+jL
+jL
+jL
+jL
+"}
+(16,1,1) = {"
+gS
+gS
+Nm
+Nm
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+Nm
+Nm
+WS
+WS
+WS
+WS
+WS
+Nm
+Nm
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+Nm
+Nm
+gS
+gS
+jL
+jL
+jL
+jL
+jL
+"}
+(17,1,1) = {"
+gS
+yK
+Ur
+Ur
+Np
+PC
+PC
+PC
+PC
+PC
+PC
+PC
+PC
+PC
+PC
+PC
+PC
+PN
+We
+We
+Np
+PC
+PC
+PC
+PN
+Ur
+Ur
+Np
+PC
+PC
+PC
+PC
+PC
+PC
+PC
+Iw
+Ur
+Ur
+Sm
+gS
+jL
+jL
+jL
+jL
+jL
+"}
+(18,1,1) = {"
+gS
+yK
+Ur
+Ur
+aH
+XN
+XN
+XN
+XN
+XN
+XN
+XN
+XN
+XN
+XN
+XN
+XN
+MM
+Ur
+Ur
+aH
+XN
+XN
+XN
+MM
+Ur
+Ur
+aH
+dd
+xm
+uc
+ST
+XN
+XN
+XN
+MM
+Ur
+vB
+XF
+gS
+jL
+jL
+jL
+jL
+jL
+"}
+(19,1,1) = {"
+gS
+yK
+Ur
+Ai
+Cl
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+qG
+Do
+Ur
+Ur
+aH
+XN
+XN
+XN
+MM
+Ur
+Ur
+Rw
+xm
+HM
+MQ
+uc
+ST
+XN
+XN
+go
+Ur
+vB
+XF
+gS
+jL
+jL
+jL
+jL
+jL
+"}
+(20,1,1) = {"
+gS
+yK
+vB
+ky
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+Vv
+yK
+Ur
+Ur
+aH
+XN
+XN
+QP
+gU
+Nm
+Nm
+gU
+gU
+jW
+gU
+jW
+gU
+Os
+aW
+oA
+Ur
+vB
+XF
+gS
+jL
+jL
+jL
+jL
+jL
+"}
+(21,1,1) = {"
+gS
+xy
+vB
+ky
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+yK
+Ur
+Ur
+iS
+rm
+pO
+bG
+ju
+Zl
+Zl
+Zl
+Zl
+rS
+Ba
+Ba
+Ba
+wl
+cL
+jB
+Ur
+vB
+hI
+gS
+jL
+jL
+jL
+jL
+jL
+"}
+(22,1,1) = {"
+gS
+XF
+vB
+ky
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+yK
+Ur
+Ur
+bs
+tr
+hp
+lq
+Ci
+IC
+xW
+IC
+xW
+Ci
+iR
+lW
+Ko
+YZ
+XN
+dC
+Ur
+vB
+XF
+gS
+jL
+jL
+jL
+jL
+jL
+"}
+(23,1,1) = {"
+gS
+XF
+vB
+ky
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+yK
+Ur
+Ur
+DS
+Px
+Zl
+Nm
+Pg
+Hp
+Va
+Va
+jr
+Ci
+op
+sy
+sy
+Nm
+XN
+Gr
+Ur
+vB
+yK
+gS
+jL
+jL
+jL
+jL
+jL
+"}
+(24,1,1) = {"
+gS
+XF
+Ur
+ky
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+yK
+Ur
+Ur
+Vu
+OO
+bp
+lq
+Ci
+IC
+xW
+IC
+xW
+Ci
+IK
+Pd
+Pd
+OA
+XN
+jb
+Ur
+vB
+yK
+gS
+jL
+jL
+jL
+jL
+jL
+"}
+(25,1,1) = {"
+gS
+ai
+Ur
+ky
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+yK
+Ur
+Ur
+KD
+Cu
+WL
+bG
+fp
+Zl
+Zl
+Zl
+Zl
+BV
+Ba
+Ba
+Ba
+Cj
+sR
+Ub
+Ur
+Ur
+kx
+gS
+jL
+jL
+jL
+jL
+jL
+"}
+(26,1,1) = {"
+gS
+yK
+Ur
+ky
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+dc
+yK
+Ur
+Ur
+aH
+XN
+XN
+zw
+EK
+Nm
+Nm
+NE
+NE
+mw
+NE
+iI
+NE
+Sw
+iK
+GX
+Ur
+Ur
+yK
+gS
+jL
+jL
+jL
+jL
+jL
+"}
+(27,1,1) = {"
+gS
+yK
+Ur
+fx
+mp
+PC
+PC
+PC
+PC
+PC
+PC
+PC
+PC
+PC
+PC
+PC
+du
+Ip
+Ur
+Ur
+aH
+XN
+XN
+XN
+MM
+Ur
+Ur
+Ni
+hm
+AQ
+ZO
+AU
+jI
+XN
+XN
+GQ
+Ur
+Ur
+yK
+gS
+jL
+jL
+jL
+jL
+jL
+"}
+(28,1,1) = {"
+gS
+yK
+Ur
+Ur
+aH
+XN
+XN
+XN
+XN
+XN
+XN
+XN
+XN
+XN
+XN
+XN
+XN
+MM
+Ur
+Ur
+aH
+XN
+XN
+XN
+MM
+Ur
+Ur
+aH
+EG
+hm
+AU
+jI
+XN
+XN
+XN
+MM
+Ur
+Ur
+yK
+gS
+jL
+jL
+jL
+jL
+jL
+"}
+(29,1,1) = {"
+gS
+nW
+Ur
+Ur
+Ri
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+rt
+ZV
+ZV
+Ri
+OK
+OK
+OK
+rt
+Ur
+Ur
+Ri
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+rt
+Ur
+Ur
+uE
+gS
+jL
+jL
+jL
+jL
+jL
+"}
+(30,1,1) = {"
+gS
+gS
+Nm
+Nm
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+Nm
+Nm
+WS
+WS
+WS
+WS
+WS
+Nm
+Nm
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+WS
+Uq
+Nm
+gS
+gS
+jL
+jL
+jL
+jL
+jL
+"}
+(31,1,1) = {"
+jL
+gS
+mo
+mo
+pL
+qN
+lX
+WS
+Gd
+Or
+Gd
+Or
+Gd
+Or
+WS
+Hz
+qN
+ri
+mo
+mo
+pL
+qN
+WI
+WS
+dm
+ps
+mo
+Ul
+PY
+yK
+XF
+OE
+WS
+Hz
+qN
+kL
+ps
+ps
+gS
+jL
+jL
+jL
+jL
+jL
+jL
+"}
+(32,1,1) = {"
+jL
+gS
+Ry
+kX
+MU
+yK
+oC
+WS
+Ur
+Ur
+yK
+yK
+Ur
+Ur
+WS
+MU
+yK
+oC
+MJ
+MJ
+MU
+yK
+oC
+WS
+XF
+nn
+FN
+zY
+gl
+zY
+Ku
+UJ
+WS
+MU
+yK
+oC
+BC
+ev
+gS
+jL
+jL
+jL
+jL
+jL
+jL
+"}
+(33,1,1) = {"
+jL
+gS
+Ry
+kX
+ds
+zk
+ls
+WS
+tv
+jV
+jV
+jV
+jV
+tv
+WS
+ds
+zk
+Ms
+mo
+mo
+Vt
+zk
+ls
+WS
+XF
+BC
+MJ
+MJ
+MJ
+MJ
+ev
+XF
+WS
+ds
+zk
+ls
+BC
+ev
+gS
+gS
+gS
+gS
+gS
+gS
+jL
+"}
+(34,1,1) = {"
+jL
+gS
+Ry
+kf
+FN
+sF
+kH
+WS
+WS
+DV
+Nm
+Nm
+DV
+WS
+WS
+WS
+WS
+WS
+Nm
+Nm
+WS
+WS
+WS
+WS
+nl
+Ry
+nT
+nT
+nT
+nT
+ev
+XF
+WS
+Ei
+nn
+xX
+Hg
+PS
+bO
+NV
+NV
+NV
+Sd
+gS
+jL
+"}
+(35,1,1) = {"
+jL
+gS
+HJ
+Xh
+MJ
+ev
+Ei
+WS
+TY
+yK
+ll
+ll
+XF
+Sm
+XF
+XF
+XF
+Ul
+mo
+mo
+Sm
+UJ
+UJ
+WS
+RH
+Ry
+MJ
+MJ
+MJ
+MJ
+ev
+XF
+WS
+qZ
+BC
+MJ
+Cm
+Kl
+CT
+KF
+Ks
+Pl
+UH
+gS
+jL
+"}
+(36,1,1) = {"
+jL
+gS
+OE
+Ry
+MJ
+ev
+RH
+WS
+TY
+yK
+Ut
+xX
+xX
+te
+te
+te
+FN
+FN
+FN
+FN
+FN
+Ku
+UJ
+WS
+OE
+Ry
+nT
+nT
+nT
+nT
+kX
+UJ
+WS
+RH
+Ry
+MJ
+kX
+PB
+xN
+Ks
+Ks
+hk
+xN
+gS
+jL
+"}
+(37,1,1) = {"
+jL
+gS
+Uc
+Ry
+MJ
+Nc
+WS
+WS
+WS
+ai
+Ry
+MJ
+MJ
+kh
+kh
+kh
+MJ
+MJ
+MJ
+MJ
+MJ
+MY
+WS
+WS
+WS
+uK
+jU
+MJ
+MJ
+MJ
+MY
+WS
+WS
+WS
+uK
+MJ
+kX
+PB
+Ks
+Ks
+KF
+Ks
+Ks
+gS
+jL
+"}
+(38,1,1) = {"
+jL
+gS
+UJ
+Ry
+MJ
+ev
+yK
+Nm
+yK
+aK
+Ry
+MJ
+MJ
+kh
+kh
+kh
+MJ
+MJ
+MJ
+MJ
+MJ
+kX
+yK
+Nm
+yK
+Ry
+Fw
+Fw
+nT
+nT
+kX
+yK
+Nm
+yK
+Ry
+MJ
+kX
+XV
+Ks
+Ks
+KF
+Ks
+Ks
+gS
+jL
+"}
+(39,1,1) = {"
+jL
+gS
+qZ
+Ry
+MJ
+ev
+yK
+Nm
+yK
+aK
+Ry
+MJ
+MJ
+Tx
+PL
+PL
+MJ
+MJ
+MJ
+oo
+oo
+kX
+yK
+Nm
+yK
+Ry
+jU
+jU
+MJ
+MJ
+ev
+yK
+Nm
+yK
+Ry
+MJ
+kX
+XV
+Ks
+hk
+Ks
+Ks
+Ks
+gS
+jL
+"}
+(40,1,1) = {"
+jL
+gS
+UJ
+BC
+MJ
+kX
+yK
+Nm
+yK
+aK
+Ry
+oo
+oo
+Wx
+jU
+MJ
+MJ
+MJ
+MJ
+kh
+kh
+ev
+yK
+Nm
+yK
+Ry
+jU
+jU
+MJ
+MJ
+ev
+yK
+Nm
+yK
+Ry
+MJ
+kX
+XF
+CT
+Pl
+hk
+KF
+nj
+gS
+jL
+"}
+(41,1,1) = {"
+jL
+gS
+XF
+Lj
+Xh
+MY
+WS
+WS
+WS
+ai
+Ry
+kh
+kh
+lN
+jU
+MJ
+MJ
+MJ
+MJ
+kh
+kh
+Nc
+WS
+WS
+WS
+uK
+MJ
+jU
+MJ
+MJ
+Nc
+WS
+WS
+WS
+uK
+Cm
+eh
+qZ
+rI
+Tm
+Tm
+Tm
+pJ
+gS
+jL
+"}
+(42,1,1) = {"
+jL
+gS
+qi
+XF
+HJ
+qj
+OE
+WS
+TY
+yK
+HJ
+EX
+EX
+qx
+co
+fD
+fD
+fD
+fD
+kW
+kW
+eh
+RH
+WS
+kH
+HJ
+fD
+fD
+fD
+co
+eh
+RH
+WS
+qZ
+HJ
+qj
+nl
+Aa
+gS
+gS
+gS
+gS
+gS
+gS
+jL
+"}
+(43,1,1) = {"
+jL
+gS
+gS
+yQ
+kH
+yK
+JD
+WS
+TY
+yK
+yK
+JO
+JO
+gS
+TY
+TY
+TY
+gS
+yK
+yK
+yK
+Uc
+qZ
+WS
+kH
+kH
+yK
+yK
+XF
+XF
+nl
+RH
+WS
+Ei
+Mg
+XF
+qZ
+gS
+gS
+jL
+jL
+jL
+jL
+jL
+jL
+"}
+(44,1,1) = {"
+jL
+jL
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+gS
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+"}
+(45,1,1) = {"
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+"}

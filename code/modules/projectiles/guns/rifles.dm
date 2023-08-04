@@ -1758,7 +1758,7 @@
 
 /obj/item/weapon/gun/rifle/rmc_f90/scope
 	name = "\improper F903A1 Marksman Rifle"
-	desc = "A variation of the F903 rifle used by the royal marines commando. This weapon only accepts the smaller 15 round magazines of 10x24mm."
+	desc = "A variation of the F903 rifle used by the royal marines commando. This weapon only accepts the smaller 20 round magazines of 10x24mm."
 	icon_state = "aug_dmr"
 	item_state = "aug_dmr"
 	attachable_allowed = null

@@ -5011,7 +5011,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/obj/structure/machinery/disposal{
+/obj/structure/machinery/disposal/delivery{
 	density = 0;
 	desc = "A pneumatic delivery unit. Sends items to the requisitions.";
 	icon_state = "delivery_engi";
@@ -76155,12 +76155,12 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/obj/structure/machinery/disposal{
+/obj/structure/machinery/disposal/delivery{
 	density = 0;
 	desc = "A pneumatic delivery unit. Sends items to the requisitions.";
 	icon_state = "delivery_med";
 	name = "Requisitions Delivery Unit";
-	pixel_y = 29
+	pixel_y = 28
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"

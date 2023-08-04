@@ -1,4 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - rscadd: "Joining cryomarines now uses your assigned character slot for the role you get (as long as you have not already used that character name this round)."

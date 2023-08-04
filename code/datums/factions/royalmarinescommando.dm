@@ -1,6 +1,6 @@
 /datum/faction/royal_marines_commando
 	name = "Royal Marines Commando"
-	faction_tag = FACTION_MARINE, FACTION_TWE
+	faction_tag = FACTION_TWE
 
 /datum/faction/royal_marines_commando/modify_hud_holder(image/holder, mob/living/carbon/human/H)
 	var/hud_icon_state
@@ -28,7 +28,7 @@
 		list("F903A1 Rifle", 20, /obj/item/weapon/gun/rifle/rmc_f90, null, VENDOR_ITEM_REGULAR),
 		list("F903A2 Rifle", 30, /obj/item/weapon/gun/rifle/rmc_f90/a_grip, null, VENDOR_ITEM_REGULAR),
 		list("F903A1 Marksman Rifle", 30, /obj/item/weapon/gun/rifle/rmc_f90/scope, null, VENDOR_ITEM_REGULAR),
-		list("F903A1/B 'Breacher' Rifle", 30, /obj/item/weapon/gun/rifle/rmc_f90/shotgun, null, VENDOR_ITEM_REGULAR)
+		list("F903A1/B 'Breacher' Rifle", 30, /obj/item/weapon/gun/rifle/rmc_f90/shotgun, null, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
 		list("F903 magazine (10x24mm)", 5, /obj/item/ammo_magazine/rifle/rmc_f90, null, VENDOR_ITEM_REGULAR),
@@ -56,8 +56,8 @@
 		list("UTILITIES", 0, null, null, null),
 		list("M94 Marking Flare Pack", 3, /obj/item/storage/box/m94, null, VENDOR_ITEM_RECOMMENDED),
 		list("Smoke Grenade", 7, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("R2175/B HIDP grenade packet", 7, /obj/item/storage/box/packet/rmc/incin, null, VENDOR_ITEM_REGULAR)
-		list("R2175/A HEDP grenade packet", 7, /obj/item/storage/box/packet/rmc/he, null, VENDOR_ITEM_REGULAR)
+		list("R2175/B HIDP grenade packet", 7, /obj/item/storage/box/packet/rmc/incin, null, VENDOR_ITEM_REGULAR),
+		list("R2175/A HEDP grenade packet", 7, /obj/item/storage/box/packet/rmc/he, null, VENDOR_ITEM_REGULAR),
 		list("L5 bayonet", 3, /obj/item/attachable/bayonet/rmc, null, VENDOR_ITEM_REGULAR),
 	)
 
@@ -67,7 +67,7 @@
 		list("F903A1 Rifle", 20, /obj/item/weapon/gun/rifle/rmc_f90, null, VENDOR_ITEM_REGULAR),
 		list("F903A2 Rifle", 30, /obj/item/weapon/gun/rifle/rmc_f90/a_grip, null, VENDOR_ITEM_REGULAR),
 		list("F903A1 Marksman Rifle", 30, /obj/item/weapon/gun/rifle/rmc_f90/scope, null, VENDOR_ITEM_REGULAR),
-		list("F903A1/B 'Breacher' Rifle", 30, /obj/item/weapon/gun/rifle/rmc_f90/shotgun, null, VENDOR_ITEM_REGULAR)
+		list("F903A1/B 'Breacher' Rifle", 30, /obj/item/weapon/gun/rifle/rmc_f90/shotgun, null, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", -1, null, null),
 		list("F903 magazine (10x24mm)", 5, /obj/item/ammo_magazine/rifle/rmc_f90, null, VENDOR_ITEM_REGULAR),
@@ -84,7 +84,7 @@
 		list("UTILITIES", -1, null, null),
 		list("M94 Marking Flare Pack", 3, /obj/item/storage/box/m94, null, VENDOR_ITEM_RECOMMENDED),
 		list("Smoke Grenade", 7, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("R2175/B HIDP grenade packet", 7, /obj/item/storage/box/packet/rmc/incin, null, VENDOR_ITEM_REGULAR)
-		list("R2175/A HEDP grenade packet", 7, /obj/item/storage/box/packet/rmc/he, null, VENDOR_ITEM_REGULAR)
+		list("R2175/B HIDP grenade packet", 7, /obj/item/storage/box/packet/rmc/incin, null, VENDOR_ITEM_REGULAR),
+		list("R2175/A HEDP grenade packet", 7, /obj/item/storage/box/packet/rmc/he, null, VENDOR_ITEM_REGULAR),
 		list("L5 bayonet", 3, /obj/item/attachable/bayonet/rmc, null, VENDOR_ITEM_REGULAR),
 	)

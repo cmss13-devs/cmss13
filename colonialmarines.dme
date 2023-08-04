@@ -510,6 +510,7 @@
 #include "code\datums\factions\faction.dm"
 #include "code\datums\factions\helpers.dm"
 #include "code\datums\factions\pmc.dm"
+#include "code\datums\factions\royalmarinescommando.dm"
 #include "code\datums\factions\upp.dm"
 #include "code\datums\factions\uscm.dm"
 #include "code\datums\helper_datums\getrev.dm"

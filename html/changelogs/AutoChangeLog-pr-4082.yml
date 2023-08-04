@@ -1,0 +1,4 @@
+author: "blackdragonTOW"
+delete-after: True
+changes:
+  - bugfix: "fixed a file reference that broke end of round music for some factions"

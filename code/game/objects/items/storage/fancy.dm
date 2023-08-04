@@ -22,6 +22,7 @@
 	name = "donut box"
 	desc = "A box where round, heavenly, holey pastries reside."
 	var/icon_type = "donut"
+	var/plural = "s"
 
 /obj/item/storage/fancy/update_icon()
 	icon_state = "[icon_type]box[length(contents)]"
@@ -32,22 +33,14 @@
 		update_icon()
 
 
-/obj/item/storage/fancy/get_examine_text(obj/item/test, mob/user)
+/obj/item/storage/fancy/get_examine_text(mob/user)
 	. = ..()
-	if(istype(test, /obj/item/storage/fancy/cigar/matchbook))
-		if(!length(contents))
-			. += "There are no [src.icon_type]es left in the box."
-		else if(length(contents) == 1)
-			. += "There is one [src.icon_type] left in the box."
-		else
-			. += "There are [length(src.contents)] [src.icon_type]es in the box."
+	if(!length(contents))
+		. += "There are no [src.icon_type][plural] left in the box."
+	else if(length(contents) == 1)
+		. += "There is one [src.icon_type] left in the box."
 	else
-		if(!length(contents))
-			. += "There are no [src.icon_type]s left in the box."
-		else if(length(contents) == 1)
-			. += "There is one [src.icon_type] left in the box."
-		else
-			. += "There are [length(src.contents)] [src.icon_type]s in the box."
+		. += "There are [length(src.contents)] [src.icon_type][plural] in the box."
 
 // EGG BOX
 
@@ -300,6 +293,7 @@
 	w_class = SIZE_TINY
 	var/light_chance = 70 //how likely you are to light the match on the book
 	var/burn_chance = 20 //how likely you are to burn yourself once you light it
+	plural = "es"
 
 /obj/item/storage/fancy/cigar/matchbook/attackby(obj/item/tool/match/W as obj, mob/living/carbon/human/user as mob)
 	if(!istype(user))

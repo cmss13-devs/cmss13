@@ -212,6 +212,10 @@
 	if(percentage_transferred)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_transferred]")
 
+/datum/behavior_delegate/drone_healer/handle_death(mob/M)
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
+
 /datum/action/xeno_action/activable/healer_sacrifice
 	name = "Sacrifice"
 	action_icon_state = "screech"

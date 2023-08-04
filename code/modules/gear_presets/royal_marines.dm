@@ -107,7 +107,7 @@
 	role_comm_title = "RMC"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Royal Marines Marksman"
-	rank = JOB_TWE_RMC_SPECIALIST
+	rank = JOB_TWE_RMC_MARKSMAN
 	skills = /datum/skills/rmc/specialist
 
 /datum/equipment_preset/twe/royal_marine/spec/marksman/load_gear(mob/living/carbon/human/new_human)
@@ -152,7 +152,7 @@
 	role_comm_title = "RMC"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Royal Marines Breacher"
-	rank = JOB_TWE_RMC_SPECIALIST
+	rank = JOB_TWE_RMC_BREACHER
 	skills = /datum/skills/rmc/specialist
 
 /datum/equipment_preset/twe/royal_marine/spec/breacher/load_gear(mob/living/carbon/human/new_human)
@@ -200,7 +200,7 @@
 	role_comm_title = "RMC"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Royal Marines Smartgunner"
-	rank = JOB_TWE_RMC_SPECIALIST
+	rank = JOB_TWE_RMC_SMARTGUNNER
 	skills = /datum/skills/rmc/specialist
 
 /datum/equipment_preset/twe/royal_marine/spec/machinegun/load_gear(mob/living/carbon/human/new_human)

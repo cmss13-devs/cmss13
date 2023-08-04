@@ -971,6 +971,7 @@
 	icon_state = "vai_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/royal_marine)
 	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_TWE
 	volume = RADIO_VOLUME_IMPORTANT
 
 //CMB Headsets

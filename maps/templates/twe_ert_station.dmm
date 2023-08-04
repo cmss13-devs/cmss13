@@ -81,6 +81,9 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "cL" = (
+/obj/structure/platform{
+	dir = 4
+	},
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "2,1"
 	},
@@ -119,19 +122,6 @@
 "du" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
-	},
-/obj/structure/platform_decoration{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/adminlevel/ert_station/royal_marines_station)
-"dC" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
 	},
 /obj/structure/platform_decoration{
 	dir = 1
@@ -215,6 +205,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "go" = (
 /obj/structure/platform,
+/obj/structure/blocker/invisible_wall,
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "0,0"
 	},
@@ -280,6 +271,15 @@
 	icon_state = "orangecorner"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"iE" = (
+/obj/structure/prop/almayer/computers/sensor_computer1{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "iI" = (
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "7,6"
@@ -300,30 +300,11 @@
 /turf/open/floor/plating/kutjevo,
 /area/adminlevel/ert_station/royal_marines_station)
 "iS" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
+/obj/structure/platform_decoration{
 	dir = 4
 	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/adminlevel/ert_station/royal_marines_station)
-"jb" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform_decoration,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "je" = (
 /obj/effect/decal/cleanable/dirt,
@@ -351,6 +332,12 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "jB" = (
 /obj/structure/platform,
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 6
+	},
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "2,0"
 	},
@@ -496,6 +483,11 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
+/area/adminlevel/ert_station/royal_marines_station)
+"mc" = (
+/obj/structure/platform,
+/obj/structure/blocker/invisible_wall,
+/turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "mo" = (
 /turf/open/floor/almayer{
@@ -724,15 +716,6 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
-"rm" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/adminlevel/ert_station/royal_marines_station)
 "ro" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -781,6 +764,9 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "sR" = (
+/obj/structure/platform{
+	dir = 8
+	},
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "6,1"
 	},
@@ -822,6 +808,13 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
+/area/adminlevel/ert_station/royal_marines_station)
+"uC" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "uE" = (
 /obj/structure/machinery/light{
@@ -1069,13 +1062,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Cu" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "CT" = (
 /turf/closed/wall/r_wall/elevator/gears,
@@ -1132,6 +1119,19 @@
 	icon_state = "red"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"Fp" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 9
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/void,
+/area/adminlevel/ert_station/royal_marines_station)
 "Fw" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -1164,18 +1164,22 @@
 	icon_state = "cargo"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
-"Gr" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
+"GO" = (
+/obj/structure/platform{
+	dir = 1
 	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+/obj/structure/platform{
+	dir = 8
 	},
+/obj/structure/platform_decoration{
+	dir = 5
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "GQ" = (
 /obj/structure/platform,
+/obj/structure/blocker/invisible_wall,
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "8,0"
 	},
@@ -1193,6 +1197,13 @@
 	icon_state = "orange"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"He" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/void,
+/area/adminlevel/ert_station/royal_marines_station)
 "Hg" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
@@ -1201,6 +1212,9 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Hp" = (
+/obj/structure/prop/almayer/cannon_cable_connector{
+	pixel_y = 6
+	},
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "4,10"
 	},
@@ -1227,6 +1241,13 @@
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "0,6"
 	},
+/area/adminlevel/ert_station/royal_marines_station)
+"HX" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "Id" = (
 /obj/structure/surface/table/almayer,
@@ -1259,16 +1280,17 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "Iw" = (
 /obj/structure/platform,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
+/obj/structure/platform{
+	dir = 8
 	},
+/obj/structure/platform_decoration{
+	dir = 10
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "IC" = (
 /obj/structure/bed/chair/vehicle{
@@ -1325,9 +1347,9 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/obj/structure/prop/tank/twe{
-	icon_state = "TOMMY TWO BARRELS";
-	layer = 5
+/obj/structure/prop/vehicles/tank/twe{
+	layer = 5.1;
+	pixel_y = -6
 	},
 /turf/open/floor/plating/kutjevo,
 /area/adminlevel/ert_station/royal_marines_station)
@@ -1342,19 +1364,11 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "KD" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
+/obj/structure/platform_decoration{
 	dir = 8
 	},
-/obj/structure/platform_decoration{
-	dir = 5
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "KF" = (
 /turf/open/shuttle/elevator,
@@ -1404,6 +1418,14 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"MN" = (
+/obj/structure/prop/almayer/cannon_cable_connector{
+	pixel_y = -3
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "MQ" = (
@@ -1708,6 +1730,12 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "Ub" = (
 /obj/structure/platform,
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform_decoration{
+	dir = 10
+	},
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "6,0"
 	},
@@ -1717,6 +1745,20 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Uk" = (
+/obj/structure/platform,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 6
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "Ul" = (
 /obj/structure/machinery/light{
@@ -1813,6 +1855,22 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/royal_marines_station)
+"WB" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 9
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/void,
+/area/adminlevel/ert_station/royal_marines_station)
 "WC" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
@@ -1857,6 +1915,22 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "WS" = (
 /turf/closed/wall/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"WY" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform_decoration{
+	dir = 5
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "Xe" = (
 /obj/structure/machinery/light,
@@ -2697,21 +2771,21 @@ PC
 PN
 We
 We
-Np
-PC
-PC
-PC
-PN
+WY
+HX
+HX
+HX
+Iw
 Ur
 Ur
-Np
-PC
-PC
-PC
-PC
-PC
-PC
-PC
+WY
+HX
+HX
+HX
+HX
+HX
+HX
+HX
 Iw
 Ur
 Ur
@@ -2744,22 +2818,22 @@ XN
 MM
 Ur
 Ur
-aH
-XN
-XN
-XN
-MM
+uC
+Cu
+Cu
+Cu
+mc
 Ur
 Ur
-aH
+uC
 dd
 xm
 uc
 ST
-XN
-XN
-XN
-MM
+Cu
+Cu
+Cu
+mc
 Ur
 vB
 XF
@@ -2791,11 +2865,11 @@ qG
 Do
 Ur
 Ur
-aH
-XN
-XN
-XN
-MM
+uC
+Cu
+Cu
+Cu
+mc
 Ur
 Ur
 Rw
@@ -2804,8 +2878,8 @@ HM
 MQ
 uc
 ST
-XN
-XN
+Cu
+Cu
 go
 Ur
 vB
@@ -2838,9 +2912,9 @@ Vv
 yK
 Ur
 Ur
-aH
-XN
-XN
+uC
+Cu
+Cu
 QP
 gU
 Nm
@@ -2884,9 +2958,9 @@ dc
 dc
 yK
 Ur
-Ur
+GO
 iS
-rm
+Cu
 pO
 bG
 ju
@@ -2897,7 +2971,7 @@ Zl
 rS
 Ba
 Ba
-Ba
+MN
 wl
 cL
 jB
@@ -2931,7 +3005,7 @@ dc
 dc
 yK
 Ur
-Ur
+uC
 bs
 tr
 hp
@@ -2946,10 +3020,10 @@ iR
 lW
 Ko
 YZ
-XN
-dC
 Ur
-vB
+Ur
+Ur
+XF
 XF
 gS
 jL
@@ -2978,10 +3052,10 @@ dc
 dc
 yK
 Ur
-Ur
+uC
 DS
 Px
-Zl
+iE
 Nm
 Pg
 Hp
@@ -2993,10 +3067,10 @@ op
 sy
 sy
 Nm
-XN
-Gr
 Ur
-vB
+Ur
+Ur
+XF
 yK
 gS
 jL
@@ -3025,7 +3099,7 @@ dc
 dc
 yK
 Ur
-Ur
+uC
 Vu
 OO
 bp
@@ -3040,10 +3114,10 @@ IK
 Pd
 Pd
 OA
-XN
-jb
 Ur
-vB
+Ur
+Ur
+XF
 yK
 gS
 jL
@@ -3072,7 +3146,7 @@ dc
 dc
 yK
 Ur
-Ur
+Fp
 KD
 Cu
 WL
@@ -3085,7 +3159,7 @@ Zl
 BV
 Ba
 Ba
-Ba
+MN
 Cj
 sR
 Ub
@@ -3120,9 +3194,9 @@ dc
 yK
 Ur
 Ur
-aH
-XN
-XN
+uC
+Cu
+Cu
 zw
 EK
 Nm
@@ -3167,11 +3241,11 @@ du
 Ip
 Ur
 Ur
-aH
-XN
-XN
-XN
-MM
+uC
+Cu
+Cu
+Cu
+mc
 Ur
 Ur
 Ni
@@ -3180,8 +3254,8 @@ AQ
 ZO
 AU
 jI
-XN
-XN
+Cu
+Cu
 GQ
 Ur
 Ur
@@ -3214,22 +3288,22 @@ XN
 MM
 Ur
 Ur
-aH
-XN
-XN
-XN
-MM
+uC
+Cu
+Cu
+Cu
+mc
 Ur
 Ur
-aH
+uC
 EG
 hm
 AU
 jI
-XN
-XN
-XN
-MM
+Cu
+Cu
+Cu
+mc
 Ur
 Ur
 yK
@@ -3261,22 +3335,22 @@ OK
 rt
 ZV
 ZV
-Ri
-OK
-OK
-OK
-rt
+WB
+He
+He
+He
+Uk
 Ur
 Ur
-Ri
-OK
-OK
-OK
-OK
-OK
-OK
-OK
-rt
+WB
+He
+He
+He
+He
+He
+He
+He
+Uk
 Ur
 Ur
 uE

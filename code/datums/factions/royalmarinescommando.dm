@@ -14,7 +14,7 @@
 		if(JOB_TWE_RMC_LIEUTENANT)
 			hud_icon_state = "lieutenant"
 		if(JOB_TWE_RMC_TEAMLEADER)
-			hud_icon_state = "teamlead"
+			hud_icon_state = "teamleader"
 		if(JOB_TWE_RMC_MARKSMAN)
 			hud_icon_state = "marksman"
 		if(JOB_TWE_RMC_RIFLEMAN)

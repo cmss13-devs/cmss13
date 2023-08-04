@@ -59,22 +59,40 @@
 	var/static/list/wj_categories = list()
 	/// Panel allows you to spam, so a manual CD is added here
 	COOLDOWN_DECLARE(panel_emote_cooldown)
+	/// Hazjoe variants
+	var/static/list/hj_emotes
+	var/static/list/hj_categories = list()
 
 
 /datum/joe_emote_panel/New()
-	if(!length(wj_emotes))
-		var/list/emotes_to_add = list()
-		for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
-			if(!initial(emote.key) || !initial(emote.say_message))
-				continue
+	if(!HAS_TRAIT(usr, TRAIT_ENGI_JOE))
+		if(!length(wj_emotes))
+			var/list/emotes_to_add = list()
+			for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
+				if(!initial(emote.key) || !initial(emote.say_message))
+					continue
 
-			if(!(initial(emote.category) in wj_categories))
-				wj_categories += initial(emote.category)
+				if(!(initial(emote.category) in wj_categories))
+					wj_categories += initial(emote.category)
 
-			emotes_to_add += emote
+				emotes_to_add += emote
 
 
-		wj_emotes = emotes_to_add
+			wj_emotes = emotes_to_add
+	else
+		if(!length(hj_emotes))
+			var/list/emotes_to_add = list()
+			for(var/datum/emote/living/carbon/human/synthetic/engi_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/engi_joe))
+				if(!initial(emote.key) || !initial(emote.say_message))
+					continue
+
+				if(!(initial(emote.category) in hj_categories))
+					hj_categories += initial(emote.category)
+
+				emotes_to_add += emote
+
+
+			hj_emotes = emotes_to_add
 
 
 /datum/joe_emote_panel/proc/ui_interact(mob/user, datum/tgui/ui)
@@ -99,39 +117,95 @@
 /datum/joe_emote_panel/ui_static_data(mob/user)
 	var/list/data = list()
 
-	data["categories"] = wj_categories
-	data["emotes"] = list()
+	if(!HAS_TRAIT(usr, TRAIT_ENGI_JOE))
+		data["categories"] = wj_categories
+		data["emotes"] = list()
+		for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in wj_emotes)
+			data["emotes"] += list(list(
+				"id" = initial(emote.key),
+				"text" = (initial(emote.override_say) || initial(emote.say_message)),
+				"category" = initial(emote.category),
+				"path" = "[emote]",
+			))
 
-	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in wj_emotes)
-		data["emotes"] += list(list(
-			"id" = initial(emote.key),
-			"text" = (initial(emote.override_say) || initial(emote.say_message)),
-			"category" = initial(emote.category),
-			"path" = "[emote]",
-		))
+		return data
+	else
+		data["categories"] = hj_categories
+		data["emotes"] = list()
+		for(var/datum/emote/living/carbon/human/synthetic/engi_joe/emote as anything in hj_emotes)
+			data["emotes"] += list(list(
+				"id" = initial(emote.key),
+				"text" = (initial(emote.override_say) || initial(emote.say_message)),
+				"category" = initial(emote.category),
+				"path" = "[emote]",
+			))
 
-	return data
-
+		return data
 
 /datum/joe_emote_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
+	if(!HAS_TRAIT(usr, TRAIT_ENGI_JOE))
+		switch(action)
+			if("emote")
+				var/datum/emote/living/carbon/human/synthetic/working_joe/path
+				if(!params["emotePath"])
+					return
 
-	switch(action)
-		if("emote")
-			var/datum/emote/living/carbon/human/synthetic/working_joe/path
-			if(!params["emotePath"])
-				return
+				path = text2path(params["emotePath"])
 
-			path = text2path(params["emotePath"])
+				if(!path || !COOLDOWN_FINISHED(src, panel_emote_cooldown))
+					return
 
-			if(!path || !COOLDOWN_FINISHED(src, panel_emote_cooldown))
-				return
+				if(!(path in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe)))
+					return
 
-			if(!(path in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe)))
-				return
+				COOLDOWN_START(src, panel_emote_cooldown, 2.5 SECONDS)
+				usr.emote(initial(path.key))
+				return TRUE
+	else
+		switch(action)
+			if("emote")
+				var/datum/emote/living/carbon/human/synthetic/engi_joe/path
+				if(!params["emotePath"])
+					return
 
-			COOLDOWN_START(src, panel_emote_cooldown, 2.5 SECONDS)
-			usr.emote(initial(path.key))
-			return TRUE
+				path = text2path(params["emotePath"])
+
+				if(!path || !COOLDOWN_FINISHED(src, panel_emote_cooldown))
+					return
+
+				if(!(path in subtypesof(/datum/emote/living/carbon/human/synthetic/engi_joe)))
+					return
+
+				COOLDOWN_START(src, panel_emote_cooldown, 2.5 SECONDS)
+				usr.emote(initial(path.key))
+				return TRUE
+
+/datum/species/synthetic/colonial/engi_joe
+	name = SYNTH_ENGI_JOE
+	name_plural = "Hazmat Joes"
+	death_message = "violently gargles fluid and seizes up, the glow in their eyes dimming..."
+	uses_ethnicity = FALSE
+	burn_mod = 0.55 // made to operate in near inhabitable conditions, stronger than the standard joe
+
+	slowdown = 0.6 // a bit slower in return for the buffs
+	total_health = 225 // a bit more beefy
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT, TRAIT_CANNOT_EAT, TRAIT_ENGI_JOE)
+	hair_color = "#000000"
+	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
+	deform = 'icons/mob/humans/species/r_synthetic.dmi'
+
+/datum/species/synthetic/colonial/engi_joe/engi/handle_post_spawn(mob/living/carbon/human/joe)
+	. = ..()
+	give_action(joe, /datum/action/joe_emote_panel)
+
+/datum/species/synthetic/colonial/engi_joe/handle_death(mob/living/carbon/human/dying_joe, gibbed)
+	if(!gibbed)
+		playsound(dying_joe.loc, pick_weight(list('sound/voice/joe/death_normal.ogg' = 75, 'sound/voice/joe/death_silence.ogg' = 10, 'sound/voice/joe/death_tomorrow.ogg' = 10,'sound/voice/joe/death_dream.ogg' = 5)), 25, FALSE)
+	return ..()
+
+/datum/species/synthetic/colonial/engi_joe/open_emote_panel()
+	var/datum/joe_emote_panel/ui = new(usr)
+	ui.ui_interact(usr)

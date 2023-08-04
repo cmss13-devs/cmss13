@@ -6,3 +6,12 @@
 	var/category = ""
 	/// Override text for the emote to be displayed in the WJ emote panel
 	var/override_say = ""
+
+/// Hazjoe variant using a different species
+
+/datum/emote/living/carbon/human/synthetic/engi_joe
+	species_type_allowed_typecache = list(/datum/species/synthetic/colonial/engi_joe)
+	keybind_category = CATEGORY_SYNTH_EMOTE
+	volume = 50
+	var/category = ""
+	var/override_say = ""

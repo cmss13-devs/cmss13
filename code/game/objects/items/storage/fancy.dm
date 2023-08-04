@@ -12,6 +12,8 @@
  * Crayon Box
  * Cigarette Box
  * Cigar Box
+ * Match Box
+ * Vial Box
  */
 
 /obj/item/storage/fancy
@@ -30,19 +32,24 @@
 		update_icon()
 
 
-/obj/item/storage/fancy/get_examine_text(mob/user)
+/obj/item/storage/fancy/get_examine_text(obj/item/test, mob/user)
 	. = ..()
-	if(length(contents) <= 0)
-		. += "There are no [src.icon_type]s left in the box."
-	else if(length(contents) == 1)
-		. += "There is one [src.icon_type] left in the box."
+	if(istype(test, /obj/item/storage/fancy/cigar/matchbook))
+		if(!length(contents))
+			. += "There are no [src.icon_type]es left in the box."
+		else if(length(contents) == 1)
+			. += "There is one [src.icon_type] left in the box."
+		else
+			. += "There are [length(src.contents)] [src.icon_type]es in the box."
 	else
-		. += "There are [length(src.contents)] [src.icon_type]s in the box."
+		if(!length(contents))
+			. += "There are no [src.icon_type]s left in the box."
+		else if(length(contents) == 1)
+			. += "There is one [src.icon_type] left in the box."
+		else
+			. += "There are [length(src.contents)] [src.icon_type]s in the box."
 
-
-/*
- * Egg Box
- */
+// EGG BOX
 
 /obj/item/storage/fancy/egg_box
 	icon = 'icons/obj/items/food.dmi'
@@ -59,9 +66,7 @@
 		new /obj/item/reagent_container/food/snacks/egg(src)
 	return
 
-/*
- * Candle Box
- */
+// CANDLE BOX
 
 /obj/item/storage/fancy/candle_box
 	name = "candle pack"
@@ -80,9 +85,7 @@
 		new /obj/item/tool/candle(src)
 	return
 
-/*
- * Crayon Box
- */
+// CRAYON BOX
 
 /obj/item/storage/fancy/crayons
 	name = "box of crayons"
@@ -120,9 +123,8 @@
 				return
 	..()
 
-////////////
-//CIG PACK//
-////////////
+// CIGARETTES BOX
+
 /obj/item/storage/fancy/cigarettes
 	icon = 'icons/obj/items/cigarettes.dmi'
 	icon_state = "cigpacket"
@@ -223,9 +225,7 @@
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 	storage_slots = 4
 
-/////////////
-//CIGAR BOX//
-/////////////
+// CIGAR BOX
 
 /obj/item/storage/fancy/cigar
 	name = "cigar case"
@@ -286,6 +286,8 @@
 	storage_slots = 1
 	default_cigar_type = /obj/item/clothing/mask/cigarette/cigar/tarbacks
 
+// MATCH BOX
+
 /obj/item/storage/fancy/cigar/matchbook
 	name = "\improper Lucky Strikes matchbook"
 	desc = "A small book of cheap paper matches. Good luck getting them to light. Made by Lucky Strikes, but you'll be anything but lucky when you burn your hand trying to light a match on this."
@@ -298,15 +300,6 @@
 	w_class = SIZE_TINY
 	var/light_chance = 70 //how likely you are to light the match on the book
 	var/burn_chance = 20 //how likely you are to burn yourself once you light it
-
-/obj/item/storage/fancy/cigar/matchbook/get_examine_text(mob/user)
-	. = ..()
-	if(!length(contents))
-		. += "There are no [src.icon_type]es left in the box."
-	else if(length(contents) == 1)
-		. += "There is one [src.icon_type] left in the box."
-	else
-		. += "There are [length(src.contents)] [src.icon_type]es in the box."
 
 /obj/item/storage/fancy/cigar/matchbook/attackby(obj/item/tool/match/W as obj, mob/living/carbon/human/user as mob)
 	if(!istype(user))
@@ -349,9 +342,7 @@
 	light_chance = 60
 	burn_chance = 40
 
-/*
- * Vial Box
- */
+// VIAL BOX
 
 /obj/item/storage/fancy/vials
 	icon = 'icons/obj/items/vialbox.dmi'

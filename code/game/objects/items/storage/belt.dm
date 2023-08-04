@@ -1476,7 +1476,9 @@
 /obj/item/storage/belt/gun/flaregun/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/storage/box/m94))
 		var/obj/item/storage/box/m94/M = W
+		storage_slots = 16
 		dump_into(M,user)
+		storage_slots = 17
 	else
 		return ..()
 

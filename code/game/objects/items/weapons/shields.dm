@@ -114,9 +114,13 @@
 	var/active = 0
 
 /obj/item/weapon/shield/riot/metal
-	icon_state = "riot_metal"
-	item_state = "riot_metal"
+	icon_state = "riotmetal"
+	item_state = "riotmetal"
+	passive_block = 40
+	readied_block = 60
 
 /obj/item/weapon/shield/riot/ballistic
-	icon_state = "ballistic_shield"
-	item_state = "ballistic_shield"
+	icon_state = "ballisticshield"
+	item_state = "ballisticshield"
+	passive_block = 60
+	readied_block = 90

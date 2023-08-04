@@ -463,7 +463,7 @@
 	ammo_band_icon_empty = "+m41a_band_e"
 
 /obj/item/ammo_magazine/rifle/rmc_f90/marksman
-	name = "\improper F903A1 Marksman HVAP magazine (10x24mm)"
+	name = "\improper F903A1 Marksman magazine (10x24mm)"
 	desc = "A 10mm armor-piercing assault rifle magazine used by the royal marines."
 	icon_state = "aug_dmr"
 	item_state = "aug_dmr"

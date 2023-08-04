@@ -1149,8 +1149,8 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "backpack_frame"
 	item_state = "backpack_frame"
 	max_w_class = SIZE_HUGE
-	storage_slots = 1
-	can_hold = list(/obj/item/mortar_shell) // PLACEHOLDER PLEASE REPLACE
+	storage_slots = 4
+	can_hold = list(/obj/item/ammo_box/magazine/misc/mre)
 
 /obj/item/storage/backpack/general_belt/rmc
 	name = "\improper RMC general utility belt"
@@ -1158,4 +1158,4 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "rmc_general"
 	item_state = "rmc_general"
 	has_gamemode_skin = FALSE
-	max_storage_space = 12
+	max_storage_space = 16

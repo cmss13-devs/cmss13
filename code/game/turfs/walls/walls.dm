@@ -403,7 +403,7 @@
 
 	if(istype(attacking_item, /obj/item/prop/torch_frame))
 		to_chat(user, SPAN_NOTICE("You place the torch down on the wall."))
-		new /obj/structure/prop/brazier/torch/frame(src)
+		new /obj/structure/prop/brazier/frame/full/torch(src)
 		qdel(attacking_item)
 
 	if(hull)

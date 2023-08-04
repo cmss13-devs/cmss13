@@ -24,6 +24,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/machinery/cm_vending/clothing/antag,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -897,6 +898,13 @@
 	icon_state = "orange"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"su" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/clothing/antag,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "sy" = (
 /turf/open/floor/plating/kutjevo,
 /area/adminlevel/ert_station/royal_marines_station)
@@ -1414,6 +1422,16 @@
 	icon_state = "red"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
+"FX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/cm_vending/gear/antag_guns,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
 "Gd" = (
 /obj/structure/machinery/cryopod,
 /turf/open/floor/almayer{
@@ -1483,6 +1501,15 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"HD" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/machinery/cm_vending/gear/antag_guns,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -1587,6 +1614,13 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Jg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/gear/antag_guns,
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "JD" = (
@@ -1772,6 +1806,12 @@
 	},
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "8,8"
+	},
+/area/adminlevel/ert_station/royal_marines_station)
+"Nl" = (
+/obj/structure/machinery/cm_vending/gear/antag,
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Nm" = (
@@ -1965,6 +2005,16 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/royal_marines_station)
+"Rq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/structure/machinery/cm_vending/clothing/antag,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Rw" = (
 /obj/structure/platform{
@@ -2612,7 +2662,7 @@ gS
 ai
 yK
 yK
-yK
+Nl
 WS
 TY
 yK
@@ -2655,11 +2705,11 @@ jL
 (4,1,1) = {"
 jL
 gS
-Ul
+HD
 XF
 hL
 yK
-yK
+Nl
 WS
 TY
 XF
@@ -2702,7 +2752,7 @@ jL
 (5,1,1) = {"
 jL
 gS
-XF
+Jg
 yQ
 hL
 kx
@@ -2749,7 +2799,7 @@ jL
 (6,1,1) = {"
 jL
 gS
-XF
+Jg
 yQ
 hL
 yK
@@ -2796,7 +2846,7 @@ jL
 (7,1,1) = {"
 jL
 gS
-XF
+su
 yQ
 hL
 hL
@@ -2843,7 +2893,7 @@ jL
 (8,1,1) = {"
 jL
 gS
-XF
+su
 hL
 hL
 XF
@@ -4206,7 +4256,7 @@ jL
 (37,1,1) = {"
 jL
 gS
-jV
+Rq
 jV
 ZV
 eu
@@ -4253,7 +4303,7 @@ jL
 (38,1,1) = {"
 jL
 gS
-XF
+su
 Xh
 Xh
 XF
@@ -4300,7 +4350,7 @@ jL
 (39,1,1) = {"
 jL
 gS
-XF
+su
 Xh
 Xh
 Lj
@@ -4347,7 +4397,7 @@ jL
 (40,1,1) = {"
 jL
 gS
-XF
+Jg
 Lj
 Xh
 yK
@@ -4394,7 +4444,7 @@ jL
 (41,1,1) = {"
 jL
 gS
-XF
+Jg
 Lj
 Xh
 kx
@@ -4441,11 +4491,11 @@ jL
 (42,1,1) = {"
 jL
 gS
-KJ
+FX
 XF
 Xh
 yK
-yK
+Nl
 WS
 TY
 yK
@@ -4492,7 +4542,7 @@ gS
 xy
 yK
 yK
-yK
+Nl
 WS
 TY
 yK

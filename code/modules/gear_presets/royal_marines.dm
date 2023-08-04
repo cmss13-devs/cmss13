@@ -52,6 +52,7 @@
 	rank = JOB_TWE_RMC_RIFLEMAN
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/royal_marine
+	idtype = /obj/item/card/id/dogtag
 
 //*****************************************************************************************************/
 

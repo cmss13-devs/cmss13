@@ -29,22 +29,22 @@
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are an Officer in the Royal Marines Commando. Born in the three world empire."))
-		arm_equipment(mob, /datum/equipment_preset/royal_marine/lieuteant, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/twe/royal_marine/lieuteant, TRUE, TRUE)
 	else if(heavies < max_heavies && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(mob.client, JOB_SQUAD_SPECIALIST))
 		heavies++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a skilled marksman in the Royal Marines Commando. Born in the three world empire."))
-		arm_equipment(mob, /datum/equipment_preset/royal_marine/spec, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/twe/royal_marine/spec, TRUE, TRUE)
 	else if(heavies < max_heavies && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(mob.client, JOB_SQUAD_SPECIALIST))
 		heavies++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Smartgunner in the Royal Marines Commando. Born in the three world empire."))
-		arm_equipment(mob, /datum/equipment_preset/royal_marine/spec/machinegun, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/twe/royal_marine/spec/machinegun, TRUE, TRUE)
 	else if(heavies < max_heavies && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(mob.client, JOB_SQUAD_SPECIALIST))
 		heavies++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CQB Specialist in the Royal Marines Commando. Born in the three world empire."))
-		arm_equipment(mob, /datum/equipment_preset/royal_marine/spec/breacher, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/twe/royal_marine/spec/breacher, TRUE, TRUE)
 	else
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Contractor of Vanguard's Arrow Incorporated!"))
-		arm_equipment(mob, /datum/equipment_preset/royal_marine/standard, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/twe/royal_marine/standard, TRUE, TRUE)
 
 	print_backstory(mob)
 
@@ -67,7 +67,7 @@
 	to_chat(M, SPAN_BOLD("Assist the USCMC Force of the [MAIN_SHIP_NAME] however you can."))
 
 
-/datum/emergency_call/contractors/platoon
+/datum/emergency_call/royal_marines/platoon
 	name = "Royal Marines Commando (Platoon) (Friendly)"
 	mob_min = 7
 	mob_max = 28

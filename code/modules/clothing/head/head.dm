@@ -787,7 +787,7 @@ D
 	item_state = "rmc_turban"
 
 /obj/item/clothing/head/beret/royal_marine
-	name = "royal marine baret"
+	name = "royal marine beret"
 	desc = "A green beret belonging to the royal marines commando. This beret symbolizes a royal marines ability to fight in any environment, desert, sea, artic or space a royal marine will always be ready."
 	icon_state = "rmc_beret"
 	item_state = "rmc_beret"

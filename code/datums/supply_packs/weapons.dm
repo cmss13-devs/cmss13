@@ -87,6 +87,19 @@
 
 /datum/supply_packs/gun
 	contains = list(
+		/obj/item/weapon/gun/rifle/m41aMK1,
+		/obj/item/weapon/gun/rifle/m41aMK1,
+		/obj/item/ammo_magazine/rifle/m41aMK1,
+		/obj/item/ammo_magazine/rifle/m41aMK1,
+	)
+	name = "M41A MK1 Rifle Crate (x2 MK1, x2 magazines)"
+	cost = 40
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "M41A MK1 Rifle Crate"
+	group = "Weapons"
+
+/datum/supply_packs/gun/heavyweapons
+	contains = list(
 		/obj/item/storage/box/guncase/lmg,
 		/obj/item/storage/box/guncase/lmg,
 	)

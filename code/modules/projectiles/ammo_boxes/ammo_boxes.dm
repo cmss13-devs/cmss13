@@ -45,7 +45,7 @@
 
 /obj/item/ammo_box/proc/deploy_ammo_box(mob/user, turf/T)
 	user.drop_held_item()
-
+	
 //---------------------FIRE HANDLING PROCS
 /obj/item/ammo_box/flamer_fire_act(severity, datum/cause_data/flame_cause_data)
 	if(burning)
@@ -260,9 +260,10 @@
 
 /obj/item/ammo_box/rounds
 	name = "\improper rifle ammunition box (10x24mm)"
-	desc = "A 10x24mm ammunition box. Used to refill M41A MK1, MK2, M4RA and M41AE2 HPR magazines."
+	desc = "A 10x24mm ammunition box. Used to refill M41A MK1, MK2, M4RA and M41AE2 HPR magazines. It comes with a leather strap allowing to wear it on the back."
 	icon_state = "base_m41"
 	item_state = "base_m41"
+	flags_equip_slot = SLOT_BACK
 	var/overlay_gun_type = "_rounds" //used for ammo type color overlay
 	var/overlay_content = "_reg"
 	var/default_ammo = /datum/ammo/bullet/rifle

@@ -4,6 +4,7 @@
 /obj/item/ammo_box/magazine/shotgun
 	name = "\improper shotgun shell box (Slugs x 100)"
 	icon_state = "base_slug"
+	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
 	overlay_gun_type = "_shells"
 	overlay_content = "_slug"

@@ -278,7 +278,7 @@
 	target.SetSlow(0)
 	target.SetSuperslow(0)
 
-	target.visible_message(SPAN_XENONOTICE("[xeno] explodes into a rain of regenerative resin salve, covering [target] in it!"))
+	target.visible_message(SPAN_XENONOTICE("[xeno] explodes, fumigating regenerative resin onto [target]!"))
 	xeno_message(SPAN_XENOANNOUNCE("[xeno] sacrifices itself to heal [target]!"), 2, target.hive.hivenumber)
 
 	var/datum/behavior_delegate/drone_healer/behavior_delegate = xeno.behavior_delegate

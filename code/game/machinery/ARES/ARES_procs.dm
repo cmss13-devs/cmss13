@@ -693,7 +693,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 					object.forceMove(src)
 					target_id = object
 			else
-				to_chat(user, "Both slots are full already. Remove a card first.")
+				to_chat(user, "Target ID slot full. Please eject and try again.")
 				return FALSE
 	else
 		..()
@@ -750,7 +750,6 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 	data["authenticated"] = ticket_authenticated
 
-
 	var/list/logged_maintenance = list()
 	for(var/datum/ares_ticket/maintenance/maint_ticket as anything in link.tickets_maintenance)
 		if(!istype(maint_ticket))
@@ -775,6 +774,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	data["maintenance_tickets"] = logged_maintenance
 
 	var/list/logged_access = list()
+	var/list/requesting_access = list()
 	for(var/datum/ares_ticket/access/access_ticket as anything in link.tickets_access)
 		var/lock_status = TICKET_OPEN
 		switch(access_ticket.ticket_status)
@@ -793,8 +793,26 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		current_ticket["lock_status"] = lock_status
 		current_ticket["ref"] = "\ref[access_ticket]"
 		logged_access += list(current_ticket)
+
+		if(lock_status == TICKET_OPEN)
+			requesting_access += access_ticket.ticket_name
 	data["access_tickets"] = logged_access
 
+	data["can_update_id"] = "No"
+	if(!authenticator_id || !target_id)
+		data["id_tooltip"] = "An ID card is missing!"
+	else if(!(authenticator_id.assignment == JOB_WORKING_JOE) || (ACCESS_ARES_DEBUG in authenticator_id.access))
+		data["id_tooltip"] = "Authenticator ID is not authorised to modify core access!"
+	else if(authenticator_id.registered_name != last_login)
+		data["id_tooltip"] = "Unauthorised user of [authenticator_id.name]!"
+	else if(!(target_id.registered_name in requesting_access) && !(ACCESS_MARINE_AI_TEMP in target_id.access))
+		data["id_tooltip"] = "No existing access ticket for '[target_id.registered_name]'"
+	else
+		data["can_update_id"] = "Yes"
+		if(ACCESS_MARINE_AI_TEMP in target_id.access)
+			data["id_tooltip"] = "Revoke core access."
+		else
+			data["id_tooltip"] = "Grant core access."
 
 	return data
 
@@ -873,6 +891,9 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		if("page_tickets")
 			last_menu = current_menu
 			current_menu = "access_tickets"
+		if("manage_access")
+			last_menu = current_menu
+			current_menu = "id_access"
 		if("page_maintenance")
 			last_menu = current_menu
 			current_menu = "maint_claim"
@@ -964,7 +985,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 		if("new_access")
 			var/priority_report = FALSE
-			var/ticket_holder = tgui_input_text(operator, "Who is the ticket for?", "Ticket Holder", encode = FALSE)
+			var/ticket_holder = tgui_input_text(operator, "Who is the ticket for? (Please use precise name, with punctuation and capitalisation.)", "Ticket Holder", encode = FALSE)
 			if(!ticket_holder)
 				return FALSE
 			var/details = tgui_input_text(operator, "What is the purpose of this access ticket?", "Ticket Details", encode = FALSE)
@@ -985,6 +1006,24 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 				ares_apollo_talk("Priority Access Request: [ticket_holder] - ID [access_ticket.ticket_id]. Seek and resolve.")
 			log_game("ARES: Access Ticket '\ref[access_ticket]' created by [key_name(operator)] as [last_login] with Holder '[ticket_holder]' and Details of '[details]'.")
 			return TRUE
+
+		if("apply_access")
+			if(!authenticator_id || !target_id)
+				return FALSE
+			if(!(authenticator_id.assignment == JOB_WORKING_JOE) || (ACCESS_ARES_DEBUG in authenticator_id.access))
+				return FALSE
+			var/announce_text = "[last_login] revoked core access from [target_id.registered_name]'s ID card."
+			if(ACCESS_MARINE_AI_TEMP in target_id.access)
+				target_id.access -= ACCESS_MARINE_AI_TEMP
+				target_id.modification_log += "Temporary AI access revoked by [key_name(operator)]"
+				to_chat(operator, SPAN_NOTICE("Access revoked from [target_id.registered_name]."))
+			else
+				target_id.access += ACCESS_MARINE_AI_TEMP
+				target_id.modification_log += "Temporary AI access granted by [key_name(operator)]"
+				announce_text = "[last_login] granted core access to [target_id.registered_name]'s ID card."
+				to_chat(operator, SPAN_NOTICE("Access granted to [target_id.registered_name]."))
+			ares_apollo_talk(announce_text)
+			current_menu = last_menu
 
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)

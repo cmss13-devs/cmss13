@@ -144,6 +144,21 @@
 
 	..()
 
+/datum/equipment_preset/survivor/scientist/nv
+	name = "Survivor - New Varadero Researcher"
+	assignment = "New Varadero Researcher"
+
+/datum/equipment_preset/survivor/scientist/nv/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/purple(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/boonie(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/chem(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/purple(new_human), WEAR_FEET)
+
+	..()
+
 /datum/equipment_preset/survivor/scientist/solaris
 	name = "Survivor - Solaris Scientist"
 	assignment = "Solaris Scientist"
@@ -266,6 +281,18 @@
 
 	..()
 
+/datum/equipment_preset/survivor/doctor/nv
+	name = "Survivor - New Varadero Medical Technician"
+	assignment = "New Varadero Medical Technician"
+
+/datum/equipment_preset/survivor/doctor/nv/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/boonie(new_human), WEAR_HEAD)
+
+	..()
+
 /datum/equipment_preset/survivor/doctor/solaris
 	name = "Survivor - Solaris Doctor"
 	assignment = "Solaris Doctor"
@@ -343,6 +370,20 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/white(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit/survivor/parka/navy(new_human), WEAR_JACKET)
+
+	..()
+
+/datum/equipment_preset/survivor/corporate/solaris
+	name = "Survivor - Solaris Ridge Corporate Liaison"
+	assignment = "Solaris Ridge Corporate Liaison"
+
+/datum/equipment_preset/survivor/corporate/solaris/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/outing/red(new_human), WEAR_BODY)
+	if(new_human.disabilities & NEARSIGHTED)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/prescription(new_human), WEAR_EYES)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
 	..()
 
@@ -461,6 +502,21 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle(new_human), WEAR_FEET)
+
+	..()
+
+/datum/equipment_preset/survivor/security/nv
+	name = "Survivor - New Varadero Security Guard"
+	assignment = "United Americas Peacekeeper"
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
+
+/datum/equipment_preset/survivor/security/nv/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/ua_riot(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
 	..()
 
@@ -660,6 +716,18 @@
 
 	..()
 
+/datum/equipment_preset/survivor/chaplain/nv
+	name = "Survivor - New Varadero Priest"
+	assignment = "New Varadero Priest"
+
+/datum/equipment_preset/survivor/chaplain/nv/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/boonie(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/priest_robe(new_human), WEAR_JACKET)
+
+	..()
+
 /datum/equipment_preset/survivor/chaplain/solaris
 	name = "Survivor - Solaris Chaplain"
 	assignment = "Solaris Chaplain"
@@ -720,6 +788,19 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/orange(new_human), WEAR_HEAD)
+
+	..()
+
+/datum/equipment_preset/survivor/engineer/nv
+	name = "Survivor - New Varadero Technician"
+	assignment = "New Varadero Engineer"
+
+/datum/equipment_preset/survivor/engineer/nv/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/dispatch(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/orange(new_human), WEAR_HEAD)
 
 	..()
@@ -833,6 +914,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/pickaxe(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/orange(new_human), WEAR_HEAD)
 	add_survivor_weapon_civilian(new_human)
 
 	..()
@@ -896,6 +978,18 @@
 
 	..()
 
+/datum/equipment_preset/survivor/trucker/nv
+	name = "Survivor - New Varadero Vehicle Operator"
+	assignment = "New Varadero Vehicle Operator"
+
+/datum/equipment_preset/survivor/trucker/nv/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/cargo(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/boonie(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+
+	..()
 /datum/equipment_preset/survivor/trucker/kutjevo
 	name = "Survivor - Kutjevo Heavy Vehicle Operator"
 	assignment = "Kutjevo Heavy Vehicle Operator"
@@ -961,6 +1055,7 @@
 
 /datum/equipment_preset/survivor/colonial_marshal/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
 
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(new_human)
@@ -1011,6 +1106,7 @@
 
 /datum/equipment_preset/survivor/colonial_marshal/solaris/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/CMB(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
@@ -1025,6 +1121,7 @@
 	add_random_kutjevo_survivor_uniform(new_human)
 	add_random_kutjevo_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
 
 	..()
 
@@ -1034,6 +1131,7 @@
 
 /datum/equipment_preset/survivor/colonial_marshal/shiva/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security/corp(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit/survivor/parka/red(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/ushanka(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf(new_human), WEAR_FACE)
@@ -1059,6 +1157,7 @@
 
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liason/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
 
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(new_human)
@@ -1079,8 +1178,23 @@
 
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liason/corsat/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/white(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
+
+	..()
+
+/datum/equipment_preset/survivor/interstellar_commerce_commission_liason/nv
+	name = "Survivor - Interstellar Commerce Commission Liaison New Varadero"
+	assignment = "Interstellar Commerce Commission Corporate Liaison"
+
+/datum/equipment_preset/survivor/interstellar_commerce_commission_liason/nv/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/white(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/black(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clipboard, WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses, WEAR_EYES)
 
 
 
@@ -1109,6 +1223,32 @@
 	add_pmc_survivor_weapon(new_human)
 
 	..()
+
+// ----- Bum Survivor
+
+/datum/equipment_preset/survivor/beachbum
+	name = "Survivor - Beach Bum"
+	assignment = "Beach Bum"
+	skills = /datum/skills/civilian/survivor/prisoner
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC)
+
+/datum/equipment_preset/survivor/beachbum/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/shorts/red(new_human), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/boonie(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/botanic_leather(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/beer_pack(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/kitchen/knife/butcher(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/fancy/cigarettes/wypacket(new_human.back), WEAR_IN_BACK)
+	add_survivor_weapon_civilian(new_human)
+
+	..()
+
 
 // ----- Interstellar Human Rights Survivor
 
@@ -1175,7 +1315,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88_near_empty, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
 
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/corporate/no_lock, WEAR_J_STORE)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
@@ -1201,11 +1341,44 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf, WEAR_FACE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
 
 	..()
 
+/datum/equipment_preset/survivor/pmc/medic
+	name = "Survivor - PMC Medic"
+	assignment = JOB_PMC_MEDIC
+	rank = JOB_PMC_MEDIC
+	paygrade = "PMC-MS"
+	skills = /datum/skills/civilian/survivor/pmc/medic
+
+/datum/equipment_preset/survivor/pmc/medic/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
+	if(new_human.disabilities & NEARSIGHTED)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(new_human), WEAR_EYES)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_R_HAND)
+
+	..()
+
+/datum/equipment_preset/survivor/pmc/engineer
+	name = "Survivor - PMC Engineer"
+	assignment = JOB_PMC_ENGINEER
+	rank = JOB_PMC_ENGINEER
+	paygrade = "PMC-TECH"
+	skills = /datum/skills/civilian/survivor/pmc/engineer
+
+/datum/equipment_preset/survivor/pmc/engineer/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/med_small_stack(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_R_HAND)
+
+	..()
 
 /datum/equipment_preset/survivor/wy/manager
 	name = "Survivor - Corporate Supervisor"
@@ -1349,3 +1522,199 @@
 		return
 	var/shoespath = /obj/item/clothing/shoes/combat
 	human.equip_to_slot_or_del(new shoespath, WEAR_FEET)
+
+/datum/equipment_preset/survivor/new_varadero/commander
+	name = "Survivor - USASF Commander"
+	assignment = "USASF Commander"
+	skills = /datum/skills/commander
+	paygrade = "NO5"
+	idtype = /obj/item/card/id/gold
+	role_comm_title = "USASF CDR"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+	)
+
+/datum/equipment_preset/survivor/new_varadero/commander/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
+
+	var/obj/item/clothing/suit/storage/jacket/marine/service/suit = new()
+	suit.icon_state = "[suit.initial_icon_state]_o"
+	suit.buttoned = FALSE
+
+	var/obj/item/clothing/accessory/ranks/navy/o5/pin = new()
+	suit.attach_accessory(new_human, pin)
+
+	new_human.equip_to_slot_or_del(suit, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/notepad(new_human), WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/fountain(new_human), WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(new_human), WEAR_HEAD)
+
+	..()
+
+/datum/equipment_preset/survivor/upp
+	name = "UPP Soldier"
+	paygrade = "UE1"
+	origin_override = ORIGIN_UPP
+	rank = JOB_SURVIVOR
+	skills = /datum/skills/military/survivor/upp_private
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
+	faction = FACTION_UPP
+	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	role_comm_title = "UPP 173RD RECON"
+	idtype = /obj/item/card/id/dogtag
+	flags = EQUIPMENT_PRESET_EXTRA
+	uses_special_name = TRUE
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+	)
+
+/datum/equipment_preset/survivor/upp/load_name(mob/living/carbon/human/new_human, randomise)
+	var/random_name = capitalize(pick(new_human.gender == MALE ? first_names_male_upp : first_names_female_upp)) + " " + capitalize(pick(last_names_upp))
+	new_human.change_real_name(new_human, random_name)
+
+/datum/equipment_preset/survivor/upp/load_gear(mob/living/carbon/human/new_human)
+	var/obj/item/clothing/under/marine/veteran/UPP/uniform = new()
+	var/random_number = rand(1,2)
+	switch(random_number)
+		if(1)
+			uniform.roll_suit_jacket(new_human)
+		if(2)
+			uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp (new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flare(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
+
+/datum/equipment_preset/survivor/upp/soldier
+	name = "Survivor - UPP Soldier"
+	paygrade = "UE2"
+	assignment = "UPP Soldier"
+	skills = /datum/skills/military/survivor/upp_private
+
+/datum/equipment_preset/survivor/upp/soldier/load_gear(mob/living/carbon/human/new_human)
+	var/obj/item/clothing/under/marine/veteran/UPP/uniform = new()
+	var/random_number = rand(1,2)
+	switch(random_number)
+		if(1)
+			uniform.roll_suit_jacket(new_human)
+		if(2)
+			uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	add_upp_weapon(new_human)
+	spawn_random_upp_headgear(new_human)
+	spawn_random_upp_armor(new_human)
+	spawn_random_upp_belt(new_human)
+
+	..()
+
+/datum/equipment_preset/survivor/upp/sapper
+	name = "Survivor - UPP Sapper"
+	paygrade = "UE3S"
+	assignment = "UPP Sapper"
+	skills = /datum/skills/military/survivor/upp_sapper
+
+/datum/equipment_preset/survivor/upp/sapper/load_gear(mob/living/carbon/human/new_human)
+
+	var/obj/item/clothing/under/marine/veteran/UPP/engi/uniform = new()
+	var/R = rand(1,2)
+	switch(R)
+		if(1)
+			uniform.roll_suit_jacket(new_human)
+		if(2)
+			uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	spawn_random_upp_armor(new_human)
+	add_upp_weapon(new_human)
+	spawn_random_upp_headgear(new_human)
+
+	..()
+
+/datum/equipment_preset/survivor/upp/medic
+	name = "Survivor - UPP Medic"
+	paygrade = "UE3M"
+	assignment = "UPP Medic"
+	skills = /datum/skills/military/survivor/upp_medic
+
+/datum/equipment_preset/survivor/upp/medic/load_gear(mob/living/carbon/human/new_human)
+	var/obj/item/clothing/under/marine/veteran/UPP/medic/uniform = new()
+	var/random_number = rand(1,2)
+	switch(random_number)
+		if(1)
+			uniform.roll_suit_jacket(new_human)
+		if(2)
+			uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new/obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/partial(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/medic/upp(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_IN_BACK)
+	spawn_random_upp_armor(new_human)
+	add_upp_weapon(new_human)
+	spawn_random_upp_headgear(new_human)
+
+	..()
+
+/datum/equipment_preset/survivor/upp/specialist
+	name = "Survivor - UPP Specialist"
+	paygrade = "UE4"
+	assignment = "UPP Specialist"
+	skills = /datum/skills/military/survivor/upp_spec
+
+/datum/equipment_preset/survivor/upp/specialist/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP (new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/heavy (new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/flamer(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/PK9(new_human), WEAR_WAIST)
+
+	..()
+
+/datum/equipment_preset/survivor/upp/squad_leader
+	name = "Survivor - UPP Squad Leader"
+	paygrade = "UE5"
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
+	assignment = "UPP Squad Leader"
+	role_comm_title = "UPP 173Rd RECON SL"
+	skills = /datum/skills/military/survivor/upp_sl
+
+/datum/equipment_preset/survivor/upp/squad_leader/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/officer (new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/officer (new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/PK9(new_human), WEAR_WAIST)
+	add_upp_weapon(new_human)
+
+	..()

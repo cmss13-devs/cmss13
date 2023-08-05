@@ -4,6 +4,10 @@
 	name = "Air Scrubber"
 	vent_icon = "scrubber"
 
+/obj/structure/pipes/vents/scrubber/no_boom
+	name = "Reinforced Air Scrubber"
+	explodey = FALSE
+
 /obj/structure/pipes/vents/scrubber/on
 	icon_state = "on"
 
@@ -12,6 +16,10 @@
 	icon = 'icons/obj/pipes/vent_pump.dmi'
 	icon_state = "map_vent"
 	name = "Air Vent"
+
+/obj/structure/pipes/vents/pump/no_boom
+	name = "Reinforced Air Vent"
+	explodey = FALSE
 
 /obj/structure/pipes/vents/pump/on
 	icon_state = "on"

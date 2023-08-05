@@ -3,7 +3,7 @@
 #define EVOLUTION_INCREMENT_TIME (30 MINUTES) // Evolution increases by 1 every 25 minutes.
 
 SUBSYSTEM_DEF(xevolution)
-	name = "Evilution"
+	name = "Evilution" //This is not a typo, do not change it.
 	wait = 1 MINUTES
 	priority = SS_PRIORITY_INACTIVITY
 

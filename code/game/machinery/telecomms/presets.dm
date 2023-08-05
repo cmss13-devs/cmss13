@@ -50,7 +50,7 @@
 	. = ..()
 
 	if(z)
-		SSminimaps.add_marker(src, z, MINIMAP_FLAG_USCM, "supply")
+		SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "supply")
 
 // doesn't need power, instead uses health
 /obj/structure/machinery/telecomms/relay/preset/tower/inoperable(additional_flags)
@@ -60,7 +60,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/machinery/telecomms/relay/preset/tower/tcomms_startup()
+/obj/structure/machinery/telecomms/relay/preset/tower/update_state()
 	. = ..()
 	if(on)
 		playsound(src, 'sound/machines/tcomms_on.ogg', vol = 80, vary = FALSE, sound_range = 16, falloff = 0.5)

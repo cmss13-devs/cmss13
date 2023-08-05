@@ -340,3 +340,105 @@
   - admin: Adds logging for xeno evolution.
   theselfish:
   - qol: Added the Corpsman Helmet to Req's surplus vendor.
+2023-06-25:
+  Sargeantmuffinman:
+  - rscadd: Added two new emails to the Almayer's personal computers and rewrote 3
+      other emails.
+  Segrain:
+  - bugfix: Hive core now always correctly absorbs hive's dead larvas.
+  - bugfix: Preview dummy in character setup once again can be rotated.
+2023-06-26:
+  Drathek:
+  - bugfix: Fixed the yank object verb not testing who is actually performing the
+      action has a free hand
+  - rscadd: Player facehugging gets 2nd dibs on the burst (the original marine gets
+      first dibs still)
+  - bugfix: Fix a possibility of banished larva refunding double the larva
+  blackdragonTOW:
+  - spellcheck: multiple typos and grammar changes in the round start tooltips.
+2023-06-27:
+  TeDGamer Drathek:
+  - bugfix: Boilers from other hives generate proper colored IFFed gas
+  - bugfix: Fixes some death causes with boiler acid gas (for bombard, shroud, and
+      gibbing), neurotoxin gas/stabs, acid shotgun, and xeno spits
+  - balance: Neurotoxin stops processing only in dead mobs
+  TheGamerdk:
+  - bugfix: The game will no longer falsely claim there is no CO
+  realforest2001:
+  - rscadd: Changed min and max Predator ages from 20 - 10000 to 175 - 3000
+2023-06-28:
+  Drathek:
+  - admin: Mentors can now eavesdrop on mentor messages, and the responder to a mhelp
+      doesn't get double logging from eavesdropping.
+  Morrow, Thwomper:
+  - rscadd: Added three new uniforms and a snow jacket for the CL.
+  TheGamerdk:
+  - balance: Cluster OBs will now no longer hit turfs that have gotten OB protection
+      after the initial OB was fired.
+  ihatethisengine:
+  - balance: larva surge is limited by marines/xenos ratio
+  - bugfix: xenos no longer get free larva from abandoned facehuggers during hijack
+  - balance: explosive barricade upgrade provides better protection against explosions
+      (25% to 50%)
+  - balance: explosive barricade upgrade provides strong protection against brute-based
+      projectiles (50%)
+  - balance: explosive barricade upgrade provides strong protection against fire (50%)
+2023-06-29:
+  Diegoflores31:
+  - balance: reduced Larva Burst time from 10 minutes to 7.5 minutes
+  - refactor: changed 1 letter vars.
+  Drathek:
+  - bugfix: Fixed the crashsite offset for a hijack shuttle that gets deterred by
+      the MGAD System
+  IowaPotatoFarmer:
+  - rscadd: Solaris Ridge now has a Corporate Liaison survivor.
+  Katskan:
+  - balance: Removed G8A storage from various snow suits and parkas
+  Morrow:
+  - balance: Xenos no longer can pull dead xenos
+  - rscdel: Removed toxin mags on shivas
+  SpartanBobby:
+  - maptweak: Minor decal changes to LV522
+  - maptweak: Buffed sec armory on LV522
+  - maptweak: LV522 Breaching charge moved to the PROP APC made UNACIDABLE
+  TheGamerdk:
+  - bugfix: Communications intel objective now actually works
+  - balance: Queen boosted building no longer has 2 second cooldown when far from
+      hive
+  blackdragonTOW:
+  - maptweak: Added a small light to unlit rooms.
+  fira:
+  - bugfix: Fixed a MC crash related to NPC huggers rebounding logic.
+  realforest2001:
+  - rscadd: Added an admin button for an ARES bioscan. Slightly refactored how Bioscans
+      trigger for marines, relying on an ARES processor.
+  - rscadd: Added individual proccessors for ARES systems. These are WIP and will
+      eventually have damage and repair interactions.
+  - rscadd: Added an ARES interaction console in the AI Core room, which holds logs
+      for most ARES functions.
+  - rscadd: Added the ability for ARES console to call ERT or Distress.
+  - rscadd: Added motion triggers in ARES core and shipside comms that send alerts
+      over Apollo.
+  - rscadd: Added a 1to1 conversation feature between ARES and users of the interface
+      console.
+  - rscadd: Added preset open versions of blended poddoors.
+  - rscadd: Added a console for directing Working Joes. This is largely WIP for future
+      PR(s).
+  - rscadd: Added subtypes of air pipes that don't explode on hijack, used these in
+      ARES core.
+  - maptweak: Remodelled ARES Core onto a fake-z, and added the new processors.
+  - bugfix: door_control buttons now respect being indestructable when processing
+      explosions.
+  - maptweak: Fixed the M39s overflowing in brig armory due to use of landmarks.
+2023-06-30:
+  Drathek:
+  - bugfix: Fix runtimes with minimap subsystem not handling targets inside of objects
+      during removal
+  - code_imp: Ported VERB_REF and TYPE_VERB_REF from TG for 515 compatibility
+  - code_imp: Removed unnecessary calculations when updating a mob's transform.
+  Morrow:
+  - rscdel: Removed wrong warden locker
+  TheGamerdk:
+  - bugfix: You can now re-enter your body when unnested, marine mains, rejoice!
+  - bugfix: Lurkers no longer lose their pounce if they happen to end their pounce
+      on a tile with a dead human

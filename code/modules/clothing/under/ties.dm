@@ -359,6 +359,11 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the USS Hanyut, USCM FORECON."
 	icon_state = "forecon_patch"
 
+/obj/item/clothing/accessory/patch/upp
+	name = "UPP Airborne Reconnaissance patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the 173rd Airborne Reconnaissance Platoon."
+	icon_state = "upppatch"
+
 /obj/item/clothing/accessory/poncho
 	name = "USCM Poncho"
 	desc = "The standard USCM poncho has variations for every climate. Custom fitted to be attached to standard USCM armor variants it is comfortable, warming or cooling as needed, and well-fit. A marine couldn't ask for more. Affectionately referred to as a \"woobie\"."
@@ -529,7 +534,7 @@
 	new /obj/item/device/multitool(src)
 
 /obj/item/storage/internal/accessory/surg_vest
-	storage_slots = 13
+	storage_slots = 14
 	can_hold = list(
 		/obj/item/tool/surgery,
 		/obj/item/stack/medical/advanced/bruise_pack,
@@ -569,6 +574,7 @@
 	new /obj/item/tool/surgery/FixOVein(src)
 	new /obj/item/stack/nanopaste(src)
 	new /obj/item/tool/surgery/surgical_line(src)
+	new /obj/item/tool/surgery/synthgraft(src)
 
 /obj/item/clothing/accessory/storage/surg_vest
 	name = "surgical webbing vest"
@@ -593,6 +599,12 @@
 	icon_state = "vest_knives"
 	hold = /obj/item/storage/internal/accessory/knifeharness
 
+/obj/item/clothing/accessory/storage/knifeharness/attack_hand(mob/user, mods)
+	if(!mods || !mods["alt"] || !length(hold.contents))
+		return ..()
+
+	hold.contents[length(contents)].attack_hand(user, mods)
+
 /obj/item/storage/internal/accessory/knifeharness
 	storage_slots = 5
 	max_storage_space = 5
@@ -603,6 +615,32 @@
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
 	)
+	storage_flags = STORAGE_ALLOW_QUICKDRAW|STORAGE_FLAGS_POUCH
+
+	COOLDOWN_DECLARE(draw_cooldown)
+
+/obj/item/storage/internal/accessory/knifeharness/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/weapon/throwing_knife(src)
+
+/obj/item/storage/internal/accessory/knifeharness/attack_hand(mob/user, mods)
+	. = ..()
+
+	if(!COOLDOWN_FINISHED(src, draw_cooldown))
+		to_chat(user, SPAN_WARNING("You need to wait before drawing another knife!"))
+		return FALSE
+
+	if(length(contents))
+		contents[length(contents)].attack_hand(user, mods)
+		COOLDOWN_START(src, draw_cooldown, BAYONET_DRAW_DELAY)
+
+/obj/item/storage/internal/accessory/knifeharness/_item_insertion(obj/item/inserted_item, prevent_warning = 0)
+	..()
+	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
+
+/obj/item/storage/internal/accessory/knifeharness/_item_removal(obj/item/removed_item, atom/new_location)
+	..()
+	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
 /obj/item/clothing/accessory/storage/knifeharness/duelling
 	name = "decorated harness"

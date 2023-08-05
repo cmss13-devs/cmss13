@@ -38,7 +38,7 @@
 			if(GLOB.hive_datum[hivenumber].stored_larva)
 				GLOB.hive_datum[hivenumber].stored_larva = round(GLOB.hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead queen
 
-				var/list/players_with_xeno_pref = get_alien_candidates()
+				var/list/players_with_xeno_pref = get_alien_candidates(GLOB.hive_datum[hivenumber])
 				if(players_with_xeno_pref && istype(GLOB.hive_datum[hivenumber].hive_location, /obj/effect/alien/resin/special/pylon/core))
 					var/turf/larva_spawn = get_turf(GLOB.hive_datum[hivenumber].hive_location)
 					var/count = 0
@@ -50,7 +50,7 @@
 						new_xeno.generate_name()
 						if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 							qdel(new_xeno)
-							return
+							break
 
 						new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of the ground!"),
 						SPAN_XENODANGER("You burrow out of the ground after feeling an immense tremor through the hive, which quickly fades into complete silence..."))
@@ -105,6 +105,11 @@
 		GLOB.hive_datum[hivenumber].stored_larva++
 		GLOB.hive_datum[hivenumber].hive_ui.update_burrowed_larva()
 
+	if(hardcore)
+		QDEL_IN(src, 3 SECONDS)
+	//else if(!gibbed)  // At the moment we only support humans
+		//AddComponent(/datum/component/weed_food)
+
 	if(hive)
 		hive.remove_xeno(src)
 		// Finding the last xeno for anti-delay.
@@ -117,14 +122,13 @@
 				// Tell the marines where the last one is.
 				var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
 				var/input = "Bioscan complete.\n\nSensors indicate one remaining unknown lifeform signature in [get_area(X)]."
-				marine_announcement(input, name, 'sound/AI/bioscan.ogg')
+				var/datum/ares_link/link = GLOB.ares_link
+				link.log_ares_bioscan(name, input)
+				marine_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
 				// Tell the xeno she is the last one.
 				if(X.client)
 					to_chat(X, SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"))
 				announce_dchat("There is only one Xenomorph left: [X.name].", X)
-
-	if(hardcore)
-		QDEL_IN(src, 3 SECONDS)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
 
@@ -138,10 +142,10 @@
 
 	switch(caste.caste_type) //This will need to be changed later, when we have proper xeno pathing. Might do it on caste or something.
 		if(XENO_CASTE_BOILER)
-			var/mob/living/carbon/xenomorph/boiler/B = src
+			var/mob/living/carbon/xenomorph/boiler/src_boiler = src
 			visible_message(SPAN_DANGER("[src] begins to bulge grotesquely, and explodes in a cloud of corrosive gas!"))
-			B.smoke.set_up(2, 0, get_turf(src))
-			B.smoke.start()
+			src_boiler.smoke.set_up(2, 0, get_turf(src), new_cause_data = src_boiler.smoke.cause_data)
+			src_boiler.smoke.start()
 			remains.icon_state = "gibbed-a-corpse"
 		if(XENO_CASTE_RUNNER)
 			remains.icon_state = "gibbed-a-corpse-runner"

@@ -87,6 +87,17 @@
 	. = ..()
 	relativewall_neighbours()
 
+/obj/structure/machinery/door/poddoor/shutters/almayer/yautja
+	name = "Armory Shutter"
+	id = "Yautja Armory"
+	needs_power = FALSE
+	unacidable = TRUE
+	indestructible = TRUE
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/yautja/Initialize()
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_YAUTJA_ARMORY_OPENED, PROC_REF(open))
+
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment
 	unacidable = TRUE
 

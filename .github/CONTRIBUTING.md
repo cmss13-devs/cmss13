@@ -74,10 +74,10 @@ These are the few directives we have for project maintainers.
     - Try to get secondary maintainer approval before merging if you are able to.
   - PRs with empty commits intended to generate a changelog.
 - Do not merge PRs that contain content from the [banned content list](./CONTRIBUTING.md#banned-content).
-- Do not merge PRs that contain balance changes without GA approval. Exceptions include:
-  - Any PR that has been un-reviewed by a GA for 7 days.
+- Do not merge PRs that contain balance changes without Maintainer Manager approval. Exceptions include:
+  - Any PR that has been un-reviewed by a Maintainer Manager for 7 days.
 - Do not remove the DNM label that another Maintainer has applied. Exceptions include:
-  - GAs removing a DNM label placed by a Maintainer for Balance/Design reasons
+  - Maintainer Managers removing a DNM label placed by a Maintainer for Balance/Design reasons
 
 These are not steadfast rules as maintainers are expected to use their best judgement when operating.
 
@@ -166,20 +166,6 @@ Certain PRs, such as those which directly change number values (i.e. health, rec
 * If a Maintainer Manager or Head Maintainer has not reviewed a pull request that impacts balance in 7 days, maintainers may review and merge the PR themselves.
 
 * We understand that having something you have worked on for quite some time being denied can be frustrating. Therefore, it is recommended that you check with a maintainer before beginning to code your PR if you have any doubts that it will be accepted. This will save everyone's time and energy.
-
-## Good Boy Points
-
-Each GitHub account has a score known as Good Boy Points, or GBP. This is a system we use to ensure that the codebase stays maintained and that contributors fix bugs as well as add features.
-
-The GBP gain or loss for a PR depends on the type of changes the PR makes, represented by the tags assigned to the PR by the CM-SS13 github bot or maintainers. Generally speaking, fixing bugs, updating sprites, or improving maps increases your GBP score, while adding mechanics, or rebalancing things will cost you GBP.
-
-The GBP change of a PR is the sum of greatest positive and lowest negative values it has. For example, a PR that has tags worth +10, +4, -1, -7, will net 3 GBP (10 - 7).
-
-Negative GBP increases the likelihood of a maintainer closing your PR. With that chance being higher the lower your GBP is. Be sure to use the proper tags in the changelog to prevent unnecessary GBP loss. Maintainers reserve the right to change tags as they deem appropriate.
-
-There is no benefit to having a higher positive GBP score, since GBP only comes into consideration when it is negative.
-
-You can see each tag and their GBP values [Here](https://github.com/cmss13-devs/cmss13/blob/master/.github/gbp.toml).
 
 ## Porting features/sprites/sounds/tools from other codebases
 

@@ -68,15 +68,14 @@
 
 /obj/item/clothing/mask/gas/yautja/process()
 	if(!ishuman(loc))
-		STOP_PROCESSING(SSobj, src)
-		return
+		return PROCESS_KILL
 	var/mob/living/carbon/human/human_holder = loc
 
 	if(current_goggles && !drain_power(human_holder, 5))
 		to_chat(human_holder, SPAN_WARNING("Your bracers lack sufficient power to operate the visior."))
 		current_goggles = VISION_MODE_OFF
 		var/obj/item/visor = human_holder.glasses
-		if(istype(visor,/obj/item/clothing/glasses/night/yautja))//To change if any new vision modes are made
+		if(istype(visor, /obj/item/clothing/glasses/night/yautja))//To change if any new vision modes are made
 			human_holder.temp_drop_inv_item(visor)
 			qdel(visor)
 			human_holder.update_inv_glasses()
@@ -120,7 +119,7 @@
 		return
 	var/obj/item/G = M.glasses
 	if(G)
-		if(!istype(G,/obj/item/clothing/glasses/night/yautja))
+		if(!istype(G, /obj/item/clothing/glasses/night/yautja))
 			to_chat(M, SPAN_WARNING("You need to remove your glasses first. Why are you even wearing these?"))
 			return
 		M.temp_drop_inv_item(G) //Get rid of ye existing maicerinho goggles
@@ -159,7 +158,7 @@
 			H.remove_hud_from(user)
 		var/obj/item/visor = user.glasses
 		if(visor) //make your hud fuck off
-			if(istype(visor,/obj/item/clothing/glasses/night/yautja))
+			if(istype(visor, /obj/item/clothing/glasses/night/yautja))
 				user.temp_drop_inv_item(visor)
 				qdel(visor)
 				user.update_inv_glasses()

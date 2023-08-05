@@ -840,7 +840,7 @@
 	addtimer(CALLBACK(src, PROC_REF(fuel_drain), TRUE), fuel_stage_time)
 
 /obj/structure/prop/brazier/campfire/Destroy()
-	SetLuminosity(0)
+	set_light_on(0)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 

@@ -56,8 +56,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "start area"
 	icon_state = "start"
 	ceiling = CEILING_MAX
-	requires_power = 0
-	luminosity = 1
+	requires_power = FALSE
+	static_lighting = FALSE
 	base_lighting_alpha = 255
 	has_gravity = 1
 

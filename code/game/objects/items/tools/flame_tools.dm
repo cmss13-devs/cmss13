@@ -176,12 +176,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	STOP_PROCESSING(SSobj, src)
 
 	if(user)
-		user.SetLuminosity(0, FALSE, src)
+		user.set_light(0)
 		return
 
 	if(ismob(loc))
 		user = loc
-		user.SetLuminosity(0, FALSE, src)
+		user.set_light(0)
 		return
 
 /obj/item/tool/match/paper
@@ -192,7 +192,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/tool/lighter/dropped(mob/user)
 	if(heat_source && src.loc != user)
-		user.set_light(0, FALSE, src)
+		user.set_light(0)
 		set_light(2)
 	return ..()
 

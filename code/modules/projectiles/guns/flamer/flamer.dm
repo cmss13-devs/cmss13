@@ -404,6 +404,13 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	icon_state = "dynamic_2"
 	layer = BELOW_OBJ_LAYER
 
+	light_system = MOVABLE_LIGHT
+	light_mask_type = /atom/movable/lighting_mask/flicker
+	light_on = TRUE
+	light_range = 3
+	light_power = 3
+	light_color = LIGHT_COLOUR_FLARE
+
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
 

@@ -32,7 +32,6 @@
 /area/varadero/exterior
 	name = "New Varadero - Exterior"
 	ceiling = CEILING_NONE
-	lighting_use_dynamic = TRUE
 	ambience_exterior = AMBIENCE_NV
 	//soundscape_playlist
 
@@ -116,7 +115,6 @@
 	name = "New Varadero - East Beach"
 	is_resin_allowed = FALSE
 	icon_state = "varadero1"
-	lighting_use_dynamic = TRUE
 	minimap_color = MINIMAP_AREA_JUNGLE
 
 /area/varadero/exterior/monsoon
@@ -127,7 +125,6 @@
 /area/varadero/exterior/pool
 	name = "New Varadero - Interior Pool"
 	icon_state = "varadero1"
-	lighting_use_dynamic = TRUE
 	minimap_color = MINIMAP_AREA_COMMAND_CAVE
 
 /area/varadero/exterior/eastocean

@@ -355,6 +355,15 @@ Parameters are passed from New.
 		CRASH("Warning: [src]([type]) initialized multiple times!")
 	flags_atom |= INITIALIZED
 
+	if(light_system != MOVABLE_LIGHT && light_power && light_range)
+		update_light()
+	if(loc)
+		if(isturf(loc))
+			if(opacity)
+				var/turf/opaque_turf = loc
+				opaque_turf.directional_opacity = ALL_CARDINALS // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
+
+
 	pass_flags = pass_flags_cache[type]
 	if (isnull(pass_flags))
 		pass_flags = new()

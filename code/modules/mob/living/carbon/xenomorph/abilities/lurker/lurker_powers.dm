@@ -177,8 +177,8 @@
 /datum/action/xeno_action/activable/tail_jab/use_ability(atom/targeted_atom)
 
 	var/mob/living/carbon/xenomorph/xeno = owner
-	var/mob/living/carbon/hit_target = targeted_atom
-	var/distance = get_dist(xeno, hit_target)
+	var/turf/hit_turf = get_turf(targeted_atom)
+	var/distance = get_dist(xeno, hit_turf)
 
 	if(!action_cooldown_check())
 		return
@@ -189,7 +189,7 @@
 	if(distance > 2)
 		return
 
-	var/list/turf/path = getline2(xeno, hit_target, include_from_atom = FALSE)
+	var/list/turf/path = getline2(xeno, hit_turf, include_from_atom = FALSE)
 	for(var/turf/path_turf as anything in path)
 		if(path_turf.density)
 			to_chat(xeno, SPAN_WARNING("There's something blocking you from striking!"))
@@ -209,50 +209,38 @@
 				apply_cooldown(cooldown_modifier = 0.5)
 				return
 
-	if(!isxeno_human(hit_target) || xeno.can_not_harm(hit_target) || hit_target.stat == DEAD)
-		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
-		apply_cooldown(cooldown_modifier = 0.2)
-		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
-		return
+	for(var/mob/living/carbon/hit_target in hit_turf)
+		if(!isxeno_human(hit_target) || xeno.can_not_harm(hit_target) || hit_target.stat == DEAD )
+			xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
+			apply_cooldown(cooldown_modifier = 0.2)
+			playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
+			return
 
-	// FX
-	var/stab_direction
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You directly slam [hit_target] with your tail, throwing it back after impaling it on your tail!"))
+		playsound(hit_target,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
+		var/stab_direction
+		stab_direction = turn(get_dir(xeno, hit_target), 180)
+		xeno.setDir(stab_direction)
+		xeno.flick_attack_overlay(hit_target, "tail")
+		xeno.animation_attack_on(hit_target)
+		hit_target.apply_armoured_damage(get_xeno_damage_slash(hit_target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
 
-	to_chat(xeno, SPAN_XENOHIGHDANGER("You directly slam [hit_target] with your tail, throwing it back after impaling it on your tail!"))
-	playsound(hit_target,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
+		if(hit_target.mob_size < MOB_SIZE_BIG)
+			step_away(hit_target, xeno)
+			hit_target.apply_effect(0.5, WEAKEN)
+		else
+			hit_target.apply_effect(0.5, SLOW)
 
-	stab_direction = turn(get_dir(xeno, hit_target), 180)
+		hit_target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
+		log_attack("[key_name(xeno)] attacked [key_name(hit_target)] with Tail Jab")
 
-	if(hit_target.mob_size < MOB_SIZE_BIG)
-		step_away(hit_target, xeno)
+		apply_cooldown()
+		return ..()
 
-	/// To reset the direction if they haven't moved since then in below callback.
-	var/last_dir = xeno.dir
-
-	xeno.setDir(stab_direction)
-	xeno.flick_attack_overlay(hit_target, "tail")
-	xeno.animation_attack_on(hit_target)
-
-	var/new_dir = xeno.dir
-	addtimer(CALLBACK(src, PROC_REF(reset_direction), xeno, last_dir, new_dir), 0.5 SECONDS)
-
-	hit_target.apply_armoured_damage(get_xeno_damage_slash(hit_target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
-
-	if(hit_target.mob_size < MOB_SIZE_BIG)
-		hit_target.apply_effect(0.5, WEAKEN)
-	else
-		hit_target.apply_effect(0.5, SLOW)
-
-	hit_target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
-	log_attack("[key_name(xeno)] attacked [key_name(hit_target)] with Tail Jab")
-
-	apply_cooldown()
-	return ..()
-
-/datum/action/xeno_action/activable/tail_jab/proc/reset_direction(mob/living/carbon/xenomorph/xeno, last_dir, new_dir)
-	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
-	if(new_dir == xeno.dir)
-		xeno.setDir(last_dir)
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
+	apply_cooldown(cooldown_modifier = 0.2)
+	playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
+	return
 
 /datum/action/xeno_action/activable/headbite/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner

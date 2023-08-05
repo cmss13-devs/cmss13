@@ -2335,6 +2335,7 @@
 #include "fray-marines\modules\cm_aliens\structures\lessers_burrow.dm"
 #include "fray-marines\modules\mob\living\carbon\xenomorph\Abilities.dm"
 #include "fray-marines\modules\mob\living\simple_animal\hostile\alien.dm"
+#include "fray-marines\modules\mob\living\simple_animal\hostile\alien\tearer.dm"
 #include "fray-marines\modules\mob\living\simple_animal\hostile\alien\trooper.dm"
 #include "interface\fonts.dm"
 #include "interface\interface.dm"

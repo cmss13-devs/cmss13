@@ -264,7 +264,8 @@
 		return
 
 	xeno.say(";MY LIFE FOR THE QUEEN!!!")
-	target.visible_message(SPAN_XENOHIGHDANGER("[xeno] sacrifices itself to heal [target]!"), SPAN_XENOHIGHDANGER("[xeno] sacrifices itself for you!"))
+	target.visible_message(SPAN_XENONOTICE("[xeno] sacrifices itself to heal [target]!"), SPAN_XENOHIGHDANGER("[xeno] sacrifices itself for you!"))
+	xeno_message(SPAN_XENOANNOUNCE("[xeno] sacrifices itself to heal [target]!"), 2, target.hive.hivenumber)
 
 	target.gain_health(xeno.health * transfer_mod)
 	target.updatehealth()

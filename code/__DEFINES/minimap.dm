@@ -4,7 +4,8 @@
 #define MINIMAP_FLAG_PMC (1<<2)
 #define MINIMAP_FLAG_UPP (1<<3)
 #define MINIMAP_FLAG_CLF (1<<4)
-#define MINIMAP_FLAG_ALL (1<<5) - 1
+#define MINIMAP_FLAG_YAUTJA (1<<5)
+#define MINIMAP_FLAG_ALL (1<<6) - 1
 
 ///Converts the overworld x and y to minimap x and y values
 #define MINIMAP_SCALE 2

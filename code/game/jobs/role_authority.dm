@@ -553,6 +553,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/turf/late_join_turf
 		if(GLOB.latejoin_by_squad[assigned_squad])
 			late_join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
+		else if(GLOB.latejoin_by_job[J.title])
+			late_join_turf = get_turf(pick(GLOB.latejoin_by_job[J.title]))
 		else
 			late_join_turf = get_turf(pick(GLOB.latejoin))
 		H.forceMove(late_join_turf)

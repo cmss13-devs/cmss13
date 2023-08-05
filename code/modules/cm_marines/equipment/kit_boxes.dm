@@ -67,7 +67,7 @@
 	new /obj/item/weapon/gun/rifle/sniper/M42A(src)
 	new /obj/item/facepaint/sniper(src)
 	// spotter
-	new /obj/item/storage/box/kit/spotter(src)
+	new /obj/item/storage/box/kit/companion/spotter(src)
 
 /obj/item/storage/box/spec/scout
 	name = "\improper Scout equipment case"
@@ -525,18 +525,6 @@
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 
-/obj/item/storage/box/kit/spotter
-	name = "\improper Spotter Kit"
-	pro_case_overlay = "spotter"
-
-/obj/item/storage/box/kit/spotter/fill_preset_inventory()
-	new /obj/item/clothing/head/helmet/marine/ghillie(src)
-	new /obj/item/clothing/suit/storage/marine/ghillie(src)
-	new /obj/item/clothing/glasses/night/m42_night_goggles/spotter(src)
-	new /obj/item/storage/backpack/marine/smock(src)
-	new /obj/item/device/binoculars/range/designator/spotter(src)
-	new /obj/item/pamphlet/skill/spotter(src)
-
 /obj/item/storage/box/kit/engineering_supply_kit
 	name = "\improper Engineering Supply Kit"
 
@@ -544,3 +532,94 @@
 	new /obj/item/storage/pouch/construction/low_grade_full(src)
 	new /obj/item/storage/pouch/electronics/full(src)
 	new /obj/item/clothing/glasses/welding(src)
+
+
+///A kit that is issued by one human to another.
+/obj/item/storage/box/kit/companion
+	var/issuer
+	var/datum/squad/associated_squad
+	var/associated_fireteam
+	var/recipient
+
+/obj/item/storage/box/kit/companion/open(mob/user)
+	if(!recipient)
+		to_chat(user, SPAN_WARNING("[src] is not fully unlocked yet!"))
+		return
+	..()
+
+/obj/item/storage/box/kit/companion/attackby(obj/item/card/id/card, mob/user)
+	if(!istype(card))
+		return ..()
+	if(card.registered_ref != WEAKREF(user))
+		to_chat(user, SPAN_WARNING("You should use your own ID!"))
+		return
+	if(!issuer)
+		register_issuer(user)
+		return
+	if(!recipient)
+		register_recipient(user, card)
+		return
+	return ..()
+
+/obj/item/storage/box/kit/companion/proc/register_issuer(mob/living/carbon/human/user)
+	issuer = user.real_name
+	associated_squad = user.assigned_squad
+	associated_fireteam = user.assigned_fireteam
+
+/obj/item/storage/box/kit/companion/proc/register_recipient(mob/living/carbon/human/user, obj/item/card/id/card)
+	recipient = user.real_name
+	if(associated_squad)
+		transfer_marine_to_squad(user, associated_squad, user.assigned_squad, card)
+		if(associated_fireteam)
+			associated_squad.assign_fireteam(associated_fireteam, user)
+
+
+/obj/item/storage/box/kit/companion/spotter
+	name = "\improper Spotter Kit"
+	desc = "A locked and sealed box, containing a set of spotter's equipment and instructions in its usage."
+	pro_case_overlay = "spotter"
+	var/datum/character_trait/trait_to_apply = /datum/character_trait/skills/spotter
+
+/obj/item/storage/box/kit/companion/spotter/Initialize()
+	. = ..()
+	trait_to_apply = GLOB.character_traits[trait_to_apply]
+
+/obj/item/storage/box/kit/companion/spotter/get_examine_text(mob/user)
+	. = ..()
+	if(!issuer)
+		. += SPAN_NOTICE("It can be unlocked by sniper specialist's ID.")
+		return
+	. += SPAN_NOTICE("It has been issued by [issuer][associated_squad ? ", [associated_squad] squad" : ""].")
+	if(recipient)
+		. += SPAN_NOTICE("It has been claimed by [recipient].")
+	else
+		. += SPAN_NOTICE("It is still sealed. It can be claimed by squad rifleman's ID.")
+
+/obj/item/storage/box/kit/companion/spotter/fill_preset_inventory()
+	new /obj/item/clothing/head/helmet/marine/ghillie(src)
+	new /obj/item/clothing/suit/storage/marine/ghillie(src)
+	new /obj/item/clothing/glasses/night/m42_night_goggles/spotter(src)
+	new /obj/item/storage/backpack/marine/smock(src)
+	new /obj/item/device/binoculars/range/designator/spotter(src)
+
+/obj/item/storage/box/kit/companion/spotter/register_issuer(mob/living/carbon/human/user)
+	if(user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
+		to_chat(user, SPAN_WARNING("[src] can only be unlocked by the sniper specialist."))
+		return
+	..()
+	to_chat(user, SPAN_NOTICE("You have registered as the issuer of [src]. Give it to a squad rifleman of your choice or leave it in the open to be taken by a volunteer."))
+
+/obj/item/storage/box/kit/companion/spotter/register_recipient(mob/living/carbon/human/user, obj/item/card/id/card)
+	if(user.job != JOB_SQUAD_MARINE)
+		to_chat(user, SPAN_WARNING("Only squad riflemen can be issued a spotter kit."))
+		return
+	if(user.rank_fallback)
+		to_chat(user, SPAN_WARNING("You already have a special assignment."))
+		return
+	..()
+	user.rank_fallback = "ass"
+	user.hud_set_squad()
+	card.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Spotter")
+	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Spotter")
+	trait_to_apply.apply_trait(user)
+	to_chat(user, SPAN_NOTICE("You unseal [src] and open it, reading the instructions on the inside."))

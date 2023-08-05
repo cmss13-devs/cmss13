@@ -1115,10 +1115,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	item_state = "backpack_large"
 	max_storage_space = 26
 
-/obj/item/storage/backpack/rmc/heavy/black //alt backpack, unused
-	icon_state = "black_backpack_large"
-	item_state = "black_backpack_large"
-
 /obj/item/storage/backpack/rmc/medium
 	name = "\improper standard RMC backpack"
 	desc = "A TWE military standard-carry RMC combat pack MK3."
@@ -1127,10 +1123,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	max_storage_space = 25
 
-/obj/item/storage/backpack/rmc/medium/black //alt backpack, unused
-	icon_state = "black_backpack_medium"
-	item_state = "black_backpack_medium"
-
 /obj/item/storage/backpack/rmc/light
 	name = "\improper lightweight RMC backpack"
 	desc = "A TWE military light-carry RMC combat pack MK3."
@@ -1138,10 +1130,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	item_state = "backpack_small"
 	worn_accessible = TRUE
 	max_storage_space = 23
-
-/obj/item/storage/backpack/rmc/light/black //alt backpack, unused
-	icon_state = "black_backpack_small"
-	item_state = "black_backpack_small"
 
 /obj/item/storage/backpack/rmc/frame //One sorry sod should have to lug this about spawns in their shuttle currently
 	name = "\improper RMC carry-frame"

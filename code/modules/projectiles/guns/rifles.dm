@@ -75,7 +75,7 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade, /obj/item/attachable/stock/rifle/collapsible)
 	map_specific_decoration = TRUE
-	start_automatic = TRUE
+	//start_automatic = TRUE
 
 /obj/item/weapon/gun/rifle/m41a/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
@@ -150,7 +150,7 @@
 		/obj/item/attachable/attached_gun/flamer/advanced,
 	)
 	start_semiauto = FALSE
-	start_automatic = TRUE
+	//start_automatic = TRUE
 	autofire_slow_mult = 1.1
 
 /obj/item/weapon/gun/rifle/nsg23/Initialize(mapload, spawn_empty)
@@ -386,7 +386,7 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade/mk1, /obj/item/attachable/stock/rifle/collapsible)
-	start_automatic = TRUE
+	//start_automatic = TRUE
 
 /obj/item/weapon/gun/rifle/m41aMK1/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 14)
@@ -727,7 +727,7 @@
 	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
-	start_automatic = TRUE
+	//start_automatic = TRUE
 
 
 
@@ -1306,7 +1306,7 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	flags_equip_slot = SLOT_BACK
-	start_automatic = TRUE
+	//start_automatic = TRUE
 
 /obj/item/weapon/gun/rifle/type71/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 18, "rail_y" = 23, "under_x" = 20, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)

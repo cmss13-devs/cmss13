@@ -303,6 +303,7 @@
 		/datum/action/xeno_action/onclick/readmit,
 		/datum/action/xeno_action/onclick/queen_award,
 		/datum/action/xeno_action/activable/info_marker/queen,
+		/datum/action/xeno_action/onclick/build_lessers_burrow,
 	)
 
 	inherent_verbs = list(
@@ -339,6 +340,7 @@
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
+		/datum/action/xeno_action/onclick/build_lessers_burrow,
 	)
 
 	// Abilities they get when they've successfully aged.

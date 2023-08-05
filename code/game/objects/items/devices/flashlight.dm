@@ -276,7 +276,7 @@
 
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
-	fuel = rand(1600 SECONDS, 2000 SECONDS)
+	fuel = rand(9.5 MINUTES, 10.5 MINUTES)
 
 /obj/item/device/flashlight/flare/update_icon()
 	overlays?.Cut()
@@ -406,7 +406,7 @@
 
 /obj/item/device/flashlight/flare/on/illumination/Initialize()
 	. = ..()
-	fuel = rand(800 SECONDS, 1000 SECONDS) // Half the duration of a flare, but justified since it's invincible
+	fuel = rand(4.5 MINUTES, 5.5 MINUTES) // Half the duration of a flare, but justified since it's invincible
 
 /obj/item/device/flashlight/flare/on/illumination/update_icon()
 	return
@@ -420,7 +420,7 @@
 
 /obj/item/device/flashlight/flare/on/starshell_ash
 	name = "burning star shell ash"
-	desc = "Bright burning ash from a Star Shell 40mm. Don't touch, oh it'll burn ya'."
+	desc = "Bright burning ash from a Star Shell 40mm. Don't touch, or it'll burn ya'."
 	icon_state = "starshell_ash"
 	light_range = 7
 	anchored = TRUE//can't be picked up
@@ -431,7 +431,7 @@
 	if(mapload)
 		return INITIALIZE_HINT_QDEL
 	. = ..()
-	fuel = rand(5 SECONDS, 60 SECONDS)
+	fuel = rand(30 SECONDS,	60 SECONDS)
 
 /obj/item/device/flashlight/flare/on/illumination/chemical
 	name = "chemical light"

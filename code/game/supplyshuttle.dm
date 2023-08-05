@@ -191,11 +191,11 @@ var/datum/controller/supply/supply_controller = new()
 	var/list/data = list()
 
 	var/list/squad_list = list()
-	for(var/datum/squad/S in RoleAuthority.squads)
-		if(S.active && S.faction == faction && S.color)
+	for(var/datum/squad/current_squad in RoleAuthority.squads)
+		if(current_squad.active && current_squad.faction == faction && current_squad.equipment_color)
 			squad_list += list(list(
-				"squad_name" = S.name,
-				"squad_color" = squad_colors[S.color]
+				"squad_name" = current_squad.name,
+				"squad_color" = current_squad.equipment_color
 				))
 
 	data["can_pick_squad"] = can_pick_squad
@@ -1015,6 +1015,7 @@ var/datum/controller/supply/supply_controller = new()
 			to_chat(usr, SPAN_DANGER("Current retrieval load has reached maximum capacity."))
 			return
 
+		var/datum/ares_link/link = GLOB.ares_link
 		for(var/i=1, i<=supply_controller.requestlist.len, i++)
 			var/datum/supply_order/SO = supply_controller.requestlist[i]
 			if(SO.ordernum == ordernum)
@@ -1030,6 +1031,12 @@ var/datum/controller/supply/supply_controller = new()
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 					supply_order.approvedby = usr.name
 					msg_admin_niche("[usr] confirmed supply order of [supply_pack.name].")
+					var/pack_source = "Cargo Hold"
+					var/pack_name = supply_pack.name
+					if(supply_pack.dollar_cost)
+						pack_source = "Unknown"
+						pack_name = "Unknown"
+					link.log_ares_requisition(pack_source, pack_name, usr)
 				else
 					temp = "Not enough money left.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"

@@ -1,6 +1,5 @@
 #define SENTRY_FIREANGLE 135
 #define SENTRY_RANGE 5
-#define SENTRY_MUZZLELUM 3
 #define SENTRY_ENGAGED_TIMEOUT 60 SECONDS
 #define SENTRY_LOW_AMMO_TIMEOUT 20 SECONDS
 #define SENTRY_LOW_AMMO_ALERT_PERCENTAGE 0.25
@@ -336,9 +335,6 @@
 	if(isnull(angle))
 		return
 
-	set_light(SENTRY_MUZZLELUM)
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, set_light), -SENTRY_MUZZLELUM), 10)
-
 	var/image_layer = layer + 0.1
 	var/offset = 13
 
@@ -370,7 +366,7 @@
 				targets.Remove(A)
 				continue
 
-			if(M.get_target_lock(faction_group) || M.invisibility)
+			if(M.get_target_lock(faction_group) || M.invisibility || HAS_TRAIT(M, TRAIT_ABILITY_BURROWED))
 				if(M == target)
 					target = null
 				targets.Remove(M)
@@ -539,11 +535,13 @@
 	choice_categories = list()
 	selected_categories = list()
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
+	var/obj/structure/machinery/camera/cas/linked_cam
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
 	if(deployment_system)
 		deployment_system.deployed_turret = null
 		deployment_system = null
+	QDEL_NULL(linked_cam)
 	. = ..()
 
 #define SENTRY_SNIPER_RANGE 10
@@ -724,4 +722,3 @@
 
 #undef SENTRY_FIREANGLE
 #undef SENTRY_RANGE
-#undef SENTRY_MUZZLELUM

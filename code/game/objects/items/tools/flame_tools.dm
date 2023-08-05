@@ -170,12 +170,19 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	damtype = "brute"
 	icon_state = "[initial(icon_state)]_burnt"
 	item_state = "cigoff"
-	if(user && loc != user)
-		user.set_light(0, FALSE, src)
 	set_light(0)
 	name = burnt_name
 	desc = "A match. This one has seen better days."
 	STOP_PROCESSING(SSobj, src)
+
+	if(user)
+		user.SetLuminosity(0, FALSE, src)
+		return
+
+	if(ismob(loc))
+		user = loc
+		user.SetLuminosity(0, FALSE, src)
+		return
 
 /obj/item/tool/match/paper
 	name = "paper match"

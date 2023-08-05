@@ -3,6 +3,10 @@
 	desc = "Can hold various things."
 	icon = 'icons/obj/items/clothing/belts.dmi'
 	icon_state = "utilitybelt"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+	)
 	item_state = "utility"
 	flags_equip_slot = SLOT_WAIST
 	attack_verb = list("whipped", "lashed", "disciplined")
@@ -105,6 +109,13 @@
 	new /obj/item/tool/crowbar(src)
 	new /obj/item/tool/wirecutters(src)
 	new /obj/item/device/t_scanner(src)
+
+/obj/item/storage/belt/utility/full/pred
+	name = "\improper Yautja toolbelt"
+	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "utilitybelt_pred"
+	item_state = "utility"
 
 /obj/item/storage/belt/medical
 	name = "\improper M276 pattern medical storage rig"
@@ -271,6 +282,19 @@
 	new /obj/item/storage/pill_bottle/inaprovaline(src)
 	new /obj/item/storage/pill_bottle/tramadol(src)
 	new /obj/item/storage/pill_bottle/peridaxon(src)
+
+/obj/item/storage/belt/medical/lifesaver/upp/partial/fill_preset_inventory()
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/inaprovaline(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
 
 /obj/item/storage/belt/security
 	name = "\improper M276 pattern security rig"
@@ -735,8 +759,8 @@
 	)
 	cant_hold = list()
 	flap = FALSE
-	var/draw_cooldown = 0
-	var/draw_cooldown_interval = 1 SECONDS
+
+	COOLDOWN_DECLARE(draw_cooldown)
 
 /obj/item/storage/belt/knifepouch/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -751,9 +775,9 @@
 	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
 /obj/item/storage/belt/knifepouch/attack_hand(mob/user, mods)
-	if(draw_cooldown < world.time)
+	if(COOLDOWN_FINISHED(src, draw_cooldown))
 		..()
-		draw_cooldown = world.time + draw_cooldown_interval
+		COOLDOWN_START(src, draw_cooldown, BAYONET_DRAW_DELAY)
 		playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 	else
 		to_chat(user, SPAN_WARNING("You need to wait before drawing another knife!"))

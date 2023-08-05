@@ -46,7 +46,7 @@
 /turf/closed/wall/rock/brown,
 /area/adminlevel/ert_station/clf_station)
 "az" = (
-/obj/structure/prop/brazier/frame_woodened,
+/obj/structure/prop/brazier/frame/full,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "asteroidwarning"
@@ -1079,7 +1079,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "yY" = (
-/obj/structure/prop/brazier/frame_woodened,
+/obj/structure/prop/brazier/frame/full,
 /turf/open/floor/plating{
 	icon_state = "asteroidwarning"
 	},
@@ -1828,7 +1828,7 @@
 /turf/open/gm/river,
 /area/adminlevel/ert_station/clf_station)
 "RR" = (
-/obj/structure/machinery/chem_dispenser/beer{
+/obj/structure/machinery/chem_dispenser/soda/beer{
 	density = 0;
 	pixel_y = 10
 	},

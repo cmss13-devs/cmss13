@@ -19,7 +19,8 @@
 	. = ..()
 	if(dir == SOUTH)
 		closed_layer = ABOVE_MOB_LAYER
-	layer = closed_layer
+	if(density)//Allows preset-open to work
+		layer = closed_layer
 
 	set_opacity(initial(opacity))
 
@@ -63,3 +64,6 @@
 
 	addtimer(VARSET_CALLBACK(src, operating, FALSE), 1.2 SECONDS)
 	return TRUE
+
+/obj/structure/machinery/door/poddoor/railing/open
+	density = FALSE

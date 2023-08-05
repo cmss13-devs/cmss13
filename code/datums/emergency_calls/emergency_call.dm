@@ -9,6 +9,11 @@
 	var/list/datum/emergency_call/all_calls = list() //initialized at round start and stores the datums.
 	var/datum/emergency_call/picked_calls[] = list() //Which distress calls are currently active
 
+/datum/game_mode/proc/ares_online()
+	var/name = "ARES Online"
+	var/input = "ARES. Online. Good morning, marines."
+	shipwide_ai_announcement(input, name, 'sound/AI/ares_online.ogg')
+
 //The distress call parent. Cannot be called itself due to "name" being a filtered target.
 /datum/emergency_call
 	var/name = "name"
@@ -191,7 +196,7 @@
 	message_admins("Distress beacon: '[name]' activated [src.hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"]. Looking for candidates.")
 
 	if(announce)
-		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg')
+		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg', logging = ARES_LOG_SECURITY)
 
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), announce, override_spawn_loc, announce_dispatch_message), 30 SECONDS)
 
@@ -207,7 +212,7 @@
 		candidates = list()
 
 		if(announce)
-			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
+			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
 		return
 
 	//We've got enough!
@@ -236,8 +241,8 @@
 				if(I.current)
 					to_chat(I.current, SPAN_WARNING("You didn't get selected to join the distress team. Better luck next time!"))
 
-	if(announce_dispatch_message)
-		marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg') //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
+	if(announce)
+		marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg', logging = ARES_LOG_SECURITY) //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
 
 	message_admins("Distress beacon: [src.name] finalized, setting up candidates.")
 

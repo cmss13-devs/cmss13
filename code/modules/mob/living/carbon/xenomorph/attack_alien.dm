@@ -287,6 +287,9 @@
 	SPAN_DANGER("You nudge your head against [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
 
 /mob/living/proc/is_xeno_grabbable()
+	if(stat == DEAD)
+		return FALSE
+
 	return TRUE
 
 /mob/living/carbon/human/is_xeno_grabbable()
@@ -979,3 +982,12 @@
 	var/matrix/A = matrix()
 	apply_transform(A)
 	stat &= ~BROKEN //Remove broken. MAGICAL REPAIRS
+
+//Misc
+/obj/structure/prop/invuln/joey/attack_alien(mob/living/carbon/xenomorph/alien)
+	alien.animation_attack_on(src)
+	alien.visible_message(SPAN_DANGER("[alien] [alien.slashes_verb] [src]!"), \
+	SPAN_DANGER("You [alien.slash_verb] [src]!"), null, 5)
+	playsound(loc, "alien_claw_metal", 25, 1)
+	attacked()
+	return XENO_ATTACK_ACTION

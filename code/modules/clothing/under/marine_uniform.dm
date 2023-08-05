@@ -527,7 +527,7 @@
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	has_sensor = UNIFORM_HAS_SENSORS
 	sensor_faction = FACTION_UPP
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/gimmick/jason, /obj/item/clothing/suit/storage/snow_suit/soviet, /obj/item/clothing/suit/storage/snow_suit/survivor)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/gimmick/jason, /obj/item/clothing/suit/storage/snow_suit/soviet, /obj/item/clothing/suit/storage/snow_suit/survivor, /obj/item/clothing/suit/storage/webbing)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/UPP/medic
@@ -705,7 +705,7 @@
 	sensor_faction = FACTION_CLF
 
 /obj/item/clothing/under/colonist/ua_civvies
-	name = "gray utilities"
+	name = "\improper UA gray utility uniform"
 	desc = "A stylish gray jumpsuit - standard issue for UA civilian support personnel."
 	icon_state = "ua_civvies"
 	worn_state = "ua_civvies"
@@ -713,7 +713,7 @@
 	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/colonist/wy_davisone
-	name = "brown utilities"
+	name = "\improper UA brown utility uniform"
 	desc = "A stylish brown jumpsuit - standard issue for UA civilian support personnel."
 	icon_state = "wy_davisone"
 	worn_state = "wy_davisone"
@@ -737,14 +737,15 @@
 	desc = "A comfortable white T-shirt and brown jeans."
 	icon_state = "tshirt_w_br"
 	worn_state = "tshirt_w_br"
+	displays_id = FALSE
 	has_sensor = UNIFORM_HAS_SENSORS
 	sensor_faction = FACTION_MARINE
-
 /obj/item/clothing/under/tshirt/gray_blu
 	name = "gray T-shirt and jeans"
 	desc = "A comfortable gray T-shirt and blue jeans."
 	icon_state = "tshirt_gray_blu"
 	worn_state = "tshirt_gray_blu"
+	displays_id = FALSE
 	has_sensor = UNIFORM_HAS_SENSORS
 	sensor_faction = FACTION_MARINE
 
@@ -753,6 +754,7 @@
 	desc = "A comfortable red T-shirt and black jeans."
 	icon_state = "tshirt_r_bla"
 	worn_state = "tshirt_r_bla"
+	displays_id = FALSE
 	has_sensor = UNIFORM_HAS_SENSORS
 	sensor_faction = FACTION_MARINE
 
@@ -777,11 +779,21 @@
 	icon_state = "liaison_regular"
 	worn_state = "liaison_regular"
 
+/obj/item/clothing/under/liaison_suit/charcoal
+	name = "liaison's charcoal suit"
+	desc = "A stiff, stylish charcoal suit commonly worn by businessmen from the Weyland-Yutani corporation. Expertly crafted to make you look like a prick."
+	icon_state = "liaison_charcoal"
+	worn_state = "liaison_charcoal"
+
 /obj/item/clothing/under/liaison_suit/outing
 	name = "liaison's outfit"
 	desc = "A casual outfit consisting of a collared shirt and a vest. Looks like something you might wear on the weekends, or on a visit to a derelict colony."
 	icon_state = "liaison_outing"
 	worn_state = "liaison_outing"
+
+/obj/item/clothing/under/liaison_suit/outing/red
+	icon_state = "liaison_outing_red"
+	worn_state = "liaison_outing_red"
 
 /obj/item/clothing/under/liaison_suit/formal
 	name = "liaison's white suit"
@@ -794,6 +806,12 @@
 	desc = "A collared shirt, complimented by a pair of suspenders. Worn by Weyland-Yutani employees who ask the tough questions. Smells faintly of cigars and bad acting."
 	icon_state = "liaison_suspenders"
 	worn_state = "liaison_suspenders"
+
+/obj/item/clothing/under/liaison_suit/blazer
+	name = "liaison's blue blazer"
+	desc = "A stiff but casual blue blazer. Similar can be found in any Weyland-Yutani office. Only the finest wear for the galaxy's most cunning."
+	icon_state = "liaison_blue_blazer"
+	worn_state = "liaison_blue_blazer"
 
 /obj/item/clothing/under/marine/reporter
 	name = "combat correspondent uniform"
@@ -834,6 +852,38 @@
 	icon_state = "rdalt"
 	worn_state = "rdalt"
 	flags_jumpsuit = FALSE
+
+/obj/item/clothing/under/rank/synthetic/frontier
+	name = "\improper frontier jumpsuit"
+	desc = "A cargo jumpsuit dressed down for full range of motion and state-of-the-art frontier temperature control. It's the best thing an engineer can wear in the Outer Veil."
+	icon_state = "synth_cargo_light"
+	worn_state = "synth_cargo_light"
+	displays_id = FALSE
+
+/obj/item/clothing/under/rank/synthetic/utility
+	name = "\improper UA utility uniform"
+	desc = "A green-on-green utility uniform, popularly issued to UA contract workers on the frontier."
+	icon_state = "synth_green_utility"
+	worn_state = "synth_green_utility"
+	displays_id = FALSE
+
+/obj/item/clothing/under/rank/synthetic/utility/yellow
+	name = "\improper utility uniform"
+	desc = "A grey utility uniform with yellow suspenders, made for shipside crew."
+	icon_state = "synth_yellow_utility"
+	worn_state = "synth_yellow_utility"
+
+/obj/item/clothing/under/rank/synthetic/utility/red
+	name = "\improper utility uniform"
+	desc = "A grey utility uniform with red suspenders and blue jeans, the sign of a veteran laborer, or someone not paid by the hour."
+	icon_state = "synth_red_utility"
+	worn_state = "synth_red_utility"
+
+/obj/item/clothing/under/rank/synthetic/utility/blue
+	name = "\improper utility uniform"
+	desc = "A blue utility uniform with teal suspenders and rugged pants."
+	icon_state = "synth_blue_utility"
+	worn_state = "synth_blue_utility"
 
 /obj/item/clothing/under/rank/synthetic/councillor
 	name = "\improper USCM Pristine Support Uniform"

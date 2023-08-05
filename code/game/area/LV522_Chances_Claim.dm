@@ -454,3 +454,18 @@
 	name = "Atmospheric Processor - Filtration System"
 	icon_state = "mechbay"
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
+/area/lv522/atmos/way_in_command_centre
+	name = "Atmospheric Processor - North Corpo Reactor Entrance"
+	icon_state = "blue"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
+/area/lv522/atmos/sewer
+	name = "Atmospheric Processor - Sewer"
+	icon_state = "red"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
+/area/lv522/atmos/reactor_garage
+	name = "Atmospheric Processor - Garage"
+	icon_state = "green"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS

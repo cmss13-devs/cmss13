@@ -204,7 +204,7 @@
 		return
 	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()
-	var/percentage_transferred = round((transferred_amount / required_transferred_amount) * 100, 10)
+	var/percentage_transferred = min(round((transferred_amount / required_transferred_amount) * 100, 10), 100)
 	if(percentage_transferred)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_transferred]")
 

@@ -68,6 +68,7 @@
 /mob/hologram/queen
 	name = "Queen Eye"
 	action_icon_state = "queen_exit"
+	motion_sensed = TRUE
 
 	color = "#a800a8"
 

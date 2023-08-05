@@ -1,0 +1,89 @@
+2023-08-01:
+  Drathek:
+  - bugfix: Fixed hung mobs merging with weeds
+2023-08-02:
+  Dorodomki:
+  - rscadd: Adds A Bipod and Rail Flashlight to the HPR kit
+  Drathek:
+  - balance: Facehugger attack windup duration is now 1s like the pounce windup.
+  Huffie56:
+  - bugfix: Care package for SG on WO will now spawn with the proper batteries for
+      them.
+  Morrow:
+  - bugfix: Fixes brain damage
+  - qol: Jittering from brain damage is now capped
+2023-08-03:
+  Ben10083:
+  - rscadd: Lesser Drone Slots now have a minimum, currently set to 3.
+  Huffie56:
+  - balance: adding the possibility to buy "ES-4 stun magazine" for 10 point in the
+      portable vendor.
+  - bugfix: remove a bunch of ammo that where improper for ES-4 gun that are in the
+      lockbox.
+  Thwomper:
+  - maptweak: added Workin' Joey to maint bar.
+2023-08-04:
+  Ben10083:
+  - mapadd: ARES Chamber now has a security camera console
+  - rscadd: Workin Joey now randomly talks and responds when attacked
+  Huffie56:
+  - bugfix: forbidden all the items beside battery and beakers to avoid weirdness
+      and bug.
+  Segrain:
+  - bugfix: Lesser drones now can pass through runners same as through any other castes.
+  - rscadd: Joining cryomarines now uses your assigned character slot for the role
+      you get (as long as you have not already used that character name this round).
+  Zonespace27:
+  - bugfix: Predator flight computers can no longer be walked on.
+  - rscadd: Predators and thralls are now visible on the predship tacmap.
+  - rscadd: Anyone wearing a stolen predator bracer is now visible on the predship
+      tacmap.
+  - qol: Predator emote panel emotes now look a bit cleaner in the menu
+  - bugfix: Predator ship health monitor console now works
+  - rscadd: WJs now spawn in the ARES core.
+  - rscadd: There is now a synthetic repair station in the ARES core.
+  - rscdel: You can no longer move the carp nade in the yautja ship
+  blackdragonTOW:
+  - bugfix: fixed a file reference that broke end of round music for some factions
+  ghostsheet:
+  - rscadd: B5 Breaching Hammer will now slow down humans who picks it up.
+  realforest2001:
+  - admin: Added logs for speech through telephones and deferring ahelps to mentors.
+  - admin: Chestburst logs now include location data. Mentor Imaginary Friend now
+      logs its speech. Narrow miss shots now log who fired them (where applicable).
+  - admin: Dropship interactions (Launch/Flyby/Autopilot) are now logged again, and
+      also included in attack logs for the user.
+  - bugfix: Yautja Bracers are no longer hyper lethal electrical outlets.
+  - rscadd: Added the falcon drone to marine motion detectors, appearing the same
+      as Queen eye.
+  stanalbatross:
+  - ui: changed the almayer control console from html to tgui
+  - bugfix: custom faction messages will now be named properly in the paper printed
+      out from the almayer control console
+2023-08-05:
+  BeagleGaming1:
+  - rscadd: Adds campfires, craftable with wood
+  - code_imp: Modifies brazier construction code for easier use and mapping
+  Morrow:
+  - bugfix: You can no longer bypass skill checks on pill bottles
+  Steelpoint:
+  - rscadd: A team of UPP survivors may spawn on Trijent Dam.
+  - mapadd: A new nightmare insert for Trijent Dam has been added, featuring a crashed
+      UPP dropship.
+  Vile Beggar:
+  - balance: Star Shells now have a higher minimum burn time and are more plentiful
+      in squad prep.
+  Zonespace27:
+  - bugfix: Underbarrel extinguishers can now be refilled.
+  ghostsheet:
+  - rscadd: Acid Runners will now respawn where it blew up, if there is no hivecore
+      to spawn at.
+  realforest2001:
+  - rscadd: Added an admin toggle flag for fitting mobs into disposals. (Within reason
+      - no queens...)
+  - rscadd: The Crawler trait that allows mobs to enter vents will also allow them
+      to climb into disposals regardless of above flag.
+  - rscadd: Added a subtype of disposal that can't fit mobs, used for the delivery
+      units.
+  smov:
+  - rscadd: Adds a new Marine Law charge

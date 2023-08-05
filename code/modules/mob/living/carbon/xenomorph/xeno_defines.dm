@@ -353,6 +353,8 @@
 
 	/// How many lesser drones the hive can support
 	var/lesser_drone_limit = 0
+	/// Slots available for lesser drones will never go below this number
+	var/lesser_drone_minimum = 3
 
 	var/datum/tacmap/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
@@ -934,6 +936,24 @@
 	else
 		hive_ui.update_burrowed_larva()
 
+/datum/hive_status/proc/respawn_on_turf(client/xeno_client, turf/spawning_turf)
+	var/mob/living/carbon/xenomorph/larva/new_xeno = spawn_hivenumber_larva(spawning_turf, hivenumber)
+	if(isnull(new_xeno))
+		return FALSE
+
+	if(!SSticker.mode.transfer_xeno(xeno_client.mob, new_xeno))
+		qdel(new_xeno)
+		return FALSE
+
+	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges from a dead husk!"),
+	SPAN_XENOANNOUNCE("The hive has no core! You manage to emerge from your old husk as a larva!"))
+	msg_admin_niche("[key_name(new_xeno)] respawned at \a [spawning_turf]. [ADMIN_JMP(spawning_turf)]")
+	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
+	if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
+		window_flash(new_xeno.client)
+
+	hive_ui.update_burrowed_larva()
+
 /datum/hive_status/proc/do_buried_larva_spawn(mob/xeno_candidate)
 	var/spawning_area
 	if(hive_location)
@@ -1052,7 +1072,7 @@
 	hugger.timeofdeath = user.timeofdeath // Keep old death time
 
 /datum/hive_status/proc/update_lesser_drone_limit()
-	lesser_drone_limit = Ceiling(totalXenos.len / 3)
+	lesser_drone_limit = lesser_drone_minimum + Ceiling(length(totalXenos) / 3)
 
 /datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])

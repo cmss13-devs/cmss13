@@ -46,6 +46,9 @@
 		addtimer(CALLBACK(src, PROC_REF(spawn_alien)), XENO_LESSER_BURROW_SPAWN_QUEUE_TIME * i)
 
 /obj/structure/lessers_burrow/proc/spawn_alien()
+	if(prob(10))
+		new /mob/living/simple_animal/hostile/alien/spawnable/tearer(get_turf(src))
+		return
 	new /mob/living/simple_animal/hostile/alien/spawnable/trooper(get_turf(src))
 
 /obj/structure/lessers_burrow/attackby(obj/item/W as obj, mob/user as mob)

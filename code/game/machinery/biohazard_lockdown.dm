@@ -18,8 +18,8 @@ GLOBAL_VAR_INIT(lockdown_state, LOCKDOWN_READY)
 /obj/structure/machinery/biohazard_lockdown/attack_alien(mob/user as mob)
 	return FALSE
 
-/obj/structure/machinery/biohazard_lockdown/attackby(obj/item/W, mob/user as mob)
-	return src.attack_hand(user)
+/obj/structure/machinery/biohazard_lockdown/attackby(obj/item/attacking_item, mob/user)
+	return attack_hand(user)
 
 /obj/structure/machinery/biohazard_lockdown/attack_hand(mob/living/user)
 	if(isxeno(user))

@@ -264,8 +264,6 @@
 		return
 
 	xeno.say(";MY LIFE FOR THE QUEEN!!!")
-	target.visible_message(SPAN_XENONOTICE("[xeno] sacrifices itself to heal [target]!"), SPAN_XENOHIGHDANGER("[xeno] sacrifices itself for you!"))
-	xeno_message(SPAN_XENOANNOUNCE("[xeno] sacrifices itself to heal [target]!"), 2, target.hive.hivenumber)
 
 	target.gain_health(xeno.health * transfer_mod)
 	target.updatehealth()
@@ -279,6 +277,9 @@
 	target.SetDaze(0)
 	target.SetSlow(0)
 	target.SetSuperslow(0)
+
+	target.visible_message(SPAN_XENONOTICE("[xeno] explodes in a splash of regenerative resin salve, covering [target] in it!"))
+	xeno_message(SPAN_XENOANNOUNCE("[xeno] sacrifices itself to heal [target]!"), 2, target.hive.hivenumber)
 
 	var/datum/behavior_delegate/drone_healer/behavior_delegate = xeno.behavior_delegate
 	if(istype(behavior_delegate) && behavior_delegate.transferred_amount >= behavior_delegate.required_transferred_amount && xeno.client && xeno.hive)

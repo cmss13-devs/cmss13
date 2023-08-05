@@ -276,7 +276,7 @@
 				if(FL.activate_attachment(H, src, TRUE))
 					light_off++
 		for(var/obj/item/clothing/head/hardhat/headlamp in contents)
-			if(headlamp.turn_off_light(src))
+			if(headlamp.turn_light(src, toggle_on = FALSE))
 				light_off++
 	if(guns)
 		for(var/obj/item/weapon/gun/G in contents)

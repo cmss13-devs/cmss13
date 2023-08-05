@@ -607,6 +607,37 @@ Parameters are passed from New.
 	return (I.Width() + I.Height()) * 0.5
 
 /**
+ * If this object has lights, turn it on/off.
+ * user: the mob actioning this
+ * toggle_on: if TRUE, will try to turn ON the light. Opposite if FALSE
+ * cooldown: how long until you can toggle the light on/off again
+ * sparks: if a spark effect will be generated
+ * forced: if TRUE and toggle_on = FALSE, will cause the light to turn on in cooldown second
+ * originated_turf: if not null, will check if the obj_turf is closer than distance_max to originated_turf, and the proc will return if not
+ * distance_max: used to check if originated_turf is close to obj.loc
+*/
+/atom/proc/turn_light(mob/user, toggle_on , cooldown = 1 SECONDS, sparks = FALSE, forced = FALSE, light_again = FALSE)
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_LIGHT) && !forced)
+		return STILL_ON_COOLDOWN
+	if(cooldown <= 0)
+		cooldown = 1 SECONDS
+	TIMER_COOLDOWN_START(src, COOLDOWN_LIGHT, cooldown)
+	if(toggle_on == light_on)
+		return NO_LIGHT_STATE_CHANGE
+	if(light_again && !toggle_on) //Is true when turn light is called by nightfall and the light is already on
+		addtimer(CALLBACK(src, PROC_REF(reset_light)), cooldown + 1)
+	if(sparks && light_on)
+		var/datum/effect_system/spark_spread/spark_system = new
+		spark_system.set_up(5, 0, src)
+		spark_system.attach(src)
+		spark_system.start(src)
+	return CHECKS_PASSED
+
+///Turn on the light, should be called by a timer
+/atom/proc/reset_light()
+	turn_light(null, TRUE, 1 SECONDS, FALSE, TRUE)
+
+/**
  * Return the markup to for the dropdown list for the VV panel for this atom
  *
  * Override in subtypes to add custom VV handling in the VV panel

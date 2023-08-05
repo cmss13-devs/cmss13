@@ -1,0 +1,4 @@
+author: "Ben10083"
+delete-after: True
+changes:
+  - admin: "You now need to give confirmation before announcing random facts (OOC tab verb)"

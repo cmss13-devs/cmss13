@@ -1064,3 +1064,7 @@ cases. Override_icon_state should be a list.*/
 	animate(attack_image, alpha = 175, transform = copy_transform.Scale(0.75), pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 3)
 	animate(time = 1)
 	animate(alpha = 0, time = 3, easing = CIRCULAR_EASING|EASE_OUT)
+
+///Called by /mob/living/carbon/swap_hand() when hands are swapped
+/obj/item/proc/hands_swapped(mob/living/carbon/swapper_of_hands)
+	return

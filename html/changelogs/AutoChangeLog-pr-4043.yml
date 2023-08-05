@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - bugfix: "EMT/White-Green armband now has a sprite"

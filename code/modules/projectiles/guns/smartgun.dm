@@ -86,8 +86,6 @@
 /obj/item/weapon/gun/smartgun/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_10
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_9
 	fa_delay = FIRE_DELAY_TIER_SG
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_8
 	fa_max_scatter = SCATTER_AMOUNT_TIER_9
@@ -101,7 +99,6 @@
 	else
 		scatter = SCATTER_AMOUNT_TIER_6
 		recoil = RECOIL_AMOUNT_TIER_3
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 /obj/item/weapon/gun/smartgun/set_bullet_traits()

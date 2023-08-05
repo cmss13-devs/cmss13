@@ -9,7 +9,7 @@
 	response_disarm = "shoves"
 	response_harm = "hits"
 	status_flags = CANSTUN|CANKNOCKDOWN|CANPUSH
-	move_to_delay = XENO_SPEED_TIER_4
+	move_to_delay = XENO_AI_SPEED_TIER_2
 	meat_type = null
 	health = XENO_HEALTH_LESSER_DRONE
 	harm_intent_damage = 5
@@ -31,14 +31,7 @@
 	pixel_x = 0
 	old_x = 0
 
-/mob/living/simple_animal/hostile/alien/Initialize()
-	maxHealth = health
-	handle_icon()
-	generate_name()
-	. = ..()
-	if(hivenumber)
-		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-		color = hive.color
+	var/special_attack_probability = XENO_AI_SPECIAL_ATTACK_PROBABILITY
 
 /mob/living/simple_animal/hostile/alien/spawnable/generate_name()
 	change_real_name(src, "\improper[caste_name] (WT-[rand(1, 999)])")
@@ -89,6 +82,22 @@
 				T = B
 				break
 	return T
+
+/mob/living/simple_animal/hostile/alien/spawnable/AttackingTarget()
+	if(!Adjacent(target_mob))
+		return
+	if(isliving(target_mob))
+		var/mob/living/L = target_mob
+		if (evaluate_special_attack(L))
+			return L
+		L.attack_animal(src)
+		src.animation_attack_on(L)
+		src.flick_attack_overlay(L, "slash")
+		playsound(src.loc, "alien_claw_flesh", 25, 1)
+		return L
+
+/mob/living/simple_animal/hostile/alien/spawnable/proc/evaluate_special_attack(mob/living/L)
+	return FALSE
 
 /mob/living/simple_animal/hostile/alien/spawnable/proc/evaluate_specific_behavior(mob/living/L)
 	return FALSE

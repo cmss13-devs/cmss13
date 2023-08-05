@@ -833,26 +833,27 @@
 	muzzle_flash(angle,user)
 	simulate_recoil(0, user)
 
-	var/obj/item/explosive/grenade/F = cylinder.contents[1]
-	cylinder.remove_from_storage(F, user.loc)
+	var/obj/item/explosive/grenade/fired = cylinder.contents[1]
+	cylinder.remove_from_storage(fired, user.loc)
 	var/pass_flags = NO_FLAGS
 	if(is_lobbing)
-		if(istype(F, /obj/item/explosive/grenade/slug/baton))
+		if(istype(fired, /obj/item/explosive/grenade/slug/baton))
 			if(ishuman(user))
 				var/mob/living/carbon/human/human_user = user
-				human_user.remember_dropped_object(F)
+				human_user.remember_dropped_object(fired)
+				fired.fingerprintslast = key_name(user)
 			pass_flags |= PASS_MOB_THRU_HUMAN|PASS_MOB_IS_OTHER|PASS_OVER
 		else
 			pass_flags |= PASS_MOB_THRU|PASS_HIGH_OVER
 
-	msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
+	msg_admin_attack("[key_name_admin(user)] fired a grenade ([fired.name]) from \a ([name]).")
 	log_game("[key_name_admin(user)] used a grenade ([name]).")
 
-	F.throw_range = 20
-	F.det_time = min(10, F.det_time)
-	F.activate(user, FALSE)
-	F.forceMove(get_turf(src))
-	F.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
+	fired.throw_range = 20
+	fired.det_time = min(10, fired.det_time)
+	fired.activate(user, FALSE)
+	fired.forceMove(get_turf(src))
+	fired.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 
 
 

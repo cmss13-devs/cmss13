@@ -2,6 +2,8 @@
  * Tunnels
  */
 
+#define TUNNEL_COLLAPSING_TIME (60 SECONDS)
+
 /obj/structure/tunnel
 	name = "tunnel"
 	desc = "A tunnel entrance. Looks like it was dug by some kind of clawed beast."
@@ -83,6 +85,25 @@
 
 /obj/structure/tunnel/attackby(obj/item/W as obj, mob/user as mob)
 	if(!isxeno(user))
+		if(istype(W, /obj/item/tool/shovel))
+			var/obj/item/tool/shovel/destroying_shovel = W
+
+			if(destroying_shovel.folded)
+				return
+
+			playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
+
+			user.visible_message(SPAN_NOTICE("[user] starts to collapse [src]!"), SPAN_NOTICE("You start collapsing [src]!"))
+
+			if(user.action_busy || !do_after(user, TUNNEL_COLLAPSING_TIME * ((100 - destroying_shovel.shovelspeed) * 0.01), INTERRUPT_ALL, BUSY_ICON_BUILD))
+				return
+
+			playsound(loc, 'sound/effects/tunnel_collapse.ogg', 50)
+
+			visible_message(SPAN_NOTICE("[src] collapses in on itself."))
+
+			qdel(src)
+
 		return ..()
 	return attack_alien(user)
 

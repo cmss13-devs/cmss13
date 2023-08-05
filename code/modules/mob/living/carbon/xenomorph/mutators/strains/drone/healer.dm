@@ -285,7 +285,12 @@
 
 	var/datum/behavior_delegate/drone_healer/behavior_delegate = xeno.behavior_delegate
 	if(istype(behavior_delegate) && behavior_delegate.transferred_amount >= behavior_delegate.max_transferred_amount && xeno.client && xeno.hive)
-		addtimer(CALLBACK(xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), xeno.client), 5 SECONDS)
+		var/datum/hive_status/hive_status = xeno.hive
+		var/turf/spawning_turf = get_turf(xeno)
+		if(!hive_status.hive_location)
+			addtimer(CALLBACK(xeno.hive, TYPE_PROC_REF(/datum/hive_status, respawn_on_turf), xeno.client, spawning_turf), 0.5 SECONDS)
+		else
+			addtimer(CALLBACK(xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), xeno.client), 5 SECONDS)
 
 	xeno.gib("sacrificing itself")
 

@@ -1,7 +1,7 @@
 /datum/job/marine/engineer
 	title = JOB_SQUAD_ENGI
-	total_positions = 12
-	spawn_positions = 12
+	total_positions = 8
+	spawn_positions = 8
 	allow_additional = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/engineer

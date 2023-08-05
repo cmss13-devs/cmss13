@@ -42,15 +42,15 @@
 	/// Can use any squad vendor regardless of squad connection
 	var/omni_squad_vendor = FALSE
 	/// maximum # of engineers allowed in the squad
-	var/max_engineers = 3
+	var/max_engineers = 4
 	/// maximum # of squad medics allowed in the squad
-	var/max_medics = 4
+	var/max_medics = 5
 	/// maximum # of specs allowed in the squad
-	var/max_specialists = 1
+	var/max_specialists = 2
 	/// maximum # of fireteam leaders allowed in the suqad
 	var/max_tl = 2
 	/// maximum # of smartgunners allowed in the squad
-	var/max_smartgun = 1
+	var/max_smartgun = 2
 	/// maximum # of squad leaders allowed in the squad
 	var/max_leaders = 1
 	/// Squad headsets default radio frequency
@@ -124,6 +124,10 @@
 	radio_freq = ALPHA_FREQ
 	minimap_color = MINIMAP_SQUAD_ALPHA
 
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
+
 /datum/squad/marine/bravo
 	name = SQUAD_MARINE_2
 	equipment_color = "#ffc32d"
@@ -147,6 +151,10 @@
 	access = list(ACCESS_MARINE_DELTA)
 	radio_freq = DELTA_FREQ
 	minimap_color = MINIMAP_SQUAD_DELTA
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
 
 /datum/squad/marine/echo
 	name = SQUAD_MARINE_5

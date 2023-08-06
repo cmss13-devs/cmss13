@@ -8,17 +8,26 @@
 /datum/internal_organ
 	var/name = "organ"
 	var/mob/living/carbon/human/owner = null
-	var/vital //Lose a vital limb, die immediately.
-	var/damage = 0 // amount of damage to the organ
+	// If you lose a vital organ, you die immediately
+	var/vital
+	/// amount of damage to the organ
+	var/damage = 0
+	/// Whether the organ processes as if its undamaged
+	var/stabilized = FALSE
 	var/min_bruised_damage = 10
 	var/min_broken_damage = 30
 	var/parent_limb = "chest"
 	var/robotic = 0 //1 for 'assisted' organs (e.g. pacemaker), 2 for actual cyber organ.
-	var/cut_away = FALSE //internal organ has its links to the body severed, organ is ready to be removed.
-	var/removed_type //When removed, forms this object.
-	var/robotic_type //robotic version of removed_type, used in mechanize().
-	var/rejecting // Is this organ already being rejected?
-	var/obj/item/organ/organ_holder // If not in a body, held in this item.
+	///internal organ has its links to the body severed, organ is ready to be removed.
+	var/cut_away = FALSE
+	///When removed, forms this object.
+	var/removed_type
+	///robotic version of removed_type, used in mechanize().
+	var/robotic_type
+	/// Is this organ already being rejected?
+	var/rejecting
+	/// If not in a body, held in this item.
+	var/obj/item/organ/organ_holder
 	var/list/transplant_data
 	///status of organ - is it healthy, broken, bruised?
 	var/organ_status = ORGAN_HEALTHY
@@ -142,7 +151,7 @@
 
 /datum/internal_organ/lungs/process()
 	..()
-	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+	if(stabilized)
 		return
 	if(organ_status >= ORGAN_BRUISED)
 		if(prob(2))
@@ -192,7 +201,7 @@
 
 		// Get the effectiveness of the liver.
 		var/filter_effect = 3
-		if(!(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS))
+		if(!(stabilized))
 			if(organ_status >= ORGAN_BRUISED)
 				filter_effect--
 			if(organ_status >= ORGAN_BROKEN)
@@ -208,7 +217,7 @@
 			owner.reagents.remove_reagent(R.id, R.custom_metabolism*filter_effect)
 
 		//Deal toxin damage if damaged
-		if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+		if(stabilized)
 			return
 		if(organ_status >= ORGAN_BRUISED && prob(25))
 			owner.apply_damage(0.1 * (damage/2), TOX)
@@ -228,7 +237,7 @@
 /datum/internal_organ/kidneys/process()
 	..()
 	//Deal toxin damage if damaged
-	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+	if(stabilized)
 		return
 	if(organ_status >= ORGAN_BRUISED && prob(25))
 		owner.apply_damage(0.1 * (damage/3), TOX)
@@ -279,7 +288,7 @@
 
 /datum/internal_organ/eyes/process() //Eye damage replaces the old eye_stat var.
 	. = ..()
-	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+	if(stabilized)
 		return
 	if(organ_status >= ORGAN_BRUISED)
 		owner.SetEyeBlur(20)

@@ -81,8 +81,7 @@
 #define CHEM_EFFECT_RESIST_FRACTURE (1<<0)
 #define CHEM_EFFECT_RESIST_NEURO (1<<1)
 #define CHEM_EFFECT_HYPER_THROTTLE (1<<2) //universal understand but not speech
-#define CHEM_EFFECT_ORGAN_STASIS (1<<3) //peri stabiliser
-#define CHEM_EFFECT_NO_BLEEDING (1<<4) //replacement for quickclot
+#define CHEM_EFFECT_NO_BLEEDING (1<<3) //replacement for quickclot
 
 
 //Blood plasma

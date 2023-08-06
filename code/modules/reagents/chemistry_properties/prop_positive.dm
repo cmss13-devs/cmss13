@@ -513,17 +513,29 @@
 	rarity = PROPERTY_DISABLED
 	value = 2
 
-/datum/chem_property/positive/organstabilize/process(mob/living/M, potency = 1, delta_time)
-	if(!ishuman(M))
+/datum/chem_property/positive/organstabilize/process(mob/living/current_mob, potency = 1, delta_time)
+	if(!ishuman(current_mob))
 		return
-	var/mob/living/carbon/human/H = M
-	H.chem_effect_flags |= CHEM_EFFECT_ORGAN_STASIS
+	var/mob/living/carbon/human/current_human = current_mob
+	var/stabilized_damage = level * 5
+	for(var/datum/internal_organ/organ in current_human.internal_organs)
+		if(organ.damage <= stabilized_damage)
+			organ.stabilized = TRUE
+		else
+			organ.stabilized = FALSE
 
-/datum/chem_property/positive/organstabilize/process_overdose(mob/living/M, potency = 1, delta_time)
-	M.apply_damage(0.5 * potency * delta_time, BRUTE)
+/datum/chem_property/positive/organstabilize/process_overdose(mob/living/current_mob, potency = 1, delta_time)
+	current_mob.apply_damage(0.5 * potency * delta_time, BRUTE)
 
-/datum/chem_property/positive/organstabilize/process_critical(mob/living/M, potency = 1)
-	M.apply_damages(POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency)
+/datum/chem_property/positive/organstabilize/process_critical(mob/living/current_mob, potency = 1)
+	current_mob.apply_damages(POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency)
+
+/datum/chem_property/positive/organstabilize/on_delete(mob/living/current_mob)
+	if(!ishuman(current_mob))
+		return
+	var/mob/living/carbon/human/current_human = current_mob
+	for(var/datum/internal_organ/organ in current_human.internal_organs)
+		organ.stabilized = initial(organ.stabilized)
 
 /datum/chem_property/positive/electrogenetic
 	name = PROPERTY_ELECTROGENETIC

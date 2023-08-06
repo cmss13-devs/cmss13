@@ -87,3 +87,9 @@
       units.
   smov:
   - rscadd: Adds a new Marine Law charge
+2023-08-06:
+  Ben10083:
+  - admin: You now need to give confirmation before announcing random facts (OOC tab
+      verb)
+  Steelpoint:
+  - bugfix: EMT/White-Green armband now has a sprite

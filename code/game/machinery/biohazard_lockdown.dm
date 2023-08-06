@@ -29,7 +29,7 @@ GLOBAL_VAR_INIT(lockdown_state, LOCKDOWN_READY)
 		flick(initial(icon_state) + "-denied", src)
 		return FALSE
 
-	if(GLOB.lockdown_state == LOCKDOWN_READY && !COOLDOWN_FINISHED(src, containment_lockdown))
+	if(!COOLDOWN_FINISHED(src, containment_lockdown))
 		to_chat(user, SPAN_BOLDWARNING("Biohazard Lockdown procedures are on cooldown! They will be ready in [COOLDOWN_SECONDSLEFT(src, containment_lockdown)] seconds!"))
 		return FALSE
 
@@ -82,19 +82,19 @@ GLOBAL_VAR_INIT(lockdown_state, LOCKDOWN_READY)
 		if(LOCKDOWN_READY)
 			GLOB.lockdown_state = LOCKDOWN_ACTIVE
 			set_security_level(SEC_LEVEL_RED, TRUE, FALSE)
-			shipwide_ai_announcement(message, MAIN_AI_SYSTEM, 'sound/effects/klaxon_alarm.ogg')
-			message_admins(log)
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_RESEARCH_LOCKDOWN)
 		if(LOCKDOWN_ACTIVE)
 			GLOB.lockdown_state = LOCKDOWN_READY
+			message = "ATTENTION! \n\nBIOHAZARD CONTAINMENT LOCKDOWN LIFTED."
 			log = "[key_name(user)] lifted research bio lockdown."
 			if(admin)
 				log += " (Admin Triggered)."
 
 			set_security_level(SEC_LEVEL_BLUE, TRUE, FALSE)
-			shipwide_ai_announcement("ATTENTION! \n\nBIOHAZARD CONTAINMENT LOCKDOWN LIFTED.", MAIN_AI_SYSTEM, 'sound/effects/klaxon_alarm_short.ogg')
-			message_admins(log)
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_RESEARCH_LIFT)
+
+	shipwide_ai_announcement(message, MAIN_AI_SYSTEM, 'sound/effects/biohazard.ogg')
+	message_admins(log)
 
 #undef LOCKDOWN_READY
 #undef LOCKDOWN_ACTIVE

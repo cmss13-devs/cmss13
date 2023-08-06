@@ -368,12 +368,12 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "ebarrel"
 	attach_icon = "ebarrel_a"
 	hud_offset_mod = -3
+	wield_delay_mod = WIELD_DELAY_FAST
 
 /obj/item/attachable/extended_barrel/New()
 	..()
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_2
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
 	velocity_mod = AMMO_SPEED_TIER_1
-	delay_mod = FIRE_DELAY_TIER_10
 
 /obj/item/attachable/heavy_barrel
 	name = "barrel charger"

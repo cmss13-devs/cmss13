@@ -577,6 +577,10 @@ var/list/roundstart_mod_verbs = list(
 	set desc = "Tells everyone about a random statistic in the round."
 	set category = "OOC"
 
+	var/prompt = tgui_alert(usr, "Are you sure you want to do this?", "Announce Random Fact", list("No", "Yes"))
+	if(prompt != "Yes")
+		return
+
 	message_admins("[key_name(usr)] announced a random fact.")
 	SSticker.mode?.declare_fun_facts()
 

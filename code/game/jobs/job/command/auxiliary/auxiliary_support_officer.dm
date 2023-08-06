@@ -16,7 +16,6 @@ AddTimelock(/datum/job/command/auxiliary_officer, list(
 
 /obj/effect/landmark/start/auxiliary_officer
 	name = JOB_AUXILIARY_OFFICER
-	icon_state = "dcc_spawn" //add unique sprite here - Morrow
 	job = /datum/job/command/auxiliary_officer
 
 /datum/timelock/auxiliary

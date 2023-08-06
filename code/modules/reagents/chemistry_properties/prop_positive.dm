@@ -518,7 +518,7 @@
 		return
 	var/mob/living/carbon/human/current_human = current_mob
 	/// How much damage the organ can take before stabilizing becomes less efficient or stops working
-	var/stabilized_damage = Clamp(POTENCY_MULTIPLIER_EXTREME * potency, 0, 100)
+	var/stabilized_damage = max(POTENCY_MULTIPLIER_EXTREME * potency, 0)
 	/// The chance of the organ still doing its damage effect
 	var/stabilized_effectiveness = Clamp(POTENCY_MULTIPLIER_EXTREME * level, 0, 100)
 	for(var/datum/internal_organ/organ in current_human.internal_organs)

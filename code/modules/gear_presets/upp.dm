@@ -809,7 +809,14 @@
 
 /datum/equipment_preset/upp/leader/load_gear(mob/living/carbon/human/H)
 	//back
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/jima, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini, WEAR_IN_BACK) //0.66
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp, WEAR_IN_BACK) //1.33
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp, WEAR_IN_BACK) //2
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //2.66
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_BACK) //3.33
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_IN_BACK) //4
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71/ap, WEAR_IN_BACK) //5
 	//face
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/command, WEAR_L_EAR)
 	//head

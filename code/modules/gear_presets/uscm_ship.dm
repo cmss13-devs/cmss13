@@ -625,8 +625,8 @@
 	minimum_age = 27
 	skills = /datum/skills/auxiliary_officer
 
-	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_HEAD)
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIC //Add unique sprite here and above - Morrow
+	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_SILVER)
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 
 /datum/equipment_preset/uscm_ship/auxiliary_officer/New()
 	. = ..()

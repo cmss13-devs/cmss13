@@ -41459,6 +41459,7 @@
 /obj/item/reagent_container/food/drinks/bottle/sake{
 	pixel_x = -4
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -45529,7 +45530,7 @@
 	},
 /area/almayer/hull/lower_hull/l_m_p)
 "jZU" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/power/apc/almayer{
 	dir = 1
 	},
 /turf/open/floor/almayer,
@@ -46056,12 +46057,16 @@
 /area/almayer/hull/upper_hull/u_a_p)
 "kmL" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/firstaid/toxin{
+/obj/item/storage/firstaid/regular{
 	pixel_x = 8;
 	pixel_y = -2
 	},
 /obj/item/storage/box/drinkingglasses{
 	pixel_x = -7
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -10;
+	pixel_y = 14
 	},
 /obj/item/storage/xeno_tag_case/full{
 	pixel_y = 8
@@ -58554,11 +58559,11 @@
 	},
 /area/almayer/engineering/engine_core)
 "pQu" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
+/obj/structure/machinery/chem_dispenser/soda{
+	pixel_y = 20
 	},
 /turf/open/floor/almayer,
-/area/almayer/medical/containment/cell/cl)
+/area/almayer/command/corporateliason)
 "pQy" = (
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
@@ -58697,15 +58702,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/command/airoom)
-"pTM" = (
-/obj/structure/sign/safety/water{
-	pixel_x = 8;
-	pixel_y = -32
-	},
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/hydroponics)
 "pTT" = (
 /obj/structure/platform{
 	dir = 4
@@ -108941,7 +108937,7 @@ iBt
 iBt
 iBt
 awE
-cvj
+jZU
 rjH
 qVM
 vGk
@@ -109144,7 +109140,7 @@ iBt
 iBt
 iBt
 awE
-jZU
+cvj
 iiz
 qVM
 oLw

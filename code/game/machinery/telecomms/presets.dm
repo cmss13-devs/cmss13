@@ -369,6 +369,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	overlays += corruption_image
 
+/// Handles re-registering signals on new turfs if changed
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/register_with_turf()
 	SIGNAL_HANDLER
 

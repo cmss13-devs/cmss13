@@ -392,7 +392,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/xm88/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_1)
+	set_fire_delay(FIRE_DELAY_TIER_2)
 	lever_delay = FIRE_DELAY_TIER_3
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10

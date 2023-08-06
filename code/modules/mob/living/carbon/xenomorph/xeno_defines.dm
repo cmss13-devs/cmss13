@@ -383,8 +383,9 @@
 
 		addtimer(CALLBACK(src, PROC_REF(announce_evolve_available), GLOB.xeno_evolve_times[time]), text2num(time))
 
+/// Sets up limits on pylons in New() for potential futureproofing with more static comms
 /datum/hive_status/proc/setup_pylon_limits()
-	hive_structures_limit[XENO_STRUCTURE_PYLON] = length(GLOB.all_static_telecomms_towers) ? length(GLOB.all_static_telecomms_towers) : 2
+	hive_structures_limit[XENO_STRUCTURE_PYLON] = length(GLOB.all_static_telecomms_towers) || 2
 
 /datum/hive_status/proc/announce_evolve_available(list/datum/caste_datum/available_castes)
 

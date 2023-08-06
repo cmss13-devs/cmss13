@@ -517,13 +517,20 @@
 	if(!ishuman(current_mob))
 		return
 	var/mob/living/carbon/human/current_human = current_mob
-	var/stabilized_effectiveness = Clamp(POTENCY_MULTIPLIER_VHIGH * level, 0, 100)
+	/// How much damage the organ can take before stabilizing becomes less efficient or stops working
+	var/stabilized_damage = Clamp(POTENCY_MULTIPLIER_EXTREME * potency, 0, 100)
+	/// The chance of the organ still doing its damage effect
+	var/stabilized_effectiveness = Clamp(POTENCY_MULTIPLIER_EXTREME * level, 0, 100)
 	for(var/datum/internal_organ/organ in current_human.internal_organs)
-		if(organ.damage <= stabilized_effectiveness)
+		if(organ.damage < stabilized_damage / 2) // Full efficiency when less than half of max
 			organ.stabilized = TRUE
+			organ.stabilized_effectiveness = 100
+		else if(organ.damage <= stabilized_damage)
+			organ.stabilized = TRUE
+			organ.stabilized_effectiveness = stabilized_effectiveness
 		else
 			organ.stabilized = FALSE
-		organ.stabilized_effectiveness = stabilized_effectiveness
+			organ.stabilized_effectiveness = 0
 
 /datum/chem_property/positive/organstabilize/process_overdose(mob/living/current_mob, potency = 1, delta_time)
 	current_mob.apply_damage(POTENCY_MULTIPLIER_LOW * potency * delta_time, BRUTE)

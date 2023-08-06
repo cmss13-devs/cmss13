@@ -221,7 +221,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize()
 	. = ..()
 
-	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
+	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(register_with_turf))
+	register_with_turf()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/attack_hand(mob/user)
 	if(user.action_busy)
@@ -367,6 +368,11 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	corruption_image = image(icon, icon_state = "resin_idle")
 
 	overlays += corruption_image
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/register_with_turf()
+	SIGNAL_HANDLER
+
+	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
 
 /obj/structure/machinery/telecomms/relay/preset/telecomms
 	id = "Telecomms Relay"

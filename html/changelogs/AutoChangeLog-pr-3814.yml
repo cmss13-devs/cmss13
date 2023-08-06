@@ -1,6 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added an admin toggle flag for fitting mobs into disposals. (Within reason - no queens...)"
-  - rscadd: "The Crawler trait that allows mobs to enter vents will also allow them to climb into disposals regardless of above flag."
-  - rscadd: "Added a subtype of disposal that can't fit mobs, used for the delivery units."

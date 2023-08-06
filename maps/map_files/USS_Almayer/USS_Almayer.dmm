@@ -45534,7 +45534,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer,
-/area/almayer/command/corporateliason)
+/area/almayer/medical/containment/cell/cl)
 "jZY" = (
 /obj/structure/closet/l3closet/virology,
 /turf/open/floor/almayer{

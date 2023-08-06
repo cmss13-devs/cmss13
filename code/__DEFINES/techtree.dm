@@ -10,7 +10,7 @@
 #define TREE_MARINE "Marine Tech Tree"
 #define TREE_XENO "Xenomorph Tech Tree"
 
-#define INITIAL_STARTING_POINTS 0
+#define INITIAL_STARTING_POINTS 999999
 
 // Tech Flags
 /// The tech can be purchased multiple times

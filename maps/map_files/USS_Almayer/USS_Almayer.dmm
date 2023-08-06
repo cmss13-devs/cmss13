@@ -32344,11 +32344,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/alpha)
-"efL" = (
-/obj/effect/landmark/start/bridge,
-/obj/effect/landmark/start/auxiliary_officer,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/bridgebunks)
 "efU" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
@@ -33488,6 +33483,12 @@
 	icon_state = "plating"
 	},
 /area/almayer/medical/upper_medical)
+"eDu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/bridgebunks)
 "eDG" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -43069,17 +43070,8 @@
 	},
 /area/almayer/hull/lower_hull/l_m_p)
 "iTD" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "silver"
-	},
+/obj/effect/landmark/start/auxiliary_officer,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/bridgebunks)
 "iTI" = (
 /obj/structure/machinery/light/small{
@@ -67543,14 +67535,14 @@
 	},
 /area/almayer/command/lifeboat)
 "tKr" = (
+/obj/structure/machinery/cryopod/right{
+	dir = 2
+	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
 /turf/open/floor/almayer{
-	icon_state = "silver"
+	icon_state = "cargo"
 	},
 /area/almayer/living/bridgebunks)
 "tLc" = (
@@ -75691,6 +75683,19 @@
 	icon_state = "green"
 	},
 /area/almayer/squads/req)
+"xfO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silver"
+	},
+/area/almayer/living/bridgebunks)
 "xfT" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -96423,7 +96428,7 @@ qnh
 aKa
 rrB
 aGr
-aGr
+eDu
 tKr
 uNg
 cLN
@@ -96626,7 +96631,7 @@ gtp
 qfA
 tYX
 tpD
-tpD
+xfO
 iTD
 vCO
 vCO
@@ -96830,7 +96835,7 @@ uiZ
 mKq
 qCy
 rpp
-efL
+vCO
 vCO
 vCO
 jxB

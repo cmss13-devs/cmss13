@@ -371,8 +371,9 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/extended_barrel/New()
 	..()
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_2
 	velocity_mod = AMMO_SPEED_TIER_1
+	delay_mod = FIRE_DELAY_TIER_10
 
 /obj/item/attachable/heavy_barrel
 	name = "barrel charger"
@@ -2522,7 +2523,6 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
 
-
 /obj/item/attachable/angledgrip
 	name = "angled grip"
 	desc = "An angled foregrip that improves weapon ergonomics and offers less recoil, and faster wielding time. \nHowever, it also increases weapon size."
@@ -2533,16 +2533,6 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 1
 	slot = "under"
 	pixel_shift_x = 20
-
-/obj/item/attachable/angledgrip/New()
-	..()
-	recoil_mod = -RECOIL_AMOUNT_TIER_4
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
-	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
-	scatter_mod = -SCATTER_AMOUNT_TIER_10
-	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
-
-
 
 /obj/item/attachable/gyro
 	name = "gyroscopic stabilizer"

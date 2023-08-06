@@ -12,6 +12,7 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
 	var/leaders = 0
+	spawn_max_amount = TRUE
 
 /datum/emergency_call/cryo_squad/spawn_candidates(announce, override_spawn_loc, announce_dispatch_message)
 	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
@@ -29,11 +30,11 @@
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
-	M.transfer_to(H, TRUE)
+	M?.transfer_to(H, TRUE)
 
 	sleep(5)
 	var/datum/squad/marine/cryo/cryo_squad = RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
-	if(leaders < cryo_squad.max_leaders && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
+	if(leaders < cryo_squad.max_leaders && (!M || (HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))))
 		leader = H
 		leaders++
 		H.client.prefs.copy_all_to(H, JOB_SQUAD_LEADER, TRUE, TRUE)
@@ -41,21 +42,21 @@
 		to_chat(H, SPAN_ROLE_HEADER("You are a Squad Leader in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 		to_chat(H, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
-	else if (heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(H.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
+	else if (heavies < max_heavies && (!M || (HAS_FLAG(H.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(H.client, JOB_SQUAD_SPECIALIST, time_required_for_job))))
 		heavies++
 		H.client.prefs.copy_all_to(H, JOB_SQUAD_SPECIALIST, TRUE, TRUE)
 		arm_equipment(H, /datum/equipment_preset/uscm/spec/cryo, FALSE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Weapons Specialist in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 		to_chat(H, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
-	else if (medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
+	else if (medics < max_medics && (!M || (HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))))
 		medics++
 		H.client.prefs.copy_all_to(H, JOB_SQUAD_MEDIC, TRUE, TRUE)
 		arm_equipment(H, /datum/equipment_preset/uscm/medic/cryo, FALSE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Hospital Corpsman in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 		to_chat(H, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
-	else if (engineers < max_engineers && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))
+	else if (engineers < max_engineers && (!M || (HAS_FLAG(H.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))))
 		engineers++
 		H.client.prefs.copy_all_to(H, JOB_SQUAD_ENGI, TRUE, TRUE)
 		arm_equipment(H, /datum/equipment_preset/uscm/engineer/cryo, FALSE, TRUE)
@@ -70,6 +71,8 @@
 		to_chat(H, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
 
 	sleep(10)
+	if(!M)
+		H.free_for_ghosts()
 	to_chat(H, SPAN_BOLD("Objectives: [objectives]"))
 
 /datum/emergency_call/cryo_squad/platoon

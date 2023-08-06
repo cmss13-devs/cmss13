@@ -517,7 +517,7 @@
 	if(!ishuman(current_mob))
 		return
 	var/mob/living/carbon/human/current_human = current_mob
-	var/stabilized_damage = level * 5
+	var/stabilized_damage = level * POTENCY_MULTIPLIER_VHIGH
 	for(var/datum/internal_organ/organ in current_human.internal_organs)
 		if(organ.damage <= stabilized_damage)
 			organ.stabilized = TRUE
@@ -525,7 +525,7 @@
 			organ.stabilized = FALSE
 
 /datum/chem_property/positive/organstabilize/process_overdose(mob/living/current_mob, potency = 1, delta_time)
-	current_mob.apply_damage(0.5 * potency * delta_time, BRUTE)
+	current_mob.apply_damage(POTENCY_MULTIPLIER_LOW * potency * delta_time, BRUTE)
 
 /datum/chem_property/positive/organstabilize/process_critical(mob/living/current_mob, potency = 1)
 	current_mob.apply_damages(POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency)

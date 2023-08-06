@@ -28,7 +28,7 @@
 			if(!heart)
 				b_volume = 0
 			else if(heart.stabilized)
-				b_volume *= 1
+				b_volume *= 1 * heart.stabilized_effectiveness
 			else if(heart.damage > 1 && heart.damage < heart.min_bruised_damage)
 				b_volume *= 0.8
 			else if(heart.damage >= heart.min_bruised_damage && heart.damage < heart.min_broken_damage)

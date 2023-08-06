@@ -12,8 +12,10 @@
 	var/vital
 	/// amount of damage to the organ
 	var/damage = 0
-	/// Whether the organ processes as if its undamaged
+	/// If the organ has reduction in the effects of organ damage
 	var/stabilized = FALSE
+	/// How much the organ being stabilized will decrease its efficiency by
+	var/stabilized_effectiveness = 0
 	var/min_bruised_damage = 10
 	var/min_broken_damage = 30
 	var/parent_limb = "chest"
@@ -151,7 +153,7 @@
 
 /datum/internal_organ/lungs/process()
 	..()
-	if(stabilized)
+	if(stabilized && prob(stabilized_effectiveness))
 		return
 	if(organ_status >= ORGAN_BRUISED)
 		if(prob(2))
@@ -201,7 +203,7 @@
 
 		// Get the effectiveness of the liver.
 		var/filter_effect = 3
-		if(!(stabilized))
+		if(!(stabilized && prob(stabilized_effectiveness)))
 			if(organ_status >= ORGAN_BRUISED)
 				filter_effect--
 			if(organ_status >= ORGAN_BROKEN)
@@ -217,7 +219,7 @@
 			owner.reagents.remove_reagent(R.id, R.custom_metabolism*filter_effect)
 
 		//Deal toxin damage if damaged
-		if(stabilized)
+		if(stabilized && prob(stabilized_effectiveness))
 			return
 		if(organ_status >= ORGAN_BRUISED && prob(25))
 			owner.apply_damage(0.1 * (damage/2), TOX)
@@ -237,7 +239,7 @@
 /datum/internal_organ/kidneys/process()
 	..()
 	//Deal toxin damage if damaged
-	if(stabilized)
+	if(stabilized && prob(stabilized_effectiveness))
 		return
 	if(organ_status >= ORGAN_BRUISED && prob(25))
 		owner.apply_damage(0.1 * (damage/3), TOX)
@@ -288,7 +290,7 @@
 
 /datum/internal_organ/eyes/process() //Eye damage replaces the old eye_stat var.
 	. = ..()
-	if(stabilized)
+	if(stabilized && prob(stabilized_effectiveness))
 		return
 	if(organ_status >= ORGAN_BRUISED)
 		owner.SetEyeBlur(20)

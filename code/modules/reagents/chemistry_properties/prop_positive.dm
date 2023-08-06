@@ -510,19 +510,20 @@
 	name = PROPERTY_ORGANSTABILIZE
 	code = "OGS"
 	description = "Stabilizes internal organ damage, stopping internal damage symptoms."
-	rarity = PROPERTY_DISABLED
+	rarity = PROPERTY_COMMON
 	value = 2
 
 /datum/chem_property/positive/organstabilize/process(mob/living/current_mob, potency = 1, delta_time)
 	if(!ishuman(current_mob))
 		return
 	var/mob/living/carbon/human/current_human = current_mob
-	var/stabilized_damage = level * POTENCY_MULTIPLIER_VHIGH
+	var/stabilized_effectiveness = Clamp(POTENCY_MULTIPLIER_VHIGH * level, 0, 100)
 	for(var/datum/internal_organ/organ in current_human.internal_organs)
-		if(organ.damage <= stabilized_damage)
+		if(organ.damage <= stabilized_effectiveness)
 			organ.stabilized = TRUE
 		else
 			organ.stabilized = FALSE
+		organ.stabilized_effectiveness = stabilized_effectiveness
 
 /datum/chem_property/positive/organstabilize/process_overdose(mob/living/current_mob, potency = 1, delta_time)
 	current_mob.apply_damage(POTENCY_MULTIPLIER_LOW * potency * delta_time, BRUTE)
@@ -536,6 +537,7 @@
 	var/mob/living/carbon/human/current_human = current_mob
 	for(var/datum/internal_organ/organ in current_human.internal_organs)
 		organ.stabilized = initial(organ.stabilized)
+		organ.stabilized_effectiveness = initial(organ.stabilized_effectiveness)
 
 /datum/chem_property/positive/electrogenetic
 	name = PROPERTY_ELECTROGENETIC

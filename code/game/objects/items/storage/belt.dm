@@ -1452,6 +1452,7 @@
 	name = "\improper M276 pattern M82F flare gun holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the M82F flare gun."
 	storage_slots = 17
+	storage_holster = TRUE
 	max_storage_space = 20
 	icon_state = "m82f_holster"
 	item_state = "s_marinebelt"
@@ -1476,7 +1477,7 @@
 /obj/item/storage/belt/gun/flaregun/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/storage/box/m94))
 		var/obj/item/storage/box/m94/M = W
-		dump_ammo_into_belt_holster(M,user)
+		dump_into(M,user)
 	else
 		return ..()
 

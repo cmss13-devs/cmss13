@@ -267,7 +267,7 @@ SUBSYSTEM_DEF(ticker)
 	for(var/obj/structure/machinery/power/apc/apc in machines)
 		if(!is_mainship_level(apc.z))
 			continue
-		addtimer(CALLBACK(apc, TYPE_PROC_REF(/obj/structure/machinery/power/apc, late_activation)), rand(4 SECONDS, 15	 SECONDS))
+		addtimer(CALLBACK(apc, TYPE_PROC_REF(/obj/structure/machinery/power/apc, late_activation)), rand(4 SECONDS, 15 SECONDS))
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_POST_SETUP)
 

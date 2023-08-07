@@ -104,9 +104,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/affiliation = "Unaligned"
 	//SEA specific preferences
 
-	///holds our preferred job options for jobs
+	//holds our preferred job options for jobs
 	var/list/pref_special_job_options = list()
-	///Holds assignment of character slots to jobs.
+	//Holds assignment of character slots to jobs.
 	var/list/pref_job_slots = list()
 
 	//WL Council preferences.
@@ -232,7 +232,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/current_menu = MENU_MARINE
 
-	/// if this client has custom cursors enabled
+	// if this client has custom cursors enabled
 	var/custom_cursors = TRUE
 
 /datum/preferences/New(client/C)
@@ -1950,7 +1950,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	return 1
 
 
-/// Loads appropriate character slot for the given job as assigned in preferences.
+// Loads appropriate character slot for the given job as assigned in preferences.
 /datum/preferences/proc/find_assigned_slot(job_title, is_late_join = FALSE)
 	if(toggle_prefs & (is_late_join ? TOGGLE_LATE_JOIN_CURRENT_SLOT : TOGGLE_START_JOIN_CURRENT_SLOT))
 		return
@@ -1962,7 +1962,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		if(1 to MAX_SAVE_SLOTS)
 			load_character(slot_for_job)
 
-/// Transfers both physical characteristics and character information to character
+// Transfers both physical characteristics and character information to character
 /datum/preferences/proc/copy_all_to(mob/living/carbon/human/character, job_title, is_late_join = FALSE)
 	if(!istype(character))
 		return

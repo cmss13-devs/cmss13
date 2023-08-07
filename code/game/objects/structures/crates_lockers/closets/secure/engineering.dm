@@ -29,8 +29,8 @@
 	new /obj/item/storage/pouch/general/medium(src)
 	new /obj/item/storage/pouch/construction(src)
 	new /obj/item/storage/pouch/tools(src)
-	new /obj/item/storage/pouch/medkit(src)
 	new /obj/item/storage/firstaid/regular(src)
+	new /obj/item/storage/backpack/marine/engineerpack/welder_chestrig(src)
 
 /obj/structure/closet/secure_closet/engineering_electrical
 	name = "electrical supplies"
@@ -129,7 +129,6 @@
 	new /obj/item/storage/pouch/general(src)
 	new /obj/item/storage/pouch/electronics(src)
 	new /obj/item/storage/pouch/construction(src)
-	new /obj/item/storage/pouch/medkit(src)
 	new /obj/item/storage/firstaid/regular(src)
 	new /obj/item/storage/pouch/tools(src)
 	new /obj/item/clothing/mask/gas(src)

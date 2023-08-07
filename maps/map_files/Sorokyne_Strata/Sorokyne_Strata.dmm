@@ -10,7 +10,7 @@
 /area/space)
 "aac" = (
 /turf/closed/wall/strata_ice/dirty,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "aad" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior)
@@ -427,7 +427,7 @@
 "abA" = (
 /obj/structure/fence,
 /turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "abB" = (
 /obj/structure/bed/nest,
 /obj/effect/landmark/corpsespawner/upp,
@@ -1746,7 +1746,7 @@
 "aff" = (
 /obj/item/lightstick/planted,
 /turf/closed/wall/strata_ice/dirty,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "afg" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/strata{
@@ -9870,7 +9870,7 @@
 "aDQ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/closed/wall/strata_ice/dirty,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "aDR" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/barricade/handrail/strata,
@@ -10715,7 +10715,7 @@
 	layer = 2.9
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "aGh" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata{
@@ -10930,7 +10930,7 @@
 	dir = 9
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "aGM" = (
 /obj/item/stack/sandbags,
 /obj/structure/barricade/handrail/strata{
@@ -10957,7 +10957,7 @@
 /area/strata/ag/interior/outpost/canteen)
 "aGP" = (
 /turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "aGQ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
@@ -12302,7 +12302,7 @@
 	pixel_y = 28
 	},
 /turf/closed/wall/strata_outpost,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "aLy" = (
 /obj/structure/platform/strata/metal{
 	dir = 8
@@ -15956,7 +15956,7 @@
 /area/strata/ag/interior/dorms/south)
 "aXG" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "aXH" = (
 /obj/structure/surface/table,
 /obj/item/phone,
@@ -19583,7 +19583,7 @@
 	dir = 1
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "bkX" = (
 /obj/structure/platform/strata{
 	dir = 1
@@ -19592,7 +19592,7 @@
 	dir = 4
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "bkY" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata{
@@ -19677,23 +19677,23 @@
 "blo" = (
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "blp" = (
 /obj/structure/platform/strata{
 	dir = 1
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "blq" = (
 /obj/structure/inflatable,
 /turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "blr" = (
 /obj/structure/platform_decoration/strata{
 	dir = 8
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "bls" = (
 /obj/structure/machinery/light/small,
 /turf/open/auto_turf/ice/layer0,
@@ -19704,7 +19704,7 @@
 	dir = 1
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "blv" = (
 /obj/structure/platform/strata{
 	dir = 1
@@ -20416,7 +20416,7 @@
 "bom" = (
 /obj/effect/decal/cleanable/blood,
 /turf/closed/wall/strata_ice/dirty,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "bon" = (
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/deep/minehead)
@@ -25013,7 +25013,7 @@
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost/reinforced,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "bMd" = (
 /turf/open/asphalt/cement{
 	icon_state = "cement2"
@@ -25026,7 +25026,7 @@
 /area/strata/ag/exterior/north_lz_caves)
 "bME" = (
 /turf/closed/wall/strata_outpost,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "bMF" = (
 /obj/structure/window/framed/strata/reinforced,
 /turf/open/floor/strata{
@@ -25144,7 +25144,7 @@
 /area/strata/ag/exterior/research_decks)
 "bNW" = (
 /turf/closed/wall/strata_ice/jungle,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "bOh" = (
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/strata{
@@ -30605,7 +30605,7 @@
 "efT" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "egh" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "fullgrass_1"
@@ -30737,7 +30737,7 @@
 /area/strata/ag/exterior/research_decks)
 "eqV" = (
 /turf/closed/wall/wood,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "era" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -30759,7 +30759,7 @@
 /area/strata/ag/exterior/north_lz_caves)
 "esJ" = (
 /turf/open/auto_turf/snow/brown_base/layer4,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "euc" = (
 /obj/structure/platform_decoration/strata{
 	dir = 4
@@ -31203,7 +31203,7 @@
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "fiD" = (
 /obj/structure/fence,
 /turf/open/asphalt/cement{
@@ -31636,7 +31636,7 @@
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "fPO" = (
 /turf/open/auto_turf/ice/layer1,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "fQG" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata{
@@ -31941,7 +31941,7 @@
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "glL" = (
 /turf/open/auto_turf/snow/brown_base/layer1,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "glN" = (
 /obj/structure/machinery/weather_siren{
 	dir = 8;
@@ -32121,7 +32121,7 @@
 "gAD" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/strata,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "gBj" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/ice/layer1,
@@ -32145,7 +32145,7 @@
 	layer = 2.9
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "gFf" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata{
@@ -33303,7 +33303,7 @@
 /obj/item/clothing/gloves/latex,
 /obj/item/storage/surgical_tray,
 /turf/open/floor/strata,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "iJJ" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
@@ -33758,7 +33758,7 @@
 "jww" = (
 /obj/structure/sign/safety/biohazard,
 /turf/closed/wall/strata_outpost/reinforced/hull,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "jwS" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/pistol/c99,
@@ -34897,7 +34897,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/strata,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "luA" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
@@ -35085,7 +35085,7 @@
 	dir = 4
 	},
 /turf/open/auto_turf/ice/layer1,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "lMB" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -36008,7 +36008,7 @@
 "nhv" = (
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/auto_turf/ice/layer1,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "njA" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
@@ -36616,7 +36616,7 @@
 /obj/structure/surface/rack,
 /obj/item/storage/pill_bottle/bicaridine,
 /turf/open/floor/strata,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "oyu" = (
 /obj/structure/machinery/shower{
 	dir = 8
@@ -37909,7 +37909,7 @@
 	pixel_y = 10
 	},
 /turf/closed/wall/strata_outpost/reinforced,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "qzf" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/phone{
@@ -38533,7 +38533,7 @@
 "ryA" = (
 /obj/structure/inflatable,
 /turf/open/floor/strata,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "ryK" = (
 /turf/open/floor/strata{
 	dir = 4;
@@ -39711,7 +39711,7 @@
 	dir = 4
 	},
 /turf/closed/wall/strata_ice/dirty,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "tIv" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata{
@@ -40045,7 +40045,7 @@
 /obj/structure/inflatable/door,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "ueD" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 4
@@ -40735,7 +40735,7 @@
 	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost/reinforced,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "vmm" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/light/small{
@@ -41336,7 +41336,7 @@
 "wgI" = (
 /obj/item/tank/anesthetic,
 /turf/open/floor/strata,
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "whO" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
@@ -41872,7 +41872,7 @@
 	dir = 4;
 	icon_state = "floor3"
 	},
-/area/strata/ag/exterior)
+/area/strata/ag/interior/mountain)
 "xoE" = (
 /obj/structure/largecrate/random,
 /obj/structure/barricade/handrail/strata{

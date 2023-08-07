@@ -706,6 +706,7 @@
 #include "code\game\jobs\job\civilians\support\synthetic.dm"
 #include "code\game\jobs\job\civilians\support\working_joe.dm"
 #include "code\game\jobs\job\command\command.dm"
+#include "code\game\jobs\job\command\auxiliary\auxiliary_support_officer.dm"
 #include "code\game\jobs\job\command\auxiliary\crew_chief.dm"
 #include "code\game\jobs\job\command\auxiliary\intel.dm"
 #include "code\game\jobs\job\command\auxiliary\pilot.dm"

@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - bugfix: "Non-UPP synthetics no longer default to speaking Russian."

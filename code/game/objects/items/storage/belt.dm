@@ -3,6 +3,10 @@
 	desc = "Can hold various things."
 	icon = 'icons/obj/items/clothing/belts.dmi'
 	icon_state = "utilitybelt"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+	)
 	item_state = "utility"
 	flags_equip_slot = SLOT_WAIST
 	attack_verb = list("whipped", "lashed", "disciplined")
@@ -278,6 +282,19 @@
 	new /obj/item/storage/pill_bottle/inaprovaline(src)
 	new /obj/item/storage/pill_bottle/tramadol(src)
 	new /obj/item/storage/pill_bottle/peridaxon(src)
+
+/obj/item/storage/belt/medical/lifesaver/upp/partial/fill_preset_inventory()
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/inaprovaline(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
 
 /obj/item/storage/belt/security
 	name = "\improper M276 pattern security rig"

@@ -9,6 +9,11 @@
 	var/list/datum/emergency_call/all_calls = list() //initialized at round start and stores the datums.
 	var/datum/emergency_call/picked_calls[] = list() //Which distress calls are currently active
 
+/datum/game_mode/proc/ares_online()
+	var/name = "ARES Online"
+	var/input = "ARES. Online. Good morning, marines."
+	shipwide_ai_announcement(input, name, 'sound/AI/ares_online.ogg')
+
 //The distress call parent. Cannot be called itself due to "name" being a filtered target.
 /datum/emergency_call
 	var/name = "name"

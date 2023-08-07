@@ -594,11 +594,11 @@
 /obj/structure/machinery/computer/squad_changer/ui_static_data(mob/user)
 	var/list/data = list()
 	var/list/squads = list()
-	for(var/datum/squad/S in RoleAuthority.squads)
-		if(S.name != "Root" && !S.locked && S.active && S.faction == faction)
+	for(var/datum/squad/current_squad in RoleAuthority.squads)
+		if(current_squad.name != "Root" && !current_squad.locked && current_squad.active && current_squad.faction == faction)
 			var/list/squad = list(list(
-				"name" = S.name,
-				"color" = S.color-1
+				"name" = current_squad.name,
+				"color" = current_squad.equipment_color
 			))
 			squads += squad
 	data["squads"] = squads
@@ -679,11 +679,13 @@
 	idle_power_usage = 250
 	active_power_usage = 500
 	var/faction = FACTION_MARINE
+	/// What type of /datum/crewmonitor this will create
+	var/crewmonitor_type = /datum/crewmonitor
 
 /obj/structure/machinery/computer/crew/Initialize()
 	. = ..()
 	if(!GLOB.crewmonitor[faction])
-		GLOB.crewmonitor[faction] = new /datum/crewmonitor(faction)
+		GLOB.crewmonitor[faction] = new crewmonitor_type(faction)
 
 /obj/structure/machinery/computer/crew/attack_remote(mob/living/user)
 	attack_hand(user)
@@ -713,6 +715,12 @@
 /obj/structure/machinery/computer/crew/alt
 	icon_state = "cmonitor"
 	density = FALSE
+
+/obj/structure/machinery/computer/crew/alt/yautja
+	name = "\improper Yautja health monitor"
+	desc = "Used to monitor active health sensors of all Yautja in the system. You can see that the console highlights the human's ship areas with BLUE and the hunting locations with RED."
+	faction = FACTION_YAUTJA
+	crewmonitor_type = /datum/crewmonitor/yautja
 
 /obj/structure/machinery/computer/crew/upp
 	faction = FACTION_UPP
@@ -790,7 +798,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 /datum/crewmonitor/ui_data(mob/user)
 	. = list(
 		"sensors" = update_data(),
-		"link_allowed" = isAI(user)
+		"link_allowed" = isAI(user),
 	)
 
 /datum/crewmonitor/proc/update_data()
@@ -1101,6 +1109,51 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 			)
 		else
 			jobs = list()
+
+/datum/crewmonitor/yautja
+	faction = FACTION_YAUTJA
+
+/datum/crewmonitor/yautja/update_data()
+	var/list/results = list()
+	for(var/mob/living/carbon/human/human_mob as anything in GLOB.human_mob_list)
+
+		if(!isyautja(human_mob))
+			continue
+
+		if(faction != human_mob.faction)
+			continue
+
+		// Check if z-level is correct
+		var/turf/pos = get_turf(human_mob)
+		if(!pos)
+			continue
+
+		// The entry for this human
+		var/list/entry = list(
+			"ref" = REF(human_mob),
+			"name" = human_mob.real_name,
+			"ijob" = UNKNOWN_JOB_ID,
+			"assignment" = "Hunter",
+			"oxydam" = round(human_mob.getOxyLoss(), 1),
+			"toxdam" = round(human_mob.getToxLoss(), 1),
+			"burndam" = round(human_mob.getFireLoss(), 1),
+			"brutedam" = round(human_mob.getBruteLoss(), 1),
+			"can_track" = TRUE,
+		)
+
+		if(is_mainship_level(pos.z))
+			entry["side"] = "Almayer"
+
+		var/area/mob_area = get_area(human_mob)
+		entry["area"] = sanitize_area(mob_area.name)
+
+		results[++results.len] = entry
+
+	// Cache result
+	data = results
+	last_update = world.time
+
+	return results
 
 #undef SENSOR_LIVING
 #undef SENSOR_VITALS

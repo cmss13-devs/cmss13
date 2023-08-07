@@ -46,18 +46,18 @@
 	var/mob/living/carbon/human/owner //Pred spawned on, or thrall given to.
 	var/obj/item/clothing/gloves/yautja/linked_bracer //Bracer linked to this one (thrall or mentor).
 	COOLDOWN_DECLARE(bracer_recharge)
+	/// What minimap icon this bracer should have
+	var/minimap_icon = "predator"
 
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	. = ..()
 	if(slot == WEAR_HANDS)
-		flags_item |= NODROP
 		START_PROCESSING(SSobj, src)
-		if(isyautja(user))
-			to_chat(user, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
-		else
-			to_chat(user, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
 		if(!owner)
 			owner = user
+		toggle_lock_internal(user, TRUE)
+		RegisterSignal(user, list(COMSIG_MOB_STAT_SET_ALIVE, COMSIG_MOB_DEATH), PROC_REF(update_minimap_icon))
+		INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), user)
 
 /obj/item/clothing/gloves/yautja/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -69,6 +69,8 @@
 /obj/item/clothing/gloves/yautja/dropped(mob/user)
 	STOP_PROCESSING(SSobj, src)
 	flags_item = initial(flags_item)
+	UnregisterSignal(user, list(COMSIG_MOB_STAT_SET_ALIVE, COMSIG_MOB_DEATH))
+	SSminimaps.remove_marker(user)
 	..()
 
 /obj/item/clothing/gloves/yautja/pickup(mob/living/user)
@@ -98,7 +100,7 @@
 		return
 	if(human_holder.stat == DEAD)
 		decloak(human_holder, TRUE)
-	if(!HAS_TRAIT(human_holder, TRAIT_YAUTJA_TECH) && !human_holder.hunter_data.thralled && prob(15))
+	if(!HAS_TRAIT(human_holder, TRAIT_YAUTJA_TECH) && !human_holder.hunter_data.thralled && prob(2))
 		decloak(human_holder)
 		shock_user(human_holder)
 
@@ -106,6 +108,27 @@
 /obj/item/clothing/gloves/yautja/proc/decloak()
 	return
 
+/// Called to update the minimap icon of the predator
+/obj/item/clothing/gloves/yautja/proc/update_minimap_icon()
+	if(!ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/human_owner = owner
+	var/turf/wearer_turf = get_turf(owner)
+	SSminimaps.remove_marker(owner)
+	if(!isyautja(owner))
+		if(owner.stat >= DEAD)
+			if(human_owner.undefibbable)
+				SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("undefibbable"))
+			else
+				SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("defibbable"))
+		else
+			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi')
+	else
+		if(owner?.stat >= DEAD)
+			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("undefibbable")) //defib/undefib status doesn't really matter because they're gonna explode in the end regardless
+		else
+			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, 'icons/ui_icons/map_blips.dmi')
 /*
 *This is the main proc for checking AND draining the bracer energy. It must have human passed as an argument.
 *It can take a negative value in amount to restore energy.
@@ -197,7 +220,22 @@
 	desc = "A pair of strange alien bracers, adapted for human biology."
 
 	color = "#b85440"
+	minimap_icon = "thrall"
 
+
+/obj/item/clothing/gloves/yautja/thrall/update_minimap_icon()
+	if(!ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/human_owner = owner
+	var/turf/wearer_turf = get_turf(owner)
+	if(owner.stat >= DEAD)
+		if(human_owner.undefibbable)
+			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, overlay_iconstates = list("undefibbable"))
+		else
+			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, overlay_iconstates = list("defibbable"))
+	else
+		SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon)
 
 /obj/item/clothing/gloves/yautja/hunter
 	name = "clan bracers"
@@ -227,7 +265,7 @@
 	var/caster_material = "ebony"
 
 	var/obj/item/card/id/bracer_chip/embedded_id
-
+	var/owner_rank = CLAN_RANK_UNBLOODED_INT
 
 	var/caster_deployed = FALSE
 	var/obj/item/weapon/gun/energy/yautja/plasma_caster/caster
@@ -236,8 +274,10 @@
 	var/obj/item/weapon/wristblades/left_wristblades
 	var/obj/item/weapon/wristblades/right_wristblades
 
-/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_caster_material)
+/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_caster_material, new_owner_rank)
 	. = ..()
+	if(new_owner_rank)
+		owner_rank = new_owner_rank
 	embedded_id = new(src)
 	if(new_translator_type)
 		translator_type = new_translator_type
@@ -295,7 +335,7 @@
 	var/mob/living/carbon/human/human = loc
 
 	//Non-Yautja have a chance to get stunned with each power drain
-	if((!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled) && prob(15))
+	if((!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled) && prob(4))
 		if(cloaked)
 			decloak(human, TRUE, DECLOAK_SPECIES)
 		shock_user(human)
@@ -742,12 +782,13 @@
 				return
 			exploding = FALSE
 			to_chat(M, SPAN_NOTICE("Your bracers stop beeping."))
-			message_admins("[M] ([M.key]) has deactivated their Self-Destruct.")
+			message_all_yautja("[M.real_name] has cancelled their bracer's self-destruction sequence.")
+			message_admins("[key_name(M)] has deactivated their Self-Destruct.")
 		return
 	if(istype(M.wear_mask,/obj/item/clothing/mask/facehugger) || (M.status_flags & XENO_HOST))
 		to_chat(M, SPAN_WARNING("Strange...something seems to be interfering with your bracer functions..."))
 		return
-	if(forced || alert("Detonate the bracers? Are you sure?","Explosive Bracers", "Yes", "No") == "Yes")
+	if(forced || alert("Detonate the bracers? Are you sure?\n\nNote: If you activate SD for any non-accidental reason during or after a fight, you commit to the SD. By initially activating the SD, you have accepted your impending death to preserve any lost honor.","Explosive Bracers", "Yes", "No") == "Yes")
 		if(M.gloves != src)
 			return
 		if(M.stat == DEAD)
@@ -1077,3 +1118,69 @@
 		M.u_equip(embedded_id, src, FALSE, TRUE)
 	else
 		embedded_id.forceMove(src)
+
+/// Verb to let Yautja attempt the unlocking.
+/obj/item/clothing/gloves/yautja/hunter/verb/toggle_lock()
+	set name = "Toggle Bracer Lock"
+	set desc = "Toggle the lock on your bracers, allowing them to be removed."
+	set category = "Yautja.Misc"
+	set src in usr
+
+	if(usr.stat)
+		to_chat(usr, SPAN_WARNING("You can't do that right now..."))
+		return FALSE
+	if(!HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
+		to_chat(usr, SPAN_WARNING("You have no idea how to use this..."))
+		return FALSE
+
+	attempt_toggle_lock(usr, FALSE)
+	return TRUE
+
+/// Handles all the locking and unlocking of bracers.
+/obj/item/clothing/gloves/yautja/proc/attempt_toggle_lock(mob/user, force_lock)
+	if(!user)
+		return FALSE
+
+	var/obj/item/grab/held_mob = user.get_active_hand()
+	if(!istype(held_mob))
+		log_attack("[key_name_admin(usr)] has unlocked their own bracer.")
+		toggle_lock_internal(user)
+		return TRUE
+
+	var/mob/living/carbon/human/victim = held_mob.grabbed_thing
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
+	if(isspeciesyautja(victim) && !(victim.stat == DEAD))
+		to_chat(user, SPAN_WARNING("You cannot unlock the bracer of a living hunter!"))
+		return FALSE
+
+	if(!istype(bracer))
+		to_chat(user, SPAN_WARNING("<b>This [victim.species] does not have a bracer attached.</b>"))
+		return FALSE
+
+	if(alert("Are you sure you want to unlock this [victim.species]'s bracer?", "Unlock Bracers", "Yes", "No") != "Yes")
+		return FALSE
+
+	if(user.get_active_hand() == held_mob && victim && victim.gloves == bracer)
+		log_interact(user, victim, "[key_name(user)] unlocked the [bracer.name] of [key_name(victim)].")
+		user.visible_message(SPAN_WARNING("[user] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You unlock the bracer."))
+		bracer.toggle_lock_internal(victim)
+		return TRUE
+
+/// The actual unlock/lock function.
+/obj/item/clothing/gloves/yautja/proc/toggle_lock_internal(mob/wearer, force_lock)
+	if(((flags_item & NODROP) || (flags_inventory & CANTSTRIP)) && !force_lock)
+		flags_item &= ~NODROP
+		flags_inventory &= ~CANTSTRIP
+		if(!isyautja(wearer))
+			to_chat(wearer, SPAN_WARNING("The bracer beeps pleasantly, releasing it's grip on your forearm."))
+		else
+			to_chat(wearer, SPAN_WARNING("With an angry blare the bracer releases your forearm."))
+		return TRUE
+
+	flags_item |= NODROP
+	flags_inventory |= CANTSTRIP
+	if(isyautja(wearer))
+		to_chat(wearer, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
+	else
+		to_chat(wearer, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+	return TRUE

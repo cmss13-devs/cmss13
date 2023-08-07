@@ -39,7 +39,6 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
 
 	initialize_tgs()
-	initialize_marine_armor()
 
 	#ifdef UNIT_TESTS
 	GLOB.test_log = "data/logs/tests.log"

@@ -1035,3 +1035,43 @@
 /datum/equipment_preset/corpse/gladiator/burst
 	name = "Corpse - Burst Gladiator"
 	xenovictim = TRUE
+
+
+//FORECON
+
+/datum/equipment_preset/corpse/forecon_spotter
+	name = "Corpse - USCM Reconnaissance Spotter"
+	assignment = "Reconnaissance Spotter"
+	xenovictim = FALSE
+	paygrade = "ME5"
+	idtype = /obj/item/card/id/dogtag
+	role_comm_title = "FORECON"
+	faction_group = list(FACTION_USCM, FACTION_SURVIVOR)
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+	)
+
+/datum/equipment_preset/corpse/forecon_spotter/load_gear(mob/living/carbon/human/new_human)
+	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
+	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
+	var/obj/item/clothing/accessory/ranks/marine/e5/pin = new()
+	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
+	uniform.attach_accessory(new_human,pouch)
+	uniform.attach_accessory(new_human,patch_uscm)
+	uniform.attach_accessory(new_human,pin)
+	uniform.attach_accessory(new_human,patch_forecon)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/flask/marine(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/facepaint/sniper(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)

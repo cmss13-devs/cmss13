@@ -162,7 +162,7 @@
 /area/lv624/lazarus/crashed_ship)
 "fA" = (
 /obj/structure/transmitter/colony_net{
-	network_receive = "CLF";
+	networks_receive = list("CLF");
 	networks_transmit = list("CLF");
 	phone_category = "CR-116";
 	phone_id = "Armoury";
@@ -667,7 +667,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/transmitter/colony_net/rotary{
-	network_receive = "CLF";
+	networks_receive = list("CLF");
 	networks_transmit = list("CLF");
 	phone_category = "CR-116";
 	phone_color = "yellow";
@@ -1662,7 +1662,7 @@
 "Qj" = (
 /obj/structure/machinery/body_scanconsole,
 /obj/structure/transmitter/colony_net{
-	network_receive = "CLF";
+	networks_receive = list("CLF");
 	networks_transmit = list("CLF");
 	phone_category = "CR-116";
 	phone_color = "green";
@@ -1994,7 +1994,7 @@
 /area/lv624/lazarus/crashed_ship)
 "XM" = (
 /obj/structure/transmitter/colony_net{
-	network_receive = "CLF";
+	networks_receive = list("CLF");
 	networks_transmit = list("CLF");
 	phone_category = "CR-116";
 	phone_id = "Cargo Bay";

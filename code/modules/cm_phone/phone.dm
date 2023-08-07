@@ -31,7 +31,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/timeout_timer_id
 	var/timeout_duration = 30 SECONDS
 
-	var/network_receive = FACTION_MARINE
+	var/list/networks_receive = list(FACTION_MARINE)
 	var/list/networks_transmit = list(FACTION_MARINE)
 
 /obj/structure/transmitter/hidden
@@ -82,7 +82,12 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		var/obj/structure/transmitter/target_phone = possible_phone
 		if(TRANSMITTER_UNAVAILABLE(target_phone) || !target_phone.callable) // Phone not available
 			continue
-		if(!(target_phone.network_receive in networks_transmit))
+		var/net_link = FALSE
+		for(var/network in networks_transmit)
+			if(network in target_phone.networks_receive)
+				net_link = TRUE
+				continue
+		if(!net_link)
 			continue
 
 		var/id = target_phone.phone_id
@@ -540,7 +545,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 
 /obj/structure/transmitter/colony_net
-	network_receive = FACTION_COLONIST
+	networks_receive = list(FACTION_COLONIST)
 	networks_transmit = list(FACTION_COLONIST)
 
 /obj/structure/transmitter/colony_net/rotary

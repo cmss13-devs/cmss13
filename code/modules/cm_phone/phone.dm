@@ -543,16 +543,6 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
 	reset_tether()
 
-
-/obj/structure/transmitter/colony_net
-	networks_receive = list(FACTION_COLONIST)
-	networks_transmit = list(FACTION_COLONIST)
-
-/obj/structure/transmitter/colony_net/rotary
-	name = "rotary telephone"
-	icon_state = "rotary_phone"
-	desc = "The finger plate is a little stiff."
-
 //rotary desk phones (need a touch tone handset at some point)
 /obj/structure/transmitter/rotary
 	name = "rotary telephone"
@@ -563,3 +553,39 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	name = "touch-tone telephone"
 	icon_state = "rotary_phone"//placeholder
 	desc = "Ancient aliens, it's all true. I'm an expert just like you!"
+
+/obj/structure/transmitter/colony_net
+	networks_receive = list(FACTION_COLONIST)
+	networks_transmit = list(FACTION_COLONIST)
+
+/obj/structure/transmitter/colony_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."
+
+/obj/structure/transmitter/upp_net
+	networks_receive = list(FACTION_UPP)
+	networks_transmit = list(FACTION_UPP)
+
+/obj/structure/transmitter/upp_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."
+
+/obj/structure/transmitter/clf_net
+	networks_receive = list(FACTION_CLF)
+	networks_transmit = list(FACTION_CLF)
+
+/obj/structure/transmitter/clf_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."
+
+/obj/structure/transmitter/wy_net
+	networks_receive = list(FACTION_WY)
+	networks_transmit = list(FACTION_WY)
+
+/obj/structure/transmitter/wy_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."

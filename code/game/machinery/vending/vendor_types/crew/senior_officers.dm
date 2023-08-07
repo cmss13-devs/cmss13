@@ -356,7 +356,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_auxiliary_officer, list(
 		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 	))
-  
+
 /obj/effect/essentials_set/police
 	spawned_gear_list = list(
 		/obj/item/clothing/glasses/sunglasses/sechud,

@@ -1211,6 +1211,12 @@
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
 
+/obj/item/storage/pouch/tools/uppsynth/fill_preset_inventory()
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/tool/wrench(src)
+
 /obj/item/storage/pouch/sling
 	name = "sling strap"
 	desc = "Keeps a single item attached to a strap."

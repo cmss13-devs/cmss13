@@ -187,13 +187,11 @@
 	layer = RESIN_STRUCTURE_LAYER
 	should_track_build = TRUE
 	var/hivenumber = XENO_HIVE_NORMAL
-	var/damage = 8
+	var/damage = 10
 	var/penetration = 50
 
 	var/target_limbs = list(
-		"l_leg",
 		"l_foot",
-		"r_leg",
 		"r_foot"
 	)
 

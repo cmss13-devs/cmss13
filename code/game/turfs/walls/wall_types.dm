@@ -1102,9 +1102,9 @@
 
 	// 75% chance of reflecting projectiles
 	var/chance_to_reflect = 75
-	var/reflect_range = 10
+	var/reflect_range = 7
 
-	var/brute_multiplier = 0.3
+	var/brute_multiplier = 0.1
 	var/explosive_multiplier = 0.3
 	var/reflection_multiplier = 0.5
 
@@ -1112,18 +1112,19 @@
 	if(src in P.permutated)
 		return
 
-	if(!prob(chance_to_reflect))
+	if(P.runtime_iff_group) // Iff bullets wont deflect as easy as normal bullets
+		reflect_range = 3
+		chance_to_reflect = 25
+
+	if(!prob(chance_to_reflect) || P.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT)
 		if(P.ammo.damage_type == BRUTE)
 			P.damage *= brute_multiplier
 		return ..()
-	if(P.runtime_iff_group || P.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT)
-		// Bullet gets absorbed if it has IFF or can't be reflected.
-		return
 
 	var/obj/item/projectile/new_proj = new(src, construction_data ? construction_data : create_cause_data(initial(name)))
 	new_proj.generate_bullet(P.ammo)
 	new_proj.damage = P.damage * reflection_multiplier // don't make it too punishing
-	new_proj.accuracy = HIT_ACCURACY_TIER_7 // 35% chance to hit something
+	new_proj.accuracy = HIT_ACCURACY_TIER_8 // 40% chance to hit something
 
 	// Move back to who fired you.
 	RegisterSignal(new_proj, COMSIG_BULLET_PRE_HANDLE_TURF, PROC_REF(bullet_ignore_turf))

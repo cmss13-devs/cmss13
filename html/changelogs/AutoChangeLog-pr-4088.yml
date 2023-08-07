@@ -1,0 +1,4 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - maptweak: "changing an area so it stop snowing inside walls."

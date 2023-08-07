@@ -21,7 +21,7 @@
 	// if(length(members))
 	shipwide_ai_announcement("Successfully deployed [mob_max] Foxtrot marines, of which [length(members)] ready for duty.")
 	if(mob_max > length(members))
-		announce_dchat("Some cryomarines were not taken, use the Join As Freed Mob verb to take one of them.", src)
+		announce_dchat("Some cryomarines were not taken, use the Join As Freed Mob verb to take one of them.")
 
 /datum/emergency_call/cryo_squad/create_member(datum/mind/M, turf/override_spawn_loc)
 	set waitfor = 0

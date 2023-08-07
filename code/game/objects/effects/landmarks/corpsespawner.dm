@@ -201,3 +201,9 @@
 /obj/effect/landmark/corpsespawner/gladiator/burst
 	name = "Burst Gladiator"
 	equip_path = /datum/equipment_preset/corpse/gladiator/burst
+
+//FORECON
+
+/obj/effect/landmark/corpsespawner/forecon_spotter
+	name = "USCM Reconnaissance Spotter"
+	equip_path = /datum/equipment_preset/corpse/forecon_spotter

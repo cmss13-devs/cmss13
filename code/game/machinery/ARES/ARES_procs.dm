@@ -223,7 +223,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	data["records_announcement"] = logged_announcements
 
 	var/list/logged_alerts = list()
-	for(var/datum/ares_record/security/security_alert as anything in records_announcement)
+	for(var/datum/ares_record/security/security_alert as anything in records_security)
 		if(!istype(security_alert))
 			continue
 		var/list/current_alert = list()
@@ -457,6 +457,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 					new_title = "[record.title] at [record.time]"
 					new_details = record.details
 					records_announcement -= record
+				if(ARES_RECORD_SECURITY)
+					new_title = "[record.title] at [record.time]"
+					new_details = record.details
+					records_security -= record
 				if(ARES_RECORD_BIOSCAN)
 					new_title = "[record.title] at [record.time]"
 					new_details = record.details

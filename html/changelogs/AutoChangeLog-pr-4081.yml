@@ -1,0 +1,7 @@
+author: "Morrow, Thwomper"
+delete-after: True
+changes:
+  - rscadd: "Added Auxiliary Support Officer"
+  - rscadd: "Auxiliary Support Officer oversees the hangar, the intel team, the engineering department, and the requisitions department"
+  - rscadd: "Chief Engineer has been demoted to O1."
+  - rscadd: "Requisitions Officer is now \"Quartermaster\" and a Gunnery Sergeant."

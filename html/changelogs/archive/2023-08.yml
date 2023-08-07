@@ -93,3 +93,6 @@
       verb)
   Steelpoint:
   - bugfix: EMT/White-Green armband now has a sprite
+2023-08-07:
+  Huffie56:
+  - maptweak: changing an area so it stop snowing inside walls.

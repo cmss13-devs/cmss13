@@ -100,7 +100,7 @@
 		if(ammo.current_rounds <= 0)
 			break
 		if(bullets_fired < burst_amount)
-			sleep(1)
+			sleep(2)
 
 /obj/item/hardpoint/primary/arc_sentry/fire_projectile(atom/movable/target)
 	set waitfor = FALSE

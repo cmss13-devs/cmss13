@@ -141,7 +141,7 @@
 		return
 	add_verb(M.client, list(
 		/obj/vehicle/multitile/proc/get_status_info,
-		/obj/vehicle/multitile/proc/open_controls_guide,
+		/obj/vehicle/multitile/arc/proc/open_controls_guide,
 		/obj/vehicle/multitile/proc/toggle_door_lock,
 		/obj/vehicle/multitile/proc/activate_horn,
 		/obj/vehicle/multitile/proc/name_vehicle,
@@ -153,7 +153,7 @@
 		return
 	remove_verb(M.client, list(
 		/obj/vehicle/multitile/proc/get_status_info,
-		/obj/vehicle/multitile/proc/open_controls_guide,
+		/obj/vehicle/multitile/arc/proc/open_controls_guide,
 		/obj/vehicle/multitile/proc/toggle_door_lock,
 		/obj/vehicle/multitile/proc/activate_horn,
 		/obj/vehicle/multitile/proc/name_vehicle,

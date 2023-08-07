@@ -156,10 +156,17 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		update_icon()
 		addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
+	if(is_mainship_level(z) && !(SSticker.current_state == GAME_STATE_PLAYING || SSticker.current_state == GAME_STATE_FINISHED))
+		operating = 0
+
 	start_processing()
 
 	if(!start_charge && is_ground_level(z) && prob(10))
 		set_broken()
+
+/obj/structure/machinery/power/apc/proc/late_activation()
+	operating = 1
+	update()
 
 /obj/structure/machinery/power/apc/set_pixel_location()
 	tdir = dir //To fix Vars bug

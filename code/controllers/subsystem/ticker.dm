@@ -264,6 +264,10 @@ SUBSYSTEM_DEF(ticker)
 		INVOKE_ASYNC(C, TYPE_PROC_REF(/obj/structure/closet, select_gamemode_equipment), mode.type)
 	for(var/obj/structure/machinery/vending/V in machines)
 		INVOKE_ASYNC(V, TYPE_PROC_REF(/obj/structure/machinery/vending, select_gamemode_equipment), mode.type)
+	for(var/obj/structure/machinery/power/apc/apc in machines)
+		if(!is_mainship_level(apc.z))
+			continue
+		addtimer(CALLBACK(apc, TYPE_PROC_REF(/obj/structure/machinery/power/apc, late_activation)), rand(4 SECONDS, 15	 SECONDS))
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_POST_SETUP)
 

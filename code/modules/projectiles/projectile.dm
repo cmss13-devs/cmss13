@@ -278,14 +278,7 @@
 		SEND_SIGNAL(src, COMSIG_BULLET_TERMINAL)
 
 	// Check we can reach the turf at all based on pathed grid
-	var/proj_dir = get_dir(current_turf, next_turf)
-	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf))
-		ammo.on_hit_turf(current_turf, src)
-		current_turf.bullet_act(src)
-		return TRUE
-
-	// Check for hits that would occur when moving to turf, such as a blocking cade
-	if(scan_a_turf(next_turf, proj_dir))
+	if(check_canhit(current_turf, next_turf))
 		return TRUE
 
 	// Actually move
@@ -516,6 +509,19 @@
 
 	if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_MOB, L, .) & COMPONENT_BULLET_PASS_THROUGH)
 		return FALSE
+
+/obj/item/projectile/proc/check_canhit(turf/current_turf, turf/next_turf)
+	var/proj_dir = get_dir(current_turf, next_turf)
+	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf))
+		ammo.on_hit_turf(current_turf, src)
+		current_turf.bullet_act(src)
+		return TRUE
+
+	// Check for hits that would occur when moving to turf, such as a blocking cade
+	if(scan_a_turf(next_turf, proj_dir))
+		return TRUE
+
+	return FALSE
 
 //----------------------------------------------------------
 				// \\

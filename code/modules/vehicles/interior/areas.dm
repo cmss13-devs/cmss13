@@ -26,3 +26,7 @@
 /area/vehicle/van
 	name = "van interior"
 	icon_state = "van"
+
+/area/vehicle/arc
+	name = "\improper ARC interior"
+	icon_state = "arc"

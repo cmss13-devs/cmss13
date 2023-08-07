@@ -37,3 +37,7 @@
 /datum/map_template/interior/van
 	name = "Van"
 	interior_id = "van"
+
+/datum/map_template/interior/arc
+	name = "ARC"
+	interior_id = "arc"

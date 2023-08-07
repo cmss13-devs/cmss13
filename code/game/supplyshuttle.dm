@@ -1310,6 +1310,13 @@ var/datum/controller/supply/supply_controller = new()
 	name = "M577-CMD Armored Personnel Carrier"
 	ordered_vehicle = /obj/effect/vehicle_spawner/apc_cmd/decrepit
 
+/datum/vehicle_order/arc
+	name = "M540 Armored Recon Carrier"
+	ordered_vehicle = /obj/effect/vehicle_spawner/arc
+
+/datum/vehicle_order/arc/has_vehicle_lock()
+	return
+
 /obj/structure/machinery/computer/supplycomp/vehicle/Initialize()
 	. = ..()
 
@@ -1349,12 +1356,13 @@ var/datum/controller/supply/supply_controller = new()
 	if(!SSshuttle.vehicle_elevator)
 		return
 
-	dat += "Platform position: "
-	if (SSshuttle.vehicle_elevator.timeLeft())
+	dat += "Platform position:<br>"
+	if (SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
 		dat += "Moving"
 	else
 		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
-			dat += "Raised"
+			dat += "Raised<br>"
+			dat += "\[<a href='?src=\ref[src];lower_elevator=1'>Lower</a>\]"
 		else
 			dat += "Lowered"
 	dat += "<br><hr>"
@@ -1390,9 +1398,6 @@ var/datum/controller/supply/supply_controller = new()
 		world.log << "## ERROR: Eek. The supply/elevator datum is missing somehow."
 		return
 
-	if(!is_admin_level(SSshuttle.vehicle_elevator.z))
-		return
-
 	if(ismaintdrone(usr))
 		return
 
@@ -1409,8 +1414,8 @@ var/datum/controller/supply/supply_controller = new()
 
 		var/datum/vehicle_order/VO = locate(href_list["get_vehicle"])
 
-		if(!VO) return
-		if(VO.has_vehicle_lock()) return
+		if(VO?.has_vehicle_lock())
+			return
 
 		spent = TRUE
 		ordered_vehicle = new VO.ordered_vehicle(middle_turf)
@@ -1419,6 +1424,12 @@ var/datum/controller/supply/supply_controller = new()
 		VO.on_created(ordered_vehicle)
 
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_VEHICLE_ORDERED, ordered_vehicle)
+
+	else if(href_list["lower_elevator"])
+		if(!is_mainship_level(SSshuttle.vehicle_elevator.z))
+			return
+
+		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("adminlevel vehicle"))
 
 	add_fingerprint(usr)
 	updateUsrDialog()

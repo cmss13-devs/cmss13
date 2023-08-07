@@ -721,6 +721,9 @@ const AccessRequests = (props, context) => {
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
+            <Flex.Item width="8rem" mr="1rem" bold>
+              For
+            </Flex.Item>
             <Flex.Item width="40rem" bold>
               Details
             </Flex.Item>
@@ -763,6 +766,9 @@ const AccessRequests = (props, context) => {
               )}
               <Flex.Item italic width="6rem" shrink="0" mr="1rem">
                 {ticket.time}
+              </Flex.Item>
+              <Flex.Item width="8rem" mr="1rem">
+                {ticket.title}
               </Flex.Item>
               <Flex.Item width="40rem" shrink="0" textAlign="left">
                 {ticket.details}

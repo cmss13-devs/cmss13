@@ -987,9 +987,9 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			var/ticket_holder
 			var/priority_report = FALSE
 			var/is_self = tgui_alert(operator, "Is this request for yourself?", "Ticket Holder", list("Yes", "No"))
-			if(is_self != "Yes")
+			if(is_self == "No")
 				ticket_holder = tgui_input_text(operator, "Who is the ticket for? (Please use precise name, with punctuation and capitalisation.)", "Ticket Holder", encode = FALSE)
-			else
+			else if(is_self == "Yes")
 				ticket_holder = last_login
 			if(!ticket_holder)
 				return FALSE

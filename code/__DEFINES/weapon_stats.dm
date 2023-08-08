@@ -142,13 +142,15 @@ As such, don't expect any values assigned to common firearms to even consider ho
 #define FIRE_DELAY_TIER_4 8
 #define FIRE_DELAY_TIER_5 7
 #define FIRE_DELAY_TIER_6 6
-#define FIRE_DELAY_TIER_7 4.9
-#define FIRE_DELAY_TIER_8 3.7
-#define FIRE_DELAY_TIER_9 2.5
+#define FIRE_DELAY_TIER_7 5
+#define FIRE_DELAY_TIER_8 4
+#define FIRE_DELAY_TIER_9 3.5
+#define FIRE_DELAY_TIER_10 3
+#define FIRE_DELAY_TIER_11 2.5
 #define FIRE_DELAY_TIER_LMG 2
 #define FIRE_DELAY_TIER_SG 2
 #define FIRE_DELAY_TIER_SMG 1.5
-#define FIRE_DELAY_TIER_10 1
+#define FIRE_DELAY_TIER_12 1
 
 /*
 ////RANGE RELATED////

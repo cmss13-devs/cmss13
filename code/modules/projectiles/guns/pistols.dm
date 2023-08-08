@@ -72,7 +72,7 @@
 
 /obj/item/weapon/gun/pistol/m4a3/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_10)
+	set_fire_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -93,7 +93,7 @@
 
 /obj/item/weapon/gun/pistol/m4a3/custom/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_10)
+	set_fire_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -122,7 +122,7 @@
 
 /obj/item/weapon/gun/pistol/m1911/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_8)
+	set_fire_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -140,7 +140,7 @@
 
 /obj/item/weapon/gun/pistol/m1911/socom/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_8)
+	set_fire_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_8
@@ -178,7 +178,7 @@
 
 /obj/item/weapon/gun/pistol/b92fs/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_10)
+	set_fire_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_7
@@ -285,7 +285,7 @@
 
 /obj/item/weapon/gun/pistol/c99/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_10)
+	set_fire_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -337,7 +337,7 @@
 
 /obj/item/weapon/gun/pistol/kt42/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_fire_delay(FIRE_DELAY_TIER_11)
 	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_1
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -373,7 +373,7 @@
 
 /obj/item/weapon/gun/pistol/holdout/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_fire_delay(FIRE_DELAY_TIER_11)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -410,7 +410,7 @@
 
 /obj/item/weapon/gun/pistol/clfpistol/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_10)
+	set_fire_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -552,9 +552,9 @@
 
 /obj/item/weapon/gun/pistol/mod88/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_fire_delay(FIRE_DELAY_TIER_11)
 	set_burst_amount(BURST_AMOUNT_TIER_3)
-	set_burst_delay(FIRE_DELAY_TIER_9)
+	set_burst_delay(FIRE_DELAY_TIER_11)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_7
@@ -603,7 +603,7 @@
 
 /obj/item/weapon/gun/pistol/es4/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
+	fire_delay = FIRE_DELAY_TIER_11
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_7
@@ -653,7 +653,7 @@
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_4)
 	set_burst_amount(BURST_AMOUNT_TIER_3)
-	set_burst_delay(FIRE_DELAY_TIER_9)
+	set_burst_delay(FIRE_DELAY_TIER_11)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -685,7 +685,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_7)
 	set_burst_amount(BURST_AMOUNT_TIER_3)
-	set_burst_delay(FIRE_DELAY_TIER_10)
+	set_burst_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -715,8 +715,8 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/chimp/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_8)
-	set_burst_delay(FIRE_DELAY_TIER_9)
+	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_burst_delay(FIRE_DELAY_TIER_11)
 	set_burst_amount(BURST_AMOUNT_TIER_2)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
@@ -747,9 +747,9 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/smart/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_10)
+	set_fire_delay(FIRE_DELAY_TIER_12)
 	set_burst_amount(BURST_AMOUNT_TIER_3)
-	set_burst_delay(FIRE_DELAY_TIER_9)
+	set_burst_delay(FIRE_DELAY_TIER_11)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -796,7 +796,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/skorpion/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_fire_delay(FIRE_DELAY_TIER_11)
 	fa_scatter_peak = 15 //shots
 	fa_max_scatter = SCATTER_AMOUNT_TIER_4
 

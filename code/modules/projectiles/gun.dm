@@ -705,7 +705,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	data["recoil_max"] = RECOIL_AMOUNT_TIER_1
 	data["scatter_max"] = SCATTER_AMOUNT_TIER_1
-	data["firerate_max"] = 1 MINUTES / FIRE_DELAY_TIER_10
+	data["firerate_max"] = 1 MINUTES / FIRE_DELAY_TIER_12
 	data["damage_max"] = 100
 	data["accuracy_max"] = 32
 	data["range_max"] = 32
@@ -1189,6 +1189,7 @@ and you're good to go.
 		//This is where the projectile leaves the barrel and deals with projectile code only.
 		//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 		in_chamber = null // It's not in the gun anymore
+		to_chat(user, "FIRED A ROUND: [world.time]")
 		INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/item/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target)
 		projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
 		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -28,7 +28,7 @@
 	return //No vanity items for Yautja!
 
 /datum/equipment_preset/yautja/load_gear(mob/living/carbon/human/new_human, client/mob_client)
-	var/using_legacy = "No"
+	var/using_legacy = "None"
 	var/armor_number = 1
 	var/boot_number = 1
 	var/mask_number = 1

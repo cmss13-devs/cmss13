@@ -430,7 +430,7 @@
 		if(client)
 			hud_update()
 
-		name = "[name_prefix]Growing Queen"
+		name = "[name_prefix]Immature Queen"
 
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""

@@ -192,8 +192,11 @@
 	shock_cooldown = world.time + 10 //1 second cooldown before you can shock again
 
 	var/datum/internal_organ/heart/heart = H.internal_organs_by_name["heart"]
-	if(heart)
+	/// Has the defib already caused the chance of heart damage, to not potentially double up later
+	var/heart_damaged = FALSE
+	if(heart && prob(25))
 		heart.take_damage(rand(min_heart_damage_dealt, max_heart_damage_dealt), TRUE) // Make death and revival leave lasting consequences
+		heart_already_damaged = TRUE
 
 	if(!H.is_revivable())
 		playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
@@ -231,6 +234,9 @@
 		user.track_life_saved(user.job)
 		user.life_revives_total++
 		H.handle_revive()
+		if(heart && !heart_already_damaged)
+			heart.take_damage(rand(min_heart_damage_dealt, max_heart_damage_dealt), TRUE) // Make death and revival leave lasting consequences
+
 		to_chat(H, SPAN_NOTICE("You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane."))
 		if(H.client?.prefs.toggles_flashing & FLASH_CORPSEREVIVE)
 			window_flash(H.client)

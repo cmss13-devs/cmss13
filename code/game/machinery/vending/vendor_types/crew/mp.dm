@@ -113,3 +113,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_warden, list(
 
 /obj/structure/machinery/cm_vending/clothing/military_police_warden/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_military_police_warden
+
+/obj/effect/essentials_set/police
+	spawned_gear_list = list(
+		/obj/item/clothing/glasses/sunglasses/sechud,
+		/obj/item/storage/belt/security/MP/full,
+		/obj/item/clothing/head/helmet/marine/MP,
+	)

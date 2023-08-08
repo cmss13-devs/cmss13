@@ -705,10 +705,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "helmetp_tex"
 	flags_atom = NO_SNOW_TYPE
 
-/obj/item/clothing/head/helmet/marine/ghillie
-	name = "\improper M45 ghillie helmet"
-	desc = "A lightweight M45 helmet with ghillie coif used by USCM snipers on recon missions."
-	icon_state = "ghillie_coif"
+/obj/item/clothing/head/helmet/marine/recce
+	name = "\improper M10 Recce helmet"
+	desc = "A lightweight M10 helmet made out of a special alloy designed to reduce thermal signature. Used commonly by scout-snipers and FORECON."
+	icon_state = "helmet"
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
@@ -716,7 +716,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	flags_marine_helmet = HELMET_GARB_OVERLAY
 	flags_item = MOB_LOCK_ON_EQUIP
-	specialty = "M45 ghillie"
+	specialty = "Recce Helmet"
 
 /obj/item/clothing/head/helmet/marine/CO
 	name = "\improper M10 pattern commanding officer helmet"

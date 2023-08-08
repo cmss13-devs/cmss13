@@ -216,7 +216,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	var/corrupted = FALSE
 
 	/// Held image for the current overlay on the tower from xeno corruption
-	var/image/corruption_image = null
+	var/image/corruption_image
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize()
 	. = ..()

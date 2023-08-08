@@ -193,7 +193,7 @@
 
 	var/datum/internal_organ/heart/heart = H.internal_organs_by_name["heart"]
 	if(heart)
-		heart.take_damage(rand(min_heart_damage_dealt, max_heart_damage_dealt), TRUE) // Disincentivizes using the defibrillator too much
+		heart.take_damage(rand(min_heart_damage_dealt, max_heart_damage_dealt), TRUE) // Make death and revival leave lasting consequences
 
 	if(!H.is_revivable())
 		playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)

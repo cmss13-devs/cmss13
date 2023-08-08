@@ -530,7 +530,7 @@
 	pro_case_overlay = "spotter"
 
 /obj/item/storage/box/kit/spotter/fill_preset_inventory()
-	new /obj/item/clothing/head/helmet/marine/ghillie(src)
+	new /obj/item/clothing/head/helmet/marine/recce(src)
 	new /obj/item/clothing/suit/storage/marine/recce(src)
 	new /obj/item/clothing/glasses/night/m42_night_goggles/spotter(src)
 	new /obj/item/storage/backpack/marine/smock(src)

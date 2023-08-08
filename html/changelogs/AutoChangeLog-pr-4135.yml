@@ -1,0 +1,5 @@
+author: "Megastar1234"
+delete-after: True
+changes:
+  - rscadd: "Adds reagent scanner goggles to CMO vendor"
+  - rscadd: "Gives CMO headset intel radio"

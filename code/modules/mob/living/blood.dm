@@ -29,7 +29,7 @@
 				b_volume = 0
 			else if(chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 				b_volume *= 1
-			else if(heart.damage >= heart.min_bruised_damage)
+			else if(heart.damage >= heart.organ_status >= ORGAN_BRUISED)
 				b_volume *= Clamp(100 - (2 * heart.damage), 30, 100) / 100
 
 	//Effects of bloodloss

@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - rscadd: "Scan health now only works when non-revivable"

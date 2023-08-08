@@ -1,5 +1,0 @@
-author: "ghostsheet"
-delete-after: True
-changes:
-  - bugfix: "Advanced mini flamer can no longer nerf itself by changing mode."
-  - rscadd: "HG 37-12 pump shotgun's intergrated stock no longer give any stat change."

@@ -23,56 +23,38 @@
 	. = ..()
 	. += SPAN_INFO("Drag its sprite onto yourself to undeploy.")
 
-/obj/structure/barricade/deployable/attackby(obj/item/W, mob/user)
+/obj/structure/barricade/deployable/attackby(obj/item/item, mob/user)
 
-	if(iswelder(W))
-		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+	if(iswelder(item))
+		if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
 		if(user.action_busy)
 			return
-		var/obj/item/tool/weldingtool/WT = W
+		var/obj/item/tool/weldingtool/welder = item
 		if(health == maxhealth)
 			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 			return
 
-		weld_cade(WT, user)
+		weld_cade(welder, user)
 		return
 
-	else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	else if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 		if(user.action_busy)
 			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-			to_chat(user, SPAN_WARNING("You do not know where the loosening bolts are on [src]..."))
-			return
-		else
-			if(build_state == BARRICADE_BSTATE_UNSECURED)
-				to_chat(user, SPAN_NOTICE("You tighten the bolts on [src]."))
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				build_state = BARRICADE_BSTATE_SECURED
-			else
-				to_chat(user, SPAN_NOTICE("You loosen the bolts on [src]."))
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				build_state = BARRICADE_BSTATE_UNSECURED
-
-	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-		if(build_state != BARRICADE_BSTATE_UNSECURED)
-			return
-		if(user.action_busy)
-			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not know how to collapse [src] using a crowbar..."))
 			return
 		else
 			user.visible_message(SPAN_NOTICE("[user] starts collapsing [src]."), \
 				SPAN_NOTICE("You begin collapsing [src]..."))
-			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
+			if(do_after(user, 1.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
 				collapse(usr)
 			else
 				to_chat(user, SPAN_WARNING("You stop collapsing [src]."))
 
-	if(try_nailgun_usage(W, user))
+	if(try_nailgun_usage(item, user))
 		return
 
 	. = ..()
@@ -87,20 +69,20 @@
 	if(over_object == usr && Adjacent(usr))
 		usr.visible_message(SPAN_NOTICE("[usr] starts collapsing [src]."),
 			SPAN_NOTICE("You begin collapsing [src]."))
-		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
+		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 		if(do_after(usr, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
 			collapse(usr)
 		else
 			to_chat(usr, SPAN_WARNING("You stop collapsing [src]."))
 
 /obj/structure/barricade/deployable/proc/collapse(mob/living/carbon/human/user)
-	var/obj/item/stack/folding_barricade/FB = new source_type(loc)
-	FB.health = health
-	FB.maxhealth = maxhealth
+	var/obj/item/stack/folding_barricade/folding = new source_type(loc)
+	folding.stack_health = list(health)
+	folding.maxhealth = maxhealth
 	if(istype(user))
 		user.visible_message(SPAN_NOTICE("[user] collapses [src]."),
 			SPAN_NOTICE("You collapse [src]."))
-		user.put_in_active_hand(FB)
+		user.put_in_active_hand(folding)
 	qdel(src)
 
 /obj/structure/barricade/deployable/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -133,6 +115,14 @@
 	)
 	icon = 'icons/obj/items/marine-items.dmi'
 
+	var/list/stack_health = list()
+
+/obj/item/stack/folding_barricade/Initialize(mapload, init_amount)
+	. = ..()
+	for(var/counter in 1 to amount)
+		stack_health += initial(health)
+
+
 /obj/item/stack/folding_barricade/update_icon()
 	. = ..()
 	icon_state = "folding-[amount]"
@@ -153,16 +143,16 @@
 	var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in OT // for M2C HMG, look at smartgun_mount.dm
 
 	if(!OT.allow_construction)
-		to_chat(usr, SPAN_WARNING("[src.singular_name] must be constructed on a proper surface!"))
+		to_chat(usr, SPAN_WARNING("[singular_name] must be constructed on a proper surface!"))
 		return
 	if(AC)
-		to_chat(usr, SPAN_WARNING("[src.singular_name] cannot be built here!"))
+		to_chat(usr, SPAN_WARNING("[singular_name] cannot be built here!"))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] begins deploying [src.singular_name]."),
-			SPAN_NOTICE("You begin deploying [src.singular_name]."))
+	user.visible_message(SPAN_NOTICE("[user] begins deploying [singular_name]."),
+			SPAN_NOTICE("You begin deploying [singular_name]."))
 
-	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 
 	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		to_chat(user, SPAN_WARNING("You were interrupted."))
@@ -173,12 +163,12 @@
 			to_chat(user, SPAN_WARNING("There is already \a [B] in this direction!"))
 			return
 
-	user.visible_message(SPAN_NOTICE("[user] has finished deploying [src.singular_name]."),
-			SPAN_NOTICE("You finish deploying [src.singular_name]."))
+	user.visible_message(SPAN_NOTICE("[user] has finished deploying [singular_name]."),
+			SPAN_NOTICE("You finish deploying [singular_name]."))
 
 	var/obj/structure/barricade/deployable/cade = new(user.loc)
 	cade.setDir(user.dir)
-	cade.health = health
+	cade.health = pop(stack_health)
 	cade.maxhealth = maxhealth
 	cade.source_type = singular_type
 	cade.update_damage_state()
@@ -186,76 +176,90 @@
 
 	use(1)
 
-/obj/item/stack/folding_barricade/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/stack/folding_barricade))
-		var/obj/item/stack/folding_barricade/F = W
-
-		if(health != maxhealth || F.health != F.maxhealth)
-			to_chat(user, "You cannot stack damaged [src.singular_name]\s.")
+/obj/item/stack/folding_barricade/attackby(obj/item/item, mob/user)
+	if(istype(item, /obj/item/stack/folding_barricade))
+		var/obj/item/stack/folding_barricade/folding = item
+		if(!ismob(loc)) //gather from ground
+			if(amount >= max_amount)
+				to_chat(user, "You cannot stack more [folding.singular_name]\s.")
+				return
+			var/to_transfer = min(folding.max_amount - folding.amount, amount)
+			for(var/counter in 1 to to_transfer)
+				folding.stack_health += pop(stack_health)
+			use(to_transfer)
+			folding.add(to_transfer)
+			to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
 			return
-
-		if(!ismob(src.loc))
-			return ..()
-
 		if(amount >= max_amount)
-			to_chat(user, "You cannot stack more [src.singular_name]\s.")
+			to_chat(user, "You cannot stack more [singular_name]\s.")
 			return
 
-		var/to_transfer = min(max_amount - amount, F.amount)
-		F.use(to_transfer)
+		var/to_transfer = min(max_amount - amount, folding.amount)
+		for(var/counter in 1 to to_transfer)
+			stack_health += pop(folding.stack_health)
+		folding.use(to_transfer)
 		add(to_transfer)
 		to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
 		return
 
-	else if(iswelder(W))
-		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+	else if(iswelder(item))
+		if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
-		if(src != user.get_inactive_hand())
-			to_chat(user, SPAN_WARNING("You need to hold [src.singular_name] in hand or deploy to repair it."))
 			return
 
 		if(user.action_busy)
 			return
 
-		var/obj/item/tool/weldingtool/WT = W
-		if(health == maxhealth)
-			to_chat(user, SPAN_WARNING("[src.singular_name] doesn't need repairs."))
+		var/need_repairs = 0
+		for(var/counter in 1 to length(stack_health))
+			if(stack_health[counter] < maxhealth)
+				need_repairs++
+
+		if(!need_repairs)
+			to_chat(user, SPAN_WARNING("[singular_name] doesn't need repairs."))
 			return
 
-		if(!(WT.remove_fuel(2, user)))
+		var/obj/item/tool/weldingtool/welder = item
+		if(!(welder.remove_fuel(2, user)))
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 		SPAN_NOTICE("You begin repairing the damage to [src]."))
-		playsound(src.loc, 'sound/items/Welder2.ogg', 25, TRUE)
+		playsound(loc, 'sound/items/Welder2.ogg', 25, TRUE)
 
-		var/welding_time = skillcheck(user, SKILL_CONSTRUCTION, 2) ? 5 SECONDS : 10 SECONDS
-		if(!do_after(user, welding_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
-			return
+		var/welding_time = (skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED) ? 5 SECONDS : 10 SECONDS) * need_repairs
+
+		if(src != user.get_inactive_hand())
+			if(!do_after(user, welding_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
+				return
+		else
+			if(!do_after(user, welding_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, src, INTERRUPT_DIFF_LOC)) //you can move while repairing if you have cade in hand
+				return
 
 		user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 		SPAN_NOTICE("You repair [src]."))
 		user.count_niche_stat(STATISTICS_NICHE_REPAIR_CADES)
 
-		health += 200
-		if(health > maxhealth)
-			health = maxhealth
+		for(var/counter in 1 to length(stack_health))
+			stack_health[counter] += 200
+			if(stack_health[counter] > maxhealth)
+				stack_health[counter] = maxhealth
 
-		playsound(src.loc, 'sound/items/Welder2.ogg', 25, TRUE)
+		playsound(loc, 'sound/items/Welder2.ogg', 25, TRUE)
 		return
 
 	. = ..()
 
 /obj/item/stack/folding_barricade/attack_hand(mob/user)
-	var/mob/living/carbon/human/H = user
-	if(!(amount > 1 && H.back == src))
+	var/mob/living/carbon/human/human = user
+	if(!(amount > 1 && (human.back == src || human.get_inactive_hand() == src)))
 		return ..()
-	var/obj/item/stack/F = new singular_type(user, 1)
-	transfer_fingerprints_to(F)
-	user.put_in_hands(F)
-	src.add_fingerprint(user)
-	F.add_fingerprint(user)
+	var/obj/item/stack/folding_barricade/folding = new singular_type(user, 1)
+	transfer_fingerprints_to(folding)
+	folding.stack_health = list(pop(stack_health))
+	user.put_in_hands(folding)
+	add_fingerprint(user)
+	folding.add_fingerprint(user)
 	use(1)
 
 /obj/item/stack/folding_barricade/MouseDrop(obj/over_object as obj)
@@ -277,7 +281,7 @@
 
 /obj/item/stack/folding_barricade/get_examine_text(mob/user)
 	. = ..()
-	if(health < maxhealth)
+	if(round(min(stack_health)/maxhealth * 100) <= 75)
 		. += SPAN_WARNING("It appears to be damaged.")
 
 /obj/item/stack/folding_barricade/three

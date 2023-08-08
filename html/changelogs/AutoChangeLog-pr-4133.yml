@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fix new map dropship areas not getting changes to dropship ceilings that prevents OBs"

@@ -53,6 +53,13 @@
 						ManualFollow(target)
 						return FALSE
 
+				if(xeno.hive)
+					for(var/mob_name in xeno.hive.banished_ckeys)
+						if(xeno.hive.banished_ckeys[mob_name] == ckey)
+							to_chat(src, SPAN_WARNING("You are banished from the [xeno.hive], you may not rejoin unless the Queen re-admits you or dies."))
+							ManualFollow(target)
+							return FALSE
+
 				if(alert(src, "Are you sure you want to transfer yourself into [xeno]?", "Confirm Transfer", "Yes", "No") != "Yes")
 					return FALSE
 				if(((!islarva(xeno) && xeno.away_timer < XENO_LEAVE_TIMER) || (islarva(xeno) && xeno.away_timer < XENO_LEAVE_TIMER_LARVA)) || xeno.stat == DEAD) // Do it again, just in case

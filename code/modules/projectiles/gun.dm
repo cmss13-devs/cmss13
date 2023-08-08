@@ -1219,6 +1219,16 @@ and you're good to go.
 
 #define EXECUTION_CHECK (attacked_mob.stat == UNCONSCIOUS || attacked_mob.is_mob_restrained()) && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))
 
+/obj/item/weapon/gun/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	if(!proximity_flag)
+		return FALSE
+
+	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE))
+		active_attachable.last_fired = world.time
+		active_attachable.fire_attachment(target, src, user)
+		return TRUE
+
+
 /obj/item/weapon/gun/attack(mob/living/attacked_mob, mob/living/user)
 	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE)) //this is expected to do something in melee.
 		active_attachable.last_fired = world.time
@@ -1818,9 +1828,17 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		UnregisterSignal(gun_user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
 
 	gun_user = to_set
-	RegisterSignal(gun_user, COMSIG_MOB_MOUSEDOWN, PROC_REF(start_fire))
-	RegisterSignal(gun_user, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
-	RegisterSignal(gun_user, COMSIG_MOB_MOUSEUP, PROC_REF(stop_fire))
+	if(gun_user)
+		RegisterSignal(gun_user, COMSIG_MOB_MOUSEDOWN, PROC_REF(start_fire))
+		RegisterSignal(gun_user, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
+		RegisterSignal(gun_user, COMSIG_MOB_MOUSEUP, PROC_REF(stop_fire))
+
+/obj/item/weapon/gun/hands_swapped(mob/living/carbon/swapper_of_hands)
+	if(src == swapper_of_hands.get_active_hand())
+		set_gun_user(swapper_of_hands)
+		return
+
+	set_gun_user(null)
 
 ///Update the target if you draged your mouse
 /obj/item/weapon/gun/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)

@@ -72,10 +72,13 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_COMMAND_ROLES_LIST   list(JOB_CO, JOB_XO, JOB_SO)
 var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
+#define JOB_AUXILIARY_OFFICER "Auxiliary Support Officer"
 #define JOB_PILOT "Pilot Officer"
 #define JOB_DROPSHIP_CREW_CHIEF "Dropship Crew Chief"
 #define JOB_CREWMAN "Vehicle Crewman"
 #define JOB_INTEL "Intelligence Officer"
+#define JOB_AUXILIARY_ROLES    /datum/timelock/auxiliary
+#define JOB_AUXILIARY_ROLES_LIST   list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_INTEL)
 
 #define JOB_POLICE "Military Police"
 #define JOB_WARDEN "Military Warden"
@@ -91,7 +94,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_ENGINEER_ROLES   /datum/timelock/engineer
 #define JOB_ENGINEER_ROLES_LIST  list(JOB_SQUAD_ENGI, JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CHIEF_ENGINEER)
 
-#define JOB_CHIEF_REQUISITION "Requisitions Officer"
+#define JOB_CHIEF_REQUISITION "Quartermaster"
 #define JOB_CARGO_TECH "Cargo Technician"
 #define JOB_REQUISITION_ROLES    /datum/timelock/requisition
 #define JOB_REQUISITION_ROLES_LIST   list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH)
@@ -143,7 +146,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_WO_CHIEF_ENGINEER "Bunker Crew Master"
 #define JOB_WO_ORDNANCE_TECH "Bunker Crew"
 
-#define JOB_WO_CHIEF_REQUISITION "Quartermaster"
+#define JOB_WO_CHIEF_REQUISITION "Bunker Quartermaster"
 #define JOB_WO_REQUISITION "Bunker Crew Logistics"
 
 #define JOB_WO_CMO "Head Surgeon"
@@ -229,6 +232,17 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_CMB_OBS "Interstellar Human Rights Observer"
 
 #define CMB_GRUNT_LIST list(JOB_CMB, JOB_CMB_TL)
+
+//-------- FORECON --------//
+
+#define JOB_FORECON_CO "Reconnaissance Commander"
+#define JOB_FORECON_SL "Reconnaissance Squad Leader"
+#define JOB_FORECON_SYN "Reconnaissance Synthetic"
+#define JOB_FORECON_SNIPER "Reconnaissance Sniper"
+#define JOB_FORECON_MARKSMAN "Reconnaissance Marksman"
+#define JOB_FORECON_SUPPORT "Reconnaissance Support Technician"
+#define JOB_FORECON_RIFLEMAN "Reconnaissance Rifleman"
+#define JOB_FORECON_SMARTGUNNER "Reconnaissance Smartgunner"
 
 //-------- UPP --------//
 #define JOB_UPP "UPP Private"
@@ -333,11 +347,12 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PLAYTIME_TIER_4  (175 HOURS)
 
 #define XENO_NO_AGE  -1
-#define XENO_NORMAL 0
-#define XENO_MATURE 1
-#define XENO_ELDER 2
-#define XENO_ANCIENT 3
-#define XENO_PRIME 4
+#define XENO_YOUNG 0
+#define XENO_NORMAL 1
+#define XENO_MATURE 2
+#define XENO_ELDER 3
+#define XENO_ANCIENT 4
+#define XENO_PRIME 5
 
 /// For monthly time tracking
 #define JOB_OBSERVER "Observer"

@@ -5,25 +5,25 @@
 //RMC Emlisted
 /datum/paygrade/twe/e1
 	paygrade = "RMC E1"
-	name = "Marine"
-	prefix = "Mne"
+	name = "Heitai-Marine"
+	prefix = "Hti-Mne."
 
 /datum/paygrade/twe/e2
 	paygrade = "RMC E2"
-	name = "Lance Corporal"
-	prefix = "LCpl"
+	name = "Santo-Lance Corporal"
+	prefix = "St-LCpl."
 	pay_multiplier = 2.1
 
 /datum/paygrade/twe/e3
 	paygrade = "RMC E3"
-	name = "Corporal"
-	prefix = "Cpl"
+	name = "Nito-Corporal"
+	prefix = "Nt-Cpl."
 	pay_multiplier = 2.2
 
 /datum/paygrade/twe/e4
 	paygrade = "RMC E4"
-	name = "Sergeant"
-	prefix = "Sgt"
+	name = "Itto-Sergeant"
+	prefix = "Sgt."
 	pay_multiplier = 2.3
 
 //RMC Officer

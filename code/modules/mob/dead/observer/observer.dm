@@ -544,6 +544,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!istype(target))
 		return
 
+	if(check_client_rights(client, R_MOD, FALSE))
+		view_health_scan(target)
+		return
+
 	if(!mind.original)
 		view_health_scan(target)
 		return

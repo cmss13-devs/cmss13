@@ -21306,7 +21306,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Auxiliary Support Officers Quarters";
-	req_one_access_txt = "37"
+	req_one_access_txt = "37";
 	access_modified = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -41860,7 +41860,7 @@
 "iqp" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_one_access = null;
-	req_one_access_txt = "37"
+	req_one_access_txt = "37";
 	access_modified = 1
 	},
 /turf/open/floor/almayer{

@@ -317,6 +317,7 @@
 		XENO_STRUCTURE_EGGMORPH = 6,
 		XENO_STRUCTURE_EVOPOD = 2,
 		XENO_STRUCTURE_RECOVERY = 6,
+		XENO_STRUCTURE_PYLON = 2,
 	)
 
 	var/global/list/hive_structure_types = list(
@@ -370,16 +371,24 @@
 	if(hivenumber != XENO_HIVE_NORMAL)
 		return
 
-	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(setup_evolution_announcements))
+	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(post_setup))
 
-/datum/hive_status/proc/setup_evolution_announcements()
+/datum/hive_status/proc/post_setup()
 	SIGNAL_HANDLER
 
+	setup_evolution_announcements()
+	setup_pylon_limits()
+
+/datum/hive_status/proc/setup_evolution_announcements()
 	for(var/time in GLOB.xeno_evolve_times)
 		if(time == "0")
 			continue
 
 		addtimer(CALLBACK(src, PROC_REF(announce_evolve_available), GLOB.xeno_evolve_times[time]), text2num(time))
+
+/// Sets up limits on pylons in New() for potential futureproofing with more static comms
+/datum/hive_status/proc/setup_pylon_limits()
+	hive_structures_limit[XENO_STRUCTURE_PYLON] = length(GLOB.all_static_telecomms_towers) || 2
 
 /datum/hive_status/proc/announce_evolve_available(list/datum/caste_datum/available_castes)
 
@@ -883,6 +892,7 @@
 		for(var/obj/effect/alien/resin/special/S in hive_structures[name_ref])
 			if(get_area(S) == hijacked_dropship)
 				continue
+			S.hijack_delete = TRUE
 			hive_structures[name_ref] -= S
 			qdel(S)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
@@ -1122,6 +1132,10 @@
 /datum/hive_status/proc/increase_larva_after_burst()
 	var/extra_per_burst = CONFIG_GET(number/extra_larva_per_burst)
 	partial_larva += extra_per_burst
+	convert_partial_larva_to_full_larva()
+
+///Called after times when partial larva are added to process them to stored larva
+/datum/hive_status/proc/convert_partial_larva_to_full_larva()
 	for(var/i = 1 to partial_larva)
 		partial_larva--
 		stored_larva++

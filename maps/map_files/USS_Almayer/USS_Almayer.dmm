@@ -2277,6 +2277,11 @@
 	pixel_y = 5;
 	icon_state = "paper_words"
 	},
+/obj/structure/transmitter{
+	pixel_y = 24;
+	phone_id = "Chaplain";
+	phone_category = "Offices"
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/chaplainoffice)
 "aht" = (

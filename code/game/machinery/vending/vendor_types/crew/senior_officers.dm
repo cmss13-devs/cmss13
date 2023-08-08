@@ -31,7 +31,7 @@
 //------------ CHIEF MP ---------------
 GLOBAL_LIST_INIT(cm_vending_clothing_military_police_chief, list(
 		list("POLICE SET (MANDATORY)", 0, null, null, null),
-		list("Essential Police Set", 0, /obj/effect/essentials_set/police, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Essential Police Set", 0, /obj/effect/essentials_set/chiefmilitarypolice, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
@@ -42,16 +42,15 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_chief, list(
 		list("ARMOR (TAKE ALL)", 0, null, null, null),
 		list("Military Police Chief M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/WO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
 		list("Chief MP M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/WO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+		list("CMP Beret", 0, /obj/item/clothing/head/beret/marine/mp/cmp, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 
 		list("HANDGUN CASE (CHOOSE 1)", 0, null, null, null),
-		list("88 mod 4 Combat Pistol Case", 0, /obj/item/storage/box/guncase/mod88, MARINE_CAN_BUY_HANDGUN, VENDOR_ITEM_MANDATORY),
-		list("M44 Combat Revolver case", 0, /obj/item/storage/box/guncase/m44, MARINE_CAN_BUY_HANDGUN, VENDOR_ITEM_MANDATORY),
-		list("M4A3 Service Pistol case", 0, /obj/item/storage/box/guncase/m4a3, MARINE_CAN_BUY_HANDGUN, VENDOR_ITEM_MANDATORY),
+		list("88 mod 4 Combat Pistol Case", 0, /obj/item/storage/box/guncase/mod88, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
+		list("M44 Combat Revolver Case", 0, /obj/item/storage/box/guncase/m44, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
+		list("M4A3 Service Pistol Case", 0, /obj/item/storage/box/guncase/m4a3, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
 
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 		list("Military Police Satchel", 0, /obj/item/storage/backpack/satchel/sec, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
-		list("Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("Satchel", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("M276 General Pistol Holster Rig", 0, /obj/item/storage/belt/gun/m4a3, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
@@ -71,7 +70,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_chief, list(
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Rebreather", 0, /obj/item/clothing/mask/rebreather, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-		list("CMP Beret", 0, /obj/item/clothing/head/beret/marine/mp/cmp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
 		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
@@ -357,8 +355,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_auxiliary_officer, list(
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 	))
 
-/obj/effect/essentials_set/police
+/obj/effect/essentials_set/chiefmilitarypolice
 	spawned_gear_list = list(
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/storage/belt/security/MP/full,
+		/obj/item/clothing/head/helmet/marine/MP/WO,
 	)

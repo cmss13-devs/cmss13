@@ -222,12 +222,11 @@
 		var/datum/action/A = X
 		A.update_button_icon()
 
-/obj/item/clothing/suit/storage/marine/mob_can_equip(mob/living/carbon/human/M, slot, disable_warning = 0)
+/obj/item/clothing/suit/storage/marine/mob_can_equip(mob/living/carbon/human/user, slot, disable_warning = 0)
 	. = ..()
 	if (.)
-		if(issynth(M) && M.allow_gun_usage == FALSE && !(flags_marine_armor & SYNTH_ALLOWED))
-			M.visible_message(SPAN_DANGER("Your programming prevents you from wearing this!"))
-			return 0
+		if(issynth(user) && !(flags_marine_armor & SYNTH_ALLOWED) && !user.can_use_weapon())
+			return FALSE
 
 /obj/item/clothing/suit/storage/marine/padded
 	name = "M3 pattern padded marine armor"

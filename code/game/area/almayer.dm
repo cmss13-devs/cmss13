@@ -553,6 +553,11 @@
 	icon_state = "officerrnr"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/living/chaplainoffice
+	name = "\improper Chaplain's Office"
+	icon_state = "livingspace"
+	fake_zlevel = 1 // upperdeck
+
 /area/almayer/medical
 	minimap_color = MINIMAP_AREA_MEDBAY
 

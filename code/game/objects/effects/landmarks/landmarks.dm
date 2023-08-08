@@ -341,10 +341,10 @@
 	job = /datum/job/civilian/synthetic/whiskey
 
 /obj/effect/landmark/start/whiskey/senior
-	job = /datum/job/command/senior  //Need to create a WO variant in the future
+	job = /datum/job/command/auxiliary/senior  //Need to create a WO variant in the future
 
 /obj/effect/landmark/start/whiskey/pilot
-	job = /datum/job/command/pilot/whiskey
+	job = /datum/job/command/auxiliary/pilot/whiskey
 
 /obj/effect/landmark/start/whiskey/tank_crew
 	job = /datum/job/command/tank_crew/whiskey

@@ -1,4 +1,4 @@
-/datum/job/command/senior
+/datum/job/command/auxiliary/senior
 	title = JOB_SEA
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist = WHITELIST_MENTOR
@@ -7,11 +7,11 @@
 
 	job_options = list("Gunnery Sergeant" = "GySGT", "Master Sergeant" = "MSgt", "First Sergeant" = "1Sgt", "Master Gunnery Sergeant" = "MGySgt", "Sergeant Major" = "SgtMaj")
 
-/datum/job/command/senior/announce_entry_message(mob/living/carbon/human/H)
+/datum/job/command/auxiliary/senior/announce_entry_message(mob/living/carbon/human/H)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(all_hands_on_deck), "Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!"), 1.5 SECONDS)
 	return ..()
 
-/datum/job/command/senior/filter_job_option(mob/job_applicant)
+/datum/job/command/auxiliary/senior/filter_job_option(mob/job_applicant)
 	. = ..()
 
 	var/list/filtered_job_options = list(job_options[1])
@@ -24,7 +24,7 @@
 
 	return filtered_job_options
 
-AddTimelock(/datum/job/command/senior, list(
+AddTimelock(/datum/job/command/auxiliary/senior, list(
 	JOB_SQUAD_ROLES = 15 HOURS,
 
 	JOB_ENGINEER_ROLES = 10 HOURS,
@@ -37,4 +37,4 @@ AddTimelock(/datum/job/command/senior, list(
 /obj/effect/landmark/start/senior
 	name = JOB_SEA
 	icon_state = "sea_spawn"
-	job = /datum/job/command/senior
+	job = /datum/job/command/auxiliary/senior

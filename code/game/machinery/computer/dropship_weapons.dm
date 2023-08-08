@@ -266,8 +266,7 @@
 		var/mob/M = usr
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(!H.allow_gun_usage)
-				to_chat(H, SPAN_WARNING("Your programming prevents you from operating dropship weaponry!"))
+			if(!H.can_use_weapon())
 				return
 		var/obj/structure/dropship_equipment/weapon/DEW = selected_equipment
 		if(!selected_equipment || !selected_equipment.is_weapon)
@@ -506,8 +505,7 @@
 		var/mob/M = usr
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(!H.allow_gun_usage)
-				to_chat(H, SPAN_WARNING("Your programming prevents you from operating dropship weaponry!"))
+			if(!H.can_use_weapon())
 				return
 		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))

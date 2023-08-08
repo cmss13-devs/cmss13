@@ -17,6 +17,7 @@ AddTimelock(/datum/job/command/auxiliary_officer, list(
 /obj/effect/landmark/start/auxiliary_officer
 	name = JOB_AUXILIARY_OFFICER
 	job = /datum/job/command/auxiliary_officer
+	icon_state = "aux_spawn"
 
 /datum/timelock/auxiliary
 	name = "Auxiliary Roles"

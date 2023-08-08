@@ -411,3 +411,19 @@ Contains most of the procs that are called when a mob is attacked by something
 				resist_modifier = 0.25
 			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
 			to_chat(src, SPAN_DANGER("The viscous napalm clings to your limbs as you struggle to move through the flames!"))
+
+/mob/living/carbon/human/proc/can_use_weapon()
+	if(job == JOB_CHAPLAIN)//Chaplain is forbidden to use weaponry, regardless of the variable!
+		to_chat(src, SPAN_WARNING("Your holy vow does not allow you to use this!"))
+		return FALSE
+	if(allow_gun_usage)
+		return TRUE
+	if(issynth(src))
+		to_chat(src, SPAN_WARNING("Your programming does not allow you to use this!"))
+		return FALSE
+	if(alpha < 255)
+		to_chat(src, SPAN_WARNING("Your cloak does not allow you to use this!"))
+		return FALSE
+
+	to_chat(src, SPAN_WARNING("Your ethics do not allow you to use this!"))
+	return FALSE

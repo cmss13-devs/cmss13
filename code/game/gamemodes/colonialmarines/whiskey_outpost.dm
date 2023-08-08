@@ -20,7 +20,7 @@
 		/datum/job/command/bridge/whiskey = JOB_SO,
 		/datum/job/command/tank_crew/whiskey = JOB_CREWMAN,
 		/datum/job/command/police/whiskey = JOB_POLICE,
-		/datum/job/command/pilot/whiskey = JOB_PILOT,
+		/datum/job/command/auxiliary/pilot/whiskey = JOB_PILOT,
 		/datum/job/logistics/requisition/whiskey = JOB_CHIEF_REQUISITION,
 		/datum/job/civilian/professor/whiskey = JOB_CMO,
 		/datum/job/civilian/doctor/whiskey = JOB_DOCTOR,

@@ -101,11 +101,7 @@
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(!H.allow_gun_usage)
-			if(issynth(user))
-				to_chat(user, SPAN_WARNING("Your programming does not allow you to use heavy weaponry."))
-			else
-				to_chat(user, SPAN_WARNING("You are unable to use heavy weaponry."))
+		if(!H.can_use_weapon())
 			return
 
 	for(var/obj/item/I in user.contents) //prevents shooting while zoomed in, but zoom can still be activated and used without shooting
@@ -228,11 +224,7 @@
 /obj/structure/bed/chair/comfy/vehicle/support_gunner/do_buckle(mob/target, mob/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(!H.allow_gun_usage)
-			if(issynth(user))
-				to_chat(user, SPAN_WARNING("Your programming does not allow you to use firearms."))
-			else
-				to_chat(user, SPAN_WARNING("You are unable to use firearms."))
+		if(!H.can_use_weapon())
 			return
 	. = ..()
 

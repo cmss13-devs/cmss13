@@ -77,8 +77,9 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_DROPSHIP_CREW_CHIEF "Dropship Crew Chief"
 #define JOB_CREWMAN "Vehicle Crewman"
 #define JOB_INTEL "Intelligence Officer"
+#define JOB_CHAPLAIN "Military Chaplain"
 #define JOB_AUXILIARY_ROLES    /datum/timelock/auxiliary
-#define JOB_AUXILIARY_ROLES_LIST   list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_INTEL)
+#define JOB_AUXILIARY_ROLES_LIST   list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_INTEL, JOB_CHAPLAIN)
 
 #define JOB_POLICE "Military Police"
 #define JOB_WARDEN "Military Warden"

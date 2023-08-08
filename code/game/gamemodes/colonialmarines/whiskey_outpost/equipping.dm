@@ -112,11 +112,11 @@ Glory to the commander. Glory to the USCM."}
 //*************************************
 //----------------PILOT----------------
 //*************************************/
-/datum/job/command/pilot/whiskey
+/datum/job/command/auxiliary/pilot/whiskey
 	title = JOB_WO_PILOT
 	gear_preset = /datum/equipment_preset/wo/mortar_crew
 
-/datum/job/command/pilot/whiskey/generate_entry_message(mob/living/carbon/human/H)
+/datum/job/command/auxiliary/pilot/whiskey/generate_entry_message(mob/living/carbon/human/H)
 	. = {"You're entrusted with the maintaining of the mortars for the outpost. You were expecting to bomb some CLF, maybe, but not this...
 Listen in on your radio, and pay attention to provide fire support for the marines. Watch out for friendly-fire!"}
 

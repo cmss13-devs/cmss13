@@ -17,12 +17,11 @@
 	pickup_sound = "armorequip"
 	drop_sound = "armorequip"
 
-/obj/item/clothing/suit/armor/mob_can_equip(mob/living/carbon/human/M, slot, disable_warning = 0)
+/obj/item/clothing/suit/armor/mob_can_equip(mob/living/carbon/human/user, slot, disable_warning = 0)
 	. = ..()
 	if (.)
-		if(issynth(M) && M.allow_gun_usage == FALSE)
-			M.visible_message(SPAN_DANGER("Your programming prevents you from wearing this!"))
-			return 0
+		if(issynth(user) && !user.can_use_weapon())
+			return FALSE
 
 //armored vest
 

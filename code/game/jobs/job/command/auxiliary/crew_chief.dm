@@ -1,4 +1,4 @@
-/datum/job/command/crew_chief
+/datum/job/command/auxiliary/crew_chief
 	title = JOB_DROPSHIP_CREW_CHIEF
 	total_positions = 2
 	spawn_positions = 2
@@ -9,11 +9,11 @@
 	gear_preset = /datum/equipment_preset/uscm_ship/dcc
 	entry_message_body = "<a href='"+URL_WIKI_DCC_GUIDE+"'>Your job is to assist</a> the pilot officer maintain the ship's dropship. You have authority only on the dropship, but you are expected to maintain order, as not to disrupt the pilot."
 
-AddTimelock(/datum/job/command/crew_chief, list(
+AddTimelock(/datum/job/command/auxiliary/crew_chief, list(
 	JOB_SQUAD_ROLES = 5 HOURS
 ))
 
 /obj/effect/landmark/start/crew_chief
 	name = JOB_DROPSHIP_CREW_CHIEF
 	icon_state = "dcc_spawn"
-	job = /datum/job/command/crew_chief
+	job = /datum/job/command/auxiliary/crew_chief

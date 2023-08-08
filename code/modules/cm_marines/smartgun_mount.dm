@@ -773,8 +773,7 @@
 	if(user.get_active_hand() || user.get_inactive_hand())
 		to_chat(usr, SPAN_WARNING("You need two free hands to shoot \the [src]."))
 		return HANDLE_CLICK_UNHANDLED
-	if(!user.allow_gun_usage)
-		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+	if(!user.can_use_weapon())
 		return HANDLE_CLICK_UNHANDLED
 
 	target = A
@@ -875,8 +874,7 @@
 					if(user.get_active_hand() != null)
 						to_chat(user, SPAN_WARNING("You need a free hand to man \the [src]."))
 
-					if(!user.allow_gun_usage)
-						to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+					if(!user.can_use_weapon())
 						return
 					else
 						user.freeze()
@@ -1435,8 +1433,7 @@
 	if(user.get_active_hand() || user.get_inactive_hand())
 		to_chat(usr, SPAN_WARNING("You need both your hands free to shoot [src]."))
 		return
-	if(!user.allow_gun_usage)
-		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+	if(!user.can_use_weapon())
 		return
 
 	var/angle = get_dir(src,target)

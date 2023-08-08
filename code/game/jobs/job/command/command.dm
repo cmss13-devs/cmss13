@@ -1,8 +1,11 @@
 /datum/job/command
 	selection_class = "job_command"
-	supervisors = "the acting commanding officer"
+	supervisors = "the acting commander"
 	total_positions = 1
 	spawn_positions = 1
+
+/datum/job/command/auxiliary
+	supervisors = "the auxiliary support officer"
 
 /datum/timelock/command
 	name = "Command Roles"
@@ -23,7 +26,7 @@
 
 /datum/timelock/human/can_play(client/C)
 	return C.get_total_human_playtime() >= time_required
-	
+
 /datum/timelock/human/get_role_requirement(client/C)
 	return time_required - C.get_total_human_playtime()
-	
+

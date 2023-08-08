@@ -33,7 +33,7 @@
 /proc/readd_quotes(text)
 	var/list/repl_chars = list("&#34;" = "\"", "&#39;" = "'")
 	for(var/char in repl_chars)
-		text = replacetext(text, char, repl_chars[char])
+		text = replacetext_char(text, char, repl_chars[char])
 	return text
 
 //Runs byond's sanitization proc along-side sanitize_simple

@@ -1,7 +1,7 @@
 /datum/equipment_preset/synth
 	name = "Synth"
 	uses_special_name = TRUE
-	languages = ALL_SYNTH_LANGUAGES_UPP
+	languages = ALL_SYNTH_LANGUAGES
 	skills = /datum/skills/synthetic
 	paygrade = "SYN"
 
@@ -458,6 +458,7 @@
 /datum/equipment_preset/synth/survivor/upp
 	name = "Survivor - Synthetic - UPP Synth"
 	flags = EQUIPMENT_PRESET_EXTRA
+	languages = ALL_SYNTH_LANGUAGES_UPP
 	assignment = JOB_UPP_COMBAT_SYNTH
 	rank = JOB_SURVIVOR
 	faction = FACTION_UPP

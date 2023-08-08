@@ -96,3 +96,15 @@
 2023-08-07:
   Huffie56:
   - maptweak: changing an area so it stop snowing inside walls.
+2023-08-08:
+  HeresKozmos:
+  - maptweak: Added non-alcoholic drinks dispenser, space cleaner bottle and a regular
+      medkit to the storage closet. Deleted old toxin medkit in the storage closet
+  Morrow, Thwomper:
+  - rscadd: Added Auxiliary Support Officer
+  - rscadd: Auxiliary Support Officer oversees the hangar, the intel team, the engineering
+      department, and the requisitions department
+  - rscadd: Chief Engineer has been demoted to O1.
+  - rscadd: Requisitions Officer is now "Quartermaster" and a Gunnery Sergeant.
+  Segrain:
+  - bugfix: Non-UPP synthetics no longer default to speaking Russian.

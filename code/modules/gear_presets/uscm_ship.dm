@@ -876,19 +876,21 @@
 		ACCESS_MARINE_CARGO,
 		ACCESS_MARINE_KITCHEN,
 	)
-
+//Placeholder equipment.
 /datum/equipment_preset/uscm_ship/chaplain/load_gear(mob/living/carbon/human/new_human)
 	new_human.allow_gun_usage = FALSE
 	var/back_item = /obj/item/storage/backpack/satchel
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/marine/peaked(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/alt(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/aso(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/command(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/dress(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/dress(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/bible(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 
 //*****************************************************************************************************/

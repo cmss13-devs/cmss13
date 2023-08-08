@@ -2272,7 +2272,7 @@
 	},
 /obj/item/paper{
 	name = "scrawled note";
-	info = "Tackle is today. I am leaving this note so that the Chaplain who follows me may remember me. While the outlook is not good, I am sure that my faith will protect me as it will protect you. Signed <i>a name blotted out by ink.</i>";
+	info = "Tackle is today. I am leaving this note so that the Chaplain who follows me may remember me. While the outlook is not good, I am sure that my faith will protect me as it will protect you.";
 	pixel_x = 14;
 	pixel_y = 5;
 	icon_state = "paper_words"

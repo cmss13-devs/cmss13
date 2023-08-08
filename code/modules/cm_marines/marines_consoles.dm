@@ -916,6 +916,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_PILOT = 22,
 				JOB_DROPSHIP_CREW_CHIEF = 23,
 				JOB_INTEL = 24,
+				JOB_CHAPLAIN = 25,
 				// 30-39: Security
 				JOB_CHIEF_POLICE = 30,
 				JOB_PROVOST_TML = 30,

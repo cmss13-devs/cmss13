@@ -253,6 +253,8 @@
 			return /datum/equipment_preset/uscm_ship/po/full
 		if(JOB_DROPSHIP_CREW_CHIEF)
 			return /datum/equipment_preset/uscm_ship/dcc/full
+		if(JOB_CHAPLAIN)
+			return /datum/equipment_preset/uscm_ship/chaplain
 		if(JOB_CORPORATE_LIAISON)
 			return /datum/equipment_preset/uscm_ship/liaison
 		if(JOB_COMBAT_REPORTER)

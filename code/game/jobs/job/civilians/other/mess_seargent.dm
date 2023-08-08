@@ -2,7 +2,7 @@
 	title = JOB_MESS_SERGEANT
 	total_positions = 1
 	spawn_positions = 1
-	selection_class = "job_ot"
+	selection_class = "job_ct"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	supervisors = "the auxiliary support officer"
 	gear_preset = /datum/equipment_preset/uscm_ship/chef

@@ -85,6 +85,8 @@
 				border_rk = "command"
 			if(JOB_INTEL)
 				marine_rk = "io"
+			if(JOB_CHAPLAIN)
+				marine_rk = "chap"
 			if(JOB_PILOT)
 				marine_rk = "po"
 			if(JOB_DROPSHIP_CREW_CHIEF)

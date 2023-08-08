@@ -847,3 +847,48 @@
 		if(get_job_playtime(new_human.client, rank) < JOB_PLAYTIME_TIER_1)
 			return "ME1"
 	return paygrade
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/uscm_ship/chaplain
+	name = "USCM Chaplain (CHP)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	idtype = /obj/item/card/id/silver
+	assignment = JOB_CHAPLAIN
+	rank = JOB_CHAPLAIN
+	paygrade = "MO1"
+	role_comm_title = "CHP"
+	minimum_age = 27
+	skills = /datum/skills/chaplain
+
+	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_SILVER)
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
+
+/datum/equipment_preset/uscm_ship/chaplain/New()
+	. = ..()
+	access = list(
+		ACCESS_MARINE_CHAPLAIN,
+		ACCESS_MARINE_COMMAND,
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_MARINE_MORGUE,
+		ACCESS_MARINE_MAINT,
+		ACCESS_MARINE_CARGO,
+		ACCESS_MARINE_KITCHEN,
+	)
+
+/datum/equipment_preset/uscm_ship/chaplain/load_gear(mob/living/carbon/human/new_human)
+	new_human.allow_gun_usage = FALSE
+	var/back_item = /obj/item/storage/backpack/satchel
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/alt(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/aso(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+
+//*****************************************************************************************************/

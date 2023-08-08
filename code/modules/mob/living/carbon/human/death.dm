@@ -97,8 +97,8 @@
 					delayer_cloak.deactivate_camouflage(delayer)
 				delayer_cloak.cloak_cooldown = world.time + 1 HOURS //fuck you
 				to_chat(delayer, SPAN_WARNING("Your [delayer_cloak] fizzles out and breaks!"))
-			if(istype(delayer.wear_suit, /obj/item/clothing/suit/storage/marine/ghillie))
-				var/obj/item/clothing/suit/storage/marine/ghillie/delayer_armour = delayer.wear_suit
+			if(istype(delayer.wear_suit, /obj/item/clothing/suit/storage/marine/recce))
+				var/obj/item/clothing/suit/storage/marine/recce/delayer_armour = delayer.wear_suit
 				if(delayer_armour.camo_active)
 					delayer_armour.deactivate_camouflage(delayer)
 				delayer_armour.can_camo = FALSE //fuck you

@@ -11,7 +11,9 @@
 	w_class = SIZE_MEDIUM
 
 	var/blocked_by_suit = TRUE
+	/// Min damage defib deals to victims' heart
 	var/min_heart_damage_dealt = 3
+	/// Max damage defib deals to victims' heart
 	var/max_heart_damage_dealt = 5
 	var/ready = 0
 	var/damage_heal_threshold = 12 //This is the maximum non-oxy damage the defibrillator will heal to get a patient above -100, in all categories

@@ -263,7 +263,7 @@
 
 /obj/item/weapon/yautja/combistick/dropped(mob/user)
 	. = ..()
-	if(on)
+	if(on && isturf(loc))
 		setup_chain(user)
 
 /obj/item/weapon/yautja/combistick/try_to_throw(mob/living/user)

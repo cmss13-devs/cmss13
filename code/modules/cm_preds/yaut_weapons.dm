@@ -254,6 +254,12 @@
 	var/force_wielded = MELEE_FORCE_TIER_6
 	var/force_unwielded = MELEE_FORCE_TIER_2
 	var/force_storage = MELEE_FORCE_TIER_1
+	/// Ref to the tether effect when thrown
+	var/datum/effects/tethering/chain
+
+/obj/item/weapon/yautja/combistick/Destroy()
+	cleanup_chain()
+	return ..()
 
 /obj/item/weapon/yautja/combistick/try_to_throw(mob/living/user)
 	if(!charged)
@@ -262,8 +268,65 @@
 	charged = FALSE
 	remove_filter("combistick_charge")
 	unwield(user) //Otherwise stays wielded even when thrown
+	setup_chain(user)
 	return TRUE
 
+/obj/item/weapon/yautja/combistick/proc/setup_chain(mob/living/user)
+	var/list/tether_effects = apply_tether(user, src, range = 6, resistable = FALSE)
+	chain = tether_effects["tetherer_tether"]
+	RegisterSignal(chain, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_chain))
+	RegisterSignal(src, COMSIG_ITEM_PICKUP, PROC_REF(on_pickup))
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
+
+/// The chain normally breaks if it's put into a container, so let's yank it back if that's the case
+/obj/item/weapon/yautja/combistick/proc/on_move(datum/source, atom/moved, dir, forced)
+	SIGNAL_HANDLER
+	if(!z && !is_type_in_list(loc, list(/obj/structure/surface, /mob))) // I rue for the day I can remove the surface snowflake check
+		recall()
+
+/// Clean up the chain, deleting/nulling/unregistering as needed
+/obj/item/weapon/yautja/combistick/proc/cleanup_chain()
+	SIGNAL_HANDLER
+	if(!QDELETED(chain))
+		QDEL_NULL(chain)
+
+	else
+		chain = null
+
+	UnregisterSignal(src, COMSIG_ITEM_PICKUP)
+	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
+
+/obj/item/weapon/yautja/combistick/proc/on_pickup(datum/source, mob/user)
+	SIGNAL_HANDLER
+	if(user != chain.affected_atom)
+		to_chat(chain.affected_atom, SPAN_WARNING("You feel the chain of [src] be torn from your grasp!")) // Recall the fuckin combi my man
+
+	cleanup_chain()
+
+/// recall the combistick to the pred's hands or to be at their feet
+/obj/item/weapon/yautja/combistick/proc/recall()
+	SIGNAL_HANDLER
+	if(!chain)
+		return
+
+	var/mob/living/carbon/human/user = chain.affected_atom
+	if((src in user.contents) || !istype(user.gloves, /obj/item/clothing/gloves/yautja/hunter))
+		cleanup_chain()
+		return
+
+	var/obj/item/clothing/gloves/yautja/hunter/pred_gloves = user.gloves
+
+	if(user.put_in_hands(src, TRUE))
+		if(!pred_gloves.drain_power(user, 70))
+			return TRUE
+		user.visible_message(SPAN_WARNING("<b>[user] yanks [src]'s chain back, catching it in [user.p_their()] hand!</b>"), SPAN_WARNING("<b>You yank [src]'s chain back, catching it inhand!</b>"))
+		cleanup_chain()
+
+	else
+		if(!pred_gloves.drain_power(user, 70))
+			return TRUE
+		user.visible_message(SPAN_WARNING("<b>[user] yanks [src]'s chain back, letting [src] fall at [user.p_their()]!</b>"), SPAN_WARNING("<b>You yank [src]'s chain back, letting it drop at your feet!</b>"))
+		cleanup_chain()
 
 /obj/item/weapon/yautja/combistick/IsShield()
 	return on

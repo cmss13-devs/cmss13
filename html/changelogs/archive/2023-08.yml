@@ -108,3 +108,38 @@
   - rscadd: Requisitions Officer is now "Quartermaster" and a Gunnery Sergeant.
   Segrain:
   - bugfix: Non-UPP synthetics no longer default to speaking Russian.
+2023-08-09:
+  BeagleGaming1:
+  - code_imp: occupant limit of evacuation pods changed to a variable
+  Drathek:
+  - bugfix: Fix new map dropship areas not getting changes to dropship ceilings that
+      prevents OBs
+  Megastar1234:
+  - rscadd: Adds reagent scanner goggles to CMO vendor
+  - rscadd: Gives CMO headset intel radio
+  Morrow:
+  - rscadd: Scan health now only works when non-revivable
+  - rscadd: Xenos with less than 10 hours on xeno now have the "Young" prefix
+  - rscadd: Young Queen has been renamed to Growing Queen
+  - balance: Removed the barrel charger from vendors
+  - balance: Removed all benefits other than wield delay mod from the angled grip
+  - balance: Added wield delay to extended barrel
+  Morrow, Sleepynecrons (beautiful sprites):
+  - rscadd: Xenos can now capture comms relays for bonuses after 90 minutes into the
+      round.
+  Steelpoint:
+  - balance: Yautja's Plasma Rifle has been rebalanced to make it a more effective
+      assault weapon against xenomorphs. It has lost its mini-high explosive fire
+      mode but its default fire mode now mostly ignores xenomorph armor.
+  blackdragonTOW:
+  - ui: Hardcore deaths are now marked with a unique red skull
+  - imageadd: Red skull added for hardcore deaths
+  morrowwolf:
+  - rscadd: Added basic IB surgery instructions to surgical case
+  realforest2001:
+  - rscadd: Changed 'Growing Queen' to 'Immature Queen'
+  - bugfix: Updated playerpanel transform Queen button title.
+  thwomper, Steelpoint:
+  - rscadd: Toolkits have been added to the game. Holds engineering supplies akin
+      to a medkit. Issued freely to ComTechs and Engineers, can be bought by the USCM
+      Synthetic for cheap.

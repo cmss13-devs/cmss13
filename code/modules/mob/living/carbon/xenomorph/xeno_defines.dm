@@ -931,9 +931,10 @@
 		potential_host.update_med_icon()
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
 		if((isspecieshuman(current_human) || isspeciessynth(current_human)) && current_human.job)
+			var/datum/job/job = RoleAuthority.roles_for_mode[current_human.job]
 			var/turf/turf = get_turf(current_human)
 			if(is_mainship_level(turf?.z))
-				shipside_humans_weighted_count += RoleAuthority.calculate_role_weight(current_human.job)
+				shipside_humans_weighted_count += RoleAuthority.calculate_role_weight(job)
 	hijack_burrowed_surge = TRUE
 	hijack_burrowed_left = max(n_ceil(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
 	hivecore_cooldown = FALSE

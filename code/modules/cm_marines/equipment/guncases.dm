@@ -300,7 +300,7 @@
 
 //88 Mod 4 Combat Pistol
 /obj/item/storage/box/guncase/mod88
-	name = "\improper 88 mod 4 Combat Pistol Case"
+	name = "\improper 88 Mod 4 Combat Pistol case"
 	desc = "A gun case containing an 88 Mod 4 Combat Pistol."
 	storage_slots = 5
 	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/pistol/mod88, /obj/item/ammo_magazine/pistol/mod88)
@@ -314,7 +314,7 @@
 
 //M44 Combat Revolver
 /obj/item/storage/box/guncase/m44
-	name = "\improper M44 Combat Revolver Case"
+	name = "\improper M44 Combat Revolver case"
 	desc = "A gun case containing an M44 Combat Revolver."
 	storage_slots = 5
 	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/revolver/m44, /obj/item/ammo_magazine/revolver)
@@ -328,7 +328,7 @@
 
 //M4A3 Service Pistol
 /obj/item/storage/box/guncase/m4a3
-	name = "\improper M4A3 Service Pistol Case"
+	name = "\improper M4A3 Service Pistol case"
 	desc = "A gun case containing an M4A3 Service Pistol."
 	storage_slots = 5
 	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/pistol/m4a3, /obj/item/ammo_magazine/pistol)

@@ -1130,11 +1130,10 @@
 		new /obj/item/ammo_magazine/pistol/highpower/black(src)
 
 /obj/item/storage/belt/gun/m39
-	name = "\improper M276 pattern M39 armor rig"
-	desc = "Special issue variant of the M276 designed to holster a M39 submachine gun and two spare magazines. Uncommonly issued to USCM support and specialist personnel, can only be clipped to a set of USCM armor."
+	name = "\improper M276 pattern M39 holster rig"
+	desc = "Special issue variant of the M276 designed to holster a M39 submachine gun and two spare magazines. Uncommonly issued to USCM support and specialist personnel."
 	icon_state = "m39_armor"
 	item_state = "s_marinebelt"
-	flags_equip_slot = NONE
 	storage_slots = 3
 	max_w_class = 5
 	can_hold = list(

@@ -30,7 +30,6 @@
 	var/list/content_watchers //list of mobs currently seeing the storage's contents
 	var/storage_flags = STORAGE_FLAGS_DEFAULT
 	var/has_gamemode_skin = FALSE ///Whether to use map-variant skins.
-	var/storage_holster = FALSE
 
 /obj/item/storage/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src))
@@ -722,9 +721,6 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	return TRUE
 
 /obj/item/storage/proc/dump_into(obj/item/storage/M, mob/user)
-	if(storage_holster == TRUE && contents.len >= (storage_slots-1))
-		to_chat(user, SPAN_WARNING("[src] is full."))
-		return FALSE
 
 	if(user.action_busy)
 		return
@@ -740,8 +736,6 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
 	for(var/obj/item/I in M)
-		if(storage_holster == TRUE && contents.len >= (storage_slots-1))
-			break
 		if(!has_room(I))
 			break
 		M.remove_from_storage(I)

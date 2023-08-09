@@ -15,6 +15,18 @@
 	cant_hold = list(/obj/item/weapon/throwing_knife)
 	///TRUE Means that it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
 	var/flap = TRUE
+	var/holster_gun = FALSE
+
+/obj/item/storage/belt/proc/dump_into(obj/item/storage/M, mob/user)
+	if(holster_gun == FALSE && contents.len >= (storage_slots-1))
+		to_chat(user, SPAN_WARNING("[src] is full."))
+		return FALSE
+	..()
+
+/obj/item/storage/belt/proc/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
+	if(holster_gun == FALSE && contents.len >= (storage_slots-1))
+		return FALSE
+	..()
 
 /obj/item/storage/belt/equipped(mob/user, slot)
 	switch(slot)
@@ -895,11 +907,14 @@
 
 /obj/item/storage/belt/gun/on_stored_atom_del(atom/movable/AM)
 	if(!isgun(AM))
+		holster_gun = FALSE
 		return
 	holstered_guns -= AM
+	holster_gun = TRUE
 	for(var/slot in holster_slots)
 		if(AM == holster_slots[slot]["gun"])
 			holster_slots[slot]["gun"] = null
+
 			update_gun_icon(slot)
 			return
 
@@ -1452,7 +1467,7 @@
 	name = "\improper M276 pattern M82F flare gun holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the M82F flare gun."
 	storage_slots = 17
-	storage_holster = TRUE
+	//storage_holster = TRUE
 	max_storage_space = 20
 	icon_state = "m82f_holster"
 	item_state = "s_marinebelt"

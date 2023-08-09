@@ -28,7 +28,7 @@ export const CommandTablet = (_props, context) => {
   } else if (AlertLevel !== 2) {
     distress_reason = 'Ship is not under an active emergency.';
   } else if (distressCooldown) {
-    distress_reason = 'Beacon is currently on cooldown.';
+    distress_reason = 'Beacon is currently recharging.';
   } else if (!minimumTimeElapsed) {
     distress_reason = "It's too early to launch a distress beacon.";
   }
@@ -41,7 +41,7 @@ export const CommandTablet = (_props, context) => {
             <Flex.Item>
               {!canAnnounce && (
                 <Button color="bad" warning={1} fluid={1} icon="ban">
-                  Announcement on cooldown :{' '}
+                  Announcement recharging:{' '}
                   {Math.ceil((data.endtime - data.worldtime) / 10)} secs
                 </Button>
               )}

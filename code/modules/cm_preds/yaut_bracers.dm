@@ -46,6 +46,8 @@
 	var/mob/living/carbon/human/owner //Pred spawned on, or thrall given to.
 	var/obj/item/clothing/gloves/yautja/linked_bracer //Bracer linked to this one (thrall or mentor).
 	COOLDOWN_DECLARE(bracer_recharge)
+	/// What minimap icon this bracer should have
+	var/minimap_icon = "predator"
 
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	. = ..()
@@ -54,6 +56,8 @@
 		if(!owner)
 			owner = user
 		toggle_lock_internal(user, TRUE)
+		RegisterSignal(user, list(COMSIG_MOB_STAT_SET_ALIVE, COMSIG_MOB_DEATH), PROC_REF(update_minimap_icon))
+		INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), user)
 
 /obj/item/clothing/gloves/yautja/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -65,6 +69,8 @@
 /obj/item/clothing/gloves/yautja/dropped(mob/user)
 	STOP_PROCESSING(SSobj, src)
 	flags_item = initial(flags_item)
+	UnregisterSignal(user, list(COMSIG_MOB_STAT_SET_ALIVE, COMSIG_MOB_DEATH))
+	SSminimaps.remove_marker(user)
 	..()
 
 /obj/item/clothing/gloves/yautja/pickup(mob/living/user)
@@ -94,7 +100,7 @@
 		return
 	if(human_holder.stat == DEAD)
 		decloak(human_holder, TRUE)
-	if(!HAS_TRAIT(human_holder, TRAIT_YAUTJA_TECH) && !human_holder.hunter_data.thralled && prob(15))
+	if(!HAS_TRAIT(human_holder, TRAIT_YAUTJA_TECH) && !human_holder.hunter_data.thralled && prob(2))
 		decloak(human_holder)
 		shock_user(human_holder)
 
@@ -102,6 +108,27 @@
 /obj/item/clothing/gloves/yautja/proc/decloak()
 	return
 
+/// Called to update the minimap icon of the predator
+/obj/item/clothing/gloves/yautja/proc/update_minimap_icon()
+	if(!ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/human_owner = owner
+	var/turf/wearer_turf = get_turf(owner)
+	SSminimaps.remove_marker(owner)
+	if(!isyautja(owner))
+		if(owner.stat >= DEAD)
+			if(human_owner.undefibbable)
+				SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("undefibbable"))
+			else
+				SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("defibbable"))
+		else
+			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi')
+	else
+		if(owner?.stat >= DEAD)
+			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("undefibbable")) //defib/undefib status doesn't really matter because they're gonna explode in the end regardless
+		else
+			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, 'icons/ui_icons/map_blips.dmi')
 /*
 *This is the main proc for checking AND draining the bracer energy. It must have human passed as an argument.
 *It can take a negative value in amount to restore energy.
@@ -193,7 +220,22 @@
 	desc = "A pair of strange alien bracers, adapted for human biology."
 
 	color = "#b85440"
+	minimap_icon = "thrall"
 
+
+/obj/item/clothing/gloves/yautja/thrall/update_minimap_icon()
+	if(!ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/human_owner = owner
+	var/turf/wearer_turf = get_turf(owner)
+	if(owner.stat >= DEAD)
+		if(human_owner.undefibbable)
+			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, overlay_iconstates = list("undefibbable"))
+		else
+			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, overlay_iconstates = list("defibbable"))
+	else
+		SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon)
 
 /obj/item/clothing/gloves/yautja/hunter
 	name = "clan bracers"
@@ -293,7 +335,7 @@
 	var/mob/living/carbon/human/human = loc
 
 	//Non-Yautja have a chance to get stunned with each power drain
-	if((!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled) && prob(15))
+	if((!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled) && prob(4))
 		if(cloaked)
 			decloak(human, TRUE, DECLOAK_SPECIES)
 		shock_user(human)

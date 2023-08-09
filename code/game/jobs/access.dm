@@ -156,6 +156,7 @@
 		ACCESS_MARINE_KITCHEN,
 		ACCESS_MARINE_SYNTH,
 		ACCESS_PRESS,
+		ACCESS_MARINE_ASO,
 	)
 
 /proc/get_all_weyland_access()

@@ -1,5 +1,5 @@
 /datum/equipment_preset/twe
-	name = "Three World Empirer"
+	name = "Three World Empire"
 	faction = FACTION_TWE
 	faction_group = list(FACTION_TWE, FACTION_USCM)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -98,6 +98,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/royal_marine, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/royal_marine, WEAR_IN_ACCESSORY)
+
+/datum/equipment_preset/twe/royal_marine/standard/mre_pack
+	name = "RMC TWE Royal Marine Commando (MRE Rifleman)"
+
+/datum/equipment_preset/twe/royal_marine/standard/mre_pack/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/rmc/frame, WEAR_BACK)
+	..()
 
 //*****************************************************************************************************/
 

@@ -39,9 +39,9 @@
 			overlays += filling
 
 /obj/structure/machinery/iv_drip/proc/update_beam()
-	if(current_beam)
+	if(current_beam && !attached)
 		QDEL_NULL(current_beam)
-	else if(!QDELETED(src) && attached)
+	else if(!current_beam && attached && !QDELETED(src))
 		current_beam = beam(attached, "iv_tube")
 
 /obj/structure/machinery/iv_drip/power_change()
@@ -55,6 +55,7 @@
 
 /obj/structure/machinery/iv_drip/Destroy()
 	attached?.active_transfusions -= src
+	attached = null
 	update_beam()
 	. = ..()
 

@@ -16,7 +16,7 @@
 	death_message = "seizes up and falls limp..."
 	flags = NO_BREATHE|NO_CLONE_LOSS|NO_POISON|NO_NEURO|NO_SHRAPNEL
 	mob_inherent_traits = list(TRAIT_FOREIGN_BIO)
-	brute_mod = 0.60 //Minor bullet resistance
+	brute_mod = 0.6 //Minor bullet resistance
 	burn_mod = 0.8 //Lowered burn damage since it would 1-shot zombies from 2 to 0.8.
 	speech_chance  = 5
 	cold_level_1 = -1  //zombies don't mind the cold

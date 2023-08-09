@@ -219,7 +219,6 @@
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/populate_product_list(scale)
 	listed_products = list(
-
 		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
 		list("M4RA AP Magazine (10x24mm)", round(scale * 3.5), /obj/item/ammo_magazine/rifle/m4ra/ap, VENDOR_ITEM_REGULAR),
 		list("M39 AP Magazine (10x20mm)", round(scale * 3), /obj/item/ammo_magazine/smg/m39/ap, VENDOR_ITEM_REGULAR),

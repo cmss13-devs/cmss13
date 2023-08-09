@@ -1975,7 +1975,6 @@
 "afP" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	locked = 0;
 	name = "\improper Marshal Office Prison"
 	},
 /turf/open/floor{
@@ -1986,7 +1985,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	locked = 0;
 	name = "\improper Marshal Office Prison"
 	},
 /turf/open/floor{
@@ -2799,7 +2797,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	locked = 0;
 	name = "\improper Marshal Office Armory"
 	},
 /turf/open/floor{
@@ -3387,7 +3384,6 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	locked = 0;
 	name = "\improper Marshal Office Armory"
 	},
 /turf/open/floor{
@@ -4684,7 +4680,6 @@
 "anx" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	locked = 0;
 	name = "\improper Marshal Office Holding Cell"
 	},
 /turf/open/floor{
@@ -6923,7 +6918,6 @@
 	dir = 1;
 	icon_state = "door_locked";
 	id = "safe_room";
-	locked = 0;
 	name = "\improper Lambda Lab Secure Storage"
 	},
 /turf/open/floor{
@@ -27115,12 +27109,6 @@
 	icon_state = "delivery"
 	},
 /area/bigredv2/outside/office_complex)
-"bFh" = (
-/obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/caves/eta/living)
 "bFw" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm/warehouse)
@@ -62303,14 +62291,14 @@ aDX
 kqS
 bDu
 bDA
-bFh
+aRf
 aDX
 bDU
 elM
 aDX
 bDo
 aQy
-bFh
+aRf
 aRf
 aDX
 bEK

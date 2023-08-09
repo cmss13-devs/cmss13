@@ -823,7 +823,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle
 	name = "plasma rifle"
-	desc = "A long-barreled heavy plasma weapon capable of taking down large game. It has a mounted scope for distant shots and an integrated battery."
+	desc = "A long-barreled heavy plasma weapon. Intended for combat, not hunting. Has an integrated battery that allows for a functionally unlimited amount of shots to be discharged. Equipped with an internal gyroscopic stabilizer allowing its operator to fire the weapon one-handed if desired"
 	icon_state = "plasmarifle"
 	item_state = "plasmarifle"
 	unacidable = TRUE
@@ -836,7 +836,7 @@
 	var/charge_time = 0
 	var/last_regen = 0
 	flags_gun_features = GUN_UNUSUAL_DESIGN
-	flags_item = ITEM_PREDATOR
+	flags_item = ITEM_PREDATOR|TWOHANDED
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -889,12 +889,8 @@
 	return ..()
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/load_into_chamber()
-	if(charge_time >= 80)
-		ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/blast]
-		charge_time -= 80
-	else
-		ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt]
-		charge_time -= 10
+	ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt]
+	charge_time -= 10
 	var/obj/item/projectile/projectile = create_bullet(ammo, initial(name))
 	projectile.SetLuminosity(1)
 	in_chamber = projectile

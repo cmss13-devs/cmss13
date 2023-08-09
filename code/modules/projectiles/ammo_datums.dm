@@ -2436,32 +2436,7 @@
 	flags_ammo_behavior = AMMO_IGNORE_RESIST
 
 	damage = 55
-
-/datum/ammo/energy/yautja/rifle/blast
-	name = "plasma shatterer"
-	icon_state = "bluespace"
-	damage_type = BURN
-
-	shell_speed = AMMO_SPEED_TIER_4
-	damage = 40
-
-/datum/ammo/energy/yautja/rifle/blast/on_hit_mob(mob/M, obj/item/projectile/P)
-	var/L = get_turf(M)
-	cell_explosion(L, 90, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
-	..()
-
-/datum/ammo/energy/yautja/rifle/blast/on_hit_turf(turf/T, obj/item/projectile/P)
-	cell_explosion(T, 90, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
-	..()
-
-/datum/ammo/energy/yautja/rifle/blast/on_hit_obj(obj/O, obj/item/projectile/P)
-	cell_explosion(get_turf(O), 100, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
-	..()
-
-/datum/ammo/energy/yautja/rifle/blast/do_at_max_range(obj/item/projectile/P)
-	cell_explosion(get_turf(P), 100, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
-	..()
-
+	penetration = 50
 
 /*
 //======

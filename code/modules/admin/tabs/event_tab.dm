@@ -491,10 +491,10 @@
 		for(var/obj/structure/machinery/computer/almayer_control/C in machines)
 			if(!(C.inoperable()))
 				var/obj/item/paper/P = new /obj/item/paper( C.loc )
-				P.name = "'[command_name] Update.'"
+				P.name = "'[customname].'"
 				P.info = input
 				P.update_icon()
-				C.messagetitle.Add("[command_name] Update")
+				C.messagetitle.Add("[customname]")
 				C.messagetext.Add(P.info)
 
 		if(alert("Press \"Yes\" if you want to announce it to ship crew and marines. Press \"No\" to keep it only as printed report on communication console.",,"Yes","No") == "Yes")

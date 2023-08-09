@@ -1,0 +1,4 @@
+author: "Tallfission"
+delete-after: True
+changes:
+  - rscadd: "Vehicles skill for Commanding Officer, Executive Officer, and Auxiliary Support Officer jobs"

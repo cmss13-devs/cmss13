@@ -1,0 +1,5 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - rscadd: "Add a skill check to operate IV."
+  - bugfix: "Fix remove iv needing power to operate."

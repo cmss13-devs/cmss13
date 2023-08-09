@@ -60,7 +60,7 @@
 			return
 
 		if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
-			to_chat(user, SPAN_WARNING("You don't know how to connect this!"))
+			to_chat(user, SPAN_WARNING("You don't know how to [attached ? "disconnect" : "connect"] this!"))
 			return
 
 		if(attached)

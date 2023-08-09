@@ -30,7 +30,6 @@
 	new /obj/item/storage/pouch/construction(src)
 	new /obj/item/storage/pouch/tools(src)
 	new /obj/item/storage/firstaid/regular(src)
-	new /obj/item/storage/backpack/marine/engineerpack/welder_chestrig(src)
 
 /obj/structure/closet/secure_closet/engineering_electrical
 	name = "electrical supplies"

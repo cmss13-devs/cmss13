@@ -4,7 +4,8 @@
 #define MINIMAP_FLAG_PMC (1<<2)
 #define MINIMAP_FLAG_UPP (1<<3)
 #define MINIMAP_FLAG_CLF (1<<4)
-#define MINIMAP_FLAG_ALL (1<<5) - 1
+#define MINIMAP_FLAG_YAUTJA (1<<5)
+#define MINIMAP_FLAG_ALL (1<<6) - 1
 
 ///Converts the overworld x and y to minimap x and y values
 #define MINIMAP_SCALE 2
@@ -59,6 +60,7 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 
 #define MINIMAP_ICON_COLOR_COMMANDER "#c6fcfc"
 #define MINIMAP_ICON_COLOR_HEAD "#F0C542"
+#define MINIMAP_ICON_COLOR_SILVER "#c0c0c0"
 #define MINIMAP_ICON_COLOR_BRONZE "#eb9545"
 
 #define MINIMAP_ICON_COLOR_DOCTOR "#b83737"

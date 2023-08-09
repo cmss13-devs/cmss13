@@ -25,6 +25,7 @@
 		list("Utility Tool Belt", round(scale * 2), /obj/item/storage/belt/utility, VENDOR_ITEM_REGULAR),
 		list("Welding Goggles", round(scale * 2), /obj/item/clothing/glasses/welding, VENDOR_ITEM_REGULAR),
 		list("Welding Helmet", round(scale * 2), /obj/item/clothing/head/welding, VENDOR_ITEM_REGULAR),
+		list("Toolkit", round(scale * 4), /obj/item/storage/firstaid/toolkit/empty, VENDOR_ITEM_REGULAR),
 
 		list("SCANNERS", -1, null, null),
 		list("Atmos Scanner", round(scale * 2), /obj/item/device/analyzer, VENDOR_ITEM_REGULAR),
@@ -55,6 +56,7 @@
 		list("Utility Tool Belt", round(scale * 4), /obj/item/storage/belt/utility, VENDOR_ITEM_REGULAR),
 		list("Cable Coil", round(scale * 4), /obj/item/stack/cable_coil/random, VENDOR_ITEM_REGULAR),
 		list("Welding Goggles", round(scale * 2), /obj/item/clothing/glasses/welding, VENDOR_ITEM_REGULAR),
+		list("Toolkit", round(scale * 12), /obj/item/storage/firstaid/toolkit/empty, VENDOR_ITEM_REGULAR),
 
 		list("TOOLS", -1, null, null),
 		list("Blowtorch", round(scale * 4), /obj/item/tool/weldingtool, VENDOR_ITEM_REGULAR),

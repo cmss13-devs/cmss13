@@ -8,6 +8,9 @@
 #define TUNNEL_ENTER_BIG_XENO_DELAY 120
 #define TUNNEL_ENTER_LARVA_DELAY 10
 
+/// The duration it takes a player controlled facehugger to leap or hug adjacently
+#define FACEHUGGER_WINDUP_DURATION 1 SECONDS
+
 // Defines for action types and click delays used by xenomorph/unarmedattack() and attack_alien().
 
 /// Full attack delay.
@@ -164,6 +167,12 @@
 #define XENO_JOIN_AFK_TIME_LIMIT (5 MINUTES)
 /// The amount of time after round start before buried larva spawns are disallowed
 #define XENO_BURIED_LARVA_TIME_LIMIT (30 MINUTES)
+
+/// The time when xenos can start taking over comm towers
+#define XENO_COMM_ACQUISITION_TIME (90 MINUTES)
+
+/// The time it takes for a pylon to give one larva while activated
+#define XENO_PYLON_ACTIVATION_COOLDOWN (5 MINUTES)
 
 /// The time against away_timer when an AFK xeno larva can be replaced
 #define XENO_LEAVE_TIMER_LARVA 80 //80 seconds

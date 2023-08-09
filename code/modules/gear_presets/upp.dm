@@ -1777,7 +1777,7 @@
 	name = "UPP Combat Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	languages = ALL_SYNTH_LANGUAGES
+	languages = ALL_SYNTH_LANGUAGES_UPP
 
 	skills = /datum/skills/synthetic
 	assignment = JOB_UPP_COMBAT_SYNTH

@@ -68,6 +68,7 @@
 	var/obj/item/falcon_drone/parent_drone
 	var/obj/item/clothing/gloves/yautja/owned_bracers
 	desc = "An agile drone used by Yautja to survey the hunting grounds."
+	motion_sensed = TRUE
 
 /mob/hologram/falcon/Initialize(mapload, mob/M, obj/item/falcon_drone/drone, obj/item/clothing/gloves/yautja/bracers)
 	. = ..()

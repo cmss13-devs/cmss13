@@ -79,7 +79,9 @@
 /client/proc/handle_ooc_prefix()
 	var/prefix = ""
 	if(donator)
-		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "Donator")] "
+		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "Donator")]"
+	if(isCouncil(src))
+		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "WhitelistCouncil")]"
 	if(admin_holder)
 		var/list/rank_icons = icon_states('icons/ooc.dmi')
 		var/rankname = admin_holder.rank

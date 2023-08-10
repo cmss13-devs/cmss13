@@ -364,6 +364,11 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the 173rd Airborne Reconnaissance Platoon."
 	icon_state = "upppatch"
 
+/obj/item/clothing/accessory/patch/icc
+	name = "ICC patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women working in the field on behalf of the ICC."
+	icon_state = "iccpatch"
+
 /obj/item/clothing/accessory/poncho
 	name = "USCM Poncho"
 	desc = "The standard USCM poncho has variations for every climate. Custom fitted to be attached to standard USCM armor variants it is comfortable, warming or cooling as needed, and well-fit. A marine couldn't ask for more. Affectionately referred to as a \"woobie\"."

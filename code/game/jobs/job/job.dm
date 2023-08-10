@@ -288,6 +288,8 @@
 			join_turf = get_turf(pick(GLOB.spawns_by_job[type]))
 		else if(assigned_squad && GLOB.latejoin_by_squad[assigned_squad])
 			join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
+		else if(GLOB.latejoin_by_job[title])
+			join_turf = get_turf(pick(GLOB.latejoin_by_job[title]))
 		else
 			join_turf = get_turf(pick(GLOB.latejoin))
 		human.forceMove(join_turf)

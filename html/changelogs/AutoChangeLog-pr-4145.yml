@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fix IV Drip machines not displaying the IV line correctly when adding/removing a bag when already attached"
+  - code_imp: "Fixes a lingering reference to the mob when a IV drip machine is destroyed."

@@ -53,6 +53,7 @@
 
 	data["faction"] = announcement_faction
 	data["cooldown_message"] = cooldown_between_messages
+	data["distresstimelock"] = DISTRESS_TIME_LOCK
 
 	return data
 
@@ -63,7 +64,6 @@
 	data["evac_status"] = EvacuationAuthority.evac_status
 	data["endtime"] = announcement_cooldown
 	data["distresstime"] = distress_cooldown
-	data["distresstimelock"] = DISTRESS_TIME_LOCK
 	data["worldtime"] = world.time
 
 	return data

@@ -502,6 +502,9 @@
 	return target_delay * user_speed
 
 /mob/living/carbon/human/stripPanelUnequip(obj/item/interact_item, mob/target_mob, slot_to_process)
+	if(HAS_TRAIT(target_mob, TRAIT_UNSTRIPPABLE) && !target_mob.is_mob_incapacitated()) //Can't strip the unstrippable!
+		to_chat(src, SPAN_DANGER("[target_mob] has an unbreakable grip on their equipment!"))
+		return
 	if(interact_item.flags_item & ITEM_ABSTRACT)
 		return
 	if(interact_item.flags_item & NODROP)
@@ -528,6 +531,9 @@
 
 
 /mob/living/carbon/human/stripPanelEquip(obj/item/interact_item, mob/target_mob, slot_to_process)
+	if(HAS_TRAIT(target_mob, TRAIT_UNSTRIPPABLE) && !target_mob.is_mob_incapacitated())
+		to_chat(src, SPAN_DANGER("[target_mob] is too strong to force [interact_item.name] onto them!"))
+		return
 	if(interact_item && !(interact_item.flags_item & ITEM_ABSTRACT))
 		if(interact_item.flags_item & NODROP)
 			to_chat(src, SPAN_WARNING("You can't put \the [interact_item.name] on [target_mob], it's stuck to your hand!"))

@@ -509,6 +509,9 @@
 					if(U == w_uniform)
 						U.remove_accessory(usr, A)
 				else
+					if(HAS_TRAIT(src, TRAIT_UNSTRIPPABLE) && !is_mob_incapacitated()) //Can't strip the unstrippable!
+						to_chat(usr, SPAN_DANGER("[src] has an unbreakable grip on their equipment!"))
+						return
 					visible_message(SPAN_DANGER("<B>[usr] is trying to take off \a [A] from [src]'s [U]!</B>"), null, null, 5)
 					if(do_after(usr, get_strip_delay(usr, src), INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 						if(U == w_uniform)

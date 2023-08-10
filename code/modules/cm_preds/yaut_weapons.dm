@@ -261,6 +261,11 @@
 	cleanup_chain()
 	return ..()
 
+/obj/item/weapon/yautja/combistick/dropped(mob/user)
+	. = ..()
+	if(on && isturf(loc))
+		setup_chain(user)
+
 /obj/item/weapon/yautja/combistick/try_to_throw(mob/living/user)
 	if(!charged)
 		to_chat(user, SPAN_WARNING("Your combistick refuses to leave your hand. You must charge it with blood from prey before throwing it."))
@@ -268,7 +273,8 @@
 	charged = FALSE
 	remove_filter("combistick_charge")
 	unwield(user) //Otherwise stays wielded even when thrown
-	setup_chain(user)
+	if(on)
+		setup_chain(user)
 	return TRUE
 
 /obj/item/weapon/yautja/combistick/proc/setup_chain(mob/living/user)

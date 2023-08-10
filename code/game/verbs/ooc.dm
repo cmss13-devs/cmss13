@@ -76,6 +76,7 @@
 	set category = "OOC.OOC"
 	GLOB.ooc_color_override = newColor
 
+///Used by OOC chat to generate icons for player prefix. Intended to make it easy to see at a glance if someone is staff, WL Council or Mentor.
 /client/proc/handle_ooc_prefix()
 	var/prefix = ""
 	if(donator)

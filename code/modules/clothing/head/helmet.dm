@@ -642,6 +642,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		current_mob_hud.remove_hud_from(user, HUD_SOURCE_HELMET)
 	update_icon()
 
+///Cycles the active HUD to the next between built_in_visors and inserted_visors, nullifies if at end and removes all HUDs
 /obj/item/clothing/head/helmet/marine/proc/cycle_huds(mob/user)
 	var/list/total_visors = built_in_visors + inserted_visors
 
@@ -686,6 +687,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	set_action_overlay(cycled_hud_type)
 
+/// Sets the action overlay based on the visor type
 /datum/action/item_action/cycle_helmet_huds/proc/set_action_overlay(new_visor_type)
 	if(!new_visor_type)
 		set_default_overlay()
@@ -701,6 +703,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	button.overlays.Cut()
 	button.overlays += image('icons/obj/items/clothing/helmet_visors.dmi', button, action_icon_state)
 
+/// Sets the action overlay to default hud sight up
 /datum/action/item_action/cycle_helmet_huds/proc/set_default_overlay()
 	action_icon_state = "hud_sight_up"
 	button.overlays.Cut()

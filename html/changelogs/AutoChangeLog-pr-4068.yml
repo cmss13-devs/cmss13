@@ -1,5 +1,0 @@
-author: "Zonespace27"
-delete-after: True
-changes:
-  - rscadd: "WJs now spawn in the ARES core."
-  - rscadd: "There is now a synthetic repair station in the ARES core."

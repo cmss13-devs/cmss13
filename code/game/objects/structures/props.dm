@@ -639,6 +639,10 @@
 	icon_state = ""
 	icon = 'icons/turf/lifeboat.dmi'
 
+#define STATE_COMPLETE 0
+#define STATE_FUEL 1
+#define STATE_IGNITE 2
+
 /obj/structure/prop/brazier
 	name = "brazier"
 	desc = "The fire inside the brazier emits a relatively dim glow to flashlights and flares, but nothing can replace the feeling of sitting next to a fireplace with your friends."
@@ -647,6 +651,40 @@
 	density = TRUE
 	health = 150
 	luminosity = 6
+	/// What obj this becomes when it gets to its next stage of construction / ignition
+	var/frame_type
+	/// What is used to progress to the next stage
+	var/state = STATE_COMPLETE
+
+/obj/structure/prop/brazier/get_examine_text(mob/user)
+	. = ..()
+	switch(state)
+		if(STATE_FUEL)
+			. += "[src] requires wood to be fueled."
+		if(STATE_IGNITE)
+			. += "[src] needs to be lit."
+
+/obj/structure/prop/brazier/attackby(obj/item/hit_item, mob/user)
+	switch(state)
+		if(STATE_COMPLETE)
+			return ..()
+		if(STATE_FUEL)
+			if(!istype(hit_item, /obj/item/stack/sheet/wood))
+				return ..()
+			var/obj/item/stack/sheet/wood/wooden_boards = hit_item
+			if(!wooden_boards.use(5))
+				to_chat(user, SPAN_WARNING("Not enough wood!"))
+				return
+			user.visible_message(SPAN_NOTICE("[user] fills [src] with [hit_item]."))
+		if(STATE_IGNITE)
+			if(!hit_item.heat_source)
+				return ..()
+			if(!do_after(user, 3 SECONDS, INTERRUPT_MOVED, BUSY_ICON_BUILD))
+				return
+			user.visible_message(SPAN_NOTICE("[user] ignites [src] with [hit_item]."))
+
+	new frame_type(loc)
+	qdel(src)
 
 /obj/structure/prop/brazier/Destroy()
 	SetLuminosity(0)
@@ -662,31 +700,15 @@
 	desc = "An empty brazier."
 	icon_state = "brazier_frame"
 	luminosity = 0
+	frame_type = /obj/structure/prop/brazier/frame/full
+	state = STATE_FUEL
 
-/obj/structure/prop/brazier/frame/attackby(obj/item/hit_item, mob/user)
-	if(!istype(hit_item, /obj/item/stack/sheet/wood))
-		return ..()
-	var/obj/item/stack/wooden_boards = hit_item
-	if(wooden_boards.amount < 5)
-		to_chat(user, SPAN_WARNING("Not enough wood!"))
-		return
-	wooden_boards.use(5)
-	user.visible_message(SPAN_NOTICE("[user] fills the brazier with wood."))
-	new /obj/structure/prop/brazier/frame_woodened(loc)
-	qdel(src)
-
-/obj/structure/prop/brazier/frame_woodened
+/obj/structure/prop/brazier/frame/full
 	name = "empty full brazier"
 	desc = "An empty brazier. Yet it's also full. What???  Use something hot to ignite it, like a welding tool."
 	icon_state = "brazier_frame_filled"
-	luminosity = 0
-
-/obj/structure/prop/brazier/frame_woodened/attackby(obj/item/hit_item, mob/user)
-	if(!hit_item.heat_source)
-		return ..()
-	user.visible_message(SPAN_NOTICE("[user] ignites the brazier with [hit_item]."))
-	new /obj/structure/prop/brazier(loc)
-	qdel(src)
+	frame_type = /obj/structure/prop/brazier
+	state = STATE_IGNITE
 
 /obj/structure/prop/brazier/torch
 	name = "torch"
@@ -695,25 +717,136 @@
 	density = FALSE
 	luminosity = 5
 
-/obj/structure/prop/brazier/torch/frame
+/obj/structure/prop/brazier/frame/full/torch
 	name = "unlit torch"
 	desc = "It's a torch, but it's not lit.  Use something hot to ignite it, like a welding tool."
 	icon_state = "torch_frame"
-	luminosity = 0
-
-/obj/structure/prop/brazier/torch/frame/attackby(obj/item/hit_item, mob/user)
-	if(!hit_item.heat_source)
-		return ..()
-	user.visible_message(SPAN_NOTICE("[user] ignites the torch with [hit_item]."))
-	new /obj/structure/prop/brazier/torch(loc)
-	qdel(src)
+	frame_type = /obj/structure/prop/brazier/torch
 
 /obj/item/prop/torch_frame
 	name = "unlit torch"
 	icon = 'icons/obj/structures/structures.dmi'
 	desc = "It's a torch, but it's not lit or placed down. Click on a wall to place it."
 	icon_state = "torch_frame"
-	luminosity = 0
+
+/obj/structure/prop/brazier/frame/full/campfire
+	name = "unlit campfire"
+	desc = "A circle of stones surrounding a pile of wood. If only you were to light it."
+	icon_state = "campfire"
+	frame_type = /obj/structure/prop/brazier/campfire
+	density = FALSE
+
+/obj/structure/prop/brazier/frame/full/campfire/smolder
+	name = "smoldering campfire"
+	desc = "A campfire that used to be lit, but was extinguished. You can still see the embers, and smoke rises from it."
+	state = STATE_FUEL
+	frame_type = /obj/structure/prop/brazier/frame/full/campfire
+
+/obj/structure/prop/brazier/campfire
+	name = "campfire"
+	desc = "A circle of stones surrounding a burning pile of wood. The fire is roaring and you can hear its crackle. You could probably stomp the fire out."
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "campfire_on"
+	density = FALSE
+	///How many tiles the heating and sound goes
+	var/heating_range = 2
+	/// time between sounds
+	var/time_to_sound = 20
+	/// Time for it to burn through fuel
+	var/fuel_stage_time = 1 MINUTES
+	/// How much fuel it has
+	var/remaining_fuel = 5 //Maxes at 5, but burns one when made
+	/// If the fire can be manually put out
+	var/extinguishable = TRUE
+	/// Make no noise
+	var/quiet = FALSE
+
+/obj/structure/prop/brazier/campfire/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
+	fuel_drain(TRUE)
+
+/obj/structure/prop/brazier/campfire/get_examine_text(mob/user)
+	. = ..()
+	switch(remaining_fuel)
+		if(4 to INFINITY)
+			. += "The fire is roaring."
+		if(2 to 3)
+			. += "The fire is burning warm."
+		if(-INFINITY to 1)
+			. += "The embers of the fire barely burns."
+
+/obj/structure/prop/brazier/campfire/process(delta_time)
+	if(!isturf(loc))
+		return
+
+	for(var/mob/living/carbon/human/mob in range(heating_range, src))
+		if(mob.bodytemperature < T20C)
+			mob.bodytemperature += min(round(T20C - mob.bodytemperature)*0.7, 25)
+			mob.recalculate_move_delay = TRUE
+
+	if(quiet)
+		return
+	time_to_sound -= delta_time
+	if(time_to_sound <= 0)
+		playsound(loc, 'sound/machines/firepit_ambience.ogg', 15, FALSE, heating_range)
+		time_to_sound = initial(time_to_sound)
+
+/obj/structure/prop/brazier/campfire/attack_hand(mob/user)
+	. = ..()
+	if(!extinguishable)
+		to_chat(user, SPAN_WARNING("You cannot extinguish [src]."))
+		return
+	to_chat(user, SPAN_NOTICE("You begin to extinguish [src]."))
+	while(remaining_fuel)
+		if(user.action_busy || !do_after(user, 3 SECONDS, INTERRUPT_MOVED, BUSY_ICON_BUILD))
+			return
+		fuel_drain()
+		to_chat(user, SPAN_NOTICE("You continue to extinguish [src]."))
+	visible_message(SPAN_NOTICE("[user] extinguishes [src]."))
+
+/obj/structure/prop/brazier/campfire/attackby(obj/item/attacking_item, mob/user)
+	if(!istype(attacking_item, /obj/item/stack/sheet/wood))
+		to_chat(SPAN_NOTICE("You cannot fuel [src] with [attacking_item]."))
+		return
+	var/obj/item/stack/sheet/wood/fuel = attacking_item
+	if(remaining_fuel >= initial(remaining_fuel))
+		to_chat(user, SPAN_NOTICE("You cannot fuel [src] further."))
+	if(!fuel.use(1))
+		to_chat(SPAN_NOTICE("You do not have enough [attacking_item] to fuel [src]."))
+	visible_message(SPAN_NOTICE("[user] fuels [src] with [fuel]."))
+	remaining_fuel++
+
+/obj/structure/prop/brazier/campfire/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(!extinguishable)
+		to_chat(xeno, SPAN_WARNING("You cannot extinguish [src]."))
+		return
+	to_chat(xeno, SPAN_NOTICE("You begin to extinguish [src]."))
+	while(remaining_fuel)
+		if(xeno.action_busy || !do_after(xeno, 1 SECONDS, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+			return
+		fuel_drain()
+		to_chat(xeno, SPAN_NOTICE("You continue to extinguish [src]."))
+	visible_message(SPAN_WARNING("[xeno] extinguishes [src]!"))
+
+/obj/structure/prop/brazier/campfire/proc/fuel_drain(looping)
+	remaining_fuel--
+	if(!remaining_fuel)
+		new /obj/structure/prop/brazier/frame/full/campfire/smolder(loc)
+		qdel(src)
+		return
+	if(!looping || !fuel_stage_time)
+		return
+	addtimer(CALLBACK(src, PROC_REF(fuel_drain), TRUE), fuel_stage_time)
+
+/obj/structure/prop/brazier/campfire/Destroy()
+	SetLuminosity(0)
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+#undef STATE_COMPLETE
+#undef STATE_FUEL
+#undef STATE_IGNITE
 
 //ICE COLONY PROPS
 //Thematically look to Blackmesa's Xen levels. Generic science-y props n' stuff.

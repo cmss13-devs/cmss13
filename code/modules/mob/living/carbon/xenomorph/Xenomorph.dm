@@ -810,7 +810,7 @@
 	//and display them
 	add_to_all_mob_huds()
 	var/datum/mob_hud/MH = huds[MOB_HUD_XENO_INFECTION]
-	MH.add_hud_to(src)
+	MH.add_hud_to(src, HUD_SOURCE_INNATE)
 
 
 /mob/living/carbon/xenomorph/check_improved_pointing()

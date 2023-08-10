@@ -64,7 +64,7 @@
 	D.stage = 5
 
 	var/datum/mob_hud/Hu = huds[MOB_HUD_MEDICAL_OBSERVER]
-	Hu.add_hud_to(zombie)
+	Hu.add_hud_to(zombie, HUD_SOURCE_INNATE)
 
 	return ..()
 
@@ -73,7 +73,7 @@
 	..()
 	remove_from_revive(zombie)
 	var/datum/mob_hud/Hu = huds[MOB_HUD_MEDICAL_OBSERVER]
-	Hu.remove_hud_from(zombie)
+	Hu.remove_hud_from(zombie, HUD_SOURCE_INNATE)
 
 
 /datum/species/zombie/handle_unique_behavior(mob/living/carbon/human/zombie)

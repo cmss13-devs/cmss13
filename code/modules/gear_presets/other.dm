@@ -826,7 +826,7 @@
 
 	for(var/hud_to_add in huds_to_add)
 		var/datum/mob_hud/hud = huds[hud_to_add]
-		hud.add_hud_to(new_human)
+		hud.add_hud_to(new_human, HUD_SOURCE_INNATE)
 
 	var/list/actions_to_add = subtypesof(/datum/action/human_action/activable/cult)
 

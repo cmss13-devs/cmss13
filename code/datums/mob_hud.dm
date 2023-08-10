@@ -63,7 +63,22 @@ var/list/datum/mob_hud/huds = list(
 // Allow user to view a HUD (putting on medical glasses)
 /datum/mob_hud/proc/add_hud_to(mob/user, source)
 	hudusers |= user
-	LAZYADDASSOCLIST(hudusers, user, source)
+	if(hudusers[user])
+		hudusers[user] |= list(source)
+	else
+		hudusers[user] += list(source)
+
+	for(var/mob/target in hudmobs)
+		add_to_single_hud(user, target)
+
+/// Refreshes the HUD, adding user and sources if missing and then calls to add the HUD
+/datum/mob_hud/proc/refresh_hud(mob/user, list/source)
+	hudusers |= user
+	if(hudusers[user])
+		hudusers[user] |= source
+	else
+		hudusers[user] += source
+
 	for(var/mob/target in hudmobs)
 		add_to_single_hud(user, target)
 
@@ -252,13 +267,7 @@ var/list/datum/mob_hud/huds = list(
 	var/mob/M = source_mob ? source_mob : src
 	for(var/datum/mob_hud/hud in huds)
 		if(M in hud.hudusers)
-			readd_hud(hud)
-
-/mob/proc/readd_hud(datum/mob_hud/hud)
-	hud.add_hud_to(src)
-
-
-
+			hud.refresh_hud(src, hud.hudusers[M])
 
 //Medical HUDs
 

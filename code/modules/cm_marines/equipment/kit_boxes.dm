@@ -429,7 +429,7 @@
 	new /obj/item/pamphlet/skill/medical(src)
 	new /obj/item/storage/pouch/first_responder/full(src)
 	new /obj/item/storage/pouch/autoinjector/full(src)
-	new /obj/item/clothing/glasses/hud/sensor(src)
+	new /obj/item/device/helmet_visor/medical(src)
 	new /obj/item/roller(src)
 
 

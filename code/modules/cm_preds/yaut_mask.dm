@@ -139,7 +139,7 @@
 	if(istype(user) && user.wear_mask == src) //inventory reference is only cleared after dropped().
 		for(var/listed_hud in mask_huds)
 			var/datum/mob_hud/H = huds[listed_hud]
-			H.remove_hud_from(user)
+			H.remove_hud_from(user, HUD_SOURCE_MASK)
 		var/obj/item/G = user.glasses
 		if(G) //make your hud fuck off
 			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))
@@ -153,7 +153,7 @@
 	if(slot == WEAR_FACE)
 		for(var/listed_hud in mask_huds)
 			var/datum/mob_hud/H = huds[listed_hud]
-			H.add_hud_to(user)
+			H.add_hud_to(user, HUD_SOURCE_MASK)
 		if(current_goggles)
 			add_vision(user)
 	..()

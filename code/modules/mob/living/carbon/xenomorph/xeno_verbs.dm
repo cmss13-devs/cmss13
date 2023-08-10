@@ -83,9 +83,9 @@
 
 	var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
 	if (xeno_mobhud)
-		H.remove_hud_from(usr)
+		H.remove_hud_from(usr, HUD_SOURCE_INNATE)
 	else
-		H.add_hud_to(usr)
+		H.add_hud_to(usr, HUD_SOURCE_INNATE)
 
 	xeno_mobhud = !xeno_mobhud
 
@@ -96,9 +96,9 @@
 
 	var/datum/mob_hud/H = huds[MOB_HUD_XENO_HOSTILE]
 	if (xeno_hostile_hud)
-		H.remove_hud_from(usr)
+		H.remove_hud_from(usr, HUD_SOURCE_INNATE)
 	else
-		H.add_hud_to(usr)
+		H.add_hud_to(usr, HUD_SOURCE_INNATE)
 
 	xeno_hostile_hud = !xeno_hostile_hud
 

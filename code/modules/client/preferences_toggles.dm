@@ -645,9 +645,9 @@
 
 	O.HUD_toggled[hud_choice] = prefs.observer_huds[hud_choice]
 	if(O.HUD_toggled[hud_choice])
-		H.add_hud_to(O)
+		H.add_hud_to(O, HUD_SOURCE_GHOST)
 	else
-		H.remove_hud_from(O)
+		H.remove_hud_from(O, HUD_SOURCE_GHOST)
 
 /client/proc/toggle_ghost_health_scan()
 	set name = "Toggle Health Scan"

@@ -383,9 +383,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	var/active_visor = null
 
-	actions_types = list()
-
 /obj/item/clothing/head/helmet/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
+	. = ..()
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -394,7 +393,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			name += " helmet"
 
 	if(!(flags_atom & NO_SNOW_TYPE))
-		select_gamemode_skin(type,null,new_protection)
+		select_gamemode_skin(type, null, new_protection)
 
 	helmet_overlays = list() //To make things simple.
 
@@ -409,9 +408,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	camera.network = list(CAMERA_NET_OVERWATCH)
 
 	if(length(inserted_visors) || length(built_in_visors))
-		actions_types += /datum/action/item_action/cycle_helmet_huds
-
-	..()
+		var/datum/action/item_action/cycle_helmet_huds/new_action = new(src)
+		LAZYADD(actions, new_action)
+		if(ishuman(loc))
+			var/mob/living/carbon/human/holding_human = loc
+			if(holding_human.head == src)
+				new_action.give_to(holding_human)
 
 /obj/item/clothing/head/helmet/marine/Destroy(force)
 	helmet_overlays = null

@@ -87,8 +87,8 @@
 		var/list/rank_icons = icon_states('icons/ooc.dmi')
 		var/rankname = admin_holder.rank
 		if(rankname in rank_icons)
-			prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, admin_holder.rank)] "
-	return prefix
+			prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, admin_holder.rank)]"
+	return "[prefix] "
 
 /client/verb/looc(msg as text)
 	set name = "LOOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite

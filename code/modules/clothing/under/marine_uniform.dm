@@ -126,6 +126,16 @@
 	specialty = "marine officer"
 	black_market_value = 25
 
+/obj/item/clothing/under/marine/boilersuit
+	name = "marine boiler uniform"
+	desc = "A rougher, less fancy uniform for officers of the USCM. This boilersuit has seen service across the galaxy, used by officers overlooking their marines from the comfort of an APC. Despite the attept at looking rough, the woven-fabric of the boilersuit is far more comforting than any set of fatigues."
+	icon_state = "boiler_uscm"
+	worn_state = "boiler_uscm"
+	suit_restricted = null
+	flags_jumpsuit = FALSE
+	specialty = "marine boilersuit"
+	black_market_value = 25
+
 /obj/item/clothing/under/marine/officer/intel
 	name = "\improper marine intelligence officer sweatsuit"
 	desc = "Tighter than a vice. Slicker than beard oil. Covered from head to toe in pouches, pockets, bags, straps, and belts. Clearly, you are not only the most intelligent of intelligence officers, but the most fashionable as well. This suit took an entire R&D team five days to develop. It is more expensive than the entire Almayer... probably."

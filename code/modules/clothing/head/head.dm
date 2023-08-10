@@ -373,7 +373,7 @@
 /obj/item/clothing/head/cmcap/ro
 	name = "\improper USCM officer cap"
 	desc = "A hat usually worn by officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
-	icon_state = "rocap"
+	icon_state = "cap_officer"
 
 /obj/item/clothing/head/cmcap/req
 	name = "\improper USCM requisition cap"

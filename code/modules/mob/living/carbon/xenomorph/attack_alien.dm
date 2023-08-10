@@ -107,7 +107,8 @@
 						knock_chance += 2 * M.frenzy_aura
 					if(M.caste && M.caste.is_intelligent)
 						knock_chance += 2
-					knock_chance += min(round(damage * 0.25), 10) //Maximum of 15% chance.
+					knock_chance += min(round(damage * 0.25), 10)
+					knock_chance = min(knock_chance, 15)//Maximum of 15% chance.
 					if(prob(knock_chance))
 						playsound(loc, "alien_claw_metal", 25, 1)
 						M.visible_message(SPAN_DANGER("The [M] smashes off [src]'s [wear_mask.name]!"), \

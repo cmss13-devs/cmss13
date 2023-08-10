@@ -256,7 +256,7 @@
 	log_adminpm("ADMIN: [key_name(src)] : [msg]")
 
 	var/color = "mod"
-	if(ishost(usr))
+	if(check_rights(R_PERMISSIONS))
 		color = "adminmod"
 
 	var/channel = "ADMIN:"

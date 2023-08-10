@@ -772,9 +772,11 @@ DEFINES in setup.dm, referenced here.
 	set category = "Weapons"
 	set name = "Unique Action"
 	set desc = "Use anything unique your weapon is capable of. Includes pumping a shotgun or spinning a revolver. If you have an active gun attachment, this will activate on the attachment instead."
-	set src in usr
 
-	var/obj/item/weapon/current_weapon = src
+	var/obj/item/weapon/current_weapon = usr.get_held_item()
+	if(!current_weapon)
+		to_chat(usr, SPAN_WARNING("Your weapon must be in your hand to do that."))
+		return
 	if(isgun(current_weapon))
 		var/obj/item/weapon/gun/firearm = current_weapon
 		if(firearm.active_attachable)

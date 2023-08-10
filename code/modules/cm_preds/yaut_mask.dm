@@ -71,7 +71,7 @@
 		return PROCESS_KILL
 	var/mob/living/carbon/human/human_holder = loc
 
-	if(current_goggles && !drain_power(human_holder, 5))
+	if(current_goggles && !drain_power(human_holder, 3))
 		to_chat(human_holder, SPAN_WARNING("Your bracers lack sufficient power to operate the visior."))
 		current_goggles = VISION_MODE_OFF
 		var/obj/item/visor = human_holder.glasses

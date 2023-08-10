@@ -18,13 +18,29 @@
 	var/holster_gun = FALSE
 
 /obj/item/storage/belt/gun/dump_into(obj/item/storage/M, mob/user)
+	for(var/slot in holster_slots)
+		if(!holster_slots[slot]["gun"]) //Open holster.
+			holster_gun = FALSE
+			break
+		if(holster_slots[slot]["gun"]) //Gun in holster.
+			holster_gun = TRUE
+			break
+
 	if(holster_gun == FALSE && contents.len >= (storage_slots-1))
 		to_chat(user, SPAN_WARNING("[src] is full."))
 		return FALSE
 	..()
 
 /obj/item/storage/belt/gun/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
-	if(holster_gun == FALSE && contents.len >= (storage_slots-1))
+	for(var/slot in holster_slots)
+		if(!holster_slots[slot]["gun"]) //Open holster.
+			holster_gun = FALSE
+			break
+		if(holster_slots[slot]["gun"]) //gun in holster.
+			holster_gun = TRUE
+			break
+
+	if(W.type == /obj/item/device/flashlight/flare && holster_gun == FALSE && contents.len >= (storage_slots-1))
 		return FALSE
 	..()
 
@@ -907,10 +923,8 @@
 
 /obj/item/storage/belt/gun/on_stored_atom_del(atom/movable/AM)
 	if(!isgun(AM))
-		holster_gun = FALSE
 		return
 	holstered_guns -= AM
-	holster_gun = TRUE
 	for(var/slot in holster_slots)
 		if(AM == holster_slots[slot]["gun"])
 			holster_slots[slot]["gun"] = null

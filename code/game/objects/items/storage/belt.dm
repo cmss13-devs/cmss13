@@ -283,6 +283,19 @@
 	new /obj/item/storage/pill_bottle/tramadol(src)
 	new /obj/item/storage/pill_bottle/peridaxon(src)
 
+/obj/item/storage/belt/medical/lifesaver/upp/partial/fill_preset_inventory()
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/inaprovaline(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
+
 /obj/item/storage/belt/security
 	name = "\improper M276 pattern security rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This configuration is commonly seen among USCM Military Police and peacekeepers, though it can hold some light munitions."
@@ -1132,6 +1145,22 @@
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/highpower/tactical())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+
+/obj/item/storage/belt/gun/m39
+	name = "\improper M276 pattern M39 holster rig"
+	desc = "Special issue variant of the M276 designed to holster a M39 submachine gun and two spare magazines. Uncommonly issued to USCM support and specialist personnel."
+	icon_state = "m39_armor"
+	item_state = "s_marinebelt"
+	storage_slots = 3
+	max_w_class = 5
+	can_hold = list(
+		/obj/item/weapon/gun/smg/m39,
+		/obj/item/ammo_magazine/smg,
+	)
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = -11,
+			"icon_y" = -5))
 
 /obj/item/storage/belt/gun/m44
 	name = "\improper M276 pattern M44 holster rig"

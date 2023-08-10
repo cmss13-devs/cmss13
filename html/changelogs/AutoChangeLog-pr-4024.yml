@@ -1,6 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - admin: "Added logs for speech through telephones and deferring ahelps to mentors."
-  - admin: "Chestburst logs now include location data. Mentor Imaginary Friend now logs its speech. Narrow miss shots now log who fired them (where applicable)."
-  - admin: "Dropship interactions (Launch/Flyby/Autopilot) are now logged again, and also included in attack logs for the user."

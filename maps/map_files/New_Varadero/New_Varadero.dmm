@@ -2537,8 +2537,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "bFC" = (
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/rifle/m4ra,
 /turf/open/floor/carpet,
 /area/varadero/interior/bunks)
 "bFD" = (
@@ -15319,8 +15318,8 @@
 /area/varadero/interior/comms1)
 "jRA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/wo_supplies/guns/common/m39,
 /obj/effect/decal/cleanable/blood/writing,
+/obj/item/weapon/gun/rifle/m4ra,
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "jSN" = (
@@ -17600,8 +17599,8 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "lsR" = (
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -20946,7 +20945,7 @@
 	},
 /area/varadero/exterior/farocean)
 "nvV" = (
-/obj/effect/landmark/wo_supplies/guns/common/m39,
+/obj/item/weapon/gun/rifle/m4ra,
 /turf/open/floor/carpet,
 /area/varadero/interior/bunks)
 "nwi" = (
@@ -55944,12 +55943,12 @@ aAj
 cGd
 xNR
 gLZ
-vNu
+bFC
 pRs
 ssZ
 vzH
 bNt
-syL
+lsR
 syL
 ydx
 hwP

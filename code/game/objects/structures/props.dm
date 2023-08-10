@@ -187,7 +187,7 @@
 		lit = TRUE
 		Update()
 
-obj/structure/prop/evac
+/obj/structure/prop/evac
 	name = "EVAC-3F Multirole Fighter"
 	desc = "A state of the art EVAC-3F aerospace fighter used by the USCM. These fighters, in use by the USCM are designed to be modular and fulfil a variety of purposes. However, these aircraft have long seen better day on the Almayer, with extensive internal wiring damage and unfinished repairs to the bomb-bays."
 	icon = 'icons/obj/structures/props/vehicles.dmi'
@@ -195,7 +195,7 @@ obj/structure/prop/evac
 	bound_height = 64
 	bound_width = 64
 
-obj/structure/prop/evac/usaf
+/obj/structure/prop/evac/usaf
 	name = "EVAC-3O Reconnaissance Fighter"
 	desc = "High tech, silver coated EVAC-3O used by the USAF in deep recon mission. The thermal-absorbent paint alone probably costs more than your whole paycheck. Unfortunately, however, this jet was in the middle of repairs during the outbreak."
 	icon = 'icons/obj/structures/props/vehicles.dmi'

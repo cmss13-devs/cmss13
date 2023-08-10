@@ -1,0 +1,4 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - rscadd: "Combisticks now use a proper chain instead of an invisible magic one."

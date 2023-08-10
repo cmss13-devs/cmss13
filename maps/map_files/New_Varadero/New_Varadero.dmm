@@ -1778,6 +1778,10 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior_protected/maintenance/south)
+"beD" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz2_near)
 "beE" = (
 /obj/item/device/taperecorder,
 /obj/structure/surface/table/reinforced/prison,
@@ -2407,7 +2411,6 @@
 	name = "exotic bedsheet";
 	pixel_x = -1
 	},
-/obj/item/ammo_magazine/rifle/m4ra,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "bBo" = (
@@ -2533,6 +2536,11 @@
 /obj/effect/landmark/crap_item,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
+"bFC" = (
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
+/turf/open/floor/carpet,
+/area/varadero/interior/bunks)
 "bFD" = (
 /obj/structure/bed/chair{
 	icon_state = "chair_alt";
@@ -2958,7 +2966,6 @@
 /area/varadero/interior/caves/north_research)
 "bTm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/weapon/gun/rifle/m4ra,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -3912,6 +3919,11 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/research)
+"czo" = (
+/obj/structure/surface/table,
+/obj/item/ammo_box/magazine/misc/power_cell/empty,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz2_near)
 "czA" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/plating/icefloor{
@@ -4833,6 +4845,10 @@
 	icon_state = "yellow"
 	},
 /area/varadero/interior/hall_NW)
+"dfa" = (
+/obj/structure/prop/evac/usaf,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "dfs" = (
 /obj/item/storage/belt/utility,
 /obj/structure/surface/rack,
@@ -5624,7 +5640,6 @@
 /area/varadero/interior/hall_N)
 "dKm" = (
 /obj/structure/closet/secure_closet/personal/patient,
-/obj/item/clothing/gloves/marine/veteran/pmc,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -7301,6 +7316,12 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
+"eNW" = (
+/obj/item/limb/hand/r_hand{
+	desc = "A severed hand, with a blood trail following off towards the south.. Within the finger's, a revolver is still grasped."
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz2_near)
 "eOa" = (
 /obj/structure/platform/kutjevo/smooth{
 	climb_delay = 1;
@@ -8597,6 +8618,13 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/hall_SE)
+"fEt" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/computer3/laptop/secure_data{
+	desc = "A computer terminal displaying flight records of the 29th Reconnaissance Squadron"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "fEu" = (
 /turf/open/floor{
 	icon_state = "bcircuit"
@@ -8766,6 +8794,10 @@
 	icon_state = "snow_mat"
 	},
 /area/varadero/interior/security)
+"fHY" = (
+/obj/structure/prop/evac/usaf,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz2_near)
 "fIk" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor{
@@ -9055,6 +9087,10 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/exterior/monsoon)
+"fUk" = (
+/obj/structure/surface/table,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "fUn" = (
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
@@ -10178,6 +10214,14 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior_protected/maintenance/south)
+"gAP" = (
+/obj/effect/decal/cleanable/blood/writing,
+/obj/item/limb/hand/r_hand{
+	desc = "A severed hand, with a blood trail following off towards the south.. Within the finger's, a revolver is still grasped."
+	},
+/obj/item/weapon/gun/revolver/m44/custom,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz2_near)
 "gAV" = (
 /obj/structure/barricade/wooden{
 	dir = 1
@@ -11660,7 +11704,6 @@
 	pixel_x = -2;
 	pixel_y = 8
 	},
-/obj/item/ammo_magazine/rifle/m4ra,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -14964,6 +15007,12 @@
 	icon_state = "blue"
 	},
 /area/varadero/interior/technical_storage)
+"jIC" = (
+/obj/structure/reagent_dispensers/ammoniatank,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/varadero/interior/hall_NW)
 "jJf" = (
 /obj/effect/landmark/corpsespawner/colonist/burst,
 /turf/open/gm/coast/beachcorner/north_west,
@@ -15268,6 +15317,12 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/comms1)
+"jRA" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/wo_supplies/guns/common/m39,
+/obj/effect/decal/cleanable/blood/writing,
+/turf/open/floor/wood,
+/area/varadero/interior/hall_SE)
 "jSN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/surface/table/woodentable{
@@ -15939,6 +15994,10 @@
 	icon_state = "floor6"
 	},
 /area/varadero/interior_protected/vessel)
+"kqY" = (
+/obj/effect/decal/cleanable/blood/writing,
+/turf/open/floor/carpet,
+/area/varadero/interior/hall_SE)
 "krl" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/shiva{
@@ -17211,8 +17270,6 @@
 	},
 /area/varadero/interior/hall_NW)
 "lgb" = (
-/obj/structure/bedsheetbin,
-/obj/item/ammo_magazine/rifle/m4ra,
 /obj/structure/machinery/storm_siren{
 	dir = 4;
 	pixel_x = -3
@@ -17543,7 +17600,8 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "lsR" = (
-/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -17560,6 +17618,10 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/varadero/interior/hall_N)
+"ltw" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "ltA" = (
 /turf/open/floor/shiva{
 	dir = 1;
@@ -20883,6 +20945,10 @@
 	default_name = "deep ocean"
 	},
 /area/varadero/exterior/farocean)
+"nvV" = (
+/obj/effect/landmark/wo_supplies/guns/common/m39,
+/turf/open/floor/carpet,
+/area/varadero/interior/bunks)
 "nwi" = (
 /obj/structure/machinery/power/port_gen/pacman/mrs,
 /turf/open/floor/plating/icefloor{
@@ -23457,6 +23523,14 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/security)
+"pfv" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/effect/decal/cleanable/blood/writing,
+/turf/open/floor/carpet,
+/area/varadero/interior/hall_SE)
 "pfL" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -24821,6 +24895,11 @@
 	icon_state = "purple"
 	},
 /area/varadero/interior/research)
+"pVH" = (
+/obj/structure/surface/table,
+/obj/item/clothing/head/helmet/marine/pilot,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "pVN" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -28299,6 +28378,12 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
+"saZ" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/gm/dirt{
+	icon_state = "desert0"
+	},
+/area/varadero/exterior/lz2_near)
 "sbX" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -28904,6 +28989,10 @@
 	},
 /turf/open/floor/carpet,
 /area/varadero/interior/library)
+"svZ" = (
+/obj/structure/ship_ammo/heavygun,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz2_near)
 "swf" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -29580,6 +29669,11 @@
 	icon_state = "yellowfull"
 	},
 /area/varadero/interior/electrical)
+"sPr" = (
+/obj/structure/surface/table,
+/obj/item/book/manual/ripley_build_and_repair,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "sPs" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/wood,
@@ -36259,6 +36353,10 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/electrical)
+"xey" = (
+/obj/vehicle/powerloader,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "xeO" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 1
@@ -37101,6 +37199,10 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/carpet,
 /area/varadero/interior/records)
+"xGQ" = (
+/obj/structure/ship_ammo/laser_battery,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "xGV" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/grass1/weedable,
@@ -37973,6 +38075,11 @@
 	icon_state = "wredfull"
 	},
 /area/varadero/interior/medical)
+"yiR" = (
+/obj/structure/surface/table,
+/obj/item/prop/almayer/flight_recorder,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz2_near)
 "yji" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/firstaid/regular{
@@ -45820,7 +45927,7 @@ cVG
 cVG
 dbV
 kuX
-kuX
+jIC
 kuX
 ddY
 kuX
@@ -54575,9 +54682,9 @@ thY
 mPI
 bTm
 snP
-qhF
-ffx
-umT
+jRA
+pfv
+kqY
 eDF
 gFx
 fvw
@@ -55477,8 +55584,8 @@ qvQ
 uXX
 xNR
 gZI
-vNu
-vNu
+bFC
+nvV
 iAc
 qFZ
 hPd
@@ -62129,7 +62236,7 @@ beK
 mtT
 kgp
 kgp
-wlB
+xey
 wlB
 hmh
 wlB
@@ -62490,22 +62597,22 @@ wlB
 kAH
 lTg
 wlB
+ltw
 wlB
 wlB
-wlB
-wlB
+dfa
 gjC
 wlB
 lTg
-wlB
+dfa
 wlB
 mdg
-wlB
+dfa
 beK
 cVq
 cVq
 mtT
-wlB
+dfa
 aQN
 aQN
 wlB
@@ -62853,23 +62960,23 @@ wlB
 mdg
 lTg
 wlB
-wlB
-wlB
-lTg
-wlB
-wlB
-wlB
-wlB
+dfa
 wlB
 lTg
 wlB
 wlB
-lTg
+wlB
+wlB
+ltw
+svZ
+wlB
+ltw
+svZ
 lTg
 wlB
-lTg
+beD
 wlB
-lTg
+svZ
 wlB
 wlB
 lTg
@@ -63038,9 +63145,9 @@ wlB
 wlB
 wlB
 lTg
-wlB
-wlB
-lTg
+fUk
+pVH
+gAP
 lTg
 lTg
 tuT
@@ -63214,14 +63321,14 @@ pRa
 mPk
 rJv
 rXk
-lTg
+beD
 wlB
 wlB
+fEt
 wlB
-wlB
 lTg
 lTg
-lTg
+fHY
 lTg
 lTg
 pXT
@@ -63768,7 +63875,7 @@ wlB
 pXT
 lTg
 lTg
-lTg
+eNW
 wlB
 wlB
 wlB
@@ -65767,28 +65874,28 @@ wlB
 wlB
 wlB
 wlB
-lTg
+beD
 wlB
 ghW
-wlB
-wlB
-wlB
-lTg
-wlB
-wlB
-lTg
-wlB
-wlB
+dfa
 wlB
 wlB
 lTg
 wlB
 wlB
 lTg
+dfa
+wlB
+wlB
+wlB
+lTg
+dfa
 wlB
 lTg
 wlB
+lTg
 wlB
+dfa
 lTg
 wlB
 wlB
@@ -65967,7 +66074,7 @@ phk
 wlB
 wlB
 bnH
-mdg
+saZ
 wlB
 wlB
 lTg
@@ -66142,11 +66249,11 @@ lTg
 mdg
 wlB
 xCZ
+ltw
 wlB
 wlB
-wlB
-wlB
-lTg
+xGQ
+czo
 wlB
 nFX
 nFX
@@ -66315,8 +66422,8 @@ wlB
 lTg
 wlB
 lTg
-lTg
-wlB
+yiR
+sPr
 qNu
 wlB
 wlB
@@ -66498,7 +66605,7 @@ wlB
 wlB
 hPq
 wlB
-wlB
+dfa
 wlB
 wlB
 lTg
@@ -66698,7 +66805,7 @@ rXk
 wlB
 ghW
 kAH
-wlB
+dfa
 aQN
 tMZ
 lTg
@@ -66859,7 +66966,7 @@ rXk
 wlB
 kAH
 wlB
-wlB
+ltw
 qNX
 rXk
 wlB
@@ -67059,7 +67166,7 @@ wlB
 wlB
 uIW
 nsN
-wlB
+ltw
 wlB
 lTg
 wlB

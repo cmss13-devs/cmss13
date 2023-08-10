@@ -12460,7 +12460,10 @@
 	},
 /area/almayer/command/cic)
 "aRu" = (
-/obj/structure/foamed_metal,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/emails{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
 "aRv" = (
@@ -17169,6 +17172,10 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/chemistry)
+"bpA" = (
+/obj/structure/machinery/vending/walkman,
+/turf/open/floor/plating,
+/area/almayer/hallways/hangar)
 "bpC" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
@@ -20737,8 +20744,9 @@
 	},
 /area/almayer/hallways/hangar)
 "bGR" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -32425,6 +32433,11 @@
 /obj/effect/landmark/late_join/alpha,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
+"ehI" = (
+/obj/structure/surface/table/almayer,
+/obj/item/folder/black,
+/turf/open/floor/plating,
+/area/almayer/hallways/hangar)
 "ehR" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -36387,6 +36400,10 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
+"fSr" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/almayer/hallways/hangar)
 "fSF" = (
 /obj/structure/sink{
 	dir = 1;
@@ -42882,6 +42899,10 @@
 	icon_state = "cargo"
 	},
 /area/almayer/squads/alpha)
+"iPV" = (
+/obj/structure/machinery/light/containment,
+/turf/open/floor/plating,
+/area/almayer/hallways/hangar)
 "iQg" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -53191,6 +53212,11 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south1)
+"nsd" = (
+/obj/structure/sign/prop1,
+/obj/structure/sign/prop1,
+/turf/closed/wall/almayer,
+/area/almayer/hull/lower_hull/l_f_s)
 "nsu" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 2;
@@ -63258,6 +63284,16 @@
 /obj/structure/disposalpipe/junction,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cic_hallway)
+"rQw" = (
+/obj/structure/largecrate/random/barrel/blue,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hallways/hangar)
 "rQy" = (
 /turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/hydroponics)
@@ -65446,6 +65482,14 @@
 	icon_state = "blue"
 	},
 /area/almayer/squads/delta)
+"sSL" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/emails{
+	dir = 1
+	},
+/obj/item/folder/black,
+/turf/open/floor/almayer,
+/area/almayer/living/offices/flight)
 "sSR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -65557,6 +65601,10 @@
 	icon_state = "blue"
 	},
 /area/almayer/squads/delta)
+"sUT" = (
+/obj/structure/prop/evac,
+/turf/open/floor/plating,
+/area/almayer/hallways/hangar)
 "sVc" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/item/seeds/orangeseed,
@@ -68477,6 +68525,17 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
+"uix" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/lower_hull/l_f_s)
 "uiG" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -71575,6 +71634,12 @@
 "vuR" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
+"vuW" = (
+/obj/vehicle/multitile{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/almayer/hallways/hangar)
 "vuZ" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
@@ -72145,6 +72210,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
+"vIM" = (
+/obj/structure/surface/table/almayer,
+/obj/item/prop/almayer/flight_recorder{
+	desc = "A military grade flight recorder that's been stored with the defunct EVAC-3s. It logs the data of their last deployment, participating in Tackle."
+	},
+/turf/open/floor/plating,
+/area/almayer/hallways/hangar)
 "vIN" = (
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = 15;
@@ -73833,6 +73905,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
+"woS" = (
+/obj/structure/machinery/vending/cigarette,
+/turf/open/floor/plating,
+/area/almayer/hallways/hangar)
 "wpg" = (
 /obj/structure/machinery/blackbox_recorder,
 /turf/open/shuttle/dropship{
@@ -76338,6 +76414,11 @@
 	icon_state = "cargo"
 	},
 /area/almayer/hallways/vehiclehangar)
+"xtf" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/plating,
+/area/almayer/hallways/hangar)
 "xtC" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
@@ -76981,6 +77062,10 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/starboard_missiles)
+"xFY" = (
+/obj/structure/machinery/light/containment,
+/turf/closed/wall/almayer,
+/area/almayer/hull/lower_hull/l_f_s)
 "xFZ" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -100794,7 +100879,7 @@ ais
 aoL
 akz
 ajM
-caM
+rQw
 bHB
 aZX
 baI
@@ -101604,7 +101689,7 @@ aeN
 azl
 ahS
 ajA
-akz
+sSL
 ajM
 xyw
 bHB
@@ -102207,13 +102292,13 @@ aag
 nXP
 hJp
 dnX
-uNL
-aRu
-aRu
-aRu
-aRu
-aRu
-aRu
+xFY
+baI
+baI
+baI
+vIM
+xtf
+woS
 bcm
 aXj
 bHB
@@ -102410,14 +102495,14 @@ aag
 nXP
 mGL
 dnX
-uNL
-aRu
-aRu
-aRu
-aRu
-aRu
-aRu
-bcm
+pJW
+baI
+baI
+sUT
+baI
+baI
+baI
+bGR
 xyw
 bHB
 aZX
@@ -102614,13 +102699,13 @@ nXP
 mGL
 fJX
 uNL
-aRu
-aRu
-aRu
-aRu
-aRu
-aRu
-bcm
+baI
+baI
+fSr
+baI
+baI
+baI
+bGR
 hmy
 bHB
 aZL
@@ -102817,13 +102902,13 @@ nXP
 tRV
 dnX
 uNL
-aRu
-aRu
-aRu
-aRu
-aRu
-aRu
-bcm
+baI
+baI
+baI
+baI
+baI
+baI
+bGR
 xyw
 bHB
 wqh
@@ -103018,14 +103103,14 @@ aag
 aag
 nXP
 nun
-vJM
-uNL
-aRu
-aRu
-aRu
-aRu
-aRu
-aRu
+uix
+nsd
+baI
+baI
+baI
+baI
+baI
+iPV
 bcm
 bGQ
 bHB
@@ -103223,14 +103308,14 @@ nXP
 hJp
 qNG
 uNL
-aRu
-aRu
-aRu
-aRu
-aRu
-aRu
-bcm
+vuW
+baI
+baI
+baI
+baI
+baI
 bGR
+xyw
 bHB
 xyw
 bkA
@@ -103426,13 +103511,13 @@ nXP
 mGL
 kKG
 uNL
-aRu
-aRu
-aRu
-aRu
-aRu
-aRu
-bcm
+baI
+baI
+sUT
+baI
+baI
+baI
+bGR
 xyw
 bHB
 xyw
@@ -103629,13 +103714,13 @@ mGL
 mGL
 eKO
 uNL
-aRu
-aRu
-aRu
-aRu
-aRu
-aRu
-bcm
+baI
+baI
+baI
+baI
+baI
+baI
+bGR
 aYu
 wTg
 bGq
@@ -103831,13 +103916,13 @@ pwK
 cmk
 xJi
 cIi
-uNL
+xFY
+baI
+baI
+baI
 aRu
-aRu
-aRu
-aRu
-aRu
-aRu
+ehI
+bpA
 bcm
 aZZ
 aYC

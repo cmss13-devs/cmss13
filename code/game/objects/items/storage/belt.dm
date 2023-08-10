@@ -17,13 +17,13 @@
 	var/flap = TRUE
 	var/holster_gun = FALSE
 
-/obj/item/storage/belt/proc/dump_into(obj/item/storage/M, mob/user)
+/obj/item/storage/belt/gun/dump_into(obj/item/storage/M, mob/user)
 	if(holster_gun == FALSE && contents.len >= (storage_slots-1))
 		to_chat(user, SPAN_WARNING("[src] is full."))
 		return FALSE
 	..()
 
-/obj/item/storage/belt/proc/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
+/obj/item/storage/belt/gun/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
 	if(holster_gun == FALSE && contents.len >= (storage_slots-1))
 		return FALSE
 	..()

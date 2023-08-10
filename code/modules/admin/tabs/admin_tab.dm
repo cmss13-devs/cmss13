@@ -255,9 +255,9 @@
 
 	log_adminpm("ADMIN: [key_name(src)] : [msg]")
 
-	var/color = "adminsay"
+	var/color = "mod"
 	if(ishost(usr))
-		color = "headminsay"
+		color = "adminmod"
 
 	var/channel = "ADMIN:"
 	channel = "[admin_holder.rank]:"

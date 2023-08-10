@@ -17,6 +17,9 @@
 	#define COMPONENT_NO_AFTERATTACK (1<<0)
 ///from base of atom/examine(): (/mob, list/examine_text)
 #define COMSIG_PARENT_EXAMINE "atom_examine"
+/// handler for vv_do_topic (usr, href_list)
+#define COMSIG_VV_TOPIC "vv_topic"
+	#define COMPONENT_VV_HANDLED (1<<0)
 
 /// fires on the target datum when an element is attached to it (/datum/element)
 #define COMSIG_ELEMENT_ATTACH "element_attach"
@@ -55,3 +58,9 @@
 /// From /datum/element/drop_retrieval usage: /obj/item/attachable/magnetic_harness/can_be_attached_to_gun(), /obj/item/storage/pouch/sling/can_be_inserted() (/obj/item/I)
 #define COMSIG_DROP_RETRIEVAL_CHECK "drop_retrieval_check"
 	#define COMPONENT_DROP_RETRIEVAL_PRESENT (1<<0)
+
+// from /datum/emergency_call/proc/spawn_candidates()
+#define COMSIG_ERT_SETUP "ert_setup"
+
+// from /proc/update_living_queens() : /mob/living/carbon/xenomorph/queen
+#define COMSIG_HIVE_NEW_QUEEN "hive_new_queen"

@@ -234,6 +234,8 @@ SUBSYSTEM_DEF(vote)
 /datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, datum/callback/on_end, send_clients_vote = FALSE)
 	var/vote_sound = 'sound/ambience/alarm4.ogg'
 	var/vote_sound_vol = 5
+	var/randomize_entries = FALSE
+
 	if(!mode)
 		var/admin = FALSE
 		var/ckey = ckey(initiator_key)
@@ -269,6 +271,7 @@ SUBSYSTEM_DEF(vote)
 				choices.Add("Restart Round", "Continue Playing")
 			if("gamemode")
 				question = "Gamemode vote"
+				randomize_entries = TRUE
 				for(var/mode_type in config.gamemode_cache)
 					var/datum/game_mode/M = initial(mode_type)
 					if(initial(M.config_tag))
@@ -279,6 +282,7 @@ SUBSYSTEM_DEF(vote)
 				question = "Ground map vote"
 				vote_sound = 'sound/voice/start_your_voting.ogg'
 				vote_sound_vol = 15
+				randomize_entries = TRUE
 				var/list/maps = list()
 				for(var/i in config.maplist[GROUND_MAP])
 					var/datum/map_config/VM = config.maplist[GROUND_MAP][i]
@@ -307,6 +311,7 @@ SUBSYSTEM_DEF(vote)
 					vote_adjustment_callback = CALLBACK(src, PROC_REF(map_vote_adjustment))
 			if("shipmap")
 				question = "Ship map vote"
+				randomize_entries = TRUE
 				var/list/maps = list()
 				for(var/i in config.maplist[SHIP_MAP])
 					var/datum/map_config/VM = config.maplist[SHIP_MAP][i]
@@ -331,8 +336,15 @@ SUBSYSTEM_DEF(vote)
 					if(!option || mode || !usr.client)
 						break
 					choices.Add(option)
+
+				if(tgui_input_list(usr, "Do you want to randomize the vote option order?", "Randomize", list("Yes", "No")) == "Yes")
+					randomize_entries = TRUE
+
 			else
 				return FALSE
+
+		if(randomize_entries)
+			choices = shuffle(choices)
 
 		for(var/i in choices)
 			choices[i] = 0

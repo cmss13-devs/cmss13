@@ -14,7 +14,7 @@
 
 /datum/player_action/kill/act(client/user, mob/target, list/params)
 	target.death(create_cause_data("[user.key]"))
-	message_staff("[key_name_admin(user)] killed [key_name_admin(target)].")
+	message_admins("[key_name_admin(user)] killed [key_name_admin(target)].")
 	return TRUE
 
 
@@ -24,8 +24,8 @@
 	permissions_required = R_ADMIN
 
 /datum/player_action/gib/act(client/user, mob/target, list/params)
-	target.gib(create_cause_data(user.key))
-	message_staff("[key_name_admin(user)] gibbed [key_name_admin(target)].")
+	target.gib(create_cause_data("gibbing", user.key))
+	message_admins("[key_name_admin(user)] gibbed [key_name_admin(target)].")
 	return TRUE
 
 // MISC
@@ -41,7 +41,7 @@
 		target.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
 		target.AddSleepingIcon()
 
-	message_staff("[key_name_admin(user)] toggled sleep on [key_name_admin(target)].")
+	message_admins("[key_name_admin(user)] toggled sleep on [key_name_admin(target)].")
 
 	return TRUE
 
@@ -62,7 +62,7 @@
 	if(alert(user, "Send [key_name(target)] back to Lobby?", "Message", "Yes", "No") != "Yes")
 		return
 
-	message_staff("[key_name_admin(user)] has sent [key_name_admin(target)] back to the Lobby.")
+	message_admins("[key_name_admin(user)] has sent [key_name_admin(target)] back to the Lobby.")
 
 	var/mob/new_player/NP = new()
 
@@ -85,7 +85,7 @@
 
 	target.say(params["to_say"])
 
-	message_staff("[key_name_admin(user)] forced [key_name_admin(target)] to say: [sanitize(params["to_say"])]")
+	message_admins("[key_name_admin(user)] forced [key_name_admin(target)] to say: [sanitize(params["to_say"])]")
 
 	return TRUE
 
@@ -98,9 +98,9 @@
 /datum/player_action/force_emote/act(client/user, mob/target, list/params)
 	if(!params["to_emote"]) return
 
-	target.custom_emote(1, params["to_emote"], TRUE)
+	target.manual_emote(params["to_emote"])
 
-	message_staff("[key_name_admin(user)] forced [key_name_admin(target)] to emote: [sanitize(params["to_emote"])]")
+	message_admins("[key_name_admin(user)] forced [key_name_admin(target)] to emote: [sanitize(params["to_emote"])]")
 	return TRUE
 
 
@@ -111,7 +111,7 @@
 /datum/player_action/toggle_frozen/act(client/user, mob/target, list/params)
 	target.frozen = text2num(params["freeze"])
 
-	message_staff("[key_name_admin(user)] [target.frozen? "froze" : "unfroze"] [key_name_admin(target)]")
+	message_admins("[key_name_admin(user)] [target.frozen? "froze" : "unfroze"] [key_name_admin(target)]")
 	return TRUE
 
 // MESSAGE
@@ -153,7 +153,7 @@
 
 /datum/player_action/set_name/act(client/user, mob/target, list/params)
 	target.name = params["name"]
-	message_staff("[key_name_admin(user)] set [key_name_admin(target)]'s name to [params["name"]]")
+	message_admins("[key_name_admin(user)] set [key_name_admin(target)]'s name to [params["name"]]")
 	return TRUE
 
 /datum/player_action/set_ckey
@@ -177,7 +177,7 @@
 	var/mob/M = user.mob
 
 	target.forceMove(M.loc)
-	message_staff("[key_name_admin(user)] teleported [key_name_admin(target)] to themselves.", M.loc.x, M.loc.y, M.loc.z)
+	message_admins("[key_name_admin(user)] teleported [key_name_admin(target)] to themselves.", M.loc.x, M.loc.y, M.loc.z)
 	return TRUE
 
 /datum/player_action/follow

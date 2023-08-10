@@ -1,3 +1,6 @@
+/datum/action/xeno_action/activable/pounce/predalien/pre_pounce_effects()
+	playsound(owner, 'sound/voice/predalien_pounce.ogg', 75, 0, status = 0)
+
 /datum/action/xeno_action/onclick/predalien_roar/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
@@ -22,7 +25,7 @@
 			var/obj/item/clothing/gloves/yautja/hunter/YG = locate(/obj/item/clothing/gloves/yautja/hunter) in human
 			if(isyautja(human) && YG)
 				if(YG.cloaked)
-					YG.decloak(human)
+					YG.decloak(human, TRUE, DECLOAK_PREDALIEN)
 
 				YG.cloak_timer = xeno_cooldown * 0.1
 		else if(isxeno(carbon) && xeno.can_not_harm(carbon))
@@ -37,9 +40,7 @@
 			shake_camera(M, 10, 1)
 
 	apply_cooldown()
-
-	. = ..()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/smash/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -92,9 +93,7 @@
 			shake_camera(M, 0.2 SECONDS, 1)
 
 	apply_cooldown()
-
-	. = ..()
-	return
+	return ..()
 
 /datum/action/xeno_action/activable/devastate/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -140,16 +139,17 @@
 	xeno.update_canmove()
 
 	if (do_after(xeno, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		xeno.emote("roar")
 		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [carbon]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [carbon]!"))
 		carbon.spawn_gibs()
-		playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 30, 1)
+		playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 75, 1)
 		carbon.apply_effect(get_xeno_stun_duration(carbon, 0.5), WEAKEN)
 		carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, base_damage + damage_scale * behavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 
 		xeno.animation_attack_on(carbon)
 		xeno.spin_circle()
 		xeno.flick_attack_overlay(carbon, "tail")
+
+	playsound(owner, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0)
 
 	xeno.frozen = 0
 	xeno.anchored = FALSE
@@ -159,5 +159,4 @@
 
 	xeno.visible_message(SPAN_XENODANGER("[xeno] rapidly slices into [carbon]!"))
 
-	. = ..()
-	return
+	return ..()

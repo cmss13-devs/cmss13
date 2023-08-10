@@ -50,6 +50,7 @@
 	desc = "This card contains coordinates to the fabled Clown Planet. Handle with care."
 	function = "teleporter"
 	data = "Clown Land"
+	black_market_value = 50
 
 /*
  * ID CARDS
@@ -209,13 +210,23 @@
 	assignment = "Corporate Mercenary"
 
 /obj/item/card/id/pmc/New()
-	access = get_all_centcom_access()
+	access = get_all_weyland_access()
 	..()
 
 /obj/item/card/id/pmc/ds
 	name = "\improper Corporate holo-badge"
 	desc = "It lists a callsign and a blood type. Issued to Whiteout protocol teams only."
 	icon_state = "ds"
+
+/obj/item/card/id/marshal
+	name = "\improper CMB marshal gold badge"
+	desc = "A coveted gold badge signifying that the wearer is one of the few CMB Marshals patroling the outer rim. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
+	icon_state = "cmbmar"
+
+/obj/item/card/id/deputy
+	name = "\improper CMB deputy silver badge"
+	desc = "The silver badge which represents that the wearer is a CMB Deputy. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
+	icon_state = "cmbdep"
 
 /obj/item/card/id/general
 	name = "general officer holo-badge"
@@ -225,7 +236,7 @@
 	assignment = "General"
 
 /obj/item/card/id/general/New()
-	access = get_all_centcom_access()
+	access = get_all_weyland_access()
 
 /obj/item/card/id/provost
 	name = "provost holo-badge"
@@ -235,7 +246,7 @@
 	assignment = "Provost"
 
 /obj/item/card/id/provost/New()
-	access = get_all_centcom_access()
+	access = get_all_weyland_access()
 
 /obj/item/card/id/syndicate
 	name = "agent card"
@@ -331,7 +342,7 @@
 	assignment = "General"
 
 /obj/item/card/id/centcom/New()
-	access = get_all_centcom_access()
+	access = get_all_weyland_access()
 	..()
 
 

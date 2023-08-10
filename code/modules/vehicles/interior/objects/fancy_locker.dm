@@ -11,16 +11,25 @@
 
 /obj/structure/closet/fancy/Initialize()
 	. = ..()
+	return INITIALIZE_HINT_LATELOAD
 
+/obj/structure/closet/fancy/LateInitialize()
+	. = ..()
 	interior = new(src)
+	INVOKE_ASYNC(src, PROC_REF(do_create_interior))
+
+/obj/structure/closet/fancy/proc/do_create_interior()
 	interior.create_interior("fancylocker")
+
+/obj/structure/closet/fancy/Destroy()
+	QDEL_NULL(interior)
+	return ..()
 
 /obj/structure/closet/fancy/store_mobs(stored_units)
 	for(var/mob/M in loc)
 		var/succ = interior.enter(M, "default")
 		if(!succ)
 			break
-
 
 /obj/structure/interior_exit/fancy
 	name = "fancy wooden door"

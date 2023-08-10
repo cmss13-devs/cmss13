@@ -184,6 +184,12 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	announce = new /obj/item/device/radio/intercom(src)
 	flags_atom |= USES_HEARING
 
+/obj/structure/machinery/cryopod/Destroy()
+	SetLuminosity(0)
+	QDEL_NULL(occupant)
+	QDEL_NULL(announce)
+	. = ..()
+
 
 //Lifted from Unity stasis.dm and refactored. ~Zuhayr
 /obj/structure/machinery/cryopod/process()
@@ -213,6 +219,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	items -= occupant //Don't delete the occupant
 	items -= announce //or the autosay radio.
 
+	SSminimaps.remove_marker(src)
+
 	var/list/dept_console = GLOB.frozen_items["REQ"]
 	if(ishuman(occupant))
 		var/mob/living/carbon/human/H = occupant
@@ -234,7 +242,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	/obj/item/clothing/glasses/mgoggles, \
 	/obj/item/clothing/head/beret/marine/mp, \
 	/obj/item/clothing/gloves/black, \
-	/obj/item/weapon/melee/baton, \
+	/obj/item/weapon/baton, \
 	/obj/item/weapon/gun/energy/taser, \
 	/obj/item/clothing/glasses/sunglasses/sechud, \
 	/obj/item/device/radio/headset/almayer, \
@@ -360,6 +368,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			qdel(G)
 
 	icon_state = "body_scanner_open"
+	SetLuminosity(0)
 
 	if(occupant.key)
 		occupant.ghostize(0)
@@ -421,7 +430,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 			//Book keeping!
 			var/area/location = get_area(src)
-			message_staff("[key_name_admin(user)] put [key_name_admin(M)], [M.job] into [src] at [location].")
+			message_admins("[key_name_admin(user)] put [key_name_admin(M)], [M.job] into [src] at [location].")
 
 			//Despawning occurs when process() is called with an occupant without a client.
 			add_fingerprint(user)
@@ -453,7 +462,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		visible_message(SPAN_WARNING("\The [src]'s casket starts moving!"))
 		var/mob/living/M = usr
 		var/area/location = get_area(src) //Logs the exit
-		message_staff("[key_name_admin(M)], [M.job], has left [src] at [location].")
+		message_admins("[key_name_admin(M)], [M.job], has left [src] at [location].")
 
 	var/list/items = src.contents //-Removes items from the chamber
 	if(occupant) items -= occupant
@@ -494,22 +503,25 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		add_fingerprint(usr)
 
 
-/obj/structure/machinery/cryopod/proc/go_in_cryopod(mob/M, silent = FALSE)
+/obj/structure/machinery/cryopod/proc/go_in_cryopod(mob/mob, silent = FALSE)
 	if(occupant)
 		return
-	M.forceMove(src)
-	occupant = M
+	mob.forceMove(src)
+	occupant = mob
 	icon_state = "body_scanner_closed"
+	SetLuminosity(2)
 	time_entered = world.time
 	start_processing()
 
 	if(!silent)
-		if(M.client)
-			to_chat(M, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
-			to_chat(M, SPAN_BOLDNOTICE("If you log out or close your client now, your character will permanently removed from the round in 10 minutes. If you ghost, timer will be decreased to 2 minutes."))
+		if(mob.client)
+			to_chat(mob, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
+			to_chat(mob, SPAN_BOLDNOTICE("If you log out or close your client now, your character will permanently removed from the round in 10 minutes. If you ghost, timer will be decreased to 2 minutes."))
+			if(!is_admin_level(src.z)) // Set their queue time now because the client has to actually leave to despawn and at that point the client is lost
+				mob.client.player_details.larva_queue_time = max(mob.client.player_details.larva_queue_time, world.time)
 		var/area/location = get_area(src)
-		if(M.job != GET_MAPPED_ROLE(JOB_SQUAD_MARINE))
-			message_staff("[key_name_admin(M)], [M.job], has entered \a [src] at [location] after playing for [duration2text(world.time - M.life_time_start)].")
+		if(mob.job != GET_MAPPED_ROLE(JOB_SQUAD_MARINE))
+			message_admins("[key_name_admin(mob)], [mob.job], has entered \a [src] at [location] after playing for [duration2text(world.time - mob.life_time_start)].")
 		playsound(src, 'sound/machines/hydraulics_3.ogg', 30)
 	silent_exit = silent
 
@@ -520,6 +532,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	occupant = null
 	stop_processing()
 	icon_state = "body_scanner_open"
+	SetLuminosity(0)
 	playsound(src, 'sound/machines/pod_open.ogg', 30)
 
 #ifdef OBJECTS_PROXY_SPEECH

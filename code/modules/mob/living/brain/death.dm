@@ -3,7 +3,7 @@
 		container.icon_state = "mmi_dead"
 	return ..(cause, gibbed, "beeps shrilly as the MMI flatlines!")
 
-/mob/living/brain/gib(cause = "gibbing")
+/mob/living/brain/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	if(istype(container, /obj/item/device/mmi))
 		qdel(container)//Gets rid of the MMI if there is one
 	if(loc)

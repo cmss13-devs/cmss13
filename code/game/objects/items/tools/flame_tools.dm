@@ -170,12 +170,19 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	damtype = "brute"
 	icon_state = "[initial(icon_state)]_burnt"
 	item_state = "cigoff"
-	if(user && loc != user)
-		user.SetLuminosity(0, FALSE, src)
 	SetLuminosity(0)
 	name = burnt_name
 	desc = "A match. This one has seen better days."
 	STOP_PROCESSING(SSobj, src)
+
+	if(user)
+		user.SetLuminosity(0, FALSE, src)
+		return
+
+	if(ismob(loc))
+		user = loc
+		user.SetLuminosity(0, FALSE, src)
+		return
 
 /obj/item/tool/match/paper
 	name = "paper match"
@@ -230,7 +237,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else if(istype(W, /obj/item/tool/lighter/zippo))
 		var/obj/item/tool/lighter/zippo/Z = W
 		if(Z.heat_source)
-			light("<span class='rose'>With a flick of their wrist, [user] lights their [name] with [W].</span>")
+			light(SPAN_ROSE("With a flick of their wrist, [user] lights their [name] with [W]."))
 
 	else if(istype(W, /obj/item/device/flashlight/flare))
 		var/obj/item/device/flashlight/flare/FL = W
@@ -247,8 +254,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(M.heat_source)
 			light(SPAN_NOTICE("[user] lights their [name] with their [W]."))
 
-	else if(istype(W, /obj/item/weapon/melee/energy/sword))
-		var/obj/item/weapon/melee/energy/sword/S = W
+	else if(istype(W, /obj/item/weapon/energy/sword))
+		var/obj/item/weapon/energy/sword/S = W
 		if(S.active)
 			light(SPAN_WARNING("[user] swings their [W], barely missing their nose. They light their [name] in the process."))
 
@@ -478,6 +485,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "cigar_off"
 	smoketime = 50 MINUTES
 	chem_volume = 20
+	black_market_value = 15
 
 /obj/item/clothing/mask/cigarette/cigar/classic
 	name = "classic cigar"
@@ -486,6 +494,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_on = "cigar2_on"
 	icon_off = "cigar2_off"
 	smoketime = 120 MINUTES
+	black_market_value = 30
 
 /obj/item/clothing/mask/cigarette/cigar/tarbacks
 	name = "\improper Tarback cigar"
@@ -520,7 +529,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else if(istype(W, /obj/item/tool/lighter/zippo))
 		var/obj/item/tool/lighter/zippo/Z = W
 		if(Z.heat_source)
-			light("<span class='rose'>With a flick of their wrist, [user] lights their [name] with their [W].</span>")
+			light(SPAN_ROSE("With a flick of their wrist, [user] lights their [name] with their [W]."))
 
 	else if(istype(W, /obj/item/device/flashlight/flare))
 		var/obj/item/device/flashlight/flare/FL = W
@@ -537,8 +546,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(M.heat_source)
 			light(SPAN_NOTICE("[user] lights their [name] with their [W]."))
 
-	else if(istype(W, /obj/item/weapon/melee/energy/sword))
-		var/obj/item/weapon/melee/energy/sword/S = W
+	else if(istype(W, /obj/item/weapon/energy/sword))
+		var/obj/item/weapon/energy/sword/S = W
 		if(S.active)
 			light(SPAN_WARNING("[user] swings their [W], barely missing their nose. They light their [name] in the process."))
 
@@ -623,7 +632,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else if(istype(W, /obj/item/tool/lighter/zippo))
 		var/obj/item/tool/lighter/zippo/Z = W
 		if(Z.heat_source)
-			light("<span class='rose'>With much care, [user] lights their [name] with their [W].</span>")
+			light(SPAN_ROSE("With much care, [user] lights their [name] with their [W]."))
 
 	else if(istype(W, /obj/item/device/flashlight/flare))
 		var/obj/item/device/flashlight/flare/FL = W
@@ -712,6 +721,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "goldzippo"
 	icon_on = "goldzippoon"
 	icon_off = "goldzippo"
+	black_market_value = 30
 
 /obj/item/tool/lighter/random
 
@@ -736,7 +746,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			icon_state = icon_on
 			item_state = icon_on
 			if(istype(src, /obj/item/tool/lighter/zippo) )
-				user.visible_message("<span class='rose'>Without even breaking stride, [user] flips open and lights [src] in one smooth movement.</span>")
+				user.visible_message(SPAN_ROSE("Without even breaking stride, [user] flips open and lights [src] in one smooth movement."))
 				playsound(src.loc,"zippo_open",10, 1, 3)
 			else
 				playsound(src.loc,"lighter",10, 1, 3)
@@ -789,7 +799,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			cig.attackby(src, user)
 		else
 			if(istype(src, /obj/item/tool/lighter/zippo))
-				cig.light("<span class='rose'>[user] whips the [name] out and holds it for [M].</span>")
+				cig.light(SPAN_ROSE("[user] whips the [name] out and holds it for [M]."))
 			else
 				cig.light(SPAN_NOTICE("[user] holds the [name] out for [M], and lights the [cig.name]."))
 	else

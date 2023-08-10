@@ -22,6 +22,7 @@ var/global/list/deployed_fultons = list()
 	var/atom/movable/attached_atom = null
 	var/turf/original_location = null
 	var/attachable_atoms = list(/obj/structure/closet/crate)
+	var/datum/turf_reservation/reservation
 
 /obj/item/stack/fulton/New(loc, amount, atom_to_attach)
 	..()
@@ -139,7 +140,10 @@ var/global/list/deployed_fultons = list()
 	sleep(30)
 	original_location = get_turf(attached_atom)
 	playsound(loc, 'sound/items/fulton.ogg', 50, 1)
-	var/turf/space_tile = pick(get_area_turfs(/area/space/highalt))
+	reservation = SSmapping.RequestBlockReservation(3, 3, turf_type_override = /turf/open/space)
+	var/middle_x = reservation.bottom_left_coords[1] + FLOOR((reservation.top_right_coords[1] - reservation.bottom_left_coords[1]) / 2, 1)
+	var/middle_y = reservation.bottom_left_coords[2] + FLOOR((reservation.top_right_coords[2] - reservation.bottom_left_coords[2]) / 2, 1)
+	var/turf/space_tile = locate(middle_x, middle_y, reservation.bottom_left_coords[3])
 	if(!space_tile)
 		visible_message(SPAN_WARNING("[src] begins beeping like crazy. Something is wrong!"))
 		return
@@ -157,8 +161,8 @@ var/global/list/deployed_fultons = list()
 
 /obj/item/stack/fulton/proc/return_fulton(turf/return_turf)
 
-	// Fulton is not in space, it must have been collected.
-	if(!istype(get_area(attached_atom), /area/space/highalt))
+	// Fulton is not in reservation, it must have been collected.
+	if(!(get_turf(src) in reservation.reserved_turfs))
 		return
 
 	attached_atom.forceMove(return_turf)
@@ -170,5 +174,7 @@ var/global/list/deployed_fultons = list()
 			//Giving marines an objective to retrieve that fulton (so they'd know what they lost and where)
 			var/datum/cm_objective/retrieve_item/fulton/objective = new /datum/cm_objective/retrieve_item/fulton(attached_atom)
 			intel_system.store_single_objective(objective)
+
+	qdel(reservation)
 	qdel(src)
 	return

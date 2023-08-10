@@ -166,10 +166,6 @@
 	pill_initial_reagents = list("cyanide" = 50)
 	pill_icon_class = "tox"
 
-/obj/item/reagent_container/pill/adminordrazine
-	pill_desc = "An Adminordrazine pill. It's magic. We don't have to explain it."
-	pill_initial_reagents = list("adminordrazine" = 50)
-
 /obj/item/reagent_container/pill/stox
 	pill_desc = "A sleeping pill commonly used to treat insomnia."
 	pill_initial_reagents = list("stoxin" = 15)
@@ -225,6 +221,12 @@
 	pill_initial_reagents = list("space_drugs" = 15, "sugar" = 15)
 	pill_icon_class = "drug"
 
+/obj/item/reagent_container/pill/zombie_powder
+	desc = "A strange pill that smells like death itself."
+	pill_desc = "A strange pill that smells like death itself."
+	pill_initial_reagents = list("zombiepowder" = 8, "copper" = 2) //roughly two minutes of death
+	pill_icon_class = "drug"
+
 /obj/item/reagent_container/pill/russianRed
 	pill_desc = "A Russian Red pill. A very dangerous radiation-countering substance."
 	pill_initial_reagents = list("russianred" = 10)
@@ -248,11 +250,6 @@
 	pill_desc = "A Bicaridine pill. Heals brute damage."
 	pill_initial_reagents = list("bicaridine" = 15)
 	pill_icon_class = "bica"
-
-/obj/item/reagent_container/pill/quickclot
-	pill_desc = "A Quickclot pill. Stabilizes internal bleeding temporarily."
-	pill_initial_reagents = list("quickclot" = 7)
-	pill_icon_class = "qc"
 
 /obj/item/reagent_container/pill/ultrazine
 	pill_desc = "An Ultrazine pill. A highly-potent, long-lasting combination CNS and muscle stimulant. Extremely addictive."

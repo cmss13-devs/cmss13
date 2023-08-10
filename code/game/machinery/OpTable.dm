@@ -17,7 +17,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 1
 	active_power_usage = 5
-	var/strapped = 0.0
+	var/strapped = 0
 	can_buckle = TRUE
 	buckle_lying = TRUE
 	var/buckling_y = -4
@@ -38,6 +38,7 @@
 
 /obj/structure/machinery/optable/Destroy()
 	QDEL_NULL(anes_tank)
+	QDEL_NULL(computer)
 	. = ..()
 
 /obj/structure/machinery/optable/initialize_pass_flags(datum/pass_flags_container/PF)

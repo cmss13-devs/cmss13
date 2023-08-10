@@ -6,7 +6,7 @@
 	icon_state = "supply_crate"
 	overlay_ammo_type = "blank"
 	overlay_gun_type = "blank"
-	overlay_content = ""
+	overlay_content = "blank"
 	can_explode = FALSE
 	limit_per_tile = 4
 

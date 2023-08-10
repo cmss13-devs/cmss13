@@ -90,7 +90,7 @@
 	flags_inv_hide = HIDEFACE|HIDEALLHAIR
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE
 	w_class = SIZE_SMALL
-	siemens_coefficient = 3.0
+	siemens_coefficient = 3
 
 /obj/item/clothing/mask/luchador/tecnicos
 	name = "Tecnicos Mask"

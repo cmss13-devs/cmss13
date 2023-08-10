@@ -14,7 +14,11 @@
 		icon_state = initial(icon_state) + "_e"
 
 /obj/item/storage/box/packet/Initialize()
+	if(!content_type)
+		return INITIALIZE_HINT_QDEL
+
 	. = ..()
+
 	update_icon()
 
 /obj/item/storage/box/packet/fill_preset_inventory()
@@ -88,26 +92,37 @@ var/list/grenade_packets = list(
 	icon_state = "hefa_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive/frag
 
+/obj/item/storage/box/packet/hefa/toy
+	name = "toy HEFA grenade packet"
+	desc = "These little packets of joy were distributed in the 100th (Season 2) Issue of the Boots! magazine as commemorative rewards for subscribers. Nobody knows how anyone, at any point, never asked 'wait, is this a terrible idea?' during the process."
+	content_type = /obj/item/explosive/grenade/high_explosive/frag/toy
+
 /obj/item/storage/box/packet/m15
 	name = "\improper M15 fragmentation grenade packet"
 	desc = "It contains three M15 fragmentation grenades. Handle with care."
 	icon_state = "general_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive/m15
 
+/obj/item/storage/box/packet/m15/rubber
+	name = "M15 rubber pellet grenade packet"
+	desc = "It contains three M15 rubber pellet grenades, for riot control or combat exercises."
+	icon_state = "general_packet"
+	content_type = /obj/item/explosive/grenade/high_explosive/m15/rubber
+
 /obj/item/storage/box/packet/airburst_he
-	name = "\improper M74 airbust grenade packet"
+	name = "\improper M74 airburst grenade packet"
 	desc = "It contains three M74 airburst fragmentation grenades. This end towards the enemy."
 	icon_state = "agmf_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive/airburst
 
 /obj/item/storage/box/packet/airburst_incen
-	name = "\improper M74 airbust incendiary grenade packet"
+	name = "\improper M74 airburst incendiary grenade packet"
 	desc = "It contains three M74 airburst incendiary grenades. This end towards the enemy."
 	icon_state = "agmi_packet"
 	content_type = /obj/item/explosive/grenade/incendiary/airburst
 
 /obj/item/storage/box/packet/airburst_smoke
-	name = "\improper M74 airbust smoke grenade packet"
+	name = "\improper M74 airburst smoke grenade packet"
 	desc = "It contains three M74 airburst smoke grenades. This end towards the enemy."
 	icon_state = "agms_packet"
 	content_type = /obj/item/explosive/grenade/smokebomb/airburst

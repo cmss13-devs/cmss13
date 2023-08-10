@@ -37,7 +37,8 @@
 		"burncolor" = DB_FIELDTYPE_STRING_SMALL,
 		"burncolormod" = DB_FIELDTYPE_INT,
 		"properties_text" = DB_FIELDTYPE_STRING_MAX,
-		"spent_chemical" = DB_FIELDTYPE_INT)
+		"spent_chemical" = DB_FIELDTYPE_INT,
+	)
 
 /datum/entity_meta/chemical_information/map(datum/entity/chemical_information/ET, list/values)
 	..()

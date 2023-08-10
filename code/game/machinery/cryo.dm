@@ -2,6 +2,7 @@
 
 /obj/structure/machinery/cryo_cell
 	name = "cryo cell"
+	desc = "A donation from the old A.W. project, using cryogenic technology. It slowly heals whoever is inside the tube."
 	icon = 'icons/obj/structures/machinery/cryogenics2.dmi'
 	icon_state = "cell"
 	density = FALSE
@@ -160,7 +161,7 @@
 		for(var/datum/reagent/R in beaker.reagents.reagent_list)
 			reagentnames += ";[R.name]"
 
-		msg_admin_niche("[key_name(user)] put \a [beaker] into \the [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>).", 1)
+		msg_admin_niche("[key_name(user)] put \a [beaker] into \the [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]) [ADMIN_JMP(src.loc)].", 1)
 
 		if(user.drop_inv_item_to_loc(W, src))
 			user.visible_message("[user] adds \a [W] to \the [src]!", "You add \a [W] to \the [src]!")
@@ -186,7 +187,7 @@
 		occupant.bodytemperature += 2*(temperature - occupant.bodytemperature)
 		occupant.bodytemperature = max(occupant.bodytemperature, temperature) // this is so ugly i'm sorry for doing it i'll fix it later i promise
 		occupant.recalculate_move_delay = TRUE
-		occupant.stat = 1
+		occupant.set_stat(UNCONSCIOUS)
 		if(occupant.bodytemperature < T0C)
 			occupant.Sleeping(10)
 			occupant.apply_effect(10, PARALYZE)

@@ -75,9 +75,9 @@
 /datum/mutator_set/hive_mutators
 	var/datum/hive_status/hive //Which hive do these mutators apply to. Need this to affect variables there
 	var/leader_count_boost = 0
-	var/maturation_multiplier = 1.0
-	var/tier_slot_multiplier = 1.0
-	var/larva_gestation_multiplier = 1.0
+	var/maturation_multiplier = 1
+	var/tier_slot_multiplier = 1
+	var/larva_gestation_multiplier = 1
 	var/bonus_larva_spawn_chance = 0
 
 /datum/mutator_set/hive_mutators/list_and_purchase_mutators()
@@ -124,9 +124,9 @@
 	tackle_strength_bonus = 0
 
 	leader_count_boost = 0
-	maturation_multiplier = 1.0
-	tier_slot_multiplier = 1.0
-	larva_gestation_multiplier = 1.0
+	maturation_multiplier = 1
+	tier_slot_multiplier = 1
+	larva_gestation_multiplier = 1
 	bonus_larva_spawn_chance = 0
 
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
@@ -178,8 +178,8 @@
 //Mutators applying to an individual xeno
 /datum/mutator_set/individual_mutators
 	var/mob/living/carbon/xenomorph/xeno
-	var/pull_multiplier = 1.0
-	var/egg_laying_multiplier = 1.0
+	var/pull_multiplier = 1
+	var/egg_laying_multiplier = 1
 	var/need_weeds = TRUE
 	//Strains Below
 	remaining_points = 6

@@ -14,7 +14,7 @@
 	var/temp = null
 	var/frequency = 1451
 	var/broadcasting = null
-	var/listening = 1.0
+	var/listening = 1
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
 	item_state = "electronic"

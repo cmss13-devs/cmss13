@@ -26,7 +26,7 @@
 	dmg_max = FALSE
 	steps = list(
 		/datum/surgery_step/treat_hematoma,
-		/datum/surgery_step/remove_bone_chips
+		/datum/surgery_step/remove_bone_chips,
 	)
 
 //------------------------------------
@@ -55,10 +55,11 @@
 
 	var/datum/internal_organ/brain/B = target.internal_organs_by_name["brain"]
 	if(B)
-		B.damage = 0
+		B.heal_damage(B.damage)
 	target.disabilities &= ~NERVOUS
 	target.sdisabilities &= ~DISABILITY_DEAF
 	target.sdisabilities &= ~DISABILITY_MUTE
+	target.jitteriness = 0
 	target.pain.recalculate_pain()
 
 	log_interact(user, target, "[key_name(user)] finished taking bone chips out of [key_name(target)]'s brain with \the [tool], finishing [surgery].")

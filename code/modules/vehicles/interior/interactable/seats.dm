@@ -5,6 +5,7 @@
 	unacidable = TRUE
 	unslashable = TRUE
 	indestructible = TRUE
+	can_rotate = FALSE
 
 	//you want these chairs to not be easily obscured by objects
 	layer = BELOW_MOB_LAYER
@@ -115,9 +116,6 @@
 		vehicle.vehicle_faction = target.faction
 
 	return ..()
-
-/obj/structure/bed/chair/comfy/vehicle/rotate()
-	set hidden = TRUE
 
 /obj/structure/bed/chair/comfy/vehicle/attackby(obj/item/W, mob/living/user)
 	return
@@ -304,7 +302,8 @@
 	icon_state = "vehicle_seat"
 	var/image/chairbar = null
 	var/broken = FALSE
-	buildstacktype = 0
+	buildstackamount = 0
+	can_rotate = FALSE
 	picked_up_item = null
 
 	unslashable = FALSE
@@ -403,11 +402,15 @@
 //attack handling
 
 /obj/structure/bed/chair/vehicle/attack_alien(mob/living/user)
-	if(!broken && !unslashable)
+	if(!unslashable)
 		user.visible_message(SPAN_WARNING("[user] smashes \the [src]!"),
 		SPAN_WARNING("You smash \the [src]!"))
 		playsound(loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
-		break_seat()
+		if(!broken)
+			break_seat()
+		else
+			deconstruct(FALSE)
+
 
 /obj/structure/bed/chair/vehicle/attackby(obj/item/W, mob/living/user)
 	if((iswelder(W) && broken))
@@ -450,6 +453,3 @@
 				break_seat()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			break_seat()
-
-/obj/structure/bed/chair/vehicle/rotate()
-	return

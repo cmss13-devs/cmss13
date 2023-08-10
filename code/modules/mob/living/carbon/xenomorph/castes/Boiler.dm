@@ -4,29 +4,37 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_2
-	melee_vehicle_damage = XENO_DAMAGE_TIER_6 //being a T3 AND an acid-focused xeno, gets higher damage for self defense
-	max_health = XENO_HEALTH_TIER_8
+	melee_vehicle_damage = XENO_DAMAGE_TIER_6	//being a T3 AND an acid-focused xeno, gets higher damage for self defense
+	max_health = XENO_HEALTH_TIER_9
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_4
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
-	armor_deflection = XENO_NO_ARMOR
+	armor_deflection = XENO_ARMOR_TIER_1
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_TIER_1
+	speed = XENO_SPEED_TIER_3
 
 	behavior_delegate_type = /datum/behavior_delegate/boiler_base
 
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_SPITTER)
-	spit_delay = 35
+	spit_delay = 30 SECONDS
 	caste_desc = "Gross!"
 	acid_level = 3
 	caste_luminosity = 2
+	spit_types = list(/datum/ammo/xeno/boiler_gas, /datum/ammo/xeno/boiler_gas/acid)
+	fire_immunity = FIRE_VULNERABILITY
+	// 3x fire damage
+	fire_vulnerability_mult = FIRE_MULTIPLIER_DEADLY
 
 	tackle_min = 2
 	tackle_max = 6
 	tackle_chance = 25
 	tacklestrength_min = 3
 	tacklestrength_max = 4
+
+	minimum_evolve_time = 15 MINUTES
+
+	minimap_icon = "boiler"
 
 /mob/living/carbon/xenomorph/boiler
 	caste_type = XENO_CASTE_BOILER
@@ -43,9 +51,9 @@
 	gib_chance = 100
 	drag_delay = 6 //pulling a big dead xeno is hard
 	mutation_type = BOILER_NORMAL
-
-	tileoffset = 0
-	viewsize = 16
+	spit_delay  = 30 SECONDS
+	tileoffset = 3
+	viewsize = 7
 
 	icon_xeno = 'icons/mob/xenos/boiler.dmi'
 	icon_xenonid = 'icons/mob/xenonids/boiler.dmi'
@@ -58,10 +66,12 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab/boiler,
 		/datum/action/xeno_action/activable/corrosive_acid/strong,
-		/datum/action/xeno_action/activable/bombard, //1st macro
-		/datum/action/xeno_action/activable/acid_lance, //2nd macro
-		/datum/action/xeno_action/onclick/dump_acid, //3rd macro
-		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
+		/datum/action/xeno_action/activable/xeno_spit/bombard, //1st macro
+		/datum/action/xeno_action/onclick/shift_spits/boiler, //2nd macro
+		/datum/action/xeno_action/activable/spray_acid/boiler, //3rd macro
+		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4rd macro
+		/datum/action/xeno_action/onclick/acid_shroud, //4th macro
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 /mob/living/carbon/xenomorph/boiler/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
@@ -70,7 +80,8 @@
 	smoke.attach(src)
 	smoke.cause_data = create_cause_data(initial(caste_type), src)
 	see_in_dark = 20
-	ammo = GLOB.ammo_list[/datum/ammo/xeno/boiler_gas]
+	ammo = GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid]
+	spit_types = list(/datum/ammo/xeno/boiler_gas/acid, /datum/ammo/xeno/boiler_gas)
 
 	update_icon_source()
 
@@ -83,3 +94,4 @@
 // No special behavior for boilers
 /datum/behavior_delegate/boiler_base
 	name = "Base Boiler Behavior Delegate"
+

@@ -5,7 +5,7 @@
 
 	icon_state = "apc_base_com"
 
-	interior_map = "apc_command"
+	interior_map = /datum/map_template/interior/apc_command
 
 	passengers_slots = 8
 
@@ -14,6 +14,9 @@
 	var/techpod_faction_requirement = FACTION_MARINE
 	var/techpod_access_settings_override = FALSE
 
+	/// weakrefs of xenos temporarily added to the marine minimap
+	var/list/minimap_added = list()
+
 	entrances = list(
 		"left" = list(2, 0),
 		"right" = list(-2, 0)
@@ -21,21 +24,48 @@
 
 	seats = list(
 		VEHICLE_DRIVER = null,
-		VEHICLE_GUNNER = null
+		VEHICLE_GUNNER = null,
 	)
 
 	active_hp = list(
 		VEHICLE_DRIVER = null,
-		VEHICLE_GUNNER = null
+		VEHICLE_GUNNER = null,
 	)
 
 /obj/vehicle/multitile/apc/command/Initialize()
 	. = ..()
+	START_PROCESSING(SSslowobj, src)
 	GLOB.command_apc_list += src
 
 /obj/vehicle/multitile/apc/command/Destroy()
 	GLOB.command_apc_list -= src
+	STOP_PROCESSING(SSslowobj, src)
 	return ..()
+
+/obj/vehicle/multitile/apc/command/process()
+	. = ..()
+
+	var/turf/apc_turf = get_turf(src)
+	if(health == 0 || !visible_in_tacmap || !is_ground_level(apc_turf.z))
+		return
+
+	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)
+		var/turf/xeno_turf = get_turf(current_xeno)
+		if(!is_ground_level(xeno_turf.z))
+			continue
+
+		if(get_dist(src, current_xeno) <= sensor_radius)
+			if(WEAKREF(current_xeno) in minimap_added)
+				continue
+
+			SSminimaps.remove_marker(current_xeno)
+			current_xeno.add_minimap_marker(MINIMAP_FLAG_USCM|MINIMAP_FLAG_XENO)
+			minimap_added += WEAKREF(current_xeno)
+		else
+			if(WEAKREF(current_xeno) in minimap_added)
+				SSminimaps.remove_marker(current_xeno)
+				current_xeno.add_minimap_marker()
+				minimap_added -= WEAKREF(current_xeno)
 
 /obj/vehicle/multitile/apc/command/load_role_reserved_slots()
 	var/datum/role_reserved_slots/RRS = new
@@ -154,7 +184,7 @@
 
 //stole my own code from techpod_vendor
 /obj/vehicle/multitile/apc/command/proc/get_access_permission(mob/living/carbon/human/user)
-	if(SSticker.mode == "Whiskey Outpost" || master_mode == "Whiskey Outpost")
+	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || master_mode == GAMEMODE_WHISKEY_OUTPOST)
 		return TRUE
 	else if(SSticker.mode == "Distress Signal" || master_mode == "Distress Signal")
 		if(techpod_access_settings_override)

@@ -26,7 +26,7 @@
 	else
 		visible_message(SPAN_DANGER("<B>\The [src] have been attacked with \the [W][(user ? "by [user]." : ".")]"))
 
-	var/damage = W.force / 4.0
+	var/damage = W.force / 4
 
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W

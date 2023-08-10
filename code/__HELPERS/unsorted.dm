@@ -632,6 +632,8 @@
 		moblist.Add(M)
 	for(var/mob/living/simple_animal/M in sortmob)
 		moblist.Add(M)
+	for(var/mob/camera/imaginary_friend/friend in sortmob)
+		moblist += friend
 	return moblist
 
 /proc/sortxenos()
@@ -1043,8 +1045,8 @@ var/global/image/action_purple_power_up
 		has_target = TRUE
 
 	// Only living mobs can perform timed actions.
-	var/mob/living/L = user
-	if(!istype(L))
+	var/mob/living/busy_user = user
+	if(!istype(busy_user))
 		return FALSE
 
 	// This var will only be used for checks that require target to be living.
@@ -1057,41 +1059,37 @@ var/global/image/action_purple_power_up
 	if(show_busy_icon)
 		busy_icon = get_busy_icon(show_busy_icon)
 		if(busy_icon)
-			busy_icon.appearance_flags = RESET_ALPHA|KEEP_APART
-			busy_icon.alpha = 255
-			L.overlays += busy_icon
+			busy_user.overlays += busy_icon
 
 	var/image/target_icon
 	if(show_target_icon) //putting a busy overlay on top of the target
 		target_icon = get_busy_icon(show_target_icon)
 		if(target_icon)
-			target_icon.appearance_flags = RESET_ALPHA|KEEP_APART
-			target_icon.alpha = 255
 			target.overlays += target_icon
 
 	if(user_flags & BEHAVIOR_IMMOBILE)
-		L.status_flags |= IMMOBILE_ACTION
+		busy_user.status_flags |= IMMOBILE_ACTION
 
-	L.action_busy++ // target is not tethered by action, the action is tethered by target though
-	L.resisting = FALSE
-	L.clicked_something = list()
+	busy_user.action_busy++ // target is not tethered by action, the action is tethered by target though
+	busy_user.resisting = FALSE
+	busy_user.clicked_something = list()
 	if(has_target && target_is_mob)
 		T.resisting = FALSE
 		T.clicked_something = list()
 
-	var/cur_user_zone_sel = L.zone_selected
+	var/cur_user_zone_sel = busy_user.zone_selected
 	var/cur_target_zone_sel
 	var/delayfraction = Ceiling(delay/numticks)
-	var/user_orig_loc = L.loc
-	var/user_orig_turf = get_turf(L)
+	var/user_orig_loc = busy_user.loc
+	var/user_orig_turf = get_turf(busy_user)
 	var/target_orig_loc
 	var/target_orig_turf
 	if(has_target)
 		target_orig_loc = target.loc
 		target_orig_turf = get_turf(target)
-	var/obj/user_holding = L.get_active_hand()
+	var/obj/user_holding = busy_user.get_active_hand()
 	var/obj/target_holding
-	var/cur_user_lying = L.lying
+	var/cur_user_lying = busy_user.lying
 	var/cur_target_lying
 	var/expected_total_time = delayfraction*numticks
 	var/time_remaining = expected_total_time
@@ -1105,46 +1103,46 @@ var/global/image/action_purple_power_up
 	for(var/i in 1 to numticks)
 		sleep(delayfraction)
 		time_remaining -= delayfraction
-		if(!istype(L) || has_target && !istype(target)) // Checks if L exists and is not dead and if the target exists and is not destroyed
+		if(!istype(busy_user) || has_target && !istype(target)) // Checks if busy_user exists and is not dead and if the target exists and is not destroyed
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_DIFF_LOC && L.loc != user_orig_loc || \
+		if(user_flags & INTERRUPT_DIFF_LOC && busy_user.loc != user_orig_loc || \
 			has_target && (target_flags & INTERRUPT_DIFF_LOC && target.loc != target_orig_loc)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_DIFF_TURF && get_turf(L) != user_orig_turf || \
+		if(user_flags & INTERRUPT_DIFF_TURF && get_turf(busy_user) != user_orig_turf || \
 			has_target && (target_flags & INTERRUPT_DIFF_TURF && get_turf(target) != target_orig_turf)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_UNCONSCIOUS && L.stat || \
+		if(user_flags & INTERRUPT_UNCONSCIOUS && busy_user.stat || \
 			target_is_mob && (target_flags & INTERRUPT_UNCONSCIOUS && T.stat)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_KNOCKED_DOWN && L.knocked_down || \
+		if(user_flags & INTERRUPT_KNOCKED_DOWN && busy_user.knocked_down || \
 			target_is_mob && (target_flags & INTERRUPT_KNOCKED_DOWN && T.knocked_down)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_STUNNED && L.stunned || \
+		if(user_flags & INTERRUPT_STUNNED && busy_user.stunned || \
 			target_is_mob && (target_flags & INTERRUPT_STUNNED && T.stunned)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_DAZED && L.dazed)
+		if(user_flags & INTERRUPT_DAZED && busy_user.dazed)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_EMOTE && !L.flags_emote)
+		if(user_flags & INTERRUPT_EMOTE && !busy_user.flags_emote)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_NEEDHAND)
 			if(user_holding)
-				if(!user_holding.loc || L.get_active_hand() != user_holding) //no longer holding the required item
+				if(!user_holding.loc || busy_user.get_active_hand() != user_holding) //no longer holding the required item in active hand
 					. = FALSE
 					break
-			else if(L.get_active_hand()) //something in active hand when we need it to stay empty
+			else if(busy_user.get_active_hand()) //something in active hand when we need it to stay empty
 				. = FALSE
 				break
 		if(target_is_mob && target_flags & INTERRUPT_NEEDHAND)
@@ -1155,65 +1153,70 @@ var/global/image/action_purple_power_up
 			else if(T.get_active_hand())
 				. = FALSE
 				break
-		if(user_flags & INTERRUPT_RESIST && L.resisting || \
+		if(user_flags & INTERRUPT_NO_NEEDHAND)
+			if(user_holding)
+				if(!user_holding.loc || (busy_user.l_hand != user_holding && busy_user.r_hand != user_holding)) //no longer holding the required item in either hand
+					. = FALSE
+					break
+		if(user_flags & INTERRUPT_RESIST && busy_user.resisting || \
 			target_is_mob && (target_flags & INTERRUPT_RESIST && T.resisting)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_user_zone_sel != L.zone_selected || \
+		if(user_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_user_zone_sel != busy_user.zone_selected || \
 			target_is_mob && (target_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_target_zone_sel != T.zone_selected)
 		)
 			. = FALSE
 			break
-		if((user_flags|target_flags) & INTERRUPT_OUT_OF_RANGE && target && get_dist(L, target) > max_dist)
+		if((user_flags|target_flags) & INTERRUPT_OUT_OF_RANGE && target && get_dist(busy_user, target) > max_dist)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_LCLICK && L.clicked_something["left"] || \
+		if(user_flags & INTERRUPT_LCLICK && busy_user.clicked_something["left"] || \
 			target_is_mob && (target_flags & INTERRUPT_LCLICK && T.clicked_something["left"])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_RCLICK && L.clicked_something["right"] || \
+		if(user_flags & INTERRUPT_RCLICK && busy_user.clicked_something["right"] || \
 			target_is_mob && (target_flags & INTERRUPT_RCLICK && T.clicked_something["right"])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_SHIFTCLICK && L.clicked_something["left"] && L.clicked_something["shift"] || \
+		if(user_flags & INTERRUPT_SHIFTCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["shift"] || \
 			target_is_mob && (target_flags & INTERRUPT_SHIFTCLICK && T.clicked_something["left"] && T.clicked_something["shift"])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_ALTCLICK && L.clicked_something["left"] && L.clicked_something["alt"] || \
+		if(user_flags & INTERRUPT_ALTCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["alt"] || \
 			target_is_mob && (target_flags & INTERRUPT_ALTCLICK && T.clicked_something["left"] && T.clicked_something["alt"])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_CTRLCLICK && L.clicked_something["left"] && L.clicked_something["ctrl"] || \
+		if(user_flags & INTERRUPT_CTRLCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["ctrl"] || \
 			target_is_mob && (target_flags & INTERRUPT_CTRLCLICK && T.clicked_something["left"] && T.clicked_something["ctrl"])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_MIDDLECLICK && L.clicked_something["middle"] || \
+		if(user_flags & INTERRUPT_MIDDLECLICK && busy_user.clicked_something["middle"] || \
 			target_is_mob && (target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something["middle"])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_CHANGED_LYING && L.lying != cur_user_lying || \
+		if(user_flags & INTERRUPT_CHANGED_LYING && busy_user.lying != cur_user_lying || \
 			target_is_mob && (target_flags & INTERRUPT_CHANGED_LYING && T.lying != cur_target_lying)
 		)
 			. = FALSE
 			break
 
-	if(L && busy_icon)
-		L.overlays -= busy_icon
+	if(busy_user && busy_icon)
+		busy_user.overlays -= busy_icon
 	if(target && target_icon)
 		target.overlays -= target_icon
 
-	L.action_busy--
-	L.resisting = FALSE
+	busy_user.action_busy--
+	busy_user.resisting = FALSE
 	if(target_is_mob)
 		T.resisting = FALSE
-	L.status_flags &= ~IMMOBILE_ACTION
+	busy_user.status_flags &= ~IMMOBILE_ACTION
 
 	if (show_remaining_time)
 		return (. ? 0 : time_remaining/expected_total_time) // If action was not interrupted, return 0 for no time left, otherwise return ratio of time remaining
@@ -1481,14 +1484,14 @@ var/list/WALLITEMS = list(
 	/obj/structure/machinery/firealarm,
 	/obj/structure/noticeboard,
 	/obj/structure/machinery/door_control,
-	/obj/structure/machinery/computer/security/telescreen,
+	/obj/structure/machinery/computer/cameras/telescreen,
 	/obj/item/storage/secure/safe,
 	/obj/structure/machinery/brig_cell,
 	/obj/structure/machinery/flasher,
 	/obj/structure/machinery/keycard_auth,
 	/obj/structure/mirror,
 	/obj/structure/closet/fireaxecabinet,
-	/obj/structure/machinery/computer/security/telescreen/entertainment,
+	/obj/structure/machinery/computer/cameras/telescreen/entertainment,
 	)
 /proc/gotwallitem(loc, dir)
 	for(var/obj/O in loc)
@@ -1642,24 +1645,6 @@ var/list/WALLITEMS = list(
 	if(turfs.len)
 		return pick(turfs)
 
-/proc/input_marked_datum(list/marked_datums)
-	if(!marked_datums.len)
-		return null
-
-	var/list/options = list()
-	for(var/datum/D in marked_datums)
-		options += "Marked datum ([D] - \ref[D])"
-	var/choice = tgui_input_list(usr, "Select marked datum", "Marked datums", options)
-
-	if(!choice)
-		return null
-
-	for(var/datum/D in marked_datums)
-		if(findtext(choice, "\ref[D]"))
-			return D
-
-	return null
-
 // Returns true if arming a given explosive might be considered grief
 // Explosives are considered "griefy" if they are primed when all the following are true:
 // * The explosive is on the Almayer/dropship transit z levels
@@ -1671,7 +1656,7 @@ var/list/WALLITEMS = list(
 	var/turf/Turf = get_turf(explosive)
 	if(!(Turf.loc.type in GLOB.explosive_antigrief_exempt_areas))
 		var/crash_occured = (SSticker?.mode?.is_in_endgame)
-		if((Turf.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))) && (security_level < SEC_LEVEL_RED) && !crash_occured)
+		if((Turf.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_RESERVED))) && (security_level < SEC_LEVEL_RED) && !crash_occured)
 			switch(CONFIG_GET(number/explosive_antigrief))
 				if(ANTIGRIEF_DISABLED)
 					return FALSE
@@ -1797,18 +1782,34 @@ var/list/WALLITEMS = list(
 			var/mob/living/carbon/human/H = user
 			if(H.selected_ability)
 				return FALSE
-	if(user.client.eye == user)
+	if(user.client.eye == user && !user.is_mob_incapacitated(TRUE))
 		user.face_atom(src)
 	return TRUE
 
+#define VARSET_LIST_CALLBACK(target, var_name, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarset), ##target, ##var_name, ##var_value)
+//dupe code because dm can't handle 3 level deep macros
 #define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarset), ##datum, NAMEOF(##datum, ##var), ##var_value)
+/// Same as VARSET_CALLBACK, but uses a weakref to the datum.
+/// Use this if the timer is exceptionally long.
+#define VARSET_WEAK_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarset), WEAKREF(##datum), NAMEOF(##datum, ##var), ##var_value)
 
 /proc/___callbackvarset(list_or_datum, var_name, var_value)
 	if(length(list_or_datum))
 		list_or_datum[var_name] = var_value
 		return
-	var/datum/D = list_or_datum
-	D.vars[var_name] = var_value
+
+	var/datum/datum = list_or_datum
+
+	if (isweakref(datum))
+		var/datum/weakref/datum_weakref = datum
+		datum = datum_weakref.resolve()
+		if (isnull(datum))
+			return
+
+	if(IsAdminAdvancedProcCall())
+		datum.vv_edit_var(var_name, var_value) //same result generally, unless badmemes
+	else
+		datum.vars[var_name] = var_value
 
 //don't question just accept
 /proc/pass(...)

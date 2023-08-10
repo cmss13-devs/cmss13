@@ -529,6 +529,8 @@
 
 //doing last preparation before actually firing gun
 /obj/item/hardpoint/proc/fire(mob/user, atom/A)
+	if(!ammo) //Prevents a runtime
+		return
 	if(ammo.current_rounds <= 0)
 		return
 

@@ -1,4 +1,3 @@
-
 /mob/proc/has_disease(datum/disease/virus)
 	for(var/datum/disease/D in viruses)
 		if(D.IsSame(virus))

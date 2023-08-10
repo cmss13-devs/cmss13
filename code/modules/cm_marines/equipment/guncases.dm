@@ -58,13 +58,15 @@
 /obj/item/storage/box/guncase/lmg
 	name = "\improper M41AE2 heavy pulse rifle case"
 	desc = "A gun case containing the M41AE2 heavy pulse rifle. You can get additional ammunition at requisitions."
-	storage_slots = 3
+	storage_slots = 5
 	can_hold = list(/obj/item/weapon/gun/rifle/lmg, /obj/item/ammo_magazine/rifle/lmg)
 
 /obj/item/storage/box/guncase/lmg/fill_preset_inventory()
 	new /obj/item/weapon/gun/rifle/lmg(src)
 	new /obj/item/ammo_magazine/rifle/lmg(src)
 	new /obj/item/ammo_magazine/rifle/lmg/holo_target(src)
+	new /obj/item/attachable/flashlight
+	new /obj/item/attachable/bipod
 
 //------------
 /obj/item/storage/box/guncase/m41aMK1
@@ -200,3 +202,140 @@
 				new /obj/item/ammo_magazine/shotgun/flechette(src)
 			if(3)
 				new /obj/item/ammo_magazine/shotgun/slugs(src)
+
+/obj/item/storage/box/guncase/mk45_automag
+	name = "\improper MK-45 Automagnum case"
+	desc = "A gun case containing the MK-45 'High-Power' Automagnum sidearm. While this weapon was rejected as a replacement for the M44 Combat Revolver, it is often back-issued to troops who prefer its powerful bullets over more common sidearms."
+	storage_slots = 6
+	can_hold = list(/obj/item/weapon/gun/pistol/highpower, /obj/item/ammo_magazine/pistol/highpower)
+
+/obj/item/storage/box/guncase/mk45_automag/fill_preset_inventory()
+	if(prob(30))
+		new /obj/item/weapon/gun/pistol/highpower(src)
+		new /obj/item/ammo_magazine/pistol/highpower(src)
+		new /obj/item/ammo_magazine/pistol/highpower(src)
+		new /obj/item/ammo_magazine/pistol/highpower(src)
+		new /obj/item/ammo_magazine/pistol/highpower(src)
+		new /obj/item/ammo_magazine/pistol/highpower(src)
+		new /obj/item/ammo_magazine/pistol/highpower(src)
+	else
+		new /obj/item/weapon/gun/pistol/highpower/black(src)
+		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+
+
+/obj/item/storage/box/guncase/nsg23_marine
+	name = "\improper NSG-23 assault rifle case"
+	desc = "A gun case containing the NSG 23 assault rifle. While usually seen in the hands of PMCs, this weapon is sometimes issued to USCM personnel."
+	storage_slots = 6
+	can_hold = list(/obj/item/weapon/gun/rifle/nsg23/no_lock, /obj/item/ammo_magazine/rifle/nsg23)
+
+/obj/item/storage/box/guncase/nsg23_marine/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/nsg23/no_lock(src)
+	new /obj/item/ammo_magazine/rifle/nsg23/ap(src)
+	new /obj/item/ammo_magazine/rifle/nsg23/extended(src)
+	new /obj/item/ammo_magazine/rifle/nsg23(src)
+	new /obj/item/ammo_magazine/rifle/nsg23(src)
+	new /obj/item/ammo_magazine/rifle/nsg23(src)
+
+/obj/item/storage/box/guncase/m3717
+	name = "\improper M37-17 pump shotgun case"
+	desc = "A gun case containing the M37-17 pump shotgun. Rarely seen issued to USCM vessels on the edges of inhabited space who need the extra bang for their buck (literally) the M37-17 has. Like this one! Well, if it had the budget for it."
+	storage_slots = 4
+	can_hold = list(/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717, /obj/item/ammo_magazine/shotgun/buckshot)
+
+/obj/item/storage/box/guncase/m3717/fill_preset_inventory()
+	new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717(src)
+	new /obj/item/ammo_magazine/shotgun/buckshot(src)
+	new /obj/item/ammo_magazine/shotgun/buckshot(src)
+	new /obj/item/ammo_magazine/shotgun/buckshot(src)
+
+/obj/item/storage/box/guncase/m1911
+	name = "\improper M1911 service pistol case"
+	desc = "A gun case containing the M1911 service pistol. It might be three centuries old but it's still a damn good pistol. Back-issue only, though."
+	storage_slots = 7
+	can_hold = list(/obj/item/weapon/gun/pistol/m1911, /obj/item/ammo_magazine/pistol/m1911)
+
+/obj/item/storage/box/guncase/m1911/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+
+/obj/item/storage/box/guncase/m1911/socom
+	name = "\improper SOCOM M1911 service pistol case"
+	storage_slots = 7
+	can_hold = list(/obj/item/weapon/gun/pistol/m1911/socom, /obj/item/ammo_magazine/pistol/m1911)
+
+/obj/item/storage/box/guncase/m1911/socom/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/m1911/socom(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+
+/obj/item/storage/box/guncase/cane_gun_kit
+	name = "spy-agent cane case"
+	desc = "A gun case containing a top-secret Gun Cane chambered in .44, alongside two spare handfuls of said caliber. Make sure to fold this after you use it!"
+	can_hold = list(/obj/item/weapon/gun/shotgun/double/cane, /obj/item/ammo_magazine/handful/revolver)
+	storage_slots = 3
+
+/obj/item/storage/box/guncase/cane_gun_kit/fill_preset_inventory()
+	new /obj/item/weapon/gun/shotgun/double/cane(src)
+	new /obj/item/ammo_magazine/handful/revolver/marksman/six_rounds(src)
+	new /obj/item/ammo_magazine/handful/revolver/marksman/six_rounds(src)
+
+//Handgun case for Military police vendor three mag , a railflashligh and the handgun.
+
+//88 Mod 4 Combat Pistol
+/obj/item/storage/box/guncase/mod88
+	name = "\improper 88 Mod 4 Combat Pistol case"
+	desc = "A gun case containing an 88 Mod 4 Combat Pistol."
+	storage_slots = 5
+	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/pistol/mod88, /obj/item/ammo_magazine/pistol/mod88)
+
+/obj/item/storage/box/guncase/mod88/fill_preset_inventory()
+	new /obj/item/attachable/flashlight(src)
+	new /obj/item/weapon/gun/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+
+//M44 Combat Revolver
+/obj/item/storage/box/guncase/m44
+	name = "\improper M44 Combat Revolver case"
+	desc = "A gun case containing an M44 Combat Revolver."
+	storage_slots = 5
+	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/revolver/m44, /obj/item/ammo_magazine/revolver)
+
+/obj/item/storage/box/guncase/m44/fill_preset_inventory()
+	new /obj/item/attachable/flashlight(src)
+	new /obj/item/weapon/gun/revolver/m44(src)
+	new /obj/item/ammo_magazine/revolver(src)
+	new /obj/item/ammo_magazine/revolver(src)
+	new /obj/item/ammo_magazine/revolver(src)
+
+//M4A3 Service Pistol
+/obj/item/storage/box/guncase/m4a3
+	name = "\improper M4A3 Service Pistol case"
+	desc = "A gun case containing an M4A3 Service Pistol."
+	storage_slots = 5
+	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/pistol/m4a3, /obj/item/ammo_magazine/pistol)
+
+/obj/item/storage/box/guncase/m4a3/fill_preset_inventory()
+	new /obj/item/attachable/flashlight(src)
+	new /obj/item/weapon/gun/pistol/m4a3(src)
+	new /obj/item/ammo_magazine/pistol(src)
+	new /obj/item/ammo_magazine/pistol(src)
+	new /obj/item/ammo_magazine/pistol(src)

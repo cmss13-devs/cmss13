@@ -4,7 +4,7 @@
 	icon_state = "briefcase"
 	item_state = "briefcase"
 	flags_atom = FPRINT|CONDUCT
-	force = 8.0
+	force = 8
 	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_LARGE
@@ -42,4 +42,4 @@
 	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
 	icon_state = "suitcase"
 	item_state = "suitcase"
-	force = 8.0
+	force = 8

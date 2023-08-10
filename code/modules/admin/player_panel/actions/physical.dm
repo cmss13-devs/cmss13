@@ -93,7 +93,7 @@
 					if(set_name && !available_specialist_sets.Find(set_name))
 						available_specialist_sets += set_name
 			S.forget_marine_in_squad(H)
-		message_staff("[key_name_admin(user)] sent [key_name_admin(target)] ([H.job]) to cryogenics.")
+		message_admins("[key_name_admin(user)] sent [key_name_admin(target)] ([H.job]) to cryogenics.")
 
 	SSticker.mode.latejoin_tally-- //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
 
@@ -180,13 +180,17 @@
 	permissions_required = R_SPAWN
 
 /datum/player_action/strip_equipment/act(client/user, mob/target, list/params)
-	for (var/obj/item/I in target)
-		if(params["drop_items"])
-			target.drop_inv_item_to_loc(I, target.loc, FALSE, TRUE)
-		else
-			qdel(I)
+	for (var/obj/item/current_item in target)
+		if(istype(current_item, /obj/item/card/id))
+			continue
 
-	message_staff("[key_name_admin(user)] stripped [target] of their items.")
+		if(params["drop_items"])
+			target.drop_inv_item_to_loc(current_item, target.loc, FALSE, TRUE)
+			continue
+
+		qdel(current_item)
+
+	message_admins("[key_name_admin(user)] stripped [target] of their items.")
 	return TRUE
 
 /datum/player_action/set_squad
@@ -205,7 +209,7 @@
 
 	var/success = transfer_marine_to_squad(target, squads[selected_squad], target.assigned_squad, target.get_idcard())
 
-	message_staff("[key_name_admin(user)][success ? "" : " failed to"] set [key_name_admin(target)]'s squad to [selected_squad].")
+	message_admins("[key_name_admin(user)][success ? "" : " failed to"] set [key_name_admin(target)]'s squad to [selected_squad].")
 	return TRUE
 
 /datum/player_action/set_faction
@@ -220,5 +224,5 @@
 	target.faction = new_faction
 	target.faction_group = list(new_faction)
 
-	message_staff("[key_name_admin(user)][new_faction ? "" : " failed to"] set [key_name_admin(target)]'s faction to [new_faction].")
+	message_admins("[key_name_admin(user)][new_faction ? "" : " failed to"] set [key_name_admin(target)]'s faction to [new_faction].")
 	return TRUE

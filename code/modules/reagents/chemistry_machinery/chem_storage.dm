@@ -14,6 +14,9 @@
 	var/energy = 50
 	var/max_energy = 50
 
+	unslashable = TRUE
+	unacidable = TRUE
+
 /obj/structure/machinery/chem_storage/medbay
 	name = "Chemical Storage System (Medbay)"
 	network = "Medbay"
@@ -30,6 +33,10 @@
 	. = ..()
 	chemical_data.add_chem_storage(src)
 	start_processing()
+
+/obj/structure/machinery/chem_storage/Destroy()
+	chemical_data.remove_chem_storage(src)
+	return ..()
 
 /obj/structure/machinery/chem_storage/get_examine_text(mob/user)
 	. = ..()

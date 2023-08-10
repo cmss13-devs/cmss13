@@ -21,6 +21,10 @@
 	. = ..()
 	update_desc()
 
+/obj/structure/machinery/constructable_frame/Destroy()
+	QDEL_NULL(circuit)
+	return ..()
+
 /obj/structure/machinery/constructable_frame/proc/update_desc()
 	if(state == CONSTRUCTION_STATE_BEGIN)
 		requirements_left = " Requires 5 lengths of cable."
@@ -99,7 +103,7 @@
 					to_chat(user, requirements_left)
 					update_desc()
 
-			else if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
+			else if(HAS_TRAIT(P, TRAIT_TOOL_WIRECUTTERS))
 				if(!skillcheck(user, SKILL_ENGINEER, required_dismantle_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return
@@ -110,7 +114,7 @@
 				A.amount = 5
 
 		if(CONSTRUCTION_STATE_FINISHED)
-			if(istype(P, /obj/item/tool/crowbar))
+			if(HAS_TRAIT(P, TRAIT_TOOL_CROWBAR))
 				if(!skillcheck(user, SKILL_ENGINEER, required_dismantle_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return

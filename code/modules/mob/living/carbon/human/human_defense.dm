@@ -52,9 +52,9 @@ Contains most of the procs that are called when a mob is attacked by something
 //this proc returns the Siemens coefficient of electrical resistivity for a particular external organ.
 /mob/living/carbon/human/proc/get_siemens_coefficient_organ(obj/limb/def_zone)
 	if (!def_zone)
-		return 1.0
+		return 1
 
-	var/siemens_coefficient = 1.0
+	var/siemens_coefficient = 1
 
 	var/list/clothing_items = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes, glasses) // What all are we checking?
 	for(var/obj/item/clothing/C in clothing_items)
@@ -63,18 +63,23 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	return siemens_coefficient
 
-//this proc returns the armour value for a particular external organ.
+//this proc returns the armor value for a particular external organ.
 /mob/living/carbon/human/proc/getarmor_organ(obj/limb/def_zone, type)
 	if(!type)
 		return FALSE
 	var/protection = 0
 	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes, glasses)
 	for(var/gear in protective_gear)
-		if(gear && istype(gear ,/obj/item/clothing))
+		if(gear && istype(gear, /obj/item/clothing))
 			var/obj/item/clothing/C = gear
 			if(C.flags_armor_protection & def_zone.body_part)
 				protection += C.get_armor(type)
 	return protection
+
+/mob/living/carbon/human/get_sharp_obj_blocker(obj/limb/limb)
+	for(var/obj/item/gear in list(head, wear_mask, wear_suit, w_uniform, gloves, shoes, glasses))
+		if(HAS_FLAG(gear.flags_armor_protection, limb.body_part) && HAS_FLAG(gear.flags_inventory, BLOCKSHARPOBJ))
+			return gear
 
 /mob/living/carbon/human/proc/check_head_coverage()
 
@@ -90,8 +95,8 @@ Contains most of the procs that are called when a mob is attacked by something
 
 /mob/living/carbon/human/proc/check_shields(damage = 0, attack_text = "the attack", combistick=0)
 	if(l_hand && istype(l_hand, /obj/item/weapon))//Current base is the prob(50-d/3)
-		if(combistick && istype(l_hand,/obj/item/weapon/melee/yautja/combistick) && prob(66))
-			var/obj/item/weapon/melee/yautja/combistick/C = l_hand
+		if(combistick && istype(l_hand,/obj/item/weapon/yautja/combistick) && prob(66))
+			var/obj/item/weapon/yautja/combistick/C = l_hand
 			if(C.on)
 				return TRUE
 
@@ -115,8 +120,8 @@ Contains most of the procs that are called when a mob is attacked by something
 			return TRUE
 
 	if(r_hand && istype(r_hand, /obj/item/weapon))
-		if(combistick && istype(r_hand,/obj/item/weapon/melee/yautja/combistick) && prob(66))
-			var/obj/item/weapon/melee/yautja/combistick/C = r_hand
+		if(combistick && istype(r_hand,/obj/item/weapon/yautja/combistick) && prob(66))
+			var/obj/item/weapon/yautja/combistick/C = r_hand
 			if(C.on)
 				return TRUE
 

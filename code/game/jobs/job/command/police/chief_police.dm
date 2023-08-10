@@ -13,4 +13,5 @@ AddTimelock(/datum/job/command/warrant, list(
 
 /obj/effect/landmark/start/warrant
 	name = JOB_CHIEF_POLICE
+	icon_state = "cmp_spawn"
 	job = /datum/job/command/warrant

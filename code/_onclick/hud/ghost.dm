@@ -4,7 +4,7 @@
 /atom/movable/screen/ghost/MouseEntered()
 	flick(icon_state + "_anim", src)
 
-/atom/movable/screen/ghost/attack_ghost(mob/dead/observer/user)
+/atom/movable/screen/attack_ghost(mob/dead/observer/user)
 	Click()
 
 /atom/movable/screen/ghost/follow_ghosts
@@ -14,6 +14,15 @@
 /atom/movable/screen/ghost/follow_ghosts/Click()
 	var/mob/dead/observer/G = usr
 	G.follow()
+
+/atom/movable/screen/ghost/minimap
+	name = "Minimap"
+	icon_state = "minimap"
+
+/atom/movable/screen/ghost/minimap/Click()
+	var/mob/dead/observer/ghost = usr
+
+	ghost.minimap.action_activate()
 
 // /atom/movable/screen/ghost/follow_xeno
 // name = "Follow Xeno"
@@ -47,16 +56,16 @@
 	using.screen_loc = ui_ghost_slot2
 	static_inventory += using
 
-	// using = new /atom/movable/screen/ghost/follow_xeno()
-	// using.screen_loc = ui_ghost_slot2
-	// static_inventory += using
+	using = new /atom/movable/screen/ghost/minimap()
+	using.screen_loc = ui_ghost_slot3
+	static_inventory += using
 
 	// using = new /atom/movable/screen/ghost/follow_human()
 	// using.screen_loc = ui_ghost_slot3
 	// static_inventory += using
 
 	using = new /atom/movable/screen/ghost/reenter_corpse()
-	using.screen_loc = ui_ghost_slot3
+	using.screen_loc = ui_ghost_slot4
 	static_inventory += using
 
 
@@ -71,7 +80,8 @@
 	if(!.)
 		return
 	var/mob/screenmob = viewmob || mymob
-/* if(!screenmob.client.prefs.ghost_hud)
+
+	if(!hud_shown)
 		screenmob.client.screen -= static_inventory
-	else*/
-	screenmob.client.screen += static_inventory
+	else
+		screenmob.client.screen += static_inventory

@@ -11,36 +11,6 @@
 		return 1
 	return
 
-/mob/living/carbon/verb/warcry_macro()
-	set name = "warcry"
-	set hidden = TRUE
-
-	to_chat(usr, SPAN_WARNING("Your species doesn't have a warcry associated with it!"))
-
-/mob/living/carbon/human/warcry_macro()
-	emote("warcry", player_caused = TRUE)
-
-/mob/living/carbon/human/yautja/warcry_macro()
-	emote("roar", player_caused = TRUE)
-
-/mob/living/carbon/xenomorph/warcry_macro()
-	emote("roar", player_caused = TRUE)
-
-/mob/living/carbon/verb/medic_macro()
-	set name = "medic"
-	set hidden = TRUE
-
-	to_chat(usr, SPAN_WARNING("Your species doesn't have a help cry associated with it!"))
-
-/mob/living/carbon/human/medic_macro()
-	emote("medic", player_caused = TRUE)
-
-/mob/living/carbon/human/yautja/medic_macro()
-	emote("click", player_caused = TRUE)
-
-/mob/living/carbon/xenomorph/medic_macro()
-	emote("needhelp", player_caused = TRUE)
-
 /mob/living/carbon/check_view_change(new_size, atom/source)
 	LAZYREMOVE(view_change_sources, source)
 	var/highest_view = 0
@@ -69,3 +39,7 @@
 		if(!ear_deaf || !HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 			AdjustEarDeafness(2)
 		to_chat(src, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
+
+///Checks if something prevents sharp objects from interacting with the mob (such as armor blocking surgical tools / surgery)
+/mob/living/carbon/proc/get_sharp_obj_blocker(obj/limb/limb)
+	return null

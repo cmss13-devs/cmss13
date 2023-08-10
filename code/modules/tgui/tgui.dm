@@ -259,6 +259,10 @@
 			"observer" = isobserver(user),
 		),
 	)
+	// sanity...
+	if(!src_object && !custom_data)
+		return
+
 	var/data = custom_data || with_data && src_object.ui_data(user)
 	if(data)
 		json_data["data"] = data

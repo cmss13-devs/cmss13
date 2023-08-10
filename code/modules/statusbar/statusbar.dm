@@ -2,16 +2,17 @@
 ##type/MouseEntered(location, control, params){\
 	var/client/client = usr.client;\
 	if(client.prefs?.hide_statusbar){\
+		winset(client, "mapwindow.status_bar", "is-visible=false");\
 		return;\
 	}\
-	winset(client, "atom_name", "text=\"[name]\"");\
+	winset(client, "mapwindow.status_bar", "text=\"[name]\"");\
 };\
 ##type/MouseExited(location, control, params){\
 	var/client/client = usr.client;\
 	if(client.prefs?.hide_statusbar){\
 		return;\
 	}\
-	winset(client, "atom_name", "text=\"\"");\
+	winset(client, "mapwindow.status_bar", "text=\"\"");\
 }
 
 SHOW_ON_STATUSBAR(/mob)

@@ -71,7 +71,9 @@
 	var/list/vehicles = list()
 	var/list/escaped = list()
 
-	var/is_admin = check_other_rights(user.client, R_ADMIN, FALSE)
+	var/is_admin = FALSE
+	if(user && user.client)
+		is_admin = check_other_rights(user.client, R_ADMIN, FALSE)
 	var/list/pois = getpois(skip_mindless = !is_admin, specify_dead_role = FALSE)
 	for(var/name in pois)
 		var/list/serialized = list()
@@ -93,6 +95,10 @@
 		if(number_of_orbiters)
 			serialized["orbiters"] = number_of_orbiters
 
+		if(isobserver(M))
+			ghosts += list(serialized)
+			continue
+
 		if(M.stat == DEAD)
 			dead += list(serialized)
 			continue
@@ -109,7 +115,8 @@
 				var/mob/living/carbon/xenomorph/xeno = player
 				if(xeno.caste)
 					var/datum/caste_datum/caste = xeno.caste
-					serialized["caste"] = caste.display_name
+					serialized["caste"] = caste.caste_type
+					serialized["icon"] = caste.minimap_icon
 				xenos += list(serialized)
 				continue
 
@@ -123,7 +130,15 @@
 				serialized["job"] = id_card?.assignment ? id_card.assignment : human.job
 				serialized["nickname"] = human.real_name
 
-				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z))
+				var/icon = human.assigned_equipment_preset?.minimap_icon
+				serialized["icon"] = icon ? icon : "private"
+
+				if(human.assigned_squad)
+					serialized["background_color"] = human.assigned_squad.equipment_color ? human.assigned_squad.equipment_color : human.assigned_squad.minimap_color
+				else
+					serialized["background_color"] = human.assigned_equipment_preset?.minimap_background
+
+				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z) && !(human.faction in FACTION_LIST_ERT))
 					escaped += list(serialized)
 				else if(issynth(human) && !isinfiltratorsynthetic(human))
 					synthetics += list(serialized)
@@ -141,8 +156,6 @@
 			if(isanimal(player))
 				animals += list(serialized)
 
-		else if(isobserver(M))
-			ghosts += list(serialized)
 		else if(isAI(M))
 			humans += list(serialized)
 
@@ -160,6 +173,7 @@
 	data["npcs"] = npcs
 	data["vehicles"] = vehicles
 	data["escaped"] = escaped
+	data["icons"] = GLOB.minimap_icons
 
 	return data
 

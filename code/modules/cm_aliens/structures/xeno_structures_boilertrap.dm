@@ -18,7 +18,7 @@
 	var/mob/living/carbon/xenomorph/bound_xeno // Boiler linked to this trap
 
 /obj/effect/alien/resin/boilertrap/empowered
-	root_duration = 30.0
+	root_duration = 30
 
 /obj/effect/alien/resin/boilertrap/Initialize(mapload, mob/living/carbon/xenomorph/X)
 	if(mapload || !istype(X))

@@ -80,10 +80,6 @@
 /obj/effect/decal/cleanable/cobweb2,
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
 /obj/structure/surface/rack,
-/obj/item/reagent_container/hypospray/autoinjector/quickclot{
-	pixel_x = 3;
-	pixel_y = 3
-	},
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
@@ -189,7 +185,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "secure_inner_blast";
-	name = "Inner Blast Door";
+	name = "Secure Inner Doors";
 	pixel_x = 25;
 	pixel_y = 5
 	},
@@ -221,7 +217,7 @@
 	},
 /area/lv624/lazarus/armory)
 "B" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	locked = 1;
 	name = "\improper Nexus Dome Armory"
 	},

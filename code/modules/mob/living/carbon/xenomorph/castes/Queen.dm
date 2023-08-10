@@ -44,6 +44,11 @@
 	tacklestrength_max = 6
 
 	minimum_xeno_playtime = 9 HOURS
+	minimum_evolve_time = 0
+
+	minimap_icon = "xenoqueen"
+
+	royal_caste = TRUE
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
@@ -63,6 +68,7 @@
 /mob/hologram/queen
 	name = "Queen Eye"
 	action_icon_state = "queen_exit"
+	motion_sensed = TRUE
 
 	color = "#a800a8"
 
@@ -76,6 +82,9 @@
 
 
 /mob/hologram/queen/Initialize(mapload, mob/living/carbon/xenomorph/queen/Q)
+	if(!Q)
+		return INITIALIZE_HINT_QDEL
+
 	if(!istype(Q))
 		stack_trace("Tried to initialize a /mob/hologram/queen on type ([Q.type])")
 		return INITIALIZE_HINT_QDEL
@@ -96,7 +105,7 @@
 	), PROC_REF(stop_watching))
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(turf_weed_only))
 
-	// Default colour
+	// Default color
 	if(Q.hive.color)
 		color = Q.hive.color
 
@@ -225,7 +234,6 @@
 
 	return COMPONENT_OVERRIDE_VIEW
 
-
 /mob/hologram/queen/Destroy()
 	if(linked_mob)
 		var/mob/living/carbon/xenomorph/queen/Q = linked_mob
@@ -259,7 +267,7 @@
 	crystal_max = XENO_CRYSTAL_MEDIUM
 	crystal_stored = XENO_CRYSTAL_MEDIUM
 	small_explosives_stun = FALSE
-	pull_speed = 3.0 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
+	pull_speed = 3 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
 
 	icon_xeno = 'icons/mob/xenos/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
@@ -269,7 +277,6 @@
 	var/queen_ability_cooldown = 0
 	var/egg_amount = 0 //amount of eggs inside the queen
 	var/screech_sound_effect_list = list('sound/voice/alien_queen_screech.ogg') //the noise the Queen makes when she screeches. Done this way for VV purposes.
-	var/egg_planting_range = 3 // in ovipositor queen can plant egg up to this amount of tiles away from her position
 	var/queen_ovipositor_icon
 	var/queen_standing_icon
 
@@ -406,17 +413,24 @@
 	if(queen_aged)
 		age_xeno()
 		switch(age)
-			if(XENO_NORMAL) name = "[name_prefix]Queen"  //Young
-			if(XENO_MATURE) name = "[name_prefix]Elder Queen"  //Mature
-			if(XENO_ELDER) name = "[name_prefix]Elder Empress"  //Elite
-			if(XENO_ANCIENT) name = "[name_prefix]Ancient Empress" //Ancient
-			if(XENO_PRIME) name = "[name_prefix]Prime Empress" //Primordial
+			if(XENO_YOUNG)
+				name = "[name_prefix]Young Queen" //Young
+			if(XENO_NORMAL)
+				name = "[name_prefix]Queen"  //Regular
+			if(XENO_MATURE)
+				name = "[name_prefix]Elder Queen"  //Mature
+			if(XENO_ELDER)
+				name = "[name_prefix]Elder Empress"  //Elite
+			if(XENO_ANCIENT)
+				name = "[name_prefix]Ancient Empress" //Ancient
+			if(XENO_PRIME)
+				name = "[name_prefix]Prime Empress" //Primordial
 	else
 		age = XENO_NORMAL
 		if(client)
 			hud_update()
 
-		name = "[name_prefix]Young Queen"
+		name = "[name_prefix]Immature Queen"
 
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
@@ -501,8 +515,8 @@
 						egg_amount--
 						new /obj/item/xeno_egg(loc, hivenumber)
 
-/mob/living/carbon/xenomorph/queen/Stat()
-	..()
+/mob/living/carbon/xenomorph/queen/get_status_tab_items()
+	. = ..()
 	var/stored_larvae = GLOB.hive_datum[hivenumber].stored_larva
 	var/xeno_leader_num = hive?.queen_leader_limit - hive?.open_xeno_leader_positions.len
 
@@ -557,6 +571,9 @@
 	set category = "Alien"
 	set name = "Word of the Queen (50)"
 	set desc = "Send a message to all aliens in the hive that is big and visible"
+	if(client.prefs.muted & MUTE_IC)
+		to_chat(src, SPAN_DANGER("You cannot send Announcements (muted)."))
+		return
 	if(health <= 0)
 		to_chat(src, SPAN_WARNING("You can't do that while unconcious."))
 		return FALSE
@@ -582,7 +599,7 @@
 
 	xeno_announcement(input, hivenumber, "The words of the [name] reverberate in your head...")
 
-	log_and_message_staff("[key_name_admin(src)] has created a Word of the Queen report:")
+	log_and_message_admins("[key_name_admin(src)] has created a Word of the Queen report:")
 	log_admin("[key_name_admin(src)] Word of the Queen: [input]")
 	return TRUE
 
@@ -822,6 +839,7 @@
 	ADD_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))
 
 	extra_build_dist = IGNORE_BUILD_DISTANCE
+	egg_planting_range = 3
 	anchored = TRUE
 	resting = FALSE
 	update_canmove()
@@ -873,6 +891,7 @@
 
 	egg_amount = 0
 	extra_build_dist = initial(extra_build_dist)
+	egg_planting_range = initial(egg_planting_range)
 	for(var/datum/action/xeno_action/action in actions)
 		if(istype(action, /datum/action/xeno_action/onclick/grow_ovipositor))
 			var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = action
@@ -907,12 +926,7 @@
 	if(ovipositor)
 		return "Queen_ovipositor_[severity]" // I don't actually have it, but maybe one day.
 
-/mob/living/carbon/xenomorph/queen/proc/in_egg_plant_range(turf/T)
-	if(!ovipositor)
-		return FALSE // can't range plant while not in ovi... but who the fuck cares, we can't plant anyways
-	return get_dist(src, T) <= egg_planting_range
-
-/mob/living/carbon/xenomorph/queen/gib(cause = "gibbing")
+/mob/living/carbon/xenomorph/queen/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	death(cause, 1)
 
 /datum/behavior_delegate/queen
@@ -930,3 +944,7 @@
 
 	// Switch icon back and then let normal icon behavior happen
 	Queen.icon = Queen.queen_standing_icon
+
+/mob/living/carbon/xenomorph/queen/alter_ghost(mob/dead/observer/ghost)
+	ghost.icon = queen_standing_icon
+	return ..()

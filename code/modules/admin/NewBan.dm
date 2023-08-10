@@ -83,7 +83,7 @@ var/savefile/Banlist
 		if (!Banlist["key"] || !Banlist["id"])
 			RemoveBan(A)
 			log_admin("Invalid Ban.")
-			message_staff("Invalid Ban.")
+			message_admins("Invalid Ban.")
 			continue
 
 		if (!Banlist["temp"]) continue
@@ -138,11 +138,11 @@ var/savefile/Banlist
 
 	if(!usr)
 		log_admin("Ban Expired: [key]")
-		message_staff("Ban Expired: [key]")
+		message_admins("Ban Expired: [key]")
 	else
 		ban_unban_log_save("[key_name_admin(usr)] unbanned [key]")
 		log_admin("[key_name_admin(usr)] unbanned [key]")
-		message_staff("[key_name_admin(usr)] unbanned: [key]")
+		message_admins("[key_name_admin(usr)] unbanned: [key]")
 	for (var/A in Banlist.dir)
 		Banlist.cd = "/base/[A]"
 		if (key == Banlist["key"] /*|| id == Banlist["id"]*/)
@@ -170,9 +170,9 @@ var/savefile/Banlist
 /datum/admins/proc/unbanpanel()
 	var/dat
 
-	var/list/datum/view_record/player_ban_view/PBV = DB_VIEW(/datum/view_record/player_ban_view) // no filter
+	var/list/datum/view_record/players/PBV = DB_VIEW(/datum/view_record/players, DB_OR(DB_COMP("is_permabanned", DB_EQUALS, 1), DB_COMP("is_time_banned", DB_EQUALS, 1))) // a filter
 
-	for(var/datum/view_record/player_ban_view/ban in PBV)
+	for(var/datum/view_record/players/ban in PBV)
 		var/expiry
 		if(!ban.is_permabanned)
 			expiry = GetExp(ban.expiration)
@@ -226,6 +226,9 @@ var/savefile/Banlist
 		RemoveBan(A)
 
 /client/proc/cmd_admin_do_ban(mob/M)
+	if(IsAdminAdvancedProcCall())
+		alert_proccall("cmd_admin_do_ban")
+		return PROC_BLOCKED
 	if(!check_rights(R_BAN|R_MOD))  return
 
 	if(!ismob(M)) return
@@ -237,7 +240,7 @@ var/savefile/Banlist
 		to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))
 		return
 	var/mob_key = M.ckey
-	var/mins = tgui_input_number(usr,"How long (in minutes)? \n 180 = 3 hours \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time", 1440, 43800, 1)
+	var/mins = tgui_input_number(usr,"How long (in minutes)? \n 180 = 3 hours \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time", 1440, 262800, 1)
 	if(!mins)
 		return
 	if(mins >= 525600) mins = 525599

@@ -14,6 +14,8 @@ $comms: #b4b4b4;
 $me: #5975da;
 $ooc: #1c52f5;
 $looc: #e362b4;
+$mentor: #b5850d;
+$asay: #9611d4;
 
 ////////////////////////////////////////////////
 // Subchannel chat colors
@@ -46,6 +48,8 @@ $_channel_map: (
   'ooc': $ooc,
   'looc': $looc,
   'whisper': $say,
+  'mentor': $mentor,
+  'asay': $asay,
   'department': $comms,
   'highcom': $highcom,
   'command': $command,

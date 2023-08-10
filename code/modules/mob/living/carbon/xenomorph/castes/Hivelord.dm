@@ -33,6 +33,10 @@
 
 	aura_strength = 2.5
 
+	minimum_evolve_time = 3 MINUTES
+
+	minimap_icon = "hivelord"
+
 /datum/caste_datum/hivelord/New()
 	. = ..()
 
@@ -64,12 +68,13 @@
 		/datum/action/xeno_action/activable/secrete_resin/hivelord, //third macro
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // to be consistent with drone placement
 		/datum/action/xeno_action/active_toggle/toggle_speed, //fourth macro
+		/datum/action/xeno_action/onclick/tacmap,
 		)
 
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
-		)
+	)
 	mutation_type = HIVELORD_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/hivelord.dmi'
@@ -111,3 +116,10 @@
 	toggle_resin_walker()
 	to_chat(bound_xeno, SPAN_WARNING("You feel dizzy as the world slows down."))
 	bound_xeno.recalculate_move_delay = TRUE
+
+/// This check mainly exists because of the new resin node ability for resin whisperer.
+/mob/living/carbon/xenomorph/hivelord/proc/on_weeds()
+	var/turf/T = get_turf(src)
+	if(locate(/obj/effect/alien/weeds) in T)
+		return TRUE
+	return FALSE

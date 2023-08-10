@@ -1,13 +1,13 @@
 /datum/supply_packs/pouches_ammo
 	name = "Large Pouch 2x(pistol,magazine,general)"
 	contains = list(
-					/obj/item/storage/pouch/magazine/large,
-					/obj/item/storage/pouch/magazine/large,
-					/obj/item/storage/pouch/magazine/pistol/large,
-					/obj/item/storage/pouch/magazine/pistol/large,
-					/obj/item/storage/pouch/general,
-					/obj/item/storage/pouch/general,
-					)
+		/obj/item/storage/pouch/magazine/large,
+		/obj/item/storage/pouch/magazine/large,
+		/obj/item/storage/pouch/magazine/pistol/large,
+		/obj/item/storage/pouch/magazine/pistol/large,
+		/obj/item/storage/pouch/general,
+		/obj/item/storage/pouch/general,
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "Large Pouch"
@@ -16,12 +16,12 @@
 /datum/supply_packs/pouches_medical
 	name = "medical pouches crate (1x firstaid, medical, syringe, medkit, autoinjector)"
 	contains = list(
-					/obj/item/storage/pouch/firstaid,
-					/obj/item/storage/pouch/medical,
-					/obj/item/storage/pouch/syringe,
-					/obj/item/storage/pouch/medkit,
-					/obj/item/storage/pouch/autoinjector,
-					)
+		/obj/item/storage/pouch/firstaid,
+		/obj/item/storage/pouch/medical,
+		/obj/item/storage/pouch/syringe,
+		/obj/item/storage/pouch/medkit,
+		/obj/item/storage/pouch/autoinjector,
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "medical pouches crate"
@@ -37,7 +37,7 @@
 		/obj/item/clothing/accessory/storage/black_vest/brown_vest,
 		/obj/item/clothing/accessory/storage/black_vest/brown_vest,
 		/obj/item/clothing/accessory/storage/black_vest,
-		/obj/item/clothing/accessory/storage/black_vest
+		/obj/item/clothing/accessory/storage/black_vest,
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/green
@@ -50,7 +50,7 @@
 		/obj/item/clothing/accessory/storage/webbing,
 		/obj/item/clothing/accessory/storage/webbing,
 		/obj/item/clothing/accessory/storage/webbing,
-		/obj/item/clothing/accessory/storage/webbing
+		/obj/item/clothing/accessory/storage/webbing,
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/green
@@ -89,7 +89,7 @@
 		/obj/item/clothing/accessory/storage/holster,
 		/obj/item/clothing/accessory/storage/holster,
 		/obj/item/clothing/accessory/storage/holster,
-		/obj/item/clothing/accessory/storage/holster
+		/obj/item/clothing/accessory/storage/holster,
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/green
@@ -98,9 +98,9 @@
 
 /datum/supply_packs/gunslinger_holster
 	contains = list(
-					/obj/item/storage/belt/gun/m44/gunslinger,
-					/obj/item/storage/belt/gun/m44/gunslinger
-					)
+		/obj/item/storage/belt/gun/m44/gunslinger,
+		/obj/item/storage/belt/gun/m44/gunslinger,
+	)
 	name = "Red Ranger Cowboy Gunbelt Crate (x2)"
 	cost = 20
 	contraband = 1
@@ -110,12 +110,12 @@
 
 /datum/supply_packs/officer_outfits//lmao this shit is so hideously out of date
 	contains = list(
-					/obj/item/clothing/under/rank/ro_suit,
-					/obj/item/clothing/under/marine/officer/bridge,
-					/obj/item/clothing/under/marine/officer/bridge,
-					/obj/item/clothing/under/marine/officer/exec,
-					/obj/item/clothing/under/marine/officer/ce
-					)
+		/obj/item/clothing/under/rank/qm_suit,
+		/obj/item/clothing/under/marine/officer/bridge,
+		/obj/item/clothing/under/marine/officer/bridge,
+		/obj/item/clothing/under/marine/officer/exec,
+		/obj/item/clothing/under/marine/officer/ce,
+	)
 	name = "officer outfit crate"
 	cost = 30
 	containertype = /obj/structure/closet/crate

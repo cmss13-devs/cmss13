@@ -65,7 +65,7 @@
 		spawn(10)
 			M:Alienize()
 
-		message_staff("[key_name_admin(usr)] made [key_name(M)] into an alien.")
+		message_admins("[key_name_admin(usr)] made [key_name(M)] into an alien.")
 	else
 		alert("Invalid mob")
 
@@ -88,11 +88,78 @@
 		to_chat(usr, "Mode not found?")
 	round_should_check_for_win = !round_should_check_for_win
 	if (round_should_check_for_win)
-		message_staff("[key_name(src)] enabled checking for round-end.")
+		message_admins("[key_name(src)] enabled checking for round-end.")
 	else
-		message_staff("[key_name(src)] disabled checking for round-end.")
+		message_admins("[key_name(src)] disabled checking for round-end.")
 
+/client/proc/cmd_debug_mass_screenshot()
+	set category = "Debug"
+	set name = "Mass Screenshot"
+	set background = TRUE
+	set waitfor = FALSE
 
+	if(!check_rights(R_MOD))
+		return
+
+	if(tgui_alert(usr, "Are you sure you want to mass screenshot this z-level? Ensure your visual settings are correct first (other ghost visibility, zoom level, etc.) and you have emptied your BYOND/screenshots folder.", "Mass Screenshot", list("Yes", "No")) != "Yes")
+		return
+
+	var/sleep_duration = tgui_input_number(usr, "Enter a delay in deciseconds between screenshots to allow the client to render changes.", "Screenshot delay", 2, 10, 1, 0, TRUE)
+	if(!sleep_duration)
+		return
+
+	if(!mob)
+		return
+
+	if(!isobserver(mob))
+		admin_ghost()
+
+	mob.alpha = 0
+	if(mob.hud_used)
+		mob.hud_used.show_hud(HUD_STYLE_NOHUD)
+	mob.animate_movement = NO_STEPS
+
+	message_admins(WRAP_STAFF_LOG(usr, "started a mass screenshot operation."))
+
+	var/half_chunk_size = view + 1
+	var/chunk_size = half_chunk_size * 2 - 1
+	var/cur_x = half_chunk_size
+	var/cur_y = half_chunk_size
+	var/cur_z = mob.z
+	var/width
+	var/height
+	if(istype(SSmapping.z_list[cur_z], /datum/space_level))
+		var/datum/space_level/cur_level = SSmapping.z_list[cur_z]
+		width = cur_level.x_bounds - half_chunk_size + 2
+		height = cur_level.y_bounds - half_chunk_size + 2
+	else
+		width = world.maxx - half_chunk_size + 2
+		height = world.maxy - half_chunk_size + 2
+	var/width_inside = width - 1
+	var/height_inside = height - 1
+
+	while(cur_y < height)
+		while(cur_x < width)
+			mob.on_mob_jump()
+			mob.forceMove(locate(cur_x, cur_y, cur_z))
+			sleep(sleep_duration)
+			winset(src, null, "command='.screenshot auto'")
+			if(cur_x == width_inside)
+				break
+			cur_x += chunk_size
+			cur_x = min(cur_x, width_inside)
+		if(cur_y == height_inside)
+			break
+		cur_x = half_chunk_size
+		cur_y += chunk_size
+		cur_y = min(cur_y, height_inside)
+
+	mob.alpha = initial(mob.alpha)
+	if(mob.hud_used)
+		mob.hud_used.show_hud(HUD_STYLE_STANDARD)
+	mob.animate_movement = SLIDE_STEPS // Initial is incorrect
+
+	to_chat(usr, "Provide these values when asked for the MapTileImageTool: [width] [height] [half_chunk_size] [world.icon_size]")
 
 //TODO: merge the vievars version into this or something maybe mayhaps
 /client/proc/cmd_debug_del_all()
@@ -122,7 +189,7 @@
 							else
 								qdel(O)
 							del_amt++
-					message_staff("[key_name_admin(src)] has deleted all instances of [hsbitem] ([del_amt]).", 0)
+					message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem] ([del_amt]).", 0)
 		else
 			to_chat(usr, SPAN_WARNING("Not a valid type path."))
 
@@ -131,7 +198,7 @@
 	set name = "Generate Powernets"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") != "Yes") return
 	makepowernets()
-	message_staff("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
+	message_admins("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
 
 
 /client/proc/cmd_admin_grantfullaccess(mob/M in GLOB.mob_list)
@@ -149,11 +216,11 @@
 		if (H.wear_id)
 			var/obj/item/card/id/id = H.wear_id
 			id.icon_state = "gold"
-			id:access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()
+			id:access = get_global_access()
 		else
 			var/obj/item/card/id/id = new/obj/item/card/id(M);
 			id.icon_state = "gold"
-			id:access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()
+			id:access = get_all_main_access()
 			id.registered_name = H.real_name
 			id.registered_ref = WEAKREF(H)
 			id.assignment = "Captain"
@@ -163,7 +230,7 @@
 	else
 		alert("Invalid mob")
 
-	message_staff("[key_name_admin(usr)] has granted [M.key] full access.")
+	message_admins("[key_name_admin(usr)] has granted [M.key] full access.")
 
 /client/proc/cmd_admin_grantallskills(mob/M in GLOB.mob_list)
 	set category = null
@@ -180,7 +247,7 @@
 	else
 		alert("Invalid mob")
 
-	message_staff("[key_name_admin(usr)] has given [M.key] null skills.")
+	message_admins("[key_name_admin(usr)] has given [M.key] null skills.")
 
 /client/proc/admin_create_account(mob/target in GLOB.mob_list)
 	set category = null
@@ -216,7 +283,7 @@
 	generated_account = create_account(account_user.real_name, starting_amount, account_paygrade)
 	if(card)
 		card.associated_account_number = generated_account.account_number
-		card.paygrade = account_paygrade
+		card.paygrade = account_paygrade.paygrade
 	if(account_user.mind)
 		var/remembered_info = ""
 		remembered_info += "<b>Your account number is:</b> #[generated_account.account_number]<br>"
@@ -254,7 +321,7 @@
 
 	usr.mind.transfer_to(M, TRUE)
 
-	message_staff("[key_name_admin(usr)] assumed direct control of [M].")
+	message_admins("[key_name_admin(usr)] assumed direct control of [M].")
 
 /client/proc/cmd_debug_list_processing_items()
 	set category = "Debug.Controllers"

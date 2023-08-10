@@ -21,7 +21,7 @@
 	if (M.client)
 		M.ghostize(FALSE)
 	M.aghosted = FALSE //Incase you ckey into an aghosted body.
-	message_staff("[key_name_admin(usr)] modified [key_name(M)]'s ckey to [new_ckey]", 1)
+	message_admins("[key_name_admin(usr)] modified [key_name(M)]'s ckey to [new_ckey]", 1)
 
 	M.ckey = new_ckey
 	M.client?.change_view(world_view_size)
@@ -83,7 +83,7 @@
 
 	H.add_hud_to(M)
 	to_chat(src, SPAN_INFO("[hud_choice] enabled."))
-	message_staff(SPAN_INFO("[key_name(usr)] has given a [hud_choice] to [M]."))
+	message_admins(SPAN_INFO("[key_name(usr)] has given a [hud_choice] to [M]."))
 
 /client/proc/cmd_admin_gib(mob/M as mob in GLOB.mob_list)
 	set category = "Admin.Fun"
@@ -96,7 +96,7 @@
 	//Due to the delay here its easy for something to have happened to the mob
 	if(!M) return
 
-	message_staff("[key_name_admin(usr)] has gibbed [key_name_admin(M)]", 1)
+	message_admins("[key_name_admin(usr)] has gibbed [key_name_admin(M)]", 1)
 
 	if(istype(M, /mob/dead/observer))
 		gibs(M.loc, M.viruses)
@@ -118,7 +118,7 @@
 
 	M.revive(FALSE) // Argument means that viruses will be cured (except zombie virus)
 
-	message_staff(WRAP_STAFF_LOG(usr, "ahealed [key_name(M)] in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
+	message_admins(WRAP_STAFF_LOG(usr, "ahealed [key_name(M)] in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
 
 /client/proc/cmd_admin_subtle_message(mob/M as mob in GLOB.mob_list)
 	set name = "Subtle Message"
@@ -130,7 +130,7 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	var/list/subtle_message_options = list("Voice in head", "Weyland-Yutani", "USCM High Command", "Faction-specific")
+	var/list/subtle_message_options = list("Voice in head", "QM Psychic Whisper", "Weyland-Yutani", "USCM High Command", "Faction-specific")
 
 	var/message_option = tgui_input_list(usr, "Choose the method of subtle messaging", "", subtle_message_options)
 
@@ -148,6 +148,12 @@
 	switch(message_option)
 		if("Voice in head")
 			to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [msg]"))
+
+		if("QM Psychic Whisper")
+			if(isxeno(M))
+				to_chat(M, SPAN_XENONOTICE("You hear the voice of the Queen Mother... [msg]"))
+			else
+				to_chat(M, SPAN_XENONOTICE("You hear a strange, distant, alien voice in your head... [msg]"))
 		else
 			var/mob/living/carbon/human/H = M
 
@@ -160,8 +166,8 @@
 				return
 			to_chat(H, SPAN_DANGER("Message received through headset. [message_option] Transmission <b>\"[msg]\"</b>"))
 
-	var/message = WRAP_STAFF_LOG(usr, "subtle messaged [key_name(M)] as [message_option], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z]).")
-	message_staff(message, M.x, M.y, M.z)
+	var/message = WRAP_STAFF_LOG(usr, SPAN_STAFF_IC("subtle messaged [key_name(M)] as [message_option], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z])."))
+	message_admins(message, M.x, M.y, M.z)
 	admin_ticket_log(M, message)
 
 /client/proc/cmd_admin_alert_message(mob/M)
@@ -181,7 +187,7 @@
 
 			show_blurb(M, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
 			log_admin("[key_name(src)] sent a default admin alert to [key_name(M)].")
-			message_staff("[key_name(src)] sent a default admin alert to [key_name(M)].")
+			message_admins("[key_name(src)] sent a default admin alert to [key_name(M)].")
 		if("Custom")
 			var/message = input(src, "Input your custom admin alert text:", "Message") as text|null
 			if(!message)
@@ -193,7 +199,7 @@
 
 			show_blurb(M, 15, message, null, "center", "center", new_color, null, null, 1)
 			log_admin("[key_name(src)] sent an admin alert to [key_name(M)] with custom message [message].")
-			message_staff("[key_name(src)] sent an admin alert to [key_name(M)] with custom message [message].")
+			message_admins("[key_name(src)] sent an admin alert to [key_name(M)] with custom message [message].")
 		else
 			return
 
@@ -226,7 +232,7 @@
 		if(NARRATION_METHOD_DIRECT)
 			selected.visible_message("[message]")
 	log_admin("[key_name(src)] sent an Object Narrate with message [message].")
-	message_staff("[key_name(src)] sent an Object Narrate with message [message].")
+	message_admins("[key_name(src)] sent an Object Narrate with message [message].")
 
 /client/proc/cmd_admin_direct_narrate(mob/M)
 	set name = "Narrate"
@@ -248,7 +254,7 @@
 		return
 
 	to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE(msg))
-	message_staff("\bold DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]")
+	message_admins("\bold DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]")
 
 /client/proc/cmd_admin_attack_log(mob/M as mob in GLOB.mob_list)
 	set name = "Attack Log"
@@ -273,9 +279,9 @@
 	var/turf/T = get_turf(O)
 
 	if(T)
-		message_staff("[key_name(usr)] has possessed [O] ([O.type]) at ([T.x], [T.y], [T.z])", 1)
+		message_admins("[key_name(usr)] has possessed [O] ([O.type]) at ([T.x], [T.y], [T.z])", 1)
 	else
-		message_staff("[key_name(usr)] has possessed [O] ([O.type]) at an unknown location", 1)
+		message_admins("[key_name(usr)] has possessed [O] ([O.type]) at an unknown location", 1)
 
 	if(!usr.control_object) //If you're not already possessing something...
 		usr.name_archive = usr.real_name
@@ -322,7 +328,7 @@
 		if(istype(W,/obj/item/alien_embryo)) continue
 		M.drop_inv_item_on_ground(W)
 
-	message_staff("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!")
+	message_admins("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!")
 
 /client/proc/cmd_admin_change_their_hivenumber(mob/living/carbon/H)
 	set name = "Change Hivenumber"
@@ -361,7 +367,7 @@
 		if(was_leader && (!hive.leading_cult_sl || hive.leading_cult_sl.stat == DEAD))
 			hive.leading_cult_sl = H
 
-	message_staff("[key_name(src)] changed hivenumber of [H] to [H.hivenumber].")
+	message_admins("[key_name(src)] changed hivenumber of [H] to [H.hivenumber].")
 
 
 /client/proc/cmd_admin_change_their_name(mob/living/carbon/X)
@@ -386,7 +392,7 @@
 			if(H.wear_id.assignment)
 				H.wear_id.name += " ([H.wear_id.assignment])"
 
-	message_staff("[key_name(src)] changed name of [old_name] to [newname].")
+	message_admins("[key_name(src)] changed name of [old_name] to [newname].")
 
 /datum/admins/proc/togglesleep(mob/living/M as mob in GLOB.mob_list)
 	set name = "Toggle Sleeping"
@@ -401,7 +407,7 @@
 		M.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
 		M.AddSleepingIcon()
 
-	message_staff("[key_name(usr)] used Toggle Sleeping on [key_name(M)].")
+	message_admins("[key_name(usr)] used Toggle Sleeping on [key_name(M)].")
 	return
 
 #undef NARRATION_METHOD_SAY

@@ -210,6 +210,14 @@
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "black"
 
+/turf/open/floor/almayer/empty/Initialize(mapload, ...)
+	. = ..()
+	GLOB.asrs_empty_space_tiles_list += src
+
+/turf/open/floor/almayer/empty/Destroy(force) // may as well
+	. = ..()
+	GLOB.asrs_empty_space_tiles_list -= src
+
 /turf/open/floor/almayer/empty/is_weedable()
 	return NOT_WEEDABLE
 
@@ -230,24 +238,27 @@
 /turf/open/floor/almayer/empty/proc/enter_depths(atom/movable/AM)
 	if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/floor/almayer/empty))
 		AM.visible_message(SPAN_WARNING("[AM] falls into the depths!"), SPAN_WARNING("You fall into the depths!"))
-		for(var/i in GLOB.disposal_retrieval_list)
-			var/obj/structure/disposaloutlet/retrieval/R = i
-			if(R.z != src.z) continue
-			var/obj/structure/disposalholder/H = new()
-			AM.forceMove(H)
-			sleep(10)
-			H.forceMove(R)
-			for(var/mob/living/M in H)
-				M.take_overall_damage(100, 0, "Blunt Trauma")
-			sleep(20)
-			for(var/mob/living/M in H)
-				M.take_overall_damage(20, 0, "Blunt Trauma")
-			for(var/obj/effect/decal/cleanable/C in contents) //get rid of blood
-				qdel(C)
-			R.expel(H)
+		if(!ishuman(AM))
+			qdel(AM)
 			return
+		var/mob/living/carbon/human/thrown_human = AM
+		for(var/atom/computer as anything in supply_controller.bound_supply_computer_list)
+			computer.balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
 
-		qdel(AM)
+		var/area/area_shuttle = supply_controller.shuttle?.get_location_area()
+		if(!area_shuttle)
+			return
+		var/list/turflist = list()
+		for(var/turf/turf in area_shuttle)
+			turflist |= turf
+
+		thrown_human.forceMove(pick(turflist))
+
+		var/timer = 0.5 SECONDS
+		for(var/index in 1 to 10)
+			timer += 0.5 SECONDS
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(maul_human), thrown_human), timer)
+		return
 
 	else
 		for(var/obj/effect/decal/cleanable/C in contents) //for the off chance of someone bleeding mid=flight
@@ -261,7 +272,9 @@
 /turf/open/floor/almayer/uscm/directional
 	icon_state = "logo_directional"
 
-
+/turf/open/floor/almayer/no_build
+	allow_construction = FALSE
+	hull_floor = TRUE
 
 // RESEARCH STUFF
 /turf/open/floor/almayer/research/containment/entrance
@@ -530,6 +543,9 @@
 			var/turf/open/floor/FF = get_step(src,direction)
 			FF.update_icon() // So siding get updated properly
 	return ..()
+
+/turf/open/floor/carpet/edge
+	icon_state = "carpetside"
 
 // Start Prison tiles
 

@@ -18,16 +18,36 @@
 	return
 
 /obj/structure/largecrate/proc/unpack()
-	for(var/atom/movable/A in contents)
-		A.forceMove(loc)
+	var/turf/current_turf = get_turf(src) // Get the turf the crate is on
+
 	playsound(src, unpacking_sound, 35)
+
+	/// Store the reference of the crate material
+	var/obj/item/stack/sheet/material_sheet
+	if(parts_type) // Create the crate material and store its reference
+		material_sheet = new parts_type(current_turf, 2)
+
+	// Move the objects back to the turf, above the crate material
+	for(var/atom/movable/moving_atom in contents)
+		var/atom/movable/current_atom = contents[1]
+		current_atom.forceMove(current_turf)
+
 	deconstruct(TRUE)
 
+	// Move the crate material to the bottom of the turf's contents
+	if(material_sheet)
+		move_to_bottom(material_sheet, current_turf)
+
+/// Custom proc to move an object to the bottom of the turf's contents
+/obj/structure/largecrate/proc/move_to_bottom(obj/moving_down, turf/current_turf)
+	if(!istype(moving_down) || !istype(current_turf))
+		return
+	for(var/atom/movable/checking_atom in current_turf.contents)
+		if(checking_atom != moving_down)
+			checking_atom.layer = max(checking_atom.layer, moving_down.layer + 0.1)
+
 /obj/structure/largecrate/deconstruct(disassembled = TRUE)
-	if(disassembled)
-		if(parts_type)
-			new parts_type(loc, 2)
-	else
+	if(!disassembled)
 		new /obj/item/stack/sheet/wood(loc)
 	return ..()
 
@@ -44,12 +64,21 @@
 	M.animation_attack_on(src)
 	unpack()
 	M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"), \
-					  SPAN_DANGER("You smash [src] apart!"), 5, CHAT_TYPE_XENO_COMBAT)
+					  SPAN_DANGER("You smash [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/largecrate/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		unpack()
+
+/obj/structure/largecrate/proc/take_damage(damage)
+	health -= damage
+	if(health <= 0)
+		unpack()
+
+/obj/structure/largecrate/bullet_act(obj/item/projectile/P)
+	take_damage(P.calculate_damage(P.damage))
+	return TRUE
 
 /obj/structure/largecrate/mule
 	icon_state = "mulecrate"
@@ -161,35 +190,39 @@
 	desc = "A small metal crate. Here, Freeman ammo!"
 	name = "small ammocase"
 	icon_state = "mini_ammo"
-	stuff = list(/obj/item/ammo_magazine/pistol,
-				/obj/item/ammo_magazine/revolver,
-				/obj/item/ammo_magazine/rifle,
-				/obj/item/ammo_magazine/rifle/extended,
-				/obj/item/ammo_magazine/shotgun,
-				/obj/item/ammo_magazine/shotgun/buckshot,
-				/obj/item/ammo_magazine/shotgun/flechette,
-				/obj/item/ammo_magazine/smg/m39,
-				/obj/item/ammo_magazine/smg/m39/extended,)
+	stuff = list(
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/rifle/extended,
+		/obj/item/ammo_magazine/shotgun,
+		/obj/item/ammo_magazine/shotgun/buckshot,
+		/obj/item/ammo_magazine/shotgun/flechette,
+		/obj/item/ammo_magazine/smg/m39,
+		/obj/item/ammo_magazine/smg/m39/extended,
+	)
 
 /obj/structure/largecrate/random/mini/med
 	desc = "A small metal crate. Here, Freeman take this medkit!" //https://www.youtube.com/watch?v=OMXan7GS8-Q
 	icon_state = "mini_medcase"
 	name = "small medcase"
 	num_things = 1 //funny lootbox tho.
-	stuff = list(/obj/item/stack/medical/bruise_pack,
-				/obj/item/storage/pill_bottle/packet/tricordrazine,
-				/obj/item/tool/crowbar/red,
-				/obj/item/device/flashlight,
-				/obj/item/reagent_container/hypospray/autoinjector/skillless,
-				/obj/item/storage/pill_bottle/packet/tramadol,
-				/obj/item/stack/medical/ointment,
-				/obj/item/stack/medical/splint,
-				/obj/item/device/healthanalyzer,
-				/obj/item/stack/medical/advanced/ointment,
-				/obj/item/stack/medical/advanced/bruise_pack,
-				/obj/item/tool/extinguisher/mini,
-				/obj/item/tool/shovel/etool,
-				/obj/item/tool/screwdriver)
+	stuff = list(
+		/obj/item/stack/medical/bruise_pack,
+		/obj/item/storage/pill_bottle/packet/tricordrazine,
+		/obj/item/tool/crowbar/red,
+		/obj/item/device/flashlight,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/storage/pill_bottle/packet/tramadol,
+		/obj/item/stack/medical/ointment,
+		/obj/item/stack/medical/splint,
+		/obj/item/device/healthanalyzer,
+		/obj/item/stack/medical/advanced/ointment,
+		/obj/item/stack/medical/advanced/bruise_pack,
+		/obj/item/tool/extinguisher/mini,
+		/obj/item/tool/shovel/etool,
+		/obj/item/tool/screwdriver,
+	)
 
 /obj/structure/largecrate/random/case
 	name = "storage case"
@@ -323,82 +356,20 @@
 					/obj/item/weapon/gun/revolver/cmb = /obj/item/ammo_magazine/revolver/cmb,
 					/obj/item/weapon/gun/shotgun/merc = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 					/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = /obj/item/ammo_magazine/handful/shotgun/buckshot,
-					/obj/item/weapon/gun/shotgun/double = /obj/item/ammo_magazine/handful/shotgun/buckshot,
-					/obj/item/weapon/gun/shotgun/double/with_stock = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 					/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
 					/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
 					/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
 					/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi,
-					/obj/item/weapon/gun/m60 = /obj/item/ammo_magazine/m60,
 					/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
 					/obj/item/weapon/gun/smg/ppsh = /obj/item/ammo_magazine/smg/ppsh,
-					/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
+					/obj/item/weapon/gun/rifle/l42a = /obj/item/ammo_magazine/rifle/l42a,
+					/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
 					/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
 					/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
 					/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
 					/obj/item/weapon/gun/rifle/type71 = /obj/item/ammo_magazine/rifle/type71,
 					/obj/item/weapon/gun/smg/fp9000 = /obj/item/ammo_magazine/smg/fp9000
 				)
-
-/obj/structure/largecrate/merc/clothing
-	name = "\improper Black market clothing crate"
-
-/obj/structure/largecrate/merc/clothing/Initialize()
-	. = ..()
-	var/i = pick(1,5)
-	switch(i)
-		if(1) //pmc
-			new /obj/item/clothing/under/marine/veteran/pmc(src)
-			new /obj/item/clothing/head/helmet/marine/veteran/pmc(src)
-			new /obj/item/clothing/suit/storage/marine/veteran/pmc(src)
-			new /obj/item/clothing/gloves/marine/veteran(src)
-			new /obj/item/clothing/mask/rebreather/scarf(src)
-		if(2) //dutch's
-			new /obj/item/clothing/head/helmet/marine/veteran/dutch(src)
-			new /obj/item/clothing/under/marine/veteran/dutch(src)
-			new /obj/item/clothing/suit/storage/marine/veteran/dutch(src)
-			new /obj/item/clothing/gloves/marine/veteran(src)
-		if(3) //pizza
-			new /obj/item/clothing/under/pizza(src)
-			new /obj/item/clothing/head/soft/red(src)
-		if(4) //clf
-			new /obj/item/clothing/under/colonist/clf(src)
-			new /obj/item/clothing/suit/storage/militia(src)
-			new /obj/item/clothing/head/militia(src)
-			new /obj/item/clothing/gloves/marine/veteran(src)
-		if(5) //freelancer
-			new /obj/item/clothing/under/marine/veteran/freelancer(src)
-			new /obj/item/clothing/suit/storage/marine/faction/freelancer(src)
-			new /obj/item/clothing/head/cmbandana(src)
-			new /obj/item/clothing/gloves/marine/veteran(src)
-
-/obj/structure/largecrate/merc/ammo
-	name = "\improper Black market ammo crate"
-
-/datum/supply_packs/merc/ammo
-	name = "Black market ammo crate"
-	randomised_num_contained = 6
-	contains = list(
-					/obj/item/ammo_magazine/pistol/holdout,
-					/obj/item/ammo_magazine/pistol/highpower,
-					/obj/item/ammo_magazine/pistol/m1911,
-					/obj/item/ammo_magazine/pistol/heavy,
-					/obj/item/ammo_magazine/revolver/small,
-					/obj/item/ammo_magazine/revolver/cmb,
-					/obj/item/ammo_magazine/handful/shotgun/buckshot,
-					/obj/item/ammo_magazine/smg/mp27,
-					/obj/item/ammo_magazine/pistol/skorpion,
-					/obj/item/ammo_magazine/smg/mac15,
-					/obj/item/ammo_magazine/m60,
-					/obj/item/ammo_magazine/rifle/mar40,
-					/obj/item/ammo_magazine/smg/ppsh,
-					/obj/item/ammo_magazine/rifle/hunting,
-					/obj/item/ammo_magazine/smg/mp5,
-					/obj/item/ammo_magazine/rifle/m16,
-					/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
-					/obj/item/ammo_magazine/rifle/type71,
-					/obj/item/ammo_magazine/smg/fp9000,
-					)
 
 /obj/structure/largecrate/hunter_games_construction
 	name = "construction crate"
@@ -446,7 +417,6 @@
 	new /obj/item/storage/pill_bottle/inaprovaline(src)
 	new /obj/item/storage/pouch/medical(src)
 	new /obj/item/storage/pouch/firstaid/full(src)
-	new /obj/item/storage/box/quickclot(src)
 
 /obj/structure/largecrate/hunter_games_surgery
 	name = "surgery crate"
@@ -491,8 +461,8 @@
 	new /obj/item/device/radio(src)
 	new /obj/item/attachable/bayonet(src)
 	new /obj/item/attachable/bayonet(src)
-	new /obj/item/weapon/melee/throwing_knife(src)
-	new /obj/item/weapon/melee/throwing_knife(src)
+	new /obj/item/weapon/throwing_knife(src)
+	new /obj/item/weapon/throwing_knife(src)
 	new /obj/item/storage/box/uscm_mre(src)
 	new /obj/item/storage/box/donkpockets(src)
 	new /obj/item/storage/box/MRE(src)

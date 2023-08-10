@@ -28,6 +28,10 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/ravager_base
 
+	minimum_evolve_time = 15 MINUTES
+
+	minimap_icon = "ravager"
+
 /mob/living/carbon/xenomorph/ravager
 	caste_type = XENO_CASTE_RAVAGER
 	name = XENO_CASTE_RAVAGER
@@ -52,6 +56,7 @@
 		/datum/action/xeno_action/activable/pounce/charge,
 		/datum/action/xeno_action/onclick/empower,
 		/datum/action/xeno_action/activable/scissor_cut,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	icon_xeno = 'icons/mob/xenos/ravager.dmi'
@@ -61,8 +66,8 @@
 // Mutator delegate for base ravager
 /datum/behavior_delegate/ravager_base
 	var/shield_decay_time = 15 SECONDS // Time in deciseconds before our shield decays
-	var/slash_charge_cdr = 4 SECONDS // Amount to reduce charge cooldown by per slash
-	var/knockdown_amount = 2
+	var/slash_charge_cdr = 3 SECONDS // Amount to reduce charge cooldown by per slash
+	var/knockdown_amount = 1.3
 	var/fling_distance = 3
 	var/empower_targets = 0
 	var/super_empower_threshold = 3

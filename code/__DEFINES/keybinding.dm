@@ -57,7 +57,11 @@
 #define COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_ONE "keybinding_human_specialist_activation_one"
 #define COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_TWO "keybinding_human_specialist_activation_two"
 
-#define COMSIG_KG_HUMAN_PICK_UP "keybinding_human_pick_up"
+#define COMSIG_KB_HUMAN_PICK_UP "keybinding_human_pick_up"
+
+#define COMSIG_KB_HUMAN_ROTATE_CHAIR "keybinding_human_rotate_chair"
+
+#define COMSIG_KB_HUMAN_SHOW_HELD_ITEM "keybinding_human_show_held_item"
 
 // Human Combat
 #define COMSIG_KB_HUMAN_WEAPON_FIELDSTRIP "keybinding_human_weapon_fieldstrip"
@@ -79,6 +83,7 @@
 #define COMSIG_KB_LIVING_LOOKUP_DOWN "keybinding_living_lookup_down"
 #define COMSIG_KB_LIVING_LOOKDOWN_DOWN "keybinding_living_lookdown_down"
 #define COMSIG_KB_LIVING_REST_DOWN "keybinding_living_rest_down"
+#define COMSIG_KB_LIVING_CANCEL_CAMERA_VIEW "keybinding_movement_cancel_camera_view"
 
 //Mob
 #define COMSIG_KB_MOB_FACENORTH_DOWN "keybinding_mob_facenorth_down"
@@ -142,6 +147,9 @@
 #define COMSIG_KB_XENO_SCREECH "keybinding_xeno_screech"
 #define COMSIG_KB_TAIL_STAB "keybinding_tail_stab"
 
+#define COMSIG_KB_XENO_HIVE_STATUS "keybinding_hive_status"
+#define COMSIG_KB_XENO_HIDE "keybinding_hide"
+#define COMSIG_KB_XENO_EVOLVE "keybinding_evolve"
 // Yautja
 
 #define COMSIG_KB_YAUTJA_BUTCHER "keybinding_yautja_butcher"
@@ -161,7 +169,7 @@
 #define COMSIG_KB_YAUTJA_ACTIVATE_SUICIDE "keybinding_yautja_activate_suicide"
 #define COMSIG_KB_YAUTJA_INJECTORS "keybinding_yautja_injectors"
 #define COMSIG_KB_YAUTJA_CAPSULE "keybinding_yautja_capsule"
-#define COMSIG_KB_YAUTJA_CALL_DISK "keybinding_yautja_call_disk"
+#define COMSIG_KB_YAUTJA_CALL_DISC "keybinding_yautja_call_disc"
 #define COMSIG_KB_YAUTJA_REMOVE_TRACKED_ITEM "keybinding_yautja_remove_tracked_item"
 #define COMSIG_KB_YAUTJA_ADD_TRACKED_ITEM "keybinding_yautja_add_tracked_item"
 #define COMSIG_KB_YAUTJA_CALL_COMBI "keybinding_yautja_call_combi"
@@ -177,3 +185,39 @@
 //misc yautja
 
 #define COMSIG_KB_YAUTJA_TELE_LOC "keybinding_yautja_tele_loc"
+
+#define COMSIG_KB_OBSERVER_JOIN_XENO "keybinding_observer_join_as_xeno"
+#define COMSIG_KB_OBSERVER_JOIN_ERT "keybinding_observer_join_ert"
+#define COMSIG_KB_OBSERVER_JOIN_PREDATOR "keybinding_observer_join_pred"
+#define COMSIG_KB_OBSERVER_JOIN_LESSER_DRONE "keybinding_observer_join_lesser_drone"
+
+#define CATEGORY_CLIENT "CLIENT"
+#define CATEGORY_EMOTE "EMOTE"
+#define CATEGORY_ADMIN "ADMIN"
+#define CATEGORY_XENO "XENO"
+#define CATEGORY_CARBON "CARBON"
+#define CATEGORY_HUMAN "HUMAN"
+#define CATEGORY_HUMAN_COMBAT "HUMAN COMBAT"
+#define CATEGORY_ROBOT "ROBOT"
+#define CATEGORY_YAUTJA "YAUTJA"
+#define CATEGORY_MISC "MISC"
+#define CATEGORY_MOVEMENT "MOVEMENT"
+#define CATEGORY_COMMUNICATION "COMMUNICATION"
+#define CATEGORY_OBSERVER "OBSERVER"
+
+#define CATEGORY_XENO_EMOTE "XENO EMOTE"
+#define CATEGORY_HUMAN_EMOTE "HUMAN EMOTE"
+#define CATEGORY_YAUTJA_EMOTE "YAUTJA EMOTE"
+#define CATEGORY_SYNTH_EMOTE "SYNTH EMOTE"
+
+
+#define WEIGHT_HIGHEST 0
+#define WEIGHT_ADMIN 10
+#define WEIGHT_CLIENT 20
+#define WEIGHT_ROBOT 30
+#define WEIGHT_XENO 30
+#define WEIGHT_MOB 40
+#define WEIGHT_LIVING 50
+#define WEIGHT_DEAD 60
+#define WEIGHT_EMOTE 70
+#define WEIGHT_LOWEST 999

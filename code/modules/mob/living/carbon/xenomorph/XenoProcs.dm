@@ -66,11 +66,12 @@
 
 	. += ""
 
+	var/stored_evolution = round(evolution_stored)
 	var/evolve_progress
 
 	if(caste && caste.evolution_allowed)
-		evolve_progress = "[round(evolution_stored)]/[evolution_threshold]"
-		if(hive && !hive.allow_no_queen_actions && !caste?.evolve_without_queen)
+		evolve_progress = "[min(stored_evolution, evolution_threshold)]/[evolution_threshold]"
+		if(hive && !hive.allow_no_queen_evo && !caste?.evolve_without_queen)
 			if(!hive.living_xeno_queen)
 				evolve_progress += " (NO QUEEN)"
 			else if(!(hive.living_xeno_queen.ovipositor || hive.evolution_without_ovipositor))
@@ -78,6 +79,8 @@
 
 	if(evolve_progress)
 		. += "Evolve Progress: [evolve_progress]"
+	if(stored_evolution > evolution_threshold)
+		. += "Bonus Evolution: [stored_evolution - evolution_threshold]"
 
 	. += ""
 
@@ -144,7 +147,7 @@
 	. += ""
 
 //A simple handler for checking your state. Used in pretty much all the procs.
-/mob/living/carbon/xenomorph/proc/check_state(permissive = 0)
+/mob/living/carbon/xenomorph/proc/check_state(permissive = FALSE)
 	if(!permissive)
 		if(is_mob_incapacitated() || lying || buckled || evolving || !isturf(loc))
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
@@ -270,7 +273,7 @@
 		return
 
 	var/mob/living/carbon/M = L
-	if(M.stat || M.mob_size >= MOB_SIZE_BIG || can_not_harm(L) || M == src)
+	if(M.stat == DEAD || M.mob_size >= MOB_SIZE_BIG || can_not_harm(L) || M == src)
 		throwing = FALSE
 		return
 
@@ -341,7 +344,7 @@
 		if(istype(O, /obj/structure/surface/table) || istype(O, /obj/structure/surface/rack) || istype(O, /obj/structure/window_frame))
 			var/obj/structure/S = O
 			visible_message(SPAN_DANGER("[src] plows straight through [S]!"), null, null, 5)
-			S.deconstruct() //We want to continue moving, so we do not reset throwing.
+			S.deconstruct(FALSE) //We want to continue moving, so we do not reset throwing.
 		else
 			O.hitby(src) //This resets throwing.
 	else
@@ -429,6 +432,9 @@
 			has_obstacle = TRUE
 			break
 		if(istype(O, /obj/structure/fence))
+			has_obstacle = TRUE
+			break
+		if(istype(O, /obj/structure/tunnel))
 			has_obstacle = TRUE
 			break
 		if(istype(O, /obj/structure/bed))
@@ -626,7 +632,7 @@
 		TC.tackle_reset_id = null
 
 	. = TC.attempt_tackle(tackle_bonus)
-	if (!.)
+	if (!. || (M.status_flags & XENO_HOST))
 		TC.tackle_reset_id = addtimer(CALLBACK(src, PROC_REF(reset_tackle), M), 4 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 	else
 		reset_tackle(M)
@@ -667,13 +673,13 @@
 	switch(aura)
 		if(-INFINITY to 0.9)
 			return "Very Weak"
-		if(1.0 to 1.9)
+		if(1 to 1.9)
 			return "Weak"
-		if(2.0 to 2.9)
+		if(2 to 2.9)
 			return "Moderate"
-		if(3.0 to 3.9)
+		if(3 to 3.9)
 			return "Strong"
-		if(4.0 to INFINITY)
+		if(4 to INFINITY)
 			return "Very Strong"
 
 /mob/living/carbon/xenomorph/proc/start_tracking_resin_mark(obj/effect/alien/resin/marker/target)
@@ -688,11 +694,79 @@
 /mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, silent = FALSE) //tracked_marker shouldnt be nulled outside this PROC!! >:C
 	var/atom/movable/screen/mark_locator/ML = hud_used.locate_marker
 	ML.overlays.Cut()
-	if(!silent)
-		if(destroyed)
-			to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
-		else
-			to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
+
 	if(tracked_marker)
+		if(!silent)
+			if(destroyed)
+				to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
+			else
+				to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
 		tracked_marker.xenos_tracking -= src
+
 	tracked_marker = null
+
+/mob/living/carbon/xenomorph/proc/do_nesting_host(mob/current_mob, nest_structural_base)
+	var/list/xeno_hands = list(get_active_hand(), get_inactive_hand())
+
+	if(!ishuman(current_mob))
+		to_chat(src, SPAN_XENONOTICE("This is not a host."))
+		return
+
+	if(current_mob.stat == DEAD)
+		to_chat(src, SPAN_XENONOTICE("This host is dead."))
+		return
+
+	var/mob/living/carbon/human/host_to_nest = current_mob
+
+	var/found_grab = FALSE
+	for(var/i in 1 to length(xeno_hands))
+		if(istype(xeno_hands[i], /obj/item/grab))
+			found_grab = TRUE
+			break
+
+	if(!found_grab)
+		to_chat(src, SPAN_XENONOTICE("To nest the host here, a sure grip is needed to lift them up onto it!"))
+		return
+
+	var/turf/supplier_turf = get_turf(nest_structural_base)
+	var/obj/effect/alien/weeds/supplier_weeds = locate(/obj/effect/alien/weeds) in supplier_turf
+	if(!supplier_weeds)
+		to_chat(src, SPAN_XENOBOLDNOTICE("There are no weeds here! Nesting hosts requires hive weeds."))
+		return
+
+	if(supplier_weeds.weed_strength < WEED_LEVEL_HIVE)
+		to_chat(src, SPAN_XENOBOLDNOTICE("The weeds here are not strong enough for nesting hosts."))
+		return
+
+	if(!supplier_turf.density)
+		var/obj/structure/window/framed/framed_window = locate(/obj/structure/window/framed/) in supplier_turf
+		if(!framed_window)
+			to_chat(src, SPAN_XENOBOLDNOTICE("Hosts need a vertical surface to be nested upon!"))
+			return
+
+	var/dir_to_nest = get_dir(host_to_nest, nest_structural_base)
+
+	if(!host_to_nest.Adjacent(supplier_turf))
+		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall its being nested on!"))
+		return
+
+	if(!locate(dir_to_nest) in GLOB.cardinals)
+		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall its being nested on!"))
+		return
+
+	for(var/obj/structure/bed/nest/preexisting_nest in get_turf(host_to_nest))
+		if(preexisting_nest.dir == dir_to_nest)
+			to_chat(src, SPAN_XENONOTICE("There is already a host nested here!"))
+			return
+
+	var/obj/structure/bed/nest/applicable_nest = new(get_turf(host_to_nest))
+	applicable_nest.dir = dir_to_nest
+	if(!applicable_nest.buckle_mob(host_to_nest, src))
+		qdel(applicable_nest)
+
+/mob/living/carbon/xenomorph/proc/update_minimap_icon()
+	if(istype(caste, /datum/caste_datum/queen))
+		return
+
+	SSminimaps.remove_marker(src)
+	add_minimap_marker()

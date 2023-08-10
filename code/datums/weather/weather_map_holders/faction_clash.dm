@@ -9,7 +9,7 @@
 	no_weather_turf_icon_state = "strata_clearsky"
 
 	potential_weather_events = list(
-		/datum/weather_event/clash_rain
+		/datum/weather_event/clash_rain,
 	)
 
 /datum/weather_ss_map_holder/faction_clash/should_affect_area(area/A)

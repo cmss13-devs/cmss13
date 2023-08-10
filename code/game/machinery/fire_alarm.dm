@@ -6,8 +6,8 @@ FIRE ALARM
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "fire0"
-	var/detecting = 1.0
-	var/working = 1.0
+	var/detecting = 1
+	var/working = 1
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
@@ -139,8 +139,10 @@ FIRE ALARM
 	var/area/area = get_area(src)
 
 	if (area.flags_alarm_state & ALARM_WARNING_FIRE)
+		user.visible_message("[user] deactivates [src].", "You deactivate [src].")
 		reset()
 	else
+		user.visible_message("[user] activates [src].", "You activate [src].")
 		alarm()
 
 	return

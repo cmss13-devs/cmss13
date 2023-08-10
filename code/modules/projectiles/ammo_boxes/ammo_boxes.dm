@@ -2,7 +2,7 @@
 
 /obj/item/ammo_box
 	name = "\improper generic ammo box"
-	icon = 'icons/obj/items/weapons/guns/ammo_box.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_boxes/boxes_and_lids.dmi'
 	icon_state = "base"
 	w_class = SIZE_HUGE
 	var/empty = FALSE
@@ -11,16 +11,41 @@
 	var/limit_per_tile = 1 //how many you can deploy per tile
 	layer = LOWER_ITEM_LAYER //to not hide other items
 
+	var/text_markings_icon = 'icons/obj/items/weapons/guns/ammo_boxes/text.dmi'
+	var/handfuls_icon = 'icons/obj/items/weapons/guns/ammo_boxes/handfuls.dmi'
+	var/magazines_icon = 'icons/obj/items/weapons/guns/ammo_boxes/magazines.dmi'
+	var/flames_icon = 'icons/obj/items/weapons/guns/ammo_boxes/misc.dmi'
+
 //---------------------GENERAL PROCS
 
 /obj/item/ammo_box/Destroy()
 	SetLuminosity(0)
 	. = ..()
 
-/obj/item/ammo_box/proc/unfold_box(turf/T)
-	new /obj/item/stack/sheet/cardboard(T)
+/obj/item/ammo_box/attack_self(mob/living/user)
+	..()
+	if(burning)
+		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
+		return
+
+	if(user.a_intent == INTENT_HARM)
+		unfold_box(user)
+		return
+	deploy_ammo_box(user, user.loc)
+
+/obj/item/ammo_box/proc/unfold_box(mob/user)
+	if(is_loaded())
+		to_chat(user, SPAN_WARNING("You need to empty the box before unfolding it!"))
+		return
+	new /obj/item/stack/sheet/cardboard(user.loc)
 	qdel(src)
 
+/obj/item/ammo_box/proc/is_loaded()
+	return FALSE
+
+/obj/item/ammo_box/proc/deploy_ammo_box(mob/user, turf/T)
+	user.drop_held_item()
+	
 //---------------------FIRE HANDLING PROCS
 /obj/item/ammo_box/flamer_fire_act(severity, datum/cause_data/flame_cause_data)
 	if(burning)
@@ -52,7 +77,7 @@
 	return
 
 /obj/item/ammo_box/magazine
-	name = "\improper magazine box (M41A x 10)"
+	name = "magazine box (M41A x 10)"
 	icon_state = "base_m41" //base color of box
 	var/overlay_ammo_type = "_reg" //used for ammo type color overlay
 	var/overlay_gun_type = "_m41" //used for text overlay
@@ -88,13 +113,14 @@
 /obj/item/ammo_box/magazine/update_icon()
 	if(overlays)
 		overlays.Cut()
-	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	if(!icon_state_deployed) // The lid is on the sprite already.
+		overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
 	if(overlay_gun_type)
-		overlays += image(icon, icon_state = "text[overlay_gun_type]") //adding text
+		overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
 	if(overlay_ammo_type)
-		overlays += image(icon, icon_state = "base_type[overlay_ammo_type]") //adding base color stripes
-	if(overlay_ammo_type!="_reg" && overlay_ammo_type!="_blank")
-		overlays += image(icon, icon_state = "lid_type[overlay_ammo_type]") //adding base color stripes
+		overlays += image(text_markings_icon, icon_state = "base_type[overlay_ammo_type]") //adding base color stripes
+	if(overlay_ammo_type!="_reg" && overlay_ammo_type!="_blank" && (!icon_state_deployed) )
+		overlays += image(text_markings_icon, icon_state = "lid_type[overlay_ammo_type]") //adding base color stripes
 
 //---------------------INTERACTION PROCS
 
@@ -124,24 +150,13 @@
 	if(burning)
 		. += SPAN_DANGER("It's on fire and might explode!")
 
-/obj/item/ammo_box/magazine/attack_self(mob/living/user)
-	..()
-	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
-		return
+/obj/item/ammo_box/magazine/is_loaded()
+	if(handfuls)
+		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
+		return AM?.current_rounds
+	return length(contents)
 
-	if(length(contents))
-		if(!handfuls)
-			deploy_ammo_box(user, user.loc)
-			return
-		else
-			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
-			if(AM && AM.current_rounds)
-				deploy_ammo_box(user, user.loc)
-				return
-	unfold_box(user.loc)
-
-/obj/item/ammo_box/magazine/proc/deploy_ammo_box(mob/living/user, turf/T)
+/obj/item/ammo_box/magazine/deploy_ammo_box(mob/living/user, turf/T)
 	if(burning)
 		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 		return
@@ -236,7 +251,7 @@
 	var/offset_y = 0
 	if(limit_per_tile == 1) //snowflake nailgun ammo box again
 		offset_y += -2
-	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_y = offset_y)
+	var/image/fire_overlay = image(flames_icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_y = offset_y)
 	overlays.Add(fire_overlay)
 
 //-----------------------------------------------------------------------------------
@@ -245,7 +260,7 @@
 
 /obj/item/ammo_box/rounds
 	name = "\improper rifle ammunition box (10x24mm)"
-	desc = "A 10x24mm ammunition box. Used to refill M41A MK1, MK2, L42A and M41AE2 HPR magazines. It comes with a leather strap allowing to wear it on the back."
+	desc = "A 10x24mm ammunition box. Used to refill M41A MK1, MK2, M4RA and M41AE2 HPR magazines. It comes with a leather strap allowing to wear it on the back."
 	icon_state = "base_m41"
 	item_state = "base_m41"
 	flags_equip_slot = SLOT_BACK
@@ -271,16 +286,16 @@
 /obj/item/ammo_box/rounds/update_icon()
 	if(overlays)
 		overlays.Cut()
-	overlays += image(icon, icon_state = "text[overlay_gun_type]") //adding base color stripes
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding base color stripes
 
 	if(bullet_amount == max_bullet_amount)
-		overlays += image(icon, icon_state = "rounds[overlay_content]")
+		overlays += image(handfuls_icon, icon_state = "rounds[overlay_content]")
 	else if(bullet_amount > (max_bullet_amount/2))
-		overlays += image(icon, icon_state = "rounds[overlay_content]_3")
+		overlays += image(handfuls_icon, icon_state = "rounds[overlay_content]_3")
 	else if(bullet_amount > (max_bullet_amount/4))
-		overlays += image(icon, icon_state = "rounds[overlay_content]_2")
+		overlays += image(handfuls_icon, icon_state = "rounds[overlay_content]_2")
 	else if(bullet_amount > 0)
-		overlays += image(icon, icon_state = "rounds[overlay_content]_1")
+		overlays += image(handfuls_icon, icon_state = "rounds[overlay_content]_1")
 
 //---------------------INTERACTION PROCS
 
@@ -294,10 +309,10 @@
 	if(burning)
 		. += SPAN_DANGER("It's on fire and might explode!")
 
-/obj/item/ammo_box/rounds/attack_self(mob/living/user)
-	..()
-	if(bullet_amount < 1)
-		unfold_box(user.loc)
+
+
+/obj/item/ammo_box/rounds/is_loaded()
+	return bullet_amount
 
 /obj/item/ammo_box/rounds/attackby(obj/item/I, mob/user)
 	if(burning)

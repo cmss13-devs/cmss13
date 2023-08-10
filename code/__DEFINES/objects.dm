@@ -108,7 +108,6 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define IS_PRY_CAPABLE_CROWBAR 2 //actual crowbar
 #define IS_PRY_CAPABLE_FORCE 3 //can force open even powered airlocks
 
-
 #define SELF_DESTRUCT_MACHINE_INACTIVE 0
 #define SELF_DESTRUCT_MACHINE_ACTIVE 1
 #define SELF_DESTRUCT_MACHINE_ARMED 2
@@ -137,10 +136,15 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define CLEANABLE_MISC "misc" //Anything else
 
 //For nuke announcements
-#define NUKE_SHOW_TIMER_TEN_SEC 1
-#define NUKE_SHOW_TIMER_MINUTE 2
-#define NUKE_SHOW_TIMER_HALF 4
+#define NUKE_SHOW_TIMER_TEN_SEC (1<<0)
+#define NUKE_SHOW_TIMER_MINUTE (1<<1)
+#define NUKE_SHOW_TIMER_HALF (1<<2)
 #define NUKE_SHOW_TIMER_ALL (NUKE_SHOW_TIMER_TEN_SEC|NUKE_SHOW_TIMER_MINUTE|NUKE_SHOW_TIMER_HALF)
+
+#define NUKE_DECRYPT_SHOW_TIMER_COMPLETE (1<<3)
+#define NUKE_DECRYPT_SHOW_TIMER_MINUTE (1<<4)
+#define NUKE_DECRYPT_SHOW_TIMER_HALF (1<<5)
+#define NUKE_DECRYPT_SHOW_TIMER_ALL (NUKE_SHOW_TIMER_TEN_SEC|NUKE_SHOW_TIMER_HALF|NUKE_DECRYPT_SHOW_TIMER_COMPLETE|NUKE_DECRYPT_SHOW_TIMER_MINUTE|NUKE_DECRYPT_SHOW_TIMER_HALF)
 
 //For recipes
 #define ONE_TYPE_PER_TURF 1
@@ -160,3 +164,7 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define OBJ_IS_HELMET_GARB (1<<2)
 /// can you customize the description/name of the thing?
 #define OBJ_UNIQUE_RENAME (1<<3)
+
+// For reinforced table status
+#define RTABLE_WEAKENED 1
+#define RTABLE_NORMAL 2

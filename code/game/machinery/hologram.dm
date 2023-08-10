@@ -72,13 +72,17 @@ var/const/HOLOPAD_MODE = 0
 
 	layer = TURF_LAYER+0.1 //Preventing mice and drones from sneaking under them.
 
-	var/mob/living/silicon/ai/master//Which AI, if any, is controlling the object? Only one AI may control a hologram at any time.
+	var/mob/living/silicon/ai/master //Which AI, if any, is controlling the object? Only one AI may control a hologram at any time.
 	var/last_request = 0 //to prevent request spam. ~Carn
 	var/holo_range = 5 // Change to change how far the AI can move away from the holopad before deactivating.
 
 /obj/structure/machinery/hologram/holopad/Initialize()
 	. = ..()
 	flags_atom |= USES_HEARING
+
+/obj/structure/machinery/hologram/holopad/Destroy()
+	QDEL_NULL(master)
+	. = ..()
 
 /obj/structure/machinery/hologram/holopad/attack_hand(mob/living/carbon/human/user) //Carn: Hologram requests.
 	if(!istype(user))
@@ -213,4 +217,4 @@ Holographic project of everything else.
 	name = "hologram projector"
 	desc = "It makes a hologram appear...with magnets or something..."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
-	icon_state = "hologram0"
+	icon_state = "holopad0"

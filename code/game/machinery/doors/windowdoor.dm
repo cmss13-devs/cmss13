@@ -5,8 +5,8 @@
 	icon_state = "left"
 	layer = WINDOW_LAYER
 	var/base_state = "left"
-	health = 150.0 //If you change this, consiter changing ../door/window/brigdoor/ health at the bottom of this .dm file
-	visible = 0.0
+	health = 150 //If you change this, consiter changing ../door/window/brigdoor/ health at the bottom of this .dm file
+	visible = 0
 	use_power = USE_POWER_NONE
 	flags_atom = ON_BORDER
 	opacity = FALSE
@@ -21,6 +21,7 @@
 		src.base_state = src.icon_state
 
 /obj/structure/machinery/door/window/Destroy()
+	QDEL_NULL(electronics)
 	density = FALSE
 	playsound(src, "windowshatter", 50, 1)
 	. = ..()
@@ -61,35 +62,38 @@
 	return
 
 /obj/structure/machinery/door/window/open()
-	if (src.operating == 1) //doors can still open when emag-disabled
-		return 0
-	if(!src.operating) //in case of emag
-		src.operating = 1
-	flick(text("[]opening", src.base_state), src)
-	playsound(src.loc, 'sound/machines/windowdoor.ogg', 25, 1)
-	src.icon_state = text("[]open", src.base_state)
-	sleep(10)
+	if(operating) //doors can still open when emag-disabled
+		return FALSE
 
-	src.density = FALSE
+	operating = TRUE
+	flick(text("[]opening", base_state), src)
+	playsound(loc, 'sound/machines/windowdoor.ogg', 25, 1)
+	icon_state = text("[]open", base_state)
 
-	if(operating == 1) //emag again
-		src.operating = 0
-	return 1
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
+	return TRUE
+
+/obj/structure/machinery/door/window/finish_open()
+	density = FALSE
+
+	if(operating) //emag again
+		operating = FALSE
 
 /obj/structure/machinery/door/window/close()
-	if (src.operating)
-		return 0
-	src.operating = 1
+	if (operating)
+		return FALSE
+
+	operating = TRUE
 	flick(text("[]closing", src.base_state), src)
-	playsound(src.loc, 'sound/machines/windowdoor.ogg', 25, 1)
-	src.icon_state = src.base_state
+	playsound(loc, 'sound/machines/windowdoor.ogg', 25, 1)
+	icon_state = base_state
+	density = TRUE
 
-	src.density = TRUE
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed)
+	return TRUE
 
-	sleep(10)
-
-	src.operating = 0
-	return 1
+/obj/structure/machinery/door/window/finish_close()
+	operating = FALSE
 
 /obj/structure/machinery/door/window/proc/take_damage(damage)
 	src.health = max(0, src.health - damage)
@@ -163,7 +167,7 @@
 		return
 
 	//If it's emagged, crowbar can pry electronics out.
-	if (src.operating == -1 && istype(I, /obj/item/tool/crowbar))
+	if (src.operating == -1 && HAS_TRAIT(I, TRAIT_TOOL_CROWBAR))
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 		user.visible_message("[user] removes the electronics from the windoor.", "You start to remove electronics from the windoor.")
 		if (do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_BUILD))
@@ -216,7 +220,7 @@
 	name = "Secure glass door"
 	desc = "A thick chunk of tempered glass on metal track. Probably more robust than you."
 	req_access = list(ACCESS_MARINE_BRIG)
-	health = 300.0 //Stronger doors for prison (regular window door health is 150)
+	health = 300 //Stronger doors for prison (regular window door health is 150)
 
 
 /obj/structure/machinery/door/window/northleft

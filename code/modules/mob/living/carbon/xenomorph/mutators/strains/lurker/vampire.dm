@@ -1,7 +1,8 @@
 
 /datum/xeno_mutator/Vampire
 	name = "STRAIN: Lurker - Vampire"
-	description = "You lose the ability to cloak in exchange for faster speed and armor, along with extra abilities that will allow you to bleed your opponents and execute them, granting you great healing."
+	description = "You lose all of your abilities and you forefeit a chunk of your health and damage in exchange for a large amount of armor, a little bit of movement speed, increased attack speed, and brand new abilities that make you an assassin. Rush on your opponent to disorient them and Flurry to unleash a forward cleave that can hit and slow three talls and heal you for every tall you hit. Use your special AoE Tail Jab to knock talls away, doing more damage with direct hits and even more damage and a stun if they smack into walls. Finally, execute unconscious talls with a headbite that bypasses armor and heals you for a grand amount of health."
+	flavor_description = "Your thirst for tallhost blood surpasses even mine, child. Show no mercy! Slaughter them all!"
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_LURKER)
@@ -14,7 +15,7 @@
 		/datum/action/xeno_action/activable/pounce/rush,
 		/datum/action/xeno_action/activable/flurry,
 		/datum/action/xeno_action/activable/tail_jab,
-		/datum/action/xeno_action/activable/headbite
+		/datum/action/xeno_action/activable/headbite,
 	)
 	keystone = TRUE
 

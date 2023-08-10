@@ -80,7 +80,7 @@
 
 	if (stat != DEAD) //Alive.
 		if (knocked_out || stunned || knocked_down || !has_power) //Stunned etc.
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 			if(regular_update)
 				if (src.stunned > 0)
 					adjust_effect(-1, STUN)
@@ -93,11 +93,11 @@
 					src.blinded = FALSE
 
 		else //Not stunned.
-			src.stat = 0
+			src.set_stat(CONSCIOUS)
 
 	else //Dead.
 		src.blinded = TRUE
-		src.stat = 2
+		src.set_stat(DEAD)
 
 	if(!regular_update)
 		return

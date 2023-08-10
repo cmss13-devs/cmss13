@@ -10,10 +10,14 @@
 	unslashable = TRUE
 	health = 0 //do not forget to set health for your bot!
 	var/maxhealth = 0
-	var/fire_dam_coeff = 1.0
-	var/brute_dam_coeff = 1.0
+	var/fire_dam_coeff = 1
+	var/brute_dam_coeff = 1
 	var/open = 0//Maint panel
 	var/locked = 1
+
+/obj/structure/machinery/bot/Destroy()
+	QDEL_NULL(botcard)
+	. = ..()
 
 
 /obj/structure/machinery/bot/proc/turn_on()

@@ -122,7 +122,7 @@
 	req_one_access = list(
 		ACCESS_MARINE_CREWMAN,
 		// Officers always have access
-		ACCESS_MARINE_BRIDGE,
+		ACCESS_MARINE_COMMAND,
 		// You can't hide from the MPs
 		ACCESS_MARINE_BRIG,
 	)
@@ -137,7 +137,7 @@
 	var/list/misc_multipliers = list(
 		"move" = 1.0,
 		"accuracy" = 1.0,
-		"cooldown" = 1.0
+		"cooldown" = 1
 	)
 
 	//Changes how much damage the vehicle takes
@@ -163,15 +163,6 @@
 /obj/vehicle/multitile/Initialize()
 	. = ..()
 
-	if(interior_map)
-		interior = new(src)
-		interior.create_interior(interior_map)
-
-		if(!interior)
-			to_world("Interior [interior_map] failed to load for [src]! Tell a developer!")
-			qdel(src)
-			return
-
 	var/angle_to_turn = turning_angle(SOUTH, dir)
 	rotate_entrances(angle_to_turn)
 	rotate_bounds(angle_to_turn)
@@ -181,6 +172,23 @@
 
 	GLOB.all_multi_vehicles += src
 
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/vehicle/multitile/LateInitialize()
+	. = ..()
+
+	if(interior_map)
+		interior = new(src)
+		INVOKE_ASYNC(src, PROC_REF(do_create_interior))
+
+/obj/vehicle/multitile/proc/do_create_interior()
+	interior.create_interior(interior_map)
+
+	if(!interior)
+		to_world("Interior [interior_map] failed to load for [src]! Tell a developer!")
+		qdel(src)
+		return
+
 /obj/vehicle/multitile/Destroy()
 	if(!QDELETED(interior))
 		QDEL_NULL(interior)
@@ -189,7 +197,7 @@
 
 	GLOB.all_multi_vehicles -= src
 
-	. = ..()
+	return ..()
 
 /obj/vehicle/multitile/proc/initialize_cameras()
 	return

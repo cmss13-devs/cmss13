@@ -21,14 +21,14 @@ SUBSYSTEM_DEF(input)
 // This is for when macro sets are eventualy datumized
 /datum/controller/subsystem/input/proc/setup_default_macro_sets()
 	macro_set = list(
-	"Any" = "\"KeyDown \[\[*\]\]\"",
-	"Any+UP" = "\"KeyUp \[\[*\]\]\"",
-	"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
-	"F1" = "adminhelp", // Need to unbind F1 because by default, it is bound to .options
-	"CTRL+SHIFT+F1+REP" = ".options",
-	"Tab" = "\".winset \\\"input.focus=true?map.focus=true:input.focus=true\\\"\"",
-	"Escape" = "Reset-Held-Keys",
-	)
+		"Any" = "\"KeyDown \[\[*\]\]\"",
+		"Any+UP" = "\"KeyUp \[\[*\]\]\"",
+		"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
+		"F1" = "adminhelp", // Need to unbind F1 because by default, it is bound to .options
+		"CTRL+SHIFT+F1+REP" = ".options",
+		"Tab" = "\".winset \\\"input.focus=true?map.focus=true:input.focus=true\\\"\"",
+		"Escape" = "Open-Escape-Menu",
+		)
 
 // Badmins just wanna have fun ♪
 /datum/controller/subsystem/input/proc/refresh_client_macro_sets()

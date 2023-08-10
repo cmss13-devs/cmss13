@@ -112,7 +112,7 @@ GLOBAL_LIST_EMPTY(tech_controls_marine)
 
 	icon_state = "techweb"
 
-	req_access = list(ACCESS_MARINE_BRIDGE)
+	req_access = list(ACCESS_MARINE_COMMAND)
 	density = TRUE
 	anchored = TRUE
 	wrenchable = FALSE

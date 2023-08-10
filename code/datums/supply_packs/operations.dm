@@ -85,8 +85,8 @@
 		/obj/item/cell,
 		/obj/item/cell,
 		/obj/item/stack/cable_coil,
-		/obj/item/stack/cable_coil
-					)
+		/obj/item/stack/cable_coil,
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/supply
 	buyable = 0
@@ -94,9 +94,17 @@
 	group = "Operations"
 
 /datum/supply_packs/nuclearbomb
-	name = "Operational Nuke"
+	name = "Decrypted Operational Nuke"
 	cost = 0
 	containertype = /obj/structure/machinery/nuclearbomb
+	buyable = 0
+	group = "Operations"
+	iteration_needed = null
+
+/datum/supply_packs/technuclearbomb
+	name = "Encrypted Operational Nuke"
+	cost = 0
+	containertype = /obj/structure/machinery/nuclearbomb/tech
 	buyable = 0
 	group = "Operations"
 	iteration_needed = null
@@ -107,7 +115,7 @@
 		/obj/item/spec_kit/asrs,
 		/obj/item/spec_kit/asrs,
 		/obj/item/spec_kit/asrs,
-		/obj/item/spec_kit/asrs
+		/obj/item/spec_kit/asrs,
 	)
 	cost = 0
 	containertype = /obj/structure/closet/crate/supply

@@ -120,7 +120,7 @@
 	if(user_xeno.hive.living_xeno_queen && user_xeno.hive.living_xeno_queen.observed_xeno == target_xeno)
 		user_xeno.hive.living_xeno_queen.overwatch(new_xeno)
 
-	message_staff("[key_name_admin(user_xeno)] has deevolved [key_name_admin(target_xeno)]. Reason: [reason]")
+	message_admins("[key_name_admin(user_xeno)] has deevolved [key_name_admin(target_xeno)]. Reason: [reason]")
 	log_admin("[key_name_admin(user_xeno)] has deevolved [key_name_admin(target_xeno)]. Reason: [reason]")
 
 	target_xeno.transfer_observers_to(new_xeno)
@@ -130,8 +130,7 @@
 	SSround_recording.recorder.stop_tracking(target_xeno)
 	SSround_recording.recorder.track_player(new_xeno)
 	qdel(target_xeno)
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/remove_eggsac/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/queen/X = owner
@@ -154,7 +153,7 @@
 	if(!X.ovipositor)
 		return
 	X.dismount_ovipositor()
-
+	return ..()
 
 /datum/action/xeno_action/onclick/grow_ovipositor/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
@@ -175,7 +174,7 @@
 		to_chat(xeno, SPAN_XENOWARNING("You need to be on resin to grow an ovipositor."))
 		return
 
-	if(GLOB.interior_manager.interior_z == xeno.z)
+	if(SSinterior.in_interior(xeno))
 		to_chat(xeno, SPAN_XENOWARNING("It's too tight in here to grow an ovipositor."))
 		return
 
@@ -203,7 +202,7 @@
 	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] has grown an ovipositor!"), \
 	SPAN_XENOWARNING("You have grown an ovipositor!"))
 	xeno.mount_ovipositor()
-
+	return ..()
 
 /datum/action/xeno_action/onclick/set_xeno_lead/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/queen/X = owner
@@ -246,7 +245,7 @@
 			X.overwatch(possible_xenos[1])
 		else
 			to_chat(X, SPAN_XENOWARNING("There are no Xenomorph leaders. Overwatch a Xenomorph to make it a leader."))
-
+	return ..()
 
 /datum/action/xeno_action/activable/queen_heal/use_ability(atom/A, verbose)
 	var/mob/living/carbon/xenomorph/queen/X = owner
@@ -291,6 +290,7 @@
 
 	apply_cooldown()
 	to_chat(X, SPAN_XENONOTICE("You channel your plasma to heal your sisters' wounds around this area."))
+	return ..()
 
 /datum/action/xeno_action/onclick/give_evo_points/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
@@ -304,7 +304,7 @@
 		to_chat(usr, SPAN_XENOWARNING("You must give some time for larva to spawn before sacrificing them. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK - world.time) / 600)] minutes."))
 		return
 
-	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to give evolution points for a pooled larva:", "Give Evolution Points", user_xeno.hive.totalXenos, theme="hive_status")
+	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to give evolution points for a burrowed larva:", "Give Evolution Points", user_xeno.hive.totalXenos, theme="hive_status")
 
 	if(!choice)
 		return
@@ -333,7 +333,7 @@
 		return
 
 	if(user_xeno.hive.stored_larva < required_larva)
-		to_chat(user_xeno, SPAN_XENOWARNING("You need at least [required_larva] pooled larva to sacrifice one for evolution points."))
+		to_chat(user_xeno, SPAN_XENOWARNING("You need at least [required_larva] burrowed larva to sacrifice one for evolution points."))
 		return
 
 	if(tgui_alert(user_xeno, "Are you sure you want to sacrifice a larva to give [target_xeno] [evo_points_per_larva] evolution points?", "Give Evolution Points", list("Yes", "No")) != "Yes")
@@ -351,6 +351,7 @@
 		target_xeno.evolution_stored += evo_points_per_larva
 
 	user_xeno.hive.stored_larva--
+	return ..()
 
 /datum/action/xeno_action/onclick/banish/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
@@ -411,7 +412,8 @@
 	user_xeno.hive.banished_ckeys[target_xeno.name] = target_xeno.ckey
 	addtimer(CALLBACK(src, PROC_REF(remove_banish), user_xeno.hive, target_xeno.name), 30 MINUTES)
 
-	message_staff("[key_name_admin(user_xeno)] has banished [key_name_admin(target_xeno)]. Reason: [reason]")
+	message_admins("[key_name_admin(user_xeno)] has banished [key_name_admin(target_xeno)]. Reason: [reason]")
+	return ..()
 
 /datum/action/xeno_action/onclick/banish/proc/remove_banish(datum/hive_status/hive, name)
 	hive.banished_ckeys.Remove(name)
@@ -468,22 +470,7 @@
 		target_xeno.lock_evolve = FALSE
 
 	user_xeno.hive.banished_ckeys.Remove(banished_name)
-
-/datum/action/xeno_action/activable/secrete_resin/remote/queen/use_ability(atom/A)
-	. = ..()
-	if(!.)
-		return
-
-	if(!boosted)
-		return
-	var/mob/living/carbon/xenomorph/X = owner
-	var/datum/hive_status/HS = X.hive
-	if(!HS || !HS.hive_location)
-		return
-	// 5 screen radius
-	if(get_dist(A, HS.hive_location) > 35)
-		// Apply the normal cooldown if not building near the hive
-		apply_cooldown_override(initial(xeno_cooldown))
+	return ..()
 
 /datum/action/xeno_action/onclick/eye
 	name = "Enter Eye Form"
@@ -525,6 +512,9 @@
 
 	var/area/AR = get_area(T)
 	if(!AR.is_resin_allowed)
+		if(AR.flags_area & AREA_UNWEEDABLE)
+			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
+			return
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return
 
@@ -573,6 +563,7 @@
 
 	to_chat(X, SPAN_XENONOTICE("You plant weeds at [T]."))
 	apply_cooldown()
+	return ..()
 
 /datum/action/xeno_action/activable/expand_weeds/proc/reset_turf_cooldown(turf/T)
 	recently_built_turfs -= T
@@ -605,7 +596,7 @@
 		tunnel_xeno(src, xeno)
 
 	addtimer(CALLBACK(src, PROC_REF(transport_xenos), T), 3 SECONDS)
-	return TRUE
+	return ..()
 
 /datum/action/xeno_action/activable/place_queen_beacon/proc/tunnel_xeno(datum/source, mob/living/carbon/xenomorph/X)
 	SIGNAL_HANDLER
@@ -694,7 +685,7 @@
 	var/obj/effect/alien/resin/resin_pillar/RP = new pillar_type(new_turf)
 	RP.start_decay(brittle_time, decay_time)
 
-	return TRUE
+	return ..()
 
 /datum/action/xeno_action/activable/blockade/proc/check_turf(mob/living/carbon/xenomorph/queen/Q, turf/T)
 	if(T.density)
@@ -708,7 +699,4 @@
 	set desc = "This opens a tactical map, where you can see where every xenomorph is."
 	set category = "Alien"
 
-	var/icon/O = overlay_tacmap(TACMAP_XENO, TACMAP_BASE_OPEN, hivenumber)
-	if(O)
-		src << browse_rsc(O, "marine_minimap.png")
-		show_browser(src, "<img src=marine_minimap.png>", "Xeno Tacmap", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
+	hive.tacmap.tgui_interact(src)

@@ -22,6 +22,7 @@
 	item_state = "motion_detector"
 	flags_atom = FPRINT| CONDUCT
 	flags_equip_slot = SLOT_WAIST
+	inherent_traits = list(TRAIT_ITEM_NOT_IMPLANTABLE)
 	var/list/blip_pool = list()
 	var/detector_range = 14
 	var/detector_mode = MOTION_DETECTOR_LONG
@@ -228,11 +229,14 @@
 		if(human_user)
 			show_blip(human_user, M)
 
-	for(var/mob/hologram/queen/Q in GLOB.hologram_list)
-		if(Q.z != cur_turf.z || !(range_bounds.contains_atom(Q))) continue
+	for(var/mob/hologram/holo as anything in GLOB.hologram_list)
+		if(!holo.motion_sensed)
+			continue
+		if(holo.z != cur_turf.z || !(range_bounds.contains_atom(holo)))
+			continue
 		ping_count++
 		if(human_user)
-			show_blip(human_user, Q, "queen_eye")
+			show_blip(human_user, holo, "queen_eye")
 
 	if(ping_count > 0)
 		playsound(loc, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, 0, 7, 2)
@@ -309,6 +313,16 @@
 	name = "hacked motion detector"
 	desc = "A device that usually picks up non-USCM signals, but this one's been hacked to detect all non-freelancer movement instead. Fight fire with fire!"
 	iff_signal = FACTION_MERCENARY
+
+/obj/item/device/motiondetector/hacked/pmc
+	name = "corporate motion detector"
+	desc = "A device that usually picks up non-USCM signals, but this one's been reprogrammed to detect all non-PMC movement instead. Very corporate."
+	iff_signal = FACTION_PMC
+
+/obj/item/device/motiondetector/hacked/dutch
+	name = "hacked motion detector"
+	desc = "A device that usually picks up non-USCM signals, but this one's been hacked to detect all non-Dutch's Dozen movement instead. Fight fire with fire!"
+	iff_signal = FACTION_DUTCH
 
 /obj/item/device/motiondetector/hacked/contractor
 	name = "modified motion detector"

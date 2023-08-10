@@ -17,8 +17,7 @@
 /area/shuttle/ert)
 "d" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin6";
-	tag = "icon-rasputin6"
+	icon_state = "rasputin6"
 	},
 /area/shuttle/ert)
 "e" = (
@@ -33,8 +32,7 @@
 /obj/item/storage/belt/medical/lifesaver/full,
 /obj/item/device/healthanalyzer,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/shuttle/ert)
 "g" = (
@@ -45,14 +43,12 @@
 	pixel_y = -5
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/shuttle/ert)
 "h" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin8";
-	tag = "icon-rasputin7"
+	icon_state = "rasputin8"
 	},
 /area/shuttle/ert)
 "i" = (
@@ -65,8 +61,7 @@
 /area/shuttle/ert)
 "k" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/shuttle/ert)
 "l" = (
@@ -76,8 +71,7 @@
 /area/shuttle/ert)
 "m" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin7";
-	tag = "icon-rasputin7"
+	icon_state = "rasputin7"
 	},
 /area/shuttle/ert)
 "n" = (
@@ -102,8 +96,7 @@
 	dir = 2
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/shuttle/ert)
 "r" = (
@@ -113,15 +106,13 @@
 /area/shuttle/ert)
 "s" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
+	icon_state = "rasputin3"
 	},
 /area/shuttle/ert)
 "t" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
+	icon_state = "rasputin3"
 	},
 /area/shuttle/ert)
 "u" = (
@@ -130,8 +121,7 @@
 	},
 /obj/effect/landmark/ert_spawns/distress_pmc,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/shuttle/ert)
 "v" = (
@@ -182,31 +172,27 @@
 /area/shuttle/ert)
 "G" = (
 /turf/open/shuttle/dropship{
-	icon_state = "floor8";
-	tag = "icon-rasputin7"
+	icon_state = "floor8"
 	},
 /area/shuttle/ert)
 "H" = (
 /obj/structure/bed/chair/dropship/passenger,
 /obj/effect/landmark/ert_spawns/distress_pmc,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/shuttle/ert)
 "I" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/computer/shuttle/ert,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/shuttle/ert)
 "J" = (
 /obj/effect/landmark/ert_spawns/distress_pmc,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
+	icon_state = "rasputin3"
 	},
 /area/shuttle/ert)
 "K" = (
@@ -220,8 +206,7 @@
 	},
 /obj/effect/landmark/ert_spawns/distress_pmc,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/shuttle/ert)
 "M" = (
@@ -246,8 +231,7 @@
 /obj/effect/landmark/ert_spawns/distress_pmc/item,
 /obj/item/storage/toolbox/syndicate,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+	icon_state = "rasputin15"
 	},
 /area/shuttle/ert)
 "R" = (
@@ -278,8 +262,7 @@
 /area/shuttle/ert)
 "Y" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin4";
-	tag = "icon-rasputin7"
+	icon_state = "rasputin4"
 	},
 /area/shuttle/ert)
 "Z" = (

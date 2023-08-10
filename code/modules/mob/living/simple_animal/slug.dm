@@ -25,12 +25,12 @@
 /mob/living/simple_animal/alien_slug/Life(delta_time)
 	. = ..()
 	if(!ckey && stat == CONSCIOUS && prob(0.5))
-		stat = UNCONSCIOUS
+		set_stat(UNCONSCIOUS)
 		icon_state = "slug_resting"
 		wander = 0
 		speak_chance = 0
 	else if(ckey || (stat == UNCONSCIOUS && prob(1)))
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 		icon_state = "slug_movement"
 		wander = 1
 		canmove = 1

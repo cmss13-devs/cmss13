@@ -50,6 +50,8 @@
 	faction = FACTION_XENOMORPH
 	gender = NEUTER
 	icon_size = 48
+	black_market_value = KILL_MENDOZA
+	dead_black_market_value = 50
 	var/obj/item/clothing/suit/wear_suit = null
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
@@ -125,7 +127,7 @@
 	var/armor_integrity_max = 100
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
-	var/pull_multiplier = 1.0
+	var/pull_multiplier = 1
 	var/aura_strength = 0 // Pheromone strength
 	var/weed_level = WEED_LEVEL_STANDARD
 	var/acid_level = 0
@@ -141,7 +143,7 @@
 	var/hive_pos = NORMAL_XENO // The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
 
 	// Variables that can be mutated
-	var/ability_speed_modifier = 0.0 //Things that add on top of our base speed, based on what powers we are using
+	var/ability_speed_modifier = 0 //Things that add on top of our base speed, based on what powers we are using
 
 	// Progression-related
 	var/age_prefix = ""
@@ -229,17 +231,22 @@
 	var/datum/action/xeno_action/activable/selected_ability // Our currently selected ability
 	var/datum/action/xeno_action/activable/queued_action // Action to perform on the next click.
 	var/is_zoomed = FALSE
-	var/tileoffset = 0 // Zooming-out related vars
-	var/viewsize = 0
+	var/list/spit_types
+	/// Caste-based spit windup
+	var/spit_windup = FALSE
+	/// Caste-based spit windup duration (if applicable)
+	var/spit_delay = 0
+	var/tileoffset = 0 	// How much your view will be offset in the direction that you zoom?
+	var/viewsize = 0	//What size your view will be changed to when you zoom?
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
 	var/lock_evolve = FALSE //Prevents evolve/devolve (used when banished)
 	var/list/tackle_counter
 	var/evolving = FALSE // Whether the xeno is in the process of evolving
 	/// The damage dealt by a xeno whenever they take damage near someone
-	var/acid_blood_damage = 12
+	var/acid_blood_damage = 25
 	var/nocrit = FALSE
 	var/deselect_timer = 0 // Much like Carbon.last_special is a short tick record to prevent accidental deselects of abilities
-
+	var/got_evolution_message = FALSE
 	var/pounce_distance = 0
 
 	// Life reduction variables.
@@ -264,27 +271,40 @@
 	//
 	//////////////////////////////////////////////////////////////////
 	var/tunnel = FALSE
-	var/stealth = FALSE // for check on lurker invisibility
+	/// for check on lurker invisibility
+	var/stealth = FALSE
 	var/burrow = FALSE
 	var/fortify = FALSE
 	var/crest_defense = FALSE
-	var/agility = FALSE // 0 - upright, 1 - all fours
+	/// 0/FALSE - upright, 1/TRUE - all fours
+	var/agility = FALSE
 	var/ripping_limb = FALSE
 	var/steelcrest = FALSE
-	// Related to zooming out (primarily queen and boiler)
-	var/devour_timer = 0 // The world.time at which we will regurgitate our currently-vored victim
-	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
+	/// The world.time at which we will regurgitate our currently-vored victim
+	var/devour_timer = 0
+	/// For drones/hivelords. Extends the maximum build range they have
+	var/extra_build_dist = 0
+	/// tiles from self you can plant eggs.
+	var/egg_planting_range = 1
 	var/can_stack_builds = FALSE
 	var/list/resin_build_order
-	var/selected_resin // Which resin structure to build when we secrete resin, defaults to null.
-	var/selected_construction = XENO_STRUCTURE_CORE //which special structure to build when we place constructions
-	var/selected_mark // If leader what mark you will place when you make one
-	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
+	/// Which resin structure to build when we secrete resin, defaults to null.
+	var/selected_resin
+	/// which special structure to build when we place constructions
+	var/selected_construction = XENO_STRUCTURE_CORE
+	/// If leader what mark you will place when you make one
+	var/selected_mark
+	/// The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
+	var/datum/ammo/xeno/ammo = null
 	var/tunnel_delay = 0
-	var/list/available_fruits = list() // List of placeable the xenomorph has access to.
-	var/list/current_fruits = list() // If we have current_fruits that are limited, e.g. fruits
-	var/max_placeable = 0 // Limit to that amount
-	var/obj/effect/alien/resin/fruit/selected_fruit = null // the typepath of the placeable we wanna put down
+	/// List of placeable the xenomorph has access to.
+	var/list/available_fruits = list()
+	/// If we have current_fruits that are limited, e.g. fruits
+	var/list/current_fruits = list()
+	/// Limit to that amount
+	var/max_placeable = 0
+	/// the typepath of the placeable we wanna put down
+	var/obj/effect/alien/resin/fruit/selected_fruit = null
 	var/list/built_structures = list()
 
 	var/icon_xeno
@@ -352,6 +372,7 @@
 		nicknumber = oldXeno.nicknumber
 		life_kills_total = oldXeno.life_kills_total
 		life_damage_taken_total = oldXeno.life_damage_taken_total
+		evolution_stored = oldXeno.evolution_stored
 		if(oldXeno.iff_tag)
 			iff_tag = oldXeno.iff_tag
 			iff_tag.forceMove(src)
@@ -419,6 +440,9 @@
 	add_inherent_verbs()
 	add_abilities()
 	recalculate_actions()
+
+	if(z)
+		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_LIVING
@@ -499,7 +523,11 @@
 	if(queen.can_not_harm(src))
 		return COMPONENT_SCREECH_ACT_CANCEL
 
-
+/mob/living/carbon/xenomorph/proc/add_minimap_marker(flags = MINIMAP_FLAG_XENO)
+	if(IS_XENO_LEADER(src))
+		SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon(), overlay_iconstates = list(caste.minimap_leadered_overlay))
+		return
+	SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon())
 
 /mob/living/carbon/xenomorph/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -730,6 +758,8 @@
 	if(SEND_SIGNAL(AM, COMSIG_MOVABLE_XENO_START_PULLING, src) & COMPONENT_ALLOW_PULL)
 		return do_pull(AM, lunge, no_msg)
 
+	if(burrow)
+		return
 	if(!isliving(AM))
 		return FALSE
 	var/mob/living/L = AM
@@ -924,7 +954,7 @@
 	pull_multiplier = mutators.pull_multiplier
 	if(isrunner(src))
 		//Xeno runners need a small nerf to dragging speed mutator
-		pull_multiplier = 1.0 - (1.0 - mutators.pull_multiplier) * 0.85
+		pull_multiplier = 1 - (1 - mutators.pull_multiplier) * 0.85
 		if(is_zoomed)
 			zoom_out()
 	if(iscarrier(src))
@@ -1059,9 +1089,44 @@
 	announce_dchat("[src] ([mutation_type] [caste_type])</b> has ghosted and their body is up for grabs!", src)
 
 /mob/living/carbon/xenomorph/larva/handle_ghost_message()
-	if(locate(/obj/effect/alien/resin/special/pool) in range(2, get_turf(src)))
+	if(locate(/obj/effect/alien/resin/special/pylon/core) in range(2, get_turf(src)))
 		return
 	return ..()
 
 /mob/living/carbon/xenomorph/handle_blood_splatter(splatter_dir, duration)
-	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration)
+	var/color_override
+	if(special_blood)
+		var/datum/reagent/D = chemical_reagents_list[special_blood]
+		if(D)
+			color_override = D.color
+	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration, color_override)
+
+/mob/living/carbon/xenomorph/Collide(atom/movable/movable_atom)
+	. = ..()
+	if(behavior_delegate)
+		behavior_delegate.on_collide(movable_atom)
+
+/mob/living/carbon/xenomorph/proc/scuttle(obj/structure/current_structure)
+	if (mob_size != MOB_SIZE_SMALL)
+		return FALSE
+
+	var/move_dir = get_dir(src, loc)
+	for(var/atom/movable/atom in get_turf(current_structure))
+		if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))
+			to_chat(src, SPAN_WARNING("[atom] prevents you from squeezing under [current_structure]!"))
+			return FALSE
+	// Is it an airlock?
+	if(istype(current_structure, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/current_airlock = current_structure
+		if(current_airlock.locked || current_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
+			to_chat(src, SPAN_WARNING("[current_airlock] is locked down tight. You can't squeeze underneath!"))
+			return FALSE
+	visible_message(SPAN_WARNING("[src] scuttles underneath [current_structure]!"), \
+	SPAN_WARNING("You squeeze and scuttle underneath [current_structure]."), max_distance = 5)
+	forceMove(current_structure.loc)
+	return TRUE
+
+/mob/living/carbon/xenomorph/knocked_down_callback()
+	. = ..()
+	if(!resting) // !resting because we dont wanna prematurely update wounds if they're just trying to rest
+		update_wounds()

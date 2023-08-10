@@ -30,7 +30,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	/// When set and this gamemode is selected, the taskbar icon will change to the png selected here
 	var/taskbar_icon = 'icons/taskbar/gml_distress.png'
 	var/static_comms_amount = 0
-	var/obj/structure/machinery/computer/shuttle_control/active_lz = null
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/active_lz = null
 
 	var/datum/entity/statistic/round/round_stats = null
 
@@ -78,11 +78,11 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	return 1
 
 ///Triggered partway through the first drop, based on DROPSHIP_DROP_MSG_DELAY. Marines are underway but haven't yet landed.
-/datum/game_mode/proc/ds_first_drop(datum/shuttle/ferry/marine/m_shuttle)
+/datum/game_mode/proc/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	return
 
 ///Triggered when the dropship first lands.
-/datum/game_mode/proc/ds_first_landed(datum/shuttle/ferry/marine/m_shuttle)
+/datum/game_mode/proc/ds_first_landed(obj/docking_port/stationary/marine_dropship)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DS_FIRST_LANDED)
 	return
@@ -103,17 +103,18 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 
 	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc()
+	round_time_lobby = world.time
 	log_game("Round started at [time2text(world.realtime)]")
 	if(SSticker.mode)
 		log_game("Game mode set to [SSticker.mode]")
 	log_game("Server IP: [world.internet_address]:[world.port]")
-	return 1
+	return TRUE
 
 
 ///process()
 ///Called by the gameticker
 /datum/game_mode/process()
-	return 0
+	return FALSE
 
 
 /datum/game_mode/proc/check_finished() //to be called by ticker
@@ -158,6 +159,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 		log_game("Round end - humans: [surviving_humans]")
 	if(surviving_total > 0)
 		log_game("Round end - total: [surviving_total]")
+
 
 	return 0
 
@@ -247,6 +249,15 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 			var/mob/living/carbon/human/M = new /mob/living/carbon/human(spawnpoint)
 			M.create_hud() //Need to generate hud before we can equip anything apparently...
 			arm_equipment(M, spawner.equip_path, TRUE, FALSE)
+			for(var/obj/structure/bed/nest/found_nest in spawnpoint)
+				for(var/turf/the_turf in list(get_step(found_nest, NORTH),get_step(found_nest, EAST),get_step(found_nest, WEST)))
+					if(the_turf.density)
+						found_nest.dir = get_dir(found_nest, the_turf)
+						found_nest.pixel_x = found_nest.buckling_x["[found_nest.dir]"]
+						found_nest.pixel_y = found_nest.buckling_y["[found_nest.dir]"]
+						M.dir = get_dir(the_turf,found_nest)
+				if(!found_nest.buckled_mob)
+					found_nest.do_buckle(M,M)
 		gamemode_spawn_corpse.Remove(spawner)
 
 /datum/game_mode/proc/spawn_static_comms()

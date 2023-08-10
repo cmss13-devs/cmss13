@@ -5,6 +5,8 @@
 	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 		to_chat(usr, SPAN_DANGER("You need to be a moderator or higher to access this."))
 		return
+	if(tgui_alert(usr, "Are you sure you want to view global variables? This will cause a large lag spike.", "Confirmation", list("Yes", "No"), 20 SECONDS) != "Yes")
+		return
 
 	var/body = {"<script type="text/javascript">
 
@@ -348,7 +350,7 @@
 		var/list/possible_classes = list("text","num","type","reference","mob reference","icon","file","list")
 		if(LAZYLEN(stored_matrices))
 			possible_classes += "matrix"
-		if(admin_holder && admin_holder.marked_datums.len)
+		if(admin_holder && admin_holder.marked_datum)
 			possible_classes += "marked datum"
 		possible_classes += "edit referenced object"
 		possible_classes += "restore to default"
@@ -416,13 +418,13 @@
 			global.vars[variable] = M
 
 			world.log << "### Global VarEdit by [key_name(src)]: '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])"
-			message_staff("[key_name_admin(src)] modified global variable '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])", 1)
+			message_admins("[key_name_admin(src)] modified global variable '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])", 1)
 
 			return
 
 		if("marked datum")
-			var/datum/D = input_marked_datum(admin_holder.marked_datums)
+			var/datum/D = admin_holder.marked_datum
 			global.vars[variable] = D
 
 	world.log << "### Global VarEdit by [key_name(src)]: '[variable]': [var_value] => [html_encode("[global.vars[variable]]")]"
-	message_staff("[key_name_admin(src)] modified global variable '[variable]': [var_value] => [global.vars[variable]]", 1)
+	message_admins("[key_name_admin(src)] modified global variable '[variable]': [var_value] => [global.vars[variable]]", 1)

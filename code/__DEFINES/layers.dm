@@ -16,7 +16,7 @@
 #define TURF_LAYER 2
 
 #define ABOVE_TURF_LAYER 2.01
-#define INTERIOR_WALL_NORTH_LAYER 2.02
+#define WALL_LAYER 2.02
 
 #define LATTICE_LAYER 2.15
 
@@ -67,6 +67,9 @@
 
 /// Under all objects if opened. 2.85 due to tables being at 2.8
 #define DOOR_OPEN_LAYER 2.85
+
+///For hatches on the floor.
+#define HATCH_LAYER 2.9
 
 #define BELOW_VAN_LAYER 2.98
 
@@ -121,12 +124,15 @@
 #define FACEHUGGER_LAYER 4.13
 /// For WEATHER
 #define WEATHER_LAYER 4.14
-#define INTERIOR_WALL_SOUTH_LAYER 5.2
-#define INTERIOR_DOOR_LAYER 5.21
 
 //#define FLY_LAYER 5
 
 #define RIPPLE_LAYER 5.1
+#define INTERIOR_DOOR_INSIDE_LAYER 5.19
+#define INTERIOR_WALL_SOUTH_LAYER 5.2
+#define INTERIOR_DOOR_LAYER 5.21
+#define INTERIOR_WALLMOUNT_LAYER 5.3
+#define INTERIOR_ROOF_LAYER 5.5
 
 #define ABOVE_FLY_LAYER 6
 
@@ -171,26 +177,29 @@
 /// NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
 #define LOWEST_EVER_PLANE -200
 
+/// Floor plane, self explanatory. Used for Ambient Occlusion filter
 #define FLOOR_PLANE -7
+/// Game Plane, where most of the game objects reside
 #define GAME_PLANE -6
-#define ABOVE_GAME_PLANE -5
+/// Roof plane, disappearing when entering buildings
+#define ROOF_PLANE -4
 
 /// To keep from conflicts with SEE_BLACKNESS internals
 #define BLACKNESS_PLANE 0
 
 #define GHOST_PLANE 80
 
-//---------- LIGHTING -------------
 #define LIGHTING_PLANE 100
 #define EXTERIOR_LIGHTING_PLANE 101
 
-///--------------- FULLSCREEN RUNECHAT BUBBLES ------------
 ///Popup Chat Messages
 #define RUNECHAT_PLANE 501
 
-//-------------------- Rendering ---------------------
 #define RENDER_PLANE_GAME 990
 #define RENDER_PLANE_NON_GAME 995
+
+#define ESCAPE_MENU_PLANE 997
+
 #define RENDER_PLANE_MASTER 999
 
 //-------------------- HUD ---------------------
@@ -205,3 +214,4 @@
 
 /// Plane master controller keys
 #define PLANE_MASTERS_GAME "plane_masters_game"
+#define PLANE_MASTERS_NON_MASTER "plane_masters_non_master"

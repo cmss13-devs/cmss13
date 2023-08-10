@@ -240,6 +240,7 @@
 	desc = "Someone tried to watch a black-market Arcturian blue movie on this augmented-reality headset and now it's useless. Unlike you, Disco will never die.\nThere's some kind of epilepsy warning sticker on the side."
 	icon_state = "discovision"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	black_market_value = 25
 
 	//These three vars are so that the flashing of the obj and onmob match what the wearer is seeing. They're actually vis_contents rather than overlays,
 	//strictly speaking, since overlays can't be animate()-ed.
@@ -262,7 +263,7 @@
 	mob_glass_overlay.icon_state = "discovision_glass_onmob"
 	mob_glass_overlay.layer = FLOAT_LAYER
 
-	//The overlays are painted in shades of pure red. These matrices convert them to various shades of the new colour.
+	//The overlays are painted in shades of pure red. These matrices convert them to various shades of the new color.
 	onmob_colors = list(
 		"base" = color_matrix_recolor_red("#5D5D5D"),
 		"yellow" = color_matrix_recolor_red("#D4C218"),
@@ -295,13 +296,13 @@
 
 	//User client has its looping animation ended by the login matrix update when ghosting.
 	//For some reason the obj overlay doesn't end the loop properly when set to 0 seconds, but as long as the previous loop is ended the new one should
-	//transition smoothly from whatever colour it current has.
+	//transition smoothly from whatever color it current has.
 	animate(obj_glass_overlay, color = onmob_colors["base"], time = 0.3 SECONDS)
 	animate(mob_glass_overlay, color = onmob_colors["base"], time = 0.3 SECONDS)
 
 	addtimer(CALLBACK(src, PROC_REF(apply_discovision), user), 0.1 SECONDS)
 
-///Handles disco-vision. Normal client colour matrix handling isn't set up for a continuous animation like this, so this is applied afterwards.
+///Handles disco-vision. Normal client color matrix handling isn't set up for a continuous animation like this, so this is applied afterwards.
 /obj/item/clothing/glasses/disco_fever/proc/apply_discovision(mob/user)
 	//Caramelldansen HUD overlay.
 	//Use of this filter in armed conflict is in direct contravention of the Geneva Suggestions (2120 revision)
@@ -326,9 +327,9 @@
 		return
 
 	var/base_colour
-	if(!user.client.color) //No set client colour.
+	if(!user.client.color) //No set client color.
 		base_colour = color_matrix_saturation(1.35) //Crank up the saturation and get ready to party.
-	else if(istext(user.client.color)) //Hex colour string.
+	else if(istext(user.client.color)) //Hex color string.
 		base_colour = color_matrix_multiply(color_matrix_from_string(user.client.color), color_matrix_saturation(1.35))
 	else //Colour matrix.
 		base_colour = color_matrix_multiply(user.client.color, color_matrix_saturation(1.35))
@@ -540,7 +541,7 @@
 
 /obj/item/clothing/glasses/sunglasses
 	desc = "Generic off-brand eyewear, used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
-	name = "cheap sunglasses"
+	name = "sunglasses"
 	icon_state = "sun"
 	item_state = "sunglasses"
 	darkness_view = -1

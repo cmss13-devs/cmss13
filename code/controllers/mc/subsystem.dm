@@ -66,6 +66,9 @@
 	/// Tracks the current execution state of the subsystem. Used to handle subsystems that sleep in fire so the mc doesn't run them again while they are sleeping
 	var/state = SS_IDLE
 
+	/// Tracks how many times a subsystem has ever slept in fire().
+	var/slept_count = 0
+
 	/// Tracks how many fires the subsystem has consecutively paused on in the current run
 	var/paused_ticks = 0
 
@@ -121,8 +124,10 @@
 	fire(resumed)
 	. = state
 	if (state == SS_SLEEPING)
+		slept_count++
 		state = SS_IDLE
 	if (state == SS_PAUSING)
+		slept_count++
 		var/QT = queued_time
 		enqueue()
 		state = SS_PAUSED
@@ -289,7 +294,6 @@
 //should attempt to salvage what it can from the old instance of subsystem
 /datum/controller/subsystem/Recover()
 
-/*
 /datum/controller/subsystem/vv_edit_var(var_name, var_value)
 	switch (var_name)
 		if (NAMEOF(src, can_fire))
@@ -299,4 +303,3 @@
 		if (NAMEOF(src, queued_priority)) //editing this breaks things.
 			return FALSE
 	. = ..()
-*/

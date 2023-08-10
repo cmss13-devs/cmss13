@@ -15,8 +15,6 @@
 	icon_state = "binary_key"
 	translate_apollo = TRUE
 
-
-
 /obj/item/device/encryptionkey/public
 	name = "Public Radio Encryption Key"
 	icon_state = "stripped_key"
@@ -28,110 +26,12 @@
 	icon_state = "stripped_key"
 	channels = list(RADIO_CHANNEL_COLONY= TRUE)
 
-/obj/item/device/encryptionkey/ai_integrated
-	name = "AI Integrated Encryption Key"
-	desc = "Integrated encryption key"
-	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
-
-/obj/item/device/encryptionkey/sentry_laptop
-	name = "Sentry Network Status Encryption Key"
-	desc = "Automated channel to broadcast sentry gun updates"
-	icon_state = "eng_key"
-	channels = list(RADIO_CHANNEL_SENTRY = TRUE)
-
-/obj/item/device/encryptionkey/engi
-	name = "Engineering Radio Encryption Key"
-	icon_state = "eng_key"
-	channels = list(RADIO_CHANNEL_ENGI = TRUE)
-
-/obj/item/device/encryptionkey/sec
-	name = "Security Radio Encryption Key"
-	icon_state = "sec_key"
-	channels = list(RADIO_CHANNEL_MP = TRUE)
-
-/obj/item/device/encryptionkey/med
-	name = "Medical Radio Encryption Key"
-	icon_state = "med_key"
-	channels = list(RADIO_CHANNEL_MEDSCI = TRUE)
-
-/obj/item/device/encryptionkey/ce
-	name = "Chief Engineer's Encryption Key"
-	icon_state = "ce_key"
-	channels = list(RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
-
-/obj/item/device/encryptionkey/cmo
-	name = "Chief Medical Officer's Encryption Key"
-	icon_state = "cmo_key"
-	channels = list(RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_COMMAND = TRUE)
+// MARINE ONE CHANNEL
 
 /obj/item/device/encryptionkey/command
 	name = "Command Encryption Key"
 	icon_state = "cap_key"
 	channels = list(RADIO_CHANNEL_COMMAND = TRUE)
-
-/obj/item/device/encryptionkey/ro
-	name = "Requisition Officer's Encryption Key"
-	icon_state = "ce_key"
-	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = FALSE, RADIO_CHANNEL_MEDSCI = FALSE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
-
-/obj/item/device/encryptionkey/req
-	name = "Supply Radio Encryption Key"
-	icon_state = "req_key"
-	channels = list(RADIO_CHANNEL_REQ = TRUE)
-
-/obj/item/device/encryptionkey/req/ct
-	name = "Supply Radio Encryption Key"
-	icon_state = "req_key"
-	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_COMMAND = FALSE, RADIO_CHANNEL_ENGI = FALSE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
-
-/obj/item/device/encryptionkey/mmpo
-	name = "\improper Military Police Radio Encryption Key"
-	icon_state = "sec_key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE,)
-
-//MARINE ENCRYPTION KEYS
-
-/obj/item/device/encryptionkey/cmpcom
-	name = "\improper Marine Chief MP Radio Encryption Key"
-	icon_state = "cmp_key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
-
-/obj/item/device/encryptionkey/cmpcom/cdrcom
-	name = "\improper Marine Senior Command Radio Encryption Key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
-
-/obj/item/device/encryptionkey/cmpcom/synth
-	name = "\improper Marine Synth Radio Encryption Key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
-
-/obj/item/device/encryptionkey/mcom
-	name = "\improper Marine Command Radio Encryption Key"
-	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
-
-/obj/item/device/encryptionkey/mcom/cl
-	name = "\improper Corporate Liaison radio encryption key"
-	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_WY = TRUE)
-
-/obj/item/device/encryptionkey/mcom/rep
-	name = "\improper Representative radio encryption key"
-	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ALMAYER = TRUE)
-
-/obj/item/device/encryptionkey/po
-	name = "\improper Marine Pilot Officer Radio Encryption Key"
-	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
-
-/obj/item/device/encryptionkey/io
-	name = "\improper Marine Intelligence Officer Radio Encryption Key"
-	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_INTEL = TRUE)
-
-/obj/item/device/encryptionkey/mcom/ai //AI only.
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
 
 /obj/item/device/encryptionkey/jtac
 	name = "\improper JTAC Radio Encryption Key"
@@ -142,6 +42,138 @@
 	name = "\improper Intel Radio Encryption Key"
 	icon_state = "jtac_key"
 	channels = list(RADIO_CHANNEL_INTEL = TRUE)
+
+//MARINE ENCRYPTION KEYS
+
+/obj/item/device/encryptionkey/ai_integrated
+	name = "AI Integrated Encryption Key"
+	desc = "Integrated encryption key"
+	icon_state = "cap_key"
+	channels = list(RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
+
+/obj/item/device/encryptionkey/sentry_laptop
+	name = "Sentry Network Status Encryption Key"
+	desc = "Automated channel to broadcast sentry gun updates"
+	icon_state = "eng_key"
+	channels = list(RADIO_CHANNEL_SENTRY = TRUE)
+
+// MARINE COMMAND
+
+/obj/item/device/encryptionkey/cmpcom/cdrcom
+	name = "\improper Marine Senior Command Radio Encryption Key"
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
+
+/obj/item/device/encryptionkey/mcom
+	name = "\improper Marine Command Radio Encryption Key"
+	icon_state = "cap_key"
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
+
+/obj/item/device/encryptionkey/mcom/alt
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
+
+// MARINE ENGINEERING
+
+/obj/item/device/encryptionkey/ce
+	name = "Chief Engineer's Encryption Key"
+	icon_state = "ce_key"
+	channels = list(RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
+
+/obj/item/device/encryptionkey/engi
+	name = "Engineering Radio Encryption Key"
+	icon_state = "eng_key"
+	channels = list(RADIO_CHANNEL_ENGI = TRUE)
+
+// MARINE MEDICAL
+
+/obj/item/device/encryptionkey/cmo
+	name = "Chief Medical Officer's Encryption Key"
+	icon_state = "cmo_key"
+	channels = list(RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_INTEL = TRUE)
+
+/obj/item/device/encryptionkey/med
+	name = "Medical Radio Encryption Key"
+	icon_state = "med_key"
+	channels = list(RADIO_CHANNEL_MEDSCI = TRUE)
+
+/obj/item/device/encryptionkey/medres
+	name = "Research Radio Encryption Key"
+	icon_state = "med_key"
+	channels = list(RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_INTEL = TRUE)
+
+// MARINE MILITARY POLICE
+
+/obj/item/device/encryptionkey/cmpcom
+	name = "\improper Marine Chief MP Radio Encryption Key"
+	icon_state = "cmp_key"
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
+
+/obj/item/device/encryptionkey/mmpo
+	name = "\improper Military Police Radio Encryption Key"
+	icon_state = "sec_key"
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE,)
+
+/obj/item/device/encryptionkey/sec
+	name = "Security Radio Encryption Key"
+	icon_state = "sec_key"
+	channels = list(RADIO_CHANNEL_MP = TRUE)
+
+// MARINE REQUISTIONS
+
+/obj/item/device/encryptionkey/qm
+	name = "Requisition Officer's Encryption Key"
+	icon_state = "ce_key"
+	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = FALSE, RADIO_CHANNEL_MEDSCI = FALSE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
+
+/obj/item/device/encryptionkey/req/ct
+	name = "Supply Radio Encryption Key"
+	icon_state = "req_key"
+	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_COMMAND = FALSE, RADIO_CHANNEL_ENGI = FALSE)
+
+/obj/item/device/encryptionkey/req
+	name = "Supply Radio Encryption Key"
+	icon_state = "req_key"
+	channels = list(RADIO_CHANNEL_REQ = TRUE)
+
+// MARINE SUPPORT
+
+/obj/item/device/encryptionkey/cmpcom/synth
+	name = "\improper Marine Synth Radio Encryption Key"
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
+
+/obj/item/device/encryptionkey/mcom/cl
+	name = "\improper Corporate Liaison radio encryption key"
+	icon_state = "cap_key"
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_WY = TRUE)
+
+/obj/item/device/encryptionkey/mcom/rep
+	name = "\improper Representative radio encryption key"
+	icon_state = "cap_key"
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ALMAYER = TRUE)
+
+/obj/item/device/encryptionkey/po
+	name = "\improper Marine Pilot Officer Radio Encryption Key"
+	icon_state = "cap_key"
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_INTEL = TRUE)
+
+/obj/item/device/encryptionkey/io
+	name = "\improper Marine Intelligence Officer Radio Encryption Key"
+	icon_state = "cap_key"
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_INTEL = TRUE)
+
+/obj/item/device/encryptionkey/vc
+	name = "\improper Marine Vehicle Crewman Radio Encryption Key"
+	icon_state = "cap_key"
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE)
+
+/obj/item/device/encryptionkey/req/mst
+	name = "Supply Radio Encryption Key"
+	icon_state = "req_key"
+	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_COMMAND = FALSE)
+
+/obj/item/device/encryptionkey/mcom/ai //AI only.
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
+
+// MARINE SQUADS
 
 /obj/item/device/encryptionkey/squadlead
 	name = "\improper Squad Leader Radio Encryption Key"
@@ -185,6 +217,11 @@
 	name = "\improper SOF Radio Encryption Key"
 	icon_state = "binary_key"
 	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_JTAC = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
+
+/obj/item/device/encryptionkey/soc/forecon
+	name = "\improper SOF Radio Encryption Key"
+	icon_state = "binary_key"
+	channels = list(RADIO_CHANNEL_COLONY= TRUE)
 
 //ERT, PMC
 
@@ -272,12 +309,17 @@
 /obj/item/device/encryptionkey/highcom
 	name = "\improper USCM High Command Radio Encryption Key"
 	icon_state = "binary_key"
-	channels = list(RADIO_CHANNEL_HIGHCOM = TRUE, SQUAD_SOF = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
+	channels = list(RADIO_CHANNEL_HIGHCOM = TRUE, SQUAD_SOF = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
 
 /obj/item/device/encryptionkey/contractor
 	name = "\improper Vanguard's Arrow Incorporated Radio Encryption Key"
 	icon_state = "sl_key"
 	channels = list("Command" = TRUE, "Engi" = TRUE, "MedSci" = TRUE, "Req" = TRUE, "JTAC" = TRUE, "Intel" = TRUE, "Almayer" = TRUE)
+
+/obj/item/device/encryptionkey/cmb
+	name = "\improper Colonial Marshal Bureau Radio Encryption Key"
+	icon_state = "cmb_key"
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_COLONY = TRUE)
 /// Used by the Mortar Crew in WO game mode - intently has no squad radio access
 /obj/item/device/encryptionkey/mortar
 	name = "\improper Mortar Crew Radio Encryption Key"

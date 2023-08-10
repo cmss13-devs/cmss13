@@ -30,6 +30,7 @@
 	var/list/suit_restricted //for uniforms that only accept to be combined with certain suits
 	var/removed_parts = 0
 	var/worn_state = null
+	var/hood_state //for uniforms with hoods.
 	drag_unequip = TRUE
 	valid_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_ARMOR_C)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_ARMOR_C)
@@ -44,43 +45,44 @@
 	else
 		worn_state = icon_state
 
-	var/rollable_state = "[worn_state]_d[contained_sprite ? "_un" : ""]"
-	var/cuttable_state = "[worn_state]_df[contained_sprite ? "_un" : ""]"
-	var/removable_state = "[worn_state]_dj[contained_sprite ? "_un" : ""]"
 	var/check_icon = contained_sprite ? icon : default_onmob_icons[WEAR_BODY]
-	var/list/check_icon_states = icon_states(check_icon)
 
-	//autodetect rollability
-	if(rollable_state in check_icon_states)
+	//autodetect rollability, cuttability, and removability.
+	if(icon_exists(check_icon, "[worn_state]_d[contained_sprite ? "_un" : ""]"))
 		flags_jumpsuit |= UNIFORM_SLEEVE_ROLLABLE
+
 	else if(flags_jumpsuit & UNIFORM_SLEEVE_ROLLABLE)
 		flags_jumpsuit &= ~UNIFORM_SLEEVE_ROLLABLE
-		log_debug("CLOTHING: Jumpsuit of name: \"[src.name]\" and type: \"[src.type]\" was flagged as having rollable sleeves but could not detect a rolled icon state.")
+		log_debug("CLOTHING: Jumpsuit of name: \"[name]\" and type: \"[type]\" was flagged as having rollable sleeves but could not detect a rolled icon state.")
 
-	if(cuttable_state in check_icon_states)
+
+	if(icon_exists(check_icon, "[worn_state]_df[contained_sprite ? "_un" : ""]"))
 		flags_jumpsuit |= UNIFORM_SLEEVE_CUTTABLE
+
 	else if(flags_jumpsuit & UNIFORM_SLEEVE_CUTTABLE)
 		flags_jumpsuit &= ~UNIFORM_SLEEVE_CUTTABLE
-		log_debug("CLOTHING: Jumpsuit of name: \"[src.name]\" and type: \"[src.type]\" was flagged as having cuttable sleeves but could not detect a cut icon state.")
+		log_debug("CLOTHING: Jumpsuit of name: \"[name]\" and type: \"[type]\" was flagged as having cuttable sleeves but could not detect a cut icon state.")
 
-	if(removable_state in check_icon_states)
+
+	if(icon_exists(check_icon, "[worn_state]_dj[contained_sprite ? "_un" : ""]"))
 		flags_jumpsuit |= UNIFORM_JACKET_REMOVABLE
+
 	else if(flags_jumpsuit & UNIFORM_JACKET_REMOVABLE)
 		flags_jumpsuit &= ~UNIFORM_JACKET_REMOVABLE
-		log_debug("CLOTHING: Jumpsuit of name: \"[src.name]\" and type: \"[src.type]\" was flagged as having a removable jacket but could not detect a shirtless icon state.")
+		log_debug("CLOTHING: Jumpsuit of name: \"[name]\" and type: \"[type]\" was flagged as having a removable jacket but could not detect a shirtless icon state.")
 
 	//autodetect preset states are valid
 	if((flags_jumpsuit & UNIFORM_SLEEVE_ROLLED) && !(flags_jumpsuit & UNIFORM_SLEEVE_ROLLABLE))
 		flags_jumpsuit &= ~UNIFORM_SLEEVE_ROLLED
-		log_debug("CLOTHING: Jumpsuit of name: \"[src.name]\" and type: \"[src.type]\" was flagged as having rolled sleeves but could not detect a rolled icon state.")
+		log_debug("CLOTHING: Jumpsuit of name: \"[name]\" and type: \"[type]\" was flagged as having rolled sleeves but could not detect a rolled icon state.")
 
 	if((flags_jumpsuit & UNIFORM_SLEEVE_CUT) && !(flags_jumpsuit & UNIFORM_SLEEVE_CUTTABLE))
 		flags_jumpsuit &= ~UNIFORM_SLEEVE_CUT
-		log_debug("CLOTHING: Jumpsuit of name: \"[src.name]\" and type: \"[src.type]\" was flagged as having cut sleeves but could not detect a cut icon state.")
+		log_debug("CLOTHING: Jumpsuit of name: \"[name]\" and type: \"[type]\" was flagged as having cut sleeves but could not detect a cut icon state.")
 
 	if((flags_jumpsuit & UNIFORM_JACKET_REMOVED) && !(flags_jumpsuit & UNIFORM_JACKET_REMOVABLE))
 		flags_jumpsuit &= ~UNIFORM_JACKET_REMOVED
-		log_debug("CLOTHING: Jumpsuit of name: \"[src.name]\" and type: \"[src.type]\" was flagged as having a removed jacket but could not detect a shirtless icon state.")
+		log_debug("CLOTHING: Jumpsuit of name: \"[name]\" and type: \"[type]\" was flagged as having a removed jacket but could not detect a shirtless icon state.")
 
 	update_clothing_icon()
 
@@ -306,6 +308,50 @@
 		return
 
 	roll_suit_jacket(TRUE, usr)
+
+/obj/item/clothing/under/verb/togglehood()
+	set name = "Toggle Hood"
+	set category = "Object"
+	set src in usr
+	if(!isliving(usr))
+		return
+	if(usr.stat)
+		return
+	toggle_uniform_hood(TRUE, usr)
+
+/obj/item/clothing/under/proc/toggle_uniform_hood(show_message = TRUE, mob/living/carbon/human/user)
+	if(!hood_state)
+		if(show_message)
+			to_chat(user, SPAN_WARNING("Your uniform doesn't have a hood!"))
+		return
+	update_rollsuit_status() //we need the _d version of the sprite anyways. In the future we might need to make a different version of the sprite to accomodate for rolling sleeves and hoods.
+	if(user.head && !istype(user.head, hood_state))
+		to_chat(user, SPAN_WARNING("You can't wear a hood while also wearing the [user.head]!"))
+		return
+
+	if(!HAS_TRAIT(src, TRAIT_CLOTHING_HOOD))
+		to_chat(user, SPAN_NOTICE("You pull your hood up."))
+		user.equip_to_slot_if_possible(new hood_state(user), WEAR_HEAD) //This is a 'phantom' hood. It disappears if the jumpsuit is unequipped/if it's toggled.
+		LAZYSET(item_state_slots, WEAR_BODY, "[worn_state]_d")
+		RegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(toggle_uniform_hood)) //These will unequip the phantom hood and toggle the state of the suit
+		RegisterSignal(user.head, COMSIG_ITEM_UNEQUIPPED, PROC_REF(toggle_uniform_hood)) // If either is unequipped.
+		update_clothing_icon()
+		if(!TIMER_COOLDOWN_CHECK(user, COOLDOWN_ITEM_HOOD_SOUND))
+			playsound(user.loc, pick('sound/handling/armorequip_1.ogg', 'sound/handling/armorequip_2.ogg'), 25, 1)
+			TIMER_COOLDOWN_START(user, COOLDOWN_ITEM_HOOD_SOUND, 1 SECONDS)
+		ADD_TRAIT(src, TRAIT_CLOTHING_HOOD, TRAIT_SOURCE_CLOTHING)
+		return
+
+	to_chat(user, SPAN_NOTICE("You pull your hood down."))
+	UnregisterSignal(src, COMSIG_ITEM_UNEQUIPPED) //See above, these deregister the signals so that it doesn't fire twice.
+	UnregisterSignal(user.head, COMSIG_ITEM_UNEQUIPPED)
+	qdel(user.head) //This will only delete the hood, see the typecheck above.
+	LAZYSET(item_state_slots, WEAR_BODY, worn_state)
+	update_clothing_icon()
+	if(!TIMER_COOLDOWN_CHECK(user, COOLDOWN_ITEM_HOOD_SOUND))
+		playsound(user.loc, pick('sound/handling/armorequip_1.ogg', 'sound/handling/armorequip_2.ogg'), 25, 1)
+		TIMER_COOLDOWN_START(user, COOLDOWN_ITEM_HOOD_SOUND, 1 SECONDS)
+	REMOVE_TRAIT(src, TRAIT_CLOTHING_HOOD, TRAIT_SOURCE_CLOTHING)
 
 /obj/item/clothing/under/attackby(obj/item/B, mob/user)
 	if(istype(B, /obj/item/attachable/bayonet) && (user.a_intent == INTENT_HARM))

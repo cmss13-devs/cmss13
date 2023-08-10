@@ -40,6 +40,12 @@
 
 	INVOKE_ASYNC(src, PROC_REF(magnetic_process))
 
+/obj/structure/machinery/magnetic_module/Destroy()
+	center = null
+	SSradio.remove_object(src, freq)
+	. = ..()
+
+
 	// update the invisibility and icon
 /obj/structure/machinery/magnetic_module/hide(intact)
 	invisibility = intact ? 101 : 0
@@ -221,6 +227,12 @@
 
 	if(path) // check for default path
 		filter_path() // renders rpath
+
+/obj/structure/machinery/magnetic_controller/Destroy()
+	QDEL_NULL_LIST(magnets)
+	SSradio.remove_object(src, frequency)
+	. = ..()
+
 
 /obj/structure/machinery/magnetic_controller/process()
 	if(magnets.len == 0 && autolink)

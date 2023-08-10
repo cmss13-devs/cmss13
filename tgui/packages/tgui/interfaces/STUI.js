@@ -1,13 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import {
-  Tabs,
-  Section,
-  Box,
-  Flex,
-  Input,
-  Slider,
-  LabeledList,
-} from '../components';
+import { Tabs, Section, Box, Flex, Input, Slider, LabeledList } from '../components';
 import { Window } from '../layouts';
 
 export const STUI = (props, context) => {

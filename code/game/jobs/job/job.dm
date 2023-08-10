@@ -34,6 +34,10 @@
 	/// When set to true, SSticker won't call spawn_in_player, instead calling the job's spawn_and_equip proc
 	var/handle_spawn_and_equip = FALSE
 
+	/// When set you will be able to choose between the different job options when selecting your role.
+	/// Associated list. Main list elements - actual options, associated values - shorthands for job preferences menu (keep those short).
+	var/job_options
+
 /datum/job/New()
 	. = ..()
 
@@ -217,7 +221,7 @@
 	var/mob/living/carbon/human/new_character = new(NP.loc)
 	new_character.lastarea = get_area(NP.loc)
 
-	NP.client.prefs.copy_all_to(new_character)
+	NP.client.prefs.copy_all_to(new_character, title)
 
 	if (NP.client.prefs.be_random_body)
 		var/datum/preferences/TP = new()
@@ -284,6 +288,8 @@
 			join_turf = get_turf(pick(GLOB.spawns_by_job[type]))
 		else if(assigned_squad && GLOB.latejoin_by_squad[assigned_squad])
 			join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
+		else if(GLOB.latejoin_by_job[title])
+			join_turf = get_turf(pick(GLOB.latejoin_by_job[title]))
 		else
 			join_turf = get_turf(pick(GLOB.latejoin))
 		human.forceMove(join_turf)
@@ -300,3 +306,11 @@
 		SSround_recording.recorder.track_player(human)
 
 	return TRUE
+
+/// Intended to be overwritten to handle when a job has variants that can be selected.
+/datum/job/proc/handle_job_options(option)
+	return
+
+/// Intended to be overwritten to handle any requirements for specific job variations that can be selected
+/datum/job/proc/filter_job_option(mob/job_applicant)
+	return job_options

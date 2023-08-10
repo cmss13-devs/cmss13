@@ -11,12 +11,27 @@
 	)
 	flags_equip_slot = SLOT_EAR
 	flags_item = ITEM_PREDATOR
+	flags_atom = FPRINT|USES_HEARING
+
+
+/obj/item/falcon_drone/hear_talk(mob/living/sourcemob, message, verb, datum/language/language, italics)
+	var/mob/hologram/falcon/hologram = loc
+	if(!istype(hologram))
+		return FALSE
+	var/mob/living/carbon/human/user = hologram.owned_bracers.loc
+	if(!ishuman(user) || user == sourcemob)
+		return FALSE
+
+	to_chat(user, SPAN_YAUTJABOLD("Falcon Relay: [sourcemob.name] [verb], <span class='[language.color]'>\"[message]\"</span>"))
+	if(user && user.client && user.client.prefs && !user.client.prefs.lang_chat_disabled \
+	   && !user.ear_deaf && user.say_understands(sourcemob, language))
+		sourcemob.langchat_display_image(user)
+
+	return TRUE
 
 /obj/item/falcon_drone/get_examine_location(mob/living/carbon/human/wearer, mob/examiner, slot, t_he = "They", t_his = "their", t_him = "them", t_has = "have", t_is = "are")
 	switch(slot)
-		if(WEAR_L_EAR)
-			return "on [t_his] shoulder"
-		if(WEAR_R_EAR)
+		if(WEAR_L_EAR, WEAR_R_EAR)
 			return "on [t_his] shoulder"
 	return ..()
 
@@ -47,14 +62,19 @@
 
 /mob/hologram/falcon
 	name = "falcon drone"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "falcon_drone_active"
 	hud_possible = list(HUNTER_HUD)
 	var/obj/item/falcon_drone/parent_drone
+	var/obj/item/clothing/gloves/yautja/owned_bracers
 	desc = "An agile drone used by Yautja to survey the hunting grounds."
+	motion_sensed = TRUE
 
 /mob/hologram/falcon/Initialize(mapload, mob/M, obj/item/falcon_drone/drone, obj/item/clothing/gloves/yautja/bracers)
 	. = ..()
 	parent_drone = drone
-	RegisterSignal(bracers, COMSIG_ITEM_DROPPED, PROC_REF(handle_bracer_drop))
+	owned_bracers = bracers
+	RegisterSignal(owned_bracers, COMSIG_ITEM_DROPPED, PROC_REF(handle_bracer_drop))
 	med_hud_set_status()
 	add_to_all_mob_huds()
 
@@ -73,8 +93,11 @@
 	hud.remove_from_hud(src)
 
 /mob/hologram/falcon/med_hud_set_status()
+	if(!hud_list)
+		return
+
 	var/image/holder = hud_list[HUNTER_HUD]
-	holder.icon_state = "falcon_drone_active"
+	holder?.icon_state = "falcon_drone_active"
 
 /mob/hologram/falcon/Destroy()
 	if(parent_drone)
@@ -82,7 +105,12 @@
 			if(!linked_mob.equip_to_slot_if_possible(parent_drone, WEAR_R_EAR, TRUE, FALSE, TRUE, TRUE, FALSE))
 				linked_mob.put_in_hands(parent_drone)
 		parent_drone = null
+	if(owned_bracers)
+		UnregisterSignal(owned_bracers, COMSIG_ITEM_DROPPED)
+		owned_bracers = null
+
 	remove_from_all_mob_huds()
+
 	return ..()
 
 /mob/hologram/falcon/ex_act()

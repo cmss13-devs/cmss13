@@ -15,7 +15,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	bound_x = -32
 	bound_y = -32
 
-	interior_map = "apc"
+	interior_map = /datum/map_template/interior/apc
 
 	passengers_slots = 15
 	xenos_slots = 8
@@ -48,14 +48,14 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		VEHICLE_DRIVER = null,
 		VEHICLE_GUNNER = null,
 		VEHICLE_SUPPORT_GUNNER_ONE = null,
-		VEHICLE_SUPPORT_GUNNER_TWO = null
+		VEHICLE_SUPPORT_GUNNER_TWO = null,
 	)
 
 	active_hp = list(
 		VEHICLE_DRIVER = null,
 		VEHICLE_GUNNER = null,
 		VEHICLE_SUPPORT_GUNNER_ONE = null,
-		VEHICLE_SUPPORT_GUNNER_TWO = null
+		VEHICLE_SUPPORT_GUNNER_TWO = null,
 	)
 
 	vehicle_flags = VEHICLE_CLASS_LIGHT
@@ -69,7 +69,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		"bullet" = 0.6,
 		"explosive" = 0.7,
 		"blunt" = 0.7,
-		"abstract" = 1.0
+		"abstract" = 1
 	)
 
 	move_max_momentum = 2
@@ -77,6 +77,13 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	move_turn_momentum_loss_factor = 0.8
 
 	vehicle_ram_multiplier = VEHICLE_TRAMPLE_DAMAGE_APC_REDUCTION
+
+/obj/vehicle/multitile/apc/Initialize()
+	. = ..()
+
+	var/turf/gotten_turf = get_turf(src)
+	if(gotten_turf && gotten_turf.z)
+		SSminimaps.add_marker(src, gotten_turf.z, MINIMAP_FLAG_USCM, "apc", 'icons/ui_icons/map_blips_large.dmi')
 
 /obj/vehicle/multitile/apc/load_role_reserved_slots()
 	var/datum/role_reserved_slots/RRS = new
@@ -239,7 +246,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 //Transport version without FPWs
 
 /obj/vehicle/multitile/apc/unarmed
-	interior_map = "apc_no_fpw"
+	interior_map = /datum/map_template/interior/apc_no_fpw
 
 //PRESET: no hardpoints
 /obj/effect/vehicle_spawner/apc/unarmed/spawn_vehicle()

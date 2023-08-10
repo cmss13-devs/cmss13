@@ -22,7 +22,7 @@
 
 	if(copytext(message, 1, 2) == "*")
 		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
-			return emote(lowertext(copytext(message, 2)), player_caused = TRUE)
+			return emote(lowertext(copytext(message, 2)), intentional = TRUE)
 
 	var/datum/language/speaking = null
 	if(length(message) >= 2)
@@ -56,6 +56,12 @@
 					speaking = L
 					forced = 1
 					break
+
+	if(!(speaking.flags & HIVEMIND) && HAS_TRAIT(src, TRAIT_LISPING)) // Xenomorphs can lisp too. :) Only if they're not speaking in hivemind.
+		var/old_message = message
+		message = lisp_replace(message)
+		if(old_message != message)
+			verb = "lisps"
 
 	if(copytext(message,1,2) == ";")
 		message = trim(copytext(message,2))
@@ -98,7 +104,7 @@
 	if(!message || stat || !hive)
 		return
 
-	if(!hive.living_xeno_queen && !SSticker?.mode?.hardcore && !hive.allow_no_queen_actions)
+	if(!hive.living_xeno_queen && !SSticker?.mode?.hardcore && !hive.allow_no_queen_actions && ROUND_TIME > SSticker.mode.round_time_evolution_ovipositor)
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 

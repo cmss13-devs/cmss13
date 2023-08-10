@@ -3,8 +3,9 @@
 	name = "\improper Podlock"
 	desc = "That looks like it doesn't open easily."
 	icon = 'icons/obj/structures/doors/rapid_pdoor.dmi'
-	icon_state = "pdoor"
-	id = 1.0
+	icon_state = "pdoor1"
+	var/base_icon_state = "pdoor"
+	id = 1
 	dir = NORTH
 	unslashable = TRUE
 	health = 0
@@ -22,9 +23,9 @@
 
 /obj/structure/machinery/door/poddoor/update_icon()
 	if(density)
-		icon_state = initial(icon_state) + "1"
+		icon_state = "[base_icon_state]1"
 	else
-		icon_state = initial(icon_state) + "0"
+		icon_state = "[base_icon_state]0"
 
 /obj/structure/machinery/door/poddoor/Collided(atom/movable/AM)
 	if(!density)
@@ -39,8 +40,8 @@
 	if(density && (stat & NOPOWER) && !operating && !unacidable)
 		spawn(0)
 			operating = 1
-			flick(initial(icon_state) + "c0", src)
-			icon_state = initial(icon_state) + "0"
+			flick("[base_icon_state]c0", src)
+			icon_state = "[base_icon_state]0"
 			SetOpacity(0)
 			sleep(15)
 			density = FALSE
@@ -72,54 +73,56 @@
 	return
 
 /obj/structure/machinery/door/poddoor/open()
-	if(operating == 1) //doors can still open when emag-disabled
+	if(operating) //doors can still open when emag-disabled
 		return
-	if(!operating) //in case of emag
-		operating = 1
+
+	if(!opacity)
+		return TRUE
+
+	operating = TRUE
 
 	playsound(loc, 'sound/machines/blastdoor.ogg', 20, 0)
-	flick(initial(icon_state) + "c0", src)
-	icon_state = initial(icon_state) + "0"
+	flick("[base_icon_state]c0", src)
+	icon_state = "[base_icon_state]0"
 	SetOpacity(0)
-	sleep(10)
-	layer = PODDOOR_OPEN_LAYER
-	density = FALSE
 
-	if(operating == 1) //emag again
-		operating = 0
-	if(autoclose)
-		addtimer(CALLBACK(src, PROC_REF(autoclose)), 150)
-	return 1
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
+	return TRUE
 
 /obj/structure/machinery/door/poddoor/close()
 	if(operating)
 		return
-	operating = 1
+	if(opacity == initial(opacity))
+		return
+
+	operating = TRUE
 	playsound(loc, 'sound/machines/blastdoor.ogg', 20, 0)
 
-	layer = PODDOOR_CLOSED_LAYER
-	flick(initial(icon_state) + "c1", src)
-	icon_state = initial(icon_state) + "1"
+	layer = closed_layer
+	flick("[base_icon_state]c1", src)
+	icon_state = "[base_icon_state]1"
 	density = TRUE
 	SetOpacity(initial(opacity))
 
-	sleep(10)
-	operating = 0
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed)
 	return
 
+/obj/structure/machinery/door/poddoor/finish_close()
+	operating = FALSE
+
 /obj/structure/machinery/door/poddoor/two_tile/open()
-	if(operating == 1) //doors can still open when emag-disabled
+	if(operating) //doors can still open when emag-disabled
 		return
-	if(!operating) //in case of emag
-		operating = 1
+
+	operating = TRUE
 	start_opening()
-	sleep(10)
-	open_fully()
-	return 1
+
+	addtimer(CALLBACK(src, PROC_REF(open_fully)), openspeed)
+	return TRUE
 
 /obj/structure/machinery/door/poddoor/two_tile/proc/start_opening()
-	flick("pdoorc0", src)
-	icon_state = "pdoor0"
+	flick("[base_icon_state]c0", src)
+	icon_state = "[base_icon_state]0"
 	SetOpacity(0)
 	f1.SetOpacity(0)
 	f2.SetOpacity(0)
@@ -148,14 +151,13 @@
 	if(operating)
 		return
 	start_closing()
-	sleep(10)
-	close_fully()
+	addtimer(CALLBACK(src, PROC_REF(close_fully)), openspeed)
 	return
 
 /obj/structure/machinery/door/poddoor/two_tile/proc/start_closing()
 	operating = 1
-	flick("pdoorc1", src)
-	icon_state = "pdoor1"
+	flick("[base_icon_state]c1", src)
+	icon_state = "[base_icon_state]1"
 
 	density = TRUE
 	f1.density = TRUE
@@ -277,15 +279,21 @@
 	var/vehicle_resistant = FALSE
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
-		/obj/structure/machinery/door/airlock)
+		/obj/structure/machinery/door/airlock,
+	)
 
 /obj/structure/machinery/door/poddoor/almayer/open
 	density = FALSE
 /obj/structure/machinery/door/poddoor/almayer/blended
-	icon_state = "almayer_pdoor"
-
+	icon_state = "almayer_pdoor1"
+	base_icon_state = "almayer_pdoor"
+/obj/structure/machinery/door/poddoor/almayer/blended/open
+	density = FALSE
 /obj/structure/machinery/door/poddoor/almayer/blended/white
-	icon_state = "w_almayer_pdoor"
+	icon_state = "w_almayer_pdoor1"
+	base_icon_state = "w_almayer_pdoor"
+/obj/structure/machinery/door/poddoor/almayer/blended/white/open
+	density = FALSE
 
 /obj/structure/machinery/door/poddoor/almayer/Initialize()
 	. = ..()

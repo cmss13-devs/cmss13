@@ -415,7 +415,7 @@ What a mess.*/
 							var/t1 = reject_bad_name(input(usr, "Please input name:", "Secure. records", active1.fields["name"]) as text|null)
 							if (!t1 || active1 != a1)
 								return
-							message_staff("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
+							message_admins("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
 							active1.fields["name"] = t1
 					if("sex")
 						if (istype(active1, /datum/data/record))

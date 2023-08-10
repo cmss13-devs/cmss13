@@ -26,7 +26,7 @@
 #define URL_WIKI_SO_GUIDE "https://cm-ss13.com/wiki/Staff_Officer"
 #define URL_WIKI_SEA_GUIDE "https://cm-ss13.com/wiki/Senior_Enlisted_Advisor"
 #define URL_WIKI_SL_GUIDE "https://cm-ss13.com/wiki/Squad_Leader"
-#define URL_WIKI_RTO_GUIDE "https://cm-ss13.com/wiki/Squad_Radio_Telephone_Operator" // Squad Roles //
+#define URL_WIKI_TL_GUIDE "https://cm-ss13.com/wiki/Squad_Radio_Telephone_Operator" // Squad Roles //
 #define URL_WIKI_SPEC_GUIDE "https://cm-ss13.com/wiki/Squad_Specialist"
 #define URL_WIKI_SG_GUIDE "https://cm-ss13.com/wiki/Squad_Smartgunner"
 #define URL_WIKI_MEDIC_GUIDE "https://cm-ss13.com/wiki/Squad_Hospital_Corpsman"
@@ -34,7 +34,8 @@
 #define URL_WIKI_CMP_GUIDE "https://cm-ss13.com/wiki/Chief_MP" // MP Roles //
 #define URL_WIKI_MW_GUIDE "https://cm-ss13.com/wiki/Warden"
 #define URL_WIKI_MP_GUIDE "https://cm-ss13.com/wiki/Military_Police"
-#define URL_WIKI_PO_GUIDE "https://cm-ss13.com/wiki/Pilot_Officer" // Auxiliary Support
+#define URL_WIKI_ASO_GUIDE "https://cm-ss13.com/wiki/Auxiliary_Support_Officer" // Auxiliary Support
+#define URL_WIKI_PO_GUIDE "https://cm-ss13.com/wiki/Pilot_Officer"
 #define URL_WIKI_DCC_GUIDE "https://cm-ss13.com/wiki/Dropship_Crew_Chief"
 #define URL_WIKI_IO_GUIDE "https://cm-ss13.com/wiki/Intelligence_Officer"
 #define URL_WIKI_SYN_GUIDE "https://cm-ss13.com/wiki/Synthetic"
@@ -50,10 +51,11 @@
 #define URL_WIKI_MST_GUIDE "https://cm-ss13.com/wiki/Mess_Technician"
 #define URL_WIKI_CL_GUIDE "https://cm-ss13.com/wiki/Corporate_Liaison" // Misc //
 #define URL_WIKI_SURV_GUIDE "https://cm-ss13.com/wiki/Survivor"
+#define URL_WIKI_WJ_GUIDE "https://cm-ss13.com/wiki/Seegson_Working_Joe_Manual"
 
 // ------ FORUM LINKS ------ //
-#define URL_FORUM "https://cm-ss13.com/forums"
-#define URL_FORUM_APPEALS "https://cm-ss13.com/forums/forms.php?do=form&fid=6"
-#define URL_FORUM_PLAYER_REPORT "https://cm-ss13.com/forums/forms.php?do=form&fid=10"
-#define URL_FORUM_STAFF_REPORT "https://cm-ss13.com/forums/forms.php?do=form&fid=12"
+#define URL_FORUM "https://forum.cm-ss13.com/"
+#define URL_FORUM_APPEALS "https://forum.cm-ss13.com/w/in-game-appeal"
+#define URL_FORUM_PLAYER_REPORT "https://forum.cm-ss13.com/w/player-report"
+#define URL_FORUM_STAFF_REPORT "https://forum.cm-ss13.com/w/staff-report"
 #define URL_QUEEN_GUIDE "https://cm-ss13.com/forums/showthread.php?8404-Ultimate-Queen-Guide-Rip-amp-amp-Tear-(Image-Heavy)"

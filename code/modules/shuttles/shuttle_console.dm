@@ -174,13 +174,6 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	var/is_automated = FALSE
 	var/automated_launch_delay = 0
 	var/automated_launch_time_left = 0
-	if(istype(shuttle, /datum/shuttle/ferry/marine))
-		is_dropship = TRUE
-		var/datum/shuttle/ferry/marine/DS = shuttle
-		is_automated = DS.automated_launch
-		automated_launch_delay = DS.automated_launch_delay * 0.1
-		if(DS.automated_launch_timer != TIMER_ID_NULL)
-			automated_launch_time_left = timeleft(DS.automated_launch_timer) * 0.1
 
 	data = list(
 		"shuttle_status" = shuttle_status,
@@ -252,7 +245,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				s.transit_gun_mission = 1
 		if(shuttle.moving_status == SHUTTLE_IDLE) //Multi consoles, hopefully this will work
 
-			if(shuttle.locked) return
+			if(shuttle.locked)
+				return
 			var/mob/M = usr
 
 			//Alert code is the Queen is the one calling it, the shuttle is on the ground and the shuttle still allows alerts
@@ -293,17 +287,16 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 					shuttle1.crash_target_section = crash_target
 					shuttle1.transit_gun_mission = 0
-					shuttle1.launch_crash()
 
 					if(round_statistics)
 						round_statistics.track_hijack()
 
-					marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg')
+					marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
 					shuttle.alerts_allowed--
 
 					to_chat(Q, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
 					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
-					xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."),2,Q.hivenumber)
+					xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain burrowed larva over time."),2,Q.hivenumber)
 
 					// Notify the yautja too so they stop the hunt
 					message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
@@ -339,174 +332,6 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					M.count_niche_stat(STATISTICS_NICHE_FLIGHT)
 			msg_admin_niche("[M] ([M.key]) launched a [shuttle.iselevator? "elevator" : "shuttle"] using [src].")
 
-	if(href_list["optimize"])
-		if(shuttle.transit_optimized) return
-		var/mob/M = usr
-		if(M.mind && M.skills && !M.skills.get_skill_level(SKILL_PILOT))
-			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
-		else
-			to_chat(usr, SPAN_NOTICE("You load in and review a custom flight plan you took time to prepare earlier. This should cut half of the transport flight time on its own!"))
-			shuttle.transit_optimized = 1
-			return
-
-	if(href_list["fire_mission"])
-		if(shuttle.moving_status != SHUTTLE_IDLE) return
-		if(shuttle.locked) return
-		if(!shuttle.transit_gun_mission)
-			var/mob/M = usr
-			if(M.mind && M.skills && !M.skills.get_skill_level(SKILL_PILOT)) //only pilots can activate the fire mission mode, but everyone can reset it back to transport..
-				to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
-				return
-			else
-				to_chat(usr, SPAN_NOTICE("You upload a flight plan for a low altitude flyby above the planet."))
-				shuttle.transit_gun_mission = TRUE
-		else
-			to_chat(usr, SPAN_NOTICE("You reset the flight plan to a transport mission between the Almayer and the planet."))
-			shuttle.transit_gun_mission = FALSE
-
-	if(href_list["lockdown"])
-		if(shuttle.door_override)
-			return // its been locked down by the queen
-
-		var/ship_id = "sh_dropship1"
-		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
-			ship_id = "sh_dropship2"
-
-		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in machines)
-			if(M.id == ship_id)
-				if(M.locked && M.density)
-					continue // jobs done
-				else if(!M.locked && M.density)
-					M.lock() // closed but not locked yet
-					continue
-				else
-					M.do_command("secure_close")
-
-		var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
-		switch(ship_id)
-			if("sh_dropship1")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
-					reardoor = D
-			if("sh_dropship2")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
-					reardoor = D
-
-		if(!reardoor.locked && reardoor.density)
-			reardoor.lock() // closed but not locked yet
-		else if(reardoor.locked && !reardoor.density)
-			spawn()
-				reardoor.unlock()
-				sleep(1)
-				reardoor.close()
-				sleep(reardoor.openspeed + 1) // let it close
-				reardoor.lock() // THEN lock it
-		else
-			spawn()
-				reardoor.close()
-				sleep(reardoor.openspeed + 1)
-				reardoor.lock()
-
-	if(href_list["release"])
-		var/ship_id = "sh_dropship1"
-		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
-			ship_id = "sh_dropship2"
-
-		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in machines)
-			if(M.id == ship_id)
-				if(!is_loworbit_level(M.z))
-					M.unlock()
-
-		var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
-		switch(ship_id)
-			if("sh_dropship1")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
-					reardoor = D
-			if("sh_dropship2")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
-					reardoor = D
-		if(!is_loworbit_level(reardoor.z))
-			reardoor.unlock()
-
-	if(href_list["side door"])
-		if(shuttle.door_override)
-			return // its been locked down by the queen
-
-		var/ship_id = "sh_dropship1"
-		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
-			ship_id = "sh_dropship2"
-
-		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in machines)
-			if(M.id == ship_id)
-				var/is_right_side = text2num(href_list["right side"])
-				if(is_right_side)
-					if(M.dir != WEST)
-						continue
-				else
-					if(M.dir != EAST)
-						continue
-				var/sidename = is_right_side ? "right" : "left"
-				if(M.locked)
-					M.unlock()
-					to_chat(usr, SPAN_WARNING("You hear a [sidename] door unlock.")) // yes this will give two messages but is important for when the two doors are out of sync
-				else
-					if(!M.density)
-						M.close()
-					M.lock()
-					to_chat(usr, SPAN_WARNING("You hear a [sidename] door lock."))
-
-	if(href_list["rear door"])
-		if(shuttle.door_override)
-			return // its been locked down by the queen
-
-		var/ship_id = "sh_dropship1"
-		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
-			ship_id = "sh_dropship2"
-		var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
-		switch(ship_id)
-			if("sh_dropship1")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
-					reardoor = D
-			if("sh_dropship2")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
-					reardoor = D
-		if(reardoor)
-			if(reardoor.locked)
-				reardoor.unlock()
-				to_chat(usr, SPAN_WARNING("You hear the rear door unlock."))
-			else
-				if (!reardoor.density)
-					reardoor.close()
-				reardoor.lock()
-				to_chat(usr, SPAN_WARNING("You hear the rear door lock."))
-		else
-			to_chat(usr, SPAN_WARNING("The console flashes a warning about the rear door not being present."))
-
-	if(href_list["cancel_flyby"])
-		if(isxeno(usr))
-			to_chat(usr, SPAN_WARNING("You have no idea how to use this button!"))
-			return
-		if(!allowed(usr))
-			to_chat(usr, SPAN_WARNING("You need Pilot level access to return the Dropship."))
-			return
-		if(shuttle.transit_gun_mission && shuttle.moving_status == SHUTTLE_INTRANSIT && shuttle.in_transit_time_left>abort_timer)
-			shuttle.in_transit_time_left = abort_timer
-
-	if(href_list["toggle-automated"])
-		if(istype(shuttle, /datum/shuttle/ferry/marine))
-			var/datum/shuttle/ferry/marine/dropship = shuttle
-			if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK)
-				to_chat(usr, SPAN_NOTICE("Automated flights are not available at this time."))
-				return
-			if(dropship.queen_locked)
-				to_chat(usr, SPAN_WARNING("ERROR: Automatic Departure Schedule unavailable. Reason: Unknown."))
-				return
-
-			if(!dropship.automated_launch) //If we're toggling it on...
-				var/auto_delay
-				auto_delay = tgui_input_number(usr, "Set the delay for automated departure after recharging (seconds)", "Automated Departure Settings", DROPSHIP_MIN_AUTO_DELAY/10, DROPSHIP_MAX_AUTO_DELAY/10, DROPSHIP_MIN_AUTO_DELAY/10)
-				dropship.automated_launch_delay = Clamp(auto_delay SECONDS, DROPSHIP_MIN_AUTO_DELAY, DROPSHIP_MAX_AUTO_DELAY)
-			dropship.set_automated_launch(!dropship.automated_launch)
-
 	ui_interact(usr)
 
 
@@ -534,11 +359,11 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 
 /obj/structure/machinery/computer/shuttle_control/dropship1/Initialize()
 	. = ..()
-	shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
+	shuttle_tag = DROPSHIP_ALAMO
 
 /obj/structure/machinery/computer/shuttle_control/dropship1/onboard
 	name = "\improper 'Alamo' flight controls"
@@ -558,11 +383,11 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 
 /obj/structure/machinery/computer/shuttle_control/dropship2/Initialize()
 	. = ..()
-	shuttle_tag = "[MAIN_SHIP_NAME] Dropship 2"
+	shuttle_tag = DROPSHIP_NORMANDY
 
 /obj/structure/machinery/computer/shuttle_control/dropship2/onboard
 	name = "\improper 'Normandy' flight controls"

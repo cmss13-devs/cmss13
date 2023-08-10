@@ -34,6 +34,7 @@
 	/// set when a player uses a pen on a renamable object
 	var/renamedByPlayer = FALSE
 
+
 /obj/Initialize(mapload, ...)
 	. = ..()
 	if(garbage)
@@ -44,6 +45,45 @@
 		unbuckle()
 	. = ..()
 	remove_from_garbage(src)
+
+/obj/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_EXPLODE, "Trigger Explosion")
+	VV_DROPDOWN_OPTION(VV_HK_EMPULSE, "Trigger EM Pulse")
+	VV_DROPDOWN_OPTION(VV_HK_SETMATRIX, "Set Base Matrix")
+	VV_DROPDOWN_OPTION("", "-----OBJECT-----")
+	VV_DROPDOWN_OPTION(VV_HK_MASS_DEL_TYPE, "Delete all of type")
+
+/obj/vv_do_topic(list/href_list)
+	. = ..()
+
+	if(href_list[VV_HK_SETMATRIX])
+		if(!check_rights(R_DEBUG|R_ADMIN|R_VAREDIT))
+			return
+
+		if(!LAZYLEN(usr.client.stored_matrices))
+			to_chat(usr, "You don't have any matrices stored!")
+			return
+
+		var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (usr.client.stored_matrices + "Revert to Default" + "Cancel"))
+		if(!matrix_name || matrix_name == "Cancel")
+			return
+		else if (matrix_name == "Revert to Default")
+			base_transform = null
+			transform = matrix()
+			disable_pixel_scaling()
+			return
+
+		var/matrix/MX = LAZYACCESS(usr.client.stored_matrices, matrix_name)
+		if(!MX)
+			return
+
+		base_transform = MX
+		transform = MX
+
+		if (alert(usr, "Would you like to enable pixel scaling?", "Confirm", "Yes", "No") == "Yes")
+			enable_pixel_scaling()
+
 
 // object is being physically reduced into parts
 /obj/proc/deconstruct(disassembled = TRUE)
@@ -183,6 +223,7 @@
 
 /obj/proc/afterbuckle(mob/M as mob) // Called after somebody buckled / unbuckled
 	handle_rotation()
+	SEND_SIGNAL(src, COSMIG_OBJ_AFTER_BUCKLE, buckled_mob)
 	return buckled_mob
 
 /obj/proc/unbuckle()
@@ -192,6 +233,7 @@
 		buckled_mob.update_canmove()
 
 		var/M = buckled_mob
+		REMOVE_TRAITS_IN(buckled_mob, TRAIT_SOURCE_BUCKLE)
 		buckled_mob = null
 
 		afterbuckle(M)
@@ -261,11 +303,9 @@
 		src.add_fingerprint(user)
 		afterbuckle(target)
 		if(buckle_lying) // Make sure buckling to beds/nests etc only turns, and doesn't give a random offset
-			var/matrix/M = matrix()
-			var/matrix/L = matrix() //Counterrotation for langchat text.
-			M.Turn(90)
-			L.Turn(270)
-			target.apply_transform(M)
+			var/matrix/new_matrix = matrix()
+			new_matrix.Turn(90)
+			target.apply_transform(new_matrix)
 		return TRUE
 
 /obj/proc/send_buckling_message(mob/M, mob/user)
@@ -347,9 +387,24 @@
 	else
 		mob_icon = default_onmob_icons[slot]
 
+	var/image/overlay_img
+
 	if(user_human)
-		return user_human.species.get_offset_overlay_image(spritesheet, mob_icon, mob_state, color, slot)
-	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
+		overlay_img = user_human.species.get_offset_overlay_image(spritesheet, mob_icon, mob_state, color, slot)
+	else
+		overlay_img = overlay_image(mob_icon, mob_state, color, RESET_COLOR)
+
+	var/inhands = slot == (WEAR_L_HAND || WEAR_R_HAND)
+
+	var/offset_x = worn_x_dimension
+	var/offset_y = worn_y_dimension
+	if(inhands)
+		offset_x = inhand_x_dimension
+		offset_y = inhand_y_dimension
+
+	center_image(overlay_img, offset_x, offset_y)
+
+	return overlay_img
 
 /obj/item/proc/use_spritesheet(bodytype, slot, icon_state)
 	if(!LAZYISIN(sprite_sheets, bodytype))
@@ -394,4 +449,8 @@
 	return 1 SECONDS
 
 /obj/proc/set_origin_name_prefix(name_prefix)
+	return
+
+/// override for subtypes that require extra behaviour when spawned from a vendor
+/obj/proc/post_vendor_spawn_hook(mob/living/carbon/human/user)
 	return

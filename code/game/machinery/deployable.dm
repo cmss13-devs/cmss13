@@ -14,9 +14,9 @@
 	anchored = FALSE
 	density = TRUE
 	icon_state = "barrier0"
-	health = 100.0
-	var/maxhealth = 100.0
-	var/locked = 0.0
+	health = 100
+	var/maxhealth = 100
+	var/locked = 0
 // req_access = list(access_maint_tunnels)
 
 /obj/structure/machinery/deployable/barrier/Initialize(mapload, ...)

@@ -167,11 +167,14 @@
 					xenohide.stack_id = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
 				else if(victim && isturf(T.loc))
 					visible_message(SPAN_DANGER("[src] reaches down and rips out \the [T]'s spinal cord and skull!."), SPAN_NOTICE("You firmly grip the revealed spinal column and rip [T]'s head off!"))
-					if(victim.get_limb("head"))
+					if(!(victim.get_limb("head").status & LIMB_DESTROYED))
 						victim.apply_damage(150, BRUTE, "head", FALSE, TRUE)
+						var/obj/item/clothing/accessory/limb/skeleton/head/spine/new_spine = new /obj/item/clothing/accessory/limb/skeleton/head/spine(victim.loc)
+						new_spine.name = "[victim]'s spine"
 					else
 						var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
-						meat.name = "raw [victim.name] steak"
+						meat.name = "raw [victim.real_name] steak"
+						new /obj/item/clothing/accessory/limb/skeleton/torso(victim.loc)
 					var/obj/item/stack/sheet/animalhide/human/hide = new /obj/item/stack/sheet/animalhide/human(victim.loc)
 					hide.name = "[victim.name]-hide"
 					hide.singular_name = "[victim.name]-hide"
@@ -256,7 +259,7 @@
 		return
 
 	var/list/melee = list(YAUTJA_GEAR_GLAIVE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), YAUTJA_GEAR_WHIP = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "whip"),YAUTJA_GEAR_SWORD = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "clansword"),YAUTJA_GEAR_SCYTHE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe"), YAUTJA_GEAR_STICK = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "combistick"), YAUTJA_GEAR_SCIMS = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "scim"))
-	var/list/other = list(YAUTJA_GEAR_LAUNCHER = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spikelauncher"), YAUTJA_GEAR_PISTOL = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "plasmapistol"), YAUTJA_GEAR_DISC = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "disk"), YAUTJA_GEAR_FULL_ARMOR = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "fullarmor_ebony"), YAUTJA_GEAR_SHIELD = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "shield"), YAUTJA_GEAR_DRONE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "falcon_drone"))
+	var/list/other = list(YAUTJA_GEAR_LAUNCHER = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spikelauncher"), YAUTJA_GEAR_PISTOL = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "plasmapistol"), YAUTJA_GEAR_DISC = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "disc"), YAUTJA_GEAR_FULL_ARMOR = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "fullarmor_ebony"), YAUTJA_GEAR_SHIELD = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "shield"), YAUTJA_GEAR_DRONE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "falcon_drone"))
 	var/list/restricted = list(YAUTJA_GEAR_LAUNCHER, YAUTJA_GEAR_PISTOL, YAUTJA_GEAR_FULL_ARMOR, YAUTJA_GEAR_SHIELD, YAUTJA_GEAR_DRONE) //Can only select them once each.
 
 	var/list/secondaries = list()
@@ -264,6 +267,15 @@
 
 	var/use_radials = src.client.prefs?.no_radials_preference ? FALSE : TRUE
 	var/main_weapon = use_radials ? show_radial_menu(src, src, melee) : tgui_input_list(usr, "Which weapon shall you use on your hunt?:", "Melee Weapon", melee)
+
+	if(main_weapon == YAUTJA_GEAR_SCYTHE)
+		var/list/scythe_variants = list(YAUTJA_GEAR_SCYTHE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe"), YAUTJA_GEAR_SCYTHE_ALT = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe_alt"))
+		main_weapon = use_radials ? show_radial_menu(src, src, scythe_variants) : tgui_input_list(usr, "Which variant of the war scythe?:", "Melee Weapon", scythe_variants)
+
+	if(main_weapon == YAUTJA_GEAR_GLAIVE)
+		var/list/glaive_variants = list(YAUTJA_GEAR_GLAIVE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), YAUTJA_GEAR_GLAIVE_ALT = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive_alt"))
+		main_weapon = use_radials ? show_radial_menu(src, src, glaive_variants) : tgui_input_list(usr, "Which variant of the war glaive?:", "Melee Weapon", glaive_variants)
+
 	if(!main_weapon)
 		return
 	for(var/i = 1 to total_secondaries)
@@ -287,15 +299,19 @@
 
 	switch(main_weapon)
 		if(YAUTJA_GEAR_GLAIVE)
-			equip_to_slot_if_possible(new /obj/item/weapon/melee/twohanded/yautja/glaive(src.loc), WEAR_J_STORE, disable_warning = TRUE)
+			equip_to_slot_if_possible(new /obj/item/weapon/twohanded/yautja/glaive(src.loc), WEAR_J_STORE, disable_warning = TRUE)
+		if(YAUTJA_GEAR_GLAIVE_ALT)
+			equip_to_slot_if_possible(new /obj/item/weapon/twohanded/yautja/glaive/alt(src.loc), WEAR_J_STORE, disable_warning = TRUE)
 		if(YAUTJA_GEAR_WHIP)
-			equip_to_slot_if_possible(new /obj/item/weapon/melee/yautja/chain(src.loc), WEAR_J_STORE, disable_warning = TRUE)
+			equip_to_slot_if_possible(new /obj/item/weapon/yautja/chain(src.loc), WEAR_J_STORE, disable_warning = TRUE)
 		if(YAUTJA_GEAR_SWORD)
-			equip_to_slot_if_possible(new /obj/item/weapon/melee/yautja/sword(src.loc), WEAR_J_STORE, disable_warning = TRUE)
+			equip_to_slot_if_possible(new /obj/item/weapon/yautja/sword(src.loc), WEAR_J_STORE, disable_warning = TRUE)
 		if(YAUTJA_GEAR_SCYTHE)
-			equip_to_slot_if_possible(new /obj/item/weapon/melee/yautja/scythe(src.loc), WEAR_J_STORE, disable_warning = TRUE)
+			equip_to_slot_if_possible(new /obj/item/weapon/yautja/scythe(src.loc), WEAR_J_STORE, disable_warning = TRUE)
+		if(YAUTJA_GEAR_SCYTHE_ALT)
+			equip_to_slot_if_possible(new /obj/item/weapon/yautja/scythe/alt(src.loc), WEAR_J_STORE, disable_warning = TRUE)
 		if(YAUTJA_GEAR_STICK)
-			equip_to_slot_if_possible(new /obj/item/weapon/melee/yautja/combistick(src.loc), WEAR_J_STORE, disable_warning = TRUE)
+			equip_to_slot_if_possible(new /obj/item/weapon/yautja/combistick(src.loc), WEAR_J_STORE, disable_warning = TRUE)
 		if(YAUTJA_GEAR_SCIMS)
 			if(bracers.wristblades_deployed)
 				bracers.wristblades_internal(usr, TRUE)
@@ -303,7 +319,6 @@
 			qdel(bracers.right_wristblades)
 			bracers.left_wristblades = new /obj/item/weapon/wristblades/scimitar(bracers)
 			bracers.right_wristblades = new /obj/item/weapon/wristblades/scimitar(bracers)
-			bracers.charge_max -= 500
 
 	for(var/choice in secondaries)
 		switch(choice)

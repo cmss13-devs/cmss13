@@ -6,7 +6,7 @@
 /obj/item/weapon/gun/flamer
 	name = "\improper M240A1 incinerator unit"
 	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
-
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m240"
 	item_state = "m240"
 	flags_equip_slot = SLOT_BACK
@@ -51,12 +51,12 @@
 
 /obj/item/weapon/gun/flamer/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_4 * 5
+	set_fire_delay(FIRE_DELAY_TIER_5 * 5)
 
 /obj/item/weapon/gun/flamer/unique_action(mob/user)
 	toggle_gun_safety()
 
-/obj/item/weapon/gun/flamer/gun_safety_message(mob/user)
+/obj/item/weapon/gun/flamer/gun_safety_handle(mob/user)
 	to_chat(user, SPAN_NOTICE("You [SPAN_BOLD(flags_gun_features & GUN_TRIGGER_SAFETY ? "extinguish" : "ignite")] the pilot light."))
 	playsound(user,'sound/weapons/handling/flamer_ignition.ogg', 25, 1)
 	update_icon()
@@ -84,7 +84,7 @@
 
 	if(!(flags_gun_features & GUN_TRIGGER_SAFETY))
 		var/obj/item/attachable/attached_gun/flamer_nozzle/nozzle = locate() in contents
-		var/image/I = image('icons/obj/items/weapons/guns/gun.dmi', src, "+lit")
+		var/image/I = image(icon, src, "+lit")
 		I.pixel_x += nozzle && nozzle == active_attachable ? 6 : 1
 		overlays += I
 
@@ -92,7 +92,7 @@
 	. = ..()
 	if(.)
 		if(!current_mag || !current_mag.current_rounds)
-			return
+			return NONE
 
 /obj/item/weapon/gun/flamer/proc/get_fire_sound()
 	var/list/fire_sounds = list(
@@ -102,20 +102,20 @@
 	return pick(fire_sounds)
 
 /obj/item/weapon/gun/flamer/Fire(atom/target, mob/living/user, params, reflex)
-	set waitfor = 0
+	set waitfor = FALSE
 
 	if(!able_to_fire(user))
-		return
+		return NONE
 
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
 	if (!targloc || !curloc)
-		return //Something has gone wrong...
+		return NONE //Something has gone wrong...
 
 	if(active_attachable && active_attachable.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
 		if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
 			return
-		if(active_attachable.current_rounds <= 0)
+		if((active_attachable.current_rounds <= 0) && !(active_attachable.flags_attach_features & ATTACH_IGNORE_EMPTY))
 			click_empty(user) //If it's empty, let them know.
 			to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
 			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
@@ -123,20 +123,22 @@
 		else
 			active_attachable.fire_attachment(target, src, user) //Fire it.
 			active_attachable.last_fired = world.time
-		return
+		return NONE
 
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
 		to_chat(user, SPAN_WARNING("\The [src] isn't lit!"))
-		return
+		return NONE
 
 	if(!current_mag)
-		return
+		return NONE
 
 	if(current_mag.current_rounds <= 0)
 		click_empty(user)
 	else
 		user.track_shot(initial(name))
 		unleash_flame(target, user)
+		return AUTOFIRE_CONTINUE
+	return NONE
 
 /obj/item/weapon/gun/flamer/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(!magazine || !istype(magazine))
@@ -233,10 +235,20 @@
 
 /obj/item/weapon/gun/flamer/deathsquad //w-y deathsquad waist flamer
 	name = "\improper M240A3 incinerator unit"
-	desc = "A next-generation incinerator unit, the M240A3 is much lighter and dextrous than its predecessors thanks to the ceramic alloy construction. It can be slinged over a belt and usually comes equipped with X-type fuel."
-	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher)
+	desc = "A next-generation incinerator unit, the M240A3 is much lighter and dextrous than its predecessors thanks to the ceramic alloy construction. It can be slinged over a belt and usually comes equipped with EX-type fuel."
+	attachable_allowed = list(
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/attached_gun/extinguisher,
+	)
+	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher/pyro, /obj/item/attachable/magnetic_harness)
 	flags_equip_slot = SLOT_BACK | SLOT_WAIST
+	auto_retrieval_slot = WEAR_WAIST
 	current_mag = /obj/item/ammo_magazine/flamer_tank/EX
+	flags_gun_features = GUN_WY_RESTRICTED|GUN_WIELDED_FIRING_ONLY
+
+/obj/item/weapon/gun/flamer/deathsquad/nolock
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/flamer/M240T
 	name = "\improper M240-T incinerator unit"
@@ -251,7 +263,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
-		/obj/item/attachable/attached_gun/extinguisher
+		/obj/item/attachable/attached_gun/extinguisher,
 	)
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher/pyro)
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
@@ -311,7 +323,7 @@
 				unload(user, drop_override = TRUE)
 			current_mag = fuelpack.active_fuel
 			update_icon()
-	..()
+	return ..()
 
 
 /obj/item/weapon/gun/flamer/M240T/reload(mob/user, obj/item/ammo_magazine/magazine)
@@ -349,6 +361,16 @@
 		fuelpack = FP
 		return TRUE
 	return FALSE
+
+/obj/item/weapon/gun/flamer/M240T/auto // With NEW advances in science, we've learned how to drain a pyro's tank in 6 seconds, or your money back!
+	name = "\improper M240-T2 incinerator unit"
+	desc = "A prototyped model of the M240-T incinerator unit, it was discontinued after its automatic mode was deemed too expensive to deploy in the field."
+	start_semiauto = FALSE
+	start_automatic = TRUE
+
+/obj/item/weapon/gun/flamer/M240T/auto/set_gun_config_values()
+	. = ..()
+	set_fire_delay(FIRE_DELAY_TIER_3)
 
 GLOBAL_LIST_EMPTY(flamer_particles)
 /particles/flamer_fire
@@ -468,7 +490,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		if(!FS)
 			CRASH("Invalid flameshape passed to /obj/flamer_fire. (Expected /datum/flameshape, got [FS] (id: [flameshape]))")
 
-		FS.handle_fire_spread(src, fire_spread_amount, burn_dam, fuel_pressure)
+		INVOKE_ASYNC(FS, TYPE_PROC_REF(/datum/flameshape, handle_fire_spread), src, fire_spread_amount, burn_dam, fuel_pressure)
 	//Apply fire effects onto everyone in the fire
 
 	// Melt a single layer of snow
@@ -507,7 +529,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
 						if(weapon_cause_data.cause_name)
 							H.track_friendly_fire(weapon_cause_data.cause_name)
-						var/ff_msg = "[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) ([user.client ? "<a href='?priv_msg=[user.client.ckey]'>PM</a>" : "NO CLIENT"])"
+						var/ff_msg = "[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] [ADMIN_JMP(user)] [ADMIN_PM(user)]"
 						var/ff_living = TRUE
 						if(H.stat == DEAD)
 							ff_living = FALSE
@@ -556,6 +578,9 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 /obj/flamer_fire/Destroy()
 	SetLuminosity(0)
 	STOP_PROCESSING(SSobj, src)
+	to_call = null
+	tied_reagent = null
+	tied_reagents = null
 	. = ..()
 
 /obj/flamer_fire/initialize_pass_flags(datum/pass_flags_container/PF)

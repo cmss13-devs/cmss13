@@ -43,6 +43,9 @@
 #define COMSIG_MOB_DRAGGED "mob_dragged"
 /// From /obj/item/proc/unequipped()
 #define COMSIG_MOB_ITEM_UNEQUIPPED "mob_item_unequipped"
+/// From /mob/proc/equip_to_slot_if_possible()
+#define COMSIG_MOB_ATTEMPTING_EQUIP "mob_attempting_equip"
+	#define COMPONENT_MOB_CANCEL_ATTEMPT_EQUIP (1<<0)
 
 /// For when a mob is devoured by a Xeno
 #define COMSIG_MOB_DEVOURED "mob_devoured"
@@ -95,3 +98,21 @@
 
 #define COMSIG_MOB_MOVE_OR_LOOK "mob_move_or_look"
 	#define COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK (1<<0)
+
+///from /mob/living/emote(): ()
+#define COMSIG_MOB_EMOTE "mob_emote"
+
+#define COMSIG_MOB_EMOTED(emote_key) "mob_emoted_[emote_key]"
+
+//from /mob/living/set_stat()
+#define COMSIG_MOB_STAT_SET_ALIVE "mob_stat_set_alive"
+//from /mob/living/set_stat()
+#define COMSIG_MOB_STAT_SET_DEAD "mob_stat_set_dead"
+
+#define COMSIG_GHOST_MOVED "ghost_moved"
+
+#define COMSIG_MOB_MOUSEDOWN "mob_mousedown"					//from /client/MouseDown(): (atom/object, turf/location, control, params)
+#define COMSIG_MOB_MOUSEUP "mob_mouseup"						//from /client/MouseUp(): (atom/object, turf/location, control, params)
+#define COMSIG_MOB_MOUSEDRAG "mob_mousedrag"				//from /client/MouseDrag(): (atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+	#define COMSIG_MOB_CLICK_CANCELED (1<<0)
+	#define COMSIG_MOB_CLICK_HANDLED (1<<1)

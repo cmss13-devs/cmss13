@@ -3,7 +3,7 @@
 
 	if(status_flags & GODMODE)
 		health = species.total_health
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 		return
 	var/total_burn = 0
 	var/total_brute = 0
@@ -287,7 +287,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 		apply_damage(burn, BURN, picked, sharp, edge)
 	UpdateDamageIcon()
 	updatehealth()
-	speech_problem_flag = 1
+	speech_problem_flag = TRUE
 
 
 //Heal MANY limbs, in random order
@@ -308,7 +308,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 
 		parts -= picked
 	updatehealth()
-	speech_problem_flag = 1
+	speech_problem_flag = TRUE
 	if(update) UpdateDamageIcon()
 
 // damage MANY limbs, in random order
@@ -514,3 +514,11 @@ This function restores all limbs.
 		damage_to_deal *= 0.25 // Massively reduced effectiveness
 
 	stamina.apply_damage(damage_to_deal)
+
+/mob/living/carbon/human/knocked_out_start()
+	..()
+	sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
+
+/mob/living/carbon/human/knocked_out_callback()
+	. = ..()
+	sound_environment_override = SOUND_ENVIRONMENT_NONE

@@ -1,8 +1,8 @@
 /datum/xeno_mutator/praetorian_warden
 	// i mean so basically im braum
 	name = "STRAIN: Praetorian - Warden"
-	description = "You trade your corrosive acid and your dash for an internal hitpoint pool. The pool is filled by your spits and slashes, and can be spent to protect your allies and yourself."
-	flavor_description = "Only in Death does your sisters' service to the Queen end. Keep them fighting using your own blood and claws."
+	description = "You trade your acid ball, acid spray, dash, and a small bit of your slash damage and speed to become an effective medic. You gain the ability to emit strong pheromones, an ability that retrieves endangered, knocked-down or sitting allies and pulls them to your location, and you gain an internal hitpoint pool that fills with every slash against your enemies, which can be spent to aid your allies and yourself by healing them or curing their ailments."
+	flavor_description = "Only in death does your sisters' service to the Queen end. They will be untouched by plague or disease; no sickness will blight them."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_PRAETORIAN) // Only bae
@@ -16,7 +16,7 @@
 		/datum/action/xeno_action/activable/warden_heal,
 		/datum/action/xeno_action/activable/prae_retrieve,
 		/datum/action/xeno_action/onclick/prae_switch_heal_type,
-		/datum/action/xeno_action/onclick/emit_pheromones
+		/datum/action/xeno_action/onclick/emit_pheromones,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_warden
 	keystone = TRUE
@@ -87,7 +87,7 @@
 	if (amount > 0)
 		if (internal_hitpoints >= internal_hitpoints_max)
 			return
-		to_chat(bound_xeno, SPAN_XENODANGER("You feel your resources of health increase!"))
+		to_chat(bound_xeno, SPAN_XENODANGER("You feel your internal health reserves increase!"))
 	internal_hitpoints = Clamp(internal_hitpoints + amount, 0, internal_hitpoints_max)
 
 /datum/behavior_delegate/praetorian_warden/proc/remove_internal_hitpoints(amount)

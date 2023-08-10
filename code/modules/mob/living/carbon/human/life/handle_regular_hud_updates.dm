@@ -62,10 +62,14 @@
 
 		if(dazed)
 			overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
-		else if((disabilities & NEARSIGHTED) && !HAS_TRAIT(src, TRAIT_NEARSIGHTED_EQUIPMENT))
-			overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 2)
 		else
 			clear_fullscreen("eye_blurry")
+		///Pain should override the SetEyeBlur(0) should the pain be painful enough to cause eyeblur in the first place. Also, peepers is essential to make sure eye damage isn't overriden.
+		var/datum/internal_organ/eyes/peepers = internal_organs_by_name["eyes"]
+		if((disabilities & NEARSIGHTED) && !HAS_TRAIT(src, TRAIT_NEARSIGHTED_EQUIPMENT) && pain.current_pain < 80 && peepers.organ_status == ORGAN_HEALTHY)
+			EyeBlur(2)
+		else if((disabilities & NEARSIGHTED) && HAS_TRAIT(src, TRAIT_NEARSIGHTED_EQUIPMENT) && pain.current_pain < 80 && peepers.organ_status == ORGAN_HEALTHY)
+			SetEyeBlur(0)
 
 		if(druggy)
 			overlay_fullscreen("high", /atom/movable/screen/fullscreen/high)
@@ -213,6 +217,15 @@
 	if(is_tethered)
 		hud_used.tethered_icon.name = "tethered"
 		hud_used.tethered_icon.icon_state = "status_tethered"
+		hud_used.tethered_icon.screen_loc = ui_datum.get_status_loc(status_effect_placement)
+		status_effect_placement++
+	else
+		hud_used.tethered_icon.name = ""
+		hud_used.tethered_icon.icon_state = "status_0"
+
+	if(active_transfusions.len)
+		hud_used.tethered_icon.name = "transfusion"
+		hud_used.tethered_icon.icon_state = "status_blood"
 		hud_used.tethered_icon.screen_loc = ui_datum.get_status_loc(status_effect_placement)
 		status_effect_placement++
 	else

@@ -1,6 +1,7 @@
 /datum/xeno_mutator/eggsac
 	name = "STRAIN: Carrier - Eggsac"
-	description = "In exchange for your ability to store huggers, you gain the ability to form new eggs by sacrificing your plasma stores."
+	description = "In exchange for your ability to store huggers and place traps, you gain larger plasma stores, strong pheromones, and the ability to lay eggs by using your plasma stores. In addition, you can now carry twelve eggs at once, can plant eggs of non-hive weeds, and can place eggs one pace further than normal"
+	flavor_description = "An egg is always an adventure; the next one may be different."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_CARRIER)
@@ -12,7 +13,7 @@
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/active_toggle/generate_egg,
-		/datum/action/xeno_action/activable/retrieve_egg // readding it so it gets at the end of the ability list
+		/datum/action/xeno_action/activable/retrieve_egg, // readding it so it gets at the end of the ability list
 	)
 	keystone = TRUE
 
@@ -35,8 +36,10 @@
 		playsound(carrier.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
 	carrier.huggers_cur = 0
 	carrier.huggers_max = 0
+	carrier.update_hugger_overlays()
+	carrier.update_eggsac_overlays()
 	carrier.eggs_max = 12
-	carrier.extra_build_dist = 1
+	carrier.egg_planting_range = 2
 	return TRUE
 
 /datum/action/xeno_action/active_toggle/generate_egg
@@ -72,3 +75,5 @@
 			if(egg_generation_progress >= 15)
 				egg_generation_progress = 0
 				xeno.eggs_cur++
+				to_chat(xeno, SPAN_XENONOTICE("You generate a egg. Now sheltering: [xeno.eggs_cur] / [xeno.eggs_max]."))
+				xeno.update_icons()

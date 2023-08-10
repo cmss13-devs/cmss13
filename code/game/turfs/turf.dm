@@ -113,6 +113,17 @@
 	flags_atom &= ~INITIALIZED
 	..()
 
+/turf/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_EXPLODE, "Trigger Explosion")
+	VV_DROPDOWN_OPTION(VV_HK_EMPULSE, "Trigger EM Pulse")
+
+/turf/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, x), NAMEOF_STATIC(src, y), NAMEOF_STATIC(src, z))
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
+
 /turf/ex_act(severity)
 	return 0
 
@@ -240,6 +251,7 @@
 	if(!istype(A))
 		return
 
+	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, A)
 	SEND_SIGNAL(A, COMSIG_MOVABLE_TURF_ENTERED, src)
 
 	// Let explosions know that the atom entered
@@ -494,7 +506,7 @@
 	var/area/A = get_area(src)
 	switch(A.ceiling)
 		if(CEILING_GLASS)
-			return "The ceiling above is glass. That's not going stop anything."
+			return "The ceiling above is glass. That's not going to stop anything."
 		if(CEILING_METAL)
 			return "The ceiling above is metal. You can't see through it with a camera from above, but that's not going to stop anything."
 		if(CEILING_UNDERGROUND_ALLOW_CAS)
@@ -555,10 +567,10 @@
 	return NOT_WEEDABLE
 
 /turf/open/auto_turf/shale/layer1/is_weedable()
-	return FALSE
+	return SEMI_WEEDABLE
 
 /turf/open/auto_turf/shale/layer2/is_weedable()
-	return FALSE
+	return SEMI_WEEDABLE
 
 /turf/closed/wall/is_weedable()
 	return FULLY_WEEDABLE //so we can spawn weeds on the walls
@@ -714,10 +726,10 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 /// Remove all atoms except observers, landmarks, docking ports - clearing up the turf contents
 /turf/proc/empty(turf_type=/turf/open/space, baseturf_type, list/ignore_typecache, flags)
 	var/static/list/ignored_atoms = typecacheof(list(/mob/dead, /obj/effect/landmark, /obj/docking_port))
-	var/list/allowed_contents = typecache_filter_list_reverse(GetAllContentsIgnoring(ignore_typecache), ignored_atoms)
-	allowed_contents -= src
-	for(var/i in 1 to allowed_contents.len)
-		var/thing = allowed_contents[i]
+	var/list/removable_contents = typecache_filter_list_reverse(GetAllContentsIgnoring(ignore_typecache), ignored_atoms)
+	removable_contents -= src
+	for(var/i in 1 to removable_contents.len)
+		var/thing = removable_contents[i]
 		qdel(thing, force=TRUE)
 
 	if(turf_type)

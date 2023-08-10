@@ -31,6 +31,11 @@
 		hub.com = src
 		hub.setDir(dir)
 
+/obj/structure/machinery/computer/teleporter/Destroy()
+	QDEL_NULL(locked)
+	. = ..()
+
+
 /obj/structure/machinery/computer/teleporter/attackby(I as obj, mob/living/user as mob)
 	if(istype(I, /obj/item/card/data/))
 		var/obj/item/card/data/C = I
@@ -177,6 +182,11 @@
 	underlays.Cut()
 	underlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "tele-wires")
 
+/obj/structure/machinery/teleport/hub/Destroy()
+	QDEL_NULL(com)
+	. = ..()
+
+
 /obj/structure/machinery/teleport/hub/Collided(atom/movable/AM)
 	spawn()
 		if (src.icon_state == "tele1")
@@ -313,6 +323,10 @@
 	overlays.Cut()
 	overlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "controller-wires")
 
+/obj/structure/machinery/teleport/station/Destroy()
+	QDEL_NULL(com)
+	. = ..()
+
 /obj/structure/machinery/teleport/station/attackby(obj/item/W)
 	src.attack_hand()
 
@@ -388,8 +402,8 @@
 	name = "laser"
 	desc = "IT BURNS!!!"
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
-	var/damage = 0.0
-	var/range = 10.0
+	var/damage = 0
+	var/range = 10
 
 
 /obj/effect/laser/Collide(atom/A)

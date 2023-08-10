@@ -10,8 +10,8 @@
 	return isgun(user_mob.get_held_item())
 
 /datum/keybinding/human/combat/field_strip_weapon
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "field_strip_weapon"
 	full_name = "Field Strip Weapon"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_FIELDSTRIP
@@ -28,7 +28,7 @@
 
 /datum/keybinding/human/combat/toggle_burst_fire
 	hotkey_keys = list("Ctrl+Space")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "toggle_burst_fire"
 	full_name = "Toggle Burst Fire"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_BURSTFIRE
@@ -44,7 +44,7 @@
 
 /datum/keybinding/human/combat/stock_attachment
 	hotkey_keys = list("Shift+X")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "toggle_stock_attachment"
 	full_name = "Toggle Stock Attachment"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT
@@ -59,8 +59,8 @@
 	return TRUE
 
 /datum/keybinding/human/combat/auto_eject
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "toggle_auto_eject"
 	full_name = "Toggle Auto Eject"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_AUTOEJECT
@@ -76,7 +76,7 @@
 
 /datum/keybinding/human/combat/underbarrel
 	hotkey_keys = list("Shift+Space")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "toggle_underbarrel_attachment"
 	full_name = "Toggle Underbarrel Attachment"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL
@@ -92,7 +92,7 @@
 
 /datum/keybinding/human/combat/unique_action
 	hotkey_keys = list("Space")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "unique_action"
 	full_name = "Unique Action"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_UNIQUEACTION
@@ -108,7 +108,7 @@
 
 /datum/keybinding/human/combat/unload_gun
 	hotkey_keys = list("Shift+Z")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "unload_weapon"
 	full_name = "Unload Weapon"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_UNLOAD
@@ -124,7 +124,7 @@
 
 /datum/keybinding/human/combat/safety
 	hotkey_keys = list("Shift+V")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "toggle_weapon_safety"
 	full_name = "Toggle Weapon Safety"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_SAFETY
@@ -139,8 +139,8 @@
 	return TRUE
 
 /datum/keybinding/human/combat/attachment
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "toggle_attachment"
 	full_name = "Toggle Attachment"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_ATTACHMENT
@@ -156,7 +156,7 @@
 
 /datum/keybinding/human/combat/attachment_rail
 	hotkey_keys = list("Shift+G")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "toggle_rail_attachment"
 	full_name = "Toggle Rail Attachment"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_ATTACHMENT_RAIL
@@ -171,8 +171,8 @@
 	return TRUE
 
 /datum/keybinding/human/combat/toggle_iff
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "toggle_iff"
 	full_name = "Toggle IFF"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_IFF

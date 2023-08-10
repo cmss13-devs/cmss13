@@ -24,16 +24,9 @@
 /tools/docker/ @Fira
 /Dockerfile @Fira
 
-# Stan_Albatross
-
-/code/modules/projectiles/guns/lever_action.dm @stanalbatross
-/code/game/objects/items/backpack_sprayers.dm @stanalbatross
-/code/game/objects/items/tools/experimental_tools.dm @stanalbatross
-
 # MorrowWolf
 
 /maps/map_files/LV522_Chances_Claim/LV522_Chances_Claim.dmm @morrowwolf
+/code/modules/gear_presets/survivors.dm @morrowwolf
 
 # MULTIPLE OWNERS
-/icons/ @Agameofscones @Monkeysfist101 @nauticall
-/maps/ @Agameofscones @nauticall @Nanu308

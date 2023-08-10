@@ -47,6 +47,11 @@
 
 	start_processing()
 
+/obj/structure/machinery/bot/cleanbot/Destroy()
+	QDEL_NULL(target)
+	QDEL_NULL(oldtarget)
+	SSradio.remove_object(src, beacon_freq)
+	. = ..()
 
 /obj/structure/machinery/bot/cleanbot/turn_on()
 	. = ..()

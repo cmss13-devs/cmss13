@@ -1,5 +1,5 @@
 /obj/structure/machinery/reagent_analyzer
-	name = "Advanced XRF Scanner"
+	name = "\improper XRF scanner"
 	desc = "A spectrometer that bombards a sample in high energy radiation to detect emitted fluorescent x-ray patterns. By using the emission spectrum of the sample it can identify its chemical composition."
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "reagent_analyzer"
@@ -104,8 +104,9 @@
 
 			chemical_data.complete_chemical(S)
 	else
+		var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 		report.name = "Analysis of ERROR"
-		report.info += "<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"
+		report.info += "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"
 		report.info += "<B>Result:</B><BR>Analysis failed for sample #[sample_number].<BR><BR>\n"
 		report.info += "<B>Reason for error:</B><BR><I>[reason]</I><BR>\n"
 	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the A-XRF Scanner.<BR>The [MAIN_SHIP_NAME], [time2text(world.timeofday, "MM/DD")]/[game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
@@ -115,8 +116,8 @@
 		report = new /obj/item/paper/research_report(loc)
 
 	report.name = "Analysis of [name]"
-
-	report.info += "<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Automated A-XRF Report</I><HR><H2>Analysis of [name]</H2></center>"
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	report.info += "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Automated A-XRF Report</I><HR><H2>Analysis of [name]</H2></center>"
 	if(sample_number)
 		report.info += "<B>Results for sample:</B> #[sample_number]<BR>\n"
 	report.generate(src, admin_spawned)

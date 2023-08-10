@@ -26,7 +26,6 @@ require only minor tweaks.
 #define ZTRAIT_MARINE_MAIN_SHIP "Marine Main Ship"
 #define ZTRAIT_ADMIN "Admin"
 #define ZTRAIT_AWAY  "Away"
-#define ZTRAIT_LOWORBIT "LowOrbit"
 #define ZTRAIT_INTERIORS "Interiors"
 #define ZTRAIT_TECHTREE "TechTree"
 
@@ -67,7 +66,6 @@ require only minor tweaks.
 #define ZTRAITS_MAIN_SHIP list(ZTRAIT_MARINE_MAIN_SHIP = TRUE)
 #define ZTRAITS_GROUND list(ZTRAIT_GROUND = TRUE)
 #define ZTRAITS_ADMIN list(ZTRAIT_ADMIN = TRUE)
-#define ZTRAITS_LOWORBIT list(ZTRAIT_LOWORBIT = TRUE)
 #define ZTRAITS_SPACE list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_SPACE_RUINS = TRUE)
 #define ZTRAITS_INTERIORS list(ZTRAIT_INTERIORS = TRUE)
 
@@ -79,7 +77,6 @@ require only minor tweaks.
 
 #define DEFAULT_MAP_TRAITS list(\
 	DECLARE_LEVEL("CentCom", ZTRAITS_ADMIN),\
-	DECLARE_LEVEL("LowOrbit", ZTRAITS_LOWORBIT),\
 )
 
 // Camera lock flags
@@ -107,8 +104,10 @@ require only minor tweaks.
 #define GROUND_MAP "ground_map"
 #define SHIP_MAP "ship_map"
 #define ALL_MAPTYPES list(GROUND_MAP, SHIP_MAP)
+#define OVERRIDE_MAPS_TO_FILENAME list(GROUND_MAP = "next_map_override.dmm", SHIP_MAP = "next_ship_override.dmm")
 #define MAP_TO_FILENAME list(GROUND_MAP = "data/next_map.json", SHIP_MAP = "data/next_ship.json")
 #define HUNTERSHIPS_TEMPLATE_PATH "maps/predship/huntership.dmm"
+#define OVERRIDE_DEFAULT_MAP_CONFIG list(GROUND_MAP = "maps/override_ground.json", SHIP_MAP = "maps/override_ship.json")
 
 // traity things
 #define MAP_COLD "COLD"
@@ -120,6 +119,6 @@ require only minor tweaks.
 
 //turf-only flags
 #define NOJAUNT_1 (1<<0)
-#define UNUSED_RESERVATION_TURF_1 (1<<1)
+#define UNUSED_RESERVATION_TURF (1<<1)
 /// If a turf can be made dirty at roundstart. This is also used in areas.
 #define CAN_BE_DIRTY_1 (1<<2)

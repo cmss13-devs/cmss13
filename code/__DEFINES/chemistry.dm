@@ -41,7 +41,7 @@
 #define REM REAGENTS_EFFECT_MULTIPLIER
 // Reagent metabolism defines.
 #define FOOD_METABOLISM AMOUNT_PER_TIME(1, 5 SECONDS)
-#define ALCOHOL_METABOLISM AMOUNT_PER_TIME(1, 20 SECONDS)
+#define ALCOHOL_METABOLISM AMOUNT_PER_TIME(1, 5 SECONDS)
 #define RAPID_METABOLISM AMOUNT_PER_TIME(1, 2 SECONDS)
 
 // Factor of how fast mob nutrition decreases
@@ -77,11 +77,12 @@
 /// Randomly generated chemicals
 #define CHEM_CLASS_ULTRA 6
 
-//chem effect flags, used to quickly check if the mob has a chem that provides a special effect
+//chem_effect_flags, used to quickly check if the mob has a chem that provides a special effect
 #define CHEM_EFFECT_RESIST_FRACTURE (1<<0)
 #define CHEM_EFFECT_RESIST_NEURO (1<<1)
 #define CHEM_EFFECT_HYPER_THROTTLE (1<<2) //universal understand but not speech
 #define CHEM_EFFECT_ORGAN_STASIS (1<<3) //peri stabiliser
+#define CHEM_EFFECT_NO_BLEEDING (1<<4) //replacement for quickclot
 
 
 //Blood plasma
@@ -156,6 +157,8 @@
 #define PROPERTY_NEOGENETIC "neogenetic"
 #define PROPERTY_REPAIRING "repairing"
 #define PROPERTY_HEMOGENIC "hemogenic"
+#define PROPERTY_YAUTJA_HEMOGENIC "yautja-hemogenic"
+#define PROPERTY_HEMOSTATIC "hemostatic"
 #define PROPERTY_NERVESTIMULATING "nerve-stimulating"
 #define PROPERTY_MUSCLESTIMULATING "muscle-stimulating"
 #define PROPERTY_PAINKILLING "painkilling"
@@ -281,11 +284,13 @@
 #define POTENCY_MAX_TIER_2 5
 
 //for scaling chem effects based on potency
+#define POTENCY_MULTIPLIER_VVLOW 0.1
 #define POTENCY_MULTIPLIER_VLOW 0.25
 #define POTENCY_MULTIPLIER_LOW 0.5
 #define POTENCY_MULTIPLIER_MEDIUM 2
 #define POTENCY_MULTIPLIER_HIGH 3
 #define POTENCY_MULTIPLIER_VHIGH 5
+#define POTENCY_MULTIPLIER_HIGHEXTREMEINTER 7.5
 #define POTENCY_MULTIPLIER_EXTREME 10
 
 //used in speed_modifier component

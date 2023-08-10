@@ -7,11 +7,11 @@
 	density = TRUE
 	req_access = list(ACCESS_MARINE_BRIG)
 	circuit = /obj/item/circuitboard/computer/prisoner
-	var/id = 0.0
+	var/id = 0
 	var/temp = null
 	var/status = 0
 	var/timeleft = 60
-	var/stop = 0.0
+	var/stop = 0
 	var/screen = 0 // 0 - No Access Denied, 1 - Access allowed
 	processing = TRUE
 

@@ -13,7 +13,7 @@
 		/datum/surgery_step/facial_incision,
 		/datum/surgery_step/mend_vocals,
 		/datum/surgery_step/pull_skin,
-		/datum/surgery_step/cauterize/close_facial_incision
+		/datum/surgery_step/cauterize/close_facial_incision,
 	)
 
 /datum/surgery/face_fix/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)

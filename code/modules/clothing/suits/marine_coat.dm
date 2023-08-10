@@ -23,7 +23,7 @@
 		/obj/item/weapon/gun/,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
-		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/baton,
 		/obj/item/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
@@ -137,7 +137,7 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/dress
 	name = "marine dress jacket"
-	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
+	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy, but it still gives off that unga vibe."
 	icon_state = "marine_formal"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -178,6 +178,11 @@
 	desc = "A Navy regulation dress blues coat for high-ranking officers. For those who wish for style and authority."
 	icon_state = "co_suit"
 
+/obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon
+	name = "commanding officer falcon jacket"
+	desc = "A refurbished jacket liner tailor made for a senior officer. This liner has become more of a proper piece of attire, with a new layer of fabric, wrist cuffs, front pockets, and a custom embroidered falcon on the back. This jacket will keep its wearer warm no matter the circumstance, from a cool Sunday drive to chilly autumn's eve."
+	icon_state = "co_falcon"
+
 /obj/item/clothing/suit/storage/jacket/marine/dress/general
 	name = "general's jacket"
 	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, a General. Has quite a few pockets."
@@ -212,6 +217,13 @@
 	icon_state = "bridge_coat_grey"
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
 
+/obj/item/clothing/suit/storage/jacket/marine/service/aso
+	name = "auxiliary support officer jacket"
+	desc = "A comfortable vest for officers who are expected to work long hours staring at rows of numbers and inspecting equipment from knives to torpedos to entire dropships."
+	icon_state = "aso_jacket"
+	blood_overlay_type = "coat"
+	flags_armor_protection = BODY_FLAG_CHEST
+	has_buttons = FALSE
 
 
 //=========================//PROVOST\\================================\\
@@ -265,3 +277,13 @@
 	desc = "The jacket of the legendary Marine dress blues, virtually unchanged since the 19th century. Features the sleek dark design of the uniform worn by a commissioned officer."
 	icon_state = "o_jacket"
 	item_state = "o_jacket"
+
+//==================War Correspondent==================\\
+
+/obj/item/clothing/suit/storage/jacket/marine/reporter
+	name = "combat correspondent jacket"
+	desc = "A jacket for the most fashionable war correspondents."
+	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
+	icon_state = "wc_suit"
+	item_state = "wc_suit"
+	contained_sprite = TRUE

@@ -50,6 +50,9 @@
 	var/datum/action/source_action
 	var/image/maptext_overlay
 
+/atom/movable/screen/action_button/attack_ghost(mob/dead/observer/user)
+	return
+
 /atom/movable/screen/action_button/clicked(mob/user)
 	if(!user || !source_action)
 		return TRUE
@@ -100,6 +103,8 @@
 	user.update_action_buttons()
 	return 1
 
+/atom/movable/screen/action_button/ghost/minimap/get_button_screen_loc(button_number)
+	return "SOUTH:6,CENTER+1:24"
 
 /atom/movable/screen/storage
 	name = "storage"
@@ -126,121 +131,6 @@
 				color = "#ffa500"
 			else
 				color = null
-
-
-
-/atom/movable/screen/gun
-	name = "gun"
-	dir = SOUTH
-	var/gun_click_time = -100
-
-/atom/movable/screen/gun/move
-	name = "Allow Walking"
-	icon_state = "no_walk0"
-
-/atom/movable/screen/gun/move/update_icon(mob/user)
-	if(user.gun_mode)
-		if(user.target_can_move)
-			icon_state = "no_walk1"
-			name = "Disallow Walking"
-		else
-			icon_state = "no_walk0"
-			name = "Allow Walking"
-		screen_loc = initial(screen_loc)
-		return
-	screen_loc = null
-
-/atom/movable/screen/gun/move/clicked(mob/user)
-	if (..())
-		return 1
-
-	if(gun_click_time > world.time - 30) //give them 3 seconds between mode changes.
-		return 1
-	if(!isgun(user.get_held_item()))
-		to_chat(user, "You need your gun in your active hand to do that!")
-		return 1
-	user.AllowTargetMove()
-	gun_click_time = world.time
-	return 1
-
-
-/atom/movable/screen/gun/run
-	name = "Allow Running"
-	icon_state = "no_run0"
-
-/atom/movable/screen/gun/run/update_icon(mob/user)
-	if(user.gun_mode)
-		if(user.target_can_move)
-			if(user.target_can_run)
-				icon_state = "no_run1"
-				name = "Disallow Running"
-			else
-				icon_state = "no_run0"
-				name = "Allow Running"
-			screen_loc = initial(screen_loc)
-			return
-	screen_loc = null
-
-/atom/movable/screen/gun/run/clicked(mob/user)
-	if (..())
-		return 1
-
-	if(gun_click_time > world.time - 30) //give them 3 seconds between mode changes.
-		return 1
-	if(!isgun(user.get_held_item()))
-		to_chat(user, "You need your gun in your active hand to do that!")
-		return 1
-	user.AllowTargetRun()
-	gun_click_time = world.time
-	return 1
-
-
-/atom/movable/screen/gun/item
-	name = "Allow Item Use"
-	icon_state = "no_item0"
-
-/atom/movable/screen/gun/item/update_icon(mob/user)
-	if(user.gun_mode)
-		if(user.target_can_click)
-			icon_state = "no_item1"
-			name = "Allow Item Use"
-		else
-			icon_state = "no_item0"
-			name = "Disallow Item Use"
-		screen_loc = initial(screen_loc)
-		return
-	screen_loc = null
-
-/atom/movable/screen/gun/item/clicked(mob/user)
-	if (..())
-		return 1
-
-	if(gun_click_time > world.time - 30) //give them 3 seconds between mode changes.
-		return 1
-	if(!isgun(user.get_held_item()))
-		to_chat(user, "You need your gun in your active hand to do that!")
-		return 1
-	user.AllowTargetClick()
-	gun_click_time = world.time
-	return 1
-
-
-/atom/movable/screen/gun/mode
-	name = "Toggle Gun Mode"
-	icon_state = "gun0"
-
-/atom/movable/screen/gun/mode/update_icon(mob/user)
-	if(user.gun_mode)
-		icon_state = "gun1"
-	else
-		icon_state = "gun0"
-
-/atom/movable/screen/gun/mode/clicked(mob/user)
-	if (..())
-		return 1
-	user.ToggleGunMode()
-	return 1
-
 
 /atom/movable/screen/zone_sel
 	name = "damage zone"
@@ -628,7 +518,7 @@
 	name = "queen locator"
 	icon = 'icons/mob/hud/alien_standard.dmi'
 	icon_state = "trackoff"
-	var/track_state = TRACKER_QUEEN
+	var/list/track_state = list(TRACKER_QUEEN, 0)
 
 /atom/movable/screen/queen_locator/clicked(mob/living/carbon/xenomorph/user, mods)
 	if(!istype(user))
@@ -643,15 +533,23 @@
 	if(mods["alt"])
 		var/list/options = list()
 		if(user.hive.living_xeno_queen)
-			options["Queen"] = TRACKER_QUEEN
+			options["Queen"] = list(TRACKER_QUEEN, 0)
+
 		if(user.hive.hive_location)
-			options["Hive Core"] = TRACKER_HIVE
+			options["Hive Core"] = list(TRACKER_HIVE, 0)
+
 		var/xeno_leader_index = 1
 		for(var/xeno in user.hive.xeno_leader_list)
 			var/mob/living/carbon/xenomorph/xeno_lead = user.hive.xeno_leader_list[xeno_leader_index]
 			if(xeno_lead)
-				options["Xeno Leader [xeno_lead]"] = "[xeno_leader_index]"
+				options["Xeno Leader [xeno_lead]"] = list(TRACKER_LEADER, xeno_leader_index)
 			xeno_leader_index++
+
+		var/tunnel_index = 1
+		for(var/obj/structure/tunnel/tracked_tunnel in user.hive.tunnels)
+			options["Tunnel [tracked_tunnel.tunnel_desc]"] = list(TRACKER_TUNNEL, tunnel_index)
+			tunnel_index++
+
 		var/selected = tgui_input_list(user, "Select what you want the locator to track.", "Locator Options", options)
 		if(selected)
 			track_state = options[selected]

@@ -128,7 +128,7 @@
 
 /obj/item/grown/nettle/death // -- Skie
 	plantname = "deathnettle"
-	desc = "The \red glowing \black nettle incites \red<B>rage</B>\black in you just from looking at it!"
+	desc = "The glowing nettle incites <B>rage</B> in you just from looking at it!"
 	name = "deathnettle"
 	icon_state = "deathnettle"
 

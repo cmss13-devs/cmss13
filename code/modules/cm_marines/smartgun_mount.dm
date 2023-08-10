@@ -16,7 +16,7 @@
 /obj/item/coin/marine/engineer
 	name = "marine engineer support token"
 	desc = "Insert this into an engineer vendor in order to access a support weapon."
-	icon_state = "coin_adamantine"
+	icon_state = "coin_platinum"
 
 // First thing we need is the ammo drum for this thing.
 /obj/item/ammo_magazine/m56d
@@ -107,10 +107,15 @@
 		return
 	if(!has_mount)
 		return
-	if(user.z == GLOB.interior_manager.interior_z)
+	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
 	var/turf/T = get_turf(usr)
+	if(istype(T, /turf/open))
+		var/turf/open/floor = T
+		if(!floor.allow_construction)
+			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+			return FALSE
 	var/fail = FALSE
 	if(T.density)
 		fail = TRUE
@@ -191,10 +196,15 @@
 
 	if(!ishuman(usr))
 		return
-	if(user.z == GLOB.interior_manager.interior_z)
+	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
 	var/turf/T = get_turf(user)
+	if(istype(T, /turf/open))
+		var/turf/open/floor = T
+		if(!floor.allow_construction)
+			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+			return FALSE
 	var/fail = FALSE
 	if(T.density)
 		fail = TRUE
@@ -370,6 +380,11 @@
 		if(fail)
 			to_chat(user, SPAN_WARNING("You can't install \the [src] here, something is in the way."))
 			return
+		if(istype(T, /turf/open))
+			var/turf/open/floor = T
+			if(!floor.allow_construction)
+				to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+				return FALSE
 
 		if(gun_mounted)
 			to_chat(user, "You're securing the M56D into place...")
@@ -552,7 +567,7 @@
 
 	if(istype(O, /obj/item/ammo_magazine/m56d)) // RELOADING DOCTOR FREEMAN.
 		var/obj/item/ammo_magazine/m56d/M = O
-		if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_DEFAULT))
+		if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
 			if(rounds)
 				to_chat(user, SPAN_WARNING("You only know how to swap the ammo drum when it's empty."))
 				return
@@ -891,7 +906,7 @@
 	user.visible_message(SPAN_NOTICE("[user] lets go of \the [src]."),SPAN_NOTICE("You let go of \the [src], letting the gun rest."))
 	user.unfreeze()
 	user.reset_view(null)
-	user.forceMove(get_step(src, reverse_direction(src.dir)))
+	user.Move(get_step(src, reverse_direction(src.dir)))
 	user.setDir(dir) //set the direction of the player to the direction the gun is facing
 	user_old_x = 0 //reset our x
 	user_old_y = 0 //reset our y
@@ -996,7 +1011,7 @@
 	desc = "A box of 125, 10x28mm tungsten rounds for the M2 Heavy Machinegun System. Click the heavy machinegun while there's no ammo box loaded to reload the M2C."
 	caliber = "10x28mm"
 	w_class = SIZE_LARGE
-	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m56de"
 	item_state = "m56de"
 	max_rounds = 125
@@ -1058,10 +1073,10 @@
 	if(broken_gun)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src], it's completely broken!"))
 		return FALSE
-	if(user.z == GLOB.interior_manager.interior_z)
+	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return FALSE
-	if(OT.density || !isturf(OT))
+	if(OT.density || !isturf(OT) || !OT.allow_construction)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
 		return FALSE
 	if(rotate_check.density)

@@ -22,8 +22,8 @@
 #define ui_acti_alt  "EAST-1:28,1:5" //alternative intent switcher for when the interface is hidden (F12)
 
 // Ghosts
-#define ui_ghost_slot1 "SOUTH:6,CENTER-2:24"
-#define ui_ghost_slot2 "SOUTH:6,CENTER-1:24"
-#define ui_ghost_slot3 "SOUTH:6,CENTER:24"
-#define ui_ghost_slot4 "SOUTH:6,CENTER+1:24"
-#define ui_ghost_slot5 "SOUTH:6,CENTER+2:24"
+#define ui_ghost_slot1 "SOUTH:6,CENTER-2:0"
+#define ui_ghost_slot2 "SOUTH:6,CENTER-1:0"
+#define ui_ghost_slot3 "SOUTH:6,CENTER:0"
+#define ui_ghost_slot4 "SOUTH:6,CENTER+1:0"
+#define ui_ghost_slot5 "SOUTH:6,CENTER+2:0"

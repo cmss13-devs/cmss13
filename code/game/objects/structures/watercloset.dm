@@ -19,7 +19,7 @@
 
 
 /obj/structure/toilet/Initialize()
-	..()
+	. = ..()
 	open = round(rand(0, 1))
 	cistern_overlay = new()
 	cistern_overlay.icon = icon
@@ -56,23 +56,13 @@
 			open = !open // Toggles open to opposite state
 			update_icon()
 
-	if(open && (do_after(user, 1 SECONDS)))
-		switch(user.nutrition)
-			if((1 + NUTRITION_NORMAL) to NUTRITION_MAX)
-				to_chat(user, SPAN_NOTICE("The toilet starts flushing. You start feeling a bit more hungry."))
-				user.nutrition = ((NUTRITION_LOW + NUTRITION_NORMAL) * 0.5)
-			if((1 + NUTRITION_LOW) to NUTRITION_NORMAL)
-				to_chat(user, SPAN_NOTICE("The toilet starts flushing. You could go for some food right now."))
-				user.nutrition = ((NUTRITION_VERYLOW + NUTRITION_LOW) * 0.5)
-			if((1 + NUTRITION_VERYLOW) to NUTRITION_LOW)
-				to_chat(user, SPAN_NOTICE("The toilet starts flushing. Your stomach growls and you feel a little thinner."))
-				user.nutrition = NUTRITION_VERYLOW * 0.5
-			else
-				to_chat(user, SPAN_NOTICE("The toilet starts flushing. You feel starved. Go grab something to eat!"))
-				user.nutrition = 0
+	else // open
+		if(user.action_busy) // Prevent spamming faster than do_after speed
+			return
+		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			return
 
 		playsound(loc, 'sound/effects/toilet_flush_new.ogg', 25, 1)
-
 		flick("toilet1[cistern]_flush", src)
 		if(dir == SOUTH)
 			flick("cistern[cistern]_flush", cistern_overlay)
@@ -131,7 +121,7 @@
 	cistern_overlay.icon_state = "cistern[cistern]"
 
 /obj/structure/toilet/attackby(obj/item/I, mob/living/user)
-	if(istype(I, /obj/item/tool/crowbar))
+	if(HAS_TRAIT(I, TRAIT_TOOL_CROWBAR))
 		to_chat(user, SPAN_NOTICE("You start to [cistern ? "replace the lid on the cistern" : "lift the lid off the cistern"]."))
 		playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
 		if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -437,7 +427,7 @@
 	var/busy = FALSE //Something's being washed at the moment
 
 /obj/structure/sink/Initialize()
-	..()
+	. = ..()
 	if(prob(50))
 		icon_state = "sink_emptied"
 
@@ -494,8 +484,8 @@
 		user.visible_message(SPAN_NOTICE("[user] fills \the [RG] using \the [src]."),SPAN_NOTICE("You fill \the [RG] using \the [src]."))
 		return
 
-	else if (istype(O, /obj/item/weapon/melee/baton))
-		var/obj/item/weapon/melee/baton/B = O
+	else if (istype(O, /obj/item/weapon/baton))
+		var/obj/item/weapon/baton/B = O
 		if(B.bcell)
 			if(B.bcell.charge > 0 && B.status == 1)
 				flick("baton_active", src)

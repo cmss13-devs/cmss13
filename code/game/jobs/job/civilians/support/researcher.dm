@@ -33,4 +33,5 @@ AddTimelock(/datum/job/civilian/researcher, list(
 
 /obj/effect/landmark/start/researcher
 	name = JOB_RESEARCHER
+	icon_state = "res_spawn"
 	job = /datum/job/civilian/researcher

@@ -42,7 +42,7 @@
 	var/played = 0
 	var/midi_silenced = 0
 	var/datum/soundOutput/soundOutput
-	var/list/volume_preferences = list(1, 0.5, 1, 0.85)//Game, music, admin midis, lobby music
+	var/list/volume_preferences = list(1, 0.5, 1, 0.6)//Game, music, admin midis, lobby music
 
 		////////////
 		//SECURITY//
@@ -128,3 +128,6 @@
 
 	/// Does this client have typing indicators enabled?
 	var/typing_indicators = TRUE
+
+	///datum that controls the displaying and hiding of tooltips
+	var/datum/tooltip/tooltips

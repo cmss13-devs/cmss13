@@ -22,8 +22,7 @@
 "bk" = (
 /obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "cQ" = (
@@ -32,8 +31,7 @@
 	pixel_y = 30
 	},
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "fX" = (
@@ -43,8 +41,7 @@
 /area/lv624/lazarus/medbay)
 "gp" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10";
-	tag = "icon-plant-10"
+	icon_state = "pottedplant_10"
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -70,8 +67,7 @@
 	pixel_y = 28
 	},
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "iq" = (
@@ -91,8 +87,7 @@
 "jg" = (
 /obj/structure/machinery/body_scanconsole,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "jW" = (
@@ -104,11 +99,11 @@
 /area/lv624/lazarus/medbay)
 "jY" = (
 /obj/structure/flora/jungle/planttop1,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "kg" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "kh" = (
 /obj/structure/surface/table,
@@ -121,13 +116,12 @@
 /area/lv624/lazarus/medbay)
 "kD" = (
 /obj/structure/flora/jungle/planttop1,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "lk" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "lD" = (
@@ -163,13 +157,12 @@
 "nz" = (
 /turf/open/floor{
 	dir = 4;
-	icon_state = "whitebluecorner";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/medbay)
 "nG" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/south_medbay_road)
 "og" = (
 /turf/open/gm/dirt,
@@ -177,8 +170,7 @@
 "ok" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "ot" = (
@@ -218,11 +210,11 @@
 /area/lv624/lazarus/medbay)
 "rZ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "se" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "tK" = (
 /obj/structure/machinery/light{
@@ -230,8 +222,7 @@
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHEAST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "uV" = (
@@ -248,9 +239,7 @@
 /area/lv624/lazarus/medbay)
 "xe" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/colony/south_medbay_road)
 "xF" = (
 /obj/structure/surface/table/reinforced,
@@ -260,16 +249,15 @@
 	name = "Surgery Cleaner"
 	},
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "xM" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/south_medbay_road)
 "ym" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "yU" = (
 /obj/structure/girder,
@@ -305,29 +293,25 @@
 /obj/item/weapon/gun/pistol/holdout,
 /turf/open/floor{
 	dir = 4;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (EAST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "zS" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "AB" = (
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "Be" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/colony/south_medbay_road)
 "Bn" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "BL" = (
 /obj/structure/window_frame/colony,
@@ -340,8 +324,7 @@
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "Df" = (
@@ -394,13 +377,12 @@
 /area/lv624/lazarus/medbay)
 "Ha" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "Il" = (
 /obj/structure/machinery/bioprinter,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "Iy" = (
@@ -414,8 +396,7 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor{
 	dir = 6;
-	icon_state = "whiteblue";
-	tag = "icon-whitehall (WEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "Jc" = (
@@ -425,7 +406,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "JE" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "JK" = (
 /obj/item/stack/medical/ointment,
@@ -451,7 +432,7 @@
 /area/lv624/lazarus/medbay)
 "Km" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "Lk" = (
 /obj/structure/machinery/light{
@@ -480,12 +461,10 @@
 /area/lv624/lazarus/medbay)
 "MW" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10";
-	tag = "icon-plant-10"
+	icon_state = "pottedplant_10"
 	},
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "Ny" = (
@@ -566,7 +545,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "RO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 2;
 	name = "\improper Medical Bay"
 	},
@@ -618,7 +597,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "UH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -630,15 +609,14 @@
 	},
 /area/lv624/lazarus/medbay)
 "XA" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "XJ" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/medbay)
 "YJ" = (
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "YV" = (

@@ -20,7 +20,6 @@
 	if(ready)
 		readied_players--
 	GLOB.new_player_list -= src
-	GLOB.dead_mob_list -= src
 	return ..()
 
 /mob/new_player/verb/new_player_panel()
@@ -114,7 +113,7 @@
 
 		if("observe")
 			if(!SSticker || SSticker.current_state == GAME_STATE_STARTUP)
-				to_chat(src, "<span class='warning'>The game is still setting up, please try again later.</span>")
+				to_chat(src, SPAN_WARNING("The game is still setting up, please try again later."))
 				return
 			if(alert(src,"Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!","Player Setup","Yes","No") == "Yes")
 				if(!client)
@@ -244,7 +243,7 @@
 	spawning = TRUE
 	close_spawn_windows()
 
-	var/mob/living/carbon/human/character = create_character() //creates the human and transfers vars and mind
+	var/mob/living/carbon/human/character = create_character(TRUE) //creates the human and transfers vars and mind
 	RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], late_join = TRUE)
 	EquipCustomItems(character)
 
@@ -263,21 +262,22 @@
 
 	if(SSticker.mode.latejoin_larva_drop && SSticker.mode.latejoin_tally >= SSticker.mode.latejoin_larva_drop)
 		SSticker.mode.latejoin_tally -= SSticker.mode.latejoin_larva_drop
-		var/datum/hive_status/HS
+		var/datum/hive_status/hive
 		for(var/hivenumber in GLOB.hive_datum)
-			HS = GLOB.hive_datum[hivenumber]
-			if(length(HS.totalXenos))
-				HS.stored_larva++
-				HS.hive_ui.update_pooled_larva()
+			hive = GLOB.hive_datum[hivenumber]
+			if(hive.latejoin_burrowed == TRUE)
+				if(length(hive.totalXenos) && (hive.hive_location || ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2))
+					hive.stored_larva++
+					hive.hive_ui.update_burrowed_larva()
 
 	if(character.mind && character.mind.player_entity)
 		var/datum/entity/player_entity/player = character.mind.player_entity
 		if(player.get_playtime(STATISTIC_HUMAN) == 0 && player.get_playtime(STATISTIC_XENO) == 0)
-			msg_admin_niche("NEW JOIN: <b>[key_name(character, 1, 1, 0)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=adminmoreinfo;extra=\ref[character]'>?</A>)</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
+			msg_admin_niche("NEW JOIN: <b>[key_name(character, 1, 1, 0)]</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
 		if(character.client)
 			var/client/C = character.client
 			if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
-				msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=adminmoreinfo;extra=\ref[C]'>?</A>)</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
+				msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)]</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
 			if(C.player_data && C.player_data.playtime_loaded && ((round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
 				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
 
@@ -349,7 +349,7 @@
 	show_browser(src, dat, "Late Join", "latechoices", "size=420x700")
 
 
-/mob/new_player/proc/create_character()
+/mob/new_player/proc/create_character(is_late_join = FALSE)
 	spawning = TRUE
 	close_spawn_windows()
 
@@ -368,7 +368,7 @@
 
 	new_character.lastarea = get_area(loc)
 
-	client.prefs.copy_all_to(new_character)
+	client.prefs.copy_all_to(new_character, job, is_late_join)
 
 	if (client.prefs.be_random_body)
 		var/datum/preferences/TP = new()
@@ -444,7 +444,7 @@
 /mob/proc/close_spawn_windows() // Somehow spawn menu stays open for non-newplayers
 	close_browser(src, "latechoices") //closes late choices window
 	close_browser(src, "playersetup") //closes the player setup window
-	src << sound(null, repeat = 0, wait = 0, volume = 85, channel = 1) // Stops lobby music.
+	src << sound(null, repeat = 0, wait = 0, volume = 85, channel = SOUND_CHANNEL_LOBBY) // Stops lobby music.
 	if(src.open_uis)
 		for(var/datum/nanoui/ui in src.open_uis)
 			if(ui.allowed_user_stat == -1)

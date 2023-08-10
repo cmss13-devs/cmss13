@@ -6,23 +6,26 @@
 	name = "\improper M42A marksman magazine (10x28mm Caseless)"
 	desc = "A magazine of sniper rifle ammo. An aimed shot with it will deal significant damage."
 	caliber = "10x28mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m42c" //PLACEHOLDER
 	w_class = SIZE_MEDIUM
 	max_rounds = 15
 	default_ammo = /datum/ammo/bullet/sniper
 	gun_type = /obj/item/weapon/gun/rifle/sniper/M42A
+	ammo_band_icon = "+m42c_band"
+	ammo_band_icon_empty = "+m42c_band_e"
 
 /obj/item/ammo_magazine/sniper/incendiary
 	name = "\improper M42A incendiary magazine (10x28mm)"
 	desc = "A magazine of sniper rifle ammo. An aimed shot with it will temporarily blind the targe and kindle the blaze further."
 	default_ammo = /datum/ammo/bullet/sniper/incendiary
-	icon_state = "m42c_incen"
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/sniper/flak
 	name = "\improper M42A flak magazine (10x28mm)"
 	desc = "A magazine of sniper rifle ammo. An aimed shot with it will temporarily slow the target and minimize the backlash."
 	default_ammo = /datum/ammo/bullet/sniper/flak
-	icon_state = "m42c_flak"
+	ammo_band_color = AMMO_BAND_COLOR_IMPACT
 
 //M42B Magazine
 /obj/item/ammo_magazine/sniper/anti_materiel
@@ -45,60 +48,61 @@
 	max_rounds = 6
 
 
-//SVD //Based on the actual Dragunov sniper rifle.
+//SVD //Based on the actual Dragunov designated marksman rifle.
 
 /obj/item/ammo_magazine/sniper/svd
 	name = "\improper SVD magazine (7.62x54mmR)"
-	desc = "A large caliber magazine for the SVD sniper rifle."
+	desc = "A large caliber magazine for the SVD designated marksman rifle."
 	caliber = "7.62x54mmR"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "svd"
-	default_ammo = /datum/ammo/bullet/sniper/svd
+	default_ammo = /datum/ammo/bullet/sniper/crude
 	max_rounds = 10
 	gun_type = /obj/item/weapon/gun/rifle/sniper/svd
 
-
-
 //M4RA magazines
 
-/obj/item/ammo_magazine/rifle/m4ra
-	name = "\improper A19 high velocity magazine (10x24mm)"
-	desc = "A magazine of A19 high velocity rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
-	icon_state = "m4ra"
+/obj/item/ammo_magazine/rifle/m4ra/custom
+	name = "\improper A19 HV magazine (10x24mm)"
+	desc = "A magazine of A19 high velocity rounds for use in the M4RA custom battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds."
+	icon_state = "a19"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra
 	max_rounds = 18
-	gun_type = /obj/item/weapon/gun/rifle/m4ra
+	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
+	ammo_band_icon = "+a19_band"
+	ammo_band_icon_empty = "+a19_band_e"
 
-/obj/item/ammo_magazine/rifle/m4ra/incendiary
-	name = "\improper A19 high velocity incendiary magazine (10x24mm)"
-	desc = "A magazine of A19 high velocity incendiary rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
-	icon_state = "m4ra_incendiary"
+/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary
+	name = "\improper A19 HV incendiary magazine (10x24mm)"
+	desc = "A magazine of A19 HV incendiary rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/incendiary
 	max_rounds = 18
-	gun_type = /obj/item/weapon/gun/rifle/m4ra
+	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
-/obj/item/ammo_magazine/rifle/m4ra/impact
-	name = "\improper A19 high velocity impact magazine (10x24mm)"
-	desc = "A magazine of A19 high velocity impact rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
-	icon_state = "m4ra_impact"
+/obj/item/ammo_magazine/rifle/m4ra/custom/impact
+	name = "\improper A19 HV high impact magazine (10x24mm)"
+	desc = "A magazine of A19 HV high impact rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/impact
 	max_rounds = 18
-	gun_type = /obj/item/weapon/gun/rifle/m4ra
-
-
-
+	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
+	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT
 
 //-------------------------------------------------------
 //SMARTGUN
 /obj/item/ammo_magazine/smartgun
 	name = "smartgun drum"
 	caliber = "10x28mm"
-	max_rounds = 500 //Should be 500 in total.
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m56_drum"
+	max_rounds = 500 //Should be 500 in total.
 	w_class = SIZE_MEDIUM
 	default_ammo = /datum/ammo/bullet/smartgun
 	gun_type = /obj/item/weapon/gun/smartgun
 
 /obj/item/ammo_magazine/smartgun/dirty
+	name = "irradiated smartgun drum"
+	desc = "What at first glance appears to be a standard 500 round M56 Smartgun drum, is actually a drum loaded with irradiated rounds, providing an extra 'oomph' to to its bullets. The magazine itself is slightly modified to only fit in M56D or M56T smartguns, and is marked with a red X."
 	icon_state = "m56_drum_dirty"
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
 	gun_type = /obj/item/weapon/gun/smartgun/dirty
@@ -118,6 +122,7 @@
 	name = "\improper 84mm high explosive rocket"
 	desc = "A rocket tube loaded with a HE warhead. Deals high damage to soft targets on direct hit and stuns most targets in a 5-meter-wide area for a short time. Has decreased effect on heavily armored targets."
 	caliber = "rocket"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "rocket"
 
 	reload_delay = 60
@@ -149,11 +154,11 @@
 		return
 	if(!in_hand.current_mag)
 		return
-	var/obj/item/weapon/melee/twohanded/offhand/off_hand = M.get_inactive_hand()
+	var/obj/item/weapon/twohanded/offhand/off_hand = M.get_inactive_hand()
 	if(!off_hand || !istype(off_hand))
 		to_chat(user, SPAN_WARNING("\the [M] needs to be wielding \the [in_hand] in order to reload!"))
 		return
-	if(!skillcheck(M, SKILL_FIREARMS, SKILL_FIREARMS_DEFAULT))
+	if(!skillcheck(M, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't know how to reload \the [in_hand]!"))
 		return
 	if(M.dir != user.dir || M.loc != get_step(user, user.dir))
@@ -298,6 +303,7 @@
 	name = "\improper 84mm thermobaric rocket array"
 	desc = "A thermobaric rocket tube for an M57-A4 quad launcher with 4 warheads."
 	caliber = "rocket array"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi'
 	icon_state = "quad_rocket"
 
 	max_rounds = 4
@@ -317,7 +323,7 @@
 
 /obj/item/ammo_magazine/rocket/anti_tank
 	name = "\improper 84mm Anti-Tank Rocket"
-	desc = "An anti-armour rocket specifically modified for penetration of armoured vehicle hulls."
+	desc = "An anti-armor rocket specifically modified for penetration of armored vehicle hulls."
 	caliber = "rocket"
 	icon_state = "at_rocket"
 

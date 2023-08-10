@@ -5,7 +5,7 @@
 	icon_state = "igniter1"
 	plane = FLOOR_PLANE
 	var/id = null
-	var/on = 1.0
+	var/on = 1
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2

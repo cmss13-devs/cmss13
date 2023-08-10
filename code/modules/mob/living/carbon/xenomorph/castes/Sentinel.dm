@@ -25,6 +25,9 @@
 	tacklestrength_max = 4
 
 	behavior_delegate_type = /datum/behavior_delegate/sentinel_base
+	minimap_icon = "sentinel"
+
+	minimum_evolve_time = 5 MINUTES
 
 /mob/living/carbon/xenomorph/sentinel
 	caste_type = XENO_CASTE_SENTINEL
@@ -45,6 +48,7 @@
 		/datum/action/xeno_action/activable/slowing_spit, //first macro
 		/datum/action/xeno_action/activable/scattered_spit, //second macro
 		/datum/action/xeno_action/onclick/paralyzing_slash, //third macro
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,

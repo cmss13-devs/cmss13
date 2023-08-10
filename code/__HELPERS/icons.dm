@@ -481,7 +481,7 @@ world
 			else // 'I' is an /image
 				var/image_has_icon = I.icon
 				if(image_has_icon)
-					GENERATE_FLAT_IMAGE_ICON(add, I, I.icon, I.icon_state, I.dir)
+					GENERATE_FLAT_IMAGE_ICON(add, I, I.icon, I.icon_state, base_icon_dir)
 			if(!add)
 				continue
 			// Find the new dimensions of the flat icon to fit the added overlay
@@ -698,3 +698,110 @@ world
 /// (Generated names do not include file extention.)
 /proc/generate_asset_name(file)
 	return "asset.[md5(fcopy_rsc(file))]"
+
+///Checks if the given iconstate exists in the given file, caching the result. Setting scream to TRUE will print a stack trace ONCE.
+/proc/icon_exists(file, state, scream)
+	var/static/list/screams = list()
+	var/static/list/icon_states_cache = list()
+	if(isnull(file) || isnull(state))
+		return FALSE //This is common enough that it shouldn't panic, imo.
+
+	if(isnull(icon_states_cache[file]))
+		icon_states_cache[file] = list()
+		for(var/istate in icon_states(file))
+			icon_states_cache[file][istate] = TRUE
+
+	if(isnull(icon_states_cache[file][state]))
+		if(isnull(screams[file]) && scream)
+			screams[file] = TRUE
+			stack_trace("State [state] in file [file] does not exist.")
+		return FALSE
+	else
+		return TRUE
+
+/proc/BlendRGB(rgb1, rgb2, amount)
+	var/list/RGB1 = ReadRGB(rgb1)
+	var/list/RGB2 = ReadRGB(rgb2)
+
+	// add missing alpha if needed
+	if(length(RGB1) < length(RGB2))
+		RGB1 += 255
+	else if(length(RGB2) < length(RGB1))
+		RGB2 += 255
+	var/usealpha = length(RGB1) > 3
+
+	var/r = round(RGB1[1] + (RGB2[1] - RGB1[1]) * amount, 1)
+	var/g = round(RGB1[2] + (RGB2[2] - RGB1[2]) * amount, 1)
+	var/b = round(RGB1[3] + (RGB2[3] - RGB1[3]) * amount, 1)
+	var/alpha = usealpha ? round(RGB1[4] + (RGB2[4] - RGB1[4]) * amount, 1) : null
+
+	return isnull(alpha) ? rgb(r, g, b) : rgb(r, g, b, alpha)
+
+/proc/icon2base64(icon/icon)
+	if(!isicon(icon))
+		return FALSE
+	var/savefile/dummySave = new("tmp/dummySave.sav")
+	dummySave["dummy"] << icon
+	var/iconData = dummySave.ExportText("dummy")
+	var/list/partial = splittext(iconData, "{")
+	. = replacetext(copytext_char(partial[2], 3, -5), "\n", "")  //if cleanup fails we want to still return the correct base64
+	dummySave.Unlock()
+	dummySave = null
+	fdel("tmp/dummySave.sav")  //if you get the idea to try and make this more optimized, make sure to still call unlock on the savefile after every write to unlock it.
+
+/**
+ * Center's an image.
+ * Requires:
+ * The Image
+ * The x dimension of the icon file used in the image
+ * The y dimension of the icon file used in the image
+ * eg: center_image(image_to_center, 32,32)
+ * eg2: center_image(image_to_center, 96,96)
+**/
+/proc/center_image(image/image_to_center, x_dimension = 32, y_dimension = 32)
+	if(!image_to_center)
+		return
+
+	if(!x_dimension || !y_dimension)
+		return
+
+	if((x_dimension == world.icon_size) && (y_dimension == world.icon_size))
+		return image_to_center
+
+	//Offset the image so that it's bottom left corner is shifted this many pixels
+	//This makes it infinitely easier to draw larger inhands/images larger than world.iconsize
+	//but still use them in game
+	var/x_offset = -((x_dimension / world.icon_size) - 1) * (world.icon_size * 0.5)
+	var/y_offset = -((y_dimension / world.icon_size) - 1) * (world.icon_size * 0.5)
+
+	//Correct values under world.icon_size
+	if(x_dimension < world.icon_size)
+		x_offset *= -1
+	if(y_dimension < world.icon_size)
+		y_offset *= -1
+
+	image_to_center.pixel_x = x_offset
+	image_to_center.pixel_y = y_offset
+
+	return image_to_center
+
+//For creating consistent icons for human looking simple animals
+/proc/get_flat_human_icon(icon_id, datum/equipment_preset/preset, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override)
+	var/static/list/humanoid_icon_cache = list()
+	if(!icon_id || !humanoid_icon_cache[icon_id])
+		var/mob/living/carbon/human/dummy/body = generate_or_wait_for_human_dummy(dummy_key)
+		if(prefs)
+			prefs.copy_all_to(body)
+		arm_equipment(body, preset)
+
+		var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
+		for(var/D in showDirs)
+			body.setDir(D)
+			var/icon/partial = getFlatIcon(body)
+			out_icon.Insert(partial, dir = D)
+
+		humanoid_icon_cache[icon_id] = out_icon
+		dummy_key ? unset_busy_human_dummy(dummy_key) : qdel(body)
+		return out_icon
+	else
+		return humanoid_icon_cache[icon_id]

@@ -54,7 +54,7 @@
 /obj/item/implant/tracking
 	name = "tracking implant"
 	desc = "Track with this."
-	var/id = 1.0
+	var/id = 1
 
 /obj/item/implant/tracking/Initialize(mapload, ...)
 	. = ..()
@@ -171,7 +171,7 @@ Implant Specifics:<BR>"}
 	var/need_gib = null
 	if(istype(imp_in, /mob/))
 		var/mob/T = imp_in
-		message_staff("Explosive implant triggered in [T] ([T.key]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>) ")
+		message_admins("Explosive implant triggered in [T] ([T.key]). [ADMIN_JMP(T)] ")
 		log_game("Explosive implant triggered in [T] ([T.key]).")
 		need_gib = 1
 

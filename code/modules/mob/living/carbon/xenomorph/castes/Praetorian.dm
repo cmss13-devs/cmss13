@@ -28,6 +28,12 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_base
 
+	minimum_evolve_time = 15 MINUTES
+
+	minimap_icon = "praetorian"
+
+	royal_caste = TRUE
+
 /mob/living/carbon/xenomorph/praetorian
 	caste_type = XENO_CASTE_PRAETORIAN
 	name = XENO_CASTE_PRAETORIAN
@@ -52,6 +58,7 @@
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	icon_xeno = 'icons/mob/xenos/praetorian.dmi'

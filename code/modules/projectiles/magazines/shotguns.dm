@@ -17,6 +17,7 @@ var/list/shotgun_boxes_12g = list(
 /obj/item/ammo_magazine/shotgun
 	name = "box of shotgun slugs"
 	desc = "A box filled with heavy shotgun shells. A timeless classic. 12 Gauge."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "slugs"
 	item_state = "slugs"
 	default_ammo = /datum/ammo/bullet/shotgun/slug
@@ -97,6 +98,11 @@ also doesn't really matter. You can only reload them with handfuls.
 	max_rounds = 2
 	chamber_closed = 1 //Starts out with a closed tube.
 
+/obj/item/ammo_magazine/internal/shotgun/double/cane
+	default_ammo = /datum/ammo/bullet/revolver/marksman
+	max_rounds = 6
+	caliber = ".44"
+
 /obj/item/ammo_magazine/internal/shotgun/double/mou53
 	default_ammo = /datum/ammo/bullet/shotgun/flechette
 	max_rounds = 3
@@ -129,6 +135,9 @@ also doesn't really matter. You can only reload them with handfuls.
 /obj/item/ammo_magazine/internal/shotgun/type23/dragonsbreath
 	default_ammo = /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath
 
+/obj/item/ammo_magazine/internal/shotgun/type23/beanbag
+	default_ammo = /datum/ammo/bullet/shotgun/heavy/beanbag
+
 /obj/item/ammo_magazine/internal/shotgun/cmb
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 	max_rounds = 4
@@ -160,7 +169,7 @@ var/list/shotgun_handfuls_12g = list(
 
 /obj/item/ammo_magazine/handful/shotgun
 	name = "handful of shotgun slugs (12g)"
-	icon_state = "slug_shell"
+	icon_state = "slug_shell_5"
 	default_ammo = /datum/ammo/bullet/shotgun/slug
 	caliber = "12g"
 	max_rounds = 5
@@ -173,13 +182,13 @@ var/list/shotgun_handfuls_12g = list(
 
 /obj/item/ammo_magazine/handful/shotgun/incendiary
 	name = "handful of incendiary slugs (12g)"
-	icon_state = "incendiary_slug"
+	icon_state = "incendiary_slug_5"
 	default_ammo = /datum/ammo/bullet/shotgun/incendiary
 	handful_state = "incendiary_slug"
 
 /obj/item/ammo_magazine/handful/shotgun/buckshot
 	name = "handful of shotgun buckshot shells (12g)"
-	icon_state = "buckshot_shell"
+	icon_state = "buckshot_shell_5"
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 	handful_state = "buckshot_shell"
 
@@ -195,22 +204,6 @@ var/list/shotgun_handfuls_12g = list(
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 	handful_state = "shell_greyscale" //unneeded
 
-/obj/item/ammo_magazine/handful/shotgun/flechette
-	name = "handful of shotgun flechette shells (12g)"
-	icon_state = "flechette_shell"
-	default_ammo = /datum/ammo/bullet/shotgun/flechette
-	handful_state = "flechette_shell"
-
-/obj/item/ammo_magazine/handful/shotgun/beanbag
-	name = "handful of beanbag slugs (12g)"
-	icon_state = "beanbag_slug"
-	default_ammo = /datum/ammo/bullet/shotgun/beanbag
-	handful_state = "beanbag_slug"
-
-/obj/item/ammo_magazine/handful/shotgun/beanbag/riot
-	name = "handful of beanbag slugs (20g)"
-	caliber = "20g"
-
 //updates on init
 /obj/item/ammo_magazine/handful/shotgun/custom_color/update_icon()
 	overlays.Cut()
@@ -220,6 +213,23 @@ var/list/shotgun_handfuls_12g = list(
 	I.color = "#ffffff"
 	I.appearance_flags = RESET_COLOR|KEEP_APART
 	overlays += I
+
+/obj/item/ammo_magazine/handful/shotgun/flechette
+	name = "handful of shotgun flechette shells (12g)"
+	icon_state = "flechette_shell_5"
+	default_ammo = /datum/ammo/bullet/shotgun/flechette
+	handful_state = "flechette_shell"
+
+/obj/item/ammo_magazine/handful/shotgun/beanbag
+	name = "handful of beanbag slugs (12g)"
+	icon_state = "beanbag_slug_5"
+	default_ammo = /datum/ammo/bullet/shotgun/beanbag
+	handful_state = "beanbag_slug"
+
+/obj/item/ammo_magazine/handful/shotgun/beanbag/riot
+	name = "handful of beanbag slugs (20g)"
+	caliber = "20g"
+
 
 /obj/item/ammo_magazine/handful/shotgun/heavy
 	name = "handful of heavy shotgun slugs (8g)"
@@ -269,3 +279,24 @@ var/list/shotgun_handfuls_12g = list(
 	gun_type = /obj/item/weapon/gun/shotgun/double/twobore
 	handful_state = "twobore"
 	transfer_handful_amount = 3
+
+// i fucking hate gun code
+
+/obj/item/ammo_magazine/handful/revolver
+	name = "handful of revolver bullets (.44)"
+	default_ammo = /datum/ammo/bullet/revolver
+	caliber = ".44"
+	max_rounds = 8
+	current_rounds = 8
+	gun_type = /obj/item/weapon/gun/shotgun/double/cane
+
+/obj/item/ammo_magazine/handful/revolver/marksman
+	name = "handful of marksman revolver bullets (.44)"
+	default_ammo = /datum/ammo/bullet/revolver/marksman
+	gun_type = /obj/item/weapon/gun/shotgun/double/cane
+
+/obj/item/ammo_magazine/handful/revolver/marksman/six_rounds
+	name = "handful of marksman revolver bullets (.44)"
+	default_ammo = /datum/ammo/bullet/revolver/marksman
+	current_rounds = 6
+	gun_type = /obj/item/weapon/gun/shotgun/double/cane

@@ -6,7 +6,7 @@
 
 	potential_weather_events = list(
 		/datum/weather_event/light_rain,
-		/datum/weather_event/heavy_rain
+		/datum/weather_event/heavy_rain,
 	)
 
 /datum/weather_ss_map_holder/lv624/should_affect_area(area/A)

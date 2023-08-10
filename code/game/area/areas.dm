@@ -1,6 +1,10 @@
 // Areas.dm
 
 // ===
+
+///define used to mute an area base_muffle = AREA_MUTED
+#define AREA_MUTED -10000
+
 /area
 	var/atmosalm = 0
 	var/poweralm = 1
@@ -13,6 +17,7 @@
 	plane = BLACKNESS_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = INVISIBILITY_LIGHTING
+	minimap_color = null
 	var/lightswitch = 1
 
 	/// Bitfield of special area features
@@ -97,6 +102,8 @@
 	active_areas += src
 	all_areas += src
 	reg_in_areas_in_z()
+	if(is_mainship_level(z))
+		GLOB.ship_areas += src
 
 /area/proc/initialize_power_and_lighting(override_power)
 	if(requires_power)

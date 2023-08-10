@@ -4,8 +4,7 @@
 /area/bigredv2/caves)
 "c" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/outside/lz1_north_cas)
 "d" = (
@@ -20,15 +19,13 @@
 /area/bigredv2/outside/space_port)
 "i" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_6";
-	tag = "icon-mars_cave_6"
+	icon_state = "mars_cave_6"
 	},
 /area/bigredv2/outside/lz1_north_cas)
 "j" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/outside/lz1_north_cas)
 "F" = (

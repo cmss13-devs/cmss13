@@ -19,7 +19,7 @@
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 	siemens_coefficient = 0.7
 	var/armor_stage = 0
-	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/m43pistol, /obj/item/tool/screwdriver)
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/tool/screwdriver, /obj/item/tool/surgery/scalpel)
 	var/knife_type
 
 /obj/item/clothing/shoes/marine/Initialize(mapload, ...)
@@ -63,6 +63,16 @@
 /obj/item/clothing/shoes/marine/upp_knife
 	knife_type = /obj/item/attachable/bayonet/upp
 
+/obj/item/clothing/shoes/marine/joe
+	name = "biohazard boots"
+	desc = "A pair of somewhat cheaply made biohazard boots. Tomorrow, Together."
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	knife_type = /obj/item/attachable/bayonet
+
 /obj/item/clothing/shoes/dress
 	name = "dress shoes"
 	desc = "Pre-polished fancy dress shoes. You can see your reflection in them."
@@ -101,7 +111,7 @@
 	flags_heat_protection = BODY_FLAG_FEET
 	flags_inventory = FPRINT|NOSLIPPING
 	siemens_coefficient = 0.6
-	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/m43pistol)
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol)
 
 /obj/item/clothing/shoes/veteran/pmc/update_icon()
 	if(stored_item)
@@ -145,7 +155,7 @@
 	knife_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/ress
-	name = "armoured sandals"
+	name = "armored sandals"
 	icon_state = "sandals"
 	item_state = "sandals"
 	items_allowed = null
@@ -169,7 +179,7 @@
 	flags_heat_protection = BODY_FLAG_FEET
 	flags_inventory = FPRINT|NOSLIPPING
 	siemens_coefficient = 0.6
-	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/m43pistol)
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol)
 	var/weed_slowdown_mult = 0.5
 
 /obj/item/clothing/shoes/hiking/equipped(mob/user, slot, silent)

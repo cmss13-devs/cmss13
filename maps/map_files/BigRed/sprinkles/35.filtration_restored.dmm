@@ -47,8 +47,7 @@
 "am" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/se)
 "an" = (
@@ -95,23 +94,19 @@
 "av" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor{
-	dir = 9;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
+	dir = 1;
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/se)
 "aw" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
+/turf/open/mars{
+	icon_state = "mars_dirt_6"
 	},
 /area/bigredv2/outside/se)
 "ax" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTH)"
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/se)
 "ay" = (
@@ -125,19 +120,21 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Atmospherics Condenser Storage";
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Atmospherics Condenser Storage"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aB" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Atmospherics Condenser";
-	req_one_access = null
+	name = "\improper Atmospherics Condenser"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -147,13 +144,14 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "aD" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Atmospherics Condenser";
-	req_one_access = null
+	name = "\improper Atmospherics Condenser"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -165,9 +163,9 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "aG" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_13";
-	tag = "icon-mars_dirt_13"
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/se)
 "aH" = (
@@ -177,23 +175,14 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
-"aI" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
-	},
-/area/bigredv2/outside/se)
 "aJ" = (
 /turf/open/floor{
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/se)
 "aK" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_10";
-	tag = "icon-mars_dirt_10"
+	icon_state = "mars_dirt_3"
 	},
 /area/bigredv2/outside/se)
 "aL" = (
@@ -247,8 +236,7 @@
 /area/bigredv2/outside/filtration_plant)
 "aV" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "U-N";
-	tag = "icon-U-N"
+	icon_state = "U-N"
 	},
 /obj/structure/machinery/computer3/server/rack,
 /turf/open/floor,
@@ -303,24 +291,15 @@
 "bg" = (
 /obj/structure/machinery/computer3/server/rack,
 /obj/effect/decal/warning_stripes{
-	icon_state = "U-S";
-	tag = "icon-U-S"
+	icon_state = "U-S"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bh" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "U-S";
-	tag = "icon-U-S"
+	icon_state = "U-S"
 	},
 /obj/structure/machinery/computer3/server/rack,
-/turf/open/floor,
-/area/bigredv2/outside/filtration_plant)
-"bi" = (
-/obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (NORTH)"
-	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bj" = (
@@ -336,21 +315,23 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bl" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Filtration Facility";
-	req_one_access = null
+	name = "\improper Filtration Facility"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bm" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Filtration Facility";
-	req_one_access = null
+	name = "\improper Filtration Facility"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bn" = (
 /obj/structure/closet/firecloset/full,
@@ -378,14 +359,15 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "br" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Filtration Facility";
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Filtration Facility"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bt" = (
 /obj/effect/decal/cleanable/dirt,
@@ -442,15 +424,13 @@
 	name = "\improper coolant feed"
 	},
 /turf/open/floor/bluegrid{
-	icon_state = "bcircuitoff";
-	tag = "icon-bcircuitoff"
+	icon_state = "bcircuitoff"
 	},
 /area/bigredv2/outside/filtration_plant)
 "bF" = (
 /obj/structure/cryofeed,
 /turf/open/floor/bluegrid{
-	icon_state = "bcircuitoff";
-	tag = "icon-bcircuitoff"
+	icon_state = "bcircuitoff"
 	},
 /area/bigredv2/outside/filtration_plant)
 "bG" = (
@@ -464,13 +444,12 @@
 "bI" = (
 /obj/structure/window_frame/solaris/reinforced,
 /obj/item/shard{
-	icon_state = "small";
-	tag = "icon-small"
+	icon_state = "small"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "bJ" = (
-/obj/item/weapon/melee/twohanded/fireaxe,
+/obj/item/weapon/twohanded/fireaxe,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bK" = (
@@ -483,15 +462,13 @@
 /area/bigredv2/outside/filtration_plant)
 "bO" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "bP" = (
 /obj/item/tank/air,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "bQ" = (
@@ -529,18 +506,10 @@
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/filtration_plant)
-"bY" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
-	},
-/area/bigredv2/outside/filtration_plant)
 "bZ" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/filtration_plant)
 "cb" = (
@@ -552,15 +521,11 @@
 /obj/structure/machinery/light,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
-"cc" = (
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/outside/filtration_plant)
 "ce" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/filtration_plant)
 "cf" = (
@@ -583,15 +548,13 @@
 "ch" = (
 /obj/structure/dispenser/oxygen,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "ci" = (
 /obj/item/tool/warning_cone,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "cj" = (
@@ -600,30 +563,22 @@
 /area/bigredv2/outside/filtration_plant)
 "ck" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "cl" = (
 /turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	dir = 8;
+	icon_state = "asteroidwarning"
 	},
-/area/bigredv2/outside/s)
-"cm" = (
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/s)
+/area/bigredv2/outside/filtration_plant)
 "cn" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
+	icon_state = "delivery"
 	},
 /area/bigredv2/outside/filtration_plant)
 "jh" = (
@@ -645,21 +600,18 @@
 "tB" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "zu" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
+	icon_state = "mars_cave_7"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "Ms" = (
 /obj/structure/machinery/computer3/server/rack,
 /obj/effect/decal/warning_stripes{
-	icon_state = "U-N";
-	tag = "icon-U-N"
+	icon_state = "U-N"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -668,16 +620,14 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 4;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/filtration_plant)
 "Rv" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 4;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/filtration_plant)
 "TX" = (
@@ -688,26 +638,19 @@
 /area/bigredv2/outside/filtration_plant)
 "UH" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
+	icon_state = "mars_cave_7"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "US" = (
 /turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
+	icon_state = "delivery"
 	},
 /area/bigredv2/outside/filtration_plant)
 "VW" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -716,25 +659,18 @@
 "WD" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "XC" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
 	},
 /area/bigredv2/outside/filtration_plant)
 "Yg" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -756,8 +692,6 @@ ah
 bI
 bw
 bw
-bw
-bw
 bZ
 cl
 cl
@@ -766,7 +700,9 @@ cl
 cl
 cl
 cl
-cm
+cl
+cl
+aa
 "}
 (2,1,1) = {"
 ak
@@ -782,8 +718,8 @@ az
 az
 bJ
 bw
-cc
-cc
+bw
+bw
 bw
 bZ
 bZ
@@ -812,14 +748,14 @@ bw
 bw
 bw
 bw
-bY
-bY
-bY
-bY
+US
+US
+US
+US
 cn
-bY
-bY
-bY
+US
+US
+US
 aY
 "}
 (4,1,1) = {"
@@ -859,7 +795,7 @@ aa
 aa
 aa
 aa
-bi
+bf
 bq
 az
 az
@@ -994,7 +930,7 @@ az
 ac
 bk
 aa
-bi
+bf
 TX
 az
 az
@@ -1174,13 +1110,13 @@ bO
 bO
 "}
 (17,1,1) = {"
-bK
-bK
-bK
-bK
-bK
+am
+am
+am
+am
+am
 aY
-bi
+bf
 bj
 bj
 az
@@ -1202,18 +1138,18 @@ bO
 "}
 (18,1,1) = {"
 av
-aw
-aw
-aw
-aw
-az
+am
+am
+am
+am
+US
 az
 az
 az
 az
 bu
 ad
-ad
+cn
 WD
 bO
 bO
@@ -1233,14 +1169,14 @@ am
 am
 am
 am
-az
+US
 az
 az
 aP
 aO
 by
 az
-az
+US
 WD
 bO
 bO
@@ -1258,16 +1194,16 @@ bO
 ax
 am
 am
-aI
-aI
-az
+am
+am
+US
 az
 az
 ad
 bo
 az
 bT
-az
+US
 WD
 bO
 bO
@@ -1284,11 +1220,11 @@ bO
 (21,1,1) = {"
 ax
 am
-aJ
+am
 aG
-bK
+aG
 aY
-bi
+bf
 ka
 bn
 az
@@ -1312,8 +1248,8 @@ bO
 am
 am
 aJ
-bK
-bK
+aw
+aK
 aY
 aY
 aY

@@ -55,11 +55,11 @@
 
 		if(knocked_out)
 			blinded = TRUE
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
 		else if(sleeping)
-			speech_problem_flag = 1
+			speech_problem_flag = TRUE
 			if(regular_update)
 				handle_dreams()
 				apply_damage(-3, HALLOSS)
@@ -69,9 +69,9 @@
 				if(prob(2) && health && !hal_crit)
 					addtimer(CALLBACK(src, PROC_REF(emote), "snore"))
 			blinded = TRUE
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 		else
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 
 		if(in_stasis == STASIS_IN_CRYO_CELL) blinded = TRUE //Always blinded while in stasisTUBES
 
@@ -122,7 +122,7 @@
 		handle_statuses()
 
 		if(paralyzed)
-			speech_problem_flag = 1
+			speech_problem_flag = TRUE
 			apply_effect(1, WEAKEN)
 			silent = 1
 			blinded = TRUE

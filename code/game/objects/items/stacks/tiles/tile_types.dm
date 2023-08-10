@@ -10,8 +10,8 @@
 	singular_name = "abstract tile"
 	desc = "If you're seeing this, then a Dev made a mistake. Report it on Github."
 	w_class = SIZE_MEDIUM
-	force = 1.0
-	throwforce = 1.0
+	force = 1
+	throwforce = 1
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	max_amount = 60
@@ -40,9 +40,9 @@
 	desc = "Those could work as a pretty decent throwing weapon."
 	icon_state = "tile"
 	w_class = SIZE_MEDIUM
-	force = 6.0
+	force = 6
 	matter = list("metal" = 937.5)
-	throwforce = 8.0
+	throwforce = 8
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	flags_atom = FPRINT|CONDUCT

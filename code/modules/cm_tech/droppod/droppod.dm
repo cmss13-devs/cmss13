@@ -14,6 +14,10 @@
 	var/droppod_flags = NO_FLAGS
 
 	var/land_damage = 5000
+	/// List of special structures drop pod will give damage to
+	var/list/special_structures_to_damage = list()
+	/// Amount of damage structures will take on landing
+	var/special_structure_damage = 0
 	var/tiles_to_take = 15
 
 	var/drop_time = 0
@@ -152,10 +156,14 @@
 /obj/structure/droppod/proc/post_land()
 	density = TRUE
 	for(var/mob/mob in loc)
-		mob.gib(create_cause_data(initial(name)))
+		mob.gib(create_cause_data("gibbing", initial(name)))
 
 	for(var/obj/structure/structure in loc)
 		structure.update_health(-land_damage)
+
+		// Deal damage exclusively to special structures thats specified for the object on landing, currently used for sentry post
+		if(is_type_in_list(structure, special_structures_to_damage))
+			structure.update_health(special_structure_damage)
 
 	for(var/obj/structure/machinery/defenses/def in loc)
 		qdel(def)

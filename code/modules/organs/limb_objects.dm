@@ -1,6 +1,10 @@
 
 /obj/item/limb
 	icon = 'icons/mob/humans/species/r_human.dmi'
+	///Predators can flay limbs to eventually turn them into bones for their armor
+	var/flayed = FALSE
+	///What bone would be in this limb?
+	var/bone_type
 
 /obj/item/limb/New(loc, mob/living/carbon/human/H)
 	..(loc)
@@ -47,31 +51,40 @@
 /obj/item/limb/arm/l_arm
 	name = "left arm"
 	icon_state = "l_arm"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_arm
 /obj/item/limb/foot/l_foot
 	name = "left foot"
 	icon_state = "l_foot"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_foot
 /obj/item/limb/hand/l_hand
 	name = "left hand"
 	icon_state = "l_hand"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_hand
 /obj/item/limb/leg/l_leg
 	name = "left leg"
 	icon_state = "l_leg"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_leg
 /obj/item/limb/arm/r_arm
 	name = "right arm"
 	icon_state = "r_arm"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_arm
 /obj/item/limb/foot/r_foot
 	name = "right foot"
 	icon_state = "r_foot"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_foot
 /obj/item/limb/hand/r_hand
 	name = "right hand"
 	icon_state = "r_hand"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_hand
 /obj/item/limb/leg/r_leg
 	name = "right leg"
 	icon_state = "r_leg"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_leg
 
 /obj/item/limb/head
 	name = "head"
 	icon_state = "head_m"
+	bone_type = /obj/item/clothing/accessory/limb/skeleton/head
 	unacidable = TRUE
 	var/mob/living/brain/brainmob
 	var/brain_op_stage = 0
@@ -123,7 +136,8 @@
 	H.regenerate_icons()
 
 	if(braindeath_on_decap)
-		brainmob.stat = DEAD
+		brainmob.timeofdeath = world.time
+		brainmob.set_stat(DEAD)
 		brainmob.death(cause)
 
 	GLOB.head_limb_list += src
@@ -157,7 +171,7 @@
 									SPAN_WARNING("You cut [brainmob]'s head open with [W]!"))
 				to_chat(brainmob, SPAN_WARNING("[user] begins to cut open your head with [W]!"))
 
-				brain_op_stage = 3.0
+				brain_op_stage = 3
 			else
 				..()
 	else if(istype(W,/obj/item/tool/surgery/circular_saw))
@@ -182,7 +196,7 @@
 					brainmob.death(create_cause_data("brain extraction", user)) //brain mob doesn't survive outside a head
 				B.transfer_identity(brainmob)
 
-				brain_op_stage = 4.0
+				brain_op_stage = 4
 			else
 				..()
 	else

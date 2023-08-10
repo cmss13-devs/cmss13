@@ -4,21 +4,19 @@
 //Some mob defines below
 #define AI_CAMERA_LUMINOSITY 6
 
-#define BORGMESON 1
-#define BORGTHERM 2
-#define BORGXRAY  4
+#define BORGMESON (1<<0)
+#define BORGTHERM (1<<1)
+#define BORGXRAY  (1<<2)
 
 #define OVEREAT_TIME 200
 
 //=================================================
-#define ALIEN_SELECT_AFK_BUFFER 1 // How many minutes that a person can be AFK before not being allowed to be an alien.
-
 #define HEAT_DAMAGE_LEVEL_1 2 //Amount of damage applied when your body temperature just passes the 360.15k safety point
 #define HEAT_DAMAGE_LEVEL_2 4 //Amount of damage applied when your body temperature passes the 400K point
 #define HEAT_DAMAGE_LEVEL_3 8 //Amount of damage applied when your body temperature passes the 1000K point
 
 #define COLD_DAMAGE_LEVEL_1 0.2 //Amount of damage applied when your body temperature just passes the 260.15k safety point
-#define COLD_DAMAGE_LEVEL_2 1.0 //Amount of damage applied when your body temperature passes the 200K point
+#define COLD_DAMAGE_LEVEL_2 1 //Amount of damage applied when your body temperature passes the 200K point
 #define COLD_DAMAGE_LEVEL_3 2 //Amount of damage applied when your body temperature passes the 120K point
 
 //Note that gas heat damage is only applied once every FOUR ticks.
@@ -45,12 +43,12 @@
 //=================================================
 
 //disabilities
-#define NEARSIGHTED 1
-#define EPILEPSY 2
-#define COUGHING 4
-#define TOURETTES 8
-#define NERVOUS 16
-#define OPIATE_RECEPTOR_DEFICIENCY 32
+#define NEARSIGHTED (1<<0)
+#define EPILEPSY (1<<1)
+#define COUGHING (1<<2)
+#define TOURETTES (1<<3)
+#define NERVOUS (1<<4)
+#define OPIATE_RECEPTOR_DEFICIENCY (1<<5)
 //=================================================
 
 //sdisabilities
@@ -93,10 +91,10 @@
 //=================================================
 
 //I hate adding defines like this but I'd much rather deal with bitflags than lists and string searches
-#define BRUTELOSS 1
-#define FIRELOSS 2
-#define TOXLOSS 4
-#define OXYLOSS 8
+#define BRUTELOSS (1<<0)
+#define FIRELOSS (1<<1)
+#define TOXLOSS (1<<2)
+#define OXYLOSS (1<<3)
 //=================================================
 
 //Bitflags defining which status effects could be or are inflicted on a mob
@@ -133,8 +131,9 @@
 #define XENO_HIVE_MUTATED "xeno_hive_mutated"
 #define XENO_HIVE_FORSAKEN "xeno_hive_forsaken"
 #define XENO_HIVE_YAUTJA "xeno_hive_yautja"
+#define XENO_HIVE_RENEGADE "xeno_hive_renegade"
 
-#define ALL_XENO_HIVES list(XENO_HIVE_NORMAL, XENO_HIVE_CORRUPTED, XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA, XENO_HIVE_FERAL, XENO_HIVE_TAMED, XENO_HIVE_MUTATED, XENO_HIVE_FORSAKEN, XENO_HIVE_YAUTJA)
+#define ALL_XENO_HIVES list(XENO_HIVE_NORMAL, XENO_HIVE_CORRUPTED, XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA, XENO_HIVE_FERAL, XENO_HIVE_TAMED, XENO_HIVE_MUTATED, XENO_HIVE_FORSAKEN, XENO_HIVE_YAUTJA, XENO_HIVE_RENEGADE)
 
 //=================================================
 
@@ -142,8 +141,8 @@
 // slowdowns
 #define XENO_SLOWED_AMOUNT 0.7
 #define XENO_SUPERSLOWED_AMOUNT 1.5
-#define HUMAN_SLOWED_AMOUNT 2.0
-#define HUMAN_SUPERSLOWED_AMOUNT 4.0
+#define HUMAN_SLOWED_AMOUNT 2
+#define HUMAN_SUPERSLOWED_AMOUNT 4
 
 // Adds onto HUMAN_*****_AMOUNT
 #define YAUTJA_SLOWED_AMOUNT -1.25 // 0.75s slowdown
@@ -187,11 +186,11 @@
 //=================================================
 
 //Language flags.
-#define WHITELISTED 1 // Language is available if the speaker is whitelisted.
-#define RESTRICTED 2 // Language can only be accquired by spawning or an admin.
-#define NONVERBAL 4 // Language has a significant non-verbal component. Speech is garbled without line-of-sight
-#define SIGNLANG 8 // Language is completely non-verbal. Speech is displayed through emotes for those who can understand.
-#define HIVEMIND 16  // Broadcast to all mobs with this language.
+#define WHITELISTED (1<<0) // Language is available if the speaker is whitelisted.
+#define RESTRICTED (1<<1) // Language can only be accquired by spawning or an admin.
+#define NONVERBAL (1<<2) // Language has a significant non-verbal component. Speech is garbled without line-of-sight
+#define SIGNLANG (1<<3) // Language is completely non-verbal. Speech is displayed through emotes for those who can understand.
+#define HIVEMIND (1<<4)  // Broadcast to all mobs with this language.
 //=================================================
 
 //Species flags.
@@ -223,6 +222,7 @@
 //Mob sizes
 #define MOB_SIZE_SMALL 0
 #define MOB_SIZE_HUMAN 1
+#define MOB_SIZE_XENO_VERY_SMALL 1.5
 #define MOB_SIZE_XENO_SMALL 2
 #define MOB_SIZE_XENO 3
 #define MOB_SIZE_BIG 4

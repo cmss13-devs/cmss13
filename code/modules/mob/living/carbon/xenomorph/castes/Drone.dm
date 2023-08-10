@@ -31,6 +31,10 @@
 
 	aura_strength = 2
 
+	minimum_evolve_time = 1 MINUTES
+
+	minimap_icon = "drone"
+
 /datum/caste_datum/drone/New()
 	. = ..()
 
@@ -39,7 +43,7 @@
 /mob/living/carbon/xenomorph/drone
 	caste_type = XENO_CASTE_DRONE
 	name = XENO_CASTE_DRONE
-	desc = "An Alien Drone"
+	desc = "An alien drone"
 	icon = 'icons/mob/xenos/drone.dmi'
 	icon_size = 48
 	icon_state = "Drone Walking"
@@ -59,12 +63,13 @@
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin, //third macro
 		/datum/action/xeno_action/activable/transfer_plasma, //fourth macro
+		/datum/action/xeno_action/onclick/tacmap,
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
-		)
+	)
 	mutation_type = DRONE_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/drone.dmi'

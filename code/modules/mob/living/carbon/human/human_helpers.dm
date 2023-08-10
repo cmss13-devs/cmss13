@@ -242,6 +242,10 @@
 			return
 	var/list/cont = contents_recursive()
 	for(var/i in cont)
+		if(istype(i, /obj/item/device/assembly/prox_sensor))
+			var/obj/item/device/assembly/prox_sensor/prox = i
+			if(prox.scanning)
+				prox.toggle_scan()
 		if(istype(i, /obj/item/device/motiondetector))
 			var/obj/item/device/motiondetector/md = i
 			md.toggle_active(src, old_active = TRUE, forced = TRUE)
@@ -271,6 +275,9 @@
 			for(var/obj/item/attachable/flashlight/FL in H.pockets)
 				if(FL.activate_attachment(H, src, TRUE))
 					light_off++
+		for(var/obj/item/clothing/head/hardhat/headlamp in contents)
+			if(headlamp.turn_off_light(src))
+				light_off++
 	if(guns)
 		for(var/obj/item/weapon/gun/G in contents)
 			if(G.turn_off_light(src))
@@ -309,7 +316,7 @@
 
 /mob/living/carbon/human/a_intent_change(intent as num)
 	. = ..()
-	if(HAS_TRAIT(src, TRAIT_INTENT_EYES) && (src.stat != DEAD)) //1st gen synths change eye colour based on intent. But not when they're dead.
+	if(HAS_TRAIT(src, TRAIT_INTENT_EYES) && (src.stat != DEAD)) //1st gen synths change eye color based on intent. But not when they're dead.
 		switch(a_intent)
 			if(INTENT_HELP) //Green, defalt
 				r_eyes = 0
@@ -455,3 +462,12 @@
 
 /mob/living/carbon/human/get_orbit_size()
 	return langchat_height
+
+/mob/living/carbon/human/proc/update_minimap_icon()
+	var/obj/item/device/radio/headset/headset
+	if(istype(wear_l_ear, /obj/item/device/radio/headset))
+		headset = wear_l_ear
+	else if(istype(wear_r_ear, /obj/item/device/radio/headset))
+		headset = wear_r_ear
+	if(headset)
+		headset.update_minimap_icon()

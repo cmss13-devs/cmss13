@@ -127,7 +127,7 @@
 	icon_state = "secure"
 	item_state = "sec-case"
 	desc = "A large briefcase with a digital locking system."
-	force = 8.0
+	force = 8
 	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_LARGE
@@ -161,7 +161,7 @@
 	icon_locking = "safeb"
 	icon_sparking = "safespark"
 	flags_atom = FPRINT|CONDUCT
-	force = 8.0
+	force = 8
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_LARGE
 	anchored = TRUE

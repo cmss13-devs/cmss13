@@ -80,7 +80,8 @@
 #define ANIMATED_SURGICAL_TOOL (1<<12)
 /// The item goes on top of tables, instead of into them with the overlay system
 #define NOTABLEMERGE (1<<13)
-
+/// Has heat source but isn't 'on fire' and thus can be stored
+#define IGNITING_ITEM (1<<14)
 //==========================================================================================
 
 
@@ -134,6 +135,8 @@
 #define BLOCKGASEFFECT (1<<6)
 /// Allows CPR even though the face is covered by a mask
 #define ALLOWCPR (1<<7)
+/// Helmet does not fall off when blocking a decapitation
+#define FULL_DECAP_PROTECTION (1<<8)
 
 //HELMET AND MASK======================================================================================
 
@@ -141,13 +144,13 @@
 //To successfully stop taking all pressure damage you must have both a suit and head item with this flag.
 
 /// From /tg: prevents syringes, parapens and hypos if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body.
-#define BLOCKSHARPOBJ (1<<8)
+#define BLOCKSHARPOBJ (1<<9)
 /// This flag is used on the flags variable for SUIT and HEAD items which stop pressure damage.
-#define NOPRESSUREDMAGE (1<<9)
+#define NOPRESSUREDMAGE (1<<10)
 /// Suits only. Wearing this will stop you from being pushed over.
-#define BLOCK_KNOCKDOWN (1<<10)
+#define BLOCK_KNOCKDOWN (1<<11)
 /// Whether wearing this suit grants you the ability to fire a smartgun
-#define SMARTGUN_HARNESS (1<<11)
+#define SMARTGUN_HARNESS (1<<12)
 
 //SUITS AND HELMETS====================================================================================
 
@@ -417,9 +420,9 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 //=================================================
 
 /// what min_cold_protection_temperature is set to for space-helmet quality headwear. MUST NOT BE 0.
-#define SPACE_HELMET_MIN_COLD_PROT 2.0
+#define SPACE_HELMET_MIN_COLD_PROT 2
 /// what min_cold_protection_temperature is set to for space-suit quality jumpsuits or suits. MUST NOT BE 0.
-#define SPACE_SUIT_MIN_COLD_PROT 2.0
+#define SPACE_SUIT_MIN_COLD_PROT 2
 /// These need better heat protect, but not as good heat protect as firesuits.
 #define SPACE_SUIT_MAX_HEAT_PROT 5000
 /// what max_heat_protection_temperature is set to for firesuit quality headwear. MUST NOT BE 0.
@@ -455,7 +458,7 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define ACCESSORY_SLOT_MEDAL "Medal"
 #define ACCESSORY_SLOT_PONCHO "Ponchos"
 
-/// Used for uniform armour inserts.
+/// Used for uniform armor inserts.
 #define ACCESSORY_SLOT_ARMOR_C "Chest armor"
 
 #define ACCESSORY_SLOT_ARMOR_A "Arm armor"
@@ -541,6 +544,6 @@ var/global/list/uniform_categories = list(
 //=================================================
 
 //=================================================
-#define PHONE_RTO "RTO"
 #define PHONE_MARINE "Marine"
 #define PHONE_UPP_SOLDIER "Soldier"
+#define PHONE_IO "IO"

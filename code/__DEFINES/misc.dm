@@ -32,6 +32,8 @@
 #define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL  1
 #define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF 2
 
+#define EXPLOSION_MAX_POWER 5000
+
 //area flags
 
 /// used to make mobs skip bioscans
@@ -42,6 +44,8 @@
 #define AREA_ALLOW_XENO_JOIN (1<<2)
 /// Flags the area as a containment area
 #define AREA_CONTAINMENT (1<<3)
+/// Flags the area as permanently unweedable. Still requires is_resin_allowed = FALSE
+#define AREA_UNWEEDABLE (1<<4)
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5
 
@@ -109,7 +113,7 @@
 // These behaviors are either of the person performing the action or any targets.
 
 /// You cannot move the person while this action is being performed
-#define BEHAVIOR_IMMOBILE (1<<18)
+#define BEHAVIOR_IMMOBILE (1<<19)
 
 // *************************************** //
 //    END DO_AFTER FLAGS //
@@ -126,7 +130,7 @@
 
 /// Helmets
 #define SIZE_TINY 1
-/// Armour, pouch slots/pockets
+/// Armor, pouch slots/pockets
 #define SIZE_SMALL 2
 /// Backpacks, belts. Size of pistols, general magazines
 #define SIZE_MEDIUM 3
@@ -221,6 +225,9 @@
 #define GUN_CATEGORY_SHOTGUN 4
 #define GUN_CATEGORY_HEAVY 5
 
+// These guns can be used at maximum efficacy by untrained civilians.
+#define UNTRAINED_USABLE_CATEGORIES list(GUN_CATEGORY_HANDGUN, GUN_CATEGORY_SMG)
+
 /**
  * Get the ultimate area of `A`, similarly to [get_turf].
  *
@@ -277,6 +284,8 @@
 #define COOLDOWN_COMM_CENTRAL 30 SECONDS
 #define COOLDOWN_COMM_DESTRUCT 5 MINUTES
 
+///Cooldown for pred recharge
+#define COOLDOWN_BRACER_CHARGE 3 MINUTES
 
 // magic value to use for indicating a proc slept
 #define PROC_RETURN_SLEEP -1

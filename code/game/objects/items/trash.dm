@@ -50,6 +50,11 @@
 	desc = "An empty box from a chunk bar. Significantly less heavy."
 	icon_state = "chunk_trash"
 
+/obj/item/trash/chunk/hunk
+	name = "hunk bar crate"
+	desc = "An empty crate from a hunk bar. Tremendously less heavy."
+	icon_state = "hunk_trash"
+
 /obj/item/trash/eat
 	name = "EAT bar wrapper"
 	icon_state = "eat"
@@ -62,6 +67,10 @@
 /obj/item/trash/kepler
 	name = "Kepler wrapper"
 	icon_state = "kepler"
+
+/obj/item/trash/kepler/flamehot
+	name = "Kepler Flamehot wrapper"
+	icon_state = "flamehotkepler"
 
 /obj/item/trash/liquidfood
 	name = "\improper \"LiquidFood\" ration"

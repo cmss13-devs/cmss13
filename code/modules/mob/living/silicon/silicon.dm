@@ -23,8 +23,8 @@
 	add_language(LANGUAGE_ENGLISH)
 
 /mob/living/silicon/Destroy()
-	..()
 	SSmob.living_misc_mobs -= src
+	return ..()
 
 /mob/living/silicon/proc/show_laws()
 	return
@@ -101,7 +101,7 @@
 //can't inject synths
 /mob/living/silicon/can_inject(mob/user, error_msg)
 	if(error_msg)
-		to_chat(user, SPAN_WARNING("The armoured plating is too tough."))
+		to_chat(user, SPAN_WARNING("The armored plating is too tough."))
 	return 0
 
 

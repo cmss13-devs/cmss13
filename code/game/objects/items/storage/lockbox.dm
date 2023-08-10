@@ -9,7 +9,7 @@
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 14 //The sum of the w_classes of all the items in this storage item.
 	storage_slots = 4
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_SENIOR)
 	var/locked = 1
 	var/broken = 0
 	var/icon_locked = "lockbox+l"
@@ -54,11 +54,9 @@
 	req_access = list(ACCESS_WY_CORPORATE)
 
 /obj/item/storage/lockbox/loyalty/fill_preset_inventory()
-	new /obj/item/ammo_magazine/pistol/mod88(src)
-	new /obj/item/ammo_magazine/pistol/mod88(src)
-	new /obj/item/ammo_magazine/pistol/mod88/rubber(src)
-	new /obj/item/ammo_magazine/pistol/mod88/rubber(src)
-
+	new /obj/item/ammo_magazine/pistol/es4(src)
+	new /obj/item/ammo_magazine/pistol/es4(src)
+	new /obj/item/ammo_magazine/pistol/es4(src)
 
 /obj/item/storage/lockbox/cluster
 	name = "lockbox of cluster flashbangs"

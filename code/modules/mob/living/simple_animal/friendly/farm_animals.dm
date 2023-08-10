@@ -27,7 +27,13 @@
 /mob/living/simple_animal/hostile/retaliate/goat/Initialize()
 	udder = new(50)
 	udder.my_atom = src
-	..()
+	. = ..()
+
+/mob/living/simple_animal/hostile/retaliate/goat/Destroy()
+	if(udder)
+		udder.my_atom = null
+	QDEL_NULL(udder)
+	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/goat/Life(delta_time)
 	. = ..()
@@ -110,6 +116,12 @@
 	udder = new(50)
 	udder.my_atom = src
 	..()
+
+/mob/living/simple_animal/cow/Destroy()
+	if(udder)
+		udder.my_atom = null
+	QDEL_NULL(udder)
+	return ..()
 
 /mob/living/simple_animal/cow/attackby(obj/item/O as obj, mob/user as mob)
 	var/obj/item/reagent_container/glass/G = O

@@ -1,6 +1,7 @@
 /obj/item/weapon/gun/souto
 	name = "\improper Souto Slinger Supremo"
 	desc = "This appears to be a T-shirt cannon modified to fire cans of Souto at speeds fast enough to get them up into the top stands of a stadium. This can't be safe. Cobbled together in Havana."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "supremo_w"
 	item_state = "supremo_w"
 	w_class = SIZE_SMALL
@@ -26,14 +27,14 @@
 			to_chat(user, "You must equip the specialized Backpack Souto Vending Machine to use the Souto Slinger Supremo!")
 			click_empty(user)
 			unlink_soutopack()
-			return
+			return NONE
 	if(soutopack)
 		if(!current_mag)
 			current_mag = soutopack.internal_mag
 		// Check we're actually firing the right fuel tank
 		if(current_mag != soutopack.internal_mag)
 			current_mag = soutopack.internal_mag
-		..()
+		return ..()
 
 /obj/item/weapon/gun/souto/reload(mob/user, obj/item/ammo_magazine/magazine)
 	to_chat(user, SPAN_WARNING("The [src] feed system cannot be reloaded manually."))

@@ -22,6 +22,12 @@
 	var/time = 10
 	///Whether this step continuously repeats as long as a criteria is met. If TRUE, consider setting skip_step_criteria() or using a failure() override to return TRUE to allow it to be canceled or skipped.
 	var/repeat_step = FALSE
+	///preop means "in Progress" sound
+	var/preop_sound
+	///Sound of success
+	var/success_sound
+	///failure >:(
+	var/failure_sound
 
 /datum/surgery_step/New()
 	. = ..()
@@ -67,7 +73,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
 		return FALSE
 	else
-		if(!T.supports_surgery)
+		if(!istype(T) || !T.supports_surgery)
 			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG))
 				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
 			return FALSE
@@ -75,7 +81,12 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 	if(!extra_checks(user, target, target_zone, tool, surgery, repeating, skipped))
 		return FALSE // you must put the failure to_chat inside the checks
 
-	surgery.step_in_progress = TRUE
+	var/obj/limb/surgery_limb = target.get_limb(target_zone)
+	if(surgery_limb)
+		var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
+		if(blocker)
+			to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
+			return
 
 	var/step_duration = time
 	var/self_surgery
@@ -102,6 +113,10 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 					surface_modifier = surface.surgery_duration_multiplier
 
 		step_duration *= surface_modifier
+
+	var/list/human_modifiers = list("surgery_speed" = 1.0, "pain_reduction" = 0)
+	SEND_SIGNAL(user, COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS, human_modifiers)
+	step_duration *= human_modifiers["surgery_speed"]
 
 	var/try_to_fail
 	if(user.a_intent != INTENT_HELP)
@@ -134,7 +149,9 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 			to_chat(user, SPAN_WARNING("[capitalize(english_list(message, final_comma_text = ","))]."))
 
 	var/advance //Whether to continue to the next step afterwards.
-	var/pain_failure_chance = max(0, target.pain?.feels_pain ? surgery.pain_reduction_required - target.pain.reduction_pain : 0) * 2 //Each extra pain unit increases the chance by 2
+	var/pain_failure_chance = max(0, (target.pain?.feels_pain ? surgery.pain_reduction_required - target.pain.reduction_pain : 0) * 2 - human_modifiers["pain_reduction"]) //Each extra pain unit increases the chance by 2
+
+	play_preop_sound(user, target, target_zone, tool, surgery)
 
 	if(tool?.flags_item & ANIMATED_SURGICAL_TOOL) //If we have an animated tool sprite, run it while we do any do_afters.
 		tool.icon_state += "_on"
@@ -142,6 +159,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 	if(try_to_fail)
 		if(failure(user, target, target_zone, tool, tool_type, surgery)) //Disarm intent deliberately fails the step harmfully.
 			advance = TRUE
+			play_failure_sound(user, target, target_zone, tool, surgery)
 
 	else if(target.stat == CONSCIOUS && prob(pain_failure_chance)) //Pain can cause a step to fail.
 		do_after(user, max(rand(step_duration * 0.1, step_duration * 0.5), 0.5), INTERRUPT_ALL|INTERRUPT_DIFF_INTENT,
@@ -151,11 +169,13 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		if(failure(user, target, target_zone, tool, tool_type, surgery)) //Failure returns TRUE if the step should complete anyway.
 			advance = TRUE
 		target.emote("pain")
+		play_failure_sound(user, target, target_zone, tool, surgery)
 
 	else //Help intent.
 		if(do_after(user, step_duration, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_FRIENDLY,target,INTERRUPT_MOVED,BUSY_ICON_MEDICAL))
 			success(user, target, target_zone, tool, tool_type, surgery)
 			advance = TRUE
+			play_success_sound(user, target, target_zone, tool, surgery)
 			if(repeat_step && repeat_step_criteria(user, target, target_zone, tool, tool_type, surgery))
 				surgery.step_in_progress = FALSE
 				INVOKE_ASYNC(surgery, TYPE_PROC_REF(/datum/surgery, attempt_next_step), user, tool, TRUE)
@@ -186,10 +206,22 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 	user.visible_message(SPAN_NOTICE("[user] begins to perform surgery on [target]."),
 		SPAN_NOTICE("You begin to perform surgery on [target]..."))
 
+/// Plays Preop Sounds
+/datum/surgery_step/proc/play_preop_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	if(!preop_sound)
+		return
+	playsound(get_turf(target), preop_sound, vol = 40, sound_range = 1)
+
 ///This is used for end-step narration and relevant success changes - whatever the step is meant to do, if it isn't just flavour. tool_type may be a typepath or simply '1'.
 /datum/surgery_step/proc/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.visible_message(SPAN_NOTICE("[user] succeeds!"),
 			SPAN_NOTICE("You succeed."))
+
+/// Plays the selected success sound
+/datum/surgery_step/proc/play_success_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	if(!success_sound)
+		return
+	playsound(get_turf(target), success_sound, vol = 40, sound_range = 1)
 
 /**This is used for failed-step narration and relevant failure changes, often damage etc. If it returns TRUE, the step succeeds anyway.
 tool_type may be a typepath or simply '1'. Note that a first step done on help-intent doesn't call failure(), it just ends harmlessly.**/
@@ -197,6 +229,12 @@ tool_type may be a typepath or simply '1'. Note that a first step done on help-i
 	user.visible_message(SPAN_NOTICE("[user] fails to finish the surgery"),
 			SPAN_NOTICE("You fail to finish the surgery"))
 	return FALSE
+
+/// Plays the failure sound
+/datum/surgery_step/proc/play_failure_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	if(!failure_sound)
+		return
+	playsound(get_turf(target), failure_sound, vol = 40, sound_range = 1)
 
 ///Finishes the surgery and removes it from the target's lists.
 /datum/surgery_step/proc/complete(mob/living/carbon/target, datum/surgery/surgery, cancelled)

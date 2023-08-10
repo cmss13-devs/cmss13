@@ -179,8 +179,6 @@
 /obj/effect/teleporter_vfx/New()
 	set waitfor = 0
 	sleep(animation_duration)
-	var/turf/T = get_turf(src)
-	T.contents -= src
 	qdel(src)
 
 #undef ANIMATION_DURATION

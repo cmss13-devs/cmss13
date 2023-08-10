@@ -1,22 +1,22 @@
 #define HUNTER_BEST_ITEM  pick(\
 								75; list(/obj/item/clothing/glasses/night, /obj/item/storage/backpack/holding, /obj/item/storage/belt/grenade/full, /obj/item/weapon/gun/flamer), \
-								100; list(/obj/item/weapon/melee/twohanded/yautja/glaive, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter,/obj/item/clothing/shoes/yautja/hunter), \
-								50; list(/obj/item/weapon/melee/yautja/combistick, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter/full,/obj/item/clothing/shoes/yautja/hunter), \
+								100; list(/obj/item/weapon/twohanded/yautja/glaive, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter,/obj/item/clothing/shoes/yautja/hunter), \
+								50; list(/obj/item/weapon/yautja/combistick, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter/full,/obj/item/clothing/shoes/yautja/hunter), \
 								150; list(/obj/item/stack/medical/advanced/ointment, /obj/item/stack/medical/advanced/bruise_pack, /obj/item/storage/belt/medical/lifesaver/full), \
 								50; list(/obj/item/clothing/under/marine/veteran/pmc/commando, /obj/item/clothing/suit/storage/marine/veteran/pmc/commando, /obj/item/clothing/gloves/marine/veteran/pmc/commando, /obj/item/clothing/shoes/veteran/pmc/commando, /obj/item/clothing/head/helmet/marine/veteran/pmc/commando), \
-								125; list(/obj/item/weapon/melee/yautja/chain, /obj/item/weapon/melee/yautja/knife, /obj/item/weapon/melee/yautja/scythe, /obj/item/hunting_trap, /obj/item/hunting_trap), \
+								125; list(/obj/item/weapon/yautja/chain, /obj/item/weapon/yautja/knife, /obj/item/weapon/yautja/scythe, /obj/item/hunting_trap, /obj/item/hunting_trap), \
 								75; list(/obj/item/weapon/gun/revolver/mateba/general, /obj/item/ammo_magazine/revolver/mateba, /obj/item/ammo_magazine/revolver/mateba, /obj/item/clothing/mask/balaclava/tactical), \
-								50; list(/obj/item/weapon/shield/energy, /obj/item/weapon/melee/energy/axe, /obj/item/clothing/under/chainshirt/hunter, /obj/item/clothing/head/helmet/gladiator, /obj/item/clothing/suit/armor/gladiator) \
+								50; list(/obj/item/weapon/shield/energy, /obj/item/weapon/energy/axe, /obj/item/clothing/under/chainshirt/hunter, /obj/item/clothing/head/helmet/gladiator, /obj/item/clothing/suit/armor/gladiator) \
 								)
 
 #define HUNTER_GOOD_ITEM  pick(\
 								50; /obj/item/weapon/shield/riot, \
-								100; /obj/item/weapon/melee/claymore, \
-								100; /obj/item/weapon/melee/katana, \
-								100; /obj/item/weapon/melee/harpoon/yautja, \
-								150; /obj/item/weapon/melee/claymore/mercsword, \
-								200; /obj/item/weapon/melee/claymore/mercsword/machete, \
-								125; /obj/item/weapon/melee/twohanded/fireaxe, \
+								100; /obj/item/weapon/claymore, \
+								100; /obj/item/weapon/katana, \
+								100; /obj/item/weapon/harpoon/yautja, \
+								150; /obj/item/weapon/claymore/mercsword, \
+								200; /obj/item/weapon/claymore/mercsword/machete, \
+								125; /obj/item/weapon/twohanded/fireaxe, \
 \
 								100; /obj/item/device/binoculars, \
 \
@@ -45,17 +45,17 @@
 
 #define HUNTER_OKAY_ITEM  pick(\
 								300; /obj/item/tool/crowbar, \
-								200; /obj/item/weapon/melee/baseballbat, \
-								100; /obj/item/weapon/melee/baseballbat/metal, \
-								100; /obj/item/weapon/melee/butterfly, \
+								200; /obj/item/weapon/baseballbat, \
+								100; /obj/item/weapon/baseballbat/metal, \
+								100; /obj/item/weapon/butterfly, \
 								300; /obj/item/tool/hatchet, \
 								100; /obj/item/tool/scythe, \
 								100; /obj/item/tool/kitchen/knife/butcher, \
-								50; /obj/item/weapon/melee/katana/replica, \
-								100; /obj/item/weapon/melee/harpoon, \
+								50; /obj/item/weapon/katana/replica, \
+								100; /obj/item/weapon/harpoon, \
 								75; /obj/item/attachable/bayonet, \
-								200; /obj/item/weapon/melee/throwing_knife, \
-								400; /obj/item/weapon/melee/twohanded/spear, \
+								200; /obj/item/weapon/throwing_knife, \
+								400; /obj/item/weapon/twohanded/spear, \
 \
 								250; /obj/item/device/flashlight/flare, \
 								75; /obj/item/device/flashlight, \
@@ -167,7 +167,6 @@ var/waiting_for_drop_votes = 0
 	for(var/i in GLOB.good_items)
 		place_drop(get_turf(i), "good")
 
-	QDEL_LIST(GLOB.fog_blockers)
 	QDEL_LIST(GLOB.xeno_tunnels)
 
 	for(var/G in GLOB.gun_list)
@@ -422,6 +421,7 @@ var/waiting_for_drop_votes = 0
 		round_statistics.end_round_player_population = count_humans()
 
 		round_statistics.log_round_statistics()
+
 
 	return 1
 

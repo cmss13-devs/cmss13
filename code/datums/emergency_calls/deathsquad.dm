@@ -6,7 +6,7 @@
 	name = "Weyland Whiteout Operators"
 	mob_max = 8
 	mob_min = 5
-	arrival_message = "Intercepted Transmission: '!`2*%slau#*jer t*h$em a!l%. le&*ve n(o^ w&*nes%6es.*v$e %#d ou^'"
+	arrival_message = "'!`2*%slau#*jer t*h$em a!l%. le&*ve n(o^ w&*nes%6es.*v$e %#d ou^'"
 	objectives = "Whiteout protocol is in effect for the target. Ensure there are no traces of the infestation or any witnesses."
 	probability = 0
 	shuttle_id = "Distress_PMC"

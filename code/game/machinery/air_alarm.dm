@@ -157,6 +157,14 @@
 	if (!master_is_operating())
 		elect_master()
 
+/obj/structure/machinery/alarm/Destroy()
+	if(alarm_area.master_air_alarm == src)
+		alarm_area.master_air_alarm = null
+	alarm_area = null
+	SSradio.remove_object(src, frequency)
+	radio_connection = null
+	return ..()
+
 /obj/structure/machinery/alarm/proc/handle_heating_cooling()
 	return
 
@@ -591,9 +599,9 @@ Pressure: <span class='dl[pressure_dangerlevel]'>[environment_pressure]</span>kP
 
 	output += "Area Status: "
 	if(alarm_area.atmosalm)
-		output += "<span class='dl1'>Atmos alert in area</span>"
+		output += SPAN_DL1("Atmos alert in area")
 	else if (alarm_area.flags_alarm_state & ALARM_WARNING_FIRE)
-		output += "<span class='dl1'>Fire alarm in area</span>"
+		output += SPAN_DL1("Fire alarm in area")
 	else
 		output += "No alerts"
 
@@ -846,7 +854,7 @@ table tr:first-child th:first-child { border: none;}
 					if (isnull(newval) || ..() || (locked && !isRemoteControlling(usr)))
 						return
 					if (newval<0)
-						selected[threshold] = -1.0
+						selected[threshold] = -1
 					else if (env=="temperature" && newval>5000)
 						selected[threshold] = 5000
 					else if (env=="pressure" && newval>50*ONE_ATMOSPHERE)

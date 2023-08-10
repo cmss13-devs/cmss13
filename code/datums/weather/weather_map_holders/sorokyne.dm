@@ -9,7 +9,7 @@
 	potential_weather_events = list(
 		/datum/weather_event/snow,
 		/datum/weather_event/snowstorm,
-		/datum/weather_event/blizzard
+		/datum/weather_event/blizzard,
 	)
 
 /datum/weather_ss_map_holder/sorokyne/should_affect_area(area/A)

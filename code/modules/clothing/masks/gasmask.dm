@@ -12,13 +12,13 @@
 	item_state = "gas_alt"
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
-	armor_melee = CLOTHING_ARMOR_LOW
+	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
 	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_HIGH //because why not
-	armor_rad = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	siemens_coefficient = 0.9
 	vision_impair = VISION_IMPAIR_NONE
@@ -120,6 +120,7 @@
 	icon_state = "clown"
 	item_state = "clown_hat"
 	vision_impair = VISION_IMPAIR_NONE
+	black_market_value = 25
 
 /obj/item/clothing/mask/gas/mime
 	name = "mime mask"
@@ -135,12 +136,6 @@
 	item_state = "monkeymask"
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	vision_impair = VISION_IMPAIR_NONE
-
-/obj/item/clothing/mask/gas/death_commando
-	name = "Death Commando Mask"
-	icon_state = "death_commando_mask"
-	item_state = "death_commando_mask"
-	siemens_coefficient = 0.2
 
 /obj/item/clothing/mask/gas/fake_mustache
 	name = "fake mustache"

@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Maploader no longer nukes ghosts into a weird glitchy state where they can't see anything"

@@ -114,12 +114,6 @@
 		GLOB.lifeboat_almayer_docks -= src
 	return ..()
 
-
-/// Admin lifeboat dock temporary dest because someone mapped them in for some reason (use transit instead)
-/obj/docking_port/stationary/lifeboat_dock/admin
-	dir = NORTH
-	id = "admin-lifeboat" // change this
-
 // === SHUTTLE TEMPLATES FOR SPAWNING THEM
 
 /// Port-door lifeboat, bow east

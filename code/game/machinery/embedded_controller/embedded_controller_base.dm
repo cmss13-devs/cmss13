@@ -54,6 +54,11 @@
 	. = ..()
 	set_frequency(frequency)
 
+/obj/structure/machinery/embedded_controller/radio/Destroy()
+	SSradio.remove_object(src, frequency)
+	radio_connection = null
+	return ..()
+
 /obj/structure/machinery/embedded_controller/radio/update_icon()
 	if(on && program)
 		if(program.memory["processing"])

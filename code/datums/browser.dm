@@ -110,7 +110,7 @@
 
 /datum/browser/proc/open(use_onclose = TRUE)
 	if(isnull(window_id)) //null check because this can potentially nuke goonchat
-		to_chat(user, "<span class='userdanger'>The [title] browser you tried to open failed a sanity check! Please report this on github!</span>")
+		to_chat(user, SPAN_USERDANGER("The [title] browser you tried to open failed a sanity check! Please report this on github!"))
 		return
 	var/window_size = ""
 	if (width && height)
@@ -246,3 +246,129 @@
 	if (window_options)
 		popup.set_window_options(window_options)
 	popup.open()
+
+/datum/browser/modal
+	var/opentime = 0
+	var/timeout
+	var/selectedbutton = 0
+	var/stealfocus
+
+/datum/browser/modal/New(nuser, nwindow_id, ntitle = 0, nstylesheet = "common.css", nwidth = 0, nheight = 0, atom/nref = null, StealFocus = 1, Timeout = 6000)
+	..()
+	stealfocus = StealFocus
+	if (!StealFocus)
+		window_options += "focus=false;"
+	timeout = Timeout
+
+
+/datum/browser/modal/close()
+	.=..()
+	opentime = 0
+
+/datum/browser/modal/open(use_onclose)
+	set waitfor = FALSE
+	opentime = world.time
+
+	if (stealfocus)
+		. = ..(use_onclose = 1)
+	else
+		var/focusedwindow = winget(user, null, "focus")
+		. = ..(use_onclose = 1)
+
+		//waits for the window to show up client side before attempting to un-focus it
+		//winexists sleeps until it gets a reply from the client, so we don't need to bother sleeping
+		for (var/i in 1 to 10)
+			if (user && winexists(user, window_id))
+				if (focusedwindow)
+					winset(user, focusedwindow, "focus=true")
+				else
+					winset(user, "mapwindow", "focus=true")
+				break
+	if (timeout)
+		addtimer(CALLBACK(src, PROC_REF(close)), timeout)
+
+/datum/browser/modal/proc/wait()
+	while (opentime && selectedbutton <= 0 && (!timeout || opentime+timeout > world.time))
+		stoplag(1)
+/datum/browser/modal/listpicker
+	var/valueslist = list()
+
+/datum/browser/modal/listpicker/New(User,Message,Title,Button1="Ok",Button2,Button3,StealFocus = 1, Timeout = FALSE,list/values,inputtype="checkbox", width, height)
+	if (!User)
+		return
+
+	var/output = {"<form><input type="hidden" name="src" value="[REF(src)]"><ul class="sparse">"}
+	if (inputtype == "checkbox" || inputtype == "radio")
+		output += {"<table border=1 cellspacing=0 cellpadding=3 style='border: 1px solid black;'>"}
+		for (var/i in values)
+			output += {"<tr>
+							<td><input type="[inputtype]" value="1" name="[i["name"]]"[i["checked"] ? " checked" : ""][i["allowed_edit"] ? "" : " onclick='return false' onkeydown='return false'"]></td>
+							<td>[i["name"]]</td>
+						</tr>"}
+		output += {"</table>"}
+	else
+		for (var/i in values)
+			output += {"<li><input id="name="[i["name"]]"" style="width: 50px" type="[type]" name="[i["name"]]" value="[i["value"]]">
+			<label for="[i["name"]]">[i["name"]]</label></li>"}
+	output += {"</ul><div style="text-align:center">
+		<button type="submit" name="button" value="[Button1]" style="font-size:large;float:[( Button2 ? "left" : "right" )]">[Button1]</button>"}
+
+	if (Button2)
+		output += {"<button type="submit" name="button" value="[Button2]" style="font-size:large;[( Button3 ? "" : "float:right" )]">[Button2]</button>"}
+
+	if (Button3)
+		output += {"<button type="submit" name="button" value="[Button3]" style="font-size:large;float:right">[Button3]</button>"}
+
+	output += {"</form></div>"}
+	..(User, ckey("[User]-[Message]-[Title]-[world.time]-[rand(1,10000)]"), Title, "common.css", width, height, src, StealFocus, Timeout)
+	set_content(output)
+
+/datum/browser/modal/listpicker/Topic(href,href_list)
+	if (href_list["close"] || !user || !user.client)
+		opentime = 0
+		return
+	if (href_list["button"])
+		selectedbutton = href_list["button"]
+	for (var/item in href_list)
+		switch(item)
+			if ("close", "button", "src")
+				continue
+			else
+				valueslist[item] = href_list[item]
+	opentime = 0
+	close()
+
+/proc/presentpicker(mob/User,Message, Title, Button1="Ok", Button2, Button3, StealFocus = 1,Timeout = 6000,list/values, inputtype = "checkbox", width, height)
+	if (!istype(User))
+		if (istype(User, /client/))
+			var/client/C = User
+			User = C.mob
+		else
+			return
+	var/datum/browser/modal/listpicker/A = new(User, Message, Title, Button1, Button2, Button3, StealFocus,Timeout, values, inputtype, width, height)
+	A.open()
+	A.wait()
+	if (A.selectedbutton)
+		return list("button" = A.selectedbutton, "values" = A.valueslist)
+
+/proc/input_bitfield(mob/User, title, bitfield, current_value, nwidth = 350, nheight = 350, allowed_edit_list = null)
+	if (!User || !(bitfield in GLOB.bitfields))
+		return
+	var/list/pickerlist = list()
+	for (var/i in GLOB.bitfields[bitfield])
+		var/can_edit = 1
+		if(!isnull(allowed_edit_list) && !(allowed_edit_list & GLOB.bitfields[bitfield][i]))
+			can_edit = 0
+		if (current_value & GLOB.bitfields[bitfield][i])
+			pickerlist += list(list("checked" = 1, "value" = GLOB.bitfields[bitfield][i], "name" = i, "allowed_edit" = can_edit))
+		else
+			pickerlist += list(list("checked" = 0, "value" = GLOB.bitfields[bitfield][i], "name" = i, "allowed_edit" = can_edit))
+	var/list/result = presentpicker(User, "", title, Button1="Save", Button2 = "Cancel", Timeout=FALSE, values = pickerlist, width = nwidth, height = nheight)
+	if (islist(result))
+		if (result["button"] != "Save") // If the user pressed the cancel button
+			return
+		. = 0
+		for (var/flag in result["values"])
+			. |= GLOB.bitfields[bitfield][flag]
+	else
+		return

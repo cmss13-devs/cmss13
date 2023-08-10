@@ -232,7 +232,10 @@ var/list/datum/mob_hud/huds = list(
 			hud.remove_hud_from(src)
 		else if (istype(hud, /datum/mob_hud/xeno_infection))
 			hud.remove_hud_from(src)
-
+	if (xeno_hostile_hud)
+		xeno_hostile_hud = FALSE
+		var/datum/mob_hud/hostile_hud = huds[MOB_HUD_XENO_HOSTILE]
+		hostile_hud.remove_hud_from(src)
 
 
 
@@ -307,7 +310,7 @@ var/list/datum/mob_hud/huds = list(
 
 /mob/living/carbon/human/med_hud_set_health()
 	var/image/holder = hud_list[HEALTH_HUD]
-	if(stat == DEAD)
+	if(stat == DEAD || status_flags & FAKEDEATH)
 		holder.icon_state = "hudhealth-100"
 	else
 		var/percentage = round(health*100/species.total_health, 10)
@@ -397,7 +400,7 @@ var/list/datum/mob_hud/huds = list(
 				if(hive && hive.color)
 					holder3.color = hive.color
 
-		if(stat == DEAD)
+		if(stat == DEAD || status_flags & FAKEDEATH)
 			if(revive_enabled)
 				if(!client)
 					var/mob/dead/observer/G = get_ghost(FALSE, TRUE)
@@ -438,9 +441,9 @@ var/list/datum/mob_hud/huds = list(
 						holder2_set = 1
 					return
 
-				holder.icon_state = "huddead"
+				holder.icon_state = HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) ? "hudhcdead" : "huddead"
 				if(!holder2_set)
-					holder2.icon_state = "huddead"
+					holder2.icon_state = holder.icon_state
 					holder3.icon_state = "huddead"
 					holder2_set = 1
 

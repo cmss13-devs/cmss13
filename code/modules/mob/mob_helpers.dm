@@ -1,6 +1,3 @@
-#define isdeaf(A) (ismob(A) && ((A?:sdisabilities & DISABILITY_DEAF) || A?:ear_deaf))
-#define xeno_hivenumber(A) (isxeno(A) ? A?:hivenumber : FALSE)
-
 /mob/proc/can_use_hands()
 	return
 
@@ -49,7 +46,7 @@ var/list/global/base_miss_chance = list(
 )
 
 //Used to weight organs when an organ is hit randomly (i.e. not a directed, aimed attack).
-//Also used to weight the protection value that armour provides for covering that body part when calculating protection from full-body effects.
+//Also used to weight the protection value that armor provides for covering that body part when calculating protection from full-body effects.
 var/list/global/organ_rel_size = list(
 	"head" = 15,
 	"chest" = 70,
@@ -117,26 +114,22 @@ var/global/list/limb_types_by_name = list(
 
 	return rand_zone
 
-/proc/stars(n, pr)
-	if (pr == null)
-		pr = 25
-	if (pr <= 0)
-		return null
-	else
-		if (pr >= 100)
-			return n
-	var/te = n
-	var/t = ""
-	n = length(n)
-	var/p = null
-	p = 1
-	while(p <= n)
-		if ((copytext(te, p, p + 1) == " " || prob(pr)))
-			t = text("[][]", t, copytext(te, p, p + 1))
+/proc/stars(message, clear_char_probability = 25)
+	clear_char_probability = max(clear_char_probability, 0)
+	if(clear_char_probability >= 100)
+		return message
+
+	var/output_message = ""
+	var/message_length = length(message)
+	var/index = 1
+	while(index <= message_length)
+		var/char = copytext(message, index, index + 1)
+		if(char == " " || prob(clear_char_probability))
+			output_message += char
 		else
-			t = text("[]*", t)
-		p++
-	return t
+			output_message += "*"
+		index++
+	return output_message
 
 /proc/slur(phrase)
 	phrase = html_decode(phrase)
@@ -161,29 +154,60 @@ var/global/list/limb_types_by_name = list(
 		newphrase+="[newletter]";counter-=1
 	return newphrase
 
-/proc/stutter(n)
-	var/te = html_decode(n)
-	var/t = ""//placed before the message. Not really sure what it's for.
-	n = length(n)//length of the entire word
-	var/p = null
-	p = 1//1 is the start of any word
-	while(p <= n)//while P, which starts at 1 is less or equal to N which is the length.
-		var/n_letter = copytext(te, p, p + 1)//copies text from a certain distance. In this case, only one letter at a time.
-		if (prob(80) && (ckey(n_letter) in alphabet_lowercase))
-			if (prob(10))
-				n_letter = text("[n_letter]-[n_letter]-[n_letter]-[n_letter]")//replaces the current letter with this instead.
-			else
-				if (prob(20))
-					n_letter = text("[n_letter]-[n_letter]-[n_letter]")
-				else
-					if (prob(5))
-						n_letter = null
-					else
-						n_letter = text("[n_letter]-[n_letter]")
-		t = text("[t][n_letter]")//since the above is ran through for each letter, the text just adds up back to the original word.
-		p++//for each letter p is increased to find where the next letter will be.
-	return strip_html(t)
+/proc/stutter(phrase, strength = 1)
+	if(strength < 1)
+		return phrase
+	else
+		strength = Ceiling(strength/5)
 
+	var/list/split_phrase = text2list(phrase," ") //Split it up into words.
+	var/list/unstuttered_words = split_phrase.Copy()
+
+	var/max_stutter = min(strength, split_phrase.len)
+	var/stutters = rand(max(max_stutter - 3, 1), max_stutter)
+
+	for(var/i = 0, i < stutters, i++)
+		if (!unstuttered_words.len)
+			break
+
+		var/word = pick(unstuttered_words)
+		unstuttered_words -= word //Remove from unstuttered words so we don't stutter it again.
+		var/index = split_phrase.Find(word) //Find the word in the split phrase so we can replace it.
+		var/regex/R = regex("^(\\W*)((?:\[Tt\]|\[Cc\]|\[Ss\])\[Hh\]|\\w)(\\w*)(\\W*)$")
+		var/regex/upper = regex("\[A-Z\]")
+
+		if(!R.Find(word))
+			continue
+
+		if (length(word) > 1)
+			if((prob(20) && strength > 1) || (prob(30) && strength > 4)) // stutter word instead
+				var/stuttered = R.group[2] + R.group[3]
+				if(upper.Find(stuttered) && !upper.Find(stuttered, 2)) // if they're screaming (all caps) or saying something like 'AI', keep the letter capitalized - else don't
+					stuttered = lowertext(stuttered)
+				word = R.Replace(word, "$1$2$3-[stuttered]$4")
+			else if(prob(25) && strength > 1) // prolong word
+				var/prolonged = ""
+				var/prolong_amt = min(length(word), 5)
+				prolong_amt = rand(1, prolong_amt)
+				for(var/j = 0, j < prolong_amt, j++)
+					prolonged += R.group[2]
+				if(!upper.Find(R.group[3]))
+					prolonged = lowertext(prolonged)
+				word = R.Replace(word, "$1$2[prolonged]$3$4")
+			else
+				if(prob(5 * strength)) // harder stutter if stronger
+					word = R.Replace(word, "$1$2-$2-$2-$2$3$4")
+				else if(prob(10 * strength))
+					word = R.Replace(word, "$1$2-$2-$2$3$4")
+				else // normal stutter
+					word = R.Replace(word, "$1$2-$2$3$4")
+
+		if(prob(3 * strength) && index != unstuttered_words.len - 1) // stammer / pause - don't pause at the end of sentences!
+			word = R.Replace(word, "$0 ...")
+
+		split_phrase[index] = word
+
+	return jointext(split_phrase, " ")
 
 /proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 for p will cause letters to be replaced instead of added
 	/* Turn text into complete gibberish! */
@@ -202,34 +226,28 @@ var/global/list/limb_types_by_name = list(
 
 	return returntext
 
-
-/proc/ninjaspeak(n)
-/*
-The difference with stutter is that this proc can stutter more than 1 letter
-The issue here is that anything that does not have a space is treated as one word (in many instances). For instance, "LOOKING," is a word, including the comma.
-It's fairly easy to fix if dealing with single letters but not so much with compounds of letters./N
-*/
-	var/te = html_decode(n)
-	var/t = ""
-	n = length(n)
-	var/p = 1
-	while(p <= n)
-		var/n_letter
-		var/n_mod = rand(1,4)
-		if(p+n_mod>n+1)
-			n_letter = copytext(te, p, n+1)
-		else
-			n_letter = copytext(te, p, p+n_mod)
-		if (prob(50))
-			if (prob(30))
-				n_letter = text("[n_letter]-[n_letter]-[n_letter]")
-			else
-				n_letter = text("[n_letter]-[n_letter]")
-		else
-			n_letter = text("[n_letter]")
-		t = text("[t][n_letter]")
-		p=p+n_mod
-	return strip_html(t)
+/**
+ * Replaces S and similar sounds with 'th' and such. Stolen from tg.
+ */
+/proc/lisp_replace(message)
+	var/static/regex/replace_s = new("s+h?h?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_S = new("S+H?H?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_z = new("z+h?h?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_Z = new("Z+H?H?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_x = new("x+h?h?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_X = new("X+H?H?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_ceci = new("ceh?|cih?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_CECI = new("CEH?|CIH?", REGEX_FLAG_GLOBAL)
+	if(message[1] != "*")
+		message = replace_s.Replace(message, "th")
+		message = replace_S.Replace(message, "TH")
+		message = replace_z.Replace(message, "th")
+		message = replace_Z.Replace(message, "TH")
+		message = replace_ceci.Replace(message, "th")
+		message = replace_CECI.Replace(message, "TH")
+		message = replace_x.Replace(message, "ckth")
+		message = replace_X.Replace(message, "CKTH")
+	return message
 
 #define PIXELS_PER_STRENGTH_VAL 24
 
@@ -294,7 +312,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return
 
 /mob/proc/is_mob_incapacitated(ignore_restrained)
-	return (stat || stunned || knocked_down || knocked_out || (!ignore_restrained && is_mob_restrained()))
+	return (stat || stunned || knocked_down || knocked_out || (!ignore_restrained && is_mob_restrained()) || status_flags & FAKEDEATH)
 
 
 //returns how many non-destroyed legs the mob has (currently only useful for humans)
@@ -376,7 +394,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 #define DURATION_MULTIPLIER_TIER_4 0.10
 /mob/proc/get_skill_duration_multiplier(skill)
 	//Gets a multiplier for various tasks, based on the skill
-	. = 1.0
+	. = 1
 	if(!skills)
 		return
 	switch(skill)
@@ -506,4 +524,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return mobs_in_range
 
 /mob/proc/alter_ghost(mob/dead/observer/ghost)
+	return
+
+/mob/proc/get_paygrade()
 	return

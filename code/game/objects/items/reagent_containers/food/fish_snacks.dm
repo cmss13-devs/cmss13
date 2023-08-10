@@ -13,7 +13,7 @@
 	var/gut_icon_state = null
 	var/gut_time = 3
 	var/initial_desc = ""
-	var/list/guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat, /obj/item/reagent_container/food/snacks/meat/syntiflesh)//placeholders, for now
+	var/list/guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat, /obj/item/reagent_container/food/snacks/meat/synthmeat)//placeholders, for now
 	var/base_gut_meat = /obj/item/reagent_container/food/snacks/meat
 	//slice_path = null//
 	//slices_num
@@ -103,8 +103,8 @@
 	guttable = TRUE
 	min_length = 4
 	max_length = 14
-	base_gut_meat = /obj/item/reagent_container/food/snack/meat/fish/squid
-	guttable_atoms = list(/obj/item/reagent_container/food/snack/meat/fish/squid)
+	base_gut_meat = /obj/item/reagent_container/food/snacks/meat/fish/squid
+	guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat/fish/squid)
 
 /obj/item/reagent_container/food/snacks/fishable/squid/sock
 	name = "sock squid"
@@ -114,8 +114,8 @@
 	guttable = TRUE
 	min_length = 1
 	max_length = 5
-	base_gut_meat = /obj/item/reagent_container/food/snack/meat/fish/squid/alt
-	guttable_atoms = list(/obj/item/reagent_container/food/snack/meat/fish/squid/alt)
+	base_gut_meat = /obj/item/reagent_container/food/snacks/meat/fish/squid/alt
+	guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat/fish/squid/alt)
 
 //----------------//
 //WORMS

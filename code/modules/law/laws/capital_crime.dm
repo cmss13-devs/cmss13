@@ -26,7 +26,11 @@
 /datum/law/capital_law/sedition
 	name = "Sedition"
 	desc = "To engage in actions or refuse to follow orders as to overthrow or usurp the legitimate command structure."
-	
+
 /datum/law/capital_law/crimes_against_humanity
 	name = "Crimes against Humanity"
 	desc = "To engage in actions that violate human rights or otherwise are heinous acts against humans. Examples are torture, cannibalism and forced infection with Xenomorph larva."
+
+/datum/law/capital_law/prisoner_of_war
+	name = "Prisoner of War"
+	desc = "Being a member of a currently hostile faction to the USCM."

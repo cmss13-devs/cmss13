@@ -19,7 +19,7 @@
 		if(new_sheet)
 			qdel(sheet)
 		return
-	show_browser(usr, "<body class='paper'>[new_text]</body>", "Custom paper preview", "custom_paper_preview", "size=500x400")
+	show_browser(usr, "<body class='paper'>[new_text]</body>", "Custom paper preview", "custom_paper_preview", "size=650x700")
 	if(alert(usr, "Make this new content?", "Customising [new_name]", "OK", "Cancel") == "Cancel")
 		close_browser(usr, "custom_paper_preview")
 		if(new_sheet)
@@ -32,4 +32,4 @@
 	sheet.update_icon()
 	if(new_sheet)
 		sheet.loc = get_turf(usr)
-	message_staff("[key_name_admin(usr)] [new_sheet ? "created" : "edited"] a paper named [new_name].", sheet.loc.x, sheet.loc.y, sheet.loc.z)
+	message_admins("[key_name_admin(usr)] [new_sheet ? "created" : "edited"] a paper named [new_name].", sheet.loc.x, sheet.loc.y, sheet.loc.z)

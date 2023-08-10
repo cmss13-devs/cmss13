@@ -52,7 +52,7 @@
 				to_chat(user, SPAN_NOTICE(" You screw the circuit board into place."))
 				src.state = 2
 				src.icon_state = "2"
-			if(istype(P, /obj/item/tool/crowbar) && circuit)
+			if(HAS_TRAIT(P, TRAIT_TOOL_CROWBAR) && circuit)
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You remove the circuit board."))
 				src.state = 1
@@ -78,7 +78,7 @@
 						state = 3
 						icon_state = "3"
 		if(3)
-			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
+			if(HAS_TRAIT(P, TRAIT_TOOL_WIRECUTTERS))
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You remove the cables."))
 				src.state = 2
@@ -99,7 +99,7 @@
 						src.state = 4
 						src.icon_state = "4"
 		if(4)
-			if(istype(P, /obj/item/tool/crowbar))
+			if(HAS_TRAIT(P, TRAIT_TOOL_CROWBAR))
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You remove the glass panel."))
 				src.state = 3

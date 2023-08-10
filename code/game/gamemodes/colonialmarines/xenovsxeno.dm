@@ -1,8 +1,8 @@
 #define is_hive_living(hive) (!hive.hardcore || hive.living_xeno_queen)
 
 /datum/game_mode/xenovs
-	name = "Hive Wars"
-	config_tag = "Hive Wars"
+	name = GAMEMODE_HIVE_WARS
+	config_tag = GAMEMODE_HIVE_WARS
 	required_players = 4 //Need at least 4 players
 	xeno_required_num = 4 //Need at least four xenos.
 	monkey_amount = 0.2 // Amount of monkeys per player
@@ -37,6 +37,9 @@
 /datum/game_mode/xenovs/announce()
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
 
+/datum/game_mode/xenovs/get_roles_list()
+	return ROLES_XENO
+
 /* Pre-setup */
 /datum/game_mode/xenovs/pre_setup()
 	monkey_types = SSmapping.configs[GROUND_MAP].monkey_types
@@ -70,7 +73,7 @@
 	if(SSitem_cleanup)
 		//Cleaning stuff more aggressively
 		SSitem_cleanup.start_processing_time = 0
-		SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
+		SSitem_cleanup.percentage_of_garbage_to_delete = 1
 		SSitem_cleanup.wait = 1 MINUTES
 		SSitem_cleanup.next_fire = 1 MINUTES
 		spawn(0)
@@ -120,7 +123,6 @@
 		M.current.close_spawn_windows()
 
 	for(var/datum/hive_status/hive in hive_spots)
-		new/obj/effect/alien/resin/special/pool(hive_spots[hive], hive) // Spawn a hive pool so they all get fair xenos
 		var/obj/effect/alien/resin/special/pylon/core/C = new(hive_spots[hive], hive)
 		C.hardcore = TRUE // This'll make losing the hive core more detrimental than losing a Queen
 		hive_cores += C
@@ -130,7 +132,7 @@
 		var/mob/living/carbon/human/original = ghost_mind.current
 
 		original.first_xeno = TRUE
-		original.stat = 1
+		original.set_stat(UNCONSCIOUS)
 		transform_survivor(ghost_mind, xeno_turf = xeno_turf) //Create a new host
 		original.apply_damage(50, BRUTE)
 		original.spawned_corpse = TRUE
@@ -183,7 +185,7 @@
 			if(world.time > round_time_larva_interval)
 				for(var/hive in hives)
 					GLOB.hive_datum[hive].stored_larva++
-					GLOB.hive_datum[hive].hive_ui.update_pooled_larva()
+					GLOB.hive_datum[hive].hive_ui.update_burrowed_larva()
 
 				round_time_larva_interval = world.time + hive_larva_interval_gain
 
@@ -199,7 +201,7 @@
 			round_checkwin = 0
 
 
-/datum/game_mode/xenovs/proc/get_xenos_hive(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT, ZTRAIT_MARINE_MAIN_SHIP)))
+/datum/game_mode/xenovs/proc/get_xenos_hive(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
 	var/list/list/hivenumbers = list()
 	var/datum/hive_status/HS
 	for(var/hivenumber in GLOB.hive_datum)
@@ -259,7 +261,7 @@
 /datum/game_mode/xenovs/declare_completion()
 	announce_ending()
 	var/musical_track
-	musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
+	musical_track = pick('sound/theme/neutral_melancholy1.ogg', 'sound/theme/neutral_melancholy2.ogg')
 
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
@@ -274,6 +276,7 @@
 	declare_completion_announce_xenomorphs()
 	calculate_end_statistics()
 	declare_fun_facts()
+
 
 	return TRUE
 

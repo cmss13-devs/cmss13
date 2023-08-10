@@ -1,6 +1,5 @@
 #define SENTRY_FIREANGLE 135
 #define SENTRY_RANGE 5
-#define SENTRY_MUZZLELUM 3
 #define SENTRY_ENGAGED_TIMEOUT 60 SECONDS
 #define SENTRY_LOW_AMMO_TIMEOUT 20 SECONDS
 #define SENTRY_LOW_AMMO_ALERT_PERCENTAGE 0.25
@@ -21,8 +20,12 @@
 	var/obj/item/ammo_magazine/ammo = new /obj/item/ammo_magazine/sentry
 	var/sentry_type = "sentry" //Used for the icon
 	display_additional_stats = TRUE
-
+	/// Light strength when turned on
+	var/luminosity_strength = 7
+	/// Check if they have been upgraded or not, used for sentry post
+	var/upgraded = FALSE
 	var/omni_directional = FALSE
+	var/additional_rounds_stored = FALSE
 	var/sentry_range = SENTRY_RANGE
 
 	has_camera = TRUE
@@ -59,6 +62,7 @@
 		start_processing()
 		set_range()
 	update_icon()
+	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(unset_range))
 
 /obj/structure/machinery/defenses/sentry/Destroy() //Clear these for safety's sake.
 	targets = null
@@ -103,7 +107,9 @@
 			range_bounds = RECT(x, y - 4, 7, 7)
 
 /obj/structure/machinery/defenses/sentry/proc/unset_range()
-	qdel(range_bounds)
+	SIGNAL_HANDLER
+	if(range_bounds)
+		QDEL_NULL(range_bounds)
 
 /obj/structure/machinery/defenses/sentry/update_icon()
 	..()
@@ -163,13 +169,19 @@
 /obj/structure/machinery/defenses/sentry/get_examine_text(mob/user)
 	. = ..()
 	if(ammo)
-		. += SPAN_NOTICE("[src] has [ammo.current_rounds]/[ammo.max_rounds] round\s loaded.")
+		. += SPAN_NOTICE("\The [src] has [ammo.current_rounds]/[ammo.max_rounds] round\s loaded.")
+		if(additional_rounds_stored)
+			. += SPAN_NOTICE("\The [src] has [ammo.max_inherent_rounds] round\s left in storage.")
+		if(upgraded)
+			. += SPAN_NOTICE("\The [src] has been reinforced with metal sheets.")
 	else
-		. += SPAN_NOTICE("[src] is empty and needs to be refilled with ammo.")
+		. += SPAN_NOTICE("\The [src] is empty and needs to be refilled with ammo.")
+		if(additional_rounds_stored)
+			. += SPAN_HELPFUL("Click \The [src] while it's turned off to reload.")
 
 /obj/structure/machinery/defenses/sentry/power_on_action()
 	target = null
-	SetLuminosity(7)
+	SetLuminosity(luminosity_strength)
 
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] hums to life and emits several beeps.")]")
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] buzzes in a monotone voice: 'Default systems initiated'")]")
@@ -312,7 +324,7 @@
 	return FALSE
 
 /obj/structure/machinery/defenses/sentry/proc/handle_empty()
-	visible_message("[icon2html(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red.</span>")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] beeps steadily and its ammo light blinks red.")]")
 	playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
 	update_icon()
 	sent_empty_ammo = TRUE
@@ -322,9 +334,6 @@
 /obj/structure/machinery/defenses/sentry/proc/muzzle_flash(angle)
 	if(isnull(angle))
 		return
-
-	SetLuminosity(SENTRY_MUZZLELUM)
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, SetLuminosity), -SENTRY_MUZZLELUM), 10)
 
 	var/image_layer = layer + 0.1
 	var/offset = 13
@@ -357,7 +366,7 @@
 				targets.Remove(A)
 				continue
 
-			if(M.get_target_lock(faction_group) || M.invisibility)
+			if(M.get_target_lock(faction_group) || M.invisibility || HAS_TRAIT(M, TRAIT_ABILITY_BURROWED))
 				if(M == target)
 					target = null
 				targets.Remove(M)
@@ -511,7 +520,7 @@
 	. = ..()
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony
-	faction_group = list(FACTION_MARINE, FACTION_COLONIST)
+	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR)
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/Initialize()
 	. = ..()
@@ -526,11 +535,13 @@
 	choice_categories = list()
 	selected_categories = list()
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
+	var/obj/structure/machinery/camera/cas/linked_cam
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
 	if(deployment_system)
 		deployment_system.deployed_turret = null
 		deployment_system = null
+	QDEL_NULL(linked_cam)
 	. = ..()
 
 #define SENTRY_SNIPER_RANGE 10
@@ -616,15 +627,21 @@
 
 /obj/structure/machinery/defenses/sentry/launchable
 	name = "\improper UA 571-O sentry post"
-	desc = "A deployable, omni-directional automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 1500-round drum magazine.  Due to the deployment method it is incapable of being moved."
+	desc = "A deployable, omni-directional automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 100-round drum magazine with 500 rounds stored internally.  Due to the deployment method it is incapable of being moved."
 	ammo = new /obj/item/ammo_magazine/sentry/dropped
 	faction_group = FACTION_LIST_MARINE
 	omni_directional = TRUE
+	additional_rounds_stored = TRUE
 	immobile = TRUE
 	static = TRUE
+	/// Cost to give sentry extra health
+	var/upgrade_cost = 5
+	/// Amount of bonus health they get from upgrade
+	var/health_upgrade = 50
 	var/obj/structure/machinery/camera/cas/linked_cam
 	var/static/sentry_count = 1
 	var/sentry_number
+	luminosity_strength = 9
 
 /obj/structure/machinery/defenses/sentry/launchable/Initialize()
 	. = ..()
@@ -644,13 +661,58 @@
 	QDEL_NULL(linked_cam)
 
 
+/obj/structure/machinery/defenses/sentry/launchable/attackby(obj/item/stack/sheets, mob/user)
+	. = ..()
+
+	if(!istype(sheets, /obj/item/stack/sheet/metal))
+		to_chat(user, SPAN_WARNING("Use [upgrade_cost] metal sheets to give the sentry some plating."))
+		return
+
+	if(upgraded)
+		to_chat(user, SPAN_WARNING("\The [src] has already been upgraded."))
+		return
+
+	if(sheets.amount >= upgrade_cost)
+		if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION) , INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			to_chat(user, SPAN_WARNING("You were interrupted! Try to stay still while you bolster the sentry with metal sheets..."))
+			return
+
+		if(sheets.use(upgrade_cost))
+			src.health_max += health_upgrade
+			src.update_health(-health_upgrade)
+			upgraded = TRUE
+			to_chat(user, SPAN_WARNING("You added some metal plating to the sentry, increasing its durability!"))
+		else
+			to_chat(user, SPAN_WARNING("You need at least [upgrade_cost] sheets of metal to upgrade this."))
+	else
+		to_chat(user, SPAN_WARNING("You need at least [upgrade_cost] sheets of metal to upgrade this."))
+
 /obj/structure/machinery/defenses/sentry/launchable/attack_hand_checks(mob/user)
-	return TRUE // We want to be able to turn it on / off while keeping it immobile
+	// Reloads the sentry using inherent rounds
+	if(!turned_on && additional_rounds_stored && (ammo.current_rounds < ammo.max_rounds))
+		if(!do_after(user, 2 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			to_chat(user, SPAN_WARNING("You were interrupted! Try to stay still while you reload the sentry..."))
+			return
+
+		var/rounds_used = ammo.inherent_reload(user)
+		to_chat(user, SPAN_WARNING("[src]'s internal magazine was reloaded with [rounds_used] rounds, [ammo.max_inherent_rounds] rounds left in storage"))
+		playsound(loc, 'sound/weapons/handling/m40sd_reload.ogg', 25, 1)
+		update_icon()
+		return FALSE
+	else
+
+		return TRUE // We want to be able to turn it on / off while keeping it immobile
 
 /obj/structure/machinery/defenses/sentry/launchable/handle_empty()
-	visible_message("[icon2html(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red. It rapidly deconstructs itself!</span>")
-	playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
-	deconstruct()
+	// Checks if its completely dry or just needs reload, deconstruct if completely empty
+	if(ammo.max_inherent_rounds > 0)
+		visible_message(SPAN_WARNING("\The [name] beeps steadily and its ammo light blinks red. It still has rounds, requires manual reload!"))
+		playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
+		update_icon()
+	else
+		visible_message(SPAN_WARNING("\The [name] beeps steadily and its ammo light blinks red. It rapidly deconstructs itself!"))
+		playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
+		deconstruct()
 
 /obj/structure/machinery/defenses/sentry/launchable/deconstruct(disassembled = TRUE)
 	if(disassembled)
@@ -660,4 +722,3 @@
 
 #undef SENTRY_FIREANGLE
 #undef SENTRY_RANGE
-#undef SENTRY_MUZZLELUM

@@ -1,7 +1,7 @@
 /mob/living/proc/updatehealth()
 	if(status_flags & GODMODE)
 		health = maxHealth
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		health = maxHealth - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
 
@@ -294,14 +294,19 @@
 		if(grab_level == GRAB_CARRY)
 			return 0.1
 		else
-			return 1.0
+			return 1
 	else
 		return 0
 
 /mob/living/forceMove(atom/destination)
-	stop_pulling()
+	if(pulling)
+		var/pull_dist = get_dist(pulling, destination)
+		if(pulling.z != destination?.z || pull_dist < 0 || pull_dist > 1)
+			stop_pulling()
 	if(pulledby)
-		pulledby.stop_pulling()
+		var/pull_dist = get_dist(pulledby, destination)
+		if(pulledby.z != destination?.z || pull_dist < 0 || pull_dist > 1)
+			pulledby.stop_pulling()
 	if(buckled && destination != buckled.loc)
 		buckled.unbuckle()
 	. = ..()
@@ -465,3 +470,13 @@
 	for(var/h in src.hud_possible)
 		src.clone.hud_list[h].icon_state = src.hud_list[h].icon_state
 
+/mob/living/set_stat(new_stat)
+	. = ..()
+	if(isnull(.))
+		return
+	switch(.)
+		if(DEAD)
+			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_ALIVE)
+	switch(stat)
+		if(DEAD)
+			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_DEAD)

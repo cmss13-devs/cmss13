@@ -234,7 +234,7 @@
 					return
 
 
-				log_and_message_staff("[key_name_admin(src)] has set the name of [target_clan.name] to [input].")
+				log_and_message_admins("[key_name_admin(src)] has set the name of [target_clan.name] to [input].")
 				to_chat(src, SPAN_NOTICE("Set the name of [target_clan.name] to [input]."))
 				target_clan.name = trim(input)
 
@@ -247,7 +247,7 @@
 				if(!input || input == target_clan.description)
 					return
 
-				log_and_message_staff("[key_name_admin(src)] has set the description of [target_clan.name].")
+				log_and_message_admins("[key_name_admin(src)] has set the description of [target_clan.name].")
 				to_chat(src, SPAN_NOTICE("Set the description of [target_clan.name]."))
 				target_clan.description = trim(input)
 
@@ -261,7 +261,7 @@
 					return
 
 				target_clan.color = color
-				log_and_message_staff("[key_name_admin(src)] has set the color of [target_clan.name] to [color].")
+				log_and_message_admins("[key_name_admin(src)] has set the color of [target_clan.name] to [color].")
 				to_chat(src, SPAN_NOTICE("Set the name of [target_clan.name] to [color]."))
 			if(CLAN_ACTION_CLAN_SETHONOR)
 				if(!has_clan_permission(CLAN_PERMISSION_ADMIN_MANAGER))
@@ -272,7 +272,7 @@
 				if((!input && input != 0) || input == target_clan.honor)
 					return
 
-				log_and_message_staff("[key_name_admin(src)] has set the honor of clan [target_clan.name] from [target_clan.honor] to [input].")
+				log_and_message_admins("[key_name_admin(src)] has set the honor of clan [target_clan.name] from [target_clan.honor] to [input].")
 				to_chat(src, SPAN_NOTICE("Set the honor of [target_clan.name] from [target_clan.honor] to [input]."))
 				target_clan.honor = input
 
@@ -286,7 +286,7 @@
 					to_chat(src, "You have decided not to delete [target_clan.name].")
 					return
 
-				log_and_message_staff("[key_name_admin(src)] has deleted the clan [target_clan.name].")
+				log_and_message_admins("[key_name_admin(src)] has deleted the clan [target_clan.name].")
 				to_chat(src, SPAN_NOTICE("You have deleted [target_clan.name]."))
 				var/list/datum/view_record/clan_playerbase_view/CPV = DB_VIEW(/datum/view_record/clan_playerbase_view, DB_COMP("clan_id", DB_EQUALS, target_clan.id))
 
@@ -339,7 +339,7 @@
 					return
 
 				var/target_clan = target.clan_id
-				log_and_message_staff("[key_name_admin(src)] has purged [player_name]'s clan profile.")
+				log_and_message_admins("[key_name_admin(src)] has purged [player_name]'s clan profile.")
 				to_chat(src, SPAN_NOTICE("You have purged [player_name]'s clan profile."))
 
 				target.delete()
@@ -379,20 +379,20 @@
 					target.clan_id = null
 					target.clan_rank = clan_ranks_ordered[CLAN_RANK_YOUNG]
 					to_chat(src, SPAN_NOTICE("Removed [player_name] from their clan."))
-					log_and_message_staff("[key_name_admin(src)] has removed [player_name] from their current clan.")
+					log_and_message_admins("[key_name_admin(src)] has removed [player_name] from their current clan.")
 				else if(input == "Remove from Ancient")
 					target.clan_rank = clan_ranks_ordered[CLAN_RANK_YOUNG]
 					target.permissions = clan_ranks[CLAN_RANK_YOUNG].permissions
 					to_chat(src, SPAN_NOTICE("Removed [player_name] from ancient."))
-					log_and_message_staff("[key_name_admin(src)] has removed [player_name] from ancient.")
+					log_and_message_admins("[key_name_admin(src)] has removed [player_name] from ancient.")
 				else if(input == "Make Ancient" && is_clan_manager)
 					target.clan_rank = clan_ranks_ordered[CLAN_RANK_ADMIN]
 					target.permissions = CLAN_PERMISSION_ADMIN_ANCIENT
 					to_chat(src, SPAN_NOTICE("Made [player_name] an ancient."))
-					log_and_message_staff("[key_name_admin(src)] has made [player_name] an ancient.")
+					log_and_message_admins("[key_name_admin(src)] has made [player_name] an ancient.")
 				else
 					to_chat(src, SPAN_NOTICE("Moved [player_name] to [input]."))
-					log_and_message_staff("[key_name_admin(src)] has moved [player_name] to clan [input].")
+					log_and_message_admins("[key_name_admin(src)] has moved [player_name] to clan [input].")
 
 					target.clan_id = clans[input]
 
@@ -405,10 +405,10 @@
 					to_chat(src, SPAN_WARNING("This player doesn't belong to a clan!"))
 					return
 
-				var/list/datum/rank/ranks = clan_ranks.Copy()
+				var/list/datum/yautja_rank/ranks = clan_ranks.Copy()
 				ranks -= CLAN_RANK_ADMIN // Admin rank should not and cannot be obtained from here
 
-				var/datum/rank/chosen_rank
+				var/datum/yautja_rank/chosen_rank
 				if(has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY, warn = FALSE))
 					var/input = tgui_input_list(src, "Select the rank to change this user to.", "Select Rank", ranks)
 
@@ -455,7 +455,7 @@
 
 				target.clan_rank = clan_ranks_ordered[chosen_rank.name]
 				target.permissions = chosen_rank.permissions
-				log_and_message_staff("[key_name_admin(src)] has set the rank of [player_name] to [chosen_rank.name] for their clan.")
+				log_and_message_admins("[key_name_admin(src)] has set the rank of [player_name] to [chosen_rank.name] for their clan.")
 				to_chat(src, SPAN_NOTICE("Set [player_name]'s rank to [chosen_rank.name]"))
 
 		target.save()

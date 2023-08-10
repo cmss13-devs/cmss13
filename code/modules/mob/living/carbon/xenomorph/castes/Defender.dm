@@ -23,10 +23,14 @@
 	tackle_min = 2
 	tackle_max = 4
 
+	minimum_evolve_time = 4 MINUTES
+
+	minimap_icon = "defender"
+
 /mob/living/carbon/xenomorph/defender
 	caste_type = XENO_CASTE_DEFENDER
 	name = XENO_CASTE_DEFENDER
-	desc = "A alien with an armored head crest."
+	desc = "A alien with an armored crest."
 	icon = 'icons/mob/xenos/defender.dmi'
 	icon_size = 64
 	icon_state = "Defender Walking"
@@ -43,6 +47,7 @@
 		/datum/action/xeno_action/activable/headbutt,
 		/datum/action/xeno_action/onclick/tail_sweep,
 		/datum/action/xeno_action/activable/fortify,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	mutation_icon_state = DEFENDER_NORMAL
 	mutation_type = DEFENDER_NORMAL

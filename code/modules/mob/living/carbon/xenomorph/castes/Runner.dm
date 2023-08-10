@@ -13,6 +13,7 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_RUNNER
 	attack_delay = -4
+	behavior_delegate_type = /datum/behavior_delegate/runner_base
 	evolves_to = list(XENO_CASTE_LURKER)
 	deevolves_to = list("Larva")
 
@@ -23,6 +24,10 @@
 	tacklestrength_max = 4
 
 	heal_resting = 1.75
+
+	minimum_evolve_time = 5 MINUTES
+
+	minimap_icon = "runner"
 
 /mob/living/carbon/xenomorph/runner
 	caste_type = XENO_CASTE_RUNNER
@@ -52,6 +57,7 @@
 		/datum/action/xeno_action/activable/pounce/runner,
 		/datum/action/xeno_action/activable/runner_skillshot,
 		/datum/action/xeno_action/onclick/toggle_long_range/runner,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -65,4 +71,14 @@
 /mob/living/carbon/xenomorph/runner/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = PASS_FLAGS_CRAWLER
+		PF.flags_pass |= PASS_FLAGS_CRAWLER
+
+/datum/behavior_delegate/runner_base
+	name = "Base Runner Behavior Delegate"
+
+/datum/behavior_delegate/runner_base/melee_attack_additional_effects_self()
+	..()
+
+	var/datum/action/xeno_action/onclick/xenohide/hide = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/xenohide)
+	if(hide)
+		hide.post_attack()

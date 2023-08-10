@@ -94,7 +94,7 @@
 				M.on_mob_jump()
 				M.forceMove(get_turf(owner.mob))
 
-			message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] mobs in [collect_range] tiles range to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+			message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] mobs in [collect_range] tiles range to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
 
 		if("teleport_mobs_by_faction")
 			var/faction = tgui_input_list(owner, "Choose between humanoids and xenomorphs.", "Mobs Choice", list("Humanoids", "Xenomorphs"))
@@ -121,7 +121,7 @@
 					M.on_mob_jump()
 					M.forceMove(get_turf(owner.mob))
 
-				message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] human mobs of [faction] faction to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+				message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] human mobs of [faction] faction to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
 
 			else if(faction == "Xenomorphs")
 				faction = null
@@ -153,7 +153,7 @@
 					M.on_mob_jump()
 					M.forceMove(get_turf(owner.mob))
 
-				message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] xenomorph mobs of [faction] Hive to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+				message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] xenomorph mobs of [faction] Hive to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
 
 			else
 				to_chat(owner, SPAN_ALERT("Mobs choice error. Aborting."))
@@ -171,7 +171,7 @@
 					continue
 				M.on_mob_jump()
 				M.forceMove(get_turf(owner.mob))
-			message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [GLOB.dead_mob_list.len] corpses to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+			message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [GLOB.dead_mob_list.len] corpses to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
 
 		if("teleport_items_by_type")
 			var/item = input(owner,"What item?", "Item Fetcher","") as text|null
@@ -218,4 +218,4 @@
 					continue
 				M.forceMove(get_turf(owner.mob))
 
-			message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] items of type [chosen] to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+			message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] items of type [chosen] to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)

@@ -33,7 +33,7 @@
 /mob/living/silicon/robot/drone/Initialize()
 	nicknumber = rand(100,999)
 
-	..()
+	. = ..()
 
 
 	add_verb(src, /mob/living/proc/hide)
@@ -88,6 +88,15 @@
 	aiCamera = new/obj/item/device/camera/siliconcam/drone_camera(src)
 	playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 0)
 
+/mob/living/silicon/robot/drone/Destroy()
+	QDEL_NULL(aiCamera)
+	stack_metal = null
+	stack_wood = null
+	stack_glass = null
+	stack_plastic = null
+	decompiler = null
+	return ..()
+
 //Redefining some robot procs...
 /mob/living/silicon/robot/drone/updatename()
 	var/new_name = "XP-45 Engineering Drone ([nicknumber])"
@@ -126,7 +135,7 @@
 /mob/living/silicon/robot/drone/updatehealth()
 	if(status_flags & GODMODE)
 		health = health
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 		return
 	health = health - (getBruteLoss() + getFireLoss())
 	return

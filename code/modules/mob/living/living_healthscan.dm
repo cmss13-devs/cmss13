@@ -60,15 +60,40 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		ui.open()
 		ui.set_autoupdate(FALSE)
 
+/**
+ * Returns TRUE if the target is either dead or appears to be dead.
+ */
+/datum/health_scan/proc/get_death_value(mob/target_mob)
+	if(target_mob.stat == DEAD || target_mob.status_flags & FAKEDEATH)
+		return TRUE
+	return FALSE
+/**
+ * Returns the oxygen value, unless they have FAKEDEATH - in which case it will instead make up a number to return.
+ */
+/datum/health_scan/proc/get_oxy_value(mob/target_mob)
+	if(!(target_mob.status_flags & FAKEDEATH))
+		return target_mob.getOxyLoss()
+
+	var/total_mob_damage = target_mob.getBruteLoss() + target_mob.getFireLoss() + target_mob.getToxLoss() + target_mob.getCloneLoss()
+
+	// Fake death will make the scanner think they died of oxygen damage, thus it returns enough damage to kill minus already recieved damage.
+	return round(POSITIVE(200 - total_mob_damage))
+
+/datum/health_scan/proc/get_health_value(mob/living/target_mob)
+	if(!(target_mob.status_flags & FAKEDEATH))
+		return target_mob.health
+
+	return min(-100, target_mob.health)
+
 /datum/health_scan/ui_data(mob/user, data_detail_level = null)
 	var/list/data = list(
 		"patient" = target_mob.name,
-		"dead" = target_mob.stat == DEAD,
-		"health" = target_mob.health,
+		"dead" = get_death_value(target_mob),
+		"health" = get_health_value(target_mob),
 		"total_brute" = round(target_mob.getBruteLoss()),
 		"total_burn" = round(target_mob.getFireLoss()),
 		"toxin" = round(target_mob.getToxLoss()),
-		"oxy" = round(target_mob.getOxyLoss()),
+		"oxy" = get_oxy_value(target_mob),
 		"clone" = round(target_mob.getCloneLoss()),
 		"blood_type" = target_mob.blood_type,
 		"blood_amount" = target_mob.blood_volume,
@@ -76,7 +101,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		"hugged" = (locate(/obj/item/alien_embryo) in target_mob),
 	)
 
-	var/internal_bleeding = FALSE
+	var/internal_bleeding = FALSE //do they have internal bleeding anywhere
 
 	if(!isnull(data_detail_level))
 		detail_level = data_detail_level
@@ -84,19 +109,22 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 	// chems data
 	data["has_unknown_chemicals"] = FALSE
+	data["has_chemicals"] = 0
 	var/list/chemicals_lists = list()
-	for(var/datum/reagent/reagent in target_mob.reagents.reagent_list)
-		if(!(reagent.flags & REAGENT_SCANNABLE) && detail_level == DETAIL_LEVEL_HEALTHANALYSER)
-			data["has_unknown_chemicals"] = TRUE
-			continue
-		chemicals_lists["[reagent.id]"] = list(
-			"name" = reagent.name,
-			"amount" = round(reagent.volume, 0.1),
-			"od" = reagent.overdose != 0 && reagent.volume > reagent.overdose && !(reagent.flags & REAGENT_CANNOT_OVERDOSE),
-			"dangerous" = reagent.overdose != 0 && reagent.volume > reagent.overdose && !(reagent.flags & REAGENT_CANNOT_OVERDOSE) || istype(reagent, /datum/reagent/toxin),
-			"colour" = reagent.color
-		)
-	data["has_chemicals"] = length(target_mob.reagents.reagent_list)
+	if(target_mob.reagents)
+		data["has_chemicals"] = length(target_mob.reagents.reagent_list)
+		for(var/datum/reagent/reagent in target_mob.reagents.reagent_list)
+			if(!(reagent.flags & REAGENT_SCANNABLE) && detail_level == DETAIL_LEVEL_HEALTHANALYSER)
+				data["has_unknown_chemicals"] = TRUE
+				continue
+			chemicals_lists["[reagent.id]"] = list(
+				"name" = reagent.name,
+				"amount" = round(reagent.volume, 0.1),
+				"od" = reagent.overdose != 0 && reagent.volume > reagent.overdose && !(reagent.flags & REAGENT_CANNOT_OVERDOSE),
+				"dangerous" = reagent.overdose != 0 && reagent.volume > reagent.overdose && !(reagent.flags & REAGENT_CANNOT_OVERDOSE) || istype(reagent, /datum/reagent/toxin),
+				"color" = reagent.color
+			)
+
 	data["chemicals_lists"] = chemicals_lists
 
 	var/list/limb_data_lists = list()
@@ -130,11 +158,10 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		var/core_fracture_detected = FALSE
 		var/unknown_implants = 0
 		for(var/obj/limb/limb in human_target_mob.limbs)
-			var/internal_bleeding_check = FALSE
+			var/internal_bleeding_check = FALSE //do they have internal bleeding in this limb
 			for(var/datum/effects/bleeding/internal/ib in limb.bleeding_effects_list)
 				internal_bleeding = TRUE
-				if(detail_level >= DETAIL_LEVEL_BODYSCAN)
-					internal_bleeding_check = TRUE
+				internal_bleeding_check = TRUE
 				break
 			if(limb.hidden)
 				unknown_implants++
@@ -239,7 +266,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			var/current_organ = list(
 				"name" = organ.name,
 				"damage" = organ.damage,
-				"status" = organ.organ_status == ORGAN_BRUISED ? "Bruised" : "Broken",
+				"status" = organ.organ_status == ORGAN_BROKEN ? "Broken" : "Bruised",
 				"robotic" = organ.robotic
 			)
 			damaged_organs += list(current_organ)
@@ -253,69 +280,58 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				advice += list(list(
 					"advice" = "Use a blowtorch or nanopaste to repair the damaged areas.",
 					"icon" = "tools",
-					"colour" = "red" //BRI'ISH????
+					"color" = "red" //BRI'ISH????
 					))
 			if(human_target_mob.getFireLoss(robotic_only = TRUE) > 20)
 				advice += list(list(
 					"advice" = "Use a cable coil or nanopaste to repair the burned areas.",
 					"icon" = "plug",
-					"colour" = "orange"
+					"color" = "orange"
 					))
 			if(unknown_implants)
 				advice += list(list(
 					"advice" = "Recommend that the patient does not move - embedded objects.",
 					"icon" = "window-close",
-					"colour" = "red"
+					"color" = "red"
 					))
 			if(human_target_mob.stat == DEAD)
 				if((human_target_mob.health + 20) > HEALTH_THRESHOLD_DEAD)
 					advice += list(list(
 						"advice" = "Apply shock via defibrillator!",
 						"icon" = "bolt",
-						"colour" = "yellow"
+						"color" = "yellow"
 						))
 				else
 					if(human_target_mob.getBruteLoss(organic_only = TRUE) > 30)
 						advice += list(list(
 							"advice" = "Use trauma kits or surgical line to repair the lacerated areas.",
 							"icon" = "band-aid",
-							"colour" = "green" //BRI'ISH????
+							"color" = "green" //BRI'ISH????
 							))
 					if(human_target_mob.getFireLoss(organic_only = TRUE) > 30)
 						advice += list(list(
 							"advice" = "Use burn kits or synth-graft to repair the burned areas.",
 							"icon" = "band-aid",
-							"colour" = "orange" //BRI'ISH????
+							"color" = "orange" //BRI'ISH????
 							))
 					if(((human_target_mob.health + 50) < HEALTH_THRESHOLD_DEAD) && !issynth(human_target_mob))
 						advice += list(list(
 							"advice" = "Administer a single dose of epinephrine.",
 							"icon" = "syringe",
-							"colour" = "olive"
+							"color" = "olive"
 							))
 			if(!issynth(human_target_mob))
 				if(human_target_mob.blood_volume <= 500 && !chemicals_lists["nutriment"])
 					advice += list(list(
 						"advice" = "Administer food or recommend that the patient eat.",
 						"icon" = "pizza-slice",
-						"colour" = "white"
+						"color" = "white"
 						))
-				if(internal_bleeding)
-					temp_advice = list(list(
-						"advice" = "Administer a single dose of quickclot.",
-						"icon" = "syringe",
-						"colour" = "red"
-						))
-					if(chemicals_lists["quickclot"])
-						if(chemicals_lists["quickclot"]["amount"] < 5)
-							advice += temp_advice
-					else
-						advice += temp_advice
 				if(human_target_mob.getToxLoss() > 10)
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of dylovene.",
 						"icon" = "syringe",
-						"colour" = "green"
+						"color" = "green"
 						))
 					if(chemicals_lists["anti_toxin"])
 						if(chemicals_lists["anti_toxin"]["amount"] < 5)
@@ -326,7 +342,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of peridaxon.",
 						"icon" = "syringe",
-						"colour" = "grey"
+						"color" = "grey"
 						))
 					if(chemicals_lists["peridaxon"])
 						if(chemicals_lists["peridaxon"]["amount"] < 5)
@@ -337,7 +353,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of dexalin.",
 						"icon" = "syringe",
-						"colour" = "blue"
+						"color" = "blue"
 						))
 					if(chemicals_lists["dexalin"])
 						if(chemicals_lists["dexalin"]["amount"] < 3)
@@ -348,7 +364,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of kelotane.",
 						"icon" = "syringe",
-						"colour" = "yellow"
+						"color" = "yellow"
 						))
 					if(chemicals_lists["kelotane"])
 						if(chemicals_lists["kelotane"]["amount"] < 3)
@@ -359,7 +375,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of bicaridine.",
 						"icon" = "syringe",
-						"colour" = "red"
+						"color" = "red"
 						))
 					if(chemicals_lists["bicaridine"])
 						if(chemicals_lists["bicaridine"]["amount"] < 3)
@@ -370,7 +386,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of inaprovaline.",
 						"icon" = "syringe",
-						"colour" = "purple"
+						"color" = "purple"
 						))
 					if(chemicals_lists["inaprovaline"])
 						if(chemicals_lists["inaprovaline"]["amount"] < 5)
@@ -386,7 +402,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of tramadol.",
 						"icon" = "syringe",
-						"colour" = "white"
+						"color" = "white"
 						))
 					if(chemicals_lists["tramadol"])
 						if(chemicals_lists["tramadol"]["amount"] < 3)
@@ -398,7 +414,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					advice += list(list(
 						"advice" = "Do NOT administer tramadol.",
 						"icon" = "window-close",
-						"colour" = "red"
+						"color" = "red"
 						))
 		if(advice.len)
 			data["advice"] = advice
@@ -535,7 +551,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 			var/org_bleed = ""
 			if(bleeding_check)
-				org_bleed = "<span class='scannerb'>(Bleeding)</span>"
+				org_bleed = SPAN_SCANNERB("(Bleeding)")
 
 			var/org_advice = ""
 			if(do_checks && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
@@ -649,8 +665,6 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			var/advice = ""
 			if(blood_volume <= 500 && !reagents_in_body["nutriment"])
 				advice += "<span class='scanner'>Administer food or recommend the patient eat.</span>\n"
-			if(internal_bleed_detected && reagents_in_body["quickclot"] < 5)
-				advice += "<span class='scanner'>Administer a single dose of quickclot.</span>\n"
 			if(H.getToxLoss() > 10 && reagents_in_body["anti_toxin"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of dylovene.</span>\n"
 			if((H.getToxLoss() > 50 || (H.getOxyLoss() > 50 && blood_volume > 400) || H.getBrainLoss() >= 10) && reagents_in_body["peridaxon"] < 5)

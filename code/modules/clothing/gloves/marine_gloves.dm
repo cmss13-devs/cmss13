@@ -22,11 +22,17 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	var/adopts_squad_color = TRUE
+	/// The dmi where the grayscale squad overlays are contained
+	var/squad_overlay_icon = 'icons/mob/humans/onmob/hands_garb.dmi'
 
-/obj/item/clothing/gloves/marine/get_mob_overlay(mob/living/carbon/human/H, slot)
+/obj/item/clothing/gloves/marine/get_mob_overlay(mob/living/carbon/human/current_human, slot)
 	var/image/ret = ..()
-	if(adopts_squad_color && slot == WEAR_HANDS && istype(H) && H.assigned_squad)
-		ret.overlays += glovemarkings[H.assigned_squad.color]
+	if(!adopts_squad_color || !(current_human.assigned_squad && current_human.assigned_squad.equipment_color))
+		return ret
+	var/image/glove_overlay = image(squad_overlay_icon, icon_state = "std-gloves")
+	glove_overlay.alpha = current_human.assigned_squad.armor_alpha
+	glove_overlay.color = current_human.assigned_squad.equipment_color
+	ret.overlays += glove_overlay
 	return ret
 
 /obj/item/clothing/gloves/marine/insulated
@@ -45,6 +51,7 @@
 	desc = "Shiny and impressive. They look expensive."
 	icon_state = "black"
 	item_state = "bgloves"
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/officer/chief
 	name = "chief officer gloves"
@@ -57,6 +64,7 @@
 	item_state = "ygloves"
 	siemens_coefficient = 0
 	permeability_coefficient = 0.01
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/techofficer/commander
 	name = "commanding officer's gloves"
@@ -105,6 +113,7 @@
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/veteran/insulated
 	name = "insulated armored gloves"
@@ -155,7 +164,23 @@
 	armor_rad = CLOTHING_ARMOR_HARDCORE
 	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
 	unacidable = TRUE
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/veteran/insulated/van_bandolier
 	name = "custom shooting gloves"
 	desc = "Highly protective against injury, temperature, and electric shock. Cool in the summer, warm in the winter, and a secure grip on any surface. You could buy a lot for the price of these, and they're worth every penny."
+
+/obj/item/clothing/gloves/marine/joe
+	name = "Seegson hazardous gloves"
+	desc = "Special Synthetic gloves made for touching and interacting with extremely hazardous materials. Resistant to biohazard liquids, corrosive materials and more. SEEGSON is proudly displayed on the back, along with a biohazard symbol. Tomorrow, Together."
+	icon_state = "working_joe"
+	item_state = "working_joe"
+	siemens_coefficient = 0
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_VERYHIGH
+	armor_rad = CLOTHING_ARMOR_VERYHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	unacidable = TRUE
+	adopts_squad_color = FALSE

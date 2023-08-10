@@ -4,6 +4,7 @@
 	icon_state = "lv-626"
 	can_build_special = TRUE
 	powernet_name = "ground"
+	minimap_color = MINIMAP_AREA_COLONY
 
 //parent types
 
@@ -27,6 +28,10 @@
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 
+/area/lv522/oob/w_y_vault
+	name = "LV522 - Weyland Secure Vault"
+	icon_state = "blue"
+
 //Landing Zone 1
 
 /area/lv522/landing_zone_1
@@ -34,6 +39,7 @@
 	icon_state = "explored"
 	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/lv522/landing_zone_1/ceiling
 	ceiling = CEILING_METAL
@@ -60,6 +66,7 @@
 	icon_state = "explored"
 	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/lv522/landing_zone_2/ceiling
 	ceiling = CEILING_METAL
@@ -167,10 +174,12 @@
 /area/lv522/indoors/lone_buildings/engineering
 	name = "Emergency Engineering"
 	icon_state = "engine_smes"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/lv522/indoors/lone_buildings/spaceport
 	name = "North LZ1 - Spaceport"
 	icon_state = "red"
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/lv522/indoors/lone_buildings/outdoor_bot
 	name = "East LZ1 - Outdoor T-Comms"
@@ -194,6 +203,7 @@
 /area/lv522/indoors/a_block/admin
 	name = "A-Block - Colony Operations Centre"
 	icon_state = "mechbay"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/lv522/indoors/a_block/dorms
 	name = "A-Block - Western Dorms And Offices"
@@ -220,6 +230,7 @@
 /area/lv522/indoors/a_block/medical
 	name = "A-Block - Medical"
 	icon_state = "medbay"
+	minimap_color = MINIMAP_AREA_MEDBAY
 
 /area/lv522/indoors/a_block/medical/glass
 	ceiling = CEILING_GLASS
@@ -227,6 +238,7 @@
 /area/lv522/indoors/a_block/security
 	name = "A-Block - Security"
 	icon_state = "head_quarters"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/lv522/indoors/a_block/security/glass
 	ceiling = CEILING_GLASS
@@ -305,6 +317,7 @@
 /area/lv522/indoors/b_block/hydro
 	name = "B-Block - Hydroponics"
 	icon_state = "hydro"
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/lv522/indoors/b_block/hydro/glass
 	ceiling = CEILING_GLASS
@@ -385,6 +398,7 @@
 	icon_state = "engineering"
 	ceiling = CEILING_REINFORCED_METAL
 	ambience_exterior = AMBIENCE_SHIP
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/lv522/atmos/outdoor
 	name = "Atmospheric Processor - Outdoors"
@@ -399,10 +413,12 @@
 /area/lv522/atmos/east_reactor/north
 	name = "Atmospheric Processor - Outer East Reactor - North"
 	icon_state = "yellow"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/lv522/atmos/east_reactor/south
 	name = "Atmospheric Processor - Outer East Reactor - south"
 	icon_state = "red"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/lv522/atmos/east_reactor/south/cas
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
@@ -410,10 +426,13 @@
 /area/lv522/atmos/east_reactor/east
 	name = "Atmospheric Processor - Outer East Reactor - east"
 	icon_state = "green"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/lv522/atmos/east_reactor/west
 	name = "Atmospheric Processor - Outer East Reactor - west"
 	icon_state = "purple"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
 /area/lv522/atmos/west_reactor
 	name = "Atmospheric Processor - Western Reactor"
 	icon_state = "blue"
@@ -431,8 +450,24 @@
 /area/lv522/atmos/north_command_centre
 	name = "Atmospheric Processor - North Command Centre Checkpoint"
 	icon_state = "green"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/lv522/atmos/filt
 	name = "Atmospheric Processor - Filtration System"
 	icon_state = "mechbay"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
+/area/lv522/atmos/way_in_command_centre
+	name = "Atmospheric Processor - North Corpo Reactor Entrance"
+	icon_state = "blue"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
+/area/lv522/atmos/sewer
+	name = "Atmospheric Processor - Sewer"
+	icon_state = "red"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
+/area/lv522/atmos/reactor_garage
+	name = "Atmospheric Processor - Garage"
+	icon_state = "green"
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS

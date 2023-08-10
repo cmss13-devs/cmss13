@@ -5,7 +5,7 @@
 	desc = "Use this to escape from those evil Red Shirts."
 	implant_color= "r"
 	var/activation_emote = "chuckle"
-	var/uses = 1.0
+	var/uses = 1
 
 
 /obj/item/implant/freedom/New()

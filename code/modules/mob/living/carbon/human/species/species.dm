@@ -71,7 +71,7 @@
 
 	var/list/abilities = list() // For species-derived or admin-given powers
 
-	var/blood_color = "#A10808" //Red.
+	var/blood_color = BLOOD_COLOR_HUMAN //Red.
 	var/flesh_color = "#FFC896" //Pink.
 	var/base_color   //Used when setting species.
 	var/hair_color   //If the species only has one hair color
@@ -123,7 +123,12 @@
 /datum/species/proc/larva_impregnated(obj/item/alien_embryo/embryo)
 	return
 
+/// Override to add an emote panel to a species
+/datum/species/proc/open_emote_panel()
+	return
+
 /datum/species/proc/handle_npc(mob/living/carbon/human/H)
+	set waitfor = FALSE
 	return
 
 /datum/species/proc/create_organs(mob/living/carbon/human/H) //Handles creation of mob organs and limbs.
@@ -462,7 +467,13 @@
 	return
 
 /datum/species/proc/handle_blood_splatter(mob/living/carbon/human/human, splatter_dir)
-	var/obj/effect/temp_visual/dir_setting/bloodsplatter/bloodsplatter = new bloodsplatter_type(human.loc, splatter_dir)
+	var/color_override
+	if(human.special_blood)
+		var/datum/reagent/D = chemical_reagents_list[human.special_blood]
+		if(D)
+			color_override = D.color
+
+	var/obj/effect/temp_visual/dir_setting/bloodsplatter/bloodsplatter = new bloodsplatter_type(human.loc, splatter_dir, 5, color_override)
 	return bloodsplatter
 
 /datum/species/proc/get_status_tab_items()

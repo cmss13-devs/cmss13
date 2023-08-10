@@ -13,8 +13,8 @@ RCD
 	density = FALSE
 	anchored = FALSE
 	flags_atom = FPRINT|CONDUCT
-	force = 10.0
-	throwforce = 10.0
+	force = 10
+	throwforce = 10
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_MEDIUM
@@ -34,6 +34,10 @@ RCD
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 	return
+
+/obj/item/device/rcd/Destroy()
+	QDEL_NULL(spark_system)
+	return ..()
 
 
 /obj/item/device/rcd/attackby(obj/item/W, mob/user)
@@ -194,7 +198,7 @@ RCD
 /obj/item/ammo_rcd
 	name = "compressed matter cartridge"
 	desc = "Highly compressed matter for the RCD."
-	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
+	icon = 'icons/obj/items/weapons/guns/legacy/old_bayguns.dmi'
 	icon_state = "rcd"
 	item_state = "rcdammo"
 	opacity = FALSE

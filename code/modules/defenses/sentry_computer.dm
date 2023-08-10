@@ -7,9 +7,7 @@
 	icon = 'icons/obj/structures/props/sentrycomp.dmi'
 	icon_state = "sentrycomp_cl"
 	w_class = SIZE_SMALL
-
-	/// if the laptop has been placed on a table
-	var/setup = FALSE
+	has_special_table_placement = TRUE
 
 	/// if the laptop has been opened (the model not tgui)
 	var/open = FALSE
@@ -99,35 +97,19 @@
 
 /obj/item/device/sentry_computer/Move(NewLoc, direct)
 	..()
-	if(setup || open || on)
+	if(table_setup || open || on)
 		teardown()
-
-/**
- * Set the laptop up on a table.
- * @param target: table which is being used to host the laptop.
- */
-/obj/item/device/sentry_computer/proc/setup(obj/structure/surface/target)
-	if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		setup = TRUE
-		usr.drop_inv_item_to_loc(src, target.loc)
-	else
-		to_chat(usr, SPAN_WARNING("You fail to setup the laptop"))
 
 /**
  * Called to reset the state of the laptop to closed and inactive.
  */
-/obj/item/device/sentry_computer/proc/teardown()
-	setup = FALSE
+/obj/item/device/sentry_computer/teardown()
+	. = ..()
 	open = FALSE
 	on = FALSE
 	icon_state = "sentrycomp_cl"
 	STOP_PROCESSING(SSobj, src)
 	playsound(src,  'sound/machines/terminal_off.ogg', 25, FALSE)
-
-/obj/item/device/sentry_computer/MouseDrop(over_object)
-	if(over_object == usr && Adjacent(usr))
-		teardown()
-		usr.put_in_any_hand_if_possible(src, disable_warning = TRUE)
 
 /obj/item/device/sentry_computer/emp_act(severity)
 	return TRUE
@@ -181,7 +163,7 @@
 		voice.say(message)
 
 /obj/item/device/sentry_computer/attack_hand(mob/user)
-	if(!setup)
+	if(!table_setup)
 		return ..()
 	if(!on)
 		icon_state = "sentrycomp_on"
@@ -198,7 +180,7 @@
 	else
 		. += "It has no battery inserted."
 
-	if(setup)
+	if(table_setup)
 		. += "The laptop can be dragged towards you to pick it up."
 	else
 		. += "The laptop must be placed on a table to be used."

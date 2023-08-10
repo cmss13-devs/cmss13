@@ -143,6 +143,7 @@
 	assets = list(
 		"wylogo.png" = 'html/images/wylogo.png',
 		"uscmlogo.png" = 'html/images/uscmlogo.png',
+		"upplogo.png" = 'html/images/upplogo.png',
 		"faxwylogo.png" = 'html/images/faxwylogo.png',
 		"faxbackground.jpg" = 'html/images/faxbackground.jpg',
 	)
@@ -204,10 +205,10 @@
 
 /datum/asset/spritesheet/playtime_rank/register()
 	var/icon_file = 'icons/mob/hud/hud.dmi'
-	var/tier1_state = "hudxenoupgrade1"
-	var/tier2_state = "hudxenoupgrade2"
-	var/tier3_state = "hudxenoupgrade3"
-	var/tier4_state = "hudxenoupgrade4"
+	var/tier1_state = "hudxenoupgrade2"
+	var/tier2_state = "hudxenoupgrade3"
+	var/tier3_state = "hudxenoupgrade4"
+	var/tier4_state = "hudxenoupgrade5"
 
 	var/icon/tier1_icon = icon(icon_file, tier1_state, SOUTH)
 	var/icon/tier2_icon = icon(icon_file, tier2_state, SOUTH)
@@ -271,7 +272,6 @@
 
 /datum/asset/spritesheet/ranks/register()
 	var/icon_file = 'icons/mob/hud/marine_hud.dmi'
-	var/list/squads = list("Alpha", "Bravo", "Charlie", "Delta", "Foxtrot", "Cryo")
 
 	var/list/icon_data = list(
 		list("Mar", null),
@@ -280,14 +280,12 @@
 		list("Med", "hudsquad_med"),
 		list("SG", "hudsquad_gun"),
 		list("Spc", "hudsquad_spec"),
-		list("RTO", "hudsquad_rto"),
+		list("TL", "hudsquad_tl"),
 		list("SL", "hudsquad_leader"),
 	)
 
-	var/i
-	for(i = 1; i < length(squads); i++)
-		var/squad = squads[i]
-		var/color = squad_colors[i]
+	for(var/datum/squad/marine/squad in RoleAuthority.squads)
+		var/color = squad.equipment_color
 		for(var/iref in icon_data)
 			var/list/iconref = iref
 			var/icon/background = icon('icons/mob/hud/marine_hud.dmi', "hudsquad", SOUTH)
@@ -407,3 +405,26 @@
 		"disabled_single.png" = 'html/images/disabled_single.png',
 	)
 
+
+/datum/asset/simple/particle_editor
+	assets = list(
+		"motion" = 'icons/images/ui_images/particle_editor/motion.png',
+
+		"uniform" = 'icons/images/ui_images/particle_editor/uniform_rand.png',
+		"normal" ='icons/images/ui_images/particle_editor/normal_rand.png',
+		"linear" = 'icons/images/ui_images/particle_editor/linear_rand.png',
+		"square_rand" = 'icons/images/ui_images/particle_editor/square_rand.png',
+
+		"num" = 'icons/images/ui_images/particle_editor/num_gen.png',
+		"vector" = 'icons/images/ui_images/particle_editor/vector_gen.png',
+		"box" = 'icons/images/ui_images/particle_editor/box_gen.png',
+		"circle" = 'icons/images/ui_images/particle_editor/circle_gen.png',
+		"sphere" = 'icons/images/ui_images/particle_editor/sphere_gen.png',
+		"square" = 'icons/images/ui_images/particle_editor/square_gen.png',
+		"cube" = 'icons/images/ui_images/particle_editor/cube_gen.png',
+	)
+
+/datum/asset/simple/vv
+	assets = list(
+		"view_variables.css" = 'html/admin/view_variables.css'
+	)

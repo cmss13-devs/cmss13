@@ -60,7 +60,7 @@
 			if(!object.vv_edit_var(selected_key, selected_value))
 				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
 				return
-			message_staff("[key_name(usr)] modified [object.name]'s [selected_key] to [selected_value]")
+			message_admins("[key_name(usr)] modified [object.name]'s [selected_key] to [selected_value]")
 		else
 			to_chat(usr, SPAN_DANGER("[initial(object.name)] does not have a var called '[selected_key]'"))
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
@@ -69,7 +69,7 @@
 			if(!object.vv_edit_var(selected_key, reset_value))
 				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
 				return
-			message_staff("[key_name(usr)] modified [object.name]'s [selected_key] to [reset_value]")
+			message_admins("[key_name(usr)] modified [object.name]'s [selected_key] to [reset_value]")
 		else
 			to_chat(usr, SPAN_DANGER("[initial(object.name)] does not have a var called '[selected_key]'"))
 

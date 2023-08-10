@@ -2,9 +2,9 @@ import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { capitalizeFirst } from 'common/string';
 import { useBackend, useLocalState } from 'tgui/backend';
-import { Button, Collapsible, Icon, Input, LabeledList, Section, Stack } from 'tgui/components';
+import { Box, Button, Collapsible, ColorBox, Icon, Input, LabeledList, Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
-import { getDisplayColor, getDisplayName, isJobOrNameMatch } from './helpers';
+import { getDisplayName, isJobOrNameMatch, getHealthColor } from './helpers';
 import type { Observable, OrbitData } from './types';
 
 export const Orbit = (props, context) => {
@@ -196,14 +196,27 @@ const ObservableItem = (
 ) => {
   const { act } = useBackend<OrbitData>(context);
   const { color, item } = props;
-  const { health, full_name, nickname, orbiters, ref } = item;
+  const { health, icon, full_name, nickname, orbiters, ref, background_color } =
+    item;
 
   return (
     <Button
-      color={getDisplayColor(item, !!color)}
+      color={'transparent'}
+      style={{
+        'border-color': color ? '#2185d0' : 'grey',
+        'border-style': 'solid',
+        'border-width': '1px',
+        'color': color ? 'white' : 'grey',
+      }}
       onClick={() => act('orbit', { ref: ref })}
       tooltip={!!health && <ObservableTooltip item={item} />}
       tooltipPosition="bottom-start">
+      {!!health && (
+        <ColorBox
+          color={getHealthColor(health)}
+          style={{ 'margin-right': '0.5em' }}
+        />
+      )}
       {capitalizeFirst(getDisplayName(full_name, nickname))}
       {!!orbiters && (
         <>
@@ -219,7 +232,7 @@ const ObservableItem = (
 /** Displays some info on the mob as a tooltip. */
 const ObservableTooltip = (props: { item: Observable }) => {
   const {
-    item: { caste, health, job, full_name },
+    item: { caste, health, job, full_name, icon, background_color },
   } = props;
   const displayHealth = !!health && health >= 0 ? `${health}%` : 'Critical';
 
@@ -228,11 +241,55 @@ const ObservableTooltip = (props: { item: Observable }) => {
       {!!full_name && (
         <LabeledList.Item label="Full Name">{full_name}</LabeledList.Item>
       )}
-      {!!caste && <LabeledList.Item label="Caste">{caste}</LabeledList.Item>}
-      {!!job && <LabeledList.Item label="Job">{job}</LabeledList.Item>}
+      {!!caste && (
+        <LabeledList.Item label="Caste">
+          {!!icon && (
+            <ObservableIcon icon={icon} background_color={background_color} />
+          )}
+          {caste}
+        </LabeledList.Item>
+      )}
+      {!!job && (
+        <LabeledList.Item label="Job">
+          {!!icon && (
+            <ObservableIcon icon={icon} background_color={background_color} />
+          )}
+          {job}
+        </LabeledList.Item>
+      )}
       {!!health && (
         <LabeledList.Item label="Health">{displayHealth}</LabeledList.Item>
       )}
     </LabeledList>
+  );
+};
+
+/** Generates a small icon for buttons based on ICONMAP */
+const ObservableIcon = (
+  props: {
+    icon: Observable['icon'];
+    background_color: Observable['background_color'];
+  },
+  context
+) => {
+  const { data } = useBackend<OrbitData>(context);
+  const { icons = [] } = data;
+  const { icon, background_color } = props;
+  if (!icon || !icons[icon]) {
+    return null;
+  }
+
+  return (
+    <Box
+      as="img"
+      mr={1.3}
+      src={`data:image/jpeg;base64,${icons[icon]}`}
+      style={{
+        transform: 'scale(2) translatey(-1px)',
+        '-ms-interpolation-mode': 'nearest-neighbor',
+        'background-color': background_color ? background_color : null,
+        'vertical-align': 'middle',
+      }}
+    />
   );
 };

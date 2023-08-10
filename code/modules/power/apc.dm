@@ -173,6 +173,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		terminal.master = null
 		terminal = null
 	QDEL_NULL(cell)
+	area = null
 	. = ..()
 
 
@@ -330,7 +331,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc/proc/toggle_breaker(mob/user)
 	operating = !operating
 	update()
-	msg_admin_niche("[user] turned [operating ? "on" : "off"] \the [src] in [AREACOORD(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>).")
+	msg_admin_niche("[user] turned [operating ? "on" : "off"] \the [src] in [AREACOORD(src)] [ADMIN_JMP(loc)].")
 	update_icon()
 
 // the very fact that i have to override this screams to me that apcs shouldnt be under machinery - spookydonut
@@ -349,7 +350,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	//Is starting with a power cell installed, create it and set its charge level
 	if(cell_type)
 		cell = new cell_type(src)
-		cell.charge = start_charge * cell.maxcharge / 100.0 //Convert percentage to actual value
+		cell.charge = start_charge * cell.maxcharge / 100 //Convert percentage to actual value
 
 	var/area/A = loc.loc
 
@@ -675,9 +676,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			var/turf/T = get_turf(src)
 			var/obj/structure/cable/N = T.get_cable_node()
 			if(prob(50) && electrocute_mob(usr, N, N))
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(5, 1, src)
-				s.start()
+				var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+				spark.set_up(5, 1, src)
+				spark.start()
 				return
 			if(C.use(10))
 				user.visible_message(SPAN_NOTICE("[user] wires [src]'s frame."),
@@ -699,9 +700,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				to_chat(user, SPAN_WARNING("\The [src] lacks a terminal to remove."))
 				return
 			if (prob(50) && electrocute_mob(user, terminal.powernet, terminal))
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(5, 1, src)
-				s.start()
+				var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+				spark.set_up(5, 1, src)
+				spark.start()
 				return
 			new /obj/item/stack/cable_coil(loc,10)
 			user.visible_message(SPAN_NOTICE("[user] removes [src]'s wiring and terminal."),
@@ -797,41 +798,87 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	//Human mob special interaction goes here.
 	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
+		var/mob/living/carbon/human/grabber = user
 
-		if(H.species.flags & IS_SYNTHETIC && H.a_intent == INTENT_GRAB)
-			if(H.action_busy)
-				return
+		if(grabber.a_intent == INTENT_GRAB)
 
-			if(!do_after(H, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-				return
-
-			playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
-
-			if(stat & BROKEN)
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(3, 1, src)
-				s.start()
-				to_chat(H, SPAN_DANGER("The APC's power currents surge eratically, damaging your chassis!"))
-				H.apply_damage(10,0, BURN)
-			else if(cell && cell.charge > 0)
-				if(!istype(H.back, /obj/item/storage/backpack/marine/smartpack))
+			//Synthpack recharge
+			if((grabber.species.flags & IS_SYNTHETIC) && istype(grabber.back, /obj/item/storage/backpack/marine/smartpack))
+				var/obj/item/storage/backpack/marine/smartpack/s_pack = grabber.back
+				if(grabber.action_busy)
 					return
 
-				var/obj/item/storage/backpack/marine/smartpack/S = H.back
-				if(S.battery_charge < SMARTPACK_MAX_POWER_STORED)
-					var/charge_to_use = min(cell.charge, SMARTPACK_MAX_POWER_STORED - S.battery_charge)
-					if(!(cell.use(charge_to_use)))
+				if(!do_after(grabber, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+					return
+
+				playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
+
+				if(stat & BROKEN)
+					var/datum/effect_system/spark_spread/spark = new()
+					spark.set_up(3, 1, src)
+					spark.start()
+					to_chat(grabber, SPAN_DANGER("The APC's power currents surge eratically, damaging your chassis!"))
+					grabber.apply_damage(10,0, BURN)
+				else if(cell && cell.charge > 0)
+					if(!istype(s_pack))
 						return
-					S.battery_charge += charge_to_use
-					to_chat(user, SPAN_NOTICE("You slot your fingers into the APC interface and siphon off some of the stored charge. [S.name] now has [S.battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
-					charging = APC_CHARGING
+
+					if(s_pack.battery_charge < SMARTPACK_MAX_POWER_STORED)
+						var/charge_to_use = min(cell.charge, SMARTPACK_MAX_POWER_STORED - s_pack.battery_charge)
+						if(!(cell.use(charge_to_use)))
+							return
+						s_pack.battery_charge += charge_to_use
+						to_chat(user, SPAN_NOTICE("You slot your fingers into the APC interface and siphon off some of the stored charge. [s_pack.name] now has [s_pack.battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
+						charging = APC_CHARGING
+					else
+						to_chat(user, SPAN_WARNING("[s_pack.name] is already fully charged."))
 				else
-					to_chat(user, SPAN_WARNING("[S.name] is already fully charged."))
-			else
-				to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
-			return
-		else if(H.species.can_shred(H))
+					to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
+				return
+
+			// Yautja Bracer Recharge
+			var/obj/item/clothing/gloves/yautja/bracer = grabber.gloves
+			if(istype(bracer))
+				if(grabber.action_busy)
+					return FALSE
+				if(!COOLDOWN_FINISHED(bracer, bracer_recharge))
+					to_chat(user, SPAN_WARNING("It is too soon for [bracer.name] to siphon power again. Wait [COOLDOWN_SECONDSLEFT(bracer, bracer_recharge)] seconds."))
+					return FALSE
+				to_chat(user, SPAN_NOTICE("You rest your bracer against the APC interface and begin to siphon off some of the stored energy."))
+				if(!do_after(grabber, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+					return FALSE
+
+				if(stat & BROKEN)
+					var/datum/effect_system/spark_spread/spark = new()
+					spark.set_up(3, 1, src)
+					spark.start()
+					to_chat(grabber, SPAN_DANGER("The APC's power currents surge eratically, super-heating your bracer!"))
+					playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
+					grabber.apply_damage(10,0, BURN)
+					return FALSE
+				if(!cell || cell.charge <= 0)
+					to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
+					return FALSE
+
+				if(bracer.charge_max <= bracer.charge)
+					to_chat(user, SPAN_WARNING("[bracer.name] is already fully charged."))
+					return FALSE
+
+				var/charge_to_use = min(cell.charge, bracer.charge_max - bracer.charge)
+				if(!(cell.use(charge_to_use)))
+					return FALSE
+				playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
+				bracer.charge += charge_to_use
+				COOLDOWN_START(bracer, bracer_recharge, bracer.charge_cooldown)
+				to_chat(grabber, SPAN_YAUTJABOLD("[icon2html(bracer)] \The <b>[bracer]</b> beep: Power siphon complete. Charge at [bracer.charge]/[bracer.charge_max]."))
+				if(bracer.notification_sound)
+					playsound(bracer.loc, 'sound/items/pred_bracer.ogg', 75, 1)
+				charging = APC_CHARGING
+				set_broken() // Breaks the APC
+
+				return TRUE
+
+		else if(grabber.species.can_shred(grabber))
 			var/allcut = TRUE
 			for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
 				if(!isWireCut(wire))
@@ -923,6 +970,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	switch(wire)
 		if(APC_WIRE_MAIN_POWER)
 			if(!isWireCut(APC_WIRE_MAIN_POWER))
+				beenhit = 0
 				shorted = 0
 				shock(usr, 50)
 
@@ -1009,9 +1057,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			smoke.set_up(1, 0, loc)
 			smoke.attach(src)
 			smoke.start()
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			s.set_up(1, 1, src)
-			s.start()
+			var/datum/effect_system/spark_spread/spark = new()
+			spark.set_up(1, 1, src)
+			spark.start()
 			visible_message(SPAN_WARNING("[src] suddenly lets out a blast of smoke and some sparks!"))
 
 /obj/structure/machinery/power/apc/surplus()

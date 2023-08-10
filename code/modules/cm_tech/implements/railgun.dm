@@ -6,6 +6,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 /obj/effect/landmark/railgun_computer
 	name = "Railgun computer landmark"
+	desc = "A computer with an orange interface, it's idly blinking, awaiting a password."
 
 /obj/effect/landmark/railgun_computer/Initialize(mapload, ...)
 	. = ..()
@@ -53,7 +54,9 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 		return
 
 	if(!GLOB.railgun_eye_location)
+#ifndef UNIT_TESTS
 		stack_trace("Railgun eye location is not initialised! There is no landmark for it on [SSmapping.configs[GROUND_MAP].map_name]")
+#endif
 		return INITIALIZE_HINT_QDEL
 	target_z = GLOB.railgun_eye_location.z_pos
 
@@ -224,7 +227,10 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	mouse_icon = 'icons/effects/mouse_pointer/mecha_mouse.dmi'
 
 /mob/hologram/railgun/Initialize(mapload, mob/M)
-	. = ..(mapload, M)
+	. = ..()
+
+	if(!M)
+		return
 
 	if(allow_turf_entry(src, loc) & COMPONENT_TURF_DENY_MOVEMENT)
 		loc = GLOB.railgun_eye_location.get_turf_from_coord()
@@ -235,8 +241,9 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	M.update_sight()
 
 /mob/hologram/railgun/Destroy()
-	UnregisterSignal(linked_mob, COMSIG_HUMAN_UPDATE_SIGHT)
-	linked_mob.update_sight()
+	if(linked_mob)
+		UnregisterSignal(linked_mob, COMSIG_HUMAN_UPDATE_SIGHT)
+		linked_mob.update_sight()
 
 	return ..()
 

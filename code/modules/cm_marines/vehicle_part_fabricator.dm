@@ -119,6 +119,9 @@
 	valid_parts = /obj/structure/dropship_equipment
 	valid_ammo = /obj/structure/ship_ammo
 
+	unslashable = TRUE
+	unacidable = TRUE
+
 /obj/structure/machinery/part_fabricator/dropship/get_point_store()
 	return supply_controller.dropship_points
 

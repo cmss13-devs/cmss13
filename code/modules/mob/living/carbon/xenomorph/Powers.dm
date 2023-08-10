@@ -12,7 +12,7 @@
 		return SECRETE_RESIN_FAIL
 	if(use_plasma && !check_plasma(total_resin_cost))
 		return SECRETE_RESIN_FAIL
-	if(GLOB.interior_manager.interior_z == z)
+	if(SSinterior.in_interior(src))
 		to_chat(src, SPAN_XENOWARNING("It's too tight in here to build."))
 		return SECRETE_RESIN_FAIL
 
@@ -145,7 +145,7 @@
 	if(istype(new_resin, /turf/closed))
 		for(var/mob/living/carbon/human/enclosed_human in new_resin.contents)
 			if(enclosed_human.stat == DEAD)
-				msg_admin_niche("[src.ckey]/([src]) has built a closed resin structure, [new_resin.name], on top of a dead human, [enclosed_human.ckey]/([enclosed_human]), at [new_resin.x],[new_resin.y],[new_resin.z] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[new_resin.x];Y=[new_resin.y];Z=[new_resin.z]'>JMP</a>)")
+				msg_admin_niche("[src.ckey]/([src]) has built a closed resin structure, [new_resin.name], on top of a dead human, [enclosed_human.ckey]/([enclosed_human]), at [new_resin.x],[new_resin.y],[new_resin.z] [ADMIN_JMP(new_resin)]")
 
 	return SECRETE_RESIN_SUCCESS
 

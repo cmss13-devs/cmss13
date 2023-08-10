@@ -19,6 +19,7 @@
 	var/time_of_death
 	var/total_time_alive
 	var/total_damage_taken
+	var/total_revives_done = 0
 
 	var/total_brute = 0
 	var/total_burn = 0
@@ -51,6 +52,7 @@
 		"time_of_death" = DB_FIELDTYPE_BIGINT,
 		"total_time_alive" = DB_FIELDTYPE_BIGINT,
 		"total_damage_taken" = DB_FIELDTYPE_INT,
+		"total_revives_done" = DB_FIELDTYPE_INT,
 
 		"total_brute" = DB_FIELDTYPE_INT,
 		"total_burn" = DB_FIELDTYPE_INT,
@@ -63,19 +65,32 @@
 	)
 
 /mob/proc/track_mob_death(datum/cause_data/cause_data, turf/death_loc)
-	if(!mind || statistic_exempt)
-		return
-
 	if(cause_data && !istype(cause_data))
 		stack_trace("track_mob_death called with string cause ([cause_data]) instead of datum")
 		cause_data = create_cause_data(cause_data)
+
+	var/log_message = "\[[time_stamp()]\] [key_name(src)] died to "
+	if(cause_data)
+		log_message += "[cause_data.cause_name]"
+	else
+		log_message += "unknown causes"
+	var/mob/cause_mob = cause_data?.resolve_mob()
+	if(cause_mob)
+		log_message += " from [key_name(cause_data.resolve_mob())]"
+		cause_mob.attack_log += "\[[time_stamp()]\] [key_name(cause_mob)] killed [key_name(src)] with [cause_data.cause_name]."
+
+	attack_log += "[log_message]."
+
+	if(!mind || statistic_exempt)
+		return
 
 	var/datum/entity/statistic/death/new_death = DB_ENTITY(/datum/entity/statistic/death)
 	var/datum/entity/player/player_entity = get_player_from_key(mind.ckey)
 	if(player_entity)
 		new_death.player_id = player_entity.id
 
-	new_death.round_id = SSperf_logging.round.id
+	if(SSperf_logging)
+		new_death.round_id = SSperf_logging.round.id
 
 	new_death.role_name = get_role_name()
 	new_death.mob_name = real_name
@@ -93,7 +108,6 @@
 	new_death.cause_role_name = cause_data?.role
 	new_death.cause_faction_name = cause_data?.faction
 
-	var/mob/cause_mob = cause_data?.resolve_mob()
 	if(cause_mob)
 		cause_mob.life_kills_total += life_value
 
@@ -116,6 +130,7 @@
 	new_death.total_kills = life_kills_total
 	new_death.total_time_alive = life_time_total
 	new_death.total_damage_taken = life_damage_taken_total
+	new_death.total_revives_done = life_revives_total
 
 	handle_observer_message(cause_data, cause_mob, death_loc, A)
 
@@ -159,7 +174,7 @@
 	if(src)
 		to_chat(src, SPAN_DEADSAY(observer_message))
 	for(var/mob/dead/observer/g in GLOB.observer_list)
-		to_chat(g, SPAN_DEADSAY(observer_message + " (<a href='?src=\ref[g];jumptocoord=1;X=[death_loc.x];Y=[death_loc.y];Z=[death_loc.z]'>JMP</a>)"))
+		to_chat(g, SPAN_DEADSAY("[observer_message] [OBSERVER_JMP(g, death_loc)]"))
 
 /mob/living/carbon/xenomorph/handle_observer_message(datum/cause_data/cause_data, mob/cause_mob, turf/death_loc, area/death_area)
 	if(hardcore)

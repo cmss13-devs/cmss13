@@ -18,12 +18,11 @@
 	name = "communications console"
 	desc = "This can be used for various important functions."
 	icon_state = "comm"
-	req_access = list(ACCESS_MARINE_BRIDGE)
+	req_access = list(ACCESS_MARINE_COMMAND)
 	circuit = /obj/item/circuitboard/computer/communications
 	unslashable = TRUE
 	unacidable = TRUE
 
-	var/mob/living/carbon/human/current_mapviewer
 	var/prints_intercept = 1
 	var/authenticated = 0
 	var/list/messagetitle = list()
@@ -43,47 +42,33 @@
 	var/status_display_freq = "1435"
 	var/stat_msg1
 	var/stat_msg2
+
+	var/datum/tacmap/tacmap
+	var/minimap_type = MINIMAP_FLAG_USCM
+
 	processing = TRUE
 
 /obj/structure/machinery/computer/communications/Initialize()
 	. = ..()
 	start_processing()
-	SSmapview.map_machines += src
+	tacmap = new(src, minimap_type)
 
 /obj/structure/machinery/computer/communications/Destroy()
-	SSmapview.map_machines -= src
+	QDEL_NULL(tacmap)
 	return ..()
 
 /obj/structure/machinery/computer/communications/process()
 	if(..() && state != STATE_STATUSDISPLAY)
 		updateDialog()
 
-/obj/structure/machinery/computer/communications/proc/update_mapview(close = 0)
-	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
-		close_browser(current_mapviewer, "marineminimap")
-		current_mapviewer = null
-		return
-	if(!populated_mapview_type_updated[TACMAP_DEFAULT])
-		overlay_tacmap(TACMAP_DEFAULT)
-	current_mapviewer << browse_rsc(populated_mapview_types[TACMAP_DEFAULT], "marine_minimap.png")
-	show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
-
 /obj/structure/machinery/computer/communications/Topic(href, href_list)
-	if (href_list["close"] && current_mapviewer)
-		close_browser(current_mapviewer, "marineminimap")
-		current_mapviewer = null
-		return
 	if(..()) return FALSE
 
 	usr.set_interaction(src)
+	var/datum/ares_link/link = GLOB.ares_link
 	switch(href_list["operation"])
 		if("mapview")
-			if(current_mapviewer)
-				update_mapview(1)
-				return
-			current_mapviewer = usr
-			update_mapview()
-			return
+			tacmap.tgui_interact(usr)
 
 		if("main") state = STATE_DEFAULT
 
@@ -94,13 +79,13 @@
 			var/obj/item/card/id/I = C.get_active_hand()
 			if(istype(I))
 				if(check_access(I)) authenticated = 1
-				if(ACCESS_MARINE_COMMANDER in I.access)
+				if(ACCESS_MARINE_SENIOR in I.access)
 					authenticated = 2
 			else
 				I = C.wear_id
 				if(istype(I))
 					if(check_access(I)) authenticated = 1
-					if(ACCESS_MARINE_COMMANDER in I.access)
+					if(ACCESS_MARINE_SENIOR in I.access)
 						authenticated = 2
 		if("logout")
 			authenticated = 0
@@ -109,7 +94,7 @@
 			var/mob/M = usr
 			var/obj/item/card/id/I = M.get_active_hand()
 			if(istype(I))
-				if((ACCESS_MARINE_COMMANDER in I.access) || (ACCESS_MARINE_BRIDGE in I.access)) //Let heads change the alert level.
+				if((ACCESS_MARINE_SENIOR in I.access) || (ACCESS_MARINE_COMMAND in I.access)) //Let heads change the alert level.
 					switch(tmp_alertlevel)
 						if(-INFINITY to SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN //Cannot go below green.
 						if(SEC_LEVEL_BLUE to INFINITY) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot go above blue.
@@ -119,7 +104,7 @@
 					if(security_level != old_level)
 						//Only notify the admins if an actual change happened
 						log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
-						message_staff("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
+						message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
 				else
 					to_chat(usr, SPAN_WARNING("You are not authorized to do this."))
 				tmp_alertlevel = SEC_LEVEL_GREEN //Reset to green.
@@ -129,6 +114,10 @@
 
 		if("announce")
 			if(authenticated == 2)
+				if(usr.client.prefs.muted & MUTE_IC)
+					to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
+					return
+
 				if(world.time < cooldown_message + COOLDOWN_COMM_MESSAGE_LONG)
 					to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE_LONG*0.1] second\s to pass between announcements."))
 					return FALSE
@@ -137,7 +126,7 @@
 					return FALSE
 
 				marine_announcement(input)
-				message_staff("[key_name(usr)] has made a command announcement.")
+				message_admins("[key_name(usr)] has made a command announcement.")
 				log_announcement("[key_name(usr)] has announced the following: [input]")
 				cooldown_message = world.time
 
@@ -159,7 +148,8 @@
 					return FALSE
 
 				log_game("[key_name(usr)] has called for an emergency evacuation.")
-				message_staff("[key_name_admin(usr)] has called for an emergency evacuation.")
+				message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
+				link.log_ares_security("Initiate Evacuation", "[usr] has called for an emergency evacuation.")
 				return TRUE
 
 			state = STATE_EVACUATION
@@ -178,7 +168,8 @@
 							set_security_level(SEC_LEVEL_RED, TRUE) //both SD and evac are inactive, lowering the security level.
 
 				log_game("[key_name(usr)] has canceled the emergency evacuation.")
-				message_staff("[key_name_admin(usr)] has canceled the emergency evacuation.")
+				message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.")
+				link.log_ares_security("Cancel Evacuation", "[usr] has cancelled the emergency evacuation.")
 				return TRUE
 
 			state = STATE_EVACUATION_CANCEL
@@ -209,7 +200,7 @@
 				for(var/client/C in GLOB.admins)
 					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 						C << 'sound/effects/sos-morse-code.ogg'
-				message_staff("[key_name(usr)] has requested a Distress Beacon! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
+				message_admins("[key_name(usr)] has requested a Distress Beacon! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
 				to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 
 				cooldown_request = world.time
@@ -243,7 +234,7 @@
 				for(var/client/C in GLOB.admins)
 					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 						C << 'sound/effects/sos-morse-code.ogg'
-				message_staff("[key_name(usr)] has requested Self-Destruct! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
+				message_admins("[key_name(usr)] has requested Self-Destruct! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
 				to_chat(usr, SPAN_NOTICE("A self-destruct request has been sent to USCM Central Command."))
 				cooldown_destruct = world.time
 				return TRUE
@@ -310,13 +301,15 @@
 
 		if("selectlz")
 			if(!SSticker.mode.active_lz)
-				var/lz_choices = list()
-				for(var/obj/structure/machinery/computer/shuttle_control/console in machines)
-					if(is_ground_level(console.z) && !console.onboard && console.shuttle_type == SHUTTLE_DROPSHIP)
-						lz_choices += console
-				var/new_lz = input(usr, "Choose the primary LZ for this operation", "Operation Staging")  as null|anything in lz_choices
-				if(new_lz)
-					SSticker.mode.select_lz(new_lz)
+				var/lz_choices = list("lz1", "lz2")
+				var/new_lz = tgui_input_list(usr, "Select primary LZ", "LZ Select", lz_choices)
+				if(!new_lz)
+					return
+				if(new_lz == "lz1")
+					SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
+				else
+					SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
+
 
 		else return FALSE
 

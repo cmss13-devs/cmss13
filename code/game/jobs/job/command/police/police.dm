@@ -31,4 +31,5 @@ AddTimelock(/datum/job/command/police, list(
 
 /obj/effect/landmark/start/police
 	name = JOB_POLICE
+	icon_state = "mp_spawn"
 	job = /datum/job/command/police

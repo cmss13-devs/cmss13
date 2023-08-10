@@ -94,6 +94,7 @@
 	icon_state = "clown"
 	item_state = "clown_shoes"
 	slowdown = SHOES_SLOWDOWN+1
+	black_market_value = 25
 	var/footstep = 1 //used for squeeks whilst walking
 
 /obj/item/clothing/shoes/jackboots

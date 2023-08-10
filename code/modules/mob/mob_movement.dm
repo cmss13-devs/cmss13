@@ -131,6 +131,9 @@
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 		return
 
+	if(!isliving(mob))
+		return mob.Move(n, direct)
+
 	if(!mob.canmove || mob.is_mob_incapacitated(TRUE) || (mob.lying && !mob.can_crawl))
 		return
 
@@ -165,7 +168,6 @@
 		if((mob.flags_atom & DIRLOCK) && mob.dir != direct)
 			move_delay += MOVE_REDUCTION_DIRECTION_LOCKED // by Geeves
 
-		mob.last_move_intent = world.time + 10
 		mob.cur_speed = Clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
 		//We are now going to move
 		moving = TRUE

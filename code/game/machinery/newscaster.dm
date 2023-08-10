@@ -933,7 +933,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 	var/turf/T = get_turf(src)   //Who the fuck uses spawn(600) anyway, jesus christ
 	if(channel)
 		for(var/mob/O in hearers(world_view_size-1, T))
-			O.show_message("<span class='newscaster'><EM>[src.name]</EM> beeps, \"Breaking news from [channel]!\"</span>", SHOW_MESSAGE_AUDIBLE)
+			O.show_message(SPAN_NEWSCASTER("<EM>[src.name]</EM> beeps, \"Breaking news from [channel]!\""), SHOW_MESSAGE_AUDIBLE)
 		src.alert = 1
 		src.update_icon()
 		spawn(30 SECONDS)
@@ -942,6 +942,6 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 		playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)
 	else
 		for(var/mob/O in hearers(world_view_size-1, T))
-			O.show_message("<span class='newscaster'><EM>[src.name]</EM> beeps, \"Attention! Wanted issue distributed!\"</span>", SHOW_MESSAGE_AUDIBLE)
+			O.show_message(SPAN_NEWSCASTER("<EM>[src.name]</EM> beeps, \"Attention! Wanted issue distributed!\""), SHOW_MESSAGE_AUDIBLE)
 		playsound(src.loc, 'sound/machines/warning-buzzer.ogg', 25, 1)
 	return

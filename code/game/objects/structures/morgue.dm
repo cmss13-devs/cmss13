@@ -12,6 +12,8 @@
 	var/morgue_type = "morgue"
 	var/tray_path = /obj/structure/morgue_tray
 	var/morgue_open = 0
+	var/exit_stun = 2
+	var/update_name = TRUE
 	anchored = TRUE
 	throwpass = 1
 
@@ -56,19 +58,20 @@
 			if(!A.anchored)
 				A.forceMove(src)
 		connected.forceMove(src)
-		name = "morgue"
-		var/mob/living/L = locate(/mob/living) in contents
-		if(L)
-			name = "morgue ([L])"
-		else
-			var/obj/structure/closet/bodybag/B = locate(/obj/structure/closet/bodybag) in contents
-			if(B)
-				L = locate(/mob/living) in B.contents
-				if(L)
-					name = "morgue ([L])"
+		if(update_name)
+			name = initial(name)
+			var/mob/living/L = locate(/mob/living) in contents
+			if(L)
+				name = "[name] ([L])"
+			else
+				var/obj/structure/closet/bodybag/B = locate(/obj/structure/closet/bodybag) in contents
+				if(B)
+					L = locate(/mob/living) in B.contents
+					if(L)
+						name = "[name] ([L])"
 
 	else
-		name = "morgue"
+		name = initial(name)
 		connected.forceMove(loc)
 		if(step(connected, dir))
 			connected.setDir(dir)
@@ -111,9 +114,15 @@
 		. = ..()
 
 /obj/structure/morgue/relaymove(mob/user)
-	if(user.is_mob_incapacitated(TRUE))
+	if(user.is_mob_incapacitated())
 		return
-	toggle_morgue(user)
+	if(exit_stun)
+		user.stunned = max(user.stunned, exit_stun) //Action delay when going out of a closet (or morgue in this case)
+		user.update_canmove() //Force the delay to go in action immediately
+		if(!user.lying)
+			user.visible_message(SPAN_WARNING("[user] suddenly gets out of [src]!"),
+			SPAN_WARNING("You get out of [src] and get your bearings!"))
+		toggle_morgue(user)
 
 
 /*
@@ -275,10 +284,11 @@
 
 /obj/structure/morgue/sarcophagus
 	name = "sarcophagus"
-	desc = "Used to store predators."
+	desc = "Used to store fallen warriors."
 	icon_state = "sarcophagus1"
 	morgue_type = "sarcophagus"
 	tray_path = /obj/structure/morgue_tray/sarcophagus
+	update_name = FALSE
 
 
 /*

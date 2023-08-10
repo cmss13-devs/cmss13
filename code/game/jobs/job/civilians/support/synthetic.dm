@@ -48,4 +48,5 @@
 
 /obj/effect/landmark/start/synthetic
 	name = JOB_SYNTH
+	icon_state = "syn_spawn"
 	job = /datum/job/civilian/synthetic

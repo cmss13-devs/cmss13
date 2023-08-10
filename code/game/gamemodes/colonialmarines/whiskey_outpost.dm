@@ -2,39 +2,39 @@
 
 //Global proc for checking if the game is whiskey outpost so I dont need to type if(gamemode == whiskey outpost) 50000 times
 /proc/Check_WO()
-	if(SSticker.mode == "Whiskey Outpost" || master_mode == "Whiskey Outpost")
+	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || master_mode == GAMEMODE_WHISKEY_OUTPOST)
 		return 1
 	return 0
 
 /datum/game_mode/whiskey_outpost
-	name = "Whiskey Outpost"
-	config_tag = "Whiskey Outpost"
+	name = GAMEMODE_WHISKEY_OUTPOST
+	config_tag = GAMEMODE_WHISKEY_OUTPOST
 	required_players = 0
 	xeno_bypass_timer = 1
 	flags_round_type = MODE_NEW_SPAWN
 	role_mappings = list(
-					/datum/job/command/commander/whiskey = JOB_CO,
-					/datum/job/command/executive/whiskey = JOB_XO,
-					/datum/job/civilian/synthetic/whiskey = JOB_SYNTH,
-					/datum/job/command/warrant/whiskey = JOB_CHIEF_POLICE,
-					/datum/job/command/bridge/whiskey = JOB_SO,
-					/datum/job/command/tank_crew/whiskey = JOB_CREWMAN,
-					/datum/job/command/police/whiskey = JOB_POLICE,
-					/datum/job/command/pilot/whiskey = JOB_PILOT,
-					/datum/job/logistics/requisition/whiskey = JOB_CHIEF_REQUISITION,
-					/datum/job/civilian/professor/whiskey = JOB_CMO,
-					/datum/job/civilian/doctor/whiskey = JOB_DOCTOR,
-					/datum/job/civilian/researcher/whiskey = JOB_RESEARCHER,
-					/datum/job/logistics/engineering/whiskey = JOB_CHIEF_ENGINEER,
-					/datum/job/logistics/tech/maint/whiskey = JOB_MAINT_TECH,
-					/datum/job/logistics/cargo/whiskey = JOB_CARGO_TECH,
-					/datum/job/civilian/liaison/whiskey = JOB_CORPORATE_LIAISON,
-					/datum/job/marine/leader/whiskey = JOB_SQUAD_LEADER,
-					/datum/job/marine/specialist/whiskey = JOB_SQUAD_SPECIALIST,
-					/datum/job/marine/smartgunner/whiskey = JOB_SQUAD_SMARTGUN,
-					/datum/job/marine/medic/whiskey = JOB_SQUAD_MEDIC,
-					/datum/job/marine/engineer/whiskey = JOB_SQUAD_ENGI,
-					/datum/job/marine/standard/whiskey = JOB_SQUAD_MARINE
+		/datum/job/command/commander/whiskey = JOB_CO,
+		/datum/job/command/executive/whiskey = JOB_XO,
+		/datum/job/civilian/synthetic/whiskey = JOB_SYNTH,
+		/datum/job/command/warrant/whiskey = JOB_CHIEF_POLICE,
+		/datum/job/command/bridge/whiskey = JOB_SO,
+		/datum/job/command/tank_crew/whiskey = JOB_CREWMAN,
+		/datum/job/command/police/whiskey = JOB_POLICE,
+		/datum/job/command/pilot/whiskey = JOB_PILOT,
+		/datum/job/logistics/requisition/whiskey = JOB_CHIEF_REQUISITION,
+		/datum/job/civilian/professor/whiskey = JOB_CMO,
+		/datum/job/civilian/doctor/whiskey = JOB_DOCTOR,
+		/datum/job/civilian/researcher/whiskey = JOB_RESEARCHER,
+		/datum/job/logistics/engineering/whiskey = JOB_CHIEF_ENGINEER,
+		/datum/job/logistics/tech/maint/whiskey = JOB_MAINT_TECH,
+		/datum/job/logistics/cargo/whiskey = JOB_CARGO_TECH,
+		/datum/job/civilian/liaison/whiskey = JOB_CORPORATE_LIAISON,
+		/datum/job/marine/leader/whiskey = JOB_SQUAD_LEADER,
+		/datum/job/marine/specialist/whiskey = JOB_SQUAD_SPECIALIST,
+		/datum/job/marine/smartgunner/whiskey = JOB_SQUAD_SMARTGUN,
+		/datum/job/marine/medic/whiskey = JOB_SQUAD_MEDIC,
+		/datum/job/marine/engineer/whiskey = JOB_SQUAD_ENGI,
+		/datum/job/marine/standard/whiskey = JOB_SQUAD_MARINE,
 	)
 
 
@@ -87,6 +87,7 @@
 	return 1
 
 /datum/game_mode/whiskey_outpost/pre_setup()
+	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
 	for(var/obj/effect/landmark/whiskey_outpost/xenospawn/X)
 		xeno_spawns += X.loc
 	for(var/obj/effect/landmark/whiskey_outpost/supplydrops/S)
@@ -113,7 +114,7 @@
 
 	CONFIG_SET(flag/remove_gun_restrictions, TRUE)
 	sleep(10)
-	to_world("<span class='round_header'>The current game mode is - WHISKEY OUTPOST!</span>")
+	to_world(SPAN_ROUND_HEADER("The current game mode is - WHISKEY OUTPOST!"))
 	to_world(SPAN_ROUNDBODY("It is the year 2177 on the planet LV-624, five years before the arrival of the USS Almayer and the 2nd 'Falling Falcons' Battalion in the sector"))
 	to_world(SPAN_ROUNDBODY("The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM presence in the Neroid Sector"))
 	to_world(SPAN_ROUNDBODY("[SSmapping.configs[GROUND_MAP].map_name], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces"))
@@ -145,7 +146,7 @@
 	if(SSitem_cleanup)
 		//Cleaning stuff more aggressively
 		SSitem_cleanup.start_processing_time = 0
-		SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
+		SSitem_cleanup.percentage_of_garbage_to_delete = 1
 		SSitem_cleanup.wait = 1 MINUTES
 		SSitem_cleanup.next_fire = 1 MINUTES
 		spawn(0)
@@ -223,8 +224,8 @@
 			J.total_positions = J.current_positions
 		J.current_positions = J.get_total_positions(TRUE)
 	to_world("<B>New players may no longer join the game.</B>")
-	message_staff("Wave one has begun. Disabled new player game joining.")
-	message_staff("Wave one has begun. Disabled new player game joining except for replacement of cryoed marines.")
+	message_admins("Wave one has begun. Disabled new player game joining.")
+	message_admins("Wave one has begun. Disabled new player game joining except for replacement of cryoed marines.")
 	world.update_status()
 
 /datum/game_mode/whiskey_outpost/count_xenos()//Counts braindead too
@@ -260,7 +261,7 @@
 		round_statistics.track_round_end()
 	if(finished == 1)
 		log_game("Round end result - xenos won")
-		to_world("<span class='round_header'>The Xenos have succesfully defended their hive from colonization.</span>")
+		to_world(SPAN_ROUND_HEADER("The Xenos have succesfully defended their hive from colonization."))
 		to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
 		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
 		to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then..."))
@@ -273,7 +274,7 @@
 
 	else if(finished == 2)
 		log_game("Round end result - marines won")
-		to_world("<span class='round_header'>Against the onslaught, the marines have survived.</span>")
+		to_world(SPAN_ROUND_HEADER("Against the onslaught, the marines have survived."))
 		to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in the Neroid Sector begin to converge on LV-624."))
 		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
 		to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
@@ -286,7 +287,7 @@
 
 	else
 		log_game("Round end result - no winners")
-		to_world("<span class='round_header'>NOBODY WON!</span>")
+		to_world(SPAN_ROUND_HEADER("NOBODY WON!"))
 		to_world(SPAN_ROUNDBODY("How? Don't ask me..."))
 		world << 'sound/misc/sadtrombone.ogg'
 		if(round_statistics)
@@ -302,6 +303,7 @@
 		round_finished = 1
 
 	calculate_end_statistics()
+
 
 	return 1
 
@@ -662,8 +664,8 @@
 							/obj/item/ammo_magazine/rocket/wp)
 		if(2) //Smartgun supplies
 			spawnitems = list(
-					/obj/item/cell/high,
-					/obj/item/cell/high,
+					/obj/item/smartgun_battery,
+					/obj/item/smartgun_battery,
 					/obj/item/ammo_magazine/smartgun,
 					/obj/item/ammo_magazine/smartgun,
 					/obj/item/ammo_magazine/smartgun,
@@ -686,10 +688,10 @@
 							/obj/item/ammo_magazine/flamer_tank/large,
 							fuel)
 		if(6) // Scout
-			spawnitems = list(/obj/item/ammo_magazine/rifle/m4ra,
-							/obj/item/ammo_magazine/rifle/m4ra,
-							/obj/item/ammo_magazine/rifle/m4ra/incendiary,
-							/obj/item/ammo_magazine/rifle/m4ra/impact)
+			spawnitems = list(/obj/item/ammo_magazine/rifle/m4ra/custom,
+							/obj/item/ammo_magazine/rifle/m4ra/custom,
+							/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
+							/obj/item/ammo_magazine/rifle/m4ra/custom/impact)
 	crate.storage_capacity = 60
 	for(var/path in spawnitems)
 		new path(crate)
@@ -727,5 +729,8 @@
 			new /obj/item/paper/crumpled(T)
 		qdel(src)
 
-/datum/game_mode/whiskey_outpost/announce_bioscans(delta = 2)
+/datum/game_mode/whiskey_outpost/announce_bioscans(variance = 2)
 	return // No bioscans needed in WO
+
+/datum/game_mode/whiskey_outpost/get_escape_menu()
+	return "Making a last stand on..."

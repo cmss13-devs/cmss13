@@ -694,7 +694,7 @@
 /mob/living/simple_animal/parrot/Poly/Initialize()
 	ears = new /obj/item/device/radio/headset(src)
 	available_channels = list(":e")
-	..()
+	. = ..()
 
 /mob/living/simple_animal/parrot/say(message)
 

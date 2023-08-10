@@ -90,8 +90,8 @@
 	name = "knife"
 	desc = "Can cut through any food."
 	icon_state = "knife"
-	force = 10.0
-	throwforce = 10.0
+	force = 10
+	throwforce = 10
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = 1
 
@@ -104,8 +104,8 @@
 	name = "plastic knife"
 	desc = "The bluntest of blades."
 	icon_state = "pknife"
-	force = 10.0
-	throwforce = 10.0
+	force = 10
+	throwforce = 10
 
 /obj/item/tool/kitchen/utensil/knife/attack(target as mob, mob/living/user as mob)
 	. = ..()
@@ -122,9 +122,9 @@
 	flags_atom = FPRINT|CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = 1
-	force = 10.0
+	force = 10
 	w_class = SIZE_MEDIUM
-	throwforce = 6.0
+	throwforce = 6
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	matter = list("metal" = 12000)
@@ -139,9 +139,9 @@
 	icon_state = "butch"
 	desc = "A huge thing used for chopping and chopping up meat. This includes clowns and clown-by-products."
 	flags_atom = FPRINT|CONDUCT
-	force = 15.0
+	force = 15
 	w_class = SIZE_SMALL
-	throwforce = 8.0
+	throwforce = 8
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	matter = list("metal" = 12000)
@@ -163,8 +163,8 @@
 	name = "rolling pin"
 	desc = "Used to knock out the Bartender."
 	icon_state = "rolling_pin"
-	force = 8.0
-	throwforce = 10.0
+	force = 8
+	throwforce = 10
 	throw_speed = SPEED_FAST
 	throw_range = 7
 	w_class = SIZE_MEDIUM
@@ -203,8 +203,8 @@
 	icon = 'icons/obj/items/kitchen_tools.dmi'
 	icon_state = "tray"
 	desc = "A metal tray to lay food on."
-	throwforce = 12.0
-	throwforce = 10.0
+	throwforce = 12
+	throwforce = 10
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_MEDIUM

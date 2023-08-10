@@ -83,10 +83,10 @@
 	icon_full  = "ashtray_full_bl"
 	icon_broken  = "ashtray_bork_bl"
 	max_butts = 14
-	health = 24.0
+	health = 24
 	matter = list("metal" = 30,"glass" = 30)
 	empty_desc = "Cheap plastic ashtray."
-	throwforce = 3.0
+	throwforce = 3
 
 /obj/item/ashtray/plastic/die()
 	..()
@@ -104,10 +104,10 @@
 	icon_full  = "ashtray_full_br"
 	icon_broken  = "ashtray_bork_br"
 	max_butts = 10
-	health = 72.0
+	health = 72
 	matter = list("metal" = 80)
 	empty_desc = "Massive bronze ashtray."
-	throwforce = 10.0
+	throwforce = 10
 
 /obj/item/ashtray/bronze/die()
 	..()
@@ -125,10 +125,10 @@
 	icon_full  = "ashtray_full_gl"
 	icon_broken  = "ashtray_bork_gl"
 	max_butts = 12
-	health = 12.0
+	health = 12
 	matter = list("glass" = 60)
 	empty_desc = "Glass ashtray. Looks fragile."
-	throwforce = 6.0
+	throwforce = 6
 
 /obj/item/ashtray/glass/die()
 	..()

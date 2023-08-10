@@ -18,7 +18,7 @@
 /obj/effect/alien/resin/construction/Initialize(mapload, hive_ref)
 	. = ..()
 	linked_hive = hive_ref
-	if (linked_hive.color)
+	if (linked_hive?.color)
 		color = linked_hive.color
 
 /obj/effect/alien/resin/construction/Destroy()
@@ -61,4 +61,5 @@
 	template.owner = src
 	template.build_loc = get_turf(src)
 	template.hive_ref = linked_hive
+	template.on_template_creation()
 	update_icon()

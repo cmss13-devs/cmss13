@@ -67,7 +67,7 @@
 			src.occupant.apply_damage(-1, BRUTE)
 			src.occupant.updatehealth()
 			if (src.occupant.health >= 0 && src.occupant.stat == DEAD)
-				src.occupant.stat = CONSCIOUS
+				src.occupant.set_stat(CONSCIOUS)
 				src.occupant.lying = 0
 				GLOB.dead_mob_list -= src.occupant
 				GLOB.alive_mob_list += src.occupant

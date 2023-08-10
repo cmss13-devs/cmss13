@@ -1,15 +1,15 @@
 // tg port thing
 
 //different types of atom colourations
-/// Only used by rare effects like greentext colouring mobs and when admins varedit colour
+/// Only used by rare effects like greentext colouring mobs and when admins varedit color
 #define ADMIN_COLOUR_PRIORITY 1
 /// e.g. purple effect of the revenant on a mob, black effect when mob electrocuted
 #define TEMPORARY_COLOUR_PRIORITY 2
 /// Colour splashed onto an atom (e.g. paint on turf)
 #define WASHABLE_COLOUR_PRIORITY 3
-/// Colour inherent to the atom (e.g. blob colour)
+/// Colour inherent to the atom (e.g. blob color)
 #define FIXED_COLOUR_PRIORITY 4
-///how many colour priority levels there are.
+///how many color priority levels there are.
 #define COLOUR_PRIORITY_AMOUNT 4
 
 #define COLOUR_DARKMODE_BACKGROUND "#202020"
@@ -175,16 +175,16 @@
 /// deep crimson
 #define LIGHT_COLOUR_BLOOD_MAGIC "#D00000"
 
-/* These ones aren't a direct colour like the ones above, because nothing would fit */
-/// Warm orange colour, leaning strongly towards yellow. rgb(250, 160, 25)
+/* These ones aren't a direct color like the ones above, because nothing would fit */
+/// Warm orange color, leaning strongly towards yellow. rgb(250, 160, 25)
 #define LIGHT_COLOUR_FIRE    "#FAA019"
 /// Very warm yellow, leaning slightly towards orange. rgb(196, 138, 24)
 #define LIGHT_COLOUR_LAVA    "#C48A18"
 /// Bright, non-saturated red. Leaning slightly towards pink for visibility. rgb(250, 100, 75)
 #define LIGHT_COLOUR_FLARE   "#FA644B"
-/// Weird colour, between yellow and green, very slimy. rgb(175, 200, 75)
+/// Weird color, between yellow and green, very slimy. rgb(175, 200, 75)
 #define LIGHT_COLOUR_SLIME_LAMP "#AFC84B"
-/// Extremely diluted yellow, close to skin colour (for some reason). rgb(250, 225, 175)
+/// Extremely diluted yellow, close to skin color (for some reason). rgb(250, 225, 175)
 #define LIGHT_COLOUR_TUNGSTEN   "#FAE1AF"
 /// Barely visible cyan-ish hue, as the doctor prescribed. rgb(240, 250, 250)
 #define LIGHT_COLOUR_HALOGEN "#F0FAFA"
@@ -199,7 +199,7 @@
 #define CIRCUIT_COLOUR_ENGINEERING "#F8D700"
 #define CIRCUIT_COLOUR_SUPPLY "#C47749"
 
-/// The default colour for admin say, used as a fallback when the preference is not enabled
+/// The default color for admin say, used as a fallback when the preference is not enabled
 #define DEFAULT_ASAY_COLOUR COLOUR_MOSTLY_PURE_RED
 
 #define DEFAULT_HEX_COLOUR_LEN 6

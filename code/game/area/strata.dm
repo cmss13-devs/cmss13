@@ -13,26 +13,23 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "strata"
 	can_build_special = TRUE //T-Comms structure
 	temperature = SOROKYNE_TEMPERATURE //If not in a building, it'll be cold. All interior areas are set to T20C
+	minimap_color = MINIMAP_AREA_COLONY
 
 /area/shuttle/drop1/strata //Not in Sulaco.DM because holy shit we need to sort things.
 	name = "Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
 	lighting_use_dynamic = 0 //No bad
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/shuttle/drop2/strata
 	name = "Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	lighting_use_dynamic = 0
-
-/*A WHOLE BUNCH OF PARENT ENTITIES
-fake_zlevel = 1 or 2. 1 is 'above' 2 is 'below', however ladders are flipped and think that 1 is below, and 2 is above.
-But, players don't actually care where they are so long as the ladders look correct going up and down. They shouldn't notice.
-However, this might break the tacmap. This entire system might be replaced by Slywater's fake-Z smooth transition anyway.*/
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/strata/ag
 	name = "Above Ground Area"
 	icon_state = "ag"
-	fake_zlevel = 1 //'Above' ground fake Z
 
 /area/strata/ag/exterior
 	name = "Exterior Above Ground Area"
@@ -53,6 +50,10 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	temperature = T20C //Nice and room temp
 	ceiling = CEILING_METAL
 
+/area/strata/ag/interior/mountain
+	name = "Outside mountain"
+	icon_state = "ag_e"
+
 /area/strata/ag/interior/restricted
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
@@ -63,7 +64,6 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 /area/strata/ug
 	name = "Under Ground Area"
 	icon_state = "ug"
-	fake_zlevel = 2 //'Underground', because numbers are fun
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/strata/ug/interior
@@ -91,6 +91,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	weather_enabled = FALSE
 	unlimited_power = 1 //So the DS computer always works for the Queen
 	is_landing_zone = TRUE
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/strata/ag/exterior/landingzone_2
 	name = "Landing Zone 2 Pad - Ice Fields"
@@ -98,17 +99,20 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	weather_enabled = FALSE
 	unlimited_power = 1 //So the DS computer always works for the Queen
 	is_landing_zone = TRUE
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/strata/ag/interior/nearlz1
 	name = "Landing Zone 1 - Mining Aerodrome"
 	icon_state = "nearlz1"
 	weather_enabled = FALSE
 	is_resin_allowed = FALSE
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/strata/ag/exterior/nearlz2
 	name = "Landing Zone 2 - Ice Fields"
 	icon_state = "nearlz2"
 	weather_enabled = TRUE //This LZ is outside, but consider disabling if it destroys the meta.
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/strata/ag/exterior/landingzone_valley
 	name = "Landing Zone Valley"
@@ -129,6 +133,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	name = "Outpost Decks"
 	icon_state = "rdecks"
 	is_resin_allowed = TRUE
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/strata/ag/exterior/research_decks/center //The decks on the deck.
 	name = "Seconday Outpost Decks"
@@ -148,6 +153,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 ////////close to research/////////
 
 /area/strata/ag/exterior/paths/southresearch
+	minimap_color = MINIMAP_AREA_RESEARCH
 	name = "South Of The Outpost"
 
 /area/strata/ag/exterior/shed_five_caves
@@ -190,6 +196,8 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	icon_state = "shed_x_ug"
 
 ///Engineering Terminals / Sheds, whatever. Map Power///
+/area/strata/ag/interior/engi_shed
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/strata/ag/interior/engi_shed/one
 	name = "Generator Shed One"
@@ -263,10 +271,12 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 /area/strata/ag/interior/landingzone_checkpoint
 	name = "Landing Zone Security Checkpoint"
 	icon_state = "security_station"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/strata/ag/exterior/landingzone_checkpoint_deck
 	name = "Landing Zone Security Checkpoint Deck"
 	icon_state = "security_station"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/strata/ag/exterior/disposals
 	name = "Disposals Courtyard"
@@ -287,18 +297,22 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 /area/strata/ag/interior/administration
 	name = "Flight Control Offices"
 	icon_state = "offices"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/strata/ag/interior/admin_tcomms/ //T-Comms is inside until you leave the sheltered area..
 	name = "Telecommunications"
 	icon_state = "tcomms1"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/strata/ag/exterior/administration_decks
 	name = "Flight Control Office Deck"
 	icon_state = "offices"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/strata/ag/interior/administrative_wash_closet
 	name = "Flight Control Wash Closet"
 	icon_state = "offices"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/strata/ag/interior/dorms
 	name = "External Mining"
@@ -456,12 +470,15 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 
 /area/strata/ag/interior/outpost/maint/med1
 	name = "Outpost Medical - Admin Lobby Maintenance"
+	minimap_color = MINIMAP_AREA_MEDBAY
 
 /area/strata/ag/interior/outpost/maint/med2
 	name = "Outpost Medical - Directors Office Maintenance"
+	minimap_color = MINIMAP_AREA_MEDBAY
 
 /area/strata/ag/interior/outpost/maint/med3
 	name = "Outpost Medical - Admin Lounge Maintenance"
+	minimap_color = MINIMAP_AREA_MEDBAY
 
 /area/strata/ag/interior/outpost/maint/sec_west
 	name = "Outpost Security - West Maintenance"
@@ -489,6 +506,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 /area/strata/ag/interior/outpost/med
 	name = "Outpost Medical"
 	icon_state = "outpost_med"
+	minimap_color = MINIMAP_AREA_MEDBAY
 
 /area/strata/ag/interior/outpost/med/hall
 	name = "Outpost Medical Primary Hall"
@@ -551,6 +569,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 /area/strata/ag/interior/outpost/engi
 	name = "Outpost Engineering"
 	icon_state = "outpost_engi_0"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/strata/ag/interior/outpost/engi/foyer
 	name = "Outpost Engineering Main Foyer"
@@ -612,6 +631,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 /area/strata/ag/interior/outpost/security
 	name = "Outpost Security"
 	icon_state = "outpost_sec_0"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/strata/ag/interior/outpost/security/hall
 	name = "Outpost Security Main Hall"
@@ -655,6 +675,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 /area/strata/ag/interior/outpost/admin
 	name = "Outpost Administration"
 	icon_state = "outpost_admin_0"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/strata/ag/interior/outpost/admin/dir_office
 	name = "Outpost Director's Office"
@@ -748,6 +769,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 /area/strata/ug/interior/outpost/jung
 	name = "Underground Jungle Structures"
 	icon_state = "ug_jung_dorm"
+	minimap_color = MINIMAP_AREA_CAVES
 
 /area/strata/ug/interior/outpost/jung/dorms
 	name = "Underground Dorms"
@@ -796,6 +818,8 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 /area/strata/ug/interior/jungle
 	name = "Underground Jungle"
 	icon_state = "ug_jung_0"
+	minimap_color = MINIMAP_AREA_JUNGLE
+
 
 /area/strata/ug/interior/jungle/platform
 	name = "Underground Platform"

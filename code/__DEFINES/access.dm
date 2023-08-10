@@ -3,8 +3,8 @@
 It's best not to mess with the numbers of the regular access levels because
 most of them are tied into map-placed objects. This should be reworked in the future.*/
 //WE NEED TO REWORK THIS ONE DAY.  Access levels make me cry - Apophis
-#define ACCESS_MARINE_COMMANDER 1
-#define ACCESS_MARINE_LOGISTICS 2
+#define ACCESS_MARINE_SENIOR 1
+#define ACCESS_MARINE_DATABASE 2
 #define ACCESS_MARINE_BRIG 3
 #define ACCESS_MARINE_ARMORY 4
 #define ACCESS_MARINE_CMO 5
@@ -23,25 +23,34 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_MARINE_CHARLIE 17
 #define ACCESS_MARINE_DELTA 18
 
-#define ACCESS_MARINE_BRIDGE 19
+#define ACCESS_MARINE_COMMAND 19
 #define ACCESS_MARINE_CHEMISTRY 20
 #define ACCESS_MARINE_CARGO 21
 #define ACCESS_MARINE_DROPSHIP 22
 #define ACCESS_MARINE_PILOT 23
-#define ACCESS_MARINE_WO 24
+#define ACCESS_MARINE_CMP 24
 #define ACCESS_MARINE_MORGUE 25
 #define ACCESS_MARINE_RO 26
 #define ACCESS_MARINE_CREWMAN    27
 #define ACCESS_MARINE_RESEARCH 28
 #define ACCESS_MARINE_SEA    29
 #define ACCESS_MARINE_KITCHEN    30
-#define ACCESS_MARINE_CAPTAIN 31
-#define ACCESS_MARINE_RTO_PREP 32
+#define ACCESS_MARINE_CO 31
+#define ACCESS_MARINE_TL_PREP 32
 
 #define ACCESS_MARINE_MAINT 34
 #define ACCESS_MARINE_OT 35
 
 #define ACCESS_MARINE_SYNTH 36
+#define ACCESS_MARINE_ASO 37
+
+// AI Core Accesses
+/// Used in temporary passes
+#define ACCESS_MARINE_AI_TEMP 90
+/// Used as dedicated access to ARES Core.
+#define ACCESS_MARINE_AI 91
+/// Used to access Maintenance Protocols on ARES Interface.
+#define ACCESS_ARES_DEBUG 92
 
 //Surface access levels
 #define ACCESS_CIVILIAN_PUBLIC 100
@@ -61,4 +70,13 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_WY_CORPORATE 200
 #define ACCESS_ILLEGAL_PIRATE 201
 #define ACCESS_WY_CORPORATE_DS 202
+#define ACCESS_PRESS 203
 //=================================================
+
+// Yautja Access Levels
+/// Requires a visible ID chip to open
+#define ACCESS_YAUTJA_SECURE 250
+/// Elders+ only
+#define ACCESS_YAUTJA_ELDER 251
+/// Ancients only
+#define ACCESS_YAUTJA_ANCIENT 252

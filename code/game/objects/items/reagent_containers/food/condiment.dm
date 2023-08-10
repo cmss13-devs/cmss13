@@ -202,6 +202,7 @@
 /obj/item/reagent_container/food/condiment/hotsauce/franks
 	name = "\improper Frank's Red Hot bottle"
 	desc = "A bottle of Weyland-Yutani brand Frank's Red Hot hot sauce."
+	desc_lore = "Supposedly designed as a middle-ground flavor between ketchup and cayenne, this brand of spicy goodness achieved critical acclaim throughout UA space within both colonies and vessels alike. The sudden and widespread adoption was curiously timed with the near-simultaneous shelving of the original Frank's 'ULTRA' hot sauce." 
 	icon_state = "hotsauce_franks"
 	item_state = "hotsauce_franks"
 
@@ -216,6 +217,16 @@
 	desc = "A bottle of Weyland-Yutani brand Tabasco hot sauce."
 	icon_state = "hotsauce_tabasco"
 	item_state = "hotsauce_tabasco"
+
+/obj/item/reagent_container/food/condiment/hotsauce/franks/macho
+	name = "\improper Frank's ULTRA Hot bottle"
+	desc = "A bottle of Weyland-Yutani brand Frank's ULTRA Hot sauce, taken off the market after reports of what was described as 'something closer to ignition than digestion' happening to those who drink it."
+	icon_state = "hotsauce_franks"
+	item_state = "hotsauce_franks"
+
+/obj/item/reagent_container/food/condiment/hotsauce/franks/macho/Initialize()
+	. = ..()
+	reagents.add_reagent("machosauce", 60)
 
 /obj/item/reagent_container/food/condiment/coldsauce
 	name = "Cole's Cold bottle"

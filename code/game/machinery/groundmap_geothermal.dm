@@ -198,10 +198,13 @@
 	else
 		return ..() //Deal with everything else, like hitting with stuff
 
+/obj/structure/machinery/power/geothermal/ex_act(severity, direction)
+	return FALSE //gameplay-wise these should really never go away
+
 //Putting these here since it's power-related
 /obj/structure/machinery/colony_floodlight_switch
 	name = "Colony Floodlight Switch"
-	icon = 'icons/turf/ground_map.dmi'
+	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "panelnopower"
 	desc = "This switch controls the floodlights surrounding the archaeology complex. It only functions when there is power."
 	density = FALSE
@@ -224,6 +227,13 @@
 		floodlist += F
 		F.fswitch = src
 	start_processing()
+
+/obj/structure/machinery/colony_floodlight_switch/Destroy()
+	for(var/obj/structure/machinery/colony_floodlight/floodlight as anything in floodlist)
+		floodlight.fswitch = null
+	floodlist = null
+	return ..()
+
 
 /obj/structure/machinery/colony_floodlight_switch/update_icon()
 	if(!ispowered)
@@ -272,7 +282,7 @@
 	if(!ispowered)
 		to_chat(user, "Nothing happens.")
 		return 0
-	playsound(src,'sound/machines/click.ogg', 15, 1)
+	playsound(src,'sound/items/Deconstruct.ogg', 30, 1)
 	use_power(5)
 	toggle_lights()
 	turned_on = !(src.turned_on)
@@ -292,7 +302,7 @@
 	icon_state = "flood_s_off"
 	density = TRUE
 	anchored = TRUE
-	layer = WINDOW_LAYER
+	layer = ABOVE_XENO_LAYER
 	var/damaged = 0 //Can be smashed by xenos
 	var/is_lit = 0 //whether the floodlight is switched to on or off. Does not necessarily mean it emits light.
 	unslashable = TRUE

@@ -72,7 +72,8 @@
 
 /obj/item/seeds/cutting/update_appearance()
 	..()
-	src.name = "packet of [seed.seed_name] cuttings"
+
+	name = "packet of [seed.seed_name] cuttings"
 
 /obj/item/seeds/poppyseed
 	seed_type = "poppies"

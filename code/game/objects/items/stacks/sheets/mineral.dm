@@ -29,6 +29,8 @@ GLOBAL_LIST_INIT(runedsandstone_recipes, list ( \
 	new/datum/stack_recipe("temple wall", /turf/closed/wall/mineral/sandstone/runed, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("runed temple wall", /turf/closed/wall/mineral/sandstone/runed/decor, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("temple floor", /turf/open/floor/sandstone/runed, 1, on_floor = 1), \
+	new/datum/stack_recipe("brazier frame", /obj/structure/prop/brazier/frame, 5, time = 5 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("wall torch frame", /obj/item/prop/torch_frame, 2, time = 2 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	))
 
 GLOBAL_LIST_INIT(silver_recipes, list ( \
@@ -67,11 +69,12 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 ))
 
 /obj/item/stack/sheet/mineral
-	force = 5.0
+	force = 5
 	throwforce = 5
 	w_class = SIZE_MEDIUM
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 3
+	black_market_value = 5
 
 /obj/item/stack/sheet/mineral/Initialize()
 	. = ..()
@@ -80,7 +83,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/iron
 	name = "iron"
-	desc = "Iron is the most basic building material in space, a metal solid at room temperature, easy to shape and available in immense quantities."
+	desc = "Iron is a transition metal and the most basic building material in space. It is solid at room temperature, easy to shape, and available in immense quantities."
 	singular_name = "iron sheet"
 	icon_state = "sheet-silver"
 
@@ -95,7 +98,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/sandstone
 	name = "sandstone brick"
-	desc = "Sandstone is a combination of sand and stone. A common building material for primitive civilisations, can still make a good enough wall."
+	desc = "Sandstone is sand cemented into stone. A common building material for primitive civilizations, but it can still make a good enough wall."
 	singular_name = "sandstone brick"
 	icon_state = "sheet-sandstone"
 	throw_speed = SPEED_VERY_FAST
@@ -113,9 +116,10 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/sandstone/runed
 	name = "runed sandstone brick"
-	desc = "Sandstone is a combination of sand and stone. A common building material for primitive civilisations, can still make a good enough wall."
+	desc = "Sandstone is sand cemented into stone. A common building material for primitive civilizations, but it can still make a good enough wall. This one has strange runes embued into the brick."
 	singular_name = "runed sandstone brick"
 	icon_state = "sheet-runedsandstone"
+	black_market_value = 15
 
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack
 	amount = STACK_50
@@ -132,13 +136,14 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/diamond
 	name = "diamond"
-	desc = "Diamond is a specific arrangement of carbon created under extreme pressure and heat. Valued for its look and properties, despite artificial manufacturing possibilities."
+	desc = "Diamond is highly-pressurized and heated carbon in a diamond cubic crystal lattice. It is highly-valued for its look and hardness, despite being artifically-manufactured, these days."
 	singular_name = "diamond gem"
 	icon_state = "sheet-diamond"
 
 	perunit = 3750
 	sheettype = "diamond"
 	stack_id = "diamond"
+	black_market_value = 30
 
 
 /obj/item/stack/sheet/mineral/diamond/Initialize()
@@ -154,6 +159,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	perunit = 2000
 	sheettype = "uranium"
 	stack_id = "uranium"
+	black_market_value = 30
 
 /obj/item/stack/sheet/mineral/uranium/Initialize()
 	. = ..()
@@ -164,13 +170,14 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/phoron
 	name = "solid phoron"
-	desc = "Phoron is an extremely rare mineral with exotic properties, often used in cutting-edge research. Just getting it into a stable, solid form is already hard enough."
+	desc = "Phoron is an extremely rare mineral with exotic properties, often used in cutting-edge research. Just getting it into a stable, solid form is already difficult enough, considering it can be quite toxic and flammable."
 	singular_name = "phoron ingot"
 	icon_state = "sheet-phoron"
 
 	perunit = 2000
 	sheettype = "phoron"
 	stack_id = "phoron"
+	black_market_value = 10
 
 /obj/item/stack/sheet/mineral/phoron/small_stack
 	amount = STACK_10
@@ -187,6 +194,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 	perunit = 2000
 	stack_id = "plastic"
+	black_market_value = 0
 
 /obj/item/stack/sheet/mineral/plastic/Initialize()
 	. = ..()
@@ -211,6 +219,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	perunit = 2000
 	sheettype = "gold"
 	stack_id = "gold"
+	black_market_value = 30
 
 /obj/item/stack/sheet/mineral/gold/Initialize()
 	. = ..()
@@ -221,13 +230,14 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/silver
 	name = "silver"
-	desc = "Silver is a transition metal. It is known for its namesake silver, gray color. It is used both for cosmetics as a cheaper alternative to gold, or for engineering."
+	desc = "Silver is a transition metal. It is known for its namesake silver, gray color. It is used both for cosmetics as a cheaper alternative to gold, or for engineering for its unparalleled electrical and thermal conductivity and reflectivity."
 	singular_name = "silver ingot"
 	icon_state = "sheet-silver"
 
 	perunit = 2000
 	sheettype = "silver"
 	stack_id = "silver"
+	black_market_value = 25
 
 /obj/item/stack/sheet/mineral/silver/Initialize()
 	. = ..()
@@ -243,18 +253,31 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	icon_state = "sheet-enruranium"
 
 	perunit = 1000
-	stack_id = "uranium"
+	stack_id = "enuranium"
 
-//Valuable resource, cargo can sell it.
+//Valuable resource, cargo can now actually sell it.
 /obj/item/stack/sheet/mineral/platinum
 	name = "platinum"
 	desc = "Platinum is a transition metal. Relatively rare and pretty, it is used for its cosmetic value and chemical properties as a catalytic agent. It is also used in electrodes."
 	singular_name = "platinum ingot"
-	icon_state = "sheet-adamantine"
+	icon_state = "sheet-platinum"
 
 	sheettype = "platinum"
 	perunit = 2000
 	stack_id = "platinum"
+	black_market_value = 35
+
+
+/obj/item/stack/sheet/mineral/lead
+	name = "lead"
+	desc = "Lead is a heavy metal. It is quite dense, yet soft and malleable in its solid state. Though toxic if consumed, lead sheets are used as a shielding material in walls to protect from radiation, and also to absorb sound and vibrations."
+	singular_name = "lead brick"
+	icon_state = "sheet-lead"
+
+	sheettype = "lead"
+	perunit = 2000
+	stack_id = "lead"
+	black_market_value = 35
 
 //Extremely valuable to Research.
 /obj/item/stack/sheet/mineral/mhydrogen
@@ -278,14 +301,27 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	color = "#777777"
 	perunit = 2000
 	stack_id = "tritium"
+	black_market_value = 35
 
 /obj/item/stack/sheet/mineral/osmium
 	name = "osmium"
 	desc = "Osmium is a transition metal. The densest naturally occurring element known to man, it is obviously known for its extreme hardness and durability and used as such."
-	singular_name = "tritium ingot"
+	singular_name = "osmium ingot"
 	icon_state = "sheet-silver"
 	sheettype = "osmium"
 
 	color = "#9999FF"
 	perunit = 2000
 	stack_id = "osmium"
+	black_market_value = 35
+
+/obj/item/stack/sheet/mineral/chitin
+	name = "chitin"
+	desc = "Chitin is the building block of an arthropod--such as an insect or crustracean's--exoskeleton. This sheet, in particular, came from aliens."
+	singular_name = "chitin brick"
+	icon_state = "sheet-chitin"
+
+	sheettype = "chitin"
+	perunit = 2000
+	stack_id = "chitin"
+	black_market_value = 35

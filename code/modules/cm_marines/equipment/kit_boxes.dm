@@ -78,18 +78,18 @@
 	new /obj/item/clothing/suit/storage/marine/M3S(src)
 	new /obj/item/clothing/head/helmet/marine/scout(src)
 	new /obj/item/clothing/glasses/night/M4RA(src)
-	new /obj/item/ammo_magazine/rifle/m4ra(src)
-	new /obj/item/ammo_magazine/rifle/m4ra(src)
-	new /obj/item/ammo_magazine/rifle/m4ra(src)
-	new /obj/item/ammo_magazine/rifle/m4ra(src)
-	new /obj/item/ammo_magazine/rifle/m4ra/incendiary(src)
-	new /obj/item/ammo_magazine/rifle/m4ra/incendiary(src)
-	new /obj/item/ammo_magazine/rifle/m4ra/impact(src)
-	new /obj/item/ammo_magazine/rifle/m4ra/impact(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
 	new /obj/item/weapon/gun/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
-	new /obj/item/weapon/gun/rifle/m4ra(src)
+	new /obj/item/weapon/gun/rifle/m4ra_custom(src)
 	new /obj/item/storage/backpack/marine/satchel/scout_cloak(src)
 	new /obj/item/bodybag/tarp/reactive/scout(src)
 	new /obj/item/explosive/plastic(src)
@@ -161,9 +161,15 @@
 	icon_state = "spec_kit"
 	var/list/allowed_roles_list = list(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST, JOB_WO_CREWMAN)
 
+	///Used for cryo specs who already have "foxtrot" appended to their ID assignments
+	var/squad_assignment_update = TRUE
+
 //this one is delivered via ASRS as a reward for DEFCON/techwebs/whatever else we will have
 /obj/item/spec_kit/asrs
 	allowed_roles_list = list(JOB_SQUAD_MARINE, JOB_WO_SQUAD_MARINE)
+
+/obj/item/spec_kit/cryo
+	squad_assignment_update = FALSE
 
 /obj/item/spec_kit/get_examine_text(mob/user)
 	. = ..()
@@ -252,7 +258,7 @@
 				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
 	if(specialist_assignment)
 		user.put_in_hands(spec_box)
-		ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + ID.assignment + " ([specialist_assignment])")
+		ID.set_assignment((user.assigned_squad && squad_assignment_update ? (user.assigned_squad.name + " ") : "") + ID.assignment + " ([specialist_assignment])")
 		GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
 		return TRUE
 	return FALSE
@@ -349,17 +355,28 @@
 
 
 /obj/item/storage/box/kit/mini_sniper
-	name = "\improper L42A Sniper Kit"
+	name = "\improper M4RA Marksman Kit"
 	pro_case_overlay = "sniper"
 
 /obj/item/storage/box/kit/mini_sniper/fill_preset_inventory()
-	new /obj/item/weapon/gun/rifle/l42a(src)
+	new /obj/item/weapon/gun/rifle/m4ra(src)
 	new /obj/item/attachable/scope(src)
 	new /obj/item/attachable/suppressor(src)
 	new /obj/item/attachable/extended_barrel(src)
-	new /obj/item/ammo_magazine/rifle/l42a/ap(src)
-	new /obj/item/ammo_magazine/rifle/l42a/ap(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/ap(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/ap(src)
 
+/obj/item/storage/box/kit/m41a_kit
+	name = "\improper M41A Rifle Kit"
+	pro_case_overlay = "pursuit"
+
+/obj/item/storage/box/kit/m41a_kit/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/m41a(src)
+	new /obj/item/attachable/angledgrip(src)
+	new /obj/item/attachable/suppressor(src)
+	new /obj/item/attachable/extended_barrel(src)
+	new /obj/item/ammo_magazine/rifle/ap(src)
+	new /obj/item/ammo_magazine/rifle/ap(src)
 
 /obj/item/storage/box/kit/heavy_support
 	name = "\improper Forward HPR Shield Kit"
@@ -427,8 +444,6 @@
 	new /obj/item/storage/box/m94/signal(src)
 	new /obj/item/device/binoculars/range/designator(src)
 	new /obj/item/device/encryptionkey/jtac(src)
-	new /obj/item/storage/backpack/marine/satchel/rto/small(src)
-
 
 /obj/item/storage/box/kit/mini_intel
 	name = "\improper Field Intelligence Support Kit"

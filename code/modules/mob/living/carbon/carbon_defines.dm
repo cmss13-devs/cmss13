@@ -20,5 +20,23 @@
 
 	//blood.dm
 	blood_volume = BLOOD_VOLUME_NORMAL
+	var/special_blood = null
+
+	///list of active transfusions from blood bags or iv stands
+	var/list/active_transfusions = list()
 
 	var/datum/huntdata/hunter_data //Stores all information relating to Hunters for use with their HUD and other systems.
+
+/mob/living/carbon/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION("", "-----CARBON-----")
+	VV_DROPDOWN_OPTION(VV_HK_CHANGEHIVENUMBER, "Change Hive Number")
+
+/mob/living/carbon/vv_do_topic(list/href_list)
+	. = ..()
+
+	if(href_list[VV_HK_CHANGEHIVENUMBER])
+		if(!check_rights(R_DEBUG|R_ADMIN))
+			return
+
+		usr.client.cmd_admin_change_their_hivenumber(src)

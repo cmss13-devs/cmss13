@@ -12,7 +12,7 @@
 	if(!params["to_narrate"]) return
 
 	to_chat(target, params["to_narrate"])
-	message_staff("DirectNarrate: [key_name_admin(user)] to ([key_name_admin(target)]): [params["to_narrate"]]")
+	message_admins("DirectNarrate: [key_name_admin(user)] to ([key_name_admin(target)]): [params["to_narrate"]]")
 	return TRUE
 
 /datum/player_action/fun/explode
@@ -25,6 +25,6 @@
 	var/power = text2num(params["power"])
 	var/falloff = text2num(params["falloff"])
 
-	message_staff("[key_name_admin(user)] dropped a custom cell bomb with power [power], falloff [falloff] on [target.name]!")
+	message_admins("[key_name_admin(user)] dropped a custom cell bomb with power [power], falloff [falloff] on [target.name]!")
 	cell_explosion(get_turf(target), power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("divine intervention", user))
 	return TRUE

@@ -148,8 +148,8 @@ See also /datum/surgery_step/cut_larval_pseudoroots, /datum/surgery_step/retract
 See also /datum/surgery_step/saw_off_limb/failure var/list/cannot_hack, listing the tools that can't instantly chop a limb.**/
 #define SURGERY_TOOLS_SEVER_BONE list(\
 	/obj/item/tool/surgery/circular_saw = SURGERY_TOOL_MULT_IDEAL,\
-	/obj/item/weapon/melee/twohanded/fireaxe = SURGERY_TOOL_MULT_SUBOPTIMAL,\
-	/obj/item/weapon/melee/claymore/mercsword/machete = SURGERY_TOOL_MULT_SUBOPTIMAL,\
+	/obj/item/weapon/twohanded/fireaxe = SURGERY_TOOL_MULT_SUBOPTIMAL,\
+	/obj/item/weapon/claymore/mercsword/machete = SURGERY_TOOL_MULT_SUBOPTIMAL,\
 	/obj/item/tool/hatchet = SURGERY_TOOL_MULT_SUBSTITUTE,\
 	/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_SUBSTITUTE,\
 	/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\
@@ -158,7 +158,8 @@ See also /datum/surgery_step/saw_off_limb/failure var/list/cannot_hack, listing 
 ///Tools used to open and close ribs/skull. Heavy-duty prying, haemostat/wirecutter won't cut it.
 #define SURGERY_TOOLS_PRY_ENCASED list(\
 	/obj/item/tool/surgery/retractor = SURGERY_TOOL_MULT_IDEAL,\
-	/obj/item/tool/crowbar = SURGERY_TOOL_MULT_SUBSTITUTE\
+	/obj/item/tool/crowbar = SURGERY_TOOL_MULT_SUBSTITUTE,\
+	/obj/item/maintenance_jack = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\
 	)
 
 ///Tools used to patch lightly damaged bones or before setting. May need surgical line in future.

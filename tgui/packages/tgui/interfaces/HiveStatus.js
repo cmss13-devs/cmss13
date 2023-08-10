@@ -2,16 +2,7 @@ import { classes } from 'common/react';
 import { createSearch } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Input,
-  Button,
-  Flex,
-  Divider,
-  Collapsible,
-  Icon,
-  NumberInput,
-  Table,
-} from '../components';
+import { Input, Button, Flex, Divider, Collapsible, Icon, NumberInput, Table } from '../components';
 import { Window } from '../layouts';
 
 const redFont = {
@@ -120,7 +111,7 @@ const GeneralInformation = (props, context) => {
     queen_location,
     hive_location,
     total_xenos,
-    pooled_larva,
+    burrowed_larva,
     evilution_level,
   } = data;
 
@@ -140,7 +131,7 @@ const GeneralInformation = (props, context) => {
         <i>Total sisters: {total_xenos}</i>
       </Flex.Item>
       <Flex.Item>
-        <i>Pooled larvae: {pooled_larva}</i>
+        <i>Burrowed larvae: {burrowed_larva}</i>
       </Flex.Item>
       <Flex.Item>
         <i>Evilution: {evilution_level}</i>

@@ -4,13 +4,10 @@ mostly a copypaste of shotgun code but not *entirely*
 their unique feature is that a direct hit will buff your damage and firerate
 */
 
-#define USES_STREAKS (1<<0)
-#define DANGEROUS_TO_ONEHAND_LEVER (1<<1)
-#define MOVES_WHEN_LEVERING (1<<2)
-
 /obj/item/weapon/gun/lever_action
 	name = "lever-action rifle"
 	desc = "Welcome to the Wild West!\nThis gun is levered via Unique-Action, but it has a bonus feature: Hitting a target directly will grant you a fire rate and damage buff for your next shot during a short interval. Combo precision hits for massive damage."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "r4t-placeholder" //placeholder for a 'base' leveraction
 	item_state = "r4t-placeholder"
 	w_class = SIZE_LARGE
@@ -48,7 +45,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_1 + FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_1 + FIRE_DELAY_TIER_12)
 	lever_delay = FIRE_DELAY_TIER_3
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
@@ -74,7 +71,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/dropped(mob/user)
 	. = ..()
-	reset_hit_buff()
+	reset_hit_buff(user)
 	addtimer(VARSET_CALLBACK(src, cur_onehand_chance, reset_onehand_chance), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /obj/item/weapon/gun/lever_action/proc/direct_hit_buff(mob/user, mob/target, one_hand_lever = FALSE)
@@ -83,7 +80,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(one_hand_lever && !(flags_gun_lever_action & DANGEROUS_TO_ONEHAND_LEVER))
 		return
 	else if(one_hand_lever) //base marines should never be able to easily pass the skillcheck, only specialists and etc.
-		if(prob(cur_onehand_chance) || skillcheck(human_user, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
+		if(prob(cur_onehand_chance) || skillcheck(human_user, SKILL_FIREARMS, SKILL_FIREARMS_EXPERT))
 			cur_onehand_chance = cur_onehand_chance - 20 //gets steadily worse if you spam it
 			return
 		else
@@ -113,23 +110,23 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
 	apply_hit_buff(user, target, one_hand_lever) //this is a separate proc so it's configgable
-	addtimer(CALLBACK(src, PROC_REF(reset_hit_buff), one_hand_lever), hit_buff_reset_cooldown, TIMER_OVERRIDE|TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(reset_hit_buff), user, one_hand_lever), hit_buff_reset_cooldown, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /obj/item/weapon/gun/lever_action/proc/apply_hit_buff(mob/user, mob/target, one_hand_lever = FALSE)
 	lever_sound = lever_super_sound
 	lever_message = "<b><i>You quickly work the [lever_name]!<i><b>"
 	last_fired = world.time - buff_fire_reduc //to shoot the next round faster
-	lever_delay = FIRE_DELAY_TIER_10
+	lever_delay = FIRE_DELAY_TIER_12
 	damage_mult = initial(damage_mult) + BULLET_DAMAGE_MULT_TIER_10
-	fire_delay = FIRE_DELAY_TIER_5
+	set_fire_delay(FIRE_DELAY_TIER_5)
 	for(var/slot in attachments)
 		var/obj/item/attachable/AM = attachments[slot]
 		if(AM.damage_mod || AM.delay_mod)
 			damage_mult += AM.damage_mod
-			fire_delay += AM.delay_mod
+			modify_fire_delay(AM.delay_mod)
 	wield_delay = 0 //for one-handed levering
 
-/obj/item/weapon/gun/lever_action/proc/reset_hit_buff(one_hand_lever) //why does this need a user arg when it doesn't use user at all?
+/obj/item/weapon/gun/lever_action/proc/reset_hit_buff(mob/user, one_hand_lever)
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
 	SIGNAL_HANDLER
@@ -140,7 +137,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	cur_onehand_chance = initial(cur_onehand_chance)
 	//these are init configs and so cannot be initial()
 	lever_delay = FIRE_DELAY_TIER_3
-	fire_delay = FIRE_DELAY_TIER_1
+	set_fire_delay(FIRE_DELAY_TIER_1)
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recalculate_attachment_bonuses() //stock wield delay
 	if(one_hand_lever)
@@ -320,29 +317,26 @@ their unique feature is that a direct hit will buff your damage and firerate
 	item_state = "r4t"
 	flags_equip_slot = SLOT_BACK
 	attachable_allowed = list(
-						//Barrel
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/compensator,
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope/mini,
-						//Under
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/magnetic_harness/lever_sling,
-						//Stock
-						/obj/item/attachable/stock/r4t
-						)
+		/obj/item/attachable/bayonet/upp, // Barrel
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/gyro, // Under
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/magnetic_harness/lever_sling,
+		/obj/item/attachable/stock/r4t, // Stock
+		)
 	map_specific_decoration = TRUE
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_AMMO_COUNTER
 	flags_gun_lever_action = MOVES_WHEN_LEVERING|DANGEROUS_TO_ONEHAND_LEVER
+	civilian_usable_override = TRUE
 
 /obj/item/weapon/gun/lever_action/r4t/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 21, "under_x" = 24, "under_y" = 16, "stock_x" = 15, "stock_y" = 14)
@@ -357,8 +351,9 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/xm88
 	name = "\improper XM88 heavy rifle"
-	desc = "An experimental man-portable anti-material rifle chambered in .458 SOCOM. It must be manually chambered for every shot.\nIt has a special property - when you obtain multiple direct hits in a row, its armour penetration and damage will increase."
+	desc = "An experimental man-portable anti-material rifle chambered in .458 SOCOM. It must be manually chambered for every shot.\nIt has a special property - when you obtain multiple direct hits in a row, its armor penetration and damage will increase."
 	desc_lore = "Originally developed by ARMAT Battlefield Systems for the government of the state of Greater Brazil for use in the Favela Wars (2161 - Ongoing) against mechanized infantry. The platform features an onboard computerized targeting system, sensor array, and an electronic autoloader; these features work in tandem to reduce and render inert armor on the users target with successive hits. The Almayer was issued a small amount of XM88s while preparing for Operation Swamp Hopper with the USS Nan-Shan."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi' // overriden with camos anyways
 	icon_state = "boomslang"
 	item_state = "boomslang"
 	fire_sound = 'sound/weapons/gun_boomslang_fire.ogg'
@@ -379,29 +374,25 @@ their unique feature is that a direct hit will buff your damage and firerate
 	var/floating_penetration = FLOATING_PENETRATION_TIER_0 //holder var
 	var/floating_penetration_upper_limit = FLOATING_PENETRATION_TIER_4
 	attachable_allowed = list(
-						//Barrel
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/compensator,
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope/mini/xm88,
-						//Under
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/lasersight,
-						//Stock
-						/obj/item/attachable/stock/xm88
-						)
+		/obj/item/attachable/bayonet/upp, // Barrel
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope/mini/xm88,
+		/obj/item/attachable/gyro, // Under
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/stock/xm88, // Stock
+		)
 
 /obj/item/weapon/gun/lever_action/xm88/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_1
+	set_fire_delay(FIRE_DELAY_TIER_2)
 	lever_delay = FIRE_DELAY_TIER_3
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
@@ -415,23 +406,39 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/xm88/wield(mob/user)
 	. = ..()
 
-	user.client?.mouse_pointer_icon = get_mouse_pointer(floating_penetration)
-	RegisterSignal(user, COMSIG_MOB_FIRED_GUN, PROC_REF(update_fired_mouse_pointer))
+	RegisterSignal(src, COMSIG_ITEM_ZOOM, PROC_REF(scope_on))
+	RegisterSignal(src, COMSIG_ITEM_UNZOOM, PROC_REF(scope_off))
+
+/obj/item/weapon/gun/lever_action/xm88/proc/scope_on(atom/source, mob/current_user)
+	SIGNAL_HANDLER
+
+	RegisterSignal(current_user, COMSIG_MOB_FIRED_GUN, PROC_REF(update_fired_mouse_pointer))
+	update_mouse_pointer(current_user)
+
+/obj/item/weapon/gun/lever_action/xm88/proc/scope_off(atom/source, mob/current_user)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(current_user, COMSIG_MOB_FIRED_GUN)
+	current_user.client?.mouse_pointer_icon = null
 
 /obj/item/weapon/gun/lever_action/xm88/unwield(mob/user)
 	. = ..()
 
 	user.client?.mouse_pointer_icon = null
-	UnregisterSignal(user, COMSIG_MOB_FIRED_GUN)
+	UnregisterSignal(src, list(COMSIG_ITEM_ZOOM, COMSIG_ITEM_UNZOOM))
 
 /obj/item/weapon/gun/lever_action/xm88/proc/update_fired_mouse_pointer(mob/user)
 	SIGNAL_HANDLER
+
+	if(!user.client?.prefs.custom_cursors)
+		return
 
 	user.client?.mouse_pointer_icon = get_fired_mouse_pointer(floating_penetration)
 	addtimer(CALLBACK(src, PROC_REF(update_mouse_pointer), user), 0.4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_CLIENT_TIME)
 
 /obj/item/weapon/gun/lever_action/xm88/proc/update_mouse_pointer(mob/user)
-	user.client?.mouse_pointer_icon = get_mouse_pointer(floating_penetration)
+	if(user.client?.prefs.custom_cursors)
+		user.client?.mouse_pointer_icon = get_mouse_pointer(floating_penetration)
 
 /obj/item/weapon/gun/lever_action/xm88/proc/get_mouse_pointer(level)
 	switch(level)
@@ -471,7 +478,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	lever_sound = lever_super_sound
 	lever_message = "<b><i>You quickly press the [lever_name]!<i><b>"
 	last_fired = world.time - buff_fire_reduc //to shoot the next round faster
-	fire_delay = FIRE_DELAY_TIER_3
+	set_fire_delay(FIRE_DELAY_TIER_3)
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
 
 	if(floating_penetration < floating_penetration_upper_limit)
@@ -481,12 +488,12 @@ their unique feature is that a direct hit will buff your damage and firerate
 		var/obj/item/attachable/AM = attachments[slot]
 		if(AM && (AM.damage_mod || AM.delay_mod))
 			damage_mult += AM.damage_mod
-			fire_delay += AM.delay_mod
+			modify_fire_delay(AM.delay_mod)
 	wield_delay = 0 //for one-handed levering
 
 /obj/item/weapon/gun/lever_action/xm88/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
 	if(!able_to_fire(user) || !target) //checks here since we don't want to fuck up applying the increase
-		return
+		return NONE
 	if(floating_penetration && in_chamber) //has to go before actual firing
 		var/obj/item/projectile/P = in_chamber
 		switch(floating_penetration)
@@ -506,10 +513,12 @@ their unique feature is that a direct hit will buff your damage and firerate
 		levered = FALSE
 	return empty_chamber(user)
 
-/obj/item/weapon/gun/lever_action/xm88/reset_hit_buff(one_hand_lever) //why does this need a user arg when it doesn't use user at all?
+/obj/item/weapon/gun/lever_action/xm88/reset_hit_buff(mob/user, one_hand_lever)
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
 	SIGNAL_HANDLER
+	if(streak > 0)
+		to_chat(user, SPAN_WARNING("[src] beeps as it loses its targeting data, and returns to normal firing procedures."))
 	streak = 0
 	lever_sound = initial(lever_sound)
 	lever_message = initial(lever_message)
@@ -520,11 +529,10 @@ their unique feature is that a direct hit will buff your damage and firerate
 		P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88]
 	floating_penetration = FLOATING_PENETRATION_TIER_0
 	//these are init configs and so cannot be initial()
-	fire_delay = FIRE_DELAY_TIER_1 + FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_1 + FIRE_DELAY_TIER_12)
 	lever_delay = FIRE_DELAY_TIER_3
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recalculate_attachment_bonuses() //stock wield delay
-	visible_message(SPAN_WARNING("\The [src] beeps as it loses its targeting data, and returns to normal firing procedures."), max_distance = 1) // tell them they've lost stacks
 	if(one_hand_lever)
 		addtimer(VARSET_CALLBACK(src, cur_onehand_chance, reset_onehand_chance), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 

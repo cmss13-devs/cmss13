@@ -162,6 +162,9 @@
 	if(!user_turf)
 		return
 
+	if(is_mob_incapacitated())
+		return
+
 	if(pickup_recent_item_on_turf(user_turf))
 		return
 
@@ -177,6 +180,8 @@
 			remembered_dropped_objects -= weak_ref
 			break
 		if(previously_held_object.in_contents_of(check_turf))
+			if(previously_held_object.anchored)
+				return FALSE
 			put_in_hands(previously_held_object, drop_on_fail = FALSE)
 			return TRUE
 	return FALSE

@@ -33,7 +33,7 @@
 
 /obj/item/weapon/gun/revolver/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_5
+	set_fire_delay(FIRE_DELAY_TIER_5)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
 	scatter = SCATTER_AMOUNT_TIER_8
@@ -290,25 +290,27 @@
 /obj/item/weapon/gun/revolver/m44
 	name = "\improper M44 combat revolver"
 	desc = "A bulky revolver, occasionally carried by assault troops and officers in the Colonial Marines, as well as civilian law enforcement. Fires .44 Magnum rounds."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m44r"
 	item_state = "m44r"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/m44
 	force = 8
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/compensator,
-						/obj/item/attachable/stock/revolver,
-						/obj/item/attachable/scope,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/scope/mini_iff)
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/stock/revolver,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/mini_iff,
+	)
 	var/folded = FALSE // Used for the stock attachment, to check if we can shoot or not
 
 /obj/item/weapon/gun/revolver/m44/set_gun_attachment_offsets()
@@ -316,7 +318,7 @@
 
 /obj/item/weapon/gun/revolver/m44/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_7
+	set_fire_delay(FIRE_DELAY_TIER_7)
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -345,7 +347,7 @@
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special
 	name = "\improper M2019 Blaster"
 	desc = "Properly known as the Pflager Katsumata Series-D Blaster, the M2019 is a relic of a handgun used by detectives and blade runners, having replaced the snub nose .38 detective special in 2019. Fires .44 custom packed sabot magnum rounds. Legally a revolver, the unconventional but robust internal design has made this model incredibly popular amongst collectors and enthusiasts."
-	current_mag = /obj/item/ammo_magazine/internal/revolver/m44/pkd
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "lapd_2019"
 	item_state = "highpower" //placeholder
 
@@ -356,12 +358,14 @@
 	unload_sound = 'sound/weapons/handling/pkd_open_chamber.ogg'
 	chamber_close_sound = 'sound/weapons/handling/pkd_close_chamber.ogg'
 	hand_reload_sound = 'sound/weapons/gun_revolver_load3.ogg'
+	current_mag = /obj/item/ammo_magazine/internal/revolver/m44/pkd
 	accepted_ammo = list(
-		/obj/item/ammo_magazine/internal/revolver/m44/pkd)
+		/obj/item/ammo_magazine/internal/revolver/m44/pkd,
+	)
 
 	attachable_allowed = list(
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/lasersight
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
 	)
 
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/set_gun_attachment_offsets()
@@ -371,7 +375,7 @@
 	..()
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
-	fire_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_11)
 
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049
 	name = "\improper M2049 Blaster"
@@ -380,13 +384,13 @@
 	item_state = "m4a3c" //placeholder
 
 	attachable_allowed = list(
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/scope,
-						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/scope/mini_iff
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/mini_iff,
 	)
 
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049/set_gun_attachment_offsets()
@@ -399,8 +403,8 @@
 	item_state = "88m4" //placeholder
 
 	attachable_allowed = list(
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/lasersight
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
 	)
 
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series/set_gun_attachment_offsets()
@@ -410,20 +414,22 @@
 	..()
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
-	fire_delay = FIRE_DELAY_TIER_9
-	burst_amount = BURST_AMOUNT_TIER_2
-	burst_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_11)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_12)
 
 
 /obj/item/weapon/gun/revolver/m44/custom/webley //Van Bandolier's Webley.
 	name = "\improper Webley Mk VI service pistol"
 	desc = "A heavy top-break revolver. Bakelite grips, and older than most nations. .455 was good enough for angry tribesmen and <i>les boche</i>, and by Gum it'll do for Colonial Marines and xenomorphs as well."
 	current_mag = /obj/item/ammo_magazine/internal/revolver/webley
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "webley"
 	item_state = "m44r"
 	attachable_allowed = list(
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp)
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+	)
 
 /obj/item/weapon/gun/revolver/m44/custom/webley/set_gun_config_values()
 	..()
@@ -437,6 +443,7 @@
 /obj/item/weapon/gun/revolver/nagant
 	name = "\improper N-Y 7.62mm revolver"
 	desc = "The Nagant-Yamasaki 7.62 is an effective killing machine designed by a consortion of shady Not-Americans. It is frequently found in the hands of criminals or mercenaries."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	icon_state = "ny762"
 	item_state = "ny762"
 
@@ -444,28 +451,25 @@
 	current_mag = /obj/item/ammo_magazine/internal/revolver/upp
 	force = 8
 	attachable_allowed = list(
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/scope,
-						/obj/item/attachable/scope/mini,
-						//Muzzle
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/compensator,
-						//Underbarrel
-						/obj/item/attachable/lasersight
-						)
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/bayonet, // Muzzle
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/lasersight, // Underbarrel
+		)
 
 /obj/item/weapon/gun/revolver/nagant/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 24, "under_y" = 19, "stock_x" = 24, "stock_y" = 19)
 
 /obj/item/weapon/gun/revolver/nagant/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
+	set_fire_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
@@ -477,8 +481,8 @@
 	random_spawn_chance = 100
 	random_under_chance = 100
 	random_spawn_under = list(
-							/obj/item/attachable/lasersight,
-							)
+		/obj/item/attachable/lasersight,
+	)
 
 //-------------------------------------------------------
 //357 REVOLVER //Based on the generic S&W 357.
@@ -487,6 +491,7 @@
 /obj/item/weapon/gun/revolver/small
 	name = "\improper S&W .38 model 37 revolver"
 	desc = "A lean .38 made by Smith & Wesson. A timeless classic, from antiquity to the future. This specific model is known to be wildly inaccurate, yet extremely lethal."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "sw357"
 	item_state = "ny762" //PLACEHOLDER
 	fire_sound = 'sound/weapons/gun_44mag2.ogg'
@@ -499,7 +504,7 @@
 
 /obj/item/weapon/gun/revolver/small/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
+	set_fire_delay(FIRE_DELAY_TIER_6)
 	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_5
@@ -525,9 +530,9 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "matebakey"
 	flags_atom = FPRINT|CONDUCT
-	force = 5.0
+	force = 5
 	w_class = SIZE_TINY
-	throwforce = 5.0
+	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	attack_verb = list("stabbed")
@@ -535,6 +540,7 @@
 /obj/item/weapon/gun/revolver/mateba
 	name = "\improper Mateba autorevolver"
 	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It fires heavy .454 rounds."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "mateba"
 	item_state = "mateba"
 
@@ -542,16 +548,18 @@
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba
 	force = 15
 	attachable_allowed = list(
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/compensator,
-						/obj/item/attachable/mateba,
-						/obj/item/attachable/mateba/long,
-						/obj/item/attachable/mateba/short)
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/mateba,
+		/obj/item/attachable/mateba/long,
+		/obj/item/attachable/mateba/short,
+	)
 	starting_attachment_types = list(/obj/item/attachable/mateba)
 	unacidable = TRUE
+	black_market_value = 100
 	var/is_locked = TRUE
 
 /obj/item/weapon/gun/revolver/mateba/attackby(obj/item/I, mob/user)
@@ -588,9 +596,9 @@
 
 /obj/item/weapon/gun/revolver/mateba/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_2
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_7
+	set_fire_delay(FIRE_DELAY_TIER_3)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_8)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_7
@@ -600,7 +608,8 @@
 	recoil = RECOIL_AMOUNT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-
+/obj/item/weapon/gun/revolver/mateba/pmc
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/ap
 
 /obj/item/weapon/gun/revolver/mateba/general
 	name = "\improper golden Mateba autorevolver custom"
@@ -609,14 +618,15 @@
 	item_state = "amateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	attachable_allowed = list(
-					/obj/item/attachable/reddot,
-					/obj/item/attachable/reflex,
-					/obj/item/attachable/flashlight,
-					/obj/item/attachable/heavy_barrel,
-					/obj/item/attachable/compensator,
-					/obj/item/attachable/mateba/dark,
-					/obj/item/attachable/mateba/long/dark,
-					/obj/item/attachable/mateba/short/dark)
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/mateba/dark,
+		/obj/item/attachable/mateba/long/dark,
+		/obj/item/attachable/mateba/short/dark,
+	)
 	starting_attachment_types = null
 
 /obj/item/weapon/gun/revolver/mateba/general/handle_starting_attachment()
@@ -657,7 +667,8 @@
 
 /obj/item/weapon/gun/revolver/cmb
 	name = "\improper CMB Spearhead autorevolver"
-	desc = "An automatic revolver chambered in .357, often loaded with hollowpoint on spaceships to prevent hull damage. Commonly issued to Colonial Marshals. It has two select fire options, single and burst."
+	desc = "An automatic revolver chambered in .357, often loaded with hollowpoint on spaceships to prevent hull damage. Commonly issued to Colonial Marshals."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "spearhead"
 	item_state = "spearhead"
 	fire_sound = null
@@ -667,19 +678,16 @@
 	current_mag = /obj/item/ammo_magazine/internal/revolver/cmb/hollowpoint
 	force = 12
 	attachable_allowed = list(
-						//Muzzle
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/compensator,
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/scope/mini,
-						//Under
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/lasersight,
+		/obj/item/attachable/suppressor, // Muzzle
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/gyro, // Under
+		/obj/item/attachable/lasersight,
 	)
 
 /obj/item/weapon/gun/revolver/cmb/click_empty(mob/user)
@@ -691,14 +699,14 @@
 
 /obj/item/weapon/gun/revolver/cmb/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	playsound('sound/weapons/gun_cmb_bass.ogg') // badass shooting bass
-	. = ..()
+	return ..()
 
 /obj/item/weapon/gun/revolver/cmb/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 22,"rail_x" = 11, "rail_y" = 25, "under_x" = 20, "under_y" = 18, "stock_x" = 20, "stock_y" = 18)
 
 /obj/item/weapon/gun/revolver/cmb/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
+	set_fire_delay(FIRE_DELAY_TIER_6)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_7

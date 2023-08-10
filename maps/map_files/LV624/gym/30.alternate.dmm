@@ -181,14 +181,11 @@
 	},
 /area/lv624/lazarus/fitness)
 "lq" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/colony/north_nexus_road)
 "nl" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "ok" = (
 /obj/structure/machinery/light{
@@ -214,7 +211,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "sd" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Leisure Dome";
 	req_access_txt = "100";
@@ -239,7 +236,7 @@
 /area/lv624/ground/colony/south_medbay_road)
 "ux" = (
 /obj/effect/landmark/crap_item,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "uF" = (
 /obj/structure/barricade/handrail{
@@ -279,7 +276,7 @@
 /area/lv624/lazarus/fitness)
 "vZ" = (
 /obj/structure/flora/grass/tallgrass/jungle,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "wA" = (
 /obj/structure/bed/chair,
@@ -289,9 +286,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "wL" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/south_medbay_road)
 "xe" = (
 /obj/structure/closet/boxinggloves,
@@ -327,7 +322,7 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 9
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "AE" = (
 /turf/open/floor{
@@ -336,9 +331,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "Bl" = (
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/central_jungle)
 "Bm" = (
 /obj/structure/machinery/vending/cola,
@@ -368,7 +361,7 @@
 /area/lv624/lazarus/fitness)
 "CO" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "CZ" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -387,7 +380,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "DM" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "EQ" = (
 /obj/structure/holohoop{
@@ -420,7 +413,7 @@
 /area/lv624/lazarus/fitness)
 "Hz" = (
 /obj/structure/fence,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/north_nexus_road)
 "HF" = (
 /obj/structure/surface/rack,
@@ -477,8 +470,8 @@
 /area/lv624/lazarus/fitness)
 "JF" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/baseballbat,
-/obj/item/weapon/melee/baseballbat{
+/obj/item/weapon/baseballbat,
+/obj/item/weapon/baseballbat{
 	pixel_x = -6;
 	pixel_y = 2
 	},
@@ -501,13 +494,11 @@
 /area/lv624/lazarus/fitness)
 "LB" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/south_medbay_road)
 "LG" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
 "Mn" = (
 /obj/structure/machinery/light,
@@ -516,16 +507,16 @@
 	},
 /area/lv624/lazarus/fitness)
 "Nt" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "NW" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "Od" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
 "Op" = (
 /obj/effect/landmark/survivor_spawner,
@@ -541,10 +532,7 @@
 /turf/open/floor,
 /area/lv624/lazarus/fitness)
 "Ph" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/colony/north_nexus_road)
 "PC" = (
 /obj/item/tool/soap,
@@ -568,7 +556,7 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "Qj" = (
 /obj/item/device/radio/intercom{
@@ -605,7 +593,7 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 8
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "To" = (
 /turf/open/floor{
@@ -665,10 +653,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "Wh" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/colony/south_medbay_road)
 "Wx" = (
 /obj/structure/window_frame/colony,

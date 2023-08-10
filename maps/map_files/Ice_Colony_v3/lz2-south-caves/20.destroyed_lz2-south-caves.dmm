@@ -93,7 +93,7 @@
 /turf/closed/wall/shiva/ice,
 /area/shiva/exterior/lz2_fortress)
 "E" = (
-/obj/item/weapon/melee/ice_axe/red,
+/obj/item/weapon/ice_axe/red,
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/s_lz2)
 "G" = (

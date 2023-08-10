@@ -42,7 +42,7 @@
 	name = "Toggle Spit Type"
 	action_icon_state = "shift_spit_neurotoxin"
 	plasma_cost = 0
-	macro_path = /datum/action/xeno_action/verb/verb_toggle_spit_type
+	macro_path = /datum/action/xeno_action/verb/verb_toggle_gas_type
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
@@ -152,8 +152,8 @@
 			acid_plasma_cost = 100
 			acid_type = /obj/effect/xenomorph/acid
 		if(3)
-			name = "Corrosive Acid (200)"
-			acid_plasma_cost = 200
+			name = "Corrosive Acid (125)"
+			acid_plasma_cost = 125
 			acid_type = /obj/effect/xenomorph/acid/strong
 
 /datum/action/xeno_action/activable/corrosive_acid/weak
@@ -163,8 +163,8 @@
 	acid_type = /obj/effect/xenomorph/acid/weak
 
 /datum/action/xeno_action/activable/corrosive_acid/strong
-	name = "Corrosive Acid (200)"
-	acid_plasma_cost = 200
+	name = "Corrosive Acid (125)"
+	acid_plasma_cost = 125
 	level = 3
 	acid_type = /obj/effect/xenomorph/acid/strong
 
@@ -241,6 +241,12 @@
 /datum/action/xeno_action/activable/pounce/proc/additional_effects_always()
 	return
 
+/**
+ * Effects to apply *inmediately* before pouncing.
+ */
+/datum/action/xeno_action/activable/pounce/proc/pre_pounce_effects()
+	return
+
 /datum/action/xeno_action/activable/pounce/proc/end_pounce_freeze()
 	if(freeze_timer_id == TIMER_ID_NULL)
 		return
@@ -270,7 +276,12 @@
 	var/should_delay = FALSE
 	var/delay = 20
 	var/handles_movement = TRUE
+
+	/// how much you can move before zoom breaks
 	var/movement_buffer = 0
+
+	/// if we can move while zoomed, how slowed will we be when zoomed in? Use speed modifier defines.
+	var/movement_slowdown = 0
 
 /datum/action/xeno_action/onclick/toggle_long_range/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -285,32 +296,47 @@
 
 /datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno.is_zoomed)
-		xeno.zoom_out() // will also handle icon_state
-		xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."), \
-		SPAN_NOTICE("You stop looking off into the distance."), null, 5)
-	else
-		xeno.visible_message(SPAN_NOTICE("[xeno] starts looking off into the distance."), \
-			SPAN_NOTICE("You start focusing your sight to look off into the distance."), null, 5)
-		if (should_delay)
-			if(!do_after(xeno, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) return
-		if(xeno.is_zoomed) return
-		if(handles_movement)
-			RegisterSignal(xeno, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
-		xeno.zoom_in()
-		button.icon_state = "template_active"
+	xeno.speed_modifier = initial(xeno.speed_modifier)// Reset the speed modifier should you be disrupted while zooming or whatnot
 
-/datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, actually_moving, direction, specific_direction)
-	SIGNAL_HANDLER
-
-	if(!actually_moving)
+	if(xeno.observed_xeno)
 		return
 
+	if(xeno.is_zoomed)
+		xeno.zoom_out() // will call on_zoom_out()
+		return
+	xeno.visible_message(SPAN_NOTICE("[xeno] starts looking off into the distance."), \
+		SPAN_NOTICE("You start focusing your sight to look off into the distance."), null, 5)
+	if (should_delay)
+		if(!do_after(xeno, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) return
+	if(xeno.is_zoomed)
+		return
+	if(handles_movement)
+		RegisterSignal(xeno, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
+	if(movement_slowdown)
+		xeno.speed_modifier += movement_slowdown
+		xeno.recalculate_speed()
+	xeno.zoom_in()
+	button.icon_state = "template_active"
+	return ..()
+
+/datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_out()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."), \
+	SPAN_NOTICE("You stop looking off into the distance."), null, 5)
+	if(movement_slowdown)
+		xeno.speed_modifier -= movement_slowdown
+		xeno.recalculate_speed()
+	button.icon_state = "template"
+
+/datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/xeno, actually_moving, direction, specific_direction)
+	SIGNAL_HANDLER
 	movement_buffer--
+	if(!actually_moving)
+		return
 	if(movement_buffer <= 0)
 		movement_buffer = initial(movement_buffer)
-		mover.zoom_out() // will also handle icon_state
-		UnregisterSignal(mover, COMSIG_MOB_MOVE_OR_LOOK)
+		xeno.zoom_out() // will also handle icon_state
+		UnregisterSignal(xeno, COMSIG_MOB_MOVE_OR_LOOK)
 
 // General use acid spray, can be subtyped to customize behavior.
 // ... or mutated at runtime by another action that retrieves and edits these values
@@ -347,22 +373,33 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
-/datum/action/xeno_action/activable/transfer_plasma/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	X.xeno_transfer_plasma(A, plasma_transfer_amount, transfer_delay, max_range)
-	..()
+/datum/action/xeno_action/activable/transfer_plasma/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.xeno_transfer_plasma(target, plasma_transfer_amount, transfer_delay, max_range)
+	return ..()
 
 /datum/action/xeno_action/onclick/xenohide
 	name = "Hide"
 	action_icon_state = "xenohide"
 	plasma_cost = 0
+	xeno_cooldown = 0.5 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_hide
 	action_type = XENO_ACTION_CLICK
+	listen_signal = COMSIG_KB_XENO_HIDE
 
 /datum/action/xeno_action/onclick/xenohide/can_use_action()
 	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
+
+/// remove hide and apply modified attack cooldown
+/datum/action/xeno_action/onclick/xenohide/proc/post_attack()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno.layer == XENO_HIDING_LAYER)
+		xeno.layer = initial(xeno.layer)
+		button.icon_state = "template"
+		xeno.update_wounds()
+	apply_cooldown(4) //2 second cooldown after attacking
 
 /datum/action/xeno_action/onclick/xenohide/give_to(mob/living/living_mob)
 	. = ..()
@@ -399,6 +436,11 @@
 	cooldown_message = "You feel your neurotoxin glands swell with ichor. You can spit again."
 	xeno_cooldown = 60 SECONDS
 
+	/// Var that keeps track of in-progress wind-up spits like Bombard to prevent spitting multiple spits at the same time
+	var/spitting = FALSE
+	var/sound_to_play = "acid_spit"
+	var/aim_turf = FALSE
+
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
@@ -429,3 +471,78 @@
 	ability_primacy = XENO_TAIL_STAB
 	/// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE
+
+/datum/action/xeno_action/onclick/evolve
+	name = "Evolve"
+	action_icon_state = "evolve"
+	action_type = XENO_ACTION_CLICK
+	listen_signal = COMSIG_KB_XENO_EVOLVE
+
+/datum/action/xeno_action/onclick/evolve/action_activate()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.do_evolve()
+
+/datum/action/xeno_action/onclick/evolve/can_use_action()
+	if(!owner)
+		return FALSE
+	var/mob/living/carbon/xenomorph/xeno = owner
+	// Perform check_state(TRUE) silently:
+	if(xeno && !xeno.is_mob_incapacitated() || !xeno.buckled || !xeno.evolving && xeno.plasma_stored >= plasma_cost)
+		return TRUE
+
+/datum/action/xeno_action/onclick/tacmap
+	name = "View Tactical Map"
+	action_icon_state = "toggle_queen_zoom"
+	ability_name = "view tacmap"
+
+	var/mob/living/carbon/xenomorph/queen/tracked_queen
+
+/datum/action/xeno_action/onclick/tacmap/Destroy()
+	tracked_queen = null
+	return ..()
+
+/datum/action/xeno_action/onclick/tacmap/give_to(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+
+	RegisterSignal(xeno.hive, COMSIG_HIVE_NEW_QUEEN, PROC_REF(handle_new_queen))
+
+	if(!xeno.hive.living_xeno_queen)
+		hide_from(xeno)
+		return
+
+	if(!xeno.hive.living_xeno_queen.ovipositor)
+		hide_from(xeno)
+
+	handle_new_queen(new_queen = xeno.hive.living_xeno_queen)
+
+/// handles the addition of a new queen, hiding if appropriate
+/datum/action/xeno_action/onclick/tacmap/proc/handle_new_queen(datum/hive_status/hive, mob/living/carbon/xenomorph/queen/new_queen)
+	SIGNAL_HANDLER
+
+	if(tracked_queen)
+		UnregisterSignal(tracked_queen, list(COMSIG_QUEEN_MOUNT_OVIPOSITOR, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR))
+
+	tracked_queen = new_queen
+
+	if(!tracked_queen?.ovipositor)
+		hide_from(owner)
+
+	RegisterSignal(tracked_queen, COMSIG_QUEEN_MOUNT_OVIPOSITOR, PROC_REF(handle_mount_ovipositor))
+	RegisterSignal(tracked_queen, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(handle_dismount_ovipositor))
+
+/// deals with the queen mounting the ovipositor, unhiding the action from the user
+/datum/action/xeno_action/onclick/tacmap/proc/handle_mount_ovipositor()
+	SIGNAL_HANDLER
+
+	unhide_from(owner)
+
+/// deals with the queen dismounting the ovipositor, hiding the action from the user
+/datum/action/xeno_action/onclick/tacmap/proc/handle_dismount_ovipositor()
+	SIGNAL_HANDLER
+
+	hide_from(owner)
+
+/datum/action/xeno_action/onclick/tacmap/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.xeno_tacmap()
+	return ..()

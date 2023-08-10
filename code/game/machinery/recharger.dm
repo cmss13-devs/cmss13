@@ -8,9 +8,10 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 4
 	active_power_usage = 15000 //15 kW
+	black_market_value = 35
 	var/obj/item/charging = null
 	var/percent_charge_complete = 0
-	var/list/allowed_devices = list(/obj/item/weapon/melee/baton, /obj/item/cell, /obj/item/weapon/gun/energy, /obj/item/device/defibrillator, /obj/item/tool/portadialysis, /obj/item/clothing/suit/auto_cpr)
+	var/list/allowed_devices = list(/obj/item/weapon/baton, /obj/item/cell, /obj/item/weapon/gun/energy, /obj/item/device/defibrillator, /obj/item/tool/portadialysis, /obj/item/clothing/suit/auto_cpr, /obj/item/smartgun_battery)
 
 	var/charge_amount = 1000
 
@@ -93,8 +94,8 @@
 				update_icon()
 			return
 
-		if(istype(charging, /obj/item/weapon/melee/baton))
-			var/obj/item/weapon/melee/baton/B = charging
+		if(istype(charging, /obj/item/weapon/baton))
+			var/obj/item/weapon/baton/B = charging
 			if(B.bcell)
 				if(!B.bcell.fully_charged())
 					B.bcell.give(charge_amount)
@@ -165,6 +166,21 @@
 				update_icon()
 			return
 
+		if(istype(charging, /obj/item/smartgun_battery))
+			var/obj/item/smartgun_battery/charging_smartgun_battery = charging
+			if(charging_smartgun_battery.power_cell)
+				if(!charging_smartgun_battery.power_cell.fully_charged())
+					charging_smartgun_battery.power_cell.give(charge_amount)
+					percent_charge_complete = charging_smartgun_battery.power_cell.percent()
+					update_use_power(USE_POWER_ACTIVE)
+					update_icon()
+					return
+
+			percent_charge_complete = 100
+			update_use_power(USE_POWER_IDLE)
+			update_icon()
+			return
+
 		/* Disable defib recharging
 		if(istype(charging, /obj/item/device/defibrillator))
 			var/obj/item/device/defibrillator/D = charging
@@ -196,8 +212,8 @@
 		if(E.power_supply)
 			E.power_supply.emp_act(severity)
 */
-	if(istype(charging, /obj/item/weapon/melee/baton))
-		var/obj/item/weapon/melee/baton/B = charging
+	if(istype(charging, /obj/item/weapon/baton))
+		var/obj/item/weapon/baton/B = charging
 		if(B.bcell)
 			B.bcell.charge = 0
 	..(severity)
@@ -223,7 +239,7 @@
 
 	if(istype(charging, /obj/item/weapon/gun/energy))
 		overlays += "recharger-taser"//todo make more generic I guess. It works for now -trii
-	else if(istype(charging, /obj/item/weapon/melee/baton))
+	else if(istype(charging, /obj/item/weapon/baton))
 		overlays += "recharger-baton"
 
 /obj/structure/machinery/recharger/get_examine_text(mob/user)
@@ -234,13 +250,16 @@
 			var/obj/item/cell/C = charging
 			. += "Current charge: [C.charge] ([C.percent()]%)"
 
+/obj/structure/machinery/recharger/unanchored
+	anchored = FALSE
+
 /*
 /obj/structure/machinery/recharger/wallcharger
 	name = "wall recharger"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "wrecharger0"
 	active_power_usage = 25000 //25 kW , It's more specialized than the standalone recharger (guns and batons only) so make it more powerful
-	allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/melee/baton)
+	allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/baton)
 	icon_state_charged = "wrecharger2"
 	icon_state_idle = "wrecharger0"
 	icon_state_charging = "wrecharger1"

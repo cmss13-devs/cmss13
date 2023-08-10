@@ -82,8 +82,8 @@
 	item_state = "r_suit"
 
 /obj/item/clothing/under/blackskirt
-	name = "black skirt"
-	desc = "A black skirt, very fancy!"
+	name = "red dress skirt"
+	desc = "A black cardigan with a red skirt, quite fancy!"
 	icon_state = "blackskirt"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
@@ -220,7 +220,7 @@
 /obj/item/clothing/under/serviceoveralls
 	name = "Workman outfit"
 	desc = "The very image of a working man. Not that you're probably doing work."
-	icon_state = "mechanic_s"
+	icon_state = "mechanic"
 
 /obj/item/clothing/under/suit_jacket/director
 	name = "director's suit"

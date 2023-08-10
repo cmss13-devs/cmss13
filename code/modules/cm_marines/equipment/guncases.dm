@@ -295,3 +295,47 @@
 	new /obj/item/weapon/gun/shotgun/double/cane(src)
 	new /obj/item/ammo_magazine/handful/revolver/marksman/six_rounds(src)
 	new /obj/item/ammo_magazine/handful/revolver/marksman/six_rounds(src)
+
+//Handgun case for Military police vendor three mag , a railflashligh and the handgun.
+
+//88 Mod 4 Combat Pistol
+/obj/item/storage/box/guncase/mod88
+	name = "\improper 88 Mod 4 Combat Pistol case"
+	desc = "A gun case containing an 88 Mod 4 Combat Pistol."
+	storage_slots = 5
+	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/pistol/mod88, /obj/item/ammo_magazine/pistol/mod88)
+
+/obj/item/storage/box/guncase/mod88/fill_preset_inventory()
+	new /obj/item/attachable/flashlight(src)
+	new /obj/item/weapon/gun/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+
+//M44 Combat Revolver
+/obj/item/storage/box/guncase/m44
+	name = "\improper M44 Combat Revolver case"
+	desc = "A gun case containing an M44 Combat Revolver."
+	storage_slots = 5
+	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/revolver/m44, /obj/item/ammo_magazine/revolver)
+
+/obj/item/storage/box/guncase/m44/fill_preset_inventory()
+	new /obj/item/attachable/flashlight(src)
+	new /obj/item/weapon/gun/revolver/m44(src)
+	new /obj/item/ammo_magazine/revolver(src)
+	new /obj/item/ammo_magazine/revolver(src)
+	new /obj/item/ammo_magazine/revolver(src)
+
+//M4A3 Service Pistol
+/obj/item/storage/box/guncase/m4a3
+	name = "\improper M4A3 Service Pistol case"
+	desc = "A gun case containing an M4A3 Service Pistol."
+	storage_slots = 5
+	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/pistol/m4a3, /obj/item/ammo_magazine/pistol)
+
+/obj/item/storage/box/guncase/m4a3/fill_preset_inventory()
+	new /obj/item/attachable/flashlight(src)
+	new /obj/item/weapon/gun/pistol/m4a3(src)
+	new /obj/item/ammo_magazine/pistol(src)
+	new /obj/item/ammo_magazine/pistol(src)
+	new /obj/item/ammo_magazine/pistol(src)

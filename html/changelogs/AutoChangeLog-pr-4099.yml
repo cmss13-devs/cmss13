@@ -1,5 +1,0 @@
-author: "blackdragonTOW"
-delete-after: True
-changes:
-  - ui: "Hardcore deaths are now marked with a unique red skull"
-  - imageadd: "Red skull added for hardcore deaths"

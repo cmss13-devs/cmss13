@@ -1,6 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - balance: "Removed the barrel charger from vendors"
-  - balance: "Removed all benefits other than wield delay mod from the angled grip"
-  - balance: "Added wield delay to extended barrel"

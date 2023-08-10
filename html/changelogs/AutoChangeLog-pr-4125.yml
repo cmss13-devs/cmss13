@@ -1,5 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - rscadd: "Xenos with less than 10 hours on xeno now have the \"Young\" prefix"
-  - rscadd: "Young Queen has been renamed to Growing Queen"

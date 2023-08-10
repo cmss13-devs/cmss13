@@ -1,0 +1,5 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - rscadd: "Update the MP and Warden vendor to fallow more the standard of the rifleman vendor."
+  - rscadd: "change the selection of the handgun from a full belt to a handgun case(3magazin,one railgunlight and the gun.)."

@@ -72,8 +72,14 @@
 			var/mob/living/L = evaluate_target(A)
 			if(L)
 				stance = HOSTILE_STANCE_ATTACK
+				var/atom/Tprev = T
 				T = L
-				break
+
+				if (!ishuman(L))
+					continue
+				if (get_dist(src, L) > get_dist(src, Tprev))
+					T = Tprev
+				continue
 
 		if(istype(A, /obj/structure/machinery/bot))
 			var/obj/structure/machinery/bot/B = A

@@ -1,0 +1,4 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - bugfix: "A pile of guns no longer have burst fire (who weren't meant to)"

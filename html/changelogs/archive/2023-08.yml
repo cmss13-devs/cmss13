@@ -143,3 +143,26 @@
   - rscadd: Toolkits have been added to the game. Holds engineering supplies akin
       to a medkit. Issued freely to ComTechs and Engineers, can be bought by the USCM
       Synthetic for cheap.
+2023-08-10:
+  Drathek:
+  - bugfix: Fixed unnested mobs sometimes having incorrect density allowing xenos
+      to push them
+  Huffie56:
+  - rscadd: Add a skill check to operate IV.
+  - bugfix: Fix remove iv needing power to operate.
+  - rscadd: Update the MP and Warden vendor to fallow more the standard of the rifleman
+      vendor.
+  - rscadd: change the selection of the handgun from a full belt to a handgun case(3magazin,one
+      railgunlight and the gun.).
+  Morrow:
+  - balance: 'Across the board firerate nerfs with the exceptions of: M37 shotgun,
+      M240 Flamer, M42A Scope Rifle, XM88, Mateba, Desert Eagle'
+  - balance: Folded etools are now small items
+  Steelpoint:
+  - rscadd: The SMG belt has been changed. It now holds a SMG plus two extra magazines,
+      plus it can fit in either the belt or armour slot.
+  Tallfission:
+  - rscadd: Vehicles skill for Commanding Officer, Executive Officer, and Auxiliary
+      Support Officer jobs
+  Zonespace27:
+  - rscadd: Combisticks now use a proper chain instead of an invisible magic one.

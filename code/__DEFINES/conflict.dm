@@ -54,30 +54,24 @@
 #define GUN_TRIGGER_SAFETY (1<<1)
 #define GUN_UNUSUAL_DESIGN (1<<2)
 #define GUN_SILENCED (1<<3)
-#define GUN_AUTOMATIC (1<<4)
 ///If checking for ammo with current.mag you have to check it against numerical values, as booleans will not trigger.
-#define GUN_INTERNAL_MAG (1<<5)
-#define GUN_AUTO_EJECTOR (1<<6)
-#define GUN_AMMO_COUNTER (1<<7)
-#define GUN_BURST_ON (1<<8)
-#define GUN_BURST_FIRING (1<<9)
-#define GUN_FLASHLIGHT_ON (1<<10)
-#define GUN_WY_RESTRICTED (1<<11)
-#define GUN_SPECIALIST (1<<12)
-#define GUN_WIELDED_FIRING_ONLY (1<<13)
-#define GUN_HAS_FULL_AUTO (1<<14)
-#define GUN_FULL_AUTO_ON (1<<15)
+#define GUN_INTERNAL_MAG (1<<4)
+#define GUN_AUTO_EJECTOR (1<<5)
+#define GUN_AMMO_COUNTER (1<<6)
+#define GUN_BURST_FIRING (1<<7)
+#define GUN_FLASHLIGHT_ON (1<<8)
+#define GUN_WY_RESTRICTED (1<<9)
+#define GUN_SPECIALIST (1<<10)
+#define GUN_WIELDED_FIRING_ONLY (1<<11)
 /// removes unwielded accuracy and scatter penalties (not recoil)
-#define GUN_ONE_HAND_WIELDED (1<<16)
-#define GUN_ANTIQUE (1<<17)
+#define GUN_ONE_HAND_WIELDED (1<<12)
+#define GUN_ANTIQUE (1<<13)
 /// Whether the gun has been fired by its current user (reset upon `dropped()`)
-#define GUN_RECOIL_BUILDUP (1<<18)
+#define GUN_RECOIL_BUILDUP (1<<14)
 /// support weapon, bipod will grant IFF
-#define GUN_SUPPORT_PLATFORM (1<<19)
-#define GUN_BURST_ONLY (1<<20)
-#define GUN_FULL_AUTO_ONLY (1<<21)
+#define GUN_SUPPORT_PLATFORM (1<<15)
 /// No gun description, only base desc
-#define GUN_NO_DESCRIPTION (1<<22)
+#define GUN_NO_DESCRIPTION (1<<16)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 #define USES_STREAKS (1<<0)
@@ -85,15 +79,17 @@
 #define MOVES_WHEN_LEVERING (1<<2)
 
 //Gun attachable related flags.
-#define ATTACH_REMOVABLE 1
-#define ATTACH_ACTIVATION 2
+#define ATTACH_REMOVABLE (1<<0)
+#define ATTACH_ACTIVATION (1<<1)
 /// for attachments that fire bullets
-#define ATTACH_PROJECTILE 4
-#define ATTACH_RELOADABLE 8
+#define ATTACH_PROJECTILE (1<<2)
+#define ATTACH_RELOADABLE (1<<3)
 /// is a weapon that fires stuff
-#define ATTACH_WEAPON 16
+#define ATTACH_WEAPON (1<<4)
+/// This attachment should override ignore if it is empty
+#define ATTACH_IGNORE_EMPTY (1<<5)
 /// This attachment should activate if you attack() with it attached.
-#define ATTACH_MELEE 32
+#define ATTACH_MELEE (1<<6)
 
 //Ammo magazine defines, for flags_magazine
 
@@ -200,6 +196,7 @@
 
 // human armor
 #define CLOTHING_ARMOR_NONE 0
+#define CLOTHING_ARMOR_VERYLOW 5
 #define CLOTHING_ARMOR_LOW 10
 #define CLOTHING_ARMOR_MEDIUMLOW 15
 #define CLOTHING_ARMOR_MEDIUM 20
@@ -232,6 +229,7 @@
 //OB timings
 #define OB_TRAVEL_TIMING 12 SECONDS
 #define OB_CRASHING_DOWN 1 SECONDS
+#define OB_CLUSTER_DURATION 45 SECONDS
 //=================================================
 
 //Health of various items

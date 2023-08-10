@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - bugfix: "Flashlight gun attachments turn off when they should"

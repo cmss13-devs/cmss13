@@ -295,6 +295,11 @@
 	name = "Delta squad chair"
 	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Delta squad blue. This chair is most likely to be the first to fight and first to die."
 
+/obj/structure/bed/chair/comfy/ares
+	icon_state = "comfychair_ares"
+	name = "AI core chair"
+	desc = "A functional chair designed for comfortably sitting a single person with intent to facilitate interactions with the ship AI."
+
 /obj/structure/bed/chair/office
 	anchored = FALSE
 	drag_delay = 1 //Pulling something on wheels is easy

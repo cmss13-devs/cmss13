@@ -2,17 +2,28 @@
 //returns FALSE otherwise
 /obj/proc/allowed(mob/M)
 	//check if it doesn't require any access at all
-	if(check_access()) return TRUE
-	if(isRemoteControlling(M)) return TRUE //AI can do whatever he wants
+	if(check_access() || isRemoteControlling(M))
+		return TRUE
 
-	else if(ishuman(M))
+	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		//if they are holding or wearing a card that has access, that works
-		if(check_access(H.get_active_hand()) || check_access(H.wear_id)) return TRUE
-	else if(istype(M, /mob/living/carbon/xenomorph))
+		if(check_access(H.get_active_hand()) || check_access(H.wear_id))
+			return TRUE
+		return check_yautja_access(H)
+	if(istype(M, /mob/living/carbon/xenomorph))
 		var/mob/living/carbon/C = M
-		if(check_access(C.get_active_hand())) return TRUE
-	return FALSE
+		if(check_access(C.get_active_hand()))
+			return TRUE
+		return FALSE
+
+/obj/proc/check_yautja_access(mob/living/carbon/human/yautja)
+	if(!istype(yautja))
+		return FALSE
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = yautja.gloves
+	if(!istype(bracer) || !bracer.embedded_id || !check_access(bracer.embedded_id))
+		return FALSE
+	return TRUE
 
 /obj/item/proc/GetAccess() return list()
 
@@ -102,7 +113,11 @@
 
 ///Includes restricted accesses
 /proc/get_all_marine_access()
-	return list(ACCESS_MARINE_CO) + get_main_marine_access()
+	return list(
+		ACCESS_MARINE_CO,
+		ACCESS_MARINE_AI,
+		ACCESS_MARINE_AI_TEMP,
+		) + get_main_marine_access()
 
 ///All Almayer accesses other than the highly restricted ones, such as CO's office.
 /proc/get_main_marine_access()
@@ -141,6 +156,7 @@
 		ACCESS_MARINE_KITCHEN,
 		ACCESS_MARINE_SYNTH,
 		ACCESS_PRESS,
+		ACCESS_MARINE_ASO,
 	)
 
 /proc/get_all_weyland_access()
@@ -256,6 +272,7 @@
 		if(ACCESS_MARINE_SEA) return "SEA's Office"
 		if(ACCESS_MARINE_KITCHEN) return "Kitchen"
 		if(ACCESS_MARINE_SYNTH) return "Synthetic Storage"
+		if(ACCESS_MARINE_AI) return "AI Core"
 
 /proc/get_weyland_access_desc(A)
 	switch(A)

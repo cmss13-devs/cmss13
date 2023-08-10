@@ -42,6 +42,15 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_MARINE_OT 35
 
 #define ACCESS_MARINE_SYNTH 36
+#define ACCESS_MARINE_ASO 37
+
+// AI Core Accesses
+/// Used in temporary passes
+#define ACCESS_MARINE_AI_TEMP 90
+/// Used as dedicated access to ARES Core.
+#define ACCESS_MARINE_AI 91
+/// Used to access Maintenance Protocols on ARES Interface.
+#define ACCESS_ARES_DEBUG 92
 
 //Surface access levels
 #define ACCESS_CIVILIAN_PUBLIC 100
@@ -63,3 +72,11 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_WY_CORPORATE_DS 202
 #define ACCESS_PRESS 203
 //=================================================
+
+// Yautja Access Levels
+/// Requires a visible ID chip to open
+#define ACCESS_YAUTJA_SECURE 250
+/// Elders+ only
+#define ACCESS_YAUTJA_ELDER 251
+/// Ancients only
+#define ACCESS_YAUTJA_ANCIENT 252

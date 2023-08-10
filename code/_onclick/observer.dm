@@ -45,13 +45,20 @@
 						return FALSE
 
 					var/deathtime = world.time - timeofdeath
-					if(deathtime < 2.5 MINUTES)
+					if(deathtime < XENO_JOIN_DEAD_LARVA_TIME)
 						var/message = "You have been dead for [DisplayTimeText(deathtime)]."
 						message = SPAN_WARNING("[message]")
 						to_chat(src, message)
-						to_chat(src, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game!"))
+						to_chat(src, SPAN_WARNING("You must wait atleast 2.5 minutes before rejoining the game!"))
 						ManualFollow(target)
 						return FALSE
+
+				if(xeno.hive)
+					for(var/mob_name in xeno.hive.banished_ckeys)
+						if(xeno.hive.banished_ckeys[mob_name] == ckey)
+							to_chat(src, SPAN_WARNING("You are banished from the [xeno.hive], you may not rejoin unless the Queen re-admits you or dies."))
+							ManualFollow(target)
+							return FALSE
 
 				if(alert(src, "Are you sure you want to transfer yourself into [xeno]?", "Confirm Transfer", "Yes", "No") != "Yes")
 					return FALSE

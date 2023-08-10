@@ -1,4 +1,0 @@
-author: "sg2002"
-delete-after: True
-changes:
-  - bugfix: "XM88 now correctly notifies the user on the hit streak end."

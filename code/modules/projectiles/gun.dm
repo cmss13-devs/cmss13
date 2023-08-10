@@ -706,7 +706,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	data["recoil_max"] = RECOIL_AMOUNT_TIER_1
 	data["scatter_max"] = SCATTER_AMOUNT_TIER_1
-	data["firerate_max"] = 1 MINUTES / FIRE_DELAY_TIER_10
+	data["firerate_max"] = 1 MINUTES / FIRE_DELAY_TIER_12
 	data["damage_max"] = 100
 	data["accuracy_max"] = 32
 	data["range_max"] = 32

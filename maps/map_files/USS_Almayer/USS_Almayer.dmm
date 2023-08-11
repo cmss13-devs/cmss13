@@ -16927,6 +16927,12 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/operating_room_four)
+"boj" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/closed/wall/almayer,
+/area/almayer/hull/lower_hull/l_f_s)
 "bop" = (
 /obj/structure/machinery/cm_vending/clothing/military_police{
 	density = 0;
@@ -41495,18 +41501,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "ihu" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
+/obj/structure/machinery/landinglight/ds1,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E"
+	icon_state = "W";
+	layer = 3.3
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	layer = 3.33;
-	pixel_y = 2
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
-/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "ihw" = (
 /obj/structure/machinery/cm_vending/sorted/medical,
@@ -42960,10 +42962,19 @@
 	},
 /area/almayer/squads/alpha)
 "iPV" = (
-/obj/structure/machinery/light/containment,
-/turf/open/floor/almayer{
-	icon_state = "orangefull"
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "iQg" = (
 /obj/structure/disposalpipe/segment{
@@ -45972,6 +45983,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/charlie_delta_shared)
+"khm" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/closed/wall/almayer,
+/area/almayer/living/offices/flight)
 "khD" = (
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -50097,6 +50115,16 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/living/briefing)
+"lSa" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hallways/hangar)
 "lSD" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer{
@@ -52278,12 +52306,13 @@
 /area/almayer/hallways/starboard_hallway)
 "mUl" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	layer = 3.33;
 	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -58767,9 +58796,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -65360,13 +65386,12 @@
 	},
 /area/almayer/squads/bravo)
 "sNv" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E"
+	icon_state = "W";
+	layer = 3.3
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "sNz" = (
 /obj/effect/decal/warning_stripes{
@@ -70271,6 +70296,15 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/upper_medical)
+"uRu" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	invisibility = 101;
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/closed/wall/almayer,
+/area/almayer/living/gym)
 "uRI" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -71745,16 +71779,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
 "vuW" = (
-/obj/structure/machinery/status_display{
-	pixel_y = 30
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "vuZ" = (
 /obj/structure/pipes/vents/scrubber{
@@ -75429,8 +75455,8 @@
 "wVj" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
+	icon_state = "E";
+	pixel_x = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -97390,8 +97416,8 @@ hJp
 mGL
 mBb
 wqh
-cbB
-fmh
+wzj
+aZQ
 baI
 baI
 baI
@@ -97796,8 +97822,8 @@ uNL
 uNL
 uNL
 cCE
-wzj
-aZO
+iPV
+lSa
 baI
 baI
 baI
@@ -101044,8 +101070,8 @@ aoL
 akz
 ajM
 caM
-wzj
-aZX
+cbB
+ihu
 baI
 baI
 baI
@@ -101247,8 +101273,8 @@ khD
 rYJ
 ajM
 xyw
-ihu
-sNv
+wzj
+aZY
 baI
 baI
 baI
@@ -102255,14 +102281,14 @@ dnX
 uNL
 uNL
 eXq
+khm
 eXq
 eXq
-eXq
-eXq
+khm
 eXq
 eXq
 mrD
-cbB
+iPV
 wVj
 baI
 baI
@@ -102660,10 +102686,10 @@ nXP
 mGL
 eKO
 nsd
-aYt
+vuW
 fVx
 sUT
-aYt
+vuW
 aYt
 wTT
 bGR
@@ -103064,7 +103090,7 @@ aag
 aag
 nXP
 tRV
-uNL
+boj
 nsd
 aYt
 pZk
@@ -103274,9 +103300,9 @@ aYt
 kYy
 aYt
 aYt
-iPV
-bcm
-vuW
+mRf
+bGR
+wqh
 wzj
 tdc
 rOc
@@ -103878,10 +103904,10 @@ mGL
 mGL
 eKO
 nsd
-aYt
+vuW
 fVx
 wjn
-hmI
+sNv
 hmI
 hmI
 bGR
@@ -104082,7 +104108,7 @@ xJi
 uNL
 xFY
 kNa
-aYt
+puI
 xAY
 aRu
 ehI
@@ -104288,7 +104314,7 @@ wfE
 wfE
 wfE
 wfE
-wfE
+uRu
 wfE
 wfE
 bsk

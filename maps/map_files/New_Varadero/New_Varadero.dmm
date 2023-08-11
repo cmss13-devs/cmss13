@@ -7318,7 +7318,7 @@
 /area/varadero/exterior/eastbeach)
 "eNW" = (
 /obj/item/limb/hand/r_hand{
-	desc = "A severed hand, with a blood trail following off towards the south.. Within the finger's, a revolver is still grasped."
+	desc = "A severed hand, with a blood trail following off towards the south.. Within the fingers, a revolver is still grasped."
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)

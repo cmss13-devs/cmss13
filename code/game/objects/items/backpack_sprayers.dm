@@ -81,7 +81,7 @@
 	else
 		. = ..()
 
-/obj/item/reagent_container/glass/watertank/verb/toggle_mister_verb(mob/user, list/modifiers)
+/obj/item/reagent_container/glass/watertank/verb/toggle_mister_verb()
 	set name = "Toggle Mister"
 	set category = "Object"
 

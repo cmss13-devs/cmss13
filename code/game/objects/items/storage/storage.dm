@@ -454,16 +454,16 @@ That's done by can_be_inserted(). Its checks are whether the item exists, is an 
 The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple
 items at once, such as when picking up all the items on a tile with one click.
 user can be null, it refers to the potential mob doing the insertion.**/
-/obj/item/storage/proc/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
-	if(!istype(W))
+/obj/item/storage/proc/handle_item_insertion(obj/item/Warn, prevent_warning = 0, mob/user)
+	if(!istype(Warn))
 		return FALSE
-	if(user && W.loc == user)
-		if(!user.drop_inv_item_to_loc(W, src))
+	if(user && Warn.loc == user)
+		if(!user.drop_inv_item_to_loc(Warn, src))
 			return FALSE
 	else
-		W.forceMove(src)
+		Warn.forceMove(src)
 
-	_item_insertion(W, prevent_warning, user)
+	_item_insertion(Warn, prevent_warning, user)
 	return TRUE
 
 /**Inserts the item. Separate proc because handle_item_insertion isn't guaranteed to insert
@@ -720,25 +720,25 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 			to_chat(user, SPAN_WARNING("[ammo_dumping] is empty."))
 	return TRUE
 
-/obj/item/storage/proc/dump_into(obj/item/storage/M, mob/user)
+/obj/item/storage/proc/dump_into(obj/item/storage/Main, mob/user)
 
 	if(user.action_busy)
 		return
 
-	if(!M.contents.len)
-		to_chat(user, SPAN_WARNING("[M] is empty."))
+	if(!Main.contents.len)
+		to_chat(user, SPAN_WARNING("[Main] is empty."))
 		return
-	if(!has_room(M.contents[1])) //Does it have room for the first item to be inserted?
+	if(!has_room(Main.contents[1])) //Does it have room for the first item to be inserted?
 		to_chat(user, SPAN_WARNING("[src] is full."))
 		return
 
-	to_chat(user, SPAN_NOTICE("You start refilling [src] with [M]."))
+	to_chat(user, SPAN_NOTICE("You start refilling [src] with [Main]."))
 	if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
-	for(var/obj/item/I in M)
+	for(var/obj/item/I in Main)
 		if(!has_room(I))
 			break
-		M.remove_from_storage(I)
+		Main.remove_from_storage(I)
 		handle_item_insertion(I, TRUE, user) //quiet insertion
 
 	playsound(user.loc, "rustle", 15, TRUE, 6)

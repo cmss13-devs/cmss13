@@ -16,35 +16,17 @@
 	///TRUE Means that it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
 	var/flap = TRUE
 
-/obj/item/storage/belt/gun/dump_into(obj/item/storage/M, mob/user)
-	//var/holster_gun = FALSE
-	/*
-	for(var/slot in holster_slots)
-		if(!holster_slots[slot]["gun"]) //Open holster.
-			holster_gun = FALSE
-			break
-		if(holster_slots[slot]["gun"]) //Gun in holster.
-			holster_gun = TRUE
-			break
-	*/
+/obj/item/storage/belt/gun/dump_into(obj/item/storage/Main, mob/user)
+
 	if(length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
 
 		to_chat(user, SPAN_WARNING("[src] is full."))
 		return FALSE
 	return ..()
 
-/obj/item/storage/belt/gun/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
-	//var/holster_gun = FALSE
-	/*
-	for(var/slot in holster_slots)
-		if(!holster_slots[slot]["gun"]) //Open holster.
-			holster_gun = FALSE
-			break
-		if(holster_slots[slot]["gun"]) //gun in holster.
-			holster_gun = TRUE
-			break
-	*/
-	if(W.type == /obj/item/device/flashlight/flare && length(holstered_guns) < 1 && contents.len >= (storage_slots-1))
+/obj/item/storage/belt/gun/flaregun/handle_item_insertion(obj/item/Warn, prevent_warning = 0, mob/user)
+
+	if(Warn.type == /obj/item/device/flashlight/flare && length(holstered_guns) < 1 && contents.len >= (storage_slots-1))
 		return FALSE
 	return ..()
 

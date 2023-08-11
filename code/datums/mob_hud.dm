@@ -4,7 +4,7 @@
 var/list/datum/mob_hud/huds = list(
 	MOB_HUD_SECURITY_BASIC = new /datum/mob_hud/security/basic(),
 	MOB_HUD_SECURITY_ADVANCED = new /datum/mob_hud/security/advanced(),
-	MOB_HUD_MEDICAL_BASIC = new /datum/mob_hud/medical/basic(), // I don't think this is really needed anymore and it's annoying me, consult with the ancients before merge - Morrow
+	MOB_HUD_MEDICAL_BASIC = new /datum/mob_hud/medical/basic(),
 	MOB_HUD_MEDICAL_ADVANCED = new /datum/mob_hud/medical/advanced(),
 	MOB_HUD_MEDICAL_OBSERVER = new /datum/mob_hud/medical/observer(),
 	MOB_HUD_XENO_INFECTION = new /datum/mob_hud/xeno_infection(),

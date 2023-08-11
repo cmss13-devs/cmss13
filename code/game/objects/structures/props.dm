@@ -192,8 +192,8 @@
 	desc = "A state of the art EVAC-3F aerospace fighter used by the USCM. These fighters, in use by the USCM are designed to be modular and fulfil a variety of purposes. However, these aircraft have long seen better day on the Almayer, with extensive internal wiring damage and unfinished repairs to the bomb-bays."
 	icon = 'icons/obj/structures/props/vehicles.dmi'
 	icon_state = "evac_uscm"
-	bound_height = 64
-	bound_width = 64
+	bound_height = 256
+	bound_width = 256
 
 /obj/structure/prop/evac/usaf
 	name = "EVAC-3O Reconnaissance Fighter"

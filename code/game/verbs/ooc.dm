@@ -64,10 +64,10 @@
 			if(prefs.unlock_content)
 				if(prefs.toggle_prefs & TOGGLE_MEMBER_PUBLIC)
 					var/byond = icon('icons/effects/effects.dmi', "byondlogo")
-					display_name = "[icon2html(byond, GLOB.clients)][display_name]"
+					ooc_prefix = "[icon2html(byond, GLOB.clients)][ooc_prefix]"
 			if(CONFIG_GET(flag/ooc_country_flags))
 				if(prefs.toggle_prefs & TOGGLE_OOC_FLAG)
-					display_name = "[country2chaticon(src.country, GLOB.clients)][display_name]"
+					ooc_prefix = "[country2chaticon(src.country, GLOB.clients)][ooc_prefix]"
 			to_chat(C, "<font color='[display_colour]'><span class='ooc linkify'>[ooc_prefix]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
 
 /client/proc/set_ooc_color_global(newColor as color)

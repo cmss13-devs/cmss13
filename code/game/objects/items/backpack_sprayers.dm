@@ -87,7 +87,7 @@
 	toggle_mister(src)
 */
 
-/mob/living/carbon/human/toggle_mister_verb()
+/mob/living/carbon/human/verb/toggle_mister_verb()
 	set name = "Toggle Mister"
 	set category = "Object"
 	toggle_mister()

@@ -80,17 +80,13 @@
 		remove_noz()
 	else
 		. = ..()
-/*
+
 /obj/item/reagent_container/glass/watertank/verb/toggle_mister_verb()
 	set name = "Toggle Mister"
 	set category = "Object"
-	toggle_mister(src)
-*/
+	set src in usr
+	toggle_mister(usr)
 
-/mob/living/carbon/human/verb/toggle_mister_verb()
-	set name = "Toggle Mister"
-	set category = "Object"
-	toggle_mister()
 
 /obj/item/reagent_container/glass/watertank/MouseDrop(obj/over_object as obj)
 	if(!CAN_PICKUP(usr, src))

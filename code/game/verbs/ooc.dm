@@ -61,13 +61,6 @@
 	for(var/client/C in GLOB.clients)
 		if(C.prefs.toggles_chat & CHAT_OOC)
 			var/display_name = src.key
-			if(prefs.unlock_content)
-				if(prefs.toggle_prefs & TOGGLE_MEMBER_PUBLIC)
-					var/byond = icon('icons/effects/effects.dmi', "byondlogo")
-					ooc_prefix = "[icon2html(byond, GLOB.clients)][ooc_prefix]"
-			if(CONFIG_GET(flag/ooc_country_flags))
-				if(prefs.toggle_prefs & TOGGLE_OOC_FLAG)
-					ooc_prefix = "[country2chaticon(src.country, GLOB.clients)][ooc_prefix]"
 			to_chat(C, "<font color='[display_colour]'><span class='ooc linkify'>[ooc_prefix]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
 
 /client/proc/set_ooc_color_global(newColor as color)
@@ -79,6 +72,11 @@
 ///Used by OOC chat to generate icons for player prefix. Intended to make it easy to see at a glance if someone is staff, WL Council or Mentor.
 /client/proc/handle_ooc_prefix()
 	var/prefix = ""
+	if(prefs.unlock_content && (prefs.toggle_prefs & TOGGLE_MEMBER_PUBLIC))
+		var/byond = icon('icons/effects/effects.dmi', "byondlogo")
+		prefix += "[icon2html(byond, GLOB.clients)]"
+	if(CONFIG_GET(flag/ooc_country_flags) && (prefs.toggle_prefs & TOGGLE_OOC_FLAG))
+		prefix += "[country2chaticon(src.country, GLOB.clients)]"
 	if(donator)
 		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "Donator")]"
 	if(isCouncil(src))

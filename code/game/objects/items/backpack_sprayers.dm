@@ -81,11 +81,11 @@
 	else
 		. = ..()
 
-/obj/item/reagent_container/glass/watertank/verb/toggle_mister_verb(mob/user)
+/obj/item/reagent_container/glass/watertank/verb/toggle_mister_verb()
 	set name = "Toggle Mister"
 	set category = "Object"
 
-	toggle_mister(user)
+	toggle_mister()
 
 
 /obj/item/reagent_container/glass/watertank/MouseDrop(obj/over_object as obj)

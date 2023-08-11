@@ -8621,7 +8621,7 @@
 "fEt" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer3/laptop/secure_data{
-	desc = "A computer terminal displaying flight records of the 29th Reconnaissance Squadron"
+	desc = "A computer terminal displaying flight records of the 29th Reconnaissance Squadron."
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)

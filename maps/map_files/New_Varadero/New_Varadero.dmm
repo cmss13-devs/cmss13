@@ -4845,8 +4845,9 @@
 	},
 /area/varadero/interior/hall_NW)
 "dfa" = (
+/obj/item/device/flashlight/lamp/tripod,
 /obj/structure/prop/evac/usaf,
-/turf/open/gm/dirt,
+/turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)
 "dfs" = (
 /obj/item/storage/belt/utility,
@@ -8794,7 +8795,7 @@
 	},
 /area/varadero/interior/security)
 "fHY" = (
-/obj/structure/prop/evac/usaf,
+/obj/structure/largecrate/random,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)
 "fIk" = (
@@ -9026,6 +9027,9 @@
 	icon_state = "yellow"
 	},
 /area/varadero/interior/hall_NW)
+"fPV" = (
+/turf/open/space/basic,
+/area/varadero/exterior/lz2_near)
 "fQh" = (
 /obj/item/shard{
 	icon_state = "large";
@@ -13302,14 +13306,8 @@
 /turf/closed/wall/r_wall,
 /area/varadero/interior_protected/caves/central)
 "iFc" = (
-/obj/structure/largecrate/random/mini/chest{
-	pixel_x = -7;
-	pixel_y = -11;
-	desc = "A chest... filled with the wildest riches!"
-	},
-/turf/open/gm/dirt{
-	icon_state = "desert_dug"
-	},
+/obj/structure/prop/evac/usaf,
+/turf/closed/wall/rock/brown,
 /area/varadero/exterior/lz2_near)
 "iFm" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -61874,7 +61872,7 @@ aQN
 slw
 kgp
 eia
-lTg
+fHY
 hVL
 wlB
 qAy
@@ -62056,7 +62054,7 @@ bYO
 lTg
 wlB
 nKf
-wlB
+jwX
 wlB
 wlB
 wlB
@@ -62229,13 +62227,13 @@ ghW
 wlB
 beK
 mtT
-kgp
+iFc
 kgp
 xey
 wlB
 hmh
 wlB
-jwX
+wlB
 aQN
 aQN
 sKz
@@ -62407,7 +62405,7 @@ cUN
 pCa
 tMZ
 wlB
-eia
+wlB
 wlB
 ghW
 lTg
@@ -62418,7 +62416,7 @@ wlB
 wlB
 wlB
 wlB
-jwX
+wlB
 wlB
 wlB
 qNX
@@ -62589,14 +62587,14 @@ mPk
 wfR
 dYd
 wlB
-kAH
+wlB
 lTg
 wlB
 ltw
 wlB
 wlB
 wlB
-gjC
+wlB
 wlB
 lTg
 wlB
@@ -62955,7 +62953,7 @@ wlB
 mdg
 lTg
 wlB
-dfa
+wlB
 wlB
 lTg
 wlB
@@ -63133,7 +63131,7 @@ mPk
 pRa
 cJL
 iWj
-hPq
+wlB
 wlB
 wlB
 wlB
@@ -63323,7 +63321,7 @@ fEt
 wlB
 lTg
 lTg
-fHY
+lTg
 lTg
 lTg
 pXT
@@ -63681,7 +63679,7 @@ cJL
 rYC
 nsN
 wlB
-wlB
+eia
 vNy
 wlB
 wlB
@@ -65318,7 +65316,7 @@ pRa
 pRa
 wLB
 nsN
-hPq
+wlB
 wlB
 wlB
 lTg
@@ -65869,7 +65867,7 @@ wlB
 wlB
 wlB
 wlB
-beD
+dfa
 wlB
 ghW
 wlB
@@ -66228,10 +66226,10 @@ mPk
 cJL
 wBp
 nsN
-tLS
+wlB
 wlB
 lTg
-eia
+wlB
 wlB
 wlB
 wlB
@@ -66600,7 +66598,7 @@ wlB
 wlB
 hPq
 wlB
-dfa
+wlB
 wlB
 wlB
 lTg
@@ -66774,8 +66772,8 @@ mPk
 mPk
 rYC
 nsN
-iFc
-qAy
+hmh
+fPV
 lTg
 lTg
 wlB
@@ -66961,7 +66959,7 @@ rXk
 wlB
 kAH
 wlB
-ltw
+wlB
 qNX
 rXk
 wlB

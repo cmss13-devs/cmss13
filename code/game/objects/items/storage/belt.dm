@@ -17,7 +17,8 @@
 	var/flap = TRUE
 
 /obj/item/storage/belt/gun/dump_into(obj/item/storage/M, mob/user)
-	var/holster_gun = FALSE
+	//var/holster_gun = FALSE
+	/*
 	for(var/slot in holster_slots)
 		if(!holster_slots[slot]["gun"]) //Open holster.
 			holster_gun = FALSE
@@ -25,15 +26,16 @@
 		if(holster_slots[slot]["gun"]) //Gun in holster.
 			holster_gun = TRUE
 			break
-
-	if(!holster_gun && length(contents) >= (storage_slots-1))
+	*/
+	if(length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
 
 		to_chat(user, SPAN_WARNING("[src] is full."))
 		return FALSE
 	return ..()
 
 /obj/item/storage/belt/gun/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
-	var/holster_gun = FALSE
+	//var/holster_gun = FALSE
+	/*
 	for(var/slot in holster_slots)
 		if(!holster_slots[slot]["gun"]) //Open holster.
 			holster_gun = FALSE
@@ -41,8 +43,8 @@
 		if(holster_slots[slot]["gun"]) //gun in holster.
 			holster_gun = TRUE
 			break
-
-	if(W.type == /obj/item/device/flashlight/flare && holster_gun == FALSE && contents.len >= (storage_slots-1))
+	*/
+	if(W.type == /obj/item/device/flashlight/flare && length(holstered_guns) < 1 && contents.len >= (storage_slots-1))
 		return FALSE
 	return ..()
 

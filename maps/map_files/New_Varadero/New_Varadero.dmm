@@ -7318,7 +7318,7 @@
 /area/varadero/exterior/eastbeach)
 "eNW" = (
 /obj/item/limb/hand/r_hand{
-	desc = "A severed hand, with a blood trail following off towards the south.. Within the finger's, a revolver is still grasped."
+	desc = "A severed hand, with a blood trail following off towards the south.. Within the fingers, a revolver is still grasped."
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)
@@ -8621,7 +8621,7 @@
 "fEt" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer3/laptop/secure_data{
-	desc = "A computer terminal displaying flight records of the 29th Reconnaissance Squadron"
+	desc = "A computer terminal displaying flight records of the 29th Reconnaissance Squadron."
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
@@ -10220,7 +10220,7 @@
 "gAP" = (
 /obj/effect/decal/cleanable/blood/writing,
 /obj/item/limb/hand/r_hand{
-	desc = "A severed hand, with a blood trail following off towards the south.. Within the finger's, a revolver is still grasped."
+	desc = "A severed hand, with a blood trail following off towards the south.. Within the fingers, a revolver is still grasped."
 	},
 /obj/item/weapon/gun/revolver/m44/custom,
 /turf/open/auto_turf/sand_white/layer1,

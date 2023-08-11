@@ -16,7 +16,7 @@
 	///TRUE Means that it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
 	var/flap = TRUE
 
-/obj/item/storage/belt/gun/dump_into(obj/item/storage/Main, mob/user)
+/obj/item/storage/belt/gun/flaregun/dump_into(obj/item/storage/Main, mob/user)
 
 	if(length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
 

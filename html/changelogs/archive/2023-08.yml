@@ -166,3 +166,13 @@
       Support Officer jobs
   Zonespace27:
   - rscadd: Combisticks now use a proper chain instead of an invisible magic one.
+2023-08-11:
+  Drathek:
+  - bugfix: Fixed runtimes with hijack not calculating roles correctly for hijack
+      larva surge
+  - bugfix: Fix IV Drip machines not displaying the IV line correctly when adding/removing
+      a bag when already attached
+  - code_imp: Fixes a lingering reference to the mob when a IV drip machine is destroyed.
+  Zonespace27:
+  - bugfix: A pile of guns no longer have burst fire (who weren't meant to)
+  - bugfix: The combichain can now be yanked back if droppeed.

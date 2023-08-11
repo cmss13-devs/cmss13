@@ -215,6 +215,8 @@
 		plant_health += (nutrilevel < 2 ? -healthmod : healthmod)
 	if(seed.requires_water && prob(35))
 		plant_health += (waterlevel < 10 ? -healthmod : healthmod)
+	if(nutrilevel < 2)
+		plant_health = 0
 
 	// Check that pressure, heat and light are all within bounds.
 	// First, handle an open system or an unconnected closed system.

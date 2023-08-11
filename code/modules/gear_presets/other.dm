@@ -247,7 +247,7 @@
 
 /datum/equipment_preset/other/elite_merc/New()
 	. = ..()
-	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) //ACCESS_COME_BACK_TO_ME
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE)
 
 /datum/equipment_preset/other/elite_merc/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(70;MALE,30;FEMALE)
@@ -277,10 +277,6 @@
 	rank = "Mercenary"
 	skills = /datum/skills/mercenary/elite
 	faction = FACTION_MERCENARY
-
-/datum/equipment_preset/other/elite_merc/standard/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_WY_PMC)
 
 /datum/equipment_preset/other/elite_merc/standard/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add unique backpacks and satchels
@@ -318,10 +314,6 @@
 	rank = "Mercenary"
 	skills = /datum/skills/mercenary/elite/heavy
 	faction = FACTION_MERCENARY
-
-/datum/equipment_preset/other/elite_merc/heavy/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_WY_PMC)
 
 /datum/equipment_preset/other/elite_merc/heavy/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
@@ -363,9 +355,6 @@
 	skills = /datum/skills/mercenary/elite/engineer
 	faction = FACTION_MERCENARY
 
-/datum/equipment_preset/other/elite_merc/engineer/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_WY_PMC)
 
 /datum/equipment_preset/other/elite_merc/engineer/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
@@ -420,10 +409,6 @@
 	skills = /datum/skills/mercenary/elite/medic
 	faction = FACTION_MERCENARY
 
-/datum/equipment_preset/other/elite_merc/medic/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_WY_PMC)
-
 /datum/equipment_preset/other/elite_merc/medic/load_gear(mob/living/carbon/human/new_human)
 	//webbing
 	var/obj/item/clothing/under/marine/veteran/mercenary/support/SUPPORT = new()
@@ -469,10 +454,6 @@
 	rank = "Mercenary"
 	skills = /datum/skills/mercenary/elite/leader
 	faction = FACTION_MERCENARY
-
-/datum/equipment_preset/other/elite_merc/leader/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_WY_PMC)
 
 /datum/equipment_preset/other/elite_merc/leader/load_gear(mob/living/carbon/human/new_human)
 	//clothes

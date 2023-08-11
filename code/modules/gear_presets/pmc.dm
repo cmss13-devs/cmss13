@@ -691,6 +691,10 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	skills = /datum/skills/pmc/SL
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
+/datum/equipment_preset/pmc/pmc_leader/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_WY_PMC) + list(ACCESS_WY_LEADERSHIP, ACCESS_WY_PMC_TL)
+
 /datum/equipment_preset/pmc/pmc_leader/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -842,6 +846,10 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	role_comm_title = "SL"
 	skills = /datum/skills/pmc/SL/chem
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
+
+/datum/equipment_preset/pmc/pmc_lead_investigator/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_WY_PMC) + list(ACCESS_WY_LEADERSHIP, ACCESS_WY_PMC_TL)
 
 /datum/equipment_preset/pmc/pmc_lead_investigator/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels

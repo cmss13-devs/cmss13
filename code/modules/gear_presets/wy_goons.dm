@@ -97,6 +97,10 @@
 	paygrade = "WEY-GOON-L"
 	skills = /datum/skills/MP
 
+/datum/equipment_preset/goon/lead/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_WY_GOON) + list(ACCESS_WY_LEADERSHIP)
+
 /datum/equipment_preset/goon/lead/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate/lead, WEAR_BODY)

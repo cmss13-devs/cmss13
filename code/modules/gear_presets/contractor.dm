@@ -549,11 +549,6 @@
 	skills = /datum/skills/contractor/heavy
 	faction = FACTION_CONTRACTOR
 
-
-/datum/equipment_preset/contractor/covert/heavy/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_WY_PMC)
-
 /datum/equipment_preset/contractor/covert/heavy/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/ua_civvies, WEAR_BODY)
@@ -602,11 +597,6 @@
 	skills = /datum/skills/contractor/engi
 	faction = FACTION_CONTRACTOR
 
-
-/datum/equipment_preset/contractor/covert/engi/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_WY_PMC)
-
 /datum/equipment_preset/contractor/covert/engi/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/wy_davisone, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/tool_webbing, WEAR_ACCESSORY)
@@ -653,11 +643,6 @@
 	rank = JOB_CONTRACTOR_COVMED
 	skills = /datum/skills/contractor/medic
 	faction = FACTION_CONTRACTOR
-
-
-/datum/equipment_preset/contractor/covert/medic/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_WY_PMC)
 
 /datum/equipment_preset/contractor/covert/medic/load_gear(mob/living/carbon/human/new_human)
 	//clothing

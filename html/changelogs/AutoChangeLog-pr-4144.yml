@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed runtimes with hijack not calculating roles correctly for hijack larva surge"

@@ -314,7 +314,7 @@
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
-	set_burst_amount(BURST_AMOUNT_TIER_5)
+	set_burst_amount(BURST_AMOUNT_TIER_1)
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	damage_falloff_mult = DAMAGE_FALLOFF_TIER_10
@@ -1775,13 +1775,11 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/proc/set_burst_amount(value, mob/user)
 	burst_amount = value
 	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED, burst_amount)
-	setup_firemodes()
 
 /// adder for burst_amount
 /obj/item/weapon/gun/proc/modify_burst_amount(value, mob/user)
 	burst_amount += value
 	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED, burst_amount)
-	setup_firemodes()
 
 /// Adder for burst_delay
 /obj/item/weapon/gun/proc/modify_burst_delay(value, mob/user)

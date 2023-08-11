@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - bugfix: "Synthetic Breaching Hammer will now properly appear on the user's back when holstered."

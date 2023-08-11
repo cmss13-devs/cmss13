@@ -83,24 +83,5 @@
 /obj/item/device/helmet_visor/welding_visor/mercenary
 	helmet_overlay = ""
 
-
-
-
-/*
-TO DO - MORROW
-
-Can toggle checks - done
-Make addable and removable from helmets - done
-Separate between removable and built in on helmets - done
-Engineer helmet visor converted - still needs tanker helmet special sprites
-Sec visor gives energy resist - optional, leaning towards no
-Medic helmet needs built in advanced - done
-CO helmet needs built in all - done
-sec helmets need built in sec - done
-Verify we have enough overlay space - done
-All non-marine helmets need in-built HUDs nullified - Most, TM will find more likely
-Replace rifleman medhud - done
-
-Make sure the other HUDs still operate correctly - TM will discover problems I am sure, I *think* I caught a good chunk of them
-
-*/
+/obj/item/device/helmet_visor/welding_visor/tanker
+	helmet_overlay = "tanker_weld_visor"

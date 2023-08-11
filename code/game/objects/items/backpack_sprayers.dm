@@ -8,6 +8,7 @@
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	flags_atom = OPENCONTAINER
+	possible_transfer_amounts = null//no point giving it possibility when mister can't it just confuse people
 	volume = 500
 	var/fill_reagent = "water"
 	var/spawn_empty = FALSE
@@ -132,7 +133,7 @@
 	item_state = "nozzle"
 	w_class = SIZE_LARGE
 	flags_equip_slot = null
-	amount_per_transfer_from_this = 50
+	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = null
 	spray_size = 5
 	volume = 500

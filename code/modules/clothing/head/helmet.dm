@@ -415,6 +415,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			if(holding_human.head == src)
 				new_action.give_to(holding_human)
 
+	if(active_visor)
+		var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in actions
+		if(cycle_action)
+			cycle_action.set_action_overlay(active_visor)
+
 /obj/item/clothing/head/helmet/marine/Destroy(force)
 	helmet_overlays = null
 	QDEL_NULL(camera)
@@ -734,6 +739,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "med_helmet"
 	specialty = "M10 pattern medic"
 	built_in_visors = list(/obj/item/device/helmet_visor, /obj/item/device/helmet_visor/medical/advanced)
+	active_visor = /obj/item/device/helmet_visor/medical/advanced
 
 /obj/item/clothing/head/helmet/marine/covert
 	name = "\improper M10 covert helmet"

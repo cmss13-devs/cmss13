@@ -81,10 +81,12 @@
 	else
 		. = ..()
 
-/obj/item/reagent_container/glass/watertank/verb/toggle_mister_verb(mob/living/user)
+/obj/item/reagent_container/glass/watertank/verb/toggle_mister_verb(mob/user, list/modifiers)
 	set name = "Toggle Mister"
 	set category = "Object"
-	toggle_mister(user)
+		if(user.get_item_by_slot(WEAR_BACK) == src)
+			toggle_mister(user)
+
 
 /obj/item/reagent_container/glass/watertank/MouseDrop(obj/over_object as obj)
 	if(!CAN_PICKUP(usr, src))

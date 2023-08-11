@@ -72,7 +72,7 @@
 				hive.handle_xeno_leader_pheromones()
 				if(SSticker.mode)
 					INVOKE_ASYNC(SSticker.mode, TYPE_PROC_REF(/datum/game_mode, check_queen_status), hivenumber)
-					LAZYADD(SSticker.mode.dead_queens, "<br>[!isnull(src.key) ? src.key : "?"] was [src] [SPAN_BOLDNOTICE("(DIED)")]")
+					LAZYADD(SSticker.mode.dead_queens, "<br>[!isnull(full_designation) ? full_designation : "?"] was [src] [SPAN_BOLDNOTICE("(DIED)")]")
 
 		else if(ispredalien(src))
 			playsound(loc,'sound/voice/predalien_death.ogg', 25, TRUE)

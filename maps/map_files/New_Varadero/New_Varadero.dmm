@@ -10220,7 +10220,7 @@
 "gAP" = (
 /obj/effect/decal/cleanable/blood/writing,
 /obj/item/limb/hand/r_hand{
-	desc = "A severed hand, with a blood trail following off towards the south.. Within the finger's, a revolver is still grasped."
+	desc = "A severed hand, with a blood trail following off towards the south.. Within the fingers, a revolver is still grasped."
 	},
 /obj/item/weapon/gun/revolver/m44/custom,
 /turf/open/auto_turf/sand_white/layer1,

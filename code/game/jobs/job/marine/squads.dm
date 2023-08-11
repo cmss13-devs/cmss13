@@ -44,7 +44,7 @@
 	/// maximum # of engineers allowed in the squad
 	var/max_engineers = 4
 	/// maximum # of squad medics allowed in the squad
-	var/max_medics = 5
+	var/max_medics = 4
 	/// maximum # of specs allowed in the squad
 	var/max_specialists = 2
 	/// maximum # of fireteam leaders allowed in the suqad
@@ -124,10 +124,6 @@
 	radio_freq = ALPHA_FREQ
 	minimap_color = MINIMAP_SQUAD_ALPHA
 
-	active = FALSE
-	roundstart = FALSE
-	locked = TRUE
-
 /datum/squad/marine/bravo
 	name = SQUAD_MARINE_2
 	equipment_color = "#ffc32d"
@@ -135,6 +131,10 @@
 	access = list(ACCESS_MARINE_BRAVO)
 	radio_freq = BRAVO_FREQ
 	minimap_color = MINIMAP_SQUAD_BRAVO
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
 
 /datum/squad/marine/charlie
 	name = SQUAD_MARINE_3
@@ -144,6 +144,10 @@
 	radio_freq = CHARLIE_FREQ
 	minimap_color = MINIMAP_SQUAD_CHARLIE
 
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
+
 /datum/squad/marine/delta
 	name = SQUAD_MARINE_4
 	equipment_color = "#4148c8"
@@ -152,9 +156,6 @@
 	radio_freq = DELTA_FREQ
 	minimap_color = MINIMAP_SQUAD_DELTA
 
-	active = FALSE
-	roundstart = FALSE
-	locked = TRUE
 
 /datum/squad/marine/echo
 	name = SQUAD_MARINE_5

@@ -222,7 +222,7 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/security
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/provost(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp/provost/enforcer(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
@@ -264,7 +264,7 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/security
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/provost(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp/provost/tml(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
@@ -308,7 +308,7 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/security
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/provost(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp/provost/advisor(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
@@ -342,7 +342,7 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/security
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/provost(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp/provost/inspector(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)

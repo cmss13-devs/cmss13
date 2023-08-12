@@ -687,11 +687,11 @@
 /obj/item/weapon/gun/smartgun/dirty/elite/set_gun_config_values()
 	..()
 	set_burst_amount(BURST_AMOUNT_TIER_5)
-	set_burst_delay(FIRE_DELAY_TIER_10)
+	set_burst_delay(FIRE_DELAY_TIER_12)
 	if(!recoil_compensation)
 		scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
-	set_fire_delay(FIRE_DELAY_TIER_10)
+	set_fire_delay(FIRE_DELAY_TIER_12)
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_10
 	fa_max_scatter = SCATTER_AMOUNT_NONE
 

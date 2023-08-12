@@ -175,7 +175,7 @@
 /obj/effect/landmark/wo_supplies/storage/belts/m39holster
 	icon_state = "m39_holster"
 	amount = list(1,5)
-	stuff = list(/obj/item/storage/large_holster/m39)
+	stuff = list(/obj/item/storage/belt/gun/m39)
 
 
 

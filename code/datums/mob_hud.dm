@@ -441,9 +441,9 @@ var/list/datum/mob_hud/huds = list(
 						holder2_set = 1
 					return
 
-				holder.icon_state = "huddead"
+				holder.icon_state = HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) ? "hudhcdead" : "huddead"
 				if(!holder2_set)
-					holder2.icon_state = "huddead"
+					holder2.icon_state = holder.icon_state
 					holder3.icon_state = "huddead"
 					holder2_set = 1
 

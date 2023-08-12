@@ -379,6 +379,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "ebarrel"
 	attach_icon = "ebarrel_a"
 	hud_offset_mod = -3
+	wield_delay_mod = WIELD_DELAY_FAST
 
 /obj/item/attachable/extended_barrel/New()
 	..()
@@ -398,7 +399,7 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_3
 	damage_mod = BULLET_DAMAGE_MULT_TIER_6
-	delay_mod = FIRE_DELAY_TIER_9
+	delay_mod = FIRE_DELAY_TIER_11
 
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_7
 
@@ -886,13 +887,13 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/New()
 	..()
-	delay_mod = FIRE_DELAY_TIER_10
+	delay_mod = FIRE_DELAY_TIER_12
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_1
 	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
 	accuracy_unwielded_mod = 0
 
 	accuracy_scoped_buff = HIT_ACCURACY_MULT_TIER_8 //to compensate initial debuff
-	delay_scoped_nerf = FIRE_DELAY_TIER_9 //to compensate initial debuff. We want "high_fire_delay"
+	delay_scoped_nerf = FIRE_DELAY_TIER_11 //to compensate initial debuff. We want "high_fire_delay"
 	damage_falloff_scoped_buff = -0.4 //has to be negative
 
 /obj/item/attachable/scope/proc/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
@@ -1054,7 +1055,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = 0
 
 	accuracy_scoped_buff = HIT_ACCURACY_MULT_TIER_8
-	delay_scoped_nerf = FIRE_DELAY_TIER_8
+	delay_scoped_nerf = FIRE_DELAY_TIER_9
 
 /obj/item/attachable/scope/mini/hunting
 	name = "2x hunting mini-scope"
@@ -1577,7 +1578,7 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = -SCATTER_AMOUNT_TIER_7
 	burst_scatter_mod = -1
 	burst_mod = BURST_AMOUNT_TIER_2
-	delay_mod = -FIRE_DELAY_TIER_9
+	delay_mod = -FIRE_DELAY_TIER_11
 	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
 	//1h
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
@@ -2568,10 +2569,9 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
 
-
 /obj/item/attachable/angledgrip
 	name = "angled grip"
-	desc = "An angled foregrip that improves weapon ergonomics and offers less recoil, and faster wielding time. \nHowever, it also increases weapon size."
+	desc = "An angled foregrip that improves weapon ergonomics resulting in faster wielding time. \nHowever, it also increases weapon size."
 	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "angledgrip"
 	attach_icon = "angledgrip_a"
@@ -2579,16 +2579,6 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 1
 	slot = "under"
 	pixel_shift_x = 20
-
-/obj/item/attachable/angledgrip/New()
-	..()
-	recoil_mod = -RECOIL_AMOUNT_TIER_4
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
-	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
-	scatter_mod = -SCATTER_AMOUNT_TIER_10
-	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
-
-
 
 /obj/item/attachable/gyro
 	name = "gyroscopic stabilizer"
@@ -2600,7 +2590,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/gyro/New()
 	..()
-	delay_mod = FIRE_DELAY_TIER_9
+	delay_mod = FIRE_DELAY_TIER_11
 	scatter_mod = -SCATTER_AMOUNT_TIER_10
 	burst_scatter_mod = -2
 	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_3
@@ -2652,7 +2642,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/bipod/New()
 	..()
 
-	delay_mod = FIRE_DELAY_TIER_9
+	delay_mod = FIRE_DELAY_TIER_11
 	wield_delay_mod = WIELD_DELAY_FAST
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_5
 	scatter_mod = SCATTER_AMOUNT_TIER_9
@@ -2700,7 +2690,7 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = SCATTER_AMOUNT_TIER_9
 	recoil_mod = RECOIL_AMOUNT_TIER_5
 	burst_scatter_mod = 0
-	delay_mod = FIRE_DELAY_TIER_10
+	delay_mod = FIRE_DELAY_TIER_12
 	G.recalculate_attachment_bonuses()
 	var/mob/living/user
 	if(isliving(G.loc))
@@ -2737,7 +2727,7 @@ Defined in conflicts.dm of the #defines folder.
 				if(istype(G,/obj/item/weapon/gun/rifle/sniper/M42A))
 					delay_mod = -FIRE_DELAY_TIER_7
 				else
-					delay_mod = -FIRE_DELAY_TIER_10
+					delay_mod = -FIRE_DELAY_TIER_12
 				G.recalculate_attachment_bonuses()
 
 				initial_mob_dir = user.dir

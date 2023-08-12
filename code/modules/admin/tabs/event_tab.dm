@@ -219,7 +219,7 @@
 		return
 
 	var/is_announcing = TRUE
-	switch(alert(src, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", "Yes", "No", "Cancel"))
+	switch(alert(usr, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", "Yes", "No", "Cancel"))
 		if("Cancel")
 			qdel(chosen_ert)
 			return

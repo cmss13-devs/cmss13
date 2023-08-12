@@ -176,3 +176,20 @@
   Zonespace27:
   - bugfix: A pile of guns no longer have burst fire (who weren't meant to)
   - bugfix: The combichain can now be yanked back if droppeed.
+2023-08-12:
+  BeagleGaming1:
+  - balance: Defibrillators are guaranteed to deal heart damage on successful revives
+  - balance: Blood volume now scales with heart damage rather than being a hardcoded
+      multiplier
+  - balance: Blood volume oxyloss now scales rather than being a hardcoded loss amount
+  Huffie56:
+  - code_imp: added welding google to the com tech tool vendor.
+  - code_imp: added scaling based on round population to the ColMarTech Surplus Uniform
+      like the other vendors.
+  - code_imp: Move every clothing items from ColMarTech Automated Armaments Squad
+      Vendor to ColMarTech Surplus Uniform Vendor.
+  - code_imp: rename ColMarTech Automated Armaments Squad Vendor to ColMarTech Automated
+      Utilities Squad Vendor and add in tools food and other utilities.
+  Steelpoint:
+  - bugfix: Synthetic Breaching Hammer will now properly appear on the user's back
+      when holstered.

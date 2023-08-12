@@ -1,6 +1,0 @@
-author: "BeagleGaming1"
-delete-after: True
-changes:
-  - balance: "Defibrillators are guaranteed to deal heart damage on successful revives"
-  - balance: "Blood volume now scales with heart damage rather than being a hardcoded multiplier"
-  - balance: "Blood volume oxyloss now scales rather than being a hardcoded loss amount"

@@ -45,6 +45,10 @@
 		return ..()
 
 	if (reagents.total_volume > 0)
+		var/fullness = M.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
+		if(fullness > 540)
+			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
+			return
 		reagents.set_source_mob(user)
 		reagents.trans_to_ingest(M, reagents.total_volume)
 		if(M == user)

@@ -210,12 +210,13 @@
 
 	// Make sure the plant is not starving or thirsty. Adequate
 	// water and nutrients will cause a plant to become healthier.
+	// Checks if there are sufficient enough nutrients, if not the plant dies.
 	var/healthmod = rand(1,3) * HYDRO_SPEED_MULTIPLIER
 	if(seed.requires_nutrients && prob(35))
 		plant_health += (nutrilevel < 2 ? -healthmod : healthmod)
 	if(seed.requires_water && prob(35))
 		plant_health += (waterlevel < 10 ? -healthmod : healthmod)
-	if(nutrilevel < 2)
+	if(nutrilevel < 1)
 		plant_health = 0
 
 	// Check that pressure, heat and light are all within bounds.

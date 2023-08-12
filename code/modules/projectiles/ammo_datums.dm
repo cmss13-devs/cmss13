@@ -2428,7 +2428,7 @@
 			M.apply_effect(2.5, SUPERSLOW)
 			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
 
-		var/no_clothes_neuro = FALSE
+		/*var/no_clothes_neuro = FALSE
 
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
@@ -2438,7 +2438,7 @@
 		if(no_clothes_neuro)
 			if(M.knocked_down < 5)
 				M.adjust_effect(1 * power, WEAKEN) // KD them a bit more
-				M.visible_message(SPAN_DANGER("[M] falls prone."))
+				M.visible_message(SPAN_DANGER("[M] falls prone.")) */
 
 /proc/apply_scatter_neuro(mob/M)
 	if(ishuman(M))

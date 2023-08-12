@@ -240,9 +240,9 @@
 
 	if(synthetic_HUD_toggled[chosen_HUD])
 		synthetic_HUD_toggled[chosen_HUD] = FALSE
-		H.remove_hud_from(src, HUD_SOURCE_INNATE)
+		H.remove_hud_from(src, src)
 		to_chat(src, SPAN_INFO("<B>[hud_choice] Disabled</B>"))
 	else
 		synthetic_HUD_toggled[chosen_HUD] = TRUE
-		H.add_hud_to(src, HUD_SOURCE_INNATE)
+		H.add_hud_to(src, src)
 		to_chat(src, SPAN_INFO("<B>[hud_choice] Enabled</B>"))

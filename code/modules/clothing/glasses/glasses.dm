@@ -70,10 +70,10 @@
 			if(hud_type)
 				var/datum/mob_hud/MH = huds[hud_type]
 				if(active)
-					MH.add_hud_to(H, HUD_SOURCE_EYEWEAR)
+					MH.add_hud_to(H, src)
 					playsound(H, 'sound/handling/hud_on.ogg', 25, 1)
 				else
-					MH.remove_hud_from(H, HUD_SOURCE_EYEWEAR)
+					MH.remove_hud_from(H, src)
 					playsound(H, 'sound/handling/hud_off.ogg', 25, 1)
 			if(active) //turning it on? then add the traits
 				for(var/trait in clothing_traits)
@@ -95,7 +95,7 @@
 
 		else if(hud_type)
 			var/datum/mob_hud/MH = huds[hud_type]
-			MH.add_hud_to(user, HUD_SOURCE_EYEWEAR)
+			MH.add_hud_to(user, src)
 	user.update_sight()
 	..()
 
@@ -103,7 +103,7 @@
 	if(hud_type && active && istype(user))
 		if(src == user.glasses) //dropped is called before the inventory reference is updated.
 			var/datum/mob_hud/H = huds[hud_type]
-			H.remove_hud_from(user, HUD_SOURCE_EYEWEAR)
+			H.remove_hud_from(user, src)
 			user.glasses = null
 			user.update_inv_glasses()
 	user.update_sight()

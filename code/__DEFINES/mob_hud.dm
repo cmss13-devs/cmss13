@@ -67,10 +67,4 @@
 #define TRACKER_TUNNEL "Tunnel"
 
 //These are used to manage the same HUD having multiple sources
-#define HUD_SOURCE_HELMET "helmet"
-#define HUD_SOURCE_EYEWEAR "eyewear"
-#define HUD_SOURCE_HEADSET "headset"
-#define HUD_SOURCE_GHOST "ghost"
 #define HUD_SOURCE_ADMIN "admin"
-#define HUD_SOURCE_MASK "mask"
-#define HUD_SOURCE_INNATE "innate"

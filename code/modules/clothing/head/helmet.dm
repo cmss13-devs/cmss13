@@ -609,7 +609,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	if(current_helmet_visor.can_toggle(user) && !current_helmet_visor.special_visor_function(src, user))
 		var/mob_hud_type = current_helmet_visor.hud_type
 		var/datum/mob_hud/current_mob_hud = huds[mob_hud_type]
-		current_mob_hud.add_hud_to(user, HUD_SOURCE_HELMET)
+		current_mob_hud.add_hud_to(user, src)
 		to_chat(user, SPAN_NOTICE("You activate [current_helmet_visor] on [src]."))
 	playsound_client(user.client, current_helmet_visor.toggle_on_sound, null, 75)
 	update_icon()
@@ -627,7 +627,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	if(current_helmet_visor.can_toggle(user) && !current_helmet_visor.special_visor_function(src, user))
 		var/mob_hud_type = current_helmet_visor.hud_type
 		var/datum/mob_hud/current_mob_hud = huds[mob_hud_type]
-		current_mob_hud.remove_hud_from(user, HUD_SOURCE_HELMET)
+		current_mob_hud.remove_hud_from(user, src)
 		to_chat(user, SPAN_NOTICE("You deactivate [current_helmet_visor] on [src]."))
 
 	if(sound)
@@ -644,7 +644,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			continue
 		var/mob_hud_type = current_helmet_visor.hud_type
 		var/datum/mob_hud/current_mob_hud = huds[mob_hud_type]
-		current_mob_hud.remove_hud_from(user, HUD_SOURCE_HELMET)
+		current_mob_hud.remove_hud_from(user, src)
 	update_icon()
 
 ///Cycles the active HUD to the next between built_in_visors and inserted_visors, nullifies if at end and removes all HUDs

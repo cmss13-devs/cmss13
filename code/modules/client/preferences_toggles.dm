@@ -623,7 +623,7 @@
 
 	if(!isobserver(usr))
 		return
-	var/mob/dead/observer/O = usr
+	var/mob/dead/observer/observer_user = usr
 	var/datum/mob_hud/H
 	switch(hud_choice)
 		if("Medical HUD")
@@ -643,11 +643,11 @@
 		if("Faction CLF HUD")
 			H = huds[MOB_HUD_FACTION_CLF]
 
-	O.HUD_toggled[hud_choice] = prefs.observer_huds[hud_choice]
-	if(O.HUD_toggled[hud_choice])
-		H.add_hud_to(O, HUD_SOURCE_GHOST)
+	observer_user.HUD_toggled[hud_choice] = prefs.observer_huds[hud_choice]
+	if(observer_user.HUD_toggled[hud_choice])
+		H.add_hud_to(observer_user, observer_user)
 	else
-		H.remove_hud_from(O, HUD_SOURCE_GHOST)
+		H.remove_hud_from(observer_user, observer_user)
 
 /client/proc/toggle_ghost_health_scan()
 	set name = "Toggle Health Scan"

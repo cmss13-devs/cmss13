@@ -253,13 +253,13 @@ var/list/datum/mob_hud/huds = list(
 	for(var/datum/mob_hud/hud in huds)
 		if(istype(hud, /datum/mob_hud/xeno))
 			hud.remove_from_hud(src)
-			hud.remove_hud_from(src, HUD_SOURCE_INNATE)
+			hud.remove_hud_from(src, src)
 		else if (istype(hud, /datum/mob_hud/xeno_infection))
-			hud.remove_hud_from(src, HUD_SOURCE_INNATE)
+			hud.remove_hud_from(src, src)
 	if (xeno_hostile_hud)
 		xeno_hostile_hud = FALSE
 		var/datum/mob_hud/hostile_hud = huds[MOB_HUD_XENO_HOSTILE]
-		hostile_hud.remove_hud_from(src, HUD_SOURCE_INNATE)
+		hostile_hud.remove_hud_from(src, src)
 
 
 

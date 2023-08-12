@@ -42,9 +42,9 @@
 	/// Can use any squad vendor regardless of squad connection
 	var/omni_squad_vendor = FALSE
 	/// maximum # of engineers allowed in the squad
-	var/max_engineers = 4
+	var/max_engineers = 6
 	/// maximum # of squad medics allowed in the squad
-	var/max_medics = 4
+	var/max_medics = 8
 	/// maximum # of specs allowed in the squad
 	var/max_specialists = 2
 	/// maximum # of fireteam leaders allowed in the suqad

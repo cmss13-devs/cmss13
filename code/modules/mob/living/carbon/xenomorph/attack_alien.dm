@@ -92,7 +92,7 @@
 
 			M.flick_attack_overlay(src, "slash")
 			var/obj/limb/affecting
-			affecting = get_limb(rand_zone(M.zone_selected, directional_assist_attack ? 25 : 70))
+			affecting = get_limb(rand_zone(M.zone_selected, directional_assist_attack ? 25 : 50))
 			if(!affecting)
 				affecting = get_limb("chest") //Default to torso if we don't get a proper limb
 

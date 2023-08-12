@@ -104,30 +104,30 @@
 	set src in usr
 	if(!usr || usr.stat)
 		return
-	var/mob/living/carbon/human/M = usr
-	if(!istype(M))
+	var/mob/living/carbon/human/user = usr
+	if(!istype(user))
 		return
-	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH) && !M.hunter_data.thralled)
-		to_chat(M, SPAN_WARNING("You have no idea how to work this thing!"))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH) && !user.hunter_data.thralled)
+		to_chat(user, SPAN_WARNING("You have no idea how to work this thing!"))
 		return
-	if(src != M.wear_mask) //sanity
-		to_chat(M, SPAN_WARNING("You must wear \the [src]!"))
+	if(src != user.wear_mask) //sanity
+		to_chat(user, SPAN_WARNING("You must wear \the [src]!"))
 		return
-	var/obj/item/clothing/gloves/yautja/Y = M.gloves
+	var/obj/item/clothing/gloves/yautja/Y = user.gloves
 	if(!Y || !istype(Y))
-		to_chat(M, SPAN_WARNING("You must be wearing your bracers, as they have the power source."))
+		to_chat(user, SPAN_WARNING("You must be wearing your bracers, as they have the power source."))
 		return
-	var/obj/item/G = M.glasses
+	var/obj/item/G = user.glasses
 	if(G)
 		if(!istype(G, /obj/item/clothing/glasses/night/yautja))
-			to_chat(M, SPAN_WARNING("You need to remove your glasses first. Why are you even wearing these?"))
+			to_chat(user, SPAN_WARNING("You need to remove your glasses first. Why are you even wearing these?"))
 			return
-		M.temp_drop_inv_item(G) //Get rid of ye existing maicerinho goggles
+		user.temp_drop_inv_item(G) //Get rid of ye existing maicerinho goggles
 		qdel(G)
-		M.update_inv_glasses()
-		M.update_sight()
+		user.update_inv_glasses()
+		user.update_sight()
 	switch_vision_mode()
-	add_vision(M)
+	add_vision(user)
 
 /obj/item/clothing/mask/gas/yautja/proc/switch_vision_mode() //switches to the next one
 	switch(current_goggles)

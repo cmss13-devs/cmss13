@@ -228,7 +228,7 @@
 		is_announcing = TRUE
 
 	var/turf/override_spawn_loc
-	var/prompt = tgui_alert(usr, "Spawn at their assigned spawn, or at your location?", "Spawnpoint Selection", list("Current Location", "Spawn"), 0)
+	var/prompt = tgui_alert(usr, "Spawn at their assigned spawn, or at your location?", "Spawnpoint Selection", list("Spawn", "Current Location"), 0)
 	if(!prompt)
 		qdel(chosen_ert)
 		return

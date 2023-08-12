@@ -113,17 +113,17 @@
 	if(src != user.wear_mask) //sanity
 		to_chat(user, SPAN_WARNING("You must wear \the [src]!"))
 		return
-	var/obj/item/clothing/gloves/yautja/Y = user.gloves
-	if(!Y || !istype(Y))
+	var/obj/item/clothing/gloves/yautja/bracer = user.gloves
+	if(!bracer || !istype(bracer))
 		to_chat(user, SPAN_WARNING("You must be wearing your bracers, as they have the power source."))
 		return
-	var/obj/item/G = user.glasses
-	if(G)
-		if(!istype(G, /obj/item/clothing/glasses/night/yautja))
+	var/obj/item/visor = user.glasses
+	if(visor)
+		if(!istype(visor, /obj/item/clothing/glasses/night/yautja))
 			to_chat(user, SPAN_WARNING("You need to remove your glasses first. Why are you even wearing these?"))
 			return
-		user.temp_drop_inv_item(G) //Get rid of ye existing maicerinho goggles
-		qdel(G)
+		user.temp_drop_inv_item(visor) //Get rid of ye existing maicerinho goggles
+		qdel(visor)
 		user.update_inv_glasses()
 		user.update_sight()
 	switch_vision_mode()

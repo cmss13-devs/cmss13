@@ -47,7 +47,7 @@
 			density = FALSE
 			operating = 0
 
-/obj/structure/machinery/door/poddoor/attack_alien(mob/living/carbon/xenomorph/X)
+/obj/structure/machinery/door/poddoor/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus, directional_assist_attack)
 	if((stat & NOPOWER) && density && !operating && !unacidable)
 		INVOKE_ASYNC(src, PROC_REF(pry_open), X)
 		return XENO_ATTACK_ACTION

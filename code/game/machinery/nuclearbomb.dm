@@ -85,7 +85,7 @@ var/bomb_set = FALSE
 			timer_announcements_flags = 0
 			return
 
-/obj/structure/machinery/nuclearbomb/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/nuclearbomb/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, attack_hand), M)
 	return XENO_ATTACK_ACTION
 

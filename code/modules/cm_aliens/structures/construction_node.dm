@@ -45,7 +45,7 @@
 		var/message = "A [template.name] construction is designated here. It requires [template.crystals_required - template.crystals_stored] more [MATERIAL_CRYSTAL]."
 		. += message
 
-/obj/effect/alien/resin/construction/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/effect/alien/resin/construction/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(!linked_hive || (linked_hive && (M.hivenumber != linked_hive.hivenumber)) || (M.a_intent == INTENT_HARM && M.can_destroy_special()))
 		return ..()
 	if(!template)

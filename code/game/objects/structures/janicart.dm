@@ -180,7 +180,7 @@
 	if(signs)
 		overlays += "cart_sign[signs]"
 
-/obj/structure/janitorialcart/attack_alien(mob/living/carbon/xenomorph/xeno_attacker)
+/obj/structure/janitorialcart/attack_alien(mob/living/carbon/xenomorph/xeno_attacker, dam_bonus, directional_assist_attack)
 	xeno_attacker.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	xeno_attacker.visible_message(SPAN_DANGER("[xeno_attacker] slices \the [src] apart!"),

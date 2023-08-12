@@ -106,7 +106,7 @@
 		update_icon()
 		return TRUE
 
-/obj/structure/tent_curtain/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/tent_curtain/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(unslashable)
 		return
 	visible_message(SPAN_BOLDWARNING("[src] gets torn to shreds!"))

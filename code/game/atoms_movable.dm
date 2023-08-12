@@ -203,8 +203,8 @@
 /atom/movable/clone/attack_hand(mob/user)
 	return src.mstr.attack_hand(user)
 
-/atom/movable/clone/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus)
-	return src.mstr.attack_alien(M, dam_bonus)
+/atom/movable/clone/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
+	return src.mstr.attack_alien(M, dam_bonus = dam_bonus)
 
 /atom/movable/clone/attack_animal(mob/living/M as mob)
 	return src.mstr.attack_animal(M)

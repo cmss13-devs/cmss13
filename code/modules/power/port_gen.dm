@@ -102,7 +102,7 @@ display round(lastgen) and phorontank amount
 	else
 		. += SPAN_NOTICE("The generator is off.")
 
-/obj/structure/machinery/power/port_gen/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
+/obj/structure/machinery/power/port_gen/attack_alien(mob/living/carbon/xenomorph/attacking_xeno, dam_bonus, directional_assist_attack)
 	if(!active && !anchored)
 		return ..()
 

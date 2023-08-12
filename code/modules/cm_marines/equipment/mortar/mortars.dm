@@ -56,7 +56,7 @@
 	else
 		return FALSE
 
-/obj/structure/mortar/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/mortar/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(islarva(M))
 		return XENO_NO_DELAY_ACTION
 

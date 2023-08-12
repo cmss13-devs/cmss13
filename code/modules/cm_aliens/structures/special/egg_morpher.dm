@@ -182,7 +182,7 @@
 	var/obj/item/clothing/mask/facehugger/child = new(loc, linked_hive.hivenumber)
 	child.leap_at_nearest_target()
 
-/obj/effect/alien/resin/special/eggmorph/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/effect/alien/resin/special/eggmorph/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(!istype(M))
 		return attack_hand(M)
 	if(!linked_hive || (M.hivenumber != linked_hive.hivenumber))

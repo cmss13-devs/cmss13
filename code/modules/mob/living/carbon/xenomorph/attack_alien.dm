@@ -8,7 +8,7 @@
  */
 
 
-/mob/living/carbon/human/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus)
+/mob/living/carbon/human/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(M.fortify || M.burrow)
 		return XENO_NO_DELAY_ACTION
 
@@ -92,11 +92,9 @@
 
 			M.flick_attack_overlay(src, "slash")
 			var/obj/limb/affecting
-			affecting = get_limb(rand_zone(M.zone_selected, 70))
-			if(!affecting) //No organ, just get a random one
-				affecting = get_limb(rand_zone(null, 0))
-			if(!affecting) //Still nothing??
-				affecting = get_limb("chest") //Gotta have a torso?!
+			affecting = get_limb(rand_zone(M.zone_selected, directional_assist_attack ? 25 : 70))
+			if(!affecting)
+				affecting = get_limb("chest") //Default to torso if we don't get a proper limb
 
 			var/armor_block = getarmor(affecting, ARMOR_MELEE)
 
@@ -219,7 +217,7 @@
 
 
 //Every other type of nonhuman mob
-/mob/living/attack_alien(mob/living/carbon/xenomorph/M)
+/mob/living/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(M.fortify || M.burrow)
 		return XENO_NO_DELAY_ACTION
 
@@ -307,14 +305,14 @@
 
 //This proc is here to prevent Xenomorphs from picking up objects (default attack_hand behaviour)
 //Note that this is overriden by every proc concerning a child of obj unless inherited
-/obj/item/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/item/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	return
 
 /obj/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	return //larva can't do anything
 
 //Breaking tables and racks
-/obj/structure/surface/table/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/surface/table/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(breakable)
 		M.animation_attack_on(src)
 		if(sheet_type == /obj/item/stack/sheet/wood)
@@ -332,7 +330,7 @@
 		return XENO_ATTACK_ACTION
 
 //Breaking barricades
-/obj/structure/barricade/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/barricade/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	M.animation_attack_on(src)
 	take_damage( rand(M.melee_damage_lower, M.melee_damage_upper) * brute_multiplier)
 	if(barricade_hitsound)
@@ -362,7 +360,7 @@
 		xeno.apply_damage(5)
 	return TAILSTAB_COOLDOWN_NORMAL
 
-/obj/structure/surface/rack/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/surface/rack/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	M.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
@@ -372,7 +370,7 @@
 
 //Default "structure" proc. This should be overwritten by sub procs.
 //If we sent it to monkey we'd get some weird shit happening.
-/obj/structure/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	// fuck off dont destroy my unslashables
 	if(unslashable || health <= 0)
 		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
@@ -380,7 +378,7 @@
 
 
 //Beds, nests and chairs - unbuckling
-/obj/structure/bed/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/bed/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(M.a_intent == INTENT_HARM)
 		if(unslashable)
 			return
@@ -397,17 +395,17 @@
 
 
 //Medevac stretchers. Unbuckle ony
-/obj/structure/bed/medevac_stretcher/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/bed/medevac_stretcher/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	unbuckle()
 	return XENO_NONCOMBAT_ACTION
 
 //Portable surgical bed. Ditto, though it's meltable.
-/obj/structure/bed/portable_surgery/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/bed/portable_surgery/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	unbuckle()
 	return XENO_NONCOMBAT_ACTION
 
 //Smashing lights
-/obj/structure/machinery/light/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/light/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(is_broken()) //Ignore if broken. Note that we can't use defines here
 		return FALSE
 	M.animation_attack_on(src)
@@ -417,7 +415,7 @@
 	return XENO_ATTACK_ACTION
 
 //Smashing windows
-/obj/structure/window/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/window/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(M.a_intent == INTENT_HELP)
 		playsound(loc, 'sound/effects/glassknock.ogg', 25, 1)
 		M.visible_message(SPAN_WARNING("[M] creepily taps on [src] with its huge claw."), \
@@ -428,7 +426,7 @@
 	return XENO_ATTACK_ACTION
 
 //Slashing bots
-/obj/structure/machinery/bot/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/bot/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	M.animation_attack_on(src)
 	health -= rand(15, 30)
 	if(health <= 0)
@@ -444,7 +442,7 @@
 	return XENO_ATTACK_ACTION
 
 //Slashing cameras
-/obj/structure/machinery/camera/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/camera/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(status)
 		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
 		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
@@ -455,7 +453,7 @@
 		return XENO_ATTACK_ACTION
 
 //Slashing windoors
-/obj/structure/machinery/door/window/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/door/window/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	M.animation_attack_on(src)
 	playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 	M.visible_message(SPAN_DANGER("[M] smashes against [src]!"), \
@@ -467,7 +465,7 @@
 	return XENO_ATTACK_ACTION
 
 //Slashing grilles
-/obj/structure/grille/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/grille/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	M.animation_attack_on(src)
 	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
 	var/damage_dealt = 5
@@ -486,7 +484,7 @@
 	return XENO_ATTACK_ACTION
 
 //Slashing fences
-/obj/structure/fence/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/fence/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	M.animation_attack_on(src)
 	var/damage_dealt = 5
 	M.visible_message(SPAN_DANGER("[M] mangles [src]!"), \
@@ -498,7 +496,7 @@
 	return XENO_ATTACK_ACTION
 
 //Slashin mirrors
-/obj/structure/mirror/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/mirror/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	M.animation_attack_on(src)
 	if(shattered)
 		playsound(loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
@@ -515,7 +513,7 @@
 	return XENO_ATTACK_ACTION
 
 //Prying open doors
-/obj/structure/machinery/door/airlock/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/door/airlock/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	var/turf/cur_loc = M.loc
 	if(isElectrified())
 		if(shock(M, 100))
@@ -593,7 +591,7 @@
 	M.scuttle(src)
 
 //Prying open FIREdoors
-/obj/structure/machinery/door/firedoor/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/door/firedoor/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	var/turf/cur_loc = M.loc
 	if(blocked)
 		to_chat(M, SPAN_WARNING("[src] is welded shut."))
@@ -630,7 +628,7 @@
 	return TRUE
 
 //clicking on resin doors attacks them, or opens them without harm intent
-/obj/structure/mineral_door/resin/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/mineral_door/resin/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	var/turf/cur_loc = M.loc
 	if(!istype(cur_loc))
 		return XENO_NO_DELAY_ACTION //Some basic logic here
@@ -656,7 +654,7 @@
 
 //Xenomorphs can't use machinery, not even the "intelligent" ones
 //Exception is Queen and shuttles, because plot power
-/obj/structure/machinery/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(unslashable || health <= 0)
 		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
@@ -675,7 +673,7 @@
 	return XENO_ATTACK_ACTION
 
 // Destroying reagent dispensers
-/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(unslashable || health <= 0)
 		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
@@ -694,7 +692,7 @@
 	return XENO_ATTACK_ACTION
 
 // Destroying filing cabinets
-/obj/structure/filingcabinet/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/filingcabinet/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(unslashable || health <= 0)
 		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
@@ -713,7 +711,7 @@
 	return XENO_ATTACK_ACTION
 
 // Destroying morgues & crematoriums
-/obj/structure/morgue/attack_alien(mob/living/carbon/xenomorph/alien)
+/obj/structure/morgue/attack_alien(mob/living/carbon/xenomorph/alien, dam_bonus, directional_assist_attack)
 	if(unslashable)
 		to_chat(alien, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
@@ -732,7 +730,7 @@
 	return XENO_ATTACK_ACTION
 
 // Destroying hydroponics trays
-/obj/structure/machinery/portable_atmospherics/hydroponics/attack_alien(mob/living/carbon/xenomorph/alien)
+/obj/structure/machinery/portable_atmospherics/hydroponics/attack_alien(mob/living/carbon/xenomorph/alien, dam_bonus, directional_assist_attack)
 	if(unslashable)
 		to_chat(alien, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
@@ -800,7 +798,7 @@
 		reardoor.unlock()
 
 //APCs.
-/obj/structure/machinery/power/apc/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/power/apc/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 
 	if(stat & BROKEN)
 		to_chat(M, SPAN_XENONOTICE("[src] is already broken!"))
@@ -830,14 +828,14 @@
 		beenhit++
 	return XENO_ATTACK_ACTION
 
-/obj/structure/ladder/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/ladder/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	attack_hand(M)
 	return XENO_NO_DELAY_ACTION
 
 /obj/structure/ladder/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	return attack_hand(M)
 
-/obj/structure/machinery/colony_floodlight/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/colony_floodlight/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(!is_lit)
 		to_chat(M, "Why bother? It's just some weird metal thing.")
 		return XENO_NO_DELAY_ACTION
@@ -863,7 +861,7 @@
 
 
 //Digging up snow
-/turf/open/snow/attack_alien(mob/living/carbon/xenomorph/M)
+/turf/open/snow/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(M.a_intent == INTENT_HARM) //Missed slash.
 		return
 	if(M.a_intent == INTENT_HELP || !bleed_layer)
@@ -891,7 +889,7 @@
 
 
 //Crates, closets, other paraphernalia
-/obj/structure/closet/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/closet/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(!unacidable)
 		M.animation_attack_on(src)
 		if(!opened)
@@ -907,7 +905,7 @@
 			SPAN_DANGER("You smash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		return XENO_ATTACK_ACTION
 
-/obj/structure/girder/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/girder/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if((M.caste && M.caste.tier < 2 && !isqueen(M)) || unacidable)
 		to_chat(M, SPAN_WARNING("Your claws aren't sharp enough to damage [src]."))
 		return XENO_NO_DELAY_ACTION
@@ -924,7 +922,7 @@
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, TRUE)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/machinery/vending/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/vending/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(is_tipped_over)
 		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
 		return XENO_NO_DELAY_ACTION
@@ -962,7 +960,7 @@
 	return XENO_NO_DELAY_ACTION
 
 
-/obj/structure/inflatable/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/inflatable/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	M.animation_attack_on(src)
 	deflate(1)
 	return XENO_ATTACK_ACTION
@@ -984,7 +982,7 @@
 	stat &= ~BROKEN //Remove broken. MAGICAL REPAIRS
 
 //Misc
-/obj/structure/prop/invuln/joey/attack_alien(mob/living/carbon/xenomorph/alien)
+/obj/structure/prop/invuln/joey/attack_alien(mob/living/carbon/xenomorph/alien, dam_bonus, directional_assist_attack)
 	alien.animation_attack_on(src)
 	alien.visible_message(SPAN_DANGER("[alien] [alien.slashes_verb] [src]!"), \
 	SPAN_DANGER("You [alien.slash_verb] [src]!"), null, 5)

@@ -353,7 +353,7 @@
 		return
 	take_damage(severity * WEED_EXPLOSION_DAMAGEMULT)
 
-/obj/effect/alien/weeds/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
+/obj/effect/alien/weeds/attack_alien(mob/living/carbon/xenomorph/attacking_xeno, dam_bonus, directional_assist_attack)
 	if(!indestructible && !HIVE_ALLIED_TO_HIVE(attacking_xeno.hivenumber, hivenumber))
 		attacking_xeno.animation_attack_on(src)
 		attacking_xeno.visible_message(SPAN_DANGER("\The [attacking_xeno] slashes [src]!"), \
@@ -611,7 +611,7 @@
 /obj/effect/alien/weeds/node/pylon/attackby(obj/item/W, mob/living/user)
 	return
 
-/obj/effect/alien/weeds/node/pylon/attack_alien(mob/living/carbon/xenomorph/X)
+/obj/effect/alien/weeds/node/pylon/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus, directional_assist_attack)
 	return
 
 /obj/effect/alien/weeds/node/pylon/flamer_fire_act(dam)

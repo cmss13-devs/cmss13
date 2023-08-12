@@ -194,7 +194,7 @@
 	else
 		return ..() //Deal with everything else, like hitting with stuff
 
-/obj/structure/machinery/sensortower/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/sensortower/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH)
 		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION

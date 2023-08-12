@@ -45,7 +45,7 @@
 	if(isxeno(user) && status == EGG_GROWN)
 		. += "Ctrl + Click egg to retrieve child into your empty hand if you can carry it."
 
-/obj/effect/alien/egg/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/effect/alien/egg/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(status == EGG_BURST || status == EGG_DESTROYED)
 		M.animation_attack_on(src)
 		M.visible_message(SPAN_XENONOTICE("[M] clears the hatched egg."), \

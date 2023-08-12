@@ -129,7 +129,7 @@
 		return
 	X.visible_message(SPAN_XENODANGER("The [X] uses its shield to bash [H] as it charges at them!"), SPAN_XENODANGER("You use your shield to bash [H] as you charge at them!"))
 	H.apply_effect(BD.knockdown_amount, WEAKEN)
-	H.attack_alien(X, rand(X.melee_damage_lower, X.melee_damage_upper))
+	H.attack_alien(X, dam_bonus = rand(X.melee_damage_lower, X.melee_damage_upper))
 
 	var/facing = get_dir(X, H)
 	var/turf/T = X.loc

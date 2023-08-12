@@ -194,7 +194,7 @@
 /obj/structure/tunnel/attack_larva(mob/living/carbon/xenomorph/M)
 	. = attack_alien(M)
 
-/obj/structure/tunnel/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/tunnel/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(!istype(M) || M.stat || M.lying)
 		return XENO_NO_DELAY_ACTION
 

@@ -13,7 +13,7 @@
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 	flags_armor_protection = BODY_FLAG_HANDS
-	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_NONE

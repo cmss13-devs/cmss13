@@ -79,11 +79,11 @@
 		anes_tank = null
 
 // Removing marines connected to anesthetic
-/obj/structure/machinery/optable/attack_alien(mob/living/carbon/xenomorph/alien, mob/living/user)
+/obj/structure/machinery/optable/attack_alien(mob/living/carbon/xenomorph/alien, dam_bonus, directional_assist_attack)
 	if(buckled_mob)
 		to_chat(alien, SPAN_XENONOTICE("You rip the tubes away from the host, releasing it!"))
 		playsound(alien, "alien_claw_flesh", 25, 1)
-		unbuckle(user)
+		unbuckle(buckled_mob)
 	else
 		. = ..()
 

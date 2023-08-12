@@ -69,6 +69,6 @@
 
 	. = ..()
 
-/obj/effect/alien/resin/special/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/effect/alien/resin/special/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(M.can_destroy_special() || M.hivenumber != linked_hive.hivenumber)
 		return ..()

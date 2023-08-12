@@ -74,7 +74,7 @@
 
 	return ..()
 
-/turf/open/floor/light/attack_alien(mob/living/carbon/xenomorph/xeno_attacker) //Xeno breaking light, this makes them basically flashlight that needs a new bulb to go back on
+/turf/open/floor/light/attack_alien(mob/living/carbon/xenomorph/xeno_attacker, dam_bonus, directional_assist_attack) //Xeno breaking light, this makes them basically flashlight that needs a new bulb to go back on
 	if(!broken)
 		playsound(src, "windowshatter", 25, 1)
 		xeno_attacker.animation_attack_on(src)

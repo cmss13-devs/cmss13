@@ -358,7 +358,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 //------------INTERACTION PROCS---------------
 
-/obj/structure/machinery/cm_vending/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/cm_vending/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(stat & TIPPED_OVER || indestructible)
 		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
 		return XENO_NO_DELAY_ACTION

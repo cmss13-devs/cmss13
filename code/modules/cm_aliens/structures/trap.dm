@@ -207,7 +207,7 @@
 	QDEL_NULL_LIST(tripwires)
 	tripwires = list()
 
-/obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/xenomorph/X)
+/obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus, directional_assist_attack)
 	if(X.hivenumber != hivenumber)
 		return ..()
 

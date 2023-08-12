@@ -817,7 +817,7 @@
 	visible_message(SPAN_NOTICE("[user] fuels [src] with [fuel]."))
 	remaining_fuel++
 
-/obj/structure/prop/brazier/campfire/attack_alien(mob/living/carbon/xenomorph/xeno)
+/obj/structure/prop/brazier/campfire/attack_alien(mob/living/carbon/xenomorph/xeno, dam_bonus, directional_assist_attack)
 	if(!extinguishable)
 		to_chat(xeno, SPAN_WARNING("You cannot extinguish [src]."))
 		return
@@ -1262,7 +1262,7 @@
 		helmet = null
 		overlays.Cut()
 
-/obj/structure/prop/wooden_cross/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/prop/wooden_cross/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	M.animation_attack_on(src)
 	update_health(rand(M.melee_damage_lower, M.melee_damage_upper))
 	playsound(src, 'sound/effects/woodhit.ogg', 25, 1)

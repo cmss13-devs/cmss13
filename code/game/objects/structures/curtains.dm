@@ -21,7 +21,7 @@
 	toggle()
 	..()
 
-/obj/structure/curtain/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/curtain/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_DANGER("\The [M] slices [src] apart!"), \
 	SPAN_DANGER("You slice [src] apart!"), null, 5)

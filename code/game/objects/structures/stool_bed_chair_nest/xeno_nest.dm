@@ -315,7 +315,7 @@
 		QDEL_IN(src, rand(225, 400))
 
 
-/obj/structure/bed/nest/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/bed/nest/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(islarva(M)) //Larvae can't do shit
 		return
 	if(M.a_intent == INTENT_HARM && !buckled_mob) //can't slash nest with an occupant.

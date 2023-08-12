@@ -150,7 +150,7 @@
 	update_icon()
 	QDEL_IN(src, 3 SECONDS)
 
-/obj/effect/alien/resin/fruit/attack_alien(mob/living/carbon/xenomorph/affected_xeno)
+/obj/effect/alien/resin/fruit/attack_alien(mob/living/carbon/xenomorph/affected_xeno, dam_bonus, directional_assist_attack)
 	if(picked)
 		to_chat(affected_xeno, SPAN_XENODANGER("This fruit is already being picked!"))
 		return
@@ -433,7 +433,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/item/reagent_container/food/snacks/resin_fruit/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/item/reagent_container/food/snacks/resin_fruit/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	attack_hand(M)
 	return XENO_NONCOMBAT_ACTION
 

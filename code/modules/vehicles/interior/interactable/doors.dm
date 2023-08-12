@@ -50,7 +50,7 @@
 
 	interior.exit(M)
 
-/obj/structure/interior_exit/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus)
+/obj/structure/interior_exit/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
 	if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		to_chat(M, SPAN_WARNING("Something has interrupted you."))
@@ -126,7 +126,7 @@
 
 	interior.exit(M, exit_turf)
 
-/obj/structure/interior_exit/vehicle/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus)
+/obj/structure/interior_exit/vehicle/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
 	if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		to_chat(M, SPAN_WARNING("Something has interrupted you."))

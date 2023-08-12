@@ -73,7 +73,7 @@
 			flags_can_pass_all_temp |= PASS_OVER
 			projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 
-/obj/structure/bed/chair/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/bed/chair/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	. = ..()
 	if(stacked_size)
 		stack_collapse()
@@ -440,7 +440,7 @@
 		return
 	..()
 
-/obj/structure/bed/chair/dropship/passenger/attack_alien(mob/living/user)
+/obj/structure/bed/chair/dropship/passenger/attack_alien(mob/living/user, dam_bonus, directional_assist_attack)
 	if(chair_state != DROPSHIP_CHAIR_BROKEN)
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 		user.animation_attack_on(src)

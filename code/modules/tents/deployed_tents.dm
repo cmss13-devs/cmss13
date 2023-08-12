@@ -81,7 +81,7 @@
 	SIGNAL_HANDLER
 	deleting_tent.mob_exited_tent(src)
 
-/obj/structure/tent/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/tent/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(unslashable)
 		return
 

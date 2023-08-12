@@ -281,7 +281,7 @@
 		return // in orbit
 	..()
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/attack_alien(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/attack_alien(mob/living/carbon/xenomorph/xeno, dam_bonus, directional_assist_attack)
 	if(xeno.hive_pos != XENO_QUEEN)
 		return ..()
 

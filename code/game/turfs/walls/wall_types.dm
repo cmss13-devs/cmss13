@@ -109,7 +109,7 @@
 		return
 	. = ..()
 
-/turf/closed/wall/almayer/research/containment/wall/attack_alien(mob/living/carbon/xenomorph/user)
+/turf/closed/wall/almayer/research/containment/wall/attack_alien(mob/living/carbon/xenomorph/user, dam_bonus, directional_assist_attack)
 	return
 
 /turf/closed/wall/almayer/research/containment/wall/corner
@@ -331,7 +331,7 @@
 	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters, can can still be blown up or melted by boilers.
 	baseturfs = /turf/open/floor/sandstone/runed
 
-/turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/xenomorph/user)
+/turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/xenomorph/user, dam_bonus, directional_assist_attack)
 	visible_message("[user] scrapes uselessly against [src] with their claws.")
 	return
 
@@ -966,7 +966,7 @@
 	else
 		update_icon()
 
-/obj/structure/alien/movable_wall/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/alien/movable_wall/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(islarva(M))
 		return FALSE
 
@@ -1176,7 +1176,7 @@
 	take_damage(tforce)
 
 
-/turf/closed/wall/resin/attack_alien(mob/living/carbon/xenomorph/M)
+/turf/closed/wall/resin/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(SEND_SIGNAL(src, COMSIG_WALL_RESIN_XENO_ATTACK, M) & COMPONENT_CANCEL_XENO_ATTACK)
 		return XENO_NO_DELAY_ACTION
 

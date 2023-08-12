@@ -134,7 +134,7 @@
 	else
 		. = ..()
 
-/obj/structure/window_frame/attack_alien(mob/living/carbon/xenomorph/user)
+/obj/structure/window_frame/attack_alien(mob/living/carbon/xenomorph/user, dam_bonus, directional_assist_attack)
 	if(!reinforced && user.claw_type >= CLAW_TYPE_SHARP)
 		user.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)

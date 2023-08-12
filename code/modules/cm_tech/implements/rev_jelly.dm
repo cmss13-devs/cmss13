@@ -11,7 +11,7 @@
 	max_amount = 9
 	var/time_to_take = 3 SECONDS
 
-/obj/item/stack/revival_jelly/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/item/stack/revival_jelly/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	attack_hand(M) //This has a .2 second delay of its own.
 	return XENO_NO_DELAY_ACTION
 

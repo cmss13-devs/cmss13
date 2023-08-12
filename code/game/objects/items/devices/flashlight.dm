@@ -136,7 +136,7 @@
 	else
 		return ..()
 
-/obj/item/device/flashlight/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/item/device/flashlight/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	. = ..()
 
 	if(on && can_be_broken)

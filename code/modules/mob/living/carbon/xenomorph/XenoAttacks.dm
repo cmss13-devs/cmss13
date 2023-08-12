@@ -89,7 +89,7 @@
 
 //Hot hot Aliens on Aliens action.
 //Actually just used for eating people.
-/mob/living/carbon/xenomorph/attack_alien(mob/living/carbon/xenomorph/M)
+/mob/living/carbon/xenomorph/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if (M.fortify || M.burrow)
 		return XENO_NO_DELAY_ACTION
 

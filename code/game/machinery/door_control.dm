@@ -46,7 +46,7 @@
 	else
 		to_chat(user, "Error, no route to host.")
 
-/obj/structure/machinery/door_control/attack_alien(mob/user as mob)
+/obj/structure/machinery/door_control/attack_alien(mob/user as mob, dam_bonus, directional_assist_attack)
 	return
 
 /obj/structure/machinery/door_control/attackby(obj/item/W, mob/user as mob)

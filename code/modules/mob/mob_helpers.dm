@@ -96,23 +96,21 @@ var/global/list/limb_types_by_name = list(
 		if (prob(probability))
 			return zone
 
-	var/rand_zone = zone
-	while (rand_zone == zone)
-		rand_zone = pick (
-			organ_rel_size["head"]; "head",
-			organ_rel_size["chest"]; "chest",
-			organ_rel_size["groin"]; "groin",
-			organ_rel_size["l_arm"]; "l_arm",
-			organ_rel_size["r_arm"]; "r_arm",
-			organ_rel_size["l_leg"]; "l_leg",
-			organ_rel_size["r_leg"]; "r_leg",
-			organ_rel_size["l_hand"]; "l_hand",
-			organ_rel_size["r_hand"]; "r_hand",
-			organ_rel_size["l_foot"]; "l_foot",
-			organ_rel_size["r_foot"]; "r_foot",
-		)
+	zone = pick (
+		organ_rel_size["head"]; "head",
+		organ_rel_size["chest"]; "chest",
+		organ_rel_size["groin"]; "groin",
+		organ_rel_size["l_arm"]; "l_arm",
+		organ_rel_size["r_arm"]; "r_arm",
+		organ_rel_size["l_leg"]; "l_leg",
+		organ_rel_size["r_leg"]; "r_leg",
+		organ_rel_size["l_hand"]; "l_hand",
+		organ_rel_size["r_hand"]; "r_hand",
+		organ_rel_size["l_foot"]; "l_foot",
+		organ_rel_size["r_foot"]; "r_foot",
+	)
 
-	return rand_zone
+	return zone
 
 /proc/stars(message, clear_char_probability = 25)
 	clear_char_probability = max(clear_char_probability, 0)

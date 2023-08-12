@@ -187,7 +187,7 @@
 		playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
 
 //Digging up snow
-/turf/open/auto_turf/snow/attack_alien(mob/living/carbon/xenomorph/M)
+/turf/open/auto_turf/snow/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(M.a_intent == INTENT_HARM) //Missed slash.
 		return
 	if(M.a_intent == INTENT_HELP || !bleed_layer)

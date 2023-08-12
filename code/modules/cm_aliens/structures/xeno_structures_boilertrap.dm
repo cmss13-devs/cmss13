@@ -58,7 +58,7 @@
 	to_chat(M, SPAN_XENOHIGHDANGER("You are caught by a trap made of foul resin!"))
 	qdel(src)
 
-/obj/effect/alien/resin/boilertrap/attack_alien(mob/living/carbon/xenomorph/X)
+/obj/effect/alien/resin/boilertrap/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus, directional_assist_attack)
 	to_chat(X, SPAN_XENOWARNING("Best not to meddle with that trap."))
 	return XENO_NO_DELAY_ACTION
 

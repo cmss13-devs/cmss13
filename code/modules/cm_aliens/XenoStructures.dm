@@ -79,7 +79,7 @@
 	health = max(0, health - tforce)
 	healthcheck()
 
-/obj/effect/alien/resin/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/effect/alien/resin/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(islarva(M)) //Larvae can't do shit
 		return
 
@@ -330,7 +330,7 @@
 	if(isxeno(user) || isobserver(user))
 		. += "[mark_meaning.desc], ordered by [xeno_createdby.name]"
 
-/obj/effect/alien/resin/marker/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/effect/alien/resin/marker/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(M.hive_pos == 1 || M.nicknumber == createdby)
 		. = ..()
 	else
@@ -813,7 +813,7 @@
 	return ..()
 
 
-/obj/effect/alien/resin/resin_pillar/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/effect/alien/resin/resin_pillar/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(!brittle)
 		M.animation_attack_on(src)
 		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src], but the slash bounces off!"), \
@@ -882,7 +882,7 @@
 		overlays += I
 
 
-/obj/item/explosive/grenade/alien/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/item/explosive/grenade/alien/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(!active)
 		attack_hand(M)
 	else

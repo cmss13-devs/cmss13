@@ -101,7 +101,7 @@
 	return ..()
 
 //Deal with picking up facehuggers. "attack_alien" is the universal 'xenos click something while unarmed' proc.
-/obj/item/clothing/mask/facehugger/attack_alien(mob/living/carbon/xenomorph/user)
+/obj/item/clothing/mask/facehugger/attack_alien(mob/living/carbon/xenomorph/user, dam_bonus, directional_assist_attack)
 	if(user.hivenumber != hivenumber)
 		user.animation_attack_on(src)
 		user.visible_message(SPAN_XENOWARNING("[user] crushes \the [src]"), SPAN_XENOWARNING("You crush \the [src]"))

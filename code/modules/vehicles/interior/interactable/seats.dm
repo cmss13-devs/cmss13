@@ -120,7 +120,7 @@
 /obj/structure/bed/chair/comfy/vehicle/attackby(obj/item/W, mob/living/user)
 	return
 
-/obj/structure/bed/chair/comfy/vehicle/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus)
+/obj/structure/bed/chair/comfy/vehicle/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus, directional_assist_attack)
 
 	if(X.is_mob_incapacitated() || !Adjacent(X))
 		return
@@ -401,7 +401,7 @@
 
 //attack handling
 
-/obj/structure/bed/chair/vehicle/attack_alien(mob/living/user)
+/obj/structure/bed/chair/vehicle/attack_alien(mob/living/user, dam_bonus, directional_assist_attack)
 	if(!unslashable)
 		user.visible_message(SPAN_WARNING("[user] smashes \the [src]!"),
 		SPAN_WARNING("You smash \the [src]!"))

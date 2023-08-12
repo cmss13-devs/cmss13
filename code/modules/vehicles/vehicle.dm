@@ -126,7 +126,7 @@
 /obj/vehicle/attack_remote(mob/user as mob)
 	return
 
-/obj/vehicle/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
+/obj/vehicle/attack_alien(mob/living/carbon/xenomorph/attacking_xeno, dam_bonus, directional_assist_attack)
 	if(attacking_xeno.a_intent == INTENT_HELP)
 		return XENO_NO_DELAY_ACTION
 

@@ -101,7 +101,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment
 	unacidable = TRUE
 
-/obj/structure/machinery/door/poddoor/shutters/almayer/containment/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(isqueen(M) && density && !operating)
 		INVOKE_ASYNC(src, PROC_REF(pry_open), M)
 		return XENO_ATTACK_ACTION

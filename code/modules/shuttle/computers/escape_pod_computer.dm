@@ -169,7 +169,7 @@
 		user.stop_pulling()
 		move_mob_inside(user)
 
-/obj/structure/machinery/cryopod/evacuation/attack_alien(mob/living/carbon/xenomorph/user)
+/obj/structure/machinery/cryopod/evacuation/attack_alien(mob/living/carbon/xenomorph/user, dam_bonus, directional_assist_attack)
 	if(being_forced)
 		to_chat(user, SPAN_XENOWARNING("It's being forced open already!"))
 		return XENO_NO_DELAY_ACTION
@@ -226,19 +226,19 @@
 /obj/structure/machinery/door/airlock/evacuation/attack_hand()
 	return FALSE
 
-/obj/structure/machinery/door/airlock/evacuation/attack_alien(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/door/airlock/evacuation/attack_alien(mob/living/carbon/xenomorph/xeno, dam_bonus, directional_assist_attack)
 	if(!density || unslashable) //doors become slashable after evac is called
 		return FALSE
-	
+
 	if(xeno.claw_type < CLAW_TYPE_SHARP)
 		to_chat(xeno, SPAN_WARNING("[src] is bolted down tight."))
 		return XENO_NO_DELAY_ACTION
-	
+
 	xeno.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	take_damage(HEALTH_DOOR / XENO_HITS_TO_DESTROY_BOLTED_DOOR)
 	return XENO_ATTACK_ACTION
-			
+
 
 /obj/structure/machinery/door/airlock/evacuation/attack_remote()
 	return FALSE

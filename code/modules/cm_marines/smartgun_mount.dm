@@ -285,7 +285,7 @@
 	else
 		. += "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job."
 
-/obj/structure/machinery/m56d_post/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/m56d_post/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(islarva(M))
 		return //Larvae can't do shit
 
@@ -652,7 +652,7 @@
 	update_health(round(P.damage / 10)) //Universal low damage to what amounts to a post with a gun.
 	return 1
 
-/obj/structure/machinery/m56d_hmg/attack_alien(mob/living/carbon/xenomorph/M) // Those Ayy lmaos.
+/obj/structure/machinery/m56d_hmg/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack) // Those Ayy lmaos.
 	if(islarva(M))
 		return //Larvae can't do shit
 

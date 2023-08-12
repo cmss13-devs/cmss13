@@ -39,7 +39,7 @@
 		QDEL_NULL(node)
 	. = ..()
 
-/obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(isxeno_builder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
 		do_repair(M) //This handles the delay itself.
 		return XENO_NO_DELAY_ACTION
@@ -319,7 +319,7 @@
 	linked_hive.stored_larva += larva_amount
 	linked_hive.hive_ui.update_burrowed_larva()
 
-/obj/effect/alien/resin/special/pylon/core/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/effect/alien/resin/special/pylon/core/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(M.a_intent != INTENT_HELP && M.can_destroy_special() && M.hivenumber == linked_hive.hivenumber)
 		if(!hardcore && last_attempt + 6 SECONDS > world.time)
 			to_chat(M,SPAN_WARNING("You have attempted to destroy \the [src] too recently! Wait a bit!")) // no spammy

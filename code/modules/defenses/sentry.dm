@@ -595,7 +595,7 @@
 	handheld_type = /obj/item/defenses/handheld/sentry/shotgun
 	disassemble_time = 1.5 SECONDS
 
-/obj/structure/machinery/defenses/sentry/shotgun/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/defenses/sentry/shotgun/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	. = ..()
 	if(. == XENO_ATTACK_ACTION && turned_on)
 		M.visible_message(SPAN_DANGER("The sentry's steel tusks cut into [M]!"),

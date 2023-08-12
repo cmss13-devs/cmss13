@@ -236,7 +236,7 @@
 
 	user.forceMove(middle)
 
-/obj/vehicle/multitile/attack_alien(mob/living/carbon/xenomorph/X)
+/obj/vehicle/multitile/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus, directional_assist_attack)
 	// If they're on help intent, attempt to enter the vehicle
 	if(X.a_intent == INTENT_HELP)
 		handle_player_entrance(X)

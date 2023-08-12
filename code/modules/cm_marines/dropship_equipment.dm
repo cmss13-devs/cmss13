@@ -33,7 +33,7 @@
 		linked_console = null
 	. = ..()
 
-/obj/structure/dropship_equipment/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+/obj/structure/dropship_equipment/attack_alien(mob/living/carbon/xenomorph/current_xenomorph, dam_bonus, directional_assist_attack)
 	if(unslashable)
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)

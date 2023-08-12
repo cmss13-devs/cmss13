@@ -152,7 +152,7 @@
 	H.visible_message(SPAN_DANGER("[H] sets up [src]."),\
 	SPAN_NOTICE("You set up [src]."), max_distance = 3)
 
-/obj/structure/resource_node/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/resource_node/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	if(!isxeno_builder(M))
 		to_chat(M, SPAN_XENOWARNING("You can't build onto [src]."))
 		return XENO_NO_DELAY_ACTION

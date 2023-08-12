@@ -29,7 +29,7 @@
 
 	tgui_interact(user)
 
-/obj/structure/machinery/computer/teleporter_console/attack_alien(mob/living/carbon/xenomorph/X)
+/obj/structure/machinery/computer/teleporter_console/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus, directional_assist_attack)
 	if(!isqueen(X))
 		return FALSE
 	attack_hand(X)

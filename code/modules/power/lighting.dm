@@ -163,7 +163,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	return
 
 /obj/structure/machinery/light/blue

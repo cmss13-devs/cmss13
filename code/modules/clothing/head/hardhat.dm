@@ -83,7 +83,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/clothing/head/hardhat/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/item/clothing/head/hardhat/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	. = ..()
 
 	if(on && can_be_broken)

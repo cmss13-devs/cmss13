@@ -62,7 +62,7 @@
 	health -= severity/4
 
 //Every other type of nonhuman mob
-/obj/ovipositor/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/ovipositor/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus, directional_assist_attack)
 	switch(M.a_intent)
 		if(INTENT_HELP)
 			M.visible_message(SPAN_NOTICE("\The [M] caresses [src] with its claws."), \

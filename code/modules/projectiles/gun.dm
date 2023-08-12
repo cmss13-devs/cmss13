@@ -314,7 +314,7 @@
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
-	set_burst_amount(BURST_AMOUNT_TIER_5)
+	set_burst_amount(BURST_AMOUNT_TIER_1)
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	damage_falloff_mult = DAMAGE_FALLOFF_TIER_10
@@ -705,7 +705,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	data["recoil_max"] = RECOIL_AMOUNT_TIER_1
 	data["scatter_max"] = SCATTER_AMOUNT_TIER_1
-	data["firerate_max"] = 1 MINUTES / FIRE_DELAY_TIER_10
+	data["firerate_max"] = 1 MINUTES / FIRE_DELAY_TIER_12
 	data["damage_max"] = 100
 	data["accuracy_max"] = 32
 	data["range_max"] = 32
@@ -1217,6 +1217,16 @@ and you're good to go.
 	return TRUE
 
 #define EXECUTION_CHECK (attacked_mob.stat == UNCONSCIOUS || attacked_mob.is_mob_restrained()) && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))
+
+/obj/item/weapon/gun/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	if(!proximity_flag)
+		return FALSE
+
+	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE))
+		active_attachable.last_fired = world.time
+		active_attachable.fire_attachment(target, src, user)
+		return TRUE
+
 
 /obj/item/weapon/gun/attack(mob/living/attacked_mob, mob/living/user)
 	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE)) //this is expected to do something in melee.
@@ -1765,13 +1775,11 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/proc/set_burst_amount(value, mob/user)
 	burst_amount = value
 	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED, burst_amount)
-	setup_firemodes()
 
 /// adder for burst_amount
 /obj/item/weapon/gun/proc/modify_burst_amount(value, mob/user)
 	burst_amount += value
 	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED, burst_amount)
-	setup_firemodes()
 
 /// Adder for burst_delay
 /obj/item/weapon/gun/proc/modify_burst_delay(value, mob/user)

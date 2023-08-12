@@ -25,6 +25,8 @@
 	speech_chance = 100
 	death_message = "clicks in agony and falls still, motionless and completely lifeless..."
 	darksight = 5
+	default_lighting_alpha = LIGHTING_PLANE_ALPHA_YAUTJA
+	flags_sight = SEE_MOBS
 	slowdown = -0.5
 	total_health = 175 //more health than regular humans
 	timed_hug = FALSE

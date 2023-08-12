@@ -1,0 +1,6 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - rscadd: "All hive's alliances break on Queen's death."
+  - qol: "If a hive breaks an alliance with another, the second hive also breaks the alliance."
+  - bugfix: "xeno_message no longer sends the message to allied hives"

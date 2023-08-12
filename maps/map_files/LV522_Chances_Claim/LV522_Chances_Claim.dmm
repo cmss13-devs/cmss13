@@ -23654,9 +23654,6 @@
 	icon_state = "brown"
 	},
 /area/lv522/atmos/reactor_garage)
-"jMN" = (
-/turf/open/floor/corsat,
-/area/lv522/oob)
 "jMZ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/pen/blue/clicky{
@@ -29360,7 +29357,7 @@
 "lTi" = (
 /obj/structure/girder,
 /turf/open/floor/corsat,
-/area/lv522/oob)
+/area/lv522/atmos/east_reactor/south)
 "lTj" = (
 /obj/structure/prop/invuln/minecart_tracks,
 /obj/structure/prop/invuln/minecart_tracks{
@@ -29877,10 +29874,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/filt)
-"mdZ" = (
-/obj/structure/window/framed/corsat,
-/turf/open/floor/corsat,
-/area/lv522/oob)
 "meb" = (
 /obj/structure/largecrate/random{
 	layer = 2.9
@@ -36946,10 +36939,6 @@
 	icon_state = "floor_plate"
 	},
 /area/lv522/atmos/reactor_garage)
-"oLU" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/floor/corsat,
-/area/lv522/oob)
 "oLW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -37360,7 +37349,7 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat,
-/area/lv522/oob)
+/area/lv522/atmos/east_reactor/south)
 "oVA" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/drinks/coffee,
@@ -56350,7 +56339,7 @@
 "vKP" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/corsat,
-/area/lv522/oob)
+/area/lv522/atmos/east_reactor/south)
 "vKR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -82573,8 +82562,8 @@ saC
 saC
 tiQ
 iBI
-uFG
-nbD
+xmD
+xCS
 tiQ
 tiQ
 tiQ
@@ -83479,7 +83468,7 @@ tjg
 tjg
 hJB
 qUQ
-eLV
+vlq
 xmD
 hna
 yiu
@@ -83933,7 +83922,7 @@ fsC
 kbV
 hJB
 qUQ
-oLU
+pwX
 knt
 qjG
 yiu
@@ -83949,7 +83938,7 @@ xmD
 xmD
 tiQ
 kEA
-mdZ
+seF
 tiQ
 saC
 saC
@@ -84160,7 +84149,7 @@ tjg
 tjg
 hJB
 qUQ
-oLU
+pwX
 knt
 qjG
 yiu
@@ -84387,7 +84376,7 @@ tjg
 tjg
 hJB
 qUQ
-eLV
+vlq
 knt
 hna
 yiu
@@ -90553,7 +90542,7 @@ jjl
 hLY
 vDw
 rbZ
-jMN
+qjG
 bjd
 rMD
 eZF
@@ -90780,7 +90769,7 @@ iFk
 jef
 pfj
 qjG
-jMN
+qjG
 bjd
 nRy
 pqQ
@@ -91234,7 +91223,7 @@ hna
 wea
 hLY
 dpz
-jMN
+qjG
 bjd
 lfj
 pqQ

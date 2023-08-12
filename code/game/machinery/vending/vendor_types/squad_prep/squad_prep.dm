@@ -281,6 +281,8 @@
 		list("Box of Flares", round(scale * 1), /obj/item/ammo_box/magazine/misc/flares, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),
 		list("M89-S Signal Flare Pack", round(scale * 1), /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
+		list("Box of Blue Lightsticks", round(scale * 1), /obj/item/storage/box/lightstick, VENDOR_ITEM_REGULAR),
+		list("Box of Red Lightsticks", round(scale * 1), /obj/item/storage/box/lightstick/red, VENDOR_ITEM_REGULAR),
 
 		list("MISCELLANEOUS", -1, null, null),
 		list("Toolkit", round(scale * 1), /obj/item/storage/firstaid/toolkit/empty, VENDOR_ITEM_REGULAR),

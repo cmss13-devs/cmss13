@@ -8,7 +8,7 @@
 /datum/internal_organ
 	var/name = "organ"
 	var/mob/living/carbon/human/owner = null
-	// If you lose a vital organ, you die immediately
+	/// If you lose a vital organ, you die immediately
 	var/vital
 	/// amount of damage to the organ
 	var/damage = 0

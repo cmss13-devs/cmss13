@@ -127,7 +127,7 @@
 	///How many full-auto shots to get to max scatter?
 	var/fa_scatter_peak = 4
 	///How bad does the scatter get on full auto?
-	var/fa_max_scatter = 6
+	var/fa_max_scatter = 6.5
 	///Click parameters to use when firing full-auto
 	var/fa_params = null
 

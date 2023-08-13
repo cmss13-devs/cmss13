@@ -506,7 +506,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		for(var/group in fire_delay_group)
 			LAZYSET(user.fire_delay_next_fire, group, world.time + delay_left)
 
-	if(slot == user.get_active_hand())
+	if(slot in list(WEAR_L_HAND, WEAR_R_HAND))
 		set_gun_user(user)
 	else
 		set_gun_user(null)

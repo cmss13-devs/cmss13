@@ -89,6 +89,38 @@
 				break
 	return T
 
+/mob/living/simple_animal/hostile/alien/spawnable/evaluate_target(mob/living/carbon/target)
+	. = ..()
+
+	if (!.)
+		return
+
+	if (evaluate_embryo_existance(target))
+		return FALSE
+
+	return target
+
+/mob/living/simple_animal/hostile/alien/spawnable/proc/evaluate_embryo_existance(mob/living/carbon/target)
+	var/obj/item/alien_embryo/embryo = locate() in target
+
+	if (embryo)
+		return TRUE
+
+	return FALSE
+
+/mob/living/simple_animal/hostile/alien/spawnable/AttackTarget()
+
+	stop_automated_movement = 1
+	if(!target_mob || SA_attackable(target_mob) || evaluate_embryo_existance(target_mob))
+		LoseTarget()
+		return 0
+	if(!(target_mob in ListTargets(10)))
+		LostTarget()
+		return 0
+	if(get_dist(src, target_mob) <= 1) //Attacking
+		AttackingTarget()
+		return 1
+
 /mob/living/simple_animal/hostile/alien/spawnable/AttackingTarget()
 	if(!Adjacent(target_mob))
 		return
@@ -159,9 +191,16 @@
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration)
 
 /mob/living/simple_animal/hostile/alien/spawnable/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
-	health = 0
+	health = -1
+	death()
 	visible_message("[src] bursts into flames!")
 
 /mob/living/simple_animal/hostile/alien/spawnable/handle_flamer_fire_crossed(obj/flamer_fire/fire)
-	health = 0
+	health = -1
+	death()
+	visible_message("[src] bursts into flames!")
+
+/mob/living/simple_animal/hostile/alien/spawnable/TryIgniteMob(fire_stacks, datum/reagent/R)
+	health = -1
+	death()
 	visible_message("[src] bursts into flames!")

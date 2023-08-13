@@ -1,0 +1,4 @@
+author: "SpartanBobby"
+delete-after: True
+changes:
+  - maptweak: "Fixes use of wrong areas inside LV522 reactor"

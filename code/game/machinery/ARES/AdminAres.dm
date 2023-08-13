@@ -10,6 +10,11 @@
 		to_chat(usr, SPAN_BOLDWARNING("ERROR: ARES Link or Interface not found!"))
 		return FALSE
 	GLOB.ares_link.tgui_interact(mob)
+	var/mob/user = usr
+	var/log = "[key_name(user)] opened the remote ARES Interface."
+	if(user.job)
+		log = "[key_name(user)] ([user.job]) opened the remote ARES Interface."
+	log_admin(log)
 
 /datum/ares_console_admin
 	var/current_menu = "login"
@@ -202,12 +207,11 @@
 	if(.)
 		return
 	var/mob/user = usr
-	playsound(src, "keyboard_alt", 15, 1)
 
 	switch (action)
 		if("go_back")
 			if(!admin_interface.last_menu)
-				return to_chat(usr, SPAN_WARNING("Error, no previous page detected."))
+				return to_chat(user, SPAN_WARNING("Error, no previous page detected."))
 			var/temp_holder = admin_interface.current_menu
 			admin_interface.current_menu = admin_interface.last_menu
 			admin_interface.last_menu = temp_holder
@@ -217,7 +221,7 @@
 				admin_interface.logged_in = user.client.ckey
 				admin_interface.access_list += "[user.client.ckey] at [worldtime2text()], Access Level '[user.client.admin_holder?.rank]'."
 			else
-				to_chat(usr, SPAN_WARNING("You require staff identification to access this terminal!"))
+				to_chat(user, SPAN_WARNING("You require staff identification to access this terminal!"))
 				return FALSE
 			admin_interface.current_menu = "main"
 
@@ -290,15 +294,15 @@
 			interface.records_talking -= conversation
 
 		if("fake_message_ares")
-			var/message = tgui_input_text(usr, "What do you wish to say to ARES?", "ARES Message", encode = FALSE)
+			var/message = tgui_input_text(user, "What do you wish to say to ARES?", "ARES Message", encode = FALSE)
 			if(message)
-				interface.message_ares(message, usr, params["active_convo"], TRUE)
+				interface.message_ares(message, user, params["active_convo"], TRUE)
 		if("ares_reply")
-			var/message = tgui_input_text(usr, "What do you wish to reply with?", "ARES Response", encode = FALSE)
+			var/message = tgui_input_text(user, "What do you wish to reply with?", "ARES Response", encode = FALSE)
 			if(message)
 				interface.response_from_ares(message, params["active_convo"])
 				var/datum/ares_record/talk_log/conversation = locate(params["active_convo"])
-				var/admin_log = SPAN_STAFF_IC(SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[usr] replied to [conversation.user]'s ARES message")] [SPAN_GREEN("via Remote Interface")] with: [SPAN_BLUE(message)] </b>"))
+				var/admin_log = SPAN_STAFF_IC(SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[key_name(user)] replied to [conversation.user]'s ARES message")] [SPAN_GREEN("via Remote Interface")] with: [SPAN_BLUE(message)] </b>"))
 				for(var/client/admin in GLOB.admins)
 					if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 						to_chat(admin, admin_log)

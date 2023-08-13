@@ -95,6 +95,7 @@
 	return data
 
 /obj/structure/machinery/computer/overwatch/tgui_interact(mob/user, datum/tgui/ui)
+	user.set_interaction(src)
 	if(!tacmap.map_holder)
 		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
 		if(!level[1])
@@ -325,6 +326,7 @@
 
 	var/mob/user = usr
 
+	user.set_interaction(src)
 	switch(action)
 		if("pick_squad")
 			if(current_squad)

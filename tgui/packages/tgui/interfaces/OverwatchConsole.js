@@ -445,7 +445,7 @@ const SquadMonitor = (props, context) => {
         </Table.Row>
         {squad_leader && (
           <Table.Row key="index" bold>
-            <Table.Cell p="2px">
+            <Table.Cell collapsing p="2px">
               {(squad_leader.has_helmet && (
                 <Button
                   onClick={() =>
@@ -493,7 +493,7 @@ const SquadMonitor = (props, context) => {
 
               return (
                 <Table.Row key="index">
-                  <Table.Cell p="2px">
+                  <Table.Cell collapsing p="2px">
                     {(marine.has_helmet && (
                       <Button
                         onClick={() =>

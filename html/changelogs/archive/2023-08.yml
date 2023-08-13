@@ -193,3 +193,30 @@
   Steelpoint:
   - bugfix: Synthetic Breaching Hammer will now properly appear on the user's back
       when holstered.
+2023-08-13:
+  Huffie56:
+  - spellcheck: fix typo mistake from matchs to matches.
+  Morrow:
+  - rscadd: At end of round it now shows a Queen's prefix/postfix rather than their
+      ckey
+  blackdragonTOW:
+  - admin: Adjustment of ASay color
+  ihatethisengine:
+  - rscadd: All hive's alliances break on Queen's death.
+  - qol: If a hive breaks an alliance with another, the second hive also breaks the
+      alliance.
+  - bugfix: xeno_message no longer sends the message to allied hives
+  mothblocks, harry:
+  - rscadd: added the backend functionality for autowiki, alongside automating much
+      of the work of maintaining guns on the wiki
+  realforest2001:
+  - bugfix: Picking up a Yautja mask now correctly checks for bracers to apply the
+      visor.
+  - rscadd: Added backend for species datums to hold inherent vision flags.
+  - rscadd: Added proc for Yautja mask to pass power drain back to bracers. Added
+      small power drain on use of mask visor.
+  - rscadd: Added natural thermal vision and very weak night vision to Yautja species,
+      to fit with our wiki lore.
+  - rscdel: Removed Thermal and Meson visors from Yautja mask.
+  - bugfix: Squad Specialists can no longer bypass restrictions by not selecting a
+      kit to use.

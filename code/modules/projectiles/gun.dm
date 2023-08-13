@@ -506,7 +506,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		for(var/group in fire_delay_group)
 			LAZYSET(user.fire_delay_next_fire, group, world.time + delay_left)
 
-	if(slot in list(WEAR_L_HAND, WEAR_R_HAND))
+	if(slot == user.get_active_hand())
 		set_gun_user(user)
 	else
 		set_gun_user(null)
@@ -1897,7 +1897,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(!target)
 		target = src.target
 	if(!user)
-		user = src.gun_user
+		user = gun_user
 	return Fire(target, user, params, reflex, dual_wield)
 
 /// Setter proc for fa_firing

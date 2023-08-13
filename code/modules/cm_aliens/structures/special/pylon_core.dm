@@ -12,6 +12,7 @@
 	block_range = 0
 	var/cover_range = WEED_RANGE_PYLON
 	var/node_type = /obj/effect/alien/weeds/node/pylon
+	var/obj/effect/alien/weeds/node/node
 	var/linked_turfs = list()
 
 	var/damaged = FALSE
@@ -25,7 +26,7 @@
 /obj/effect/alien/resin/special/pylon/Initialize(mapload, hive_ref)
 	. = ..()
 
-	place_node()
+	node = place_node()
 	for(var/turf/A in range(round(cover_range*PYLON_COVERAGE_MULT), loc))
 		LAZYADD(A.linked_pylons, src)
 		linked_turfs += A
@@ -34,9 +35,8 @@
 	for(var/turf/A as anything in linked_turfs)
 		LAZYREMOVE(A.linked_pylons, src)
 
-	var/obj/effect/alien/weeds/node/pylon/W = locate() in loc
-	if(W)
-		qdel(W)
+	if(node)
+		QDEL_NULL(node)
 	. = ..()
 
 /obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/xenomorph/M)
@@ -87,8 +87,78 @@
 	playsound(loc, "alien_resin_build", 25)
 
 /obj/effect/alien/resin/special/pylon/proc/place_node()
-	var/obj/effect/alien/weeds/node/pylon/W = new node_type(loc, null, null, linked_hive)
-	W.resin_parent = src
+	var/obj/effect/alien/weeds/node/pylon/pylon_node = new node_type(loc, null, null, linked_hive)
+	pylon_node.resin_parent = src
+	return pylon_node
+
+/obj/effect/alien/resin/special/pylon/endgame
+	cover_range = WEED_RANGE_CORE
+	var/activated = FALSE
+
+/obj/effect/alien/resin/special/pylon/endgame/Destroy()
+	if(activated)
+		activated = FALSE
+
+		if(hijack_delete)
+			return ..()
+
+		marine_announcement("ALERT.\n\nEnergy build up around communication relay at [get_area(src)] halted.", "[MAIN_AI_SYSTEM] Biological Scanner")
+
+		for(var/hivenumber in GLOB.hive_datum)
+			var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
+			if(!length(checked_hive.totalXenos))
+				continue
+
+			if(checked_hive == linked_hive)
+				xeno_announcement(SPAN_XENOANNOUNCE("We have lost our control of the tall's communication relay at [get_area(src)]."), hivenumber, XENO_GENERAL_ANNOUNCE)
+			else
+				xeno_announcement(SPAN_XENOANNOUNCE("Another hive has lost control of the tall's communication relay at [get_area(src)]."), hivenumber, XENO_GENERAL_ANNOUNCE)
+
+	return ..()
+
+/// Checks if all comms towers are connected and then starts end game content on all pylons if they are
+/obj/effect/alien/resin/special/pylon/endgame/proc/comms_relay_connection()
+	marine_announcement("ALERT.\n\nIrregular build up of energy around communication relays at [get_area(src)].", "[MAIN_AI_SYSTEM] Biological Scanner")
+
+	for(var/hivenumber in GLOB.hive_datum)
+		var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
+		if(!length(checked_hive.totalXenos))
+			continue
+
+		if(checked_hive == linked_hive)
+			xeno_announcement(SPAN_XENOANNOUNCE("We have harnessed the tall's communication relay at [get_area(src)]. Hold it!"), hivenumber, XENO_GENERAL_ANNOUNCE)
+		else
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive has harnessed the tall's communication relay at [get_area(src)].[linked_hive.faction_is_ally(checked_hive.name) ? "" : " Stop them!"]"), hivenumber, XENO_GENERAL_ANNOUNCE)
+
+	activated = TRUE
+	addtimer(CALLBACK(src, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
+
+#define ENDGAME_LARVA_CAP_MULTIPLIER 0.4
+#define LARVA_ADDITION_MULTIPLIER 0.10
+
+/// Looped proc via timer to give larva after time
+/obj/effect/alien/resin/special/pylon/endgame/proc/give_larva()
+	if(!activated)
+		return
+
+	if(!linked_hive.hive_location || !linked_hive.living_xeno_queen)
+		return
+
+	var/list/hive_xenos = linked_hive.totalXenos
+
+	for(var/mob/living/carbon/xenomorph/xeno in hive_xenos)
+		if(!xeno.counts_for_slots)
+			hive_xenos -= xeno
+
+	if(length(hive_xenos) > (length(GLOB.alive_human_list) * ENDGAME_LARVA_CAP_MULTIPLIER))
+		return
+
+	linked_hive.partial_larva += length(hive_xenos) * LARVA_ADDITION_MULTIPLIER
+	linked_hive.convert_partial_larva_to_full_larva()
+	linked_hive.hive_ui.update_burrowed_larva()
+
+#undef ENDGAME_LARVA_CAP_MULTIPLIER
+#undef LARVA_ADDITION_MULTIPLIER
 
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core
@@ -150,7 +220,7 @@
 			last_larva_time = world.time
 		if(spawning_larva || (last_larva_queue_time + spawn_cooldown * 4) < world.time)
 			last_larva_queue_time = world.time
-			var/list/players_with_xeno_pref = get_alien_candidates()
+			var/list/players_with_xeno_pref = get_alien_candidates(linked_hive)
 			if(players_with_xeno_pref && players_with_xeno_pref.len)
 				if(spawning_larva && spawn_burrowed_larva(players_with_xeno_pref[1]))
 					// We were in spawning_larva mode and successfully spawned someone
@@ -326,6 +396,23 @@
 		log_admin("Hivecore cooldown reset proc aborted due to hivecore cooldown var being set to false before the cooldown has finished!")
 		// Tell admins that this condition is reached so they know what has happened if it fails somehow
 		return
+
+/obj/effect/alien/resin/special/pylon/core/proc/spawn_lesser_drone(mob/xeno_candidate)
+	if(!linked_hive.can_spawn_as_lesser_drone(xeno_candidate))
+		return FALSE
+
+	var/mob/living/carbon/xenomorph/lesser_drone/new_drone = new /mob/living/carbon/xenomorph/lesser_drone(loc, null, linked_hive.hivenumber)
+	xeno_candidate.mind.transfer_to(new_drone, TRUE)
+	new_drone.visible_message(SPAN_XENODANGER("A lesser drone emerges out of [src]!"), SPAN_XENODANGER("You emerge out of [src] and awaken from your slumber. For the Hive!"))
+	playsound(new_drone, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
+	new_drone.generate_name()
+
+	return TRUE
+
+/obj/effect/alien/resin/special/pylon/core/attack_ghost(mob/dead/observer/user)
+	. = ..()
+	if(SSticker.mode.check_xeno_late_join(user))
+		SSticker.mode.attempt_to_join_as_lesser_drone(user)
 
 #undef PYLON_REPAIR_TIME
 #undef PYLON_WEEDS_REGROWTH_TIME

@@ -11,12 +11,27 @@
 	)
 	flags_equip_slot = SLOT_EAR
 	flags_item = ITEM_PREDATOR
+	flags_atom = FPRINT|USES_HEARING
+
+
+/obj/item/falcon_drone/hear_talk(mob/living/sourcemob, message, verb, datum/language/language, italics)
+	var/mob/hologram/falcon/hologram = loc
+	if(!istype(hologram))
+		return FALSE
+	var/mob/living/carbon/human/user = hologram.owned_bracers.loc
+	if(!ishuman(user) || user == sourcemob)
+		return FALSE
+
+	to_chat(user, SPAN_YAUTJABOLD("Falcon Relay: [sourcemob.name] [verb], <span class='[language.color]'>\"[message]\"</span>"))
+	if(user && user.client && user.client.prefs && !user.client.prefs.lang_chat_disabled \
+	   && !user.ear_deaf && user.say_understands(sourcemob, language))
+		sourcemob.langchat_display_image(user)
+
+	return TRUE
 
 /obj/item/falcon_drone/get_examine_location(mob/living/carbon/human/wearer, mob/examiner, slot, t_he = "They", t_his = "their", t_him = "them", t_has = "have", t_is = "are")
 	switch(slot)
-		if(WEAR_L_EAR)
-			return "on [t_his] shoulder"
-		if(WEAR_R_EAR)
+		if(WEAR_L_EAR, WEAR_R_EAR)
 			return "on [t_his] shoulder"
 	return ..()
 
@@ -53,6 +68,7 @@
 	var/obj/item/falcon_drone/parent_drone
 	var/obj/item/clothing/gloves/yautja/owned_bracers
 	desc = "An agile drone used by Yautja to survey the hunting grounds."
+	motion_sensed = TRUE
 
 /mob/hologram/falcon/Initialize(mapload, mob/M, obj/item/falcon_drone/drone, obj/item/clothing/gloves/yautja/bracers)
 	. = ..()

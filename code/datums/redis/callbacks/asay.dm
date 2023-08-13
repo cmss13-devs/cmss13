@@ -7,10 +7,10 @@
 	if(data["source"] == SSredis.instance_name)
 		return
 
-	var/msg = SPAN_ADMINSAY("<span class='prefix'>[data["rank"]]:</span> <EM>[data["author"]]@[data["source"]]</EM>: <span class='message'>[strip_html(data["message"])]</span>")
+	var/msg = SPAN_MOD("<span class='prefix'>[data["rank"]]:</span> <EM>[data["author"]]@[data["source"]]</EM>: <span class='message'>[strip_html(data["message"])]</span>")
 
 	for(var/client/client in GLOB.admins)
-		if(!(R_ADMIN & client.admin_holder.rights))
+		if(!(R_MOD|R_ADMIN & client.admin_holder.rights))
 			continue
 
 		to_chat(client, msg)

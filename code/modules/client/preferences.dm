@@ -590,11 +590,13 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<div id='column3'>"
 			dat += "<h2><b><u>Gameplay Toggles:</u></b></h2>"
 			dat += "<b>Toggle Being Able to Hurt Yourself: \
-					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_IGNORE_SELF]'><b>[toggle_prefs & TOGGLE_IGNORE_SELF ? "On" : "Off"]</b></a><br>"
+					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_IGNORE_SELF]'><b>[toggle_prefs & TOGGLE_IGNORE_SELF ? "Off" : "On"]</b></a><br>"
 			dat += "<b>Toggle Help Intent Safety: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_HELP_INTENT_SAFETY]'><b>[toggle_prefs & TOGGLE_HELP_INTENT_SAFETY ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Middle Mouse Ability Activation: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_MIDDLE_MOUSE_CLICK]'><b>[toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "On" : "Off"]</b></a><br>"
+			dat += "<b>Toggle Ability Deactivation: \
+					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_ABILITY_DEACTIVATION_OFF]'><b>[toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF ? "Off" : "On"]</b></a><br>"
 			dat += "<b>Toggle Directional Assist: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_DIRECTIONAL_ATTACK]'><b>[toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Magazine Auto-Ejection: \
@@ -1229,7 +1231,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					predator_gender = predator_gender == MALE ? FEMALE : MALE
 				if("pred_age")
 					var/new_predator_age = tgui_input_number(user, "Choose your Predator's age(175 to 3000):", "Character Preference", 1234, 3000, 175)
-					if(new_predator_age) 
+					if(new_predator_age)
 						predator_age = max(min( round(text2num(new_predator_age)), 3000),175)
 				if("pred_trans_type")
 					var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", PRED_TRANSLATORS)
@@ -1953,11 +1955,17 @@ var/const/MAX_SAVE_SLOTS = 10
 			load_character(slot_for_job)
 
 /// Transfers both physical characteristics and character information to character
-/datum/preferences/proc/copy_all_to(mob/living/carbon/human/character, job_title, is_late_join = FALSE)
+/datum/preferences/proc/copy_all_to(mob/living/carbon/human/character, job_title, is_late_join = FALSE, check_datacore = FALSE)
 	if(!istype(character))
 		return
 
 	find_assigned_slot(job_title, is_late_join)
+	if(check_datacore && !(be_random_body && be_random_name))
+		for(var/datum/data/record/record as anything in GLOB.data_core.locked)
+			if(record.fields["name"] == real_name)
+				be_random_body = TRUE
+				be_random_name = TRUE
+				break
 
 	if(be_random_name)
 		real_name = random_name(gender)
@@ -1985,10 +1993,11 @@ var/const/MAX_SAVE_SLOTS = 10
 		character.flavor_texts["legs"] = flavor_texts["legs"]
 		character.flavor_texts["feet"] = flavor_texts["feet"]
 
-	character.med_record = strip_html(med_record)
-	character.sec_record = strip_html(sec_record)
-	character.gen_record = strip_html(gen_record)
-	character.exploit_record = strip_html(exploit_record)
+	if(!be_random_name)
+		character.med_record = strip_html(med_record)
+		character.sec_record = strip_html(sec_record)
+		character.gen_record = strip_html(gen_record)
+		character.exploit_record = strip_html(exploit_record)
 
 	character.age = age
 	character.gender = gender

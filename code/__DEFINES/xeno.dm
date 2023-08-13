@@ -8,6 +8,9 @@
 #define TUNNEL_ENTER_BIG_XENO_DELAY 120
 #define TUNNEL_ENTER_LARVA_DELAY 10
 
+/// The duration it takes a player controlled facehugger to leap or hug adjacently
+#define FACEHUGGER_WINDUP_DURATION 1 SECONDS
+
 // Defines for action types and click delays used by xenomorph/unarmedattack() and attack_alien().
 
 /// Full attack delay.
@@ -70,6 +73,7 @@
 #define HUD_ARMOR_STATES_XENO  10
 
 /// Multiplier for time taken for a xeno to place down a resin structure
+#define BUILD_TIME_MULT_LESSER_DRONE 2
 #define BUILD_TIME_MULT_XENO 1
 #define BUILD_TIME_MULT_BUILDER 1
 #define BUILD_TIME_MULT_HIVELORD 0.5
@@ -164,10 +168,18 @@
 /// The amount of time after round start before buried larva spawns are disallowed
 #define XENO_BURIED_LARVA_TIME_LIMIT (30 MINUTES)
 
+/// The time when xenos can start taking over comm towers
+#define XENO_COMM_ACQUISITION_TIME (90 MINUTES)
+
+/// The time it takes for a pylon to give one larva while activated
+#define XENO_PYLON_ACTIVATION_COOLDOWN (5 MINUTES)
+
 /// The time against away_timer when an AFK xeno larva can be replaced
 #define XENO_LEAVE_TIMER_LARVA 80 //80 seconds
 /// The time against away_timer when an AFK xeno (not larva) can be replaced
 #define XENO_LEAVE_TIMER 300 //300 seconds
+/// The time against away_timer when an AFK facehugger converts to a npc
+#define XENO_FACEHUGGER_LEAVE_TIMER 420 //420 seconds
 /// The time against away_timer when an AFK xeno gets listed in the available list so ghosts can get ready
 #define XENO_AVAILABLE_TIMER 60 //60 seconds
 
@@ -204,6 +216,7 @@
 
 // Health bands
 #define XENO_HEALTH_LARVA 35 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_LESSER_DRONE 160 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_RUNNER 230 * XENO_UNIVERSAL_HPMULT // Killed by 1 PB
 #define XENO_HEALTH_TIER_1 250 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_TIER_2 300 * XENO_UNIVERSAL_HPMULT
@@ -601,7 +614,8 @@
 #define XENO_CASTE_LARVA  "Bloody Larva"
 #define XENO_CASTE_PREDALIEN_LARVA   "Predalien Larva"
 #define XENO_CASTE_FACEHUGGER "Facehugger"
-#define XENO_T0_CASTES    list(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA, XENO_CASTE_FACEHUGGER)
+#define XENO_CASTE_LESSER_DRONE "Lesser Drone"
+#define XENO_T0_CASTES    list(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA, XENO_CASTE_FACEHUGGER, XENO_CASTE_LESSER_DRONE)
 
 //t1
 #define XENO_CASTE_DRONE  "Drone"
@@ -629,7 +643,7 @@
 #define XENO_CASTE_HELLHOUND  "Hellhound"
 #define XENO_SPECIAL_CASTES   list(XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN, XENO_CASTE_HELLHOUND)
 
-#define ALL_XENO_CASTES list(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA, XENO_CASTE_FACEHUGGER, XENO_CASTE_DRONE, XENO_CASTE_RUNNER, XENO_CASTE_SENTINEL, XENO_CASTE_DEFENDER, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD, XENO_CASTE_LURKER, XENO_CASTE_WARRIOR, XENO_CASTE_SPITTER, XENO_CASTE_BOILER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_RAVAGER, XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN, XENO_CASTE_HELLHOUND)
+#define ALL_XENO_CASTES list(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA, XENO_CASTE_FACEHUGGER, XENO_CASTE_LESSER_DRONE, XENO_CASTE_DRONE, XENO_CASTE_RUNNER, XENO_CASTE_SENTINEL, XENO_CASTE_DEFENDER, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD, XENO_CASTE_LURKER, XENO_CASTE_WARRIOR, XENO_CASTE_SPITTER, XENO_CASTE_BOILER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_RAVAGER, XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN, XENO_CASTE_HELLHOUND)
 
 // Checks if two hives are allied to each other.
 // PARAMETERS:
@@ -693,3 +707,6 @@
 #define TAILSTAB_AIRLOCK_DAMAGE_MULTIPLIER 2
 
 #define FRENZY_DAMAGE_MULTIPLIER 2
+
+#define JOIN_AS_FACEHUGGER_DELAY (3 MINUTES)
+#define JOIN_AS_LESSER_DRONE_DELAY (30 SECONDS)

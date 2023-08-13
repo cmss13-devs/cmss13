@@ -110,7 +110,7 @@
 
 /datum/supply_packs/officer_outfits//lmao this shit is so hideously out of date
 	contains = list(
-		/obj/item/clothing/under/rank/ro_suit,
+		/obj/item/clothing/under/rank/qm_suit,
 		/obj/item/clothing/under/marine/officer/bridge,
 		/obj/item/clothing/under/marine/officer/bridge,
 		/obj/item/clothing/under/marine/officer/exec,

@@ -4,14 +4,16 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	"Shattered Glass",
 	"Minor Structural Damage",
 	"Major Structural Damage",
+	"Janitorial",
 	"Chemical Spill",
 	"Fire",
-	"Power Failure",
 	"Communications Failure",
 	"Power Generation Failure",
 	"Electrical Fault",
+	"Support",
 	"Other"
 	))
+
 /datum/ares_link
 	var/link_id = MAIN_SHIP_DEFAULT_NAME
 	/// All motion triggers for the link
@@ -57,14 +59,12 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		speaker = "Unknown"
 	var/datum/ares_link/link = GLOB.ares_link
 	if(!link.p_apollo || link.p_apollo.inoperable())
-		return
+		return FALSE
 	if(!link.p_interface || link.p_interface.inoperable())
-		return
+		return FALSE
 	link.apollo_log.Add("[worldtime2text()]: [speaker], '[message]'")
 
 /datum/ares_link/proc/log_ares_bioscan(title, input)
-	if(!p_bioscan || p_bioscan.inoperable() || !interface)
-		return FALSE
 	interface.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
 
 /datum/ares_link/proc/log_ares_bombardment(mob/living/user, ob_name, coordinates)
@@ -86,10 +86,28 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 /proc/ares_apollo_talk(broadcast_message)
 	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
 	for(var/mob/living/silicon/decoy/ship_ai/ai in ai_mob_list)
+		if(ai.stat == DEAD)
+			return FALSE
 		apollo.broadcast(ai, broadcast_message)
 	for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
 		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
 			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+
+/proc/ares_can_interface()
+	var/obj/structure/machinery/ares/processor/interface/processor = GLOB.ares_link.p_interface
+	if(!istype(GLOB.ares_link))
+		return FALSE
+	if(processor && !processor.inoperable())
+		return TRUE
+	return FALSE //interface processor not found or is broken
+
+/proc/ares_can_log()
+	var/obj/structure/machinery/computer/ares_console/interface = GLOB.ares_link.interface
+	if(!istype(GLOB.ares_link))
+		return FALSE
+	if(interface && !interface.inoperable())
+		return TRUE
+	return FALSE //ares interface not found or is broken
 
 // ------ ARES Interface Procs ------ //
 /obj/structure/machinery/computer/proc/get_ares_access(obj/item/card/id/card)
@@ -215,7 +233,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	data["records_announcement"] = logged_announcements
 
 	var/list/logged_alerts = list()
-	for(var/datum/ares_record/security/security_alert as anything in records_announcement)
+	for(var/datum/ares_record/security/security_alert as anything in records_security)
 		if(!istype(security_alert))
 			continue
 		var/list/current_alert = list()
@@ -449,6 +467,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 					new_title = "[record.title] at [record.time]"
 					new_details = record.details
 					records_announcement -= record
+				if(ARES_RECORD_SECURITY)
+					new_title = "[record.title] at [record.time]"
+					new_details = record.details
+					records_security -= record
 				if(ARES_RECORD_BIOSCAN)
 					new_title = "[record.title] at [record.time]"
 					new_details = record.details
@@ -493,6 +515,19 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			current_menu = "read_deleted"
 
 		// -- Emergency Buttons -- //
+		if("general_quarters")
+			if(security_level == SEC_LEVEL_RED || security_level == SEC_LEVEL_DELTA)
+				to_chat(usr, SPAN_WARNING("Alert level is already red or above, General Quarters cannot be called."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			set_security_level(2, no_sound = TRUE, announce = FALSE)
+			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
+			log_game("[key_name(usr)] has called for general quarters via ARES.")
+			message_admins("[key_name_admin(usr)] has called for general quarters via ARES.")
+			var/datum/ares_link/link = GLOB.ares_link
+			link.log_ares_security("General Quarters", "[last_login] has called for general quarters via ARES.")
+			. = TRUE
+
 		if("evacuation_start")
 			if(security_level < SEC_LEVEL_RED)
 				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
@@ -555,15 +590,22 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(security_level == SEC_LEVEL_DELTA || SSticker.mode.is_in_endgame)
-				to_chat(usr, SPAN_WARNING("The mission has failed catastrophically, what do you want a nuke for!"))
+				to_chat(usr, SPAN_WARNING("The mission has failed catastrophically, what do you want a nuke for?!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-
+			var/reason = tgui_input_text(usr, "Please enter reason nuclear ordnance is required.", "Reason for Nuclear Ordnance")
+			if(!reason)
+				return FALSE
 			for(var/client/admin in GLOB.admins)
 				if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 					playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
-			message_admins("[key_name(usr)] has requested use of Nuclear Ordnance (via ARES)! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukeapprove=\ref[usr]'>APPROVE</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukedeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
-			to_chat(usr, SPAN_NOTICE("A nuclear ordnance request has been sent to USCM High Command."))
+			message_admins("[key_name(usr)] has requested use of Nuclear Ordnance (via ARES)! Reason: <b>[reason]</b> [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukeapprove=\ref[usr]'>APPROVE</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukedeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
+			to_chat(usr, SPAN_NOTICE("A nuclear ordnance request has been sent to USCM High Command for the following reason: [reason]"))
+			if(ares_can_log())
+				link.log_ares_security("Nuclear Ordnance Request", "[last_login] has sent a request for nuclear ordnance for the following reason: [reason]")
+			if(ares_can_interface())
+				ai_silent_announcement("[last_login] has sent a request for nuclear ordnance to USCM High Command.", ".V")
+				ai_silent_announcement("Reason given: [reason].", ".V")
 			COOLDOWN_START(src, ares_nuclear_cooldown, COOLDOWN_COMM_DESTRUCT)
 			return TRUE
 // ------ End ARES Interface UI ------ //
@@ -743,7 +785,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	data["maintenance_tickets"] = logged_maintenance
 
 	var/list/logged_access = list()
-	for(var/datum/ares_ticket/access_ticket/access_ticket as anything in link.tickets_access)
+	for(var/datum/ares_ticket/access/access_ticket as anything in link.tickets_access)
 		var/lock_status = TICKET_OPEN
 		switch(access_ticket.ticket_status)
 			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_COMPLETED)
@@ -849,7 +891,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			var/priority_report = FALSE
 			var/maint_type = tgui_input_list(operator, "What is the type of maintenance item you wish to report?", "Report Category", GLOB.maintenance_categories, 30 SECONDS)
 			switch(maint_type)
-				if("Major Structural Damage", "Communications Failure",	"Power Generation Failure")
+				if("Major Structural Damage", "Fire", "Communications Failure",	"Power Generation Failure")
 					priority_report = TRUE
 
 			if(!maint_type)
@@ -882,8 +924,13 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			var/assigned = ticket.ticket_assignee
 			if(assigned)
 				if(assigned == last_login)
-					to_chat(usr, SPAN_WARNING("You cannot claim a ticket you are already assigned!"))
-					return FALSE
+					var/prompt = tgui_alert(usr, "You already claimed this ticket! Do you wish to drop your claim?", "Unclaim ticket", list("Yes", "No"))
+					if(prompt != "Yes")
+						return FALSE
+					/// set ticket back to pending
+					ticket.ticket_assignee = null
+					ticket.ticket_status = TICKET_PENDING
+					return claim
 				var/choice = tgui_alert(usr, "This ticket has already been claimed by [assigned]! Do you wish to override their claim?", "Claim Override", list("Yes", "No"))
 				if(choice != "Yes")
 					claim = FALSE
@@ -909,7 +956,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			var/datum/ares_ticket/ticket = locate(params["ticket"])
 			if(!istype(ticket))
 				return FALSE
-			if(ticket.ticket_assignee != last_login)
+			if(ticket.ticket_assignee != last_login && ticket.ticket_assignee) //must be claimed by you or unclaimed.)
 				to_chat(usr, SPAN_WARNING("You cannot update a ticket that is not assigned to you!"))
 				return FALSE
 			var/choice = tgui_alert(usr, "What do you wish to mark the ticket as?", "Mark", list(TICKET_COMPLETED, TICKET_REJECTED), 20 SECONDS)
@@ -923,6 +970,30 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			if(ticket.ticket_priority)
 				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by [last_login].")
 			to_chat(usr, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
+			return TRUE
+
+		if("new_access")
+			var/priority_report = FALSE
+			var/ticket_holder = tgui_input_text(operator, "Who is the ticket for?", "Ticket Holder", encode = FALSE)
+			if(!ticket_holder)
+				return FALSE
+			var/details = tgui_input_text(operator, "What is the purpose of this access ticket?", "Ticket Details", encode = FALSE)
+			if(!details)
+				return FALSE
+
+			if(authentication >= APOLLO_ACCESS_AUTHED)
+				var/is_priority = tgui_alert(operator, "Is this a priority request?", "Priority designation", list("Yes", "No"))
+				if(is_priority == "Yes")
+					priority_report = TRUE
+
+			var/confirm = alert(operator, "Please confirm the submission of your access ticket request. \n\n Priority: [priority_report ? "Yes" : "No"] \n Holder: '[ticket_holder]' \n Details: '[details]' \n\n Is this correct?", "Confirmation", "Yes", "No")
+			if(confirm != "Yes" || !link)
+				return FALSE
+			var/datum/ares_ticket/access/access_ticket = new(last_login, ticket_holder, details, priority_report)
+			link.tickets_access += access_ticket
+			if(priority_report)
+				ares_apollo_talk("Priority Access Request: [ticket_holder] - ID [access_ticket.ticket_id]. Seek and resolve.")
+			log_game("ARES: Access Ticket '\ref[access_ticket]' created by [key_name(operator)] as [last_login] with Holder '[ticket_holder]' and Details of '[details]'.")
 			return TRUE
 
 	if(playsound)

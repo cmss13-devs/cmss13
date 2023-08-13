@@ -38,7 +38,7 @@
 			if(GLOB.hive_datum[hivenumber].stored_larva)
 				GLOB.hive_datum[hivenumber].stored_larva = round(GLOB.hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead queen
 
-				var/list/players_with_xeno_pref = get_alien_candidates()
+				var/list/players_with_xeno_pref = get_alien_candidates(GLOB.hive_datum[hivenumber])
 				if(players_with_xeno_pref && istype(GLOB.hive_datum[hivenumber].hive_location, /obj/effect/alien/resin/special/pylon/core))
 					var/turf/larva_spawn = get_turf(GLOB.hive_datum[hivenumber].hive_location)
 					var/count = 0
@@ -69,10 +69,11 @@
 					if(!QDELETED(Q) && Q != src && Q.hivenumber == hivenumber)
 						hive.set_living_xeno_queen(Q)
 						break
+				hive.on_queen_death()
 				hive.handle_xeno_leader_pheromones()
 				if(SSticker.mode)
 					INVOKE_ASYNC(SSticker.mode, TYPE_PROC_REF(/datum/game_mode, check_queen_status), hivenumber)
-					LAZYADD(SSticker.mode.dead_queens, "<br>[!isnull(src.key) ? src.key : "?"] was [src] [SPAN_BOLDNOTICE("(DIED)")]")
+					LAZYADD(SSticker.mode.dead_queens, "<br>[!isnull(full_designation) ? full_designation : "?"] was [src] [SPAN_BOLDNOTICE("(DIED)")]")
 
 		else if(ispredalien(src))
 			playsound(loc,'sound/voice/predalien_death.ogg', 25, TRUE)

@@ -93,7 +93,7 @@
 /datum/ares_ticket/New(user, name, details, priority)
 	var/ref_holder = "\ref[src]"
 	var/pos = length(ref_holder)
-	var/new_id = "\[#[copytext("\ref[src]", pos - 4, pos + 1)]"
+	var/new_id = "#[copytext("\ref[src]", pos - 4, pos)]"
 
 	ticket_time = worldtime2text()
 	ticket_submitter = user
@@ -105,5 +105,5 @@
 /datum/ares_ticket/maintenance
 	ticket_type = ARES_RECORD_MAINTENANCE
 
-/datum/ares_ticket/access_ticket
+/datum/ares_ticket/access
 	ticket_type = ARES_RECORD_ACCESS

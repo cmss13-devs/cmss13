@@ -8,8 +8,12 @@
 	rechargeTime = SHUTTLE_RECHARGE
 	ignitionTime = 8 SECONDS
 	ignition_sound = 'sound/effects/escape_pod_warmup.ogg'
+	/// The % chance of the escape pod crashing into the groundmap before lifeboats leaving
+	var/early_crash_land_chance = 75
 	/// The % chance of the escape pod crashing into the groundmap
-	var/crash_land_chance = 33
+	var/crash_land_chance = 25
+	/// How many people can be in the escape pod before it crashes
+	var/max_capacity = 3
 
 	var/datum/door_controller/single/door_handler = new()
 	var/launched = FALSE
@@ -19,11 +23,12 @@
 /obj/docking_port/mobile/escape_shuttle/Initialize(mapload)
 	. = ..(mapload)
 	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/door/air in place)
+		for(var/obj/structure/machinery/door/airlock/evacuation/air in place)
 			door_handler.doors += list(air)
 			air.breakable = FALSE
 			air.indestructible = TRUE
 			air.unacidable = TRUE
+			air.linked_shuttle = src
 
 /obj/docking_port/mobile/escape_shuttle/proc/cancel_evac()
 	door_handler.control_doors("force-unlock")
@@ -43,6 +48,12 @@
 	for(var/area/interior_area in shuttle_areas)
 		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in interior_area)
 			cryotube.dock_state = STATE_READY
+	for(var/obj/structure/machinery/door/air in door_handler.doors)
+		air.breakable = TRUE
+		air.indestructible = FALSE
+		air.unslashable = FALSE
+		air.unacidable = FALSE
+
 
 /obj/docking_port/mobile/escape_shuttle/proc/evac_launch()
 	if(mode == SHUTTLE_CRASHED)
@@ -63,7 +74,7 @@
 			occupant_count++
 		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in interior_area)
 			cryos += list(cryotube)
-	if (occupant_count > 3)
+	if (occupant_count > max_capacity)
 		playsound(src,'sound/effects/escape_pod_warmup.ogg', 50, 1)
 		sleep(31)
 		var/turf/sploded = return_center_turf()
@@ -76,13 +87,23 @@
 		return
 
 	destination = null
-	if(prob(crash_land_chance))
+	if(prob((EvacuationAuthority.evac_status >= EVACUATION_STATUS_IN_PROGRESS ? crash_land_chance : early_crash_land_chance)))
 		create_crash_point()
 
 	set_mode(SHUTTLE_IGNITING)
 	on_ignition()
 	setTimer(ignitionTime)
 	launched = TRUE
+
+	if(!crash_land) // so doors won't break in space
+		for(var/obj/structure/machinery/door/air in door_handler.doors)
+			for(var/obj/effect/xenomorph/acid/acid in air.loc)
+				if(acid.acid_t == air)
+					qdel(acid)
+			air.breakable = FALSE
+			air.indestructible = TRUE
+			air.unacidable = TRUE
+
 
 /obj/docking_port/mobile/escape_shuttle/proc/create_crash_point()
 	for(var/i = 1 to 10)
@@ -191,6 +212,8 @@
 	id = ESCAPE_SHUTTLE_EAST_CL
 	width = 4
 	height = 5
+	early_crash_land_chance = 25
+	crash_land_chance = 5
 
 /obj/docking_port/mobile/escape_shuttle/w
 	id = ESCAPE_SHUTTLE_WEST

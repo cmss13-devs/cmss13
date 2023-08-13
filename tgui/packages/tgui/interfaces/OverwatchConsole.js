@@ -1,5 +1,5 @@
 import { useBackend, useLocalState, useSharedState } from '../backend';
-import { Button, Section, Stack, Tabs, Table, Box, Input, ByondUi, NumberInput, LabeledControls, Divider } from '../components';
+import { Button, Section, Stack, Tabs, Table, Box, Input, NumberInput, LabeledControls, Divider, Collapsible } from '../components';
 import { Window } from '../layouts';
 
 export const OverwatchConsole = (props, context) => {
@@ -7,8 +7,8 @@ export const OverwatchConsole = (props, context) => {
 
   return (
     <Window
-      width={1000}
-      height={800}
+      width={800}
+      height={600}
       theme={data.theme ? data.theme : 'crtblue'}>
       <Window.Content>
         {(!data.current_squad && <HomePanel />) || <SquadPanel />}
@@ -64,20 +64,20 @@ const SquadPanel = (props, context) => {
 
   return (
     <>
-      <MainDashboard />
-      <RoleTable />
+      <Collapsible title="Main Dashboard" fontSize="16px">
+        <MainDashboard />
+      </Collapsible>
+
+      <Collapsible title="Squad Roles" fontSize="16px">
+        <RoleTable />
+      </Collapsible>
+
       <Tabs fluid pr="0" pl="0" mb="0" fontSize="16px">
         <Tabs.Tab
           selected={category === 'monitor'}
           icon="heartbeat"
           onClick={() => setCategory('monitor')}>
           Squad Monitor
-        </Tabs.Tab>
-        <Tabs.Tab
-          selected={category === 'multicam'}
-          icon="camera"
-          onClick={() => setCategory('multicam')}>
-          Multicam
         </Tabs.Tab>
         <Tabs.Tab
           selected={category === 'supply'}
@@ -91,18 +91,13 @@ const SquadPanel = (props, context) => {
           onClick={() => setCategory('ob')}>
           Orbital Bombardment
         </Tabs.Tab>
-        <Tabs.Tab
-          selected={category === 'map'}
-          icon="map"
-          onClick={() => setCategory('map')}>
+        <Tabs.Tab icon="map" onClick={() => act('tacmap_unpin')}>
           Tactical Map
         </Tabs.Tab>
       </Tabs>
       {category === 'monitor' && <SquadMonitor />}
-      {category === 'multicam' && <Multicam />}
       {category === 'supply' && <SupplyDrop />}
       {category === 'ob' && <OrbitalBombardment />}
-      {category === 'map' && <TacMap />}
     </>
   );
 };
@@ -294,6 +289,36 @@ const RoleTable = (props, context) => {
 const SquadMonitor = (props, context) => {
   const { act, data } = useBackend(context);
 
+  const sortByRole = (a, b) => {
+    a = a.role;
+    b = b.role;
+    const roleValues = {
+      'Squad Leader': 10,
+      'Fireteam Leader': 9,
+      'Weapons Specialist': 8,
+      'Smartgunner': 7,
+      'Hospital Corpsman': 6,
+      'Combat Technician': 5,
+      'Rifleman': 4,
+    };
+    let valueA = roleValues[a];
+    let valueB = roleValues[b];
+    if (a.includes('Weapons Specialist')) {
+      valueA = roleValues['Weapons Specialist'];
+    }
+    if (b.includes('Weapons Specialist')) {
+      valueB = roleValues['Weapons Specialist'];
+    }
+    if (!valueA && !valueB) return 0; // They're both unknown
+    if (!valueA) return 1; // B is defined but A is not
+    if (!valueB) return -1; // A is defined but B is not
+
+    if (valueA > valueB) return -1; // A is more important
+    if (valueA < valueB) return 1; // B is more important
+
+    return 0; // They're equal
+  };
+
   let { marines, squad_leader } = data;
 
   const [hidden_marines, setHiddenMarines] = useLocalState(
@@ -347,11 +372,11 @@ const SquadMonitor = (props, context) => {
 
   let location_filter;
   if (data.z_hidden === 2) {
-    location_filter = 'groundside marines';
+    location_filter = 'groundside';
   } else if (data.z_hidden === 1) {
-    location_filter = 'shipside marines';
+    location_filter = 'shipside';
   } else {
-    location_filter = 'all marines';
+    location_filter = 'all';
   }
 
   return (
@@ -364,24 +389,24 @@ const SquadMonitor = (props, context) => {
             color="yellow"
             tooltip="Show marines depending on location"
             onClick={() => act('change_locations_ignored')}>
-            Showing {location_filter}
+            Shown: {location_filter}
           </Button>
           {(showDeadMarines && (
             <Button color="yellow" onClick={() => setShowDeadMarines(false)}>
-              Hide dead marines
+              Hide dead
             </Button>
           )) || (
             <Button color="yellow" onClick={() => setShowDeadMarines(true)}>
-              Show dead marines
+              Show dead
             </Button>
           )}
           {(showHiddenMarines && (
             <Button color="yellow" onClick={() => setShowHiddenMarines(false)}>
-              Hide hidden marines
+              Hide hidden
             </Button>
           )) || (
             <Button color="yellow" onClick={() => setShowHiddenMarines(true)}>
-              Show hidden marines
+              Show hidden
             </Button>
           )}
           <Button
@@ -406,13 +431,15 @@ const SquadMonitor = (props, context) => {
         onInput={(e, value) => setMarineSearch(value)}
       />
       <Table>
-        <Table.Row bold fontSize="18px">
+        <Table.Row bold fontSize="14px">
           <Table.Cell textAlign="center">Name</Table.Cell>
           <Table.Cell textAlign="center">Role</Table.Cell>
-          <Table.Cell textAlign="center">State</Table.Cell>
+          <Table.Cell textAlign="center" collapsing>
+            State
+          </Table.Cell>
           <Table.Cell textAlign="center">Location</Table.Cell>
           <Table.Cell textAlign="center" collapsing fontSize="12px">
-            SL Distance
+            SL Dist.
           </Table.Cell>
           <Table.Cell textAlign="center" />
         </Table.Row>
@@ -426,7 +453,7 @@ const SquadMonitor = (props, context) => {
                   }>
                   {squad_leader.name}
                 </Button>
-              )) || <Box color="red">{squad_leader.name} (NO HELMET)</Box>}
+              )) || <Box color="yellow">{squad_leader.name} (NO HELMET)</Box>}
             </Table.Cell>
             <Table.Cell p="2px">{squad_leader.role}</Table.Cell>
             <Table.Cell
@@ -438,29 +465,12 @@ const SquadMonitor = (props, context) => {
             <Table.Cell p="2px" collapsing>
               {squad_leader.distance}
             </Table.Cell>
-            <Table.Cell p="2px">
-              {(squad_leader.multicammed && (
-                <Button
-                  tooltip="Remove from multicam"
-                  icon="camera"
-                  color="red"
-                  onClick={() =>
-                    act('remove_multicam', { ref: squad_leader.ref })
-                  }
-                />
-              )) || (
-                <Button
-                  tooltip="Add to multicam"
-                  icon="camera"
-                  color="green"
-                  onClick={() => act('add_multicam', { ref: squad_leader.ref })}
-                />
-              )}
-            </Table.Cell>
+            <Table.Cell />
           </Table.Row>
         )}
         {marines &&
           marines
+            .sort(sortByRole)
             .filter((marine) => {
               if (marineSearch) {
                 const searchableString = String(marine.name).toLowerCase();
@@ -519,24 +529,6 @@ const SquadMonitor = (props, context) => {
                         onClick={() => toggle_marine_hidden(marine.ref)}
                       />
                     )}
-                    {(marine.multicammed && (
-                      <Button
-                        tooltip="Remove from multicam"
-                        icon="camera"
-                        color="red"
-                        onClick={() =>
-                          act('remove_multicam', { ref: marine.ref })
-                        }
-                      />
-                    )) || (
-                      <Button
-                        tooltip="Add to multicam"
-                        icon="camera"
-                        color="green"
-                        onClick={() => act('add_multicam', { ref: marine.ref })}
-                      />
-                    )}
-
                     <Button
                       icon="arrow-up"
                       color="green"
@@ -548,54 +540,6 @@ const SquadMonitor = (props, context) => {
               );
             })}
       </Table>
-    </Section>
-  );
-};
-
-const Multicam = (props, context) => {
-  const { act, data } = useBackend(context);
-
-  return (
-    <Section height="475px" fontSize="14px" title="Multicam">
-      <ByondUi
-        width="25%"
-        top="100%"
-        className="CameraConsole__map"
-        params={{
-          id: data.mapRef1,
-          type: 'map',
-        }}
-      />
-      <ByondUi
-        width="25%"
-        left="25%"
-        top="100%"
-        className="CameraConsole__map"
-        params={{
-          id: data.mapRef2,
-          type: 'map',
-        }}
-      />
-      <ByondUi
-        width="25%"
-        left="50%"
-        top="100%"
-        className="CameraConsole__map"
-        params={{
-          id: data.mapRef3,
-          type: 'map',
-        }}
-      />
-      <ByondUi
-        width="25%"
-        left="75%"
-        top="100%"
-        className="CameraConsole__map"
-        params={{
-          id: data.mapRef4,
-          type: 'map',
-        }}
-      />
     </Section>
   );
 };
@@ -802,36 +746,5 @@ const SavedCoordinates = (props, context) => {
         ))}
       </Table>
     </Stack.Item>
-  );
-};
-
-const TacMap = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [category, setCategory] = useLocalState(context, 'selected', 'monitor');
-
-  return (
-    <Section title="Tactical Map" height="475px">
-      <Button
-        fluid
-        icon="eject"
-        textAlign="center"
-        fontSize="16px"
-        onClick={() => {
-          setCategory('monitor');
-          act('tacmap_unpin');
-        }}>
-        Unpin tacmap
-      </Button>
-      <Box position="relative">
-        <ByondUi
-          height="100%;"
-          params={{
-            id: data.mapRef,
-            type: 'map',
-          }}
-          class="TacticalMap"
-        />
-      </Box>
-    </Section>
   );
 };

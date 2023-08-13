@@ -35,11 +35,6 @@
 	var/list/saved_coordinates = list()
 
 
-	///List of camera datums that we're actively updating and sending to TGUI
-	var/list/datum/overwatch_camera_holder/camera_holders = list()
-
-	///List of marines currently being multi-cammed
-	var/list/multicam_marines = list()
 
 	///Currently selected UI theme
 	var/ui_theme = "crtblue"
@@ -48,15 +43,6 @@
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
 	tacmap = new(src, minimap_type)
-	// Initialize map objects
-
-	camera_holders += new /datum/overwatch_camera_holder(1, src)
-	camera_holders += new /datum/overwatch_camera_holder(2, src)
-	camera_holders += new /datum/overwatch_camera_holder(3, src)
-	camera_holders += new /datum/overwatch_camera_holder(4, src)
-
-	START_PROCESSING(SSsuperfastobj, src)
-
 
 
 /obj/structure/machinery/computer/overwatch/Destroy()
@@ -294,7 +280,7 @@
 				if(mob_state != "Dead")
 					marines_alive++
 
-		var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "acting_sl" = acting_sl, "fteam" = fteam, "distance" = distance, "area_name" = area_name, "multicammed" =  (marine in multicam_marines),"ref" = REF(marine)))
+		var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "acting_sl" = acting_sl, "fteam" = fteam, "distance" = distance, "area_name" = area_name,"ref" = REF(marine)))
 		data["marines"] += marine_data
 		if(is_squad_leader)
 			if(!data["squad_leader"])
@@ -376,8 +362,6 @@
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Overwatch systems deactivated. Goodbye, [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"].")]")
 			operator = null
 			current_squad = null
-			multicam_marines = list()
-			clear_multicams()
 			if(cam && !ishighersilicon(user))
 				user.reset_view(null)
 				user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
@@ -522,24 +506,6 @@
 					cam = new_cam
 					user.reset_view(cam)
 					user.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
-		if("add_multicam")
-			if(!params["ref"])
-				return
-			var/mob/living/carbon/human/marine = locate(params["ref"]) in current_squad.marines_list
-			if(!marine)
-				return
-			multicam_marines += marine
-			if(length(multicam_marines) > 4)
-				popleft(multicam_marines)
-			update_multicams()
-		if("remove_multicam")
-			if(!params["ref"])
-				return
-			var/mob/living/carbon/human/marine = locate(params["ref"]) in multicam_marines
-			if(!marine)
-				return
-			multicam_marines -= marine
-			clear_multicams()
 		if("change_operator")
 			if(operator != user)
 				if(operator && ishighersilicon(operator))
@@ -555,23 +521,6 @@
 					var/obj/item/card/id/ID = H.get_idcard()
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Basic overwatch systems initialized. Welcome, [ID ? "[ID.rank] ":""][operator.name]. Please select a squad.")]")
 					current_squad?.send_squad_message("Attention. Your Overwatch officer is now [ID ? "[ID.rank] ":""][operator.name].", displayed_icon = src)
-
-/obj/structure/machinery/computer/overwatch/proc/update_multicams()
-	var/index = 1
-	for(var/mob/living/carbon/human/marine in multicam_marines)
-		var/datum/overwatch_camera_holder/holder = camera_holders[index]
-		holder.update_camera(marine)
-		index++
-
-/obj/structure/machinery/computer/overwatch/proc/clear_multicams()
-	var/index = 1
-	for(var/mob/living/carbon/human/marine in multicam_marines)
-		var/datum/overwatch_camera_holder/holder = camera_holders[index]
-		holder.reset_camera()
-	update_multicams()
-
-/obj/structure/machinery/computer/overwatch/process()
-	update_multicams()
 
 
 /obj/structure/machinery/computer/overwatch/proc/change_lead(mob/user, sl_ref)
@@ -645,6 +594,13 @@
 	else if(!cam || !cam.can_use()) //camera doesn't work, is no longer selected or is gone
 		user.unset_interaction()
 
+/obj/structure/machinery/computer/overwatch/on_unset_interaction(mob/user)
+	..()
+	if(!isRemoteControlling(user))
+		if(cam)
+			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+		cam = null
+		user.reset_view(null)
 
 /obj/structure/machinery/computer/overwatch/ui_close(mob/user)
 	..()
@@ -963,72 +919,3 @@
 #undef HIDE_ALMAYER
 #undef HIDE_GROUND
 #undef HIDE_NONE
-
-/datum/overwatch_camera_holder
-	var/map_name
-	var/atom/movable/screen/map_view/cam_screen
-	var/atom/movable/screen/background/cam_background
-
-
-/datum/overwatch_camera_holder/New(number, originator_console)
-	. = ..()
-	map_name = "camera_console_[REF(originator_console)]_map_[number]"
-	cam_screen = new
-	cam_screen.icon = null
-	cam_screen.name = "screen"
-	cam_screen.assigned_map = map_name
-	cam_screen.del_on_map_removal = FALSE
-	cam_screen.screen_loc = "[map_name]:1,1"
-	cam_background = new
-	cam_background.assigned_map = map_name
-	cam_background.del_on_map_removal = FALSE
-
-
-/datum/overwatch_camera_holder/proc/update_camera(mob/living/carbon/human/marine)
-	if(!marine)
-		reset_camera()
-		return
-	if(!istype(marine.head, /obj/item/clothing/head/helmet/marine))
-		reset_camera()
-		return
-
-	var/obj/structure/machinery/camera/current
-	if(marine)
-		var/obj/item/clothing/head/helmet/marine/marine_helmet = marine.head
-		current = marine_helmet.camera
-
-	if(!current)
-		reset_camera()
-		return
-	var/cam_location = current
-	if(istype(current.loc, /obj/item/clothing/head/helmet/marine))
-		var/obj/item/clothing/head/helmet/marine/helmet = current.loc
-		cam_location = helmet.loc
-
-	var/list/visible_things = current.isXRay() ? range(current.view_range, cam_location) : view(current.view_range, cam_location)
-
-	var/list/visible_turfs = list()
-	var/area/area_being_checked
-	for(var/turf/visible_turf in visible_things)
-		area_being_checked = visible_turf.loc
-		if(!area_being_checked.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
-			visible_turfs += visible_turf
-
-	var/list/bbox = get_bbox_of_atoms(visible_turfs)
-	var/size_x = bbox[3] - bbox[1] + 1
-	var/size_y = bbox[4] - bbox[2] + 1
-
-	cam_screen.vis_contents = visible_turfs
-	cam_background.icon_state = "clear"
-	cam_background.fill_rect(1, 1, size_x, size_y)
-
-/datum/overwatch_camera_holder/proc/reset_camera(mob/living/carbon/human/marine)
-	var/list/visible_turfs = list()
-
-	var/list/bbox = get_bbox_of_atoms(visible_turfs)
-	var/size_x = bbox[3] - bbox[1] + 1
-	var/size_y = bbox[4] - bbox[2] + 1
-
-	cam_screen.vis_contents = list()
-	cam_background.icon_state = "clear"
-	cam_background.fill_rect(1, 1, size_x, size_y)

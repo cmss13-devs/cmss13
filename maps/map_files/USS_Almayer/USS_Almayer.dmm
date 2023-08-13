@@ -8144,6 +8144,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -30825,7 +30828,10 @@
 	},
 /area/almayer/shipboard/brig/lobby)
 "dyb" = (
-/obj/structure/machinery/smartfridge/chemistry,
+/obj/structure/machinery/smartfridge/chemistry{
+	layer = 3.1;
+	pixel_x = -4
+	},
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	name = "General Listening Channel";
@@ -35071,6 +35077,20 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/starboard_atmos)
+"fpT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side"
+	},
+/area/almayer/medical/medical_science)
 "fpW" = (
 /obj/structure/sign/safety/bulkhead_door{
 	pixel_x = 32
@@ -35810,7 +35830,9 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "fGu" = (
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/junction{
+	dir = 1
+	},
 /obj/structure/machinery/door_control{
 	dir = 1;
 	id = "researchlockdownext";
@@ -36859,6 +36881,9 @@
 /area/almayer/medical/containment/cell/cl)
 "ger" = (
 /obj/structure/surface/table/almayer,
+/obj/item/device/mass_spectrometer{
+	pixel_x = 8
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -37227,11 +37252,17 @@
 /area/almayer/medical/lower_medical_medbay)
 "glB" = (
 /obj/structure/machinery/chem_master{
+	layer = 3.1;
+	pixel_x = 8;
 	vial_maker = 1
 	},
 /obj/structure/sign/safety/chem_lab{
 	pixel_x = 5;
 	pixel_y = 29
+	},
+/obj/structure/machinery/disposal{
+	pixel_x = -15;
+	pixel_y = -3
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -39711,6 +39742,9 @@
 	dir = 8;
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -59912,6 +59946,9 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "sterile_green_side"
@@ -61949,6 +61986,16 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/lower_medical_medbay)
+"rmc" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side"
+	},
+/area/almayer/medical/medical_science)
 "rmv" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 2;
@@ -66714,6 +66761,19 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
+"tsM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side"
+	},
+/area/almayer/medical/medical_science)
 "tsX" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/brig/lobby)
@@ -70839,9 +70899,6 @@
 /obj/item/storage/box/pillbottles{
 	pixel_x = 6;
 	pixel_y = 7
-	},
-/obj/item/device/mass_spectrometer{
-	pixel_x = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
@@ -110049,7 +110106,7 @@ hec
 gNp
 hVf
 dVu
-dVu
+rmc
 lON
 dVu
 oDR
@@ -110861,7 +110918,7 @@ mWs
 lmw
 vOy
 dyb
-vkp
+tsM
 prx
 aoM
 eVT
@@ -111064,7 +111121,7 @@ usy
 nDo
 vOy
 glB
-vkp
+fpT
 ger
 aoM
 aFf

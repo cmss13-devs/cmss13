@@ -14,6 +14,8 @@
 	var/obj/item/storage/backpack/souto/soutopack
 	current_mag = null
 	auto_retrieval_slot = WEAR_IN_BACK
+	start_automatic = TRUE
+	autofire_slow_mult = 1
 
 /obj/item/weapon/gun/souto/set_gun_config_values()
 	. = ..()

@@ -159,7 +159,7 @@
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 
 /obj/item/clothing/shoes/souto
-	name = "\improper Souto Man's boots. Harder than the kick of Souto Red."
+	name = "\improper Souto Man's boots. Harder than the kick of Souto Red"
 	desc = "Souto Man boots"
 	icon_state = "souto_man"
 	item_state = "souto_man"

@@ -790,7 +790,6 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	)
 	start_semiauto = FALSE
 	start_automatic = TRUE
-	autofire_slow_mult = 1
 
 /obj/item/weapon/gun/pistol/skorpion/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 18,"rail_x" = 16, "rail_y" = 21, "under_x" = 23, "under_y" = 15, "stock_x" = 23, "stock_y" = 15)

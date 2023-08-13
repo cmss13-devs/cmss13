@@ -127,7 +127,7 @@
 	///How many full-auto shots to get to max scatter?
 	var/fa_scatter_peak = 4
 	///How bad does the scatter get on full auto?
-	var/fa_max_scatter = 8.5
+	var/fa_max_scatter = 6
 	///Click parameters to use when firing full-auto
 	var/fa_params = null
 
@@ -229,7 +229,7 @@
 	/// If this gun should spawn with automatic fire. Protected due to it never needing to be edited.
 	VAR_PROTECTED/start_automatic = FALSE
 	/// The multiplier for how much slower this should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc. Protected due to it never needing to be edited.
-	VAR_PROTECTED/autofire_slow_mult = 1.2
+	VAR_PROTECTED/autofire_slow_mult = 1
 
 
 /**

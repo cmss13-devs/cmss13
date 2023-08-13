@@ -19,6 +19,8 @@
 
 	/// The last admin to login.
 	var/last_login
+	/// The currently logged in admin.
+	var/logged_in
 	/// A record of who logged in and when.
 	var/list/access_list = list()
 	var/list/deleted_1to1 = list()
@@ -30,11 +32,7 @@
 		return FALSE
 	ui = SStgui.try_update_ui(user, GLOB.ares_link, ui)
 	if(!ui)
-		to_chat(user, SPAN_WARNING("NO UI FOUND"))
-		ui = new(user, GLOB.ares_link, "AresInterface", "ARES Admin Menu")
-		if(!ui)
-			to_chat(user, SPAN_WARNING("STILL NO UI FOUND"))
-			to_chat(user, SPAN_WARNING("[user.type]"))
+		ui = new(user, GLOB.ares_link, "AresAdmin", "ARES Admin Interface")
 		ui.open()
 
 /datum/ares_link/ui_data(mob/user)
@@ -43,12 +41,12 @@
 		return FALSE
 	var/list/data = list()
 
-	data["admin_login"] = admin_interface.last_login
+	data["admin_login"] = "[admin_interface.logged_in], [user.client.admin_holder?.rank]"
 	data["admin_access_log"] = list()
 	data["admin_access_log"] += admin_interface.access_list
 
-	data["current_menu"] = interface.current_menu
-	data["last_page"] = interface.last_menu
+	data["current_menu"] = admin_interface.current_menu
+	data["last_page"] = admin_interface.last_menu
 
 	data["logged_in"] = interface.last_login
 	data["sudo"] = interface.sudo_holder ? TRUE : FALSE
@@ -189,12 +187,8 @@
 	return data
 
 
-/datum/ares_link/ui_status(mob/user, datum/ui_state/state)
-	. = ..()
-	if(!check_rights_for(user.client, R_MOD))
-		return UI_UPDATE
-
-	return UI_DISABLED
+/datum/ares_link/ui_state(mob/user)
+	return GLOB.admin_state
 
 /datum/ares_link/ui_static_data(mob/user)
 	var/list/data = list()
@@ -220,18 +214,20 @@
 
 		if("login")
 			if(check_rights_for(user.client, R_MOD))
-				admin_interface.last_login = "ADMIN"
-				admin_interface.access_list += "[admin_interface.last_login] at [worldtime2text()], Access Level 'ADMIN'."
+				admin_interface.logged_in = user.client.ckey
+				admin_interface.access_list += "[user.client.ckey] at [worldtime2text()], Access Level '[user.client.admin_holder?.rank]'."
 			else
-				to_chat(usr, SPAN_WARNING("You require an ID card to access this terminal!"))
+				to_chat(usr, SPAN_WARNING("You require staff identification to access this terminal!"))
 				return FALSE
 			admin_interface.current_menu = "main"
 
 		// -- Page Changers -- //
 		if("logout")
-			admin_interface.last_menu = admin_interface.current_menu
 			admin_interface.current_menu = "login"
-			interface.access_list += "[interface.last_login] logged out at [worldtime2text()]."
+			admin_interface.last_menu = admin_interface.current_menu
+			admin_interface.access_list += "[admin_interface.logged_in] logged out at [worldtime2text()]."
+			admin_interface.last_login = admin_interface.logged_in
+			admin_interface.logged_in = null
 
 		if("home")
 			admin_interface.last_menu = admin_interface.current_menu
@@ -254,6 +250,9 @@
 		if("page_access")
 			admin_interface.last_menu = admin_interface.current_menu
 			admin_interface.current_menu = "access_log"
+		if("page_admin_list")
+			admin_interface.last_menu = admin_interface.current_menu
+			admin_interface.current_menu = "admin_access_log"
 		if("page_security")
 			admin_interface.last_menu = admin_interface.current_menu
 			admin_interface.current_menu = "security"
@@ -286,14 +285,23 @@
 			var/datum/ares_record/deleted_talk/deleted = new
 			deleted.title = conversation.title
 			deleted.conversation = conversation.conversation
-			deleted.user = conversation.user
+			deleted.user = MAIN_AI_SYSTEM
 			interface.records_deletion += deleted
 			interface.records_talking -= conversation
 
-		if("message_ares")
+		if("fake_message_ares")
 			var/message = tgui_input_text(usr, "What do you wish to say to ARES?", "ARES Message", encode = FALSE)
 			if(message)
-				interface.message_ares(message, usr, params["active_convo"])
+				interface.message_ares(message, usr, params["active_convo"], TRUE)
+		if("ares_reply")
+			var/message = tgui_input_text(usr, "What do you wish to reply with?", "ARES Response", encode = FALSE)
+			if(message)
+				interface.response_from_ares(message, params["active_convo"])
+				var/datum/ares_record/talk_log/conversation = locate(params["active_convo"])
+				var/admin_log = SPAN_STAFF_IC(SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[usr] replied to [conversation.user]'s ARES message")] [SPAN_GREEN("via Remote Interface")] with: [SPAN_BLUE(message)] </b>"))
+				for(var/client/admin in GLOB.admins)
+					if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
+						to_chat(admin, admin_log)
 
 		if("read_record")
 			var/datum/ares_record/deleted_talk/conversation = locate(params["record"])

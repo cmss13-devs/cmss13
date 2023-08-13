@@ -1,3 +1,7 @@
+// -------------------------------------------------------------------- //
+// Please ensure when updating this menu, changes are reflected in AresAdmin.js
+// -------------------------------------------------------------------- //
+
 import { useBackend } from '../backend';
 import { Flex, Box, Section, Button, Stack } from '../components';
 import { Window } from '../layouts';
@@ -33,7 +37,7 @@ export const AresInterface = (props, context) => {
   }
 
   return (
-    <Window theme={themecolor} width={780} height={725}>
+    <Window theme={themecolor} width={800} height={725}>
       <Window.Content scrollable>
         <PageComponent />
       </Window.Content>
@@ -129,7 +133,7 @@ const MainMenu = (props, context) => {
 
         <Stack>
           <Stack.Item grow>
-            <h3>Access Level 0</h3>
+            <h3>Access Level 1</h3>
           </Stack.Item>
           <Stack.Item>
             <Button
@@ -156,10 +160,10 @@ const MainMenu = (props, context) => {
             />
           </Stack.Item>
         </Stack>
-        {access_level >= 1 && (
+        {access_level >= 2 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 1</h3>
+              <h3>Access Level 2</h3>
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -199,10 +203,10 @@ const MainMenu = (props, context) => {
             </Stack.Item>
           </Stack>
         )}
-        {access_level >= 2 && (
+        {access_level >= 3 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 2</h3>
+              <h3>Access Level 3</h3>
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -230,10 +234,10 @@ const MainMenu = (props, context) => {
             </Stack.Item>
           </Stack>
         )}
-        {access_level >= 4 && (
+        {access_level >= 5 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 4</h3>
+              <h3>Access Level 5</h3>
             </Stack.Item>
             <Stack.Item>
               <Button.Confirm
@@ -262,10 +266,10 @@ const MainMenu = (props, context) => {
             </Stack.Item>
           </Stack>
         )}
-        {access_level >= 5 && (
+        {access_level >= 6 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 5</h3>
+              <h3>Access Level 6</h3>
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -281,10 +285,10 @@ const MainMenu = (props, context) => {
             </Stack.Item>
           </Stack>
         )}
-        {access_level >= 8 && (
+        {access_level >= 9 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 8</h3>
+              <h3>Access Level 9</h3>
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -312,10 +316,10 @@ const MainMenu = (props, context) => {
             </Stack.Item>
           </Stack>
         )}
-        {access_level >= 10 && (
+        {access_level >= 11 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 10</h3>
+              <h3>Maintenance Access</h3>
             </Stack.Item>
             {sudo === 0 && (
               <Stack.Item>

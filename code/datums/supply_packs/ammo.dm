@@ -420,6 +420,7 @@
 		/obj/item/ammo_magazine/smg/m39,
 		/obj/item/ammo_magazine/smg/m39,
 		/obj/item/ammo_magazine/smg/m39,
+		/obj/item/ammo_magazine/smg/m39/extended,
 		/obj/item/ammo_magazine/smg/m39/ap,
 		/obj/item/ammo_magazine/smg/m39/ap,
 		/obj/item/ammo_magazine/revolver,

@@ -136,6 +136,7 @@
 		list("M4A3 AP Magazine (9mm)", round(scale * 5), /obj/item/ammo_magazine/pistol/ap, VENDOR_ITEM_REGULAR),
 
 		list("EXTENDED AMMUNITION", -1, null, null),
+		list("M39 Extended Magazine (10x20mm)", round(scale * 1), /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
 		list("M41A MK2 Extended Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
 
 		list("INCENDIARY AMMUNITION", -1, null, null),

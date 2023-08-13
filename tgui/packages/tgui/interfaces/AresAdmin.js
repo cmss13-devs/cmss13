@@ -76,7 +76,8 @@ const Login = (props, context) => {
 
 const MainMenu = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, sudo } = data;
+  const { logged_in, access_text, last_page, current_menu, sudo, admin_login } =
+    data;
 
   return (
     <>
@@ -365,6 +366,7 @@ const AnnouncementLogs = (props, context) => {
     last_page,
     current_menu,
     records_announcement,
+    admin_login,
   } = data;
 
   return (
@@ -455,8 +457,14 @@ const AnnouncementLogs = (props, context) => {
 
 const BioscanLogs = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, records_bioscan } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    records_bioscan,
+    admin_login,
+  } = data;
 
   return (
     <>
@@ -647,7 +655,14 @@ const BombardmentLogs = (props, context) => {
 
 const ApolloLog = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, apollo_log } = data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    apollo_log,
+    admin_login,
+  } = data;
 
   return (
     <>
@@ -705,7 +720,14 @@ const ApolloLog = (props, context) => {
 
 const AccessLogs = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, access_log } = data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    access_log,
+    admin_login,
+  } = data;
 
   return (
     <>
@@ -763,8 +785,14 @@ const AccessLogs = (props, context) => {
 
 const DeletionLogs = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, records_deletion } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    records_deletion,
+    admin_login,
+  } = data;
 
   return (
     <>
@@ -858,6 +886,7 @@ const ARESTalk = (props, context) => {
     current_menu,
     active_convo,
     active_ref,
+    admin_login,
   } = data;
 
   return (
@@ -975,6 +1004,7 @@ const DeletedTalks = (props, context) => {
     last_page,
     current_menu,
     deleted_discussions,
+    admin_login,
   } = data;
 
   return (
@@ -1067,6 +1097,7 @@ const ReadingTalks = (props, context) => {
     last_page,
     current_menu,
     deleted_conversation,
+    admin_login,
   } = data;
 
   return (
@@ -1130,6 +1161,7 @@ const Requisitions = (props, context) => {
     last_page,
     current_menu,
     records_requisition,
+    admin_login,
   } = data;
 
   return (
@@ -1218,8 +1250,14 @@ const Requisitions = (props, context) => {
 
 const AntiAir = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, aa_adjustments } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    aa_adjustments,
+    admin_login,
+  } = data;
 
   return (
     <>
@@ -1301,8 +1339,14 @@ const AntiAir = (props, context) => {
 
 const Security = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, records_security } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    records_security,
+    admin_login,
+  } = data;
 
   return (
     <>
@@ -1391,7 +1435,7 @@ const Security = (props, context) => {
 
 const Emergency = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, alert_level } = data;
+  const { logged_in, access_text, last_page, current_menu, admin_login } = data;
 
   return (
     <>
@@ -1484,8 +1528,14 @@ const Emergency = (props, context) => {
 
 const AdminAccessLogs = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, admin_access_log } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    admin_access_log,
+    admin_login,
+  } = data;
 
   return (
     <>

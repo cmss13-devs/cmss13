@@ -92,8 +92,6 @@
 /obj/structure/machinery/computer/overwatch/ui_static_data(mob/user)
 	var/list/data = list()
 	data["mapRef"] = tacmap.map_holder.map_ref
-	for(var/i in 1 to length(camera_holders))
-		data["mapRef[i]"] = camera_holders[i].map_name
 	return data
 
 /obj/structure/machinery/computer/overwatch/tgui_interact(mob/user, datum/tgui/ui)
@@ -106,9 +104,6 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		user.client.register_map_obj(tacmap.map_holder.map)
-		for(var/datum/overwatch_camera_holder/holder in camera_holders)
-			user.client.register_map_obj(holder.cam_screen)
-			user.client.register_map_obj(holder.cam_background)
 		ui = new(user, src, "OverwatchConsole", "Overwatch Console")
 		ui.open()
 

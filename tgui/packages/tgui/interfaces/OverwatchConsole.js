@@ -564,7 +564,7 @@ const SupplyDrop = (props, context) => {
     <Section fontSize="14px" title="Supply Drop">
       <Stack justify={'space-between'} m="10px">
         <Stack.Item fontSize="14px">
-          <LabeledControls>
+          <LabeledControls mb="5px">
             <LabeledControls.Item label="LONGITUDE">
               <NumberInput
                 value={supplyX}
@@ -579,33 +579,32 @@ const SupplyDrop = (props, context) => {
                 width="75px"
               />
             </LabeledControls.Item>
-
-            <LabeledControls.Item label="LAUNCH">
-              <Button
-                icon="box"
-                color="yellow"
-                onClick={() => act('dropsupply', { x: supplyX, y: supplyY })}>
-                Launch
-              </Button>
-            </LabeledControls.Item>
-
             <LabeledControls.Item label="STATUS">
               <Box color={crate_color} bold>
                 {crate_status}
               </Box>
             </LabeledControls.Item>
-
-            <LabeledControls.Item label="SAVE">
-              <Button
-                icon="save"
-                color="yellow"
-                onClick={() =>
-                  act('save_coordinates', { x: supplyX, y: supplyY })
-                }>
-                Save
-              </Button>
-            </LabeledControls.Item>
           </LabeledControls>
+          <Box textAlign="center">
+            <Button
+              fontSize="20px"
+              width="100%"
+              icon="box"
+              color="yellow"
+              onClick={() => act('dropsupply', { x: supplyX, y: supplyY })}>
+              Launch
+            </Button>
+            <Button
+              fontSize="20px"
+              width="100%"
+              icon="save"
+              color="yellow"
+              onClick={() =>
+                act('save_coordinates', { x: supplyX, y: supplyY })
+              }>
+              Save
+            </Button>
+          </Box>
         </Stack.Item>
         <Stack.Item>
           <Divider vertical />
@@ -636,7 +635,7 @@ const OrbitalBombardment = (props, context) => {
     <Section fontSize="14px" title="Orbital Bombardment">
       <Stack justify={'space-between'} m="10px">
         <Stack.Item fontSize="14px">
-          <LabeledControls>
+          <LabeledControls mb="5px">
             <LabeledControls.Item label="LONGITUDE">
               <NumberInput
                 value={OBX}
@@ -652,30 +651,30 @@ const OrbitalBombardment = (props, context) => {
               />
             </LabeledControls.Item>
 
-            <LabeledControls.Item label="Fire">
-              <Button
-                icon="bomb"
-                color="red"
-                onClick={() => act('dropbomb', { x: OBX, y: OBY })}>
-                Fire
-              </Button>
-            </LabeledControls.Item>
-
             <LabeledControls.Item label="STATUS">
               <Box color={ob_color} bold>
                 {ob_status}
               </Box>
             </LabeledControls.Item>
-
-            <LabeledControls.Item label="SAVE">
-              <Button
-                icon="save"
-                color="yellow"
-                onClick={() => act('save_coordinates', { x: OBX, y: OBY })}>
-                Save
-              </Button>
-            </LabeledControls.Item>
           </LabeledControls>
+          <Box textAlign="center">
+            <Button
+              fontSize="20px"
+              width="100%"
+              icon="bomb"
+              color="red"
+              onClick={() => act('dropbomb', { x: OBX, y: OBY })}>
+              Fire
+            </Button>
+            <Button
+              fontSize="20px"
+              width="100%"
+              icon="save"
+              color="yellow"
+              onClick={() => act('save_coordinates', { x: OBX, y: OBY })}>
+              Save
+            </Button>
+          </Box>
         </Stack.Item>
         <Stack.Item>
           <Divider vertical />
@@ -715,10 +714,14 @@ const SavedCoordinates = (props, context) => {
       </Box>
       <Table>
         <Table.Row bold>
-          <Table.Cell p="6px">LONGITUDE</Table.Cell>
-          <Table.Cell p="5px">LATITUDE</Table.Cell>
+          <Table.Cell p="5px" collapsing>
+            LONG.
+          </Table.Cell>
+          <Table.Cell p="5px" collapsing>
+            LAT.
+          </Table.Cell>
           <Table.Cell p="5px">COMMENT</Table.Cell>
-          <Table.Cell p="5px">ACTION</Table.Cell>
+          <Table.Cell p="5px" collapsing />
         </Table.Row>
         {data.saved_coordinates.map((coords, index) => (
           <Table.Row key={index}>
@@ -726,6 +729,7 @@ const SavedCoordinates = (props, context) => {
             <Table.Cell p="5px">{coords.y}</Table.Cell>
             <Table.Cell p="5px">
               <Input
+                width="100%"
                 value={coords.comment}
                 onChange={(e, value) =>
                   act('change_coordinate_comment', {

@@ -1,7 +1,5 @@
 #define VISION_MODE_OFF 0
 #define VISION_MODE_NVG 1
-#define VISION_MODE_THERMAL 2
-#define VISION_MODE_MESON 3
 
 ///parent type
 /obj/item/clothing/mask/gas/yautja
@@ -65,7 +63,31 @@
 
 /obj/item/clothing/mask/gas/yautja/Destroy()
 	remove_from_missing_pred_gear(src)
+	STOP_PROCESSING(SSobj, src)
 	return ..()
+
+/obj/item/clothing/mask/gas/yautja/process()
+	if(!ishuman(loc))
+		return PROCESS_KILL
+	var/mob/living/carbon/human/human_holder = loc
+
+	if(current_goggles && !drain_power(human_holder, 3))
+		to_chat(human_holder, SPAN_WARNING("Your bracers lack sufficient power to operate the visor."))
+		current_goggles = VISION_MODE_OFF
+		var/obj/item/visor = human_holder.glasses
+		if(istype(visor, /obj/item/clothing/glasses/night/yautja))//To change if any new vision modes are made
+			human_holder.temp_drop_inv_item(visor)
+			qdel(visor)
+			human_holder.update_inv_glasses()
+			human_holder.update_sight()
+
+/obj/item/clothing/mask/gas/yautja/proc/drain_power(mob/living/carbon/human/human_holder, drain_amount)
+	var/obj/item/clothing/gloves/yautja/bracer = human_holder.gloves
+	if(!bracer || !istype(bracer))
+		return FALSE
+	if(!(bracer.drain_power(human_holder, drain_amount)))
+		return FALSE
+	return TRUE
 
 /obj/item/clothing/mask/gas/yautja/verb/toggle_zoom()
 	set name = "Toggle Mask Zoom"
@@ -82,40 +104,36 @@
 	set src in usr
 	if(!usr || usr.stat)
 		return
-	var/mob/living/carbon/human/M = usr
-	if(!istype(M))
+	var/mob/living/carbon/human/user = usr
+	if(!istype(user))
 		return
-	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH) && !M.hunter_data.thralled)
-		to_chat(M, SPAN_WARNING("You have no idea how to work this thing!"))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH) && !user.hunter_data.thralled)
+		to_chat(user, SPAN_WARNING("You have no idea how to work this thing!"))
 		return
-	if(src != M.wear_mask) //sanity
-		to_chat(M, SPAN_WARNING("You must wear \the [src]!"))
+	if(src != user.wear_mask) //sanity
+		to_chat(user, SPAN_WARNING("You must wear \the [src]!"))
 		return
-	var/obj/item/clothing/gloves/yautja/Y = M.gloves //Doesn't actually reduce power, but needs the bracers anyway.
-	if(!Y || !istype(Y))
-		to_chat(M, SPAN_WARNING("You must be wearing your bracers, as they have the power source."))
+	var/obj/item/clothing/gloves/yautja/bracer = user.gloves
+	if(!bracer || !istype(bracer))
+		to_chat(user, SPAN_WARNING("You must be wearing your bracers, as they have the power source."))
 		return
-	var/obj/item/G = M.glasses
-	if(G)
-		if(!istype(G,/obj/item/clothing/glasses/night/yautja) && !istype(G,/obj/item/clothing/glasses/meson/yautja) && !istype(G,/obj/item/clothing/glasses/thermal/yautja))
-			to_chat(M, SPAN_WARNING("You need to remove your glasses first. Why are you even wearing these?"))
+	var/obj/item/visor = user.glasses
+	if(visor)
+		if(!istype(visor, /obj/item/clothing/glasses/night/yautja))
+			to_chat(user, SPAN_WARNING("You need to remove your glasses first. Why are you even wearing these?"))
 			return
-		M.temp_drop_inv_item(G) //Get rid of ye existing maicerinho goggles
-		qdel(G)
-		M.update_inv_glasses()
-		M.update_sight()
+		user.temp_drop_inv_item(visor) //Get rid of ye existing maicerinho goggles
+		qdel(visor)
+		user.update_inv_glasses()
+		user.update_sight()
 	switch_vision_mode()
-	add_vision(M)
+	add_vision(user)
 
 /obj/item/clothing/mask/gas/yautja/proc/switch_vision_mode() //switches to the next one
 	switch(current_goggles)
 		if(VISION_MODE_OFF)
 			current_goggles = VISION_MODE_NVG
 		if(VISION_MODE_NVG)
-			current_goggles = VISION_MODE_THERMAL
-		if(VISION_MODE_THERMAL)
-			current_goggles = VISION_MODE_MESON
-		if(VISION_MODE_MESON)
 			current_goggles = VISION_MODE_OFF
 
 /obj/item/clothing/mask/gas/yautja/proc/add_vision(mob/living/carbon/human/user) //applies current_goggles
@@ -123,38 +141,40 @@
 		if(VISION_MODE_NVG)
 			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/yautja(user), WEAR_EYES)
 			to_chat(user, SPAN_NOTICE("Low-light vision module: activated."))
-		if(VISION_MODE_THERMAL)
-			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/yautja(user), WEAR_EYES)
-			to_chat(user, SPAN_NOTICE("Thermal vision module: activated."))
-		if(VISION_MODE_MESON)
-			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson/yautja(user), WEAR_EYES)
-			to_chat(user, SPAN_NOTICE("Material vision module: activated."))
 		if(VISION_MODE_OFF)
 			to_chat(user, SPAN_NOTICE("You deactivate your visor."))
 
 	playsound(src, 'sound/effects/pred_vision.ogg', 15, 1)
 	user.update_inv_glasses()
 
+#undef VISION_MODE_OFF
+#undef VISION_MODE_NVG
+
 /obj/item/clothing/mask/gas/yautja/dropped(mob/living/carbon/human/user) //Clear the gogglors if the helmet is removed.
+	STOP_PROCESSING(SSobj, src)
 	if(istype(user) && user.wear_mask == src) //inventory reference is only cleared after dropped().
 		for(var/listed_hud in mask_huds)
 			var/datum/mob_hud/H = huds[listed_hud]
 			H.remove_hud_from(user, src)
-		var/obj/item/G = user.glasses
-		if(G) //make your hud fuck off
-			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))
-				user.temp_drop_inv_item(G)
-				qdel(G)
+		var/obj/item/visor = user.glasses
+		if(visor) //make your hud fuck off
+			if(istype(visor, /obj/item/clothing/glasses/night/yautja))
+				user.temp_drop_inv_item(visor)
+				qdel(visor)
 				user.update_inv_glasses()
 				user.update_sight()
 	..()
 
 /obj/item/clothing/mask/gas/yautja/equipped(mob/living/carbon/human/user, slot)
 	if(slot == WEAR_FACE)
+		START_PROCESSING(SSobj, src)
 		for(var/listed_hud in mask_huds)
 			var/datum/mob_hud/H = huds[listed_hud]
 			H.add_hud_to(user, src)
 		if(current_goggles)
+			var/obj/item/clothing/gloves/yautja/bracer = user.gloves
+			if(!bracer || !istype(bracer))
+				return FALSE
 			add_vision(user)
 	..()
 
@@ -204,30 +224,6 @@
 /obj/item/clothing/mask/gas/yautja/damaged
 	name = "ancient alien mask"
 	desc = "A beautifully designed metallic face mask, both ornate and functional. This one seems to be old and degraded."
-
-/obj/item/clothing/mask/gas/yautja/damaged/switch_vision_mode()
-	switch(current_goggles)
-		if(VISION_MODE_OFF)
-			current_goggles = VISION_MODE_NVG
-		if(VISION_MODE_NVG)
-			current_goggles = VISION_MODE_OFF
-
-/obj/item/clothing/mask/gas/yautja/damaged/add_vision(mob/living/carbon/human/user)
-	switch(current_goggles)
-		if(VISION_MODE_NVG)
-			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/yautja(user), WEAR_EYES)
-			to_chat(user, SPAN_NOTICE("You activate your visor."))
-		if(VISION_MODE_OFF)
-			to_chat(user, SPAN_NOTICE("You deactivate your visor."))
-
-	playsound(src, 'sound/effects/pred_vision.ogg', 15, 1)
-	user.update_inv_glasses()
-
-#undef VISION_MODE_OFF
-#undef VISION_MODE_NVG
-#undef VISION_MODE_THERMAL
-#undef VISION_MODE_MESON
-
 
 //flavor, not a subtype
 /obj/item/clothing/mask/yautja_flavor

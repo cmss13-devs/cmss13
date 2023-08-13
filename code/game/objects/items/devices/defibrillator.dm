@@ -11,7 +11,10 @@
 	w_class = SIZE_MEDIUM
 
 	var/blocked_by_suit = TRUE
-	var/heart_damage_to_deal = 5
+	/// Min damage defib deals to victims' heart
+	var/min_heart_damage_dealt = 3
+	/// Max damage defib deals to victims' heart
+	var/max_heart_damage_dealt = 5
 	var/ready = 0
 	var/damage_heal_threshold = 12 //This is the maximum non-oxy damage the defibrillator will heal to get a patient above -100, in all categories
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
@@ -191,8 +194,11 @@
 	shock_cooldown = world.time + 10 //1 second cooldown before you can shock again
 
 	var/datum/internal_organ/heart/heart = H.internal_organs_by_name["heart"]
+	/// Has the defib already caused the chance of heart damage, to not potentially double up later
+	var/heart_already_damaged = FALSE
 	if(heart && prob(25))
-		heart.take_damage(heart_damage_to_deal, TRUE) //Allow the defibrillator to possibly worsen heart damage. Still rare enough to just be the "clone damage" of the defib
+		heart.take_damage(rand(min_heart_damage_dealt, max_heart_damage_dealt), TRUE) // Make death and revival leave lasting consequences
+		heart_already_damaged = TRUE
 
 	if(!H.is_revivable())
 		playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
@@ -230,6 +236,9 @@
 		user.track_life_saved(user.job)
 		user.life_revives_total++
 		H.handle_revive()
+		if(heart && !heart_already_damaged)
+			heart.take_damage(rand(min_heart_damage_dealt, max_heart_damage_dealt), TRUE) // Make death and revival leave lasting consequences
+
 		to_chat(H, SPAN_NOTICE("You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane."))
 		if(H.client?.prefs.toggles_flashing & FLASH_CORPSEREVIVE)
 			window_flash(H.client)
@@ -239,13 +248,14 @@
 
 /obj/item/device/defibrillator/compact_adv
 	name = "advanced compact defibrillator"
-	desc = "An advanced compact defibrillator that trades capacity for strong immediate power. Ignores armor and heals strongly and quickly, at the cost of very low charge."
+	desc = "An advanced compact defibrillator that trades capacity for strong immediate power. Ignores armor and heals strongly and quickly, at the cost of very low charge. It does not damage the heart."
 	icon = 'icons/obj/items/experimental_tools.dmi'
 	icon_state = "compact_defib"
 	item_state = "defib"
 	w_class = SIZE_MEDIUM
 	blocked_by_suit = FALSE
-	heart_damage_to_deal = 0
+	min_heart_damage_dealt = 0
+	max_heart_damage_dealt = 0
 	damage_heal_threshold = 40
 	charge_cost = 198
 

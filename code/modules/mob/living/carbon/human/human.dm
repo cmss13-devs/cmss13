@@ -1387,6 +1387,7 @@
 	lighting_alpha = default_lighting_alpha
 	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
 	see_in_dark = species.darksight
+	sight |= species.flags_sight
 	if(glasses)
 		process_glasses(glasses)
 

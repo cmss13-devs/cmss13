@@ -1,0 +1,4 @@
+author: "mothblocks, harry"
+delete-after: True
+changes:
+  - rscadd: "added the backend functionality for autowiki, alongside automating much of the work of maintaining guns on the wiki"

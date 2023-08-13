@@ -1143,11 +1143,16 @@
 	// Need to do this in order to prevent the ping from being deleted
 	addtimer(CALLBACK(I, TYPE_PROC_REF(/image, flick_overlay), src, 3), 1)
 
+/// Zonennote: debug attempt for bullet lag
+/mob/var/shot_cooldown = 0
+
 /mob/proc/bullet_message(obj/item/projectile/P)
 	if(!P)
 		return
-	visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
-		SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
+	if(COOLDOWN_FINISHED(src, shot_cooldown))
+		visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
+			SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		COOLDOWN_START(src, shot_cooldown, 1 SECONDS)
 
 	last_damage_data = P.weapon_cause_data
 	if(P.firer && ismob(P.firer))

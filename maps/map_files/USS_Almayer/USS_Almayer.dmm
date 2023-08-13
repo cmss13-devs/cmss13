@@ -9838,6 +9838,10 @@
 	pixel_x = 5;
 	pixel_y = 3
 	},
+/obj/item/reagent_container/glass/beaker/cryoxadone{
+	pixel_x = -6;
+	pixel_y = 8
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -30828,10 +30832,7 @@
 	},
 /area/almayer/shipboard/brig/lobby)
 "dyb" = (
-/obj/structure/machinery/smartfridge/chemistry{
-	layer = 3.1;
-	pixel_x = -4
-	},
+/obj/structure/machinery/smartfridge/chemistry,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	name = "General Listening Channel";
@@ -34243,20 +34244,10 @@
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
 "eVT" = (
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin/wy{
-	pixel_x = 6;
-	pixel_y = 5
+/obj/structure/disposalpipe/trunk{
+	dir = 1
 	},
-/obj/item/tool/pen{
-	pixel_x = 8
-	},
-/obj/item/clipboard{
-	pixel_x = -8
-	},
-/obj/item/folder/white{
-	pixel_x = -8
-	},
+/obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -35078,17 +35069,9 @@
 	},
 /area/almayer/engineering/starboard_atmos)
 "fpT" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
+	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/medical_science)
 "fpW" = (
@@ -36881,8 +36864,18 @@
 /area/almayer/medical/containment/cell/cl)
 "ger" = (
 /obj/structure/surface/table/almayer,
-/obj/item/device/mass_spectrometer{
+/obj/item/paper_bin/wy{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/obj/item/tool/pen{
 	pixel_x = 8
+	},
+/obj/item/clipboard{
+	pixel_x = -8
+	},
+/obj/item/folder/white{
+	pixel_x = -8
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -37251,19 +37244,11 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "glB" = (
-/obj/structure/machinery/chem_master{
-	layer = 3.1;
-	pixel_x = 8;
-	vial_maker = 1
-	},
 /obj/structure/sign/safety/chem_lab{
 	pixel_x = 5;
 	pixel_y = 29
 	},
-/obj/structure/machinery/disposal{
-	pixel_x = -15;
-	pixel_y = -3
-	},
+/obj/structure/machinery/chem_master,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -57553,6 +57538,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -66767,7 +66753,8 @@
 	pixel_y = 1
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 4
+	dir = 2;
+	icon_state = "pipe-c"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -70888,17 +70875,20 @@
 /area/almayer/medical/hydroponics)
 "vgB" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/glass/beaker/cryoxadone{
-	pixel_x = -6;
-	pixel_y = 8
-	},
 /obj/item/storage/box/autoinjectors{
 	pixel_x = -6;
 	pixel_y = -1
 	},
+/obj/item/device/mass_spectrometer{
+	pixel_x = 8
+	},
 /obj/item/storage/box/pillbottles{
-	pixel_x = 6;
-	pixel_y = 7
+	pixel_x = -6;
+	pixel_y = 9
+	},
+/obj/item/reagent_container/glass/beaker/cryoxadone{
+	pixel_x = 8;
+	pixel_y = 10
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
@@ -110920,7 +110910,7 @@ vOy
 dyb
 tsM
 prx
-aoM
+fpT
 eVT
 kgs
 ayT
@@ -111121,7 +111111,7 @@ usy
 nDo
 vOy
 glB
-fpT
+vkp
 ger
 aoM
 aFf

@@ -309,13 +309,12 @@ const MainMenu = (props, context) => {
             <Stack.Item>
               <Button
                 content="Sudo Login"
-                tooltip="Remote Login."
+                tooltip="You cannot do this via remote console."
                 icon="user-secret"
                 ml="auto"
                 px="2rem"
                 width="25vw"
                 bold
-                onClick={() => act('sudo')}
                 disabled={access_text}
               />
             </Stack.Item>
@@ -324,13 +323,12 @@ const MainMenu = (props, context) => {
             <Stack.Item>
               <Button
                 content="Sudo Logout"
-                tooltip="Logout of Sudo mode."
+                tooltip="You cannot do this via remote console."
                 icon="user-secret"
                 ml="auto"
                 px="2rem"
                 width="25vw"
                 bold
-                onClick={() => act('sudo_logout')}
                 disabled={access_text}
               />
             </Stack.Item>
@@ -1478,6 +1476,19 @@ const Emergency = (props, context) => {
 
       <h1 align="center">Emergency Protocols</h1>
       <Flex align="center" justify="center" height="50%" direction="column">
+        <Button.Confirm
+          content="Call General Quarters"
+          tooltip="You cannot do this via remote console."
+          icon="triangle-exclamation"
+          color="red"
+          width="40vw"
+          textAlign="center"
+          fontSize="1.5rem"
+          p="1rem"
+          mt="5rem"
+          bold
+          disabled={access_text}
+        />
         <Button.Confirm
           content="Initiate Evacuation"
           tooltip="You cannot do this via remote console."

@@ -6,6 +6,10 @@
 		to_chat(usr, SPAN_WARNING("You do not have access to this command."))
 		return FALSE
 
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("The round has not started yet."))
+		return FALSE
+
 	if(!GLOB.ares_link || !GLOB.ares_link.admin_interface || !GLOB.ares_link.interface)
 		to_chat(usr, SPAN_BOLDWARNING("ERROR: ARES Link or Interface not found!"))
 		return FALSE
@@ -202,6 +206,15 @@
 
 	return data
 
+/datum/ares_link/ui_close(mob/user)
+	. = ..()
+	if(admin_interface.logged_in)
+		admin_interface.current_menu = "login"
+		admin_interface.last_menu = "login"
+		admin_interface.access_list += "[admin_interface.logged_in] logged out at [worldtime2text()]."
+		admin_interface.last_login = admin_interface.logged_in
+		admin_interface.logged_in = null
+
 /datum/ares_link/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
@@ -228,8 +241,8 @@
 		// -- Page Changers -- //
 		if("logout")
 			admin_interface.current_menu = "login"
-			admin_interface.last_menu = admin_interface.current_menu
-			admin_interface.access_list += "[admin_interface.logged_in] logged out at [worldtime2text()]."
+			admin_interface.last_menu = "login"
+			admin_interface.access_list += "[admin_interface.logged_in] logged out at [worldtime2text()]. (UI Termination)"
 			admin_interface.last_login = admin_interface.logged_in
 			admin_interface.logged_in = null
 

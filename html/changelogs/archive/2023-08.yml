@@ -220,3 +220,8 @@
   - rscdel: Removed Thermal and Meson visors from Yautja mask.
   - bugfix: Squad Specialists can no longer bypass restrictions by not selecting a
       kit to use.
+2023-08-14:
+  Morrow:
+  - rscadd: Rounded oxyloss from bloodloss
+  SpartanBobby:
+  - maptweak: Fixes use of wrong areas inside LV522 reactor

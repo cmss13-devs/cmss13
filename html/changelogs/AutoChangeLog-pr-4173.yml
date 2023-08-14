@@ -1,0 +1,4 @@
+author: "MikeKuwait"
+delete-after: True
+changes:
+  - bugfix: "The plant dies if no nutriment is available"

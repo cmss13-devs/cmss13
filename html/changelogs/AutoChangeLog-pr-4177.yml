@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscadd: "Queen jellies now use designation rather than ckey for attribution"

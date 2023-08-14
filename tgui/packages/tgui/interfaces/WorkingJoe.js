@@ -721,25 +721,28 @@ const AccessRequests = (props, context) => {
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
+            <Flex.Item width="8rem" mr="1rem" bold>
+              For
+            </Flex.Item>
             <Flex.Item width="40rem" bold>
               Details
             </Flex.Item>
           </Flex>
         )}
         {access_tickets.map((ticket, i) => {
-          let view_status = 'Ticket is pending assignment.';
+          let view_status = 'Access Ticket is pending assignment.';
           let view_icon = 'circle-question';
           if (ticket.status === 'assigned') {
-            view_status = 'Ticket is assigned.';
+            view_status = 'Access Ticket is assigned.';
             view_icon = 'circle-plus';
           } else if (ticket.status === 'rejected') {
-            view_status = 'Ticket has been rejected.';
+            view_status = 'Access Ticket has been rejected.';
             view_icon = 'circle-xmark';
           } else if (ticket.status === 'cancelled') {
-            view_status = 'Ticket was cancelled by reporter.';
+            view_status = 'Access Ticket was cancelled by reporter.';
             view_icon = 'circle-stop';
           } else if (ticket.status === 'completed') {
-            view_status = 'Ticket has been successfully resolved.';
+            view_status = 'Access Ticket has been successfully resolved.';
             view_icon = 'circle-check';
           }
           let can_cancel = 'Yes';
@@ -763,6 +766,9 @@ const AccessRequests = (props, context) => {
               )}
               <Flex.Item italic width="6rem" shrink="0" mr="1rem">
                 {ticket.time}
+              </Flex.Item>
+              <Flex.Item width="8rem" mr="1rem">
+                {ticket.title}
               </Flex.Item>
               <Flex.Item width="40rem" shrink="0" textAlign="left">
                 {ticket.details}

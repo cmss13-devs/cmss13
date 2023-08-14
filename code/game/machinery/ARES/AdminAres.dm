@@ -208,7 +208,7 @@
 
 /datum/ares_link/ui_close(mob/user)
 	. = ..()
-	if(admin_interface.logged_in)
+	if(admin_interface.logged_in && (user.ckey == admin_interface.logged_in))
 		admin_interface.current_menu = "login"
 		admin_interface.last_menu = "login"
 		admin_interface.access_list += "[admin_interface.logged_in] logged out at [worldtime2text()]."

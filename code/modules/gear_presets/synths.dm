@@ -459,7 +459,7 @@
 	name = "Survivor - Synthetic - UPP Synth"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_UPP_COMBAT_SYNTH
-	rank = JOB_SURVIVOR
+	rank = JOB_UPP_COMBAT_SYNTH
 	faction = FACTION_UPP
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 	skills = /datum/skills/colonial_synthetic
@@ -478,7 +478,7 @@
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/screwdriver, WEAR_R_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/recon, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/multitool, WEAR_IN_BACK)

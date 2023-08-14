@@ -1603,11 +1603,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/recon(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/survivor/upp/soldier
 	name = "Survivor - UPP Soldier"
 	paygrade = "UE2"
-	assignment = "UPP Soldier"
+	assignment = JOB_UPP
+	rank = JOB_UPP
 	skills = /datum/skills/military/survivor/upp_private
 
 /datum/equipment_preset/survivor/upp/soldier/load_gear(mob/living/carbon/human/new_human)
@@ -1630,7 +1632,8 @@
 /datum/equipment_preset/survivor/upp/sapper
 	name = "Survivor - UPP Sapper"
 	paygrade = "UE3S"
-	assignment = "UPP Sapper"
+	assignment = JOB_UPP_ENGI
+	rank = JOB_UPP_ENGI
 	skills = /datum/skills/military/survivor/upp_sapper
 
 /datum/equipment_preset/survivor/upp/sapper/load_gear(mob/living/carbon/human/new_human)
@@ -1656,7 +1659,8 @@
 /datum/equipment_preset/survivor/upp/medic
 	name = "Survivor - UPP Medic"
 	paygrade = "UE3M"
-	assignment = "UPP Medic"
+	assignment = JOB_UPP_MEDIC
+	rank = JOB_UPP_MEDIC
 	skills = /datum/skills/military/survivor/upp_medic
 
 /datum/equipment_preset/survivor/upp/medic/load_gear(mob/living/carbon/human/new_human)
@@ -1683,8 +1687,9 @@
 
 /datum/equipment_preset/survivor/upp/specialist
 	name = "Survivor - UPP Specialist"
+	assignment = JOB_UPP_SPECIALIST
+	rank = JOB_UPP_SPECIALIST
 	paygrade = "UE4"
-	assignment = "UPP Specialist"
 	skills = /datum/skills/military/survivor/upp_spec
 
 /datum/equipment_preset/survivor/upp/specialist/load_gear(mob/living/carbon/human/new_human)
@@ -1703,8 +1708,9 @@
 /datum/equipment_preset/survivor/upp/squad_leader
 	name = "Survivor - UPP Squad Leader"
 	paygrade = "UE5"
+	assignment = JOB_UPP_LEADER
+	rank = JOB_UPP_LEADER
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
-	assignment = "UPP Squad Leader"
 	role_comm_title = "UPP 173Rd RECON SL"
 	skills = /datum/skills/military/survivor/upp_sl
 

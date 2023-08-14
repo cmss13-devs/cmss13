@@ -969,7 +969,7 @@ Additional game mode variables.
 		log_debug("Null client attempted to transform_joe")
 		return
 
-	var/turf/spawn_point = get_turf(pick(GLOB.latejoin))
+	var/turf/spawn_point = get_turf(pick(GLOB.latejoin_by_job[JOB_WORKING_JOE]))
 	var/mob/living/carbon/human/synthetic/new_joe = new(spawn_point)
 	joe_candidate.mind.transfer_to(new_joe, TRUE)
 	var/datum/job/joe_job = RoleAuthority.roles_by_name[JOB_WORKING_JOE]

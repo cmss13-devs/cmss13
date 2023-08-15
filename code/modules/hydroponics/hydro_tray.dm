@@ -532,10 +532,8 @@
 
 		// Create a sample.
 		seed.harvest(user,yield_mod,1)
-		plant_health -= (rand(3,5)*10)
-
-		if(prob(30))
-			sampled = 1
+		plant_health -= 30
+		sampled = 1
 
 		// Bookkeeping.
 		check_level_sanity()

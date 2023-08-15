@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added a proc to calculate item strip delay, taking into account the target's skills and adding 0.5s per level in Policing and CQC."
-  - rscadd: "Added an unstrippable mob trait to prevent inventory manipulation. Gave this trait to Working Joes."

@@ -1248,7 +1248,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 //=ROYAL MARINES=\\
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine
-	name = "L5A2 ballistic helmet"
+	name = "\improper L5A2 ballistic helmet"
 	desc = "A High-cut ballistic helmet. Designed by Lindenthal-Ehrenfeld Militärindustrie it is intended to be used by Royal Marines Commando as part of the kestrel armour system."
 	icon_state = "rmc_helm1"
 	item_state = "rmc_helm1"
@@ -1265,7 +1265,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine/breacher
-	name = "L5A3 ballistic helmet"
+	name = "\improper L5A3 ballistic helmet"
 	desc = "A High-cut ballistic helmet featuring an attached mandible. Designed by Lindenthal-Ehrenfeld Militärindustrie it is intended to be used by Royal Marines Commando as part of the kestrel armour system"
 	icon_state = "rmc_helm_br"
 	item_state = "rmc_helm_br"

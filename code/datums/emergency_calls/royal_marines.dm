@@ -13,7 +13,7 @@
 
 /datum/emergency_call/royal_marines/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is [pick(50;"HMS Patna", 50;"HMS Thunderchild",)]; we are responding to your distress call and boarding in accordance with the Military Aid Act of 2177, authenticication code Lima-18153. "
+	arrival_message = "[MAIN_SHIP_NAME], this is [pick_weight (list('HMS Patna' = 50, 'HMS Thunderchild' = 50))]; we are responding to your distress call and boarding in accordance with the Military Aid Act of 2177, Authentication code Lima-18153. "
 	objectives = "Ensure the survival of the [MAIN_SHIP_NAME], eliminate any hostiles, and assist the crew in any way possible."
 
 
@@ -28,19 +28,19 @@
 
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are an Officer in the Royal Marines Commando. Born in the three world empire."))
+		to_chat(mob, SPAN_ROLE_HEADER("You are an Officer in the Royal Marines Commando. Born in the Three World Empire."))
 		arm_equipment(mob, /datum/equipment_preset/twe/royal_marine/team_leader, TRUE, TRUE)
 	else if(heavies < max_heavies && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(mob.client, JOB_SQUAD_SPECIALIST))
 		var/specialist_kit = pick("Sniper", "Smartgun", "Breach")
 		switch(specialist_kit)
 			if("Sniper")
-				to_chat(mob, SPAN_ROLE_HEADER("You are a skilled marksman in the Royal Marines Commando. Born in the three world empire."))
+				to_chat(mob, SPAN_ROLE_HEADER("You are a skilled marksman in the Royal Marines Commando. Born in the Three World Empire."))
 				arm_equipment(mob, /datum/equipment_preset/twe/royal_marine/spec/marksman, TRUE, TRUE)
 			if("Smartgun")
-				to_chat(mob, SPAN_ROLE_HEADER("You are a Smartgunner in the Royal Marines Commando. Born in the three world empire."))
+				to_chat(mob, SPAN_ROLE_HEADER("You are a Smartgunner in the Royal Marines Commando. Born in the Three World Empire."))
 				arm_equipment(mob, /datum/equipment_preset/twe/royal_marine/spec/machinegun, TRUE, TRUE)
 			if("Breach")
-				to_chat(mob, SPAN_ROLE_HEADER("You are a CQB Specialist in the Royal Marines Commando. Born in the three world empire."))
+				to_chat(mob, SPAN_ROLE_HEADER("You are a CQB Specialist in the Royal Marines Commando. Born in the Three World Empire."))
 				arm_equipment(mob, /datum/equipment_preset/twe/royal_marine/spec/breacher, TRUE, TRUE)
 		heavies++
 	else
@@ -83,3 +83,4 @@
 
 /obj/effect/landmark/ert_spawns/distress_twe/item
 	name = "Distress_TWEItem"
+

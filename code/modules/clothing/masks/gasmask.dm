@@ -149,7 +149,7 @@
 //=ROYAL MARINES=\\
 
 /obj/item/clothing/mask/gas/pmc/royal_marine
-	name = "L7 gasmask"
+	name = "\improper L7 gasmask"
 	desc = "The L7 Gasmask used by members of the three world empires royal marines commando."
 	icon_state = "rmc_mask"
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE

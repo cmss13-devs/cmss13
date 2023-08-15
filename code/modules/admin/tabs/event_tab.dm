@@ -222,9 +222,9 @@
 	if(!is_announcing)
 		qdel(chosen_ert)
 		return
-	else if(is_announcing == "No")
+	if(is_announcing == "No")
 		is_announcing = FALSE
-	else if (is_announcing == "Yes")
+	if (is_announcing == "Yes")
 		is_announcing = TRUE
 
 	var/turf/override_spawn_loc
@@ -232,7 +232,7 @@
 	if(!prompt)
 		qdel(chosen_ert)
 		return
-	else if(prompt == "Current Location")
+	if(prompt == "Current Location")
 		override_spawn_loc = get_turf(usr)
 
 	chosen_ert.activate(is_announcing, override_spawn_loc)

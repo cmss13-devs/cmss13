@@ -70,6 +70,8 @@
 		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
 		return
 
+	user.set_interaction(src)
+
 	tgui_interact(user)
 
 /obj/structure/machinery/computer/overwatch/get_examine_text(mob/user)
@@ -95,7 +97,7 @@
 	return data
 
 /obj/structure/machinery/computer/overwatch/tgui_interact(mob/user, datum/tgui/ui)
-	user.set_interaction(src)
+
 	if(!tacmap.map_holder)
 		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
 		if(!level[1])
@@ -326,7 +328,9 @@
 
 	var/mob/user = usr
 
-	user.set_interaction(src)
+	if((user.contents.Find(src) || (in_range(src, user) && istype(loc, /turf))) || (ishighersilicon(user)))
+		user.set_interaction(src)
+
 	switch(action)
 		if("pick_squad")
 			if(current_squad)
@@ -858,9 +862,6 @@
 
 /obj/structure/machinery/computer/overwatch/almayer/broken
 	name = "Broken Overwatch Console"
-
-/obj/structure/machinery/computer/overwatch/almayer/broken/process()
-	return PROCESS_KILL
 
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF

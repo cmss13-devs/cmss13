@@ -82,7 +82,7 @@
 /obj/item/map/big_red_map
 	name = "\improper Solaris Ridge Map"
 	desc = "A censored blueprint of the Solaris Ridge facility"
-	html_link = "images/c/c5/Big_Red.png"
+	html_link = "images/9/9e/Solaris_Ridge.png"
 	color = "#e88a10"
 
 /obj/item/map/FOP_map
@@ -104,10 +104,11 @@
 	color = "#ad8d0e"
 
 /obj/item/map/sorokyne_map
-	name = "\improper Sorokyne Outpost Map"
-	desc = "A labelled schematic of the Sorokyne Outpost and the surrounding caves."
+	name = "\improper Sorokyne Strata map"
+	desc = "A map of the Weyland-Yutani colony Sorokyne Outpost, commonly known as Sorokyne Strata."
 	html_link = "images/2/21/Sorokyne_Wiki_Map.jpg" //The fact that this is just a wiki-link makes me sad and amused.
 	color = "cyan"
+
 /obj/item/map/corsat
 	name = "\improper CORSAT map"
 	desc = "A blueprint of CORSAT station"
@@ -125,6 +126,7 @@
 	desc = "An overview of LV-522 schematics."
 	html_link = "images/b/bb/C_claim.png"
 	color = "cyan"
+
 /obj/item/map/new_varadero
 	name = "\improper New Varadero map"
 	desc = "A labeled blueprint of the UA outpost New Varadero"

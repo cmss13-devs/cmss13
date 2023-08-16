@@ -158,7 +158,10 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 /obj/item/map/current_map/Initialize(mapload, ...)
 	. = ..()
 
-	var/obj/item/map/map = GLOB.map_type_list[SSmapping.configs[GROUND_MAP].map_name]
+	var/map_name = SSmapping.configs[GROUND_MAP].map_name
+	var/obj/item/map/map = GLOB.map_type_list[map_name]
+	if (!map && (map_name == MAP_RUNTIME || map_name == MAP_CHINKOOK || map_name == MAIN_SHIP_DEFAULT_NAME))
+		return // "Maps" we don't have maps for so we don't need to throw a runtime for (namely in unit_testing)
 	name = map.name
 	desc = map.desc
 	html_link = map.html_link

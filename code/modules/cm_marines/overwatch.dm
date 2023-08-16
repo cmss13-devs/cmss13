@@ -70,8 +70,6 @@
 		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
 		return
 
-	user.set_interaction(src)
-
 	tgui_interact(user)
 
 /obj/structure/machinery/computer/overwatch/get_examine_text(mob/user)

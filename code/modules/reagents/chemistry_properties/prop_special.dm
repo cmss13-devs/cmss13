@@ -305,8 +305,8 @@
 
 	holder.rangefire = max(holder.rangefire, 0) // Initial starts at -1 for some (aka infinite range), need to reset that to 0 so that calc doesn't fuck up
 
-	holder.rangefire += 1 * potency * POTENCY_MULTIPLIER_MEDIUM
-	holder.radiusmod += 0.1 * potency * POTENCY_MULTIPLIER_MEDIUM
+	holder.rangefire += 1 * level
+	holder.radiusmod += 0.1 * level
 	..()
 
 /datum/chem_property/special/intensity
@@ -327,8 +327,8 @@
 /datum/chem_property/special/intensity/update_reagent()
 	holder.chemfiresupp = TRUE
 
-	holder.intensityfire += 1 * potency * POTENCY_MULTIPLIER_MEDIUM
-	holder.intensitymod += 0.1 * potency * POTENCY_MULTIPLIER_MEDIUM
+	holder.intensityfire += 1 * level
+	holder.intensitymod += 0.1 * level
 	..()
 
 /datum/chem_property/special/duration
@@ -349,8 +349,8 @@
 /datum/chem_property/special/duration/update_reagent()
 	holder.chemfiresupp = TRUE
 
-	holder.durationfire += 1 * potency * POTENCY_MULTIPLIER_MEDIUM
-	holder.durationmod += 0.1 * potency * POTENCY_MULTIPLIER_MEDIUM
+	holder.durationfire += 1 * level
+	holder.durationmod += 0.1 * level
 	..()
 
 /datum/chem_property/special/firepenetrating

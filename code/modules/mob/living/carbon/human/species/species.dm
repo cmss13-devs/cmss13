@@ -63,6 +63,7 @@
 
 	var/darksight = 2
 	var/default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+	var/flags_sight = 0
 
 	var/brute_mod = null // Physical damage reduction/malus.
 	var/burn_mod = null  // Burn damage reduction/malus.

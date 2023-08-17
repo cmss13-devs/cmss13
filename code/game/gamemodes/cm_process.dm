@@ -58,18 +58,18 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	if(LAZYLEN(xenomorphs) || LAZYLEN(dead_queens))
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("<br>The xenomorph Queen(s) were:")
-		var/mob/M
+		var/mob/living/carbon/xenomorph/xeno_mob
 		for (var/msg in dead_queens)
 			dat += msg
-		for(var/datum/mind/X in xenomorphs)
-			if(!istype(X))
+		for(var/datum/mind/xeno_mind in xenomorphs)
+			if(!istype(xeno_mind))
 				continue
 
-			M = X.current
-			if(!M || !M.loc)
-				M = X.original
-			if(M && M.loc && isqueen(M) && M.stat != DEAD) // Dead queens handled separately
-				dat += "<br>[X.key] was [M] [SPAN_BOLDNOTICE("(SURVIVED)")]"
+			xeno_mob = xeno_mind.current
+			if(!xeno_mob || !xeno_mob.loc)
+				xeno_mob = xeno_mind.original
+			if(xeno_mob && xeno_mob.loc && isqueen(xeno_mob) && xeno_mob.stat != DEAD) // Dead queens handled separately
+				dat += "<br>[xeno_mob.full_designation] was [xeno_mob] [SPAN_BOLDNOTICE("(SURVIVED)")]"
 
 		to_world("[dat]")
 

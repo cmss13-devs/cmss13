@@ -279,6 +279,8 @@ export class ButtonKeybind extends Component {
     });
     this.finishTimerStart(2000);
     globalEvents.on('keydown', this.preventPassthrough);
+    globalEvents.on('key', this.preventPassthrough);
+    globalEvents.on('keyup', this.preventPassthrough);
   }
 
   doBlur() {
@@ -287,6 +289,8 @@ export class ButtonKeybind extends Component {
       keysDown: {},
     });
     globalEvents.off('keydown', this.preventPassthrough);
+    globalEvents.off('key', this.preventPassthrough);
+    globalEvents.off('keyup', this.preventPassthrough);
   }
 
   render() {

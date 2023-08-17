@@ -24648,6 +24648,7 @@
 	eftpos_name = "Weyland-Yutani EFTPOS scanner"
 	},
 /obj/item/device/portable_vendor/corporate,
+/obj/item/device/toner,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "cer" = (
@@ -25346,20 +25347,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/port_umbilical)
-"cjo" = (
-/obj/structure/sign/safety/distribution_pipes{
-	pixel_x = 32;
-	pixel_y = 6
-	},
-/obj/structure/sign/safety/reduction{
-	pixel_x = 32;
-	pixel_y = -8
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "red"
-	},
-/area/almayer/hallways/aft_hallway)
 "cjw" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/light{
@@ -33230,13 +33217,6 @@
 	icon_state = "plating_striped"
 	},
 /area/almayer/squads/req)
-"ffP" = (
-/obj/structure/sign/safety/maint{
-	pixel_x = 8;
-	pixel_y = -32
-	},
-/turf/closed/wall/almayer,
-/area/almayer/command/securestorage)
 "fgh" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -46287,15 +46267,6 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
-"kSN" = (
-/obj/structure/sign/safety/maint{
-	pixel_x = 32
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "red"
-	},
-/area/almayer/hallways/aft_hallway)
 "kTc" = (
 /obj/structure/closet/secure_closet/guncabinet/red,
 /obj/item/ammo_magazine/shotgun,
@@ -46646,13 +46617,6 @@
 	icon_state = "plating"
 	},
 /area/almayer/engineering/engine_core)
-"lau" = (
-/obj/structure/sign/safety/autoopenclose{
-	pixel_x = 7;
-	pixel_y = 32
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/upper_hull/u_m_p)
 "laO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -50484,13 +50448,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"mIW" = (
-/obj/structure/machinery/light,
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "blue"
-	},
-/area/almayer/hallways/aft_hallway)
 "mJa" = (
 /obj/structure/closet/crate/trashcart,
 /obj/item/trash/boonie,
@@ -52574,15 +52531,6 @@
 	pixel_y = -32
 	},
 /turf/open/floor/almayer{
-	icon_state = "blue"
-	},
-/area/almayer/hallways/aft_hallway)
-"nxV" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 8;
 	icon_state = "blue"
 	},
 /area/almayer/hallways/aft_hallway)
@@ -58347,16 +58295,6 @@
 	icon_state = "silvercorner"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
-"pZl" = (
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
-	pixel_y = -32
-	},
-/obj/structure/machinery/light,
-/turf/open/floor/almayer{
-	icon_state = "silver"
-	},
-/area/almayer/command/securestorage)
 "pZo" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
@@ -60226,16 +60164,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/port_emb)
-"qLQ" = (
-/obj/structure/sign/safety/autoopenclose{
-	pixel_x = 7;
-	pixel_y = 32
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
-/area/almayer/hallways/aft_hallway)
 "qLS" = (
 /obj/structure/pipes/standard/manifold/hidden/supply/no_boom,
 /turf/open/floor/almayer/no_build{
@@ -63017,6 +62945,20 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/squads/delta)
+"rYh" = (
+/obj/structure/sign/safety/distribution_pipes{
+	pixel_x = -17;
+	pixel_y = 6
+	},
+/obj/structure/sign/safety/reduction{
+	pixel_x = -17;
+	pixel_y = -8
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/almayer/hallways/aft_hallway)
 "rYi" = (
 /obj/structure/bed/chair,
 /obj/structure/machinery/power/apc/almayer{
@@ -102185,7 +102127,7 @@ amd
 dXY
 rtY
 fJy
-xQg
+amd
 apq
 szO
 aiX
@@ -112146,7 +112088,7 @@ xXh
 dMK
 vOy
 ago
-nxV
+amD
 ajr
 aii
 avm
@@ -112348,7 +112290,7 @@ ruc
 xOY
 wTM
 vOy
-ayT
+aTL
 akT
 amC
 bKe
@@ -113142,7 +113084,7 @@ aOR
 aOR
 agr
 aNi
-ayT
+asp
 amO
 avj
 vOy
@@ -113345,7 +113287,7 @@ aNi
 aNi
 aNi
 aNi
-asp
+iiC
 amO
 avj
 vOy
@@ -113363,9 +113305,9 @@ vOy
 vOy
 vOy
 vOy
-aTL
+ayT
 akU
-avj
+jHG
 qVM
 csz
 awE
@@ -113751,7 +113693,7 @@ aej
 aej
 aej
 aej
-iiC
+aTL
 amO
 bYe
 ydd
@@ -113771,7 +113713,7 @@ dpM
 ydd
 bYe
 akU
-jHG
+avm
 qVM
 qVM
 xeG
@@ -114565,7 +114507,7 @@ agu
 aej
 pSL
 amT
-mIW
+ioX
 vOy
 wWz
 uwZ
@@ -114866,7 +114808,7 @@ nsY
 nsY
 aLG
 aYO
-aNO
+aLG
 aLG
 bdg
 bqZ
@@ -114888,7 +114830,7 @@ beH
 bqZ
 bdg
 buH
-bHa
+buH
 bHL
 buH
 nsY
@@ -114991,7 +114933,7 @@ alp
 aio
 baB
 aEV
-bUE
+rYh
 bYe
 nBW
 bWP
@@ -115069,7 +115011,7 @@ bBh
 aLG
 aLG
 aYO
-aNO
+aLG
 aLG
 bdg
 bqZ
@@ -115091,7 +115033,7 @@ beH
 bqZ
 bdg
 buH
-bHa
+buH
 bHL
 buH
 buH
@@ -115174,7 +115116,7 @@ suV
 jHq
 sfv
 ntJ
-dLE
+cKY
 vOy
 wWz
 qxP
@@ -115190,7 +115132,7 @@ gxP
 nMe
 wTM
 vOy
-qLQ
+hTh
 sEj
 wWk
 chu
@@ -115397,9 +115339,9 @@ afD
 kaA
 anh
 mXU
-cjo
-bYe
-kSN
+aJs
+aJs
+aJs
 aTQ
 uGo
 abl
@@ -117632,7 +117574,7 @@ ait
 kaR
 reh
 cVu
-pZl
+qgc
 qVM
 iBt
 iBt
@@ -118038,7 +117980,7 @@ cKY
 ioU
 ioU
 ioU
-ffP
+ioU
 qVM
 qVM
 qVM
@@ -118242,7 +118184,7 @@ cEj
 eIB
 sZD
 mgA
-xCX
+qVM
 vGk
 vGk
 aip
@@ -118649,7 +118591,7 @@ kEG
 plJ
 oMN
 qVM
-lau
+vGk
 qVM
 lJY
 lJY

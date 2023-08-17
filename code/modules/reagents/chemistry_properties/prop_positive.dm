@@ -536,9 +536,9 @@
 /datum/chem_property/positive/electrogenetic/trigger(A)
 	if(isliving(A))
 		var/mob/living/M = A
-		M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * level, BRUTE)
-		M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * level, BURN)
-		M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * level, TOX)
+		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * potency, BRUTE)
+		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * potency, BURN)
+		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * potency, TOX)
 		M.updatehealth()
 
 /datum/chem_property/positive/defibrillating
@@ -694,13 +694,13 @@
 /datum/chem_property/positive/fire/update_reagent()
 	holder.chemfiresupp = TRUE
 
-	holder.radiusmod += radiusmod_per_level * level
-	holder.durationmod += durationmod_per_level * level
-	holder.intensitymod += intensitymod_per_level * level
+	holder.radiusmod += radiusmod_per_level * potency * POTENCY_MULTIPLIER_MEDIUM
+	holder.durationmod += durationmod_per_level * potency * POTENCY_MULTIPLIER_MEDIUM
+	holder.intensitymod += intensitymod_per_level * potency * POTENCY_MULTIPLIER_MEDIUM
 
-	holder.rangefire += range_per_level * level
-	holder.durationfire += duration_per_level * level
-	holder.intensityfire += intensity_per_level * level
+	holder.rangefire += range_per_level * potency * POTENCY_MULTIPLIER_MEDIUM
+	holder.durationfire += duration_per_level * potency * POTENCY_MULTIPLIER_MEDIUM
+	holder.intensityfire += intensity_per_level * potency * POTENCY_MULTIPLIER_MEDIUM
 
 	..()
 
@@ -786,8 +786,8 @@
 
 /datum/chem_property/positive/explosive/update_reagent()
 	holder.explosive = TRUE
-	holder.power += level
-	holder.falloff_modifier += -3 / level
+	holder.power += potency * POTENCY_MULTIPLIER_MEDIUM
+	holder.falloff_modifier += -3 / potency * POTENCY_MULTIPLIER_MEDIUM
 	..()
 
 //properties for CAS matrixes

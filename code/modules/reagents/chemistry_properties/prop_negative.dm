@@ -446,7 +446,7 @@
 	..()
 
 /datum/chem_property/negative/hypermetabolic/update_reagent()
-	holder.custom_metabolism = holder.custom_metabolism * (1 + POTENCY_MULTIPLIER_VLOW * level)
+	holder.custom_metabolism = holder.custom_metabolism * (1 + POTENCY_MULTIPLIER_LOW * potency)
 	..()
 
 /datum/chem_property/negative/addictive

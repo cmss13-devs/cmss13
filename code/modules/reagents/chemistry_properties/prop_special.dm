@@ -120,7 +120,7 @@
 		if(!istype(content, /obj/item/alien_embryo))
 			continue
 		// level is a number rather than a hivenumber, which are strings
-		var/hivenumber = GLOB.hive_datum[level]
+		var/hivenumber = GLOB.hive_datum[potency * POTENCY_MULTIPLIER_MEDIUM]
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		var/obj/item/alien_embryo/A = content
 		A.hivenumber = hivenumber
@@ -148,8 +148,8 @@
 
 	playsound(E, 'sound/effects/attackblob.ogg', 25, TRUE)
 
-	E.hivenumber = GLOB.hive_datum[level]
-	set_hive_data(E, GLOB.hive_datum[level])
+	E.hivenumber = GLOB.hive_datum[potency * POTENCY_MULTIPLIER_MEDIUM]
+	set_hive_data(E, GLOB.hive_datum[potency * POTENCY_MULTIPLIER_MEDIUM])
 	E.flags_embryo |= FLAG_EMBRYO_PREDATOR
 
 /datum/chem_property/special/crossmetabolizing

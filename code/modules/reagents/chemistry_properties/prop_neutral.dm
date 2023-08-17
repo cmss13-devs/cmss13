@@ -14,7 +14,7 @@
 /datum/chem_property/neutral/cryometabolizing/pre_process(mob/living/M)
 	if(M.bodytemperature > 170)
 		return list(REAGENT_CANCEL = TRUE)
-	return list(REAGENT_BOOST = POTENCY_MULTIPLIER_LOW * level)
+	return list(REAGENT_BOOST = potency)
 
 /datum/chem_property/neutral/thanatometabolizing
 	name = PROPERTY_THANATOMETABOL
@@ -40,7 +40,7 @@
 	category = PROPERTY_TYPE_IRRITANT
 
 /datum/chem_property/neutral/excreting/pre_process(mob/living/M)
-	return list(REAGENT_PURGE = level)
+	return list(REAGENT_PURGE = potency * POTENCY_MULTIPLIER_MEDIUM)
 
 /datum/chem_property/neutral/nutritious
 	name = PROPERTY_NUTRITIOUS
@@ -54,18 +54,18 @@
 	if(M.stat == DEAD)
 		return
 
-	if(M.nutrition + (holder.nutriment_factor * level) >= NUTRITION_MAX)
+	if(M.nutrition + (holder.nutriment_factor * potency * POTENCY_MULTIPLIER_MEDIUM) >= NUTRITION_MAX)
 		M.nutrition = NUTRITION_MAX
 		return
 	else
-		M.nutrition += holder.nutriment_factor * level
+		M.nutrition += holder.nutriment_factor * potency * POTENCY_MULTIPLIER_MEDIUM
 
 /datum/chem_property/neutral/nutritious/reset_reagent()
 	holder.nutriment_factor = initial(holder.nutriment_factor)
 	..()
 
 /datum/chem_property/neutral/nutritious/update_reagent()
-	holder.nutriment_factor += level
+	holder.nutriment_factor += potency * POTENCY_MULTIPLIER_MEDIUM
 	..()
 
 /datum/chem_property/neutral/ketogenic
@@ -467,7 +467,7 @@
 	..()
 
 /datum/chem_property/neutral/hypometabolic/update_reagent()
-	holder.custom_metabolism = max(holder.custom_metabolism / (1 + 0.35 * level), 0.005)
+	holder.custom_metabolism = max(holder.custom_metabolism / (1 + 0.35 * potency * POTENCY_MULTIPLIER_MEDIUM), 0.005)
 	..()
 
 /datum/chem_property/neutral/sedative
@@ -533,7 +533,7 @@
 
 /datum/chem_property/neutral/viscous/update_reagent()
 	holder.chemfiresupp = TRUE
-	holder.radiusmod -= 0.025 * level
+	holder.radiusmod -= 0.025 * potency * POTENCY_MULTIPLIER_MEDIUM
 	..()
 
 //PROPERTY_DISABLED (in generation)

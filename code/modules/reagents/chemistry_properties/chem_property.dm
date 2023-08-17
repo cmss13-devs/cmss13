@@ -12,6 +12,7 @@
 	var/updates_stats = FALSE //should the property change other variables in the reagent when added or removed?
 	/// Should reagent with this property explode/start fire when mixed more than overdose threshold at once?
 	var/volatile = FALSE
+	var/potency = 1
 
 /datum/chem_property/Destroy()
 	holder = null
@@ -21,10 +22,10 @@
 /datum/chem_property/proc/reagent_added(atom/A, datum/reagent/R, amount)
 	return
 
-/datum/chem_property/proc/pre_process(mob/living/M) //used for properties that need special checks before processing starts, such as cryometabolization
+/datum/chem_property/proc/pre_process(mob/living/M, potency) //used for properties that need special checks before processing starts, such as cryometabolization
 	return
 
-/datum/chem_property/proc/on_delete(mob/living/M) //used for properties that do something on delete
+/datum/chem_property/proc/on_delete(mob/living/M, potency) //used for properties that do something on delete
 	qdel(src)
 	return
 
@@ -49,13 +50,13 @@
 /datum/chem_property/proc/process_dead(mob/living/M, potency = 1, delta_time)
 	return FALSE // By default, chemicals don't process in dead personnel.
 
-/datum/chem_property/proc/trigger(A) //used for properties that needs something to trigger outside of where process is usually called
+/datum/chem_property/proc/trigger(A, potency) //used for properties that needs something to trigger outside of where process is usually called
 	return
 
-/datum/chem_property/proc/reset_reagent()
+/datum/chem_property/proc/reset_reagent(potency)
 	return
 
-/datum/chem_property/proc/update_reagent() //used for changing other variables in the reagent, set update to FALSE to remove the update
+/datum/chem_property/proc/update_reagent(potency) //used for changing other variables in the reagent, set update to FALSE to remove the update
 	return
 
 /datum/chem_property/proc/reaction_mob(mob/M, method=TOUCH, volume, potency)
@@ -67,7 +68,7 @@
 /datum/chem_property/proc/reaction_turf(turf/T, volume, potency)
 	return
 
-/datum/chem_property/proc/post_update_reagent()
+/datum/chem_property/proc/post_update_reagent(potency)
 	return
 
 /datum/chem_property/proc/categories_to_string()

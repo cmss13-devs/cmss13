@@ -35,17 +35,11 @@
 
 /obj/item/device/flashlight/proc/update_brightness(mob/user = null)
 	if(on)
+		set_light_range(light_range)
+		set_light_on(TRUE)
 		update_icon()
-		if(loc && loc == user)
-			user.set_light(light_range, FALSE, src)
-		else if(isturf(loc))
-			set_light(light_range)
 	else
-		icon_state = initial(icon_state)
-		if(loc && loc == user)
-			user.set_light(0, FALSE, src)
-		else if(isturf(loc))
-			set_light(0)
+		set_light_on(FALSE)
 
 /obj/item/device/flashlight/attack_self(mob/user)
 	..()
@@ -277,6 +271,7 @@
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
 	fuel = rand(9.5 MINUTES, 10.5 MINUTES)
+	set_light_color(flame_tint)
 
 /obj/item/device/flashlight/flare/update_icon()
 	overlays?.Cut()
@@ -343,7 +338,7 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/item/device/flashlight/flare/proc/turn_off()
-	on = 0
+	on = FALSE
 	heat_source = 0
 	force = initial(force)
 	damtype = initial(damtype)

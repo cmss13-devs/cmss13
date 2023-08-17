@@ -250,7 +250,7 @@ export class ButtonKeybind extends Component {
 
     let pressedKey = e.key.toUpperCase();
 
-    this.finishTimerStart(200);
+    this.finishTimerStart(600);
 
     // Prevents repeating
     if (keysDown[pressedKey] && e.type === 'keydown') {

@@ -1,0 +1,4 @@
+author: "SpartanBobby gdifirehawk"
+delete-after: True
+changes:
+  - rscadd: "Subtype of tunnel added \"Maintenance Tunnel\" currently only on LV522 these tunnels act the same as regular tunnels but look different, keep an eye out marines. Description by GDIFIREHAWK"

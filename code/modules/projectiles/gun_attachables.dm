@@ -603,7 +603,6 @@ Defined in conflicts.dm of the #defines folder.
 	var/original_state = "flashlight"
 	var/original_attach = "flashlight_a"
 
-	var/activated = FALSE
 	var/helm_mounted_light_mod = 5
 
 	var/datum/action/item_action/activation
@@ -635,7 +634,7 @@ Defined in conflicts.dm of the #defines folder.
 	SIGNAL_HANDLER
 	if(!attached_item)
 		return
-	if(activated)
+	if(light_on)
 		icon_state = original_state
 		attach_icon = original_attach
 		activate_attachment(attached_item, attached_item.loc, TRUE)
@@ -651,33 +650,54 @@ Defined in conflicts.dm of the #defines folder.
 		activate_attachment(attached_item, owner)
 
 /obj/item/attachable/flashlight/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
-	if(istype(G, /obj/item/clothing/head/helmet/marine))
-		var/atom/movable/light_source = user
-		. = (turn_off && activated)
-		if(turn_off || activated)
-			if(activated)
+	turn_light(user, turn_off ? !turn_off : !light_on)
+
+/obj/item/attachable/flashlight/turn_light(mob/user, toggle_on)
+	. = ..()
+	if(. != CHECKS_PASSED)
+		return
+
+	if(istype(attached_item, /obj/item/clothing/head/helmet/marine))
+		if(!toggle_on || light_on)
+			if(light_on)
 				playsound(user, deactivation_sound, 15, 1)
 			icon_state = original_state
 			attach_icon = original_attach
-			activated = FALSE
+			light_on = FALSE
 		else
 			playsound(user, activation_sound, 15, 1)
 			icon_state += "-on"
 			attach_icon += "-on"
-			activated = TRUE
+			light_on = TRUE
 		attached_item.update_icon()
-		light_source.set_light(helm_mounted_light_mod * activated, FALSE, G)
-		attached_item.set_light(helm_mounted_light_mod * activated, FALSE, G)
+		attached_item.set_light_range(helm_mounted_light_mod)
+		attached_item.set_light_power(helm_mounted_light_mod)
+		attached_item.set_light_on(light_on)
 		activation.update_button_icon()
 		return
-	if(turn_off && !(G.flags_gun_features & GUN_FLASHLIGHT_ON))
-		return FALSE
-	var/flashlight_on = (G.flags_gun_features & GUN_FLASHLIGHT_ON) ? 0 : 1
-	var/atom/movable/light_source =  ismob(G.loc) ? G.loc : G
-	light_source.set_light(light_mod * flashlight_on, FALSE, G)
-	G.flags_gun_features ^= GUN_FLASHLIGHT_ON
 
-	if(G.flags_gun_features & GUN_FLASHLIGHT_ON)
+	if(!isgun(loc))
+		return
+
+	var/obj/item/weapon/gun/attached_gun = loc
+
+	if(toggle_on && !light_on)
+		attached_gun.set_light_range(attached_gun.light_range + light_mod)
+		attached_gun.set_light_power(attached_gun.light_power + (light_mod * 0.5))
+		if(!(attached_gun.flags_gun_features & GUN_FLASHLIGHT_ON))
+			attached_gun.set_light_on(TRUE)
+			light_on = TRUE
+			attached_gun.flags_gun_features |= GUN_FLASHLIGHT_ON
+
+	if(!toggle_on && light_on)
+		attached_gun.set_light_range(attached_gun.light_range - light_mod)
+		attached_gun.set_light_range(attached_gun.light_power - (light_mod * 0.5))
+		if(attached_gun.flags_gun_features & GUN_FLASHLIGHT_ON)
+			attached_gun.set_light_on(FALSE)
+			light_on = FALSE
+			attached_gun.flags_gun_features &= ~GUN_FLASHLIGHT_ON
+
+	if(attached_gun.flags_gun_features & GUN_FLASHLIGHT_ON)
 		icon_state += "-on"
 		attach_icon += "-on"
 		playsound(user, deactivation_sound, 15, 1)
@@ -685,16 +705,13 @@ Defined in conflicts.dm of the #defines folder.
 		icon_state = original_state
 		attach_icon = original_attach
 		playsound(user, activation_sound, 15, 1)
-	G.update_attachable(slot)
+	attached_gun.update_attachable(slot)
 
-	for(var/X in G.actions)
+	for(var/X in attached_gun.actions)
 		var/datum/action/A = X
 		if(A.target == src)
 			A.update_button_icon()
 	return TRUE
-
-
-
 
 /obj/item/attachable/flashlight/attackby(obj/item/I, mob/user)
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))

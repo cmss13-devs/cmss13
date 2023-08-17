@@ -478,8 +478,7 @@
 
 	for(var/turf/visible_turf in guncamera_zone)
 		range_turfs += visible_turf
-		var/area/visible_area = visible_turf.loc
-		if(visible_turf.dynamic_lumcount >= 1)
+		if(visible_turf.get_lumcount() >= 0.5)
 			visible_turfs += visible_turf
 
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)

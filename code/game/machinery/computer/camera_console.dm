@@ -177,11 +177,9 @@
 
 	var/list/visible_turfs = list()
 	range_turfs.Cut()
-	var/area/A
 	for(var/turf/visible_turf in visible_things)
 		range_turfs += visible_turf
-		A = visible_turf.loc
-		if(visible_turf.dynamic_lumcount >= 1)
+		if(visible_turf.get_lumcount() >= 0.5)
 			visible_turfs += visible_turf
 
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)
@@ -199,8 +197,8 @@
 		var/list/visible_turfs = list()
 		var/area/A
 		for(var/turf/visible_turf as anything in range_turfs)
-			A = visible_turf.loc
-			if(visible_turf.dynamic_lumcount >= 1)
+			range_turfs += visible_turf
+			if(visible_turf.get_lumcount() >= 0.5)
 				visible_turfs += visible_turf
 		cam_screen.vis_contents = visible_turfs
 

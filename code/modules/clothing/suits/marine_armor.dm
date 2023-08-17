@@ -78,7 +78,10 @@
 	)
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO)
 
-	var/brightness_on = 6 //Average attachable pocket light
+	light_power = 3
+	light_range = 6
+	light_system = MOVABLE_LIGHT
+
 	var/flashlight_cooldown = 0 //Cooldown for toggling the light
 	var/locate_cooldown = 0 //Cooldown for SL locator
 	var/armor_overlays[]
@@ -149,42 +152,11 @@
 	icon_state = replacetext(icon_state,"1","[new_look]")
 	update_icon(user)
 
-/obj/item/clothing/suit/storage/marine/pickup(mob/user)
-	if(flags_marine_armor & ARMOR_LAMP_ON)
-		user.set_light(brightness_on, FALSE, src)
-		set_light(0)
-	..()
-
-/obj/item/clothing/suit/storage/marine/dropped(mob/user)
-	if(loc != user)
-		turn_off_light(user)
-	..()
-
-
-/obj/item/clothing/suit/storage/marine/proc/is_light_on()
-	return flags_marine_armor & ARMOR_LAMP_ON
-
-/obj/item/clothing/suit/storage/marine/proc/turn_off_light(mob/wearer)
-	if(is_light_on())
-		if(wearer)
-			wearer.set_light(0, FALSE, src)
-		set_light(brightness_on)
-		toggle_armor_light() //turn the light off
-		return 1
-	return 0
-
-/obj/item/clothing/suit/storage/marine/Destroy()
-	if(ismob(src.loc))
-		src.loc.set_light(0, FALSE, src)
-	else
-		set_light(0)
-	return ..()
-
 /obj/item/clothing/suit/storage/marine/attack_self(mob/user)
 	..()
 
 	if(!isturf(user.loc))
-		to_chat(user, SPAN_WARNING("You cannot turn the light [is_light_on() ? "off" : "on"] while in [user.loc].")) //To prevent some lighting anomalies.
+		to_chat(user, SPAN_WARNING("You cannot turn the light [light_on ? "off" : "on"] while in [user.loc].")) //To prevent some lighting anomalies.
 		return
 
 	if(flashlight_cooldown > world.time)
@@ -196,26 +168,26 @@
 	if(H.wear_suit != src)
 		return
 
-	toggle_armor_light(user)
+	turn_light(user, !light_on)
 
 /obj/item/clothing/suit/storage/marine/item_action_slot_check(mob/user, slot)
-	if(!ishuman(user)) return FALSE
-	if(slot != WEAR_JACKET) return FALSE
+	if(!ishuman(user))
+		return FALSE
+	if(slot != WEAR_JACKET)
+		return FALSE
 	return TRUE //only give action button when armor is worn.
 
-/obj/item/clothing/suit/storage/marine/proc/toggle_armor_light(mob/user)
-	flashlight_cooldown = world.time + 20 //2 seconds cooldown every time the light is toggled
-	if(is_light_on()) //Turn it off.
-		if(user) user.set_light(0, FALSE, src)
-		else set_light(0)
-		playsound(src,'sound/handling/click_2.ogg', 50, 1)
-	else //Turn it on.
-		if(user) user.set_light(brightness_on, FALSE, src)
-		else set_light(brightness_on)
-
+/obj/item/clothing/suit/storage/marine/turn_light(mob/user, toggle_on)
+	. = ..()
+	if(. != CHECKS_PASSED)
+		return
+	set_light_on(toggle_on)
 	flags_marine_armor ^= ARMOR_LAMP_ON
 
-	playsound(src,'sound/handling/suitlight_on.ogg', 50, 1)
+	if(!toggle_on)
+		playsound(src, 'sound/handling/click_2.ogg', 50, 1)
+
+	playsound(src, 'sound/handling/suitlight_on.ogg', 50, 1)
 	update_icon(user)
 
 	for(var/X in actions)
@@ -266,7 +238,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 4
-	brightness_on = 7 //slightly higher
+	light_range = 7 //slightly higher
 	specialty = "M4 pattern marine"
 
 /obj/item/clothing/suit/storage/marine/rto/intel
@@ -1197,7 +1169,7 @@
 	armor_bomb = CLOTHING_ARMOR_HIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 2
-	brightness_on = 9
+	light_range = 9
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/dutch)
 

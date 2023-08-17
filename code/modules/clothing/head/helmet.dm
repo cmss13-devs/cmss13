@@ -491,7 +491,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	. = ..()
 	if(pockets)
 		for(var/obj/item/attachable/flashlight/F in pockets)
-			if(F.activated)
+			if(F.light_on)
 				F.activate_attachment(src, user, TRUE)
 
 /obj/item/clothing/head/helmet/marine/dropped(mob/living/carbon/human/mob)
@@ -499,7 +499,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		camera.c_tag = "Unknown"
 	if(pockets)
 		for(var/obj/item/attachable/flashlight/F in pockets)
-			if(F.activated)
+			if(F.light_on)
 				F.activate_attachment(src, mob, TRUE)
 	..()
 

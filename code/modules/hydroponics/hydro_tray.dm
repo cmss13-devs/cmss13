@@ -222,9 +222,8 @@
 	var/turf/T = loc
 
 	// Handle light requirements.
-	var/area/A = T.loc
-	if(A)
-		var/light_available = max(0,min(10,T.dynamic_lumcount)-5)
+	if(T)
+		var/light_available = T.get_lumcount(0, 10)
 		if(abs(light_available - seed.ideal_light) > seed.light_tolerance)
 			plant_health -= healthmod
 

@@ -71137,7 +71137,7 @@
 "vqP" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1;
-	pixel_y = 0
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"

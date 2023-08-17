@@ -320,6 +320,7 @@
 	name = "\improper Royal Marine Radio Encryption Key"
 	icon_state = "sl_key"
 	channels = list("Command" = TRUE, "Almayer" = TRUE,)
+
 /obj/item/device/encryptionkey/cmb
 	name = "\improper Colonial Marshal Bureau Radio Encryption Key"
 	icon_state = "cmb_key"

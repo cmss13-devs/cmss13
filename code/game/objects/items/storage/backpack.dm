@@ -1109,14 +1109,14 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	has_gamemode_skin = FALSE
 
 /obj/item/storage/backpack/rmc/heavy
-	name = "\improper heavyweight RMC backpack"
+	name = "heavyweight RMC backpack"
 	desc = "The heavy-carry pack of the RMC forces. Designed to lug the most amount of gear into the battlefield."
 	icon_state = "backpack_large"
 	item_state = "backpack_large"
 	max_storage_space = 27
 
 /obj/item/storage/backpack/rmc/medium
-	name = "\improper standard RMC backpack"
+	name = "standard RMC backpack"
 	desc = "A TWE military standard-carry RMC combat pack MK3."
 	icon_state = "backpack_medium"
 	item_state = "backpack_medium"
@@ -1124,7 +1124,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	max_storage_space = 24
 
 /obj/item/storage/backpack/rmc/light
-	name = "\improper lightweight RMC backpack"
+	name = "lightweight RMC backpack"
 	desc = "A TWE military light-carry RMC combat pack MK3."
 	icon_state = "backpack_small"
 	item_state = "backpack_small"

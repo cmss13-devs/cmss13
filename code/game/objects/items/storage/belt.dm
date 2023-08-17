@@ -1744,11 +1744,11 @@
 	has_gamemode_skin = FALSE
 
 /obj/item/storage/belt/marine/rmc/rmc_f90_ammo/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/rmc_f90(src)
 
 /obj/item/storage/belt/marine/rmc/rmc_f90_ammo/marksman/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/rmc_f90/marksman(src)
 
 /obj/item/storage/belt/medical/rmc

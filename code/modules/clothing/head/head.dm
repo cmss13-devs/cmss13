@@ -782,7 +782,7 @@ D
 
 /obj/item/clothing/head/beanie/royal_marine/turban
 	name = "royal marine turban"
-	desc = "A standard military turban found in the royal marines. Considered a rare item these kind of turbans are prized by collectors in the UA."
+	desc = "A standard military turban found in the royal marines. Considered a rare item, these kind of turbans are prized by collectors in the UA."
 	icon_state = "rmc_turban"
 	item_state = "rmc_turban"
 

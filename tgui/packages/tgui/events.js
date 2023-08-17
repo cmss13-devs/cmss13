@@ -203,7 +203,7 @@ document.addEventListener('keydown', (e) => {
   if (canStealFocus(e.target)) {
     return;
   }
-  const code = e.keyCode;
+  const code = e.code;
   const key = new KeyEvent(e, 'keydown', keyHeldByCode[code]);
   globalEvents.emit('keydown', key);
   globalEvents.emit('key', key);
@@ -214,7 +214,7 @@ document.addEventListener('keyup', (e) => {
   if (canStealFocus(e.target)) {
     return;
   }
-  const code = e.keyCode;
+  const code = e.code;
   const key = new KeyEvent(e, 'keyup');
   globalEvents.emit('keyup', key);
   globalEvents.emit('key', key);

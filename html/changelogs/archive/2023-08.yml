@@ -240,3 +240,7 @@
       skills and adding 0.5s per level in Policing and CQC.
   - rscadd: Added an unstrippable mob trait to prevent inventory manipulation. Gave
       this trait to Working Joes.
+2023-08-17:
+  realforest2001:
+  - bugfix: Players joining as Working Joe after round start now spawn in correct
+      place.

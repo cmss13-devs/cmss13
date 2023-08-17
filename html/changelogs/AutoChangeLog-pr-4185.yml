@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Players joining as Working Joe after round start now spawn in correct place."

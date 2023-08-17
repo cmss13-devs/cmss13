@@ -64,7 +64,7 @@
 	if(to_thread_mentor && mentor)
 		hitlist |= mentor
 	for(var/client/candidate in GLOB.admins)
-		if(to_mentors && CLIENT_HAS_RIGHTS(candidate, R_MENTOR))
+		if(to_mentors && CLIENT_IS_MENTOR(candidate))
 			hitlist |= candidate
 		else if(to_staff && CLIENT_IS_STAFF(candidate))
 			hitlist |= candidate
@@ -137,7 +137,7 @@
 	if(!sender || !check_open(sender))
 		return
 	if(sender != author)
-		if(!CLIENT_HAS_RIGHTS(sender, R_MENTOR))
+		if(!CLIENT_IS_MENTOR(sender))
 			return
 
 		// If the mentor forgot to mark the mentorhelp, mark it for them
@@ -201,7 +201,7 @@
 		return
 
 	// Not a mentor/staff
-	if(!CLIENT_HAS_RIGHTS(thread_mentor, R_MENTOR))
+	if(!CLIENT_IS_MENTOR(thread_mentor))
 		return
 
 	mentor = thread_mentor
@@ -294,7 +294,7 @@
 	if(!check_open(responder))
 		return
 
-	if(!CLIENT_HAS_RIGHTS(responder, R_MENTOR))
+	if(!CLIENT_IS_MENTOR(responder))
 		return
 
 	// If the mentor forgot to mark the mentorhelp, mark it for them
@@ -314,7 +314,7 @@
 	if(!check_open(responder))
 		return
 
-	if(!CLIENT_HAS_RIGHTS(responder, R_MENTOR))
+	if(!CLIENT_IS_MENTOR(responder))
 		return
 
 	// Re-mark if they unmarked it while the dialog was open (???)

@@ -245,6 +245,8 @@
 			return /datum/equipment_preset/uscm_ship/so
 		if(JOB_XO)
 			return /datum/equipment_preset/uscm_ship/xo
+		if(JOB_AUXILIARY_OFFICER)
+			return /datum/equipment_preset/uscm_ship/auxiliary_officer
 		if(JOB_INTEL)
 			return /datum/equipment_preset/uscm/intel/full
 		if(JOB_PILOT)
@@ -277,7 +279,7 @@
 		if(JOB_MAINT_TECH)
 			return /datum/equipment_preset/uscm_ship/maint
 		if(JOB_CHIEF_REQUISITION)
-			return /datum/equipment_preset/uscm_ship/ro
+			return /datum/equipment_preset/uscm_ship/qm
 		if(JOB_CARGO_TECH)
 			return /datum/equipment_preset/uscm_ship/cargo
 		if(JOB_CMO)

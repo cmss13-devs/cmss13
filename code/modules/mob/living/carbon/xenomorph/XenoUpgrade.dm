@@ -3,6 +3,7 @@
 		return
 
 	age = XENO_NORMAL
+	var/hours_as_xeno = client.get_total_xeno_playtime()
 	var/hours_as_caste = get_job_playtime(client, caste.caste_type)
 
 	switch(hours_as_caste)
@@ -15,11 +16,16 @@
 		if(JOB_PLAYTIME_TIER_4 to INFINITY)
 			age = XENO_PRIME
 
+	if(hours_as_xeno < JOB_PLAYTIME_TIER_1)
+		age = XENO_YOUNG
+
 	// For people who wish to remain anonymous
 	if(!client.prefs.playtime_perks)
 		age = XENO_NORMAL
 
 	switch(age)
+		if(XENO_YOUNG)
+			age_prefix = "Young "
 		if(XENO_NORMAL)
 			age_prefix = ""
 		if(XENO_MATURE)

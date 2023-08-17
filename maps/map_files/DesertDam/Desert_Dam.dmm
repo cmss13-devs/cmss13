@@ -64447,6 +64447,15 @@
 	icon_state = "desert_transition_corner1"
 	},
 /area/desert_dam/interior/caves/temple)
+"sRl" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "uppcrash"
+	},
+/turf/open/desert/dirt{
+	dir = 6;
+	icon_state = "desert_transition_edge1"
+	},
+/area/desert_dam/exterior/valley/valley_hydro)
 "sUe" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -82412,7 +82421,7 @@ dTs
 dTs
 dTs
 dTs
-cMo
+sRl
 dNS
 cZw
 xgA

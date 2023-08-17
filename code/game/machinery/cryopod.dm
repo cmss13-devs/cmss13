@@ -193,7 +193,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 //Lifted from Unity stasis.dm and refactored. ~Zuhayr
 /obj/structure/machinery/cryopod/process()
-	if(occupant)
+	if(occupant && !(WEAKREF(occupant) in GLOB.freed_mob_list)) //ignore freed mobs
 		//if occupant ghosted, time till despawn is severely shorter
 		if(!occupant.key && time_till_despawn == 10 MINUTES)
 			time_till_despawn -= 8 MINUTES

@@ -1,5 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - balance: "adding the possibility to buy \"ES-4 stun magazine\" for 10 point in the portable vendor."
-  - bugfix: "remove a bunch of ammo that where improper for ES-4 gun that are in the lockbox."

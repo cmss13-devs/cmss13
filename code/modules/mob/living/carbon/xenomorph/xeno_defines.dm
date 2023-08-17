@@ -317,6 +317,7 @@
 		XENO_STRUCTURE_EGGMORPH = 6,
 		XENO_STRUCTURE_EVOPOD = 2,
 		XENO_STRUCTURE_RECOVERY = 6,
+		XENO_STRUCTURE_PYLON = 2,
 	)
 
 	var/global/list/hive_structure_types = list(
@@ -370,16 +371,24 @@
 	if(hivenumber != XENO_HIVE_NORMAL)
 		return
 
-	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(setup_evolution_announcements))
+	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(post_setup))
 
-/datum/hive_status/proc/setup_evolution_announcements()
+/datum/hive_status/proc/post_setup()
 	SIGNAL_HANDLER
 
+	setup_evolution_announcements()
+	setup_pylon_limits()
+
+/datum/hive_status/proc/setup_evolution_announcements()
 	for(var/time in GLOB.xeno_evolve_times)
 		if(time == "0")
 			continue
 
 		addtimer(CALLBACK(src, PROC_REF(announce_evolve_available), GLOB.xeno_evolve_times[time]), text2num(time))
+
+/// Sets up limits on pylons in New() for potential futureproofing with more static comms
+/datum/hive_status/proc/setup_pylon_limits()
+	hive_structures_limit[XENO_STRUCTURE_PYLON] = length(GLOB.all_static_telecomms_towers) || 2
 
 /datum/hive_status/proc/announce_evolve_available(list/datum/caste_datum/available_castes)
 
@@ -883,6 +892,7 @@
 		for(var/obj/effect/alien/resin/special/S in hive_structures[name_ref])
 			if(get_area(S) == hijacked_dropship)
 				continue
+			S.hijack_delete = TRUE
 			hive_structures[name_ref] -= S
 			qdel(S)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
@@ -920,10 +930,14 @@
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
-		if((isspecieshuman(current_human) || isspeciessynth(current_human)) && current_human.job)
-			var/turf/turf = get_turf(current_human)
-			if(is_mainship_level(turf?.z))
-				shipside_humans_weighted_count += RoleAuthority.calculate_role_weight(current_human.job)
+		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+			continue
+		var/datum/job/job = RoleAuthority.roles_for_mode[current_human.job]
+		if(!job)
+			continue
+		var/turf/turf = get_turf(current_human)
+		if(is_mainship_level(turf?.z))
+			shipside_humans_weighted_count += RoleAuthority.calculate_role_weight(job)
 	hijack_burrowed_surge = TRUE
 	hijack_burrowed_left = max(n_ceil(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
 	hivecore_cooldown = FALSE
@@ -935,6 +949,24 @@
 		stored_larva--
 	else
 		hive_ui.update_burrowed_larva()
+
+/datum/hive_status/proc/respawn_on_turf(client/xeno_client, turf/spawning_turf)
+	var/mob/living/carbon/xenomorph/larva/new_xeno = spawn_hivenumber_larva(spawning_turf, hivenumber)
+	if(isnull(new_xeno))
+		return FALSE
+
+	if(!SSticker.mode.transfer_xeno(xeno_client.mob, new_xeno))
+		qdel(new_xeno)
+		return FALSE
+
+	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges from a dead husk!"),
+	SPAN_XENOANNOUNCE("The hive has no core! You manage to emerge from your old husk as a larva!"))
+	msg_admin_niche("[key_name(new_xeno)] respawned at \a [spawning_turf]. [ADMIN_JMP(spawning_turf)]")
+	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
+	if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
+		window_flash(new_xeno.client)
+
+	hive_ui.update_burrowed_larva()
 
 /datum/hive_status/proc/do_buried_larva_spawn(mob/xeno_candidate)
 	var/spawning_area
@@ -1104,6 +1136,10 @@
 /datum/hive_status/proc/increase_larva_after_burst()
 	var/extra_per_burst = CONFIG_GET(number/extra_larva_per_burst)
 	partial_larva += extra_per_burst
+	convert_partial_larva_to_full_larva()
+
+///Called after times when partial larva are added to process them to stored larva
+/datum/hive_status/proc/convert_partial_larva_to_full_larva()
 	for(var/i = 1 to partial_larva)
 		partial_larva--
 		stored_larva++
@@ -1354,13 +1390,32 @@
 /datum/hive_status/corrupted/renegade/faction_is_ally(faction, ignore_queen_check = TRUE)
 	return ..()
 
-/datum/hive_status/proc/on_stance_change(faction)
-	if(!living_xeno_queen)
+/datum/hive_status/proc/on_queen_death() //break alliances on queen's death
+	if(allow_no_queen_actions || living_xeno_queen)
 		return
-	if(allies[faction])
-		xeno_message(SPAN_XENOANNOUNCE("Your Queen set up an alliance with [faction]!"), 3, hivenumber)
-	else
-		xeno_message(SPAN_XENOANNOUNCE("Your Queen broke the alliance with [faction]!"), 3, hivenumber)
+	var/broken_alliances = FALSE
+	for(var/faction in allies)
+		if(!allies[faction])
+			continue
+		change_stance(faction, FALSE)
+		broken_alliances = TRUE
+
+
+	if(broken_alliances)
+		xeno_message(SPAN_XENOANNOUNCE("With the death of the Queen, all alliances have been broken."), 3, hivenumber)
+
+/datum/hive_status/proc/change_stance(faction, should_ally)
+	if(faction == name)
+		return
+	if(allies[faction] == should_ally)
+		return
+	allies[faction] = should_ally
+
+	if(living_xeno_queen)
+		if(allies[faction])
+			xeno_message(SPAN_XENOANNOUNCE("Your Queen set up an alliance with [faction]!"), 3, hivenumber)
+		else
+			xeno_message(SPAN_XENOANNOUNCE("Your Queen broke the alliance with [faction]!"), 3, hivenumber)
 
 	for(var/number in GLOB.hive_datum)
 		var/datum/hive_status/target_hive = GLOB.hive_datum[number]
@@ -1369,12 +1424,15 @@
 		if(!target_hive.living_xeno_queen && !target_hive.allow_no_queen_actions)
 			return
 		if(allies[faction])
-			xeno_message(SPAN_XENOANNOUNCE("You sense that [name] Queen set up an alliance with us!"), 3, target_hive.hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("You sense that [name] [living_xeno_queen ? "Queen " : ""]set up an alliance with us!"), 3, target_hive.hivenumber)
 			return
 
-		xeno_message(SPAN_XENOANNOUNCE("You sense that [name] Queen broke the alliance with us!"), 3, target_hive.hivenumber)
+		xeno_message(SPAN_XENOANNOUNCE("You sense that [name] [living_xeno_queen ? "Queen " : ""]broke the alliance with us!"), 3, target_hive.hivenumber)
+		if(target_hive.allies[name]) //autobreak alliance on betrayal
+			target_hive.change_stance(name, FALSE)
 
-/datum/hive_status/corrupted/on_stance_change(faction)
+
+/datum/hive_status/corrupted/change_stance(faction, should_ally)
 	. = ..()
 	if(allies[faction])
 		return

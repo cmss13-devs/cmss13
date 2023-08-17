@@ -39827,7 +39827,7 @@
 /obj/item/paper{
 	pixel_x = 5
 	},
-/obj/item/tool/pen/blue{
+/obj/item/tool/pen{
 	pixel_x = 5
 	},
 /obj/structure/surface/table/reinforced/black,
@@ -67853,8 +67853,8 @@
 /area/almayer/squads/req)
 "tUo" = (
 /obj/item/clipboard,
-/obj/item/tool/pen/blue,
 /obj/structure/surface/table/reinforced/black,
+/obj/item/tool/pen,
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "tUv" = (

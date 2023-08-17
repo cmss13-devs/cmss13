@@ -435,7 +435,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	for(var/line in lines)
 		if(src.ckey == line)
-			src.donator = 1
+			src.donator = TRUE
 			add_verb(src, /client/proc/set_ooc_color_self)
 
 	//if(prefs.window_skin & TOGGLE_WINDOW_SKIN)

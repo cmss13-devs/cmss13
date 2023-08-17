@@ -1997,6 +1997,8 @@ Defined in conflicts.dm of the #defines folder.
 		G.damage_mult = 1
 		icon_state += "-on"
 
+	SEND_SIGNAL(G, COMSIG_GUN_INTERRUPT_FIRE)
+
 	for(var/X in G.actions)
 		var/datum/action/A = X
 		A.update_button_icon()

@@ -37,6 +37,7 @@
 	RegisterSignal(parent, COMSIG_GUN_BURST_SHOT_DELAY_MODIFIED, PROC_REF(modify_burstfire_shot_delay))
 	RegisterSignal(parent, COMSIG_GUN_FIRE, PROC_REF(initiate_shot))
 	RegisterSignal(parent, COMSIG_GUN_STOP_FIRE, PROC_REF(stop_firing))
+	RegisterSignal(parent, COMSIG_GUN_INTERRUPT_FIRE, PROC_REF(hard_reset))
 
 	src.auto_fire_shot_delay = auto_fire_shot_delay
 	src.burstfire_shot_delay = burstfire_shot_delay
@@ -99,6 +100,7 @@
 
 ///Hard reset the autofire, happens when the shooter fall/is thrown, at the end of a burst or when it runs out of ammunition
 /datum/component/automatedfire/autofire/proc/hard_reset()
+	SIGNAL_HANDLER
 	callback_reset_fire.Invoke() //resets the gun
 	shots_fired = 0
 	have_to_reset_at_burst_end = FALSE

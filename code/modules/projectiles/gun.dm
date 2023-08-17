@@ -945,6 +945,10 @@ and you're good to go.
 
 	//Let's check on the active attachable. It loads ammo on the go, so it never chambers anything
 	if(active_attachable)
+		if(shots_fired >= 1) // This is what you'll want to remove if you want automatic underbarrel guns in the future
+			SEND_SIGNAL(src, COMSIG_GUN_INTERRUPT_FIRE)
+			return
+
 		if(active_attachable.current_rounds > 0) //If it's still got ammo and stuff.
 			active_attachable.current_rounds--
 			var/obj/item/projectile/bullet = create_bullet(active_attachable.ammo, initial(name))
@@ -1079,10 +1083,10 @@ and you're good to go.
 	This is where the grenade launcher and flame thrower function as attachments.
 	This is also a general check to see if the attachment can fire in the first place.
 	*/
-	var/check_for_attachment_fire = 0
+	var/check_for_attachment_fire = FALSE
 
 	if(active_attachable?.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
-		check_for_attachment_fire = 1
+		check_for_attachment_fire = TRUE
 		if(!(active_attachable.flags_attach_features & ATTACH_PROJECTILE)) //If it's unique projectile, this is where we fire it.
 			if((active_attachable.current_rounds <= 0) && !(active_attachable.flags_attach_features & ATTACH_IGNORE_EMPTY))
 				click_empty(user) //If it's empty, let them know.

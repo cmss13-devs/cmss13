@@ -113,14 +113,14 @@
 	max_level = 6
 
 /datum/chem_property/special/ciphering/process(mob/living/M, potency = 1, delta_time)
-	if(!GLOB.hive_datum[level]) // This should probably always be valid
+	if(!GLOB.hive_datum[round(potency * POTENCY_MULTIPLIER_MEDIUM)]) // This should probably always be valid
 		return
 
 	for(var/content in M.contents)
 		if(!istype(content, /obj/item/alien_embryo))
 			continue
 		// level is a number rather than a hivenumber, which are strings
-		var/hivenumber = GLOB.hive_datum[potency * POTENCY_MULTIPLIER_MEDIUM]
+		var/hivenumber = GLOB.hive_datum[round(potency * POTENCY_MULTIPLIER_MEDIUM)]
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		var/obj/item/alien_embryo/A = content
 		A.hivenumber = hivenumber
@@ -141,7 +141,7 @@
 	if(amount < 10)
 		return
 
-	if((E.flags_embryo & FLAG_EMBRYO_PREDATOR) && E.hivenumber == GLOB.hive_datum[level])
+	if((E.flags_embryo & FLAG_EMBRYO_PREDATOR) && E.hivenumber == GLOB.hive_datum[round(potency * POTENCY_MULTIPLIER_MEDIUM)])
 		return
 
 	E.visible_message(SPAN_DANGER("\the [E] rapidly mutates"))
@@ -167,7 +167,7 @@
 	var/mob/living/carbon/human/H = M
 	if(H.species.reagent_tag == IS_YAUTJA)
 		return list(REAGENT_FORCE = TRUE)
-	else if(level < 2)//needs level two to work on humans too
+	else if(potency * POTENCY_MULTIPLIER_MEDIUM < 2)//needs level two to work on humans too
 		return list(REAGENT_CANCEL = TRUE)
 
 /datum/chem_property/special/embryonic
@@ -184,9 +184,9 @@
 	var/mob/living/carbon/human/H = M
 	if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC) || !H.huggable) //No effect if already infected
 		return
-	for(var/i=1,i<=max((level % 100)/10,1),i++)//10's determine number of embryos
+	for(var/i=1,i<=max((potency * POTENCY_MULTIPLIER_MEDIUM % 100)/10,1),i++)//10's determine number of embryos
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
-		embryo.hivenumber = min(level % 10,5) //1's determine hivenumber
+		embryo.hivenumber = min(round(potency * POTENCY_MULTIPLIER_MEDIUM) % 10,5) //1's determine hivenumber
 		embryo.faction = FACTION_LIST_XENOMORPH[embryo.hivenumber]
 
 /datum/chem_property/special/transforming
@@ -305,8 +305,8 @@
 
 	holder.rangefire = max(holder.rangefire, 0) // Initial starts at -1 for some (aka infinite range), need to reset that to 0 so that calc doesn't fuck up
 
-	holder.rangefire += 1 * level
-	holder.radiusmod += 0.1 * level
+	holder.rangefire += 1 * potency * POTENCY_MULTIPLIER_MEDIUM
+	holder.radiusmod += 0.1 * potency * POTENCY_MULTIPLIER_MEDIUM
 	..()
 
 /datum/chem_property/special/intensity
@@ -327,8 +327,8 @@
 /datum/chem_property/special/intensity/update_reagent()
 	holder.chemfiresupp = TRUE
 
-	holder.intensityfire += 1 * level
-	holder.intensitymod += 0.1 * level
+	holder.intensityfire += 1 * potency * POTENCY_MULTIPLIER_MEDIUM
+	holder.intensitymod += 0.1 * potency * POTENCY_MULTIPLIER_MEDIUM
 	..()
 
 /datum/chem_property/special/duration
@@ -349,8 +349,8 @@
 /datum/chem_property/special/duration/update_reagent()
 	holder.chemfiresupp = TRUE
 
-	holder.durationfire += 1 * level
-	holder.durationmod += 0.1 * level
+	holder.durationfire += 1 * potency * POTENCY_MULTIPLIER_MEDIUM
+	holder.durationmod += 0.1 * potency * POTENCY_MULTIPLIER_MEDIUM
 	..()
 
 /datum/chem_property/special/firepenetrating

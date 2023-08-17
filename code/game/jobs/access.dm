@@ -355,65 +355,124 @@
 
 /proc/get_access_desc(A)
 	switch(A)
-		if(ACCESS_MARINE_CMP) return "CMP's Office"
-		if(ACCESS_MARINE_BRIG) return "Brig"
-		if(ACCESS_MARINE_ARMORY) return "Armory"
-		if(ACCESS_MARINE_CMO) return "CMO's Office"
-		if(ACCESS_MARINE_MEDBAY) return "[MAIN_SHIP_NAME] Medbay"
-		if(ACCESS_MARINE_RESEARCH) return "[MAIN_SHIP_NAME] Research"
-		if(ACCESS_MARINE_CHEMISTRY) return "[MAIN_SHIP_NAME] Chemistry"
-		if(ACCESS_MARINE_MORGUE) return "[MAIN_SHIP_NAME] Morgue"
-		if(ACCESS_MARINE_CE) return "CE's Office"
-		if(ACCESS_MARINE_RO) return "RO's Office"
-		if(ACCESS_MARINE_ENGINEERING) return "[MAIN_SHIP_NAME] Engineering"
-		if(ACCESS_MARINE_OT) return "[MAIN_SHIP_NAME] Ordnance Workshop"
-		if(ACCESS_MARINE_SENIOR) return "[MAIN_SHIP_NAME] Senior Command"
-		if(ACCESS_MARINE_CO) return "Commander's Quarters"
-		if(ACCESS_MARINE_DATABASE) return "[MAIN_SHIP_NAME]'s Database"
-		if(ACCESS_MARINE_COMMAND) return "[MAIN_SHIP_NAME] Command"
-		if(ACCESS_MARINE_CREWMAN) return "Vehicle Crewman"
-		if(ACCESS_MARINE_PREP) return "Marine Prep"
-		if(ACCESS_MARINE_ENGPREP) return "Marine Squad Engineering"
-		if(ACCESS_MARINE_MEDPREP) return "Marine Squad Medical"
-		if(ACCESS_MARINE_SPECPREP) return "Marine Weapons Specialist"
-		if(ACCESS_MARINE_SMARTPREP) return "Marine Smartgunner"
-		if(ACCESS_MARINE_TL_PREP) return "Marine Team Leader"
-		if(ACCESS_MARINE_LEADER) return "Marine Leader"
-		if(ACCESS_MARINE_ALPHA) return "Alpha Squad"
-		if(ACCESS_MARINE_BRAVO) return "Bravo Squad"
-		if(ACCESS_MARINE_CHARLIE) return "Charlie Squad"
-		if(ACCESS_MARINE_DELTA) return "Delta Squad"
-		if(ACCESS_MARINE_CARGO) return "Requisitions"
-		if(ACCESS_MARINE_DROPSHIP) return "Dropship Piloting"
-		if(ACCESS_MARINE_PILOT) return "Pilot Gear"
-		if(ACCESS_MARINE_MAINT) return "[MAIN_SHIP_NAME] Maintenance"
-		if(ACCESS_CIVILIAN_RESEARCH) return "Civilian Research"
-		if(ACCESS_CIVILIAN_COMMAND) return "Civilian Command"
-		if(ACCESS_CIVILIAN_MEDBAY) return "Civilian Medbay"
-		if(ACCESS_CIVILIAN_LOGISTICS) return "Civilian Logistics"
-		if(ACCESS_CIVILIAN_ENGINEERING) return "Civilian Engineering"
-		if(ACCESS_CIVILIAN_BRIG) return "Civilian Brig"
-		if(ACCESS_CIVILIAN_PUBLIC) return "Civilian"
-		if(ACCESS_MARINE_SEA) return "SEA's Office"
-		if(ACCESS_MARINE_KITCHEN) return "Kitchen"
-		if(ACCESS_MARINE_SYNTH) return "Synthetic Storage"
-		if(ACCESS_MARINE_AI) return "AI Core"
-		if(ACCESS_MARINE_AI_TEMP) return "AI Access"
-		if(ACCESS_ARES_DEBUG) return "AI Debug"
+		if(ACCESS_MARINE_CMP)
+			return "CMP's Office"
+		if(ACCESS_MARINE_BRIG)
+			return "Brig"
+		if(ACCESS_MARINE_ARMORY)
+			return "Armory"
+		if(ACCESS_MARINE_CMO)
+			return "CMO's Office"
+		if(ACCESS_MARINE_MEDBAY)
+			return "[MAIN_SHIP_NAME] Medbay"
+		if(ACCESS_MARINE_RESEARCH)
+			return "[MAIN_SHIP_NAME] Research"
+		if(ACCESS_MARINE_CHEMISTRY)
+			return "[MAIN_SHIP_NAME] Chemistry"
+		if(ACCESS_MARINE_MORGUE)
+			return "[MAIN_SHIP_NAME] Morgue"
+		if(ACCESS_MARINE_CE)
+			return "CE's Office"
+		if(ACCESS_MARINE_RO)
+			return "RO's Office"
+		if(ACCESS_MARINE_ENGINEERING)
+			return "[MAIN_SHIP_NAME] Engineering"
+		if(ACCESS_MARINE_OT)
+			return "[MAIN_SHIP_NAME] Ordnance Workshop"
+		if(ACCESS_MARINE_SENIOR)
+			return "[MAIN_SHIP_NAME] Senior Command"
+		if(ACCESS_MARINE_CO)
+			return "Commander's Quarters"
+		if(ACCESS_MARINE_DATABASE)
+			return "[MAIN_SHIP_NAME]'s Database"
+		if(ACCESS_MARINE_COMMAND)
+			return "[MAIN_SHIP_NAME] Command"
+		if(ACCESS_MARINE_CREWMAN)
+			return "Vehicle Crewman"
+		if(ACCESS_MARINE_PREP)
+			return "Marine Prep"
+		if(ACCESS_MARINE_ENGPREP)
+			return "Marine Squad Engineering"
+		if(ACCESS_MARINE_MEDPREP)
+			return "Marine Squad Medical"
+		if(ACCESS_MARINE_SPECPREP)
+			return "Marine Weapons Specialist"
+		if(ACCESS_MARINE_SMARTPREP)
+			return "Marine Smartgunner"
+		if(ACCESS_MARINE_TL_PREP)
+			return "Marine Team Leader"
+		if(ACCESS_MARINE_LEADER)
+			return "Marine Leader"
+		if(ACCESS_MARINE_ALPHA)
+			return "Alpha Squad"
+		if(ACCESS_MARINE_BRAVO)
+			return "Bravo Squad"
+		if(ACCESS_MARINE_CHARLIE)
+			return "Charlie Squad"
+		if(ACCESS_MARINE_DELTA)
+			return "Delta Squad"
+		if(ACCESS_MARINE_CARGO)
+			return "Requisitions"
+		if(ACCESS_MARINE_DROPSHIP)
+			return "Dropship Piloting"
+		if(ACCESS_MARINE_PILOT)
+			return "Pilot Gear"
+		if(ACCESS_MARINE_MAINT)
+			return "[MAIN_SHIP_NAME] Maintenance"
+		if(ACCESS_CIVILIAN_RESEARCH)
+			return "Civilian Research"
+		if(ACCESS_CIVILIAN_COMMAND)
+			return "Civilian Command"
+		if(ACCESS_CIVILIAN_MEDBAY)
+			return "Civilian Medbay"
+		if(ACCESS_CIVILIAN_LOGISTICS)
+			return "Civilian Logistics"
+		if(ACCESS_CIVILIAN_ENGINEERING)
+			return "Civilian Engineering"
+		if(ACCESS_CIVILIAN_BRIG)
+			return "Civilian Brig"
+		if(ACCESS_CIVILIAN_PUBLIC)
+			return "Civilian"
+		if(ACCESS_MARINE_SEA)
+			return "SEA's Office"
+		if(ACCESS_MARINE_KITCHEN)
+			return "Kitchen"
+		if(ACCESS_MARINE_SYNTH)
+			return "Synthetic Storage"
+		if(ACCESS_MARINE_AI)
+			return "AI Core"
+		if(ACCESS_MARINE_AI_TEMP)
+			return "AI Access"
+		if(ACCESS_ARES_DEBUG)
+			return "AI Debug"
 
 /proc/get_weyland_access_desc(A)
 	switch(A)
-		if(ACCESS_WY_GENERAL) return "Wey-Yu General"
-		if(ACCESS_WY_COLONIAL) return "Wey-Yu Colony"
-		if(ACCESS_WY_MEDICAL) return "Wey-Yu Medical"
-		if(ACCESS_WY_SECURITY) return "Wey-Yu Security"
-		if(ACCESS_WY_ENGINEERING) return "Wey-Yu Engineering"
-		if(ACCESS_WY_FLIGHT) return "Wey-Yu Flight Control"
-		if(ACCESS_WY_RESEARCH) return "Wey-Yu Research"
-		if(ACCESS_WY_EXEC) return "Wey-Yu Corporate"
-		if(ACCESS_WY_PMC) return "Wey-Yu PMC"
-		if(ACCESS_WY_PMC_TL) return "Wey-Yu PMC Lead"
-		if(ACCESS_WY_ARMORY) return "Wey-Yu Armory"
-		if(ACCESS_WY_SECRETS) return "Wey-Yu HighSec"
-		if(ACCESS_WY_LEADERSHIP) return "Wey-Yu Leadership"
-		if(ACCESS_WY_SENIOR_LEAD) return "Wey-Yu Senior Leadership"
+		if(ACCESS_WY_GENERAL)
+			return "Wey-Yu General"
+		if(ACCESS_WY_COLONIAL)
+			return "Wey-Yu Colony"
+		if(ACCESS_WY_MEDICAL)
+			return "Wey-Yu Medical"
+		if(ACCESS_WY_SECURITY)
+			return "Wey-Yu Security"
+		if(ACCESS_WY_ENGINEERING)
+			return "Wey-Yu Engineering"
+		if(ACCESS_WY_FLIGHT)
+			return "Wey-Yu Flight Control"
+		if(ACCESS_WY_RESEARCH)
+			return "Wey-Yu Research"
+		if(ACCESS_WY_EXEC)
+			return "Wey-Yu Corporate"
+		if(ACCESS_WY_PMC)
+			return "Wey-Yu PMC"
+		if(ACCESS_WY_PMC_TL)
+			return "Wey-Yu PMC Lead"
+		if(ACCESS_WY_ARMORY)
+			return "Wey-Yu Armory"
+		if(ACCESS_WY_SECRETS)
+			return "Wey-Yu HighSec"
+		if(ACCESS_WY_LEADERSHIP)
+			return "Wey-Yu Leadership"
+		if(ACCESS_WY_SENIOR_LEAD)
+			return "Wey-Yu Senior Leadership"

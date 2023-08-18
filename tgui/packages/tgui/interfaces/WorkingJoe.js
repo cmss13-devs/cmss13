@@ -73,7 +73,7 @@ const MainMenu = (props, context) => {
     ticket_console,
   } = data;
   let can_request_access = 'Yes';
-  if (access_level === 2) {
+  if (access_level === 3) {
     can_request_access = 'No';
   }
 
@@ -135,7 +135,7 @@ const MainMenu = (props, context) => {
               />
             </Stack.Item>
           )}
-          {access_level === 2 && (
+          {access_level === 3 && (
             <Stack.Item>
               <Button
                 content="Surrender Access Ticket"
@@ -163,7 +163,7 @@ const MainMenu = (props, context) => {
           </Stack.Item>
         </Stack>
 
-        {access_level >= 3 && (
+        {access_level >= 4 && (
           <Stack>
             <Stack.Item grow>
               <h3>Certified Personnel</h3>
@@ -194,7 +194,7 @@ const MainMenu = (props, context) => {
             </Stack.Item>
           </Stack>
         )}
-        {access_level >= 4 && (
+        {access_level >= 5 && (
           <Stack>
             <Stack.Item grow>
               <h3>Task Management</h3>

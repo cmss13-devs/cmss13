@@ -32,7 +32,7 @@
 
 /obj/item/storage/belt/gun/flaregun/has_room(obj/item/W as obj, W_class_override = null)
 
-	if(istype(new_item, /obj/item/device/flashlight/flare) && length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
+	if(istype(W, /obj/item/device/flashlight/flare) && length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
 		return FALSE //No slot open because gun in holster.
 	return ..()
 

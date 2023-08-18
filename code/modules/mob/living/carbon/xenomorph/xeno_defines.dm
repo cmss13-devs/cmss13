@@ -789,9 +789,6 @@
 		),
 	)
 
-	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
-	burrowed_factor = round(burrowed_factor)
-
 	var/used_tier_2_slots = length(tier_2_xenos)
 	var/used_tier_3_slots = length(tier_3_xenos)
 
@@ -800,7 +797,7 @@
 		var/slots_used = used_slots[caste_path]
 		var/datum/caste_datum/current_caste = caste_path
 		if(slots_used)
-			// Don't count any free slots as used slots
+			// Don't count any free slots in use
 			switch(initial(current_caste.tier))
 				if(2) used_tier_2_slots -= min(slots_used, slots_free)
 				if(3) used_tier_3_slots -= min(slots_used, slots_free)
@@ -811,7 +808,8 @@
 			if(2) slots[TIER_2][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
 			if(3) slots[TIER_3][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
 
-	var/effective_total = burrowed_factor
+	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
+	var/effective_total = round(burrowed_factor)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(xeno.counts_for_slots)
 			effective_total++

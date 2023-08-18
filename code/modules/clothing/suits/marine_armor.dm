@@ -75,6 +75,7 @@
 		/obj/item/storage/belt/gun/flaregun,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
+		/obj/item/storage/belt/gun/m39,
 	)
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO)
 
@@ -243,7 +244,7 @@
 
 /obj/item/clothing/suit/storage/marine/rto/intel
 	name = "\improper XM4 pattern intelligence officer armor"
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit, /obj/item/clothing/under/marine/officer/intel)
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/marine/officer/intel)
 	specialty = "XM4 pattern intel"
 
 /obj/item/clothing/suit/storage/marine/MP
@@ -319,7 +320,7 @@
 	icon_state = "officer"
 	storage_slots = 3
 	flags_atom = null
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit, /obj/item/clothing/under/rank/chief_medical_officer)
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/rank/chief_medical_officer)
 	specialty = "M2 pattern officer"
 	item_state_slots = list(WEAR_JACKET = "officer")
 
@@ -334,7 +335,7 @@
 	storage_slots = 3
 	flags_atom = NO_SNOW_TYPE
 	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
-	uniform_restricted = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/rank/ro_suit)
+	uniform_restricted = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/rank/qm_suit)
 	specialty = "M3 pattern captain"
 	item_state_slots = list(WEAR_JACKET = "co_officer")
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO)
@@ -1488,7 +1489,7 @@
 	pockets.max_storage_space = 8
 
 /obj/item/clothing/suit/storage/RO
-	name = "\improper RO jacket"
+	name = "quartermaster jacket"
 	desc = "A green jacket worn by USCM personnel. The back has the flag of the United Americas on it."
 	icon_state = "RO_jacket"
 	blood_overlay_type = "coat"

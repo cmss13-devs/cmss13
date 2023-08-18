@@ -50,6 +50,10 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	temperature = T20C //Nice and room temp
 	ceiling = CEILING_METAL
 
+/area/strata/ag/interior/mountain
+	name = "Outside mountain"
+	icon_state = "ag_e"
+
 /area/strata/ag/interior/restricted
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL

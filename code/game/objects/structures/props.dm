@@ -1016,13 +1016,6 @@
 	icon_state = "arcadeb"
 	name = "Spirit Phone, The Game, The Movie: II"
 
-/obj/structure/prop/maintenance_hatch
-	name = "\improper Maintenance Hatch"
-	icon = 'icons/obj/structures/structures.dmi'
-	icon_state = "hatchclosed"
-	desc = "Looks like it's rusted shut. Creepy."
-	layer = HATCH_LAYER
-
 //INVULNERABLE PROPS
 
 /obj/structure/prop/invuln

@@ -8,9 +8,12 @@
 	rechargeTime = SHUTTLE_RECHARGE
 	ignitionTime = 8 SECONDS
 	ignition_sound = 'sound/effects/escape_pod_warmup.ogg'
-	/// The % chance of the escape pod crashing into the groundmap
+	/// The % chance of the escape pod crashing into the groundmap before lifeboats leaving
 	var/early_crash_land_chance = 75
+	/// The % chance of the escape pod crashing into the groundmap
 	var/crash_land_chance = 25
+	/// How many people can be in the escape pod before it crashes
+	var/max_capacity = 3
 
 	var/datum/door_controller/single/door_handler = new()
 	var/launched = FALSE
@@ -71,7 +74,7 @@
 			occupant_count++
 		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in interior_area)
 			cryos += list(cryotube)
-	if (occupant_count > 3)
+	if (occupant_count > max_capacity)
 		playsound(src,'sound/effects/escape_pod_warmup.ogg', 50, 1)
 		sleep(31)
 		var/turf/sploded = return_center_turf()

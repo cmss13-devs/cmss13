@@ -30,9 +30,9 @@
 		return FALSE
 	return ..()
 
-/obj/item/storage/belt/gun/flaregun/has_room(obj/item/W as obj, W_class_override = null)
+/obj/item/storage/belt/gun/flaregun/has_room(obj/item/new_item, W_class_override = null)
 
-	if(istype(W, /obj/item/device/flashlight/flare) && length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
+	if(istype(new_item, /obj/item/device/flashlight/flare) && length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
 		return FALSE //No slot open because gun in holster.
 	return ..()
 
@@ -773,7 +773,7 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/weapon/throwing_knife(src)
 
-/obj/item/storage/belt/knifepouch/_item_insertion(obj/item/W, prevent_warning = FALSE)
+/obj/item/storage/belt/knifepouch/_item_insertion(obj/item/new_item, prevent_warning = FALSE)
 	..()
 	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 

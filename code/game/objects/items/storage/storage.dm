@@ -454,23 +454,23 @@ That's done by can_be_inserted(). Its checks are whether the item exists, is an 
 The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple
 items at once, such as when picking up all the items on a tile with one click.
 user can be null, it refers to the potential mob doing the insertion.**/
-/obj/item/storage/proc/handle_item_insertion(obj/item/Warn, prevent_warning = 0, mob/user)
-	if(!istype(Warn))
+/obj/item/storage/proc/handle_item_insertion(obj/item/new_item, prevent_warning = FALSE, mob/user)
+	if(!istype(new_item))
 		return FALSE
-	if(user && Warn.loc == user)
-		if(!user.drop_inv_item_to_loc(Warn, src))
+	if(user && new_item.loc == user)
+		if(!user.drop_inv_item_to_loc(new_item, src))
 			return FALSE
 	else
-		Warn.forceMove(src)
+		new_item.forceMove(src)
 
-	_item_insertion(Warn, prevent_warning, user)
+	_item_insertion(new_item, prevent_warning, user)
 	return TRUE
 
 /**Inserts the item. Separate proc because handle_item_insertion isn't guaranteed to insert
 and it therefore isn't safe to override it before calling parent. Updates icon when done.
 Can be called directly but only if the item was spawned inside src - handle_item_insertion is safer.
 W is always an item. stop_warning prevents messaging. user may be null.**/
-/obj/item/storage/proc/_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
+/obj/item/storage/proc/_item_insertion(obj/item/W, prevent_warning = FALSE, mob/user)
 	W.on_enter_storage(src)
 	if(user)
 		if (user.client && user.s_active != src)
@@ -720,26 +720,26 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 			to_chat(user, SPAN_WARNING("[ammo_dumping] is empty."))
 	return TRUE
 
-/obj/item/storage/proc/dump_into(obj/item/storage/Main, mob/user)
+/obj/item/storage/proc/dump_into(obj/item/storage/origin_storage, mob/user)
 
 	if(user.action_busy)
 		return
 
-	if(!Main.contents.len)
-		to_chat(user, SPAN_WARNING("[Main] is empty."))
+	if(!origin_storage.contents.len)
+		to_chat(user, SPAN_WARNING("[origin_storage] is empty."))
 		return
-	if(!has_room(Main.contents[1])) //Does it have room for the first item to be inserted?
+	if(!has_room(origin_storage.contents[1])) //Does it have room for the first item to be inserted?
 		to_chat(user, SPAN_WARNING("[src] is full."))
 		return
 
-	to_chat(user, SPAN_NOTICE("You start refilling [src] with [Main]."))
+	to_chat(user, SPAN_NOTICE("You start refilling [src] with [origin_storage]."))
 	if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
-	for(var/obj/item/I in Main)
-		if(!has_room(I))
+	for(var/obj/item/new_item in origin_storage)
+		if(!has_room(new_item))
 			break
-		Main.remove_from_storage(I)
-		handle_item_insertion(I, TRUE, user) //quiet insertion
+		origin_storage.remove_from_storage(new_item)
+		handle_item_insertion(new_item, TRUE, user) //quiet insertion
 
 	playsound(user.loc, "rustle", 15, TRUE, 6)
 	return TRUE

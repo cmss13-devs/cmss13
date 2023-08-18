@@ -100,12 +100,12 @@
 
 /obj/structure/tent/attackby(obj/item/item, mob/user)
 	var/obj/item/tool/shovel/shovel = item
-	if(!istype(shovel) || shovel.folded)
+	if(!istype(shovel) || shovel.folded || user.action_busy)
 		return
 	visible_message(SPAN_HIGHDANGER("[user] is trying to tear down the [src]"))
 	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
 
-	if(user.action_busy || !do_after(user, 150, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, src) || QDELETED(src))
+	if(!do_after(user, 150, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, src) || QDELETED(src))
 		return
 
 	visible_message(SPAN_HIGHDANGER("[user] tears down the [src]"))

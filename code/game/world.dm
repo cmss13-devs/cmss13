@@ -61,7 +61,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 
 	var/testing_locally = (world.params && world.params["local_test"])
 	var/running_tests = (world.params && world.params["run_tests"])
-	#ifdef UNIT_TESTS
+	#if defined(AUTOWIKI) || defined(UNIT_TESTS)
 	running_tests = TRUE
 	#endif
 	// Only do offline sleeping when the server isn't running unit tests or hosting a local dev test
@@ -82,6 +82,10 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 
 	#ifdef UNIT_TESTS
 	HandleTestRun()
+	#endif
+
+	#ifdef AUTOWIKI
+	setup_autowiki()
 	#endif
 
 	update_status()

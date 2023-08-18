@@ -255,9 +255,9 @@
 
 	log_adminpm("ADMIN: [key_name(src)] : [msg]")
 
-	var/color = "adminsay"
-	if(ishost(usr))
-		color = "headminsay"
+	var/color = "mod"
+	if(check_rights(R_PERMISSIONS, show_msg = FALSE))
+		color = "adminmod"
 
 	var/channel = "ADMIN:"
 	channel = "[admin_holder.rank]:"
@@ -707,6 +707,20 @@
 
 	SSticker.mode.toggleable_flags ^= MODE_NO_ATTACK_DEAD
 	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) ? "prevented dead mobs from being" : "allowed dead mobs to be"] attacked.")
+
+/client/proc/toggle_disposal_mobs()
+	set name = "Toggle Disposable Mobs"
+	set category = "Admin.Flags"
+
+	if(!admin_holder || !check_rights(R_EVENT, FALSE))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_DISPOSABLE_MOBS
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_DISPOSABLE_MOBS) ? "allowed mobs to fit" : "prevented mobs fitting"] inside disposals.")
 
 /client/proc/toggle_strip_drag()
 	set name = "Toggle Strip/Drag Dead"

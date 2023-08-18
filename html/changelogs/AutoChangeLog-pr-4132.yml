@@ -1,0 +1,4 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - rscadd: "foxtrot cryomarines spawn as freed mobs if not taken."

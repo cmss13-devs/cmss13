@@ -83,10 +83,11 @@
 /obj/item/device/defibrillator/upgraded
 	name = "upgraded emergency defibrillator"
 	icon_state = "adv_defib"
-	desc = "An advanced rechargeable defibrillator using induction to deliver shocks through metallic objects, such as armor, and does so with much greater efficiency than the standard variant."
+	desc = "An advanced rechargeable defibrillator using induction to deliver shocks through metallic objects, such as armor, and does so with much greater efficiency than the standard variant, not damaging the heart."
 
 	blocked_by_suit = FALSE
-	heart_damage_to_deal = 0
+	min_heart_damage_dealt = 0
+	max_heart_damage_dealt = 0
 	damage_heal_threshold = 35
 
 /obj/item/ammo_magazine/internal/pillgun

@@ -1,8 +1,12 @@
+// DEFINES
+///Time until a zombie rises from the dead
+#define ZOMBIE_REVIVE_TIME 1 MINUTES
+
 /datum/species/zombie
 	group = SPECIES_HUMAN
 	name = SPECIES_ZOMBIE
 	name_plural = "Zombies"
-	slowdown = 1
+	slowdown = 0.75
 	blood_color = BLOOD_COLOR_ZOMBIE
 	icobase = 'icons/mob/humans/species/r_goo_zed.dmi'
 	deform = 'icons/mob/humans/species/r_goo_zed.dmi'
@@ -12,7 +16,7 @@
 	death_message = "seizes up and falls limp..."
 	flags = NO_BREATHE|NO_CLONE_LOSS|NO_POISON|NO_NEURO|NO_SHRAPNEL
 	mob_inherent_traits = list(TRAIT_FOREIGN_BIO)
-	brute_mod = 0.25 //EXTREME BULLET RESISTANCE
+	brute_mod = 0.6 //Minor bullet resistance
 	burn_mod = 0.8 //Lowered burn damage since it would 1-shot zombies from 2 to 0.8.
 	speech_chance  = 5
 	cold_level_1 = -1  //zombies don't mind the cold
@@ -96,7 +100,7 @@
 				zombie.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You are dead...</u></span><br>You will rise again in one minute.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
 			to_chat(zombie, SPAN_XENOWARNING("You fall... but your body is slowly regenerating itself."))
 			var/weak_ref = WEAKREF(zombie)
-			to_revive[weak_ref] = addtimer(CALLBACK(src, PROC_REF(revive_from_death), zombie, "[REF(zombie)]"), 1 MINUTES, TIMER_STOPPABLE|TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+			to_revive[weak_ref] = addtimer(CALLBACK(src, PROC_REF(revive_from_death), zombie, "[REF(zombie)]"), ZOMBIE_REVIVE_TIME, TIMER_STOPPABLE|TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 			revive_times[weak_ref] = world.time + 1 MINUTES
 		else
 			if(zombie.client)

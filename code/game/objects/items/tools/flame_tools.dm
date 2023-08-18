@@ -42,10 +42,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/tool/candle/Destroy()
 	if(heat_source)
 		STOP_PROCESSING(SSobj, src)
-	if(ismob(src.loc))
-		src.loc.set_light(0, FALSE, src)
-	else
-		set_light(0)
+
 	. = ..()
 
 /obj/item/tool/candle/attackby(obj/item/W as obj, mob/user as mob)
@@ -79,34 +76,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		qdel(src)
 		return
 	update_icon()
-
-
-
-/obj/item/tool/candle/attack_self(mob/user)
-	..()
-
-	if(heat_source)
-		heat_source = 0
-		update_icon()
-		set_light(0)
-		user.set_light(0, FALSE, src)
-		STOP_PROCESSING(SSobj, src)
-
-
-/obj/item/tool/candle/pickup(mob/user)
-	. = ..()
-	if(heat_source)
-		set_light(0)
-		user.set_light(CANDLE_LUM, FALSE, src)
-
-
-/obj/item/tool/candle/dropped(mob/user)
-	..()
-	if(heat_source && src.loc != user)
-		user.set_light(0, FALSE, src)
-		set_light(CANDLE_LUM)
-
-
 
 ///////////
 //MATCHES//

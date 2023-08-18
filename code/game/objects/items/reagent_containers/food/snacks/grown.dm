@@ -558,22 +558,6 @@
 
 	to_chat(user, SPAN_NOTICE("You plant the glowshroom."))
 
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/Destroy()
-	if(istype(loc,/mob))
-		loc.set_light(0, FALSE, src)
-	. = ..()
-
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/pickup(mob/user)
-	. = ..()
-	set_light(0)
-	user.set_light(round((potency/10),1), FALSE, src)
-
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/dropped(mob/user)
-	user.set_light(0, FALSE, src)
-	set_light(round(potency/10,1))
-	..()
-
-
 // *************************************
 // Complex Grown Object Defines -
 // Putting these at the bottom so they don't clutter the list up. -Cheridan

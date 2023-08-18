@@ -89,6 +89,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/smoketime = 10 SECONDS
 	var/burnt_name = "burnt match"
 	w_class = SIZE_TINY
+	light_range = 2
+	light_power = 1
 
 	attack_verb = list("burnt", "singed")
 
@@ -118,6 +120,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		burn_out(user)
 	return ..()
 
+/obj/item/tool/match/turn_light(mob/user, toggle_on)
+	. = ..()
+	if(. == NO_LIGHT_STATE_CHANGE)
+		return
+
+	set_light_on(toggle_on)
+
 /obj/item/tool/match/proc/light_match()
 	if(heat_source || burnt)
 		return
@@ -125,10 +134,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	playsound(src.loc,"match",15, 1, 3)
 	damtype = "burn"
 	icon_state = "[initial(icon_state)]_lit"
-	if(ismob(loc))
-		loc.set_light(2, FALSE, src)
-	else
-		set_light(2)
+	turn_light(toggle_on = TRUE)
 	START_PROCESSING(SSobj, src)
 	update_icon()
 	return TRUE
@@ -139,19 +145,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	damtype = "brute"
 	icon_state = "[initial(icon_state)]_burnt"
 	item_state = "cigoff"
-	set_light(0)
+	turn_light(toggle_on = FALSE)
 	name = burnt_name
 	desc = "A match. This one has seen better days."
 	STOP_PROCESSING(SSobj, src)
-
-	if(user)
-		user.set_light(0)
-		return
-
-	if(ismob(loc))
-		user = loc
-		user.set_light(0)
-		return
 
 /obj/item/tool/match/paper
 	name = "paper match"

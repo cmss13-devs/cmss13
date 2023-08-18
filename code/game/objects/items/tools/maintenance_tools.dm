@@ -175,6 +175,9 @@
 
 	inherent_traits = list(TRAIT_TOOL_BLOWTORCH)
 
+	light_range = 2
+	light_power = 2
+
 	//blowtorch specific stuff
 
 	/// Whether or not the blowtorch is off(0), on(1) or currently welding(2)
@@ -191,21 +194,14 @@
 	reagents.add_reagent("fuel", max_fuel)
 	return
 
-
 /obj/item/tool/weldingtool/Destroy()
 	if(welding)
-		if(ismob(loc))
-			loc.set_light(0, FALSE, src)
-		else
-			set_light(0)
 		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/item/tool/weldingtool/get_examine_text(mob/user)
 	. = ..()
 	. += "It contains [get_fuel()]/[max_fuel] units of fuel!"
-
-
 
 /obj/item/tool/weldingtool/process()
 	if(QDELETED(src))
@@ -217,7 +213,6 @@
 			remove_fuel(1)
 	else //should never be happening, but just in case
 		toggle(TRUE)
-
 
 /obj/item/tool/weldingtool/attack(mob/target, mob/user)
 
@@ -285,6 +280,13 @@
 	..()
 	toggle()
 
+/obj/item/tool/weldingtool/turn_light(mob/user, toggle_on)
+	. = ..()
+	if(. == NO_LIGHT_STATE_CHANGE)
+		return
+
+	set_light_on(toggle_on)
+
 //Returns the amount of fuel in the welder
 /obj/item/tool/weldingtool/proc/get_fuel()
 	if(!reagents)
@@ -330,9 +332,7 @@
 			welding = 1
 			if(M)
 				to_chat(M, SPAN_NOTICE("You switch [src] on."))
-				M.set_light(2, FALSE, src)
-			else
-				set_light(2)
+			turn_light((M ? M : null), toggle_on = TRUE)
 			weld_tick += 8 //turning the tool on does not consume fuel directly, but it advances the process that regularly consumes fuel.
 			force = 15
 			damtype = "fire"
@@ -357,13 +357,13 @@
 				to_chat(M, SPAN_NOTICE("You switch [src] off."))
 			else
 				to_chat(M, SPAN_WARNING("[src] shuts off!"))
-			M.set_light(0, FALSE, src)
 			if(M.r_hand == src)
 				M.update_inv_r_hand()
 			if(M.l_hand == src)
 				M.update_inv_l_hand()
-		else
-			set_light(0)
+
+		turn_light((M ? M : null), toggle_on = FALSE)
+
 		STOP_PROCESSING(SSobj, src)
 
 //Decides whether or not to damage a player's eyes based on what they're wearing as protection
@@ -405,20 +405,6 @@
 			if(E.damage > 5)
 				to_chat(H, SPAN_WARNING("Your eyes are really starting to hurt. This can't be good for you!"))
 				return FALSE
-
-/obj/item/tool/weldingtool/pickup(mob/user)
-	. = ..()
-	if(welding)
-		set_light(0)
-		user.set_light(2, FALSE, src)
-
-
-/obj/item/tool/weldingtool/dropped(mob/user)
-	if(welding && loc != user)
-		user.set_light(0, FALSE, src)
-		set_light(2)
-	return ..()
-
 
 /obj/item/tool/weldingtool/largetank
 	name = "industrial blowtorch"

@@ -5,7 +5,6 @@
 	density = TRUE
 	anchored = TRUE
 	animate_movement = 1
-	light_range = 2
 	can_buckle = TRUE
 
 	// The mobs that are in each position/seat of the vehicle

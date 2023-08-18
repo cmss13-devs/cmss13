@@ -195,7 +195,6 @@
 /obj/structure/machinery/computer/cameras/process()
 	if(current)
 		var/list/visible_turfs = list()
-		var/area/A
 		for(var/turf/visible_turf as anything in range_turfs)
 			range_turfs += visible_turf
 			if(visible_turf.get_lumcount() >= 0.5)

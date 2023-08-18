@@ -11,7 +11,7 @@
 	matter = list("metal" = 50,"glass" = 20)
 
 	light_range = 5
-	light_power = 3
+	light_power = 1
 
 	actions_types = list(/datum/action/item_action)
 	var/on = FALSE

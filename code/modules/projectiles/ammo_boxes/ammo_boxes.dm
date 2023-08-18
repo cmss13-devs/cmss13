@@ -18,10 +18,6 @@
 
 //---------------------GENERAL PROCS
 
-/obj/item/ammo_box/Destroy()
-	set_light(0)
-	. = ..()
-
 /obj/item/ammo_box/attack_self(mob/living/user)
 	..()
 	if(burning)
@@ -45,7 +41,7 @@
 
 /obj/item/ammo_box/proc/deploy_ammo_box(mob/user, turf/T)
 	user.drop_held_item()
-	
+
 //---------------------FIRE HANDLING PROCS
 /obj/item/ammo_box/flamer_fire_act(severity, datum/cause_data/flame_cause_data)
 	if(burning)

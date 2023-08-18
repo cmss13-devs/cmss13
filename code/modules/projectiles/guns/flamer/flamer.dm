@@ -583,7 +583,6 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(update_in_weather_status))
 
 /obj/flamer_fire/Destroy()
-	set_light(0)
 	STOP_PROCESSING(SSobj, src)
 	to_call = null
 	tied_reagent = null

@@ -364,7 +364,7 @@
 		handle_all_modules_broken()
 
 	//vehicle is dead, no more lights
-	if(health <= 0 && luminosity)
+	if(health <= 0 && light_range)
 		set_light(0)
 	update_icon()
 

@@ -5,7 +5,7 @@
 	density = TRUE
 	anchored = TRUE
 	animate_movement = 1
-	luminosity = 2
+	light_range = 2
 	can_buckle = TRUE
 
 	// The mobs that are in each position/seat of the vehicle
@@ -166,7 +166,7 @@
 	if(powered && cell.charge < charge_use)
 		return 0
 	on = 1
-	set_light(initial(luminosity))
+	set_light(initial(light_range))
 	update_icon()
 	return 1
 
@@ -261,10 +261,6 @@
 /obj/vehicle/unbuckle()
 	. = ..()
 	seats[VEHICLE_DRIVER] = null
-
-/obj/vehicle/Destroy()
-	set_light(0)
-	. = ..()
 
 //-------------------------------------------------------
 // Stat update procs

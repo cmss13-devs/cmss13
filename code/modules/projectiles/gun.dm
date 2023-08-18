@@ -292,9 +292,6 @@
 				var/obj/item/attachable/potential_attachment = attachments[slot]
 				if(!potential_attachment)
 					continue
-				loc.set_light(0, FALSE, src)
-		else
-			set_light(0)
 	attachments = null
 	attachable_overlays = null
 	QDEL_NULL(active_attachable)
@@ -509,8 +506,6 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/dropped(mob/user)
 	. = ..()
-
-	disconnect_light_from_mob(user)
 
 	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
 	if(fire_delay_group && delay_left > 0)

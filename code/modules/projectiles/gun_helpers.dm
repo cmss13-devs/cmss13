@@ -136,20 +136,6 @@ DEFINES in setup.dm, referenced here.
 	else
 		..()
 
-
-/// This function disconnects the luminosity from the mob and back to the gun
-/obj/item/weapon/gun/proc/disconnect_light_from_mob(mob/bearer)
-	if (!(flags_gun_features & GUN_FLASHLIGHT_ON))
-		return FALSE
-	for (var/slot in attachments)
-		var/obj/item/attachable/attachment = attachments[slot]
-		if (!attachment || !attachment.light_mod)
-			continue
-		bearer.set_light(0, FALSE, src)
-		set_light(attachment.light_mod)
-		return TRUE
-	return FALSE
-
 /// This function actually turns the lights on the gun off
 /obj/item/weapon/gun/proc/turn_off_light(mob/bearer)
 	if (!(flags_gun_features & GUN_FLASHLIGHT_ON))
@@ -164,15 +150,6 @@ DEFINES in setup.dm, referenced here.
 
 /obj/item/weapon/gun/pickup(mob/user)
 	..()
-
-	if (flags_gun_features & GUN_FLASHLIGHT_ON)
-		for (var/slot in attachments)
-			var/obj/item/attachable/attachment = attachments[slot]
-			if (!attachment || !attachment.light_mod)
-				continue
-			user.set_light(attachment.light_mod, FALSE, src)
-			set_light(0)
-			break
 
 	unwield(user)
 

@@ -194,20 +194,11 @@
 	icon_state = "glowberrypile"
 	plantname = "glowberries"
 
-/obj/item/reagent_container/food/snacks/grown/glowberries/Destroy()
-	if(istype(loc,/mob))
-		loc.set_light(0, FALSE, src)
+/obj/item/reagent_container/food/snacks/grown/glowberries/Initialize()
 	. = ..()
 
-/obj/item/reagent_container/food/snacks/grown/glowberries/pickup(mob/user)
-	. = ..()
-	src.set_light(0)
-	user.set_light(round((potency/5),1), FALSE, src)
-
-/obj/item/reagent_container/food/snacks/grown/glowberries/dropped(mob/user)
-	user.set_light(0, FALSE, src)
-	src.set_light(round(potency/5,1))
-	..()
+	set_light_range(brightness_on)
+	set_light_on(TRUE)
 
 /obj/item/reagent_container/food/snacks/grown/cocoapod
 	name = "cocoa pod"

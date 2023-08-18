@@ -37,10 +37,6 @@
 	icon_state = "greenglow"
 	luminosity = 1
 
-/obj/effect/decal/cleanable/dirt/greenglow/Destroy()
-	set_light(0)
-	return ..()
-
 /obj/effect/decal/cleanable/flour
 	name = "flour"
 	desc = "It's still good. Four second rule!"
@@ -67,10 +63,6 @@
 		return INITIALIZE_HINT_QDEL
 	. = ..()
 	QDEL_IN(WEAKREF(src), 2 MINUTES)
-
-/obj/effect/decal/cleanable/greenglow/Destroy()
-	set_light(0)
-	return ..()
 
 /obj/effect/decal/cleanable/cobweb
 	name = "cobweb"

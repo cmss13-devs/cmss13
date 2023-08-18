@@ -156,7 +156,6 @@
 		source_binoc.laser_cooldown = world.time + source_binoc.cooldown_duration
 		source_binoc.coord = null
 		source_binoc = null
-	set_light(0)
 	. = ..()
 
 /obj/effect/overlay/temp/laser_target
@@ -198,7 +197,6 @@
 		source_binoc.laser = null
 		source_binoc = null
 
-	set_light(0)
 	. = ..()
 
 /obj/effect/overlay/temp/laser_target/ex_act(severity) //immune to explosions
@@ -219,10 +217,6 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target3"
-
-/obj/effect/overlay/temp/blinking_laser/Destroy()
-	set_light(0)
-	. = ..()
 
 /obj/effect/overlay/temp/emp_sparks
 	icon = 'icons/effects/effects.dmi'

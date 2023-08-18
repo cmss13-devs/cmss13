@@ -691,7 +691,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	if(!toggle_on && light_on)
 		attached_gun.set_light_range(attached_gun.light_range - light_mod)
-		attached_gun.set_light_range(attached_gun.light_power - (light_mod * 0.5))
+		attached_gun.set_light_power(attached_gun.light_power - (light_mod * 0.5))
 		if(attached_gun.flags_gun_features & GUN_FLASHLIGHT_ON)
 			attached_gun.set_light_on(FALSE)
 			light_on = FALSE

@@ -2665,10 +2665,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_f_s)
-"aiW" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/carpet,
-/area/almayer/living/commandbunks)
 "aiX" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/pilotbunks)
@@ -3033,12 +3029,15 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
+	dir = 1
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
 "ako" = (
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/carpet,
@@ -3047,6 +3046,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/pipes/vents/scrubber,
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "akr" = (
@@ -31343,10 +31343,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_umbilical)
-"erZ" = (
-/obj/structure/pipes/vents/scrubber,
-/turf/open/floor/carpet,
-/area/almayer/living/commandbunks)
 "esi" = (
 /obj/structure/sign/safety/stairs{
 	pixel_x = 15;
@@ -37637,6 +37633,12 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/vehiclehangar)
+"hct" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "hcw" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/explosive/grenade/high_explosive/training,
@@ -38438,9 +38440,6 @@
 /obj/item/paper{
 	pixel_x = 5
 	},
-/obj/item/tool/pen/blue{
-	pixel_x = 5
-	},
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/transmitter/rotary{
 	name = "CIC Reception Telephone";
@@ -38448,6 +38447,9 @@
 	phone_id = "CIC Reception";
 	pixel_x = -7;
 	pixel_y = 4
+	},
+/obj/item/tool/pen{
+	pixel_x = 5
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
@@ -41762,7 +41764,6 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/black,
 /obj/item/storage/bible/booze,
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door_control{
 	id = "CO-Office";
 	name = "Door Control";
@@ -50048,6 +50049,12 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
+"mAC" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/living/commandbunks)
 "mAT" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 8;
@@ -53905,7 +53912,7 @@
 	},
 /area/almayer/living/grunt_rnr)
 "ocs" = (
-/obj/structure/pipes/vents/pump{
+/obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/carpet,
@@ -67086,7 +67093,6 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "tMn" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/bed/chair/comfy/beige,
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
@@ -67369,8 +67375,8 @@
 /area/almayer/squads/req)
 "tUo" = (
 /obj/item/clipboard,
-/obj/item/tool/pen/blue,
 /obj/structure/surface/table/reinforced/black,
+/obj/item/tool/pen,
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "tUv" = (
@@ -75567,9 +75573,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
+/turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
 "xjG" = (
 /obj/structure/machinery/door_control{
@@ -98668,7 +98672,7 @@ fNb
 eSJ
 agc
 agc
-hvH
+mAC
 alo
 agj
 aic
@@ -99069,11 +99073,11 @@ llM
 lGL
 agj
 geW
-erZ
+agc
 tMn
 iVZ
-aiW
-aiW
+agc
+agc
 akn
 xyk
 sBF
@@ -104383,7 +104387,7 @@ aZz
 aZz
 aZz
 aZz
-nsc
+hct
 baw
 cxk
 qVM

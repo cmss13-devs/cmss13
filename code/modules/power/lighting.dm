@@ -593,7 +593,7 @@
 	spawn(10)
 		if(loc)
 			var/area/A = get_area(src)
-			if(!src.needs_power)
+			if(!needs_power || A.unlimited_power)
 				seton(A.lightswitch)
 				return
 			seton(A.lightswitch && A.power_light)

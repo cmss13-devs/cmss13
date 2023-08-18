@@ -10,6 +10,9 @@
 /obj/structure/bed/chair/vehicle{
 	pixel_x = 8
 	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
@@ -221,6 +224,20 @@
 	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
+"rg" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/shuttle/drop1/sulaco)
 "rl" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "49"
@@ -254,6 +271,20 @@
 	layer = 3.5;
 	pixel_x = 21;
 	pixel_y = 43
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/shuttle/drop1/sulaco)
+"vW" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -315,6 +346,20 @@
 "yU" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "9"
+	},
+/area/shuttle/drop1/sulaco)
+"zm" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
 "zw" = (
@@ -430,6 +475,10 @@
 	pixel_y = 16
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_x = 12
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
@@ -638,6 +687,10 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/computer/cameras/dropship/one,
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_x = -12
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
@@ -748,7 +801,7 @@ mb
 mb
 Da
 oo
-TK
+zm
 ws
 TK
 il
@@ -797,7 +850,7 @@ Vm
 in
 TK
 ws
-TK
+vW
 ws
 TK
 in
@@ -843,7 +896,7 @@ Jb
 in
 TK
 ws
-TK
+rg
 ws
 TK
 in
@@ -872,7 +925,7 @@ Zo
 Tt
 TK
 Tu
-TK
+vW
 ws
 TK
 ws
@@ -886,7 +939,7 @@ mb
 mb
 De
 oo
-TK
+zm
 cr
 TK
 il

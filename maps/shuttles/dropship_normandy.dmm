@@ -12,6 +12,10 @@
 "aH" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/computer/cameras/dropship/two,
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_x = -12
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
@@ -172,6 +176,10 @@
 	pixel_y = 16
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_x = 12
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
@@ -204,6 +212,20 @@
 	icon_state = "84"
 	},
 /area/shuttle/drop2/sulaco)
+"nO" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/shuttle/drop2/sulaco)
 "nS" = (
 /turf/closed/shuttle/dropship2{
 	icon_state = "46"
@@ -227,6 +249,20 @@
 "oW" = (
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "32"
+	},
+/area/shuttle/drop2/sulaco)
+"pS" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
 	},
 /area/shuttle/drop2/sulaco)
 "pU" = (
@@ -573,6 +609,9 @@
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8
 	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
@@ -590,6 +629,20 @@
 "QK" = (
 /turf/closed/shuttle/dropship2{
 	icon_state = "49"
+	},
+/area/shuttle/drop2/sulaco)
+"QS" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
 	},
 /area/shuttle/drop2/sulaco)
 "Rr" = (
@@ -781,7 +834,7 @@ Rr
 Rr
 Ld
 Qo
-SY
+nO
 mz
 SY
 PJ
@@ -813,7 +866,7 @@ vd
 Co
 SY
 Fq
-SY
+pS
 it
 SY
 it
@@ -830,7 +883,7 @@ HB
 xx
 SY
 it
-SY
+QS
 it
 SY
 xx
@@ -876,7 +929,7 @@ ac
 xx
 SY
 it
-SY
+pS
 it
 SY
 xx
@@ -919,7 +972,7 @@ Rr
 Rr
 xd
 yl
-SY
+nO
 it
 SY
 PJ

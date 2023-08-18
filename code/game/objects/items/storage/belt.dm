@@ -30,6 +30,12 @@
 		return FALSE
 	return ..()
 
+/obj/item/storage/belt/gun/flaregun/has_room(obj/item/W as obj, W_class_override = null)
+
+	if(istype(new_item, /obj/item/device/flashlight/flare) && length(holstered_guns) > 0 && length(contents) >= storage_slots)
+		return FALSE
+	return ..()
+
 /obj/item/storage/belt/equipped(mob/user, slot)
 	switch(slot)
 		if(WEAR_WAIST, WEAR_J_STORE, WEAR_BACK)

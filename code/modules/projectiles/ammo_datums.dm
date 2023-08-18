@@ -1765,9 +1765,10 @@
 	penetration = ARMOR_PENETRATION_TIER_7
 	damage_armor_punch = 3
 
-/datum/ammo/bullet/smartgun/holo_target ///Royal marines smartgun bullet has only diff between regular ammo is this one does holostacks
+/datum/ammo/bullet/smartgun/holo_target //Royal marines smartgun bullet has only diff between regular ammo is this one does holostacks
 	name = "holo-targeting smartgun bullet"
 	damage = 30
+///Stuff for the HRP holotargetting stacks
 	var/holo_stacks = 15
 
 /datum/ammo/bullet/smartgun/holo_target/on_hit_mob(mob/M, obj/item/projectile/P)

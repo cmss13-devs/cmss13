@@ -7,9 +7,6 @@
 	max_engineers =  0
 	max_medics = 0
 	max_heavies = 3
-	var/max_synths = 1
-	var/synths = 1
-
 
 /datum/emergency_call/royal_marines/New()
 	..()
@@ -53,14 +50,8 @@
 
 
 /datum/emergency_call/royal_marines/print_backstory(mob/living/carbon/human/M)
-	if(ishuman_strict(M))
-		to_chat(M, SPAN_BOLD("You were born in the Three World Empire to a [pick_weight(list("average" = 75, "poor" = 15, "well-established" = 10))] family."))
-		to_chat(M, SPAN_BOLD("Joining the Royal Marines gave you a lot of combat experience and useful skills."))
-	else
-		to_chat(M, SPAN_BOLD("You were brought online in a Tokyo lab."))
-		to_chat(M, SPAN_BOLD("You were programmed with all of the medical and engineering knowledge a military fighting force support asset required."))
-		to_chat(M, SPAN_BOLD("You were soon after assigned to a Royal Marines base on mars to act as support personnel."))
-		to_chat(M, SPAN_BOLD("Some months after your assignment, you were reassigned to the HMS Patna."))
+	to_chat(M, SPAN_BOLD("You were born in the Three World Empire to a [pick_weight(list("average" = 75, "poor" = 15, "well-established" = 10))] family."))
+	to_chat(M, SPAN_BOLD("Joining the Royal Marines gave you a lot of combat experience and useful skills."))
 	to_chat(M, SPAN_BOLD("You are [pick_weight(list("unaware" = 75, "faintly aware" = 15, "knoledgeable" = 10))] of the xenomorph threat."))
 	to_chat(M, SPAN_BOLD("You are a citizen of the three world empire and joined the Royal Marines Commando"))
 	to_chat(M, SPAN_BOLD("You are apart of a jointed UA/TWE taskforce onboard the HMS Patna and Thunderchild."))
@@ -75,7 +66,6 @@
 	max_medics = 0
 	max_heavies = 6
 	max_engineers = 0
-	max_synths = 2
 
 /obj/effect/landmark/ert_spawns/distress_twe
 	name = "Distress_TWE"

@@ -35,13 +35,12 @@
 #define ARES_LOG_SECURITY 2
 
 /// Access levels specifically for Working Joe management console
-#define APOLLO_ACCESS_LOGOUT 0
-#define APOLLO_ACCESS_REQUEST 1
-#define APOLLO_ACCESS_REPORTER 2
-#define APOLLO_ACCESS_TEMP 3
-#define APOLLO_ACCESS_AUTHED 4
-#define APOLLO_ACCESS_JOE 5
-#define APOLLO_ACCESS_DEBUG 6
+#define APOLLO_ACCESS_REQUEST 0
+#define APOLLO_ACCESS_REPORTER 1
+#define APOLLO_ACCESS_TEMP 2
+#define APOLLO_ACCESS_AUTHED 3
+#define APOLLO_ACCESS_JOE 4
+#define APOLLO_ACCESS_DEBUG 5
 
 /// Ticket statuses, both for Access and Maintenance
 /// Pending assignment/rejection

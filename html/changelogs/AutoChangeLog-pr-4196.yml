@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - ui: "Fix Hotkeys TGUI lag and the inability to map Ctrl + R. Also now offers a little bit more time to map combinations of keys."

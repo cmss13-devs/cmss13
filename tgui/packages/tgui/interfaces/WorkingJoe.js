@@ -71,6 +71,10 @@ const MainMenu = (props, context) => {
     access_level,
     ticket_console,
   } = data;
+  let can_request_access = 'Yes';
+  if (access_level === 3) {
+    can_request_access = 'No';
+  }
 
   return (
     <>
@@ -117,7 +121,7 @@ const MainMenu = (props, context) => {
           <Stack.Item grow>
             <h3>Request Submission</h3>
           </Stack.Item>
-          {access_level <= 2 && (
+          {can_request_access === 'Yes' && (
             <Stack.Item>
               <Button
                 content="Request Access Ticket"

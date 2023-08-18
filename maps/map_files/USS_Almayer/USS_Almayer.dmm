@@ -8134,6 +8134,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -39707,6 +39710,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -48467,7 +48473,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 5
 	},
 /turf/open/floor/almayer{
@@ -52239,11 +52245,11 @@
 	},
 /area/almayer/shipboard/brig/general_equipment)
 "mWs" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
@@ -53451,15 +53457,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/main_office)
-"nxF" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/medical_science)
 "nxK" = (
 /obj/structure/sign/safety/high_voltage{
 	pixel_y = -32
@@ -61920,9 +61917,11 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "rmc" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -68895,11 +68894,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/engine_core)
 "usy" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 9
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
@@ -73187,9 +73186,6 @@
 /turf/open/floor/almayer,
 /area/almayer/living/auxiliary_officer_office)
 "wdo" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/machinery/door/airlock/almayer/research/reinforced{
 	dir = 8;
 	name = "\improper Containment Airlock"
@@ -73198,6 +73194,9 @@
 	icon_state = "S"
 	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer{

@@ -254,3 +254,12 @@
 	else
 		to_chat(M, SPAN_WARNING("\The [src] ended unexpectedly, so you return back up."))
 	return XENO_NO_DELAY_ACTION
+
+/obj/structure/tunnel/maint_tunnel
+	name = "\improper Maintenance Hatch"
+	desc = "An entrance to a maintenance tunnel. You can see bits of slime and resin within. Pieces of debris keep you from getting a closer look."
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "hatchclosed"
+
+/obj/structure/tunnel/maint_tunnel/no_xeno_desc
+	desc = "An entrance to a maintenance tunnel. Pieces of debris keep you from getting a closer look."

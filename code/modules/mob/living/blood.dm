@@ -41,7 +41,7 @@
 			/// The limit of the oxyloss gained, ignoring oxyloss from the switch statement
 			var/maximum_oxyloss = Clamp((100 - blood_percentage) / 2, oxyloss, 100)
 			if(oxyloss < maximum_oxyloss)
-				oxyloss += max(additional_oxyloss, 0)
+				oxyloss += round(max(additional_oxyloss, 0))
 
 			//Bloodloss effects on nutrition
 			if(nutrition >= 300)

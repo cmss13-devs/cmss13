@@ -220,3 +220,27 @@
   - rscdel: Removed Thermal and Meson visors from Yautja mask.
   - bugfix: Squad Specialists can no longer bypass restrictions by not selecting a
       kit to use.
+2023-08-14:
+  Morrow:
+  - rscadd: Rounded oxyloss from bloodloss
+  SpartanBobby:
+  - maptweak: Fixes use of wrong areas inside LV522 reactor
+2023-08-15:
+  Drathek:
+  - rscadd: Queen jellies now use designation rather than ckey for attribution
+  - bugfix: Random facts now only check players.
+  Huffie56:
+  - bugfix: spraying with the hose will no cost 5u of water while spaying 5u of water.
+  - bugfix: fixed the verb to take out the hose.
+  - bugfix: remove the option to change the output as it was confusing for people.
+  MikeKuwait:
+  - bugfix: The plant dies if no nutriment is available
+  realforest2001:
+  - rscadd: Added a proc to calculate item strip delay, taking into account the target's
+      skills and adding 0.5s per level in Policing and CQC.
+  - rscadd: Added an unstrippable mob trait to prevent inventory manipulation. Gave
+      this trait to Working Joes.
+2023-08-17:
+  realforest2001:
+  - bugfix: Players joining as Working Joe after round start now spawn in correct
+      place.

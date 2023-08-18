@@ -621,3 +621,5 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/string/instance_name
 	config_entry_value = "game"
 	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/guest_ban

@@ -1,5 +1,0 @@
-author: "BeagleGaming1"
-delete-after: True
-changes:
-  - rscadd: "Adds campfires, craftable with wood"
-  - code_imp: "Modifies brazier construction code for easier use and mapping"

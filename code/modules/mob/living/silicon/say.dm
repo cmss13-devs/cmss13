@@ -38,9 +38,9 @@
 	if (stat == 2)
 		return say_dead(message)
 
-	if(copytext(message,1,2) == "*")
+	if(copytext_char(message,1,2) == "*")
 		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
-			return emote(lowertext(copytext(message,2)))
+			return emote(lowertext(copytext_char(message,2)))
 
 	var/bot_type = 0 //Let's not do a fuck ton of type checks, thanks.
 	if(isAI(src))
@@ -61,15 +61,15 @@
 	var/message_mode = parse_message_mode(message, "general")
 	if (message_mode)
 		if (message_mode == "general")
-			message = trim(copytext(message,2))
+			message = trim(copytext_char(message,2))
 		else
-			message = trim(copytext(message,3))
+			message = trim(copytext_char(message,3))
 
 	//parse language key and consume it
 	var/datum/language/speaking = parse_language(message)
 	if (speaking)
 		verb = speaking.speech_verb
-		message = copytext(message,3)
+		message = copytext_char(message,3)
 
 		if(speaking.flags & HIVEMIND)
 			speaking.broadcast(src,trim(message))

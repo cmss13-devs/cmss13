@@ -27,13 +27,13 @@
 //Removes a few problematic characters
 /proc/sanitize_simple(text, list/repl_chars = list("\n"=" ","\t"=" ","�"=" "))
 	for(var/char in repl_chars)
-		text = replacetext(text, char, repl_chars[char])
+		text = replacetext_char(text, char, repl_chars[char])
 	return text
 
 /proc/readd_quotes(text)
 	var/list/repl_chars = list("&#34;" = "\"", "&#39;" = "'")
 	for(var/char in repl_chars)
-		text = replacetext(text, char, repl_chars[char])
+		text = replacetext_char(text, char, repl_chars[char])
 	return text
 
 //Runs byond's sanitization proc along-side sanitize_simple
@@ -54,12 +54,12 @@
 //Runs sanitize and strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' after sanitize() calls byond's html_encode()
 /proc/strip_html(text, limit=MAX_MESSAGE_LEN)
-	return copytext((sanitize(strip_html_simple(text))), 1, limit)
+	return copytext_char((sanitize(strip_html_simple(text))), 1, limit)
 
 //Runs byond's sanitization proc along-side strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' that html_encode() would cause
 /proc/adminscrub(text, limit=MAX_MESSAGE_LEN)
-	return copytext((html_encode(strip_html_simple(text))), 1, limit)
+	return copytext_char((html_encode(strip_html_simple(text))), 1, limit)
 
 //Returns null if there is any bad text in the string
 /proc/reject_bad_text(text, max_length=512)
@@ -202,7 +202,7 @@
 
 //Returns a string with the first element of the string capitalized.
 /proc/capitalize(t as text)
-	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
+	return uppertext(copytext_char(t, 1, 2)) + copytext_char(t, 2)
 
 /proc/stringpercent(text,character = "*")
 //This proc returns the number of chars of the string that is the character
@@ -234,7 +234,7 @@
 		return "[copytext(string, 1, len - 3)]..."
 
 /proc/strip_improper(input_text)
-	return replacetext(replacetext(input_text, "\proper", ""), "\improper", "")
+	return replacetext_char(replacetext_char(input_text, "\proper", ""), "\improper", "")
 
 // Used to remove the string shortcuts for a clean transfer
 /proc/sanitize_filename(t)

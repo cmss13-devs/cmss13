@@ -134,11 +134,13 @@
 			qdel(new_xeno)
 		return
 
-	switch(new_xeno.tier) //They have evolved, add them to the slot count
-		if(2)
-			hive.tier_2_xenos |= new_xeno
-		if(3)
-			hive.tier_3_xenos |= new_xeno
+	var/area/xeno_area = get_area(new_xeno)
+	if(!is_admin_level(new_xeno.z) || (xeno_area.flags_atom & AREA_ALLOW_XENO_JOIN))
+		switch(new_xeno.tier) //They have evolved, add them to the slot count IF they are in regular game space
+			if(2)
+				hive.tier_2_xenos |= new_xeno
+			if(3)
+				hive.tier_3_xenos |= new_xeno
 
 	log_game("EVOLVE: [key_name(src)] evolved into [new_xeno].")
 	if(mind)

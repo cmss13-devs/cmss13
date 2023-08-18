@@ -264,8 +264,8 @@
 		/datum/caste_datum/hivelord = 1,
 		/datum/caste_datum/carrier = 1
 	)
-	/// Assoc list of free slots currently used by specific castes
-	var/list/used_free_slots
+	/// Assoc list of slots currently used by specific castes (for calculating free_slot usage)
+	var/list/used_slots = list()
 	/// list of living tier2 xenos
 	var/list/tier_2_xenos = list()
 	/// list of living tier3 xenos
@@ -472,6 +472,12 @@
 		tier_2_xenos -= xeno
 	else if(xeno.tier == 3)
 		tier_3_xenos -= xeno
+
+	// Only handle free slots if the xeno is not in tdome
+	if(!is_admin_level(xeno.z))
+		var/selected_caste = GLOB.xeno_datum_list[xeno.caste_type]?.type
+		if(used_slots[selected_caste])
+			used_slots[selected_caste]--
 
 	if(!light_mode)
 		hive_ui.update_xeno_counts()
@@ -788,23 +794,22 @@
 
 	var/used_tier_2_slots = length(tier_2_xenos)
 	var/used_tier_3_slots = length(tier_3_xenos)
-	for(var/caste_path in used_free_slots)
-		var/used_count = used_free_slots[caste_path]
-		if(!used_count)
-			continue
-		var/datum/caste_datum/C = caste_path
-		switch(initial(C.tier))
-			if(2) used_tier_2_slots -= used_count
-			if(3) used_tier_3_slots -= used_count
 
 	for(var/caste_path in free_slots)
-		var/slot_count = free_slots[caste_path]
-		if(!slot_count)
+		var/slots_free = free_slots[caste_path]
+		var/slots_used = used_slots[caste_path]
+		var/datum/caste_datum/current_caste = caste_path
+		if(slots_used)
+			// Don't count any free slots as used slots
+			switch(initial(current_caste.tier))
+				if(2) used_tier_2_slots -= min(slots_used, slots_free)
+				if(3) used_tier_3_slots -= min(slots_used, slots_free)
+		if(slots_free <= slots_used)
 			continue
-		var/datum/caste_datum/C = caste_path
-		switch(initial(C.tier))
-			if(2) slots[TIER_2][GUARANTEED_SLOTS][initial(C.caste_type)] = slot_count
-			if(3) slots[TIER_3][GUARANTEED_SLOTS][initial(C.caste_type)] = slot_count
+		// Display any free slots available
+		switch(initial(current_caste.tier))
+			if(2) slots[TIER_2][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
+			if(3) slots[TIER_3][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
 
 	var/effective_total = burrowed_factor
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)

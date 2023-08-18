@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added prefixes in OOC for Staff and Mentors. Created a proc to check for these prefixes and Donator."
-  - bugfix: "Fixed isCouncil check."

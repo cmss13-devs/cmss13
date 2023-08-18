@@ -1765,7 +1765,7 @@
 	penetration = ARMOR_PENETRATION_TIER_7
 	damage_armor_punch = 3
 
-/datum/ammo/bullet/smartgun/holo_target //we use this for the RMC smartgun that has a support ammo instead of AP
+/datum/ammo/bullet/smartgun/holo_target ///Royal marines smartgun bullet has only diff between regular ammo is this one does holostacks
 	name = "holo-targeting smartgun bullet"
 	damage = 30
 	var/holo_stacks = 15

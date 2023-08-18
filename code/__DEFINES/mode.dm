@@ -185,7 +185,7 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 
 #define WHITELIST_EVERYTHING (WHITELISTS_GENERAL|WHITELISTS_COUNCIL|WHITELISTS_LEADER)
 
-#define isCouncil(A) (RoleAuthority.roles_whitelist[A.ckey] & (WHITELIST_YAUTJA_COUNCIL | WHITELIST_SYNTHETIC_COUNCIL | WHITELIST_COMMANDER_COUNCIL))
+#define isCouncil(A) (RoleAuthority.roles_whitelist[A.ckey] & WHITELIST_YAUTJA_COUNCIL) || (RoleAuthority.roles_whitelist[A.ckey] & WHITELIST_SYNTHETIC_COUNCIL) || (RoleAuthority.roles_whitelist[A.ckey] & WHITELIST_COMMANDER_COUNCIL)
 
 //=================================================
 

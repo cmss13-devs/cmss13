@@ -177,8 +177,6 @@
 
 	if(bound_width > world.icon_size || bound_height > world.icon_size)
 		lighting_holder = new(src)
-		lighting_holder.pixel_x = -bound_x
-		lighting_holder.pixel_y = -bound_y
 		lighting_holder.set_light_range(vehicle_light_range)
 		lighting_holder.set_light_power(vehicle_light_power)
 		lighting_holder.set_light_on(vehicle_light_range || vehicle_light_power)

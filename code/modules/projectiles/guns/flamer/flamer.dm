@@ -689,11 +689,11 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	var/damage = burnlevel*delta_time
 	T.flamer_fire_act(damage)
 
-	update_flame()
-
 	if(!firelevel)
 		qdel(src)
 		return
+
+	update_flame()
 
 	for(var/atom/thing in loc)
 		thing.handle_flamer_fire(src, damage, delta_time)

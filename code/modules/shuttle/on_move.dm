@@ -114,8 +114,8 @@ All ShuttleMove procs go here
 	if (newT.z != oldT.z)
 		onTransitZ(oldT.z, newT.z)
 
-	//if(light) // tg lighting
-	// update_light()
+	if(light)
+		update_light()
 	if(rotation)
 		shuttleRotate(rotation)
 

@@ -10,7 +10,6 @@
 	requires_power = FALSE
 	statistic_exempt = TRUE
 	flags_area = AREA_NOTUNNEL
-	luminosity = TRUE
 
 /area/adminlevel/bunker01/mainroom
 	name = "\improper Bunker Main Room"
@@ -79,7 +78,6 @@
 	always_unpowered = TRUE
 	requires_power = TRUE
 	base_lighting_alpha = 0
-	luminosity = FALSE
 
 /area/adminlevel/bunker01/caves/outpost
 	name = "\improper Bunker Outpost"
@@ -87,7 +85,6 @@
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	requires_power = TRUE
 	always_unpowered = FALSE
-	luminosity = FALSE
 
 /area/adminlevel/bunker01/caves/xeno
 	name = "\improper Bunker Xeno Hive"

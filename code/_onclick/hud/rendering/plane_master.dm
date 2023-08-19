@@ -104,6 +104,10 @@
 	add_filter("emissives", 1, alpha_mask_filter(render_source = EMISSIVE_RENDER_TARGET, flags = MASK_INVERSE))
 	add_filter("object_lighting", 2, alpha_mask_filter(render_source = O_LIGHTING_VISUAL_RENDER_TARGET, flags = MASK_INVERSE))
 
+/atom/movable/screen/plane_master/lighting/exterior
+	name = "exterior lighting plane master"
+	plane = EXTERIOR_LIGHTING_PLANE
+
 /**
  * Handles emissive overlays and emissive blockers.
  */
@@ -122,13 +126,6 @@
 	name = "above lighting plane master"
 	plane = ABOVE_LIGHTING_PLANE
 	appearance_flags = PLANE_MASTER //should use client color
-	blend_mode = BLEND_OVERLAY
-	render_relay_plane = RENDER_PLANE_GAME
-
-/atom/movable/screen/plane_master/exterior
-	name = "exterior lighting plane master"
-	plane = EXTERIOR_LIGHTING_PLANE
-	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
 	render_relay_plane = RENDER_PLANE_GAME
 

@@ -286,7 +286,6 @@
 	power_light = FALSE
 	power_equip = FALSE
 	power_environ = FALSE
-	luminosity = 0
 	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	minimap_color = MINIMAP_AREA_CAVES
 
@@ -304,7 +303,6 @@
 	power_light = FALSE
 	power_equip = FALSE
 	power_environ = FALSE
-	luminosity = 0
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 
 

@@ -8,7 +8,7 @@
 	desc = "A towering spike of resin. Its base pulsates with large tendrils."
 	icon_state = "pylon"
 	health = 1800
-	luminosity = 2
+	light_range = 2
 	block_range = 0
 	var/cover_range = WEED_RANGE_PYLON
 	var/node_type = /obj/effect/alien/weeds/node/pylon
@@ -166,7 +166,7 @@
 	desc = "A giant pulsating mound of mass. It looks very much alive."
 	icon_state = "core"
 	health = 1200
-	luminosity = 4
+	light_range = 4
 	cover_range = WEED_RANGE_CORE
 	node_type = /obj/effect/alien/weeds/node/pylon/core
 	var/hardcore = FALSE

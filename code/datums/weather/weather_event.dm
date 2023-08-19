@@ -31,14 +31,14 @@
 
 // remember, this happens every five seconds or so
 /datum/weather_event/proc/handle_weather_process()
-//	if(lightning_chance && prob(lightning_chance))
-//		playsound_z(SSmapping.levels_by_trait(ZTRAIT_GROUND), pick('sound/soundscape/thunderclap1.ogg', 'sound/soundscape/thunderclap2.ogg'))
-//		for(var/mob/mob as anything in GLOB.mob_list)
-//			if(mob.hud_used)
-//				var/atom/movable/screen/plane_master/lighting/exterior/exterior_lighting = mob.hud_used.plane_masters["[EXTERIOR_LIGHTING_PLANE]"]
-//				if(exterior_lighting)
-//					exterior_lighting.alpha = 0
-//					animate(exterior_lighting, 1.5 SECONDS, alpha = min(GLOB.minimum_exterior_lighting_alpha, mob.lighting_alpha))
+	if(lightning_chance && prob(lightning_chance))
+		playsound_z(SSmapping.levels_by_trait(ZTRAIT_GROUND), pick('sound/soundscape/thunderclap1.ogg', 'sound/soundscape/thunderclap2.ogg'))
+		for(var/mob/mob as anything in GLOB.mob_list)
+			if(mob.hud_used)
+				var/atom/movable/screen/plane_master/lighting/exterior/exterior_lighting = mob.hud_used.plane_masters["[EXTERIOR_LIGHTING_PLANE]"]
+				if(exterior_lighting)
+					exterior_lighting.alpha = 0
+					animate(exterior_lighting, 1.5 SECONDS, alpha = min(GLOB.minimum_exterior_lighting_alpha, mob.lighting_alpha))
 
 /datum/weather_event/proc/process_mob_effect(mob/living/carbon/affected_mob, delta_time = 1)
 	if(effect_message && prob(WEATHER_MESSAGE_PROB))

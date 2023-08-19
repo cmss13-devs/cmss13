@@ -112,7 +112,6 @@
 
 /area/proc/initialize_power(override_power)
 	if(requires_power)
-		luminosity = 0
 		if(override_power) //Reset everything if you want to override.
 			power_light = TRUE
 			power_equip = TRUE
@@ -121,7 +120,6 @@
 		power_light = FALSE //rastaf0
 		power_equip = FALSE //rastaf0
 		power_environ = FALSE //rastaf0
-		luminosity = 1
 
 	power_change() // all machines set to current power level, also updates lighting icon
 

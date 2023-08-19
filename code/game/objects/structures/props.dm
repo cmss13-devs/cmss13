@@ -650,11 +650,18 @@
 	icon_state = "brazier"
 	density = TRUE
 	health = 150
-	luminosity = 6
+	light_range = 6
+	light_on = TRUE
 	/// What obj this becomes when it gets to its next stage of construction / ignition
 	var/frame_type
 	/// What is used to progress to the next stage
 	var/state = STATE_COMPLETE
+
+/obj/structure/prop/brazier/Initialize()
+	. = ..()
+
+	if(!light_on)
+		set_light(0)
 
 /obj/structure/prop/brazier/get_examine_text(mob/user)
 	. = ..()
@@ -686,20 +693,11 @@
 	new frame_type(loc)
 	qdel(src)
 
-/obj/structure/prop/brazier/Destroy()
-	set_light(0)
-	return ..()
-
-/obj/structure/prop/brazier/Initialize()
-	. = ..()
-	if(luminosity)
-		set_light(luminosity)
-
 /obj/structure/prop/brazier/frame
 	name = "empty brazier"
 	desc = "An empty brazier."
 	icon_state = "brazier_frame"
-	luminosity = 0
+	light_on = FALSE
 	frame_type = /obj/structure/prop/brazier/frame/full
 	state = STATE_FUEL
 
@@ -715,7 +713,7 @@
 	desc = "It's a torch."
 	icon_state = "torch"
 	density = FALSE
-	luminosity = 5
+	light_range = 5
 
 /obj/structure/prop/brazier/frame/full/torch
 	name = "unlit torch"
@@ -1118,7 +1116,8 @@
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "dynamic_2"
 	layer = MOB_LAYER
-	luminosity = 3
+	light_range = 3
+	light_on = TRUE
 
 /obj/structure/prop/invuln/fusion_reactor
 	name = "\improper S-52 fusion reactor"

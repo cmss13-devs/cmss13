@@ -145,7 +145,7 @@
 	name = "laser"
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_ICON
-	luminosity = 2
+	light_range = 2
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target_coordinate"
 	effect_duration = 600
@@ -162,7 +162,7 @@
 	name = "laser"
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_ICON
-	luminosity = 2
+	light_range = 2
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target2"
 	effect_duration = 600
@@ -212,7 +212,7 @@
 /obj/effect/overlay/temp/blinking_laser
 	name = "blinking laser"
 	anchored = TRUE
-	luminosity = 2
+	light_range = 2
 	effect_duration = 10
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/obj/items/weapons/projectiles.dmi'

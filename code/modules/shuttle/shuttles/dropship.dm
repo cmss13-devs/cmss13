@@ -157,7 +157,6 @@
 	dir = NORTH
 	width = 11
 	height = 21
-	dwidth = 1
 	var/list/landing_lights = list()
 	var/auto_open = FALSE
 	var/landing_lights_on = FALSE

@@ -90,7 +90,6 @@
 
 	related = list(src)
 	initialize_power()
-	update_base_lighting()
 
 /area/Initialize(mapload, ...)
 	icon_state = "" //Used to reset the icon overlay, I assume.
@@ -100,6 +99,7 @@
 	active_areas += src
 	all_areas += src
 	reg_in_areas_in_z()
+	update_base_lighting()
 	if(is_mainship_level(z))
 		GLOB.ship_areas += src
 

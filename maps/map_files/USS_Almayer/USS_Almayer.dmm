@@ -58834,7 +58834,6 @@
 /obj/structure/window/reinforced/ultra{
 	dir = 4
 	},
-/obj/item/device/flashlight/lamp/on,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "silver"
@@ -95992,7 +95991,7 @@ baI
 baI
 baI
 baI
-baI
+bFJ
 bGF
 bHB
 aYt
@@ -96195,7 +96194,7 @@ baI
 baI
 baI
 baI
-bFJ
+baI
 bGG
 bHB
 btO
@@ -100458,7 +100457,7 @@ baI
 baI
 baI
 baI
-baI
+bFR
 bGM
 bHB
 aqs
@@ -100661,7 +100660,7 @@ baI
 baI
 baI
 baI
-bFR
+baI
 bGN
 bHB
 xAY

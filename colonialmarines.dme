@@ -2176,6 +2176,7 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\modules\security_levels\security_levels.dm"
 #include "code\modules\shuttle\computer.dm"
 #include "code\modules\shuttle\docking.dm"
+#include "code\modules\shuttle\dropship.dm"
 #include "code\modules\shuttle\dropship_hijack.dm"
 #include "code\modules\shuttle\helpers.dm"
 #include "code\modules\shuttle\lifeboats.dm"

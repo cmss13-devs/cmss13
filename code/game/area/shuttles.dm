@@ -38,6 +38,7 @@
 	name = "Hyperspace"
 	desc = "Weeeeee"
 	ambience_exterior = 'sound/ambience/shuttle_fly_loop.ogg'
+	base_lighting_alpha = 255
 
 /area/shuttle/vehicle_elevator
 	name = "Vehicle ASRS"

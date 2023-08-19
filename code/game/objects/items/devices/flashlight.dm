@@ -133,23 +133,6 @@
 			playsound(src.loc, breaking_sound, 25, 1)
 		turn_off_light()
 
-/*
-
-/obj/item/device/flashlight/pickup(mob/user)
-	if(on)
-		user.set_light(light_range, FALSE, src)
-		set_light(0)
-	..()
-
-
-/obj/item/device/flashlight/dropped(mob/user)
-	if(on && src.loc != user)
-		user.set_light(0, FALSE, src)
-		set_light(light_range)
-	..()
-
-*/
-
 /obj/item/device/flashlight/on
 	on = TRUE
 
@@ -185,7 +168,7 @@
 
 	breaking_sound = 'sound/effects/Glasshit.ogg'
 
-/obj/item/device/flashlight/lamp
+/obj/item/device/flashlight/lamp/on
 	on = TRUE
 
 //Menorah!

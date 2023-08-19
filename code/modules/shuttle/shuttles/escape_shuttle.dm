@@ -274,7 +274,7 @@
 		escape_shuttle.door_handler.control_doors("force-unlock")
 
 	for(var/area/shuttle_area in arriving_shuttle.shuttle_areas)
-		shuttle_area.update_base_lighting()
+		shuttle_area.remove_base_lighting()
 
 		shuttle_area.flags_alarm_state &= ~ALARM_WARNING_FIRE
 		shuttle_area.updateicon()

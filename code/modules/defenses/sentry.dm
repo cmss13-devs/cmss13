@@ -72,7 +72,6 @@
 	QDEL_NULL(spark_system)
 	QDEL_NULL(ammo)
 	stop_processing()
-	set_light(0)
 	. = ..()
 
 /obj/structure/machinery/defenses/sentry/process()

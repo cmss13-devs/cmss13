@@ -169,10 +169,6 @@
 	hardness = 3
 	luminosity = 2
 
-/obj/structure/mineral_door/uranium/Destroy()
-	set_light(0)
-	. = ..()
-
 /obj/structure/mineral_door/sandstone
 	mineralType = "sandstone"
 	hardness = 0.5

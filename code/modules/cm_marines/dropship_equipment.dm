@@ -453,11 +453,6 @@
 	var/spotlights_cooldown
 	var/brightness = 11
 
-/*
-/obj/structure/dropship_equipment/electronics/spotlights/get_light_range()
-	return min(luminosity, LIGHTING_MAX_LUMINOSITY_SHIPLIGHTS)
-*/
-
 /obj/structure/dropship_equipment/electronics/spotlights/equipment_interact(mob/user)
 	if(spotlights_cooldown > world.time)
 		to_chat(user, SPAN_WARNING("[src] is busy."))

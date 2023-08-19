@@ -77,6 +77,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return
 	update_icon()
 
+/obj/item/tool/candle/attack_self(mob/user)
+	..()
+
+	if(heat_source)
+		heat_source = 0
+		update_icon()
+		set_light(0)
+		STOP_PROCESSING(SSobj, src)
+
 ///////////
 //MATCHES//
 ///////////

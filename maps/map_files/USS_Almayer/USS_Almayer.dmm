@@ -58834,6 +58834,7 @@
 /obj/structure/window/reinforced/ultra{
 	dir = 4
 	},
+/obj/item/device/flashlight/lamp/on,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "silver"

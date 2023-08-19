@@ -1074,7 +1074,7 @@
 	name = "heavy rifle bullet"
 
 	damage = 55
-	penetration = ARMOR_PENETRATION_TIER_4
+	penetration = ARMOR_PENETRATION_TIER_3
 
 /datum/ammo/bullet/rifle/type71/ap
 	name = "heavy armor-piercing rifle bullet"
@@ -1617,7 +1617,7 @@
 
 /datum/ammo/bullet/sniper/upp
 	name = "armor-piercing sniper bullet"
-	damage = 90
+	damage = 80
 	penetration = ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/bullet/sniper/anti_materiel

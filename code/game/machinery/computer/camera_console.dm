@@ -196,7 +196,6 @@
 	if(current)
 		var/list/visible_turfs = list()
 		for(var/turf/visible_turf as anything in range_turfs)
-			range_turfs += visible_turf
 			if(visible_turf.get_lumcount() >= 0.5)
 				visible_turfs += visible_turf
 		cam_screen.vis_contents = visible_turfs

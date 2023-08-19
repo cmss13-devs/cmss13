@@ -54,6 +54,7 @@
 
 	on = !on
 	set_light_on(on)
+	update_icon()
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()

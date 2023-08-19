@@ -44001,6 +44001,12 @@
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/staff_research)
+"fny" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "Hangar Landing Zone"
+	},
+/turf/open/space,
+/area/space)
 "foY" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
@@ -70309,7 +70315,7 @@ aAO
 aAO
 aAO
 aAO
-aAO
+fny
 coo
 con
 aAO
@@ -88412,7 +88418,7 @@ amu
 amu
 amu
 amu
-amu
+aoj
 axy
 jDr
 uaW
@@ -88624,7 +88630,7 @@ amu
 amu
 amu
 amu
-aoj
+amu
 axz
 jDr
 uaW
@@ -99059,7 +99065,7 @@ aYM
 aYM
 aYM
 aYM
-aYM
+bcF
 bts
 blH
 bkt
@@ -99271,7 +99277,7 @@ aYM
 aYM
 aYM
 aYM
-bcF
+aYM
 btu
 blH
 bkt

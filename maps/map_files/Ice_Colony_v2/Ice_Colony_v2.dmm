@@ -16687,12 +16687,6 @@
 "aWp" = (
 /turf/open/floor/plating,
 /area/ice_colony/exterior/surface/landing_pad)
-"aWq" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Hangar Landing Zone"
-	},
-/turf/open/floor/plating,
-/area/ice_colony/exterior/surface/landing_pad)
 "aWr" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4
@@ -18027,6 +18021,9 @@
 "baX" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8
+	},
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "Hangar Landing Zone"
 	},
 /turf/open/floor/plating/icefloor{
 	dir = 8;
@@ -19853,6 +19850,7 @@
 "bhs" = (
 /obj/docking_port/stationary/marine_dropship/lz2,
 /turf/open/floor/plating/icefloor{
+	dir = 10;
 	icon_state = "warnplate"
 	},
 /area/ice_colony/underground/hangar)
@@ -52194,7 +52192,7 @@ baJ
 baJ
 baJ
 baJ
-bhV
+bhs
 bhF
 bht
 aZW
@@ -52476,7 +52474,7 @@ aZW
 bcy
 bbc
 aZW
-bhs
+bht
 bhG
 bht
 aZW
@@ -89400,7 +89398,7 @@ aWp
 aWp
 aWp
 aWQ
-aWq
+aWp
 bbl
 aUP
 aUP

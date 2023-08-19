@@ -2167,11 +2167,11 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "bhy" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Southwest Landing Zone"
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "Southeast Landing Zone"
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lv522)
+/area/lv522/landing_zone_2)
 "bhD" = (
 /obj/structure/platform_decoration{
 	dir = 1
@@ -11237,11 +11237,11 @@
 /turf/open/floor/carpet,
 /area/lv522/indoors/b_block/bar)
 "fdt" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Southeast Landing Zone"
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "Southwest Landing Zone"
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop2/lv522)
+/area/lv522/landing_zone_1)
 "fdC" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -65924,7 +65924,7 @@ sYH
 sYH
 nFj
 pRg
-nFj
+fdt
 vER
 uZc
 wdY
@@ -66151,7 +66151,7 @@ sYH
 sYH
 nFj
 nFj
-bhy
+sYH
 gnf
 ryU
 wes
@@ -98174,7 +98174,7 @@ aIp
 aIp
 xYA
 aiP
-xYA
+bhy
 jYr
 gRp
 aVa
@@ -98401,7 +98401,7 @@ aIp
 aIp
 xYA
 xYA
-fdt
+aIp
 kcR
 hIf
 cDi

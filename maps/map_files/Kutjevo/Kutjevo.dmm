@@ -7173,11 +7173,11 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_S_East)
 "jZJ" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Dunes Landing Zone"
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "NW Colony Landing Zone"
 	},
 /turf/open/floor/plating/kutjevo,
-/area/shuttle/drop1/kutjevo)
+/area/kutjevo/exterior/lz_pad)
 "jZT" = (
 /turf/open/floor/kutjevo/colors/cyan/edge{
 	dir = 8
@@ -7495,11 +7495,11 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "kvd" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	name = "NW Colony Landing Zone"
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "Dunes Landing Zone"
 	},
 /turf/open/floor/plating/kutjevo,
-/area/shuttle/drop2/kutjevo)
+/area/kutjevo/exterior/lz_dunes)
 "kvf" = (
 /obj/structure/platform_decoration/kutjevo/rock{
 	dir = 4
@@ -19721,7 +19721,7 @@ lAI
 lAI
 nbV
 umo
-nbV
+kvd
 nbV
 qVc
 cWV
@@ -19888,7 +19888,7 @@ lAI
 lAI
 nbV
 nbV
-jZJ
+lAI
 nbV
 usd
 cWV
@@ -20793,7 +20793,7 @@ ppX
 ppX
 hzN
 wqk
-hzN
+jZJ
 hzN
 dpt
 xBm
@@ -20960,7 +20960,7 @@ ppX
 ppX
 hzN
 hzN
-kvd
+ppX
 hzN
 lNl
 xBm

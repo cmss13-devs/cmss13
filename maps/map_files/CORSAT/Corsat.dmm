@@ -580,17 +580,12 @@
 	},
 /area/corsat/gamma/residential/researcher)
 "abV" = (
-/turf/open/floor/plating{
-	dir = 10;
-	icon_state = "warnplate"
-	},
-/area/corsat/gamma/hangar)
-"abW" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
 	dwidth = 1;
 	name = "Gamma Landing Zone"
 	},
 /turf/open/floor/plating{
+	dir = 10;
 	icon_state = "warnplate"
 	},
 /area/corsat/gamma/hangar)
@@ -1892,17 +1887,12 @@
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afN" = (
-/turf/open/floor/plating{
-	dir = 10;
-	icon_state = "warnplate"
-	},
-/area/corsat/sigma/hangar)
-"afO" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
 	dwidth = 1;
 	name = "Sigma Landing Zone"
 	},
 /turf/open/floor/plating{
+	dir = 10;
 	icon_state = "warnplate"
 	},
 /area/corsat/sigma/hangar)
@@ -93444,7 +93434,7 @@ aaG
 aaG
 aaX
 aaG
-abW
+bBX
 aco
 aaG
 acG
@@ -120957,7 +120947,7 @@ afi
 afi
 aeN
 afi
-afO
+eDz
 ajU
 aeB
 vkW

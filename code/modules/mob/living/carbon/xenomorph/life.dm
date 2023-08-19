@@ -544,7 +544,7 @@ Make sure their actual health updates immediately.*/
 		new_luminosity += caste.caste_luminosity
 	if(on_fire)
 		new_luminosity += min(fire_stacks, 5)
-	set_light(new_luminosity) // light up xenos
+	set_light_range(new_luminosity) // light up xenos
 
 /mob/living/carbon/xenomorph/handle_stunned()
 	if(stunned)

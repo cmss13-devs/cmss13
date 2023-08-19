@@ -3,6 +3,7 @@
 
 /area/adminlevel
 	ceiling = CEILING_METAL
+	base_lighting_alpha = 255
 
 /area/adminlevel/bunker01
 	icon_state = "thunder"
@@ -10,7 +11,6 @@
 	statistic_exempt = TRUE
 	flags_area = AREA_NOTUNNEL
 	luminosity = TRUE
-	base_lighting_alpha = 255
 
 /area/adminlevel/bunker01/mainroom
 	name = "\improper Bunker Main Room"

@@ -183,7 +183,8 @@
 
 	to_chat(X, SPAN_XENOWARNING("Your stomach starts turning and twisting, getting ready to compress the built up acid."))
 	X.color = "#22FF22"
-	X.set_light(3)
+	X.set_light_color("#22FF22")
+	X.set_light_range(3)
 
 	BD.caboom_trigger = TRUE
 	BD.caboom_left = BD.caboom_timer
@@ -204,7 +205,7 @@
 
 	behavior.caboom_trigger = FALSE
 	xeno.color = null
-	xeno.set_light(0)
+	xeno.set_light_range(0)
 	behavior.modify_acid(-behavior.max_acid / 4)
 
 	// Done this way rather than setting to 0 in case something else slowed us

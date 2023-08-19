@@ -6,21 +6,21 @@
 	icon_state = "flood00"
 	density = TRUE
 	anchored = TRUE
-	var/on = 0
 	var/obj/item/cell/cell = null
 	var/use = 0
 	var/unlocked = 0
 	var/open = 0
-	light_range = 6
 	light_power = 2
 	unslashable = TRUE
 	unacidable = TRUE
 
+	var/on_light_range = 6
+
 /obj/structure/machinery/floodlight/Initialize(mapload, ...)
 	. = ..()
 	cell = new /obj/item/cell(src)
-	if(on)
-		turn_light(toggle_on = TRUE)
+	if(light_on)
+		set_light(on_light_range)
 
 /obj/structure/machinery/floodlight/Destroy()
 	QDEL_NULL(cell)
@@ -31,10 +31,14 @@
 	if(. == NO_LIGHT_STATE_CHANGE)
 		return
 
-	set_light_on(toggle_on)
+	if(toggle_on)
+		set_light(on_light_range)
+	else
+		set_light(0)
+
 
 /obj/structure/machinery/floodlight/proc/updateicon()
-	icon_state = "flood[open ? "o" : ""][open && cell ? "b" : ""]0[on]"
+	icon_state = "flood[open ? "o" : ""][open && cell ? "b" : ""]0[light_on]"
 
 /obj/structure/machinery/floodlight/attack_hand(mob/user as mob)
 	if(open && cell)
@@ -53,8 +57,7 @@
 		updateicon()
 		return
 
-	if(on)
-		on = 0
+	if(light_on)
 		to_chat(user, SPAN_NOTICE("You turn off the light."))
 		turn_light(user, toggle_on = FALSE)
 		unslashable = TRUE
@@ -64,7 +67,6 @@
 			return
 		if(cell.charge <= 0)
 			return
-		on = 1
 		to_chat(user, SPAN_NOTICE("You turn on the light."))
 		turn_light(user, toggle_on = TRUE)
 		unacidable = FALSE
@@ -119,7 +121,7 @@
 	name = "Landing Light"
 	desc = "A powerful light stationed near landing zones to provide better visibility."
 	icon_state = "flood01"
-	on = 1
+	light_on = TRUE
 	in_use = 1
 	use_power = USE_POWER_NONE
 

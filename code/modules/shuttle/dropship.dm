@@ -3,7 +3,7 @@
 	icon = 'icons/turf/dropship.dmi'
 	icon_state = "1"
 	opacity = TRUE
-
+	density = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	breakable = FALSE

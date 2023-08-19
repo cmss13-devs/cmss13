@@ -151,6 +151,7 @@
 		var/units = "seconds"
 		if(remaining_time > 60)
 			to_chat(user, SPAN_WARNING("The shuttle is not responding, try again in [remaining_time] [units]."))
+			return
 		to_chat(user, SPAN_NOTICE("You start to remove the Queens override."))
 		if(!do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			to_chat(user, SPAN_WARNING("You fail to remove the Queens override"))

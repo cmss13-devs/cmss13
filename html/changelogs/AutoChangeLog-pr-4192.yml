@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed mapped in maps for solaris ridge not opening correctly."
-  - refactor: "Refactored current_map to use a global list instead to remove the need for duplicate definitions."

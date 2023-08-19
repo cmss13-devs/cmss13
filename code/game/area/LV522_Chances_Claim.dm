@@ -180,6 +180,7 @@
 	name = "North LZ1 - Spaceport"
 	icon_state = "red"
 	minimap_color = MINIMAP_AREA_LZ
+	is_resin_allowed = FALSE
 
 /area/lv522/indoors/lone_buildings/outdoor_bot
 	name = "East LZ1 - Outdoor T-Comms"

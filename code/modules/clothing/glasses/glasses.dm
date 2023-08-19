@@ -140,6 +140,10 @@
 	req_skill_level = SKILL_RESEARCH_TRAINED
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
 
+/obj/item/clothing/glasses/science/prescription
+	name = "prescription reagent scanner HUD goggles"
+	desc = "These goggles are probably of use to someone who isn't holding a rifle and actively seeking to lower their combat life expectancy. Contains prescription lenses." 
+
 /obj/item/clothing/glasses/science/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_INFO("While wearing them, you can examine items to see their reagent contents.")

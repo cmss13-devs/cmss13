@@ -272,3 +272,10 @@
   - maptweak: Replaces some cave walls on LV624 with junglewalls (nothing will change
       gameplay wise)
   - maptweak: Adds bin to Research Chem/Req room and moves item blocking pillbox
+2023-08-19:
+  Drathek:
+  - bugfix: Fixed mapped in maps for solaris ridge not opening correctly.
+  - refactor: Refactored current_map to use a global list instead to remove the need
+      for duplicate definitions.
+  - ui: Fix Hotkeys TGUI lag and the inability to map Ctrl + R. Also now offers a
+      little bit more time to map combinations of keys.

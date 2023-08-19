@@ -31,6 +31,9 @@
 		LAZYADD(A.linked_pylons, src)
 		linked_turfs += A
 
+	if(light_range)
+		set_light(light_range)
+
 /obj/effect/alien/resin/special/pylon/Destroy()
 	for(var/turf/A as anything in linked_turfs)
 		LAZYREMOVE(A.linked_pylons, src)

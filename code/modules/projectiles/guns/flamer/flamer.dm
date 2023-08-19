@@ -404,8 +404,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	icon_state = "dynamic_2"
 	layer = BELOW_OBJ_LAYER
 
-	light_system = MOVABLE_LIGHT
-	light_mask_type = /atom/movable/lighting_mask/flicker
+	light_system = STATIC_LIGHT
 	light_on = TRUE
 	light_range = 3
 	light_power = 3

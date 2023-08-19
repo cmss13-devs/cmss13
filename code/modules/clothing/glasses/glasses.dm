@@ -143,6 +143,7 @@
 /obj/item/clothing/glasses/science/prescription
 	name = "prescription reagent scanner HUD goggles"
 	desc = "These goggles are probably of use to someone who isn't holding a rifle and actively seeking to lower their combat life expectancy. Contains prescription lenses." 
+	prescription = TRUE
 
 /obj/item/clothing/glasses/science/get_examine_text(mob/user)
 	. = ..()

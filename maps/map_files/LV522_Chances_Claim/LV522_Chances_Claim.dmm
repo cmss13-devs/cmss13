@@ -9673,13 +9673,12 @@
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/oob)
 "evu" = (
-/obj/structure/prop/maintenance_hatch{
+/obj/structure/tunnel/maint_tunnel{
 	pixel_y = 6
 	},
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/barricade/handrail,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "evv" = (
@@ -9814,13 +9813,10 @@
 	},
 /area/lv522/atmos/east_reactor)
 "exQ" = (
-/obj/structure/prop/maintenance_hatch{
-	pixel_y = 6
-	},
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/barricade/handrail,
+/obj/structure/largecrate,
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -14472,7 +14468,7 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "gul" = (
-/obj/structure/prop/maintenance_hatch{
+/obj/structure/tunnel/maint_tunnel{
 	pixel_y = 6
 	},
 /turf/open/floor/prison{
@@ -20477,14 +20473,10 @@
 	},
 /area/lv522/landing_zone_2)
 "iGD" = (
-/obj/structure/prop/maintenance_hatch{
+/obj/structure/tunnel/maint_tunnel{
 	pixel_y = 6
 	},
 /obj/structure/machinery/light/small,
-/obj/structure/barricade/handrail{
-	dir = 1;
-	pixel_y = 9
-	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "iGF" = (
@@ -24208,7 +24200,7 @@
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "jYp" = (
-/obj/structure/prop/maintenance_hatch{
+/obj/structure/tunnel/maint_tunnel{
 	pixel_y = 6
 	},
 /turf/open/floor/prison{
@@ -56793,7 +56785,7 @@
 /area/lv522/indoors/a_block/executive)
 "vSV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/maintenance_hatch{
+/obj/structure/tunnel/maint_tunnel{
 	pixel_y = 6
 	},
 /turf/open/floor/prison{

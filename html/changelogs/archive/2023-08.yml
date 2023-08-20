@@ -240,3 +240,46 @@
       skills and adding 0.5s per level in Policing and CQC.
   - rscadd: Added an unstrippable mob trait to prevent inventory manipulation. Gave
       this trait to Working Joes.
+2023-08-17:
+  realforest2001:
+  - bugfix: Players joining as Working Joe after round start now spawn in correct
+      place.
+2023-08-18:
+  Ben10083:
+  - bugfix: Prompt allowing staff to call for ERT with an announcement fixed to actually
+      appear
+  - ui: Prompts for admin-calling ERT converted to TGUI.
+  - maptweak: Combat Information Center pens now use black ink
+  - balance: Zombie attacks deal less damage and only slow down targets (not superslow
+      as they currently do)
+  - balance: Zombie resistances have been reduced heavily, making them far more susceptible
+      to brute damage. Their speed has been doubled to compensate
+  - balance: Black goo on tiles now requires you to not wear shoes to have chance
+      for infection
+  - bugfix: Zombie attacks now only apply effects such as slow and infection if the
+      attack is valid (if the zombie is able to attack)
+  SpartanBobby gdifirehawk:
+  - rscadd: Subtype of tunnel added "Maintenance Tunnel" currently only on LV522 these
+      tunnels act the same as regular tunnels but look different, keep an eye out
+      marines. Description by GDIFIREHAWK
+  ihatethisengine:
+  - rscadd: foxtrot cryomarines spawn as freed mobs if not taken.
+  realforest2001:
+  - rscadd: Added prefixes in OOC for Staff and Mentors. Created a proc to check for
+      these prefixes and Donator.
+  - bugfix: Fixed isCouncil check.
+  spartanbobby:
+  - maptweak: Replaces some cave walls on LV624 with junglewalls (nothing will change
+      gameplay wise)
+  - maptweak: Adds bin to Research Chem/Req room and moves item blocking pillbox
+2023-08-19:
+  Drathek:
+  - bugfix: Fixed mapped in maps for solaris ridge not opening correctly.
+  - refactor: Refactored current_map to use a global list instead to remove the need
+      for duplicate definitions.
+  - ui: Fix Hotkeys TGUI lag and the inability to map Ctrl + R. Also now offers a
+      little bit more time to map combinations of keys.
+2023-08-20:
+  Huffie56:
+  - bugfix: prevent belt flare being filled by dump in action leaving no space for
+      flare gun.

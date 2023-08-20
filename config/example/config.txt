@@ -131,7 +131,7 @@ GUEST_BAN
 FORUMURL https://forum.cm-ss13.com/
 
 ## Wiki address
-WIKIURL https://cm-ss13/wiki/
+WIKIURL https://cm-ss13.com/w
 
 ## Rules address
 RULESURL https://cm-ss13.com/viewtopic.php?f=57&t=5094

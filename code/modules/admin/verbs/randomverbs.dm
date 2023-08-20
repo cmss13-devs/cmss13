@@ -12,7 +12,7 @@
 		return
 
 	if(!CLIENT_IS_STAFF(src))
-		if(!CLIENT_HAS_RIGHTS(src, R_MENTOR))
+		if(!CLIENT_IS_MENTOR(src))
 			to_chat(src, "Only staff members have permission to use this.")
 			return
 		if(!CONFIG_GET(flag/mentor_tools))

@@ -272,7 +272,7 @@
 
 /obj/item/clothing/suit/storage/marine/light/intel
 	name = "\improper XM4 pattern intelligence officer armor"
-	desc = "A well tinkered and crafted hybrid of an M3-L pattern light armor modify to have more storage"
+	desc = "A well tinkered and crafted hybrid of an M3-L pattern light armor modified to have more storage"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/marine/officer/intel)
 	storage_slots = 4
 	brightness_on = 7 //slightly higher

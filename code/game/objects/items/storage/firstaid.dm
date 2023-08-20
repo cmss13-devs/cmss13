@@ -212,6 +212,22 @@
 /obj/item/storage/firstaid/surgical/empty/fill_preset_inventory()
 	return
 
+//---------TOOLKIT---------
+
+/obj/item/storage/firstaid/toolkit
+	name = "toolkit"
+	desc = "An combat engineering toolkit intended to carry electrical and mechanical supplies into combat."
+	icon_state = "toolkit"
+	item_state = "fulton"
+
+/obj/item/storage/firstaid/toolkit/update_icon()
+	if(content_watchers || !length(contents))
+		icon_state = "toolkit_empty"
+	else
+		icon_state = icon_full
+
+/obj/item/storage/firstaid/toolkit/empty/fill_preset_inventory()
+	return
 
 //---------SYRINGE CASE---------
 
@@ -265,7 +281,14 @@
 
 /obj/item/storage/surgical_case
 	name = "surgical case"
-	desc = "It's a medical case for storing basic surgical tools."
+	desc = "It's a medical case for storing basic surgical tools. It comes with a brief description for treating common internal bleeds.\
+		\nBefore surgery: Verify correct location and patient is adequately numb to pain.\
+		\nStep one: Open an incision at the site with the scalpel.\
+		\nStep two: Clamp bleeders with the hemostat.\
+		\nStep three: Draw back the skin with the retracter.\
+		\nStep four: Patch the damaged vein with a surgical line.\
+		\nStep five: Close the incision with a surgical line."
+
 	icon_state = "surgical_case"
 	throw_speed = SPEED_FAST
 	throw_range = 8
@@ -447,6 +470,22 @@
 /obj/item/storage/pill_bottle/dropped()
 	..()
 	update_icon()
+
+/obj/item/storage/pill_bottle/attack_hand(mob/user, mods)
+	if(loc != user)
+		return ..()
+
+	if(!mods || !mods["alt"])
+		return ..()
+
+	if(!ishuman(user))
+		return ..()
+
+	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		error_idlock(user)
+		return FALSE
+
+	return ..()
 
 /obj/item/storage/pill_bottle/proc/error_idlock(mob/user)
 	to_chat(user, SPAN_WARNING("It must have some kind of ID lock..."))

@@ -20,8 +20,6 @@
 	var/force_nest = FALSE
 	/// counterpart to buckling_y --> offsets the buckled mob when it buckles
 	var/list/buckling_x
-	/// saves the density of the buckled_mob
-	var/buckled_mob_density
 
 /obj/structure/bed/nest/Initialize(mapload, hive)
 	. = ..()
@@ -52,7 +50,6 @@
 		resisting_ready = FALSE
 
 	if(buckled_mob == current_mob)
-		buckled_mob_density = current_mob.density
 		current_mob.pixel_y = buckling_y["[dir]"]
 		current_mob.pixel_x = buckling_x["[dir]"]
 		current_mob.dir = turn(dir, 180)
@@ -70,7 +67,7 @@
 
 	current_mob.pixel_y = initial(buckled_mob.pixel_y)
 	current_mob.pixel_x = initial(buckled_mob.pixel_x)
-	current_mob.density = buckled_mob_density
+	current_mob.density = !(current_mob.lying || current_mob.stat == DEAD)
 	if(dir == SOUTH)
 		current_mob.layer = initial(current_mob.layer)
 		if(!ishuman(current_mob))
@@ -281,8 +278,6 @@
 	buckled_mob.old_y = 0
 	REMOVE_TRAIT(buckled_mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
 	var/mob/living/carbon/human/buckled_human = buckled_mob
-	if(buckled_human.stat == DEAD )
-		buckled_mob_density = FALSE
 
 	var/mob/dead/observer/G = ghost_of_buckled_mob
 	var/datum/mind/M = G?.mind
@@ -311,7 +306,6 @@
 
 /obj/structure/bed/nest/proc/healthcheck()
 	if(health <= 0)
-		buckled_mob_density = FALSE
 		deconstruct()
 
 /obj/structure/bed/nest/fire_act()

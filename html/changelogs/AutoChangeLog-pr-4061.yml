@@ -1,5 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - bugfix: "Fixes brain damage"
-  - qol: "Jittering from brain damage is now capped"

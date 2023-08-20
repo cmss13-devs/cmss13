@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_intelligence_officer, list(
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
 		list("ARMOR (CHOOSE 1)", 0, null, null, null),
-		list("XM4 Pattern Intel Armor", 0, /obj/item/clothing/suit/storage/marine/rto/intel, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("XM4 Pattern Intel Armor", 0, /obj/item/clothing/suit/storage/marine/light/intel, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Service Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/service, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),

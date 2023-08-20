@@ -270,9 +270,12 @@
 	brightness_on = 7 //slightly higher
 	specialty = "M4 pattern marine"
 
-/obj/item/clothing/suit/storage/marine/rto/intel
+/obj/item/clothing/suit/storage/marine/light/intel
 	name = "\improper XM4 pattern intelligence officer armor"
+	desc = "A well tinkered and crafted hybrid of an M3-L pattern light armor modify to have more storage"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/marine/officer/intel)
+	storage_slots = 4
+	brightness_on = 7 //slightly higher
 	specialty = "XM4 pattern intel"
 
 /obj/item/clothing/suit/storage/marine/MP

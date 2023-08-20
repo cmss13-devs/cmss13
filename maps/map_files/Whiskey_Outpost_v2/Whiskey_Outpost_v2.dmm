@@ -868,6 +868,9 @@
 "dl" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/whiskey_outpost/inside/hospital)
+"dn" = (
+/turf/open/space/basic,
+/area/whiskey_outpost/inside/caves)
 "dr" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -1062,7 +1065,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/inside/caves/tunnel)
 "dV" = (
-/obj/structure/machinery/chem_master,
+/obj/structure/machinery/chem_dispenser,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "whitegreen"
@@ -1203,9 +1206,8 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/inside/caves/tunnel)
 "ez" = (
-/obj/structure/machinery/chem_dispenser,
-/obj/structure/machinery/light/small{
-	dir = 8
+/obj/structure/machinery/chem_master{
+	tether_range = 4
 	},
 /turf/open/floor{
 	dir = 1;
@@ -1959,7 +1961,9 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_north)
 "he" = (
-/obj/structure/machinery/chem_dispenser,
+/obj/structure/machinery/chem_master{
+	tether_range = 4
+	},
 /turf/open/floor{
 	dir = 6;
 	icon_state = "whitegreen"
@@ -2426,7 +2430,10 @@
 	},
 /area/whiskey_outpost/outside/north/northeast)
 "ix" = (
-/obj/structure/machinery/chem_master,
+/obj/structure/machinery/chem_dispenser,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor{
 	dir = 10;
 	icon_state = "whitegreen"
@@ -22662,7 +22669,7 @@ mT
 mT
 mT
 mT
-mT
+dn
 mT
 mT
 dl
@@ -23061,12 +23068,12 @@ mT
 mT
 mT
 mT
+dn
 mT
 mT
 mT
 mT
-mT
-mT
+dn
 mT
 mT
 qz

@@ -97,7 +97,7 @@
 /proc/get_access(access_list = ACCESS_LIST_GLOBAL)
 	switch(access_list)
 		if(ACCESS_LIST_GLOBAL)
-			return list(ACCESS_ILLEGAL_PIRATE) + get_access(ACCESS_LIST_MARINE_ALL) + get_access(ACCESS_LIST_WY_ALL) + get_access(ACCESS_LIST_COLONIAL_ALL)
+			return list(ACCESS_ILLEGAL_PIRATE) + get_access(ACCESS_LIST_MARINE_ALL) + get_access(ACCESS_LIST_WY_ALL) + get_access(ACCESS_LIST_COLONIAL_ALL) + get_access(ACCESS_LIST_CLF_ALL) + get_access(ACCESS_LIST_UPP_ALL)
 		if(ACCESS_LIST_MARINE_MAIN)
 			return list(
 				ACCESS_MARINE_SENIOR,

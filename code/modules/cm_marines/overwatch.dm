@@ -153,6 +153,8 @@
 	for(var/marine in current_squad.marines_list)
 		if(!marine)
 			continue //just to be safe
+		if(istype(marine.loc, /obj/structure/machinery/cryopod)) //We don't care much for these
+			continue
 		var/mob_name = "unknown"
 		var/mob_state = ""
 		var/has_helmet = TRUE
@@ -306,7 +308,12 @@
 	for(var/i in 1 to length(saved_coordinates))
 		data["saved_coordinates"] += list(list("x" = saved_coordinates[i]["x"], "y" = saved_coordinates[i]["y"], "comment" = saved_coordinates[i]["comment"], "index" = i))
 
-	var/obj/structure/closet/crate/supply_crate = locate() in current_squad.drop_pad.loc
+	var/has_supply_pad = FALSE
+	var/obj/structure/closet/crate/supply_crate
+	if(current_squad.drop_pad)
+		supply_crate = locate() in current_squad.drop_pad.loc
+		has_supply_pad = TRUE
+	data["can_launch_crates"] = has_supply_pad
 	data["has_crate_loaded"] = supply_crate
 	data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
 	data["ob_cooldown"] = COOLDOWN_TIMELEFT(almayer_orbital_cannon, ob_firing_cooldown)

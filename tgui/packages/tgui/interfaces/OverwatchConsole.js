@@ -79,12 +79,14 @@ const SquadPanel = (props, context) => {
           onClick={() => setCategory('monitor')}>
           Squad Monitor
         </Tabs.Tab>
-        <Tabs.Tab
-          selected={category === 'supply'}
-          icon="wrench"
-          onClick={() => setCategory('supply')}>
-          Supply Drop
-        </Tabs.Tab>
+        {!!data.can_launch_crates && (
+          <Tabs.Tab
+            selected={category === 'supply'}
+            icon="wrench"
+            onClick={() => setCategory('supply')}>
+            Supply Drop
+          </Tabs.Tab>
+        )}
         <Tabs.Tab
           selected={category === 'ob'}
           icon="bomb"
@@ -96,7 +98,7 @@ const SquadPanel = (props, context) => {
         </Tabs.Tab>
       </Tabs>
       {category === 'monitor' && <SquadMonitor />}
-      {category === 'supply' && <SupplyDrop />}
+      {category === 'supply' && data.can_launch_crates && <SupplyDrop />}
       {category === 'ob' && <OrbitalBombardment />}
     </>
   );
@@ -501,7 +503,7 @@ const SquadMonitor = (props, context) => {
                         }>
                         {marine.name}
                       </Button>
-                    )) || <Box color="red">{marine.name} (NO HELMET)</Box>}
+                    )) || <Box color="yellow">{marine.name} (NO HELMET)</Box>}
                   </Table.Cell>
                   <Table.Cell p="2px">{marine.role}</Table.Cell>
                   <Table.Cell

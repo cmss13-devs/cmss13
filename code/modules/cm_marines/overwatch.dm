@@ -153,8 +153,6 @@
 	for(var/marine in current_squad.marines_list)
 		if(!marine)
 			continue //just to be safe
-		if(istype(marine.loc, /obj/structure/machinery/cryopod)) //We don't care much for these
-			continue
 		var/mob_name = "unknown"
 		var/mob_state = ""
 		var/has_helmet = TRUE
@@ -168,6 +166,8 @@
 
 
 		if(ishuman(marine))
+			if(istype(marine_human.loc, /obj/structure/machinery/cryopod)) //We don't care much for these
+				continue
 			marine_human = marine
 			mob_name = marine_human.real_name
 			var/area/current_area = get_area(marine_human)

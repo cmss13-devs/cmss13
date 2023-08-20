@@ -1080,7 +1080,7 @@ and you're good to go.
 		if(!(active_attachable.flags_attach_features & ATTACH_PROJECTILE)) //If it's unique projectile, this is where we fire it.
 			if((active_attachable.current_rounds <= 0) && !(active_attachable.flags_attach_features & ATTACH_IGNORE_EMPTY))
 				click_empty(user) //If it's empty, let them know.
-				to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
+				to_chat(user, SPAN_WARNING("[active_attachable] is empty !"))
 				to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
 				active_attachable.activate_attachment(src, null, TRUE)
 			else
@@ -1503,7 +1503,11 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(flags_gun_features & GUN_TRIGGER_SAFETY)
 			to_chat(user, SPAN_WARNING("The safety is on!"))
 			return
-
+		if(active_attachable)
+			if(active_attachable && active_attachable.flags_attach_features & ATTACH_PROJECTILE)
+				if(!(active_attachable.flags_attach_features & ATTACH_WIELD_OVERRIDE) && !(flags_item & WIELDED))
+					to_chat(user, SPAN_WARNING("You must wield \the [src] to fire \the [active_attachable]!"))
+					return
 		if((flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(flags_item & WIELDED)) //If we're not holding the weapon with both hands when we should.
 			to_chat(user, SPAN_WARNING("You need a more secure grip to fire this weapon!"))
 			return

@@ -2470,7 +2470,7 @@ Defined in conflicts.dm of the #defines folder.
 		return
 
 	if((gun.flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(gun.flags_item & WIELDED))
-		to_chat(user, SPAN_WARNING("You must wield \the [gun] to fire \the [src]!"))
+		to_chat(user, SPAN_WARNING("You must wield [gun] to fire \the [src]!"))
 		return
 
 	if(gun.flags_gun_features & GUN_TRIGGER_SAFETY)

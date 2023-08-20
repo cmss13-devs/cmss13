@@ -2261,7 +2261,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/obj/item/weapon/gun/attached_gun = loc
 
 	if(!(attached_gun.flags_item & WIELDED))
-		to_chat(user, SPAN_WARNING("You must wield \the [attached_gun] to fire \the [src]!"))
+		to_chat(user, SPAN_WARNING("You must wield [attached_gun] to fire \the [src]!"))
 		return
 
 	if(current_rounds > round_usage_per_tile && ..())
@@ -2408,7 +2408,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(!internal_extinguisher)
 		return
 	if(!(gun.flags_item & WIELDED))
-		to_chat(user, SPAN_WARNING("You must wield \the [gun] to fire \the [src]!"))
+		to_chat(user, SPAN_WARNING("You must wield [gun] to fire \the [src]!"))
 		return
 	if(..())
 		return internal_extinguisher.afterattack(target, user)

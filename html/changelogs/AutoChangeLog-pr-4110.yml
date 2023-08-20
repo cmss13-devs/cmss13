@@ -1,0 +1,4 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - bugfix: "prevent belt flare being filled by dump in action leaving no space for flare gun."

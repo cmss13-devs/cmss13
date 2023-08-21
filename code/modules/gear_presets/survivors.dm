@@ -1566,7 +1566,7 @@
 	..()
 
 /datum/equipment_preset/survivor/upp
-	name = "UPP Soldier"
+	name = "Survivor - UPP"
 	paygrade = "UE1"
 	origin_override = ORIGIN_UPP
 	rank = JOB_SURVIVOR

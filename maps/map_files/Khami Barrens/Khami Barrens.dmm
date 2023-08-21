@@ -550,7 +550,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/corpsespawner/colonist/kutjevo,
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/tan,
 /area/khami_barrens/interior/village/med/reception_storage)
 "aFc" = (
@@ -1177,7 +1177,7 @@
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 4
 	},
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/gm,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "bqV" = (
@@ -1630,7 +1630,7 @@
 /obj/structure/bed/chair/wood/wings{
 	dir = 8
 	},
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 4
 	},
@@ -2243,7 +2243,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/tiles,
 /area/khami_barrens/interior/village/residence/west)
 "cES" = (
@@ -2347,7 +2347,7 @@
 /turf/open/floor/sandstone/runed,
 /area/khami_barrens/exterior/ruins)
 "cJX" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 4
 	},
@@ -2567,7 +2567,7 @@
 /area/khami_barrens/interior/village/engineering)
 "dbd" = (
 /obj/structure/window_frame/kutjevo,
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/tiles,
 /area/khami_barrens/interior/village/shop)
 "dcL" = (
@@ -4572,13 +4572,20 @@
 	},
 /area/khami_barrens/interior/research_caves/checkpoint)
 "fdu" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/tiles,
 /area/khami_barrens/interior/village/engineering)
 "fdA" = (
 /obj/structure/flora/grass/desert/heavygrass_10,
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/exterior/scrubland/checkpoint)
+"feh" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/item/prop/alien/hugger,
+/turf/open/gm/grass/grass_dried,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "feu" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/kutjevo/tiles,
@@ -4593,7 +4600,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/exterior/scrubland/village/west)
 "fgh" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/tiles,
 /area/khami_barrens/interior/village/residence)
 "fgq" = (
@@ -5093,7 +5100,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 4
 	},
@@ -5246,7 +5253,7 @@
 /area/khami_barrens/exterior/lz_pad)
 "fND" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/tiles,
 /area/khami_barrens/interior/research_caves/research)
 "fNV" = (
@@ -5983,7 +5990,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/fake_wood,
 /area/khami_barrens/interior/hunting_lodge)
 "gHG" = (
@@ -6615,7 +6622,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/exterior/scrubland)
 "hue" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/fake_wood,
 /area/khami_barrens/interior/research_caves/research)
 "huO" = (
@@ -6965,7 +6972,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/exterior/ruins)
 "hQM" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "hQW" = (
@@ -7302,7 +7309,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/exterior/lz_dunes)
 "ilN" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/interior/ruin_caves)
 "imh" = (
@@ -8263,7 +8270,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 8
 	},
@@ -10174,7 +10181,7 @@
 	},
 /area/khami_barrens/interior/landing_zone_arrivals/north)
 "lvm" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -10312,7 +10319,7 @@
 /turf/open/floor/sandstone/runed,
 /area/khami_barrens/interior/ruin_caves)
 "lCq" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/colors/cyan/edge{
 	dir = 4
 	},
@@ -10440,7 +10447,7 @@
 /area/khami_barrens/exterior/scrubland/checkpoint)
 "lKl" = (
 /obj/structure/disposalpipe/segment,
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 4
 	},
@@ -10636,7 +10643,7 @@
 /area/khami_barrens/interior/landing_zone_arrivals/north)
 "lSq" = (
 /obj/structure/disposalpipe/segment,
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 4
 	},
@@ -10730,7 +10737,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 1
 	},
@@ -11087,7 +11094,7 @@
 /turf/open/floor/kutjevo/tan/plate,
 /area/khami_barrens/interior/research_caves/research)
 "msE" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/tiles,
 /area/khami_barrens/interior/research_caves/research)
 "msM" = (
@@ -11387,7 +11394,7 @@
 	},
 /area/khami_barrens/exterior/driedoasis/basin)
 "mNs" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 4
 	},
@@ -11910,7 +11917,7 @@
 /turf/open/floor/kutjevo/colors/red/tile,
 /area/khami_barrens/interior/landing_zone)
 "nzF" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 4
 	},
@@ -11999,7 +12006,7 @@
 /area/khami_barrens/exterior/scrubland/checkpoint)
 "nFh" = (
 /obj/structure/machinery/light,
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 1
 	},
@@ -12229,7 +12236,7 @@
 /turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "nRS" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/tiles,
 /area/khami_barrens/interior/village/residence/east)
 "nRT" = (
@@ -12696,7 +12703,7 @@
 /turf/open/floor/kutjevo/colors/cyan/tile,
 /area/khami_barrens/interior/village/med/south)
 "oqP" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 4
 	},
@@ -13127,7 +13134,7 @@
 /area/khami_barrens/exterior/scrubland/checkpoint)
 "oNs" = (
 /obj/structure/machinery/door/window,
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/tan/plate,
 /area/khami_barrens/interior/research_caves/research)
 "oNC" = (
@@ -13384,7 +13391,7 @@
 /area/khami_barrens/exterior/ruins)
 "pbJ" = (
 /obj/effect/landmark/corpsespawner/doctor,
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/tan,
 /area/khami_barrens/interior/village/med)
 "pbK" = (
@@ -13648,7 +13655,7 @@
 /turf/open/floor/kutjevo/colors/cyan/tile,
 /area/khami_barrens/interior/village/med/south)
 "psN" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/colors/red/inner_corner{
 	dir = 1
 	},
@@ -14385,7 +14392,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/trunk,
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/colors/cyan/tile,
 /area/khami_barrens/interior/village/med/reception_storage)
 "qpo" = (
@@ -14641,7 +14648,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/exterior/scrubland/village/west)
 "qFR" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 1
 	},
@@ -15100,7 +15107,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9
 	},
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/sandstone/runed,
 /area/khami_barrens/interior/ruin_caves)
 "rou" = (
@@ -15609,7 +15616,7 @@
 	},
 /area/khami_barrens/interior/hunting_lodge)
 "rLK" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/tan/plate,
 /area/khami_barrens/interior/research_caves/research)
 "rLY" = (
@@ -17398,7 +17405,7 @@
 	},
 /area/khami_barrens/interior/village/company_offices/reception)
 "tIj" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/sandstone/runed,
 /area/khami_barrens/interior/ruin_caves)
 "tIE" = (
@@ -17412,7 +17419,7 @@
 /area/khami_barrens/interior/village/residence)
 "tKe" = (
 /obj/structure/machinery/light,
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -17727,7 +17734,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/almayer/research/containment/corner_var1{
 	icon_state = "containment_corner_variant_2"
 	},
@@ -17876,7 +17883,7 @@
 	},
 /area/khami_barrens/interior/checkpoint)
 "ujy" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/gm,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "ujN" = (
@@ -18250,7 +18257,7 @@
 /turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "uGs" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/wood/ship,
 /area/khami_barrens/interior/rancher_residence)
 "uGM" = (
@@ -18449,7 +18456,7 @@
 	},
 /area/khami_barrens/interior/checkpoint)
 "uVQ" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/fake_wood,
 /area/khami_barrens/interior/hunting_lodge)
 "uWb" = (
@@ -19628,7 +19635,7 @@
 /turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "wlT" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -19733,7 +19740,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 1
 	},
@@ -19819,7 +19826,7 @@
 /area/khami_barrens/exterior/telecomm/lz2_north)
 "wxo" = (
 /obj/structure/disposalpipe/segment,
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 4
 	},
@@ -21118,7 +21125,7 @@
 /area/khami_barrens/interior/village/company_offices)
 "xVh" = (
 /obj/structure/disposalpipe/segment,
-/obj/item/clothing/mask/facehugger,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 4
 	},
@@ -49838,7 +49845,7 @@ xZZ
 iFe
 iFe
 hXf
-tVH
+hQM
 tVH
 upP
 puj
@@ -52285,7 +52292,7 @@ eqx
 nZW
 aZo
 xZZ
-iFe
+feh
 cEX
 hES
 tyB

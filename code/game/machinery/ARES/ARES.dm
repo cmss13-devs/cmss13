@@ -149,7 +149,7 @@
 	var/list/records_talking = list()
 	/// Holds all (/datum/ares_record/requisition_log)s
 	var/list/records_asrs = list()
-	/// Holds all (/datum/ares_record/security)s and (/datum/ares_record/antiair)s
+	/// Holds all (/datum/ares_record/security)s (including AA)
 	var/list/records_security = list()
 	/// Holds all (/datum/ares_record/flight)s
 	var/list/records_flight = list()

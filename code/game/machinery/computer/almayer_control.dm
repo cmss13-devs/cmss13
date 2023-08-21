@@ -11,11 +11,11 @@
 	/// requesting a distress beacon
 	COOLDOWN_DECLARE(cooldown_request)
 	/// requesting evac
-	COOLDOWN_DECLARE(cooldown_destruct) 
+	COOLDOWN_DECLARE(cooldown_destruct)
 	/// messaging HC (admins)
 	COOLDOWN_DECLARE(cooldown_central)
 	/// making a ship announcement
-	COOLDOWN_DECLARE(cooldown_message) 
+	COOLDOWN_DECLARE(cooldown_message)
 
 	var/list/messagetitle = list()
 	var/list/messagetext = list()
@@ -164,11 +164,11 @@
 			if(!level_selected)
 				return
 
-			set_security_level(seclevel2num(level_selected))
+			set_security_level(seclevel2num(level_selected), log = ARES_LOG_NONE)
 			log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 			message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
 			var/datum/ares_link/link = GLOB.ares_link
-			link.log_ares_security("Security Level Update", "[usr] has changed the security level to [get_security_level()].")
+			link.log_ares_security("Manual Security Update", "[usr] has changed the security level to [get_security_level()].")
 			. = TRUE
 
 		if("messageUSCM")

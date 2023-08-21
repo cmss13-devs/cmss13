@@ -151,6 +151,8 @@
 	var/list/records_asrs = list()
 	/// Holds all (/datum/ares_record/security)s and (/datum/ares_record/antiair)s
 	var/list/records_security = list()
+	/// Holds all (/datum/ares_record/flight)s
+	var/list/records_flight = list()
 	/// Is nuke request usable or not?
 	var/nuke_available = TRUE
 

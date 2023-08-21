@@ -92,9 +92,7 @@
 	data["records_announcement"] = logged_announcements
 
 	var/list/logged_alerts = list()
-	for(var/datum/ares_record/security/security_alert as anything in interface.records_announcement)
-		if(!istype(security_alert))
-			continue
+	for(var/datum/ares_record/security/security_alert as anything in interface.records_security)
 		var/list/current_alert = list()
 		current_alert["time"] = security_alert.time
 		current_alert["title"] = security_alert.title
@@ -102,6 +100,17 @@
 		current_alert["ref"] = "\ref[security_alert]"
 		logged_alerts += list(current_alert)
 	data["records_security"] = logged_alerts
+
+	var/list/logged_flights = list()
+	for(var/datum/ares_record/flight/flight_log as anything in interface.records_flight)
+		var/list/current_flight = list()
+		current_flight["time"] = flight_log.time
+		current_flight["title"] = flight_log.title
+		current_flight["details"] = flight_log.details
+		current_flight["user"] = flight_log.user
+		current_flight["ref"] = "\ref[flight_log]"
+		logged_flights += list(current_flight)
+	data["records_flight"] = logged_flights
 
 	var/list/logged_bioscans = list()
 	for(var/datum/ares_record/bioscan/scan as anything in interface.records_bioscan)
@@ -147,18 +156,6 @@
 		deleted_disc["ref"] = "\ref[deleted_convo]"
 		logged_discussions += list(deleted_disc)
 	data["deleted_discussions"] = logged_discussions
-
-	var/list/logged_adjustments = list()
-	for(var/datum/ares_record/antiair/aa_adjustment as anything in interface.records_security)
-		if(!istype(aa_adjustment))
-			continue
-		var/list/current_adjustment = list()
-		current_adjustment["time"] = aa_adjustment.time
-		current_adjustment["details"] = aa_adjustment.details
-		current_adjustment["user"] = aa_adjustment.user
-		current_adjustment["ref"] = "\ref[aa_adjustment]"
-		logged_adjustments += list(current_adjustment)
-	data["aa_adjustments"] = logged_adjustments
 
 	var/list/logged_orders = list()
 	for(var/datum/ares_record/requisition_log/req_order as anything in interface.records_asrs)

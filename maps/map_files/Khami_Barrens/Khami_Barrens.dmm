@@ -2680,12 +2680,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/khami_barrens/exterior/stonyfields/north)
-"djq" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/closed/wall/kutjevo/colony,
-/area/khami_barrens/interior/marksman_residence)
 "djW" = (
 /obj/structure/toilet{
 	dir = 8
@@ -30645,7 +30639,7 @@ ecY
 vWG
 ecY
 snl
-djq
+bPR
 bPR
 bPR
 lzQ

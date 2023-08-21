@@ -163,6 +163,18 @@ const MainMenu = (props, context) => {
             </Stack.Item>
             <Stack.Item>
               <Button
+                content="Flight Records"
+                tooltip="Read the Dropship Flight Control Records."
+                icon="jet-fighter-up"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_flight')}
+              />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
                 content="Bioscan Logs"
                 tooltip="Access the Bioscan records."
                 icon="eye"
@@ -191,18 +203,6 @@ const MainMenu = (props, context) => {
           <Stack>
             <Stack.Item grow>
               <h3>Access Level 2</h3>
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                content="Flight Records"
-                tooltip="Read the Dropship Flight Control Records."
-                icon="jet-fighter-up"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('page_flight')}
-              />
             </Stack.Item>
             <Stack.Item>
               <Button

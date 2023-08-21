@@ -337,6 +337,9 @@
 /turf/open/gm/grass/grass2
 	icon_state = "grass2"
 
+/turf/open/gm/grass/grass_dried
+	icon_state = "grass_dried"
+
 /turf/open/gm/grass/grassbeach
 	icon_state = "grassbeach"
 

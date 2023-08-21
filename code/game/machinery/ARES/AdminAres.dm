@@ -92,9 +92,7 @@
 	data["records_announcement"] = logged_announcements
 
 	var/list/logged_alerts = list()
-	for(var/datum/ares_record/security/security_alert as anything in interface.records_announcement)
-		if(!istype(security_alert))
-			continue
+	for(var/datum/ares_record/security/security_alert as anything in interface.records_security)
 		var/list/current_alert = list()
 		current_alert["time"] = security_alert.time
 		current_alert["title"] = security_alert.title

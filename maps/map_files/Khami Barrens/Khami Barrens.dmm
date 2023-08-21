@@ -33,9 +33,7 @@
 	},
 /area/khami_barrens/interior/village/botany)
 "abD" = (
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "abM" = (
 /obj/structure/pipes/unary/freezer{
@@ -121,9 +119,7 @@
 "afe" = (
 /obj/structure/disposalpipe/segment,
 /obj/item/ammo_box/magazine/shotgun/buckshot/empty,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "afu" = (
 /obj/structure/disposalpipe/segment,
@@ -148,9 +144,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgibmid1"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "agt" = (
 /obj/effect/landmark/survivor_spawner,
@@ -731,9 +725,7 @@
 	dir = 1;
 	pixel_y = 13
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "aNd" = (
 /obj/structure/sign/safety/coffee{
@@ -881,9 +873,7 @@
 /area/khami_barrens/interior/research_caves/research)
 "aZo" = (
 /obj/structure/barricade/wooden,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "bab" = (
 /obj/structure/platform/kutjevo{
@@ -1105,9 +1095,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "bnl" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -1211,9 +1199,7 @@
 /obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/landmark/wo_supplies/guns/common/shotgun,
 /obj/item/attachable/bayonet/co2,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "brD" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -1223,9 +1209,7 @@
 	dir = 4;
 	layer = 2.99
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/lz_dunes)
 "bsR" = (
 /turf/open/floor/kutjevo/multi_tiles{
@@ -1304,9 +1288,7 @@
 	dir = 8
 	},
 /obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "byq" = (
 /obj/structure/disposalpipe/segment{
@@ -1502,9 +1484,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "bLs" = (
 /turf/open/floor/almayer/research/containment/floor1{
@@ -1549,9 +1529,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "bMT" = (
 /obj/structure/flora/pottedplant{
@@ -1779,9 +1757,7 @@
 /area/khami_barrens/exterior/lodge)
 "cat" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/gates)
 "caL" = (
 /obj/structure/machinery/power/apc,
@@ -1836,9 +1812,7 @@
 	},
 /area/khami_barrens/interior/village/company_offices/east)
 "ces" = (
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/gates)
 "ceJ" = (
 /turf/open/auto_turf/sand/layer1,
@@ -1960,9 +1934,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/gates)
 "cmi" = (
 /obj/structure/machinery/disposal,
@@ -2067,9 +2039,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/gates)
 "ctS" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat/chess,
@@ -2213,10 +2183,6 @@
 /turf/open/floor/kutjevo/fake_wood,
 /area/khami_barrens/interior/village/residence/company/east)
 "cCc" = (
-/obj/structure/prop/maintenance_hatch{
-	name = "shower grate";
-	desc = "a rusty shower grate"
-	},
 /obj/structure/machinery/shower{
 	pixel_y = 12
 	},
@@ -2288,9 +2254,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "cFS" = (
 /obj/structure/disposalpipe/junction{
@@ -2302,10 +2266,6 @@
 "cGd" = (
 /obj/structure/machinery/shower{
 	pixel_y = 12
-	},
-/obj/structure/prop/maintenance_hatch{
-	name = "shower grate";
-	desc = "a rusty shower grate"
 	},
 /turf/open/floor/kutjevo/tan/plate,
 /area/khami_barrens/interior/research_caves/research)
@@ -2703,9 +2663,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib2"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "dhK" = (
 /turf/open/floor/kutjevo/multi_tiles{
@@ -2778,9 +2736,7 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "dme" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -3608,9 +3564,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "eet" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -3815,9 +3769,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib4"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "eqJ" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
@@ -3863,9 +3815,7 @@
 /area/khami_barrens/interior/village/med)
 "erP" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "erR" = (
 /obj/item/clothing/suit/bio_suit/virology,
@@ -4037,9 +3987,7 @@
 /area/khami_barrens/exterior/stonyfields/north)
 "exj" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "exm" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -4051,9 +3999,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "exv" = (
 /obj/structure/disposalpipe/segment,
@@ -4068,9 +4014,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "eyS" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -4455,9 +4399,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/lz_dunes)
 "eUL" = (
 /turf/closed/wall/kutjevo/rock/border,
@@ -4611,9 +4553,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "fdg" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -4843,9 +4783,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgibhead"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "foG" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -4908,17 +4846,13 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "ftQ" = (
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgibhead"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "fup" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -5001,9 +4935,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "fAq" = (
 /obj/structure/disposalpipe/segment{
@@ -5042,9 +4974,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib4"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "fBq" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -5206,10 +5136,6 @@
 /obj/structure/machinery/shower{
 	pixel_y = 12
 	},
-/obj/structure/prop/maintenance_hatch{
-	name = "shower grate";
-	desc = "a rusty shower grate"
-	},
 /obj/structure/window/reinforced{
 	dir = 4;
 	layer = 4.11
@@ -5233,9 +5159,7 @@
 /obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/landmark/wo_supplies/guns/common/shotgun,
 /obj/item/attachable/bayonet/co2,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "fLd" = (
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
@@ -5372,9 +5296,7 @@
 "fOR" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "fOX" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -5685,9 +5607,7 @@
 /area/khami_barrens/interior/village/company_offices)
 "glI" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "glR" = (
 /obj/structure/closet/secure_closet/scientist,
@@ -5806,16 +5726,6 @@
 	dir = 8
 	},
 /turf/open/floor/kutjevo/tiles,
-/area/khami_barrens/interior/research_caves/research)
-"grm" = (
-/obj/structure/prop/maintenance_hatch{
-	name = "shower grate";
-	desc = "a rusty shower grate"
-	},
-/obj/structure/machinery/shower{
-	pixel_y = 12
-	},
-/turf/open/floor/kutjevo/tan/plate,
 /area/khami_barrens/interior/research_caves/research)
 "grJ" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
@@ -5950,9 +5860,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib1"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "gzq" = (
 /obj/structure/barricade/handrail/kutjevo,
@@ -6053,9 +5961,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "gFV" = (
 /obj/structure/machinery/power/geothermal,
@@ -6197,9 +6103,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "gRI" = (
 /obj/structure/machinery/vending/cigarette/colony,
@@ -6266,9 +6170,7 @@
 	dir = 9
 	},
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "gWW" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
@@ -6494,9 +6396,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "hiN" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -6632,9 +6532,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/gates)
 "hqJ" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
@@ -6896,9 +6794,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib3"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "hET" = (
 /obj/item/clipboard,
@@ -7070,9 +6966,7 @@
 /area/khami_barrens/exterior/ruins)
 "hQM" = (
 /obj/item/clothing/mask/facehugger,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "hQW" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
@@ -7199,9 +7093,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib6"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "hXk" = (
 /turf/open/floor/kutjevo/multi_tiles{
@@ -7467,9 +7359,7 @@
 	dir = 4;
 	layer = 2.99
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/lz_dunes)
 "ipd" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
@@ -7719,9 +7609,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "iFw" = (
 /turf/open/auto_turf/sand/layer2,
@@ -7768,9 +7656,7 @@
 	dir = 4;
 	pixel_y = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "iJb" = (
 /turf/open/floor/kutjevo/tiles,
@@ -8026,9 +7912,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib1"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "iXp" = (
 /obj/structure/machinery/conveyor_switch{
@@ -8127,9 +8011,7 @@
 /area/khami_barrens/exterior/village/east)
 "jbV" = (
 /obj/item/ammo_box/magazine/shotgun/buckshot/empty,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "jcr" = (
 /obj/structure/floodgate,
@@ -8229,9 +8111,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "jjf" = (
 /turf/open/auto_turf/sand/layer1,
@@ -8289,9 +8169,7 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "jnq" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -8368,9 +8246,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "jrR" = (
 /obj/structure/machinery/vending/dinnerware,
@@ -8608,9 +8484,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/gates)
 "jCP" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -8804,9 +8678,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/gates)
 "jQK" = (
 /obj/structure/toilet{
@@ -8854,9 +8726,7 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "jTz" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -8868,10 +8738,6 @@
 "jTL" = (
 /obj/structure/machinery/shower{
 	dir = 4
-	},
-/obj/structure/prop/maintenance_hatch{
-	name = "shower grate";
-	desc = "a rusty shower grate"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/corpsespawner/colonist/kutjevo,
@@ -8922,9 +8788,7 @@
 	dir = 1
 	},
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "jZr" = (
 /obj/structure/disposalpipe/segment{
@@ -8968,9 +8832,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/gates)
 "kbz" = (
 /turf/open/asphalt/cement_sunbleached,
@@ -9531,9 +9393,7 @@
 	dir = 4
 	},
 /obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "kCJ" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -9576,9 +9436,7 @@
 /area/khami_barrens/exterior/village)
 "kFj" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "kFT" = (
 /obj/structure/janitorialcart,
@@ -9883,9 +9741,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "kSY" = (
 /obj/structure/disposalpipe/segment,
@@ -9893,9 +9749,7 @@
 /area/khami_barrens/interior/checkpoint)
 "kTP" = (
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/gates)
 "kUp" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -10046,9 +9900,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/wooden,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "lcS" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -10085,9 +9937,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "lez" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
@@ -10141,9 +9991,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "lgu" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -10166,9 +10014,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "lio" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -10290,9 +10136,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/gates)
 "lsu" = (
 /obj/structure/surface/rack,
@@ -10412,9 +10256,7 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "lAn" = (
 /obj/structure/window/framed/kutjevo,
@@ -11107,9 +10949,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "mhL" = (
 /obj/structure/platform/mineral/sandstone/runed{
@@ -11446,9 +11286,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "mES" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -11459,9 +11297,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/barricade/wooden,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "mFf" = (
 /obj/structure/disposalpipe/segment{
@@ -11668,9 +11504,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "mWQ" = (
 /obj/structure/machinery/disposal,
@@ -11818,9 +11652,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "nfW" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -11895,9 +11727,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/gates)
 "nla" = (
 /turf/open/floor/almayer/research/containment/floor1,
@@ -11905,10 +11735,6 @@
 "nly" = (
 /obj/structure/machinery/shower{
 	dir = 4
-	},
-/obj/structure/prop/maintenance_hatch{
-	name = "shower grate";
-	desc = "a rusty shower grate"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/kutjevo/tan/plate,
@@ -11953,9 +11779,7 @@
 "nnF" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "nnR" = (
 /turf/open/auto_turf/sand/layer2,
@@ -12128,9 +11952,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "nBg" = (
 /turf/closed/wall/mineral/bone_resin,
@@ -12360,9 +12182,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib1"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "nNt" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
@@ -12399,18 +12219,14 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "nQL" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
 	},
 /obj/effect/landmark/yautja_teleport,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "nRS" = (
 /obj/item/clothing/mask/facehugger,
@@ -12466,9 +12282,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "nUh" = (
 /obj/structure/flora/grass/desert/heavygrass_3,
@@ -12521,9 +12335,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "nWX" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
@@ -12597,9 +12409,7 @@
 /obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/landmark/wo_supplies/guns/common/shotgun,
 /obj/item/attachable/bayonet/co2,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "nZZ" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
@@ -12848,9 +12658,7 @@
 "opV" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/effect/landmark/yautja_teleport,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "opX" = (
 /obj/structure/disposalpipe/segment,
@@ -13042,9 +12850,7 @@
 	dir = 5;
 	layer = 2.99
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/lz_dunes)
 "oyN" = (
 /obj/structure/bed/chair/wood/wings,
@@ -13124,9 +12930,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/gates)
 "oDl" = (
 /obj/structure/disposalpipe/junction{
@@ -13796,9 +13600,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "poZ" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
@@ -13835,10 +13637,6 @@
 /obj/structure/machinery/shower{
 	pixel_y = 12
 	},
-/obj/structure/prop/maintenance_hatch{
-	name = "shower grate";
-	desc = "a rusty shower grate"
-	},
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -13870,9 +13668,7 @@
 /area/khami_barrens/interior/landing_zone_arrivals/north)
 "puj" = (
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "puI" = (
 /obj/structure/disposalpipe/junction{
@@ -13908,9 +13704,7 @@
 /area/khami_barrens/interior/village/company_offices)
 "pvw" = (
 /obj/effect/decal/sand_overlay/sand1,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "pvP" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries,
@@ -13930,9 +13724,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "pwp" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -13963,9 +13755,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib2"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "pzx" = (
 /obj/effect/landmark/monkey_spawn,
@@ -14756,9 +14546,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "qzN" = (
 /obj/structure/window/framed/kutjevo/reinforced,
@@ -14920,9 +14708,7 @@
 	dir = 4;
 	layer = 2.99
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/lz_dunes)
 "qIp" = (
 /obj/effect/decal/sand_overlay/sand1,
@@ -15184,9 +14970,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgibarm"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "rez" = (
 /obj/structure/disposalpipe/segment,
@@ -15255,17 +15039,13 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgibhead"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "rhT" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/gates)
 "rhY" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -15314,9 +15094,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "roh" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -16066,10 +15844,6 @@
 /obj/structure/machinery/shower{
 	pixel_y = 12
 	},
-/obj/structure/prop/maintenance_hatch{
-	name = "shower grate";
-	desc = "a rusty shower grate"
-	},
 /turf/open/floor/kutjevo/colors/orange,
 /area/khami_barrens/interior/village/engineering)
 "scD" = (
@@ -16152,9 +15926,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib1"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "sjH" = (
 /obj/structure/closet/emcloset,
@@ -16430,9 +16202,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "szh" = (
 /obj/structure/barricade/handrail/sandstone/b{
@@ -16479,9 +16249,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "sBI" = (
 /obj/structure/platform/mineral/sandstone/runed{
@@ -16554,9 +16322,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib4"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "sFm" = (
 /turf/open/asphalt/cement_sunbleached,
@@ -16642,9 +16408,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "sLb" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
@@ -16746,9 +16510,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "sOp" = (
 /obj/structure/machinery/computer/objective{
@@ -16962,9 +16724,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgibleg"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "sWE" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
@@ -17010,10 +16770,6 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/khami_barrens/exterior/village)
 "sZd" = (
-/obj/structure/prop/maintenance_hatch{
-	name = "shower grate";
-	desc = "a rusty shower grate"
-	},
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 4.09
@@ -17151,9 +16907,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "ten" = (
 /obj/structure/machinery/vending/snack,
@@ -17529,9 +17283,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib1"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "tyE" = (
 /turf/open/auto_turf/sand/layer1,
@@ -17693,10 +17445,6 @@
 /obj/structure/machinery/shower{
 	pixel_y = 12
 	},
-/obj/structure/prop/maintenance_hatch{
-	name = "shower grate";
-	desc = "a rusty shower grate"
-	},
 /obj/structure/window/reinforced{
 	dir = 4;
 	layer = 4.11
@@ -17740,9 +17488,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib1"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "tNy" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -17755,9 +17501,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgibmid1"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "tNA" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -17878,9 +17622,7 @@
 /turf/open/floor/kutjevo/fake_wood,
 /area/khami_barrens/interior/village/company_offices)
 "tVH" = (
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "tWV" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -17968,9 +17710,7 @@
 /obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/landmark/wo_supplies/guns/common/shotgun,
 /obj/item/attachable/bayonet/co2,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "uaJ" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -18023,9 +17763,7 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/gates)
 "ucK" = (
 /obj/structure/disposalpipe/segment{
@@ -18232,9 +17970,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "upo" = (
 /obj/structure/machinery/light,
@@ -18263,9 +17999,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib5"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "uqk" = (
 /obj/structure/disposalpipe/segment{
@@ -18490,9 +18224,7 @@
 /area/khami_barrens/exterior/scrubland/village)
 "uFh" = (
 /obj/effect/landmark/hunter_primary,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "uFJ" = (
 /obj/structure/machinery/power/apc{
@@ -18515,9 +18247,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "uGs" = (
 /obj/item/clothing/mask/facehugger,
@@ -18604,9 +18334,7 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "uNf" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -19030,9 +18758,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib5"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "vnm" = (
 /obj/item/paper/crumpled{
@@ -19074,9 +18800,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib6"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "vqR" = (
 /obj/structure/flora/grass/desert/lightgrass_11,
@@ -19135,9 +18859,7 @@
 /area/khami_barrens/interior/checkpoint)
 "vua" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/gates)
 "vuV" = (
 /obj/structure/largecrate/random/barrel/white,
@@ -19816,10 +19538,6 @@
 /obj/structure/machinery/shower{
 	pixel_y = 12
 	},
-/obj/structure/prop/maintenance_hatch{
-	name = "shower grate";
-	desc = "a rusty shower grate"
-	},
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -19907,9 +19625,7 @@
 /obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/landmark/wo_supplies/guns/common/shotgun,
 /obj/item/attachable/bayonet/co2,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "wlT" = (
 /obj/item/clothing/mask/facehugger,
@@ -19975,10 +19691,6 @@
 	dir = 4
 	},
 /obj/structure/curtain/shower,
-/obj/structure/prop/maintenance_hatch{
-	name = "shower grate";
-	desc = "a rusty shower grate"
-	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -20162,9 +19874,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib6"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "wCD" = (
 /obj/structure/machinery/washing_machine,
@@ -20311,9 +20021,7 @@
 	dir = 1;
 	pixel_y = 13
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "wJg" = (
 /turf/open/floor/kutjevo/colors,
@@ -20353,9 +20061,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "wNt" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed,
@@ -20678,10 +20384,6 @@
 	desc = "The UP-153. Installed by the State-Funded Hygiene Organization.";
 	dir = 8
 	},
-/obj/structure/prop/maintenance_hatch{
-	name = "shower grate";
-	desc = "a rusty shower grate"
-	},
 /obj/structure/curtain/shower,
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -20750,9 +20452,7 @@
 	dir = 5;
 	layer = 2.99
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/lz_dunes)
 "xkZ" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -20887,14 +20587,6 @@
 /obj/structure/machinery/shower{
 	dir = 4
 	},
-/obj/structure/prop/maintenance_hatch{
-	name = "shower grate";
-	desc = "a rusty shower grate"
-	},
-/obj/structure/prop/maintenance_hatch{
-	name = "shower grate";
-	desc = "a rusty shower grate"
-	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/kutjevo/tan/plate,
 /area/khami_barrens/interior/research_caves/research)
@@ -20931,9 +20623,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgibmid1"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "xtQ" = (
 /obj/structure/bed,
@@ -21252,9 +20942,7 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "xLI" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -21265,9 +20953,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib4"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "xMt" = (
 /obj/structure/flora/bush/ausbushes/palebush,
@@ -21375,9 +21061,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib4"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "xSG" = (
 /obj/structure/disposalpipe/segment{
@@ -21468,9 +21152,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/gates)
 "xWM" = (
 /obj/structure/disposalpipe/segment{
@@ -21556,9 +21238,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
 "xZL" = (
 /obj/structure/disposalpipe/segment,
@@ -21566,9 +21246,7 @@
 /area/khami_barrens/exterior/stonyfields/north)
 "xZZ" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/gm/grass{
-	color = "#FFA500"
-	},
+/turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "yao" = (
 /obj/structure/bed/chair/wood/wings{
@@ -21662,10 +21340,6 @@
 /obj/structure/window/reinforced{
 	dir = 4;
 	layer = 3
-	},
-/obj/structure/prop/maintenance_hatch{
-	name = "shower grate";
-	desc = "a rusty shower grate"
 	},
 /obj/structure/machinery/shower{
 	desc = "The UP-153. Installed by the State-Funded Hygiene Organization.";
@@ -51384,7 +51058,7 @@ jti
 eUL
 eUL
 ssw
-grm
+cGd
 kSz
 llj
 ssw
@@ -51606,7 +51280,7 @@ jti
 eUL
 eUL
 ssw
-grm
+cGd
 kSz
 aYB
 ssw

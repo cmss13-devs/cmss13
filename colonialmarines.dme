@@ -787,6 +787,7 @@
 #include "code\game\machinery\teleporter.dm"
 #include "code\game\machinery\washing_machine.dm"
 #include "code\game\machinery\weather_siren.dm"
+#include "code\game\machinery\ARES\AdminAres.dm"
 #include "code\game\machinery\ARES\ARES.dm"
 #include "code\game\machinery\ARES\ARES_procs.dm"
 #include "code\game\machinery\ARES\ARES_records.dm"

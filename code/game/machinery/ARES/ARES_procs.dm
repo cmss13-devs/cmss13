@@ -23,7 +23,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/obj/structure/machinery/ares/processor/interface/p_interface
 	var/obj/structure/machinery/ares/processor/apollo/p_apollo
 	var/obj/structure/machinery/ares/processor/bioscan/p_bioscan
+
 	var/obj/structure/machinery/computer/ares_console/interface
+	var/datum/ares_console_admin/admin_interface
+
 	var/list/obj/structure/machinery/computer/working_joe/ticket_computers = list()
 
 	/// The chat log of the apollo link. Timestamped.
@@ -33,7 +36,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/list/tickets_maintenance = list()
 	var/list/tickets_access = list()
 
+/datum/ares_link/New()
+	admin_interface = new
 /datum/ares_link/Destroy()
+	qdel(admin_interface)
 	for(var/obj/structure/machinery/ares/link in linked_systems)
 		link.delink()
 	for(var/obj/structure/machinery/computer/ares_console/interface in linked_systems)
@@ -42,6 +48,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		alert.delink()
 	..()
 
+/* BELOW ARE IN AdminAres.dm
+/datum/ares_link/tgui_interact(mob/user, datum/tgui/ui)
+/datum/ares_link/ui_data(mob/user)
+*/
 
 // ------ ARES Logging Procs ------ //
 /proc/log_ares_apollo(speaker, message)
@@ -127,40 +137,51 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 /obj/structure/machinery/computer/proc/ares_auth_to_text(access_level)
 	switch(access_level)
-		if(ARES_ACCESS_BASIC)//0
+		if(ARES_ACCESS_LOGOUT)//0
+			return "Logged Out"
+		if(ARES_ACCESS_BASIC)//1
 			return "Authorized"
-		if(ARES_ACCESS_COMMAND)//1
+		if(ARES_ACCESS_COMMAND)//2
 			return "[MAIN_SHIP_NAME] Command"
-		if(ARES_ACCESS_JOE)//2
+		if(ARES_ACCESS_JOE)//3
 			return "Working Joe"
-		if(ARES_ACCESS_CORPORATE)//3
+		if(ARES_ACCESS_CORPORATE)//4
 			return "Weyland-Yutani"
-		if(ARES_ACCESS_SENIOR)//4
+		if(ARES_ACCESS_SENIOR)//5
 			return "[MAIN_SHIP_NAME] Senior Command"
-		if(ARES_ACCESS_CE)//5
+		if(ARES_ACCESS_CE)//6
 			return "Chief Engineer"
-		if(ARES_ACCESS_SYNTH)//6
+		if(ARES_ACCESS_SYNTH)//7
 			return "USCM Synthetic"
-		if(ARES_ACCESS_CO)//7
+		if(ARES_ACCESS_CO)//8
 			return "[MAIN_SHIP_NAME] Commanding Officer"
-		if(ARES_ACCESS_HIGH)//8
+		if(ARES_ACCESS_HIGH)//9
 			return "USCM High Command"
-		if(ARES_ACCESS_WY_COMMAND)//9
+		if(ARES_ACCESS_WY_COMMAND)//10
 			return "Weyland-Yutani Directorate"
-		if(ARES_ACCESS_DEBUG)//10
+		if(ARES_ACCESS_DEBUG)//11
 			return "AI Service Technician"
 
 
-/obj/structure/machinery/computer/ares_console/proc/message_ares(text, mob/Sender, ref)
+/obj/structure/machinery/computer/ares_console/proc/message_ares(text, mob/Sender, ref, fake = FALSE)
 	var/msg = SPAN_STAFF_IC("<b><font color=orange>ARES:</font> [key_name(Sender, 1)] [ARES_MARK(Sender)] [ADMIN_PP(Sender)] [ADMIN_VV(Sender)] [ADMIN_SM(Sender)] [ADMIN_JMP_USER(Sender)] [ARES_REPLY(Sender, ref)]:</b> [text]")
 	var/datum/ares_record/talk_log/conversation = locate(ref)
 	conversation.conversation += "[last_login] at [worldtime2text()], '[text]'"
+	if(fake)
+		log_say("[key_name(Sender)] faked the message '[text]' from [last_login] in ARES 1:1.")
+		msg = SPAN_STAFF_IC("<b><font color=orange>ARES:</font> [key_name(Sender, 1)] faked a message from '[last_login]':</b> [text]")
+	else
+		log_say("[key_name(Sender)] sent '[text]' to ARES 1:1.")
+		for(var/client/admin in GLOB.admins)
+			if(admin.prefs.toggles_sound & SOUND_ARES_MESSAGE)
+				playsound_client(admin, 'sound/machines/chime.ogg', vol = 25)
+
 	for(var/client/admin in GLOB.admins)
 		if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 			to_chat(admin, msg)
-			if(admin.prefs.toggles_sound & SOUND_ARES_MESSAGE)
-				playsound_client(admin, 'sound/machines/chime.ogg', vol = 25)
-	log_say("[key_name(Sender)] sent '[text]' to ARES 1:1.")
+			var/admin_user = GLOB.ares_link.admin_interface.logged_in
+			if(admin_user && !fake)
+				to_chat(admin, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[admin_user] is logged in to ARES Remote Interface! They may be replying to this message!")]</b>"))
 
 /obj/structure/machinery/computer/ares_console/proc/response_from_ares(text, ref)
 	var/datum/ares_record/talk_log/conversation = locate(ref)
@@ -396,13 +417,14 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			return
 		// -- Page Changers -- //
 		if("logout")
-			last_menu = current_menu
 			current_menu = "login"
+			last_menu = current_menu
 			if(sudo_holder)
 				access_list += "[last_login] at [worldtime2text()], Sudo Logout."
 				last_login = sudo_holder
 				sudo_holder = null
 			access_list += "[last_login] logged out at [worldtime2text()]."
+			authentication = ARES_ACCESS_LOGOUT
 
 		if("home")
 			last_menu = current_menu
@@ -620,17 +642,19 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 /obj/structure/machinery/computer/working_joe/ares_auth_to_text(access_level)
 	switch(access_level)
-		if(APOLLO_ACCESS_REQUEST)//0
+		if(APOLLO_ACCESS_LOGOUT)//0
+			return "Logged Out"
+		if(APOLLO_ACCESS_REQUEST)//1
 			return "Unauthorized Personnel"
-		if(APOLLO_ACCESS_REPORTER)//1
+		if(APOLLO_ACCESS_REPORTER)//2
 			return "Validated Incident Reporter"
-		if(APOLLO_ACCESS_TEMP)//2
+		if(APOLLO_ACCESS_TEMP)//3
 			return "Authorized Visitor"
-		if(APOLLO_ACCESS_AUTHED)//3
+		if(APOLLO_ACCESS_AUTHED)//4
 			return "Certified Personnel"
-		if(APOLLO_ACCESS_JOE)//4
+		if(APOLLO_ACCESS_JOE)//5
 			return "Working Joe"
-		if(APOLLO_ACCESS_DEBUG)//5
+		if(APOLLO_ACCESS_DEBUG)//6
 			return "AI Service Technician"
 
 // ------ Maintenance Controller UI ------ //
@@ -866,9 +890,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			current_menu = "main"
 
 		if("logout")
-			last_menu = current_menu
 			current_menu = "login"
+			last_menu = current_menu
 			login_list += "[last_login] logged out at [worldtime2text()]."
+			authentication = APOLLO_ACCESS_LOGOUT
 
 		if("home")
 			last_menu = current_menu

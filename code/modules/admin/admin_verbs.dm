@@ -67,6 +67,7 @@ var/list/admin_verbs_default = list(
 	/datum/admins/proc/alertall,
 	/datum/admins/proc/imaginary_friend,
 	/client/proc/toggle_ares_ping,
+	/client/proc/cmd_admin_open_ares,
 	/client/proc/cmd_admin_say, /*staff-only ooc chat*/
 	/client/proc/cmd_mod_say, /* alternate way of typing asay, no different than cmd_admin_say  */
 	)
@@ -586,7 +587,7 @@ var/list/roundstart_mod_verbs = list(
 
 /client/proc/toggle_ares_ping()
 	set name = "Toggle ARES notification sound"
-	set category = "Preferences.Logs"
+	set category = "Preferences.Sound"
 
 	prefs.toggles_sound ^= SOUND_ARES_MESSAGE
 	if (prefs.toggles_sound & SOUND_ARES_MESSAGE)

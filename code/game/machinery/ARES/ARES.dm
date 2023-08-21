@@ -121,10 +121,10 @@
 	var/current_menu = "login"
 	var/last_menu = ""
 
-	var/authentication = ARES_ACCESS_BASIC
+	var/authentication = ARES_ACCESS_LOGOUT
 
 	/// The last person to login.
-	var/last_login
+	var/last_login = "No User"
 	/// The person pretending to be last_login
 	var/sudo_holder
 	/// A record of who logged in and when.
@@ -198,9 +198,9 @@
 	var/current_menu = "login"
 	var/last_menu = ""
 
-	var/authentication = ARES_ACCESS_BASIC
+	var/authentication = APOLLO_ACCESS_LOGOUT
 	/// The last person to login.
-	var/last_login
+	var/last_login = "No User"
 	/// A record of who logged in and when.
 	var/list/login_list = list()
 

@@ -1,7 +1,3 @@
-// -------------------------------------------------------------------- //
-// Please ensure when updating this menu, changes are reflected in AresAdmin.js
-// -------------------------------------------------------------------- //
-
 import { useBackend } from '../backend';
 import { Flex, Box, Section, Button, Stack } from '../components';
 import { Window } from '../layouts';
@@ -22,17 +18,16 @@ const PAGES = {
   'requisitions': () => Requisitions,
   'antiair': () => AntiAir,
   'emergency': () => Emergency,
+  'admin_access_log': () => AdminAccessLogs,
 };
 
-export const AresInterface = (props, context) => {
+export const AresAdmin = (props, context) => {
   const { data } = useBackend(context);
   const { current_menu, sudo } = data;
   const PageComponent = PAGES[current_menu]();
 
-  let themecolor = 'crtblue';
+  let themecolor = 'crtyellow';
   if (sudo >= 1) {
-    themecolor = 'crtred';
-  } else if (current_menu === 'emergency') {
     themecolor = 'crtred';
   }
 
@@ -58,11 +53,11 @@ const Login = (props, context) => {
       fontSize="2rem"
       mt="-3rem"
       bold>
-      <Box fontFamily="monospace">ARES v3.2 Interface</Box>
+      <Box fontFamily="monospace">ARES v3.2 Remote Interface</Box>
       <Box mb="2rem" fontFamily="monospace">
         WY-DOS Executive
       </Box>
-      <Box fontFamily="monospace">Version 8.2.3</Box>
+      <Box fontFamily="monospace">Version 4.4.1</Box>
       <Box fontFamily="monospace">Copyright © 2182, Weyland Yutani Corp.</Box>
 
       <Button
@@ -81,14 +76,8 @@ const Login = (props, context) => {
 
 const MainMenu = (props, context) => {
   const { data, act } = useBackend(context);
-  const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
-    access_level,
-    sudo,
-  } = data;
+  const { logged_in, access_text, last_page, current_menu, sudo, admin_login } =
+    data;
 
   return (
     <>
@@ -115,6 +104,8 @@ const MainMenu = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -160,197 +151,206 @@ const MainMenu = (props, context) => {
             />
           </Stack.Item>
         </Stack>
-        {access_level >= 2 && (
-          <Stack>
-            <Stack.Item grow>
-              <h3>Access Level 2</h3>
-            </Stack.Item>
+
+        <Stack>
+          <Stack.Item grow>
+            <h3>Access Level 2</h3>
+          </Stack.Item>
+          <Stack.Item>
+            <Button
+              content="Anti Air Targetting"
+              tooltip="Review changes to the Anti-Air targetting."
+              icon="crosshairs"
+              ml="auto"
+              px="2rem"
+              width="25vw"
+              bold
+              onClick={() => act('page_antiair')}
+            />
+          </Stack.Item>
+          <Stack.Item>
+            <Button
+              content="Bioscan Logs"
+              tooltip="Access the Bioscan records."
+              icon="eye"
+              ml="auto"
+              px="2rem"
+              width="25vw"
+              bold
+              onClick={() => act('page_bioscans')}
+            />
+          </Stack.Item>
+          <Stack.Item>
+            <Button
+              content="Bombardment Logs"
+              tooltip="Access Orbital Bombardment logs."
+              icon="meteor"
+              ml="auto"
+              px="2rem"
+              width="25vw"
+              bold
+              onClick={() => act('page_bombardments')}
+            />
+          </Stack.Item>
+        </Stack>
+
+        <Stack>
+          <Stack.Item grow>
+            <h3>Access Level 3</h3>
+          </Stack.Item>
+          <Stack.Item>
+            <Button
+              content="Security Updates"
+              tooltip="Read the Security Updates."
+              icon="file-shield"
+              ml="auto"
+              px="2rem"
+              width="25vw"
+              bold
+              onClick={() => act('page_security')}
+            />
+          </Stack.Item>
+          <Stack.Item>
+            <Button
+              content="View Apollo Log"
+              tooltip="Read the Apollo Link logs."
+              icon="clipboard"
+              ml="auto"
+              px="2rem"
+              width="25vw"
+              bold
+              onClick={() => act('page_apollo')}
+            />
+          </Stack.Item>
+        </Stack>
+
+        <Stack>
+          <Stack.Item grow>
+            <h3>Access Level 5</h3>
+          </Stack.Item>
+          <Stack.Item>
+            <Button.Confirm
+              content="Emergency Protocols"
+              tooltip="Access emergency protocols."
+              icon="shield"
+              color="red"
+              ml="auto"
+              px="2rem"
+              width="25vw"
+              bold
+              onClick={() => act('page_emergency')}
+            />
+          </Stack.Item>
+          <Stack.Item>
+            <Button
+              content="ASRS Audit Log"
+              tooltip="Review the ASRS Audit Log."
+              icon="cart-shopping"
+              ml="auto"
+              px="2rem"
+              width="25vw"
+              bold
+              onClick={() => act('page_requisitions')}
+            />
+          </Stack.Item>
+        </Stack>
+
+        <Stack>
+          <Stack.Item grow>
+            <h3>Access Level 6</h3>
+          </Stack.Item>
+          <Stack.Item>
+            <Button
+              content="View Access Log"
+              tooltip="View the recent logins."
+              icon="users"
+              ml="auto"
+              px="2rem"
+              width="25vw"
+              bold
+              onClick={() => act('page_access')}
+            />
+          </Stack.Item>
+        </Stack>
+        <Stack>
+          <Stack.Item grow>
+            <h3>Access Level 9</h3>
+          </Stack.Item>
+          <Stack.Item>
+            <Button
+              content="View Deletion Log"
+              tooltip="View the deletion log."
+              icon="sd-card"
+              ml="auto"
+              px="2rem"
+              width="25vw"
+              bold
+              onClick={() => act('page_deleted')}
+            />
+          </Stack.Item>
+          <Stack.Item>
+            <Button
+              content="View Deleted 1:1's"
+              tooltip="View the deleted 1:1 conversations with ARES."
+              icon="sd-card"
+              ml="auto"
+              px="2rem"
+              width="25vw"
+              bold
+              onClick={() => act('page_deleted_1to1')}
+            />
+          </Stack.Item>
+        </Stack>
+        <Stack>
+          <Stack.Item grow>
+            <h3>Maintenance Access</h3>
+          </Stack.Item>
+          {sudo === 0 && (
             <Stack.Item>
               <Button
-                content="Anti Air Targetting"
-                tooltip="Review changes to the Anti-Air targetting."
-                icon="crosshairs"
+                content="Sudo Login"
+                tooltip="You cannot do this via remote console."
+                icon="user-secret"
                 ml="auto"
                 px="2rem"
                 width="25vw"
                 bold
-                onClick={() => act('page_antiair')}
+                disabled={access_text}
               />
             </Stack.Item>
+          )}
+          {sudo >= 1 && (
             <Stack.Item>
               <Button
-                content="Bioscan Logs"
-                tooltip="Access the Bioscan records."
-                icon="eye"
+                content="Sudo Logout"
+                tooltip="You cannot do this via remote console."
+                icon="user-secret"
                 ml="auto"
                 px="2rem"
                 width="25vw"
                 bold
-                onClick={() => act('page_bioscans')}
+                disabled={access_text}
               />
             </Stack.Item>
-            <Stack.Item>
-              <Button
-                content="Bombardment Logs"
-                tooltip="Access Orbital Bombardment logs."
-                icon="meteor"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('page_bombardments')}
-              />
-            </Stack.Item>
-          </Stack>
-        )}
-        {access_level >= 3 && (
-          <Stack>
-            <Stack.Item grow>
-              <h3>Access Level 3</h3>
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                content="Security Updates"
-                tooltip="Read the Security Updates."
-                icon="file-shield"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('page_security')}
-              />
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                content="View Apollo Log"
-                tooltip="Read the Apollo Link logs."
-                icon="clipboard"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('page_apollo')}
-              />
-            </Stack.Item>
-          </Stack>
-        )}
-        {access_level >= 5 && (
-          <Stack>
-            <Stack.Item grow>
-              <h3>Access Level 5</h3>
-            </Stack.Item>
-            <Stack.Item>
-              <Button.Confirm
-                content="Emergency Protocols"
-                tooltip="Access emergency protocols."
-                icon="shield"
-                color="red"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('page_emergency')}
-              />
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                content="ASRS Audit Log"
-                tooltip="Review the ASRS Audit Log."
-                icon="cart-shopping"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('page_requisitions')}
-              />
-            </Stack.Item>
-          </Stack>
-        )}
-        {access_level >= 6 && (
-          <Stack>
-            <Stack.Item grow>
-              <h3>Access Level 6</h3>
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                content="View Access Log"
-                tooltip="View the recent logins."
-                icon="users"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('page_access')}
-              />
-            </Stack.Item>
-          </Stack>
-        )}
-        {access_level >= 9 && (
-          <Stack>
-            <Stack.Item grow>
-              <h3>Access Level 9</h3>
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                content="View Deletion Log"
-                tooltip="View the deletion log."
-                icon="sd-card"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('page_deleted')}
-              />
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                content="View Deleted 1:1's"
-                tooltip="View the deleted 1:1 conversations with ARES."
-                icon="sd-card"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('page_deleted_1to1')}
-              />
-            </Stack.Item>
-          </Stack>
-        )}
-        {access_level >= 11 && (
-          <Stack>
-            <Stack.Item grow>
-              <h3>Maintenance Access</h3>
-            </Stack.Item>
-            {sudo === 0 && (
-              <Stack.Item>
-                <Button
-                  content="Sudo Login"
-                  tooltip="Remote Login."
-                  icon="user-secret"
-                  ml="auto"
-                  px="2rem"
-                  width="25vw"
-                  bold
-                  onClick={() => act('sudo')}
-                />
-              </Stack.Item>
-            )}
-            {sudo >= 1 && (
-              <Stack.Item>
-                <Button
-                  content="Sudo Logout"
-                  tooltip="Logout of Sudo mode."
-                  icon="user-secret"
-                  ml="auto"
-                  px="2rem"
-                  width="25vw"
-                  bold
-                  onClick={() => act('sudo_logout')}
-                />
-              </Stack.Item>
-            )}
-          </Stack>
-        )}
+          )}
+        </Stack>
+        <Stack>
+          <Stack.Item grow>
+            <h3>Remote Admin</h3>
+          </Stack.Item>
+          <Stack.Item>
+            <Button
+              content="Remote Access Log"
+              tooltip="View which admins have been using ARES."
+              icon="users"
+              ml="auto"
+              px="2rem"
+              width="25vw"
+              bold
+              onClick={() => act('page_admin_list')}
+            />
+          </Stack.Item>
+        </Stack>
       </Section>
     </>
   );
@@ -364,7 +364,7 @@ const AnnouncementLogs = (props, context) => {
     last_page,
     current_menu,
     records_announcement,
-    access_level,
+    admin_login,
   } = data;
 
   return (
@@ -391,6 +391,8 @@ const AnnouncementLogs = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -439,9 +441,8 @@ const AnnouncementLogs = (props, context) => {
               <Flex.Item ml="1rem">
                 <Button.Confirm
                   icon="trash"
-                  tooltip="Delete Record"
-                  disabled={access_level < 3}
-                  onClick={() => act('delete_record', { record: record.ref })}
+                  tooltip="You cannot do this via remote console."
+                  disabled={access_text}
                 />
               </Flex.Item>
             </Flex>
@@ -460,7 +461,7 @@ const BioscanLogs = (props, context) => {
     last_page,
     current_menu,
     records_bioscan,
-    access_level,
+    admin_login,
   } = data;
 
   return (
@@ -487,6 +488,8 @@ const BioscanLogs = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -535,9 +538,8 @@ const BioscanLogs = (props, context) => {
               <Flex.Item ml="1rem">
                 <Button.Confirm
                   icon="trash"
-                  tooltip="Delete Record"
-                  disabled={access_level < 4}
-                  onClick={() => act('delete_record', { record: record.ref })}
+                  tooltip="You cannot do this via remote console."
+                  disabled={access_text}
                 />
               </Flex.Item>
             </Flex>
@@ -556,7 +558,7 @@ const BombardmentLogs = (props, context) => {
     last_page,
     current_menu,
     records_bombardment,
-    access_level,
+    admin_login,
   } = data;
 
   return (
@@ -583,6 +585,8 @@ const BombardmentLogs = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -635,9 +639,8 @@ const BombardmentLogs = (props, context) => {
               <Flex.Item ml="1rem">
                 <Button.Confirm
                   icon="trash"
-                  tooltip="Delete Record"
-                  disabled={access_level < 4}
-                  onClick={() => act('delete_record', { record: record.ref })}
+                  tooltip="You cannot do this via remote console."
+                  disabled={access_text}
                 />
               </Flex.Item>
             </Flex>
@@ -650,7 +653,14 @@ const BombardmentLogs = (props, context) => {
 
 const ApolloLog = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, apollo_log } = data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    apollo_log,
+    admin_login,
+  } = data;
 
   return (
     <>
@@ -676,6 +686,8 @@ const ApolloLog = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -706,7 +718,14 @@ const ApolloLog = (props, context) => {
 
 const AccessLogs = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, access_log } = data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    access_log,
+    admin_login,
+  } = data;
 
   return (
     <>
@@ -732,6 +751,8 @@ const AccessLogs = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -762,8 +783,14 @@ const AccessLogs = (props, context) => {
 
 const DeletionLogs = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, records_deletion } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    records_deletion,
+    admin_login,
+  } = data;
 
   return (
     <>
@@ -789,6 +816,8 @@ const DeletionLogs = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -855,6 +884,7 @@ const ARESTalk = (props, context) => {
     current_menu,
     active_convo,
     active_ref,
+    admin_login,
   } = data;
 
   return (
@@ -881,6 +911,8 @@ const ARESTalk = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -917,14 +949,30 @@ const ARESTalk = (props, context) => {
           );
         })}
         {!!active_convo.length && (
-          <Button
-            content="Send Message"
-            icon="pen"
-            ml="auto"
-            px="2rem"
-            bold
-            onClick={() => act('message_ares', { active_convo: active_ref })}
-          />
+          <Stack justify="center">
+            <Stack.Item>
+              <Button
+                content="Reply as ARES"
+                icon="pen"
+                ml="auto"
+                px="2rem"
+                bold
+                onClick={() => act('ares_reply', { active_convo: active_ref })}
+              />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                content="Send Fake Message"
+                icon="pen"
+                ml="auto"
+                px="2rem"
+                bold
+                onClick={() =>
+                  act('fake_message_ares', { active_convo: active_ref })
+                }
+              />
+            </Stack.Item>
+          </Stack>
         )}
       </Section>
       <Section align="center">
@@ -954,6 +1002,7 @@ const DeletedTalks = (props, context) => {
     last_page,
     current_menu,
     deleted_discussions,
+    admin_login,
   } = data;
 
   return (
@@ -980,6 +1029,8 @@ const DeletedTalks = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -1044,6 +1095,7 @@ const ReadingTalks = (props, context) => {
     last_page,
     current_menu,
     deleted_conversation,
+    admin_login,
   } = data;
 
   return (
@@ -1070,6 +1122,8 @@ const ReadingTalks = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -1105,6 +1159,7 @@ const Requisitions = (props, context) => {
     last_page,
     current_menu,
     records_requisition,
+    admin_login,
   } = data;
 
   return (
@@ -1131,6 +1186,8 @@ const Requisitions = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -1191,8 +1248,14 @@ const Requisitions = (props, context) => {
 
 const AntiAir = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, aa_adjustments } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    aa_adjustments,
+    admin_login,
+  } = data;
 
   return (
     <>
@@ -1218,6 +1281,8 @@ const AntiAir = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -1278,7 +1343,7 @@ const Security = (props, context) => {
     last_page,
     current_menu,
     records_security,
-    access_level,
+    admin_login,
   } = data;
 
   return (
@@ -1305,6 +1370,8 @@ const Security = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -1352,9 +1419,8 @@ const Security = (props, context) => {
               <Flex.Item ml="1rem">
                 <Button.Confirm
                   icon="trash"
-                  tooltip="Delete Record"
-                  disabled={access_level < 7}
-                  onClick={() => act('delete_record', { record: record.ref })}
+                  tooltip="You cannot do this via remote console."
+                  disabled={access_text}
                 />
               </Flex.Item>
             </Flex>
@@ -1367,64 +1433,7 @@ const Security = (props, context) => {
 
 const Emergency = (props, context) => {
   const { data, act } = useBackend(context);
-  const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
-    alert_level,
-    worldtime,
-    distresstimelock,
-    distresstime,
-    evac_status,
-    mission_failed,
-    nuketimelock,
-    nuke_available,
-  } = data;
-  const canQuarters = alert_level < 2;
-  let quarters_reason = 'Call for General Quarters.';
-  const minimumEvacTime = worldtime > distresstimelock;
-  const distressCooldown = worldtime < distresstime;
-  const canDistress = alert_level === 2 && !distressCooldown && minimumEvacTime;
-  let distress_reason = 'Launch a Distress Beacon.';
-  if (alert_level === 3) {
-    distress_reason = 'Self-destruct in progress. Beacon disabled.';
-  } else if (alert_level !== 2) {
-    distress_reason = 'Ship is not under an active emergency.';
-  } else if (distressCooldown) {
-    distress_reason = 'Beacon is currently on cooldown.';
-  } else if (!minimumEvacTime) {
-    distress_reason = "It's too early to launch a distress beacon.";
-  }
-
-  const canEvac = (evac_status === 0, alert_level >= 2);
-  let evac_reason = 'Begin evacuation procedures. Authorise Lifeboats.';
-  if (alert_level !== 2) {
-    evac_reason = 'Ship is not under an active emergency.';
-  } else if (evac_status === 1) {
-    evac_reason = 'Evacuation initiating.';
-  } else if (evac_status === 2) {
-    evac_reason = 'Evacuation in progress.';
-  } else if (evac_status === 3) {
-    evac_reason = 'Evacuation complete.';
-  }
-
-  const minimumNukeTime = worldtime > nuketimelock;
-  const canNuke =
-    (nuke_available, !mission_failed, evac_reason === 0, minimumNukeTime);
-  let nuke_reason =
-    'Request a nuclear device to be authorized by USCM High Command.';
-  if (!nuke_available) {
-    nuke_reason =
-      'No nuclear ordnance is available during this operation, or one has already been provided.';
-  } else if (mission_failed) {
-    nuke_reason =
-      'You have already lost the objective, you cannot use a nuclear device aboard the ship!';
-  } else if (evac_status !== 0) {
-    nuke_reason = 'You cannot use a nuclear device while abandoning the ship!';
-  } else if (!minimumNukeTime) {
-    nuke_reason = 'It is too soon to use a nuclear device. Keep fighting!';
-  }
+  const { logged_in, access_text, last_page, current_menu, admin_login } = data;
 
   return (
     <>
@@ -1450,6 +1459,8 @@ const Emergency = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -1467,7 +1478,7 @@ const Emergency = (props, context) => {
       <Flex align="center" justify="center" height="50%" direction="column">
         <Button.Confirm
           content="Call General Quarters"
-          tooltip={quarters_reason}
+          tooltip="You cannot do this via remote console."
           icon="triangle-exclamation"
           color="red"
           width="40vw"
@@ -1476,12 +1487,11 @@ const Emergency = (props, context) => {
           p="1rem"
           mt="5rem"
           bold
-          onClick={() => act('general_quarters')}
-          disabled={!canQuarters}
+          disabled={access_text}
         />
         <Button.Confirm
           content="Initiate Evacuation"
-          tooltip={evac_reason}
+          tooltip="You cannot do this via remote console."
           icon="shuttle-space"
           color="red"
           width="40vw"
@@ -1490,12 +1500,11 @@ const Emergency = (props, context) => {
           p="1rem"
           mt="5rem"
           bold
-          onClick={() => act('evacuation_start')}
-          disabled={!canEvac}
+          disabled={access_text}
         />
         <Button.Confirm
           content="Launch Distress Beacon"
-          tooltip={distress_reason}
+          tooltip="You cannot do this via remote console."
           icon="circle-exclamation"
           color="red"
           width="40vw"
@@ -1504,12 +1513,11 @@ const Emergency = (props, context) => {
           p="1rem"
           mt="5rem"
           bold
-          onClick={() => act('distress')}
-          disabled={!canDistress}
+          disabled={access_text}
         />
         <Button.Confirm
           content="Request Nuclear Device"
-          tooltip={nuke_reason}
+          tooltip="You cannot do this via remote console."
           icon="circle-radiation"
           color="red"
           width="40vw"
@@ -1518,10 +1526,78 @@ const Emergency = (props, context) => {
           p="1rem"
           mt="5rem"
           bold
-          onClick={() => act('nuclearbomb')}
-          disabled={!canNuke}
+          disabled={access_text}
         />
       </Flex>
+    </>
+  );
+};
+
+// -------------------------------------------------------------------- //
+// Anything below this line is exclusive to the Admin Remote Interface.
+// -------------------------------------------------------------------- //
+
+const AdminAccessLogs = (props, context) => {
+  const { data, act } = useBackend(context);
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    admin_access_log,
+    admin_login,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Access Log</h1>
+
+        {admin_access_log.map((login, i) => {
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              <Flex.Item bold>{login}</Flex.Item>
+            </Flex>
+          );
+        })}
+      </Section>
     </>
   );
 };

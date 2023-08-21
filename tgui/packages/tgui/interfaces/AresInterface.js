@@ -16,7 +16,6 @@ const PAGES = {
   'read_deleted': () => ReadingTalks,
   'security': () => Security,
   'requisitions': () => Requisitions,
-  'antiair': () => AntiAir,
   'emergency': () => Emergency,
 };
 
@@ -160,18 +159,6 @@ const MainMenu = (props, context) => {
           <Stack>
             <Stack.Item grow>
               <h3>Access Level 1</h3>
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                content="Anti Air Targetting"
-                tooltip="Review changes to the Anti-Air targetting."
-                icon="crosshairs"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('page_antiair')}
-              />
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -1185,87 +1172,6 @@ const Requisitions = (props, context) => {
   );
 };
 
-const AntiAir = (props, context) => {
-  const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, aa_adjustments } =
-    data;
-
-  return (
-    <>
-      <Section>
-        <Flex align="center">
-          <Box>
-            <Button
-              icon="arrow-left"
-              px="2rem"
-              textAlign="center"
-              tooltip="Go back"
-              onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
-            />
-            <Button
-              icon="house"
-              ml="auto"
-              mr="1rem"
-              tooltip="Navigation Menu"
-              onClick={() => act('home')}
-            />
-          </Box>
-
-          <h3>
-            {logged_in}, {access_text}
-          </h3>
-
-          <Button.Confirm
-            content="Logout"
-            icon="circle-user"
-            ml="auto"
-            px="2rem"
-            bold
-            onClick={() => act('logout')}
-          />
-        </Flex>
-      </Section>
-
-      <Section>
-        <h1 align="center">AntiAir Control Logs</h1>
-        {!!aa_adjustments.length && (
-          <Flex
-            className="candystripe"
-            p=".75rem"
-            align="center"
-            fontSize="1.25rem">
-            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
-              Time
-            </Flex.Item>
-            <Flex.Item grow bold>
-              User
-            </Flex.Item>
-            <Flex.Item bold width="30rem" textAlign="center">
-              Adjustment
-            </Flex.Item>
-          </Flex>
-        )}
-        {aa_adjustments.map((record, i) => {
-          return (
-            <Flex key={i} className="candystripe" p=".75rem" align="center">
-              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
-                {record.time}
-              </Flex.Item>
-              <Flex.Item grow italic>
-                {record.user}
-              </Flex.Item>
-              <Flex.Item width="30rem" ml="1rem" shrink="0" textAlign="center">
-                {record.details}
-              </Flex.Item>
-            </Flex>
-          );
-        })}
-      </Section>
-    </>
-  );
-};
-
 const Security = (props, context) => {
   const { data, act } = useBackend(context);
   const {
@@ -1349,7 +1255,7 @@ const Security = (props, context) => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={access_level < 7}
+                  disabled={access_level < 5}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>

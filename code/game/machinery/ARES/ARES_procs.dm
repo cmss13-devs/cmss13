@@ -63,14 +63,14 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 /datum/ares_link/proc/log_ares_announcement(title, message)
 	interface.records_announcement.Add(new /datum/ares_record/announcement(title, message))
 
-/datum/ares_link/proc/log_ares_antiair(mob/living/user, details)
-	interface.records_security.Add(new /datum/ares_record/antiair(details, user))
-
 /datum/ares_link/proc/log_ares_requisition(source, details, mob/living/user)
 	interface.records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user))
 
 /datum/ares_link/proc/log_ares_security(title, details)
 	interface.records_security.Add(new /datum/ares_record/security(title, details))
+
+/datum/ares_link/proc/log_ares_antiair(details)
+	interface.records_security.Add(new /datum/ares_record/security/antiair(details))
 // ------ End ARES Logging Procs ------ //
 
 /proc/ares_apollo_talk(broadcast_message)
@@ -224,8 +224,6 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 	var/list/logged_alerts = list()
 	for(var/datum/ares_record/security/security_alert as anything in records_security)
-		if(!istype(security_alert))
-			continue
 		var/list/current_alert = list()
 		current_alert["time"] = security_alert.time
 		current_alert["title"] = security_alert.title
@@ -278,18 +276,6 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		deleted_disc["ref"] = "\ref[deleted_convo]"
 		logged_discussions += list(deleted_disc)
 	data["deleted_discussions"] = logged_discussions
-
-	var/list/logged_adjustments = list()
-	for(var/datum/ares_record/antiair/aa_adjustment as anything in records_security)
-		if(!istype(aa_adjustment))
-			continue
-		var/list/current_adjustment = list()
-		current_adjustment["time"] = aa_adjustment.time
-		current_adjustment["details"] = aa_adjustment.details
-		current_adjustment["user"] = aa_adjustment.user
-		current_adjustment["ref"] = "\ref[aa_adjustment]"
-		logged_adjustments += list(current_adjustment)
-	data["aa_adjustments"] = logged_adjustments
 
 	var/list/logged_orders = list()
 	for(var/datum/ares_record/requisition_log/req_order as anything in records_asrs)
@@ -431,9 +417,6 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		if("page_requisitions")
 			last_menu = current_menu
 			current_menu = "requisitions"
-		if("page_antiair")
-			last_menu = current_menu
-			current_menu = "antiair"
 		if("page_emergency")
 			last_menu = current_menu
 			current_menu = "emergency"
@@ -457,7 +440,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 					new_title = "[record.title] at [record.time]"
 					new_details = record.details
 					records_announcement -= record
-				if(ARES_RECORD_SECURITY)
+				if(ARES_RECORD_SECURITY, ARES_RECORD_ANTIAIR)
 					new_title = "[record.title] at [record.time]"
 					new_details = record.details
 					records_security -= record

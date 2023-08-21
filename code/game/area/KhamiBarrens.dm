@@ -1,4 +1,4 @@
-//Areas for the Kutjevo Refinery
+//Areas for the Khami Barrens
 
 /area/khami_barrens
 	name = "Khami Barrens"

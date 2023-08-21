@@ -331,6 +331,11 @@
 	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters, can can still be blown up or melted by boilers.
 	baseturfs = /turf/open/floor/sandstone/runed
 
+
+/turf/closed/wall/mineral/sandstone/runed/force_blend
+	force_blend = 1
+
+
 /turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/xenomorph/user)
 	visible_message("[user] scrapes uselessly against [src] with their claws.")
 	return
@@ -340,7 +345,9 @@
 	desc = "A heavy wall of sandstone, with elegant carvings and runes inscribed upon its face."
 	icon = 'icons/turf/walls/runedstone.dmi'
 	icon_state = "runedstone"
-	walltype = "runedstone"
+
+/turf/closed/wall/mineral/sandstone/runed/decor/force_blend
+	force_blend = 1
 
 /turf/closed/wall/mineral/sandstone/runed/can_be_dissolved()
 	return 2

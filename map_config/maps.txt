@@ -62,3 +62,7 @@ endmap
 
 map whiskey_outpost_v2
 endmap
+
+map khami_barrens
+	minplayers 130
+endmap

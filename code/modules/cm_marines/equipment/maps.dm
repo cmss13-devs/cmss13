@@ -120,6 +120,12 @@
 	html_link = "images/0/0d/Kutjevo_a1.jpg"
 	color = "red"
 
+/obj/item/map/khami_barrens
+	name = "\improper Khami Barrens map"
+	desc = "An orbital scan of the Khami Barrens"
+	html_link = "images/0/0d/Kutjevo_a1.jpg" // PLACEHOLDER, REPLACE WHEN WIKI LINK IS MADE
+	color = "red"
+
 /obj/item/map/lv522_map
 	name = "\improper LV-522 Map"
 	desc = "An overview of LV-522 schematics."

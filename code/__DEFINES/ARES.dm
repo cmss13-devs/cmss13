@@ -27,6 +27,7 @@
 #define ARES_RECORD_SECURITY "Security Update"
 #define ARES_RECORD_MAINTENANCE "Maintenance Ticket"
 #define ARES_RECORD_ACCESS "Access Ticket"
+#define ARES_RECORD_FLIGHT "Flight Record"
 
 /// Not by ARES logged through marine_announcement()
 #define ARES_LOG_NONE 0

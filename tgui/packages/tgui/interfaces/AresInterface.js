@@ -1363,7 +1363,7 @@ const Security = (props, context) => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={access_level < 5}
+                  disabled={access_level < 7}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>

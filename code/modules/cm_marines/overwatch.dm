@@ -166,9 +166,9 @@
 
 
 		if(ishuman(marine))
+			marine_human = marine
 			if(istype(marine_human.loc, /obj/structure/machinery/cryopod)) //We don't care much for these
 				continue
-			marine_human = marine
 			mob_name = marine_human.real_name
 			var/area/current_area = get_area(marine_human)
 			var/turf/current_turf = get_turf(marine_human)

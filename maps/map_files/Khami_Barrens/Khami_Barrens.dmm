@@ -552,6 +552,11 @@
 /obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/tan,
 /area/khami_barrens/interior/village/med/reception_storage)
+"aEt" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/gm/grass/grass_dried,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "aFc" = (
 /obj/structure/bed/chair/wood/wings,
 /obj/structure/disposalpipe/segment,
@@ -2680,6 +2685,10 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/khami_barrens/exterior/stonyfields/north)
+"djq" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/gm/grass/grass_dried,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "djW" = (
 /obj/structure/toilet{
 	dir = 8
@@ -5553,6 +5562,13 @@
 	},
 /turf/open/floor/kutjevo/fake_wood,
 /area/khami_barrens/interior/village/company_offices)
+"giC" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/gm/grass/grass_dried,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "gjn" = (
 /obj/structure/flora/grass/desert/heavygrass_8,
 /turf/open/auto_turf/sand/layer1,
@@ -11764,6 +11780,14 @@
 "nmL" = (
 /turf/open/floor/kutjevo/multi_tiles,
 /area/khami_barrens/exterior/telecomm/lz1_north)
+"nnm" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/gm/grass/grass_dried,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "nnv" = (
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 1
@@ -19091,6 +19115,10 @@
 	},
 /turf/open/floor/wood/ship,
 /area/khami_barrens/interior/rancher_residence)
+"vGM" = (
+/obj/item/prop/alien/hugger,
+/turf/open/floor/kutjevo/tiles,
+/area/khami_barrens/interior/village/shop)
 "vHh" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
@@ -48938,7 +48966,7 @@ fAn
 eUL
 eUL
 bKM
-tVH
+djq
 upP
 tVH
 tVH
@@ -49385,7 +49413,7 @@ fnQ
 tVH
 tVH
 tVH
-tVH
+djq
 rmP
 lid
 lid
@@ -49823,7 +49851,7 @@ cEX
 tVH
 tVH
 xZZ
-iFe
+giC
 iFe
 hXf
 hQM
@@ -50271,7 +50299,7 @@ eUL
 uaz
 nfL
 tVH
-tVH
+djq
 tVH
 fKS
 eUL
@@ -50708,7 +50736,7 @@ ucE
 ucE
 ucE
 uME
-uME
+nnm
 iWL
 tNy
 wIP
@@ -52261,7 +52289,7 @@ ces
 ces
 ces
 ces
-tVH
+djq
 tVH
 tyB
 pzg
@@ -52485,9 +52513,9 @@ ces
 ces
 tVH
 tVH
+djq
 tVH
-tVH
-tVH
+djq
 syV
 tVH
 tVH
@@ -52705,9 +52733,9 @@ cat
 xWD
 cmb
 ces
+djq
 tVH
-tVH
-tVH
+hQM
 tVH
 exj
 syV
@@ -52934,7 +52962,7 @@ tVH
 tVH
 syV
 wCC
-tVH
+djq
 tVH
 tVH
 puj
@@ -53600,7 +53628,7 @@ tVH
 tVH
 syV
 tVH
-puj
+aEt
 eUL
 eUL
 sES
@@ -60783,7 +60811,7 @@ qFX
 vgO
 qcz
 blv
-qFX
+vGM
 lVr
 qAK
 uyM

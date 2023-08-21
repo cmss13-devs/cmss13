@@ -73035,6 +73035,7 @@
 	pixel_x = 8;
 	pixel_y = 10
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},

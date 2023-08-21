@@ -440,7 +440,7 @@ const AnnouncementLogs = (props, context) => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={access_level < 3}
+                  disabled={access_level < 4}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>
@@ -536,7 +536,7 @@ const BioscanLogs = (props, context) => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={access_level < 4}
+                  disabled={access_level < 5}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>
@@ -636,7 +636,7 @@ const BombardmentLogs = (props, context) => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={access_level < 4}
+                  disabled={access_level < 5}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>
@@ -1353,7 +1353,7 @@ const Security = (props, context) => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={access_level < 7}
+                  disabled={access_level < 8}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>

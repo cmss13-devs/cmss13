@@ -41,6 +41,8 @@
 		list_to_check += GLOB.living_xeno_list
 
 	for(var/mob/checked_mob as anything in list_to_check)
+		if(!checked_mob?.persistent_ckey)
+			continue // We don't care about NPCs
 		if(living_stat_gotten < life_grab_stat(checked_mob))
 			mob_to_report = checked_mob
 			living_stat_gotten = life_grab_stat(checked_mob)

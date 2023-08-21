@@ -5840,7 +5840,7 @@
 	name = "ARES Core Access";
 	pixel_x = -24;
 	pixel_y = 24;
-	req_one_access_txt = "1;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -11058,7 +11058,7 @@
 	name = "ARES Chamber Lockdown";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "1;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Railing";
@@ -21873,7 +21873,7 @@
 	name = "ARES Core Lockdown";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "19;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	dir = 8;
@@ -36145,7 +36145,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "1;200;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 4;
@@ -36728,7 +36728,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "1;200;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -37899,7 +37899,7 @@
 	name = "Working Joe Cryogenics Lockdown";
 	pixel_x = 24;
 	pixel_y = 8;
-	req_one_access_txt = "19;200;90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -38434,7 +38434,7 @@
 	name = "ARES Chamber Lockdown";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "1;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /obj/structure/machinery/door/poddoor/railing{
 	closed_layer = 4.1;
@@ -38503,7 +38503,7 @@
 	name = "ARES Chamber Lockdown";
 	pixel_x = 24;
 	pixel_y = 8;
-	req_one_access_txt = "1;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /obj/structure/machinery/door/poddoor/railing{
 	closed_layer = 4;
@@ -41992,7 +41992,7 @@
 	name = "ARES Chamber Lockdown";
 	pixel_x = -24;
 	pixel_y = 8;
-	req_one_access_txt = "1;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /obj/structure/machinery/door/poddoor/railing{
 	closed_layer = 4;
@@ -44641,7 +44641,7 @@
 	id = "ARES StairsUpper";
 	name = "ARES Core Access";
 	pixel_x = 24;
-	req_one_access_txt = "19;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -46732,7 +46732,7 @@
 	name = "ARES Core Lockdown";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "19;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 8;
@@ -48478,7 +48478,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "1;200;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -56279,7 +56279,7 @@
 	id = "ARES StairsUpper";
 	name = "ARES Core Access";
 	pixel_x = -24;
-	req_one_access_txt = "19;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -56338,7 +56338,7 @@
 	name = "ARES Core Lockdown";
 	pixel_x = -24;
 	pixel_y = 8;
-	req_one_access_txt = "19;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	dir = 4;
@@ -60139,7 +60139,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "1;200;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 8;
@@ -74284,7 +74284,7 @@
 	name = "Working Joe Cryogenics Lockdown";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "19;200;90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /obj/effect/landmark/late_join/working_joe,
 /obj/effect/landmark/start/working_joe,
@@ -76530,7 +76530,7 @@
 	name = "ARES Core Lockdown";
 	pixel_x = 24;
 	pixel_y = 8;
-	req_one_access_txt = "19;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer/no_build{
@@ -77802,7 +77802,7 @@
 	name = "ARES Core Access";
 	pixel_x = 24;
 	pixel_y = 24;
-	req_one_access_txt = "1;200;90;91;92"
+	req_one_access_txt = "90;91;92"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"

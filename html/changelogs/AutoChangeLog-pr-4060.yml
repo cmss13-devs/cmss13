@@ -1,7 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - balance: "Zombie attacks deal less damage and only slow down targets (not superslow as they currently do)"
-  - balance: "Zombie resistances have been reduced heavily, making them far more susceptible to brute damage. Their speed has been doubled to compensate"
-  - balance: "Black goo on tiles now requires you to not wear shoes to have chance for infection"
-  - bugfix: "Zombie attacks now only apply effects such as slow and infection if the attack is valid (if the zombie is able to attack)"

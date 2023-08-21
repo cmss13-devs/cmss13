@@ -391,7 +391,9 @@
 /area/khami_barrens/interior/village/shop)
 "atk" = (
 /obj/structure/machinery/power/apc,
-/turf/open/floor/kutjevo/tiles,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
 /area/khami_barrens/interior/village/shop)
 "atz" = (
 /obj/structure/bed/chair/wood/wings{
@@ -552,11 +554,6 @@
 /obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/tan,
 /area/khami_barrens/interior/village/med/reception_storage)
-"aEt" = (
-/obj/effect/decal/sand_overlay/sand1,
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/gm/grass/grass_dried,
-/area/khami_barrens/exterior/driedoasis/bridge)
 "aFc" = (
 /obj/structure/bed/chair/wood/wings,
 /obj/structure/disposalpipe/segment,
@@ -1072,7 +1069,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/kutjevo/tiles,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
 /area/khami_barrens/interior/village/shop)
 "bmm" = (
 /obj/structure/disposalpipe/segment{
@@ -1496,7 +1495,9 @@
 /area/khami_barrens/exterior/scrubland/checkpoint)
 "bLK" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
-/turf/open/floor/kutjevo/tiles,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
 /area/khami_barrens/interior/village/shop)
 "bMc" = (
 /obj/structure/platform/mineral/sandstone/runed{
@@ -4895,6 +4896,7 @@
 /area/khami_barrens/interior/hunting_lodge)
 "fxq" = (
 /obj/structure/surface/table/woodentable/poor,
+/obj/item/map/kutjevo_map,
 /turf/open/floor/kutjevo/colors,
 /area/khami_barrens/interior/hunting_lodge)
 "fxB" = (
@@ -5561,13 +5563,6 @@
 	},
 /turf/open/floor/kutjevo/fake_wood,
 /area/khami_barrens/interior/village/company_offices)
-"giC" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/gm/grass/grass_dried,
-/area/khami_barrens/exterior/driedoasis/bridge)
 "gjn" = (
 /obj/structure/flora/grass/desert/heavygrass_8,
 /turf/open/auto_turf/sand/layer1,
@@ -6445,6 +6440,7 @@
 /area/khami_barrens/interior/research_caves/research)
 "hko" = (
 /obj/structure/surface/table/woodentable/poor,
+/obj/item/map/kutjevo_map,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -6455,7 +6451,9 @@
 /area/khami_barrens/interior/research_caves/research)
 "hlT" = (
 /obj/structure/machinery/light,
-/turf/open/floor/kutjevo/tiles,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 4
+	},
 /area/khami_barrens/interior/village/shop)
 "hlW" = (
 /obj/structure/fence,
@@ -6492,6 +6490,13 @@
 /obj/structure/machinery/light,
 /turf/open/floor/plating/kutjevo,
 /area/khami_barrens/interior/research_caves/research)
+"hnQ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/gm/grass/grass_dried,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "hoi" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
@@ -6780,7 +6785,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/kutjevo/tiles,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
 /area/khami_barrens/interior/village/shop)
 "hDU" = (
 /obj/structure/machinery/light{
@@ -10666,6 +10673,11 @@
 	dir = 1
 	},
 /area/khami_barrens/interior/hunting_lodge)
+"lTm" = (
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 4
+	},
+/area/khami_barrens/interior/village/shop)
 "lTP" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
@@ -10710,7 +10722,9 @@
 	dir = 1;
 	req_one_access = null
 	},
-/turf/open/floor/kutjevo/tiles,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 4
+	},
 /area/khami_barrens/interior/village/shop)
 "lWa" = (
 /obj/structure/machinery/landinglight/ds1{
@@ -11778,14 +11792,6 @@
 "nmL" = (
 /turf/open/floor/kutjevo/multi_tiles,
 /area/khami_barrens/exterior/telecomm/lz1_north)
-"nnm" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/gm/grass/grass_dried,
-/area/khami_barrens/exterior/driedoasis/bridge)
 "nnv" = (
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 1
@@ -12212,6 +12218,14 @@
 	dir = 8
 	},
 /area/khami_barrens/interior/research_caves/research)
+"nPv" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/gm/grass/grass_dried,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "nPC" = (
 /obj/structure/platform/kutjevo{
 	dir = 8;
@@ -14308,9 +14322,10 @@
 	},
 /area/khami_barrens/interior/village/engineering/south)
 "qkh" = (
-/obj/structure/window_frame/kutjevo,
-/turf/open/floor/kutjevo/tiles,
-/area/khami_barrens/interior/village/residence)
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
+/area/khami_barrens/interior/village/shop)
 "qko" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -15458,7 +15473,9 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib3"
 	},
-/turf/open/floor/kutjevo/tiles,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
 /area/khami_barrens/interior/village/shop)
 "rFv" = (
 /obj/structure/prop/dam/truck/damaged,
@@ -16115,7 +16132,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/kutjevo/tiles,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
 /area/khami_barrens/interior/village/shop)
 "svZ" = (
 /obj/structure/disposalpipe/junction{
@@ -17540,9 +17559,10 @@
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/exterior/scrubland)
 "tPj" = (
-/obj/structure/closet/coffin/woodencrate,
-/turf/open/floor/kutjevo/tiles,
-/area/khami_barrens/interior/village/shop)
+/obj/effect/decal/sand_overlay/sand1,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/gm/grass/grass_dried,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "tPn" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -18664,7 +18684,9 @@
 "vgO" = (
 /obj/item/weapon/gun/shotgun/double,
 /obj/effect/landmark/corpsespawner/chef,
-/turf/open/floor/kutjevo/tiles,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
 /area/khami_barrens/interior/village/shop)
 "vhM" = (
 /obj/effect/landmark/corpsespawner/scientist,
@@ -18894,7 +18916,9 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgibmid1"
 	},
-/turf/open/floor/kutjevo/tiles,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
 /area/khami_barrens/interior/village/shop)
 "vvr" = (
 /obj/structure/platform_decoration/kutjevo{
@@ -19113,10 +19137,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/khami_barrens/interior/rancher_residence)
-"vGM" = (
-/obj/item/prop/alien/hugger,
-/turf/open/floor/kutjevo/tiles,
-/area/khami_barrens/interior/village/shop)
 "vHh" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
@@ -19425,7 +19445,9 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib6"
 	},
-/turf/open/floor/kutjevo/tiles,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
 /area/khami_barrens/interior/village/shop)
 "wci" = (
 /obj/structure/machinery/light{
@@ -19490,6 +19512,12 @@
 	dir = 1
 	},
 /area/khami_barrens/interior/research_caves/checkpoint)
+"weR" = (
+/obj/item/prop/alien/hugger,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 4
+	},
+/area/khami_barrens/interior/village/shop)
 "weT" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
 /turf/open/floor/kutjevo/multi_tiles{
@@ -20658,7 +20686,9 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib4"
 	},
-/turf/open/floor/kutjevo/tiles,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
 /area/khami_barrens/interior/village/shop)
 "xvd" = (
 /obj/structure/machinery/light,
@@ -49849,7 +49879,7 @@ cEX
 tVH
 tVH
 xZZ
-giC
+hnQ
 iFe
 hXf
 hQM
@@ -50734,7 +50764,7 @@ ucE
 ucE
 ucE
 uME
-nnm
+nPv
 iWL
 tNy
 wIP
@@ -53626,7 +53656,7 @@ tVH
 tVH
 syV
 tVH
-aEt
+tPj
 eUL
 eUL
 sES
@@ -59473,8 +59503,8 @@ qAK
 uyM
 cNG
 lVr
-qFX
-qFX
+lTm
+qkh
 sDN
 hBJ
 tzg
@@ -59696,10 +59726,10 @@ uyM
 cNG
 sDN
 eZh
-qFX
+qkh
 sDN
-qFX
-qFX
+qkh
+qkh
 xhC
 lsu
 sAS
@@ -59910,20 +59940,20 @@ eWk
 tKd
 sww
 hrw
-qkh
+gII
 dLF
 hrw
 qAK
 uyM
 cNG
 sDN
-tPj
+rPf
 atk
 sDN
 hDP
-qFX
-qFX
-qFX
+qkh
+lTm
+lTm
 hlT
 sDN
 qAK
@@ -60140,10 +60170,10 @@ uyM
 cNG
 sDN
 nqd
-qFX
+qkh
 sDN
 blv
-qFX
+qkh
 tZr
 uSW
 jeI
@@ -60584,10 +60614,10 @@ uyM
 cNG
 vNa
 rxQ
-qFX
+qkh
 vsb
 xuH
-qFX
+qkh
 vNa
 iJj
 jgR
@@ -60809,7 +60839,7 @@ qFX
 vgO
 qcz
 blv
-vGM
+weR
 lVr
 qAK
 uyM
@@ -61028,10 +61058,10 @@ jbL
 cNG
 vNa
 cpd
-qFX
+qkh
 lLP
 wca
-qFX
+qkh
 vNa
 rGw
 mKk
@@ -61475,7 +61505,7 @@ mYd
 vES
 sDN
 blv
-qFX
+qkh
 bic
 hmz
 jsS
@@ -61697,9 +61727,9 @@ bHk
 vES
 sDN
 svN
-qFX
-qFX
-qFX
+qkh
+lTm
+lTm
 hlT
 sDN
 qAK
@@ -61919,7 +61949,7 @@ swN
 vES
 sDN
 blv
-qFX
+qkh
 rqD
 ezC
 cZv

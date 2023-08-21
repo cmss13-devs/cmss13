@@ -1,0 +1,4 @@
+author: "CapCamIII"
+delete-after: True
+changes:
+  - bugfix: "fixes the offset on m4ra custom barrel, it should appropriately be sat right on the gun sprite"

@@ -176,7 +176,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
-}
+	},
 /turf/open/floor/plating/kutjevo,
 /area/khami_barrens/interior/research_caves/research)
 "aip" = (

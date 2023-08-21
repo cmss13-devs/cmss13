@@ -22,7 +22,7 @@
         0.0
     ],
     "map_item_type": "/obj/item/map/kutjevo_map",
-    "announce_text": "An automated distress signal has been received from a small Three World Empire colony in the Khami Barrens, known for its many alien digsites, company research stations, and hunting grounds. The ###SHIPNAME### has been dispatched to investigate.",
+    "announce_text": "An automated distress signal has been received from a small Weyland Yutani colony in the Khami Barrens, known for its many alien digsites, company research stations, and hunting grounds. The ###SHIPNAME### has been dispatched to investigate.",
     "monkey_types": [
         "neaera",
         "stok"

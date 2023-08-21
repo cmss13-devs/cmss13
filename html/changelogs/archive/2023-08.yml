@@ -93,3 +93,193 @@
       verb)
   Steelpoint:
   - bugfix: EMT/White-Green armband now has a sprite
+2023-08-07:
+  Huffie56:
+  - maptweak: changing an area so it stop snowing inside walls.
+2023-08-08:
+  HeresKozmos:
+  - maptweak: Added non-alcoholic drinks dispenser, space cleaner bottle and a regular
+      medkit to the storage closet. Deleted old toxin medkit in the storage closet
+  Morrow, Thwomper:
+  - rscadd: Added Auxiliary Support Officer
+  - rscadd: Auxiliary Support Officer oversees the hangar, the intel team, the engineering
+      department, and the requisitions department
+  - rscadd: Chief Engineer has been demoted to O1.
+  - rscadd: Requisitions Officer is now "Quartermaster" and a Gunnery Sergeant.
+  Segrain:
+  - bugfix: Non-UPP synthetics no longer default to speaking Russian.
+2023-08-09:
+  BeagleGaming1:
+  - code_imp: occupant limit of evacuation pods changed to a variable
+  Drathek:
+  - bugfix: Fix new map dropship areas not getting changes to dropship ceilings that
+      prevents OBs
+  Megastar1234:
+  - rscadd: Adds reagent scanner goggles to CMO vendor
+  - rscadd: Gives CMO headset intel radio
+  Morrow:
+  - rscadd: Scan health now only works when non-revivable
+  - rscadd: Xenos with less than 10 hours on xeno now have the "Young" prefix
+  - rscadd: Young Queen has been renamed to Growing Queen
+  - balance: Removed the barrel charger from vendors
+  - balance: Removed all benefits other than wield delay mod from the angled grip
+  - balance: Added wield delay to extended barrel
+  Morrow, Sleepynecrons (beautiful sprites):
+  - rscadd: Xenos can now capture comms relays for bonuses after 90 minutes into the
+      round.
+  Steelpoint:
+  - balance: Yautja's Plasma Rifle has been rebalanced to make it a more effective
+      assault weapon against xenomorphs. It has lost its mini-high explosive fire
+      mode but its default fire mode now mostly ignores xenomorph armor.
+  blackdragonTOW:
+  - ui: Hardcore deaths are now marked with a unique red skull
+  - imageadd: Red skull added for hardcore deaths
+  morrowwolf:
+  - rscadd: Added basic IB surgery instructions to surgical case
+  realforest2001:
+  - rscadd: Changed 'Growing Queen' to 'Immature Queen'
+  - bugfix: Updated playerpanel transform Queen button title.
+  thwomper, Steelpoint:
+  - rscadd: Toolkits have been added to the game. Holds engineering supplies akin
+      to a medkit. Issued freely to ComTechs and Engineers, can be bought by the USCM
+      Synthetic for cheap.
+2023-08-10:
+  Drathek:
+  - bugfix: Fixed unnested mobs sometimes having incorrect density allowing xenos
+      to push them
+  Huffie56:
+  - rscadd: Add a skill check to operate IV.
+  - bugfix: Fix remove iv needing power to operate.
+  - rscadd: Update the MP and Warden vendor to fallow more the standard of the rifleman
+      vendor.
+  - rscadd: change the selection of the handgun from a full belt to a handgun case(3magazin,one
+      railgunlight and the gun.).
+  Morrow:
+  - balance: 'Across the board firerate nerfs with the exceptions of: M37 shotgun,
+      M240 Flamer, M42A Scope Rifle, XM88, Mateba, Desert Eagle'
+  - balance: Folded etools are now small items
+  Steelpoint:
+  - rscadd: The SMG belt has been changed. It now holds a SMG plus two extra magazines,
+      plus it can fit in either the belt or armour slot.
+  Tallfission:
+  - rscadd: Vehicles skill for Commanding Officer, Executive Officer, and Auxiliary
+      Support Officer jobs
+  Zonespace27:
+  - rscadd: Combisticks now use a proper chain instead of an invisible magic one.
+2023-08-11:
+  Drathek:
+  - bugfix: Fixed runtimes with hijack not calculating roles correctly for hijack
+      larva surge
+  - bugfix: Fix IV Drip machines not displaying the IV line correctly when adding/removing
+      a bag when already attached
+  - code_imp: Fixes a lingering reference to the mob when a IV drip machine is destroyed.
+  Zonespace27:
+  - bugfix: A pile of guns no longer have burst fire (who weren't meant to)
+  - bugfix: The combichain can now be yanked back if droppeed.
+2023-08-12:
+  BeagleGaming1:
+  - balance: Defibrillators are guaranteed to deal heart damage on successful revives
+  - balance: Blood volume now scales with heart damage rather than being a hardcoded
+      multiplier
+  - balance: Blood volume oxyloss now scales rather than being a hardcoded loss amount
+  Huffie56:
+  - code_imp: added welding google to the com tech tool vendor.
+  - code_imp: added scaling based on round population to the ColMarTech Surplus Uniform
+      like the other vendors.
+  - code_imp: Move every clothing items from ColMarTech Automated Armaments Squad
+      Vendor to ColMarTech Surplus Uniform Vendor.
+  - code_imp: rename ColMarTech Automated Armaments Squad Vendor to ColMarTech Automated
+      Utilities Squad Vendor and add in tools food and other utilities.
+  Steelpoint:
+  - bugfix: Synthetic Breaching Hammer will now properly appear on the user's back
+      when holstered.
+2023-08-13:
+  Huffie56:
+  - spellcheck: fix typo mistake from matchs to matches.
+  Morrow:
+  - rscadd: At end of round it now shows a Queen's prefix/postfix rather than their
+      ckey
+  blackdragonTOW:
+  - admin: Adjustment of ASay color
+  ihatethisengine:
+  - rscadd: All hive's alliances break on Queen's death.
+  - qol: If a hive breaks an alliance with another, the second hive also breaks the
+      alliance.
+  - bugfix: xeno_message no longer sends the message to allied hives
+  mothblocks, harry:
+  - rscadd: added the backend functionality for autowiki, alongside automating much
+      of the work of maintaining guns on the wiki
+  realforest2001:
+  - bugfix: Picking up a Yautja mask now correctly checks for bracers to apply the
+      visor.
+  - rscadd: Added backend for species datums to hold inherent vision flags.
+  - rscadd: Added proc for Yautja mask to pass power drain back to bracers. Added
+      small power drain on use of mask visor.
+  - rscadd: Added natural thermal vision and very weak night vision to Yautja species,
+      to fit with our wiki lore.
+  - rscdel: Removed Thermal and Meson visors from Yautja mask.
+  - bugfix: Squad Specialists can no longer bypass restrictions by not selecting a
+      kit to use.
+2023-08-14:
+  Morrow:
+  - rscadd: Rounded oxyloss from bloodloss
+  SpartanBobby:
+  - maptweak: Fixes use of wrong areas inside LV522 reactor
+2023-08-15:
+  Drathek:
+  - rscadd: Queen jellies now use designation rather than ckey for attribution
+  - bugfix: Random facts now only check players.
+  Huffie56:
+  - bugfix: spraying with the hose will no cost 5u of water while spaying 5u of water.
+  - bugfix: fixed the verb to take out the hose.
+  - bugfix: remove the option to change the output as it was confusing for people.
+  MikeKuwait:
+  - bugfix: The plant dies if no nutriment is available
+  realforest2001:
+  - rscadd: Added a proc to calculate item strip delay, taking into account the target's
+      skills and adding 0.5s per level in Policing and CQC.
+  - rscadd: Added an unstrippable mob trait to prevent inventory manipulation. Gave
+      this trait to Working Joes.
+2023-08-17:
+  realforest2001:
+  - bugfix: Players joining as Working Joe after round start now spawn in correct
+      place.
+2023-08-18:
+  Ben10083:
+  - bugfix: Prompt allowing staff to call for ERT with an announcement fixed to actually
+      appear
+  - ui: Prompts for admin-calling ERT converted to TGUI.
+  - maptweak: Combat Information Center pens now use black ink
+  - balance: Zombie attacks deal less damage and only slow down targets (not superslow
+      as they currently do)
+  - balance: Zombie resistances have been reduced heavily, making them far more susceptible
+      to brute damage. Their speed has been doubled to compensate
+  - balance: Black goo on tiles now requires you to not wear shoes to have chance
+      for infection
+  - bugfix: Zombie attacks now only apply effects such as slow and infection if the
+      attack is valid (if the zombie is able to attack)
+  SpartanBobby gdifirehawk:
+  - rscadd: Subtype of tunnel added "Maintenance Tunnel" currently only on LV522 these
+      tunnels act the same as regular tunnels but look different, keep an eye out
+      marines. Description by GDIFIREHAWK
+  ihatethisengine:
+  - rscadd: foxtrot cryomarines spawn as freed mobs if not taken.
+  realforest2001:
+  - rscadd: Added prefixes in OOC for Staff and Mentors. Created a proc to check for
+      these prefixes and Donator.
+  - bugfix: Fixed isCouncil check.
+  spartanbobby:
+  - maptweak: Replaces some cave walls on LV624 with junglewalls (nothing will change
+      gameplay wise)
+  - maptweak: Adds bin to Research Chem/Req room and moves item blocking pillbox
+2023-08-19:
+  Drathek:
+  - bugfix: Fixed mapped in maps for solaris ridge not opening correctly.
+  - refactor: Refactored current_map to use a global list instead to remove the need
+      for duplicate definitions.
+  - ui: Fix Hotkeys TGUI lag and the inability to map Ctrl + R. Also now offers a
+      little bit more time to map combinations of keys.
+2023-08-20:
+  Huffie56:
+  - bugfix: prevent belt flare being filled by dump in action leaving no space for
+      flare gun.

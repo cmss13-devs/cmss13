@@ -218,21 +218,22 @@
 	if(!istype(chosen_ert))
 		return
 
-	var/is_announcing = TRUE
-	switch(alert(src, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", "Yes", "No", "Cancel"))
-		if("Cancel")
-			qdel(chosen_ert)
-			return
-		if("No")
-			is_announcing = FALSE
+	var/is_announcing = tgui_alert(usr, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
+	if(!is_announcing)
+		qdel(chosen_ert)
+		return
+	if(is_announcing == "No")
+		is_announcing = FALSE
+	if (is_announcing == "Yes")
+		is_announcing = TRUE
 
 	var/turf/override_spawn_loc
-	switch(alert(usr, "Spawn at their assigned spawnpoints, or at your location?", "Spawnpoint Selection", "Assigned Spawnpoint", "Current Location", "Cancel"))
-		if("Cancel")
-			qdel(chosen_ert)
-			return
-		if("Current Location")
-			override_spawn_loc = get_turf(usr)
+	var/prompt = tgui_alert(usr, "Spawn at their assigned spawn, or at your location?", "Spawnpoint Selection", list("Spawn", "Current Location"), 0)
+	if(!prompt)
+		qdel(chosen_ert)
+		return
+	if(prompt == "Current Location")
+		override_spawn_loc = get_turf(usr)
 
 	chosen_ert.activate(is_announcing, override_spawn_loc)
 

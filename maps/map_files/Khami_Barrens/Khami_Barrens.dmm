@@ -4895,7 +4895,6 @@
 /area/khami_barrens/interior/hunting_lodge)
 "fxq" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/map/kutjevo_map,
 /turf/open/floor/kutjevo/colors,
 /area/khami_barrens/interior/hunting_lodge)
 "fxB" = (
@@ -6446,7 +6445,6 @@
 /area/khami_barrens/interior/research_caves/research)
 "hko" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/map/kutjevo_map,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},

@@ -58,6 +58,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/kutjevo/fake_wood,
 /area/khami_barrens/interior/hunting_lodge)
+"acr" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/gm/grass/grass_dried,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "acZ" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
@@ -853,6 +860,7 @@
 /area/khami_barrens/exterior/lz_pad)
 "aXo" = (
 /obj/effect/landmark/corpsespawner/wy/manager,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "aXA" = (
@@ -1175,6 +1183,13 @@
 "bqm" = (
 /turf/closed/wall/mineral/sandstone/runed/force_blend,
 /area/khami_barrens/interior/ruin_caves/north)
+"bqs" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/gm/grass/grass_dried,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "bqI" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 4
@@ -2687,9 +2702,10 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/khami_barrens/exterior/stonyfields/north)
 "djq" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/gm/grass/grass_dried,
-/area/khami_barrens/exterior/driedoasis/bridge)
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 4
+	},
+/area/khami_barrens/interior/village/shop)
 "djW" = (
 /obj/structure/toilet{
 	dir = 8
@@ -4096,6 +4112,13 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/exterior/scrubland)
+"eBp" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
+/turf/open/gm/grass/grass_dried,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "eBO" = (
 /obj/structure/largecrate/supply/supplies/metal,
 /turf/open/floor/kutjevo/fake_wood,
@@ -5301,6 +5324,7 @@
 "fOR" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /obj/structure/disposalpipe/segment,
+/obj/item/prop/helmetgarb/spent_buckshot,
 /turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "fOX" = (
@@ -6490,13 +6514,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/plating/kutjevo,
 /area/khami_barrens/interior/research_caves/research)
-"hnQ" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/gm/grass/grass_dried,
-/area/khami_barrens/exterior/driedoasis/bridge)
 "hoi" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
@@ -7672,6 +7689,7 @@
 	dir = 4;
 	pixel_y = 4
 	},
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
 /turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "iJb" = (
@@ -8185,6 +8203,7 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
+/obj/item/prop/helmetgarb/spent_buckshot,
 /turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "jnq" = (
@@ -8741,6 +8760,7 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
+/obj/item/prop/helmetgarb/spent_buckshot,
 /turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "jTz" = (
@@ -9761,6 +9781,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/kutjevo/colors/red/edge,
 /area/khami_barrens/interior/checkpoint)
+"kTO" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/gm/grass/grass_dried,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "kTP" = (
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/gm/grass/grass_dried,
@@ -10196,6 +10221,12 @@
 "lvC" = (
 /turf/open/floor/kutjevo/tan,
 /area/khami_barrens/interior/village/med/reception_storage)
+"lvZ" = (
+/obj/item/prop/alien/hugger,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 4
+	},
+/area/khami_barrens/interior/village/shop)
 "lwp" = (
 /obj/structure/flora/grass/desert/heavygrass_5,
 /turf/open/auto_turf/sand/layer1,
@@ -10408,7 +10439,7 @@
 "lGG" = (
 /obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/landmark/wo_supplies/guns/common/shotgun,
-/obj/effect/landmark/survivor_spawner,
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
 /turf/open/floor/wood,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "lGZ" = (
@@ -10673,11 +10704,6 @@
 	dir = 1
 	},
 /area/khami_barrens/interior/hunting_lodge)
-"lTm" = (
-/turf/open/floor/kutjevo/multi_tiles{
-	dir = 4
-	},
-/area/khami_barrens/interior/village/shop)
 "lTP" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
@@ -11941,6 +11967,14 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/exterior/scrubland)
+"nzW" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/gm/grass/grass_dried,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "nAk" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 9
@@ -11973,11 +12007,18 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
 /turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "nBg" = (
 /turf/closed/wall/mineral/bone_resin,
 /area/khami_barrens/interior/oob)
+"nBs" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/kutjevo,
+/area/khami_barrens/exterior/telecomm/lz2_north)
 "nBz" = (
 /obj/structure/sign/poster/ad{
 	pixel_x = -32
@@ -12218,14 +12259,6 @@
 	dir = 8
 	},
 /area/khami_barrens/interior/research_caves/research)
-"nPv" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/gm/grass/grass_dried,
-/area/khami_barrens/exterior/driedoasis/bridge)
 "nPC" = (
 /obj/structure/platform/kutjevo{
 	dir = 8;
@@ -13146,6 +13179,12 @@
 	icon_state = "mars_cave_2"
 	},
 /area/khami_barrens/interior/research_caves/checkpoint)
+"oMK" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating/kutjevo,
+/area/khami_barrens/exterior/telecomm/lz2_north)
 "oMP" = (
 /obj/structure/flora/grass/desert/lightgrass_8,
 /turf/open/auto_turf/sand/layer1,
@@ -14322,10 +14361,9 @@
 	},
 /area/khami_barrens/interior/village/engineering/south)
 "qkh" = (
-/turf/open/floor/kutjevo/multi_tiles{
-	dir = 1
-	},
-/area/khami_barrens/interior/village/shop)
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/gm/grass/grass_dried,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "qko" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -17559,10 +17597,10 @@
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/exterior/scrubland)
 "tPj" = (
-/obj/effect/decal/sand_overlay/sand1,
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/gm/grass/grass_dried,
-/area/khami_barrens/exterior/driedoasis/bridge)
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
+/area/khami_barrens/interior/village/shop)
 "tPn" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -18459,6 +18497,10 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/asphalt/cement_sunbleached,
 /area/khami_barrens/exterior/village)
+"uUO" = (
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
+/turf/open/gm/grass/grass_dried,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "uUW" = (
 /obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/landmark/wo_supplies/guns/common/shotgun,
@@ -19512,12 +19554,6 @@
 	dir = 1
 	},
 /area/khami_barrens/interior/research_caves/checkpoint)
-"weR" = (
-/obj/item/prop/alien/hugger,
-/turf/open/floor/kutjevo/multi_tiles{
-	dir = 4
-	},
-/area/khami_barrens/interior/village/shop)
 "weT" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
 /turf/open/floor/kutjevo/multi_tiles{
@@ -20230,6 +20266,13 @@
 	dir = 8
 	},
 /area/khami_barrens/interior/village/company_offices)
+"wVX" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
+/turf/open/gm/grass/grass_dried,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "wWQ" = (
 /turf/closed/wall/kutjevo/colony,
 /area/khami_barrens/interior/tunnels)
@@ -48994,7 +49037,7 @@ fAn
 eUL
 eUL
 bKM
-djq
+qkh
 upP
 tVH
 tVH
@@ -49441,7 +49484,7 @@ fnQ
 tVH
 tVH
 tVH
-djq
+qkh
 rmP
 lid
 lid
@@ -49879,7 +49922,7 @@ cEX
 tVH
 tVH
 xZZ
-hnQ
+acr
 iFe
 hXf
 hQM
@@ -50327,7 +50370,7 @@ eUL
 uaz
 nfL
 tVH
-djq
+qkh
 tVH
 fKS
 eUL
@@ -50546,12 +50589,12 @@ tVH
 rhv
 fAn
 eUL
-bKM
+wVX
+tVH
+uUO
 tVH
 tVH
-tVH
-tVH
-rmP
+eBp
 fAn
 eUL
 bMK
@@ -50764,7 +50807,7 @@ ucE
 ucE
 ucE
 uME
-nPv
+nzW
 iWL
 tNy
 wIP
@@ -52104,7 +52147,7 @@ uoV
 aMZ
 tVH
 jbV
-rmP
+bqs
 lcA
 lid
 lid
@@ -52317,7 +52360,7 @@ ces
 ces
 ces
 ces
-djq
+qkh
 tVH
 tyB
 pzg
@@ -52541,9 +52584,9 @@ ces
 ces
 tVH
 tVH
-djq
+qkh
 tVH
-djq
+qkh
 syV
 tVH
 tVH
@@ -52761,7 +52804,7 @@ cat
 xWD
 cmb
 ces
-djq
+qkh
 tVH
 hQM
 tVH
@@ -52990,7 +53033,7 @@ tVH
 tVH
 syV
 wCC
-djq
+qkh
 tVH
 tVH
 puj
@@ -53656,7 +53699,7 @@ tVH
 tVH
 syV
 tVH
-tPj
+kTO
 eUL
 eUL
 sES
@@ -54308,7 +54351,7 @@ eUL
 eUL
 eUL
 lZh
-oOT
+oMK
 oOT
 oOT
 oOT
@@ -54977,7 +55020,7 @@ lZh
 uzW
 oOT
 oOT
-oOT
+nBs
 bHG
 xtT
 eUL
@@ -59503,8 +59546,8 @@ qAK
 uyM
 cNG
 lVr
-lTm
-qkh
+djq
+tPj
 sDN
 hBJ
 tzg
@@ -59726,10 +59769,10 @@ uyM
 cNG
 sDN
 eZh
-qkh
+tPj
 sDN
-qkh
-qkh
+tPj
+tPj
 xhC
 lsu
 sAS
@@ -59951,9 +59994,9 @@ rPf
 atk
 sDN
 hDP
-qkh
-lTm
-lTm
+tPj
+djq
+djq
 hlT
 sDN
 qAK
@@ -60170,10 +60213,10 @@ uyM
 cNG
 sDN
 nqd
-qkh
+tPj
 sDN
 blv
-qkh
+tPj
 tZr
 uSW
 jeI
@@ -60614,10 +60657,10 @@ uyM
 cNG
 vNa
 rxQ
-qkh
+tPj
 vsb
 xuH
-qkh
+tPj
 vNa
 iJj
 jgR
@@ -60839,7 +60882,7 @@ qFX
 vgO
 qcz
 blv
-weR
+lvZ
 lVr
 qAK
 uyM
@@ -61058,10 +61101,10 @@ jbL
 cNG
 vNa
 cpd
-qkh
+tPj
 lLP
 wca
-qkh
+tPj
 vNa
 rGw
 mKk
@@ -61505,7 +61548,7 @@ mYd
 vES
 sDN
 blv
-qkh
+tPj
 bic
 hmz
 jsS
@@ -61727,9 +61770,9 @@ bHk
 vES
 sDN
 svN
-qkh
-lTm
-lTm
+tPj
+djq
+djq
 hlT
 sDN
 qAK
@@ -61949,7 +61992,7 @@ swN
 vES
 sDN
 blv
-qkh
+tPj
 rqD
 ezC
 cZv

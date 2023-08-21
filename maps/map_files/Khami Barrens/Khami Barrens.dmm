@@ -175,9 +175,9 @@
 	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
-	},
+	icon_state = "E"
+}
+
 /turf/open/floor/plating/kutjevo,
 /area/khami_barrens/interior/research_caves/research)
 "aip" = (
@@ -809,8 +809,7 @@
 /area/khami_barrens/interior/village/company_offices/reception)
 "aUT" = (
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 8;
-	tag = "icon-containment_floor_2 (WEST)"
+	dir = 8
 	},
 /area/khami_barrens/exterior/telecomm/lz1_north)
 "aUY" = (
@@ -1619,8 +1618,7 @@
 /area/khami_barrens/exterior/ruins)
 "bRS" = (
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 8;
-	tag = "icon-containment_floor_2 (WEST)"
+	dir = 8
 	},
 /area/khami_barrens/exterior/lz_pad)
 "bSw" = (
@@ -1829,8 +1827,7 @@
 	id = "sciencereq"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
+	icon_state = "E"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -3256,8 +3253,7 @@
 	id = "sciencereq"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
+	icon_state = "E"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -3662,8 +3658,7 @@
 	id = "sciencereq"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
+	icon_state = "E"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -8371,8 +8366,7 @@
 	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
+	icon_state = "E"
 	},
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 4
@@ -9507,8 +9501,7 @@
 	id = "sciencereq"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
+	icon_state = "E"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -17838,8 +17831,7 @@
 /area/khami_barrens/exterior/scrubland/lodge)
 "uic" = (
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 8;
-	tag = "icon-containment_floor_2 (WEST)"
+	dir = 8
 	},
 /area/khami_barrens/exterior/telecomm/lz1_south)
 "uiM" = (
@@ -17982,8 +17974,7 @@
 "upo" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 8;
-	tag = "icon-containment_floor_2 (WEST)"
+	dir = 8
 	},
 /area/khami_barrens/exterior/telecomm/lz2_south)
 "upw" = (
@@ -18362,8 +18353,7 @@
 /area/khami_barrens/interior/research_caves/research)
 "uNY" = (
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 8;
-	tag = "icon-containment_floor_2 (WEST)"
+	dir = 8
 	},
 /area/khami_barrens/exterior/telecomm/lz2_south)
 "uOa" = (
@@ -18645,8 +18635,7 @@
 	id = "sciencereq"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
+	icon_state = "E"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -19820,8 +19809,7 @@
 /area/khami_barrens/exterior/driedoasis/basin)
 "wxc" = (
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 8;
-	tag = "icon-containment_floor_2 (WEST)"
+	dir = 8
 	},
 /area/khami_barrens/exterior/telecomm/lz2_north)
 "wxo" = (

@@ -1,4 +1,0 @@
-author: "Zonespace27"
-delete-after: True
-changes:
-  - bugfix: "The combichain can now be yanked back if droppeed."

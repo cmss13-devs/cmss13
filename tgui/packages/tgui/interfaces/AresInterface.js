@@ -11,6 +11,7 @@ const PAGES = {
   'apollo': () => ApolloLog,
   'access_log': () => AccessLogs,
   'delete_log': () => DeletionLogs,
+  'flight_log': () => FlightLogs,
   'talking': () => ARESTalk,
   'deleted_talks': () => DeletedTalks,
   'read_deleted': () => ReadingTalks,
@@ -190,6 +191,18 @@ const MainMenu = (props, context) => {
           <Stack>
             <Stack.Item grow>
               <h3>Access Level 2</h3>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                content="Flight Records"
+                tooltip="Read the Dropship Flight Control Records."
+                icon="jet-fighter-up"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_flight')}
+              />
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -1163,6 +1176,101 @@ const Requisitions = (props, context) => {
               </Flex.Item>
               <Flex.Item width="30rem" ml="1rem" shrink="0" textAlign="center">
                 {record.details}
+              </Flex.Item>
+            </Flex>
+          );
+        })}
+      </Section>
+    </>
+  );
+};
+
+const FlightLogs = (props, context) => {
+  const { data, act } = useBackend(context);
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    records_flight,
+    access_level,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Flight Control Logs</h1>
+        {!!records_flight.length && (
+          <Flex
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem">
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+              Time
+            </Flex.Item>
+            <Flex.Item width="10rem" grow bold>
+              User
+            </Flex.Item>
+            <Flex.Item width="40rem" textAlign="center">
+              Details
+            </Flex.Item>
+          </Flex>
+        )}
+        {records_flight.map((record, i) => {
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+                {record.time}
+              </Flex.Item>
+              <Flex.Item width="10rem" grow italic>
+                {record.user}
+              </Flex.Item>
+              <Flex.Item width="40rem" ml="1rem" shrink="0" textAlign="center">
+                {record.details}
+              </Flex.Item>
+              <Flex.Item ml="1rem">
+                <Button.Confirm
+                  icon="trash"
+                  tooltip="Delete Record"
+                  disabled={access_level < 4}
+                  onClick={() => act('delete_record', { record: record.ref })}
+                />
               </Flex.Item>
             </Flex>
           );

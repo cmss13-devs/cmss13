@@ -35,10 +35,19 @@
 /datum/ares_record/security/antiair
 	record_name = ARES_RECORD_ANTIAIR
 
-/datum/ares_record/security/antiair/New(details, user)
+/datum/ares_record/security/antiair/New(details)
 	time = worldtime2text()
 	src.title = "AntiAir Adjustment"
 	src.details = details
+
+/datum/ares_record/flight
+	record_name = ARES_RECORD_FLIGHT
+
+/datum/ares_record/flight/New(details, user)
+	time = worldtime2text()
+	src.title = "Flight Log"
+	src.details = details
+	src.user = user
 
 /datum/ares_record/bombardment
 	record_name = ARES_RECORD_BOMB

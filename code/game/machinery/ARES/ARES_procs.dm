@@ -57,20 +57,23 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 /datum/ares_link/proc/log_ares_bioscan(title, input)
 	interface.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
 
-/datum/ares_link/proc/log_ares_bombardment(mob/living/user, ob_name, coordinates)
-	interface.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user))
+/datum/ares_link/proc/log_ares_bombardment(mob/user, ob_name, coordinates)
+	interface.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user.name))
 
 /datum/ares_link/proc/log_ares_announcement(title, message)
 	interface.records_announcement.Add(new /datum/ares_record/announcement(title, message))
 
-/datum/ares_link/proc/log_ares_requisition(source, details, mob/living/user)
-	interface.records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user))
+/datum/ares_link/proc/log_ares_requisition(source, details, mob/user)
+	interface.records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user.name))
 
 /datum/ares_link/proc/log_ares_security(title, details)
 	interface.records_security.Add(new /datum/ares_record/security(title, details))
 
 /datum/ares_link/proc/log_ares_antiair(details)
 	interface.records_security.Add(new /datum/ares_record/security/antiair(details))
+
+/datum/ares_link/proc/log_ares_flight(mob/user, details)
+	interface.records_flight.Add(new /datum/ares_record/flight(details, user.name))
 // ------ End ARES Logging Procs ------ //
 
 /proc/ares_apollo_talk(broadcast_message)
@@ -231,6 +234,17 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		current_alert["ref"] = "\ref[security_alert]"
 		logged_alerts += list(current_alert)
 	data["records_security"] = logged_alerts
+
+	var/list/logged_flights = list()
+	for(var/datum/ares_record/flight/flight_log as anything in records_flight)
+		var/list/current_flight = list()
+		current_flight["time"] = flight_log.time
+		current_flight["title"] = flight_log.title
+		current_flight["details"] = flight_log.details
+		current_flight["user"] = flight_log.user
+		current_flight["ref"] = "\ref[flight_log]"
+		logged_flights += list(current_flight)
+	data["records_flight"] = logged_flights
 
 	var/list/logged_bioscans = list()
 	for(var/datum/ares_record/bioscan/scan as anything in records_bioscan)
@@ -414,6 +428,9 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		if("page_security")
 			last_menu = current_menu
 			current_menu = "security"
+		if("page_flight")
+			last_menu = current_menu
+			current_menu = "flight_log"
 		if("page_requisitions")
 			last_menu = current_menu
 			current_menu = "requisitions"

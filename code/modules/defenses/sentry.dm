@@ -21,7 +21,7 @@
 	var/sentry_type = "sentry" //Used for the icon
 	display_additional_stats = TRUE
 	/// Light strength when turned on
-	var/luminosity_strength = 7
+	var/luminosity_strength = 5
 	/// Check if they have been upgraded or not, used for sentry post
 	var/upgraded = FALSE
 	var/omni_directional = FALSE

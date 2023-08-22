@@ -793,7 +793,7 @@
 	name = "Cell Lockdown 1";
 	pixel_x = -25;
 	pixel_y = 9;
-	req_one_access_txt = "250;251;252"
+	req_one_access_txt = "390;391;392"
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -803,7 +803,7 @@
 	name = "Cell Lockdown 4";
 	pixel_x = -7;
 	pixel_y = 9;
-	req_one_access_txt = "250;251;252"
+	req_one_access_txt = "390;391;392"
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
@@ -858,7 +858,7 @@
 	name = "Cell Lockdown 2";
 	pixel_x = -25;
 	pixel_y = 9;
-	req_one_access_txt = "250;251;252"
+	req_one_access_txt = "390;391;392"
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -911,7 +911,7 @@
 	name = "Cell Lockdown 3";
 	pixel_x = -25;
 	pixel_y = 9;
-	req_one_access_txt = "250;251;252"
+	req_one_access_txt = "390;391;392"
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -921,7 +921,7 @@
 	name = "Cell Lockdown 6";
 	pixel_x = -7;
 	pixel_y = 9;
-	req_one_access_txt = "250;251;252"
+	req_one_access_txt = "390;391;392"
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
@@ -1587,7 +1587,7 @@
 	name = "Cell Lockdown 5";
 	pixel_x = -7;
 	pixel_y = 9;
-	req_one_access_txt = "250;251;252"
+	req_one_access_txt = "390;391;392"
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
@@ -1788,9 +1788,9 @@
 /area/yautja)
 "gr" = (
 /obj/structure/closet/crate/secure{
+	req_one_access_txt = "392";
 	color = "#6b675e";
-	name = "Secure Yautja crate";
-	req_one_access_txt = "252"
+	name = "Secure Yautja crate"
 	},
 /obj/item/explosive/grenade/spawnergrenade/hellhound,
 /obj/item/explosive/grenade/spawnergrenade/hellhound,
@@ -1807,7 +1807,8 @@
 	name = "Armory Shutters";
 	needs_power = 0;
 	pixel_x = 24;
-	req_one_access_txt = "252"
+	req_one_access_txt = "392";
+	needs_power = 0
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2423,9 +2424,9 @@
 /area/yautja)
 "Bg" = (
 /obj/structure/closet/crate/secure{
+	req_one_access_txt = "392";
 	color = "#6b675e";
-	name = "Secure Yautja crate";
-	req_one_access_txt = "252"
+	name = "Secure Yautja crate"
 	},
 /obj/item/weapon/yautja/combistick,
 /obj/item/weapon/yautja/combistick{

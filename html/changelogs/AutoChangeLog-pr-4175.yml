@@ -1,5 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - bugfix: "Prompt allowing staff to call for ERT with an announcement fixed to actually appear"
-  - ui: "Prompts for admin-calling ERT converted to TGUI."

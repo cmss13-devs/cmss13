@@ -45,6 +45,7 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 	if(!ui)
 		ui = new(user, src, "KeyBinds", "Keybind Preference")
 		ui.open()
+		ui.set_autoupdate(FALSE)
 
 /datum/tgui_macro/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

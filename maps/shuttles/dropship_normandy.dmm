@@ -5,7 +5,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "af" = (
-/obj/structure/shuttle/dropship2/transparent/upper_right_wing,
+/obj/structure/shuttle/part/dropship2/transparent/upper_right_wing,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "aH" = (
@@ -20,7 +20,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bc" = (
-/obj/structure/shuttle/dropship2/transparent/left_outer_bottom_wing,
+/obj/structure/shuttle/part/dropship2/transparent/left_outer_bottom_wing,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "bJ" = (
@@ -37,7 +37,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "cj" = (
-/obj/structure/shuttle/dropship2/transparent/right_outer_bottom_wing,
+/obj/structure/shuttle/part/dropship2/transparent/right_outer_bottom_wing,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "do" = (
@@ -80,7 +80,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "fQ" = (
-/obj/structure/shuttle/dropship2/left_inner_wing_connector,
+/obj/structure/shuttle/part/dropship2/left_inner_wing_connector,
 /turf/open/space/basic,
 /area/shuttle/drop2/sulaco)
 "gD" = (
@@ -119,7 +119,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "iI" = (
-/obj/structure/shuttle/dropship2/right_inner_wing_connector,
+/obj/structure/shuttle/part/dropship2/right_inner_wing_connector,
 /turf/open/space/basic,
 /area/shuttle/drop2/sulaco)
 "jc" = (
@@ -137,15 +137,15 @@
 	},
 /area/shuttle/drop2/sulaco)
 "ko" = (
-/obj/structure/shuttle/dropship2/bottom_right_wall,
+/obj/structure/shuttle/part/dropship2/bottom_right_wall,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "kP" = (
-/obj/structure/shuttle/dropship2/transparent/middle_right_wing,
+/obj/structure/shuttle/part/dropship2/transparent/middle_right_wing,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "kT" = (
-/obj/structure/shuttle/dropship2/bottom_left_wall,
+/obj/structure/shuttle/part/dropship2/bottom_left_wall,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "lh" = (
@@ -155,7 +155,7 @@
 /area/shuttle/drop2/sulaco)
 "lz" = (
 /obj/effect/attach_point/weapon/dropship2/right_fore,
-/obj/structure/shuttle/dropship2/transparent/outer_right_weapons,
+/obj/structure/shuttle/part/dropship2/transparent/outer_right_weapons,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "lH" = (
@@ -200,7 +200,7 @@
 /area/shuttle/drop2/sulaco)
 "nq" = (
 /obj/effect/attach_point/weapon/dropship2/left_fore,
-/obj/structure/shuttle/dropship2/transparent/outer_left_weapons,
+/obj/structure/shuttle/part/dropship2/transparent/outer_left_weapons,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "nO" = (
@@ -218,15 +218,15 @@
 	},
 /area/shuttle/drop2/sulaco)
 "nS" = (
-/obj/structure/shuttle/dropship2/lower_left_wall,
+/obj/structure/shuttle/part/dropship2/lower_left_wall,
 /turf/open/space/basic,
 /area/shuttle/drop2/sulaco)
 "oc" = (
-/obj/structure/shuttle/dropship2/transparent/nose_top_right,
+/obj/structure/shuttle/part/dropship2/transparent/nose_top_right,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "os" = (
-/obj/structure/shuttle/dropship2/transparent/middle_left_wing,
+/obj/structure/shuttle/part/dropship2/transparent/middle_left_wing,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "oS" = (
@@ -272,7 +272,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "rw" = (
-/obj/structure/shuttle/dropship2/nose_front_right,
+/obj/structure/shuttle/part/dropship2/nose_front_right,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "sk" = (
@@ -281,7 +281,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "uk" = (
-/obj/structure/shuttle/dropship2/transparent/upper_left_wing,
+/obj/structure/shuttle/part/dropship2/transparent/upper_left_wing,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "vd" = (
@@ -304,7 +304,7 @@
 /obj/effect/attach_point/electronics/dropship2{
 	dir = 1
 	},
-/obj/structure/shuttle/dropship2/transparent/inner_right_weapons,
+/obj/structure/shuttle/part/dropship2/transparent/inner_right_weapons,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "xe" = (
@@ -323,7 +323,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "yh" = (
-/obj/structure/shuttle/dropship2/transparent/engine_right_cap,
+/obj/structure/shuttle/part/dropship2/transparent/engine_right_cap,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "yl" = (
@@ -362,7 +362,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "BG" = (
-/obj/structure/shuttle/dropship2/transparent/engine_left_cap,
+/obj/structure/shuttle/part/dropship2/transparent/engine_left_cap,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "Cl" = (
@@ -382,7 +382,7 @@
 /area/shuttle/drop2/sulaco)
 "DW" = (
 /obj/effect/attach_point/weapon/dropship2/right_wing,
-/obj/structure/shuttle/dropship2/transparent/lower_right_wing,
+/obj/structure/shuttle/part/dropship2/transparent/lower_right_wing,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "En" = (
@@ -452,7 +452,7 @@
 /obj/effect/attach_point/electronics/dropship2{
 	dir = 1
 	},
-/obj/structure/shuttle/dropship2/transparent/inner_left_weapons,
+/obj/structure/shuttle/part/dropship2/transparent/inner_left_weapons,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "Le" = (
@@ -491,11 +491,11 @@
 	},
 /area/shuttle/drop2/sulaco)
 "LY" = (
-/obj/structure/shuttle/dropship2/transparent/nose_center,
+/obj/structure/shuttle/part/dropship2/transparent/nose_center,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "Mx" = (
-/obj/structure/shuttle/dropship2/transparent/nose_top_left,
+/obj/structure/shuttle/part/dropship2/transparent/nose_top_left,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "ME" = (
@@ -517,7 +517,7 @@
 /area/shuttle/drop2/sulaco)
 "Nt" = (
 /obj/effect/attach_point/weapon/dropship2/left_wing,
-/obj/structure/shuttle/dropship2/transparent/lower_left_wing,
+/obj/structure/shuttle/part/dropship2/transparent/lower_left_wing,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "Nw" = (
@@ -526,11 +526,11 @@
 	},
 /area/shuttle/drop2/sulaco)
 "NM" = (
-/obj/structure/shuttle/dropship2/left_outer_wing_connector,
+/obj/structure/shuttle/part/dropship2/left_outer_wing_connector,
 /turf/open/space/basic,
 /area/shuttle/drop2/sulaco)
 "Ov" = (
-/obj/structure/shuttle/dropship2/transparent/right_inner_bottom_wing,
+/obj/structure/shuttle/part/dropship2/transparent/right_inner_bottom_wing,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "OI" = (
@@ -593,7 +593,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "QK" = (
-/obj/structure/shuttle/dropship2/lower_right_wall,
+/obj/structure/shuttle/part/dropship2/lower_right_wall,
 /turf/open/space/basic,
 /area/shuttle/drop2/sulaco)
 "QS" = (
@@ -627,11 +627,11 @@
 	},
 /area/shuttle/drop2/sulaco)
 "RJ" = (
-/obj/structure/shuttle/dropship2/right_outer_wing_connector,
+/obj/structure/shuttle/part/dropship2/right_outer_wing_connector,
 /turf/open/space/basic,
 /area/shuttle/drop2/sulaco)
 "SB" = (
-/obj/structure/shuttle/dropship2/nose_front_left,
+/obj/structure/shuttle/part/dropship2/nose_front_left,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "SC" = (
@@ -674,7 +674,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "Uu" = (
-/obj/structure/shuttle/dropship2/transparent/engine_right_exhaust,
+/obj/structure/shuttle/part/dropship2/transparent/engine_right_exhaust,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "UP" = (
@@ -688,7 +688,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "Vh" = (
-/obj/structure/shuttle/dropship2/transparent/left_outer_inner_wing,
+/obj/structure/shuttle/part/dropship2/transparent/left_outer_inner_wing,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "Vs" = (
@@ -719,7 +719,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "Xr" = (
-/obj/structure/shuttle/dropship2/transparent/engine_left_exhaust,
+/obj/structure/shuttle/part/dropship2/transparent/engine_left_exhaust,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "XX" = (

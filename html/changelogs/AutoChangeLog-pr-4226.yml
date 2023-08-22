@@ -1,0 +1,4 @@
+author: "CapCamIII"
+delete-after: True
+changes:
+  - bugfix: "UPP soldier preset works again"

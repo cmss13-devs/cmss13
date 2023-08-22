@@ -148,7 +148,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	if(building == 0)
 		init()
 	else
-		area = loc.loc:master
+		area = get_area(src)
 		opened = APC_COVER_OPEN
 		operating = 0
 		name = "\improper [area.name] APC"

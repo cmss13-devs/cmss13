@@ -16,6 +16,26 @@
 	///TRUE Means that it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
 	var/flap = TRUE
 
+/obj/item/storage/belt/gun/flaregun/dump_into(obj/item/storage/origin_storage, mob/user)
+
+	if(length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
+
+		to_chat(user, SPAN_WARNING("[src] is full."))
+		return FALSE
+	return ..()
+
+/obj/item/storage/belt/gun/flaregun/handle_item_insertion(obj/item/new_item, prevent_warning = FALSE, mob/user)
+
+	if(istype(new_item, /obj/item/device/flashlight/flare) && length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
+		return FALSE
+	return ..()
+
+/obj/item/storage/belt/gun/flaregun/has_room(obj/item/new_item, W_class_override = null)
+
+	if(istype(new_item, /obj/item/device/flashlight/flare) && length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
+		return FALSE //No slot open because gun in holster.
+	return ..()
+
 /obj/item/storage/belt/equipped(mob/user, slot)
 	switch(slot)
 		if(WEAR_WAIST, WEAR_J_STORE, WEAR_BACK)
@@ -765,7 +785,7 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/weapon/throwing_knife(src)
 
-/obj/item/storage/belt/knifepouch/_item_insertion(obj/item/W, prevent_warning = 0)
+/obj/item/storage/belt/knifepouch/_item_insertion(obj/item/new_item, prevent_warning = FALSE)
 	..()
 	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
@@ -912,6 +932,7 @@
 	for(var/slot in holster_slots)
 		if(AM == holster_slots[slot]["gun"])
 			holster_slots[slot]["gun"] = null
+
 			update_gun_icon(slot)
 			return
 
@@ -987,7 +1008,7 @@
 			to_chat(usr, SPAN_WARNING("[src] can't hold any more ammo."))
 		return FALSE
 
-/obj/item/storage/belt/gun/_item_insertion(obj/item/W, prevent_warning = 0)
+/obj/item/storage/belt/gun/_item_insertion(obj/item/W, prevent_warning = FALSE)
 	if(isgun(W))
 		holstered_guns += W
 		for(var/slot in holster_slots)

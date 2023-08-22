@@ -41,7 +41,11 @@ SUBSYSTEM_DEF(lighting)
 
 		L.needs_update = LIGHTING_NO_UPDATE
 		if(init_tick_checks)
-			CHECK_TICK
+			if(!TICK_CHECK)
+				continue
+			static_sources_queue.Cut(1, ++updators_num)
+			updators_num = 0
+			stoplag()
 		else if (MC_TICK_CHECK)
 			break
 	if(updators_num)

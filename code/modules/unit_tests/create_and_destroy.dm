@@ -18,6 +18,7 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 		/obj/item/explosive/grenade/flashbang/cluster/segment,
 		/obj/item/explosive/grenade/flashbang/cluster_piece,
 		/obj/effect/fake_attacker,
+		/atom/movable/lighting_mask, //leave it alone
 	)
 	//This turf existing is an error in and of itself
 	ignore += typesof(/turf/baseturf_skipover)

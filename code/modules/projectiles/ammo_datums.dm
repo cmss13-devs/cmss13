@@ -412,6 +412,7 @@
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/upp
 	name = "high-impact pistol bullet"
+	sound_override = 'sound/weapons/gun_DE50.ogg'
 	penetration = ARMOR_PENETRATION_TIER_6
 	debilitate = list(0,1.5,0,0,0,1,0,0)
 	flags_ammo_behavior = AMMO_BALLISTIC

@@ -6,22 +6,13 @@
 	rank = FACTION_WY
 	idtype = /obj/item/card/id/silver
 	faction_group = FACTION_LIST_WY
-	access = list(
-		ACCESS_WY_CORPORATE,
-		ACCESS_ILLEGAL_PIRATE,
-		ACCESS_MARINE_COMMAND,
-		ACCESS_MARINE_DROPSHIP,
-		ACCESS_MARINE_RESEARCH,
-		ACCESS_WY_CORPORATE_DS,
-		ACCESS_MARINE_MEDBAY,
-	)
 	skills = /datum/skills/civilian
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/headset_type = /obj/item/device/radio/headset/distress/WY
 
 /datum/equipment_preset/wy/New()
 	. = ..()
-	access += get_all_civilian_access() + get_all_weyland_access()
+	access += get_access(ACCESS_LIST_WY_BASE)
 
 /datum/equipment_preset/wy/load_id(mob/living/carbon/human/new_human)
 	. = ..()
@@ -86,7 +77,7 @@
 
 /datum/equipment_preset/wy/manager/New()
 	. = ..()
-	access = get_global_access()
+	access = get_access(ACCESS_LIST_WY_SENIOR)
 
 /datum/equipment_preset/wy/manager/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(new_human), WEAR_BODY)
@@ -116,6 +107,10 @@
 	rank = JOB_CHIEF_EXECUTIVE
 	paygrade = "WYC9"
 
+/datum/equipment_preset/wy/manager/chief_executive/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_WY_ALL)
+
 /datum/equipment_preset/wy/manager/director
 	name = "Corporate - J - Director"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -124,6 +119,10 @@
 	paygrade = "WYC10"
 	skills = /datum/skills/civilian/manager/director
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command/director
+
+/datum/equipment_preset/wy/manager/director/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_WY_ALL)
 
 /datum/equipment_preset/wy/manager/director/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/director(new_human), WEAR_BODY)

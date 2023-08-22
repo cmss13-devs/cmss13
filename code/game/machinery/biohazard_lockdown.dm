@@ -46,6 +46,9 @@ GLOBAL_VAR_INIT(lockdown_state, LOCKDOWN_READY)
 	RegisterSignal(SSdcs, COMSIG_GLOB_RESEARCH_LOCKDOWN, PROC_REF(close))
 	RegisterSignal(SSdcs, COMSIG_GLOB_RESEARCH_LIFT, PROC_REF(open))
 
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white
+	icon_state = "w_almayer_pdoor1"
+	base_icon_state = "w_almayer_pdoor"
 
 /client/proc/admin_biohazard_alert()
 	set name = "Containment Breach Alert"

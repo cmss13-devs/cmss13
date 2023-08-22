@@ -3500,7 +3500,7 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple,
@@ -4494,7 +4494,7 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
@@ -4942,7 +4942,7 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
@@ -5260,7 +5260,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -5735,7 +5735,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/plating,
 /area/almayer/medical/upper_medical)
 "aso" = (
@@ -8818,7 +8818,7 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
@@ -10565,7 +10565,7 @@
 	id = "researchlockdownext_windoor";
 	name = "\improper Research Windoor Shutter"
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -12398,7 +12398,7 @@
 	id = "researchlockdownext_windoor";
 	name = "\improper Research Windoor Shutter"
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -32043,7 +32043,7 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
@@ -39742,7 +39742,7 @@
 /obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
 	name = "\improper Research Reception Laboratory"
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
@@ -40663,7 +40663,7 @@
 	id = "researchlockdownext_door";
 	name = "\improper Research Doorway Shutter"
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -44621,7 +44621,7 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
@@ -45047,7 +45047,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
@@ -45913,7 +45913,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/plating,
 /area/almayer/medical/medical_science)
 "khd" = (
@@ -49659,7 +49659,7 @@
 	id = "researchlockdownext";
 	name = "\improper Research Window Shutter"
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/plating,
 /area/almayer/medical/medical_science)
 "lJG" = (
@@ -49885,7 +49885,7 @@
 	id = "researchlockdownext_door";
 	name = "\improper Research Doorway Shutter"
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -50715,7 +50715,7 @@
 	name = "\improper Research Window Shutter"
 	},
 /obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/poddoor/almayer/biohazard,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/plating,
 /area/almayer/medical/medical_science)
 "mnf" = (
@@ -56252,7 +56252,7 @@
 	dir = 8;
 	name = "\improper Containment Airlock"
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -58444,7 +58444,7 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
@@ -60157,7 +60157,7 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple,
@@ -60464,7 +60464,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
 	name = "\improper Research Hydroponics Workshop"
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -65913,7 +65913,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
@@ -72338,7 +72338,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/poddoor/almayer/biohazard,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -72445,7 +72445,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -73254,7 +73254,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
@@ -73303,7 +73303,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -73618,7 +73618,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -74746,7 +74746,7 @@
 	pixel_x = -1
 	},
 /obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -74866,7 +74866,7 @@
 	},
 /area/almayer/squads/alpha)
 "wMO" = (
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -76450,7 +76450,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -78517,7 +78517,7 @@
 	dir = 8;
 	name = "\improper Containment Airlock"
 	},
-/obj/structure/machinery/door/poddoor/almayer/biohazard{
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
 	},
 /turf/open/floor/almayer{

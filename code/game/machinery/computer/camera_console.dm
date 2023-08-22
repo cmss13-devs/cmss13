@@ -17,9 +17,6 @@
 	var/atom/movable/screen/map_view/cam_screen
 	var/atom/movable/screen/background/cam_background
 
-	/// All turfs within range of the currently active camera
-	var/list/range_turfs = list()
-
 	var/colony_camera_mapload = TRUE
 	var/admin_console = FALSE
 
@@ -64,7 +61,6 @@
 	qdel(cam_screen)
 	QDEL_NULL(cam_background)
 	qdel(cam_background)
-	range_turfs = null
 	last_camera_turf = null
 	concurrent_users = null
 	return ..()
@@ -191,11 +187,8 @@
 	var/list/visible_things = current.isXRay() ? range(current.view_range, cam_location) : view(current.view_range, cam_location)
 
 	var/list/visible_turfs = list()
-	range_turfs.Cut()
 	for(var/turf/visible_turf in visible_things)
-		range_turfs += visible_turf
-		if(visible_turf.get_lumcount() >= 0.5)
-			visible_turfs += visible_turf
+		visible_turfs += visible_turf
 
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)
 	var/size_x = bbox[3] - bbox[1] + 1
@@ -204,16 +197,6 @@
 	cam_screen.vis_contents = visible_turfs
 	cam_background.icon_state = "clear"
 	cam_background.fill_rect(1, 1, size_x, size_y)
-
-	START_PROCESSING(SSfastobj, src) // fastobj to somewhat keep pace with lighting updates
-
-/obj/structure/machinery/computer/cameras/process()
-	if(current)
-		var/list/visible_turfs = list()
-		for(var/turf/visible_turf as anything in range_turfs)
-			if(visible_turf.get_lumcount() >= 0.5)
-				visible_turfs += visible_turf
-		cam_screen.vis_contents = visible_turfs
 
 /obj/structure/machinery/computer/cameras/ui_close(mob/user)
 	var/user_ref = WEAKREF(user)
@@ -226,10 +209,8 @@
 	if(length(concurrent_users) == 0 && is_living)
 		current = null
 		last_camera_turf = null
-		range_turfs = list()
 		if(use_power)
 			update_use_power(USE_POWER_IDLE)
-		STOP_PROCESSING(SSfastobj, src)
 	user.unset_interaction()
 
 /obj/structure/machinery/computer/cameras/proc/show_camera_static()

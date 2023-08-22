@@ -56,9 +56,6 @@
 	/// camera screen which shows a blank error
 	var/atom/movable/screen/background/cam_background
 
-	/// All turfs within range of the currently active camera
-	var/list/range_turfs = list()
-
 /obj/item/device/sentry_computer/Initialize(mapload)
 	. = ..()
 	if(cell_type)
@@ -74,6 +71,16 @@
 	cam_background = new
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = FALSE
+
+	cam_plane_masters = list()
+	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
+		var/atom/movable/screen/plane_master/instance = new plane()
+		instance.assigned_map = map_name
+		instance.del_on_map_removal = FALSE
+		if(instance.blend_mode_override)
+			instance.blend_mode = instance.blend_mode_override
+		instance.screen_loc = "[map_name]:CENTER"
+		cam_plane_masters += instance
 
 	faction_group = FACTION_LIST_MARINE
 	transceiver.forceMove(src)
@@ -391,6 +398,8 @@
 		// Register map objects
 		user.client.register_map_obj(cam_background)
 		user.client.register_map_obj(cam_screen)
+		for(var/plane in cam_plane_masters)
+			user.client.register_map_obj(plane)
 		ui = new(user, src, "SentryGunUI", name)
 		ui.open()
 
@@ -474,12 +483,9 @@
 	var/list/guncamera_zone = range("[x_size]x[y_size]", target)
 
 	var/list/visible_turfs = list()
-	range_turfs.Cut()
 
 	for(var/turf/visible_turf in guncamera_zone)
-		range_turfs += visible_turf
-		if(visible_turf.get_lumcount() >= 0.5)
-			visible_turfs += visible_turf
+		visible_turfs += visible_turf
 
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)
 	var/size_x = bbox[3] - bbox[1] + 1

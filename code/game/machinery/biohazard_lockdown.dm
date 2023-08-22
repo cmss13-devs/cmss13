@@ -71,14 +71,14 @@ GLOBAL_VAR_INIT(lockdown_state, LOCKDOWN_READY)
 		return PROC_BLOCKED
 
 	var/log = "[key_name(user)] triggered research bio lockdown!"
-	var/ares_log = "[user.name] triggered research bio lockdown!"
+	var/ares_log = "[user.name] triggered Medical Research Biohazard Containment Lockdown."
 	if(!message)
 		message = "ATTENTION! \n\nBIOHAZARD CONTAINMENT BREACH. \n\nRESEARCH DEPARTMENT UNDER LOCKDOWN."
 	else
 		log = "[key_name(user)] triggered research bio lockdown! (Using a custom announcement)."
 	if(admin)
 		log += " (Admin Triggered)."
-		ares_log = "[MAIN_AI_SYSTEM] triggered research bio lockdown!"
+		ares_log = "[MAIN_AI_SYSTEM] triggered Medical Research Biohazard Containment Lockdown."
 
 	switch(GLOB.lockdown_state)
 		if(LOCKDOWN_READY)
@@ -88,11 +88,11 @@ GLOBAL_VAR_INIT(lockdown_state, LOCKDOWN_READY)
 		if(LOCKDOWN_ACTIVE)
 			GLOB.lockdown_state = LOCKDOWN_READY
 			message = "ATTENTION! \n\nBIOHAZARD CONTAINMENT LOCKDOWN LIFTED."
-			log = "[key_name(user)] lifted research bio lockdown."
-			ares_log = "[user.name] lifted research bio lockdown."
+			log = "[key_name(user)] lifted research bio lockdown!"
+			ares_log = "[user.name] lifted Medical Research Biohazard Containment Lockdown."
 			if(admin)
 				log += " (Admin Triggered)."
-				ares_log = "[MAIN_AI_SYSTEM] lifted research bio lockdown."
+				ares_log = "[MAIN_AI_SYSTEM] lifted Medical Research Biohazard Containment Lockdown."
 
 			set_security_level(SEC_LEVEL_BLUE, TRUE, FALSE)
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_RESEARCH_LIFT)

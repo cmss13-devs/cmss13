@@ -1,4 +1,4 @@
-/obj/shuttle/part
+/obj/structure/shuttle/part
 	opacity = TRUE
 	density = TRUE
 	unslashable = TRUE

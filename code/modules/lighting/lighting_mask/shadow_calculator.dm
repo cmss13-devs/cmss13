@@ -47,6 +47,7 @@
 /atom/movable/lighting_mask/Destroy()
 	//Make sure we werent destroyed in init
 	SSlighting.mask_queue -= src
+	debug_log("mask_queue -= [REF(src)]")
 	//Remove from affecting turfs
 	if(affecting_turfs)
 		for(var/turf/thing as anything in affecting_turfs)
@@ -73,6 +74,7 @@
 		return
 
 	SSlighting.mask_queue += src
+	debug_log("mask_queue += [REF(src)]")
 	awaiting_update = TRUE
 
 /**

@@ -56,6 +56,8 @@
 	/// camera screen which shows a blank error
 	var/atom/movable/screen/background/cam_background
 
+	var/list/cam_plane_masters
+
 /obj/item/device/sentry_computer/Initialize(mapload)
 	. = ..()
 	if(cell_type)

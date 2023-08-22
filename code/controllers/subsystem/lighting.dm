@@ -43,7 +43,7 @@ SUBSYSTEM_DEF(lighting)
 		if(!QDELETED(L))
 			L.needs_update = LIGHTING_NO_UPDATE
 		else
-			i -= 1
+			updators_num -= 1
 		if(init_tick_checks)
 			if(!TICK_CHECK)
 				continue

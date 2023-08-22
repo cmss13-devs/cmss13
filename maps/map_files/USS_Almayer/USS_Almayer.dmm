@@ -1178,7 +1178,8 @@
 "adR" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Pilot's Office";
-	req_one_access_txt = "3;22;19"
+	req_one_access_txt = "3;22;19";
+	access_modified = 1
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 8
@@ -1365,7 +1366,8 @@
 "aeD" = (
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	req_one_access = null;
-	req_one_access_txt = "2;7"
+	req_one_access_txt = "2;7";
+	access_modified = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -1842,7 +1844,8 @@
 	dir = 1;
 	name = "\improper Particle Cannon Systems Room";
 	req_access = null;
-	req_one_access_txt = "3;19"
+	req_one_access_txt = "3;19";
+	access_modified = 1
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -1912,7 +1915,8 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "3;22;19"
+	req_one_access_txt = "3;22;19";
+	access_modified = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -2137,7 +2141,8 @@
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	name = "\improper Commanding Officer's Quarters";
 	req_access = null;
-	req_access_txt = "31"
+	req_access_txt = "31";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -2162,7 +2167,8 @@
 	dir = 1;
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "3;22;19"
+	req_one_access_txt = "3;22;19";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -2493,7 +2499,8 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	req_one_access = null;
-	req_one_access_txt = "7;19"
+	req_one_access_txt = "7;19";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -3740,7 +3747,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/repair_bay)
 "amq" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -3748,7 +3755,7 @@
 	},
 /area/almayer/command/lifeboat)
 "ams" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -4886,16 +4893,16 @@
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "apR" = (
-/obj/structure/pipes/vents/pump{
-	name = "Secure Air Vent";
-	welded = 1
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
 	},
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
+	},
+/obj/structure/pipes/vents/pump/no_boom{
+	welded = 1;
+	name = "Secure Reinforced Air Vent"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -5173,7 +5180,7 @@
 	},
 /area/almayer/living/pilotbunks)
 "aqC" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 5
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -5251,7 +5258,6 @@
 	name = "\improper Containment Cell 1";
 	unacidable = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -5264,12 +5270,13 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
 /area/almayer/medical/containment/cell)
 "aqS" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -5853,7 +5860,8 @@
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	name = "\improper AI Reception";
 	req_access = null;
-	req_one_access_txt = "91;92"
+	req_one_access_txt = "91;92";
+	access_modified = 1
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -6230,9 +6238,9 @@
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1;
 	name = "\improper Spare Bomb Suit";
-	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "35"
+	req_one_access_txt = "35";
+	access_modified = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
@@ -6735,7 +6743,8 @@
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	dir = 2;
 	name = "Telecommunications";
-	req_access_txt = "6"
+	req_access_txt = "6";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -6954,9 +6963,9 @@
 "avk" = (
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1;
-	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "35"
+	req_one_access_txt = "35";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -7413,7 +7422,8 @@
 	dir = 1;
 	name = "\improper Engineering Storage";
 	req_one_access = null;
-	req_one_access_txt = "2;7"
+	req_one_access_txt = "2;7";
+	access_modified = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -7499,7 +7509,7 @@
 	},
 /area/almayer/medical/hydroponics)
 "awR" = (
-/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -7828,7 +7838,7 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "ayg" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 5
 	},
 /turf/open/floor/almayer{
@@ -8685,7 +8695,8 @@
 	dir = 2;
 	name = "Morgue";
 	req_access_txt = "25";
-	req_one_access = null
+	req_one_access = null;
+	access_modified = 1
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -8762,7 +8773,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/structure/pipes/vents/pump{
+/obj/structure/pipes/vents/pump/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -8786,7 +8797,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -8797,7 +8808,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -8829,7 +8840,8 @@
 "aBf" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	name = "Telecommunications";
-	req_access_txt = "6"
+	req_access_txt = "6";
+	access_modified = 1
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 8
@@ -8837,7 +8849,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -9067,7 +9079,8 @@
 "aBP" = (
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1;
-	req_one_access = list(36)
+	req_one_access = list(36);
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -9291,7 +9304,7 @@
 	id = "containmentlockdown_S";
 	name = "Containment Lockdown";
 	pixel_y = 28;
-	req_one_access_txt = "19;28"
+	req_one_access_txt = "28"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -10083,7 +10096,8 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list(2,34,30)
+	req_one_access = list(2,34,30);
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -10395,7 +10409,8 @@
 	name = "\improper Engineering Storage";
 	no_panel = 1;
 	req_one_access = null;
-	req_one_access_txt = "2;7"
+	req_one_access_txt = "2;7";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -10414,7 +10429,8 @@
 	name = "\improper Engineering Storage";
 	no_panel = 1;
 	req_one_access = null;
-	req_one_access_txt = "2;7"
+	req_one_access_txt = "2;7";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -10672,7 +10688,8 @@
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	name = "\improper XO's Quarters";
 	req_access = null;
-	req_access_txt = "1"
+	req_access_txt = "1";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -10699,7 +10716,8 @@
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	dir = 2;
 	name = "Telecommunications";
-	req_access_txt = "6"
+	req_access_txt = "6";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -11607,7 +11625,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "aMR" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -11615,7 +11633,7 @@
 	},
 /area/almayer/command/lifeboat)
 "aMS" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -12055,10 +12073,10 @@
 	},
 /area/almayer/squads/alpha)
 "aPk" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -12535,7 +12553,8 @@
 	dir = 2;
 	name = "Morgue Processing";
 	req_access_txt = "25";
-	req_one_access = null
+	req_one_access = null;
+	access_modified = 1
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -15889,9 +15908,9 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "\improper Chemistry Laboratory";
-	req_access = null;
 	req_access_txt = "20";
-	req_one_access = null
+	req_one_access = null;
+	access_modified = 1
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -16174,9 +16193,9 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "\improper Nurse Office";
-	req_access = null;
 	req_access_txt = "20";
-	req_one_access = null
+	req_one_access = null;
+	access_modified = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -16380,7 +16399,8 @@
 	dir = 2;
 	name = "Firing Range";
 	req_access = null;
-	req_one_access_txt = "2;4;7;9;21"
+	req_one_access_txt = "2;4;7;9;21";
+	access_modified = 1
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
@@ -17107,7 +17127,8 @@
 	dir = 1;
 	name = "\improper Particle Cannon Systems Room";
 	req_access = null;
-	req_one_access_txt = "3;19"
+	req_one_access_txt = "3;19";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -19597,7 +19618,8 @@
 	dir = 2;
 	name = "\improper Security Checkpoint";
 	req_access = null;
-	req_one_access_txt = "3;19"
+	req_one_access_txt = "3;19";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -19905,7 +19927,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
 	dir = 1;
 	name = "\improper Auxiliary Combat Support Secondary Preparations";
-	req_one_access = "19;27;22"
+	req_one_access = "19;27;22";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -20489,7 +20512,7 @@
 	},
 /area/almayer/living/bridgebunks)
 "bFD" = (
-/obj/structure/pipes/vents/pump{
+/obj/structure/pipes/vents/pump/no_boom{
 	dir = 1
 	},
 /turf/open/floor/almayer{
@@ -20819,7 +20842,8 @@
 	dir = 1;
 	name = "\improper Particle Cannon Systems Room";
 	req_access = null;
-	req_one_access_txt = "3;19"
+	req_one_access_txt = "3;19";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -21090,7 +21114,8 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "Storage";
-	req_one_access = "2;21"
+	req_one_access = "2;21";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -21288,7 +21313,8 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Auxiliary Support Officers Quarters";
-	req_one_access_txt = "37"
+	req_one_access_txt = "37";
+	access_modified = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -21476,7 +21502,8 @@
 	dir = 1;
 	name = "\improper Particle Cannon Systems Room";
 	req_access = null;
-	req_one_access_txt = "7;19"
+	req_one_access_txt = "7;19";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -24967,7 +24994,8 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Flight Crew Quarters";
-	req_one_access_txt = "19;22"
+	req_one_access_txt = "19;22";
+	access_modified = 1
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -25243,7 +25271,8 @@
 	dir = 2;
 	name = "Firing Range";
 	req_access = null;
-	req_one_access_txt = "2;4;7;9;21"
+	req_one_access_txt = "2;4;7;9;21";
+	access_modified = 1
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
@@ -27075,7 +27104,7 @@
 	},
 /area/almayer/hallways/port_hallway)
 "ckn" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "ckr" = (
@@ -27668,7 +27697,8 @@
 /obj/structure/machinery/door/airlock/almayer/security/reinforced{
 	name = "\improper Astronavigational Deck";
 	req_access = null;
-	req_one_access_txt = "3;19"
+	req_one_access_txt = "3;19";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -27679,7 +27709,8 @@
 /obj/structure/machinery/door/airlock/almayer/security/reinforced{
 	name = "\improper Astronavigational Deck";
 	req_access = null;
-	req_one_access_txt = "3;19"
+	req_one_access_txt = "3;19";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -27964,7 +27995,7 @@
 	},
 /area/almayer/hull/upper_hull/u_a_s)
 "coJ" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 10
 	},
 /turf/open/floor/almayer{
@@ -28832,7 +28863,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
 "cFZ" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -28999,7 +29030,6 @@
 	pixel_x = 16;
 	pixel_y = 16
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -29018,6 +29048,7 @@
 	pixel_y = -6;
 	req_one_access_txt = "19;28"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -29230,11 +29261,11 @@
 	},
 /area/almayer/engineering/upper_engineering/starboard)
 "cQo" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 5
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -31280,7 +31311,8 @@
 	dir = 2;
 	name = "\improper Security Checkpoint";
 	req_access = null;
-	req_one_access_txt = "3;19"
+	req_one_access_txt = "3;19";
+	access_modified = 1
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -32873,7 +32905,7 @@
 	},
 /area/almayer/engineering/port_atmos)
 "eqD" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 9
 	},
 /turf/open/floor/almayer/research/containment/floor2{
@@ -34033,8 +34065,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
 	id_tag = "tc04";
-	name = "\improper Treatment Center";
-	req_access = null
+	name = "\improper Treatment Center"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
@@ -34901,7 +34932,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
 	dir = 2;
 	name = "\improper Requisitions Break Room";
-	req_one_access = "2;21"
+	req_one_access = "19;21";
+	access_modified = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -35004,7 +35036,7 @@
 	},
 /area/almayer/hull/upper_hull/u_a_s)
 "foI" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
 	dir = 8
 	},
 /turf/open/floor/almayer,
@@ -35034,7 +35066,7 @@
 	name = "Containment Lockdown";
 	pixel_x = 29;
 	pixel_y = 3;
-	req_one_access_txt = "19;28"
+	req_one_access_txt = "28"
 	},
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -35211,7 +35243,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	name = "\improper Cryogenics Bay";
 	req_access = null;
-	req_one_access_txt = "1;3"
+	req_one_access_txt = "1;3";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -35717,7 +35750,8 @@
 "fEo" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "Kitchen";
-	req_one_access_txt = "30;19"
+	req_one_access_txt = "30;19";
+	access_modified = 1
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
@@ -35953,7 +35987,8 @@
 "fIX" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
 	name = "\improper Requisitions Auxiliary Storage Room";
-	req_one_access = "19;21"
+	req_one_access = "19;21";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -36773,7 +36808,8 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "\improper Senior Enlisted Advisor's Office";
 	req_access = null;
-	req_access_txt = "19;29"
+	req_access_txt = "19;29";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -37314,7 +37350,8 @@
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1;
 	req_one_access = null;
-	req_one_access_txt = "7;19"
+	req_one_access_txt = "7;19";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -38057,7 +38094,7 @@
 	},
 /area/almayer/squads/delta)
 "gEz" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 6
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -38417,7 +38454,8 @@
 "gMA" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 8;
-	req_one_access = list(2,34,30)
+	req_one_access = list(2,34,30);
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -39683,7 +39721,6 @@
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
 "hqh" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_x = 1;
@@ -39693,6 +39730,7 @@
 	icon_state = "NW-out";
 	pixel_y = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer/research/containment/entrance,
 /area/almayer/medical/containment/cell)
 "hqs" = (
@@ -40313,7 +40351,8 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	name = "Autopsy";
 	req_access_txt = "25";
-	req_one_access = null
+	req_one_access = null;
+	access_modified = 1
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
@@ -40436,7 +40475,8 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_access_txt = "200";
-	req_one_access = null
+	req_one_access = null;
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -40849,7 +40889,8 @@
 	dir = 2;
 	name = "Morgue";
 	req_access_txt = "25";
-	req_one_access = null
+	req_one_access = null;
+	access_modified = 1
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -41491,7 +41532,8 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	req_one_access = null;
-	req_one_access_txt = "19;34;30"
+	req_one_access_txt = "19;34;30";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -41841,7 +41883,8 @@
 "iqp" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_one_access = null;
-	req_one_access_txt = "37"
+	req_one_access_txt = "37";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -42164,9 +42207,6 @@
 	},
 /area/almayer/engineering/laundry)
 "iwJ" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
 	pixel_y = -1
@@ -42174,6 +42214,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
 	},
 /turf/open/floor/almayer/research/containment/entrance{
 	dir = 8
@@ -42342,10 +42385,10 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "iAz" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "sterile_green_side"
@@ -42876,10 +42919,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
 "iOp" = (
-/obj/structure/pipes/vents/pump,
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera"
 	},
+/obj/structure/pipes/vents/pump/no_boom,
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "iOD" = (
@@ -42978,7 +43021,8 @@
 "iQL" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list(2,34,30)
+	req_one_access = list(2,34,30);
+	access_modified = 1
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -43338,7 +43382,7 @@
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "iZr" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -43378,7 +43422,7 @@
 	},
 /area/almayer/hallways/port_hallway)
 "iZL" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 9
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -43882,7 +43926,8 @@
 "jip" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Main Kitchen";
-	req_one_access_txt = "30;19"
+	req_one_access_txt = "30;19";
+	access_modified = 1
 	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"
@@ -44045,18 +44090,17 @@
 	},
 /area/almayer/shipboard/brig/perma)
 "jlA" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/containment)
 "jlG" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_x = 1;
@@ -44066,6 +44110,7 @@
 	icon_state = "SW-out";
 	pixel_y = -1
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer/research/containment/entrance,
 /area/almayer/medical/containment/cell)
 "jlN" = (
@@ -45022,9 +45067,6 @@
 	id = "Containment Cell 3";
 	name = "\improper Containment Cell 3"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -45036,6 +45078,9 @@
 	dir = 4;
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -45449,8 +45494,7 @@
 "jXf" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	id_tag = "or03";
-	name = "Lobby";
-	req_access = null
+	name = "Lobby"
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -45713,11 +45757,11 @@
 	},
 /area/almayer/command/airoom)
 "kbJ" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side"
@@ -46830,7 +46874,6 @@
 	},
 /area/almayer/hallways/hangar)
 "kCE" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_x = 1;
@@ -46840,6 +46883,7 @@
 	icon_state = "NW-out";
 	pixel_y = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -46878,9 +46922,6 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "kDk" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_x = 1;
@@ -46890,6 +46931,9 @@
 	icon_state = "NE-out";
 	pixel_x = 1;
 	pixel_y = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 6
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -47027,7 +47071,7 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "kGQ" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer/research/containment/corner_var1{
@@ -47621,7 +47665,8 @@
 "kUh" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Flight Crew Quarters";
-	req_one_access_txt = "19;22"
+	req_one_access_txt = "19;22";
+	access_modified = 1
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
@@ -47959,7 +48004,7 @@
 	},
 /area/almayer/squads/charlie)
 "lbE" = (
-/obj/structure/pipes/vents/pump,
+/obj/structure/pipes/vents/pump/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -48421,6 +48466,9 @@
 "lmz" = (
 /turf/closed/wall/almayer/white/hull,
 /area/space)
+"lmK" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/command/securestorage)
 "lmW" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/mirror{
@@ -48936,7 +48984,8 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
 	req_one_access = null;
-	req_one_access_txt = "2;7"
+	req_one_access_txt = "2;7";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -49317,7 +49366,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_p)
 "lDO" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 10
 	},
 /turf/open/floor/almayer{
@@ -50758,7 +50807,6 @@
 	},
 /area/almayer/living/briefing)
 "mnW" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/surface/table/almayer,
 /obj/item/device/reagent_scanner{
 	pixel_x = -8;
@@ -50778,6 +50826,7 @@
 	pixel_x = 7;
 	pixel_y = 7
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -51327,7 +51376,8 @@
 /obj/structure/machinery/door/airlock/almayer/security/reinforced{
 	name = "\improper Astronavigational Deck";
 	req_access = null;
-	req_one_access_txt = "3;19"
+	req_one_access_txt = "3;19";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -52115,7 +52165,8 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	req_one_access = null;
-	req_one_access_txt = "19;30"
+	req_one_access_txt = "19;30";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -52345,7 +52396,7 @@
 /turf/open/floor/carpet,
 /area/almayer/command/cichallway)
 "mWW" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 10
 	},
 /turf/open/floor/almayer/research/containment/floor2{
@@ -52602,7 +52653,8 @@
 "nec" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_access_txt = "200";
-	req_one_access = null
+	req_one_access = null;
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -52797,7 +52849,8 @@
 	dir = 2;
 	name = "\improper Chief Engineer's Office";
 	req_one_access = null;
-	req_one_access_txt = "1;6"
+	req_one_access_txt = "1;6";
+	access_modified = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -52937,7 +52990,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -53122,7 +53175,6 @@
 /turf/open/floor/plating,
 /area/almayer/engineering/starboard_atmos)
 "npt" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_x = 1;
@@ -53132,6 +53184,7 @@
 	icon_state = "SW-out";
 	pixel_y = -1
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -53255,6 +53308,9 @@
 	icon_state = "green"
 	},
 /area/almayer/squads/req)
+"ntj" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/command/computerlab)
 "ntm" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = -17;
@@ -53403,7 +53459,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
 "nwi" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer/research/containment/corner{
@@ -54288,7 +54344,6 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "nPf" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/computer/cameras/almayer/containment{
 	dir = 8;
 	pixel_x = -4;
@@ -54306,6 +54361,7 @@
 	pixel_y = -4;
 	req_one_access_txt = "19;28"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -54352,7 +54408,7 @@
 	name = "\improper Lifeboat Control Bubble";
 	req_access = null
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -54967,7 +55023,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/north2)
 "ohR" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 9
 	},
 /turf/open/floor/almayer{
@@ -55337,7 +55393,7 @@
 	},
 /area/almayer/squads/req)
 "opy" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 6
 	},
 /turf/open/floor/almayer{
@@ -55755,7 +55811,8 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "19;29"
+	req_one_access_txt = "19;29";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -55953,7 +56010,7 @@
 	},
 /area/almayer/hull/upper_hull/u_f_s)
 "oCO" = (
-/obj/structure/pipes/vents/pump{
+/obj/structure/pipes/vents/pump/no_boom{
 	dir = 8
 	},
 /turf/open/floor/almayer,
@@ -56764,7 +56821,7 @@
 	},
 /area/almayer/squads/alpha)
 "oTP" = (
-/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom,
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "oUG" = (
@@ -56829,7 +56886,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Kitchen Hydroponics";
-	req_one_access_txt = "30;19"
+	req_one_access_txt = "30;19";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -57256,7 +57314,7 @@
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "pjh" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -57350,7 +57408,8 @@
 	dir = 2;
 	name = "Brig";
 	req_access = null;
-	req_one_access_txt = "1;3"
+	req_one_access_txt = "1;3";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -57977,7 +58036,7 @@
 	},
 /area/almayer/hull/upper_hull/u_a_s)
 "pCb" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer,
@@ -58078,7 +58137,7 @@
 	},
 /area/almayer/squads/charlie)
 "pDL" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 10
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -58395,7 +58454,8 @@
 	dir = 1;
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "3;22;19"
+	req_one_access_txt = "3;22;19";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -59435,10 +59495,9 @@
 /area/almayer/hull/lower_hull/l_m_p)
 "qgK" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/generic/press{
 	name = "\improper Combat Correspondent Room";
-	req_access = list(203)
+	dir = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/combat_correspondent)
@@ -60041,17 +60100,13 @@
 	},
 /area/almayer/hallways/port_hallway)
 "quT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	dir = 2;
-	id = "tc02";
-	id_tag = "tc02";
-	name = "\improper Treatment Center";
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "2;8;19"
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	dir = 2;
+	id_tag = "tc04";
+	name = "\improper Treatment Center"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -60407,7 +60462,7 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "qDz" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
@@ -60779,7 +60834,6 @@
 	},
 /area/almayer/hallways/port_hallway)
 "qLi" = (
-/obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_x = 1;
@@ -60790,6 +60844,7 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -62496,7 +62551,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	name = "\improper Brig";
 	req_access = null;
-	req_one_access_txt = "1;3"
+	req_one_access_txt = "1;3";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -62917,15 +62973,6 @@
 	},
 /area/almayer/squads/alpha_bravo_shared)
 "rHo" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	dir = 2;
-	id = "tc01";
-	id_tag = "tc01";
-	name = "\improper Treatment Center";
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "2;8;19"
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
 	},
@@ -62934,6 +62981,11 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	dir = 2;
+	id_tag = "tc04";
+	name = "\improper Treatment Center"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -63429,7 +63481,7 @@
 	},
 /area/almayer/shipboard/brig/chief_mp_office)
 "rTB" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -64750,7 +64802,8 @@
 	id_tag = "CO-Office";
 	name = "\improper Commanding Officer's Office";
 	req_access = null;
-	req_access_txt = "31"
+	req_access_txt = "31";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -65211,7 +65264,7 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
 "sLt" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
 	dir = 1
 	},
 /turf/open/floor/almayer,
@@ -65627,7 +65680,7 @@
 	},
 /area/almayer/medical/containment/cell)
 "sXd" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -65897,9 +65950,6 @@
 	id = "Containment Cell 2";
 	name = "\improper Containment Cell 2"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -65911,6 +65961,9 @@
 	dir = 4;
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -66254,7 +66307,8 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	req_one_access = null;
-	req_one_access_txt = "7;19"
+	req_one_access_txt = "7;19";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -67167,7 +67221,7 @@
 	},
 /area/almayer/hull/upper_hull/u_f_s)
 "tCk" = (
-/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -67499,7 +67553,8 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "Storage";
-	req_one_access = "2;21"
+	req_one_access = "2;21";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -67731,7 +67786,9 @@
 "tPj" = (
 /obj/structure/machinery/door/airlock/almayer/marine/requisitions{
 	name = "\improper Requisition's Office";
-	req_one_access_txt = "1;26"
+	req_one_access_txt = "1;26";
+	req_one_access = null;
+	access_modified = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -67990,7 +68047,8 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper CMO's Office";
 	req_one_access = null;
-	req_one_access_txt = "1;5"
+	req_one_access_txt = "1;5";
+	access_modified = 1
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
@@ -68036,7 +68094,8 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/door/window/eastright{
 	dir = 8;
-	req_access_txt = "19"
+	req_access_txt = "19";
+	access_modified = 1
 	},
 /obj/effect/landmark/map_item,
 /obj/structure/machinery/door/window/eastleft{
@@ -68614,7 +68673,8 @@
 /obj/structure/machinery/door/airlock/almayer/security{
 	name = "\improper Security Checkpoint";
 	req_access = null;
-	req_one_access_txt = "3;19"
+	req_one_access_txt = "3;19";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -68959,7 +69019,7 @@
 	},
 /area/almayer/medical/medical_science)
 "usB" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -70204,7 +70264,7 @@
 	},
 /area/almayer/hull/upper_hull/u_a_s)
 "uSk" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
 	dir = 1
 	},
 /turf/open/floor/almayer{
@@ -70491,7 +70551,6 @@
 	id = "medcryobeds";
 	id_tag = "medcryobeds";
 	name = "Medical Hypersleep Access";
-	req_access = null;
 	req_one_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -71514,7 +71573,8 @@
 	name = "\improper Power Control Room";
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "3;6"
+	req_one_access_txt = "3;6";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "orangefull"
@@ -72049,7 +72109,8 @@
 	dir = 2;
 	name = "\improper Field Surgery Equipment";
 	req_access_txt = "20";
-	req_one_access = null
+	req_one_access = null;
+	access_modified = 1
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
@@ -72553,7 +72614,7 @@
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "vQu" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -73015,7 +73076,6 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "vYz" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/glass/beaker{
 	pixel_x = 8
@@ -73037,6 +73097,7 @@
 	pixel_x = -1;
 	pixel_y = 9
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -73193,7 +73254,7 @@
 	},
 /area/almayer/medical/operating_room_four)
 "wbR" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/lifeboat)
 "wbX" = (
@@ -73607,14 +73668,19 @@
 	},
 /area/almayer/living/briefing)
 "wkc" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engineering Storage";
-	req_one_access_txt = "2;7;11"
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/eastright{
+	dir = 8;
+	req_access_txt = "8";
+	access_modified = 1
+	},
+/obj/structure/machinery/door/window/eastleft{
+	req_access_txt = "8"
 	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor4"
+	icon_state = "sterile_green"
 	},
-/area/almayer/hallways/hangar)
+/area/almayer/medical/lockerroom)
 "wky" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -73789,8 +73855,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
 	id_tag = "tc03";
-	name = "\improper Treatment Center";
-	req_access = null
+	name = "\improper Treatment Center"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
@@ -74005,7 +74070,7 @@
 	},
 /area/almayer/hallways/hangar)
 "wse" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -74131,7 +74196,8 @@
 	dir = 2;
 	name = "\improper Security Checkpoint";
 	req_access = null;
-	req_one_access_txt = "3;19"
+	req_one_access_txt = "3;19";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -74683,7 +74749,8 @@
 	dir = 1;
 	name = "\improper CMO's Bedroom";
 	req_access = null;
-	req_one_access_txt = "1;5"
+	req_one_access_txt = "1;5";
+	access_modified = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -74793,9 +74860,9 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south2)
 "wLy" = (
-/obj/structure/pipes/vents/pump{
-	name = "Secure Air Vent";
-	welded = 1
+/obj/structure/pipes/vents/pump/no_boom{
+	welded = 1;
+	name = "Secure Reinforced Air Vent"
 	},
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 1
@@ -74845,7 +74912,7 @@
 	},
 /area/almayer/living/grunt_rnr)
 "wLN" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -74919,7 +74986,8 @@
 "wNU" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list(2,34,30)
+	req_one_access = list(2,34,30);
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -75778,11 +75846,11 @@
 	},
 /area/almayer/medical/operating_room_one)
 "xgg" = (
-/obj/structure/pipes/vents/pump{
-	dir = 8
-	},
 /obj/structure/machinery/power/apc/almayer/hardened{
 	dir = 4
+	},
+/obj/structure/pipes/vents/pump/no_boom{
+	dir = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
@@ -76236,7 +76304,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	name = "\improper Brig";
 	req_access = null;
-	req_one_access_txt = "1;3"
+	req_one_access_txt = "1;3";
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -76387,7 +76456,8 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
 	req_one_access = null;
-	req_one_access_txt = "30;19"
+	req_one_access_txt = "30;19";
+	access_modified = 1
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -76446,7 +76516,6 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
@@ -76458,6 +76527,7 @@
 	id = "Containment Breach";
 	name = "\improper Secure Airlock"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -77094,7 +77164,7 @@
 	},
 /area/almayer/living/briefing)
 "xGU" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red"
@@ -77866,7 +77936,9 @@
 /area/almayer/squads/alpha_bravo_shared)
 "xWo" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access_txt = "19;21"
+	req_one_access_txt = "19;21";
+	access_modified = 1;
+	req_one_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -77884,7 +77956,8 @@
 "xWF" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list(2,34,30)
+	req_one_access = list(2,34,30);
+	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -77928,12 +78001,12 @@
 	},
 /area/almayer/medical/medical_science)
 "xXu" = (
-/obj/structure/pipes/vents/pump{
-	dir = 1
-	},
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"
+	},
+/obj/structure/pipes/vents/pump/no_boom{
+	dir = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
@@ -77984,6 +78057,15 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"xYZ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/engineering/upper_engineering)
 "xZz" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine/uscm/command/capt,
@@ -101277,7 +101359,7 @@ bHB
 tIS
 bcm
 bcm
-wkc
+wXT
 cdA
 bcm
 bcm
@@ -104718,7 +104800,7 @@ qjN
 hpN
 gfW
 omo
-uFo
+wkc
 gfW
 uFo
 omo
@@ -108477,7 +108559,7 @@ vOy
 vOy
 wMO
 wky
-ajl
+sqf
 hon
 ajt
 mce
@@ -108680,7 +108762,7 @@ vOy
 ayX
 kXw
 pxo
-ajl
+sqf
 kHT
 pjM
 aim
@@ -108883,7 +108965,7 @@ vOy
 niL
 kXw
 pxo
-ajl
+sqf
 atL
 bkQ
 atL
@@ -109695,7 +109777,7 @@ vOy
 vOy
 mFq
 vqW
-ajl
+sqf
 ybf
 aii
 avj
@@ -117799,16 +117881,16 @@ adO
 aEp
 xTt
 aEp
-ioU
-ioU
-ioU
-ioU
-ioU
-aHq
-aHq
-aHq
-aHq
-aHq
+lmK
+lmK
+lmK
+lmK
+lmK
+ntj
+ntj
+ntj
+ntj
+ntj
 aHq
 cnH
 kzk
@@ -121866,7 +121948,7 @@ arq
 arq
 arq
 aze
-aBo
+xYZ
 aDe
 arq
 arq

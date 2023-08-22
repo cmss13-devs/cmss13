@@ -329,8 +329,7 @@
 "ajh" = (
 /obj/item/device/flashlight/on,
 /turf/open/floor/prison/darkbrown2angle{
-	dir = 1;
-	
+	dir = 1
 	},
 /area/fiorina/tumor/aux_engi)
 "aji" = (
@@ -1102,8 +1101,7 @@
 	pixel_y = 24
 	},
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/station/park)
 "aDr" = (
@@ -1470,14 +1468,12 @@
 	dir = 4
 	},
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/station/park)
 "aNn" = (
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 1;
-	
+	dir = 1
 	},
 /area/fiorina/station/park)
 "aNw" = (
@@ -1593,8 +1589,7 @@
 "aQM" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/tumor/aux_engi)
 "aQU" = (
@@ -2751,8 +2746,7 @@
 /area/fiorina/station/medbay)
 "bDN" = (
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/station/park)
 "bDU" = (
@@ -2761,8 +2755,7 @@
 /area/fiorina/tumor/aux_engi)
 "bEn" = (
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/tumor/aux_engi)
 "bEO" = (
@@ -3246,8 +3239,7 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/tumor/aux_engi)
 "bTe" = (
@@ -3615,8 +3607,7 @@
 	pixel_y = 24
 	},
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/station/park)
 "cif" = (
@@ -3889,8 +3880,7 @@
 	pixel_y = 24
 	},
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/station/park)
 "cpW" = (
@@ -3955,8 +3945,7 @@
 "crH" = (
 /obj/effect/alien/weeds/node,
 /turf/open/floor/prison/darkbrown2angle{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/tumor/aux_engi)
 "crM" = (
@@ -4188,8 +4177,7 @@
 /obj/structure/closet/toolcloset,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/maintenance)
 "czC" = (
@@ -4357,8 +4345,7 @@
 /area/fiorina/tumor/ship)
 "cEB" = (
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/maintenance)
 "cFf" = (
@@ -4474,8 +4461,7 @@
 "cJa" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/tumor/aux_engi)
 "cJo" = (
@@ -5309,8 +5295,7 @@
 "dkC" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/station/park)
 "dkP" = (
@@ -5583,8 +5568,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/prison/darkbrown2angle{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/maintenance)
 "dtg" = (
@@ -6033,8 +6017,7 @@
 "dFE" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/station/park)
 "dFG" = (
@@ -7734,8 +7717,7 @@
 "eQv" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/station/park)
 "eQD" = (
@@ -7873,8 +7855,7 @@
 /area/fiorina/station/telecomm/lz1_cargo)
 "eUk" = (
 /turf/open/floor/prison/darkbrown2angle{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/tumor/aux_engi)
 "eUD" = (
@@ -8714,8 +8695,7 @@
 "ftY" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/tumor/aux_engi)
 "fum" = (
@@ -8730,8 +8710,7 @@
 "fuA" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/station/park)
 "fuF" = (
@@ -8902,8 +8881,7 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 1;
-	
+	dir = 1
 	},
 /area/fiorina/maintenance)
 "fAs" = (
@@ -9603,8 +9581,7 @@
 "fVA" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/tumor/aux_engi)
 "fWc" = (
@@ -9626,8 +9603,7 @@
 "fWD" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/maintenance)
 "fWL" = (
@@ -10260,8 +10236,7 @@
 /area/fiorina/station/medbay)
 "goz" = (
 /turf/open/floor/prison/darkbrown2angle{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/maintenance)
 "goA" = (
@@ -10322,8 +10297,7 @@
 /area/fiorina/station/disco)
 "gqH" = (
 /turf/open/floor/prison/darkbrown2angle{
-	dir = 1;
-	
+	dir = 1
 	},
 /area/fiorina/station/park)
 "gqZ" = (
@@ -11027,8 +11001,7 @@
 	pixel_y = 13
 	},
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/tumor/aux_engi)
 "gPS" = (
@@ -11143,8 +11116,7 @@
 	pixel_y = 24
 	},
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/station/park)
 "gSN" = (
@@ -11180,8 +11152,7 @@
 /area/fiorina/oob)
 "gUf" = (
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 1;
-	
+	dir = 1
 	},
 /area/fiorina/tumor/aux_engi)
 "gUj" = (
@@ -11592,8 +11563,7 @@
 	pixel_y = 7
 	},
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/station/park)
 "hhh" = (
@@ -11611,8 +11581,7 @@
 /area/fiorina/tumor/ice_lab)
 "hhy" = (
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/station/park)
 "hhL" = (
@@ -11925,8 +11894,7 @@
 	pixel_y = 24
 	},
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/station/park)
 "hqZ" = (
@@ -12006,8 +11974,7 @@
 "hue" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/darkbrown2angle{
-	dir = 1;
-	
+	dir = 1
 	},
 /area/fiorina/station/park)
 "hul" = (
@@ -12095,8 +12062,7 @@
 "hwn" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/tumor/aux_engi)
 "hxg" = (
@@ -13470,8 +13436,7 @@
 	dir = 8
 	},
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/station/park)
 "itN" = (
@@ -13587,8 +13552,7 @@
 	icon_state = "cartridge_2"
 	},
 /turf/open/floor/prison/darkbrown2angle{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/station/park)
 "iyc" = (
@@ -13769,8 +13733,7 @@
 /area/fiorina/station/telecomm/lz1_cargo)
 "iFj" = (
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/station/park)
 "iFu" = (
@@ -15065,8 +15028,7 @@
 /area/fiorina/station/civres_blue)
 "jrk" = (
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/maintenance)
 "jrn" = (
@@ -15191,8 +15153,7 @@
 /obj/structure/closet/firecloset,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/maintenance)
 "jvE" = (
@@ -15968,8 +15929,7 @@
 /area/fiorina/lz/near_lzI)
 "jVH" = (
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/tumor/aux_engi)
 "jVQ" = (
@@ -16928,8 +16888,7 @@
 "kxM" = (
 /obj/item/stack/rods,
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/tumor/aux_engi)
 "kxQ" = (
@@ -17051,8 +17010,7 @@
 "kCg" = (
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/tumor/aux_engi)
 "kCv" = (
@@ -17201,8 +17159,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/station/park)
 "kGi" = (
@@ -18700,8 +18657,7 @@
 /area/fiorina/station/lowsec)
 "lCw" = (
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/maintenance)
 "lCz" = (
@@ -19794,8 +19750,7 @@
 /area/fiorina/station/medbay)
 "mkB" = (
 /turf/open/floor/prison/darkbrown2angle{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/station/park)
 "mli" = (
@@ -20277,8 +20232,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 1;
-	
+	dir = 1
 	},
 /area/fiorina/maintenance)
 "mBV" = (
@@ -21147,8 +21101,7 @@
 /area/fiorina/station/park)
 "ncn" = (
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/tumor/aux_engi)
 "ncP" = (
@@ -21575,8 +21528,7 @@
 "nqs" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/tumor/aux_engi)
 "nqL" = (
@@ -22180,8 +22132,7 @@
 "nIq" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/floor/prison/darkbrown2angle{
-	dir = 1;
-	
+	dir = 1
 	},
 /area/fiorina/tumor/aux_engi)
 "nIy" = (
@@ -23141,8 +23092,7 @@
 /area/fiorina/station/lowsec)
 "opC" = (
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 1;
-	
+	dir = 1
 	},
 /area/fiorina/maintenance)
 "opV" = (
@@ -24013,8 +23963,7 @@
 /area/fiorina/station/security)
 "oTU" = (
 /turf/open/floor/prison/darkbrown2angle{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/station/park)
 "oUg" = (
@@ -24355,8 +24304,7 @@
 /area/fiorina/station/power_ring)
 "peY" = (
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/tumor/aux_engi)
 "pfi" = (
@@ -24414,8 +24362,7 @@
 /area/fiorina/lz/near_lzI)
 "piL" = (
 /turf/open/floor/prison/darkbrown2angle{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/tumor/aux_engi)
 "pjT" = (
@@ -24535,8 +24482,7 @@
 "poo" = (
 /obj/item/tool/crowbar/red,
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/tumor/aux_engi)
 "poD" = (
@@ -24580,8 +24526,7 @@
 	pixel_y = 13
 	},
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/tumor/aux_engi)
 "ppX" = (
@@ -26092,8 +26037,7 @@
 "qnq" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/tumor/aux_engi)
 "qnu" = (
@@ -26387,8 +26331,7 @@
 /area/fiorina/station/civres_blue)
 "qwU" = (
 /turf/open/floor/prison/darkbrown2angle{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/maintenance)
 "qxB" = (
@@ -26491,8 +26434,7 @@
 "qzW" = (
 /obj/effect/alien/weeds/node,
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/tumor/aux_engi)
 "qzX" = (
@@ -27036,8 +26978,7 @@
 "qQf" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 1;
-	
+	dir = 1
 	},
 /area/fiorina/tumor/aux_engi)
 "qQj" = (
@@ -27309,8 +27250,7 @@
 	},
 /obj/effect/landmark/corpsespawner/security/liaison,
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/station/park)
 "qWB" = (
@@ -27648,8 +27588,7 @@
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/maintenance)
 "rkh" = (
@@ -28905,8 +28844,7 @@
 "rYJ" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/tumor/aux_engi)
 "rZa" = (
@@ -31014,8 +30952,7 @@
 "twd" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/station/park)
 "twB" = (
@@ -31682,8 +31619,7 @@
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/station/park)
 "tQm" = (
@@ -31822,8 +31758,7 @@
 "tUr" = (
 /obj/structure/closet/toolcloset,
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/maintenance)
 "tUs" = (
@@ -32038,8 +31973,7 @@
 /area/fiorina/station/power_ring)
 "uat" = (
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/maintenance)
 "ubc" = (
@@ -33020,8 +32954,7 @@
 /area/fiorina/station/lowsec)
 "uJM" = (
 /turf/open/floor/prison/darkbrown2angle{
-	dir = 1;
-	
+	dir = 1
 	},
 /area/fiorina/maintenance)
 "uJX" = (
@@ -34084,8 +34017,7 @@
 /obj/structure/closet/emcloset,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/darkbrown2corner{
-	dir = 1;
-	
+	dir = 1
 	},
 /area/fiorina/maintenance)
 "vsq" = (
@@ -34237,8 +34169,7 @@
 /area/fiorina/station/disco)
 "vwc" = (
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/station/park)
 "vwt" = (
@@ -35233,8 +35164,7 @@
 	dir = 1
 	},
 /turf/open/floor/prison/darkbrown2angle{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/station/park)
 "weN" = (
@@ -37323,8 +37253,7 @@
 "xxh" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison/darkbrown2{
-	dir = 8;
-	
+	dir = 8
 	},
 /area/fiorina/tumor/aux_engi)
 "xxD" = (
@@ -37997,8 +37926,7 @@
 	pixel_y = 24
 	},
 /turf/open/floor/prison/darkbrown2{
-	dir = 4;
-	
+	dir = 4
 	},
 /area/fiorina/station/park)
 "xTy" = (
@@ -38278,8 +38206,7 @@
 /area/fiorina/lz/near_lzI)
 "ycn" = (
 /turf/open/floor/prison/darkbrown2angle{
-	dir = 1;
-	
+	dir = 1
 	},
 /area/fiorina/tumor/aux_engi)
 "ycC" = (

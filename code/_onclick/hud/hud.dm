@@ -400,3 +400,40 @@
 		zone_sel.color = ui_color
 	zone_sel.update_icon(mymob)
 	static_inventory += zone_sel
+
+// Re-render all alerts - also called in /datum/hud/show_hud() because it's needed there
+/datum/hud/proc/reorganize_alerts(mob/viewmob)
+	var/mob/screenmob = viewmob || mymob
+	if(!screenmob.client)
+		return
+	var/list/alerts = mymob.alerts
+	if(!length(alerts))
+		return FALSE
+	if(!hud_shown)
+		for(var/category in alerts)
+			var/atom/movable/screen/alert/alert = alerts[category]
+			screenmob.client.screen -= alert
+		return TRUE
+	var/c = 0
+	for(var/category in alerts)
+		var/atom/movable/screen/alert/alert = alerts[category]
+		c++
+		switch(c)
+			if(1)
+				. = ui_alert1
+			if(2)
+				. = ui_alert2
+			if(3)
+				. = ui_alert3
+			if(4)
+				. = ui_alert4
+			if(5)
+				. = ui_alert5 // Right now there's 5 slots
+			else
+				. = ""
+		alert.screen_loc = .
+		screenmob.client.screen |= alert
+	if(!viewmob)
+		for(var/obs in mymob.observers)
+			reorganize_alerts(obs)
+	return TRUE

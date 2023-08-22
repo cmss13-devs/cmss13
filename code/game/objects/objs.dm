@@ -29,6 +29,8 @@
 	var/list/req_one_access = null
 	var/req_access_txt = null
 	var/req_one_access_txt = null
+	///Whether or not this instance is using accesses different from initial code. Used for easy locating in map files.
+	var/access_modified = FALSE
 
 	var/flags_obj = NO_FLAGS
 	/// set when a player uses a pen on a renamable object

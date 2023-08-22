@@ -39,7 +39,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/command/colony
 	req_access = null
-	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/multi_tile/medical
 	name = "Medical Airlock"
@@ -69,7 +69,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/research/colony
 	req_access = null
-	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/multi_tile/research/reinforced
 	name = "Reinforced Research Airlock"
@@ -77,7 +77,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/research/reinforced/colony
 	req_access = null
-	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/multi_tile/secure
 	name = "Secure Airlock"
@@ -183,7 +183,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research/colony
 	req_access = null
-	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor
 	name = "\improper Command Airlock"
@@ -194,7 +194,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony
 	req_access = null
-	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced
 	name = "\improper Reinforced Command Airlock"
@@ -202,7 +202,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced/colony
 	req_access = null
-	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid
 	icon = 'icons/obj/structures/doors/2x1comdoor_solid.dmi'
@@ -211,7 +211,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid/colony
 	req_access = null
-	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid/reinforced
 	name = "\improper Reinforced Command Airlock"
@@ -219,7 +219,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid/reinforced/colony
 	req_access = null
-	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/handle_multidoor()
 	if(!(width > 1)) return //Bubblewrap

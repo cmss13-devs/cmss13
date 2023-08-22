@@ -603,6 +603,28 @@
 /turf/open/floor/prison/cell_stripe
 	icon_state = "cell_stripe"
 
+/turf/open/floor/prison/whitegreenfull
+	icon_state = "whitegreenfull"
+//there is a sprite called sterile that isn't use and look exactly the same.
+/turf/open/floor/prison/sterile
+	icon_state = "sterile"
+
+//not in use
+/turf/open/floor/prison/whitepurplefull
+	icon_state = "whitepurplefull"
+
+/turf/open/floor/prison/whitepurplefull
+	icon_state = "whitepurplefull"
+
+/turf/open/floor/prison/redfull
+	icon_state = "redfull"
+
+/turf/open/floor/prison/yellowfull
+	icon_state = "yellowfull"
+
+//blue plate four direction
+/turf/open/floor/prison/blue_plate
+	icon_state = "blue_plate"
 /turf/open/floor/prison/trim/red
 	icon_state = "darkred2"
 

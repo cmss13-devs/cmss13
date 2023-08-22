@@ -12,8 +12,9 @@
 
 	if(stat != DEAD && bodytemperature >= 170) //Dead or cryosleep people do not pump the blood.
 		//Blood regeneration if there is some space
-		if(blood_volume < max_blood)
+		if(blood_volume < max_blood && nutrition >= 1)
 			blood_volume += 0.1 // regenerate blood VERY slowly
+			nutrition -= 1
 		else if(blood_volume > max_blood)
 			blood_volume -= 0.1 // The reverse in case we've gotten too much blood in our body
 			if(blood_volume > limit_blood)
@@ -42,12 +43,6 @@
 			var/maximum_oxyloss = Clamp((100 - blood_percentage) / 2, oxyloss, 100)
 			if(oxyloss < maximum_oxyloss)
 				oxyloss += round(max(additional_oxyloss, 0))
-
-			//Bloodloss effects on nutrition
-			if(nutrition >= 300)
-				nutrition -= 10
-			else if(nutrition >= 200)
-				nutrition -= 3
 
 		switch(b_volume)
 			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)

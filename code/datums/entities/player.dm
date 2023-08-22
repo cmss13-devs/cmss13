@@ -105,6 +105,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	note.player_id = id
 	note.text = note_text
 	note.date = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
+	note.round_id = GLOB.round_id
 	note.is_confidential = is_confidential
 	note.note_category = note_category
 	note.is_ban = is_ban

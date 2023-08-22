@@ -544,6 +544,27 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!istype(target))
 		return
 
+	if(check_client_rights(client, R_MOD, FALSE))
+		view_health_scan(target)
+		return
+
+	if(!mind.original)
+		view_health_scan(target)
+		return
+
+	if(!ishuman(mind.original))
+		view_health_scan(target)
+		return
+
+	var/mob/living/carbon/human/original_human = mind.original
+
+	if(!original_human.check_tod() || !original_human.is_revivable() || !can_reenter_corpse)
+		view_health_scan(target)
+		return
+
+	to_chat(src, SPAN_NOTICE("You must be permanently unrevivable or unable to reenter your body to use the scan health verb."))
+
+/mob/dead/observer/proc/view_health_scan(mob/living/target)
 	if (!last_health_display)
 		last_health_display = new(target)
 	else

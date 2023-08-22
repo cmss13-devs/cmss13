@@ -441,7 +441,7 @@
 	if(mapload)
 		return INITIALIZE_HINT_QDEL
 	. = ..()
-	fuel = rand(5 SECONDS, 60 SECONDS)
+	fuel = rand(30 SECONDS,	60 SECONDS)
 
 /obj/item/device/flashlight/flare/on/illumination/chemical
 	name = "chemical light"

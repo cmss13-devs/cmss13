@@ -1125,3 +1125,8 @@
 	SPAN_WARNING("You squeeze and scuttle underneath [current_structure]."), max_distance = 5)
 	forceMove(current_structure.loc)
 	return TRUE
+
+/mob/living/carbon/xenomorph/knocked_down_callback()
+	. = ..()
+	if(!resting) // !resting because we dont wanna prematurely update wounds if they're just trying to rest
+		update_wounds()

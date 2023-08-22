@@ -1,7 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - balance: "Carriers with Eggsac strain can now place eggs on regular weeds."
-  - bugfix: "Extra egg planting range now properly applied for Eggsac strain and Queen on ovi"
-  - qol: "Eggsac Carriers now notified when they generate a egg."
-  - code_imp: "new variable to xenomorphs to dictate egg planting distance, and removal of unused procs"

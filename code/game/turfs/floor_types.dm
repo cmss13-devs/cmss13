@@ -597,6 +597,11 @@
 /turf/open/floor/prison/darkpurple2full
 	icon_state = "darkpurple2full"
 
+/turf/open/floor/prison/kitchen
+	icon_state = "kitchen"
+
+/turf/open/floor/prison/cell_stripe
+	icon_state = "cell_stripe"
 
 /turf/open/floor/prison/trim/red
 	icon_state = "darkred2"

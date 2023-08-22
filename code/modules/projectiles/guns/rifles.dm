@@ -1490,16 +1490,16 @@
 /obj/item/weapon/gun/rifle/type71/carbine/commando/handle_starting_attachment()
 	..()
 	//suppressor
-	var/obj/item/attachable/type73suppressor/SUPPRESSOR = new(src)
-	SUPPRESSOR.flags_attach_features &= ~ATTACH_REMOVABLE
-	SUPPRESSOR.Attach(src)
-	update_attachable(SUPPRESSOR.slot)
+	var/obj/item/attachable/type73suppressor/suppressor = new(src)
+	suppressor.flags_attach_features &= ~ATTACH_REMOVABLE
+	suppressor.Attach(src)
+	update_attachable(suppressor.slot)
 	//scope
-	var/obj/item/attachable/scope/mini/SCOPE = new(src)
-	SCOPE.hidden = TRUE
-	SCOPE.flags_attach_features &= ~ATTACH_REMOVABLE
-	SCOPE.Attach(src)
-	update_attachable(SCOPE.slot)
+	var/obj/item/attachable/scope/mini/scope = new(src)
+	scope.hidden = TRUE
+	scope.flags_attach_features &= ~ATTACH_REMOVABLE
+	scope.Attach(src)
+	update_attachable(scope.slot)
 
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_attachment_offsets()

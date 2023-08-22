@@ -23,6 +23,9 @@
 	var/colony_camera_mapload = TRUE
 	var/admin_console = FALSE
 
+	/// All the plane masters that need to be applied.
+	var/list/cam_plane_masters
+
 /obj/structure/machinery/computer/cameras/Initialize(mapload)
 	. = ..()
 	// Map name has to start and end with an A-Z character,
@@ -32,6 +35,16 @@
 
 	if(colony_camera_mapload && mapload && is_ground_level(z))
 		network = list(CAMERA_NET_COLONY)
+
+	cam_plane_masters = list()
+	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
+		var/atom/movable/screen/plane_master/instance = new plane()
+		instance.assigned_map = map_name
+		instance.del_on_map_removal = FALSE
+		if(instance.blend_mode_override)
+			instance.blend_mode = instance.blend_mode_override
+		instance.screen_loc = "[map_name]:CENTER"
+		cam_plane_masters += instance
 
 	// Initialize map objects
 	cam_screen = new
@@ -94,6 +107,8 @@
 		// Register map objects
 		user.client.register_map_obj(cam_screen)
 		user.client.register_map_obj(cam_background)
+		for(var/plane in cam_plane_masters)
+			user.client.register_map_obj(plane)
 		// Open UI
 		ui = new(user, src, "CameraConsole", name)
 		ui.open()

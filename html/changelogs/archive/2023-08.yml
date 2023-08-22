@@ -283,3 +283,7 @@
   Huffie56:
   - bugfix: prevent belt flare being filled by dump in action leaving no space for
       flare gun.
+2023-08-22:
+  CapCamIII:
+  - bugfix: fixes the offset on m4ra custom barrel, it should appropriately be sat
+      right on the gun sprite

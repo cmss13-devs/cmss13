@@ -121,7 +121,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		return ARES_ACCESS_CO
 	if(ACCESS_MARINE_SENIOR in card.access)
 		return ARES_ACCESS_SENIOR
-	if(ACCESS_WY_CORPORATE in card.access)
+	if(ACCESS_WY_GENERAL in card.access)
 		return ARES_ACCESS_CORPORATE
 	if(ACCESS_MARINE_COMMAND in card.access)
 		return ARES_ACCESS_COMMAND
@@ -613,7 +613,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		return APOLLO_ACCESS_AUTHED
 	if(ACCESS_MARINE_AI_TEMP in card.access)
 		return APOLLO_ACCESS_TEMP
-	if((ACCESS_MARINE_SENIOR in card.access ) || (ACCESS_MARINE_ENGINEERING in card.access) || (ACCESS_WY_CORPORATE in card.access))
+	if((ACCESS_MARINE_SENIOR in card.access ) || (ACCESS_MARINE_ENGINEERING in card.access) || (ACCESS_WY_GENERAL in card.access))
 		return APOLLO_ACCESS_REPORTER
 	else
 		return APOLLO_ACCESS_REQUEST

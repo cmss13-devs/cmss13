@@ -585,8 +585,17 @@
 	icon_state = "darkbrown2full"
 
 
+/turf/open/floor/prison/sterile_white
+	icon_state = "sterile_white"
 
+/turf/open/floor/prison/greenfull
+	icon_state = "greenfull"
 
+/turf/open/floor/prison/darkyellow2full
+	icon_state = "darkyellow2full"
+
+/turf/open/floor/prison/darkpurple2full
+	icon_state = "darkpurple2full"
 
 
 /turf/open/floor/prison/trim/red

@@ -321,7 +321,7 @@
 
 /obj/item/weapon/gun/rifle/sniper/M42A/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_6*3)
+	set_fire_delay(FIRE_DELAY_TIER_7*3)
 	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT * 3 //you HAVE to be able to hit
 	scatter = SCATTER_AMOUNT_TIER_8
@@ -509,7 +509,7 @@
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_6)
 	set_burst_amount(BURST_AMOUNT_TIER_2)
-	set_burst_delay(FIRE_DELAY_TIER_9)
+	set_burst_delay(FIRE_DELAY_TIER_11)
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
@@ -580,13 +580,13 @@
 
 
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 23, "rail_y" = 21, "under_x" = 30, "under_y" = 11, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)
+	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 23, "rail_y" = 21, "under_x" = 30, "under_y" = 11, "stock_x" = 24, "stock_y" = 13, "special_x" = 39, "special_y" = 17)
 
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_6)
 	set_burst_amount(BURST_AMOUNT_TIER_2)
-	set_burst_delay(FIRE_DELAY_TIER_10)
+	set_burst_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
@@ -1373,7 +1373,7 @@
 
 /obj/item/weapon/gun/flare/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_10)
+	set_fire_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = 0

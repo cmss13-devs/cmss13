@@ -14,7 +14,7 @@
 /obj/structure/shuttle/part/dropship1/ex_act(severity, direction)
 	return FALSE
 
-/obj/structure/shuttle/part/dropship2/transparent
+/obj/structure/shuttle/part/dropship1/transparent
 	opacity = FALSE
 
 /obj/structure/shuttle/part/dropship1/transparent/nose_top_right

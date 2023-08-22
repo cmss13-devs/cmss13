@@ -35,6 +35,8 @@ SUBSYSTEM_DEF(lighting)
 		MC_SPLIT_TICK
 	var/updators_num = 0
 	for(updators_num in 1 to static_sources_queue.len)
+		if(updators_num > length(static_sources_queue))
+			stack_trace("[json_encode(static_sources_queue)], [updators_num]")
 		var/datum/static_light_source/L = static_sources_queue[updators_num]
 
 		L.update_corners()

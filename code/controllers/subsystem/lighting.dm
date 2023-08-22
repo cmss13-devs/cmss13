@@ -56,7 +56,11 @@ SUBSYSTEM_DEF(lighting)
 		C.needs_update = FALSE //update_objects() can call qdel if the corner is storing no data
 		C.update_objects()
 		if(init_tick_checks)
-			CHECK_TICK
+			if(!TICK_CHECK)
+				continue
+			corners_queue.Cut(1, ++updaters_num)
+			updators_num = 0
+			stoplag()
 		else if (MC_TICK_CHECK)
 			break
 	if(updators_num)
@@ -87,7 +91,11 @@ SUBSYSTEM_DEF(lighting)
 
 		mask_to_update.calculate_lighting_shadows()
 		if(init_tick_checks)
-			CHECK_TICK
+			if(!TICK_CHECK)
+				continue
+			mask_queue.Cut(1, ++updators_num)
+			updators_num = 0
+			stoplag()
 		else if (MC_TICK_CHECK)
 			break
 	if(updators_num)

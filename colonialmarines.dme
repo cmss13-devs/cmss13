@@ -922,7 +922,6 @@ s// DM Environment file for colonialmarines.dme.
 #include "code\game\objects\effects\effect.dm"
 #include "code\game\objects\effects\elevator.dm"
 #include "code\game\objects\effects\glowshroom.dm"
-#include "code\game\objects\effects\light.dm"
 #include "code\game\objects\effects\manifest.dm"
 #include "code\game\objects\effects\misc.dm"
 #include "code\game\objects\effects\overlays.dm"

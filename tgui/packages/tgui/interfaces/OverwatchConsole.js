@@ -494,7 +494,7 @@ const SquadMonitor = (props, context) => {
               }
 
               return (
-                <Table.Row key="index">
+                <Table.Row key={index}>
                   <Table.Cell collapsing p="2px">
                     {(marine.has_helmet && (
                       <Button

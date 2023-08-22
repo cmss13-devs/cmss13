@@ -185,7 +185,6 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	flags_atom |= USES_HEARING
 
 /obj/structure/machinery/cryopod/Destroy()
-	set_light(0)
 	QDEL_NULL(occupant)
 	QDEL_NULL(announce)
 	. = ..()

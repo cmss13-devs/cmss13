@@ -315,7 +315,6 @@
 	health = 150
 
 /obj/structure/machinery/colony_floodlight/Destroy()
-	set_light(0)
 	if(fswitch)
 		fswitch.floodlist -= src
 		fswitch = null

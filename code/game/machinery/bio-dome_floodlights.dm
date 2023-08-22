@@ -101,7 +101,6 @@
 	if(fswitch?.floodlist)
 		fswitch.floodlist -= src
 	fswitch = null
-	set_light(0)
 	return ..()
 
 /obj/structure/machinery/hydro_floodlight/update_icon()

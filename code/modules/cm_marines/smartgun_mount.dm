@@ -501,7 +501,6 @@
 /obj/structure/machinery/m56d_hmg/Destroy() //Make sure we pick up our trash.
 	if(operator)
 		operator.unset_interaction()
-	set_light(0)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 

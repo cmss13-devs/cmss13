@@ -273,7 +273,6 @@
 	if(A)
 		on = 0
 // A.update_lights()
-	set_light(0)
 	. = ..()
 
 /obj/structure/machinery/light/proc/is_broken()

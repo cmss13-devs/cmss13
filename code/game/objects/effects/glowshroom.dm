@@ -42,10 +42,6 @@
 	set_light(round(potency/15))
 	lastTick = world.timeofday
 
-/obj/effect/glowshroom/Destroy()
-	set_light(0)
-	. = ..()
-
 /obj/effect/glowshroom/proc/CalcDir(turf/location = loc)
 	set background = 1
 	var/direction = 16

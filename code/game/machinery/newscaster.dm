@@ -110,7 +110,6 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 
 /obj/structure/machinery/newscaster/security_unit/Destroy()
 	allCasters -= src
-	set_light(0)
 	return ..()
 
 /obj/structure/machinery/newscaster/update_icon()

@@ -45,10 +45,6 @@
 	if(health <= 0)
 		explode()
 
-/obj/structure/machinery/bot/Destroy()
-	set_light(0)
-	. = ..()
-
 /obj/structure/machinery/bot/get_examine_text(mob/user)
 	. = ..()
 	if(health < maxhealth)

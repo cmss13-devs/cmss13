@@ -13,7 +13,7 @@
 
 /datum/equipment_preset/pmc/w_y_whiteout/New()
 	. = ..()
-	access = get_global_access()
+	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/pmc/w_y_whiteout/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_COMBAT)

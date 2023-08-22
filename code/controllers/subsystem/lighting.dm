@@ -58,7 +58,7 @@ SUBSYSTEM_DEF(lighting)
 		if(init_tick_checks)
 			if(!TICK_CHECK)
 				continue
-			corners_queue.Cut(1, ++updaters_num)
+			corners_queue.Cut(1, ++updators_num)
 			updators_num = 0
 			stoplag()
 		else if (MC_TICK_CHECK)

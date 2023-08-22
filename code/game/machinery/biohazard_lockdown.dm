@@ -71,12 +71,14 @@ GLOBAL_VAR_INIT(lockdown_state, LOCKDOWN_READY)
 		return PROC_BLOCKED
 
 	var/log = "[key_name(user)] triggered research bio lockdown!"
+	var/ares_log = "[user.name] triggered research bio lockdown!"
 	if(!message)
 		message = "ATTENTION! \n\nBIOHAZARD CONTAINMENT BREACH. \n\nRESEARCH DEPARTMENT UNDER LOCKDOWN."
 	else
 		log = "[key_name(user)] triggered research bio lockdown! (Using a custom announcement)."
 	if(admin)
 		log += " (Admin Triggered)."
+		ares_log = "[MAIN_AI_SYSTEM] triggered research bio lockdown!"
 
 	switch(GLOB.lockdown_state)
 		if(LOCKDOWN_READY)
@@ -87,14 +89,18 @@ GLOBAL_VAR_INIT(lockdown_state, LOCKDOWN_READY)
 			GLOB.lockdown_state = LOCKDOWN_READY
 			message = "ATTENTION! \n\nBIOHAZARD CONTAINMENT LOCKDOWN LIFTED."
 			log = "[key_name(user)] lifted research bio lockdown."
+			ares_log = "[user.name] lifted research bio lockdown."
 			if(admin)
 				log += " (Admin Triggered)."
+				ares_log = "[MAIN_AI_SYSTEM] lifted research bio lockdown."
 
 			set_security_level(SEC_LEVEL_BLUE, TRUE, FALSE)
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_RESEARCH_LIFT)
 
 	shipwide_ai_announcement(message, MAIN_AI_SYSTEM, 'sound/effects/biohazard.ogg')
 	message_admins(log)
+	var/datum/ares_link/link = GLOB.ares_link
+	link.log_ares_security("Containment Lockdown", ares_log)
 
 #undef LOCKDOWN_READY
 #undef LOCKDOWN_ACTIVE

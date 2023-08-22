@@ -778,9 +778,7 @@
 /area/fiorina/station/lowsec)
 "avs" = (
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "avI" = (
 /obj/structure/closet/bodybag,
@@ -1261,9 +1259,7 @@
 /area/fiorina/lz/near_lzI)
 "aHs" = (
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "aHx" = (
 /obj/structure/platform,
@@ -1542,9 +1538,7 @@
 "aOJ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/lz/near_lzI)
 "aPd" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -2021,9 +2015,7 @@
 /obj/item/phone{
 	pixel_y = 7
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "bcs" = (
 /obj/structure/largecrate/random,
@@ -2656,9 +2648,7 @@
 "bzG" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/flashlight/lamp,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/disco)
 "bzH" = (
 /obj/structure/sign/poster{
@@ -4875,9 +4865,7 @@
 /obj/structure/machinery/photocopier{
 	pixel_y = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/oob)
 "cXY" = (
 /obj/structure/stairs/perspective{
@@ -5256,9 +5244,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/recharger,
 /obj/item/clothing/accessory/holobadge/cord,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/lz/near_lzI)
 "diS" = (
 /obj/structure/largecrate/supply/supplies/water,
@@ -6074,9 +6060,7 @@
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	name = "computer"
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/lowsec)
 "dFE" = (
 /obj/effect/decal/cleanable/blood,
@@ -6456,9 +6440,7 @@
 "dTv" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "dTx" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
@@ -7180,9 +7162,7 @@
 	pixel_y = 2
 	},
 /obj/item/tool/stamp,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/lowsec)
 "euT" = (
 /obj/item/tool/wet_sign,
@@ -9154,9 +9134,7 @@
 "fGp" = (
 /obj/structure/surface/rack,
 /obj/item/handcuffs,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "fGB" = (
 /obj/structure/prop/structure_lattice{
@@ -11434,9 +11412,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "ham" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
@@ -11617,9 +11593,7 @@
 /obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/oob)
 "hgr" = (
 /obj/item/device/flashlight/lamp/tripod,
@@ -11732,9 +11706,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/disco)
 "hiO" = (
 /turf/closed/shuttle/elevator{
@@ -12874,9 +12846,7 @@
 /area/fiorina/station/security)
 "hVm" = (
 /obj/item/trash/cigbutt/bcigbutt,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "hVu" = (
 /obj/item/stack/sheet/metal,
@@ -13578,9 +13548,7 @@
 	dir = 1;
 	pixel_y = 21
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/lz/near_lzI)
 "iuZ" = (
 /obj/item/stack/rods,
@@ -14487,9 +14455,7 @@
 	pixel_x = -6;
 	pixel_y = 12
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "jax" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -14523,9 +14489,7 @@
 /area/fiorina/station/disco)
 "jbx" = (
 /obj/structure/prop/almayer/computers/sensor_computer3,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "jbG" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -15180,9 +15144,7 @@
 /area/fiorina/station/power_ring)
 "jru" = (
 /obj/structure/machinery/space_heater,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "jrL" = (
 /obj/structure/machinery/light/double/blue{
@@ -15648,9 +15610,7 @@
 "jIZ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/firstaid/regular,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "jJb" = (
 /obj/structure/barricade/wooden{
@@ -16018,9 +15978,7 @@
 /obj/structure/window/reinforced/tinted,
 /obj/item/storage/briefcase,
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/lz/near_lzI)
 "jUs" = (
 /obj/structure/machinery/light/double/blue{
@@ -16064,9 +16022,7 @@
 /obj/structure/machinery/recharger{
 	pixel_y = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/oob)
 "jVE" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -17306,9 +17262,7 @@
 /obj/structure/machinery/computer/secure_data{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "kFH" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -17334,9 +17288,7 @@
 /area/fiorina/station/park)
 "kGi" = (
 /obj/structure/bed/chair/office/light,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "kGq" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -18926,9 +18878,7 @@
 /obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/disco)
 "lEI" = (
 /turf/open/floor/prison{
@@ -20457,9 +20407,7 @@
 "mCT" = (
 /obj/structure/surface/rack,
 /obj/item/handcuffs/zip,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/lowsec)
 "mDi" = (
 /obj/structure/flora/pottedplant{
@@ -20518,9 +20466,7 @@
 /area/fiorina/station/medbay)
 "mFf" = (
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/oob)
 "mFh" = (
 /turf/open/floor/prison{
@@ -20612,9 +20558,7 @@
 	},
 /area/fiorina/station/lowsec)
 "mIE" = (
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "mJe" = (
 /obj/effect/spawner/random/tool,
@@ -21039,9 +20983,7 @@
 /area/fiorina/maintenance)
 "mTS" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "mTX" = (
 /turf/open/floor/prison{
@@ -21253,9 +21195,7 @@
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	name = "computer"
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "mZG" = (
 /obj/item/paper/crumpled/bloody,
@@ -21613,9 +21553,7 @@
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/lowsec)
 "nlw" = (
 /turf/open/floor/almayer{
@@ -22587,9 +22525,7 @@
 /obj/structure/machinery/door/window/eastright{
 	dir = 2
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/lz/near_lzI)
 "nSx" = (
 /turf/closed/wall/r_wall/prison,
@@ -22953,9 +22889,7 @@
 /area/fiorina/station/transit_hub)
 "ofy" = (
 /obj/structure/machinery/photocopier,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "ofF" = (
 /obj/structure/prop/souto_land/pole,
@@ -23809,9 +23743,7 @@
 	pixel_x = 3;
 	pixel_y = 5
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "oED" = (
 /obj/effect/landmark/monkey_spawn,
@@ -24145,9 +24077,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "oQY" = (
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "oRb" = (
 /obj/item/trash/boonie,
@@ -24185,9 +24115,7 @@
 /obj/structure/machinery/recharger{
 	pixel_y = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "oTl" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
@@ -27668,9 +27596,7 @@
 /obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "rbE" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks,
@@ -28112,9 +28038,7 @@
 /obj/item/clothing/mask/cigarette/weed{
 	icon_state = "ucigoff"
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/lowsec)
 "rsp" = (
 /obj/item/toy/crayon/purple,
@@ -30047,9 +29971,7 @@
 	pixel_y = 4
 	},
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "sGI" = (
 /obj/structure/largecrate/random/case/double,
@@ -30364,9 +30286,7 @@
 /obj/structure/closet,
 /obj/item/handcuffs,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/lowsec)
 "sRV" = (
 /turf/open/floor/prison{
@@ -30772,9 +30692,7 @@
 /area/fiorina/tumor/aux_engi)
 "thU" = (
 /obj/structure/prop/almayer/computers/sensor_computer1,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/lz/near_lzI)
 "tih" = (
 /obj/item/tool/warning_cone,
@@ -31017,9 +30935,7 @@
 /obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "tpa" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
@@ -31289,9 +31205,7 @@
 /obj/item/ammo_magazine/rifle/m16{
 	current_rounds = 0
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "twL" = (
 /obj/vehicle/train/cargo/trolley,
@@ -31429,9 +31343,7 @@
 /obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "tBP" = (
 /obj/structure/machinery/shower{
@@ -31773,9 +31685,7 @@
 /area/fiorina/station/research_cells)
 "tMx" = (
 /obj/structure/prop/almayer/computers/sensor_computer2,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "tMz" = (
 /obj/structure/closet/crate/bravo,
@@ -32168,9 +32078,7 @@
 /obj/structure/window/reinforced/tinted,
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/recharger,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/lz/near_lzI)
 "tVZ" = (
 /obj/structure/machinery/vending/security,
@@ -33142,9 +33050,7 @@
 "uFc" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/disco)
 "uFh" = (
 /turf/open/floor/prison{
@@ -33835,9 +33741,7 @@
 	pixel_x = 14;
 	pixel_y = 7
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "vbF" = (
 /obj/item/stack/rods,
@@ -34209,9 +34113,7 @@
 	pixel_x = -8;
 	pixel_y = 16
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "vnr" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
@@ -34351,9 +34253,7 @@
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/book/manual/security_space_law,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "vrN" = (
 /obj/structure/monorail{
@@ -34689,9 +34589,7 @@
 	flipped = 1
 	},
 /obj/item/device/flashlight/lamp,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "vBO" = (
 /obj/effect/decal/cleanable/blood{
@@ -34992,9 +34890,7 @@
 /obj/structure/machinery/photocopier{
 	pixel_y = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "vMh" = (
 /obj/structure/stairs/perspective{
@@ -35406,9 +35302,7 @@
 /area/fiorina/station/park)
 "waz" = (
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/disco)
 "waN" = (
 /obj/structure/platform{
@@ -35503,9 +35397,7 @@
 /area/fiorina/lz/near_lzI)
 "wdX" = (
 /obj/structure/prop/almayer/computers/mapping_computer,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "wef" = (
 /turf/open/floor/plating/prison,
@@ -36000,9 +35892,7 @@
 /obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "wwH" = (
 /obj/item/tool/wirecutters,
@@ -36651,9 +36541,7 @@
 	dir = 1;
 	pixel_y = 21
 	},
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "wQn" = (
 /obj/effect/landmark/static_comms/net_one,
@@ -36988,9 +36876,7 @@
 	},
 /area/fiorina/station/power_ring)
 "xdy" = (
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/oob)
 "xdE" = (
 /obj/structure/window/framed/prison/reinforced/hull,
@@ -37890,9 +37776,7 @@
 /area/fiorina/station/medbay)
 "xCy" = (
 /obj/item/paper/prison_station/inmate_handbook,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "xCW" = (
 /obj/structure/grille,
@@ -38806,9 +38690,7 @@
 /area/fiorina/tumor/civres)
 "yiD" = (
 /obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/prison{
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkred2full,
 /area/fiorina/lz/near_lzI)
 "yiG" = (
 /obj/structure/platform_decoration{

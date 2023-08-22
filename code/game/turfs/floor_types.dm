@@ -554,6 +554,14 @@
 	icon_state = "floor"
 	plating_type = /turf/open/floor/plating/prison
 
+/turf/open/floor/prison/darkred2full
+	icon_state = "darkred2full"
+
+
+
+
+
+
 /turf/open/floor/prison/trim/red
 	icon_state = "darkred2"
 

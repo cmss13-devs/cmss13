@@ -255,7 +255,6 @@
 
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE
-	dwidth = 1
 
 /obj/docking_port/stationary/marine_dropship/crash_site/on_prearrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()

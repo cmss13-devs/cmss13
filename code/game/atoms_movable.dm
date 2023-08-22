@@ -53,6 +53,7 @@
 	. = ..()
 	moveToNullspace() //so we move into null space. Must be after ..() b/c atom's Dispose handles deleting our lighting stuff
 
+	QDEL_NULL(light)
 	QDEL_NULL(static_light)
 
 //===========================================================================

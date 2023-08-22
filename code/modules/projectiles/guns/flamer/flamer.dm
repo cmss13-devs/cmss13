@@ -446,9 +446,10 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	//non-dynamic flame is already colored
 	if(R.burn_sprite == "dynamic")
 		color = R.burncolor
-		light_color = R.burncolor
 	else
 		flame_icon = R.burn_sprite
+
+	set_light(l_color = R.burncolor)
 
 	if(!GLOB.flamer_particles[R.burncolor])
 		GLOB.flamer_particles[R.burncolor] = new /particles/flamer_fire(R.burncolor)

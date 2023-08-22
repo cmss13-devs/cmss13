@@ -554,8 +554,35 @@
 	icon_state = "floor"
 	plating_type = /turf/open/floor/plating/prison
 
+
+
+/turf/open/floor/prison/floor
+
+//darkred2
+/turf/open/floor/prison/darkred2
+	icon_state = "darkred2"
+
+/turf/open/floor/prison/darkred2corner
+	icon_state = "darkred2corner"
+
+/turf/open/floor/prison/darkred2angle
+	icon_state = "darkred2angle"
+
 /turf/open/floor/prison/darkred2full
 	icon_state = "darkred2full"
+
+//darkbrown2
+/turf/open/floor/prison/darkbrown2
+	icon_state = "darkbrown2"
+
+/turf/open/floor/prison/darkbrown2corner
+	icon_state = "darkbrown2corner"
+
+/turf/open/floor/prison/darkbrown2angle
+	icon_state = "darkbrown2angle"
+
+/turf/open/floor/prison/darkbrown2full
+	icon_state = "darkbrown2full"
 
 
 

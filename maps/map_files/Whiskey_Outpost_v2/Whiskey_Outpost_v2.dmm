@@ -5969,7 +5969,7 @@
 /area/whiskey_outpost/inside/bunker)
 "vd" = (
 /obj/structure/machinery/floodlight{
-	on = 1
+	light_on = 1
 	},
 /turf/open/floor/plating{
 	dir = 6;
@@ -7371,7 +7371,7 @@
 /area/whiskey_outpost/outside/lane/four_south)
 "Ag" = (
 /obj/structure/machinery/floodlight{
-	on = 1
+	light_on = 1
 	},
 /turf/open/floor/plating{
 	dir = 5;
@@ -7384,7 +7384,7 @@
 /area/whiskey_outpost/inside/supply)
 "Ak" = (
 /obj/structure/machinery/floodlight{
-	on = 1
+	light_on = 1
 	},
 /turf/open/floor/plating{
 	dir = 9;
@@ -8478,7 +8478,7 @@
 /area/whiskey_outpost/outside/lane/four_north)
 "Et" = (
 /obj/structure/machinery/floodlight{
-	on = 1
+	light_on = 1
 	},
 /turf/open/floor/plating{
 	dir = 10;

@@ -69,6 +69,9 @@
 
 ///Enqueues the mask in the queue properly
 /atom/movable/lighting_mask/proc/queue_mask_update()
+	if(QDELETED(src))
+		return
+
 	SSlighting.mask_queue += src
 	awaiting_update = TRUE
 

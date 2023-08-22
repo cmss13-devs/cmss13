@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - rscadd: "At end of round it now shows a Queen's prefix/postfix rather than their ckey"

@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Squad Specialists can no longer bypass restrictions by not selecting a kit to use."

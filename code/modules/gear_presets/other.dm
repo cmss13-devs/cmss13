@@ -38,7 +38,7 @@
 
 /datum/equipment_preset/other/freelancer/New()
 	. = ..()
-	access = get_all_main_access()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) //ACCESS_COME_BACK_TO_ME
 
 /datum/equipment_preset/other/freelancer/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(60;MALE,40;FEMALE)
@@ -247,7 +247,7 @@
 
 /datum/equipment_preset/other/elite_merc/New()
 	. = ..()
-	access = get_all_main_access()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE)
 
 /datum/equipment_preset/other/elite_merc/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(70;MALE,30;FEMALE)
@@ -277,10 +277,6 @@
 	rank = "Mercenary"
 	skills = /datum/skills/mercenary/elite
 	faction = FACTION_MERCENARY
-
-/datum/equipment_preset/other/elite_merc/standard/New()
-	. = ..()
-	access = get_weyland_pmc_access()
 
 /datum/equipment_preset/other/elite_merc/standard/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add unique backpacks and satchels
@@ -318,10 +314,6 @@
 	rank = "Mercenary"
 	skills = /datum/skills/mercenary/elite/heavy
 	faction = FACTION_MERCENARY
-
-/datum/equipment_preset/other/elite_merc/heavy/New()
-	. = ..()
-	access = get_weyland_pmc_access()
 
 /datum/equipment_preset/other/elite_merc/heavy/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
@@ -363,9 +355,6 @@
 	skills = /datum/skills/mercenary/elite/engineer
 	faction = FACTION_MERCENARY
 
-/datum/equipment_preset/other/elite_merc/engineer/New()
-	. = ..()
-	access = get_weyland_pmc_access()
 
 /datum/equipment_preset/other/elite_merc/engineer/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
@@ -420,10 +409,6 @@
 	skills = /datum/skills/mercenary/elite/medic
 	faction = FACTION_MERCENARY
 
-/datum/equipment_preset/other/elite_merc/medic/New()
-	. = ..()
-	access = get_weyland_pmc_access()
-
 /datum/equipment_preset/other/elite_merc/medic/load_gear(mob/living/carbon/human/new_human)
 	//webbing
 	var/obj/item/clothing/under/marine/veteran/mercenary/support/SUPPORT = new()
@@ -470,10 +455,6 @@
 	skills = /datum/skills/mercenary/elite/leader
 	faction = FACTION_MERCENARY
 
-/datum/equipment_preset/other/elite_merc/leader/New()
-	. = ..()
-	access = get_weyland_pmc_access()
-
 /datum/equipment_preset/other/elite_merc/leader/load_gear(mob/living/carbon/human/new_human)
 	//clothes
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
@@ -512,7 +493,7 @@
 
 /datum/equipment_preset/other/business_person/New()
 	. = ..()
-	access = get_all_main_access()
+	access = get_access(ACCESS_LIST_CIVIL_LIAISON)
 
 /datum/equipment_preset/other/business_person/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
@@ -562,7 +543,7 @@
 
 /datum/equipment_preset/other/pizza/New()
 	. = ..()
-	access = get_civil_ert_access()
+	access = get_access(ACCESS_LIST_DELIVERY)
 
 /datum/equipment_preset/other/pizza/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE,FEMALE)
@@ -607,7 +588,7 @@
 
 /datum/equipment_preset/other/souto/New()
 	. = ..()
-	access = get_civil_ert_access()
+	access = get_access(ACCESS_LIST_DELIVERY)
 
 /datum/equipment_preset/other/souto/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
@@ -789,7 +770,7 @@
 
 /datum/equipment_preset/other/xeno_cultist/New()
 	. = ..()
-	access = get_all_civilian_access()
+	access = get_access(ACCESS_LIST_COLONIAL_ALL)
 
 /datum/equipment_preset/other/xeno_cultist/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain/cultist(new_human), WEAR_BODY)
@@ -912,7 +893,7 @@
 
 /datum/equipment_preset/other/tank/New()
 	. = ..()
-	access = get_antagonist_access()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE)
 
 /datum/equipment_preset/other/tank/load_gear(mob/living/carbon/human/new_human)
 

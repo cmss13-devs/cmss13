@@ -1,8 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Picking up a Yautja mask now correctly checks for bracers to apply the visor."
-  - rscadd: "Added backend for species datums to hold inherent vision flags."
-  - rscadd: "Added proc for Yautja mask to pass power drain back to bracers. Added small power drain on use of mask visor."
-  - rscadd: "Added natural thermal vision and very weak night vision to Yautja species, to fit with our wiki lore."
-  - rscdel: "Removed Thermal and Meson visors from Yautja mask."

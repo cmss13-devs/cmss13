@@ -377,11 +377,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/// The dmi where the grayscale squad overlays are contained
 	var/helmet_overlay_icon = 'icons/mob/humans/onmob/head_1.dmi'
 
-	var/list/built_in_visors = list(/obj/item/device/helmet_visor)
+	var/list/built_in_visors = list(new /obj/item/device/helmet_visor)
 	var/list/inserted_visors = list()
 	var/max_inserted_visors = 1
 
-	var/active_visor = null
+	var/obj/item/device/helmet_visor/active_visor = null
 
 /obj/item/clothing/head/helmet/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
 	. = ..()
@@ -463,21 +463,24 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			return
 
 		var/obj/item/device/helmet_visor/new_visor = attacking_item
-		if(new_visor.type in (built_in_visors + inserted_visors))
-			to_chat(user, SPAN_NOTICE("[src] already has this type of HUD connected."))
+		for(var/obj/item/device/helmet_visor/cycled_visor as anything in (built_in_visors + inserted_visors))
+			if(cycled_visor.type == new_visor.type)
+				to_chat(user, SPAN_NOTICE("[src] already has this type of HUD connected."))
+				return
+		if(!user.drop_held_item())
 			return
 
-		inserted_visors += new_visor.type
+		inserted_visors += new_visor
 		to_chat(user, SPAN_NOTICE("You connect [new_visor] to [src]."))
-		qdel(new_visor)
+		new_visor.forceMove(src)
 		if(!(locate(/datum/action/item_action/cycle_helmet_huds) in actions))
 			var/datum/action/item_action/cycle_helmet_huds/new_action = new(src)
 			new_action.give_to(user)
 		return
 
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && length(inserted_visors))
-		for(var/visor_type in inserted_visors)
-			new visor_type(get_turf(user))
+		for(var/obj/item/device/visor as anything in inserted_visors)
+			visor.forceMove(get_turf(src))
 
 		inserted_visors = list()
 		to_chat(user, SPAN_NOTICE("You remove the inserted visors."))
@@ -534,8 +537,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			helmet_overlays = above_band_layer + below_band_layer
 
 	if(active_visor)
-		var/obj/item/device/helmet_visor/active_helmet_visor = new active_visor
-		helmet_overlays += active_helmet_visor.helmet_overlay
+		helmet_overlays += active_visor.helmet_overlay
 
 	if(ismob(loc))
 		var/mob/M = loc
@@ -601,50 +603,35 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /// Turns on the current active visor
 /obj/item/clothing/head/helmet/marine/proc/turn_on_visor(mob/user)
-	var/obj/item/device/helmet_visor/current_helmet_visor = new active_visor()
-
-	if(!current_helmet_visor)
+	if(!active_visor)
 		return
 
-	if(current_helmet_visor.can_toggle(user) && !current_helmet_visor.special_visor_function(src, user))
-		var/mob_hud_type = current_helmet_visor.hud_type
-		var/datum/mob_hud/current_mob_hud = huds[mob_hud_type]
-		current_mob_hud.add_hud_to(user, src)
-		to_chat(user, SPAN_NOTICE("You activate [current_helmet_visor] on [src]."))
-	playsound_client(user.client, current_helmet_visor.toggle_on_sound, null, 75)
+	if(active_visor.can_toggle(user))
+		active_visor.visor_function(src, user)
+
+	playsound_client(user.client, active_visor.toggle_on_sound, null, 75)
 	update_icon()
 
 /// Turns off the specified visor
-/obj/item/clothing/head/helmet/marine/proc/turn_off_visor(mob/user, type, sound = FALSE)
-	if(!type)
+/obj/item/clothing/head/helmet/marine/proc/turn_off_visor(mob/user, obj/item/device/helmet_visor/current_visor, sound = FALSE)
+	if(!current_visor)
 		return
 
-	var/obj/item/device/helmet_visor/current_helmet_visor = new type()
-
-	if(!current_helmet_visor)
-		return
-
-	if(current_helmet_visor.can_toggle(user) && !current_helmet_visor.special_visor_function(src, user))
-		var/mob_hud_type = current_helmet_visor.hud_type
-		var/datum/mob_hud/current_mob_hud = huds[mob_hud_type]
-		current_mob_hud.remove_hud_from(user, src)
-		to_chat(user, SPAN_NOTICE("You deactivate [current_helmet_visor] on [src]."))
+	if(current_visor.can_toggle(user))
+		current_visor.visor_function(src, user)
 
 	if(sound)
-		playsound_client(user.client, current_helmet_visor.toggle_off_sound, null, 75)
+		playsound_client(user.client, current_visor.toggle_off_sound, null, 75)
 	update_icon()
 
 /// Attempts to turn off all visors
 /obj/item/clothing/head/helmet/marine/proc/turn_off_visors(mob/user)
 	var/list/total_visors = built_in_visors + inserted_visors
 
-	for(var/helmet_visor_type in total_visors)
-		var/obj/item/device/helmet_visor/current_helmet_visor = new helmet_visor_type()
-		if(current_helmet_visor.special_visor_function(src, user, TRUE))
-			continue
-		var/mob_hud_type = current_helmet_visor.hud_type
-		var/datum/mob_hud/current_mob_hud = huds[mob_hud_type]
-		current_mob_hud.remove_hud_from(user, src)
+	for(var/obj/item/device/helmet_visor/cycled_helmet_visor in total_visors)
+		if(cycled_helmet_visor.can_toggle(user))
+			cycled_helmet_visor.visor_function(src, user, TRUE)
+
 	update_icon()
 
 ///Cycles the active HUD to the next between built_in_visors and inserted_visors, nullifies if at end and removes all HUDs
@@ -688,18 +675,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /datum/action/item_action/cycle_helmet_huds/action_activate()
 	. = ..()
 	var/obj/item/clothing/head/helmet/marine/holder_helmet = holder_item
-	var/cycled_hud_type = holder_helmet.cycle_huds(usr)
+	var/cycled_hud = holder_helmet.cycle_huds(usr)
 
-	set_action_overlay(cycled_hud_type)
+	set_action_overlay(cycled_hud)
 
 /// Sets the action overlay based on the visor type
-/datum/action/item_action/cycle_helmet_huds/proc/set_action_overlay(new_visor_type)
-	if(!new_visor_type)
-		set_default_overlay()
-		return
-
-	var/obj/item/device/helmet_visor/new_visor = new new_visor_type
-
+/datum/action/item_action/cycle_helmet_huds/proc/set_action_overlay(obj/item/device/helmet_visor/new_visor)
 	if(!new_visor)
 		set_default_overlay()
 		return
@@ -719,7 +700,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "A modified M10 marine helmet for ComTechs. Features a toggleable welding screen for eye protection."
 	icon_state = "tech_helmet"
 	specialty = "M10 technician"
-	built_in_visors = list(/obj/item/device/helmet_visor, /obj/item/device/helmet_visor/welding_visor)
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
 
 /obj/item/clothing/head/helmet/marine/tech/tanker
 	name = "\improper M50 tanker helmet"
@@ -732,7 +713,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	specialty = "M50 tanker"
-	built_in_visors = list(/obj/item/device/helmet_visor, /obj/item/device/helmet_visor/welding_visor/tanker)
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor/tanker)
 
 /obj/item/clothing/head/helmet/marine/medic
 	name = "\improper M10 corpsman helmet"
@@ -881,7 +862,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M10 pattern captain"
 	flags_atom = NO_SNOW_TYPE
-	built_in_visors = list(/obj/item/device/helmet_visor, /obj/item/device/helmet_visor/medical/advanced, /obj/item/device/helmet_visor/security)
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced, new /obj/item/device/helmet_visor/security)
 
 /obj/item/clothing/head/helmet/marine/MP
 	name = "\improper M10 pattern MP helmet"
@@ -890,7 +871,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "mp_helmet"
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	specialty = "M10 pattern military police"
-	built_in_visors = list(/obj/item/device/helmet_visor/security)
+	built_in_visors = list(new /obj/item/device/helmet_visor/security)
 
 /obj/item/clothing/head/helmet/marine/MP/WO
 	name = "\improper M3 pattern chief MP helmet"
@@ -905,7 +886,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "helmet"
 	item_state = "helmet"
 	specialty = "M10 pattern officer"
-	built_in_visors = list(/obj/item/device/helmet_visor, /obj/item/device/helmet_visor/medical/advanced)
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 
 /obj/item/clothing/head/helmet/marine/mp/provost/marshal
 	name = "\improper Provost Marshal Cap"
@@ -925,7 +906,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M10 pattern SOF"
 	flags_atom = NO_SNOW_TYPE
-	built_in_visors = list(/obj/item/device/helmet_visor, /obj/item/device/helmet_visor/medical, /obj/item/device/helmet_visor/security)
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical, new /obj/item/device/helmet_visor/security)
 
 
 //=============================//PMCS\\==================================\\
@@ -1294,7 +1275,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/mercenary/support/engineer
 	desc = "A sturdy helmet worn by an unknown mercenary group. Features a toggleable welding screen for eye protection."
-	built_in_visors = list(/obj/item/device/helmet_visor/welding_visor/mercenary)
+	built_in_visors = list(new /obj/item/device/helmet_visor/welding_visor/mercenary)
 
 //=============================//MEME\\==================================\\
 //=======================================================================\\

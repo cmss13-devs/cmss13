@@ -25,8 +25,19 @@
 	return TRUE
 
 /// Called to see if this visor is a special non-HUD visor
-/obj/item/device/helmet_visor/proc/special_visor_function(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user, silent = FALSE)
-	return FALSE
+/obj/item/device/helmet_visor/proc/visor_function(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user, silent = FALSE)
+	if(attached_helmet == user.head && attached_helmet.active_visor == src)
+		var/datum/mob_hud/current_mob_hud = huds[hud_type]
+		current_mob_hud.add_hud_to(user, attached_helmet)
+		if(!silent)
+			to_chat(user, SPAN_NOTICE("You activate [src] on [attached_helmet]."))
+		return TRUE
+
+	var/datum/mob_hud/current_mob_hud = huds[hud_type]
+	current_mob_hud.remove_hud_from(user, attached_helmet)
+	if(!silent)
+		to_chat(user, SPAN_NOTICE("You deactivate [src] on [attached_helmet]."))
+	return TRUE
 
 /obj/item/device/helmet_visor/medical
 	name = "basic medical optic"
@@ -60,8 +71,8 @@
 	action_icon_string = "blank_hud_sight_down"
 	helmet_overlay = "weld_visor"
 
-/obj/item/device/helmet_visor/welding_visor/special_visor_function(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user, silent = FALSE)
-	if(attached_helmet.active_visor == type)
+/obj/item/device/helmet_visor/welding_visor/visor_function(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user, silent = FALSE)
+	if(attached_helmet == user.head && attached_helmet.active_visor == src)
 		attached_helmet.vision_impair = VISION_IMPAIR_MAX
 		attached_helmet.flags_inventory |= COVEREYES|COVERMOUTH
 		attached_helmet.flags_inv_hide |= HIDEEYES|HIDEFACE

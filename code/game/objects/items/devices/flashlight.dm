@@ -378,7 +378,6 @@
 	name = "illumination flare"
 	desc = "It's really bright, and unreachable."
 	icon_state = "" //No sprite
-	invisibility = 101 //Can't be seen or found, it's "up in the sky"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	light_range = 7 //Way brighter than most lights
 	show_flame = FALSE

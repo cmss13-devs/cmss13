@@ -64,7 +64,7 @@
 	icon_state = "mortar_ammo_flr"
 
 /obj/item/mortar_shell/flare/detonate(turf/T)
-	new /obj/effect/bright_flare(T)
+	new /obj/item/device/flashlight/flare/on/illumination(T)
 	playsound(T, 'sound/weapons/gun_flare.ogg', 50, 1, 4)
 	deploy_camera(T)
 

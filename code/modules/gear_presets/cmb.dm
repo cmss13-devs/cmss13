@@ -10,7 +10,7 @@
 
 /datum/equipment_preset/cmb/New()
 	. = ..()
-	access = get_friendly_ert_access()
+	access = get_access(ACCESS_LIST_UA)
 
 /datum/equipment_preset/cmb/load_name(mob/living/carbon/human/new_human)
 	new_human.gender = pick(80;MALE,20;FEMALE)
@@ -404,7 +404,7 @@
 
 /datum/equipment_preset/uscm/cmb/New()
 	. = ..()
-	access = get_friendly_ert_access()
+	access = get_access(ACCESS_LIST_UA)
 
 	assignment = "Anchorpoint Station Marine Rifleman"
 	rank = JOB_SQUAD_MARINE

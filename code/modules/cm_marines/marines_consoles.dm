@@ -109,7 +109,7 @@
 								<u>Access:</u><br>
 								"}
 
-					var/known_access_rights = get_all_main_access()
+					var/known_access_rights = get_access(ACCESS_LIST_MARINE_ALL)
 					for(var/A in target_id_card.access)
 						if(A in known_access_rights)
 							contents += "  [get_access_desc(A)]"
@@ -197,7 +197,7 @@
 			else
 				var/list/new_access = list()
 				if(is_centcom)
-					new_access = get_all_weyland_access()
+					new_access = get_access(ACCESS_LIST_WY_ALL)
 				else
 					var/datum/job/job = RoleAuthority.roles_for_mode[target]
 
@@ -205,7 +205,7 @@
 						visible_message("[SPAN_BOLD("[src]")] states, \"DATA ERROR: Can not find next entry in database: [target]\"")
 						return
 					new_access = job.get_access()
-				target_id_card.access -= get_all_weyland_access() + get_all_main_access()
+				target_id_card.access -= get_access(ACCESS_LIST_WY_ALL) + get_access(ACCESS_LIST_MARINE_MAIN)
 				target_id_card.access |= new_access
 				target_id_card.assignment = target
 				target_id_card.rank = target
@@ -227,7 +227,7 @@
 					log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted [access_type] IFF. </font>")
 				return TRUE
 			access_type = text2num(params["access_target"])
-			if(access_type in (is_centcom ? get_all_weyland_access() : get_main_marine_access()))
+			if(access_type in (is_centcom ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN)))
 				if(access_type in target_id_card.access)
 					target_id_card.access -= access_type
 					log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked access '[access_type]'. </font>")
@@ -239,7 +239,7 @@
 			if(!authenticated || !target_id_card)
 				return
 
-			target_id_card.access |= (is_centcom ? get_all_weyland_access() : get_main_marine_access())
+			target_id_card.access |= (is_centcom ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN))
 			target_id_card.faction_group |= factions
 			log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted the ID all access and USCM IFF. </font>")
 			return TRUE
@@ -910,10 +910,11 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				RAIDER_OFFICER_SQUAD = 11,
 				JOB_SO = 12,
 				JOB_SEA = 13,
-				// 20-29: Aux Command (Synth isn't Aux head, but important - make him bold)
-				JOB_SYNTH = 20,
-				JOB_PILOT = 21,
-				JOB_DROPSHIP_CREW_CHIEF = 22,
+				// 20-29: Aux Command
+				JOB_AUXILIARY_OFFICER = 20,
+				JOB_SYNTH = 21,
+				JOB_PILOT = 22,
+				JOB_DROPSHIP_CREW_CHIEF = 23,
 				JOB_INTEL = 24,
 				// 30-39: Security
 				JOB_CHIEF_POLICE = 30,
@@ -937,11 +938,11 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				// 60-69: Cargo
 				JOB_CHIEF_REQUISITION = 60,
 				JOB_CARGO_TECH = 61,
+				JOB_MESS_SERGEANT = 62,
 				// 70-139: SQUADS (look below)
 				// 140+: Civilian/other
 				JOB_CORPORATE_LIAISON = 140,
-				JOB_MESS_SERGEANT = 141,
-				JOB_PASSENGER = 142,
+				JOB_PASSENGER = 141,
 				// Non Almayer jobs lower then registered
 				JOB_SYNTH_SURVIVOR = 150,
 				JOB_SURVIVOR = 151,

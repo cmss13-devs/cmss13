@@ -747,16 +747,8 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
 	icon_state = "magsg"
 	item_state = "magsg"
+	starting_attachment_types = list(/obj/item/attachable/l56a2_smartgun)
 
 /obj/item/weapon/gun/smartgun/rmc/Initialize(mapload, ...)
 	. = ..()
 	MD.iff_signal = FACTION_TWE
-
-
-/obj/item/weapon/gun/smartgun/rmc/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/l56a2_smartgun/l56a2_barrel = new(src)
-	l56a2_barrel.flags_attach_features &= ~ATTACH_REMOVABLE
-	l56a2_barrel.hidden = FALSE
-	l56a2_barrel.Attach(src)
-	update_attachable(l56a2_barrel.slot)

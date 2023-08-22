@@ -310,6 +310,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		icon_state = icon_on
 		item_state = icon_on
 		set_light_range(1)
+		set_light_power(0.5)
 		set_light_on(TRUE)
 		if(iscarbon(loc))
 			var/mob/living/carbon/C = loc

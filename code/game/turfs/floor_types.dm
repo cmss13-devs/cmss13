@@ -609,6 +609,8 @@
 /turf/open/floor/prison/sterile
 	icon_state = "sterile"
 
+/turf/open/floor/prison/bluefull
+	icon_state = "bluefull"
 //not in use
 /turf/open/floor/prison/whitepurplefull
 	icon_state = "whitepurplefull"

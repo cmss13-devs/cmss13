@@ -273,9 +273,9 @@
 		if("page_requisitions")
 			admin_interface.last_menu = admin_interface.current_menu
 			admin_interface.current_menu = "requisitions"
-		if("page_antiair")
+		if("page_flight")
 			admin_interface.last_menu = admin_interface.current_menu
-			admin_interface.current_menu = "antiair"
+			admin_interface.current_menu = "flight_log"
 		if("page_emergency")
 			admin_interface.last_menu = admin_interface.current_menu
 			admin_interface.current_menu = "emergency"

@@ -28,8 +28,8 @@
 	break_stuff_probability = 90
 	mob_size = MOB_SIZE_XENO_SMALL
 
-	pixel_x = 0
-	old_x = 0
+	pixel_x = -8
+	old_x = -8
 
 	var/special_attack_probability = XENO_AI_SPECIAL_ATTACK_PROBABILITY
 
@@ -81,12 +81,6 @@
 					T = Tprev
 				continue
 
-		if(istype(A, /obj/structure/machinery/bot))
-			var/obj/structure/machinery/bot/B = A
-			if (B.health > 0)
-				stance = HOSTILE_STANCE_ATTACK
-				T = B
-				break
 	return T
 
 /mob/living/simple_animal/hostile/alien/spawnable/evaluate_target(mob/living/carbon/target)
@@ -96,6 +90,15 @@
 		return
 
 	if (evaluate_embryo_existance(target))
+		return FALSE
+
+	if (issynth(target))
+		return FALSE
+
+	if (target.pulledby && isxeno(target.pulledby))
+		return FALSE
+
+	if (target.alpha < 50)
 		return FALSE
 
 	return target
@@ -111,7 +114,7 @@
 /mob/living/simple_animal/hostile/alien/spawnable/AttackTarget()
 
 	stop_automated_movement = 1
-	if(!target_mob || SA_attackable(target_mob) || evaluate_embryo_existance(target_mob))
+	if(!target_mob || SA_attackable(target_mob) || target_mob.pulledby && isxeno(target_mob.pulledby) || target_mob.alpha < 50)
 		LoseTarget()
 		return 0
 	if(!(target_mob in ListTargets(10)))

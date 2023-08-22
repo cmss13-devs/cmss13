@@ -1372,15 +1372,20 @@ const Emergency = (props, context) => {
     worldtime,
     distresstimelock,
     distresstime,
+    quarterstime,
     evac_status,
     mission_failed,
     nuketimelock,
     nuke_available,
   } = data;
-  const canQuarters = alert_level < 2;
-  let quarters_reason = 'Call for General Quarters.';
   const minimumEvacTime = worldtime > distresstimelock;
   const distressCooldown = worldtime < distresstime;
+  const quartersCooldown = worldtime < quarterstime;
+  const canQuarters = !quartersCooldown;
+  let quarters_reason = 'Call for General Quarters.';
+  if(quartersCooldown) {
+    quarters_reason = 'It has not been long enough since last General Quarters call.';
+  }
   const canDistress = alert_level === 2 && !distressCooldown && minimumEvacTime;
   let distress_reason = 'Launch a Distress Beacon.';
   if (alert_level === 3) {

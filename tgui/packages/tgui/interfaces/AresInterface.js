@@ -1383,7 +1383,7 @@ const Emergency = (props, context) => {
   const quartersCooldown = worldtime < quarterstime;
   const canQuarters = !quartersCooldown;
   let quarters_reason = 'Call for General Quarters.';
-  if(quartersCooldown) {
+  if (quartersCooldown) {
     quarters_reason = 'It has not been long enough since last General Quarters call.';
   }
   const canDistress = alert_level === 2 && !distressCooldown && minimumEvacTime;

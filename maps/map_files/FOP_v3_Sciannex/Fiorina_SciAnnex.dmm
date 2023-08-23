@@ -381,7 +381,7 @@
 /area/fiorina/station/telecomm/lz1_cargo)
 "akw" = (
 /turf/open/floor/prison/greencorner{
-	dir = 8
+	dir = 4
 	},
 /area/fiorina/station/transit_hub)
 "akE" = (
@@ -13923,7 +13923,7 @@
 "jLF" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/prison/greencorner{
-	dir = 8
+	dir = 4
 	},
 /area/fiorina/station/chapel)
 "jLK" = (
@@ -21275,7 +21275,7 @@
 "oOK" = (
 /obj/item/device/multitool,
 /turf/open/floor/prison/greencorner{
-	dir = 4
+	dir = 8
 	},
 /area/fiorina/tumor/civres)
 "oOV" = (
@@ -27055,7 +27055,7 @@
 /area/fiorina/lz/near_lzI)
 "tbC" = (
 /turf/open/floor/prison/greencorner{
-	dir = 8
+	dir = 4
 	},
 /area/fiorina/tumor/aux_engi)
 "tbZ" = (
@@ -36259,14 +36259,14 @@ dXG
 dIo
 hDx
 dXG
-diP
+lhQ
 qmd
 xFx
-diP
+lhQ
 kDO
-diP
+lhQ
 qty
-diP
+lhQ
 qty
 oOK
 sUl
@@ -36474,13 +36474,13 @@ dXG
 bjx
 dXG
 oVC
-lhQ
+diP
 kDO
-lhQ
+diP
 qty
-lhQ
+diP
 gcr
-lhQ
+diP
 aEi
 pRH
 qPb
@@ -36683,7 +36683,7 @@ dXG
 dIo
 wJa
 dXG
-lhQ
+diP
 dXG
 vAZ
 hDx
@@ -37952,9 +37952,9 @@ clu
 dIo
 xHV
 xHV
-diP
+lhQ
 qty
-diP
+lhQ
 qty
 dXG
 hDx
@@ -38164,9 +38164,9 @@ dXG
 dIo
 xHV
 qty
-lhQ
+diP
 qty
-lhQ
+diP
 qty
 qty
 hDx
@@ -38586,11 +38586,11 @@ hDx
 pwL
 oKq
 hDx
-diP
+lhQ
 qty
-diP
+lhQ
 qty
-diP
+lhQ
 qty
 qty
 hDx
@@ -38798,11 +38798,11 @@ qty
 dXG
 dXG
 hDx
-lhQ
+diP
 qty
-lhQ
+diP
 qty
-lhQ
+diP
 dXG
 qty
 hDx
@@ -40075,7 +40075,7 @@ dIo
 dXG
 rsz
 dXG
-diP
+lhQ
 xFx
 hDx
 sRg
@@ -40290,13 +40290,13 @@ dXG
 bjx
 tQq
 xFx
-diP
+lhQ
 qty
-diP
+lhQ
 qty
-diP
+lhQ
 qty
-diP
+lhQ
 sUl
 qPb
 qPb
@@ -40499,16 +40499,16 @@ xHV
 xHV
 xHV
 xHV
-lhQ
+diP
 fpp
 oVC
-lhQ
+diP
 qty
-lhQ
+diP
 qty
-lhQ
+diP
 qty
-lhQ
+diP
 sUl
 qPb
 qPb
@@ -42152,13 +42152,13 @@ agi
 agi
 mjx
 eda
-eQR
+fLq
 efz
-eQR
+fLq
 efz
-eQR
+fLq
 eda
-eQR
+fLq
 efz
 dXG
 hDx
@@ -42364,13 +42364,13 @@ uhd
 hoZ
 mjx
 efz
-fLq
+eQR
 efz
-fLq
+eQR
 efz
-fLq
+eQR
 efz
-fLq
+eQR
 efz
 dXG
 dXG
@@ -42414,9 +42414,9 @@ hDx
 qty
 qty
 qty
-diP
+lhQ
 qty
-diP
+lhQ
 nsg
 xFx
 xHV
@@ -42626,9 +42626,9 @@ qWB
 qty
 qty
 qty
-lhQ
+diP
 qty
-lhQ
+diP
 tzj
 lvs
 hDx
@@ -42788,13 +42788,13 @@ uFX
 lwK
 mjx
 efz
-eQR
+fLq
 efz
-eQR
+fLq
 efz
-eQR
+fLq
 efz
-eQR
+fLq
 efz
 doD
 doD
@@ -42841,7 +42841,7 @@ dIo
 dIo
 hDx
 hDx
-lhQ
+diP
 oVC
 nsg
 nsg
@@ -43000,13 +43000,13 @@ dCl
 lwK
 mjx
 egY
-fLq
+eQR
 efz
-fLq
+eQR
 efz
-fLq
+eQR
 kur
-fLq
+eQR
 efz
 hoZ
 fGb
@@ -43265,7 +43265,7 @@ xHV
 xHV
 dIo
 hSF
-diP
+lhQ
 xFx
 hDx
 hDx
@@ -43689,7 +43689,7 @@ xHV
 dIo
 dIo
 hSF
-diP
+lhQ
 xFx
 igA
 nsg
@@ -44113,7 +44113,7 @@ whu
 hDx
 rMg
 hDx
-diP
+lhQ
 tIK
 hDx
 hDx
@@ -44312,22 +44312,22 @@ dXG
 xHV
 qty
 qty
-diP
+lhQ
 qty
-diP
+lhQ
 qty
-diP
+lhQ
 qty
-diP
+lhQ
 qty
-diP
+lhQ
 qty
-diP
+lhQ
 qty
-diP
+lhQ
 hcb
 lvs
-diP
+lhQ
 foZ
 xFx
 rNF
@@ -44524,22 +44524,22 @@ xHV
 xHV
 xHV
 qty
-lhQ
+diP
 qty
-lhQ
+diP
 qty
-lhQ
+diP
 qty
-lhQ
+diP
 qty
-lhQ
+diP
 qty
-lhQ
+diP
 qty
-lhQ
+diP
 tzj
 lvs
-lhQ
+diP
 qty
 lsl
 xFx
@@ -44749,7 +44749,7 @@ whu
 hDx
 rMg
 hDx
-lhQ
+diP
 oVC
 hDx
 hDx
@@ -45173,7 +45173,7 @@ hDx
 kUj
 kUj
 xHV
-lhQ
+diP
 oVC
 gWT
 fpp
@@ -45597,7 +45597,7 @@ xzj
 fBP
 xHV
 kUj
-lhQ
+diP
 oVC
 hDx
 hDx
@@ -46021,7 +46021,7 @@ dXG
 xHV
 xHV
 dIo
-lhQ
+diP
 oVC
 fpp
 fpp
@@ -46445,7 +46445,7 @@ egv
 egv
 gma
 apf
-lhQ
+diP
 oVC
 hDx
 vkM
@@ -47293,7 +47293,7 @@ apf
 gma
 gma
 apf
-diP
+lhQ
 qXM
 mLB
 tYw
@@ -57047,7 +57047,7 @@ bJF
 dgF
 bis
 sXy
-usa
+ghP
 vNF
 uqa
 kEE
@@ -58743,7 +58743,7 @@ mTX
 axi
 bis
 sXy
-ghP
+usa
 xqG
 oTl
 kEE

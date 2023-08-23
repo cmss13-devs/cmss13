@@ -36,7 +36,7 @@
 		LAZYADD(debris, shardtype)
 		update_nearby_icons()
 
-/obj/structure/window/Destroy()
+/obj/structure/window/Destroy(force)
 	density = FALSE
 	if(is_full_window())
 		update_nearby_icons()
@@ -507,7 +507,7 @@
 	relativewall()
 	relativewall_neighbours()
 
-/obj/structure/window/framed/Destroy()
+/obj/structure/window/framed/Destroy(force)
 	for(var/obj/effect/alien/weeds/weedwall/window/found_weedwall in get_turf(src))
 		qdel(found_weedwall)
 	var/list/turf/cardinal_neighbors = list(get_step(src, NORTH), get_step(src, SOUTH), get_step(src, EAST), get_step(src, WEST))
@@ -946,7 +946,7 @@
 	window_frame = /obj/structure/window_frame/corsat/security
 	health = 400
 
-/obj/structure/window/framed/corsat/hull/Destroy()
+/obj/structure/window/framed/corsat/hull/Destroy(force)
 	if(force)
 		return ..()
 

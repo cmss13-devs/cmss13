@@ -32,7 +32,7 @@
 	var/affecting_dynamic_lumi = 0
 
 //===========================================================================
-/atom/movable/Destroy()
+/atom/movable/Destroy(force)
 	for(var/atom/movable/I in contents)
 		qdel(I)
 	if(pulledby)

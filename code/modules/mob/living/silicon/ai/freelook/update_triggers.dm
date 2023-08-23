@@ -29,7 +29,7 @@
 	. = ..()
 // STRUCTURES
 
-/obj/structure/Destroy()
+/obj/structure/Destroy(force)
 	if(z && SSatoms.initialized != INITIALIZATION_INSSATOMS)
 		cameranet.updateVisibility(src)
 	. = ..()

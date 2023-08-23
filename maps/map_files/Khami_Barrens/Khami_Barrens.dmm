@@ -2387,12 +2387,9 @@
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/exterior/stonyfields/north)
 "cLr" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/kutjevo/colors/cyan,
-/area/khami_barrens/interior/research_caves/research)
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall/kutjevo/rock/border,
+/area/khami_barrens/interior/oob)
 "cLA" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/structure/machinery/door/window/westright,
@@ -2527,13 +2524,11 @@
 	},
 /area/khami_barrens/interior/ruin_caves/north)
 "cVt" = (
-/obj/structure/machinery/door/window{
-	dir = 8
+/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/kutjevo/tan/plate,
 /area/khami_barrens/interior/research_caves/research)
 "cVI" = (
 /obj/structure/platform/mineral/sandstone/runed,
@@ -9284,12 +9279,6 @@
 	dir = 1
 	},
 /area/khami_barrens/interior/hunting_lodge)
-"kuK" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/kutjevo/tan/plate,
-/area/khami_barrens/interior/research_caves/research)
 "kvd" = (
 /obj/structure/platform/kutjevo{
 	dir = 8
@@ -16018,9 +16007,6 @@
 /area/khami_barrens/interior/ruin_caves)
 "skX" = (
 /obj/structure/machinery/door/window,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/kutjevo/tan/plate,
 /area/khami_barrens/interior/research_caves/research)
@@ -16678,9 +16664,9 @@
 	},
 /area/khami_barrens/interior/hunting_lodge)
 "sRA" = (
-/obj/structure/disposalpipe/junction{
-	dir = 8;
-	icon_state = "pipe-j2"
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
 	},
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 1
@@ -52932,7 +52918,7 @@ azf
 azf
 swk
 jyg
-dFB
+cVt
 vBh
 lOv
 qDr
@@ -53377,7 +53363,7 @@ dqj
 xuE
 bzx
 bsR
-fiH
+bsR
 cbt
 xuE
 weK
@@ -53599,7 +53585,7 @@ ssw
 ssw
 rSl
 wvZ
-cLr
+wvZ
 rSl
 ssw
 ssw
@@ -53821,7 +53807,7 @@ eUL
 ssw
 aMG
 bsR
-fiH
+bsR
 aMG
 ssw
 eUL
@@ -54043,7 +54029,7 @@ eUL
 ssw
 pqv
 wrL
-cVt
+wrL
 byL
 ssw
 eUL
@@ -54265,7 +54251,7 @@ eUL
 ssw
 cGd
 tYO
-kuK
+kSz
 hCS
 ssw
 eUL
@@ -54487,7 +54473,7 @@ eUL
 ssw
 cGd
 rLK
-kuK
+kSz
 jyn
 ssw
 eUL
@@ -54931,7 +54917,7 @@ eUL
 ssw
 tpS
 bsR
-fiH
+bsR
 stt
 ssw
 eUL
@@ -55153,7 +55139,7 @@ eUL
 ssw
 mXG
 noO
-hOm
+noO
 rSE
 ssw
 eUL
@@ -58026,7 +58012,7 @@ gsb
 eUL
 eUL
 eUL
-eUL
+cLr
 eUL
 eUL
 swu

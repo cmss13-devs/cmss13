@@ -1246,9 +1246,7 @@
 /obj/structure/closet/crate/miningcar{
 	name = "\improper materials storage bin"
 	},
-/turf/open/floor/prison{
-	icon_state = "greenblue"
-	},
+/turf/open/floor/prison/greenblue,
 /area/fiorina/station/botany)
 "aLp" = (
 /obj/structure/prop/invuln{
@@ -1743,10 +1741,7 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "greenblue"
-	},
+/turf/open/floor/prison/greenbluecorner,
 /area/fiorina/station/botany)
 "bck" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -3362,9 +3357,8 @@
 /area/fiorina/station/lowsec)
 "coT" = (
 /obj/item/device/flashlight/lamp/tripod,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenblue{
+	dir = 8
 	},
 /area/fiorina/station/botany)
 "cph" = (
@@ -3949,9 +3943,8 @@
 	},
 /area/fiorina/station/lowsec)
 "cLR" = (
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenblue{
+	dir = 1
 	},
 /area/fiorina/station/botany)
 "cMg" = (
@@ -4555,9 +4548,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/civres)
 "djd" = (
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "greenbluecorner"
+/turf/open/floor/prison/greenblueangle{
+	dir = 1
 	},
 /area/fiorina/station/botany)
 "dje" = (
@@ -4852,9 +4844,8 @@
 /area/fiorina/tumor/civres)
 "dsQ" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenbluecorner{
+	dir = 4
 	},
 /area/fiorina/station/botany)
 "dsT" = (
@@ -5194,9 +5185,8 @@
 	name = "\improper materials storage bin"
 	},
 /obj/item/reagent_container/food/snacks/meat,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenblue{
+	dir = 4
 	},
 /area/fiorina/station/botany)
 "dDU" = (
@@ -5436,9 +5426,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "dMv" = (
-/turf/open/floor/prison{
-	icon_state = "greenbluecorner"
-	},
+/turf/open/floor/prison/greenblueangle,
 /area/fiorina/station/botany)
 "dMK" = (
 /obj/item/tool/pickaxe,
@@ -5739,9 +5727,8 @@
 /area/fiorina/station/medbay)
 "ebm" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenbluecorner{
+	dir = 4
 	},
 /area/fiorina/station/botany)
 "ebP" = (
@@ -5980,9 +5967,8 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/station/medbay)
 "elq" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenbluecorner"
+/turf/open/floor/prison/greenblueangle{
+	dir = 4
 	},
 /area/fiorina/station/botany)
 "elC" = (
@@ -6836,9 +6822,8 @@
 /area/fiorina/station/security)
 "eVb" = (
 /obj/item/reagent_container/blood,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenbluecorner"
+/turf/open/floor/prison/greenblueangle{
+	dir = 4
 	},
 /area/fiorina/station/botany)
 "eVf" = (
@@ -7019,9 +7004,7 @@
 /area/fiorina/station/security)
 "eZL" = (
 /obj/item/reagent_container/food/snacks/meat,
-/turf/open/floor/prison{
-	icon_state = "greenblue"
-	},
+/turf/open/floor/prison/greenblue,
 /area/fiorina/station/botany)
 "eZN" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
@@ -7048,9 +7031,8 @@
 /area/fiorina/station/security)
 "fbL" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenblue{
+	dir = 4
 	},
 /area/fiorina/station/botany)
 "fbT" = (
@@ -9849,9 +9831,7 @@
 	pixel_y = 21
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	icon_state = "greenblue"
-	},
+/turf/open/floor/prison/greenblue,
 /area/fiorina/station/botany)
 "hbo" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -10546,9 +10526,8 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenblue{
+	dir = 8
 	},
 /area/fiorina/station/botany)
 "hyT" = (
@@ -10721,18 +10700,16 @@
 /area/fiorina/station/park)
 "hGz" = (
 /obj/item/clothing/gloves/botanic_leather,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenblue{
+	dir = 8
 	},
 /area/fiorina/station/botany)
 "hGC" = (
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenbluecorner{
+	dir = 1
 	},
 /area/fiorina/station/botany)
 "hGZ" = (
@@ -13187,9 +13164,8 @@
 /turf/open/floor/prison/blueangle,
 /area/fiorina/station/civres_blue)
 "jya" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "greenbluecorner"
+/turf/open/floor/prison/greenblueangle{
+	dir = 8
 	},
 /area/fiorina/station/botany)
 "jyc" = (
@@ -14524,9 +14500,8 @@
 /turf/open/floor/prison/darkpurple2full,
 /area/fiorina/station/research_cells)
 "kul" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenblue{
+	dir = 8
 	},
 /area/fiorina/station/botany)
 "kur" = (
@@ -15546,9 +15521,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "lfJ" = (
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenbluecorner{
+	dir = 8
 	},
 /area/fiorina/station/botany)
 "lfS" = (
@@ -16644,9 +16618,8 @@
 	pixel_x = 10;
 	pixel_y = -3
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenblue{
+	dir = 4
 	},
 /area/fiorina/station/botany)
 "lXc" = (
@@ -17879,9 +17852,7 @@
 /area/fiorina/station/flight_deck)
 "mOn" = (
 /obj/structure/machinery/light/double/blue,
-/turf/open/floor/prison{
-	icon_state = "greenblue"
-	},
+/turf/open/floor/prison/greenblue,
 /area/fiorina/station/botany)
 "mOr" = (
 /obj/item/poster,
@@ -17916,9 +17887,7 @@
 /area/fiorina/station/telecomm/lz1_cargo)
 "mQe" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	icon_state = "greenblue"
-	},
+/turf/open/floor/prison/greenblue,
 /area/fiorina/station/botany)
 "mQn" = (
 /obj/structure/platform_decoration{
@@ -20583,9 +20552,8 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenblue{
+	dir = 4
 	},
 /area/fiorina/station/botany)
 "oJU" = (
@@ -20593,9 +20561,8 @@
 	dir = 1;
 	pixel_y = 21
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenblue{
+	dir = 1
 	},
 /area/fiorina/station/botany)
 "oJW" = (
@@ -20730,9 +20697,8 @@
 /area/fiorina/lz/near_lzI)
 "oQF" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenblue{
+	dir = 8
 	},
 /area/fiorina/station/botany)
 "oQI" = (
@@ -20954,9 +20920,7 @@
 "pan" = (
 /obj/item/reagent_container/food/snacks/meat,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	icon_state = "greenblue"
-	},
+/turf/open/floor/prison/greenblue,
 /area/fiorina/station/botany)
 "pat" = (
 /obj/item/clothing/accessory/armband/cargo{
@@ -21241,10 +21205,7 @@
 /area/fiorina/station/medbay)
 "pnv" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "greenblue"
-	},
+/turf/open/floor/prison/greenbluecorner,
 /area/fiorina/station/botany)
 "pnA" = (
 /obj/item/toy/handcard/uno_reverse_blue,
@@ -22396,9 +22357,8 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/station/medbay)
 "qfU" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenblue{
+	dir = 4
 	},
 /area/fiorina/station/botany)
 "qgd" = (
@@ -23989,9 +23949,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/lowsec)
 "rkr" = (
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenbluecorner{
+	dir = 4
 	},
 /area/fiorina/station/botany)
 "rkB" = (
@@ -25712,9 +25671,8 @@
 /area/fiorina/station/research_cells)
 "sAK" = (
 /obj/item/device/flashlight/lamp/tripod,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenblue{
+	dir = 1
 	},
 /area/fiorina/station/botany)
 "sBl" = (
@@ -27470,9 +27428,8 @@
 /area/fiorina/tumor/civres)
 "tQs" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenblue{
+	dir = 8
 	},
 /area/fiorina/station/botany)
 "tQB" = (
@@ -27505,9 +27462,8 @@
 	name = "\improper materials storage bin"
 	},
 /obj/item/reagent_container/food/snacks/meat,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenblue{
+	dir = 1
 	},
 /area/fiorina/station/botany)
 "tRH" = (
@@ -27649,9 +27605,7 @@
 	dir = 1;
 	pixel_y = 21
 	},
-/turf/open/floor/prison{
-	icon_state = "greenblue"
-	},
+/turf/open/floor/prison/greenblue,
 /area/fiorina/station/botany)
 "tWq" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -29225,9 +29179,7 @@
 	name = "\improper materials storage bin"
 	},
 /obj/item/reagent_container/food/snacks/meat,
-/turf/open/floor/prison{
-	icon_state = "greenblue"
-	},
+/turf/open/floor/prison/greenblue,
 /area/fiorina/station/botany)
 "vhe" = (
 /obj/structure/closet/wardrobe/orange,
@@ -29239,9 +29191,7 @@
 /area/fiorina/station/park)
 "vhC" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/prison{
-	icon_state = "greenblue"
-	},
+/turf/open/floor/prison/greenblue,
 /area/fiorina/station/botany)
 "vhI" = (
 /turf/open/gm/river{
@@ -29677,9 +29627,7 @@
 	},
 /area/fiorina/tumor/ship)
 "vxV" = (
-/turf/open/floor/prison{
-	icon_state = "greenblue"
-	},
+/turf/open/floor/prison/greenblue,
 /area/fiorina/station/botany)
 "vyu" = (
 /obj/item/clothing/suit/storage/hazardvest,
@@ -30460,9 +30408,7 @@
 /area/fiorina/station/park)
 "wcm" = (
 /obj/structure/bed/chair,
-/turf/open/floor/prison{
-	icon_state = "greenblue"
-	},
+/turf/open/floor/prison/greenblue,
 /area/fiorina/station/botany)
 "wcP" = (
 /obj/effect/landmark/queen_spawn,
@@ -31409,9 +31355,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/lowsec)
 "wOR" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenbluecorner{
+	dir = 1
 	},
 /area/fiorina/station/botany)
 "wOS" = (
@@ -32848,9 +32793,8 @@
 	pixel_x = 10;
 	pixel_y = 13
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenblue"
+/turf/open/floor/prison/greenblue{
+	dir = 4
 	},
 /area/fiorina/station/botany)
 "xTe" = (

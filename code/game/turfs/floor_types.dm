@@ -684,6 +684,14 @@
 /turf/open/floor/prison/bright_clean_marked
 	icon_state = "bright_clean_marked"
 
+/turf/open/floor/prison/greenblue
+	icon_state = "greenblue"
+
+/turf/open/floor/prison/greenbluecorner
+	icon_state = "greenbluecorner"
+/turf/open/floor/prison/greenblueangle
+	icon_state = "greenblueangle"
+
 //blue plate four direction
 /turf/open/floor/prison/blue_plate
 	icon_state = "blue_plate"

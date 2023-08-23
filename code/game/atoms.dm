@@ -105,7 +105,7 @@ Make sure the return value equals the return value of the parent so that the
 directive is properly returned.
 */
 //===========================================================================
-/atom/Destroy()
+/atom/Destroy(force)
 	orbiters = null // The component is attached to us normally and will be deleted elsewhere
 	QDEL_NULL(reagents)
 	QDEL_NULL(light)

@@ -854,7 +854,7 @@
 	//icon_state = "rwindow0_debug" //Uncomment to check hull in the map editor
 	var/triggered = FALSE //indicates if the shutters have already been triggered
 
-/obj/structure/window/framed/prison/reinforced/hull/Destroy()
+/obj/structure/window/framed/prison/reinforced/hull/Destroy(force)
 	if(force)
 		return ..()
 	spawn_shutters()

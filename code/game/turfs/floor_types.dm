@@ -597,6 +597,14 @@
 /turf/open/floor/prison/darkyellow2full
 	icon_state = "darkyellow2full"
 
+/turf/open/floor/prison/darkpurple2
+	icon_state = "darkpurple2"
+
+/turf/open/floor/prison/darkpurple2corner
+	icon_state = "darkpurple2corner"
+
+/turf/open/floor/prison/darkpurple2angle
+	icon_state = "darkpurple2angle"
 /turf/open/floor/prison/darkpurple2full
 	icon_state = "darkpurple2full"
 

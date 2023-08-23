@@ -3157,10 +3157,7 @@
 /area/fiorina/tumor/ice_lab)
 "cfz" = (
 /obj/item/stock_parts/manipulator/pico,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "darkpurple2"
-	},
+/turf/open/floor/prison/darkpurple2corner,
 /area/fiorina/tumor/servers)
 "cfD" = (
 /obj/structure/platform_decoration{
@@ -7651,9 +7648,8 @@
 /area/fiorina/tumor/civres)
 "fpi" = (
 /obj/item/clothing/head/soft/yellow,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2{
+	dir = 1
 	},
 /area/fiorina/tumor/servers)
 "fpl" = (
@@ -9554,9 +9550,8 @@
 /area/fiorina/station/civres_blue)
 "gFK" = (
 /obj/item/stack/cable_coil,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2{
+	dir = 1
 	},
 /area/fiorina/tumor/servers)
 "gGp" = (
@@ -10879,9 +10874,8 @@
 	pixel_x = -16;
 	pixel_y = 12
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2{
+	dir = 1
 	},
 /area/fiorina/tumor/servers)
 "hAL" = (
@@ -11348,9 +11342,8 @@
 	},
 /area/fiorina/station/civres_blue)
 "hTt" = (
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2corner{
+	dir = 4
 	},
 /area/fiorina/tumor/ice_lab)
 "hTG" = (
@@ -11372,9 +11365,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/transit_hub)
 "hUh" = (
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2corner{
+	dir = 8
 	},
 /area/fiorina/tumor/ice_lab)
 "hUi" = (
@@ -11642,9 +11634,8 @@
 /area/fiorina/station/civres_blue)
 "ifq" = (
 /obj/item/stock_parts/micro_laser/ultra,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2corner{
+	dir = 1
 	},
 /area/fiorina/tumor/servers)
 "ifs" = (
@@ -12746,9 +12737,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/telecomm/lz1_tram)
 "iYq" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2corner{
+	dir = 1
 	},
 /area/fiorina/tumor/ice_lab)
 "iYI" = (
@@ -12784,10 +12774,7 @@
 	health = 250;
 	icon_state = "metal_1"
 	},
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "darkpurple2"
-	},
+/turf/open/floor/prison/darkpurple2corner,
 /area/fiorina/tumor/ice_lab)
 "jae" = (
 /obj/structure/cargo_container/grant/left,
@@ -23498,10 +23485,7 @@
 /area/fiorina/station/park)
 "quy" = (
 /obj/item/tool/wrench,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "darkpurple2"
-	},
+/turf/open/floor/prison/darkpurple2corner,
 /area/fiorina/tumor/servers)
 "quU" = (
 /obj/structure/filingcabinet{
@@ -25325,9 +25309,8 @@
 /area/fiorina/station/lowsec)
 "rHd" = (
 /obj/item/stock_parts/manipulator/pico,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2{
+	dir = 4
 	},
 /area/fiorina/tumor/servers)
 "rHj" = (
@@ -25436,9 +25419,8 @@
 /area/fiorina/lz/near_lzI)
 "rKS" = (
 /obj/item/tool/wrench,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2{
+	dir = 8
 	},
 /area/fiorina/tumor/servers)
 "rKX" = (
@@ -26181,9 +26163,8 @@
 /area/fiorina/lz/near_lzI)
 "smX" = (
 /obj/item/stock_parts/matter_bin/super,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2{
+	dir = 4
 	},
 /area/fiorina/tumor/servers)
 "snp" = (
@@ -27169,9 +27150,8 @@
 	dir = 1;
 	pixel_y = 21
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2{
+	dir = 1
 	},
 /area/fiorina/tumor/servers)
 "tdo" = (
@@ -28730,9 +28710,8 @@
 "ugH" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2{
+	dir = 1
 	},
 /area/fiorina/tumor/servers)
 "ugT" = (
@@ -28761,9 +28740,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/flight_deck)
 "uhd" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2corner{
+	dir = 1
 	},
 /area/fiorina/tumor/servers)
 "uhm" = (
@@ -28868,9 +28846,8 @@
 "ukz" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/gun/pistol/midchance,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2{
+	dir = 1
 	},
 /area/fiorina/tumor/servers)
 "ukI" = (
@@ -29216,9 +29193,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "uzd" = (
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2{
+	dir = 1
 	},
 /area/fiorina/station/disco)
 "uzw" = (
@@ -29359,10 +29335,7 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/station/medbay)
 "uFX" = (
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "darkpurple2"
-	},
+/turf/open/floor/prison/darkpurple2corner,
 /area/fiorina/tumor/servers)
 "uGb" = (
 /obj/structure/barricade/metal/wired{
@@ -29705,9 +29678,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/tumor/servers)
 "uTX" = (
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2{
+	dir = 1
 	},
 /area/fiorina/tumor/servers)
 "uUT" = (
@@ -29985,9 +29957,8 @@
 	},
 /area/fiorina/oob)
 "vco" = (
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2corner{
+	dir = 8
 	},
 /area/fiorina/tumor/servers)
 "vcr" = (
@@ -32307,9 +32278,8 @@
 	dir = 1;
 	pixel_y = 21
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2{
+	dir = 1
 	},
 /area/fiorina/tumor/servers)
 "wMi" = (
@@ -32374,9 +32344,8 @@
 	},
 /area/fiorina/station/chapel)
 "wNw" = (
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2corner{
+	dir = 4
 	},
 /area/fiorina/tumor/servers)
 "wOc" = (
@@ -32571,9 +32540,8 @@
 	},
 /area/fiorina/station/research_cells)
 "wVK" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2{
+	dir = 4
 	},
 /area/fiorina/tumor/servers)
 "wVL" = (
@@ -32786,9 +32754,8 @@
 /area/fiorina/tumor/ice_lab)
 "xfw" = (
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2{
+	dir = 4
 	},
 /area/fiorina/tumor/servers)
 "xfA" = (
@@ -32804,9 +32771,8 @@
 /area/fiorina/station/medbay)
 "xfR" = (
 /obj/effect/landmark/corpsespawner/ua_riot/burst,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2{
+	dir = 1
 	},
 /area/fiorina/tumor/servers)
 "xfV" = (
@@ -34345,9 +34311,8 @@
 /turf/open/ice/noweed,
 /area/fiorina/tumor/ice_lab)
 "ykT" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkpurple2"
+/turf/open/floor/prison/darkpurple2{
+	dir = 8
 	},
 /area/fiorina/tumor/servers)
 "ykX" = (

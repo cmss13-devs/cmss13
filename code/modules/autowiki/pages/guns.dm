@@ -97,9 +97,10 @@
 			))
 		gun_data["attachments"] = attachments
 
-
-		upload_icon(getFlatIcon(generating_gun, no_anim = TRUE), filename)
-		gun_data["icon"] = filename
+		var/icon/generated_icon = getFlatIcon(generating_gun, no_anim = TRUE)
+		if(generated_icon)
+			upload_icon(generated_icon, filename)
+			gun_data["icon"] = filename
 
 		output += include_template("Autowiki/Gun", gun_data)
 

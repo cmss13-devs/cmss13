@@ -1388,7 +1388,7 @@
 	sight &= ~BLIND // Never have blind on by default
 
 	lighting_alpha = default_lighting_alpha
-	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
+	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_BLACKNESS)
 	see_in_dark = species.darksight
 	sight |= species.flags_sight
 	if(glasses)

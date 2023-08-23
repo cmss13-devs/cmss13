@@ -16,8 +16,6 @@
 
 	attack_icon = image("icon" = 'icons/effects/attacks.dmi',"icon_state" = "", "layer" = 0)
 
-	sight |= SEE_BLACKNESS
-
 	initialize_incision_depths()
 	initialize_pain()
 	initialize_stamina()

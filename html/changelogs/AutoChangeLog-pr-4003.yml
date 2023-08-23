@@ -1,0 +1,11 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - balance: "The M41A, M41Amk1, m39, m46c (iff off), mar-30/40/60, type 71, laser uzi, and every SMG now has automatic fire. To compensate for the ability to re-aim (unlike burst), the guns fire 20% slower while automatic. This does not apply to already-existing automatic weaponry."
+  - balance: "The HPR can now fire in full auto when bipodded."
+  - bugfix: "Adding/removing attachments now keeps the current firemode, if possible."
+  - bugfix: "The dualtube and spec sniper now can switch tubes/toggle laser again"
+  - bugfix: "Fixed a long-standing exploit with bipods and scopes."
+  - bugfix: "Fixed guns jamming when shooting UI elements."
+  - bugfix: "Fixed a bunch of guns unintentionally having burst."
+  - balance: "You can transfer ammo between HPR ammo boxes by hitting one with another."

@@ -10613,12 +10613,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/shiva/interior/colony/research_hab)
-"fiy" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Research Landing Zone"
-	},
-/turf/closed/wall/shiva/ice,
-/area/shiva/interior/oob)
 "fiK" = (
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
@@ -22600,7 +22594,9 @@
 /area/shiva/interior/colony/research_hab)
 "rZt" = (
 /obj/structure/machinery/landinglight/ds2/spoke,
-/obj/docking_port/stationary/marine_dropship/lz2,
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "Research Landing Zone"
+	},
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -29118,7 +29114,7 @@ puZ
 puZ
 puZ
 puZ
-fiy
+puZ
 puZ
 puZ
 puZ

@@ -649,7 +649,7 @@
 	icon_state = "bluecorner"
 
 /turf/open/floor/prison/blueangle
-	icon_state = "bluefull"
+	icon_state = "blueangle"
 /turf/open/floor/prison/bluefull
 	icon_state = "bluefull"
 
@@ -717,6 +717,9 @@
 
 /turf/open/floor/prison/blue_plate_3
 	icon_state = "blue_plate_3"
+
+/turf/open/floor/prison/bright_clean2
+	icon_state = "bright_clean2"
 
 /turf/open/floor/prison/trim/red
 	icon_state = "darkred2"

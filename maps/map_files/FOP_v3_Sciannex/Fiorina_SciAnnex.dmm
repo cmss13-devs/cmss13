@@ -11783,10 +11783,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison/bright_clean2,
 /area/fiorina/station/power_ring)
 "iCU" = (
 /obj/structure/sign/nosmoking_1,
@@ -19834,10 +19831,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison/bright_clean2,
 /area/fiorina/station/park)
 "omD" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,

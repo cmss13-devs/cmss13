@@ -643,6 +643,13 @@
 /turf/open/floor/prison/sterile
 	icon_state = "sterile"
 
+/turf/open/floor/prison/blue
+	icon_state = "blue"
+/turf/open/floor/prison/bluecorner
+	icon_state = "bluecorner"
+
+/turf/open/floor/prison/blueangle
+	icon_state = "bluefull"
 /turf/open/floor/prison/bluefull
 	icon_state = "bluefull"
 

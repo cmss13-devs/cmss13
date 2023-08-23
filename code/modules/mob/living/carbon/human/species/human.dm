@@ -5,6 +5,7 @@
 	primitive = /mob/living/carbon/human/monkey
 	unarmed_type = /datum/unarmed_attack/punch
 	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR|HAS_HARDCRIT
+	flags_sight = SEE_BLACKNESS
 	mob_flags = KNOWS_TECHNOLOGY
 	uses_ethnicity = TRUE
 

@@ -656,6 +656,14 @@
 /turf/open/floor/prison/bluefull_2
 	icon_state = "bluefull_2"
 //not in use
+
+/turf/open/floor/prison/whitepurple
+	icon_state = "whitepurple"
+/turf/open/floor/prison/whitepurplecorner
+	icon_state = "whitepurplecorner"
+/turf/open/floor/prison/whitepurpleangle
+	icon_state = "whitepurpleangle"
+
 /turf/open/floor/prison/whitepurplefull
 	icon_state = "whitepurplefull"
 

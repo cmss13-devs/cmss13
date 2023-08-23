@@ -46,9 +46,7 @@
 
 /atom/movable/lighting_mask/Destroy()
 	//Make sure we werent destroyed in init
-	while(src in SSlighting.mask_queue)
-		SSlighting.mask_queue -= src
-	debug_log("mask_queue -= [REF(src)]")
+	SSlighting.mask_queue -= src
 	//Remove from affecting turfs
 	if(affecting_turfs)
 		for(var/turf/thing as anything in affecting_turfs)
@@ -71,11 +69,7 @@
 
 ///Enqueues the mask in the queue properly
 /atom/movable/lighting_mask/proc/queue_mask_update()
-	if(QDELETED(src))
-		return
-
-	SSlighting.mask_queue += src
-	debug_log("mask_queue += [REF(src)]")
+	SSlighting.mask_queue |= src
 	awaiting_update = TRUE
 
 /**

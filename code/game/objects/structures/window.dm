@@ -855,8 +855,10 @@
 	var/triggered = FALSE //indicates if the shutters have already been triggered
 
 /obj/structure/window/framed/prison/reinforced/hull/Destroy()
+	if(force)
+		return ..()
 	spawn_shutters()
-	.=..()
+	. = ..()
 
 /obj/structure/window/framed/prison/reinforced/hull/proc/spawn_shutters(from_dir = 0)
 	if(triggered)
@@ -864,16 +866,17 @@
 
 	triggered = TRUE
 	for(var/direction in cardinal)
-		if(direction == from_dir) continue //doesn't check backwards
+		if(direction == from_dir)
+			continue //doesn't check backwards
 		for(var/obj/structure/window/framed/prison/reinforced/hull/W in get_step(src,direction) )
 			W.spawn_shutters(turn(direction,180))
-	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/P = new(get_turf(src))
+	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/pressure_door = new(get_turf(src))
 	switch(junction)
 		if(4,5,8,9,12)
-			P.setDir(SOUTH)
+			pressure_door.setDir(SOUTH)
 		else
-			P.setDir(EAST)
-	P.close()
+			pressure_door.setDir(EAST)
+	pressure_door.close()
 
 /obj/structure/window/framed/prison/cell
 	name = "cell window"
@@ -944,8 +947,11 @@
 	health = 400
 
 /obj/structure/window/framed/corsat/hull/Destroy()
+	if(force)
+		return ..()
+
 	spawn_shutters()
-	.=..()
+	. = ..()
 
 /obj/structure/window/framed/corsat/hull/proc/spawn_shutters(from_dir = 0)
 	if(triggered)
@@ -959,14 +965,14 @@
 		for(var/obj/structure/window/framed/corsat/hull/W in get_step(src,direction) )
 			W.spawn_shutters(turn(direction,180))
 
-	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/P = new(get_turf(src))
+	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/pressure_door = new(get_turf(src))
 	switch(junction)
 		if(4,5,8,9,12)
-			P.setDir(SOUTH)
+			pressure_door.setDir(SOUTH)
 		else
-			P.setDir(EAST)
+			pressure_door.setDir(EAST)
 
-	INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+	INVOKE_ASYNC(pressure_door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 /obj/structure/window/framed/corsat/indestructible/
 	name = "hull window"

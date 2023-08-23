@@ -184,10 +184,9 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
 				new /obj/item/ammo_magazine/rifle/mar40(src)
 			else
-				new /obj/item/weapon/gun/rifle/m41aMK1/tactical(src)
-				new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
-				new /obj/item/ammo_magazine/rifle/m41aMK1(src)
-				new /obj/item/ammo_magazine/rifle/m41aMK1(src)
+				new /obj/item/weapon/gun/rifle/mar40/lmg(src)
+				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
+				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
 
 /* Misc. Individual Guns */
 

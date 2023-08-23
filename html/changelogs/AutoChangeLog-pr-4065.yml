@@ -1,7 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - code_imp: "added welding google to the com tech tool vendor."
-  - code_imp: "added scaling based on round population to the ColMarTech Surplus Uniform like the other vendors."
-  - code_imp: "Move every clothing items from ColMarTech Automated Armaments Squad Vendor to ColMarTech Surplus Uniform Vendor."
-  - code_imp: "rename ColMarTech Automated Armaments Squad Vendor to ColMarTech Automated Utilities Squad Vendor and add in tools food and other utilities."

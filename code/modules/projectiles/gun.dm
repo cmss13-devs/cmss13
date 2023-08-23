@@ -616,7 +616,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(in_chamber && in_chamber.ammo)
 		in_ammo = in_chamber.ammo
 	else if(current_mag && current_mag.current_rounds > 0)
-		if(istype(current_mag) && current_mag.chamber_contents[current_mag.chamber_position] != "empty")
+		if(istype(current_mag) && length(current_mag.chamber_contents) && current_mag.chamber_contents[current_mag.chamber_position] != "empty")
 			in_ammo = GLOB.ammo_list[current_mag.chamber_contents[current_mag.chamber_position]]
 			if(!istype(in_ammo))
 				in_ammo = GLOB.ammo_list[current_mag.default_ammo]

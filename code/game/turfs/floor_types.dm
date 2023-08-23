@@ -588,6 +588,13 @@
 /turf/open/floor/prison/sterile_white
 	icon_state = "sterile_white"
 
+/turf/open/floor/prison/green
+	icon_state = "green"
+
+/turf/open/floor/prison/greencorner
+	icon_state = "greencorner"
+/turf/open/floor/prison/greenangle
+	icon_state = "greenangle"
 /turf/open/floor/prison/greenfull
 	icon_state = "greenfull"
 

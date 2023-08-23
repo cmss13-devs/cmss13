@@ -33,9 +33,6 @@
 
 	///List of saved coordinates, format of ["x", "y", "comment"]
 	var/list/saved_coordinates = list()
-
-
-
 	///Currently selected UI theme
 	var/ui_theme = "crtblue"
 

@@ -1143,7 +1143,7 @@
 	// Need to do this in order to prevent the ping from being deleted
 	addtimer(CALLBACK(I, TYPE_PROC_REF(/image, flick_overlay), src, 3), 1)
 
-/// Zonennote: debug attempt for bullet lag
+/// People getting shot by a large amount of bullets in a very short period of time can lag them out, with chat messages being one cause, so a 1s cooldown per hit message is introduced to assuage that
 /mob/var/shot_cooldown = 0
 
 /mob/proc/bullet_message(obj/item/projectile/P)

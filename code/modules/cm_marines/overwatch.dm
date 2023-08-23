@@ -246,16 +246,18 @@
 					ftl_alive++
 			if(JOB_SQUAD_SPECIALIST)
 				spec_count++
-				if(istype(marine_human.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
-					var/obj/item/card/id/ID = marine_human.wear_id //we use their ID to get their role.
-					if(ID.assignment)
-						if(specialist_type)
-							specialist_type = "MULTIPLE"
-						else
-							var/list/spec_type = splittext(ID.assignment, "(")
-							if(islist(spec_type) && (length(spec_type) > 1))
-								specialist_type = splittext(spec_type[2], ")")[1]
-
+				if(marine_human)
+					if(istype(marine_human.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
+						var/obj/item/card/id/ID = marine_human.wear_id //we use their ID to get their role.
+						if(ID.assignment)
+							if(specialist_type)
+								specialist_type = "MULTIPLE"
+							else
+								var/list/spec_type = splittext(ID.assignment, "(")
+								if(islist(spec_type) && (length(spec_type) > 1))
+									specialist_type = splittext(spec_type[2], ")")[1]
+				else if(!specialist_type)
+					specialist_type = "UNKNOWN"
 				if(mob_state != "Dead")
 					spec_alive++
 			if(JOB_SQUAD_MEDIC)

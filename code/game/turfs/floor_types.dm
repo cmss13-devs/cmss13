@@ -629,6 +629,14 @@
 /turf/open/floor/prison/cell_stripe
 	icon_state = "cell_stripe"
 
+/turf/open/floor/prison/whitegreen
+	icon_state = "whitegreen"
+
+/turf/open/floor/prison/whitegreencorner
+	icon_state = "whitegreencorner"
+
+/turf/open/floor/prison/whitegreenangle
+	icon_state = "whitegreenangle"
 /turf/open/floor/prison/whitegreenfull
 	icon_state = "whitegreenfull"
 //there is a sprite called sterile that isn't use and look exactly the same.

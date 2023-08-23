@@ -17,6 +17,7 @@
 #define URL_WIKI_CONSTRUCTION "https://cm-ss13.com/wiki/Guide_to_construction"
 #define URL_WIKI_ENGINEERING "https://cm-ss13.com/wiki/Guide_to_Engineering"
 #define URL_WIKI_HACKING "https://cm-ss13.com/wiki/Guide_to_Engineering#Hacking"
+#define URL_WIKI_APC "https://cm-ss13.com/wiki/Guide_to_Engineering#APC_Maintenance"
 #define URL_WIKI_SURGERY "https://cm-ss13.com/wiki/Surgery"
 #define URL_WIKI_MEDICAL "https://cm-ss13.com/wiki/Guide_to_Medicine"
 
@@ -37,6 +38,7 @@
 #define URL_WIKI_ASO_GUIDE "https://cm-ss13.com/wiki/Auxiliary_Support_Officer" // Auxiliary Support
 #define URL_WIKI_PO_GUIDE "https://cm-ss13.com/wiki/Pilot_Officer"
 #define URL_WIKI_DCC_GUIDE "https://cm-ss13.com/wiki/Dropship_Crew_Chief"
+#define URL_WIKI_VC_GUIDE "https://cm-ss13.com/wiki/Vehicle_Crewman"
 #define URL_WIKI_IO_GUIDE "https://cm-ss13.com/wiki/Intelligence_Officer"
 #define URL_WIKI_SYN_GUIDE "https://cm-ss13.com/wiki/Synthetic"
 #define URL_WIKI_CE_GUIDE "https://cm-ss13.com/wiki/Chief_Engineer" // Engineering

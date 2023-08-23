@@ -89,6 +89,8 @@
 				marine_rk = "po"
 			if(JOB_DROPSHIP_CREW_CHIEF)
 				marine_rk = "dcc"
+			if(JOB_CREWMAN)
+				marine_rk = "tc"
 			if(JOB_CHIEF_POLICE)
 				marine_rk = "cmp"
 				border_rk = "command"

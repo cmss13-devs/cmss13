@@ -337,6 +337,23 @@
 	icon_state = "69"
 	},
 /area/shuttle/drop1/sulaco)
+"AQ" = (
+/obj/structure/machinery/door/airlock/hatch/cockpit{
+	req_access = null;
+	req_access_txt = "22";
+	req_one_access = null;
+	dir = 1
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/machinery/door/airlock/hatch/cockpit,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/shuttle/drop1/sulaco)
 "Bn" = (
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "38"
@@ -817,7 +834,7 @@ ax
 EB
 Py
 tR
-KC
+AQ
 dU
 Ph
 BB

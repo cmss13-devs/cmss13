@@ -267,6 +267,13 @@
 	deployed_turret.start_processing()
 	deployed_turret.set_range()
 
+	deployed_turret.linked_cam = new(deployed_turret.loc, "[capitalize_first_letters(ship_base.name)] [capitalize_first_letters(name)]")
+	if (linked_shuttle.id == DROPSHIP_ALAMO)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_ALAMO)
+	else if (linked_shuttle.id == DROPSHIP_NORMANDY)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_NORMANDY)
+
+
 /obj/structure/dropship_equipment/sentry_holder/proc/undeploy_sentry()
 	if(!deployed_turret)
 		return
@@ -278,8 +285,12 @@
 	deployed_turret.stop_processing()
 	deployed_turret.unset_range()
 	icon_state = "sentry_system_installed"
+	QDEL_NULL(deployed_turret.linked_cam)
 
-
+/obj/structure/dropship_equipment/sentry_holder/Destroy()
+	if(deployed_turret)
+		QDEL_NULL(deployed_turret.linked_cam)
+	. = ..()
 
 
 /// Holder for the dropship mannable machinegun system
@@ -289,7 +300,7 @@
 	density = FALSE
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
 	icon_state = "mg_system"
-	point_cost = 300
+	point_cost = 50
 	var/deployment_cooldown
 	var/obj/structure/machinery/m56d_hmg/mg_turret/dropship/deployed_mg
 	combat_equipment = FALSE
@@ -449,7 +460,7 @@
 	icon_state = "spotlights"
 	desc = "A set of high-powered spotlights to illuminate large areas. Fits on electronics attach points of dropships. Moving this will require a powerloader."
 	is_interactable = TRUE
-	point_cost = 300
+	point_cost = 50
 	var/spotlights_cooldown
 	var/brightness = 11
 
@@ -513,7 +524,7 @@
 	name = "\improper LZ detector"
 	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone mid-flight."
 	icon_state = "lz_detector"
-	point_cost = 400
+	point_cost = 50
 	var/obj/structure/machinery/computer/cameras/dropship/linked_cam_console
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/update_equipment()
@@ -1137,7 +1148,7 @@
 	name = "rappel deployment system"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "rappel_module_packaged"
-	point_cost = 500
+	point_cost = 50
 	combat_equipment = FALSE
 
 	var/harness = /obj/item/rappel_harness

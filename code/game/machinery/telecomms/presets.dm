@@ -50,7 +50,7 @@
 	. = ..()
 
 	if(z)
-		SSminimaps.add_marker(src, z, MINIMAP_FLAG_USCM, "supply")
+		SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "supply")
 
 // doesn't need power, instead uses health
 /obj/structure/machinery/telecomms/relay/preset/tower/inoperable(additional_flags)
@@ -60,7 +60,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/machinery/telecomms/relay/preset/tower/tcomms_startup()
+/obj/structure/machinery/telecomms/relay/preset/tower/update_state()
 	. = ..()
 	if(on)
 		playsound(src, 'sound/machines/tcomms_on.ogg', vol = 80, vary = FALSE, sound_range = 16, falloff = 0.5)
@@ -212,11 +212,26 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	freq_listening = list(COLONY_FREQ)
 	var/toggle_cooldown = 0
 
+	/// Tower has been taken over by xenos, is not usable
+	var/corrupted = FALSE
+
+	/// Held image for the current overlay on the tower from xeno corruption
+	var/image/corruption_image
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize()
+	. = ..()
+
+	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(register_with_turf))
+	register_with_turf()
+
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/attack_hand(mob/user)
 	if(user.action_busy)
 		return
 	if(toggle_cooldown > world.time) //cooldown only to prevent spam toggling
 		to_chat(user, SPAN_WARNING("\The [src]'s processors are still cooling! Wait before trying to flip the switch again."))
+		return
+	if(corrupted)
+		to_chat(user, SPAN_WARNING("[src] is entangled in resin. Impossible to interact with."))
 		return
 	var/current_state = on
 	if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
@@ -281,6 +296,84 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		update_icon()
 	else
 		update_icon()
+
+/// Handles xenos corrupting the tower when weeds touch the turf it is located on
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/handle_xeno_acquisition(turf/weeded_turf)
+	SIGNAL_HANDLER
+
+	if(corrupted)
+		return
+
+	if(!weeded_turf.weeds)
+		return
+
+	if(weeded_turf.weeds.weed_strength < WEED_LEVEL_HIVE)
+		return
+
+	if(!weeded_turf.weeds.parent)
+		return
+
+	if(!istype(weeded_turf.weeds.parent, /obj/effect/alien/weeds/node/pylon/cluster))
+		return
+
+	if(SSticker.mode.is_in_endgame)
+		return
+
+	if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
+		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (XENO_COMM_ACQUISITION_TIME - ROUND_TIME))
+		return
+
+	var/obj/effect/alien/weeds/node/pylon/cluster/parent_node = weeded_turf.weeds.parent
+
+	var/obj/effect/alien/resin/special/cluster/cluster_parent = parent_node.resin_parent
+
+	var/list/held_children_weeds = parent_node.children
+	var/cluster_loc = cluster_parent.loc
+	var/linked_hive = cluster_parent.linked_hive
+
+	parent_node.children = list()
+
+	qdel(cluster_parent)
+
+	var/obj/effect/alien/resin/special/pylon/endgame/new_pylon = new(cluster_loc, linked_hive)
+	new_pylon.node.children = held_children_weeds
+
+	for(var/obj/effect/alien/weeds/weed in new_pylon.node.children)
+		weed.parent = new_pylon.node
+
+	RegisterSignal(new_pylon, COMSIG_PARENT_QDELETING, PROC_REF(uncorrupt))
+
+	corrupted = TRUE
+
+	corruption_image = image(icon, icon_state = "resin_growing")
+
+	flick_overlay(src, corruption_image, (2 SECONDS))
+	addtimer(CALLBACK(src, PROC_REF(switch_to_idle_corruption)), (2 SECONDS))
+
+	new_pylon.comms_relay_connection()
+
+/// Handles removing corruption effects from the comms relay
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/uncorrupt(datum/deleting_datum)
+	SIGNAL_HANDLER
+
+	corrupted = FALSE
+
+	overlays -= corruption_image
+
+/// Handles moving the overlay from growing to idle
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/switch_to_idle_corruption()
+	if(!corrupted)
+		return
+
+	corruption_image = image(icon, icon_state = "resin_idle")
+
+	overlays += corruption_image
+
+/// Handles re-registering signals on new turfs if changed
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/register_with_turf()
+	SIGNAL_HANDLER
+
+	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
 
 /obj/structure/machinery/telecomms/relay/preset/telecomms
 	id = "Telecomms Relay"

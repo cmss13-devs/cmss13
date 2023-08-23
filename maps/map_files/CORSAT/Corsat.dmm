@@ -634,7 +634,7 @@
 /obj/structure/window/reinforced{
 	layer = 3.8
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/gamma/foyer)
 "ace" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
@@ -829,7 +829,7 @@
 /obj/structure/window/reinforced{
 	layer = 3.8
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/gamma/foyer)
 "acB" = (
 /obj/structure/machinery/door/window/southleft{
@@ -1448,7 +1448,7 @@
 /obj/structure/window/reinforced{
 	layer = 3.8
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/gamma/foyer)
 "aew" = (
 /obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
@@ -2506,7 +2506,7 @@
 	layer = 3.8
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/gamma/foyer)
 "ahw" = (
 /turf/closed/wall/biodome,
@@ -2530,7 +2530,7 @@
 /obj/structure/window/reinforced{
 	layer = 3.8
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/gamma/hallwaysouth)
 "ahz" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
@@ -5960,11 +5960,11 @@
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/sigma/north)
 "arC" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/sigma/north)
 "arE" = (
 /obj/structure/window/reinforced{
@@ -5973,7 +5973,7 @@
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/sigma/north)
 "arF" = (
 /obj/structure/machinery/light/small{
@@ -6017,7 +6017,7 @@
 	dir = 8
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/sigma/north)
 "arN" = (
 /turf/closed/wall/biodome,
@@ -6051,7 +6051,7 @@
 "arT" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/sigma/north)
 "arU" = (
 /obj/structure/machinery/washing_machine,
@@ -6078,7 +6078,7 @@
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/sigma/north)
 "asa" = (
 /turf/open/floor/corsat{
@@ -6130,7 +6130,7 @@
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/sigma/north)
 "asi" = (
 /obj/structure/window/reinforced{
@@ -6138,7 +6138,7 @@
 	health = 80
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/sigma/north)
 "asj" = (
 /obj/structure/machinery/power/apc/hyper{
@@ -6161,7 +6161,7 @@
 "asn" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/sigma/north)
 "aso" = (
 /turf/open/floor/corsat{
@@ -6263,7 +6263,7 @@
 	layer = 3.8
 	},
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/sigma/north)
 "asJ" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
@@ -6276,7 +6276,7 @@
 	layer = 3.8
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/sigma/north)
 "asM" = (
 /obj/structure/window/reinforced{
@@ -6288,7 +6288,7 @@
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/sigma/north)
 "asN" = (
 /obj/structure/surface/table/woodentable,
@@ -12923,7 +12923,7 @@
 	},
 /area/corsat/theta/airlock/control)
 "aJZ" = (
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "aKa" = (
 /obj/structure/window/framed/corsat/security,
@@ -12967,48 +12967,31 @@
 /turf/open/floor/plating,
 /area/corsat/theta/airlock/control)
 "aKh" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "aKi" = (
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "aKj" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/corsat/theta/biodome)
 "aKk" = (
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "aKl" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/corsat/theta/biodome)
 "aKm" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/corsat/theta/biodome)
 "aKn" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "aKo" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/corsat/theta/biodome)
 "aKp" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/corsat/theta/biodome)
 "aKq" = (
 /turf/closed/wall/biodome,
@@ -14979,10 +14962,8 @@
 /area/corsat/gamma/foyer)
 "aPG" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "aPH" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -14994,11 +14975,8 @@
 /area/corsat/gamma/hangar/checkpoint)
 "aPJ" = (
 /obj/structure/flora/jungle/alienplant1,
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/corsat/theta/biodome)
 "aPK" = (
 /obj/structure/surface/table/reinforced,
@@ -15031,7 +15009,7 @@
 "aPN" = (
 /obj/effect/landmark/yautja_teleport,
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "aPO" = (
 /obj/structure/window/framed/corsat/security,
@@ -18748,7 +18726,7 @@
 "aZm" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "aZn" = (
 /obj/structure/platform{
@@ -20305,60 +20283,43 @@
 	},
 /area/corsat/theta/biodome/complex)
 "bcD" = (
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/corsat/theta/biodome)
 "bcE" = (
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder,
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "bcF" = (
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/corsat/theta/biodome)
 "bcG" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/corsat/theta/biodome)
 "bcH" = (
 /obj/structure/flora/jungle/planttop1,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/corsat/theta/biodome)
 "bcI" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "bcJ" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/corsat/theta/biodome)
 "bcK" = (
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "bcL" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/corsat/theta/biodome)
 "bcM" = (
 /obj/structure/fence,
@@ -20367,7 +20328,7 @@
 "bcN" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/flora/jungle/planttop1,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "bcO" = (
 /obj/structure/sign/safety/airlock{
@@ -20399,35 +20360,22 @@
 /area/corsat/gamma/freezer)
 "bcR" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/coast{
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/north_west,
 /area/corsat/theta/biodome)
 "bcS" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "bcT" = (
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/south_west,
 /area/corsat/theta/biodome)
 "bcU" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "bcV" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/corsat/theta/biodome)
 "bcW" = (
 /obj/structure/fence,
@@ -20437,38 +20385,31 @@
 /obj/structure/machinery/colony_floodlight{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/corsat/theta/biodome)
 "bcY" = (
 /obj/structure/machinery/colony_floodlight{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "bcZ" = (
 /obj/structure/machinery/colony_floodlight{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "bda" = (
 /obj/structure/machinery/colony_floodlight{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/corsat/theta/biodome)
 "bdb" = (
 /obj/structure/machinery/colony_floodlight{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "bdc" = (
 /obj/structure/fence,
@@ -20585,114 +20526,72 @@
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bdx" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/corsat/theta/biodome)
 "bdy" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/corsat/theta/biodome)
 "bdz" = (
-/turf/open/gm/coast{
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/north_west,
 /area/corsat/theta/biodome)
 "bdA" = (
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/corsat/theta/biodome)
 "bdB" = (
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/north_east,
 /area/corsat/theta/biodome)
 "bdC" = (
-/turf/open/gm/coast{
-	dir = 6
-	},
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/corsat/theta/biodome)
 "bdD" = (
 /turf/open/gm/river,
 /area/corsat/theta/biodome)
 "bdE" = (
-/turf/open/gm/coast{
-	dir = 1;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/north_east,
 /area/corsat/theta/biodome)
 "bdF" = (
-/turf/open/gm/coast{
-	dir = 4
-	},
+/turf/open/gm/coast/west,
 /area/corsat/theta/biodome)
 "bdG" = (
-/turf/open/gm/coast{
-	dir = 8
-	},
+/turf/open/gm/coast/east,
 /area/corsat/theta/biodome)
 "bdI" = (
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_east,
 /area/corsat/theta/biodome)
 "bdJ" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/corsat/theta/biodome)
 "bdK" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "bdL" = (
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/south,
 /area/corsat/theta/biodome)
 "bdM" = (
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
-/area/corsat/theta/biodome)
-"bdN" = (
-/turf/open/gm/coast{
-	dir = 5
-	},
+/turf/open/gm/coast/beachcorner/south_west,
 /area/corsat/theta/biodome)
 "bdO" = (
-/turf/open/gm/coast{
-	dir = 9
-	},
+/turf/open/gm/coast/beachcorner2/south_east,
 /area/corsat/theta/biodome)
 "bdP" = (
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/grass/weedable,
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "bdQ" = (
 /turf/closed/gm/dense,
 /area/corsat/theta/biodome)
 "bdR" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "bdS" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "bdT" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/corsat/theta/biodome)
 "bdU" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -20700,65 +20599,45 @@
 /area/corsat/theta/biodome)
 "bdV" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "bdW" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "bdX" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/corsat/theta/biodome)
 "bdY" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/corsat/theta/biodome)
 "bdZ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "bea" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "beb" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/corsat/theta/biodome)
 "bec" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/corsat/theta/biodome)
 "bed" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/corsat/theta/biodome)
 "bee" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "bef" = (
 /turf/open/mars_cave{
@@ -20767,15 +20646,15 @@
 /area/corsat/sigma/biodome/gunrange)
 "beg" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "beh" = (
 /obj/structure/flora/jungle/planttop1,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "bei" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "bej" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -20802,19 +20681,16 @@
 /area/corsat/theta/biodome)
 "bem" = (
 /obj/structure/flora/jungle/alienplant1,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "ben" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/corsat/theta/biodome)
 "beo" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "bep" = (
 /obj/structure/flora/jungle/planttop1,
@@ -20853,19 +20729,15 @@
 /area/corsat/sigma/biodome/gunrange)
 "bev" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/corsat/theta/biodome)
 "bew" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "bex" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/corsat/theta/biodome)
 "bey" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -20885,48 +20757,35 @@
 /area/corsat/theta/biodome)
 "beD" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/corsat/theta/biodome)
 "beE" = (
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "beF" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "beG" = (
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/corsat/theta/biodome)
 "beH" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/corsat/theta/biodome)
 "beI" = (
-/obj/structure/flora/jungle/vines,
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/grass/weedable,
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "beJ" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/corsat/theta/biodome)
 "beK" = (
 /turf/open/mars_cave{
@@ -20960,16 +20819,11 @@
 /area/corsat/gamma/biodome)
 "beQ" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/corsat/theta/biodome)
 "beR" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/corsat/theta/biodome)
 "beS" = (
 /obj/structure/machinery/colony_floodlight,
@@ -20977,10 +20831,7 @@
 /area/corsat/theta/biodome)
 "beT" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/corsat/theta/biodome)
 "beU" = (
 /obj/structure/target,
@@ -21004,10 +20855,7 @@
 /area/corsat/gamma/biodome)
 "beY" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/corsat/theta/biodome)
 "beZ" = (
 /turf/closed/ice_rock/corners,
@@ -22284,7 +22132,7 @@
 /area/corsat/gamma/biodome/toxins)
 "biR" = (
 /obj/structure/surface/table/woodentable,
-/obj/structure/machinery/chem_dispenser/beer{
+/obj/structure/machinery/chem_dispenser/soda/beer{
 	dir = 8;
 	pixel_x = 15
 	},
@@ -24135,9 +23983,7 @@
 /obj/structure/sign/safety/airlock{
 	pixel_x = -32
 	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/corsat/theta/biodome)
 "boA" = (
 /obj/structure/sign/safety/airlock{
@@ -24154,9 +24000,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "lockdown-theta-east"
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "boD" = (
 /obj/structure/machinery/disposal,
@@ -25353,7 +25197,7 @@
 /area/corsat/sigma/south/offices)
 "bsN" = (
 /obj/structure/surface/table/woodentable,
-/obj/structure/machinery/chem_dispenser/beer{
+/obj/structure/machinery/chem_dispenser/soda/beer{
 	dir = 8
 	},
 /turf/open/floor/corsat{
@@ -34214,7 +34058,7 @@
 "bUJ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/structure/flora/jungle/planttop1,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "bUK" = (
 /obj/structure/flora/jungle/plantbot1,
@@ -34451,7 +34295,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "bVG" = (
 /obj/structure/machinery/door_control{
@@ -34467,7 +34311,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "bVI" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -34562,7 +34406,7 @@
 "bVX" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "bWb" = (
 /obj/structure/surface/table/almayer,
@@ -36141,7 +35985,7 @@
 /area/corsat/gamma/residential/west)
 "cbW" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "cce" = (
 /obj/effect/landmark/survivor_spawner,
@@ -36152,10 +35996,7 @@
 /area/corsat/gamma/residential/showers)
 "ccq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "cec" = (
 /turf/open/floor/corsat{
@@ -36644,7 +36485,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "cvW" = (
 /obj/structure/machinery/door/window/westleft,
@@ -36923,7 +36764,7 @@
 "cMa" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "cMv" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -37308,9 +37149,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "ddo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -37462,7 +37301,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "diI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -37825,6 +37664,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -37960,7 +37800,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "dzX" = (
 /turf/open/floor/corsat{
@@ -38267,9 +38107,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "dOq" = (
 /obj/structure/bed/chair/office/light{
@@ -38351,6 +38189,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -38780,7 +38619,7 @@
 "ehg" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/vents/pump,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "ehj" = (
 /obj/structure/flora/pottedplant,
@@ -38832,15 +38671,13 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/corsat/theta/biodome)
 "eiG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "eiQ" = (
 /obj/structure/machinery/power/apc/high{
@@ -38938,6 +38775,7 @@
 /area/corsat/gamma/airlock/south/id)
 "elG" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -39092,7 +38930,7 @@
 "eql" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "eqt" = (
 /obj/structure/pipes/vents/pump{
@@ -39401,9 +39239,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/south,
 /area/corsat/theta/biodome)
 "eBl" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -39468,10 +39304,8 @@
 /area/corsat/omega/complex)
 "eDM" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "eDP" = (
 /obj/structure/bed/chair/office/light,
@@ -39537,10 +39371,7 @@
 /area/corsat/sigma/cargo)
 "eIL" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/corsat/theta/biodome)
 "eJg" = (
 /turf/open/floor/corsat{
@@ -39628,7 +39459,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "eMI" = (
 /obj/structure/showcase{
@@ -39671,7 +39502,7 @@
 "eNM" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "eOe" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -39696,7 +39527,7 @@
 /area/corsat/gamma/medbay)
 "eOZ" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "ePL" = (
 /obj/structure/closet/l3closet/general,
@@ -39971,9 +39802,7 @@
 "eZQ" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "fax" = (
 /obj/structure/machinery/light{
@@ -40215,7 +40044,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "fkn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -40277,7 +40106,7 @@
 	health = 80
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/gamma/foyer)
 "flt" = (
 /obj/vehicle/train/cargo/trolley,
@@ -40418,11 +40247,11 @@
 	},
 /area/corsat/gamma/foyer)
 "fpI" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "fpL" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -40487,6 +40316,7 @@
 /area/corsat/gamma/hallwaysouth)
 "fst" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -40581,9 +40411,9 @@
 	},
 /area/corsat/omega/airlocknorth/id)
 "fwq" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "fwQ" = (
 /turf/open/floor/corsat{
@@ -40647,10 +40477,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "fzm" = (
 /obj/structure/surface/table/almayer,
@@ -40974,7 +40801,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "fOh" = (
 /obj/effect/landmark/corpsespawner/prisoner,
@@ -41062,9 +40889,7 @@
 /area/corsat/gamma/hallwaysouth)
 "fSA" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/corsat/theta/biodome)
 "fSB" = (
 /turf/open/floor/corsat{
@@ -41403,10 +41228,7 @@
 /area/corsat/gamma/airlock/south)
 "geN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/corsat/theta/biodome)
 "geV" = (
 /obj/effect/landmark/corpsespawner/scientist,
@@ -41438,10 +41260,7 @@
 	dir = 4;
 	network = list("theta")
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/corsat/theta/biodome)
 "gfM" = (
 /obj/structure/machinery/smartfridge/seeds,
@@ -41627,10 +41446,7 @@
 /area/corsat/gamma/airlock/south/id)
 "glr" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "gne" = (
 /turf/open/floor/corsat{
@@ -41720,7 +41536,7 @@
 /area/corsat/sigma/south/engineering)
 "gpP" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "gqd" = (
 /obj/structure/surface/table/reinforced,
@@ -41776,11 +41592,11 @@
 "gqT" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/vents/pump,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "gqV" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "gra" = (
 /turf/open/floor/corsat{
@@ -41823,7 +41639,7 @@
 "grD" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "grK" = (
 /turf/open/floor/corsat{
@@ -42165,18 +41981,14 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "gEU" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/corsat/theta/biodome)
 "gEV" = (
 /turf/open/floor/corsat{
@@ -42370,11 +42182,9 @@
 	},
 /area/corsat/sigma/north)
 "gOk" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "gOx" = (
 /obj/structure/machinery/light{
@@ -42962,10 +42772,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "hfG" = (
 /obj/structure/bed/chair{
@@ -43065,13 +42872,11 @@
 /turf/open/floor/wood,
 /area/corsat/theta/biodome/complex)
 "hkp" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "hkZ" = (
 /turf/open/floor/corsat{
@@ -43140,7 +42945,7 @@
 "hnR" = (
 /obj/structure/flora/jungle/plantbot1,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "hoh" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -43225,10 +43030,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/corsat/theta/biodome)
 "hqX" = (
 /turf/open/floor/corsat,
@@ -43686,13 +43488,11 @@
 /turf/open/floor/corsat,
 /area/corsat/gamma/cargo/disposal)
 "hDO" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/corsat/theta/biodome)
 "hDX" = (
 /turf/open/floor/corsat{
@@ -43777,10 +43577,7 @@
 /area/corsat/omega/security)
 "hGf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/corsat/theta/biodome)
 "hGg" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -43871,9 +43668,7 @@
 /area/corsat/gamma/hangar/flightcontrol)
 "hJw" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/corsat/theta/biodome)
 "hJG" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -43926,7 +43721,7 @@
 "hKH" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "hKZ" = (
 /obj/structure/largecrate/random/barrel,
@@ -43996,7 +43791,7 @@
 /obj/structure/tunnel{
 	id = "hole3"
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "hOb" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -44544,10 +44339,7 @@
 /area/corsat/omega/checkpoint)
 "iiI" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/corsat/theta/biodome)
 "iiS" = (
 /obj/structure/surface/table/reinforced,
@@ -44680,10 +44472,7 @@
 /area/corsat/gamma/biodome)
 "imz" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/corsat/theta/biodome)
 "imK" = (
 /obj/structure/surface/table/reinforced,
@@ -44868,6 +44657,7 @@
 "iuD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -45026,7 +44816,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "iBo" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -45148,7 +44938,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "iEN" = (
 /obj/structure/surface/table/almayer,
@@ -45200,9 +44990,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "iHY" = (
 /turf/open/floor/corsat{
@@ -45319,9 +45107,7 @@
 /area/corsat/gamma/administration)
 "iNk" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/corsat/theta/biodome)
 "iNl" = (
 /obj/structure/machinery/constructable_frame,
@@ -45432,9 +45218,9 @@
 	},
 /area/corsat/gamma/residential/researcher)
 "iQH" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "iQL" = (
 /obj/structure/closet/wardrobe/robotics_black,
@@ -45501,10 +45287,7 @@
 /area/corsat/gamma/airlock/north/id)
 "iTW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/corsat/theta/biodome)
 "iVp" = (
 /obj/structure/machinery/light,
@@ -45902,7 +45685,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "jnb" = (
 /obj/structure/machinery/light{
@@ -45981,7 +45764,7 @@
 /area/corsat/theta/airlock/west)
 "jqz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "jrQ" = (
 /obj/structure/bed/stool{
@@ -46399,6 +46182,7 @@
 /area/corsat/omega/hallways)
 "jJm" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -46868,10 +46652,7 @@
 /area/corsat/theta/biodome/hydroeast)
 "keE" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "kfc" = (
 /obj/structure/flora/pottedplant{
@@ -47123,7 +46904,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "koV" = (
 /obj/structure/bed/chair/office/light{
@@ -47291,7 +47072,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "kuO" = (
 /obj/structure/surface/table/reinforced,
@@ -47388,9 +47169,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/corsat/theta/biodome)
 "kzN" = (
 /obj/structure/bed/chair,
@@ -47465,7 +47244,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "kCq" = (
 /turf/open/floor/corsat{
@@ -47483,17 +47262,12 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/corsat/theta/biodome)
 "kDL" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "kEj" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -47541,10 +47315,7 @@
 /area/corsat/gamma/biodome/toxins)
 "kFZ" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/corsat/theta/biodome)
 "kGi" = (
 /obj/structure/barricade/handrail{
@@ -47599,10 +47370,7 @@
 /area/corsat/sigma/airlock/control)
 "kHP" = (
 /obj/structure/flora/bush/ausbushes/palebush,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/corsat/theta/biodome)
 "kIz" = (
 /turf/open/floor/corsat{
@@ -48073,7 +47841,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "laV" = (
 /obj/structure/surface/table/almayer,
@@ -48372,9 +48140,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "lko" = (
 /obj/structure/pipes/vents/pump{
@@ -48585,7 +48351,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "lsH" = (
 /obj/structure/pipes/vents/pump{
@@ -49104,7 +48870,7 @@
 /area/corsat/sigma/hangar)
 "lKy" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "lKC" = (
 /obj/structure/pipes/vents/pump{
@@ -49409,9 +49175,7 @@
 /area/corsat/sigma/hangar/checkpoint)
 "lVF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "lVW" = (
 /obj/structure/platform,
@@ -49484,10 +49248,7 @@
 "lYc" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/corsat/theta/biodome)
 "lYd" = (
 /obj/structure/surface/table/reinforced,
@@ -50044,7 +49805,7 @@
 /area/corsat/gamma/cargo/disposal)
 "msP" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "msY" = (
 /turf/open/floor/corsat{
@@ -50466,10 +50227,7 @@
 "mIY" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/corsat/theta/biodome)
 "mJa" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -50708,10 +50466,7 @@
 /area/corsat/gamma/residential/east)
 "mSo" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/corsat/theta/biodome)
 "mSz" = (
 /obj/structure/machinery/chem_master,
@@ -50742,6 +50497,7 @@
 "mTz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
@@ -50948,11 +50704,11 @@
 /area/corsat/theta/biodome)
 "nck" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "ncR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -51136,14 +50892,14 @@
 "nlm" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "nln" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "nls" = (
 /obj/structure/bed/sofa/south/grey/right,
@@ -51480,9 +51236,7 @@
 /area/corsat/gamma/residential/east)
 "nwj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "nws" = (
 /turf/open/floor/corsat{
@@ -51750,7 +51504,7 @@
 /area/corsat/gamma/medbay/morgue)
 "nFc" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "nFt" = (
 /obj/structure/surface/table/reinforced,
@@ -51821,10 +51575,7 @@
 "nIy" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/corsat/theta/biodome)
 "nIF" = (
 /obj/structure/surface/table/almayer,
@@ -51950,9 +51701,7 @@
 /area/corsat/gamma/biodome/toxins)
 "nMk" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/corsat/theta/biodome)
 "nMP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -52428,7 +52177,7 @@
 "oge" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "ohe" = (
 /turf/open/floor/corsat{
@@ -52613,11 +52362,11 @@
 	},
 /area/corsat/gamma/sigmaremote)
 "ooX" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "opf" = (
 /obj/structure/prop/almayer/computers/sensor_computer1{
@@ -52722,9 +52471,7 @@
 /area/corsat/sigma/south/complex)
 "osY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/corsat/theta/biodome)
 "otC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -53163,9 +52910,7 @@
 /area/corsat/sigma/biodome/gunrange)
 "oLe" = (
 /obj/structure/flora/jungle/alienplant1,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "oLg" = (
 /obj/effect/alien/weeds/node,
@@ -53336,7 +53081,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "oQO" = (
 /turf/open/floor/corsat{
@@ -53409,9 +53154,9 @@
 	},
 /area/corsat/gamma/cargo)
 "oUJ" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "oVe" = (
 /obj/structure/machinery/light{
@@ -53440,7 +53185,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "oVM" = (
 /obj/structure/bed/sofa/vert/grey/bot,
@@ -53578,17 +53323,14 @@
 /area/corsat/gamma/residential/west)
 "oZW" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "paH" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "pbS" = (
 /turf/open/floor/corsat{
@@ -53747,7 +53489,7 @@
 "pgO" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "pgV" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -53871,9 +53613,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/corsat/theta/biodome)
 "pmf" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -53897,10 +53637,7 @@
 /area/corsat/omega/complex)
 "pnQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/corsat/theta/biodome)
 "pov" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -54043,7 +53780,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "pwd" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -54679,10 +54416,7 @@
 /area/corsat/sigma/south/complex)
 "pWR" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/corsat/theta/biodome)
 "pXp" = (
 /obj/effect/landmark/corpsespawner/scientist,
@@ -54693,9 +54427,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "pXU" = (
 /obj/structure/barricade/handrail{
@@ -54866,9 +54598,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/corsat/theta/biodome)
 "qcR" = (
 /obj/structure/surface/table/woodentable,
@@ -55616,7 +55346,7 @@
 	dir = 8;
 	network = list("theta")
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "qFp" = (
 /obj/structure/bed/chair/office/light{
@@ -55668,9 +55398,7 @@
 "qGz" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/corsat/theta/biodome)
 "qGF" = (
 /obj/structure/janitorialcart,
@@ -55709,6 +55437,7 @@
 /area/corsat/omega/airlocknorth)
 "qIr" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -56071,9 +55800,7 @@
 	dir = 1;
 	network = list("theta")
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "qVz" = (
 /obj/effect/landmark/corpsespawner/pmc,
@@ -56795,10 +56522,8 @@
 	},
 /area/corsat/sigma/hangar/security)
 "rzy" = (
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "rzU" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
@@ -57031,7 +56756,7 @@
 "rJo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "rJu" = (
 /obj/effect/landmark/corpsespawner/scientist,
@@ -57114,6 +56839,7 @@
 /area/corsat/omega/maint)
 "rMq" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "rMD" = (
@@ -57265,10 +56991,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/corsat/theta/biodome)
 "rSz" = (
 /obj/structure/closet/wardrobe/white,
@@ -57323,11 +57046,11 @@
 	},
 /area/corsat/gamma/residential/west)
 "rTj" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "rTo" = (
 /turf/open/floor/corsat{
@@ -57360,18 +57083,18 @@
 	},
 /area/corsat/gamma/medbay/lobby)
 "rUq" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "rUH" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "rUK" = (
 /obj/structure/machinery/light{
@@ -57663,9 +57386,7 @@
 /area/corsat/gamma/biodome/complex)
 "sem" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/corsat/theta/biodome)
 "sez" = (
 /obj/structure/surface/table/reinforced,
@@ -57794,9 +57515,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/coast{
-	dir = 8
-	},
+/turf/open/gm/coast/east,
 /area/corsat/theta/biodome)
 "siU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -57935,7 +57654,7 @@
 /area/corsat/sigma/hangar/office)
 "smP" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "snc" = (
 /obj/structure/morgue,
@@ -58050,21 +57769,17 @@
 /area/corsat/gamma/biodome/virology)
 "spU" = (
 /obj/structure/flora/bush/ausbushes/palebush,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "sqn" = (
 /obj/structure/machinery/colony_floodlight{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "sqr" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "sqY" = (
 /turf/open/floor/corsat{
@@ -58112,7 +57827,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "sum" = (
 /turf/open/floor/corsat{
@@ -58392,9 +58107,7 @@
 /area/corsat/gamma/rnr/library)
 "sGQ" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "sGV" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
@@ -58926,10 +58639,7 @@
 /area/corsat/gamma/biodome/virology)
 "sZg" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "tad" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -59086,10 +58796,7 @@
 /area/corsat/gamma/hallwaysouth)
 "tfu" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/corsat/theta/biodome)
 "tfz" = (
 /obj/structure/surface/table/almayer,
@@ -59339,10 +59046,7 @@
 /area/corsat/sigma/hangar/office)
 "tpF" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "tpH" = (
 /obj/structure/pipes/vents/pump{
@@ -59466,10 +59170,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "tvG" = (
 /obj/structure/pipes/vents/pump{
@@ -59511,7 +59212,7 @@
 "twS" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/pipes/vents/pump/on,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "twW" = (
 /obj/structure/window/framed/corsat,
@@ -59582,14 +59283,14 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "tAF" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "tBh" = (
 /turf/open/floor/corsat{
@@ -59679,11 +59380,8 @@
 	},
 /area/corsat/gamma/hangar/checkpoint)
 "tDK" = (
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/corsat/theta/biodome)
 "tDQ" = (
 /obj/structure/bed/chair{
@@ -59731,10 +59429,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/corsat/theta/biodome)
 "tGq" = (
 /obj/structure/largecrate/random/barrel/green,
@@ -59758,16 +59453,14 @@
 /area/corsat/gamma/medbay/lobby)
 "tGV" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/corsat/theta/biodome)
 "tHy" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "tHC" = (
 /obj/structure/bed/chair{
@@ -59810,10 +59503,7 @@
 /area/corsat/gamma/residential/west)
 "tJf" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/corsat/theta/biodome)
 "tJs" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -59911,10 +59601,10 @@
 	},
 /area/corsat/sigma/biodome)
 "tNp" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/vents/pump,
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "tNJ" = (
 /obj/structure/surface/table/reinforced,
@@ -60008,10 +59698,7 @@
 /area/corsat/gamma/biodome)
 "tQk" = (
 /obj/structure/flora/bush/ausbushes/palebush,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "tQs" = (
 /obj/effect/landmark/corpsespawner/scientist,
@@ -60084,9 +59771,7 @@
 /area/corsat/sigma/southeast/datamaint)
 "tTd" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/corsat/theta/biodome)
 "tTf" = (
 /obj/structure/machinery/light{
@@ -60511,7 +60196,7 @@
 /area/corsat/sigma/south/robotics)
 "ukb" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "ukf" = (
 /obj/effect/landmark/monkey_spawn,
@@ -60547,7 +60232,7 @@
 /area/corsat/gamma/residential/west)
 "uli" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "ulq" = (
 /turf/open/floor/corsat{
@@ -60646,11 +60331,11 @@
 	dir = 4
 	},
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "upr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "upA" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -60719,9 +60404,7 @@
 /area/corsat/sigma/checkpoint)
 "usK" = (
 /obj/structure/flora/jungle/alienplant1,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "usS" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -60731,7 +60414,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "usW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -60980,12 +60663,9 @@
 	},
 /area/corsat/gamma/residential/showers)
 "uBH" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/corsat/theta/biodome)
 "uCn" = (
 /obj/structure/fence,
@@ -61123,10 +60803,7 @@
 /area/corsat/sigma/south/engineering)
 "uIh" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/corsat/theta/biodome)
 "uIJ" = (
 /obj/structure/fence,
@@ -61227,6 +60904,7 @@
 /area/corsat/sigma/dorms)
 "uLV" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -61388,10 +61066,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/corsat/theta/biodome)
 "uRC" = (
 /obj/structure/machinery/botany{
@@ -61476,10 +61151,7 @@
 /area/corsat/gamma/residential/researcher)
 "uTf" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/corsat/theta/biodome)
 "uTg" = (
 /obj/structure/safe,
@@ -61736,16 +61408,16 @@
 	},
 /area/corsat/theta/biodome/complex)
 "vcx" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/vents/pump,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "vcy" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "vcJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -61875,11 +61547,8 @@
 	},
 /area/corsat/theta/airlock/control)
 "vhZ" = (
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/corsat/theta/biodome)
 "vic" = (
 /obj/structure/showcase{
@@ -62033,10 +61702,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_west,
 /area/corsat/theta/biodome)
 "vnF" = (
 /obj/structure/bed/chair/office/light{
@@ -62302,7 +61968,7 @@
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/pipes/vents/pump,
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "vzc" = (
 /obj/structure/machinery/light,
@@ -62338,7 +62004,7 @@
 /area/corsat/sigma/hangar/id)
 "vzK" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "vzV" = (
 /obj/structure/machinery/disposal,
@@ -62609,9 +62275,7 @@
 /area/corsat/gamma/hangar/cargo)
 "vKH" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/corsat/theta/biodome)
 "vKN" = (
 /turf/open/floor/corsat{
@@ -62766,7 +62430,7 @@
 "vQg" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "vQs" = (
 /obj/structure/surface/table/reinforced,
@@ -62982,10 +62646,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_east,
 /area/corsat/theta/biodome)
 "wbK" = (
 /obj/structure/flora/pottedplant{
@@ -63123,9 +62784,7 @@
 /area/corsat/gamma/biodome)
 "wiJ" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
+/turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "wiQ" = (
 /obj/structure/machinery/light{
@@ -63195,10 +62854,7 @@
 /area/corsat/sigma/hangar/office)
 "wkm" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "wkr" = (
 /obj/structure/reagent_dispensers/water_cooler,
@@ -63243,10 +62899,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/corsat/theta/biodome)
 "wmf" = (
 /obj/effect/landmark/hunter_secondary,
@@ -63420,9 +63073,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "wrR" = (
 /obj/structure/largecrate/random,
@@ -63594,10 +63245,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "wxi" = (
 /mob/living/carbon/human/yiren,
@@ -63713,11 +63361,11 @@
 	},
 /area/corsat/gamma/medbay/morgue)
 "wCI" = (
-/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "wCJ" = (
 /obj/structure/closet/emcloset,
@@ -64122,17 +63770,13 @@
 /area/corsat/sigma/cargo)
 "wSb" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/turf/open/gm/dirtgrassborder/east,
 /area/corsat/theta/biodome)
 "wSg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/coast{
-	dir = 4
-	},
+/turf/open/gm/coast/west,
 /area/corsat/theta/biodome)
 "wSq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -64407,7 +64051,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "xdB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -64743,7 +64387,7 @@
 /area/corsat/gamma/sigmaremote)
 "xsU" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "xsZ" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -64868,10 +64512,7 @@
 /area/corsat/gamma/hangar)
 "xxO" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "xxZ" = (
 /turf/open/floor/corsat{
@@ -65176,7 +64817,7 @@
 	health = 80
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass/weedable,
+/turf/open/gm/grass/grass1/weedable,
 /area/corsat/gamma/hallwaysouth)
 "xKC" = (
 /obj/structure/machinery/camera/autoname{
@@ -65365,10 +65006,7 @@
 /area/corsat/gamma/hallwaysouth)
 "xRq" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/corsat/theta/biodome)
 "xRM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -65679,10 +65317,8 @@
 	},
 /area/corsat/gamma/airlock/control)
 "yfH" = (
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/east,
 /area/corsat/theta/biodome)
 "yfO" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -65819,9 +65455,7 @@
 /area/corsat/omega/control)
 "yle" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "ylo" = (
 /turf/open/space,
@@ -88800,7 +88434,7 @@ bdD
 bdD
 bdD
 bdD
-bdN
+bcT
 vnc
 aKi
 aKi

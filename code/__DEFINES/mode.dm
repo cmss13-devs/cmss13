@@ -14,6 +14,7 @@
 #define EVACUATION_STATUS_IN_PROGRESS 2
 #define EVACUATION_STATUS_COMPLETE 3
 
+#define NUCLEAR_TIME_LOCK 90 MINUTES
 #define NUKE_EXPLOSION_INACTIVE 0
 #define NUKE_EXPLOSION_ACTIVE 1
 #define NUKE_EXPLOSION_IN_PROGRESS 2
@@ -69,34 +70,12 @@
 #define MODE_LZ_PROTECTION (1<<7) /// Prevents the LZ from being mortared
 #define MODE_SHIPSIDE_SD (1<<8) /// Toggles whether Predators can big SD when not on the groundmap
 #define MODE_HARDCORE_PERMA (1<<9) /// Toggles Hardcore for all marines, meaning they instantly perma upon death
+#define MODE_DISPOSABLE_MOBS (1<<10) // Toggles if mobs fit in disposals or not. Off by default.
 
 #define ROUNDSTATUS_FOG_DOWN 1
 #define ROUNDSTATUS_PODDOORS_OPEN 2
 
-#define LATEJOIN_MARINES_PER_LATEJOIN_LARVA 3
-
-#define BE_ALIEN_AFTER_DEATH 1
-#define BE_AGENT 2
-
-#define TOGGLE_IGNORE_SELF (1<<0) // Determines whether you will not hurt yourself when clicking yourself
-#define TOGGLE_HELP_INTENT_SAFETY (1<<1) // Determines whether help intent will be completely harmless
-#define TOGGLE_MIDDLE_MOUSE_CLICK (1<<2) // This toggles whether selected ability for xeno uses middle mouse clicking or shift clicking
-#define TOGGLE_DIRECTIONAL_ATTACK (1<<3) // This toggles whether attacks for xeno use directional attacks
-#define TOGGLE_AUTO_EJECT_MAGAZINE_OFF (1<<4) // This toggles whether guns with auto ejectors will not auto eject their magazines
-												   // MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND
-#define TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND (1<<5) // This toggles whether guns with auto ejectors will cause you to unwield your gun and put the empty magazine in your hand
-												   // MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE
-#define TOGGLE_EJECT_MAGAZINE_TO_HAND (1<<6) // This toggles whether manuallyejecting magazines from guns will cause you to unwield your gun
-												   // and put the empty magazine in your hand
-#define TOGGLE_AUTOMATIC_PUNCTUATION (1<<7) // Whether your sentences will automatically be punctuated with a period
-#define TOGGLE_COMBAT_CLICKDRAG_OVERRIDE (1<<8) // Whether disarm/harm intents cause clicks to trigger immediately when the mouse button is depressed.
-#define TOGGLE_ALTERNATING_DUAL_WIELD (1<<9) // Whether dual-wielding fires both guns at once or swaps between them.
-#define TOGGLE_FULLSCREEN (1<<10) // See /client/proc/toggle_fullscreen in client_procs.dm
-#define TOGGLE_MEMBER_PUBLIC (1<<11) //determines if you get a byond logo by your name in ooc if you're a member or not
-#define TOGGLE_OOC_FLAG (1<<12) // determines if your country flag appears by your name in ooc chat
-#define TOGGLE_MIDDLE_MOUSE_SWAP_HANDS (1<<13) //Toggle whether middle click swaps your hands
-#define TOGGLE_AMBIENT_OCCLUSION (1<<14) // toggles if ambient occlusion is turned on or off
-#define TOGGLE_VEND_ITEM_TO_HAND (1<<15) // This toggles whether items from vendors will be automatically put into your hand.
+#define LATEJOIN_MARINES_PER_LATEJOIN_LARVA 2.5
 
 //=================================================
 #define SHOW_ITEM_ANIMATIONS_NONE 0 //Do not show any item pickup animations
@@ -111,16 +90,8 @@
 //=================================================
 
 
-var/list/be_special_flags = list(
-	"Xenomorph after unrevivable death" = BE_ALIEN_AFTER_DEATH,
-	"Agent" = BE_AGENT,
-)
-
-#define AGE_MIN 19 //youngest a character can be
-#define AGE_MAX 90 //oldest a character can be //no. you are not allowed to be 160.
 //Number of marine players against which the Marine's gear scales
 #define MARINE_GEAR_SCALING_NORMAL 30
-#define MAX_GEAR_COST 7 //Used in chargen for loadout limit.
 
 #define RESOURCE_NODE_SCALE 95 //How many players minimum per extra set of resource nodes
 #define RESOURCE_NODE_QUANTITY_PER_POP 11 //How many resources total per pop
@@ -137,12 +108,12 @@ var/list/be_special_flags = list(
 //=================================================
 
 //Role defines, specifically lists of roles for job bans, crew manifests and the like.
-var/global/list/ROLES_COMMAND = list(JOB_CO, JOB_XO, JOB_SO, JOB_INTEL, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_POLICE, JOB_CORPORATE_LIAISON, JOB_COMBAT_REPORTER, JOB_CHIEF_REQUISITION, JOB_CHIEF_ENGINEER, JOB_CMO, JOB_CHIEF_POLICE, JOB_SEA, JOB_SYNTH, JOB_WARDEN)
+var/global/list/ROLES_COMMAND = list(JOB_CO, JOB_XO, JOB_SO, JOB_AUXILIARY_OFFICER, JOB_INTEL, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_POLICE, JOB_CORPORATE_LIAISON, JOB_COMBAT_REPORTER, JOB_CHIEF_REQUISITION, JOB_CHIEF_ENGINEER, JOB_CMO, JOB_CHIEF_POLICE, JOB_SEA, JOB_SYNTH, JOB_WARDEN)
 
 //Marine roles
-#define ROLES_OFFICERS list(JOB_CO, JOB_XO, JOB_SO, JOB_INTEL, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_COMBAT_REPORTER, JOB_SYNTH, JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE)
+#define ROLES_OFFICERS list(JOB_CO, JOB_XO, JOB_SO, JOB_AUXILIARY_OFFICER, JOB_INTEL, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_COMBAT_REPORTER, JOB_SYNTH, JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE)
 var/global/list/ROLES_CIC = list(JOB_CO, JOB_XO, JOB_SO, JOB_WO_CO, JOB_WO_XO)
-var/global/list/ROLES_AUXIL_SUPPORT = list(JOB_INTEL, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_WO_CHIEF_POLICE, JOB_WO_SO, JOB_WO_CREWMAN, JOB_WO_POLICE, JOB_WO_PILOT)
+var/global/list/ROLES_AUXIL_SUPPORT = list(JOB_AUXILIARY_OFFICER, JOB_INTEL, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_WO_CHIEF_POLICE, JOB_WO_SO, JOB_WO_CREWMAN, JOB_WO_POLICE, JOB_WO_PILOT)
 var/global/list/ROLES_MISC = list(JOB_SYNTH, JOB_WORKING_JOE, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_COMBAT_REPORTER, JOB_MESS_SERGEANT, JOB_WO_CORPORATE_LIAISON, JOB_WO_SYNTH)
 var/global/list/ROLES_POLICE = list(JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE)
 var/global/list/ROLES_ENGINEERING = list(JOB_CHIEF_ENGINEER, JOB_ORDNANCE_TECH, JOB_MAINT_TECH, JOB_WO_CHIEF_ENGINEER, JOB_WO_ORDNANCE_TECH)
@@ -214,7 +185,7 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 
 #define WHITELIST_EVERYTHING (WHITELISTS_GENERAL|WHITELISTS_COUNCIL|WHITELISTS_LEADER)
 
-#define isCouncil(A) (RoleAuthority.roles_whitelist[A.ckey] & (WHITELIST_YAUTJA_COUNCIL | WHITELIST_SYNTHETIC_COUNCIL | WHITELIST_COMMANDER_COUNCIL))
+#define isCouncil(A) (RoleAuthority.roles_whitelist[A.ckey] & WHITELIST_YAUTJA_COUNCIL) || (RoleAuthority.roles_whitelist[A.ckey] & WHITELIST_SYNTHETIC_COUNCIL) || (RoleAuthority.roles_whitelist[A.ckey] & WHITELIST_COMMANDER_COUNCIL)
 
 //=================================================
 
@@ -252,6 +223,7 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 #define FACTION_CLF "CLF"
 #define FACTION_PMC "PMC"
 #define FACTION_CONTRACTOR "VAI"
+#define FACTION_MARSHAL "Colonial Marshal"
 #define FACTION_WY_DEATHSQUAD "WY Death Squad"
 #define FACTION_MERCENARY "Mercenary"
 #define FACTION_FREELANCER "Freelancer"
@@ -268,7 +240,7 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 
 #define FACTION_LIST_MARINE list(FACTION_MARINE)
 #define FACTION_LIST_HUMANOID list(FACTION_MARINE, FACTION_PMC, FACTION_WY, FACTION_WY_DEATHSQUAD, FACTION_CLF, FACTION_CONTRACTOR, FACTION_UPP, FACTION_FREELANCER, FACTION_SURVIVOR, FACTION_NEUTRAL, FACTION_COLONIST, FACTION_MERCENARY, FACTION_DUTCH, FACTION_HEFA, FACTION_GLADIATOR, FACTION_PIRATE, FACTION_PIZZA, FACTION_SOUTO, FACTION_YAUTJA, FACTION_ZOMBIE)
-#define FACTION_LIST_ERT list(FACTION_PMC, FACTION_WY_DEATHSQUAD, FACTION_CLF, FACTION_CONTRACTOR, FACTION_UPP, FACTION_FREELANCER, FACTION_MERCENARY, FACTION_DUTCH, FACTION_HEFA, FACTION_GLADIATOR, FACTION_PIRATE, FACTION_PIZZA, FACTION_SOUTO)
+#define FACTION_LIST_ERT list(FACTION_PMC, FACTION_WY_DEATHSQUAD, FACTION_CLF, FACTION_CONTRACTOR, FACTION_UPP, FACTION_FREELANCER, FACTION_MERCENARY, FACTION_DUTCH, FACTION_HEFA, FACTION_GLADIATOR, FACTION_PIRATE, FACTION_PIZZA, FACTION_SOUTO, FACTION_MARSHAL)
 #define FACTION_LIST_WY list(FACTION_PMC, FACTION_WY_DEATHSQUAD, FACTION_WY)
 #define FACTION_LIST_MARINE_WY list(FACTION_MARINE, FACTION_PMC, FACTION_WY_DEATHSQUAD, FACTION_WY)
 #define FACTION_LIST_MARINE_UPP list(FACTION_MARINE, FACTION_UPP)

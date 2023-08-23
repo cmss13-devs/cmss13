@@ -24,8 +24,7 @@
 	P.fire_at(target, X, X, ammoDatum.max_range, ammoDatum.shell_speed)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 
 /datum/action/xeno_action/activable/acider_acid/use_ability(atom/A)
@@ -43,7 +42,7 @@
 	X.corrosive_acid(A, acid_type, 0)
 	for(var/obj/item/explosive/plastic/E in A.contents)
 		X.corrosive_acid(E,acid_type,0)
-	..()
+	return ..()
 
 /mob/living/carbon/xenomorph/runner/corrosive_acid(atom/O, acid_type, plasma_cost)
 	if (mutation_type != RUNNER_ACIDER)
@@ -192,6 +191,7 @@
 	X.set_effect(BD.caboom_timer*2, SUPERSLOW)
 
 	X.say(";FOR THE HIVE!!!")
+	return ..()
 
 /datum/action/xeno_action/activable/acider_for_the_hive/proc/cancel_ability()
 	var/mob/living/carbon/xenomorph/xeno = owner

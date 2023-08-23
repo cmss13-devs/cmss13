@@ -509,8 +509,11 @@
 					if(U == w_uniform)
 						U.remove_accessory(usr, A)
 				else
+					if(HAS_TRAIT(src, TRAIT_UNSTRIPPABLE) && !is_mob_incapacitated()) //Can't strip the unstrippable!
+						to_chat(usr, SPAN_DANGER("[src] has an unbreakable grip on their equipment!"))
+						return
 					visible_message(SPAN_DANGER("<B>[usr] is trying to take off \a [A] from [src]'s [U]!</B>"), null, null, 5)
-					if(do_after(usr, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+					if(do_after(usr, get_strip_delay(usr, src), INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 						if(U == w_uniform)
 							U.remove_accessory(usr, A)
 
@@ -529,7 +532,7 @@
 			else
 				var/oldsens = U.has_sensor
 				visible_message(SPAN_DANGER("<B>[usr] is trying to modify [src]'s sensors!</B>"), null, null, 4)
-				if(do_after(usr, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+				if(do_after(usr, get_strip_delay(usr, src), INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 					if(U == w_uniform)
 						if(U.has_sensor >= UNIFORM_FORCED_SENSORS)
 							to_chat(usr, "The controls are locked.")
@@ -1387,6 +1390,7 @@
 	lighting_alpha = default_lighting_alpha
 	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
 	see_in_dark = species.darksight
+	sight |= species.flags_sight
 	if(glasses)
 		process_glasses(glasses)
 
@@ -1721,4 +1725,11 @@
 		if(I.throwforce) // for hurty stuff only
 			to_chat(src, SPAN_DANGER("You are currently unable to throw harmful items."))
 			return
+	. = ..()
+
+/mob/living/carbon/human/equip_to_slot_if_possible(obj/item/equipping_item, slot, ignore_delay = 1, del_on_fail = 0, disable_warning = 0, redraw_mob = 1, permanent = 0)
+
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_ATTEMPTING_EQUIP, equipping_item, slot) & COMPONENT_HUMAN_CANCEL_ATTEMPT_EQUIP)
+		return FALSE
+
 	. = ..()

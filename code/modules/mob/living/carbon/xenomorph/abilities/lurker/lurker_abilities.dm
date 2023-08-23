@@ -14,20 +14,21 @@
 	can_be_shield_blocked = TRUE
 
 /datum/action/xeno_action/activable/pounce/lurker/additional_effects_always()
-	var/mob/living/carbon/xenomorph/X = owner
-	if (!istype(X))
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if (!istype(xeno))
 		return
-
-	if (X.mutation_type == LURKER_NORMAL)
+	if (xeno.mutation_type == LURKER_NORMAL)
 		var/found = FALSE
-		for (var/mob/living/carbon/human/H in get_turf(X))
+		for (var/mob/living/carbon/human/human in get_turf(xeno))
+			if(human.stat == DEAD)
+				continue
 			found = TRUE
 			break
 
 		if (found)
-			var/datum/action/xeno_action/onclick/lurker_invisibility/LIA = get_xeno_action_by_type(X, /datum/action/xeno_action/onclick/lurker_invisibility)
-			if (istype(LIA))
-				LIA.invisibility_off()
+			var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_xeno_action_by_type(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
+			if (istype(lurker_invis))
+				lurker_invis.invisibility_off()
 
 /datum/action/xeno_action/activable/pounce/lurker/additional_effects(mob/living/L)
 	var/mob/living/carbon/xenomorph/X = owner
@@ -116,4 +117,4 @@
 	macro_path = /datum/action/xeno_action/verb/verb_headbite
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 0 SECONDS
+	xeno_cooldown = 10 SECONDS

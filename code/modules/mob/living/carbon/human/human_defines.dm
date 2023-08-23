@@ -64,7 +64,7 @@
 
 	var/voice
 
-	var/speech_problem_flag = 0
+	var/speech_problem_flag = FALSE
 
 	var/special_voice = "" // For changing our voice. Used by a symptom.
 
@@ -121,7 +121,7 @@
 	//moved from IDs to prevent some exploits and to make points more flexible
 	var/marine_points = MARINE_TOTAL_BUY_POINTS
 	var/marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
-	var/marine_buy_flags = MARINE_CAN_BUY_ALL
+	var/marine_buyable_categories = MARINE_CAN_BUY_ALL
 
 	var/spawned_corpse = FALSE // For the corpse spawner
 	//taken from blood.dm

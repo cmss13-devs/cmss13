@@ -57,3 +57,4 @@
 		/obj/item/clothing/shoes/dress,
 		/obj/item/storage/large_holster/ceremonial_sword/full,
 	)
+

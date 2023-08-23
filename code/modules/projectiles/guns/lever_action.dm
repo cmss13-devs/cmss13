@@ -45,7 +45,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_1 + FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_1 + FIRE_DELAY_TIER_12)
 	lever_delay = FIRE_DELAY_TIER_3
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
@@ -71,7 +71,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/dropped(mob/user)
 	. = ..()
-	reset_hit_buff()
+	reset_hit_buff(user)
 	addtimer(VARSET_CALLBACK(src, cur_onehand_chance, reset_onehand_chance), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /obj/item/weapon/gun/lever_action/proc/direct_hit_buff(mob/user, mob/target, one_hand_lever = FALSE)
@@ -110,23 +110,23 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
 	apply_hit_buff(user, target, one_hand_lever) //this is a separate proc so it's configgable
-	addtimer(CALLBACK(src, PROC_REF(reset_hit_buff), one_hand_lever), hit_buff_reset_cooldown, TIMER_OVERRIDE|TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(reset_hit_buff), user, one_hand_lever), hit_buff_reset_cooldown, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /obj/item/weapon/gun/lever_action/proc/apply_hit_buff(mob/user, mob/target, one_hand_lever = FALSE)
 	lever_sound = lever_super_sound
 	lever_message = "<b><i>You quickly work the [lever_name]!<i><b>"
 	last_fired = world.time - buff_fire_reduc //to shoot the next round faster
-	lever_delay = FIRE_DELAY_TIER_10
+	lever_delay = FIRE_DELAY_TIER_12
 	damage_mult = initial(damage_mult) + BULLET_DAMAGE_MULT_TIER_10
-	fire_delay = FIRE_DELAY_TIER_5
+	set_fire_delay(FIRE_DELAY_TIER_5)
 	for(var/slot in attachments)
 		var/obj/item/attachable/AM = attachments[slot]
 		if(AM.damage_mod || AM.delay_mod)
 			damage_mult += AM.damage_mod
-			fire_delay += AM.delay_mod
+			modify_fire_delay(AM.delay_mod)
 	wield_delay = 0 //for one-handed levering
 
-/obj/item/weapon/gun/lever_action/proc/reset_hit_buff(one_hand_lever) //why does this need a user arg when it doesn't use user at all?
+/obj/item/weapon/gun/lever_action/proc/reset_hit_buff(mob/user, one_hand_lever)
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
 	SIGNAL_HANDLER
@@ -137,7 +137,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	cur_onehand_chance = initial(cur_onehand_chance)
 	//these are init configs and so cannot be initial()
 	lever_delay = FIRE_DELAY_TIER_3
-	fire_delay = FIRE_DELAY_TIER_1
+	set_fire_delay(FIRE_DELAY_TIER_1)
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recalculate_attachment_bonuses() //stock wield delay
 	if(one_hand_lever)
@@ -392,7 +392,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/xm88/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_1
+	set_fire_delay(FIRE_DELAY_TIER_2)
 	lever_delay = FIRE_DELAY_TIER_3
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
@@ -478,7 +478,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	lever_sound = lever_super_sound
 	lever_message = "<b><i>You quickly press the [lever_name]!<i><b>"
 	last_fired = world.time - buff_fire_reduc //to shoot the next round faster
-	fire_delay = FIRE_DELAY_TIER_3
+	set_fire_delay(FIRE_DELAY_TIER_3)
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
 
 	if(floating_penetration < floating_penetration_upper_limit)
@@ -488,12 +488,12 @@ their unique feature is that a direct hit will buff your damage and firerate
 		var/obj/item/attachable/AM = attachments[slot]
 		if(AM && (AM.damage_mod || AM.delay_mod))
 			damage_mult += AM.damage_mod
-			fire_delay += AM.delay_mod
+			modify_fire_delay(AM.delay_mod)
 	wield_delay = 0 //for one-handed levering
 
 /obj/item/weapon/gun/lever_action/xm88/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
 	if(!able_to_fire(user) || !target) //checks here since we don't want to fuck up applying the increase
-		return
+		return NONE
 	if(floating_penetration && in_chamber) //has to go before actual firing
 		var/obj/item/projectile/P = in_chamber
 		switch(floating_penetration)
@@ -513,10 +513,12 @@ their unique feature is that a direct hit will buff your damage and firerate
 		levered = FALSE
 	return empty_chamber(user)
 
-/obj/item/weapon/gun/lever_action/xm88/reset_hit_buff(one_hand_lever) //why does this need a user arg when it doesn't use user at all?
+/obj/item/weapon/gun/lever_action/xm88/reset_hit_buff(mob/user, one_hand_lever)
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
 	SIGNAL_HANDLER
+	if(streak > 0)
+		to_chat(user, SPAN_WARNING("[src] beeps as it loses its targeting data, and returns to normal firing procedures."))
 	streak = 0
 	lever_sound = initial(lever_sound)
 	lever_message = initial(lever_message)
@@ -527,11 +529,10 @@ their unique feature is that a direct hit will buff your damage and firerate
 		P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88]
 	floating_penetration = FLOATING_PENETRATION_TIER_0
 	//these are init configs and so cannot be initial()
-	fire_delay = FIRE_DELAY_TIER_1 + FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_1 + FIRE_DELAY_TIER_12)
 	lever_delay = FIRE_DELAY_TIER_3
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recalculate_attachment_bonuses() //stock wield delay
-	visible_message(SPAN_WARNING("\The [src] beeps as it loses its targeting data, and returns to normal firing procedures."), max_distance = 1) // tell them they've lost stacks
 	if(one_hand_lever)
 		addtimer(VARSET_CALLBACK(src, cur_onehand_chance, reset_onehand_chance), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 

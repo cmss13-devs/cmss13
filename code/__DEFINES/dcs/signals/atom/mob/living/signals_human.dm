@@ -52,5 +52,14 @@
 //from /mob/living/carbon/human/equip_to_slot()
 #define COMSIG_HUMAN_EQUIPPED_ITEM "human_equipped_item"
 
+/// From /mob/proc/equip_to_slot_if_possible()
+#define COMSIG_HUMAN_ATTEMPTING_EQUIP "human_attempting_equip"
+	#define COMPONENT_HUMAN_CANCEL_ATTEMPT_EQUIP (1<<0)
+
 //from /mob/living/carbon/human/Life()
 #define COMSIG_HUMAN_SET_UNDEFIBBABLE "human_set_undefibbable"
+
+/// from /datum/surgery_step/proc/attempt_step()
+#define COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS "human_surgery_apply_modifiers"
+/// From /mob/living/carbon/human/proc/get_flags_cold_protection()
+#define COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS "human_cold_protection_apply_modifiers"

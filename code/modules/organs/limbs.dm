@@ -65,6 +65,8 @@
 
 	var/list/bleeding_effects_list = list()
 
+	var/can_bleed_internally = TRUE
+
 	var/destroyed = FALSE
 	var/status = LIMB_ORGANIC
 	var/processing = FALSE
@@ -510,6 +512,9 @@ This function completely restores a damaged organ to perfect condition.
 
 	if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		return
+
+	if(internal && !can_bleed_internally)
+		internal = FALSE
 
 	if(length(bleeding_effects_list))
 		if(!internal)
@@ -1215,7 +1220,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			user.visible_message(SPAN_WARNING("[user] fumbles with [S]"), SPAN_WARNING("You fumble with [S]..."))
 			time_to_take = 15 SECONDS
 
-		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			var/possessive = "[user == target ? "your" : "\the [target]'s"]"
 			var/possessive_their = "[user == target ? user.gender == MALE ? "his" : "her" : "\the [target]'s"]"
 			user.affected_message(target,
@@ -1278,6 +1283,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	display_name = "foot"
 	max_damage = 30
 	min_broken_damage = 20
+	can_bleed_internally = FALSE
 
 /obj/limb/arm
 	name = "arm"
@@ -1290,6 +1296,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	display_name = "hand"
 	max_damage = 30
 	min_broken_damage = 20
+	can_bleed_internally = FALSE
 
 /obj/limb/arm/l_arm
 	name = "l_arm"

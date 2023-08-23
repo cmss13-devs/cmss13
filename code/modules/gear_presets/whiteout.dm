@@ -13,7 +13,7 @@
 
 /datum/equipment_preset/pmc/w_y_whiteout/New()
 	. = ..()
-	access = get_antagonist_pmc_access()
+	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/pmc/w_y_whiteout/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_COMBAT)
@@ -136,10 +136,7 @@
 	role_comm_title = "WO-TT"
 
 /datum/equipment_preset/pmc/w_y_whiteout/terminator/load_gear(mob/living/carbon/human/new_human)
-	// back
-	new_human.equip_to_slot_or_del(new /obj/item/smartgun_powerpack/pmc, WEAR_BACK)
 	//face
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles/whiteout, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/leader, WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/commando, WEAR_L_EAR)
 	//head
@@ -165,6 +162,8 @@
 	//pockets
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg, WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg, WEAR_L_STORE)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles/whiteout, WEAR_EYES)
 
 	var/obj/item/device/internal_implant/agility/implant = new()
 	implant.on_implanted(new_human)

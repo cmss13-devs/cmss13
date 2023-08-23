@@ -376,4 +376,8 @@
 		to_chat(src, SPAN_WARNING("\The [target] doesn't use plasma."))
 		return FALSE
 
+	if(target == src)
+		to_chat(src, SPAN_WARNING("You can't transfer plasma to yourself!"))
+		return FALSE
+
 	return TRUE

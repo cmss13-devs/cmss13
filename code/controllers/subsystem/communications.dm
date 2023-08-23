@@ -216,6 +216,7 @@ var/const/RADIO_DEFAULT = "radio_default"
 var/const/RADIO_TO_AIRALARM = "radio_airalarm" //air alarms
 var/const/RADIO_FROM_AIRALARM = "radio_airalarm_rcvr" //devices interested in receiving signals from air alarms
 var/const/RADIO_CHAT = "radio_telecoms"
+var/const/RADIO_SIGNALS = "radio_signals"
 var/const/RADIO_ATMOSIA = "radio_atmos"
 var/const/RADIO_NAVBEACONS = "radio_navbeacon"
 var/const/RADIO_AIRLOCK = "radio_airlock"

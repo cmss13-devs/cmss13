@@ -191,11 +191,11 @@ var/datum/controller/supply/supply_controller = new()
 	var/list/data = list()
 
 	var/list/squad_list = list()
-	for(var/datum/squad/S in RoleAuthority.squads)
-		if(S.active && S.faction == faction && S.color)
+	for(var/datum/squad/current_squad in RoleAuthority.squads)
+		if(current_squad.active && current_squad.faction == faction && current_squad.equipment_color)
 			squad_list += list(list(
-				"squad_name" = S.name,
-				"squad_color" = squad_colors[S.color]
+				"squad_name" = current_squad.name,
+				"squad_color" = current_squad.equipment_color
 				))
 
 	data["can_pick_squad"] = can_pick_squad
@@ -521,6 +521,7 @@ var/datum/controller/supply/supply_controller = new()
 		qdel(C)
 
 	// Sell manifests.
+	var/screams = FALSE
 	for(var/atom/movable/movable_atom in area_shuttle)
 		if(istype(movable_atom, /obj/item/paper/manifest))
 			var/obj/item/paper/manifest/M = movable_atom
@@ -531,6 +532,7 @@ var/datum/controller/supply/supply_controller = new()
 		if(black_market_enabled)
 			var/points_to_add = get_black_market_value(movable_atom)
 			if(points_to_add == KILL_MENDOZA)
+				screams = TRUE
 				kill_mendoza()
 			black_market_sold_items[movable_atom.type] += 1
 			black_market_points += points_to_add
@@ -538,6 +540,7 @@ var/datum/controller/supply/supply_controller = new()
 		// Don't disintegrate humans! Maul their corpse instead. >:)
 		if(ishuman(movable_atom))
 			var/timer = 0.5 SECONDS
+			screams = TRUE
 			for(var/index in 1 to 10)
 				timer += 0.5 SECONDS
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(maul_human), movable_atom), timer)
@@ -545,11 +548,11 @@ var/datum/controller/supply/supply_controller = new()
 		// Delete everything else.
 		else qdel(movable_atom)
 
+	if(screams)
+		for(var/atom/computer as anything in bound_supply_computer_list)
+			computer.balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
+
 /proc/maul_human(mob/living/carbon/human/mauled_human)
-
-	for(var/atom/computer as anything in supply_controller.bound_supply_computer_list)
-		computer.balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
-
 	mauled_human.visible_message(SPAN_HIGHDANGER("The machinery crushes [mauled_human]"), SPAN_HIGHDANGER("The elevator machinery is CRUSHING YOU!"))
 
 	if(mauled_human.stat != DEAD)
@@ -1012,6 +1015,7 @@ var/datum/controller/supply/supply_controller = new()
 			to_chat(usr, SPAN_DANGER("Current retrieval load has reached maximum capacity."))
 			return
 
+		var/datum/ares_link/link = GLOB.ares_link
 		for(var/i=1, i<=supply_controller.requestlist.len, i++)
 			var/datum/supply_order/SO = supply_controller.requestlist[i]
 			if(SO.ordernum == ordernum)
@@ -1027,6 +1031,12 @@ var/datum/controller/supply/supply_controller = new()
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 					supply_order.approvedby = usr.name
 					msg_admin_niche("[usr] confirmed supply order of [supply_pack.name].")
+					var/pack_source = "Cargo Hold"
+					var/pack_name = supply_pack.name
+					if(supply_pack.dollar_cost)
+						pack_source = "Unknown"
+						pack_name = "Unknown"
+					link.log_ares_requisition(pack_source, pack_name, usr)
 				else
 					temp = "Not enough money left.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
@@ -1169,8 +1179,6 @@ var/datum/controller/supply/supply_controller = new()
 /datum/controller/supply/proc/kill_mendoza()
 	if(!mendoza_status)
 		return //cant kill him twice
-	for(var/atom/computer as anything in bound_supply_computer_list)
-		computer.balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
 
 	mendoza_status = FALSE // he'll die soon enough, and in the meantime will be too busy to handle requests.
 

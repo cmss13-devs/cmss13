@@ -160,16 +160,16 @@
 	new /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/immature(location)
 
 
-/datum/chemical_reaction/syntiflesh
-	name = "Syntiflesh"
-	id = "syntiflesh"
+/datum/chemical_reaction/synthmeat
+	name = "synthmeat"
+	id = "synthmeat"
 	result = null
 	required_reagents = list("blood" = 5, "clonexadone" = 1)
 	result_amount = 1
 
-/datum/chemical_reaction/syntiflesh/on_reaction(datum/reagents/holder, created_volume)
+/datum/chemical_reaction/synthmeat/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
-	new /obj/item/reagent_container/food/snacks/meat/syntiflesh(location)
+	new /obj/item/reagent_container/food/snacks/meat/synthmeat(location)
 
 
 /datum/chemical_reaction/hot_ramen

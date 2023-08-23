@@ -221,7 +221,7 @@
 	var/mob/living/carbon/human/new_character = new(NP.loc)
 	new_character.lastarea = get_area(NP.loc)
 
-	NP.client.prefs.copy_all_to(new_character)
+	NP.client.prefs.copy_all_to(new_character, title)
 
 	if (NP.client.prefs.be_random_body)
 		var/datum/preferences/TP = new()
@@ -288,6 +288,8 @@
 			join_turf = get_turf(pick(GLOB.spawns_by_job[type]))
 		else if(assigned_squad && GLOB.latejoin_by_squad[assigned_squad])
 			join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
+		else if(GLOB.latejoin_by_job[title])
+			join_turf = get_turf(pick(GLOB.latejoin_by_job[title]))
 		else
 			join_turf = get_turf(pick(GLOB.latejoin))
 		human.forceMove(join_turf)

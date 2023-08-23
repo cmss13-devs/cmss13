@@ -61,6 +61,7 @@
 						message_alien_candidates(players_with_xeno_pref, dequeued = count)
 
 			if(hive && hive.living_xeno_queen == src)
+				notify_ghosts(header = "Queen Death", message = "The Queen has been slain!", source = src, action = NOTIFY_ORBIT)
 				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"),3, hivenumber)
 				hive.slashing_allowed = XENO_SLASH_ALLOWED
 				hive.set_living_xeno_queen(null)

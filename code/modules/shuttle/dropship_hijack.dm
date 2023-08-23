@@ -151,7 +151,7 @@
 
 	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
 
-	announce_dchat("The dropship is about to impact [get_area_name(crash_site)]", crash_site)
+	notify_ghosts(header = "Dropship Collision", message = "The dropship is about to impact [get_area_name(T_trg)]!", source = crash_site, extra_large = TRUE)
 	final_announcement = TRUE
 
 	playsound_area(get_area(crash_site), 'sound/effects/engine_landing.ogg', 100)

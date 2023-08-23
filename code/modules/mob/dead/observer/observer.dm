@@ -256,7 +256,7 @@
 	if(href_list["joinresponseteam"])
 		JoinResponseTeam()
 	if(href_list["claim_freed"])
-		handle_joining_as_freed_mob(href_list["claim_freed"])
+		handle_joining_as_freed_mob(locate(href_list["claim_freed"]))
 
 /mob/dead/observer/proc/set_huds_from_prefs()
 	if(!client || !client.prefs)
@@ -912,9 +912,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	handle_joining_as_freed_mob(L)
 
 /mob/dead/proc/handle_joining_as_freed_mob(mob/living/freed_mob)
-
-	stack_trace("Guh")
-
 	if(!freed_mob || !(WEAKREF(freed_mob) in GLOB.freed_mob_list))
 		return
 

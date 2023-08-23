@@ -642,6 +642,13 @@
 /turf/open/floor/prison/redfull
 	icon_state = "redfull"
 
+/turf/open/floor/prison/yellow
+	icon_state = "yellow"
+
+/turf/open/floor/prison/yellowcorner
+	icon_state = "yellowcorner"
+/turf/open/floor/prison/yellowangle
+	icon_state = "yellowangle"
 /turf/open/floor/prison/yellowfull
 	icon_state = "yellowfull"
 

@@ -20,8 +20,6 @@
 	name = tech.name
 	tech.node = src
 
-	set_light(3)
-
 	tech.update_icon(src)
 
 /obj/effect/node/update_icon()

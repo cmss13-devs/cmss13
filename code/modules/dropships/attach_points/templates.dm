@@ -107,6 +107,25 @@
 	icon_state = "fuel_base"
 	base_category = DROPSHIP_FUEL_EQP
 
+/obj/effect/attach_point/fuel/Initialize(mapload, ...)
+	. = ..()
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
+
+/obj/effect/attach_point/fuel/Destroy()
+	. = ..()
+	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
+
+/obj/effect/attach_point/fuel/proc/on_dir_change(datum/source, old_dir, new_dir)
+	SIGNAL_HANDLER
+	log_debug("fuel attach [old_dir] [new_dir]")
+	switch(new_dir)
+		if(NORTH)
+			pixel_x = 0
+			pixel_y = 0
+		if(SOUTH)
+			pixel_x = -32
+			pixel_y = -8
+
 /obj/effect/attach_point/fuel/dropship1
 	ship_tag = DROPSHIP_ALAMO
 

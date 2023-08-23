@@ -19,6 +19,10 @@
 	var/skill_required = SKILL_PILOT_TRAINED
 	var/combat_equipment = TRUE
 
+/obj/structure/dropship_equipment/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
+
 /obj/structure/dropship_equipment/Destroy()
 	QDEL_NULL(ammo_equipped)
 	if(linked_shuttle)
@@ -31,7 +35,14 @@
 		if(linked_console.selected_equipment && linked_console.selected_equipment == src)
 			linked_console.selected_equipment = null
 		linked_console = null
+	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 	. = ..()
+
+/obj/structure/dropship_equipment/proc/on_dir_change(datum/source, old_dir, new_dir)
+	SIGNAL_HANDLER
+	if(old_dir == new_dir)
+		return
+	update_equipment()
 
 /obj/structure/dropship_equipment/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
 	if(unslashable)

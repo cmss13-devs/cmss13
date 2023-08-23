@@ -315,8 +315,9 @@
 	.["flight_configuration"] = is_set_flyby ? "flyby" : "ferry"
 	.["has_flyby_skill"] = skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT)
 
-	for(var/obj/docking_port/stationary/dock in compatible_landing_zones)
+	for(var/obj/docking_port/stationary/marine_dropship/dock as anything in compatible_landing_zones)
 		var/dock_reserved = FALSE
+		var/enabled = dock.enabled
 		for(var/obj/docking_port/mobile/other_shuttle in SSshuttle.mobile)
 			if(dock == other_shuttle.destination)
 				dock_reserved = TRUE
@@ -325,7 +326,7 @@
 		var/list/dockinfo = list(
 			"id" = dock.id,
 			"name" = dock.name,
-			"available" = can_dock == SHUTTLE_CAN_DOCK && !dock_reserved,
+			"available" = can_dock == SHUTTLE_CAN_DOCK && !dock_reserved && enabled,
 			"error" = can_dock,
 		)
 		.["destinations"] += list(dockinfo)

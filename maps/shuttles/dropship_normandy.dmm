@@ -198,6 +198,22 @@
 	icon_state = "rasputin15"
 	},
 /area/shuttle/drop2/sulaco)
+"na" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/shuttle/drop2/sulaco)
 "nq" = (
 /obj/effect/attach_point/weapon/dropship2/left_fore,
 /obj/structure/shuttle/part/dropship2/transparent/outer_left_weapons,
@@ -364,6 +380,22 @@
 "BG" = (
 /obj/structure/shuttle/part/dropship2/transparent/engine_left_cap,
 /turf/template_noop,
+/area/shuttle/drop2/sulaco)
+"BL" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
 /area/shuttle/drop2/sulaco)
 "Cl" = (
 /turf/closed/shuttle/dropship2{
@@ -574,9 +606,6 @@
 	},
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8
-	},
-/obj/structure/machinery/light{
-	dir = 4
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -816,8 +845,8 @@ vd
 Co
 SY
 Fq
-pS
-it
+SY
+BL
 SY
 it
 Kl
@@ -909,7 +938,7 @@ qg
 SY
 OJ
 Qd
-it
+na
 SY
 it
 QF

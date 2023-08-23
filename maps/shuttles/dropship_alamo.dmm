@@ -10,9 +10,6 @@
 /obj/structure/bed/chair/vehicle{
 	pixel_x = 8
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
@@ -83,6 +80,22 @@
 "eD" = (
 /obj/structure/shuttle/part/dropship1/transparent/engine_right_cap,
 /turf/template_noop,
+/area/shuttle/drop1/sulaco)
+"gM" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
 /area/shuttle/drop1/sulaco)
 "hG" = (
 /turf/closed/shuttle/dropship1{
@@ -281,6 +294,22 @@
 /obj/effect/attach_point/weapon/dropship1/right_wing,
 /obj/structure/shuttle/part/dropship1/transparent/lower_right_wing,
 /turf/template_noop,
+/area/shuttle/drop1/sulaco)
+"wo" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
 /area/shuttle/drop1/sulaco)
 "wr" = (
 /obj/effect/attach_point/crew_weapon/dropship1,
@@ -784,7 +813,7 @@ Ce
 TK
 qF
 aj
-ws
+gM
 TK
 ws
 WQ
@@ -875,8 +904,8 @@ Zo
 Tt
 TK
 Tu
-vW
-ws
+TK
+wo
 TK
 ws
 LP

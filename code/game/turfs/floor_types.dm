@@ -591,6 +591,9 @@
 /turf/open/floor/prison/greenfull
 	icon_state = "greenfull"
 
+/turf/open/floor/prison/greenfull_2
+	icon_state = "greenfull_2"
+
 /turf/open/floor/prison/darkyellow2full
 	icon_state = "darkyellow2full"
 
@@ -611,6 +614,9 @@
 
 /turf/open/floor/prison/bluefull
 	icon_state = "bluefull"
+
+/turf/open/floor/prison/bluefull_2
+	icon_state = "bluefull_2"
 //not in use
 /turf/open/floor/prison/whitepurplefull
 	icon_state = "whitepurplefull"
@@ -636,6 +642,13 @@
 //blue plate four direction
 /turf/open/floor/prison/blue_plate
 	icon_state = "blue_plate"
+
+/turf/open/floor/prison/blue_plate_2
+	icon_state = "blue_plate_2"
+
+/turf/open/floor/prison/blue_plate_3
+	icon_state = "blue_plate_3"
+
 /turf/open/floor/prison/trim/red
 	icon_state = "darkred2"
 

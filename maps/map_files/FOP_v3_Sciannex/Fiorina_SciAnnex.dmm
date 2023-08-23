@@ -1625,9 +1625,7 @@
 /area/fiorina/station/security)
 "aVS" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/prison/blue_plate{
-	dir = 1
-	},
+/turf/open/floor/prison/blue_plate_2,
 /area/fiorina/station/botany)
 "aVT" = (
 /obj/structure/barricade/wooden{
@@ -3279,7 +3277,7 @@
 /area/fiorina/station/lowsec)
 "cjs" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison/blue_plate{
+/turf/open/floor/prison/blue_plate_3{
 	dir = 8
 	},
 /area/fiorina/station/botany)
@@ -6277,9 +6275,7 @@
 /area/fiorina/station/chapel)
 "eqq" = (
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/prison/blue_plate{
-	dir = 1
-	},
+/turf/open/floor/prison/blue_plate_2,
 /area/fiorina/station/botany)
 "eqC" = (
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
@@ -7649,7 +7645,7 @@
 /area/fiorina/tumor/civres)
 "foL" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/prison/blue_plate{
+/turf/open/floor/prison/blue_plate_3{
 	dir = 8
 	},
 /area/fiorina/station/botany)
@@ -12506,9 +12502,7 @@
 /area/fiorina/station/disco)
 "iMM" = (
 /obj/structure/machinery/vending/hydronutrients,
-/turf/open/floor/prison/blue_plate{
-	dir = 1
-	},
+/turf/open/floor/prison/blue_plate_2,
 /area/fiorina/station/botany)
 "iMS" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -13135,7 +13129,7 @@
 /area/fiorina/tumor/fiberbush)
 "jjS" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/prison/blue_plate{
+/turf/open/floor/prison/blue_plate_3{
 	dir = 8
 	},
 /area/fiorina/station/botany)
@@ -17490,7 +17484,7 @@
 /area/fiorina/station/power_ring)
 "meM" = (
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/prison/blue_plate{
+/turf/open/floor/prison/blue_plate_3{
 	dir = 8
 	},
 /area/fiorina/station/botany)
@@ -18140,7 +18134,7 @@
 /area/fiorina/station/lowsec)
 "mCG" = (
 /obj/structure/machinery/processor,
-/turf/open/floor/prison/blue_plate{
+/turf/open/floor/prison/blue_plate_3{
 	dir = 8
 	},
 /area/fiorina/station/botany)
@@ -19795,9 +19789,7 @@
 /obj/structure/machinery/microwave{
 	pixel_y = 6
 	},
-/turf/open/floor/prison/blue_plate{
-	dir = 1
-	},
+/turf/open/floor/prison/blue_plate_2,
 /area/fiorina/station/botany)
 "nIq" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
@@ -20785,7 +20777,7 @@
 /area/fiorina/lz/near_lzI)
 "otG" = (
 /obj/item/tool/scythe,
-/turf/open/floor/prison/blue_plate{
+/turf/open/floor/prison/blue_plate_3{
 	dir = 8
 	},
 /area/fiorina/station/botany)
@@ -20921,9 +20913,7 @@
 /area/fiorina/tumor/aux_engi)
 "oxN" = (
 /obj/structure/machinery/vending/hydroseeds,
-/turf/open/floor/prison/blue_plate{
-	dir = 1
-	},
+/turf/open/floor/prison/blue_plate_2,
 /area/fiorina/station/botany)
 "oxS" = (
 /obj/item/paper/crumpled/bloody,
@@ -20992,9 +20982,7 @@
 "ozH" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison/blue_plate{
-	dir = 1
-	},
+/turf/open/floor/prison/blue_plate_2,
 /area/fiorina/station/botany)
 "oAa" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -25871,9 +25859,7 @@
 /area/fiorina/station/civres_blue)
 "rWi" = (
 /obj/structure/machinery/vending/sovietsoda,
-/turf/open/floor/prison/blue_plate{
-	dir = 1
-	},
+/turf/open/floor/prison/blue_plate_2,
 /area/fiorina/station/botany)
 "rWX" = (
 /turf/open/floor/prison{
@@ -25952,9 +25938,7 @@
 "saQ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/pill_bottle/inaprovaline/skillless,
-/turf/open/floor/prison/blue_plate{
-	dir = 1
-	},
+/turf/open/floor/prison/blue_plate_2,
 /area/fiorina/station/botany)
 "sbf" = (
 /obj/effect/landmark/corpsespawner/prisoner,
@@ -28113,9 +28097,7 @@
 /area/fiorina/tumor/fiberbush)
 "tII" = (
 /obj/item/reagent_container/food/drinks/bottle/rum,
-/turf/open/floor/prison/blue_plate{
-	dir = 1
-	},
+/turf/open/floor/prison/blue_plate_2,
 /area/fiorina/station/botany)
 "tIK" = (
 /obj/item/tool/screwdriver,
@@ -28291,9 +28273,7 @@
 	pixel_x = 10;
 	pixel_y = 13
 	},
-/turf/open/floor/prison/blue_plate{
-	dir = 1
-	},
+/turf/open/floor/prison/blue_plate_2,
 /area/fiorina/station/botany)
 "tOp" = (
 /obj/structure/window/framed/prison/cell,
@@ -29727,9 +29707,7 @@
 /area/fiorina/station/chapel)
 "uRX" = (
 /obj/item/tool/shovel/spade,
-/turf/open/floor/prison/blue_plate{
-	dir = 1
-	},
+/turf/open/floor/prison/blue_plate_2,
 /area/fiorina/station/botany)
 "uSb" = (
 /obj/structure/barricade/wooden{
@@ -31188,9 +31166,7 @@
 /area/fiorina/station/lowsec)
 "vPk" = (
 /obj/structure/window/framed/prison,
-/turf/open/floor/prison/blue_plate{
-	dir = 1
-	},
+/turf/open/floor/prison/blue_plate_2,
 /area/fiorina/station/botany)
 "vPA" = (
 /obj/structure/machinery/landinglight/ds2/delayone,
@@ -32601,9 +32577,7 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/tumor/aux_engi)
 "wRZ" = (
-/turf/open/floor/prison/blue_plate{
-	dir = 1
-	},
+/turf/open/floor/prison/blue_plate_2,
 /area/fiorina/station/botany)
 "wSe" = (
 /turf/open/floor/prison/cell_stripe{
@@ -32909,9 +32883,7 @@
 /area/fiorina/tumor/servers)
 "xfV" = (
 /obj/item/reagent_container/food/snacks/eat_bar,
-/turf/open/floor/prison/blue_plate{
-	dir = 1
-	},
+/turf/open/floor/prison/blue_plate_2,
 /area/fiorina/station/botany)
 "xgn" = (
 /obj/structure/machinery/optable,
@@ -33908,7 +33880,7 @@
 /area/fiorina/lz/near_lzII)
 "xOV" = (
 /obj/structure/machinery/gibber,
-/turf/open/floor/prison/blue_plate{
+/turf/open/floor/prison/blue_plate_3{
 	dir = 8
 	},
 /area/fiorina/station/botany)
@@ -34122,7 +34094,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/civres_blue)
 "xYA" = (
-/turf/open/floor/prison/blue_plate{
+/turf/open/floor/prison/blue_plate_3{
 	dir = 8
 	},
 /area/fiorina/station/botany)

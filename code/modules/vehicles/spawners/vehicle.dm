@@ -11,6 +11,7 @@
 
 /obj/effect/vehicle_spawner/Initialize()
 	. = ..()
+	spawn_vehicle()
 	return INITIALIZE_HINT_QDEL
 
 //Main proc which handles spawning and adding hardpoints/damaging the vehicle

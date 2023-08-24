@@ -191,7 +191,7 @@
 	if(. != CHECKS_PASSED)
 		return
 	set_light_range(initial(light_range))
-	set_light_power(FLOOR(initial(light_power) * 0.5))
+	set_light_power(FLOOR(initial(light_power) * 0.5, 1))
 	set_light_on(toggle_on)
 	flags_marine_armor ^= ARMOR_LAMP_ON
 

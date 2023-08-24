@@ -59,3 +59,9 @@
 #define COMSIG_VULTURE_SCOPE_MOVED "vulture_scope_moved"
 #define COMSIG_VULTURE_SCOPE_SCOPED "vulture_scope_scoped"
 #define COMSIG_VULTURE_SCOPE_UNSCOPED "vulture_scope_unscoped"
+
+/// from /obj/item/weapon/gun/proc/recalculate_attachment_bonuses() : ()
+#define COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES "gun_recalculate_attachment_bonuses"
+
+/// from  /obj/item/weapon/gun/proc/load_into_chamber() : ()
+#define COMSIG_GUN_INTERRUPT_FIRE "gun_interrupt_fire"

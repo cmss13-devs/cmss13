@@ -133,7 +133,8 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/toggle_shipside_sd,
 	/client/proc/shakeshipverb,
 	/client/proc/adminpanelweapons,
-	/client/proc/adminpanelgq,
+	/client/proc/admin_general_quarters,
+	/client/proc/admin_biohazard_alert,
 	/client/proc/toggle_hardcore_perma
 )
 
@@ -344,7 +345,7 @@ var/list/roundstart_mod_verbs = list(
 		add_verb(src, clan_verbs)
 
 /client/proc/add_admin_whitelists()
-	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
+	if(CLIENT_IS_MENTOR(src))
 		RoleAuthority.roles_whitelist[ckey] |= WHITELIST_MENTOR
 	if(CLIENT_IS_STAFF(src))
 		RoleAuthority.roles_whitelist[ckey] |= WHITELIST_JOE

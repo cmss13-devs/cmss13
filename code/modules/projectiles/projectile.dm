@@ -110,7 +110,7 @@
 /obj/item/projectile/Crossed(atom/movable/AM)
 	/* Fun fact: Crossed is called for any contents involving operations.
 	 * This notably means, inserting a magazing in a gun Crossed() it with the bullets in the gun. */
-	if(!loc.z)
+	if(!loc?.z)
 		return // Not on the map. Don't scan a turf. Don't shoot the poor guy reloading his gun.
 	if(AM && !(AM in permutated))
 		if(scan_a_turf(get_turf(AM)))
@@ -1143,11 +1143,16 @@
 	// Need to do this in order to prevent the ping from being deleted
 	addtimer(CALLBACK(I, TYPE_PROC_REF(/image, flick_overlay), src, 3), 1)
 
+/// People getting shot by a large amount of bullets in a very short period of time can lag them out, with chat messages being one cause, so a 1s cooldown per hit message is introduced to assuage that
+/mob/var/shot_cooldown = 0
+
 /mob/proc/bullet_message(obj/item/projectile/P)
 	if(!P)
 		return
-	visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
-		SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
+	if(COOLDOWN_FINISHED(src, shot_cooldown))
+		visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
+			SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		COOLDOWN_START(src, shot_cooldown, 1 SECONDS)
 
 	last_damage_data = P.weapon_cause_data
 	if(P.firer && ismob(P.firer))

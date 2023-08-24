@@ -1,4 +1,0 @@
-author: "thwomper, Steelpoint"
-delete-after: True
-changes:
-  - rscadd: "Toolkits have been added to the game. Holds engineering supplies akin to a medkit. Issued freely to ComTechs and Engineers, can be bought by the USCM Synthetic for cheap."

@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Changed 'Growing Queen' to 'Immature Queen'"
-  - bugfix: "Updated playerpanel transform Queen button title."

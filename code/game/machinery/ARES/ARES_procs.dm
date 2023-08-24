@@ -634,86 +634,6 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			return "AI Service Technician"
 
 // ------ Maintenance Controller UI ------ //
-/obj/structure/machinery/computer/working_joe/verb/eject_id()
-	set category = "Object"
-	set name = "Eject ID Card"
-	set src in oview(1)
-
-	if(!usr || usr.stat || usr.lying)
-		return FALSE
-
-	if(authenticator_id)
-		authenticator_id.loc = get_turf(src)
-		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
-			usr.put_in_hands(authenticator_id)
-		if(operable()) // Powered. Console can response.
-			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
-		else
-			to_chat(usr, "You remove [authenticator_id] from [src].")
-		ticket_authenticated = FALSE // No card - no access
-		authenticator_id = null
-
-	else if(target_id)
-		target_id.loc = get_turf(src)
-		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
-			usr.put_in_hands(target_id)
-		else
-			to_chat(usr, "You remove [target_id] from [src].")
-		target_id = null
-
-	else
-		to_chat(usr, "There is nothing to remove from the console.")
-	return
-
-/obj/structure/machinery/computer/working_joe/attackby(obj/object, mob/user)
-	if(istype(object, /obj/item/card/id))
-		if(!ticket_console)
-			to_chat(user, SPAN_WARNING("This console doesn't have an ID port!"))
-			return FALSE
-		if(!operable())
-			to_chat(user, SPAN_NOTICE("You try to insert [object] but [src] remains silent."))
-			return FALSE
-		var/obj/item/card/id/idcard = object
-		if((idcard.assignment == JOB_WORKING_JOE) || (ACCESS_ARES_DEBUG in idcard.access))
-			if(!authenticator_id)
-				if(user.drop_held_item())
-					object.forceMove(src)
-					authenticator_id = object
-				authenticate(authenticator_id)
-			else if(!target_id)
-				if(user.drop_held_item())
-					object.forceMove(src)
-					target_id = object
-			else
-				to_chat(user, "Both slots are full already. Remove a card first.")
-				return FALSE
-		else
-			if(!target_id)
-				if(user.drop_held_item())
-					object.forceMove(src)
-					target_id = object
-			else
-				to_chat(user, "Target ID slot full. Please eject and try again.")
-				return FALSE
-	else
-		..()
-
-/obj/structure/machinery/computer/working_joe/proc/authenticate(obj/item/card/id/id_card)
-	if(!id_card)
-		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Authenticator card is missing!\"")
-		return FALSE
-
-	if((ACCESS_MARINE_AI in id_card.access) || (ACCESS_ARES_DEBUG in id_card.access))
-		ticket_authenticated = TRUE
-		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGIN: Welcome, [id_card.registered_name]. Access granted.\"")
-		return TRUE
-
-	visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Access denied.\"")
-	return FALSE
-
-
-
-
 /obj/structure/machinery/computer/working_joe/attack_hand(mob/user as mob)
 	if(..() || !allowed(usr) || inoperable())
 		return FALSE
@@ -799,12 +719,9 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	data["access_tickets"] = logged_access
 
 	data["can_update_id"] = "No"
-	if(!authenticator_id || !target_id)
-		data["id_tooltip"] = "An ID card is missing!"
-	else if(!(authenticator_id.assignment == JOB_WORKING_JOE) || (ACCESS_ARES_DEBUG in authenticator_id.access))
-		data["id_tooltip"] = "Authenticator ID is not authorised to modify core access!"
-	else if(authenticator_id.registered_name != last_login)
-		data["id_tooltip"] = "Unauthorised user of [authenticator_id.name]!"
+
+	if(!target_id)
+		data["id_tooltip"] = "Target ID card is missing!"
 	else if(!(target_id.registered_name in requesting_access) && !(ACCESS_MARINE_AI_TEMP in target_id.access))
 		data["id_tooltip"] = "No existing access ticket for '[target_id.registered_name]'"
 	else
@@ -882,18 +799,12 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		if("page_request")
 			last_menu = current_menu
 			current_menu = "access_requests"
-		if("page_returns")
-			last_menu = current_menu
-			current_menu = "access_returns"
 		if("page_report")
 			last_menu = current_menu
 			current_menu = "maint_reports"
 		if("page_tickets")
 			last_menu = current_menu
 			current_menu = "access_tickets"
-		if("manage_access")
-			last_menu = current_menu
-			current_menu = "id_access"
 		if("page_maintenance")
 			last_menu = current_menu
 			current_menu = "maint_claim"
@@ -1012,10 +923,12 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			log_game("ARES: Access Ticket '\ref[access_ticket]' created by [key_name(operator)] as [last_login] with Holder '[ticket_holder]' and Details of '[details]'.")
 			return TRUE
 
+		if("eject_id")
+			playsound = FALSE
+			eject_id()
 		if("apply_access")
-			if(!authenticator_id || !target_id)
-				return FALSE
-			if(!(authenticator_id.assignment == JOB_WORKING_JOE) || (ACCESS_ARES_DEBUG in authenticator_id.access))
+			playsound = FALSE
+			if(!target_id)
 				return FALSE
 			var/announce_text = "[last_login] revoked core access from [target_id.registered_name]'s ID card."
 			if(ACCESS_MARINE_AI_TEMP in target_id.access)
@@ -1028,7 +941,38 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 				announce_text = "[last_login] granted core access to [target_id.registered_name]'s ID card."
 				to_chat(operator, SPAN_NOTICE("Access granted to [target_id.registered_name]."))
 			ares_apollo_talk(announce_text)
-			current_menu = last_menu
+			playsound(src, 'sound/machines/chime.ogg', 15, 1)
+
+		if("return_access")
+			playsound = FALSE
+			var/obj/item/card/id/idcard = operator.get_active_hand()
+			var/real_id = TRUE
+			if(!istype(idcard))
+				real_id = FALSE
+				if(operator.wear_id)
+					idcard = operator.wear_id
+					real_id = TRUE
+					if(!istype(idcard))
+						real_id = FALSE
+			if(!real_id)
+				to_chat(operator, SPAN_WARNING("You require an ID card to return an access ticket!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+
+			if(!(ACCESS_MARINE_AI_TEMP in idcard.access))
+				to_chat(operator, SPAN_WARNING("This ID card does not have an access ticket!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+
+			idcard.access -= ACCESS_MARINE_AI_TEMP
+			idcard.modification_log += "Temporary AI Access self-returned by [key_name(operator)]."
+			to_chat(operator, SPAN_NOTICE("Temporary Access Ticket surrendered."))
+			playsound(src, 'sound/machines/chime.ogg', 15, 1)
+			ares_apollo_talk("[last_login] surrendered their access ticket.")
+			authentication = get_ares_access(idcard)
+
+			if(authentication)
+				login_list += "[last_login] at [worldtime2text()], Surrendered Temporary Access Ticket."
 
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)

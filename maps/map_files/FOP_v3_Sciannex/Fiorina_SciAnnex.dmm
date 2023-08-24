@@ -247,17 +247,13 @@
 /turf/open/floor/prison/sterile_white,
 /area/fiorina/station/research_cells)
 "ahn" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_sn_full_cap,
 /turf/open/floor/prison/blue{
 	dir = 8
 	},
 /area/fiorina/station/chapel)
 "ahR" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /obj/structure/platform{
 	dir = 8
 	},
@@ -271,9 +267,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "aiK" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /obj/structure/platform,
 /turf/open/floor/prison/darkbrown2,
@@ -366,9 +361,8 @@
 /turf/open/floor/prison/darkyellow2full,
 /area/fiorina/tumor/servers)
 "alr" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap"
+/obj/structure/stairs/perspective/p_stair_ew_full_cap{
+	dir = 8
 	},
 /obj/structure/platform/stair_cut,
 /turf/open/floor/plating/prison,
@@ -413,9 +407,7 @@
 /turf/open/floor/prison/darkbrown2full,
 /area/fiorina/tumor/aux_engi)
 "amx" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
+/obj/structure/stairs/perspective/p_stair_full,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "amF" = (
@@ -511,9 +503,8 @@
 /turf/open/floor/prison/red,
 /area/fiorina/station/security)
 "aqJ" = (
-/obj/structure/monorail{
-	dir = 6;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 6
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
@@ -739,8 +730,7 @@
 /area/fiorina/station/transit_hub)
 "ayK" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_27";
+/obj/structure/flora/pottedplant/pottedplant_27{
 	layer = 3.1;
 	pixel_x = -2;
 	pixel_y = 10
@@ -798,16 +788,14 @@
 	},
 /area/fiorina/station/chapel)
 "azJ" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_29";
+/obj/structure/flora/pottedplant/pottedplant_29{
 	pixel_y = 6
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "azN" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
@@ -1093,9 +1081,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "aHA" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap"
+/obj/structure/stairs/perspective/p_stair_ew_full_cap{
+	dir = 8
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
@@ -1112,9 +1099,8 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "aIf" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap"
+/obj/structure/stairs/perspective/p_stair_ew_full_cap{
+	dir = 8
 	},
 /obj/structure/platform/stair_cut,
 /turf/open/floor/plating/prison,
@@ -1176,10 +1162,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
 "aJg" = (
-/turf/open/floor/prison{
-	icon_state = "platingdmg3"
-	},
-/area/fiorina/maintenance)
+/turf/open/floor/prison/platingdmg3/area/fiorina/maintenance)
 "aJK" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/item/reagent_container/food/snacks/meat/human,
@@ -1358,9 +1341,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "aPF" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_7"
-	},
+/obj/structure/flora/pottedplant/pottedplant_7,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "aPH" = (
@@ -1388,9 +1369,8 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "aQU" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 4
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/security)
@@ -1513,9 +1493,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "aVh" = (
-/obj/structure/monorail{
-	dir = 4;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 4
 	},
 /turf/open/floor/prison/greenfull,
 /area/fiorina/station/transit_hub)
@@ -1940,9 +1919,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/medbay)
 "bka" = (
-/obj/structure/monorail{
-	dir = 4;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 4
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
@@ -2007,9 +1985,8 @@
 /turf/closed/wall/prison,
 /area/fiorina/station/transit_hub)
 "bnK" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz1_tram)
@@ -2211,9 +2188,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/chapel)
 "bxW" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/floor,
 /area/fiorina/tumor/fiberbush)
 "byb" = (
@@ -2318,9 +2293,7 @@
 	},
 /area/fiorina/station/power_ring)
 "bBS" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_ew_full_cap,
 /obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
@@ -2402,9 +2375,7 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/lz/near_lzI)
 "bFj" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_1";
 	layer = 3
@@ -2486,9 +2457,8 @@
 	},
 /area/fiorina/station/civres_blue)
 "bHl" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 1
 	},
 /turf/open/floor/prison/darkyellow2{
 	dir = 4
@@ -2636,9 +2606,7 @@
 /turf/open/floor/prison/blue,
 /area/fiorina/station/chapel)
 "bNf" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
+/obj/structure/stairs/perspective/p_stair_full,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "bNz" = (
@@ -2671,9 +2639,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "bOz" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_1";
 	layer = 3;
@@ -2687,9 +2653,8 @@
 	},
 /area/fiorina/station/civres_blue)
 "bPf" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /obj/structure/platform,
 /turf/open/floor/plating/prison,
@@ -2858,9 +2823,7 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/flight_deck)
 "bVO" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
 	pixel_x = -10;
@@ -2895,9 +2858,7 @@
 	dir = 4;
 	layer = 3.5
 	},
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/tumor/ice_lab)
 "bXk" = (
@@ -2917,9 +2878,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/power_ring)
 "bYB" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 1
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/botany)
@@ -2932,9 +2892,8 @@
 /turf/open/floor/prison/kitchen,
 /area/fiorina/station/lowsec)
 "bYS" = (
-/obj/structure/monorail{
-	dir = 4;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 4
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/lz/near_lzI)
@@ -2959,9 +2918,8 @@
 /turf/open/floor/wood,
 /area/fiorina/station/lowsec)
 "cbb" = (
-/obj/structure/monorail{
-	dir = 5;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 5
 	},
 /turf/open/space,
 /area/fiorina/oob)
@@ -3121,9 +3079,7 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/medbay)
 "ciX" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
 	pixel_x = 10;
@@ -3283,16 +3239,13 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "cmV" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/power_ring)
 "cmW" = (
-/turf/open/floor/prison{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/prison/panelscorched,
 /area/fiorina/station/chapel)
 "cnn" = (
 /obj/item/device/flashlight,
@@ -3417,9 +3370,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/tumor/servers)
 "crO" = (
-/turf/open/floor/prison{
-	icon_state = "damaged3"
-	},
+/turf/open/floor/prison/damaged3,
 /area/fiorina/station/security)
 "csl" = (
 /obj/item/trash/boonie,
@@ -3563,9 +3514,7 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "cyd" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "cye" = (
@@ -3580,10 +3529,7 @@
 /turf/open/floor/prison/darkbrown2full,
 /area/fiorina/maintenance)
 "cyL" = (
-/turf/open/floor/prison{
-	icon_state = "platingdmg1"
-	},
-/area/fiorina/tumor/aux_engi)
+/turf/open/floor/prison/platingdmg1/area/fiorina/tumor/aux_engi)
 "cyO" = (
 /obj/structure/machinery/vending/hydronutrients,
 /turf/open/floor/prison/greenfull,
@@ -3699,9 +3645,7 @@
 /turf/open/floor/prison/darkyellow2full,
 /area/fiorina/station/flight_deck)
 "cDj" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/civres_blue)
 "cDl" = (
@@ -3995,9 +3939,7 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/lowsec)
 "cQn" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/whitegreen{
 	dir = 8
 	},
@@ -4115,9 +4057,8 @@
 	},
 /area/fiorina/station/research_cells)
 "cWG" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
@@ -4171,9 +4112,8 @@
 /turf/open/floor/prison/darkred2full,
 /area/fiorina/oob)
 "cXY" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap"
+/obj/structure/stairs/perspective/p_stair_ew_full_cap{
+	dir = 8
 	},
 /obj/structure/platform/stair_cut,
 /turf/open/floor/plating/prison,
@@ -4312,9 +4252,8 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/civres_blue)
 "ddF" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
@@ -4367,9 +4306,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/flight_deck)
 "deN" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 4
 	},
 /obj/structure/platform{
 	dir = 4
@@ -4408,9 +4346,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "dfV" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "dfZ" = (
@@ -4550,9 +4486,7 @@
 	},
 /area/fiorina/station/research_cells)
 "dka" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/civres_blue)
 "dkb" = (
@@ -4891,9 +4825,8 @@
 /turf/open/space,
 /area/fiorina/oob)
 "dwg" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /obj/structure/platform,
 /turf/open/floor/plating/prison,
@@ -4958,9 +4891,8 @@
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/tumor/servers)
 "dyd" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/botany)
@@ -5051,9 +4983,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/security)
 "dBa" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /obj/structure/platform,
 /turf/open/floor/plating/prison,
@@ -5159,9 +5090,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "dEo" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /obj/structure/platform,
 /obj/structure/machinery/light/double/blue{
@@ -5176,16 +5106,14 @@
 /turf/open/floor/prison/darkyellow2full,
 /area/fiorina/station/flight_deck)
 "dEF" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_29";
+/obj/structure/flora/pottedplant/pottedplant_29{
 	pixel_y = 6
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring)
 "dEI" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /obj/structure/platform,
 /turf/open/floor/plating/prison,
@@ -5240,9 +5168,7 @@
 "dFO" = (
 /obj/item/weapon/gun/rifle/m16,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	icon_state = "damaged3"
-	},
+/turf/open/floor/prison/damaged3,
 /area/fiorina/station/security)
 "dGc" = (
 /obj/effect/landmark/monkey_spawn,
@@ -5292,9 +5218,7 @@
 	},
 /area/fiorina/lz/near_lzI)
 "dIi" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
+/obj/structure/stairs/perspective/p_stair_full,
 /turf/open/floor/prison/floor,
 /area/fiorina/station/security)
 "dIo" = (
@@ -5343,9 +5267,8 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/station/medbay)
 "dKI" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/lz/near_lzI)
@@ -5376,9 +5299,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "dMc" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /obj/structure/platform,
 /turf/open/floor/plating/prison,
@@ -5538,9 +5460,7 @@
 	},
 /area/fiorina/station/civres_blue)
 "dUZ" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "dVe" = (
@@ -5792,9 +5712,8 @@
 /turf/open/floor/prison/greenfull,
 /area/fiorina/tumor/servers)
 "efS" = (
-/obj/structure/monorail{
-	dir = 9;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 9
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
@@ -5805,9 +5724,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/tumor/ice_lab)
 "ege" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "egm" = (
@@ -5973,9 +5890,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "ena" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 1
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/transit_hub)
@@ -6094,9 +6010,7 @@
 /turf/open/floor/prison/darkpurple2full,
 /area/fiorina/lz/near_lzI)
 "esF" = (
-/turf/open/floor/prison{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/prison/panelscorched,
 /area/fiorina/tumor/servers)
 "esS" = (
 /obj/item/stack/sheet/metal,
@@ -6115,9 +6029,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "euC" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "euG" = (
@@ -6209,8 +6121,7 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "ewy" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
+/obj/structure/flora/pottedplant/pottedplant_22{
 	layer = 2.8
 	},
 /obj/structure/barricade/handrail/type_b,
@@ -6296,9 +6207,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_sn_full_cap,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "ezz" = (
@@ -6319,9 +6228,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "eAo" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 4
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
@@ -6508,9 +6416,8 @@
 /turf/open/space/basic,
 /area/fiorina/oob)
 "eKu" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /obj/structure/platform,
 /turf/open/floor/prison/bright_clean_marked,
@@ -6531,9 +6438,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/botany)
 "eML" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /obj/structure/platform_decoration{
 	dir = 4
 	},
@@ -6797,9 +6702,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "eVL" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /obj/structure/platform,
 /turf/open/floor/plating/prison,
@@ -6864,9 +6768,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/station/civres_blue)
 "eXr" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzI)
 "eXC" = (
@@ -6883,9 +6785,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/botany)
 "eXU" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_ew_full_cap,
 /obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
@@ -6913,9 +6813,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/security/wardens)
 "eZm" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_sn_full_cap,
 /obj/structure/platform{
 	dir = 8
 	},
@@ -7052,9 +6950,7 @@
 /turf/open/space,
 /area/fiorina/oob)
 "fde" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
+/obj/structure/stairs/perspective/p_stair_full,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "fdf" = (
@@ -7323,9 +7219,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "fnt" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/yellowcorner,
 /area/fiorina/station/disco)
 "fnB" = (
@@ -7404,9 +7298,8 @@
 /turf/open/floor/prison/yellowfull,
 /area/fiorina/station/lowsec)
 "fqD" = (
-/obj/structure/stairs/perspective{
-	dir = 5;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 5
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/power_ring)
@@ -7599,9 +7492,8 @@
 /turf/open/floor/prison/sterile_white,
 /area/fiorina/station/medbay)
 "fzb" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 4
 	},
 /obj/structure/platform{
 	dir = 4
@@ -7698,10 +7590,7 @@
 /turf/open/floor/prison/chapel_carpet,
 /area/fiorina/station/chapel)
 "fBc" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged1"
-	},
+/turf/open/floor/prison/damaged1,
 /area/fiorina/station/lowsec)
 "fBd" = (
 /turf/open/floor/prison/darkyellow2corner{
@@ -7825,10 +7714,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/flight_deck)
 "fGY" = (
-/turf/open/floor/prison{
-	icon_state = "floorscorched2"
-	},
-/area/fiorina/tumor/civres)
+/turf/open/floor/prison/floorscorched2/area/fiorina/tumor/civres)
 "fHh" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4
@@ -7841,9 +7727,7 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "fHB" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
 "fHK" = (
@@ -7949,9 +7833,8 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 8
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/flight_deck)
@@ -8051,9 +7934,8 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/station/medbay)
 "fOt" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /obj/structure/platform,
 /turf/open/floor/plating/prison,
@@ -8215,9 +8097,7 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/tumor/ice_lab)
 "fUF" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
+/obj/structure/stairs/perspective/p_stair_full,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "fUX" = (
@@ -8267,9 +8147,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/tumor/servers)
 "fXe" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 1
 	},
 /turf/open/floor/prison/darkyellow2{
 	dir = 8
@@ -8296,9 +8175,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_sn_full_cap,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "fXS" = (
@@ -8371,9 +8248,8 @@
 /turf/open/floor/prison/sterile_white,
 /area/fiorina/station/research_cells)
 "gbn" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 8
 	},
 /obj/structure/platform{
 	dir = 4
@@ -8649,9 +8525,7 @@
 /turf/open/floor/prison/greenfull_2,
 /area/fiorina/tumor/servers)
 "gkt" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/floor,
 /area/fiorina/station/medbay)
 "gkZ" = (
@@ -9073,9 +8947,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "gAS" = (
-/obj/structure/monorail{
-	dir = 4;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 4
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
@@ -9176,9 +9049,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/chapel)
 "gEU" = (
-/obj/structure/monorail{
-	dir = 4;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 4
 	},
 /turf/open/space,
 /area/fiorina/oob)
@@ -9379,9 +9251,8 @@
 /turf/open/floor/prison/yellowfull,
 /area/fiorina/station/lowsec)
 "gMV" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 8
 	},
 /obj/structure/platform{
 	dir = 4
@@ -9480,9 +9351,8 @@
 /turf/open/floor/prison/greenfull_2,
 /area/fiorina/station/chapel)
 "gQx" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 1
 	},
 /turf/open/floor/prison/blue{
 	dir = 8
@@ -9548,9 +9418,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/medbay)
 "gSG" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 1
 	},
 /obj/structure/platform{
 	dir = 8
@@ -9669,10 +9538,7 @@
 	},
 /area/fiorina/tumor/civres)
 "gXt" = (
-/turf/open/floor/prison{
-	icon_state = "platingdmg1"
-	},
-/area/fiorina/station/chapel)
+/turf/open/floor/prison/platingdmg1/area/fiorina/station/chapel)
 "gXu" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
@@ -9737,9 +9603,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "gZT" = (
-/turf/open/floor/prison{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/prison/panelscorched,
 /area/fiorina/station/transit_hub)
 "hab" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -9750,9 +9614,7 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/power_ring)
 "hah" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/darkred2full,
 /area/fiorina/station/research_cells)
 "ham" = (
@@ -9812,9 +9674,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "hbC" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/open/space,
 /area/fiorina/oob)
 "hcb" = (
@@ -9867,9 +9727,8 @@
 /turf/open/floor/prison/blue_plate_3,
 /area/fiorina/station/botany)
 "heb" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap"
+/obj/structure/stairs/perspective/p_stair_ew_full_cap{
+	dir = 8
 	},
 /obj/structure/platform/stair_cut,
 /turf/open/floor/plating/prison,
@@ -9957,9 +9816,7 @@
 	},
 /area/fiorina/station/park)
 "hhh" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_ew_full_cap,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "hhl" = (
@@ -10011,9 +9868,7 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/chapel)
 "hiK" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/darkred2full,
 /area/fiorina/station/disco)
 "hiO" = (
@@ -10022,9 +9877,7 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "hja" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_sn_full_cap,
 /obj/structure/platform{
 	dir = 8
 	},
@@ -10096,9 +9949,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "hmd" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 4
 	},
 /obj/structure/platform{
 	dir = 4
@@ -10276,9 +10128,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/telecomm/lz1_cargo)
 "hss" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 1
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/security)
@@ -10444,10 +10295,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/chapel)
 "hyz" = (
-/turf/open/floor/prison{
-	icon_state = "platingdmg1"
-	},
-/area/fiorina/station/civres_blue)
+/turf/open/floor/prison/platingdmg1/area/fiorina/station/civres_blue)
 "hyG" = (
 /obj/structure/platform_decoration{
 	dir = 4
@@ -10556,9 +10404,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "hBX" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/station/medbay)
 "hCc" = (
@@ -10585,10 +10431,7 @@
 /area/fiorina/station/lowsec)
 "hDr" = (
 /obj/item/stool,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/fiorina/station/lowsec)
 "hDx" = (
 /turf/open/floor/prison/floor_plate,
@@ -10619,9 +10462,7 @@
 /obj/structure/barricade/handrail/type_b{
 	dir = 8
 	},
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/tumor/ice_lab)
 "hFn" = (
@@ -10768,9 +10609,8 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 4
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
@@ -10832,10 +10672,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "hOW" = (
-/turf/open/floor/prison{
-	icon_state = "floorscorched2"
-	},
-/area/fiorina/station/civres_blue)
+/turf/open/floor/prison/floorscorched2/area/fiorina/station/civres_blue)
 "hPs" = (
 /obj/item/ammo_magazine/rifle/m16{
 	current_rounds = 0
@@ -10851,9 +10688,7 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/tumor/ice_lab)
 "hPW" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz1_tram)
 "hPY" = (
@@ -11084,9 +10919,8 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/tumor/ice_lab)
 "hZp" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 4
 	},
 /turf/open/floor/prison/blue{
 	dir = 4
@@ -11464,9 +11298,8 @@
 /obj/structure/platform_decoration{
 	dir = 4
 	},
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap"
+/obj/structure/stairs/perspective/p_stair_ew_full_cap{
+	dir = 8
 	},
 /obj/structure/platform{
 	dir = 1
@@ -11777,9 +11610,7 @@
 /turf/open/floor/prison/kitchen,
 /area/fiorina/station/civres_blue)
 "iCR" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_sn_full_cap,
 /obj/structure/platform{
 	dir = 8
 	},
@@ -11816,9 +11647,7 @@
 /turf/open/floor/prison/darkbrown2,
 /area/fiorina/tumor/aux_engi)
 "iEi" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_ew_full_cap,
 /obj/structure/platform{
 	dir = 1
 	},
@@ -11931,9 +11760,8 @@
 /turf/open/floor/prison/darkpurple2full,
 /area/fiorina/tumor/ice_lab)
 "iJE" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/tumor/servers)
@@ -11986,10 +11814,7 @@
 /area/fiorina/station/park)
 "iLy" = (
 /obj/item/stack/rods/plasteel,
-/turf/open/floor/prison{
-	icon_state = "floorscorched2"
-	},
-/area/fiorina/station/security)
+/turf/open/floor/prison/floorscorched2/area/fiorina/station/security)
 "iLJ" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/prison,
@@ -12174,9 +11999,7 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/park)
 "iSi" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)
 "iSn" = (
@@ -12429,8 +12252,7 @@
 /area/fiorina/lz/near_lzI)
 "jdh" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_29";
+/obj/structure/flora/pottedplant/pottedplant_29{
 	pixel_y = 10
 	},
 /turf/open/floor/prison/redfull,
@@ -12447,9 +12269,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/fiorina/station/civres_blue)
 "jeh" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_ew_full_cap,
 /obj/structure/platform{
 	dir = 1
 	},
@@ -12567,9 +12387,7 @@
 	},
 /area/fiorina/tumor/ship)
 "jit" = (
-/turf/open/floor/prison{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/prison/panelscorched,
 /area/fiorina/tumor/civres)
 "jiJ" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
@@ -12679,8 +12497,7 @@
 /area/fiorina/tumor/aux_engi)
 "jlO" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_29";
+/obj/structure/flora/pottedplant/pottedplant_29{
 	pixel_y = 10
 	},
 /obj/structure/machinery/light/double/blue{
@@ -12697,9 +12514,7 @@
 /area/fiorina/station/telecomm/lz1_tram)
 "jmm" = (
 /obj/effect/spawner/random/gun/rifle/highchance,
-/turf/open/floor/prison{
-	icon_state = "damaged3"
-	},
+/turf/open/floor/prison/damaged3,
 /area/fiorina/station/security)
 "jmp" = (
 /obj/item/ammo_magazine/handful/shotgun/incendiary{
@@ -12816,8 +12631,7 @@
 	},
 /area/fiorina/lz/near_lzI)
 "joE" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_29";
+/obj/structure/flora/pottedplant/pottedplant_29{
 	pixel_y = 6
 	},
 /turf/open/floor/wood,
@@ -12911,9 +12725,7 @@
 	},
 /area/fiorina/station/power_ring)
 "jqR" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
 	pixel_x = -10;
@@ -12925,9 +12737,8 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 1
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/flight_deck)
@@ -13168,10 +12979,7 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/chapel)
 "jCl" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/fiorina/station/security)
 "jCp" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
@@ -13279,9 +13087,7 @@
 "jFN" = (
 /obj/item/explosive/grenade/high_explosive/m15,
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/prison{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/prison/panelscorched,
 /area/fiorina/tumor/aux_engi)
 "jFO" = (
 /obj/effect/landmark/nightmare{
@@ -13413,9 +13219,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/security)
 "jKb" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 1
 	},
 /obj/structure/platform{
 	dir = 8
@@ -13428,8 +13233,7 @@
 /area/fiorina/station/security)
 "jKG" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_29";
+/obj/structure/flora/pottedplant/pottedplant_29{
 	pixel_y = 10
 	},
 /turf/open/floor/prison/floor,
@@ -13449,9 +13253,8 @@
 /turf/open/space,
 /area/fiorina/oob)
 "jKL" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /obj/structure/platform,
 /turf/open/floor/prison/bright_clean_marked,
@@ -13474,10 +13277,7 @@
 "jLK" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	icon_state = "platingdmg1"
-	},
-/area/fiorina/station/security)
+/turf/open/floor/prison/platingdmg1/area/fiorina/station/security)
 "jLN" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/landmark/objective_landmark/science,
@@ -13607,9 +13407,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "jRp" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 4
 	},
 /obj/structure/platform{
 	dir = 4
@@ -13792,9 +13591,8 @@
 /turf/closed/shuttle/elevator,
 /area/fiorina/tumor/aux_engi)
 "jYd" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 4
 	},
 /obj/structure/platform{
 	dir = 4
@@ -14024,9 +13822,8 @@
 /turf/open/floor/prison/greenfull_2,
 /area/fiorina/station/chapel)
 "kfl" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/flight_deck)
@@ -14187,9 +13984,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/lz/near_lzI)
 "klL" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 8
 	},
 /turf/open/floor/prison/blue{
 	dir = 4
@@ -14260,10 +14056,7 @@
 	density = 0;
 	dir = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "platingdmg3"
-	},
-/area/fiorina/station/security)
+/turf/open/floor/prison/platingdmg3/area/fiorina/station/security)
 "kow" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
@@ -14314,9 +14107,7 @@
 /turf/open/floor/prison/darkpurple2full,
 /area/fiorina/station/research_cells)
 "kqe" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /obj/structure/platform{
 	dir = 8;
 	layer = 2.5
@@ -14566,10 +14357,7 @@
 /area/fiorina/station/medbay)
 "kyl" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_17";
-	pixel_y = 13
-	},
+/pixel_y = 13},
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/tumor/ice_lab)
 "kyW" = (
@@ -14603,14 +14391,9 @@
 	},
 /area/fiorina/oob)
 "kzN" = (
-/turf/open/floor/prison{
-	icon_state = "floorscorched2"
-	},
-/area/fiorina/station/security)
+/turf/open/floor/prison/floorscorched2/area/fiorina/station/security)
 "kzO" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
 	pixel_x = -10;
@@ -14625,9 +14408,8 @@
 /area/fiorina/station/power_ring)
 "kAr" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/monorail{
-	dir = 4;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 4
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
@@ -14691,9 +14473,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/disco)
 "kDq" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /obj/structure/platform,
 /turf/open/floor/prison/floor,
@@ -14905,9 +14686,7 @@
 	},
 /area/fiorina/tumor/servers)
 "kJX" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/floor,
 /area/fiorina/station/disco)
 "kKZ" = (
@@ -15043,9 +14822,7 @@
 	},
 /area/fiorina/station/civres_blue)
 "kOM" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
 "kOZ" = (
@@ -15060,9 +14837,7 @@
 /area/fiorina/tumor/servers)
 "kPi" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/prison{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/prison/panelscorched,
 /area/fiorina/tumor/aux_engi)
 "kPv" = (
 /turf/open/floor/prison/kitchen,
@@ -15072,9 +14847,8 @@
 /turf/open/space,
 /area/fiorina/oob)
 "kPC" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap"
+/obj/structure/stairs/perspective/p_stair_ew_full_cap{
+	dir = 8
 	},
 /obj/structure/platform/stair_cut,
 /turf/open/floor/plating/prison,
@@ -16108,9 +15882,7 @@
 /turf/open/space/basic,
 /area/fiorina/oob)
 "lEa" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_ew_full_cap,
 /obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
@@ -16207,9 +15979,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "lHy" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/disco)
@@ -16323,9 +16094,7 @@
 /turf/open/floor/prison/blue,
 /area/fiorina/tumor/servers)
 "lNg" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/telecomm/lz1_tram)
 "lNv" = (
@@ -16363,10 +16132,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security/wardens)
 "lOa" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/fiorina/station/lowsec)
 "lOb" = (
 /obj/structure/closet/crate/internals,
@@ -16387,9 +16153,8 @@
 /turf/open/floor/prison/floor_marked,
 /area/fiorina/tumor/servers)
 "lPV" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/disco)
@@ -16463,9 +16228,8 @@
 	},
 /area/fiorina/tumor/ship)
 "lUg" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /obj/structure/platform,
 /turf/open/floor/prison/floor_plate,
@@ -16520,10 +16284,7 @@
 	dir = 1;
 	pixel_y = 21
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/fiorina/station/lowsec)
 "lWD" = (
 /obj/structure/machinery/light/double/blue{
@@ -16634,9 +16395,8 @@
 /turf/open/floor/prison/kitchen,
 /area/fiorina/station/lowsec)
 "mam" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /obj/structure/platform/stair_cut/alt,
 /obj/structure/machinery/light/double/blue{
@@ -16742,9 +16502,7 @@
 /obj/structure/barricade/handrail/type_b{
 	layer = 3.4
 	},
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/tumor/ice_lab)
 "mdd" = (
@@ -16830,9 +16588,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "mfo" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
+/obj/structure/stairs/perspective/p_stair_full,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/disco)
 "mft" = (
@@ -16930,8 +16686,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_18";
+/obj/structure/flora/pottedplant/pottedplant_18{
 	pixel_y = 12
 	},
 /turf/open/floor/plating/prison,
@@ -16961,9 +16716,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/disco)
 "miZ" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /obj/structure/platform{
 	dir = 4
 	},
@@ -17039,9 +16792,8 @@
 /area/fiorina/station/power_ring)
 "mmP" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/monorail{
-	dir = 10;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 10
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
@@ -17133,9 +16885,7 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/tumor/ice_lab)
 "mrn" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/floor,
 /area/fiorina/tumor/aux_engi)
 "mrG" = (
@@ -17144,9 +16894,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/disco)
 "mrO" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "mrX" = (
@@ -17239,9 +16987,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells)
 "mwL" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 1
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/flight_deck)
@@ -17280,9 +17027,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/lowsec)
 "mxO" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /obj/structure/barricade/handrail/type_b{
 	dir = 1
 	},
@@ -17455,9 +17200,7 @@
 /turf/open/floor/prison/darkred2full,
 /area/fiorina/station/lowsec)
 "mDi" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
 	pixel_x = -10;
@@ -17651,9 +17394,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/fiorina/station/research_cells)
 "mLB" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/civres)
 "mLE" = (
@@ -17696,9 +17437,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/fiorina/station/medbay)
 "mMo" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/medbay)
 "mMq" = (
@@ -18016,9 +17755,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "mXe" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 4
 	},
 /obj/structure/platform{
 	dir = 4
@@ -18111,9 +17849,7 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/tumor/ice_lab)
 "mZV" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
 	pixel_x = 10;
@@ -18311,9 +18047,8 @@
 /turf/open/floor/prison/darkbrown2full,
 /area/fiorina/tumor/aux_engi)
 "nhd" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 8
 	},
 /obj/structure/platform{
 	dir = 4
@@ -18440,9 +18175,7 @@
 	},
 /area/fiorina/station/research_cells)
 "nmx" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
-	},
+/obj/structure/flora/pottedplant/pottedplant_21,
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/station/medbay)
 "nmQ" = (
@@ -18463,9 +18196,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/civres)
 "nnX" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap"
+/obj/structure/stairs/perspective/p_stair_ew_full_cap{
+	dir = 8
 	},
 /obj/structure/platform/stair_cut,
 /turf/open/floor/plating/prison,
@@ -18481,18 +18213,11 @@
 	},
 /area/fiorina/station/park)
 "noY" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/transit_hub)
-"nph" = (
-/obj/item/stool,
-/turf/open/floor/prison{
-	icon_state = "damaged2"
-	},
-/area/fiorina/station/lowsec)
 "npp" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
@@ -18508,9 +18233,7 @@
 	},
 /area/fiorina/station/civres_blue)
 "npz" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /obj/structure/platform_decoration{
 	dir = 1
 	},
@@ -18624,8 +18347,7 @@
 	},
 /area/fiorina/station/security)
 "ntg" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_27";
+/obj/structure/flora/pottedplant/pottedplant_27{
 	pixel_y = 6
 	},
 /turf/open/floor/wood,
@@ -18944,9 +18666,8 @@
 /turf/open/floor/prison/darkbrown2full,
 /area/fiorina/station/park)
 "nGW" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 4
 	},
 /obj/structure/platform_decoration{
 	dir = 8
@@ -19377,9 +19098,8 @@
 /turf/open/floor/prison/sterile_white,
 /area/fiorina/station/civres_blue)
 "nYA" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /obj/structure/platform,
 /turf/open/floor/plating/prison,
@@ -19572,9 +19292,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/flight_deck)
 "ogo" = (
-/obj/structure/monorail{
-	dir = 9;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 9
 	},
 /turf/open/space,
 /area/fiorina/oob)
@@ -19641,9 +19360,7 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "oja" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_sn_full_cap,
 /obj/structure/platform{
 	dir = 8
 	},
@@ -19825,9 +19542,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security/wardens)
 "omw" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_sn_full_cap,
 /obj/structure/platform{
 	dir = 8
 	},
@@ -19911,9 +19626,8 @@
 	},
 /area/fiorina/station/botany)
 "oqu" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap"
+/obj/structure/stairs/perspective/p_stair_ew_full_cap{
+	dir = 8
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
@@ -20185,9 +19899,7 @@
 /turf/open/floor/prison/greenfull_2,
 /area/fiorina/station/chapel)
 "oAm" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_ew_full_cap,
 /obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
@@ -20506,9 +20218,8 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_half_cap"
+/obj/structure/stairs/perspective/p_stair_ew_half_cap{
+	dir = 8
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
@@ -20616,9 +20327,8 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/lowsec)
 "oSK" = (
-/obj/structure/monorail{
-	dir = 9;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 9
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/lz/near_lzI)
@@ -20752,9 +20462,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/fiorina/station/medbay)
 "oYH" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "oYM" = (
@@ -20821,8 +20529,7 @@
 	},
 /area/fiorina/station/chapel)
 "pax" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_29";
+/obj/structure/flora/pottedplant/pottedplant_29{
 	pixel_y = 6
 	},
 /turf/open/floor/prison/floor_plate,
@@ -20901,9 +20608,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "pdf" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_sn_full_cap,
 /obj/structure/platform{
 	dir = 8
 	},
@@ -20955,9 +20660,8 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "pfi" = (
-/obj/structure/monorail{
-	dir = 6;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 6
 	},
 /turf/open/space,
 /area/fiorina/oob)
@@ -20987,10 +20691,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "pie" = (
-/turf/open/floor/prison{
-	icon_state = "platingdmg3"
-	},
-/area/fiorina/station/transit_hub)
+/turf/open/floor/prison/platingdmg3/area/fiorina/station/transit_hub)
 "pip" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -21109,9 +20810,8 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "poD" = (
-/obj/structure/stairs/perspective{
-	dir = 9;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 9
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/security)
@@ -21250,9 +20950,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/power_ring)
 "pty" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/greenfull_2,
 /area/fiorina/tumor/civres)
 "ptV" = (
@@ -21290,16 +20988,12 @@
 	},
 /area/fiorina/oob)
 "pvT" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_sn_full_cap,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/ice_lab)
 "pwg" = (
 /obj/structure/platform/stair_cut/alt,
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_ew_full_cap,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "pwi" = (
@@ -21321,10 +21015,7 @@
 /area/fiorina/station/disco)
 "pxa" = (
 /obj/item/circuitboard/machine/rdserver,
-/turf/open/floor/prison{
-	icon_state = "floorscorched1"
-	},
-/area/fiorina/tumor/servers)
+/turf/open/floor/prison/floorscorched1/area/fiorina/tumor/servers)
 "pxk" = (
 /obj/structure/closet/cabinet,
 /obj/item/reagent_container/pill/cyanide,
@@ -21441,9 +21132,8 @@
 /turf/open/floor/prison/darkyellow2full,
 /area/fiorina/lz/near_lzI)
 "pAO" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /obj/structure/platform,
 /turf/open/floor/plating/prison,
@@ -21512,9 +21202,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "pDg" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
+/obj/structure/stairs/perspective/p_stair_full,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/botany)
 "pDH" = (
@@ -21691,9 +21379,8 @@
 /area/fiorina/station/park)
 "pIK" = (
 /obj/structure/platform,
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
@@ -22098,9 +21785,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "qbD" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/greenfull_2,
 /area/fiorina/station/transit_hub)
 "qbT" = (
@@ -22313,17 +21998,15 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "qit" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /obj/structure/platform,
 /turf/open/floor/prison/floor,
 /area/fiorina/tumor/servers)
 "qjc" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
@@ -22349,9 +22032,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/disco)
 "qjC" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /obj/structure/platform,
 /turf/open/floor/plating/prison,
@@ -22362,8 +22044,7 @@
 /turf/open/floor/prison/yellow,
 /area/fiorina/station/lowsec)
 "qkf" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_29";
+/obj/structure/flora/pottedplant/pottedplant_29{
 	layer = 3.5;
 	pixel_y = 6
 	},
@@ -22470,15 +22151,11 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "qnu" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged1"
-	},
+/turf/open/floor/prison/damaged1,
 /area/fiorina/station/disco)
 "qnB" = (
-/obj/structure/monorail{
-	dir = 6;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 6
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
@@ -22660,9 +22337,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/telecomm/lz1_cargo)
 "qvn" = (
-/obj/structure/monorail{
-	dir = 10;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 10
 	},
 /turf/open/space,
 /area/fiorina/oob)
@@ -22719,9 +22395,8 @@
 	},
 /area/fiorina/maintenance)
 "qxB" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 1
 	},
 /obj/structure/platform{
 	dir = 8
@@ -22882,16 +22557,13 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "qDc" = (
-/obj/structure/monorail{
-	dir = 9;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 9
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "qDd" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_ew_full_cap,
 /obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/flight_deck)
@@ -22931,9 +22603,7 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/lz/near_lzI)
 "qDG" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
 "qDH" = (
@@ -22987,9 +22657,7 @@
 /turf/open/space/basic,
 /area/fiorina/oob)
 "qFQ" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /obj/structure/barricade/handrail/type_b{
 	dir = 1
 	},
@@ -23209,9 +22877,7 @@
 /turf/open/floor/prison/darkbrown2angle,
 /area/fiorina/station/park)
 "qOd" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/yellowfull,
 /area/fiorina/station/lowsec)
 "qOk" = (
@@ -23270,9 +22936,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/maintenance)
 "qPC" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
@@ -23446,9 +23111,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/medbay)
 "qUZ" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /obj/structure/platform,
 /obj/structure/machinery/light/double/blue{
@@ -23531,9 +23195,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/civres)
 "qXl" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
@@ -23546,9 +23209,7 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/chapel)
 "qYc" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -23578,8 +23239,7 @@
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
 "qZx" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_29";
+/obj/structure/flora/pottedplant/pottedplant_29{
 	layer = 3.5;
 	pixel_y = 6
 	},
@@ -23592,8 +23252,7 @@
 	pixel_x = 12;
 	pixel_y = 25
 	},
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
+/obj/structure/flora/pottedplant/pottedplant_22{
 	layer = 2.8;
 	pixel_x = 15;
 	pixel_y = 5
@@ -23680,9 +23339,7 @@
 /obj/structure/platform_decoration{
 	dir = 4
 	},
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_sn_full_cap,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "rfa" = (
@@ -23781,9 +23438,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "rjz" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
+/obj/structure/stairs/perspective/p_stair_full,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gibarm_flesh"
 	},
@@ -23883,10 +23538,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "rmA" = (
-/turf/open/floor/prison{
-	icon_state = "platingdmg3"
-	},
-/area/fiorina/station/security)
+/turf/open/floor/prison/platingdmg3/area/fiorina/station/security)
 "rmG" = (
 /obj/item/ammo_casing{
 	icon_state = "casing_5"
@@ -23930,9 +23582,8 @@
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
 "rol" = (
-/obj/structure/monorail{
-	dir = 4;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 4
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
@@ -24063,16 +23714,14 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/tumor/aux_engi)
 "rtM" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_29";
+/obj/structure/flora/pottedplant/pottedplant_29{
 	pixel_y = 6
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security/wardens)
 "rue" = (
-/obj/structure/monorail{
-	dir = 10;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 10
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
@@ -24221,9 +23870,8 @@
 /turf/open/space,
 /area/fiorina/oob)
 "rAk" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 8
 	},
 /obj/structure/platform{
 	dir = 4
@@ -24324,9 +23972,8 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/medbay)
 "rCO" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap"
+/obj/structure/stairs/perspective/p_stair_ew_full_cap{
+	dir = 8
 	},
 /obj/structure/platform/stair_cut,
 /turf/open/floor/plating/prison,
@@ -24358,18 +24005,13 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "rEH" = (
-/turf/open/floor/prison{
-	icon_state = "platingdmg1"
-	},
-/area/fiorina/oob)
+/turf/open/floor/prison/platingdmg1/area/fiorina/oob)
 "rFr" = (
 /obj/structure/barricade/wooden{
 	dir = 4;
 	pixel_y = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "damaged3"
-	},
+/turf/open/floor/prison/damaged3,
 /area/fiorina/station/disco)
 "rFu" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -24446,9 +24088,8 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/station/chapel)
 "rIC" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /obj/structure/platform,
 /turf/open/floor/prison/floor,
@@ -24553,9 +24194,7 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/station/medbay)
 "rMg" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/greenfull,
 /area/fiorina/tumor/civres)
 "rMt" = (
@@ -24624,9 +24263,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/disco)
 "rOo" = (
-/obj/structure/monorail{
-	dir = 9;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 9
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
@@ -24781,9 +24419,8 @@
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/station/medbay)
 "rTb" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
@@ -24795,9 +24432,7 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "rTL" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_ew_full_cap,
 /obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
@@ -24807,9 +24442,8 @@
 	},
 /area/fiorina/lz/near_lzI)
 "rUr" = (
-/obj/structure/monorail{
-	dir = 4;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 4
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
@@ -24867,9 +24501,7 @@
 /turf/open/floor/prison/blue_plate_2,
 /area/fiorina/station/botany)
 "rWX" = (
-/turf/open/floor/prison{
-	icon_state = "damaged3"
-	},
+/turf/open/floor/prison/damaged3,
 /area/fiorina/station/disco)
 "rWZ" = (
 /obj/item/weapon/gun/rifle/m16,
@@ -24892,9 +24524,8 @@
 	},
 /area/fiorina/lz/near_lzI)
 "rYC" = (
-/obj/structure/stairs/perspective{
-	dir = 10;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 10
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/security)
@@ -24911,9 +24542,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzI)
 "rZh" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_ew_full_cap,
 /obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
@@ -25041,9 +24670,8 @@
 	},
 /area/fiorina/station/civres_blue)
 "sel" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap"
+/obj/structure/stairs/perspective/p_stair_ew_full_cap{
+	dir = 8
 	},
 /obj/structure/platform/stair_cut,
 /turf/open/floor/plating/prison,
@@ -25118,9 +24746,8 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/medbay)
 "siz" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 1
 	},
 /obj/structure/platform{
 	dir = 8
@@ -25151,9 +24778,8 @@
 	},
 /area/fiorina/station/civres_blue)
 "sjn" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 1
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/tumor/ice_lab)
@@ -25200,9 +24826,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "sma" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 8
 	},
 /obj/structure/platform{
 	dir = 4
@@ -25363,9 +24988,7 @@
 	indestructible = 1;
 	name = "launch bay door"
 	},
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)
 "ssJ" = (
@@ -25386,9 +25009,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells)
 "stq" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison/yellowcorner{
 	dir = 8
@@ -25407,9 +25028,7 @@
 	},
 /area/fiorina/station/telecomm/lz1_cargo)
 "sun" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_sn_full_cap,
 /obj/structure/platform{
 	dir = 8
 	},
@@ -25616,11 +25235,6 @@
 	dir = 8
 	},
 /area/fiorina/lz/near_lzI)
-"sED" = (
-/turf/open/floor/prison{
-	icon_state = "damaged2"
-	},
-/area/fiorina/station/disco)
 "sEO" = (
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/lz/near_lzII)
@@ -25736,10 +25350,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "sJw" = (
-/turf/open/floor/prison{
-	icon_state = "floorscorched1"
-	},
-/area/fiorina/station/chapel)
+/turf/open/floor/prison/floorscorched1/area/fiorina/station/chapel)
 "sJN" = (
 /obj/structure/sign/prop3{
 	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
@@ -25807,9 +25418,7 @@
 	},
 /area/fiorina/tumor/fiberbush)
 "sNd" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
-	},
+/obj/structure/flora/pottedplant/pottedplant_21,
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/tumor/ice_lab)
 "sNu" = (
@@ -25871,9 +25480,8 @@
 	},
 /area/fiorina/tumor/ship)
 "sPk" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 1
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/power_ring)
@@ -26060,10 +25668,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/fiorina/station/medbay)
 "sWF" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/fiorina/station/disco)
 "sXi" = (
 /turf/open/floor/corsat{
@@ -26158,9 +25763,8 @@
 	},
 /area/fiorina/station/medbay)
 "tcJ" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/botany)
@@ -26196,8 +25800,7 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/park)
 "tef" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
+/obj/structure/flora/pottedplant/pottedplant_22{
 	layer = 2.5
 	},
 /turf/open/floor/prison/floor,
@@ -26254,10 +25857,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "the" = (
-/turf/open/floor/prison{
-	icon_state = "floorscorched1"
-	},
-/area/fiorina/station/security)
+/turf/open/floor/prison/floorscorched1/area/fiorina/station/security)
 "thi" = (
 /turf/open/floor/prison/cell_stripe{
 	dir = 4
@@ -26312,9 +25912,7 @@
 /turf/open/floor/prison/darkpurple2full,
 /area/fiorina/tumor/servers)
 "tke" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
 	},
@@ -26325,9 +25923,7 @@
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/station/medbay)
 "tld" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/floor,
 /area/fiorina/station/power_ring)
 "tlp" = (
@@ -26686,8 +26282,7 @@
 /area/fiorina/lz/near_lzI)
 "tvU" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_27";
+/obj/structure/flora/pottedplant/pottedplant_27{
 	layer = 3.1;
 	pixel_x = -2;
 	pixel_y = 10
@@ -26895,9 +26490,8 @@
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
 "tEb" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/flight_deck)
@@ -26986,9 +26580,8 @@
 	},
 /area/fiorina/station/telecomm/lz1_cargo)
 "tHU" = (
-/obj/structure/monorail{
-	dir = 5;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 5
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
@@ -27219,9 +26812,7 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/station/medbay)
 "tPi" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/open/floor/prison/darkyellow2{
 	dir = 1
 	},
@@ -27249,10 +26840,7 @@
 	},
 /area/fiorina/station/research_cells)
 "tPQ" = (
-/turf/open/floor/prison{
-	icon_state = "platingdmg1"
-	},
-/area/fiorina/station/security)
+/turf/open/floor/prison/platingdmg1/area/fiorina/station/security)
 "tQi" = (
 /obj/structure/prop/souto_land/streamer{
 	dir = 1;
@@ -27350,9 +26938,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/park)
 "tTK" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_7"
-	},
+/obj/structure/flora/pottedplant/pottedplant_7,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "tTM" = (
@@ -27423,9 +27009,8 @@
 /turf/open/floor/prison/darkbrown2,
 /area/fiorina/station/park)
 "tVG" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /obj/structure/platform,
 /turf/open/floor/prison/floor,
@@ -27482,10 +27067,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "tXQ" = (
-/turf/open/floor/prison{
-	icon_state = "platingdmg1"
-	},
-/area/fiorina/tumor/servers)
+/turf/open/floor/prison/platingdmg1/area/fiorina/tumor/servers)
 "tYc" = (
 /obj/effect/decal{
 	icon = 'icons/obj/items/policetape.dmi';
@@ -27532,10 +27114,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "tZS" = (
-/turf/open/floor/prison{
-	icon_state = "platingdmg1"
-	},
-/area/fiorina/tumor/civres)
+/turf/open/floor/prison/platingdmg1/area/fiorina/tumor/civres)
 "tZV" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8
@@ -27570,14 +27149,10 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "ubk" = (
-/turf/open/floor/prison{
-	icon_state = "floorscorched1"
-	},
-/area/fiorina/tumor/aux_engi)
+/turf/open/floor/prison/floorscorched1/area/fiorina/tumor/aux_engi)
 "ubH" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/security)
@@ -27654,9 +27229,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/park)
 "ueA" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/sterile_white,
 /area/fiorina/station/medbay)
 "ueF" = (
@@ -27774,9 +27347,8 @@
 /turf/open/floor/prison/sterile_white,
 /area/fiorina/station/civres_blue)
 "ujJ" = (
-/obj/structure/monorail{
-	dir = 5;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 5
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
@@ -28553,10 +28125,7 @@
 	dir = 4;
 	pixel_y = 4
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged1"
-	},
+/turf/open/floor/prison/damaged1,
 /area/fiorina/station/disco)
 "uSo" = (
 /obj/item/poster,
@@ -28907,9 +28476,8 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/station/medbay)
 "vdI" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 4
 	},
 /obj/structure/platform{
 	dir = 4
@@ -28997,9 +28565,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/park)
 "vfR" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 1
 	},
 /obj/structure/platform{
 	dir = 8
@@ -29042,9 +28609,8 @@
 /turf/open/floor/prison/darkpurple2full,
 /area/fiorina/tumor/servers)
 "viV" = (
-/obj/structure/monorail{
-	dir = 5;
-	name = "launch track"
+/obj/structure/monorail/launchtrack{
+	dir = 5
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/lz/near_lzI)
@@ -29212,18 +28778,16 @@
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
 "vpJ" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /obj/structure/platform,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "vqb" = (
 /obj/structure/platform,
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/botany)
@@ -29283,9 +28847,7 @@
 /turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "vrN" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	indestructible = 1;
 	name = "launch bay door"
@@ -29303,10 +28865,7 @@
 /turf/open/floor/prison/whitepurpleangle,
 /area/fiorina/station/research_cells)
 "vsc" = (
-/turf/open/floor/prison{
-	icon_state = "floorscorched1"
-	},
-/area/fiorina/station/civres_blue)
+/turf/open/floor/prison/floorscorched1/area/fiorina/station/civres_blue)
 "vsg" = (
 /obj/structure/closet/emcloset,
 /obj/effect/landmark/objective_landmark/far,
@@ -29585,8 +29144,7 @@
 	},
 /area/fiorina/station/civres_blue)
 "vCv" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_29";
+/obj/structure/flora/pottedplant/pottedplant_29{
 	pixel_y = 6
 	},
 /turf/open/floor/prison/floor,
@@ -29693,9 +29251,7 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "vFQ" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/tumor/civres)
 "vFY" = (
@@ -29819,9 +29375,8 @@
 /turf/open/floor/prison/darkred2full,
 /area/fiorina/station/security)
 "vMh" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
@@ -29860,9 +29415,7 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/park)
 "vNt" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/greencorner{
 	dir = 1
 	},
@@ -29954,9 +29507,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/lz/near_lzI)
 "vQN" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /obj/structure/platform,
 /turf/open/floor/plating/prison,
@@ -30023,9 +29575,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "vUn" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_ew_full_cap,
 /obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/botany)
@@ -30067,9 +29617,7 @@
 	},
 /area/fiorina/station/power_ring)
 "vWI" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/prison/yellowfull,
 /area/fiorina/station/disco)
 "vXi" = (
@@ -30087,9 +29635,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/fiorina/station/medbay)
 "vXS" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
 "vXT" = (
@@ -30200,9 +29746,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz2_maint)
 "wbn" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "wbp" = (
@@ -30310,9 +29854,8 @@
 /turf/open/floor/prison/darkbrown2full,
 /area/fiorina/tumor/aux_engi)
 "weQ" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /obj/structure/platform,
 /turf/open/floor/prison/floor_plate,
@@ -30443,9 +29986,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/lz/near_lzII)
 "wlz" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
+/obj/structure/flora/pottedplant/pottedplant_22,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "wlG" = (
@@ -30747,8 +30288,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/lowsec)
 "wzS" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_29";
+/obj/structure/flora/pottedplant/pottedplant_29{
 	pixel_y = 6
 	},
 /turf/open/floor/prison/floor,
@@ -30874,9 +30414,7 @@
 /turf/open/floor/prison/yellowcorner,
 /area/fiorina/station/disco)
 "wER" = (
-/turf/open/floor/prison{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/prison/panelscorched,
 /area/fiorina/oob)
 "wEX" = (
 /obj/structure/machinery/light/double/blue{
@@ -30899,10 +30437,7 @@
 /turf/open/floor/prison/darkyellow2full,
 /area/fiorina/lz/near_lzI)
 "wFo" = (
-/turf/open/floor/prison{
-	icon_state = "floorscorched1"
-	},
-/area/fiorina/tumor/civres)
+/turf/open/floor/prison/floorscorched1/area/fiorina/tumor/civres)
 "wFD" = (
 /obj/structure/bed/sofa/south/grey/right,
 /turf/open/floor/prison/floor_plate,
@@ -31302,9 +30837,8 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/civres_blue)
 "wTy" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 8
 	},
 /turf/open/floor/prison/floor,
 /area/fiorina/station/security)
@@ -31460,15 +30994,10 @@
 /turf/open/floor/prison/darkyellow2,
 /area/fiorina/station/flight_deck)
 "xbQ" = (
-/turf/open/floor/prison{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/prison/panelscorched,
 /area/fiorina/station/civres_blue)
 "xca" = (
-/turf/open/floor/prison{
-	icon_state = "platingdmg2"
-	},
-/area/fiorina/station/security)
+/turf/open/floor/prison/platingdmg2/area/fiorina/station/security)
 "xcf" = (
 /obj/item/reagent_container/food/snacks/donkpocket,
 /turf/open/floor/prison/floor_plate,
@@ -31531,9 +31060,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "xfd" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap"
+/obj/structure/stairs/perspective/p_stair_ew_full_cap{
+	dir = 8
 	},
 /obj/structure/platform/stair_cut,
 /obj/structure/machinery/light/double/blue{
@@ -31733,9 +31261,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "xnp" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 4
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
@@ -31768,9 +31295,7 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/station/medbay)
 "xnM" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_sn_full_cap,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "xnN" = (
@@ -31890,9 +31415,7 @@
 /turf/open/floor/prison/greenfull_2,
 /area/fiorina/station/transit_hub)
 "xrG" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
+/obj/structure/stairs/perspective/p_stair_ew_full_cap,
 /obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/disco)
@@ -32060,9 +31583,7 @@
 /area/fiorina/station/civres_blue)
 "xxE" = (
 /obj/item/stack/rods/plasteel,
-/turf/open/floor/prison{
-	icon_state = "damaged3"
-	},
+/turf/open/floor/prison/damaged3,
 /area/fiorina/station/security)
 "xxP" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
@@ -32087,9 +31608,8 @@
 /turf/open/floor/prison/floor,
 /area/fiorina/station/telecomm/lz1_cargo)
 "xyK" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 1
 	},
 /obj/structure/platform{
 	dir = 8
@@ -32196,8 +31716,7 @@
 /area/fiorina/lz/near_lzII)
 "xBK" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_29";
+/obj/structure/flora/pottedplant/pottedplant_29{
 	pixel_x = 1;
 	pixel_y = 10
 	},
@@ -32272,9 +31791,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "xDz" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 1
 	},
 /obj/structure/platform{
 	dir = 8
@@ -32293,8 +31811,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "xEE" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
+/obj/structure/flora/pottedplant/pottedplant_22{
 	indestructible = 1
 	},
 /obj/item/clothing/head/that{
@@ -32305,9 +31822,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "xFe" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/perspective/p_stair_full{
+	dir = 8
 	},
 /obj/structure/platform,
 /obj/structure/barricade/handrail/type_b{
@@ -32503,9 +32019,8 @@
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/station/security)
 "xNQ" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 8
 	},
 /obj/structure/platform{
 	dir = 4
@@ -32625,9 +32140,8 @@
 	},
 /area/fiorina/station/power_ring)
 "xTi" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap"
+/obj/structure/stairs/perspective/p_stair_sn_full_cap{
+	dir = 8
 	},
 /obj/structure/platform{
 	dir = 4
@@ -32898,10 +32412,7 @@
 /area/fiorina/station/telecomm/lz1_cargo)
 "ydk" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/prison{
-	icon_state = "floorscorched1"
-	},
-/area/fiorina/station/chapel)
+/turf/open/floor/prison/floorscorched1/area/fiorina/station/chapel)
 "ydX" = (
 /turf/open/floor/prison/darkyellow2corner{
 	dir = 8
@@ -33075,9 +32586,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/fiberbush)
 "yls" = (
-/obj/structure/monorail{
-	name = "launch track"
-	},
+/obj/structure/monorail/launchtrack,
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "ylu" = (
@@ -68805,7 +68314,7 @@ iOJ
 sad
 kJX
 oXE
-sED
+sWF
 gqe
 kJX
 gqe
@@ -73695,7 +73204,7 @@ mAA
 atx
 jxy
 wjH
-nph
+hDr
 vHG
 pQq
 dtg

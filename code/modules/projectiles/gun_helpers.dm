@@ -700,6 +700,9 @@ DEFINES in setup.dm, referenced here.
 		CRASH("add_firemode called with a resulting gun_firemode_list length of [length(gun_firemode_list)].")
 
 /obj/item/weapon/gun/proc/remove_firemode(removed_firemode, mob/user)
+	if(!(removed_firemode in gun_firemode_list))
+		return
+
 	if(!length(gun_firemode_list) || (length(gun_firemode_list) == 1))
 		CRASH("remove_firemode called with gun_firemode_list length [length(gun_firemode_list)].")
 
@@ -710,7 +713,9 @@ DEFINES in setup.dm, referenced here.
 		do_toggle_firemode(user, gun_firemode)
 
 /obj/item/weapon/gun/proc/setup_firemodes()
+	var/old_firemode = gun_firemode
 	gun_firemode_list.len = 0
+
 	if(start_semiauto)
 		gun_firemode_list |= GUN_FIREMODE_SEMIAUTO
 
@@ -722,6 +727,10 @@ DEFINES in setup.dm, referenced here.
 
 	if(!length(gun_firemode_list))
 		CRASH("[src] called setup_firemodes() with an empty gun_firemode_list")
+
+	else if(old_firemode in gun_firemode_list)
+		gun_firemode = old_firemode
+
 	else
 		gun_firemode = gun_firemode_list[1]
 

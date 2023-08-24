@@ -55,8 +55,13 @@
 	SIGNAL_HANDLER
 	UnregisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED)
 
-	selected_vehicle = "APC"
-	available_categories &= ~(VEHICLE_ARMOR_AVAILABLE|VEHICLE_INTEGRAL_AVAILABLE) //APC lacks these, so we need to remove these flags to be able to access spare parts section
+	available_categories = VEHICLE_ALL_AVAILABLE
+
+	if(istype(V, /obj/vehicle/multitile/tank))
+		selected_vehicle = "TANK"
+	else if(istype(V, /obj/vehicle/multitile/apc))
+		selected_vehicle = "APC"
+		available_categories &= ~(VEHICLE_ARMOR_AVAILABLE|VEHICLE_INTEGRAL_AVAILABLE)	//APC lacks these, so we need to remove these flags to be able to access spare parts section
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_listed_products(mob/user)
 	var/list/display_list = list()

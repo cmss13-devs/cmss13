@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Gave the ASO ability to modify IDs."
-  - rscdel: "Removed this from the QM."

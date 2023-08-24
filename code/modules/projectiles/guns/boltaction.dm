@@ -208,6 +208,14 @@
 	user.apply_effect(0.7, WEAKEN)
 	user.apply_effect(1, SUPERSLOW)
 	user.apply_effect(2, SLOW)
+
+	if(ishuman(user))
+		if(istype(user.l_hand, /obj/item/weapon/gun/boltaction/vulture))
+			break_arm(user, LEFT)
+
+		else if(istype(user.r_hand, /obj/item/weapon/gun/boltaction/vulture))
+			break_arm(user, RIGHT)
+
 	//Either knockback or slam them into an obstacle.
 	var/direction = REVERSE_DIR(user.dir)
 	if(direction && !step(user, direction))
@@ -216,15 +224,6 @@
 		user.apply_damage(MELEE_FORCE_TIER_2)
 
 	shake_camera(user, 7, 6) // Around 2x worse than getting hit with a heavy round
-
-	if(!ishuman(user))
-		return
-
-	if(istype(user.l_hand, /obj/item/weapon/gun/boltaction/vulture))
-		break_arm(user, LEFT)
-
-	else if(istype(user.r_hand, /obj/item/weapon/gun/boltaction/vulture))
-		break_arm(user, RIGHT)
 
 /// The code that takes care of breaking a person's firing arm
 /obj/item/weapon/gun/boltaction/vulture/proc/break_arm(mob/living/carbon/human/user, arm = LEFT)

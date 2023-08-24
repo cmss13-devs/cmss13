@@ -862,7 +862,8 @@
 		return
 
 	var/ob_name = lowertext(almayer_orbital_cannon.tray.warhead.name)
-	announce_dchat("\A [ob_name] targeting [A.name] has been fired!", T)
+	var/mutable_appearance/warhead_appearance = mutable_appearance(almayer_orbital_cannon.tray.warhead.icon, almayer_orbital_cannon.tray.warhead.icon_state)
+	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [A.name] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
 	message_admins(FONT_SIZE_HUGE("ALERT: [key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]' [ADMIN_JMP(T)]"))
 	log_attack("[key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]'")
 

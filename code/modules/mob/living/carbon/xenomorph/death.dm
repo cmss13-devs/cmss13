@@ -130,7 +130,7 @@
 				// Tell the xeno she is the last one.
 				if(X.client)
 					to_chat(X, SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"))
-				announce_dchat("There is only one Xenomorph left: [X.name].", X)
+				notify_ghosts(header = "Last Xenomorph", message = "There is only one Xenomorph left: [X.name].", source = X, action = NOTIFY_ORBIT)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
 

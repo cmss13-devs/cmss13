@@ -216,7 +216,7 @@
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
 		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE)
-		announce_dchat("[xeno] has locked \the [dropship]", src)
+		notify_ghosts(header = "Dropship Locked", message = "[xeno] has locked [dropship]!", source = xeno, action = NOTIFY_ORBIT)
 
 		if(almayer_orbital_cannon)
 			almayer_orbital_cannon.is_disabled = TRUE

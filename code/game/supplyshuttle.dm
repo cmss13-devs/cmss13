@@ -1317,6 +1317,7 @@ var/datum/controller/supply/supply_controller = new()
 		/datum/vehicle_order/apc,
 		/datum/vehicle_order/apc/med,
 		/datum/vehicle_order/apc/cmd,
+		/datum/vehicle_order/tank,
 	)
 
 	for(var/order as anything in vehicles)

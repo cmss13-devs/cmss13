@@ -267,11 +267,15 @@
 	if(toggling_action)
 		toggling_action.update_button_icon()
 
-/obj/item/weapon/gun/rifle/sniper/set_bursting(mob/user)
-	if(has_aimed_shot)
-		toggle_laser(user)
-	else
-		..()
+/obj/item/weapon/gun/rifle/sniper/verb/toggle_gun_laser()
+	set category = "Weapons"
+	set name = "Toggle Laser"
+	set desc = "Toggles your laser on or off."
+	set src = usr.contents
+
+	var/obj/item/weapon/gun/rifle/sniper/sniper = get_active_firearm(usr)
+	if((sniper == src) && has_aimed_shot)
+		toggle_laser(usr)
 
 //Pow! Headshot.
 /obj/item/weapon/gun/rifle/sniper/M42A
@@ -580,7 +584,7 @@
 
 
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 23, "rail_y" = 21, "under_x" = 30, "under_y" = 11, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)
+	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 23, "rail_y" = 21, "under_x" = 30, "under_y" = 11, "stock_x" = 24, "stock_y" = 13, "special_x" = 39, "special_y" = 17)
 
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_config_values()
 	..()

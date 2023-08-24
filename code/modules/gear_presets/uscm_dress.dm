@@ -111,7 +111,7 @@
 
 /datum/equipment_preset/uscm_event/dress/officer/capt/New()
 	. = ..()
-	access = get_main_marine_access()
+	access = get_access(ACCESS_LIST_MARINE_MAIN)
 
 /datum/equipment_preset/uscm_event/dress/officer/co
 	name = "Dress Blues - (O-4) Major"
@@ -121,7 +121,7 @@
 
 /datum/equipment_preset/uscm_event/dress/officer/co/New()
 	. = ..()
-	access = get_all_marine_access()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /datum/equipment_preset/uscm_event/dress/officer/co/ltcol
 	name = "Dress Blues - (O-5) Lieutenant Colonel"
@@ -145,7 +145,7 @@
 
 /datum/equipment_preset/uscm_event/dress/officer/general/New()
 	. = ..()
-	access = get_all_marine_access()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /datum/equipment_preset/uscm_event/dress/officer/general/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/dress/blues/general(new_human), WEAR_BODY)

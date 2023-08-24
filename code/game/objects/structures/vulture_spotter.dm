@@ -51,7 +51,7 @@
 
 	return ..()
 
-/obj/structure/vulture_spotter_tripod/MouseDrop(over_object, src_location, over_location) //zonenote
+/obj/structure/vulture_spotter_tripod/MouseDrop(over_object, src_location, over_location)
 	if(!ishuman(usr))
 		return
 	var/mob/living/carbon/human/user = usr //this is us

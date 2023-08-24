@@ -211,8 +211,7 @@
 	//Either knockback or slam them into an obstacle.
 	var/direction = REVERSE_DIR(user.dir)
 	if(direction && !step(user, direction))
-		user.animation_attack_on(get_step(user, direction)) //zonenote check if necessary
-		//playsound(living_mob.loc, "punch", 25, 1)
+		user.animation_attack_on(get_step(user, direction))
 		user.visible_message(SPAN_DANGER("[user] slams into an obstacle!"), SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		user.apply_damage(MELEE_FORCE_TIER_2)
 

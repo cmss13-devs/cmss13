@@ -228,6 +228,8 @@
 	VAR_PROTECTED/start_semiauto = TRUE
 	/// If this gun should spawn with automatic fire. Protected due to it never needing to be edited.
 	VAR_PROTECTED/start_automatic = FALSE
+	/// The type of projectile that this gun should shoot
+	var/projectile_type = /obj/item/projectile
 
 
 /**
@@ -1008,7 +1010,7 @@ and you're good to go.
 	if(isliving(loc))
 		var/mob/M = loc
 		weapon_source_mob = M
-	var/obj/item/projectile/P = new /obj/item/projectile(src, create_cause_data(bullet_source, weapon_source_mob))
+	var/obj/item/projectile/P = new projectile_type(src, create_cause_data(bullet_source, weapon_source_mob))
 	P.generate_bullet(chambered, 0, NO_FLAGS)
 
 	return P
@@ -1900,3 +1902,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /// Setter proc for fa_firing
 /obj/item/weapon/gun/proc/set_auto_firing(auto = FALSE)
 	fa_firing = auto
+
+/// Returns gun_user
+/obj/item/weapon/gun/proc/get_gun_user()
+	return gun_user

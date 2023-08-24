@@ -72,9 +72,11 @@
 	var/severity = 0
 	var/fs_view = 7
 	var/show_when_dead = FALSE
+	/// If this should try and resize if the user's view is bigger than the default
+	var/should_resize = TRUE
 
 /atom/movable/screen/fullscreen/proc/update_for_view(client_view)
-	if (screen_loc == "CENTER-7,CENTER-7" && fs_view != client_view)
+	if (screen_loc == "CENTER-7,CENTER-7" && fs_view != client_view && should_resize)
 		var/list/actualview = getviewsize(client_view)
 		fs_view = client_view
 		transform = matrix(actualview[1]/FULLSCREEN_OVERLAY_RESOLUTION_X, 0, 0, 0, actualview[2]/FULLSCREEN_OVERLAY_RESOLUTION_Y, 0)
@@ -168,6 +170,14 @@
 
 /atom/movable/screen/fullscreen/laser_blind
 	icon_state = "impairedoverlay1"
+
+/atom/movable/screen/fullscreen/vulture
+	icon_state = "vulture_scope_overlay_sniper"
+	layer = FULLSCREEN_VULTURE_SCOPE_LAYER
+
+/atom/movable/screen/fullscreen/vulture/spotter
+	icon_state = "vulture_scope_overlay_spotter"
+	should_resize = FALSE
 
 //Weather overlays//
 

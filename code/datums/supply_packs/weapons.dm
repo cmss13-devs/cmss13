@@ -42,7 +42,7 @@
 	group = "Weapons"
 
 /datum/supply_packs/grenade_launchers
-	name = "M79 Grenade Launcher Crate (x2 Guncasess)"
+	name = "M79 Grenade Launcher Crate (x2 Guncases)"
 	contains = list(
 		/obj/item/storage/box/guncase/m79,
 		/obj/item/storage/box/guncase/m79,
@@ -119,6 +119,16 @@
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "\improper XM88 Heavy Rifle crate"
 	group = "Weapons"
+
+/*
+/datum/supply_packs/gun/m707
+	name = "M707 Anti-Materiel Rifle crate (M707 x1)"
+	contains = list()
+	cost = 120
+	containertype = /obj/structure/closet/crate/secure/vulture
+	containername = "M707 crate"
+	group = "Weapons"
+*/
 
 /datum/supply_packs/gun/merc
 	contains = list()

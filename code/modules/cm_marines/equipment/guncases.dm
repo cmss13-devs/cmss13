@@ -295,3 +295,29 @@
 	new /obj/item/weapon/gun/shotgun/double/cane(src)
 	new /obj/item/ammo_magazine/handful/revolver/marksman/six_rounds(src)
 	new /obj/item/ammo_magazine/handful/revolver/marksman/six_rounds(src)
+
+/obj/item/storage/box/guncase/vulture
+	name = "\improper M707 anti-materiel rifle case"
+	desc = "A gun case containing the M707 \"Vulture\" anti-materiel rifle and its requisite spotting tools."
+	icon_state = "guncase_blue"
+	storage_slots = 7
+	can_hold = list(
+		/obj/item/weapon/gun/boltaction/vulture,
+		/obj/item/ammo_magazine/rifle/boltaction/vulture,
+		/obj/item/device/vulture_spotter_tripod,
+		/obj/item/device/vulture_spotter_scope,
+	)
+
+/obj/item/storage/box/guncase/vulture/update_icon()
+	if(LAZYLEN(contents))
+		icon_state = "guncase_blue"
+	else
+		icon_state = "guncase_blue_e"
+
+/obj/item/storage/box/guncase/vulture/fill_preset_inventory()
+	var/obj/item/weapon/gun/boltaction/vulture/rifle = new(src)
+	new /obj/item/ammo_magazine/rifle/boltaction/vulture(src)
+	new /obj/item/ammo_magazine/rifle/boltaction/vulture(src)
+	new /obj/item/device/vulture_spotter_tripod(src)
+	new /obj/item/device/vulture_spotter_scope(src, WEAKREF(rifle))
+	new /obj/item/tool/screwdriver(src) // Spotter scope needs a screwdriver to disassemble

@@ -36,6 +36,8 @@
 	var/bolted = TRUE // FALSE IS OPEN, TRUE IS CLOSE
 	var/bolt_delay
 	var/recent_cycle //world.time to see when they last bolted it.
+	/// If this gun should change icon states when the bolt is open
+	var/has_openbolt_icon = TRUE
 
 /obj/item/weapon/gun/boltaction/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 5, "rail_y" = 18, "under_x" = 25, "under_y" = 14, "stock_x" = 18, "stock_y" = 10)
@@ -49,7 +51,7 @@
 	..()
 
 	var/new_icon_state = icon_state
-	if(!bolted)
+	if(!bolted && has_openbolt_icon)
 		new_icon_state += "_o"
 
 	icon_state = new_icon_state
@@ -111,3 +113,143 @@
 		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
+
+
+/obj/item/weapon/gun/boltaction/vulture
+	name = "\improper M707 \"Vulture\" anti-materiel rifle"
+	desc = "The M707 is a crude but highly powerful rifle, designed for disabling lightly armored vehicles and hitting targets inside buildings. Its unwieldy scope and caliber necessitates a spotter to be fully effective."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi' // overriden with camos
+	icon_state = "vulture"
+	item_state = "vulture"
+	cocked_sound = 'sound/weapons/gun_cocked2.ogg'
+	fire_sound = 'sound/weapons/gun_vulture_fire.ogg'
+	open_bolt_sound ='sound/weapons/handling/gun_vulture_bolt_eject.ogg'
+	close_bolt_sound ='sound/weapons/handling/gun_vulture_bolt_close.ogg'
+	flags_equip_slot = SLOT_BACK
+	w_class = SIZE_LARGE
+	force = 5
+	flags_gun_features = NONE
+	gun_category = GUN_CATEGORY_HEAVY
+	aim_slowdown = SLOWDOWN_ADS_SPECIALIST // Consider SUPERWEAPON, but it's not like you can fire this without being bipodded
+	wield_delay = WIELD_DELAY_VERY_SLOW
+	map_specific_decoration = TRUE
+	current_mag = /obj/item/ammo_magazine/rifle/boltaction/vulture
+	attachable_allowed = list(
+		/obj/item/attachable/sniperbarrel/vulture,
+		/obj/item/attachable/vulture_scope,
+		/obj/item/attachable/bipod/vulture,
+		/obj/item/attachable/stock/vulture,
+	)
+	starting_attachment_types = list(
+		/obj/item/attachable/sniperbarrel/vulture,
+		/obj/item/attachable/vulture_scope,
+		/obj/item/attachable/bipod/vulture,
+		/obj/item/attachable/stock/vulture,
+	)
+	civilian_usable_override = FALSE
+	projectile_type = /obj/item/projectile/vulture
+	actions_types = list(
+		/datum/action/item_action/vulture,
+	)
+	has_openbolt_icon = FALSE
+	/// How far out people can tell the direction of the shot
+	var/fire_message_range = 22
+
+/obj/item/weapon/gun/boltaction/vulture/update_icon()
+	..()
+	if(!bolted)
+		overlays += "vulture_bolt_open"
+
+
+/obj/item/weapon/gun/boltaction/vulture/set_gun_config_values() //check that these work
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_2)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_10
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+	recoil = RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+
+/obj/item/weapon/gun/boltaction/vulture/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 24, "under_x" = 25, "under_y" = 14, "stock_x" = 11, "stock_y" = 15)
+
+/obj/item/weapon/gun/boltaction/vulture/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
+	var/obj/item/attachable/vulture_scope/scope = attachments["rail"]
+	if(istype(scope) && scope.scoping)
+		var/turf/viewed_turf = scope.get_viewed_turf()
+		target = viewed_turf
+		var/mob/living/living_mob = locate(/mob/living) in viewed_turf
+		if(living_mob)
+			target = living_mob
+
+	. = ..()
+	if(!.)
+		return .
+
+	for(var/mob/current_mob as anything in get_mobs_in_z_level_range(get_turf(user), fire_message_range) - user)
+		var/relative_dir = get_dir(current_mob, user)
+		var/final_dir = dir2text(relative_dir)
+		to_chat(current_mob, SPAN_HIGHDANGER("You hear a massive boom coming from [final_dir ? "the [final_dir]" : "nearby"]!"))
+
+	if(!HAS_TRAIT(src, TRAIT_GUN_BIPODDED))
+		fired_without_bipod(user)
+	else
+		shake_camera(user, 3, 4) // equivalent to getting hit with a heavy round
+
+	return .
+
+/// Someone tried to fire this without using a bipod, so we break their arm along with sending them flying backwards
+/obj/item/weapon/gun/boltaction/vulture/proc/fired_without_bipod(mob/living/user)
+	SEND_SIGNAL(src, COMSIG_GUN_VULTURE_FIRED_ONEHAND)
+	to_chat(user, SPAN_HIGHDANGER("You get flung backwards as you fire [src], breaking your firing arm in the process!"))
+	user.apply_effect(0.7, WEAKEN)
+	user.apply_effect(1, SUPERSLOW)
+	user.apply_effect(2, SLOW)
+	//Either knockback or slam them into an obstacle.
+	var/direction = REVERSE_DIR(user.dir)
+	if(direction && !step(user, direction))
+		user.animation_attack_on(get_step(user, direction)) //zonenote check if necessary
+		//playsound(living_mob.loc, "punch", 25, 1)
+		user.visible_message(SPAN_DANGER("[user] slams into an obstacle!"), SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		user.apply_damage(MELEE_FORCE_TIER_2)
+
+	shake_camera(user, 7, 6) // Around 2x worse than getting hit with a heavy round
+
+	if(!ishuman(user))
+		return
+
+	if(istype(user.l_hand, /obj/item/weapon/gun/boltaction/vulture))
+		break_arm(user, LEFT)
+
+	else if(istype(user.r_hand, /obj/item/weapon/gun/boltaction/vulture))
+		break_arm(user, RIGHT)
+
+/// The code that takes care of breaking a person's firing arm
+/obj/item/weapon/gun/boltaction/vulture/proc/break_arm(mob/living/carbon/human/user, arm = LEFT)
+	var/obj/limb/arm/found_limb
+	var/obj/limb/hand/found_hand
+	if(arm == LEFT)
+		found_limb = locate(/obj/limb/arm/l_arm) in user.limbs
+		found_hand = locate(/obj/limb/hand/l_hand) in user.limbs
+	else
+		found_limb = locate(/obj/limb/arm/r_arm) in user.limbs
+		found_hand = locate(/obj/limb/hand/r_hand) in user.limbs
+
+	if(!found_limb || !found_hand)
+		return
+
+	found_limb.fracture(100)
+	found_hand.fracture(100)
+	found_limb.take_damage(rand(10, 15))
+	found_hand.take_damage(rand(10, 15))
+
+	for(var/obj/limb/limb as anything in list(found_limb, found_hand))
+		if(!(limb.status & LIMB_SPLINTED_INDESTRUCTIBLE) && (limb.status & LIMB_SPLINTED)) //If they have it splinted, the splint won't hold.
+			limb.status &= ~LIMB_SPLINTED
+			playsound(user, 'sound/items/splintbreaks.ogg', 20)
+			to_chat(user, SPAN_DANGER("The splint on your [limb.display_name] comes apart under the recoil!"))
+			user.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
+			user.update_med_icon()

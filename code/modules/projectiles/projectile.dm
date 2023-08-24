@@ -1187,6 +1187,17 @@
 		if(dx == -1 || dx == 1)
 			return TRUE
 
+/obj/item/projectile/vulture
+
+/obj/item/projectile/vulture/Initialize(mapload, datum/cause_data/cause_data)
+	. = ..()
+	RegisterSignal(src, COMSIG_GUN_VULTURE_FIRED_ONEHAND, PROC_REF(on_onehand))
+
+/obj/item/projectile/vulture/proc/on_onehand(datum/source)
+	SIGNAL_HANDLER
+
+	accuracy = HIT_ACCURACY_TIER_2 // flat 10% chance if you're desperate and try to fire this thing without a bipod
+
 #undef DEBUG_HIT_CHANCE
 #undef DEBUG_HUMAN_DEFENSE
 #undef DEBUG_XENO_DEFENSE

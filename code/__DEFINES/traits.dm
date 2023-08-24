@@ -201,6 +201,7 @@
 
 // GUN TRAITS
 #define TRAIT_GUN_SILENCED "t_gun_silenced"
+#define TRAIT_GUN_BIPODDED "t_gun_bipodded"
 
 // Miscellaneous item traits.
 // Do NOT bloat this category, if needed make a new category (like shoe traits, xeno item traits...)
@@ -295,6 +296,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 	),
 	/obj/item/weapon/gun = list(
 		"TRAIT_GUN_SILENCED" = TRAIT_GUN_SILENCED,
+		"TRAIT_GUN_BIPODDED" = TRAIT_GUN_BIPODDED,
 	),
 	/obj/structure/surface/table = list(
 		"TRAIT_STRUCTURE_FLIPPING" = TRAIT_TABLE_FLIPPING,

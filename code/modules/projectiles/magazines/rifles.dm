@@ -445,3 +445,15 @@
 	max_rounds = 10
 	gun_type = /obj/item/weapon/gun/boltaction
 	w_class = SIZE_SMALL
+
+/obj/item/ammo_magazine/rifle/boltaction/vulture
+	name = "\improper M707 \"Vulture\" magazine (20x102mm)"
+	desc = "A magazine for the M707 \"Vulture\" anti-matieriel rifle. Contains up to 4 massively oversized rounds."
+	caliber = "20x102mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon_state = "vulture"
+	handful_state = "vulture_bullet"
+	default_ammo = /datum/ammo/bullet/sniper/anti_materiel/vulture
+	max_rounds = 4
+	gun_type = /obj/item/weapon/gun/boltaction/vulture
+	w_class = SIZE_MEDIUM // maybe small? This shit's >4 inches long mind you

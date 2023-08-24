@@ -502,6 +502,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		set_gun_user(user)
 	else
 		set_gun_user(null)
+		force_light_off()
 
 	return ..()
 
@@ -1834,8 +1835,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		RegisterSignal(gun_user, COMSIG_MOB_MOUSEDOWN, PROC_REF(start_fire))
 		RegisterSignal(gun_user, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
 		RegisterSignal(gun_user, COMSIG_MOB_MOUSEUP, PROC_REF(stop_fire))
-
-	force_light_off()
 
 /obj/item/weapon/gun/hands_swapped(mob/living/carbon/swapper_of_hands)
 	if(src == swapper_of_hands.get_active_hand())

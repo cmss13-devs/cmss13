@@ -51,15 +51,15 @@
 			malfunction()
 			return
 
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/proc/populate_products(datum/source, obj/vehicle/multitile/V)
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/proc/populate_products(datum/source, obj/effect/vehicle_spawner/S)
 	SIGNAL_HANDLER
 	UnregisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED)
 
 	available_categories = VEHICLE_ALL_AVAILABLE
 
-	if(istype(V, /obj/vehicle/multitile/tank))
+	if(istype(S, /obj/effect/vehicle_spawner/tank))
 		selected_vehicle = "TANK"
-	else if(istype(V, /obj/vehicle/multitile/apc))
+	else if(istype(S, /obj/effect/vehicle_spawner/apc))
 		selected_vehicle = "APC"
 		available_categories &= ~(VEHICLE_ARMOR_AVAILABLE|VEHICLE_INTEGRAL_AVAILABLE)	//APC lacks these, so we need to remove these flags to be able to access spare parts section
 

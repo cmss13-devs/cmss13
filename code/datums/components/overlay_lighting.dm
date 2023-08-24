@@ -276,6 +276,8 @@
 ///Called when the current_holder is qdeleted, to remove the light effect.
 /datum/component/overlay_lighting/proc/on_holder_qdel(atom/movable/source, force)
 	UnregisterSignal(current_holder, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
+	if(directional)
+		UnregisterSignal(current_holder, COMSIG_ATOM_DIR_CHANGE)
 	set_holder(null)
 
 
@@ -487,6 +489,10 @@
 ///Called when parent changes loc.
 /datum/component/overlay_lighting/proc/on_parent_dir_change(atom/movable/source, olddir, newdir)
 	SIGNAL_HANDLER
+
+	if(current_holder.dir != newdir)
+		return
+
 	set_direction(newdir)
 
 ///Sets a new direction for the directional cast, then updates luminosity

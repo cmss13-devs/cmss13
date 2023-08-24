@@ -928,3 +928,15 @@ DEFINES in setup.dm, referenced here.
 	if(!istype(target, /atom/movable/screen/click_catcher))
 		return null
 	return params2turf(modifiers["screen-loc"], get_turf(user), user.client)
+
+/// If this gun has a relevant flashlight attachable attached, deactivate it
+/obj/item/weapon/gun/proc/force_light_off()
+	var/obj/item/attachable/flashlight/torch
+	for(var/slot in attachments)
+		torch = attachments[slot]
+		if(istype(torch))
+			break
+	if(!torch)
+		return FALSE
+	torch.turn_light(toggle_on = FALSE, forced = TRUE)
+	return TRUE

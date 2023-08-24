@@ -653,7 +653,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/flashlight/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
 	turn_light(user, turn_off ? !turn_off : !light_on)
 
-/obj/item/attachable/flashlight/turn_light(mob/user, toggle_on)
+/obj/item/attachable/flashlight/turn_light(mob/user, toggle_on, cooldown, sparks, forced, light_again)
 	. = ..()
 	if(. != CHECKS_PASSED)
 		return

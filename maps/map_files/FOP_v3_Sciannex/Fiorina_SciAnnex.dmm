@@ -14366,7 +14366,9 @@
 /area/fiorina/station/medbay)
 "kyl" = (
 /obj/structure/surface/table/reinforced/prison,
-/pixel_y = 13},
+/obj/structure/flora/pottedplant/pottedplant_17{
+	pixel_y = 13
+	},
 /turf/open/floor/prison/whitegreenfull,
 /area/fiorina/tumor/ice_lab)
 "kyW" = (

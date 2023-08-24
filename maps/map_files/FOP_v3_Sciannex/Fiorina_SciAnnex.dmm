@@ -1162,7 +1162,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
 "aJg" = (
-/turf/open/floor/prison/platingdmg3/area/fiorina/maintenance)
+/turf/open/floor/prison/platingdmg3,
+/area/fiorina/maintenance)
 "aJK" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/item/reagent_container/food/snacks/meat/human,
@@ -3529,7 +3530,8 @@
 /turf/open/floor/prison/darkbrown2full,
 /area/fiorina/maintenance)
 "cyL" = (
-/turf/open/floor/prison/platingdmg1/area/fiorina/tumor/aux_engi)
+/turf/open/floor/prison/platingdmg1,
+/area/fiorina/tumor/aux_engi)
 "cyO" = (
 /obj/structure/machinery/vending/hydronutrients,
 /turf/open/floor/prison/greenfull,
@@ -7714,7 +7716,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/flight_deck)
 "fGY" = (
-/turf/open/floor/prison/floorscorched2/area/fiorina/tumor/civres)
+/turf/open/floor/prison/floorscorched2,
+/area/fiorina/tumor/civres)
 "fHh" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4
@@ -9538,7 +9541,8 @@
 	},
 /area/fiorina/tumor/civres)
 "gXt" = (
-/turf/open/floor/prison/platingdmg1/area/fiorina/station/chapel)
+/turf/open/floor/prison/platingdmg1,
+/area/fiorina/station/chapel)
 "gXu" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
@@ -10295,7 +10299,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/chapel)
 "hyz" = (
-/turf/open/floor/prison/platingdmg1/area/fiorina/station/civres_blue)
+/turf/open/floor/prison/platingdmg1,
+/area/fiorina/station/civres_blue)
 "hyG" = (
 /obj/structure/platform_decoration{
 	dir = 4
@@ -10672,7 +10677,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "hOW" = (
-/turf/open/floor/prison/floorscorched2/area/fiorina/station/civres_blue)
+/turf/open/floor/prison/floorscorched2,
+/area/fiorina/station/civres_blue)
 "hPs" = (
 /obj/item/ammo_magazine/rifle/m16{
 	current_rounds = 0
@@ -11814,7 +11820,8 @@
 /area/fiorina/station/park)
 "iLy" = (
 /obj/item/stack/rods/plasteel,
-/turf/open/floor/prison/floorscorched2/area/fiorina/station/security)
+/turf/open/floor/prison/floorscorched2,
+/area/fiorina/station/security)
 "iLJ" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/prison,
@@ -13277,7 +13284,8 @@
 "jLK" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison/platingdmg1/area/fiorina/station/security)
+/turf/open/floor/prison/platingdmg1,
+/area/fiorina/station/security)
 "jLN" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/landmark/objective_landmark/science,
@@ -14056,7 +14064,8 @@
 	density = 0;
 	dir = 4
 	},
-/turf/open/floor/prison/platingdmg3/area/fiorina/station/security)
+/turf/open/floor/prison/platingdmg3,
+/area/fiorina/station/security)
 "kow" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
@@ -14391,7 +14400,8 @@
 	},
 /area/fiorina/oob)
 "kzN" = (
-/turf/open/floor/prison/floorscorched2/area/fiorina/station/security)
+/turf/open/floor/prison/floorscorched2,
+/area/fiorina/station/security)
 "kzO" = (
 /obj/structure/monorail/launchtrack,
 /obj/structure/machinery/light/double/blue{
@@ -20691,7 +20701,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "pie" = (
-/turf/open/floor/prison/platingdmg3/area/fiorina/station/transit_hub)
+/turf/open/floor/prison/platingdmg3,
+/area/fiorina/station/transit_hub)
 "pip" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -21015,7 +21026,8 @@
 /area/fiorina/station/disco)
 "pxa" = (
 /obj/item/circuitboard/machine/rdserver,
-/turf/open/floor/prison/floorscorched1/area/fiorina/tumor/servers)
+/turf/open/floor/prison/floorscorched1,
+/area/fiorina/tumor/servers)
 "pxk" = (
 /obj/structure/closet/cabinet,
 /obj/item/reagent_container/pill/cyanide,
@@ -23538,7 +23550,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "rmA" = (
-/turf/open/floor/prison/platingdmg3/area/fiorina/station/security)
+/turf/open/floor/prison/platingdmg3,
+/area/fiorina/station/security)
 "rmG" = (
 /obj/item/ammo_casing{
 	icon_state = "casing_5"
@@ -24005,7 +24018,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "rEH" = (
-/turf/open/floor/prison/platingdmg1/area/fiorina/oob)
+/turf/open/floor/prison/platingdmg1,
+/area/fiorina/oob)
 "rFr" = (
 /obj/structure/barricade/wooden{
 	dir = 4;
@@ -25350,7 +25364,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "sJw" = (
-/turf/open/floor/prison/floorscorched1/area/fiorina/station/chapel)
+/turf/open/floor/prison/floorscorched1,
+/area/fiorina/station/chapel)
 "sJN" = (
 /obj/structure/sign/prop3{
 	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
@@ -25857,7 +25872,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "the" = (
-/turf/open/floor/prison/floorscorched1/area/fiorina/station/security)
+/turf/open/floor/prison/floorscorched1,
+/area/fiorina/station/security)
 "thi" = (
 /turf/open/floor/prison/cell_stripe{
 	dir = 4
@@ -26840,7 +26856,8 @@
 	},
 /area/fiorina/station/research_cells)
 "tPQ" = (
-/turf/open/floor/prison/platingdmg1/area/fiorina/station/security)
+/turf/open/floor/prison/platingdmg1,
+/area/fiorina/station/security)
 "tQi" = (
 /obj/structure/prop/souto_land/streamer{
 	dir = 1;
@@ -27067,7 +27084,8 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "tXQ" = (
-/turf/open/floor/prison/platingdmg1/area/fiorina/tumor/servers)
+/turf/open/floor/prison/platingdmg1,
+/area/fiorina/tumor/servers)
 "tYc" = (
 /obj/effect/decal{
 	icon = 'icons/obj/items/policetape.dmi';
@@ -27114,7 +27132,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "tZS" = (
-/turf/open/floor/prison/platingdmg1/area/fiorina/tumor/civres)
+/turf/open/floor/prison/platingdmg1,
+/area/fiorina/tumor/civres)
 "tZV" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8
@@ -27149,7 +27168,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "ubk" = (
-/turf/open/floor/prison/floorscorched1/area/fiorina/tumor/aux_engi)
+/turf/open/floor/prison/floorscorched1,
+/area/fiorina/tumor/aux_engi)
 "ubH" = (
 /obj/structure/stairs/perspective/p_stair_full{
 	dir = 8
@@ -28865,7 +28885,8 @@
 /turf/open/floor/prison/whitepurpleangle,
 /area/fiorina/station/research_cells)
 "vsc" = (
-/turf/open/floor/prison/floorscorched1/area/fiorina/station/civres_blue)
+/turf/open/floor/prison/floorscorched1,
+/area/fiorina/station/civres_blue)
 "vsg" = (
 /obj/structure/closet/emcloset,
 /obj/effect/landmark/objective_landmark/far,
@@ -30437,7 +30458,8 @@
 /turf/open/floor/prison/darkyellow2full,
 /area/fiorina/lz/near_lzI)
 "wFo" = (
-/turf/open/floor/prison/floorscorched1/area/fiorina/tumor/civres)
+/turf/open/floor/prison/floorscorched1,
+/area/fiorina/tumor/civres)
 "wFD" = (
 /obj/structure/bed/sofa/south/grey/right,
 /turf/open/floor/prison/floor_plate,
@@ -30997,7 +31019,8 @@
 /turf/open/floor/prison/panelscorched,
 /area/fiorina/station/civres_blue)
 "xca" = (
-/turf/open/floor/prison/platingdmg2/area/fiorina/station/security)
+/turf/open/floor/prison/platingdmg2,
+/area/fiorina/station/security)
 "xcf" = (
 /obj/item/reagent_container/food/snacks/donkpocket,
 /turf/open/floor/prison/floor_plate,
@@ -32412,7 +32435,8 @@
 /area/fiorina/station/telecomm/lz1_cargo)
 "ydk" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/prison/floorscorched1/area/fiorina/station/chapel)
+/turf/open/floor/prison/floorscorched1,
+/area/fiorina/station/chapel)
 "ydX" = (
 /turf/open/floor/prison/darkyellow2corner{
 	dir = 8

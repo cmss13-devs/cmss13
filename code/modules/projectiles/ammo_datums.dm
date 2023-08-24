@@ -1624,7 +1624,6 @@
 /datum/ammo/bullet/sniper/anti_materiel/vulture
 	damage = 400 // Fully intended to vaporize anything smaller than a mini cooper
 	accurate_range_min = 10
-	accuracy_range_falloff = 50
 	handful_state = "vulture_bullet"
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/set_bullet_traits()

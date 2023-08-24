@@ -1195,6 +1195,7 @@
 			return TRUE
 
 /obj/item/projectile/vulture
+	accuracy_range_falloff = 50
 
 /obj/item/projectile/vulture/Initialize(mapload, datum/cause_data/cause_data)
 	. = ..()

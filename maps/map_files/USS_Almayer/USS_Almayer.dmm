@@ -34357,7 +34357,7 @@
 	},
 /obj/structure/machinery/computer/working_joe{
 	dir = 8;
-	pixel_x = 17
+	pixel_x = 29
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"

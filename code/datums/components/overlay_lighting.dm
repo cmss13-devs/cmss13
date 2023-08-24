@@ -239,20 +239,22 @@
 			if(directional)
 				UnregisterSignal(current_holder, COMSIG_ATOM_DIR_CHANGE)
 		if(overlay_lighting_flags & LIGHTING_ON)
-			remove_dynamic_lumi(current_holder)
+			remove_dynamic_lumi()
 	current_holder = new_holder
 	if(new_holder == null)
 		clean_old_turfs()
 		return
-	if(new_holder != parent)
+	if(new_holder != parent && new_holder != parent_attached_to)
 		RegisterSignal(new_holder, COMSIG_PARENT_QDELETING, PROC_REF(on_holder_qdel))
 		if(overlay_lighting_flags & LIGHTING_ON)
 			RegisterSignal(new_holder, COMSIG_MOVABLE_MOVED, PROC_REF(on_holder_moved))
 		if(directional)
 			RegisterSignal(new_holder, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_holder_dir_change))
-			set_direction(new_holder.dir)
+	if(directional && current_direction != new_holder.dir)
+		current_direction = new_holder.dir
 	if(overlay_lighting_flags & LIGHTING_ON)
-		add_dynamic_lumi(new_holder)
+		add_dynamic_lumi()
+		make_luminosity_update()
 
 
 ///Used to determine the new valid current_holder from the parent's loc.

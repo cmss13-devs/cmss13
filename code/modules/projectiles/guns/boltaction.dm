@@ -152,6 +152,7 @@
 		/datum/action/item_action/vulture,
 	)
 	has_openbolt_icon = FALSE
+	bolt_delay = 1 SECONDS
 	/// How far out people can tell the direction of the shot
 	var/fire_message_range = 22
 

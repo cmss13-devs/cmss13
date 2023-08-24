@@ -1627,6 +1627,10 @@
 	handful_state = "vulture_bullet"
 	sound_hit = 'sound/bullets/bullet_vulture_impact.ogg'
 
+/datum/ammo/bullet/sniper/anti_materiel/vulture/on_hit_mob(mob/hit_mob, obj/item/projectile/bullet)
+	. = ..()
+	knockback(hit_mob, bullet, 30)
+
 /datum/ammo/bullet/sniper/anti_materiel/vulture/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(

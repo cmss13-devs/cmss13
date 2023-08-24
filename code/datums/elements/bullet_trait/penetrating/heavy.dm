@@ -4,7 +4,7 @@
 	id_arg_index = 3
 
 	/// For every turf this pierces, how much damage should this lose?
-	var/damage_lost_per_pen = 75
+	var/damage_lost_per_pen = 100
 	/// Typecache of things to annihilate if the bullet is on a tile with it
 	var/static/list/bullet_destroy_structures = typecacheof(list(
 		/obj/structure/surface,

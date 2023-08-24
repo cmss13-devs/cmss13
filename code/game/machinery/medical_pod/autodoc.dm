@@ -243,6 +243,10 @@
 				if(H.disfigured)
 					surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"facial")
 
+			if(istype(L,/obj/limb/chest))
+				if(locate(/obj/item/alien_embryo) in M.contents)
+					surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"shrapnel")
+
 			if(L.status & LIMB_BROKEN)
 				surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"broken")
 			if(L.status & LIMB_DESTROYED)
@@ -253,7 +257,8 @@
 					if(!is_type_in_list(I,known_implants))
 						surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"shrapnel")
 			if(M.incision_depths[L.name] != SURGERY_DEPTH_SURFACE)
-				surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"open")
+				surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"open") 
+
 	var/datum/internal_organ/I = M.internal_organs_by_name["eyes"]
 	if(I && (M.disabilities & NEARSIGHTED || M.sdisabilities & DISABILITY_BLIND || I.damage > 0))
 		surgery_list += create_autodoc_surgery(null,ORGAN_SURGERY,"eyes",0,I)
@@ -477,13 +482,13 @@
 						H.UpdateDamageIcon()
 
 					if("shrapnel")
-						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning shrapnel removal.");
+						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning foreign bodies removal.");
 						if(S.unneeded)
 							sleep(UNNEEDED_DELAY)
 							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
 							surgery_todo_list -= S
 							continue
-
+						
 						open_incision(H,S.limb_ref)
 						if(S.limb_ref.name == "chest" || S.limb_ref.name == "head")
 							open_encased(H,S.limb_ref)
@@ -495,6 +500,10 @@
 									S.limb_ref.implants -= I
 									H.embedded_items -= I
 									qdel(I)
+						if(S.limb_ref.name == "chest" && locate(/obj/item/alien_embryo) in H.contents)
+							sleep(REMOVE_OBJECT_MAX_DURATION*surgery_mod)
+							H.contents -= locate(/obj/item/alien_embryo) in H.contents
+
 						if(S.limb_ref.name == "chest" || S.limb_ref.name == "head")
 							close_encased(H,S.limb_ref)
 						if(!surgery) break
@@ -713,7 +722,7 @@
 									dat += "Limb Replacement Surgery"
 								if("shrapnel")
 									surgeryqueue["shrapnel"] = 1
-									dat += "Shrapnel Removal Surgery"
+									dat += "Foreign Bodies Removal Surgery"
 								if("facial")
 									surgeryqueue["facial"] = 1
 									dat += "Facial Reconstruction Surgery"
@@ -733,7 +742,9 @@
 				if(isnull(surgeryqueue["open"]))
 					dat += "<a href='?src=\ref[src];open=1'>Close Open Incisions</a><br>"
 				if(isnull(surgeryqueue["shrapnel"]))
-					dat += "<a href='?src=\ref[src];shrapnel=1'>Shrapnel Removal Surgery</a><br>"
+					dat += "<a href='?src=\ref[src];shrapnel=1'>Foreign Bodies Removal Surgery</a><br>"
+				if(isnull(surgeryqueue["facial"]))
+					dat += "<a href='?src=\ref[src];facial=1'>Facial Reconstruction Surgery</a><br>"
 				dat += "<b>Hematology Treatments</b>"
 				dat += "<br>"
 				if(isnull(surgeryqueue["blood"]))
@@ -742,9 +753,16 @@
 					dat += "<a href='?src=\ref[src];dialysis=1'>Dialysis</a><br>"
 				if(isnull(surgeryqueue["toxin"]))
 					dat += "<a href='?src=\ref[src];toxin=1'>Bloodstream Toxin Removal</a><br>"
+				dat += "<b>Internal Surgery</b>"
 				dat += "<br>"
+				if(isnull((surgeryqueue["internal"])))
+					dat += "<a href='?src=\ref[src];internal=1'>Internal Bleeding Surgery</a><br>"
+				if(isnull((surgeryqueue["broken"])))
+					dat += "<a href='?src=\ref[src];broken=1'>Bone Repair Treatment</a><br>"
+				if(isnull((surgeryqueue["missing"])))
+					dat += "<a href='?src=\ref[src];missing=1'>Limb Replacement Surgery</a><br>"
 		else
-			dat += "The autodoc is empty."
+			dat += "<br>The autodoc is empty."
 	dat += text("<a href='?src=\ref[];mach_close=sleeper'>Close</a>", user)
 	show_browser(user, dat, "Auto-Doc Medical System", "sleeper", "size=300x400")
 	onclose(user, "sleeper")
@@ -840,6 +858,9 @@
 								if(!is_type_in_list(I,known_implants))
 									N.fields["autodoc_manual"] += create_autodoc_surgery(L,LIMB_SURGERY,"shrapnel")
 									needed++
+						if(istype(L,/obj/limb/chest) && locate(/obj/item/alien_embryo) in connected.occupant.contents)
+							N.fields["autodoc_manual"] += create_autodoc_surgery(L,LIMB_SURGERY,"shrapnel")
+							needed++
 				if(!needed)
 					N.fields["autodoc_manual"] += create_autodoc_surgery(null,LIMB_SURGERY,"shrapnel",1)
 				updateUsrDialog()

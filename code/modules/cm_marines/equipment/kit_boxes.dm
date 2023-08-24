@@ -161,9 +161,15 @@
 	icon_state = "spec_kit"
 	var/list/allowed_roles_list = list(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST, JOB_WO_CREWMAN)
 
+	///Used for cryo specs who already have "foxtrot" appended to their ID assignments
+	var/squad_assignment_update = TRUE
+
 //this one is delivered via ASRS as a reward for DEFCON/techwebs/whatever else we will have
 /obj/item/spec_kit/asrs
 	allowed_roles_list = list(JOB_SQUAD_MARINE, JOB_WO_SQUAD_MARINE)
+
+/obj/item/spec_kit/cryo
+	squad_assignment_update = FALSE
 
 /obj/item/spec_kit/get_examine_text(mob/user)
 	. = ..()
@@ -201,7 +207,7 @@
 
 	for(var/allowed_role in allowed_roles_list)
 		if(user.job == allowed_role)
-			if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_DEFAULT) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
+			if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 				to_chat(user, SPAN_WARNING("You already have specialization, give this kit to someone else!"))
 				return FALSE
 			return TRUE
@@ -210,7 +216,7 @@
 	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", available_specialist_kit_boxes)
 	if(!selection || QDELETED(src))
 		return FALSE
-	if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_DEFAULT) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
+	if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 		to_chat(user, SPAN_WARNING("You already unwrapped your [name], give this one to someone else!"))
 		return
 	if(!available_specialist_kit_boxes[selection] || available_specialist_kit_boxes[selection] <= 0)
@@ -252,7 +258,7 @@
 				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
 	if(specialist_assignment)
 		user.put_in_hands(spec_box)
-		ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + ID.assignment + " ([specialist_assignment])")
+		ID.set_assignment((user.assigned_squad && squad_assignment_update ? (user.assigned_squad.name + " ") : "") + ID.assignment + " ([specialist_assignment])")
 		GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
 		return TRUE
 	return FALSE
@@ -360,6 +366,17 @@
 	new /obj/item/ammo_magazine/rifle/m4ra/ap(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/ap(src)
 
+/obj/item/storage/box/kit/m41a_kit
+	name = "\improper M41A Rifle Kit"
+	pro_case_overlay = "pursuit"
+
+/obj/item/storage/box/kit/m41a_kit/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/m41a(src)
+	new /obj/item/attachable/angledgrip(src)
+	new /obj/item/attachable/suppressor(src)
+	new /obj/item/attachable/extended_barrel(src)
+	new /obj/item/ammo_magazine/rifle/ap(src)
+	new /obj/item/ammo_magazine/rifle/ap(src)
 
 /obj/item/storage/box/kit/heavy_support
 	name = "\improper Forward HPR Shield Kit"
@@ -427,8 +444,6 @@
 	new /obj/item/storage/box/m94/signal(src)
 	new /obj/item/device/binoculars/range/designator(src)
 	new /obj/item/device/encryptionkey/jtac(src)
-	new /obj/item/storage/backpack/marine/satchel/rto/small(src)
-
 
 /obj/item/storage/box/kit/mini_intel
 	name = "\improper Field Intelligence Support Kit"

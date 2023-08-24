@@ -12,15 +12,15 @@
 #define SQUAD_SOF "SOF"
 
 // Job name defines
-#define JOB_SQUAD_MARINE "Squad Rifleman"
+#define JOB_SQUAD_MARINE "Rifleman"
 #define JOB_SQUAD_LEADER "Squad Leader"
-#define JOB_SQUAD_ENGI "Squad Combat Technician"
-#define JOB_SQUAD_MEDIC "Squad Hospital Corpsman"
-#define JOB_SQUAD_SPECIALIST "Squad Weapons Specialist"
-#define JOB_SQUAD_RTO "Squad Radio Telephone Operator"
-#define JOB_SQUAD_SMARTGUN "Squad Smartgunner"
+#define JOB_SQUAD_ENGI "Combat Technician"
+#define JOB_SQUAD_MEDIC "Hospital Corpsman"
+#define JOB_SQUAD_SPECIALIST "Weapons Specialist"
+#define JOB_SQUAD_TEAM_LEADER "Fireteam Leader"
+#define JOB_SQUAD_SMARTGUN "Smartgunner"
 #define JOB_SQUAD_ROLES /datum/timelock/squad
-#define JOB_SQUAD_ROLES_LIST list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADER, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_RTO)
+#define JOB_SQUAD_ROLES_LIST list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADER, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_TEAM_LEADER)
 
 var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 
@@ -38,7 +38,7 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define ENGINEERING_SURVIVOR "Engineering Survivor"
 #define CORPORATE_SURVIVOR "Corporate Survivor"
 #define HOSTILE_SURVIVOR "Hostile Survivor" //AKA Marine Killers assuming they survive. Will do cultist survivor at some point.
-#define SURVIVOR_VARIANT_LIST list(ANY_SURVIVOR, CIVILIAN_SURVIVOR, SECURITY_SURVIVOR, SCIENTIST_SURVIVOR, MEDICAL_SURVIVOR, ENGINEERING_SURVIVOR, CORPORATE_SURVIVOR, HOSTILE_SURVIVOR)
+#define SURVIVOR_VARIANT_LIST list(ANY_SURVIVOR = "Any", CIVILIAN_SURVIVOR = "Civ", SECURITY_SURVIVOR = "Sec", SCIENTIST_SURVIVOR = "Sci", MEDICAL_SURVIVOR = "Med", ENGINEERING_SURVIVOR = "Eng", CORPORATE_SURVIVOR = "W-Y", HOSTILE_SURVIVOR = "CLF")
 
 //-1 is infinite amount, these are soft caps and can be bypassed by randomization
 #define MAX_SURVIVOR_PER_TYPE list(ANY_SURVIVOR = -1, CIVILIAN_SURVIVOR = -1, SECURITY_SURVIVOR = 2, SCIENTIST_SURVIVOR = 2, MEDICAL_SURVIVOR = 3, ENGINEERING_SURVIVOR = 4, CORPORATE_SURVIVOR = 2, HOSTILE_SURVIVOR = 1)
@@ -52,10 +52,12 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 
 #define JOB_CMO "Chief Medical Officer"
 #define JOB_DOCTOR "Doctor"
+#define JOB_SURGEON "Surgeon"
+
 #define JOB_NURSE "Nurse"
 #define JOB_RESEARCHER "Researcher"
 #define JOB_MEDIC_ROLES  /datum/timelock/medic
-#define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_NURSE, JOB_RESEARCHER)
+#define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_NURSE, JOB_RESEARCHER, JOB_SURGEON)
 
 #define JOB_CORPORATE_LIAISON "Corporate Liaison"
 #define JOB_COMBAT_REPORTER "Combat Correspondent"
@@ -70,10 +72,13 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_COMMAND_ROLES_LIST   list(JOB_CO, JOB_XO, JOB_SO)
 var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
+#define JOB_AUXILIARY_OFFICER "Auxiliary Support Officer"
 #define JOB_PILOT "Pilot Officer"
 #define JOB_DROPSHIP_CREW_CHIEF "Dropship Crew Chief"
 #define JOB_CREWMAN "Vehicle Crewman"
 #define JOB_INTEL "Intelligence Officer"
+#define JOB_AUXILIARY_ROLES    /datum/timelock/auxiliary
+#define JOB_AUXILIARY_ROLES_LIST   list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_INTEL)
 
 #define JOB_POLICE "Military Police"
 #define JOB_WARDEN "Military Warden"
@@ -89,7 +94,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_ENGINEER_ROLES   /datum/timelock/engineer
 #define JOB_ENGINEER_ROLES_LIST  list(JOB_SQUAD_ENGI, JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CHIEF_ENGINEER)
 
-#define JOB_CHIEF_REQUISITION "Requisitions Officer"
+#define JOB_CHIEF_REQUISITION "Quartermaster"
 #define JOB_CARGO_TECH "Cargo Technician"
 #define JOB_REQUISITION_ROLES    /datum/timelock/requisition
 #define JOB_REQUISITION_ROLES_LIST   list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH)
@@ -141,7 +146,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_WO_CHIEF_ENGINEER "Bunker Crew Master"
 #define JOB_WO_ORDNANCE_TECH "Bunker Crew"
 
-#define JOB_WO_CHIEF_REQUISITION "Quartermaster"
+#define JOB_WO_CHIEF_REQUISITION "Bunker Quartermaster"
 #define JOB_WO_REQUISITION "Bunker Crew Logistics"
 
 #define JOB_WO_CMO "Head Surgeon"
@@ -161,24 +166,25 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 //------------------------------------
 
 //-------- PMC --------//
-#define JOB_PMC "PMC Standard"
+#define JOB_PMC_STANDARD "Weyland-Yutani PMC (Standard)"
 #define JOB_PMC_ENGINEER "PMC Corporate Technician"
 #define JOB_PMC_MEDIC "PMC Corporate Medic"
 #define JOB_PMC_DOCTOR "PMC Trauma Surgeon"
 #define JOB_PMC_INVESTIGATOR "PMC Medical Investigator"
+#define JOB_PMC_DETAINER "Weyland-Yutani PMC (Detainer)"
 #define JOB_PMC_ELITE "PMC Elite"
 #define JOB_PMC_GUNNER "PMC Support Weapons Specialist" //Renamed from Specialist to Support Specialist as it only has SG skills.
 #define JOB_PMC_SNIPER "PMC Weapons Specialist" //Renamed from Sharpshooter to specialist as it uses specialist skills.
-#define JOB_PMC_CREWMAN "PMC Crewman"
+#define JOB_PMC_CREWMAN "Weyland-Yutani PMC (Crewman)"
 #define JOB_PMC_NINJA "PMC Ninja"
 #define JOB_PMC_XENO_HANDLER "PMC Xeno Handler"
 #define JOB_PMC_COMMANDO "PMC Commando"
 #define JOB_PMC_LEADER "PMC Leader"
 #define JOB_PMC_LEAD_INVEST "PMC Lead Investigator"
 #define JOB_PMC_DIRECTOR "PMC Site Director"
-#define JOB_PMC_SYNTH    "PMC Support Synthetic"
+#define JOB_PMC_SYNTH "PMC Support Synthetic"
 
-#define JOB_PMC_GRUNT_LIST list(JOB_PMC, JOB_PMC_ENGINEER, JOB_PMC_MEDIC, JOB_PMC_INVESTIGATOR, JOB_PMC_ELITE, JOB_PMC_GUNNER, JOB_PMC_SNIPER, JOB_PMC_CREWMAN, JOB_PMC_NINJA, JOB_PMC_XENO_HANDLER, JOB_PMC_COMMANDO, JOB_PMC_LEADER, JOB_PMC_LEAD_INVEST)
+#define JOB_PMC_GRUNT_LIST list(JOB_PMC_STANDARD, JOB_PMC_ENGINEER, JOB_PMC_MEDIC, JOB_PMC_INVESTIGATOR, JOB_PMC_DETAINER, JOB_PMC_ELITE, JOB_PMC_GUNNER, JOB_PMC_SNIPER, JOB_PMC_CREWMAN, JOB_PMC_NINJA, JOB_PMC_XENO_HANDLER, JOB_PMC_COMMANDO, JOB_PMC_LEADER, JOB_PMC_LEAD_INVEST)
 
 //-------- WY --------//
 
@@ -196,6 +202,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 //-------- WY Goons --------//
 #define JOB_WY_GOON "WY Corporate Security"
 #define JOB_WY_GOON_LEAD "WY Corporate Security Lead"
+#define JOB_WY_GOON_RESEARCHER "WY Research Consultant"
 
 #define JOB_WY_GOON_LIST list(JOB_WY_GOON, JOB_WY_GOON_LEAD)
 
@@ -225,6 +232,17 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_CMB_OBS "Interstellar Human Rights Observer"
 
 #define CMB_GRUNT_LIST list(JOB_CMB, JOB_CMB_TL)
+
+//-------- FORECON --------//
+
+#define JOB_FORECON_CO "Reconnaissance Commander"
+#define JOB_FORECON_SL "Reconnaissance Squad Leader"
+#define JOB_FORECON_SYN "Reconnaissance Synthetic"
+#define JOB_FORECON_SNIPER "Reconnaissance Sniper"
+#define JOB_FORECON_MARKSMAN "Reconnaissance Marksman"
+#define JOB_FORECON_SUPPORT "Reconnaissance Support Technician"
+#define JOB_FORECON_RIFLEMAN "Reconnaissance Rifleman"
+#define JOB_FORECON_SMARTGUNNER "Reconnaissance Smartgunner"
 
 //-------- UPP --------//
 #define JOB_UPP "UPP Private"
@@ -322,18 +340,19 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_XENOMORPH    "Xenomorph"
 #define JOB_XENOMORPH_QUEEN  "Queen"
 
-// For colouring the ranks in the statistics menu
+// For coloring the ranks in the statistics menu
 #define JOB_PLAYTIME_TIER_1  (10 HOURS)
 #define JOB_PLAYTIME_TIER_2  (25 HOURS)
 #define JOB_PLAYTIME_TIER_3  (70 HOURS)
 #define JOB_PLAYTIME_TIER_4  (175 HOURS)
 
 #define XENO_NO_AGE  -1
-#define XENO_NORMAL 0
-#define XENO_MATURE 1
-#define XENO_ELDER 2
-#define XENO_ANCIENT 3
-#define XENO_PRIME 4
+#define XENO_YOUNG 0
+#define XENO_NORMAL 1
+#define XENO_MATURE 2
+#define XENO_ELDER 3
+#define XENO_ANCIENT 4
+#define XENO_PRIME 5
 
 /// For monthly time tracking
 #define JOB_OBSERVER "Observer"

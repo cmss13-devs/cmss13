@@ -39,7 +39,7 @@
 /mob/camera/imaginary_friend/Initialize(mapload, mob/owner)
 	. = ..()
 
-	if(!owner)
+	if(!owner || !owner.client)
 		return INITIALIZE_HINT_QDEL
 
 	src.owner = owner
@@ -200,6 +200,7 @@
 
 	to_chat(owner, "[rendered]")
 	to_chat(src, "[rendered]")
+	log_say("Imaginary Friend: [dead_rendered]")
 	if(!hidden)
 		var/list/send_to = list()
 		if(!owner.client?.prefs.lang_chat_disabled)

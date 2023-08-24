@@ -27,7 +27,7 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	init_order = SS_INIT_DATABASE
 	init_stage = INITSTAGE_EARLY
 	priority   = SS_PRIORITY_DATABASE // Low prio SS_TICKER
-	flags  = SS_TICKER
+	flags  = SS_TICKER|SS_NO_INIT
 
 	var/datum/db/connection/connection
 	var/datum/db/connection_settings/settings
@@ -52,15 +52,14 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	queries_active = list()
 	queries_current = list()
 	queries_standby = list()
-	var/list/result = loadsql("config/dbconfig.txt")
-	settings = connection_settings_from_config(result)
 	NEW_SS_GLOBAL(SSdatabase)
 
-/datum/controller/subsystem/database_query_manager/Initialize()
-	set waitfor=0
+/datum/controller/subsystem/database_query_manager/proc/start_up()
+	set waitfor = FALSE
+
+	settings = connection_settings_from_config(CONFIG_GET(string/db_provider))
 	connection = settings.create_connection()
 	connection.keep()
-	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/database_query_manager/stat_entry(msg)
 	var/text = (connection && connection.status == DB_CONNECTION_READY) ? ("READY") : ("PREPPING")

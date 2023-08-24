@@ -14,18 +14,22 @@
 	throw_range = 4
 	w_class = SIZE_LARGE
 
-	var/req_role = "" //to be compared with assigned_role to only allow those to use that machine.
+	/// to be compared with assigned_role to only allow those to use that machine.
+	var/req_role = ""
 	var/points = 40
 	var/max_points = 50
 	var/use_points = TRUE
-	var/fabricating = 0
-	var/broken = 0
+	var/fabricating = FALSE
+	var/broken = FALSE
+
 	var/list/purchase_log = list()
 
 	var/list/listed_products = list()
 
-	var/special_prod_time_lock //needs to be a time define
-	var/list/special_prods //list of typepaths
+	/// needs to be a time define
+	var/special_prod_time_lock
+	/// list of typepaths
+	var/list/special_prods
 
 /obj/item/device/portable_vendor/attack_hand(mob/user)
 	if(loc == user)
@@ -67,119 +71,108 @@
 
 
 	user.set_interaction(src)
-	ui_interact(user)
+	tgui_interact(user)
 
-
-/obj/item/device/portable_vendor/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
-
-	if(!ishuman(user)) return
-
-	var/list/display_list = list()
-
-
-	for(var/i in 1 to listed_products.len)
-		var/list/myprod = listed_products[i]
-		var/p_name = myprod[1]
-		var/p_cost = myprod[2]
-		if(p_cost > 0)
-			p_name += " ([p_cost] points)"
-
-		var/prod_available = FALSE
-		//var/avail_flag = myprod[4]
-		if(points >= p_cost || !use_points)
-			prod_available = TRUE
-
-								//place in main list, name, cost, available or not, color.
-		display_list += list(list("prod_index" = i, "prod_name" = p_name, "prod_available" = prod_available, "prod_color" = myprod[4], "prod_desc" = myprod[5]))
-
-
-	var/list/data = list(
-		"vendor_name" = name,
-		"show_points" = use_points,
-		"current_points" = round(points),
-		"max_points" = max_points,
-		"displayed_records" = display_list,
-	)
-
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-
-	if (!ui)
-		ui = new(user, src, ui_key, "portable_vendor.tmpl", name , 600, 700)
-		ui.set_initial_data(data)
+/obj/item/device/portable_vendor/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "PortableVendor", "[src]")
 		ui.open()
-		ui.set_auto_update(0)
+
+/obj/item/device/portable_vendor/ui_data(mob/user)
+	. = ..()
+
+	var/list/available_items = list()
+	for(var/index in 1 to length(listed_products))
+		var/product = listed_products[index]
+
+		var/name = product[1]
+		var/cost = product[2]
+		var/color = product[4]
+		var/description = product[5]
+
+		if(cost > 0)
+			name += " ([cost] points)"
+
+		var/available = points >= product[2] || !use_points
+		available_items += list(list("index" = index, "name" = name, "cost" = cost, "available" = available, "color" = color, "description" = description))
+
+	.["vendor_name"] = name
+	.["show_points"] = use_points
+	.["current_points"] = round(points)
+	.["max_points"] = max_points
+	.["displayed_records"] = available_items
 
 
-/obj/item/device/portable_vendor/Topic(href, href_list)
+/obj/item/device/portable_vendor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
+
+	switch(action)
+		if("vend")
+			vend(text2num(params["choice"]), ui.user)
+
+/obj/item/device/portable_vendor/proc/vend(choice, mob/user)
 	if(broken)
 		return
-	if(usr.is_mob_incapacitated())
+
+	if(user.is_mob_incapacitated())
 		return
 
-	if (in_range(src, usr) && ishuman(usr))
-		usr.set_interaction(src)
-		if (href_list["vend"])
+	if(!(in_range(src, user) || ishuman(user)))
+		return
 
-			if(!allowed(usr))
-				to_chat(usr, SPAN_WARNING("Access denied."))
-				return
+	user.set_interaction(src)
 
-			var/mob/living/carbon/human/H = usr
-			var/obj/item/card/id/I = H.wear_id
-			if(!istype(I)) //not wearing an ID
-				to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
-				return
+	if(!allowed(user))
+		to_chat(user, SPAN_WARNING("Access denied."))
+		return
 
-			if(I.registered_name != H.real_name)
-				to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
-				return
+	var/mob/living/carbon/human/human_user = user
+	var/obj/item/card/id/id = human_user.get_idcard()
 
-			if(req_role && I.rank != req_role)
-				to_chat(H, SPAN_WARNING("This device isn't for you."))
-				return
+	if(!istype(id))
+		to_chat(human_user, SPAN_WARNING("Access denied. No ID card detected."))
+		return
 
-			var/idx=text2num(href_list["vend"])
+	if(req_role && req_role != id.rank)
+		to_chat(human_user, SPAN_WARNING("This device isn't for you."))
 
-			var/list/L = listed_products[idx]
-			var/cost = L[2]
+	var/list/product = listed_products[choice]
 
-			if(use_points && points < cost)
-				to_chat(H, SPAN_WARNING("Not enough points."))
-				return
+	var/cost = product[2]
 
+	if(use_points && points < cost)
+		to_chat(human_user, SPAN_WARNING("Not enough points."))
+		return
 
-			var/turf/T = get_turf(loc)
-			if(length(T.contents) > 25)
-				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
-				return
+	var/turf/current_turf = get_turf(src)
+	if(length(current_turf.contents) > 25)
+		to_chat(human_user, SPAN_WARNING("The floor is too cluttered, make some space."))
+		return
 
-			if(special_prod_time_lock)
-				if(L[3] in special_prods)
-					if(world.time < SSticker.mode.round_time_lobby + special_prod_time_lock)
-						to_chat(usr, SPAN_WARNING("\The [src] is still fabricating \the [L[1]]. Please wait another [round((SSticker.mode.round_time_lobby + special_prod_time_lock-world.time)/600)] minutes before trying again."))
-						return
+	if(special_prod_time_lock && (product[3] in special_prods))
+		if(ROUND_TIME < special_prod_time_lock)
+			to_chat(usr, SPAN_WARNING("[src] is still fabricating [product[1]]. Please wait another [round((SSticker.mode.round_time_lobby + special_prod_time_lock-world.time)/600)] minutes before trying again."))
+			return
 
-			if(use_points)
-				points -= cost
+	if(use_points)
+		points -= cost
 
-			purchase_log += "[key_name(usr)] bought [L[1]]."
+	purchase_log += "[key_name(usr)] bought [product[1]]."
 
-			playsound(src, "sound/machines/fax.ogg", 5)
-			fabricating = 1
-			update_overlays()
-			spawn(30)
-				var/type_p = L[3]
-				var/obj/IT = new type_p(get_turf(src))
-				H.put_in_any_hand_if_possible(IT)
-				fabricating = 0
-				update_overlays()
+	playsound(src, "sound/machines/fax.ogg", 5)
+	fabricating = TRUE
+	update_overlays()
 
-		src.add_fingerprint(usr)
-		ui_interact(usr) //updates the nanoUI window
+	addtimer(CALLBACK(src, PROC_REF(spawn_product), product[3], user), 3 SECONDS)
 
+/obj/item/device/portable_vendor/proc/spawn_product(typepath, mob/user)
+	var/obj/new_item = new typepath(get_turf(src))
+	user.put_in_any_hand_if_possible(new_item)
+	fabricating = FALSE
+	update_overlays()
 
 /obj/item/device/portable_vendor/proc/update_overlays()
 	if(overlays) overlays.Cut()
@@ -194,8 +187,7 @@
 /obj/item/device/portable_vendor/process()
 	points = min(max_points, points+0.05)
 
-
-/obj/item/device/portable_vendor/New()
+/obj/item/device/portable_vendor/Initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
 	update_overlays()
@@ -246,7 +238,7 @@
 	special_prod_time_lock = CL_BRIEFCASE_TIME_LOCK
 	special_prods = list(/obj/item/implanter/neurostim, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison)
 
-	req_access = list(ACCESS_WY_CORPORATE)
+	req_access = list(ACCESS_WY_EXEC)
 	req_role = JOB_CORPORATE_LIAISON
 	listed_products = list(
 		list("INCENTIVES", 0, null, null, null),
@@ -278,4 +270,7 @@
 
 		list("MISC", 0, null, null, null),
 		list("Hollow Cane", 15, /obj/item/weapon/pole/fancy_cane/this_is_a_knife, "white", "A hollow cane that can store any commonplace sharp weaponry. Said weapon not included."),
+
+		list("AMMO", 0, null, null, null),
+		list("ES-4 stun magazine", 10, /obj/item/ammo_magazine/pistol/es4, "white", "Holds 19 rounds of specialized Conductive 9mm."),
 	)

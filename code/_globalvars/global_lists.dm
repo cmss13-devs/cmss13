@@ -10,6 +10,7 @@ GLOBAL_LIST_EMPTY(GeneralFaxes) //Inter-machine faxes
 GLOBAL_LIST_EMPTY(fax_contents) //List of fax contents to maintain it even if source paper is deleted
 
 GLOBAL_LIST_EMPTY(failed_fultons) //A list of fultoned items which weren't collected and fell back down
+GLOBAL_LIST_EMPTY(larva_burst_by_hive)
 
 GLOBAL_LIST_INIT_TYPED(custom_huds_list, /datum/custom_hud, setup_all_huds())
 GLOBAL_LIST_INIT_TYPED(custom_human_huds, /datum/custom_hud, setup_human_huds())
@@ -49,11 +50,16 @@ GLOBAL_LIST_EMPTY(mainship_pipes)
 // Resin constructions parameters
 GLOBAL_LIST_INIT_TYPED(resin_constructions_list, /datum/resin_construction, setup_resin_constructions())
 
+GLOBAL_LIST_INIT(resin_build_order_lesser_drone, list(
+	/datum/resin_construction/resin_turf/wall,
+	/datum/resin_construction/resin_turf/membrane,
+	/datum/resin_construction/resin_obj/door,
+))
+
 GLOBAL_LIST_INIT(resin_build_order_drone, list(
 	/datum/resin_construction/resin_turf/wall,
 	/datum/resin_construction/resin_turf/membrane,
 	/datum/resin_construction/resin_obj/door,
-	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
 	/datum/resin_construction/resin_obj/resin_spike
@@ -64,11 +70,20 @@ GLOBAL_LIST_INIT(resin_build_order_hivelord, list(
 	/datum/resin_construction/resin_turf/wall/reflective,
 	/datum/resin_construction/resin_turf/membrane/thick,
 	/datum/resin_construction/resin_obj/door/thick,
-	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/acid_pillar,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
 	/datum/resin_construction/resin_obj/resin_spike
+))
+
+GLOBAL_LIST_INIT(resin_build_order_hivelord_whisperer, list(
+	/datum/resin_construction/resin_turf/wall,
+	/datum/resin_construction/resin_turf/membrane,
+	/datum/resin_construction/resin_obj/door,
+	/datum/resin_construction/resin_obj/sticky_resin,
+	/datum/resin_construction/resin_obj/fast_resin,
+	/datum/resin_construction/resin_obj/resin_spike,
+	/datum/resin_construction/resin_obj/resin_node
 ))
 
 GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(
@@ -76,7 +91,6 @@ GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(
 	/datum/resin_construction/resin_turf/wall/reflective,
 	/datum/resin_construction/resin_turf/membrane/queen,
 	/datum/resin_construction/resin_obj/door/queen,
-	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/acid_pillar,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
@@ -163,7 +177,8 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_TAMED = new /datum/hive_status/corrupted/tamed(),
 	XENO_HIVE_MUTATED = new /datum/hive_status/mutated(),
 	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken(),
-	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja()
+	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja(),
+	XENO_HIVE_RENEGADE = new /datum/hive_status/corrupted/renegade(),
 ))
 
 GLOBAL_DATUM_INIT(xeno_round_traits, /datum/xeno_round_traits, new())
@@ -192,6 +207,9 @@ GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/y
 
 	//Backpacks
 var/global/list/backbaglist = list("Backpack", "Satchel")
+	//Armor styles
+GLOBAL_LIST_INIT(armor_style_list, list("Padded" = 1, "Padless" = 2, "Ridged" = 3, "Carrier" = 4, "Skull" = 5, "Smooth" = 6, "Random"))
+
 // var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
 var/global/round_should_check_for_win = TRUE
 
@@ -495,3 +513,9 @@ var/global/list/available_specialist_kit_boxes = list(
 				.[E.key_third_person] = list(E)
 			else
 				.[E.key_third_person] |= E
+
+GLOBAL_LIST_EMPTY(topic_tokens)
+GLOBAL_PROTECT(topic_tokens)
+
+GLOBAL_LIST_EMPTY(topic_commands)
+GLOBAL_PROTECT(topic_commands)

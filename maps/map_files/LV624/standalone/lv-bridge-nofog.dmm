@@ -55,12 +55,10 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/river/central_river)
 "aj" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "ak" = (
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_jungle)
 "al" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -70,10 +68,7 @@
 	},
 /area/lv624/ground/river/central_river)
 "dC" = (
-/turf/open/gm/coast{
-	dir = 8;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/river/central_river)
 "iW" = (
 /obj/effect/landmark/crap_item,
@@ -84,29 +79,22 @@
 /area/lv624/ground/river/central_river)
 "jr" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast,
+/turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
 "jT" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast{
-	dir = 2;
-	icon_state = "beachcorner2"
-	},
+/turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/river/central_river)
 "km" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "lS" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/north_jungle)
 "lW" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/central_river)
 "lY" = (
 /turf/open/floor/plating{
@@ -129,20 +117,14 @@
 /area/lv624/ground/river/central_river)
 "mD" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/north_jungle)
 "mE" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/north_east_jungle)
 "pF" = (
-/turf/open/gm/coast{
-	dir = 1
-	},
+/turf/open/gm/coast/south,
 /area/lv624/ground/river/central_river)
 "qL" = (
 /obj/effect/spawner/gibspawner/human,
@@ -154,15 +136,10 @@
 /area/lv624/ground/river/central_river)
 "xB" = (
 /obj/effect/landmark/crap_item,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/north_jungle)
 "yj" = (
-/turf/open/gm/coast{
-	dir = 4;
-	icon_state = "beachcorner"
-	},
+/turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/river/central_river)
 "yu" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -182,9 +159,7 @@
 /area/lv624/ground/river/central_river)
 "EG" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_east_jungle)
 "Pz" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -198,12 +173,10 @@
 	},
 /area/lv624/ground/river/central_river)
 "VN" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
 "Wb" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/north_east_jungle)
 "Yw" = (
 /turf/open/floor/plating{

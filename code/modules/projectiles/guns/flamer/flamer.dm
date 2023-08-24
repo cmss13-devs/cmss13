@@ -51,7 +51,7 @@
 
 /obj/item/weapon/gun/flamer/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_4 * 5
+	set_fire_delay(FIRE_DELAY_TIER_5 * 5)
 
 /obj/item/weapon/gun/flamer/unique_action(mob/user)
 	toggle_gun_safety()
@@ -92,7 +92,7 @@
 	. = ..()
 	if(.)
 		if(!current_mag || !current_mag.current_rounds)
-			return
+			return NONE
 
 /obj/item/weapon/gun/flamer/proc/get_fire_sound()
 	var/list/fire_sounds = list(
@@ -102,20 +102,20 @@
 	return pick(fire_sounds)
 
 /obj/item/weapon/gun/flamer/Fire(atom/target, mob/living/user, params, reflex)
-	set waitfor = 0
+	set waitfor = FALSE
 
 	if(!able_to_fire(user))
-		return
+		return NONE
 
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
 	if (!targloc || !curloc)
-		return //Something has gone wrong...
+		return NONE //Something has gone wrong...
 
 	if(active_attachable && active_attachable.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
 		if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
 			return
-		if(active_attachable.current_rounds <= 0)
+		if((active_attachable.current_rounds <= 0) && !(active_attachable.flags_attach_features & ATTACH_IGNORE_EMPTY))
 			click_empty(user) //If it's empty, let them know.
 			to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
 			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
@@ -123,20 +123,22 @@
 		else
 			active_attachable.fire_attachment(target, src, user) //Fire it.
 			active_attachable.last_fired = world.time
-		return
+		return NONE
 
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
 		to_chat(user, SPAN_WARNING("\The [src] isn't lit!"))
-		return
+		return NONE
 
 	if(!current_mag)
-		return
+		return NONE
 
 	if(current_mag.current_rounds <= 0)
 		click_empty(user)
 	else
 		user.track_shot(initial(name))
 		unleash_flame(target, user)
+		return AUTOFIRE_CONTINUE
+	return NONE
 
 /obj/item/weapon/gun/flamer/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(!magazine || !istype(magazine))
@@ -321,7 +323,7 @@
 				unload(user, drop_override = TRUE)
 			current_mag = fuelpack.active_fuel
 			update_icon()
-	..()
+	return ..()
 
 
 /obj/item/weapon/gun/flamer/M240T/reload(mob/user, obj/item/ammo_magazine/magazine)
@@ -359,6 +361,16 @@
 		fuelpack = FP
 		return TRUE
 	return FALSE
+
+/obj/item/weapon/gun/flamer/M240T/auto // With NEW advances in science, we've learned how to drain a pyro's tank in 6 seconds, or your money back!
+	name = "\improper M240-T2 incinerator unit"
+	desc = "A prototyped model of the M240-T incinerator unit, it was discontinued after its automatic mode was deemed too expensive to deploy in the field."
+	start_semiauto = FALSE
+	start_automatic = TRUE
+
+/obj/item/weapon/gun/flamer/M240T/auto/set_gun_config_values()
+	. = ..()
+	set_fire_delay(FIRE_DELAY_TIER_7)
 
 GLOBAL_LIST_EMPTY(flamer_particles)
 /particles/flamer_fire
@@ -517,7 +529,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
 						if(weapon_cause_data.cause_name)
 							H.track_friendly_fire(weapon_cause_data.cause_name)
-						var/ff_msg = "[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) ([user.client ? "<a href='?priv_msg=[user.client.ckey]'>PM</a>" : "NO CLIENT"])"
+						var/ff_msg = "[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] [ADMIN_JMP(user)] [ADMIN_PM(user)]"
 						var/ff_living = TRUE
 						if(H.stat == DEAD)
 							ff_living = FALSE

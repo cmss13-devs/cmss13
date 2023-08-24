@@ -263,7 +263,7 @@ Voting
 
 // Gamemode to auto-switch to at the start of the round
 /datum/config_entry/string/gamemode_default
-	config_entry_value = "extended"
+	config_entry_value = "Extended"
 
 // Rounds needed for gamemode vote
 /datum/config_entry/number/gamemode_rounds_needed
@@ -529,6 +529,25 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/round_results_webhook_url
 
+/// InfluxDB v2 Host to connect to for sending statistics (over HTTP API)
+/datum/config_entry/string/influxdb_host
+/// InfluxDB v2 Bucket to send staistics to
+/datum/config_entry/string/influxdb_bucket
+/// InfluxDB v2 Organization to access buckets of
+/datum/config_entry/string/influxdb_org
+/// InfluxDB v2 API Token to access the organization and bucket
+/datum/config_entry/string/influxdb_token
+
+/// How often to snapshot general game statistics to influxdb driver
+/datum/config_entry/number/influxdb_stats_period
+	config_entry_value = 30
+/// How often to snapshot MC statistics
+/datum/config_entry/number/influxdb_mcstats_period
+	config_entry_value = 60
+/// How often to send queued influxdb statistics
+/datum/config_entry/number/influxdb_send_period
+	config_entry_value = 10
+
 /// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
 /datum/config_entry/flag/log_timers_on_bucket_reset
 
@@ -542,3 +561,67 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/number/hard_deletes_overrun_limit
 	default = 0
 	min_val = 0
+
+/datum/config_entry/string/bot_prefix
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/bot_command
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/certification_minutes
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/topic_max_size
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/log_world_topic
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/keyed_list/topic_tokens
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_TEXT
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/keyed_list/topic_tokens/ValidateListEntry(key_name, key_value)
+	return key_value != "topic_token" && ..()
+
+
+//Fail2Topic settings.
+/datum/config_entry/number/topic_rate_limit
+	config_entry_value = 5
+	min_val = 1
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/topic_max_fails
+	config_entry_value = 5
+	min_val = 1
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/topic_rule_name
+	config_entry_value = "_DD_Fail2topic"
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/topic_max_size
+	config_entry_value = 500
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/topic_enabled
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/redis_enabled
+	config_entry_value = FALSE
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/redis_logging
+	config_entry_value = FALSE
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/redis_connection
+	config_entry_value = "redis://127.0.0.1/"
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/instance_name
+	config_entry_value = "game"
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/guest_ban

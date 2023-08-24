@@ -1,8 +1,8 @@
 /obj/structure/machinery/recharge_station
-	name = "robot recharge station"
+	name = "synthetic maintenance station"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "borgcharger0"
-	desc = "A recharge and repair station for robots and synthetics. Simply put the synthetic in need of repair in here and they will be fixed up in no time!"
+	desc = "A Synthetic Maintenance Station designed to recharge, repair and maintain various sizes of artificial people. Simply place the synthetic or android in need of repair in here and they will be fixed up in no time!"
 	density = TRUE
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
@@ -14,7 +14,9 @@
 	var/charging_cap_active = 25000 // Active Cap - When cyborg is inside
 	var/charging_cap_passive = 2500 // Passive Cap - Recharging internal capacitor when no cyborg is inside
 	var/icon_update_tick = 0 // Used to update icon only once every 10 ticks
+	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
 	can_buckle = TRUE
+
 
 /obj/structure/machinery/recharge_station/Initialize(mapload, ...)
 	. = ..()
@@ -157,21 +159,42 @@
 				doing_stuff = TRUE
 			else
 				update_use_power(USE_POWER_IDLE)
-		if (isrobot(occupant) || issynth(occupant))
+		if (issynth(occupant))
+			var/mob/living/carbon/human/humanoid_occupant = occupant //for special synth surgeries
 			if(occupant.getBruteLoss() > 0 || occupant.getFireLoss() > 0 || occupant.getBrainLoss() > 0)
 				occupant.heal_overall_damage(10, 10, TRUE)
 				occupant.apply_damage(-10, BRAIN)
 				current_internal_charge = max(current_internal_charge - 500, 0)
-				to_chat(occupant, "Repairing...")
+				to_chat(occupant, "Structural damage detected. Repairing...")
 				doing_stuff = TRUE
 				occupant.pain.recalculate_pain()
 			if(!doing_stuff && occupant.blood_volume < initial(occupant.blood_volume))
 				occupant.blood_volume = min(occupant.blood_volume + 10, initial(occupant.blood_volume))
-				to_chat(occupant, "Refreshing liquids...")
+				to_chat(occupant, "Fluid volume low. Refreshing liquids...")
 				doing_stuff = TRUE
+			if(!doing_stuff)
+				for(var/obj/limb/current_limb in humanoid_occupant.limbs)
+					if(current_limb.implants.len)
+						doing_stuff = TRUE
+						to_chat(occupant, "Foreign material detected. Beginning removal process...")
+						for(var/obj/item/current_implant in current_limb.implants)
+							if(!is_type_in_list(current_implant,known_implants))
+								sleep(REMOVE_OBJECT_MAX_DURATION)
+								current_limb.implants -= current_implant
+								humanoid_occupant.embedded_items -= current_implant
+								qdel(current_implant)
+								to_chat(occupant, "Foreign object removed.")
+				for(var/datum/internal_organ/current_organ in humanoid_occupant.internal_organs)
+					if(current_organ.robotic == ORGAN_ASSISTED||current_organ.robotic == ORGAN_ROBOT) //this time the machine can *only* fix robotic organs
+						if(current_organ.damage > 0)
+							to_chat(occupant, "Damaged internal component detected. Beginning repair process.")
+							doing_stuff = TRUE
+							sleep(FIX_ORGAN_MAX_DURATION)
+							current_organ.rejuvenate()
+							to_chat(occupant, "Internal component repaired.")
 
 		if(!doing_stuff)
-			to_chat(occupant, "Maintenance complete! Have a nice day!")
+			to_chat(occupant, "Maintenance cycle completed. All systems nominal.")
 			go_out()
 
 

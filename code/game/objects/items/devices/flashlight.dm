@@ -58,8 +58,9 @@
 	if(!toggleable)
 		to_chat(user, SPAN_WARNING("You cannot toggle \the [src.name] on or off."))
 		return FALSE
+
 	if(!isturf(user.loc))
-		to_chat(user, "You cannot turn the light on while in [user.loc].") //To prevent some lighting anomalities.
+		to_chat(user, SPAN_WARNING("You cannot turn the light [on ? "off" : "on"] while in [user.loc].")) //To prevent some lighting anomalies.
 		return FALSE
 
 	on = !on
@@ -285,7 +286,7 @@
 
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
-	fuel = rand(1600 SECONDS, 2000 SECONDS)
+	fuel = rand(9.5 MINUTES, 10.5 MINUTES)
 
 /obj/item/device/flashlight/flare/update_icon()
 	overlays?.Cut()
@@ -415,7 +416,7 @@
 
 /obj/item/device/flashlight/flare/on/illumination/Initialize()
 	. = ..()
-	fuel = rand(800 SECONDS, 1000 SECONDS) // Half the duration of a flare, but justified since it's invincible
+	fuel = rand(4.5 MINUTES, 5.5 MINUTES) // Half the duration of a flare, but justified since it's invincible
 
 /obj/item/device/flashlight/flare/on/illumination/update_icon()
 	return
@@ -429,7 +430,7 @@
 
 /obj/item/device/flashlight/flare/on/starshell_ash
 	name = "burning star shell ash"
-	desc = "Bright burning ash from a Star Shell 40mm. Don't touch, oh it'll burn ya'."
+	desc = "Bright burning ash from a Star Shell 40mm. Don't touch, or it'll burn ya'."
 	icon_state = "starshell_ash"
 	brightness_on = 7
 	anchored = TRUE//can't be picked up
@@ -440,7 +441,7 @@
 	if(mapload)
 		return INITIALIZE_HINT_QDEL
 	. = ..()
-	fuel = rand(5 SECONDS, 60 SECONDS)
+	fuel = rand(30 SECONDS,	60 SECONDS)
 
 /obj/item/device/flashlight/flare/on/illumination/chemical
 	name = "chemical light"
@@ -524,8 +525,9 @@
 		anchored = TRUE
 		if(activate_message)
 			visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
-		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([x], [y], [z]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP LOC</a>)")
-		log_game("Flare target [src] has been activated by [key_name(user, 1)] at ([x], [y], [z]).")
+		var/turf/target_turf = get_turf(src)
+		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[target_turf.x];Y=[target_turf.y];Z=[target_turf.z]'>JMP LOC</a>)")
+		log_game("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]).")
 		return TRUE
 
 /obj/item/device/flashlight/flare/signal/attack_hand(mob/user)
@@ -540,7 +542,7 @@
 	STOP_PROCESSING(SSobj, src)
 	if(signal)
 		cas_groups[faction].remove_signal(signal)
-		qdel(signal)
+		QDEL_NULL(signal)
 	return ..()
 
 /obj/item/device/flashlight/flare/signal/turn_off()

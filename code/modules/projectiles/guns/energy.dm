@@ -90,6 +90,7 @@
 			to_firer = "[round((cell.charge / charge_cost), 1)] / [max_shots] SHOTS REMAINING"
 		user.visible_message(SPAN_DANGER("[user] fires \the [src]!"),
 		SPAN_DANGER("[to_firer]"), message_flags = CHAT_TYPE_WEAPON_USE)
+		return AUTOFIRE_CONTINUE
 
 /obj/item/weapon/gun/energy/reload_into_chamber()
 	update_icon()
@@ -132,7 +133,7 @@
 
 /obj/item/weapon/gun/energy/rxfm5_eva/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
+	set_fire_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
 	scatter = SCATTER_AMOUNT_TIER_7
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -180,12 +181,13 @@
 	fire_sound = 'sound/weapons/Laser4.ogg'
 	has_charge_meter = FALSE
 	charge_icon = "+laz_uzi_empty"
+	start_automatic = TRUE
 
 /obj/item/weapon/gun/energy/laz_uzi/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_SMG
-	burst_delay = FIRE_DELAY_TIER_SMG
-	burst_amount = BURST_AMOUNT_TIER_2
+	set_fire_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
 	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_5
@@ -193,6 +195,7 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+	fa_scatter_peak = SCATTER_AMOUNT_TIER_8
 
 //############################ Taser ##################
 // Lots of bits for it so splitting off an area
@@ -217,7 +220,7 @@
 
 /obj/item/weapon/gun/energy/taser/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_7
+	set_fire_delay(FIRE_DELAY_TIER_7)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	damage_mult = BASE_BULLET_DAMAGE_MULT

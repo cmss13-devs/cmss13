@@ -126,3 +126,8 @@
 
 // This table is for local filtering only. Use for logs that you want to query this round
 #define DB_TABLEHINT_LOCAL 1
+
+#define DB_AND new /datum/db/filter/and
+#define DB_OR new /datum/db/filter/or
+#define DB_COMP new /datum/db/filter/comparison
+#define DB_COMP2 new /datum/db/filter/compare_two

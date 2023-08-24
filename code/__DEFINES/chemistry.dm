@@ -49,6 +49,7 @@
 
 // Nutrition levels
 #define NUTRITION_MAX 550
+#define NUTRITION_HIGH 540
 #define NUTRITION_NORMAL 400
 #define NUTRITION_LOW 250
 #define NUTRITION_VERYLOW 50
@@ -82,6 +83,7 @@
 #define CHEM_EFFECT_RESIST_NEURO (1<<1)
 #define CHEM_EFFECT_HYPER_THROTTLE (1<<2) //universal understand but not speech
 #define CHEM_EFFECT_ORGAN_STASIS (1<<3) //peri stabiliser
+#define CHEM_EFFECT_NO_BLEEDING (1<<4) //replacement for quickclot
 
 
 //Blood plasma
@@ -156,6 +158,8 @@
 #define PROPERTY_NEOGENETIC "neogenetic"
 #define PROPERTY_REPAIRING "repairing"
 #define PROPERTY_HEMOGENIC "hemogenic"
+#define PROPERTY_YAUTJA_HEMOGENIC "yautja-hemogenic"
+#define PROPERTY_HEMOSTATIC "hemostatic"
 #define PROPERTY_NERVESTIMULATING "nerve-stimulating"
 #define PROPERTY_MUSCLESTIMULATING "muscle-stimulating"
 #define PROPERTY_PAINKILLING "painkilling"

@@ -31,6 +31,7 @@
 
 	var/atom/movable/screen/slowed_icon
 	var/atom/movable/screen/bleeding_icon
+	var/atom/movable/screen/transfusion_icon
 	var/atom/movable/screen/shrapnel_icon
 	var/atom/movable/screen/tethering_icon
 	var/atom/movable/screen/tethered_icon
@@ -107,6 +108,7 @@
 			qdel(thing)
 		infodisplay.Cut()
 
+	mymob = null
 	qdel(hide_actions_toggle)
 	hide_actions_toggle = null
 
@@ -128,6 +130,7 @@
 	slowed_icon = null
 	shrapnel_icon = null
 	bleeding_icon = null
+	transfusion_icon = null
 	tethering_icon = null
 	tethered_icon = null
 

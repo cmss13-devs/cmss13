@@ -397,7 +397,7 @@
 
 /obj/item/toy/dice
 	name = "d6"
-	desc = "A dice with six sides."
+	desc = "A die with six sides."
 	icon = 'icons/obj/items/dice.dmi'
 	icon_state = "d66"
 	w_class = SIZE_TINY
@@ -406,11 +406,11 @@
 
 /obj/item/toy/dice/Initialize()
 	. = ..()
-	icon_state = "[name][rand(sides)]"
+	icon_state = "[name][rand(1, sides)]"
 
 /obj/item/toy/dice/d20
 	name = "d20"
-	desc = "A dice with twenty sides."
+	desc = "A die with twenty sides."
 	icon_state = "d2020"
 	sides = 20
 

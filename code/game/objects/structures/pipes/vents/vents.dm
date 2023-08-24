@@ -12,6 +12,7 @@
 	var/uid
 
 	var/vent_icon = "vent"
+	var/datum/effect_system/smoke_spread/gas_holder
 
 /obj/structure/pipes/vents/Initialize()
 	. = ..()
@@ -123,7 +124,35 @@
 		qdel(src)
 
 /obj/structure/pipes/vents/Destroy()
+	qdel(gas_holder)
 	if(initial_loc)
 		initial_loc.air_vent_info -= id_tag
 		initial_loc.air_vent_names -= id_tag
 	. = ..()
+
+/obj/structure/pipes/vents/proc/create_gas(gas_type = VENT_GAS_SMOKE, radius = 4, warning_time = 5 SECONDS)
+	if(welded)
+		to_chat(usr, SPAN_WARNING("You cannot release gas from a welded vent."))
+		return FALSE
+	var/datum/effect_system/smoke_spread/spreader
+	switch(gas_type)
+		if(VENT_GAS_SMOKE)
+			spreader = new /datum/effect_system/smoke_spread/bad
+		if(VENT_GAS_CN20)
+			spreader = new /datum/effect_system/smoke_spread/cn20
+	if(!spreader)
+		return FALSE
+	gas_holder = spreader
+	spreader.attach(src)
+
+	new /obj/effect/warning/explosive/gas(loc, warning_time)
+	visible_message(SPAN_HIGHDANGER("[src] begins to hiss as gas builds up within it."), SPAN_HIGHDANGER("You hear a hissing."), radius)
+	addtimer(CALLBACK(src, PROC_REF(release_gas), radius), warning_time)
+
+/obj/structure/pipes/vents/proc/release_gas(radius = 4)
+	radius = Clamp(radius, 1, 10)
+	if(!gas_holder || welded)
+		return FALSE
+	playsound(loc, 'sound/effects/smoke.ogg', 25, 1, 4)
+	gas_holder.set_up(radius, 0, get_turf(src), null, 10 SECONDS)
+	gas_holder.start()

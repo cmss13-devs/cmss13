@@ -1,4 +1,5 @@
 #define HIJACK_EXPLOSION_COUNT 5
+#define MARINE_MAJOR_ROUND_END_DELAY 3 MINUTES
 
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"
@@ -27,26 +28,38 @@
 /datum/game_mode/colonialmarines/announce()
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
 
+/datum/game_mode/colonialmarines/get_roles_list()
+	return ROLES_DISTRESS_SIGNAL
+
 ////////////////////////////////////////////////////////////////////////////////////////
 //Temporary, until we sort this out properly.
 /obj/effect/landmark/lv624
-	icon = 'icons/old_stuff/mark.dmi'
+	icon = 'icons/landmarks.dmi'
 
 /obj/effect/landmark/lv624/fog_blocker
 	name = "fog blocker"
-	icon_state = "spawn_event"
+	icon_state = "fog"
+
+	var/time_to_dispel = 25 MINUTES
+
+/obj/effect/landmark/lv624/fog_blocker/short
+	time_to_dispel = 15 MINUTES
 
 /obj/effect/landmark/lv624/fog_blocker/Initialize(mapload, ...)
 	. = ..()
-	GLOB.fog_blockers += src
 
-/obj/effect/landmark/lv624/fog_blocker/Destroy()
-	GLOB.fog_blockers -= src
-	return ..()
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/effect/landmark/lv624/fog_blocker/LateInitialize()
+	if(!(SSticker.mode.flags_round_type & MODE_FOG_ACTIVATED) || !SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_FOG])
+		return
+
+	new /obj/structure/blocker/fog(loc, time_to_dispel)
+	qdel(src)
 
 /obj/effect/landmark/lv624/xeno_tunnel
 	name = "xeno tunnel"
-	icon_state = "spawn_event"
+	icon_state = "xeno_tunnel"
 
 /obj/effect/landmark/lv624/xeno_tunnel/Initialize(mapload, ...)
 	. = ..()
@@ -60,11 +73,6 @@
 
 /* Pre-setup */
 /datum/game_mode/colonialmarines/pre_setup()
-	for(var/i in GLOB.fog_blockers)
-		var/obj/effect/landmark/lv624/fog_blocker/FB = i
-		round_fog += new /obj/structure/blocker/fog(FB.loc)
-		qdel(FB)
-
 	QDEL_LIST(GLOB.hunter_primaries)
 	QDEL_LIST(GLOB.hunter_secondaries)
 	QDEL_LIST(GLOB.crap_items)
@@ -77,11 +85,6 @@
 			var/turf/T = get_turf(i)
 			qdel(i)
 			new type_to_spawn(T)
-
-	if(!round_fog.len)
-		round_fog = null //No blockers?
-	else
-		flags_round_type |= MODE_FOG_ACTIVATED
 
 	//desert river test
 	if(!round_toxic_river.len)
@@ -115,8 +118,6 @@
 	if(SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_BASIC_RT])
 		flags_round_type |= MODE_BASIC_RT
 
-	round_time_lobby = world.time
-
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 
@@ -140,20 +141,19 @@
 		var/monkey_to_spawn = pick(monkey_types)
 		new monkey_to_spawn(T)
 
-/datum/game_mode/colonialmarines/proc/ares_online()
-	var/name = "ARES Online"
-	var/input = "ARES. Online. Good morning, marines."
-	shipwide_ai_announcement(input, name, 'sound/AI/ares_online.ogg')
-
 /datum/game_mode/colonialmarines/proc/map_announcement()
 	if(SSmapping.configs[GROUND_MAP].announce_text)
 		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
 
+/datum/game_mode/colonialmarines/proc/ares_conclude()
+	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")
+	ai_silent_announcement("Saving operational report to archive.", ".V")
+	ai_silent_announcement("Commencing final systems scan in 3 minutes.", ".V")
+
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
-#define FOG_DELAY_INTERVAL (25 MINUTES)
 #define PODLOCKS_OPEN_WAIT (45 MINUTES) // CORSAT pod doors drop at 12:45
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
@@ -164,6 +164,7 @@
 
 	if(is_in_endgame)
 		check_hijack_explosions()
+		check_ground_humans()
 
 	if(next_research_allocation < world.time)
 		chemical_data.update_credits(chemical_data.research_allocation_amount)
@@ -188,8 +189,6 @@
 			bioscan_current_interval += bioscan_ongoing_interval //Add to the interval based on our set interval time.
 
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
-			if(flags_round_type & MODE_FOG_ACTIVATED && SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_FOG] && world.time >= (FOG_DELAY_INTERVAL + SSticker.round_start_time))
-				disperse_fog() //Some RNG thrown in.
 			if(!(round_status_flags & ROUNDSTATUS_PODDOORS_OPEN))
 				if(SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_LOCKDOWN])
 					if(world.time >= (PODLOCKS_OPEN_WAIT + round_time_lobby))
@@ -243,6 +242,35 @@
 	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
 
+#define GROUNDSIDE_XENO_MULTIPLIER 1.0
+
+///Checks for humans groundside after hijack, spawns forsaken if requirements met
+/datum/game_mode/colonialmarines/proc/check_ground_humans()
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_HIJACK_GROUND_CHECK))
+		return
+
+	var/groundside_humans = 0
+	var/groundside_xenos = 0
+
+	for(var/mob/current_mob in GLOB.player_list)
+		if(!is_ground_level(current_mob.z) || !current_mob.client || current_mob.stat == DEAD)
+			continue
+
+		if(ishuman_strict(current_mob))
+			groundside_humans++
+			continue
+
+		if(isxeno(current_mob))
+			groundside_xenos++
+			continue
+
+	if(groundside_humans > (groundside_xenos * GROUNDSIDE_XENO_MULTIPLIER))
+		SSticker.mode.get_specific_call("Xenomorphs Groundside (Forsaken)", FALSE, FALSE, announce_dispatch_message = FALSE)
+
+	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_GROUND_CHECK, 1 MINUTES)
+
+#undef GROUNDSIDE_XENO_MULTIPLIER
+
 /**
  * Makes the mainship shake, along with playing a klaxon sound effect.
  */
@@ -254,7 +282,6 @@
 
 	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 10)
 
-#undef FOG_DELAY_INTERVAL
 #undef PODLOCKS_OPEN_WAIT
 
 // Resource Towers
@@ -287,7 +314,10 @@
 			if(SSticker.mode && SSticker.mode.is_in_endgame)
 				round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
 			else
+				SSticker.roundend_check_paused = TRUE
 				round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
+				ares_conclude()
+				addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
 		else if(!num_humans && !num_xenos)
 			round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
 
@@ -317,6 +347,8 @@
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
+#define MAJORITY 0.5 // What percent do we consider a 'majority?'
+
 /datum/game_mode/colonialmarines/declare_completion()
 	announce_ending()
 	var/musical_track
@@ -335,7 +367,20 @@
 				round_statistics.current_map.total_marine_victories++
 				round_statistics.current_map.total_marine_majors++
 		if(MODE_INFESTATION_X_MINOR)
-			musical_track = pick('sound/theme/neutral_melancholy1.ogg','sound/theme/neutral_melancholy2.ogg')
+			var/list/living_player_list = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
+			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
+				var/headcount = count_per_faction()
+				var/living = headcount["total_headcount"]
+				if ((headcount["WY_headcount"] / living) > MAJORITY)
+					musical_track = pick('sound/theme/lastmanstanding_wy.ogg')
+				else if ((headcount["UPP_headcount"] / living) > MAJORITY)
+					musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
+				else if ((headcount["CLF_headcount"] / living) > MAJORITY)
+					musical_track = pick('sound/theme/lastmanstanding_clf.ogg')
+				else if ((headcount["marine_headcount"] / living) > MAJORITY)
+					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
+			else
+				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
 			end_icon = "xeno_minor"
 			if(round_statistics && round_statistics.current_map)
 				round_statistics.current_map.total_xeno_victories++
@@ -346,7 +391,7 @@
 				round_statistics.current_map.total_marine_victories++
 		if(MODE_INFESTATION_DRAW_DEATH)
 			end_icon = "draw"
-			musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
+			musical_track = 'sound/theme/neutral_hopeful2.ogg'
 			if(round_statistics && round_statistics.current_map)
 				round_statistics.current_map.total_draws++
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
@@ -368,6 +413,7 @@
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
 	declare_fun_facts()
+
 
 	add_current_round_status_to_end_results("Round End")
 	handle_round_results_statistics_output()
@@ -400,7 +446,7 @@
 	//organize our jobs in a readable and standard way
 	for(var/job in ROLES_MARINES)
 		counted_humans["Squad Marines"][job] = 0
-	for(var/job in ROLES_REGULAR_ALL - ROLES_XENO - ROLES_MARINES - ROLES_WHITELISTED - ROLES_SPECIAL)
+	for(var/job in ROLES_USCM - ROLES_MARINES)
 		counted_humans["Auxiliary Marines"][job] = 0
 	for(var/job in ROLES_SPECIAL)
 		counted_humans["Non-Standard Humans"][job] = 0
@@ -542,3 +588,5 @@
 		incrementer++
 
 #undef HIJACK_EXPLOSION_COUNT
+#undef MARINE_MAJOR_ROUND_END_DELAY
+#undef MAJORITY

@@ -43,8 +43,8 @@
 /mob/living/carbon/human/proc/parse_say(message)
 	. = list("message", "language", "modes")
 	var/list/ml_and_modes = parse_say_modes(message)
-	.["modes"] = ml_and_modes["modes"]
-	.["fail_with"] = ml_and_modes["fail_with"]
+	.["modes"] = stat ? list(RADIO_MODE_WHISPER) : ml_and_modes["modes"]
+	.["fail_with"] = stat ? null : ml_and_modes["fail_with"]
 	var/message_and_language = ml_and_modes["message_and_language"]
 	var/parsed_language = parse_language(message_and_language)
 	if(parsed_language)
@@ -69,9 +69,9 @@
 			to_chat(src, SPAN_DANGER("You cannot speak in IC (Muted)."))
 			return
 
-	message =  trim(strip_html(message))
+	message = trim(strip_html(message))
 
-	if(stat == 2)
+	if(stat == DEAD)
 		return say_dead(message)
 
 	if(copytext(message,1,2) == "*")
@@ -121,7 +121,7 @@
 		verb = handle_r[2]
 		speech_problem_flag = handle_r[3]
 
-	if(!message || stat)
+	if(!message)
 		return
 
 	// Automatic punctuation
@@ -262,20 +262,20 @@ for it but just ignore it.
 /mob/living/carbon/human/proc/handle_speech_problems(message)
 	var/list/returns[3]
 	var/verb = "says"
-	var/handled = 0
+	var/handled = FALSE
 	if(silent)
 		message = ""
-		handled = 1
+		handled = TRUE
 	if(sdisabilities & DISABILITY_MUTE)
 		message = ""
-		handled = 1
+		handled = TRUE
 	if(wear_mask)
 		if(istype(wear_mask, /obj/item/clothing/mask/horsehead))
 			var/obj/item/clothing/mask/horsehead/hoers = wear_mask
 			if(hoers.voicechange)
 				message = pick("NEEIIGGGHHHH!", "NEEEIIIIGHH!", "NEIIIGGHH!", "HAAWWWWW!", "HAAAWWW!")
 				verb = pick("whinnies","neighs", "says")
-				handled = 1
+				handled = TRUE
 
 	var/braindam = getBrainLoss()
 	if(slurring || stuttering || dazed || braindam >= 60)
@@ -283,24 +283,25 @@ for it but just ignore it.
 	if(slurring)
 		message = slur(message)
 		verb = pick("stammers","stutters")
-		handled = 1
+		handled = TRUE
 	if(stuttering)
 		message = NewStutter(message)
 		verb = pick("stammers", "stutters")
-		handled = 1
+		handled = TRUE
 	if(dazed)
 		message = DazedText(message)
 		verb = pick("mumbles", "babbles")
-		handled = 1
+		handled = TRUE
 	if(braindam >= 60)
-		handled = 1
+		handled = TRUE
 		if(prob(braindam/4))
-			message = stutter(message)
+			message = stutter(message, stuttering)
 			verb = pick("stammers", "stutters")
 		if(prob(braindam))
 			message = uppertext(message)
 			verb = pick("yells like an idiot","says rather loudly")
 	if(HAS_TRAIT(src, TRAIT_LISPING))
+		handled = TRUE
 		var/old_message = message
 		message = lisp_replace(message)
 		if(old_message != message)

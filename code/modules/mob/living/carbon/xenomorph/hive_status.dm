@@ -95,7 +95,6 @@
 		evilution_level = SSxevolution.get_evolution_boost_power(assoc_hive.hivenumber)
 	else
 		evilution_level = 1
-
 	if(send_update)
 		SStgui.update_uis(src)
 

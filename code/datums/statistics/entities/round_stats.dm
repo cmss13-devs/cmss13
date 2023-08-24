@@ -20,7 +20,6 @@
 	var/total_projectiles_hit_human = 0
 	var/total_projectiles_hit_xeno = 0
 	var/total_friendly_fire_instances = 0
-	var/total_friendly_fire_kills = 0
 	var/total_slashes = 0
 
 	// untracked data
@@ -295,7 +294,7 @@
 	track_dead_participant(new_death.faction_name)
 
 /datum/entity/statistic/round/proc/log_round_statistics()
-	if(!round_stats)
+	if(!GLOB.round_stats)
 		return
 	var/total_xenos_created = 0
 	var/total_predators_spawned = 0
@@ -360,7 +359,6 @@
 
 	stats += "Total shots fired: [total_projectiles_fired]\n"
 	stats += "Total friendly fire instances: [total_friendly_fire_instances]\n"
-	stats += "Total friendly fire kills: [total_friendly_fire_kills]\n"
 
 	stats += "Marines remaining: [end_of_round_marines]\n"
 	stats += "Xenos remaining: [end_of_round_xenos]\n"
@@ -368,7 +366,7 @@
 
 	stats += "[log_end]"
 
-	round_stats << stats // Logging to data/logs/round_stats.log
+	WRITE_LOG(GLOB.round_stats, stats)
 
 /datum/action/show_round_statistics
 	name = "View End-Round Statistics"

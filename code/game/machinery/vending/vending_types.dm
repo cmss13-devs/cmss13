@@ -17,7 +17,7 @@
 */
 
 /obj/structure/machinery/vending/coffee
-	name = "Hot Drinks machine"
+	name = "\improper Hot Drinks machine"
 	desc = "A vending machine which dispenses hot drinks."
 	//product_ads = "Have a drink!;Drink up!;It's good for you!;Would you like a hot joe?;I'd kill for some coffee!;The best beans in the galaxy.;Only the finest brew for you.;Mmmm. Nothing like a coffee.;I like coffee, don't you?;Coffee helps you work!;Try some tea.;We hope you like the best!;Try our new chocolate!;Admin conspiracies"
 	icon_state = "coffee"
@@ -39,13 +39,13 @@
 	product_type = VENDOR_PRODUCT_TYPE_BEVERAGES
 
 /obj/structure/machinery/vending/coffee/simple
-	name = "Hot Coffee Machine"
+	name = "\improper Hot Coffee Machine"
 	product_ads = ""
 	products = list(/obj/item/reagent_container/food/drinks/coffee = 40)
 	contraband = list(/obj/item/reagent_container/food/drinks/h_chocolate = 25)
 
 /obj/structure/machinery/vending/snack
-	name = "Hot Foods Machine"
+	name = "\improper Hot Foods Machine"
 	desc = "A vending machine full of ready to cook meals, mhmmmm taste the nutritional goodness!"
 	product_slogans = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!;Eat a Weyland-Yutani brand packaged hamburger.;Eat a Weyland-Yutani brand packaged hot dog.;Eat a Weyland-Yutani brand packaged burrito.;"
 	product_ads = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!"
@@ -55,6 +55,7 @@
 		/obj/item/reagent_container/food/snacks/packaged_burrito = 12,
 		/obj/item/reagent_container/food/snacks/packaged_hdogs =12,
 		/obj/item/reagent_container/food/snacks/kepler_crisps = 12,
+		/obj/item/reagent_container/food/snacks/kepler_crisps/flamehot = 12,
 		/obj/item/reagent_container/food/snacks/wy_chips/pepper = 12,
 		/obj/item/reagent_container/food/snacks/eat_bar = 12,
 		/obj/item/reagent_container/food/snacks/wrapped/booniebars = 6,
@@ -67,6 +68,7 @@
 		/obj/item/reagent_container/food/snacks/packaged_burrito = 5,
 		/obj/item/reagent_container/food/snacks/packaged_hdogs = 5,
 		/obj/item/reagent_container/food/snacks/kepler_crisps = 3,
+		/obj/item/reagent_container/food/snacks/kepler_crisps/flamehot = 5,
 		/obj/item/reagent_container/food/snacks/wy_chips/pepper = 3,
 		/obj/item/reagent_container/food/snacks/eat_bar = 4,
 		/obj/item/reagent_container/food/snacks/wrapped/booniebars = 4,
@@ -85,7 +87,7 @@
 	)
 
 /obj/structure/machinery/vending/cola
-	name = "Souto Softdrinks"
+	name = "\improper Souto Softdrinks"
 	desc = "A softdrink vendor provided by Souto Soda Company, Havana."
 	icon_state = "Cola_Machine"
 	product_slogans = "Souto Soda: Have a Souto and be taken away to a tropical paradise!;Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!"
@@ -220,7 +222,7 @@
 	)
 
 /obj/structure/machinery/vending/security
-	name = "SecTech"
+	name = "\improper SecTech"
 	desc = "A security equipment vendor."
 	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
 	icon_state = "sec"
@@ -251,7 +253,7 @@
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/donut_box = 2)
 
 /obj/structure/machinery/vending/sea
-	name = "SeaTech"
+	name = "\improper SeaTech"
 	desc = "An equipment vendor designed to save lives"
 	product_ads = "Semper Fi!;First to Fight!;Ooh Rah.;Leathernecks!;The Few. The Proud.;Esprit de Corps;Jarhead.;Devil Dogs."
 	icon_state = "sec"
@@ -274,7 +276,7 @@
 	contraband = list(/obj/item/storage/fancy/cigar = 2,/obj/item/tool/lighter/zippo = 2)
 
 /obj/structure/machinery/vending/hydronutrients
-	name = "NutriMax"
+	name = "\improper NutriMax"
 	desc = "A plant nutrients vendor."
 	//product_slogans = "Aren't you glad you don't have to fertilize the natural way?;Now with 50% less stink!;Plants are people too!"
 	//product_ads = "We like plants!;Don't you want some?;The greenest thumbs ever.;We like big plants.;Soft soil..."
@@ -286,7 +288,7 @@
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/structure/machinery/vending/hydroseeds
-	name = "MegaSeed Servitor"
+	name = "\improper MegaSeed Servitor"
 	desc = "When you need seeds fast!"
 	//product_slogans = "THIS'S WHERE TH' SEEDS LIVE! GIT YOU SOME!;Hands down the best seed selection on the station!;Also certain mushroom varieties available, more for experts! Get certified today!"
 	//product_ads = "We like plants!;Grow some crops!;Grow, baby, growww!;Aw h'yeah son!"
@@ -309,7 +311,7 @@
 	premium = list(/obj/item/toy/waterflower = 1)
 
 /obj/structure/machinery/vending/dinnerware
-	name = "Dinnerware"
+	name = "\improper Dinnerware"
 	desc = "A kitchen and restaurant equipment vendor."
 	product_ads = "Mm, food stuffs!;Food and food accessories.;Get your plates!;You like forks?;I like forks.;Woo, utensils.;You don't really need these..."
 	icon_state = "dinnerware"
@@ -317,7 +319,7 @@
 	contraband = list(/obj/item/tool/kitchen/utensil/spoon = 2,/obj/item/tool/kitchen/utensil/knife = 2,/obj/item/tool/kitchen/rollingpin = 2, /obj/item/tool/kitchen/knife/butcher = 2)
 
 /obj/structure/machinery/vending/sovietsoda
-	name = "BODA"
+	name = "\improper BODA"
 	desc = "An old sweet water vending machine, how did this end up here?"
 	icon_state = "sovietsoda"
 	product_ads = "For Tsar and Country.;Have you fulfilled your nutrition quota today?;Very nice!;We are simple people, for this is all we eat.;If there is a person, there is a problem. If there is no person, then there is no problem."

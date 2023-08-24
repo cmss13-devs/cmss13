@@ -123,10 +123,12 @@
 #define TRAIT_SUPER_STRONG "t_super_strong"
 /// Foreign biology. Basic medHUDs won't show the mob. (Yautja, Zombies)
 #define TRAIT_FOREIGN_BIO "t_foreign_bio"
-/// Eye color changes on intent. (G1 Synths)
+/// Eye color changes on intent. (G1 Synths and WJs)
 #define TRAIT_INTENT_EYES "t_intent_eyes"
 /// Masked synthetic biology. Basic medHUDs will percieve the mob as human. (Infiltrator Synths)
 #define TRAIT_INFILTRATOR_SYNTH "t_infiltrator_synth"
+/// Makes it impossible to strip the inventory of this mob.
+#define TRAIT_UNSTRIPPABLE "t_unstrippable"
 
 // HIVE TRAITS
 /// If the Hive is a Xenonid Hive
@@ -149,7 +151,7 @@
 #define TRAIT_TWOBORE_TRAINING "t_twobore"
 /// If the mob has equipment that alleviates nearsightedness
 #define TRAIT_NEARSIGHTED_EQUIPMENT "t_nearsighted_eq"
-/// If the mob is affected by drag delay.area
+/// If the mob is affected by drag delay.
 #define TRAIT_DEXTROUS "t_dextrous"
 /// If the mob is currently charging (xeno only)
 #define TRAIT_CHARGING "t_charging"
@@ -157,6 +159,8 @@
 #define TRAIT_LEADERSHIP "t_leadership"
 /// If the mob can see the reagents contents of stuff
 #define TRAIT_REAGENT_SCANNER "reagent_scanner"
+/// If the mob cannot eat/be fed
+#define TRAIT_CANNOT_EAT "t_cannot_eat"
 /// If the mob is being lazed by a sniper spotter
 #define TRAIT_SPOTTER_LAZED "t_spotter_lazed"
 /// If the mob has ear protection. Protects from external ear damage effects. Includes explosions, firing the RPG, screeching DEAFNESS only, and flashbangs.
@@ -169,12 +173,18 @@
 #define TRAIT_EMOTE_CD_EXEMPT "t_emote_cd_exempt"
 /// If the mob is holding a cane.
 #define TRAIT_HOLDS_CANE "t_holds_cane"
+/// If the mob is buckled to a wheelchair.
+#define TRAIT_USING_WHEELCHAIR "t_using_wheelchair"
+/// If the mob will instantly go permadead upon death
+#define TRAIT_HARDCORE "t_hardcore"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them
 #define TRAIT_ABILITY_NO_PLASMA_TRANSFER "t_ability_no_plasma_transfer"
 /// Shows that the xeno queen is on ovi
 #define TRAIT_ABILITY_OVIPOSITOR "t_ability_ovipositor"
+/// Used for burrowed mobs, prevent's SG/sentrys/claymores from autofiring
+#define TRAIT_ABILITY_BURROWED "t_ability_burrowed"
 
 //-- item traits --
 // TOOL TRAITS
@@ -217,6 +227,8 @@
 //ie. naming a regulation tape "example" will become regulation tape (example)
 #define TRAIT_ITEM_RENAME_SPECIAL "t_item_rename_special"
 
+// This item can't be implanted into someone, regardless of the size of the item.
+#define TRAIT_ITEM_NOT_IMPLANTABLE "t_item_not_implantable"
 
 //-- structure traits --
 // TABLE TRAITS
@@ -235,7 +247,8 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_TWOBORE_TRAINING,
 	TRAIT_LEADERSHIP,
 	TRAIT_DEXTROUS,
-	TRAIT_REAGENT_SCANNER
+	TRAIT_REAGENT_SCANNER,
+	TRAIT_ABILITY_BURROWED
 ))
 
 /*
@@ -250,6 +263,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_FOREIGN_BIO" = TRAIT_FOREIGN_BIO,
 		"TRAIT_INTENT_EYES" = TRAIT_INTENT_EYES,
 		"TRAIT_INFILTRATOR_SYNTH" = TRAIT_INFILTRATOR_SYNTH,
+		"TRAIT_UNSTRIPPABLE" = TRAIT_UNSTRIPPABLE,
 		"TRAIT_NESTED" = TRAIT_NESTED,
 		"TRAIT_CRAWLER" = TRAIT_CRAWLER,
 		"TRAIT_SIMPLE_DESC" = TRAIT_SIMPLE_DESC,
@@ -265,6 +279,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_BIMEX" = TRAIT_BIMEX,
 		"TRAIT_EMOTE_CD_EXEMPT" = TRAIT_EMOTE_CD_EXEMPT,
 		"TRAIT_LISPING" = TRAIT_LISPING,
+		"TRAIT_CANNOT_EAT" = TRAIT_CANNOT_EAT,
 	),
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,

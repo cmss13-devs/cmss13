@@ -18,7 +18,13 @@
 	force = 20
 	wield_delay = WIELD_DELAY_FAST
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	var/powerpack = null
+	var/obj/item/smartgun_battery/battery = null
+	/// Whether the smartgun drains the battery (Ignored if requires_battery is false)
+	var/requires_power = TRUE
+	/// Whether the smartgun requires a battery
+	var/requires_battery = TRUE
+	/// Whether the smartgun requires a harness to use
+	var/requires_harness = TRUE
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
@@ -53,16 +59,19 @@
 		/obj/item/attachable/flashlight,
 	)
 
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	gun_category = GUN_CATEGORY_HEAVY
 	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
 	auto_retrieval_slot = WEAR_J_STORE
+	start_semiauto = FALSE
+	start_automatic = TRUE
 
 
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
 	ammo_primary = GLOB.ammo_list[ammo_primary] //Gun initialize calls replace_ammo() so we need to set these first.
 	ammo_secondary = GLOB.ammo_list[ammo_secondary]
 	MD = new(src)
+	battery = new /obj/item/smartgun_battery(src)
 	. = ..()
 	update_icon()
 
@@ -70,6 +79,7 @@
 	ammo_primary = null
 	ammo_secondary = null
 	QDEL_NULL(MD)
+	QDEL_NULL(battery)
 	. = ..()
 
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
@@ -77,12 +87,9 @@
 
 /obj/item/weapon/gun/smartgun/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_9
-	fa_delay = FIRE_DELAY_TIER_SG
+	set_fire_delay(FIRE_DELAY_TIER_SG)
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_8
-	fa_max_scatter = SCATTER_AMOUNT_TIER_3
+	fa_max_scatter = SCATTER_AMOUNT_TIER_9
 	if(accuracy_improvement)
 		accuracy_mult += HIT_ACCURACY_MULT_TIER_3
 	else
@@ -93,7 +100,6 @@
 	else
 		scatter = SCATTER_AMOUNT_TIER_6
 		recoil = RECOIL_AMOUNT_TIER_3
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 /obj/item/weapon/gun/smartgun/set_bullet_traits()
@@ -109,6 +115,9 @@
 	var/message = "[rounds ? "Ammo counter shows [rounds] round\s remaining." : "It's dry."]"
 	. += message
 	. += "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"]."
+
+	if(battery && get_dist(user, src) <= 1)
+		. += "A small gauge on [battery] reads: Power: [battery.power_cell.charge] / [battery.power_cell.maxcharge]."
 
 /obj/item/weapon/gun/smartgun/clicked(mob/user, list/mods)
 	if(mods["alt"])
@@ -131,6 +140,20 @@
 		return TRUE
 	else
 		return ..()
+
+/obj/item/weapon/gun/smartgun/attackby(obj/item/attacking_object, mob/user)
+	if(istype(attacking_object, /obj/item/smartgun_battery))
+		var/obj/item/smartgun_battery/new_cell = attacking_object
+		visible_message("[user] swaps out the power cell in the [src].","You swap out the power cell in the [src] and drop the old one.")
+		to_chat(user, SPAN_NOTICE("The new cell contains: [new_cell.power_cell.charge] power."))
+		battery.update_icon()
+		battery.forceMove(get_turf(user))
+		battery = new_cell
+		user.drop_inv_item_to_loc(new_cell, src)
+		playsound(src, 'sound/machines/click.ogg', 25, 1)
+		return
+
+	return ..()
 
 /obj/item/weapon/gun/smartgun/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
 	if(!cover_open)
@@ -160,8 +183,6 @@
 	var/mob/living/carbon/human/H = owner
 	if(H.is_mob_incapacitated() || G.get_active_firearm(H, FALSE) != holder_item)
 		return
-	if(!G.powerpack)
-		G.link_powerpack(usr)
 
 /datum/action/item_action/smartgun/update_button_icon()
 	return
@@ -296,9 +317,10 @@
 		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 			to_chat(H, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return FALSE
-		if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
-			to_chat(H, SPAN_WARNING("You need a harness suit to be able to fire \the [src]..."))
-			return FALSE
+		if(requires_harness)
+			if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
+				to_chat(H, SPAN_WARNING("You need a harness suit to be able to fire [src]..."))
+				return FALSE
 		if(cover_open)
 			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
 			return FALSE
@@ -306,8 +328,6 @@
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)
 	if(isobserver(usr) || isxeno(usr))
 		return
-	if(!powerpack)
-		link_powerpack(usr)
 	toggle_ammo_type(usr)
 
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
@@ -339,35 +359,36 @@
 		remove_bullet_trait("iff")
 		drain -= 10
 		MD.iff_signal = null
-	if(!powerpack)
-		link_powerpack(usr)
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
-	if(!powerpack || (powerpack && user.back != powerpack))
-		if(!link_powerpack(user))
-			to_chat(user, SPAN_WARNING("You need a powerpack to be able to fire \the [src]..."))
-			unlink_powerpack()
-			return
-	if(powerpack)
-		var/obj/item/smartgun_powerpack/pp = user.back
-		if(istype(pp))
-			var/obj/item/cell/c = pp.pcell
-			var/d = drain
-			if(flags_gun_features & GUN_BURST_ON)
-				d = drain*burst_amount*1.5
-			if(pp.drain_powerpack(d, c))
-				..()
+	if(!requires_battery)
+		return ..()
 
+	if(battery)
+		if(!requires_power)
+			return ..()
+		if(drain_battery())
+			return ..()
 
-/obj/item/weapon/gun/smartgun/proc/link_powerpack(mob/user)
-	if(!QDELETED(user) && !QDELETED(user.back))
-		if(istype(user.back, /obj/item/smartgun_powerpack))
-			powerpack = user.back
-			return TRUE
+/obj/item/weapon/gun/smartgun/proc/drain_battery(override_drain)
+
+	var/actual_drain = (rand(drain / 2, drain) / 25)
+
+	if(override_drain)
+		actual_drain = (rand(override_drain / 2, override_drain) / 25)
+
+	if(battery && battery.power_cell.charge > 0)
+		if(battery.power_cell.charge > actual_drain)
+			battery.power_cell.charge -= actual_drain
+		else
+			battery.power_cell.charge = 0
+			to_chat(usr, SPAN_WARNING("[src] emits a low power warning and immediately shuts down!"))
+			return FALSE
+		return TRUE
+	if(!battery || battery.power_cell.charge == 0)
+		to_chat(usr, SPAN_WARNING("[src] emits a low power warning and immediately shuts down!"))
+		return FALSE
 	return FALSE
-
-/obj/item/weapon/gun/smartgun/proc/unlink_powerpack()
-	powerpack = null
 
 /obj/item/weapon/gun/smartgun/proc/toggle_recoil_compensation(mob/user)
 	to_chat(user, "[icon2html(src, usr)] You [recoil_compensation? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s recoil compensation.")
@@ -647,7 +668,7 @@
 	ammo = /obj/item/ammo_magazine/smartgun/dirty
 	ammo_primary = /datum/ammo/bullet/smartgun/dirty//Toggled ammo type
 	ammo_secondary = /datum/ammo/bullet/smartgun/dirty/armor_piercing///Toggled ammo type
-	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
+	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/smartgun/dirty/Initialize(mapload, ...)
 	. = ..()
@@ -665,12 +686,12 @@
 
 /obj/item/weapon/gun/smartgun/dirty/elite/set_gun_config_values()
 	..()
-	burst_amount = BURST_AMOUNT_TIER_5
-	burst_delay = FIRE_DELAY_TIER_10
+	set_burst_amount(BURST_AMOUNT_TIER_5)
+	set_burst_delay(FIRE_DELAY_TIER_12)
 	if(!recoil_compensation)
 		scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
-	fa_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_12)
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_10
 	fa_max_scatter = SCATTER_AMOUNT_NONE
 
@@ -684,3 +705,33 @@
 /obj/item/weapon/gun/smartgun/clf/Initialize(mapload, ...)
 	. = ..()
 	MD.iff_signal = FACTION_CLF
+
+/obj/item/weapon/gun/smartgun/admin
+	requires_power = FALSE
+	requires_battery = FALSE
+	requires_harness = FALSE
+
+/obj/item/smartgun_battery
+	name = "smartgun DV9 battery"
+	desc = "A standard-issue 9-volt lithium dry-cell battery, most commonly used within the USCMC to power smartguns. Per the manual, one battery is good for up to 50000 rounds and plugs directly into the smartgun's power receptacle, which is only compatible with this type of battery. Various auxiliary modes usually bring the round count far lower. While this cell is incompatible with most standard electrical system, it can be charged by common rechargers in a pinch. USCMC smartgunners often guard them jealously."
+
+	icon = 'icons/obj/structures/machinery/power.dmi'
+	icon_state = "smartguncell"
+
+	force = 5
+	throwforce = 5
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 5
+	w_class = SIZE_SMALL
+
+	var/obj/item/cell/high/power_cell
+
+/obj/item/smartgun_battery/Initialize(mapload)
+	. = ..()
+
+	power_cell = new(src)
+
+/obj/item/smartgun_battery/get_examine_text(mob/user)
+	. = ..()
+
+	. += SPAN_NOTICE("The power indicator reads [power_cell.charge] charge out of [power_cell.maxcharge] total.")

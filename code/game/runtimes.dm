@@ -58,3 +58,5 @@ GLOBAL_REAL_VAR(total_runtimes)
 		GLOB.STUI.processing |= STUI_LOG_RUNTIME
 	else
 		stui_init_runtimes.Add(text)
+
+	log_runtime("runtime error: [E.name]\n[E.desc]")

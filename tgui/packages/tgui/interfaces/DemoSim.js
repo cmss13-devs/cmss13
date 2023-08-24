@@ -1,12 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Button,
-  Section,
-  ProgressBar,
-  NoticeBox,
-  Box,
-  Stack,
-} from '../components';
+import { Button, Section, ProgressBar, NoticeBox, Box, Stack } from '../components';
 import { Window } from '../layouts';
 
 export const DemoSim = (_props, context) => {

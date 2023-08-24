@@ -93,7 +93,6 @@
 	if(!check_can_use(target))
 		return
 
-	sniper_rifle.aimed_shot_cooldown = world.time + sniper_rifle.aimed_shot_cooldown_delay
 	human.face_atom(target)
 
 	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
@@ -190,9 +189,10 @@
 		to_chat(H, SPAN_WARNING("Something is in the way, or you're out of range!"))
 		if(cover_lose_focus)
 			to_chat(H, SPAN_WARNING("You lose focus."))
-			sniper_rifle.aimed_shot_cooldown = world.time + sniper_rifle.aimed_shot_cooldown_delay * 0.5
+			COOLDOWN_START(sniper_rifle, aimed_shot_cooldown, sniper_rifle.aimed_shot_cooldown_delay * 0.5)
 		return FALSE
 
+	COOLDOWN_START(sniper_rifle, aimed_shot_cooldown, sniper_rifle.aimed_shot_cooldown_delay)
 	return TRUE
 
 /datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(mob/firer, mob/target, obj/item/projectile/P)
@@ -267,11 +267,15 @@
 	if(toggling_action)
 		toggling_action.update_button_icon()
 
-/obj/item/weapon/gun/rifle/sniper/toggle_burst(mob/user)
-	if(has_aimed_shot)
-		toggle_laser(user)
-	else
-		..()
+/obj/item/weapon/gun/rifle/sniper/verb/toggle_gun_laser()
+	set category = "Weapons"
+	set name = "Toggle Laser"
+	set desc = "Toggles your laser on or off."
+	set src = usr.contents
+
+	var/obj/item/weapon/gun/rifle/sniper/sniper = get_active_firearm(usr)
+	if((sniper == src) && has_aimed_shot)
+		toggle_laser(usr)
 
 //Pow! Headshot.
 /obj/item/weapon/gun/rifle/sniper/M42A
@@ -321,8 +325,8 @@
 
 /obj/item/weapon/gun/rifle/sniper/M42A/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6*3
-	burst_amount = BURST_AMOUNT_TIER_1
+	set_fire_delay(FIRE_DELAY_TIER_7*3)
+	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT * 3 //you HAVE to be able to hit
 	scatter = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -365,9 +369,9 @@
 
 /obj/item/weapon/gun/rifle/sniper/XM42B/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6 * 6 //Big boy damage, but it takes a lot of time to fire a shot.
+	set_fire_delay(FIRE_DELAY_TIER_6 * 6 )//Big boy damage, but it takes a lot of time to fire a shot.
 	//Kaga: Adjusted from 56 (Tier 4, 7*8) -> 30 (Tier 6, 5*6) ticks. 95 really wasn't big-boy damage anymore, although I updated it to 125 to remain consistent with the other 10x99mm caliber weapon (M42C). Now takes only twice as long as the M42A.
-	burst_amount = BURST_AMOUNT_TIER_1
+	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT + 2*HIT_ACCURACY_MULT_TIER_10 //Who coded this like this, and why? It just calculates out to 1+1=2. Leaving a note here to check back later.
 	scatter = SCATTER_AMOUNT_TIER_10
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -430,8 +434,8 @@
 
 /obj/item/weapon/gun/rifle/sniper/elite/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6*5
-	burst_amount = BURST_AMOUNT_TIER_1
+	set_fire_delay(FIRE_DELAY_TIER_6*5)
+	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT * 3 //Was previously BAM + HAMT10, similar to the XM42B, and coming out to 1.5? Changed to be consistent with M42A. -Kaga
 	scatter = SCATTER_AMOUNT_TIER_10 //Was previously 8, changed to be consistent with the XM42B.
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -507,9 +511,9 @@
 
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
-	burst_amount = BURST_AMOUNT_TIER_2
-	burst_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_6)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_11)
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
@@ -521,7 +525,7 @@
 
 /obj/item/weapon/gun/rifle/m4ra_custom
 	name = "\improper M4RA custom battle rifle"
-	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armourers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titantium-alloy frame, better responsive to the heavy kick of the tailor-made A19 rounds."
+	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armorers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titantium-alloy frame, better responsive to the heavy kick of the tailor-made A19 rounds."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m4ra_custom"
 	item_state = "m4ra_custom"
@@ -550,7 +554,7 @@
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
@@ -580,13 +584,13 @@
 
 
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 23, "rail_y" = 21, "under_x" = 30, "under_y" = 11, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)
+	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 23, "rail_y" = 21, "under_x" = 30, "under_y" = 11, "stock_x" = 24, "stock_y" = 13, "special_x" = 39, "special_y" = 17)
 
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
-	burst_amount = BURST_AMOUNT_TIER_2
-	burst_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_6)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
@@ -800,7 +804,7 @@
 		var/obj/item/explosive/grenade/G = cylinder.contents[1]
 		if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(G, user))
 			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
-			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 			return FALSE
 
 
@@ -829,26 +833,27 @@
 	muzzle_flash(angle,user)
 	simulate_recoil(0, user)
 
-	var/obj/item/explosive/grenade/F = cylinder.contents[1]
-	cylinder.remove_from_storage(F, user.loc)
+	var/obj/item/explosive/grenade/fired = cylinder.contents[1]
+	cylinder.remove_from_storage(fired, user.loc)
 	var/pass_flags = NO_FLAGS
 	if(is_lobbing)
-		if(istype(F, /obj/item/explosive/grenade/slug/baton))
+		if(istype(fired, /obj/item/explosive/grenade/slug/baton))
 			if(ishuman(user))
 				var/mob/living/carbon/human/human_user = user
-				human_user.remember_dropped_object(F)
+				human_user.remember_dropped_object(fired)
+				fired.fingerprintslast = key_name(user)
 			pass_flags |= PASS_MOB_THRU_HUMAN|PASS_MOB_IS_OTHER|PASS_OVER
 		else
 			pass_flags |= PASS_MOB_THRU|PASS_HIGH_OVER
 
-	msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
+	msg_admin_attack("[key_name_admin(user)] fired a grenade ([fired.name]) from \a ([name]).")
 	log_game("[key_name_admin(user)] used a grenade ([name]).")
 
-	F.throw_range = 20
-	F.det_time = min(10, F.det_time)
-	F.activate(user, FALSE)
-	F.forceMove(get_turf(src))
-	F.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
+	fired.throw_range = 20
+	fired.det_time = min(10, fired.det_time)
+	fired.activate(user, FALSE)
+	fired.forceMove(get_turf(src))
+	fired.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 
 
 
@@ -922,7 +927,7 @@
 
 /obj/item/weapon/gun/launcher/grenade/m92/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_4*4
+	set_fire_delay(FIRE_DELAY_TIER_4*4)
 
 /obj/item/weapon/gun/launcher/grenade/m92/able_to_fire(mob/living/user)
 	. = ..()
@@ -949,7 +954,7 @@
 
 /obj/item/weapon/gun/launcher/grenade/m81/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_4 * 1.5
+	set_fire_delay(FIRE_DELAY_TIER_4 * 1.5)
 
 /obj/item/weapon/gun/launcher/grenade/m81/on_pocket_removal()
 	..()
@@ -1058,7 +1063,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6*2
+	set_fire_delay(FIRE_DELAY_TIER_6*2)
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -1082,7 +1087,7 @@
 			return 0
 		if(user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
 			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
-			msg_admin_niche("[key_name(user)] attempted to fire \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			msg_admin_niche("[key_name(user)] attempted to fire \a [name] in [get_area(src)] [ADMIN_JMP(loc)]")
 			return FALSE
 		if(current_mag && current_mag.current_rounds > 0)
 			make_rocket(user, 0, 1)
@@ -1225,9 +1230,9 @@
 
 /obj/item/weapon/gun/launcher/rocket/m57a4/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_5
-	burst_delay = FIRE_DELAY_TIER_7
-	burst_amount = BURST_AMOUNT_TIER_4
+	set_fire_delay(FIRE_DELAY_TIER_5)
+	set_burst_delay(FIRE_DELAY_TIER_7)
+	set_burst_amount(BURST_AMOUNT_TIER_4)
 	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -1239,7 +1244,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank //reloadable
 	name = "\improper QH-4 Shoulder-Mounted Anti-Tank RPG"
-	desc = "Used to take out light-tanks and enemy structures, the QH-4 is a dangerous weapon specialised against vehicles. Requires direct hits to penetrate vehicle armour."
+	desc = "Used to take out light-tanks and enemy structures, the QH-4 is a dangerous weapon specialised against vehicles. Requires direct hits to penetrate vehicle armor."
 	icon_state = "m83a2"
 	item_state = "m83a2"
 	unacidable = FALSE
@@ -1262,7 +1267,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable //single shot and disposable
 	name = "\improper M83A2 SADAR"
-	desc = "The M83A2 SADAR is a lightweight one-shot anti-armour weapon capable of engaging enemy vehicles at ranges up to 1,000m. Fully disposable, the rocket's launcher is discarded after firing. When stowed (unique-action), the SADAR system consists of a watertight carbon-fiber composite blast tube, inside of which is an aluminum launch tube containing the missile. The weapon is fired by pushing a charge button on the trigger grip.  It is sighted and fired from the shoulder."
+	desc = "The M83A2 SADAR is a lightweight one-shot anti-armor weapon capable of engaging enemy vehicles at ranges up to 1,000m. Fully disposable, the rocket's launcher is discarded after firing. When stowed (unique-action), the SADAR system consists of a watertight carbon-fiber composite blast tube, inside of which is an aluminum launch tube containing the missile. The weapon is fired by pushing a charge button on the trigger grip.  It is sighted and fired from the shoulder."
 	var/fired = FALSE
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/get_examine_text(mob/user)
@@ -1372,7 +1377,7 @@
 
 /obj/item/weapon/gun/flare/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = 0

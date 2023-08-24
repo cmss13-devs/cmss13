@@ -1,13 +1,12 @@
 /obj/structure/closet/secure_closet/warden
 	name = "Warden's Locker"
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
-	icon_state = "wardensecure1"
-	icon_closed = "wardensecure"
-	icon_locked = "wardensecure1"
-	icon_opened = "wardensecureopen"
-	icon_broken = "wardensecurebroken"
-	icon_off = "wardensecureoff"
-
+	icon_state = "secure_locked_warden"
+	icon_closed = "secure_unlocked_warden"
+	icon_locked = "secure_locked_warden"
+	icon_opened = "secure_open_warden"
+	icon_broken = "secure_broken_warden"
+	icon_off = "secure_closed_warden"
 /obj/structure/closet/secure_closet/warden/Initialize()
 	. = ..()
 	if(prob(50))
@@ -224,15 +223,15 @@
 	new /obj/item/storage/briefcase(src)
 
 /obj/structure/closet/secure_closet/wall
-	name = "wall locker"
+	name = "security wall locker"
 	req_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
-	icon_state = "wall-locker1"
+	icon_state = "security_wall_locked"
 	density = TRUE
-	icon_closed = "wall-locker"
-	icon_locked = "wall-locker1"
-	icon_opened = "wall-lockeropen"
-	icon_broken = "wall-lockerbroken"
-	icon_off = "wall-lockeroff"
+	icon_closed = "security_wall_closed"
+	icon_locked = "security_wall_locked"
+	icon_opened = "security_wall_open"
+	icon_broken = "security_wall_spark"
+	icon_off = "security_wall_off"
 
 	//too small to put a man in
 	large = 0

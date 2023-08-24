@@ -101,8 +101,8 @@
 
 /obj/item/weapon/gun/rifle/techweb_railgun/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6*5
-	burst_amount = BURST_AMOUNT_TIER_1
+	set_fire_delay(FIRE_DELAY_TIER_6*5)
+	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT * 3 //you HAVE to be able to hit
 	scatter = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT

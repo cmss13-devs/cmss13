@@ -88,17 +88,16 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 		if(attack.len > stui_length+1)
 			attack.Cut(,attack.len-stui_length)
 		.["logs"][STUI_TEXT_ATTACK] = attack
-		if(ooc.len > stui_length+1)
-			ooc.Cut(,ooc.len-stui_length)
-		.["logs"][STUI_TEXT_OOC] = ooc
-	if(user.client.admin_holder.rights & R_ADMIN)
 		if(admin.len > stui_length+1)
 			admin.Cut(,admin.len-stui_length)
 		.["logs"][STUI_TEXT_STAFF] = admin
 		if(staff.len > stui_length+1)
 			staff.Cut(,staff.len-stui_length)
 		.["logs"][STUI_TEXT_STAFF_CHAT] = staff
-	if((user.client.admin_holder.rights & R_ADMIN) || (user.client.admin_holder.rights & R_DEBUG))
+		if(ooc.len > stui_length+1)
+			ooc.Cut(,ooc.len-stui_length)
+		.["logs"][STUI_TEXT_OOC] = ooc
+	if((user.client.admin_holder.rights & R_MOD) || (user.client.admin_holder.rights & R_DEBUG))
 		if(game.len > stui_length+1)
 			game.Cut(,game.len-stui_length)
 		.["logs"][STUI_TEXT_GAME] = game

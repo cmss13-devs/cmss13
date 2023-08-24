@@ -14,6 +14,10 @@
 		//Blood regeneration if there is some space
 		if(blood_volume < max_blood)
 			blood_volume += 0.1 // regenerate blood VERY slowly
+		else if(blood_volume > max_blood)
+			blood_volume -= 0.1 // The reverse in case we've gotten too much blood in our body
+			if(blood_volume > limit_blood)
+				blood_volume = limit_blood // This should never happen, but lets make sure
 
 		var/b_volume = blood_volume
 
@@ -25,46 +29,50 @@
 				b_volume = 0
 			else if(chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 				b_volume *= 1
-			else if(heart.damage > 1 && heart.damage < heart.min_bruised_damage)
-				b_volume *= 0.8
-			else if(heart.damage >= heart.min_bruised_damage && heart.damage < heart.min_broken_damage)
-				b_volume *= 0.6
-			else if(heart.damage >= heart.min_broken_damage && heart.damage < INFINITY)
-				b_volume *= 0.3
+			else if(heart.damage >= heart.organ_status >= ORGAN_BRUISED)
+				b_volume *= Clamp(100 - (2 * heart.damage), 30, 100) / 100
 
 	//Effects of bloodloss
+		if(b_volume <= BLOOD_VOLUME_SAFE)
+			/// The blood volume turned into a %, with BLOOD_VOLUME_NORMAL being 100%
+			var/blood_percentage = b_volume / (BLOOD_VOLUME_NORMAL / 100)
+			/// How much oxyloss will there be from the next time blood processes
+			var/additional_oxyloss = (100 - blood_percentage) / 5
+			/// The limit of the oxyloss gained, ignoring oxyloss from the switch statement
+			var/maximum_oxyloss = Clamp((100 - blood_percentage) / 2, oxyloss, 100)
+			if(oxyloss < maximum_oxyloss)
+				oxyloss += round(max(additional_oxyloss, 0))
+
+			//Bloodloss effects on nutrition
+			if(nutrition >= 300)
+				nutrition -= 10
+			else if(nutrition >= 200)
+				nutrition -= 3
+
 		switch(b_volume)
 			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 				if(prob(1))
 					var/word = pick("dizzy","woozy","faint")
 					to_chat(src, SPAN_DANGER("You feel [word]."))
-				if(oxyloss < 20)
-					oxyloss += 3
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 				if(eye_blurry < 50)
 					AdjustEyeBlur(6)
-				if(oxyloss < 50)
-					oxyloss += 10
-				oxyloss += 2
+				oxyloss += 3
+				if(prob(15))
+					apply_effect(rand(1,3), PARALYZE)
+					var/word = pick("dizzy","woozy","faint")
+					to_chat(src, SPAN_DANGER("You feel very [word]."))
+			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
+				if(eye_blurry < 50)
+					AdjustEyeBlur(6)
+				oxyloss += 8
+				toxloss += 3
 				if(prob(15))
 					apply_effect(rand(1,3), PARALYZE)
 					var/word = pick("dizzy","woozy","faint")
 					to_chat(src, SPAN_DANGER("You feel extremely [word]."))
-			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
-				oxyloss += 5
-				toxloss += 3
-				if(prob(15))
-					var/word = pick("dizzy","woozy","faint")
-					to_chat(src, SPAN_DANGER("You feel extremely [word]."))
 			if(0 to BLOOD_VOLUME_SURVIVE)
 				death(create_cause_data("blood loss"))
-
-		// Without enough blood you slowly go hungry.
-		if(blood_volume < BLOOD_VOLUME_SAFE)
-			if(nutrition >= 300)
-				nutrition -= 10
-			else if(nutrition >= 200)
-				nutrition -= 3
 
 // Xeno blood regeneration
 /mob/living/carbon/xenomorph/handle_blood()
@@ -114,7 +122,7 @@
 			if(b_id == "blood" && B.data_properties && !(B.data_properties["blood_type"] in get_safe_blood(blood_type)))
 				reagents.add_reagent("toxin", amount * 0.5)
 			else
-				blood_volume = min(blood_volume + round(amount, 0.1), BLOOD_VOLUME_MAXIMUM)
+				blood_volume = min(blood_volume + round(amount, 0.1), limit_blood)
 		else
 			reagents.add_reagent(B.id, amount, B.data_properties)
 			reagents.update_total()
@@ -245,10 +253,12 @@
 
 //returns the color of the mob's blood
 /mob/living/proc/get_blood_color()
-	return "#A10808"
+	return BLOOD_COLOR_HUMAN
 
 /mob/living/carbon/xenomorph/get_blood_color()
-	return "#dffc00"
+	if(caste && caste.royal_caste)
+		return BLOOD_COLOR_XENO_ROYAL
+	return BLOOD_COLOR_XENO
 
 /mob/living/carbon/human/get_blood_color()
 	return species.blood_color
@@ -259,17 +269,18 @@
 	return
 
 /mob/living/carbon/xenomorph/get_blood_id()
-	return "xenoblood"
-
-/mob/living/carbon/xenomorph/queen/get_blood_id()
-	return "xenobloodroyal"
-
-/mob/living/carbon/xenomorph/praetorian/get_blood_id()
-	return "xenobloodroyal"
+	if(special_blood)
+		return special_blood
+	if(caste.royal_caste)
+		return "xenobloodroyal"
+	else
+		return "xenoblood"
 
 /mob/living/carbon/human/get_blood_id()
 	if((NO_BLOOD in species.flags))
 		return
+	if(special_blood)
+		return special_blood
 	if(species.name == "Yautja")
 		return "greenblood"
 	if(species.flags & IS_SYNTHETIC)
@@ -365,6 +376,7 @@
 	var/obj/effect/decal/cleanable/blood/xeno/XB = locate() in T.contents
 	if(!XB)
 		XB = new(T)
+		XB.color = get_blood_color()
 
 
 /mob/living/silicon/robot/add_splatter_floor(turf/T, small_drip, b_color)

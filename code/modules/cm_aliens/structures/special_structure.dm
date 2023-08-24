@@ -24,6 +24,7 @@
 /obj/effect/alien/resin/special
 	name = "Special Resin Structure"
 	icon = 'icons/mob/xenos/structures64x64.dmi'
+	icon_state = ""
 	pixel_x = -16
 	pixel_y = -16
 	health = 200
@@ -37,6 +38,9 @@
 	var/datum/hive_status/linked_hive
 
 	plane = FLOOR_PLANE
+
+	/// Tells the structure if they are being deleted because of hijack
+	var/hijack_delete = FALSE
 
 /obj/effect/alien/resin/special/Initialize(mapload, hive_ref)
 	. = ..()

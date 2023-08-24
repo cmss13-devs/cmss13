@@ -110,7 +110,7 @@
 /obj/item/projectile/Crossed(atom/movable/AM)
 	/* Fun fact: Crossed is called for any contents involving operations.
 	 * This notably means, inserting a magazing in a gun Crossed() it with the bullets in the gun. */
-	if(!loc.z)
+	if(!loc?.z)
 		return // Not on the map. Don't scan a turf. Don't shoot the poor guy reloading his gun.
 	if(AM && !(AM in permutated))
 		if(scan_a_turf(get_turf(AM)))
@@ -445,7 +445,7 @@
 	if((MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) && L.stat == DEAD) || (L in permutated))
 		return FALSE
 	permutated |= L
-	if((ammo.flags_ammo_behavior & AMMO_XENO) && L.stat == DEAD) //xeno ammo is NEVER meant to hit or damage dead people. If you want to add a xeno ammo that DOES then make a new flag that makes it ignore this check.
+	if((ammo.flags_ammo_behavior & AMMO_XENO) && (isfacehugger(L) || L.stat == DEAD)) //xeno ammo is NEVER meant to hit or damage dead people. If you want to add a xeno ammo that DOES then make a new flag that makes it ignore this check.
 		return FALSE
 
 	var/hit_chance = L.get_projectile_hit_chance(src)
@@ -501,13 +501,14 @@
 			if(ammo.sound_miss) playsound_client(L.client, ammo.sound_miss, get_turf(L), 75, TRUE)
 			L.visible_message(SPAN_AVOIDHARM("[src] misses [L]!"),
 				SPAN_AVOIDHARM("[src] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
-			log_attack("[src] narrowly missed [key_name(L)]")
+			var/log_message = "[src] narrowly missed [key_name(L)]"
 
 			var/mob/living/carbon/shotby = firer
 			if(istype(shotby))
-				L.attack_log += "[time_stamp()]\] [src], fired by [key_name(firer)], narrowly missed [key_name(L)]"
-				shotby.attack_log += "[time_stamp()]\] [src], fired by [key_name(shotby)], narrowly missed [key_name(L)]"
-
+				L.attack_log += "\[[time_stamp()]\] [src], fired by [key_name(firer)], narrowly missed [key_name(L)]"
+				shotby.attack_log += "\[[time_stamp()]\] [src], fired by [key_name(shotby)], narrowly missed [key_name(L)]"
+				log_message = "[src], fired by [key_name(firer)], narrowly missed [key_name(L)]"
+			log_attack(log_message)
 
 		#if DEBUG_HIT_CHANCE
 		to_world(SPAN_DEBUG("([L]) Missed."))
@@ -1142,11 +1143,16 @@
 	// Need to do this in order to prevent the ping from being deleted
 	addtimer(CALLBACK(I, TYPE_PROC_REF(/image, flick_overlay), src, 3), 1)
 
+/// People getting shot by a large amount of bullets in a very short period of time can lag them out, with chat messages being one cause, so a 1s cooldown per hit message is introduced to assuage that
+/mob/var/shot_cooldown = 0
+
 /mob/proc/bullet_message(obj/item/projectile/P)
 	if(!P)
 		return
-	visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
-		SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
+	if(COOLDOWN_FINISHED(src, shot_cooldown))
+		visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
+			SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		COOLDOWN_START(src, shot_cooldown, 1 SECONDS)
 
 	last_damage_data = P.weapon_cause_data
 	if(P.firer && ismob(P.firer))
@@ -1155,7 +1161,7 @@
 		if(ishuman(firingMob) && ishuman(src) && faction == firingMob.faction && !A?.statistic_exempt) //One human shot another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
 			if(!istype(P.ammo, /datum/ammo/energy/taser))
 				round_statistics.total_friendly_fire_instances++
-				var/ff_msg = "[key_name(firingMob)] shot [key_name(src)] with \a [P.name] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[firingMob.x];Y=[firingMob.y];Z=[firingMob.z]'>JMP</a>) ([firingMob.client ? "<a href='?priv_msg=[firingMob.client.ckey]'>PM</a>" : "NO CLIENT"])"
+				var/ff_msg = "[key_name(firingMob)] shot [key_name(src)] with \a [P.name] in [get_area(firingMob)] [ADMIN_JMP(firingMob)] [ADMIN_PM(firingMob)]"
 				var/ff_living = TRUE
 				if(src.stat == DEAD)
 					ff_living = FALSE

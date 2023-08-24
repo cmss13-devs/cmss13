@@ -12,6 +12,7 @@
         "/datum/equipment_preset/survivor/trucker/solaris",
         "/datum/equipment_preset/survivor/security/solaris",
         "/datum/equipment_preset/survivor/colonial_marshal/solaris",
+        "/datum/equipment_preset/survivor/corporate/solaris",
         "/datum/equipment_preset/survivor/clf",
         "/datum/equipment_preset/survivor/civilian"
     ],
@@ -35,6 +36,7 @@
         "xeno_hive_charlie": 0,
         "xeno_hive_delta": 100
     },
+    "camouflage": "desert",
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

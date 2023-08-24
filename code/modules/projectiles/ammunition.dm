@@ -116,14 +116,17 @@ They're all essentially identical when it comes to getting the job done.
 /obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, bypass_hold_check = 0)
 	if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/MG = I
-		if(MG.flags_magazine & AMMUNITION_HANDFUL) //got a handful of bullets
+		if((MG.flags_magazine & AMMUNITION_HANDFUL) || (MG.flags_magazine & AMMUNITION_SLAP_TRANSFER)) //got a handful of bullets
 			if(flags_magazine & AMMUNITION_REFILLABLE) //and a refillable magazine
 				var/obj/item/ammo_magazine/handful/transfer_from = I
 				if(src == user.get_inactive_hand() || bypass_hold_check) //It has to be held.
 					if(default_ammo == transfer_from.default_ammo)
-						transfer_ammo(transfer_from,user,transfer_from.current_rounds) // This takes care of the rest.
-					else to_chat(user, "Those aren't the same rounds. Better not mix them up.")
-				else to_chat(user, "Try holding [src] before you attempt to restock it.")
+						if(transfer_ammo(transfer_from,user,transfer_from.current_rounds)) // This takes care of the rest.
+							to_chat(user, SPAN_NOTICE("You transfer rounds to [src] from [transfer_from]."))
+					else
+						to_chat(user, SPAN_NOTICE("Those aren't the same rounds. Better not mix them up."))
+				else
+					to_chat(user, SPAN_NOTICE("Try holding [src] before you attempt to restock it."))
 
 //Generic proc to transfer ammo between ammo mags. Can work for anything, mags, handfuls, etc.
 /obj/item/ammo_magazine/proc/transfer_ammo(obj/item/ammo_magazine/source, mob/user, transfer_amount = 1)
@@ -232,7 +235,7 @@ bullets/shells. ~N
 	name = "generic handful"
 	desc = "A handful of rounds to reload on the go."
 	icon = 'icons/obj/items/weapons/guns/handful.dmi'
-	icon_state = "bullet"
+	icon_state = "bullet_1"
 	matter = list("metal" = 50) //This changes based on the ammo ammount. 5k is the base of one shell/bullet.
 	flags_equip_slot = null // It only fits into pockets and such.
 	w_class = SIZE_SMALL
@@ -308,7 +311,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	name = "spent casing"
 	desc = "Empty and useless now."
 	icon = 'icons/obj/items/casings.dmi'
-	icon_state = "casing_"
+	icon_state = "casing"
 	throwforce = 1
 	w_class = SIZE_TINY
 	layer = LOWER_ITEM_LAYER //Below other objects
@@ -325,7 +328,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	. = ..()
 	pixel_x = rand(-2.0, 2) //Want to move them just a tad.
 	pixel_y = rand(-2.0, 2)
-	icon_state += "[rand(1,number_of_states)]" //Set the icon to it.
+	icon_state += "_[rand(1,number_of_states)]" //Set the icon to it.
 
 //This does most of the heavy lifting. It updates the icon and name if needed, then changes .dir to simulate new casings.
 /obj/item/ammo_casing/update_icon()
@@ -349,11 +352,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/ammo_casing/cartridge
 	name = "spent cartridge"
-	icon_state = "cartridge_"
+	icon_state = "cartridge"
 
 /obj/item/ammo_casing/shell
 	name = "spent shell"
-	icon_state = "shell_"
+	icon_state = "shell"
 
 /obj/item/ammo_box/magazine/lever_action/xm88
 	name = "\improper .458 bullets box (.458 x 300)"

@@ -60,28 +60,32 @@
 	if(istype(M, /mob/living/carbon))
 		var/mob/living/carbon/C = M
 		var/fullness = M.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
-		if(fullness > 540 && world.time < C.overeat_cooldown)
+		if(fullness > NUTRITION_HIGH && world.time < C.overeat_cooldown)
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
 			return
 		if(issynth(C))
 			fullness = 200 //Synths never get full
 
-		if(fullness > 540)
+		if(HAS_TRAIT(M, TRAIT_CANNOT_EAT)) //Do not feed the Working Joes
+			to_chat(user, SPAN_DANGER("[user == M ? "You are" : "[M] is"] unable to eat!"))
+			return
+
+		if(fullness > NUTRITION_HIGH)
 			C.overeat_cooldown = world.time + OVEREAT_TIME
 
 		if(M == user)//If you're eating it yourself
-			if (fullness <= 50)
+			if (fullness <= NUTRITION_VERYLOW)
 				to_chat(M, SPAN_WARNING("You hungrily chew out a piece of [src] and gobble it!"))
-			if (fullness > 50 && fullness <= 150)
+			if (fullness > NUTRITION_VERYLOW && fullness <= NUTRITION_LOW)
 				to_chat(M, SPAN_NOTICE(" You hungrily begin to eat [src]."))
-			if (fullness > 150 && fullness <= 350)
+			if (fullness > NUTRITION_LOW && fullness <= NUTRITION_NORMAL)
 				to_chat(M, SPAN_NOTICE(" You take a bite of [src]."))
-			if (fullness > 350 && fullness <= 540)
+			if (fullness > NUTRITION_NORMAL && fullness <= NUTRITION_HIGH)
 				to_chat(M, SPAN_NOTICE(" You unwillingly chew a bit of [src]."))
-			if (fullness > 540)
+			if (fullness > NUTRITION_HIGH)
 				to_chat(M, SPAN_WARNING("You reluctantly force more of [src] to go down your throat."))
 		else
-			if (fullness <= 540)
+			if (fullness <= NUTRITION_HIGH)
 				user.affected_message(M,
 					SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 					SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
@@ -942,7 +946,7 @@
 
 /obj/item/reagent_container/food/snacks/waffles
 	name = "waffles"
-	desc = "Mmm, waffles"
+	desc = "Mmm, waffles."
 	icon_state = "waffles"
 	trash = /obj/item/trash/waffles
 	filling_color = "#E6DEB5"
@@ -952,6 +956,19 @@
 	reagents.add_reagent("bread", 5)
 	reagents.add_reagent("sugar", 3)
 	bitesize = 2
+
+/obj/item/reagent_container/food/snacks/pancakes
+	name = "pancakes"
+	desc = "Golden brown creamy pancakes fresh from the griddle. Drizzled with maple syrup and topped with a slice of butter."
+	icon_state = "pancakes"
+	filling_color = "#bb9857"
+	bitesize = 2
+
+/obj/item/reagent_container/food/snacks/pancakes/Initialize()
+	. = ..()
+	reagents.add_reagent("bread", 6)
+	reagents.add_reagent("sugar", 4)
+	reagents.add_reagent("milk", 5)
 
 /obj/item/reagent_container/food/snacks/eggplantparm
 	name = "Eggplant Parmigiana"
@@ -3229,6 +3246,19 @@
 	. = ..()
 	reagents.add_reagent("bread", 4)
 	reagents.add_reagent("sodiumchloride", 12)
+
+/obj/item/reagent_container/food/snacks/kepler_crisps/flamehot
+	name = "Kepler Flamehot"
+	desc = "'They're disturbingly good!' Due to an exceptionally well-timed ad campaign with the release of Kepler Flamehot in 2165, the Kepler brand was able to overtake other confectionary Weyland products by quarter three of that year. Contains 0% trans fat."
+	icon_state = "flamehotkepler"
+	bitesize = 2
+	trash = /obj/item/trash/kepler/flamehot
+
+/obj/item/reagent_container/food/snacks/kepler_crisps/flamehot/Initialize()
+	. = ..()
+	reagents.add_reagent("bread", 4)
+	reagents.add_reagent("sodiumchloride", 4)
+	reagents.add_reagent("hotsauce", 8)
 
 //Wrapped candy bars
 

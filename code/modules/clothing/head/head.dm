@@ -248,7 +248,9 @@
 						/obj/item/prop/helmetgarb/lucky_feather = "lucky_feather",
 						/obj/item/prop/helmetgarb/lucky_feather/blue = "lucky_feather_blue",
 						/obj/item/prop/helmetgarb/lucky_feather/purple = "lucky_feather_purple",
-						/obj/item/prop/helmetgarb/lucky_feather/yellow = "lucky_feather_yellow")
+						/obj/item/prop/helmetgarb/lucky_feather/yellow = "lucky_feather_yellow",
+						/obj/item/tool/pen/fountain = "fountainpen",
+						)
 	var/storage_slots = 1
 	var/storage_slots_reserved_for_garb = 1
 	var/storage_max_w_class = SIZE_TINY
@@ -353,19 +355,19 @@
 	flags_atom = FPRINT|NO_SNOW_TYPE
 
 /obj/item/clothing/head/cmcap/co
-	name = "\improper USCM captain cap"
+	name = "\improper USCM Commanding officer cap"
 	icon_state = "cocap"
 	desc = "A hat usually worn by senior officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
 
 /obj/item/clothing/head/cmcap/co/formal
-	name = "\improper USCM formal captain's white cap"
+	name = "\improper USCM formal Commanding Officer's white cap"
 	icon_state = "co_formalhat_white"
-	desc = "A formal cover worn by Commanding Officers of the USCM."
+	desc = "A formal cover worn by senior officers of the USCM."
 	flags_marine_hat = HAT_GARB_OVERLAY
 	flags_atom = FPRINT|NO_SNOW_TYPE
 
 /obj/item/clothing/head/cmcap/co/formal/black
-	name = "\improper USCM formal captain's black cap"
+	name = "\improper USCM formal Commanding Officer's black cap"
 	icon_state = "co_formalhat_black"
 
 /obj/item/clothing/head/cmcap/ro
@@ -460,8 +462,8 @@
 	desc = "A beret with the UAAC-TIS insignia emblazoned on it. A mark of a TIS Special Agent, these berets are one of the only pieces of equipment that the TIS actually manufactures for itself and earning one is one of the rare signs of achievement the Three Eyes allows."
 
 /obj/item/clothing/head/beret/marine/commander
-	name = "marine captain beret"
-	desc = "A beret with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
+	name = "marine commanding officer beret"
+	desc = "A beret with the commanding officer's insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "coberet"
 	item_icons = list(
@@ -499,8 +501,8 @@
 	)
 
 /obj/item/clothing/head/marine/peaked/captain
-	name = "marine captain peaked cap"
-	desc = "A peaked cap with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
+	name = "marine commanding officer peaked cap"
+	desc = "A peaked cap with the commanding officer's insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "copeaked"
 	item_icons = list(
@@ -509,13 +511,13 @@
 	black_market_value = 30
 
 /obj/item/clothing/head/marine/peaked/captain/white
-	name = "captain's dress white peaked cap"
-	desc = "A white, Navy-style peaked cap for the Captain. Wearer may suffer the heavy weight of responsibility upon their head."
+	name = "commanding officer's dress white peaked cap"
+	desc = "A white, Navy-style peaked cap for the Commanding Officer. Wearer may suffer the heavy weight of responsibility upon their head."
 	icon_state = "co_peakedcap_white"
 
 /obj/item/clothing/head/marine/peaked/captain/black
-	name = "captain's dress black peaked cap"
-	desc = "A black, Navy-style peaked cap for the Captain. Wearer may suffer the heavy weight of responsibility upon their head."
+	name = "commanding officer's dress black peaked cap"
+	desc = "A black, Navy-style peaked cap for the Commanding Officer. Wearer may suffer the heavy weight of responsibility upon their head."
 	icon_state = "co_peakedcap_black"
 
 /obj/item/clothing/head/beret/marine/chiefofficer

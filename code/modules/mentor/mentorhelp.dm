@@ -64,7 +64,7 @@
 	if(to_thread_mentor && mentor)
 		hitlist |= mentor
 	for(var/client/candidate in GLOB.admins)
-		if(to_mentors && CLIENT_HAS_RIGHTS(candidate, R_MENTOR))
+		if(to_mentors && CLIENT_IS_MENTOR(candidate))
 			hitlist |= candidate
 		else if(to_staff && CLIENT_IS_STAFF(candidate))
 			hitlist |= candidate
@@ -108,28 +108,28 @@
 			sound_to(recipient, 'sound/effects/mhelp.ogg')
 		to_chat(recipient, wrap_message(msg, sender))
 
-	for(var/client/C in GLOB.admins)
+	for(var/client/admin_client in GLOB.admins)
 		var/formatted = msg
 		var/soundfile
 
-		if(!C || C == recipient)
+		if(!admin_client || admin_client == recipient)
 			continue
 
 		// Initial broadcast
-		else if(!staff_only && !recipient && CLIENT_HAS_RIGHTS(C, R_MENTOR))
+		else if(!staff_only && !recipient && CLIENT_HAS_RIGHTS(admin_client, R_MENTOR))
 			formatted = wrap_message(formatted, sender)
 			soundfile = 'sound/effects/mhelp.ogg'
 
-		// Staff eavesdrop
-		else if(CLIENT_HAS_RIGHTS(C, R_MENTOR) && CLIENT_IS_STAFF(C))
+		// Eavesdrop
+		else if(CLIENT_HAS_RIGHTS(admin_client, R_MENTOR) && (!staff_only || CLIENT_IS_STAFF(admin_client)) && admin_client != sender)
 			if(include_keys)
 				formatted = SPAN_MENTORHELP(key_name(sender, TRUE) + " -> " + key_name(recipient, TRUE) + ": ") + msg
 
 		else continue
 
-		if(soundfile && with_sound && (C.prefs?.toggles_sound & SOUND_ADMINHELP))
-			sound_to(C, soundfile)
-		to_chat(C, formatted)
+		if(soundfile && with_sound && (admin_client.prefs?.toggles_sound & SOUND_ADMINHELP))
+			sound_to(admin_client, soundfile)
+		to_chat(admin_client, formatted)
 	return
 
 // Makes the sender input a message and sends it
@@ -137,7 +137,7 @@
 	if(!sender || !check_open(sender))
 		return
 	if(sender != author)
-		if(!CLIENT_HAS_RIGHTS(sender, R_MENTOR))
+		if(!CLIENT_IS_MENTOR(sender))
 			return
 
 		// If the mentor forgot to mark the mentorhelp, mark it for them
@@ -201,7 +201,7 @@
 		return
 
 	// Not a mentor/staff
-	if(!CLIENT_HAS_RIGHTS(thread_mentor, R_MENTOR))
+	if(!CLIENT_IS_MENTOR(thread_mentor))
 		return
 
 	mentor = thread_mentor
@@ -294,7 +294,7 @@
 	if(!check_open(responder))
 		return
 
-	if(!CLIENT_HAS_RIGHTS(responder, R_MENTOR))
+	if(!CLIENT_IS_MENTOR(responder))
 		return
 
 	// If the mentor forgot to mark the mentorhelp, mark it for them
@@ -314,7 +314,7 @@
 	if(!check_open(responder))
 		return
 
-	if(!CLIENT_HAS_RIGHTS(responder, R_MENTOR))
+	if(!CLIENT_IS_MENTOR(responder))
 		return
 
 	// Re-mark if they unmarked it while the dialog was open (???)

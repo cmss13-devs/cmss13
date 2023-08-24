@@ -56,5 +56,5 @@ GLOBAL_LIST_INIT(hive_alliable_factions, generate_alliable_factions())
 				return
 
 			var/should_ally = text2num(params["should_ally"])
-			assoc_hive.allies[params["target_faction"]] = should_ally
+			assoc_hive.change_stance(params["target_faction"], should_ally)
 			. = TRUE

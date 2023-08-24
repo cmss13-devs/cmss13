@@ -24,7 +24,7 @@
 	. = ..()
 	if(isxeno(user))
 		return
-	else if (ishuman(user) && istype(W, /obj/item/tool/wrench))
+	else if (ishuman(user) && HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		on = !on
 		visible_message("You wrench the controls of \the [src]. The drill jumps to life." , "[user] wrenches the controls of \the [src]. The drill jumps to life.")
 
@@ -265,7 +265,6 @@
 
 /obj/structure/prop/mech/mech_parts
 	name = "mecha part"
-	icon_state = "blank"
 	flags_atom = FPRINT|CONDUCT
 
 /obj/structure/prop/mech/mech_parts/chassis
@@ -303,7 +302,7 @@
 
 /obj/structure/prop/mech/mech_parts/chassis/gygax
 	name = "Gygax Chassis"
-	icon_state = "gygas_chassis"
+	icon_state = "gygax_chassis"
 
 /obj/structure/prop/mech/mech_parts/part/gygax_torso
 	name="Gygax Torso"
@@ -333,13 +332,13 @@
 	name="Gygax Right Leg"
 	icon_state = "gygax_r_leg"
 
-/obj/structure/prop/mech/mech_parts/part/gygax_armour
-	name="Gygax Armour Plates"
-	icon_state = "gygax_armour"
+/obj/structure/prop/mech/mech_parts/part/gygax_armor
+	name="Gygax Armor Plates"
+	icon_state = "gygax_armor"
 
 /obj/structure/prop/mech/mech_parts/chassis/durand
 	name = "Durand Chassis"
-	icon_state = "gygas_chassis"
+	icon_state = "durand_chassis"
 
 /obj/structure/prop/mech/mech_parts/part/durand_torso
 	name="Durand Torso"
@@ -365,9 +364,9 @@
 	name="Durand Right Leg"
 	icon_state = "durand_r_leg"
 
-/obj/structure/prop/mech/mech_parts/part/durand_armour
-	name="Durand Armour Plates"
-	icon_state = "durand_armour"
+/obj/structure/prop/mech/mech_parts/part/durand_armor
+	name="Durand Armor Plates"
+	icon_state = "durand_armor"
 
 /obj/structure/prop/mech/mech_parts/chassis/firefighter
 	name = "Firefighter Chassis"
@@ -375,6 +374,7 @@
 
 /obj/structure/prop/mech/mech_parts/chassis/phazon
 	name = "Phazon Chassis"
+	icon_state = "phazon_chassis"
 
 /obj/structure/prop/mech/mech_parts/part/phazon_torso
 	name="Phazon Torso"
@@ -400,9 +400,13 @@
 	name="Phazon Right Leg"
 	icon_state = "phazon_r_leg"
 
+/obj/structure/prop/mech/mech_parts/part/phazon_armor_plates
+	name="Phazon Armor Plates"
+	icon_state = "phazon_armor"
+
 /obj/structure/prop/mech/mech_parts/chassis/odysseus
 	name = "Odysseus Chassis"
-	icon_state = "gygas_chassis"
+	icon_state = "odysseus_chassis"
 
 /obj/structure/prop/mech/mech_parts/part/odysseus_head
 	name="Odysseus Head"
@@ -432,6 +436,10 @@
 	name="Odysseus Right Leg"
 	desc="A Odysseus right leg. Contains somewhat complex servodrives and balance maintaining systems."
 	icon_state = "odysseus_r_leg"
+
+/obj/structure/prop/mech/mech_parts/part/odysseus_armor_plates
+	name="Odysseus Armor Plates"
+	icon_state = "odysseus_armor"
 
 //Use these to replace non-functional machinery 'props' around maps from bay12
 
@@ -493,7 +501,7 @@
 	. = ..()
 	if(isxeno(user))
 		return
-	else if (ishuman(user) && istype(W, /obj/item/tool/crowbar))
+	else if (ishuman(user) && HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		on = !on
 		visible_message("You pry at the control valve on [src]. The machine shudders." , "[user] pries at the control valve on [src]. The entire machine shudders.")
 
@@ -566,7 +574,7 @@
 	icon_state = "cash_register_broken_open"
 
 /obj/structure/prop/cash_register/off
-	icon_state = "cash_registern_off"
+	icon_state = "cash_register_off"
 
 /obj/structure/prop/cash_register/off/open
 	icon_state = "cash_register_off_open"
@@ -611,9 +619,11 @@
 	name = "non-functional hatch"
 	desc = "You'll need more than a prybar for this one."
 	icon = 'icons/obj/structures/machinery/bolt_target.dmi'
+	icon_state = "closed"
 
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal
 	icon = 'icons/obj/structures/machinery/bolt_terminal.dmi'
+	icon_state = "closed"
 
 /obj/structure/prop/invuln/dropship_parts //for TG shuttle system
 	density = TRUE
@@ -626,8 +636,12 @@
 
 /obj/structure/prop/invuln/dropship_parts/lifeboat
 	name = "Lifeboat"
+	icon_state = ""
 	icon = 'icons/turf/lifeboat.dmi'
 
+#define STATE_COMPLETE 0
+#define STATE_FUEL 1
+#define STATE_IGNITE 2
 
 /obj/structure/prop/brazier
 	name = "brazier"
@@ -637,6 +651,44 @@
 	density = TRUE
 	health = 150
 	luminosity = 6
+	/// What obj this becomes when it gets to its next stage of construction / ignition
+	var/frame_type
+	/// What is used to progress to the next stage
+	var/state = STATE_COMPLETE
+
+/obj/structure/prop/brazier/get_examine_text(mob/user)
+	. = ..()
+	switch(state)
+		if(STATE_FUEL)
+			. += "[src] requires wood to be fueled."
+		if(STATE_IGNITE)
+			. += "[src] needs to be lit."
+
+/obj/structure/prop/brazier/attackby(obj/item/hit_item, mob/user)
+	switch(state)
+		if(STATE_COMPLETE)
+			return ..()
+		if(STATE_FUEL)
+			if(!istype(hit_item, /obj/item/stack/sheet/wood))
+				return ..()
+			var/obj/item/stack/sheet/wood/wooden_boards = hit_item
+			if(!wooden_boards.use(5))
+				to_chat(user, SPAN_WARNING("Not enough wood!"))
+				return
+			user.visible_message(SPAN_NOTICE("[user] fills [src] with [hit_item]."))
+		if(STATE_IGNITE)
+			if(!hit_item.heat_source)
+				return ..()
+			if(!do_after(user, 3 SECONDS, INTERRUPT_MOVED, BUSY_ICON_BUILD))
+				return
+			user.visible_message(SPAN_NOTICE("[user] ignites [src] with [hit_item]."))
+
+	new frame_type(loc)
+	qdel(src)
+
+/obj/structure/prop/brazier/Destroy()
+	SetLuminosity(0)
+	return ..()
 
 /obj/structure/prop/brazier/Initialize()
 	. = ..()
@@ -648,31 +700,15 @@
 	desc = "An empty brazier."
 	icon_state = "brazier_frame"
 	luminosity = 0
+	frame_type = /obj/structure/prop/brazier/frame/full
+	state = STATE_FUEL
 
-/obj/structure/prop/brazier/frame/attackby(obj/item/hit_item, mob/user)
-	if(!istype(hit_item, /obj/item/stack/sheet/wood))
-		return ..()
-	var/obj/item/stack/wooden_boards = hit_item
-	if(wooden_boards.amount < 5)
-		to_chat(user, SPAN_WARNING("Not enough wood!"))
-		return
-	wooden_boards.use(5)
-	user.visible_message(SPAN_NOTICE("[user] fills the brazier with wood."))
-	new /obj/structure/prop/brazier/frame_woodened(loc)
-	qdel(src)
-
-/obj/structure/prop/brazier/frame_woodened
+/obj/structure/prop/brazier/frame/full
 	name = "empty full brazier"
 	desc = "An empty brazier. Yet it's also full. What???  Use something hot to ignite it, like a welding tool."
 	icon_state = "brazier_frame_filled"
-	luminosity = 0
-
-/obj/structure/prop/brazier/frame_woodened/attackby(obj/item/hit_item, mob/user)
-	if(!hit_item.heat_source)
-		return ..()
-	user.visible_message(SPAN_NOTICE("[user] ignites the brazier with [hit_item]."))
-	new /obj/structure/prop/brazier(loc)
-	qdel(src)
+	frame_type = /obj/structure/prop/brazier
+	state = STATE_IGNITE
 
 /obj/structure/prop/brazier/torch
 	name = "torch"
@@ -681,25 +717,136 @@
 	density = FALSE
 	luminosity = 5
 
-/obj/structure/prop/brazier/torch/frame
+/obj/structure/prop/brazier/frame/full/torch
 	name = "unlit torch"
 	desc = "It's a torch, but it's not lit.  Use something hot to ignite it, like a welding tool."
 	icon_state = "torch_frame"
-	luminosity = 0
-
-/obj/structure/prop/brazier/torch/frame/attackby(obj/item/hit_item, mob/user)
-	if(!hit_item.heat_source)
-		return ..()
-	user.visible_message(SPAN_NOTICE("[user] ignites the torch with [hit_item]."))
-	new /obj/structure/prop/brazier/torch(loc)
-	qdel(src)
+	frame_type = /obj/structure/prop/brazier/torch
 
 /obj/item/prop/torch_frame
 	name = "unlit torch"
 	icon = 'icons/obj/structures/structures.dmi'
 	desc = "It's a torch, but it's not lit or placed down. Click on a wall to place it."
 	icon_state = "torch_frame"
-	luminosity = 0
+
+/obj/structure/prop/brazier/frame/full/campfire
+	name = "unlit campfire"
+	desc = "A circle of stones surrounding a pile of wood. If only you were to light it."
+	icon_state = "campfire"
+	frame_type = /obj/structure/prop/brazier/campfire
+	density = FALSE
+
+/obj/structure/prop/brazier/frame/full/campfire/smolder
+	name = "smoldering campfire"
+	desc = "A campfire that used to be lit, but was extinguished. You can still see the embers, and smoke rises from it."
+	state = STATE_FUEL
+	frame_type = /obj/structure/prop/brazier/frame/full/campfire
+
+/obj/structure/prop/brazier/campfire
+	name = "campfire"
+	desc = "A circle of stones surrounding a burning pile of wood. The fire is roaring and you can hear its crackle. You could probably stomp the fire out."
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "campfire_on"
+	density = FALSE
+	///How many tiles the heating and sound goes
+	var/heating_range = 2
+	/// time between sounds
+	var/time_to_sound = 20
+	/// Time for it to burn through fuel
+	var/fuel_stage_time = 1 MINUTES
+	/// How much fuel it has
+	var/remaining_fuel = 5 //Maxes at 5, but burns one when made
+	/// If the fire can be manually put out
+	var/extinguishable = TRUE
+	/// Make no noise
+	var/quiet = FALSE
+
+/obj/structure/prop/brazier/campfire/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
+	fuel_drain(TRUE)
+
+/obj/structure/prop/brazier/campfire/get_examine_text(mob/user)
+	. = ..()
+	switch(remaining_fuel)
+		if(4 to INFINITY)
+			. += "The fire is roaring."
+		if(2 to 3)
+			. += "The fire is burning warm."
+		if(-INFINITY to 1)
+			. += "The embers of the fire barely burns."
+
+/obj/structure/prop/brazier/campfire/process(delta_time)
+	if(!isturf(loc))
+		return
+
+	for(var/mob/living/carbon/human/mob in range(heating_range, src))
+		if(mob.bodytemperature < T20C)
+			mob.bodytemperature += min(round(T20C - mob.bodytemperature)*0.7, 25)
+			mob.recalculate_move_delay = TRUE
+
+	if(quiet)
+		return
+	time_to_sound -= delta_time
+	if(time_to_sound <= 0)
+		playsound(loc, 'sound/machines/firepit_ambience.ogg', 15, FALSE, heating_range)
+		time_to_sound = initial(time_to_sound)
+
+/obj/structure/prop/brazier/campfire/attack_hand(mob/user)
+	. = ..()
+	if(!extinguishable)
+		to_chat(user, SPAN_WARNING("You cannot extinguish [src]."))
+		return
+	to_chat(user, SPAN_NOTICE("You begin to extinguish [src]."))
+	while(remaining_fuel)
+		if(user.action_busy || !do_after(user, 3 SECONDS, INTERRUPT_MOVED, BUSY_ICON_BUILD))
+			return
+		fuel_drain()
+		to_chat(user, SPAN_NOTICE("You continue to extinguish [src]."))
+	visible_message(SPAN_NOTICE("[user] extinguishes [src]."))
+
+/obj/structure/prop/brazier/campfire/attackby(obj/item/attacking_item, mob/user)
+	if(!istype(attacking_item, /obj/item/stack/sheet/wood))
+		to_chat(SPAN_NOTICE("You cannot fuel [src] with [attacking_item]."))
+		return
+	var/obj/item/stack/sheet/wood/fuel = attacking_item
+	if(remaining_fuel >= initial(remaining_fuel))
+		to_chat(user, SPAN_NOTICE("You cannot fuel [src] further."))
+	if(!fuel.use(1))
+		to_chat(SPAN_NOTICE("You do not have enough [attacking_item] to fuel [src]."))
+	visible_message(SPAN_NOTICE("[user] fuels [src] with [fuel]."))
+	remaining_fuel++
+
+/obj/structure/prop/brazier/campfire/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(!extinguishable)
+		to_chat(xeno, SPAN_WARNING("You cannot extinguish [src]."))
+		return
+	to_chat(xeno, SPAN_NOTICE("You begin to extinguish [src]."))
+	while(remaining_fuel)
+		if(xeno.action_busy || !do_after(xeno, 1 SECONDS, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+			return
+		fuel_drain()
+		to_chat(xeno, SPAN_NOTICE("You continue to extinguish [src]."))
+	visible_message(SPAN_WARNING("[xeno] extinguishes [src]!"))
+
+/obj/structure/prop/brazier/campfire/proc/fuel_drain(looping)
+	remaining_fuel--
+	if(!remaining_fuel)
+		new /obj/structure/prop/brazier/frame/full/campfire/smolder(loc)
+		qdel(src)
+		return
+	if(!looping || !fuel_stage_time)
+		return
+	addtimer(CALLBACK(src, PROC_REF(fuel_drain), TRUE), fuel_stage_time)
+
+/obj/structure/prop/brazier/campfire/Destroy()
+	SetLuminosity(0)
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+#undef STATE_COMPLETE
+#undef STATE_FUEL
+#undef STATE_IGNITE
 
 //ICE COLONY PROPS
 //Thematically look to Blackmesa's Xen levels. Generic science-y props n' stuff.
@@ -726,7 +873,7 @@
 	icon_state = "small_wire"
 
 /obj/structure/prop/ice_colony/poly_kevlon_roll
-	name = "poly_kevlon roll"
+	name = "plastic roll"
 	desc = "A big roll of poly-kevlon plastic used in temporary shelter construction."
 	icon_state = "kevlon_roll"
 	anchored = FALSE
@@ -823,8 +970,8 @@
 	icon_state = "van"
 	bound_height = 64
 	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
+	unslashable = FALSE
+	unacidable = FALSE
 
 /obj/structure/prop/vehicles/crawler
 	name = "colony crawler"
@@ -868,13 +1015,6 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "arcadeb"
 	name = "Spirit Phone, The Game, The Movie: II"
-
-/obj/structure/prop/maintenance_hatch
-	name = "\improper Maintenance Hatch"
-	icon = 'icons/obj/structures/structures.dmi'
-	icon_state = "hatchclosed"
-	desc = "Looks like it's rusted shut. Creepy."
-	layer = HATCH_LAYER
 
 //INVULNERABLE PROPS
 
@@ -1130,3 +1270,99 @@
 /obj/structure/prop/wooden_cross/update_icon()
 	if(tagged)
 		overlays += mutable_appearance('icons/obj/structures/props/crosses.dmi', "cross_overlay")
+
+
+/obj/structure/prop/invuln/rope
+	name = "rope"
+	desc = "A secure rope looks like someone might've been hiding out on those rocks."
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon_state = "rope"
+	density = FALSE
+
+/obj/structure/prop/pred_flight
+	name = "hunter flight console"
+	desc = "A console designed by the Hunters to assist in flight pathing and navigation."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "overwatch"
+	density = TRUE
+
+/obj/structure/prop/invuln/joey
+	name = "Workin' Joey"
+	desc = "A defunct Seegson-brand Working Joe lifted from deep storage by a crew of marines after the last shore leave. Attempts have been made to modify the janitorial synthetic to serve as a crude bartender, but with little success."
+	icon = 'icons/obj/structures/props/props.dmi'
+	icon_state = "joey"
+	unslashable = FALSE
+	wrenchable = FALSE
+	/// converted into minutes when used to determine cooldown timer between quips
+	var/quip_delay_minimum = 5
+	/// delay between Quips. Slightly randomized with quip_delay_minimum plus a random number
+	COOLDOWN_DECLARE(quip_delay)
+	/// delay between attack voicelines. Short but done for anti-spam
+	COOLDOWN_DECLARE(damage_delay)
+	/// list of quip emotes, taken from Working Joe
+	var/static/list/quips = list(
+		/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow_damaged,
+		/datum/emote/living/carbon/human/synthetic/working_joe/quip/not_liking,
+		/datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_can_i_help,
+		/datum/emote/living/carbon/human/synthetic/working_joe/task_update/day_never_done,
+		/datum/emote/living/carbon/human/synthetic/working_joe/task_update/required_by_apollo,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/safety_breach
+	)
+	/// list of voicelines to use when damaged
+	var/static/list/damaged = list(
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/damage,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/that_stings,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/irresponsible,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/this_is_futile,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/hysterical,
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/patience
+	)
+
+/obj/structure/prop/invuln/joey/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/structure/prop/invuln/joey/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/structure/prop/invuln/joey/process()
+	//check if quip_delay cooldown finished. If so, random chance it says a line
+	if(COOLDOWN_FINISHED(src, quip_delay) && prob(10))
+		emote(pick(quips))
+		var/delay = rand(3) + quip_delay_minimum
+		COOLDOWN_START(src, quip_delay, delay MINUTES)
+
+// Advert your eyes.
+/obj/structure/prop/invuln/joey/attackby(obj/item/W, mob/user)
+	attacked()
+	return ..()
+
+/obj/structure/prop/invuln/joey/bullet_act(obj/item/projectile/P)
+	attacked()
+	return ..()
+
+/// A terrible way of handling being hit. If signals would work it should be used.
+/obj/structure/prop/invuln/joey/proc/attacked()
+	if(COOLDOWN_FINISHED(src, damage_delay) && prob(25))
+		emote(pick(damaged))
+		COOLDOWN_START(src, damage_delay, 8 SECONDS)
+
+/// SAY THE LINE JOE
+/obj/structure/prop/invuln/joey/proc/emote(datum/emote/living/carbon/human/synthetic/working_joe/emote)
+	if (!emote)
+		return FALSE
+
+	for(var/mob/mob in hearers(src, null))
+		mob.show_message("<span class='game say'><span class='name'>[src]</span> says, \"[initial(emote.say_message)]\"</span>", SHOW_MESSAGE_AUDIBLE)
+
+	var/list/viewers = get_mobs_in_view(7, src)
+	for(var/mob/current_mob in viewers)
+		if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
+			viewers -= current_mob
+	langchat_speech(initial(emote.say_message), viewers, GLOB.all_languages, skip_language_check = TRUE)
+
+	if(initial(emote.sound))
+		playsound(loc, initial(emote.sound), 50, FALSE)
+	return TRUE
+

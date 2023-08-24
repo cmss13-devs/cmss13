@@ -165,7 +165,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	START_PROCESSING(SSobj, src)
 	START_PROCESSING(SSobj, T)
 
-	user.put_in_active_hand(attached_to)
+	user.put_in_hands(attached_to)
 
 /obj/structure/transmitter/attack_hand(mob/user)
 	. = ..()
@@ -312,6 +312,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	P.handle_hear(message, L, speaking)
 	attached_to.handle_hear(message, L, speaking)
+	log_say("TELEPHONE: [key_name(speaking)] on Phone '[phone_id]' to '[T.phone_id]' said '[message]'")
 
 /obj/structure/transmitter/attackby(obj/item/W, mob/user)
 	if(W == attached_to)

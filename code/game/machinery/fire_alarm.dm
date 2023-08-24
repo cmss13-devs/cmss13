@@ -139,8 +139,10 @@ FIRE ALARM
 	var/area/area = get_area(src)
 
 	if (area.flags_alarm_state & ALARM_WARNING_FIRE)
+		user.visible_message("[user] deactivates [src].", "You deactivate [src].")
 		reset()
 	else
+		user.visible_message("[user] activates [src].", "You activate [src].")
 		alarm()
 
 	return

@@ -128,6 +128,7 @@
 	SEND_SIGNAL(src, COMSIG_LIVING_REJUVENATED)
 
 	// shut down ongoing problems
+	status_flags &= ~PERMANENTLY_DEAD
 	nutrition = NUTRITION_NORMAL
 	bodytemperature = T20C
 	recalculate_move_delay = TRUE

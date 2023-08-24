@@ -4,7 +4,7 @@
 	name = "space vines"
 	desc = "An extremely expansionistic species of vine."
 	icon = 'icons/effects/spacevines.dmi'
-	icon_state = "Light1"
+	icon_state = "light_1"
 	anchored = TRUE
 	density = FALSE
 	layer = FLY_LAYER
@@ -29,7 +29,8 @@
 	if(master)
 		master.vines -= src
 		master.growth_queue -= src
-	. = ..()
+	master = null
+	return ..()
 
 /obj/effect/plantsegment/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -294,18 +295,21 @@
 
 /obj/effect/plant_controller/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	. = ..()
+	return ..()
 
 /obj/effect/plant_controller/proc/spawn_piece(turf/location)
-	var/obj/effect/plantsegment/SV = new(location)
-	SV.limited_growth = src.limited_growth
-	growth_queue += SV
-	vines += SV
-	SV.master = src
+	if(QDELETED(src))
+		return
+
+	var/obj/effect/plantsegment/vine = new(location)
+	vine.limited_growth = src.limited_growth
+	growth_queue += vine
+	vines += vine
+	vine.master = src
 	if(seed)
-		SV.seed = seed
-		SV.name = "[seed.seed_name] vines"
-		SV.update()
+		vine.seed = seed
+		vine.name = "[seed.seed_name] vines"
+		vine.update()
 
 /obj/effect/plant_controller/process()
 

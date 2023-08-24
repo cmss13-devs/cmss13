@@ -46,7 +46,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	var/has_loot = 1
+	var/has_loot = TRUE
 	faction = "malf_drone"
 
 /mob/living/simple_animal/hostile/retaliate/malf_drone/Initialize()
@@ -161,54 +161,59 @@
 	..(null,"suddenly breaks apart.")
 	qdel(src)
 
-/mob/living/simple_animal/hostile/retaliate/malf_drone/Destroy()
+/mob/living/simple_animal/hostile/retaliate/malf_drone/Destroy(force)
+	QDEL_NULL(ion_trail)
+
+	if(!has_loot || force)
+		return ..()
+
 	//some random debris left behind
-	if(has_loot)
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(3, 1, src)
-		s.start()
-		var/obj/O
+	var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+	spark.set_up(3, 1, src)
+	spark.start()
+	spark.holder = null
+	var/obj/loot
 
-		//shards
-		O = new /obj/item/shard(src.loc)
-		step_to(O, get_turf(pick(view(7, src))))
-		if(prob(75))
-			O = new /obj/item/shard(src.loc)
-			step_to(O, get_turf(pick(view(7, src))))
-		if(prob(50))
-			O = new /obj/item/shard(src.loc)
-			step_to(O, get_turf(pick(view(7, src))))
-		if(prob(25))
-			O = new /obj/item/shard(src.loc)
-			step_to(O, get_turf(pick(view(7, src))))
+	//shards
+	loot = new /obj/item/shard(loc)
+	step_to(loot, get_turf(pick(view(7, src))))
+	if(prob(75))
+		loot = new /obj/item/shard(loc)
+		step_to(loot, get_turf(pick(view(7, src))))
+	if(prob(50))
+		loot = new /obj/item/shard(loc)
+		step_to(loot, get_turf(pick(view(7, src))))
+	if(prob(25))
+		loot = new /obj/item/shard(loc)
+		step_to(loot, get_turf(pick(view(7, src))))
 
-		//rods
-		O = new /obj/item/stack/rods(src.loc)
-		step_to(O, get_turf(pick(view(7, src))))
-		if(prob(75))
-			O = new /obj/item/stack/rods(src.loc)
-			step_to(O, get_turf(pick(view(7, src))))
-		if(prob(50))
-			O = new /obj/item/stack/rods(src.loc)
-			step_to(O, get_turf(pick(view(7, src))))
-		if(prob(25))
-			O = new /obj/item/stack/rods(src.loc)
-			step_to(O, get_turf(pick(view(7, src))))
+	//rods
+	loot = new /obj/item/stack/rods(loc)
+	step_to(loot, get_turf(pick(view(7, src))))
+	if(prob(75))
+		loot = new /obj/item/stack/rods(loc)
+		step_to(loot, get_turf(pick(view(7, src))))
+	if(prob(50))
+		loot = new /obj/item/stack/rods(loc)
+		step_to(loot, get_turf(pick(view(7, src))))
+	if(prob(25))
+		loot = new /obj/item/stack/rods(loc)
+		step_to(loot, get_turf(pick(view(7, src))))
 
-		//plasteel
-		O = new /obj/item/stack/sheet/plasteel(src.loc)
-		step_to(O, get_turf(pick(view(7, src))))
-		if(prob(75))
-			O = new /obj/item/stack/sheet/plasteel(src.loc)
-			step_to(O, get_turf(pick(view(7, src))))
-		if(prob(50))
-			O = new /obj/item/stack/sheet/plasteel(src.loc)
-			step_to(O, get_turf(pick(view(7, src))))
-		if(prob(25))
-			O = new /obj/item/stack/sheet/plasteel(src.loc)
-			step_to(O, get_turf(pick(view(7, src))))
+	//plasteel
+	loot = new /obj/item/stack/sheet/plasteel(loc)
+	step_to(loot, get_turf(pick(view(7, src))))
+	if(prob(75))
+		loot = new /obj/item/stack/sheet/plasteel(loc)
+		step_to(loot, get_turf(pick(view(7, src))))
+	if(prob(50))
+		loot = new /obj/item/stack/sheet/plasteel(loc)
+		step_to(loot, get_turf(pick(view(7, src))))
+	if(prob(25))
+		loot = new /obj/item/stack/sheet/plasteel(loc)
+		step_to(loot, get_turf(pick(view(7, src))))
 
-	. = ..()
+	return ..()
 
 /obj/item/projectile/beam/drone
 	damage = 15

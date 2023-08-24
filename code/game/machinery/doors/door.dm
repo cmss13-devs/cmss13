@@ -2,7 +2,7 @@
 /obj/structure/machinery/door
 	name = "\improper Door"
 	desc = "It opens and closes."
-	icon = 'icons/obj/structures/doors/Doorint.dmi'
+	icon = 'icons/obj/structures/doors/Door1.dmi'
 	icon_state = "door1"
 	anchored = TRUE
 	opacity = TRUE
@@ -247,7 +247,6 @@
 		return FALSE
 
 	operating = TRUE
-	CHECK_TICK
 	src.density = TRUE
 	src.layer = closed_layer
 	do_animate("closing")

@@ -1,16 +1,16 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ag" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/ammo_magazine/m60{
-	pixel_x = -4;
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = -7;
 	pixel_y = -4
 	},
-/obj/item/ammo_magazine/m60{
+/obj/item/ammo_magazine/rifle/mar40/lmg{
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
@@ -162,11 +162,11 @@
 /area/lv624/lazarus/crashed_ship)
 "fA" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 32;
+	network_receive = "CLF";
+	networks_transmit = list("CLF");
 	phone_category = "CR-116";
 	phone_id = "Armoury";
-	network_receive = "CLF";
-	networks_transmit = list("CLF")
+	pixel_y = 32
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -400,7 +400,8 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "ky" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
+	dir = 8;
 	name = "\improper Bridge"
 	},
 /turf/open/floor{
@@ -500,6 +501,10 @@
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
+/area/lv624/lazarus/crashed_ship)
+"nj" = (
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf_engineer,
+/turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "nt" = (
 /turf/closed/shuttle/ert{
@@ -662,11 +667,11 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/transmitter/colony_net/rotary{
-	phone_category = "CR-116";
-	phone_id = "Engineering";
-	phone_color = "yellow";
 	network_receive = "CLF";
-	networks_transmit = list("CLF")
+	networks_transmit = list("CLF");
+	phone_category = "CR-116";
+	phone_color = "yellow";
+	phone_id = "Engineering"
 	},
 /turf/open/floor/almayer{
 	icon_state = "orangecorner"
@@ -797,7 +802,7 @@
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
 "wG" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
 	dir = 1;
 	name = "\improper Side Entrance"
 	},
@@ -857,8 +862,9 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_west_barrens)
 "xF" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	name = "\improper Dining Room"
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
+	dir = 8;
+	name = "\improper Dining Area"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
@@ -912,7 +918,7 @@
 /area/lv624/lazarus/crashed_ship)
 "yX" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/gun/m60{
+/obj/item/weapon/gun/rifle/mar40/lmg{
 	pixel_x = 1;
 	pixel_y = 2
 	},
@@ -969,7 +975,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "Ac" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf_medic,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "Ar" = (
@@ -1062,7 +1068,8 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Ct" = (
-/obj/structure/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 8;
 	name = "\improper Engineering Storage"
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -1391,7 +1398,8 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "KK" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
+	dir = 8;
 	name = "\improper General Area"
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -1429,7 +1437,8 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "Mm" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
+	dir = 8;
 	name = "\improper Bunk Beds"
 	},
 /turf/open/floor/almayer,
@@ -1653,12 +1662,12 @@
 "Qj" = (
 /obj/structure/machinery/body_scanconsole,
 /obj/structure/transmitter/colony_net{
-	pixel_y = 32;
-	phone_category = "CR-116";
-	phone_id = "Medical Bay";
 	network_receive = "CLF";
 	networks_transmit = list("CLF");
-	phone_color = "green"
+	phone_category = "CR-116";
+	phone_color = "green";
+	phone_id = "Medical Bay";
+	pixel_y = 32
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -1684,7 +1693,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "QE" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
 	dir = 1;
 	name = "\improper Medical Bay"
 	},
@@ -1875,8 +1884,9 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "VA" = (
-/obj/structure/machinery/door/airlock/multi_tile/secure{
-	name = "Cargo Airlock"
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
+	dir = 8;
+	name = "\improper Cargo Hold"
 	},
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
@@ -1984,11 +1994,11 @@
 /area/lv624/lazarus/crashed_ship)
 "XM" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 32;
+	network_receive = "CLF";
+	networks_transmit = list("CLF");
 	phone_category = "CR-116";
 	phone_id = "Cargo Bay";
-	network_receive = "CLF";
-	networks_transmit = list("CLF")
+	pixel_y = 32
 	},
 /turf/open/floor{
 	dir = 8;
@@ -2429,7 +2439,7 @@ Ab
 Ns
 Px
 Cq
-Ac
+nj
 lr
 Xq
 JO

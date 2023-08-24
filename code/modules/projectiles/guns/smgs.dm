@@ -20,6 +20,7 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_SMG
+	start_automatic = TRUE
 
 /obj/item/weapon/gun/smg/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -32,6 +33,7 @@
 /obj/item/weapon/gun/smg/set_gun_config_values()
 	..()
 	movement_onehanded_acc_penalty_mult = 4
+	fa_max_scatter = SCATTER_AMOUNT_TIER_5
 
 //-------------------------------------------------------
 //M39 SMG
@@ -58,7 +60,7 @@
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/magnetic_harness,
@@ -75,9 +77,9 @@
 
 /obj/item/weapon/gun/smg/m39/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_SMG
-	burst_delay = FIRE_DELAY_TIER_SMG
-	burst_amount = BURST_AMOUNT_TIER_3
+	set_fire_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_4
@@ -85,6 +87,7 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+	fa_max_scatter = SCATTER_AMOUNT_TIER_10 + 0.5
 
 
 /obj/item/weapon/gun/smg/m39/training
@@ -100,7 +103,7 @@
 	current_mag = /obj/item/ammo_magazine/smg/m39/ap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
 	map_specific_decoration = FALSE
-	starting_attachment_types = list(/obj/item/attachable/stock/smg)
+	starting_attachment_types = list(/obj/item/attachable/stock/smg/collapsible)
 
 	random_spawn_chance = 100
 	random_spawn_rail = list(
@@ -124,7 +127,7 @@
 
 /obj/item/weapon/gun/smg/m39/elite/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_SMG
+	set_fire_delay(FIRE_DELAY_TIER_SMG)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_9
@@ -135,7 +138,6 @@
 /obj/item/weapon/gun/smg/m39/elite/whiteout//attachies + heap mag for whiteout.
 	starting_attachment_types = list(/obj/item/attachable/stock/smg, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip, /obj/item/attachable/magnetic_harness)
 	current_mag = /obj/item/ammo_magazine/smg/m39/heap
-
 
 //-------------------------------------------------------
 //M5, a classic SMG used in a lot of action movies.
@@ -153,7 +155,7 @@
 		/obj/item/attachable/suppressor, // Barrel
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
@@ -177,9 +179,9 @@
 
 /obj/item/weapon/gun/smg/mp5/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
-	burst_delay = FIRE_DELAY_TIER_SMG
-	burst_amount = BURST_AMOUNT_TIER_3
+	set_fire_delay(FIRE_DELAY_TIER_11)
+	set_burst_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
 
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
@@ -204,7 +206,7 @@
 		/obj/item/attachable/suppressor, // Barrel
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
@@ -228,9 +230,9 @@
 
 /obj/item/weapon/gun/smg/mp27/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_SMG
-	burst_delay = FIRE_DELAY_TIER_SMG
-	burst_amount = BURST_AMOUNT_TIER_2
+	set_fire_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_4 + (SCATTER_AMOUNT_TIER_10 * 0.5)
@@ -261,9 +263,9 @@
 
 /obj/item/weapon/gun/smg/ppsh/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_SMG
-	burst_delay = FIRE_DELAY_TIER_SMG
-	burst_amount = BURST_AMOUNT_TIER_3
+	set_fire_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_4
@@ -271,6 +273,8 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+	fa_max_scatter = SCATTER_AMOUNT_TIER_9
+	fa_scatter_peak = 1 // Seems a bit funny, but it works pretty well in the end
 
 /obj/item/weapon/gun/smg/ppsh/with_drum_mag
 	current_mag = /obj/item/ammo_magazine/smg/ppsh/extended
@@ -284,15 +288,15 @@
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
 			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
 			balloon_alert(user, "*jammed*")
-		return
+		return NONE
 	else if(prob(ppsh_mag?.jam_chance))
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 50, FALSE)
 		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
 		balloon_alert(user, "*jammed*")
-		return
+		return NONE
 	else
-		. = ..()
+		return ..()
 
 /obj/item/weapon/gun/smg/ppsh/unique_action(mob/user)
 	if(jammed)
@@ -369,13 +373,9 @@
 /obj/item/weapon/gun/smg/mac15/set_gun_config_values()
 	..()
 
-	/* commented out until better fullauto code
-	fa_delay = FIRE_DELAY_TIER_10
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_7
 	fa_max_scatter = SCATTER_AMOUNT_TIER_3
-	*/
-
-	fire_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_5
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
@@ -422,13 +422,9 @@
 /obj/item/weapon/gun/smg/uzi/set_gun_config_values()
 	..()
 
-	/* commented out until better fullauto code
-	fa_delay = FIRE_DELAY_TIER_9
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_5
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
-	*/
-
-	fire_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_11)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -445,15 +441,15 @@
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
 			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
 			balloon_alert(user, "*jammed*")
-		return
+		return NONE
 	else if(prob(uzi_mag.jam_chance))
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 35, TRUE)
 		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
 		balloon_alert(user, "*jammed*")
-		return
+		return NONE
 	else
-		. = ..()
+		return ..()
 
 /obj/item/weapon/gun/smg/uzi/unique_action(mob/user)
 	if(jammed)
@@ -516,9 +512,9 @@
 
 /obj/item/weapon/gun/smg/fp9000/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_SMG
-	burst_delay = FIRE_DELAY_TIER_SMG
-	burst_amount = BURST_AMOUNT_TIER_3
+	set_fire_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -574,12 +570,13 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_SMG
 	civilian_usable_override = TRUE
+	start_automatic = FALSE
 	var/nailing_speed = 2 SECONDS //Time to apply a sheet for patching. Also haha name. Try to keep sync with soundbyte duration
 	var/repair_sound = 'sound/weapons/nailgun_repair_long.ogg'
 
 /obj/item/weapon/gun/smg/nailgun/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_11)
 
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4

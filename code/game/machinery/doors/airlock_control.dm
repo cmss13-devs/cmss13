@@ -218,7 +218,7 @@
 /obj/structure/machinery/airlock_sensor/Destroy()
 	stop_processing()
 	SSradio.remove_object(src, frequency)
-	QDEL_NULL(radio_connection)
+	radio_connection = null
 	return ..()
 
 /obj/structure/machinery/airlock_sensor/airlock_interior
@@ -284,7 +284,7 @@
 
 /obj/structure/machinery/access_button/Destroy()
 	SSradio.remove_object(src, frequency)
-	QDEL_NULL(radio_connection)
+	radio_connection = null
 	return ..()
 
 /obj/structure/machinery/access_button/airlock_interior

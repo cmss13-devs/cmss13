@@ -31,6 +31,9 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 	var/area/AR = get_area(T)
 	if(isnull(AR) || !(AR.is_resin_allowed))
+		if(AR.flags_area & AREA_UNWEEDABLE)
+			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
+			return
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return FALSE
 
@@ -229,28 +232,6 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	build_path = /obj/structure/mineral_door/resin/thick
 	build_animation_effect = /obj/effect/resin_construct/thickdoor
 
-
-// Resin Nests
-/datum/resin_construction/resin_obj/nest
-	name = "Resin Nest"
-	desc = "A resin nest used to contain any infected hosts."
-	construction_name = "resin nest"
-	cost = XENO_RESIN_NEST_COST
-
-	build_path = /obj/structure/bed/nest
-
-/datum/resin_construction/resin_obj/nest/can_build_here(turf/T, mob/living/carbon/xenomorph/X)
-	if (!..())
-		return FALSE
-
-	var/obj/effect/alien/weeds/alien_weeds = locate() in T // No need to check if null, because if there are no weeds then parent call fails any way
-	if(!(alien_weeds.weed_strength >= WEED_LEVEL_HIVE))
-		to_chat(X, SPAN_WARNING("These weeds are not strong enough to hold the nest."))
-		return FALSE
-
-	return TRUE
-
-
 // Sticky Resin
 /datum/resin_construction/resin_obj/sticky_resin
 	name = "Sticky Resin"
@@ -360,3 +341,12 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	construction_name = "thick resin membrane"
 	build_path = /obj/structure/alien/movable_wall/membrane/thick
 
+// Remote Resin Nodes for originally coded for Resin Whisperers
+/datum/resin_construction/resin_obj/resin_node
+	name = "Resin Node"
+	desc = "Channel energy to spread our influence."
+	construction_name = "resin node"
+	cost = (XENO_RESIN_MEMBRANE_THICK_COST * 2) // 3x the cost of a thick membrane. At the time of coding that is 95*2 = 190
+
+	build_path = /obj/effect/alien/weeds/node
+	build_overlay_icon = /obj/effect/warning/alien/weak

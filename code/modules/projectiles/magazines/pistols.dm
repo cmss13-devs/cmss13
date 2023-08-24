@@ -8,7 +8,7 @@
 	caliber = "9mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m4a3"
-	max_rounds = 9
+	max_rounds = 12
 	w_class = SIZE_SMALL
 	default_ammo = /datum/ammo/bullet/pistol
 	gun_type = /obj/item/weapon/gun/pistol/m4a3
@@ -17,13 +17,13 @@
 
 /obj/item/ammo_magazine/pistol/hp
 	name = "\improper M4A3 hollowpoint magazine (9mm)"
-	desc = "A pistol magazine. This one contains hollowpoint bullets, which have noticeably higher stopping power on unarmoured targets, and noticeably less on armored targets."
+	desc = "A pistol magazine. This one contains hollowpoint bullets, which have noticeably higher stopping power on unarmored targets, and noticeably less on armored targets."
 	default_ammo = /datum/ammo/bullet/pistol/hollow
 	ammo_band_color = AMMO_BAND_COLOR_HOLLOWPOINT
 
 /obj/item/ammo_magazine/pistol/ap
 	name = "\improper M4A3 AP magazine (9mm)"
-	desc = "A pistol magazine. This one contains armor-piercing bullets, which have noticeably higher stopping power on well-armoured targets, and noticeably less on unarmored or lightly-armored targets."
+	desc = "A pistol magazine. This one contains armor-piercing bullets, which have noticeably higher stopping power on well-armored targets, and noticeably less on unarmored or lightly-armored targets."
 	default_ammo = /datum/ammo/bullet/pistol/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
@@ -55,7 +55,7 @@
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = ".45"
 	icon_state = "m4a345"//rename later
-	max_rounds = 14
+	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/pistol/m1911
 
 
@@ -104,6 +104,19 @@
 	name = "\improper 88M4 rubber magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
+
+//-------------------------------------------------------
+//ES-4
+
+/obj/item/ammo_magazine/pistol/es4
+	name = "\improper ES-4 stun magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/rubber/stun
+	caliber = "9mm"
+	desc = "Holds 19 rounds of specialized Conductive 9mm. Electrostatic propulsion in the ES-4 functions by propelling an cV9mm round, at a proportionally slower velocity to maintain a higher kinetic energy transfer rate. All this turns a penetrative round into a less-than-lethal round."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/wy.dmi'
+	icon_state = "es4"
+	max_rounds = 19
+	gun_type = /obj/item/weapon/gun/pistol/es4
 
 //-------------------------------------------------------
 //VP78

@@ -8,10 +8,9 @@
 	var/invisibility_value = INVISIBILITY_MAXIMUM
 
 /obj/effect/landmark/New()
-	..()
 	tag = "landmark*[name]"
 	invisibility = invisibility_value
-	return 1
+	return ..()
 
 /obj/effect/landmark/Initialize(mapload, ...)
 	. = ..()
@@ -31,6 +30,29 @@
 
 /obj/effect/landmark/newplayer_start/Destroy()
 	GLOB.newplayer_start -= src
+	return ..()
+
+/obj/effect/landmark/sim_target
+	name = "simulator_target"
+
+/obj/effect/landmark/sim_target/Initialize(mapload, ...)
+	. = ..()
+	GLOB.simulator_targets += src
+
+/obj/effect/landmark/sim_target/Destroy()
+	GLOB.simulator_targets -= src
+	return ..()
+
+/obj/effect/landmark/sim_camera
+	name = "simulator_camera"
+	color = "#FFFF00"
+
+/obj/effect/landmark/sim_camera/Initialize(mapload, ...)
+	. = ..()
+	GLOB.simulator_cameras += src
+
+/obj/effect/landmark/sim_camera/Destroy()
+	GLOB.simulator_cameras -= src
 	return ..()
 
 /obj/effect/landmark/observer_start
@@ -81,6 +103,9 @@
 
 /obj/effect/landmark/ert_spawns/distress_wo
 	name = "distress_wo"
+
+/obj/effect/landmark/ert_spawns/groundside_xeno
+	name = "distress_groundside_xeno"
 
 /obj/effect/landmark/monkey_spawn
 	name = "monkey_spawn"
@@ -191,23 +216,25 @@
 
 /obj/effect/landmark/yautja_teleport
 	name = "yautja_teleport"
+	/// The index we registered as in mainship_yautja_desc or yautja_teleport_descs
+	var/desc_index
 
 /obj/effect/landmark/yautja_teleport/Initialize(mapload, ...)
 	. = ..()
-	var/turf/T = get_turf(src)
+	var/turf/turf = get_turf(src)
+	desc_index = turf.loc.name + turf.loc_to_string()
 	if(is_mainship_level(z))
 		GLOB.mainship_yautja_teleports += src
-		GLOB.mainship_yautja_desc[T.loc.name + T.loc_to_string()] = src
+		GLOB.mainship_yautja_desc[desc_index] = src
 	else
 		GLOB.yautja_teleports += src
-		GLOB.yautja_teleport_descs[T.loc.name + T.loc_to_string()] = src
+		GLOB.yautja_teleport_descs[desc_index] = src
 
 /obj/effect/landmark/yautja_teleport/Destroy()
-	var/turf/T = get_turf(src)
 	GLOB.mainship_yautja_teleports -= src
 	GLOB.yautja_teleports -= src
-	GLOB.mainship_yautja_desc -= T.loc.name + T.loc_to_string()
-	GLOB.yautja_teleport_descs -= T.loc.name + T.loc_to_string()
+	GLOB.mainship_yautja_desc -= desc_index
+	GLOB.yautja_teleport_descs -= desc_index
 	return ..()
 
 
@@ -251,9 +278,9 @@
 	icon_state = "leader_spawn"
 	job = /datum/job/marine/leader/whiskey
 
-/obj/effect/landmark/start/whiskey/rto
-	icon_state = "rto_spawn"
-	job = /datum/job/marine/rto //Need to create a WO variant in the future
+/obj/effect/landmark/start/whiskey/tl
+	icon_state = "tl_spawn"
+	job = /datum/job/marine/tl //Need to create a WO variant in the future
 
 /obj/effect/landmark/start/whiskey/spec
 	icon_state = "spec_spawn"
@@ -351,6 +378,8 @@
 	name = "late join"
 	icon_state = "x2"
 	var/squad
+	/// What job should latejoin on this landmark
+	var/job
 
 /obj/effect/landmark/late_join/alpha
 	name = "alpha late join"
@@ -369,6 +398,10 @@
 	squad = SQUAD_MARINE_4
 
 
+/obj/effect/landmark/late_join/working_joe
+	name = "working joe late join"
+	job = JOB_WORKING_JOE
+
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()
 
@@ -378,12 +411,16 @@
 			squad = GLOB.squad_mappings[squad]
 
 		LAZYADD(GLOB.latejoin_by_squad[squad], src)
+	else if(job)
+		LAZYADD(GLOB.latejoin_by_job[job], src)
 	else
 		GLOB.latejoin += src
 
 /obj/effect/landmark/late_join/Destroy()
 	if(squad)
 		LAZYREMOVE(GLOB.latejoin_by_squad[squad], src)
+	else if(job)
+		LAZYREMOVE(GLOB.latejoin_by_job[job], src)
 	else
 		GLOB.latejoin -= src
 	return ..()

@@ -693,11 +693,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "VW" = (
-/obj/structure/machinery/door/airlock/hatch/cockpit/two{
-	req_access = null;
-	req_access_txt = "22";
-	req_one_access = null
-	},
+/obj/structure/machinery/door/airlock/hatch/cockpit/two,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"

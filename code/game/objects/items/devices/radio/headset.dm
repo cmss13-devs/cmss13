@@ -1024,7 +1024,7 @@
 	multibroadcast_cooldown = HIGH_MULTIBROADCAST_COOLDOWN
 
 /obj/item/device/radio/headset/distress/UPP/recon
-	name = "UPP headset"
+	name = "\improper UPP headset"
 	desc = "A special headset used by recon elements of the UPP military."
 	frequency = UPP_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/upp)

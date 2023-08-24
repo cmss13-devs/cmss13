@@ -1272,7 +1272,7 @@ var/datum/controller/supply/supply_controller = new()
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	circuit = /obj/item/circuitboard/computer/supplycomp/vehicle
 	// Can only retrieve one vehicle per round
-	var/spent = TRUE
+	var/spent = FALSE
 	var/tank_unlocked = FALSE
 	var/list/allowed_roles = list(JOB_CREWMAN)
 
@@ -1320,7 +1320,7 @@ var/datum/controller/supply/supply_controller = new()
 	)
 
 	for(var/order as anything in vehicles)
-		new order
+		vehicles[order] = new order
 
 	if(!VehicleElevatorConsole)
 		VehicleElevatorConsole = src
@@ -1365,12 +1365,12 @@ var/datum/controller/supply/supply_controller = new()
 		dat += "Available vehicles:<br>"
 
 		for(var/d in vehicles)
-			var/datum/vehicle_order/VO = d
+			var/datum/vehicle_order/VO = vehicles[d]
 
 			if(VO.has_vehicle_lock())
 				dat += VO.failure_message
 			else
-				dat += "<a href='?src=\ref[src];get_vehicle=\ref[VO]'>[VO.name]</a><br>"
+				dat += "<a href='?src=\ref[src];get_vehicle=[d]'>[VO.name]</a><br>"
 
 	show_browser(H, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
 
@@ -1407,7 +1407,7 @@ var/datum/controller/supply/supply_controller = new()
 
 		var/obj/vehicle/multitile/ordered_vehicle
 
-		var/datum/vehicle_order/VO = locate(href_list["get_vehicle"])
+		var/datum/vehicle_order/VO = vehicles[text2path(href_list["get_vehicle"])]
 
 		if(!VO) return
 		if(VO.has_vehicle_lock()) return

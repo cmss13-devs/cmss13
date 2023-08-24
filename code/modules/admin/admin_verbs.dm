@@ -121,6 +121,7 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/toggle_sniper_upgrade,
 	/client/proc/toggle_attack_dead,
 	/client/proc/toggle_strip_drag,
+	/client/proc/toggle_disposal_mobs,
 	/client/proc/toggle_uniform_strip,
 	/client/proc/toggle_strong_defibs,
 	/client/proc/toggle_blood_optimization,
@@ -132,7 +133,8 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/toggle_shipside_sd,
 	/client/proc/shakeshipverb,
 	/client/proc/adminpanelweapons,
-	/client/proc/adminpanelgq,
+	/client/proc/admin_general_quarters,
+	/client/proc/admin_biohazard_alert,
 	/client/proc/toggle_hardcore_perma
 )
 
@@ -343,7 +345,7 @@ var/list/roundstart_mod_verbs = list(
 		add_verb(src, clan_verbs)
 
 /client/proc/add_admin_whitelists()
-	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
+	if(CLIENT_IS_MENTOR(src))
 		RoleAuthority.roles_whitelist[ckey] |= WHITELIST_MENTOR
 	if(CLIENT_IS_STAFF(src))
 		RoleAuthority.roles_whitelist[ckey] |= WHITELIST_JOE
@@ -575,6 +577,10 @@ var/list/roundstart_mod_verbs = list(
 	set name = "Announce Random Fact"
 	set desc = "Tells everyone about a random statistic in the round."
 	set category = "OOC"
+
+	var/prompt = tgui_alert(usr, "Are you sure you want to do this?", "Announce Random Fact", list("No", "Yes"))
+	if(prompt != "Yes")
+		return
 
 	message_admins("[key_name(usr)] announced a random fact.")
 	SSticker.mode?.declare_fun_facts()

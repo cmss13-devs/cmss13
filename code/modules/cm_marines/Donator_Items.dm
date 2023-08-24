@@ -55,6 +55,8 @@
 	//DON'T GRAB STUFF BETWEEN THIS LINE
 	flags_inventory = ALLOWREBREATH
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	//AND THIS LINE
 
 //END MASK TEMPLATE

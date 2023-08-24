@@ -147,6 +147,10 @@
 		return
 
 	if(dropship_control_lost && skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
+		var/remaining_time = timeleft(door_control_cooldown) / 10
+		if(remaining_time > 60)
+			to_chat(user, SPAN_WARNING("The shuttle is not responding, try again in [remaining_time] seconds."))
+			return
 		to_chat(user, SPAN_NOTICE("You start to remove the Queens override."))
 		if(!do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			to_chat(user, SPAN_WARNING("You fail to remove the Queens override"))
@@ -362,6 +366,9 @@
 			update_equipment(is_optimised)
 			if(is_set_flyby)
 				to_chat(user, SPAN_NOTICE("You begin the launch sequence for a flyby."))
+				var/log = "[key_name(user)] launched the dropship [src.shuttleId] on flyby."
+				msg_admin_niche(log)
+				log_interact(user, msg = "[log]")
 				shuttle.send_for_flyby()
 				return TRUE
 			var/dockId = params["target"]
@@ -387,6 +394,9 @@
 				return TRUE
 			SSshuttle.moveShuttle(shuttle.id, dock.id, TRUE)
 			to_chat(user, SPAN_NOTICE("You begin the launch sequence to [dock]."))
+			var/log = "[key_name(user)] launched the dropship [src.shuttleId] on transport."
+			msg_admin_niche(log)
+			log_interact(user, msg = "[log]")
 			return TRUE
 		if("button-push")
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
@@ -403,10 +413,14 @@
 				to_chat(user, SPAN_WARNING("Door controls have been overridden. Please call technical support."))
 		if("set-ferry")
 			is_set_flyby = FALSE
-			msg_admin_niche("[key_name_admin(usr)] set the dropship [src.shuttleId] into transport")
+			var/log = "[key_name(user)] set the dropship [src.shuttleId] into transport"
+			msg_admin_niche(log)
+			log_interact(user, msg = "[log]")
 		if("set-flyby")
 			is_set_flyby = TRUE
-			msg_admin_niche("[key_name_admin(usr)] set the dropship [src.shuttleId] into flyby")
+			var/log = "[key_name(user)] set the dropship [src.shuttleId] into flyby."
+			msg_admin_niche(log)
+			log_interact(user, msg = "[log]")
 		if("set-automate")
 			var/almayer_lz = params["hangar_id"]
 			var/ground_lz = params["ground_id"]
@@ -426,7 +440,9 @@
 			shuttle.automated_lz_id = ground_lz
 			shuttle.automated_delay = delay
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
-			message_admins("[key_name_admin(usr)] has set auto pilot on '[shuttle.name]'")
+			var/log = "[key_name(user)] has enabled auto pilot on '[shuttle.name]'"
+			message_admins(log)
+			log_interact(user, msg = "[log]")
 			return
 			/* TODO
 				if(!dropship.automated_launch) //If we're toggling it on...
@@ -440,7 +456,9 @@
 			shuttle.automated_lz_id = null
 			shuttle.automated_delay = null
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
-			message_admins("[key_name_admin(usr)] has removed auto pilot on '[shuttle.name]'")
+			var/log = "[key_name(user)] has disabled auto pilot on '[shuttle.name]'"
+			message_admins(log)
+			log_interact(user, msg = "[log]")
 			return
 
 		if("cancel-flyby")

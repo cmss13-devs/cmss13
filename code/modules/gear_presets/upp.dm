@@ -7,7 +7,7 @@
 
 /datum/equipment_preset/upp/New()
 	. = ..()
-	access = get_antagonist_access()
+	access = get_access(ACCESS_LIST_UPP_ALL) //ACCESS_COME_BACK_TO_ME
 
 /datum/equipment_preset/upp/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(60;MALE,40;FEMALE)
@@ -1777,7 +1777,7 @@
 	name = "UPP Combat Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	languages = ALL_SYNTH_LANGUAGES
+	languages = ALL_SYNTH_LANGUAGES_UPP
 
 	skills = /datum/skills/synthetic
 	assignment = JOB_UPP_COMBAT_SYNTH
@@ -2105,7 +2105,7 @@
 
 /datum/equipment_preset/upp/commando/New()
 	. = ..()
-	access = get_global_access()
+	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/upp/commando/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels

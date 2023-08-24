@@ -2832,7 +2832,6 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/attachable/heavy_barrel,
 /obj/structure/window/reinforced,
 /turf/open/floor/strata{
 	color = "#5e5d5d";

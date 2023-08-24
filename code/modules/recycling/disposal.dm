@@ -37,6 +37,13 @@
 	active_power_usage = 3500
 	idle_power_usage = 100
 	var/disposal_pressure = 0
+	///Whether the disposals tube is too narrow for a mob to fit into.
+	var/narrow_tube = FALSE
+
+/obj/structure/machinery/disposal/delivery
+	name = "delivery chute"
+	desc = "A pneumatic delivery unit connecting two locations. It's rather narrow."
+	narrow_tube = TRUE
 
 /obj/structure/machinery/disposal/broken
 	name = "broken disposal unit"
@@ -128,24 +135,42 @@
 			update()
 			return
 
-	var/obj/item/grab/G = I
-	if(istype(G)) //Handle grabbed mob
-		if(ismob(G.grabbed_thing))
-			to_chat(user, SPAN_WARNING("You can't fit that in there!"))
-			return
-			/*&& user.grab_level >= GRAB_AGGRESSIVE)
-			var/mob/GM = G.grabbed_thing
-			user.visible_message(SPAN_WARNING("[user] starts putting [GM] into [src]."),
-			SPAN_WARNING("You start putting [GM] into [src]."))
-			if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-				GM.forceMove(src)
-				user.visible_message(SPAN_WARNING("[user] puts [GM] into [src]."),
-				SPAN_WARNING("[user] puts [GM] into [src]."))
-				user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has placed [GM] ([GM.ckey]) in disposals.</font>")
-				GM.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in disposals by [user] ([user.ckey])</font>")
-				msg_admin_attack("[user] ([user.ckey]) placed [GM] ([GM.ckey]) in a disposals unit in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-				flush()*/
-		return
+	var/obj/item/grab/grab_effect = I
+	if(istype(grab_effect)) //Handle grabbed mob
+		if(ismob(grab_effect.grabbed_thing))
+			var/mob/grabbed_mob = grab_effect.grabbed_thing
+			if((!MODE_HAS_TOGGLEABLE_FLAG(MODE_DISPOSABLE_MOBS) && !HAS_TRAIT(grabbed_mob, TRAIT_CRAWLER)) || narrow_tube || grabbed_mob.mob_size >= MOB_SIZE_BIG)
+				to_chat(user, SPAN_WARNING("You can't fit that in there!"))
+				return FALSE
+			var/max_grab_size = user.mob_size
+			/// Amazing what you can do with a bit of dexterity.
+			if(HAS_TRAIT(user, TRAIT_DEXTROUS))
+				max_grab_size++
+			/// Strong mobs can lift above their own weight.
+			if(HAS_TRAIT(user, TRAIT_SUPER_STRONG))//NB; this will mean Yautja can bodily lift MOB_SIZE_XENO(3) and Synths can lift MOB_SIZE_XENO_SMALL(2)
+				max_grab_size++
+			if(grabbed_mob.mob_size > max_grab_size || !(grabbed_mob.status_flags & CANPUSH))
+				to_chat(user, SPAN_WARNING("You don't have the strength to move [grabbed_mob]!"))
+				return FALSE//can't tighten your grip on mobs bigger than you and mobs you can't push.
+			if(!user.grab_level >= GRAB_AGGRESSIVE)
+				to_chat(user, SPAN_WARNING("You need a better grip to force [grabbed_mob] in there!"))
+				return FALSE
+			user.visible_message(SPAN_WARNING("[user] starts putting [grabbed_mob] into [src]."),
+			SPAN_WARNING("You start putting [grabbed_mob] into [src]."))
+			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				user.visible_message(SPAN_WARNING("[user] stops putting [grabbed_mob] into [src]."),
+				SPAN_WARNING("You stop putting [grabbed_mob] into [src]."))
+				return FALSE
+
+			grabbed_mob.forceMove(src)
+			user.visible_message(SPAN_WARNING("[user] puts [grabbed_mob] into [src]."),
+			SPAN_WARNING("[user] puts [grabbed_mob] into [src]."))
+			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has placed [key_name(grabbed_mob)] in disposals.</font>")
+			grabbed_mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in disposals by [user] ([user.ckey])</font>")
+			msg_admin_attack("[user] ([user.ckey]) placed [key_name(grabbed_mob)] in a disposals unit in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+			flush(TRUE)//Forcibly flushing someone if forced in by another player.
+			return TRUE
+		return FALSE
 
 	if(isrobot(user))
 		return
@@ -161,51 +186,50 @@
 
 ///Mouse drop another mob or self
 /obj/structure/machinery/disposal/MouseDrop_T(mob/target, mob/user)
-	return
-/*
-	if(!istype(target) || target.anchored || target.buckled || get_dist(user, src) > 1 || get_dist(user, target) > 1 || user.is_mob_incapacitated(TRUE) || isRemoteControlling(user) || target.mob_size >= MOB_SIZE_BIG)
-		return
-	if(!(ishuman(target)) || !(ishuman(user))) return
-	if(isanimal(user) && target != user) return //Animals cannot put mobs other than themselves into disposal
+	if((!MODE_HAS_TOGGLEABLE_FLAG(MODE_DISPOSABLE_MOBS) && !HAS_TRAIT(user, TRAIT_CRAWLER)) || narrow_tube)
+		to_chat(user, SPAN_WARNING("Looks a little bit too tight in there!"))
+		return FALSE
+
+	if(target != user)
+		to_chat(user, SPAN_WARNING("You need a better grip on [target] to force them into [src]!"))
+		return FALSE //Need a firm grip to put someone else in there.
+
+	if(!istype(target) || target.anchored || target.buckled || get_dist(user, src) > 1 || user.is_mob_incapacitated(TRUE) || isRemoteControlling(user) || target.mob_size >= MOB_SIZE_BIG)
+		to_chat(user, SPAN_WARNING("You cannot get into the [src]!"))
+		return FALSE
 	add_fingerprint(user)
 	var/target_loc = target.loc
 
 	if(target == user)
 		visible_message(SPAN_NOTICE("[user] starts climbing into the disposal."))
-	else
-		if(user.is_mob_restrained()) return //can't stuff someone other than you if restrained.
-		visible_message(SPAN_WARNING("[user] starts stuffing [target] into the disposal."))
+
 	if(!do_after(user, 40, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-		return
+		return FALSE
 	if(target_loc != target.loc)
-		return
+		return FALSE
+	if(user.is_mob_incapacitated(TRUE))
+		to_chat(user, SPAN_WARNING("You cannot do this while incapacitated!"))
+		return FALSE
+
 	if(target == user)
-		if(user.is_mob_incapacitated(TRUE)) return
 		user.visible_message(SPAN_NOTICE("[user] climbs into [src]."),
 		SPAN_NOTICE("You climb into [src]."))
-	else
-		if(user.is_mob_incapacitated()) return
-		user.visible_message(SPAN_DANGER("[user] stuffs [target] into [src]!"),
-		SPAN_WARNING("You stuff [target] into [src]!"))
-
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has placed [target.name] ([target.ckey]) in disposals.</font>")
-		target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in disposals by [user.name] ([user.ckey])</font>")
-		msg_admin_attack("[user] ([user.ckey]) placed [target] ([target.ckey]) in a disposals unit in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>[key_name(user)] climbed into a disposals bin!</font>")
 
 	target.forceMove(src)
-	flush()
-	update()*/
+	flush()//Not forcing flush if climbing in by self.
+	update()
 
 ///Attempt to move while inside
 /obj/structure/machinery/disposal/relaymove(mob/user)
 	if(user.stat || user.stunned || user.knocked_down || flushing)
-		return
+		return FALSE
 	if(user.loc == src)
 		go_out(user)
+		return TRUE
 
 ///Leave the disposal
 /obj/structure/machinery/disposal/proc/go_out(mob/user)
-
 	if(user.client)
 		user.client.eye = user.client.mob
 		user.client.perspective = MOB_PERSPECTIVE
@@ -364,7 +388,9 @@
 	return
 
 ///Perform a flush
-/obj/structure/machinery/disposal/proc/flush()
+/obj/structure/machinery/disposal/proc/flush(forced = FALSE)
+	if((disposal_pressure < SEND_PRESSURE) && !forced)
+		return FALSE
 
 	flushing = TRUE
 	flick("[icon_state]-flush", src)

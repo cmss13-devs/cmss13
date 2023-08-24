@@ -3500,10 +3500,8 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple,
 /area/almayer/medical/containment/cell)
@@ -4496,10 +4494,8 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
 	dir = 1
@@ -4946,10 +4942,8 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
 	dir = 8
@@ -5266,10 +5260,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -5744,10 +5735,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/plating,
 /area/almayer/medical/upper_medical)
 "aso" = (
@@ -8150,12 +8138,14 @@
 	},
 /area/almayer/medical/medical_science)
 "ayZ" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -8828,10 +8818,8 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
 	dir = 4
@@ -10577,10 +10565,8 @@
 	id = "researchlockdownext_windoor";
 	name = "\improper Research Windoor Shutter"
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/almayer/medical/medical_science)
@@ -12412,10 +12398,8 @@
 	id = "researchlockdownext_windoor";
 	name = "\improper Research Windoor Shutter"
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -32059,10 +32043,8 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
 	dir = 4
@@ -33438,7 +33420,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_umbilical)
 "eBO" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/bed,
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -39761,12 +39742,13 @@
 /obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
 	name = "\improper Research Reception Laboratory"
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 8;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -40681,10 +40663,7 @@
 	id = "researchlockdownext_door";
 	name = "\improper Research Doorway Shutter"
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -41013,8 +40992,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
 "hVf" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -44642,10 +44621,8 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
 	dir = 8
@@ -45070,10 +45047,8 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
@@ -45938,10 +45913,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/plating,
 /area/almayer/medical/medical_science)
 "khd" = (
@@ -48546,11 +48518,11 @@
 	},
 /area/almayer/squads/charlie)
 "lou" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 5
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
@@ -49687,10 +49659,7 @@
 	id = "researchlockdownext";
 	name = "\improper Research Window Shutter"
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/plating,
 /area/almayer/medical/medical_science)
 "lJG" = (
@@ -49916,10 +49885,7 @@
 	id = "researchlockdownext_door";
 	name = "\improper Research Doorway Shutter"
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -50748,11 +50714,8 @@
 	id = "researchlockdownext_se_2";
 	name = "\improper Research Window Shutter"
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
 /obj/structure/window/framed/almayer/white,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/plating,
 /area/almayer/medical/medical_science)
 "mnf" = (
@@ -52333,11 +52296,11 @@
 	},
 /area/almayer/shipboard/brig/general_equipment)
 "mWs" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
@@ -52547,9 +52510,6 @@
 	},
 /area/almayer/engineering/upper_engineering/port)
 "naR" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/machinery/iv_drip,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -53553,10 +53513,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/main_office)
-"nxF" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "nxK" = (
 /obj/structure/sign/safety/high_voltage{
 	pixel_y = -32
@@ -56296,10 +56252,8 @@
 	dir = 8;
 	name = "\improper Containment Airlock"
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -58490,10 +58444,8 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple{
 	dir = 1
@@ -58757,9 +58709,6 @@
 	},
 /area/almayer/living/offices)
 "pRn" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
-	},
 /obj/structure/bed,
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4
@@ -60208,10 +60157,8 @@
 	name = "\improper Containment Cell 5";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/closed/wall/almayer/research/containment/wall/purple,
 /area/almayer/medical/containment/cell)
@@ -60517,10 +60464,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
 	name = "\improper Research Hydroponics Workshop"
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -62028,9 +61972,11 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "rmc" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -65967,10 +65913,8 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
@@ -69010,11 +68954,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/engine_core)
 "usy" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 9
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
@@ -72394,10 +72338,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -72504,10 +72445,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -73089,15 +73027,13 @@
 /obj/item/tool/pen{
 	pixel_y = -2
 	},
-/obj/structure/machinery/door_control/brbutton/alt{
-	id = "Containment Breach";
-	name = "Emergency Containment Breach";
-	pixel_x = 8;
-	pixel_y = 10
-	},
 /obj/item/reagent_container/dropper{
 	pixel_x = -1;
 	pixel_y = 9
+	},
+/obj/structure/machinery/biohazard_lockdown{
+	pixel_x = 8;
+	pixel_y = 10
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
@@ -73311,20 +73247,18 @@
 /turf/open/floor/almayer,
 /area/almayer/living/auxiliary_officer_office)
 "wdo" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/machinery/door/airlock/almayer/research/reinforced{
 	dir = 8;
 	name = "\improper Containment Airlock"
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
+	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -73365,14 +73299,11 @@
 	},
 /area/almayer/engineering/upper_engineering/starboard)
 "wei" = (
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -73687,10 +73618,8 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -74816,12 +74745,10 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
 /obj/structure/window/framed/almayer/white,
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/almayer/medical/containment)
 "wLi" = (
@@ -74939,10 +74866,8 @@
 	},
 /area/almayer/squads/alpha)
 "wMO" = (
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -76525,10 +76450,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white,
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -78591,14 +78513,12 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Containment Breach";
-	name = "\improper Secure Airlock"
-	},
 /obj/structure/machinery/door/airlock/almayer/research/reinforced{
 	dir = 8;
 	name = "\improper Containment Airlock"
+	},
+/obj/structure/machinery/door/poddoor/almayer/biohazard/white{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -110583,7 +110503,7 @@ jUM
 lou
 eBO
 pRn
-nxF
+vOy
 ayZ
 aCD
 hFC

@@ -189,8 +189,11 @@
 		return
 
 	// Advance plant age.
+	// If the plant is sampled, lower the probability of its growth rate.
 	if(!sampled)
 		if(prob(30)) age += 1 * HYDRO_SPEED_MULTIPLIER
+	else if(sampled)
+		if(prob(10)) age += 1 * HYDRO_SPEED_MULTIPLIER
 
 	//Highly mutable plants have a chance of mutating every tick.
 	if(seed.immutable == -1)

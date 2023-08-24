@@ -1453,6 +1453,8 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/vulture_scope/proc/on_unscope()
 	SIGNAL_HANDLER
+	if(!scope_user)
+		return
 
 	var/mob/scoper = scope_user.resolve()
 	if(isgun(loc))

@@ -69,6 +69,8 @@
 
 	/// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
 	var/hit_effect_color = "#FF0000"
+	/// How much to make the bullet fall off by accuracy-wise when closer than the ideal range
+	var/accuracy_range_falloff = 10
 
 /obj/item/projectile/Initialize(mapload, datum/cause_data/cause_data)
 	. = ..()
@@ -534,7 +536,7 @@
 	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 	if(distance_travelled <= ammo.accurate_range)
 		if(distance_travelled <= ammo.accurate_range_min) // If bullet stays within max accurate range + random variance
-			effective_accuracy -= (ammo.accurate_range_min - distance_travelled) * 10 // Snipers have accuracy falloff at closer range before point blank
+			effective_accuracy -= (ammo.accurate_range_min - distance_travelled) * accuracy_range_falloff // Snipers have accuracy falloff at closer range before point blank
 	else
 		effective_accuracy -= (distance_travelled - ammo.accurate_range) * ((ammo_flags & AMMO_SNIPER) ? 1.5 : 10) // Snipers have a smaller falloff constant due to longer max range
 

@@ -1273,7 +1273,6 @@ var/datum/controller/supply/supply_controller = new()
 	circuit = /obj/item/circuitboard/computer/supplycomp/vehicle
 	// Can only retrieve one vehicle per round
 	var/spent = FALSE
-	var/tank_unlocked = FALSE
 	var/list/allowed_roles = list(JOB_CREWMAN)
 
 	var/list/vehicles
@@ -1282,7 +1281,6 @@ var/datum/controller/supply/supply_controller = new()
 	var/name = "vehicle order"
 
 	var/obj/vehicle/ordered_vehicle
-	var/unlocked = TRUE
 	var/failure_message = "<font color=\"red\"><b>Not enough resources were allocated to repair this vehicle during this operation.</b></font><br>"
 
 /datum/vehicle_order/proc/has_vehicle_lock()
@@ -1295,20 +1293,17 @@ var/datum/controller/supply/supply_controller = new()
 	name = "M34A2 Longstreet Light Tank"
 	ordered_vehicle = /obj/effect/vehicle_spawner/tank/decrepit
 
-/datum/vehicle_order/tank/has_vehicle_lock()
-	return
-
 /datum/vehicle_order/apc
 	name = "M577 Armored Personnel Carrier"
 	ordered_vehicle = /obj/effect/vehicle_spawner/apc/decrepit
 
 /datum/vehicle_order/apc/med
 	name = "M577-MED Armored Personnel Carrier"
-	ordered_vehicle = /obj/effect/vehicle_spawner/apc_med/decrepit
+	ordered_vehicle = /obj/effect/vehicle_spawner/apc/med/decrepit
 
 /datum/vehicle_order/apc/cmd
 	name = "M577-CMD Armored Personnel Carrier"
-	ordered_vehicle = /obj/effect/vehicle_spawner/apc_cmd/decrepit
+	ordered_vehicle = /obj/effect/vehicle_spawner/apc/cmd/decrepit
 
 /obj/structure/machinery/computer/supplycomp/vehicle/Initialize()
 	. = ..()
@@ -1317,6 +1312,7 @@ var/datum/controller/supply/supply_controller = new()
 		/datum/vehicle_order/apc,
 		/datum/vehicle_order/apc/med,
 		/datum/vehicle_order/apc/cmd,
+		/datum/vehicle_order/tank,
 	)
 
 	for(var/order as anything in vehicles)
@@ -1418,7 +1414,7 @@ var/datum/controller/supply/supply_controller = new()
 
 		VO.on_created(ordered_vehicle)
 
-		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_VEHICLE_ORDERED, ordered_vehicle)
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_VEHICLE_ORDERED, VO)
 
 	add_fingerprint(usr)
 	updateUsrDialog()

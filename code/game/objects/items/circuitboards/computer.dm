@@ -189,17 +189,14 @@
 	name = "Circuit board (vehicle ASRS console)"
 	build_path = /obj/structure/machinery/computer/supplycomp/vehicle
 	var/spent = FALSE //so that they can't just reconstruct the console to get another APC
-	var/tank_unlocked = FALSE
 
 /obj/item/circuitboard/computer/supplycomp/vehicle/construct(obj/structure/machinery/computer/supplycomp/vehicle/SCV)
 	if (..(SCV))
 		SCV.spent = spent
-		SCV.tank_unlocked = tank_unlocked
 
 /obj/item/circuitboard/computer/supplycomp/vehicle/disassemble(obj/structure/machinery/computer/supplycomp/vehicle/SCV)
 	if (..(SCV))
 		spent = SCV.spent
-		tank_unlocked = SCV.tank_unlocked
 
 /obj/item/circuitboard/computer/operating
 	name = "Circuit board (Operating Computer)"

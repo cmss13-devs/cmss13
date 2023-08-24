@@ -43,30 +43,10 @@
 		return
 
 	. = TRUE
-	comp.spent = FALSE
-	QDEL_NULL_LIST(comp.vehicles)
+
+	QDEL_LIST_ASSOC_VAL(comp.vehicles)
 	comp.vehicles = list(
 		/datum/vehicle_order/tank = new /datum/vehicle_order/tank()
 	)
-	comp.allowed_roles = null
-	comp.req_access = list()
-	comp.req_one_access = list()
-	comp.spent = FALSE
-
-	gearcomp.req_access = list()
-	gearcomp.req_one_access = list()
-	gearcomp.vendor_role = list()
-	gearcomp.selected_vehicle = "TANK"
-	gearcomp.available_categories = VEHICLE_ALL_AVAILABLE
-
-	var/datum/supply_packs/VK = /datum/supply_packs/vc_kit
-	var/pack = initial(VK.name)
-	var/datum/supply_order/O = new /datum/supply_order()
-	O.ordernum = supply_controller.ordernum
-	supply_controller.ordernum++
-	O.object = supply_controller.supply_packs[pack]
-	O.orderedby = MAIN_AI_SYSTEM
-	O.approvedby = MAIN_AI_SYSTEM
-	supply_controller.shoppinglist += O
 
 	return TRUE

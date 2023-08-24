@@ -961,7 +961,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Aa" = (
-/obj/effect/vehicle_spawner/van/fixed{
+/obj/effect/vehicle_spawner/van{
 	color = "#4a9eed";
 	desc = "A rather old hunk of metal with four wheels, you know what to do. Entrance on the back and sides. This one seems to be used by the CLF";
 	name = "CLF Van"

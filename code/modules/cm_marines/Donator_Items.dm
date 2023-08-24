@@ -236,11 +236,10 @@
 	item_state = "swat_suit"
 
 /obj/item/clothing/suit/storage/marine/fluff/tristan //CKEY=tristan63
-	name = "Sciency Teleport Armor"
-	desc = "Some fancy looking armor, with lots of lights and buttons.  DONOR ITEM"
-	icon_state = "reactive"
-	item_state = "reactive"
-	blood_overlay_type = "armor"
+	name = "M3X Pattern Armor"
+	desc = "A set of experimental M3 pattern armor, modernized to include form fitting ceramic plates for better protection against projectiles. Unfortunately the plates appear to be broken beyond repair, leaving only the base M3 protection.  DONOR ITEM"
+	icon_state = "tristan_armor"
+	item_state = "tristan_armor"
 
 /obj/item/clothing/suit/storage/marine/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "Legion Armor"

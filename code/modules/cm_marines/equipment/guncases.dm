@@ -306,6 +306,7 @@
 		/obj/item/ammo_magazine/rifle/boltaction/vulture,
 		/obj/item/device/vulture_spotter_tripod,
 		/obj/item/device/vulture_spotter_scope,
+		/obj/item/tool/screwdriver,
 	)
 
 /obj/item/storage/box/guncase/vulture/update_icon()

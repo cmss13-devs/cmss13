@@ -193,6 +193,8 @@
 		var/relative_dir = get_dir(current_mob, user)
 		var/final_dir = dir2text(relative_dir)
 		to_chat(current_mob, SPAN_HIGHDANGER("You hear a massive boom coming from [final_dir ? "the [final_dir]" : "nearby"]!"))
+		if(current_mob.client)
+			playsound_client(current_mob.client, 'sound/weapons/gun_vulture_report.ogg', src, 25)
 
 	if(!HAS_TRAIT(src, TRAIT_GUN_BIPODDED))
 		fired_without_bipod(user)
@@ -210,11 +212,10 @@
 	user.apply_effect(2, SLOW)
 
 	if(ishuman(user))
-		if(istype(user.l_hand, /obj/item/weapon/gun/boltaction/vulture))
-			break_arm(user, LEFT)
-
-		else if(istype(user.r_hand, /obj/item/weapon/gun/boltaction/vulture))
+		if(user.hand)
 			break_arm(user, RIGHT)
+		else
+			break_arm(user, LEFT)
 
 	//Either knockback or slam them into an obstacle.
 	var/direction = REVERSE_DIR(user.dir)

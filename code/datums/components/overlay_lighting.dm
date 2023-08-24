@@ -179,17 +179,13 @@
 ///Used to determine the new valid current_holder from the parent's loc.
 /datum/component/overlay_lighting/proc/check_holder()
 	var/atom/movable/movable_parent = parent
-	if(isturf(movable_parent.loc))
-		set_holder(movable_parent)
-		return
-	var/atom/inside = movable_parent.loc //Parent's loc
-	if(isnull(inside))
+	if(!movable_parent || !get_turf(movable_parent))
 		set_holder(null)
 		return
-	if(isturf(inside.loc))
-		set_holder(inside)
-		return
-	set_holder(null)
+	// Try only going up to parent one level
+	if(!isturf(movable_parent.loc) && !ismob(movable_parent))
+		movable_parent = movable_parent.loc
+	set_holder(movable_parent)
 
 
 ///Called when the current_holder is qdeleted, to remove the light effect.

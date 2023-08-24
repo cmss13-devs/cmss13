@@ -490,7 +490,7 @@
 /datum/component/overlay_lighting/proc/on_parent_dir_change(atom/movable/source, olddir, newdir)
 	SIGNAL_HANDLER
 
-	if(current_holder.dir != newdir)
+	if(current_holder?.dir != newdir)
 		return
 
 	set_direction(newdir)

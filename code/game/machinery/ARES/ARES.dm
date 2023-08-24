@@ -209,7 +209,6 @@
 
 	/// If this is used to create AI Core access tickets
 	var/ticket_console = FALSE
-	var/obj/item/card/id/authenticator_id
 	var/ticket_authenticated = FALSE
 	var/obj/item/card/id/target_id
 
@@ -236,3 +235,42 @@
 /obj/structure/machinery/computer/working_joe/Destroy()
 	delink()
 	return ..()
+
+/obj/structure/machinery/computer/working_joe/verb/eject_id()
+	set category = "Object"
+	set name = "Eject ID Card"
+	set src in oview(1)
+
+	if(!usr || usr.stat || usr.lying)
+		return FALSE
+
+	if(target_id)
+		target_id.loc = get_turf(src)
+		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
+			usr.put_in_hands(target_id)
+		else
+			to_chat(usr, "You remove [target_id] from [src].")
+		target_id = null
+
+	else
+		to_chat(usr, "There is nothing to remove from the console.")
+	return
+
+/obj/structure/machinery/computer/working_joe/attackby(obj/object, mob/user)
+	if(istype(object, /obj/item/card/id))
+		if(!ticket_console)
+			to_chat(user, SPAN_WARNING("This console doesn't have an ID port!"))
+			return FALSE
+		if(!operable())
+			to_chat(user, SPAN_NOTICE("You try to insert [object] but [src] remains silent."))
+			return FALSE
+		if(!target_id)
+			if(user.drop_held_item())
+				object.forceMove(src)
+				target_id = object
+				return TRUE
+			else
+				to_chat(user, "ID modification slot is full. Please remove existing card first.")
+				return FALSE
+	else
+		..()

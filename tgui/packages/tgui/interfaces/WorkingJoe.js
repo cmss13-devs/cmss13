@@ -10,7 +10,6 @@ const PAGES = {
   'maint_reports': () => MaintReports,
   'maint_claim': () => MaintManagement,
   'access_requests': () => AccessRequests,
-  'access_returns': () => AccessReturns,
   'access_tickets': () => AccessTickets,
   'id_access': () => AccessID,
 };
@@ -137,7 +136,7 @@ const MainMenu = (props, context) => {
           )}
           {access_level === 3 && (
             <Stack.Item>
-              <Button
+              <Button.Confirm
                 content="Surrender Access Ticket"
                 tooltip="Return your temporary access."
                 icon="eye"
@@ -145,7 +144,7 @@ const MainMenu = (props, context) => {
                 px="2rem"
                 width="33vw"
                 bold
-                onClick={() => act('page_returns')}
+                onClick={() => act('return_access')}
               />
             </Stack.Item>
           )}
@@ -790,58 +789,17 @@ const AccessRequests = (props, context) => {
   );
 };
 
-const AccessReturns = (props, context) => {
-  const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu } = data;
-
-  return (
-    <>
-      <Section>
-        <Flex align="center">
-          <Box>
-            <Button
-              icon="arrow-left"
-              px="2rem"
-              textAlign="center"
-              tooltip="Go back"
-              onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
-            />
-            <Button
-              icon="house"
-              ml="auto"
-              mr="1rem"
-              tooltip="Navigation Menu"
-              onClick={() => act('home')}
-            />
-          </Box>
-
-          <h3>
-            {logged_in}, {access_text}
-          </h3>
-
-          <Button.Confirm
-            content="Logout"
-            icon="circle-user"
-            ml="auto"
-            px="2rem"
-            bold
-            onClick={() => act('logout')}
-          />
-        </Flex>
-      </Section>
-
-      <Section>
-        <h1 align="center">Return Access</h1>
-      </Section>
-    </>
-  );
-};
-
 const AccessTickets = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, access_tickets } =
-    data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    access_tickets,
+    id_tooltip,
+    can_update_id,
+  } = data;
 
   return (
     <>
@@ -868,15 +826,23 @@ const AccessTickets = (props, context) => {
           <h3>
             {logged_in}, {access_text}
           </h3>
-
-          <Button.Confirm
-            content="Logout"
-            icon="circle-user"
-            ml="auto"
-            px="2rem"
-            bold
-            onClick={() => act('logout')}
-          />
+          <Box ml="auto">
+            <Button
+              content="Eject ID"
+              icon="eject"
+              ml="auto"
+              px="2rem"
+              bold
+              onClick={() => act('eject_id')}
+            />
+            <Button.Confirm
+              content="Logout"
+              icon="circle-user"
+              px="2rem"
+              bold
+              onClick={() => act('logout')}
+            />
+          </Box>
         </Flex>
       </Section>
 
@@ -891,14 +857,16 @@ const AccessTickets = (props, context) => {
           fontSize="2rem"
           mt="-3rem"
           bold>
-          <Button
-            content="Modify Access"
-            icon="exclamation-circle"
+          <Button.Confirm
+            content="Apply Access Change"
+            icon="id-card"
             width="30vw"
             textAlign="center"
             fontSize="1.5rem"
-            mt="5rem"
-            onClick={() => act('manage_access')}
+            p="1rem"
+            onClick={() => act('apply_access')}
+            disabled={can_update_id === 'No'}
+            tooltip={id_tooltip}
           />
         </Flex>
         {!!access_tickets.length && (
@@ -997,85 +965,6 @@ const AccessTickets = (props, context) => {
           );
         })}
       </Section>
-    </>
-  );
-};
-
-const AccessID = (props, context) => {
-  const { data, act } = useBackend(context);
-  const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
-    can_update_id,
-    id_tooltip,
-  } = data;
-
-  let button_content = 'Apply Access Change';
-  if (can_update_id === 'Yes') {
-    button_content = id_tooltip;
-  }
-  return (
-    <>
-      <Section>
-        <Flex align="center">
-          <Box>
-            <Button
-              icon="arrow-left"
-              px="2rem"
-              textAlign="center"
-              tooltip="Go back"
-              onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
-            />
-            <Button
-              icon="house"
-              ml="auto"
-              mr="1rem"
-              tooltip="Navigation Menu"
-              onClick={() => act('home')}
-            />
-          </Box>
-
-          <h3>
-            {logged_in}, {access_text}
-          </h3>
-
-          <Button.Confirm
-            content="Logout"
-            icon="circle-user"
-            ml="auto"
-            px="2rem"
-            bold
-            onClick={() => act('logout')}
-          />
-        </Flex>
-      </Section>
-      <Section>
-        <h1 align="center">Modify Access</h1>
-      </Section>
-      <Flex
-        direction="column"
-        justify="center"
-        align="center"
-        height="100%"
-        color="darkgrey"
-        fontSize="2rem"
-        mt="-20rem"
-        bold>
-        <Button.Confirm
-          content="Apply Access Change"
-          icon="id-card"
-          width="30vw"
-          textAlign="center"
-          fontSize="1.5rem"
-          p="1rem"
-          onClick={() => act('apply_access')}
-          disabled={can_update_id === 'No'}
-          tooltip={id_tooltip}
-        />
-      </Flex>
     </>
   );
 };

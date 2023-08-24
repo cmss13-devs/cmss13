@@ -1394,7 +1394,7 @@
 	if(glasses)
 		process_glasses(glasses)
 
-	if(!(sight & (SEE_TURFS|SEE_OBJS|SEE_TURFS)))
+	if(!(sight & SEE_TURFS) && !(sight & SEE_MOBS) && !(sight & SEE_OBJS))
 		sight |= SEE_BLACKNESS
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_POST_UPDATE_SIGHT)

@@ -101,6 +101,8 @@
 	/// The dmi where the grayscale squad overlays are contained
 	var/squad_overlay_icon = 'icons/mob/humans/onmob/suit_1.dmi'
 
+	var/atom/movable/marine_light/light_holder
+
 /obj/item/clothing/suit/storage/marine/Initialize(mapload)
 	. = ..()
 	if(!(flags_atom & NO_NAME_OVERRIDE))
@@ -123,6 +125,12 @@
 		/obj/item/ammo_magazine/sniper,
 	)
 	pockets.max_storage_space = 8
+
+	light_holder = new(src)
+
+/obj/item/clothing/suit/storage/marine/Destroy()
+	QDEL_NULL(light_holder)
+	return ..()
 
 /obj/item/clothing/suit/storage/marine/update_icon(mob/user)
 	var/image/I
@@ -182,8 +190,15 @@
 	. = ..()
 	if(. != CHECKS_PASSED)
 		return
+	set_light_range(initial(light_range))
+	set_light_power(FLOOR(initial(light_power) * 0.5))
 	set_light_on(toggle_on)
 	flags_marine_armor ^= ARMOR_LAMP_ON
+
+	light_holder.set_light_flags(LIGHT_ATTACHED)
+	light_holder.set_light_range(initial(light_range) + 2)
+	light_holder.set_light_power(initial(light_power))
+	light_holder.set_light_on(toggle_on)
 
 	if(!toggle_on)
 		playsound(src, 'sound/handling/click_2.ogg', 50, 1)
@@ -1699,3 +1714,6 @@
 	icon_state = "wc_armor"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	contained_sprite = TRUE
+
+/atom/movable/marine_light
+	light_system = DIRECTIONAL_LIGHT

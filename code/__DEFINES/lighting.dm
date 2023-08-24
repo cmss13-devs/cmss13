@@ -6,6 +6,10 @@
 #define MOVABLE_LIGHT 2
 ///A mix of the above, cheaper on moving items than dynamic, but heavier on rendering than movable
 #define HYBRID_LIGHT 3
+///Pointy light
+#define DIRECTIONAL_LIGHT 4
+
+#define LIGHT_ATTACHED (1<<0)
 
 #define MINIMUM_USEFUL_LIGHT_RANGE 1.4
 

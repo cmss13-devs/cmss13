@@ -756,6 +756,9 @@
 
 
 /mob/living/carbon/xenomorph/start_pulling(atom/movable/AM, lunge, no_msg)
+	if(next_move >= world.time)
+		return FALSE
+
 	if(SEND_SIGNAL(AM, COMSIG_MOVABLE_XENO_START_PULLING, src) & COMPONENT_ALLOW_PULL)
 		return do_pull(AM, lunge, no_msg)
 

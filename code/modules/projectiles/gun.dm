@@ -128,7 +128,7 @@
 	///How many full-auto shots to get to max scatter?
 	var/fa_scatter_peak = 4
 	///How bad does the scatter get on full auto?
-	var/fa_max_scatter = 8.5
+	var/fa_max_scatter = 6.5
 	///Click parameters to use when firing full-auto
 	var/fa_params = null
 
@@ -229,6 +229,8 @@
 	VAR_PROTECTED/start_semiauto = TRUE
 	/// If this gun should spawn with automatic fire. Protected due to it never needing to be edited.
 	VAR_PROTECTED/start_automatic = FALSE
+	/// The multiplier for how much slower this should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc. Protected due to it never needing to be edited.
+	VAR_PROTECTED/autofire_slow_mult = 1
 
 
 /**
@@ -275,7 +277,7 @@
 		AddElement(/datum/element/drop_retrieval/gun, auto_retrieval_slot)
 	update_icon() //for things like magazine overlays
 	gun_firemode = gun_firemode_list[1] || GUN_FIREMODE_SEMIAUTO
-	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
+	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
 
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()
 	attachable_offset = null
@@ -422,6 +424,10 @@
 			M.update_inv_l_hand()
 		else if(M.r_hand == src)
 			M.update_inv_r_hand()
+
+	setup_firemodes()
+
+	SEND_SIGNAL(src, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
 
 /obj/item/weapon/gun/proc/handle_random_attachments()
 	var/attachmentchoice
@@ -936,6 +942,10 @@ and you're good to go.
 
 	//Let's check on the active attachable. It loads ammo on the go, so it never chambers anything
 	if(active_attachable)
+		if(shots_fired >= 1) // This is what you'll want to remove if you want automatic underbarrel guns in the future
+			SEND_SIGNAL(src, COMSIG_GUN_INTERRUPT_FIRE)
+			return
+
 		if(active_attachable.current_rounds > 0) //If it's still got ammo and stuff.
 			active_attachable.current_rounds--
 			var/obj/item/projectile/bullet = create_bullet(active_attachable.ammo, initial(name))
@@ -1070,10 +1080,10 @@ and you're good to go.
 	This is where the grenade launcher and flame thrower function as attachments.
 	This is also a general check to see if the attachment can fire in the first place.
 	*/
-	var/check_for_attachment_fire = 0
+	var/check_for_attachment_fire = FALSE
 
 	if(active_attachable?.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
-		check_for_attachment_fire = 1
+		check_for_attachment_fire = TRUE
 		if(!(active_attachable.flags_attach_features & ATTACH_PROJECTILE)) //If it's unique projectile, this is where we fire it.
 			if((active_attachable.current_rounds <= 0) && !(active_attachable.flags_attach_features & ATTACH_IGNORE_EMPTY))
 				click_empty(user) //If it's empty, let them know.
@@ -1199,8 +1209,7 @@ and you're good to go.
 
 		shots_fired++
 
-	else // This happens in very rare circumstances when you're moving a lot while burst firing, so I'm going to toss it up to guns jamming.
-		clear_jam(projectile_to_fire,user)
+	else
 		return TRUE
 
 	//>>POST PROCESSING AND CLEANUP BEGIN HERE.<<
@@ -1898,7 +1907,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(!target)
 		target = src.target
 	if(!user)
-		user = src.gun_user
+		user = gun_user
 	return Fire(target, user, params, reflex, dual_wield)
 
 /// Setter proc for fa_firing

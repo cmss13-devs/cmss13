@@ -46,7 +46,7 @@
 	comp.spent = FALSE
 	QDEL_NULL_LIST(comp.vehicles)
 	comp.vehicles = list(
-		new /datum/vehicle_order/tank()
+		/datum/vehicle_order/tank = new /datum/vehicle_order/tank()
 	)
 	comp.allowed_roles = null
 	comp.req_access = list()

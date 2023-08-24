@@ -46415,6 +46415,10 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
+"kky" = (
+/obj/effect/landmark/start/tank_crew,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/tankerbunks)
 "kkO" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -90378,8 +90382,8 @@ cop
 bSv
 onY
 wdf
-cop
-cop
+kky
+kky
 bSv
 bzy
 bKh

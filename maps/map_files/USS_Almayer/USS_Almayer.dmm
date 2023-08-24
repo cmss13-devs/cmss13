@@ -10683,7 +10683,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area)
+/area/almayer/squads/delta)
 "axQ" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -31184,9 +31184,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/lower_engineering)
-"djb" = (
-/turf/open/floor/almayer,
-/area)
 "djc" = (
 /obj/structure/machinery/constructable_frame,
 /turf/open/floor/almayer{
@@ -33103,23 +33100,6 @@
 	id = "Hangar Lockdown";
 	name = "\improper Hangar Lockdown Blast Door"
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "\improper Auxiliary Support Officers Quarters";
-	req_one_access_txt = "37";
-	access_modified = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door"
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -34735,12 +34715,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
-"eFa" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area)
 "eFp" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/head/headband/red{
@@ -36010,12 +35984,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/engine_core)
-"fjC" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "blue"
-	},
-/area)
 "fjO" = (
 /obj/item/tool/wet_sign,
 /obj/effect/decal/cleanable/blood,
@@ -36031,14 +35999,6 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_one_access = null;
 	req_one_access_txt = "19;27"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = null;
-	req_one_access_txt = "37";
-	access_modified = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -46483,9 +46443,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_s)
-"kmU" = (
-/turf/open/floor/plating/plating_catwalk,
-/area)
 "kng" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -56784,19 +56741,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
-"ppn" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "cargo_arrow"
-	},
-/area)
 "pqc" = (
 /obj/structure/machinery/firealarm{
 	dir = 4;
@@ -61347,15 +61291,6 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/lower_medical_medbay)
-"ryC" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/delta{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area)
 "ryG" = (
 /obj/structure/largecrate/random/case,
 /obj/structure/machinery/light{
@@ -75437,12 +75372,6 @@
 	icon_state = "ai_floors"
 	},
 /area/almayer/command/airoom)
-"ydJ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area)
 "ydM" = (
 /obj/structure/window{
 	dir = 8
@@ -113099,7 +113028,7 @@ bSJ
 bSJ
 bSJ
 moM
-ryC
+axh
 bSJ
 bSJ
 bSJ
@@ -113503,7 +113432,7 @@ bHa
 bKc
 bSJ
 arx
-ppn
+asX
 ckX
 bTA
 bTA
@@ -114521,7 +114450,7 @@ bSJ
 atH
 ckQ
 axj
-djb
+bTA
 azF
 hfQ
 buH
@@ -114925,7 +114854,7 @@ bJz
 bSJ
 arD
 atQ
-fjC
+ckX
 axq
 bTA
 bTA
@@ -115738,7 +115667,7 @@ bSJ
 arN
 atX
 aws
-eFa
+cIr
 bTA
 bVb
 bSJ
@@ -119392,7 +119321,7 @@ bSJ
 bSJ
 bSJ
 awN
-ydJ
+axq
 ayN
 azQ
 aAp
@@ -120404,7 +120333,7 @@ fpO
 bIT
 aqv
 bNC
-fjC
+ckX
 avp
 awP
 axZ
@@ -122402,7 +122331,7 @@ bBg
 vPv
 tnY
 alt
-kmU
+bdr
 rAN
 aLT
 kEb

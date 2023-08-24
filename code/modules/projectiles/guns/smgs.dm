@@ -20,6 +20,7 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_SMG
+	start_automatic = TRUE
 
 /obj/item/weapon/gun/smg/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -32,6 +33,7 @@
 /obj/item/weapon/gun/smg/set_gun_config_values()
 	..()
 	movement_onehanded_acc_penalty_mult = 4
+	fa_max_scatter = SCATTER_AMOUNT_TIER_5
 
 //-------------------------------------------------------
 //M39 SMG
@@ -85,6 +87,7 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+	fa_max_scatter = SCATTER_AMOUNT_TIER_10 + 0.5
 
 
 /obj/item/weapon/gun/smg/m39/training
@@ -270,6 +273,8 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+	fa_max_scatter = SCATTER_AMOUNT_TIER_9
+	fa_scatter_peak = 1 // Seems a bit funny, but it works pretty well in the end
 
 /obj/item/weapon/gun/smg/ppsh/with_drum_mag
 	current_mag = /obj/item/ammo_magazine/smg/ppsh/extended
@@ -361,7 +366,6 @@
 		)
 	wield_delay = WIELD_DELAY_NONE
 	aim_slowdown = SLOWDOWN_ADS_NONE
-	start_automatic = TRUE
 
 /obj/item/weapon/gun/smg/mac15/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 20,"rail_x" = 16, "rail_y" = 22, "under_x" = 22, "under_y" = 16, "stock_x" = 22, "stock_y" = 16)
@@ -410,7 +414,6 @@
 		)
 	wield_delay = WIELD_DELAY_MIN
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	start_automatic = TRUE
 	var/jammed = FALSE
 
 /obj/item/weapon/gun/smg/uzi/set_gun_attachment_offsets()
@@ -567,6 +570,7 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_SMG
 	civilian_usable_override = TRUE
+	start_automatic = FALSE
 	var/nailing_speed = 2 SECONDS //Time to apply a sheet for patching. Also haha name. Try to keep sync with soundbyte duration
 	var/repair_sound = 'sound/weapons/nailgun_repair_long.ogg'
 

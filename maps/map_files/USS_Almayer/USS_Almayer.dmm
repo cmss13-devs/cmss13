@@ -26630,15 +26630,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
-"cRc" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/largecrate/random/barrel/white,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hull/upper_hull/u_f_s)
 "cRi" = (
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -33350,7 +33341,6 @@
 	},
 /area/almayer/hallways/vehiclehangar)
 "fuB" = (
-/obj/structure/machinery/light/small,
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
@@ -42068,6 +42058,13 @@
 	icon_state = "mono"
 	},
 /area/almayer/medical/hydroponics)
+"iUT" = (
+/obj/structure/largecrate/random/barrel/red,
+/obj/structure/machinery/light/small,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "iUV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -58788,6 +58785,12 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hull/lower_hull/l_a_s)
+"pIu" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "pIH" = (
 /obj/structure/machinery/door_control{
 	id = "perma_exit";
@@ -90492,7 +90495,7 @@ aag
 pCi
 ext
 rPC
-mUQ
+iUT
 vBm
 rBV
 oPk
@@ -96584,7 +96587,7 @@ akC
 akC
 cVJ
 rPC
-rPC
+pIu
 vxM
 sVy
 mKh
@@ -96785,7 +96788,7 @@ sFf
 obr
 lio
 akC
-cRc
+ake
 rPC
 wcn
 vxM

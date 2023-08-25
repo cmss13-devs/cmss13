@@ -1,6 +1,6 @@
 import { BooleanLike } from '../../common/react';
 import { useBackend } from '../backend';
-import { Box, Button, ColorBox, Flex, Stack, Icon, Input, LabeledList, Section, Table, Divider, ProgressBar } from '../components';
+import { Box, Button, Flex, Stack, Icon, Section, ProgressBar } from '../components';
 import { Window } from '../layouts';
 
 type ScopeData = {
@@ -55,7 +55,7 @@ const OffsetAdjuster = (props, context) => {
               <OffsetDirection dir={Direction.West} />
               <Flex.Item grow={1} basis={0}>
                 <Button
-                  disabled={true}
+                  disabled
                   textAlign="center"
                   color="yellow"
                   lineHeight={3}
@@ -87,7 +87,7 @@ const OffsetDirection = (props, context) => {
         content={DirectionAbbreviation[dir]}
         tooltip={`Adjusts the scope's offset to the ${DirectionAbbreviation[dir]}`}
         disabled={
-          data.valid_offset_dirs.indexOf(dir) == -1 || data.scope_cooldown
+          data.valid_offset_dirs.indexOf(dir) === -1 || data.scope_cooldown
         }
         textAlign="center"
         onClick={() => act('adjust_dir', { offset_dir: dir })}
@@ -116,7 +116,7 @@ const PositionAdjuster = (props, context) => {
               <ScopePosition dir={Direction.West} />
               <Flex.Item grow={1} basis={0}>
                 <Button
-                  disabled={true}
+                  disabled
                   textAlign="center"
                   color="yellow"
                   lineHeight={3}
@@ -148,7 +148,7 @@ const ScopePosition = (props, context) => {
         content={DirectionAbbreviation[dir]}
         tooltip={`Adjusts the scope's position to the ${DirectionAbbreviation[dir]}`}
         disabled={
-          data.valid_adjust_dirs.indexOf(dir) == -1 || data.scope_cooldown
+          data.valid_adjust_dirs.indexOf(dir) === -1 || data.scope_cooldown
         }
         textAlign="center"
         onClick={() => act('adjust_position', { position_dir: dir })}

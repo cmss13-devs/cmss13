@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added a new lockdown system to research."
-  - rscadd: "Added an admin button to interact with above."

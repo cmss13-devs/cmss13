@@ -339,3 +339,10 @@
   realforest2001:
   - rscadd: Gave the ASO ability to modify IDs.
   - rscdel: Removed this from the QM.
+2023-08-25:
+  Huffie56:
+  - bugfix: add a check before people start the long process of unlock the DS so that
+      people don't waste time.
+  realforest2001:
+  - rscadd: Added a new lockdown system to research.
+  - rscadd: Added an admin button to interact with above.

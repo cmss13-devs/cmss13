@@ -32114,19 +32114,19 @@
 	},
 /area/bigredv2/caves/mining)
 "mmz" = (
-/obj/item/ammo_magazine/pistol/skorpion{
+/obj/item/ammo_magazine/smg/bizon{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/weapon/gun/pistol/skorpion{
+/obj/item/weapon/gun/smg/bizon{
 	pixel_x = 1;
 	pixel_y = 11
 	},
-/obj/item/ammo_magazine/pistol/skorpion{
+/obj/item/ammo_magazine/smg/bizon{
 	pixel_x = 11;
 	pixel_y = -3
 	},
-/obj/item/ammo_magazine/pistol/skorpion,
+/obj/item/ammo_magazine/smg/bizon,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},

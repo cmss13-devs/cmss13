@@ -1385,7 +1385,7 @@ const Emergency = (props, context) => {
   let quarters_reason = 'Call for General Quarters.';
   if (quartersCooldown) {
     quarters_reason =
-      'It has not been long enough since last General Quarters call.';
+      'It has not been long enough since the last General Quarters call.';
   }
   const canDistress = alert_level === 2 && !distressCooldown && minimumEvacTime;
   let distress_reason = 'Launch a Distress Beacon.';

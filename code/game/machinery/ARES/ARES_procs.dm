@@ -508,7 +508,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		// -- Emergency Buttons -- //
 		if("general_quarters")
 			if(!COOLDOWN_FINISHED(src, ares_quarters_cooldown))
-				to_chat(usr, SPAN_WARNING("It has not been long enough since last General Quarters call!"))
+				to_chat(usr, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(security_level < SEC_LEVEL_RED)

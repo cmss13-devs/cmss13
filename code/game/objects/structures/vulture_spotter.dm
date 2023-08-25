@@ -32,7 +32,7 @@
 	QDEL_NULL(unscope_action)
 	return ..()
 
-/obj/structure/vulture_spotter_tripod/examine(mob/user)
+/obj/structure/vulture_spotter_tripod/get_examine_text(mob/user)
 	. = ..()
 	if(scope_attached)
 		. += SPAN_NOTICE("You can remove the scope from [src] with a <b>screwdriver</b>.")
@@ -136,6 +136,9 @@
 		user.pixel_y = 0
 
 /obj/structure/vulture_spotter_tripod/proc/on_scope_attach(mob/user, obj/structure/vulture_spotter_tripod/scope)
+	if(scope_attached)
+		return
+
 	user.visible_message(SPAN_NOTICE("[user] attaches [scope] to [src]."), SPAN_NOTICE("You attach [scope] to [src]."))
 	icon_state = "vulture_scope"
 	setDir(user.dir)
@@ -145,6 +148,9 @@
 	qdel(scope)
 
 /obj/structure/vulture_spotter_tripod/proc/on_screwdriver(mob/user)
+	if(!scope_attached)
+		to_chat(user, SPAN_NOTICE("You don't need a screwdriver to pick this up!"))
+		return
 	user.visible_message(SPAN_NOTICE("[user] unscrews the scope from [src] before detaching it."), SPAN_NOTICE("You unscrew the scope from [src], detaching it."))
 	icon_state = initial(icon_state)
 	unscope()

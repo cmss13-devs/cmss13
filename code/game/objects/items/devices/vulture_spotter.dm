@@ -23,7 +23,7 @@
 	item_state = "electronic"
 	flags_atom = FPRINT|CONDUCT
 
-/obj/item/device/vulture_spotter_tripod/examine(mob/user)
+/obj/item/device/vulture_spotter_tripod/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("[src] can be set down by <b>using in-hand</b>.")
 

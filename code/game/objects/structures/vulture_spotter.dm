@@ -77,6 +77,8 @@
 	RegisterSignal(user, list(COMSIG_MOB_PICKUP_ITEM, COMSIG_MOB_RESISTED), PROC_REF(do_unscope))
 	user.client.change_view(scope_zoom, src)
 	user.see_in_dark += darkness_view
+	user.lighting_alpha = 127
+	user.sync_lighting_plane_alpha()
 	user.overlay_fullscreen("vulture_spotter", /atom/movable/screen/fullscreen/vulture/spotter)
 	user.freeze()
 	user.status_flags |= IMMOBILE_ACTION
@@ -207,6 +209,8 @@
 	if(scope_user)
 		var/mob/living/carbon/human/user = scope_user.resolve()
 		user.see_in_dark -= darkness_view
+		user.lighting_alpha = user.default_lighting_alpha
+		user.sync_lighting_plane_alpha()
 		user.clear_fullscreen("vulture_spotter")
 		UnregisterSignal(user, list(COMSIG_MOB_PICKUP_ITEM, COMSIG_MOB_RESISTED))
 		user.pixel_x = 0

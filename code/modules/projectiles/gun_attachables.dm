@@ -1443,6 +1443,8 @@ Defined in conflicts.dm of the #defines folder.
 	scope_element = new(src)
 	gun_user.client.screen += scope_element
 	gun_user.see_in_dark += darkness_view
+	gun_user.lighting_alpha = 127
+	gun_user.sync_lighting_plane_alpha()
 	RegisterSignal(gun, list(
 		COMSIG_ITEM_DROPPED,
 		COMSIG_ITEM_UNWIELD,
@@ -1469,6 +1471,8 @@ Defined in conflicts.dm of the #defines folder.
 	scoper.clear_fullscreen("vulture")
 	scoper.client.screen -= scope_element
 	scoper.see_in_dark -= darkness_view
+	scoper.lighting_alpha = 127
+	scoper.sync_lighting_plane_alpha()
 	QDEL_NULL(scope_element)
 	recalculate_scope_pos()
 	scope_user = null

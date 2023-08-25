@@ -381,7 +381,7 @@
 			return
 		switch(safety)
 			if(EYE_PROTECTION_FLASH)
-				to_chat(user, SPAN_DANGER("You see a brigth light on the corner of your vision."))
+				to_chat(user, SPAN_DANGER("You see a bright light in the corner of your vision."))
 				E.take_damage(rand(0, 1), TRUE)
 				if(E.damage > 10)
 					E.take_damage(rand(3, 5), TRUE)

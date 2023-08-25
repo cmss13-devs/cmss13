@@ -14,7 +14,7 @@
 		//Blood regeneration if there is some space
 		if(blood_volume < max_blood && nutrition >= 1)
 			blood_volume += 0.1 // regenerate blood VERY slowly
-			nutrition -= 0.5
+			nutrition -= 0.25
 		else if(blood_volume > max_blood)
 			blood_volume -= 0.1 // The reverse in case we've gotten too much blood in our body
 			if(blood_volume > limit_blood)

@@ -229,7 +229,8 @@
 	name = "flare"
 	desc = "A red USCM issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = SIZE_SMALL
-	light_range = 5 //As bright as a flashlight, but more disposable. Doesn't burn forever though
+	light_power = 2
+	light_range = 8
 	icon_state = "flare"
 	item_state = "flare"
 	actions = list() //just pull it manually, neckbeard.

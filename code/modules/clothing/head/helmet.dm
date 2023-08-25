@@ -377,11 +377,20 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/// The dmi where the grayscale squad overlays are contained
 	var/helmet_overlay_icon = 'icons/mob/humans/onmob/head_1.dmi'
 
+	///Any visors built into the helmet
 	var/list/built_in_visors = list(new /obj/item/device/helmet_visor)
+
+	///Any visors that have been added into the helmet
 	var/list/inserted_visors = list()
+
+	///Max amount of inserted visors
 	var/max_inserted_visors = 1
 
+	///The current active visor that is shown
 	var/obj/item/device/helmet_visor/active_visor = null
+
+	///Designates a visor type that should start down when initialized
+	var/start_down_visor_type
 
 /obj/item/clothing/head/helmet/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
 	. = ..()
@@ -415,10 +424,16 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			if(holding_human.head == src)
 				new_action.give_to(holding_human)
 
-	if(active_visor)
-		var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in actions
-		if(cycle_action)
-			cycle_action.set_action_overlay(active_visor)
+	if(start_down_visor_type)
+		for(var/obj/item/device/helmet_visor/cycled_visor in (built_in_visors + inserted_visors))
+			if(cycled_visor.type == start_down_visor_type)
+				active_visor = cycled_visor
+				break
+
+		if(active_visor)
+			var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in actions
+			if(cycle_action)
+				cycle_action.set_action_overlay(active_visor)
 
 /obj/item/clothing/head/helmet/marine/Destroy(force)
 	helmet_overlays = null
@@ -720,8 +735,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Has red cross painted on its front."
 	icon_state = "med_helmet"
 	specialty = "M10 pattern medic"
-	built_in_visors = list(/obj/item/device/helmet_visor, /obj/item/device/helmet_visor/medical/advanced)
-	active_visor = /obj/item/device/helmet_visor/medical/advanced
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
+	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced
 
 /obj/item/clothing/head/helmet/marine/covert
 	name = "\improper M10 covert helmet"

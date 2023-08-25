@@ -1630,6 +1630,7 @@
 /datum/ammo/bullet/sniper/anti_materiel/vulture/on_hit_mob(mob/hit_mob, obj/item/projectile/bullet)
 	. = ..()
 	knockback(hit_mob, bullet, 30)
+	hit_mob.apply_effect(3, SLOW)
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/set_bullet_traits()
 	. = ..()

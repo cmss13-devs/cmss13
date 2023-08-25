@@ -4,6 +4,7 @@
 	icon_state = "vulture_tripod"
 	density = TRUE
 	anchored = TRUE
+	unacidable = TRUE
 	/// Weakref to the associated rifle
 	var/datum/weakref/bound_rifle
 	/// Weakref to the scope user, if any
@@ -31,6 +32,12 @@
 		user.unset_interaction()
 	QDEL_NULL(unscope_action)
 	return ..()
+
+/obj/structure/vulture_spotter_tripod/deconstruct(disassembled)
+	. = ..()
+	if(scope_attached && bound_rifle)
+		new /obj/item/device/vulture_spotter_scope(get_turf(src), bound_rifle)
+	new /obj/item/device/vulture_spotter_tripod(get_turf(src))
 
 /obj/structure/vulture_spotter_tripod/get_examine_text(mob/user)
 	. = ..()

@@ -4,6 +4,8 @@
 	icon_state = "vulture_scope"
 	item_state = "electronic"
 	flags_atom = FPRINT|CONDUCT
+	unacidable = TRUE
+	indestructible = TRUE
 	/// A weakref to the corresponding rifle
 	var/datum/weakref/bound_rifle
 
@@ -22,6 +24,8 @@
 	icon_state = "vulture_tripod"
 	item_state = "electronic"
 	flags_atom = FPRINT|CONDUCT
+	unacidable = TRUE
+	indestructible = TRUE
 
 /obj/item/device/vulture_spotter_tripod/get_examine_text(mob/user)
 	. = ..()

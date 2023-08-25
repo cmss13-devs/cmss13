@@ -80,7 +80,7 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO)
 
 	light_power = 3
-	light_range = 6
+	light_range = 4
 	light_system = MOVABLE_LIGHT
 
 	var/flashlight_cooldown = 0 //Cooldown for toggling the light
@@ -196,7 +196,7 @@
 	flags_marine_armor ^= ARMOR_LAMP_ON
 
 	light_holder.set_light_flags(LIGHT_ATTACHED)
-	light_holder.set_light_range(initial(light_range) + 2)
+	light_holder.set_light_range(initial(light_range))
 	light_holder.set_light_power(initial(light_power))
 	light_holder.set_light_on(toggle_on)
 

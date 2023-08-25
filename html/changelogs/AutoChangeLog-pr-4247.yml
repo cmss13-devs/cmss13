@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - code_imp: "Changed backend for the message of walking into an invisible wall to reduce duplication."

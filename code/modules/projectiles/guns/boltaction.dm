@@ -33,6 +33,8 @@
 	aim_slowdown = SLOWDOWN_ADS_RIFLE
 	wield_delay = WIELD_DELAY_NORMAL
 	civilian_usable_override = TRUE
+	unacidable = TRUE // Like other 1-of-a-kind weapons, it can't be gotten rid of that fast
+	indestructible = TRUE
 	var/bolted = TRUE // FALSE IS OPEN, TRUE IS CLOSE
 	var/bolt_delay
 	var/recent_cycle //world.time to see when they last bolted it.

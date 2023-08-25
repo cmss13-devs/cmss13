@@ -105,7 +105,7 @@
 	new /obj/item/clothing/head/ushanka(src)
 	new /obj/item/clothing/mask/rebreather/scarf(src)
 	new /obj/item/clothing/under/rank/veteran/soviet_uniform_01(src)
-	new /obj/item/storage/belt/gun/type47/NY(src)
+	new /obj/item/storage/belt/gun/type47/t73(src)
 
 
 

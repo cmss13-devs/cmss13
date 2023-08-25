@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - balance: "You now lose nutrition when gaining blood rather than losing a ton of nutrition when you have low effective blood"

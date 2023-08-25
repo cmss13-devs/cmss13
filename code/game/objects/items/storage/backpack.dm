@@ -497,7 +497,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	var/obj/structure/transmitter/internal/internal_transmitter
 
 	var/phone_category = PHONE_MARINE
-	var/network_receive = FACTION_MARINE
+	var/list/networks_receive = list(FACTION_MARINE)
 	var/list/networks_transmit = list(FACTION_MARINE)
 	var/base_icon
 
@@ -523,7 +523,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	internal_transmitter.relay_obj = src
 	internal_transmitter.phone_category = phone_category
 	internal_transmitter.enabled = FALSE
-	internal_transmitter.network_receive = network_receive
+	internal_transmitter.networks_receive = networks_receive
 	internal_transmitter.networks_transmit = networks_transmit
 	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, PROC_REF(check_for_ringing))
 	GLOB.radio_packs += src
@@ -593,7 +593,8 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		. = ..()
 
 /obj/item/storage/backpack/marine/satchel/rto/upp_net
-	network_receive = FACTION_UPP
+	name = "\improper UPP Radio Telephone Pack"
+	networks_receive = list(FACTION_UPP)
 	networks_transmit = list(FACTION_UPP)
 
 /obj/item/storage/backpack/marine/satchel/rto/small
@@ -602,7 +603,8 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 
 /obj/item/storage/backpack/marine/satchel/rto/small/upp_net
-	network_receive = FACTION_UPP
+	name = "\improper UPP Radio Telephone Pack"
+	networks_receive = list(FACTION_UPP)
 	networks_transmit = list(FACTION_UPP)
 	phone_category = PHONE_UPP_SOLDIER
 

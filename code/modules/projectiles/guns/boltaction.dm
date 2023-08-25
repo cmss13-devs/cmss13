@@ -127,7 +127,7 @@
 	fire_sound = 'sound/weapons/gun_vulture_fire.ogg'
 	open_bolt_sound ='sound/weapons/handling/gun_vulture_bolt_eject.ogg'
 	close_bolt_sound ='sound/weapons/handling/gun_vulture_bolt_close.ogg'
-	flags_equip_slot = SLOT_BACK
+	flags_equip_slot = SLOT_BACK|SLOT_BLOCK_SUIT_STORE
 	w_class = SIZE_LARGE
 	force = 5
 	flags_gun_features = NONE

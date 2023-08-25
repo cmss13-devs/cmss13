@@ -634,6 +634,8 @@ cases. Override_icon_state should be a list.*/
 					return FALSE
 				if(flags_equip_slot & SLOT_SUIT_STORE)
 					return TRUE
+				if(flags_equip_slot & SLOT_BLOCK_SUIT_STORE)
+					return FALSE
 				if(!H.wear_suit && (WEAR_JACKET in mob_equip))
 					if(!disable_warning)
 						to_chat(H, SPAN_WARNING("You need a suit before you can attach this [name]."))

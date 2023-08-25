@@ -1,0 +1,5 @@
+author: "Diegoflores31"
+delete-after: True
+changes:
+  - balance: "Masterkey and underbarrel extinguisher now must be wielded in order to be used."
+  - bugfix: "Underbarrel extinguisher no longer bypass wielding restrictions on flamers."

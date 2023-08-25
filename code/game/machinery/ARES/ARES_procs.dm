@@ -511,8 +511,8 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 				to_chat(usr, SPAN_WARNING("It has not been long enough since last General Quarters call!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			if(security_level != SEC_LEVEL_RED && security_level != SEC_LEVEL_DELTA)
-				set_security_level(2, no_sound = TRUE, announce = FALSE)
+			if(security_level < SEC_LEVEL_RED)
+				set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
 			log_game("[key_name(usr)] has called for general quarters via ARES.")
 			message_admins("[key_name_admin(usr)] has called for general quarters via ARES.")

@@ -240,11 +240,10 @@
 
 	if(!found_limb || !found_hand)
 		return
-
+	found_limb.take_damage((found_limb.status & LIMB_BROKEN) ? rand(25, 30) : rand(10, 15))
+	found_hand.take_damage((found_hand.status & LIMB_BROKEN) ? rand(25, 30) : rand(10, 15))
 	found_limb.fracture(100)
 	found_hand.fracture(100)
-	found_limb.take_damage(rand(10, 15))
-	found_hand.take_damage(rand(10, 15))
 
 	for(var/obj/limb/limb as anything in list(found_limb, found_hand))
 		if(!(limb.status & LIMB_SPLINTED_INDESTRUCTIBLE) && (limb.status & LIMB_SPLINTED)) //If they have it splinted, the splint won't hold.

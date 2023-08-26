@@ -762,16 +762,6 @@
 	default_name = "shallow ocean"
 	},
 /area/varadero/exterior/pool)
-"aAX" = (
-/obj/structure/machinery/landinglight/ds1/spoke{
-	pixel_y = -5;
-	pixel_x = 13
-	},
-/obj/docking_port/stationary/marine_dropship/lz2{
-	name = "LZ2 - Palm Airfield"
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/exterior/lz2_near)
 "aAY" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -33963,6 +33953,12 @@
 /obj/item/lightstick/variant/planted,
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
+"vGV" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "LZ2 - Palm Airfield"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "vHs" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/records)
@@ -49964,7 +49960,7 @@ bZU
 bZU
 bZU
 bZU
-oXw
+bZU
 xsH
 mrC
 wMw
@@ -50864,7 +50860,7 @@ bZU
 bZU
 bZU
 bZU
-bZU
+oXw
 bZU
 bZU
 bZU
@@ -63426,7 +63422,7 @@ wlB
 wlB
 lTg
 pXT
-aAX
+pXT
 rhu
 wlB
 lTg
@@ -64326,7 +64322,7 @@ wlB
 wlB
 wlB
 wlB
-wlB
+vGV
 wlB
 wlB
 wlB

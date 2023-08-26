@@ -230,7 +230,7 @@
 	desc = "A red USCM issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = SIZE_SMALL
 	light_power = 2
-	light_range = 8
+	light_range = 7
 	icon_state = "flare"
 	item_state = "flare"
 	actions = list() //just pull it manually, neckbeard.
@@ -371,7 +371,6 @@
 
 /// Flares deployed by a flare gun
 /obj/item/device/flashlight/flare/on/gun
-	light_range = 7
 
 //Special flare subtype for the illumination flare shell
 //Acts like a flare, just even stronger, and set length
@@ -380,7 +379,6 @@
 	desc = "It's really bright, and unreachable."
 	icon_state = "" //No sprite
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	light_range = 7 //Way brighter than most lights
 	show_flame = FALSE
 
 /obj/item/device/flashlight/flare/on/illumination/Initialize()
@@ -401,7 +399,6 @@
 	name = "burning star shell ash"
 	desc = "Bright burning ash from a Star Shell 40mm. Don't touch, or it'll burn ya'."
 	icon_state = "starshell_ash"
-	light_range = 7
 	anchored = TRUE//can't be picked up
 	ammo_datum = /datum/ammo/flare/starshell
 	show_flame = FALSE

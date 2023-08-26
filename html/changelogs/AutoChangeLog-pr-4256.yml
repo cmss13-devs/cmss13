@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - bugfix: "fixed a bypass to allow ghost scan health when it should not be allowed"

@@ -1,0 +1,4 @@
+author: "AnuvKH"
+delete-after: True
+changes:
+  - maptweak: "Fixed deep ocean around NV monsoon, removed incend ammo."

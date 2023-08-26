@@ -2409,7 +2409,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/obj/item/weapon/gun/attached_gun = loc
 
 	if(!(attached_gun.flags_item & WIELDED))
-		to_chat(user, SPAN_WARNING("You must wield \the [attached_gun] to fire \the [src]!"))
+		to_chat(user, SPAN_WARNING("You must wield [attached_gun] to fire [src]!"))
 		return
 
 	if(current_rounds > round_usage_per_tile && ..())
@@ -2555,6 +2555,9 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/extinguisher/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
 	if(!internal_extinguisher)
 		return
+	if(!(gun.flags_item & WIELDED))
+		to_chat(user, SPAN_WARNING("You must wield [gun] to fire [src]!"))
+		return
 	if(..())
 		return internal_extinguisher.afterattack(target, user)
 
@@ -2615,7 +2618,7 @@ Defined in conflicts.dm of the #defines folder.
 		return
 
 	if((gun.flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(gun.flags_item & WIELDED))
-		to_chat(user, SPAN_WARNING("You need a more secure grip to fire this weapon!"))
+		to_chat(user, SPAN_WARNING("You must wield [gun] to fire [src]!"))
 		return
 
 	if(gun.flags_gun_features & GUN_TRIGGER_SAFETY)

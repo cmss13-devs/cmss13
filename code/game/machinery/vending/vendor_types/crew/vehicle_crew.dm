@@ -16,7 +16,6 @@
 	vend_sound = 'sound/machines/medevac_extend.ogg'
 
 	var/selected_vehicle
-	var/budget_points = 0
 	var/available_categories = VEHICLE_ALL_AVAILABLE
 
 	available_points_to_display = 0
@@ -91,7 +90,7 @@
 	. += ui_static_data(user)
 
 	if(supply_controller.tank_points) //we steal points from supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
-		available_points_to_display = supply_controller.tank_points
+		available_points_to_display += supply_controller.tank_points
 		supply_controller.tank_points = 0
 	.["current_m_points"] = available_points_to_display
 
@@ -102,7 +101,7 @@
 		var/prod_available = FALSE
 		var/p_cost = myprod[2]
 		var/avail_flag = myprod[4]
-		if(budget_points >= p_cost && (!avail_flag || available_categories & avail_flag))
+		if(available_points_to_display >= p_cost && (!avail_flag || available_categories & avail_flag))
 			prod_available = TRUE
 		stock_values += list(prod_available)
 
@@ -121,7 +120,7 @@
 			to_chat(H, SPAN_WARNING("Not enough points."))
 			vend_fail()
 			return FALSE
-		budget_points -= L[2]
+		available_points_to_display -= L[2]
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(mob/living/carbon/human/H)
 	var/turf/T = get_turf(src)

@@ -38,10 +38,6 @@
 	if(pulledby)
 		pulledby.stop_pulling()
 	QDEL_NULL(launch_metadata)
-
-	if(opacity)
-		RemoveElement(/datum/element/light_blocking)
-
 	QDEL_NULL(em_block)
 
 	if(loc)

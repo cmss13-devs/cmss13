@@ -146,8 +146,7 @@ SUBSYSTEM_DEF(weather)
 	curr_master_turf_overlay.icon_state = weather_event_instance.turf_overlay_icon_state
 	curr_master_turf_overlay.alpha = weather_event_instance.turf_overlay_alpha
 	for(var/area/area as anything in weather_areas)
-		for(var/area/subarea as anything in area.related)
-			subarea.overlays += curr_master_turf_overlay
+		area.overlays += curr_master_turf_overlay
 
 	update_mobs_weather()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_WEATHER_CHANGE)
@@ -169,8 +168,7 @@ SUBSYSTEM_DEF(weather)
 		message_admins(SPAN_BLUE("Weather Event of unknown type [weather_event_type] ending after [DisplayTimeText(world.time - current_event_start_time)]."))
 
 	for(var/area/area as anything in weather_areas)
-		for(var/area/subarea as anything in area.related)
-			subarea.overlays -= curr_master_turf_overlay
+		area.overlays -= curr_master_turf_overlay
 
 	if (map_holder.no_weather_turf_icon_state)
 		curr_master_turf_overlay.icon_state = map_holder.no_weather_turf_icon_state

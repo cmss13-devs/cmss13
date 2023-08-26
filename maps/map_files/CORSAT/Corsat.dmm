@@ -580,10 +580,6 @@
 	},
 /area/corsat/gamma/residential/researcher)
 "abV" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	dwidth = 1;
-	name = "Gamma Landing Zone"
-	},
 /turf/open/floor/plating{
 	dir = 10;
 	icon_state = "warnplate"
@@ -1887,10 +1883,6 @@
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afN" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	dwidth = 1;
-	name = "Sigma Landing Zone"
-	},
 /turf/open/floor/plating{
 	dir = 10;
 	icon_state = "warnplate"
@@ -37481,6 +37473,13 @@
 	icon_state = "purplewhite"
 	},
 /area/corsat/gamma/biodome/virology)
+"drp" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	dwidth = 1;
+	name = "Gamma Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/corsat/gamma/hangar)
 "drv" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/gm/river/desert/shallow{
@@ -38250,6 +38249,13 @@
 	icon_state = "purplewhite"
 	},
 /area/corsat/omega/complex)
+"dUj" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	dwidth = 1;
+	name = "Sigma Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/corsat/sigma/hangar)
 "dUn" = (
 /obj/structure/machinery/camera/autoname{
 	network = list("gamma")
@@ -94404,7 +94410,7 @@ aaG
 aaG
 aaG
 aaG
-aaG
+drp
 aaG
 aaG
 aaG
@@ -121917,7 +121923,7 @@ afi
 afi
 afi
 afi
-afi
+dUj
 afi
 afi
 afi

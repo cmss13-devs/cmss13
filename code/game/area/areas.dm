@@ -28,7 +28,6 @@
 	var/unique = TRUE
 
 	var/has_gravity = 1
-	var/list/related // the other areas of the same type as this
 // var/list/lights // list of all lights on this area
 	var/list/all_doors = list() //Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/air_doors_activated = 0
@@ -88,7 +87,6 @@
 		GLOB.areas_by_type[type] = src
 	..()
 
-	related = list(src)
 	initialize_power()
 
 /area/Initialize(mapload, ...)
@@ -134,13 +132,12 @@
 		poweralm = state
 		if(istype(source)) //Only report power alarms on the z-level where the source is located.
 			var/list/cameras = list()
-			for (var/area/RA in related)
-				for (var/obj/structure/machinery/camera/C in RA)
-					cameras += C
-					if(state == 1)
-						C.network.Remove(CAMERA_NET_POWER_ALARMS)
-					else
-						C.network.Add(CAMERA_NET_POWER_ALARMS)
+			for (var/obj/structure/machinery/camera/C in src)
+				cameras += C
+				if(state == 1)
+					C.network.Remove(CAMERA_NET_POWER_ALARMS)
+				else
+					C.network.Add(CAMERA_NET_POWER_ALARMS)
 			for (var/mob/living/silicon/aiPlayer in ai_mob_list)
 				if(aiPlayer.z == source.z)
 					if (state == 1)
@@ -160,10 +157,9 @@
 // return 0 //redudant
 
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
-	for (var/area/RA in related)
-		for (var/obj/structure/machinery/alarm/AA in RA)
-			if ( !(AA.inoperable()) && !AA.shorted)
-				danger_level = max(danger_level, AA.danger_level)
+	for (var/obj/structure/machinery/alarm/AA in src)
+		if ( !(AA.inoperable()) && !AA.shorted)
+			danger_level = max(danger_level, AA.danger_level)
 
 	if(danger_level != atmosalm)
 		if (danger_level < 1 && atmosalm >= 1)
@@ -171,9 +167,8 @@
 			air_doors_open()
 
 		if (danger_level < 2 && atmosalm >= 2)
-			for(var/area/RA in related)
-				for(var/obj/structure/machinery/camera/C in RA)
-					C.network.Remove(CAMERA_NET_ATMOSPHERE_ALARMS)
+			for(var/obj/structure/machinery/camera/C in src)
+				C.network.Remove(CAMERA_NET_ATMOSPHERE_ALARMS)
 			for(var/mob/living/silicon/aiPlayer in ai_mob_list)
 				aiPlayer.cancelAlarm("Atmosphere", src, src)
 			for(var/obj/structure/machinery/computer/station_alert/a in machines)
@@ -181,11 +176,10 @@
 
 		if (danger_level >= 2 && atmosalm < 2)
 			var/list/cameras = list()
-			for(var/area/RA in related)
-				//updateicon()
-				for(var/obj/structure/machinery/camera/C in RA)
-					cameras += C
-					C.network.Add(CAMERA_NET_ATMOSPHERE_ALARMS)
+			//updateicon()
+			for(var/obj/structure/machinery/camera/C in src)
+				cameras += C
+				C.network.Add(CAMERA_NET_ATMOSPHERE_ALARMS)
 			for(var/mob/living/silicon/aiPlayer in ai_mob_list)
 				aiPlayer.triggerAlarm("Atmosphere", src, cameras, src)
 			for(var/obj/structure/machinery/computer/station_alert/a in machines)
@@ -193,9 +187,8 @@
 			air_doors_close()
 
 		atmosalm = danger_level
-		for(var/area/RA in related)
-			for (var/obj/structure/machinery/alarm/AA in RA)
-				AA.update_icon()
+		for (var/obj/structure/machinery/alarm/AA in src)
+			AA.update_icon()
 
 		return 1
 	return 0
@@ -225,7 +218,6 @@
 	if(name == "Space") //no fire alarms in space
 		return
 	if(!(flags_alarm_state & ALARM_WARNING_FIRE))
-		flags_alarm_state |= ALARM_WARNING_FIRE
 		flags_alarm_state |= ALARM_WARNING_FIRE //used for firedoor checks
 		updateicon()
 		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -236,10 +228,9 @@
 				else if(!D.density)
 					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 		var/list/cameras = list()
-		for(var/area/RA in related)
-			for (var/obj/structure/machinery/camera/C in RA)
-				cameras.Add(C)
-				C.network.Add(CAMERA_NET_FIRE_ALARMS)
+		for (var/obj/structure/machinery/camera/C in src)
+			cameras.Add(C)
+			C.network.Add(CAMERA_NET_FIRE_ALARMS)
 		for (var/mob/living/silicon/ai/aiPlayer in ai_mob_list)
 			aiPlayer.triggerAlarm("Fire", src, cameras, src)
 		for (var/obj/structure/machinery/computer/station_alert/a in machines)
@@ -247,7 +238,6 @@
 
 /area/proc/firereset()
 	if(flags_alarm_state & ALARM_WARNING_FIRE)
-		flags_alarm_state &= ~ALARM_WARNING_FIRE
 		flags_alarm_state &= ~ALARM_WARNING_FIRE //used for firedoor checks
 		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		updateicon()
@@ -257,9 +247,8 @@
 					D.nextstate = OPEN
 				else if(D.density)
 					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
-		for(var/area/RA in related)
-			for (var/obj/structure/machinery/camera/C in RA)
-				C.network.Remove(CAMERA_NET_FIRE_ALARMS)
+		for (var/obj/structure/machinery/camera/C in src)
+			C.network.Remove(CAMERA_NET_FIRE_ALARMS)
 		for (var/mob/living/silicon/ai/aiPlayer in ai_mob_list)
 			aiPlayer.cancelAlarm("Fire", src, src)
 		for (var/obj/structure/machinery/computer/station_alert/a in machines)
@@ -341,12 +330,11 @@
 
 // called when power status changes
 /area/proc/power_change()
-	for(var/area/RA in related)
-		for(var/obj/structure/machinery/M in RA) // for each machine in the area
-			if(!M.gc_destroyed)
-				M.power_change() // reverify power status (to update icons etc.)
-		if(flags_alarm_state)
-			RA.updateicon()
+	for(var/obj/structure/machinery/M in src) // for each machine in the area
+		if(!M.gc_destroyed)
+			M.power_change() // reverify power status (to update icons etc.)
+	if(flags_alarm_state)
+		updateicon()
 
 /area/proc/usage(chan, reset_oneoff = FALSE)
 	var/used = 0
@@ -413,24 +401,21 @@
 
 	A.has_gravity = gravitystate
 
-	for(var/area/SubA in A.related)
-		SubA.has_gravity = gravitystate
-
-		if(gravitystate)
-			for(var/mob/living/carbon/human/M in SubA)
-				thunk(M)
-			for(var/mob/M1 in SubA)
-				M1.make_floating(0)
-		else
-			for(var/mob/M in SubA)
-				if(M.Check_Dense_Object() && istype(src,/mob/living/carbon/human/))
-					var/mob/living/carbon/human/H = src
-					if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING))  //magboots + dense_object = no floaty effect
-						H.make_floating(0)
-					else
-						H.make_floating(1)
+	if(gravitystate)
+		for(var/mob/living/carbon/human/M in A)
+			thunk(M)
+		for(var/mob/M1 in A)
+			M1.make_floating(0)
+	else
+		for(var/mob/M in A)
+			if(M.Check_Dense_Object() && istype(src,/mob/living/carbon/human/))
+				var/mob/living/carbon/human/H = src
+				if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING))  //magboots + dense_object = no floaty effect
+					H.make_floating(0)
 				else
-					M.make_floating(1)
+					H.make_floating(1)
+			else
+				M.make_floating(1)
 
 /area/proc/thunk(M)
 	if(istype(get_turf(M), /turf/open/space)) // Can't fall onto nothing.

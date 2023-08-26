@@ -1,6 +1,10 @@
 /obj/docking_port/mobile/marine_dropship
 	width = 11
 	height = 21
+
+	dwidth = 5
+	dheight = 10
+
 	preferred_direction = SOUTH
 	callTime = DROPSHIP_TRANSIT_DURATION
 	rechargeTime = SHUTTLE_RECHARGE
@@ -157,6 +161,9 @@
 	dir = NORTH
 	width = 11
 	height = 21
+	dwidth = 5
+	dheight = 10
+
 	var/list/landing_lights = list()
 	var/auto_open = FALSE
 	var/landing_lights_on = FALSE

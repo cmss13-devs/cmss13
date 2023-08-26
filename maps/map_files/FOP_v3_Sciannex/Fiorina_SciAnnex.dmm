@@ -6552,6 +6552,12 @@
 	icon_state = "blue_plate"
 	},
 /area/fiorina/station/botany)
+"dYp" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "Hangar Landing Zone"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/lz/near_lzI)
 "dYr" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/explosive/grenade/incendiary/molotov,
@@ -16465,11 +16471,6 @@
 	icon_state = "bluefull"
 	},
 /area/fiorina/station/power_ring)
-"kfE" = (
-/obj/structure/machinery/floodlight/landing/floor,
-/obj/docking_port/stationary/marine_dropship/lz2,
-/turf/open/floor/plating/prison,
-/area/fiorina/lz/near_lzII)
 "kfF" = (
 /obj/item/stack/sheet/metal,
 /obj/item/stack/sheet/metal,
@@ -29187,13 +29188,6 @@
 	icon_state = "blue_plate"
 	},
 /area/fiorina/station/botany)
-"saV" = (
-/obj/structure/machinery/floodlight/landing/floor,
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Hangar Landing Zone"
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/lz/near_lzI)
 "sbf" = (
 /obj/effect/landmark/corpsespawner/prisoner,
 /turf/open/gm/river{
@@ -38477,6 +38471,10 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/civres_blue)
+"xYg" = (
+/obj/docking_port/stationary/marine_dropship/lz2,
+/turf/open/floor/plating/prison,
+/area/fiorina/lz/near_lzII)
 "xYA" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -72144,7 +72142,7 @@ wSm
 wSm
 wSm
 wSm
-kfE
+wQN
 eAM
 wSm
 wSm
@@ -73194,7 +73192,7 @@ wSm
 wSm
 wSm
 wSm
-wSm
+xYg
 wSm
 wSm
 wSm
@@ -87961,7 +87959,7 @@ xeO
 xeO
 xeO
 xeO
-saV
+iOa
 nBR
 hlK
 hKI
@@ -89011,7 +89009,7 @@ xeO
 xeO
 xeO
 xeO
-xeO
+dYp
 xeO
 xeO
 xeO

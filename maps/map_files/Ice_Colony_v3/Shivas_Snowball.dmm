@@ -7354,10 +7354,6 @@
 /obj/structure/machinery/space_heater,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
-"boD" = (
-/obj/docking_port/stationary/marine_dropship/lz1,
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/exterior/lz1_valley)
 "boS" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassbb_3"
@@ -18064,6 +18060,10 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/bar)
+"mXl" = (
+/obj/docking_port/stationary/marine_dropship/lz1,
+/turf/open/floor/plating,
+/area/shiva/exterior/lz1_valley)
 "mXq" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -19947,6 +19947,12 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/medseceng)
+"pkJ" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "Research Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/shiva/exterior/lz2_fortress)
 "pkK" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva{
@@ -22592,15 +22598,6 @@
 /obj/item/weapon/gun/rifle/m41aMK1,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
-"rZt" = (
-/obj/structure/machinery/landinglight/ds2/spoke,
-/obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Research Landing Zone"
-	},
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/exterior/lz2_fortress)
 "rZC" = (
 /obj/structure/bed,
 /obj/effect/landmark/objective_landmark/medium,
@@ -31019,7 +31016,7 @@ gkY
 gkY
 mFm
 mFm
-rZt
+sxD
 cBF
 mhP
 mFm
@@ -31819,7 +31816,7 @@ gkY
 gkY
 gkY
 gkY
-gkY
+pkJ
 gkY
 gkY
 gkY
@@ -59314,7 +59311,7 @@ cQW
 cQW
 kLM
 iQq
-boD
+iQq
 kLM
 kLM
 lNg
@@ -60114,7 +60111,7 @@ cQW
 cQW
 cQW
 cQW
-cQW
+mXl
 cQW
 cQW
 cQW

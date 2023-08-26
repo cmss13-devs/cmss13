@@ -175,7 +175,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 					var/area/holo_area = get_area(src)
 					var/area/eye_area = get_area(master.eyeobj)
 
-					if(eye_area in holo_area.related)
+					if(eye_area == holo_area)
 						return 1
 
 		clear_holo()//If not, we want to get rid of the hologram.

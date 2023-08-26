@@ -815,7 +815,7 @@ Defined in conflicts.dm of the #defines folder.
 	switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
 		if(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA)
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
-		if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
+		if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO, MAP_KHAMI_BARRENS)
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
 		if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
@@ -1623,7 +1623,7 @@ Defined in conflicts.dm of the #defines folder.
 	switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
 		if(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA)
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
-		if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
+		if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO, MAP_KHAMI_BARRENS)
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
 		if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
@@ -1650,7 +1650,7 @@ Defined in conflicts.dm of the #defines folder.
 	switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
 		if(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA)
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
-		if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
+		if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO, MAP_KHAMI_BARRENS)
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
 		if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon

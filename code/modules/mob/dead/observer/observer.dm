@@ -558,7 +558,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/mob/living/carbon/human/original_human = mind.original
 
-	if(!original_human.check_tod() || !original_human.is_revivable() || !can_reenter_corpse)
+	if((original_human.stat == DEAD && !original_human.check_tod() || !original_human.is_revivable()) || !can_reenter_corpse)
 		view_health_scan(target)
 		return
 

@@ -1,0 +1,5 @@
+author: "Diegoflores31"
+delete-after: True
+changes:
+  - bugfix: "Glasses with flash protection can no longer be used for welding."
+  - refactor: "Adds defines for negative welding protection."

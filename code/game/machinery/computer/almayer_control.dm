@@ -230,7 +230,7 @@
 			for(var/client/admin_client as anything in GLOB.admins)
 				if((R_ADMIN|R_MOD) & admin_client.admin_holder.rights)
 					admin_client << 'sound/effects/sos-morse-code.ogg'
-			message_admins("[key_name(usr)] has requested a Distress Beacon! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
+			message_admins("[key_name(usr)] has requested a Distress Beacon! ([SSticker.mode.ert_dispatched ? SPAN_RED("A random ERT was dispatched previously.") : SPAN_GREEN("No previous random ERT dispatched.")]) [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
 			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 
 			COOLDOWN_START(src, cooldown_request, COOLDOWN_COMM_REQUEST)

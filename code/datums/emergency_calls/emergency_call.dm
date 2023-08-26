@@ -8,6 +8,7 @@
 /datum/game_mode
 	var/list/datum/emergency_call/all_calls = list() //initialized at round start and stores the datums.
 	var/datum/emergency_call/picked_calls[] = list() //Which distress calls are currently active
+	var/ert_dispatched = FALSE
 
 /datum/game_mode/proc/ares_online()
 	var/name = "ARES Online"
@@ -106,6 +107,7 @@
 			give_action(M, /datum/action/join_ert, src)
 
 /datum/game_mode/proc/activate_distress()
+	ert_dispatched = TRUE
 	var/datum/emergency_call/random_call = get_random_call()
 	if(!istype(random_call, /datum/emergency_call)) //Something went horribly wrong
 		return

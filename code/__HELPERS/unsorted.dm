@@ -1251,13 +1251,8 @@ var/global/image/action_purple_power_up
 	var/area/A = GLOB.areas_by_type[areatype]
 
 	// Fix it up with /area/var/related due to lighting shenanigans
-	var/list/area/LA
-	if(!length(A.related))
-		LA = list(A)
-	else LA = A.related
-	for(var/area/Ai in LA)
-		for(var/turf/T in Ai)
-			turfs += T
+	for(var/turf/T in A)
+		turfs += T
 
 	return turfs
 

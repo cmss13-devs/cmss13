@@ -1314,11 +1314,10 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	if(cell && cell.charge >= 20)
 		cell.use(20)
 		spawn(0)
-			for(var/area/A in area.related)
-				for(var/obj/structure/machinery/light/L in A)
-					L.on = 1
-					L.broken()
-					sleep(1)
+			for(var/obj/structure/machinery/light/L in area)
+				L.on = 1
+				L.broken()
+				sleep(1)
 
 /obj/structure/machinery/power/apc/Destroy()
 	area.power_light = 0

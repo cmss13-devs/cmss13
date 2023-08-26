@@ -201,11 +201,10 @@
 /obj/structure/machinery/alarm/proc/elect_master()
 	if(!alarm_area)
 		return 0
-	for (var/area/A in alarm_area.related)
-		for (var/obj/structure/machinery/alarm/AA in A)
-			if (!(AA.inoperable()))
-				alarm_area.master_air_alarm = AA
-				return 1
+	for (var/obj/structure/machinery/alarm/AA in alarm_area)
+		if (!(AA.inoperable()))
+			alarm_area.master_air_alarm = AA
+			return 1
 	return 0
 
 /obj/structure/machinery/alarm/proc/get_danger_level(current_value, list/danger_levels)
@@ -312,9 +311,8 @@
 /obj/structure/machinery/alarm/proc/apply_mode()
 	//propagate mode to other air alarms in the area
 	//TODO: make it so that players can choose between applying the new mode to the room they are in (related area) vs the entire alarm area
-	for (var/area/RA in alarm_area.related)
-		for (var/obj/structure/machinery/alarm/AA in RA)
-			AA.mode = mode
+	for (var/obj/structure/machinery/alarm/AA in alarm_area)
+		AA.mode = mode
 
 	switch(mode)
 		if(AALARM_MODE_SCRUBBING)

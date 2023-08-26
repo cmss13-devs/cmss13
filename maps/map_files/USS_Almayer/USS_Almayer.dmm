@@ -34597,6 +34597,11 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "mechdoor";
+	name = "Vehicle Bay One";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -45627,6 +45632,18 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
+"jwj" = (
+/obj/structure/largecrate/supply/supplies/mre,
+/obj/structure/machinery/door_control/railings{
+	pixel_y = -6;
+	id = "mechdoor";
+	pixel_x = -31
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/hallways/port_hallway)
 "jxi" = (
 /obj/structure/machinery/sleep_console,
 /turf/open/floor/almayer{
@@ -51268,6 +51285,15 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hull/lower_hull/l_a_p)
+"mfK" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101;
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "mfM" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/map_item,
@@ -53875,10 +53901,6 @@
 /area/almayer/hull/lower_hull/l_f_p)
 "nrL" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera"
-	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
 "nrN" = (
@@ -61674,6 +61696,11 @@
 /area/almayer/living/port_emb)
 "qTz" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "mechdoor";
+	name = "Vehicle Bay One";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -63521,15 +63548,6 @@
 	pixel_y = -28
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/port_hallway)
-"rKF" = (
-/obj/structure/prop/mech/mech_parts/chassis/firefighter,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
 /area/almayer/hallways/port_hallway)
 "rKO" = (
 /obj/structure/disposalpipe/segment{
@@ -68185,7 +68203,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/prop/mech/mech_parts/chassis/firefighter,
+/obj/structure/prop/mech/mech_parts/chassis/durand,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -115463,7 +115481,7 @@ sli
 bGb
 pDf
 bGb
-xtc
+jwj
 eSD
 mIf
 ubo
@@ -117292,7 +117310,7 @@ lyU
 bGb
 aMC
 bJz
-rKF
+tXn
 bJz
 eYp
 cjf
@@ -126629,7 +126647,7 @@ bGb
 bGb
 vuR
 vuR
-vuR
+mfK
 vTK
 aaa
 aaa

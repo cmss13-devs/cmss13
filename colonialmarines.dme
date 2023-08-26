@@ -2343,6 +2343,7 @@
 #include "code\modules\vox\vox_sounds\vox.dm"
 #include "code\modules\vox\vox_sounds\vox_military.dm"
 #include "fray-marines\code\__DEFINES\xeno.dm"
+#include "fray-marines\code\cm_tech\techs\marine\tier2\tank.dm"
 #include "fray-marines\code\datums\skills.dm"
 #include "fray-marines\code\datums\supply_packs\gear.dm"
 #include "fray-marines\code\game\jobs\command\auxiliary\mech_crew.dm"

@@ -26,10 +26,6 @@
 /obj/structure/shuttle/part/dropship1/transparent/nose_top_right,
 /turf/template_noop,
 /area/shuttle/drop1/sulaco)
-"bM" = (
-/obj/docking_port/mobile/marine_dropship/alamo,
-/turf/template_noop,
-/area/template_noop)
 "cr" = (
 /obj/structure/machinery/camera/autoname/almayer/dropship_one{
 	dir = 8;
@@ -544,6 +540,7 @@
 	},
 /area/shuttle/drop1/sulaco)
 "OK" = (
+/obj/docking_port/mobile/marine_dropship/alamo,
 /turf/closed/shuttle/dropship1{
 	icon_state = "53"
 	},
@@ -749,7 +746,7 @@ iz
 EN
 mb
 mb
-bM
+mb
 "}
 (2,1,1) = {"
 mb

@@ -18022,9 +18022,6 @@
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8
 	},
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Hangar Landing Zone"
-	},
 /turf/open/floor/plating/icefloor{
 	dir = 8;
 	icon_state = "warnplate"
@@ -19847,13 +19844,6 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/underground/requesition/lobby)
-"bhs" = (
-/obj/docking_port/stationary/marine_dropship/lz2,
-/turf/open/floor/plating/icefloor{
-	dir = 10;
-	icon_state = "warnplate"
-	},
-/area/ice_colony/underground/hangar)
 "bht" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "warnplate"
@@ -34504,6 +34494,10 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/research)
+"cEG" = (
+/obj/docking_port/stationary/marine_dropship/lz2,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
 "cVM" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -34908,6 +34902,12 @@
 	icon_state = "darkbrown2"
 	},
 /area/ice_colony/surface/hangar/alpha)
+"sto" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "Hangar Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/ice_colony/exterior/surface/landing_pad)
 "sKH" = (
 /obj/structure/surface/table,
 /obj/item/device/analyzer,
@@ -52192,7 +52192,7 @@ baJ
 baJ
 baJ
 baJ
-bhs
+bhV
 bhF
 bht
 aZW
@@ -53592,7 +53592,7 @@ aZW
 aZW
 aZW
 aZW
-aZW
+cEG
 aZW
 aZW
 aZW
@@ -90516,7 +90516,7 @@ aWp
 aWp
 aWp
 aWp
-aWp
+sto
 aWp
 aWp
 aWp

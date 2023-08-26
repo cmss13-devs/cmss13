@@ -68,7 +68,7 @@
 #define GUN_ANTIQUE (1<<13)
 /// Whether the gun has been fired by its current user (reset upon `dropped()`)
 #define GUN_RECOIL_BUILDUP (1<<14)
-/// support weapon, bipod will grant IFF
+/// support weapon, bipod will grant autofire
 #define GUN_SUPPORT_PLATFORM (1<<15)
 /// No gun description, only base desc
 #define GUN_NO_DESCRIPTION (1<<16)
@@ -90,6 +90,8 @@
 #define ATTACH_IGNORE_EMPTY (1<<5)
 /// This attachment should activate if you attack() with it attached.
 #define ATTACH_MELEE (1<<6)
+/// Override for attachies so you can fire them with a single hand . ONLY FOR PROJECTILES!!
+#define ATTACH_WIELD_OVERRIDE (1<<7)
 
 //Ammo magazine defines, for flags_magazine
 
@@ -99,6 +101,8 @@
 #define AMMUNITION_HANDFUL_BOX (1<<2)
 #define AMMUNITION_HIDE_AMMO (1<<3)
 #define AMMUNITION_CANNOT_REMOVE_BULLETS (1<<4)
+/// If this magazine can transfer to other magazines of the same type by slapping one with the other
+#define AMMUNITION_SLAP_TRANSFER (1<<5)
 //Slowdown from various armors.
 
 /// How much shoes slow you down by default. Negative values speed you up

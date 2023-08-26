@@ -24178,9 +24178,9 @@
 /area/shiva/exterior/junkyard)
 "tJX" = (
 /obj/structure/closet/secure_closet/engineering_personal,
-/obj/item/weapon/gun/smg/ppsh,
-/obj/item/ammo_magazine/smg/ppsh,
-/obj/item/ammo_magazine/smg/ppsh,
+/obj/item/weapon/gun/smg/pps43,
+/obj/item/ammo_magazine/smg/pps43,
+/obj/item/ammo_magazine/smg/pps43,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -27086,9 +27086,9 @@
 "wOf" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/structure/machinery/light/double,
-/obj/item/weapon/gun/smg/ppsh,
-/obj/item/ammo_magazine/smg/ppsh,
-/obj/item/ammo_magazine/smg/ppsh,
+/obj/item/weapon/gun/smg/pps43,
+/obj/item/ammo_magazine/smg/pps43,
+/obj/item/ammo_magazine/smg/pps43,
 /turf/open/floor/shiva{
 	dir = 1
 	},

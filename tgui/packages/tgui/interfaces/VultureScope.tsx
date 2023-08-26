@@ -168,8 +168,8 @@ const BreathButton = (props, context) => {
     <Section title="Breathing" textAlign="center">
       <Flex.Item grow={1} basis={0}>
         <Button
-          content="Hold Breath"
-          tooltip="Hold your breath for a short time, removing scope drift."
+          content="Control Breathing"
+          tooltip="Control your breathing for a short time, removing scope drift."
           disabled={data.breath_cooldown}
           textAlign="center"
           onClick={() => act('hold_breath')}

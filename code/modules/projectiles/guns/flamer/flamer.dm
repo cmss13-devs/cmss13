@@ -51,7 +51,7 @@
 
 /obj/item/weapon/gun/flamer/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_4 * 5)
+	set_fire_delay(FIRE_DELAY_TIER_5 * 5)
 
 /obj/item/weapon/gun/flamer/unique_action(mob/user)
 	toggle_gun_safety()
@@ -370,7 +370,7 @@
 
 /obj/item/weapon/gun/flamer/M240T/auto/set_gun_config_values()
 	. = ..()
-	set_fire_delay(FIRE_DELAY_TIER_3)
+	set_fire_delay(FIRE_DELAY_TIER_7)
 
 GLOBAL_LIST_EMPTY(flamer_particles)
 /particles/flamer_fire

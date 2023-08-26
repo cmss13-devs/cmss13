@@ -410,6 +410,13 @@
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage = 45
 
+/datum/ammo/bullet/pistol/heavy/super/highimpact/upp
+	name = "high-impact pistol bullet"
+	sound_override = 'sound/weapons/gun_DE50.ogg'
+	penetration = ARMOR_PENETRATION_TIER_6
+	debilitate = list(0,1.5,0,0,0,1,0,0)
+	flags_ammo_behavior = AMMO_BALLISTIC
+
 /datum/ammo/bullet/pistol/heavy/super/highimpact/New()
 	..()
 	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
@@ -617,42 +624,43 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
 
-/datum/ammo/bullet/revolver/nagant
-	name = "nagant revolver bullet"
-	headshot_state = HEADSHOT_OVERLAY_LIGHT //Smaller bullet.
-	damage = 40
+/datum/ammo/bullet/revolver/upp
+	name = "heavy revolver bullet"
+	headshot_state = HEADSHOT_OVERLAY_MEDIUM
+	penetration = ARMOR_PENETRATION_TIER_4
+	damage = 70
 
 
-/datum/ammo/bullet/revolver/nagant/shrapnel
+/datum/ammo/bullet/revolver/upp/shrapnel
 	name = "shrapnel shot"
 	headshot_state = HEADSHOT_OVERLAY_HEAVY //Gol-dang shotgun blow your fething head off.
 	debilitate = list(0,0,0,0,0,0,0,0)
 	icon_state = "shrapnelshot"
 	handful_state = "shrapnel"
-	bonus_projectiles_type = /datum/ammo/bullet/revolver/nagant/shrapnel_bits
+	bonus_projectiles_type = /datum/ammo/bullet/revolver/upp/shrapnel_bits
 
 	max_range = 6
-	damage = 25 // + TIER_4 * 3
+	damage = 40 // + TIER_4 * 3
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-	penetration = ARMOR_PENETRATION_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_8
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	shrapnel_chance = 100
-	shrapnel_type = /obj/item/shard/shrapnel/nagant
-	//roughly 35 or so damage
+	shrapnel_type = /obj/item/shard/shrapnel/upp
+	//roughly 90 or so damage with the additional shrapnel, around 130 in total with primary round
 
-/datum/ammo/bullet/revolver/nagant/shrapnel/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/revolver/upp/shrapnel/on_hit_mob(mob/M, obj/item/projectile/P)
 	pushback(M, P, 1)
 
-/datum/ammo/bullet/revolver/nagant/shrapnel_bits
+/datum/ammo/bullet/revolver/upp/shrapnel_bits
 	name = "small shrapnel"
 	icon_state = "shrapnelshot_bit"
 
 	max_range = 6
-	damage = 20
-	penetration = ARMOR_PENETRATION_TIER_1
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_1
 	bonus_projectiles_amount = 0
-	shrapnel_type = /obj/item/shard/shrapnel/nagant/bits
+	shrapnel_type = /obj/item/shard/shrapnel/upp/bits
 
 /datum/ammo/bullet/revolver/small
 	name = "small revolver bullet"
@@ -862,6 +870,15 @@
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_5
 
+/datum/ammo/bullet/smg/pps43
+	name = "simple submachinegun bullet"
+	damage = 35
+	accurate_range = 7
+	effective_range_max = 10
+	penetration = ARMOR_PENETRATION_TIER_4
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_6
+
 /*
 //======
 					Rifle Ammo
@@ -1057,21 +1074,21 @@
 /datum/ammo/bullet/rifle/type71
 	name = "heavy rifle bullet"
 
-	damage = 35
-	penetration = ARMOR_PENETRATION_TIER_2
+	damage = 55
+	penetration = ARMOR_PENETRATION_TIER_3
 
 /datum/ammo/bullet/rifle/type71/ap
 	name = "heavy armor-piercing rifle bullet"
 
-	damage = 20
+	damage = 40
 	penetration = ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/bullet/rifle/type71/heap
 	name = "heavy high-explosive armor-piercing rifle bullet"
 
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
-	damage = 50
-	penetration = ARMOR_PENETRATION_TIER_8
+	damage = 65
+	penetration = ARMOR_PENETRATION_TIER_10
 
 /*
 //======
@@ -1599,6 +1616,11 @@
 	. = ..()
 	pushback(M, P, 3)
 
+/datum/ammo/bullet/sniper/upp
+	name = "armor-piercing sniper bullet"
+	damage = 80
+	penetration = ARMOR_PENETRATION_TIER_10
+
 /datum/ammo/bullet/sniper/anti_materiel
 	name = "anti-materiel sniper bullet"
 
@@ -1865,6 +1887,18 @@
 	penetration= ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
+/datum/ammo/bullet/pkp
+	name = "machinegun bullet"
+	headshot_state = HEADSHOT_OVERLAY_MEDIUM
+
+	accuracy = HIT_ACCURACY_TIER_1
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_8
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
+	accurate_range = 14
+	damage = 35
+	penetration= ARMOR_PENETRATION_TIER_6
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
+
 /*
 //======
 					Rocket Ammo
@@ -2077,6 +2111,42 @@
 	drop_flame(T, P.weapon_cause_data)
 
 /datum/ammo/rocket/wp/do_at_max_range(obj/item/projectile/P)
+	drop_flame(get_turf(P), P.weapon_cause_data)
+
+/datum/ammo/rocket/wp/upp
+	name = "extreme-intensity incendiary rocket"
+	flags_ammo_behavior = AMMO_ROCKET|AMMO_EXPLOSIVE|AMMO_STRIKES_SURFACE
+	damage_type = BURN
+
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	accurate_range = 8
+	damage = 150
+	max_range = 10
+
+/datum/ammo/rocket/wp/upp/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
+	))
+
+/datum/ammo/rocket/wp/upp/drop_flame(turf/T, datum/cause_data/cause_data)
+	playsound(T, 'sound/weapons/gun_flamethrower3.ogg', 75, 1, 7)
+	if(!istype(T)) return
+	smoke.set_up(1, T)
+	smoke.start()
+	var/datum/reagent/napalm/upp/R = new()
+	new /obj/flamer_fire(T, cause_data, R, 3)
+
+/datum/ammo/rocket/wp/upp/on_hit_mob(mob/M, obj/item/projectile/P)
+	drop_flame(get_turf(M), P.weapon_cause_data)
+
+/datum/ammo/rocket/wp/upp/on_hit_obj(obj/O, obj/item/projectile/P)
+	drop_flame(get_turf(O), P.weapon_cause_data)
+
+/datum/ammo/rocket/wp/upp/on_hit_turf(turf/T, obj/item/projectile/P)
+	drop_flame(T, P.weapon_cause_data)
+
+/datum/ammo/rocket/wp/upp/do_at_max_range(obj/item/projectile/P)
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
 /datum/ammo/rocket/wp/quad
@@ -2367,32 +2437,7 @@
 	flags_ammo_behavior = AMMO_IGNORE_RESIST
 
 	damage = 55
-
-/datum/ammo/energy/yautja/rifle/blast
-	name = "plasma shatterer"
-	icon_state = "bluespace"
-	damage_type = BURN
-
-	shell_speed = AMMO_SPEED_TIER_4
-	damage = 40
-
-/datum/ammo/energy/yautja/rifle/blast/on_hit_mob(mob/M, obj/item/projectile/P)
-	var/L = get_turf(M)
-	cell_explosion(L, 90, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
-	..()
-
-/datum/ammo/energy/yautja/rifle/blast/on_hit_turf(turf/T, obj/item/projectile/P)
-	cell_explosion(T, 90, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
-	..()
-
-/datum/ammo/energy/yautja/rifle/blast/on_hit_obj(obj/O, obj/item/projectile/P)
-	cell_explosion(get_turf(O), 100, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
-	..()
-
-/datum/ammo/energy/yautja/rifle/blast/do_at_max_range(obj/item/projectile/P)
-	cell_explosion(get_turf(P), 100, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
-	..()
-
+	penetration = 50
 
 /*
 //======

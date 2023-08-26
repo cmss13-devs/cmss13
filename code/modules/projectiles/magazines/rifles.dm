@@ -263,7 +263,7 @@
 	icon_state = "m41ae2"
 	max_rounds = 300
 	gun_type = /obj/item/weapon/gun/rifle/lmg
-	flags_magazine = AMMUNITION_CANNOT_REMOVE_BULLETS|AMMUNITION_REFILLABLE
+	flags_magazine = AMMUNITION_CANNOT_REMOVE_BULLETS|AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 	ammo_band_icon = "+m41ae2_band"
 	ammo_band_icon_empty = "+m41ae2_band_e"
 
@@ -290,7 +290,9 @@
 	desc = "A 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
 	caliber = "5.45x39mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
-	icon_state = "type_71"
+	icon_state = "type71"
+	ammo_band_icon = "+type71_band"
+	ammo_band_icon_empty = "+type71_band_e"
 	default_ammo = /datum/ammo/bullet/rifle/type71
 	max_rounds = 60
 	gun_type = /obj/item/weapon/gun/rifle/type71
@@ -298,16 +300,14 @@
 /obj/item/ammo_magazine/rifle/type71/ap
 	name = "\improper Type 71 AP magazine (5.45x39mm)"
 	desc = "A 5.45x39mm high-capacity casket magazine containing armor piercing rounds for the Type 71 rifle."
-	icon_state = "type_71_ap"
 	default_ammo = /datum/ammo/bullet/rifle/type71/ap
-	bonus_overlay = "type71_ap"
+	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/type71/heap
 	name = "\improper Type 71 HEAP magazine (5.45x39mm)"
 	desc = "A 5.45x39mm high-capacity casket magazine containing the standard high explosive armor piercing rounds for the Type 71 rifle."
-	icon_state = "type_71_heap"
 	default_ammo = /datum/ammo/bullet/rifle/type71/heap
-	bonus_overlay = "type71_heap"
+	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 //-------------------------------------------------------
 //L42A Battle Rifle

@@ -207,7 +207,7 @@
 
 	for(var/allowed_role in allowed_roles_list)
 		if(user.job == allowed_role)
-			if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_DEFAULT) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
+			if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 				to_chat(user, SPAN_WARNING("You already have specialization, give this kit to someone else!"))
 				return FALSE
 			return TRUE
@@ -216,7 +216,7 @@
 	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", available_specialist_kit_boxes)
 	if(!selection || QDELETED(src))
 		return FALSE
-	if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_DEFAULT) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
+	if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 		to_chat(user, SPAN_WARNING("You already unwrapped your [name], give this one to someone else!"))
 		return
 	if(!available_specialist_kit_boxes[selection] || available_specialist_kit_boxes[selection] <= 0)
@@ -429,7 +429,7 @@
 	new /obj/item/pamphlet/skill/medical(src)
 	new /obj/item/storage/pouch/first_responder/full(src)
 	new /obj/item/storage/pouch/autoinjector/full(src)
-	new /obj/item/clothing/glasses/hud/sensor(src)
+	new /obj/item/device/helmet_visor/medical(src)
 	new /obj/item/roller(src)
 
 

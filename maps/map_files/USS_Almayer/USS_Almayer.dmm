@@ -23699,8 +23699,7 @@
 	},
 /obj/structure/machinery/computer/cameras/hangar{
 	pixel_y = 0;
-	plane = -4;
-	pixel_x = -16
+	plane = -4
 	},
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -25674,6 +25673,17 @@
 	icon_state = "green"
 	},
 /area/almayer/squads/req)
+"cyA" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/bed/chair/office/light,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/command/cic)
 "cyE" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -31725,11 +31735,6 @@
 	id = "CIC_Conference";
 	name = "\improper CIC Conference Shutters"
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door"
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -36220,6 +36225,19 @@
 	icon_state = "cargo"
 	},
 /area/almayer/shipboard/brig/cryo)
+"gCJ" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/command/cic)
 "gCP" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/flashlight/lamp,
@@ -37454,12 +37472,12 @@
 	},
 /area/almayer/squads/delta)
 "hcR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
-	name = "\improper Combat Information Center"
-	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
+	name = "\improper Secure Command Hallway"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -37916,7 +37934,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
 	dir = 1;
-	name = "\improper Combat Information Center"
+	name = "\improper Secure Command Hallway"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -41098,7 +41116,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
 	dir = 1;
-	name = "\improper Combat Information Center"
+	name = "\improper Secure Command Hallway"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -42974,12 +42992,18 @@
 	shuttleId = "dropship_alamo";
 	pixel_y = 0;
 	plane = -4;
-	pixel_x = -1
+	pixel_x = 15
 	},
 /obj/structure/barricade/handrail{
 	dir = 1;
 	pixel_y = 4;
 	plane = -5
+	},
+/obj/item/device/radio/intercom/alamo{
+	layer = 3.5;
+	pixel_x = -2;
+	pixel_y = 0;
+	plane = -4
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -53237,9 +53261,7 @@
 /turf/open/floor/plating,
 /area/almayer/medical/chemistry)
 "nvN" = (
-/obj/structure/closet/secure_closet/personal/cabinet{
-	req_access = null
-	},
+/obj/structure/closet/secure_closet/pilot_officer,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -54358,11 +54380,6 @@
 	dir = 4;
 	id = "CIC_Conference";
 	name = "\improper CIC Conference Shutters"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -56126,11 +56143,11 @@
 	},
 /area/almayer/shipboard/brig/cells)
 "oBU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
-	name = "\improper Combat Information Center"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
+	name = "\improper Secure Command Hallway"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -61828,6 +61845,12 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/charlie_delta_shared)
+"qUu" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/upper_hull/u_f_p)
 "qUH" = (
 /obj/item/storage/bag/plasticbag,
 /obj/structure/surface/rack,
@@ -66919,7 +66942,7 @@
 	pixel_y = 0;
 	shuttleId = "dropship_normandy";
 	plane = -4;
-	pixel_x = -31
+	pixel_x = -15
 	},
 /obj/structure/surface/table/reinforced/black{
 	layer = 3.1;
@@ -66928,13 +66951,7 @@
 	},
 /obj/item/device/radio/intercom/normandy{
 	layer = 3.5;
-	pixel_x = 2;
-	pixel_y = 0;
-	plane = -4
-	},
-/obj/item/device/radio/intercom/alamo{
-	layer = 3.5;
-	pixel_x = -12;
+	pixel_x = 3;
 	pixel_y = 0;
 	plane = -4
 	},
@@ -70236,7 +70253,7 @@
 "uiZ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
 	dir = 1;
-	name = "\improper Combat Information Center"
+	name = "\improper Secure Command Hallway"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -71825,7 +71842,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
 	dir = 1;
-	name = "\improper Combat Information Center"
+	name = "\improper Secure Command Hallway"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -97778,7 +97795,7 @@ mtl
 mtl
 mtl
 qFl
-mnm
+qUu
 gpe
 xyz
 kCi
@@ -101820,7 +101837,7 @@ aKF
 avY
 afU
 chB
-ofw
+gCJ
 qEB
 dsF
 dxs
@@ -101828,7 +101845,7 @@ ord
 cOB
 dsF
 oZs
-dkc
+cyA
 lIb
 fgD
 avY

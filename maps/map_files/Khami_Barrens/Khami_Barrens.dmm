@@ -3438,7 +3438,6 @@
 	rapid = 1;
 	dir = 1
 	},
-/obj/item/weapon/gun/pistol/skorpion/upp,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},

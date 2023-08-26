@@ -755,6 +755,9 @@
 
 
 /mob/living/carbon/xenomorph/start_pulling(atom/movable/AM, lunge, no_msg)
+	if(next_move >= world.time)
+		return FALSE
+
 	if(SEND_SIGNAL(AM, COMSIG_MOVABLE_XENO_START_PULLING, src) & COMPONENT_ALLOW_PULL)
 		return do_pull(AM, lunge, no_msg)
 
@@ -810,7 +813,7 @@
 	//and display them
 	add_to_all_mob_huds()
 	var/datum/mob_hud/MH = huds[MOB_HUD_XENO_INFECTION]
-	MH.add_hud_to(src)
+	MH.add_hud_to(src, src)
 
 
 /mob/living/carbon/xenomorph/check_improved_pointing()

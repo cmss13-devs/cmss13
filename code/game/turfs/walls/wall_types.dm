@@ -239,6 +239,8 @@
 	icon_state = "fakewindows"
 	opacity = FALSE
 
+INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
+
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
 	desc = "Assorted artworks."

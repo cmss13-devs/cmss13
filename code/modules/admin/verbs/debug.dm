@@ -203,7 +203,7 @@
 
 /client/proc/cmd_admin_grantfullaccess(mob/M in GLOB.mob_list)
 	set category = null
-	set name = "Grant Full Access"
+	set name = "Grant Global Access"
 
 	if(!check_rights(R_DEBUG|R_ADMIN))
 		return
@@ -216,11 +216,11 @@
 		if (H.wear_id)
 			var/obj/item/card/id/id = H.wear_id
 			id.icon_state = "gold"
-			id:access = get_global_access()
+			id:access = get_access(ACCESS_LIST_GLOBAL)
 		else
 			var/obj/item/card/id/id = new/obj/item/card/id(M);
 			id.icon_state = "gold"
-			id:access = get_all_main_access()
+			id:access = get_access(ACCESS_LIST_GLOBAL)
 			id.registered_name = H.real_name
 			id.registered_ref = WEAKREF(H)
 			id.assignment = "Captain"
@@ -230,7 +230,7 @@
 	else
 		alert("Invalid mob")
 
-	message_admins("[key_name_admin(usr)] has granted [M.key] full access.")
+	message_admins("[key_name_admin(usr)] has granted [M.key] global access.")
 
 /client/proc/cmd_admin_grantallskills(mob/M in GLOB.mob_list)
 	set category = null

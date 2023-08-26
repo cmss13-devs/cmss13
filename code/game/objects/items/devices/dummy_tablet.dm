@@ -12,6 +12,13 @@
 	linked_dummy = null
 	. = ..()
 
+/obj/item/device/professor_dummy_tablet/proc/is_adjacent_to_dummy(mob/user as mob)
+	if (get_dist(linked_dummy, user) > 1)
+		to_chat(user, "You are too far away to use the tablet.")
+		return FALSE
+
+	return TRUE
+
 /obj/item/device/professor_dummy_tablet/proc/link_mob(mob/living/carbon/human/H)
 	linked_dummy = H
 
@@ -20,6 +27,12 @@
 	interact(user)
 
 /obj/item/device/professor_dummy_tablet/interact(mob/user as mob)
+	if (linked_dummy == null)
+		return
+
+	if (!is_adjacent_to_dummy(user))
+		return
+
 	user.set_interaction(src)
 	var/dat = "<head><title>Professor DUMMY Control Tablet</title></head><body>"
 
@@ -90,9 +103,11 @@
 
 /obj/item/device/professor_dummy_tablet/Topic(href, href_list)
 	if(..()) return FALSE
+
+	if (!is_adjacent_to_dummy(usr))
+		return FALSE
+
 	usr.set_interaction(src)
-
-
 
 	switch(href_list["operation"])
 		if ("brute_damage_organ")

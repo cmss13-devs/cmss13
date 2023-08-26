@@ -35,6 +35,13 @@
 "abD" = (
 /turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/basin)
+"abF" = (
+/obj/item/ammo_magazine/pistol/holdout,
+/obj/item/ammo_magazine/pistol/holdout,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
+/area/khami_barrens/interior/research_caves/research)
 "abM" = (
 /obj/structure/pipes/unary/freezer{
 	icon_state = "freezer_1"
@@ -861,6 +868,8 @@
 "aXo" = (
 /obj/effect/landmark/corpsespawner/wy/manager,
 /obj/effect/landmark/survivor_spawner,
+/obj/item/weapon/gun/shotgun/merc,
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
 /turf/open/floor/wood,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "aXA" = (
@@ -1214,8 +1223,8 @@
 	dir = 8
 	},
 /obj/effect/landmark/corpsespawner/pmc,
-/obj/effect/landmark/wo_supplies/guns/common/shotgun,
 /obj/item/attachable/bayonet/co2,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "brD" = (
@@ -1808,7 +1817,7 @@
 /obj/structure/closet/secure_closet{
 	opened = 1
 	},
-/obj/item/weapon/gun/revolver/small,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/kutjevo/colors,
 /area/khami_barrens/interior/marksman_residence)
 "cdB" = (
@@ -3967,8 +3976,8 @@
 /area/khami_barrens/exterior/scrubland/lodge)
 "evW" = (
 /obj/structure/closet/cabinet,
-/obj/item/weapon/gun/shotgun/double,
-/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/weapon/gun/revolver/cmb,
+/obj/item/ammo_magazine/revolver/cmb,
 /turf/open/floor/wood/ship,
 /area/khami_barrens/interior/rancher_residence)
 "ewe" = (
@@ -4272,6 +4281,13 @@
 /obj/structure/flora/grass/desert/lightgrass_12,
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/exterior/ruins)
+"eMr" = (
+/obj/effect/landmark/corpsespawner/colonist/kutjevo,
+/obj/item/weapon/gun/pistol/holdout/flashlight,
+/obj/item/ammo_magazine/pistol/holdout,
+/obj/item/ammo_magazine/pistol/holdout,
+/turf/open/floor/kutjevo/tiles,
+/area/khami_barrens/interior/research_caves/research)
 "eMG" = (
 /obj/structure/showcase{
 	color = "#95948B";
@@ -4319,6 +4335,13 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/khami_barrens/interior/ruin_caves)
+"ePq" = (
+/obj/effect/landmark/corpsespawner/scientist,
+/obj/item/weapon/gun/pistol/holdout/flashlight,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 4
+	},
+/area/khami_barrens/interior/research_caves/research)
 "ePX" = (
 /turf/open/floor/kutjevo/fake_wood,
 /area/khami_barrens/interior/village/company_offices/east)
@@ -4622,7 +4645,7 @@
 "fgq" = (
 /obj/structure/barricade/handrail/kutjevo,
 /obj/effect/landmark/corpsespawner/pmc,
-/obj/effect/landmark/wo_supplies/guns/common/shotgun,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/wood,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "fgw" = (
@@ -5180,8 +5203,8 @@
 "fKS" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/effect/landmark/corpsespawner/pmc,
-/obj/effect/landmark/wo_supplies/guns/common/shotgun,
 /obj/item/attachable/bayonet/co2,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "fLd" = (
@@ -5543,7 +5566,7 @@
 /area/khami_barrens/exterior/scrubland/checkpoint)
 "ggu" = (
 /obj/effect/landmark/corpsespawner/freelancer,
-/obj/item/weapon/gun/shotgun/merc,
+/obj/item/weapon/twohanded/spear,
 /turf/open/floor/kutjevo/grey/plate,
 /area/khami_barrens/interior/hunting_lodge)
 "ggP" = (
@@ -5959,7 +5982,6 @@
 "gEJ" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/item/weapon/gun/flamer,
-/obj/item/ammo_magazine/flamer_tank/gellied,
 /turf/open/floor/kutjevo/grey/plate,
 /area/khami_barrens/interior/hunting_lodge)
 "gFl" = (
@@ -10427,8 +10449,8 @@
 /area/khami_barrens/exterior/lz_pad)
 "lGG" = (
 /obj/effect/landmark/corpsespawner/pmc,
-/obj/effect/landmark/wo_supplies/guns/common/shotgun,
 /obj/item/ammo_magazine/handful/shotgun/buckshot,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/wood,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "lGZ" = (
@@ -11527,7 +11549,7 @@
 /area/khami_barrens/interior/landing_zone_arrivals/south)
 "mWq" = (
 /obj/structure/closet/secure_closet/guncabinet,
-/obj/item/weapon/gun/shotgun/double,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/kutjevo/grey/plate,
 /area/khami_barrens/interior/hunting_lodge)
 "mWJ" = (
@@ -12295,10 +12317,10 @@
 /area/khami_barrens/exterior/lz_dunes)
 "nRZ" = (
 /obj/structure/closet/secure_closet/guncabinet,
-/obj/item/ammo_magazine/shotgun/incendiary,
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/kutjevo/grey/plate,
 /area/khami_barrens/interior/hunting_lodge)
 "nTm" = (
@@ -12458,8 +12480,8 @@
 /area/khami_barrens/interior/research_caves/research)
 "nZW" = (
 /obj/effect/landmark/corpsespawner/pmc,
-/obj/effect/landmark/wo_supplies/guns/common/shotgun,
 /obj/item/attachable/bayonet/co2,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "nZZ" = (
@@ -12502,6 +12524,8 @@
 	},
 /obj/item/tool/pen,
 /obj/structure/disposalpipe/segment,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
 /turf/open/floor/kutjevo/colors/red/edge{
 	dir = 1
 	},
@@ -13297,6 +13321,10 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/exterior/scrubland)
+"oTN" = (
+/obj/item/ammo_box/magazine/shotgun/buckshot,
+/turf/open/floor/wood,
+/area/khami_barrens/exterior/driedoasis/bridge)
 "oTW" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/corpsespawner/scientist,
@@ -13372,6 +13400,7 @@
 /area/khami_barrens/interior/checkpoint)
 "oXQ" = (
 /obj/structure/closet/cabinet,
+/obj/item/storage/belt/gun/m4a3/mod88,
 /turf/open/floor/kutjevo/fake_wood,
 /area/khami_barrens/interior/village/residence/company/east)
 "oXX" = (
@@ -15863,7 +15892,9 @@
 /area/khami_barrens/interior/village/company_offices)
 "sab" = (
 /obj/structure/closet/cabinet,
-/obj/item/weapon/gun/shotgun/double,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
 /turf/open/floor/kutjevo/colors,
 /area/khami_barrens/interior/marksman_residence)
 "sal" = (
@@ -16460,6 +16491,7 @@
 /area/khami_barrens/interior/research_caves/research)
 "sJC" = (
 /obj/structure/closet/cabinet,
+/obj/item/storage/belt/gun/smartpistol/full,
 /turf/open/floor/kutjevo/fake_wood,
 /area/khami_barrens/interior/village/residence/company)
 "sJQ" = (
@@ -17767,8 +17799,8 @@
 	dir = 9
 	},
 /obj/effect/landmark/corpsespawner/pmc,
-/obj/effect/landmark/wo_supplies/guns/common/shotgun,
 /obj/item/attachable/bayonet/co2,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "uaJ" = (
@@ -18489,7 +18521,7 @@
 /area/khami_barrens/exterior/driedoasis/bridge)
 "uUW" = (
 /obj/effect/landmark/corpsespawner/pmc,
-/obj/effect/landmark/wo_supplies/guns/common/shotgun,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/wood,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "uVc" = (
@@ -18517,8 +18549,9 @@
 /area/khami_barrens/interior/village/residence/east)
 "uWf" = (
 /obj/structure/closet/secure_closet,
-/obj/item/weapon/gun/shotgun/double,
-/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
 /turf/open/floor/kutjevo/colors,
 /area/khami_barrens/interior/marksman_residence)
 "uWp" = (
@@ -18994,6 +19027,11 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/exterior/scrubland/village)
+"vxX" = (
+/obj/structure/displaycase/destroyed,
+/obj/item/weapon/gun/shotgun/double/sawn,
+/turf/open/floor/kutjevo/fake_wood,
+/area/khami_barrens/interior/hunting_lodge)
 "vyi" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -19080,6 +19118,10 @@
 /area/khami_barrens/interior/landing_zone_arrivals/south)
 "vBC" = (
 /obj/structure/closet,
+/obj/item/weapon/gun/pistol/holdout/flashlight,
+/obj/item/ammo_magazine/pistol/holdout,
+/obj/item/ammo_magazine/pistol/holdout,
+/obj/item/ammo_magazine/pistol/holdout,
 /turf/open/floor/kutjevo/colors/cyan/edge{
 	dir = 8
 	},
@@ -19688,8 +19730,8 @@
 	pixel_y = 4
 	},
 /obj/effect/landmark/corpsespawner/pmc,
-/obj/effect/landmark/wo_supplies/guns/common/shotgun,
 /obj/item/attachable/bayonet/co2,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "wlT" = (
@@ -19835,6 +19877,12 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/exterior/village/east)
+"wvg" = (
+/obj/structure/closet,
+/obj/item/weapon/gun/pistol/m1911,
+/obj/item/ammo_magazine/pistol/m1911,
+/turf/open/floor/kutjevo/colors,
+/area/khami_barrens/interior/landing_zone_arrivals/south)
 "wvu" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
@@ -21274,6 +21322,9 @@
 /area/khami_barrens/interior/hunting_lodge)
 "xYm" = (
 /obj/structure/surface/table/woodentable/poor,
+/obj/item/weapon/gun/pistol/vp78,
+/obj/item/ammo_magazine/pistol/vp78/incendiary,
+/obj/item/ammo_magazine/pistol/vp78,
 /turf/open/floor/kutjevo/colors/red/edge{
 	dir = 4
 	},
@@ -22571,7 +22622,7 @@ pJM
 oKx
 jPa
 gHP
-jPa
+wvg
 dgH
 dgH
 eUL
@@ -28227,7 +28278,7 @@ eUL
 eUL
 eUL
 vba
-rJt
+vxX
 tew
 vix
 xpN
@@ -48708,7 +48759,7 @@ xuE
 hsJ
 lOv
 lOv
-oPe
+ePq
 lOv
 nHv
 lOv
@@ -48930,7 +48981,7 @@ xuE
 doi
 bsR
 fND
-bsR
+abF
 aAC
 igc
 pYy
@@ -51688,7 +51739,7 @@ nJv
 jzW
 fkJ
 hMH
-oJC
+oTN
 xBi
 rwd
 gCq
@@ -52271,7 +52322,7 @@ fiH
 xuE
 tpS
 vZJ
-ebJ
+eMr
 aMG
 aMG
 bsR

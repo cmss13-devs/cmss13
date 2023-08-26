@@ -76151,7 +76151,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/obj/structure/closet/toolcloset,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},

@@ -11,7 +11,9 @@
 #define HDPT_LAYER_SUPPORT  2
 #define HDPT_LAYER_ARMOR 3
 #define HDPT_LAYER_TURRET   4
-#define HDPT_LAYER_MAX   4
+#define HDPT_LAYER_SECONDARY_GUN 5
+#define HDPT_LAYER_PRIMARY_GUN 6
+#define HDPT_LAYER_MAX   6
 
 #define VEHICLE_DRIVER   "driver"
 #define VEHICLE_GUNNER "primary gunner"

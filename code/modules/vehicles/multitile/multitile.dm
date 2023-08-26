@@ -221,25 +221,28 @@
 
 	var/amt_hardpoints = LAZYLEN(hardpoints)
 	if(amt_hardpoints)
-		var/list/hardpoint_images[amt_hardpoints]
-		var/list/C[HDPT_LAYER_MAX]
-
-		// Counting sort the images into a list so we get the hardpoint images sorted by layer
-		for(var/obj/item/hardpoint/H in hardpoints)
-			C[H.hdpt_layer] += 1
-
-		for(var/i = 2 to HDPT_LAYER_MAX)
-			C[i] += C[i-1]
+		var/list/hardpoint_images = list()
 
 		for(var/obj/item/hardpoint/H in hardpoints)
-			hardpoint_images[C[H.hdpt_layer]] = H.get_hardpoint_image()
-			C[H.hdpt_layer] -= 1
+			hardpoint_images[H.get_hardpoint_image()] = H.hdpt_layer
 
-		for(var/i = 1 to amt_hardpoints)
-			var/image/I = hardpoint_images[i]
+		for(var/k = hardpoint_images.len, k > 0, k--)
+			for(var/j = 1, j < k, j++)
+				if(hardpoint_images[hardpoint_images[j]] > hardpoint_images[hardpoint_images[j+1]])
+					hardpoint_images.Swap(j, j+1)
+
+		for(var/i in hardpoint_images)
+			if(islist(i))
+				for(var/l in i)
+					var/image/P = l
+					if(istype(P))
+						P.layer = layer + (hardpoint_images[i]*0.1)
+					overlays += P
+				continue
+			var/image/I = i
 			// get_hardpoint_image() can return a list of images
 			if(istype(I))
-				I.layer = layer + (i*0.1)
+				I.layer = layer + (hardpoint_images[i]*0.1)
 			overlays += I
 
 	if(clamped)

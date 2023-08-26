@@ -1,4 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - bugfix: "add a check before people start the long process of unlock the DS so that people don't waste time."

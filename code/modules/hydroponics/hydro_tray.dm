@@ -539,8 +539,7 @@
 
 		// Bookkeeping.
 		check_level_sanity()
-		force_update = 1
-		process()
+
 
 		return
 

@@ -267,11 +267,15 @@
 	if(toggling_action)
 		toggling_action.update_button_icon()
 
-/obj/item/weapon/gun/rifle/sniper/set_bursting(mob/user)
-	if(has_aimed_shot)
-		toggle_laser(user)
-	else
-		..()
+/obj/item/weapon/gun/rifle/sniper/verb/toggle_gun_laser()
+	set category = "Weapons"
+	set name = "Toggle Laser"
+	set desc = "Toggles your laser on or off."
+	set src = usr.contents
+
+	var/obj/item/weapon/gun/rifle/sniper/sniper = get_active_firearm(usr)
+	if((sniper == src) && has_aimed_shot)
+		toggle_laser(usr)
 
 //Pow! Headshot.
 /obj/item/weapon/gun/rifle/sniper/M42A
@@ -446,73 +450,56 @@
 			step(PMC_sniper,turn(PMC_sniper.dir,180))
 			PMC_sniper.apply_effect(5, WEAKEN)
 
-//SVD //Based on the actual Dragunov DMR rifle.
+//Type 88 //Based on the actual Dragunov DMR rifle.
 
 /obj/item/weapon/gun/rifle/sniper/svd
-	name = "\improper SVD Dragunov-033 designated marksman rifle"
-	desc = "A wannabe replica of an SVD, constructed from a MAR-40 by someone probably illiterate that thought the original SVD was built from an AK pattern. Fires 7.62x54mmR rounds."
+	name = "\improper Type 88 designated marksman rifle"
+	desc = "The standard issue DMR of the UPP, the Type 88 is sought after by competitive shooters and terrorists alike for its high degree of accuracy. Typically loaded with armor-piercing 7.62x54mmR rounds in a 12 round magazine."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
-	icon_state = "svd003"
-	item_state = "svd003" //NEEDS A ONE HANDED STATE
+	icon_state = "type88"
+	item_state = "type88"
 
-	fire_sound = 'sound/weapons/gun_kt42.ogg'
+	fire_sound = 'sound/weapons/gun_mg.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/svd
 	attachable_allowed = list(
 		//Muzzle,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp_replica,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/extended_barrel,
-		/obj/item/attachable/heavy_barrel,
-		//Barrel,
-		/obj/item/attachable/slavicbarrel,
-		//Rail,
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight,
-		/obj/item/attachable/magnetic_harness,
-		/obj/item/attachable/scope,
-		/obj/item/attachable/scope/variable_zoom,
-		/obj/item/attachable/scope/variable_zoom/slavic,
-		/obj/item/attachable/scope/mini,
-		/obj/item/attachable/scope/slavic,
 		//Under,
 		/obj/item/attachable/verticalgrip,
-		/obj/item/attachable/angledgrip,
-		/obj/item/attachable/lasersight,
 		/obj/item/attachable/bipod,
-		//Stock,
-		/obj/item/attachable/stock/slavic,
+		//Integrated,
+		/obj/item/attachable/type88_barrel,
 	)
 	has_aimed_shot = FALSE
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY
-	starting_attachment_types = list(/obj/item/attachable/scope/variable_zoom/slavic)
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK
+	starting_attachment_types = list()
 	sniper_beam_type = null
 	skill_locked = FALSE
 
 /obj/item/weapon/gun/rifle/sniper/svd/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/attachie = new /obj/item/attachable/slavicbarrel(src)
+	var/obj/item/attachable/attachie = new /obj/item/attachable/type88_barrel(src)
 	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
 	attachie.Attach(src)
 	update_attachable(attachie.slot)
 
-	attachie = new /obj/item/attachable/stock/slavic(src)
-	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
-	attachie.Attach(src)
-	update_attachable(attachie.slot)
+	var/obj/item/attachable/scope/variable_zoom/integrated/type88sight = new(src)
+	type88sight.flags_attach_features &= ~ATTACH_REMOVABLE
+	type88sight.hidden = TRUE
+	type88sight.Attach(src)
+	update_attachable(type88sight.slot)
 
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 26, "under_y" = 14, "stock_x" = 24, "stock_y" = 13, "special_x" = 39, "special_y" = 18)
 
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_6)
-	set_burst_amount(BURST_AMOUNT_TIER_2)
-	set_burst_delay(FIRE_DELAY_TIER_11)
-	accuracy_mult = BASE_ACCURACY_MULT
+	set_burst_amount(BURST_AMOUNT_TIER_1)
+	accuracy_mult = BASE_ACCURACY_MULT * 3
 	scatter = SCATTER_AMOUNT_TIER_8
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	damage_falloff_mult = 0
@@ -580,7 +567,7 @@
 
 
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 23, "rail_y" = 21, "under_x" = 30, "under_y" = 11, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)
+	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 23, "rail_y" = 21, "under_x" = 30, "under_y" = 11, "stock_x" = 24, "stock_y" = 13, "special_x" = 39, "special_y" = 17)
 
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_config_values()
 	..()
@@ -1331,6 +1318,56 @@
 	transfer_label_component(F)
 	qdel(src)
 	user.put_in_active_hand(F)
+
+//-------------------------------------------------------
+//UPP Rocket Launcher
+
+/obj/item/weapon/gun/launcher/rocket/upp
+	name = "\improper HJRA-12 Handheld Anti-Tank Grenade Launcher"
+	desc = "The HJRA-12 Handheld Anti-Tank Grenade Launcher is the standard Anti-Armor weapon of the UPP. It is designed to be easy to use and to take out or disable armored vehicles."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon_state = "hjra12"
+	item_state = "hjra12"
+	skill_locked = FALSE
+	current_mag = /obj/item/ammo_magazine/rocket/upp/at
+
+	attachable_allowed = list(/obj/item/attachable/upp_rpg_breech)
+
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY
+
+	flags_item = TWOHANDED
+
+/obj/item/weapon/gun/launcher/rocket/upp/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 6, "rail_y" = 19, "under_x" = 19, "under_y" = 14, "stock_x" = -6, "stock_y" = 16, "special_x" = 37, "special_y" = 16)
+
+/obj/item/weapon/gun/launcher/rocket/upp/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/upp_rpg_breech/S = new(src)
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachables()
+
+	var/obj/item/attachable/magnetic_harness/Integrated = new(src)
+	Integrated.hidden = TRUE
+	Integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	Integrated.Attach(src)
+	update_attachable(Integrated.slot)
+
+/obj/item/weapon/gun/launcher/rocket/upp/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
+	. = ..()
+	if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && ishuman(user))
+		return
+
+	var/backblast_loc = get_turf(get_step(user.loc, turn(user.dir, 180)))
+	smoke.set_up(1, 0, backblast_loc, turn(user.dir, 180))
+	smoke.start()
+	playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 100, TRUE, 10)
+	for(var/mob/living/carbon/C in backblast_loc)
+		if(!C.lying && !HAS_TRAIT(C, TRAIT_EAR_PROTECTION)) //Have to be standing up to get the fun stuff
+			C.apply_damage(15, BRUTE) //The shockwave hurts, quite a bit. It can knock unarmored targets unconscious in real life
+			C.apply_effect(4, STUN) //For good measure
+			C.apply_effect(6, STUTTER)
+			C.emote("pain")
 
 //-------------------------------------------------------
 //Flare gun. Close enough to a specialist gun?

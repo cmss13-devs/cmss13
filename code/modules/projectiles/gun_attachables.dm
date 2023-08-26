@@ -896,6 +896,28 @@ Defined in conflicts.dm of the #defines folder.
 	delay_scoped_nerf = FIRE_DELAY_TIER_11 //to compensate initial debuff. We want "high_fire_delay"
 	damage_falloff_scoped_buff = -0.4 //has to be negative
 
+/obj/item/attachable/scope/Attach(obj/item/weapon/gun/gun)
+	. = ..()
+	RegisterSignal(gun, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES, PROC_REF(handle_attachment_recalc))
+
+/obj/item/attachable/scope/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
+	. = ..()
+	UnregisterSignal(detaching_gub, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
+
+
+/// Due to the bipod's interesting way of handling stat modifications, this is necessary to prevent exploits.
+/obj/item/attachable/scope/proc/handle_attachment_recalc(obj/item/weapon/gun/source)
+	SIGNAL_HANDLER
+
+	if(!source.zoom)
+		return
+
+	if(using_scope)
+		source.accuracy_mult += accuracy_scoped_buff
+		source.modify_fire_delay(delay_scoped_nerf)
+		source.damage_falloff_mult += damage_falloff_scoped_buff
+
+
 /obj/item/attachable/scope/proc/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
 	if(G.zoom)
 		G.accuracy_mult += accuracy_scoped_buff
@@ -995,6 +1017,9 @@ Defined in conflicts.dm of the #defines folder.
 	S.toggle_zoom_level()
 
 //other variable zoom scopes
+
+/obj/item/attachable/scope/variable_zoom/integrated
+	name = "variable zoom scope"
 
 /obj/item/attachable/scope/variable_zoom/slavic
 	icon_state = "slavicscope"
@@ -1701,6 +1726,81 @@ Defined in conflicts.dm of the #defines folder.
 		if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
 
+/obj/item/attachable/upp_rpg_breech
+	name = "HJRA-12 Breech"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
+	icon_state = "hjra_breech"
+	attach_icon = "hjra_breech"
+	slot = "stock"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 0
+	size_mod = 0
+
+/obj/item/attachable/pkpbarrel
+	name = "QYJ-72 Barrel"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
+	icon_state = "uppmg_barrel"
+	attach_icon = "uppmg_barrel"
+	slot = "muzzle"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 0
+	size_mod = 0
+
+/obj/item/attachable/stock/pkpstock
+	name = "QYJ-72 Stock"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
+	icon_state = "uppmg_stock"
+	attach_icon = "uppmg_stock"
+	slot = "stock"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 20 //the thought of a upp spec beating people to death with a pk makes me laugh
+	size_mod = 0
+
+/obj/item/attachable/type88_barrel
+	name = "Type-88 Barrel"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
+	icon_state = "type88_barrel"
+	attach_icon = "type88_barrel"
+	slot = "special"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 0
+	size_mod = 0
+
+/obj/item/attachable/type73suppressor
+	name = "Type 73 Integrated Suppressor"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
+	icon_state = "type73_suppressor"
+	attach_icon = "type73_suppressor"
+	slot = "muzzle"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 0
+	size_mod = 0
+
+/obj/item/attachable/stock/type71
+	name = "Type 71 Stock"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
+	icon_state = "type71_stock"
+	attach_icon = "type71_stock"
+	slot = "stock"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 15
+	size_mod = 0
+
+/obj/item/attachable/stock/type71/New()
+	..()
+
 /obj/item/attachable/stock/smg
 	name = "submachinegun stock"
 	desc = "A rare ARMAT stock distributed in small numbers to USCM forces. Compatible with the M39, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl"
@@ -2021,6 +2121,8 @@ Defined in conflicts.dm of the #defines folder.
 		gun_original_damage_mult = G.damage_mult
 		G.damage_mult = 1
 		icon_state += "-on"
+
+	SEND_SIGNAL(G, COMSIG_GUN_INTERRUPT_FIRE)
 
 	for(var/X in G.actions)
 		var/datum/action/A = X
@@ -2692,13 +2794,14 @@ Defined in conflicts.dm of the #defines folder.
 	burst_scatter_mod = 0
 	delay_mod = FIRE_DELAY_TIER_12
 	G.recalculate_attachment_bonuses()
+	G.stop_fire()
 	var/mob/living/user
 	if(isliving(G.loc))
 		user = G.loc
 		UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 
 	if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
-		G.remove_bullet_trait("iff")
+		G.remove_firemode(GUN_FIREMODE_AUTOMATIC)
 
 	if(!QDELETED(G))
 		playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
@@ -2729,12 +2832,13 @@ Defined in conflicts.dm of the #defines folder.
 				else
 					delay_mod = -FIRE_DELAY_TIER_12
 				G.recalculate_attachment_bonuses()
+				G.stop_fire()
 
 				initial_mob_dir = user.dir
 				RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
 
 				if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
-					G.add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
+					G.add_firemode(GUN_FIREMODE_AUTOMATIC)
 
 			else
 				to_chat(user, SPAN_NOTICE("You retract [src]."))

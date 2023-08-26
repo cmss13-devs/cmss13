@@ -401,6 +401,8 @@
   - bugfix: Underbarrel extinguisher no longer bypass wielding restrictions on flamers.
   - bugfix: Glasses with flash protection can no longer be used for welding.
   - refactor: Adds defines for negative welding protection.
+  Fray2:
+  - rscadd: Added something
   Morrow:
   - balance: You now lose nutrition when gaining blood rather than losing a ton of
       nutrition when you have low effective blood
